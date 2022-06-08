@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 63584 2016-08-18 11:48:04Z vboxsync $ */
+/* $Id: MachineImpl.h 64996 2016-12-22 07:41:00Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -39,6 +39,8 @@
 #include "Performance.h"
 #include "PerformanceImpl.h"
 #include "ThreadTask.h"
+#include "UnattendedImpl.h"
+
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
 // generated header
@@ -771,6 +773,7 @@ protected:
     const ComObjPtr<USBDeviceFilters>  mUSBDeviceFilters;
     const ComObjPtr<BIOSSettings>      mBIOSSettings;
     const ComObjPtr<BandwidthControl>  mBandwidthControl;
+    const ComObjPtr<Unattended>       mUnattended;
 
     typedef std::vector<ComObjPtr<NetworkAdapter> > NetworkAdapterVector;
     NetworkAdapterVector               mNetworkAdapters;
@@ -976,6 +979,7 @@ private:
     HRESULT getUSBProxyAvailable(BOOL *aUSBProxyAvailable);
     HRESULT getVMProcessPriority(com::Utf8Str &aVMProcessPriority);
     HRESULT setVMProcessPriority(const com::Utf8Str &aVMProcessPriority);
+    HRESULT getUnattended(ComPtr<IUnattended> &aUnattended);
 
     // wrapped IMachine methods
     HRESULT lockMachine(const ComPtr<ISession> &aSession,
