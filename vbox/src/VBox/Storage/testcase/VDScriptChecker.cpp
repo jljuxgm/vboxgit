@@ -1,4 +1,4 @@
-/** $Id: VDScriptChecker.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
+/** $Id: VDScriptChecker.cpp 62758 2016-07-30 16:56:09Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - scripting engine, type and context checker.
@@ -27,5 +27,6 @@
 
 DECLHIDDEN(int) vdScriptCtxCheck(PVDSCRIPTCTXINT pThis)
 {
+    RT_NOREF1(pThis);
     return VERR_NOT_IMPLEMENTED;
 }
