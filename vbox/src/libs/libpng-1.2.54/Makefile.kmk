@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63114 2016-08-06 20:42:35Z vboxsync $
+# $Id: Makefile.kmk 63312 2016-08-11 00:25:55Z vboxsync $
 ## @file
 # Sub-Makefile for libpng.
 #
@@ -21,6 +21,7 @@ include $(KBUILD_PATH)/subheader.kmk
 LIBRARIES += VBox-libpng
 VBox-libpng_TEMPLATE = VBoxR3DllNonPedantic
 VBox-libpng_SDKS = VBOX_ZLIB
+VBox-libpng_CFLAGS.win = -wd4310 # pngrutil.c(1268) : warning C4310: cast truncates constant value
 VBox-libpng_SOURCES = \
 	png.c \
 	pngset.c \
