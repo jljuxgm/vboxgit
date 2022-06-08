@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: http-curl.cpp 62566 2016-07-26 15:16:41Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -1955,6 +1955,8 @@ RTR3DECL(int) RTHttpGatherCaCertsInStore(RTCRSTORE hStore, uint32_t fFlags, PRTE
 {
     uint32_t const cBefore = RTCrStoreCertCount(hStore);
     AssertReturn(cBefore != UINT32_MAX, VERR_INVALID_HANDLE);
+    RT_NOREF_PV(fFlags);
+
 
     /*
      * Add the user store, quitely ignoring any errors.
@@ -2123,6 +2125,8 @@ static int rtHttpProgress(void *pData, double rdTotalDownload, double rdDownload
 {
     PRTHTTPINTERNAL pThis = (PRTHTTPINTERNAL)pData;
     AssertReturn(pThis->u32Magic == RTHTTP_MAGIC, 1);
+    RT_NOREF_PV(rdTotalUpload);
+    RT_NOREF_PV(rdUploaded);
 
     pThis->cbDownloadHint = (uint64_t)rdTotalDownload;
 

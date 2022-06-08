@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 62566 2016-07-26 15:16:41Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -1177,6 +1177,7 @@ static DECLCALLBACK(void) rtTimerLnxStartOnSpecificCpu(RTCPUID idCpu, void *pvUs
 {
     PRTTIMERLINUXSTARTONCPUARGS pArgs = (PRTTIMERLINUXSTARTONCPUARGS)pvUser2;
     PRTTIMER pTimer = (PRTTIMER)pvUser1;
+    RT_NOREF_PV(idCpu);
     rtTimerLnxStartSubTimer(&pTimer->aSubTimers[0], pArgs->u64Now, pArgs->u64First, true /*fPinned*/, pTimer->fHighRes);
 }
 
@@ -1629,6 +1630,7 @@ RT_EXPORT_SYMBOL(RTTimerGetSystemGranularity);
 
 RTDECL(int) RTTimerRequestSystemGranularity(uint32_t u32Request, uint32_t *pu32Granted)
 {
+    RT_NOREF_PV(u32Request); RT_NOREF_PV(*pu32Granted);
     return VERR_NOT_SUPPORTED;
 }
 RT_EXPORT_SYMBOL(RTTimerRequestSystemGranularity);
@@ -1636,6 +1638,7 @@ RT_EXPORT_SYMBOL(RTTimerRequestSystemGranularity);
 
 RTDECL(int) RTTimerReleaseSystemGranularity(uint32_t u32Granted)
 {
+    RT_NOREF_PV(u32Granted);
     return VERR_NOT_SUPPORTED;
 }
 RT_EXPORT_SYMBOL(RTTimerReleaseSystemGranularity);

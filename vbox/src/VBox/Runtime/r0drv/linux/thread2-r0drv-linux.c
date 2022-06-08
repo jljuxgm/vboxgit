@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-linux.c 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: thread2-r0drv-linux.c 62566 2016-07-26 15:16:41Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Linux.
  */
@@ -90,7 +90,10 @@ DECLHIDDEN(int) rtThreadNativeSetPriority(PRTTHREADINT pThread, RTTHREADTYPE enm
     }
 
     sched_setscheduler(current, iSchedClass, &Param);
+#else
+    RT_NOREF_PV(enmType);
 #endif
+    RT_NOREF_PV(pThread);
 
     return VINF_SUCCESS;
 }
@@ -98,6 +101,7 @@ DECLHIDDEN(int) rtThreadNativeSetPriority(PRTTHREADINT pThread, RTTHREADTYPE enm
 
 DECLHIDDEN(int) rtThreadNativeAdopt(PRTTHREADINT pThread)
 {
+    RT_NOREF_PV(pThread);
     return VERR_NOT_IMPLEMENTED;
 }
 

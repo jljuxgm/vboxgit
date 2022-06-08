@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-linux.c 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: spinlock-r0drv-linux.c 62566 2016-07-26 15:16:41Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Linux.
  */
@@ -76,6 +76,7 @@ RTDECL(int)  RTSpinlockCreate(PRTSPINLOCK pSpinlock, uint32_t fFlags, const char
     IPRT_LINUX_SAVE_EFL_AC();
     PRTSPINLOCKINTERNAL pThis;
     AssertReturn(fFlags == RTSPINLOCK_FLAGS_INTERRUPT_SAFE || fFlags == RTSPINLOCK_FLAGS_INTERRUPT_UNSAFE, VERR_INVALID_PARAMETER);
+    RT_NOREF_PV(pszName);
 
     /*
      * Allocate.

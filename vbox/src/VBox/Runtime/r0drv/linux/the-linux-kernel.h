@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: the-linux-kernel.h 62566 2016-07-26 15:16:41Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -33,6 +33,13 @@
  */
 #include <iprt/types.h>
 #define bool linux_bool
+
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic push
+#endif
+#if RT_GNUC_PREREQ(4, 2)
+# pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
 
 #include <linux/version.h>
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 33)
@@ -336,6 +343,10 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
  * Stop using the linux bool type.
  */
 #undef bool
+
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic pop
+#endif
 
 /*
  * There are post-2.6.24 kernels (confusingly with unchanged version number)

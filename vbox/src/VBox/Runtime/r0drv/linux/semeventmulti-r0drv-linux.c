@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-linux.c 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-linux.c 62566 2016-07-26 15:16:41Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -96,6 +96,7 @@ RTDECL(int)  RTSemEventMultiCreateEx(PRTSEMEVENTMULTI phEventMultiSem, uint32_t 
 {
     PRTSEMEVENTMULTIINTERNAL pThis;
     IPRT_LINUX_SAVE_EFL_AC();
+    RT_NOREF_PV(hClass); RT_NOREF_PV(pszNameFmt);
 
     AssertReturn(!(fFlags & ~RTSEMEVENTMULTI_FLAGS_NO_LOCK_VAL), VERR_INVALID_PARAMETER);
     pThis = (PRTSEMEVENTMULTIINTERNAL)RTMemAlloc(sizeof(*pThis));
@@ -248,6 +249,7 @@ static int rtR0SemEventMultiLnxWait(PRTSEMEVENTMULTIINTERNAL pThis, uint32_t fFl
 {
     uint32_t    fOrgStateAndGen;
     int         rc;
+    RT_NOREF_PV(pSrcPos);
 
     /*
      * Validate the input.

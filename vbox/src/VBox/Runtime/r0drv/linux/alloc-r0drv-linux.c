@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 62566 2016-07-26 15:16:41Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -142,6 +142,7 @@ RTR0DECL(int) RTR0MemExecDonate(void *pvMemory, size_t cb)
     }
     return rc;
 #else
+    RT_NOREF_PV(pvMemory); RT_NOREF_PV(cb);
     return VERR_NOT_SUPPORTED;
 #endif
 }
