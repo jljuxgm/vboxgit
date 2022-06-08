@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 65101 2017-01-04 12:07:43Z vboxsync $ */
+/* $Id: DevPCI.cpp 65283 2017-01-13 14:25:05Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -1036,7 +1036,7 @@ static DECLCALLBACK(int) pciR3CommonLoadExec(PDEVPCIBUS pBus, PSSMHANDLE pSSM, u
                                     i, pDev->pszNameR3, DevTmp.abConfig, pDev->abConfig);
 
         /* commit the loaded device config. */
-        devpciR3CommonRestoreConfig(pDev, &DevTmp.abConfig[0], false ); /** @todo fix bridge fun! */
+        devpciR3CommonRestoreConfig(pDev, &DevTmp.abConfig[0]);
 
         pDev->Int.s.uIrqPinState = DevTmp.Int.s.uIrqPinState;
     }
