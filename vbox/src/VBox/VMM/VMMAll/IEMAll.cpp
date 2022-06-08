@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 61630 2016-06-09 17:56:23Z vboxsync $ */
+/* $Id: IEMAll.cpp 61635 2016-06-09 18:31:22Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3877,6 +3877,8 @@ iemRaiseXcptOrIntInLongMode(PIEMCPU     pIemCpu,
     /*
      * Start making changes.
      */
+    /* Set the new CPL so that stack accesses use it. */
+    pIemCpu->uCpl = uNewCpl;
 
     /* Create the stack frame. */
     uint32_t   cbStackFrame = sizeof(uint64_t) * (5 + !!(fFlags & IEM_XCPT_FLAGS_ERR));
