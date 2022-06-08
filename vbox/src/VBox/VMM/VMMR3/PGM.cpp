@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 65985 2017-03-07 16:32:11Z vboxsync $ */
+/* $Id: PGM.cpp 65987 2017-03-07 16:42:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3714,6 +3714,9 @@ VMMR3DECL(int) PGMR3ChangeMode(PVM pVM, PVMCPU pVCpu, PGMMODE enmGuestMode)
             rc = VERR_NOT_IMPLEMENTED;
             break;
     }
+
+    /* Set the new guest CR3. */
+    pVCpu->pgm.s.GCPhysCR3 = GCPhysCR3;
 
     /* status codes. */
     AssertRC(rc);
