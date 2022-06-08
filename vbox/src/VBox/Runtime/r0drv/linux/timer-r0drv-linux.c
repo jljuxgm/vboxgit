@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 62566 2016-07-26 15:16:41Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 63341 2016-08-11 14:12:42Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -361,7 +361,13 @@ static void rtTimerLnxStartSubTimer(PRTTIMERLNXSUBTIMER pSubTimer, uint64_t u64N
         pSubTimer->u.Std.fFirstAfterChg = true;
 #ifdef CONFIG_SMP
         if (fPinned)
+        {
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
+            mod_timer(&pSubTimer->u.Std.LnxTimer, pSubTimer->u.Std.ulNextJiffies);
+# else
             mod_timer_pinned(&pSubTimer->u.Std.LnxTimer, pSubTimer->u.Std.ulNextJiffies);
+# endif
+        }
         else
 #endif
             mod_timer(&pSubTimer->u.Std.LnxTimer, pSubTimer->u.Std.ulNextJiffies);
@@ -796,7 +802,13 @@ static void rtTimerLinuxStdCallback(unsigned long ulUser)
         {
 #ifdef CONFIG_SMP
             if (pTimer->fSpecificCpu || pTimer->fAllCpus)
+            {
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
+                mod_timer(&pSubTimer->u.Std.LnxTimer, pSubTimer->u.Std.ulNextJiffies);
+# else
                 mod_timer_pinned(&pSubTimer->u.Std.LnxTimer, pSubTimer->u.Std.ulNextJiffies);
+# endif
+            }
             else
 #endif
                 mod_timer(&pSubTimer->u.Std.LnxTimer, pSubTimer->u.Std.ulNextJiffies);
@@ -853,7 +865,13 @@ static void rtTimerLinuxStdCallback(unsigned long ulUser)
 
 #ifdef CONFIG_SMP
                     if (pTimer->fSpecificCpu || pTimer->fAllCpus)
+                    {
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
+                        mod_timer(&pSubTimer->u.Std.LnxTimer, pSubTimer->u.Std.ulNextJiffies);
+# else
                         mod_timer_pinned(&pSubTimer->u.Std.LnxTimer, pSubTimer->u.Std.ulNextJiffies);
+# endif
+                    }
                     else
 #endif
                         mod_timer(&pSubTimer->u.Std.LnxTimer, pSubTimer->u.Std.ulNextJiffies);
@@ -1566,7 +1584,11 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_
         else
 #endif
         {
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
+            init_timer_pinned(&pTimer->aSubTimers[iCpu].u.Std.LnxTimer);
+#else
             init_timer(&pTimer->aSubTimers[iCpu].u.Std.LnxTimer);
+#endif
             pTimer->aSubTimers[iCpu].u.Std.LnxTimer.data        = (unsigned long)&pTimer->aSubTimers[iCpu];
             pTimer->aSubTimers[iCpu].u.Std.LnxTimer.function    = rtTimerLinuxStdCallback;
             pTimer->aSubTimers[iCpu].u.Std.LnxTimer.expires     = jiffies;
