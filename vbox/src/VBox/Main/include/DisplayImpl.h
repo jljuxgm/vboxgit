@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: DisplayImpl.h 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -503,6 +503,9 @@ private:
     VIDEORECCONTEXT *mpVideoRecCtx;
     bool maVideoRecEnabled[SchemaDefs::MaxGuestMonitors];
 #endif
+
+private:
+    DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(Display); /* Shuts up MSC warning C4625. */
 };
 
 /* The legacy VBVA helpers. */

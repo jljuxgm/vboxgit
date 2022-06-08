@@ -1,4 +1,4 @@
-/* $Id: Guid.h 62476 2016-07-22 18:23:50Z vboxsync $ */
+/* $Id: Guid.h 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Guid class declaration.
  */
@@ -323,7 +323,7 @@ public:
         if (mGuidState == GUID_INVALID)
         {
             /* What to return in case of wrong Guid */
-          return Bstr("00000000-0000-0000-0000-00000000000");
+            return Bstr("00000000-0000-0000-0000-00000000000");
         }
 
         RTUTF16 buf[RTUUID_STR_LENGTH];

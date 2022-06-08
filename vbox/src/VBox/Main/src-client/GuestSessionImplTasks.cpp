@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 60629 2016-04-21 14:01:33Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -343,7 +343,7 @@ int SessionTaskCopyTo::Run(void)
     /*
      * Query information about our destination first.
      */
-    int guestRc;
+    int guestRc = VERR_IPE_UNINITIALIZED_STATUS;
     if (RT_SUCCESS(rc))
     {
         GuestFsObjData objData;

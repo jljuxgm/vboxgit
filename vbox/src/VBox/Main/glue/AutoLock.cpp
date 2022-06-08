@@ -1,4 +1,4 @@
-/* $Id: AutoLock.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: AutoLock.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  * Automatic locks, implementation.
  */
@@ -126,11 +126,11 @@ void InitAutoLockSystem()
 bool AutoLockHoldsLocksInClass(VBoxLockingClass lockClass)
 {
 #ifdef VBOX_WITH_MAIN_LOCK_VALIDATION
-    return RTLockValidatorHoldsLocksInClass(NIL_RTTHREAD,
-                                            g_mapLockValidationClasses[lockClass]);
-#else /* !VBOX_WITH_MAIN_LOCK_VALIDATION */
+    return RTLockValidatorHoldsLocksInClass(NIL_RTTHREAD, g_mapLockValidationClasses[lockClass]);
+#else
+    RT_NOREF(lockClass);
     return false;
-#endif /* !VBOX_WITH_MAIN_LOCK_VALIDATION */
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -401,17 +401,15 @@ struct AutoLockBase::Data
 AutoLockBase::AutoLockBase(uint32_t cHandles
                            COMMA_LOCKVAL_SRC_POS_DECL)
 {
-    m = new Data(cHandles
-                 COMMA_LOCKVAL_SRC_POS_ARGS);
+    m = new Data(cHandles COMMA_LOCKVAL_SRC_POS_ARGS);
 }
 
 AutoLockBase::AutoLockBase(uint32_t cHandles,
                            LockHandle *pHandle
                            COMMA_LOCKVAL_SRC_POS_DECL)
 {
-    Assert(cHandles == 1);
-    m = new Data(1
-                 COMMA_LOCKVAL_SRC_POS_ARGS);
+    Assert(cHandles == 1); NOREF(cHandles);
+    m = new Data(1 COMMA_LOCKVAL_SRC_POS_ARGS);
     m->aHandles[0] = pHandle;
 }
 

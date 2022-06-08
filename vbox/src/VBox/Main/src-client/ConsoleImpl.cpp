@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 62379 2016-07-20 20:11:50Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -10049,9 +10049,10 @@ DECLCALLBACK(int) Console::i_powerDownThread(RTTHREAD Thread, void *pvUser)
         that->mControl->EndPoweringDown(S_OK, Bstr().raw());
 
     }
-    catch(const std::exception &e)
+    catch (const std::exception &e)
     {
         AssertMsgFailed(("Exception %s was cought, rc=%Rrc\n", e.what(), rc));
+        NOREF(e);
     }
 
     LogFlowFuncLeave();

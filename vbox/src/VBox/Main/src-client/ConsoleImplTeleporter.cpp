@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -1064,8 +1064,8 @@ HRESULT Console::i_teleporterTrg(PUVM pUVM, IMachine *pMachine, Utf8Str *pErrorM
     /*
      * Create the TCP server.
      */
-    int vrc;
-    PRTTCPSERVER hServer;
+    int vrc = VINF_SUCCESS; /* Shut up MSC */
+    PRTTCPSERVER hServer = NULL; /* ditto */
     if (uPort)
         vrc = RTTcpServerCreateEx(pszAddress, uPort, &hServer);
     else

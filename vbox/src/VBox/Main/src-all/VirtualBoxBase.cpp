@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
 
 /** @file
  *
@@ -252,9 +252,11 @@ HRESULT VirtualBoxBase::handleUnexpectedExceptions(VirtualBoxBase *const aThis, 
                                 true /* aLogIt */);
     }
 
+#ifndef _MSC_VER /* (unreachable) */
     /* should not get here */
     AssertFailed();
     return E_FAIL;
+#endif
 }
 
 /**

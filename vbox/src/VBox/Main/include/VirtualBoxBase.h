@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 61175 2016-05-24 17:29:33Z vboxsync $ */
+/* $Id: VirtualBoxBase.h 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -806,6 +806,9 @@ private:
 
     /** Slot of this object in the saFactoryStats array */
     uint32_t iFactoryStat;
+
+private:
+    DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(VirtualBoxBase); /* Shuts up MSC warning C4625. */
 };
 
 /** Structure for counting the currently existing and ever created objects

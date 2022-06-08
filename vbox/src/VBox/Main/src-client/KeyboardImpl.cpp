@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -233,7 +233,7 @@ HRESULT Keyboard::putScancodes(const std::vector<LONG> &aScancodes,
  */
 HRESULT Keyboard::putCAD()
 {
-    static std::vector<LONG> cadSequence;
+    std::vector<LONG> cadSequence;
     cadSequence.resize(8);
 
     cadSequence[0] = 0x1d; // Ctrl down

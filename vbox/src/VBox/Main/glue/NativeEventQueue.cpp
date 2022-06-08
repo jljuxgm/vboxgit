@@ -1,4 +1,4 @@
-/* $Id: NativeEventQueue.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: NativeEventQueue.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer:
  * Main event queue class declaration
@@ -545,7 +545,7 @@ int NativeEventQueue::processEventQueue(RTMSINTERVAL cMsTimeout)
 #else // !VBOX_WITH_XPCOM
     if (cMsTimeout == RT_INDEFINITE_WAIT)
     {
-        BOOL fRet;
+        BOOL fRet = 0; /* Shut up MSC */
         MSG  Msg;
         rc = VINF_SUCCESS;
         while (   rc != VERR_INTERRUPTED

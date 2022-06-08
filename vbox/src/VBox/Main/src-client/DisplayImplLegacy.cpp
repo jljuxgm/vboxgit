@@ -1,4 +1,4 @@
-/* $Id: DisplayImplLegacy.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: DisplayImplLegacy.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  * VirtualBox IDisplay implementation
  *
@@ -677,7 +677,7 @@ int Display::i_videoAccelFlush(PPDMIDISPLAYPORT pUpPort)
     for (;;)
     {
         VBVACMDHDR *phdr = NULL;
-        uint32_t cbCmd = ~0;
+        uint32_t cbCmd = UINT32_MAX;
 
         /* Fetch the command data. */
         if (!i_vbvaFetchCmd(pVideoAccel, &phdr, &cbCmd))

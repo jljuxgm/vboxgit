@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 62379 2016-07-20 20:11:50Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1525,7 +1525,7 @@ void Display::i_VideoAccelVRDP(bool fEnable)
 
         mfVideoAccelVRDP = true;
         /* Supporting all orders. */
-        mfu32SupportedOrders = ~0;
+        mfu32SupportedOrders = UINT32_MAX;
 
         i_vbvaSetMemoryFlags(pVideoAccel->pVbvaMemory, pVideoAccel->fVideoAccelEnabled, mfVideoAccelVRDP, mfu32SupportedOrders,
                              maFramebuffers, mcMonitors);

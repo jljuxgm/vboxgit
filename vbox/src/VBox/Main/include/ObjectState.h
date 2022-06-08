@@ -1,4 +1,4 @@
-/* $Id: ObjectState.h 59996 2016-03-11 15:27:55Z vboxsync $ */
+/* $Id: ObjectState.h 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  *
  * VirtualBox object state handling definitions
@@ -129,6 +129,9 @@ private:
 
     /** Protects access to state related data members */
     util::RWLockHandle mStateLock;
+
+private:
+    DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(ObjectState); /* Shuts up MSC warning C4625. */
 };
 
 #endif // !____H_OBJECTSTATE

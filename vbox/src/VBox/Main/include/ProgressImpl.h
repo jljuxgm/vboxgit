@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: ProgressImpl.h 63147 2016-08-08 11:12:33Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -216,6 +216,9 @@ private:
 
     RTSEMEVENTMULTI mCompletedSem;
     ULONG mWaitersCount;
+
+private:
+    DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(Progress); /* Shuts up MSC warning C4625. */
 };
 
 #endif /* ____H_PROGRESSIMPL */
