@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Cfg.cpp 64500 2016-11-01 09:07:45Z vboxsync $ */
+/* $Id: DBGFR3Cfg.cpp 64502 2016-11-01 09:14:29Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Control Flow Graph Interface (CFG).
  */
@@ -122,7 +122,7 @@ typedef struct DBGFCFGBBINT
     uint32_t                fFlags;
     /** Number of instructions in this basic block. */
     uint32_t                cInstr;
-    /** Maximum number of instruction records for this basic block..*/
+    /** Maximum number of instruction records for this basic block. */
     uint32_t                cInstrMax;
     /** Instruction records, variable in size. */
     DBGFCFGBBINSTR          aInstr[1];
@@ -779,7 +779,7 @@ VMMR3DECL(int) DBGFR3CfgCreate(PUVM pUVM, VMCPUID idCpu, PDBGFADDRESS pAddressSt
  * Retains the control flow graph handle.
  *
  * @returns Current reference count.
- * @parm    hCfg                The control flow graph handle to retain.
+ * @param   hCfg                The control flow graph handle to retain.
  */
 VMMR3DECL(uint32_t) DBGFR3CfgRetain(DBGFCFG hCfg)
 {
