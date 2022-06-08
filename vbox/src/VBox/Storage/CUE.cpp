@@ -1,4 +1,4 @@
-/* $Id: CUE.cpp 66143 2017-03-16 17:44:30Z vboxsync $ */
+/* $Id: CUE.cpp 66144 2017-03-16 18:01:31Z vboxsync $ */
 /** @file
  * CUE - CUE/BIN Disk image, Core Code.
  */
@@ -345,6 +345,7 @@ DECLINLINE(char) cueTokenizerGetCh(PCUETOKENIZER pTokenizer)
  *
  * @returns nothing.
  * @param   pTokenizer    The tokenizer state.
+ * @param   cSkip         How many characters to skip.
  */
 DECLINLINE(void) cueTokenizerNewLine(PCUETOKENIZER pTokenizer, unsigned cSkip)
 {
