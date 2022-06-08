@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: VBoxDrvInst.cpp 64227 2016-10-12 13:23:06Z vboxsync $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -96,6 +96,8 @@ fnDIFXAPISetLogCallback g_pfnDIFXAPISetLogCallback = NULL;
 #ifdef DEBUG
 # define VBOX_DRVINST_LOGFILE                 "C:\\Temp\\VBoxDrvInstDIFx.log"
 #endif
+
+/** @todo Get rid of all that TCHAR crap! Use WCHAR wherever possible. */
 
 bool GetErrorMsg(DWORD dwLastError, _TCHAR *pszMsg, DWORD dwBufSize)
 {
@@ -1213,11 +1215,15 @@ int __cdecl _tmain(int argc, _TCHAR *argv[])
             if (   !_tcsicmp(argv[2], _T("create"))
                 && argc >= 8)
             {
+                /* Make sure that the image path is in quotes. */
+                _TCHAR szImagePath[_MAX_PATH];
+                _sntprintf(szImagePath, sizeof(szImagePath) / sizeof(TCHAR), _T("\"%ws\""), argv[7]);
+
                 rc = CreateService(argv[3],
                                    argv[4],
                                    _ttoi(argv[5]),
                                    _ttoi(argv[6]),
-                                   argv[7],
+                                   szImagePath,
                                    (argc > 8) ? argv[8] : NULL,
                                    (argc > 9) ? argv[9] : NULL,
                                    (argc > 10) ? argv[10] : NULL,
