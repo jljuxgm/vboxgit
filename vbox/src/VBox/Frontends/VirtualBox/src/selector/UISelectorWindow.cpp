@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 63962 2016-09-22 18:02:33Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 64331 2016-10-20 12:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1059,6 +1059,17 @@ void UISelectorWindow::sltHandleSegmentedButtonSwitch(int iSegment)
         /* Raise the desktop pane with welcome text or error details: */
         m_pContainerDetails->setCurrentWidget(m_pPaneDesktop);
     }
+
+#ifdef VBOX_WS_MAC
+    // WORKAROUND:
+    // Qt 5.6.x has weird bug:
+    // When some cocoa widget being focused for a first time
+    // previously focused Qt widget being erased unless
+    // someone calls for it's update directly or
+    // indirectly (like with mouse hovering).
+    // Doing that directly for Chooser pane.
+    m_pPaneChooser->update();
+#endif
 }
 
 void UISelectorWindow::sltPerformSegmentedButtonSwitch(int iSegment)
