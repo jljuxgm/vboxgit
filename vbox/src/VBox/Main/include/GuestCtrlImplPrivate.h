@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 63154 2016-08-08 12:01:32Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 63161 2016-08-08 12:51:16Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -822,7 +822,7 @@ public:
     void Dump(const char *pszFile);
 #endif
 
-    uint32_t GetOffset() { return m_offBuffer; }
+    size_t GetOffset() { return m_offBuffer; }
 
     size_t GetSize() { return m_cbUsed; }
 
