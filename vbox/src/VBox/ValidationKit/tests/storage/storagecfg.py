@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 66531 2017-04-12 12:58:34Z vboxsync $
+# $Id: storagecfg.py 66580 2017-04-15 19:08:15Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66531 $"
+__version__ = "$Revision: 66580 $"
 
 # Standard Python imports.
 import os;
@@ -224,10 +224,10 @@ class StorageConfigOsSolaris(StorageConfigOs):
         """
         oDisk = None;
         sRamDiskName = 'ramdisk%u' % (self.idxRamDisk,);
-        fRc, sOut, _ = oExec.execBinary('ramdiskadm', ('-a', sRamDiskName, str(cbRamDisk)));
+        fRc, _ , _ = oExec.execBinary('ramdiskadm', ('-a', sRamDiskName, str(cbRamDisk)));
         if fRc:
             self.idxRamDisk += 1;
-            oDisk = StorageDisk(sOut.rstrip(), True);
+            oDisk = StorageDisk('/dev/ramdisk/%s' % (sRamDiskName, ), True);
 
         return oDisk;
 
