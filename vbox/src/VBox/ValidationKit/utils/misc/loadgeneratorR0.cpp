@@ -1,4 +1,4 @@
-/* $Id: loadgeneratorR0.cpp 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: loadgeneratorR0.cpp 64366 2016-10-22 16:36:39Z vboxsync $ */
 /** @file
  * Load Generator, Ring-0 Service.
  */
@@ -70,7 +70,7 @@ static int loadgenR0Ipi(uint64_t cIpis)
 /**
  * Service request handler entry point.
  *
- * @copydoc SUPR0SERVICEREQHANDLER
+ * @copydoc FNSUPR0SERVICEREQHANDLER
  */
 extern "C" DECLEXPORT(int) LoadGenR0ServiceReqHandler(PSUPDRVSESSION pSession, uint32_t uOperation,
                                                       uint64_t u64Arg, PSUPR0SERVICEREQHDR pReqHdr)

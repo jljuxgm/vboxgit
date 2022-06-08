@@ -1,4 +1,4 @@
-/* $Id: TestExecServiceTcp.cpp 62673 2016-07-29 11:04:35Z vboxsync $ */
+/* $Id: TestExecServiceTcp.cpp 64366 2016-10-22 16:36:39Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service, TCP/IP Transport Layer.
  */
@@ -346,7 +346,7 @@ static int txsTcpConnect(void)
 }
 
 /**
- * @interface_method_impl{TXSTRANSPORT,txsTcpNotifyReboot}
+ * @interface_method_impl{TXSTRANSPORT,pfnNotifyReboot}
  */
 static DECLCALLBACK(void) txsTcpNotifyReboot(void)
 {

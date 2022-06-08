@@ -1,4 +1,4 @@
-/* $Id: NetPerf.cpp 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: NetPerf.cpp 64366 2016-10-22 16:36:39Z vboxsync $ */
 /** @file
  * NetPerf - Network Performance Benchmark.
  */
@@ -718,6 +718,7 @@ static int netperfTCPThroughputRecv(NETPERFPARAMS const *pParams, NETPERFHDR *pB
  * Prints the statistics for the latency test.
  *
  * @param   pStats              The statistics.
+ * @param   cbPacket            The packet size in bytes.
  */
 static void netperfPrintLatencyStats(NETPERFSTATS const *pStats, uint32_t cbPacket)
 {
@@ -1703,7 +1704,8 @@ static int netperfTCPClient(const char *pszServer, NETPERFPARAMS *pParams)
  *
  * @returns Exit code.
  * @param   enmProto            The protocol.
- * @param   pParams             The parameter block.
+ * @param   pszServer           The server name.
+ * @param   pvUser              The parameter block as opaque user data.
  */
 static RTEXITCODE netperfClient(NETPERFPROTO enmProto, const char *pszServer, void *pvUser)
 {
@@ -1863,7 +1865,7 @@ int main(int argc, char *argv[])
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 62484 $\n");
+                RTPrintf("$Revision: 64366 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'w':
