@@ -1,4 +1,4 @@
-/* $Id: precomp.h 66593 2017-04-17 15:18:57Z vboxsync $*/
+/* $Id: precomp.h 66628 2017-04-20 13:57:05Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -591,7 +591,6 @@
 #endif
 #include "UIVMCloseDialog.h"
 #include "UIDesktopPane.h"
-#include "UIVMInfoDialog.h"
 #include "UIVMItem.h"
 #include "UIVMLogViewer.h"
 #include "UIVirtualBoxEventHandler.h"

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 64659 2016-11-14 14:19:26Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 66628 2017-04-20 13:57:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -56,7 +56,6 @@
 # include "UIMessageCenter.h"
 # include "UIPopupCenter.h"
 # include "VBoxTakeSnapshotDlg.h"
-# include "UIVMInfoDialog.h"
 # include "UISettingsDialogSpecific.h"
 # include "UIVMLogViewer.h"
 # include "UIConverter.h"
@@ -1603,11 +1602,7 @@ void UIMachineLogic::sltShowInformationDialog()
         return;
 
     /* Invoke VM information dialog: */
-#ifdef VBOX_WITH_REWORKED_SESSION_INFORMATION
     UIVMInformationDialog::invoke(mainMachineWindow());
-#else /* !VBOX_WITH_REWORKED_SESSION_INFORMATION */
-    UIVMInfoDialog::invoke(mainMachineWindow());
-#endif /* !VBOX_WITH_REWORKED_SESSION_INFORMATION */
 }
 
 void UIMachineLogic::sltReset()
