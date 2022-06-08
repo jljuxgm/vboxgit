@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: setup-routines.sh 61179 2016-05-24 20:08:17Z vboxsync $
+# $Id: setup-routines.sh 66784 2017-05-04 11:26:24Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup.
 #
@@ -57,6 +57,13 @@ os_install_service() {
     delrunlevel "testboxscript-service" > /dev/null 2>&1
     addrunlevel "testboxscript-service" 90 10
     set -e
+
+    #
+    # Work around a bug with arrays in old bash versions.
+    #
+    if [ ${#TESTBOXSCRIPT_ENVVARS[@]} -eq 0 ]; then
+        unset TESTBOXSCRIPT_ENVVARS
+    fi
 
     #
     # Install the configuration file.
