@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 66452 2017-04-06 08:57:11Z vboxsync $ */
+/* $Id: bs3kit.h 66454 2017-04-06 09:12:29Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -1499,6 +1499,25 @@ BS3_CMN_PROTO_STUB(const char BS3_FAR *, Bs3GetModeName,(uint8_t bMode));
  * @param   bMode       The mode value (BS3_MODE_XXX).
  */
 BS3_CMN_PROTO_STUB(const char BS3_FAR *, Bs3GetModeNameShortLower,(uint8_t bMode));
+
+/** CPU vendors. */
+typedef enum BS3CPUVENDOR
+{
+    BS3CPUVENDOR_INVALID = 0,
+    BS3CPUVENDOR_INTEL,
+    BS3CPUVENDOR_AMD,
+    BS3CPUVENDOR_VIA,
+    BS3CPUVENDOR_CYRIX,
+    BS3CPUVENDOR_UNKNOWN,
+    BS3CPUVENDOR_END
+} BS3CPUVENDOR;
+
+/**
+ * Tries to detect the CPU vendor.
+ *
+ * @returns CPU vendor.
+ */
+BS3_CMN_PROTO_STUB(BS3CPUVENDOR, Bs3GetCpuVendor,(void));
 
 /**
  * Shutdown the system, never returns.
@@ -3746,25 +3765,6 @@ BS3_MODE_PROTO_NOSB(uint8_t, Bs3CpuDetect,(void));
 
 /** The return value of #Bs3CpuDetect_mmm. (Initial value is BS3CPU_TYPE_MASK.) */
 extern uint16_t g_uBs3CpuDetected;
-
-/** CPU vendors. */
-typedef enum BS3CPUVENDOR
-{
-    BS3CPUVENDOR_INVALID = 0,
-    BS3CPUVENDOR_INTEL,
-    BS3CPUVENDOR_AMD,
-    BS3CPUVENDOR_VIA,
-    BS3CPUVENDOR_CYRIX,
-    BS3CPUVENDOR_UNKNOWN,
-    BS3CPUVENDOR_END
-} BS3CPUVENDOR;
-
-/**
- * Tries to detect the CPU vendor.
- *
- * @returns CPU vendor.
- */
-BS3_MODE_PROTO_STUB(BS3CPUVENDOR, Bs3GetCpuVendor,(void));
 
 /**
  * Call 32-bit prot mode C function.
