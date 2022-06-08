@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 62254 2016-07-14 13:30:47Z vboxsync $
+# $Id: tdStorageBenchmark1.py 62268 2016-07-15 08:50:52Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62254 $"
+__version__ = "$Revision: 62268 $"
 
 
 # Standard Python imports.
@@ -636,6 +636,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                 eStorageCtrl = vboxcon.StorageControllerType_LsiLogic;
             elif sStorageCtrl == 'BusLogic':
                 if sVmName == 'tst-storage': # Broken for 64bit Linux
+                    reporter.testDone(True);
                     continue;
                 eStorageCtrl = vboxcon.StorageControllerType_BusLogic;
             elif sStorageCtrl == 'NVMe':
