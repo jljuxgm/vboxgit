@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 63479 2016-08-15 14:15:14Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 65099 2017-01-04 12:05:31Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -121,7 +121,7 @@ VBoxDnDWnd::~VBoxDnDWnd(void)
  * Initializes the proxy window with a given DnD context.
  *
  * @return  IPRT status code.
- * @param   pContext                Pointer to context to use.
+ * @param   pCtx    Pointer to context to use.
  */
 int VBoxDnDWnd::Initialize(PVBOXDNDCONTEXT pCtx)
 {

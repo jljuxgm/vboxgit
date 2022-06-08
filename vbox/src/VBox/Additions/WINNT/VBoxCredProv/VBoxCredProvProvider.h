@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.h 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxCredProvProvider.h 65099 2017-01-04 12:05:31Z vboxsync $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -54,10 +54,10 @@ public:
                                       __out DWORD *pdwDefault,
                                       __out BOOL *pfAutoLogonWithDefault);
     IFACEMETHODIMP GetCredentialAt(DWORD dwIndex,
-                                   __out ICredentialProviderCredential **ppcpc);
+                                   __out ICredentialProviderCredential **ppCredProvCredential);
     /** @} */
 
-    friend HRESULT VBoxCredProvProviderCreate(REFIID riid, __deref_out void **ppv);
+    friend HRESULT VBoxCredProvProviderCreate(REFIID riid, __deref_out void **ppvInterface);
 
 protected:
 

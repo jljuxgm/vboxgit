@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvFactory.h 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxCredProvFactory.h 65099 2017-01-04 12:05:31Z vboxsync $ */
 /** @file
  * VBoxCredentialProvFactory - The VirtualBox Credential Provider Factory.
  */
@@ -46,7 +46,7 @@ public:
 
 private:
     LONG m_cRefs;
-    friend HRESULT VBoxCredentialProviderCreate(REFCLSID classID, REFIID interfaceID, void **ppv);
+    friend HRESULT VBoxCredentialProviderCreate(REFCLSID classID, REFIID interfaceID, void **ppvInterface);
 };
 #endif /* !___VBOX_CREDPROV_FACTORY_H___ */
 
