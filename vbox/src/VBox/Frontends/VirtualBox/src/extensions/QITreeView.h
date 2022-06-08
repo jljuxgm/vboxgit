@@ -1,4 +1,4 @@
-/* $Id: QITreeView.h 64488 2016-10-31 14:08:07Z vboxsync $ */
+/* $Id: QITreeView.h 64540 2016-11-03 16:50:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeView class declaration.
  */
@@ -98,7 +98,7 @@ signals:
 
 public:
 
-    /** Constructs table-view passing @a pParent to the base-class. */
+    /** Constructs tree-view passing @a pParent to the base-class. */
     QITreeView(QWidget *pParent = 0);
 
     /** Returns the number of children. */

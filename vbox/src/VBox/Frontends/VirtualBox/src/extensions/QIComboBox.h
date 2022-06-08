@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 64538 2016-11-03 16:24:26Z vboxsync $ */
+/* $Id: QIComboBox.h 64540 2016-11-03 16:50:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -66,6 +66,8 @@ public:
 
     /** Returns the embedded line-editor reference. */
     QLineEdit *lineEdit() const;
+    /** Returns the embedded list-view reference. */
+    QAbstractItemView *view() const;
 
     /** Returns the size of the icons shown in the combo-box. */
     QSize iconSize() const;
