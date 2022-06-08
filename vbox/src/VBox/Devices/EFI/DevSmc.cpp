@@ -1,6 +1,6 @@
-/* $Id: DevSmc.cpp 63459 2016-08-15 07:51:18Z vboxsync $ */
+/* $Id: DevSmc.cpp 64805 2016-12-08 08:59:14Z vboxsync $ */
 /** @file
- * DevSmc - Apple System Manaagement Controller.
+ * DevSmc - Apple System Management Controller.
  *
  * The SMC is controlling power, fans, take measurements (voltage, temperature,
  * fan speed, ++), and lock Mac OS X to Apple hardware.  For more details see:
