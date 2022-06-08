@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 66290 2017-03-28 11:19:04Z vboxsync $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 66343 2017-03-29 17:05:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
@@ -207,14 +207,17 @@ void UIGlobalSettingsDisplay::prepare()
     AssertPtrReturnVoid(m_pCache);
 
     /* Layout/widgets created in the .ui file. */
+    AssertPtrReturnVoid(m_pResolutionWidthSpin);
+    AssertPtrReturnVoid(m_pResolutionHeightSpin);
+    AssertPtrReturnVoid(m_pMaxResolutionCombo);
     {
-        /* Prepare widgets: */
+        /* Configure widgets: */
         const int iMinWidth = 640;
         const int iMinHeight = 480;
         const int iMaxSize = 16 * _1K;
         m_pResolutionWidthSpin->setMinimum(iMinWidth);
-        m_pResolutionHeightSpin->setMinimum(iMinHeight);
         m_pResolutionWidthSpin->setMaximum(iMaxSize);
+        m_pResolutionHeightSpin->setMinimum(iMinHeight);
         m_pResolutionHeightSpin->setMaximum(iMaxSize);
         connect(m_pMaxResolutionCombo, SIGNAL(currentIndexChanged(int)),
                 this, SLOT(sltHandleMaximumGuestScreenSizePolicyChange()));

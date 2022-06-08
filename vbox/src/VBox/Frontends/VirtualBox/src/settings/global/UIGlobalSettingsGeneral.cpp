@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 66290 2017-03-28 11:19:04Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 66343 2017-03-29 17:05:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
@@ -162,13 +162,17 @@ void UIGlobalSettingsGeneral::prepare()
     AssertPtrReturnVoid(m_pCache);
 
     /* Layout/widgets created in the .ui file. */
+    AssertPtrReturnVoid(m_pLabelHostScreenSaver);
+    AssertPtrReturnVoid(m_pCheckBoxHostScreenSaver);
+    AssertPtrReturnVoid(m_pSelectorMachineFolder);
+    AssertPtrReturnVoid(m_pSelectorVRDPLibName);
     {
-        /* Prepare host screen-saver check-box: */
+        /* Configure host screen-saver check-box: */
         // Hide checkbox for now.
         m_pLabelHostScreenSaver->hide();
         m_pCheckBoxHostScreenSaver->hide();
 
-        /* Prepare other widgets: */
+        /* Configure other widgets: */
         m_pSelectorMachineFolder->setHomeDir(vboxGlobal().homeFolder());
         m_pSelectorVRDPLibName->setHomeDir(vboxGlobal().homeFolder());
         m_pSelectorVRDPLibName->setMode(UIFilePathSelector::Mode_File_Open);
