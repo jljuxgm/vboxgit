@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 66663 2017-04-24 18:42:10Z vboxsync $ */
+/* $Id: tstVDIo.cpp 66666 2017-04-24 18:50:43Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -2919,6 +2919,7 @@ static void tstVDIoRunBuiltinTests(void)
 
         AssertPtr(pszScript);
         tstVDIoScriptExec(g_aVDIoTests[i].pszName, pszScript);
+        RTStrFree(pszScript);
     }
 #endif
 }
