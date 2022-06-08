@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 61506 2016-06-06 19:39:26Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 61636 2016-06-09 18:46:31Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -1019,6 +1019,7 @@ IEM_CIMPL_DEF_4(iemCImpl_BranchTaskGate, uint16_t, uSel, IEMBRANCH, enmBranch, I
  */
 IEM_CIMPL_DEF_4(iemCImpl_BranchCallGate, uint16_t, uSel, IEMBRANCH, enmBranch, IEMMODE, enmEffOpSize, PIEMSELDESC, pDesc)
 {
+#define IEM_IMPLEMENTS_CALLGATE
 #ifndef IEM_IMPLEMENTS_CALLGATE
     IEM_RETURN_ASPECT_NOT_IMPLEMENTED();
 #else
@@ -1203,7 +1204,7 @@ IEM_CIMPL_DEF_4(iemCImpl_BranchCallGate, uint16_t, uSel, IEMBRANCH, enmBranch, I
         Assert(enmBranch == IEMBRANCH_CALL);
         /* Calls are much more complicated. */
 
-        if (DescCS.Legacy.Gen.u2Dpl < pIemCpu->uCpl)
+        if (!(DescCS.Legacy.Gen.u4Type & X86_SEL_TYPE_CONF) && (DescCS.Legacy.Gen.u2Dpl < pIemCpu->uCpl))
         {
             uint16_t    offNewStack;    /* Offset of new stack in TSS. */
             uint16_t    cbNewStack;     /* Number of bytes the stack information takes up in TSS. */
@@ -1227,7 +1228,7 @@ IEM_CIMPL_DEF_4(iemCImpl_BranchCallGate, uint16_t, uSel, IEMBRANCH, enmBranch, I
             Assert(!pCtx->tr.Attr.n.u1DescType);
 
             /* Figure out where the new stack pointer is stored in the TSS. */
-            uNewCSDpl = uNewCS & X86_SEL_RPL;
+            uNewCSDpl = DescCS.Legacy.Gen.u2Dpl;
             if (!IEM_IS_LONG_MODE(pIemCpu))
             {
                 if (pCtx->tr.Attr.n.u4Type == X86_SEL_TYPE_SYS_386_TSS_BUSY)
