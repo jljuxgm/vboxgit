@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIXPCOM.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: tstVBoxAPIXPCOM.cpp 62875 2016-08-02 14:43:32Z vboxsync $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox
@@ -432,7 +432,7 @@ void createVM(IVirtualBox *virtualBox)
 // main
 ///////////////////////////////////////////////////////////////////////////////
 
-int main(int argc, char *argv[])
+int main()
 {
     /*
      * Check that PRUnichar is equal in size to what compiler composes L""

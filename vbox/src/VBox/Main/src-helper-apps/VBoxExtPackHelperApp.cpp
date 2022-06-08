@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 62780 2016-07-31 22:48:58Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 62875 2016-08-02 14:43:32Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1418,6 +1418,8 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, const char **p
         RTMsgError("AuthorizationCreate failed: %d", orc);
 
 #else
+
+    RT_NOREF2(pszExecPath, pszDisplayInfoHack);
 
     /*
      * Several of the alternatives below will require a command line.
