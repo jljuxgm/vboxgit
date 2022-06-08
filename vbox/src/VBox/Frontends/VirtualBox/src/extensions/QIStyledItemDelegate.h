@@ -1,4 +1,4 @@
-/* $Id: QIStyledItemDelegate.h 64162 2016-10-06 12:29:30Z vboxsync $ */
+/* $Id: QIStyledItemDelegate.h 64163 2016-10-06 13:59:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIStyledItemDelegate class declaration.
  */
@@ -28,6 +28,9 @@ class QIStyledItemDelegate : public QStyledItemDelegate
     Q_OBJECT;
 
 signals:
+
+    /** Notifies listeners about @a pEditor created for particular model @a index. */
+    void sigEditorCreated(QWidget *pEditor, const QModelIndex &index) const;
 
     /** Notifies listeners about editor's Enter key triggering. */
     void sigEditorEnterKeyTriggered();
@@ -62,6 +65,9 @@ protected:
         /* Watch for editor Enter key triggering, redirect to listeners: */
         if (m_fWatchForEditorEnterKeyTriggering)
             connect(pEditor, SIGNAL(sigEnterKeyTriggered()), this, SIGNAL(sigEditorEnterKeyTriggered()));
+
+        /* Notify listeners about editor created: */
+        emit sigEditorCreated(pEditor, index);
 
         /* Return actual editor: */
         return pEditor;
