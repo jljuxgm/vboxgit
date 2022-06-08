@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 64690 2016-11-17 14:31:31Z vboxsync $ */
+/* $Id: VBoxDbgConsole.cpp 64721 2016-11-20 02:02:27Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -832,9 +832,21 @@ VBoxDbgConsole::keyReleaseEvent(QKeyEvent *pEvent)
                 commandSubmitted("g");
             break;
 
+        case Qt::Key_F8:
+            if (pEvent->modifiers() == 0)
+                commandSubmitted("t");
+            break;
+
+        case Qt::Key_F10:
+            if (pEvent->modifiers() == 0)
+                commandSubmitted("p");
+            break;
+
         case Qt::Key_F11:
             if (pEvent->modifiers() == 0)
                 commandSubmitted("t");
+            else if (pEvent->modifiers() == Qt::ShiftModifier)
+                commandSubmitted("gu");
             break;
 
         case Qt::Key_Cancel: /* == break */
