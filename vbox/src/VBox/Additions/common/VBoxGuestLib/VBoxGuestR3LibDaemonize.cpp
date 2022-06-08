@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibDaemonize.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/** $Id: VBoxGuestR3LibDaemonize.cpp 62882 2016-08-02 15:31:02Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, daemonize a process.
  */
@@ -199,7 +199,10 @@ VBGLR3DECL(int) VbglR3Daemonize(bool fNoChDir, bool fNoClose, bool fRespawn, uns
     }
 
     if (!fNoChDir)
-        chdir("/");
+    {
+        int rcShutUpGcc = chdir("/");
+        RT_NOREF_PV(rcShutUpGcc);
+    }
 
     /*
      * Change the umask - this is non-standard daemon() behavior.

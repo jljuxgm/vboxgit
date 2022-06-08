@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 62882 2016-08-02 15:31:02Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -321,7 +321,7 @@ static int vbsvcAutoMountSharedFolder(const char *pszShareName, const char *pszM
 #elif defined(RT_OS_LINUX)
         unsigned long fFlags = MS_NODEV;
 
-        const char *szOptions = { "rw" };
+        /*const char *szOptions = { "rw" }; - ??? */
         struct vbsf_mount_info_new mntinf;
 
         mntinf.nullchar     = '\0';

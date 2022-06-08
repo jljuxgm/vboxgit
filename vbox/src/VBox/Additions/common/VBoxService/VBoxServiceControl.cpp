@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 62882 2016-08-02 15:31:02Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -77,10 +77,12 @@ static RTSEMEVENTMULTI      g_hControlEvent = NIL_RTSEMEVENTMULTI;
 static uint64_t             g_idControlSession;
 /** The guest control service client ID. */
 static uint32_t             g_uControlSvcClientID = 0;
+#if 0 /** @todo process limit */
 /** How many started guest processes are kept into memory for supplying
  *  information to the host. Default is 256 processes. If 0 is specified,
  *  the maximum number of processes is unlimited. */
 static uint32_t             g_uControlProcsMaxKept = 256;
+#endif
 /** List of guest control session threads (VBOXSERVICECTRLSESSIONTHREAD).
  *  A guest session thread represents a forked guest session process
  *  of VBoxService.  */

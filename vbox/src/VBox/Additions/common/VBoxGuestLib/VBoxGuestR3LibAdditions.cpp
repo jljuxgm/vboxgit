@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibAdditions.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuestR3LibAdditions.cpp 62882 2016-08-02 15:31:02Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Additions Info.
  */
@@ -316,6 +316,7 @@ VBGLR3DECL(int) VbglR3GetAdditionsInstallationPath(char **ppszPath)
 #else
     /** @todo implement me */
     rc = VERR_NOT_IMPLEMENTED;
+    RT_NOREF1(ppszPath);
 #endif
     return rc;
 }
