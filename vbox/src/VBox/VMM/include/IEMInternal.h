@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 66314 2017-03-28 21:28:34Z vboxsync $ */
+/* $Id: IEMInternal.h 66321 2017-03-29 07:30:33Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1551,6 +1551,7 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_pmovmskb_u128,(PCX86FXSTATE pFpuState, uint64_t
 /** @name Media (SSE/MMX/AVX) operation: Sort this later
  * @{ */
 IEM_DECL_IMPL_DEF(void, iemAImpl_movsldup,(PCX86FXSTATE pFpuState, PRTUINT128U puDst, PCRTUINT128U puSrc));
+IEM_DECL_IMPL_DEF(void, iemAImpl_movddup,(PCX86FXSTATE pFpuState, PRTUINT128U puDst, uint64_t uSrc));
 /** @} */
 
 
