@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 65717 2017-02-09 17:04:44Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -1445,6 +1445,8 @@ VMMR3DECL(void) PDMR3BlkCacheRelease(PPDMBLKCACHE pBlkCache)
 
     pdmBlkCacheLockLeave(pCache);
 
+    RTMemFree(pBlkCache->pTree);
+    pBlkCache->pTree = NULL;
     RTSemRWDestroy(pBlkCache->SemRWEntries);
 
 #ifdef VBOX_WITH_STATISTICS
