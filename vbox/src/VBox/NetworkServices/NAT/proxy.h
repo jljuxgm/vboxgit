@@ -1,4 +1,4 @@
-/* $Id: proxy.h 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: proxy.h 63280 2016-08-10 14:41:47Z vboxsync $ */
 /** @file
  * NAT Network - common definitions and declarations.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef _nat_proxy_h_
-#define _nat_proxy_h_
+#ifndef ___nat_proxy_h___
+#define ___nat_proxy_h___
 
 #if !defined(VBOX)
 #include "vbox-compat.h"
@@ -114,4 +114,5 @@ err_t pxping_init(struct netif *, SOCKET, SOCKET);
 #define DPRINTF1(a) Log2(a)
 #define DPRINTF2(a) Log3(a)
 
-#endif /* _nat_proxy_h_ */
+#endif /* !___nat_proxy_h___ */
+

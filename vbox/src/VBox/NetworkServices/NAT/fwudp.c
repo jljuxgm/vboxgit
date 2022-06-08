@@ -1,4 +1,4 @@
-/* $Id: fwudp.c 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: fwudp.c 63280 2016-08-10 14:41:47Z vboxsync $ */
 /** @file
  * NAT Network - UDP port-forwarding.
  */
@@ -278,8 +278,13 @@ fwudp_pmgr_pump(struct pollmgr_handler *handler, SOCKET fd, int revents)
     LWIP_UNUSED_ARG(fd);
     LWIP_UNUSED_ARG(revents);
 
+#ifdef RT_OS_WINDOWS
+    nread = recvfrom(fwudp->sock, (char *)pollmgr_udpbuf, sizeof(pollmgr_udpbuf), 0,
+                     (struct sockaddr *)&ss, &sslen);
+#else
     nread = recvfrom(fwudp->sock, pollmgr_udpbuf, sizeof(pollmgr_udpbuf), 0,
                      (struct sockaddr *)&ss, &sslen);
+#endif
     if (nread < 0) {
         DPRINTF(("%s: %R[sockerr]\n", __func__, SOCKERRNO()));
         return POLLIN;
