@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 64824 2016-12-09 17:06:19Z vboxsync $ */
+/* $Id: TRPM.cpp 64828 2016-12-11 09:59:51Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -1620,7 +1620,7 @@ static DECLCALLBACK(void) trpmR3InfoEvent(PVM pVM, PCDBGFINFOHLP pHlp, const cha
             "Hardware Int",
             "Software Int"
         };
-        if (RT_LIKELY(enmTrapEvent < RT_ELEMENTS(s_apszTrpmEventType)))
+        if (RT_LIKELY((size_t)enmTrapEvent < RT_ELEMENTS(s_apszTrpmEventType)))
         {
             pHlp->pfnPrintf(pHlp, " Type       = %s\n", s_apszTrpmEventType[enmTrapEvent]);
             pHlp->pfnPrintf(pHlp, " uVector    = %#x\n", uVector);
