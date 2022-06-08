@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 65794 2017-02-15 20:39:16Z vboxsync $ */
+/* $Id: EM.cpp 66227 2017-03-23 14:50:07Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1960,8 +1960,9 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
 #else
             &&  (pVCpu->em.s.pCtx->eflags.u32 & X86_EFL_IF)
 #endif
-            &&  !HMR3IsEventPending(pVCpu))
+            /** @todo Ask CPUM about nested hw.virt interrupt pending */)
         {
+            Assert(!HMR3IsEventPending(pVCpu));
             Assert(pVCpu->em.s.enmState != EMSTATE_WAIT_SIPI);
             if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC))
             {

@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 66227 2017-03-23 14:50:07Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -434,6 +434,7 @@ DECLINLINE(uint64_t) tmCpuTickGetInternal(PVMCPU pVCpu, bool fCheckTimers)
     }
     else
         u64 = pVCpu->tm.s.u64TSC;
+    /** @todo @bugref{7243}: SVM TSC offset. */
     return u64;
 }
 
