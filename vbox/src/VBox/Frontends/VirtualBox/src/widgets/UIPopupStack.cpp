@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIPopupStack.cpp 63315 2016-08-11 10:17:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class implementation.
  */
@@ -270,6 +270,7 @@ bool UIPopupStack::eventFilter(QObject *pWatched, QEvent *pEvent)
             sltAdjustGeometry();
             break;
         }
+        default: break; /* Shuts up MSC.  */
     }
 
     /* Call to base-class: */

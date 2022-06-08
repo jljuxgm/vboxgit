@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMediumManager.h 63315 2016-08-11 10:17:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -42,6 +42,8 @@ class QIDialogButtonBox;
 class CheckIfSuitableBy
 {
 public:
+    virtual ~CheckIfSuitableBy() { /* Makes MSC happy. */ }
+
     /** Determines whether passed @a pItem is suitable. */
     virtual bool isItSuitable(UIMediumItem *pItem) const = 0;
 };

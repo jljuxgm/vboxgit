@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UISettingsDefs.h 63315 2016-08-11 10:17:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */
@@ -55,6 +55,8 @@ public:
 
     /* Creates empty cache item: */
     UISettingsCache() { m_value = qMakePair(CacheData(), CacheData()); }
+
+    virtual ~UISettingsCache() { /* Makes MSC happy */ }
 
     /* Returns the NON-modifiable REFERENCE to the initial cached data: */
     const CacheData& base() const { return m_value.first; }
