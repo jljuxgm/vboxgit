@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 61683 2016-06-13 15:11:12Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 61688 2016-06-14 07:35:59Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4668,7 +4668,8 @@ HMSVM_EXIT_DECL hmR0SvmExitMsr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTr
                 HMSVM_CHECK_SINGLE_STEP(pVCpu, rc);
             }
             else
-                AssertMsg(rc == VERR_EM_INTERPRETER, ("hmR0SvmExitMsr: EMInterpretWrmsr failed rc=%Rrc\n", rc));
+                AssertMsg(   rc == VERR_EM_INTERPRETER
+                          || rc == VINF_CPUM_R3_MSR_WRITE, ("hmR0SvmExitMsr: EMInterpretWrmsr failed rc=%Rrc\n", rc));
         }
         else
         {
@@ -4714,13 +4715,17 @@ HMSVM_EXIT_DECL hmR0SvmExitMsr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTr
                 HMSVM_CHECK_SINGLE_STEP(pVCpu, rc);
             }
             else
-                AssertMsg(rc == VERR_EM_INTERPRETER, ("hmR0SvmExitMsr: EMInterpretRdmsr failed rc=%Rrc\n", rc));
+                AssertMsg(   rc == VERR_EM_INTERPRETER
+                          || rc == VINF_CPUM_R3_MSR_READ, ("hmR0SvmExitMsr: EMInterpretRdmsr failed rc=%Rrc\n", rc));
         }
         else
         {
             rc = VBOXSTRICTRC_TODO(EMInterpretInstruction(pVCpu, CPUMCTX2CORE(pCtx), 0));
             if (RT_UNLIKELY(rc != VINF_SUCCESS))
-                AssertMsg(rc == VERR_EM_INTERPRETER, ("hmR0SvmExitMsr: RdMsr. EMInterpretInstruction failed rc=%Rrc\n", rc));
+            {
+                AssertMsg(   rc == VERR_EM_INTERPRETER
+                          || rc == VINF_CPUM_R3_MSR_READ, ("hmR0SvmExitMsr: RdMsr. EMInterpretInstruction failed rc=%Rrc\n", rc));
+            }
             /* RIP updated by EMInterpretInstruction(). */
             HMSVM_CHECK_SINGLE_STEP(pVCpu, rc);
         }
