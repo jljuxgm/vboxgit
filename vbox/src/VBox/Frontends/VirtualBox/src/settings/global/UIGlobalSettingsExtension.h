@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.h 66190 2017-03-22 10:07:31Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.h 66219 2017-03-23 12:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class declaration.
  */
@@ -29,7 +29,8 @@ typedef UISettingsCache<UIDataSettingsGlobalExtension> UISettingsCacheGlobalExte
 
 
 /** Global settings: Extension page. */
-class UIGlobalSettingsExtension : public UISettingsPageGlobal, public Ui::UIGlobalSettingsExtension
+class UIGlobalSettingsExtension : public UISettingsPageGlobal,
+                                  public Ui::UIGlobalSettingsExtension
 {
     Q_OBJECT;
 
@@ -57,9 +58,6 @@ protected:
     /** Saves data from the cache to corresponding external object(s),
       * this task COULD be performed in other than the GUI thread. */
     virtual void saveFromCacheTo(QVariant &data) /* overrride */;
-
-    /** Defines TAB order. */
-    virtual void setOrderAfter(QWidget *pWidget) /* override */;
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;

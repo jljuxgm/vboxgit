@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.h 66190 2017-03-22 10:07:31Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.h 66219 2017-03-23 12:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class declaration.
  */
@@ -29,7 +29,8 @@ typedef UISettingsCache<UIDataSettingsGlobalUpdate> UISettingsCacheGlobalUpdate;
 
 
 /** Global settings: Update page. */
-class UIGlobalSettingsUpdate : public UISettingsPageGlobal, public Ui::UIGlobalSettingsUpdate
+class UIGlobalSettingsUpdate : public UISettingsPageGlobal,
+                               public Ui::UIGlobalSettingsUpdate
 {
     Q_OBJECT;
 

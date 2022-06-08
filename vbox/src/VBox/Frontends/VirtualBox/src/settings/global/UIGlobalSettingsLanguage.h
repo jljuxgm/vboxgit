@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.h 66190 2017-03-22 10:07:31Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.h 66219 2017-03-23 12:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class declaration.
  */
@@ -28,7 +28,8 @@ typedef UISettingsCache<UIDataSettingsGlobalLanguage> UISettingsCacheGlobalLangu
 
 
 /** Global settings: Language page. */
-class UIGlobalSettingsLanguage : public UISettingsPageGlobal, public Ui::UIGlobalSettingsLanguage
+class UIGlobalSettingsLanguage : public UISettingsPageGlobal,
+                                 public Ui::UIGlobalSettingsLanguage
 {
     Q_OBJECT;
 
@@ -54,9 +55,6 @@ protected:
     /** Saves data from the cache to corresponding external object(s),
       * this task COULD be performed in other than the GUI thread. */
     virtual void saveFromCacheTo(QVariant &data) /* overrride */;
-
-    /** Defines TAB order. */
-    virtual void setOrderAfter(QWidget *pWidget) /* override */;
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;

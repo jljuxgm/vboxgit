@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.h 66190 2017-03-22 10:07:31Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.h 66219 2017-03-23 12:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class declaration.
  */
@@ -29,7 +29,8 @@ typedef UISettingsCache<UIDataSettingsGlobalProxy> UISettingsCacheGlobalProxy;
 
 
 /** Global settings: Proxy page. */
-class UIGlobalSettingsProxy : public UISettingsPageGlobal, public Ui::UIGlobalSettingsProxy
+class UIGlobalSettingsProxy : public UISettingsPageGlobal,
+                              public Ui::UIGlobalSettingsProxy
 {
     Q_OBJECT;
 
@@ -58,9 +59,6 @@ protected:
 
     /** Performs validation, updates @a messages list if something is wrong. */
     virtual bool validate(QList<UIValidationMessage> &messages) /* override */;
-
-    /** Defines TAB order. */
-    virtual void setOrderAfter(QWidget *pWidget) /* override */;
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;

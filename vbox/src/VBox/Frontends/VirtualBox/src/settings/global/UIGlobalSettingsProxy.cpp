@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 66169 2017-03-20 14:18:54Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 66219 2017-03-23 12:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -206,16 +206,6 @@ bool UIGlobalSettingsProxy::validate(QList<UIValidationMessage> &messages)
 
     /* Return result: */
     return fPass;
-}
-
-void UIGlobalSettingsProxy::setOrderAfter(QWidget *pWidget)
-{
-    /* Configure navigation: */
-    setTabOrder(pWidget, m_pRadioProxyAuto);
-    setTabOrder(m_pRadioProxyAuto, m_pRadioProxyDisabled);
-    setTabOrder(m_pRadioProxyDisabled, m_pRadioProxyEnabled);
-    setTabOrder(m_pRadioProxyEnabled, m_pHostEditor);
-    setTabOrder(m_pHostEditor, m_pPortEditor);
 }
 
 void UIGlobalSettingsProxy::retranslateUi()

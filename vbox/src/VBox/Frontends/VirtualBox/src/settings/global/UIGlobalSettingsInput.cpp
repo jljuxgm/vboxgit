@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 65701 2017-02-09 14:54:41Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 66219 2017-03-23 12:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -20,20 +20,20 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QHeaderView>
 # include <QAbstractItemDelegate>
+# include <QHeaderView>
 # include <QItemEditorFactory>
 # include <QTabWidget>
 
 /* GUI includes: */
-# include "QIWidgetValidator.h"
 # include "QIStyledItemDelegate.h"
 # include "QITableView.h"
+# include "QIWidgetValidator.h"
 # include "UIActionPool.h"
 # include "UIGlobalSettingsInput.h"
-# include "UIShortcutPool.h"
-# include "UIHotKeyEditor.h"
 # include "UIHostComboEditor.h"
+# include "UIHotKeyEditor.h"
+# include "UIShortcutPool.h"
 # include "VBoxGlobalSettings.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -922,7 +922,8 @@ UIGlobalSettingsInput::UIGlobalSettingsInput()
         m_pTabWidget->setCurrentWidget(pMachineTab);
 
     /* Prepare validation: */
-    prepareValidation();
+    connect(m_pSelectorModel, SIGNAL(sigRevalidationRequired()), this, SLOT(revalidate()));
+    connect(m_pMachineModel, SIGNAL(sigRevalidationRequired()), this, SLOT(revalidate()));
 
     /* Apply language settings: */
     retranslateUi();
@@ -1080,13 +1081,6 @@ void UIGlobalSettingsInput::retranslateUi()
     m_pMachineTable->setWhatsThis(tr("Lists all available shortcuts which can be configured."));
     m_pSelectorFilterEditor->setWhatsThis(tr("Holds a sequence to filter the shortcut list."));
     m_pMachineFilterEditor->setWhatsThis(tr("Holds a sequence to filter the shortcut list."));
-}
-
-void UIGlobalSettingsInput::prepareValidation()
-{
-    /* Prepare validation: */
-    connect(m_pSelectorModel, SIGNAL(sigRevalidationRequired()), this, SLOT(revalidate()));
-    connect(m_pMachineModel, SIGNAL(sigRevalidationRequired()), this, SLOT(revalidate()));
 }
 
 # include "UIGlobalSettingsInput.moc"

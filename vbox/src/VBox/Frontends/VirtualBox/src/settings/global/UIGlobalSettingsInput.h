@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 66190 2017-03-22 10:07:31Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.h 66219 2017-03-23 12:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -23,16 +23,17 @@
 #include "UIGlobalSettingsInput.gen.h"
 
 /* Forward declartions: */
-class QTabWidget;
 class QLineEdit;
+class QTabWidget;
 class UIDataSettingsGlobalInput;
-class UIHotKeyTableModel;
 class UIHotKeyTable;
+class UIHotKeyTableModel;
 typedef UISettingsCache<UIDataSettingsGlobalInput> UISettingsCacheGlobalInput;
 
 
 /** Global settings: Input page. */
-class UIGlobalSettingsInput : public UISettingsPageGlobal, public Ui::UIGlobalSettingsInput
+class UIGlobalSettingsInput : public UISettingsPageGlobal,
+                              public Ui::UIGlobalSettingsInput
 {
     Q_OBJECT;
 
@@ -77,16 +78,13 @@ protected:
 
 private:
 
-    /* Helper: Prepare stuff: */
-    void prepareValidation();
-
-    QTabWidget *m_pTabWidget;
-    QLineEdit *m_pSelectorFilterEditor;
+    QTabWidget         *m_pTabWidget;
+    QLineEdit          *m_pSelectorFilterEditor;
     UIHotKeyTableModel *m_pSelectorModel;
-    UIHotKeyTable *m_pSelectorTable;
-    QLineEdit *m_pMachineFilterEditor;
+    UIHotKeyTable      *m_pSelectorTable;
+    QLineEdit          *m_pMachineFilterEditor;
     UIHotKeyTableModel *m_pMachineModel;
-    UIHotKeyTable *m_pMachineTable;
+    UIHotKeyTable      *m_pMachineTable;
 
     /** Holds the page data cache instance. */
     UISettingsCacheGlobalInput *m_pCache;

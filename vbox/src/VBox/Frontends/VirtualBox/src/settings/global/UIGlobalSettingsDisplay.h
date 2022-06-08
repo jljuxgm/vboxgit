@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.h 66190 2017-03-22 10:07:31Z vboxsync $ */
+/* $Id: UIGlobalSettingsDisplay.h 66219 2017-03-23 12:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class declaration.
  */
@@ -28,7 +28,8 @@ typedef UISettingsCache<UIDataSettingsGlobalDisplay> UISettingsCacheGlobalDispla
 
 
 /** Global settings: Display page. */
-class UIGlobalSettingsDisplay : public UISettingsPageGlobal, public Ui::UIGlobalSettingsDisplay
+class UIGlobalSettingsDisplay : public UISettingsPageGlobal,
+                                public Ui::UIGlobalSettingsDisplay
 {
     Q_OBJECT;
 
@@ -55,13 +56,10 @@ protected:
       * this task COULD be performed in other than the GUI thread. */
     virtual void saveFromCacheTo(QVariant &data) /* overrride */;
 
-    /** Defines TAB order. */
-    virtual void setOrderAfter(QWidget *pWidget) /* override */;
-
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
 
-protected slots:
+private slots:
 
     /* Handler: Resolution-combo stuff: */
     void sltMaxResolutionComboActivated();

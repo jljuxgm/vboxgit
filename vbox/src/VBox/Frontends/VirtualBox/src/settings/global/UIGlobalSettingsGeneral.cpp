@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 66169 2017-03-20 14:18:54Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 66219 2017-03-23 12:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
@@ -157,14 +157,6 @@ void UIGlobalSettingsGeneral::saveFromCacheTo(QVariant &data)
 
     /* Upload properties & settings to data: */
     UISettingsPageGlobal::uploadData(data);
-}
-
-void UIGlobalSettingsGeneral::setOrderAfter(QWidget *pWidget)
-{
-    /* Configure navigation: */
-    setTabOrder(pWidget, m_pSelectorMachineFolder);
-    setTabOrder(m_pSelectorMachineFolder, m_pSelectorVRDPLibName);
-    setTabOrder(m_pSelectorVRDPLibName, m_pCheckBoxHostScreenSaver);
 }
 
 void UIGlobalSettingsGeneral::retranslateUi()

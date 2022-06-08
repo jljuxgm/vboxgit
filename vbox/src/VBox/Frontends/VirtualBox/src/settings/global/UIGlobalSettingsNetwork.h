@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.h 66190 2017-03-22 10:07:31Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.h 66219 2017-03-23 12:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class declaration.
  */
@@ -32,7 +32,8 @@ typedef UISettingsCache<UIDataSettingsGlobalNetwork> UISettingsCacheGlobalNetwor
 
 
 /** Global settings: Network page. */
-class UIGlobalSettingsNetwork : public UISettingsPageGlobal, public Ui::UIGlobalSettingsNetwork
+class UIGlobalSettingsNetwork : public UISettingsPageGlobal,
+                                public Ui::UIGlobalSettingsNetwork
 {
     Q_OBJECT;
 
@@ -72,16 +73,16 @@ private slots:
 
     /* Handlers: NAT network stuff: */
     void sltAddNetworkNAT();
-    void sltDelNetworkNAT();
     void sltEditNetworkNAT();
+    void sltDelNetworkNAT();
     void sltHandleItemChangeNetworkNAT(QTreeWidgetItem *pChangedItem);
     void sltHandleCurrentItemChangeNetworkNAT();
     void sltShowContextMenuNetworkNAT(const QPoint &pos);
 
     /* Handlers: Host network stuff: */
     void sltAddNetworkHost();
-    void sltDelNetworkHost();
     void sltEditNetworkHost();
+    void sltDelNetworkHost();
     void sltHandleCurrentItemChangeNetworkHost();
     void sltShowContextMenuNetworkHost(const QPoint &pos);
 
@@ -105,13 +106,13 @@ private:
 
     /* Variables: NAT network actions: */
     QAction *m_pActionAddNetworkNAT;
-    QAction *m_pActionDelNetworkNAT;
     QAction *m_pActionEditNetworkNAT;
+    QAction *m_pActionDelNetworkNAT;
 
     /* Variables: Host network actions: */
     QAction *m_pActionAddNetworkHost;
-    QAction *m_pActionDelNetworkHost;
     QAction *m_pActionEditNetworkHost;
+    QAction *m_pActionDelNetworkHost;
 
     /** Holds the page data cache instance. */
     UISettingsCacheGlobalNetwork *m_pCache;
