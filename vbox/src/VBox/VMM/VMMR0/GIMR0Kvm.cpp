@@ -1,4 +1,4 @@
-/* $Id: GIMR0Kvm.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: GIMR0Kvm.cpp 61632 2016-06-09 18:06:26Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM), KVM - Host Context Ring-0.
  */
@@ -20,13 +20,13 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GIM
-#include "GIMInternal.h"
-#include "GIMKvmInternal.h"
-
-#include <VBox/err.h>
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/tm.h>
+#include "GIMInternal.h"
+#include "GIMKvmInternal.h"
 #include <VBox/vmm/vm.h>
+
+#include <VBox/err.h>
 
 #include <iprt/spinlock.h>
 

@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 61559 2016-06-08 08:28:30Z vboxsync $ */
+/* $Id: GIMAll.cpp 61632 2016-06-09 18:06:26Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -20,11 +20,13 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GIM
-#include "GIMInternal.h"
-#include <VBox/err.h>
-#include <VBox/dis.h>       /* For DISCPUSTATE */
+#include <VBox/vmm/gim.h>
 #include <VBox/vmm/em.h>    /* For EMInterpretDisasCurrent */
+#include "GIMInternal.h"
 #include <VBox/vmm/vm.h>
+
+#include <VBox/dis.h>       /* For DISCPUSTATE */
+#include <VBox/err.h>
 
 /* Include all the providers. */
 #include "GIMHvInternal.h"

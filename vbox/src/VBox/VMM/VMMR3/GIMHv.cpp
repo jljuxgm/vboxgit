@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 61559 2016-06-08 08:28:30Z vboxsync $ */
+/* $Id: GIMHv.cpp 61632 2016-06-09 18:06:26Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -20,7 +20,16 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GIM
+#include <VBox/vmm/gim.h>
+#include <VBox/vmm/cpum.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/ssm.h>
+#include <VBox/vmm/hm.h>
+#include <VBox/vmm/pdmapi.h>
 #include "GIMInternal.h"
+#include <VBox/vmm/vm.h>
+
+#include <VBox/version.h>
 
 #include <iprt/assert.h>
 #include <iprt/err.h>
@@ -28,14 +37,6 @@
 #include <iprt/mem.h>
 #include <iprt/semaphore.h>
 #include <iprt/spinlock.h>
-
-#include <VBox/vmm/cpum.h>
-#include <VBox/vmm/mm.h>
-#include <VBox/vmm/ssm.h>
-#include <VBox/vmm/vm.h>
-#include <VBox/vmm/hm.h>
-#include <VBox/vmm/pdmapi.h>
-#include <VBox/version.h>
 #ifdef DEBUG_ramshankar
 # include <iprt/udp.h>
 #endif

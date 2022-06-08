@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 61631 2016-06-09 17:57:34Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 61632 2016-06-09 18:06:26Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -20,17 +20,18 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GIM
+#include <VBox/vmm/gim.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/tm.h>
 #include <VBox/vmm/dbgf.h>
+#include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pdmapi.h>
 #include <VBox/vmm/pgm.h>
 #include "GIMHvInternal.h"
 #include "GIMInternal.h"
 #include <VBox/vmm/vm.h>
 
-#include <VBox/vmm/pdmdev.h>
-#include <VBox/vmm/pdmapi.h>
 #include <VBox/err.h>
 
 #include <iprt/asm-amd64-x86.h>

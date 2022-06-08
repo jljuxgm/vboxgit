@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 61544 2016-06-07 14:42:20Z vboxsync $ */
+/* $Id: GIM.cpp 61632 2016-06-09 18:06:26Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -50,12 +50,14 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GIM
-#include <VBox/log.h>
-#include "GIMInternal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/gim.h>
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/ssm.h>
 #include <VBox/vmm/pdmdev.h>
+#include "GIMInternal.h"
+#include <VBox/vmm/vm.h>
+
+#include <VBox/log.h>
 
 #include <iprt/err.h>
 #include <iprt/semaphore.h>

@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 61559 2016-06-08 08:28:30Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 61632 2016-06-09 18:06:26Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -20,18 +20,19 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GIM
-#include "GIMKvmInternal.h"
-#include "GIMInternal.h"
-
-#include <VBox/err.h>
-#include <VBox/dis.h>
+#include <VBox/vmm/gim.h>
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/tm.h>
-#include <VBox/vmm/vm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdmapi.h>
+#include "GIMKvmInternal.h"
+#include "GIMInternal.h"
+#include <VBox/vmm/vm.h>
+
+#include <VBox/dis.h>
+#include <VBox/err.h>
 #include <VBox/sup.h>
 
 #include <iprt/asm-amd64-x86.h>

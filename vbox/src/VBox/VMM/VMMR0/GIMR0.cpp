@@ -1,4 +1,4 @@
-/* $Id: GIMR0.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: GIMR0.cpp 61632 2016-06-09 18:06:26Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM) - Host Context Ring-0.
  */
@@ -20,11 +20,12 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_GIM
+#include <VBox/vmm/gim.h>
 #include "GIMInternal.h"
 #include "GIMHvInternal.h"
+#include <VBox/vmm/vm.h>
 
 #include <VBox/err.h>
-#include <VBox/vmm/vm.h>
 
 
 /**
