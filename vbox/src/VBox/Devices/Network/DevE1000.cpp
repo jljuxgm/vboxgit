@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
+/* $Id: DevE1000.cpp 64390 2016-10-24 14:19:51Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -6106,8 +6106,8 @@ static void e1kDumpState(PE1KSTATE pThis)
 static DECLCALLBACK(int) e1kMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                 RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
-    RT_NOREF(iRegion);
-    PE1KSTATE pThis = PDMINS_2_DATA(pPciDev->pDevIns, E1KSTATE*);
+    RT_NOREF(pPciDev, iRegion);
+    PE1KSTATE pThis = PDMINS_2_DATA(pDevIns, E1KSTATE *);
     int       rc;
 
     switch (enmType)

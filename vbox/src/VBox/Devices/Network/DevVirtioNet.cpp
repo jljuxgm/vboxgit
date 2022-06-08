@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 64390 2016-10-24 14:19:51Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -1780,8 +1780,8 @@ static DECLCALLBACK(int) vnetLoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 static DECLCALLBACK(int) vnetMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                  RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
-    RT_NOREF(iRegion);
-    PVNETSTATE pThis = PDMINS_2_DATA(pPciDev->pDevIns, PVNETSTATE);
+    RT_NOREF(pPciDev, iRegion);
+    PVNETSTATE pThis = PDMINS_2_DATA(pDevIns, PVNETSTATE);
     int       rc;
 
     if (enmType != PCI_ADDRESS_SPACE_IO)

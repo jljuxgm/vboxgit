@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 64390 2016-10-24 14:19:51Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1400,7 +1400,6 @@ static DECLCALLBACK(int) pdmR3DevHlp_PCIRegister(PPDMDEVINS pDevIns, PPDMPCIDEV 
         }
 
         /* Set some of the public members too. */
-        pPciDev->pDevIns   = pDevIns;
         pPciDev->pszNameR3 = pszName;
 
         /*
