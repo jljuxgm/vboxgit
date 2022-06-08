@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 61545 2016-06-07 14:55:19Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 61546 2016-06-07 15:43:15Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -415,9 +415,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimKvmExecHypercallInstr(PVMCPU pVCpu, PCPUMCTX pCtx,
                 && HMIsEnabled(pVM))
             {
                 /** @todo r=ramshankar: we probably should be doing this in an
-                 *        EMT rendezvous and using proper AVL-tree patching to
-                 *        keep track at RIP so that non-patched VMCALL's still
-                 *        produce \#UD. */
+                 *        EMT rendezvous. */
                 uint8_t abHypercall[3];
                 size_t  cbWritten = 0;
                 int rc = VMMPatchHypercall(pVM, &abHypercall, sizeof(abHypercall), &cbWritten);
