@@ -1,4 +1,4 @@
-/* $Id: Virtio-solaris.c 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: Virtio-solaris.c 65124 2017-01-04 17:34:14Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - Virtio Driver for Solaris.
  */
@@ -166,6 +166,7 @@ int VirtioDetach(dev_info_t *pDip, ddi_detach_cmd_t enmCmd)
  * Allocates a Virtio Queue object and assigns it an index.
  *
  * @param pDevice           Pointer to the Virtio device instance.
+ * @param Index             Queue index.
  *
  * @return A pointer to a Virtio Queue instance.
  */
