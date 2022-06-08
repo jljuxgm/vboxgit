@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
+/* $Id: DevEFI.cpp 65714 2017-02-09 16:59:18Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1900,7 +1900,7 @@ static DECLCALLBACK(int) efiDestruct(PPDMDEVINS pDevIns)
 
     if (pThis->pbDeviceProps)
     {
-        MMR3HeapFree(pThis->pbDeviceProps);
+        PDMDevHlpMMHeapFree(pDevIns, pThis->pbDeviceProps);
         pThis->pbDeviceProps = NULL;
         pThis->cbDeviceProps = 0;
     }
