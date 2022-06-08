@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: CFGM.cpp 64103 2016-09-29 18:37:58Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -3244,7 +3244,9 @@ static void cfgmR3Dump(PCFGMNODE pRoot, unsigned iLevel, PCDBGFINFOHLP pHlp)
                         && !RTStrNCmp(pLeaf->szName, "cb", 2)) )
                 {
                     if (pLeaf->Value.Integer.u64 > _2G)
-                        pHlp->pfnPrintf(pHlp, ", %'lld GB", pLeaf->Value.Integer.u64 / _1G);
+                        pHlp->pfnPrintf(pHlp, ", %'lld.%lld GB",
+                                              pLeaf->Value.Integer.u64 / _1G,
+                                              (pLeaf->Value.Integer.u64 % _1G) / (_1G / 10));
                     else if (pLeaf->Value.Integer.u64 > _2M)
                         pHlp->pfnPrintf(pHlp, ", %'lld MB", pLeaf->Value.Integer.u64 / _1M);
                     else if (pLeaf->Value.Integer.u64 > _2K)
