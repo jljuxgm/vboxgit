@@ -1,10 +1,10 @@
-/* $Id: UIGChooserModel.cpp 62205 2016-07-12 18:31:33Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

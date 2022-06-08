@@ -1,11 +1,11 @@
-/* $Id: VBoxAutostartUtils.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
+/* $Id: VBoxAutostartUtils.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, start machines during system boot.
  *                 Utils used by the windows and posix frontends.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

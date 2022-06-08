@@ -1,10 +1,10 @@
-/* $Id: UIMachine.h 57178 2015-08-04 15:57:24Z vboxsync $ */
+/* $Id: UIMachine.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
 
 /*
- * Copyright (C) 2010-2014 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

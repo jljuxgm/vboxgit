@@ -1,10 +1,10 @@
-/* $Id: UIConverterBackendCOM.cpp 61865 2016-06-23 18:16:22Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend implementation.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

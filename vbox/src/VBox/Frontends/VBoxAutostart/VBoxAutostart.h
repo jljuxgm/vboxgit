@@ -1,10 +1,10 @@
-/* $Id: VBoxAutostart.h 43967 2012-11-26 19:35:33Z vboxsync $ */
+/* $Id: VBoxAutostart.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: VBoxSDLTest.cpp 58035 2015-10-06 07:47:47Z vboxsync $ */
+/* $Id: VBoxSDLTest.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

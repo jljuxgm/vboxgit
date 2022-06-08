@@ -1,10 +1,10 @@
-/* $Id: UINetworkReply.h 58740 2015-11-18 12:35:13Z vboxsync $ */
+/* $Id: UINetworkReply.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff declaration.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

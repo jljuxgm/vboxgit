@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewVM.cpp 60889 2016-05-09 12:33:58Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

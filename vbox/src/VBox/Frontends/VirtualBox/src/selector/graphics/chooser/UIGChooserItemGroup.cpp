@@ -1,10 +1,10 @@
-/* $Id: UIGChooserItemGroup.cpp 60524 2016-04-15 17:51:31Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemGroup class implementation.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

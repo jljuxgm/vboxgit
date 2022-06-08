@@ -1,10 +1,10 @@
-/* $Id: UISelectorWindow.h 62206 2016-07-12 19:43:54Z vboxsync $ */
+/* $Id: UISelectorWindow.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

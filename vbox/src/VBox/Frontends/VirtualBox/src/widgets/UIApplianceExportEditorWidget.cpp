@@ -1,10 +1,10 @@
-/* $Id: UIApplianceExportEditorWidget.cpp 58854 2015-11-25 13:21:49Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class implementation.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

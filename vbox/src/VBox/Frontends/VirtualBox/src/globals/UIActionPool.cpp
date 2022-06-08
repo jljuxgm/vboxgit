@@ -1,10 +1,10 @@
-/* $Id: UIActionPool.cpp 62206 2016-07-12 19:43:54Z vboxsync $ */
+/* $Id: UIActionPool.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
 
 /*
- * Copyright (C) 2010-2014 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: UIDnDDataObject_win.cpp 59835 2016-02-26 10:24:40Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDrag class implementation. This class implements the
  * IDataObject interface.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

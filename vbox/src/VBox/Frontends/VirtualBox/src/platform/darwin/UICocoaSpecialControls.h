@@ -1,10 +1,10 @@
-/* $Id: UICocoaSpecialControls.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxCocoaSpecialControls class declaration.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

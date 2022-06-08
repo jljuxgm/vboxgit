@@ -1,10 +1,10 @@
-/* $Id: UIRichTextString.h 55477 2015-04-28 10:50:05Z vboxsync $ */
+/* $Id: UIRichTextString.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIRichTextString class declaration.
  */
 
 /*
- * Copyright (C) 2015 Oracle Corporation
+ * Copyright (C) 2015-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

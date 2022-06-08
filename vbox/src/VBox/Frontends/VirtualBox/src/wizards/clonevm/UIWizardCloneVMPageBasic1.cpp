@@ -1,10 +1,10 @@
-/* $Id: UIWizardCloneVMPageBasic1.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic1 class implementation.
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

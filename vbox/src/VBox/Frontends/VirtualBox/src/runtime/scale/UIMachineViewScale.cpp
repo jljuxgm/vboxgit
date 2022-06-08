@@ -1,10 +1,10 @@
-/* $Id: UIMachineViewScale.cpp 59380 2016-01-18 17:04:54Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

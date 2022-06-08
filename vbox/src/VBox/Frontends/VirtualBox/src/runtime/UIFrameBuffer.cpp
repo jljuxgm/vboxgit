@@ -1,10 +1,10 @@
-/* $Id: UIFrameBuffer.cpp 60500 2016-04-14 15:54:59Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

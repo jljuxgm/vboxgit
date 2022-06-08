@@ -1,10 +1,10 @@
-/* $Id: QIGraphicsView.cpp 58852 2015-11-25 13:12:33Z vboxsync $ */
+/* $Id: QIGraphicsView.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIGraphicsView class implementation.
  */
 
 /*
- * Copyright (C) 2015 Oracle Corporation
+ * Copyright (C) 2015-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIThreadPool.cpp 57693 2015-09-10 14:49:27Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask classes implementation.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

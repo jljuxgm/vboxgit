@@ -1,10 +1,10 @@
-/* $Id: VBoxManageGuestCtrl.h 55604 2015-05-02 20:21:33Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBoxManageGuestCtrl.h - Definitions for guest control.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

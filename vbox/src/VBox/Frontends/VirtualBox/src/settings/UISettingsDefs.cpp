@@ -1,10 +1,10 @@
-/* $Id: UISettingsDefs.cpp 57810 2015-09-17 17:04:41Z vboxsync $ */
+/* $Id: UISettingsDefs.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDefs implementation
  */
 
 /*
- * Copyright (C) 2011-2014 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIDownloaderExtensionPack.h 58394 2015-10-23 14:29:12Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class declaration.
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

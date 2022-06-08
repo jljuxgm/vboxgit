@@ -1,10 +1,10 @@
-/* $Id: UIDnDDropSource_win.h 58212 2015-10-13 11:49:33Z vboxsync $ */
+/* $Id: UIDnDDropSource_win.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDropSource class declaration.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

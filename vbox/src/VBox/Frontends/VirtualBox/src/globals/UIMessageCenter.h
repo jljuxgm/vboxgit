@@ -1,10 +1,10 @@
-/* $Id: UIMessageCenter.h 61210 2016-05-26 13:22:02Z vboxsync $ */
+/* $Id: UIMessageCenter.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

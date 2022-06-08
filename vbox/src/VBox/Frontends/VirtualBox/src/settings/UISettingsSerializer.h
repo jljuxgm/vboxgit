@@ -1,10 +1,10 @@
-/* $Id: UISettingsSerializer.h 55655 2015-05-05 11:08:12Z vboxsync $ */
+/* $Id: UISettingsSerializer.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSerializer class declaration.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

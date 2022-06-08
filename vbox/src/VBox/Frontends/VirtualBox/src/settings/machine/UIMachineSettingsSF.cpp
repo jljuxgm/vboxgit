@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsSF.cpp 60126 2016-03-21 16:40:20Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

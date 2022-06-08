@@ -1,4 +1,4 @@
-; $Id: VBoxHlp.asm 52727 2014-09-12 14:09:27Z vboxsync $
+; $Id: VBoxHlp.asm 62493 2016-07-22 18:44:18Z vboxsync $
 ;; @file
 ; VBox Qt GUI - Implementation of OS/2-specific helpers that require to reside in a DLL.
 ;
@@ -6,7 +6,7 @@
 ;
 
 ;
-; Copyright (C) 2008-2010 Oracle Corporation
+; Copyright (C) 2008-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

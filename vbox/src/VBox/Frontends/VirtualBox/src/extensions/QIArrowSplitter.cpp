@@ -1,10 +1,10 @@
-/* $Id: QIArrowSplitter.cpp 62143 2016-07-08 16:04:06Z vboxsync $ */
+/* $Id: QIArrowSplitter.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIArrowSplitter class implementation.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

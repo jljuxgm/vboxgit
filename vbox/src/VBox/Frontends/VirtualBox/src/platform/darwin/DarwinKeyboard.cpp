@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 61867 2016-06-23 18:29:57Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: QIStatusBarIndicator.cpp 62112 2016-07-07 15:04:58Z vboxsync $ */
+/* $Id: QIStatusBarIndicator.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIStatusBarIndicator interface implementation.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

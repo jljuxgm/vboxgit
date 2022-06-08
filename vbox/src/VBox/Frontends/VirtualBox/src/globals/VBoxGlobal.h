@@ -1,10 +1,10 @@
-/* $Id: VBoxGlobal.h 62274 2016-07-15 11:38:53Z vboxsync $ */
+/* $Id: VBoxGlobal.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: WinKeyboard.cpp 57460 2015-08-19 16:57:57Z vboxsync $ */
+/* $Id: WinKeyboard.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Windows keyboard handling..
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIMachineLogic.cpp 62285 2016-07-15 15:47:53Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

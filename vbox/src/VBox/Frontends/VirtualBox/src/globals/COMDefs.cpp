@@ -1,10 +1,10 @@
-/* $Id: COMDefs.cpp 60505 2016-04-14 17:02:28Z vboxsync $ */
+/* $Id: COMDefs.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - CInterface implementation.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

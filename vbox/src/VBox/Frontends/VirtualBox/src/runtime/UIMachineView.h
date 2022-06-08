@@ -1,10 +1,10 @@
-/* $Id: UIMachineView.h 61242 2016-05-27 12:58:10Z vboxsync $ */
+/* $Id: UIMachineView.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

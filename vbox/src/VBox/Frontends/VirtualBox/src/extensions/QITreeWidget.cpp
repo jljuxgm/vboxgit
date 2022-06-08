@@ -1,10 +1,10 @@
-/* $Id: QITreeWidget.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: QITreeWidget.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITreeWidget class implementation.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

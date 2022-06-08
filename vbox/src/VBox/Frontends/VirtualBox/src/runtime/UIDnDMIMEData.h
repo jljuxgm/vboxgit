@@ -1,10 +1,10 @@
-/* $Id: UIDnDMIMEData.h 57288 2015-08-12 11:45:18Z vboxsync $ */
+/* $Id: UIDnDMIMEData.h 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class declaration.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

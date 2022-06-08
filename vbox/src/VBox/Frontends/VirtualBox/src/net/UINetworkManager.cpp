@@ -1,10 +1,10 @@
-/* $Id: UINetworkManager.cpp 58426 2015-10-27 11:59:56Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager stuff implementation.
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

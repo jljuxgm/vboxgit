@@ -1,10 +1,10 @@
-/* $Id: UIMachineViewNormal.cpp 60607 2016-04-20 16:43:23Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

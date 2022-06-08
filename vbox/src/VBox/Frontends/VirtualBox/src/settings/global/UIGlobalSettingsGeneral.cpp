@@ -1,10 +1,10 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 60768 2016-04-29 15:41:59Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIDesktopServices_darwin.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIDesktopServices_darwin.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to darwin..
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

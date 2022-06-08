@@ -1,10 +1,10 @@
-/* $Id: tstSSLCertDownloads.cpp 58847 2015-11-25 11:24:25Z vboxsync $ */
+/* $Id: tstSSLCertDownloads.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple cURL testcase.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

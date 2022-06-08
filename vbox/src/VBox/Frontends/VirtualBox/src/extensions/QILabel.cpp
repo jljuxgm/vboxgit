@@ -1,10 +1,10 @@
-/* $Id: QILabel.cpp 58867 2015-11-25 16:19:23Z vboxsync $ */
+/* $Id: QILabel.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QILabel class implementation.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
