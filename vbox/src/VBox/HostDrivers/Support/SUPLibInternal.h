@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 66526 2017-04-12 12:09:01Z vboxsync $ */
+/* $Id: SUPLibInternal.h 66632 2017-04-20 14:43:46Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -448,7 +448,7 @@ DECLHIDDEN(int)     supR3HardenedVerifyFixedFile(const char *pszFilename, bool f
 DECLHIDDEN(int)     supR3HardenedVerifyDir(const char *pszDirPath, bool fRecursive, bool fCheckFiles, PRTERRINFO pErrInfo);
 DECLHIDDEN(int)     supR3HardenedVerifyFile(const char *pszFilename, RTHCUINTPTR hNativeFile, bool fMaybe3rdParty,
                                             PRTERRINFO pErrInfo);
-#ifdef RT_OS_DARWIN
+#if defined(RT_OS_DARWIN) || defined(RT_OS_LINUX)
 DECLHIDDEN(int)     supR3HardenedVerifyFileFollowSymlinks(const char *pszFilename, RTHCUINTPTR hNativeFile, bool fMaybe3rdParty,
                                                           PRTERRINFO pErrInfo);
 #endif

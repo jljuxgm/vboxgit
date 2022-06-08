@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 66605 2017-04-19 07:11:06Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 66632 2017-04-20 14:43:46Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -189,7 +189,7 @@ DECLASM(bool) supR3HardenedPosixMonitor_VerifyLibrary(const char *pszFilename)
     if (   pszFilename
         && strchr(pszFilename, '/') != NULL)
     {
-#ifdef RT_OS_DARWIN
+#if defined(RT_OS_DARWIN) || defined(RT_OS_LINUX)
         int rc = supR3HardenedVerifyFileFollowSymlinks(pszFilename, RTHCUINTPTR_MAX, true /* fMaybe3rdParty */,
                                                        NULL /* pErrInfo */);
 #else
