@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 65470 2017-01-26 21:42:39Z vboxsync $ */
+/* $Id: PGM.cpp 65472 2017-01-26 22:04:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2272,6 +2272,7 @@ VMMR3DECL(int) PGMR3InitFinalize(PVM pVM)
     if (pVM->pgm.s.fRamPreAlloc)
         rc = pgmR3PhysRamPreAllocate(pVM);
 
+    //pgmLogState(pVM);
     LogRel(("PGM: PGMR3InitFinalize: 4 MB PSE mask %RGp\n", pVM->pgm.s.GCPhys4MBPSEMask));
     return rc;
 }
@@ -2655,6 +2656,7 @@ VMMR3_INT_DECL(void) PGMR3Reset(PVM pVM)
         }
     }
 
+    //pgmLogState(pVM);
     pgmUnlock(pVM);
 }
 
