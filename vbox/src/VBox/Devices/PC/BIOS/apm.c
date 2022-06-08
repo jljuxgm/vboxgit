@@ -1,4 +1,4 @@
-/* $Id: apm.c 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: apm.c 66130 2017-03-16 14:21:01Z vboxsync $ */
 /** @file
  * APM BIOS support. Implements APM version 1.2.
  */
@@ -76,7 +76,7 @@ enum apm_power_state {
     APM_PS_OFF          = 0x03,     /* Suspend */
 };
 
-#define APM_PORT        0x8900      /* Bochs power control port. */
+#define APM_PORT        0x040f      /* Relocated Bochs power control port, original value of 0x9800 causes potential trouble with PCI resource allocation. */
 
 /// @todo merge with system.c
 #define AX      r.gr.u.r16.ax
