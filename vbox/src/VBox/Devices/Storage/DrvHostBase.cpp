@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 63482 2016-08-15 14:24:48Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 64019 2016-09-26 16:32:53Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -323,39 +323,6 @@ static DECLCALLBACK(int) drvHostBaseGetUuid(PPDMIMEDIA pInterface, PRTUUID pUuid
     *pUuid = pThis->Uuid;
 
     LogFlow(("%s-%d: drvHostBaseGetUuid: returns VINF_SUCCESS *pUuid=%RTuuid\n", pThis->pDrvIns->pReg->szName, pThis->pDrvIns->iInstance, pUuid));
-    return VINF_SUCCESS;
-}
-
-
-/** @interface_method_impl{PDMIBLOCK,pfnIoBufAlloc} */
-static DECLCALLBACK(int) drvHostBaseIoBufAlloc(PPDMIMEDIA pInterface, size_t cb, void **ppvNew)
-{
-    RT_NOREF(pInterface);
-    LogFlowFunc(("\n"));
-
-    int rc;
-    void *pvNew = RTMemAlloc(cb);
-    if (RT_LIKELY(pvNew))
-    {
-        *ppvNew = pvNew;
-        rc = VINF_SUCCESS;
-    }
-    else
-        rc = VERR_NO_MEMORY;
-
-    LogFlowFunc(("returns %Rrc\n", rc));
-    return rc;
-}
-
-/** @interface_method_impl{PDMIBLOCK,pfnIoBufFree} */
-static DECLCALLBACK(int) drvHostBaseIoBufFree(PPDMIMEDIA pInterface, void *pv, size_t cb)
-{
-    RT_NOREF(pInterface, cb);
-    LogFlowFunc(("\n"));
-
-    RTMemFree(pv);
-
-    LogFlowFunc(("returns %Rrc\n", VINF_SUCCESS));
     return VINF_SUCCESS;
 }
 
@@ -1909,8 +1876,6 @@ int DRVHostBaseInitData(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, PDMMEDIATYPE enmType
     pThis->IMedia.pfnGetSize                = drvHostBaseGetSize;
     pThis->IMedia.pfnGetType                = drvHostBaseGetType;
     pThis->IMedia.pfnGetUuid                = drvHostBaseGetUuid;
-    pThis->IMedia.pfnIoBufAlloc             = drvHostBaseIoBufAlloc;
-    pThis->IMedia.pfnIoBufFree              = drvHostBaseIoBufFree;
     pThis->IMedia.pfnBiosGetPCHSGeometry    = drvHostBaseGetPCHSGeometry;
     pThis->IMedia.pfnBiosSetPCHSGeometry    = drvHostBaseSetPCHSGeometry;
     pThis->IMedia.pfnBiosGetLCHSGeometry    = drvHostBaseGetLCHSGeometry;

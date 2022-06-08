@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 64002 2016-09-26 11:40:57Z vboxsync $ */
+/* $Id: DrvRamDisk.cpp 64019 2016-09-26 16:32:53Z vboxsync $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -621,29 +621,6 @@ static DECLCALLBACK(int) drvramdiskDiscard(PPDMIMEDIA pInterface, PCRTRANGE paRa
 {
     PDRVRAMDISK pThis = RT_FROM_MEMBER(pInterface, DRVRAMDISK, IMedia);
     return drvramdiskDiscardRecords(pThis, paRanges, cRanges);
-}
-
-/** @copydoc PDMIMEDIA::pfnIoBufAlloc */
-static DECLCALLBACK(int) drvramdiskIoBufAlloc(PPDMIMEDIA pInterface, size_t cb, void **ppvNew)
-{
-    RT_NOREF1(pInterface);
-
-    int rc = VINF_SUCCESS;
-    void *pv = RTMemAlloc(cb);
-    if (pv)
-        *ppvNew = pv;
-    else
-        rc = VERR_NO_MEMORY;
-
-    return rc;
-}
-
-/** @copydoc PDMIMEDIA::pfnIoBufFree */
-static DECLCALLBACK(int) drvramdiskIoBufFree(PPDMIMEDIA pInterface, void *pv, size_t cb)
-{
-    RT_NOREF2(pInterface, cb);
-    RTMemFree(pv);
-    return VINF_SUCCESS;
 }
 
 /** @copydoc PDMIMEDIA::pfnReadPcBios */
@@ -1660,8 +1637,6 @@ static DECLCALLBACK(int) drvramdiskConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg,
     pThis->IMedia.pfnBiosSetLCHSGeometry = drvramdiskBiosSetLCHSGeometry;
     pThis->IMedia.pfnGetUuid             = drvramdiskGetUuid;
     pThis->IMedia.pfnGetSectorSize       = drvramdiskGetSectorSize;
-    pThis->IMedia.pfnIoBufAlloc          = drvramdiskIoBufAlloc;
-    pThis->IMedia.pfnIoBufFree           = drvramdiskIoBufFree;
     pThis->IMedia.pfnReadPcBios          = drvramdiskReadPcBios;
     pThis->IMedia.pfnDiscard             = drvramdiskDiscard;
 
