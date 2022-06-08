@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 61628 2016-06-09 17:52:51Z vboxsync $ */
+/* $Id: DBGF.cpp 61766 2016-06-20 10:48:51Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -403,6 +403,7 @@ bool dbgfR3WaitForAttach(PVM pVM, PVMCPU pVCpu, DBGFEVENTTYPE enmEvent)
  * @returns VINF_SUCCESS normally.
  * @returns VERR_DBGF_RAISE_FATAL_ERROR to pretend a fatal error happened.
  * @param   pVM         The cross context VM structure.
+ * @param   pVCpu       The cross context per CPU structure.
  */
 VMMR3_INT_DECL(int) DBGFR3VMMForcedAction(PVM pVM, PVMCPU pVCpu)
 {
