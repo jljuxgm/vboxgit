@@ -1,5 +1,4 @@
-/* $Id: state_snapshot.c 66827 2017-05-08 16:53:52Z vboxsync $ */
-
+/* $Id: state_snapshot.c 66835 2017-05-08 17:01:34Z vboxsync $ */
 /** @file
  * VBox Context state saving/loading used by VM snapshot
  */
@@ -29,8 +28,9 @@
 #include <iprt/types.h>
 #include <iprt/err.h>
 #include <VBox/err.h>
+#include <VBox/log.h>
 
-/* @todo
+/** @todo
  * We have two ways of saving/loading states.
  *
  * First which is being used atm, just pure saving/loading of structures.
