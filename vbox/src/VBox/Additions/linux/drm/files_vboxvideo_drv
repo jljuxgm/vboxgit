@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxvideo_drv 64425 2016-10-26 07:26:46Z vboxsync $
+# $Id: files_vboxvideo_drv 64732 2016-11-21 20:13:16Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -48,7 +48,6 @@ FILES_VBOXVIDEO_DRM_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxVideo/VBVABase.cpp=>VBVABase.c \
     ${PATH_ROOT}/src/VBox/Additions/linux/drm/vbox_drv.c=>vbox_drv.c \
     ${PATH_ROOT}/src/VBox/Additions/linux/drm/vbox_drv.h=>vbox_drv.h \
-    ${PATH_ROOT}/src/VBox/Additions/linux/drm/vbox_dummy.c=>vbox_dummy.c \
     ${PATH_ROOT}/src/VBox/Additions/linux/drm/vbox_fb.c=>vbox_fb.c \
     ${PATH_ROOT}/src/VBox/Additions/linux/drm/vbox_irq.c=>vbox_irq.c \
     ${PATH_ROOT}/src/VBox/Additions/linux/drm/vbox_main.c=>vbox_main.c \
