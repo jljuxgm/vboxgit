@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 61609 2016-06-09 10:22:39Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 61924 2016-06-29 08:16:44Z vboxsync $ */
 /** @file
  * NULL audio driver -- also acts as a fallback if no
  * other backend is available.
@@ -277,7 +277,8 @@ static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostNullAudioStreamGetStatus(PPDMIHOSTAU
     NOREF(pInterface);
     NOREF(pStream);
 
-    return (PDMAUDIOSTRMSTS_FLAG_INITIALIZED | PDMAUDIOSTRMSTS_FLAG_ENABLED);
+    return (  PDMAUDIOSTRMSTS_FLAG_INITIALIZED | PDMAUDIOSTRMSTS_FLAG_ENABLED
+            | PDMAUDIOSTRMSTS_FLAG_DATA_READABLE | PDMAUDIOSTRMSTS_FLAG_DATA_WRITABLE);
 }
 
 static DECLCALLBACK(int) drvHostNullAudioStreamIterate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream)
