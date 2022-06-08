@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 62052 2016-07-06 12:41:01Z vboxsync $
+# $Id: storagecfg.py 62053 2016-07-06 12:43:27Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62052 $"
+__version__ = "$Revision: 62053 $"
 
 # Standard Python imports.
 import os;
@@ -213,7 +213,7 @@ class StorageCfg(object):
     """
 
     kdStorageCfgs = {
-        'testboxstor1.de.oracle.com': ('solaris', 'c[3-9]t\dd0\Z')
+        'testboxstor1.de.oracle.com': ('solaris', r'c[3-9]t\dd0\Z')
     };
 
     def __init__(self, oExec, sHostname = None):
