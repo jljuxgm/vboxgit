@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 63105 2016-08-06 16:20:00Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 63479 2016-08-15 14:15:14Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -1780,11 +1780,9 @@ DECLCALLBACK(void) VBoxDnDDestroy(void *pInstance)
 
 DECLCALLBACK(int) VBoxDnDWorker(void *pInstance, bool volatile *pfShutdown)
 {
-    RT_NOREF(pfShutdown); /** @todo r=bird: Why isn't pfShutdown used by VBoxDnDWorker? */
-#ifdef DEBUG_andy
-# error "Why isn't pfShutdown used by VBoxDnDWorker?"
-#endif
     AssertPtr(pInstance);
+    AssertPtr(pfShutdown);
+
     LogFlowFunc(("pInstance=%p\n", pInstance));
 
     /*
@@ -1878,6 +1876,9 @@ DECLCALLBACK(int) VBoxDnDWorker(void *pInstance, bool volatile *pfShutdown)
                 }
             }
         }
+
+        if (*pfShutdown)
+            break;
 
         if (ASMAtomicReadBool(&pCtx->fShutdown))
             break;
