@@ -1,4 +1,4 @@
-# $Id: Config.kmk 61923 2016-06-29 08:15:05Z vboxsync $
+# $Id: Config.kmk 61929 2016-06-29 12:22:39Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3119,22 +3119,11 @@ ifdef VBOX_SIGNING_MODE
   ## Sign a VMM Mach-O image.
   # @param 1  The bundle to sign.
   # @param 2  Identifier, optional.
-  ifdef VBOX_NOT_OSX_105
   VBOX_SIGN_VMM_MOD_FN = $(VBOX_SIGN_MACHO_FN)
-  else
-  VBOX_SIGN_VMM_MOD_FN = $(call MSG_TOOL,SIGNTOOL,,$(1),$(2))$(NLTAB)$(VBOX_CODESIGN) \
-	--verbose=9 \
-	--force \
-	--file-list - \
-	$(VBOX_CERTIFICATE_SUBJECT_NAME_ARGS) \
-	$(1) -D $(1).codesign \
-	$(if $(2),--identifier "$(2)",)
-  endif
 
   ## Sign a non-executable file.
   # @param 1  The bundle to sign.
   # @param 2  Identifier, optional.
-  ifdef VBOX_NOT_OSX_105
   VBOX_SIGN_FILE_FN = $(call MSG_TOOL,SIGNTOOL,,$(1),$(2))$(NLTAB)$(VBOX_CODESIGN) \
 	--verbose=9 \
 	--force \
@@ -3142,10 +3131,6 @@ ifdef VBOX_SIGNING_MODE
 	$(VBOX_CERTIFICATE_SUBJECT_NAME_ARGS) \
 	$(1) \
 	$(if $(2),--identifier "$(2)",)
-  else
-  VBOX_SIGN_FILE_FN =
-  endif
-
 
   ## @def VBOX_TEST_SIGN_KEXT
   # Adds test signing to a $1.kext target (the plist installer target).
@@ -6547,7 +6532,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 61923 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 61929 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
