@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63974 2016-09-23 13:23:09Z vboxsync $
+# $Id: Makefile.kmk 64031 2016-09-27 08:30:37Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -52,6 +52,7 @@ endif
 if !defined(VBOX_ONLY_SDK) \
  && (   "$(SDK_VBOX_OPENSSL_INCS)" == "$(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)" \
      || defined(VBOX_WITH_EXTPACK_PUEL_BUILD))
+ VBOX_WITH_OPENSSL_1_1_0 = 1
  ifdef VBOX_WITH_OPENSSL_1_1_0
   include $(PATH_SUB_CURRENT)/openssl-1.1.0/Makefile.kmk
  else
