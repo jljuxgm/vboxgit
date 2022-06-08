@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 60981 2016-05-13 17:10:14Z vboxsync $ */
+/* $Id: draganddrop.cpp 61654 2016-06-10 12:30:04Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -3209,13 +3209,19 @@ void DragAndDropService::cleanup(void)
 
     LogRel2(("DnD: Terminating threads ...\n"));
 
+    ASMAtomicXchgBool(&m_fSrvStopping, true);
+
     /*
      * Wait for threads to terminate.
      */
     int rcThread, rc2;
     if (m_hHGCMThread != NIL_RTTHREAD)
     {
+#if 0 /** @todo Does not work because we don't cancel the HGCM call! */
         rc2 = RTThreadWait(m_hHGCMThread, 30 * 1000 /* 30s timeout */, &rcThread);
+#else
+        rc2 = RTThreadWait(m_hHGCMThread, 200 /* 200ms timeout */, &rcThread);
+#endif
         if (RT_SUCCESS(rc2))
             rc2 = rcThread;
 
