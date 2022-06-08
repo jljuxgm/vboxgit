@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 63692 2016-09-02 12:41:41Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 63694 2016-09-02 12:42:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4388,7 +4388,6 @@ void VBoxGlobal::cleanup()
         /* First, make sure we don't use COM any more: */
         m_host.detach();
         m_vbox.detach();
-__debugbreak();
         m_client.detach();
 
         /* There may be UIMedium(s)EnumeratedEvent instances still in the message
