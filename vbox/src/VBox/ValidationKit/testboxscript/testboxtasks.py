@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxtasks.py 61838 2016-06-22 21:39:47Z vboxsync $
+# $Id: testboxtasks.py 62024 2016-07-05 12:01:15Z vboxsync $
 
 """
 TestBox Script - Async Tasks.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61838 $"
+__version__ = "$Revision: 62024 $"
 
 
 # Standard python imports.
@@ -591,9 +591,18 @@ class TestBoxTestDriverTask(TestBoxBaseTask):
             fRc = False;
 
         #
-        # Wipe the stuff clean.
+        # Wipe the stuff clean.  On failure, delay for a total of 20 seconds while
+        # periodically retrying the cleanup.  This is a hack to work around issues
+        # on windows caused by the service in aelupsvc.dll preventing us from deleting
+        # vts_rm.exe (or rather the directory its in).  The service is called
+        # "Application Experience", which feels like a weird joke here.
         #
         fRc2 = self._oTestBoxScript.reinitScratch(fnLog = self._log);
+        cRetries = 4;
+        while fRc2 is False and cRetries > 0:
+            time.sleep(5);
+            fRc2 = self._oTestBoxScript.reinitScratch(fnLog = self._log);
+            cRetries -= 1;
 
         return fRc and fRc2;
 

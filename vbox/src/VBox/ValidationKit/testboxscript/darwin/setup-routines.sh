@@ -1,4 +1,4 @@
-# $Id: setup-routines.sh 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: setup-routines.sh 62024 2016-07-05 12:01:15Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Mac OS X (darwin).
 #
@@ -207,7 +207,7 @@ os_final_message() {
 
 Additional things to do:"
     1. Change the 'Energy Saver' options to never turn off the computer:
-       $ systemsetup -setsleep Never
+       $ systemsetup -setcomputersleep Never -setdisplaysleep 5 -setharddisksleep 15
     2. Check 'Restart automatically if the computer freezes' if available in
        the 'Energy Saver' settings.
        $ systemsetup -setrestartfreeze on
