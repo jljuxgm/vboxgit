@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 66381 2017-03-31 13:28:04Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 66870 2017-05-11 10:35:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2073,14 +2073,12 @@ HRESULT Console::setUseHostClipboard(BOOL aUseHostClipboard)
 
 HRESULT Console::powerUp(ComPtr<IProgress> &aProgress)
 {
-    i_powerUp(aProgress.asOutParam(), false /* aPaused */);
-    return S_OK;
+    return i_powerUp(aProgress.asOutParam(), false /* aPaused */);
 }
 
 HRESULT Console::powerUpPaused(ComPtr<IProgress> &aProgress)
 {
-    i_powerUp(aProgress.asOutParam(), true /* aPaused */);
-    return S_OK;
+    return i_powerUp(aProgress.asOutParam(), true /* aPaused */);
 }
 
 HRESULT Console::powerDown(ComPtr<IProgress> &aProgress)
