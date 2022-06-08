@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingSetupCanonicalTraps.c 62471 2016-07-22 18:04:30Z vboxsync $ */
+/* $Id: bs3-cmn-PagingSetupCanonicalTraps.c 64710 2016-11-18 11:20:38Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingSetupCanonicalTraps
  */
@@ -62,8 +62,8 @@ BS3_CMN_PROTO_STUB(void BS3_FAR *, Bs3PagingSetupCanonicalTraps,(void))
             /*
              * Get the page table entries first to avoid having to unmap things.
              */
-            paLoPtes = bs3PagingGetPte(g_PhysPagingRootLM, BS3_MODE_LM64, UINT64_C(0x00007fffffffe000), false, &rc);
-            paHiPtes = bs3PagingGetPte(g_PhysPagingRootLM, BS3_MODE_LM64, UINT64_C(0xffff800000000000), false, &rc);
+            paLoPtes = bs3PagingGetPaePte(g_PhysPagingRootLM, BS3_MODE_LM64, UINT64_C(0x00007fffffffe000), false, &rc);
+            paHiPtes = bs3PagingGetPaePte(g_PhysPagingRootLM, BS3_MODE_LM64, UINT64_C(0xffff800000000000), false, &rc);
             if (!paHiPtes || !paLoPtes)
             {
                 Bs3TestPrintf("warning: Bs3PagingSetupCanonicalTraps - failed to get PTEs!\n");
