@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 64337 2016-10-20 16:39:52Z vboxsync $ */
+/*  $Id: vbox_drv.c 66189 2017-03-22 08:18:00Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -272,7 +272,7 @@ static void vbox_master_drop(struct drm_device *dev,
 
 static struct drm_driver driver =
 {
-    .driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ | DRIVER_IRQ_SHARED,
+    .driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ | DRIVER_IRQ_SHARED | DRIVER_PRIME,
     .dev_priv_size = 0,
 
     .load = vbox_driver_load,
@@ -301,6 +301,17 @@ static struct drm_driver driver =
 #else
     .dumb_destroy = drm_gem_dumb_destroy,
 #endif
+    .prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+    .prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+    .gem_prime_export = drm_gem_prime_export,
+    .gem_prime_import = drm_gem_prime_import,
+    .gem_prime_pin = vbox_gem_prime_pin,
+    .gem_prime_unpin = vbox_gem_prime_unpin,
+    .gem_prime_get_sg_table = vbox_gem_prime_get_sg_table,
+    .gem_prime_import_sg_table = vbox_gem_prime_import_sg_table,
+    .gem_prime_vmap = vbox_gem_prime_vmap,
+    .gem_prime_vunmap = vbox_gem_prime_vunmap,
+    .gem_prime_mmap = vbox_gem_prime_mmap,
 
 };
 
