@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-RegCtxRestore.asm 60774 2016-05-02 00:04:01Z vboxsync $
+; $Id: bs3-cmn-RegCtxRestore.asm 66404 2017-04-03 15:21:56Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3RegCtxRestore.
 ;
@@ -308,6 +308,8 @@ BS3_PROC_BEGIN_CMN Bs3RegCtxRestore, BS3_PBC_HYBRID
         cmp     byte [BS3_ONLY_16BIT(es:) BS3_DATA16_WRT(g_bBs3CurrentMode)], BS3_MODE_RM
         je      .skip_control_regs
 %endif
+        test    byte [xBX + BS3REGCTX.fbFlags], BS3REG_CTX_F_NO_TR_LDTR
+        jnz     .skip_control_regs
 
         ; LDTR
         sldt    ax

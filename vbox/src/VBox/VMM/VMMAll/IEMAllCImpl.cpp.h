@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 66391 2017-04-02 14:56:59Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 66404 2017-04-03 15:21:56Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -7079,6 +7079,51 @@ IEM_CIMPL_DEF_2(iemCImpl_stmxcsr, uint8_t, iEffSeg, RTGCPTR, GCPtrEff)
             {
                 iemRegAddToRipAndClearRF(pVCpu, cbInstr);
                 return VINF_SUCCESS;
+            }
+            return rcStrict;
+        }
+        return iemRaiseDeviceNotAvailable(pVCpu);
+    }
+    return iemRaiseUndefinedOpcode(pVCpu);
+}
+
+
+/**
+ * Implements 'LDMXCSR'.
+ *
+ * @param   GCPtrEff        The address of the image.
+ */
+IEM_CIMPL_DEF_2(iemCImpl_ldmxcsr, uint8_t, iEffSeg, RTGCPTR, GCPtrEff)
+{
+    PCPUMCTX pCtx = IEM_GET_CTX(pVCpu);
+
+    /*
+     * Raise exceptions.
+     */
+    /** @todo testcase - order of LDMXCSR faults.  Does \#PF, \#GP and \#SS
+     *        happen after or before \#UD and \#EM? */
+    if (   !(pCtx->cr0 & X86_CR0_EM)
+        && (pCtx->cr4 & X86_CR4_OSFXSR))
+    {
+        if (!(pCtx->cr0 & X86_CR0_TS))
+        {
+            /*
+             * Do the job.
+             */
+            uint32_t fNewMxCsr;
+            VBOXSTRICTRC rcStrict = iemMemFetchDataU32(pVCpu, &fNewMxCsr, iEffSeg, GCPtrEff);
+            if (rcStrict == VINF_SUCCESS)
+            {
+                uint32_t const fMxCsrMask = CPUMGetGuestMxCsrMask(pVCpu->CTX_SUFF(pVM));
+                if (!(fNewMxCsr & ~fMxCsrMask))
+                {
+                    pCtx->CTX_SUFF(pXState)->x87.MXCSR = fNewMxCsr;
+                    iemRegAddToRipAndClearRF(pVCpu, cbInstr);
+                    return VINF_SUCCESS;
+                }
+                Log(("lddmxcsr: New MXCSR=%#RX32 & ~MASK=%#RX32 = %#RX32 -> #GP(0)\n",
+                     fNewMxCsr, fMxCsrMask, fNewMxCsr & ~fMxCsrMask));
+                return iemRaiseGeneralProtectionFault0(pVCpu);
             }
             return rcStrict;
         }
