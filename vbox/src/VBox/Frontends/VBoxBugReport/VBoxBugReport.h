@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.h 59797 2016-02-24 13:55:10Z vboxsync $ */
+/* $Id: VBoxBugReport.h 65456 2017-01-26 15:14:27Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, internal header file.
  */
@@ -223,6 +223,21 @@ private:
     char *m_papszArgs[32];
 };
 
+/*
+ * A base class for item classes that provide temp output file to a command.
+ */
+class BugReportCommandTemp : public BugReportItem
+{
+public:
+    BugReportCommandTemp(const char *pszTitle, const char *pszExec, ...);
+    virtual ~BugReportCommandTemp();
+    virtual PRTSTREAM getStream(void);
+private:
+    PRTSTREAM m_Strm;
+    char m_szFileName[RTPATH_MAX];
+    char m_szErrFileName[RTPATH_MAX];
+    char *m_papszArgs[32];
+};
 
 /* Platform-specific */
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReportWin.cpp 63703 2016-09-02 15:00:26Z vboxsync $ */
+/* $Id: VBoxBugReportWin.cpp 65456 2017-01-26 15:14:27Z vboxsync $ */
 /** @file
  * VBoxBugReportWin - VirtualBox command-line diagnostics tool, Windows-specific part.
  */
@@ -718,6 +718,13 @@ void createBugReportOsSpecific(BugReport* report, const char *pszHome)
                                          "qfe", "list", "brief", NULL));
     report->addItem(new BugReportCommand("DriverServices", PathJoin(WinSysDir.c_str(), "sc.exe"),
                                          "query", "type=", "driver", "state=", "all", NULL));
+    report->addItem(new BugReportCommand("DriverStore", PathJoin(WinSysDir.c_str(), "pnputil.exe"), "-e", NULL));
+    report->addItem(new BugReportCommandTemp("RegDevKeys", PathJoin(WinSysDir.c_str(), "reg.exe"), "export",
+        "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\Root\\NET", NULL));
+    report->addItem(new BugReportCommandTemp("RegDrvKeys", PathJoin(WinSysDir.c_str(), "reg.exe"), "export",
+        "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002BE10318}", NULL));
+    report->addItem(new BugReportCommandTemp("RegNetwork", PathJoin(WinSysDir.c_str(), "reg.exe"), "export",
+        "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}", NULL));
     report->addItem(new BugReportUsbTreeWin);
     report->addItem(new BugReportDriversWin);
 }
