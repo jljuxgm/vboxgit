@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 64061 2016-09-28 08:34:36Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 64063 2016-09-28 08:44:47Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -2129,6 +2129,8 @@ static int coreAudioStreamInvalidateQueue(PCOREAUDIOSTREAM pCAStream)
  */
 static int coreAudioStreamInitQueue(PCOREAUDIOSTREAM pCAStream, PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
+    RT_NOREF(pCfgAcq);
+
     LogFunc(("pCAStream=%p, pCfgReq=%p, pCfgAcq=%p\n", pCAStream, pCfgReq, pCfgAcq));
 
     /* No device assigned? Bail out early. */
