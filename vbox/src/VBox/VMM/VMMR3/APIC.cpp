@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 63907 2016-09-20 09:28:39Z vboxsync $ */
+/* $Id: APIC.cpp 63908 2016-09-20 09:30:44Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -372,8 +372,7 @@ VMMR3_INT_DECL(void) APICR3HvSetCompatMode(PVM pVM, bool fHyperVCompatMode)
     pApic->fHyperVCompatMode = fHyperVCompatMode;
 
     int rc = CPUMR3MsrRangesInsert(pVM, &g_MsrRange_x2Apic);
-    AssertRC(rc);
-    RT_NOREF(rc);
+    AssertLogRelRC(rc);
 }
 
 
