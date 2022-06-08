@@ -1,4 +1,4 @@
-/* $Id: mp-darwin.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: mp-darwin.cpp 63451 2016-08-15 00:39:40Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Darwin.
  */
@@ -77,6 +77,8 @@ static RTCPUID rtMpDarwinMaxPhysicalCpus(void)
     return 1;
 }
 
+
+#if 0 /* unused */
 /**
  * Internal worker that determines the current number of logical CPUs (hyperthreads).
  *
@@ -92,6 +94,8 @@ static RTCPUID rtMpDarwinOnlineLogicalCpus(void)
     AssertFailed();
     return 1;
 }
+#endif /* unused */
+
 
 /**
  * Internal worker that determines the current number of physical CPUs.

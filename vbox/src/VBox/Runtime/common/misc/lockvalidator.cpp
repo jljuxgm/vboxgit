@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: lockvalidator.cpp 63451 2016-08-15 00:39:40Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -1568,6 +1568,7 @@ RTDECL(int) RTLockValidatorRecMakeSiblings(PRTLOCKVALRECCORE pRec1, PRTLOCKVALRE
 }
 
 
+#if 0 /* unused */
 /**
  * Gets the lock name for the given record.
  *
@@ -1605,8 +1606,10 @@ DECL_FORCE_INLINE(const char *) rtLockValidatorRecName(PRTLOCKVALRECUNION pRec)
             return "unknown";
     }
 }
+#endif /* unused */
 
 
+#if 0 /* unused */
 /**
  * Gets the class for this locking record.
  *
@@ -1664,7 +1667,7 @@ DECLINLINE(RTLOCKVALCLASSINT *) rtLockValidatorRecGetClass(PRTLOCKVALRECUNION pR
             return NIL_RTLOCKVALCLASS;
     }
 }
-
+#endif /* unused */
 
 /**
  * Gets the class for this locking record and the pointer to the one below it in

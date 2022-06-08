@@ -1,4 +1,4 @@
-/* $Id: allocex-r3-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: allocex-r3-generic.cpp 63451 2016-08-15 00:39:40Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc Workers, generic.
  */
@@ -40,18 +40,21 @@
 
 DECLHIDDEN(int) rtMemAllocEx16BitReach(size_t cbAlloc, uint32_t fFlags, void **ppv)
 {
+    RT_NOREF(cbAlloc, fFlags, ppv);
     return VERR_NOT_SUPPORTED;
 }
 
 
 DECLHIDDEN(int) rtMemAllocEx32BitReach(size_t cbAlloc, uint32_t fFlags, void **ppv)
 {
+    RT_NOREF(cbAlloc, fFlags, ppv);
     return VERR_NOT_SUPPORTED;
 }
 
 
 DECLHIDDEN(void) rtMemFreeExYyBitReach(void *pv, size_t cb, uint32_t fFlags)
 {
+    RT_NOREF(pv, cb, fFlags);
     AssertFailed();
 }
 

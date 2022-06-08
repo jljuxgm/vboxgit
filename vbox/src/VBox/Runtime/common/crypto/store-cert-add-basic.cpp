@@ -1,4 +1,4 @@
-/* $Id: store-cert-add-basic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: store-cert-add-basic.cpp 63451 2016-08-15 00:39:40Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store, RTCrStoreCertAddFromDir.
  */
@@ -81,6 +81,7 @@ static RTCRPEMMARKER const g_aX509CertificateMarkers[3] =
 
 
 
+#ifdef RT_STRICT
 /**
  * Checks if we've found all the certificates already.
  *
@@ -95,6 +96,7 @@ DECLINLINE(bool) rtCrStoreAllDone(bool const *afFound, size_t cWanted)
             return false;
     return true;
 }
+#endif /* RT_STRICT */
 
 
 /**

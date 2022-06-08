@@ -1,4 +1,4 @@
-/* $Id: RTSystemShutdown-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTSystemShutdown-generic.cpp 63451 2016-08-15 00:39:40Z vboxsync $ */
 /** @file
  * IPRT - RTSystemShutdown, generic stub.
  */
@@ -37,6 +37,7 @@
 
 RTDECL(int) RTSystemShutdown(RTMSINTERVAL cMsDelay, uint32_t fFlags, const char *pszLogMsg)
 {
+    RT_NOREF(cMsDelay, pszLogMsg);
     AssertPtrReturn(pszLogMsg, VERR_INVALID_POINTER);
     AssertReturn(!(fFlags & ~RTSYSTEM_SHUTDOWN_VALID_MASK), VERR_INVALID_PARAMETER);
     return VERR_NOT_SUPPORTED;

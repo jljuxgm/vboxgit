@@ -1,4 +1,4 @@
-/* $Id: tstRTDarwinMachKernel.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTDarwinMachKernel.cpp 63451 2016-08-15 00:39:40Z vboxsync $ */
 /** @file
  * IPRT Testcase - mach_kernel symbol resolving hack.
  */
@@ -65,7 +65,7 @@ static void dotest(void)
 }
 
 
-int main(int argc, char **argv)
+int main()
 {
     RTTEST hTest;
     RTEXITCODE rcExit = RTTestInitAndCreate("tstRTDarwinMachKernel", &hTest);

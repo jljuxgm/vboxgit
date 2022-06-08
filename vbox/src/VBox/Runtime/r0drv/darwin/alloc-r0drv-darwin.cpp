@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-darwin.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: alloc-r0drv-darwin.cpp 63451 2016-08-15 00:39:40Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Darwin.
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations" /* (IOMallocContiguous et al are deprecated) */
 #include "the-darwin-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/mem.h>

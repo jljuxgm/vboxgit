@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-string.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: asn1-ut-string.cpp 63451 2016-08-15 00:39:40Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, XXX STRING Types.
  */
@@ -206,6 +206,7 @@ static const RTISO2022MAP g_IsoIr102Map =
 };
 
 
+#if 0 /* unused */
 /** GL mappings for ISO-IR-87 (Japanese),  with space and delete. */
 static const RTISO2022MAP g_IsoIr87Map =
 {
@@ -216,6 +217,7 @@ static const RTISO2022MAP g_IsoIr87Map =
     { 0x24, 0x2a, 0x42, 0xff, 0xff, 0xff } /* Esc into G2 */,
     { 0x24, 0x2b, 0x42, 0xff, 0xff, 0xff } /* Esc into G3 */,
 };
+#endif
 
 
 /**
