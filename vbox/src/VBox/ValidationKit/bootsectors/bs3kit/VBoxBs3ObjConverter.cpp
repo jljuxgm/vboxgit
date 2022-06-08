@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 65651 2017-02-07 11:46:36Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 65928 2017-03-03 11:07:15Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -1608,6 +1608,8 @@ static bool convertElfSymbolsToPubDefsAndExtDefs(POMFWRITER pThis, PCELFDETAILS 
                                  bBind, iSym, pszSymName);
             }
         }
+        else if (idxSection == SHN_COMMON)
+            return error(pThis->pszSrc, "Symbol #%u (%s) is in the unsupported 'common' section.\n", iSym, pszSymName);
         else
             return error(pThis->pszSrc, "Unsupported or invalid section number %#x for symbol #%u (%s)\n",
                          idxSection, iSym, pszSymName);
@@ -5046,7 +5048,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 65651 $");
+                        printf("%s\n", "$Revision: 65928 $");
                         return 0;
 
                     case '?':
