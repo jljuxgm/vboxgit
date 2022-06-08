@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: prerm-common.sh 59426 2016-01-21 11:43:53Z vboxsync $
+# $Id: prerm-common.sh 61712 2016-06-15 13:04:12Z vboxsync $
 ## @file
 # Oracle VM VirtualBox
 # VirtualBox Linux pre-uninstaller common portions
@@ -65,4 +65,13 @@ stop_init_script vboxnet >/dev/null 2>&1
 delrunlevel vboxnet >/dev/null 2>&1
 remove_init_script vboxnet >/dev/null 2>&1
 rm -f /sbin/vboxconfig
+# Remove any generated modules
+if [ -z "$VBOX_DONT_REMOVE_OLD_MODULES" ]; then
+    for folder in /lib/modules/*/misc /lib/modules/*/kernel/misc; do
+        ## @todo not duplicate the names all over the place.
+        for file in vboxdrv.ko vboxnetflt.ko vboxnetadp.ko vboxpci.ko; do
+            test -f "${folder}/${file}" && rm -f "${folder}/${file}"
+        done
+    done
+fi
 exit 0
