@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 64419 2016-10-25 15:35:56Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 64560 2016-11-04 11:50:07Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -138,7 +138,8 @@
     do { \
         if (off != RT_OFFSETOF(type, m)) \
         { \
-            printf("tstDeviceStructSize: error! %#010x %s  Off by %d!! (off=%#x)\n", RT_OFFSETOF(type, m), #type "." #m, off - RT_OFFSETOF(type, m), off); \
+            printf("tstDeviceStructSize: Error! %#010x %s  Member offset wrong by %d (should be %d -- but is %d)\n", \
+                   RT_OFFSETOF(type, m), #type "." #m, off - RT_OFFSETOF(type, m), off, RT_OFFSETOF(type, m)); \
             rc++; \
         } \
         else  \
@@ -154,7 +155,8 @@
     do { \
         if (size != sizeof(type)) \
         { \
-            printf("tstDeviceStructSize: error! sizeof(%s): %#x (%d)  Off by %d!!\n", #type, (int)sizeof(type), (int)sizeof(type), (int)(sizeof(type) - size)); \
+            printf("tstDeviceStructSize: Error! sizeof(%s): %#x (%d)  Size wrong by %d (should be %d -- but is %d)\n", \
+                   #type, (int)sizeof(type), (int)sizeof(type), (int)(sizeof(type) - size), (int)size, (int)sizeof(type)); \
             rc++; \
         } \
         else \
