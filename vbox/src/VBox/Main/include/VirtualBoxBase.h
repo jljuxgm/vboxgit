@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 65088 2017-01-03 20:52:49Z vboxsync $ */
+/* $Id: VirtualBoxBase.h 65886 2017-02-27 14:39:25Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -809,7 +809,7 @@ private:
     /** User-level object lock for subclasses */
     RWLockHandle *mObjectLock;
 
-    /** Slot of this object in the saFactoryStats array */
+    /** Slot of this object in the g_aClassFactoryStats array */
     uint32_t iFactoryStat;
 
 private:
