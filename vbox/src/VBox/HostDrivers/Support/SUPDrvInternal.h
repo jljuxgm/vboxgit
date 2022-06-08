@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 64281 2016-10-15 16:46:29Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 64284 2016-10-15 20:24:45Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -830,8 +830,8 @@ int VBOXCALL    supdrvOSInitGipGroupTable(PSUPDRVDEVEXT pDevExt, PSUPGLOBALINFOP
  *
  * @returns CPU group number.
  * @param   pDevExt             The device globals.
- * @param   idCpu               The ID of the CPU.
- * @param   piCpuGroupMember    Where to return the group member number.
+ * @param   pGip                The GIP.
+ * @param   pGipCpu             The GIP CPU structure being initialized.
  */
 void VBOXCALL supdrvOSGipInitGroupBitsForCpu(PSUPDRVDEVEXT pDevExt, PSUPGLOBALINFOPAGE pGip, PSUPGIPCPU pGipCpu);
 
