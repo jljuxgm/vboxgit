@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.cpp 62869 2016-08-02 12:01:23Z vboxsync $ */
+/* $Id: VBoxCpuReport.cpp 66104 2017-03-15 10:06:21Z vboxsync $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
@@ -518,7 +518,7 @@ static int findMsrs(VBCPUREPMSR **ppaMsrs, uint32_t *pcMsrs, uint32_t fMsrMask)
                     && g_enmVendor == CPUMCPUVENDOR_INTEL
                     && g_enmMicroarch == kCpumMicroarch_Intel_Atom_Bonnell)
                 || (   (uMsr == 0x280)
-                    && g_enmMicroarch == kCpumMicroarch_Intel_P6_III)) 
+                    && g_enmMicroarch == kCpumMicroarch_Intel_P6_III))
                 vbCpuRepDebug("Skipping %#x\n", uMsr);
             else
             {
