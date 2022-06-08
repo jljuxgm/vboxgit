@@ -1,4 +1,4 @@
-/* $Id: dbgmodexports.cpp 57974 2015-09-30 18:27:04Z vboxsync $ */
+/* $Id: dbgmodexports.cpp 62243 2016-07-14 11:28:38Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Using Image Exports.
  */
@@ -65,6 +65,13 @@ static DECLCALLBACK(int) rtDbgModExportsAddSymbolCallback(RTLDRMOD hLdrMod, cons
 
     if (Value >= pArgs->uImageBase)
     {
+        char szOrdinalNm[48];
+        if (!pszSymbol)
+        {
+            RTStrPrintf(szOrdinalNm, sizeof(szOrdinalNm), "Ordinal%u", uSymbol);
+            pszSymbol = szOrdinalNm;
+        }
+
         int rc = RTDbgModSymbolAdd(pArgs->pDbgMod, pszSymbol, RTDBGSEGIDX_RVA, Value - pArgs->uImageBase,
                                    0 /*cb*/, 0 /* fFlags */, NULL /*piOrdinal*/);
         Log(("Symbol #%05u %#018RTptr %s [%Rrc]\n", uSymbol, Value, pszSymbol, rc)); NOREF(rc);
