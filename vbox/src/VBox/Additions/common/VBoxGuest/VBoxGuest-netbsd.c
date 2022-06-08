@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 63409 2016-08-13 01:53:02Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 63410 2016-08-13 02:00:41Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -314,7 +314,7 @@ aprint_error_dev(vboxguest->sc_dev, "copyin failed\n");
         if (RT_UNLIKELY(cbDataReturned > ReqWrap->cbData))
         {
             Log((DEVICE_NAME ": %s: too much output data %d expected %d\n",
-                 cbDataReturned, ReqWrap->cbData));
+                 __func__, cbDataReturned, ReqWrap->cbData));
             cbDataReturned = ReqWrap->cbData;
         }
         if (cbDataReturned > 0)
