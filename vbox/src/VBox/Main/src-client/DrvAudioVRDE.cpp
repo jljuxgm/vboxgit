@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 63529 2016-08-16 09:37:04Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 63534 2016-08-16 10:14:46Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -101,7 +101,7 @@ static int vrdeCreateStreamIn(PPDMIHOSTAUDIO pInterface,
     if (RT_SUCCESS(rc))
     {
         if (pCfgAcq)
-            pCfgAcq->cSamples = _4K; /** @todo Make this configurable. */
+            pCfgAcq->cSampleBufferSize = _4K; /** @todo Make this configurable. */
     }
 
     LogFlowFuncLeaveRC(VINF_SUCCESS);
@@ -124,7 +124,7 @@ static int vrdeCreateStreamOut(PPDMIHOSTAUDIO pInterface,
     if (RT_SUCCESS(rc))
     {
         if (pCfgAcq)
-            pCfgAcq->cSamples = _4K; /** @todo Make this configurable. */
+            pCfgAcq->cSampleBufferSize = _4K; /** @todo Make this configurable. */
     }
 
     LogFlowFuncLeaveRC(VINF_SUCCESS);

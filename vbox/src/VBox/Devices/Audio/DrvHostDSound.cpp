@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 63532 2016-08-16 10:01:19Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 63534 2016-08-16 10:14:46Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1461,7 +1461,7 @@ static int dsoundCreateStreamOut(PDRVHOSTDSOUND pThis, PPDMAUDIOSTREAM pStream,
         pDSoundStream->cMaxSamplesInBuffer = 0;
 
         if (pCfgAcq)
-            pCfgAcq->cSamples = pThis->cfg.cbBufferOut >> pDSoundStream->Props.cShift;
+            pCfgAcq->cSampleBufferSize = pThis->cfg.cbBufferOut >> pDSoundStream->Props.cShift;
 
         /* Try to open playback in case the device is already there. */
         directSoundPlayOpen(pThis, pDSoundStream);
@@ -1713,7 +1713,7 @@ static int dsoundCreateStreamIn(PDRVHOSTDSOUND pThis, PPDMAUDIOSTREAM pStream,
         pDSoundStream->hrLastCapture       = S_OK;
 
         if (pCfgAcq)
-            pCfgAcq->cSamples = pThis->cfg.cbBufferIn >> pDSoundStream->Props.cShift;
+            pCfgAcq->cSampleBufferSize = pThis->cfg.cbBufferIn >> pDSoundStream->Props.cShift;
 
         /* Try to open capture in case the device is already there. */
         directSoundCaptureOpen(pThis, pDSoundStream); /** @todo r=andy Why not checking the result here?? */

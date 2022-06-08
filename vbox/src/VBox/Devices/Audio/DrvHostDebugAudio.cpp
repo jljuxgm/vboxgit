@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 63532 2016-08-16 10:01:19Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 63534 2016-08-16 10:14:46Z vboxsync $ */
 /** @file
  * Debug audio driver -- host backend for dumping and injecting audio data
  * from/to the device emulation.
@@ -137,7 +137,7 @@ static int debugCreateStreamIn(PPDMIHOSTAUDIO pInterface,
     if (RT_SUCCESS(rc))
     {
         if (pCfgAcq)
-            pCfgAcq->cSamples = _1K;
+            pCfgAcq->cSampleBufferSize = _1K;
     }
 
     LogFlowFuncLeaveRC(rc);
@@ -182,7 +182,7 @@ static int debugCreateStreamOut(PPDMIHOSTAUDIO pInterface,
     if (RT_SUCCESS(rc))
     {
         if (pCfgAcq)
-            pCfgAcq->cSamples = pDbgStream->Out.cMaxSamplesInPlayBuffer;
+            pCfgAcq->cSampleBufferSize = pDbgStream->Out.cMaxSamplesInPlayBuffer;
     }
 
     LogFlowFuncLeaveRC(rc);

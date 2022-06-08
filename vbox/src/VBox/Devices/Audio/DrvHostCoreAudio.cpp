@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 63529 2016-08-16 09:37:04Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 63534 2016-08-16 10:14:46Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -1561,7 +1561,7 @@ static int coreAudioInitIn(PDRVHOSTCOREAUDIO pThis, PPDMAUDIOSTREAM pStream,
         LogFunc(("cSamples=%RU32\n", cSamples));
 
         if (pCfgAcq)
-            pCfgAcq->cSamples = cSamples;
+            pCfgAcq->cSampleBufferSize = cSamples;
     }
     else
     {
@@ -1881,7 +1881,7 @@ static int coreAudioInitOut(PDRVHOSTCOREAUDIO pThis,
         LogFunc(("cSamples=%RU32\n", cSamples));
 
         if (pCfgAcq)
-            pCfgAcq->cSamples = cSamples;
+            pCfgAcq->cSampleBufferSize = cSamples;
     }
     else
     {
