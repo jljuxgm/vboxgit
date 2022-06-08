@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 62854 2016-08-01 22:36:01Z vboxsync $ */
+/* $Id: scm.cpp 62884 2016-08-02 15:53:26Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -786,6 +786,7 @@ static int scmSettingsLoadFile(PSCMSETTINGS pSettings, const char *pszFilename)
     return rc;
 }
 
+#if 0 /* unused */
 /**
  * Parse the specified settings file creating a new settings struct from it.
  *
@@ -812,6 +813,7 @@ static int scmSettingsCreateFromFile(PSCMSETTINGS *ppSettings, const char *pszFi
     *ppSettings = NULL;
     return rc;
 }
+#endif
 
 
 /**
@@ -1629,7 +1631,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 62854 $";
+                static const char s_szRev[] = "$Revision: 62884 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
