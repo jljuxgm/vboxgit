@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 64941 2016-12-17 02:20:53Z vboxsync $
+# $Id: virtual_test_sheriff.py 64942 2016-12-17 02:35:09Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 64941 $"
+__version__ = "$Revision: 64942 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 64941 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 64942 $ \n');
 
 
     def eprint(self, sText):
@@ -520,7 +520,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 64941 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 64942 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -691,8 +691,14 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
           'Exception: 0x800706be (Call to remote object failed (NS_ERROR_CALL_FAILED))' ),
         ( True,  ktReason_Host_HostMemoryLow,                       'HostMemoryLow' ),
         ( True,  ktReason_Host_HostMemoryLow,                       'Failed to procure handy pages; rc=VERR_NO_MEMORY' ),
+    ];
+
+    ## Things we search a VBoxHardening.log file for to figure out why something went bust.
+    katSimpleVBoxHardeningLogReasons = [
+        # ( Whether to stop on hit, reason tuple, needle text. )
         ( True,  ktReason_Host_DriverNotLoaded,                     'Error opening VBoxDrvStub:  STATUS_OBJECT_NAME_NOT_FOUND' ),
     ];
+
 
     ## Things we search the _RIGHT_ _STRIPPED_ vgatext for.
     katSimpleVgaTextReasons = [
@@ -802,6 +808,15 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                             return True;
                         fFoundSomething = True;
 
+            # Check VBoxHardening.log.
+            if sNtHardLog is not None:
+                for fStopOnHit, tReason, sNeedle in self.katSimpleVBoxHardeningLogReasons:
+                    if sNtHardLog.find(sNeedle) > 0:
+                        oCaseFile.noteReasonForId(tReason, oFailedResult.idTestResult);
+                        if fStopOnHit:
+                            return True;
+                        fFoundSomething = True;
+
             #
             # Check for repeated reboots...
             #
@@ -818,20 +833,25 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         # appear in the order that terminateVmBySession uploads them).
         #
         sVMLog      = None;
+        sNtHardLog  = None;
         sScreenHash = None;
         sKrnlLog    = None;
         sVgaText    = None;
         sInfoText   = None;
         for oFile in oFailedResult.aoFiles:
             if oFile.sKind == TestResultFileData.ksKind_LogReleaseVm:
-                if sVMLog is not None:
-                    if investigateLogSet() is True:
-                        return True;
-                sKrnlLog    = None;
-                sScreenHash = None;
-                sVgaText    = None;
-                sInfoText   = None;
-                sVMLog      = oCaseFile.getLogFile(oFile);
+                if 'VBoxHardening.log' not in oFile.sFile:
+                    if sVMLog is not None:
+                        if investigateLogSet() is True:
+                            return True;
+                    sInfoText   = None;
+                    sVgaText    = None;
+                    sKrnlLog    = None;
+                    sScreenHash = None;
+                    sNtHardLog  = None;
+                    sVMLog      = oCaseFile.getLogFile(oFile);
+                else:
+                    sNtHardLog  = oCaseFile.getLogFile(oFile);
             elif oFile.sKind == TestResultFileData.ksKind_LogGuestKernel:
                 sKrnlLog  = oCaseFile.getLogFile(oFile);
             elif oFile.sKind == TestResultFileData.ksKind_InfoVgaText:
@@ -843,7 +863,10 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                 if sScreenHash is not None:
                     sScreenHash = sScreenHash.lower();
                     self.vprint(u'%s  %s' % ( sScreenHash, oFile.sFile,));
-        if sVMLog is not None and investigateLogSet() is True:
+
+        if    (   sVMLog     is not None \
+               or sNtHardLog is not None) \
+          and investigateLogSet() is True:
             return True;
 
         return None;
