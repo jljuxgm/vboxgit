@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 63802 2016-09-12 13:54:35Z vboxsync $ */
+/* $Id: QED.cpp 63811 2016-09-13 11:33:47Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -1592,7 +1592,7 @@ static DECLCALLBACK(int) qedCreate(const char *pszFilename, uint64_t cbSize,
                 *ppBackendData = pImage;
         }
 
-        if RT_FAILURE(rc)
+        if (RT_FAILURE(rc))
             RTMemFree(pImage);
     }
     else

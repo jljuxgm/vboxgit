@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 63805 2016-09-12 17:45:32Z vboxsync $ */
+/* $Id: VMDK.cpp 63811 2016-09-13 11:33:47Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -3617,7 +3617,7 @@ static int vmdkCreateRegularImage(PVMDKIMAGE pImage, uint64_t cbSize,
         if (uImageFlags & VD_IMAGE_FLAGS_FIXED)
         {
             rc = vdIfIoIntFileSetAllocationSize(pImage->pIfIo, pExtent->pFile->pStorage, cbExtent,
-                                                0 /* fFlags */, pIfProgress->pfnProgress, pIfProgress->Core.pvUser,
+                                                0 /* fFlags */, pIfProgress,
                                                 uPercentStart + cbOffset * uPercentSpan / cbSize,
                                                 cbExtent * uPercentSpan / cbSize);
             if (RT_FAILURE(rc))

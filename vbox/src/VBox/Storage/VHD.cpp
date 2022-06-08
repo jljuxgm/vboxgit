@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 63802 2016-09-12 13:54:35Z vboxsync $ */
+/* $Id: VHD.cpp 63811 2016-09-13 11:33:47Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -1165,7 +1165,7 @@ static int vhdCreateImage(PVHDIMAGE pImage, uint64_t cbSize,
             pImage->u64DataOffset     = VHD_FOOTER_DATA_OFFSET_FIXED;
             pImage->uCurrentEndOfFile = cbSize;
             rc = vdIfIoIntFileSetAllocationSize(pImage->pIfIo, pImage->pStorage, pImage->uCurrentEndOfFile + sizeof(VHDFooter),
-                                                0 /* fFlags */, pIfProgress->pfnProgress, pIfProgress->Core.pvUser,
+                                                0 /* fFlags */, pIfProgress,
                                                 uPercentStart, uPercentSpan);
             if (RT_FAILURE(rc))
                 rc =  vdIfError(pImage->pIfError, rc, RT_SRC_POS, N_("VHD: cannot set the file size for '%s'"), pImage->pszFilename);

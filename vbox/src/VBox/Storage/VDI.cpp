@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 63809 2016-09-13 11:23:50Z vboxsync $ */
+/* $Id: VDI.cpp 63811 2016-09-13 11:33:47Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -609,9 +609,7 @@ static int vdiImageCreateFile(PVDIIMAGEDESC pImage, unsigned uOpenFlags,
              * effective than expanding file by write operations.
              */
             rc = vdIfIoIntFileSetAllocationSize(pImage->pIfIo, pImage->pStorage, cbTotal, 0 /* fFlags */,
-                                                pIfProgress ? pIfProgress->pfnProgress : NULL,
-                                                pIfProgress ? pIfProgress->Core.pvUser : NULL,
-                                                uPercentStart, uPercentSpan);
+                                                pIfProgress, uPercentStart, uPercentSpan);
             pImage->cbImage = cbTotal;
         }
         else
