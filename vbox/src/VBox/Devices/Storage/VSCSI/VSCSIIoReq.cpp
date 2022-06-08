@@ -1,4 +1,4 @@
-/* $Id: VSCSIIoReq.cpp 63992 2016-09-25 17:58:56Z vboxsync $ */
+/* $Id: VSCSIIoReq.cpp 63993 2016-09-25 18:09:21Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: I/O request handling.
  */
@@ -35,7 +35,7 @@ int vscsiIoReqFlushEnqueue(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq)
     int rc = VINF_SUCCESS;
     PVSCSIIOREQINT pVScsiIoReq = NULL;
 
-    rc = vscsiLunReqAlloc(pVScsiLun, (uint64_t)pVScsiReq, &pVScsiIoReq);
+    rc = vscsiLunReqAlloc(pVScsiLun, (uintptr_t)pVScsiReq, &pVScsiIoReq);
     if (RT_SUCCESS(rc))
     {
         pVScsiIoReq->pVScsiReq = pVScsiReq;
@@ -66,7 +66,7 @@ int vscsiIoReqTransferEnqueue(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq,
     LogFlowFunc(("pVScsiLun=%#p pVScsiReq=%#p enmTxDir=%u uOffset=%llu cbTransfer=%u\n",
                  pVScsiLun, pVScsiReq, enmTxDir, uOffset, cbTransfer));
 
-    rc = vscsiLunReqAlloc(pVScsiLun, (uint64_t)pVScsiReq, &pVScsiIoReq);
+    rc = vscsiLunReqAlloc(pVScsiLun, (uintptr_t)pVScsiReq, &pVScsiIoReq);
     if (RT_SUCCESS(rc))
     {
         pVScsiIoReq->pVScsiReq       = pVScsiReq;
@@ -100,7 +100,7 @@ int vscsiIoReqUnmapEnqueue(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq,
     LogFlowFunc(("pVScsiLun=%#p pVScsiReq=%#p paRanges=%#p cRanges=%u\n",
                  pVScsiLun, pVScsiReq, paRanges, cRanges));
 
-    rc = vscsiLunReqAlloc(pVScsiLun, (uint64_t)pVScsiReq, &pVScsiIoReq);
+    rc = vscsiLunReqAlloc(pVScsiLun, (uintptr_t)pVScsiReq, &pVScsiIoReq);
     if (RT_SUCCESS(rc))
     {
         pVScsiIoReq->pVScsiReq        = pVScsiReq;
