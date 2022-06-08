@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 64769 2016-12-01 10:36:31Z vboxsync $ */
+/* $Id: VMM.cpp 66757 2017-05-03 13:00:08Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1480,6 +1480,9 @@ static DECLCALLBACK(int) vmmR3SendInitIpi(PVM pVM, VMCPUID idCpu)
     VMCPU_ASSERT_EMT(pVCpu);
 
     Log(("vmmR3SendInitIpi for VCPU %d\n", idCpu));
+
+    /** @todo Figure out how to handle a nested-guest intercepts here for INIT
+     *  IPI (e.g. SVM_EXIT_INIT). */
 
     PGMR3ResetCpu(pVM, pVCpu);
     PDMR3ResetCpu(pVCpu);   /* Only clears pending interrupts force flags */
