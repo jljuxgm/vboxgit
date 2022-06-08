@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64013 2016-09-26 14:30:57Z vboxsync $
+# $Id: Makefile.kmk 64014 2016-09-26 14:46:39Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -268,7 +268,7 @@ ifdef VBOX_GSOAP_INSTALLED
 	$(VBOXWEB_OUT_DIR)/soapC-20.cpp
   vboxsoap_CXXFLAGS += \
   	$(VBOX_GCC_Wno-vla) \
-	-Wno-format
+	$(if-expr $(KBUILD_TARGET) == "win",,-Wno-format)
   endif
   vboxsoap_CLEAN := $(vboxsoap_SOURCES) # lazy bird
   vboxsoap_SOURCES += \
