@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 64399 2016-10-24 15:49:40Z vboxsync $ */
+/* $Id: PGMPhys.cpp 64911 2016-12-16 14:02:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2596,7 +2596,7 @@ static int pgmR3PhysMMIOExCreate(PVM pVM, PPDMDEVINS pDevIns, uint32_t iSubDev, 
         const uint32_t   cPagesTrackedByChunk = RT_MIN(cPagesLeft, cPagesPerChunk);
         const size_t     cbRange = RT_OFFSETOF(PGMREGMMIORANGE, RamRange.aPages[cPagesTrackedByChunk]);
         PPGMREGMMIORANGE pNew    = NULL;
-        if (   cPagesTrackedByChunk > cPagesLeft
+        if (   cPagesTrackedByChunk > cPagesLeft /**< @todo r=klaus the first part of the condition is guaranteed false due to RT_MIN above */
             || cbRange >= _1M)
         {
             /*
@@ -2704,8 +2704,10 @@ static int pgmR3PhysMMIOExCreate(PVM pVM, PPDMDEVINS pDevIns, uint32_t iSubDev, 
 
         *ppNext = pNew;
         ASMCompilerBarrier();
+        cPagesLeft -= cPagesTrackedByChunk;
         ppNext = &pNew->pNextR3;
     }
+    Assert(cPagesLeft == 0);
 
     if (RT_SUCCESS(rc))
     {
@@ -3490,7 +3492,7 @@ VMMR3DECL(int) PGMR3PhysMMIOExMap(PVM pVM, PPDMDEVINS pDevIns, uint32_t iSubDev,
         }
     }
 
-    /* 
+    /*
      * We're good, set the flags and invalid the mapping TLB.
      */
     for (PPGMREGMMIORANGE pCurMmio = pFirstMmio; ; pCurMmio = pCurMmio->pNextR3)
