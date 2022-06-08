@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66323 2017-03-29 08:03:19Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66327 2017-03-29 10:12:02Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66323 $"
+__version__ = "$Revision: 66327 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -173,6 +173,7 @@ g_kdOpTypes = {
 
     # ModR/M.rm - memory only.
     'Ma':   ( 'IDX_UseModRM',       'rm',     '%Ma',  'Ma',      ), ##< Only used by BOUND.
+    'MbRO': ( 'IDX_UseModRM',       'rm',     '%Mb',  'Mb',      ),
     'Mq':   ( 'IDX_UseModRM',       'rm',     '%Mq',  'Mq',      ),
 
     # ModR/M.reg
@@ -1780,7 +1781,7 @@ class SimpleParser(object):
     def parseTagOpcode(self, sTag, aasSections, iTagLine, iEndLine):
         """
         Tag:        \@opcode
-        Value:      0x?? | /reg | mr/reg | 11 /reg | !11 /reg | 11 mr/reg | !11 mr/reg
+        Value:      0x?? | /reg (TODO: | mr/reg | 11 /reg | !11 /reg | 11 mr/reg | !11 mr/reg)
 
         The opcode byte or sub-byte for the instruction in the context of a map.
         """
@@ -1788,9 +1789,11 @@ class SimpleParser(object):
 
         # Flatten and validate the value.
         sOpcode = self.flattenAllSections(aasSections);
-        if sOpcode in g_kdSpecialOpcodes:
+        if _isValidOpcodeByte(sOpcode):
             pass;
-        elif not _isValidOpcodeByte(sOpcode):
+        elif len(sOpcode) == 2 and sOpcode[0] == '/' and sOpcode[1] in '012345678':
+            pass;
+        else:
             return self.errorComment(iTagLine, '%s: invalid opcode: %s' % (sTag, sOpcode,));
 
         # Set it.
@@ -2636,10 +2639,14 @@ class SimpleParser(object):
 
             # Check the parameter locations for the encoding.
             if g_kdIemForms[sForm][1] is not None:
-                for iOperand, sWhere in enumerate(g_kdIemForms[sForm][1]):
-                    if oInstr.aoOperands[iOperand].sWhere != sWhere:
-                        self.error('%s: current instruction @op%u and a_Form location does not match: %s vs %s (%s)'
-                                   % (sMacro, iOperand + 1, oInstr.aoOperands[iOperand].sWhere, sWhere, sForm,));
+                if len(g_kdIemForms[sForm][1]) != len(oInstr.aoOperands):
+                    self.error('%s: The a_Form=%s has a different operand count: %s (form) vs %s'
+                               % (sMacro, sForm, len(g_kdIemForms[sForm][1]), len(oInstr.aoOperands) ));
+                else:
+                    for iOperand, sWhere in enumerate(g_kdIemForms[sForm][1]):
+                        if oInstr.aoOperands[iOperand].sWhere != sWhere:
+                            self.error('%s: current instruction @op%u and a_Form location does not match: %s vs %s (%s)'
+                                       % (sMacro, iOperand + 1, oInstr.aoOperands[iOperand].sWhere, sWhere, sForm,));
 
         # Stats.
         if not self.oReStatsName.match(sStats):
