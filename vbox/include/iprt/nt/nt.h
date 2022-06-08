@@ -1,4 +1,4 @@
-/* $Id: nt.h 64234 2016-10-13 10:10:42Z vboxsync $ */
+/* $Id: nt.h 64237 2016-10-13 10:59:57Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -182,6 +182,12 @@
 /*
  * Use ntifs.h and wdm.h.
  */
+# if _MSC_VER >= 1200 /* Fix/workaround for KeInitializeSpinLock visibility issue on AMD64. */
+#  define FORCEINLINE static __forceinline
+# else
+#  define FORCEINLINE static __inline
+# endif
+
 # pragma warning(push)
 # ifdef RT_ARCH_X86
 #  define _InterlockedAddLargeStatistic  _InterlockedAddLargeStatistic_StupidDDKVsCompilerCrap
