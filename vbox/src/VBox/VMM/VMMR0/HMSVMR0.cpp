@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 62186 2016-07-12 11:17:25Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 62218 2016-07-13 13:03:42Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3261,7 +3261,6 @@ static void hmR0SvmPostRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, PSVMT
     /* TSC read must be done early for maximum accuracy. */
     if (!(pVmcb->ctrl.u32InterceptCtrl1 & SVM_CTRL1_INTERCEPT_RDTSC))
         TMCpuTickSetLastSeen(pVCpu, ASMReadTSC() + pVmcb->ctrl.u64TSCOffset);
-
 
     if (pSvmTransient->fRestoreTscAuxMsr)
     {
