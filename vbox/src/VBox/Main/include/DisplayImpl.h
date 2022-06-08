@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 63459 2016-08-15 07:51:18Z vboxsync $ */
+/* $Id: DisplayImpl.h 63487 2016-08-15 14:58:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -527,12 +527,6 @@ void videoAccelLeaveVMMDev(VIDEOACCEL *pVideoAccel);
 
 
 /* helper function, code in DisplayResampleImage.cpp */
-#if 0
-void gdImageCopyResampled(uint8_t *dst, uint8_t *src,
-                            int dstX, int dstY, int srcX, int srcY,
-                            int dstW, int dstH, int srcW, int srcH);
-#endif
-
 void BitmapScale32(uint8_t *dst, int dstW, int dstH,
                    const uint8_t *src, int iDeltaLine, int srcW, int srcH);
 
