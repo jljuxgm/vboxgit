@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 63847 2016-09-15 09:45:29Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -1117,7 +1117,7 @@ static int audioMixBufMixTo(PPDMAUDIOMIXBUF pDst, PPDMAUDIOMIXBUF pSrc, uint32_t
 
     AUDMIXBUF_LOG(("cReadTotal=%RU32 (pcProcessed), cWrittenTotal=%RU32, cSrcMixed=%RU32, cDstUsed=%RU32, rc=%Rrc\n",
                    cReadTotal, cWrittenTotal, pSrc->cMixed, pDst->cUsed, rc));
-    return VINF_SUCCESS;
+    return rc;
 }
 
 /**
