@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 65135 2017-01-05 07:04:14Z vboxsync $ */
+/* $Id: APICAll.cpp 65379 2017-01-20 07:57:47Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2670,7 +2670,7 @@ VMM_INT_DECL(int) APICGetInterrupt(PVMCPU pVCpu, uint8_t *pu8Vector, uint32_t *p
 {
     VMCPU_ASSERT_EMT(pVCpu);
     Assert(pu8Vector);
-    NOREF(pu32TagSrc);
+    *pu32TagSrc = 0;    /** @todo do the debug tagging. */
 
     LogFlow(("APIC%u: apicGetInterrupt:\n", pVCpu->idCpu));
 
