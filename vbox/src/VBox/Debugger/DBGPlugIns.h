@@ -1,4 +1,4 @@
-/* $Id: DBGPlugIns.h 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: DBGPlugIns.h 64371 2016-10-23 00:53:17Z vboxsync $ */
 /** @file
  * DBGPlugIns - Debugger Plug-Ins.
  *
@@ -25,7 +25,7 @@
 
 RT_C_DECLS_BEGIN
 
-//extern const DBGFOSREG g_DBGDiggerFreeBSD;
+extern const DBGFOSREG g_DBGDiggerFreeBsd;
 extern const DBGFOSREG g_DBGDiggerDarwin;
 extern const DBGFOSREG g_DBGDiggerLinux;
 extern const DBGFOSREG g_DBGDiggerOS2;

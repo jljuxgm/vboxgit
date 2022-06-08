@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62480 2016-07-22 18:29:41Z vboxsync $
+# $Id: Makefile.kmk 64371 2016-10-23 00:53:17Z vboxsync $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -63,6 +63,7 @@ DbgPlugInDiggers_SOURCES = \
 	DBGPlugInSolaris.cpp \
 	DBGPlugInWinNt.cpp \
 	DBGPlugInOS2.cpp \
+	DBGPlugInFreeBsd.cpp \
 	DBGPlugInCommonELF.cpp
 DbgPlugInDiggers_LIBS = \
 	$(PATH_STAGE_LIB)/DisasmR3$(VBOX_SUFF_LIB) \
