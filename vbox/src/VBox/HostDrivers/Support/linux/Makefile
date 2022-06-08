@@ -1,4 +1,4 @@
-# $Id: Makefile 61411 2016-06-02 13:06:58Z vboxsync $
+# $Id: Makefile 66415 2017-04-04 13:17:22Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -148,6 +148,7 @@ OBJS   = \
 	generic/RTSemEventMultiWait-2-ex-generic.o \
 	generic/RTSemEventMultiWaitNoResume-2-ex-generic.o \
 	generic/RTTimerCreate-generic.o \
+	generic/rtStrFormatKernelAddress-generic.o \
 	generic/errvars-generic.o \
 	generic/mppresent-generic.o \
 	generic/uuid-generic.o \

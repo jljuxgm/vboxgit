@@ -1,4 +1,4 @@
-# $Id: Makefile 60603 2016-04-20 14:32:19Z vboxsync $
+# $Id: Makefile 66415 2017-04-04 13:17:22Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -141,6 +141,7 @@ SRCS += \
 	RTSemEventMultiWait-2-ex-generic.c \
 	RTSemEventMultiWaitNoResume-2-ex-generic.c \
 	RTTimerCreate-generic.c \
+	rtStrFormatKernelAddress-generic.c \
 	errvars-generic.c \
 	mppresent-generic.c \
 	timer-generic.c

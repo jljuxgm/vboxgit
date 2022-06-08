@@ -1,4 +1,4 @@
-/* $Id: string.h 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: string.h 66415 2017-04-04 13:17:22Z vboxsync $ */
 /** @file
  * IPRT - Internal RTStr header.
  */
@@ -51,6 +51,20 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                                  int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize);
 DECLHIDDEN(size_t) rtstrFormatType(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **ppszFormat, va_list *pArgs,
                                    int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize);
+
+/**
+ * Format kernel address into @a pszBuf.
+ *
+ * @returns Number of bytes returned.
+ * @param   pszBuf          The return buffer.
+ * @param   cbBuf           The buffer size.
+ * @param   uPtr            The ring-0 pointer value.
+ * @param   cchWidth        The specified width, -1 if not given.
+ * @param   cchPrecision    The specified precision.
+ * @param   fFlags          Format flags, RTSTR_F_XXX.
+ */
+DECLHIDDEN(size_t) rtStrFormatKernelAddress(char *pszBuf, size_t cbBuf, RTR0INTPTR uPtr, signed int cchWidth,
+                                            signed int cchPrecision, unsigned int fFlags);
 
 #ifdef RT_WITH_ICONV_CACHE
 DECLHIDDEN(void) rtStrIconvCacheInit(struct RTTHREADINT *pThread);

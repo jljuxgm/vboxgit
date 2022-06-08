@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66072 2017-03-13 20:15:33Z vboxsync $
+# $Id: Makefile.kmk 66415 2017-04-04 13:17:22Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -361,6 +361,7 @@ if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) ## @todo some of 
 	$(VBOX_PATH_RUNTIME_SRC)/generic/RTPathAbs-generic.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/generic/RTPathGetCurrentDrive-generic.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/generic/RTPathGetCurrentOnDrive-generic.cpp \
+	$(VBOX_PATH_RUNTIME_SRC)/generic/rtStrFormatKernelAddress-generic.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/generic/memsafer-generic.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/generic/uuid-generic.cpp \
        \

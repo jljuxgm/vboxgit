@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 60603 2016-04-20 14:32:19Z vboxsync $
+# $Id: files_vboxdrv 66415 2017-04-04 13:17:22Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -159,6 +159,7 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Runtime/include/internal/sched.h=>include/internal/sched.h \
     ${PATH_ROOT}/src/VBox/Runtime/include/internal/process.h=>include/internal/process.h \
     ${PATH_ROOT}/src/VBox/Runtime/include/internal/time.h=>include/internal/time.h \
+    ${PATH_ROOT}/src/VBox/Runtime/generic/rtStrFormatKernelAddress-generic.cpp=>generic/rtStrFormatKernelAddress-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/generic/RTAssertShouldPanic-generic.cpp=>generic/RTAssertShouldPanic-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/generic/RTLogWriteStdErr-stub-generic.cpp=>generic/RTLogWriteStdErr-stub-generic.c \
     ${PATH_ROOT}/src/VBox/Runtime/generic/RTLogWriteStdOut-stub-generic.cpp=>generic/RTLogWriteStdOut-stub-generic.c \

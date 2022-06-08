@@ -1,4 +1,4 @@
-# $Id: Makefile 54609 2015-03-03 20:32:45Z vboxsync $
+# $Id: Makefile 66415 2017-04-04 13:17:22Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -122,6 +122,7 @@ SRCS += \
 	RTSemEventMultiWait-2-ex-generic.c \
 	RTSemEventMultiWaitNoResume-2-ex-generic.c \
 	RTTimerCreate-generic.c \
+	rtStrFormatKernelAddress-generic.c \
 	timer-generic.c \
 	errvars-generic.c \
 	mppresent-generic.c
