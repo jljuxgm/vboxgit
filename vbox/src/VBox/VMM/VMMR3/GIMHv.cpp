@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 62354 2016-07-20 12:19:28Z vboxsync $ */
+/* $Id: GIMHv.cpp 62357 2016-07-20 13:03:13Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -556,6 +556,7 @@ VMMR3_INT_DECL(void) gimR3HvReset(PVM pVM)
         PVMCPU pVCpu = &pVM->aCpus[i];
         pVCpu->gim.s.u.HvCpu.uSint2Msr = MSR_GIM_HV_SINT_MASKED_BIT;
         pVCpu->gim.s.u.HvCpu.uSimpMsr  = 0;
+        pVCpu->gim.s.u.HvCpu.uApicAssistPageMsr = 0;
     }
 }
 
