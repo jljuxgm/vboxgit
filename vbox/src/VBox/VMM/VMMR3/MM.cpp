@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 63660 2016-08-30 13:38:04Z vboxsync $ */
+/* $Id: MM.cpp 63664 2016-08-30 14:04:23Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -837,7 +837,7 @@ VMMR3DECL(uint32_t) MMR3PhysGetRamSizeBelow4GB(PVM pVM)
 VMMR3DECL(uint64_t) MMR3PhysGetRamSizeAbove4GB(PVM pVM)
 {
     VM_ASSERT_VALID_EXT_RETURN(pVM, UINT64_MAX);
-    return pVM->mm.s.cbRamBelow4GB;
+    return pVM->mm.s.cbRamAbove4GB;
 }
 
 
