@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 62877 2016-08-02 15:05:45Z vboxsync $ */
+/* $Id: SUPLib.cpp 64088 2016-09-29 11:10:42Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1110,6 +1110,13 @@ SUPR3DECL(int) SUPR3PageAllocEx(size_t cPages, uint32_t fFlags, void **ppvPages,
             }
         return VINF_SUCCESS;
     }
+
+    /* Check that we've got a kernel connection so rtMemSaferSupR3AllocPages
+       can do fallback without first having to hit assertions. */
+    if (g_supLibData.hDevice != SUP_HDEVICE_NIL)
+    { /* likely */ }
+    else
+        return VERR_WRONG_ORDER;
 
     /*
      * Use fallback for non-R0 mapping?
