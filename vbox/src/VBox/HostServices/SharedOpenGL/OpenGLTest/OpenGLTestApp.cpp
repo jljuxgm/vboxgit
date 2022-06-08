@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 63325 2016-08-11 11:26:20Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -355,9 +355,9 @@ int main(int argc, char **argv)
 }
 
 #ifdef RT_OS_WINDOWS
-extern "C" int WINAPI WinMain(HINSTANCE hInstance,
-    HINSTANCE /*hPrevInstance*/, LPSTR lpCmdLine, int /*nShowCmd*/)
+extern "C" int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
+    RT_NOREF(hInstance, hPrevInstance, lpCmdLine, nShowCmd);
     return main(__argc, __argv);
 }
 #endif
