@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 64274 2016-10-14 10:33:43Z vboxsync $ */
+/* $Id: vscsi.h 64654 2016-11-13 18:00:51Z vboxsync $ */
 /** @file
  * VBox storage drivers - Virtual SCSI driver
  */
@@ -230,7 +230,8 @@ typedef DECLCALLBACK(void) FNVSCSIREQCOMPLETED(VSCSIDEVICE hVScsiDevice,
                                                void *pvVScsiReqUser,
                                                int rcScsiCode,
                                                bool fRedoPossible,
-                                               int rcReq);
+                                               int rcReq,
+                                               size_t cbXfer);
 /** Pointer to a virtual SCSI request completed callback. */
 typedef FNVSCSIREQCOMPLETED *PFNVSCSIREQCOMPLETED;
 
