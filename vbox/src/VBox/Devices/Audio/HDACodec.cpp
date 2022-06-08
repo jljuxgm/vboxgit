@@ -1,10 +1,9 @@
-/* $Id: DevIchHdaCodec.cpp 64333 2016-10-20 14:23:29Z vboxsync $ */
+/* $Id: HDACodec.cpp 64351 2016-10-21 11:29:03Z vboxsync $ */
 /** @file
- * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
+ * HDACodec - VBox HD Audio Codec.
  *
- * Implemented against "Intel I/O Controller Hub 6 (ICH6) High Definition
- * Audio / AC '97 - Programmer's Reference Manual (PRM)", document number
- * 302349-003.
+ * Implemented based on the Intel HD Audio specification and the
+ * Sigmatel/IDT STAC9220 datasheet.
  */
 
 /*
@@ -35,8 +34,8 @@
 
 #include "VBoxDD.h"
 #include "DrvAudio.h"
-#include "DevIchHdaCodec.h"
-#include "DevIchHdaCommon.h"
+#include "HDACodec.h"
+#include "DevHDACommon.h"
 #include "AudioMixer.h"
 
 

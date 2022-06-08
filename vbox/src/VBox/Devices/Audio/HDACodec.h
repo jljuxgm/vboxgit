@@ -1,6 +1,6 @@
-/* $Id: DevIchHdaCodec.h 60941 2016-05-12 13:12:20Z vboxsync $ */
+/* $Id: HDACodec.h 64351 2016-10-21 11:29:03Z vboxsync $ */
 /** @file
- * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
+ * HDACodec - VBox HD Audio Codec.
  */
 
 /*

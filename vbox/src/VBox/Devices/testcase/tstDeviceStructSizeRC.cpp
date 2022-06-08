@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 64344 2016-10-20 19:52:33Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 64351 2016-10-21 11:29:03Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -116,7 +116,7 @@
 # undef LOG_GROUP
 # include "../Audio/DevIchAc97.cpp"
 # undef LOG_GROUP
-# include "../Audio/DevIchHda.cpp"
+# include "../Audio/DevHDA.cpp"
 #ifdef VBOX_WITH_NVME_IMPL
 # undef LOG_GROUP
 # include "../Storage/DevNVMe.cpp"

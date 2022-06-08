@@ -1,6 +1,6 @@
-/* $Id: DevIchHdaCommon.h 63488 2016-08-15 15:49:05Z vboxsync $ */
+/* $Id: DevHDACommon.h 64351 2016-10-21 11:29:03Z vboxsync $ */
 /** @file
- * DevIchHdaCommon.h - Shared defines / functions between controller and codec.
+ * DevHDACommon.h - Shared defines / functions between HDA controller and codec.
  */
 
 /*
