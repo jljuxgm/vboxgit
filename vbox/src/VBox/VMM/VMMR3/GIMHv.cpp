@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 64045 2016-09-27 13:35:34Z vboxsync $ */
+/* $Id: GIMHv.cpp 64144 2016-10-04 13:53:55Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -254,8 +254,8 @@ VMMR3_INT_DECL(int) gimR3HvInit(PVM pVM, PCFGMNODE pGimCfg)
         pHv->uBaseFeat = 0
                        //| GIM_HV_BASE_FEAT_VP_RUNTIME_MSR
                        | GIM_HV_BASE_FEAT_PART_TIME_REF_COUNT_MSR
-                       //| GIM_HV_BASE_FEAT_BASIC_SYNIC_MSRS          // Required for synethetic timers
-                       //| GIM_HV_BASE_FEAT_STIMER_MSRS               // Required for synethetic timers
+                       //| GIM_HV_BASE_FEAT_BASIC_SYNIC_MSRS          // Both required for synethetic timers
+                       //| GIM_HV_BASE_FEAT_STIMER_MSRS               // Both required for synethetic timers
                        | GIM_HV_BASE_FEAT_APIC_ACCESS_MSRS
                        | GIM_HV_BASE_FEAT_HYPERCALL_MSRS
                        | GIM_HV_BASE_FEAT_VP_ID_MSR
