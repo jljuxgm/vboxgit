@@ -1,4 +1,4 @@
-/* $Id: blitter.cpp 63199 2016-08-09 11:40:19Z vboxsync $ */
+/* $Id: blitter.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
 /** @file
  * Blitter API implementation
  */
@@ -243,8 +243,7 @@ void CrMBltImgScaled(const CR_BLITTER_IMG *pSrc, const RTRECTSIZE *pSrcRectSize,
 
     float strX = ((float)dstWidth) / srcWidth;
     float strY = ((float)dstHeight) / srcHeight;
-    bool fScale = (dstWidth != srcWidth || dstHeight != srcHeight);
-    Assert(fScale);
+    Assert(dstWidth != srcWidth || dstHeight != srcHeight);
 
     RTRECT Intersection;
     RTRECT ScaledRestrictSrcRect;

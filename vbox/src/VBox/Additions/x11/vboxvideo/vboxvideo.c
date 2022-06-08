@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 63221 2016-08-09 16:13:14Z vboxsync $ */
+/* $Id: vboxvideo.c 63369 2016-08-12 16:45:31Z vboxsync $ */
 /** @file
  * Linux Additions X11 graphics driver
  */
@@ -1037,6 +1037,7 @@ static void setSizesRandR11(ScrnInfoPtr pScrn)
 
 static void setSizesAndCursorIntegration(ScrnInfoPtr pScrn, bool fScreenInitTime)
 {
+    RT_NOREF(fScreenInitTime);
     TRACE_LOG("fScreenInitTime=%d\n", (int)fScreenInitTime);
 #ifdef VBOXVIDEO_13
 # if GET_ABI_MAJOR(ABI_VIDEODRV_VERSION) >= 5

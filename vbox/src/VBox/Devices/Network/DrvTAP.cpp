@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 63218 2016-08-09 15:52:35Z vboxsync $ */
+/* $Id: DrvTAP.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
 /** @file
  * DrvTAP - Universal TAP network transport driver.
  */
@@ -168,8 +168,11 @@ static DECLCALLBACK(int) drvTAPNetworkUp_BeginXmit(PPDMINETWORKUP pInterface, bo
 static DECLCALLBACK(int) drvTAPNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, size_t cbMin,
                                                   PCPDMNETWORKGSO pGso, PPPDMSCATTERGATHER ppSgBuf)
 {
+    RT_NOREF(pInterface);
+#ifdef VBOX_STRICT
     PDRVTAP pThis = PDMINETWORKUP_2_DRVTAP(pInterface);
     Assert(RTCritSectIsOwner(&pThis->XmitLock));
+#endif
 
     /*
      * Allocate a scatter / gather buffer descriptor that is immediately
@@ -213,8 +216,12 @@ static DECLCALLBACK(int) drvTAPNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, siz
  */
 static DECLCALLBACK(int) drvTAPNetworkUp_FreeBuf(PPDMINETWORKUP pInterface, PPDMSCATTERGATHER pSgBuf)
 {
+    RT_NOREF(pInterface);
+#ifdef VBOX_STRICT
     PDRVTAP pThis = PDMINETWORKUP_2_DRVTAP(pInterface);
     Assert(RTCritSectIsOwner(&pThis->XmitLock));
+#endif
+
     if (pSgBuf)
     {
         Assert((pSgBuf->fFlags & PDMSCATTERGATHER_FLAGS_MAGIC_MASK) == PDMSCATTERGATHER_FLAGS_MAGIC);

@@ -1,4 +1,4 @@
-/* $Id: ATAPIPassthrough.cpp 62926 2016-08-03 15:15:39Z vboxsync $ */
+/* $Id: ATAPIPassthrough.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
 /** @file
  * VBox storage devices: ATAPI emulation (common code for DevATA and DevAHCI).
  */
@@ -414,6 +414,8 @@ static int atapiTrackListUpdateFromReadDiscInformation(PTRACKLIST pTrackList, co
     return VERR_NOT_IMPLEMENTED;
 }
 
+#ifdef LOG_ENABLED
+
 /**
  * Converts the given track data form to a string.
  *
@@ -493,6 +495,8 @@ static void atapiTrackListDump(PTRACKLIST pTrackList)
                 pTrack->fFlags & TRACK_FLAGS_LEAD_OUT ? "Lead-Out" : ""));
     }
 }
+
+#endif /* LOG_ENABLED */
 
 DECLHIDDEN(int) ATAPIPassthroughTrackListCreateEmpty(PTRACKLIST *ppTrackList)
 {

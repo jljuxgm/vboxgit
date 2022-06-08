@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 63360 2016-08-12 13:58:38Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -858,6 +858,7 @@ PDMAUDIO_IHOSTAUDIO_EMIT_STREAMCAPTURE(drvHostPulseAudio)
       /*  if (cWrittenTotal)
             rc = AudioMixBufMixToParent(&pStream->MixBuf, cWrittenTotal,
                                         &cProcessed);*/
+        NOREF(cProcessed);
         if (pcbRead)
             *pcbRead = cWrittenTotal;
 

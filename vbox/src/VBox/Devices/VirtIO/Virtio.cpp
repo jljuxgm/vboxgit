@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 62962 2016-08-04 09:00:52Z vboxsync $ */
+/* $Id: Virtio.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -799,17 +799,19 @@ static DECLCALLBACK(void) vpciConfigure(PCIDEVICE& pci,
 #endif
 }
 
+#ifdef VBOX_WITH_STATISTICS
 /* WARNING! This function must never be used in multithreaded context! */
 static const char *vpciCounter(const char *pszDevFmt,
                                const char *pszCounter)
 {
-    static char g_szCounterName[80];
+    static char s_szCounterName[80];
 
-    RTStrPrintf(g_szCounterName, sizeof(g_szCounterName),
+    RTStrPrintf(s_szCounterName, sizeof(s_szCounterName),
                 "/Devices/%s/%s", pszDevFmt, pszCounter);
 
-    return g_szCounterName;
+    return s_szCounterName;
 }
+#endif
 
 // TODO: header
 int vpciConstruct(PPDMDEVINS pDevIns, VPCISTATE *pState,

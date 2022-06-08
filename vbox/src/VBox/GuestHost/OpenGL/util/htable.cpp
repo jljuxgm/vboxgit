@@ -1,4 +1,4 @@
-/* $Id: htable.cpp 62814 2016-08-01 12:51:52Z vboxsync $ */
+/* $Id: htable.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
 /** @file
  * uint32_t handle to void simple table impl
  *
@@ -157,7 +157,7 @@ VBOXHTABLEDECL(CRHTABLE_HANDLE) CrHTablePut(PCRHTABLE pTbl, void* pvData)
         if (!pTbl->paData[i])
         {
             void *pvOld = crHTablePutToSlot(pTbl, i, pvData);
-            Assert(!pvOld);
+            Assert(!pvOld); NOREF(pvOld);
             pTbl->iNext2Search = i+1;
             pTbl->iNext2Search %= pTbl->cSize;
             return crHTableIndex2Handle(i);
