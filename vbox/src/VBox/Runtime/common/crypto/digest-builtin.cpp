@@ -1,4 +1,4 @@
-/* $Id: digest-builtin.cpp 61891 2016-06-27 10:55:28Z vboxsync $ */
+/* $Id: digest-builtin.cpp 61892 2016-06-27 11:18:32Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Cryptographic Hash / Message Digest API, Built-in providers.
  */
@@ -652,7 +652,11 @@ static RTCRDIGESTDESC const g_rtCrDigestOpenSslDesc =
     NULL,
     RTDIGESTTYPE_UNKNOWN,
     EVP_MAX_MD_SIZE,
+# if OPENSSL_VERSION_NUMBER >= 0x10100000
     0,
+# else
+    sizeof(EVP_MD_CTX),
+# endif
     0,
 # if OPENSSL_VERSION_NUMBER >= 0x10100000
     rtCrDigestOsslEvp_New,
