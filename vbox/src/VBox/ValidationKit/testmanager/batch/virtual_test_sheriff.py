@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 61642 2016-06-09 23:26:01Z vboxsync $
+# $Id: virtual_test_sheriff.py 61653 2016-06-10 11:39:53Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61642 $"
+__version__ = "$Revision: 61653 $"
 
 
 # Standard python imports
@@ -268,7 +268,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 61642 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 61653 $ \n');
 
 
     def eprint(self, sText):
@@ -415,6 +415,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Guru_VERR_PGM_PHYS_PAGE_RESERVED          = ( 'Guru Meditations',  'VERR_PGM_PHYS_PAGE_RESERVED' );
     ktReason_Guru_VERR_VMX_INVALID_GUEST_STATE         = ( 'Guru Meditations',  'VERR_VMX_INVALID_GUEST_STATE' );
     ktReason_Guru_VINF_EM_TRIPLE_FAULT                 = ( 'Guru Meditations',  'VINF_EM_TRIPLE_FAULT' );
+    ktReason_Host_Reboot_OSX_Watchdog_Timeout          = ( 'Host Reboot',       'OSX Watchdog Timeout' );
     ktReason_Networking_Nonexistent_host_nic           = ( 'Networking',        'Nonexistent host networking interface' );
     ktReason_Panic_MP_BIOS_IO_APIC                     = ( 'Panic',             'MP-BIOS/IO-APIC' );
     ktReason_XPCOM_Exit_Minus_11                       = ( 'API / (XP)COM',     'exit -11' );
@@ -486,7 +487,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 61642 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 61653 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -642,16 +643,17 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ## Things we search a main or VM log for to figure out why something went bust.
     katSimpleMainAndVmLogReasons = [
         # ( Whether to stop on hit, reason tuple, needle text. )
-        ( False, ktReason_Guru_Generic,                           'GuruMeditation' ),
-        ( False, ktReason_Guru_Generic,                           'Guru Meditation' ),
-        ( True,  ktReason_Guru_VERR_IEM_INSTR_NOT_IMPLEMENTED,    'VERR_IEM_INSTR_NOT_IMPLEMENTED' ),
-        ( True,  ktReason_Guru_VERR_IEM_ASPECT_NOT_IMPLEMENTED,   'VERR_IEM_ASPECT_NOT_IMPLEMENTED' ),
-        ( True,  ktReason_Guru_VERR_TRPM_DONT_PANIC,              'VERR_TRPM_DONT_PANIC' ),
-        ( True,  ktReason_Guru_VERR_PGM_PHYS_PAGE_RESERVED,       'VERR_PGM_PHYS_PAGE_RESERVED' ),
-        ( True,  ktReason_Guru_VERR_VMX_INVALID_GUEST_STATE,      'VERR_VMX_INVALID_GUEST_STATE' ),
-        ( True,  ktReason_Guru_VINF_EM_TRIPLE_FAULT,              'VINF_EM_TRIPLE_FAULT' ),
+        ( False, ktReason_Guru_Generic,                             'GuruMeditation' ),
+        ( False, ktReason_Guru_Generic,                             'Guru Meditation' ),
+        ( True,  ktReason_Guru_VERR_IEM_INSTR_NOT_IMPLEMENTED,      'VERR_IEM_INSTR_NOT_IMPLEMENTED' ),
+        ( True,  ktReason_Guru_VERR_IEM_ASPECT_NOT_IMPLEMENTED,     'VERR_IEM_ASPECT_NOT_IMPLEMENTED' ),
+        ( True,  ktReason_Guru_VERR_TRPM_DONT_PANIC,                'VERR_TRPM_DONT_PANIC' ),
+        ( True,  ktReason_Guru_VERR_PGM_PHYS_PAGE_RESERVED,         'VERR_PGM_PHYS_PAGE_RESERVED' ),
+        ( True,  ktReason_Guru_VERR_VMX_INVALID_GUEST_STATE,        'VERR_VMX_INVALID_GUEST_STATE' ),
+        ( True,  ktReason_Guru_VINF_EM_TRIPLE_FAULT,                'VINF_EM_TRIPLE_FAULT' ),
         ( True,  ktReason_Networking_Nonexistent_host_nic,
           'rc=E_FAIL text="Nonexistent host networking interface, name \'eth0\' (VERR_INTERNAL_ERROR)"' ),
+        ( True,  ktReason_Host_Reboot_OSX_Watchdog_Timeout,         ': "OSX Watchdog Timeout: ' ),
         ( False, ktReason_XPCOM_NS_ERROR_CALL_FAILED,
           'Exception: 0x800706be (Call to remote object failed (NS_ERROR_CALL_FAILED))' ),
     ];
