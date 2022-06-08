@@ -1,11 +1,11 @@
-/* $Id: state_framebuffer.c 58895 2015-11-27 10:00:08Z vboxsync $ */
+/* $Id: state_framebuffer.c 62492 2016-07-22 18:42:47Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: EXT_framebuffer_object state tracking
  */
 
 /*
- * Copyright (C) 2009-2013 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

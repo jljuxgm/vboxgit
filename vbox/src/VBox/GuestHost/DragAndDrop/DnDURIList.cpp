@@ -1,10 +1,10 @@
-/* $Id: DnDURIList.cpp 59854 2016-02-26 15:41:01Z vboxsync $ */
+/* $Id: DnDURIList.cpp 62492 2016-07-22 18:42:47Z vboxsync $ */
 /** @file
  * DnD: URI list class.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

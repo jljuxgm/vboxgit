@@ -1,10 +1,10 @@
-/* $Id: compositor.cpp 54860 2015-03-20 09:56:49Z vboxsync $ */
+/* $Id: compositor.cpp 62492 2016-07-22 18:42:47Z vboxsync $ */
 /** @file
  * Compositor implementation.
  */
 
 /*
- * Copyright (C) 2013-2014 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

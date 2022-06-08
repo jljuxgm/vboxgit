@@ -1,10 +1,10 @@
-/* $Id: DnDPath.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
+/* $Id: DnDPath.cpp 62492 2016-07-22 18:42:47Z vboxsync $ */
 /** @file
  * DnD: Path handling.
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: htable.cpp 50311 2014-02-03 15:47:40Z vboxsync $ */
+/* $Id: htable.cpp 62492 2016-07-22 18:42:47Z vboxsync $ */
 
 /** @file
  * uint32_t handle to void simple table impl
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: blitter.cpp 62172 2016-07-11 19:18:10Z vboxsync $ */
+/* $Id: blitter.cpp 62492 2016-07-22 18:42:47Z vboxsync $ */
 /** @file
  * Blitter API implementation
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: vreg.cpp 61990 2016-07-03 14:54:43Z vboxsync $ */
+/* $Id: vreg.cpp 62492 2016-07-22 18:42:47Z vboxsync $ */
 /** @file
  * Visible Regions processing API implementation
  */
 
 /*
- * Copyright (C) 2012-2014 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

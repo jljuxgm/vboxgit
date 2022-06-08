@@ -1,11 +1,11 @@
-/* $Id: state_snapshot.c 60510 2016-04-14 18:36:57Z vboxsync $ */
+/* $Id: state_snapshot.c 62492 2016-07-22 18:42:47Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
  */
 
 /*
- * Copyright (C) 2008-2013 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

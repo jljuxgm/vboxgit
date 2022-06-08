@@ -1,10 +1,10 @@
-/* $Id: cr_compositor.h 53588 2014-12-21 16:13:18Z vboxsync $ */
+/* $Id: cr_compositor.h 62492 2016-07-22 18:42:47Z vboxsync $ */
 /** @file
  * Compositor API.
  */
 
 /*
- * Copyright (C) 2013-2014 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

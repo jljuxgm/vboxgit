@@ -1,11 +1,11 @@
-/* $Id: cr_framebuffer.h 48491 2013-09-16 15:31:03Z vboxsync $ */
+/* $Id: cr_framebuffer.h 62492 2016-07-22 18:42:47Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: FBO related state info
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
