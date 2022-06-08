@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-vrdp.cpp 62502 2016-07-22 19:09:14Z vboxsync $ */
+/* $Id: USBProxyDevice-vrdp.cpp 62953 2016-08-04 07:30:48Z vboxsync $ */
 /** @file
  * USB device proxy - the VRDP backend, calls the RemoteUSBBackend methods.
  */
@@ -85,6 +85,7 @@ static DECLCALLBACK(void) usbProxyVrdpClose(PUSBPROXYDEV pProxyDev)
 
 static DECLCALLBACK(int) usbProxyVrdpReset(PUSBPROXYDEV pProxyDev, bool fResetOnLinux)
 {
+    RT_NOREF(fResetOnLinux);
     LogFlow(("usbProxyVrdpReset: pProxyDev = %p\n", pProxyDev));
 
     PUSBPROXYDEVVRDP pDevVrdp = USBPROXYDEV_2_DATA(pProxyDev, PUSBPROXYDEVVRDP);
