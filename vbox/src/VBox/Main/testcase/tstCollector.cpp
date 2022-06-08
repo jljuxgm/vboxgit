@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 57413 2015-08-18 10:44:47Z vboxsync $ */
+/* $Id: tstCollector.cpp 62046 2016-07-06 11:05:27Z vboxsync $ */
 
 /** @file
  *
@@ -144,7 +144,7 @@ void measurePerformance(pm::CollectorHAL *collector, const char *pszName, int cV
         /* Process RAM usage */
         N_CALLS(cVMs, getProcessMemoryUsage(processes[call], &tmp));
     }
-    printf("\n%u VMs -- %.2f%% of CPU time\n", cVMs, (RTTimeNanoTS() - start) / 10000000. / times);
+    printf("\n%d VMs -- %.2f%% of CPU time\n", cVMs, (RTTimeNanoTS() - start) / 10000000. / times);
 
     /* Shut down fake VMs */
     shutdownProcessList(processes);
