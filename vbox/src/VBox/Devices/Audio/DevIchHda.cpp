@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 61723 2016-06-15 15:21:15Z vboxsync $ */
+/* $Id: DevIchHda.cpp 61871 2016-06-24 07:49:50Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -1785,7 +1785,7 @@ static int hdaStreamSetActive(PHDASTATE pThis, PHDASTREAM pStream, bool fActive)
         return VINF_SUCCESS;
     }
 
-    int rc;
+    int rc = VINF_SUCCESS;
 
     if (pStream->pMixSink) /* Stream attached to a sink? */
     {
