@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 66140 2017-03-16 17:29:31Z vboxsync $ */
+/* $Id: VD.cpp 66209 2017-03-22 17:12:34Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -10179,6 +10179,7 @@ VBOXDDU_DECL(int) VDQueryRegions(PVBOXHDD pDisk, unsigned nImage, uint32_t fFlag
                     pRegion->cRegionBlocksOrBytes = cbImage;
 
                 *ppRegionList  = pRegionList;
+                rc = VINF_SUCCESS;
             }
             else
                 rc = VERR_NO_MEMORY;
