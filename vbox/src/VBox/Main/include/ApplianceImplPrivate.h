@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplPrivate.h 65530 2017-01-31 10:13:27Z vboxsync $ */
+/* $Id: ApplianceImplPrivate.h 65807 2017-02-20 10:28:47Z vboxsync $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
@@ -236,6 +236,7 @@ struct Appliance::XMLStack
 {
     std::map<Utf8Str, const VirtualSystemDescriptionEntry*> mapDisks;
     std::list<Utf8Str> mapDiskSequence;
+    std::list<Utf8Str> mapDiskSequenceForOneVM;//temporary keeps all disks attached to one exported VM
     std::map<Utf8Str, bool> mapNetworks;
 };
 
