@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 65926 2017-03-03 11:00:27Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 65945 2017-03-06 12:29:27Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,19 +31,19 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65926 $"
+__version__ = "$Revision: 65945 $"
 
 # Standard python imports.
 import os
 import re
 import sys
 
-# Only the main script needs to modify the path.
-g_ksValidationKitDir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-                                    'ValidationKit');
-sys.path.append(g_ksValidationKitDir);
-
-from common import utils;
+## Only the main script needs to modify the path.
+#g_ksValidationKitDir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+#                                    'ValidationKit');
+#sys.path.append(g_ksValidationKitDir);
+#
+#from common import utils; - Windows build boxes doesn't have pywin32.
 
 # Python 3 hacks:
 if sys.version_info[0] >= 3:
