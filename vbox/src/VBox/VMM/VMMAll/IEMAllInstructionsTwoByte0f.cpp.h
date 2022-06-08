@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66581 2017-04-17 03:00:00Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66582 2017-04-17 03:12:35Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -889,6 +889,8 @@ FNIEMOP_DEF(iemOp_invd)
 #ifdef VBOX_WITH_NESTED_HWVIRT
     IEM_MC_RAISE_GP0_IF_CPL_NOT_ZERO();
     IEMOP_HLP_SVM_CTRL_INTERCEPT(pVCpu, SVM_CTRL_INTERCEPT_INVD, SVM_EXIT_INVD, 0, 0);
+#else
+    RT_NOREF_PV(pVCpu);
 #endif
     /** @todo implement invd for the regular case (above only handles nested SVM
      *        exits). */
