@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 62356 2016-07-20 12:52:02Z vboxsync $
+# $Id: tdStorageBenchmark1.py 62388 2016-07-21 08:27:17Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62356 $"
+__version__ = "$Revision: 62388 $"
 
 
 # Standard Python imports.
@@ -734,13 +734,13 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                 else:
                     sMountPoint = self.prepareStorage(self.oStorCfg);
                 if sMountPoint is not None:
-                    fRc = self.testBenchmarks(utils.getHostOs(), sMountPoint, oExecutor);
+                    self.testBenchmarks(utils.getHostOs(), sMountPoint, oExecutor);
                     self.cleanupStorage(self.oStorCfg);
                 else:
                     reporter.testFailure('Failed to prepare host storage');
+                    fRc = False;
                 reporter.testDone();
-
-            if fRc:
+            else:
                 # Loop thru the test VMs.
                 for sVM in self.asTestVMs:
                     # run test on the VM.
