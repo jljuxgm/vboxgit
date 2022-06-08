@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 62056 2016-07-06 14:24:20Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 62103 2016-07-07 13:11:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2870,8 +2870,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                      * Remove this sometime later. */
                     LogRel(("Audio: WARNING: Solaris Audio is deprecated, please switch to OSS!\n"));
                     LogRel(("Audio: Automatically setting host audio backend to OSS\n"));
-
-                    AssertMsgFailed(("Used SolAudio as audio backend, which should not happen anymore\n"));
 
                     /* Manually set backend to OSS for now. */
                     InsertConfigString(pLunL1, "Driver", "OSSAudio");
