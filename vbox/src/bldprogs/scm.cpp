@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69264 2017-10-25 10:02:02Z vboxsync $ */
+/* $Id: scm.cpp 69267 2017-10-25 10:11:17Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -370,6 +370,16 @@ static PFNSCMREWRITER const g_aRewritersFor_Xslt[] =
     /** @todo copyright is in an XML comment. */
 };
 
+static PFNSCMREWRITER const g_aRewritersFor_QtProject[] =
+{
+    rewrite_ForceNativeEol,
+    rewrite_StripTrailingBlanks,
+    rewrite_AdjustTrailingLines,
+    rewrite_SvnNoExecutable,
+    rewrite_SvnKeywords,
+    rewrite_Copyright_HashComment,
+};
+
 static PFNSCMREWRITER const g_aRewritersFor_QtResourceFiles[] =
 {
     rewrite_ForceNativeEol,
@@ -412,6 +422,7 @@ static SCMCFGENTRY const g_aConfigs[] =
     SCM_CFG_ENTRY(g_aRewritersFor_ScmSettings,      false, "*.scm-settings" ),
     SCM_CFG_ENTRY(g_aRewritersFor_Images,           true,  "*.png|*.bmp|*.jpg" ),
     SCM_CFG_ENTRY(g_aRewritersFor_Xslt,             false, "*.xsl" ),
+    SCM_CFG_ENTRY(g_aRewritersFor_QtProject,        false, "*.pro" ),
     SCM_CFG_ENTRY(g_aRewritersFor_QtResourceFiles,  false, "*.qrc" ),
     SCM_CFG_ENTRY(g_aRewritersFor_QtTranslations,   false, "*.ts" ),
     SCM_CFG_ENTRY(g_aRewritersFor_QtUiFiles,        false, "*.ui" ),
@@ -2034,7 +2045,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69264 $";
+                static const char s_szRev[] = "$Revision: 69267 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
