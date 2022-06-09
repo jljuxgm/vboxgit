@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 68263 2017-08-03 06:34:30Z vboxsync $
+# $Id: vbox.py 68290 2017-08-03 16:24:55Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 68263 $"
+__version__ = "$Revision: 68290 $"
 
 
 # Standard Python imports.
@@ -1294,7 +1294,9 @@ class TestDriver(base.TestDriver):                                              
                 reporter.logXcpt('Failed to get VirtualBox version, assuming 4.0.0');
                 sVer = "4.0.0";
             reporter.log("sVer=%s" % (sVer,));          # Temporary - debugging hang somewhere after 'sys.path' log line above.
-            if sVer.startswith("5.1"):
+            if sVer.startswith("5.2"):
+                self.fpApiVer = 5.2;
+            elif sVer.startswith("5.1"):
                 self.fpApiVer = 5.1;
             elif sVer.startswith("5.0") or (sVer.startswith("4.3.5") and len(sVer) == 6):
                 self.fpApiVer = 5.0;

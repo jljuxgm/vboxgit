@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68226 2017-08-02 09:02:00Z vboxsync $
+# $Id: Config.kmk 68290 2017-08-03 16:24:55Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -206,11 +206,11 @@ endif
 # Major version.
 VBOX_VERSION_MAJOR = 5
 # Minor version.
-VBOX_VERSION_MINOR = 1
+VBOX_VERSION_MINOR = 2
 # This is the current build number. It should be increased every time we publish a
 # new build. The define is available in every source file. Only even build numbers
 # will be published, odd numbers are set during development.
-VBOX_VERSION_BUILD = 51
+VBOX_VERSION_BUILD = 0
 # The raw version string. This *must not* contain any other information/fields than
 # major, minor and build revision (as it is now) -- also will be used for host/guest version
 # comparison.
@@ -222,9 +222,9 @@ VBOX_BUILD_PUBLISHER =
 # Note! The BETA[n],ALPHA[n],RC[n] indicators should be inserted before the
 #       publisher so that RTStrVersionCompare have a chance of comparing
 #       prerelease from different publishers correctly.
-VBOX_VERSION_STRING = $(VBOX_VERSION_STRING_RAW)$(VBOX_BUILD_PUBLISHER)
+VBOX_VERSION_STRING = $(VBOX_VERSION_STRING_RAW)_BETA1$(VBOX_BUILD_PUBLISHER)
 # Just the BETA[n],ALPHA[n],RC[n] indicators. Set to empty string for release.
-VBOX_VERSION_PRERELEASE =
+VBOX_VERSION_PRERELEASE = BETA1
 
 # Force the additions.sh script to get an exact additions build when we're doing the release.
 ifeq ($(int-mod $(VBOX_VERSION_BUILD),2),0)
@@ -7013,7 +7013,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68226 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68290 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
