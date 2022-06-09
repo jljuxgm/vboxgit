@@ -1,10 +1,10 @@
-; $Id: commondefs.inc 60441 2016-04-11 21:15:40Z vboxsync $
+; $Id: commondefs.inc 69120 2017-10-17 19:13:23Z vboxsync $
 ;; @file
 ; Stuff for drawing the BIOS logo.
 ;
 
 ;
-; Copyright (C) 2004-2016 Oracle Corporation
+; Copyright (C) 2004-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

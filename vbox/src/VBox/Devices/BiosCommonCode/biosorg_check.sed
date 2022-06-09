@@ -1,11 +1,11 @@
-# $Id: biosorg_check.sed 62463 2016-07-22 16:32:54Z vboxsync $
+# $Id: biosorg_check.sed 69120 2017-10-17 19:13:23Z vboxsync $
 ## @file
 # For converting biosorg_check_<addr> lines in a wlink mapfile
 # to kmk_expr checks.
 #
 
 #
-# Copyright (C) 2012-2016 Oracle Corporation
+# Copyright (C) 2012-2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

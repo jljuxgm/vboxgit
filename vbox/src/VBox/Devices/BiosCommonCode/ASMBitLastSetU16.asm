@@ -1,10 +1,10 @@
-; $Id: ASMBitLastSetU16.asm 61025 2016-05-18 07:50:04Z vboxsync $
+; $Id: ASMBitLastSetU16.asm 69120 2017-10-17 19:13:23Z vboxsync $
 ;; @file
 ; BiosCommonCode - ASMBitLastSetU16() - borrowed from IPRT.
 ;
 
 ;
-; Copyright (C) 2006-2016 Oracle Corporation
+; Copyright (C) 2006-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

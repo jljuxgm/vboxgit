@@ -1,10 +1,10 @@
-; $Id: __U4D.asm 60530 2016-04-18 09:14:09Z vboxsync $
+; $Id: __U4D.asm 69120 2017-10-17 19:13:23Z vboxsync $
 ;; @file
 ; Compiler support routines.
 ;
 
 ;
-; Copyright (C) 2012-2016 Oracle Corporation
+; Copyright (C) 2012-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
