@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 69957 2017-12-06 13:35:06Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 71073 2018-02-20 17:14:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -1044,14 +1044,13 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
             }
 
             /* Take the device-pixel-ratio into account: */
-            if (pFrameBuffer->useUnscaledHiDPIOutput())
+            const double dDevicePixelRatio = pFrameBuffer->devicePixelRatio();
+            cpnt.setX(cpnt.x() * dDevicePixelRatio);
+            cpnt.setY(cpnt.y() * dDevicePixelRatio);
+            if (!pFrameBuffer->useUnscaledHiDPIOutput())
             {
-                const double dDevicePixelRatio = pFrameBuffer->devicePixelRatio();
-                if (dDevicePixelRatio > 1.0)
-                {
-                    cpnt.setX((int)(cpnt.x() * dDevicePixelRatio));
-                    cpnt.setY((int)(cpnt.y() * dDevicePixelRatio));
-                }
+                cpnt.setX(cpnt.x() / dDevicePixelRatio);
+                cpnt.setY(cpnt.y() / dDevicePixelRatio);
             }
 
 #ifdef VBOX_WITH_DRAG_AND_DROP

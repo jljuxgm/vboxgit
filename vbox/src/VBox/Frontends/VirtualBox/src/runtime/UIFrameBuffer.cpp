@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 71057 2018-02-19 14:27:09Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 71073 2018-02-20 17:14:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1319,9 +1319,10 @@ void UIFrameBufferPrivate::updateCoordinateSystem()
     if (scaleFactor() != 1.0)
         m_transform = m_transform.scale(scaleFactor(), scaleFactor());
 
-    /* Apply the device-pixel-ratio if necessary: */
-    if (useUnscaledHiDPIOutput() && devicePixelRatio() > 1.0)
-        m_transform = m_transform.scale(1.0 / devicePixelRatio(), 1.0 / devicePixelRatio());
+    /* Take the device-pixel-ratio into account: */
+    if (!useUnscaledHiDPIOutput())
+        m_transform = m_transform.scale(devicePixelRatio(), devicePixelRatio());
+    m_transform = m_transform.scale(1.0 / devicePixelRatio(), 1.0 / devicePixelRatio());
 }
 
 void UIFrameBufferPrivate::paintDefault(QPaintEvent *pEvent)
