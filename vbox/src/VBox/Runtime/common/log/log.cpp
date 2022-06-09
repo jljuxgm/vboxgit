@@ -1,4 +1,4 @@
-/* $Id: log.cpp 65545 2017-01-31 15:27:09Z vboxsync $ */
+/* $Id: log.cpp 69101 2017-10-17 09:48:46Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -355,6 +355,7 @@ static struct
     { RT_STR_TUPLE("stderr"),       RTLOGDEST_STDERR },
     { RT_STR_TUPLE("debugger"),     RTLOGDEST_DEBUGGER },
     { RT_STR_TUPLE("com"),          RTLOGDEST_COM },
+    { RT_STR_TUPLE("nodeny"),       RTLOGDEST_F_NO_DENY },
     { RT_STR_TUPLE("user"),         RTLOGDEST_USER },
 };
 
@@ -3156,6 +3157,8 @@ static int rtlogFileOpen(PRTLOGGER pLogger, char *pszErrorMsg, size_t cchErrorMs
         fOpen |= RTFILE_O_CREATE_REPLACE;
     if (pLogger->fFlags & RTLOGFLAGS_WRITE_THROUGH)
         fOpen |= RTFILE_O_WRITE_THROUGH;
+    if (pLogger->fDestFlags & RTLOGDEST_F_NO_DENY)
+        fOpen = (fOpen & ~RTFILE_O_DENY_NONE) | RTFILE_O_DENY_NOT_DELETE;
 
     unsigned cBackoff = 0;
     int rc = RTFileOpen(&pLogger->pInt->hFile, pLogger->pInt->szFilename, fOpen);
