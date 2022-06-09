@@ -1,4 +1,4 @@
-# $Id: Config.kmk 70166 2017-12-15 19:28:23Z vboxsync $
+# $Id: Config.kmk 70327 2017-12-22 18:40:11Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -31,6 +31,9 @@ $(set-umask 022)
 
 # Add our own directories to the search paths.
 KBUILD_TOOL_PATHS = $(KBUILD_DEVTOOLS)/kBuildTools/
+# Add our own directories to the search paths.
+KBUILD_UNIT_PATHS = $(KBUILD_DEVTOOLS)/kBuildUnits/
+$(warning KBUILD_UNIT_PATHS=$(KBUILD_UNIT_PATHS))
 
 
 # Modify the build types.
@@ -1957,8 +1960,11 @@ VBOX_RTMANIFEST ?= $(PATH_OBJ)/bldRTManifest/bldRTManifest$(HOSTSUFF_EXE)
 # RTSignTool (certificate extraction tool)
 VBOX_RTSIGNTOOL ?= $(PATH_OBJ)/bldRTSignTool/bldRTSignTool$(HOSTSUFF_EXE)
 
-# RTIsoMaker - our own ISO maker.
+# RTIsoMaker (our own ISO maker).
 VBOX_RTISOMAKER  ?= $(PATH_OBJ)/bldRTIsoMaker/bldRTIsoMaker$(HOSTSUFF_EXE)
+
+# RTLdrCheckImports (checks imports against oldest supported OS version (GAs typically))
+VBOX_RTLDRCHECKIMPORTS ?= $(PATH_OBJ)/bldRTLdrCheckImports/bldRTLdrCheckImports$(HOSTSUFF_EXE)
 
 # VBoxCmp (simple /bin/cmp with more sensible output)
 VBOX_VBOXCMP    ?= $(PATH_OBJ)/VBoxCmp/VBoxCmp$(HOSTSUFF_EXE)
@@ -7110,7 +7116,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70166 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70327 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
