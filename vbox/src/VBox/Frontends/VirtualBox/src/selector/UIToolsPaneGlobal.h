@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneGlobal.h 68221 2017-08-01 16:04:00Z vboxsync $ */
+/* $Id: UIToolsPaneGlobal.h 68235 2017-08-02 10:23:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneGlobal class declaration.
  */
@@ -20,6 +20,9 @@
 
 /* Qt includes: */
 #include <QWidget>
+
+/* GUI includes: */
+#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class QHBoxLayout;
@@ -47,7 +50,7 @@ Q_DECLARE_METATYPE(ToolTypeGlobal);
 
 
 /** QWidget subclass representing container for tool panes. */
-class UIToolsPaneGlobal : public QWidget
+class UIToolsPaneGlobal : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
@@ -71,6 +74,11 @@ public:
     void setDetailsText(const QString &strText);
     /** Defines @a strError and switches to error details pane. */
     void setDetailsError(const QString &strError);
+
+protected:
+
+    /** Handles translation event. */
+    virtual void retranslateUi() /* override */;
 
 private:
 

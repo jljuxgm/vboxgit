@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.h 68221 2017-08-01 16:04:00Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.h 68235 2017-08-02 10:23:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class declaration.
  */
@@ -20,6 +20,9 @@
 
 /* Qt includes: */
 #include <QWidget>
+
+/* GUI includes: */
+#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class QHBoxLayout;
@@ -47,7 +50,7 @@ Q_DECLARE_METATYPE(ToolTypeMachine);
 
 
 /** QWidget subclass representing container for tool panes. */
-class UIToolsPaneMachine : public QWidget
+class UIToolsPaneMachine : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
@@ -88,6 +91,11 @@ public:
 
     /** Defines the @a comMachine object. */
     void setMachine(const CMachine &comMachine);
+
+protected:
+
+    /** Handles translation event. */
+    virtual void retranslateUi() /* override */;
 
 private:
 
