@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69497 2017-10-28 15:00:05Z vboxsync $
+# $Id: .scm-settings 69505 2017-10-28 17:28:30Z vboxsync $
 ## @file
 # Source code massager settings for the includes.
 #
@@ -30,7 +30,7 @@
 /iprt/formats/elf-i386.h:   --no-update-license  --no-update-copyright-year
 
 # TODO: This is using LGPL with Oracle disclaimer. Implement.
-/VBox/VBoxKeyboard.h: --external-copyright
+/VBox/VBoxKeyboard.h: --external-copyright --lgpl-disclaimer
 
 # Some of the graphics stuff is using MIT.
 /VBox/Graphics/HGSMI.h:                 --license-mit
