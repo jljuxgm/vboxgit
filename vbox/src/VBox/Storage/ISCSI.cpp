@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 66494 2017-04-10 09:57:25Z vboxsync $ */
+/* $Id: ISCSI.cpp 69154 2017-10-23 08:48:31Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -1618,6 +1618,7 @@ static int iscsiLogin(PISCSIIMAGE pImage)
                                     csg = 1;
                                     nsg = 3;
                                     substate = 0;
+                                    break;
                                 }
                                 rc = VERR_PARSE_ERROR;
                                 break;
@@ -1706,7 +1707,7 @@ static int iscsiLogin(PISCSIIMAGE pImage)
         iscsiTransportClose(pImage);
         pImage->state = ISCSISTATE_FREE;
     }
-    else if (RT_FAILURE(rc))
+    else if (rc == VINF_SUCCESS)
         pImage->state = ISCSISTATE_NORMAL;
 
     return rc;
