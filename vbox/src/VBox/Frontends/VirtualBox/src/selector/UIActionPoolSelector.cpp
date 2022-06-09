@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 68200 2017-07-31 12:41:10Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 68214 2017-08-01 07:31:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -981,8 +981,8 @@ public:
 
     UIActionSimpleToolsMachineDetails(UIActionPool *pParent)
         : UIActionSimple(pParent,
-                         ":/session_info_details_16px.png", ":/session_info_details_16px.png",
-                         ":/session_info_details_16px.png", ":/session_info_details_16px.png") {}
+                         ":/machine_details_manager_22px.png", ":/machine_details_manager_16px.png",
+                         ":/machine_details_manager_22px.png", ":/machine_details_manager_16px.png") {}
 
 protected:
 
