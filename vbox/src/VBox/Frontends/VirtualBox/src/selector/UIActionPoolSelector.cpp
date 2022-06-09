@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 68177 2017-07-29 16:14:04Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 68197 2017-07-31 12:09:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -945,7 +945,7 @@ protected:
 
     void retranslateUi()
     {
-        setName(QApplication::translate("UIActionPool", "&Tools"));
+        setName(QApplication::translate("UIActionPool", "&Machine Tools"));
         setStatusTip(QApplication::translate("UIActionPool", "Switch to machine tools"));
     }
 };

@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.cpp 68178 2017-07-29 16:17:22Z vboxsync $ */
+/* $Id: UIToolsToolbar.cpp 68196 2017-07-31 12:03:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class implementation.
  */
@@ -127,13 +127,15 @@ void UIToolsToolbar::prepareMenu()
         pMenuMachine->addAction(m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_Details));
         connect(m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_Details), &UIAction::triggered,
                 this, &UIToolsToolbar::sltHandleOpenToolMachine);
-        m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_Details)->setProperty("ToolTypeMachine", QVariant::fromValue(ToolTypeMachine_Details));
+        m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_Details)
+            ->setProperty("ToolTypeMachine", QVariant::fromValue(ToolTypeMachine_Details));
 
         /* Add 'Snapshots' action: */
         pMenuMachine->addAction(m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_Snapshots));
         connect(m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_Snapshots), &UIAction::triggered,
                 this, &UIToolsToolbar::sltHandleOpenToolMachine);
-        m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_Snapshots)->setProperty("ToolTypeMachine", QVariant::fromValue(ToolTypeMachine_Snapshots));
+        m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_Snapshots)
+            ->setProperty("ToolTypeMachine", QVariant::fromValue(ToolTypeMachine_Snapshots));
     }
 
     /* Configure 'Machine' toggle action: */

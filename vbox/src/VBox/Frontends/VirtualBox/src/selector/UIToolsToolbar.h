@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.h 68178 2017-07-29 16:17:22Z vboxsync $ */
+/* $Id: UIToolsToolbar.h 68196 2017-07-31 12:03:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class declaration.
  */
@@ -90,14 +90,11 @@ private:
     /** Holds the Machine tab-bar instance. */
     UITabBar *m_pTabBarMachine;
 
-    /** Holds the map of opened Machine tool IDs. */
-    QMap<ToolTypeMachine, QUuid>  m_mapTabIdsMachine;
-
     /** Holds the toolbar instance. */
     UIToolBar *m_pToolBar;
 
-    /** Holds the 'Machine' menu action instances. */
-    QMap<ToolTypeMachine, QAction*>  m_mapActionsMachine;
+    /** Holds the map of opened Machine tool IDs. */
+    QMap<ToolTypeMachine, QUuid>  m_mapTabIdsMachine;
 };
 
 #endif /* !___UIToolsToolbar_h___ */
