@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCacheInternal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PDMBlkCacheInternal.h 70778 2018-01-28 22:09:24Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -262,6 +262,8 @@ typedef struct PDMBLKCACHE
 
     /** Flag whether the cache was suspended. */
     volatile bool                 fSuspended;
+    /** Number of outstanding I/O transfers. */
+    volatile uint32_t             cIoXfersActive;
 
 } PDMBLKCACHE, *PPDMBLKCACHE;
 #ifdef VBOX_WITH_STATISTICS
