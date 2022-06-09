@@ -1,4 +1,4 @@
-/* $Id: udf.h 69013 2017-10-09 12:08:12Z vboxsync $ */
+/* $Id: udf.h 69023 2017-10-10 08:35:02Z vboxsync $ */
 /** @file
  * IPRT, Universal Disk Format (UDF).
  */
@@ -1008,6 +1008,8 @@ AssertCompileMemberOffset(UDFFILEIDDESC, Icb,                 0x14);
 AssertCompileMemberOffset(UDFFILEIDDESC, abImplementationUse, 0x26);
 /** Pointer to an UDF file set descriptor   */
 typedef UDFFILEIDDESC *PUDFFILEIDDESC;
+/** Pointer to a const UDF file set descriptor   */
+typedef UDFFILEIDDESC const *PCUDFFILEIDDESC;
 
 /** Get the pointer to the name field. */
 #define UDFFILEIDDESC_2_NAME(a_pFid)        ((char *)(&(a_pFid)->abImplementationUse[(a_pFid)->cbImplementationUse]))
