@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 69581 2017-11-04 20:40:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2523,8 +2523,7 @@ VMMDECL(VBOXSTRICTRC) PGMPhysRead(PVM pVM, RTGCPHYS GCPhys, void *pvBuf, size_t 
                         PGM_PHYS_RW_DO_UPDATE_STRICT_RC(rcStrict, rcStrict2);
                     else
                     {
-                        if (enmOrigin == PGMACCESSORIGIN_DEVICE)    /* Questionable paranoia, should be removed. */
-                            memset(pvBuf, 0xff, cb);
+                        memset(pvBuf, 0xff, cb);
                         pgmUnlock(pVM);
                         return rcStrict2;
                     }
