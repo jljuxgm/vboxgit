@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 68994 2017-10-05 14:20:22Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -1269,7 +1269,7 @@ char *vmsvga3dFormatRenderState(char *pszBuffer, size_t cbBuffer, SVGA3dRenderSt
                                 uValue.u <= SVGA3D_WRAPCOORD_ALL ? " (out of bounds" : "");
                     break;
                 default:
-                    AssertFailed();
+                    AssertFailed();  /* Fall through */
                 case 'b': //SVGA3dBlendOp
                 case 'e': //SVGA3dBlendEquation
                 case 'p': //SVGA3dCmpFunc
