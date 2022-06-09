@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 66572 2017-04-14 12:59:34Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 67128 2017-05-29 10:45:07Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -46,7 +46,12 @@ DWORD g_VBoxDisplayOnly = 0;
 #define VBOXWDDM_MEMTAG 'MDBV'
 PVOID vboxWddmMemAlloc(IN SIZE_T cbSize)
 {
-    return ExAllocatePoolWithTag(NonPagedPool, cbSize, VBOXWDDM_MEMTAG);
+#ifdef VBOX_WDDM_WIN8
+    POOL_TYPE enmPoolType = NonPagedPoolNx;
+#else
+    POOL_TYPE enmPoolType = NonPagedPool;
+#endif
+    return ExAllocatePoolWithTag(enmPoolType, cbSize, VBOXWDDM_MEMTAG);
 }
 
 PVOID vboxWddmMemAllocZero(IN SIZE_T cbSize)
