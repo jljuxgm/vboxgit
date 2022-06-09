@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 72366 2018-05-28 18:05:06Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 72611 2018-06-19 10:35:18Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -893,7 +893,14 @@ static DECLCALLBACK(int) VBoxDisplayWorker(void *pvInstance, bool volatile *pfSh
                                  aDisplays[i].cBitsPerPixel));
                     }
 
-                    vboxDispIfWddmResizeDisplayWin7(&pCtx->pEnv->dispIf, cDisplays, &aDisplays[0]);
+                    if (pCtx->pEnv->dispIf.enmMode >= VBOXDISPIF_MODE_WDDM_W7)
+                    {
+                        VBoxDispIfResizeDisplayWin7(&pCtx->pEnv->dispIf, cDisplays, &aDisplays[0]);
+                    }
+                    else if (pCtx->pEnv->dispIf.enmMode == VBOXDISPIF_MODE_WDDM)
+                    {
+                        VBoxDispIfResizeDisplayVista(&pCtx->pEnv->dispIf, cDisplays, &aDisplays[0]);
+                    }
 
                     continue; /* Done */
                 }
