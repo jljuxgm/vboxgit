@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 72187 2018-05-10 11:27:57Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 72191 2018-05-10 17:24:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -187,7 +187,7 @@ void UIWizardNewVMPageExpert::sltNameChanged(const QString &strNewText)
 
 void UIWizardNewVMPageExpert::sltPathChanged(const QString &strNewPath)
 {
-    RT_NOREF(strNewPath); /** @todo use this or get rid of it? See also UIWizardNewVMPageBasic1::sltPathChanged(). */
+    Q_UNUSED(strNewPath);
     composeMachineFilePath();
 }
 
