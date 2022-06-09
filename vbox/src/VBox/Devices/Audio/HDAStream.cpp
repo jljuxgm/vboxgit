@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 70629 2018-01-18 13:48:32Z vboxsync $ */
+/* $Id: HDAStream.cpp 70832 2018-01-31 13:43:12Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -521,21 +521,19 @@ int hdaStreamEnable(PHDASTREAM pStream, bool fEnable)
 
         if (fEnable)
         {
-            int rc2 = DrvAudioHlpFileOpen(pStream->Dbg.Runtime.pFileStream, PDMAUDIOFILE_DEFAULT_OPEN_FLAGS,
-                                          &pStream->State.Cfg.Props);
-            AssertRC(rc2);
+            if (!DrvAudioHlpFileIsOpen(pStream->Dbg.Runtime.pFileStream))
+            {
+                int rc2 = DrvAudioHlpFileOpen(pStream->Dbg.Runtime.pFileStream, PDMAUDIOFILE_DEFAULT_OPEN_FLAGS,
+                                              &pStream->State.Cfg.Props);
+                AssertRC(rc2);
+            }
 
-            rc2 = DrvAudioHlpFileOpen(pStream->Dbg.Runtime.pFileDMA, PDMAUDIOFILE_DEFAULT_OPEN_FLAGS,
-                                      &pStream->State.Cfg.Props);
-            AssertRC(rc2);
-        }
-        else
-        {
-            int rc2 = DrvAudioHlpFileClose(pStream->Dbg.Runtime.pFileStream);
-            AssertRC(rc2);
-
-            rc2 = DrvAudioHlpFileClose(pStream->Dbg.Runtime.pFileDMA);
-            AssertRC(rc2);
+            if (!DrvAudioHlpFileIsOpen(pStream->Dbg.Runtime.pFileDMA))
+            {
+                int rc2 = DrvAudioHlpFileOpen(pStream->Dbg.Runtime.pFileDMA, PDMAUDIOFILE_DEFAULT_OPEN_FLAGS,
+                                              &pStream->State.Cfg.Props);
+                AssertRC(rc2);
+            }
         }
     }
 
