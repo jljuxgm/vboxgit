@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 66520 2017-04-12 08:24:47Z vboxsync $ */
+/* $Id: vbsf.cpp 69248 2017-10-24 18:59:54Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -1093,7 +1093,7 @@ int vbsfWrite(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLHANDLE Handle, uint64_
     }
     else
     {
-        /** @todo: What writing zero bytes should do? */
+        /** @todo What writing zero bytes should do? */
         rc = VINF_SUCCESS;
     }
 
