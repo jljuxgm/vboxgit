@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 68720 2017-09-12 10:21:01Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 68725 2017-09-12 13:02:38Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -1062,6 +1062,11 @@ DECLCALLBACK(int) AudioVideoRec::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
      */
     pThis->pDrvAudio = PDMIBASE_QUERY_INTERFACE(pDrvIns->pUpBase, PDMIAUDIOCONNECTOR);
     AssertMsgReturn(pThis->pDrvAudio, ("Configuration error: No upper interface specified!\n"), VERR_PDM_MISSING_INTERFACE_ABOVE);
+
+#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
+    RTFileDelete(VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "DrvAudioVideoRec.webm");
+    RTFileDelete(VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "DrvAudioVideoRec.pcm");
+#endif
 
     return VINF_SUCCESS;
 }
