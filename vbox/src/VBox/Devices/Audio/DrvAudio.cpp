@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 68893 2017-09-27 16:25:53Z vboxsync $ */
+/* $Id: DrvAudio.cpp 68894 2017-09-27 16:37:03Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -3490,6 +3490,7 @@ static DECLCALLBACK(void) drvAudioResume(PPDMDRVINS pDrvIns)
  * Attach notification.
  *
  * @param   pDrvIns     The driver instance data.
+ * @param   fFlags      Attach flags.
  */
 static DECLCALLBACK(int) drvAudioAttach(PPDMDRVINS pDrvIns, uint32_t fFlags)
 {
