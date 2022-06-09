@@ -1,4 +1,4 @@
-/* $Id: Db.cpp 71512 2018-03-26 14:02:50Z vboxsync $ */
+/* $Id: Db.cpp 71516 2018-03-26 15:14:28Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -587,7 +587,6 @@ Binding *Db::allocateBinding(const DhcpClientMessage &req)
         return NULL;
 
     Assert(b->id() == id);
-    Assert(b->state() == Binding::FREE || b->state() >= Binding::OFFERED);
 
     /*
      * XXX: handle requests for specific lease time!
