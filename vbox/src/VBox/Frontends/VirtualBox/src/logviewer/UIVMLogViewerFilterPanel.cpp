@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 70467 2018-01-05 13:32:49Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 70468 2018-01-05 13:40:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -31,6 +31,7 @@
 # include <QPlainTextEdit>
 # include <QPushButton>
 # include <QTextCursor>
+# include <QToolButton>
 # include <QRadioButton>
 # include <QScrollArea>
 
