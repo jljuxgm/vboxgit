@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 71626 2018-04-02 21:12:58Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 71628 2018-04-03 09:32:05Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -566,7 +566,7 @@ static int vbvaEnable(unsigned uScreenId, PVGASTATE pVGAState, VBVACONTEXT *pCtx
     uint32_t const cbVBVABuffer = RT_UOFFSETOF(VBVABUFFER, au8Data) + VbgaSafe.cbData;
     ASSERT_GUEST_RETURN(   VbgaSafe.cbData <= UINT32_MAX - RT_UOFFSETOF(VBVABUFFER, au8Data)
                         && cbVBVABuffer <= pVGAState->vram_size
-                        && u32Offset > pVGAState->vram_size - cbVBVABuffer,
+                        && u32Offset <= pVGAState->vram_size - cbVBVABuffer,
                         VERR_INVALID_PARAMETER);
     if (!fRestored)
     {
