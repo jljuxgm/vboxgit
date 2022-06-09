@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkDetailsDialog.cpp 67127 2017-05-29 10:21:24Z vboxsync $ */
+/* $Id: UIHostNetworkDetailsDialog.cpp 67251 2017-06-02 15:42:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkDetailsDialog class implementation.
  */
@@ -62,9 +62,8 @@ UIHostNetworkDetailsDialog::UIHostNetworkDetailsDialog(QWidget *pParent /* = 0 *
 
 void UIHostNetworkDetailsDialog::setData(const UIDataHostNetwork &data)
 {
-    /* Save old data: */
+    /* Cache old/new data: */
     m_oldData = data;
-    /* Copy old data to new one: */
     m_newData = m_oldData;
 
     /* Load 'Interface' data: */

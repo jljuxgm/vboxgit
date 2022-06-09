@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.h 67122 2017-05-26 16:10:48Z vboxsync $ */
+/* $Id: UIHostNetworkManager.h 67251 2017-06-02 15:42:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class declaration.
  */
@@ -79,8 +79,8 @@ private slots:
         void sltRemoveHostNetwork();
         /** Handles command to make host network details @a fVisible. */
         void sltToggleHostNetworkDetailsVisibility(bool fVisible);
-        /** Handles command to apply host network details changes. */
-        void sltApplyHostNetworkDetailsChanges();
+        /** Handles command to commit host network details changes. */
+        void sltCommitHostNetworkDetailsChanges();
     /** @} */
 
     /** @name Tree-widget stuff.
