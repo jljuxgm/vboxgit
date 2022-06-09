@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.h 67686 2017-06-29 09:57:17Z vboxsync $ */
+/* $Id: UIHostNetworkManager.h 67811 2017-07-05 18:56:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class declaration.
  */
@@ -44,7 +44,7 @@ class UIHostNetworkManagerWidget : public QIWithRetranslateUI<QWidget>
 
 signals:
 
-    /** Notifies listeners about host network details widget @a fVisible. */
+    /** Notifies listeners about host network details-widget @a fVisible. */
     void sigHostNetworkDetailsVisibilityChanged(bool fVisible);
     /** Notifies listeners about host network details data @a fDiffers. */
     void sigHostNetworkDetailsDataChanged(bool fDiffers);
@@ -78,7 +78,7 @@ protected:
 
 public slots:
 
-    /** @name Menu/action stuff.
+    /** @name Details-widget stuff.
       * @{ */
         /** Handles command to reset host network details changes. */
         void sltResetHostNetworkDetailsChanges();

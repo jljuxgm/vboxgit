@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 67703 2017-06-29 16:09:41Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 67811 2017-07-05 18:56:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -661,7 +661,7 @@ void UIHostNetworkManagerWidget::sltHandleCurrentItemChange()
     else
     {
         /* Otherwise => clear details and close the area: */
-        m_pDetailsWidget->clearData();
+        m_pDetailsWidget->setData(UIDataHostNetwork());
         sltToggleHostNetworkDetailsVisibility(false);
     }
 }
@@ -1027,9 +1027,7 @@ void UIHostNetworkManager::sltHandleButtonBoxClick(QAbstractButton *pButton)
     /* Compare with known buttons: */
     if (pButton == button(ButtonType_Reset))
         emit sigDataChangeRejected();
-
     else
-
     if (pButton == button(ButtonType_Apply))
         emit sigDataChangeAccepted();
 }
