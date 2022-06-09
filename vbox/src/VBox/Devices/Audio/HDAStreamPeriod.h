@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.h 69723 2017-11-17 11:23:49Z vboxsync $ */
+/* $Id: HDAStreamPeriod.h 71733 2018-04-07 14:35:47Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.h - Stream period functions for HD Audio.
  */
@@ -22,11 +22,12 @@
 #ifdef DEBUG
 # include <iprt/time.h>
 #endif
+#include <VBox/log.h> /* LOG_ENABLED */
 
 struct HDASTREAM;
 typedef HDASTREAM *PHDASTREAM;
 
-#ifdef DEBUG
+#ifdef LOG_ENABLED
 /**
  * Structure for debug information of an HDA stream's period.
  */
@@ -75,7 +76,7 @@ typedef struct HDASTREAMPERIOD
     /** Number of pending interrupts required for this period. */
     uint8_t                 cIntPending;
     uint8_t                 Padding3[7];
-#ifdef DEBUG
+#ifdef LOG_ENABLED
     /** Debugging information. */
     HDASTREAMPERIODDBGINFO  Dbg;
 #endif
