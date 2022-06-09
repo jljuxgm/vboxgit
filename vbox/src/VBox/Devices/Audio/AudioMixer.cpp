@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 68869 2017-09-26 09:08:39Z vboxsync $ */
+/* $Id: AudioMixer.cpp 68898 2017-09-28 08:41:40Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1318,6 +1318,28 @@ void AudioMixerSinkReset(PAUDMIXSINK pSink)
     LogFlowFunc(("[%s]\n", pSink->pszName));
 
     audioMixerSinkReset(pSink);
+
+    rc2 = RTCritSectLeave(&pSink->CritSect);
+    AssertRC(rc2);
+}
+
+/**
+ * Returns the audio format of a mixer sink.
+ *
+ * @returns IPRT status code.
+ * @param   pSink               Sink to retrieve audio format for.
+ * @param   pPCMProps           Where to the returned audio format.
+ */
+void AudioMixerSinkGetFormat(PAUDMIXSINK pSink, PPDMAUDIOPCMPROPS pPCMProps)
+{
+    AssertPtrReturnVoid(pSink);
+    AssertPtrReturnVoid(pPCMProps);
+
+    int rc2 = RTCritSectEnter(&pSink->CritSect);
+    if (RT_FAILURE(rc2))
+        return;
+
+    memcpy(pPCMProps, &pSink->PCMProps, sizeof(PDMAUDIOPCMPROPS));
 
     rc2 = RTCritSectLeave(&pSink->CritSect);
     AssertRC(rc2);
