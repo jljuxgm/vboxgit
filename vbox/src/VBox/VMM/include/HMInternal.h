@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 71415 2018-03-21 09:29:22Z vboxsync $ */
+/* $Id: HMInternal.h 71529 2018-03-28 06:32:43Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -288,6 +288,24 @@ typedef struct HMGLOBALCPUINFO
     bool                fIgnoreAMDVInUseError;
     /** In use by our code. (for power suspend) */
     volatile bool       fInUse;
+#ifdef VBOX_WITH_NESTED_HWVIRT
+    /** Nested-guest union (put data common to SVM/VMX outside the union). */
+    union
+    {
+        /** Nested-guest SVM data. */
+        struct
+        {
+            /** The active nested-guest MSR permission bitmap memory backing. */
+            RTR0MEMOBJ          hNstGstMsrpm;
+            /** The physical address of the first page in hNstGstMsrpm (physcially
+             *  contigous allocation). */
+            RTHCPHYS            HCPhysNstGstMsrpm;
+            /** The address of the active nested-guest MSRPM. */
+            void               *pvNstGstMsrpm;
+        } svm;
+        /** @todo Nested-VMX. */
+    } n;
+#endif
 } HMGLOBALCPUINFO;
 /** Pointer to the per-cpu global information. */
 typedef HMGLOBALCPUINFO *PHMGLOBALCPUINFO;
