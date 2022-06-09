@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 71644 2018-04-04 06:55:08Z vboxsync $ */
+/* $Id: UIMessageCenter.h 72347 2018-05-25 16:38:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -234,6 +234,7 @@ public:
     void warnAboutWrongUSBMounted() const;
 #endif /* RT_OS_LINUX */
     void cannotStartSelector() const;
+    void cannotStartRuntime() const;
     void showBetaBuildWarning() const;
     void showExperimentalBuildWarning() const;
 

@@ -1,4 +1,4 @@
-/* $Id: UIStarter.cpp 72189 2018-05-10 12:10:16Z vboxsync $ */
+/* $Id: UIStarter.cpp 72347 2018-05-25 16:38:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class implementation.
  */
@@ -151,6 +151,14 @@ void UIStarter::sltShowUI()
         if (!UIMachine::startMachine(vboxGlobal().managedVMUuid()))
             return QApplication::quit();
     }
+# if defined(VBOX_GUI_WITH_SHARED_LIBRARY) && defined(VBOX_RUNTIME_UI)
+    else
+    {
+        /* Show the error message otherwise: */
+        msgCenter().cannotStartRuntime();
+        return QApplication::quit();
+    }
+# endif /* VBOX_GUI_WITH_SHARED_LIBRARY && VBOX_RUNTIME_UI */
 #endif /* !VBOX_GUI_WITH_SHARED_LIBRARY || VBOX_RUNTIME_UI */
 }
 
