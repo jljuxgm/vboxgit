@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 71387 2018-03-20 10:15:27Z vboxsync $"
+# "$Id: tdMoveVM1.py 71390 2018-03-20 10:37:27Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71387 $"
+__version__ = "$Revision: 71390 $"
 
 # Standard Python imports.
 import os
@@ -287,13 +287,13 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
             fRc = oSession.close() and fRc
             if fRc is False:
                 reporter.log('Couldn\'t close machine session')
- 
+
             #Run VM and get new Session object
             oSession = self.oTstDrv.startVm(oMachine)
- 
+
             #some time interval should be here for not closing VM just after start
             time.sleep(1)
- 
+
             if oMachine.state != self.oTstDrv.oVBoxMgr.constants.MachineState_Running:
                 reporter.log("Machine '%s' is not Running" % (oMachine.name))
                 fRc = False
@@ -302,16 +302,16 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
             fRc = fRc and oSession.saveState()
             self.oTstDrv.terminateVmBySession(oSession)
 
-            if fRc: 
+            if fRc:
                 sLoc = sMoveLoc + os.sep + oMachine.name + os.sep
                 sMoveLoc = os.path.join(sOrigLoc, 'moveFolder_4th_scenario')
                 os.mkdir(sMoveLoc, 0o775)
- 
+
                 #create a new Session object for moving VM
                 oSession = self.oTstDrv.openSession(oMachine)
                 fRc = self.moveVMToLocation(sMoveLoc, oSession.o.machine) and fRc
 
-                # cleaning up: get rid of saved state 
+                # cleaning up: get rid of saved state
                 fRc = fRc and oSession.o.machine.discardSavedState(True)
                 if fRc is False:
                     reporter.log('Failed to discard the saved state of machine')
