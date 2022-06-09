@@ -1,4 +1,4 @@
-/* $Id: scm.h 69295 2017-10-25 12:26:19Z vboxsync $ */
+/* $Id: scm.h 69316 2017-10-25 15:02:31Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -286,6 +286,8 @@ typedef struct SCMSETTINGSBASE
     uint8_t         cchTab;
     /** Optimal source code width. */
     uint8_t         cchWidth;
+    /** Treat the file as if it had the given name (for finding SCMCFGENTRY). */
+    char           *pszTreatAsName;
     /** Only consider files matching these patterns.  This is only applied to the
      *  base names. */
     char           *pszFilterFiles;
