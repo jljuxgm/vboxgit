@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 70029 2017-12-08 13:52:37Z vboxsync $ */
+/* $Id: UIMachineLogic.h 70831 2018-01-31 13:23:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -195,9 +195,6 @@ protected slots:
     /** Handles host-screen available-area change. */
     virtual void sltHostScreenAvailableAreaChange();
 
-    /** Handles close signal from the log viewer dialog. */
-    void sltCloseLogViewerWindow();
-
 protected:
 
     /* Constructor: */
@@ -312,6 +309,8 @@ private slots:
     void sltShowDebugCommandLine();
     void sltLoggingToggled(bool);
     void sltShowLogDialog();
+    /** Handles close signal from the log viewer dialog. */
+    void sltCloseLogViewerWindow();
 #endif /* VBOX_WITH_DEBUGGER_GUI */
 
 #ifdef RT_OS_DARWIN /* Something is *really* broken in regards of the moc here */
@@ -430,4 +429,3 @@ private:
 };
 
 #endif /* !___UIMachineLogic_h___ */
-
