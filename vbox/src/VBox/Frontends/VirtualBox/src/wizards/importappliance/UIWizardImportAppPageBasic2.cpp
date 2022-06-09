@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 71318 2018-03-14 12:03:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -122,6 +122,14 @@ void UIWizardImportAppPageBasic2::initializePage()
 {
     /* Acquire appliance and certificate: */
     CAppliance *pAppliance = m_pApplianceWidget->appliance();
+    /* Check if pAppliance is alive. If not just return here. This
+       prevents crashes when an invalid ova file is supllied: */
+    if (!pAppliance)
+    {
+        if (wizard())
+            wizard()->reject();
+        return;
+    }
     CCertificate certificate = pAppliance->GetCertificate();
     if (certificate.isNull())
         m_enmCertText = kCertText_Unsigned;
