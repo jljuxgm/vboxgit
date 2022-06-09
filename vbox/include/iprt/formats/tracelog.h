@@ -1,4 +1,4 @@
-/* $Id: tracelog.h 71492 2018-03-24 22:23:10Z vboxsync $ */
+/* $Id: tracelog.h 71493 2018-03-24 22:28:03Z vboxsync $ */
 /** @file
  * IPRT, Binary trace log format.
  */
@@ -202,7 +202,7 @@ typedef struct TRACELOGEVT
     /** Event structure descriptor ID to use for structuring the event data. */
     uint32_t                    u32EvtDescId;
     /** Reserved for future use. */
-    uint32_t                    u32Reserved0;
+    uint64_t                    u64Reserved0;
 } TRACELOGEVT;
 AssertCompileSize(TRACELOGEVT, 64);
 /** Pointer to a trace log event marker. */

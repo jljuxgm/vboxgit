@@ -1,4 +1,4 @@
-/* $Id: tracelogreader.cpp 71492 2018-03-24 22:23:10Z vboxsync $ */
+/* $Id: tracelogreader.cpp 71493 2018-03-24 22:28:03Z vboxsync $ */
 /** @file
  * IPRT - Trace log reader.
  */
@@ -92,7 +92,7 @@ typedef enum RTTRACELOGRDRSTATE
     /** The event data is being received. */
     RTTRACELOGRDRSTATE_RECV_EVT_DATA,
     /** 32bit hack. */
-    RTTRACELOGRDRSTATE_32BIT_HACK = 0x7fffffff,
+    RTTRACELOGRDRSTATE_32BIT_HACK = 0x7fffffff
 } RTTRACELOGRDRSTATE;
 
 
