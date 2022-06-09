@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-weird-1-x0.c 72176 2018-05-09 15:28:30Z vboxsync $ */
+/* $Id: bs3-cpu-weird-1-x0.c 72184 2018-05-09 20:49:24Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-weird-2, C test driver code (16-bit).
  */
@@ -518,5 +518,4 @@ BS3_DECL_FAR(uint8_t) BS3_CMN_FAR_NM(bs3CpuWeird1_DbgInhibitRingXfer)(uint8_t bM
 
     return 0;
 }
-
 

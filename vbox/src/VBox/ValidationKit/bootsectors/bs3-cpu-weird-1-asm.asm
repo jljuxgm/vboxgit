@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-weird-1-asm.asm 72176 2018-05-09 15:28:30Z vboxsync $
+; $Id: bs3-cpu-weird-1-asm.asm 72184 2018-05-09 20:49:24Z vboxsync $
 ;; @file
 ; BS3Kit - bs3-cpu-weird-1
 ;
@@ -56,5 +56,4 @@ BS3_BEGIN_TEXT16
 ;;
 BS3_INSTANTIATE_COMMON_TEMPLATE          "bs3-cpu-weird-1-template.mac"
 ; BS3_INSTANTIATE_TEMPLATE_WITH_WEIRD_ONES "bs3-cpu-weird-1-template.mac"
-
 
