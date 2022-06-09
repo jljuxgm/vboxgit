@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibIdc-unix.cpp 68561 2017-08-31 12:10:14Z vboxsync $ */
+/* $Id: VBoxGuestR0LibIdc-unix.cpp 68567 2017-08-31 12:10:30Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC, UNIX-like OSes.
  */
@@ -34,13 +34,13 @@
 
 int VBOXCALL vbglR0IdcNativeOpen(PVBGLIDCHANDLE pHandle, PVBGLIOCIDCCONNECT pReq)
 {
-    return VBoxGuestIDC(NULL /*pvSession*/, VBGL_IOCTL_IDC_CONNECT, pReq, sizeof(*pReq));
+    return VBoxGuestIDC(NULL /*pvSession*/, VBGL_IOCTL_IDC_CONNECT, &pReq->Hdr, sizeof(*pReq));
 }
 
 
 int VBOXCALL vbglR0IdcNativeClose(PVBGLIDCHANDLE pHandle, PVBGLIOCIDCDISCONNECT pReq)
 {
-    return VBoxGuestIDC(pHandle->s.pvSession, VBGL_IOCTL_IDC_DISCONNECT, pReq, sizeof(*pReq));
+    return VBoxGuestIDC(pHandle->s.pvSession, VBGL_IOCTL_IDC_DISCONNECT, &pReq->Hdr, sizeof(*pReq));
 }
 
 
