@@ -1,4 +1,4 @@
-/* $Id: rdtsc.cpp 72550 2018-06-13 18:00:52Z vboxsync $ */
+/* $Id: rdtsc.cpp 72552 2018-06-13 18:17:05Z vboxsync $ */
 /** @file
  * rdtsc - Test if three consecutive rdtsc instructions return different values.
  */
@@ -263,7 +263,7 @@ int main(int argc, char **argv)
         if (   time(&uSecNow) == (time_t)-1
             || uSecNow        == (time_t)-1
             || uSecStart      == (time_t)-1
-            || uSecNow - uSecStart >= cMinSeconds)
+            || uSecNow - uSecStart >= (time_t)cMinSeconds)
             break;
     }
 
