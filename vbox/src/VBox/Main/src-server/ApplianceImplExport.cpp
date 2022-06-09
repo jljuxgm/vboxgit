@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 67209 2017-06-01 13:37:09Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 67210 2017-06-01 13:57:04Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2283,11 +2283,12 @@ HRESULT Appliance::i_writeFSOPC(TaskOVF *pTask, AutoWriteLockBase &writeLock)
             {
                 /** @todo test this stuff   */
                 const char *pszExt = RTPathSuffix(pDiskEntry->strOvf.c_str());
-                pszExt = !pszExt || *pszExt == '.' ? "" : pszExt + 1;
+                pszExt = !pszExt || *pszExt != '.' ? "" : pszExt + 1;
 
                 strTarballPath.stripFilename().append(RTPATH_SLASH_STR).append(pDiskEntry->strOvf);
-                strTarballPath.stripSuffix().append("_").append(pszExt).append(".tar.gz");
-
+                if (*pszExt)
+                    strTarballPath.stripSuffix().append("_").append(pszExt);
+                strTarballPath.append(".tar.gz");
             }
             cTarballs++;
 
