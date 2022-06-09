@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 68801 2017-09-20 10:54:50Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 68802 2017-09-20 12:41:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -57,7 +57,14 @@
 # include "VideoRec.h"
 
 # ifdef VBOX_WITH_LIBVPX
-#  include <vpx/vpx_encoder.h>
+#  ifdef _MSC_VER
+#   pragma warning(push)
+#   pragma warning(disable: 4668) /* vpx_codec.h(64) : warning C4668: '__GNUC__' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif' */
+#   include <vpx/vpx_encoder.h>
+#   pragma warning(pop)
+#  else
+#   include <vpx/vpx_encoder.h>
+#  endif
 # endif
 #endif
 
