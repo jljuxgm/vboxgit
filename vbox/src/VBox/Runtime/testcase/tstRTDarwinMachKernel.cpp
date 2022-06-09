@@ -1,4 +1,4 @@
-/* $Id: tstRTDarwinMachKernel.cpp 69644 2017-11-10 13:37:05Z vboxsync $ */
+/* $Id: tstRTDarwinMachKernel.cpp 69652 2017-11-10 18:42:07Z vboxsync $ */
 /** @file
  * IPRT Testcase - mach_kernel symbol resolving hack.
  */
@@ -32,6 +32,7 @@
 #include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
