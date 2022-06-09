@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 67756 2017-07-03 13:48:11Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 67879 2017-07-10 14:26:44Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1560,12 +1560,6 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
                  fInstallGuestAdditions,
                  bstrAuxiliaryBasePath.raw());
     } while (0);
-
-    RTPrintf("Unattended installation OS %s has been running on virtual machine '%ls'.\n"
-             "UUID: %ls\n",
-             strInstalledOS.c_str(),
-             bstrMachineName.raw(),
-             bstrUuid.raw());
 
     return SUCCEEDED(rc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 }
