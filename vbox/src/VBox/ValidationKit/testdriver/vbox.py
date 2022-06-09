@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 69542 2017-11-01 13:20:49Z vboxsync $
+# $Id: vbox.py 69543 2017-11-01 13:22:11Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69542 $"
+__version__ = "$Revision: 69543 $"
 
 
 # Standard Python imports.
@@ -817,8 +817,8 @@ class TestDriver(base.TestDriver):                                              
 
         # TEMPORARY: For process heap checking on windows 2012 boxes.
         self.fDoHeapChecks = False;
-        if 'COMPUTERNAME' in os.environ and utils.getHostOs() == 'windows':
-            self.fDoHeapChecks = os.environ['COMPUTERNAME'] in [ 'TESTBOXWIN5', 'WEI01-B6KC-4', 'TESTBOXPILE2' ];
+        if 'COMPUTERNAME' in os.environ and utils.getHostOs() == 'win':
+            self.fDoHeapChecks = os.environ['COMPUTERNAME'] in [ 'TESTBOXWIN5', 'WEI01-B6KC-4', 'TESTBOXPILE2', 'SKYLAKE' ];
             if self.fDoHeapChecks:
                 reporter.log('Will do heap checking...');
 
