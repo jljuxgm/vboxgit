@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.cpp 71100 2018-02-22 13:00:55Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.cpp 71191 2018-03-05 08:34:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestSessionTreeItem class implementation.
  */
@@ -247,7 +247,7 @@ void UIGuestSessionTreeItem::initProcessSubTree()
     if (!m_comGuestSession.isOk())
         return;
     QVector<CGuestProcess> processes = m_comGuestSession.GetProcesses();
-    for(int  i =0; i < processes.size(); ++i)
+    for (int  i =0; i < processes.size(); ++i)
         addGuestProcess(processes[i]);
 }
 

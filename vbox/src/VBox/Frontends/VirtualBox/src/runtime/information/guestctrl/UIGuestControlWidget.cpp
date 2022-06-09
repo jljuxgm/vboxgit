@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlWidget.cpp 71101 2018-02-22 13:30:02Z vboxsync $ */
+/* $Id: UIGuestControlWidget.cpp 71191 2018-03-05 08:34:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlWidget class implementation.
  */
@@ -146,7 +146,7 @@ private slots:
 
     void expandCollapseAll(bool bFlag)
     {
-        for(int i = 0; i < topLevelItemCount(); ++i)
+        for (int i = 0; i < topLevelItemCount(); ++i)
         {
             if (!topLevelItem(i))
                 break;

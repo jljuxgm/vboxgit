@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 71185 2018-03-04 11:58:18Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 71191 2018-03-05 08:34:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -29,6 +29,7 @@
 #include "CGuestSession.h"
 
 /* GUI includes: */
+#include "QIWithRetranslateUI.h"
 #include "UIMainEventListener.h"
 
 /* Forward declarations: */
@@ -39,10 +40,11 @@ class CGuestSessionStateChangedEvent;
 class UIGuestFileTable;
 class UIHostFileTable;
 class UIGuestSessionCreateWidget;
+class UIToolBar;
 
 /** QWidget extension
   * providing GUI with guest session information and control tab in session-information window. */
-class UIGuestControlFileManager : public QWidget
+class UIGuestControlFileManager : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
@@ -50,6 +52,10 @@ public:
 
     UIGuestControlFileManager(QWidget *pParent, const CGuest &comGuest);
     ~UIGuestControlFileManager();
+
+protected:
+
+    void retranslateUi();
 
 private slots:
 
@@ -88,6 +94,9 @@ private:
     QVBoxLayout      *m_pMainLayout;
     QSplitter        *m_pVerticalSplitter;
     QPlainTextEdit   *m_pLogOutput;
+    UIToolBar        *m_pToolBar;
+    QAction          *m_pCopyGuestToHost;
+    QAction          *m_pCopyHostToGuest;
 
     UIGuestSessionCreateWidget *m_pSessionCreateWidget;
     UIGuestFileTable           *m_pGuestFileTable;
