@@ -1,4 +1,4 @@
-/* $Id: chk_stubs.c 72122 2018-05-04 19:37:24Z vboxsync $ */
+/* $Id: chk_stubs.c 72137 2018-05-07 12:31:41Z vboxsync $ */
 /** @file
  * glibc stubs for the VirtualBox Guest Addition X11 Client.
  */
@@ -49,9 +49,7 @@ void __stack_chk_fail(void)
  * version.  We are forced to do it this way because the shared libraries
  * supc++ and gcc_eh contain references which we cannot change. */
 
-#ifdef __cplusplus
-extern "C" void *__wrap_memcpy(void *dest, const void *src, size_t n);
-#endif
+extern void *__wrap_memcpy(void *dest, const void *src, size_t n);
 
 asm (".symver memcpy, memcpy@GLIBC_2.2.5");
 void *__wrap_memcpy(void *dest, const void *src, size_t n)
