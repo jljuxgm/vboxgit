@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 67686 2017-06-29 09:57:17Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 67703 2017-06-29 16:09:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -227,7 +227,7 @@ void UIHostNetworkManagerWidget::retranslateUi()
     {
         m_pActionDetails->setText(UIHostNetworkManager::tr("&Details..."));
         m_pActionDetails->setToolTip(UIHostNetworkManager::tr("Open Host-only Network Details (%1)").arg(m_pActionDetails->shortcut().toString()));
-        m_pActionDetails->setStatusTip(UIHostNetworkManager::tr("Open pane with the selected host-only network details"));
+        m_pActionDetails->setStatusTip(UIHostNetworkManager::tr("Open pane with selected host-only network details"));
     }
 
     /* Adjust toolbar: */

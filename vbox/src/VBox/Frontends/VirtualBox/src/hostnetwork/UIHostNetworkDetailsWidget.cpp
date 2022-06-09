@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkDetailsWidget.cpp 67686 2017-06-29 09:57:17Z vboxsync $ */
+/* $Id: UIHostNetworkDetailsWidget.cpp 67703 2017-06-29 16:09:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkDetailsWidget class implementation.
  */
@@ -44,7 +44,7 @@
 
 
 UIHostNetworkDetailsWidget::UIHostNetworkDetailsWidget(EmbedTo enmEmbedding, QWidget *pParent /* = 0 */)
-    : QIWithRetranslateUI2<QWidget>(pParent)
+    : QIWithRetranslateUI<QWidget>(pParent)
     , m_enmEmbedding(enmEmbedding)
     , m_pTabWidget(0)
     , m_pButtonAutomatic(0), m_pErrorPaneAutomatic(0)

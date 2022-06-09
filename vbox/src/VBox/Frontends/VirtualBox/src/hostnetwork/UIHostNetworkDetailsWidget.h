@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkDetailsWidget.h 67686 2017-06-29 09:57:17Z vboxsync $ */
+/* $Id: UIHostNetworkDetailsWidget.h 67703 2017-06-29 16:09:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkDetailsWidget class declaration.
  */
@@ -158,7 +158,7 @@ struct UIDataHostNetwork
 
 
 /** Host Network Manager: Host network details widget. */
-class UIHostNetworkDetailsWidget : public QIWithRetranslateUI2<QWidget>
+class UIHostNetworkDetailsWidget : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
