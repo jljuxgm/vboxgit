@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70396 2018-01-01 12:27:08Z vboxsync $
+# $Id: Makefile.kmk 70417 2018-01-02 11:14:44Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -433,6 +433,7 @@ RuntimeR3_SOURCES       = \
 	common/fs/isomakercmd.cpp \
 	common/fs/isomakerimport.cpp \
 	common/fs/ntfsvfs.cpp \
+	common/fs/RTFsCmdLs.cpp \
 	common/ldr/ldr.cpp \
 	common/ldr/ldrELF.cpp \
 	common/ldr/ldrEx.cpp \
