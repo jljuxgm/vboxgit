@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 69607 2017-11-07 16:27:16Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 69672 2017-11-13 14:26:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -2437,6 +2437,11 @@ void UIMediumManager::configureButtonBox()
             button(ButtonType_Reset), &QPushButton::setEnabled);
     connect(buttonBox(), &QIDialogButtonBox::clicked,
             this, &UIMediumManager::sltHandleButtonBoxClick);
+    // WORKAROUND:
+    // Since we connected signals later than extra-data loaded
+    // for signals above, we should handle that stuff here again:
+    button(ButtonType_Apply)->setVisible(gEDataManager->virtualMediaManagerDetailsExpanded());
+    button(ButtonType_Reset)->setVisible(gEDataManager->virtualMediaManagerDetailsExpanded());
 
     /* Create progress-bar: */
     m_pProgressBar = new UIEnumerationProgressBar;
