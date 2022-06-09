@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.cpp 67808 2017-07-05 16:59:24Z vboxsync $ */
+/* $Id: VBoxCredProvProvider.cpp 67809 2017-07-05 18:11:47Z vboxsync $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -410,7 +410,7 @@ VBoxCredProvProvider::GetFieldDescriptorAt(DWORD dwIndex, CREDENTIAL_PROVIDER_FI
 
         if (pcpFieldDesc)
         {
-            const VBOXCREDPROV_FIELD &field = s_VBoxCredProvFields[dwIndex];
+            const VBOXCREDPROV_FIELD &field = s_VBoxCredProvDefaultFields[dwIndex];
 
             RT_BZERO(pcpFieldDesc, sizeof(CREDENTIAL_PROVIDER_FIELD_DESCRIPTOR));
 
