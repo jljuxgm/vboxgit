@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 70732 2018-01-25 04:50:36Z vboxsync $ */
+/* $Id: CPUM.cpp 70788 2018-01-29 11:17:35Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1281,7 +1281,7 @@ VMMR3DECL(void) CPUMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
     /*
      * Hardware virtualization state.
      */
-    pCtx->hwvirt.fGif = 1;
+    pCtx->hwvirt.fGif = true;
 
     /* SVM. */
     if (pCtx->hwvirt.svm.CTX_SUFF(pVmcb))
