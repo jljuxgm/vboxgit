@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 67657 2017-06-28 08:25:17Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 67767 2017-07-04 09:08:54Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1526,6 +1526,7 @@ static int ichac97StreamOpen(PAC97STATE pThis, PAC97STREAM pStream)
             streamCfg.Props.uHz         = ichac97MixerGet(pThis, AC97_PCM_LR_ADC_Rate);
             streamCfg.enmDir            = PDMAUDIODIR_IN;
             streamCfg.DestSource.Source = PDMAUDIORECSOURCE_LINE;
+            streamCfg.enmLayout         = PDMAUDIOSTREAMLAYOUT_NON_INTERLEAVED;
 
             RTStrPrintf2(streamCfg.szName, sizeof(streamCfg.szName), "Line-In");
 
@@ -1538,6 +1539,7 @@ static int ichac97StreamOpen(PAC97STATE pThis, PAC97STREAM pStream)
             streamCfg.Props.uHz         = ichac97MixerGet(pThis, AC97_MIC_ADC_Rate);
             streamCfg.enmDir            = PDMAUDIODIR_IN;
             streamCfg.DestSource.Source = PDMAUDIORECSOURCE_MIC;
+            streamCfg.enmLayout         = PDMAUDIOSTREAMLAYOUT_NON_INTERLEAVED;
 
             RTStrPrintf2(streamCfg.szName, sizeof(streamCfg.szName), "Mic-In");
 
@@ -1550,6 +1552,7 @@ static int ichac97StreamOpen(PAC97STATE pThis, PAC97STREAM pStream)
             streamCfg.Props.uHz         = ichac97MixerGet(pThis, AC97_PCM_Front_DAC_Rate);
             streamCfg.enmDir            = PDMAUDIODIR_OUT;
             streamCfg.DestSource.Dest   = PDMAUDIOPLAYBACKDEST_FRONT;
+            streamCfg.enmLayout         = PDMAUDIOSTREAMLAYOUT_NON_INTERLEAVED;
 
             RTStrPrintf2(streamCfg.szName, sizeof(streamCfg.szName), "Output");
 
