@@ -1,4 +1,4 @@
-/* $Id: serialport-win.cpp 69980 2017-12-07 14:17:47Z vboxsync $ */
+/* $Id: serialport-win.cpp 69982 2017-12-07 14:22:30Z vboxsync $ */
 /** @file
  * IPRT - Serial Port API, Windows Implementation.
  */
@@ -356,7 +356,7 @@ RTDECL(int) RTSerialPortReadNB(RTSERIALPORT hSerialPort, void *pvBuf, size_t cbT
      * what we get back.
      */
     int rc = VINF_SUCCESS;
-    BOOL fSucc = ResetEvent(pThis->Overlapped.hEvent); Assert(fSucc == TRUE);
+    BOOL fSucc = ResetEvent(pThis->Overlapped.hEvent); Assert(fSucc == TRUE); RT_NOREF(fSucc);
     DWORD cbRead = 0;
     if (   cbToRead == 0
         || ReadFile(pThis->hDev, pvBuf,
