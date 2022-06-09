@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.h 66109 2017-03-15 10:52:42Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.h 67772 2017-07-04 11:42:31Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -86,6 +86,7 @@ public:
                                 CREDENTIAL_PROVIDER_STATUS_ICON* pcpsiOptionalStatusIcon);
     /** @} */
 
+    HRESULT resetField(DWORD dwFieldID);
     HRESULT Reset(void);
     HRESULT Initialize(CREDENTIAL_PROVIDER_USAGE_SCENARIO cpus);
     int RetrieveCredentials(void);
@@ -108,12 +109,15 @@ private:
     LONG                                  m_cRefs;
     /** The usage scenario for which we were enumerated. */
     CREDENTIAL_PROVIDER_USAGE_SCENARIO    m_enmUsageScenario;
-    /** The actual credential strings. */
-    PRTUTF16                              m_apwszCredentials[VBOXCREDPROV_NUM_FIELDS];
+    /** The actual credential provider fields.
+     *  Must be allocated as long as the credential provider is in charge. */
+    PRTUTF16                              m_apwszFields[VBOXCREDPROV_NUM_FIELDS];
     /** Pointer to event handler. */
     ICredentialProviderCredentialEvents  *m_pEvents;
     /** Flag indicating whether credentials already were retrieved. */
     bool                                  m_fHaveCreds;
+    /** Flag indicating wheter a profile (user tile) current is selected or not. */
+    bool                                  m_fIsSelected;
 };
 #endif /* !___VBOX_CREDPROV_CREDENTIAL_H___ */
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.cpp 63070 2016-08-05 22:24:30Z vboxsync $ */
+/* $Id: VBoxCredProvProvider.cpp 67772 2017-07-04 11:42:31Z vboxsync $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -414,17 +414,28 @@ VBoxCredProvProvider::GetFieldDescriptorAt(DWORD dwIndex, CREDENTIAL_PROVIDER_FI
 
             RT_BZERO(pcpFieldDesc, sizeof(CREDENTIAL_PROVIDER_FIELD_DESCRIPTOR));
 
-            pcpFieldDesc->dwFieldID = field.desc.dwFieldID;
-            pcpFieldDesc->cpft      = field.desc.cpft;
+            pcpFieldDesc->dwFieldID     = field.desc.dwFieldID;
+            pcpFieldDesc->cpft          = field.desc.cpft;
             if (field.desc.pszLabel)
+            {
                 hr = SHStrDupW(field.desc.pszLabel, &pcpFieldDesc->pszLabel);
+
+                VBoxCredProvVerbose(0, "VBoxCredProv::GetFieldDescriptorAt: dwIndex=%ld, pszLabel=%ls\n",
+                                    dwIndex,
+#ifdef DEBUG /* Don't show any (sensitive data) in release mode. */
+                                    field.desc.pszLabel);
+#else
+                                    L"XXX");
+#endif
+            }
+            pcpFieldDesc->guidFieldType = field.desc.guidFieldType;
         }
         else
             hr = E_OUTOFMEMORY;
 
         if (SUCCEEDED(hr))
             *ppFieldDescriptor = pcpFieldDesc;
-        else
+        else if (pcpFieldDesc)
             CoTaskMemFree(pcpFieldDesc);
     }
     else
