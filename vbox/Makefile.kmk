@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69514 2017-10-29 07:32:11Z vboxsync $
+# $Id: Makefile.kmk 69517 2017-10-29 18:19:00Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -910,7 +910,8 @@ ifeq ($(KBUILD_HOST),$(KBUILD_TARGET))
  endif
  .PHONY: scm.check.run
  scm.check.run: $(VBOX_PATH_TOOLS)/scm$(HOSTSUFF_EXE)
-	$(VBOX_PATH_TOOLS)/scm$(HOSTSUFF_EXE) -qvv --check-run $(PATH_ROOT)
+	$(REDIRECT) -E VBOX_LOG_FLAGS="disabled" -E VBOX_LOG_DEST="nofile" -- \
+		$(VBOX_PATH_TOOLS)/scm$(HOSTSUFF_EXE) -qvv --check-run $(PATH_ROOT)
 endif
 
 
