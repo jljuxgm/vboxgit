@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: load.sh 68794 2017-09-19 16:04:51Z vboxsync $
+# $Id: load.sh 69109 2017-10-17 14:22:06Z vboxsync $
 ## @file
 # For GA development.
 #
@@ -61,7 +61,7 @@ done
 #
 set -e
 sed -e '/name=vboxguest/d' /etc/devlink.tab > /tmp/devlink.vbox
-echo "type=ddi_pseudo;name=vboxguest	\D" >> /tmp/devlink.vbox
+echo -e "type=ddi_pseudo;name=vboxguest\t\D" >> /tmp/devlink.vbox
 $SUDO cp /tmp/devlink.vbox /etc/devlink.tab
 $SUDO ln -fs ../devices/pci@0,0/pci80ee,cafe@4:vboxguest /dev/vboxguest
 set +e
