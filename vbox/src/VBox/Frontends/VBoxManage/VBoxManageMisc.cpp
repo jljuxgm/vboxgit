@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 67614 2017-06-26 17:00:42Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 67615 2017-06-26 17:01:18Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1369,7 +1369,7 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
                 cSpecificOptions++;
                 break;
 
-            case 'S':   // --sesion-type
+            case 'S':   // --session-type
                 sessionType = ValueUnion.psz;
                 break;
 
