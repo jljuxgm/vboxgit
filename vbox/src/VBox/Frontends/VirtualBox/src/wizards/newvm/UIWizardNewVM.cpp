@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 64965 2016-12-19 15:16:10Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 68988 2017-10-04 14:56:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -138,6 +138,7 @@ bool UIWizardNewVM::createVM()
     m_machine.GetAudioAdapter().SetAudioCodec(type.GetRecommendedAudioCodec());
     /* Enabling audio by default: */
     m_machine.GetAudioAdapter().SetEnabled(true);
+    m_machine.GetAudioAdapter().SetEnabledOut(true);
 
     /* Enable the OHCI and EHCI controller by default for new VMs. (new in 2.2): */
     CUSBDeviceFilters usbDeviceFilters = m_machine.GetUSBDeviceFilters();
