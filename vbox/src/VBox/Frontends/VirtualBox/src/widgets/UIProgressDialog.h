@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.h 69000 2017-10-06 10:32:04Z vboxsync $ */
+/* $Id: UIProgressDialog.h 69004 2017-10-06 14:22:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class declaration.
  */
@@ -23,8 +23,8 @@
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
-class QProgressBar;
 class QLabel;
+class QProgressBar;
 class QILabel;
 class UIMiniCancelButton;
 class CProgress;
@@ -103,6 +103,9 @@ private:
     void updateProgressState();
     /** Updates progress-dialog percentage. */
     void updateProgressPercentage(int iPercent = -1);
+
+    /** Closes progress dialog (if possible). */
+    void closeProgressDialog();
 
     /** Performes timer event handling. */
     void handleTimerEvent();
