@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 72476 2018-06-07 13:49:48Z vboxsync $ */
+/* $Id: ApplianceImpl.h 72479 2018-06-07 16:04:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -185,7 +185,7 @@ private:
                                        int32_t &lDevice);
 
     void i_importOneDiskImage(const ovf::DiskImage &di,
-                              const Utf8Str &strTargetPath,
+                              const Utf8Str &strDstPath,
                               ComObjPtr<Medium> &pTargetHD,
                               ImportStack &stack);
 
