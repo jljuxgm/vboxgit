@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 69153 2017-10-22 09:38:04Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 69163 2017-10-23 11:54:35Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -345,9 +345,9 @@ int vmsvga3dSurfaceDestroy(PVGASTATE pThis, uint32_t sid)
         PVMSVGA3DCONTEXT pContext = pState->papContexts[cid];
         if (pContext->id == cid)
         {
-            for (uint32_t i = 0; i < RT_ELEMENTS(pContext->aSidActiveTexture); i++)
-                if (pContext->aSidActiveTexture[i] == sid)
-                    pContext->aSidActiveTexture[i] = SVGA3D_INVALID_ID;
+            for (uint32_t i = 0; i < RT_ELEMENTS(pContext->aSidActiveTextures); ++i)
+                if (pContext->aSidActiveTextures[i] == sid)
+                    pContext->aSidActiveTextures[i] = SVGA3D_INVALID_ID;
             if (pContext->sidRenderTarget == sid)
                 pContext->sidRenderTarget = SVGA3D_INVALID_ID;
         }

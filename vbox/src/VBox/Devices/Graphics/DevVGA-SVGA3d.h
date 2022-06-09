@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 69136 2017-10-20 07:13:09Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 69163 2017-10-23 11:54:35Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -27,7 +27,12 @@
 /** Arbitrary limit */
 #define SVGA3D_MAX_SHADER_IDS                   0x800
 /** D3D allows up to 8 texture stages. */
-#define SVGA3D_MAX_TEXTURE_STAGE                8
+#define SVGA3D_MAX_TEXTURE_STAGES               8
+/** Samplers: 16 Pixel Shader + 1 Displacement Map + 4 Vertex Shader */
+#define SVGA3D_MAX_SAMPLERS_PS         16
+#define SVGA3D_MAX_SAMPLERS_DMAP       1
+#define SVGA3D_MAX_SAMPLERS_VS         4
+#define SVGA3D_MAX_SAMPLERS            (SVGA3D_MAX_SAMPLERS_PS + SVGA3D_MAX_SAMPLERS_DMAP + SVGA3D_MAX_SAMPLERS_VS)
 /** Arbitrary upper limit; seen 8 so far. */
 #define SVGA3D_MAX_LIGHTS                       32
 /** Arbitrary upper limit; 2GB enough for 32768x16384*4. */
