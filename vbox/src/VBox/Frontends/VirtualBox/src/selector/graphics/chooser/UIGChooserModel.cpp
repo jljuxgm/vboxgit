@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 70552 2018-01-12 12:12:08Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 71438 2018-03-21 16:34:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -31,12 +31,13 @@
 # include <QDrag>
 
 /* GUI includes: */
+# include "QIMessageBox.h"
+# include "VBoxGlobal.h"
 # include "UIGChooser.h"
 # include "UIGChooserModel.h"
 # include "UIGChooserItemGroup.h"
 # include "UIGChooserItemMachine.h"
 # include "UIExtraDataDefs.h"
-# include "VBoxGlobal.h"
 # include "UIMessageCenter.h"
 # include "UIExtraDataManager.h"
 # include "UIActionPoolSelector.h"
