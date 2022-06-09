@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 70001 2017-12-08 05:58:00Z vboxsync $ */
+/* $Id: IEMAll.cpp 70255 2017-12-21 05:54:37Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -462,7 +462,7 @@ typedef enum IEMXCPTCLASS
     do \
     { \
         uint64_t uExitInfo1; \
-        if (   IEM_GET_GUEST_CPU_FEATURES(a_pVCpu)->fSvmDecodeAssist \
+        if (   IEM_GET_GUEST_CPU_FEATURES(a_pVCpu)->fSvmDecodeAssists \
             && (a_enmAccessCrX) == IEMACCESSCRX_MOV_CRX) \
             uExitInfo1 = SVM_EXIT1_MOV_CRX_MASK | ((a_iGReg) & 7); \
         else \
