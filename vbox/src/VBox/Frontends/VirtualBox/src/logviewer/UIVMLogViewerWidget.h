@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 70663 2018-01-21 21:28:37Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 70746 2018-01-25 16:01:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -193,7 +193,7 @@ private:
         QAction   *m_pActionFilter;
         QAction   *m_pActionRefresh;
         QAction   *m_pActionSave;
-        QAction   *m_pActionBookmark;
+        QAction   *m_pActionBookmarks;
         QAction   *m_pActionSettings;
         QMenu     *m_pMenu;
     /** @} */
