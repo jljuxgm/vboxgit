@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67701 2017-06-29 14:21:09Z vboxsync $ */
+/* $Id: DevHDA.cpp 67705 2017-06-29 16:17:28Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -1607,14 +1607,11 @@ static void hdaReschedulePendingInterrupts(PHDASTATE pThis)
 
     LogFunc(("fInterrupt=%RTbool\n", fInterrupt));
 
-    if (fInterrupt)
-    {
 #ifndef DEBUG
-        hdaProcessInterrupt(pThis);
+    hdaProcessInterrupt(pThis);
 #else
-        hdaProcessInterrupt(pThis, __FUNCTION__);
+    hdaProcessInterrupt(pThis, __FUNCTION__);
 #endif
-    }
 }
 #endif
 
