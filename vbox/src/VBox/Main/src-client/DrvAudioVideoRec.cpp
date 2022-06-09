@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 68737 2017-09-13 09:34:05Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 68772 2017-09-15 13:01:02Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -786,16 +786,16 @@ static DECLCALLBACK(int) drvAudioVideoRecStreamPlay(PPDMIHOSTAUDIO pInterface, P
         if (RT_FAILURE(rc))
             break;
     }
-#else
-    rc = VERR_NOT_SUPPORTED;
-#endif /* VBOX_WITH_LIBOPUS */
 
-    /*
-     * Always report back all samples acquired, regardless of whether the
-     * encoder actually did process those.
-     */
     if (pcxWritten)
         *pcxWritten = cbWrittenTotal;
+#else
+    /* Report back all data as being processed. */
+    if (pcxWritten)
+        *pcxWritten = cxBuf;
+
+    rc = VERR_NOT_SUPPORTED;
+#endif /* VBOX_WITH_LIBOPUS */
 
     LogFlowFunc(("csReadTotal=%RU32, rc=%Rrc\n", cbWrittenTotal, rc));
     return rc;
