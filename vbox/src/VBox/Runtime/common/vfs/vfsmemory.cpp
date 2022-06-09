@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 67510 2017-06-20 14:19:24Z vboxsync $ */
+/* $Id: vfsmemory.cpp 67859 2017-07-07 16:06:44Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -169,7 +169,7 @@ static PRTVFSMEMEXTENT rtVfsMemFile_LocateExtentSlow(PRTVFSMEMFILE pThis, uint64
      * are very very simple, but whatever.
      */
     PRTVFSMEMEXTENT pExtent = pThis->pCurExt;
-    if (!pExtent || pExtent->off < off)
+    if (!pExtent || off < pExtent->off)
     {
         /* Consider the last entry first (for writes). */
         pExtent = RTListGetLast(&pThis->ExtentHead, RTVFSMEMEXTENT, Entry);
