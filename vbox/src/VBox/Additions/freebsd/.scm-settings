@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69369 2017-10-26 15:23:15Z vboxsync $
+# $Id: .scm-settings 69487 2017-10-28 13:56:13Z vboxsync $
 ## @file
 # Source code massager settings for the FreeBSD guest additions.
 #
@@ -16,3 +16,5 @@
 #
 
 --filter-out-files /Installer/pkg-descr
+/drm/vboxvideo_drm.c: --no-convert-tabs
+

@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69343 2017-10-26 12:11:00Z vboxsync $
+# $Id: .scm-settings 69487 2017-10-28 13:56:13Z vboxsync $
 ## @file
 # Source code massager settings for the Solaris guest additions.
 #
@@ -39,4 +39,6 @@
 
 --filter-out-dirs  "/SharedFolders/solaris10/sys/."
 /SharedFolders/*: --no-convert-tabs
+
+/DRM/vboxvideo_drm.c: --no-convert-tabs
 
