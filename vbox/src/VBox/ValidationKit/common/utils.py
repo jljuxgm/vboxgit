@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 69547 2017-11-02 09:46:15Z vboxsync $
+# $Id: utils.py 69573 2017-11-04 08:52:52Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69547 $"
+__version__ = "$Revision: 69573 $"
 
 
 # Standard Python imports.
@@ -1594,6 +1594,35 @@ def getXcptInfo(cFrames = 1):
     else:
         asRet = ['Couldn\'t find exception traceback.'];
     return asRet;
+
+
+def getObjectTypeName(oObject):
+    """
+    Get the type name of the given object.
+    """
+    if oObject is None:
+        return 'None';
+
+    # Get the type object.
+    try:
+        oType = type(oObject);
+    except:
+        return 'type-throws-exception';
+
+    # Python 2.x only: Handle old-style object wrappers.
+    if sys.version_info[0] < 3:
+        try:
+            from types import InstanceType;
+            if oType == InstanceType:
+                oType = oObject.__class__;
+        except:
+            pass;
+
+    # Get the name.
+    try:
+        return oType.__name__;
+    except:
+        return '__type__-throws-exception';
 
 
 #
