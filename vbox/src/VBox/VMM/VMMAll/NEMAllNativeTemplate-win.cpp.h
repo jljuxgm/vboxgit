@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 71222 2018-03-05 22:07:48Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 71223 2018-03-05 22:19:22Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -1203,6 +1203,7 @@ DECLINLINE(VBOXSTRICTRC) nemR0WinImportStateStrict(PGVM pGVM, PGVMCPU pGVCpu, PC
         Log4(("%s/%u: nemR0WinImportState -> %Rrc\n", pszCaller, pGVCpu->idCpu, -rc));
         return -rc;
     }
+    RT_NOREF(pszCaller);
     AssertMsgFailedReturn(("%s/%u: nemR0WinImportState failed: %Rrc\n", pszCaller, pGVCpu->idCpu, rc), rc);
 }
 #endif /* IN_RING0 */
