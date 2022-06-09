@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 67470 2017-06-19 12:18:14Z vboxsync $ */
+/* $Id: UISnapshotPane.h 67509 2017-06-20 14:10:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -185,6 +185,9 @@ private:
 
         /** Searches for smallest snapshot age starting with @a pItem as parent. */
         SnapshotAgeFormat traverseSnapshotAge(QTreeWidgetItem *pItem) const;
+
+        /** Expand all the children starting with @a pItem. */
+        void expandItemChildren(QTreeWidgetItem *pItem);
     /** @} */
 
     /** @name General variables.
