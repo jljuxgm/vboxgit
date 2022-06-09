@@ -1,6 +1,6 @@
-/* $Id: RTStrICmpAscii.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTStrICmpAscii.cpp 70093 2017-12-12 18:29:01Z vboxsync $ */
 /** @file
- * IPRT - RTUtf16ICmpAscii.
+ * IPRT - RTStrICmpAscii.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: RTStrNICmpAscii.cpp 70092 2017-12-12 18:25:40Z vboxsync $ */
+/* $Id: RTStrNICmpAscii.cpp 70093 2017-12-12 18:29:01Z vboxsync $ */
 /** @file
- * IPRT - RTUtf16ICmpAscii.
+ * IPRT - RTStrNICmpAscii.
  */
 
 /*
