@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72079 2018-05-02 05:15:20Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72080 2018-05-02 06:07:14Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4126,7 +4126,11 @@ static int hmR0SvmPreRunGuestNested(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTR
 #endif
     }
     else
-        return VINF_SVM_VMEXIT;
+    {
+        /** @todo Remove this assertion after its sufficiently established that this
+         *        never happens. */
+        AssertFailedReturn(VERR_INVALID_STATE);
+    }
 
     /* Check force flag actions that might require us to go back to ring-3. */
     int rc = hmR0SvmCheckForceFlags(pVM, pVCpu, pCtx);
