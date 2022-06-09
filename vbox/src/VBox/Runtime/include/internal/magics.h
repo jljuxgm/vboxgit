@@ -1,4 +1,4 @@
-/* $Id: magics.h 66742 2017-05-02 09:37:06Z vboxsync $ */
+/* $Id: magics.h 67259 2017-06-05 16:02:04Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -68,6 +68,8 @@
 #define RTENV_MAGIC                     UINT32_C(0x19571010)
 /** The value of RTERRVARS::ai32Vars[0]. (Ryuichi Sakamoto) */
 #define RTERRVARS_MAGIC                 UINT32_C(0x19520117)
+/** The value of RTFSISOMAKERINT::uMagic. (Brian Blade) */
+#define RTFSISOMAKERINT_MAGIC           UINT32_C(0x19700725)
 /** Magic number for RTHANDLETABLEINT::u32Magic. (Hitomi Kanehara) */
 #define RTHANDLETABLE_MAGIC             UINT32_C(0x19830808)
 /** Magic number for RTHEAPOFFSETINTERNAL::u32Magic. (Neal Town Stephenson) */
