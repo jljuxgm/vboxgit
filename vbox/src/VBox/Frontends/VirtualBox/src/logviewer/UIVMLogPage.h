@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 70549 2018-01-12 07:46:15Z vboxsync $ */
+/* $Id: UIVMLogPage.h 70554 2018-01-12 12:29:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -27,19 +27,11 @@
 #include "QIManagerDialog.h"
 #include "QIWithRetranslateUI.h"
 
-/* COM includes: */
-#include "COMEnums.h"
-#include "CMachine.h"
-
 /* Forward declarations: */
 class QITabWidget;
-class QPlainTextEdit;
 class QHBoxLayout;
-class UIToolBar;
-class UIVMLogViewerBookmarksPanel;
-class UIVMLogViewerFilterPanel;
-class UIVMLogViewerPanel;
-class UIVMLogViewerSearchPanel;
+class QPlainTextEdit;
+class UIVMLogViewerTextEdit;
 
 /* Type definitions: */
 /** first is line number, second is block text */
@@ -108,7 +100,7 @@ private:
     void retranslateUi();
 
     QHBoxLayout    *m_pMainLayout;
-    QPlainTextEdit *m_pPlainTextEdit;
+    UIVMLogViewerTextEdit *m_pTextEdit;
     /** Stores the log file (unmodified) content. */
     QString         m_strLog;
     /** Stores full path and name of the log file. */
