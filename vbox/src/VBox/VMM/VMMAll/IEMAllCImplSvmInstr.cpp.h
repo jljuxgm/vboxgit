@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 70255 2017-12-21 05:54:37Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 70261 2017-12-21 07:57:28Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -334,7 +334,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, uint8_t cbInstr
         }
 
         /* Nested paging. */
-        if (    pVmcbCtrl->NestedPaging.n.u1NestedPaging
+        if (    pVmcbCtrl->u1NestedPaging
             && !pVM->cpum.ro.GuestFeatures.fSvmNestedPaging)
         {
             Log(("iemSvmVmrun: Nested paging not supported -> #VMEXIT\n"));
