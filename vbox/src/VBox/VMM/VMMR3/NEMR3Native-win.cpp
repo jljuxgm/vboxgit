@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 72473 2018-06-07 12:51:15Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 72475 2018-06-07 13:21:45Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -2680,6 +2680,10 @@ void nemR3NativeNotifySetA20(PVMCPU pVCpu, bool fEnabled)
  *
  *   We can probably work around this by scanning the instruction bytes for
  *   address size prefixes.  Haven't investigated it any further yet.
+ *
+ *
+ * - Query WHvCapabilityCodeExceptionExitBitmap returns zero even when
+ *   intercepts demonstrably works (17134).
  *
  *
  * - The WHvGetCapability function has a weird design:
