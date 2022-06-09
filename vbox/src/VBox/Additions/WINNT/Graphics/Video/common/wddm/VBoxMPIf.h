@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 69976 2017-12-07 12:48:39Z vboxsync $ */
+/* $Id: VBoxMPIf.h 71167 2018-03-02 09:02:07Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver.
  *
@@ -655,7 +655,7 @@ DECLINLINE(UINT) vboxWddmCalcOffXru(UINT w, D3DDDIFORMAT enmFormat)
         case D3DDDIFMT_DXT5:
         {
             UINT Pitch = (w + 3) / 4; /* <- pitch size in blocks */
-            Pitch *= 8;               /* <- pitch size in bytes */
+            Pitch *= 16;              /* <- pitch size in bytes */
             return Pitch;
         }
         default:
