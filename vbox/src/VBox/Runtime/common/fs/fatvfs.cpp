@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 67340 2017-06-12 13:23:07Z vboxsync $ */
+/* $Id: fatvfs.cpp 67621 2017-06-26 21:13:36Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -2422,7 +2422,7 @@ static bool rtFsFatDir_StringTo8Dot3(char *pszName8Dot3, const char *pszName)
             break;
         }
     }
-    memset(&pszName8Dot3[0], 0, 12+1);
+    memset(&pszName8Dot3[0], 0, 8+3+1);
     return false;
 }
 
