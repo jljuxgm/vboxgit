@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72247 2018-05-17 17:28:18Z vboxsync $
+# $Id: Makefile.kmk 72271 2018-05-21 12:42:13Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -501,7 +501,8 @@ ifdef VBOX_GUI_WITH_SHARED_LIBRARY
  endif
 
  VBoxGlobal_LDFLAGS.darwin = \
-	-framework AppKit -framework Carbon -framework IOKit
+	-framework AppKit -framework Carbon -framework IOKit \
+	$(if $(VBOX_WITH_HARDENING),-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxGlobal.dylib)
 
  if defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_GUI_USE_QGL)
   VBoxGlobal_LDFLAGS.darwin += -framework OpenGL
