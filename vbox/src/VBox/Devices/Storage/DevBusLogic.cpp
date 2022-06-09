@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 67682 2017-06-29 08:44:44Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -4026,7 +4026,7 @@ static DECLCALLBACK(int) buslogicR3Construct(PPDMDEVINS pDevIns, int iInstance, 
 
     PCIDevSetVendorId         (&pThis->dev, 0x104b); /* BusLogic */
     PCIDevSetDeviceId         (&pThis->dev, 0x1040); /* BT-958 */
-    PCIDevSetCommand          (&pThis->dev, 0x0003);
+    PCIDevSetCommand          (&pThis->dev, PCI_COMMAND_IOACCESS | PCI_COMMAND_MEMACCESS);
     PCIDevSetRevisionId       (&pThis->dev, 0x01);
     PCIDevSetClassProg        (&pThis->dev, 0x00); /* SCSI */
     PCIDevSetClassSub         (&pThis->dev, 0x00); /* SCSI */
