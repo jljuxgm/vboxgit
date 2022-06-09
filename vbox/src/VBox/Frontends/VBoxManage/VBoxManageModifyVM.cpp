@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 71108 2018-02-22 15:38:35Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 72143 2018-05-07 14:52:10Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2374,7 +2374,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 sessionMachine->COMGETTER(AudioAdapter)(audioAdapter.asOutParam());
                 ASSERT(audioAdapter);
 
-                CHECK_ERROR(audioAdapter, COMSETTER(EnabledIn)(ValueUnion.f));
+                CHECK_ERROR(audioAdapter, COMSETTER(EnabledOut)(ValueUnion.f));
                 break;
             }
 
