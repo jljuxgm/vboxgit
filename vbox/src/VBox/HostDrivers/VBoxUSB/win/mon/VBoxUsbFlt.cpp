@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 70283 2017-12-21 14:28:47Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -541,45 +541,6 @@ static NTSTATUS vboxUsbFltDevPopulate(PVBOXUSBFLT_DEVICE pDevice, PDEVICE_OBJECT
                 }
             }
 
-#if 0
-            if (bPopulateNonFilterProps)
-            {
-                WCHAR RegKeyBuf[512];
-                ULONG cbRegKeyBuf = sizeof (RegKeyBuf);
-                Status = IoGetDeviceProperty(pDo,
-                                              DevicePropertyDriverKeyName,
-                                              cbRegKeyBuf,
-                                              RegKeyBuf,
-                                              &cbRegKeyBuf);
-                if (!NT_SUCCESS(Status))
-                {
-                    AssertMsgFailed((__FUNCTION__": IoGetDeviceProperty failed Status (0x%x)", Status));
-                    break;
-                }
-
-                ANSI_STRING Ansi;
-                UNICODE_STRING Unicode;
-                Ansi.Buffer = pDevice->szDrvKeyName;
-                Ansi.Length = 0;
-                Ansi.MaximumLength = sizeof(pDevice->szDrvKeyName);
-                RtlInitUnicodeString(&Unicode, RegKeyBuf);
-
-                Status = RtlUnicodeStringToAnsiString(&Ansi, &Unicode, FALSE /* do not allocate */);
-                if (!NT_SUCCESS(Status))
-                {
-                    AssertMsgFailed((__FUNCTION__": RtlUnicodeStringToAnsiString failed Status (0x%x)", Status));
-                    break;
-                }
-
-                pDevice->fHighSpend = FALSE;
-                Status = VBoxUsbToolGetDeviceSpeed(pDo, &pDevice->fHighSpend);
-                if (!NT_SUCCESS(Status))
-                {
-                    AssertMsgFailed((__FUNCTION__": VBoxUsbToolGetDeviceSpeed failed Status (0x%x)", Status));
-                    break;
-                }
-            }
-#endif
             LOG((": strings: '%s':'%s':'%s' (lang ID %x)",
                         pDevice->szMfgName, pDevice->szProduct, pDevice->szSerial, langId));
         }
