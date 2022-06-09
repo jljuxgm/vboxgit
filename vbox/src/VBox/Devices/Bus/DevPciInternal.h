@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 69124 2017-10-17 19:17:23Z vboxsync $ */
+/* $Id: DevPciInternal.h 70181 2017-12-17 13:16:28Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -192,8 +192,8 @@ DECLCALLBACK(void) devpciR3CommonSetConfigCallbacks(PPDMDEVINS pDevIns, PPDMPCID
                                                     PFNPCICONFIGREAD pfnRead, PPFNPCICONFIGREAD ppfnReadOld,
                                                     PFNPCICONFIGWRITE pfnWrite, PPFNPCICONFIGWRITE ppfnWriteOld);
 DECLCALLBACK(uint32_t) devpciR3CommonDefaultConfigRead(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t uAddress, unsigned cb);
-DECLCALLBACK(void)     devpciR3CommonDefaultConfigWrite(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev,
-                                                        uint32_t uAddress, uint32_t u32Value, unsigned cb);
+DECLCALLBACK(VBOXSTRICTRC) devpciR3CommonDefaultConfigWrite(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev,
+                                                            uint32_t uAddress, uint32_t u32Value, unsigned cb);
 void devpciR3CommonRestoreConfig(PPDMPCIDEV pDev, uint8_t const *pbSrcConfig);
 int  devpciR3CommonRestoreRegions(PSSMHANDLE pSSM, PPDMPCIDEV pPciDev, PPCIIOREGION paIoRegions, bool fNewState);
 void devpciR3ResetDevice(PPDMPCIDEV pDev);

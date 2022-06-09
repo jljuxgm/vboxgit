@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VMMDev.cpp 70181 2017-12-17 13:16:28Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2952,6 +2952,7 @@ static DECLCALLBACK(int) vmmdevIORAMRegionMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPc
 static DECLCALLBACK(int) vmmdevIOPortRegionMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                                RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
+    LogFlow(("vmmdevIOPortRegionMap: iRegion=%d GCPhysAddress=%RGp cb=%RGp enmType=%d\n", iRegion, GCPhysAddress, cb, enmType));
     RT_NOREF3(iRegion, cb, enmType);
     PVMMDEV pThis = RT_FROM_MEMBER(pPciDev, VMMDEV, PciDev);
 
