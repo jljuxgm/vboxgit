@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 71078 2018-02-21 07:58:00Z vboxsync $ */
+/* $Id: IEMAll.cpp 71079 2018-02-21 08:01:07Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10287,7 +10287,6 @@ iemMemStoreDataU256AlignedAvxJmp(PVMCPU pVCpu, uint8_t iSegReg, RTGCPTR GCPtrMem
 IEM_STATIC VBOXSTRICTRC
 iemMemStoreDataXdtr(PVMCPU pVCpu, uint16_t cbLimit, RTGCPTR GCPtrBase, uint8_t iSegReg, RTGCPTR GCPtrMem)
 {
-
     /*
      * The SIDT and SGDT instructions actually stores the data using two
      * independent writes.  The instructions does not respond to opsize prefixes.
