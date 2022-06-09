@@ -1,4 +1,4 @@
-; $Id: VMMR0.inf 71962 2018-04-22 12:57:03Z vboxsync $
+; $Id: VMMR0.inf 71986 2018-04-23 15:47:24Z vboxsync $
 ;; @file
 ; VMMR0.inf - VirtualBox VMM drivers.
 ;
@@ -36,11 +36,9 @@ DefaultDestDir = 12
 VBoxVMMInstall.Files = 12
 
 [Manufacturer]
-;x86 %ORACLE%=VBoxVMM
-;amd64 %ORACLE%=VBoxVMM, NTamd64
+%ORACLE%=VBoxVMM@COMMA-NT-ARCH@
 
-;x86 [VBoxVMM]
-;amd64 [VBoxVMM.NTamd64]
+[VBoxVMM@DOT-NT-ARCH@]
 %VBoxVMM.DrvDesc% = VBoxVMMInstall, root\VBoxVMM
 
 [VBoxVMMInstall]
