@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 71785 2018-04-09 16:00:47Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 71787 2018-04-09 16:03:51Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2605,7 +2605,14 @@ HRESULT GuestSession::fileCopyFromGuest(const com::Utf8Str &aSource, const com::
     }
 
     if (fFlags)
-        return setError(E_NOTIMPL, tr("Flag(s) not yet implemented"));
+    {
+        if (   !(fFlags & FileCopyFlag_NoReplace)
+            && !(fFlags & FileCopyFlag_FollowLinks)
+            && !(fFlags & FileCopyFlag_Update))
+        {
+            return setError(E_NOTIMPL, tr("Invalid / not (yet) implemented flag(s) specified"));
+        }
+    }
 
     HRESULT hrc = i_isReadyExternal();
     if (FAILED(hrc))
@@ -2685,7 +2692,14 @@ HRESULT GuestSession::fileCopyToGuest(const com::Utf8Str &aSource, const com::Ut
     }
 
     if (fFlags)
-        return setError(E_NOTIMPL, tr("Flag(s) not yet implemented"));
+    {
+        if (   !(fFlags & FileCopyFlag_NoReplace)
+            && !(fFlags & FileCopyFlag_FollowLinks)
+            && !(fFlags & FileCopyFlag_Update))
+        {
+            return setError(E_NOTIMPL, tr("Invalid / not (yet) implemented flag(s) specified"));
+        }
+    }
 
     HRESULT hrc = i_isReadyExternal();
     if (FAILED(hrc))
