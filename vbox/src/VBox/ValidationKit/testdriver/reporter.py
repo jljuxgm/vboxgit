@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 70508 2018-01-10 11:21:09Z vboxsync $
+# $Id: reporter.py 70517 2018-01-10 14:14:45Z vboxsync $
 # pylint: disable=C0302
 
 """
 Testdriver reporter module.
 """
+
+from __future__ import print_function;
 
 __copyright__ = \
 """
@@ -27,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70508 $"
+__version__ = "$Revision: 70517 $"
 
 
 # Standard Python imports.
@@ -412,7 +414,10 @@ class LocalReporter(ReporterBase):
         #
         sLogName = os.path.join(self.sLogDir, 'testsuite.log');
         sTsIso = utils.getIsoTimestamp();
-        self.oLogFile = utils.openNoInherit(sLogName, "w");
+        if sys.version_info[0] >= 3: # Add 'b' to prevent write taking issue with encode('utf-8') not returning a string.
+            self.oLogFile = utils.openNoInherit(sLogName, "wb");
+        else:
+            self.oLogFile = utils.openNoInherit(sLogName, "w");
         self.oLogFile.write(('Created log file at %s.\nRunning: %s' % (sTsIso, sys.argv)).encode('utf-8'));
 
         #
@@ -423,7 +428,10 @@ class LocalReporter(ReporterBase):
         #       test wrapper either.
         #
         sXmlName = os.path.join(self.sLogDir, 'testsuite.xml');
-        self.oXmlFile = utils.openNoInherit(sXmlName, "w");
+        if sys.version_info[0] >= 3: # Add 'b' to prevent write taking issue with encode('utf-8') not returning a string.
+            self.oXmlFile = utils.openNoInherit(sXmlName, "wb");
+        else:
+            self.oXmlFile = utils.openNoInherit(sXmlName, "w");
         self._xmlWrite([ '<?xml version="1.0" encoding="UTF-8" ?>',
                          '<Test timestamp="%s" name="%s">' % (sTsIso, self._xmlEscAttr(self.sName),), ],
                        fIndent = False);
@@ -499,9 +507,9 @@ class LocalReporter(ReporterBase):
             # output it.
             sAscii = sLogText.encode('ascii', 'replace');
             if self.iDebug == 0:
-                print >> self.oStdErr, '%s: %s' % (self.sName, sAscii)
+                print('%s: %s' % (self.sName, sAscii), file = self.oStdErr);
             else:
-                print >> self.oStdErr, '%s' % (sAscii)
+                print('%s' % (sAscii), file = self.oStdErr);
             sLogText += '\n';
             try:
                 self.oLogFile.write(sLogText.encode('utf-8'));
@@ -697,7 +705,7 @@ class RemoteReporter(ReporterBase):
 
     def _writeOutput(self, sText):
         """ Does the actual writing and flushing. """
-        print >> self.oOutput, sText.encode('ascii', 'replace');
+        print(sText.encode('ascii', 'replace'), file = self.oOutput);
         if self.fFlushEachLine: self.oOutput.flush();
         return None;
 
@@ -1726,7 +1734,7 @@ def _InitReporterModule():
     elif g_sReporterName == "remote":
         g_oReporter = RemoteReporter(); # Correct, but still plain stupid. pylint: disable=redefined-variable-type
     else:
-        print >> sys.stderr, os.path.basename(__file__) + ": Unknown TESTBOX_REPORTER value: '" + g_sReporterName + "'";
+        print(os.path.basename(__file__) + ": Unknown TESTBOX_REPORTER value: '" + g_sReporterName + "'", file = sys.stderr);
         raise Exception("Unknown TESTBOX_REPORTER value '" + g_sReporterName + "'");
 
 if __name__ != "checker": # pychecker avoidance.

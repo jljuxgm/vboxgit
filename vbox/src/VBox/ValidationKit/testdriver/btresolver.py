@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: btresolver.py 69225 2017-10-24 15:12:30Z vboxsync $
+# $Id: btresolver.py 70517 2018-01-10 14:14:45Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69225 $"
+__version__ = "$Revision: 70517 $"
 
 
 # Standard Python imports.
@@ -538,7 +538,7 @@ class BacktraceResolver(object):
         fRc = True;
         if not os.path.exists(self.sScratchDbgPath):
             try:
-                os.makedirs(self.sScratchDbgPath, 0750);
+                os.makedirs(self.sScratchDbgPath, 0o750);
             except:
                 fRc = False;
                 self.log('Failed to create scratch directory for debug symbols');
