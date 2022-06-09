@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMpLogger.h 68261 2017-08-02 21:45:09Z vboxsync $ */
+/* $Id: VBoxDispMpLogger.h 68283 2017-08-03 12:12:25Z vboxsync $ */
 /** @file
  * VBox WDDM Display backdoor logger API
  */
@@ -46,6 +46,8 @@ VBOXDISPMPLOGGER_DECL(int) VBoxDispMpLoggerTerm(void);
 VBOXDISPMPLOGGER_DECL(void) VBoxDispMpLoggerLog(const char *pszString);
 
 VBOXDISPMPLOGGER_DECL(void) VBoxDispMpLoggerLogF(const char *pszString, ...);
+
+DECLCALLBACK(void) VBoxWddmUmLog(const char *pszString);
 
 RT_C_DECLS_END
 
