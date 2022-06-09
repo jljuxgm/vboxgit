@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 70718 2018-01-23 22:25:22Z vboxsync $
+# $Id: vboxtestvms.py 70752 2018-01-25 18:08:24Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70718 $"
+__version__ = "$Revision: 70752 $"
 
 # Standard Python imports.
 import copy;
@@ -1106,12 +1106,18 @@ class TestVmManager(object):
 
         # DOS and Old Windows.
         AncientTestVm('tst-dos20',              sKind = 'DOS',  sHd = '5.2/great-old-ones/t-dos20/t-dos20.vdi'),
-        AncientTestVm('tst-dos71',              sKind = 'DOS',  sHd = '5.2/great-old-ones/t-dos71/t-dos71.vdi'),
-        AncientTestVm('tst-dos401-win30me',     sKind = 'DOS',  sHd = '5.2/great-old-ones/t-dos401-win30me/t-dos401-win30me.vdi',
-                      cMBRamMax = 4),
-        AncientTestVm('tst-dos5-win311a',       sKind = 'DOS',  sHd = '5.2/great-old-ones/t-dos5-win311a/t-dos5-win311a.vdi'),
+        AncientTestVm('tst-dos401-win30me',     sKind = 'DOS',
+                      sHd = '5.2/great-old-ones/t-dos401-win30me/t-dos401-win30me.vdi',                 cMBRamMax = 4),
+        AncientTestVm('tst-dos401-emm386-win30me', sKind = 'DOS',
+                      sHd = '5.2/great-old-ones/t-dos401-emm386-win30me/t-dos401-emm386-win30me.vdi',   cMBRamMax = 4),
+
         AncientTestVm('tst-dos622',             sKind = 'DOS',  sHd = '5.2/great-old-ones/t-dos622/t-dos622.vdi'),
         AncientTestVm('tst-dos622-emm386',      sKind = 'DOS',  sHd = '5.2/great-old-ones/t-dos622-emm386/t-dos622-emm386.vdi'),
+
+
+        AncientTestVm('tst-dos71',              sKind = 'DOS',  sHd = '5.2/great-old-ones/t-dos71/t-dos71.vdi'),
+
+        AncientTestVm('tst-dos5-win311a',       sKind = 'DOS',  sHd = '5.2/great-old-ones/t-dos5-win311a/t-dos5-win311a.vdi'),
     );
 
 
