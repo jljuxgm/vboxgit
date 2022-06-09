@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 67456 2017-06-19 08:40:53Z vboxsync $ */
+/* $Id: DevEFI.cpp 67585 2017-06-23 15:29:50Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1756,7 +1756,7 @@ static DECLCALLBACK(int) efiInitComplete(PPDMDEVINS pDevIns)
     uint32_t u32Chunks = 0;
     if (cbRamSize > 16 * _1M)
     {
-        u32Low = RT_MIN(cbBelow4GB, UINT32_C(0xffe00000));
+        u32Low = RT_MIN(cbBelow4GB, UINT32_C(0xfe000000));
         u32Chunks = (u32Low - 16U * _1M) / _64K;
     }
     cmosWrite(pDevIns, 0x34, RT_BYTE1(u32Chunks));
