@@ -1,10 +1,10 @@
-/* $Id: DrvNetSniffer.cpp 62926 2016-08-03 15:15:39Z vboxsync $ */
+/* $Id: DrvNetSniffer.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * DrvNetSniffer - Network sniffer filter driver.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

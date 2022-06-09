@@ -1,10 +1,10 @@
-/* $Id: SUPDrv-win.cpp 68529 2017-08-25 08:39:33Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

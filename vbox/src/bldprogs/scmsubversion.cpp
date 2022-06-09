@@ -1,10 +1,10 @@
-/* $Id: scmsubversion.cpp 69471 2017-10-28 12:35:04Z vboxsync $ */
+/* $Id: scmsubversion.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Subversion Access.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

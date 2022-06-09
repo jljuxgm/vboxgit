@@ -1,10 +1,10 @@
-/* $Id: UIMediumDefs.h 67737 2017-06-30 14:26:07Z vboxsync $ */
+/* $Id: UIMediumDefs.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium related declarations.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

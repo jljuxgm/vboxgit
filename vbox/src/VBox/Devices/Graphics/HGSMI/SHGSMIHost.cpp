@@ -1,10 +1,10 @@
-/* $Id: SHGSMIHost.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: SHGSMIHost.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Missing description.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

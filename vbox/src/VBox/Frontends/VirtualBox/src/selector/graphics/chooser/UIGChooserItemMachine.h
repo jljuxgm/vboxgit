@@ -1,10 +1,10 @@
-/* $Id: UIGChooserItemMachine.h 63698 2016-09-02 13:09:14Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class declaration.
  */
 
 /*
- * Copyright (C) 2012-2016 Oracle Corporation
+ * Copyright (C) 2012-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

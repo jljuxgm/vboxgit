@@ -1,10 +1,10 @@
-/* $Id: getrawsock.c 69231 2017-10-24 15:28:19Z vboxsync $ */
+/* $Id: getrawsock.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Obtain raw-sockets from a server when debugging unprivileged.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: fsw_hfs.c 69429 2017-10-27 13:27:03Z vboxsync $ */
+/* $Id: fsw_hfs.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * fsw_hfs.c - HFS file system driver code, see
  *
@@ -13,7 +13,7 @@
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

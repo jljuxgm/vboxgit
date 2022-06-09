@@ -1,11 +1,11 @@
 #!/bin/bash
-# $Id: load.sh 56293 2015-06-09 14:23:56Z vboxsync $
+# $Id: load.sh 69496 2017-10-28 14:55:58Z vboxsync $
 ## @file
 # For development.
 #
 
 #
-# Copyright (C) 2006-2015 Oracle Corporation
+# Copyright (C) 2006-2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

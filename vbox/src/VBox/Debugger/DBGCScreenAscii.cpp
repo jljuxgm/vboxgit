@@ -1,10 +1,10 @@
-/* $Id: DBGCScreenAscii.cpp 69285 2017-10-25 11:27:43Z vboxsync $ */
+/* $Id: DBGCScreenAscii.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, ASCII screen with optional coloring support.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

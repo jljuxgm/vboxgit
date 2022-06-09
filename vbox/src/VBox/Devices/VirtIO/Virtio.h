@@ -1,10 +1,10 @@
-/* $Id: Virtio.h 64833 2016-12-12 15:33:27Z vboxsync $ */
+/* $Id: Virtio.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Virtio.h - Virtio Declarations
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIWizardExportAppPageBasic1.cpp 66662 2017-04-24 17:55:47Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic1 class implementation.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

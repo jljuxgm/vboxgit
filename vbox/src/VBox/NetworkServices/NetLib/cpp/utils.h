@@ -1,10 +1,10 @@
-/* $Id: utils.h 63380 2016-08-12 18:34:15Z vboxsync $ */
+/* $Id: utils.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * NetLib/cpp/utils.h
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

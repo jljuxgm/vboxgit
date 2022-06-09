@@ -1,10 +1,10 @@
-/* $Id: seamless-x11.cpp 65099 2017-01-04 12:05:31Z vboxsync $ */
+/* $Id: seamless-x11.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * X11 Seamless mode.
  */
 
 /*
- * Copyright (C) 2008-2016 Oracle Corporation
+ * Copyright (C) 2008-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

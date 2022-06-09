@@ -1,10 +1,10 @@
-/* $Id: VBoxZoneAccess.c 62487 2016-07-22 18:40:31Z vboxsync $ */
+/* $Id: VBoxZoneAccess.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxZoneAccess - Hack that keeps vboxdrv referenced for granting zone access, Solaris hosts.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

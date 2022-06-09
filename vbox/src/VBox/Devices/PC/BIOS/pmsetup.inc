@@ -1,10 +1,10 @@
-; $Id: pmsetup.inc 69300 2017-10-25 13:38:41Z vboxsync $
+; $Id: pmsetup.inc 69496 2017-10-28 14:55:58Z vboxsync $
 ;; @file
 ; Initial system setup which needs to run in protected mode.
 ;
 
 ;
-; Copyright (C) 2004-2015 Oracle Corporation
+; Copyright (C) 2004-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

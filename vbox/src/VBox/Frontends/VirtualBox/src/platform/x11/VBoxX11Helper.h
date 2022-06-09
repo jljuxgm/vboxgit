@@ -1,10 +1,10 @@
-/* $Id: VBoxX11Helper.h 65796 2017-02-16 09:26:06Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

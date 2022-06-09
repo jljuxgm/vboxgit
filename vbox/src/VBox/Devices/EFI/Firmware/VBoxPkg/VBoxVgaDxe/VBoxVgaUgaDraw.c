@@ -1,10 +1,10 @@
-/* $Id: VBoxVgaUgaDraw.c 67918 2017-07-12 09:30:24Z vboxsync $ */
+/* $Id: VBoxVgaUgaDraw.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxVgaUgaDraw.c
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

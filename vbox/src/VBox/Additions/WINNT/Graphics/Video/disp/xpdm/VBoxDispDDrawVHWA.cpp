@@ -1,10 +1,10 @@
-/* $Id: VBoxDispDDrawVHWA.cpp 63062 2016-08-05 20:59:29Z vboxsync $ */
+/* $Id: VBoxDispDDrawVHWA.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver, DirectDraw callbacks VHWA related
  */
 
 /*
- * Copyright (C) 2011-2016 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

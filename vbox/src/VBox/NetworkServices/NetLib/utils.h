@@ -1,10 +1,10 @@
-/* $Id: utils.h 64215 2016-10-12 02:05:31Z vboxsync $ */
+/* $Id: utils.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

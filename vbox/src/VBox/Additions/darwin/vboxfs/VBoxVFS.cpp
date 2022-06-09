@@ -1,10 +1,10 @@
-/* $Id: VBoxVFS.cpp 68584 2017-08-31 12:11:22Z vboxsync $ */
+/* $Id: VBoxVFS.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxVFS - Guest Additions Shared Folders driver. KEXT entry point.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

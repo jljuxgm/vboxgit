@@ -1,10 +1,10 @@
-/* $Id: vrdpusb.h 69416 2017-10-27 10:03:34Z vboxsync $ */
+/* $Id: vrdpusb.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Remote Desktop Protocol client - USB Channel
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

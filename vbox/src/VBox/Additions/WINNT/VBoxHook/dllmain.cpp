@@ -1,10 +1,10 @@
-/* $Id: dllmain.cpp 63098 2016-08-06 15:29:14Z vboxsync $ */
+/* $Id: dllmain.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxHook -- Global windows hook dll
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
 @echo off
-rem $Id: load.cmd 69250 2017-10-24 19:18:49Z vboxsync $
+rem $Id: load.cmd 69496 2017-10-28 14:55:58Z vboxsync $
 rem rem @file
 rem Windows NT batch script for launching load.sh
 rem
 
 rem
-rem Copyright (C) 2009-2015 Oracle Corporation
+rem Copyright (C) 2009-2017 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

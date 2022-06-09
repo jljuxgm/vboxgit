@@ -1,10 +1,10 @@
-/* $Id: QIArrowButtonSwitch.cpp 62143 2016-07-08 16:04:06Z vboxsync $ */
+/* $Id: QIArrowButtonSwitch.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIArrowButtonSwitch class implementation.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

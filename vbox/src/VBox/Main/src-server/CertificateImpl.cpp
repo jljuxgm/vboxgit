@@ -1,10 +1,10 @@
-/* $Id: CertificateImpl.cpp 65426 2017-01-24 15:14:01Z vboxsync $ */
+/* $Id: CertificateImpl.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * ICertificate COM class implementations.
  */
 
 /*
- * Copyright (C) 2008-2016 Oracle Corporation
+ * Copyright (C) 2008-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

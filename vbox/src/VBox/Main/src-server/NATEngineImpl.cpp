@@ -1,10 +1,10 @@
-/* $Id: NATEngineImpl.cpp 69238 2017-10-24 16:11:07Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: PCIDeviceAttachmentImpl.h 66046 2017-03-10 16:58:36Z vboxsync $ */
+/* $Id: PCIDeviceAttachmentImpl.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

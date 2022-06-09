@@ -1,10 +1,10 @@
-/* $Id: vmstarter.mm 63586 2016-08-18 14:28:25Z vboxsync $ */
+/* $Id: vmstarter.mm 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Helper application for starting vbox the right way when the user double clicks on a file type association.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

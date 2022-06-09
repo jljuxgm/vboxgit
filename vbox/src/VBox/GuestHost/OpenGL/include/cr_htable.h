@@ -1,11 +1,11 @@
-/* $Id: cr_htable.h 62492 2016-07-22 18:42:47Z vboxsync $ */
+/* $Id: cr_htable.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 
 /** @file
  * uint32_t handle to void simple table API
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: proxy_pollmgr.c 69232 2017-10-24 15:28:32Z vboxsync $ */
+/* $Id: proxy_pollmgr.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * NAT Network - poll manager.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

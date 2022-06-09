@@ -1,10 +1,10 @@
-; $Id: VBoxGuestAdditionsUninstallOld.nsh 69354 2017-10-26 14:38:32Z vboxsync $
+; $Id: VBoxGuestAdditionsUninstallOld.nsh 69496 2017-10-28 14:55:58Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsUninstallOld.nsh - Guest Additions uninstallation handling for legacy packages.
 ;
 
 ;
-; Copyright (C) 2006-2013 Oracle Corporation
+; Copyright (C) 2006-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

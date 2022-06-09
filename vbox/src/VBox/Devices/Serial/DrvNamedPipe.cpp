@@ -1,10 +1,10 @@
-  /* $Id: DrvNamedPipe.cpp 69303 2017-10-25 13:40:35Z vboxsync $ */
+  /* $Id: DrvNamedPipe.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxDispD3DCmn.h 68261 2017-08-02 21:45:09Z vboxsync $ */
+/* $Id: VBoxDispD3DCmn.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
 
 /*
- * Copyright (C) 2011-2016 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

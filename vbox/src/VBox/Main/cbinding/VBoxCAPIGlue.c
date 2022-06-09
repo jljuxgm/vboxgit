@@ -1,10 +1,10 @@
-/* $Id: VBoxCAPIGlue.c 69377 2017-10-26 16:21:08Z vboxsync $ */
+/* $Id: VBoxCAPIGlue.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Glue code for dynamically linking to VBoxCAPI.
  */
 
 /*
- * Copyright (C) 2008-2016 Oracle Corporation
+ * Copyright (C) 2008-2017 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

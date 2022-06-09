@@ -1,10 +1,10 @@
-/* $Id: DBGCInternal.h 64721 2016-11-20 02:02:27Z vboxsync $ */
+/* $Id: DBGCInternal.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

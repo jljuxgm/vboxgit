@@ -1,10 +1,10 @@
-/* $Id: VHD.cpp 68787 2017-09-19 08:53:40Z vboxsync $ */
+/* $Id: VHD.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: seamless.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: seamless.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * X11 Guest client - seamless mode, missing proper description while using the
  * potentially confusing word 'host'.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UISettingsSelector.h 64084 2016-09-28 15:25:05Z vboxsync $ */
+/* $Id: UISettingsSelector.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class declaration.
  */
 
 /*
- * Copyright (C) 2008-2016 Oracle Corporation
+ * Copyright (C) 2008-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

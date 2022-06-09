@@ -1,10 +1,10 @@
-/* $Id: VUSBSnifferVmx.cpp 62960 2016-08-04 08:09:34Z vboxsync $ */
+/* $Id: VUSBSnifferVmx.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Virtual USB Sniffer facility - VMX USBIO format.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

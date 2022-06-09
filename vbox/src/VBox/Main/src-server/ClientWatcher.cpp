@@ -1,10 +1,10 @@
-/* $Id: ClientWatcher.cpp 62363 2016-07-20 15:45:58Z vboxsync $ */
+/* $Id: ClientWatcher.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox API client session crash watcher
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

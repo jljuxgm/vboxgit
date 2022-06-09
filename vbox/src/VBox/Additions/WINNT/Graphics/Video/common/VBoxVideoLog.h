@@ -1,10 +1,10 @@
-/* $Id: VBoxVideoLog.h 63033 2016-08-05 11:19:40Z vboxsync $ */
+/* $Id: VBoxVideoLog.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Video drivers, logging helper
  */
 
 /*
- * Copyright (C) 2011-2016 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

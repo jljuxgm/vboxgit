@@ -1,10 +1,10 @@
-/* $Id: winlogon.cpp 62785 2016-08-01 06:56:28Z vboxsync $ */
+/* $Id: winlogon.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox External Authentication Library - Windows Logon Authentication.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

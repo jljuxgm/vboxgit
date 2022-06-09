@@ -1,10 +1,10 @@
-/* $Id: VBoxManageAppliance.cpp 67208 2017-06-01 13:32:35Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

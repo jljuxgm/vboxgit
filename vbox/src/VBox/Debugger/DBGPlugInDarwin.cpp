@@ -1,10 +1,10 @@
-/* $Id: DBGPlugInDarwin.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: DBGPlugInDarwin.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * DBGPlugInDarwin - Debugger and Guest OS Digger Plugin For Darwin / OS X.
  */
 
 /*
- * Copyright (C) 2008-2016 Oracle Corporation
+ * Copyright (C) 2008-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

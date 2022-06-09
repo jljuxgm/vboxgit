@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: pkginstall.sh 56299 2015-06-09 14:35:06Z vboxsync $
+# $Id: pkginstall.sh 69496 2017-10-28 14:55:58Z vboxsync $
 ## @file
 #
 # VirtualBox postinstall script for Solaris.
@@ -9,7 +9,7 @@
 #
 
 #
-# Copyright (C) 2009-2015 Oracle Corporation
+# Copyright (C) 2009-2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

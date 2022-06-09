@@ -1,8 +1,8 @@
 #!/sbin/sh
-# $Id: smf-vboxballoonctrl.sh 69405 2017-10-27 00:18:12Z vboxsync $
+# $Id: smf-vboxballoonctrl.sh 69496 2017-10-28 14:55:58Z vboxsync $
 
 #
-# Copyright (C) 2008-2015 Oracle Corporation
+# Copyright (C) 2008-2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

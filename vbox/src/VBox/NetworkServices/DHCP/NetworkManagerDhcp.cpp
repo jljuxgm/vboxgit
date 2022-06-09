@@ -1,10 +1,10 @@
-/* $Id: NetworkManagerDhcp.cpp 63266 2016-08-10 13:21:48Z vboxsync $ */
+/* $Id: NetworkManagerDhcp.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * NetworkManagerDhcp - Network Manager part handling Dhcp.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: USBProxyService.cpp 65854 2017-02-23 11:48:49Z vboxsync $ */
+/* $Id: USBProxyService.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: svchlp.h 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: svchlp.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  *
  *  Declaration of SVC Helper Process control routines.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: HostPowerWin.cpp 63256 2016-08-10 12:04:54Z vboxsync $ */
+/* $Id: HostPowerWin.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  *
  * VirtualBox interface to host's power notification service
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

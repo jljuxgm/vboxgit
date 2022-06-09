@@ -1,10 +1,10 @@
-/* $Id: VBoxFUSE.cpp 62488 2016-07-22 18:40:41Z vboxsync $ */
+/* $Id: VBoxFUSE.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxFUSE - Disk Image Flattening FUSE Program.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

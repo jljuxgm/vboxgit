@@ -1,10 +1,10 @@
-/* $Id: Helper.cpp 65122 2017-01-04 17:11:20Z vboxsync $ */
+/* $Id: Helper.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Helper Functions.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

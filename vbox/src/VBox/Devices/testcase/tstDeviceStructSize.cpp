@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 65338 2017-01-16 14:11:15Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

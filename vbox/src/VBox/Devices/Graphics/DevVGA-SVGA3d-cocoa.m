@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-cocoa.m 65159 2017-01-05 16:53:19Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-cocoa.m 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

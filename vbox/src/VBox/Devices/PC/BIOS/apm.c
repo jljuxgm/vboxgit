@@ -1,10 +1,10 @@
-/* $Id: apm.c 66154 2017-03-17 11:15:51Z vboxsync $ */
+/* $Id: apm.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * APM BIOS support. Implements APM version 1.2.
  */
 
 /*
- * Copyright (C) 2004-2016 Oracle Corporation
+ * Copyright (C) 2004-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

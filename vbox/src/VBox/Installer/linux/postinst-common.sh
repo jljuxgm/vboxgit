@@ -1,12 +1,12 @@
 #!/bin/sh
-# $Id: postinst-common.sh 69402 2017-10-27 00:06:50Z vboxsync $
+# $Id: postinst-common.sh 69496 2017-10-28 14:55:58Z vboxsync $
 ## @file
 # Oracle VM VirtualBox
 # VirtualBox Linux post-installer common portions
 #
 
 #
-# Copyright (C) 2015 Oracle Corporation
+# Copyright (C) 2015-2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

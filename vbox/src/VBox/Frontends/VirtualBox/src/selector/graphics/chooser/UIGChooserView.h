@@ -1,10 +1,10 @@
-/* $Id: UIGChooserView.h 63696 2016-09-02 12:49:43Z vboxsync $ */
+/* $Id: UIGChooserView.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserView class declaration.
  */
 
 /*
- * Copyright (C) 2012-2016 Oracle Corporation
+ * Copyright (C) 2012-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

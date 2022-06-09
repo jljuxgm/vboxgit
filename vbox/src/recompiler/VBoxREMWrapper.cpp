@@ -1,10 +1,10 @@
-/* $Id: VBoxREMWrapper.cpp 64655 2016-11-14 10:46:07Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
  */
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

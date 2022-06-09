@@ -1,10 +1,10 @@
-/* $Id: UIGDetailsModel.h 63725 2016-09-05 16:17:07Z vboxsync $ */
+/* $Id: UIGDetailsModel.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsModel class declaration.
  */
 
 /*
- * Copyright (C) 2012-2016 Oracle Corporation
+ * Copyright (C) 2012-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

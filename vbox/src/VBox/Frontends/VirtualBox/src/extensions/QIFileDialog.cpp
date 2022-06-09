@@ -1,10 +1,10 @@
-/* $Id: QIFileDialog.cpp 68457 2017-08-18 10:27:03Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIFileDialog class implementation.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: HostVideoInputDeviceImpl.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
+/* $Id: HostVideoInputDeviceImpl.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  *
  * Host video capture device implementation.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

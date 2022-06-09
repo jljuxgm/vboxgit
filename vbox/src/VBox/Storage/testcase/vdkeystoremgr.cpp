@@ -1,10 +1,10 @@
-/* $Id: vdkeystoremgr.cpp 69229 2017-10-24 15:27:11Z vboxsync $ */
+/* $Id: vdkeystoremgr.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Keystore utility for debugging.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

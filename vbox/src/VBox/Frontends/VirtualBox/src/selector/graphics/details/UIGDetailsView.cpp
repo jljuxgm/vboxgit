@@ -1,10 +1,10 @@
-/* $Id: UIGDetailsView.cpp 63729 2016-09-05 16:33:44Z vboxsync $ */
+/* $Id: UIGDetailsView.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsView class implementation.
  */
 
 /*
- * Copyright (C) 2012-2016 Oracle Corporation
+ * Copyright (C) 2012-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

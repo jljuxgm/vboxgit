@@ -1,10 +1,10 @@
-/* $Id: AuthLibrary.cpp 63256 2016-08-10 12:04:54Z vboxsync $ */
+/* $Id: AuthLibrary.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Main - External authentication library interface.
  */
 
 /*
- * Copyright (C) 2015-2016 Oracle Corporation
+ * Copyright (C) 2015-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

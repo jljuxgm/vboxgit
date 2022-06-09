@@ -1,4 +1,4 @@
-/* $Id: precomp.h 69297 2017-10-25 12:40:20Z vboxsync $*/
+/* $Id: precomp.h 69496 2017-10-28 14:55:58Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

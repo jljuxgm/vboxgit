@@ -1,10 +1,10 @@
-/* $Id: DrvTAP.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
+/* $Id: DrvTAP.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * DrvTAP - Universal TAP network transport driver.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

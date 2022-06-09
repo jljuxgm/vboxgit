@@ -1,10 +1,10 @@
-/* $Id: tstUsbMouse.cpp 62920 2016-08-03 14:16:19Z vboxsync $ */
+/* $Id: tstUsbMouse.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * tstUsbMouse.cpp - testcase USB mouse and tablet devices.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: VDDbgIoLog.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
+/* $Id: VDDbgIoLog.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  *
  * VD Debug library - I/O logger.
  */
 
 /*
- * Copyright (C) 2011-2016 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

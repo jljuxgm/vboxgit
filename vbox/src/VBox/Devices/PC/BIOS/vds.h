@@ -1,10 +1,10 @@
-/* $Id: vds.h 69300 2017-10-25 13:38:41Z vboxsync $ */
+/* $Id: vds.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Utility routines for calling the Virtual DMA Services.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

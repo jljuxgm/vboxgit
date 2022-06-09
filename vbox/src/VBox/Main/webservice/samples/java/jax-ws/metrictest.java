@@ -1,4 +1,4 @@
-/* $Id: metrictest.java 69384 2017-10-26 16:51:11Z vboxsync $ */
+/* $Id: metrictest.java 69496 2017-10-28 14:55:58Z vboxsync $ */
 /*!file
  * Sample of performance API usage, written in Java.
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2017 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

@@ -1,10 +1,10 @@
-/* $Id: UIInformationModel.h 65337 2017-01-16 14:05:31Z vboxsync $ */
+/* $Id: UIInformationModel.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationModel class declaration.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

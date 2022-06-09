@@ -1,4 +1,4 @@
-/* $Id: tstCAPIGlue.c 62771 2016-07-31 17:11:31Z vboxsync $ */
+/* $Id: tstCAPIGlue.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file tstCAPIGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

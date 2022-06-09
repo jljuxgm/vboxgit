@@ -1,10 +1,10 @@
-/* $Id: ExtPackManagerImpl.cpp 68828 2017-09-22 14:15:57Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

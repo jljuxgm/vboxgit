@@ -1,10 +1,10 @@
-/* $Id: com.cpp 68538 2017-08-29 14:07:06Z vboxsync $ */
+/* $Id: com.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
 
 /*
- * Copyright (C) 2005-2016 Oracle Corporation
+ * Copyright (C) 2005-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

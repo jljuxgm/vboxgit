@@ -1,10 +1,10 @@
-; $Id: SUPDrvA-win.asm 67954 2017-07-13 21:06:09Z vboxsync $
+; $Id: SUPDrvA-win.asm 69496 2017-10-28 14:55:58Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Windows NT specific assembly parts.
 ;
 
 ;
-; Copyright (C) 2006-2016 Oracle Corporation
+; Copyright (C) 2006-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

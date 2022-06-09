@@ -1,10 +1,10 @@
-/* $Id: UIInformationConfiguration.h 65277 2017-01-13 09:33:57Z vboxsync $ */
+/* $Id: UIInformationConfiguration.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class declaration.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

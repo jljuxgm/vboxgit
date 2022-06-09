@@ -1,10 +1,10 @@
-/* $Id: vbox-img.cpp 67349 2017-06-12 17:34:13Z vboxsync $ */
+/* $Id: vbox-img.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VSCSIInternal.h 66955 2017-05-18 15:57:16Z vboxsync $ */
+/* $Id: VSCSIInternal.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

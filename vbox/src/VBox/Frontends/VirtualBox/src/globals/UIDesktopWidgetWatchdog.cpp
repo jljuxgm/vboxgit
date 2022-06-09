@@ -1,10 +1,10 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
 
 /*
- * Copyright (C) 2015-2016 Oracle Corporation
+ * Copyright (C) 2015-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: driver.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: driver.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxVideo driver, Haiku Guest Additions, implementation.
  */
 
 /*
- * Copyright (C) 2012-2016 Oracle Corporation
+ * Copyright (C) 2012-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

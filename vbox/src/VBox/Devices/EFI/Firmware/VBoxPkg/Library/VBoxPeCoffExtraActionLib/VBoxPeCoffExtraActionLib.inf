@@ -1,11 +1,11 @@
-# $Id: VBoxPeCoffExtraActionLib.inf 62501 2016-07-22 19:08:57Z vboxsync $
+# $Id: VBoxPeCoffExtraActionLib.inf 69496 2017-10-28 14:55:58Z vboxsync $
 ## @file
 # VBox implementation of PeCoffExtraAction that reports EFI image load and
 # unload activies to the the VBox debugger via DevEFI.
 #
 
 #
-# Copyright (C) 2013-2016 Oracle Corporation
+# Copyright (C) 2013-2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

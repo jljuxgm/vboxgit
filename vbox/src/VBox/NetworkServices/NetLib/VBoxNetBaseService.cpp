@@ -1,10 +1,10 @@
-/* $Id: VBoxNetBaseService.cpp 63301 2016-08-10 20:45:33Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxNetBaseService - common services for VBoxNetDHCP and VBoxNetNAT.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

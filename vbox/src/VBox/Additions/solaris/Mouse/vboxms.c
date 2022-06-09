@@ -1,10 +1,10 @@
-/* $Id: vboxms.c 69343 2017-10-26 12:11:00Z vboxsync $ */
+/* $Id: vboxms.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris.
  */
 
 /*
- * Copyright (C) 2012-2016 Oracle Corporation
+ * Copyright (C) 2012-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DrvAcpiCpu.cpp 62908 2016-08-03 11:33:27Z vboxsync $ */
+/* $Id: DrvAcpiCpu.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * DrvAcpiCpu - ACPI CPU dummy driver for hotplugging.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

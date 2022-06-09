@@ -1,10 +1,10 @@
-/* $Id: SUPR3HardenedVerify.cpp 68344 2017-08-08 17:14:57Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

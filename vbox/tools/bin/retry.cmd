@@ -1,11 +1,11 @@
 @echo off
-rem $Id: retry.cmd 45594 2013-04-17 17:23:21Z vboxsync $
+rem $Id: retry.cmd 69496 2017-10-28 14:55:58Z vboxsync $
 rem rem @file
 rem Windows NT batch script that retries a command 5 times.
 rem
 
 rem
-rem Copyright (C) 2009-2013 Oracle Corporation
+rem Copyright (C) 2009-2017 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

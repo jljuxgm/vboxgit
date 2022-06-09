@@ -1,10 +1,10 @@
-/* $Id: VBox-doc.c 68446 2017-08-17 13:45:12Z vboxsync $ */
+/* $Id: VBox-doc.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

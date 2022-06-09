@@ -1,10 +1,10 @@
-/* $Id: tstVDCompact.vd 66664 2017-04-24 18:42:49Z vboxsync $ */
+/* $Id: tstVDCompact.vd 69496 2017-10-28 14:55:58Z vboxsync $ */
 /**
  * Storage: Testcase for compacting disks.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

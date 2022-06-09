@@ -1,10 +1,10 @@
-/* $Id: error.c 63199 2016-08-09 11:40:19Z vboxsync $ */
+/* $Id: error.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox crOpenGL error logging
  */
 
 /*
- * Copyright (C) 2014-2016 Oracle Corporation
+ * Copyright (C) 2014-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

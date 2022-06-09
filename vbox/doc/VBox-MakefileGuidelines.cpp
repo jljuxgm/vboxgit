@@ -1,10 +1,10 @@
-/* $Id: VBox-MakefileGuidelines.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBox-MakefileGuidelines.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox - Makefile Guidelines.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UICocoaDockIconPreview.mm 63492 2016-08-15 16:58:41Z vboxsync $ */
+/* $Id: UICocoaDockIconPreview.mm 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Cocoa helper for the dock icon preview.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

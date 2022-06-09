@@ -1,10 +1,10 @@
-/* $Id: USBControllerImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
 
 /*
- * Copyright (C) 2005-2016 Oracle Corporation
+ * Copyright (C) 2005-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

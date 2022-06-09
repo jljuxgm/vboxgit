@@ -1,10 +1,10 @@
-/* $Id: tstGetPagingMode.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: tstGetPagingMode.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * SUP Testcase - Host paging mode interface (ring 3).
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

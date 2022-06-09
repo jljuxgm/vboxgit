@@ -1,4 +1,4 @@
-/* $Id: DevLPC.cpp 64393 2016-10-24 14:42:05Z vboxsync $ */
+/* $Id: DevLPC.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * DevLPC - LPC device emulation
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -16,7 +16,6 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- * --------------------------------------------------------------------
  *
  * This code is based on:
  *

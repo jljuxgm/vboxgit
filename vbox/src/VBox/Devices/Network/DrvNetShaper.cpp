@@ -1,10 +1,10 @@
-/* $Id: DrvNetShaper.cpp 62962 2016-08-04 09:00:52Z vboxsync $ */
+/* $Id: DrvNetShaper.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * NetShaperFilter - Network shaper filter driver.
  */
 
 /*
- * Copyright (C) 2011-2016 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

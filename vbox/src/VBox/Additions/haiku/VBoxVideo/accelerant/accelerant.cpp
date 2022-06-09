@@ -1,10 +1,10 @@
-/* $Id: accelerant.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: accelerant.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxVideo Accelerant; Haiku Guest Additions, implementation.
  */
 
 /*
- * Copyright (C) 2012-2016 Oracle Corporation
+ * Copyright (C) 2012-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

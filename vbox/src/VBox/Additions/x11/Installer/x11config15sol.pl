@@ -1,11 +1,11 @@
 #!/usr/bin/perl
-# $Id: x11config15sol.pl 69348 2017-10-26 13:47:29Z vboxsync $
+# $Id: x11config15sol.pl 69496 2017-10-28 14:55:58Z vboxsync $
 ## @file
 # Guest Additions X11 config update script
 #
 
 #
-# Copyright (C) 2006-2012 Oracle Corporation
+# Copyright (C) 2006-2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

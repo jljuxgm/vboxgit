@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 68702 2017-09-07 16:14:52Z vboxsync $ */
+/* $Id: DrvChar.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMICHARCONNECTOR / PDMICHARPORT.
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

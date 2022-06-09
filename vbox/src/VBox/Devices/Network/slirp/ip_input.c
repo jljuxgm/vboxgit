@@ -1,10 +1,10 @@
-/* $Id: ip_input.c 66522 2017-04-12 08:48:26Z vboxsync $ */
+/* $Id: ip_input.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * NAT - IP input.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 69054 2017-10-11 19:26:12Z vboxsync $ */
+/* $Id: DevEFI.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

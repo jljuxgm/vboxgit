@@ -1,10 +1,10 @@
-/* $Id: EventImpl.cpp 69323 2017-10-25 19:16:02Z vboxsync $ */
+/* $Id: EventImpl.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

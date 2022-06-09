@@ -1,10 +1,10 @@
-/* $Id: HostImpl.cpp 66581 2017-04-17 03:00:00Z vboxsync $ */
+/* $Id: HostImpl.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
 
 /*
- * Copyright (C) 2004-2016 Oracle Corporation
+ * Copyright (C) 2004-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

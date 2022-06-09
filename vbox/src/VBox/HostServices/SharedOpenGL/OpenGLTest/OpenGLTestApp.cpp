@@ -1,10 +1,10 @@
-/* $Id: OpenGLTestApp.cpp 69390 2017-10-26 17:17:51Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -303,7 +303,7 @@ int main(int argc, char **argv)
                     break;
 
                 case 'V':
-                    RTPrintf("$Revision: 69390 $\n");
+                    RTPrintf("$Revision: 69496 $\n");
                     return 0;
 
                 case VERR_GETOPT_UNKNOWN_OPTION:

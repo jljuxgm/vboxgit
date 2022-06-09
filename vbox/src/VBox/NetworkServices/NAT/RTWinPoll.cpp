@@ -1,10 +1,10 @@
-/* $Id: RTWinPoll.cpp 62681 2016-07-29 12:55:38Z vboxsync $ */
+/* $Id: RTWinPoll.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * NAT Network - poll(2) implementation for winsock.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

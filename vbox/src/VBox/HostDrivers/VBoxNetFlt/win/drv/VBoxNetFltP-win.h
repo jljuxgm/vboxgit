@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFltP-win.h 69250 2017-10-24 19:18:49Z vboxsync $ */
+/* $Id: VBoxNetFltP-win.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxNetFltP-win.h - Bridged Networking Driver, Windows Specific Code.
  * Protocol edge API
  */
 /*
- * Copyright (C) 2011-2016 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

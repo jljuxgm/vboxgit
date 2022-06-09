@@ -1,10 +1,10 @@
-/* $Id: slirp.h 64615 2016-11-09 16:11:51Z vboxsync $ */
+/* $Id: slirp.h 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

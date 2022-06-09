@@ -1,10 +1,10 @@
-/* $Id: pxping_win.c 63281 2016-08-10 14:52:51Z vboxsync $ */
+/* $Id: pxping_win.c 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * NAT Network - ping proxy, Windows ICMP API version.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

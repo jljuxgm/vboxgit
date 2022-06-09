@@ -1,11 +1,11 @@
 # !kmk_ash
-# $Id: retry.sh 69210 2017-10-24 13:38:47Z vboxsync $
+# $Id: retry.sh 69496 2017-10-28 14:55:58Z vboxsync $
 ## @file
 # Script for retrying a command 5 times.
 #
 
 #
-# Copyright (C) 2009-2016 Oracle Corporation
+# Copyright (C) 2009-2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

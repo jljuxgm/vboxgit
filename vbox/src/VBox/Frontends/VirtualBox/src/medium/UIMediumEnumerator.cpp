@@ -1,10 +1,10 @@
-/* $Id: UIMediumEnumerator.cpp 64760 2016-11-28 14:57:26Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

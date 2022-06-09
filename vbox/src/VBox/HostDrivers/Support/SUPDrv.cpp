@@ -1,10 +1,10 @@
-/* $Id: SUPDrv.cpp 69249 2017-10-24 19:05:34Z vboxsync $ */
+/* $Id: SUPDrv.cpp 69496 2017-10-28 14:55:58Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
