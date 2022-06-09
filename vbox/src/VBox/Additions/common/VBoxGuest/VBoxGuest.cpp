@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 70095 2017-12-12 18:32:35Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 70154 2017-12-15 15:30:30Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1184,7 +1184,7 @@ void VGDrvCommonProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, con
     if (   RTStrICmpAscii(pszName, "r3_log_to_host") == 0
         || RTStrICmpAscii(pszName, "LoggingEnabled") == 0 /*legacy*/ )
         pDevExt->fLoggingEnabled = VBDrvCommonIsOptionValueTrue(pszValue);
-    else if (   RTStrNICmp(pszName, RT_STR_TUPLE("log")) == 0
+    else if (   RTStrNICmpAscii(pszName, RT_STR_TUPLE("log")) == 0
              || RTStrNICmpAscii(pszName, RT_STR_TUPLE("dbg_log")) == 0)
     {
         bool const  fLogRel    = *pszName == 'd' || *pszName == 'D';
