@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 69917 2017-12-04 11:25:44Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 70024 2017-12-08 12:45:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1840,8 +1840,8 @@ void UISelectorWindow::prepareToolbar()
         AssertPtrReturnVoid(m_pTabBarMachine);
         {
             /* Configure tab-bar: */
-            const int iL = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 2;
-            const int iR = qApp->style()->pixelMetric(QStyle::PM_LayoutRightMargin) / 2;
+            const int iL = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin);
+            const int iR = qApp->style()->pixelMetric(QStyle::PM_LayoutRightMargin);
             m_pTabBarMachine->setContentsMargins(iL, 0, iR, 0);
 
             /* Add into toolbar: */
@@ -1853,8 +1853,8 @@ void UISelectorWindow::prepareToolbar()
         AssertPtrReturnVoid(m_pTabBarGlobal);
         {
             /* Configure tab-bar: */
-            const int iL = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 2;
-            const int iR = qApp->style()->pixelMetric(QStyle::PM_LayoutRightMargin) / 2;
+            const int iL = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin);
+            const int iR = qApp->style()->pixelMetric(QStyle::PM_LayoutRightMargin);
             m_pTabBarGlobal->setContentsMargins(iL, 0, iR, 0);
 
             /* Add into toolbar: */
