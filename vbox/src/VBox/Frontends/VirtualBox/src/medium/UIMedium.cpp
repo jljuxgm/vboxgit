@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
+/* $Id: UIMedium.cpp 72433 2018-06-04 16:37:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -557,8 +557,8 @@ QString UIMedium::details(bool fNoDiffs /* = false */,
     }
 
     strDetails = fUseHTML ?
-        QString("%1 (<nobr>%2</nobr>)").arg(VBoxGlobal::locationForHTML(rootMedium.m_strName), strDetails) :
-        QString("%1 (%2)").arg(VBoxGlobal::locationForHTML(rootMedium.m_strName), strDetails);
+        QString("%1 (<nobr>%2</nobr>)").arg(QFileInfo(rootMedium.m_strName).fileName(), strDetails) :
+        QString("%1 (%2)").arg(QFileInfo(rootMedium.m_strName).fileName(), strDetails);
 
     return strDetails;
 }
