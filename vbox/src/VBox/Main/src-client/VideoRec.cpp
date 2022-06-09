@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 71137 2018-02-27 14:47:38Z vboxsync $ */
+/* $Id: VideoRec.cpp 71162 2018-03-01 15:23:53Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -945,12 +945,8 @@ static int videoRecStreamOpenFile(PVIDEORECSTREAM pStream, PVIDEORECCFG pCfg)
     AssertPtrReturn(pszAbsPath, VERR_NO_MEMORY);
 
     RTPathStripSuffix(pszAbsPath);
-    AssertPtrReturn(pszAbsPath, VERR_INVALID_PARAMETER);
 
-    char *pszSuff    = RTPathSuffix(pszAbsPath);
-    if (!pszSuff)
-        pszSuff = RTStrDup(".webm");
-
+    char *pszSuff = RTStrDup(".webm");
     if (!pszSuff)
     {
         RTStrFree(pszAbsPath);
