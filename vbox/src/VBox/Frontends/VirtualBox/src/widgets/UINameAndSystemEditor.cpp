@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 72199 2018-05-14 12:57:36Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 72226 2018-05-16 13:05:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -241,6 +241,7 @@ void UINameAndSystemEditor::prepareWidgets()
             m_pNamePathSelector->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
             m_pNamePathSelector->setPath(vboxGlobal().virtualBox().GetSystemProperties().GetDefaultMachineFolder());
             pMainLayout->addWidget(m_pNamePathSelector, 0, 1, 1, 2);
+            setFocusProxy(m_pNamePathSelector);
         }
 
         /* Create VM OS family label: */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.cpp 72215 2018-05-15 14:20:58Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.cpp 72226 2018-05-16 13:05:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic1 class implementation.
  */
@@ -156,6 +156,8 @@ void UIWizardCloneVMPageBasic1::initializePage()
 {
     /* Translate page: */
     retranslateUi();
+    if (m_pNamePathSelector)
+        m_pNamePathSelector->setFocus();
 }
 
 bool UIWizardCloneVMPageBasic1::isComplete() const

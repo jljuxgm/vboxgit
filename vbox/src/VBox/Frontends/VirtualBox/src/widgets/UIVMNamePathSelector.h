@@ -1,4 +1,4 @@
-/* $Id: UIVMNamePathSelector.h 72225 2018-05-16 11:03:25Z vboxsync $ */
+/* $Id: UIVMNamePathSelector.h 72226 2018-05-16 13:05:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMNamePathSelector class declaration.
  */
@@ -58,7 +58,6 @@ public slots:
 protected:
 
     void retranslateUi() /* override */;
-    virtual void showEvent(QShowEvent *pEvent) /* override */;
 
 private slots:
 

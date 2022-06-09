@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 72202 2018-05-14 14:43:37Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 72226 2018-05-16 13:05:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -384,6 +384,8 @@ void UIWizardNewVMPageBasic1::initializePage()
 {
     /* Translate page: */
     retranslateUi();
+    if (m_pNameAndSystemEditor)
+        m_pNameAndSystemEditor->setFocus();
 }
 
 void UIWizardNewVMPageBasic1::cleanupPage()
