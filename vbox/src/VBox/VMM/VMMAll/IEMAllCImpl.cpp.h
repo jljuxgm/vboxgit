@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 70612 2018-01-17 18:12:23Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 70879 2018-02-06 10:53:13Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5088,11 +5088,14 @@ IEM_CIMPL_DEF_2(iemCImpl_mov_Rd_Cd, uint8_t, iGReg, uint8_t, iCrReg)
         case 8:
         {
 #ifdef VBOX_WITH_NESTED_HWVIRT
-            PCSVMVMCBCTRL pVmcbCtrl = &pCtx->hwvirt.svm.CTX_SUFF(pVmcb)->ctrl;
-            if (pVmcbCtrl->IntCtrl.n.u1VIntrMasking)
+            if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
             {
-                crX = pVmcbCtrl->IntCtrl.n.u8VTPR;
-                break;
+                PCSVMVMCBCTRL pVmcbCtrl = &pCtx->hwvirt.svm.CTX_SUFF(pVmcb)->ctrl;
+                if (pVmcbCtrl->IntCtrl.n.u1VIntrMasking)
+                {
+                    crX = pVmcbCtrl->IntCtrl.n.u8VTPR;
+                    break;
+                }
             }
 #endif
             uint8_t uTpr;
