@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 70539 2018-01-11 14:11:16Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 70542 2018-01-11 15:10:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -255,6 +255,8 @@ void UIVMLogViewerWidget::sltSearchResultHighLigting()
 
 void UIVMLogViewerWidget::sltTabIndexChange(int tabIndex)
 {
+    Q_UNUSED(tabIndex);
+
     // if (m_iCurrentTabIndex == tabIndex)
     //     return;
 
@@ -292,6 +294,7 @@ void UIVMLogViewerWidget::sltCreateBookmarkAtCurrent()
 
 void UIVMLogViewerWidget::sltCreateBookmarkAtLine(LogBookmark bookmark)
 {
+    Q_UNUSED(bookmark);
     // QVector<LogBookmark> *pBookmarkVector = currentBookmarkVector();
     // if (!pBookmarkVector)
     //     return;
