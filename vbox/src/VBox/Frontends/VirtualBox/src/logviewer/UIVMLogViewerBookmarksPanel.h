@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.h 70487 2018-01-08 20:04:54Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.h 70495 2018-01-09 13:39:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -88,7 +88,8 @@ private:
     /** Holds the instance of close-button we create. */
     UIMiniCancelButton  *m_pCloseButton;
     QComboBox           *m_pBookmarksComboBox;
-
+    QPushButton         *m_clearAllButton;
+    QPushButton         *m_clearCurrentButton;
 };
 
 #endif /* !___UIVMLogViewerBookmarksPanel_h___ */
