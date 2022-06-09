@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 71075 2018-02-20 21:10:45Z vboxsync $ */
+/* $Id: NEMInternal.h 71076 2018-02-20 21:23:45Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -157,6 +157,8 @@ typedef struct NEMR0PERVCPU
     /** Handle to the memory object of the hypercall input/output page. */
     RTR0MEMOBJ                  hHypercallDataMemObj;
     /** @} */
+# else
+    uint32_t                    uDummy;
 # endif
 } NEMR0PERVCPU;
 
@@ -168,6 +170,8 @@ typedef struct NEMR0PERVM
 # ifdef RT_OS_WINDOWS
     /** The partition ID. */
     uint64_t                    idHvPartition;
+# else
+    uint32_t                    uDummy;
 # endif
 } NEMR0PERVM;
 

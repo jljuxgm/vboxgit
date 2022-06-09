@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 71075 2018-02-20 21:10:45Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 71076 2018-02-20 21:23:45Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1891,7 +1891,7 @@ typedef struct NEMR3WINHMACPCCSTATE
 
 /**
  * @callback_method_impl{FNPGMPHYSNEMCHECKPAGE,
- *      Worker for nemR3WinHandleMemoryAccess, pvUser points to a
+ *      Worker for nemR3WinHandleMemoryAccess; pvUser points to a
  *      NEMR3WINHMACPCCSTATE structure. }
  */
 static DECLCALLBACK(int) nemR3WinHandleMemoryAccessPageCheckerCallback(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys,
