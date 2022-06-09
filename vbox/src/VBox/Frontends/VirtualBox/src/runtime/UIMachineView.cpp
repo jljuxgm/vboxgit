@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 69957 2017-12-06 13:35:06Z vboxsync $ */
+/* $Id: UIMachineView.cpp 70627 2018-01-18 11:40:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -356,7 +356,11 @@ void UIMachineView::sltHandleNotifyChange(int iWidth, int iHeight)
     if (visualStateType() == UIVisualStateType_Scale)
     {
         /* Assign new frame-buffer logical-size: */
-        frameBuffer()->setScaledSize(size());
+        QSize scaledSize = size();
+        const double dDevicePixelRatio = frameBuffer()->devicePixelRatio();
+        if (dDevicePixelRatio > 1.0 && frameBuffer()->useUnscaledHiDPIOutput())
+            scaledSize *= dDevicePixelRatio;
+        frameBuffer()->setScaledSize(scaledSize);
 
         /* Forget the last full-screen size: */
         uisession()->setLastFullScreenSize(screenId(), QSize(-1, -1));
@@ -1046,7 +1050,11 @@ void UIMachineView::handleScaleChange()
         if (visualStateType() == UIVisualStateType_Scale)
         {
             /* Assign new frame-buffer logical-size: */
-            frameBuffer()->setScaledSize(size());
+            QSize scaledSize = size();
+            const double dDevicePixelRatio = frameBuffer()->devicePixelRatio();
+            if (dDevicePixelRatio > 1.0 && frameBuffer()->useUnscaledHiDPIOutput())
+                scaledSize *= dDevicePixelRatio;
+            frameBuffer()->setScaledSize(scaledSize);
         }
         /* For other than 'scale' mode: */
         else
