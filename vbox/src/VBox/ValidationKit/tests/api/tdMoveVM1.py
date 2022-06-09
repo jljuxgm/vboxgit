@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 71457 2018-03-22 14:17:46Z vboxsync $"
+# "$Id: tdMoveVM1.py 71458 2018-03-22 14:23:24Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71457 $"
+__version__ = "$Revision: 71458 $"
 
 # Standard Python imports.
 import os
@@ -334,7 +334,7 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
             fRc = True
             oVirtualBox = self.oTstDrv.oVBoxMgr.getVirtualBox()
             oMachine = oVirtualBox.findMachine('test-vm-move')
-            if oMachine == None:
+            if oMachine is None:
                 reporter.log("Machine '%s' is unknown" % (oMachine.name))
                 return False
 
