@@ -1,4 +1,4 @@
-/** $Id: VBoxReplaceDll.cpp 62528 2016-07-22 19:19:08Z vboxsync $ */
+/** $Id: VBoxReplaceDll.cpp 68585 2017-08-31 12:11:24Z vboxsync $ */
 /** @file
  * VBoxReplaceDll - helper for replacing a dll when it's in use by the system
  */
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(argv[i], "--version")
                      || !strcmp(argv[i], "-V") )
             {
-                printf("$Revision: 62528 $\n");
+                printf("$Revision: 68585 $\n");
                 return 0;
             }
             else
@@ -86,7 +86,7 @@ int main(int argc, char **argv)
                 printf("info: Successfully cached '%s'.\n", argv[i]);
             else
             {
-                fprintf(stderr, "error: DosReplaceModule failed with rc=%u on  '%s'.\n", rc, argv[i]);
+                fprintf(stderr, "error: DosReplaceModule failed with rc=%lu on  '%s'.\n", rc, argv[i]);
                 return 1;
             }
             cProcessed++;
