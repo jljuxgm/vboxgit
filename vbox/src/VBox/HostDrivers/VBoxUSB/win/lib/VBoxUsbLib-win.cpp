@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 62690 2016-07-29 13:44:32Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 68671 2017-09-06 09:02:23Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -1080,7 +1080,7 @@ static int usbLibInterruptWaitChange(PVBOXUSBGLOBALSTATE pGlobal)
     return VINF_SUCCESS;
 }
 
-USBLIB_DECL(int) USBLibInterruptWaitChange()
+USBLIB_DECL(int) USBLibInterruptWaitChange(void)
 {
     return usbLibInterruptWaitChange(&g_VBoxUsbGlobal);
 }
@@ -1156,7 +1156,7 @@ USBLIB_DECL(void) USBLibRemoveFilter(void *pvId)
         AssertMsgFailed(("DeviceIoControl failed with LastError=%Rwa\n", GetLastError()));
 }
 
-USBLIB_DECL(int) USBLibRunFilters()
+USBLIB_DECL(int) USBLibRunFilters(void)
 {
     DWORD cbReturned = 0;
 
