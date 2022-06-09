@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
+/* $Id: DnDURIList.cpp 69755 2017-11-19 14:35:01Z vboxsync $ */
 /** @file
  * DnD: URI list class.
  */
@@ -144,14 +144,16 @@ int DnDURIList::appendPathRecursive(const char *pcszSrcPath,
                                 rc = VINF_SUCCESS;
                             break;
                         }
+                        /** @todo r=bird: you really need to read the documentation! I already
+                         *        pointed out that this isn't goint to work in the guest control
+                         *        code. sigh. */
 
                         switch (DirEntry.enmType)
                         {
                             case RTDIRENTRYTYPE_DIRECTORY:
                             {
                                 /* Skip "." and ".." entries. */
-                                if (   RTStrCmp(DirEntry.szName, ".")  == 0
-                                    || RTStrCmp(DirEntry.szName, "..") == 0)
+                                if (RTDirEntryIsStdDotLink(&DirEntry))
                                     break;
 
                                 char *pszSrc = RTPathJoinA(pcszSrcPath, DirEntry.szName);
