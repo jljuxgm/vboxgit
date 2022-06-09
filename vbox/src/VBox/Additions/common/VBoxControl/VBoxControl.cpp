@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxControl.cpp 68651 2017-09-05 14:36:21Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -40,7 +40,7 @@
 #endif
 #ifdef VBOX_WITH_DPC_LATENCY_CHECKER
 # include <VBox/VBoxGuest.h>
-# include "../VBoxGuestLib/VBGLR3Internal.h" /* HACK ALERT! Using vbglR3DoIOCtl directly!! */
+# include "../VBoxGuest/lib/VBoxGuestR3LibInternal.h" /* HACK ALERT! Using vbglR3DoIOCtl directly!! */
 #endif
 
 
