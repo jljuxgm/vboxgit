@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 71409 2018-03-20 15:28:46Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 71414 2018-03-21 09:18:27Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1783,7 +1783,7 @@ int GuestSession::i_objectRegisterEx(SESSIONOBJECTTYPE enmType, uint32_t fFlags,
 
     int rc = VINF_SUCCESS;
 
-    uint32_t uObjectID;
+    uint32_t uObjectID = 0; /* Shut up MSVC. */
 
     if (mData.mObjects.size() < VBOX_GUESTCTRL_MAX_OBJECTS - 1 /* Minus 1 for the session itself */)
     {
