@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 68327 2017-08-07 18:07:04Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 68330 2017-08-08 08:23:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -692,8 +692,9 @@ void UIMediumDetailsWidget::retranslateValidation(QWidget *pWidget /* = 0 */)
 //        m_pErrorPaneDescription->setToolTip(tr("Cannot change medium description from <b>%1</b> to <b>%2</b>.")
 //                                               .arg(m_oldData.m_options.m_strDescription).arg(m_newData.m_options.m_strDescription));
     if (!pWidget || pWidget == m_pErrorPaneSize)
-        m_pErrorPaneSize->setToolTip(tr("Cannot change medium size from <b>%1</b> to <b>%2</b> as storage shrinking is currently forbidden.")
-                                         .arg(m_oldData.m_options.m_uLogicalSize).arg(m_newData.m_options.m_uLogicalSize));
+        m_pErrorPaneSize->setToolTip(tr("Cannot change medium size from <b>%1</b> to <b>%2</b> as storage shrinking is currently not implemented.")
+                                        .arg(vboxGlobal().formatSize(m_oldData.m_options.m_uLogicalSize))
+                                        .arg(vboxGlobal().formatSize(m_newData.m_options.m_uLogicalSize)));
 }
 
 void UIMediumDetailsWidget::updateButtonStates()
