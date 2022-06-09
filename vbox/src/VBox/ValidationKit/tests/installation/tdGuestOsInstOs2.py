@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstOs2.py 69545 2017-11-01 14:32:04Z vboxsync $
+# $Id: tdGuestOsInstOs2.py 69549 2017-11-02 10:12:48Z vboxsync $
 
 """
 VirtualBox Validation Kit - OS/2 install tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69545 $"
+__version__ = "$Revision: 69549 $"
 
 
 # Standard Python imports.
@@ -255,5 +255,11 @@ if __name__ == '__main__':
         del g_oDrv;
         g_oDrv = None;
         winbase.checkProcessHeap();
+
+        import gc;
+        for oObj in gc.get_objects():
+            if not callable(oObj):
+                reporter.log('type %s: object %s' % (type(oObj), oObj));
+
     sys.exit(g_iExitCode);
 
