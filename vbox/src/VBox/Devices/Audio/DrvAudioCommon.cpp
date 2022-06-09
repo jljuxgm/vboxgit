@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 70013 2017-12-08 11:52:00Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 70014 2017-12-08 11:57:22Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1329,7 +1329,7 @@ int DrvAudioHlpFileClose(PPDMAUDIOFILE pFile)
 
     size_t cbSize = DrvAudioHlpFileGetDataSize(pFile);
 
-    int rc;
+    int rc = VINF_SUCCESS;
 
     if (pFile->enmType == PDMAUDIOFILETYPE_RAW)
     {
