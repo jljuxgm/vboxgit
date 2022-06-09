@@ -1,4 +1,4 @@
-/* $Id: tstRTMath.cpp 67337 2017-06-12 11:09:26Z vboxsync $ */
+/* $Id: tstRTMath.cpp 67338 2017-06-12 11:33:15Z vboxsync $ */
 /** @file
  * IPRT Testcase - base mathematics.
  */
@@ -30,7 +30,7 @@ RT_C_DECLS_BEGIN
 extern uint64_t __udivmoddi4(uint64_t u64A, uint64_t u64B, uint64_t *pu64R);
 RT_C_DECLS_END
 
-struct {
+static struct {
     uint64_t u64A;
     uint64_t u64B;
     uint64_t u64Div;
