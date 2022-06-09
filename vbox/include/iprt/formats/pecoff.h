@@ -1,4 +1,4 @@
-/* $Id: pecoff.h 68843 2017-09-24 13:38:06Z vboxsync $ */
+/* $Id: pecoff.h 68844 2017-09-24 13:55:35Z vboxsync $ */
 /** @file
  * IPRT - Windows NT PE & COFF Structures and Constants.
  */
@@ -164,8 +164,8 @@ typedef IMAGE_FILE_HEADER const *PCIMAGE_FILE_HEADER;
 #define IMAGE_FILE_DEBUG_STRIPPED           UINT16_C(0x0200)
 #define IMAGE_FILE_REMOVABLE_RUN_FROM_SWAP  UINT16_C(0x0400)
 #define IMAGE_FILE_NET_RUN_FROM_SWAP        UINT16_C(0x0800)
-#define IMAGE_FILE_SYSTEM                   UINT16_C(0x1000) /**< (COFF/I8086: Used to indicate 80186 instructions) */
-#define IMAGE_FILE_DLL                      UINT16_C(0x2000) /**< (COFF/I8086: Used to indicate 80286 instructions) */
+#define IMAGE_FILE_SYSTEM                   UINT16_C(0x1000) /**< (COFF/IAPX*: Used to indicate 80186 instructions) */
+#define IMAGE_FILE_DLL                      UINT16_C(0x2000) /**< (COFF/IAPX*: Used to indicate 80286 instructions) */
 #define IMAGE_FILE_UP_SYSTEM_ONLY           UINT16_C(0x4000)
 #define IMAGE_FILE_BYTES_REVERSED_HI        UINT16_C(0x8000)
 /** @} */
