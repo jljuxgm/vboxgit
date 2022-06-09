@@ -1,4 +1,4 @@
-# $Id: .scm-settings 70383 2017-12-29 10:59:55Z vboxsync $
+# $Id: .scm-settings 70384 2017-12-29 11:00:20Z vboxsync $
 ## @file
 # Source code massager settings for Runtime.
 #
@@ -100,5 +100,4 @@
 
 /common/math/gcc/*                             : --external-copyright --no-convert-tabs --dont-set-svn-keywords
 /common/math/gcc/udivmoddi4.c                  : --no-external-copyright --convert-tabs --set-svn-keywords
-
 

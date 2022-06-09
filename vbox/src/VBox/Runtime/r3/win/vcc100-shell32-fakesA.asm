@@ -1,4 +1,4 @@
-; $Id: vcc100-shell32-fakesA.asm 70345 2017-12-26 15:51:56Z vboxsync $
+; $Id: vcc100-shell32-fakesA.asm 70384 2017-12-29 11:00:20Z vboxsync $
 ;; @file
 ; IPRT - Wrappers for shell32 APIs missing in NT 4 and earlier.
 ;
@@ -46,5 +46,4 @@ GLOBALNAME vcc100_user32_fakes_asm
 
 ; NT 3.1
 MAKE_IMPORT_ENTRY CommandLineToArgvW, 8
-
 
