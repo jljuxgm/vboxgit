@@ -1,4 +1,4 @@
-/* $Id: UISession.h 72329 2018-05-24 19:52:52Z vboxsync $ */
+/* $Id: UISession.h 72330 2018-05-24 20:17:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -267,8 +267,6 @@ public:
      ** @{ */
     /** Returns whether CPU hardware virtualization extension is enabled. */
     KVMExecutionEngine getVMExecutionEngine() const { return m_enmVMExecutionEngine; }
-    /** Returns whether CPU hardware virtualization extension is enabled. */
-    bool isHWVirtExEnabled() const { return m_fIsHWVirtExEnabled; }
     /** Returns whether nested-paging CPU hardware virtualization extension is enabled. */
     bool isHWVirtExNestedPagingEnabled() const { return m_fIsHWVirtExNestedPagingEnabled; }
     /** Returns whether the VM is currently making use of the unrestricted execution feature of VT-x. */
@@ -549,8 +547,6 @@ private:
 
     /** @name CPU hardware virtualization features for VM.
      ** @{ */
-    /** Holds whether CPU hardware virtualization extension is enabled. */
-    bool m_fIsHWVirtExEnabled;
     /** Holds whether nested-paging CPU hardware virtualization extension is enabled. */
     bool m_fIsHWVirtExNestedPagingEnabled;
     /** Holds whether the VM is currently making use of the unrestricted execution feature of VT-x. */
