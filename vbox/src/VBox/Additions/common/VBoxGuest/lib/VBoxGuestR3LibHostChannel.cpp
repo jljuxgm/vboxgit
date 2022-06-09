@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibHostChannel.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxGuestR3LibHostChannel.cpp 68650 2017-09-05 14:34:23Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Host Channel.
  */
@@ -29,7 +29,7 @@
 
 #include <VBox/HostServices/VBoxHostChannel.h>
 
-#include "VBGLR3Internal.h"
+#include "VBoxGuestR3LibInternal.h"
 
 
 VBGLR3DECL(int) VbglR3HostChannelInit(uint32_t *pidClient)

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibModule.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: VBoxGuestR3LibModule.cpp 68650 2017-09-05 14:34:23Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared modules.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include "VBGLR3Internal.h"
+#include "VBoxGuestR3LibInternal.h"
 #include <iprt/mem.h>
 #include <iprt/string.h>
 

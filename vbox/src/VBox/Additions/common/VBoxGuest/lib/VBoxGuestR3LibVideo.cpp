@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 68440 2017-08-17 11:50:05Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 68650 2017-09-05 14:34:23Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include "VBGLR3Internal.h"
+#include "VBoxGuestR3LibInternal.h"
 
 #include <VBox/log.h>
 #include <VBox/HostServices/GuestPropertySvc.h>  /* For Save and RetrieveVideoMode */

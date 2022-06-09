@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 68650 2017-09-05 14:34:23Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -41,7 +41,7 @@
 #include <VBox/log.h>
 #include <VBox/HostServices/GuestPropertySvc.h>
 
-#include "VBGLR3Internal.h"
+#include "VBoxGuestR3LibInternal.h"
 
 #ifdef VBOX_VBGLR3_XFREE86
 /* Rather than try to resolve all the header file conflicts, I will just

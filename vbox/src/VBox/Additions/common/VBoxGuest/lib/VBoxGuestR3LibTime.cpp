@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibTime.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuestR3LibTime.cpp 68650 2017-09-05 14:34:23Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Time.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/time.h>
-#include "VBGLR3Internal.h"
+#include "VBoxGuestR3LibInternal.h"
 
 
 VBGLR3DECL(int) VbglR3GetHostTime(PRTTIMESPEC pTime)

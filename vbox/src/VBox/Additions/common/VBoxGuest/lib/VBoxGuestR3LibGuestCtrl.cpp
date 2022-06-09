@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 68526 2017-08-24 19:11:40Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 68650 2017-09-05 14:34:23Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -36,7 +36,7 @@
 #include <VBox/log.h>
 #include <VBox/HostServices/GuestControlSvc.h>
 
-#include "VBGLR3Internal.h"
+#include "VBoxGuestR3LibInternal.h"
 
 using namespace guestControl;
 

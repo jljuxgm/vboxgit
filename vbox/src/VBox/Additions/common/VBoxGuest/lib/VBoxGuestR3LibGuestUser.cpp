@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestUser.cpp 62842 2016-08-01 17:25:25Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestUser.cpp 68650 2017-09-05 14:34:23Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  *                  guest user reporting / utility functions.
@@ -34,7 +34,7 @@
 #include <iprt/mem.h>
 #include <iprt/string.h>
 
-#include "VBGLR3Internal.h"
+#include "VBoxGuestR3LibInternal.h"
 
 
 /**

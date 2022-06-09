@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 68638 2017-09-05 13:30:52Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 68650 2017-09-05 14:34:23Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Clipboard.
  */
@@ -31,7 +31,7 @@
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
-#include "VBGLR3Internal.h"
+#include "VBoxGuestR3LibInternal.h"
 
 
 /**

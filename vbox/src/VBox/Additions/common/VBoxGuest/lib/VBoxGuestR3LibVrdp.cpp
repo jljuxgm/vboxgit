@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVrdp.cpp 68439 2017-08-17 11:14:02Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVrdp.cpp 68650 2017-09-05 14:34:23Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, VRDP.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/time.h>
 #include <iprt/string.h>
-#include "VBGLR3Internal.h"
+#include "VBoxGuestR3LibInternal.h"
 
 
 VBGLR3DECL(int) VbglR3VrdpGetChangeRequest(bool *pfActive, uint32_t *puExperienceLevel)
