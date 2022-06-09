@@ -1,4 +1,4 @@
-/* $Id: VBGLInternal.h 68103 2017-07-25 09:39:16Z vboxsync $ */
+/* $Id: VBGLInternal.h 68476 2017-08-18 16:33:55Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -138,8 +138,8 @@ extern VBGLDATA g_vbgldata;
 int vbglR0Enter (void);
 
 #ifdef VBOX_WITH_HGCM
-struct VBGLHGCMHANDLEDATA  *vbglHGCMHandleAlloc(void);
-void                        vbglHGCMHandleFree(struct VBGLHGCMHANDLEDATA *pHandle);
+struct VBGLHGCMHANDLEDATA  *vbglR0HGCMHandleAlloc(void);
+void                        vbglR0HGCMHandleFree(struct VBGLHGCMHANDLEDATA *pHandle);
 #endif /* VBOX_WITH_HGCM */
 
 #ifndef VBGL_VBOXGUEST

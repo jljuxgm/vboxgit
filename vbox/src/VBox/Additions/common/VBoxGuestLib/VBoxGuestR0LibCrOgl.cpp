@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibCrOgl.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuestR0LibCrOgl.cpp 68476 2017-08-18 16:33:55Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-3 Support Library for VirtualBox guest additions, Chromium OpenGL Service.
  */
@@ -40,7 +40,7 @@ DECLVBGL(int) VbglR0CrCtlCreate(VBGLCRCTLHANDLE *phCtl)
 
     if (phCtl)
     {
-        struct VBGLHGCMHANDLEDATA *pHandleData = vbglHGCMHandleAlloc();
+        struct VBGLHGCMHANDLEDATA *pHandleData = vbglR0HGCMHandleAlloc();
 
         if (pHandleData)
         {
@@ -52,7 +52,7 @@ DECLVBGL(int) VbglR0CrCtlCreate(VBGLCRCTLHANDLE *phCtl)
                 return VINF_SUCCESS;
             }
 
-            vbglHGCMHandleFree(pHandleData);
+            vbglR0HGCMHandleFree(pHandleData);
         }
         else
             rc = VERR_NO_MEMORY;
@@ -69,7 +69,7 @@ DECLVBGL(int) VbglR0CrCtlDestroy(VBGLCRCTLHANDLE hCtl)
 {
     vbglDriverClose(&hCtl->driver);
 
-    vbglHGCMHandleFree(hCtl);
+    vbglR0HGCMHandleFree(hCtl);
 
     return VINF_SUCCESS;
 }
