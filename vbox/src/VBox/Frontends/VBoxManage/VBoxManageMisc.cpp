@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 68239 2017-08-02 12:39:12Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 68258 2017-08-02 16:09:49Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1418,7 +1418,7 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
         { "--extra-install-kernel-parameters",  'I', RTGETOPT_REQ_STRING },
         { "--language",                         'L', RTGETOPT_REQ_STRING },
         // start vm related options:
-        { "--session-type",                     'S', RTGETOPT_REQ_STRING },
+        { "--start-vm",                         'S', RTGETOPT_REQ_STRING },
         /** @todo Add a --wait option too for waiting for the VM to shut down or
          *        something like that...? */
     };
@@ -1564,7 +1564,7 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
                 CHECK_ERROR2_RET(hrc, ptrUnattended, COMSETTER(Language)(Bstr(ValueUnion.psz).raw()), RTEXITCODE_FAILURE);
                 break;
 
-            case 'S':   // --session-type
+            case 'S':   // --start-vm
                 pszSessionType = ValueUnion.psz;
                 break;
 
