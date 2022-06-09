@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 71477 2018-03-23 10:04:53Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 71478 2018-03-23 10:21:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -1156,3 +1156,4 @@ UIHostNetworkManagerWidget *UIHostNetworkManager::widget()
 {
     return qobject_cast<UIHostNetworkManagerWidget*>(QIManagerDialog::widget());
 }
+
