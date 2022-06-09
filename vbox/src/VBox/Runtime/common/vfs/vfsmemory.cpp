@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: vfsmemory.cpp 69942 2017-12-05 23:40:31Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -550,25 +550,6 @@ static DECLCALLBACK(int) rtVfsMemFile_Flush(void *pvThis)
 
 
 /**
- * @interface_method_impl{RTVFSIOSTREAMOPS,pfnPollOne}
- */
-static DECLCALLBACK(int) rtVfsMemFile_PollOne(void *pvThis, uint32_t fEvents, RTMSINTERVAL cMillies, bool fIntr,
-                                              uint32_t *pfRetEvents)
-{
-    NOREF(pvThis);
-    int rc;
-    if (fEvents != RTPOLL_EVT_ERROR)
-    {
-        *pfRetEvents = fEvents & ~RTPOLL_EVT_ERROR;
-        rc = VINF_SUCCESS;
-    }
-    else
-        rc = RTVfsUtilDummyPollOne(fEvents, cMillies, fIntr, pfRetEvents);
-    return rc;
-}
-
-
-/**
  * @interface_method_impl{RTVFSIOSTREAMOPS,pfnTell}
  */
 static DECLCALLBACK(int) rtVfsMemFile_Tell(void *pvThis, PRTFOFF poffActual)
@@ -717,7 +698,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtVfsMemFileOps =
         rtVfsMemFile_Read,
         rtVfsMemFile_Write,
         rtVfsMemFile_Flush,
-        rtVfsMemFile_PollOne,
+        NULL /*PollOne*/,
         rtVfsMemFile_Tell,
         NULL /*Skip*/,
         NULL /*ZeroFill*/,

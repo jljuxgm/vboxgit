@@ -1,4 +1,4 @@
-/* $Id: dvmvfs.cpp 69906 2017-12-03 01:40:28Z vboxsync $ */
+/* $Id: dvmvfs.cpp 69942 2017-12-05 23:40:31Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - VFS glue.
  */
@@ -323,25 +323,6 @@ static DECLCALLBACK(int) rtDvmVfsFile_Flush(void *pvThis)
 
 
 /**
- * @interface_method_impl{RTVFSIOSTREAMOPS,pfnPollOne}
- */
-static DECLCALLBACK(int) rtDvmVfsFile_PollOne(void *pvThis, uint32_t fEvents, RTMSINTERVAL cMillies, bool fIntr,
-                                              uint32_t *pfRetEvents)
-{
-    NOREF(pvThis);
-    int rc;
-    if (fEvents != RTPOLL_EVT_ERROR)
-    {
-        *pfRetEvents = fEvents & ~RTPOLL_EVT_ERROR;
-        rc = VINF_SUCCESS;
-    }
-    else
-        rc = RTVfsUtilDummyPollOne(fEvents, cMillies, fIntr, pfRetEvents);
-    return rc;
-}
-
-
-/**
  * @interface_method_impl{RTVFSIOSTREAMOPS,pfnTell}
  */
 static DECLCALLBACK(int) rtDvmVfsFile_Tell(void *pvThis, PRTFOFF poffActual)
@@ -480,7 +461,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtDvmVfsStdFileOps =
         rtDvmVfsFile_Read,
         rtDvmVfsFile_Write,
         rtDvmVfsFile_Flush,
-        rtDvmVfsFile_PollOne,
+        NULL /*pfnPollOne*/,
         rtDvmVfsFile_Tell,
         NULL /*Skip*/,
         NULL /*ZeroFill*/,
