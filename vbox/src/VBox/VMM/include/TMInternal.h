@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: TMInternal.h 69950 2017-12-06 10:43:06Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -492,6 +492,8 @@ typedef struct TM
      * testing of software and similar.
      * @todo Implement warpdrive on UTC. */
     int64_t                     offUTC;
+    /** The last value TMR3UtcNow returned. */
+    int64_t volatile            nsLastUtcNow;
 
     /** Timer queues for the different clock types - R3 Ptr */
     R3PTRTYPE(PTMTIMERQUEUE)    paTimerQueuesR3;
