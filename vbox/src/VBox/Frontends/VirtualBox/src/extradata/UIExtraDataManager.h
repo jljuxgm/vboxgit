@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 70870 2018-02-05 15:51:16Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 71056 2018-02-19 14:00:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -533,11 +533,6 @@ public:
         bool useUnscaledHiDPIOutput(const QString &strID);
         /** Defines whether Runtime UI should @a fUseUnscaledHiDPIOutput. */
         void setUseUnscaledHiDPIOutput(bool fUseUnscaledHiDPIOutput, const QString &strID);
-
-#ifdef VBOX_WS_MAC
-        /** Returns Runtime UI HiDPI optimization type. */
-        HiDPIOptimizationType hiDPIOptimizationType(const QString &strID);
-#endif
 
 #ifndef VBOX_WS_MAC
         /** Returns whether mini-toolbar is enabled for full and seamless screens. */

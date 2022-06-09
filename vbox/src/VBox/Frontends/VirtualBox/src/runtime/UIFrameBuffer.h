@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.h 70870 2018-02-05 15:51:16Z vboxsync $ */
+/* $Id: UIFrameBuffer.h 71056 2018-02-19 14:00:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class declaration.
  */
@@ -119,13 +119,6 @@ public:
     ScalingOptimizationType scalingOptimizationType() const;
     /** Defines the frame-buffer scaling optimization type. */
     void setScalingOptimizationType(ScalingOptimizationType type);
-
-#ifdef VBOX_WS_MAC
-    /** Returns HiDPI frame-buffer optimization type. */
-    HiDPIOptimizationType hiDPIOptimizationType() const;
-    /** Defines HiDPI frame-buffer optimization type: */
-    void setHiDPIOptimizationType(HiDPIOptimizationType type);
-#endif
 
     /** Handles frame-buffer notify-change-event. */
     void handleNotifyChange(int iWidth, int iHeight);
