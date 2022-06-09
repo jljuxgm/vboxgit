@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 70357 2017-12-27 09:11:51Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 70359 2017-12-27 09:59:59Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5126,7 +5126,7 @@ static int hmR0SvmHandleExitNested(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
                             && uVector == X86_XCPT_GP)
                         {
                             Log4(("#GP on IRET detected!\n"));
-                            return VERR_IEM_INSTR_NOT_IMPLEMENTED;
+                            return VERR_SVM_UNKNOWN_EXIT;
                         }
                     }
                     else
