@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 70132 2017-12-14 15:40:51Z vboxsync $ */
+/* $Id: DevHDA.cpp 70142 2017-12-15 12:32:34Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -1818,7 +1818,7 @@ static int hdaAddStreamOut(PHDASTATE pThis, PPDMAUDIOSTREAMCFG pCfg)
 
     if (rc == VERR_NOT_SUPPORTED)
     {
-        LogRel(("HDA: Warning: Unsupported channel count (%RU8), falling back to stereo channels (2)\n", pCfg->Props.cChannels));
+        LogRel2(("HDA: Warning: Unsupported channel count (%RU8), falling back to stereo channels (2)\n", pCfg->Props.cChannels));
 
         /* Fall back to 2 channels (see below in fUseFront block). */
         rc = VINF_SUCCESS;
@@ -3633,7 +3633,7 @@ static int hdaLoadExecLegacy(PHDASTATE pThis, PSSMHANDLE pSSM, uint32_t uVersion
             break;
 
         default:
-            LogRel(("HDA: Unsupported / too new saved state version (%RU32)\n", uVersion));
+            LogRel(("HDA: Warning: Unsupported / too new saved state version (%RU32)\n", uVersion));
             return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     }
 
