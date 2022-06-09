@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 70657 2018-01-20 19:02:11Z vboxsync $
+# $Id: vboxtestvms.py 70658 2018-01-20 19:24:37Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70657 $"
+__version__ = "$Revision: 70658 $"
 
 # Standard Python imports.
 import copy;
@@ -348,6 +348,54 @@ class TestVm(object):
                 if not os.path.exists(sPath):
                     asRet.append(sPath);
         return asRet;
+
+    def createVm(self, oTestDrv, eNic0AttachType = None, sDvdImage = None):
+        """
+        Creates the VM with defaults and the few tweaks as per the arguments.
+
+        Returns same as vbox.TestDriver.createTestVM.
+        """
+        if sDvdImage is not None:
+            sMyDvdImage = sDvdImage;
+        else:
+            sMyDvdImage = self.sDvdImage;
+
+        if eNic0AttachType is not None:
+            eMyNic0AttachType = eNic0AttachType;
+        elif self.sNic0AttachType is None:
+            eMyNic0AttachType = None;
+        elif self.sNic0AttachType == 'nat':
+            eMyNic0AttachType = vboxcon.NetworkAttachmentType_NAT;
+        elif self.sNic0AttachType == 'bridged':
+            eMyNic0AttachType = vboxcon.NetworkAttachmentType_Bridged;
+        else:
+            assert False, self.sNic0AttachType;
+
+        return self.createVmInner(oTestDrv, eMyNic0AttachType, sMyDvdImage);
+
+    def createVmInner(self, oTestDrv, eNic0AttachType, sDvdImage):
+        """
+        Same as createVm but parameters resolved.
+
+        Returns same as vbox.TestDriver.createTestVM.
+        """
+        reporter.log2('');
+        reporter.log2('Calling createTestVM on %s...' % (self.sVmName,))
+        return oTestDrv.createTestVM(self.sVmName,
+                                     1,                 # iGroup
+                                     sHd                = self.sHd,
+                                     sKind              = self.sKind,
+                                     fIoApic            = self.fIoApic,
+                                     fPae               = self.fPae,
+                                     eNic0AttachType    = eNic0AttachType,
+                                     sDvdImage          = sDvdImage,
+                                     sDvdControllerType = self.sDvdControllerType,
+                                     sHddControllerType = self.sHddControllerType,
+                                     sFloppy            = self.sFloppy,
+                                     fVmmDevTestingPart = self.fVmmDevTestingPart,
+                                     fVmmDevTestingMmio = self.fVmmDevTestingPart,
+                                     sFirmwareType      = self.sFirmwareType,
+                                     sChipsetType       = self.sChipsetType);
 
     def getReconfiguredVm(self, oTestDrv, cCpus, sVirtMode, sParavirtMode = None):
         """
@@ -809,37 +857,7 @@ class TestVmSet(object):
                 # the machine anymore -- so just add it to the test VM list.
                 oVM = oTestDrv.addTestMachine(oTestVm.sVmName);
             else:
-                ## @todo This could possibly be moved to the TestVM object.
-                if sDvdImage is not None:
-                    sMyDvdImage = sDvdImage;
-                else:
-                    sMyDvdImage = oTestVm.sDvdImage;
-
-                if eNic0AttachType is not None:
-                    eMyNic0AttachType = eNic0AttachType;
-                elif oTestVm.sNic0AttachType is None:
-                    eMyNic0AttachType = None;
-                elif oTestVm.sNic0AttachType == 'nat':
-                    eMyNic0AttachType = vboxcon.NetworkAttachmentType_NAT;
-                elif oTestVm.sNic0AttachType == 'bridged':
-                    eMyNic0AttachType = vboxcon.NetworkAttachmentType_Bridged;
-                else:
-                    assert False, oTestVm.sNic0AttachType;
-
-                oVM = oTestDrv.createTestVM(oTestVm.sVmName, 1,
-                                            sHd                = oTestVm.sHd,
-                                            sKind              = oTestVm.sKind,
-                                            fIoApic            = oTestVm.fIoApic,
-                                            fPae               = oTestVm.fPae,
-                                            eNic0AttachType    = eMyNic0AttachType,
-                                            sDvdImage          = sMyDvdImage,
-                                            sDvdControllerType = oTestVm.sDvdControllerType,
-                                            sHddControllerType = oTestVm.sHddControllerType,
-                                            sFloppy            = oTestVm.sFloppy,
-                                            fVmmDevTestingPart = oTestVm.fVmmDevTestingPart,
-                                            fVmmDevTestingMmio = oTestVm.fVmmDevTestingPart,
-                                            sFirmwareType      = oTestVm.sFirmwareType,
-                                            sChipsetType       = oTestVm.sChipsetType);
+                oVM = oTestVm.createVm(oTestDrv, eNic0AttachType, sDvdImage);
             if oVM is None:
                 return False;
 
