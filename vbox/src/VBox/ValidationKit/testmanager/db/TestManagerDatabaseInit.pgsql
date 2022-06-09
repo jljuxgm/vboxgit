@@ -1,4 +1,4 @@
--- $Id: TestManagerDatabaseInit.pgsql 69448 2017-10-27 16:57:29Z vboxsync $
+-- $Id: TestManagerDatabaseInit.pgsql 69777 2017-11-20 17:20:16Z vboxsync $
 --- @file
 -- VBox Test Manager Database Creation script.
 --
@@ -527,7 +527,7 @@ CREATE INDEX TestGroups_id_index ON TestGroups (idTestGroup, tsExpire DESC, tsEf
 
 
 --- @table TestGroupMembers
--- The N:M relation ship between test case configurations and test groups.
+-- The N:M relationship between test case configurations and test groups.
 --
 -- @remarks This table stores history.  Never update or delete anything.  The
 --          equivalent of deleting is done by setting the 'tsExpire' field to
