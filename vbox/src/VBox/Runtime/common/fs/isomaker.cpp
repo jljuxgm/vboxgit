@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67846 2017-07-07 10:23:28Z vboxsync $ */
+/* $Id: isomaker.cpp 67847 2017-07-07 10:25:07Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -3368,8 +3368,8 @@ RTDECL(int) RTFsIsoMakerAddUnnamedSymlink(RTFSISOMAKER hIsoMaker, PCRTFSOBJINFO 
     }
     AssertPtrReturn(pszTarget, VERR_INVALID_POINTER);
     size_t cchTarget = strlen(pszTarget);
-    AssertPtrReturn(cchTarget > 0, VERR_INVALID_NAME);
-    AssertPtrReturn(cchTarget < RTFSISOMAKER_MAX_SYMLINK_TARGET_LEN, VERR_FILENAME_TOO_LONG);
+    AssertReturn(cchTarget > 0, VERR_INVALID_NAME);
+    AssertReturn(cchTarget < RTFSISOMAKER_MAX_SYMLINK_TARGET_LEN, VERR_FILENAME_TOO_LONG);
     AssertReturn(!pThis->fFinalized, VERR_WRONG_ORDER);
 
     /*
