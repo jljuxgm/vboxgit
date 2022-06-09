@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 70679 2018-01-22 15:41:42Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 70987 2018-02-13 09:43:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -188,7 +188,6 @@ void UIVMLogViewerTextEdit::prepareWidgets()
         pHorizontalScrollBar->setStyleSheet(horizontalScrollBarStyle);
 
     /* Configure this' wrap mode: */
-    setWordWrapMode(QTextOption::NoWrap);
     setWordWrapMode(QTextOption::NoWrap);
 
     setReadOnly(true);
