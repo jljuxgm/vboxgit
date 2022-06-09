@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 71247 2018-03-06 17:16:24Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 71731 2018-04-07 14:10:34Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -150,7 +150,7 @@
         if (size != sizeof(type)) \
         { \
             printf("tstDeviceStructSize: Error! sizeof(%s): %#x (%d)  Size wrong by %d (should be %d -- but is %d)\n", \
-                   #type, (int)sizeof(type), (int)sizeof(type), (int)(sizeof(type) - size), (int)size, (int)sizeof(type)); \
+                   #type, (int)sizeof(type), (int)sizeof(type), (int)sizeof(type) - (int)size, (int)size, (int)sizeof(type)); \
             rc++; \
         } \
         else \

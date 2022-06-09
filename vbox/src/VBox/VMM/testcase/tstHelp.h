@@ -1,4 +1,4 @@
-/* $Id: tstHelp.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: tstHelp.h 71731 2018-04-07 14:10:34Z vboxsync $ */
 /** @file
  * VMM testcase - Helper stuff.
  */
@@ -54,7 +54,7 @@ RT_C_DECLS_END
         if (size != sizeof(type)) \
         { \
             printf("error! sizeof(%s): %#x (%d)  Off by %d!! (expected %#x)\n", \
-                   #type, (int)sizeof(type), (int)sizeof(type), (int)(sizeof(type) - size), (int)size); \
+                   #type, (int)sizeof(type), (int)sizeof(type), (int)sizeof(type) - (int)size, (int)size); \
             rc++; \
         } \
         else \
