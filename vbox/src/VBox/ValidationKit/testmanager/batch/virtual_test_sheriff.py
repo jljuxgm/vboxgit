@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 68110 2017-07-25 15:27:24Z vboxsync $
+# $Id: virtual_test_sheriff.py 68111 2017-07-25 15:33:45Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 68110 $"
+__version__ = "$Revision: 68111 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 68110 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 68111 $ \n');
 
 
     def eprint(self, sText):
@@ -558,7 +558,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 68110 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 68111 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -855,7 +855,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
           'Error: failed to start machine. Error message: Not supported. (VERR_NOT_SUPPORTED)' ),
         ( False, ktReason_Unknown_VM_Crash,                         'txsDoConnectViaTcp: Machine state: Aborted' ),
         ( True,  ktReason_Host_Modprobe_Failed,                     'Kernel driver not installed' ),
-        ( True,  ktReason_OSInstall_Sata_no_BM,                     'PCHS=14128/14134/8224' )
+        ( True,  ktReason_OSInstall_Sata_no_BM,                     'PCHS=14128/14134/8224' ),
+        ( True,  ktReason_Host_DoubleFreeHeap,                      'double free or corruption' ),
     ];
 
     ## Things we search a VBoxHardening.log file for to figure out why something went bust.
@@ -863,7 +864,6 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         # ( Whether to stop on hit, reason tuple, needle text. )
         ( True,  ktReason_Host_DriverNotLoaded,                     'Error opening VBoxDrvStub:  STATUS_OBJECT_NAME_NOT_FOUND' ),
         ( True,  ktReason_Host_NotSignedWithBuildCert,              'Not signed with the build certificate' ),
-        ( True,  ktReason_Host_DoubleFreeHeap,                      'double free or corruption' ),
     ];
 
     ## Things we search a kernel.log file for to figure out why something went bust.
