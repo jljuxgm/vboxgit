@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 70012 2017-12-08 11:38:51Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 70025 2017-12-08 13:24:54Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -611,9 +611,8 @@ DECLCALLBACK(int) vgsvcTimeSyncWorker(bool volatile *pfShutdown)
 
                 if (g_cTimeSyncVerbosity >= 4)
                 {
-                    vgsvcTimeSyncLog(4, "vgsvcTimeSyncWorker: Host:    %s    (MinAdjust: %RU32 ms)",
-                                     RTTimeToString(RTTimeExplode(&Time, &HostNow), sz, sizeof(sz)), MinAdjust);
-                    vgsvcTimeSyncLog(4, "vgsvcTimeSyncWorker: Guest: - %s => %RDtimespec drift\n",
+                    vgsvcTimeSyncLog(4, "vgsvcTimeSyncWorker: Host: %s (MinAdjust: %RU32 ms), Guest: %s => %RDtimespec drift\n",
+                                     RTTimeToString(RTTimeExplode(&Time, &HostNow), sz, sizeof(sz)), MinAdjust,
                                      RTTimeToString(RTTimeExplode(&Time, &GuestNow), sz, sizeof(sz)), &Drift);
                 }
 
