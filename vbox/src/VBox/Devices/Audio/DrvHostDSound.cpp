@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 70472 2018-01-05 16:07:29Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 70705 2018-01-23 12:17:54Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1357,8 +1357,9 @@ static void dsoundDeviceRemove(PDSOUNDDEV pDev)
 static void dsoundLogDevice(const char *pszType, LPGUID pGUID, LPCWSTR pwszDescription, LPCWSTR pwszModule)
 {
     char *pszGUID = dsoundGUIDToUtf8StrA(pGUID);
-    /* This always has to be in the release log. */
-    LogRel(("DSound: %s: GUID: %s [%ls] (Module: %ls)\n", pszType, pszGUID ? pszGUID : "{?}", pwszDescription, pwszModule));
+    /* This always has to be in the release log.
+     * Only print this when we're running in verbose (audio debug) mode, as this can generate a lot of content. */
+    LogRel2(("DSound: %s: GUID: %s [%ls] (Module: %ls)\n", pszType, pszGUID ? pszGUID : "{?}", pwszDescription, pwszModule));
     RTStrFree(pszGUID);
 }
 
