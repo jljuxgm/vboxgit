@@ -1,4 +1,4 @@
-; $Id: vcc100-kernel32-fakesA.asm 70375 2017-12-28 20:46:21Z vboxsync $
+; $Id: vcc100-kernel32-fakesA.asm 70394 2017-12-30 19:27:35Z vboxsync $
 ;; @file
 ; IPRT - Wrappers for kernel32 APIs missing in NT4 and earlier.
 ;
@@ -26,6 +26,8 @@
 
 
 %include "vcc100-fakes.mac"
+
+%define FAKE_MODULE_NAME kernel32
 
 BEGINDATA
 GLOBALNAME vcc100_kernel32_fakes_asm
