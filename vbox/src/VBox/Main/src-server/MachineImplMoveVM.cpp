@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 71192 2018-03-05 10:23:41Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 71197 2018-03-05 10:55:30Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -554,7 +554,7 @@ void MachineMoveVM::i_MoveVMThreadTask(MachineMoveVM* task)
      * A way to handle shareable disk:
      * Collect the shareable disks attched to the VM.
      * Get the machines whom the shareable disks attach to.
-     * Return an error if the state of any VM doesn't allow to move a shareable disk and 
+     * Return an error if the state of any VM doesn't allow to move a shareable disk and
      * this disk is located in the VM's folder (it means the disk is intended for "moving").
      */
 
@@ -647,7 +647,7 @@ void MachineMoveVM::i_MoveVMThreadTask(MachineMoveVM* task)
         }
 
         /*
-         * Moving Machine settings file 
+         * Moving Machine settings file
          * The settings file are moved after all disks and snapshots because this file should be updated
          * with actual information and only then should be moved.
          */
