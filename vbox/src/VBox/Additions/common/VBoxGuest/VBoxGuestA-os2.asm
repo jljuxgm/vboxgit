@@ -1,4 +1,4 @@
-; $Id: VBoxGuestA-os2.asm 68570 2017-08-31 12:10:39Z vboxsync $
+; $Id: VBoxGuestA-os2.asm 68593 2017-08-31 13:25:25Z vboxsync $
 ;; @file
 ; VBoxGuest - OS/2 assembly file, the first file in the link.
 ;
@@ -825,13 +825,13 @@ GLOBALNAME VGDrvOS2IDC_32
     mov     ds, cx
     movzx   ebx, word [ebp + 08h]
 
-    mov     dword [ebx + VBGOS2IDC.u32Version       ], VBGL_IOC_VERSION
-    mov     dword [ebx + VBGOS2IDC.u32Session       ], eax
-    mov     dword [ebx + VBGOS2IDC.pfnServiceEP     ], NAME(VGDrvOS2IDCService)
-    mov     word  [ebx + VBGOS2IDC.fpfnServiceEP    ], NAME(VGDrvOS2IDCService16) wrt CODE16
-    mov     word  [ebx + VBGOS2IDC.fpfnServiceEP + 2], CODE16
-    mov     word  [ebx + VBGOS2IDC.fpfnServiceAsmEP ], NAME(VGDrvOS2IDCService16Asm) wrt CODE16
-    mov     word  [ebx + VBGOS2IDC.fpfnServiceAsmEP+2],CODE16
+    mov     dword [ebx + VBGLOS2ATTACHDD.u32Version       ], VBGL_IOC_VERSION
+    mov     dword [ebx + VBGLOS2ATTACHDD.u32Session       ], eax
+    mov     dword [ebx + VBGLOS2ATTACHDD.pfnServiceEP     ], NAME(VGDrvOS2IDCService)
+    mov     word  [ebx + VBGLOS2ATTACHDD.fpfnServiceEP    ], NAME(VGDrvOS2IDCService16) wrt CODE16
+    mov     word  [ebx + VBGLOS2ATTACHDD.fpfnServiceEP + 2], CODE16
+    mov     word  [ebx + VBGLOS2ATTACHDD.fpfnServiceAsmEP ], NAME(VGDrvOS2IDCService16Asm) wrt CODE16
+    mov     word  [ebx + VBGLOS2ATTACHDD.fpfnServiceAsmEP+2],CODE16
 
     mov     ax, DATA32 wrt FLAT
     mov     ds, ax
