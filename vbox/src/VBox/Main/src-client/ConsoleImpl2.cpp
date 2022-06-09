@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 66349 2017-03-30 06:39:44Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 67055 2017-05-24 09:10:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1075,6 +1075,20 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             {
                 LogRel(("WARNING! 64-bit guest type selected but the host CPU does NOT support HW virtualization.\n"));
                 fIsGuest64Bit = FALSE;
+            }
+        }
+
+        /* Sanitize valid/useful APIC combinations, see @bugref{8868}. */
+        if (!fEnableAPIC)
+        {
+            if (fIsGuest64Bit)
+                return VMR3SetError(pUVM, VERR_INVALID_PARAMETER, RT_SRC_POS, N_("Cannot disable the APIC for a 64-bit guest."));
+            if (cCpus > 1)
+                return VMR3SetError(pUVM, VERR_INVALID_PARAMETER, RT_SRC_POS, N_("Cannot disable the APIC for an SMP guest."));
+            if (fIOAPIC)
+            {
+                return VMR3SetError(pUVM, VERR_INVALID_PARAMETER, RT_SRC_POS,
+                                    N_("Cannot disable the APIC when the I/O APIC is present."));
             }
         }
 
