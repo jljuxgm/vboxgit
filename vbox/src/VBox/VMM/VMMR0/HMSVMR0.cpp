@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 68361 2017-08-10 09:38:55Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 68364 2017-08-10 09:44:51Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -926,6 +926,7 @@ static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMVMCB pVmcb)
             pVmcb->ctrl.TLBCtrl.n.u8TLBFlush = pVmcbNstGstCache->TLBCtrl.n.u8TLBFlush;
     }
 #else
+    RT_NOREF(pCtx);
     pVmcb->ctrl.TLBCtrl.n.u8TLBFlush = SVM_TLB_FLUSH_NOTHING;
 #endif
 
