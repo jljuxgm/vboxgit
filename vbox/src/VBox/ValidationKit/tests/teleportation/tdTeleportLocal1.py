@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdTeleportLocal1.py 65963 2017-03-07 10:30:26Z vboxsync $
+# $Id: tdTeleportLocal1.py 67035 2017-05-23 11:20:54Z vboxsync $
 
 """
 VirtualBox Validation Kit - Local teleportation testdriver.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65963 $"
+__version__ = "$Revision: 67035 $"
 
 
 # Standard Python imports.
@@ -389,7 +389,6 @@ class tdTeleportLocal1(vbox.TestDriver):
                             self.terminateVmBySession(oSessionSrc, oProgressSrc);
 
                             # Return with the source and destination swapped.
-                            self.addTask(oSessionDst);
                             return oVmDst, oSessionDst, oVmSrc;
 
                         # Failure / bail out.
@@ -440,8 +439,6 @@ class tdTeleportLocal1(vbox.TestDriver):
             # Start the source VM.
             oSessionSrc = self.startVm(oVmSrc);
             if oSessionSrc is not None:
-                self.addTask(oSessionSrc);
-
                 # Simple back and forth to test the ice...
                 cTeleportations = 0;
                 oVmSrc, oSessionSrc, oVmDst = self.test2Teleport(oVmSrc, oSessionSrc, oVmDst);
