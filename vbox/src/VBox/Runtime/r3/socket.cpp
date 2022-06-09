@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 70206 2017-12-18 15:17:05Z vboxsync $ */
+/* $Id: socket.cpp 70244 2017-12-20 15:13:14Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -1135,7 +1135,7 @@ RTDECL(int) RTSocketWriteTo(RTSOCKET hSocket, const void *pvBuffer, size_t cbBuf
     else
         rc = VERR_TOO_MUCH_DATA;
 
-    ///@todo rtSocketUnlock(pThis);
+    /// @todo rtSocketUnlock(pThis);
 #ifdef RT_OS_WINDOWS
 # undef sendto
 #endif
