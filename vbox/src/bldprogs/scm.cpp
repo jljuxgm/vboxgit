@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69442 2017-10-27 16:10:22Z vboxsync $ */
+/* $Id: scm.cpp 69460 2017-10-27 17:28:22Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -523,6 +523,16 @@ static PFNSCMREWRITER const g_aRewritersFor_SifFiles[] =
     rewrite_Copyright_SemicolonComment,
 };
 
+static PFNSCMREWRITER const g_aRewritersFor_SqlFiles[] =
+{
+    rewrite_ForceNativeEol,
+    rewrite_ExpandTabs,
+    rewrite_StripTrailingBlanks,
+    rewrite_AdjustTrailingLines,
+    rewrite_SvnKeywords,
+    rewrite_SvnNoExecutable,
+    rewrite_Copyright_SqlComment,
+};
 
 static PFNSCMREWRITER const g_aRewritersFor_FileLists[] = /* both makefile and shell script */
 {
@@ -567,6 +577,7 @@ static SCMCFGENTRY const g_aConfigs[] =
     SCM_CFG_ENTRY(g_aRewritersFor_QtTranslations,   false, "*.ts" ),
     SCM_CFG_ENTRY(g_aRewritersFor_QtUiFiles,        false, "*.ui" ),
     SCM_CFG_ENTRY(g_aRewritersFor_SifFiles,         false, "*.sif" ),
+    SCM_CFG_ENTRY(g_aRewritersFor_SqlFiles,         false, "*.pgsql|*.sql" ),
     /* Should be last. */
     SCM_CFG_ENTRY(g_aRewritersFor_OtherMakefiles,   false, "Makefile|makefile|GNUmakefile|SMakefile" ),
     /* Must be be last: */
@@ -1286,7 +1297,7 @@ static int scmSettingsLoadFile(PSCMSETTINGS pSettings, const char *pszFilename)
                 if (RT_FAILURE(rc))
                 {
                     RTStrFree(pszFreeLine);
-                    rc = RTMsgErrorRc(VERR_NO_MEMORY, "%s: Ran out of memory deal with escaped newlines");
+                    rc = RTMsgErrorRc(VERR_NO_MEMORY, "%s: Ran out of memory deal with escaped newlines", pszFilename);
                     break;
                 }
 
@@ -2331,7 +2342,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69442 $";
+                static const char s_szRev[] = "$Revision: 69460 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
