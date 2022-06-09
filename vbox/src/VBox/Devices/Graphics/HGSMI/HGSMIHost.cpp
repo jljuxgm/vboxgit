@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.cpp 71673 2018-04-05 11:24:04Z vboxsync $ */
+/* $Id: HGSMIHost.cpp 71904 2018-04-18 16:43:38Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), host part.
  *
@@ -1491,6 +1491,7 @@ static DECLCALLBACK(int) hgsmiChannelHandler(void *pvHandler, uint16_t u16Channe
             RT_UNTRUSTED_NONVOLATILE_COPY_FENCE();
 
             ASSERT_GUEST_RETURN(LocSafe.cbLocation == sizeof(HGSMIHOSTFLAGS), VERR_INVALID_PARAMETER);
+            ASSERT_GUEST_RETURN(LocSafe.offLocation + sizeof(HGSMIHOSTFLAGS) == pIns->area.cbArea, VERR_INVALID_PARAMETER);
             RT_UNTRUSTED_VALIDATED_FENCE();
 
             pIns->pHGFlags = (HGSMIHOSTFLAGS RT_UNTRUSTED_VOLATILE_GUEST *)HGSMIOffsetToPointer(&pIns->area, LocSafe.offLocation);
