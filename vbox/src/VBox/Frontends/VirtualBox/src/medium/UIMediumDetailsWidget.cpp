@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 67765 2017-07-03 16:44:56Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 67770 2017-07-04 10:51:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -284,7 +284,7 @@ void UIMediumDetailsWidget::prepareTabDetails()
             for (int i = (int)UIMediumType_HardDisk; i < (int)UIMediumType_All; ++i)
             {
                 const UIMediumType enmType = (UIMediumType)i;
-                prepareInformationContainer(enmType, enmType == UIMediumType_HardDisk ? 7 : 3); /// @todo Remove hard-coded values.
+                prepareInformationContainer(enmType, enmType == UIMediumType_HardDisk ? 6 : 3); /// @todo Remove hard-coded values.
             }
         }
 

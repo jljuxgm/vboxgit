@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 67765 2017-07-03 16:44:56Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 67770 2017-07-04 10:51:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -389,7 +389,6 @@ void UIMediumItem::refresh()
     {
         case UIMediumType_HardDisk:
         {
-            m_details.m_aLabels << UIMediumManager::tr("Type:");
             m_details.m_aLabels << UIMediumManager::tr("Location:");
             m_details.m_aLabels << UIMediumManager::tr("Format:");
             m_details.m_aLabels << UIMediumManager::tr("Storage details:");
@@ -397,7 +396,6 @@ void UIMediumItem::refresh()
             m_details.m_aLabels << UIMediumManager::tr("Encrypted with key:");
             m_details.m_aLabels << UIMediumManager::tr("UUID:");
 
-            m_details.m_aFields << hardDiskType();
             m_details.m_aFields << formatFieldText(location(), true, "end");
             m_details.m_aFields << hardDiskFormat();
             m_details.m_aFields << details();
