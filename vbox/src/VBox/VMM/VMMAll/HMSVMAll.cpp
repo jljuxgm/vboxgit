@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 70176 2017-12-16 04:03:56Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 70178 2017-12-16 09:36:23Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -248,7 +248,7 @@ VMM_INT_DECL(int) HMSvmGetMsrpmOffsetAndBit(uint32_t idMsr, uint16_t *pbOffMsrpm
     {
         /* AMD Seventh and Eighth Generation Processor MSRs. */
         *pbOffMsrpm = 0x1000;
-        *puMsrpmBit = (idMsr - 0xc0001000) << 1;
+        *puMsrpmBit = (idMsr - 0xc0010000) << 1;
         return VINF_SUCCESS;
     }
 
