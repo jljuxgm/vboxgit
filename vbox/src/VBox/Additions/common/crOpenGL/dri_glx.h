@@ -1,4 +1,4 @@
-/* $Id: dri_glx.h 69040 2017-10-11 15:37:05Z vboxsync $ */
+/* $Id: dri_glx.h 69310 2017-10-25 14:24:45Z vboxsync $ */
 
 /** @file
  *
@@ -52,7 +52,7 @@ extern DECLEXPORT(GLXPixmap) VBOXGLXTAG(glXCreateGLXPixmapMESA)(Display *dpy, XV
 #endif
 
 /*Common glX functions*/
-extern DECLEXPORT(void) VBOXGLXTAG(glXCopyContext)( Display *dpy, GLXContext src, GLXContext dst, 
+extern DECLEXPORT(void) VBOXGLXTAG(glXCopyContext)( Display *dpy, GLXContext src, GLXContext dst,
 #if defined(SunOS)
 unsigned long mask);
 #else

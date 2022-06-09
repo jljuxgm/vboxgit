@@ -1,7 +1,9 @@
+/* $Id: VBoxICDList.h 69310 2017-10-25 14:24:45Z vboxsync $ */
 /** @file
- *
  * VirtualBox Windows NT/2000/XP guest OpenGL ICD
- *
+ */
+
+/*
  * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as

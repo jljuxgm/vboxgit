@@ -1,4 +1,4 @@
-/* $Id: packspu_getshaders.c 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: packspu_getshaders.c 69310 2017-10-25 14:24:45Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related functions
@@ -23,7 +23,7 @@
 #include "cr_mem.h"
 #include <iprt/assert.h>
 
-/*@todo combine with the one from server_getshaders.c*/
+/** @todo combine with the one from server_getshaders.c*/
 typedef struct _crGetActive_t
 {
     GLsizei length;
