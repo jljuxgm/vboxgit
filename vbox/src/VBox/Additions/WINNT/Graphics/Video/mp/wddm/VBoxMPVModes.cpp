@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVModes.cpp 68115 2017-07-26 08:44:38Z vboxsync $ */
+/* $Id: VBoxMPVModes.cpp 68117 2017-07-26 09:10:09Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -239,7 +239,7 @@ int vboxWddmVModesAdd(PVBOXMP_DEVEXT pExt, VBOXWDDM_VMODES *pModes, uint32_t u32
     uint32_t cbSurfMem = pResolution->cx * pResolution->cy * 4;
     if (cbSurfMem > vramSize)
     {
-        WARN(("resolition %dx%d too big for available VRAM (%d bytes)\n", pResolution->cx, pResolution->cy, vramSize));
+        WARN(("resolution %dx%d too big for available VRAM (%d bytes)\n", pResolution->cx, pResolution->cy, vramSize));
         return VERR_NOT_SUPPORTED;
     }
 
