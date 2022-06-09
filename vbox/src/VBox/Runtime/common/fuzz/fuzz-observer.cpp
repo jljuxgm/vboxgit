@@ -1,4 +1,4 @@
-/* $Id: fuzz-observer.cpp 72649 2018-06-22 07:40:23Z vboxsync $ */
+/* $Id: fuzz-observer.cpp 72650 2018-06-22 07:42:39Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, observer.
  */
@@ -1095,8 +1095,6 @@ RTDECL(int) RTFuzzObsSetTestBinaryArgs(RTFUZZOBS hFuzzObs, const char * const *p
         pThis->papszArgs = (char **)RTMemAllocZ(sizeof(char **) * (cArgs + 1));
         if (RT_LIKELY(pThis->papszArgs))
         {
-            char **ppszOwn = pThis->papszArgs;
-            const char * const *ppsz = papszArgs;
             for (unsigned i = 0; i < cArgs; i++)
             {
                 pThis->papszArgs[i] = RTStrDup(papszArgs[i]);
