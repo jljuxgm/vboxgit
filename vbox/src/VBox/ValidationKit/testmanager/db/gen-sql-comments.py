@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: gen-sql-comments.py 69778 2017-11-20 17:57:01Z vboxsync $
+# $Id: gen-sql-comments.py 69781 2017-11-20 18:41:33Z vboxsync $
 
 """
 Converts doxygen style comments in SQL script to COMMENT ON statements.
@@ -70,7 +70,7 @@ class SqlDox(object):
 
     def commitComment2(self, sSqlObj):
         if self.sComment is not None and sSqlObj is not None:
-            print("COMMENT ON %s IS\n  '%s';\n\n" % (sSqlObj, self.quoteSqlString(self.sComment.strip())));
+            print("COMMENT ON %s IS\n  '%s';\n" % (sSqlObj, self.quoteSqlString(self.sComment.strip())));
         self.resetComment();
         return True;
 
