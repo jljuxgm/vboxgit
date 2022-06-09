@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-linux.c 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: initterm-r0drv-linux.c 70690 2018-01-22 20:35:54Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Linux.
  */
@@ -68,7 +68,7 @@ DECLHIDDEN(void) rtR0LnxWorkqueuePush(RTR0LNXWORKQUEUEITEM *pWork, void (*pfnWor
 # if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 20)
     INIT_WORK(pWork, pfnWorker);
 # else
-    INIT_WORK(pWork, pfnWorker, pWork);
+    INIT_WORK(pWork, (void (*)(void *))pfnWorker, pWork);
 # endif
     queue_work(g_prtR0LnxWorkQueue, pWork);
 #else
