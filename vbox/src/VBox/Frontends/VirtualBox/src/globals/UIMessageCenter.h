@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 67965 2017-07-14 13:01:13Z vboxsync $ */
+/* $Id: UIMessageCenter.h 67969 2017-07-14 13:12:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -246,6 +246,7 @@ public:
     void cannotChangeMediumType(const CMedium &medium, KMediumType oldMediumType, KMediumType newMediumType, QWidget *pParent = 0) const;
     void cannotMoveMediumStorage(const CMedium &comMedium, const QString &strLocationOld, const QString &strLocationNew, QWidget *pParent = 0) const;
     void cannotMoveMediumStorage(const CProgress &comProgress, const QString &strLocationOld, const QString &strLocationNew, QWidget *pParent = 0) const;
+    void cannotChangeMediumDescription(const CMedium &comMedium, const QString &strLocation, QWidget *pParent = 0) const;
     bool confirmMediumRelease(const UIMedium &medium, QWidget *pParent = 0) const;
     bool confirmMediumRemoval(const UIMedium &medium, QWidget *pParent = 0) const;
     int confirmDeleteHardDiskStorage(const QString &strLocation, QWidget *pParent = 0) const;

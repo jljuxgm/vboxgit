@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 67965 2017-07-14 13:01:13Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 67969 2017-07-14 13:12:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1232,6 +1232,14 @@ void UIMessageCenter::cannotMoveMediumStorage(const CProgress &comProgress, cons
           tr("Failed to move the storage unit of the disk image <b>%1</b> to <b>%2</b>.")
              .arg(strLocationOld, strLocationNew),
           formatErrorInfo(comProgress));
+}
+
+void UIMessageCenter::cannotChangeMediumDescription(const CMedium &comMedium, const QString &strLocation, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("<p>Error changing the description of the disk image <b>%1</b>.</p>")
+             .arg(strLocation),
+          formatErrorInfo(comMedium));
 }
 
 bool UIMessageCenter::confirmMediumRelease(const UIMedium &medium, QWidget *pParent /* = 0*/) const
