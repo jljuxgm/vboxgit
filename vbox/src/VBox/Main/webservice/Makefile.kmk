@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69773 2017-11-20 12:36:17Z vboxsync $
+# $Id: Makefile.kmk 69846 2017-11-27 17:23:32Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -327,6 +327,11 @@ ifdef VBOX_GSOAP_INSTALLED
 		-D__DARWIN__ -DRT_ARCH_X86 -D__X86__ -DVBOX_WITH_HYBRID_32BIT_KERNEL -DIN_RING3 -DHC_ARCH_BITS=32 -DGC_ARCH_BITS=32 \
 		-DMAC_OS_X_VERSION_MIN_REQUIRED=1040 -DMAC_OS_X_VERSION_MAX_ALLOWED=1040 \
 		$< -o $@
+  endif
+
+  # Tweak for systems with too many CPUs compared to memory.
+  ifdef VBOX_WITH_SOAP_NOT_PARALLEL
+   .NOTPARALLEL: $$(vboxsoap_2_OBJS)
   endif
  endif # !VBOX_ONLY_SDK
 
