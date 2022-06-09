@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 70052 2017-12-10 22:10:01Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 71329 2018-03-14 14:41:20Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -2293,6 +2293,7 @@ static HRESULT APIENTRY vboxWddmDispGetCaps (HANDLE hAdapter, CONST D3DDDIARG_GE
         case D3DDDICAPS_GETDECODEGUIDCOUNT:
         case D3DDDICAPS_GETVIDEOPROCESSORDEVICEGUIDCOUNT:
         case D3DDDICAPS_GETVIDEOPROCESSORRTFORMATCOUNT:
+        case D3DDDICAPS_GETCONTENTPROTECTIONCAPS:
             if (pData->pData && pData->DataSize)
                 memset(pData->pData, 0, pData->DataSize);
             break;
