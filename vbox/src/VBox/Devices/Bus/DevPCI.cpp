@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 68594 2017-08-31 14:24:09Z vboxsync $ */
+/* $Id: DevPCI.cpp 69124 2017-10-17 19:17:23Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

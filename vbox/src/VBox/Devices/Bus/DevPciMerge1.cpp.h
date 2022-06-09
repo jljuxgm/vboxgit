@@ -1,4 +1,4 @@
-/* $Id: DevPciMerge1.cpp.h 64733 2016-11-22 09:10:19Z vboxsync $ */
+/* $Id: DevPciMerge1.cpp.h 69124 2017-10-17 19:17:23Z vboxsync $ */
 /** @file
  * DevPci - Early attempt at common code for DevPci and DevPciIch9.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2004-2016 Oracle Corporation
+ * Copyright (C) 2004-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

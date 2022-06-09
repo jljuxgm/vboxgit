@@ -1,9 +1,10 @@
+/* $Id: PciInline.h 69124 2017-10-17 19:17:23Z vboxsync $ */
 /** @file
  * PCI - The PCI Controller And Devices, inline device helpers.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
