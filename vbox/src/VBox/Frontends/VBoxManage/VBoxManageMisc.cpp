@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 71054 2018-02-19 13:38:37Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 71433 2018-03-21 13:44:20Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -812,14 +812,14 @@ RTEXITCODE handleGetExtraData(HandlerArg *a)
 {
     HRESULT rc = S_OK;
 
-    if (a->argc != 2)
+    if (a->argc > 2 || a->argc < 1)
         return errorSyntax(USAGE_GETEXTRADATA, "Incorrect number of parameters");
 
     /* global data? */
     if (!strcmp(a->argv[0], "global"))
     {
         /* enumeration? */
-        if (!strcmp(a->argv[1], "enumerate"))
+        if (a->argc < 2 || !strcmp(a->argv[1], "enumerate"))
         {
             SafeArray<BSTR> aKeys;
             CHECK_ERROR(a->virtualBox, GetExtraDataKeys(ComSafeArrayAsOutParam(aKeys)));
@@ -855,7 +855,7 @@ RTEXITCODE handleGetExtraData(HandlerArg *a)
         if (machine)
         {
             /* enumeration? */
-            if (!strcmp(a->argv[1], "enumerate"))
+            if (a->argc < 2 || !strcmp(a->argv[1], "enumerate"))
             {
                 SafeArray<BSTR> aKeys;
                 CHECK_ERROR(machine, GetExtraDataKeys(ComSafeArrayAsOutParam(aKeys)));
