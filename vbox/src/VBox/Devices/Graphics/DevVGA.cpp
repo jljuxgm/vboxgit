@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 65709 2017-02-09 16:54:39Z vboxsync $ */
+/* $Id: DevVGA.cpp 67140 2017-05-30 12:48:38Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -1315,7 +1315,7 @@ static int vga_mem_writeb(PVGASTATE pThis, RTGCPHYS addr, uint32_t val)
     /* VMSVGA keeps the VGA and SVGA framebuffers separate unlike this boch-based
        VGA implementation, so we fake it by going to ring-3 and using a heap buffer.  */
     if (!pThis->svga.fEnabled) { /*likely*/ }
-    else                       return VINF_IOM_R3_MMIO_READ;
+    else                       return VINF_IOM_R3_MMIO_WRITE;
 #endif
 
     addr &= 0x1ffff;
