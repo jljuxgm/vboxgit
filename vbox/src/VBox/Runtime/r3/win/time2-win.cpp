@@ -1,4 +1,4 @@
-/* $Id: time2-win.cpp 72163 2018-05-08 12:52:17Z vboxsync $ */
+/* $Id: time2-win.cpp 72285 2018-05-22 12:35:20Z vboxsync $ */
 /** @file
  * IPRT - Time, Windows.
  */
@@ -104,5 +104,51 @@ RTDECL(PRTTIME) RTTimeLocalExplode(PRTTIME pTime, PCRTTIMESPEC pTimeSpec)
         pTime->offUTC = cNsUtcOffset / RT_NS_1MIN;
     }
     return pTime;
+}
+
+
+/**
+ * Gets the delta between UTC and local time at the given time.
+ *
+ * @code
+ *      RTTIMESPEC LocalTime;
+ *      RTTimeNow(&LocalTime);
+ *      RTTimeSpecAddNano(&LocalTime, RTTimeLocalDeltaNanoFor(&LocalTime));
+ * @endcode
+ *
+ * @param   pTimeSpec   The time spec giving the time to get the delta for.
+ * @returns Returns the nanosecond delta between UTC and local time.
+ */
+RTDECL(int64_t) RTTimeLocalDeltaNanoFor(PCRTTIMESPEC pTimeSpec)
+{
+    RTTIMESPEC LocalTime;
+    if (g_pfnSystemTimeToTzSpecificLocalTime)
+    {
+        /*
+         * FileTimeToLocalFileTime does not do the right thing, so we'll have
+         * to convert to system time and SystemTimeToTzSpecificLocalTime instead.
+         *
+         * Note! FileTimeToSystemTime drops resoultion down to milliseconds, thus
+         *       we have to do the offUTC calculation using milliseconds and adjust
+         *       u32Nanosecons by sub milliseconds digits.
+         */
+        SYSTEMTIME SystemTimeIn;
+        FILETIME FileTime;
+        if (FileTimeToSystemTime(RTTimeSpecGetNtFileTime(pTimeSpec, &FileTime), &SystemTimeIn))
+        {
+            SYSTEMTIME SystemTimeOut;
+            if (g_pfnSystemTimeToTzSpecificLocalTime(NULL /* use current TZI */, &SystemTimeIn, &SystemTimeOut))
+            {
+                if (SystemTimeToFileTime(&SystemTimeOut, &FileTime))
+                {
+                    RTTimeSpecSetNtFileTime(&LocalTime, &FileTime);
+
+                    return (RTTimeSpecGetMilli(&LocalTime) - RTTimeSpecGetMilli(pTimeSpec)) * RT_NS_1MS;
+                }
+            }
+        }
+    }
+
+    return RTTimeLocalDeltaNano();
 }
 
