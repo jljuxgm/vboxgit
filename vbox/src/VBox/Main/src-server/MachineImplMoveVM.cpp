@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 71581 2018-03-30 10:38:27Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 71728 2018-04-06 22:05:06Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -159,6 +159,29 @@ HRESULT MachineMoveVM::init()
                                       m_pMachine->tr("Unable to move machine. Can't get the destination storage size (%s)"),
                                       strTargetFolder.c_str());
             throw rc;
+        }
+
+        RTDIR hDir;
+        Utf8Str strTempFile = strTargetFolder + "test.txt";
+        vrc = RTDirOpen(&hDir, strTargetFolder.c_str());
+        if (FAILED(vrc))
+            throw rc = vrc;
+        else
+        {
+            RTFILE hFile;
+            vrc = RTFileOpen(&hFile, strTempFile.c_str(), RTFILE_O_OPEN_CREATE | RTFILE_O_READWRITE | RTFILE_O_DENY_NONE);
+            if (FAILED(vrc))
+            {
+                LogRelFunc(("Can't create a test file %s (The error is %Rrc)\n", strTempFile.c_str(), vrc));
+                rc = m_pMachine->setError(vrc,
+                                          m_pMachine->tr("Can't create a test file test.txt in the %s. Check the access rights of "
+                                                         "the destination folder."),
+                                                         strTargetFolder.c_str());
+                throw rc;
+            }
+            RTFileClose(hFile);
+            RTFileDelete(strTempFile.c_str());
+            RTDirClose(hDir);
         }
 
         long long totalFreeSpace = cbFree;
