@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.h 67575 2017-06-23 09:23:41Z vboxsync $ */
+/* $Id: UIHostNetworkManager.h 67686 2017-06-29 09:57:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class declaration.
  */
@@ -31,7 +31,7 @@ class QAbstractButton;
 class QTreeWidgetItem;
 class QIDialogButtonBox;
 class QITreeWidget;
-class UIHostNetworkDetailsDialog;
+class UIHostNetworkDetailsWidget;
 class UIItemHostNetwork;
 class UIToolBar;
 struct UIDataHostNetwork;
@@ -174,7 +174,7 @@ private:
         /** Holds the tree-widget instance. */
         QITreeWidget *m_pTreeWidget;
         /** Holds the details-widget instance. */
-        UIHostNetworkDetailsDialog *m_pDetailsWidget;
+        UIHostNetworkDetailsWidget *m_pDetailsWidget;
     /** @} */
 };
 
