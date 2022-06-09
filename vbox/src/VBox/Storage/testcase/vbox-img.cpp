@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 69609 2017-11-07 18:59:38Z vboxsync $ */
+/* $Id: vbox-img.cpp 69611 2017-11-07 19:02:47Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -1330,73 +1330,6 @@ static int handleInfo(HandlerArg *a)
     VDDestroy(pDisk);
 
     return rc;
-}
-
-
-static DECLCALLBACK(int) vboximgDvmRead(void *pvUser, uint64_t off, void *pvBuf, size_t cbRead)
-{
-    int rc = VINF_SUCCESS;
-    PVDISK pDisk = (PVDISK)pvUser;
-
-    /* Take shortcut if possible. */
-    if (   off % 512 == 0
-        && cbRead % 512 == 0)
-        rc = VDRead(pDisk, off, pvBuf, cbRead);
-    else
-    {
-        uint8_t *pbBuf = (uint8_t *)pvBuf;
-        uint8_t abBuf[512];
-
-        /* Unaligned access, make it aligned. */
-        if (off % 512 != 0)
-        {
-            uint64_t offAligned = off & ~(uint64_t)(512 - 1);
-            size_t cbToCopy = 512 - (off - offAligned);
-            rc = VDRead(pDisk, offAligned, abBuf, 512);
-            if (RT_SUCCESS(rc))
-            {
-                memcpy(pbBuf, &abBuf[off - offAligned], cbToCopy);
-                pbBuf  += cbToCopy;
-                off    += cbToCopy;
-                cbRead -= cbToCopy;
-            }
-        }
-
-        if (   RT_SUCCESS(rc)
-            && (cbRead & ~(uint64_t)(512 - 1)))
-        {
-            size_t cbReadAligned = cbRead & ~(uint64_t)(512 - 1);
-
-            Assert(!(off % 512));
-            rc = VDRead(pDisk, off, pbBuf, cbReadAligned);
-            if (RT_SUCCESS(rc))
-            {
-                pbBuf  += cbReadAligned;
-                off    += cbReadAligned;
-                cbRead -= cbReadAligned;
-            }
-        }
-
-        if (   RT_SUCCESS(rc)
-            && cbRead)
-        {
-            Assert(cbRead < 512);
-            Assert(!(off % 512));
-
-            rc = VDRead(pDisk, off, abBuf, 512);
-            if (RT_SUCCESS(rc))
-                memcpy(pbBuf, abBuf, cbRead);
-        }
-    }
-
-    return rc;
-}
-
-
-static DECLCALLBACK(int) vboximgDvmWrite(void *pvUser, uint64_t off, const void *pvBuf, size_t cbWrite)
-{
-    PVDISK pDisk = (PVDISK)pvUser;
-    return VDWrite(pDisk, off, pvBuf, cbWrite);
 }
 
 
