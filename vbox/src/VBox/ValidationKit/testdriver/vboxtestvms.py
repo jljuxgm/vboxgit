@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 72365 2018-05-28 17:33:04Z vboxsync $
+# $Id: vboxtestvms.py 72368 2018-05-28 18:43:12Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72365 $"
+__version__ = "$Revision: 72368 $"
 
 # Standard Python imports.
 import copy;
@@ -1133,9 +1133,9 @@ class TestVmManager(object):
         #       sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi', sChipsetType = 'ich9'),
 
         # Nested hardware-virtualization
-        #TestVm('tst-nsthwvirt-ubuntu-64',    kfGrpStdSmoke,       sHd = '5.3/nat/nsthwvirt-ubuntu64/t-nsthwvirt-ubuntu64.vdi',
-        #       sKind = 'Ubuntu_64', acCpusSup = range(1, 2), asVirtModesSup = ['hwvirt-np',], fIoApic = True, fNstHwVirt = True,
-        #       sNic0AttachType = 'nat'),
+        TestVm('tst-nsthwvirt-ubuntu-64',    kfGrpStdSmoke,       sHd = '5.3/nat/nsthwvirt-ubuntu64/t-nsthwvirt-ubuntu64.vdi',
+               sKind = 'Ubuntu_64', acCpusSup = range(1, 2), asVirtModesSup = ['hwvirt-np',], fIoApic = True, fNstHwVirt = True,
+               sNic0AttachType = 'nat'),
 
         # DOS and Old Windows.
         AncientTestVm('tst-dos20',              sKind = 'DOS',
