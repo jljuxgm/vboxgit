@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 69026 2017-10-10 15:25:50Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 69133 2017-10-19 10:08:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2293,8 +2293,8 @@ void UIExtraDataManager::incrementApplicationUpdateCheckCounter()
 
 bool UIExtraDataManager::legacyProgressHandlingRequested()
 {
-    /* 'True' unless feature restricted: */
-    return !isFeatureRestricted(GUI_Progress_LegacyMode);
+    /* 'False' unless feature allowed: */
+    return isFeatureAllowed(GUI_Progress_LegacyMode);
 }
 
 bool UIExtraDataManager::guiFeatureEnabled(GUIFeatureType enmFeature)
