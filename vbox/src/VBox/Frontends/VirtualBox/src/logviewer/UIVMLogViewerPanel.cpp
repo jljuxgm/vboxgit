@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 70664 2018-01-22 07:09:07Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.cpp 70676 2018-01-22 12:59:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -78,7 +78,7 @@ void UIVMLogViewerPanel::prepareWidgets()
         m_pMainLayout->setContentsMargins(0, 0, 0, 0);
         m_pMainLayout->setSpacing(2);
     }
-    m_pCloseButton = new UIMiniCancelButton(this);
+    m_pCloseButton = new UIMiniCancelButton;
     if (m_pCloseButton)
     {
         m_pMainLayout->addWidget(m_pCloseButton, 0, Qt::AlignLeft);
