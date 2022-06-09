@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 67609 2017-06-26 15:23:17Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -363,7 +363,7 @@ com::Utf8Str HostUSBDevice::i_getName()
                                                    : strProduct.c_str());
         else
         {
-            LogRel(("USB: Unknown USB device detected (idVendor: 0x%04x, idProduct: 0x%04x). Please, report the idVendor and idProduct to virtualbox.org.\n",
+            LogRel(("USB: Unknown USB device detected (idVendor: 0x%04x, idProduct: 0x%04x)\n",
                     mUsb->idVendor, mUsb->idProduct));
             if (strVendor.isNotEmpty())
                 name = strVendor;
