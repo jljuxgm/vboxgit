@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 72490 2018-06-09 15:11:13Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 72492 2018-06-09 15:16:55Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -223,10 +223,10 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
          * Execute pending I/O Port access.
          */
         case VINF_EM_PENDING_R3_IOPORT_WRITE:
-            rc = emR3ExecutePendingIoPortWrite(pVM, pVCpu);
+            rc = VBOXSTRICTRC_TODO(emR3ExecutePendingIoPortWrite(pVM, pVCpu));
             break;
         case VINF_EM_PENDING_R3_IOPORT_READ:
-            rc = emR3ExecutePendingIoPortRead(pVM, pVCpu);
+            rc = VBOXSTRICTRC_TODO(emR3ExecutePendingIoPortRead(pVM, pVCpu));
             break;
 
         /*
