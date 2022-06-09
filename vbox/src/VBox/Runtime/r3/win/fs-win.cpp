@@ -1,4 +1,4 @@
-/* $Id: fs-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
+/* $Id: fs-win.cpp 67731 2017-06-30 12:59:48Z vboxsync $ */
 /** @file
  * IPRT - File System, Win32.
  */
@@ -409,6 +409,8 @@ RTR3DECL(int) RTFsQueryType(const char *pszFsPath, PRTFSTYPE penmType)
                     *penmType = RTFSTYPE_FAT;
                 else if (IS_FS("FAT32"))
                     *penmType = RTFSTYPE_FAT;
+                else if (IS_FS("EXFAT"))
+                    *penmType = RTFSTYPE_EXFAT;
                 else if (IS_FS("VBoxSharedFolderFS"))
                     *penmType = RTFSTYPE_VBOXSHF;
 #undef IS_FS
