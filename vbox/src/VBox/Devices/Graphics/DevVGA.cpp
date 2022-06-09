@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 67140 2017-05-30 12:48:38Z vboxsync $ */
+/* $Id: DevVGA.cpp 67355 2017-06-13 11:12:59Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -700,6 +700,7 @@ static void vga_ioport_write(PVGASTATE pThis, uint32_t addr, uint32_t val)
 
     switch(addr) {
     case 0x3c0:
+    case 0x3c1:
         if (pThis->ar_flip_flop == 0) {
             val &= 0x3f;
             pThis->ar_index = val;
