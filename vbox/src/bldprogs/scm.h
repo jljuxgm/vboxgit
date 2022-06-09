@@ -1,4 +1,4 @@
-/* $Id: scm.h 69207 2017-10-24 13:06:06Z vboxsync $ */
+/* $Id: scm.h 69215 2017-10-24 14:38:50Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -257,6 +257,8 @@ typedef struct SCMSETTINGSBASE
 
     /** Update the copyright year. */
     bool            fUpdateCopyrightYear;
+    /** Only external copyright holders. */
+    bool            fExternalCopyright;
     /** How to update the license. */
     SCMLICENSE      enmUpdateLicense;
 
