@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 62865 2016-08-02 10:11:36Z vboxsync $ */
+/* $Id: VBoxTray.h 68437 2017-08-17 10:18:32Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -81,8 +81,6 @@ typedef struct _VBOXSERVICEENV
 {
     /** hInstance of VBoxTray. */
     HINSTANCE hInstance;
-    /** Handle of guest driver. */
-    HANDLE    hDriver;
     /* Display driver interface, XPDM - WDDM abstraction see VBOXDISPIF** definitions above */
     /** @todo r=andy Argh. Needed by the "display" + "seamless" services (which in turn get called
      *               by the VBoxCaps facility. See #8037. */
