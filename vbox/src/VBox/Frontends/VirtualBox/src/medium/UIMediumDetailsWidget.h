@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.h 69131 2017-10-18 10:09:36Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.h 69277 2017-10-25 10:39:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class declaration.
  */
@@ -252,6 +252,9 @@ private:
         void retranslateValidation(QWidget *pWidget = 0);
         /** Updates button states. */
         void updateButtonStates();
+
+        /** Returns tool-tip for passed medium @a enmType. */
+        static QString mediumTypeTip(KMediumType enmType);
     /** @} */
 
     /** @name Details stuff.
