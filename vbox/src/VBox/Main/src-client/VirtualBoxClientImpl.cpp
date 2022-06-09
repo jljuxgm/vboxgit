@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 69805 2017-11-22 12:13:26Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 69806 2017-11-22 12:20:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -376,6 +376,15 @@ HRESULT VirtualBoxClient::i_investigateVirtualBoxObjectCreationFailure(HRESULT h
 }
 
 # ifdef VBOX_WITH_SDS
+/**
+ * Gets the service account name and start type for the given service.
+ *
+ * @returns IPRT status code (for some reason).
+ * @param   pwszServiceName The name of the service.
+ * @param   pwszAccountName Where to return the account name.
+ * @param   cwcAccountName  The length of the account name buffer (in WCHARs).
+ * @param   puStartType     Where to return the start type.
+ */
 int VirtualBoxClient::i_getServiceAccountAndStartType(const wchar_t *pwszServiceName,
                                                       wchar_t *pwszAccountName, size_t cwcAccountName, uint32_t *puStartType)
 {
