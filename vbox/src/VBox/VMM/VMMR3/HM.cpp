@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 70299 2017-12-22 05:16:03Z vboxsync $ */
+/* $Id: HM.cpp 70413 2018-01-02 07:22:26Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -459,7 +459,8 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
                               "|SvmPauseFilterThreshold"
                               "|Exclusive"
                               "|MaxResumeLoops"
-                              "|UseVmxPreemptTimer",
+                              "|UseVmxPreemptTimer"
+                              "|SvmVirtVmsaveVmload",
                               "" /* pszValidNodes */, "HM" /* pszWho */, 0 /* uInstance */);
     if (RT_FAILURE(rc))
         return rc;
@@ -558,6 +559,12 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
      * pause-filter exiting.
      */
     rc = CFGMR3QueryU16Def(pCfgHm, "SvmPauseFilterThreshold", &pVM->hm.s.svm.cPauseFilterThresholdTicks, 0);
+    AssertRCReturn(rc, rc);
+
+    /** @cfgm{/HM/SvmVirtVmsaveVmload, bool, true}
+     * Whether to make use of virtualized VMSAVE/VMLOAD feature of the CPU if it's
+     * available. */
+    rc = CFGMR3QueryBoolDef(pCfgHm, "SvmVirtVmsaveVmload", &pVM->hm.s.svm.fVirtVmsaveVmload, true);
     AssertRCReturn(rc, rc);
 
     /** @cfgm{/HM/Exclusive, bool}

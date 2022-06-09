@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: HMInternal.h 70413 2018-01-02 07:22:26Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -521,7 +521,9 @@ typedef struct HM
         bool                        fAlwaysFlushTLB;
         /** Set when the hack to ignore VERR_SVM_IN_USE is active. */
         bool                        fIgnoreInUseError;
-        uint8_t                     u8Alignment0[4];
+        /** Whether to use virutalized VMSAVE/VMLOAD feature. */
+        bool                        fVirtVmsaveVmload;
+        uint8_t                     u8Alignment0[3];
 
         /** Physical address of the IO bitmap (12kb). */
         RTHCPHYS                    HCPhysIOBitmap;
