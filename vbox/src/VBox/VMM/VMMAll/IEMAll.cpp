@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 70613 2018-01-17 18:17:54Z vboxsync $ */
+/* $Id: IEMAll.cpp 70643 2018-01-19 12:19:32Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -11272,6 +11272,11 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PVMCPU pVCpu, uint16_t uSel)
             || !IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fFsGsBase \
             || !(IEM_GET_CTX(pVCpu)->cr4 & X86_CR4_FSGSBASE)) \
             return iemRaiseUndefinedOpcode(pVCpu); \
+    } while (0)
+#define IEM_MC_MAYBE_RAISE_NON_CANONICAL_ADDR_GP0(a_u64Addr) \
+    do { \
+        if (!IEM_IS_CANONICAL(a_u64Addr)) \
+            return iemRaiseGeneralProtectionFault0(pVCpu); \
     } while (0)
 
 

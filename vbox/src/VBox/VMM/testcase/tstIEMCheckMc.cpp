@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 70612 2018-01-17 18:12:23Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 70643 2018-01-19 12:19:32Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -362,6 +362,7 @@ IEMOPMEDIAF2 g_iemAImpl_pcmpeqd;
 #define IEM_MC_RAISE_GP0_IF_EFF_ADDR_UNALIGNED(a_EffAddr, a_cbAlign) \
     do { AssertCompile(RT_IS_POWER_OF_TWO(a_cbAlign)); CHK_TYPE(RTGCPTR,  a_EffAddr); } while (0)
 #define IEM_MC_MAYBE_RAISE_FSGSBASE_XCPT()              do {} while (0)
+#define IEM_MC_MAYBE_RAISE_NON_CANONICAL_ADDR_GP0(a_u64Addr)    do {} while (0)
 
 #define IEM_MC_LOCAL(a_Type, a_Name) \
     a_Type a_Name; NOREF(a_Name)
