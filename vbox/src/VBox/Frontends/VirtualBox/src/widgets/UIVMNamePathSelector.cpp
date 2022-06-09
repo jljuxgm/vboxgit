@@ -1,4 +1,4 @@
-/* $Id: UIVMNamePathSelector.cpp 72199 2018-05-14 12:57:36Z vboxsync $ */
+/* $Id: UIVMNamePathSelector.cpp 72225 2018-05-16 11:03:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMNamePathSelector class implementation.
  */
@@ -180,4 +180,10 @@ void UIVMNamePathSelector::setToolTipText(const QString &strToolTipText)
 const QString& UIVMNamePathSelector::toolTipText() const
 {
     return m_strToolTipText;
+}
+
+void UIVMNamePathSelector::showEvent(QShowEvent *pEvent)
+{
+    QWidget::showEvent(pEvent);
+    m_pName->setFocus();
 }
