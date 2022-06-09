@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 71371 2018-03-16 15:53:24Z vboxsync $ */
+/* $Id: VBoxGlobal.h 71461 2018-03-22 15:07:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -443,6 +443,16 @@ public:
     /** Assigns WM_CLASS property for passed @a pWidget. */
     static void setWMClass(QWidget *pWidget, const QString &strNameString, const QString &strClassString);
 #endif
+
+    /** Initiates the extension pack installation process.
+      * @param  strFilePath      Brings the extension pack file path.
+      * @param  strDigest        Brings the extension pack file digest.
+      * @param  pParent          Brings the parent dialog reference.
+      * @param  pstrExtPackName  Brings the extension pack name. */
+    static void doExtPackInstallation(QString const &strFilePath,
+                                      QString const &strDigest,
+                                      QWidget *pParent,
+                                      QString *pstrExtPackName);
 
 signals:
 
