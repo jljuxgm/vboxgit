@@ -1,4 +1,4 @@
-/* $Id: EMR3Nem.cpp 71031 2018-02-15 16:47:13Z vboxsync $ */
+/* $Id: EMR3Nem.cpp 71293 2018-03-09 21:11:20Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - NEM interface.
  */
@@ -360,7 +360,7 @@ VBOXSTRICTRC emR3NemExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
     LogFlow(("emR3NemExecute%d: (cs:eip=%04x:%RGv)\n", pVCpu->idCpu, pCtx->cs.Sel, (RTGCPTR)pCtx->rip));
     *pfFFDone = false;
 
-    STAM_COUNTER_INC(&pVCpu->em.s.StatNEMExecuteCalled);
+    STAM_REL_COUNTER_INC(&pVCpu->em.s.StatNEMExecuteCalled);
 
     /*
      * Spin till we get a forced action which returns anything but VINF_SUCCESS.
@@ -420,17 +420,17 @@ VBOXSTRICTRC emR3NemExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
         /*
          * Execute the code.
          */
-        STAM_PROFILE_ADV_STOP(&pVCpu->em.s.StatNEMEntry, a);
-
         if (RT_LIKELY(emR3IsExecutionAllowed(pVM, pVCpu)))
         {
-            STAM_PROFILE_START(&pVCpu->em.s.StatNEMExec, x);
+            STAM_PROFILE_ADV_STOP(&pVCpu->em.s.StatNEMEntry, a);
+            STAM_REL_PROFILE_START(&pVCpu->em.s.StatNEMExec, x);
             rcStrict = NEMR3RunGC(pVM, pVCpu);
-            STAM_PROFILE_STOP(&pVCpu->em.s.StatNEMExec, x);
+            STAM_REL_PROFILE_STOP(&pVCpu->em.s.StatNEMExec, x);
         }
         else
         {
             /* Give up this time slice; virtual time continues */
+            STAM_PROFILE_ADV_STOP(&pVCpu->em.s.StatNEMEntry, a);
             STAM_REL_PROFILE_ADV_START(&pVCpu->em.s.StatCapped, u);
             RTThreadSleep(5);
             STAM_REL_PROFILE_ADV_STOP(&pVCpu->em.s.StatCapped, u);
