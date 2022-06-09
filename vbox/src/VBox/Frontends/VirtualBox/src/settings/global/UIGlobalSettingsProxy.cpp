@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 72664 2018-06-22 13:07:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -20,6 +20,7 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
+# include <QButtonGroup>
 # include <QRegExpValidator>
 
 /* GUI includes: */
