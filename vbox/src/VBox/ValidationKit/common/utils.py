@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 70569 2018-01-12 23:57:56Z vboxsync $
+# $Id: utils.py 70575 2018-01-13 14:28:28Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70569 $"
+__version__ = "$Revision: 70575 $"
 
 
 # Standard Python imports.
@@ -858,7 +858,7 @@ def processCheckPidAndName(uPid, sName):
             #reporter.logXcpt('uPid=%s sName=%s' % (uPid, sName));
             pass;
     else:
-        if sys.platform in ('linux2', ):
+        if sys.platform in ('linux2', 'linux', 'linux3', 'linux4', 'linux5', 'linux6'):
             asPsCmd = ['/bin/ps',     '-p', '%u' % (uPid,), '-o', 'fname='];
         elif sys.platform in ('sunos5',):
             asPsCmd = ['/usr/bin/ps', '-p', '%u' % (uPid,), '-o', 'fname='];

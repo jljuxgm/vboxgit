@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 70521 2018-01-10 15:49:10Z vboxsync $
+# $Id: base.py 70575 2018-01-13 14:28:28Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70521 $"
+__version__ = "$Revision: 70575 $"
 
 
 # Standard Python imports.
@@ -286,11 +286,12 @@ def processCheckPidAndName(uPid, sName):
     if sys.platform == 'win32':
         fRc = winbase.processCheckPidAndName(uPid, sName);
     else:
-        if sys.platform in ('linux2', ):
+        sOs = utils.getHostOs();
+        if sOs == 'linux':
             asPsCmd = ['/bin/ps',     '-p', '%u' % (uPid,), '-o', 'fname='];
-        elif sys.platform in ('sunos5',):
+        elif sOs == 'solaris':
             asPsCmd = ['/usr/bin/ps', '-p', '%u' % (uPid,), '-o', 'fname='];
-        elif sys.platform in ('darwin',):
+        elif sOs == 'darwin':
             asPsCmd = ['/bin/ps',     '-p', '%u' % (uPid,), '-o', 'ucomm='];
         else:
             asPsCmd = None;
