@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 70573 2018-01-13 04:18:15Z vboxsync $
+# $Id: reporter.py 70611 2018-01-17 15:47:10Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70573 $"
+__version__ = "$Revision: 70611 $"
 
 
 # Standard Python imports.
@@ -505,7 +505,10 @@ class LocalReporter(ReporterBase):
                 sLogText = '%s %s' % (sTsPrf, sText);
 
             # output it.
-            sAscii = sLogText.encode('ascii', 'replace');
+            if sys.version_info[0] >= 3:
+                sAscii = sLogText;
+            else:
+                sAscii = sLogText.encode('ascii', 'replace');
             if self.iDebug == 0:
                 print('%s: %s' % (self.sName, sAscii), file = self.oStdErr);
             else:
@@ -1203,11 +1206,15 @@ class FileWrapperTestPipe(object):
                 traceback.print_exc();
             self.fStarted = True;
 
-        if isinstance(sText, array.array):
-            try:
-                sText = sText.tostring();
-            except:
-                pass;
+        # Turn non-string stuff into strings.
+        if not utils.isString(sText):
+            if isinstance(sText, array.array):
+                try:    sText = sText.tostring();
+                except: pass;
+            if not utils.isString(sText) and hasattr(sText, 'decode'):
+                try:    sText = sText.decode('utf-8', 'ignore');
+                except: pass;
+
         try:
             g_oReporter.subXmlWrite(self, sText, utils.getCallerName());
             # Parse the supplied text and look for <Failed.../> tags to keep track of the

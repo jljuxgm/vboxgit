@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tst-txsclient.py 70521 2018-01-10 15:49:10Z vboxsync $
+# $Id: tst-txsclient.py 70611 2018-01-17 15:47:10Z vboxsync $
 
 """
 Simple testcase for txsclient.py.
@@ -28,12 +28,11 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70521 $"
+__version__ = "$Revision: 70611 $"
 
 # Standard python imports.
 import os
 import sys
-import types
 
 # Validation Kit imports.
 sys.path.insert(0, '.');
@@ -53,7 +52,7 @@ def boolRes(rc, fExpect = True):
     """Checks a boolean result."""
     global g_cTests, g_cFailures;
     g_cTests = g_cTests + 1;
-    if isinstance(rc, types.BooleanType):
+    if isinstance(rc, bool):
         if rc == fExpect:
             return 'PASSED';
     g_cFailures = g_cFailures + 1;

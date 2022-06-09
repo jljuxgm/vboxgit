@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 70576 2018-01-13 14:29:04Z vboxsync $
+# $Id: vbox.py 70611 2018-01-17 15:47:10Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70576 $"
+__version__ = "$Revision: 70611 $"
 
 
 # Standard Python imports.
@@ -3244,9 +3244,10 @@ class TestDriver(base.TestDriver):                                              
                 reporter.log('warning: file "%s" was not downloaded, ignoring.' % (sGstFile,));
         return True;
 
-    def txsDownloadString(self, oSession, oTxsSession, sRemoteFile, cMsTimeout = 30000, fIgnoreErrors = False):
+    def txsDownloadString(self, oSession, oTxsSession, sRemoteFile, sEncoding = 'utf-8', fIgnoreEncodingErrors = True,
+                          cMsTimeout = 30000, fIgnoreErrors = False):
         return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncDownloadString,
-                              (sRemoteFile, self.adjustTimeoutMs(cMsTimeout), fIgnoreErrors));
+                              (sRemoteFile, sEncoding, fIgnoreEncodingErrors, self.adjustTimeoutMs(cMsTimeout), fIgnoreErrors));
 
     def txsUnpackFile(self, oSession, oTxsSession, sRemoteFile, sRemoteDir, cMsTimeout = 30000, fIgnoreErrors = False):
         return self.txsDoTask(oSession, oTxsSession, oTxsSession.asyncUnpackFile, \
