@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 68466 2017-08-18 12:06:07Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 68467 2017-08-18 12:08:50Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -50,13 +50,6 @@
 using namespace DragAndDropSvc;
 
 #include "VBGLR3Internal.h"
-
-
-/*********************************************************************************************************************************
-*   Forward declarations                                                                                                         *
-*********************************************************************************************************************************/
-/** @todo r=bird: What's this? publicly accessible symbol that's not in a header? Shouldn't this be a static function perhaps? */
-VBGLR3DECL(int) VbglR3DnDHGSendProgress(PVBGLR3GUESTDNDCMDCTX pCtx, uint32_t uStatus, uint8_t uPercent, int rcErr);
 
 
 /*********************************************************************************************************************************
