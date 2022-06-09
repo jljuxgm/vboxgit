@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 68334 2017-08-08 09:26:39Z vboxsync $ */
+/*  $Id: vbox_drv.c 68336 2017-08-08 09:35:32Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -243,7 +243,7 @@ static int vbox_master_set(struct drm_device *dev,
 	return 0;
 }
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 8, 0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 8, 0) && !defined(RHEL_74)
 static void vbox_master_drop(struct drm_device *dev,
 			     struct drm_file *file_priv, bool from_release)
 #else
