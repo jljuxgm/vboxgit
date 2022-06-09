@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DCmn.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDispD3DCmn.h 72010 2018-04-25 10:45:46Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -20,6 +20,7 @@
 
 #include "VBoxDispD3DBase.h"
 
+#include <iprt/asm.h>
 #include <iprt/initterm.h>
 #include <iprt/log.h>
 #include <iprt/mem.h>
