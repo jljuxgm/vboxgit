@@ -1,10 +1,10 @@
-/* $Id: RTLocaleQueryUserCountryCode-win.cpp 68119 2017-07-26 12:21:14Z vboxsync $ */
+/* $Id: RTLocaleQueryUserCountryCode-win.cpp 68121 2017-07-26 13:11:21Z vboxsync $ */
 /** @file
- * IPRT - Log To Debugger, Win32.
+ * IPRT - RTLocaleQueryUserCountryCode, ring-3, Windows.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
