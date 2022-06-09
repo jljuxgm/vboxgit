@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-posix.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxAutostart-posix.cpp 69751 2017-11-19 13:38:19Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service.
  */
@@ -497,15 +497,15 @@ int main(int argc, char *argv[])
         return RTEXITCODE_SUCCESS;
 
     /* create release logger, to stdout */
-    char szError[RTPATH_MAX + 128];
+    RTERRINFOSTATIC ErrInfo;
     rc = com::VBoxLogRelCreate("Autostart", g_fDaemonize ? NULL : pszLogFile,
                                RTLOGFLAGS_PREFIX_THREAD | RTLOGFLAGS_PREFIX_TIME_PROG,
                                "all", "VBOXAUTOSTART_RELEASE_LOG",
                                RTLOGDEST_STDOUT, UINT32_MAX /* cMaxEntriesPerGroup */,
                                g_cHistory, g_uHistoryFileTime, g_uHistoryFileSize,
-                               szError, sizeof(szError));
+                               RTErrInfoInitStatic(&ErrInfo));
     if (RT_FAILURE(rc))
-        return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open release log (%s, %Rrc)", szError, rc);
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open release log (%s, %Rrc)", ErrInfo.Core.pszMsg, rc);
 
 #ifdef VBOXAUTOSTART_DAEMONIZE
     if (g_fDaemonize)
@@ -533,9 +533,9 @@ int main(int argc, char *argv[])
                                    "all", "VBOXAUTOSTART_RELEASE_LOG",
                                    RTLOGDEST_FILE, UINT32_MAX /* cMaxEntriesPerGroup */,
                                    g_cHistory, g_uHistoryFileTime, g_uHistoryFileSize,
-                                   szError, sizeof(szError));
+                                   RTErrInfoInitStatic(&ErrInfo));
         if (RT_FAILURE(rc))
-            return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open release log (%s, %Rrc)", szError, rc);
+            return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open release log (%s, %Rrc)", ErrInfo.Core.pszMsg, rc);
     }
 #endif
 
