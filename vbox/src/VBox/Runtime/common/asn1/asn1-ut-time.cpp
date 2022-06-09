@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-time.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: asn1-ut-time.cpp 70895 2018-02-07 23:14:02Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, UTC TIME and GENERALIZED TIME Types.
  */
@@ -80,10 +80,8 @@ RTDECL(int) RTAsn1Time_CompareWithTimeSpec(PCRTASN1TIME pLeft, PCRTTIMESPEC pTsR
     int iDiff = RTAsn1Time_IsPresent(pLeft) ? 0 : -1;
     if (!iDiff)
     {
-        RTTIMESPEC TsLeft;
-        AssertReturn(RTTimeImplode(&TsLeft, &pLeft->Time), -1);
-
-        iDiff = RTTimeSpecCompare(&TsLeft, pTsRight);
+        RTTIME RightTime;
+        iDiff = RTTimeCompare(&pLeft->Time, RTTimeExplode(&RightTime, pTsRight));
     }
 
     return iDiff;
@@ -171,15 +169,7 @@ RTDECL(int) RTAsn1Time_Compare(PCRTASN1TIME pLeft, PCRTASN1TIME pRight)
     if (RTAsn1Time_IsPresent(pLeft))
     {
         if (RTAsn1Time_IsPresent(pRight))
-        {
-            RTTIMESPEC TsLeft;
-            AssertReturn(RTTimeImplode(&TsLeft, &pLeft->Time), -1);
-
-            RTTIMESPEC TsRight;
-            AssertReturn(RTTimeImplode(&TsRight, &pRight->Time), 1);
-
-            iDiff = RTTimeSpecCompare(&TsLeft, &TsRight);
-        }
+            iDiff = RTTimeCompare(&pLeft->Time, &pRight->Time);
         else
             iDiff = -1;
     }
