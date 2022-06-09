@@ -1,11 +1,11 @@
-# $Id: Makefile 69496 2017-10-28 14:55:58Z vboxsync $
+# $Id: Makefile 69498 2017-10-28 15:07:25Z vboxsync $
 ## @file
 # Makefile for java samples.
 #
 
 
 #
-# Copyright (C) 2008-2017 Oracle Corporation
+# Copyright (C) 2008-2010 Oracle Corporation
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation

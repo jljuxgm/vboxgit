@@ -1,10 +1,10 @@
-# $Id: deftoimp.sed 69496 2017-10-28 14:55:58Z vboxsync $
+# $Id: deftoimp.sed 69498 2017-10-28 15:07:25Z vboxsync $
 ## @file
 # SED script for generating a dummy .c from a windows .def file.
 #
 
 #
-# Copyright (C) 2006-2017 Oracle Corporation
+# Copyright (C) 2006-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

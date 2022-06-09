@@ -1,10 +1,10 @@
-/* $Id: tstTrekStorGo.c 69496 2017-10-28 14:55:58Z vboxsync $ */
+/* $Id: tstTrekStorGo.c 69498 2017-10-28 15:07:25Z vboxsync $ */
 /** @file
  * Some simple inquiry test for the TrekStor USB-Stick GO, linux usbfs
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
