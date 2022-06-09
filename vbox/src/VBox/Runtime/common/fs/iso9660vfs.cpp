@@ -1,4 +1,4 @@
-/* $Id: iso9660vfs.cpp 67774 2017-07-04 12:01:16Z vboxsync $ */
+/* $Id: iso9660vfs.cpp 67849 2017-07-07 12:40:49Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 Virtual Filesystem.
  */
@@ -799,7 +799,7 @@ static DECLCALLBACK(int) rtFsIso9660File_QuerySize(void *pvThis, uint64_t *pcbFi
 
 
 /**
- * FAT file operations.
+ * ISO FS file operations.
  */
 DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtFsIos9660FileOps =
 {
