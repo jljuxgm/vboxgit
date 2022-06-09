@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 72545 2018-06-13 14:24:53Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 72548 2018-06-13 17:09:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -288,6 +288,7 @@ void UIApplianceModelItem::putBack(QVector<BOOL> &finalStates, QVector<QString> 
     for (int i = 0; i < childCount(); ++i)
         childItem(i)->putBack(finalStates, finalValues, finalExtraValues);
 }
+
 
 /*********************************************************************************************************************************
 *   Class UIVirtualSystemItem implementation.                                                                                    *
@@ -969,6 +970,7 @@ KVirtualSystemDescriptionType  UIVirtualHardwareItem::systemDescriptionType() co
     return m_enmVSDType;
 }
 
+
 /*********************************************************************************************************************************
 *   Class UIApplianceModel implementation.                                                                                       *
 *********************************************************************************************************************************/
@@ -1192,6 +1194,7 @@ void UIApplianceModel::setVirtualSystemBaseFolder(const QString& path)
         }
     }
 }
+
 
 /*********************************************************************************************************************************
 *   Class UIApplianceDelegate implementation.                                                                                    *
