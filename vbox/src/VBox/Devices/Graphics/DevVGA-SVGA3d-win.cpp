@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 69965 2017-12-06 23:48:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 71686 2018-04-05 15:03:53Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -5283,6 +5283,7 @@ int vmsvga3dDrawPrimitives(PVGASTATE pThis, uint32_t cid, uint32_t numVertexDecl
 
     LogFunc(("%x numVertexDecls=%d numRanges=%d, cVertexDivisor=%d\n", cid, numVertexDecls, numRanges, cVertexDivisor));
 
+    /* Caller already check these, but it cannot hurt to check again... */
     AssertReturn(numVertexDecls && numVertexDecls <= SVGA3D_MAX_VERTEX_ARRAYS, VERR_INVALID_PARAMETER);
     AssertReturn(numRanges && numRanges <= SVGA3D_MAX_DRAW_PRIMITIVE_RANGES, VERR_INVALID_PARAMETER);
     AssertReturn(!cVertexDivisor || cVertexDivisor == numVertexDecls, VERR_INVALID_PARAMETER);
