@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 72287 2018-05-22 14:28:10Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 72290 2018-05-22 16:30:16Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1662,6 +1662,7 @@ static VBOXSTRICTRC nemR3WinWHvHandleMemoryAccess(PVM pVM, PVMCPU pVCpu, PCPUMCT
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   pCtx            The CPU context to update.
  * @param   pIoPortCtx      The exit reason information.
+ * @param   pVpContext      The processor context info associated with the exit.
  */
 static VBOXSTRICTRC
 nemR3WinWHvHandleIoPortAccess(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, WHV_X64_IO_PORT_ACCESS_CONTEXT const *pIoPortCtx,
