@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 71016 2018-02-14 18:02:21Z vboxsync $ */
+/* $Id: UIGuestControlInterface.cpp 71017 2018-02-14 18:07:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -48,8 +48,9 @@
 #define GCTLCMD_COMMON_OPT_SESSION_NAME     995 /**< The --sessionname option number. */
 #define GCTLCMD_COMMON_OPT_SESSION_ID       994 /**< The --sessionid option number. */
 /** Common option definitions. */
-struct CommandData
+class CommandData
 {
+public:
     QString m_strUserName;
     QString m_strPassword;
     QString m_strExePath;
