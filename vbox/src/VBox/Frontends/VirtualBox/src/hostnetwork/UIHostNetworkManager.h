@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.h 67075 2017-05-25 08:44:38Z vboxsync $ */
+/* $Id: UIHostNetworkManager.h 67122 2017-05-26 16:10:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class declaration.
  */
@@ -37,7 +37,7 @@ class UIToolBar;
 struct UIDataHostNetwork;
 
 
-/** Host Network Manager widget. */
+/** QWidget extension providing GUI with the pane to control host network related functionality. */
 class UIHostNetworkManagerWidget : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
@@ -166,7 +166,7 @@ private:
 };
 
 
-/** Host Network Manager dialog factory. */
+/** QIManagerDialogFactory extension used as a factory for Host Network Manager dialog. */
 class UIHostNetworkManagerFactory : public QIManagerDialogFactory
 {
 protected:
@@ -177,7 +177,7 @@ protected:
 };
 
 
-/** QIManagerDialog sub-class used as Host Network Manager dialog. */
+/** QIManagerDialog extension providing GUI with the dialog to control host network related functionality. */
 class UIHostNetworkManager : public QIWithRetranslateUI<QIManagerDialog>
 {
     Q_OBJECT;
