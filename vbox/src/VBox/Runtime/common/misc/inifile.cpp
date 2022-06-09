@@ -1,4 +1,4 @@
-/* $Id: inifile.cpp 68317 2017-08-07 14:24:08Z vboxsync $ */
+/* $Id: inifile.cpp 69060 2017-10-12 12:53:04Z vboxsync $ */
 /** @file
  * IPRT - INI-file parser.
  */
@@ -243,7 +243,7 @@ static int rtIniFileLoad(PRTINIFILEINT pThis)
     /*
      * Allocation section array and do the preparsing.
      */
-    pThis->paSections = (PRTINIFILESECTION)RTMemAllocZ(sizeof(pThis->paSections) * cSections);
+    pThis->paSections = (PRTINIFILESECTION)RTMemAllocZ(sizeof(pThis->paSections[0]) * cSections);
     if (!pThis->paSections)
         return VERR_NO_MEMORY;
 
