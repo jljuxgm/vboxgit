@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 68513 2017-08-23 10:48:54Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 68514 2017-08-23 10:50:28Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1682,7 +1682,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
             RTPrintf("\n");
 
             RTPrintf("Audio playback:  %s\n", fEnabledIn  ? "enabled" : "disabled");
-            RTPrintf("Audio capturing: %s\n", fEnabledOut ? "enabled" : "disabled");
+            RTPrintf("Audio capture: %s\n", fEnabledOut ? "enabled" : "disabled");
         }
     }
 
