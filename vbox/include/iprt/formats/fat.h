@@ -1,4 +1,4 @@
-/* $Id: fat.h 68687 2017-09-06 18:11:39Z vboxsync $ */
+/* $Id: fat.h 69513 2017-10-28 20:28:13Z vboxsync $ */
 /** @file
  * IPRT, File Allocation Table (FAT).
  */
@@ -315,7 +315,7 @@ AssertCompileSize(FATBPB331FLAT, 0x19);
 /** Pointer to a flattened DOS 3.31 BPB. */
 typedef FATBPB331FLAT *PFATBPB331FLAT;
 /** Pointer to a const flattened DOS 3.31 BPB. */
-typedef FATBPB331FLAT *PFATBPB331FLAT;
+typedef FATBPB331FLAT const *PCFATBPB331FLAT;
 
 
 /**
