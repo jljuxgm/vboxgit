@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68819 2017-09-22 12:37:00Z vboxsync $
+# $Id: Config.kmk 68823 2017-09-22 13:11:04Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -928,7 +928,11 @@ VBOX_WITH_STRICT_LOCKS = 1
 # when multiple VBoxSVC starts for the same user
 # it is enabled for windows build only
 ifeq  ($(KBUILD_TARGET),win)
-  VBOX_WITH_SDS =
+ VBOX_WITH_SDS =
+endif
+## Experimenting with using our own ISO image maker instead of mkisofs.
+if 1
+ VBOX_USE_RTISOMAKER = 1
 endif
 
 
@@ -7026,7 +7030,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68819 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68823 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
