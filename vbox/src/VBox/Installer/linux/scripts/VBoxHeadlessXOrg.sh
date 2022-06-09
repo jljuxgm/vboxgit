@@ -1,7 +1,9 @@
 #!/bin/sh
-# $Id: VBoxHeadlessXOrg.sh 58585 2015-11-05 15:39:41Z vboxsync $
-#
+# $Id: VBoxHeadlessXOrg.sh 69246 2017-10-24 18:56:25Z vboxsync $
+## @file
 # VirtualBox X Server auto-start service.
+#
+
 #
 # Copyright (C) 2012-2015 Oracle Corporation
 #

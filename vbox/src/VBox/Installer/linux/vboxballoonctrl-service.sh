@@ -1,6 +1,9 @@
 #!/bin/sh
-#
+# $Id: vboxballoonctrl-service.sh 69246 2017-10-24 18:56:25Z vboxsync $
+## @file
 # VirtualBox watchdog daemon init script.
+#
+
 #
 # Copyright (C) 2006-2015 Oracle Corporation
 #
