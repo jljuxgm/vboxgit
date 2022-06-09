@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 67990 2017-07-17 12:18:55Z vboxsync $ */
+/* $Id: VMMR0.cpp 67991 2017-07-17 12:29:09Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1491,14 +1491,14 @@ static int vmmR0EntryExWorker(PGVM pGVM, PVM pVM, VMCPUID idCpu, VMMR0OPERATION 
         case VMMR0_DO_GVMM_QUERY_STATISTICS:
             if (u64Arg)
                 return VERR_INVALID_PARAMETER;
-            rc = GVMMR0QueryStatisticsReq(pVM, (PGVMMQUERYSTATISTICSSREQ)pReqHdr, pSession);
+            rc = GVMMR0QueryStatisticsReq(pGVM, pVM, (PGVMMQUERYSTATISTICSSREQ)pReqHdr, pSession);
             VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
             break;
 
         case VMMR0_DO_GVMM_RESET_STATISTICS:
             if (u64Arg)
                 return VERR_INVALID_PARAMETER;
-            rc = GVMMR0ResetStatisticsReq(pVM, (PGVMMRESETSTATISTICSSREQ)pReqHdr, pSession);
+            rc = GVMMR0ResetStatisticsReq(pGVM, pVM, (PGVMMRESETSTATISTICSSREQ)pReqHdr, pSession);
             VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
             break;
 
