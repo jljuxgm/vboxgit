@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 71809 2018-04-10 11:49:53Z vboxsync $ */
+/* $Id: DevACPI.cpp 71811 2018-04-10 16:33:34Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -2545,6 +2545,8 @@ static DECLCALLBACK(int) acpiR3LoadState(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, ui
     }
     if (RT_SUCCESS(rc))
     {
+        AssertLogRelMsgReturn(pThis->u8SMBusBlkIdx < RT_ELEMENTS(au8SMBusBlkDat),
+                              ("%#x\n", pThis->u8SMBusBlkIdx), VERR_SSM_LOAD_CONFIG_MISMATCH);
         rc = acpiR3RegisterPmHandlers(pThis);
         if (RT_FAILURE(rc))
             return rc;
