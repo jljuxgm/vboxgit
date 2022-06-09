@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 68277 2017-08-03 10:18:39Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 68278 2017-08-03 10:50:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -166,18 +166,6 @@ void UISelectorWindow::sltHandleHostScreenAvailableAreaChange()
     move(m_geometry.topLeft());
 }
 #endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
-
-void UISelectorWindow::sltHandleShowTabBarMachine()
-{
-    m_pActionTabBarGlobal->setVisible(false);
-    m_pActionTabBarMachine->setVisible(true);
-}
-
-void UISelectorWindow::sltHandleShowTabBarGlobal()
-{
-    m_pActionTabBarMachine->setVisible(false);
-    m_pActionTabBarGlobal->setVisible(true);
-}
 
 void UISelectorWindow::sltShowSelectorWindowContextMenu(const QPoint &position)
 {
@@ -1107,6 +1095,18 @@ void UISelectorWindow::sltHandleToolsTypeSwitch()
 
     /* Update action visibility: */
     updateActionsVisibility();
+}
+
+void UISelectorWindow::sltHandleShowTabBarMachine()
+{
+    m_pActionTabBarGlobal->setVisible(false);
+    m_pActionTabBarMachine->setVisible(true);
+}
+
+void UISelectorWindow::sltHandleShowTabBarGlobal()
+{
+    m_pActionTabBarMachine->setVisible(false);
+    m_pActionTabBarGlobal->setVisible(true);
 }
 
 void UISelectorWindow::sltHandleToolOpenedMachine(ToolTypeMachine enmType)
