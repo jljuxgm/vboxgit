@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 71685 2018-04-05 13:48:29Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 71702 2018-04-06 11:53:58Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -134,6 +134,8 @@
  *        a few lines (6-10) of \#ifdef'ed code, otherwise they're just clutter.
  *
  *   <li> No 'else' after if block ending with 'return', 'break', or 'continue'.
+ *
+ *   <li> Go through all of this: https://www.slideshare.net/olvemaudal/deep-c/
  *
  * </ul>
  *
