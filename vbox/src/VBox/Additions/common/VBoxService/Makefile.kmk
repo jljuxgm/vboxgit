@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70174 2017-12-15 23:38:40Z vboxsync $
+# $Id: Makefile.kmk 70330 2017-12-22 19:23:06Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -186,6 +186,11 @@ endif
 
 VBoxServiceVMInfo.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
 VBoxServiceVMInfo.cpp_DEPS = $(VBOX_SVN_REV_KMK)
+
+VBoxService_USES.win += vboximportchecker
+VBoxService_VBOX_IMPORT_CHECKER.win.x86 = nt4
+VBoxService_VBOX_IMPORT_CHECKER.win.amd64 = xp64
+
 
 #
 # The icon is configurable.

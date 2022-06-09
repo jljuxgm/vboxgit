@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 70330 2017-12-22 19:23:06Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Additions Command Line Management Interface.
 #
@@ -47,6 +47,9 @@ VBoxControl_SOURCES = \
 VBoxControl_SOURCES.win = \
 	VBoxControl.rc
 VBoxControl_LDFLAGS.darwin = -framework IOKit
+VBoxControl_USES.win += vboximportchecker
+VBoxControl_VBOX_IMPORT_CHECKER.win.x86 = nt350
+VBoxControl_VBOX_IMPORT_CHECKER.win.amd64 = xp64
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
