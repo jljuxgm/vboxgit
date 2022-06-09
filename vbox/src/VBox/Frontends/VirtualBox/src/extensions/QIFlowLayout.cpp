@@ -1,4 +1,4 @@
-/* $Id: QIFlowLayout.cpp 67369 2017-06-13 14:29:47Z vboxsync $ */
+/* $Id: QIFlowLayout.cpp 67371 2017-06-13 14:34:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIFlowLayout class implementation.
  */
@@ -47,7 +47,7 @@ QIFlowLayout::~QIFlowLayout()
 {
     /* Delete all the children: */
     QLayoutItem *pItem = 0;
-    while (pItem = takeAt(0))
+    while ((pItem = takeAt(0)))
         delete pItem;
 }
 
