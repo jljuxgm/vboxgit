@@ -1,10 +1,10 @@
-/* $Id: UIProgressDialog.h 69006 2017-10-06 15:08:33Z vboxsync $ */
+/* $Id: UIProgressDialog.h 71578 2018-03-29 17:32:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class declaration.
  */
 
 /*
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -210,8 +210,9 @@ private:
     bool         m_fEnded;
 
     /** Holds the personal event-loop instance. */
-    QPointer<QEventLoop> m_pEventLoop;
+    QPointer<QEventLoop>  m_pEventLoop;
 };
+
 
 #endif /* !___UIProgressDialog_h___ */
 
