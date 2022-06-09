@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 67616 2017-06-26 17:18:42Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 67617 2017-06-26 17:31:54Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1448,7 +1448,7 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
             if (strInstalledOS.contains("Windows") && productKey.isEmpty())
                 return errorSyntax(USAGE_UNATTENDEDINSTALL, "A product key is required (--key).");
 
-            CHECK_ERROR_BREAK(unAttended, COMSETTER(VboxAdditionsIsoPath)(vboxAdditionsIsoPath.raw()));
+            CHECK_ERROR_BREAK(unAttended, COMSETTER(AdditionsIsoPath)(vboxAdditionsIsoPath.raw()));
 
             CHECK_ERROR_BREAK(unAttended, COMSETTER(IsoPath)(isoPath.raw()));
 
@@ -1530,7 +1530,7 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
          */
         CHECK_ERROR_BREAK(unAttended, COMGETTER(FileWithPreparedData)(fileWithSettings.asOutParam()));
         CHECK_ERROR_BREAK(unAttended, COMGETTER(Group)(group.asOutParam()));
-        CHECK_ERROR_BREAK(unAttended, COMGETTER(VboxAdditionsIsoPath)(vboxAdditionsIsoPath.asOutParam()));
+        CHECK_ERROR_BREAK(unAttended, COMGETTER(AdditionsIsoPath)(vboxAdditionsIsoPath.asOutParam()));
         BOOL fInstallGuestAdditions = FALSE;
         CHECK_ERROR_BREAK(unAttended, COMGETTER(InstallGuestAdditions)(&fInstallGuestAdditions));
         CHECK_ERROR_BREAK(unAttended, COMGETTER(IsoPath)(isoPath.asOutParam()));
