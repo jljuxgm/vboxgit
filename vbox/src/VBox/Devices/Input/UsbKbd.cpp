@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UsbKbd.cpp 71779 2018-04-09 15:27:34Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -991,10 +991,7 @@ static int usbHidHandleDefaultPipe(PUSBHID pThis, PUSBHIDEP pEp, PVUSBURB pUrb)
                             memcpy(&pUrb->abData[sizeof(*pSetup)], &wRet, sizeof(wRet));
                             return usbHidCompleteOk(pThis, pUrb, sizeof(wRet) + sizeof(*pSetup));
                         }
-                        else
-                        {
-                            Log(("usbHid: GET_STATUS (interface) invalid, wIndex=%#x\n", pSetup->wIndex));
-                        }
+                        Log(("usbHid: GET_STATUS (interface) invalid, wIndex=%#x\n", pSetup->wIndex));
                         break;
                     }
 
@@ -1006,10 +1003,7 @@ static int usbHidHandleDefaultPipe(PUSBHID pThis, PUSBHIDEP pEp, PVUSBURB pUrb)
                             memcpy(&pUrb->abData[sizeof(*pSetup)], &wRet, sizeof(wRet));
                             return usbHidCompleteOk(pThis, pUrb, sizeof(wRet) + sizeof(*pSetup));
                         }
-                        else
-                        {
-                            Log(("usbHid: GET_STATUS (endpoint) invalid, wIndex=%#x\n", pSetup->wIndex));
-                        }
+                        Log(("usbHid: GET_STATUS (endpoint) invalid, wIndex=%#x\n", pSetup->wIndex));
                         break;
                     }
 

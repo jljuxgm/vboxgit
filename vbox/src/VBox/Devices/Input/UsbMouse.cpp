@@ -1,4 +1,4 @@
-/* $Id: UsbMouse.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UsbMouse.cpp 71779 2018-04-09 15:27:34Z vboxsync $ */
 /** @file
  * UsbMouse - USB Human Interface Device Emulation (Mouse).
  */
@@ -2085,11 +2085,7 @@ static int usbHidHandleDefaultPipe(PUSBHID pThis, PUSBHIDEP pEp, PVUSBURB pUrb)
                             memcpy(&pUrb->abData[sizeof(*pSetup)], &wRet, sizeof(wRet));
                             return usbHidCompleteOk(pThis, pUrb, sizeof(wRet) + sizeof(*pSetup));
                         }
-                        else
-                        {
-                            LogRelFlow(("usbHid: GET_STATUS (interface) invalid, wIndex=%#x\n",
-                                        pSetup->wIndex));
-                        }
+                        LogRelFlow(("usbHid: GET_STATUS (interface) invalid, wIndex=%#x\n", pSetup->wIndex));
                         break;
                     }
 
@@ -2101,11 +2097,7 @@ static int usbHidHandleDefaultPipe(PUSBHID pThis, PUSBHIDEP pEp, PVUSBURB pUrb)
                             memcpy(&pUrb->abData[sizeof(*pSetup)], &wRet, sizeof(wRet));
                             return usbHidCompleteOk(pThis, pUrb, sizeof(wRet) + sizeof(*pSetup));
                         }
-                        else
-                        {
-                            LogRelFlow(("usbHid: GET_STATUS (endpoint) invalid, wIndex=%#x\n",
-                                        pSetup->wIndex));
-                        }
+                        LogRelFlow(("usbHid: GET_STATUS (endpoint) invalid, wIndex=%#x\n", pSetup->wIndex));
                         break;
                     }
 
