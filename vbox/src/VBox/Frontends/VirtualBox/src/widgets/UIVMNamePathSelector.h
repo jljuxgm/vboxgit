@@ -1,4 +1,4 @@
-/* $Id: UIVMNamePathSelector.h 72182 2018-05-09 20:03:15Z vboxsync $ */
+/* $Id: UIVMNamePathSelector.h 72199 2018-05-14 12:57:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMNamePathSelector class declaration.
  */
@@ -75,6 +75,8 @@ private:
     QIToolButton *m_pFileDialogButton;
     /** Tooltip set is set by clients of this widget. */
     QString       m_strToolTipText;
+    /** Path string whose separators are not converted to native ones. */
+    QString       m_strNonNativePath;
 };
 
 #endif /* !___UIVMNamePathSelector_h___ */

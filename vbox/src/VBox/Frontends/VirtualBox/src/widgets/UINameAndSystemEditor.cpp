@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 72182 2018-05-09 20:03:15Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 72199 2018-05-14 12:57:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -239,6 +239,7 @@ void UINameAndSystemEditor::prepareWidgets()
         if (m_pNamePathSelector)
         {
             m_pNamePathSelector->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+            m_pNamePathSelector->setPath(vboxGlobal().virtualBox().GetSystemProperties().GetDefaultMachineFolder());
             pMainLayout->addWidget(m_pNamePathSelector, 0, 1, 1, 2);
         }
 
@@ -348,7 +349,7 @@ void UINameAndSystemEditor::setNameFieldValidator(const QString &strValidatorStr
     m_pNamePathSelector->setNameFieldValidator(strValidatorString);
 }
 
-void UINameAndSystemEditor::setMachineFilePath(const QString &strPath)
+void UINameAndSystemEditor::setMachineFolder(const QString &strPath)
 {
     if (!m_pNamePathSelector)
         return;
