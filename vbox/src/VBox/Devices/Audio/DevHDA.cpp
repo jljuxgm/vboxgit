@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 70905 2018-02-08 10:30:58Z vboxsync $ */
+/* $Id: DevHDA.cpp 70931 2018-02-09 11:31:42Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -3113,6 +3113,9 @@ static void hdaDoTransfers(PHDASTATE pThis)
     PHDASTREAM pStreamFront   = hdaGetStreamFromSink(pThis, &pThis->SinkFront);
 
     hdaStreamUpdate(pStreamFront,  true /* fInTimer */);
+#ifdef VBOX_WITH_AUDIO_HDA_51_SURROUND
+# error "Implement me!"
+#endif
 #ifdef VBOX_WITH_AUDIO_HDA_MIC_IN
     hdaStreamUpdate(pStreamMicIn,  true /* fInTimer */);
 #endif
