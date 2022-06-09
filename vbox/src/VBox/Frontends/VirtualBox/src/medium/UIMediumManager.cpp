@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 70487 2018-01-08 20:04:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -2467,4 +2467,3 @@ UIMediumManagerWidget *UIMediumManager::widget()
 {
     return qobject_cast<UIMediumManagerWidget*>(QIManagerDialog::widget());
 }
-
