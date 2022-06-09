@@ -1,4 +1,4 @@
-# $Id: Config.kmk 70327 2017-12-22 18:40:11Z vboxsync $
+# $Id: Config.kmk 70328 2017-12-22 18:40:43Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -31,10 +31,7 @@ $(set-umask 022)
 
 # Add our own directories to the search paths.
 KBUILD_TOOL_PATHS = $(KBUILD_DEVTOOLS)/kBuildTools/
-# Add our own directories to the search paths.
 KBUILD_UNIT_PATHS = $(KBUILD_DEVTOOLS)/kBuildUnits/
-$(warning KBUILD_UNIT_PATHS=$(KBUILD_UNIT_PATHS))
-
 
 # Modify the build types.
 KBUILD_BLD_TYPES = release profile debug kprofile
@@ -7116,7 +7113,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70327 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70328 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
