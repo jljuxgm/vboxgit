@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 70993 2018-02-13 11:11:31Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 71113 2018-02-23 09:51:14Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1049,6 +1049,28 @@ uint32_t DrvAudioHlpCalcBitrate(uint8_t cBits, uint32_t uHz, uint8_t cChannels)
 uint32_t DrvAudioHlpCalcBitrate(const PPDMAUDIOPCMPROPS pProps)
 {
     return DrvAudioHlpCalcBitrate(pProps->cBits, pProps->uHz, pProps->cChannels);
+}
+
+/**
+ * Returns the time (in ms) for given byte amount and PCM properties.
+ *
+ * @return  uint64_t            Calculated time (in ms).
+ * @param   pProps              PCM properties to calculate amount of bytes for.
+ * @param   cbBytes             Amount of bytes to calculate time for.
+ */
+uint64_t DrvAudioHlpBytesToMs(const PPDMAUDIOPCMPROPS pProps, size_t cbBytes)
+{
+    AssertPtrReturn(pProps, 0);
+
+    if (!cbBytes)
+        return 0;
+
+    const float dbBytesPerMs = ((pProps->cBits / 8) * pProps->cChannels * pProps->uHz) / 1000;
+    Assert(dbBytesPerMs >= 0.0f);
+    if (!dbBytesPerMs) /* Prevent division by zero. */
+        return 0;
+
+    return cbBytes / dbBytesPerMs;
 }
 
 /**
