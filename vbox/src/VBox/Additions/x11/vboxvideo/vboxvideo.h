@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.h 69079 2017-10-13 15:27:12Z vboxsync $ */
+/* $Id: vboxvideo.h 69080 2017-10-13 15:40:38Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver
  */
@@ -78,17 +78,6 @@ do { \
 #define TRACE_LOG(...)        do { } while (0)
 
 #endif  /* !DEBUG */
-
-/* Not just for debug builds.  If something is wrong we want to know at once. */
-#define VBVXASSERT(expr, out) \
-if (!(expr)) \
-{ \
-    xf86ErrorF("\nAssertion failed!\n\n"); \
-    xf86ErrorF("%s\n", #expr); \
-    xf86ErrorF("at %s (%s:%d)\n", __func__, __FILE__, __LINE__); \
-    xf86ErrorF out; \
-    FatalError("Assertion"); \
-}
 
 #define VBOX_VERSION            VBOX_VERSION_MAJOR * 10000 \
                               + VBOX_VERSION_MINOR * 100
