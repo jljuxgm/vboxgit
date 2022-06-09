@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 70157 2017-12-15 16:18:28Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 70212 2017-12-19 02:54:28Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -81,11 +81,16 @@ extern PFNKEQUERYACTIVEPROCESSORCOUNTEX        g_pfnrtKeQueryActiveProcessorCoun
 extern PFNKEQUERYLOGICALPROCESSORRELATIONSHIP  g_pfnrtKeQueryLogicalProcessorRelationship;
 extern PFNKEREGISTERPROCESSORCHANGECALLBACK    g_pfnrtKeRegisterProcessorChangeCallback;
 extern PFNKEDEREGISTERPROCESSORCHANGECALLBACK  g_pfnrtKeDeregisterProcessorChangeCallback;
+extern decltype(KeSetImportanceDpc)           *g_pfnrtKeSetImportanceDpc;
+extern decltype(KeSetTargetProcessorDpc)      *g_pfnrtKeSetTargetProcessorDpc;
 extern decltype(MmProtectMdlSystemAddress)    *g_pfnrtMmProtectMdlSystemAddress;
 extern decltype(MmAllocatePagesForMdl)        *g_pfnrtMmAllocatePagesForMdl;
 extern decltype(MmFreePagesFromMdl)           *g_pfnrtMmFreePagesFromMdl;
 extern decltype(MmMapLockedPagesSpecifyCache) *g_pfnrtMmMapLockedPagesSpecifyCache;
 extern decltype(MmAllocateContiguousMemorySpecifyCache) *g_pfnrtMmAllocateContiguousMemorySpecifyCache;
+extern decltype(MmSecureVirtualMemory)        *g_pfnrtMmSecureVirtualMemory;
+extern decltype(MmUnsecureVirtualMemory)      *g_pfnrtMmUnsecureVirtualMemory;
+
 extern PFNRTRTLGETVERSION                      g_pfnrtRtlGetVersion;
 #ifndef RT_ARCH_AMD64
 extern PFNRTKEQUERYINTERRUPTTIME               g_pfnrtKeQueryInterruptTime;
@@ -110,6 +115,7 @@ extern uintptr_t const                        *g_puRtMmHighestUserAddress;
 extern uintptr_t const                        *g_puRtMmSystemRangeStart;
 
 
+int __stdcall rtMpPokeCpuUsingFailureNotSupported(RTCPUID idCpu);
 int __stdcall rtMpPokeCpuUsingDpc(RTCPUID idCpu);
 int __stdcall rtMpPokeCpuUsingBroadcastIpi(RTCPUID idCpu);
 int __stdcall rtMpPokeCpuUsingHalReqestIpiW7Plus(RTCPUID idCpu);
