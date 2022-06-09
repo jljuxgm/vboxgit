@@ -1,4 +1,4 @@
-/* $Id: nt.h 70197 2017-12-18 13:40:58Z vboxsync $ */
+/* $Id: nt.h 70334 2017-12-24 14:36:37Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2031,6 +2031,7 @@ NTSYSAPI NTSTATUS NTAPI NtSuspendThread(HANDLE, PULONG);
 NTSYSAPI NTSTATUS NTAPI NtTerminateThread(HANDLE, LONG);
 NTSYSAPI NTSTATUS NTAPI NtGetContextThread(HANDLE, PCONTEXT);
 NTSYSAPI NTSTATUS NTAPI NtSetContextThread(HANDLE, PCONTEXT);
+NTSYSAPI NTSTATUS NTAPI ZwYieldExecution(void);
 
 
 #ifndef SEC_FILE
