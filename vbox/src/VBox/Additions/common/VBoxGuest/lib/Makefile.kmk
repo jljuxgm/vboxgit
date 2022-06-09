@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68641 2017-09-05 13:51:06Z vboxsync $
+# $Id: Makefile.kmk 68642 2017-09-05 13:53:41Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -24,7 +24,7 @@
 # terms and conditions of either the GPL or the CDDL or both.
 #
 
-SUB_DEPTH = ../../../../..
+SUB_DEPTH = ../../../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 #

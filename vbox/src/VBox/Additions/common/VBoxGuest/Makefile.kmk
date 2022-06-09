@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68581 2017-08-31 12:11:13Z vboxsync $
+# $Id: Makefile.kmk 68642 2017-09-05 13:53:41Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -17,6 +17,9 @@
 
 SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
+
+# Include sub-makefile.
+include $(PATH_SUB_CURRENT)/lib/Makefile.kmk
 
 
 if1of ($(KBUILD_TARGET), darwin freebsd haiku netbsd os2 solaris win)
