@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 67314 2017-06-09 10:06:59Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -64,6 +64,40 @@ VBGLR3DECL(int) VbglR3SetGuestCaps(uint32_t fOr, uint32_t fNot)
     Info.u32NotMask = fNot;
     return vbglR3DoIOCtl(VBOXGUEST_IOCTL_SET_GUEST_CAPABILITIES, &Info,
                          sizeof(Info));
+}
+
+
+/**
+ * Acquire capabilities to report to the host.  The capabilities which can be
+ * acquired are the same as those reported by @a VbglR3SetGuestCaps, and once
+ * a capability has been acquired once is is switched to "acquire mode" and can
+ * no longer be set using @a VbglR3SetGuestCaps.  Capabilities can also be
+ * switched to acquire mode without actually being acquired.  A client can not
+ * acquire a capability which has been acquired and not released by another
+ * client.  Capabilities acquired are automatically released on session
+ * termination.
+ *
+ * @returns IPRT status code
+ * @returns VERR_RESOURCE_BUSY and acquires nothing if another client has
+ *          acquired and not released at least one of the @a fOr capabilities
+ * @param   fOr      Capabilities to acquire or to switch to acquire mode
+ * @param   fNot     Capabilities to release
+ * @param   fConfig  if set, capabilities in @a fOr are switched to acquire mode
+ *                   but not acquired, and @a fNot is ignored.
+ */
+VBGLR3DECL(int) VbglR3AcquireGuestCaps(uint32_t fOr, uint32_t fNot, bool fConfig)
+{
+    VBoxGuestCapsAquire Info;
+    int rc;
+
+    Info.u32OrMask = fOr;
+    Info.u32NotMask = fNot;
+    Info.enmFlags = fConfig ? VBOXGUESTCAPSACQUIRE_FLAGS_CONFIG_ACQUIRE_MODE
+                            : VBOXGUESTCAPSACQUIRE_FLAGS_NONE;
+    rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_GUEST_CAPS_ACQUIRE, &Info, sizeof(Info));
+    if (RT_FAILURE(rc))
+        return rc;
+    return Info.rc;
 }
 
 
