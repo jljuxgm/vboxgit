@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 70453 2018-01-03 18:12:38Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 70552 2018-01-12 12:12:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -350,12 +350,10 @@ void UIGChooserModel::removeFromCurrentItems(UIGChooserItem *pItem)
     setCurrentItems(list);
 }
 
-UIGChooserItem* UIGChooserModel::findClosestUnselectedItem() const
+UIGChooserItem *UIGChooserModel::findClosestUnselectedItem() const
 {
-    /*
-     * Take the focus item (if any) as a starting point and find
-     * the closest non-selected item.
-     */
+    /* Take the focus item (if any) as a starting point
+     * and find the closest non-selected item. */
     UIGChooserItem *pItem = focusItem();
     if (!pItem)
         pItem = currentItem();
@@ -370,14 +368,14 @@ UIGChooserItem* UIGChooserModel::findClosestUnselectedItem() const
                 pItem = navigationList().at(idxBefore);
                 if (!currentItems().contains(pItem))
                     return pItem;
-                idxBefore--;
+                --idxBefore;
             }
             if (idxAfter < navigationList().size())
             {
                 pItem = navigationList().at(idxAfter);
                 if (!currentItems().contains(pItem))
                     return pItem;
-                idxAfter++;
+                ++idxAfter;
             }
         }
     }
