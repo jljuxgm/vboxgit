@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 70719 2018-01-24 04:21:52Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 70790 2018-01-29 12:31:54Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1845,7 +1845,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                                  || (videoChannel == "1");
             Bstr videoChannelQuality;
             vrdeServer->GetVRDEProperty(Bstr("VideoChannel/Quality").raw(), videoChannelQuality.asOutParam());
-            AuthType_T authType;
+            AuthType_T authType = (AuthType_T)0;
             const char *strAuthType;
             vrdeServer->COMGETTER(AuthType)(&authType);
             switch (authType)
