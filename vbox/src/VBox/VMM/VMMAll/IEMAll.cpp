@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72498 2018-06-10 17:34:11Z vboxsync $ */
+/* $Id: IEMAll.cpp 72504 2018-06-11 11:40:26Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -12631,36 +12631,6 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PVMCPU pVCpu, uint16_t uSel)
         else \
             return IEMOP_RAISE_INVALID_OPCODE(); \
     } while (0)
-
-
-#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
-/** Check and handles SVM nested-guest instruction intercept and updates
- *  NRIP if needed. */
-# define IEMOP_HLP_SVM_INSTR_INTERCEPT_AND_NRIP(a_pVCpu, a_Intercept, a_uExitCode, a_uExitInfo1, a_uExitInfo2) \
-    do \
-    { \
-        if (IEM_IS_SVM_CTRL_INTERCEPT_SET(a_pVCpu, a_Intercept)) \
-        { \
-            IEM_SVM_UPDATE_NRIP(a_pVCpu); \
-            IEM_RETURN_SVM_VMEXIT(a_pVCpu, a_uExitCode, a_uExitInfo1, a_uExitInfo2); \
-        } \
-    } while (0)
-
-/** Check and handle SVM nested-guest CR0 read intercept. */
-# define IEMOP_HLP_SVM_READ_CR_INTERCEPT(a_pVCpu, a_uCr, a_uExitInfo1, a_uExitInfo2) \
-    do \
-    { \
-        if (IEM_IS_SVM_READ_CR_INTERCEPT_SET(a_pVCpu, a_uCr)) \
-        { \
-            IEM_SVM_UPDATE_NRIP(a_pVCpu); \
-            IEM_RETURN_SVM_VMEXIT(a_pVCpu, SVM_EXIT_READ_CR0 + (a_uCr), a_uExitInfo1, a_uExitInfo2); \
-        } \
-    } while (0)
-
-#else  /* !VBOX_WITH_NESTED_HWVIRT_SVM */
-# define IEMOP_HLP_SVM_INSTR_INTERCEPT_AND_NRIP(a_pVCpu, a_Intercept, a_uExitCode, a_uExitInfo1, a_uExitInfo2)  do { } while (0)
-# define IEMOP_HLP_SVM_READ_CR_INTERCEPT(a_pVCpu, a_uCr, a_uExitInfo1, a_uExitInfo2)                            do { } while (0)
-#endif /* !VBOX_WITH_NESTED_HWVIRT_SVM */
 
 
 /**
