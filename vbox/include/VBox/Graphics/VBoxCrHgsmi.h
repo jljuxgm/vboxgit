@@ -1,3 +1,4 @@
+/* $Id: VBoxCrHgsmi.h 69015 2017-10-09 12:50:34Z vboxsync $ */
 /** @file
  * Document me, pretty please.
  */

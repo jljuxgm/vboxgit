@@ -1,3 +1,4 @@
+/* $Id: VBoxVideoVBE.h 69015 2017-10-09 12:50:34Z vboxsync $ */
 /** @file
  * VirtualBox graphics card port I/O definitions
  */

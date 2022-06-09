@@ -1,3 +1,4 @@
+/* $Id: HGSMI.h 69015 2017-10-09 12:50:34Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Host/Guest shared part.
  */

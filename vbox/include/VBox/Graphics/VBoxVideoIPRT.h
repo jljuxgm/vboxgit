@@ -1,3 +1,4 @@
+/* $Id: VBoxVideoIPRT.h 69015 2017-10-09 12:50:34Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - iprt and VirtualBox macros and definitions.
  */
