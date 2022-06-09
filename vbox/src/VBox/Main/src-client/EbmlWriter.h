@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.h 67914 2017-07-11 20:46:37Z vboxsync $ */
+/* $Id: EbmlWriter.h 68332 2017-08-08 08:38:07Z vboxsync $ */
 /** @file
  * EbmlWriter.h - EBML writer + WebM container.
  */
@@ -30,6 +30,10 @@
 #endif /* VBOX_WITH_LIBVPX */
 
 #include <iprt/file.h>
+
+#include <VBox/com/string.h> /* For Utf8Str. */
+
+using namespace com;
 
 class WebMWriter_Impl;
 
@@ -120,6 +124,13 @@ public:
      * @returns VBox status code.
      */
     int WriteBlock(uint8_t uTrack, const void *pvData, size_t cbData);
+
+    /**
+     * Gets file name.
+     *
+     * @returns File name as UTF-8 string.
+     */
+    const Utf8Str& GetFileName(void);
 
     /**
      * Gets current output file size.
