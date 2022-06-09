@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 67068 2017-05-24 17:47:44Z vboxsync $
+# $Id: Makefile.kmk 67144 2017-05-30 14:47:41Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -531,6 +531,7 @@ VirtualBox_QT_MOCHDRS.darwin += \
 
 # Sources containing local definitions of classes that use the Q_OBJECT macro.
 VirtualBox_QT_MOCSRCS = \
+	src/VBoxSnapshotDetailsDlg.cpp \
 	src/UIVMLogViewer.cpp \
 	src/extensions/QIArrowSplitter.cpp \
 	src/extensions/QISplitter.cpp \
