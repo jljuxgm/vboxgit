@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.cpp 72288 2018-05-22 14:29:53Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.cpp 72554 2018-06-14 16:32:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class implementation.
  */
@@ -125,7 +125,6 @@ UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalN
         pMainLayout->addWidget(m_pCloneModeCnt, 1, 1, Qt::AlignTop);
         pMainLayout->addWidget(m_pReinitMACsCheckBox, 2, 0, 1, 2);
         pMainLayout->setRowStretch(3, 1);
-        sltButtonClicked(m_pFullCloneRadio);
     }
 
     /* Setup connections: */
@@ -137,8 +136,8 @@ UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalN
             this, &UIWizardCloneVMPageExpert::sltNameChanged);
     connect(m_pPathSelector, &UIFilePathSelector::pathChanged,
             this, &UIWizardCloneVMPageExpert::sltPathChanged);
-    connect(m_pButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked),
-            this, &UIWizardCloneVMPageExpert::sltButtonClicked);
+    connect(m_pButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton*, bool)>(&QButtonGroup::buttonToggled),
+            this, &UIWizardCloneVMPageExpert::sltButtonToggled);
 
     /* Register classes: */
     qRegisterMetaType<KCloneMode>();
@@ -151,10 +150,17 @@ UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalN
     composeCloneFilePath();
 }
 
-void UIWizardCloneVMPageExpert::sltButtonClicked(QAbstractButton *pButton)
+void UIWizardCloneVMPageExpert::sltButtonToggled(QAbstractButton *pButton, bool fChecked)
 {
-    /* Enabled/disable mode container: */
-    m_pCloneModeCnt->setEnabled(pButton == m_pFullCloneRadio);
+    if (pButton == m_pLinkedCloneRadio && fChecked)
+    {
+        m_pCloneModeCnt->setEnabled(false);
+        m_pMachineRadio->setChecked(true);
+    }
+    else
+    {
+        m_pCloneModeCnt->setEnabled(true);
+    }
 }
 
 void UIWizardCloneVMPageExpert::retranslateUi()

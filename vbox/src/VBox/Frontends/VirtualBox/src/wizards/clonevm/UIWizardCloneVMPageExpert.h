@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.h 72215 2018-05-15 14:20:58Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.h 72554 2018-06-14 16:32:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class declaration.
  */
@@ -47,8 +47,8 @@ public:
 
 private slots:
 
-    /* Button click handler: */
-    void sltButtonClicked(QAbstractButton *pButton);
+    /* Button toggle handler: */
+    void sltButtonToggled(QAbstractButton *pButton, bool fChecked);
     void sltNameChanged();
     void sltPathChanged();
 
