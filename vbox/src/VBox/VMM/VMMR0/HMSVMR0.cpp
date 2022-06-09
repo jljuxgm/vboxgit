@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 71692 2018-04-06 07:26:02Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 71697 2018-04-06 10:01:26Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4351,7 +4351,7 @@ static void hmR0SvmPreRunGuestCommittedNested(PVM pVM, PVMCPU pVCpu, PCPUMCTX pC
         pSvmTransient->fWasGuestDebugStateActive = CPUMIsGuestDebugStateActive(pVCpu);
         pSvmTransient->fWasHyperDebugStateActive = CPUMIsHyperDebugStateActive(pVCpu);
     }
-    pSvmTransient->fWasGuestFPUStateActive = CPUMIsGuestFPUStateActive(pVCpu);
+    pSvmTransient->fWasGuestFPUStateActive = true;
 
     /* Merge the guest and nested-guest MSRPM. */
     hmR0SvmMergeMsrpm(pHostCpu, pVCpu, pCtx);
