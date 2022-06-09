@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68845 2017-09-24 16:29:54Z vboxsync $
+# $Id: Makefile.kmk 69020 2017-10-09 19:21:02Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (linux kernel OpenGL module).
 #
@@ -23,7 +23,9 @@ include $(KBUILD_PATH)/subheader.kmk
 #
 INSTALLS += vboxvideo-mod
 include $(PATH_SUB_CURRENT)/files_vboxvideo_drv
-vboxvideo-mod_DEPS         = $(PATH_ROOT)/src/VBox/Additions/linux/drm/indent.sed
+vboxvideo-mod_DEPS         = \
+	$(PATH_ROOT)/src/VBox/Additions/linux/drm/files_vboxvideo_drv \
+	$(PATH_ROOT)/src/VBox/Additions/linux/drm/indent.sed
 vboxvideo-mod_INST         = $(INST_ADDITIONS)src/vboxvideo/
 vboxvideo-mod_SOURCES      = \
 	$(subst $(DQUOTE),,$(FILES_VBOXVIDEO_DRM_NOBIN))
