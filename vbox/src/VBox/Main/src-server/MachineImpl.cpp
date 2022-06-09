@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 72205 2018-05-14 18:37:50Z vboxsync $ */
+/* $Id: MachineImpl.cpp 72323 2018-05-24 15:57:38Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7806,7 +7806,11 @@ HRESULT Machine::i_launchVMProcess(IInternalSessionControl *aControl,
         AssertReturn(cchBufLeft > strAppPath.length(), E_UNEXPECTED);
         strcpy(pszNamePart, strAppPath.c_str());
 # else
+#  ifndef VBOX_GUI_WITH_SHARED_LIBRARY
         static const char s_szVirtualBox_exe[] = "VirtualBox" HOSTSUFF_EXE;
+#  else
+        static const char s_szVirtualBox_exe[] = "VirtualBoxVM" HOSTSUFF_EXE;
+#  endif
         Assert(cchBufLeft >= sizeof(s_szVirtualBox_exe));
         strcpy(pszNamePart, s_szVirtualBox_exe);
 # endif

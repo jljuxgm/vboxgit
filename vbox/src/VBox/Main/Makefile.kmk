@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 71718 2018-04-06 18:21:05Z vboxsync $
+# $Id: Makefile.kmk 72323 2018-05-24 15:57:38Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -340,6 +340,7 @@ VBoxSVC_DEFS = \
 	$(if $(VBOX_WITH_VBOXSDL),VBOX_WITH_VBOXSDL,) \
 	$(if $(VBOX_WITH_HEADLESS),VBOX_WITH_HEADLESS,) \
 	$(if $(VBOX_WITH_QTGUI),VBOX_WITH_QTGUI,) \
+	$(if $(VBOX_GUI_WITH_SHARED_LIBRARY),VBOX_GUI_WITH_SHARED_LIBRARY,) \
 	$(if $(VBOX_WITH_HGCM),VBOX_WITH_HGCM,) \
 	$(if $(VBOX_WITH_AUDIO_OSS),VBOX_WITH_AUDIO_OSS,) \
 	$(if $(VBOX_WITH_AUDIO_ALSA),VBOX_WITH_AUDIO_ALSA,) \
