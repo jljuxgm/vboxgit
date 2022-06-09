@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 68418 2017-08-15 14:11:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -1417,7 +1417,7 @@ void UIApplianceEditorWidget::restoreDefaults()
 void UIApplianceEditorWidget::retranslateUi()
 {
     /* Translate information pane tree-view: */
-    m_pTreeViewSettings->setWhatsThis(tr("Lists all the Virtual Systems current Appliance have"));
+    m_pTreeViewSettings->setWhatsThis(tr("Detailed list of all components of all virtual machines of the current appliance"));
 
     /* Translate information pane check-box: */
     m_pCheckBoxReinitMACs->setText(tr("&Reinitialize the MAC address of all network cards"));

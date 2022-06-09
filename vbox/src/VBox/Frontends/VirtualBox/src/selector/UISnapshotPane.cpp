@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 68418 2017-08-15 14:11:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -508,7 +508,7 @@ const QIcon *UISnapshotPane::snapshotItemIcon(bool fOnline) const
 void UISnapshotPane::retranslateUi()
 {
     /* Translate snapshot tree: */
-    m_pSnapshotTree->setWhatsThis(tr("Contains snapshot tree of current virtual machine"));
+    m_pSnapshotTree->setWhatsThis(tr("Contains the snapshot tree of the current virtual machine"));
 
     /* Translate actions names: */
     m_pActionTakeSnapshot->setText(tr("&Take..."));

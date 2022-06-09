@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 68073 2017-07-20 17:01:42Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 68418 2017-08-15 14:11:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -427,13 +427,13 @@ void UIWizardExportAppPageBasic3::refreshCurrentSettings()
         case Filesystem:
         {
             m_pLabel->setText(tr("<p>Please choose a filename to export the virtual appliance to.</p>"
-                                 "<p><b>Open Virtualization Format</b> supports only "
+                                 "<p>The <b>Open Virtualization Format</b> supports only "
                                  "<b>ovf</b> or <b>ova</b> extensions. "
-                                 "<br>If you use an <b>ovf</b> extension, "
+                                 "<br>If you use the <b>ovf</b> extension, "
                                  "several files will be written separately."
-                                 "<br>If you use an <b>ova</b> extension, "
+                                 "<br>If you use the <b>ova</b> extension, "
                                  "all the files will be combined into one Open Virtualization Format archive.</p>"
-                                 "<p><b>Oracle Public Cloud Format</b> supports only <b>tar.gz</b> extension."
+                                 "<p>The <b>Oracle Public Cloud Format</b> supports only the <b>tar.gz</b> extension."
                                  "<br>Each virtual disk file will be written separately.</p>"));
             m_pFileSelector->setFocus();
             break;
