@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 68540 2017-08-29 14:22:33Z vboxsync $ */
+/* $Id: UIPopupPane.cpp 68807 2017-09-21 09:07:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPane class implementation.
  */
@@ -132,7 +132,7 @@ void UIPopupPane::layoutContent()
         m_pDetailsPane->move(m_iLayoutMargin,
                              iTextPaneYOffset + iTextPaneHeight + m_iLayoutSpacing);
         m_pDetailsPane->resize(iTextPaneWidth + iButtonPaneMinimumWidth,
-                               m_pDetailsPane->minimumSizeHint().height() -  m_iLayoutMargin);
+                               m_pDetailsPane->minimumSizeHint().height());
         m_pDetailsPane->layoutContent();
     }
 }
@@ -195,6 +195,7 @@ void UIPopupPane::sltUpdateSizeHint()
     {
         /* Take into account layout: */
         iMinimumHeightHint += 2 * m_iLayoutMargin;
+        iMinimumHeightHint += m_iLayoutSpacing;
         {
             /* Take into account widgets: */
             const int iTextPaneHeight = m_pMessagePane->minimumSizeHint().height();

@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneDetails.h 68540 2017-08-29 14:22:33Z vboxsync $ */
+/* $Id: UIPopupPaneDetails.h 68807 2017-09-21 09:07:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneDetails class declaration.
  */
@@ -95,7 +95,9 @@ private:
     QString m_strText;
     QTextEdit *m_pTextEdit;
     int m_iDesiredTextEditWidth;
-    int m_iDesiredTextEditHeight;
+    int m_iMaximumPaneHeight;
+    int m_iMaximumTextEditHeight;
+    int m_iTextContentMargin;
 
     /* Variables: Focus stuff: */
     bool m_fFocused;
