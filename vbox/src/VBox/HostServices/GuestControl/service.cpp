@@ -1,4 +1,4 @@
-/* $Id: service.cpp 71328 2018-03-14 14:31:47Z vboxsync $ */
+/* $Id: service.cpp 71331 2018-03-14 14:51:28Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -1294,7 +1294,7 @@ int Service::clientMsgSkip(uint32_t u32ClientID, VBOXHGCMCALLHANDLE callHandle,
             VBOXHGCMSVCPARM aHstParms[4];
             aHstParms[cHstParms++].setUInt32(pCurCmd->mContextID);
             aHstParms[cHstParms++].setUInt32(0); /* Notification type (None / generic). */
-            aHstParms[cHstParms++].setUInt32(VERR_NOT_SUPPORTED);
+            aHstParms[cHstParms++].setUInt32((uint32_t)VERR_NOT_SUPPORTED); /** @todo int vs. uint32_t! */
             aHstParms[cHstParms++].setPointer(NULL, 0); /* Payload (none). */
 
             itClientState->second.DequeueCurrent();
