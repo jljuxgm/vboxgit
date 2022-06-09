@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69964 2017-12-06 21:31:47Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69974 2017-12-07 11:39:19Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5015,7 +5015,7 @@ static int hmR0SvmHandleExitNested(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
 
         default:
         {
-            switch (pSvmTransient->u64ExitCode)
+            switch (uExitCode)
             {
                 case SVM_EXIT_READ_DR0:     case SVM_EXIT_READ_DR1:     case SVM_EXIT_READ_DR2:     case SVM_EXIT_READ_DR3:
                 case SVM_EXIT_READ_DR6:     case SVM_EXIT_READ_DR7:     case SVM_EXIT_READ_DR8:     case SVM_EXIT_READ_DR9:
@@ -5166,7 +5166,7 @@ static int hmR0SvmHandleExitNested(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
                 case SVM_EXIT_NPF:
                 {
                     /* We don't yet support nested-paging for nested-guests, so this should never really happen. */
-                    Assert(!pVmcbNstGstCtrl->NestedPaging.n.u1NestedPaging);
+                    Assert(pVmcbNstGstCtrl->NestedPaging.n.u1NestedPaging);
                     return hmR0SvmExitUnexpected(pVCpu, pCtx, pSvmTransient);
                 }
 
