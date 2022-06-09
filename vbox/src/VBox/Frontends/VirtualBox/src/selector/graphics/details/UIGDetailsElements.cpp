@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 68394 2017-08-11 13:14:04Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 68435 2017-08-17 08:59:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement[Name] classes implementation.
  */
@@ -33,7 +33,7 @@
 # include "UIIconPool.h"
 # include "UIConverter.h"
 # include "UIGraphicsTextPane.h"
-# include "UIMessageCenter.h"
+# include "UIErrorString.h"
 
 /* COM includes: */
 # include "COMEnums.h"
@@ -513,7 +513,7 @@ void UIGDetailsUpdateTaskStorage::run()
                 StorageSlot attachmentSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice());
                 AssertMsg(controller.isOk(),
                           ("Unable to acquire controller data: %s\n",
-                           msgCenter().formatRC(controller.lastRC()).toUtf8().constData()));
+                           UIErrorString::formatRC(controller.lastRC()).toUtf8().constData()));
                 if (!controller.isOk())
                     continue;
                 /* Prepare attachment information: */

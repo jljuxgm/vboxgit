@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 66626 2017-04-20 11:57:56Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.cpp 68435 2017-08-17 08:59:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class implementation.
  */
@@ -22,7 +22,7 @@
 /* GUI includes: */
 # include "UIConverter.h"
 # include "UIMachineSettingsAudio.h"
-# include "UIMessageCenter.h"
+# include "UIErrorString.h"
 
 /* COM includes: */
 # include "CAudioAdapter.h"
@@ -272,7 +272,7 @@ bool UIMachineSettingsAudio::saveAudioData()
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            notifyOperationProgressError(UIMessageCenter::formatErrorInfo(m_machine));
+            notifyOperationProgressError(UIErrorString::formatErrorInfo(m_machine));
         else
         {
             /* Save whether audio is enabled: */
@@ -296,7 +296,7 @@ bool UIMachineSettingsAudio::saveAudioData()
 
             /* Show error message if necessary: */
             if (!fSuccess)
-                notifyOperationProgressError(UIMessageCenter::formatErrorInfo(comAdapter));
+                notifyOperationProgressError(UIErrorString::formatErrorInfo(comAdapter));
         }
     }
     /* Return result: */

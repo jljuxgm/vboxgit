@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 66626 2017-04-20 11:57:56Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 68435 2017-08-17 08:59:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -27,7 +27,7 @@
 # include "UIConverter.h"
 # include "UIIconPool.h"
 # include "UIMachineSettingsSystem.h"
-# include "UIMessageCenter.h"
+# include "UIErrorString.h"
 # include "VBoxGlobal.h"
 
 /* COM includes: */
@@ -1138,7 +1138,7 @@ bool UIMachineSettingsSystem::saveMotherboardData()
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            notifyOperationProgressError(UIMessageCenter::formatErrorInfo(m_machine));
+            notifyOperationProgressError(UIErrorString::formatErrorInfo(m_machine));
     }
     /* Return result: */
     return fSuccess;
@@ -1177,7 +1177,7 @@ bool UIMachineSettingsSystem::saveProcessorData()
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            notifyOperationProgressError(UIMessageCenter::formatErrorInfo(m_machine));
+            notifyOperationProgressError(UIErrorString::formatErrorInfo(m_machine));
     }
     /* Return result: */
     return fSuccess;
@@ -1216,7 +1216,7 @@ bool UIMachineSettingsSystem::saveAccelerationData()
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            notifyOperationProgressError(UIMessageCenter::formatErrorInfo(m_machine));
+            notifyOperationProgressError(UIErrorString::formatErrorInfo(m_machine));
     }
     /* Return result: */
     return fSuccess;

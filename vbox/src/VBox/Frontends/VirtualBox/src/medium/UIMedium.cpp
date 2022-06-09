@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 68045 2017-07-19 12:19:01Z vboxsync $ */
+/* $Id: UIMedium.cpp 68435 2017-08-17 08:59:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -24,7 +24,7 @@
 # include "UIMedium.h"
 # include "VBoxGlobal.h"
 # include "UIConverter.h"
-# include "UIMessageCenter.h"
+# include "UIErrorString.h"
 # include "UIExtraDataManager.h"
 # include "UIIconPool.h"
 /* COM includes: */
@@ -410,7 +410,7 @@ void UIMedium::refresh()
                 {
                     /* Accessibility check (eg GetState()) itself failed: */
                     m_strToolTip += m_sstrRow.arg("<hr>") + m_sstrRow.arg(VBoxGlobal::tr("Failed to check accessibility of disk image files.", "medium")) +
-                                    m_sstrRow.arg(UIMessageCenter::formatErrorInfo(m_result) + ".");
+                                    m_sstrRow.arg(UIErrorString::formatErrorInfo(m_result) + ".");
                 }
                 break;
             }
