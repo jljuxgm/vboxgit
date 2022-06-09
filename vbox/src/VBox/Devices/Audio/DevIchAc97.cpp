@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 68713 2017-09-11 10:16:17Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 68719 2017-09-12 09:48:11Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2150,7 +2150,9 @@ static int ichac97TimerStop(PAC97STATE pThis)
 
         pThis->fTimerActive = false;
 
-        TMTimerStop(pThis->pTimer);
+        /* Note: Do not stop the timer via TMTimerStop() here, as there still might
+         *       be queued audio data which needs to be handled (e.g. played back) first
+         *       before actually stopping the timer for good. */
     }
 
     DEVAC97_UNLOCK_BOTH(pThis);

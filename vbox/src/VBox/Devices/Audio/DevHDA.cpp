@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 68711 2017-09-11 10:02:31Z vboxsync $ */
+/* $Id: DevHDA.cpp 68719 2017-09-12 09:48:11Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -2560,7 +2560,9 @@ static int hdaTimerStop(PHDASTATE pThis)
 
         pThis->fTimerActive = false;
 
-        TMTimerStop(pThis->pTimer);
+        /* Note: Do not stop the timer via TMTimerStop() here, as there still might
+         *       be queued audio data which needs to be handled (e.g. played back) first
+         *       before actually stopping the timer for good. */
     }
 
     DEVHDA_UNLOCK_BOTH(pThis);
