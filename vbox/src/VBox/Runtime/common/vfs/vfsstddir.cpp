@@ -1,4 +1,4 @@
-/* $Id: vfsstddir.cpp 69679 2017-11-13 15:53:01Z vboxsync $ */
+/* $Id: vfsstddir.cpp 69716 2017-11-16 14:31:25Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard Directory Implementation.
  */
@@ -346,20 +346,22 @@ static DECLCALLBACK(int) rtVfsStdDir_OpenDir(void *pvThis, const char *pszSubDir
 static DECLCALLBACK(int) rtVfsStdDir_CreateDir(void *pvThis, const char *pszSubDir, RTFMODE fMode, PRTVFSDIR phVfsDir)
 {
     PRTVFSSTDDIR pThis = (PRTVFSSTDDIR)pvThis;
-    int rc = RTDirRelDirCreate(pThis->hDir, pszSubDir, fMode, 0 /* fFlags */);
-    if (   RT_SUCCESS(rc)
-        && phVfsDir)
+    int rc;
+    if (!phVfsDir)
+        rc = RTDirRelDirCreate(pThis->hDir, pszSubDir, fMode, 0 /* fFlags */, NULL);
+    else
     {
-        /** @todo subdir open flags */
         PRTDIR hSubDir;
-        rc = RTDirRelDirOpen(pThis->hDir, pszSubDir, &hSubDir);
+        rc = RTDirRelDirCreate(pThis->hDir, pszSubDir, fMode, 0 /* fFlags */, &hSubDir);
         if (RT_SUCCESS(rc))
         {
+            /** @todo subdir open flags...   */
             rc = rtVfsDirFromRTDir(hSubDir, 0, false, phVfsDir);
             if (RT_FAILURE(rc))
                 RTDirClose(hSubDir);
         }
     }
+
     return rc;
 }
 

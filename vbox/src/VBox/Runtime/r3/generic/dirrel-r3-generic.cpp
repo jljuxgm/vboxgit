@@ -1,4 +1,4 @@
-/* $Id: dirrel-r3-generic.cpp 69705 2017-11-15 16:42:59Z vboxsync $ */
+/* $Id: dirrel-r3-generic.cpp 69716 2017-11-16 14:31:25Z vboxsync $ */
 /** @file
  * IPRT - Directory relative base APIs, generic implementation.
  */
@@ -210,10 +210,12 @@ RTDECL(int) RTDirRelDirOpenFiltered(PRTDIR hDir, const char *pszDirAndFilter, RT
  * @param   pszRelPath      The relative path to the directory to create.
  * @param   fMode           The mode of the new directory.
  * @param   fCreate         Create flags, RTDIRCREATE_FLAGS_XXX.
+ * @param   phSubDir        Where to return the handle of the created directory.
+ *                          Optional.
  *
  * @sa      RTDirCreate
  */
-RTDECL(int) RTDirRelDirCreate(PRTDIR hDir, const char *pszRelPath, RTFMODE fMode, uint32_t fCreate)
+RTDECL(int) RTDirRelDirCreate(PRTDIR hDir, const char *pszRelPath, RTFMODE fMode, uint32_t fCreate, PRTDIR *phSubDir)
 {
     PRTDIR pThis = hDir;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
@@ -222,7 +224,11 @@ RTDECL(int) RTDirRelDirCreate(PRTDIR hDir, const char *pszRelPath, RTFMODE fMode
     char szPath[RTPATH_MAX];
     int rc = rtDirRelBuildFullPath(pThis, szPath, sizeof(szPath), pszRelPath);
     if (RT_SUCCESS(rc))
+    {
         rc = RTDirCreate(szPath, fMode, fCreate);
+        if (RT_SUCCESS(rc) && phSubDir)
+            rc = RTDirOpen(phSubDir, szPath);
+    }
     return rc;
 }
 

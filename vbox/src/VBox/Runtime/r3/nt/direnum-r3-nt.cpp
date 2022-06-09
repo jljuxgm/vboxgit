@@ -1,4 +1,4 @@
-/* $Id: direnum-r3-nt.cpp 69705 2017-11-15 16:42:59Z vboxsync $ */
+/* $Id: direnum-r3-nt.cpp 69716 2017-11-16 14:31:25Z vboxsync $ */
 /** @file
  * IPRT - Directory Enumeration, Native NT.
  */
@@ -105,7 +105,7 @@ int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf, uintptr_t hRelativeDir, void 
 #ifdef IPRT_WITH_NT_PATH_PASSTHRU
     bool fObjDir = false;
 #endif
-    if (pvNativeRelative == NULL)
+    if (hRelativeDir == ~(uintptr_t)0 && pvNativeRelative == NULL)
         rc = RTNtPathOpenDir(pszPathBuf,
                              FILE_LIST_DIRECTORY | FILE_READ_ATTRIBUTES | FILE_TRAVERSE | SYNCHRONIZE,
                              FILE_SHARE_READ | FILE_SHARE_WRITE,
@@ -118,7 +118,7 @@ int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf, uintptr_t hRelativeDir, void 
                              NULL
 #endif
                              );
-    else
+    else if (pvNativeRelative != NULL)
         rc = RTNtPathOpenDirEx((HANDLE)hRelativeDir,
                                (struct _UNICODE_STRING *)pvNativeRelative,
                                FILE_LIST_DIRECTORY | FILE_READ_ATTRIBUTES | FILE_TRAVERSE | SYNCHRONIZE,
@@ -133,6 +133,11 @@ int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf, uintptr_t hRelativeDir, void 
 #endif
 
                                );
+    else
+    {
+        pDir->hDir = (HANDLE)hRelativeDir;
+        rc = VINF_SUCCESS;
+    }
     if (RT_SUCCESS(rc))
     {
         /*

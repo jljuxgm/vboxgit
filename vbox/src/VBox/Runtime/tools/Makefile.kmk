@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69603 2017-11-06 17:23:11Z vboxsync $
+# $Id: Makefile.kmk 69716 2017-11-16 14:31:25Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -111,6 +111,11 @@ if !defined(VBOX_ONLY_BUILD)
   RTHttp_TEMPLATE = VBoxR3Tool
   RTHttp_SOURCES = RTHttp.cpp
  endif
+
+ # RTMkDir - our mkdir clone.
+ PROGRAMS += RTMkDir
+ RTMkDir_TEMPLATE = VBoxR3Tool
+ RTMkDir_SOURCES = RTMkDir.cpp
 
  # RTShutdown - similar (but not identical) to a typical unix shutdown command.
  PROGRAMS += RTShutdown
