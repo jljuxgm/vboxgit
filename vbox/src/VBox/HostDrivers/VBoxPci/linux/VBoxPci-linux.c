@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 69744 2017-11-18 20:10:33Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 72139 2018-05-07 13:54:48Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -89,7 +89,14 @@ MODULE_VERSION(VBOX_VERSION_STRING " r" RT_XSTR(VBOX_SVN_REV));
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 20)
 # define PCI_DEV_GET(v,d,p)            pci_get_device(v,d,p)
 # define PCI_DEV_PUT(x)                pci_dev_put(x)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 17, 0)
+/* assume the domain number to be zero - exactly the same assumption of
+ * pci_get_bus_and_slot()
+ */
+# define PCI_DEV_GET_SLOT(bus, devfn)  pci_get_domain_bus_and_slot(0, bus, devfn)
+#else
 # define PCI_DEV_GET_SLOT(bus, devfn)  pci_get_bus_and_slot(bus, devfn)
+#endif
 #else
 # define PCI_DEV_GET(v,d,p)            pci_find_device(v,d,p)
 # define PCI_DEV_PUT(x)                do { } while (0)
