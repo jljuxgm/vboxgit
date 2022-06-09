@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 68334 2017-08-08 09:26:39Z vboxsync $ */
+/* $Id: vbox_drv.h 68337 2017-08-08 10:08:07Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -50,6 +50,7 @@
 
 #if defined(RHEL_MAJOR) && defined(RHEL_MINOR)
 # if RHEL_MAJOR == 7 && RHEL_MINOR >= 4
+#  define RHEL_73
 #  define RHEL_74
 # elif RHEL_MAJOR == 7 && RHEL_MINOR >= 3
 #  define RHEL_73
