@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.cpp 68485 2017-08-21 13:48:12Z vboxsync $ */
+/* $Id: AudioAdapterImpl.cpp 68537 2017-08-28 13:50:35Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -85,6 +85,8 @@ HRESULT AudioAdapter::init(Machine *aParent)
 
     mData.allocate();
     mData->driverType = defaultAudioDriver;
+    mData->fEnabledIn = false;
+    mData->fEnabledOut = false;
 
     /* Confirm a successful initialization */
     autoInitSpan.setSucceeded();
