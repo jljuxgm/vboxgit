@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 72329 2018-05-24 19:52:52Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 72333 2018-05-25 08:55:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -967,6 +967,7 @@ private:
             default:
                 AssertFailed();
                 enmEngine = KVMExecutionEngine_NotSet;
+                RT_FALL_THRU();
             case KVMExecutionEngine_NotSet:
                 strExecutionEngine = VBoxGlobal::tr("not set", "details report (execution engine)");
                 break;

@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.cpp 72331 2018-05-24 20:26:06Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 72333 2018-05-25 08:55:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
@@ -686,6 +686,7 @@ QVariant UIInformationDataRuntimeAttributes::data(const QModelIndex &index, int 
                     break;
                 default:
                     AssertFailed();
+                    RT_FALL_THRU();
                 case KVMExecutionEngine_NotSet:
                     strExecutionEngine = VBoxGlobal::tr("not set", "details report (execution engine)");
                     break;
