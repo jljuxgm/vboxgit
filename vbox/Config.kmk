@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68374 2017-08-10 14:56:25Z vboxsync $
+# $Id: Config.kmk 68413 2017-08-14 13:12:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3809,7 +3809,7 @@ endif
 
 ifdef VBOX_WITH_LIBOPUS
  SDK_VBOX_OPUS       = .
- SDK_VBOX_OPUS_INCS ?= $(PATH_ROOT)/src/libs/libopus-1.1.3/include
+ SDK_VBOX_OPUS_INCS ?= $(PATH_ROOT)/src/libs/libopus-1.2.1/include
  SDK_VBOX_OPUS_LIBS ?= $(PATH_STAGE_LIB)/VBox-libopus$(VBOX_SUFF_LIB)
 endif
 
@@ -7013,7 +7013,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68374 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68413 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
