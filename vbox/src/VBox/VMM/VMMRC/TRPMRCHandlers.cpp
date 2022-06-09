@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 72565 2018-06-15 13:30:01Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 72567 2018-06-15 14:48:47Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -1052,6 +1052,7 @@ static int trpmGCTrap0dHandlerRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
             }
             /* else no break; */
 #endif
+            RT_FALL_THRU();
         case OP_BOUND:
         case OP_INTO:
             pVCpu->trpm.s.uActiveVector = UINT32_MAX;
