@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 70462 2018-01-05 08:11:02Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 70463 2018-01-05 09:23:54Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -179,6 +179,9 @@ VMM_INT_DECL(void) HMSvmNstGstVmExitNotify(PVMCPU pVCpu, PCPUMCTX pCtx)
  *
  * @returns @c true if VGIF is enabled, @c false otherwise.
  * @param   pVM         The cross context VM structure.
+ *
+ * @remarks This value returned by this functions is expected by the callers not
+ *          to change throughout the lifetime of the VM.
  */
 VMM_INT_DECL(bool) HMSvmIsVGifActive(PVM pVM)
 {
