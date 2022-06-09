@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 67797 2017-07-05 14:00:39Z vboxsync $ */
+/* $Id: isomakerimport.cpp 67799 2017-07-05 14:12:03Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -381,6 +381,7 @@ static int rtFsIsoImportProcessIso9660AddAndNameSymlink(PRTFSISOMKIMPORTER pThis
                                                         uint32_t fNamespace, uint32_t idxParent,
                                                         const char *pszName, const char *pszRockName, const char *pszTarget)
 {
+    NOREF(pDirRec);
     Assert(!(pDirRec->fFileFlags & ISO9660_FILE_FLAGS_DIRECTORY));
     Assert(RTFS_IS_SYMLINK(pObjInfo->Attr.fMode));
 
