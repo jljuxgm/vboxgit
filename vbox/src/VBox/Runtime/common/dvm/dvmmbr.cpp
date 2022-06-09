@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 69887 2017-11-30 17:46:06Z vboxsync $ */
+/* $Id: dvmmbr.cpp 69909 2017-12-03 17:06:12Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -230,7 +230,7 @@ static void rtDvmFmtMbrDestroy(PRTDVMFMTINTERNAL pThis)
 
 static int rtDvmFmtMbrReadExtended(PRTDVMFMTINTERNAL pThis, PRTDVMMBRENTRY pPrimaryEntry)
 {
-    uint32_t const  cbExt       = pPrimaryEntry->cbPart;
+    uint64_t const  cbExt       = pPrimaryEntry->cbPart;
     uint64_t const  offExtBegin = pPrimaryEntry->offPart;
 
     uint64_t        offCurBegin = offExtBegin;
