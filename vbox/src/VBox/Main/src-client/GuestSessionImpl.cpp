@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 72001 2018-04-24 09:41:07Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 72007 2018-04-24 15:33:09Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -800,7 +800,6 @@ HRESULT GuestSession::i_copyFromGuest(const GuestSessionFsSourceSet &SourceSet,
         }
 
         hrc = pTask->createThreadWithType(RTTHREADTYPE_MAIN_HEAVY_WORKER);
-
         if (SUCCEEDED(hrc))
         {
             /* Return progress to the caller. */
@@ -902,11 +901,10 @@ HRESULT GuestSession::i_copyToGuest(const GuestSessionFsSourceSet &SourceSet,
         }
 
         hrc = pTask->createThreadWithType(RTTHREADTYPE_MAIN_HEAVY_WORKER);
-
         if (SUCCEEDED(hrc))
         {
             /* Return progress to the caller. */
-            pProgress = pTask->GetProgressObject();
+            pProgressObj = pTask->GetProgressObject();
             hrc = pProgressObj.queryInterfaceTo(pProgress.asOutParam());
         }
         else
