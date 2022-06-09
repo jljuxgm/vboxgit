@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 68435 2017-08-17 08:59:12Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 68490 2017-08-21 14:18:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement[Name] classes implementation.
  */
@@ -587,6 +587,20 @@ void UIGDetailsUpdateTaskAudio::run()
             /* Controller: */
             table << UITextTableLine(QApplication::translate("UIGDetails", "Controller", "details (audio)"),
                                      gpConverter->toString(audio.GetAudioController()));
+
+#ifdef VBOX_WITH_AUDIO_INOUT_INFO
+            /* Output: */
+            table << UITextTableLine(QApplication::translate("UIGDetails", "Audio Output", "details (audio)"),
+                                     audio.GetEnabledOut() ?
+                                     QApplication::translate("UIGDetails", "Enabled", "details (audio/output)") :
+                                     QApplication::translate("UIGDetails", "Disabled", "details (audio/output)"));
+
+            /* Input: */
+            table << UITextTableLine(QApplication::translate("UIGDetails", "Audio Input", "details (audio)"),
+                                     audio.GetEnabledIn() ?
+                                     QApplication::translate("UIGDetails", "Enabled", "details (audio/input)") :
+                                     QApplication::translate("UIGDetails", "Disabled", "details (audio/input)"));
+#endif /* VBOX_WITH_AUDIO_INOUT_INFO */
         }
         else
             table << UITextTableLine(QApplication::translate("UIGDetails", "Disabled", "details (audio)"),
