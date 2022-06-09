@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 68837 2017-09-22 16:44:44Z vboxsync $ */
+/* $Id: stream.cpp 68839 2017-09-22 17:12:56Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -601,7 +601,8 @@ RTR3DECL(int) RTStrmQueryTerminalWidth(PRTSTREAM pStream, uint32_t *pcchWidth)
                 return VINF_SUCCESS;
             }
             return RTErrConvertFromWin32(GetLastError());
-#else
+
+#elif defined(TIOCGWINSZ) || !defined(RT_OS_OS2) /* only OS/2 should currently miss this */
             struct winsize Info;
             RT_ZERO(Info);
             int rc = ioctl(fh, TIOCGWINSZ, &Info);
