@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67847 2017-07-07 10:25:07Z vboxsync $ */
+/* $Id: isomaker.cpp 67848 2017-07-07 10:25:58Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -3401,6 +3401,7 @@ RTDECL(int) RTFsIsoMakerAddUnnamedSymlink(RTFSISOMAKER hIsoMaker, PCRTFSOBJINFO 
         memcpy(pSymlink->szTarget, pszTarget, cchTarget);
         pSymlink->szTarget[cchTarget] = '\0';
 
+        *pidxObj = pSymlink->Core.idxObj;
         return VINF_SUCCESS;
     }
     RTMemFree(pSymlink);
