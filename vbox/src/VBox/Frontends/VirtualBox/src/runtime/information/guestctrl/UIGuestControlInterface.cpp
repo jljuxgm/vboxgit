@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 70990 2018-02-13 10:49:18Z vboxsync $ */
+/* $Id: UIGuestControlInterface.cpp 70992 2018-02-13 11:09:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -87,9 +87,8 @@ bool UIGuestControlInterface::parseCommand(const QString &strCommand)
 
     if (commandStrList.at(0) == "start")
         return parseStartCommand();
-    else
-        return parseSetCommand();
-    ERROR_RETURN("Syntax Error! Type 'help' for usage")
+    return parseSetCommand();
+    //ERROR_RETURN("Syntax Error! Type 'help' for usage")
 }
 
 bool UIGuestControlInterface::createArgumentMap(const QStringList &commandList)
