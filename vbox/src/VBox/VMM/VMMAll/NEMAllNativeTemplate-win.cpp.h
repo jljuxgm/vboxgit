@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 71293 2018-03-09 21:11:20Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 71296 2018-03-10 00:53:26Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -579,7 +579,21 @@ NEM_TMPL_STATIC int nemHCWinCopyStateFromHyperV(PVM pVM, PVMCPU pVCpu, PCPUMCTX 
         COPY_BACK_SEG(22, WHvX64RegisterFs,   pCtx->fs);
         COPY_BACK_SEG(23, WHvX64RegisterGs,   pCtx->gs);
         COPY_BACK_SEG(24, WHvX64RegisterLdtr, pCtx->ldtr);
+        /* AMD-V likes loading TR with in AVAIL state, whereas intel insists on BUSY.  So,
+           avoid to trigger sanity assertions around the code, always fix this. */
         COPY_BACK_SEG(25, WHvX64RegisterTr,   pCtx->tr);
+        switch (pCtx->tr.Attr.n.u4Type)
+        {
+            case X86_SEL_TYPE_SYS_386_TSS_BUSY:
+            case X86_SEL_TYPE_SYS_286_TSS_BUSY:
+                break;
+            case X86_SEL_TYPE_SYS_386_TSS_AVAIL:
+                pCtx->tr.Attr.n.u4Type = X86_SEL_TYPE_SYS_386_TSS_BUSY;
+                break;
+            case X86_SEL_TYPE_SYS_286_TSS_AVAIL:
+                pCtx->tr.Attr.n.u4Type = X86_SEL_TYPE_SYS_286_TSS_BUSY;
+                break;
+        }
 
         /* Descriptor tables. */
         Assert(aenmNames[26] == WHvX64RegisterIdtr);
