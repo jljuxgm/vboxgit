@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 68732 2017-09-13 08:34:50Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 68734 2017-09-13 09:05:15Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -383,10 +383,12 @@ static int avRecSinkInit(PDRVAUDIOVIDEOREC pThis, PAVRECSINK pSink, PAVRECCONTAI
                 break;
         }
     }
+#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA /* Fixes "unreachable code" in MSVC. */
     catch (std::bad_alloc)
     {
         rc = VERR_NO_MEMORY;
     }
+#endif
 
     if (RT_SUCCESS(rc))
     {
