@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 71406 2018-03-20 14:44:24Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 71564 2018-03-29 11:47:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -214,6 +214,8 @@ public:
 public:
 
     int init(GuestSession *pGuestSession, const GuestProcessStartupInfo &startupInfo, bool fAsync, int *pGuestRc);
+
+    void uninit(void);
 
     int getCurrentBlock(uint32_t uHandle, GuestProcessStreamBlock &strmBlock);
 

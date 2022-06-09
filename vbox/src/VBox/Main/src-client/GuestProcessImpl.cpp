@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 71560 2018-03-29 11:00:30Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 71564 2018-03-29 11:47:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1957,14 +1957,7 @@ GuestProcessTool::GuestProcessTool(void)
 
 GuestProcessTool::~GuestProcessTool(void)
 {
-     if (!pProcess.isNull())
-     {
-         /* Terminate (and unregister) process. */
-         pProcess->uninit();
-
-         /* Release reference. */
-         pProcess.setNull();
-     }
+    uninit();
 }
 
 int GuestProcessTool::init(GuestSession *pGuestSession, const GuestProcessStartupInfo &startupInfo,
@@ -2003,6 +1996,21 @@ int GuestProcessTool::init(GuestSession *pGuestSession, const GuestProcessStartu
 
     LogFlowFuncLeaveRC(vrc);
     return vrc;
+}
+
+void GuestProcessTool::uninit(void)
+{
+    if (!pProcess.isNull())
+    {
+        /* Terminate (and unregister) process. */
+        pProcess->uninit();
+
+        /* Release reference. */
+        pProcess.setNull();
+    }
+
+    if (pSession)
+        pSession.setNull();
 }
 
 int GuestProcessTool::getCurrentBlock(uint32_t uHandle, GuestProcessStreamBlock &strmBlock)
