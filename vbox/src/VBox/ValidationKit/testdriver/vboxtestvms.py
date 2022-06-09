@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 72318 2018-05-24 09:35:41Z vboxsync $
+# $Id: vboxtestvms.py 72319 2018-05-24 09:41:32Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72318 $"
+__version__ = "$Revision: 72319 $"
 
 # Standard Python imports.
 import copy;
@@ -1119,7 +1119,7 @@ class TestVmManager(object):
         #       sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi', sChipsetType = 'ich9'),
 
         # Nested hardware-virtualization
-        #TestVm('tst-nsthwvirt-ubuntu-64',    kfGrpStdSmoke,       sHd = '5.2/nat/nsthwvirt-ubuntu64/t-nsthwvirt-ubuntu64.vdi',
+        #TestVm('tst-nsthwvirt-ubuntu-64',    kfGrpStdSmoke,       sHd = '5.3/nat/nsthwvirt-ubuntu64/t-nsthwvirt-ubuntu64.vdi',
         #       sKind = 'Ubuntu_64', acCpusSup = range(1, 2), asVirtModesSup = ['hwvirt-np',], fIoApic = True, fNstHwVirt = True,
         #       sNic0AttachType = 'nat'),
 
