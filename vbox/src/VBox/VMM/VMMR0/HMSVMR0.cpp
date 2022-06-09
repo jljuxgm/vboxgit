@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 67660 2017-06-28 10:17:05Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 67662 2017-06-28 10:26:17Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4721,7 +4721,7 @@ HMSVM_EXIT_DECL hmR0SvmExitWriteCRx(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT p
     uint8_t const iCrReg = pSvmTransient->u64ExitCode - SVM_EXIT_WRITE_CR0;
     Assert(iCrReg <= 15);
 
-    VBOXSTRICTRC rcStrict;
+    VBOXSTRICTRC rcStrict = VERR_SVM_IPE_5;
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     bool fDecodedInstr = false;
     if (pVM->hm.s.svm.u32Features & X86_CPUID_SVM_FEATURE_EDX_DECODE_ASSIST)
