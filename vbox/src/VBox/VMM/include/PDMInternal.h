@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 64655 2016-11-14 10:46:07Z vboxsync $ */
+/* $Id: PDMInternal.h 67668 2017-06-28 16:28:34Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -640,8 +640,6 @@ typedef struct PDMPCIBUS
     /** @copydoc PDMPCIBUSREG::pfnSetConfigCallbacksR3 */
     DECLR3CALLBACKMEMBER(void,      pfnSetConfigCallbacksR3,(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, PFNPCICONFIGREAD pfnRead,
                                                              PPFNPCICONFIGREAD ppfnReadOld, PFNPCICONFIGWRITE pfnWrite, PPFNPCICONFIGWRITE ppfnWriteOld));
-    /** @copydoc PDMPCIBUSREG::pfnFakePCIBIOSR3 */
-    DECLR3CALLBACKMEMBER(int,       pfnFakePCIBIOSR3,(PPDMDEVINS pDevIns));
 
     /** Pointer to the PIC device instance - R0. */
     R0PTRTYPE(PPDMDEVINS)           pDevInsR0;
