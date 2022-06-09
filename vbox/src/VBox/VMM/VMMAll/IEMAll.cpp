@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 70446 2018-01-03 05:21:07Z vboxsync $ */
+/* $Id: IEMAll.cpp 70448 2018-01-03 05:27:54Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3960,6 +3960,7 @@ iemTaskSwitch(PVMCPU          pVCpu,
 
         Log(("iemTaskSwitch: Guest intercept -> #VMEXIT. uExitInfo1=%#RX64 uExitInfo2=%#RX64\n", uExitInfo1, uExitInfo2));
         IEM_RETURN_SVM_VMEXIT(pVCpu, SVM_EXIT_TASK_SWITCH, uExitInfo1, uExitInfo2);
+        RT_NOREF2(uExitInfo1, uExitInfo2);
     }
     /** @todo Nested-VMX task-switch intercept. */
 
