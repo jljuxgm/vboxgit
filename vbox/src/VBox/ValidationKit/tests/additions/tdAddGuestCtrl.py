@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71631 $"
+__version__ = "$Revision: 71646 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -2064,6 +2064,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         #
         # First batch: One session per guest process.
         #
+        reporter.log('One session per guest process ...');
         for (i, aTest) in enumerate(aaTests):
             curTest = aTest[0]; # tdTestExec, use an index, later.
             curRes  = aTest[1]; # tdTestResultExec
@@ -2081,9 +2082,12 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
         # No sessions left?
         if fRc is True:
-            cSessions = len(self.oTstDrv.oVBoxMgr.getArray(oSession.o.console.guest, 'sessions'));
+            aSessions = self.oTstDrv.oVBoxMgr.getArray(oSession.o.console.guest, 'sessions');
+            cSessions   = len(aSessions);
             if cSessions is not 0:
-                reporter.error('Found %d stale session(s), expected 0' % (cSessions,));
+                reporter.error('Found %d stale session(s), expected 0:' % (cSessions,));
+                for (i, aSession) in enumerate(aSessions):
+                    reporter.log('\tStale session #%d ("%s")' % (aSession.id, aSession.name));
                 fRc = False;
 
         if fRc is False:
