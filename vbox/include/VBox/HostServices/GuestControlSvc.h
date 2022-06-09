@@ -1,10 +1,10 @@
-/* $Id: GuestControlSvc.h 68660 2017-09-05 18:35:49Z vboxsync $ */
+/* $Id: GuestControlSvc.h 69107 2017-10-17 10:53:48Z vboxsync $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
 
 /*
- * Copyright (C) 2011-2016 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

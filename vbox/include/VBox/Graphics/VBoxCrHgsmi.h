@@ -1,10 +1,10 @@
-/* $Id: VBoxCrHgsmi.h 69015 2017-10-09 12:50:34Z vboxsync $ */
+/* $Id: VBoxCrHgsmi.h 69107 2017-10-17 10:53:48Z vboxsync $ */
 /** @file
  * Document me, pretty please.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

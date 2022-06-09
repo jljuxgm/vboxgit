@@ -1,10 +1,10 @@
-/* $Id: ata.h 65075 2017-01-03 11:52:07Z vboxsync $ */
+/* $Id: ata.h 69107 2017-10-17 10:53:48Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI declarations
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

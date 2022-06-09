@@ -1,10 +1,10 @@
-/* $Id: DragAndDrop.h 68675 2017-09-06 10:08:59Z vboxsync $ */
+/* $Id: DragAndDrop.h 69107 2017-10-17 10:53:48Z vboxsync $ */
 /** @file
  * DnD: Shared functions between host and guest.
  */
 
 /*
- * Copyright (C) 2014-2016 Oracle Corporation
+ * Copyright (C) 2014-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
