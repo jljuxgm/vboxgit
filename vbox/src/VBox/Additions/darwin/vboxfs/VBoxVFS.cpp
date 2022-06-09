@@ -1,4 +1,4 @@
-/* $Id: VBoxVFS.cpp 63526 2016-08-16 08:44:20Z vboxsync $ */
+/* $Id: VBoxVFS.cpp 68584 2017-08-31 12:11:22Z vboxsync $ */
 /** @file
  * VBoxVFS - Guest Additions Shared Folders driver. KEXT entry point.
  */
@@ -115,7 +115,7 @@ static kern_return_t VBoxVFSModuleUnLoad(struct kmod_info *pKModInfo, void *pvDa
     int rc;
 
 #if 0
-   VbglR0SfTerminate();
+   VbglR0SfTerm();
 #endif
 
     PINFO("VirtualBox " VBOX_VERSION_STRING " shared folders driver is unloaded");
@@ -239,7 +239,7 @@ bool org_virtualbox_VBoxVFS::start(IOService *pProvider)
             {
                 PERROR("Failed to get connection to host: rc=%d", rc);
             }
-            VbglR0SfUninit();
+            VbglR0SfTerm();
         }
         else
         {
@@ -278,7 +278,7 @@ void org_virtualbox_VBoxVFS::stop(IOService *pProvider)
     VbglR0SfDisconnect(&g_vboxSFClient);
     PINFO("VBox client disconnected");
 
-    VbglR0SfTerminate();
+    VbglR0SfTerm();
     PINFO("Low level uninit done");
 
     coreService->release();
