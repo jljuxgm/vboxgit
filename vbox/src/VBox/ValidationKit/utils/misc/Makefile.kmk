@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 72670 2018-06-22 20:22:50Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Miscellaneous Utilites.
 #
@@ -43,6 +43,10 @@ PROGRAMS += vts_tar
 vts_tar_TEMPLATE = VBoxValidationKitR3
 vts_tar_SDKS     = VBOX_ZLIB_STATIC
 vts_tar_SOURCES  = vts_tar.cpp
+
+PROGRAMS += vts_shutdown
+vts_shutdown_TEMPLATE = VBoxValidationKitR3
+vts_shutdown_SOURCES  = ../../../Runtime/tools/RTShutdown.cpp
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
