@@ -1,4 +1,4 @@
-/* $Id: RpcChannelHook.h 71160 2018-02-28 17:07:35Z vboxsync $ */
+/* $Id: RpcChannelHook.h 71716 2018-04-06 18:16:30Z vboxsync $ */
 /** @file
 * VBox COM Rpc Channel Hook definition
 */
@@ -25,23 +25,16 @@
 #include <ObjIdl.h>
 
 
-typedef void* PRPC_CHANNEL_HOOK;
+typedef void *PRPC_CHANNEL_HOOK;
 
 // {CEDA3E95-A46A-4C41-AA01-EFFD856E455C}
 static const GUID RPC_CHANNEL_EXTENSION_GUID =
 { 0xceda3e95, 0xa46a, 0x4c41,{ 0xaa, 0x1, 0xef, 0xfd, 0x85, 0x6e, 0x45, 0x5c } };
 
-#if defined(__cplusplus)
-extern "C"
-{
-#endif // #if defined(__cplusplus)
-
-    // C wrapper for using in proxy
-    void SetupClientRpcChannelHook(void);
-
-#if defined(__cplusplus)
-}
-#endif // #if defined(__cplusplus)
+RT_C_DECLS_BEGIN
+// C wrapper for using in proxy
+void SetupClientRpcChannelHook(void);
+RT_C_DECLS_END
 
 
 #if defined(__cplusplus)
@@ -77,8 +70,8 @@ protected:
 
 protected:
     const GUID m_ChannelHookID;
-    static volatile bool s_bChannelRegistered;
-    static volatile bool s_bVBpoxSDSCalledOnce;
+    static volatile bool s_fChannelRegistered;
+    static volatile bool s_fVBpoxSDSCalledOnce;
     static CRpcChannelHook s_RpcChannelHook;
 
     /* C wrapper*/
