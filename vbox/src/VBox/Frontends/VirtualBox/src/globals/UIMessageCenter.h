@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 66681 2017-04-26 17:08:04Z vboxsync $ */
+/* $Id: UIMessageCenter.h 67471 2017-06-19 12:34:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -212,6 +212,9 @@ public:
     bool cannotRestoreSnapshot(const CProgress &progress, const QString &strSnapshotName, const QString &strMachineName) const;
     void cannotRemoveSnapshot(const CMachine &machine, const QString &strSnapshotName, const QString &strMachineName) const;
     void cannotRemoveSnapshot(const CProgress &progress, const QString &strSnapshotName, const QString &strMachineName) const;
+    void cannotFindSnapshotByName(const CMachine &comMachine, const QString &strName, QWidget *pParent = 0) const;
+    void cannotFindSnapshotById(const CMachine &comMachine, const QString &strId, QWidget *pParent = 0) const;
+    void cannotAcquireSnapshotAttributes(const CSnapshot &comSnapshot, QWidget *pParent = 0);
 
     /* API: Common settings warnings: */
     void cannotSaveSettings(const QString strDetails, QWidget *pParent = 0) const;
@@ -287,7 +290,6 @@ public:
     void cannotExportAppliance(const CAppliance &appliance, QWidget *pParent = 0) const;
     void cannotExportAppliance(const CMachine &machine, const QString &strPath, QWidget *pParent = 0) const;
     void cannotExportAppliance(const CProgress &progress, const QString &strPath, QWidget *pParent = 0) const;
-    void cannotFindSnapshotByName(const CMachine &machine, const QString &strMachine, QWidget *pParent = 0) const;
     void cannotAddDiskEncryptionPassword(const CAppliance &appliance, QWidget *pParent = 0);
 
     /* API: Runtime UI warnings: */
