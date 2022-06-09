@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70397 2018-01-01 12:27:43Z vboxsync $
+# $Id: Makefile.kmk 71492 2018-03-24 22:23:10Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -177,6 +177,11 @@ if !defined(VBOX_ONLY_BUILD)
  RTSignTool_TEMPLATE = VBoxR3Tool
  RTSignTool_SOURCES = RTSignTool.cpp
  RTSignTool_LIBS = $(PATH_STAGE_LIB)/SUPR3$(VBOX_SUFF_LIB)
+
+ # RTTraceLogTool - Trace log collection and dissection tool.
+ PROGRAMS += RTTraceLogTool
+ RTTraceLogTool_TEMPLATE = VBoxR3Tool
+ RTTraceLogTool_SOURCES = RTTraceLogTool.cpp
 
  if1of ($(KBUILD_TARGET), darwin linux solaris win)
   # RTKrnlModInfo - our lsmod/kextstat clone (for testing the RTKrnlMod code).
