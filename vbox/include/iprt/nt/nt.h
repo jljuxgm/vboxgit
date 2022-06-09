@@ -1,4 +1,4 @@
-/* $Id: nt.h 69705 2017-11-15 16:42:59Z vboxsync $ */
+/* $Id: nt.h 70171 2017-12-15 22:08:07Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2322,6 +2322,9 @@ typedef struct _RTL_PROCESS_MODULES
 typedef RTL_PROCESS_MODULES *PRTL_PROCESS_MODULES;
 
 NTSYSAPI NTSTATUS NTAPI NtQuerySystemInformation(SYSTEM_INFORMATION_CLASS, PVOID, ULONG, PULONG);
+#ifndef IPRT_NT_MAP_TO_ZW
+NTSYSAPI NTSTATUS NTAPI ZwQuerySystemInformation(SYSTEM_INFORMATION_CLASS, PVOID, ULONG, PULONG);
+#endif
 
 NTSYSAPI NTSTATUS NTAPI NtSetTimerResolution(ULONG cNtTicksWanted, BOOLEAN fSetResolution, PULONG pcNtTicksCur);
 NTSYSAPI NTSTATUS NTAPI NtQueryTimerResolution(PULONG pcNtTicksMin, PULONG pcNtTicksMax, PULONG pcNtTicksCur);

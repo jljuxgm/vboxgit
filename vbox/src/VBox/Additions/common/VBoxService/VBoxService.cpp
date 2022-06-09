@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 69997 2017-12-07 17:41:26Z vboxsync $ */
+/* $Id: VBoxService.cpp 70171 2017-12-15 22:08:07Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -881,6 +881,9 @@ int main(int argc, char **argv)
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
     g_pszProgName = RTPathFilename(argv[0]);
+#ifdef RT_OS_WINDOWS
+    VGSvcWinResolveApis();
+#endif
 #ifdef DEBUG
     rc = RTCritSectInit(&g_csLog);
     AssertRC(rc);
