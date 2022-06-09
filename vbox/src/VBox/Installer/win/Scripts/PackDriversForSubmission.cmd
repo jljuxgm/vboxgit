@@ -1,5 +1,5 @@
 @echo off
-rem $Id: PackDriversForSubmission.cmd 71981 2018-04-23 12:00:34Z vboxsync $
+rem $Id: PackDriversForSubmission.cmd 71991 2018-04-24 07:11:35Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing for signing submission.
 rem
@@ -175,8 +175,11 @@ rem
 rem Unpack the extension pack.
 rem We unpack it into the bin directory in the usual location.
 rem
+rem Note! Modify the path a little to ensure windows utilities are used before
+rem       cygwin ones, and that we can use stuff from bin\tools if we like.
+rem
+set PATH=%SystemRoot%\System32;%PATH%;%_MY_OPT_BINDIR%
 if "%_MY_OPT_WITH_EXTPACK" == "0"   goto no_extpack_unpack
-set PATH=%PATH%;%_MY_OPT_BINDIR%
 set _MY_EXTPACK_DIR=%_MY_OPT_BINDIR%\ExtensionPacks\Oracle_VM_VirtualBox_Extension_Pack
 if not exist "%_MY_OPT_BINDIR%\ExtensionPacks"  ( mkdir "%_MY_OPT_BINDIR%\ExtensionPacks" || goto end_failed )
 if not exist "%_MY_EXTPACK_DIR%"                ( mkdir "%_MY_EXTPACK_DIR%" || goto end_failed )
