@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 70261 2017-12-21 07:57:28Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 70263 2017-12-21 08:32:55Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -350,7 +350,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, uint8_t cbInstr
         }
 
         /* Last branch record (LBR) virtualization. */
-        if (    (pVmcbCtrl->u64LBRVirt & SVM_LBR_VIRT_ENABLE)
+        if (    pVmcbCtrl->u1LbrVirt
             && !pVM->cpum.ro.GuestFeatures.fSvmLbrVirt)
         {
             Log(("iemSvmVmrun: LBR virtualization not supported -> #VMEXIT\n"));
