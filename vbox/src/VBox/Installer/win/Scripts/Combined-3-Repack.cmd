@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Combined-3-Repack.cmd 72049 2018-04-27 08:38:20Z vboxsync $
+rem $Id: Combined-3-Repack.cmd 72050 2018-04-27 08:39:57Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 and x86 drivers.
 rem
@@ -255,7 +255,7 @@ echo .
 set _MY_OUT_FILES=
 for %%i in (VirtualBox-*MultiArch*exe) do (
     copy /y "%%i" "%_MY_OPT_OUTDIR%" || goto end_failed
-    set _MY_OUT_FILES=%%_MY_OUT_FILES%% %%i
+    set _MY_OUT_FILES=%%_MY_OUT_FILES%% %%~nxi
 )
 
 
@@ -271,7 +271,7 @@ echo * Regular PUEL...
 set _MY_TMP_OUT=%_MY_OPT_EXTPACK%
 for %%i in (%_MY_TMP_OUT%) do (
     set _MY_TMP_OUT=%_MY_OPT_OUTDIR%\%%~nxi
-    set _MY_OUT_FILES=%%_MY_OUT_FILES%% %%i
+    set _MY_OUT_FILES=%%_MY_OUT_FILES%% %%~nix
 )
 call "%_MY_REPACK_DIR_X86%\RepackExtPack.cmd" --bindir-amd64 "%_MY_BINDIR_AMD64%" --bindir-x86 "%_MY_BINDIR_X86%" ^
     --input "%_MY_OPT_EXTPACK%" --output "%_MY_TMP_OUT%" || goto end_failed
@@ -281,7 +281,7 @@ echo * Enterprise PUEL...
 set _MY_TMP_OUT=%_MY_OPT_EXTPACK_ENTERPRISE%
 for %%i in (%_MY_TMP_OUT%) do (
     set _MY_TMP_OUT=%_MY_OPT_OUTDIR%\%%~nxi
-    set _MY_OUT_FILES=%%_MY_OUT_FILES%% %%i
+    set _MY_OUT_FILES=%%_MY_OUT_FILES%% %%~nix
 )
 call "%_MY_REPACK_DIR_X86%\RepackExtPack.cmd" --bindir-amd64 "%_MY_BINDIR_AMD64%" --bindir-x86 "%_MY_BINDIR_X86%" ^
     --input "%_MY_OPT_EXTPACK_ENTERPRISE%" --output "%_MY_TMP_OUT%" || goto end_failed
