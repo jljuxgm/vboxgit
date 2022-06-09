@@ -1,5 +1,5 @@
 @echo off
-rem $Id: VBoxSFInst.cmd 68552 2017-08-31 12:09:48Z vboxsync $
+rem $Id: VBoxSFInst.cmd 68624 2017-09-04 19:03:21Z vboxsync $
 rem rem @file
 rem Windows NT batch script for manually installing the shared folders guest addition driver.
 rem
@@ -45,9 +45,9 @@ goto end
 rem 32-bit version of same.
 if not "%PROCESSOR_ARCHITECTURE%" == "AMD64" goto found_vboxmrxnp_x86
 set MY_VBOXMRXNP_X86_DLL=%~dp0VBoxMRXNP-x86.dll
-if exist "%MY_VBOXMRXNP_X86_DLL%" goto found_vboxmrxnp
+if exist "%MY_VBOXMRXNP_X86_DLL%" goto found_vboxmrxnp_x86
 set MY_VBOXMRXNP_X86_DLL=%~dp0..\..\..\..\..\out\win.%KBUILD_TARGET_ARCH%\%KBUILD_TYPE%\bin\additions\VBoxMRXNP-x86.dll
-if exist "%MY_VBOXMRXNP_X86_DLL%" goto found_vboxmrxnp
+if exist "%MY_VBOXMRXNP_X86_DLL%" goto found_vboxmrxnp_x86
 echo VBoxSFInst.cmd: failed to find VBoxMRXNP-x86.dll in either "%~dp0" or "%~dp0..\..\..\..\..\out\win.%KBUILD_TARGET_ARCH%\%KBUILD_TYPE%\bin\additions\".
 goto end
 :found_vboxmrxnp_x86
