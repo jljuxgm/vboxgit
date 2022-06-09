@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: IEMAll.cpp 69141 2017-10-20 09:58:17Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -16170,7 +16170,8 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedVmrun(PVMCPU pVCpu, uint8_t cbInstr)
  */
 VMM_INT_DECL(VBOXSTRICTRC) IEMExecSvmVmexit(PVMCPU pVCpu, uint64_t uExitCode, uint64_t uExitInfo1, uint64_t uExitInfo2)
 {
-    return iemSvmVmexit(pVCpu, IEM_GET_CTX(pVCpu), uExitCode, uExitInfo1, uExitInfo2);
+    VBOXSTRICTRC rcStrict = iemSvmVmexit(pVCpu, IEM_GET_CTX(pVCpu), uExitCode, uExitInfo1, uExitInfo2);
+    return iemExecStatusCodeFiddling(pVCpu, rcStrict);
 }
 #endif /* VBOX_WITH_NESTED_HWVIRT */
 
