@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdMoveMedium1.py 71090 2018-02-22 07:57:16Z vboxsync $
+# $Id: tdMoveMedium1.py 71096 2018-02-22 09:39:33Z vboxsync $
 
 """
 VirtualBox Validation Kit - Medium Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71090 $"
+__version__ = "$Revision: 71096 $"
 
 
 # Standard Python imports.
@@ -156,21 +156,22 @@ class SubTstDrvMoveMedium1(base.SubTestDriverBase):
             fRc = self.checkLocation(sOrigLoc, aoMediumAttachments, asFiles) and fRc
 
             #case 3. Path with file name
-            #fRc = self.setLocation(os.path.join(sNewLoc, 'newName'), aoMediumAttachments) and fRc
-            #asNewFiles = ['newName' + os.path.splitext(s)[1] for s in asFiles]
-            #fRc = self.checkLocation(os.path.join(sNewLoc, 'newName'), aoMediumAttachments, asFiles) and fRc
-            # BUG! the check above succeeds, but it actually should be the one below which does
-            #fRc = self.checkLocation(sNewLoc, aoMediumAttachments, asNewFiles) and fRc
+            #The case supposes that user has passed a destination path with a file name but hasn't added an extension/suffix
+            #to this destination file. User supposes that the extension would be added automatically and to be the same as
+            #for the original file. Difficult case, apparently this case should follow mv(1) logic
+            #and the file name is processed as folder name (aka mv(1) logic). 
+            #Be discussed.
+            fRc = self.setLocation(os.path.join(sNewLoc, 'newName'), aoMediumAttachments) and fRc
+            asNewFiles = ['newName' + os.path.splitext(s)[1] for s in asFiles]
+            fRc = self.checkLocation(os.path.join(sNewLoc, 'newName'), aoMediumAttachments, asFiles) and fRc
+
+            #after the case the destination path must be corrected
+            sNewLoc = os.path.join(sNewLoc, 'newName')
 
             #case 4. Only file name
-            #fRc = self.setLocation('onlyMediumName', aoMediumAttachments) and fRc
-            #asNewFiles = ['onlyMediumName' + os.path.splitext(s)[1] for s in asFiles]
-            #fRc = self.checkLocation(os.path.join(sNewLoc, 'newName'), aoMediumAttachments, asFiles) and fRc
-                                #     [s.replace('.hdd', '.parallels') for s in asNewFiles]) and fRc
-            # BUG! due to the above path mishandling the check above succeeds, the directory issue is
-            # a consequence of the bug in case 3, but the extension is also picked incorrectly, it is
-            # not correct to just pick the backend id as the extension, it needs looking at the ext list.
-            #fRc = self.checkLocation(sNewLoc, aoMediumAttachments, asNewFiles) and fRc
+            fRc = self.setLocation('onlyMediumName', aoMediumAttachments) and fRc
+            asNewFiles = ['onlyMediumName' + os.path.splitext(s)[1] for s in asFiles]
+            fRc = self.checkLocation(sNewLoc, aoMediumAttachments, asNewFiles) and fRc
 
             #case 5. Move all files from a snapshot
             fRc = fRc and oSession.takeSnapshot('Snapshot1')
