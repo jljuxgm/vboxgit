@@ -1,4 +1,4 @@
-  /* $Id: DrvNamedPipe.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+  /* $Id: DrvNamedPipe.cpp 69664 2017-11-12 23:46:38Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
@@ -219,6 +219,7 @@ static DECLCALLBACK(int) drvNamedPipePoll(PPDMISTREAM pInterface, uint32_t fEvts
             {
                 LogFlowFunc(("Read completed: cbReallyRead=%u\n", cbReallyRead));
                 pThis->fReadPending = false;
+                pThis->cbReadBufUsed = cbReallyRead;
                 *pfEvts |= RTPOLL_EVT_READ;
                 return VINF_SUCCESS;
             }
