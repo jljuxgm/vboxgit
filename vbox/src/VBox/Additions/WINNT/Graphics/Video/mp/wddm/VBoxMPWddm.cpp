@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 71595 2018-03-31 20:24:41Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -3962,7 +3962,7 @@ DxgkDdiBuildPagingBufferLegacy(
             {
                 SIZE_T cbTransfered = 0;
                 SIZE_T cbTransferSize = pBuildPagingBuffer->Transfer.TransferSize;
-                PVBOXVDMACMD pHdr = VBOXVDMACBUF_DR_TAIL(pDr, VBOXVDMACMD);
+                VBOXVDMACMD RT_UNTRUSTED_VOLATILE_HOST *pHdr = VBOXVDMACBUF_DR_TAIL(pDr, VBOXVDMACMD);
                 do
                 {
                     // vboxVdmaCBufDrCreate zero initializes the pDr

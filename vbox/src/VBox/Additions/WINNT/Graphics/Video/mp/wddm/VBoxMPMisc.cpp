@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 71595 2018-03-31 20:24:41Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1356,7 +1356,7 @@ static DECLCALLBACK(VOID) vboxVideoAMgrAllocSubmitCompletion(PVBOXMP_DEVEXT pDev
     Assert(KeGetCurrentIrql() == DISPATCH_LEVEL);
 
     PVBOXVDMACBUF_DR pDr = (PVBOXVDMACBUF_DR)pvContext;
-    PVBOXVDMACMD pHdr = VBOXVDMACBUF_DR_TAIL(pDr, VBOXVDMACMD);
+    VBOXVDMACMD RT_UNTRUSTED_VOLATILE_HOST *pHdr = VBOXVDMACBUF_DR_TAIL(pDr, VBOXVDMACMD);
     VBOXVDMACMD_CHROMIUM_CMD *pBody = VBOXVDMACMD_BODY(pHdr, VBOXVDMACMD_CHROMIUM_CMD);
     UINT cBufs = pBody->cBuffers;
     for (UINT i = 0; i < cBufs; ++i)
@@ -1399,7 +1399,7 @@ NTSTATUS vboxVideoAMgrCtxAllocSubmit(PVBOXMP_DEVEXT pDevExt, PVBOXVIDEOCM_ALLOC_
         pDr->cbBuf = cbCmd;
         pDr->rc = VERR_NOT_IMPLEMENTED;
 
-        PVBOXVDMACMD pHdr = VBOXVDMACBUF_DR_TAIL(pDr, VBOXVDMACMD);
+        VBOXVDMACMD RT_UNTRUSTED_VOLATILE_HOST *pHdr = VBOXVDMACBUF_DR_TAIL(pDr, VBOXVDMACMD);
         pHdr->enmType = VBOXVDMACMD_TYPE_CHROMIUM_CMD;
         pHdr->u32CmdSpecific = 0;
         VBOXVDMACMD_CHROMIUM_CMD *pBody = VBOXVDMACMD_BODY(pHdr, VBOXVDMACMD_CHROMIUM_CMD);
