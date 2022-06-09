@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 68162 2017-07-28 15:28:33Z vboxsync $ */
+/* $Id: UnattendedImpl.h 68164 2017-07-28 20:59:17Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -69,6 +69,7 @@ public:
     Utf8Str const &i_getPostInstallCommand() const;
     Utf8Str const &i_getExtraInstallKernelParameters() const;
 
+    bool           i_isRtcUsingUtc() const;
     bool           i_isGuestOs64Bit() const;
     VBOXOSTYPE     i_getGuestOsType() const;
 
@@ -79,6 +80,7 @@ private:
     Guid            mMachineUuid;           /**< The machine UUID. */
     RTNATIVETHREAD  mhThreadReconfigureVM;  /**< Set when reconfigureVM is running. */
     Utf8Str         mStrGuestOsTypeId;      /**< Guest OS type ID (set by prepare). */
+    bool            mfRtcUseUtc;            /**< Copy of IMachine::RTCUseUTC (locking reasons). */
     bool            mfGuestOs64Bit;         /**< 64-bit (true) or 32-bit guest OS (set by prepare). */
     VBOXOSTYPE      meGuestOsType;          /**< The guest OS type (set by prepare). */
     UnattendedInstaller *mpInstaller;       /**< The installer instance (set by prepare, deleted by done). */
