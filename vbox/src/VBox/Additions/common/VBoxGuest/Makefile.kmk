@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70133 2017-12-14 16:20:14Z vboxsync $
+# $Id: Makefile.kmk 70146 2017-12-15 14:06:56Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -254,12 +254,12 @@ ifeq ($(KBUILD_TARGET),freebsd)
 endif # FreeBSD
 
 ifeq ($(KBUILD_TARGET),win)
-#
-# VBoxGuestInst - The installer.
-#
-#PROGRAMS += VBoxGuestInst
-VBoxGuestInst_TEMPLATE= VBoxGuestR3Exe
-VBoxGuestInst_SOURCES = win/VBoxGuestInst.cpp
+ #
+ # VBoxGuestInst - The installer.
+ #
+ PROGRAMS.win.x86 += VBoxGuestInstNT
+ VBoxGuestInstNT_TEMPLATE = VBoxGuestR3Exe
+ VBoxGuestInstNT_SOURCES  = win/VBoxGuestInst.cpp
 endif
 
 
