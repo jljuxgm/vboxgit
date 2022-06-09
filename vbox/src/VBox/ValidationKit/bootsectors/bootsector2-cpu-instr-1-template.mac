@@ -1,4 +1,4 @@
-; $Id: bootsector2-cpu-instr-1-template.mac 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: bootsector2-cpu-instr-1-template.mac 69222 2017-10-24 15:10:29Z vboxsync $
 ;; @file
 ; Bootsector test for misc instruction - multi mode template.
 ;
@@ -311,5 +311,4 @@ TMPL_BEGINCODE
 BITS TMPL_BITS
 
 %include "bootsector2-template-footer.mac"
-
 

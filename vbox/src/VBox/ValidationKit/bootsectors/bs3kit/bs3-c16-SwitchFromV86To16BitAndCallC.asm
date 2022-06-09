@@ -1,4 +1,4 @@
-; $Id: bs3-c16-SwitchFromV86To16BitAndCallC.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: bs3-c16-SwitchFromV86To16BitAndCallC.asm 69222 2017-10-24 15:10:29Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchFromV86To16BitAndCallC
 ;
@@ -96,5 +96,4 @@ BS3_PROC_BEGIN_CMN Bs3SwitchFromV86To16BitAndCallC, BS3_PBC_HYBRID
         dec     bp
         BS3_HYBRID_RET
 BS3_PROC_END_CMN   Bs3SwitchFromV86To16BitAndCallC
-
 

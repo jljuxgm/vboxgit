@@ -1,4 +1,4 @@
-; $Id: bs3kit-template-header.mac 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: bs3kit-template-header.mac 69222 2017-10-24 15:10:29Z vboxsync $
 ;; @file
 ; BS3Kit header for multi-mode code templates.
 ;
@@ -519,5 +519,4 @@
  %error "Missing TMPL_xxBIT!"
 %endif
 TMPL_BEGIN_TEXT
-
 

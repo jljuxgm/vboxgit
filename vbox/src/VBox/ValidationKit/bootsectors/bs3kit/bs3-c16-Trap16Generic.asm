@@ -1,4 +1,4 @@
-; $Id: bs3-c16-Trap16Generic.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: bs3-c16-Trap16Generic.asm 69222 2017-10-24 15:10:29Z vboxsync $
 ;; @file
 ; BS3Kit - Trap, 16-bit assembly handlers.
 ;
@@ -707,5 +707,4 @@ CPU 286
 
         jmp     Bs3Trap16DoubleFaultHandler80386.common
 BS3_PROC_END   Bs3Trap16DoubleFaultHandler80286
-
 

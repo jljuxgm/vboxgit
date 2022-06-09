@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchHlpConvProtModeRetfPopBpDecBpAndReturn.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: bs3-cmn-SwitchHlpConvProtModeRetfPopBpDecBpAndReturn.asm 69222 2017-10-24 15:10:29Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPP32
 ;
@@ -113,5 +113,4 @@ BS3_PROC_BEGIN_CMN Bs3SwitchHlpConvProtModeRetfPopBpDecBpAndReturn, BS3_PBC_NEAR
         o32 ret
 %endif
 BS3_PROC_END_CMN   Bs3SwitchHlpConvProtModeRetfPopBpDecBpAndReturn
-
 

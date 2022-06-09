@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-2-asm.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: bs3-cpu-instr-2-asm.asm 69222 2017-10-24 15:10:29Z vboxsync $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-2
 ;
@@ -59,5 +59,4 @@ BS3_PROC_END   _bs3CpuInstr2_imul_bl_ud2
 ;
 BS3_INSTANTIATE_COMMON_TEMPLATE          "bs3-cpu-instr-2-template.mac"
 BS3_INSTANTIATE_TEMPLATE_WITH_WEIRD_ONES "bs3-cpu-instr-2-template.mac"
-
 

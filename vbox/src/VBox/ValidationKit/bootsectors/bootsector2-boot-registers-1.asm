@@ -1,4 +1,4 @@
-; $Id: bootsector2-boot-registers-1.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: bootsector2-boot-registers-1.asm 69222 2017-10-24 15:10:29Z vboxsync $
 ;; @file
 ; Bootsector that prints the register status at boot.
 ;
@@ -73,5 +73,4 @@ main:
 ;
 BS2_PAD_IMAGE
 the_end:
-
 

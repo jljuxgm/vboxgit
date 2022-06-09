@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SelFlatCodeToProtFar16.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: bs3-cmn-SelFlatCodeToProtFar16.asm 69222 2017-10-24 15:10:29Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SelFlatCodeToProtFar16.
 ;
@@ -115,6 +115,4 @@ BS3_PROC_END_CMN   Bs3SelFlatCodeToProtFar16
 ; penalize it.
 ;
 BS3_CMN_FAR_STUB   Bs3SelFlatCodeToProtFar16, 4
-
-
 

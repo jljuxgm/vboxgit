@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-instr-2-template.mac 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: bs3-cpu-instr-2-template.mac 69222 2017-10-24 15:10:29Z vboxsync $
 ;; @file
 ; BS3Kit - bs3-cpu-instr-2 assembly template.
 ;
@@ -166,5 +166,4 @@ times (348) db 0cch ; fudge to avoid 'rderr' during boot.
 %endif ; BS3_INSTANTIATING_CMN
 
 %include "bs3kit-template-footer.mac"   ; reset environment
-
 
