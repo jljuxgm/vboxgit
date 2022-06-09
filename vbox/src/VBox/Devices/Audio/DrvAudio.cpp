@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 68897 2017-09-27 16:49:21Z vboxsync $ */
+/* $Id: DrvAudio.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -17,6 +17,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #define LOG_GROUP LOG_GROUP_DRV_AUDIO
 #include <VBox/log.h>
 #include <VBox/vmm/pdm.h>

@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 68909 2017-09-28 13:37:09Z vboxsync $ */
+/* $Id: DevHDA.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -5293,3 +5293,4 @@ const PDMDEVREG g_DeviceHDA =
 
 #endif /* IN_RING3 */
 #endif /* !VBOX_DEVICE_STRUCT_TESTCASE */
+

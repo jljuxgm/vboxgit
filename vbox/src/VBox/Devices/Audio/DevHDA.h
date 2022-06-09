@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: DevHDA.h 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -221,5 +221,5 @@ typedef struct HDACALLBACKCTX
 } HDACALLBACKCTX, *PHDACALLBACKCTX;
 #endif
 
-#endif /* DEV_HDA_H */
+#endif /* !DEV_HDA_H */
 

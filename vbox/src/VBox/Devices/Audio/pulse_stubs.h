@@ -1,5 +1,5 @@
+/* $Id: pulse_stubs.h 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
- *
  * Stubs for libpulse.
  */
 
@@ -19,3 +19,4 @@
 #define AUDIO_PULSE_STUBS_H
 extern int audioLoadPulseLib(void);
 #endif
+

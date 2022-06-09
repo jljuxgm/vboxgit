@@ -1,4 +1,4 @@
-/* $Id: HDACodec.h 67899 2017-07-11 11:03:53Z vboxsync $ */
+/* $Id: HDACodec.h 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  */
@@ -141,5 +141,5 @@ int hdaCodecRemoveStream(PHDACODEC pThis, PDMAUDIOMIXERCTL enmMixerCtl);
 #define HDA_SSM_VERSION_2 2
 #define HDA_SSM_VERSION_1 1
 
-#endif /* DEV_HDA_CODEC_H */
+#endif /* !DEV_HDA_CODEC_H */
 

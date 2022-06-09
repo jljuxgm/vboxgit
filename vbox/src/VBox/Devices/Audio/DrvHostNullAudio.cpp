@@ -1,7 +1,8 @@
-/* $Id: DrvHostNullAudio.cpp 68272 2017-08-03 08:25:32Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
- * NULL audio driver -- also acts as a fallback if no
- * other backend is available.
+ * NULL audio driver.
+ *
+ * This also acts as a fallback if no other backend is available.
  */
 
 /*

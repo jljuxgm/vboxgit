@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: HDAStreamPeriod.h 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.h - Stream period functions for HD Audio.
  */

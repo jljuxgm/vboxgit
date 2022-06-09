@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 68907 2017-09-28 13:24:47Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -4078,3 +4078,4 @@ const PDMDEVREG g_DeviceICHAC97 =
 
 #endif /* !IN_RING3 */
 #endif /* !VBOX_DEVICE_STRUCT_TESTCASE */
+

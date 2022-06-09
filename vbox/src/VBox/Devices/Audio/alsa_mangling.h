@@ -1,7 +1,8 @@
+/* $Id: alsa_mangling.h 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
+ * Mangle libasound symbols.
  *
- * Mangle libasound symbols. This is necessary on hosts which don't
- * support the -fvisibility gcc switch.
+ * This is necessary on hosts which don't support the -fvisibility gcc switch.
  */
 
 /*

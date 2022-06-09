@@ -1,7 +1,8 @@
-/* $Id: DrvHostDebugAudio.cpp 68740 2017-09-13 11:37:18Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
- * Debug audio driver -- host backend for dumping and injecting audio data
- * from/to the device emulation.
+ * Debug audio driver.
+ *
+ * Host backend for dumping and injecting audio data from/to the device emulation.
  */
 
 /*
@@ -14,7 +15,6 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- * --------------------------------------------------------------------
  */
 
 #include <iprt/alloc.h>

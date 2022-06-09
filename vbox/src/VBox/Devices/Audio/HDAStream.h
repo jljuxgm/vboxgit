@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: HDAStream.h 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */

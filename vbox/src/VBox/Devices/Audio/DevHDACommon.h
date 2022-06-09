@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 67907 2017-07-11 14:00:07Z vboxsync $ */
+/* $Id: DevHDACommon.h 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -602,5 +602,5 @@ bool          hdaBDLENeedsInterrupt(PHDABDLE pBDLE);
 #endif /* IN_RING3 */
 /** @} */
 
-#endif /* DEV_HDA_H_COMMON */
+#endif /* !DEV_HDA_H_COMMON */
 

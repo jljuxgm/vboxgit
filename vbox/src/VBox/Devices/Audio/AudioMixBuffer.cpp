@@ -1,6 +1,6 @@
-/* $Id: AudioMixBuffer.cpp 68271 2017-08-03 08:19:14Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
- * VBox audio: Audio mixing buffer for converting reading/writing audio data.
+ * Audio mixing buffer for converting reading/writing audio data.
  */
 
 /*

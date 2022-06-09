@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 68272 2017-08-03 08:25:32Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -13,8 +13,8 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- * --------------------------------------------------------------------
  */
+
 #include <errno.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>

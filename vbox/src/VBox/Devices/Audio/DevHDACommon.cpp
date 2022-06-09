@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 69118 2017-10-17 18:50:46Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  */

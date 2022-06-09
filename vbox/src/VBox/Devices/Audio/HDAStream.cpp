@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 69118 2017-10-17 18:50:46Z vboxsync $ */
+/* $Id: HDAStream.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1356,3 +1356,4 @@ void hdaStreamAsyncIOEnable(PHDASTREAM pStream, bool fEnable)
 # endif /* VBOX_WITH_AUDIO_HDA_ASYNC_IO */
 
 #endif /* IN_RING3 */
+

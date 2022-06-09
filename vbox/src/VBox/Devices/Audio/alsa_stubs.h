@@ -1,5 +1,5 @@
+/* $Id: alsa_stubs.h 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
- *
  * Stubs for libasound.
  */
 
@@ -19,3 +19,4 @@
 # define AUDIO_ALSA_STUBS_H
 extern int audioLoadAlsaLib(void);
 #endif
+

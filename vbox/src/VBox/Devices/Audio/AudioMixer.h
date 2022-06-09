@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 68898 2017-09-28 08:41:40Z vboxsync $ */
+/* $Id: AudioMixer.h 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -245,5 +245,5 @@ void AudioMixerStreamDestroy(PAUDMIXSTREAM pStream);
 bool AudioMixerStreamIsActive(PAUDMIXSTREAM pStream);
 bool AudioMixerStreamIsValid(PAUDMIXSTREAM pStream);
 
-#endif /* AUDIO_MIXER_H */
+#endif /* !AUDIO_MIXER_H */
 

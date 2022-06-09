@@ -1,6 +1,6 @@
-/* $Id: DrvHostALSAAudio.cpp 68376 2017-08-10 16:16:01Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
 /** @file
- * VBox audio devices: ALSA audio driver.
+ * ALSA audio driver.
  */
 
 /*
