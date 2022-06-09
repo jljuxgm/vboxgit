@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 72262 2018-05-18 14:10:08Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 72263 2018-05-18 14:10:22Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -1570,11 +1570,6 @@ NEM_TMPL_STATIC VBOXSTRICTRC nemHCWinHandleMessageInterruptWindow(PVM pVM, PVMCP
  */
 NEM_TMPL_STATIC VBOXSTRICTRC nemHCWinHandleMessageCpuId(PVMCPU pVCpu, HV_X64_CPUID_INTERCEPT_MESSAGE const *pMsg, PCPUMCTX pCtx)
 {
-    //Assert(   pMsg->AccessInfo.AccessSize == 1
-    //       || pMsg->AccessInfo.AccessSize == 2
-    //       || pMsg->AccessInfo.AccessSize == 4);
-    //Assert(   pMsg->Header.InterceptAccessType == HV_INTERCEPT_ACCESS_READ
-    //       || pMsg->Header.InterceptAccessType == HV_INTERCEPT_ACCESS_WRITE);
     AssertMsg(pMsg->Header.InstructionLength < 0x10, ("%#x\n", pMsg->Header.InstructionLength));
 
     /*
