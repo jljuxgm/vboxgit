@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils.h 67535 2017-06-21 10:47:28Z vboxsync $ */
+/* $Id: VBoxUtils.h 68190 2017-07-31 10:25:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions.
  */
@@ -37,7 +37,7 @@ public:
     QObjectPropertySetter(QObject *pParent, const QString &strName)
         : QObject(pParent), m_strName(strName) {}
 
-private slots:
+public slots:
 
     /** Assigns property value. */
     void sltAssignProperty(const QString &strValue)

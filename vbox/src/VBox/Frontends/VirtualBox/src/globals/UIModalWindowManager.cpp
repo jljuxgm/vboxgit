@@ -1,4 +1,4 @@
-/* $Id: UIModalWindowManager.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIModalWindowManager.cpp 68190 2017-07-31 10:25:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class implementation.
  */
@@ -210,7 +210,7 @@ void UIModalWindowManager::registerNewParent(QWidget *pWindow, QWidget *pParentW
                     }
                     /* Register passed-window as the new 'top' in iterated-window-stack: */
                     iteratedWindowStack << pWindow;
-                    connect(pWindow, SIGNAL(destroyed(QObject*)), this, SLOT(sltRemoveFromStack(QObject*)));
+                    connect(pWindow, &QWidget::destroyed, this, &UIModalWindowManager::sltRemoveFromStack);
                     return;
                 }
             }
@@ -225,7 +225,7 @@ void UIModalWindowManager::registerNewParent(QWidget *pWindow, QWidget *pParentW
         /* Register passed-window as the only one item in new-window-stack: */
         QList<QWidget*> newWindowStack(QList<QWidget*>() << pWindow);
         m_windows << newWindowStack;
-        connect(pWindow, SIGNAL(destroyed(QObject*)), this, SLOT(sltRemoveFromStack(QObject*)));
+        connect(pWindow, &QWidget::destroyed, this, &UIModalWindowManager::sltRemoveFromStack);
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIShortcutPool.cpp 68190 2017-07-31 10:25:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class implementation.
  */
@@ -240,8 +240,10 @@ void UIShortcutPool::prepare()
 void UIShortcutPool::prepareConnections()
 {
     /* Connect to extra-data signals: */
-    connect(gEDataManager, SIGNAL(sigSelectorUIShortcutChange()), this, SLOT(sltReloadSelectorShortcuts()));
-    connect(gEDataManager, SIGNAL(sigRuntimeUIShortcutChange()), this, SLOT(sltReloadMachineShortcuts()));
+    connect(gEDataManager, &UIExtraDataManager::sigSelectorUIShortcutChange,
+            this, &UIShortcutPool::sltReloadSelectorShortcuts);
+    connect(gEDataManager, &UIExtraDataManager::sigRuntimeUIShortcutChange,
+            this, &UIShortcutPool::sltReloadMachineShortcuts);
 }
 
 void UIShortcutPool::retranslateUi()

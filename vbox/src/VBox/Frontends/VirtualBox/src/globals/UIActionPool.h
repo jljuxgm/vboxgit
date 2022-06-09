@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 64715 2016-11-18 15:58:22Z vboxsync $ */
+/* $Id: UIActionPool.h 68190 2017-07-31 10:25:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -459,18 +459,20 @@ public:
     /** Returns the list of main menus. */
     virtual QList<QMenu*> menus() const = 0;
 
-protected slots:
+public slots:
 
     /** Handles menu prepare. */
     void sltHandleMenuPrepare();
 
-    /** Loads keyboard shortcuts of action-pool into shortcuts-pool. */
-    void sltApplyShortcuts() { updateShortcuts(); }
-
 #ifdef VBOX_WS_MAC
     /** Handles action hovered signal. */
     void sltActionHovered();
-#endif /* VBOX_WS_MAC */
+#endif
+
+protected slots:
+
+    /** Loads keyboard shortcuts of action-pool into shortcuts-pool. */
+    void sltApplyShortcuts() { updateShortcuts(); }
 
 protected:
 

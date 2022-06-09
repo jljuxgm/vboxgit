@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 66569 2017-04-14 11:13:47Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 68190 2017-07-31 10:25:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -281,8 +281,8 @@ void UIPopupCenter::showPopupPane(QWidget *pParent, const QString &strPopupPaneI
         /* Create new one: */
         pPopupStack = m_stacks[strPopupStackID] = new UIPopupStack(strPopupStackID, m_stackOrientations[strPopupStackID]);
         /* Attach popup-stack connections: */
-        connect(pPopupStack, SIGNAL(sigPopupPaneDone(QString, int)), this, SLOT(sltPopupPaneDone(QString, int)));
-        connect(pPopupStack, SIGNAL(sigRemove(QString)), this, SLOT(sltRemovePopupStack(QString)));
+        connect(pPopupStack, &UIPopupStack::sigPopupPaneDone, this, &UIPopupCenter::sltPopupPaneDone);
+        connect(pPopupStack, &UIPopupStack::sigRemove,        this, &UIPopupCenter::sltRemovePopupStack);
     }
 
     /* If there is already popup-pane with such ID: */
