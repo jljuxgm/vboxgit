@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.h 71138 2018-02-27 14:58:24Z vboxsync $ */
+/* $Id: UIGuestControlInterface.h 71145 2018-02-28 08:43:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class declaration.
  */
@@ -79,10 +79,10 @@ private:
     bool handleStat(int, char**);
 
     QString getFsObjInfoString(const CGuestFsObjInfo &fsObjectInfo) const;
-
+    bool    isGuestAdditionsAvaible();
     CGuest        m_comGuest;
     const QString m_strHelp;
-    QString  m_strStatus;
+    QString       m_strStatus;
     /* A map of function pointers to handleXXXX functions */
     QMap<QString, HandleFuncPtr> m_subCommandHandlers;
 };

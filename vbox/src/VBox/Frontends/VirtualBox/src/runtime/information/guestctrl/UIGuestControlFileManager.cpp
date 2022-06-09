@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 71133 2018-02-27 10:13:17Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 71145 2018-02-28 08:43:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -353,8 +353,6 @@ void UIGuestControlFileManager::sltGuestSessionStateChanged(const CGuestSessionS
     if (m_comGuestSession.GetStatus() == KGuestSessionStatus_Started)
     {
 
-        // printf("/lk %d c:/users %d\n", m_comGuestSession.DirectoryExists("/lk", true),
-        //        m_comGuestSession.DirectoryExists("c:/users", true));
         QVector<KDirectoryOpenFlag> flag;
         flag.push_back(KDirectoryOpenFlag_None);
         CGuestDirectory directory = m_comGuestSession.DirectoryOpen("c:/", "*", flag);

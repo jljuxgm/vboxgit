@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 71138 2018-02-27 14:58:24Z vboxsync $ */
+/* $Id: UIGuestControlInterface.cpp 71145 2018-02-28 08:43:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -532,6 +532,11 @@ void UIGuestControlInterface::prepareSubCommandHandlers()
 
 void UIGuestControlInterface::putCommand(const QString &strCommand)
 {
+    if (!isGuestAdditionsAvaible())
+    {
+        emit sigOutputString("No guest addtions detected. Guest control needs guest additions");
+        return;
+    }
 
     char **argv;
     int argc;
@@ -650,6 +655,13 @@ QString UIGuestControlInterface::getFsObjInfoString(const CGuestFsObjInfo &fsObj
     strInfo.append(QString("%1 \t").arg(fsObjectInfo.GetObjectSize()));
     strInfo.append(QString("%1 \t").arg(fsObjectInfo.GetBirthTime()));
     strInfo.append(QString("%1 ").arg(fsObjectInfo.GetChangeTime()));
-
     return strInfo;
+}
+
+bool UIGuestControlInterface::isGuestAdditionsAvaible()
+{
+    if (!m_comGuest.isOk())
+        return false;
+    return m_comGuest.GetAdditionsStatus(m_comGuest.GetAdditionsRunLevel());
+
 }
