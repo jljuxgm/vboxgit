@@ -1,4 +1,4 @@
-/* $Id: vboxms.c 68654 2017-09-05 17:22:12Z vboxsync $ */
+/* $Id: vboxms.c 69343 2017-10-26 12:11:00Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris.
  */
@@ -23,6 +23,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

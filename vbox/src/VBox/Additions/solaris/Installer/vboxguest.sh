@@ -1,6 +1,9 @@
 #!/bin/sh
-#
+# $Id: vboxguest.sh 69343 2017-10-26 12:11:00Z vboxsync $
+## @file
 # VirtualBox Guest Additions kernel module control script for Solaris.
+#
+
 #
 # Copyright (C) 2008-2012 Oracle Corporation
 #

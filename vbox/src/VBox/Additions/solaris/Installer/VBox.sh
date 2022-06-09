@@ -1,6 +1,9 @@
 #!/bin/sh
-#
+# $Id: VBox.sh 69343 2017-10-26 12:11:00Z vboxsync $
+## @file
 # VirtualBox startup script for Solaris Guests Additions
+#
+
 #
 # Copyright (C) 2008-2011 Oracle Corporation
 #
