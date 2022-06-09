@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 70544 2018-01-11 16:20:27Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 70563 2018-01-12 17:52:10Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -123,6 +123,9 @@
 
 #ifdef VBOX_WITH_AUDIO_VRDE
 # include "DrvAudioVRDE.h"
+#endif
+#ifdef VBOX_WITH_AUDIO_VIDEOREC
+# include "DrvAudioVideoRec.h"
 #endif
 #include "NetworkServiceRunner.h"
 #include "BusAssignmentManager.h"
@@ -2966,34 +2969,15 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     InsertConfigString(pLunL1, "Driver", strAudioDriver.c_str());
 
 #ifdef VBOX_WITH_AUDIO_VRDE
-            BOOL fVRDEEnabled = FALSE;
-
-            if (mVRDEServer)
-            {
-                hrc = mVRDEServer->COMGETTER(Enabled)(&fVRDEEnabled);
-                ComAssertComRC(hrc);
-            }
-
-            AudioDriverCfg Cfg(strAudioDevice, 0 /* Instance */, uAudioLUN, "AudioVRDE");
-            rc = mAudioVRDE->Configure(&Cfg, RT_BOOL(fVRDEEnabled) /* Attach */);
-            if (   RT_SUCCESS(rc)
-                && fVRDEEnabled) /* Successfully configured, use next LUN for drivers below. */
-            {
-                uAudioLUN++;
-            }
+            AudioDriverCfg DrvCfgVRDE(strAudioDevice, 0 /* Instance */, "AudioVRDE");
+            rc = mAudioVRDE->Initialize(&DrvCfgVRDE);
+            AssertRC(rc);
 #endif /* VBOX_WITH_AUDIO_VRDE */
 
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
-            Display *pDisplay = i_getDisplay();
-            if (pDisplay)
-            {
-                /* Note: Don't do any driver attaching (fAttachDetach) here, as this will
-                 *       be done automatically as part of the VM startup process. */
-                rc = pDisplay->i_videoRecConfigure(pDisplay, pDisplay->i_videoRecGetConfig(), false /* fAttachDetach */,
-                                                   &uAudioLUN);
-                if (RT_SUCCESS(rc)) /* Successfully configured, use next LUN for drivers below. */
-                    uAudioLUN++;
-            }
+            AudioDriverCfg DrvCfgVideoRec(strAudioDevice, 0 /* Instance */, "AudioVideoRec");
+            rc = mAudioVideoRec->Initialize(&DrvCfgVideoRec);
+            AssertRC(rc);
 #endif /* VBOX_WITH_AUDIO_VIDEOREC */
 
             if (fDebugEnabled)

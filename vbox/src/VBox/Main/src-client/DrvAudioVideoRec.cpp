@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 70038 2017-12-08 17:02:17Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 70563 2018-01-12 17:52:10Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -1015,8 +1015,8 @@ static DECLCALLBACK(void *) drvAudioVideoRecQueryInterface(PPDMIBASE pInterface,
 
 
 AudioVideoRec::AudioVideoRec(Console *pConsole)
-    : mpDrv(NULL)
-    , mpConsole(pConsole)
+    : AudioDriver(pConsole)
+    , mpDrv(NULL)
 {
 }
 
@@ -1028,6 +1028,13 @@ AudioVideoRec::~AudioVideoRec(void)
         mpDrv->pAudioVideoRec = NULL;
         mpDrv = NULL;
     }
+}
+
+
+void AudioVideoRec::configureDriver(PCFGMNODE pLunCfg)
+{
+    CFGMR3InsertInteger(pLunCfg, "Object",        (uintptr_t)mpConsole->i_getAudioVideoRec());
+    CFGMR3InsertInteger(pLunCfg, "ObjectConsole", (uintptr_t)mpConsole);
 }
 
 
