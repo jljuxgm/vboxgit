@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 68176 2017-07-29 15:50:25Z vboxsync $ */
+/* $Id: UITabBar.cpp 68179 2017-07-29 16:27:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -250,7 +250,7 @@ void UITabBarItem::prepare()
         const int iMetricCloseButton = iMetric * 2 / 3;
 
         /* Configure layout: */
-        m_pLayout->setContentsMargins(iMargin, 0, iMargin, 0);
+        m_pLayout->setContentsMargins(iMargin + iSpacing, 0, iMargin, 0);
         m_pLayout->setSpacing(iSpacing);
 
         /* Create icon label: */
