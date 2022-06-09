@@ -1,4 +1,4 @@
-/* $Id: nt.h 69688 2017-11-14 14:44:25Z vboxsync $ */
+/* $Id: nt.h 69691 2017-11-14 15:27:52Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -263,6 +263,8 @@ RTDECL(int) RTNtPathOpen(const char *pszPath, ACCESS_MASK fDesiredAccess, ULONG 
                           PHANDLE phHandle, PULONG_PTR puDisposition);
 RTDECL(int) RTNtPathOpenDir(const char *pszPath, ACCESS_MASK fDesiredAccess, ULONG fShareAccess, ULONG fCreateOptions,
                             ULONG fObjAttribs, PHANDLE phHandle, bool *pfObjDir);
+RTDECL(int) RTNtPathOpenDirEx(HANDLE hRootDir, struct _UNICODE_STRING *pNtName, ACCESS_MASK fDesiredAccess,
+                              ULONG fShareAccess, ULONG fCreateOptions, ULONG fObjAttribs, PHANDLE phHandle, bool *pfObjDir);
 RTDECL(int) RTNtPathClose(HANDLE hHandle);
 
 /**

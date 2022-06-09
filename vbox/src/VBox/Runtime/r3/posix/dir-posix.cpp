@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: dir-posix.cpp 69691 2017-11-14 15:27:52Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -223,9 +223,11 @@ size_t rtDirNativeGetStructSize(const char *pszPath)
 }
 
 
-int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf)
+int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf, uintptr_t hRelativeDir, void *pvNativeRelative)
 {
     NOREF(pszPathBuf); /* only used on windows */
+    NOREF(hRelativeDir);
+    NOREF(pvNativeRelative);
 
     /*
      * Convert to a native path and try opendir.
