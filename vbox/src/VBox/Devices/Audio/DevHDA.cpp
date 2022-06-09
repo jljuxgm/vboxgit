@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 71723 2018-04-06 21:08:00Z vboxsync $ */
+/* $Id: DevHDA.cpp 71724 2018-04-06 21:11:13Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -4704,7 +4704,7 @@ static DECLCALLBACK(int) hdaDestruct(PPDMDEVINS pDevIns)
 {
     PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns);
     PHDASTATE pThis = PDMINS_2_DATA(pDevIns, PHDASTATE);
-    DEVHDA_LOCK(pThis);
+    DEVHDA_LOCK(pThis); /** @todo r=bird: this will fail on early constructor failure. */
 
     PHDADRIVER pDrv;
     while (!RTListIsEmpty(&pThis->lstDrv))
