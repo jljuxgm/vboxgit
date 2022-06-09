@@ -1,4 +1,4 @@
-/* $Id: mach-o.h 69105 2017-10-17 10:20:49Z vboxsync $ */
+/* $Id: mach-o.h 69649 2017-11-10 17:30:17Z vboxsync $ */
 /** @file
  * IPRT - Mach-O Structures and Constants.
  */
@@ -566,6 +566,8 @@ typedef struct macho_nlist_64
 #define N_WEAK_REF                  UINT16_C(0x0040)
 #define N_WEAK_DEF                  UINT16_C(0x0080)
 #define N_REF_TO_WEAK               UINT16_C(0x0080)
+#define N_SYMBOL_RESOLVER           UINT16_C(0x0100)
+#define N_ALT_ENTRY                 UINT16_C(0x0200)
 
 typedef struct macho_relocation_info
 {
