@@ -1,4 +1,4 @@
-/* $Id: VBoxAcpi.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxAcpi.cpp 72303 2018-05-23 15:35:45Z vboxsync $ */
 /** @file
  * VBoxAcpi - VirtualBox ACPI manipulation functionality.
  */
@@ -42,8 +42,8 @@
 #else
 /* Statically compiled AML */
 # include <vboxaml.hex>
-# include <vboxssdt-standard.hex>
-# include <vboxssdt-cpuhotplug.hex>
+# include <vboxssdt_standard.hex>
+# include <vboxssdt_cpuhotplug.hex>
 #endif
 
 #include "VBoxDD.h"
