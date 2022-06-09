@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 69958 2017-12-06 13:56:44Z vboxsync $ */
+/* $Id: UISession.cpp 70009 2017-12-08 11:02:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1778,7 +1778,8 @@ void UISession::setPointerShape(const uchar *pShapeData, bool fHasAlpha,
 
     /* Create cursor-pixmap from the image: */
     QPixmap cursorPixmap = QPixmap::fromImage(image);
-# ifdef VBOX_WS_MAC
+
+# if defined(VBOX_WS_MAC)
     /* Adjust device-pixel-ratio: */
     /// @todo In case of multi-monitor setup check whether device-pixel-ratio and cursor are screen specific.
     /* Get screen-id of main-window: */
@@ -1792,7 +1793,23 @@ void UISession::setPointerShape(const uchar *pShapeData, bool fHasAlpha,
         uYHot /= dDevicePixelRatio;
         cursorPixmap.setDevicePixelRatio(dDevicePixelRatio);
     }
-# endif /* VBOX_WS_MAC */
+# elif defined(VBOX_WS_X11)
+    /* Adjust device-pixel-ratio: */
+    /// @todo In case of multi-monitor setup check whether device-pixel-ratio and cursor are screen specific.
+    /* Get screen-id of main-window: */
+    const ulong uScreenID = machineLogic()->activeMachineWindow()->screenId();
+    /* Get device-pixel-ratio: */
+    const double dDevicePixelRatio = frameBuffer(uScreenID)->devicePixelRatio();
+    /* Adjust device-pixel-ratio if necessary: */
+    if (dDevicePixelRatio > 1.0 && !frameBuffer(uScreenID)->useUnscaledHiDPIOutput())
+    {
+        uXHot *= dDevicePixelRatio;
+        uYHot *= dDevicePixelRatio;
+        cursorPixmap = cursorPixmap.scaled(cursorPixmap.width() * dDevicePixelRatio, cursorPixmap.height() * dDevicePixelRatio,
+                                           Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    }
+# endif /* VBOX_WS_X11 */
+
     /* Set the new cursor: */
     m_cursor = QCursor(cursorPixmap, uXHot, uYHot);
     m_fIsValidPointerShapePresent = true;
