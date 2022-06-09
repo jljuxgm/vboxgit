@@ -1,4 +1,4 @@
-/* $Id: vcc100-kernel32-fakes.cpp 70341 2017-12-26 14:42:28Z vboxsync $ */
+/* $Id: vcc100-kernel32-fakes.cpp 70343 2017-12-26 14:43:11Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-//#define RT_NO_STRICT /* Minimal deps so that it works on NT 3.51 too. */
+#define RT_NO_STRICT /* Minimal deps so that it works on NT 3.51 too. */
 #include <iprt/cdefs.h>
 #include <iprt/types.h>
 #include <iprt/asm.h>
