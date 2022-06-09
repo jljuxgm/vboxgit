@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 70057 2017-12-11 14:40:43Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 70145 2017-12-15 12:52:29Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -953,7 +953,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmHandleIOIntercept(PVMCPU pVCpu, uint16_t u16Port, 
                                                 uint8_t cAddrSizeBits, uint8_t iEffSeg, bool fRep, bool fStrIo, uint8_t cbInstr)
 {
     Assert(IEM_IS_SVM_CTRL_INTERCEPT_SET(pVCpu, SVM_CTRL_INTERCEPT_IOIO_PROT));
-    Assert(cAddrSizeBits == 0 || cAddrSizeBits == 16 || cAddrSizeBits == 32 || cAddrSizeBits == 64);
+    Assert(cAddrSizeBits == 16 || cAddrSizeBits == 32 || cAddrSizeBits == 64);
     Assert(cbReg == 1 || cbReg == 2 || cbReg == 4 || cbReg == 8);
 
     Log3(("iemSvmHandleIOIntercept: u16Port=%#x (%u)\n", u16Port, u16Port));
