@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
+/* $Id: AudioMixer.cpp 70640 2018-01-19 12:14:12Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -587,6 +587,9 @@ int AudioMixerSinkCreateStream(PAUDMIXSINK pSink,
     AssertPtrReturn(pCfg,  VERR_INVALID_POINTER);
     /** @todo Validate fFlags. */
     /* ppStream is optional. */
+
+    if (pConn->pfnGetStatus(pConn, PDMAUDIODIR_ANY) == PDMAUDIOBACKENDSTS_NOT_ATTACHED)
+        return VERR_AUDIO_BACKEND_NOT_ATTACHED;
 
     PAUDMIXSTREAM pMixStream = (PAUDMIXSTREAM)RTMemAllocZ(sizeof(AUDMIXSTREAM));
     if (!pMixStream)
