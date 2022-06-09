@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 69824 2017-11-24 12:50:34Z vboxsync $ */
+/* $Id: UIIconPool.cpp 69825 2017-11-24 15:07:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -253,7 +253,7 @@ void UIIconPool::addName(QIcon &icon, const QString &strName,
     QString strPrefix = strName.section('.', 0, -2);
     QString strSuffix = strName.section('.', -1, -1);
     /* Prepare HiDPI pixmap on the basis of values above: */
-    QPixmap pixmapHiDPI(strPrefix + "_hidpi." + strSuffix);
+    QPixmap pixmapHiDPI(strPrefix + "_x2." + strSuffix);
     /* Add HiDPI pixmap (if any): */
     if (!pixmapHiDPI.isNull())
         icon.addPixmap(pixmapHiDPI, mode, state);
