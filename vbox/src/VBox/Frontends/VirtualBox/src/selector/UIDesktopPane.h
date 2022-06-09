@@ -1,4 +1,4 @@
-/* $Id: UIDesktopPane.h 63952 2016-09-22 14:33:40Z vboxsync $ */
+/* $Id: UIDesktopPane.h 68157 2017-07-28 14:34:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopPane class declaration.
  */
@@ -37,7 +37,7 @@ public:
 
     /** Constructs desktop pane passing @a pParent to the base-class.
       * @param  pRefreshAction  Brings the refresh action reference. */
-    UIDesktopPane(QAction *pRefreshAction, QWidget *pParent);
+    UIDesktopPane(QAction *pRefreshAction, QWidget *pParent = 0);
 
     /** Updates @a strText details and switches to text details pane. */
     void updateDetailsText(const QString &strText);
