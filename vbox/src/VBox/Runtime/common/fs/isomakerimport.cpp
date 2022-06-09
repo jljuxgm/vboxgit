@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 67512 2017-06-20 14:51:54Z vboxsync $ */
+/* $Id: isomakerimport.cpp 67515 2017-06-20 16:13:22Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -529,7 +529,7 @@ static int rtFsIsoImportProcessIso9660TreeWorker(PRTFSISOMKIMPORTER pThis, uint3
             if (pDirRec->fFileFlags & ISO9660_FILE_FLAGS_DIRECTORY)
             {
                 rc = RTFsIsoMakerAddUnnamedDir(pThis->hIsoMaker, &idxObj);
-                Log3(("  --> added directory #%#x'\n", idxObj));
+                Log3(("  --> added directory #%#x\n", idxObj));
                 if (RT_SUCCESS(rc))
                     pThis->pResults->cAddedDirs++;
             }
