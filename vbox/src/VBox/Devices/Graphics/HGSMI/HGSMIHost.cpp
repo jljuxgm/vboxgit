@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HGSMIHost.cpp 70596 2018-01-15 22:46:29Z vboxsync $ */
 /** @file
  *
  * VBox Host Guest Shared Memory Interface (HGSMI).
@@ -1457,13 +1457,13 @@ int HGSMIHostChannelRegister(PHGSMIINSTANCE pIns,
     AssertPtrReturn(pIns, VERR_INVALID_PARAMETER);
     AssertPtrReturn(pfnChannelHandler, VERR_INVALID_PARAMETER);
 
-    int rc = hgsmiLock (pIns);
+    int rc = hgsmiLock(pIns);
 
-    if (RT_SUCCESS (rc))
+    if (RT_SUCCESS(rc))
     {
-        rc = HGSMIChannelRegister (&pIns->channelInfo, u8Channel, NULL, pfnChannelHandler, pvChannelHandler);
+        rc = HGSMIChannelRegister(&pIns->channelInfo, u8Channel, NULL, pfnChannelHandler, pvChannelHandler);
 
-        hgsmiUnlock (pIns);
+        hgsmiUnlock(pIns);
     }
 
     LogFlowFunc(("leave rc = %Rrc\n", rc));

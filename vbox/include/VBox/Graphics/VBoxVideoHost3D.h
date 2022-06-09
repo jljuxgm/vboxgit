@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHost3D.h 69686 2017-11-14 13:29:33Z vboxsync $ */
+/* $Id: VBoxVideoHost3D.h 70596 2018-01-15 22:46:29Z vboxsync $ */
 /** @file
  * VirtualBox 3D host inter-components interfaces
  */
@@ -149,7 +149,7 @@ typedef struct VBOXCRCMDCTL
     VBOXCRCMDCTL_CALLOUT_LIST CalloutList;
     union
     {
-        void (*pfnInternal)(void);
+        PFNRT  pfnInternal;
         void  *pvInternal;
     } u;
 } VBOXCRCMDCTL;

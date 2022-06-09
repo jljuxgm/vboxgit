@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 70563 2018-01-12 17:52:10Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 70596 2018-01-15 22:46:29Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3696,7 +3696,7 @@ DECLCALLBACK(void)  Display::i_displayCrHgcmCtlSubmitCompletion(int32_t result, 
                                                                 void *pvContext)
 {
     RT_NOREF(u32Function);
-    VBOXCRCMDCTL *pCmd = (VBOXCRCMDCTL*)pParam->u.pointer.addr;
+    VBOXCRCMDCTL *pCmd = (VBOXCRCMDCTL *)pParam->u.pointer.addr;
     if (pCmd->u.pfnInternal)
         ((PFNCRCTLCOMPLETION)pCmd->u.pfnInternal)(pCmd, pParam->u.pointer.size, result, pvContext);
 }
@@ -3718,7 +3718,7 @@ int  Display::i_handleCrHgcmCtlSubmit(struct VBOXCRCMDCTL* pCmd, uint32_t cbCmd,
     parm.u.pointer.addr = pCmd;
     parm.u.pointer.size = cbCmd;
 
-    pCmd->u.pfnInternal = (void(*)())pfnCompletion;
+    pCmd->u.pfnInternal = (PFNRT)pfnCompletion;
     int rc = pVMMDev->hgcmHostFastCallAsync(mhCrOglSvc, SHCRGL_HOST_FN_CTL, &parm, i_displayCrHgcmCtlSubmitCompletion,
                                             pvCompletion);
     if (!RT_SUCCESS(rc))
