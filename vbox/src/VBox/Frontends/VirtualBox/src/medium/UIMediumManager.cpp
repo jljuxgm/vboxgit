@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 72385 2018-05-29 14:48:44Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 72662 2018-06-22 11:58:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -393,8 +393,8 @@ void UIMediumManagerWidget::sltApplyMediumDetailsChanges()
         else
         {
             /* Show resize storage progress: */
-            msgCenter().showModalProgressDialog(comProgress, UIMediumManager::tr("Moving medium..."),
-                                                ":/progress_media_move_90px.png", this);
+            msgCenter().showModalProgressDialog(comProgress, UIMediumManager::tr("Resizing medium..."),
+                                                ":/progress_media_resize_90px.png", this);
 
             /* Show error message if necessary: */
             if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
