@@ -1,4 +1,4 @@
-/* $Id: DBGFR3PlugIn.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: DBGFR3PlugIn.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Plug-In Support.
  */
@@ -471,7 +471,7 @@ VMMR3DECL(void) DBGFR3PlugInLoadAll(PUVM pUVM)
     strcat(szPath, pszSuff);
 
     PRTDIR pDir;
-    rc = RTDirOpenFiltered(&pDir, szPath, RTDIRFILTER_WINNT, 0);
+    rc = RTDirOpenFiltered(&pDir, szPath, RTDIRFILTER_WINNT, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
         /*

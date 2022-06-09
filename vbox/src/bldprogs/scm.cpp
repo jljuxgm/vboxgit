@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69510 2017-10-28 19:04:38Z vboxsync $ */
+/* $Id: scm.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2297,7 +2297,7 @@ static int scmProcessDirTreeRecursion(char *pszBuf, size_t cchDir, PRTDIRENTRY p
      * Try open and read the directory.
      */
     PRTDIR pDir;
-    rc = RTDirOpenFiltered(&pDir, pszBuf, RTDIRFILTER_NONE, 0);
+    rc = RTDirOpenFiltered(&pDir, pszBuf, RTDIRFILTER_NONE, 0 /*fFlags*/);
     if (RT_FAILURE(rc))
     {
         RTMsgError("Failed to enumerate directory '%s': %Rrc", pszBuf, rc);
@@ -2759,7 +2759,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69510 $";
+                static const char s_szRev[] = "$Revision: 69674 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;

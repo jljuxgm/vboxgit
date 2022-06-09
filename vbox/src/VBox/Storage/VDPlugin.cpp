@@ -1,4 +1,4 @@
-/* $Id: VDPlugin.cpp 69230 2017-10-24 15:27:30Z vboxsync $ */
+/* $Id: VDPlugin.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation, plugin related bits.
  */
@@ -644,7 +644,7 @@ DECLHIDDEN(int) vdPluginLoadFromPath(const char *pszPath)
     PRTDIRENTRYEX pPluginDirEntry = NULL;
     PRTDIR pPluginDir = NULL;
     size_t cbPluginDirEntry = sizeof(RTDIRENTRYEX);
-    int rc = RTDirOpenFiltered(&pPluginDir, pszPluginFilter, RTDIRFILTER_WINNT, 0);
+    int rc = RTDirOpenFiltered(&pPluginDir, pszPluginFilter, RTDIRFILTER_WINNT, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
         pPluginDirEntry = (PRTDIRENTRYEX)RTMemAllocZ(sizeof(RTDIRENTRYEX));
@@ -767,7 +767,7 @@ DECLHIDDEN(int) vdPluginUnloadFromPath(const char *pszPath)
     PRTDIRENTRYEX pPluginDirEntry = NULL;
     PRTDIR pPluginDir = NULL;
     size_t cbPluginDirEntry = sizeof(RTDIRENTRYEX);
-    int rc = RTDirOpenFiltered(&pPluginDir, pszPluginFilter, RTDIRFILTER_WINNT, 0);
+    int rc = RTDirOpenFiltered(&pPluginDir, pszPluginFilter, RTDIRFILTER_WINNT, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
         pPluginDirEntry = (PRTDIRENTRYEX)RTMemAllocZ(sizeof(RTDIRENTRYEX));

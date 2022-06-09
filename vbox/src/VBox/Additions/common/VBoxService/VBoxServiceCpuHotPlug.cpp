@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceCpuHotPlug.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxServiceCpuHotPlug.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions CPU Hot-Plugging Service.
  */
@@ -195,7 +195,7 @@ static int vgsvcCpuHotPlugProbePath(void)
                 char *pszPathTmp = RTPathJoinA(pszPath, pPathComponent->pcszName);
                 if (pszPathTmp)
                 {
-                    rc = RTDirOpenFiltered(&pDirCurr, pszPathTmp, RTDIRFILTER_WINNT, 0);
+                    rc = RTDirOpenFiltered(&pDirCurr, pszPathTmp, RTDIRFILTER_WINNT, 0 /*fFlags*/);
                     RTStrFree(pszPathTmp);
                 }
                 else
@@ -288,7 +288,7 @@ static int vgsvcCpuHotPlugGetACPIDevicePath(char **ppszPath, uint32_t idCpuCore,
         }
 
         /* Open the directory */
-        rc = RTDirOpenFiltered(&pAcpiCpuPathLvl->pDir, pszPath, RTDIRFILTER_WINNT, 0);
+        rc = RTDirOpenFiltered(&pAcpiCpuPathLvl->pDir, pszPath, RTDIRFILTER_WINNT, 0 /*fFlags*/);
         if (RT_SUCCESS(rc))
         {
             RTStrFree(pszPath);
@@ -377,7 +377,7 @@ static int vgsvcCpuHotPlugGetACPIDevicePath(char **ppszPath, uint32_t idCpuCore,
                         VGSvcVerbose(3, "New path %s\n", pszPathDir);
 
                         /* Open the directory */
-                        rc = RTDirOpenFiltered(&pAcpiCpuPathLvl->pDir, pszPathDir, RTDIRFILTER_WINNT, 0);
+                        rc = RTDirOpenFiltered(&pAcpiCpuPathLvl->pDir, pszPathDir, RTDIRFILTER_WINNT, 0 /*fFlags*/);
                         if (RT_FAILURE(rc))
                             break;
                     }

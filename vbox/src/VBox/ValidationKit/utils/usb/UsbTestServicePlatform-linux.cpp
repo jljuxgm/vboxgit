@@ -1,4 +1,4 @@
-/* $Id: UsbTestServicePlatform-linux.cpp 69227 2017-10-24 15:19:58Z vboxsync $ */
+/* $Id: UsbTestServicePlatform-linux.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Platform
  *               specific helpers - Linux version.
@@ -125,7 +125,7 @@ static int utsPlatformLnxDummyHcdQueryBusses(PUTSPLATFORMLNXDUMMYHCD pHcd, const
         return VERR_BUFFER_OVERFLOW;
 
     PRTDIR pDir = NULL;
-    rc = RTDirOpenFiltered(&pDir, aszPath, RTDIRFILTER_WINNT, 0);
+    rc = RTDirOpenFiltered(&pDir, aszPath, RTDIRFILTER_WINNT, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
         do
@@ -205,7 +205,7 @@ static int utsPlatformLnxHcdScanByName(const char *pszHcdName, const char *pszUd
 
     /* Enumerate the available HCD and their bus numbers. */
     PRTDIR pDir = NULL;
-    int rc = RTDirOpenFiltered(&pDir, aszPath, RTDIRFILTER_WINNT, 0);
+    int rc = RTDirOpenFiltered(&pDir, aszPath, RTDIRFILTER_WINNT, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
         unsigned idxHcdCur = g_cDummyHcd;

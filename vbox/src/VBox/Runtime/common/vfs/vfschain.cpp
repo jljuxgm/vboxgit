@@ -1,4 +1,4 @@
-/* $Id: vfschain.cpp 69630 2017-11-09 15:48:37Z vboxsync $ */
+/* $Id: vfschain.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Chains.
  */
@@ -1186,8 +1186,7 @@ RTDECL(int) RTVfsChainOpenDir(const char *pszSpec, uint32_t fOpen,
     /*
      * Path to regular file system.
      */
-    /** @todo implement system specific standard VFS directory class. */
-    rc = VERR_NOT_IMPLEMENTED;
+    rc = RTVfsDirOpenNormal(pszSpec, fOpen, phVfsDir);
 
     RTVfsChainSpecFree(pSpec);
     return rc;

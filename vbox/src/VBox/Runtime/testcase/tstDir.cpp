@@ -1,4 +1,4 @@
-/* $Id: tstDir.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstDir.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
 /** @file
  * IPRT Testcase - Directory listing.
  */
@@ -85,7 +85,7 @@ int main(int argc, char **argv)
             if (!fFiltered)
                 rc = RTDirOpen(&pDir, argv[i]);
             else
-                rc = RTDirOpenFiltered(&pDir, argv[i], RTDIRFILTER_WINNT, 0);
+                rc = RTDirOpenFiltered(&pDir, argv[i], RTDIRFILTER_WINNT, 0 /*fFlags*/);
             if (RT_SUCCESS(rc))
             {
                 /* list */

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 69674 2017-11-13 15:29:43Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -623,6 +623,7 @@ RuntimeR3_SOURCES       = \
 	common/vfs/vfsmsg.cpp \
 	common/vfs/vfsprogress.cpp \
 	common/vfs/vfsreadahead.cpp \
+	common/vfs/vfsstddir.cpp \
 	common/vfs/vfsstdfile.cpp \
 	common/vfs/vfsstdpipe.cpp \
 	common/zip/tar.cpp \
@@ -678,6 +679,7 @@ RuntimeR3_SOURCES       = \
 	r3/testi.cpp \
 	r3/tcp.cpp \
 	r3/udp.cpp \
+	r3/generic/dirrel-r3-generic.cpp \
 	r3/generic/semspinmutex-r3-generic.cpp \
 	r3/xml.cpp \
 	common/zip/xarvfs.cpp
