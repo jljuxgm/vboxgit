@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.cpp 70873 2018-02-05 18:13:55Z vboxsync $ */
+/* $Id: VBoxMPUtils.cpp 71196 2018-03-05 10:38:29Z vboxsync $ */
 /** @file
  * VBox Miniport utils
  */
@@ -27,13 +27,8 @@
 /* specifies whether the vboxVDbgBreakF should break in the debugger
  * windbg seems to have some issues when there is a lot ( >32) of sw breakpoints defined
  * to simplify things we just insert breaks for the case of intensive debugging WDDM driver*/
-#ifndef VBOX_WDDM_WIN8
 int g_bVBoxVDbgBreakF = 0;
 int g_bVBoxVDbgBreakFv = 0;
-#else
-int g_bVBoxVDbgBreakF = 0;
-int g_bVBoxVDbgBreakFv = 0;
-#endif
 #endif
 
 #pragma alloc_text(PAGE, VBoxQueryWinVersion)

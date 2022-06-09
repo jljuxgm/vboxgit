@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVModes.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMPVModes.cpp 71196 2018-03-05 10:38:29Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -220,9 +220,7 @@ int vboxWddmVModesAdd(PVBOXMP_DEVEXT pExt, VBOXWDDM_VMODES *pModes, uint32_t u32
 
     ULONG vramSize = vboxWddmVramCpuVisibleSegmentSize(pExt);
     vramSize /= pExt->u.primary.commonInfo.cDisplays;
-# ifdef VBOX_WDDM_WIN8
     if (!g_VBoxDisplayOnly)
-# endif
     {
         /* at least two surfaces will be needed: primary & shadow */
         vramSize /= 2;

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidModes.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMPVidModes.cpp 71196 2018-03-05 10:38:29Z vboxsync $ */
 /** @file
  * VBox Miniport video modes related functions
  */
@@ -278,9 +278,7 @@ VBoxMPFillModesTable(PVBOXMP_DEVEXT pExt, int iDisplay, PVIDEO_MODE_INFORMATION 
 #else
     ULONG vramSize = vboxWddmVramCpuVisibleSegmentSize(pExt);
     vramSize /= pExt->u.primary.commonInfo.cDisplays;
-# ifdef VBOX_WDDM_WIN8
     if (!g_VBoxDisplayOnly)
-# endif
     {
         /* at least two surfaces will be needed: primary & shadow */
         vramSize /= 2;
@@ -606,9 +604,7 @@ VBoxMPValidateVideoModeParams(PVBOXMP_DEVEXT pExt, uint32_t iDisplay, uint32_t &
 #else
     ULONG vramSize = vboxWddmVramCpuVisibleSegmentSize(pExt);
     vramSize /= pExt->u.primary.commonInfo.cDisplays;
-# ifdef VBOX_WDDM_WIN8
     if (!g_VBoxDisplayOnly)
-# endif
     {
         /* at least two surfaces will be needed: primary & shadow */
         vramSize /= 2;

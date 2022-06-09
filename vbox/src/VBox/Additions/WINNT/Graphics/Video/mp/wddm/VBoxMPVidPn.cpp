@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 71196 2018-03-05 10:38:29Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -2259,12 +2259,11 @@ NTSTATUS vboxVidPnSetupSourceInfo(PVBOXMP_DEVEXT pDevExt, CONST D3DKMDT_VIDPN_SO
             fChanges |= VBOXWDDM_HGSYNC_F_SYNCED_DIMENSIONS;
             pSource->AllocData.SurfDesc.cbSize = pVidPnSourceModeInfo->Format.Graphics.Stride * pVidPnSourceModeInfo->Format.Graphics.PrimSurfSize.cy;
         }
-#ifdef VBOX_WDDM_WIN8
+
         if (g_VBoxDisplayOnly)
         {
             vboxWddmDmSetupDefaultVramLocation(pDevExt, VidPnSourceId, paSources);
         }
-#endif
     }
     else
     {
@@ -2273,10 +2272,8 @@ NTSTATUS vboxVidPnSetupSourceInfo(PVBOXMP_DEVEXT pDevExt, CONST D3DKMDT_VIDPN_SO
         fChanges |= VBOXWDDM_HGSYNC_F_SYNCED_ALL;
     }
 
-#ifdef VBOX_WDDM_WIN8
     Assert(!g_VBoxDisplayOnly || !pAllocation);
     if (!g_VBoxDisplayOnly)
-#endif
     {
         vboxWddmAssignPrimary(pSource, pAllocation, VidPnSourceId);
     }
