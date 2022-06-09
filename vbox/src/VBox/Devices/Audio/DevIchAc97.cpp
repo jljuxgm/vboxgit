@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 68903 2017-09-28 09:56:21Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 68904 2017-09-28 10:00:04Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -3509,6 +3509,8 @@ static int ichac97AttachInternal(PAC97STATE pThis, unsigned uLUN, uint32_t fFlag
  */
 static int ichac97DetachInternal(PAC97STATE pThis, PAC97DRIVER pDrv, uint32_t fFlags)
 {
+    RT_NOREF(fFlags);
+
     AudioMixerSinkRemoveStream(pThis->pSinkMicIn,  pDrv->MicIn.pMixStrm);
     AudioMixerStreamDestroy(pDrv->MicIn.pMixStrm);
     pDrv->MicIn.pMixStrm = NULL;
@@ -3542,9 +3544,6 @@ static DECLCALLBACK(int) ichac97Attach(PPDMDEVINS pDevIns, unsigned uLUN, uint32
     int rc2 = ichac97AttachInternal(pThis, uLUN, fFlags, &pDrv);
     if (RT_SUCCESS(rc2))
     {
-        PPDMIAUDIOCONNECTOR pCon = pDrv->pConnector;
-        AssertPtr(pCon);
-
         if (DrvAudioHlpStreamCfgIsValid(&pThis->StreamLineIn.State.Cfg))
         {
             rc2 = ichac97MixerAddDrvStream(pThis, pThis->pSinkLineIn, &pThis->StreamLineIn.State.Cfg, pDrv);
