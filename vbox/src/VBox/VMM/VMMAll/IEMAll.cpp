@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 70643 2018-01-19 12:19:32Z vboxsync $ */
+/* $Id: IEMAll.cpp 70733 2018-01-25 04:51:06Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -13915,7 +13915,7 @@ IEM_STATIC void iemExecVerificationModeSetup(PVMCPU pVCpu)
     pVCpu->iem.s.uInjectCpl = UINT8_MAX;
     /** @todo Maybe someday we can centralize this under CPUMCanInjectInterrupt()? */
 #if defined(VBOX_WITH_NESTED_HWVIRT)
-    bool fIntrEnabled = pOrgCtx->hwvirt.svm.fGif;
+    bool fIntrEnabled = pOrgCtx->hwvirt.Gif;
     if (fIntrEnabled)
     {
         if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
@@ -15276,7 +15276,7 @@ VMMDECL(VBOXSTRICTRC) IEMExecLots(PVMCPU pVCpu, uint32_t *pcInstructions)
 
     /** @todo Maybe someday we can centralize this under CPUMCanInjectInterrupt()? */
 #if defined(VBOX_WITH_NESTED_HWVIRT)
-    bool fIntrEnabled = pCtx->hwvirt.svm.fGif;
+    bool fIntrEnabled = pCtx->hwvirt.Gif;
     if (fIntrEnabled)
     {
         if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
@@ -15342,7 +15342,7 @@ VMMDECL(VBOXSTRICTRC) IEMExecLots(PVMCPU pVCpu, uint32_t *pcInstructions)
 
     /** @todo Can we centralize this under CPUMCanInjectInterrupt()? */
 #if defined(VBOX_WITH_NESTED_HWVIRT)
-    bool fIntrEnabled = pCtx->hwvirt.svm.fGif;
+    bool fIntrEnabled = pCtx->hwvirt.fGif;
     if (fIntrEnabled)
     {
         if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
