@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneGlobal.h 68200 2017-07-31 12:41:10Z vboxsync $ */
+/* $Id: UIToolsPaneGlobal.h 68221 2017-08-01 16:04:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneGlobal class declaration.
  */
@@ -58,6 +58,8 @@ public:
     /** Destructs tools pane. */
     virtual ~UIToolsPaneGlobal() /* override */;
 
+    /** Returns type of tool currently opened. */
+    ToolTypeGlobal currentTool() const;
     /** Returns whether tool of particular @a enmType is opened. */
     bool isToolOpened(ToolTypeGlobal enmType) const;
     /** Activates tool of passed @a enmType, creates new one if necessary. */

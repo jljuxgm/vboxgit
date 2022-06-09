@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.h 68175 2017-07-29 14:41:24Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.h 68221 2017-08-01 16:04:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class declaration.
  */
@@ -69,6 +69,8 @@ public:
     /** Destructs tools pane. */
     virtual ~UIToolsPaneMachine() /* override */;
 
+    /** Returns type of tool currently opened. */
+    ToolTypeMachine currentTool() const;
     /** Returns whether tool of particular @a enmType is opened. */
     bool isToolOpened(ToolTypeMachine enmType) const;
     /** Activates tool of passed @a enmType, creates new one if necessary. */

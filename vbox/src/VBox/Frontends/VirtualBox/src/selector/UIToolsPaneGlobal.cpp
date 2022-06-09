@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneGlobal.cpp 68200 2017-07-31 12:41:10Z vboxsync $ */
+/* $Id: UIToolsPaneGlobal.cpp 68221 2017-08-01 16:04:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneGlobal class implementation.
  */
@@ -51,6 +51,11 @@ UIToolsPaneGlobal::~UIToolsPaneGlobal()
 {
     /* Cleanup: */
     cleanup();
+}
+
+ToolTypeGlobal UIToolsPaneGlobal::currentTool() const
+{
+    return m_pLayout->currentWidget()->property("ToolType").value<ToolTypeGlobal>();
 }
 
 bool UIToolsPaneGlobal::isToolOpened(ToolTypeGlobal enmType) const
