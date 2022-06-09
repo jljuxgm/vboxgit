@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsButton.h 69640 2017-11-10 12:27:15Z vboxsync $ */
+/* $Id: UIGraphicsButton.h 69641 2017-11-10 12:31:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsButton class declaration.
  */
@@ -29,14 +29,6 @@ class QGraphicsSceneMouseEvent;
 class QGraphicsSceneHoverEvent;
 class QPropertyAnimation;
 
-/* Graphics-button types: */
-enum UIGraphicsButtonType
-{
-    UIGraphicsButtonType_Iconified,
-    UIGraphicsButtonType_DirectArrow,
-    UIGraphicsButtonType_RoundArrow
-};
-
 /* Graphics-button representation: */
 class UIGraphicsButton : public QIGraphicsWidget
 {
@@ -51,7 +43,6 @@ public:
 
     /* Constructor: */
     UIGraphicsButton(QIGraphicsWidget *pParent, const QIcon &icon);
-    UIGraphicsButton(QIGraphicsWidget *pParent, UIGraphicsButtonType buttonType);
 
     /* API: Parent stuff: */
     void setParentSelected(bool fParentSelected);
