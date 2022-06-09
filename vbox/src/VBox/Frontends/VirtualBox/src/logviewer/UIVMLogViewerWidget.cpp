@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 71683 2018-04-05 13:07:14Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 71684 2018-04-05 13:13:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -200,12 +200,16 @@ void UIVMLogViewerWidget::sltRefresh()
     /* Apply the filter settings: */
     if (m_pFilterPanel)
         m_pFilterPanel->applyFilter();
+
     /* Restore the bookmarks: */
-    for (int i = 0; i < !noLogsToShow && m_pTabWidget->count(); ++i)
+    if (!noLogsToShow)
     {
-        UIVMLogPage *pLogPage = qobject_cast<UIVMLogPage*>(m_pTabWidget->widget(i));
-        if (pLogPage && i < logPageBookmarks.size())
-            pLogPage->setBookmarkVector(logPageBookmarks[i]);
+        for (int i = 0; i <  m_pTabWidget->count(); ++i)
+        {
+            UIVMLogPage *pLogPage = qobject_cast<UIVMLogPage*>(m_pTabWidget->widget(i));
+            if (pLogPage && i < logPageBookmarks.size())
+                pLogPage->setBookmarkVector(logPageBookmarks[i]);
+        }
     }
 
     /* Setup this connection after refresh to avoid initial signals during page creation: */
