@@ -1,4 +1,4 @@
-/* $Id: alloc.cpp 69971 2017-12-07 11:16:53Z vboxsync $ */
+/* $Id: alloc.cpp 69973 2017-12-07 11:24:55Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation.
  */
@@ -28,7 +28,6 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-#define RTMEMALLOC_USE_TRACKER
 #if defined(RTMEM_WRAP_TO_EF_APIS) && !defined(RTMEM_NO_WRAP_TO_EF_APIS)
 # undef RTMEM_WRAP_TO_EF_APIS
 # define RTALLOC_USE_EFENCE 1
