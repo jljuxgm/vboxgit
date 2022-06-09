@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 69053 2017-10-11 19:12:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -72,7 +72,7 @@
 #include <VBox/param.h>
 #include <VBox/vmm/pdmapi.h> /* For PDMR3DriverAttach/PDMR3DriverDetach. */
 #include <VBox/vmm/pdmusb.h> /* For PDMR3UsbCreateEmulatedDevice. */
-#include <VBox/vmm/apic.h>   /* For APICMODE enum. */
+#include <VBox/vmm/pdmdev.h> /* For PDMAPICMODE enum. */
 #include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/version.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
