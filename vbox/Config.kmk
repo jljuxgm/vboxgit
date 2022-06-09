@@ -1,4 +1,4 @@
-# $Id: Config.kmk 72152 2018-05-08 06:17:30Z vboxsync $
+# $Id: Config.kmk 72210 2018-05-15 04:12:37Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -407,13 +407,15 @@ VBOX_WITH_DEBUGGER_GUI = 1
 VBOX_WITH_2ND_IEM_STEP = 1
 # Enables the third step using IEM (the interpreter).
 VBOX_WITH_3RD_IEM_STEP = 1
-# Enables nested hardware virtualization support
-VBOX_WITH_NESTED_HWVIRT = 1
-# Enables nested hardware virtualization support only in IEM
+# Enables SVM nested hardware virtualization support
+VBOX_WITH_NESTED_HWVIRT_SVM = 1
+# Enables VMX nested hardware virtualization support
+#VBOX_WITH_NESTED_HWVIRT_VMX = 1
+# Enables nested hardware virtualization support but only in IEM
 #VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM = 1
 ifdef VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM
- ifndef VBOX_WITH_NESTED_HWVIRT
-  VBOX_WITH_NESTED_HWVIRT = 1
+ if !defined(VBOX_WITH_NESTED_HWVIRT_SVM) && !defined(VBOX_WITH_NESTED_HWVIRT_VMX)
+  $(error VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM defined without enabling nested VMX and/or nested SVM support)
  endif
 endif
 ## @}
@@ -7293,7 +7295,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 72152 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 72210 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
