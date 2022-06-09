@@ -1,4 +1,4 @@
-/* $Id: VBoxPeSetVersion.cpp 70368 2017-12-27 17:54:10Z vboxsync $ */
+/* $Id: VBoxPeSetVersion.cpp 70369 2017-12-27 17:54:48Z vboxsync $ */
 /** @file
  * IPRT - Change the OS and SubSystem version to value suitable for NT v3.1.
  *
@@ -200,11 +200,7 @@ static int Usage(FILE *pOutput)
             "    Quiet operation (default).\n"
             "  --nt31, --nt350, --nt351, --nt4, --w2k, --xp, --w2k3, --vista,\n"
             "  --w7, --w8, --w81, --w10\n"
-            "    Which version to set. Default is --nt31.\n"
-            "  --nt4\n"
-            "    Set versions to NT 4.0\n"
-            "  --nt4\n"
-            "    Set versions to NT 4.0\n"
+            "    Which version to set.  Default: --nt31\n"
             );
     return RTEXITCODE_SYNTAX;
 }
