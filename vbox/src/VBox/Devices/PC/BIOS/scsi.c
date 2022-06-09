@@ -1,4 +1,4 @@
-/* $Id: scsi.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: scsi.c 70333 2017-12-23 13:21:54Z vboxsync $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
@@ -597,10 +597,11 @@ void scsi_enumerate_attached_devices(uint16_t io_base)
 
             bios_dsk->scsidev[devcount_scsi].io_base   = io_base;
             bios_dsk->scsidev[devcount_scsi].target_id = i;
-            bios_dsk->devices[hd_index].type      = DSK_TYPE_SCSI;
-            bios_dsk->devices[hd_index].device    = DSK_DEVICE_CDROM;
-            bios_dsk->devices[hd_index].removable = removable;
-            bios_dsk->devices[hd_index].blksize   = 2048;
+            bios_dsk->devices[hd_index].type        = DSK_TYPE_SCSI;
+            bios_dsk->devices[hd_index].device      = DSK_DEVICE_CDROM;
+            bios_dsk->devices[hd_index].removable   = removable;
+            bios_dsk->devices[hd_index].blksize     = 2048;
+            bios_dsk->devices[hd_index].translation = GEO_TRANSLATION_NONE;
 
             /* Store the ID of the device in the BIOS cdidmap. */
             cdcount = bios_dsk->cdcount;
