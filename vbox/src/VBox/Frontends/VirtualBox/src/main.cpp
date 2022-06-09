@@ -1,4 +1,4 @@
-/* $Id: main.cpp 69824 2017-11-24 12:50:34Z vboxsync $ */
+/* $Id: main.cpp 69957 2017-12-06 13:35:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -397,6 +397,10 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
         /* Install Qt console message handler: */
         qInstallMessageHandler(QtMessageOutput);
 
+        /* Enable HiDPI support: */
+        QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
         /* Create application: */
         QApplication a(argc, argv);
 
@@ -411,9 +415,6 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 #endif /* VBOX_WS_WIN */
 
 #ifdef VBOX_WS_MAC
-        /* Enable HiDPI icons: */
-        a.setAttribute(Qt::AA_UseHighDpiPixmaps);
-
         /* Disable menu icons on MacOS X host: */
         ::darwinDisableIconsInMenus();
 #endif /* VBOX_WS_MAC */

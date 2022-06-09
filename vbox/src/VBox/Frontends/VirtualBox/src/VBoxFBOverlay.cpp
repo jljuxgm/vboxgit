@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 69931 2017-12-05 10:20:34Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 69957 2017-12-06 13:35:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -4446,7 +4446,6 @@ bool VBoxQGLOverlay::onNotifyUpdate(ULONG uX, ULONG uY,
                            (int)ceil((double)rect.height() * yScaleFactor) + 2));
     }
 
-#ifdef VBOX_WS_MAC
     /* Take the device-pixel-ratio into account: */
     if (mSizeInfo.useUnscaledHiDPIOutput())
     {
@@ -4459,7 +4458,6 @@ bool VBoxQGLOverlay::onNotifyUpdate(ULONG uX, ULONG uY,
                                (int)ceil((double)rect.height() / dDevicePixelRatio) + 2));
         }
     }
-#endif /* VBOX_WS_MAC */
 
     /* we do not to miss notify updates, because we have to update bg textures for it,
      * so no not check for m_fUnused here,

@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineView.h 69957 2017-12-06 13:35:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -350,10 +350,8 @@ protected:
      * Not explicitly initialised (i.e. invalid by default). */
     QSize m_sizeHintOverride;
 
-#ifdef VBOX_WS_MAC
     /** Holds current host-screen number. */
     int m_iHostScreenNumber;
-#endif /* VBOX_WS_MAC */
 
     /** The policy for calculating the maximum guest resolution which we wish
      * to handle. */
