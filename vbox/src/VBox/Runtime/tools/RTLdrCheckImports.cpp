@@ -1,4 +1,4 @@
-/* $Id: RTLdrCheckImports.cpp 70275 2017-12-21 13:44:55Z vboxsync $ */
+/* $Id: RTLdrCheckImports.cpp 70293 2017-12-21 16:29:17Z vboxsync $ */
 /** @file
  * IPRT - Module dependency checker.
  */
@@ -288,7 +288,7 @@ static int rtCheckImportsForImage(PCRTCHECKIMPORTSOPTS pOpts, const char *pszIma
                     rc = RTMsgErrorRc(VERR_NO_MEMORY, "%s: out of memory", pszImage);
             }
 
-            AssertCompile(NIL_RTLDRMOD == NULL);
+            AssertCompile(NIL_RTLDRMOD == (RTLDRMOD)NULL);
             for (uint32_t iImport = 0; iImport < cImports; iImport++)
                 if (pState->aImports[iImport].hLdrMod != NIL_RTLDRMOD)
                     RTLdrClose(pState->aImports[iImport].hLdrMod);
