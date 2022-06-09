@@ -1,4 +1,4 @@
-/* $Id: vboxms.c 68639 2017-09-05 13:32:25Z vboxsync $ */
+/* $Id: vboxms.c 68640 2017-09-05 13:50:05Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris.
  */
@@ -28,7 +28,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_MOUSE
-#include <VBox/VMMDev.>
+#include <VBox/VMMDev.h>
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/log.h>
 #include <VBox/version.h>
@@ -1431,3 +1431,4 @@ int main(void)
     return RTTestSummaryAndDestroy(hTest);
 }
 #endif
+
