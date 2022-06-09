@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAppliance1.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: tdAppliance1.py 69445 2017-10-27 16:21:29Z vboxsync $
 
 """
 VirtualBox Validation Kit - IAppliance Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 69445 $"
 
 
 # Standard Python imports.
@@ -129,7 +129,7 @@ class tdAppliance1(vbox.TestDriver):
             oAppliance = oVirtualBox.createAppliance();
         except:
             return reporter.errorXcpt('IVirtualBox::createAppliance failed');
-        print "oAppliance=%s" % (oAppliance,)
+        print("oAppliance=%s" % (oAppliance,));
 
         try:
             oProgress = vboxwrappers.ProgressWrapper(oAppliance.read(sOva), self.oVBoxMgr, self, 'read "%s"' % (sOva,));
@@ -174,7 +174,7 @@ class tdAppliance1(vbox.TestDriver):
         # Unpack
         #
         try:
-            os.mkdir(sTmpDir, 0755);
+            os.mkdir(sTmpDir, 0x1ed); # 0755 = 0x1ed
             oTarFile = tarfile.open(sOva, 'r:*');
             oTarFile.extractall(sTmpDir);
             oTarFile.close();
@@ -188,7 +188,7 @@ class tdAppliance1(vbox.TestDriver):
             oAppliance2 = oVirtualBox.createAppliance();
         except:
             return reporter.errorXcpt('IVirtualBox::createAppliance failed (#2)');
-        print "oAppliance2=%s" % (oAppliance2,)
+        print("oAppliance2=%s" % (oAppliance2,));
 
         try:
             oProgress = vboxwrappers.ProgressWrapper(oAppliance2.read(sOvf), self.oVBoxMgr, self, 'read "%s"' % (sOvf,));
