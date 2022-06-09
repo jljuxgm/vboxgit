@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 71368 2018-03-16 14:32:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -43,6 +43,7 @@
 # include "UIKeyboardHandler.h"
 # include "UIMouseHandler.h"
 # include "UIVMCloseDialog.h"
+# include "VBoxFBOverlay.h"
 
 /* COM includes: */
 # include "CConsole.h"
@@ -462,7 +463,7 @@ void UIMachineWindow::prepareMachineView()
 {
 #ifdef VBOX_WITH_VIDEOHWACCEL
     /* Need to force the QGL framebuffer in case 2D Video Acceleration is supported & enabled: */
-    bool bAccelerate2DVideo = machine().GetAccelerate2DVideoEnabled() && VBoxGlobal::isAcceleration2DVideoAvailable();
+    bool bAccelerate2DVideo = machine().GetAccelerate2DVideoEnabled() && VBoxQGLOverlay::isAcceleration2DVideoAvailable();
 #endif /* VBOX_WITH_VIDEOHWACCEL */
 
     /* Get visual-state type: */

@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 70911 2018-02-08 14:14:07Z vboxsync $ */
+/* $Id: UISession.cpp 71368 2018-03-16 14:32:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -247,7 +247,7 @@ bool UISession::initialize()
 #ifdef VBOX_WITH_VIDEOHWACCEL
     /* Log whether 2D video acceleration is enabled: */
     LogRel(("GUI: 2D video acceleration is %s\n",
-           machine().GetAccelerate2DVideoEnabled() && VBoxGlobal::isAcceleration2DVideoAvailable()
+           machine().GetAccelerate2DVideoEnabled() && VBoxQGLOverlay::isAcceleration2DVideoAvailable()
            ? "enabled" : "disabled"));
 #endif /* VBOX_WITH_VIDEOHWACCEL */
 
