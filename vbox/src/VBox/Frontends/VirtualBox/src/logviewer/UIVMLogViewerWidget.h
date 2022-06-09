@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 70074 2017-12-12 09:26:08Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 70080 2017-12-12 12:36:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -66,7 +66,7 @@ public:
     /** Returns the toolbar. */
     UIToolBar *toolbar() const { return m_pToolBar; }
 #endif
-    
+
 protected:
 
 
