@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibHGCMInternal.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuestR0LibHGCMInternal.cpp 69638 2017-11-10 11:39:41Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -890,8 +890,8 @@ DECLR0VBGL(int) VbglR0HGCMInternalCall(PVBGLIOCHGCMCALL pCallInfo, uint32_t cbCa
          */
         VMMDevHGCMCall *pHGCMCall;
         rc = VbglR0GRAlloc((VMMDevRequestHeader **)&pHGCMCall,
-                         sizeof(VMMDevHGCMCall) + pCallInfo->cParms * sizeof(HGCMFunctionParameter) + cbExtra,
-                         VMMDevReq_HGCMCall);
+                           sizeof(VMMDevHGCMCall) + pCallInfo->cParms * sizeof(HGCMFunctionParameter) + cbExtra,
+                           VMMDevReq_HGCMCall);
         if (RT_SUCCESS(rc))
         {
             bool fLeakIt;
