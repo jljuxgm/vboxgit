@@ -1,4 +1,4 @@
-/* $Id: serialport-posix.cpp 69907 2017-12-03 08:54:16Z vboxsync $ */
+/* $Id: serialport-posix.cpp 69908 2017-12-03 09:00:20Z vboxsync $ */
 /** @file
  * IPRT - Serial Port API, POSIX Implementation.
  */
@@ -52,7 +52,7 @@
 #include <string.h>
 #include <unistd.h>
 #ifdef RT_OS_DARWIN
-# include <sys/select.h>
+# include <sys/poll.h>
 #else
 # include <sys/poll.h>
 #endif
