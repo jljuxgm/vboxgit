@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 71085 2018-02-21 13:24:04Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 71086 2018-02-21 13:34:03Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -1511,7 +1511,7 @@ DWORD vboxDispIfResizeModesWDDM(PCVBOXDISPIF const pIf, UINT iChangedMode, BOOL 
     /* Whether the current display is already or should be enabled. */
     BOOL fChangedEnable = fEnable || RT_BOOL(paDisplayDevices[iChangedMode].StateFlags & DISPLAY_DEVICE_ACTIVE);
 
-    if (fCurrentEnable)
+    if (fChangedEnable)
     {
         RTRECTSIZE Size;
 
