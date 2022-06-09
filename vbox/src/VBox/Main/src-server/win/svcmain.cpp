@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 71161 2018-02-28 19:50:04Z vboxsync $ */
+/* $Id: svcmain.cpp 71317 2018-03-13 20:36:43Z vboxsync $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -438,8 +438,8 @@ public:
     STDMETHOD(NotifyClientsFinished)()
     {
         LogRelFunc(("All clients gone - shutdown sequence initiated\n"));
-
-        m_pFactory->i_finishVBoxSvc();
+        if(m_pFactory)
+            m_pFactory->i_finishVBoxSvc();
 
         // This is not enough to finish VBoxSvc such as reference to crashed client still is in action
         // So I forcebly shutdown VBoxSvc
