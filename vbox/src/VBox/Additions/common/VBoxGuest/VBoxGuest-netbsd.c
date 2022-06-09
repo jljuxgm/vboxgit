@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 70069 2017-12-11 17:38:36Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 70087 2017-12-12 17:36:57Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -314,6 +314,15 @@ static void VBoxGuestNetBSDAttach(device_t parent, device_t self, void *aux)
                 if (RT_SUCCESS(rc))
                 {
                     sc->vboxguest_state |= VBOXGUEST_STATE_INITOK;
+
+                    /*
+                     * Read host configuration.
+                     */
+                    VGDrvCommonProcessOptionsFromHost(&g_DevExt);
+
+                    /*
+                     * Attach wsmouse.
+                     */
                     VBoxGuestNetBSDWsmAttach(sc);
 
                     g_SC = sc;
