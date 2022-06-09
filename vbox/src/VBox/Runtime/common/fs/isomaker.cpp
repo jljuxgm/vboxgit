@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67897 2017-07-11 08:32:35Z vboxsync $ */
+/* $Id: isomaker.cpp 68014 2017-07-18 10:20:31Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -4217,7 +4217,7 @@ static int rtFsIsoMakerFinalizeIsoDirectoryEntry(PRTFSISOMAKERFINALIZEDDIRS pFin
 
         /* Devices needs 'PN'. */
         if (   RTFS_IS_DEV_BLOCK(pName->pObj->fMode)
-            || RTFS_IS_DEV_BLOCK(pName->pObj->fMode))
+            || RTFS_IS_DEV_CHAR(pName->pObj->fMode))
         {
             cbRock += sizeof(ISO9660RRIPPN);
             fFlags |= ISO9660RRIP_RR_F_PN;
