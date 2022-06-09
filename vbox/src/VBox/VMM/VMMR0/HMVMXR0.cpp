@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72531 2018-06-12 16:46:20Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72533 2018-06-13 05:30:24Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9224,14 +9224,6 @@ static void hmR0VmxPostRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXT
     TMNotifyEndOfExecution(pVCpu);                                    /* Notify TM that the guest is no longer running. */
     Assert(!ASMIntAreEnabled());
     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_HM);
-
-#ifdef HMVMX_ALWAYS_SWAP_FPU_STATE
-    if (CPUMR0FpuStateMaybeSaveGuestAndRestoreHost(pVM, pVCpu))
-    {
-        hmR0VmxSaveGuestCR0(pVCpu, pMixedCtx);
-        HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_CR0);
-    }
-#endif
 
 #if HC_ARCH_BITS == 64
     pVCpu->hm.s.vmx.fRestoreHostFlags |= VMX_RESTORE_HOST_REQUIRED;   /* Host state messed up by VT-x, we must restore. */
