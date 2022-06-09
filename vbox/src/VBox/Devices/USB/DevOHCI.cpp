@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 69766 2017-11-20 10:39:13Z vboxsync $ */
+/* $Id: DevOHCI.cpp 69767 2017-11-20 10:43:57Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -1210,7 +1210,7 @@ static void ohciDoReset(POHCI pThis, uint32_t fNewMode, bool fResetOnLinux)
      * Reset the hardware registers.
      */
     if (fNewMode == OHCI_USB_RESET)
-        pThis->ctl |= OHCI_CTL_RWC;                     /* We're the firmware, set RemoteWakeupConnected. */
+        pThis->ctl  = OHCI_CTL_RWC;                     /* We're the firmware, set RemoteWakeupConnected. */
     else
         pThis->ctl &= OHCI_CTL_IR | OHCI_CTL_RWC;       /* IR and RWC are preserved on software reset. */
 
@@ -1220,6 +1220,7 @@ static void ohciDoReset(POHCI pThis, uint32_t fNewMode, bool fResetOnLinux)
     pThis->status = 0;
     pThis->intr_status = 0;
     pThis->intr = 0;
+    PDMDevHlpPCISetIrq(pThis->CTX_SUFF(pDevIns), 0, 0);
 
     pThis->hcca = 0;
     pThis->per_cur = 0;
