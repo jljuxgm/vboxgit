@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 67212 2017-06-01 14:33:45Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 67214 2017-06-01 14:39:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1010,7 +1010,7 @@ QString VBoxGlobal::detailsReport(const CMachine &comMachine, bool fWithLinks)
         /* Group(s)? */
         const QStringList &groups = comMachine.GetGroups().toList();
         if (   groups.size() > 1
-            || groups.size() > 0 && groups.at(0) != "/")
+            || (groups.size() > 0 && groups.at(0) != "/"))
         {
             ++iRowCount;
             strItem += QString(sSectionItemTpl2).arg(tr("Group(s)", "details report"),
