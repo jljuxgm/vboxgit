@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 67471 2017-06-19 12:34:01Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 67863 2017-07-07 17:40:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1324,6 +1324,22 @@ void UIMessageCenter::cannotDeleteHardDiskStorage(const CProgress &progress, con
           tr("Failed to delete the storage unit of the hard disk <b>%1</b>.")
              .arg(strLocation),
           formatErrorInfo(progress));
+}
+
+void UIMessageCenter::cannotMoveHardDiskStorage(const CMedium &comMedium, const QString &strLocationOld, const QString &strLocationNew, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to move the storage unit of the hard disk <b>%1</b> to <b>%2</b>.")
+             .arg(strLocationOld, strLocationNew),
+          formatErrorInfo(comMedium));
+}
+
+void UIMessageCenter::cannotMoveHardDiskStorage(const CProgress &comProgress, const QString &strLocationOld, const QString &strLocationNew, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to move the storage unit of the hard disk <b>%1</b> to <b>%2</b>.")
+             .arg(strLocationOld, strLocationNew),
+          formatErrorInfo(comProgress));
 }
 
 void UIMessageCenter::cannotDetachDevice(const CMachine &machine, UIMediumType type, const QString &strLocation, const StorageSlot &storageSlot, QWidget *pParent /* = 0*/) const
