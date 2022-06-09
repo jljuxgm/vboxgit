@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 67433 2017-06-16 08:21:10Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 67466 2017-06-19 10:13:25Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -116,7 +116,7 @@ HRESULT Snapshot::init(VirtualBox *aVirtualBox,
 {
     LogFlowThisFunc(("uuid=%s aParent->uuid=%s\n", aId.toString().c_str(), (aParent) ? aParent->m->uuid.toString().c_str() : ""));
 
-    ComAssertRet(!aId.isZero() && aId.isValid() && !aName.isEmpty() && aMachine, E_INVALIDARG);
+    ComAssertRet(!aId.isZero() && aId.isValid() && aMachine, E_INVALIDARG);
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan(this);
