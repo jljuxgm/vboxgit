@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 70301 2017-12-22 06:06:27Z vboxsync $ */
+/* $Id: CPUM.cpp 70306 2017-12-22 08:30:29Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2438,16 +2438,16 @@ static DECLCALLBACK(void) cpumR3InfoGuestHwvirt(PVM pVM, PCDBGFINFOHLP pHlp, con
         pHlp->pfnPrintf(pHlp, "    rflags                     = %#RX64 %31s\n", pCtx->hwvirt.svm.HostState.rflags.u64, szEFlags);
         PCPUMSELREG pSel = &pCtx->hwvirt.svm.HostState.es;
         pHlp->pfnPrintf(pHlp, "    es                         = {%04x base=%016RX64 limit=%08x flags=%08x}\n",
-                        pSel->Sel, pSel->u64Base, pSel->u32Limit, pSel->fFlags);
+                        pSel->Sel, pSel->u64Base, pSel->u32Limit, pSel->Attr.u);
         pSel = &pCtx->hwvirt.svm.HostState.cs;
         pHlp->pfnPrintf(pHlp, "    cs                         = {%04x base=%016RX64 limit=%08x flags=%08x}\n",
-                        pSel->Sel, pSel->u64Base, pSel->u32Limit, pSel->fFlags);
+                        pSel->Sel, pSel->u64Base, pSel->u32Limit, pSel->Attr.u);
         pSel = &pCtx->hwvirt.svm.HostState.ss;
         pHlp->pfnPrintf(pHlp, "    ss                         = {%04x base=%016RX64 limit=%08x flags=%08x}\n",
-                        pSel->Sel, pSel->u64Base, pSel->u32Limit, pSel->fFlags);
+                        pSel->Sel, pSel->u64Base, pSel->u32Limit, pSel->Attr.u);
         pSel = &pCtx->hwvirt.svm.HostState.ds;
         pHlp->pfnPrintf(pHlp, "    ds                         = {%04x base=%016RX64 limit=%08x flags=%08x}\n",
-                        pSel->Sel, pSel->u64Base, pSel->u32Limit, pSel->fFlags);
+                        pSel->Sel, pSel->u64Base, pSel->u32Limit, pSel->Attr.u);
         pHlp->pfnPrintf(pHlp, "    gdtr                       = %016RX64:%04x\n", pCtx->hwvirt.svm.HostState.gdtr.pGdt,
                         pCtx->hwvirt.svm.HostState.gdtr.cbGdt);
         pHlp->pfnPrintf(pHlp, "    idtr                       = %016RX64:%04x\n", pCtx->hwvirt.svm.HostState.idtr.pIdt,
