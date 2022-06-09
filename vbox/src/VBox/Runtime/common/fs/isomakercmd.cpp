@@ -1,4 +1,4 @@
-/* $Id: isomakercmd.cpp 67869 2017-07-08 18:45:21Z vboxsync $ */
+/* $Id: isomakercmd.cpp 67871 2017-07-09 13:47:10Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker Command.
  */
@@ -357,6 +357,12 @@ typedef struct RTFSISOMAKERCMDOPTS
     uint32_t                    cBootCatEntries;
     /** Boot catalog entries. */
     RTFSISOMKCMDELTORITOENTRY   aBootCatEntries[64];
+    /** @} */
+
+    /** @name Filteringer
+     * @{ */
+    /** The trans.tbl filename when enabled.  We must not import these files. */
+    const char         *pszTransTbl;
     /** @} */
 
     /** Number of items (files, directories, images, whatever) we've added. */
@@ -1580,6 +1586,11 @@ static int rtFsIsoMakerCmdAddFile(PRTFSISOMAKERCMDOPTS pOpts, const char *pszSrc
  */
 static bool rtFsIsoMakerCmdIsFilteredOut(PRTFSISOMAKERCMDOPTS pOpts, const char *pszDir, const char *pszName, bool fIsDir)
 {
+    /* Ignore trans.tbl files. */
+    if (   !fIsDir
+        && RTStrICmp(pszName, pOpts->pszTransTbl) == 0)
+        return true;
+
     RT_NOREF(pOpts, pszDir, pszName, fIsDir);
     return false;
 }
@@ -2933,6 +2944,7 @@ RTDECL(int) RTFsIsoMakerCmdEx(unsigned cArgs, char **papszArgs, PRTVFSFILE phVfs
     Opts.cNameSpecifiers        = 1;
     Opts.afNameSpecifiers[0]    = RTFSISOMAKERCMDNAME_MAJOR_MASK;
     Opts.fDstNamespaces         = RTFSISOMAKERCMDNAME_MAJOR_MASK;
+    Opts.pszTransTbl            = "TRANS.TBL"; /** @todo query this below */
     if (phVfsFile)
         *phVfsFile = NIL_RTVFSFILE;
     for (uint32_t i = 0; i < RT_ELEMENTS(Opts.aBootCatEntries); i++)
