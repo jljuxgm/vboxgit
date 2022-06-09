@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 72374 2018-05-29 09:36:42Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 72380 2018-05-29 13:05:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -190,8 +190,8 @@ void UIMediumManagerWidget::retranslateUi()
     if (m_pActionAdd)
     {
         m_pActionAdd->setText(UIMediumManager::tr("&Add..."));
-        m_pActionAdd->setToolTip(UIMediumManager::tr("Add Disk Image File (%1)"));
-        m_pActionAdd->setStatusTip(UIMediumManager::tr("Add disk image file"));
+        m_pActionAdd->setToolTip(UIMediumManager::tr("Add a Disk Image File"));
+        m_pActionAdd->setStatusTip(UIMediumManager::tr("Add a disk image file"));
     }
     if (m_pActionCopy)
     {
