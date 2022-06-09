@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdApi1.py 70812 2018-01-30 17:46:55Z vboxsync $
+# $Id: tdApi1.py 70813 2018-01-30 17:54:48Z vboxsync $
 
 """
 VirtualBox Validation Kit - API Test wrapper #1 combining all API sub-tests
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70812 $"
+__version__ = "$Revision: 70813 $"
 
 
 # Standard Python imports.
@@ -77,14 +77,14 @@ class tdApi1(vbox.TestDriver):
 
 if __name__ == '__main__':
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-    oTstDrv = tdApi1()
+    oTD = tdApi1()
     from tdPython1 import SubTstDrvPython1
-    oTstDrv.addSubTestDriver(SubTstDrvPython1(oTstDrv))
+    oTD.addSubTestDriver(SubTstDrvPython1(oTD))
     from tdAppliance1 import SubTstDrvAppliance1
-    oTstDrv.addSubTestDriver(SubTstDrvAppliance1(oTstDrv))
+    oTD.addSubTestDriver(SubTstDrvAppliance1(oTD))
     from tdMoveMedium1 import SubTstDrvMoveMedium1
-    oTstDrv.addSubTestDriver(SubTstDrvMoveMedium1(oTstDrv))
+    oTD.addSubTestDriver(SubTstDrvMoveMedium1(oTD))
     from tdTreeDepth1 import SubTstDrvTreeDepth1
-    oTstDrv.addSubTestDriver(SubTstDrvTreeDepth1(oTstDrv))
-    sys.exit(oTstDrv.main(sys.argv))
+    oTD.addSubTestDriver(SubTstDrvTreeDepth1(oTD))
+    sys.exit(oTD.main(sys.argv))
 

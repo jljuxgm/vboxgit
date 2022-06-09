@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdPython1.py 70812 2018-01-30 17:46:55Z vboxsync $
+# $Id: tdPython1.py 70813 2018-01-30 17:54:48Z vboxsync $
 
 """
 VirtualBox Validation Kit - Python Bindings Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70812 $"
+__version__ = "$Revision: 70813 $"
 
 
 # Standard Python imports.
@@ -207,7 +207,7 @@ class SubTstDrvPython1(base.SubTestDriverBase):
 if __name__ == '__main__':
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
     from tdApi1 import tdApi1
-    oTstDrv = tdApi1()
-    oTstDrv.addSubTestDriver(SubTstDrvPython1(oTstDrv))
-    sys.exit(oTstDrv.main(sys.argv))
+    oTD = tdApi1()
+    oTD.addSubTestDriver(SubTstDrvPython1(oTD))
+    sys.exit(oTD.main(sys.argv))
 

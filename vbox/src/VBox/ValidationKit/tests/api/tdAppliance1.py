@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAppliance1.py 70812 2018-01-30 17:46:55Z vboxsync $
+# $Id: tdAppliance1.py 70813 2018-01-30 17:54:48Z vboxsync $
 
 """
 VirtualBox Validation Kit - IAppliance Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70812 $"
+__version__ = "$Revision: 70813 $"
 
 
 # Standard Python imports.
@@ -197,10 +197,11 @@ class SubTstDrvAppliance1(base.SubTestDriverBase):
 
         return True
 
+
 if __name__ == '__main__':
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
     from tdApi1 import tdApi1
-    oTstDrv = tdApi1()
-    oTstDrv.addSubTestDriver(SubTstDrvAppliance1(oTstDrv))
-    sys.exit(oTstDrv.main(sys.argv))
+    oTD = tdApi1()
+    oTD.addSubTestDriver(SubTstDrvAppliance1(oTD))
+    sys.exit(oTD.main(sys.argv))
 
