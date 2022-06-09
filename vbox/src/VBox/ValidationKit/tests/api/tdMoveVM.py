@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM.py 71226 2018-03-06 09:16:22Z vboxsync $"
+# "$Id: tdMoveVM.py 71227 2018-03-06 09:50:54Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71226 $"
+__version__ = "$Revision: 71227 $"
 
 # Standard Python imports.
 import os
@@ -67,7 +67,7 @@ class SubTstDrvMoveVM(base.SubTestDriverBase):
     #
     #createTestMachine
     #
-    def createTestMachine(self, oListOfImageNames):
+    def createTestMachine(self):
         oVM = self.oTstDrv.createTestVM('test-vm-move', 1, None, 4)
         if oVM is None:
             return None
@@ -107,9 +107,7 @@ class SubTstDrvMoveVM(base.SubTestDriverBase):
         fRc = fRc and oSession.saveSettings()
         fRc = oSession.close() and fRc
 
-        if fRc is True:
-            oListOfImageNames = asFiles
-        else:
+        if fRc is False:
             oVM = None
 
         return oVM
@@ -206,8 +204,7 @@ class SubTstDrvMoveVM(base.SubTestDriverBase):
 
         try:
             #create test machine
-            aListOfImageNames = []
-            aMachine = self.createTestMachine(aListOfImageNames)
+            aMachine = self.createTestMachine()
 
             if aMachine is None:
                 reporter.error('Failed to create test machine')
@@ -243,8 +240,8 @@ class SubTstDrvMoveVM(base.SubTestDriverBase):
             sMoveLoc = os.path.join(sOrigLoc, 'moveFolder_2d_scenario')
             os.mkdir(sMoveLoc, 0o775)
             aoMediumAttachments = aMachine.getMediumAttachmentsOfController(sController)
-            SubTstDrvMoveMedium1Instance = SubTstDrvMoveMedium1(self.oTstDrv)
-            SubTstDrvMoveMedium1Instance.setLocation(sLoc, aoMediumAttachments)
+            oSubTstDrvMoveMedium1Instance = SubTstDrvMoveMedium1(self.oTstDrv)
+            oSubTstDrvMoveMedium1Instance.setLocation(sLoc, aoMediumAttachments)
             fRc = self.moveVMToLocation(sMoveLoc, oSession.o.machine) and fRc
 
             fRc = fRc and oSession.saveSettings()
@@ -257,8 +254,8 @@ class SubTstDrvMoveVM(base.SubTestDriverBase):
             sMoveLoc = os.path.join(sOrigLoc, 'moveFolder_3d_scenario')
             os.mkdir(sMoveLoc, 0o775)
 
-            n = 5
-            for counter in range(1,n+1):
+            ic = 5
+            for counter in range(1,ic+1):
                 strSnapshot = 'Snapshot' + str(counter)
                 fRc = fRc and oSession.takeSnapshot(strSnapshot)
                 if fRc is False:
