@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 67049 2017-05-23 17:48:32Z vboxsync $
+# $Id: vbox.py 67743 2017-06-30 15:48:42Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67049 $"
+__version__ = "$Revision: 67743 $"
 
 
 # Standard Python imports.
@@ -1870,6 +1870,10 @@ class TestDriver(base.TestDriver):                                              
         reporter.log("  RAM:                %sMB" % (oVM.memorySize));
         reporter.log("  VRAM:               %sMB" % (oVM.VRAMSize));
         reporter.log("  Monitors:           %s" % (oVM.monitorCount));
+        if   oVM.chipsetType == vboxcon.ChipsetType_PIIX3: sType = "PIIX3";
+        elif oVM.chipsetType == vboxcon.ChipsetType_ICH9:  sType = "ICH9";
+        else: sType = "unknown %s" % (oVM.chipsetType);
+        reporter.log("  Chipset:            %s" % (sType));
         if   oVM.firmwareType == vboxcon.FirmwareType_BIOS:    sType = "BIOS";
         elif oVM.firmwareType == vboxcon.FirmwareType_EFI:     sType = "EFI";
         elif oVM.firmwareType == vboxcon.FirmwareType_EFI32:   sType = "EFI32";
@@ -2097,7 +2101,7 @@ class TestDriver(base.TestDriver):                                              
                      sDvdImage = None, sKind = "Other", fIoApic = None, fPae = None, fFastBootLogo = True, \
                      eNic0Type = None, eNic0AttachType = None, sNic0NetName = 'default', sNic0MacAddr = 'grouped', \
                      sFloppy = None, fNatForwardingForTxs = None, sHddControllerType = 'IDE Controller', \
-                     fVmmDevTestingPart = None, fVmmDevTestingMmio = False, sFirmwareType = 'bios'):
+                     fVmmDevTestingPart = None, fVmmDevTestingMmio = False, sFirmwareType = 'bios', sChipsetType = 'piix3'):
         """
         Creates a test VM with a immutable HD from the test resources.
         """
@@ -2185,6 +2189,10 @@ class TestDriver(base.TestDriver):                                              
                 fRc = oSession.setFirmwareType(vboxcon.FirmwareType_EFI);
             if fRc and self.fEnableDebugger:
                 fRc = oSession.setExtraData('VBoxInternal/DBGC/Enabled', '1');
+            if fRc and sChipsetType == 'piix3':
+                fRc = oSession.setChipsetType(vboxcon.ChipsetType_PIIX3);
+            elif sChipsetType == 'ich9':
+                fRc = oSession.setChipsetType(vboxcon.ChipsetType_ICH9);
 
             if fRc: fRc = oSession.saveSettings();
             if not fRc:   oSession.discardSettings(True);

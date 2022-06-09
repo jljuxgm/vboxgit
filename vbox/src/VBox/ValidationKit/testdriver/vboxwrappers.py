@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 67023 2017-05-22 18:26:52Z vboxsync $
+# $Id: vboxwrappers.py 67743 2017-06-30 15:48:42Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67023 $"
+__version__ = "$Revision: 67743 $"
 
 
 # Standard Python imports.
@@ -1168,6 +1168,22 @@ class SessionWrapper(TdTaskBase):
             fRc = False;
         else:
             reporter.log('set firmwareType=%s for "%s"' % (eType, self.sName));
+        self.oTstDrv.processPendingEvents();
+        return fRc;
+
+    def setChipsetType(self, eType):
+        """
+        Sets the chipset type.
+        Returns True on success and False on failure.  Error information is logged.
+        """
+        fRc = True;
+        try:
+            self.o.machine.chipsetType = eType;
+        except:
+            reporter.errorXcpt('failed to set chipsetType=%s for "%s"' % (eType, self.sName));
+            fRc = False;
+        else:
+            reporter.log('set chipsetType=%s for "%s"' % (eType, self.sName));
         self.oTstDrv.processPendingEvents();
         return fRc;
 
