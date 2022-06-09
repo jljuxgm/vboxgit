@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 69550 2017-11-02 10:22:18Z vboxsync $ */
+/* $Id: UINetworkRequest.cpp 69551 2017-11-02 10:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class implementation.
  */
@@ -182,9 +182,9 @@ void UINetworkRequest::prepareNetworkReply()
     AssertPtrReturnVoid(m_pReply.data());
     {
         /* Prepare network-reply: */
-        connect(m_pReply, &UINetworkReply::downloadProgress,
+        connect(m_pReply.data(), &UINetworkReply::downloadProgress,
                 this, &UINetworkRequest::sltHandleNetworkReplyProgress);
-        connect(m_pReply, &UINetworkReply::finished,
+        connect(m_pReply.data(), &UINetworkReply::finished,
                 this, &UINetworkRequest::sltHandleNetworkReplyFinish);
 
         /* Mark network-reply as running: */
