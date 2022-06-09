@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67842 2017-07-06 17:27:42Z vboxsync $ */
+/* $Id: isomaker.cpp 67846 2017-07-07 10:23:28Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -5245,7 +5245,7 @@ static ssize_t rtFsIsoMakerOutFile_RockRidgeGenSL(const char *pszTarget, uint8_t
                     pbBuf[off++] = cchToCopy < cchComponent ? ISO9660RRIP_SL_C_CONTINUE : 0;
                     pbBuf[off++] = (uint8_t)cchToCopy;
                     memcpy(&pbBuf[off], pszTarget, cchToCopy);
-                    off          += pbBuf[off++];
+                    off          += cchToCopy;
                     pszTarget    += cchToCopy;
                     cchComponent -= cchToCopy;
                     if (!cchComponent)
