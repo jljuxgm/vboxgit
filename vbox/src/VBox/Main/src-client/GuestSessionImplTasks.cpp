@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 71818 2018-04-11 10:53:07Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 71819 2018-04-11 11:00:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -641,11 +641,11 @@ int GuestSessionTask::fileCopyToGuestInner(PRTFILE phSrcFile, ComObjPtr<GuestFil
             break;
         }
 
-        rc = dstFile->i_writeData(uTimeoutMs, byBuf, cbRead, NULL /* No partial writes */);
+        rc = dstFile->i_writeData(uTimeoutMs, byBuf, (uint32_t)cbRead, NULL /* No partial writes */);
         if (RT_FAILURE(rc))
         {
             setProgressErrorMsg(VBOX_E_IPRT_ERROR,
-                                Utf8StrFmt(GuestSession::tr("Writing to %RU32 bytes to file failed: %Rrc"), cbRead, rc));
+                                Utf8StrFmt(GuestSession::tr("Writing to %zu bytes to file failed: %Rrc"), cbRead, rc));
             break;
         }
 
