@@ -1,4 +1,4 @@
-/* $Id: AudioDriver.h 70563 2018-01-12 17:52:10Z vboxsync $ */
+/* $Id: AudioDriver.h 70579 2018-01-14 12:46:15Z vboxsync $ */
 /** @file
  * VirtualBox audio base class for Main audio drivers.
  */
@@ -20,6 +20,7 @@
 
 #include <VBox/com/ptr.h>
 #include <VBox/com/string.h>
+#include <VBox/com/AutoLock.h>
 
 using namespace com;
 
@@ -60,24 +61,25 @@ class AudioDriver
 {
 
 public:
-
     AudioDriver(Console *pConsole);
-
     virtual ~AudioDriver();
-
-    AudioDriverCfg *GetConfig(void) { return &mCfg; }
 
     Console *GetParent(void) { return mpConsole; }
 
-    int Initialize(AudioDriverCfg *pCfg);
+    AudioDriverCfg *GetConfig(void) { return &mCfg; }
+    int InitializeConfig(AudioDriverCfg *pCfg);
+
+    /** Checks if audio is configured or not. */
+    bool isConfigured() const { return mCfg.strName.isNotEmpty(); }
 
     bool IsAttached(void) { return mfAttached; }
 
-    static DECLCALLBACK(int) Attach(AudioDriver *pThis);
-
-    static DECLCALLBACK(int) Detach(AudioDriver *pThis);
+    int doAttachDriverViaEmt(PUVM pUVM, util::AutoWriteLock *pAutoLock);
+    int doDetachDriverViaEmt(PUVM pUVM, util::AutoWriteLock *pAutoLock);
 
 protected:
+    static DECLCALLBACK(int) attachDriverOnEmt(AudioDriver *pThis);
+    static DECLCALLBACK(int) detachDriverOnEmt(AudioDriver *pThis);
 
     int configure(unsigned uLUN, bool fAttach);
 
@@ -105,5 +107,5 @@ protected:
     unsigned             muLUN;
 };
 
-#endif /* ____H_AUDIODRIVER */
+#endif /* !____H_AUDIODRIVER */
 

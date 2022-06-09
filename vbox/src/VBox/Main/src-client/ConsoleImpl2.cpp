@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 70563 2018-01-12 17:52:10Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 70579 2018-01-14 12:46:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2970,13 +2970,13 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
 #ifdef VBOX_WITH_AUDIO_VRDE
             AudioDriverCfg DrvCfgVRDE(strAudioDevice, 0 /* Instance */, "AudioVRDE");
-            rc = mAudioVRDE->Initialize(&DrvCfgVRDE);
+            rc = mAudioVRDE->InitializeConfig(&DrvCfgVRDE);
             AssertRC(rc);
 #endif /* VBOX_WITH_AUDIO_VRDE */
 
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
             AudioDriverCfg DrvCfgVideoRec(strAudioDevice, 0 /* Instance */, "AudioVideoRec");
-            rc = mAudioVideoRec->Initialize(&DrvCfgVideoRec);
+            rc = mAudioVideoRec->InitializeConfig(&DrvCfgVideoRec);
             AssertRC(rc);
 #endif /* VBOX_WITH_AUDIO_VIDEOREC */
 
