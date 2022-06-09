@@ -1,4 +1,4 @@
-/* $Id: tstRTPathQueryInfo.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTPathQueryInfo.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTPathQueryInfoEx testcase
  */
@@ -23,6 +23,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

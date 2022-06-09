@@ -1,4 +1,4 @@
-/* $Id: init-win.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: init-win.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3, Windows Specific Code.
  */
@@ -635,5 +635,4 @@ static LONG CALLBACK rtR3WinUnhandledXcptFilter(PEXCEPTION_POINTERS pPtrs)
         return g_pfnUnhandledXcptFilter(pPtrs);
     return EXCEPTION_CONTINUE_SEARCH;
 }
-
 

@@ -1,4 +1,4 @@
-/* $Id: tstRTMath.cpp 67338 2017-06-12 11:33:15Z vboxsync $ */
+/* $Id: tstRTMath.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - base mathematics.
  */
@@ -64,7 +64,7 @@ int main()
     if (rc)
         return rc;
     RTTestBanner(hTest);
-    
+
     tstCorrectness(hTest);
 
     return RTTestSummaryAndDestroy(hTest);

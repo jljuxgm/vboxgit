@@ -1,4 +1,4 @@
-/* $Id: RTLdrFlt.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTLdrFlt.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
 /** @file
  * IPRT - Utility for translating addresses into symbols+offset.
  */
@@ -25,9 +25,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/mem.h>
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
@@ -224,7 +224,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 69111 $\n");
+                RTPrintf("$Revision: 69434 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:

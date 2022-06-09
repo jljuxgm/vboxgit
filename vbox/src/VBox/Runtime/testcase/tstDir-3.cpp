@@ -1,4 +1,4 @@
-/* $Id: tstDir-3.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstDir-3.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - Directory listing & filtering (no parameters needed).
  */
@@ -113,7 +113,7 @@ int main(int argc, char **argv)
         RTPrintf("tstDir-3: filter '%s' failed! rc=%Rrc\n", pszFilter2, rc);
     if (!cMatch)
         RTPrintf("tstDir-3: filter '%s' gave wrong result count! cMatch=%u\n", pszFilter2, cMatch);
-    
+
     RTStrFree(pszFilter2);
     RTStrFree(pszFilter1);
 
