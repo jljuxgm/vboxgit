@@ -1,4 +1,4 @@
-# $Revision: 69768 $
+# $Revision: 69838 $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -86,6 +86,7 @@ MOD_OBJS   = \
 	common/string/RTStrCopyEx.o \
 	common/string/RTStrCopyP.o \
 	common/string/strformat.o \
+	common/string/strformatnum.o \
 	common/string/strformatrt.o \
 	common/string/strformattype.o \
 	common/string/strprintf.o \
