@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 72065 2018-04-30 06:27:34Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 72128 2018-05-04 22:15:36Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1556,6 +1556,8 @@ VMMDECL(int) CPUMRecalcHyperDRx(PVMCPU pVCpu, uint8_t iGstReg, bool fForceHyper)
      * stuff if they're cleared like we have to for the guest DR7.
      */
     RTGCUINTREG uGstDr7 = CPUMGetGuestDR7(pVCpu);
+    /** @todo This isn't correct. BPs work without setting LE and GE under AMD-V.  They are also documented as unsupported by P6+.
+     * The LE|GE flags does have an effect in real mode on AMD-V with instruction fetch breakpoints, they seem to work a little like traps rather than faults. */
     if (!(uGstDr7 & (X86_DR7_LE | X86_DR7_GE)))
         uGstDr7 = 0;
     else if (!(uGstDr7 & X86_DR7_LE))
