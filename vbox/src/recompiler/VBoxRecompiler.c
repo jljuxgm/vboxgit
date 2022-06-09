@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 67523 2017-06-21 07:42:15Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 67580 2017-06-23 10:31:44Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2141,7 +2141,7 @@ REMR3DECL(int)  REMR3State(PVM pVM, PVMCPU pVCpu)
     if (CPUMIsGuestInNestedHwVirtMode(pCtx))
     {
         AssertMsgFailed(("Bad scheduling - can't exec. nested-guest in REM!\n"));
-        return VERR_NOT_SUPPORTED;
+        return VERR_EM_CANNOT_EXEC_GUEST;
     }
 
     Assert(!pVM->rem.s.fInREM);
