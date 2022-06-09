@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 67506 2017-06-20 13:32:27Z vboxsync $ */
+/* $Id: DrvAudio.cpp 67574 2017-06-23 09:12:15Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1325,10 +1325,11 @@ static int drvAudioStreamPlayNonInterleaved(PDRVAUDIO pThis,
                                    auBuf, cbPlayed);
 #endif
                 AssertMsg(cbPlayed <= cbRead, ("Played more than available (%RU32 available but got %RU32)\n", cbRead, cbPlayed));
+#if 0 /** @todo Also handle mono channels. Needs fixing */
                 AssertMsg(cbPlayed % 2 == 0,
                           ("Backend for stream '%s' returned uneven played bytes count (csRead=%RU32, cbPlayed=%RU32)\n",
-                           pHstStream->szName, csRead, cbPlayed));
-
+                           pHstStream->szName, csRead, cbPlayed));*/
+#endif
                 csPlayedTotal += AUDIOMIXBUF_B2S(&pHstStream->MixBuf, cbPlayed);
                 Assert(cbLeft >= cbPlayed);
                 cbLeft        -= cbPlayed;
