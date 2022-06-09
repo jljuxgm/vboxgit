@@ -1,4 +1,4 @@
-/* $Id: VBoxMMNotificationClient.h 68683 2017-09-06 15:26:32Z vboxsync $ */
+/* $Id: VBoxMMNotificationClient.h 68751 2017-09-13 19:52:59Z vboxsync $ */
 /** @file
  * VBoxMMNotificationClient.h - Implementation of the IMMNotificationClient interface
  *                              to detect audio endpoint changes.
@@ -21,6 +21,11 @@
 
 #include <iprt/critsect.h>
 #include <iprt/win/windows.h>
+
+/* Should fix warning in include\ks.h. */
+#ifndef _WIN64
+ #define _WIN64
+#endif
 
 #include <Mmdeviceapi.h>
 
