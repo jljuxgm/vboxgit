@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 64966 2016-12-20 11:38:55Z vboxsync $ */
+/* $Id: DevE1000.cpp 67971 2017-07-14 13:38:11Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4023,6 +4023,13 @@ static void e1kInsertChecksum(PE1KSTATE pThis, uint8_t *pPkt, uint16_t u16PktLen
 
     if (cse == 0)
         cse = u16PktLen - 1;
+    else if (cse < css)
+    {
+        E1kLog2(("%s css(%X) is greater than cse(%X), checksum is not inserted\n",
+                 pThis->szPrf, css, cse));
+        return;
+    }
+
     uint16_t u16ChkSum = e1kCSum16(pPkt + css, cse - css + 1);
     E1kLog2(("%s Inserting csum: %04X at %02X, old value: %04X\n", pThis->szPrf,
              u16ChkSum, cso, *(uint16_t*)(pPkt + cso)));
