@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplPrivate.h 67197 2017-06-01 09:07:53Z vboxsync $ */
+/* $Id: ApplianceImplPrivate.h 67199 2017-06-01 09:08:15Z vboxsync $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
@@ -442,7 +442,6 @@ PVDINTERFACEIO FileCreateInterface();
 PVDINTERFACEIO tarWriterCreateInterface(void);
 #endif
 
-int writeBufferToFile(const char *pszFilename, const void *pvContent, size_t cbContent, RTVFSFSSTREAM hVfsFss);
 int writeBufferToFile(const char *pcszFilename, void *pvBuf, size_t cbSize, PVDINTERFACEIO pIfIo, void *pvUser);
 
 #endif // !____H_APPLIANCEIMPLPRIVATE
