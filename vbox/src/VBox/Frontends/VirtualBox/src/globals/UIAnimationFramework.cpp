@@ -1,4 +1,4 @@
-/* $Id: UIAnimationFramework.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIAnimationFramework.cpp 68165 2017-07-29 08:27:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAnimationFramework class implementation.
  */
@@ -101,8 +101,10 @@ void UIAnimation::prepare()
 
     /* Prepare state-transitions: */
     QSignalTransition *pStartToFinal = m_pStateStart->addTransition(parent(), m_pszSignalForward, m_pStateFinal);
+    AssertPtrReturnVoid(pStartToFinal);
     pStartToFinal->addAnimation(m_pForwardAnimation);
     QSignalTransition *pFinalToStart = m_pStateFinal->addTransition(parent(), m_pszSignalReverse, m_pStateStart);
+    AssertPtrReturnVoid(pFinalToStart);
     pFinalToStart->addAnimation(m_pReverseAnimation);
 
     /* Fetch animation-borders: */
