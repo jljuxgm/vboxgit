@@ -1,4 +1,4 @@
-/* $Id: vfschain.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: vfschain.cpp 69630 2017-11-09 15:48:37Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Chains.
  */
@@ -479,7 +479,7 @@ DECLINLINE(char *) rtVfsChainSpecDupStrN(const char *psz, size_t cch, int *prc)
                 char ch = *psz++;
                 if (ch == '\\' && cch > 0)
                 {
-                    char ch2 = psz[2];
+                    char ch2 = *psz;
                     if (rtVfsChainSpecIsEscapableChar(ch2))
                     {
                         psz++;
