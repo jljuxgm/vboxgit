@@ -1,4 +1,4 @@
-/* $Id: DBGCScreenAscii.cpp 65118 2017-01-04 17:09:04Z vboxsync $ */
+/* $Id: DBGCScreenAscii.cpp 69285 2017-10-25 11:27:43Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, ASCII screen with optional coloring support.
  */
@@ -27,6 +27,7 @@
 #include <iprt/string.h>
 
 #include "DBGCInternal.h"
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
@@ -239,7 +240,7 @@ DECLHIDDEN(void) dbgcScreenAsciiDestroy(DBGCSCREEN hScreen)
  * @param   pfnBlit             Blitting callback.
  * @param   pvUser              Opaque user data to pass to the dumper callback.
  * @param   fAddColors          Flag whether to use the color info inserting
- *                              appropriate escape sequences. 
+ *                              appropriate escape sequences.
  */
 DECLHIDDEN(int) dbgcScreenAsciiBlit(DBGCSCREEN hScreen, PFNDGCSCREENBLIT pfnBlit, void *pvUser, bool fAddColors)
 {
