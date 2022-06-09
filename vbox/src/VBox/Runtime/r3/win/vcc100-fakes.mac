@@ -1,4 +1,4 @@
-; $Id: vcc100-fakes.mac 70394 2017-12-30 19:27:35Z vboxsync $
+; $Id: vcc100-fakes.mac 70920 2018-02-08 16:33:55Z vboxsync $
 ;; @file
 ; IPRT - Common macros for the Visual C++ 2010+ CRT import fakes.
 ;
@@ -54,6 +54,8 @@ FakeLazyInit_ %+ %1:
         pusha
         call    _FakeResolve_ %+ FAKE_MODULE_NAME
         popa
+global _ %+ %1 %+ @ %+ %2               ; The imported function stub.
+_ %+ %1 %+ @ %+ %2:
         jmp     [_g_pfn %+ %1]
 
 
