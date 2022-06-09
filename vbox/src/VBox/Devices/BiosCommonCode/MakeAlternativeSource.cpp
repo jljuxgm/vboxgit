@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 67771 2017-07-04 11:02:25Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 67789 2017-07-05 11:23:43Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 67771 2017-07-04 11:02:25Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 67789 2017-07-05 11:23:43Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -983,12 +983,19 @@ static bool disCode(uint32_t uFlatAddr, uint32_t cb, bool fIs16Bit)
                      && pb[3] == 0x48
                      && pb[4] == 0x47
                     )
-                 || (   pb[0] == 0x42   /* _int13_harddisk_ext switch */
-                     && pb[1] == 0x61
-                     && pb[2] == 0x75
-                     && pb[3] == 0x61
-                     && pb[4] == 0x75
-                     && pb[5] == 0x61
+                 || (   pb[0] == 0x8b   /* _int13_harddisk_ext switch */
+                     && pb[1] == 0x46
+                     && pb[2] == 0x16
+                     && pb[3] == 0x30
+                     && pb[4] == 0xe8
+                     && pb[5] == 0x80
+                    )
+                 || (   pb[0] == 0xd8
+                     && pb[1] == 0x5f
+                     && pb[2] == 0x0b
+                     && pb[3] == 0x60
+                     && pb[4] == 0x0b
+                     && pb[5] == 0x60
                     )
                  || (   pb[0] == 0x67   /* _pci16_function switch */
                      && pb[1] == 0x92
@@ -1020,43 +1027,50 @@ static bool disCode(uint32_t uFlatAddr, uint32_t cb, bool fIs16Bit)
                      && pb[6] == 0xe0
                      && pb[7] == 0xa0
                      && pb[8] == 0xe2
-                     && pb[9] == 0xa0)
+                     && pb[9] == 0xa0
+                    )
                  || (   pb[0] == 0xf0   /* switch for apm_worker */
                      && pb[1] == 0xa0
                      && pb[2] == 0xf2
                      && pb[3] == 0xa0
                      && pb[4] == 0xf6
-                     && pb[5] == 0xa0)
+                     && pb[5] == 0xa0
+                    )
                  || (   pb[0] == 0xd4
                      && pb[1] == 0xc6
                      && pb[2] == 0xc5
                      && pb[3] == 0xba
                      && pb[4] == 0xb8
-                     && pb[5] == 0xb6)
+                     && pb[5] == 0xb6
+                    )
                  || (   pb[0] == 0xec   /* _int15_function switch */
                      && pb[1] == 0xe9
                      && pb[2] == 0xd8
                      && pb[3] == 0xc1
                      && pb[4] == 0xc0
-                     && pb[5] == 0xbf)
+                     && pb[5] == 0xbf
+                    )
                  || (   pb[0] == 0x21   /* _int15_function32 switch */
                      && pb[1] == 0x66
                      && pb[2] == 0x43
                      && pb[3] == 0x66
                      && pb[4] == 0x66
-                     && pb[5] == 0x66)
+                     && pb[5] == 0x66
+                    )
                  || (   pb[0] == 0xf0   /* int15_function_mouse switch */
                      && pb[1] == 0x75
                      && pb[2] == 0x66
                      && pb[3] == 0x76
                      && pb[4] == 0xe9
-                     && pb[5] == 0x76)
+                     && pb[5] == 0x76
+                    )
                  || (   pb[0] == 0x60
                      && pb[1] == 0xa0
                      && pb[2] == 0x62
                      && pb[3] == 0xa0
                      && pb[4] == 0x66
-                     && pb[5] == 0xa0)
+                     && pb[5] == 0xa0
+                    )
                  || 0
                  )
             return disByteData(uFlatAddr, cb);
@@ -2062,7 +2076,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                char szRev[] = "$Revision: 67771 $";
+                char szRev[] = "$Revision: 67789 $";
                 char *psz = szRev;
                 while (*psz && !RT_C_IS_DIGIT(*psz))
                     psz++;
