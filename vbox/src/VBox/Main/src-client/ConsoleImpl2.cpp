@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 68975 2017-10-04 11:51:39Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 68992 2017-10-05 09:02:27Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2127,7 +2127,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             rc = ctrls[i]->COMGETTER(Bootable)(&fBootable);                                 H();
 
             PCFGMNODE pCtlInst = NULL;
-            const char *pszCtrlDev = i_convertControllerTypeToDev(enmCtrlType);
+            const char *pszCtrlDev = i_storageControllerTypeToStr(enmCtrlType);
             if (enmCtrlType != StorageControllerType_USB)
             {
                 /* /Devices/<ctrldev>/ */
@@ -4330,7 +4330,7 @@ int Console::i_configMediumAttachment(const char *pcszDevice,
 
         unsigned uLUN;
         PCFGMNODE pLunL0 = NULL;
-        hrc = Console::i_convertBusPortDeviceToLun(enmBus, lPort, lDev, uLUN);                H();
+        hrc = Console::i_storageBusPortDeviceToLun(enmBus, lPort, lDev, uLUN);                H();
 
         /* Determine the base path for the device instance. */
         if (enmBus != StorageBus_USB)

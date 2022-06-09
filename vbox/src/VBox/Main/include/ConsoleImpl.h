@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 68986 2017-10-04 14:37:38Z vboxsync $ */
+/* $Id: ConsoleImpl.h 68992 2017-10-05 09:02:27Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -258,8 +258,8 @@ public:
     static HRESULT i_setErrorStatic(HRESULT aResultCode, const char *pcsz, ...);
     HRESULT i_setInvalidMachineStateError();
 
-    static const char *i_convertControllerTypeToDev(StorageControllerType_T enmCtrlType);
-    static HRESULT i_convertBusPortDeviceToLun(StorageBus_T enmBus, LONG port, LONG device, unsigned &uLun);
+    static const char *i_storageControllerTypeToStr(StorageControllerType_T enmCtrlType);
+    static HRESULT i_storageBusPortDeviceToLun(StorageBus_T enmBus, LONG port, LONG device, unsigned &uLun);
     // Called from event listener
     HRESULT i_onNATRedirectRuleChange(ULONG ulInstance, BOOL aNatRuleRemove,
                                       NATProtocol_T aProto, IN_BSTR aHostIp, LONG aHostPort, IN_BSTR aGuestIp, LONG aGuestPort);
