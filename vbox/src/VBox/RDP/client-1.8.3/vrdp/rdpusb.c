@@ -1,8 +1,6 @@
+/* $Id: rdpusb.c 69416 2017-10-27 10:03:34Z vboxsync $ */
 /** @file
- *
- * Remote Desktop Protocol client:
- * USB Channel Process Functions
- *
+ * Remote Desktop Protocol client - USB Channel Process Functions
  */
 
 /*
@@ -370,7 +368,7 @@ vrdp_usb_status (int rc, VUSBDEV *pdev)
 
 static PUSBPROXYDEV g_proxies = NULL;
 
-static PUSBPROXYDEV 
+static PUSBPROXYDEV
 devid2proxy (uint32_t devid)
 {
 	PUSBPROXYDEV proxy = g_proxies;
