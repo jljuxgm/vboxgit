@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: VBoxMPVdma.h 71596 2018-03-31 21:23:46Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -277,7 +277,7 @@ int vboxVdmaDestroy(PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo);
 
 #ifdef VBOX_WITH_VDMA
 int vboxVdmaFlush(PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo);
-DECLINLINE(HGSMIOFFSET) vboxVdmaCBufDrPtrOffset(const PVBOXVDMAINFO pInfo, const void* pvPtr)
+DECLINLINE(HGSMIOFFSET) vboxVdmaCBufDrPtrOffset(const PVBOXVDMAINFO pInfo, const void RT_UNTRUSTED_VOLATILE_HOST *pvPtr)
 {
     return VBoxSHGSMICommandPtrOffset(&pInfo->CmdHeap, pvPtr);
 }

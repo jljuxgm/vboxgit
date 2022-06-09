@@ -1,4 +1,4 @@
-/* $Id: VBoxMPShgsmi.cpp 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: VBoxMPShgsmi.cpp 71596 2018-03-31 21:23:46Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -125,7 +125,8 @@ void VBoxSHGSMICommandCancelSynch(PVBOXSHGSMI pHeap, const VBOXSHGSMIHEADER RT_U
 
 const VBOXSHGSMIHEADER RT_UNTRUSTED_VOLATILE_HOST *
 VBoxSHGSMICommandPrepAsynch(PVBOXSHGSMI pHeap, void RT_UNTRUSTED_VOLATILE_HOST *pvBuff,
-                            PFNVBOXSHGSMICMDCOMPLETION pfnCompletion, PVOID pvCompletion, uint32_t fFlags)
+                            PFNVBOXSHGSMICMDCOMPLETION pfnCompletion,
+                            void RT_UNTRUSTED_VOLATILE_HOST *pvCompletion, uint32_t fFlags)
 {
     fFlags &= ~VBOXSHGSMI_FLAG_GH_ASYNCH_CALLBACK_IRQ;
     VBOXSHGSMIHEADER RT_UNTRUSTED_VOLATILE_HOST *pHeader = VBoxSHGSMIBufferHeader(pvBuff);
