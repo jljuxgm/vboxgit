@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: GuestControlSvc.h 68656 2017-09-05 18:08:13Z vboxsync $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -29,7 +29,7 @@
 
 #include <VBox/types.h>
 #include <VBox/VMMDev.h>
-#include <VBox/VBoxGuest.h>
+#include <VBox/VBoxGuestCoreTypes.h>
 #include <VBox/hgcmsvc.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
