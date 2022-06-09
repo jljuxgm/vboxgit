@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 71108 2018-02-22 15:38:35Z vboxsync $ */
+/* $Id: HMInternal.h 71344 2018-03-15 09:15:57Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1094,6 +1094,8 @@ typedef struct HMCPU
     STAMCOUNTER             StatVmxCheckBadTr;
     STAMCOUNTER             StatVmxCheckPmOk;
 
+    STAMCOUNTER             StatNestedExitReasonNpf;
+
 #if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS)
     STAMCOUNTER             StatFpu64SwitchBack;
     STAMCOUNTER             StatDebug64SwitchBack;
@@ -1104,6 +1106,8 @@ typedef struct HMCPU
     R0PTRTYPE(PSTAMCOUNTER) paStatExitReasonR0;
     R3PTRTYPE(PSTAMCOUNTER) paStatInjectedIrqs;
     R0PTRTYPE(PSTAMCOUNTER) paStatInjectedIrqsR0;
+    R3PTRTYPE(PSTAMCOUNTER) paStatNestedExitReason;
+    R0PTRTYPE(PSTAMCOUNTER) paStatNestedExitReasonR0;
 #endif
 #ifdef HM_PROFILE_EXIT_DISPATCH
     STAMPROFILEADV          StatExitDispatch;
