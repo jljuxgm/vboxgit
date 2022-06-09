@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 71155 2018-02-28 14:56:07Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 71768 2018-04-09 14:10:52Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -790,11 +790,11 @@ static DECLCALLBACK(int) ich9pciRegisterMsi(PPDMDEVINS pDevIns, PPDMPCIDEV pPciD
     NOREF(pDevIns);
     int rc;
 
-    rc = MsiInit(pPciDev, pMsiReg);
+    rc = MsiR3Init(pPciDev, pMsiReg);
     if (RT_FAILURE(rc))
         return rc;
 
-    rc = MsixInit(pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pPciHlp), pPciDev, pMsiReg);
+    rc = MsixR3Init(pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pPciHlp), pPciDev, pMsiReg);
     if (RT_FAILURE(rc))
         return rc;
 
@@ -2543,14 +2543,14 @@ DECLCALLBACK(VBOXSTRICTRC) devpciR3CommonDefaultConfigWrite(PPDMDEVINS pDevIns, 
          */
         if (   pciDevIsMsiCapable(pPciDev)
             && uAddress - (uint32_t)pPciDev->Int.s.u8MsiCapOffset < (uint32_t)pPciDev->Int.s.u8MsiCapSize)
-            MsiPciConfigWrite(pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pDevIns),
-                              pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pPciHlp),
-                              pPciDev, uAddress, u32Value, cb);
+            MsiR3PciConfigWrite(pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pDevIns),
+                                pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pPciHlp),
+                                pPciDev, uAddress, u32Value, cb);
         else if (   pciDevIsMsixCapable(pPciDev)
                  && uAddress - (uint32_t)pPciDev->Int.s.u8MsixCapOffset < (uint32_t)pPciDev->Int.s.u8MsixCapSize)
-            MsixPciConfigWrite(pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pDevIns),
-                               pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pPciHlp),
-                               pPciDev, uAddress, u32Value, cb);
+            MsixR3PciConfigWrite(pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pDevIns),
+                                 pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pPciHlp),
+                                 pPciDev, uAddress, u32Value, cb);
         else
         {
             /*
