@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 67609 2017-06-26 15:23:17Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 68530 2017-08-25 11:24:52Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -2132,7 +2132,7 @@ bool HostUSBDevice::i_setState(HostUSBDeviceState aNewState,
                 case kHostUSBDeviceState_HeldByProxy:
                     Assert(aNewPendingState == kHostUSBDeviceState_Invalid);
                     Assert(aNewSubState == kHostUSBDeviceSubState_Default);
-                    Assert(mPendingUniState == kHostUSBDeviceState_Unused);
+                    Assert(mPendingUniState == kHostUSBDeviceState_UsedByVM);
                     break;
 
                 /* Success */
