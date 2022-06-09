@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 69559 2017-11-03 09:39:55Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -327,6 +327,7 @@ VMMR3/SSM.cpp_DEFS +=	\
 	KBUILD_TARGET=\"$(KBUILD_TARGET)\" \
 	KBUILD_TARGET_ARCH=\"$(KBUILD_TARGET_ARCH)\"
 
+VMMR3/PGMPool.cpp_CXXFLAGS.linux += -fno-sanitize=address
 
 #ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
 # ifeq ($(KBUILD_HOST), linux)
