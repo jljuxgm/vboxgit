@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 70570 2018-01-13 00:02:51Z vboxsync $
+# $Id: reporter.py 70571 2018-01-13 00:04:15Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70570 $"
+__version__ = "$Revision: 70571 $"
 
 
 # Standard Python imports.
@@ -711,7 +711,10 @@ class RemoteReporter(ReporterBase):
 
     def _writeOutput(self, sText):
         """ Does the actual writing and flushing. """
-        print(sText.encode('ascii', 'replace'), file = self.oOutput);
+        if sys.version_info[0] >= 3:
+            print(sText, file = self.oOutput);
+        else:
+            print(sText.encode('ascii', 'replace'), file = self.oOutput);
         if self.fFlushEachLine: self.oOutput.flush();
         return None;
 
