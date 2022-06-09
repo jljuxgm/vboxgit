@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 62728 2016-07-30 01:34:14Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 67135 2017-05-29 21:05:24Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -574,7 +574,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 62728 $\n");
+                RTPrintf("$Revision: 67135 $\n");
                 return 0;
 
             default:
@@ -672,6 +672,7 @@ int main(int argc, char **argv)
              * Disassemble it.
              */
             rc = MyDisasmBlock(argv0, enmCpuMode, uAddress, uHighlightAddr, (uint8_t *)pvFile, cbFile, enmStyle, fListing, enmUndefOp);
+            RTFileReadAllFree(pvFile, cbFile);
             if (RT_FAILURE(rc))
                 break;
         }
