@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 70080 2017-12-12 12:36:48Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 70098 2017-12-13 08:53:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -33,16 +33,16 @@
 
 /* Forward declarations: */
 class QITabWidget;
-class QTextEdit;
+class QPlainTextEdit;
 class QVBoxLayout;
 class UIToolBar;
 class UIVMLogViewerFilterPanel;
 class UIVMLogViewerSearchPanel;
 
 /* Type definitions: */
-typedef QPair<QString, QTextEdit*> LogPage;
+typedef QPair<QString, QPlainTextEdit*> LogPage;
 typedef QList<LogPage> LogBook;
-typedef QMap<QTextEdit*, QString> VMLogMap;
+typedef QMap<QPlainTextEdit*, QString> VMLogMap;
 
 /** QIMainWindow extension
   * providing GUI with VirtualBox LogViewer. */
@@ -113,9 +113,9 @@ private:
     /** @} */
 
     /** Returns the current log-page. */
-    QTextEdit* currentLogPage() const;
+    QPlainTextEdit* currentLogPage() const;
     /** Returns the newly created log-page using @a strPage filename. */
-    QTextEdit* createLogPage(const QString &strPage);
+    QPlainTextEdit* createLogPage(const QString &strPage);
     /** Returns the content of current log-page. */
     const QString& currentLog();
 

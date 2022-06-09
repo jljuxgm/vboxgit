@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 70027 2017-12-08 13:36:57Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 70098 2017-12-13 08:53:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -27,7 +27,7 @@
 # endif
 # include <QHBoxLayout>
 # include <QLabel>
-# include <QTextEdit>
+# include <QPlainTextEdit>
 
 /* GUI includes: */
 # include "UIIconPool.h"
@@ -79,7 +79,7 @@ void UIVMLogViewerSearchPanel::findCurrent(const QString &strSearchString)
     else
     {
         /* Get current log-page: */
-        QTextEdit *pBrowser = m_pViewer->currentLogPage();
+        QPlainTextEdit *pBrowser = m_pViewer->currentLogPage();
         /* If current log-page is valid and cursor has selection: */
         if (pBrowser && pBrowser->textCursor().hasSelection())
         {
@@ -370,7 +370,7 @@ void UIVMLogViewerSearchPanel::hideEvent(QHideEvent *pEvent)
 void UIVMLogViewerSearchPanel::search(bool fForward, bool fStartCurrent /* = false */)
 {
     /* Get current log-page: */
-    QTextEdit *pBrowser = m_pViewer->currentLogPage();
+    QPlainTextEdit *pBrowser = m_pViewer->currentLogPage();
     if (!pBrowser) return;
 
     /* Get text-cursor and its attributes: */

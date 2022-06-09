@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 70074 2017-12-12 09:26:08Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 70098 2017-12-13 08:53:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -28,7 +28,7 @@
 # include <QLabel>
 # include <QPushButton>
 # include <QScrollBar>
-# include <QTextEdit>
+# include <QPlainTextEdit>
 # include <QVBoxLayout>
 
 /* GUI includes: */
