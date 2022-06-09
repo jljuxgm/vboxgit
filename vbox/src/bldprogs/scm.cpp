@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69290 2017-10-25 11:34:49Z vboxsync $ */
+/* $Id: scm.cpp 69295 2017-10-25 12:26:19Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -86,6 +86,8 @@ typedef enum SCMOPT
     SCMOPT_LICENSE_OSE_CDDL,
     SCMOPT_LICENSE_LGPL,
     SCMOPT_LICENSE_MIT,
+    SCMOPT_LGPL_DISCLAIMER,
+    SCMOPT_NO_LGPL_DISCLAIMER,
     SCMOPT_MIN_BLANK_LINES_BEFORE_FLOWER_BOX_MARKERS,
     SCMOPT_ONLY_SVN_DIRS,
     SCMOPT_NOT_ONLY_SVN_DIRS,
@@ -164,6 +166,7 @@ static SCMSETTINGSBASE const g_Defaults =
     /* .fFixTodos = */                              true,
     /* .fUpdateCopyrightYear = */                   false,
     /* .fExternalCopyright = */                     false,
+    /* .fLgplDisclaimer = */                        false,
     /* .enmUpdateLicense = */                       kScmLicense_OseGpl,
     /* .fOnlySvnFiles = */                          false,
     /* .fOnlySvnDirs = */                           false,
@@ -207,6 +210,8 @@ static RTGETOPTDEF  g_aScmOpts[] =
     { "--license-ose-cddl",                 SCMOPT_LICENSE_OSE_CDDL,                RTGETOPT_REQ_NOTHING },
     { "--license-lgpl",                     SCMOPT_LICENSE_LGPL,                    RTGETOPT_REQ_NOTHING },
     { "--license-mit",                      SCMOPT_LICENSE_MIT,                     RTGETOPT_REQ_NOTHING },
+    { "--lgpl-disclaimer",                  SCMOPT_LGPL_DISCLAIMER,                 RTGETOPT_REQ_NOTHING },
+    { "--no-lgpl-disclaimer",               SCMOPT_NO_LGPL_DISCLAIMER,              RTGETOPT_REQ_NOTHING },
     { "--only-svn-dirs",                    SCMOPT_ONLY_SVN_DIRS,                   RTGETOPT_REQ_NOTHING },
     { "--not-only-svn-dirs",                SCMOPT_NOT_ONLY_SVN_DIRS,               RTGETOPT_REQ_NOTHING },
     { "--only-svn-files",                   SCMOPT_ONLY_SVN_FILES,                  RTGETOPT_REQ_NOTHING },
@@ -643,6 +648,13 @@ static int scmSettingsBaseHandleOpt(PSCMSETTINGSBASE pSettings, int rc, PRTGETOP
             return VINF_SUCCESS;
         case SCMOPT_LICENSE_MIT:
             pSettings->enmUpdateLicense = kScmLicense_Mit;
+            return VINF_SUCCESS;
+
+        case SCMOPT_LGPL_DISCLAIMER:
+            pSettings->fLgplDisclaimer = true;
+            return VINF_SUCCESS;
+        case SCMOPT_NO_LGPL_DISCLAIMER:
+            pSettings->fLgplDisclaimer = false;
             return VINF_SUCCESS;
 
         case SCMOPT_ONLY_SVN_DIRS:
@@ -1984,6 +1996,10 @@ static void usage(PCRTGETOPTDEF paOpts, size_t cOpts)
                 RTPrintf("      License selection.  Default: --license-ose-gpl\n");
                 break;
 
+            case SCMOPT_LGPL_DISCLAIMER:
+                RTPrintf("      Include LGPL version disclaimer.  Default: --no-lgpl-disclaimer\n");
+                break;
+
             case SCMOPT_ONLY_SVN_DIRS:          RTPrintf("      Default: %RTbool\n", g_Defaults.fOnlySvnDirs); break;
             case SCMOPT_ONLY_SVN_FILES:         RTPrintf("      Default: %RTbool\n", g_Defaults.fOnlySvnFiles); break;
             case SCMOPT_SET_SVN_EOL:            RTPrintf("      Default: %RTbool\n", g_Defaults.fSetSvnEol); break;
@@ -2086,7 +2102,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69290 $";
+                static const char s_szRev[] = "$Revision: 69295 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
