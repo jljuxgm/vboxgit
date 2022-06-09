@@ -1,10 +1,10 @@
-/* $Id: QITreeView.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: QITreeView.h 71884 2018-04-17 17:43:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeView class declaration.
  */
 
 /*
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -21,13 +21,16 @@
 /* Qt includes: */
 #include <QTreeView>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* Forward declarations: */
 class QITreeViewItem;
 class QITreeView;
 
 
 /** OObject subclass used as item for the QITreeView. */
-class QITreeViewItem : public QObject
+class SHARED_LIBRARY_STUFF QITreeViewItem : public QObject
 {
     Q_OBJECT;
 
@@ -67,14 +70,14 @@ public:
 private:
 
     /** Holds the parent tree reference. */
-    QITreeView *m_pParentTree;
+    QITreeView     *m_pParentTree;
     /** Holds the parent item reference. */
     QITreeViewItem *m_pParentItem;
 };
 
 
 /** QTreeView subclass extending standard functionality. */
-class QITreeView : public QTreeView
+class SHARED_LIBRARY_STUFF QITreeView : public QTreeView
 {
     Q_OBJECT;
 
@@ -135,5 +138,5 @@ private:
     void prepare();
 };
 
-#endif /* !___QITreeView_h___ */
 
+#endif /* !___QITreeView_h___ */
