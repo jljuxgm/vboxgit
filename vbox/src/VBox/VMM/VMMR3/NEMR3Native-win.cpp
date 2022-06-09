@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 71284 2018-03-09 12:38:30Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 71286 2018-03-09 12:52:43Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -2273,7 +2273,7 @@ void nemR3NativeNotifySetA20(PVMCPU pVCpu, bool fEnabled)
  * WHvGetVirtualProcessorRegisters.
  *
  *
- * @subsection subsec_nem_win_whv_cons  Issues / Disadvantages
+ * @subsection subsec_nem_win_whv_cons  Issues & Feedback
  *
  * Here are some observations (mostly against build 17101):
  *
