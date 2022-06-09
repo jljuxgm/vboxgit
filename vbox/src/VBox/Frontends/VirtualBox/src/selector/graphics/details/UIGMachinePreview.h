@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGMachinePreview.h 69642 2017-11-10 13:06:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGMachinePreview class declaration.
  */
@@ -112,6 +112,7 @@ private:
     QTimer *m_pUpdateTimer;
     QMenu *m_pUpdateTimerMenu;
     QHash<PreviewUpdateIntervalType, QAction*> m_actions;
+    const double m_dRatio;
     const int m_iMargin;
     QRect m_vRect;
     AspectRatioPreset m_preset;
