@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 71439 2018-03-21 19:39:44Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 71467 2018-03-22 16:56:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -167,7 +167,7 @@ bool UIHostFileTable::createDirectory(const QString &path, const QString &direct
     return true;
 }
 
-FileObjectType UIHostFileTable::fileType(const QFileInfo &fsInfo)
+/* static */ FileObjectType UIHostFileTable::fileType(const QFileInfo &fsInfo)
 {
     if (!fsInfo.exists())
         return FileObjectType_Unknown;
