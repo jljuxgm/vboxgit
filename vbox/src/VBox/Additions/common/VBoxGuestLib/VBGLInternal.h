@@ -1,4 +1,4 @@
-/* $Id: VBGLInternal.h 68581 2017-08-31 12:11:13Z vboxsync $ */
+/* $Id: VBGLInternal.h 68613 2017-09-03 15:50:07Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -41,6 +41,17 @@
 # endif
 #else
 # define dprintf(a) Log(a)
+#endif
+
+/*
+ * Lazy bird: OS/2 doesn't currently implement the RTSemMutex API in ring-0, so
+ *  use a fast mutex instead.   Unlike Windows, the OS/2 implementation
+ *  doesn't have any nasty side effects on IRQL-like context properties, so the
+ *  fast mutexes on OS/2 are identical to normal mutexes except for the missing
+ *  timeout aspec.  Fortunately we don't need timeouts here.
+ */
+#ifdef RT_OS_OS2
+# define VBGLDATA_USE_FAST_MUTEX
 #endif
 
 
@@ -98,7 +109,11 @@ typedef struct VBGLDATA
     /** The IDC handle.  This is used for talking to the main driver. */
     VBGLIDCHANDLE IdcHandle;
     /** Mutex used to serialize IDC setup.   */
+# ifdef VBGLDATA_USE_FAST_MUTEX
+    RTSEMFASTMUTEX hMtxIdcSetup;
+# else
     RTSEMMUTEX hMtxIdcSetup;
+# endif
 #endif
 } VBGLDATA;
 
