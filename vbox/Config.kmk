@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68290 2017-08-03 16:24:55Z vboxsync $
+# $Id: Config.kmk 68291 2017-08-03 18:28:46Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -231,10 +231,10 @@ ifeq ($(int-mod $(VBOX_VERSION_BUILD),2),0)
   VBOX_RELEASE_EXACT_MATCH=1
 endif
 ifneq ($(VBOX_RELEASE_EXACT_MATCH),)
- export VBOX_ADDITIONS_SH_MODE     = release
- export VBOX_DOCUMENTATION_SH_MODE = release
- export VBOX_EFI_SH_MODE           = release
- export VBOX_EXTPACKS_SH_MODE      = release
+# export VBOX_ADDITIONS_SH_MODE     = release
+# export VBOX_DOCUMENTATION_SH_MODE = release
+# export VBOX_EFI_SH_MODE           = release
+# export VBOX_EXTPACKS_SH_MODE      = release
 endif
 
 # Some info on the vendor
@@ -7013,7 +7013,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68290 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68291 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
