@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 69220 2017-10-24 15:02:09Z vboxsync $ */
+/* $Id: scmrw.cpp 69234 2017-10-24 16:08:23Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1113,7 +1113,7 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
         for (PCSCMLICENSETEXT pCur = pState->paLicenses; pCur->cch > 0; pCur++)
         {
             const char *pszNext;
-            if (   pCur->cch - 1 <= cchBody
+            if (   pCur->cch <= cchBody + 32 /* (+ 32 since we don't compare spaces and punctuation) */
                 && IsEqualWordByWordIgnoreCase(pCur->psz, pszBody, &pszNext))
             {
                 while (   RT_C_IS_SPACE(*pszNext)
