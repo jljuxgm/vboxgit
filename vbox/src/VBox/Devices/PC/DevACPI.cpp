@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 68259 2017-08-02 16:38:51Z vboxsync $ */
+/* $Id: DevACPI.cpp 68270 2017-08-03 08:12:14Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1507,7 +1507,7 @@ PDMBOTHCBDECL(int) acpiR3SysInfoDataRead(PPDMDEVINS pDevIns, void *pvUser, RTIOP
     }
 
     DEVACPI_UNLOCK(pThis);
-    Log(("acpiR3SysInfoDataRead: idx=%d val=%#x (%d) rc=%Rrc\n", uSystemInfoIndex, *pu32, *pu32, rc));
+    Log(("acpiR3SysInfoDataRead: idx=%d val=%#x (%u) rc=%Rrc\n", uSystemInfoIndex, *pu32, *pu32, rc));
     return rc;
 }
 
