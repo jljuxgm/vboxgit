@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 70717 2018-01-23 18:54:16Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 70719 2018-01-24 04:21:52Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -723,7 +723,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
     SHOW_BOOLEAN_METHOD(   machine, GetCPUProperty(CPUPropertyType_TripleFaultReset, &f), "triplefaultreset", "Triple Fault Reset:");
     SHOW_BOOLEAN_METHOD(   machine, GetCPUProperty(CPUPropertyType_APIC, &f), "apic", "APIC:");
     SHOW_BOOLEAN_METHOD(   machine, GetCPUProperty(CPUPropertyType_X2APIC, &f), "x2apic", "X2APIC:");
-    SHOW_BOOLEAN_METHOD(   machine, GetCPUProperty(CPUPropertyType_X2APIC, &f), "nested-hw-virt", "Nested VT-x/AMD-V:");
+    SHOW_BOOLEAN_METHOD(   machine, GetCPUProperty(CPUPropertyType_HWVirt, &f), "nested-hw-virt", "Nested VT-x/AMD-V:");
     SHOW_ULONG_PROP(       machine, CPUIDPortabilityLevel, "cpuid-portability-level",   "CPUID Portability Level:", "");
 
     if (details != VMINFO_MACHINEREADABLE)
