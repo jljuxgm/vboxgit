@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 71653 2018-04-04 12:43:50Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 71825 2018-04-11 13:09:21Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2002,8 +2002,12 @@ void GuestProcessTool::uninit(void)
 {
     /* Make sure the process is terminated and unregistered from the guest session. */
     int rcGuestIgnored;
-    int rc2 = terminate(30 * 1000 /* 30s timeout */, &rcGuestIgnored);
-    AssertRC(rc2);
+    terminate(30 * 1000 /* 30s timeout */, &rcGuestIgnored);
+
+    /* Unregister the process from the process (and the session's object) list. */
+    if (   pSession
+        && pProcess)
+        pSession->i_processUnregister(pProcess);
 
     /* Release references. */
     pProcess.setNull();
