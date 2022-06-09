@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdMoveMedium1.py 70857 2018-02-02 22:31:45Z vboxsync $
+# $Id: tdMoveMedium1.py 70858 2018-02-05 09:43:30Z vboxsync $
 
 """
 VirtualBox Validation Kit - Medium Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70857 $"
+__version__ = "$Revision: 70858 $"
 
 
 # Standard Python imports.
@@ -89,9 +89,7 @@ class SubTstDrvMoveMedium1(base.SubTestDriverBase):
         for oAttachment in aoMediumAttachments:
             sFilePath = os.path.join(sLocation, asFiles[oAttachment.port])
             sActualFilePath = oAttachment.medium.location
-            # @todo os.path.samefile() is not available on Windows in python 2.x
-            if     sys.platform != 'win32' \
-               and not os.path.samefile(sFilePath, sActualFilePath):
+            if os.path.abspath(sFilePath) != os.path.abspath(sActualFilePath):
                 reporter.log('medium location expected to be "%s" but is "%s"' % (sFilePath, sActualFilePath))
                 fRc = False;
             if not os.path.exists(sFilePath):
