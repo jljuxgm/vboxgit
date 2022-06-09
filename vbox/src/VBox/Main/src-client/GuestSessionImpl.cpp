@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 71976 2018-04-23 10:52:51Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 71977 2018-04-23 11:14:27Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2941,7 +2941,7 @@ HRESULT GuestSession::directoryCopyToGuest(const com::Utf8Str &aSource, const co
             GuestSessionFsSourceSpec source;
             source.strSource           = aSource;
             source.enmType             = GuestSessionFsSourceType_Dir;
-#if RTPATH_STYLERTPATH_STYLE == RTPATH_STR_F_STYLE_DOS
+#if RTPATH_STYLE == RTPATH_STR_F_STYLE_DOS
             source.enmPathStyle         = PathStyle_DOS;
 #else
             source.enmPathStyle         = PathStyle_UNIX;
