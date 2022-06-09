@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 64334 2016-10-20 14:43:06Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 67602 2017-06-26 11:55:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -124,7 +124,10 @@ void UIMachineWindowNormal::sltCPUExecutionCapChange()
 void UIMachineWindowNormal::sltHandleSessionInitialized()
 {
     /* Update virtualization stuff: */
-    updateAppearanceOf(UIVisualElement_FeaturesStuff);
+    updateAppearanceOf(  UIVisualElement_FeaturesStuff
+                       | UIVisualElement_HDStuff
+                       | UIVisualElement_CDStuff
+                       | UIVisualElement_FDStuff);
 }
 
 #ifndef RT_OS_DARWIN
