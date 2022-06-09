@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibIdc-win.cpp 68561 2017-08-31 12:10:14Z vboxsync $ */
+/* $Id: VBoxGuestR0LibIdc-win.cpp 68568 2017-08-31 12:10:33Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC, Windows specific.
  */
@@ -137,7 +137,7 @@ int VBOXCALL vbglR0IdcNativeOpen(PVBGLIDCHANDLE pHandle, PVBGLIOCIDCCONNECT pReq
          * Make the connection call.
          */
         rc = vbglR0IdcNtCallInternal(pDeviceObject, pFileObject, VBGL_IOCTL_IDC_CONNECT, &pReq->Hdr);
-        if (RT_SUCCESS(rc))
+        if (RT_SUCCESS(rc) && RT_SUCCESS(pReq->Hdr.rc))
         {
             pHandle->s.pDeviceObject = pDeviceObject;
             pHandle->s.pFileObject   = pFileObject;
@@ -160,7 +160,7 @@ int VBOXCALL vbglR0IdcNativeClose(PVBGLIDCHANDLE pHandle, PVBGLIOCIDCDISCONNECT 
 {
     PFILE_OBJECT pFileObject = pHandle->s.pFileObject;
     int rc = vbglR0IdcNtCallInternal(pHandle->s.pDeviceObject, pFileObject, VBGL_IOCTL_IDC_DISCONNECT, &pReq->Hdr);
-    if (RT_SUCCESS(rc))
+    if (RT_SUCCESS(rc) && RT_SUCCESS(pReq->Hdr.rc))
     {
         pHandle->s.pDeviceObject = NULL;
         pHandle->s.pFileObject   = NULL;
