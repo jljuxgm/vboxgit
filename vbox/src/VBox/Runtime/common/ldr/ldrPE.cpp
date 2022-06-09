@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 70310 2017-12-22 11:47:01Z vboxsync $ */
+/* $Id: ldrPE.cpp 70312 2017-12-22 11:50:14Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -3152,7 +3152,7 @@ static int rtldrPEValidateFileHeader(PIMAGE_FILE_HEADER pFileHdr, uint32_t fFlag
         default:
             Log(("rtldrPEOpen: %s: Unsupported Machine=%#x\n", pszLogName, pFileHdr->Machine));
             *penmArch = RTLDRARCH_INVALID;
-            return RTERRINFO_LOG_SET_F(pErrInfo, VERR_BAD_EXE_FORMAT, "Unsupported Machine=%#x", pszLogName, pFileHdr->Machine);
+            return RTERRINFO_LOG_SET_F(pErrInfo, VERR_BAD_EXE_FORMAT, "Unsupported Machine=%#x", pFileHdr->Machine);
     }
     if (pFileHdr->SizeOfOptionalHeader != cbOptionalHeader)
     {
