@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.h 70535 2018-01-11 13:33:05Z vboxsync $ */
+/* $Id: DrvAudioVRDE.h 70553 2018-01-12 12:15:36Z vboxsync $ */
 /** @file
  * VirtualBox driver interface to VRDE backend.
  */
@@ -56,6 +56,8 @@ public:
 
     static DECLCALLBACK(int) drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(void) drvDestruct(PPDMDRVINS pDrvIns);
+    static DECLCALLBACK(int) drvAttach(PPDMDRVINS pDrvIns, uint32_t fFlags);
+    static DECLCALLBACK(void) drvDetach(PPDMDRVINS pDrvIns, uint32_t fFlags);
 
 private:
 

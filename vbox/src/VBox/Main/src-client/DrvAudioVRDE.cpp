@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 70535 2018-01-11 13:33:05Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 70553 2018-01-12 12:15:36Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -755,6 +755,30 @@ DECLCALLBACK(void) AudioVRDE::drvDestruct(PPDMDRVINS pDrvIns)
     }
 }
 
+/**
+ * @interface_method_impl{PDMDRVREG,pfnAttach}
+ */
+/* static */
+DECLCALLBACK(int) AudioVRDE::drvAttach(PPDMDRVINS pDrvIns, uint32_t fFlags)
+{
+    RT_NOREF(pDrvIns, fFlags);
+
+    LogFlowFuncEnter();
+
+    return VINF_SUCCESS;
+}
+
+/**
+ * @interface_method_impl{PDMDRVREG,pfnDetach}
+ */
+/* static */
+DECLCALLBACK(void) AudioVRDE::drvDetach(PPDMDRVINS pDrvIns, uint32_t fFlags)
+{
+    RT_NOREF(pDrvIns, fFlags);
+
+    LogFlowFuncEnter();
+}
+
 
 /**
  * VRDE audio driver registration record.
@@ -795,9 +819,9 @@ const PDMDRVREG AudioVRDE::DrvReg =
     /* pfnResume */
     NULL,
     /* pfnAttach */
-    NULL,
+    AudioVRDE::drvAttach,
     /* pfnDetach */
-    NULL,
+    AudioVRDE::drvDetach,
     /* pfnPowerOff */
     NULL,
     /* pfnSoftReset */
