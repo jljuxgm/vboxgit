@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 71615 2018-04-02 13:18:40Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 71626 2018-04-02 21:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -432,7 +432,7 @@ public:
             /* tell client to pend ProcessVHWACommand */
             return E_ACCESSDENIED;
         }
-        rc = mOverlay.onVHWACommand ((struct VBOXVHWACMD*)pCommand);
+        rc = mOverlay.onVHWACommand((struct VBOXVHWACMD RT_UNTRUSTED_VOLATILE_GUEST *)pCommand);
         UIFrameBufferPrivate::unlock();
         if (rc == VINF_CALLBACK_RETURN)
             return S_OK;
