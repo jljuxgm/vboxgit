@@ -1,4 +1,4 @@
-/* $Id: MsixCommon.cpp 71770 2018-04-09 14:22:03Z vboxsync $ */
+/* $Id: MsixCommon.cpp 71771 2018-04-09 14:22:43Z vboxsync $ */
 /** @file
  * MSI-X support routines
  */
@@ -137,7 +137,7 @@ PDMBOTHCBDECL(int) msixR3MMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCP
     return VINF_SUCCESS;
 }
 
-PDMBOTHCBDECL(int,) msixR3MMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void const *pv, unsigned cb)
+PDMBOTHCBDECL(int) msixR3MMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void const *pv, unsigned cb)
 {
     LogFlowFunc(("\n"));
 
