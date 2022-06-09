@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 68394 2017-08-11 13:14:04Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 69260 2017-10-25 09:09:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3563,7 +3563,7 @@ void VBoxGlobal::prepare()
             msgCenter().cannotInitCOM(rc);
         return;
     }
-    
+
 #ifdef VBOX_WITH_SDS
     // setup Client COM Security to enable impersonation required by VBOX_SDS
     HRESULT hrGUICoInitializeSecurity = CoInitializeSecurity(NULL,

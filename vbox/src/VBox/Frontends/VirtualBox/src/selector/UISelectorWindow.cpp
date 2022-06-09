@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 69069 2017-10-13 12:39:49Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 69260 2017-10-25 09:09:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1806,7 +1806,7 @@ void UISelectorWindow::prepareToolbar()
         m_pToolBar->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
         m_pToolBar->setContextMenuPolicy(Qt::CustomContextMenu);
         m_pToolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-        // TODO: Get rid of hard-coded stuff:
+        /// @todo Get rid of hard-coded stuff:
         const QSize toolBarIconSize = m_pToolBar->iconSize();
         if (toolBarIconSize.width() < 32 || toolBarIconSize.height() < 32)
             m_pToolBar->setIconSize(QSize(32, 32));

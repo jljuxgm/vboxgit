@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 68315 2017-08-07 12:50:54Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.mm 69260 2017-10-25 09:09:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaSpecialControls implementation.
  */
@@ -468,7 +468,7 @@ QAccessibleInterface *UIAccessibilityInterfaceForUICocoaSegmentedButtonSegment::
 
 QRect UIAccessibilityInterfaceForUICocoaSegmentedButtonSegment::rect() const
 {
-    // TODO: Return the -=real=- segment rectangle.
+    /// @todo Return the -=real=- segment rectangle.
     const QRect myRect = m_pParent->rect();
     return QRect(myRect.x() + myRect.width() / 2 * m_iIndex,
                  myRect.y(), myRect.width() / 2, myRect.height());

@@ -1,4 +1,4 @@
-/* $Id: QITableView.cpp 68155 2017-07-28 13:07:39Z vboxsync $ */
+/* $Id: QITableView.cpp 69260 2017-10-25 09:09:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITableView class implementation.
  */
@@ -167,7 +167,7 @@ private:
 
 
 /*********************************************************************************************************************************
-*   Class QIAccessibilityInterfaceForQITableViewCell implementation.                                                              *
+*   Class QIAccessibilityInterfaceForQITableViewCell implementation.                                                             *
 *********************************************************************************************************************************/
 
 QAccessibleInterface *QIAccessibilityInterfaceForQITableViewCell::parent() const

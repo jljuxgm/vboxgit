@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
+/* $Id: UIWindowMenuManager.cpp 69260 2017-10-25 09:09:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class implementation.
  */
@@ -286,7 +286,7 @@ bool UIWindowMenuManager::eventFilter(QObject *pObject, QEvent *pEvent)
     /* Acquire event type: */
     const QEvent::Type type = pEvent->type();
 
-#ifdef VBOX_OSE // TODO: Do we still need it?
+#ifdef VBOX_OSE /// @todo Do we still need it?
     /* Stupid Qt: Qt doesn't check if a window is minimized when a command is
      * executed. This leads to strange behaviour. The minimized window is
      * partly restored, but not usable. As a workaround we raise the parent

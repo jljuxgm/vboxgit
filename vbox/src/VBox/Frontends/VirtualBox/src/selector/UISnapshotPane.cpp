@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 68962 2017-10-03 13:26:15Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 69260 2017-10-25 09:09:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1133,7 +1133,7 @@ void UISnapshotPane::sltHandleItemChange(QTreeWidgetItem *pItem)
                 CSession comSession = vboxGlobal().openExistingSession(comSnapshot.GetMachine().GetId());
                 if (!comSession.isNull())
                 {
-                    // TODO: Add settings save validation.
+                    /// @todo Add settings save validation.
 
                     /* Save snapshot name: */
                     comSnapshot.SetName(pSnapshotItem->text(Column_Name));

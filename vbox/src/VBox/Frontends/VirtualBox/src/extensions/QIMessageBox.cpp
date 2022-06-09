@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 68079 2017-07-21 11:32:19Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 69260 2017-10-25 09:09:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMessageBox class implementation.
  */
@@ -216,7 +216,7 @@ void QIMessageBox::prepare()
         AssertPtrReturnVoid(m_pDetailsContainer);
         {
             /* Configure container: */
-            connect(m_pDetailsContainer, &QIArrowSplitter::sigSizeHintChange, 
+            connect(m_pDetailsContainer, &QIArrowSplitter::sigSizeHintChange,
                     this, &QIMessageBox::sltUpdateSize);
             /* Add details-container into main-layout: */
             pMainLayout->addWidget(m_pDetailsContainer);

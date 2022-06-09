@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 69057 2017-10-12 09:43:58Z vboxsync $ */
+/* $Id: UITabBar.cpp 69260 2017-10-25 09:09:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -985,7 +985,7 @@ void UITabBar::prepare()
         m_pLayoutMain->setSpacing(0);
         m_pLayoutMain->setContentsMargins(0, 0, 0, 0);
 
-        // TODO: Workout stretch at the and as well,
+        /// @todo Workout stretch at the and as well,
         //       depending on which alignment is set.
         /* Add strech into beginning: */
         m_pLayoutMain->addStretch();

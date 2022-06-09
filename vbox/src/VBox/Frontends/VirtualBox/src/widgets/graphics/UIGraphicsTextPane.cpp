@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 63770 2016-09-08 16:18:21Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 69260 2017-10-25 09:09:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -82,7 +82,7 @@ public:
         AssertPtrReturn(parent(), QRect());
 
         /* Return the parent's rect for now: */
-        // TODO: Return sub-rect.
+        /// @todo Return sub-rect.
         return parent()->rect();
     }
 

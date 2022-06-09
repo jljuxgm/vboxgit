@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.h 68679 2017-09-06 13:42:56Z vboxsync $ */
+/* $Id: UIPopupCenter.h 69260 2017-10-25 09:09:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class declaration.
  */
@@ -31,7 +31,7 @@ class QWidget;
 class UIPopupStack;
 class CAudioAdapter;
 class CConsole;
-class CEmulatedUSB; 
+class CEmulatedUSB;
 class CMachine;
 class CNetworkAdapter;
 class CVirtualBox;
