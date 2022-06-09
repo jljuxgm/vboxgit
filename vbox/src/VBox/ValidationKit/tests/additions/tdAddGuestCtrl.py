@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72008 $"
+__version__ = "$Revision: 72046 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -927,7 +927,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             'exec_basic', 'exec_errorlevel', 'exec_timeout',
             'dir_create', 'dir_create_temp', 'dir_read',
             'file_remove', 'file_stat', 'file_read', 'file_write',
-            #'copy_to', 'copy_from',
+            'copy_to', 'copy_from',
             'update_additions'
         ];
         self.asTests    = self.asTestsDef;
@@ -3385,11 +3385,12 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             #
             if self.oTstDrv.fpApiVer > 5.2: # Copying directories via Main is supported only in versions > 5.2.
                 aaTests.extend([
-                    # Copying entire directories (destination is "<sScratch>", which exists, which should fail).
+                    # Copying entire directories (destination is "<sScratchHst>\Web").
                     [ tdTestCopyFrom(sUser = sUser, sPassword = sPassword, sSrc = 'C:\\Windows\\Web',
                                      sDst = sScratchHst),
-                      tdTestResult(fRc = False) ],
-                    # Ditto, with trailing slash.
+                      tdTestResult(fRc = True) ],
+                    # Repeat -- this time it should fail, as the destination directory already exists (and
+                    # DirectoryCopyFlag_CopyIntoExisting is not specified).
                     [ tdTestCopyFrom(sUser = sUser, sPassword = sPassword, sSrc = 'C:\\Windows\\Web',
                                      sDst = sScratchHst + "/"),
                       tdTestResult(fRc = False) ],
