@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 66938 2017-05-17 16:09:58Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 68133 2017-07-27 09:44:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -299,6 +299,7 @@ private:
     HRESULT getMachineStates(const std::vector<ComPtr<IMachine> > &aMachines,
                              std::vector<MachineState_T> &aStates);
     HRESULT createAppliance(ComPtr<IAppliance> &aAppliance);
+    HRESULT createUnattendedInstaller(ComPtr<IUnattended> &aUnattended);
     HRESULT createMedium(const com::Utf8Str &aFormat,
                          const com::Utf8Str &aLocation,
                          AccessMode_T aAccessMode,

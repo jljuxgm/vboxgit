@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 68129 2017-07-26 19:31:16Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 68133 2017-07-27 09:44:28Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1530,7 +1530,8 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
              * Instantiate and configure the unattended installer.
              */
             ComPtr<IUnattended> ptrUnattended;
-            CHECK_ERROR_BREAK(machine, CreateUnattendedInstaller(ptrUnattended.asOutParam()));
+            CHECK_ERROR_BREAK(a->virtualBox, CreateUnattendedInstaller(ptrUnattended.asOutParam()));
+            CHECK_ERROR_BREAK(ptrUnattended, COMSETTER(Machine)(machine));
 
             if (pszIsoPath)
                 CHECK_ERROR_BREAK(ptrUnattended, COMSETTER(IsoPath)(Bstr(pszIsoPath).raw()));
