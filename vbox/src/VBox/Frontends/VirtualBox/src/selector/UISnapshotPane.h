@@ -1,10 +1,10 @@
-/* $Id: UISnapshotPane.h 64495 2016-10-31 15:32:19Z vboxsync $ */
+/* $Id: UISnapshotPane.h 67044 2017-05-23 14:17:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -56,7 +56,7 @@ class UISnapshotPane : public QIWithRetranslateUI<QWidget>
 public:
 
     /** Constructs snapshot pane passing @a pParent to the base-class. */
-    UISnapshotPane(QWidget *pParent);
+    UISnapshotPane(QWidget *pParent = 0);
 
     /** Defines the @a comMachine to be parsed. */
     void setMachine(const CMachine &comMachine);
@@ -152,11 +152,6 @@ private:
     UISnapshotItem  *m_pCurrentSnapshotItem;
     /** Holds the snapshot item editing protector. */
     QReadWriteLock   m_lockReadWrite;
-
-    /** Holds the snapshot item action group instance. */
-    QActionGroup    *m_pSnapshotItemActionGroup;
-    /** Holds the current item action group instance. */
-    QActionGroup    *m_pCurrentStateItemActionGroup;
 
     /** Holds the snapshot take action instance. */
     QAction         *m_pActionTakeSnapshot;
