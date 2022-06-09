@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69407 2017-10-27 00:27:44Z vboxsync $
+# $Id: .scm-settings 69410 2017-10-27 09:28:33Z vboxsync $
 ## @file
 # Source code massager settings for the host installers.
 #
@@ -89,3 +89,4 @@
 /win/MsiHack/MsiHackExtension.cs:               --treat-as .c
 --filter-out-files /win/Stub/VBoxStub.manifest
 /win/NLS/*.wxl:                                 --no-convert-tabs
+
