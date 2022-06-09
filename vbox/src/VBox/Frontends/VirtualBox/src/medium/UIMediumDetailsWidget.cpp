@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 69526 2017-10-30 13:04:33Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 69540 2017-11-01 11:24:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -621,19 +621,31 @@ void UIMediumDetailsWidget::loadDataForOptions()
         switch (m_newData.m_enmType)
         {
             case UIMediumType_HardDisk:
-                m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_Normal));
-                m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_Immutable));
-                m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_Writethrough));
-                m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_Shareable));
-                m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_MultiAttach));
+            {
+                /* No type changes for differencing disks: */
+                if (m_oldData.m_enmVariant & KMediumVariant_Diff)
+                    m_pComboBoxType->addItem(QString(), m_oldData.m_options.m_enmType);
+                else
+                {
+                    m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_Normal));
+                    m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_Immutable));
+                    m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_Writethrough));
+                    m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_Shareable));
+                    m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_MultiAttach));
+                }
                 break;
+            }
             case UIMediumType_DVD:
+            {
                 m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_Readonly));
                 break;
+            }
             case UIMediumType_Floppy:
+            {
                 m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_Writethrough));
                 m_pComboBoxType->addItem(QString(), QVariant::fromValue(KMediumType_Readonly));
                 break;
+            }
             default:
                 break;
         }
