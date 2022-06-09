@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 67048 2017-05-23 16:27:05Z vboxsync $
+# $Id: vbox.py 67049 2017-05-23 17:48:32Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67048 $"
+__version__ = "$Revision: 67049 $"
 
 
 # Standard Python imports.
@@ -2509,8 +2509,11 @@ class TestDriver(base.TestDriver):                                              
                     if   self.fpApiVer < 4.3 \
                       or (self.fpApiVer == 4.3 and not hasattr(self.oVBoxMgr, 'getSessionObject')):
                         oSession = self.oVBoxMgr.mgr.getSessionObject(self.oVBox);  # pylint: disable=E1101
-                    else:
+                    elif self.fpApiVer < 5.2 \
+                      or (self.fpApiVer == 5.2 and hasattr(self.oVBoxMgr, 'vbox')):
                         oSession = self.oVBoxMgr.getSessionObject(self.oVBox);      # pylint: disable=E1101
+                    else:
+                        oSession = self.oVBoxMgr.getSessionObject();                # pylint: disable=E1101
                     if self.fpApiVer < 3.3:
                         oProgress = self.oVBox.openRemoteSession(oSession, sUuid, sType, sEnv);
                     else:
