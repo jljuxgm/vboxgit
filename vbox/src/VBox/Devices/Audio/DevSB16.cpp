@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 70903 2018-02-08 10:07:07Z vboxsync $ */
+/* $Id: DevSB16.cpp 70908 2018-02-08 11:11:27Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1307,9 +1307,6 @@ static void sb16ResetLegacy(PSB16STATE pThis)
     RTStrPrintf(pCfg->szName, sizeof(pCfg->szName), "Output");
 
     sb16CloseOut(pThis);
-
-    int rc2 = sb16OpenOut(pThis, pCfg);
-    AssertRC(rc2);
 }
 
 static void sb16Reset(PSB16STATE pThis)
