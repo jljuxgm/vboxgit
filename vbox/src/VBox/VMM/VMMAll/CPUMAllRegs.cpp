@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 70000 2017-12-08 05:57:18Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 70056 2017-12-11 14:40:02Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2692,5 +2692,31 @@ VMM_INT_DECL(void) CPUMSvmVmRunSaveHostState(PCPUMCTX pCtx, uint8_t cbInstr)
     pHostState->uRip     = pCtx->rip + cbInstr;
     pHostState->uRsp     = pCtx->rsp;
     pHostState->uRax     = pCtx->rax;
+}
+
+
+/**
+ * Applies the TSC offset of a nested-guest if any and returns the new TSC
+ * value for the guest.
+ *
+ * @returns The TSC offset after applying any nested-guest TSC offset.
+ * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
+ * @param   uTicks      The guest TSC.
+ */
+VMM_INT_DECL(uint64_t) CPUMApplyNestedGuestTscOffset(PVMCPU pVCpu, uint64_t uTicks)
+{
+#ifndef IN_RC
+    PCCPUMCTX pCtx  = &pVCpu->cpum.s.Guest;
+    if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
+    {
+        PCSVMVMCB pVmcb = pCtx->hwvirt.svm.CTX_SUFF(pVmcb);
+        return uTicks + pVmcb->ctrl.u64TSCOffset;
+    }
+
+    /** @todo Intel. */
+#else
+    RT_NOREF(pVCpu);
+#endif
+    return uTicks;
 }
 

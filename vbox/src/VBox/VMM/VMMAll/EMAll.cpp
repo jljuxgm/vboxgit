@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: EMAll.cpp 70056 2017-12-11 14:40:02Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1314,6 +1314,9 @@ VMM_INT_DECL(int) EMInterpretRdtsc(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame
         return VERR_EM_INTERPRETER; /* genuine #GP */
 
     uint64_t uTicks = TMCpuTickGet(pVCpu);
+#ifdef VBOX_WITH_NESTED_HWVIRT
+    uTicks = CPUMApplyNestedGuestTscOffset(pVCpu, uTicks);
+#endif
 
     /* Same behaviour in 32 & 64 bits mode */
     pRegFrame->rax = RT_LO_U32(uTicks);
@@ -1350,6 +1353,9 @@ VMM_INT_DECL(int) EMInterpretRdtscp(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         return VERR_EM_INTERPRETER; /* genuine #GP */
 
     uint64_t uTicks = TMCpuTickGet(pVCpu);
+#ifdef VBOX_WITH_NESTED_HWVIRT
+    uTicks = CPUMApplyNestedGuestTscOffset(pVCpu, uTicks);
+#endif
 
     /* Same behaviour in 32 & 64 bits mode */
     pCtx->rax = RT_LO_U32(uTicks);
