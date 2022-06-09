@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67536 2017-06-21 11:28:33Z vboxsync $ */
+/* $Id: DevHDA.cpp 67541 2017-06-21 13:40:44Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -6088,7 +6088,7 @@ static DECLCALLBACK(int) hdaSaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     SSMR3PutU32(pSSM, RT_ELEMENTS(pThis->au32Regs));
     SSMR3PutMem(pSSM, pThis->au32Regs, sizeof(pThis->au32Regs));
 
-    /* Load controller-specifc internals. */
+    /* Save controller-specifc internals. */
     SSMR3PutU64(pSSM, pThis->u64WalClk);
     SSMR3PutU8(pSSM, pThis->u8IRQL);
 
