@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vcs_import.py 70660 2018-01-21 16:18:58Z vboxsync $
+# $Id: vcs_import.py 71153 2018-02-28 14:47:23Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70660 $"
+__version__ = "$Revision: 71153 $"
 
 # Standard python imports
 import sys;
@@ -117,7 +117,7 @@ class VcsImport(object): # pylint: disable=R0903
 
         # Parse the XML and add the entries to the database.
         oParser = ET.XMLParser(target = ET.TreeBuilder(), encoding = 'utf-8');
-        oParser.feed(sLogXml);
+        oParser.feed(sLogXml.encode('utf-8')); # does its own decoding and processOutputChecked always gives us decoded utf-8 now.
         oRoot = oParser.close();
 
         for oLogEntry in oRoot.findall('logentry'):
@@ -127,6 +127,8 @@ class VcsImport(object): # pylint: disable=R0903
             sMessage = oLogEntry.findtext('msg', '').strip();
             if sMessage == '':
                 sMessage = ' ';
+            elif len(sMessage) > VcsRevisionData.kcchMax_sMessage:
+                sMessage = sMessage[:VcsRevisionData.kcchMax_sMessage - 4] + ' ...';
             if not self.oConfig.fQuiet:
                 print('sDate=%s iRev=%u sAuthor=%s sMsg[%s]=%s' % (sDate, iRevision, sAuthor, type(sMessage).__name__, sMessage));
             oData = VcsRevisionData().initFromValues(self.oConfig.sRepository, iRevision, sDate, sAuthor, sMessage);
