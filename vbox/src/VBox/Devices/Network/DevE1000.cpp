@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevE1000.cpp 71098 2018-02-22 10:06:25Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2715,7 +2715,16 @@ static int e1kRegWriteCTRL(PE1KSTATE pThis, uint32_t offset, uint32_t index, uin
             /* It should take about 2 seconds for the link to come up */
             e1kArmTimer(pThis, pThis->CTX_SUFF(pLUTimer), E1K_INIT_LINKUP_DELAY_US);
         }
-#endif /* E1K_LSC_ON_SLU */
+#else /* !E1K_LSC_ON_SLU */
+        if (   (value & CTRL_SLU)
+            && !(CTRL & CTRL_SLU)
+            && pThis->fCableConnected
+            && !TMTimerIsActive(pThis->CTX_SUFF(pLUTimer)))
+        {
+            /* PXE does not use LSC interrupts, see @bugref{9113}. */
+            STATUS |= STATUS_LU;
+        }
+#endif /* !E1K_LSC_ON_SLU */
         if ((value & CTRL_VME) != (CTRL & CTRL_VME))
         {
             E1kLog(("%s VLAN Mode %s\n", pThis->szPrf, (value & CTRL_VME) ? "Enabled" : "Disabled"));
