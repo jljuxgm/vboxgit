@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 66581 2017-04-17 03:00:00Z vboxsync $ */
+/* $Id: SUPDrv.cpp 67136 2017-05-30 07:58:21Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -198,6 +198,7 @@ static SUPFUNC g_aFunctions[] =
     { "SUPR0EnableVTx",                         (void *)(uintptr_t)SUPR0EnableVTx },
     { "SUPR0SuspendVTxOnCpu",                   (void *)(uintptr_t)SUPR0SuspendVTxOnCpu },
     { "SUPR0ResumeVTxOnCpu",                    (void *)(uintptr_t)SUPR0ResumeVTxOnCpu },
+    { "SUPR0GetCurrentGdtRw",                   (void *)(uintptr_t)SUPR0GetCurrentGdtRw },
     { "SUPR0GetKernelFeatures",                 (void *)(uintptr_t)SUPR0GetKernelFeatures },
     { "SUPR0GetPagingMode",                     (void *)(uintptr_t)SUPR0GetPagingMode },
     { "SUPR0GetSvmUsability",                   (void *)(uintptr_t)SUPR0GetSvmUsability },
@@ -3872,6 +3873,16 @@ SUPR0DECL(void) SUPR0ResumeVTxOnCpu(bool fSuspended)
 #else
     RT_NOREF1(fSuspended);
     Assert(!fSuspended);
+#endif
+}
+
+
+SUPR0DECL(int) SUPR0GetCurrentGdtRw(RTHCUINTPTR *pGdtRw)
+{
+#ifdef RT_OS_LINUX
+    return supdrvOSetCurrentGdtRw(pGdtRw);
+#else
+    return VERR_NOT_IMPLEMENTED;
 #endif
 }
 

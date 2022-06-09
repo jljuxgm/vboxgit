@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 66878 2017-05-12 12:40:17Z vboxsync $
+; $Id: HMR0A.asm 67136 2017-05-30 07:58:21Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines
 ;
@@ -284,20 +284,30 @@ BEGINPROC VMXRestoreHostState
     mov         dx, [rsi + VMXRESTOREHOST.uHostSelTR]
     mov         ax, dx
     and         eax, X86_SEL_MASK_OFF_RPL                       ; Mask away TI and RPL bits leaving only the descriptor offset.
-    add         rax, qword [rsi + VMXRESTOREHOST.HostGdtr + 2]  ; xAX <- descriptor offset + GDTR.pGdt.
-    test        edi, VMX_RESTORE_HOST_GDT_READ_ONLY
+    test        edi, VMX_RESTORE_HOST_GDT_READ_ONLY | VMX_RESTORE_HOST_GDT_NEED_WRITABLE
     jnz         .gdt_readonly
+    add         rax, qword [rsi + VMXRESTOREHOST.HostGdtr + 2]  ; xAX <- descriptor offset + GDTR.pGdt.
     and         dword [rax + 4], ~RT_BIT(9)                     ; Clear the busy flag in TSS desc (bits 0-7=base, bit 9=busy bit).
     ltr         dx
     jmp short   .test_fs
 .gdt_readonly:
+    test        edi, VMX_RESTORE_HOST_GDT_NEED_WRITABLE
+    jnz         .gdt_readonly_need_writable
     mov         rcx, cr0
     mov         r9, rcx
+    add         rax, qword [rsi + VMXRESTOREHOST.HostGdtr + 2]  ; xAX <- descriptor offset + GDTR.pGdt.
     and         rcx, ~X86_CR0_WP
     mov         cr0, rcx
     and         dword [rax + 4], ~RT_BIT(9)                     ; Clear the busy flag in TSS desc (bits 0-7=base, bit 9=busy bit).
     ltr         dx
     mov         cr0, r9
+    jmp short   .test_fs
+.gdt_readonly_need_writable:
+    add         rax, qword [rsi + VMXRESTOREHOST.HostGdtrRw + 2]  ; xAX <- descriptor offset + GDTR.pGdtRw.
+    and         dword [rax + 4], ~RT_BIT(9)                     ; Clear the busy flag in TSS desc (bits 0-7=base, bit 9=busy bit).
+    lgdt        [rsi + VMXRESTOREHOST.HostGdtrRw]
+    ltr         dx
+    lgdt        [rsi + VMXRESTOREHOST.HostGdtr]                 ; Load the original GDT
 
 .test_fs:
     ;
