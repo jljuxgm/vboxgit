@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplIO.cpp 67184 2017-05-31 20:32:04Z vboxsync $ */
+/* $Id: ApplianceImplIO.cpp 67197 2017-06-01 09:07:53Z vboxsync $ */
 /** @file
  * IO helper for IAppliance COM class implementations.
  */
@@ -38,6 +38,8 @@
 #include <VBox/vd.h>
 
 #include "Logging.h"
+
+#ifndef VBOX_WITH_NEW_TAR_CREATOR
 
 
 /*********************************************************************************************************************************
@@ -1229,7 +1231,6 @@ PVDINTERFACEIO FileCreateInterface()
 }
 
 
-#ifndef VBOX_WITH_NEW_TAR_CREATOR
 int writeBufferToFile(const char *pcszFilename, void *pvBuf, size_t cbSize, PVDINTERFACEIO pIfIo, void *pvUser)
 {
     /* Validate input. */
@@ -1261,5 +1262,6 @@ int writeBufferToFile(const char *pcszFilename, void *pvBuf, size_t cbSize, PVDI
 
     return rc;
 }
+
 #endif /* !VBOX_WITH_NEW_TAR_CREATOR */
 

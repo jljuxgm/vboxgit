@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 67193 2017-06-01 08:44:31Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 67197 2017-06-01 09:07:53Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2234,7 +2234,6 @@ HRESULT Appliance::i_writeFSOPC(TaskOVF *pTask, AutoWriteLockBase &writeLock)
                 bool fManifestSaved = m->fManifest;
                 m->fManifest = false;
 
-                __debugbreak();
                 hrc = i_writeFSImpl(pTask, writeLock, hVfsFssTar, false /*fOvfFile*/, false /*fStreamOptimizedVmdk*/);
                 RTVfsFsStrmRelease(hVfsFssTar);
 
