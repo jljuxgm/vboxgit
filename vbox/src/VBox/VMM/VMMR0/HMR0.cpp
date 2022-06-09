@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 71529 2018-03-28 06:32:43Z vboxsync $ */
+/* $Id: HMR0.cpp 72208 2018-05-15 04:11:35Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -631,7 +631,7 @@ VMMR0_INT_DECL(int) HMR0Init(void)
         g_HmR0.aCpuInfo[i].hMemObj      = NIL_RTR0MEMOBJ;
         g_HmR0.aCpuInfo[i].HCPhysMemObj = NIL_RTHCPHYS;
         g_HmR0.aCpuInfo[i].pvMemObj     = NULL;
-#ifdef VBOX_WITH_NESTED_HWVIRT
+#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
         g_HmR0.aCpuInfo[i].n.svm.hNstGstMsrpm      = NIL_RTR0MEMOBJ;
         g_HmR0.aCpuInfo[i].n.svm.HCPhysNstGstMsrpm = NIL_RTHCPHYS;
         g_HmR0.aCpuInfo[i].n.svm.pvNstGstMsrpm     = NULL;
@@ -789,7 +789,7 @@ VMMR0_INT_DECL(int) HMR0Term(void)
                 g_HmR0.aCpuInfo[i].HCPhysMemObj = NIL_RTHCPHYS;
                 g_HmR0.aCpuInfo[i].pvMemObj     = NULL;
             }
-#ifdef VBOX_WITH_NESTED_HWVIRT
+#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
             if (g_HmR0.aCpuInfo[i].n.svm.hNstGstMsrpm != NIL_RTR0MEMOBJ)
             {
                 RTR0MemObjFree(g_HmR0.aCpuInfo[i].n.svm.hNstGstMsrpm, false);
@@ -943,7 +943,7 @@ static DECLCALLBACK(int32_t) hmR0EnableAllCpuOnce(void *pvUser)
         Assert(!g_HmR0.aCpuInfo[i].fConfigured);
         Assert(!g_HmR0.aCpuInfo[i].cTlbFlushes);
         Assert(!g_HmR0.aCpuInfo[i].uCurrentAsid);
-# ifdef VBOX_WITH_NESTED_HWVIRT
+# ifdef VBOX_WITH_NESTED_HWVIRT_SVM
         Assert(g_HmR0.aCpuInfo[i].n.svm.hNstGstMsrpm      == NIL_RTR0MEMOBJ);
         Assert(g_HmR0.aCpuInfo[i].n.svm.HCPhysNstGstMsrpm == NIL_RTHCPHYS);
         Assert(g_HmR0.aCpuInfo[i].n.svm.pvNstGstMsrpm     == NULL);
@@ -977,7 +977,7 @@ static DECLCALLBACK(int32_t) hmR0EnableAllCpuOnce(void *pvUser)
         for (unsigned i = 0; i < RT_ELEMENTS(g_HmR0.aCpuInfo); i++)
         {
             Assert(g_HmR0.aCpuInfo[i].hMemObj == NIL_RTR0MEMOBJ);
-#ifdef VBOX_WITH_NESTED_HWVIRT
+#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
             Assert(g_HmR0.aCpuInfo[i].n.svm.hNstGstMsrpm == NIL_RTR0MEMOBJ);
 #endif
             if (RTMpIsCpuPossible(RTMpCpuIdFromSetIndex(i)))
@@ -994,7 +994,7 @@ static DECLCALLBACK(int32_t) hmR0EnableAllCpuOnce(void *pvUser)
                 AssertPtr(g_HmR0.aCpuInfo[i].pvMemObj);
                 ASMMemZeroPage(g_HmR0.aCpuInfo[i].pvMemObj);
 
-#ifdef VBOX_WITH_NESTED_HWVIRT
+#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
                 rc = RTR0MemObjAllocCont(&g_HmR0.aCpuInfo[i].n.svm.hNstGstMsrpm, SVM_MSRPM_PAGES << X86_PAGE_4K_SHIFT,
                                          false /* executable R0 mapping */);
                 AssertLogRelRCReturn(rc, rc);

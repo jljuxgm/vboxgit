@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 72178 2018-05-09 16:18:56Z vboxsync $ */
+/* $Id: HM.cpp 72208 2018-05-15 04:11:35Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1084,7 +1084,7 @@ static int hmR3InitCPU(PVM pVM)
         Assert(pVCpu->hm.s.paStatExitReasonR0 != NIL_RTR0PTR);
 # endif
 
-#ifdef VBOX_WITH_NESTED_HWVIRT
+#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
         /*
          * Nested-guest Exit reason stats.
          */

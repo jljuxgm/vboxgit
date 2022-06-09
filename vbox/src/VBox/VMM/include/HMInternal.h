@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 72178 2018-05-09 16:18:56Z vboxsync $ */
+/* $Id: HMInternal.h 72208 2018-05-15 04:11:35Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -285,7 +285,7 @@ typedef struct HMGLOBALCPUINFO
     bool                fIgnoreAMDVInUseError;
     /** In use by our code. (for power suspend) */
     volatile bool       fInUse;
-#ifdef VBOX_WITH_NESTED_HWVIRT
+#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
     /** Nested-guest union (put data common to SVM/VMX outside the union). */
     union
     {
