@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 71859 2018-04-13 10:56:05Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 71910 2018-04-19 08:54:23Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -102,7 +102,7 @@ static int hmSvmEmulateMovTpr(PVMCPU pVCpu, PCPUMCTX pCtx, bool *pfUpdateRipAndR
 
                 int rc2 = APICSetTpr(pVCpu, u8Tpr);
                 AssertRC(rc2);
-                HMCPU_CF_SET(pVCpu, HM_CHANGED_SVM_GUEST_APIC_STATE);
+                HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_APIC_STATE);
 
                 pCtx->rip += pPatch->cbOp;
                 pCtx->eflags.Bits.u1RF = 0;

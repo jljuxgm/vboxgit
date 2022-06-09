@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: HMAll.cpp 71910 2018-04-19 08:54:23Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -542,7 +542,7 @@ VMM_INT_DECL(void) HMHypercallsDisable(PVMCPU pVCpu)
 VMM_INT_DECL(void) HMTrapXcptUDForGIMEnable(PVMCPU pVCpu)
 {
     pVCpu->hm.s.fGIMTrapXcptUD = true;
-    HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_XCPT_INTERCEPTS);
+    HMCPU_CF_SET(pVCpu, HM_CHANGED_VMM_GUEST_XCPT_INTERCEPTS);
 }
 
 
@@ -554,7 +554,7 @@ VMM_INT_DECL(void) HMTrapXcptUDForGIMEnable(PVMCPU pVCpu)
 VMM_INT_DECL(void) HMTrapXcptUDForGIMDisable(PVMCPU pVCpu)
 {
     pVCpu->hm.s.fGIMTrapXcptUD = false;
-    HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_XCPT_INTERCEPTS);
+    HMCPU_CF_SET(pVCpu, HM_CHANGED_VMM_GUEST_XCPT_INTERCEPTS);
 }
 
 
