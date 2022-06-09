@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 67022 2017-05-22 18:08:46Z vboxsync $
+# $Id: vbox.py 67048 2017-05-23 16:27:05Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67022 $"
+__version__ = "$Revision: 67048 $"
 
 
 # Standard Python imports.
@@ -1407,6 +1407,21 @@ class TestDriver(base.TestDriver):                                              
         try:
             import gc
             gc.collect();
+            objects = gc.get_objects()
+            try:
+                try:
+                    from types import InstanceType
+                except ImportError:
+                    InstanceType = None # Python 3.x compatibility
+                for o in objects:
+                    objtype = type(o)
+                    if objtype == InstanceType: # Python 2.x codepath
+                        objtype = o.__class__
+                    if objtype.__name__ == 'VirtualBoxManager':
+                        reporter.log('actionCleanupAfter: CAUTION, there is still a VirtualBoxManager object, GC trouble')
+                        break
+            finally:
+                del objects
         except:
             reporter.logXcpt();
         self.fImportedVBoxApi = False;
