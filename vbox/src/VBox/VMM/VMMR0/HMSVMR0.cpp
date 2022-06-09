@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72211 2018-05-15 04:43:30Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72212 2018-05-15 04:44:07Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4548,12 +4548,14 @@ static void hmR0SvmPostRunGuest(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PSVMTRANSIENT 
     {
         if (!pSvmTransient->fIsNestedGuest)
             TMCpuTickSetLastSeen(pVCpu, uHostTsc + pVmcbCtrl->u64TSCOffset);
+#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
         else
         {
             /* The nested-guest VMCB TSC offset shall eventually be restored on #VMEXIT via HMSvmNstGstVmExitNotify(). */
             uint64_t const uGstTsc = hmR0SvmNstGstUndoTscOffset(pVCpu, pMixedCtx, uHostTsc + pVmcbCtrl->u64TSCOffset);
             TMCpuTickSetLastSeen(pVCpu, uGstTsc);
         }
+#endif
     }
 
     if (pSvmTransient->fRestoreTscAuxMsr)
