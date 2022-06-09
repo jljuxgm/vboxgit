@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 72512 2018-06-11 14:12:21Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 72513 2018-06-11 14:20:47Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -428,9 +428,6 @@ IEMOPMEDIAF2 g_iemAImpl_pcmpeqd;
 #define IEM_MC_FETCH_SREG_ZX_U64(a_u64Dst, a_iSReg)     do { (a_u64Dst) = 0; CHK_TYPE(uint64_t, a_u64Dst); } while (0)
 #define IEM_MC_FETCH_SREG_BASE_U64(a_u64Dst, a_iSReg)   do { (a_u64Dst) = 0; CHK_TYPE(uint64_t, a_u64Dst); } while (0)
 #define IEM_MC_FETCH_SREG_BASE_U32(a_u32Dst, a_iSReg)   do { (a_u32Dst) = 0; CHK_TYPE(uint32_t, a_u32Dst); } while (0)
-#define IEM_MC_FETCH_TR_U16(a_u16Dst)                   do { (a_u16Dst) = 0; CHK_TYPE(uint16_t, a_u16Dst); } while (0)
-#define IEM_MC_FETCH_TR_U32(a_u32Dst)                   do { (a_u32Dst) = 0; CHK_TYPE(uint32_t, a_u32Dst); } while (0)
-#define IEM_MC_FETCH_TR_U64(a_u64Dst)                   do { (a_u64Dst) = 0; CHK_TYPE(uint64_t, a_u64Dst); } while (0)
 #define IEM_MC_FETCH_EFLAGS(a_EFlags)                   do { (a_EFlags) = 0; CHK_TYPE(uint32_t, a_EFlags); } while (0)
 #define IEM_MC_FETCH_EFLAGS_U8(a_EFlags)                do { (a_EFlags) = 0; CHK_TYPE(uint8_t,  a_EFlags); } while (0)
 #define IEM_MC_FETCH_FSW(a_u16Fsw)                      do { (a_u16Fsw) = 0; CHK_TYPE(uint16_t, a_u16Fsw); (void)fFpuRead; } while (0)
