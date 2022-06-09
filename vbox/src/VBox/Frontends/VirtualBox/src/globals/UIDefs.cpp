@@ -1,4 +1,4 @@
-/* $Id: UIDefs.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIDefs.cpp 68068 2017-07-20 14:46:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -32,4 +32,5 @@ const char* UIDefs::GUI_ExtPackName = "Oracle VM VirtualBox Extension Pack";
 QStringList UIDefs::VBoxFileExts = QStringList() << "xml" << "vbox";
 QStringList UIDefs::VBoxExtPackFileExts = QStringList() << "vbox-extpack";
 QStringList UIDefs::OVFFileExts = QStringList() << "ovf" << "ova";
+QStringList UIDefs::OPCFileExts = QStringList() << "tar.gz";
 

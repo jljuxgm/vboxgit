@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 64604 2016-11-08 18:14:23Z vboxsync $ */
+/* $Id: UIDefs.h 68068 2017-07-20 14:46:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -86,6 +86,7 @@ namespace UIDefs
     extern QStringList VBoxFileExts;
     extern QStringList VBoxExtPackFileExts;
     extern QStringList OVFFileExts;
+    extern QStringList OPCFileExts;
 }
 using namespace UIDefs /* if header included */;
 

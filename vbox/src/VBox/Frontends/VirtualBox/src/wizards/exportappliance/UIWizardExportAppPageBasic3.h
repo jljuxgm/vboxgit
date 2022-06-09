@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 68068 2017-07-20 14:46:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -111,7 +111,7 @@ protected:
 private slots:
 
     /* Format combo change handler: */
-    void sltUpdateFormatComboToolTip() { updateFormatComboToolTip(); }
+    void sltHandleFormatComboChange();
 
 private:
 
