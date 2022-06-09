@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 72471 2018-06-07 12:05:33Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 72474 2018-06-07 13:05:52Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -1510,7 +1510,7 @@ static DECLCALLBACK(int) vnetTxThread(PPDMDEVINS pDevIns, PPDMTHREAD pThread)
         rc = SUPSemEventWaitNoResume(pThis->pSupDrvSession, pThis->hTxEvent, RT_INDEFINITE_WAIT);
         if (RT_UNLIKELY(pThread->enmState != PDMTHREADSTATE_RUNNING))
             break;
-        vnetTransmitPendingPackets(pThis, pThis->pTxQueue, false /*fOnWorkerThread*/); /// @todo: shouldn't it be true instead?
+        vnetTransmitPendingPackets(pThis, pThis->pTxQueue, false /*fOnWorkerThread*/); /// @todo shouldn't it be true instead?
         Log(("vnetTxThread: enable kicking and get to sleep\n"));
         vringSetNotification(&pThis->VPCI, &pThis->pTxQueue->VRing, true);
     }
