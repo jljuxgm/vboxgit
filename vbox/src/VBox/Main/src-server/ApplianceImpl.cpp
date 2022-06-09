@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 70217 2017-12-19 11:14:53Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -118,6 +118,7 @@ g_osTypes[] =
     { ovf::CIMOSType_CIMOS_WIN98,                                VBOXOSTYPE_Win98 },
     { ovf::CIMOSType_CIMOS_WINNT,                                VBOXOSTYPE_WinNT },
     { ovf::CIMOSType_CIMOS_WINNT,                                VBOXOSTYPE_WinNT4 },
+    { ovf::CIMOSType_CIMOS_WINNT,                                VBOXOSTYPE_WinNT3x },
     { ovf::CIMOSType_CIMOS_NetWare,                              VBOXOSTYPE_Netware },
     { ovf::CIMOSType_CIMOS_NovellOES,                            VBOXOSTYPE_Netware },
     { ovf::CIMOSType_CIMOS_Solaris,                              VBOXOSTYPE_Solaris },

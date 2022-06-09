@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 70181 2017-12-17 13:16:28Z vboxsync $ */
+/* $Id: VMMDev.cpp 70217 2017-12-19 11:14:53Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -182,6 +182,7 @@ static void vmmdevLogGuestOsInfo(VBoxGuestInfo *pGuestInfo)
         case VBOXOSTYPE_Win98:                            pszOs = "Windows 98";     break;
         case VBOXOSTYPE_WinMe:                            pszOs = "Windows Me";     break;
         case VBOXOSTYPE_WinNT:                            pszOs = "Windows NT";     break;
+        case VBOXOSTYPE_WinNT3x:                          pszOs = "Windows NT 3.x"; break;
         case VBOXOSTYPE_WinNT4:                           pszOs = "Windows NT4";    break;
         case VBOXOSTYPE_Win2k:                            pszOs = "Windows 2k";     break;
         case VBOXOSTYPE_WinXP:                            pszOs = "Windows XP";     break;
