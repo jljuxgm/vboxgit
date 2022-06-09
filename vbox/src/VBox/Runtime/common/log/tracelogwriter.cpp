@@ -1,4 +1,4 @@
-/* $Id: tracelogwriter.cpp 71497 2018-03-24 22:51:41Z vboxsync $ */
+/* $Id: tracelogwriter.cpp 71498 2018-03-24 23:01:29Z vboxsync $ */
 /** @file
  * IPRT - Trace log writer.
  */
@@ -173,7 +173,7 @@ DECLINLINE(char *) rtTraceLogWrCopyStr(const char **ppsz, char *pszTo, const cha
  * Converts the type enum to the size of the the event item data in bytes.
  *
  * @returns Event item data size in bytes.
- * @aram    pEvtItemDesc        The event item descriptor.
+ * @param   pEvtItemDesc        The event item descriptor.
  */
 static size_t rtTraceLogWrGetEvtItemDataSz(PCRTTRACELOGEVTITEMDESC pEvtItemDesc)
 {
@@ -379,6 +379,8 @@ DECLINLINE(int) rtTraceLogWrStream(PRTTRACELOGWRINT pThis, const void *pvBuf, si
  * @param   pEvt                Pointer to the event structure to initialise.
  * @param   pEvtDescInt         The internal event descriptor to format the data accordingly to.
  * @param   fFlags              Flags to use for this event.
+ * @param   uGrpId              The group ID to identify grouped events.
+ * @param   uParentGrpId        The parent group ID.
  * @param   pacbRawData         Array of raw data size indicators.
  */
 DECLINLINE(size_t) rtTraceLogWrEvtInit(PTRACELOGEVT pEvt,
