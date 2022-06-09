@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HostDnsService.cpp 72394 2018-05-30 21:20:32Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -335,8 +335,11 @@ HostDnsMonitorProxy::~HostDnsMonitorProxy()
     }
 }
 
-void HostDnsMonitorProxy::init(const HostDnsMonitor *mon, VirtualBox* aParent)
+void HostDnsMonitorProxy::init(VirtualBox* aParent)
 {
+    const HostDnsMonitor *mon = HostDnsMonitor::getHostDnsMonitor(aParent);
+    Assert(mon != NULL);
+
     m = new HostDnsMonitorProxy::Data(mon, aParent);
     m->monitor->addMonitorProxy(this);
     updateInfo();

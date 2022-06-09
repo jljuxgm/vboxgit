@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 72356 2018-05-28 04:18:06Z vboxsync $ */
+/* $Id: HostImpl.cpp 72394 2018-05-30 21:20:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -281,7 +281,7 @@ HRESULT Host::init(VirtualBox *aParent)
     /* Create the list of network interfaces so their metrics get registered. */
     i_updateNetIfList();
 
-    m->hostDnsMonitorProxy.init(HostDnsMonitor::getHostDnsMonitor(m->pParent), m->pParent);
+    m->hostDnsMonitorProxy.init(m->pParent);
 
 #if defined(RT_OS_WINDOWS)
     m->pHostPowerService = new HostPowerServiceWin(m->pParent);
