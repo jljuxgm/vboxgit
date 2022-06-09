@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 71302 2018-03-12 16:25:30Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 71303 2018-03-12 16:43:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2618,7 +2618,12 @@ HRESULT GuestSession::directoryCopyFromGuest(const com::Utf8Str &aSource, const 
         for (size_t i = 0; i < aFlags.size(); i++)
             fFlags |= aFlags[i];
     }
-    /** @todo Validate flags. */
+
+    if (fFlags)
+    {
+        if (!(fFlags & DirectoryCopyFlag_CopyIntoExisting))
+            return setError(E_INVALIDARG, tr("Invalid flags specified"));
+    }
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -2695,7 +2700,12 @@ HRESULT GuestSession::directoryCopyToGuest(const com::Utf8Str &aSource, const co
         for (size_t i = 0; i < aFlags.size(); i++)
             fFlags |= aFlags[i];
     }
-    /** @todo Validate flags. */
+
+    if (fFlags)
+    {
+        if (!(fFlags & DirectoryCopyFlag_CopyIntoExisting))
+            return setError(E_INVALIDARG, tr("Invalid flags specified"));
+    }
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
