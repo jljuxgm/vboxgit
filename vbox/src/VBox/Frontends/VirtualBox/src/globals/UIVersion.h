@@ -1,4 +1,4 @@
-/* $Id: UIVersion.h 70827 2018-01-31 12:26:20Z vboxsync $ */
+/* $Id: UIVersion.h 70830 2018-01-31 13:22:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVersion class declaration/implementation.
  */
@@ -84,6 +84,35 @@ public:
     int y() const { return m_y; }
     /** Returns the object Z value. */
     int z() const { return m_z; }
+
+    /** Defines the object X value. */
+    void setX(int x) { m_x = x; }
+    /** Defines the object Y value. */
+    void setY(int y) { m_y = y; }
+    /** Defines the object Z value. */
+    void setZ(int z) { m_z = z; }
+
+    /** Returns effective released version guessed or hardcoded for this one version.
+      * This can be even the version itself. */
+    UIVersion effectiveRelasedVersion() const
+    {
+        /* First, we just copy the current one: */
+        UIVersion version = *this;
+
+        /* If this version being developed: */
+        if (version.z() % 2 == 1)
+        {
+            /* If this version being developed on release branch (we guess the right one): */
+            if (version.z() < 97)
+                version.setZ(version.z() - 1);
+            /* If this version being developed on trunk (we use hardcoded one for now): */
+            else
+                version.setZ(6); /* Current .z for 5.2.z */
+        }
+
+        /* Finally, we just return that we have:  */
+        return version;
+    }
 
 private:
 
