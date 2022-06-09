@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 71173 2018-03-02 10:59:38Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 71176 2018-03-02 13:30:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2482,6 +2482,7 @@ int GuestProcessTool::i_exitCodeToRc(const char *pszTool, int32_t iExitCode)
             case VBOXSERVICETOOLBOX_CAT_EXITCODE_FILE_NOT_FOUND:    return VERR_FILE_NOT_FOUND;
             case VBOXSERVICETOOLBOX_CAT_EXITCODE_PATH_NOT_FOUND:    return VERR_PATH_NOT_FOUND;
             case VBOXSERVICETOOLBOX_CAT_EXITCODE_SHARING_VIOLATION: return VERR_SHARING_VIOLATION;
+            case VBOXSERVICETOOLBOX_CAT_EXITCODE_IS_A_DIRECTORY:    return VERR_IS_A_DIRECTORY;
             default:                                                break;
         }
     }

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 71124 2018-02-26 13:08:19Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 71176 2018-03-02 13:30:59Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -540,6 +540,9 @@ static RTEXITCODE vgsvcToolboxCat(int argc, char **argv)
 
             case VERR_SHARING_VIOLATION:
                 return (RTEXITCODE)VBOXSERVICETOOLBOX_CAT_EXITCODE_SHARING_VIOLATION;
+
+            case VERR_IS_A_DIRECTORY:
+                return (RTEXITCODE)VBOXSERVICETOOLBOX_CAT_EXITCODE_IS_A_DIRECTORY;
 
             default:
 #ifdef DEBUG_andy
