@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.cpp 70866 2018-02-05 13:44:39Z vboxsync $ */
+/* $Id: DevPcArch.cpp 71114 2018-02-23 11:12:25Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
@@ -211,16 +211,13 @@ static DECLCALLBACK(int) pcarchReservedMemoryRead(PPDMDEVINS pDevIns, void *pvUs
 
 /**
  * @interface_method_impl{PDMDEVREG,pfnInitComplete,
- *      Turn RAM pages between 0xa0000 and 0xeffff into reserved memory.}
- * NB: At least some OS X versions (El Capitan, Sierra) get upset and panic
- * early in the boot when we make memory between 0x0f0000-0x100000 reserved
- * and non-writable.
+ *      Turn RAM pages between 0xa0000 and 0xfffff into reserved memory.}
  */
 static DECLCALLBACK(int) pcarchInitComplete(PPDMDEVINS pDevIns)
 {
     PVM             pVM       = PDMDevHlpGetVM(pDevIns);
     int             iRegion   = 0;
-    RTGCPHYS const  GCPhysEnd = 0x0f0000;
+    RTGCPHYS const  GCPhysEnd = 0x100000;
     RTGCPHYS        GCPhysCur = 0x0a0000;
     do
     {
