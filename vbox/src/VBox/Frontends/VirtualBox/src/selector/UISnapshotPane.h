@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 67121 2017-05-26 16:09:51Z vboxsync $ */
+/* $Id: UISnapshotPane.h 67147 2017-05-30 15:54:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -104,14 +104,14 @@ private slots:
 
     /** @name Tree-widget handlers.
       * @{ */
-        /** Handles cursor change to @a pItem. */
-        void sltCurrentItemChanged(QTreeWidgetItem *pItem = 0);
-        /** Handles context menu request for @a point. */
-        void sltContextMenuRequested(const QPoint &point);
-        /** Handles modification for @a pItem. */
-        void sltItemChanged(QTreeWidgetItem *pItem);
-        /** Handles double-click for @a pItem. */
-        void sltItemDoubleClicked(QTreeWidgetItem *pItem);
+        /** Handles tree-widget current item change. */
+        void sltHandleCurrentItemChange();
+        /** Handles context menu request for tree-widget @a position. */
+        void sltHandleContextMenuRequest(const QPoint &position);
+        /** Handles tree-widget @a pItem change. */
+        void sltHandleItemChange(QTreeWidgetItem *pItem);
+        /** Handles tree-widget @a pItem double-click. */
+        void sltHandleItemDoubleClick(QTreeWidgetItem *pItem);
     /** @} */
 
 private:
