@@ -1,4 +1,4 @@
-# $Id: Config.kmk 71916 2018-04-19 10:05:28Z vboxsync $
+# $Id: Config.kmk 71926 2018-04-19 23:19:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3348,6 +3348,7 @@ ifdef VBOX_SIGNING_MODE
   # @param 3  Additional parameters. Optional.
   # @param 4  Set to 2 if the expression will be expanded twice before chopped into commands (for _CMDS).
   # @param 5  Disables dual signing if non-empty.
+  # @param 6  non-zero for alternative command separator.  This is used for generating repacking scripts.
   ifndef VBOX_SIGN_FILE_FN
    ifeq ($(VBOX_WITH_CORP_CODE_SIGNING),all)
     VBOX_SIGN_FILE_FN     = $(call VBOX_CCS_SIGN_CMD,driver,$1,$(dir $1))
@@ -3363,7 +3364,7 @@ ifdef VBOX_SIGNING_MODE
 	$(3) \
 	$(1) \
     	$(if-expr "$5" == "",\
-	$(if-expr "$4" == "2",$$(NLTAB),$(NLTAB))$(VBOX_SIGNTOOL) \
+	$(if-expr "$6" == "",$(if-expr "$4" == "2",$$(NLTAB),$(NLTAB)),$6)$(VBOX_SIGNTOOL) \
     	sign /as /fd sha256 \
 	$(VBOX_CROSS_CERTIFICATE_SHA2_FILE_ARGS) \
 	$(VBOX_CERTIFICATE_SHA2_STORE_ARGS) \
@@ -7236,7 +7237,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71916 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71926 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
