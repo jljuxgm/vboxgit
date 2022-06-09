@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 68660 2017-09-05 18:35:49Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -26,6 +26,7 @@
 
 #include <iprt/list.h>
 #include <iprt/critsect.h>
+#include <iprt/path.h> /* RTPATH_MAX */
 
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/HostServices/GuestControlSvc.h>

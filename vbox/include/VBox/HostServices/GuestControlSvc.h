@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 68656 2017-09-05 18:08:13Z vboxsync $ */
+/* $Id: GuestControlSvc.h 68660 2017-09-05 18:35:49Z vboxsync $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -27,13 +27,10 @@
 #ifndef ___VBox_HostService_GuestControlService_h
 #define ___VBox_HostService_GuestControlService_h
 
-#include <VBox/types.h>
-#include <VBox/VMMDev.h>
+#include <VBox/VMMDevCoreTypes.h>
 #include <VBox/VBoxGuestCoreTypes.h>
 #include <VBox/hgcmsvc.h>
-#include <VBox/log.h>
 #include <iprt/assert.h>
-#include <iprt/string.h>
 
 /* Everything defined in this file lives in this namespace. */
 namespace guestControl {
