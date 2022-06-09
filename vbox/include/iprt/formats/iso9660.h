@@ -1,4 +1,4 @@
-/* $Id: iso9660.h 67538 2017-06-21 12:48:19Z vboxsync $ */
+/* $Id: iso9660.h 67600 2017-06-26 09:18:41Z vboxsync $ */
 /** @file
  * IPRT, ISO 9660 File System
  */
@@ -899,6 +899,9 @@ AssertCompileSize(ISO9660SYSLINUXINFOTABLE, 56);
 typedef ISO9660SYSLINUXINFOTABLE *PISO9660SYSLINUXINFOTABLE;
 /** Pointer to a const syslinux boot information table.   */
 typedef ISO9660SYSLINUXINFOTABLE const *PCISO9660SYSLINUXINFOTABLE;
+
+/** The file offset of the isolinux boot info table. */
+#define ISO9660SYSLINUXINFOTABLE_OFFSET     8
 
 /** @} */
 
