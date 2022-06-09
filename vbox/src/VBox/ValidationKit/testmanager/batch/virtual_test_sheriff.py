@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 67716 2017-06-30 07:49:49Z vboxsync $
+# $Id: virtual_test_sheriff.py 68110 2017-07-25 15:27:24Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67716 $"
+__version__ = "$Revision: 68110 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 67716 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 68110 $ \n');
 
 
     def eprint(self, sText):
@@ -468,6 +468,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Host_DriverNotUnloading                   = ( 'Host',              'Driver not unloading' );
     ktReason_Host_DriverNotCompilable                  = ( 'Host',              'Driver not compilable' );
     ktReason_Host_NotSignedWithBuildCert               = ( 'Host',              'Not signed with build cert' );
+    ktReason_Host_DoubleFreeHeap                       = ( 'Host',              'Double free or corruption' );
     ktReason_Host_LeftoverService                      = ( 'Host',              'Leftover service' );
     ktReason_Host_Reboot_OSX_Watchdog_Timeout          = ( 'Host Reboot',       'OSX Watchdog Timeout' );
     ktReason_Host_Modprobe_Failed                      = ( 'Host',              'Modprobe failed' );
@@ -557,7 +558,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 67716 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 68110 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -862,6 +863,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         # ( Whether to stop on hit, reason tuple, needle text. )
         ( True,  ktReason_Host_DriverNotLoaded,                     'Error opening VBoxDrvStub:  STATUS_OBJECT_NAME_NOT_FOUND' ),
         ( True,  ktReason_Host_NotSignedWithBuildCert,              'Not signed with the build certificate' ),
+        ( True,  ktReason_Host_DoubleFreeHeap,                      'double free or corruption' ),
     ];
 
     ## Things we search a kernel.log file for to figure out why something went bust.
