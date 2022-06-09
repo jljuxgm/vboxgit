@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.h 71025 2018-02-15 14:11:16Z vboxsync $ */
+/* $Id: UIGuestControlInterface.h 71067 2018-02-20 09:50:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class declaration.
  */
@@ -29,6 +29,9 @@
 
 class UIGuestControlSubCommandBase;
 class CommandData;
+
+/** UIGuestControlInterface parses a command string and  issues API calls
+    accordingly to achive guest control related operations */
 class UIGuestControlInterface : public QObject
 {
 
@@ -64,8 +67,9 @@ private:
         /* Handles the 'help' process command */
     bool handleHelp(int, char**);
     /* Handles the 'create' session command */
-    bool handleCreate(int, char**);
-
+    bool handleCreateSession(int, char**);
+    /* Handles the 'mkdir' session command to create guest directories */
+    bool handleMkdir(int, char**);
 
     CGuest        m_comGuest;
     const QString m_strHelp;
