@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 68258 2017-08-02 16:09:49Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 68318 2017-08-07 15:14:26Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1325,7 +1325,8 @@ RTEXITCODE handleUnattendedDetect(HandlerArg *a)
     ComPtr<IUnattended> ptrUnattended;
     CHECK_ERROR2_RET(hrc, a->virtualBox, CreateUnattendedInstaller(ptrUnattended.asOutParam()), RTEXITCODE_FAILURE);
     CHECK_ERROR2_RET(hrc, ptrUnattended, COMSETTER(IsoPath)(Bstr(szIsoPath).raw()), RTEXITCODE_FAILURE);
-    CHECK_ERROR2_RET(hrc, ptrUnattended, DetectIsoOS(), RTEXITCODE_FAILURE);
+    CHECK_ERROR2(hrc, ptrUnattended, DetectIsoOS());
+    RTEXITCODE rcExit = SUCCEEDED(hrc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 
     /*
      * Retrieve the results.
@@ -1366,7 +1367,7 @@ RTEXITCODE handleUnattendedDetect(HandlerArg *a)
                  bstrDetectedHints.raw());
     }
 
-    return RTEXITCODE_SUCCESS;
+    return rcExit;
 }
 
 RTEXITCODE handleUnattendedInstall(HandlerArg *a)

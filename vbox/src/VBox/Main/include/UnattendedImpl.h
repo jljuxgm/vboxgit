@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 68239 2017-08-02 12:39:12Z vboxsync $ */
+/* $Id: UnattendedImpl.h 68318 2017-08-07 15:14:26Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -202,7 +202,18 @@ private:
     //internal functions
 
     /**
-     * Worker for reconfigureVM.
+     * Worker for detectIsoOs().
+     *
+     * @returns COM status code.
+     * @retval  S_OK if detected.
+     * @retval  S_FALSE if not detected.
+     *
+     * @param   hVfsIso     The ISO file system handle.
+     */
+    HRESULT i_innerDetectIsoOS(RTVFS hVfsIso);
+
+    /**
+     * Worker for reconfigureVM().
      * The caller makes sure to close the session whatever happens.
      */
     HRESULT i_innerReconfigureVM(AutoMultiWriteLock2 &rAutoLock, StorageBus_T enmRecommendedStorageBus,
