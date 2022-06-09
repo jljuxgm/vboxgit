@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 69796 2017-11-21 19:38:27Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.h 70129 2017-12-14 14:18:51Z vboxsync $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -71,8 +71,8 @@ public:
 private:
 
     // IVirtualBoxSDS methods
-    HRESULT RegisterVBoxSVC(IVBoxSVCRegistration *aVBoxSVC, LONG aPid, IUnknown **aExistingVirtualBox);
-    HRESULT DeregisterVBoxSVC(IVBoxSVCRegistration *aVBoxSVC, LONG aPid);
+    STDMETHODIMP_(HRESULT) RegisterVBoxSVC(IVBoxSVCRegistration *aVBoxSVC, LONG aPid, IUnknown **aExistingVirtualBox);
+    STDMETHODIMP_(HRESULT) DeregisterVBoxSVC(IVBoxSVCRegistration *aVBoxSVC, LONG aPid);
 
 
     // Private methods
