@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 70677 2018-01-22 14:16:43Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 70678 2018-01-22 15:10:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -360,11 +360,12 @@ void UIVMLogViewerWidget::prepare()
 {
     m_pMainLayout = new QVBoxLayout(this);
 
-    prepareToolBar();
     prepareActions();
+    prepareToolBar();
 
     prepareMenu();
     prepareWidgets();
+
 
     /* Reading log files: */
     sltRefresh();
