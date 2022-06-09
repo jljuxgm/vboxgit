@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 68001 2017-07-17 15:27:35Z vboxsync $ */
+/* $Id: GVMMR0.cpp 68007 2017-07-17 17:07:37Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -2395,7 +2395,6 @@ GVMMR0DECL(int) GVMMR0SchedWakeUp(PGVM pGVM, PVM pVM, VMCPUID idCpu)
  *
  * @param   pVM                 The cross context VM structure.
  * @param   idCpu               The Virtual CPU ID of the EMT to wake up.
- * @param   fTakeUsedLock       Take the used lock or not
  * @thread  Any but EMT(idCpu).
  * @deprecated  Don't use in new code if possible!  Use the GVM variant.
  */
