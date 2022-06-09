@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 68541 2017-08-29 17:21:21Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 68663 2017-09-05 18:47:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -453,11 +453,10 @@ private:
                 enmState = (AudioState)(enmState | AudioState_InputOn);
             setState(enmState);
         }
-        else
-        {
-            strFullData = QString(s_strTableRow1).arg(QApplication::translate("UIGDetails", "Disabled", "details (audio)"));
-            setState(AudioState_AllOff);
-        }
+
+        /* Hide indicator if adapter is disabled: */
+        if (!fAudioEnabled)
+            hide();
 
         /* Update tool-tip: */
         setToolTip(strToolTip.arg(s_strTable.arg(strFullData)));

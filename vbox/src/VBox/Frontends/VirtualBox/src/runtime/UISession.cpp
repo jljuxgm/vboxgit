@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 68508 2017-08-22 14:42:51Z vboxsync $ */
+/* $Id: UISession.cpp 68663 2017-09-05 18:47:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -2152,6 +2152,14 @@ void UISession::updateActionRestrictions()
             restrictionForDevices = (UIExtraDataMetaDefs::RuntimeMenuDevicesActionType)(restrictionForDevices | UIExtraDataMetaDefs::RuntimeMenuDevicesActionType_OpticalDevices);
         if (!iDevicesCountFD)
             restrictionForDevices = (UIExtraDataMetaDefs::RuntimeMenuDevicesActionType)(restrictionForDevices | UIExtraDataMetaDefs::RuntimeMenuDevicesActionType_FloppyDevices);
+    }
+
+    /* Audio stuff: */
+    {
+        /* Check whether audio controller is enabled. */
+        const CAudioAdapter &comAdapter = machine().GetAudioAdapter();
+        if (comAdapter.isNull() || !comAdapter.GetEnabled())
+            restrictionForDevices = (UIExtraDataMetaDefs::RuntimeMenuDevicesActionType)(restrictionForDevices | UIExtraDataMetaDefs::RuntimeMenuDevicesActionType_Audio);
     }
 
     /* Network stuff: */
