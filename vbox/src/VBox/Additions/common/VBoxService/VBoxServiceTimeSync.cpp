@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 69995 2017-12-07 17:09:30Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 69997 2017-12-07 17:41:26Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -258,12 +258,10 @@ static void vgsvcTimeSyncLog(unsigned iLevel, const char *pszFormat, ...)
 {
     if (iLevel <= g_cTimeSyncVerbosity)
     {
-        va_list args;
-        va_start(args, pszFormat);
-
-        VGSvcLog(pszFormat, args);
-
-        va_end(args);
+        va_list va;
+        va_start(va, pszFormat);
+        VGSvcLogV(pszFormat, va);
+        va_end(va);
     }
 }
 
