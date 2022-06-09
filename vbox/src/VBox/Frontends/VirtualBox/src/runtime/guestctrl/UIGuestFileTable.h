@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.h 71832 2018-04-12 06:56:48Z vboxsync $ */
+/* $Id: UIGuestFileTable.h 71861 2018-04-13 14:11:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -57,7 +57,6 @@ private:
 
     bool copyGuestToHost(const QString &guestSourcePath, const QString& hostDestinationPath);
     bool copyHostToGuest(const QString& hostSourcePath, const QString &guestDestinationPath);
-
     mutable CGuestSession m_comGuestSession;
 
 };
