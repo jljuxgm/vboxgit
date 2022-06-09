@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 70013 2017-12-08 11:52:00Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 70015 2017-12-08 11:58:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3095,7 +3095,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             CFGMR3InsertNodeF(pInst, &pLunL0, "LUN#%RU8", u8AudioLUN++);
             InsertConfigString(pLunL0, "Driver", "AUDIO");
             InsertConfigNode(pLunL0,   "Config", &pCfg);
-                InsertConfigString (pCfg, "DriverName",    "DebugAudio");
+                InsertConfigString (pCfg, "DriverName",    "ValidationKitAudio");
                 InsertConfigInteger(pCfg, "InputEnabled",  fAudioEnabledIn);
                 InsertConfigInteger(pCfg, "OutputEnabled", fAudioEnabledOut);
                 InsertConfigInteger(pCfg, "DebugEnabled",  fDebugEnabled);
