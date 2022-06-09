@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 71103 2018-02-22 13:49:50Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 71860 2018-04-13 14:01:57Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -1522,11 +1522,11 @@ DWORD vboxDispIfResizeModesWDDM(PCVBOXDISPIF const pIf, UINT iChangedMode, BOOL 
         winEr = vboxDispIfUpdateModesWDDM(&Op, iChangedMode, &Size);
     }
 
-    winEr = vboxDispIfResizePerform(pIf, iChangedMode, fChangedEnable, fExtDispSup, paDisplayDevices, paDeviceModes, cDevModes);
+    winEr = vboxDispIfResizePerform(pIf, iChangedMode, fEnable, fExtDispSup, paDisplayDevices, paDeviceModes, cDevModes);
 
     if (winEr == ERROR_RETRY)
     {
-        VBoxRrRetrySchedule(pIf, iChangedMode, fChangedEnable, fExtDispSup, paDisplayDevices, paDeviceModes, cDevModes);
+        VBoxRrRetrySchedule(pIf, iChangedMode, fEnable, fExtDispSup, paDisplayDevices, paDeviceModes, cDevModes);
 
         winEr = NO_ERROR;
     }
