@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 70644 2018-01-19 12:20:33Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 70753 2018-01-25 18:10:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -9848,6 +9848,7 @@ void Console::i_powerUpThreadTask(VMPowerUpTask *pTask)
         /* Enable client connections to the VRDP server. */
         pConsole->i_consoleVRDPServer()->EnableConnections();
 
+#ifdef VBOX_WITH_VIDEOREC
         Display *pDisplay = pConsole->i_getDisplay();
         AssertPtr(pDisplay);
         if (pDisplay)
@@ -9873,6 +9874,7 @@ void Console::i_powerUpThreadTask(VMPowerUpTask *pTask)
                     fireVideoCaptureChangedEvent(pConsole->i_getEventSource());
             }
         }
+#endif
 
         if (RT_SUCCESS(vrc))
         {
