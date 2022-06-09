@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 70113 2017-12-13 15:02:26Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 70856 2018-02-02 15:20:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -3723,14 +3723,24 @@ bool UIExtraDataManager::usePixelFormatAYUV(const QString &strID)
 
 bool UIExtraDataManager::useUnscaledHiDPIOutput(const QString &strID)
 {
+#ifdef VBOX_WS_MAC
     /* 'False' unless feature allowed: */
     return isFeatureAllowed(GUI_HiDPI_UnscaledOutput, strID);
+#else
+    /* 'True' unless feature restricted: */
+    return !isFeatureRestricted(GUI_HiDPI_UnscaledOutput, strID);
+#endif
 }
 
 void UIExtraDataManager::setUseUnscaledHiDPIOutput(bool fUseUnscaledHiDPIOutput, const QString &strID)
 {
+#ifdef VBOX_WS_MAC
     /* 'True' if feature allowed, null-string otherwise: */
-    return setExtraDataString(GUI_HiDPI_UnscaledOutput, toFeatureAllowed(fUseUnscaledHiDPIOutput), strID);
+    setExtraDataString(GUI_HiDPI_UnscaledOutput, toFeatureAllowed(fUseUnscaledHiDPIOutput), strID);
+#else
+    /* 'False' if feature restricted, null-string otherwise: */
+    setExtraDataString(GUI_HiDPI_UnscaledOutput, toFeatureRestricted(!fUseUnscaledHiDPIOutput), strID);
+#endif
 }
 
 HiDPIOptimizationType UIExtraDataManager::hiDPIOptimizationType(const QString &strID)
