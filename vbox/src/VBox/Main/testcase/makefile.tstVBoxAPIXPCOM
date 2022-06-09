@@ -1,6 +1,8 @@
-#
+# $Id: makefile.tstVBoxAPIXPCOM 69388 2017-10-26 17:02:54Z vboxsync $
+## @file
 # tstVBoxAPIXPCOM makefile
 #
+
 #
 # Copyright (C) 2006-2014 Oracle Corporation
 #
@@ -50,3 +52,4 @@ tstVBoxAPIXPCOM.o: tstVBoxAPIXPCOM.cpp
 
 clean:
 	rm -f tstVBoxAPIXPCOM tstVBoxAPIXPCOM.o
+
