@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 67290 2017-06-08 10:55:41Z vboxsync $
+# $Id: Makefile.kmk 67304 2017-06-08 15:26:43Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1307,6 +1307,7 @@ RuntimeR3_SOURCES.solaris = \
 	r3/posix/timer-posix.cpp \
 	r3/posix/tls-posix.cpp \
 	r3/posix/utf8-posix.cpp \
+	r3/solaris/krnlmod-solaris.cpp \
 	r3/solaris/systemmem-solaris.cpp \
 	r3/solaris/mp-solaris.cpp \
 	r3/solaris/rtProcInitExePath-solaris.cpp \
