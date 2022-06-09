@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 68445 2017-08-17 13:27:05Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 69209 2017-10-24 13:13:08Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -522,7 +522,7 @@
  *                  pvBar = RTMemAlloc(sizeof(*pvBar));
  *                  if (!pvBar)
  *                     rc = VERR_NO_MEMORY;
- *              }   
+ *              }
  *              if (RT_SUCCESS(rc))
  *              {
  *                  buzz = foo;
