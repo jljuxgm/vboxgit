@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 71314 2018-03-13 15:51:14Z vboxsync $ */
+/* $Id: GuestControlSvc.h 71364 2018-03-16 09:58:05Z vboxsync $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -518,6 +518,20 @@ typedef struct HGCMMsgPathRename
     /** UInt32: Rename flags. */
     HGCMFunctionParameter flags;
 } HGCMMsgPathRename;
+
+typedef struct HGCMMsgPathUserDocuments
+{
+    VBGLIOCHGCMCALL hdr;
+    /** UInt32: Context ID. */
+    HGCMFunctionParameter context;
+} HGCMMsgPathUserDocuments;
+
+typedef struct HGCMMsgPathUserHome
+{
+    VBGLIOCHGCMCALL hdr;
+    /** UInt32: Context ID. */
+    HGCMFunctionParameter context;
+} HGCMMsgPathUserHome;
 
 /**
  * Executes a command inside the guest.
