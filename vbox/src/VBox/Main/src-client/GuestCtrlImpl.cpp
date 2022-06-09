@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 71634 2018-04-03 17:45:44Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 71635 2018-04-03 17:52:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -242,7 +242,7 @@ int Guest::i_sessionRemove(uint32_t uSessionID)
     ComObjPtr<GuestSession> pSession = itSessions->second;
 
     LogFlowThisFunc(("Removing session %RU32 (now total %ld sessions)\n",
-                     pSession, uSessionID, mData.mGuestSessions.size() ? mData.mGuestSessions.size() - 1 : 0));
+                     uSessionID, mData.mGuestSessions.size() ? mData.mGuestSessions.size() - 1 : 0));
 
     rc = pSession->i_onRemove();
     mData.mGuestSessions.erase(itSessions);
