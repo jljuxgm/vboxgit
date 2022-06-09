@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 72009 2018-04-25 09:36:00Z vboxsync $ */
+/* $Id: UIWizard.cpp 72237 2018-05-17 11:57:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */
@@ -260,15 +260,6 @@ void UIWizard::resizeToGoldenRatio()
 
 void UIWizard::assignWatermark(const QString &strWatermark)
 {
-    if (wizardStyle() != QWizard::AeroStyle
-# ifdef VBOX_WS_WIN
-        // WORKAROUND:
-        // There is a Qt bug about Windows7 do NOT match conditions for 'aero' wizard-style,
-        // so its silently fallbacks to 'modern' one without any notification,
-        // so QWizard::wizardStyle() returns QWizard::ModernStyle, while using aero, at least partially.
-        && QSysInfo::windowsVersion() != QSysInfo::WV_WINDOWS7
-# endif /* VBOX_WS_WIN */
-        )
         m_strWatermarkName = strWatermark;
 }
 
