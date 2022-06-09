@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 62882 2016-08-02 15:31:02Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 69149 2017-10-20 14:53:19Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -403,20 +403,6 @@ static int vbsvcAutoMountSharedFolder(const char *pszShareName, const char *pszM
                     strcpy(mntinf.name, pszMountPoint + cchCWD);
                 }
                 r = mount(mntinf.name, pszMountPoint, "vboxsf", fFlags, &mntinf);
-            }
-            if (errno == EPROTO)
-            {
-                VGSvcVerbose(3, "vbsvcAutoMountWorker: Re-trying with old mounting structure ...\n");
-
-                /* New mount tool with old vboxsf module? Try again using the old
-                 * vbsf_mount_info_old structure. */
-                struct vbsf_mount_info_old mntinf_old;
-                memcpy(&mntinf_old.name, &mntinf.name, MAX_HOST_NAME);
-                memcpy(&mntinf_old.nls_name, mntinf.nls_name, MAX_NLS_NAME);
-                mntinf_old.uid = mntinf.uid;
-                mntinf_old.gid = mntinf.gid;
-                mntinf_old.ttl = mntinf.ttl;
-                r = mount(mntinf_old.name, pszMountPoint, "vboxsf", fFlags, &mntinf_old);
             }
             if (r == -1) /* Was there some error from one of the tries above? */
             {

@@ -1,4 +1,4 @@
-/* $Id: mount.vboxsf.c 69046 2017-10-11 16:11:23Z vboxsync $ */
+/* $Id: mount.vboxsf.c 69149 2017-10-20 14:53:19Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions for Linux - mount(8) helper.
  *
@@ -502,18 +502,6 @@ main(int argc, char **argv)
             strcpy(mntinf.name, host_name + cchCWD);
         }
         err = mount(host_name, mount_point, "vboxsf", flags, &mntinf);
-    }
-    if (err == -1 && errno == EPROTO)
-    {
-        /* New mount tool with old vboxsf module? Try again using the old
-         * vbsf_mount_info_old structure. */
-        struct vbsf_mount_info_old mntinf_old;
-        memcpy(&mntinf_old.name, &mntinf.name, MAX_HOST_NAME);
-        memcpy(&mntinf_old.nls_name, mntinf.nls_name, MAX_NLS_NAME);
-        mntinf_old.uid = mntinf.uid;
-        mntinf_old.gid = mntinf.gid;
-        mntinf_old.ttl = mntinf.ttl;
-        err = mount(host_name, mount_point, "vboxsf", flags, &mntinf_old);
     }
     if (err)
         panic_err("%s: mounting failed with the error", argv[0]);
