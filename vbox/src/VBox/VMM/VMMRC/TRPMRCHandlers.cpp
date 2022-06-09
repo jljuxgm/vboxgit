@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 72254 2018-05-18 07:28:30Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -401,7 +401,6 @@ DECLASM(int) TRPMGCHyperTrap01Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
      * Now leave the rest to the DBGF.
      */
     int rc = DBGFRZTrap01Handler(pVM, pVCpu, pRegFrame, uDr6, false /*fAltStepping*/);
-    AssertStmt(rc != VINF_EM_RAW_GUEST_TRAP, rc = VERR_TRPM_IPE_1);
     if (rc == VINF_EM_DBG_STEPPED)
         pRegFrame->eflags.Bits.u1TF = 0;
 
