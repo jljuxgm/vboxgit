@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70511 2018-01-10 11:26:42Z vboxsync $
+# $Id: Makefile.kmk 70515 2018-01-10 11:55:05Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - The Basic Remote Execution Service.
 #
@@ -36,7 +36,6 @@ TestExecService_DEFS = \
 TestExecService_SOURCES = \
 	TestExecService.cpp \
 	TestExecServiceTcp.cpp
-TestExecService_VBOX_IMPORT_CHECKER.win.x86   = nt31
 
 INSTALLS += TestExecServiceFiles
 TestExecServiceFiles_TEMPLATE                = VBoxValidationKitR3

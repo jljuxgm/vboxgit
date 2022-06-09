@@ -1,4 +1,4 @@
-# $Id: Config.kmk 70499 2018-01-09 23:18:32Z vboxsync $
+# $Id: Config.kmk 70515 2018-01-10 11:55:05Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1643,7 +1643,7 @@ CXXDEFS  += $(CDEFS)
 OBJCDEFS += $(CDEFS)
 
 USES += dtrace
-USERS.win += vboximportchecker
+USES.win += vboximportchecker
 
 
 #
@@ -7123,7 +7123,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70499 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70515 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
