@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: HDAStreamPeriod.cpp 69118 2017-10-17 18:50:46Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.cpp - Stream period functions for HD Audio.
  *
@@ -22,6 +22,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 68725 2017-09-12 13:02:38Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 69118 2017-10-17 18:50:46Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

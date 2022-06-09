@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 68358 2017-08-09 15:25:45Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 69118 2017-10-17 18:50:46Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -179,6 +179,7 @@ static inline int PA_STREAM_IS_GOOD(pa_stream_state_t x) {
         x == PA_STREAM_READY;
 }
 #endif /* !PA_STREAM_IS_GOOD */
+
 
 /*********************************************************************************************************************************
 *   Prototypes                                                                                                                   *

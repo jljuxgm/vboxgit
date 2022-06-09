@@ -1,4 +1,4 @@
-/* $Id: HDAStreamChannel.cpp 67908 2017-07-11 14:05:57Z vboxsync $ */
+/* $Id: HDAStreamChannel.cpp 69118 2017-10-17 18:50:46Z vboxsync $ */
 /** @file
  * HDAStreamChannel.cpp - Stream channel functions for HD Audio.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.cpp 67698 2017-06-29 13:58:29Z vboxsync $ */
+/* $Id: HDAStreamMap.cpp 69118 2017-10-17 18:50:46Z vboxsync $ */
 /** @file
  * HDAStreamMap.cpp - Stream mapping functions for HD Audio.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

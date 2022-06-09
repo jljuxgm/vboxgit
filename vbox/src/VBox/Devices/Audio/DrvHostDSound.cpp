@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 68955 2017-10-02 15:50:39Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 69118 2017-10-17 18:50:46Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -33,6 +33,7 @@
 # include <new> /* For bad_alloc. */
 # include "VBoxMMNotificationClient.h"
 #endif
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
@@ -2518,6 +2519,7 @@ static DECLCALLBACK(int) drvHostDSoundSetCallback(PPDMIHOSTAUDIO pInterface, PFN
     return rc;
 }
 #endif
+
 
 /*********************************************************************************************************************************
 *   PDMDRVINS::IBase Interface                                                                                                   *
