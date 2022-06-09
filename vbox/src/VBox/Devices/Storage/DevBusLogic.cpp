@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 67886 2017-07-10 17:17:05Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 67887 2017-07-10 17:19:26Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1056,6 +1056,7 @@ static void buslogicClearInterrupt(PBUSLOGIC pBusLogic)
     LogFlowFunc(("pBusLogic=%#p, clearing %#02x (pending %#02x)\n",
                  pBusLogic, pBusLogic->regInterrupt, pBusLogic->uPendingIntr));
     pBusLogic->regInterrupt = 0;
+    pBusLogic->regStatus &= ~BL_STAT_CMDINV;
     PDMDevHlpPCISetIrq(pBusLogic->CTX_SUFF(pDevIns), 0, 0);
     /* If there's another pending interrupt, report it now. */
     if (pBusLogic->uPendingIntr)
