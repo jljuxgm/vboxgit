@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 69498 2017-10-28 15:07:25Z vboxsync $ */
+/* $Id: scmrw.cpp 69499 2017-10-28 15:11:15Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1373,7 +1373,7 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
 
                     /* Record it. */
                     pState->iLineLicense        = iLine;
-                    pState->cLinesLicense       = CountLinesInSubstring(pszBody, pszNext - pszBody);
+                    pState->cLinesLicense       = CountLinesInSubstring(pszBody, pszNext - pszBody) - fExternal;
                     pState->pCurrentLicense     = pCur;
                     pState->fExternalLicense    = fExternal;
                     pState->fIsCorrectLicense   = pState->fOpenSource
