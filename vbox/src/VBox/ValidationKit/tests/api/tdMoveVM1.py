@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 71614 2018-04-02 11:39:53Z vboxsync $"
+# "$Id: tdMoveVM1.py 71682 2018-04-05 13:02:05Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71614 $"
+__version__ = "$Revision: 71682 $"
 
 # Standard Python imports.
 import os
@@ -541,10 +541,10 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
         fSupported = self.checkAPIVersion()
 
         if fSupported is False:
-            reporter.log('API version is below "%s". Just skip this test.' % (self.oTstDrv.fpApiVer))
+            reporter.log('API version %s is too old. Just skip this test.' % (self.oTstDrv.fpApiVer))
             return reporter.testDone()[1] == 0
         else:
-            reporter.log('API version is "%s". Continuing the test.' % (self.oTstDrv.fpApiVer))
+            reporter.log('API version is "%s".' % (self.oTstDrv.fpApiVer))
 
         #Scenarios
         #1. All disks attached to VM are located outside the VM's folder.
