@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 67136 2017-05-30 07:58:21Z vboxsync $ */
+/* $Id: SUPDrv.cpp 67137 2017-05-30 08:05:23Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3880,7 +3880,7 @@ SUPR0DECL(void) SUPR0ResumeVTxOnCpu(bool fSuspended)
 SUPR0DECL(int) SUPR0GetCurrentGdtRw(RTHCUINTPTR *pGdtRw)
 {
 #ifdef RT_OS_LINUX
-    return supdrvOSetCurrentGdtRw(pGdtRw);
+    return supdrvOSGetCurrentGdtRw(pGdtRw);
 #else
     return VERR_NOT_IMPLEMENTED;
 #endif

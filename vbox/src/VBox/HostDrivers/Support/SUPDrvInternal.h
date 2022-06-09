@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 67136 2017-05-30 07:58:21Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 67137 2017-05-30 08:05:23Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -841,7 +841,7 @@ int  VBOXCALL   supdrvOSEnableVTx(bool fEnabled);
 RTCCUINTREG VBOXCALL supdrvOSChangeCR4(RTCCUINTREG fOrMask, RTCCUINTREG fAndMask);
 bool VBOXCALL   supdrvOSSuspendVTxOnCpu(void);
 void VBOXCALL   supdrvOSResumeVTxOnCpu(bool fSuspended);
-int  VBOXCALL   supdrvOSetCurrentGdtRw(RTHCUINTPTR *pGdtRw);
+int  VBOXCALL   supdrvOSGetCurrentGdtRw(RTHCUINTPTR *pGdtRw);
 
 /**
  * Try open the image using the native loader.
