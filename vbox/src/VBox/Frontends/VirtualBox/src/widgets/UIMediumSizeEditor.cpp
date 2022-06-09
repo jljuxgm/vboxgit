@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.cpp 67985 2017-07-17 09:11:52Z vboxsync $ */
+/* $Id: UIMediumSizeEditor.cpp 68017 2017-07-18 11:09:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class implementation.
  */
@@ -54,6 +54,7 @@ void UIMediumSizeEditor::setMediumSize(qulonglong uSize)
 {
     /* Remember the new size: */
     m_uSize = uSize;
+
     /* And assign it to the slider & editor: */
     m_pSlider->blockSignals(true);
     m_pSlider->setValue(sizeMBToSlider(m_uSize, m_iSliderScale));
@@ -61,6 +62,9 @@ void UIMediumSizeEditor::setMediumSize(qulonglong uSize)
     m_pEditor->blockSignals(true);
     m_pEditor->setText(vboxGlobal().formatSize(m_uSize));
     m_pEditor->blockSignals(false);
+
+    /* Update the tool-tips: */
+    updateSizeToolTips(m_uSize);
 }
 
 void UIMediumSizeEditor::retranslateUi()
