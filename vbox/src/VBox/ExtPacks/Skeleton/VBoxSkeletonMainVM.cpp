@@ -1,6 +1,6 @@
-/* $Id: VBoxBusMouseMain.cpp 68828 2017-09-22 14:15:57Z vboxsync $ */
+/* $Id: VBoxSkeletonMainVM.cpp 68828 2017-09-22 14:15:57Z vboxsync $ */
 /** @file
- * Bus Mouse main module.
+ * Skeleton main VM module.
  */
 
 /*
@@ -36,6 +36,7 @@
 
 #include <VBox/err.h>
 #include <VBox/version.h>
+#include <VBox/vmm/cfgm.h>
 #include <iprt/string.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
@@ -49,45 +50,44 @@ static PCVBOXEXTPACKHLP g_pHlp;
 
 
 // /**
-//  * @interface_method_impl{VBOXEXTPACKREG,pfnInstalled}
+//  * @interface_method_impl{VBOXEXTPACKVMREG,pfnConsoleReady}
 //  */
-// static DECLCALLBACK(void) vboxBusMouseExtPack_Installed(PCVBOXEXTPACKREG pThis, VBOXEXTPACK_IF_CS(IVirtualBox) *pVirtualBox, PRTERRINFO pErrInfo);
+// static DECLCALLBACK(void)  vboxSkeletonExtPackVM_ConsoleReady(PCVBOXEXTPACKVMREG pThis, VBOXEXTPACK_IF_CS(IConsole) *pConsole);
 //
 // /**
-//  * @interface_method_impl{VBOXEXTPACKREG,pfnUninstall}
+//  * @interface_method_impl{VBOXEXTPACKVMREG,pfnUnload}
 //  */
-// static DECLCALLBACK(int)  vboxBusMouseExtPack_Uninstall(PCVBOXEXTPACKREG pThis, VBOXEXTPACK_IF_CS(IVirtualBox) *pVirtualBox);
+// static DECLCALLBACK(void) vboxSkeletonExtPackVM_Unload(PCVBOXEXTPACKVMREG pThis);
+//
+//  * @interface_method_impl{VBOXEXTPACKVMREG,pfnVMConfigureVMM}
+//  */
+// static DECLCALLBACK(int)  vboxSkeletonExtPackVM_VMConfigureVMM(PCVBOXEXTPACKVMREG pThis, VBOXEXTPACK_IF_CS(IConsole) *pConsole, PVM pVM);
 //
 // /**
-//  * @interface_method_impl{VBOXEXTPACKREG,pfnVirtualBoxReady}
+//  * @interface_method_impl{VBOXEXTPACKVMREG,pfnVMPowerOn}
 //  */
-// static DECLCALLBACK(void)  vboxBusMouseExtPack_VirtualBoxReady(PCVBOXEXTPACKREG pThis, VBOXEXTPACK_IF_CS(IVirtualBox) *pVirtualBox);
+// static DECLCALLBACK(int)  vboxSkeletonExtPackVM_VMPowerOn(PCVBOXEXTPACKVMREG pThis, VBOXEXTPACK_IF_CS(IConsole) *pConsole, PVM pVM);
 //
 // /**
-//  * @interface_method_impl{VBOXEXTPACKREG,pfnUnload}
+//  * @interface_method_impl{VBOXEXTPACKVMREG,pfnVMPowerOff}
 //  */
-// static DECLCALLBACK(void) vboxBusMouseExtPack_Unload(PCVBOXEXTPACKREG pThis);
+// static DECLCALLBACK(void) vboxSkeletonExtPackVM_VMPowerOff(PCVBOXEXTPACKVMREG pThis, VBOXEXTPACK_IF_CS(IConsole) *pConsole, PVM pVM);
 //
 // /**
-//  * @interface_method_impl{VBOXEXTPACKREG,pfnVMCreated}
+//  * @interface_method_impl{VBOXEXTPACKVMREG,pfnQueryObject}
 //  */
-// static DECLCALLBACK(int)  vboxBusMouseExtPack_VMCreated(PCVBOXEXTPACKREG pThis, VBOXEXTPACK_IF_CS(IVirtualBox) *pVirtualBox, VBOXEXTPACK_IF_CS(IMachine) *pMachine);
-//
-// /**
-//  * @interface_method_impl{VBOXEXTPACKREG,pfnQueryObject}
-//  */
-// static DECLCALLBACK(void) vboxBusMouseExtPack_QueryObject(PCVBOXEXTPACKREG pThis, PCRTUUID pObjectId);
+// static DECLCALLBACK(void) vboxSkeletonExtPackVM_QueryObject(PCVBOXEXTPACKVMREG pThis, PCRTUUID pObjectId);
 
 
-static const VBOXEXTPACKREG g_vboxBusMouseExtPackReg =
+static const VBOXEXTPACKVMREG g_vboxSkeletonExtPackVMReg =
 {
-    VBOXEXTPACKREG_VERSION,
+    VBOXEXTPACKVMREG_VERSION,
     /* .uVBoxFullVersion =  */  VBOX_FULL_VERSION,
-    /* .pfnInstalled =      */  NULL,
-    /* .pfnUninstall =      */  NULL,
-    /* .pfnVirtualBoxReady =*/  NULL,
+    /* .pfnConsoleReady =   */  NULL,
     /* .pfnUnload =         */  NULL,
-    /* .pfnVMCreated =      */  NULL,
+    /* .pfnVMConfigureVMM = */  NULL,
+    /* .pfnVMPowerOn =      */  NULL,
+    /* .pfnVMPowerOff =     */  NULL,
     /* .pfnQueryObject =    */  NULL,
     /* .pfnReserved1 =      */  NULL,
     /* .pfnReserved2 =      */  NULL,
@@ -96,12 +96,12 @@ static const VBOXEXTPACKREG g_vboxBusMouseExtPackReg =
     /* .pfnReserved5 =      */  NULL,
     /* .pfnReserved6 =      */  NULL,
     /* .u32Reserved7 =      */  0,
-    VBOXEXTPACKREG_VERSION
+    VBOXEXTPACKVMREG_VERSION
 };
 
 
-/** @callback_method_impl{FNVBOXEXTPACKREGISTER}  */
-extern "C" DECLEXPORT(int) VBoxExtPackRegister(PCVBOXEXTPACKHLP pHlp, PCVBOXEXTPACKREG *ppReg, PRTERRINFO pErrInfo)
+/** @callback_method_impl{FNVBOXEXTPACKVMREGISTER}  */
+extern "C" DECLEXPORT(int) VBoxExtPackVMRegister(PCVBOXEXTPACKHLP pHlp, PCVBOXEXTPACKVMREG *ppReg, PRTERRINFO pErrInfo)
 {
     /*
      * Check the VirtualBox version.
@@ -122,7 +122,7 @@ extern "C" DECLEXPORT(int) VBoxExtPackRegister(PCVBOXEXTPACKHLP pHlp, PCVBOXEXTP
      * We're good, save input and return the registration structure.
      */
     g_pHlp = pHlp;
-    *ppReg = &g_vboxBusMouseExtPackReg;
+    *ppReg = &g_vboxSkeletonExtPackVMReg;
 
     return VINF_SUCCESS;
 }
