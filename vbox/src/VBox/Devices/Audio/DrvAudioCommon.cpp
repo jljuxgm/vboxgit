@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 71126 2018-02-26 14:26:51Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 72111 2018-05-04 12:36:51Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1392,7 +1392,8 @@ int DrvAudioHlpFileOpen(PPDMAUDIOFILE pFile, uint32_t fOpen, const PPDMAUDIOPCMP
  */
 int DrvAudioHlpFileClose(PPDMAUDIOFILE pFile)
 {
-    AssertPtrReturn(pFile, VERR_INVALID_POINTER);
+    if (!pFile)
+        return VINF_SUCCESS;
 
     size_t cbSize = DrvAudioHlpFileGetDataSize(pFile);
 
