@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 66356 2017-03-30 11:00:19Z vboxsync $ */
+/* $Id: HMInternal.h 67529 2017-06-21 08:29:25Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1100,10 +1100,6 @@ typedef HMCPU *PHMCPU;
 AssertCompileMemberAlignment(HMCPU, vmx, 8);
 AssertCompileMemberAlignment(HMCPU, svm, 8);
 AssertCompileMemberAlignment(HMCPU, Event, 8);
-
-VMM_INT_DECL(TRPMEVENT) hmSvmEventToTrpmEventType(PCSVMEVENT pSvmEvent);
-VMM_INT_DECL(int)       hmSvmGetMsrpmOffsetAndBit(uint32_t idMsr, uint16_t *pbOffMsrpm, uint32_t *puMsrpmBit);
-
 
 #ifdef IN_RING0
 VMMR0_INT_DECL(PHMGLOBALCPUINFO) hmR0GetCurrentCpu(void);
