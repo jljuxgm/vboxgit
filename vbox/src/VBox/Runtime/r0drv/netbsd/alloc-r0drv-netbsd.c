@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-netbsd.c 63549 2016-08-16 12:55:14Z vboxsync $ */
+/* $Id: alloc-r0drv-netbsd.c 69108 2017-10-17 14:21:35Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NetBSD.
  */
@@ -13,6 +13,14 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  *
+ * The contents of this file may alternatively be used under the terms
+ * of the Common Development and Distribution License Version 1.0
+ * (CDDL) only, as it comes in the "COPYING.CDDL" file of the
+ * VirtualBox OSE distribution, in which case the provisions of the
+ * CDDL are applicable instead of those of the GPL.
+ *
+ * You may elect to license modified versions of this file under the
+ * terms and conditions of either the GPL or the CDDL or both.
  * This code is based on:
  *
  * Copyright (c) 2014 Arto Huusko
