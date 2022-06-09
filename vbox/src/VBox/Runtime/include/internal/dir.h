@@ -1,4 +1,4 @@
-/* $Id: dir.h 69753 2017-11-19 14:27:58Z vboxsync $ */
+/* $Id: dir.h 70890 2018-02-07 14:05:43Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDir.
  */
@@ -88,6 +88,11 @@ typedef struct RTDIRINTERNAL
     size_t              cbSelf;
     /** The RTDIR_F_XXX flags passed to RTDirOpenFiltered */
     uint32_t            fFlags;
+    /** Set if the specified path included a directory slash or if enmFilter is not RTDIRFILTER_NONE.
+     * This is relevant for how to interpret the RTDIR_F_NO_FOLLOW flag, as it won't
+     * have any effect if the specified path ends with a slash on posix systems.  We
+     * implement that on the other systems too, for consistency. */
+    bool                fDirSlash;
     /** Set to indicate that the Data member contains unread data. */
     bool                fDataUnread;
 

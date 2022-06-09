@@ -1,4 +1,4 @@
-/* $Id: direnum-r3-nt.cpp 70889 2018-02-07 12:33:10Z vboxsync $ */
+/* $Id: direnum-r3-nt.cpp 70890 2018-02-07 14:05:43Z vboxsync $ */
 /** @file
  * IPRT - Directory Enumeration, Native NT.
  */
@@ -120,7 +120,9 @@ int rtDirNativeOpen(PRTDIRINTERNAL pDir, char *pszPathBuf, uintptr_t hRelativeDi
         static int volatile g_fReparsePoints = -1;
         uint32_t            fOptions         = FILE_DIRECTORY_FILE | FILE_OPEN_FOR_BACKUP_INTENT | FILE_SYNCHRONOUS_IO_NONALERT;
         int fReparsePoints = g_fReparsePoints;
-        if (fReparsePoints != 0 && (pDir->fFlags & RTDIR_F_NO_FOLLOW))
+        if (   fReparsePoints != 0
+            && (pDir->fFlags & RTDIR_F_NO_FOLLOW)
+            && !pDir->fDirSlash)
             fOptions |= FILE_OPEN_REPARSE_POINT;
 
         for (;;)
