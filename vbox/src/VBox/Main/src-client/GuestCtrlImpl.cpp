@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 71299 2018-03-12 11:30:08Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -545,11 +545,11 @@ HRESULT Guest::updateGuestAdditions(const com::Utf8Str &aSource, const std::vect
     else
     {
         Assert(!pSession.isNull());
-        int guestRc;
-        rc = pSession->i_startSessionInternal(&guestRc);
+        int rcGuest;
+        rc = pSession->i_startSessionInternal(&rcGuest);
         if (RT_FAILURE(rc))
         {
-            /** @todo Handle guestRc! */
+            /** @todo Handle rcGuest! */
 
             hr = setError(VBOX_E_IPRT_ERROR, tr("Could not open guest session: %Rrc"), rc);
         }

@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 71281 2018-03-09 09:24:01Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 71299 2018-03-12 11:30:08Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -187,7 +187,7 @@ private:
 struct GuestProcessToolErrorInfo
 {
     /** Return code from the guest side for executing the process tool. */
-    int  guestRc;
+    int  rcGuest;
     /** The process tool's returned exit code. */
     int32_t iExitCode;
 };
