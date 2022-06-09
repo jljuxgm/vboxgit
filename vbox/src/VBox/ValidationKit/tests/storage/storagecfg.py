@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 70521 2018-01-10 15:49:10Z vboxsync $
+# $Id: storagecfg.py 70522 2018-01-10 15:55:16Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,11 +26,15 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70521 $"
+__version__ = "$Revision: 70522 $"
 
 # Standard Python imports.
 import os;
 import re;
+
+# Validation Kit imports.
+from common import utils;
+
 
 class StorageDisk(object):
     """
