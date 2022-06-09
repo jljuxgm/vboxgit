@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 72518 2018-06-11 15:00:30Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 72553 2018-06-14 10:51:14Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5270,7 +5270,6 @@ IEM_CIMPL_DEF_4(iemCImpl_load_CrX, uint8_t, iCrReg, uint64_t, uNewCrX, IEMACCESS
              * Perform checks.
              */
             IEM_CTX_ASSERT(pVCpu, CPUMCTX_EXTRN_CR0);
-            pVCpu->cpum.GstCtx.fExtrn &= ~CPUMCTX_EXTRN_LDTR;
 
             uint64_t const uOldCrX = pVCpu->cpum.GstCtx.cr0;
             uint32_t const fValid  = X86_CR0_PE | X86_CR0_MP | X86_CR0_EM | X86_CR0_TS
