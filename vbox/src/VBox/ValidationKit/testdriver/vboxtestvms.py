@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 70658 2018-01-20 19:24:37Z vboxsync $
+# $Id: vboxtestvms.py 70659 2018-01-21 12:21:02Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70658 $"
+__version__ = "$Revision: 70659 $"
 
 # Standard Python imports.
 import copy;
@@ -192,7 +192,7 @@ class TestVm(object):
 
     def __init__(self, # pylint: disable=R0913
                  sVmName,                                   # type: str
-                 fGrouping,                                 # type: bool
+                 fGrouping = 0,                             # type: int
                  oSet = None,                               # type: TestVmSet
                  sHd = None,                                # type: str
                  sKind = None,                              # type: str
