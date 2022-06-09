@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 71855 2018-04-13 06:20:00Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 72071 2018-04-30 20:38:00Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -1180,6 +1180,8 @@ my_generate_project "openssl"       "src/libs/openssl-1.1.0h"               --be
 my_generate_project "curl"          "src/libs/curl-7.57.0"                  --begin-incs "include" "src/libs/curl-7.57.0/include"           --end-includes "src/libs/curl-7.57.0"
 my_generate_project "kStuff"        "src/libs/kStuff"                       --begin-incs "include" "src/libs/kStuff/kStuff/include"         --end-includes "src/libs/kStuff"
 
+# webtools
+my_generate_project "webtools"      "webtools"                              --begin-incs "include" "webtools/tinderbox/server/Tinderbox3"   --end-includes "webtools"
 
 # include/VBox
 my_generate_project "VBoxHeaders"   "include"                               --begin-incs "include"                                          --end-includes "include/VBox"
