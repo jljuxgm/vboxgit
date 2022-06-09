@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 72333 2018-05-25 08:55:20Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 72342 2018-05-25 11:34:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -936,8 +936,8 @@ public:
         setStateIcon(KVMExecutionEngine_NotSet, UIIconPool::iconSet(":/vtx_amdv_disabled_16px.png"));
         setStateIcon(KVMExecutionEngine_RawMode, UIIconPool::iconSet(":/vtx_amdv_disabled_16px.png"));
         setStateIcon(KVMExecutionEngine_HwVirt, UIIconPool::iconSet(":/vtx_amdv_16px.png"));
-        /** @todo new indicator icon, something that looks very very slow (at least on Windows)... @bugref{9044} */
-        setStateIcon(KVMExecutionEngine_NativeApi, UIIconPool::iconSet(":/vtx_amdv_disabled_16px.png"));
+        /** @todo New indicator icon, vm_execution_engine_native_api_16px.png, V inside a turtle / tortoise.  @bugref{9044} */
+        setStateIcon(KVMExecutionEngine_NativeApi, UIIconPool::iconSet(":/vm_execution_engine_native_api_16px.png"));
         /* Translate finally: */
         retranslateUi();
     }
