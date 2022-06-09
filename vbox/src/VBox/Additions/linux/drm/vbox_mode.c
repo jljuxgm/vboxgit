@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 70624 2018-01-18 10:25:37Z vboxsync $ */
+/* $Id: vbox_mode.c 70625 2018-01-18 10:57:13Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -402,7 +402,7 @@ static struct drm_encoder *vbox_best_single_encoder(struct drm_connector
 	/* pick the encoder ids */
 	if (enc_id)
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
-        return drm_encoder_find(connector->dev, NULL, enc_id);
+		return drm_encoder_find(connector->dev, NULL, enc_id);
 #else
 		return drm_encoder_find(connector->dev, enc_id);
 #endif
