@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 72030 2018-04-26 08:34:29Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 72244 2018-05-17 13:31:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -63,45 +63,24 @@ const QString horizontalScrollBarStyle("QScrollBar:horizontal {"
                                        "QScrollBar::sub-line:horizontal {"
                                        "height: 0px;}");
 
+
+/*********************************************************************************************************************************
+*   UIIndicatorScrollBar definition.                                                                                             *
+*********************************************************************************************************************************/
+
 class UIIndicatorScrollBar : public QScrollBar
 {
     Q_OBJECT;
 
 public:
 
-    UIIndicatorScrollBar(QWidget *parent = 0)
-        :QScrollBar(parent)
-    {
-        setStyleSheet(verticalScrollBarStyle);
-    }
-
-    void setMarkingsVector(const QVector<float> &vector)
-    {
-        m_markingsVector = vector;
-    }
-
-    void clearMarkingsVector()
-    {
-        m_markingsVector.clear();
-    }
+    UIIndicatorScrollBar(QWidget *parent = 0);
+    void setMarkingsVector(const QVector<float> &vector);
+    void clearMarkingsVector();
 
 protected:
 
-    virtual void paintEvent(QPaintEvent *pEvent) /* override */
-    {
-        QScrollBar::paintEvent(pEvent);
-        /* Put a red line to mark the bookmark positions: */
-        for (int i = 0; i < m_markingsVector.size(); ++i)
-        {
-            QPointF p1 = QPointF(0, m_markingsVector[i] * height());
-            QPointF p2 = QPointF(width(), m_markingsVector[i] * height());
-
-            QPainter painter(this);
-            painter.setRenderHint(QPainter::Antialiasing, true);
-            painter.setPen(QPen(QColor(255, 0, 0, 75), 1.1f));
-            painter.drawLine(p1, p2);
-        }
-    }
+    virtual void paintEvent(QPaintEvent *pEvent) /* override */;
 
 private:
 
@@ -110,48 +89,106 @@ private:
     QVector<float> m_markingsVector;
 };
 
+
+/*********************************************************************************************************************************
+*   UIIndicatorScrollBar implemetation.                                                                                          *
+*********************************************************************************************************************************/
+
+UIIndicatorScrollBar::UIIndicatorScrollBar(QWidget *parent /*= 0 */)
+    :QScrollBar(parent)
+{
+    setStyleSheet(verticalScrollBarStyle);
+}
+
+void UIIndicatorScrollBar::setMarkingsVector(const QVector<float> &vector)
+{
+    m_markingsVector = vector;
+}
+
+void UIIndicatorScrollBar::clearMarkingsVector()
+{
+    m_markingsVector.clear();
+}
+
+void UIIndicatorScrollBar::paintEvent(QPaintEvent *pEvent) /* override */
+{
+    QScrollBar::paintEvent(pEvent);
+    /* Put a red line to mark the bookmark positions: */
+    for (int i = 0; i < m_markingsVector.size(); ++i)
+    {
+        QPointF p1 = QPointF(0, m_markingsVector[i] * height());
+        QPointF p2 = QPointF(width(), m_markingsVector[i] * height());
+
+        QPainter painter(this);
+        painter.setRenderHint(QPainter::Antialiasing, true);
+        painter.setPen(QPen(QColor(255, 0, 0, 75), 1.1f));
+        painter.drawLine(p1, p2);
+    }
+}
+
+
+/*********************************************************************************************************************************
+*   UILineNumberArea definition.                                                                                                 *
+*********************************************************************************************************************************/
+
 class UILineNumberArea : public QWidget
 {
 public:
-    UILineNumberArea(UIVMLogViewerTextEdit *textEdit)
-        :QWidget(textEdit)
-        , m_pTextEdit(textEdit)
-    {
-        setMouseTracking(true);
-    }
-
-    QSize sizeHint() const
-    {
-        if (!m_pTextEdit)
-            return QSize();
-        return QSize(m_pTextEdit->lineNumberAreaWidth(), 0);
-    }
+    UILineNumberArea(UIVMLogViewerTextEdit *textEdit);
+    QSize sizeHint() const;
 
 protected:
 
-    void paintEvent(QPaintEvent *event)
-    {
-        if (m_pTextEdit)
-            m_pTextEdit->lineNumberAreaPaintEvent(event);
-    }
-
-    void mouseMoveEvent(QMouseEvent *pEvent)
-    {
-        if (m_pTextEdit)
-            m_pTextEdit->setMouseCursorLine(m_pTextEdit->lineNumberForPos(pEvent->pos()));
-        repaint();
-    }
-
-    void mousePressEvent(QMouseEvent *pEvent)
-    {
-        if (m_pTextEdit)
-            m_pTextEdit->toggleBookmark(m_pTextEdit->bookmarkForPos(pEvent->pos()));
-    }
+    void paintEvent(QPaintEvent *event);
+    void mouseMoveEvent(QMouseEvent *pEvent);
+    void mousePressEvent(QMouseEvent *pEvent);
 
 private:
     UIVMLogViewerTextEdit *m_pTextEdit;
 };
 
+
+/*********************************************************************************************************************************
+*   UILineNumberArea implemetation.                                                                                              *
+*********************************************************************************************************************************/
+
+UILineNumberArea::UILineNumberArea(UIVMLogViewerTextEdit *textEdit)
+    :QWidget(textEdit)
+    , m_pTextEdit(textEdit)
+{
+    setMouseTracking(true);
+}
+
+QSize UILineNumberArea::sizeHint() const
+{
+    if (!m_pTextEdit)
+        return QSize();
+    return QSize(m_pTextEdit->lineNumberAreaWidth(), 0);
+}
+
+void UILineNumberArea::paintEvent(QPaintEvent *event)
+{
+    if (m_pTextEdit)
+        m_pTextEdit->lineNumberAreaPaintEvent(event);
+}
+
+void UILineNumberArea::mouseMoveEvent(QMouseEvent *pEvent)
+{
+    if (m_pTextEdit)
+        m_pTextEdit->setMouseCursorLine(m_pTextEdit->lineNumberForPos(pEvent->pos()));
+    repaint();
+}
+
+void UILineNumberArea::mousePressEvent(QMouseEvent *pEvent)
+{
+    if (m_pTextEdit)
+        m_pTextEdit->toggleBookmark(m_pTextEdit->bookmarkForPos(pEvent->pos()));
+}
+
+
+/*********************************************************************************************************************************
+*   UIVMLogViewerTextEdit implemetation.                                                                                         *
+*********************************************************************************************************************************/
 
 UIVMLogViewerTextEdit::UIVMLogViewerTextEdit(QWidget* parent /* = 0 */)
     : QIWithRetranslateUI<QPlainTextEdit>(parent)
