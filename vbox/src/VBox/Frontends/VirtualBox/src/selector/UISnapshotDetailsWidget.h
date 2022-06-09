@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 67517 2017-06-20 17:52:13Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.h 68365 2017-08-10 12:28:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -29,6 +29,7 @@
 #include "CSnapshot.h"
 
 /* Forward declarations: */
+class CNetworkAdapter;
 class QGridLayout;
 class QLabel;
 class QLineEdit;
@@ -142,6 +143,9 @@ private:
 
     /** Returns a details report on a given @a comMachine. */
     QString detailsReport(const CMachine &comMachine, DetailsElementType enmType);
+
+    /** Summarizes generic properties. */
+    static QString summarizeGenericProperties(const CNetworkAdapter &adapter);
 
     /** Holds the snapshot object to load data from. */
     CSnapshot  m_comSnapshot;
