@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 69869 2017-11-29 14:30:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 69904 2017-12-01 20:29:24Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2396,7 +2396,7 @@ int vmsvga3dSurfaceBlitToScreen(PVGASTATE pThis, uint32_t dest, SVGASignedRect d
         box.srcz    = 0;
 
         dest.ptr.gmrId  = SVGA_GMR_FRAMEBUFFER;
-        dest.ptr.offset = 0;
+        dest.ptr.offset = pThis->svga.uScreenOffset;
         dest.pitch      = pThis->svga.cbScanline;
 
         int rc = vmsvga3dSurfaceDMA(pThis, dest, src, SVGA3D_READ_HOST_VRAM, 1, &box);
@@ -2415,7 +2415,7 @@ int vmsvga3dSurfaceBlitToScreen(PVGASTATE pThis, uint32_t dest, SVGASignedRect d
         box.d       = 1;
 
         dest.ptr.gmrId  = SVGA_GMR_FRAMEBUFFER;
-        dest.ptr.offset = 0;
+        dest.ptr.offset = pThis->svga.uScreenOffset;
         dest.pitch      = pThis->svga.cbScanline;
 
         /** @todo merge into one SurfaceDMA call */

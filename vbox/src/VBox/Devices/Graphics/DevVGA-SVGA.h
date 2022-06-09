@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 69904 2017-12-01 20:29:24Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -209,6 +209,8 @@ typedef struct VMSVGAState
     uint32_t                    uHeight;
     uint32_t                    uBpp;
     uint32_t                    cbScanline;
+    uint32_t                    uScreenOffset;
+    uint32_t                    uLastScreenOffset;
     /** Maximum width supported. */
     uint32_t                    u32MaxWidth;
     /** Maximum height supported. */

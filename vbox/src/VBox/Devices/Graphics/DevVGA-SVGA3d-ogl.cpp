@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 69859 2017-11-28 11:54:06Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 69904 2017-12-01 20:29:24Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1362,6 +1362,7 @@ int vmsvga3dQueryCaps(PVGASTATE pThis, uint32_t idx3dCaps, uint32_t *pu32Val)
     /* Linux: svga_screen.c in gallium (for PIPE_CAP_MAX_TEXTURE_3D_LEVELS); have default if missing. */
     case SVGA3D_DEVCAP_MAX_VOLUME_EXTENT:
         //*pu32Val = pCaps->MaxVolumeExtent;
+        *pu32Val = 256;
         break;
 
     case SVGA3D_DEVCAP_MAX_TEXTURE_REPEAT:
@@ -2596,7 +2597,7 @@ int vmsvga3dSurfaceBlitToScreen(PVGASTATE pThis, uint32_t dest, SVGASignedRect d
         box.srcz    = 0;
 
         dst.ptr.gmrId  = SVGA_GMR_FRAMEBUFFER;
-        dst.ptr.offset = 0;
+        dst.ptr.offset = pThis->svga.uScreenOffset;
         dst.pitch      = pThis->svga.cbScanline;
 
         int rc = vmsvga3dSurfaceDMA(pThis, dst, src, SVGA3D_READ_HOST_VRAM, 1, &box);
@@ -2615,7 +2616,7 @@ int vmsvga3dSurfaceBlitToScreen(PVGASTATE pThis, uint32_t dest, SVGASignedRect d
         box.d       = 1;
 
         dst.ptr.gmrId  = SVGA_GMR_FRAMEBUFFER;
-        dst.ptr.offset = 0;
+        dst.ptr.offset = pThis->svga.uScreenOffset;
         dst.pitch      = pThis->svga.cbScanline;
 
         /** @todo merge into one SurfaceDMA call */
