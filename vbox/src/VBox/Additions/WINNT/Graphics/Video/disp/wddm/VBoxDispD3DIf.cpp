@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 68859 2017-09-25 16:23:02Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 69351 2017-10-26 14:22:39Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -38,7 +38,7 @@ void VBoxDispD3DClose(VBOXDISPD3D *pD3D)
  */
 static HMODULE loadSystemDll(const char *pszName)
 {
-    /* Assumed here that DEBUG version of VBoxDispD3D.dll will not be installed system wide 
+    /* Assumed here that DEBUG version of VBoxDispD3D.dll will not be installed system wide
        but will be loaded from local folder of an application being debugged. */
 #ifndef DEBUG
     char   szPath[MAX_PATH];

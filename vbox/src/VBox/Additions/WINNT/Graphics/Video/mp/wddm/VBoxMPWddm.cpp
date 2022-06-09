@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 68693 2017-09-07 14:15:58Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 69351 2017-10-26 14:22:39Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -3885,7 +3885,7 @@ DxgkDdiBuildPagingBufferNew(
     pBuildPagingBuffer->pDmaBuffer = ((uint8_t*)pBuildPagingBuffer->pDmaBuffer) + cbBuffer;
     pBuildPagingBuffer->pDmaBufferPrivateData = ((uint8_t*)pBuildPagingBuffer->pDmaBufferPrivateData) + cbPrivateData;
 
-    LOGF(("LEAVE context(0x%X), MultipassOffset(0x%X) cbBuffer(0x%X) cbPrivateData(0x%X)", 
+    LOGF(("LEAVE context(0x%X), MultipassOffset(0x%X) cbBuffer(0x%X) cbPrivateData(0x%X)",
         hAdapter, pBuildPagingBuffer->MultipassOffset, cbBuffer, cbPrivateData));
 
     if (pBuildPagingBuffer->MultipassOffset)

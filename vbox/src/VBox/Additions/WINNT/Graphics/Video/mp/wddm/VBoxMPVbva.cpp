@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 66507 2017-04-11 10:15:57Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 69351 2017-10-26 14:22:39Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1382,7 +1382,7 @@ int VBoxCmdVbvaConCmdResize(PVBOXMP_DEVEXT pDevExt, const VBOXWDDM_ALLOC_DATA *p
     {
         VBOXCMDVBVA_RESIZE_ENTRY* pEntry = &pResize->Resize.aEntries[0];
         memcpy(pEntry->aTargetMap, pTargetMap, sizeof (pEntry->aTargetMap));
-        LOG(("[%d] %dx%d, TargetMap0 0x%x, flags 0x%x", 
+        LOG(("[%d] %dx%d, TargetMap0 0x%x, flags 0x%x",
             pEntry->Screen.u32ViewIndex, pEntry->Screen.u32Width, pEntry->Screen.u32Height, pEntry->aTargetMap[0], pEntry->Screen.u16Flags));
 
         rc = vboxCmdVbvaCtlSubmitSync(&VBoxCommonFromDeviceExt(pDevExt)->guestCtx, &pResize->Hdr);
