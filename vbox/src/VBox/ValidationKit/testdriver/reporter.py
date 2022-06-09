@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 70566 2018-01-12 18:25:48Z vboxsync $
+# $Id: reporter.py 70570 2018-01-13 00:02:51Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70566 $"
+__version__ = "$Revision: 70570 $"
 
 
 # Standard Python imports.
@@ -725,7 +725,8 @@ class RemoteReporter(ReporterBase):
         Returns True, False or None.  None should be retried, the others not.
         May raise exception on HTTP issue (retry ok).
         """
-        import httplib;
+        if sys.version_info[0] >= 3:    import http.client as httplib;  # pylint: disable=no-name-in-module,import-error
+        else:                           import httplib;                 # pylint: disable=import-error
         from common import constants;
 
         # Read the response and (optionally) close the connection.
