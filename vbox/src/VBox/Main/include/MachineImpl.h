@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 66925 2017-05-17 08:43:27Z vboxsync $ */
+/* $Id: MachineImpl.h 67738 2017-06-30 14:49:40Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -40,9 +40,6 @@
 # include "PerformanceImpl.h"
 # include "ThreadTask.h"
 #endif
-#ifdef VBOX_WITH_UNATTENDED
-# include "UnattendedImpl.h"
-#endif
 
 // generated header
 #include "SchemaDefs.h"
@@ -81,6 +78,9 @@ class SharedFolder;
 class HostUSBDevice;
 class StorageController;
 class SessionMachine;
+#ifdef VBOX_WITH_UNATTENDED
+class Unattended;
+#endif
 
 // Machine class
 ////////////////////////////////////////////////////////////////////////////////
