@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCmn-win.h 62684 2016-07-29 13:16:47Z vboxsync $ */
+/* $Id: VBoxNetCmn-win.h 68670 2017-09-06 09:02:20Z vboxsync $ */
 /** @file
  * VBoxNetCmn-win.h - NDIS6 Networking Driver Common Definitions, Windows-specific code.
  */
@@ -24,9 +24,15 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
+#ifndef ___VBox_VBoxNetCmn_win_h
+#define ___VBox_VBoxNetCmn_win_h
+
+#include <iprt/log.h> /* for LOG_ENABLED */
+
+
 DECLHIDDEN(void) vboxNetCmnWinDumpOidRequest(const char *pcszFunction, PNDIS_OID_REQUEST pRequest)
 {
-#ifdef LOG_ENABLED
+# ifdef LOG_ENABLED
     const char *pszType;
     const char *pszOid  = "unknown";
 
@@ -136,7 +142,9 @@ DECLHIDDEN(void) vboxNetCmnWinDumpOidRequest(const char *pcszFunction, PNDIS_OID
         case OID_PNP_WAKE_UP_ERROR: pszOid = "OID_PNP_WAKE_UP_ERROR"; break;
     }
     Log(("%s: %s(0x%x) %s(0x%x)\n", pcszFunction, pszType, pRequest->RequestType, pszOid, pRequest->DATA.SET_INFORMATION.Oid));
-#else
+# else
     RT_NOREF2(pcszFunction, pRequest);
-#endif
+# endif
 }
+
+#endif

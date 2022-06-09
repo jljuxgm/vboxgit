@@ -1,4 +1,4 @@
-/* $Id: VBoxPktDmp.h 63704 2016-09-02 15:40:47Z vboxsync $ */
+/* $Id: VBoxPktDmp.h 68670 2017-09-06 09:02:20Z vboxsync $ */
 /** @file
  * VBoxPktDmp.h - Dump Ethernet frame into debug log.
  */
@@ -26,6 +26,13 @@
 
 #ifndef ___VBox_vboxpktdmp_h
 #define ___VBox_vboxpktdmp_h
+
+#include <iprt/net.h>
+#include <iprt/log.h>
+#if defined(LOG_ENABLED) && !defined(VBOX_DEVICE_STRUCT_TESTCASE)
+# include <iprt/asm.h>
+#endif
+
 
 DECLINLINE(const char *) vboxEthTypeStr(uint16_t uType)
 {

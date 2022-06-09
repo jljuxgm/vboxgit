@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFolders.h 62476 2016-07-22 18:23:50Z vboxsync $ */
+/* $Id: VBoxGuestLibSharedFolders.h 68670 2017-09-06 09:02:20Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Central calls header.
  */
@@ -29,6 +29,10 @@
 
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/shflsvc.h>
+
+#ifndef IN_RING0
+# error "ring-0 only"
+#endif
 
 RT_C_DECLS_BEGIN
 
