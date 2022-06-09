@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 69550 2017-11-02 10:22:18Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 70824 2018-01-31 11:45:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -367,7 +367,7 @@ private slots:
         /* Get VirtualBox version: */
         QString strVBoxVersion(vboxGlobal().vboxVersionStringNormalized());
         QByteArray abVBoxVersion = strVBoxVersion.toUtf8();
-        VBoxVersion vboxVersion(strVBoxVersion);
+        UIVersion vboxVersion(strVBoxVersion);
 
         /* Get extension pack version: */
         QString strExtPackVersion(extPack.GetVersion());
