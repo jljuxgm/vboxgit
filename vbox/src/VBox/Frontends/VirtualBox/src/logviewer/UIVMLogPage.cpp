@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 70663 2018-01-21 21:28:37Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 70716 2018-01-23 18:05:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -300,6 +300,7 @@ void UIVMLogPage::setShowLineNumbers(bool bShowLineNumbers)
     if (m_bShowLineNumbers == bShowLineNumbers)
         return;
     m_bShowLineNumbers = bShowLineNumbers;
+    applySettings();
 }
 
 void UIVMLogPage::setWrapLines(bool bWrapLines)
