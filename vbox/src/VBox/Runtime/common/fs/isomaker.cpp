@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
+/* $Id: isomaker.cpp 69155 2017-10-23 08:56:31Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -5822,8 +5822,8 @@ static void rtFsIosMakerOutFile_GenerateRockRidge(PRTFSISOMAKERNAME pName, uint8
             pPX->uid.le         = RT_H2LE_U32((uint32_t)pName->uid);
             pPX->gid.be         = RT_H2BE_U32((uint32_t)pName->gid);
             pPX->gid.le         = RT_H2LE_U32((uint32_t)pName->gid);
-            pPX->INode.be       = RT_H2BE_U32((uint32_t)pName->pObj->idxObj);
-            pPX->INode.le       = RT_H2LE_U32((uint32_t)pName->pObj->idxObj);
+            pPX->INode.be       = RT_H2BE_U32((uint32_t)pName->pObj->idxObj + 1); /* Don't use zero - isoinfo doesn't like it. */
+            pPX->INode.le       = RT_H2LE_U32((uint32_t)pName->pObj->idxObj + 1);
             pbSys += sizeof(*pPX);
             cbSys -= sizeof(*pPX);
         }
