@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 67277 2017-06-06 16:39:59Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 67854 2017-07-07 14:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -694,20 +694,6 @@ static const PortConfig kLptKnownPorts[] =
     /* must not contain an element with IRQ=0 and IOBase=0 used to cause
      * toLPTPortName() to return the "User-defined" string for these values. */
 };
-
-/**
- * Similar to toString (KMediumType), but returns 'Differencing' for
- * normal hard disks that have a parent.
- */
-QString VBoxGlobal::mediumTypeString(const CMedium &medium) const
-{
-    if (!medium.GetParent().isNull())
-    {
-        Assert(medium.GetType() == KMediumType_Normal);
-        return mDiskTypes_Differencing;
-    }
-    return gpConverter->toString(medium.GetType());
-}
 
 /**
  *  Returns the list of the standard COM port names (i.e. "COMx").
@@ -1632,8 +1618,6 @@ QString VBoxGlobal::languageTranslators() const
  */
 void VBoxGlobal::retranslateUi()
 {
-    mDiskTypes_Differencing = tr ("Differencing", "DiskType");
-
     mUserDefinedPortName = tr ("User-defined", "serial port");
 
     mWarningIcon = UIIconPool::defaultIcon(UIIconPool::UIDefaultIconType_MessageBoxWarning).pixmap (16, 16);

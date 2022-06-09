@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 67277 2017-06-06 16:39:59Z vboxsync $ */
+/* $Id: VBoxGlobal.h 67854 2017-07-07 14:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -270,14 +270,6 @@ public:
     {
         return tr("%n second(s)", "", cVal);
     }
-
-    QString differencingMediumTypeName() const { return mDiskTypes_Differencing; }
-
-    /**
-     * Similar to toString (KMediumType), but returns 'Differencing' for
-     * normal hard disks that have a parent.
-     */
-    QString mediumTypeString(const CMedium &medium) const;
 
     QStringList COMPortNames() const;
     QString toCOMPortName (ulong aIRQ, ulong aIOBase) const;
@@ -627,8 +619,6 @@ private:
     QString mBrandingConfig;
 
     int m3DAvailable;
-
-    QString mDiskTypes_Differencing;
 
     QString mUserDefinedPortName;
 
