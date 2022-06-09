@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 72037 2018-04-26 11:50:13Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 72039 2018-04-26 13:18:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -20,13 +20,13 @@
 
 /* Qt includes: */
 #include <QKeySequence>
-#include <QWidget>
-/* #include <QMap> */
 #include <QPair>
+#include <QWidget>
 
 /* GUI includes: */
 #include "QIManagerDialog.h"
 #include "QIWithRetranslateUI.h"
+#include "UILibraryDefs.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -44,11 +44,10 @@ class UIVMLogViewerPanel;
 class UIVMLogViewerSearchPanel;
 class UIVMLogViewerSettingsPanel;
 
-
 /** QWidget extension providing GUI for VirtualBox LogViewer. It
  *  encapsulates log pages, toolbar, a tab widget and manages
  *  interaction between these classes. */
-class UIVMLogViewerWidget  : public QIWithRetranslateUI<QWidget>
+class SHARED_LIBRARY_STUFF UIVMLogViewerWidget  : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
