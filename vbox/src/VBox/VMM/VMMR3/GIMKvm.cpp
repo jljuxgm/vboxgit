@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 72462 2018-06-06 14:24:04Z vboxsync $ */
+/* $Id: GIMKvm.cpp 72469 2018-06-07 11:35:23Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -157,25 +157,16 @@ VMMR3_INT_DECL(int) gimR3KvmInit(PVM pVM)
 
     /*
      * Setup hypercall and #UD handling.
+     * Note! We always need to trap VMCALL/VMMCALL hypercall using #UDs for raw-mode VMs.
      */
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
         EMSetHypercallInstructionsEnabled(&pVM->aCpus[i], true);
 
-    if (ASMIsAmdCpu())
-    {
-        pKvm->fTrapXcptUD   = true;
-        pKvm->uOpCodeNative = OP_VMMCALL;
-    }
-    else
-    {
-        Assert(ASMIsIntelCpu() || ASMIsViaCentaurCpu());
-        pKvm->fTrapXcptUD   = false;
-        pKvm->uOpCodeNative = OP_VMCALL;
-    }
-
-    /* We always need to trap VMCALL/VMMCALL hypercall using #UDs for raw-mode VMs. */
-    if (VM_IS_RAW_MODE_ENABLED(pVM))
-        pKvm->fTrapXcptUD = true;
+    size_t cbHypercall = 0;
+    rc = GIMQueryHypercallOpcodeBytes(pVM, pKvm->abOpcodeNative, sizeof(pKvm->abOpcodeNative), &cbHypercall, &pKvm->uOpcodeNative);
+    AssertLogRelRCReturn(rc, rc);
+    AssertLogRelReturn(cbHypercall == sizeof(pKvm->abOpcodeNative), VERR_GIM_IPE_1);
+    pKvm->fTrapXcptUD = pKvm->uOpcodeNative != OP_VMCALL || VM_IS_RAW_MODE_ENABLED(pVM);
 
     return VINF_SUCCESS;
 }

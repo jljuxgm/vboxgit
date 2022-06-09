@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 72462 2018-06-06 14:24:04Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 72469 2018-06-07 11:35:23Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -24,6 +24,6 @@ IEM_CIMPL_DEF_0(iemCImpl_vmcall)
     /** @todo intercept. */
 
     /* Join forces with vmmcall. */
-    return IEM_CIMPL_CALL_0(iemCImpl_Hypercall);
+    return IEM_CIMPL_CALL_1(iemCImpl_Hypercall, OP_VMCALL);
 }
 

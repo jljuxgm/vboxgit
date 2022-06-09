@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 72462 2018-06-06 14:24:04Z vboxsync $ */
+/* $Id: VMMAll.cpp 72469 2018-06-07 11:35:23Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -393,57 +393,5 @@ uint32_t vmmGetBuildType(void)
     uRet |= RT_BIT_32(1);
 #endif
     return uRet;
-}
-
-
-/**
- * Patches the instructions necessary for making a hypercall to the hypervisor.
- * Used by GIM.
- *
- * @returns VBox status code.
- * @param   pVM         The cross context VM structure.
- * @param   pvBuf       The buffer in the hypercall page(s) to be patched.
- * @param   cbBuf       The size of the buffer.
- * @param   pcbWritten  Where to store the number of bytes patched. This
- *                      is reliably updated only when this function returns
- *                      VINF_SUCCESS.
- */
-VMM_INT_DECL(int) VMMPatchHypercall(PVM pVM, void *pvBuf, size_t cbBuf, size_t *pcbWritten)
-{
-    AssertReturn(pvBuf, VERR_INVALID_POINTER);
-    AssertReturn(pcbWritten, VERR_INVALID_POINTER);
-
-    CPUMCPUVENDOR enmHostCpu = CPUMGetHostCpuVendor(pVM);
-    switch (enmHostCpu)
-    {
-        case CPUMCPUVENDOR_AMD:
-        {
-            uint8_t abHypercall[] = { 0x0F, 0x01, 0xD9 };   /* VMMCALL */
-            if (RT_LIKELY(cbBuf >= sizeof(abHypercall)))
-            {
-                memcpy(pvBuf, abHypercall, sizeof(abHypercall));
-                *pcbWritten = sizeof(abHypercall);
-                return VINF_SUCCESS;
-            }
-            return VERR_BUFFER_OVERFLOW;
-        }
-
-        case CPUMCPUVENDOR_INTEL:
-        case CPUMCPUVENDOR_VIA:
-        {
-            uint8_t abHypercall[] = { 0x0F, 0x01, 0xC1 };   /* VMCALL */
-            if (RT_LIKELY(cbBuf >= sizeof(abHypercall)))
-            {
-                memcpy(pvBuf, abHypercall, sizeof(abHypercall));
-                *pcbWritten = sizeof(abHypercall);
-                return VINF_SUCCESS;
-            }
-            return VERR_BUFFER_OVERFLOW;
-        }
-
-        default:
-            AssertFailed();
-            return VERR_UNSUPPORTED_CPU;
-    }
 }
 
