@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.h 65410 2017-01-24 10:06:12Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.h 68895 2017-09-27 16:38:54Z vboxsync $ */
 /** @file
  * VirtualBox driver interface video recording audio backend.
  */
@@ -40,8 +40,10 @@ public:
 
 public:
 
-    static DECLCALLBACK(int) drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
+    static DECLCALLBACK(int)  drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(void) drvDestruct(PPDMDRVINS pDrvIns);
+    static DECLCALLBACK(int)  drvAttach(PPDMDRVINS pDrvIns, uint32_t fFlags);
+    static DECLCALLBACK(void) drvDetach(PPDMDRVINS pDrvIns, uint32_t fFlags);
 
 private:
 
