@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 70500 2018-01-10 09:36:36Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.h 70519 2018-01-10 14:27:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -39,10 +39,6 @@ class UIVMLogViewerWidget;
 class UIVMLogViewerPanel : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
-
-signals:
-
-    void sigHide();
 
 public:
 

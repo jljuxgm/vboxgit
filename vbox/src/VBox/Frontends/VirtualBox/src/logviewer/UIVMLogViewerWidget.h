@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 70500 2018-01-10 09:36:36Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 70519 2018-01-10 14:27:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -173,7 +173,7 @@ private:
     /** Holds the instance of filter panel. */
     UIVMLogViewerFilterPanel    *m_pFilterPanel;
     UIVMLogViewerBookmarksPanel *m_pBookmarksPanel;
-    QMap<UIVMLogViewerPanel**, QAction**> m_panelActionMap;
+    QMap<UIVMLogViewerPanel*, QAction*> m_panelActionMap;
 
     /** Holds the list of log file content. */
     VMLogMap             m_logMap;
@@ -206,6 +206,7 @@ private:
     friend class UIVMLogViewerBookmarksPanel;
     friend class UIVMLogViewerFilterPanel;
     friend class UIVMLogViewerSearchPanel;
+    friend class UIVMLogViewerPanel;
 };
 
 #endif /* !___UIVMLogViewerWidget_h___ */
