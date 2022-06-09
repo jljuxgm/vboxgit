@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 71861 2018-04-13 14:11:11Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 72086 2018-05-03 12:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -401,7 +401,7 @@ bool UIGuestFileTable::copyHostToGuest(const QString &hostSourcePath, const QStr
     return true;
 }
 
-/* static */ FileObjectType UIGuestFileTable::fileType(const CFsObjInfo &fsInfo)
+FileObjectType UIGuestFileTable::fileType(const CFsObjInfo &fsInfo)
 {
     if (fsInfo.isNull() || !fsInfo.isOk())
         return FileObjectType_Unknown;
@@ -415,7 +415,7 @@ bool UIGuestFileTable::copyHostToGuest(const QString &hostSourcePath, const QStr
     return FileObjectType_Other;
 }
 
-/* static */ FileObjectType UIGuestFileTable::fileType(const CGuestFsObjInfo &fsInfo)
+FileObjectType UIGuestFileTable::fileType(const CGuestFsObjInfo &fsInfo)
 {
     if (fsInfo.isNull() || !fsInfo.isOk())
         return FileObjectType_Unknown;

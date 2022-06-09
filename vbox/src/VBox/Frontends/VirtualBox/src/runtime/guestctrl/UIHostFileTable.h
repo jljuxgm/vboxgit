@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.h 71861 2018-04-13 14:11:11Z vboxsync $ */
+/* $Id: UIHostFileTable.h 72086 2018-05-03 12:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -33,16 +33,16 @@ public:
 
 protected:
 
-    static FileObjectType fileType(const QFileInfo &fsInfo);
-    void retranslateUi() /* override */;
-    virtual void readDirectory(const QString& strPath, UIFileTableItem *parent, bool isStartDir = false) /* override */;
-    virtual void deleteByItem(UIFileTableItem *item) /* override */;
-    virtual void goToHomeDirectory() /* override */;
-    virtual bool renameItem(UIFileTableItem *item, QString newBaseName);
-    virtual bool createDirectory(const QString &path, const QString &directoryName);
+    FileObjectType  fileType(const QFileInfo &fsInfo);
+    void            retranslateUi() /* override */;
+    virtual void    readDirectory(const QString& strPath, UIFileTableItem *parent, bool isStartDir = false) /* override */;
+    virtual void    deleteByItem(UIFileTableItem *item) /* override */;
+    virtual void    goToHomeDirectory() /* override */;
+    virtual bool    renameItem(UIFileTableItem *item, QString newBaseName);
+    virtual bool    createDirectory(const QString &path, const QString &directoryName);
     virtual QString fsObjectPropertyString() /* override */;
-    virtual void  showProperties() /* override */;
-    virtual void determineDriveLetters() /* override */;
+    virtual void    showProperties() /* override */;
+    virtual void    determineDriveLetters() /* override */;
 
 private:
 

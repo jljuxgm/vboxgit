@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileModel.cpp 71832 2018-04-12 06:56:48Z vboxsync $ */
+/* $Id: UIGuestControlFileModel.cpp 72086 2018-05-03 12:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileModel class implementation.
  */
@@ -31,6 +31,29 @@
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
+const char* UIGuestControlFileModel::strUpDirectoryString = "..";
+
+UIGuestControlFileProxyModel::UIGuestControlFileProxyModel(QObject *parent /* = 0 */)
+    :QSortFilterProxyModel(parent)
+{
+}
+
+bool UIGuestControlFileProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
+{
+    QVariant leftData = sourceModel()->data(left);
+    QVariant rightData = sourceModel()->data(right);
+
+    if (leftData.canConvert(QMetaType::QString) && rightData.canConvert(QMetaType::QString))
+    {
+
+        if (leftData == UIGuestControlFileModel::strUpDirectoryString)
+            return true && (sortOrder() == Qt::AscendingOrder);
+        else if (rightData == UIGuestControlFileModel::strUpDirectoryString)
+            return false && (sortOrder() == Qt::AscendingOrder);
+    }
+
+    return QSortFilterProxyModel::lessThan(left, right);
+}
 
 UIGuestControlFileModel::UIGuestControlFileModel(QObject *parent)
     : QAbstractItemModel(parent)
