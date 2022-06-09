@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 72445 2018-06-05 08:47:00Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 72666 2018-06-22 16:14:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -209,7 +209,7 @@ void UIVMFilterLineEdit::createButtons()
         m_pClearAllButton = new QIToolButton(this);
         if (m_pClearAllButton)
         {
-            m_pClearAllButton->setIcon(m_pClearAllButton->style()->standardIcon(QStyle::SP_LineEditClearButton));
+            m_pClearAllButton->setIcon(UIIconPool::iconSet(":/log_viewer_delete_all_filters_16px.png"));
             connect(m_pClearAllButton, &QIToolButton::clicked, this, &UIVMFilterLineEdit::sltClearAll);
         }
     }
