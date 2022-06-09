@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 71995 2018-04-24 07:44:43Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 71996 2018-04-24 07:49:53Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -1171,9 +1171,16 @@ HRESULT MachineMoveVM::updatePathsToStateFiles(const std::map<Utf8Str, SAVESTATE
         else
         {
             const Utf8Str &path = m_pMachine->mSSData->strStateFilePath;
-            m_pMachine->mSSData->strStateFilePath = Utf8StrFmt("%s%s",
-                                                               targetPath.c_str(),
-                                                               path.c_str() + sourcePath.length());
+            /*
+             * This check for the case when a new value is equal to the old one.
+             * Maybe the more clever check is needed in the some corner cases.
+             */
+            if (!path.contains(targetPath))
+            {
+                m_pMachine->mSSData->strStateFilePath = Utf8StrFmt("%s%s",
+                                                                   targetPath.c_str(),
+                                                                   path.c_str() + sourcePath.length());
+            }
         }
 
         ++itState;
