@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 70527 2018-01-11 07:14:53Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 70528 2018-01-11 07:15:34Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4141,8 +4141,10 @@ static VBOXSTRICTRC hmR0VmxLoadGuestCR3AndCR4(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
                             | X86_CR4_VMXE;
         if (pVM->cpum.ro.HostFeatures.fXSaveRstor)
             u32CR4Mask |= X86_CR4_OSXSAVE;
+#if 0
         if (pVM->cpum.ro.GuestFeatures.fPcid)
             u32CR4Mask |= X86_CR4_PCIDE;
+#endif
         pVCpu->hm.s.vmx.u32CR4Mask = u32CR4Mask;
         rc = VMXWriteVmcs32(VMX_VMCS_CTRL_CR4_MASK, u32CR4Mask);
         AssertRCReturn(rc, rc);
