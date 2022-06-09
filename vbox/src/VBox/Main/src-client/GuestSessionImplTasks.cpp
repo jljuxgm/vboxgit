@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 71819 2018-04-11 11:00:35Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 71827 2018-04-11 16:23:23Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1129,11 +1129,11 @@ int SessionTaskCopyDirFrom::Run(void)
     if (   !strSrcDir.endsWith("/")
         && !strSrcDir.endsWith("\\"))
     {
-        if (   !strDstDir.endsWith("/")
-            && !strDstDir.endsWith("\\"))
-            strDstDir += "/";
-
-        strDstDir += Utf8StrFmt("%s", RTPathFilename(strSrcDir.c_str()));
+        if (   strDstDir.endsWith("/")
+            || strDstDir.endsWith("\\"))
+        {
+            strDstDir += Utf8StrFmt("%s", RTPathFilename(strSrcDir.c_str()));
+        }
     }
 
     /* Create the root target directory on the host.
@@ -1352,11 +1352,11 @@ int SessionTaskCopyDirTo::Run(void)
     if (   !strSrcDir.endsWith("/")
         && !strSrcDir.endsWith("\\"))
     {
-        if (   !strDstDir.endsWith("/")
-            && !strDstDir.endsWith("\\"))
-            strDstDir += "/";
-
-        strDstDir += Utf8StrFmt("%s", RTPathFilename(strSrcDir.c_str()));
+        if (   strDstDir.endsWith("/")
+            || strDstDir.endsWith("\\"))
+        {
+            strDstDir += Utf8StrFmt("%s", RTPathFilename(strSrcDir.c_str()));
+        }
     }
 
     /* Create the root target directory on the guest.
