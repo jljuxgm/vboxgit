@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 70595 2018-01-15 16:39:29Z vboxsync $ */
+/* $Id: HDAStream.cpp 70629 2018-01-18 13:48:32Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -132,8 +132,11 @@ void hdaStreamDestroy(PHDASTREAM pStream)
     AssertRC(rc2);
 #endif
 
-    rc2 = RTCritSectDelete(&pStream->State.CritSect);
-    AssertRC(rc2);
+    if (RTCritSectIsInitialized(&pStream->State.CritSect))
+    {
+        rc2 = RTCritSectDelete(&pStream->State.CritSect);
+        AssertRC(rc2);
+    }
 
     if (pStream->State.pCircBuf)
     {
@@ -144,8 +147,11 @@ void hdaStreamDestroy(PHDASTREAM pStream)
     hdaStreamPeriodDestroy(&pStream->State.Period);
 
 #ifdef DEBUG
-    rc2 = RTCritSectDelete(&pStream->Dbg.CritSect);
-    AssertRC(rc2);
+    if (RTCritSectIsInitialized(&pStream->Dbg.CritSect))
+    {
+        rc2 = RTCritSectDelete(&pStream->Dbg.CritSect);
+        AssertRC(rc2);
+    }
 #endif
 
     if (pStream->Dbg.Runtime.fEnabled)
