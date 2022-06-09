@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 66986 2017-05-19 14:21:55Z vboxsync $ */
+/* $Id: IEMAll.cpp 67028 2017-05-23 09:16:22Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3419,6 +3419,7 @@ IEM_STATIC VBOXSTRICTRC iemHandleSvmNstGstEventIntercept(PVMCPU pVCpu, PCPUMCTX 
         {
             /** @todo Nested-guest SVM - figure out fetching op-code bytes from IEM. */
 #ifdef IEM_WITH_CODE_TLB
+            AssertReleaseFailedReturn(VERR_IEM_IPE_5);
 #else
             uint8_t const offOpCode = pVCpu->iem.s.offOpcode;
             uint8_t const cbCurrent = pVCpu->iem.s.cbOpcode - pVCpu->iem.s.offOpcode;
