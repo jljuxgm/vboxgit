@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 71632 2018-04-03 16:58:07Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 71644 2018-04-04 06:55:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2824,3 +2824,4 @@ int UIMessageCenter::showMessageBox(QWidget *pParent, MessageType enmType,
     /* Return result-code: */
     return iResultCode;
 }
+

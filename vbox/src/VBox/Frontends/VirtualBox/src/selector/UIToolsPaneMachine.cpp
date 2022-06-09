@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.cpp 70474 2018-01-07 09:10:41Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.cpp 71644 2018-04-04 06:55:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class implementation.
  */
@@ -319,3 +319,4 @@ void UIToolsPaneMachine::cleanup()
         delete pWidget;
     }
 }
+

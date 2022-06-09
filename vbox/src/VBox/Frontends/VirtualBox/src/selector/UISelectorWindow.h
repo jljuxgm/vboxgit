@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 71632 2018-04-03 16:58:07Z vboxsync $ */
+/* $Id: UISelectorWindow.h 71644 2018-04-04 06:55:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -388,3 +388,4 @@ private:
 #define gpSelectorWindow UISelectorWindow::instance()
 
 #endif /* !___UISelectorWindow_h___ */
+

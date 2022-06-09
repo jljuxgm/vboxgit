@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 71633 2018-04-03 17:06:22Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 71644 2018-04-04 06:55:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -2771,3 +2771,4 @@ bool UISelectorWindow::isAtLeastOneItemRunning(const QList<UIVMItem*> &items)
             return true;
     return false;
 }
+
