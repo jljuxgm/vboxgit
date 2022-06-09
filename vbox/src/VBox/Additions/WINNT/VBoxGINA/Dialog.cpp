@@ -1,10 +1,9 @@
-/* $Id: Dialog.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
+/* $Id: Dialog.cpp 69360 2017-10-26 14:47:05Z vboxsync $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Dialog Code.
  */
 
 /*
- *
  * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as

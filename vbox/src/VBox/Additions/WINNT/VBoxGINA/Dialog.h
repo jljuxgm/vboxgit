@@ -1,3 +1,4 @@
+/* $Id: Dialog.h 69360 2017-10-26 14:47:05Z vboxsync $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Dialog Header.
  */
