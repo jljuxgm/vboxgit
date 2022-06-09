@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 64729 2016-11-21 12:28:37Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 67507 2017-06-20 13:39:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class implementation.
  */
@@ -223,21 +223,35 @@ int UIWizardNewVDPage3::log2i(qulonglong uValue)
 /* static */
 int UIWizardNewVDPage3::sizeMBToSlider(qulonglong uValue, int iSliderScale)
 {
+    /* Make sure *any* slider value is multiple of 512: */
+    uValue /= 512;
+
+    /* Calculate result: */
     int iPower = log2i(uValue);
     qulonglong uTickMB = qulonglong (1) << iPower;
     qulonglong uTickMBNext = qulonglong (1) << (iPower + 1);
     int iStep = (uValue - uTickMB) * iSliderScale / (uTickMBNext - uTickMB);
-    return iPower * iSliderScale + iStep;
+    int iResult = iPower * iSliderScale + iStep;
+
+    /* Return result: */
+    return iResult;
 }
 
 /* static */
 qulonglong UIWizardNewVDPage3::sliderToSizeMB(int uValue, int iSliderScale)
 {
+    /* Calculate result: */
     int iPower = uValue / iSliderScale;
     int iStep = uValue % iSliderScale;
     qulonglong uTickMB = qulonglong (1) << iPower;
     qulonglong uTickMBNext = qulonglong (1) << (iPower + 1);
-    return uTickMB + (uTickMBNext - uTickMB) * iStep / iSliderScale;
+    qulonglong uResult = uTickMB + (uTickMBNext - uTickMB) * iStep / iSliderScale;
+
+    /* Make sure *any* slider value is multiple of 512: */
+    uResult *= 512;
+
+    /* Return result: */
+    return uResult;
 }
 
 void UIWizardNewVDPage3::updateSizeToolTips(qulonglong uSize)
