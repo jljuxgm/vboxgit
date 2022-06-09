@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 69699 2017-11-15 09:45:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1559,7 +1559,10 @@ void UIMachineLogic::sltTakeSnapshot()
 
     /* Assign corresponding icon: */
     if (uisession() && uisession()->machineWindowIcon())
-        pDlg->setPixmap(uisession()->machineWindowIcon()->pixmap(QSize(32, 32)));
+    {
+        const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_LargeIconSize);
+        pDlg->setPixmap(uisession()->machineWindowIcon()->pixmap(QSize(iIconMetric, iIconMetric)));
+    }
 
     /* Search for the max available filter index: */
     QString strNameTemplate = UITakeSnapshotDialog::tr("Snapshot %1");
