@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 71482 2018-03-23 11:10:18Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 71506 2018-03-26 09:22:11Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -198,9 +198,6 @@ public:
         size_t cArray = rArray.size();
         for (size_t i = 0; i < cArray; i++)
         {
-            if (rArray[i].isEmpty())
-                continue;
-
             int rc = RTEnvPutEx(m_hEnv, rArray[i].c_str());
             if (RT_FAILURE(rc))
                 return rc;
