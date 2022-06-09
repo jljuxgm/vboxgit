@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugIns.h 62537 2016-07-22 19:32:06Z vboxsync $ */
+/* $Id: VBoxCompilerPlugIns.h 69076 2017-10-13 14:42:00Z vboxsync $ */
 /** @file
  * VBoxCompilerPlugIns - Types, Prototypes and Macros common to the VBox compiler plug-ins.
  */
@@ -37,13 +37,17 @@
  */
 typedef struct VFMTCHKSTATE
 {
-    long        iFmt;
-    long        iArgs;
-    const char *pszFmt;
-    bool        fMaybeNull;
+    long            iFmt;
+    long            iArgs;
+    const char     *pszFmt;
+    bool            fMaybeNull;
 #if defined(__GNUC__) && !defined(VBOX_COMPILER_PLUG_IN_AGNOSTIC)
-    gimple      hStmt;
-    location_t  hFmtLoc;
+# if RT_GNUC_PREREQ(6, 0)
+    gimple const   *hStmt;
+# else
+    gimple          hStmt;
+# endif
+    location_t      hFmtLoc;
 #endif
 } VFMTCHKSTATE;
 /** Pointer to my checker state. */
