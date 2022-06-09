@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 70066 2017-12-11 16:33:05Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 70067 2017-12-11 17:25:15Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1181,7 +1181,10 @@ bool VBDrvCommonIsOptionValueTrue(const char *pszValue)
  */
 void VGDrvCommonProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, const char *pszValue)
 {
-    if (strcmp(pszName, "r3_log_to_host") == 0)
+    Log(("VGDrvCommonProcessOption: pszName='%s' pszValue='%s'\n", pszName, pszValue));
+
+    if (   strcmp(pszName, "r3_log_to_host") == 0
+        || strcmp(pszName, "LoggingEnabled") == 0 /*legacy*/ )
         pDevExt->fLoggingEnabled = VBDrvCommonIsOptionValueTrue(pszValue);
     else if (VGDrvNativeProcessOption(pDevExt, pszName, pszValue))
         LogRel(("VBoxGuest: Ignoring unknown option '%s' (value '%s')\n", pszName, pszValue));
