@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 70073 2017-12-12 09:14:37Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 70109 2017-12-13 12:53:26Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1202,6 +1202,8 @@ int DrvAudioHlpFileCreate(PDMAUDIOFILETYPE enmType, const char *pszFile, PDMAUDI
     {
         RTStrPrintf(pFile->szName, RT_ELEMENTS(pFile->szName), "%s", pszFile);
         pFile->fFlags = fFlags;
+        pFile->pvData = NULL;
+        pFile->cbData = 0;
     }
 
     if (RT_FAILURE(rc))
