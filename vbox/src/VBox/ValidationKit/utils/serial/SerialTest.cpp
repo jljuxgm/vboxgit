@@ -1,4 +1,4 @@
-/* $Id: SerialTest.cpp 70982 2018-02-13 09:04:08Z vboxsync $ */
+/* $Id: SerialTest.cpp 70983 2018-02-13 09:04:55Z vboxsync $ */
 /** @file
  * SerialTest - Serial port testing utility.
  */
@@ -856,7 +856,7 @@ int main(int argc, char *argv[])
     rc = RTRandAdvCreateParkMiller(&g_hRand);
     if (RT_FAILURE(rc))
     {
-        RTPrintf("Failed to create random number generator: %Rrc\n");
+        RTPrintf("Failed to create random number generator: %Rrc\n", rc);
         return RTEXITCODE_FAILURE;
     }
 
