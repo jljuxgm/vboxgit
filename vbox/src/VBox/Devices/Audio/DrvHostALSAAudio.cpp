@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 67361 2017-06-13 13:55:44Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 67577 2017-06-23 09:41:01Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -1188,7 +1188,6 @@ static DECLCALLBACK(int) drvHostALSAAudioStreamPlay(PPDMIHOSTAUDIO pInterface, P
         if (cbToWrite > cbBuf)
             cbToWrite = cbBuf;
 
-        Assert(cbToWrite % 2 == 0);
         memcpy(pStreamALSA->pvBuf, pvBuf, cbToWrite);
 
         snd_pcm_sframes_t csWritten = 0;
