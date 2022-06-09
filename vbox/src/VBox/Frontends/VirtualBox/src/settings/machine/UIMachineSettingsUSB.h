@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.h 72109 2018-05-04 11:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -30,10 +30,9 @@ struct UIDataSettingsMachineUSBFilter;
 typedef UISettingsCache<UIDataSettingsMachineUSBFilter> UISettingsCacheMachineUSBFilter;
 typedef UISettingsCachePool<UIDataSettingsMachineUSB, UISettingsCacheMachineUSBFilter> UISettingsCacheMachineUSB;
 
-
 /** Machine settings: USB page. */
-class UIMachineSettingsUSB : public UISettingsPageMachine,
-                             public Ui::UIMachineSettingsUSB
+class SHARED_LIBRARY_STUFF UIMachineSettingsUSB : public UISettingsPageMachine,
+                                                  public Ui::UIMachineSettingsUSB
 {
     Q_OBJECT;
 
@@ -160,4 +159,3 @@ private:
 };
 
 #endif /* !___UIMachineSettingsUSB_h___ */
-

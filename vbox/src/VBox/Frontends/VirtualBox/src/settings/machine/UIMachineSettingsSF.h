@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.h 72109 2018-05-04 11:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class declaration.
  */
@@ -33,10 +33,9 @@ enum UISharedFolderType { MachineType, ConsoleType };
 typedef UISettingsCache<UIDataSettingsSharedFolder> UISettingsCacheSharedFolder;
 typedef UISettingsCachePool<UIDataSettingsSharedFolders, UISettingsCacheSharedFolder> UISettingsCacheSharedFolders;
 
-
 /** Machine settings: Shared Folders page. */
-class UIMachineSettingsSF : public UISettingsPageMachine,
-                            public Ui::UIMachineSettingsSF
+class SHARED_LIBRARY_STUFF UIMachineSettingsSF : public UISettingsPageMachine,
+                                                 public Ui::UIMachineSettingsSF
 {
     Q_OBJECT;
 
@@ -153,4 +152,3 @@ private:
 };
 
 #endif /* !___UIMachineSettingsSF_h___ */
-

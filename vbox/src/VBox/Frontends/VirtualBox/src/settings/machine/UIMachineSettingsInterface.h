@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.h 72109 2018-05-04 11:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -27,10 +27,9 @@ class UIActionPool;
 struct UIDataSettingsMachineInterface;
 typedef UISettingsCache<UIDataSettingsMachineInterface> UISettingsCacheMachineInterface;
 
-
 /** Machine settings: User Interface page. */
-class UIMachineSettingsInterface : public UISettingsPageMachine,
-                                   public Ui::UIMachineSettingsInterface
+class SHARED_LIBRARY_STUFF UIMachineSettingsInterface : public UISettingsPageMachine,
+                                                        public Ui::UIMachineSettingsInterface
 {
     Q_OBJECT;
 
@@ -92,4 +91,3 @@ private:
 };
 
 #endif /* !___UIMachineSettingsInterface_h___ */
-

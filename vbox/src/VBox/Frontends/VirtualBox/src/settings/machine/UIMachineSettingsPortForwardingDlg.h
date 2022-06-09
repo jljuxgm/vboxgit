@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.h 72109 2018-05-04 11:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class declaration.
  */
@@ -27,7 +27,7 @@
 class QIDialogButtonBox;
 
 /* Machine settings / Network page / NAT attachment / Port forwarding dialog: */
-class UIMachineSettingsPortForwardingDlg : public QIWithRetranslateUI<QIDialog>
+class SHARED_LIBRARY_STUFF UIMachineSettingsPortForwardingDlg : public QIWithRetranslateUI<QIDialog>
 {
     Q_OBJECT;
 

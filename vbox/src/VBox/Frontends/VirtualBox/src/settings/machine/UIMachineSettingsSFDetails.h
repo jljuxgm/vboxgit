@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSFDetails.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineSettingsSFDetails.h 72109 2018-05-04 11:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSFDetails class declaration.
  */
@@ -25,8 +25,8 @@
 #include "UIMachineSettingsSF.h"
 
 /* Shared folders details dialog: */
-class UIMachineSettingsSFDetails : public QIWithRetranslateUI2<QIDialog>,
-                                   public Ui::UIMachineSettingsSFDetails
+class SHARED_LIBRARY_STUFF UIMachineSettingsSFDetails : public QIWithRetranslateUI2<QIDialog>,
+                                                        public Ui::UIMachineSettingsSFDetails
 {
     Q_OBJECT;
 
@@ -75,4 +75,3 @@ private:
 };
 
 #endif // __UIMachineSettingsSFDetails_h__
-

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.h 72109 2018-05-04 11:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class declaration.
  */
@@ -26,10 +26,9 @@
 struct UIDataSettingsMachineAudio;
 typedef UISettingsCache<UIDataSettingsMachineAudio> UISettingsCacheMachineAudio;
 
-
 /** Machine settings: Audio page. */
-class UIMachineSettingsAudio : public UISettingsPageMachine,
-                               public Ui::UIMachineSettingsAudio
+class SHARED_LIBRARY_STUFF UIMachineSettingsAudio : public UISettingsPageMachine,
+                                                    public Ui::UIMachineSettingsAudio
 {
     Q_OBJECT;
 
@@ -80,4 +79,3 @@ private:
 };
 
 #endif /* !___UIMachineSettingsAudio_h___ */
-

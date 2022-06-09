@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.h 72109 2018-05-04 11:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class declaration.
  */
@@ -27,10 +27,9 @@
 struct UIDataSettingsMachineGeneral;
 typedef UISettingsCache<UIDataSettingsMachineGeneral> UISettingsCacheMachineGeneral;
 
-
 /** Machine settings: General page. */
-class UIMachineSettingsGeneral : public UISettingsPageMachine,
-                                 public Ui::UIMachineSettingsGeneral
+class SHARED_LIBRARY_STUFF UIMachineSettingsGeneral : public UISettingsPageMachine,
+                                                      public Ui::UIMachineSettingsGeneral
 {
     Q_OBJECT;
 
@@ -140,4 +139,3 @@ private:
 };
 
 #endif /* !___UIMachineSettingsGeneral_h___ */
-

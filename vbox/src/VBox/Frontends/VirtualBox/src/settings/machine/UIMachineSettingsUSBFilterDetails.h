@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSBFilterDetails.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineSettingsUSBFilterDetails.h 72109 2018-05-04 11:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSBFilterDetails class declaration.
  */
@@ -23,8 +23,8 @@
 #include "QIDialog.h"
 #include "UIMachineSettingsUSB.h"
 
-class UIMachineSettingsUSBFilterDetails : public QIWithRetranslateUI2<QIDialog>,
-                                          public Ui::UIMachineSettingsUSBFilterDetails
+class SHARED_LIBRARY_STUFF UIMachineSettingsUSBFilterDetails : public QIWithRetranslateUI2<QIDialog>,
+                                                               public Ui::UIMachineSettingsUSBFilterDetails
 {
     Q_OBJECT;
 
@@ -38,4 +38,3 @@ private:
 };
 
 #endif /* __UIMachineSettingsUSBFilterDetails_h__ */
-

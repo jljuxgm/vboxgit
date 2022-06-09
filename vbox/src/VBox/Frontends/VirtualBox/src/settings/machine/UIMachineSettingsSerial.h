@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.h 72109 2018-05-04 11:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class declaration.
  */
@@ -30,9 +30,8 @@ struct UIDataSettingsMachineSerialPort;
 typedef UISettingsCache<UIDataSettingsMachineSerialPort> UISettingsCacheMachineSerialPort;
 typedef UISettingsCachePool<UIDataSettingsMachineSerial, UISettingsCacheMachineSerialPort> UISettingsCacheMachineSerial;
 
-
 /** Machine settings: Serial page. */
-class UIMachineSettingsSerialPage : public UISettingsPageMachine
+class SHARED_LIBRARY_STUFF UIMachineSettingsSerialPage : public UISettingsPageMachine
 {
     Q_OBJECT;
 
@@ -91,4 +90,3 @@ private:
 };
 
 #endif /* !___UIMachineSettingsSerial_h___ */
-
