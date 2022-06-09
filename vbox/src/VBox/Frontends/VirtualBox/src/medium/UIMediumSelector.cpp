@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72410 2018-06-01 12:48:18Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 72411 2018-06-01 12:55:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -356,6 +356,7 @@ void UIMediumSelector::finalize()
 
 void UIMediumSelector::showEvent(QShowEvent *pEvent)
 {
+    Q_UNUSED(pEvent);
 
     /* Try to determine the initial size: */
     QSize proposedSize;
