@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 71406 2018-03-20 14:44:24Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 71409 2018-03-20 15:28:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2017,7 +2017,7 @@ int GuestSession::i_processUnregister(GuestProcess *pProcess)
     /* Make sure to consume the pointer before the one of the iterator gets released. */
     ComObjPtr<GuestProcess> pProc = pProcess;
 
-    uint32_t uPID;
+    ULONG uPID;
     HRESULT hr = pProc->COMGETTER(PID)(&uPID);
     ComAssertComRC(hr);
 
