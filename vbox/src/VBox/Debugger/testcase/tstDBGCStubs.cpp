@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 72268 2018-05-20 23:29:26Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -641,6 +641,13 @@ VMMDECL(uint32_t) CPUMGetGuestEFlags(PVMCPU pVCpu)
 
 #include <VBox/vmm/hm.h>
 VMMR3DECL(bool) HMR3IsEnabled(PUVM pUVM)
+{
+    return true;
+}
+
+
+#include <VBox/vmm/nem.h>
+VMMR3DECL(bool) NEMR3IsEnabled(PUVM pUVM)
 {
     return true;
 }
