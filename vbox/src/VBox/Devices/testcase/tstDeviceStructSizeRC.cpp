@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 70013 2017-12-08 11:52:00Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 70964 2018-02-11 21:25:29Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1841,7 +1841,6 @@ int main()
     GEN_CHECK_SIZE(HDASTREAMSTATE);
     GEN_CHECK_OFF(HDASTREAMSTATE, uCurBDLE);
     GEN_CHECK_OFF(HDASTREAMSTATE, fInReset);
-    GEN_CHECK_OFF(HDASTREAMSTATE, CritSect);
     GEN_CHECK_OFF(HDASTREAMSTATE, Mapping);
     GEN_CHECK_OFF(HDASTREAMSTATE, BDLE);
     GEN_CHECK_OFF(HDASTREAMSTATE, pCircBuf);
@@ -1859,6 +1858,7 @@ int main()
     GEN_CHECK_OFF(HDASTREAM, u16LVI);
     GEN_CHECK_OFF(HDASTREAM, State);
     GEN_CHECK_OFF(HDASTREAM, Dbg);
+    GEN_CHECK_OFF(HDASTREAM, CritSect);
 
     GEN_CHECK_SIZE(HDASTATE);
     GEN_CHECK_OFF(HDASTATE, PciDev);
@@ -1881,7 +1881,6 @@ int main()
     GEN_CHECK_OFF(HDASTATE, fR0Enabled);
     GEN_CHECK_OFF(HDASTATE, fRCEnabled);
 #ifndef VBOX_WITH_AUDIO_CALLBACKS
-    GEN_CHECK_OFF(HDASTATE, pTimer);
 #endif
 #ifdef VBOX_WITH_STATISTICS
 # ifndef VBOX_WITH_AUDIO_CALLBACKS
