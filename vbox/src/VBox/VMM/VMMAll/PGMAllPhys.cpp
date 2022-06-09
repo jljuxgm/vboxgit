@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 70978 2018-02-12 20:48:15Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 71031 2018-02-15 16:47:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4750,4 +4750,88 @@ VMM_INT_DECL(int) PGMPhysIemQueryAccess(PVM pVM, RTGCPHYS GCPhys, bool fWritable
     pgmUnlock(pVM);
     return rc;
 }
+
+#ifndef IN_RC
+/**
+ * Interface used by NEM to check what to do on a memory access exit.
+ *
+ * @returns VBox status code.
+ * @param   pVM             The cross context VM structure.
+ * @param   pVCpu           The cross context per virtual CPU structure.
+ * @param   GCPhys          The guest physical address.  We'll apply A20 masking
+ *                          to this since most of the native hypervisor APIs
+ *                          doesn't seem to implement A20 masking.
+ * @param   pInfo           Where to return the page information.  This is
+ *                          initialized even on failure.
+ * @param   pfnChecker      Page in-sync checker callback.
+ * @param   pvUser          User argument to pass to pfnChecker.
+ */
+VMM_INT_DECL(int) PGMPhysNemQueryPageInfo(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, PPGMPHYSNEMPAGEINFO pInfo,
+                                          PFNPGMPHYSNEMQUERYCHECKER pfnChecker, void *pvUser)
+{
+    pgmLock(pVM);
+    PGM_A20_APPLY_TO_VAR(pVCpu, GCPhys);
+
+    PPGMPAGE pPage;
+    int rc = pgmPhysGetPageEx(pVM, GCPhys, &pPage);
+    if (RT_SUCCESS(rc))
+    {
+        /* Fill in the info. */
+        pInfo->HCPhys       = PGM_PAGE_GET_HCPHYS(pPage);
+        pInfo->u2NemState   = PGM_PAGE_GET_NEM_STATE(pPage);
+        pInfo->fHasHandlers = PGM_PAGE_HAS_ACTIVE_HANDLERS(pPage) ? 1 : 0;
+        PGMPAGETYPE const enmType = (PGMPAGETYPE)PGM_PAGE_GET_TYPE(pPage);
+        pInfo->enmType      = enmType;
+        /** @todo Consider merging pgmPhysPageCalcNemProtection into the switch below. */
+        pInfo->fNemProt     = pgmPhysPageCalcNemProtection(pPage, enmType);
+        switch (PGM_PAGE_GET_STATE(pPage))
+        {
+            case PGM_PAGE_STATE_ALLOCATED:
+                pInfo->fZeroPage = 0;
+                break;
+
+            case PGM_PAGE_STATE_ZERO:
+                pInfo->fZeroPage = 1;
+                break;
+
+            case PGM_PAGE_STATE_WRITE_MONITORED:
+                pInfo->fZeroPage = 0;
+                break;
+
+            case PGM_PAGE_STATE_SHARED:
+                pInfo->fZeroPage = 0;
+                break;
+
+            case PGM_PAGE_STATE_BALLOONED:
+                pInfo->fZeroPage = 1;
+                break;
+
+            default:
+                pInfo->fZeroPage = 1;
+                AssertFailedStmt(rc = VERR_PGM_PHYS_PAGE_GET_IPE);
+        }
+
+        /* Call the checker and update NEM state. */
+        rc = pfnChecker(pVM, pVCpu, GCPhys, pInfo, pvUser);
+        PGM_PAGE_SET_NEM_STATE(pPage, pInfo->u2NemState);
+
+        /* Done. */
+        pgmUnlock(pVM);
+    }
+    else
+    {
+        pgmUnlock(pVM);
+
+        pInfo->HCPhys       = NIL_RTHCPHYS;
+        pInfo->fNemProt     = NEM_PAGE_PROT_NONE;
+        pInfo->u2NemState   = 0;
+        pInfo->fHasHandlers = 0;
+        pInfo->fZeroPage    = 0;
+        pInfo->enmType      = PGMPAGETYPE_INVALID;
+    }
+
+    return rc;
+
+}
+#endif /* !IN_RC */
 
