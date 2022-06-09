@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 70490 2018-01-08 22:14:41Z vboxsync $
+# $Id: vbox.py 70504 2018-01-10 10:54:38Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70490 $"
+__version__ = "$Revision: 70504 $"
 
 
 # Standard Python imports.
@@ -3278,7 +3278,7 @@ class TestDriver(base.TestDriver):                                              
                   oSession,             # type: vboxwrappers.SessionWrapper
                   oTxsSession,          # type: txsclient.Session
                   cMsTimeout = 30000,   # type: int
-                  asFiles = None        # type: list(String)
+                  sFile = None          # type: String
                   ):                    # -> bool
         """
         Mostly an internal helper for txsRebootAndReconnectViaTcp and
@@ -3290,15 +3290,14 @@ class TestDriver(base.TestDriver):                                              
         Returns False on failure, logged.
         """
 
-        if asFiles is None:
-            asFiles = [ 'vboxtxs-readme.txt', 'vboxtxsreadme.txt' ];
+        if sFile is None:
+            sFile = 'valkit.txt';
         fRemoveVm   = self.addTask(oSession);
         fRemoveTxs  = self.addTask(oTxsSession);
         cMsTimeout  = self.adjustTimeoutMs(cMsTimeout);
         msStart     = base.timestampMilli();
         cMsTimeout2 = cMsTimeout;
-        iFile       = 0;
-        fRc         = oTxsSession.asyncIsFile('${CDROM}/%s' % (asFiles[iFile],), cMsTimeout2);
+        fRc         = oTxsSession.asyncIsFile('${CDROM}/%s' % (sFile,), cMsTimeout2);
         if fRc is True:
             while True:
                 # wait for it to complete.
@@ -3331,8 +3330,7 @@ class TestDriver(base.TestDriver):                                              
                 cMsTimeout2 = msStart + cMsTimeout - base.timestampMilli();
                 if cMsTimeout2 < 500:
                     cMsTimeout2 = 500;
-                iFile = (iFile + 1) % len(asFiles);
-                fRc = oTxsSession.asyncIsFile('${CDROM}/%s' % (asFiles[iFile]), cMsTimeout2);
+                fRc = oTxsSession.asyncIsFile('${CDROM}/%s' % (sFile,), cMsTimeout2);
                 if fRc is not True:
                     reporter.error('txsCdWait: asyncIsFile failed');
                     break;
