@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 68468 2017-08-18 13:57:08Z vboxsync $ */
+/* $Id: DevHDA.cpp 68548 2017-08-31 09:51:53Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -1105,7 +1105,7 @@ static int hdaRegWriteSDCTL(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
         /* ICH6 datasheet 18.2.33 says that RUN bit should be cleared before initiation of reset. */
         Assert(!fInRun && !fRun);
 
-        LogFunc(("[SD%RU8] Reset enter\n", pStream->u8SD));
+        LogFunc(("[SD%RU8] Reset enter\n", uSD));
 
         hdaStreamLock(pStream);
 
@@ -1128,7 +1128,7 @@ static int hdaRegWriteSDCTL(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
         if (fInRun != fRun)
         {
             Assert(!fReset && !fInReset);
-            LogFunc(("[SD%RU8] State changed (fRun=%RTbool)\n", pStream->u8SD, fRun));
+            LogFunc(("[SD%RU8] State changed (fRun=%RTbool)\n", uSD, fRun));
 
             hdaStreamLock(pStream);
 
