@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 68695 2017-09-07 14:54:17Z vboxsync $ */
+/* $Id: isovfs.cpp 68697 2017-09-07 14:57:01Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -2174,7 +2174,7 @@ typedef RTFSISOSEENSEQENCES *PRTFSISOSEENSEQENCES;
 static int rtFsIsoVolReadAndProcessUdfVdsSeq(PRTFSISOVOL pThis, uint64_t offSeq, uint32_t cbSeq, uint8_t *pbBuf, size_t cbBuf,
                                              uint32_t cNestings, PRTERRINFO pErrInfo)
 {
-    Assert(cbBuf >= _2K);
+    AssertReturn(cbBuf >= pThis->cbSector, VERR_INTERNAL_ERROR);
 
     /*
      * Check nesting depth.
