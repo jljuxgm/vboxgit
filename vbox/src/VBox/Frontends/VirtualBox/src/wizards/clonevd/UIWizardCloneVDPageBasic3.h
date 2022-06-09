@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic3.h 69187 2017-10-24 07:57:12Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic3.h 69197 2017-10-24 10:19:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic3 class declaration.
  */
@@ -66,13 +66,13 @@ public:
 private:
 
     /** Handles translation event. */
-    void retranslateUi();
+    virtual void retranslateUi() /* override */;
 
     /** Prepares the page. */
-    void initializePage();
+    virtual void initializePage() /* override */;
 
     /** Returns whether the page is complete. */
-    bool isComplete() const;
+    virtual bool isComplete() const /* override */;
 
     /** Holds the description label instance. */
     QIRichTextLabel *m_pDescriptionLabel;

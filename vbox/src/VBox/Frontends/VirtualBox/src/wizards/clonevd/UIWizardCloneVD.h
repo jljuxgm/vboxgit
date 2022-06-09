@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.h 69187 2017-10-24 07:57:12Z vboxsync $ */
+/* $Id: UIWizardCloneVD.h 69197 2017-10-24 10:19:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class declaration.
  */
@@ -48,11 +48,11 @@ public:
         PageExpert
     };
 
-    /** Constructs wizard to clone @a sourceVirtualDisk passing @a pParent to the base-class. */
-    UIWizardCloneVD(QWidget *pParent, const CMedium &sourceVirtualDisk);
+    /** Constructs wizard to clone @a comSourceVirtualDisk passing @a pParent to the base-class. */
+    UIWizardCloneVD(QWidget *pParent, const CMedium &comSourceVirtualDisk);
 
     /** Returns target virtual-disk. */
-    CMedium virtualDisk() const { return m_virtualDisk; }
+    CMedium targetVirtualDisk() const { return m_comTargetVirtualDisk; }
 
 protected:
 
@@ -66,15 +66,15 @@ protected:
 private:
 
     /** Handles translation event. */
-    void retranslateUi();
+    virtual void retranslateUi() /* override */;
 
     /** Prepares all. */
-    void prepare();
+    virtual void prepare() /* override */;
 
     /** Holds the source virtual disk wrapper. */
-    CMedium m_sourceVirtualDisk;
+    CMedium m_comSourceVirtualDisk;
     /** Holds the target virtual disk wrapper. */
-    CMedium m_virtualDisk;
+    CMedium m_comTargetVirtualDisk;
 };
 
 #endif /* !___UIWizardCloneVD_h___ */

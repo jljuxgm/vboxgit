@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic1.cpp 69187 2017-10-24 07:57:12Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic1.cpp 69197 2017-10-24 10:19:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic1 class implementation.
  */
@@ -57,12 +57,12 @@ CMedium UIWizardCloneVDPage1::sourceVirtualDisk() const
     return vboxGlobal().medium(m_pSourceDiskSelector->id()).medium();
 }
 
-void UIWizardCloneVDPage1::setSourceVirtualDisk(const CMedium &sourceVirtualDisk)
+void UIWizardCloneVDPage1::setSourceVirtualDisk(const CMedium &comSourceVirtualDisk)
 {
-    m_pSourceDiskSelector->setCurrentItem(sourceVirtualDisk.GetId());
+    m_pSourceDiskSelector->setCurrentItem(comSourceVirtualDisk.GetId());
 }
 
-UIWizardCloneVDPageBasic1::UIWizardCloneVDPageBasic1(const CMedium &sourceVirtualDisk)
+UIWizardCloneVDPageBasic1::UIWizardCloneVDPageBasic1(const CMedium &comSourceVirtualDisk)
 {
     /* Create widgets: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
@@ -74,7 +74,7 @@ UIWizardCloneVDPageBasic1::UIWizardCloneVDPageBasic1(const CMedium &sourceVirtua
             {
                 m_pSourceDiskSelector->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
                 m_pSourceDiskSelector->setType(UIMediumType_HardDisk);
-                m_pSourceDiskSelector->setCurrentItem(sourceVirtualDisk.GetId());
+                m_pSourceDiskSelector->setCurrentItem(comSourceVirtualDisk.GetId());
                 m_pSourceDiskSelector->repopulate();
             }
             m_pSourceDiskOpenButton = new QIToolButton(this);

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic4.cpp 69187 2017-10-24 07:57:12Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic4.cpp 69197 2017-10-24 10:19:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic4 class implementation.
  */
@@ -133,12 +133,12 @@ QString UIWizardCloneVDPage4::absoluteFilePath(const QString &strFileName, const
 }
 
 /* static */
-QString UIWizardCloneVDPage4::defaultExtension(const CMediumFormat &mediumFormatRef)
+QString UIWizardCloneVDPage4::defaultExtension(const CMediumFormat &comMediumFormat)
 {
     /* Load extension / device list: */
     QVector<QString> fileExtensions;
     QVector<KDeviceType> deviceTypes;
-    CMediumFormat mediumFormat(mediumFormatRef);
+    CMediumFormat mediumFormat(comMediumFormat);
     mediumFormat.DescribeFileExtensions(fileExtensions, deviceTypes);
     for (int i = 0; i < fileExtensions.size(); ++i)
         if (deviceTypes[i] == KDeviceType_HardDisk)

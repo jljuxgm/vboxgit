@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 69187 2017-10-24 07:57:12Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 69197 2017-10-24 10:19:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class implementation.
  */
@@ -43,7 +43,7 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-UIWizardCloneVDPageExpert::UIWizardCloneVDPageExpert(const CMedium &sourceVirtualDisk)
+UIWizardCloneVDPageExpert::UIWizardCloneVDPageExpert(const CMedium &comSourceVirtualDisk)
 {
     /* Create widgets: */
     QGridLayout *pMainLayout = new QGridLayout(this);
@@ -59,7 +59,7 @@ UIWizardCloneVDPageExpert::UIWizardCloneVDPageExpert(const CMedium &sourceVirtua
                 {
                     m_pSourceDiskSelector->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
                     m_pSourceDiskSelector->setType(UIMediumType_HardDisk);
-                    m_pSourceDiskSelector->setCurrentItem(sourceVirtualDisk.GetId());
+                    m_pSourceDiskSelector->setCurrentItem(comSourceVirtualDisk.GetId());
                     m_pSourceDiskSelector->repopulate();
                 }
                 m_pSourceDiskOpenButton = new QIToolButton(m_pSourceDiskCnt);
