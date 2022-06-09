@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 71926 2018-04-19 23:19:27Z vboxsync $
+# $Id: Makefile.kmk 71935 2018-04-20 11:48:38Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -993,6 +993,16 @@ $(PATH_STAGE_BIN)/$(PACKAGE_NAME_MULTIARCH_FINAL) \
 		) ) \
 		'@echo Create multiarch EXE: $(@F)'
 endif
+
+#
+# Repackaging script installation target.
+#
+INSTALLS += RePackScripts
+RePackScripts_TEMPLATE = DUMMY
+RePackScripts_INST = repack/
+RePackScripts_INSTTYPE = stage
+RePackScripts_SOURCES = \
+	Scripts/PackDriversForSubmission.cmd
 
 
 include $(FILE_KBUILD_SUB_FOOTER)
