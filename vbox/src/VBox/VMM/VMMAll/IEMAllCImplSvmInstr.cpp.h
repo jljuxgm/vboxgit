@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 70358 2017-12-27 09:17:35Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 70416 2018-01-02 08:37:13Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -365,6 +365,14 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, uint8_t cbInstr
             && !pVM->cpum.ro.GuestFeatures.fSvmVirtVmsaveVmload)
         {
             Log(("iemSvmVmrun: Virtualized VMSAVE/VMLOAD not supported -> #VMEXIT\n"));
+            return iemSvmVmexit(pVCpu, pCtx, SVM_EXIT_INVALID, 0 /* uExitInfo1 */, 0 /* uExitInfo2 */);
+        }
+
+        /* Virtual GIF. */
+        if (    pVmcbCtrl->IntCtrl.n.u1VGifEnable
+            && !pVM->cpum.ro.GuestFeatures.fSvmVGif)
+        {
+            Log(("iemSvmVmrun: Virtual GIF not supported -> #VMEXIT\n"));
             return iemSvmVmexit(pVCpu, pCtx, SVM_EXIT_INVALID, 0 /* uExitInfo1 */, 0 /* uExitInfo2 */);
         }
 
