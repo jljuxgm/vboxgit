@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 69006 2017-10-06 15:08:33Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 70882 2018-02-06 12:22:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class implementation.
  */
@@ -765,4 +765,3 @@ void UIProgress::timerEvent(QTimerEvent*)
 }
 
 #include "UIProgressDialog.moc"
-
