@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72104 $"
+__version__ = "$Revision: 72112 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -3308,11 +3308,13 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         sScratchHst = os.path.join(self.oTstDrv.sScratchPath, "testGctrlCopyFrom");
 
         if self.oTstDrv.sHost == "win":
-            sScratchHstNotExist = sScratchHst + "\\does-not-exist\\";
-            sScratchHstInvalid  = "?*|invalid-name?*|";
+            sScratchHstNotExist      = sScratchHst + "\\does-not-exist\\";
+            sScratchHstNotExistChain = sScratchHst + "\\does\\not\\exist\\";
+            sScratchHstInvalid       = "?*|invalid-name?*|";
         else:
-            sScratchHstNotExist = sScratchHst + "/does-not-exist/";
-            sScratchHstInvalid  = "/";
+            sScratchHstNotExist      = sScratchHst + "/does-not-exist/";
+            sScratchHstNotExistChain = sScratchHst + "/does/not/exist/";
+            sScratchHstInvalid       = "/";
 
         try:
             os.makedirs(sScratchHst);
@@ -3416,7 +3418,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                       tdTestResult(fRc = True) ],
                     # Copying contents of directories into a non-existing directory chain on the host which fail.
                     [ tdTestCopyFrom(sUser = sUser, sPassword = sPassword, sSrc = 'C:\\Windows\\Web\\',
-                                     sDst = sScratchHstNotExist,
+                                     sDst = sScratchHstNotExistChain,
                                      aFlags = [ vboxcon.DirectoryCopyFlag_CopyIntoExisting ]),
                       tdTestResult(fRc = False) ],
                     # Copying contents of directories into a non-existing directory on the host, which should succeed.
