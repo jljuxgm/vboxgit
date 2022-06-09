@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67423 2017-06-15 13:33:39Z vboxsync $ */
+/* $Id: DevHDA.cpp 67425 2017-06-15 14:05:40Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -3747,7 +3747,7 @@ static int hdaBDLEFetch(PHDASTATE pThis, PHDABDLE pBDLE, uint64_t u64BaseDMA, ui
 /**
  * Tells whether a given BDLE is complete or not.
  *
- * @return  @true if BDLE is complete, @false if not.
+ * @return  true if BDLE is complete, false if not.
  * @param   pBDLE               BDLE to retrieve status for.
  */
 static bool hdaBDLEIsComplete(PHDABDLE pBDLE)
@@ -3769,7 +3769,7 @@ static bool hdaBDLEIsComplete(PHDABDLE pBDLE)
 /**
  * Tells whether a given BDLE needs an interrupt or not.
  *
- * @return  @true if BDLE needs an interrupt, @false if not.
+ * @return  true if BDLE needs an interrupt, false if not.
  * @param   pBDLE               BDLE to retrieve status for.
  */
 static bool hdaBDLENeedsInterrupt(PHDABDLE pBDLE)
