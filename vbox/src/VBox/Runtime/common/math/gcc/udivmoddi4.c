@@ -1,4 +1,4 @@
-/* $Id: udivmoddi4.c 67291 2017-06-08 11:00:58Z vboxsync $ */
+/* $Id: udivmoddi4.c 67296 2017-06-08 12:55:59Z vboxsync $ */
 /** @file
  * IPRT - __udivmoddi4 implementation
  */
@@ -40,8 +40,8 @@ uint64_t __udivmoddi4(uint64_t u64A, uint64_t u64B, uint64_t *pu64R);
  */
 uint64_t __udivmoddi4(uint64_t u64A, uint64_t u64B, uint64_t *pu64R)
 {
-    const RTUINT64U Divident = { u64A };
-    const RTUINT64U Divisor  = { u64B };
+    RTUINT64U Divident = { u64A };
+    RTUINT64U Divisor  = { u64B };
     RTUINT64U Quotient;
     RTUINT64U Reminder;
     RTUInt64DivRem(&Quotient, &Reminder, &Divident, &Divisor);
