@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 69430 2017-10-27 13:30:36Z vboxsync $
 ## @file
 # Sub-makefile for the EFI EfiRom build tool.
 #
@@ -32,6 +32,4 @@ EfiRom_TEMPLATE = VBoxEfiBldProg
 EfiRom_SOURCES = EfiRom.c
 
 include $(FILE_KBUILD_SUB_FOOTER)
-
-
 

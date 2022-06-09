@@ -1,4 +1,4 @@
-/* $Id: Apple.c 62500 2016-07-22 19:06:59Z vboxsync $ */
+/* $Id: Apple.c 69430 2017-10-27 13:30:36Z vboxsync $ */
 /** @file
  * Apple.c
  */
@@ -96,7 +96,7 @@ PartitionInstallAppleChildHandles (
   EFI_BLOCK_IO_MEDIA       *Media;
   VOID                     *Block;
   //UINTN                   MaxIndex;
-  /** @todo: wrong, as this PT can be on both HDD or CD */
+  /** @todo wrong, as this PT can be on both HDD or CD */
   CDROM_DEVICE_PATH         CdDev;
   //EFI_DEVICE_PATH_PROTOCOL  Dev;
   EFI_STATUS                Found;

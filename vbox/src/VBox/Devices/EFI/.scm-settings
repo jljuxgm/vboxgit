@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69429 2017-10-27 13:27:03Z vboxsync $
+# $Id: .scm-settings 69430 2017-10-27 13:30:36Z vboxsync $
 ## @file
 # Source code massager settings for EFI.
 #
@@ -93,6 +93,7 @@
 --filter-out-files /Firmware/BaseTools/Source/C/VfrCompile/Pccts/NOTES.bcc
 --filter-out-files /Firmware/BaseTools/Source/C/VfrCompile/Pccts/NOTES.msvc
 --filter-out-files /Firmware/BaseTools/Source/C/VfrCompile/Pccts/RIGHTS
+--filter-out-files /Firmware/ReadMe.vbox
 
 # Ignore binary files.
 --filter-out-files *.raw
@@ -101,6 +102,7 @@
 --filter-out-files *.obj
 --filter-out-files *.dll
 --filter-out-files *.docx
+--filter-out-files /FirmwareBin/*.fd
 
 # The .uni files are UTF-16LE encoded and scm doesn't grok that yet.
 --filter-out-files *.uni
