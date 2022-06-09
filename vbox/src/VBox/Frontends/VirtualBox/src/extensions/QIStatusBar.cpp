@@ -1,10 +1,10 @@
-/* $Id: QIStatusBar.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: QIStatusBar.cpp 71896 2018-04-18 13:20:23Z vboxsync $ */
 /** @file
- * VBox Qt GUI - VirtualBox Qt extensions: QIStatusBar class implementation.
+ * VBox Qt GUI - Qt extensions: QIStatusBar class implementation.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -18,10 +18,13 @@
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include <precomp.h>
 #else
+
 /* Qt includes: */
 # include <QAccessibleWidget>
+
 /* GUI includes: */
 # include "QIStatusBar.h"
+
 #endif
 
 
@@ -54,6 +57,10 @@ public:
 };
 
 
+/*********************************************************************************************************************************
+*   Class QIStatusBar implementation.                                                                                            *
+*********************************************************************************************************************************/
+
 QIStatusBar::QIStatusBar(QWidget *pParent)
     : QStatusBar(pParent)
 {
@@ -67,4 +74,3 @@ QIStatusBar::QIStatusBar(QWidget *pParent)
     /* Remove that ugly border around the status-bar items on every platform: */
     setStyleSheet("QStatusBar::item { border: 0px none black; }");
 }
-

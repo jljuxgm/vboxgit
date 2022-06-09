@@ -1,4 +1,4 @@
-/* $Id: QIMenu.h 71895 2018-04-18 13:08:11Z vboxsync $ */
+/* $Id: QIMenu.h 71896 2018-04-18 13:20:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMenu class declaration.
  */
@@ -26,7 +26,7 @@
 
 /** QMenu extension with advanced functionality.
   * Allows to highlight first menu item for popped up menu. */
-class QIMenu : public QMenu
+class SHARED_LIBRARY_STUFF QIMenu : public QMenu
 {
     Q_OBJECT;
 
