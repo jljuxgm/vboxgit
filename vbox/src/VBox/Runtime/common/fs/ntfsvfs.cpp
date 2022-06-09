@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 69866 2017-11-28 19:10:50Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 69868 2017-11-29 00:05:41Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -320,7 +320,7 @@ static void rtfsNtfsMftRec_Log(PRTFSNTFSMFTREC pRec)
                             case NTFS_AT_FILENAME:
                             {
                                 PCNTFSATFILENAME pInfo = (PCNTFSATFILENAME)pbValue;
-                                if (cbValue >= RT_OFFSETOF(NTFSATFILENAME, wszFilename))
+                                if (cbValue >= RT_UOFFSETOF(NTFSATFILENAME, wszFilename))
                                 {
                                     Log2(("NTFS:     ParentDirMftRec    %#RX64, sqn %#x\n",
                                           NTFSMFTREF_GET_IDX(&pInfo->ParentDirMftRec), NTFSMFTREF_GET_SEQ(&pInfo->ParentDirMftRec) ));
