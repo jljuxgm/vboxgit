@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DIf.h 63018 2016-08-04 23:14:14Z vboxsync $ */
+/* $Id: VBoxD3DIf.h 68343 2017-08-08 15:10:41Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -21,7 +21,7 @@
 
 #include "VBoxDispD3DCmn.h"
 
-static D3DFORMAT vboxDDI2D3DFormat(D3DDDIFORMAT format);
+D3DFORMAT vboxDDI2D3DFormat(D3DDDIFORMAT format);
 D3DMULTISAMPLE_TYPE vboxDDI2D3DMultiSampleType(D3DDDIMULTISAMPLE_TYPE enmType);
 D3DPOOL vboxDDI2D3DPool(D3DDDI_POOL enmPool);
 D3DRENDERSTATETYPE vboxDDI2D3DRenderStateType(D3DDDIRENDERSTATETYPE enmType);
