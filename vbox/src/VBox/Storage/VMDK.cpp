@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 66505 2017-04-11 09:31:25Z vboxsync $ */
+/* $Id: VMDK.cpp 67744 2017-07-01 11:25:32Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5286,7 +5286,10 @@ static DECLCALLBACK(int) vmdkCreate(const char *pszFilename, uint64_t cbSize,
     AssertReturn(   VALID_PTR(pszFilename)
                  && *pszFilename
                  && VALID_PTR(pPCHSGeometry)
-                 && VALID_PTR(pLCHSGeometry), VERR_INVALID_PARAMETER);
+                 && VALID_PTR(pLCHSGeometry)
+                 && !(   uImageFlags & VD_VMDK_IMAGE_FLAGS_ESX
+                      && !(uImageFlags & VD_IMAGE_FLAGS_FIXED)),
+                 VERR_INVALID_PARAMETER);
 
     PVMDKIMAGE pImage = (PVMDKIMAGE)RTMemAllocZ(RT_UOFFSETOF(VMDKIMAGE, RegionList.aRegions[1]));
     if (RT_LIKELY(pImage))
