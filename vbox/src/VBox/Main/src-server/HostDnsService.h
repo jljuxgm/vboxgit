@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 72394 2018-05-30 21:20:32Z vboxsync $ */
+/* $Id: HostDnsService.h 72395 2018-05-30 22:39:13Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -52,11 +52,10 @@ class HostDnsInformation
 class HostDnsMonitor
 {
   public:
-    static const HostDnsMonitor *getHostDnsMonitor(VirtualBox *virtualbox);
+    static HostDnsMonitor *getHostDnsMonitor(VirtualBox *virtualbox);
     static void shutdown();
 
-    void addMonitorProxy(PCHostDnsMonitorProxy) const;
-    void releaseMonitorProxy(PCHostDnsMonitorProxy) const;
+    void setMonitorProxy(HostDnsMonitorProxy *proxy);
     const HostDnsInformation &getInfo() const;
     /* @note: method will wait till client call
        HostDnsService::monitorThreadInitializationDone() */
