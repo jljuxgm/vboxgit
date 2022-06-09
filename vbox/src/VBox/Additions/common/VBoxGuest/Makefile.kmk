@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70146 2017-12-15 14:06:56Z vboxsync $
+# $Id: Makefile.kmk 70161 2017-12-15 17:03:56Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -235,6 +235,7 @@ ifeq ($(KBUILD_TARGET),linux)
   && "$(KBUILD_TARGET)" == "linux" \
   && "$(KBUILD_HOST_ARCH)" == "$(KBUILD_TARGET_ARCH)"
   ifneq ($(KERN_DIR),)
+   save_symvers = vboxguest-src
    $(foreach module, vboxguest-src, $(evalcall2 VBOX_LINUX_GENERATE_KMOD_TEST))
   endif
  endif
