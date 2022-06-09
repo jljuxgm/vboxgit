@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM.py 71227 2018-03-06 09:50:54Z vboxsync $"
+# "$Id: tdMoveVM.py 71228 2018-03-06 09:55:14Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71227 $"
+__version__ = "$Revision: 71228 $"
 
 # Standard Python imports.
 import os
@@ -254,8 +254,8 @@ class SubTstDrvMoveVM(base.SubTestDriverBase):
             sMoveLoc = os.path.join(sOrigLoc, 'moveFolder_3d_scenario')
             os.mkdir(sMoveLoc, 0o775)
 
-            ic = 5
-            for counter in range(1,ic+1):
+            cSnap = 5
+            for counter in range(1,cSnap+1):
                 strSnapshot = 'Snapshot' + str(counter)
                 fRc = fRc and oSession.takeSnapshot(strSnapshot)
                 if fRc is False:
