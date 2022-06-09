@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 71543 2018-03-28 15:34:21Z vboxsync $"
+# "$Id: tdMoveVM1.py 71545 2018-03-28 15:38:42Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71543 $"
+__version__ = "$Revision: 71545 $"
 
 # Standard Python imports.
 import os
@@ -48,12 +48,6 @@ from testdriver import reporter
 from testdriver import vboxcon
 from testdriver import vboxwrappers
 from tdMoveMedium1 import SubTstDrvMoveMedium1
-
-class SubTstDrvMoveVM1Error(Exception):
-    def __init__(self, desc):
-        self.desc = desc
-    def __str__(self):
-        return repr(self.desc)
 
 class SubTstDrvMoveVM1(base.SubTestDriverBase):
     """
