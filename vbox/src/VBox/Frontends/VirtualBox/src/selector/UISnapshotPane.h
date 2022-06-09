@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 67543 2017-06-21 14:25:46Z vboxsync $ */
+/* $Id: UISnapshotPane.h 67546 2017-06-21 15:39:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -170,7 +170,7 @@ private:
         /** Proposes to delete the snapshot. */
         bool deleteSnapshot(bool fAutomatically = false);
         /** Proposes to restore the snapshot. */
-        bool restoreSnapshot(bool fSuppressNonCriticalWarnings = false);
+        bool restoreSnapshot(bool fAutomatically = false);
         /** Proposes to clone the snapshot. */
         void cloneSnapshot();
     /** @} */
