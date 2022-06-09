@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 69815 2017-11-23 18:51:01Z vboxsync $ */
+/* $Id: vfsbase.cpp 69816 2017-11-23 18:54:20Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -2687,6 +2687,10 @@ RTDECL(int) RTVfsDirOpenObj(RTVFSDIR hVfsDir, const char *pszPath, uint64_t fFil
     rc = RTVfsParsePathA(pszPath, NULL, &pPath);
     if (RT_SUCCESS(rc))
     {
+        if (   pPath->fDirSlash
+            || pPath->cComponents == 0)
+            fObjFlags &= ~RTVFSOBJ_F_OPEN_ANY | RTVFSOBJ_F_OPEN_DIRECTORY;
+
         if (pPath->cComponents > 0)
         {
             /*
@@ -2705,14 +2709,15 @@ RTDECL(int) RTVfsDirOpenObj(RTVFSDIR hVfsDir, const char *pszPath, uint64_t fFil
                  */
                 if (pPath->fDirSlash)
                 {
-                    RTVFSDIR hVfsDir;
+                    RTVFSDIR hVfsSubDir;
                     RTVfsLockAcquireWrite(pVfsParentDir->Base.hLock);
-                    rc = pVfsParentDir->pOps->pfnOpenDir(pVfsParentDir->Base.pvThis, pszEntryName, 0 /** @todo fFlags*/, &hVfsDir);
+                    rc = pVfsParentDir->pOps->pfnOpenDir(pVfsParentDir->Base.pvThis, pszEntryName,
+                                                         0 /** @todo fFlags*/, &hVfsSubDir);
                     RTVfsLockReleaseWrite(pVfsParentDir->Base.hLock);
                     if (RT_SUCCESS(rc))
                     {
-                        *phVfsObj = RTVfsObjFromDir(hVfsDir);
-                        RTVfsDirRelease(hVfsDir);
+                        *phVfsObj = RTVfsObjFromDir(hVfsSubDir);
+                        RTVfsDirRelease(hVfsSubDir);
                         AssertStmt(*phVfsObj != NIL_RTVFSOBJ, rc = VERR_INTERNAL_ERROR_3);
                     }
                 }
