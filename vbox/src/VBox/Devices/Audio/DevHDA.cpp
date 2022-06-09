@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67416 2017-06-15 09:04:51Z vboxsync $ */
+/* $Id: DevHDA.cpp 67417 2017-06-15 09:12:31Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -3775,6 +3775,7 @@ static bool hdaBDLENeedsInterrupt(PHDABDLE pBDLE)
     return (pBDLE->Desc.fFlags & HDA_BDLE_FLAG_IOC);
 }
 
+#if 0
 /**
  * Returns the number of outstanding stream data bytes which need to be processed
  * by the DMA engine assigned to this stream.
@@ -3822,7 +3823,6 @@ DECLINLINE(uint32_t) hdaStreamGetTransferSize(PHDASTATE pThis, PHDASTREAM pStrea
     return cbData;
 }
 
-#if 0
 DECLINLINE(void) hdaBDLEUpdate(PHDABDLE pBDLE, uint32_t cbData, uint32_t cbProcessed)
 {
     AssertPtrReturnVoid(pBDLE);
@@ -4038,6 +4038,7 @@ DECLINLINE(void) hdaStreamTransferInc(PHDASTATE pThis, PHDASTREAM pStream, uint3
     hdaStreamUpdateLPIB(pThis, pStream, u32LPIB + cbInc);
 }
 
+#if 0
 DECLINLINE(void) hdaStreamTransferUpdate(PHDASTATE pThis, PHDASTREAM pStream, uint32_t cbInc)
 {
     AssertPtrReturnVoid(pThis);
@@ -4063,7 +4064,6 @@ DECLINLINE(void) hdaStreamTransferUpdate(PHDASTATE pThis, PHDASTREAM pStream, ui
     }
 }
 
-#if 0
 static bool hdaBDLEIsComplete(PHDABDLE pBDLE, bool *pfInterrupt)
 {
     AssertPtrReturn(pBDLE, true);
