@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 67030 2017-05-23 09:54:16Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 67033 2017-05-23 10:08:01Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -172,6 +172,7 @@ typedef enum BS3CG1ENC
     BS3CG1ENC_MODRM_Mb_RO,
     BS3CG1ENC_MODRM_Md_RO,
     BS3CG1ENC_MODRM_Md_WO,
+    BS3CG1ENC_MODRM_Mq_WO_Pq,
     BS3CG1ENC_MODRM_Mq_WO_Vq,
     BS3CG1ENC_MODRM_Mq_WO_VqHi,
     BS3CG1ENC_MODRM_Mps_WO_Vps,
