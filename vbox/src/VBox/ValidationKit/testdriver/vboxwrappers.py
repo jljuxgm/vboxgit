@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 66962 2017-05-19 08:31:57Z vboxsync $
+# $Id: vboxwrappers.py 67023 2017-05-22 18:26:52Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66962 $"
+__version__ = "$Revision: 67023 $"
 
 
 # Standard Python imports.
@@ -869,6 +869,11 @@ class SessionWrapper(TdTaskBase):
                 if self.uPid is not None and self.fPidFile:
                     self.oTstDrv.pidFileRemove(self.uPid);
                     self.fPidFile = False;
+
+        # It's only logical to deregister the event handler after the session
+        # is closed. It also avoids circular references between the session
+        # and the listener, which causes trouble with garbage collection.
+        self.deregisterEventHandlerForTask();
 
         self.oTstDrv.processPendingEvents();
         return fRc;
