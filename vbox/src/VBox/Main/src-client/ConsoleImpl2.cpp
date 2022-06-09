@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 70537 2018-01-11 14:01:55Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 70544 2018-01-11 16:20:27Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2974,7 +2974,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 ComAssertComRC(hrc);
             }
 
-            AudioDriverCfg Cfg(strAudioDevice, 0 /* Instance */, uAudioLUN);
+            AudioDriverCfg Cfg(strAudioDevice, 0 /* Instance */, uAudioLUN, "AudioVRDE");
             rc = mAudioVRDE->Configure(&Cfg, RT_BOOL(fVRDEEnabled) /* Attach */);
             if (   RT_SUCCESS(rc)
                 && fVRDEEnabled) /* Successfully configured, use next LUN for drivers below. */
