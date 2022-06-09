@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69473 2017-10-28 12:41:18Z vboxsync $ */
+/* $Id: scm.cpp 69486 2017-10-28 13:55:24Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -673,7 +673,7 @@ static SCMCFGENTRY const g_aConfigs[] =
     SCM_CFG_ENTRY("nsis",       g_apRewritersFor_NsisFiles,        false, "*.nsh|*.nsi|*.nsis" ),
     SCM_CFG_ENTRY("java",       g_apRewritersFor_Java,             false, "*.java" ),
     SCM_CFG_ENTRY("scm",        g_apRewritersFor_ScmSettings,      false, "*.scm-settings" ),
-    SCM_CFG_ENTRY("image",      g_apRewritersFor_Images,           true,  "*.png|*.bmp|*.jpg|*.pnm|*.ico|*.icns|*.tiff|*.tif|*.xcf" ),
+    SCM_CFG_ENTRY("image",      g_apRewritersFor_Images,           true,  "*.png|*.bmp|*.jpg|*.pnm|*.ico|*.icns|*.tiff|*.tif|*.xcf|*.gif" ),
     SCM_CFG_ENTRY("xslt",       g_apRewritersFor_Xslt,             false, "*.xsl" ),
     SCM_CFG_ENTRY("xml",        g_apRewritersFor_Xml,              false, "*.xml" ),
     SCM_CFG_ENTRY("wix",        g_apRewritersFor_Wix,              false, "*.wxi|*.wxs|*.wxl" ),
@@ -1959,7 +1959,7 @@ static int scmProcessFileInner(PSCMRWSTATE pState, const char *pszFilename, cons
                             pszTreatAs = "python";
                         else if (   (cchFirst >= 13 && strncmp(pchFirst, "/usr/bin/perl", 13) == 0)
                                  || (cchFirst >= 17 && strncmp(pchFirst, "/usr/bin/env perl", 17) == 0) )
-                            pszTreatAs = "python";
+                            pszTreatAs = "perl";
                         if (pszTreatAs)
                         {
                             for (size_t iCfg = 0; iCfg < RT_ELEMENTS(g_aConfigs); iCfg++)
@@ -2660,7 +2660,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69473 $";
+                static const char s_szRev[] = "$Revision: 69486 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
