@@ -1,4 +1,4 @@
-/* $Id: egl.c 65535 2017-01-31 11:17:12Z vboxsync $ */
+/* $Id: egl.c 67637 2017-06-27 14:11:09Z vboxsync $ */
 
 /** @file
  * VBox OpenGL EGL implentation.
@@ -94,7 +94,7 @@ static struct VBEGLTLS *getTls(void)
     if (RT_LIKELY(pTls))
         return pTls;
     pTls = (struct VBEGLTLS *)malloc(sizeof(*pTls));
-    if (!VALID_PTR(pTls))
+    if (!pTls)
         return NULL;
     pTls->cErr = EGL_SUCCESS;
     pTls->enmAPI = EGL_NONE;
