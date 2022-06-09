@@ -1,4 +1,4 @@
-/* $Id: TestExecServiceSerial.cpp 71000 2018-02-13 16:45:53Z vboxsync $ */
+/* $Id: TestExecServiceSerial.cpp 71001 2018-02-13 17:17:58Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service, Serial port Transport Layer.
  */
@@ -62,6 +62,7 @@
 #else
 # error "Port me"
 #endif
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
