@@ -1,4 +1,4 @@
-$Id: vboxtxs-readme.txt 70437 2018-01-02 20:02:31Z vboxsync $
+$Id: vboxtxs-readme.txt 70438 2018-01-02 20:03:29Z vboxsync $
 
 
 VirtualBox Test eXecution Service
@@ -117,8 +117,8 @@ Testing the setup
 1. Make sure the validationkit.iso is inserted.
 2. Boot / reboot the guest.
 3. Depending on the TXS transport options:
-      nat)   python testdrivers/tst-txsclient --reversed-setup
-      other) python testdrivers/tst-txsclient --hostname <guest-ip>
+      nat)   python testdriver/tst-txsclient.py --reversed-setup
+      other) python testdriver/tst-txsclient.py --hostname <guest-ip>
 
 
 
