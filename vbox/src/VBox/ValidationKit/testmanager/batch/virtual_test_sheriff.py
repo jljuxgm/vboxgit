@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 71292 2018-03-09 18:55:00Z vboxsync $
+# $Id: virtual_test_sheriff.py 71311 2018-03-13 10:03:48Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71292 $"
+__version__ = "$Revision: 71311 $"
 
 
 # Standard python imports
@@ -302,7 +302,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 71292 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 71311 $ \n');
 
 
     def eprint(self, sText):
@@ -574,7 +574,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 71292 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 71311 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -919,6 +919,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
           "\n" ),
         ( True,  ktReason_OSInstall_GRUB_hang,
           "-----\nGRUB Loading stage2..\n\n\n\n" ),
+        ( True,  ktReason_OSInstall_GRUB_hang,
+          "-----\nGRUB Loading stage2...\n\n\n\n" ), # the 3 dot hang appears to be less frequent
         ( True,  ktReason_Panic_BootManagerC000000F,
           "Windows failed to start. A recent hardware or software change might be the" ),
         ( True,  ktReason_BootManager_Image_corrupt,
