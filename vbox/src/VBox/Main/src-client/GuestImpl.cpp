@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
+/* $Id: GuestImpl.cpp 67793 2017-07-05 11:42:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -849,7 +849,7 @@ HRESULT Guest::setCredentials(const com::Utf8Str &aUserName, const com::Utf8Str 
  * @param aInterfaceVersion
  * @param aOsType
  */
-void Guest::i_setAdditionsInfo(com::Utf8Str aInterfaceVersion, VBOXOSTYPE aOsType)
+void Guest::i_setAdditionsInfo(const com::Utf8Str &aInterfaceVersion, VBOXOSTYPE aOsType)
 {
     RTTIMESPEC TimeSpecTS;
     RTTimeNow(&TimeSpecTS);

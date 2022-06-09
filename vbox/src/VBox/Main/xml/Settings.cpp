@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 67608 2017-06-26 13:33:35Z vboxsync $ */
+/* $Id: Settings.cpp 67793 2017-07-05 11:42:33Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -166,7 +166,7 @@ struct ConfigFileBase::Data
         cleanup();
     }
 
-    RTCString        strFilename;
+    RTCString               strFilename;
     bool                    fFileExists;
 
     xml::Document           *pDoc;

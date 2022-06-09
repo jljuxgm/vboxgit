@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.h 66938 2017-05-17 16:09:58Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.h 67793 2017-07-05 11:42:33Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -16,7 +16,6 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-    // static int i_vrdpServerVerifyPortsString(com::Utf8Str portRange);
 #ifndef ____H_GUESTOSTYPEIMPL
 #define ____H_GUESTOSTYPEIMPL
 

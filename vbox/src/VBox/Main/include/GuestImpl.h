@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: GuestImpl.h 67793 2017-07-05 11:42:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -82,7 +82,7 @@ public:
     /** @name Public internal methods.
      * @{ */
     void i_enableVMMStatistics(BOOL aEnable) { mCollectVMMStats = aEnable; };
-    void i_setAdditionsInfo(com::Utf8Str aInterfaceVersion, VBOXOSTYPE aOsType);
+    void i_setAdditionsInfo(const com::Utf8Str &aInterfaceVersion, VBOXOSTYPE aOsType);
     void i_setAdditionsInfo2(uint32_t a_uFullVersion, const char *a_pszName, uint32_t a_uRevision, uint32_t a_fFeatures);
     bool i_facilityIsActive(VBoxGuestFacilityType enmFacility);
     void i_facilityUpdate(VBoxGuestFacilityType a_enmFacility, VBoxGuestFacilityStatus a_enmStatus,

@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.cpp 65063 2017-01-03 11:15:49Z vboxsync $ */
+/* $Id: VRDEServerImpl.cpp 67793 2017-07-05 11:42:33Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -306,9 +306,9 @@ static int i_portParseNumber(uint16_t *pu16Port, const char *pszStart, const cha
     return VERR_INVALID_PARAMETER;
 }
 
-static int i_vrdpServerVerifyPortsString(com::Utf8Str portRange)
+static int i_vrdpServerVerifyPortsString(const com::Utf8Str &aPortRange)
 {
-    const char *pszPortRange = portRange.c_str();
+    const char *pszPortRange = aPortRange.c_str();
 
     if (!pszPortRange || *pszPortRange == 0) /* Reject empty string. */
         return VERR_INVALID_PARAMETER;
