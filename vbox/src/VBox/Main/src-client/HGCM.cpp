@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 70599 2018-01-16 15:36:41Z vboxsync $ */
+/* $Id: HGCM.cpp 72064 2018-04-30 06:15:31Z vboxsync $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -1260,7 +1260,7 @@ void HGCMService::ReleaseService(void)
         rc = SSMR3GetStrZ(pSSM, pszServiceName, u32);
         AssertRCReturn(rc, rc);
 
-        LogRel(("HGCM: restoring [%s]\n", pszServiceName));
+        LogRel(("HGCM: Restoring [%s]\n", pszServiceName));
 
         /* Resolve the service instance. */
         HGCMService *pSvc;
