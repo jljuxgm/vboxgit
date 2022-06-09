@@ -1,4 +1,4 @@
-/* $Id: UIVMNamePathSelector.cpp 72236 2018-05-17 11:56:33Z vboxsync $ */
+/* $Id: UIVMNamePathSelector.cpp 72240 2018-05-17 12:37:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMNamePathSelector class implementation.
  */
@@ -238,7 +238,7 @@ void UIVMNamePathSelector::setToolTipText(const QString &strToolTipText)
 {
     if (m_strToolTipText == strToolTipText)
         return;
-    m_strToolTipText = strToolTipText;
+    m_strToolTipText = QDir::toNativeSeparators(strToolTipText);
     retranslateUi();
 }
 
