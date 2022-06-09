@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 67329 2017-06-10 10:38:36Z vboxsync $ */
+/* $Id: vfsmemory.cpp 67510 2017-06-20 14:19:24Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -511,7 +511,7 @@ static DECLCALLBACK(int) rtVfsMemFile_Write(void *pvThis, RTFOFF off, PCRTSGBUF 
             cbThisWrite = (uint32_t)cbLeftToWrite;
         memcpy(&pExtent->abData[offDst], pbSrc, cbThisWrite);
 
-        offUnsigned   += cbLeftToWrite;
+        offUnsigned   += cbThisWrite;
         cbLeftToWrite -= cbThisWrite;
         if (!cbLeftToWrite)
             break;
