@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 67628 2017-06-27 09:54:19Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 67999 2017-07-17 14:47:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -737,7 +737,7 @@ void UISnapshotDetailsWidget::prepareTabOptions()
         {
 #ifdef VBOX_WS_MAC
             /* Configure layout: */
-            m_pLayoutOptions->setSpacing(10);
+            m_pLayoutOptions->setSpacing(5);
             m_pLayoutOptions->setContentsMargins(10, 10, 10, 10);
 #endif
 
