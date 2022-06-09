@@ -1,4 +1,4 @@
-/* $Id: tarvfswriter.cpp 67253 2017-06-02 17:16:05Z vboxsync $ */
+/* $Id: tarvfswriter.cpp 67279 2017-06-06 16:50:10Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Writer.
  */
@@ -746,7 +746,8 @@ static DECLCALLBACK(int) rtZipTarWriterPush_Seek(void *pvThis, RTFOFF offSeek, u
     }
     Assert(pPush->offCurrent <= pPush->cbCurrent);
 
-    *poffActual = pPush->offCurrent;
+    if (poffActual)
+        *poffActual = pPush->offCurrent;
     return VINF_SUCCESS;
 }
 
