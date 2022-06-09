@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 70663 2018-01-21 21:28:37Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.h 70792 2018-01-29 13:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -26,8 +26,9 @@
 #include <QPair>
 
 
-/* QPlainTextEdit extension for some addtional context menu items,
-   a special scrollbar, line number area, and bookmarking support: */
+/* QPlainTextEdit extension with some addtional context menu items,
+   a special scrollbar, line number area, bookmarking support,
+   background watermarking etc.: */
 class UIVMLogViewerTextEdit : public QIWithRetranslateUI<QPlainTextEdit>
 {
     Q_OBJECT;

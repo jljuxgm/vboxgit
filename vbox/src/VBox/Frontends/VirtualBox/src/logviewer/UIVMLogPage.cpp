@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 70716 2018-01-23 18:05:48Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 70792 2018-01-29 13:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -134,14 +134,14 @@ const QString& UIVMLogPage::logString() const
     return m_strLog;
 }
 
-void UIVMLogPage::setFileName(const QString &strFileName)
+void UIVMLogPage::setLogFileName(const QString &strLogFileName)
 {
-    m_strFileName = strFileName;
+    m_strLogFileName = strLogFileName;
 }
 
-const QString& UIVMLogPage::fileName() const
+const QString& UIVMLogPage::logFileName() const
 {
-    return m_strFileName;
+    return m_strLogFileName;
 }
 
 void UIVMLogPage::setTextEditText(const QString &strText)

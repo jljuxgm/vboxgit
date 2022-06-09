@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 70746 2018-01-25 16:01:15Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 70792 2018-01-29 13:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -228,7 +228,7 @@ void UIVMLogViewerWidget::sltSave()
     if (!logPage)
         return;
 
-    const QString& fileName = logPage->fileName();
+    const QString& fileName = logPage->logFileName();
     if (fileName.isEmpty())
         return;
     /* Prepare "save as" dialog: */
@@ -872,7 +872,7 @@ void UIVMLogViewerWidget::createLogPage(const QString &strFileName, const QStrin
 
         /* Set the file name only if we really have log file to read. */
         if (!noLogsToShow)
-            pLogPage->setFileName(strFileName);
+            pLogPage->setLogFileName(strFileName);
 
         /* Add page-container to viewer-container: */
         int tabIndex = m_pTabWidget->insertTab(m_pTabWidget->count(), pLogPage, QFileInfo(strFileName).fileName());

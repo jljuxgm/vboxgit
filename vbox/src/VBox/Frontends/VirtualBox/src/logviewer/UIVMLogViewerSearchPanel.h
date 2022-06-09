@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 70711 2018-01-23 16:14:36Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.h 70792 2018-01-29 13:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -34,7 +34,7 @@ class UISearchField;
 class UIVMLogViewerSearchField;
 class UIVMLogViewerWidget;
 
-/** QWidget extension
+/** UIVMLogViewerPanel extension
   * providing GUI for search-panel in VM Log-Viewer. */
 class UIVMLogViewerSearchPanel : public UIVMLogViewerPanel
 {

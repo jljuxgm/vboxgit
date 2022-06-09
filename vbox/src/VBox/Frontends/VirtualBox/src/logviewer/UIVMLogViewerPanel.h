@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 70706 2018-01-23 13:24:34Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.h 70792 2018-01-29 13:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -71,9 +71,7 @@ private:
 
     /** Holds the reference to VM Log-Viewer this panel belongs to. */
     UIVMLogViewerWidget *m_pViewer;
-    /** Holds the instance of main-layout we create. */
     QHBoxLayout         *m_pMainLayout;
-    /** Holds the instance of close-button we create. */
     QIToolButton        *m_pCloseButton;
 };
 

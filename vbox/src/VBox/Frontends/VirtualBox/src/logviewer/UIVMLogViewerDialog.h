@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 70139 2017-12-15 10:59:25Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.h 70792 2018-01-29 13:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -76,9 +76,7 @@ protected:
 private:
 
     void retranslateUi();
-
     CMachine m_comMachine;
 };
 
 #endif /* !___UIVMLogViewerDialog_h___ */
-
