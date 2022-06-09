@@ -1,4 +1,4 @@
-/* $Id: scmparser.cpp 69169 2017-10-23 15:54:13Z vboxsync $ */
+/* $Id: scmparser.cpp 69211 2017-10-24 13:53:05Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Code Parsers.
  */
@@ -633,7 +633,7 @@ static int enumeratePythonComments(PSCMSTREAM pIn, PFNSCMCOMMENTENUMERATOR pfnCa
                      * Note! This is very similar to the multiline C comment handling above.
                      */
                     Info.iLineStart         = iLine;
-                    Info.offStart           = (uint32_t)off;
+                    Info.offStart           = (uint32_t)off - 1;
                     Info.iLineEnd           = UINT32_MAX;
                     Info.offEnd             = UINT32_MAX;
                     Info.cBlankLinesBefore  = 0;
