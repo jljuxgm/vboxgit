@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 71816 2018-04-11 10:18:16Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 72089 2018-05-03 12:49:27Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -1159,6 +1159,10 @@ int GuestFile::i_writeData(uint32_t uTimeoutMS, void *pvData, uint32_t cbData,
             LogFlowThisFunc(("cbWritten=%RU32\n", cbWritten));
             if (pcbWritten)
                 *pcbWritten = cbWritten;
+        }
+        else if (pEvent->HasGuestError()) /* Return guest rc if available. */
+        {
+            vrc = pEvent->GetGuestError();
         }
     }
 
