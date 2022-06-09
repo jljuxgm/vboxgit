@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 71198 2018-03-05 10:59:17Z vboxsync $ */
+/* $Id: SUPDrv.cpp 71699 2018-04-06 10:45:31Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -511,6 +511,17 @@ int VBOXCALL supdrvInitDevExt(PSUPDRVDEVEXT pDevExt, size_t cbSession)
         RTLogRelSetDefaultInstance(pRelLogger);
     /** @todo Add native hook for getting logger config parameters and setting
      *        them. On linux we should use the module parameter stuff... */
+#endif
+
+#if (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)) && !defined(VBOX_WITH_OLD_CPU_SUPPORT)
+    /*
+     * Require SSE2 to be present.
+     */
+    if (!(ASMCpuId_EDX(1) & X86_CPUID_FEATURE_EDX_SSE2))
+    {
+        SUPR0Printf("vboxdrv: Requires SSE2 (cpuid(0).EDX=%#x)\n", ASMCpuId_EDX(1));
+        return VERR_UNSUPPORTED_CPU;
+    }
 #endif
 
     /*
