@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 71950 2018-04-20 21:31:06Z vboxsync $ */
+/* $Id: socket.cpp 72364 2018-05-28 16:49:50Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -2968,7 +2968,7 @@ DECLHIDDEN(uint32_t) rtSocketPollStart(RTSOCKET hSocket, RTPOLLSET hPollSet, uin
         {
             if (pThis->fSubscribedEvts != pThis->fPollEvts)
             {
-                /** @todo seems like there migth be a call to many here and that fPollEvts is
+                /** @todo seems like there might be a call to many here and that fPollEvts is
                  *        totally unnecessary... (bird) */
                 int rc = rtSocketPollUpdateEvents(pThis, pThis->fPollEvts);
                 if (RT_FAILURE(rc))

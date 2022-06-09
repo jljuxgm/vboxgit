@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 72364 2018-05-28 16:49:50Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -584,7 +584,7 @@ static bool omfWriter_LNamesAddN(POMFWRITER pThis, const char *pchName, size_t c
 {
     /* See if we've already got that name in the list. */
     uint16_t idxName;
-    if (pidxName) /* If pidxName is NULL, we assume the caller migth just be passing stuff thru. */
+    if (pidxName) /* If pidxName is NULL, we assume the caller might just be passing stuff thru. */
     {
         idxName = omfWriter_LNamesLookupN(pThis, pchName, cchName);
         if (idxName != UINT16_MAX)
@@ -5472,7 +5472,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 69111 $");
+                        printf("%s\n", "$Revision: 72364 $");
                         return 0;
 
                     case '?':
