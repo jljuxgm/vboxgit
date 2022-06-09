@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 71910 2018-04-19 08:54:23Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 71912 2018-04-19 08:57:19Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7144,7 +7144,7 @@ VMMR0_INT_DECL(int) HMR0EnsureCompleteBasicContext(PVMCPU pVCpu, PCPUMCTX pMixed
     if (pVCpu->CTX_SUFF(pVM)->hm.s.vmx.fSupported)
         rc = hmR0VmxSaveGuestState(pVCpu, pMixedCtx);
     else
-        rc= VINF_SUCCESS;
+        rc = VINF_SUCCESS;
 
     /*
      * For now, imply that the caller might change everything too. Do this after
