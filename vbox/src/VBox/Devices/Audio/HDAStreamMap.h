@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.h 67698 2017-06-29 13:58:29Z vboxsync $ */
+/* $Id: HDAStreamMap.h 71736 2018-04-07 21:29:18Z vboxsync $ */
 /** @file
  * HDAStreamMap.h - Stream mapping functions for HD Audio.
  */
@@ -37,9 +37,9 @@ typedef struct HDASTREAMMAPPING
  * @{
  */
 #ifdef IN_RING3
-int  hdaStreamMapInit(PHDASTREAMMAPPING pMapping, PPDMAUDIOPCMPROPS pProps);
-void hdaStreamMapDestroy(PHDASTREAMMAPPING pMapping);
-void hdaStreamMapReset(PHDASTREAMMAPPING pMapping);
+int  hdaR3StreamMapInit(PHDASTREAMMAPPING pMapping, PPDMAUDIOPCMPROPS pProps);
+void hdaR3StreamMapDestroy(PHDASTREAMMAPPING pMapping);
+void hdaR3StreamMapReset(PHDASTREAMMAPPING pMapping);
 #endif /* IN_RING3 */
 /** @} */
 
