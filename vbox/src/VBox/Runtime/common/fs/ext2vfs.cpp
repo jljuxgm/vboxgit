@@ -1,4 +1,4 @@
-/* $Id: ext2vfs.cpp 69843 2017-11-27 15:29:16Z vboxsync $ */
+/* $Id: ext2vfs.cpp 69844 2017-11-27 15:44:03Z vboxsync $ */
 /** @file
  * IPRT Filesystem API (FileSys) - ext2/3 format.
  */
@@ -182,9 +182,9 @@ static DECLCALLBACK(int) rtFsExt2_OpenRoot(void *pvThis, PRTVFSDIR phVfsDir)
 
 
 /**
- * @interface_method_impl{RTVFSOBJOPS::Obj,pfnIsRangeInUse}
+ * @interface_method_impl{RTVFSOBJOPS::Obj,pfnQueryRangeState}
  */
-static DECLCALLBACK(int) rtFsExt2_IsRangeInUse(void *pvThis, RTFOFF off, size_t cb, bool *pfUsed)
+static DECLCALLBACK(int) rtFsExt2_QueryRangeState(void *pvThis, uint64_t off, size_t cb, bool *pfUsed)
 {
     int rc = VINF_SUCCESS;
     uint64_t offStart = (uint64_t)off;
@@ -242,7 +242,7 @@ DECL_HIDDEN_CONST(const RTVFSOPS) g_rtFsExt2VolOps =
     /* .uVersion = */           RTVFSOPS_VERSION,
     /* .fFeatures = */          0,
     /* .pfnOpenRoot = */        rtFsExt2_OpenRoot,
-    /* .pfnIsRangeInUse = */    rtFsExt2_IsRangeInUse,
+    /* .pfnQueryRangeState = */ rtFsExt2_QueryRangeState,
     /* .uEndMarker = */         RTVFSOPS_VERSION
 };
 

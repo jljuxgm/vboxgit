@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 69832 2017-11-24 20:04:37Z vboxsync $ */
+/* $Id: isovfs.cpp 69844 2017-11-27 15:44:03Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -3992,9 +3992,9 @@ static DECLCALLBACK(int) rtFsIsoVol_OpenRoot(void *pvThis, PRTVFSDIR phVfsDir)
 
 
 /**
- * @interface_method_impl{RTVFSOPS,pfnIsRangeInUse}
+ * @interface_method_impl{RTVFSOPS,pfnQueryRangeState}
  */
-static DECLCALLBACK(int) rtFsIsoVol_IsRangeInUse(void *pvThis, RTFOFF off, size_t cb, bool *pfUsed)
+static DECLCALLBACK(int) rtFsIsoVol_QueryRangeState(void *pvThis, uint64_t off, size_t cb, bool *pfUsed)
 {
     RT_NOREF(pvThis, off, cb, pfUsed);
     return VERR_NOT_IMPLEMENTED;
@@ -4014,7 +4014,7 @@ DECL_HIDDEN_CONST(const RTVFSOPS) g_rtFsIsoVolOps =
     RTVFSOPS_VERSION,
     0 /* fFeatures */,
     rtFsIsoVol_OpenRoot,
-    rtFsIsoVol_IsRangeInUse,
+    rtFsIsoVol_QueryRangeState,
     RTVFSOPS_VERSION
 };
 

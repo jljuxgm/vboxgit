@@ -1,4 +1,4 @@
-/* $Id: tstRTFilesystem.cpp 69840 2017-11-27 15:19:30Z vboxsync $ */
+/* $Id: tstRTFilesystem.cpp 69844 2017-11-27 15:44:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPRT Filesystem API (Fileystem)
  */
@@ -70,7 +70,7 @@ static int tstRTFilesystem(RTTEST hTest, RTVFSFILE hVfsFile)
     {
         bool fUsed = false;
 
-        rc = RTVfsIsRangeInUse(hVfs, off, 1024, &fUsed);
+        rc = RTVfsQueryRangeState(hVfs, off, 1024, &fUsed);
         if (RT_FAILURE(rc))
         {
             RTTestIFailed("RTVfsIsRangeInUse -> %Rrc", rc);
