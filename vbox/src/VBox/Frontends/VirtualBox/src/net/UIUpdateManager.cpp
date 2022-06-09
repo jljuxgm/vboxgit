@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 70824 2018-01-31 11:45:40Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 70850 2018-02-01 15:54:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -365,22 +365,32 @@ private slots:
         }
 
         /* Get VirtualBox version: */
-        QString strVBoxVersion(vboxGlobal().vboxVersionStringNormalized());
-        QByteArray abVBoxVersion = strVBoxVersion.toUtf8();
-        UIVersion vboxVersion(strVBoxVersion);
-
+        UIVersion vboxVersion(vboxGlobal().vboxVersionStringNormalized());
         /* Get extension pack version: */
         QString strExtPackVersion(extPack.GetVersion());
         QByteArray abExtPackVersion = strExtPackVersion.toUtf8();
 
-        /* Skip the check in unstable VBox version and if the extension pack
-           is equal to or newer than VBox.
+        /* If this version being developed: */
+        if (vboxVersion.z() % 2 == 1)
+        {
+            /* If this version being developed on release branch (we use released one): */
+            if (vboxVersion.z() < 97)
+                vboxVersion.setZ(vboxVersion.z() - 1);
+            /* If this version being developed on trunk (we skip check at all): */
+            else
+            {
+                emit sigStepComplete();
+                return;
+            }
+        }
 
-           Note! Use RTStrVersionCompare for the comparison here as it takes
-                 the beta/alpha/preview/whatever tags into consideration when
-                 comparing versions. */
-        if (   vboxVersion.z() % 2 != 0
-            || RTStrVersionCompare(abExtPackVersion.constData(), abVBoxVersion.constData()) >= 0)
+        /* Get updated VirtualBox version: */
+        const QString strVBoxVersion = vboxVersion.toString();
+
+        /* Skip the check if the extension pack is equal to or newer than VBox.
+         * Note! Use RTStrVersionCompare for the comparison here as it takes the
+         *       beta/alpha/preview/whatever tags into consideration when comparing versions. */
+        if (RTStrVersionCompare(abExtPackVersion.constData(), strVBoxVersion.toUtf8().constData()) >= 0)
         {
             emit sigStepComplete();
             return;
