@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 68771 2017-09-15 09:54:08Z vboxsync $ */
+/* $Id: DrvAudio.cpp 68867 2017-09-26 08:25:28Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2684,8 +2684,8 @@ static DECLCALLBACK(int) drvAudioEnable(PPDMIAUDIOCONNECTOR pInterface, PDMAUDIO
             int rc2 = drvAudioStreamControlInternal(pThis, pStream,
                                                     fEnable ? PDMAUDIOSTREAMCMD_ENABLE : PDMAUDIOSTREAMCMD_DISABLE);
             if (RT_FAILURE(rc2))
-                LogRel2(("Audio: Failed to %s %s stream, rc=%Rrc\n",
-                         fEnable ? "enable" : "disable", enmDir == PDMAUDIODIR_IN ? "input" : "output", rc2));
+                LogRel2(("Audio: Failed to %s %s stream '%s', rc=%Rrc\n",
+                         fEnable ? "enable" : "disable", enmDir == PDMAUDIODIR_IN ? "input" : "output", pStream->szName, rc2));
 
             if (RT_SUCCESS(rc))
                 rc = rc2;
