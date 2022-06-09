@@ -1,4 +1,4 @@
-; $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $ 
+; $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $ 
 ;; @file
 ; Auto Generated source file. Do not edit.
 ;
@@ -191,7 +191,7 @@
 ;
 ; Source file: floppyt.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  Floppy drive tables.
 ;  
 ;  
@@ -461,7 +461,7 @@
 ;
 ; Source file: invop.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  Real mode invalid opcode handler.
 ;  
 ;  
@@ -605,7 +605,7 @@
 ;
 ; Source file: logo.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  Stuff for drawing the BIOS logo.
 ;  
 ;  
@@ -623,7 +623,7 @@
 ;
 ; Source file: scsi.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  SCSI host adapter driver to boot from SCSI disks
 ;  
 ;  
@@ -641,7 +641,7 @@
 ;
 ; Source file: ahci.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  AHCI host adapter driver to boot from SATA disks.
 ;  
 ;  
@@ -659,7 +659,7 @@
 ;
 ; Source file: apm.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  APM BIOS support. Implements APM version 1.2.
 ;  
 ;  
@@ -677,7 +677,7 @@
 ;
 ; Source file: pcibios.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  PCI BIOS support.
 ;  
 ;  
@@ -729,7 +729,7 @@
 ;
 ; Source file: __U4M.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -748,7 +748,7 @@
 ;
 ; Source file: __U4D.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -767,7 +767,7 @@
 ;
 ; Source file: __U8RS.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -786,7 +786,7 @@
 ;
 ; Source file: __U8LS.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -805,7 +805,7 @@
 ;
 ; Source file: fmemset.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -824,7 +824,7 @@
 ;
 ; Source file: fmemcpy.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -921,7 +921,7 @@
 ;
 ; Source file: DoUInt32Div.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  AHCI host adapter driver to boot from SATA disks.
 ;  
 ;  
@@ -939,7 +939,7 @@
 ;
 ; Source file: ASMBitLastSetU16.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  BiosCommonCode - ASMBitLastSetU16() - borrowed from IPRT.
 ;  
 ;  
@@ -958,7 +958,7 @@
 ;
 ; Source file: pci32.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 68290 2017-08-03 16:24:55Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 68421 2017-08-15 15:00:44Z vboxsync $
 ;  32-bit PCI BIOS wrapper.
 ;  
 ;  
@@ -1115,7 +1115,7 @@ section CONST progbits vstart=0xb0 align=1 ; size=0xcde class=DATA group=DGROUP
 
 section CONST2 progbits vstart=0xd8e align=1 ; size=0x400 class=DATA group=DGROUP
 _bios_cvs_version_string:                    ; 0xf0d8e LB 0x18
-    db  'VirtualBox 5.2.0_BETA1', 000h, 000h
+    db  'VirtualBox 5.2.0_BETA2', 000h, 000h
 _bios_prefix_string:                         ; 0xf0da6 LB 0x8
     db  'BIOS: ', 000h, 000h
 _isotag:                                     ; 0xf0dae LB 0x6
@@ -18243,4 +18243,4 @@ biosorg_check_before_or_at_0FFEEh:           ; 0xfff80 LB 0x70
     db  'XM'
 cpu_reset:                                   ; 0xffff0 LB 0x10
     jmp far 0f000h:0e05bh                     ; ea 5b e0 00 f0
-    db  030h, 036h, 02fh, 032h, 033h, 02fh, 039h, 039h, 000h, 0fbh, 0f9h
+    db  030h, 036h, 02fh, 032h, 033h, 02fh, 039h, 039h, 000h, 0fbh, 0f8h
