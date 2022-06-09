@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 70517 2018-01-10 14:14:45Z vboxsync $
+# $Id: reporter.py 70521 2018-01-10 15:49:10Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70517 $"
+__version__ = "$Revision: 70521 $"
 
 
 # Standard Python imports.
@@ -392,11 +392,11 @@ class LocalReporter(ReporterBase):
         try:
             sLogDir = os.path.abspath(os.environ.get('TESTBOX_REPORTER_LOG_DIR', self.sDefLogDir));
             if not os.path.isdir(sLogDir):
-                os.makedirs(sLogDir, 0x1e8); # 0750 = 0x1e8
+                os.makedirs(sLogDir, 0o750);
         except:
             sLogDir = self.sDefLogDir;
             if not os.path.isdir(sLogDir):
-                os.makedirs(sLogDir, 0x1e8); # 0750 = 0x1e8
+                os.makedirs(sLogDir, 0o750);
 
         #
         # Make a subdirectory for this test run.
@@ -404,10 +404,10 @@ class LocalReporter(ReporterBase):
         sTs = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H-%M-%S.log');
         self.sLogDir = sLogDir = os.path.join(sLogDir, '%s-%s' % (sTs, self.sName));
         try:
-            os.makedirs(self.sLogDir, 0x1e8); # 0750 = 0x1e8
+            os.makedirs(self.sLogDir, 0o750);
         except:
             self.sLogDir = '%s-%s' % (self.sLogDir, os.getpid());
-            os.makedirs(self.sLogDir, 0x1e8); # 0750 = 0x1e8
+            os.makedirs(self.sLogDir, 0o750);
 
         #
         # Open the log file and write a header.

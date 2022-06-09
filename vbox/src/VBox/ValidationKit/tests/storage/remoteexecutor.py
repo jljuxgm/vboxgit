@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: remoteexecutor.py 70521 2018-01-10 15:49:10Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70521 $"
 
 
 # Standard Python imports.
@@ -245,7 +245,7 @@ class RemoteExecutor(object):
 
         return sFileId;
 
-    def mkDir(self, sDir, fMode = 0700, cMsTimeout = 30000):
+    def mkDir(self, sDir, fMode = 0o700, cMsTimeout = 30000):
         """
         Creates a new directory at the given location.
         """

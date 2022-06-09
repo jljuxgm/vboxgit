@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 66580 2017-04-15 19:08:15Z vboxsync $
+# $Id: storagecfg.py 70521 2018-01-10 15:49:10Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66580 $"
+__version__ = "$Revision: 70521 $"
 
 # Standard Python imports.
 import os;
@@ -318,7 +318,7 @@ class StorageConfigOsLinux(StorageConfigOs):
                 # Create a partition with the requested size
                 sFdiskScript = ';\n'; # Single partition filling everything
                 if cbVol is not None:
-                    sFdiskScript = ',' + str(cbVol / 512) + '\n'; # Get number of sectors
+                    sFdiskScript = ',' + str(cbVol // 512) + '\n'; # Get number of sectors
                 fRc = oExec.execBinaryNoStdOut('sfdisk', ('--no-reread', '--wipe', 'always', '-q', '-f', sDiskPath), \
                                                sFdiskScript);
                 if fRc:
@@ -429,7 +429,7 @@ class StorageCfg(object):
 
         if fRc:
             self.oStorOs = oStorOs;
-            if isinstance(oDiskCfg, basestring):
+            if utils.isString(oDiskCfg):
                 self.lstDisks = oStorOs.getDisksMatchingRegExp(oDiskCfg);
             else:
                 # Assume a list of of disks and add.
@@ -590,7 +590,7 @@ class StorageCfg(object):
 
         return fRc;
 
-    def mkDirOnVolume(self, sMountPoint, sDir, fMode = 0700):
+    def mkDirOnVolume(self, sMountPoint, sDir, fMode = 0o700):
         """
         Creates a new directory on the volume pointed to by the given mount point.
         """

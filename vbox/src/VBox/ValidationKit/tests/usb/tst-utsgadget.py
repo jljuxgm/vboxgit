@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tst-utsgadget.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: tst-utsgadget.py 70521 2018-01-10 15:49:10Z vboxsync $
 
 """
 Simple testcase for usbgadget2.py.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70521 $"
 
 # Standard python imports.
 import sys
@@ -38,6 +38,11 @@ sys.path.insert(0, '..');
 sys.path.insert(0, '../..');
 import usbgadget;
 import testdriver.reporter as reporter
+
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    long = int;     # pylint: disable=redefined-builtin,invalid-name
+
 
 g_cTests = 0;
 g_cFailures = 0
@@ -56,7 +61,7 @@ def stringRes(rc, sExpect):
     """Checks a string result."""
     global g_cTests, g_cFailures;
     g_cTests = g_cTests + 1;
-    if isinstance(rc, basestring):
+    if utils.isString(rc):
         if rc == sExpect:
             return 'PASSED';
     g_cFailures = g_cFailures + 1;

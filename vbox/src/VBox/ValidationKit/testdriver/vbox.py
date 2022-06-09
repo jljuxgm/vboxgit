@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 70517 2018-01-10 14:14:45Z vboxsync $
+# $Id: vbox.py 70521 2018-01-10 15:49:10Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70517 $"
+__version__ = "$Revision: 70521 $"
 
 
 # Standard Python imports.
@@ -54,6 +54,10 @@ from testdriver import reporter;
 from testdriver import vboxcon;
 from testdriver import vboxtestvms;
 
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    xrange = range; # pylint: disable=redefined-builtin,invalid-name
+    long = int;     # pylint: disable=redefined-builtin,invalid-name
 
 #
 # Exception and Error Unification Hacks.
@@ -2395,7 +2399,7 @@ class TestDriver(base.TestDriver):                                              
 
             tsNow = datetime.datetime.now()
             tsDelta = tsNow - tsStart
-            if ((tsDelta.microseconds + tsDelta.seconds * 1000000) / 1000) > cMsTimeout:
+            if ((tsDelta.microseconds + tsDelta.seconds * 1000000) // 1000) > cMsTimeout:
                 if fErrorOnTimeout:
                     reporter.errorTimeout('Timeout while waiting for progress.')
                 return -1

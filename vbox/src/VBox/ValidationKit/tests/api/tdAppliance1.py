@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAppliance1.py 69445 2017-10-27 16:21:29Z vboxsync $
+# $Id: tdAppliance1.py 70521 2018-01-10 15:49:10Z vboxsync $
 
 """
 VirtualBox Validation Kit - IAppliance Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69445 $"
+__version__ = "$Revision: 70521 $"
 
 
 # Standard Python imports.
@@ -174,7 +174,7 @@ class tdAppliance1(vbox.TestDriver):
         # Unpack
         #
         try:
-            os.mkdir(sTmpDir, 0x1ed); # 0755 = 0x1ed
+            os.mkdir(sTmpDir, 0o755);
             oTarFile = tarfile.open(sOva, 'r:*');
             oTarFile.extractall(sTmpDir);
             oTarFile.close();

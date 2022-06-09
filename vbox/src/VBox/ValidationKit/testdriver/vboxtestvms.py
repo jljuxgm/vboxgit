@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 70491 2018-01-08 22:15:50Z vboxsync $
+# $Id: vboxtestvms.py 70521 2018-01-10 15:49:10Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70491 $"
+__version__ = "$Revision: 70521 $"
 
 # Standard Python imports.
 import re;
@@ -869,11 +869,11 @@ class TestVmManager(object):
                          sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi');
         oSet.aoTestVms.append(oTestVm);
 
-        ## NT 3.x
-        #oTestVm = TestVm(oSet, 'tst-nt310', sHd = '5.2/great-old-ones/t-nt310/t-nt310.vdi',
-        #                 sKind = 'WindowsNT3x', acCpusSup = [1],
-        #                 sHddControllerType = 'BusLogic SCSI Controller', sDvdControllerType = 'BusLogic SCSI Controller' );
-        #oSet.aoTestVms.append(oTestVm); ## @todo COM
+        # NT 3.x
+        oTestVm = TestVm(oSet, 'tst-nt310', sHd = '5.2/great-old-ones/t-nt310/t-nt310.vdi',
+                         sKind = 'WindowsNT3x', acCpusSup = [1],
+                         sHddControllerType = 'BusLogic SCSI Controller', sDvdControllerType = 'BusLogic SCSI Controller' );
+        oSet.aoTestVms.append(oTestVm); ## @todo COM
 
         # NT 4
         oTestVm = TestVm(oSet, 'tst-nt4sp1', sHd = '4.2/' + sTxsTransport + '/nt4sp1/t-nt4sp1.vdi',
@@ -985,11 +985,11 @@ class TestVmManager(object):
         #                 fIoApic = True, sHddControllerType = 'SATA Controller', sChipsetType = 'ich9');
         #oSet.aoTestVms.append(oTestVm);
 
-        ## NT 3.x
-        #oTestVm = TestVm(oSet, 'tst-nt310', sHd = '5.2/great-old-ones/t-nt310/t-nt310.vdi',
-        #                 sKind = 'WindowsNT3x', acCpusSup = [1],
-        #                 sHddControllerType = 'BusLogic SCSI Controller', sDvdControllerType = 'BusLogic SCSI Controller' );
-        #oSet.aoTestVms.append(oTestVm); ## @todo COM
+        # NT 3.x
+        oTestVm = TestVm(oSet, 'tst-nt310', sHd = '5.2/great-old-ones/t-nt310/t-nt310.vdi',
+                         sKind = 'WindowsNT3x', acCpusSup = [1],
+                         sHddControllerType = 'BusLogic SCSI Controller', sDvdControllerType = 'BusLogic SCSI Controller' );
+        oSet.aoTestVms.append(oTestVm); ## @todo COM
 
         # NT 4
         oTestVm = TestVm(oSet, 'tst-nt4sp1', sHd = '4.2/nat/nt4sp1/t-nt4sp1.vdi',

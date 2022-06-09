@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: tdUsb1.py 70521 2018-01-10 15:49:10Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70521 $"
 
 
 # Standard Python imports.
@@ -49,6 +49,11 @@ from testdriver import vboxcon;
 
 # USB gadget control import
 import usbgadget;
+
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    xrange = range; # pylint: disable=redefined-builtin,invalid-name
+
 
 class tdUsbBenchmark(vbox.TestDriver):                                      # pylint: disable=R0902
     """

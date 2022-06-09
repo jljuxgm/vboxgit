@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 68710 2017-09-10 12:05:19Z vboxsync $
+# $Id: tdStorageBenchmark1.py 70521 2018-01-10 15:49:10Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 68710 $"
+__version__ = "$Revision: 70521 $"
 
 
 # Standard Python imports.
@@ -1067,7 +1067,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                 sMountPoint = self.prepareStorage(self.oStorCfg, self.fUseRamDisk, 2 * cbDisk);
                 if sMountPoint is not None:
                     # Create a directory where every normal user can write to.
-                    self.oStorCfg.mkDirOnVolume(sMountPoint, 'test', 0777);
+                    self.oStorCfg.mkDirOnVolume(sMountPoint, 'test', 0o777);
                     sDiskPath = sMountPoint + '/test';
                 else:
                     fRc = False;
@@ -1311,7 +1311,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                     if sMountPoint is None:
                         reporter.testFailure('Failed to prepare host storage');
                         fRc = False;
-                    self.oStorCfg.mkDirOnVolume(sMountPoint, 'test', 0777);
+                    self.oStorCfg.mkDirOnVolume(sMountPoint, 'test', 0o777);
                     sMountPoint = sMountPoint + '/test';
                     reporter.testDone();
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 70517 2018-01-10 14:14:45Z vboxsync $
+# $Id: base.py 70521 2018-01-10 15:49:10Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70517 $"
+__version__ = "$Revision: 70521 $"
 
 
 # Standard Python imports.
@@ -57,6 +57,10 @@ if sys.platform == 'win32':
 try:    __file__
 except: __file__ = sys.argv[0];
 g_ksValidationKitDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)));
+
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    long = int;     # pylint: disable=redefined-builtin,invalid-name
 
 
 #

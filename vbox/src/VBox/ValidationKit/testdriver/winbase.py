@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: winbase.py 69578 2017-11-04 10:19:34Z vboxsync $
+# $Id: winbase.py 70521 2018-01-10 15:49:10Z vboxsync $
 
 """
 This module is here to externalize some Windows specifics that gives pychecker
@@ -27,12 +27,13 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69578 $"
+__version__ = "$Revision: 70521 $"
 
 
 # Standard Python imports.
-import os;
 import ctypes;
+import os;
+import sys;
 
 # Windows specific imports.
 import win32api;            # pylint: disable=import-error
@@ -46,6 +47,9 @@ import pywintypes;          # pylint: disable=import-error
 # Validation Kit imports.
 from testdriver import reporter;
 
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    long = int;             # pylint: disable=redefined-builtin,invalid-name
 
 
 #
@@ -214,7 +218,7 @@ def processCreate(sName, asArgs):
         hProcess = hProcessFullAccess;
     except:
         reporter.logXcpt();
-    reporter.log2('processCreate -> %#x, hProcess=%#x' % (uPid, hProcess,));
+    reporter.log2('processCreate -> %#x, hProcess=%s %#x' % (uPid, hProcess, hProcess.handle,));
     return (uPid, hProcess, uTid);
 
 def processPollByHandle(hProcess):
@@ -224,7 +228,7 @@ def processPollByHandle(hProcess):
     try:
         dwWait = win32event.WaitForSingleObject(hProcess, 0);                                       # pylint: disable=no-member
     except:
-        reporter.logXcpt('hProcess=%s %#x' % (hProcess, hProcess,));
+        reporter.logXcpt('hProcess=%s %#x' % (hProcess, hProcess.handle,));
         return True;
     return dwWait != win32con.WAIT_TIMEOUT; #0x102; #
 
@@ -236,7 +240,7 @@ def processTerminateByHandle(hProcess):
     try:
         win32api.TerminateProcess(hProcess, 0x40010004); # DBG_TERMINATE_PROCESS                    # pylint: disable=no-member
     except:
-        reporter.logXcpt('hProcess=%s %#x' % (hProcess, hProcess,));
+        reporter.logXcpt('hProcess=%s %#x' % (hProcess, hProcess.handle,));
         return False;
     return True;
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 70509 2018-01-10 11:23:52Z vboxsync $
+# $Id: usbgadget.py 70521 2018-01-10 15:49:10Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70509 $"
+__version__ = "$Revision: 70521 $"
 
 # Standard Python imports.
 import array
@@ -168,16 +168,16 @@ def isValidOpcodeEncoding(sOpcode):
 def u32ToByteArray(u32):
     """Encodes the u32 value as a little endian byte (B) array."""
     return array.array('B', \
-                       (  u32             % 256, \
-                         (u32 / 256)      % 256, \
-                         (u32 / 65536)    % 256, \
-                         (u32 / 16777216) % 256) );
+                       (  u32              % 256, \
+                         (u32 // 256)      % 256, \
+                         (u32 // 65536)    % 256, \
+                         (u32 // 16777216) % 256) );
 
 def u16ToByteArray(u16):
     """Encodes the u16 value as a little endian byte (B) array."""
     return array.array('B', \
-                       (  u16        % 256, \
-                         (u16 / 256) % 256) );
+                       (  u16         % 256, \
+                         (u16 // 256) % 256) );
 
 def u8ToByteArray(uint8):
     """Encodes the u8 value as a little endian byte (B) array."""
@@ -443,7 +443,7 @@ class TransportBase(object):
         abPayload = array.array('B');
         for o in aoPayload:
             try:
-                if isinstance(o, basestring):
+                if utils.isString(o):
                     # the primitive approach...
                     sUtf8 = o.encode('utf_8');
                     for i in range(0, len(sUtf8)):
