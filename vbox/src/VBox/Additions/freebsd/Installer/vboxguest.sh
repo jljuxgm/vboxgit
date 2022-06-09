@@ -1,6 +1,9 @@
 #!/bin/bash
-#
+# $Id: vboxguest.sh 69318 2017-10-25 15:04:06Z vboxsync $
+## @file
 # VirtualBox Guest Additions kernel module control script for FreeBSD.
+#
+
 #
 # Copyright (C) 2008-2010 Oracle Corporation
 #
