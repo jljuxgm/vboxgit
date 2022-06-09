@@ -1,4 +1,4 @@
-/* $Id: DBGFInfo.cpp 68255 2017-08-02 15:56:18Z vboxsync $ */
+/* $Id: DBGFInfo.cpp 68256 2017-08-02 15:58:02Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Info.
  */
@@ -505,10 +505,11 @@ VMMR3_INT_DECL(int) DBGFR3InfoDeregisterDevice(PVM pVM, PPDMDEVINS pDevIns, cons
                 &&  pInfo->u.Dev.pDevIns == pDevIns)
             {
                 PDBGFINFO volatile pFree = pInfo;
+                pInfo = pInfo->pNext;
                 if (pPrev)
-                    pInfo = pPrev->pNext = pInfo->pNext;
+                    pPrev->pNext = pInfo;
                 else
-                    pInfo = pUVM->dbgf.s.pInfoFirst = pInfo->pNext;
+                    pUVM->dbgf.s.pInfoFirst = pInfo;
                 MMR3HeapFree(pFree);
             }
             else
@@ -582,10 +583,11 @@ VMMR3_INT_DECL(int) DBGFR3InfoDeregisterDriver(PVM pVM, PPDMDRVINS pDrvIns, cons
                 &&  pInfo->u.Drv.pDrvIns == pDrvIns)
             {
                 PDBGFINFO volatile pFree = pInfo;
+                pInfo = pInfo->pNext;
                 if (pPrev)
-                    pInfo = pPrev->pNext = pInfo->pNext;
+                    pPrev->pNext = pInfo;
                 else
-                    pInfo = pUVM->dbgf.s.pInfoFirst = pInfo->pNext;
+                    pUVM->dbgf.s.pInfoFirst = pInfo;
                 MMR3HeapFree(pFree);
             }
             else
