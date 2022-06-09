@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 72458 2018-06-06 06:10:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -183,7 +183,7 @@ void UIMachineViewNormal::resendSizeHint()
 void UIMachineViewNormal::adjustGuestScreenSize()
 {
     /* Should we adjust guest-screen size? Logging paranoia is required here to reveal the truth. */
-    LogRel(("GUI: UIMachineViewNormal::adjustGuestScreenSize: Adjust guest-screen size if necessary.\n"));
+    LogRel(("GUI: UIMachineViewNormal::adjustGuestScreenSize: Adjust guest-screen size if necessary\n"));
     bool fAdjust = false;
 
     /* Step 1: Is the guest-screen of another size than necessary? */
