@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 71639 2018-04-04 06:01:54Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 71645 2018-04-04 09:41:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -49,7 +49,7 @@ class UIToolBar;
 
 
 /** QWidget extension
-  * providing GUI with guest session information and control tab in session-information window. */
+ *  providing GUI with guest session information and control tab in session-information window. */
 class UIGuestControlFileManager : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
@@ -102,7 +102,6 @@ private:
     const int           m_iMaxRecursionDepth;
     CGuest              m_comGuest;
     CGuestSession       m_comGuestSession;
-
     QVBoxLayout        *m_pMainLayout;
     QSplitter          *m_pVerticalSplitter;
     QPlainTextEdit     *m_pLogOutput;
@@ -112,10 +111,12 @@ private:
     QWidget            *m_pFileTableContainerWidget;
     QHBoxLayout        *m_pFileTableContainerLayout;
     QITabWidget        *m_pTabWidget;
-    UIFileOperationsList       *m_pFileOperationsList;
-    UIGuestControlConsole    *m_pConsole;
-    UIGuestControlInterface  *m_pControlInterface;
 
+    UIFileOperationsList       *m_pFileOperationsList;
+    UIGuestControlConsole      *m_pConsole;
+    UIGuestControlInterface    *m_pControlInterface;
+    /* m_pSessionCreateWidget is a QWidget extension enabling user to start/stop
+     * a Guest Control session. */
     UIGuestSessionCreateWidget *m_pSessionCreateWidget;
     UIGuestFileTable           *m_pGuestFileTable;
     UIHostFileTable            *m_pHostFileTable;
@@ -127,4 +128,3 @@ private:
 };
 
 #endif /* !___UIGuestControlFileManager_h___ */
-

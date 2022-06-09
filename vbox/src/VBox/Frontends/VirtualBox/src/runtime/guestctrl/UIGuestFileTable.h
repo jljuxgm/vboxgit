@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.h 71639 2018-04-04 06:01:54Z vboxsync $ */
+/* $Id: UIGuestFileTable.h 71645 2018-04-04 09:41:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -25,8 +25,8 @@
 /* GUI includes: */
 #include "UIGuestControlFileTable.h"
 
-/** This class scans the guest file system by using the VBox API
-    and populates the UIGuestControlFileModel*/
+/** This class scans the guest file system by using the VBox Guest Control API
+ *  and populates the UIGuestControlFileModel*/
 class UIGuestFileTable : public UIGuestControlFileTable
 {
     Q_OBJECT;
@@ -62,4 +62,3 @@ private:
 };
 
 #endif /* !___UIGuestControlFileTable_h___ */
-

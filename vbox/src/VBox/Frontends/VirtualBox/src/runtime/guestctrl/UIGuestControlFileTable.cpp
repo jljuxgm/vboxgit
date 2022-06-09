@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71639 2018-04-04 06:01:54Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 71645 2018-04-04 09:41:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -142,7 +142,7 @@ private:
 UIDirectoryDiskUsageComputer::UIDirectoryDiskUsageComputer(QObject *parent, QStringList pathList)
     :QThread(parent)
     , m_pathList(pathList)
-    , m_bContinueRunning(true)
+    , m_fOkToContinue(true)
 {
 }
 
@@ -155,8 +155,13 @@ void UIDirectoryDiskUsageComputer::run()
 void UIDirectoryDiskUsageComputer::stopRecursion()
 {
     m_mutex.lock();
-    m_bContinueRunning = false;
+    m_fOkToContinue = false;
     m_mutex.unlock();
+}
+
+bool UIDirectoryDiskUsageComputer::isOkToContinue() const
+{
+    return m_fOkToContinue;
 }
 
 

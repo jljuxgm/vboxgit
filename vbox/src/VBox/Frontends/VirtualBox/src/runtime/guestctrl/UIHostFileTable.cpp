@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 71639 2018-04-04 06:01:54Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 71645 2018-04-04 09:41:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -61,9 +61,16 @@ UIHostDirectoryDiskUsageComputer::UIHostDirectoryDiskUsageComputer(QObject *pare
 
 void UIHostDirectoryDiskUsageComputer::directoryStatisticsRecursive(const QString &path, UIDirectoryStatistics &statistics)
 {
-
-    if (!m_bContinueRunning)
+    /* Prevent modification of the continue flag while reading: */
+    m_mutex.lock();
+    /* Check if m_fOkToContinue is set to false. if so just end recursion: */
+    if (!isOkToContinue())
+    {
+        m_mutex.unlock();
         return;
+    }
+    m_mutex.unlock();
+
     QFileInfo fileInfo(path);
     if (!fileInfo.exists())
         return;
