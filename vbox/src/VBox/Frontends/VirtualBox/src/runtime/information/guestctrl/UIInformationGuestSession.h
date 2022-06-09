@@ -1,4 +1,4 @@
-/* $Id: UIInformationGuestSession.h 71059 2018-02-19 16:32:29Z vboxsync $ */
+/* $Id: UIInformationGuestSession.h 71089 2018-02-21 17:35:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationGuestSession class declaration.
  */
@@ -56,6 +56,7 @@ private slots:
 
     void sltGuestSessionRegistered(CGuestSession guestSession);
     void sltGuestSessionUnregistered(CGuestSession guestSession);
+    void sltGuestControlErrorText(QString strError);
 
     void sltTreeItemUpdated();
     void sltCloseSessionOrProcess();

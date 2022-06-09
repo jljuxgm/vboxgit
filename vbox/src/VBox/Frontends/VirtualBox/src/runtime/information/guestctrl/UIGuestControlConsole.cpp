@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlConsole.cpp 71066 2018-02-20 09:49:57Z vboxsync $ */
+/* $Id: UIGuestControlConsole.cpp 71089 2018-02-21 17:35:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlConsole class implementation.
  */
@@ -75,7 +75,7 @@ void UIGuestControlConsole::putOutput(const QString &strOutput)
         insertPlainText("\n");
         startNextLine();
     }
-}
+ }
 
 void UIGuestControlConsole::keyPressEvent(QKeyEvent *pEvent)
 {
@@ -138,7 +138,7 @@ void UIGuestControlConsole::keyPressEvent(QKeyEvent *pEvent)
         }
         default:
         {
-            if(pEvent->modifiers() == Qt::ControlModifier && pEvent->key() == Qt::Key_C)
+            if (pEvent->modifiers() == Qt::ControlModifier && pEvent->key() == Qt::Key_C)
             {
                 QPlainTextEdit::keyPressEvent(pEvent);
             }

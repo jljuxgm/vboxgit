@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.h 71067 2018-02-20 09:50:35Z vboxsync $ */
+/* $Id: UIGuestControlInterface.h 71089 2018-02-21 17:35:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class declaration.
  */
@@ -55,12 +55,16 @@ private:
 
     typedef bool (UIGuestControlInterface::*HandleFuncPtr)(int, char**);
 
+    /** findOrCreateSession parses command options and determines if an existing session
+        to be returned or a new one to be created */
+    bool findOrCreateSession(const CommandData &commandData, CGuestSession &guestSession);
     bool findSession(const QString& strSessionName, CGuestSession& outSession);
     bool findSession(ULONG strSessionId, CGuestSession& outSession);
     bool createSession(const CommandData &commandData, CGuestSession &outSession);
 
     void prepareSubCommandHandlers();
     bool startProcess(const CommandData &commandData, CGuestSession &guestSession);
+    bool createDirectory(const CommandData &commandData, CGuestSession &guestSession);
 
     /* Handles the 'start' process command */
     bool handleStart(int, char**);
@@ -73,6 +77,7 @@ private:
 
     CGuest        m_comGuest;
     const QString m_strHelp;
+    QString  m_strStatus;
     /* A map of function pointers to handleXXXX functions */
     QMap<QString, HandleFuncPtr> m_subCommandHandlers;
 };

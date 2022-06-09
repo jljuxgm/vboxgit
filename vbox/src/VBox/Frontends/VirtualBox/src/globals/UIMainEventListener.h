@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 70899 2018-02-08 09:03:30Z vboxsync $ */
+/* $Id: UIMainEventListener.h 71089 2018-02-21 17:35:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -38,8 +38,8 @@
 class UIMainEventListeningThread;
 class CEventListener;
 class CEventSource;
-
-
+class CGuestProcessStateChangedEvent;
+class CGuestSessionStateChangedEvent;
 
 /* Note: On a first look this may seems a little bit complicated.
  * There are two reasons to use a separate class here which handles the events
@@ -141,8 +141,8 @@ signals:
         /** Notifies about guest process (un)registered event @a is the (un)registed guest process. */
         void sigGuestProcessRegistered(CGuestProcess guestProcess);
         void sigGuestProcessUnregistered(CGuestProcess guestProcess);
-        void sigGuestSessionStatedChanged();
-        void sigGuestProcessStateChanged();
+        void sigGuestSessionStatedChanged(const CGuestSessionStateChangedEvent &cEvent);
+        void sigGuestProcessStateChanged(const CGuestProcessStateChangedEvent &cEvent);
     /** @} */
 
 public:

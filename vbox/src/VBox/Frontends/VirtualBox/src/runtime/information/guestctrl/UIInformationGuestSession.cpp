@@ -1,4 +1,4 @@
-/* $Id: UIInformationGuestSession.cpp 71059 2018-02-19 16:32:29Z vboxsync $ */
+/* $Id: UIInformationGuestSession.cpp 71089 2018-02-21 17:35:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationGuestSession class implementation.
  */
@@ -377,6 +377,16 @@ void UIInformationGuestSession::addGuestSession(CGuestSession guestSession)
     UIGuestSessionTreeItem* sessionTreeItem = new UIGuestSessionTreeItem(m_pTreeWidget, guestSession);
     connect(sessionTreeItem, &UIGuestSessionTreeItem::sigGuessSessionUpdated,
             this, &UIInformationGuestSession::sltTreeItemUpdated);
+    connect(sessionTreeItem, &UIGuestSessionTreeItem::sigGuestSessionErrorText,
+            this, &UIInformationGuestSession::sltGuestControlErrorText);
+}
+
+void UIInformationGuestSession::sltGuestControlErrorText(QString strError)
+{
+    if (m_pConsole)
+    {
+        m_pConsole->putOutput(strError);
+    }
 }
 
 void UIInformationGuestSession::sltTreeItemUpdated()
