@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 72417 2018-06-01 21:02:06Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 72427 2018-06-04 11:39:24Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -2849,7 +2849,7 @@ NEM_TMPL_STATIC VBOXSTRICTRC nemHCWinStopCpu(PVM pVM, PVMCPU pVCpu, VBOXSTRICTRC
     AssertLogRelMsgReturn(dwErr == ERROR_VID_STOP_PENDING, ("dwErr=%#u (%#x)\n", dwErr, dwErr),
                           RT_SUCCESS(rcStrict) ?  VERR_NEM_IPE_5 : rcStrict);
 # endif
-    Log8(("nemHCWinStopCpu: Stopping CPU pending...\n"));
+    Log8(("nemHCWinStopCpu: Stopping CPU #%u pending...\n", pVCpu->idCpu));
     STAM_REL_COUNTER_INC(&pVCpu->nem.s.StatStopCpuPending);
 
     /*
@@ -2896,7 +2896,7 @@ NEM_TMPL_STATIC VBOXSTRICTRC nemHCWinStopCpu(PVM pVM, PVMCPU pVCpu, VBOXSTRICTRC
                                    &pVCpu->nem.s.uIoCtlBuf.MsgSlotHandleAndGetNext,
                                    sizeof(pVCpu->nem.s.uIoCtlBuf.MsgSlotHandleAndGetNext),
                                    NULL, 0);
-    AssertLogRelMsgReturn(NT_SUCCESS(rcNt), ("2st VidMessageSlotHandleAndGetNext after ERROR_VID_STOP_PENDING failed: %#x\n", rcNt),
+    AssertLogRelMsgReturn(NT_SUCCESS(rcNt), ("2nd VidMessageSlotHandleAndGetNext after ERROR_VID_STOP_PENDING failed: %#x\n", rcNt),
                           RT_SUCCESS(rcStrict) ? VERR_NEM_IPE_5 : rcStrict);
 # else
     fWait = g_pfnVidMessageSlotHandleAndGetNext(pVM->nem.s.hPartitionDevice, pVCpu->idCpu,
@@ -3057,6 +3057,9 @@ NEM_TMPL_STATIC VBOXSTRICTRC nemHCWinRunGC(PVM pVM, PVMCPU pVCpu, PGVM pGVM, PGV
 # ifdef LOG_ENABLED
     if (LogIs3Enabled())
         nemHCWinLogState(pVM, pVCpu);
+# endif
+# ifdef IN_RING0
+    Assert(pVCpu->idCpu == pGVCpu->idCpu);
 # endif
 
     /*
