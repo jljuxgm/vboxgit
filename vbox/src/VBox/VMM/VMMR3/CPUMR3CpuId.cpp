@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 71108 2018-02-22 15:38:35Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 71118 2018-02-26 05:55:27Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3569,10 +3569,11 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
     if (pExtFeatureLeaf->uEcx & X86_CPUID_AMD_FEATURE_ECX_SVM)
     {
         PCPUMCPUIDLEAF pSvmFeatureLeaf = cpumR3CpuIdGetExactLeaf(pCpum, 0x8000000a, 0);
-        pSvmFeatureLeaf->uEax = 0x1;
-        pSvmFeatureLeaf->uEbx = 0x8000;     /** @todo figure out virtual NASID. */
-        pSvmFeatureLeaf->uEcx = 0;
-        pSvmFeatureLeaf->uEdx = 0;          /** @todo Support SVM features */
+        pSvmFeatureLeaf->uEax  = 0x1;
+        pSvmFeatureLeaf->uEbx  = 0x8000;                                        /** @todo figure out virtual NASID. */
+        pSvmFeatureLeaf->uEcx  = 0;
+        pSvmFeatureLeaf->uEdx &= (  X86_CPUID_SVM_FEATURE_EDX_NRIP_SAVE         /** @todo Support other SVM features */
+                                  | X86_CPUID_SVM_FEATURE_EDX_DECODE_ASSISTS);
     }
     else
         cpumR3CpuIdZeroLeaf(pCpum, UINT32_C(0x8000000a));
