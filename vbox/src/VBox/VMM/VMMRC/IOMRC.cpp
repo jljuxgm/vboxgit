@@ -1,4 +1,4 @@
-/* $Id: IOMRC.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: IOMRC.cpp 72564 2018-06-15 12:56:01Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Raw-Mode Context.
  */
@@ -217,17 +217,21 @@ VMMRCDECL(VBOXSTRICTRC) IOMRCIOPortHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE p
     switch (pCpu->pCurInstr->uOpcode)
     {
         case OP_IN:
+            EMHistoryUpdateFlagsAndType(pVCpu, EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_READ));
             return iomRCInterpretIN(pVM, pVCpu, pRegFrame, pCpu);
 
         case OP_OUT:
+            EMHistoryUpdateFlagsAndType(pVCpu, EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_WRITE));
             return iomRCInterpretOUT(pVM, pVCpu, pRegFrame, pCpu);
 
         case OP_INSB:
         case OP_INSWD:
+            EMHistoryUpdateFlagsAndType(pVCpu, EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_STR_READ));
             return iomRCInterpretINS(pVCpu, pCpu);
 
         case OP_OUTSB:
         case OP_OUTSWD:
+            EMHistoryUpdateFlagsAndType(pVCpu, EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_STR_WRITE));
             return iomRCInterpretOUTS(pVCpu, pCpu);
 
         /*
