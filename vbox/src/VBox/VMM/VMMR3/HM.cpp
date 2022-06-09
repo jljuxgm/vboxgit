@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 70441 2018-01-03 04:05:33Z vboxsync $ */
+/* $Id: HM.cpp 70557 2018-01-12 13:28:48Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -133,6 +133,7 @@ static const char * const g_apszVTxExitReasons[MAX_EXITREASON_STAT] =
     EXIT_REASON(VMX_EXIT_INVVPID                ,  53, "INVVPID instruction."),
     EXIT_REASON(VMX_EXIT_WBINVD                 ,  54, "WBINVD instruction."),
     EXIT_REASON(VMX_EXIT_XSETBV                 ,  55, "XSETBV instruction."),
+    EXIT_REASON(VMX_EXIT_APIC_WRITE             ,  56, "APIC write completed to virtual-APIC page."),
     EXIT_REASON(VMX_EXIT_RDRAND                 ,  57, "RDRAND instruction."),
     EXIT_REASON(VMX_EXIT_INVPCID                ,  58, "INVPCID instruction."),
     EXIT_REASON(VMX_EXIT_VMFUNC                 ,  59, "VMFUNC instruction."),
