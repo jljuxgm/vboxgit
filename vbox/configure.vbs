@@ -1,4 +1,4 @@
-' $Id: configure.vbs 67300 2017-06-08 13:49:05Z vboxsync $
+' $Id: configure.vbs 67309 2017-06-09 09:46:08Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -771,6 +771,18 @@ sub DisableUDPTunnel(strReason)
       g_blnDisableUDPTunnel = True
       g_strDisableUDPTunnel = strReason
       CfgPrint "VBOX_WITH_UDPTUNNEL="
+   end if
+end sub
+
+
+''
+' No SDL
+sub DisableSDL(strReason)
+   if g_blnDisableSDL = False then
+      LogPrint "Disabled SDL frontend: " & strReason
+      g_blnDisableSDL = True
+      g_strDisableSDL = strReason
+      CfgPrint "VBOX_WITH_VBOXSDL="
    end if
 end sub
 
@@ -2094,6 +2106,7 @@ sub usage
    Print "Components:"
    Print "  --disable-COM"
    Print "  --disable-UDPTunnel"
+   Print "  --disable-SDL"
    Print ""
    Print "Locations:"
    Print "  --with-kBuild=PATH    "
@@ -2154,6 +2167,7 @@ Sub Main
    strOptMkisofs = ""
    blnOptDisableCOM = False
    blnOptDisableUDPTunnel = False
+   blnOptDisableSDL = False
    for i = 1 to Wscript.Arguments.Count
       dim str, strArg, strPath
 
@@ -2214,6 +2228,8 @@ Sub Main
             blnOptDisableCOM = False
          case "--disable-udptunnel"
             blnOptDisableUDPTunnel = True
+         case "--disable-sdl"
+            blnOptDisableSDL = True
          case "--internal"
             g_blnInternalMode = True
          case "--internal-last"
@@ -2258,6 +2274,9 @@ Sub Main
    end if
    if blnOptDisableUDPTunnel = True then
       DisableUDPTunnel "--disable-udptunnel"
+   end if
+   if blnOptDisableSDL = True then
+      DisableSDL "--disable-sdl"
    end if
    CheckSourcePath
    CheckForkBuild strOptkBuild
