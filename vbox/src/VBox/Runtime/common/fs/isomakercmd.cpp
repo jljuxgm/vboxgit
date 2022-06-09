@@ -1,4 +1,4 @@
-/* $Id: isomakercmd.cpp 68821 2017-09-22 13:07:00Z vboxsync $ */
+/* $Id: isomakercmd.cpp 68830 2017-09-22 14:26:36Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker Command.
  */
@@ -1117,7 +1117,7 @@ static void rtFsIsoMakerCmdUsage(PRTFSISOMAKERCMDOPTS pOpts, const char *pszProg
                        "        it is formatted using microsoft CRT argument quoting & escaping style.\n"
                        "\n"
                        "\n"
-                       "Options - Testing:\n"
+                       "Options - Testing (not applicable to VISO):\n"
                        "\n"
                        "    --output-buffer-size <bytes>\n"
                        "        Selects a specific output buffer size for testing virtual image reads.\n"

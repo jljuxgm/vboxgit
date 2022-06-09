@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68742 2017-09-13 13:07:04Z vboxsync $
+# $Id: Makefile.kmk 68830 2017-09-22 14:26:36Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -58,6 +58,7 @@ else ifdef VBOX_ONLY_DOCS
  # Build docs only - need just regular R3 runtime.
  #
  LIBRARIES += RuntimeR3 RuntimeBldProg
+ include $(PATH_SUB_CURRENT)/tools/Makefile.kmk
 
 else ifdef VBOX_ONLY_EXTPACKS_USE_IMPLIBS
  #
