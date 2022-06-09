@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 68406 2017-08-14 10:22:55Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 68408 2017-08-14 11:37:08Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2110,6 +2110,15 @@ static int hmR0SvmLoadGuestStateNested(PVMCPU pVCpu, PCPUMCTX pCtx)
 {
     STAM_PROFILE_ADV_START(&pVCpu->hm.s.StatLoadGuestState, x);
 
+    /*
+     * Load guest intercepts first into the guest VMCB as later we may merge
+     * them into the nested-guest VMCB further below.
+     */
+    {
+        PSVMVMCB pVmcb = pVCpu->hm.s.svm.pVmcb;
+        hmR0SvmLoadGuestXcptIntercepts(pVCpu, pVmcb);
+    }
+
     PSVMVMCB pVmcbNstGst = pCtx->hwvirt.svm.CTX_SUFF(pVmcb);
     Assert(pVmcbNstGst);
 
@@ -2130,7 +2139,6 @@ static int hmR0SvmLoadGuestStateNested(PVMCPU pVCpu, PCPUMCTX pCtx)
     }
 
     hmR0SvmLoadGuestApicStateNested(pVCpu, pVmcbNstGst);
-    hmR0SvmLoadGuestXcptIntercepts(pVCpu, pVmcbNstGst);
 
     int rc = hmR0SvmSetupVMRunHandler(pVCpu);
     AssertRCReturn(rc, rc);
