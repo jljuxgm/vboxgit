@@ -1,4 +1,4 @@
-/* $Id: fuzzmastercmd.cpp 72437 2018-06-04 21:16:02Z vboxsync $ */
+/* $Id: fuzzmastercmd.cpp 72438 2018-06-04 21:17:56Z vboxsync $ */
 /** @file
  * IPRT Fuzzing framework API (Fuzz).
  */
@@ -125,8 +125,7 @@ static RTEXITCODE rtFuzzCmdMasterDoIt(const char *pszBinary, uint32_t cProcs, co
                             rc = RTFuzzObsExecStart(hFuzzObs, cProcs);
                             if (RT_SUCCESS(rc))
                             {
-                                for (;;)
-                                    RTThreadSleep(3600 * RT_MS_1SEC);
+                                RTThreadSleep(3600 * RT_MS_1SEC);
                                 RTFuzzObsExecStop(hFuzzObs);
                             }
                             else
