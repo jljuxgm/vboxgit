@@ -1,4 +1,4 @@
-/* $Id: VBoxPrintString.c 62500 2016-07-22 19:06:59Z vboxsync $ */
+/* $Id: VBoxPrintString.c 67350 2017-06-12 17:42:14Z vboxsync $ */
 /** @file
  * VBoxPrintString.c - Implementation of the VBoxPrintString() debug logging routine.
  */
@@ -30,6 +30,7 @@
 *******************************************************************************/
 #include "VBoxDebugLib.h"
 #include "DevEFI.h"
+#include "iprt/asm.h"
 
 
 /**

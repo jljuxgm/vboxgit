@@ -1,4 +1,4 @@
-/* $Id: VBoxPrintHexDump.c 62500 2016-07-22 19:06:59Z vboxsync $ */
+/* $Id: VBoxPrintHexDump.c 67350 2017-06-12 17:42:14Z vboxsync $ */
 /** @file
  * VBoxPrintHex.c - Implementation of the VBoxPrintHex() debug logging routine.
  */
@@ -29,9 +29,10 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#include <ctype.h>
 #include "VBoxDebugLib.h"
 #include "DevEFI.h"
-#include <iprt/ctype.h>
+#include "iprt/asm.h"
 
 
 /**
@@ -79,9 +80,7 @@ size_t VBoxPrintHexDump(const void *pv, size_t cb)
         /* the printable chars */
         cchPrinted += VBoxPrintString("  ");
         for (i = 0; i < 16 && i < cb; i++)
-            cchPrinted += vboxPrintHexDumpChar(pb[i] == ' '
-                                               ? ' '
-                                               : RT_C_IS_GRAPH(pb[i])
+            cchPrinted += vboxPrintHexDumpChar(isprint(pb[i])
                                                ? pb[i]
                                                : '.');
 
