@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku.c 70066 2017-12-11 16:33:05Z vboxsync $ */
+/* $Id: VBoxGuest-haiku.c 70088 2017-12-12 17:38:54Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, implementation.
  */
@@ -481,6 +481,11 @@ static status_t vgdrvHaikuAttach(const pci_info *pDevice)
                 rc = vgdrvHaikuAddIRQ(pState);
                 if (RT_SUCCESS(rc))
                 {
+                    /*
+                     * Read host configuration.
+                     */
+                    VGDrvCommonProcessOptionsFromHost(&g_DevExt);
+
                     LogRel((MODULE_NAME ": loaded successfully\n"));
                     return B_OK;
                 }
