@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 71813 2018-04-11 04:42:38Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 71835 2018-04-12 07:21:25Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -582,6 +582,16 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, uint8_t cbInstr
          */
         pCtx->hwvirt.fLocalForcedActions = pVCpu->fLocalForcedActions & VMCPU_FF_BLOCK_NMIS;
         VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_BLOCK_NMIS);
+
+        /*
+         * Pause filter.
+         */
+        if (pVM->cpum.ro.GuestFeatures.fSvmPauseFilter)
+        {
+            pCtx->hwvirt.svm.cPauseFilter = pVmcbCtrl->u16PauseFilterCount;
+            if (pVM->cpum.ro.GuestFeatures.fSvmPauseFilterThreshold)
+                pCtx->hwvirt.svm.cPauseFilterThreshold = pVmcbCtrl->u16PauseFilterCount;
+        }
 
         /*
          * Interrupt shadow.
