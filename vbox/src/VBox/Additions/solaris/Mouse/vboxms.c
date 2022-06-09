@@ -1,4 +1,4 @@
-/* $Id: vboxms.c 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: vboxms.c 68639 2017-09-05 13:32:25Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris.
  */
@@ -24,13 +24,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#define LOG_GROUP LOG_GROUP_DRV_MOUSE
-
-
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-
+#define LOG_GROUP LOG_GROUP_DRV_MOUSE
+#include <VBox/VMMDev.>
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/log.h>
 #include <VBox/version.h>
