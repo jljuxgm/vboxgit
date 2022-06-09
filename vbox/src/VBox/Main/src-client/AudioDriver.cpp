@@ -1,4 +1,4 @@
-/* $Id: AudioDriver.cpp 70544 2018-01-11 16:20:27Z vboxsync $ */
+/* $Id: AudioDriver.cpp 70547 2018-01-11 18:14:10Z vboxsync $ */
 /** @file
  * VirtualBox audio base class for Main audio drivers.
  */
@@ -72,6 +72,7 @@ unsigned AudioDriver::getFreeLUN(void)
 
 /**
  * Configures the audio driver (to CFGM) and attaches it to the audio chain.
+ * Does nothing if the audio driver already is attached.
  *
  * @returns IPRT status code.
  * @param   pThis               Audio driver to detach.
@@ -112,6 +113,7 @@ DECLCALLBACK(int) AudioDriver::Attach(AudioDriver *pThis, AudioDriverCfg *pCfg)
 
 /**
  * Detaches an already attached audio driver from the audio chain.
+ * Does nothing if the audio driver already is detached or not attached.
  *
  * @returns IPRT status code.
  * @param   pThis               Audio driver to detach.
