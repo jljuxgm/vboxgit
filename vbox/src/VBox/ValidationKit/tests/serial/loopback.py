@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: loopback.py 72231 2018-05-17 10:55:16Z vboxsync $
+# $Id: loopback.py 72232 2018-05-17 10:56:42Z vboxsync $
 
 """
 VirtualBox Validation Kit - Serial loopback module.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72231 $"
+__version__ = "$Revision: 72232 $"
 
 # Standard Python imports.
 #import os;
@@ -200,7 +200,7 @@ class SerialLoopback(object):
             self.oIoPumper = SerialLoopbackTcpServ(sLocation, 0.5);
             self.oThread.start();
         elif sType == g_ksLoopbackNamedPipeServ:
-            self.oIoPumper = SerialLoopbackNamedPipeServ(sLocation, 0.5); # pylint: disable=R0204
+            self.oIoPumper = SerialLoopbackNamedPipeServ(sLocation, 0.5); # pylint: disable=redefined-variable-type
             self.oThread.start();
 
     def connect(self):
@@ -212,7 +212,7 @@ class SerialLoopback(object):
             if self.sType == g_ksLoopbackTcpClient:
                 self.oIoPumper = SerialLoopbackTcpClient(self.sLocation, 0.5);
             elif self.sType == g_ksLoopbackNamedPipeClient:
-                self.oIoPumper = SerialLoopbackNamedPipeClient(self.sLocation, 0.5); # pylint: disable=R0204
+                self.oIoPumper = SerialLoopbackNamedPipeClient(self.sLocation, 0.5); # pylint: disable=redefined-variable-type
         except:
             fRc = False;
         else:
