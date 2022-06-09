@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 64655 2016-11-14 10:46:07Z vboxsync $ */
+/* $Id: PDM.cpp 67583 2017-06-23 12:00:56Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1643,6 +1643,19 @@ VMMR3_INT_DECL(void) PDMR3MemSetup(PVM pVM, bool fAtReset)
             pDevIns->pReg->pfnMemSetup(pDevIns, enmCtx);
             PDMCritSectLeave(pDevIns->pCritSectRoR3);
         }
+
+    /*
+     * Run Fake PCI BIOS after reset.
+     */
+    if (fAtReset && pVM->pdm.s.aPciBuses[0].pDevInsR3)
+    {
+        pdmLock(pVM);
+        int rc = pVM->pdm.s.aPciBuses[0].pfnFakePCIBIOSR3(pVM->pdm.s.aPciBuses[0].pDevInsR3);
+        pdmUnlock(pVM);
+        if (RT_FAILURE(rc))
+            AssertMsgFailed(("PCI BIOS fake failed rc=%Rrc\n", rc));
+    }
+
 
     LogFlow(("PDMR3MemSetup: returns void\n"));
 }
