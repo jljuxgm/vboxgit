@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 70258 2017-12-21 06:52:11Z vboxsync $ */
+/* $Id: HM.cpp 70260 2017-12-21 07:57:01Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -3654,7 +3654,7 @@ VMMR3_INT_DECL(void) HMR3InfoSvmVmcbCtrl(PCDBGFINFOHLP pHlp, PCSVMVMCBCTRL pVmcb
     pHlp->pfnPrintf(pHlp, "%s  u1Valid                    = %RTbool\n", pszPrefix, pVmcbCtrl->ExitIntInfo.n.u1Valid);
     pHlp->pfnPrintf(pHlp, "%s  u32ErrorCode               = %#RX32\n",  pszPrefix, pVmcbCtrl->ExitIntInfo.n.u32ErrorCode);
     pHlp->pfnPrintf(pHlp, "%sNestedPaging\n",                           pszPrefix);
-    pHlp->pfnPrintf(pHlp, "%s  u1NestedPaging             = %RTbool\n", pszPrefix, pVmcbCtrl->NestedPaging.n.u1NestedPaging);
+    pHlp->pfnPrintf(pHlp, "%s  u1NestedPaging             = %RTbool\n", pszPrefix, RT_BOOL(pVmcbCtrl->u1NestedPaging));
     pHlp->pfnPrintf(pHlp, "%sAvicBar\n",                                pszPrefix);
     pHlp->pfnPrintf(pHlp, "%s  u40Addr                    = %#RX64\n",  pszPrefix, pVmcbCtrl->AvicBar.n.u40Addr);
     pHlp->pfnPrintf(pHlp, "%sEventInject\n",                            pszPrefix);

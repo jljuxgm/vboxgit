@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 70258 2017-12-21 06:52:11Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 70260 2017-12-21 07:57:01Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -368,7 +368,7 @@ VMM_INT_DECL(void) HMSvmNstGstVmExitNotify(PVMCPU pVCpu, PCPUMCTX pCtx)
         pVmcbNstGstCtrl->u64TSCOffset             = pNstGstVmcbCache->u64TSCOffset;
         pVmcbNstGstCtrl->IntCtrl.n.u1VIntrMasking = pNstGstVmcbCache->fVIntrMasking;
         pVmcbNstGstCtrl->TLBCtrl                  = pNstGstVmcbCache->TLBCtrl;
-        pVmcbNstGstCtrl->NestedPaging             = pNstGstVmcbCache->NestedPagingCtrl;
+        pVmcbNstGstCtrl->u1NestedPaging           = pNstGstVmcbCache->u1NestedPaging;
         pCtx->hwvirt.svm.fHMCachedVmcb = false;
     }
 }
