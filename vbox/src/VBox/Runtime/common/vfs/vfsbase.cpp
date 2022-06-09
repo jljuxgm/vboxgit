@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
+/* $Id: vfsbase.cpp 71826 2018-04-11 15:26:01Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -2199,7 +2199,7 @@ RTDECL(int) RTVfsQueryPathInfo(RTVFS hVfs, const char *pszPath, PRTFSOBJINFO pOb
                         || !(fFlags & RTPATH_F_FOLLOW_LINK))
                     {
                         if (   (fObjFlags & RTVFSOBJ_F_OPEN_MASK) != RTVFSOBJ_F_OPEN_ANY
-                            && RTFS_IS_DIRECTORY(pObjInfo->Attr.fMode))
+                            && !RTFS_IS_DIRECTORY(pObjInfo->Attr.fMode))
                             rc = VERR_NOT_A_DIRECTORY;
                         break;
                     }
@@ -3063,7 +3063,7 @@ RTDECL(int) RTVfsDirQueryPathInfo(RTVFSDIR hVfsDir, const char *pszPath, PRTFSOB
                         || !(fFlags & RTPATH_F_FOLLOW_LINK))
                     {
                         if (   (fObjFlags & RTVFSOBJ_F_OPEN_MASK) != RTVFSOBJ_F_OPEN_ANY
-                            && RTFS_IS_DIRECTORY(pObjInfo->Attr.fMode))
+                            && !RTFS_IS_DIRECTORY(pObjInfo->Attr.fMode))
                             rc = VERR_NOT_A_DIRECTORY;
                         break;
                     }
