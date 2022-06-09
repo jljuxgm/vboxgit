@@ -1,4 +1,4 @@
-/* $Id: ext2vfs.cpp 69845 2017-11-27 15:49:27Z vboxsync $ */
+/* $Id: ext2vfs.cpp 69861 2017-11-28 19:01:35Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -237,7 +237,7 @@ DECL_HIDDEN_CONST(const RTVFSOPS) g_rtFsExt2VolOps =
 RTDECL(int) RTFsExt2VolOpen(RTVFSFILE hVfsFileIn, uint32_t fMntFlags, uint32_t fExtFlags, PRTVFS phVfs, PRTERRINFO pErrInfo)
 {
     AssertPtrReturn(phVfs, VERR_INVALID_POINTER);
-    AssertReturn(!(fMntFlags & RTVFSMNT_F_VALID_MASK), VERR_INVALID_FLAGS);
+    AssertReturn(!(fMntFlags & ~RTVFSMNT_F_VALID_MASK), VERR_INVALID_FLAGS);
     AssertReturn(!fExtFlags, VERR_INVALID_FLAGS);
 
     uint32_t cRefs = RTVfsFileRetain(hVfsFileIn);
