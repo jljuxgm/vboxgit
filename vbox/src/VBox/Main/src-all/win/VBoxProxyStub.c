@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 69810 2017-11-22 17:53:44Z vboxsync $ */
+/* $Id: VBoxProxyStub.c 69867 2017-11-28 19:27:43Z vboxsync $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -2343,7 +2343,7 @@ static void vbpsUpdateWindowsService(VBPSREGSTATE *pState, const WCHAR *pwszVBox
         {
             QUERY_SERVICE_CONFIGW   Config;
             SERVICE_STATUS          Status;
-            SERVICE_DESCRIPTION     Desc;
+            SERVICE_DESCRIPTIONW     Desc;
             uint8_t                 abPadding[sizeof(QUERY_SERVICE_CONFIGW) + 5 * _1K];
         } uBuf;
         SC_HANDLE   hService;
