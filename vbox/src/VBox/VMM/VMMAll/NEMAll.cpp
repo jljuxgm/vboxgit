@@ -1,4 +1,4 @@
-/* $Id: NEMAll.cpp 72272 2018-05-21 12:48:49Z vboxsync $ */
+/* $Id: NEMAll.cpp 72343 2018-05-25 13:24:28Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, R0 and R3 context code.
  */
@@ -24,6 +24,20 @@
 #include "NEMInternal.h"
 #include <VBox/vmm/vm.h>
 
+
+/**
+ * Checks if this VM is in NEM mode and is long-mode capable.
+ *
+ * Use VMR3IsLongModeAllowed() instead of this, when possible.
+ *
+ * @returns true if long mode is allowed, false otherwise.
+ * @param   pVM         The cross context VM structure.
+ * @sa      VMR3IsLongModeAllowed, HMIsLongModeAllowed
+ */
+VMM_INT_DECL(bool) NEMHCIsLongModeAllowed(PVM pVM)
+{
+    return pVM->nem.s.fAllow64BitGuests && VM_IS_NEM_ENABLED(pVM);
+}
 
 
 /**

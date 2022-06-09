@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 72308 2018-05-23 17:53:43Z vboxsync $ */
+/* $Id: NEMInternal.h 72343 2018-05-25 13:24:28Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -107,6 +107,8 @@ typedef struct NEM
 
     /** Set if enabled. */
     bool                        fEnabled;
+    /** Set if long mode guests are allowed. */
+    bool                        fAllow64BitGuests;
 #ifdef RT_OS_WINDOWS
     /** Set if we've created the EMTs. */
     bool                        fCreatedEmts : 1;

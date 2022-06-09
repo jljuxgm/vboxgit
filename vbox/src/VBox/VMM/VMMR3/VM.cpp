@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 71699 2018-04-06 10:45:31Z vboxsync $ */
+/* $Id: VM.cpp 72343 2018-05-25 13:24:28Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -4529,17 +4529,30 @@ VMMR3_INT_DECL(RTCPUID) VMR3GetVMCPUId(PVM pVM)
 
 /**
  * Checks if the VM is long-mode (64-bit) capable or not.
- * @returns true if VM can operate in long-mode, false
- *        otherwise.
  *
+ * @returns true if VM can operate in long-mode, false otherwise.
  * @param   pVM             The cross context VM structure.
  */
 VMMR3_INT_DECL(bool) VMR3IsLongModeAllowed(PVM pVM)
 {
-/** @todo NEM: Fixme log mode allowed stuff. */
-    if (HMIsEnabled(pVM))
-        return HMIsLongModeAllowed(pVM);
-    return false;
+    switch (pVM->bMainExecutionEngine)
+    {
+        case VM_EXEC_ENGINE_HW_VIRT:
+            return HMIsLongModeAllowed(pVM);
+
+        case VM_EXEC_ENGINE_NATIVE_API:
+#ifndef IN_RC
+            return NEMHCIsLongModeAllowed(pVM);
+#else
+            return false;
+#endif
+
+        case VM_EXEC_ENGINE_NOT_SET:
+            AssertFailed();
+            RT_FALL_THRU();
+        default:
+            return false;
+    }
 }
 
 

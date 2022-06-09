@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 72208 2018-05-15 04:11:35Z vboxsync $ */
+/* $Id: HMInternal.h 72343 2018-05-25 13:24:28Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -39,7 +39,7 @@
 # error "32-bit darwin is no longer supported. Go back to 4.3 or earlier!"
 #endif
 
-#if HC_ARCH_BITS == 64 || defined (VBOX_WITH_64_BITS_GUESTS)
+#if HC_ARCH_BITS == 64 || defined(VBOX_WITH_64_BITS_GUESTS)
 /* Enable 64 bits guest support. */
 # define VBOX_ENABLE_64_BITS_GUESTS
 #endif
