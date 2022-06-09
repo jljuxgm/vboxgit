@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 70223 2017-12-19 17:10:59Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 70873 2018-02-05 18:13:55Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Internal Header.
  */
@@ -276,6 +276,9 @@ typedef struct VBOXGUESTSESSION
     uint16_t                    sfn;
     uint16_t                    Alignment; /**< Alignment */
 #endif
+    /** The requestor information to pass to the host for this session.
+     * @sa VMMDevRequestHeader::fRequestor */
+    uint32_t                    fRequestor;
     /** The process (id) of the session.
      * This is NIL if it's a kernel session. */
     RTPROCESS                   Process;
@@ -354,7 +357,7 @@ bool VGDrvCommonISR(PVBOXGUESTDEVEXT pDevExt);
 void VGDrvCommonWaitDoWakeUps(PVBOXGUESTDEVEXT pDevExt);
 #endif
 
-int  VGDrvCommonCreateUserSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION *ppSession);
+int  VGDrvCommonCreateUserSession(PVBOXGUESTDEVEXT pDevExt, uint32_t fRequestor, PVBOXGUESTSESSION *ppSession);
 int  VGDrvCommonCreateKernelSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION *ppSession);
 void VGDrvCommonCloseSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession);
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-freebsd.c 70085 2017-12-12 17:35:22Z vboxsync $ */
+/* $Id: VBoxGuest-freebsd.c 70873 2018-02-05 18:13:55Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for FreeBSD.
  */
@@ -244,7 +244,7 @@ static int vgdrvFreeBSDOpen(struct cdev *pDev, int fOpen, struct thread *pTd)
     /*
      * Create a new session.
      */
-    rc = VGDrvCommonCreateUserSession(&g_DevExt, &pSession);
+    rc = VGDrvCommonCreateUserSession(&g_DevExt, VMMDEV_REQUESTOR_USERMODE, &pSession);
     if (RT_SUCCESS(rc))
     {
         if (ASMAtomicCmpXchgPtr(&pDev->si_drv1, pSession, (void *)0x42))

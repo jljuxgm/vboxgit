@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 70085 2017-12-12 17:35:22Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 70873 2018-02-05 18:13:55Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -363,7 +363,7 @@ DECLASM(int) vgdrvOS2Open(uint16_t sfn)
     /*
      * Create a new session.
      */
-    rc = VGDrvCommonCreateUserSession(&g_DevExt, &pSession);
+    rc = VGDrvCommonCreateUserSession(&g_DevExt, VMMDEV_REQUESTOR_USERMODE, &pSession);
     if (RT_SUCCESS(rc))
     {
         pSession->sfn = sfn;

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 70088 2017-12-12 17:38:54Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 70873 2018-02-05 18:13:55Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -526,7 +526,7 @@ static int vgdrvSolarisOpen(dev_t *pDev, int fFlags, int fType, cred_t *pCred)
      * Create a new session.
      */
     if (!(fFlags & FKLYR))
-        rc = VGDrvCommonCreateUserSession(&g_DevExt, &pSession);
+        rc = VGDrvCommonCreateUserSession(&g_DevExt, VMMDEV_REQUESTOR_USERMODE, &pSession);
     else
         rc = VGDrvCommonCreateKernelSession(&g_DevExt, &pSession);
     if (RT_SUCCESS(rc))

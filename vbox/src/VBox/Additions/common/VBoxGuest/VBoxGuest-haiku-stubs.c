@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku-stubs.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuest-haiku-stubs.c 70873 2018-02-05 18:13:55Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, stubs.
  */
@@ -359,9 +359,9 @@ int VGDrvCommonIoCtl(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSES
 {
     return g_VBoxGuest->_VGDrvCommonIoCtl(iFunction, pDevExt, pSession, pvData, cbData, pcbDataReturned);
 }
-int VGDrvCommonCreateUserSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION *ppSession)
+int VGDrvCommonCreateUserSession(PVBOXGUESTDEVEXT pDevExt, uint32_t fRequestor, PVBOXGUESTSESSION *ppSession)
 {
-    return g_VBoxGuest->_VGDrvCommonCreateUserSession(pDevExt, ppSession);
+    return g_VBoxGuest->_VGDrvCommonCreateUserSession(pDevExt, fRequestor, ppSession);
 }
 void VGDrvCommonCloseSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession)
 {

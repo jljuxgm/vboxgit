@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 70133 2017-12-14 16:20:14Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 70873 2018-02-05 18:13:55Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -650,7 +650,7 @@ static int VBoxGuestNetBSDOpen(dev_t device, int flags, int fmt, struct lwp *pro
     /*
      * Create a new session.
      */
-    rc = VGDrvCommonCreateUserSession(&g_DevExt, &fdata->session);
+    rc = VGDrvCommonCreateUserSession(&g_DevExt, VMMDEV_REQUESTOR_USERMODE, &fdata->session);
     if (! RT_SUCCESS(rc))
     {
         aprint_error_dev(sc->sc_dev, "VBox session creation failed\n");

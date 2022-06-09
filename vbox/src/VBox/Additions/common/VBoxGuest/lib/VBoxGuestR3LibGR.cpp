@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGR.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGR.cpp 70873 2018-02-05 18:13:55Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, GR.
  */
@@ -51,7 +51,7 @@ int vbglR3GRAlloc(VMMDevRequestHeader **ppReq, size_t cb, VMMDevRequestType enmR
         pReq->requestType = enmReqType;
         pReq->rc          = VERR_GENERAL_FAILURE;
         pReq->reserved1   = 0;
-        pReq->reserved2   = 0;
+        pReq->fRequestor  = 0;
 
         *ppReq = pReq;
 

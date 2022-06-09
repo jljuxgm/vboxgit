@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMPUtils.cpp 70873 2018-02-05 18:13:55Z vboxsync $ */
 /** @file
  * VBox Miniport utils
  */
@@ -151,7 +151,6 @@ bool VBoxLikesVideoMode(uint32_t display, uint32_t width, uint32_t height, uint3
             req->header.requestType = VMMDevReq_VideoModeSupported;
             req->header.rc          = VERR_GENERAL_FAILURE;
             req->header.reserved1   = 0;
-            req->header.reserved2   = 0;
             req->width  = width;
             req->height = height;
             req->bpp    = bpp;

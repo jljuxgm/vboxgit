@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibGenericRequest.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuestR0LibGenericRequest.cpp 70873 2018-02-05 18:13:55Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Generic VMMDev request management.
  */
@@ -126,8 +126,13 @@ DECLR0VBGL(int) VbglR0GRAlloc(VMMDevRequestHeader **ppReq, size_t cbReq, VMMDevR
             pReq->requestType = enmReqType;
             pReq->rc          = VERR_GENERAL_FAILURE;
             pReq->reserved1   = 0;
-            pReq->reserved2   = 0;
+#ifdef VBGL_VBOXGUEST
+            pReq->fRequestor  = VMMDEV_REQUESTOR_KERNEL        | VMMDEV_REQUESTOR_USR_DRV
+#else
+            pReq->fRequestor  = VMMDEV_REQUESTOR_KERNEL        | VMMDEV_REQUESTOR_USR_DRV_OTHER
+#endif
 
+                              | VMMDEV_REQUESTOR_CON_DONT_KNOW | VMMDEV_REQUESTOR_TRUST_NOT_GIVEN;
             *ppReq = pReq;
             rc = VINF_SUCCESS;
         }

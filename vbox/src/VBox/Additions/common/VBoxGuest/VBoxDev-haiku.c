@@ -1,4 +1,4 @@
-/* $Id: VBoxDev-haiku.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDev-haiku.c 70873 2018-02-05 18:13:55Z vboxsync $ */
 /** @file
  * VBoxGuest kernel driver, Haiku Guest Additions, implementation.
  */
@@ -104,7 +104,7 @@ static status_t vgdrvHaikuOpen(const char *name, uint32 flags, void **cookie)
     /*
      * Create a new session.
      */
-    rc = VGDrvCommonCreateUserSession(&g_DevExt, &pSession);
+    rc = VGDrvCommonCreateUserSession(&g_DevExt, VMMDEV_REQUESTOR_USERMODE, &pSession);
     if (RT_SUCCESS(rc))
     {
         Log((DRIVER_NAME ":vgdrvHaikuOpen success: g_DevExt=%p pSession=%p rc=%d pid=%d\n",&g_DevExt, pSession, rc,(int)RTProcSelf()));
