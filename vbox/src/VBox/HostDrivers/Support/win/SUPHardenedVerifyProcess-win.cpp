@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 69774 2017-11-20 14:02:53Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 72247 2018-05-17 17:28:18Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -212,7 +212,11 @@ static const char *g_apszSupNtVpAllowedDlls[] =
 static const char *g_apszSupNtVpAllowedVmExes[] =
 {
     "VBoxHeadless.exe",
+#ifndef VBOX_GUI_WITH_SHARED_LIBRARY
     "VirtualBox.exe",
+#else
+    "VirtualBoxVM.exe",
+#endif
     "VBoxSDL.exe",
     "VBoxNetDHCP.exe",
     "VBoxNetNAT.exe",

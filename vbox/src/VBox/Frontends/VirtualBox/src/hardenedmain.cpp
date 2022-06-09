@@ -1,4 +1,4 @@
-/* $Id: hardenedmain.cpp 72219 2018-05-15 15:34:56Z vboxsync $ */
+/* $Id: hardenedmain.cpp 72247 2018-05-17 17:28:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Hardened main().
  */
@@ -64,12 +64,20 @@ int main(int argc, char **argv, char **envp)
 
     uint32_t fFlags = (fStartVM && !fSeparateProcess) ? 0 : SUPSECMAIN_FLAGS_DONT_OPEN_DEV;
 
-#ifdef VBOX_RUNTIME_UI
+#ifndef VBOX_GUI_WITH_SHARED_LIBRARY
+# ifdef VBOX_RUNTIME_UI
     return SUPR3HardenedMain("VirtualBoxVM",
                              fFlags | SUPSECMAIN_FLAGS_TRUSTED_ERROR | SUPSECMAIN_FLAGS_OSX_VM_APP,
                              argc, argv, envp);
+# else
+    return SUPR3HardenedMain("VirtualBox",
+                             fFlags | SUPSECMAIN_FLAGS_TRUSTED_ERROR,
+                             argc, argv, envp);
+# endif
 #else
-    return SUPR3HardenedMain("VirtualBox", fFlags | SUPSECMAIN_FLAGS_TRUSTED_ERROR, argc, argv, envp);
+    return SUPR3HardenedMain("VirtualBoxVM",
+                             fFlags | SUPSECMAIN_FLAGS_TRUSTED_ERROR,
+                             argc, argv, envp);
 #endif
 }
 
