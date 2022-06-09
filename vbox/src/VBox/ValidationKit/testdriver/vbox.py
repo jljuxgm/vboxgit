@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 69574 2017-11-04 08:52:53Z vboxsync $
+# $Id: vbox.py 69575 2017-11-04 08:55:41Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69574 $"
+__version__ = "$Revision: 69575 $"
 
 
 # Standard Python imports.
@@ -1439,7 +1439,7 @@ class TestDriver(base.TestDriver):                                              
             self.oVBoxMgr.xcptToString          = types.MethodType(_xcptToString,        self.oVBoxMgr);
 
 
-    def _teardownVBoxApi(self):
+    def _teardownVBoxApi(self):  # pylint: disable=too-many-statements
         """
         Drop all VBox object references and shutdown com/xpcom.
         """
