@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 69074 2017-10-13 14:04:46Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 70562 2018-01-12 15:09:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -413,6 +413,7 @@ Qt::WindowFlags UIMiniToolBar::defaultWindowFlags(GeometryType geometryType)
         case X11WMType_KWin:
         case X11WMType_Metacity:
         case X11WMType_Mutter:
+        case X11WMType_Xfwm4:
             return geometryType == GeometryType_Full ?
                    Qt::Tool | Qt::FramelessWindowHint :
                    Qt::Window | Qt::FramelessWindowHint;
