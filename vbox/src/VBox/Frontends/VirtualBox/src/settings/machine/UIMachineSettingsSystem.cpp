@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 72467 2018-06-07 08:28:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -581,12 +581,10 @@ void UIMachineSettingsSystem::polishPage()
     m_pCheckBoxPAE->setEnabled(isMachineOffline() && systemData.m_fSupportedPAE);
 
     /* Polish 'Acceleration' availability: */
-    m_pTabWidgetSystem->setTabEnabled(2, systemData.m_fSupportedHwVirtEx);
+    setAccelerationCheckBoxesEnabled(systemData.m_fSupportedHwVirtEx && isMachineOffline());
     m_pLabelParavirtProvider->setEnabled(isMachineOffline());
     m_pComboParavirtProvider->setEnabled(isMachineOffline());
     m_pLabelVirtualization->setEnabled(isMachineOffline());
-    m_pCheckBoxVirtualization->setEnabled(isMachineOffline());
-    m_pCheckBoxNestedPaging->setEnabled(isMachineOffline() && m_pCheckBoxVirtualization->isChecked());
 }
 
 bool UIMachineSettingsSystem::eventFilter(QObject *pObject, QEvent *pEvent)
@@ -1224,3 +1222,8 @@ bool UIMachineSettingsSystem::saveAccelerationData()
     return fSuccess;
 }
 
+void UIMachineSettingsSystem::setAccelerationCheckBoxesEnabled(bool fEnabled)
+{
+    m_pCheckBoxVirtualization->setEnabled(fEnabled);
+    m_pCheckBoxNestedPaging->setEnabled(fEnabled && m_pCheckBoxVirtualization->isChecked());
+}
