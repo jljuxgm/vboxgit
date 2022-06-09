@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 67728 2017-06-30 12:27:58Z vboxsync $ */
 
 /** @file
  *
@@ -54,6 +54,8 @@ public:
 
     int i_loadVDPlugin(const char *pszPluginLibrary);
     int i_unloadVDPlugin(const char *pszPluginLibrary);
+
+    HRESULT i_getDefaultAdditionsISO(com::Utf8Str &aDefaultAdditionsISO);
 
 private:
 
