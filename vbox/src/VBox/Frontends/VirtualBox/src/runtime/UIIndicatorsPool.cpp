@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 68508 2017-08-22 14:42:51Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 68516 2017-08-23 12:29:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -428,7 +428,7 @@ private:
         /* Prepare tool-tip: */
         QString strToolTip = QApplication::translate("UIIndicatorsPool",
                                                      "<nobr>Indicates the activity of the "
-                                                     "audio:</nobr>%1", "Audio tooltip");
+                                                     "audio device:</nobr>%1", "Audio tooltip");
         QString strFullData;
 
         /* Get audio adapter: */
