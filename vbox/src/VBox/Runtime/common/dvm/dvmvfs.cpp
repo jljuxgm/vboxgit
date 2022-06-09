@@ -1,4 +1,4 @@
-/* $Id: dvmvfs.cpp 69942 2017-12-05 23:40:31Z vboxsync $ */
+/* $Id: dvmvfs.cpp 69967 2017-12-07 10:38:48Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - VFS glue.
  */
@@ -617,7 +617,7 @@ static DECLCALLBACK(int) rtDvmVfsDir_SetMode(void *pvThis, RTFMODE fMode, RTFMOD
  * @interface_method_impl{RTVFSOBJSETOPS,pfnSetTimes}
  */
 static DECLCALLBACK(int) rtDvmVfsDir_SetTimes(void *pvThis, PCRTTIMESPEC pAccessTime, PCRTTIMESPEC pModificationTime,
-                                             PCRTTIMESPEC pChangeTime, PCRTTIMESPEC pBirthTime)
+                                              PCRTTIMESPEC pChangeTime, PCRTTIMESPEC pBirthTime)
 {
     NOREF(pvThis); NOREF(pAccessTime); NOREF(pModificationTime); NOREF(pChangeTime); NOREF(pBirthTime);
     return VERR_NOT_SUPPORTED;
