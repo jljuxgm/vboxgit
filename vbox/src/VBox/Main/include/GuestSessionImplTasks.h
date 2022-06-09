@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 71650 2018-04-04 11:59:09Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.h 71657 2018-04-04 13:59:53Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
