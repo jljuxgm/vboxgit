@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 69541 2017-11-01 13:20:00Z vboxsync $
+# $Id: vbox.py 69542 2017-11-01 13:20:49Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69541 $"
+__version__ = "$Revision: 69542 $"
 
 
 # Standard Python imports.
@@ -819,6 +819,8 @@ class TestDriver(base.TestDriver):                                              
         self.fDoHeapChecks = False;
         if 'COMPUTERNAME' in os.environ and utils.getHostOs() == 'windows':
             self.fDoHeapChecks = os.environ['COMPUTERNAME'] in [ 'TESTBOXWIN5', 'WEI01-B6KC-4', 'TESTBOXPILE2' ];
+            if self.fDoHeapChecks:
+                reporter.log('Will do heap checking...');
 
         # Quietly detect build and validation kit.
         self._detectBuild(False);
