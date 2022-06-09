@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69308 2017-10-25 13:51:16Z vboxsync $
+# $Id: .scm-settings 69368 2017-10-26 15:20:19Z vboxsync $
 ## @file
 # Source code massager settings for VBoxGuest
 #
@@ -27,3 +27,4 @@
 # Like the host drivers, this is dual licensed.
 --license-ose-dual
 
+/VBoxGuest-solaris.conf: --treat-as .sh
