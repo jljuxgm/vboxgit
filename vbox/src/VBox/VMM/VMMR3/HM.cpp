@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 72208 2018-05-15 04:11:35Z vboxsync $ */
+/* $Id: HM.cpp 72555 2018-06-14 21:28:31Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -3641,6 +3641,34 @@ static DECLCALLBACK(int) hmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, u
     }
 
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Gets the name of a VT-x exit code.
+ *
+ * @returns Pointer to read only string if @a uExit is known, otherwise NULL.
+ * @param   uExit               The VT-x exit to name.
+ */
+VMMR3DECL(const char *) HMR3GetVmxExitName(uint32_t uExit)
+{
+    if (uExit < RT_ELEMENTS(g_apszVTxExitReasons))
+        return g_apszVTxExitReasons[uExit];
+    return NULL;
+}
+
+
+/**
+ * Gets the name of an AMD-V exit code.
+ *
+ * @returns Pointer to read only string if @a uExit is known, otherwise NULL.
+ * @param   uExit               The AMD-V exit to name.
+ */
+VMMR3DECL(const char *) HMR3GetSvmExitName(uint32_t uExit)
+{
+    if (uExit < RT_ELEMENTS(g_apszAmdVExitReasons))
+        return g_apszAmdVExitReasons[uExit];
+    return hmSvmGetSpecialExitReasonDesc(uExit);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 72546 2018-06-13 15:45:39Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 72555 2018-06-14 21:28:31Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1444,7 +1444,7 @@ int nemR3NativeInitAfterCPUM(PVM pVM)
          * Note! We've already disabled X2APIC via CFGM during the first init call.
          */
 
-#if 1 && defined(DEBUG_bird)
+#if 0 && defined(DEBUG_bird)
         /*
          * Poke and probe a little.
          */

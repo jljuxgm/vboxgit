@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 72526 2018-06-12 13:06:02Z vboxsync $ */
+/* $Id: NEMR3.cpp 72555 2018-06-14 21:28:31Z vboxsync $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -325,6 +325,29 @@ VMMR3_INT_DECL(bool) NEMR3NeedSpecialTscMode(PVM pVM)
     return false;
 }
 
+
+/**
+ * Gets the name of a generic NEM exit code.
+ *
+ * @returns Pointer to read only string if @a uExit is known, otherwise NULL.
+ * @param   uExit               The NEM exit to name.
+ */
+VMMR3DECL(const char *) NEMR3GetExitName(uint32_t uExit)
+{
+    switch ((NEMEXITTYPE)uExit)
+    {
+        case NEMEXITTYPE_UNRECOVERABLE_EXCEPTION:       return "NEM unrecoverable exception";
+        case NEMEXITTYPE_INVALID_VP_REGISTER_VALUE:     return "NEM invalid vp register value";
+        case NEMEXITTYPE_INTTERRUPT_WINDOW:             return "NEM interrupt window";
+        case NEMEXITTYPE_HALT:                          return "NEM halt";
+        case NEMEXITTYPE_XCPT_UD:                       return "NEM #UD";
+        case NEMEXITTYPE_XCPT_DB:                       return "NEM #DB";
+        case NEMEXITTYPE_XCPT_BP:                       return "NEM #BP";
+        case NEMEXITTYPE_CANCELED:                      return "NEM canceled";
+    }
+
+    return NULL;
+}
 
 
 VMMR3_INT_DECL(VBOXSTRICTRC) NEMR3RunGC(PVM pVM, PVMCPU pVCpu)
