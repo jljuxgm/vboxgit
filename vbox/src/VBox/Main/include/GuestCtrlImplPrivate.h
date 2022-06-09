@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 71872 2018-04-17 12:16:10Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 72088 2018-05-03 12:48:34Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1074,6 +1074,8 @@ public:
 
     int                              Cancel(void);
     const ComPtr<IEvent>             Event(void) { return mEvent; }
+    bool                             HasGuestError(void) const { return mRc == VERR_GSTCTL_GUEST_ERROR; }
+    int                              GetGuestError(void) const { return mGuestRc; }
     int                              SignalExternal(IEvent *pEvent);
     const GuestEventTypes            Types(void) { return mEventTypes; }
     size_t                           TypeCount(void) { return mEventTypes.size(); }
