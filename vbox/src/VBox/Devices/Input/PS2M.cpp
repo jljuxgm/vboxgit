@@ -1,4 +1,4 @@
-/* $Id: PS2M.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
+/* $Id: PS2M.cpp 69296 2017-10-25 12:27:00Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -104,6 +104,7 @@
 #include "VBoxDD.h"
 #define IN_PS2M
 #include "PS2Dev.h"
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
@@ -301,6 +302,7 @@ AssertCompile(PS2M_STRUCT_FILLER >= sizeof(PS2M));
 #if defined(RT_STRICT) && defined(IN_RING3)
 static void ps2mTestAccumulation(void);
 #endif
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
