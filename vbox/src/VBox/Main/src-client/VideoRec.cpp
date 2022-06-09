@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 67641 2017-06-27 15:26:41Z vboxsync $ */
+/* $Id: VideoRec.cpp 67642 2017-06-27 15:38:21Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -770,8 +770,6 @@ int VideoRecStreamInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen, const char *pszF
     bool fHasAudioTrack = true;
 #endif
 
-    /** @todo r=bird: This code will ignore the final value/pair iff the option
-     *        string doesn't end with a comma. */
     com::Utf8Str key, value;
     while ((pos = options.parseKeyValue(key, value, pos)) != com::Utf8Str::npos)
     {

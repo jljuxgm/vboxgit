@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 67639 2017-06-27 15:21:40Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 67642 2017-06-27 15:38:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1246,11 +1246,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
                 size_t       uPos = 0;
                 com::Utf8Str strDebugOptions = strParavirtDebug;
-                do
+                com::Utf8Str strKey;
+                com::Utf8Str strVal;
+                while ((uPos = strDebugOptions.parseKeyValue(strKey, strVal, uPos)) != com::Utf8Str::npos)
                 {
-                    com::Utf8Str strKey;
-                    com::Utf8Str strVal;
-                    uPos = strDebugOptions.parseKeyValue(strKey, strVal, uPos);
                     if (strKey == "enabled")
                     {
                         if (strVal.toUInt32() == 1)
@@ -1275,14 +1274,14 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                         fGimHvVsIf = RT_BOOL(strVal.toUInt32());
                     else if (strKey == "hypercallinterface")
                         fGimHvHypercallIf = RT_BOOL(strVal.toUInt32());
-                    else if (strKey.isNotEmpty() || strVal.isNotEmpty())
+                    else
                     {
                         AssertMsgFailed(("Unrecognized Hyper-V debug option '%s'\n", strKey.c_str()));
                         return VMR3SetError(pUVM, VERR_INVALID_PARAMETER, RT_SRC_POS,
                                             N_("Unrecognized Hyper-V debug option '%s' in '%s'"), strKey.c_str(),
                                             strDebugOptions.c_str());
                     }
-                } while (uPos != com::Utf8Str::npos);
+                }
 
                 /* Update HyperV CFGM node with active debug options. */
                 if (fGimHvDebug)
