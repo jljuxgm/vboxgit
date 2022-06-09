@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 69919 2017-12-04 14:00:05Z vboxsync $ */
+/* $Id: DevHDA.cpp 69920 2017-12-04 14:13:15Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -1517,7 +1517,9 @@ static int hdaRegWriteSDSTS(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
     Assert(tsNow >= pStream->State.tsTransferLast);
 
     const uint64_t cTicksElapsed     = tsNow - pStream->State.tsTransferLast;
+#ifdef LOG_ENABLED
     const uint64_t cTicksTransferred = pStream->State.cbTransferProcessed * pStream->State.cTicksPerByte;
+#endif
 
     uint64_t cTicksToNext = pStream->State.cTransferTicks;
 
