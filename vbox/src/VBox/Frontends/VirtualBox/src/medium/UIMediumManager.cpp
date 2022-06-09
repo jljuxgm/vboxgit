@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 68018 2017-07-18 11:46:19Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 68264 2017-08-03 07:35:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -813,9 +813,9 @@ void UIMediumManagerWidget::retranslateUi()
     }
     if (m_pActionDetails)
     {
-        m_pActionDetails->setText(UIMediumManager::tr("&Details..."));
-        m_pActionDetails->setToolTip(tr("Open Disk Image File Details (%1)").arg(m_pActionDetails->shortcut().toString()));
-        m_pActionDetails->setStatusTip(UIMediumManager::tr("Open pane with selected disk image file details"));
+        m_pActionDetails->setText(UIMediumManager::tr("&Properties..."));
+        m_pActionDetails->setToolTip(tr("Open Disk Image File Properties (%1)").arg(m_pActionDetails->shortcut().toString()));
+        m_pActionDetails->setStatusTip(UIMediumManager::tr("Open pane with selected disk image file properties"));
     }
     if (m_pActionRefresh)
     {
