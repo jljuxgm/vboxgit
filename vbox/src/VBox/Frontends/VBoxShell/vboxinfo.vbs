@@ -1,3 +1,8 @@
+' $Id: vboxinfo.vbs 69257 2017-10-25 00:11:10Z vboxsync $
+'' @file
+' ???
+'
+
 '
 ' Copyright (C) 2009-2010 Oracle Corporation
 '
@@ -54,3 +59,4 @@ Sub Main
 End Sub
 
 Main
+
