@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69786 2017-11-21 06:49:59Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69787 2017-11-21 07:16:06Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6378,8 +6378,9 @@ HMSVM_EXIT_DECL hmR0SvmExitReadDRx(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
      */
     if (   !pSvmTransient->fWasHyperDebugStateActive
 #ifdef VBOX_WITH_NESTED_HWVIRT
-           && !CPUMIsGuestInSvmNestedHwVirtMode(pCtx)) /** @todo implement single-stepping when executing a nested-guest. */
+           && !CPUMIsGuestInSvmNestedHwVirtMode(pCtx) /** @todo implement single-stepping when executing a nested-guest. */
 #endif
+       )
     {
         Assert(!DBGFIsStepping(pVCpu)); Assert(!pVCpu->hm.s.fSingleInstruction);
         Log5(("hmR0SvmExitReadDRx: Lazy loading guest debug registers\n"));
