@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 72588 2018-06-17 18:28:31Z vboxsync $ */
+/* $Id: DevATA.cpp 72589 2018-06-17 18:31:19Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -7621,6 +7621,8 @@ static DECLCALLBACK(int) ataR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
             PDMDevHlpSTAMRegisterF(pDevIns, &pIf->StatFlushes,      STAMTYPE_PROFILE,     STAMVISIBILITY_ALWAYS, STAMUNIT_TICKS_PER_CALL,
                                    "Profiling of the flush operations.",        "/Devices/IDE%d/ATA%d/Unit%d/Flushes", iInstance, i, j);
 #endif
+            PDMDevHlpSTAMRegisterF(pDevIns, &pIf->StatStatusYields, STAMTYPE_PROFILE,     STAMVISIBILITY_ALWAYS, STAMUNIT_TICKS_PER_CALL,
+                                   "Profiling of status polling yields.",        "/Devices/IDE%d/ATA%d/Unit%d/StatusYields", iInstance, i, j);
         }
 #ifdef VBOX_WITH_STATISTICS /** @todo release too. */
         PDMDevHlpSTAMRegisterF(pDevIns, &pThis->aCts[i].StatAsyncOps,     STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,
