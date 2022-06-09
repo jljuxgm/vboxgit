@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.h 70529 2018-01-11 07:46:27Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.h 70549 2018-01-12 07:46:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -49,7 +49,7 @@ public:
     /* Clear the bookmark list and show this list instead. Probably done after
        user switches to another log page tab etc. */
     void setBookmarksList(const QVector<QPair<int, QString> > &bookmarkList);
-    void updateBookmarkList(const QVector<QPair<int, QString> > *bookmarkVector);
+    void updateBookmarkList(const QVector<QPair<int, QString> > &bookmarkVector);
 
 public slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.cpp 70529 2018-01-11 07:46:27Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.cpp 70549 2018-01-12 07:46:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -47,20 +47,18 @@ UIVMLogViewerBookmarksPanel::UIVMLogViewerBookmarksPanel(QWidget *pParent, UIVML
     prepare();
 }
 
-void UIVMLogViewerBookmarksPanel::updateBookmarkList(const QVector<QPair<int, QString> > *bookmarkVector)
+void UIVMLogViewerBookmarksPanel::updateBookmarkList(const QVector<QPair<int, QString> > &bookmarkVector)
 {
     if (!m_pBookmarksComboBox || !viewer())
-        return;
-    if (!bookmarkVector)
         return;
 
     m_pBookmarksComboBox->clear();
     QStringList bList;
     bList << "Bookmarks List";
-    for(int i = 0; i < bookmarkVector->size(); ++i)
+    for(int i = 0; i < bookmarkVector.size(); ++i)
     {
         QString strItem = QString("BookMark %1 at Line %2: %3").arg(QString::number(i)).
-            arg(QString::number(bookmarkVector->at(i).first)).arg(bookmarkVector->at(i).second);
+            arg(QString::number(bookmarkVector.at(i).first)).arg(bookmarkVector.at(i).second);
 
         if (strItem.length() > m_iMaxBookmarkTextLength)
         {
