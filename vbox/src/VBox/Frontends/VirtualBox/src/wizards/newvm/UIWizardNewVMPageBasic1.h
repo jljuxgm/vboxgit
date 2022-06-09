@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 72185 2018-05-10 07:29:57Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 72186 2018-05-10 07:36:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -37,9 +37,9 @@ protected:
     void onNameChanged(QString strNewName);
     void onOsTypeChanged();
 
-    /* Helping stuff: */
-    //bool machineFolderCreated();
     bool createMachineFolder();
+    /** Removes a previously created folder (if exists) before creating a new one.
+     *  used during page cleanup and new folder creation. */
     bool cleanupMachineFolder();
 
     QString machineFilePath() const;
@@ -63,7 +63,8 @@ private:
     QString m_strMachineFilePath;
     /** Path of the folder hosting the machine's configuration file. Generated from m_strMachineFilePath. */
     QString m_strMachineFolder;
-    /** Path of the folder created by this wizard page. Used to remove previously created folders etc. */
+    /** Path of the folder created by this wizard page. Used to remove previously created
+     *  folder. see cleanupMachineFolder();*/
     QString m_strCreatedFolder;
     /** Base name of the machine is generated from the m_strMachineFilePath. */
     QString m_strMachineBaseName;

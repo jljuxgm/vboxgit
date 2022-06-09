@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 72185 2018-05-10 07:29:57Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 72186 2018-05-10 07:36:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -214,11 +214,6 @@ void UIWizardNewVMPage1::onOsTypeChanged()
     if (m_pNameAndSystemEditor)
         m_pNameAndSystemEditor->disconnect(SIGNAL(sigNameChanged(const QString &)), thisImp(), SLOT(sltNameChanged(const QString &)));
 }
-
-// bool UIWizardNewVMPage1::machineFolderCreated()
-// {
-//     return !m_strMachineFolder.isEmpty();
-// }
 
 void UIWizardNewVMPage1::composeMachineFilePath()
 {
