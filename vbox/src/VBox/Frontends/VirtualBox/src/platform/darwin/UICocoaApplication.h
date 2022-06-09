@@ -1,4 +1,4 @@
-/* $Id: UICocoaApplication.h 71661 2018-04-04 15:16:37Z vboxsync $ */
+/* $Id: UICocoaApplication.h 71665 2018-04-04 15:46:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaApplication class declaration.
  */
@@ -24,6 +24,7 @@
 /* GUI includes: */
 #include "VBoxCocoaHelper.h"
 #include "VBoxUtils-darwin.h"
+#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QObject;
@@ -49,7 +50,7 @@ typedef void (*PfnStandardWindowButtonCallbackForQWidget)(StandardWindowButtonTy
 
 
 /** Singleton prototype for our private NSApplication object. */
-class UICocoaApplication
+class SHARED_LIBRARY_STUFF UICocoaApplication
 {
 public:
 

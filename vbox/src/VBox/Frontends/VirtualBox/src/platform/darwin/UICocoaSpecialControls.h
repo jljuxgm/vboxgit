@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.h 71577 2018-03-29 17:13:05Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.h 71665 2018-04-04 15:46:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaSpecialControls class declaration.
  */
@@ -24,13 +24,14 @@
 
 /* GUI includes: */
 #include "VBoxCocoaHelper.h"
+#include "UILibraryDefs.h"
 
 /* Add typedefs for Cocoa types: */
 ADD_COCOA_NATIVE_REF(NSButton);
 
 /** QMacCocoaViewContainer extension,
   * used as cocoa button container. */
-class UICocoaButton : public QMacCocoaViewContainer
+class SHARED_LIBRARY_STUFF UICocoaButton : public QMacCocoaViewContainer
 {
     Q_OBJECT
 

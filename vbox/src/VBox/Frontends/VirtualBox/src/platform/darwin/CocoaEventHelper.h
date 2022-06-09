@@ -1,4 +1,4 @@
-/* $Id: CocoaEventHelper.h 71655 2018-04-04 13:27:43Z vboxsync $ */
+/* $Id: CocoaEventHelper.h 71665 2018-04-04 15:46:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Darwin Cocoa specific event-handling tasks.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___CocoaEventHelper_h
 #define ___CocoaEventHelper_h
+
+/* GUI includes: */
+#include "UILibraryDefs.h"
 
 /* Other VBox includes: */
 #include <iprt/cdefs.h>
@@ -40,7 +43,7 @@ const char *darwinEventTypeName(unsigned long enmEventType);
 void darwinPrintEvent(const char *pszPrefix, ConstNativeNSEventRef pEvent);
 
 /** Posts stripped mouse event based on passed @a pEvent. */
-void darwinPostStrippedMouseEvent(ConstNativeNSEventRef pEvent);
+SHARED_LIBRARY_STUFF void darwinPostStrippedMouseEvent(ConstNativeNSEventRef pEvent);
 
 RT_C_DECLS_END
 
