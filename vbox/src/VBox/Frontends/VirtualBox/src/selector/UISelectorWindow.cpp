@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 68435 2017-08-17 08:59:12Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 68455 2017-08-18 09:54:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -500,6 +500,9 @@ void UISelectorWindow::sltOpenImportApplianceWizard(const QString &strFileName /
     QString strTmpFile = strFileName;
 #endif /* !VBOX_WS_MAC */
 
+    /* Lock the action preventing cascade calls: */
+    actionPool()->action(UIActionIndexST_M_File_S_ImportAppliance)->setEnabled(false);
+
     /* Use the "safe way" to open stack of Mac OS X Sheets: */
     QWidget *pWizardParent = windowManager().realParentWindow(this);
     UISafePointerWizardImportApp pWizard = new UIWizardImportApp(pWizardParent, strTmpFile);
@@ -509,6 +512,9 @@ void UISelectorWindow::sltOpenImportApplianceWizard(const QString &strFileName /
         pWizard->exec();
     if (pWizard)
         delete pWizard;
+
+    /* Unlock the action allowing further calls: */
+    actionPool()->action(UIActionIndexST_M_File_S_ImportAppliance)->setEnabled(true);
 }
 
 void UISelectorWindow::sltOpenExportApplianceWizard()
@@ -521,12 +527,21 @@ void UISelectorWindow::sltOpenExportApplianceWizard()
     QStringList names;
     for (int i = 0; i < items.size(); ++i)
         names << items[i]->name();
-    /* Show Export Appliance wizard: */
-    UISafePointerWizard pWizard = new UIWizardExportApp(this, names);
+
+    /* Lock the action preventing cascade calls: */
+    actionPool()->action(UIActionIndexST_M_File_S_ExportAppliance)->setEnabled(false);
+
+    /* Use the "safe way" to open stack of Mac OS X Sheets: */
+    QWidget *pWizardParent = windowManager().realParentWindow(this);
+    UISafePointerWizard pWizard = new UIWizardExportApp(pWizardParent, names);
+    windowManager().registerNewParent(pWizard, pWizardParent);
     pWizard->prepare();
     pWizard->exec();
     if (pWizard)
         delete pWizard;
+
+    /* Unlock the action allowing further calls: */
+    actionPool()->action(UIActionIndexST_M_File_S_ExportAppliance)->setEnabled(true);
 }
 
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
