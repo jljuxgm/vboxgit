@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 67175 2017-05-31 14:38:02Z vboxsync $ */
+/* $Id: vbox_main.c 67269 2017-06-06 11:55:09Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -273,9 +273,10 @@ static bool have_hgsmi_mode_hints(struct vbox_private *vbox)
  *  to the memory manager. */
 static int vbox_hw_init(struct vbox_private *vbox)
 {
+    int ret;
+
     vbox->full_vram_size = VBoxVideoGetVRAMSize();
     vbox->any_pitch = VBoxVideoAnyWidthAllowed();
-    int ret;
 
     DRM_INFO("VRAM %08x\n", vbox->full_vram_size);
 
