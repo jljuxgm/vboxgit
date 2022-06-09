@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 68243 2017-08-02 13:20:54Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 68251 2017-08-02 15:11:20Z vboxsync $ */
 /** @file
  * Implementeation of algorithms which read/parse/save scripts for unattended installation.
  */
@@ -612,6 +612,11 @@ HRESULT UnattendedScriptTemplate::getConditional(const char *pachPlaceholder, si
         *pfOutputting = mpUnattended->i_getPostInstallCommand().isNotEmpty();
     else if (IS_PLACEHOLDER_MATCH("HAS_NO_POST_INSTALL_COMMAND"))
         *pfOutputting = !mpUnattended->i_getPostInstallCommand().isNotEmpty();
+    /* Product key: */
+    else if (IS_PLACEHOLDER_MATCH("HAS_PRODUCT_KEY"))
+        *pfOutputting = mpUnattended->i_getProductKey().isNotEmpty();
+    else if (IS_PLACEHOLDER_MATCH("HAS_NO_PRODUCT_KEY"))
+        *pfOutputting = !mpUnattended->i_getProductKey().isNotEmpty();
     /* Minimal installation: */
     else if (IS_PLACEHOLDER_MATCH("IS_MINIMAL_INSTALLATION"))
         *pfOutputting = mpUnattended->i_isMinimalInstallation();
