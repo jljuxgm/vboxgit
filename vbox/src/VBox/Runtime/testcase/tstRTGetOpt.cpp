@@ -1,4 +1,4 @@
-/* $Id: tstRTGetOpt.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTGetOpt.cpp 71009 2018-02-14 13:29:47Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTGetOpt
  */
@@ -637,6 +637,20 @@ int main()
     CHECK(Val.pDef == NULL);
     CHECK(argc4 == GetState.iNext);
 
+    /*
+     * Some negative testing.
+     */
+    const char *argv5[] =
+    {
+        "non-option-argument",
+        "--optwithstring",  /* missing string */
+        /* done */
+        NULL
+    };
+    int argc5 = (int)RT_ELEMENTS(argv5) - 1;
+    CHECK(RT_SUCCESS(RTGetOptInit(&GetState, argc5, (char **)argv5, &s_aOpts2[0], RT_ELEMENTS(s_aOpts2), 0,
+                                  RTGETOPTINIT_FLAGS_OPTS_FIRST)));
+    RTTESTI_CHECK_RC(RTGetOpt(&GetState, &Val), VERR_GETOPT_REQUIRED_ARGUMENT_MISSING);
 
 
     /*
