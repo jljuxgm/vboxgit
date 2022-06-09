@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 70040 2017-12-08 18:07:32Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 70094 2017-12-12 18:32:20Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Internal Header.
  */
@@ -324,6 +324,7 @@ RT_C_DECLS_BEGIN
 
 int  VGDrvCommonInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase, void *pvMMIOBase, uint32_t cbMMIO,
                            VBOXOSTYPE enmOSType, uint32_t fEvents);
+bool VBDrvCommonIsOptionValueTrue(const char *pszValue);
 void VGDrvCommonProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, const char *pszValue);
 void VGDrvCommonProcessOptionsFromHost(PVBOXGUESTDEVEXT pDevExt);
 bool VGDrvCommonIsOurIRQ(PVBOXGUESTDEVEXT pDevExt);
