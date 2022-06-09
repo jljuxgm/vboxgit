@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 67419 2017-06-15 09:37:52Z vboxsync $ */
+/* $Id: UISelectorWindow.h 67422 2017-06-15 11:10:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -55,6 +55,7 @@ class UISelectorWindow : public QIWithRetranslateUI<QIMainWindow>
     {
         SegmentType_Details,
         SegmentType_Tools,
+        SegmentType_None,
     };
 
 public:

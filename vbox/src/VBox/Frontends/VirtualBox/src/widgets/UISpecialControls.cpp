@@ -1,4 +1,4 @@
-/* $Id: UISpecialControls.cpp 63962 2016-09-22 18:02:33Z vboxsync $ */
+/* $Id: UISpecialControls.cpp 67422 2017-06-15 11:10:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSpecialButtons implementation.
  */
@@ -266,6 +266,11 @@ UIRoundRectSegmentedButton::~UIRoundRectSegmentedButton()
 {
     delete m_pSignalMapper;
     qDeleteAll(m_pButtons);
+}
+
+int UIRoundRectSegmentedButton::count() const
+{
+    return m_pButtons.size();
 }
 
 void UIRoundRectSegmentedButton::setTitle(int iSegment, const QString &aTitle)
