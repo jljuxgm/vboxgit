@@ -1,10 +1,10 @@
-/* $Id: STAM.cpp 68519 2017-08-23 14:28:01Z vboxsync $ */
+/* $Id: STAM.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

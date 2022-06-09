@@ -1,10 +1,10 @@
-/* $Id: dbgcfg.cpp 62566 2016-07-26 15:16:41Z vboxsync $ */
+/* $Id: dbgcfg.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

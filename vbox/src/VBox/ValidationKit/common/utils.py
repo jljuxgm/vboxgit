@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 68314 2017-08-07 10:14:51Z vboxsync $
+# $Id: utils.py 69111 2017-10-17 14:26:02Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -8,7 +8,7 @@ Common Utility Functions.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2016 Oracle Corporation
+Copyright (C) 2012-2017 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 68314 $"
+__version__ = "$Revision: 69111 $"
 
 
 # Standard Python imports.

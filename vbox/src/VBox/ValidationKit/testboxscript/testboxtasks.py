@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxtasks.py 65970 2017-03-07 11:05:12Z vboxsync $
+# $Id: testboxtasks.py 69111 2017-10-17 14:26:02Z vboxsync $
 
 """
 TestBox Script - Async Tasks.
@@ -7,7 +7,7 @@ TestBox Script - Async Tasks.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2016 Oracle Corporation
+Copyright (C) 2012-2017 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65970 $"
+__version__ = "$Revision: 69111 $"
 
 
 # Standard python imports.

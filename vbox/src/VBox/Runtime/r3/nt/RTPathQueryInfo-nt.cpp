@@ -1,10 +1,10 @@
-/* $Id: RTPathQueryInfo-nt.cpp 64646 2016-11-10 20:08:28Z vboxsync $ */
+/* $Id: RTPathQueryInfo-nt.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - RTPathQueryInfo[Ex], Native NT.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

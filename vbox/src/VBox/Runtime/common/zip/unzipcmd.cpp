@@ -1,10 +1,10 @@
-/* $Id: unzipcmd.cpp 66602 2017-04-18 15:27:30Z vboxsync $ */
+/* $Id: unzipcmd.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - A mini UNZIP Command.
  */
 
 /*
- * Copyright (C) 2014-2016 Oracle Corporation
+ * Copyright (C) 2014-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

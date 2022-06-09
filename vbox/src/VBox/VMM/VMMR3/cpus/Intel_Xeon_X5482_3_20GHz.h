@@ -1,11 +1,11 @@
-/* $Id: Intel_Xeon_X5482_3_20GHz.h 68533 2017-08-26 13:19:08Z vboxsync $ */
+/* $Id: Intel_Xeon_X5482_3_20GHz.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Xeon X5482 3.20GHz".
  * Generated at 2013-12-16T12:10:52Z by VBoxCpuReport v4.3.53r91299 on darwin.amd64.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

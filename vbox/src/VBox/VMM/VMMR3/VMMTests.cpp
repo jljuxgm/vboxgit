@@ -1,10 +1,10 @@
-/* $Id: VMMTests.cpp 66848 2017-05-09 13:04:57Z vboxsync $ */
+/* $Id: VMMTests.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

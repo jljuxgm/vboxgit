@@ -1,10 +1,10 @@
-/* $Id: DBGFR3Trace.cpp 67724 2017-06-30 10:40:14Z vboxsync $ */
+/* $Id: DBGFR3Trace.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Tracing.
  */
 
 /*
- * Copyright (C) 2011-2016 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

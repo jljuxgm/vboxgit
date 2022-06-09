@@ -1,10 +1,10 @@
--- $Id: useraccount.pgsql 65914 2017-03-01 16:09:45Z vboxsync $
+-- $Id: useraccount.pgsql 69111 2017-10-17 14:26:02Z vboxsync $
 --- @file
 -- VBox Test Manager Database Stored Procedures - UserAccounts.
 --
 
 --
--- Copyright (C) 2012-2015 Oracle Corporation
+-- Copyright (C) 2012-2017 Oracle Corporation
 --
 -- This file is part of VirtualBox Open Source Edition (OSE), as
 -- available from http://www.virtualbox.org. This file is free software;

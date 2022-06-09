@@ -1,10 +1,10 @@
-/* $Id: EMHandleRCTmpl.h 65989 2017-03-07 21:36:03Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

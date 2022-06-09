@@ -1,10 +1,10 @@
-/* $Id: digest-vfs.cpp 59620 2016-02-10 00:47:33Z vboxsync $ */
+/* $Id: digest-vfs.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Cryptographic Hash / Message Digest API, VFS related interfaces
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

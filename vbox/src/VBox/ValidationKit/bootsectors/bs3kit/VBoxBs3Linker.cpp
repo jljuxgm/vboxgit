@@ -1,10 +1,10 @@
-/* $Id: VBoxBs3Linker.cpp 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: VBoxBs3Linker.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 "linker".
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -150,7 +150,7 @@ int main(int argc, char **argv)
                     }
 
                     case 'V':
-                        printf("%s\n", "$Revision: 62484 $");
+                        printf("%s\n", "$Revision: 69111 $");
                         free(paInputs);
                         return 0;
 

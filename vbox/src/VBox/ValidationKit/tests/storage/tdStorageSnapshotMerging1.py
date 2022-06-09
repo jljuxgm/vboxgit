@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageSnapshotMerging1.py 67039 2017-05-23 11:33:27Z vboxsync $
+# $Id: tdStorageSnapshotMerging1.py 69111 2017-10-17 14:26:02Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage snapshotting and merging testcase.
@@ -8,7 +8,7 @@ VirtualBox Validation Kit - Storage snapshotting and merging testcase.
 
 __copyright__ = \
 """
-Copyright (C) 2013-2016 Oracle Corporation
+Copyright (C) 2013-2017 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdStorageSnapshotMerging1.py 67039 2017-05-23 11:33:27Z vboxsync $"
+__version__ = "$Id: tdStorageSnapshotMerging1.py 69111 2017-10-17 14:26:02Z vboxsync $"
 
 
 # Standard Python imports.

@@ -1,10 +1,10 @@
-/* $Id: tstRTMp-1.cpp 64281 2016-10-15 16:46:29Z vboxsync $ */
+/* $Id: tstRTMp-1.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMp.
  */
 
 /*
- * Copyright (C) 2008-2016 Oracle Corporation
+ * Copyright (C) 2008-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
--- $Id: TestManagerDatabaseForeignKeyErHacks2.pgsql 56295 2015-06-09 14:29:55Z vboxsync $
+-- $Id: TestManagerDatabaseForeignKeyErHacks2.pgsql 69111 2017-10-17 14:26:02Z vboxsync $
 --- @file
 -- VBox Test Manager Database Addendum that adds non-unique foreign keys to Users.
 --
@@ -7,7 +7,7 @@
 --
 
 --
--- Copyright (C) 2012-2015 Oracle Corporation
+-- Copyright (C) 2012-2017 Oracle Corporation
 --
 -- This file is part of VirtualBox Open Source Edition (OSE), as
 -- available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: testi.cpp 62915 2016-08-03 13:59:43Z vboxsync $ */
+/* $Id: testi.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework, the implicit test handle API variation.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

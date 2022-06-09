@@ -1,10 +1,10 @@
-/* $Id: IOMAllMMIO.cpp 65622 2017-02-06 13:56:38Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

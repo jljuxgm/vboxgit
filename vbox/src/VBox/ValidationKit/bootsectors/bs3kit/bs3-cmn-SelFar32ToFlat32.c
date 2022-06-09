@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-SelFar32ToFlat32.c 66158 2017-03-17 22:15:20Z vboxsync $ */
+/* $Id: bs3-cmn-SelFar32ToFlat32.c 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SelFar32ToFlat32
  */
 
 /*
- * Copyright (C) 2007-2016 Oracle Corporation
+ * Copyright (C) 2007-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

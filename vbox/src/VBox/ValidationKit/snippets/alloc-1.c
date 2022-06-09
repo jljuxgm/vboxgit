@@ -1,10 +1,10 @@
-/* $Id: alloc-1.c 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: alloc-1.c 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * Allocate lots of memory, portable ANSI C code.
  */
 
 /*
- * Copyright (C) 2007-2016 Oracle Corporation
+ * Copyright (C) 2007-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

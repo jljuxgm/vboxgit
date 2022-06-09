@@ -1,10 +1,10 @@
-/* $Id: bs3kit-docs.c 60600 2016-04-20 13:16:20Z vboxsync $ */
+/* $Id: bs3kit-docs.c 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * BS3Kit - Documentation.
  */
 
 /*
- * Copyright (C) 2007-2016 Oracle Corporation
+ * Copyright (C) 2007-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

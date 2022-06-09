@@ -1,10 +1,10 @@
-/* $Id: tstSSM-2.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: tstSSM-2.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase: Extract the content of a saved state.
  */
 
 /*
- * Copyright (C) 2015-2016 Oracle Corporation
+ * Copyright (C) 2015-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

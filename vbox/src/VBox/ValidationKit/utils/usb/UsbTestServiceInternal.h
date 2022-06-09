@@ -1,10 +1,10 @@
-/* $Id: UsbTestServiceInternal.h 64365 2016-10-22 16:33:45Z vboxsync $ */
+/* $Id: UsbTestServiceInternal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Internal Header.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

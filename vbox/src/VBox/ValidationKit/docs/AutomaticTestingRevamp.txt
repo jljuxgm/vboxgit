@@ -1057,6 +1057,6 @@ Discussion Logs
 
 -----
 
-:Status: $Id: AutomaticTestingRevamp.txt 61474 2016-06-05 21:02:01Z vboxsync $
-:Copyright: Copyright (C) 2010-2016 Oracle Corporation.
+:Status: $Id: AutomaticTestingRevamp.txt 69111 2017-10-17 14:26:02Z vboxsync $
+:Copyright: Copyright (C) 2010-2017 Oracle Corporation.
 

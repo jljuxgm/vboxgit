@@ -1,9 +1,9 @@
-; $Id: VMMR3.def 65896 2017-02-28 12:17:31Z vboxsync $
+; $Id: VMMR3.def 69111 2017-10-17 14:26:02Z vboxsync $
 ;; @file
 ; VMM Ring-3 Context DLL - Definition file.
 
 ;
-; Copyright (C) 2010-2016 Oracle Corporation
+; Copyright (C) 2010-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

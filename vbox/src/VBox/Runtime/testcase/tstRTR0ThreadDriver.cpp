@@ -1,10 +1,10 @@
-/* $Id: tstRTR0ThreadDriver.cpp 62721 2016-07-29 22:31:28Z vboxsync $ */
+/* $Id: tstRTR0ThreadDriver.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Kernel thread, driver program.
  */
 
 /*
- * Copyright (C) 2015-2016 Oracle Corporation
+ * Copyright (C) 2015-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

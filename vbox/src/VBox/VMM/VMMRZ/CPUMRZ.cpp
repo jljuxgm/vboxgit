@@ -1,10 +1,10 @@
-/* $Id: CPUMRZ.cpp 66878 2017-05-12 12:40:17Z vboxsync $ */
+/* $Id: CPUMRZ.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * CPUM - Raw-mode and ring-0 context.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstRTAssertCompile.cpp 62866 2016-08-02 10:19:44Z vboxsync $ */
+/* $Id: tstRTAssertCompile.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT Testcase - AssertCompile* - A Compile Time Testcase.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

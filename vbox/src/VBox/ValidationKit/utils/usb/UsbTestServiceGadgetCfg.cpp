@@ -1,10 +1,10 @@
-/* $Id: UsbTestServiceGadgetCfg.cpp 61024 2016-05-18 07:45:51Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetCfg.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget Cfg API.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

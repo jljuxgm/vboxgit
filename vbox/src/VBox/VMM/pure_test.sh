@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: pure_test.sh 56312 2015-06-09 22:49:55Z vboxsync $
+# $Id: pure_test.sh 69111 2017-10-17 14:26:02Z vboxsync $
 ## @file
 # pure_test.sh - test the effect of __attribute__((pure)) on a set of
 #                functions.
@@ -10,7 +10,7 @@
 #
 
 #
-# Copyright (C) 2010-2015 Oracle Corporation
+# Copyright (C) 2010-2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

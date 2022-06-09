@@ -1,10 +1,10 @@
-/* $Id: PATMInternal.h 63226 2016-08-09 16:41:16Z vboxsync $ */
+/* $Id: PATMInternal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

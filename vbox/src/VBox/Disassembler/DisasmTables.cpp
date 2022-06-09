@@ -1,10 +1,10 @@
-/* $Id: DisasmTables.cpp 68191 2017-07-31 10:28:22Z vboxsync $ */
+/* $Id: DisasmTables.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

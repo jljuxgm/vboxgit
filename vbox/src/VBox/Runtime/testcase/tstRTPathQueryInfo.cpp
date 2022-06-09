@@ -1,10 +1,10 @@
-/* $Id: tstRTPathQueryInfo.cpp 64649 2016-11-11 09:32:03Z vboxsync $ */
+/* $Id: tstRTPathQueryInfo.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTPathQueryInfoEx testcase
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

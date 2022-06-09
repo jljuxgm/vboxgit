@@ -1,10 +1,10 @@
-/* $Id: semmutex-linux.cpp 63417 2016-08-13 16:42:19Z vboxsync $ */
+/* $Id: semmutex-linux.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphore, Linux  (2.6.x+).
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

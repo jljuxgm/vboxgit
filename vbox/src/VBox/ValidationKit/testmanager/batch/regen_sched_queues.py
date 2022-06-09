@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: regen_sched_queues.py 65978 2017-03-07 12:18:34Z vboxsync $
+# $Id: regen_sched_queues.py 69111 2017-10-17 14:26:02Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -9,7 +9,7 @@ Interface used by the admin to regenerate scheduling queues.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2016 Oracle Corporation
+Copyright (C) 2012-2017 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65978 $"
+__version__ = "$Revision: 69111 $"
 
 # Standard python imports
 import sys;

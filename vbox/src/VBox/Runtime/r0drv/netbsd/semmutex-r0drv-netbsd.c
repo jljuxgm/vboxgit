@@ -1,10 +1,10 @@
-/* $Id: semmutex-r0drv-netbsd.c 63345 2016-08-11 18:25:33Z vboxsync $ */
+/* $Id: semmutex-r0drv-netbsd.c 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, NetBSD.
  */
 
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

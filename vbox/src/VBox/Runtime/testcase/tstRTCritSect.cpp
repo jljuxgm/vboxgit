@@ -1,10 +1,10 @@
-/* $Id: tstRTCritSect.cpp 62721 2016-07-29 22:31:28Z vboxsync $ */
+/* $Id: tstRTCritSect.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT Testcase - Critical Sections.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -494,7 +494,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 62721 $\n");
+                RTPrintf("$Revision: 69111 $\n");
                 return 0;
 
             default:

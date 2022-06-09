@@ -1,10 +1,10 @@
-/* $Id: IEMR3.cpp 66650 2017-04-22 09:28:16Z vboxsync $ */
+/* $Id: IEMR3.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
 
 /*
- * Copyright (C) 2011-2016 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

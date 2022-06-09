@@ -1,10 +1,10 @@
-/* $Id: vfschain.cpp 67133 2017-05-29 17:51:35Z vboxsync $ */
+/* $Id: vfschain.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Chains.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

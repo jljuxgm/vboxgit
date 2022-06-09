@@ -1,10 +1,10 @@
-/* $Id: vts_rm.cpp 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: vts_rm.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - rm like utility.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

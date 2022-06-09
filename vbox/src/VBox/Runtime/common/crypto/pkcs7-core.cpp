@@ -1,10 +1,10 @@
-/* $Id: pkcs7-core.cpp 64883 2016-12-15 15:26:20Z vboxsync $ */
+/* $Id: pkcs7-core.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Core APIs.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

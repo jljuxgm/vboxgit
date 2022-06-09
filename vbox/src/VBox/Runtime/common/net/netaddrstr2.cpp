@@ -1,10 +1,10 @@
-/* $Id: netaddrstr2.cpp 67415 2017-06-15 06:29:54Z vboxsync $ */
+/* $Id: netaddrstr2.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Network Address String Handling.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

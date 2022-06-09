@@ -1,10 +1,10 @@
-/* $Id: initterm-r0drv-nt.cpp 65414 2017-01-24 10:32:58Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

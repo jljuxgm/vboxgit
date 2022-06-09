@@ -1,10 +1,10 @@
-; $Id: bootsector-pae.asm 66149 2017-03-16 22:41:19Z vboxsync $
+; $Id: bootsector-pae.asm 69111 2017-10-17 14:26:02Z vboxsync $
 ;; @file
 ; Bootsector that switches the CPU info PAE mode.
 ;
 
 ;
-; Copyright (C) 2007-2016 Oracle Corporation
+; Copyright (C) 2007-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

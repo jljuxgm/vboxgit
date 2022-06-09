@@ -1,10 +1,10 @@
-/* $Id: tstRTJson.cpp 65202 2017-01-09 12:42:54Z vboxsync $ */
+/* $Id: tstRTJson.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT Testcase - JSON API.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

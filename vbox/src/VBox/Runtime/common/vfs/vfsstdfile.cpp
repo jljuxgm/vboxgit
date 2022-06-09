@@ -1,10 +1,10 @@
-/* $Id: vfsstdfile.cpp 66652 2017-04-24 09:48:49Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

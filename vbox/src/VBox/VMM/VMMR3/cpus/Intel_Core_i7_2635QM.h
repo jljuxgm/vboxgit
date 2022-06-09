@@ -1,11 +1,11 @@
-/* $Id: Intel_Core_i7_2635QM.h 66403 2017-04-03 15:21:26Z vboxsync $ */
+/* $Id: Intel_Core_i7_2635QM.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-2635QM".
  * Generated at 2014-02-28T18:53:09Z by VBoxCpuReport v4.3.53r92586 on darwin.amd64.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

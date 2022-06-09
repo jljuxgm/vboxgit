@@ -1,10 +1,10 @@
-/* $Id: PGMAllMap.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

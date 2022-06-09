@@ -1,10 +1,10 @@
-; $Id: ASMBitFirstSetU16.asm 59861 2016-02-26 19:56:44Z vboxsync $
+; $Id: ASMBitFirstSetU16.asm 69111 2017-10-17 14:26:02Z vboxsync $
 ;; @file
 ; IPRT - ASMBitFirstSetU16().
 ;
 
 ;
-; Copyright (C) 2006-2016 Oracle Corporation
+; Copyright (C) 2006-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

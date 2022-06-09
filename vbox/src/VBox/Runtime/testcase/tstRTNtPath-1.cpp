@@ -1,10 +1,10 @@
-/* $Id: tstRTNtPath-1.cpp 64739 2016-11-23 15:14:22Z vboxsync $ */
+/* $Id: tstRTNtPath-1.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTNtPath*.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: asn1-ut-null.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: asn1-ut-null.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, NULL type.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

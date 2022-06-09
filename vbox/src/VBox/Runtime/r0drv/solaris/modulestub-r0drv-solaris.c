@@ -1,10 +1,10 @@
-/* $Id: modulestub-r0drv-solaris.c 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: modulestub-r0drv-solaris.c 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Solaris stubs
  */
 
 /*
- * Copyright (C) 2011-2016 Oracle Corporation
+ * Copyright (C) 2011-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

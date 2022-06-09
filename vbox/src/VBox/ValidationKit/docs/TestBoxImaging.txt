@@ -364,7 +364,7 @@ Troubleshooting
 
 -----
 
-:Status: $Id: TestBoxImaging.txt 64653 2016-11-11 21:57:24Z vboxsync $
-:Copyright: Copyright (C) 2010-2016 Oracle Corporation.
+:Status: $Id: TestBoxImaging.txt 69111 2017-10-17 14:26:02Z vboxsync $
+:Copyright: Copyright (C) 2010-2017 Oracle Corporation.
 
 

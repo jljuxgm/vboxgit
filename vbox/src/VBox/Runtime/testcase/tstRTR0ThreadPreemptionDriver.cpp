@@ -1,10 +1,10 @@
-/* $Id: tstRTR0ThreadPreemptionDriver.cpp 62725 2016-07-30 00:13:16Z vboxsync $ */
+/* $Id: tstRTR0ThreadPreemptionDriver.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UsbTestService.cpp 65188 2017-01-06 15:49:24Z vboxsync $ */
+/* $Id: UsbTestService.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1551,7 +1551,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 65188 $\n");
+                RTPrintf("$Revision: 69111 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 

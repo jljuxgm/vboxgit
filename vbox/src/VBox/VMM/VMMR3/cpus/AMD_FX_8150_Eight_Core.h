@@ -1,11 +1,11 @@
-/* $Id: AMD_FX_8150_Eight_Core.h 66403 2017-04-03 15:21:26Z vboxsync $ */
+/* $Id: AMD_FX_8150_Eight_Core.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * CPU database entry "AMD FX-8150 Eight-Core".
  * Generated at 2013-12-09T11:27:04Z by VBoxCpuReport v4.3.51r91084 on win.amd64.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

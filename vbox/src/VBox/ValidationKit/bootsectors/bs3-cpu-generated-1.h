@@ -1,10 +1,10 @@
-/* $Id: bs3-cpu-generated-1.h 67072 2017-05-25 08:26:51Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
 
 /*
- * Copyright (C) 2007-2016 Oracle Corporation
+ * Copyright (C) 2007-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

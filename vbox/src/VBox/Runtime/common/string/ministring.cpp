@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 68154 2017-07-28 11:58:57Z vboxsync $ */
+/* $Id: ministring.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2007-2016 Oracle Corporation
+ * Copyright (C) 2007-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

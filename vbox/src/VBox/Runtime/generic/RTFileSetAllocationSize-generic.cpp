@@ -1,10 +1,10 @@
-/* $Id: RTFileSetAllocationSize-generic.cpp 59461 2016-01-25 14:56:07Z vboxsync $ */
+/* $Id: RTFileSetAllocationSize-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - RTFileSetAllocationSize, generic implementation.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

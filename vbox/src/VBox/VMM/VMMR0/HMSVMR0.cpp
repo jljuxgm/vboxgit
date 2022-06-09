@@ -1,10 +1,10 @@
-/* $Id: HMSVMR0.cpp 69068 2017-10-13 09:14:48Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

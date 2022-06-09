@@ -1,10 +1,10 @@
-; $Id: bs3-fpustate-1-asm.asm 61315 2016-05-31 01:55:55Z vboxsync $
+; $Id: bs3-fpustate-1-asm.asm 69111 2017-10-17 14:26:02Z vboxsync $
 ;; @file
 ; BS3Kit - bs3-fpustate-1, assembly helpers and template instantiation.
 ;
 
 ;
-; Copyright (C) 2007-2016 Oracle Corporation
+; Copyright (C) 2007-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

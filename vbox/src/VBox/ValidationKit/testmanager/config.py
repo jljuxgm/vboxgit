@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 65725 2017-02-10 12:16:21Z vboxsync $
+# $Id: config.py 69111 2017-10-17 14:26:02Z vboxsync $
 
 """
 Test Manager Configuration.
@@ -7,7 +7,7 @@ Test Manager Configuration.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2016 Oracle Corporation
+Copyright (C) 2012-2017 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65725 $"
+__version__ = "$Revision: 69111 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.1.0';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 65725 $')[11:-2];
+g_ksRevision            = ('$Revision: 69111 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;

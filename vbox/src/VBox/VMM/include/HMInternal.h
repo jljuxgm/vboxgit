@@ -1,10 +1,10 @@
-/* $Id: HMInternal.h 68293 2017-08-04 06:05:13Z vboxsync $ */
+/* $Id: HMInternal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

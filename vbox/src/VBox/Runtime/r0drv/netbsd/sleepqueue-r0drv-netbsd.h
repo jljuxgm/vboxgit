@@ -1,10 +1,10 @@
-/* $Id: sleepqueue-r0drv-netbsd.h 63191 2016-08-09 03:01:52Z vboxsync $ */
+/* $Id: sleepqueue-r0drv-netbsd.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - NetBSD Ring-0 Driver Helpers for Abstracting Sleep Queues,
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

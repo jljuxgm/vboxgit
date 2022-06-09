@@ -1,10 +1,10 @@
-/* $Id: RTUtf16NICmpAscii.cpp 67979 2017-07-15 11:02:00Z vboxsync $ */
+/* $Id: RTUtf16NICmpAscii.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - RTUtf16ICmpAscii.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

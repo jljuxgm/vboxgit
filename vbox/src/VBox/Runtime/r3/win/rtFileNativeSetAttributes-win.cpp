@@ -1,10 +1,10 @@
-/* $Id: rtFileNativeSetAttributes-win.cpp 62713 2016-07-29 21:31:16Z vboxsync $ */
+/* $Id: rtFileNativeSetAttributes-win.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - NtSetInformationFile wrapper.
  */
 
 /*
- * Copyright (C) 2009-2016 Oracle Corporation
+ * Copyright (C) 2009-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-; $Id: HMR0A.asm 67926 2017-07-12 11:17:02Z vboxsync $
+; $Id: HMR0A.asm 69111 2017-10-17 14:26:02Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines
 ;
 
 ;
-; Copyright (C) 2006-2016 Oracle Corporation
+; Copyright (C) 2006-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

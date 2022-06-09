@@ -1,10 +1,10 @@
-/* $Id: zero.cpp 69108 2017-10-17 14:21:35Z vboxsync $ */
+/* $Id: zero.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Zero Memory.
  */
 
 /*
- * Copyright (C) 2015-2016 Oracle Corporation
+ * Copyright (C) 2015-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

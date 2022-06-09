@@ -1,10 +1,10 @@
-/* $Id: asn1-ut-objid-template.h 64864 2016-12-14 13:38:16Z vboxsync $ */
+/* $Id: asn1-ut-objid-template.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, OBJECT IDENTIFIER Type, Collection Type Template.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

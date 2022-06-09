@@ -1,10 +1,10 @@
-; $Id: bs3-cmn-SelProtModeCodeToRealMode.asm 66196 2017-03-22 14:23:05Z vboxsync $
+; $Id: bs3-cmn-SelProtModeCodeToRealMode.asm 69111 2017-10-17 14:26:02Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SelProtModeCodeToRealMode.
 ;
 
 ;
-; Copyright (C) 2007-2016 Oracle Corporation
+; Copyright (C) 2007-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

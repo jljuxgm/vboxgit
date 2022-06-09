@@ -1,10 +1,10 @@
-/* $Id: SELMRC.cpp 62603 2016-07-27 16:22:14Z vboxsync $ */
+/* $Id: SELMRC.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager, Guest Context.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

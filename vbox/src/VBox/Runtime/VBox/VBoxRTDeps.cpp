@@ -1,10 +1,10 @@
-/* $Id: VBoxRTDeps.cpp 64011 2016-09-26 14:29:49Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

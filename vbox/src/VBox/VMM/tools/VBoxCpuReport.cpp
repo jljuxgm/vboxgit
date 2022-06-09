@@ -1,10 +1,10 @@
-/* $Id: VBoxCpuReport.cpp 66403 2017-04-03 15:21:26Z vboxsync $ */
+/* $Id: VBoxCpuReport.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -4668,7 +4668,7 @@ static int produceCpuReport(void)
                        " */\n"
                        "\n"
                        "/*\n"
-                       " * Copyright (C) 2013-2016 Oracle Corporation\n"
+                       " * Copyright (C) 2013-2017 Oracle Corporation\n"
                        " *\n"
                        " * This file is part of VirtualBox Open Source Edition (OSE), as\n"
                        " * available from http://www.virtualbox.org. This file is free software;\n"

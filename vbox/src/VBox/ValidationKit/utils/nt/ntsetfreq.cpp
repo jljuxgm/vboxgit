@@ -1,10 +1,10 @@
-/* $Id: ntsetfreq.cpp 62673 2016-07-29 11:04:35Z vboxsync $ */
+/* $Id: ntsetfreq.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * Set the NT timer frequency.
  */
 
 /*
- * Copyright (C) 2007-2016 Oracle Corporation
+ * Copyright (C) 2007-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

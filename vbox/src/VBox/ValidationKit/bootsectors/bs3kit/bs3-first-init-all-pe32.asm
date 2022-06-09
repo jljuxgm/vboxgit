@@ -1,10 +1,10 @@
-; $Id: bs3-first-init-all-pe32.asm 61539 2016-06-07 13:16:43Z vboxsync $
+; $Id: bs3-first-init-all-pe32.asm 69111 2017-10-17 14:26:02Z vboxsync $
 ;; @file
 ; BS3Kit - First Object, calling 32-bit protected mode main() after full init.
 ;
 
 ;
-; Copyright (C) 2007-2016 Oracle Corporation
+; Copyright (C) 2007-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

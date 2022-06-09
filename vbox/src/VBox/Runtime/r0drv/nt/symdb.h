@@ -1,10 +1,10 @@
-/* $Id: symdb.h 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: symdb.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Symbol DB.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

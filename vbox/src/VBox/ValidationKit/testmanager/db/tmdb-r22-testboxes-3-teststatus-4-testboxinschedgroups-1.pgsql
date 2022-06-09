@@ -1,4 +1,4 @@
--- $Id: tmdb-r22-testboxes-3-teststatus-4-testboxinschedgroups-1.pgsql 61507 2016-06-06 20:03:45Z vboxsync $
+-- $Id: tmdb-r22-testboxes-3-teststatus-4-testboxinschedgroups-1.pgsql 69111 2017-10-17 14:26:02Z vboxsync $
 --- @file
 -- VBox Test Manager Database - Turns idSchedGroup column in TestBoxes
 -- into an N:M relationship with a priority via the new table
@@ -7,7 +7,7 @@
 --
 
 --
--- Copyright (C) 2013-2016 Oracle Corporation
+-- Copyright (C) 2013-2017 Oracle Corporation
 --
 -- This file is part of VirtualBox Open Source Edition (OSE), as
 -- available from http://www.virtualbox.org. This file is free software;

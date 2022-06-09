@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 68403 2017-08-14 09:40:36Z vboxsync $ */
+/* $Id: tstVMStruct.h 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

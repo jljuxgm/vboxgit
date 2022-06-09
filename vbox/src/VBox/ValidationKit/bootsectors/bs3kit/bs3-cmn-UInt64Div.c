@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-UInt64Div.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-cmn-UInt64Div.c 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * BS3Kit - Unsigned 64-bit division (compiler support routine helper).
  */
 
 /*
- * Copyright (C) 2007-2016 Oracle Corporation
+ * Copyright (C) 2007-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

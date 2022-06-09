@@ -1,11 +1,11 @@
-/* $Id: UsbTest.cpp 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: UsbTest.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * UsbTest - User frontend for the Linux usbtest USB test and benchmarking module.
  *           Integrates with our test framework for nice outputs.
  */
 
 /*
- * Copyright (C) 2014-2016 Oracle Corporation
+ * Copyright (C) 2014-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

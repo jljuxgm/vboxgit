@@ -1,10 +1,10 @@
-/* $Id: tstRTCrX509-1.cpp 62461 2016-07-22 16:21:26Z vboxsync $ */
+/* $Id: tstRTCrX509-1.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
 /** @file
  * IPRT testcase - Crypto - X.509 \#1.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
