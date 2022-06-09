@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 71716 2018-04-06 18:16:30Z vboxsync $ */
+/* $Id: VBoxProxyStub.c 71717 2018-04-06 18:17:59Z vboxsync $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -172,7 +172,7 @@ BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
             RTR3InitDll(RTR3INIT_FLAGS_UNOBTRUSIVE);
             Log12(("VBoxProxyStub[%u]/DllMain: DLL_PROCESS_ATTACH\n", GetCurrentProcessId()));
 
-#ifdef VBOX_SDS_CLIENTS_WATCHER
+#ifdef VBOX_WITH_SDS_CLIENT_WATCHER
             /*
              * Install RPC channel hook to intercept a moment just after VirtualBox object activation.
              * It's reports to VBoxSDS that a new VirtualBox API client started.
