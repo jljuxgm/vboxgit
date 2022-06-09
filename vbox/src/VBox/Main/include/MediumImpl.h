@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 67184 2017-05-31 20:32:04Z vboxsync $ */
+/* $Id: MediumImpl.h 67203 2017-06-01 11:50:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -201,6 +201,9 @@ public:
                        MediumLockList *aMediumLockList);
 
     HRESULT i_fixParentUuidOfChildren(MediumLockList *pChildrenToReparent);
+
+    HRESULT i_addRawToFss(const char *aFilename, SecretKeyStore *pKeyStore,
+                          RTVFSFSSTREAM hVfsFssDst /*, const ComObjPtr<Progress> &aProgress*/);
 
     HRESULT i_exportFile(const char *aFilename,
                          const ComObjPtr<MediumFormat> &aFormat,
