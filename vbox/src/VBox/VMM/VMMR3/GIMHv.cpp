@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 72193 2018-05-11 13:43:05Z vboxsync $ */
+/* $Id: GIMHv.cpp 72460 2018-06-06 11:16:12Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -1024,6 +1024,31 @@ VMMR3_INT_DECL(int) gimR3HvLoad(PVM pVM, PSSMHANDLE pSSM)
         rc = VINF_SUCCESS;
 
     return rc;
+}
+
+
+/**
+ * Hyper-V load-done callback.
+ *
+ * @returns VBox status code.
+ * @param   pVM             The cross context VM structure.
+ * @param   pSSM            The saved state handle.
+ */
+VMMR3_INT_DECL(int) gimR3HvLoadDone(PVM pVM, PSSMHANDLE pSSM)
+{
+    if (RT_SUCCESS(SSMR3HandleGetStatus(pSSM)))
+    {
+        /*
+         * Update EM on whether MSR_GIM_HV_GUEST_OS_ID allows hypercall instructions.
+         */
+        if (pVM->gim.s.u.Hv.u64GuestOsIdMsr)
+            for (VMCPUID i = 0; i < pVM->cCpus; i++)
+                VMMHypercallsEnable(&pVM->aCpus[i]);
+        else
+            for (VMCPUID i = 0; i < pVM->cCpus; i++)
+                VMMHypercallsDisable(&pVM->aCpus[i]);
+    }
+    return VINF_SUCCESS;
 }
 
 
