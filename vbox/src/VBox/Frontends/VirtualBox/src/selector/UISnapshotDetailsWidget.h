@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotDetailsDlg.h 67160 2017-05-31 09:44:38Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.h 67162 2017-05-31 10:17:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -20,7 +20,7 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
-#include "VBoxSnapshotDetailsDlg.gen.h"
+#include "UISnapshotDetailsWidget.gen.h"
 
 /* COM includes: */
 #include "CSnapshot.h"
@@ -57,7 +57,7 @@ struct UIDataSnapshot
 
 
 /** QWidget extension providing GUI with snapshot details-widget. */
-class UISnapshotDetailsWidget : public QIWithRetranslateUI<QWidget>, public Ui::VBoxSnapshotDetailsDlg
+class UISnapshotDetailsWidget : public QIWithRetranslateUI<QWidget>, public Ui::UISnapshotDetailsWidget
 {
     Q_OBJECT;
 

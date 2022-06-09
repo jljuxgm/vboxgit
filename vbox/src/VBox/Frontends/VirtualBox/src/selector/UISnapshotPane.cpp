@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 67160 2017-05-31 09:44:38Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 67162 2017-05-31 10:17:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -39,11 +39,11 @@
 # include "UIIconPool.h"
 # include "UIMessageCenter.h"
 # include "UIModalWindowManager.h"
+# include "UISnapshotDetailsWidget.h"
 # include "UISnapshotPane.h"
 # include "UIToolBar.h"
 # include "UIVirtualBoxEventHandler.h"
 # include "UIWizardCloneVM.h"
-# include "VBoxSnapshotDetailsDlg.h"
 # include "VBoxTakeSnapshotDlg.h"
 
 /* COM includes: */
