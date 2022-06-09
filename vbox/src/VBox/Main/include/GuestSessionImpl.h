@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 71648 2018-04-04 10:54:39Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 71785 2018-04-09 16:00:47Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -260,6 +260,10 @@ public:
     inline bool             i_fileExists(uint32_t uFileID, ComObjPtr<GuestFile> *pFile);
     int                     i_fileUnregister(GuestFile *pFile);
     int                     i_fileRemove(const Utf8Str &strPath, int *pGuestRc);
+    int                     i_fileOpenEx(const com::Utf8Str &aPath, FileAccessMode_T aAccessMode, FileOpenAction_T aOpenAction,
+                                         FileSharingMode_T aSharingMode, ULONG aCreationMode,
+                                         const std::vector<FileOpenExFlag_T> &aFlags,
+                                         ComObjPtr<GuestFile> &pFile, int *prcGuest);
     int                     i_fileOpen(const GuestFileOpenInfo &openInfo, ComObjPtr<GuestFile> &pFile, int *pGuestRc);
     int                     i_fileQueryInfo(const Utf8Str &strPath, bool fFollowSymlinks, GuestFsObjData &objData, int *pGuestRc);
     int                     i_fileQuerySize(const Utf8Str &strPath, bool fFollowSymlinks, int64_t *pllSize, int *pGuestRc);
