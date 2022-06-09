@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 71689 2018-04-05 15:20:32Z vboxsync $ */
+/* $Id: Config.cpp 71749 2018-04-08 14:39:15Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -586,6 +586,7 @@ void Config::parseConfig(const xml::ElementNode *root)
 
     parseServer(root);
 
+    /** @todo r=bird: Visual C++ 2010 does not grok this use of 'auto'. */
     // XXX: debug
     for (auto it: m_GlobalOptions) {
         std::shared_ptr<DhcpOption> opt(it.second);
@@ -719,17 +720,11 @@ void Config::parseVMConfig(const xml::ElementNode *config)
     xml::NodesLoop it(*config);
     const xml::ElementNode *node;
     while ((node = it.forAllNodes()) != NULL)
-    {
         if (node->nameEquals("Option"))
-        {
             parseOption(node, vmopts);
-        }
         else
-        {
             throw ConfigFileError(RTCStringFmt("Unexpected element \"%s\"",
                                                node->getName()));
-        }
-    }    
 }
 
 
