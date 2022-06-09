@@ -1,4 +1,4 @@
-/* $Id: VBoxPeCoffExtraActionLib.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxPeCoffExtraActionLib.c 72500 2018-06-11 11:05:32Z vboxsync $ */
 /** @file
  * VBox implementation of DebugAgentLib that reports EFI state transitions
  * to DevEFI for debugging purposes.
@@ -100,3 +100,20 @@ PeCoffLoaderUnloadImageExtraAction(
 #endif
 }
 
+VOID
+EFIAPI
+VBoxPeCoffLoaderMoveImageExtraAction(
+  IN PHYSICAL_ADDRESS OldBase,
+  IN PHYSICAL_ADDRESS NewBase
+  )
+{
+    ASSERT(ImageContext != NULL);
+#if ARCH_BITS == 32
+    ASMOutU32(EFI_PORT_IMAGE_EVENT, EFI_IMAGE_EVT_CMD_START_RELOC32);
+#else
+    ASMOutU32(EFI_PORT_IMAGE_EVENT, EFI_IMAGE_EVT_CMD_START_RELOC64);
+#endif
+    vboxImageEvtU64(EFI_IMAGE_EVT_CMD_ADDR0, NewBase);
+    vboxImageEvtU64(EFI_IMAGE_EVT_CMD_ADDR1, OldBase);
+    ASMOutU32(EFI_PORT_IMAGE_EVENT, EFI_IMAGE_EVT_CMD_COMPLETE);
+}
