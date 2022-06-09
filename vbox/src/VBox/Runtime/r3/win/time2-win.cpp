@@ -1,4 +1,4 @@
-/* $Id: time2-win.cpp 72161 2018-05-08 11:59:43Z vboxsync $ */
+/* $Id: time2-win.cpp 72162 2018-05-08 12:47:57Z vboxsync $ */
 /** @file
  * IPRT - Time, Windows.
  */
@@ -62,6 +62,10 @@ RTDECL(PRTTIME) RTTimeLocalExplode(PRTTIME pTime, PCRTTIMESPEC pTimeSpec)
         /*
          * FileTimeToLocalFileTime does not do the right thing, so we'll have
          * to convert to system time and SystemTimeToTzSpecificLocalTime instead.
+         *
+         * Note! FileTimeToSystemTime drops resoultion down to milliseconds, thus
+         *       we have to do the offUTC calculation using milliseconds and adjust
+         *       u32Nanosecons by sub milliseconds digits.
          */
         SYSTEMTIME SystemTimeIn;
         FILETIME FileTime;
