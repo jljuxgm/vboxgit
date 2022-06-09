@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 72403 2018-05-31 13:28:21Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 72412 2018-06-01 14:02:49Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -2269,7 +2269,7 @@ VMMR0_INT_DECL(int)  NEMR0UpdateStatistics(PGVM pGVM, PVM pVM, VMCPUID idCpu)
                 {
                     LogRel(("HvCallGetMemoryBalance -> %#RX64 (%#RX64 %#RX64)!!\n",
                             uResult, pOutput->PagesAvailable, pOutput->PagesInUse));
-                    rc = VINF_NEM_IPE_0;
+                    rc = VERR_NEM_IPE_0;
                 }
 
                 if (idCpu == NIL_VMCPUID)

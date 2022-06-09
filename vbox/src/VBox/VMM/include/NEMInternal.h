@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 72392 2018-05-30 12:27:17Z vboxsync $ */
+/* $Id: NEMInternal.h 72412 2018-06-01 14:02:49Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -48,6 +48,9 @@ RT_C_DECLS_BEGIN
 # define NEM_WIN_USE_OUR_OWN_RUN_API
 # if defined(NEM_WIN_USE_OUR_OWN_RUN_API) && !defined(NEM_WIN_USE_HYPERCALLS_FOR_REGISTERS)
 #  error "NEM_WIN_USE_OUR_OWN_RUN_API requires NEM_WIN_USE_HYPERCALLS_FOR_REGISTERS"
+# endif
+# if defined(NEM_WIN_USE_OUR_OWN_RUN_API) && !defined(NEM_WIN_USE_HYPERCALLS_FOR_PAGES)
+#  error "NEM_WIN_USE_OUR_OWN_RUN_API requires NEM_WIN_USE_HYPERCALLS_FOR_PAGES"
 # endif
 
 /**

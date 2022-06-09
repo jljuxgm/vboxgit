@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 72392 2018-05-30 12:27:17Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 72412 2018-06-01 14:02:49Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1439,7 +1439,7 @@ void nemR3NativeResetCpu(PVMCPU pVCpu, bool fInitIpi)
     }
 }
 
-#ifndef NEM_WIN_USE_OUR_OWN_RUN_API
+#if 0 //ndef NEM_WIN_USE_OUR_OWN_RUN_API - migrating to NEMAllNativeTemplate-win.cpp.h  */
 
 # ifdef LOG_ENABLED
 /**
@@ -1558,30 +1558,6 @@ static void nemR3WinLogWHvExitReason(WHV_RUN_VP_EXIT_CONTEXT const *pExitReason)
     }
 }
 # endif /* LOG_ENABLED */
-
-
-/**
- * Advances the guest RIP and clear EFLAGS.RF.
- *
- * This may clear VMCPU_FF_INHIBIT_INTERRUPTS.
- *
- * @param   pVCpu           The cross context virtual CPU structure.
- * @param   pCtx            The CPU context to update.
- * @param   pExitCtx        The exit context.
- */
-DECLINLINE(void) nemR3WinAdvanceGuestRipAndClearRF(PVMCPU pVCpu, PCPUMCTX pCtx, WHV_VP_EXIT_CONTEXT const *pExitCtx)
-{
-    /* Advance the RIP. */
-    Assert(pExitCtx->InstructionLength > 0 && pExitCtx->InstructionLength < 16);
-    pCtx->rip += pExitCtx->InstructionLength;
-    pCtx->rflags.Bits.u1RF = 0;
-
-    /* Update interrupt inhibition. */
-    if (!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS))
-    { /* likely */ }
-    else if (pCtx->rip != EMGetInhibitInterruptsPC(pVCpu))
-        VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS);
-}
 
 
 static VBOXSTRICTRC nemR3WinWHvHandleHalt(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
@@ -2030,14 +2006,12 @@ VBOXSTRICTRC nemR3WinWHvRunGC(PVM pVM, PVMCPU pVCpu)
     return rcStrict;
 }
 
-#endif /* !NEM_WIN_USE_OUR_OWN_RUN_API */
+#endif /* !NEM_WIN_USE_OUR_OWN_RUN_API - migrating to NEMAllNativeTemplate-win.cpp.h*/
 
 
 VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
 {
-#ifndef NEM_WIN_USE_OUR_OWN_RUN_API
-    return nemR3WinWHvRunGC(pVM, pVCpu);
-#elif 0
+#if !defined(NEM_WIN_USE_OUR_OWN_RUN_API) || 0
     return nemHCWinRunGC(pVM, pVCpu, NULL /*pGVM*/, NULL /*pGVCpu*/);
 #else
     for (;;)
