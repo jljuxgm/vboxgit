@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.h 70581 2018-01-14 20:54:55Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.h 70610 2018-01-17 14:45:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -23,7 +23,6 @@
 
 /* Forward declarations: */
 class QComboBox;
-class QPushButton;
 class QIToolButton;
 
 /** UIVMLogViewerPanel extension providing GUI for bookmark management. Show a list of bookmarks currently set
@@ -72,7 +71,7 @@ private:
 
     const int     m_iMaxBookmarkTextLength;
     QComboBox    *m_pBookmarksComboBox;
-    QPushButton  *m_pDeleteAllButton;
+    QIToolButton *m_pDeleteAllButton;
     QIToolButton *m_pDeleteCurrentButton;
 };
 

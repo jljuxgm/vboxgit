@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.h 70578 2018-01-13 19:32:04Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.h 70610 2018-01-17 14:45:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -28,7 +28,7 @@ class QComboBox;
 class QFrame;
 class QLabel;
 class QLineEdit;
-class QPushButton;
+class QIToolButton;
 class QRadioButton;
 class UIVMFilterLineEdit;
 
@@ -99,7 +99,7 @@ private:
     QRadioButton        *m_pAndRadioButton;
     QRadioButton        *m_pOrRadioButton;
     QFrame              *m_pRadioButtonContainer;
-    QPushButton         *m_pAddFilterTermButton;
+    QIToolButton        *m_pAddFilterTermButton;
     QStringList          m_filterTermList;
     FilterOperatorButton m_eFilterOperatorButton;
     UIVMFilterLineEdit  *m_pFilterTermsLineEdit;
