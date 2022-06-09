@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 71933 2018-04-20 10:54:01Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 71965 2018-04-23 03:57:03Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2742,7 +2742,10 @@ static void hmR0SvmSaveGuestState(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PCSVMVMCB pV
     }
     else
     {
-        /* Sync/verify nested-guest's V_IRQ pending and our force-flag. */
+        /*
+         * Nested-guest interrupt pending.
+         * Sync/verify nested-guest's V_IRQ and its force-flag.
+         */
         if (!pVmcbCtrl->IntCtrl.n.u1VIrqPending)
         {
             if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_NESTED_GUEST))
