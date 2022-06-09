@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69966 2017-12-07 08:42:05Z vboxsync $
+# $Id: Makefile.kmk 70092 2017-12-12 18:25:40Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -549,6 +549,7 @@ RuntimeR3_SOURCES       = \
 	common/string/RTStrStartsWith.cpp \
 	common/string/RTStrIStartsWith.cpp \
 	common/string/RTStrICmpAscii.cpp \
+	common/string/RTStrNICmpAscii.cpp \
 	common/string/RTStrStr.cpp \
 	common/string/RTUtf16Copy.cpp \
 	common/string/RTUtf16CopyAscii.cpp \
@@ -1997,6 +1998,7 @@ RuntimeR0_SOURCES      := \
 	common/string/RTStrCopyPEx.cpp \
 	common/string/RTStrCmp.cpp \
 	common/string/RTStrICmpAscii.cpp \
+	common/string/RTStrNICmpAscii.cpp \
 	common/string/RTStrNLen.cpp \
 	common/string/RTStrNLenEx.cpp \
 	common/table/avlgcptr.cpp \
@@ -2184,6 +2186,7 @@ RuntimeR0Drv_SOURCES    = \
 	common/string/RTStrCopyP.cpp \
 	common/string/RTStrCopyPEx.cpp \
 	common/string/RTStrICmpAscii.cpp \
+	common/string/RTStrNICmpAscii.cpp \
 	common/string/RTStrNCmp.cpp \
 	common/string/RTStrNLen.cpp \
 	common/string/RTStrNLenEx.cpp \
