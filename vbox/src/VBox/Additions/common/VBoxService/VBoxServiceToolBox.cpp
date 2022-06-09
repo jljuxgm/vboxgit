@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 71121 2018-02-26 10:33:45Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 71122 2018-02-26 10:43:59Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1395,7 +1395,6 @@ static RTEXITCODE vgsvcToolboxStat(int argc, char **argv)
     RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 1 /*iFirst*/, RTGETOPTINIT_FLAGS_OPTS_FIRST);
 
     int rc = VINF_SUCCESS;
-    bool fVerbose = false;
     uint32_t fOutputFlags = VBOXSERVICETOOLBOXOUTPUTFLAG_LONG; /* Use long mode by default. */
     uint32_t fQueryInfoFlags = RTPATH_F_ON_LINK;
 
@@ -1421,10 +1420,6 @@ static RTEXITCODE vgsvcToolboxStat(int argc, char **argv)
 
             case VBOXSERVICETOOLBOXOPT_MACHINE_READABLE:
                 fOutputFlags |= VBOXSERVICETOOLBOXOUTPUTFLAG_PARSEABLE;
-                break;
-
-            case 'v':   /** @todo r=bird: There is no verbose option for stat. */
-                fVerbose = true;
                 break;
 
             case 'h':
@@ -1500,7 +1495,7 @@ static RTEXITCODE vgsvcToolboxStat(int argc, char **argv)
         if (RTListIsEmpty(&fileList))
             RTMsgError("Missing operand\n");
     }
-    else if (fVerbose)
+    else
         RTMsgError("Failed with rc=%Rrc\n", rc);
 
     vgsvcToolboxPathBufDestroy(&fileList);
