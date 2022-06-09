@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 70345 2017-12-26 15:51:56Z vboxsync $ */
+/* $Id: process-win.cpp 70361 2017-12-27 16:58:28Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -2297,7 +2297,8 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
                 if (!GetHandleInformation(*aphStds[i], &afInhStds[i]))
                 {
                     rc = RTErrConvertFromWin32(GetLastError());
-                    AssertMsgFailedReturn(("%Rrc %p\n", rc, *aphStds[i]), rc);
+                    if (rc != VERR_INVALID_FUNCTION || g_enmWinVer != kRTWinOSType_NT310)
+                        AssertMsgFailedReturn(("%Rrc %p\n", rc, *aphStds[i]), rc);
                 }
             }
         }
@@ -2314,7 +2315,10 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
             if (!SetHandleInformation(*aphStds[i], HANDLE_FLAG_INHERIT, HANDLE_FLAG_INHERIT))
             {
                 rc = RTErrConvertFromWin32(GetLastError());
-                AssertMsgFailedBreak(("%Rrc %p\n", rc, *aphStds[i]));
+                if (rc == VERR_INVALID_FUNCTION && g_enmWinVer == kRTWinOSType_NT310)
+                    rc = VINF_SUCCESS;
+                else
+                    AssertMsgFailedBreak(("%Rrc %p\n", rc,*aphStds[i]));
             }
         }
 
@@ -2423,7 +2427,9 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
         if (    (afInhStds[i] != 0xffffffff)
             &&  !(afInhStds[i] & HANDLE_FLAG_INHERIT))
         {
-            if (!SetHandleInformation(*aphStds[i], HANDLE_FLAG_INHERIT, 0))
+            if (   !SetHandleInformation(*aphStds[i], HANDLE_FLAG_INHERIT, 0)
+                && (   GetLastError() != ERROR_INVALID_FUNCTION
+                    || g_enmWinVer != kRTWinOSType_NT310) )
                 AssertMsgFailed(("%Rrc %p\n", RTErrConvertFromWin32(GetLastError()), *aphStds[i]));
         }
 
