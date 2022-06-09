@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 72051 2018-04-27 08:41:05Z vboxsync $ */
+/* $Id: VD.cpp 72054 2018-04-27 09:18:51Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
@@ -3508,7 +3508,6 @@ static int vdMetaXferCompleted(PVDIOSTORAGE pIoStorage, PFNVDXFERCOMPLETED pfnCo
 {
     PVDISK pDisk = pIoStorage->pVDIo->pDisk;
     RTLISTANCHOR ListIoCtxWaiting;
-    RTListInit(&ListIoCtxWaiting);
     bool fFlush;
 
     LogFlowFunc(("pIoStorage=%#p pfnComplete=%#p pvUser=%#p pMetaXfer=%#p rcReq=%Rrc\n",

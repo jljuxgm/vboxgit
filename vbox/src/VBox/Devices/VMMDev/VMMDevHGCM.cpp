@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 71931 2018-04-20 10:25:39Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 72054 2018-04-27 09:18:51Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -1821,7 +1821,6 @@ int vmmdevHGCMLoadStateDone(PVMMDEV pThis)
 
     /* Get local copy of the list of loaded commands. */
     RTLISTANCHOR listLoadedCommands;
-    RTListInit(&listLoadedCommands); /* RTListMove does not touch the destination is the source list is empty. */
     RTListMove(&listLoadedCommands, &pThis->listHGCMCmd);
 
     /* Resubmit commands. */

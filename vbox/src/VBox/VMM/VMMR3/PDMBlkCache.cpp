@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 70779 2018-01-28 23:13:49Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 72054 2018-04-27 09:18:51Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -696,7 +696,6 @@ static void pdmBlkCacheCommit(PPDMBLKCACHE pBlkCache)
     /* The list is moved to a new header to reduce locking overhead. */
     RTLISTANCHOR ListDirtyNotCommitted;
 
-    RTListInit(&ListDirtyNotCommitted);
     RTSpinlockAcquire(pBlkCache->LockList);
     RTListMove(&ListDirtyNotCommitted, &pBlkCache->ListDirtyNotCommitted);
     RTSpinlockRelease(pBlkCache->LockList);
