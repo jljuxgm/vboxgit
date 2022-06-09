@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 69818 2017-11-23 19:44:07Z vboxsync $ */
+/* $Id: isovfs.cpp 69826 2017-11-24 15:50:00Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -3690,6 +3690,7 @@ static const RTVFSDIROPS g_rtFsIsoDirOps =
         RTVFSOBJSETOPS_VERSION
     },
     rtFsIsoDir_Open,
+    NULL /* pfnFollowAbsoluteSymlink */,
     rtFsIsoDir_OpenFile,
     rtFsIsoDir_OpenDir,
     rtFsIsoDir_CreateDir,
