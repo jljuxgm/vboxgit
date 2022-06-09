@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 70077 2017-12-12 10:28:08Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 70370 2017-12-27 18:36:30Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2966,19 +2966,20 @@ int VBVAInit (PVGASTATE pVGAState)
 
 }
 
-void VBVADestroy (PVGASTATE pVGAState)
+void VBVADestroy(PVGASTATE pVGAState)
 {
-    VBVACONTEXT *pCtx = (VBVACONTEXT *)HGSMIContext (pVGAState->pHGSMI);
-
-    if (pCtx)
+    PHGSMIINSTANCE pHgsmi = pVGAState->pHGSMI;
+    if (pHgsmi)
     {
+        VBVACONTEXT *pCtx = (VBVACONTEXT *)HGSMIContext(pHgsmi);
         pCtx->mouseShapeInfo.fSet = false;
         RTMemFree(pCtx->mouseShapeInfo.pu8Shape);
         pCtx->mouseShapeInfo.pu8Shape = NULL;
         pCtx->mouseShapeInfo.cbAllocated = 0;
         pCtx->mouseShapeInfo.cbShape = 0;
-    }
 
-    HGSMIDestroy (pVGAState->pHGSMI);
-    pVGAState->pHGSMI = NULL;
+        HGSMIDestroy(pHgsmi);
+        pVGAState->pHGSMI = NULL;
+    }
 }
+
