@@ -1,4 +1,4 @@
-/* $Id: EBMLWriter.cpp 69194 2017-10-24 09:23:34Z vboxsync $ */
+/* $Id: EBMLWriter.cpp 69195 2017-10-24 09:29:34Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container handling.
  */
@@ -44,7 +44,7 @@
 #include <VBox/version.h>
 
 #include "EBMLWriter.h"
-#include "EbmlMkvIDs.h"
+#include "EBML_MKV.h"
 
 /** No flags set. */
 #define VBOX_EBMLWRITER_FLAG_NONE               0
