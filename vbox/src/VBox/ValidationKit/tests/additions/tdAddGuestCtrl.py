@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71847 $"
+__version__ = "$Revision: 71854 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -3403,11 +3403,13 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                       tdTestResult(fRc = True) ],
                     # Copying contents of directories into a non-existing directory chain on the host which fail.
                     [ tdTestCopyFrom(sUser = sUser, sPassword = sPassword, sSrc = 'C:\\Windows\\Web\\',
-                                     sDst = sScratchHst + "/not/existing/", aFlags = [ vboxcon.DirectoryCopyFlag_CopyIntoExisting ]),
+                                     sDst = sScratchHst + "/not/existing/",
+                                     aFlags = [ vboxcon.DirectoryCopyFlag_CopyIntoExisting ]),
                       tdTestResult(fRc = False) ],
                     # Copying contents of directories into a non-existing directory on the host, which should succeed.
                     [ tdTestCopyFrom(sUser = sUser, sPassword = sPassword, sSrc = 'C:\\Windows\\Web\\',
-                                     sDst = sScratchHst + "/no-existing/", aFlags = [ vboxcon.DirectoryCopyFlag_CopyIntoExisting ]),
+                                     sDst = sScratchHst + "/no-existing/",
+                                     aFlags = [ vboxcon.DirectoryCopyFlag_CopyIntoExisting ]),
                       tdTestResult(fRc = True) ]
                 ]);
         else:
