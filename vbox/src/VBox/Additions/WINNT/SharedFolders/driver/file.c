@@ -1,4 +1,4 @@
-/* $Id: file.c 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: file.c 68101 2017-07-25 09:33:10Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver file routines.
  */
@@ -91,6 +91,9 @@ static int vbsfTransferCommon(VBSFTRANSFERCTX *pCtx)
     uint32_t cbToTransfer;
     uint32_t cbIO;
 
+    /** @todo Remove the test and the fall-back path.  VbglR0CanUsePhysPageList()
+     *        returns true for any host version after 3.0, i.e. further back than
+     *        we support. */
     if (VbglR0CanUsePhysPageList())
     {
         ULONG offFirstPage = MmGetMdlByteOffset(pCtx->pMdl);
