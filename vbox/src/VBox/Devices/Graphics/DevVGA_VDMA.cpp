@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 71596 2018-03-31 21:23:46Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 71598 2018-04-01 10:49:30Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -2991,7 +2991,7 @@ static void vboxVDMACommandProcess(PVBOXVDMAHOST pVdma, VBOXVDMACBUF_DR RT_UNTRU
         /*
          * Process the command.
          */
-        rc = vboxVDMACmdExec(pVdma, (uint8_t const *)pbCmdBuf, cbCmdBuf); /* @todo fixme later */
+        rc = vboxVDMACmdExec(pVdma, (uint8_t const *)pbCmdBuf, cbCmdBuf); /** @todo fixme later */
         AssertRC(rc);
 
         /* Clean up comand buffer. */
