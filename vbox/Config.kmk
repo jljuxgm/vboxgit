@@ -1,4 +1,4 @@
-# $Id: Config.kmk 70407 2018-01-01 20:38:02Z vboxsync $
+# $Id: Config.kmk 70433 2018-01-02 16:04:13Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -439,6 +439,8 @@ VBOX_WITH_NAT_SERVICE = 1
 VBOX_WITH_E1000 = 1
 # Enable the Virtio feature.
 VBOX_WITH_VIRTIO = 1
+# HDA emulation is Intel HDA by default.
+VBOX_WITH_INTEL_HDA = 1
 ifn1of ($(KBUILD_TARGET), win darwin)
  # Enable OSS audio support.
  VBOX_WITH_AUDIO_OSS = 1
@@ -7118,7 +7120,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70407 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70433 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

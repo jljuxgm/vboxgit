@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 70316 2017-12-22 12:58:24Z vboxsync $ */
+/* $Id: DevHDA.cpp 70433 2018-01-02 16:04:13Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -65,7 +65,6 @@
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
 //#define HDA_AS_PCI_EXPRESS
-#define VBOX_WITH_INTEL_HDA
 
 /* Installs a DMA access handler (via PGM callback) to monitor
  * HDA's DMA operations, that is, writing / reading audio stream data.
