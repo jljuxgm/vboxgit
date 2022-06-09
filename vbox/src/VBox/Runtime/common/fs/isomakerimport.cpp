@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 70395 2018-01-01 12:26:11Z vboxsync $ */
+/* $Id: isomakerimport.cpp 71002 2018-02-13 19:04:56Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -2447,6 +2447,14 @@ static int rtFsIsoImportProcessElToritoDesc(PRTFSISOMKIMPORTER pThis, PISO9660BO
     {
         uint8_t const *pbEntry  = &pThis->abBuf[iEntry * ISO9660_ELTORITO_ENTRY_SIZE];
         uint8_t const  idHeader = *pbEntry;
+
+        /* KLUDGE ALERT! Older ISO images, like RHEL5-Server-20070208.0-x86_64-DVD.iso lacks
+                         terminator entry. So, quietly stop with an entry that's all zeros. */
+        if (   idHeader == ISO9660_ELTORITO_BOOT_INDICATOR_NOT_BOOTABLE /* 0x00 */
+            && iEntry != 1 /* default */
+            && ASMMemIsZero(pbEntry, ISO9660_ELTORITO_ENTRY_SIZE))
+            return rc;
+
         if (   iEntry == 1 /* default*/
             || idHeader == ISO9660_ELTORITO_BOOT_INDICATOR_BOOTABLE
             || idHeader == ISO9660_ELTORITO_BOOT_INDICATOR_NOT_BOOTABLE)
