@@ -1,10 +1,10 @@
-/* $Id: VBoxManageGuestCtrl.cpp 69758 2017-11-19 15:23:57Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 71168 2018-03-02 09:51:34Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -2702,7 +2702,7 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
                 /* Last argument and no destination specified with
                  * --target-directory yet? Then use the current
                  * (= last) argument as destination. */
-                if (   pCtx->pArg->argc == GetState.iNext
+                if (   GetState.argc == GetState.iNext
                     && pszDst == NULL)
                     pszDst = ValueUnion.psz;
                 else
