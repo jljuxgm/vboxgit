@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 68223 2017-08-02 07:21:47Z vboxsync $
+# $Id: virtual_test_sheriff.py 68224 2017-08-02 08:30:17Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 68223 $"
+__version__ = "$Revision: 68224 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 68223 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 68224 $ \n');
 
 
     def eprint(self, sText):
@@ -373,6 +373,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         aidFailureReasons = [
             self.getFailureReason(self.ktReason_Host_DriverNotUnloading).idFailureReason,
             self.getFailureReason(self.ktReason_Host_DriverNotCompilable).idFailureReason,
+            self.getFailureReason(self.ktReason_Host_InstallationFailed).idFailureReason,
         ];
 
         #
@@ -468,6 +469,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Host_DriverNotLoaded                      = ( 'Host',              'Driver not loaded' );
     ktReason_Host_DriverNotUnloading                   = ( 'Host',              'Driver not unloading' );
     ktReason_Host_DriverNotCompilable                  = ( 'Host',              'Driver not compilable' );
+    ktReason_Host_InstallationFailed                   = ( 'Host',              'Installation failed' );
     ktReason_Host_NotSignedWithBuildCert               = ( 'Host',              'Not signed with build cert' );
     ktReason_Host_DoubleFreeHeap                       = ( 'Host',              'Double free or corruption' );
     ktReason_Host_LeftoverService                      = ( 'Host',              'Leftover service' );
@@ -560,7 +562,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 68223 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 68224 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -675,6 +677,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
               'This system is not currently set up to build kernel modules' ),
             ( True, ktReason_Host_DriverNotCompilable,
               'This system is currently not set up to build kernel modules' ),
+            ( True, ktReason_Host_InstallationFailed,
+              'vboxdrv.sh: failed: Look at /var/log/vbox-install.log to find out what went wrong.' ),
             ( True, ktReason_Host_DriverNotUnloading,
               'Cannot unload module vboxdrv'),
         ],
