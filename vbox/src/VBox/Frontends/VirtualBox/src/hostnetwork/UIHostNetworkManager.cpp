@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 67021 2017-05-22 15:08:11Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 67047 2017-05-23 15:50:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -754,10 +754,10 @@ void UIHostNetworkManagerWidget::prepareActions()
         /* Configure 'Apply' action: */
         m_pActionCommit->setVisible(false);
         m_pActionCommit->setShortcut(QKeySequence("Ctrl+Return"));
-        m_pActionCommit->setIcon(UIIconPool::iconSetFull(":/edit_host_iface_22px.png",
-                                                         ":/edit_host_iface_16px.png",
-                                                         ":/edit_host_iface_disabled_22px.png",
-                                                         ":/edit_host_iface_disabled_16px.png"));
+        m_pActionCommit->setIcon(UIIconPool::iconSetFull(":/commit_host_iface_22px.png",
+                                                         ":/commit_host_iface_16px.png",
+                                                         ":/commit_host_iface_disabled_22px.png",
+                                                         ":/commit_host_iface_disabled_16px.png"));
         connect(m_pActionDetails, &QAction::toggled, m_pActionCommit, &QAction::setVisible);
         connect(m_pActionCommit, &QAction::triggered, this, &UIHostNetworkManagerWidget::sltApplyHostNetworkDetailsChanges);
     }
