@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 70630 2018-01-18 14:01:54Z vboxsync $ */
+/* $Id: DrvAudio.cpp 70635 2018-01-18 16:57:59Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -2175,12 +2175,12 @@ static void drvAudioStateHandler(PPDMDRVINS pDrvIns, PDMAUDIOSTREAMCMD enmCmd)
     int rc2 = RTCritSectEnter(&pThis->CritSect);
     AssertRC(rc2);
 
-    if (!pThis->pHostDrvAudio)
-        return;
-
-    PPDMAUDIOSTREAM pHstStream;
-    RTListForEach(&pThis->lstHstStreams, pHstStream, PDMAUDIOSTREAM, Node)
-        drvAudioStreamControlInternalBackend(pThis, pHstStream, enmCmd);
+    if (pThis->pHostDrvAudio)
+    {
+        PPDMAUDIOSTREAM pHstStream;
+        RTListForEach(&pThis->lstHstStreams, pHstStream, PDMAUDIOSTREAM, Node)
+            drvAudioStreamControlInternalBackend(pThis, pHstStream, enmCmd);
+    }
 
     rc2 = RTCritSectLeave(&pThis->CritSect);
     AssertRC(rc2);
