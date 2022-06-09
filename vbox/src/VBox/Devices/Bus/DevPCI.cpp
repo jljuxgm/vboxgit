@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 67708 2017-06-29 17:05:00Z vboxsync $ */
+/* $Id: DevPCI.cpp 67870 2017-07-08 19:06:53Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -449,7 +449,7 @@ static void pciR3Piix3Reset(PIIX3ISABRIDGE *d)
 }
 
 /* host irqs corresponding to PCI irqs A-D */
-static const uint8_t pci_irqs[4] = { 11, 9, 11, 9 }; /* bird: added const */
+static const uint8_t pci_irqs[4] = { 11, 10, 9, 11 };   /* bird: added const */
 
 static void pci_bios_init_device(PDEVPCIROOT pGlobals, PDEVPCIBUS pBus, PPDMPCIDEV pPciDev, uint8_t cBridgeDepth, uint8_t *paBridgePositions)
 {
