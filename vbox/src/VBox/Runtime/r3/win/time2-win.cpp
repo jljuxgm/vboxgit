@@ -1,4 +1,4 @@
-/* $Id: time2-win.cpp 72162 2018-05-08 12:47:57Z vboxsync $ */
+/* $Id: time2-win.cpp 72163 2018-05-08 12:52:17Z vboxsync $ */
 /** @file
  * IPRT - Time, Windows.
  */
@@ -95,13 +95,13 @@ RTDECL(PRTTIME) RTTimeLocalExplode(PRTTIME pTime, PCRTTIMESPEC pTimeSpec)
      * (A better fallback would be to use the offset of the same time of the year.)
      */
     LocalTime = *pTimeSpec;
-    int64_t LocalUTCOffset = RTTimeLocalDeltaNano();
-    RTTimeSpecAddNano(&LocalTime, LocalUTCOffset);
+    int64_t cNsUtcOffset = RTTimeLocalDeltaNano();
+    RTTimeSpecAddNano(&LocalTime, cNsUtcOffset);
     pTime = RTTimeExplode(pTime, &LocalTime);
     if (pTime)
     {
         pTime->fFlags = (pTime->fFlags & ~RTTIME_FLAGS_TYPE_MASK) | RTTIME_FLAGS_TYPE_LOCAL;
-        pTime->offUTC = LocalUTCOffset / RT_NS_1MIN;
+        pTime->offUTC = cNsUtcOffset / RT_NS_1MIN;
     }
     return pTime;
 }
