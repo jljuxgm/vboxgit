@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 70185 2017-12-18 10:32:04Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 70190 2017-12-18 13:13:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -134,7 +134,8 @@ void UIVMLogViewerWidget::sltRefresh()
         noLogsToShow = true;
         strDummyTabText = QString(tr("<p>No log files found. Press the "
                                      "<b>Refresh</b> button to rescan the log folder "
-                                     "<nobr><b>%1</b></nobr>.</p>"));
+                                     "<nobr><b>%1</b></nobr>.</p>")
+                                     .arg(m_comMachine.GetLogFolder()));
     }
     /* If the machine is not valid or has no log files show a single viewer tab: */
     if (noLogsToShow)
