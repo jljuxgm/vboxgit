@@ -1,4 +1,4 @@
-/* $Id: pemfile.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: pemfile.cpp 69521 2017-10-30 10:59:20Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PEM file reader / writer.
  */
@@ -414,28 +414,31 @@ RTDECL(int) RTCrPemParseContent(void const *pvContent, size_t cbContent, uint32_
 
             RTCrPemFreeSections(*ppSectionHead);
         }
-        else if (!(fFlags & RTCRPEMREADFILE_F_ONLY_PEM))
+        else
         {
-            /*
-             * No PEM section found.  Return the whole file as one binary section.
-             */
-            //pSection->pNext       = NULL;
-            //pSection->pMarker     = NULL;
-            pSection->pbData        = (uint8_t *)RTMemDup(pbContent, cbContent);
-            pSection->cbData        = cbContent;
-            //pSection->pszPreamble = NULL;
-            //pSection->cchPreamble = 0;
-            if (pSection->pbData)
+            if (!(fFlags & RTCRPEMREADFILE_F_ONLY_PEM))
             {
-                *ppSectionHead = pSection;
-                return VINF_SUCCESS;
-            }
+                /*
+                 * No PEM section found.  Return the whole file as one binary section.
+                 */
+                //pSection->pNext       = NULL;
+                //pSection->pMarker     = NULL;
+                pSection->pbData        = (uint8_t *)RTMemDup(pbContent, cbContent);
+                pSection->cbData        = cbContent;
+                //pSection->pszPreamble = NULL;
+                //pSection->cchPreamble = 0;
+                if (pSection->pbData)
+                {
+                    *ppSectionHead = pSection;
+                    return VINF_SUCCESS;
+                }
 
-            rc = VERR_NO_MEMORY;
+                rc = VERR_NO_MEMORY;
+            }
+            else
+                rc = VWRN_NOT_FOUND;
             RTMemFree(pSection);
         }
-        else
-            rc = VWRN_NOT_FOUND;
     }
     else
         rc = VERR_NO_MEMORY;
