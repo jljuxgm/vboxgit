@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 71433 2018-03-21 13:44:20Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 71868 2018-04-17 09:51:32Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -881,7 +881,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            edit <uuid|snapname>|--current\n"
                      "                                 [--name <name>]\n"
                      "                                 [--description <desc>] |\n"
-                     "                            list [--details|--machinereadable]\n"
+                     "                            list [--details|--machinereadable] |\n"
                      "                            showvminfo <uuid|snapname>\n"
                      "\n", SEP);
 
