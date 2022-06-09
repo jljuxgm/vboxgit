@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 72065 2018-04-30 06:27:34Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 72084 2018-05-03 07:27:29Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -301,15 +301,13 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmexit(PVMCPU pVCpu, PCPUMCTX pCtx, uint64_t uExit
         }
         else
         {
-            LogFlow(("iemSvmVmexit: Mapping VMCB at %#RGp failed. rc=%Rrc\n", pCtx->hwvirt.svm.GCPhysVmcb, VBOXSTRICTRC_VAL(rcStrict)));
+            AssertMsgFailed(("iemSvmVmexit: Mapping VMCB at %#RGp failed. rc=%Rrc\n", pCtx->hwvirt.svm.GCPhysVmcb, VBOXSTRICTRC_VAL(rcStrict)));
             rcStrict = VERR_SVM_VMEXIT_FAILED;
         }
     }
     else
     {
-        Log(("iemSvmVmexit: Not in SVM guest mode! uExitCode=%#RX64 uExitInfo1=%#RX64 uExitInfo2=%#RX64\n", uExitCode,
-             uExitInfo1, uExitInfo2));
-        AssertMsgFailed(("iemSvmVmexit: Unexpected SVM-exit failure uExitCode=%#RX64\n", uExitCode));
+        AssertMsgFailed(("iemSvmVmexit: Not in SVM guest mode! uExitCode=%#RX64 uExitInfo1=%#RX64 uExitInfo2=%#RX64\n", uExitCode, uExitInfo1, uExitInfo2));
         rcStrict = VERR_SVM_IPE_3;
     }
 
