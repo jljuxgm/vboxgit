@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 68798 2017-09-20 10:27:16Z vboxsync $ */
+/* $Id: ConsoleImpl.h 68850 2017-09-25 10:49:29Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -139,7 +139,7 @@ public:
 #endif
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
     AudioVideoRec *i_audioVideoRecGet() const { return mAudioVideoRec; }
-    HRESULT i_audioVideoRecSendAudio(const void *pvData, size_t cbData, uint64_t uTimestampMs);
+    HRESULT i_audioVideoRecSendAudio(const void *pvData, size_t cbData, uint64_t uDurationMs);
 #endif
 
     const ComPtr<IMachine> &i_machine() const { return mMachine; }

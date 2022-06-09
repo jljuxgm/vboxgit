@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 68828 2017-09-22 14:15:57Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 68850 2017-09-25 10:49:29Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6751,13 +6751,13 @@ HRESULT Console::i_cancelSaveState()
  * @returns HRESULT
  * @param   pvData              Audio data to send.
  * @param   cbData              Size (in bytes) of audio data to send.
- * @param   uTimestampMs        Time stamp (in ms) of audio data.
+ * @param   uDurationMs         Duration (in ms) of audio data.
  */
-HRESULT Console::i_audioVideoRecSendAudio(const void *pvData, size_t cbData, uint64_t uTimestampMs)
+HRESULT Console::i_audioVideoRecSendAudio(const void *pvData, size_t cbData, uint64_t uDurationMs)
 {
     if (mDisplay)
     {
-        int rc2 = mDisplay->i_videoCaptureSendAudio(pvData, cbData, uTimestampMs);
+        int rc2 = mDisplay->i_videoCaptureSendAudio(pvData, cbData, uDurationMs);
         AssertRC(rc2);
     }
 

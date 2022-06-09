@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 68806 2017-09-20 15:03:16Z vboxsync $ */
+/* $Id: VideoRec.cpp 68850 2017-09-25 10:49:29Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -66,7 +66,7 @@ using namespace com;
 #endif
 #ifdef DEBUG_andy
 /** Enables dumping audio / video data for debugging reasons. */
-# define VBOX_VIDEOREC_DUMP
+//# define VBOX_VIDEOREC_DUMP
 #endif
 
 /**

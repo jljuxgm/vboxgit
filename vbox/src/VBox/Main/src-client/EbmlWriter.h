@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.h 68796 2017-09-20 10:25:19Z vboxsync $ */
+/* $Id: EbmlWriter.h 68850 2017-09-25 10:49:29Z vboxsync $ */
 /** @file
  * EbmlWriter.h - EBML writer + WebM container.
  */
@@ -85,8 +85,8 @@ public:
         const void *pvData;
         /** Size (in bytes) of encoded Opus audio data. */
         size_t      cbData;
-        /** Timestamp (in ms). */
-        uint64_t    uTimestampMs;
+        /** Duration (in ms) of encoded Opus audio data. */
+        uint64_t    uDurationMs;
     };
 #endif /* VBOX_WITH_LIBOPUS */
 
