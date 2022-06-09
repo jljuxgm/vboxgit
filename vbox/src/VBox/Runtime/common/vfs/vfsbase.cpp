@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 67272 2017-06-06 13:42:16Z vboxsync $ */
+/* $Id: vfsbase.cpp 67274 2017-06-06 13:47:18Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -3050,7 +3050,7 @@ RTDECL(int) RTVfsIoStrmZeroFill(RTVFSIOSTREAM hVfsIos, RTFOFF cb)
         rc = VINF_SUCCESS;
         while (cb > 0)
         {
-            size_t cbToWrite = (size_t)RT_MIN(cb, sizeof(g_abRTZero64K));
+            size_t cbToWrite = (size_t)RT_MIN(cb, (ssize_t)sizeof(g_abRTZero64K));
             RTVfsLockAcquireWrite(pThis->Base.hLock);
             rc = RTVfsIoStrmWrite(hVfsIos, g_abRTZero64K, cbToWrite, true /*fBlocking*/, NULL);
             RTVfsLockReleaseWrite(pThis->Base.hLock);
