@@ -1,4 +1,4 @@
-/* $Id: proxy_pollmgr.c 68755 2017-09-14 03:02:01Z vboxsync $ */
+/* $Id: proxy_pollmgr.c 69232 2017-10-24 15:28:32Z vboxsync $ */
 /** @file
  * NAT Network - poll manager.
  */
@@ -252,7 +252,7 @@ pollmgr_chan_send(int slot, void *buf, size_t nbytes)
 
     AssertReturn(0 <= slot && slot < POLLMGR_CHAN_COUNT, -1);
 
-    /* 
+    /*
      * XXX: Hack alert.  We only ever "sent" single pointer which was
      * simultaneously both the wakeup event for the poll and the
      * argument for the channel handler that it read from the channel.
