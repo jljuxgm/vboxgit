@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 68239 2017-08-02 12:39:12Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 68240 2017-08-02 12:42:18Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -245,8 +245,8 @@ HRESULT Unattended::detectIsoOS()
         && RT_C_IS_ALPHA(pszFilename[1])
         && (pszFilename[2] == '-' || pszFilename[2] == '_') )
     {
-        szTmp[0] = RT_C_TO_LOWER(pszFilename[0]);
-        szTmp[1] = RT_C_TO_LOWER(pszFilename[1]);
+        szTmp[0] = (char)RT_C_TO_LOWER(pszFilename[0]);
+        szTmp[1] = (char)RT_C_TO_LOWER(pszFilename[1]);
         szTmp[2] = '-';
         if (szTmp[0] == 'e' && szTmp[1] == 'n')
             strcpy(&szTmp[3], "US");
@@ -284,8 +284,8 @@ HRESULT Unattended::detectIsoOS()
             strcpy(szTmp, "sr-Latn-CS"); /* hmm */
         else
         {
-            szTmp[3] = RT_C_TO_UPPER(pszFilename[0]);
-            szTmp[4] = RT_C_TO_UPPER(pszFilename[1]);
+            szTmp[3] = (char)RT_C_TO_UPPER(pszFilename[0]);
+            szTmp[4] = (char)RT_C_TO_UPPER(pszFilename[1]);
             szTmp[5] = '\0';
         }
     }
