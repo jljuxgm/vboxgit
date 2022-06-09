@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 66879 2017-05-12 13:27:07Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 67070 2017-05-24 20:23:23Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3874,7 +3874,7 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
      * XSAVE is exposed too. For the time being the default is to only expose this
      * to VMs with nested paging and AMD-V or unrestricted guest execution mode.
      */
-    rc = cpumR3CpuIdReadIsaExtCfgEx(pVM, pIsaExts, "AVX2", &pConfig->enmAvx2, fNestedPagingAndFullGuestExec && false /* temporarily */,
+    rc = cpumR3CpuIdReadIsaExtCfgEx(pVM, pIsaExts, "AVX2", &pConfig->enmAvx2, fNestedPagingAndFullGuestExec /* temporarily */,
                                     fMayHaveXSave && pConfig->enmXSave && (fXStateHostMask & XSAVE_C_YMM) /*fAllowed*/);
     AssertLogRelRCReturn(rc, rc);
 
