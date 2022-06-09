@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 69605 2017-11-07 12:19:41Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 69607 2017-11-07 16:27:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -86,6 +86,11 @@ void UIMediumDetailsWidget::setData(const UIDataMedium &data)
     loadDataForOptions();
     /* Load details data: */
     loadDataForDetails();
+}
+
+void UIMediumDetailsWidget::setOptionsEnabled(bool fEnabled)
+{
+    m_pTabWidget->widget(0)->setEnabled(fEnabled);
 }
 
 void UIMediumDetailsWidget::retranslateUi()

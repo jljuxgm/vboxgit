@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.h 69568 2017-11-03 14:56:45Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.h 69607 2017-11-07 16:27:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class declaration.
  */
@@ -200,6 +200,11 @@ public:
     const UIDataMedium &data() const { return m_newData; }
     /** Defines the @a data for passed @a enmType. */
     void setData(const UIDataMedium &data);
+
+public slots:
+
+    /** Defines whether the options tab is @a fEnabled. */
+    void setOptionsEnabled(bool fEnabled);
 
 protected:
 
