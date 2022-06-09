@@ -1,4 +1,4 @@
-/* $Id: GuestFsObjInfoImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.cpp 71174 2018-03-02 11:01:06Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file system object information handling.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_GUEST_CONTROL // LOG_GROUP_MAIN_GUESTFSOBJINFO
+#define LOG_GROUP LOG_GROUP_MAIN_GUESTFSOBJINFO
 #include "LoggingNew.h"
 
 #ifndef VBOX_WITH_GUEST_CONTROL
