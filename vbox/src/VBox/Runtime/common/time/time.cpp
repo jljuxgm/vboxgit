@@ -1,4 +1,4 @@
-/* $Id: time.cpp 72150 2018-05-07 15:57:55Z vboxsync $ */
+/* $Id: time.cpp 72164 2018-05-08 13:41:23Z vboxsync $ */
 /** @file
  * IPRT - Time.
  */
@@ -415,13 +415,7 @@ RTDECL(PRTTIMESPEC) RTTimeImplode(PRTTIMESPEC pTimeSpec, PCRTTIME pTime)
     AssertReturn(pTime->u16YearDay >= 1, NULL);
     AssertReturn(pTime->u16YearDay <= (rtTimeIsLeapYear(pTime->i32Year) ? 366 : 365), NULL);
     AssertMsgReturn(pTime->i32Year <= RTTIME_MAX_YEAR && pTime->i32Year >= RTTIME_MIN_YEAR, ("%RI32\n", pTime->i32Year), NULL);
-
-    RTTIME TimeUTC;
-    if ((pTime->fFlags & RTTIME_FLAGS_TYPE_MASK) == RTTIME_FLAGS_TYPE_LOCAL)
-    {
-        TimeUTC = *pTime;
-        pTime = rtTimeConvertToZulu(&TimeUTC);
-    }
+    Assert(pTime->offUTC >= -840 && pTime->offUTC <= 840);
 
     /*
      * Do the conversion to nanoseconds.
@@ -439,6 +433,8 @@ RTDECL(PRTTIMESPEC) RTTimeImplode(PRTTIMESPEC pTimeSpec, PCRTTIME pTime)
     AssertMsgReturn(i32Days != RTTIME_MIN_DAY || i64Nanos >= RTTIME_MIN_DAY_NANO, ("%RI64\n", i64Nanos), NULL);
 
     i64Nanos += i32Days * UINT64_C(86400000000000);
+    if ((pTime->fFlags & RTTIME_FLAGS_TYPE_MASK) == RTTIME_FLAGS_TYPE_LOCAL)
+        i64Nanos -= pTime->offUTC * RT_NS_1MIN;
 
     pTimeSpec->i64NanosecondsRelativeToUnixEpoch = i64Nanos;
     return pTimeSpec;
