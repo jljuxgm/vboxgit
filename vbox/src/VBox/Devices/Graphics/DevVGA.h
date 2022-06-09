@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 67766 2017-07-04 08:04:57Z vboxsync $ */
+/* $Id: DevVGA.h 67857 2017-07-07 15:01:51Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -263,7 +263,8 @@ typedef struct VGAState {
     uint32_t last_width, last_height; /* in chars or pixels */
     uint32_t last_scr_width, last_scr_height; /* in pixels */
     uint32_t last_bpp;
-    uint8_t cursor_start, cursor_end, padding3[2];
+    uint8_t cursor_start, cursor_end;
+    bool last_cur_blink, last_chr_blink;
     uint32_t cursor_offset;
     /* hardware mouse cursor support */
     uint32_t invalidated_y_table[VGA_MAX_HEIGHT / 32];
