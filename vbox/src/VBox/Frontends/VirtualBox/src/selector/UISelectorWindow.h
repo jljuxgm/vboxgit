@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 68175 2017-07-29 14:41:24Z vboxsync $ */
+/* $Id: UISelectorWindow.h 68199 2017-07-31 12:32:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -266,6 +266,8 @@ private:
 
     /** @name Action update stuff.
       * @{ */
+        /** Performs update of actions visibility. */
+        void updateActionsVisibility();
         /** Performs update of actions appearance. */
         void updateActionsAppearance();
 
@@ -324,7 +326,7 @@ private:
 
     /** Holds the Chooser-pane instance. */
     UIGChooser         *m_pPaneChooser;
-    /** Holds the Tools-pane instance. */
+    /** Holds the Machine Tools-pane instance. */
     UIToolsPaneMachine *m_pPaneToolsMachine;
 
     /** Holds the list of Group menu actions. */
