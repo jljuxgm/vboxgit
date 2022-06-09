@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 71433 2018-03-21 13:44:20Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 71998 2018-04-24 08:12:20Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -344,6 +344,11 @@ RTEXITCODE handleMoveVM(HandlerArg *a)
         }
     }
 
+
+    if (!pszType)
+    {
+        pszType = "basic";
+    }
 
     /* Check for required options */
     if (!pszSrcName)

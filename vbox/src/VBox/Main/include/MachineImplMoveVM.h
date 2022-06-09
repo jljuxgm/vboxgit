@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 71997 2018-04-24 08:05:09Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 71998 2018-04-24 08:12:20Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -101,7 +101,7 @@ public:
         m_pMachine(aMachine),
         m_pProgress(aProgress),
         m_targetPath(aTargetPath),
-        m_type (aType),
+        m_type (aType.isEmpty() == true ? "basic" : aType),
         result(S_OK)
     {
     }
