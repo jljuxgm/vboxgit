@@ -1,10 +1,10 @@
-/* $Id: UIIconPool.cpp 71006 2018-02-14 11:21:33Z vboxsync $ */
+/* $Id: UIIconPool.cpp 71452 2018-03-22 12:48:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -38,6 +38,10 @@
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
+
+/*********************************************************************************************************************************
+*   Class UIIconPool implementation.                                                                                             *
+*********************************************************************************************************************************/
 
 /* static */
 QPixmap UIIconPool::pixmap(const QString &strName)
@@ -265,6 +269,10 @@ void UIIconPool::addName(QIcon &icon, const QString &strName,
     }
 }
 
+
+/*********************************************************************************************************************************
+*   Class UIIconPoolGeneral implementation.                                                                                      *
+*********************************************************************************************************************************/
 
 UIIconPoolGeneral::UIIconPoolGeneral()
 {

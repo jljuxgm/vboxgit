@@ -1,10 +1,10 @@
-/* $Id: UIIconPool.h 66662 2017-04-24 17:55:47Z vboxsync $ */
+/* $Id: UIIconPool.h 71452 2018-03-22 12:48:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class declaration.
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -83,10 +83,12 @@ public:
 
 protected:
 
-    /** Icon-pool constructor. */
+    /** Constructs icon-pool.
+      * Doesn't mean to be used directly,
+      * cause this class is a bunch of statics. */
     UIIconPool() {}
 
-    /** Icon-pool destructor. */
+    /** Destructs icon-pool. */
     virtual ~UIIconPool() {}
 
 private:
@@ -97,13 +99,14 @@ private:
                         QIcon::Mode mode = QIcon::Normal, QIcon::State state = QIcon::Off);
 };
 
+
 /** UIIconPool interface extension used as general GUI icon-pool.
   * Provides GUI with guest OS types pixmap cache. */
 class UIIconPoolGeneral : public UIIconPool
 {
 public:
 
-    /** General icon-pool constructor. */
+    /** Constructs general icon-pool. */
     UIIconPoolGeneral();
 
     /** Returns icon defined for a passed @a comMachine. */
@@ -130,4 +133,6 @@ private:
     mutable QHash<QString, QIcon> m_guestOSTypeIcons;
 };
 
+
 #endif /* !___UIIconPool_h___ */
+
