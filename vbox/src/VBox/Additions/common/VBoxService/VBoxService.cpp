@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 69749 2017-11-19 12:49:36Z vboxsync $ */
+/* $Id: VBoxService.cpp 69752 2017-11-19 14:14:46Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -318,7 +318,7 @@ int VGSvcLogCreate(const char *pszLogFile)
                            RT_ELEMENTS(s_apszGroups), s_apszGroups,
                            RTLOGDEST_STDOUT | RTLOGDEST_USER,
                            vgsvcLogHeaderFooter, g_cHistory, g_uHistoryFileSize, g_uHistoryFileTime,
-                           NULL /*pErrInfo*/, pszLogFile);
+                           NULL /*pErrInfo*/, "%s", pszLogFile);
     if (RT_SUCCESS(rc))
     {
         /* register this logger as the release logger */
