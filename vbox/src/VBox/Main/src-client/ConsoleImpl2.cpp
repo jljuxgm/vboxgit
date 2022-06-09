@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 70628 2018-01-18 12:09:41Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 70644 2018-01-19 12:20:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2978,15 +2978,23 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     InsertConfigString(pLunL1, "Driver", strAudioDriver.c_str());
 
 #ifdef VBOX_WITH_AUDIO_VRDE
-            AudioDriverCfg DrvCfgVRDE(strAudioDevice, 0 /* Instance */, "AudioVRDE");
+            /* Insert dummy audio driver to have the LUN configured. */
+            CFGMR3InsertNodeF(pInst, &pLunL0, "LUN#%RU8", uAudioLUN);
+                InsertConfigString(pLunL0, "Driver", "AUDIO");
+            AudioDriverCfg DrvCfgVRDE(strAudioDevice, 0 /* Instance */, uAudioLUN, "AudioVRDE");
             rc = mAudioVRDE->InitializeConfig(&DrvCfgVRDE);
-            AssertRC(rc);
+            if (RT_SUCCESS(rc))
+                uAudioLUN++;
 #endif /* VBOX_WITH_AUDIO_VRDE */
 
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
-            AudioDriverCfg DrvCfgVideoRec(strAudioDevice, 0 /* Instance */, "AudioVideoRec");
+            /* Insert dummy audio driver to have the LUN configured. */
+            CFGMR3InsertNodeF(pInst, &pLunL0, "LUN#%RU8", uAudioLUN);
+                InsertConfigString(pLunL0, "Driver", "AUDIO");
+            AudioDriverCfg DrvCfgVideoRec(strAudioDevice, 0 /* Instance */, uAudioLUN, "AudioVideoRec");
             rc = mAudioVideoRec->InitializeConfig(&DrvCfgVideoRec);
-            AssertRC(rc);
+            if (RT_SUCCESS(rc))
+                uAudioLUN++;
 #endif /* VBOX_WITH_AUDIO_VIDEOREC */
 
             if (fDebugEnabled)

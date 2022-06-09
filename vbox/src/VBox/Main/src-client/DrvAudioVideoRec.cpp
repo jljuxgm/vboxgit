@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 70563 2018-01-12 17:52:10Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 70644 2018-01-19 12:20:33Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -1031,10 +1031,15 @@ AudioVideoRec::~AudioVideoRec(void)
 }
 
 
-void AudioVideoRec::configureDriver(PCFGMNODE pLunCfg)
+/**
+ * @copydoc AudioDriver::configureDriver
+ */
+int AudioVideoRec::configureDriver(PCFGMNODE pLunCfg)
 {
     CFGMR3InsertInteger(pLunCfg, "Object",        (uintptr_t)mpConsole->i_getAudioVideoRec());
     CFGMR3InsertInteger(pLunCfg, "ObjectConsole", (uintptr_t)mpConsole);
+
+    return VINF_SUCCESS;
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.h 70553 2018-01-12 12:15:36Z vboxsync $ */
+/* $Id: DrvAudioVRDE.h 70644 2018-01-19 12:20:33Z vboxsync $ */
 /** @file
  * VirtualBox driver interface to VRDE backend.
  */
@@ -61,7 +61,7 @@ public:
 
 private:
 
-    void configureDriver(PCFGMNODE pLunCfg);
+    int configureDriver(PCFGMNODE pLunCfg);
 
     /** Pointer to the associated VRDE audio driver. */
     struct DRVAUDIOVRDE *mpDrv;

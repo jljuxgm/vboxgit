@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 70596 2018-01-15 22:46:29Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 70644 2018-01-19 12:20:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4566,19 +4566,6 @@ DECLCALLBACK(int) Display::i_drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
 
 #ifdef VBOX_WITH_CRHGSMI
     pDisplay->i_setupCrHgsmiData();
-#endif
-
-#ifdef VBOX_WITH_VIDEOREC
-    if (pDisplay->i_videoRecGetEnabled())
-    {
-        int rc2 = pDisplay->i_videoRecStart();
-        if (RT_SUCCESS(rc2))
-            fireVideoCaptureChangedEvent(pDisplay->mParent->i_getEventSource());
-
-        /* If video recording fails for whatever reason here, this is
-         * non-critical and should not be returned at this point -- otherwise
-         * the display driver construction fails completely. */
-    }
 #endif
 
     return rc;
