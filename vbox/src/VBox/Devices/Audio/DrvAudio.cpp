@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 68383 2017-08-11 09:55:03Z vboxsync $ */
+/* $Id: DrvAudio.cpp 68384 2017-08-11 10:00:26Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2977,7 +2977,7 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis,
     if (RT_FAILURE(rc))
     {
         if (rc == VERR_NOT_SUPPORTED)
-            LogRel2(("Audio: Creating stream '%s' in backend not supported, skipping\n", pHstStream->szName, rc));
+            LogRel2(("Audio: Creating stream '%s' in backend not supported, skipping\n", pHstStream->szName));
         else
             LogRel2(("Audio: Creating stream '%s' in backend failed with %Rrc\n", pHstStream->szName, rc));
 
