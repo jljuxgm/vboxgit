@@ -1,4 +1,4 @@
-/* $Id: VBoxMFInternal.cpp 68560 2017-08-31 12:10:10Z vboxsync $ */
+/* $Id: VBoxMFInternal.cpp 68633 2017-09-05 11:56:00Z vboxsync $ */
 /** @file
  * VBox Mouse Filter Driver - Internal functions.
  *
@@ -25,7 +25,6 @@
 #include <iprt/asm.h>
 #include "VBoxMF.h"
 #include <VBox/VBoxGuestLib.h>
-#include <VBox/VBoxGuest.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 

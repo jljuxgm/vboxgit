@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestApplication.h 62526 2016-07-22 19:18:03Z vboxsync $ */
+/* $Id: VBoxGuestApplication.h 68633 2017-09-05 11:56:00Z vboxsync $ */
 /** @file
  * VBoxGuestApplication, Haiku Guest Additions, header.
  */
@@ -44,8 +44,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef __VBOXGUESTAPPLICATION__H
-#define __VBOXGUESTAPPLICATION__H
+#ifndef ___VBOXGUESTAPPLICATION__H
+#define ___VBOXGUESTAPPLICATION__H
 
 /** @todo r=ramshankar; why are we including all the headers here!?? Do it in
  *        the .cpp please. */
@@ -72,5 +72,5 @@ class VBoxGuestApplication : public BApplication
         virtual void ReadyToRun();
 };
 
-#endif /* __VBOXGUESTAPPLICATION__H */
+#endif /* !___VBOXGUESTAPPLICATION__H */
 

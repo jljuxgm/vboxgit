@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInst.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxGuestInst.cpp 68633 2017-09-05 11:56:00Z vboxsync $ */
 /** @file
  * Small tool to (un)install the VBoxGuest device driver.
  */
@@ -25,7 +25,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <VBox/VBoxGuest.h>
+#include <VBox/VBoxGuest.h> /* for VBOXGUEST_SERVICE_NAME */
 
 
 //#define TESTMODE
