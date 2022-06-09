@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 62500 2016-07-22 19:06:59Z vboxsync $ */
+/* $Id: DevEFI.h 67439 2017-06-16 13:57:42Z vboxsync $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -68,6 +68,8 @@ typedef enum
     EFI_INFO_INDEX_GOP_MODE,
     EFI_INFO_INDEX_UGA_HORIZONTAL_RESOLUTION,
     EFI_INFO_INDEX_UGA_VERTICAL_RESOLUTION,
+    EFI_INFO_INDEX_MCFG_BASE,
+    EFI_INFO_INDEX_MCFG_SIZE,
     EFI_INFO_INDEX_END
 } EfiInfoIndex;
 
