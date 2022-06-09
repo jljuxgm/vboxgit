@@ -1,4 +1,4 @@
-/* $Id: SerialTest.cpp 70983 2018-02-13 09:04:55Z vboxsync $ */
+/* $Id: SerialTest.cpp 70985 2018-02-13 09:21:58Z vboxsync $ */
 /** @file
  * SerialTest - Serial port testing utility.
  */
@@ -860,7 +860,7 @@ int main(int argc, char *argv[])
         return RTEXITCODE_FAILURE;
     }
 
-    rc = RTRandAdvSeed(g_hRand, 0x123456789abcdef);
+    rc = RTRandAdvSeed(g_hRand, UINT64_C(0x123456789abcdef));
     AssertRC(rc);
 
     /*
