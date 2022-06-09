@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 67479 2017-06-19 15:44:57Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 67483 2017-06-19 20:22:01Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -999,6 +999,7 @@ static void paEnumSourceCb(pa_context *pCtx, const pa_source_info *pInfo, int eo
 
 static void paEnumServerCb(pa_context *pCtx, const pa_server_info *pInfo, void *pvUserData)
 {
+    LogRel(("DEBUG: paEnumServerCb\n"));
     if (!pCtx)
         LogRel(("DEBUG: paEnumServerCb return because of !pCtx\n"));
     AssertPtrReturnVoid(pCtx);
@@ -1029,6 +1030,7 @@ static void paEnumServerCb(pa_context *pCtx, const pa_server_info *pInfo, void *
     }
 
 //    LogRel(("DEBUG: pa_threaded_mainloop_signal() from paEnumServerCb\n"));
+    LogRel(("DEBUG: paEnumServerCb signal mainloop\n"));
     pa_threaded_mainloop_signal(pThis->pMainLoop, 0);
 }
 
