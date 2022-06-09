@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 67021 2017-05-22 15:08:11Z vboxsync $ */
+/* $Id: UISelectorWindow.h 67046 2017-05-23 15:07:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -124,6 +124,8 @@ private slots:
       * @{ */
         /** Handles call to open Virtual Medium Manager window. */
         void sltOpenVirtualMediumManagerWindow();
+        /** Handles call to close Virtual Medium Manager window. */
+        void sltCloseVirtualMediumManagerWindow();
         /** Handles call to open Host Network Manager window. */
         void sltOpenHostNetworkManagerWindow();
         /** Handles call to close Host Network Manager window. */
@@ -358,6 +360,8 @@ private:
     /** Holds the Machine menu parent action. */
     QAction *m_pMachineMenuAction;
 
+    /** Holds the Virtual Media Manager window instance. */
+    QIManagerDialog *m_pManagerVirtualMedia;
     /** Holds the Host Network Manager window instance. */
     QIManagerDialog *m_pManagerHostNetwork;
 };
