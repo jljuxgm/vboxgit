@@ -1,4 +1,4 @@
-# $Id: Config.kmk 67782 2017-07-04 19:24:55Z vboxsync $
+# $Id: Config.kmk 68061 2017-07-20 10:59:07Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -99,6 +99,7 @@ ifeq ($(KBUILD_TARGET),darwin)
  INST_TESTCASE        = $(INST_BIN)testcase/
  INST_ADDITIONS       = $(INST_DIST)additions/
  INST_ADDITIONS_ISO   = $(INST_BIN)
+ INST_UNATTENDED_TEMPLATES = $(INST_BIN)UnattendedTemplates/
 
  INST_VBOXDBG_SYMS    = $(INST_VIRTUALBOX)Contents/Resources/VBoxDbgSyms/
 
@@ -126,6 +127,7 @@ else
  INST_TESTCASE        = $(INST_BIN)testcase/
  INST_ADDITIONS       = $(INST_BIN)additions/
  INST_ADDITIONS_ISO   = $(INST_ADDITIONS)
+ INST_UNATTENDED_TEMPLATES = $(INST_BIN)UnattendedTemplates/
 
  INST_LIB             = lib/
  INST_ADDITIONS_LIB   = $(INST_LIB)additions/
@@ -7006,7 +7008,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 67782 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68061 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
