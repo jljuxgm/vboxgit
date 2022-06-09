@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 68275 2017-08-03 10:12:28Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 68293 2017-08-04 06:05:13Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -329,6 +329,7 @@ VMM_INT_DECL(bool) HMSvmIsIOInterceptActive(void *pvIoBitmap, uint16_t u16Port, 
 }
 
 
+#ifdef VBOX_WITH_NESTED_HWVIRT
 /**
  * Notification callback for when a \#VMEXIT happens outside SVM R0 code (e.g.
  * in IEM).
@@ -363,4 +364,5 @@ VMM_INT_DECL(void) HMSvmNstGstVmExitNotify(PVMCPU pVCpu, PSVMVMCB pVmcbNstGst)
     }
     pNstGstVmcbCache->fVmrunEmulatedInR0 = false;
 }
+#endif
 
