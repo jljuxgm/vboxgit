@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 71783 2018-04-09 15:54:39Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 71786 2018-04-09 16:02:26Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -613,12 +613,8 @@ struct GuestFileOpenInfo
     Utf8Str                 mFileName;
     /** The file access mode. */
     FileAccessMode_T        mAccessMode;
-    /** String translation of mFileAccessMode for the GAs. */
-    const char             *mpszAccessMode;
     /** The file open action.  */
     FileOpenAction_T        mOpenAction;
-    /** String translation of mOpenAction for the GAs. */
-    const char             *mpszOpenAction;
     /** The file sharing mode. */
     FileSharingMode_T       mSharingMode;
     /** Octal creation mode. */
