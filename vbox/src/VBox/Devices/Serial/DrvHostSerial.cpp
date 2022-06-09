@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 69901 2017-12-01 15:47:17Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
@@ -336,7 +336,8 @@ static DECLCALLBACK(int) drvHostSerialSetParameters(PPDMICHARCONNECTOR pInterfac
      * modem irqs and so the monitor thread never gets released. The workaround
      * is to send a signal after each tcsetattr.
      */
-    RTThreadPoke(pThis->pMonitorThread->Thread);
+    if (RT_LIKELY(pThis->pMonitorThread != NULL))
+        RTThreadPoke(pThis->pMonitorThread->Thread);
 #endif
 
 #elif defined(RT_OS_WINDOWS)
