@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 65103 2017-01-04 12:08:18Z vboxsync $ */
+/* $Id: ProgressImpl.h 67230 2017-06-02 11:19:20Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -139,6 +139,8 @@ public:
 
     bool i_notifyPointOfNoReturn(void);
     bool i_setCancelCallback(void (*pfnCallback)(void *), void *pvUser);
+
+    static DECLCALLBACK(int) i_iprtProgressCallback(unsigned uPrecentage, void *pvUser);
 
 protected:
     DECLARE_EMPTY_CTOR_DTOR(Progress)

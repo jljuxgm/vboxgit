@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 67230 2017-06-02 11:19:20Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -534,6 +534,33 @@ bool Progress::i_setCancelCallback(void (*pfnCallback)(void *), void *pvUser)
     m_pvCancelUserArg   = pvUser;
     m_pfnCancelCallback = pfnCallback;
     return true;
+}
+
+/**
+ * @callback_method_impl{FNRTPROGRESS, }
+ */
+/*static*/ DECLCALLBACK(int) Progress::i_iprtProgressCallback(unsigned uPrecentage, void *pvUser)
+{
+    Progress *pThis = (Progress *)pvUser;
+
+    /*
+     * Same as setCurrentOperationProgress, except we don't fail on mCompleted.
+     */
+    AutoWriteLock alock(pThis COMMA_LOCKVAL_SRC_POS);
+    int vrc = VINF_SUCCESS;
+    if (!pThis->mCompleted)
+    {
+        pThis->i_checkForAutomaticTimeout();
+        if (!pThis->mCanceled)
+            pThis->m_ulOperationPercent = RT_MIN(uPrecentage, 100);
+        else
+        {
+            Assert(pThis->mCancelable);
+            vrc = VERR_CANCELLED;
+        }
+    }
+    /* else ignored */
+    return vrc;
 }
 
 
