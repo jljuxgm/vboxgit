@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 71709 2018-04-06 15:13:08Z vboxsync $ */
+/* $Id: DevHDA.cpp 71710 2018-04-06 15:18:03Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -1125,8 +1125,13 @@ static int hdaRegWriteCORBRP(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
         /* Do a CORB reset. */
         if (pThis->cbCorbBuf)
         {
+#ifdef IN_RING3
             Assert(pThis->pu32CorbBuf);
             RT_BZERO((void *)pThis->pu32CorbBuf, pThis->cbCorbBuf);
+#else
+            DEVHDA_UNLOCK(pThis);
+            return VINF_IOM_R3_MMIO_WRITE;
+#endif
         }
 
         LogRel2(("HDA: CORB reset\n"));
