@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.h 71736 2018-04-07 21:29:18Z vboxsync $ */
+/* $Id: HDAStreamMap.h 71754 2018-04-09 01:27:04Z vboxsync $ */
 /** @file
  * HDAStreamMap.h - Stream mapping functions for HD Audio.
  */
@@ -31,7 +31,9 @@ typedef struct HDASTREAMMAPPING
     R3PTRTYPE(PPDMAUDIOSTREAMCHANNEL) paChannels;
     /** Circular buffer holding for holding audio data for this mapping. */
     R3PTRTYPE(PRTCIRCBUF)             pCircBuf;
-} HDASTREAMMAPPING, *PHDASTREAMMAPPING;
+} HDASTREAMMAPPING;
+AssertCompileSizeAlignment(HDASTREAMMAPPING, 8);
+typedef HDASTREAMMAPPING *PHDASTREAMMAPPING;
 
 /** @name Stream mapping functions.
  * @{

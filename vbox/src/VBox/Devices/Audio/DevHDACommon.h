@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 71736 2018-04-07 21:29:18Z vboxsync $ */
+/* $Id: DevHDACommon.h 71754 2018-04-09 01:27:04Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -571,7 +571,10 @@ typedef struct HDABDLE
     /** Internal state of this BDLE.
      *  Not part of the actual BDLE registers. */
     HDABDLESTATE State;
-} HDABDLE, *PHDABDLE;
+} HDABDLE;
+AssertCompileSizeAlignment(HDABDLE, 8);
+/** Pointer to a buffer descriptor list entry (BDLE). */
+typedef HDABDLE *PHDABDLE;
 
 /** @name Object lookup functions.
  * @{

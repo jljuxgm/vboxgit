@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 71736 2018-04-07 21:29:18Z vboxsync $ */
+/* $Id: HDAStream.h 71754 2018-04-09 01:27:04Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -117,7 +117,7 @@ typedef struct HDASTREAMSTATE
     /** Flag indicating if the stream is in running state or not. */
     volatile bool           fRunning;
     /** Unused, padding. */
-    uint8_t                 Padding0[3];
+    uint8_t                 Padding0[4];
 #ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
     /** Asynchronous I/O state members. */
     HDASTREAMSTATEAIO       AIO;
@@ -128,6 +128,9 @@ typedef struct HDASTREAMSTATE
     HDABDLE                 BDLE;
     /** Circular buffer (FIFO) for holding DMA'ed data. */
     R3PTRTYPE(PRTCIRCBUF)   pCircBuf;
+#if HC_ARCH_BITS == 32
+    RTR3PTR                 Padding1;
+#endif
     /** Timestamp of the last DMA data transfer. */
     uint64_t                tsTransferLast;
     /** Timestamp of the next DMA data transfer.
@@ -171,8 +174,10 @@ typedef struct HDASTREAMSTATE
      *  stuff like interleaved surround streams. */
     uint16_t                cbDMALeft;
     /** Unused, padding. */
-    uint8_t                 Padding3;
-} HDASTREAMSTATE, *PHDASTREAMSTATE;
+    uint8_t                 abPadding3[2+4];
+} HDASTREAMSTATE;
+AssertCompileSizeAlignment(HDASTREAMSTATE, 8);
+typedef HDASTREAMSTATE *PHDASTREAMSTATE;
 
 /**
  * Structure for keeping a HDA stream (SDI / SDO).
