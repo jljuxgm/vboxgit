@@ -1,10 +1,10 @@
-/* $Id: UIDnDHandler.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 71430 2018-03-21 13:19:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
 
 /*
- * Copyright (C) 2011-2017 Oracle Corporation
+ * Copyright (C) 2011-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -21,11 +21,12 @@
 
 /* Qt includes: */
 #include <QApplication>
+#include <QDrag>
 #include <QKeyEvent>
 #include <QStringList>
 #include <QTimer>
-#include <QDrag>
 #include <QUrl>
+#include <QWidget>
 
 /* VirtualBox interface declarations: */
 #ifndef VBOX_WITH_XPCOM
