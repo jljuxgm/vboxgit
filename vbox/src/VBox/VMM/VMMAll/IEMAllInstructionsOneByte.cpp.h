@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsOneByte.cpp.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: IEMAllInstructionsOneByte.cpp.h 71092 2018-02-22 09:14:46Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -4460,7 +4460,7 @@ FNIEMOP_DEF(iemOp_nop)
         Assert(!IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fSvmPauseFilter);
         Assert(!IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fSvmPauseFilterThreshold);
 #endif
-        IEMOP_HLP_SVM_CTRL_INTERCEPT(pVCpu, SVM_CTRL_INTERCEPT_PAUSE, SVM_EXIT_PAUSE, 0, 0);
+        IEMOP_HLP_SVM_INSTR_INTERCEPT_AND_NRIP(pVCpu, SVM_CTRL_INTERCEPT_PAUSE, SVM_EXIT_PAUSE, 0, 0);
     }
     else
         IEMOP_MNEMONIC(nop, "nop");
