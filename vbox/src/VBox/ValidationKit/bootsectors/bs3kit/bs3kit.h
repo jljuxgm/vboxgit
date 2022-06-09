@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: bs3kit.h 72125 2018-05-04 22:10:02Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -2961,6 +2961,17 @@ BS3_CMN_PROTO_STUB(void, Bs3Trap64SetGate,(uint8_t iIdt, uint8_t bType, uint8_t 
  * points, 8 bytes each, that will create a register frame and call the generic
  * C compatible trap handlers. */
 extern uint32_t g_Bs3Trap64GenericEntriesFlatAddr;
+
+/**
+ * Adjusts the DPL the IDT entry specified by @a iIdt.
+ *
+ * The change is applied to the 16-bit, 32-bit and 64-bit IDTs.
+ *
+ * @returns Old DPL (from 64-bit IDT).
+ * @param   iIdt        The index of the IDT and IVT entry to set.
+ * @param   bDpl        The DPL.
+ */
+BS3_CMN_PROTO_STUB(uint8_t, Bs3TrapSetDpl,(uint8_t iIdt, uint8_t bDpl));
 
 /**
  * C-style trap handler.
