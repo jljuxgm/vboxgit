@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 69002 2017-10-06 12:49:53Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 69331 2017-10-26 09:59:30Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -563,16 +563,13 @@ bool Progress::i_setCancelCallback(void (*pfnCallback)(void *), void *pvUser)
         if (!pThis->mCanceled)
         {
             if (uPercentage > pThis->m_ulOperationPercent)
-                pThis->m_ulOperationPercent = RT_MIN(uPercentage, 100);
+                pThis->setCurrentOperationProgress(uPercentage);
         }
         else
         {
             Assert(pThis->mCancelable);
             vrc = VERR_CANCELLED;
         }
-        ULONG actualPercent = 0;
-        pThis->getPercent(&actualPercent);
-        fireProgressPercentageChangedEvent(pThis->pEventSource, pThis->mId.toUtf16().raw(), actualPercent);
     }
     /* else ignored */
     return vrc;
@@ -821,11 +818,13 @@ HRESULT Progress::setCurrentOperationProgress(ULONG aPercent)
         AssertReturn(!mCompleted, E_FAIL);
     AssertReturn(!mCompleted && !mCanceled, E_FAIL);
 
-    m_ulOperationPercent = aPercent;
-
-    ULONG actualPercent = 0;
-    getPercent(&actualPercent);
-    fireProgressPercentageChangedEvent(pEventSource, mId.toUtf16().raw(), actualPercent);
+    if (m_ulOperationPercent != aPercent)
+    {
+        m_ulOperationPercent = aPercent;
+        ULONG actualPercent = 0;
+        getPercent(&actualPercent);
+        fireProgressPercentageChangedEvent(pEventSource, mId.toUtf16().raw(), actualPercent);
+    }
 
     return S_OK;
 }
