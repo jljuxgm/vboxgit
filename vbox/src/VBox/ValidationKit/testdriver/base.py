@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: base.py 69571 2017-11-03 17:15:22Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 69571 $"
 
 
 # Standard Python imports.
@@ -594,7 +594,8 @@ class Process(TdTaskBase):
                     try:
                         (uPid, uStatus) = os.waitpid(self.hWin, 0);
                         if uPid == self.hWin or uPid == self.uPid:
-                            self.hWin = None; # waitpid closed it, so it's now invalid.
+                            self.hWin.Detach(); # waitpid closed it, so it's now invalid.
+                            self.hWin = None;
                             uPid = self.uPid;
                     except:
                         reporter.logXcpt();
