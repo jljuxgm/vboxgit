@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 70578 2018-01-13 19:32:04Z vboxsync $ */
+/* $Id: UIVMLogPage.h 70581 2018-01-14 20:54:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -91,6 +91,9 @@ public:
     bool isFiltered() const;
     void setFiltered(bool filtered);
 
+    void setShowLineNumbers(bool bShowLineNumbers);
+    void setWrapLines(bool bWrapLines);
+
 private slots:
 
     void sltAddBookmark(LogBookmark bookmark);
@@ -118,6 +121,8 @@ private:
     /** Designates whether currently displayed text is log text or a filtered version of it. That is
         if m_bFiltered is false than (m_strLog == m_pTextEdit->text()). */
     bool m_bFiltered;
+    bool m_bShowLineNumbers;
+    bool m_bWrapLines;
 };
 
 #endif /* !___UIVMLogPage_h___ */
