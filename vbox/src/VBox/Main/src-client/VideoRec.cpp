@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 68426 2017-08-16 08:27:10Z vboxsync $ */
+/* $Id: VideoRec.cpp 68427 2017-08-16 08:30:31Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -831,7 +831,7 @@ int VideoRecStreamInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen, const char *pszF
                 uAudioBits     = 16;
                 uAudioChannels = 1;
             }
-            else if (value.compare("med" /* "med[ium]" */, Utf8Str::CaseInsensitive) == 0)
+            else if (value.startsWith("med" /* "med[ium]" */, Utf8Str::CaseInsensitive) == 0)
             {
                 uAudioHz       = 22050;
                 uAudioBits     = 16;
