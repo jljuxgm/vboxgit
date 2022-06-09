@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72462 2018-06-06 14:24:04Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72484 2018-06-08 17:05:40Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7153,7 +7153,9 @@ VMMR0_INT_DECL(int) HMR0EnsureCompleteBasicContext(PVMCPU pVCpu, PCPUMCTX pMixed
     /* Note! Since this is only applicable to VT-x, the implementation is placed
              in the VT-x part of the sources instead of the generic stuff. */
     int rc;
-    if (pVCpu->CTX_SUFF(pVM)->hm.s.vmx.fSupported)
+    PVM pVM = pVCpu->CTX_SUFF(pVM);
+    if (   pVM->hm.s.vmx.fSupported
+        && VM_IS_HM_ENABLED(pVM))
         rc = hmR0VmxSaveGuestState(pVCpu, pMixedCtx);
     else
         rc = VINF_SUCCESS;

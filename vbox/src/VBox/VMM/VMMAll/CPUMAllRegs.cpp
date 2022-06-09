@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 72358 2018-05-28 14:47:51Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 72484 2018-06-08 17:05:40Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -599,6 +599,7 @@ VMMDECL(int) CPUMSetGuestGDTR(PVMCPU pVCpu, uint64_t GCPtrBase, uint16_t cbLimit
 #endif
     pVCpu->cpum.s.Guest.gdtr.cbGdt = cbLimit;
     pVCpu->cpum.s.Guest.gdtr.pGdt  = GCPtrBase;
+    pVCpu->cpum.s.Guest.fExtrn &= ~CPUMCTX_EXTRN_GDTR;
     pVCpu->cpum.s.fChanged |= CPUM_CHANGED_GDTR;
     return VINF_SUCCESS; /* formality, consider it void. */
 }
@@ -612,6 +613,7 @@ VMMDECL(int) CPUMSetGuestIDTR(PVMCPU pVCpu, uint64_t GCPtrBase, uint16_t cbLimit
 #endif
     pVCpu->cpum.s.Guest.idtr.cbIdt = cbLimit;
     pVCpu->cpum.s.Guest.idtr.pIdt  = GCPtrBase;
+    pVCpu->cpum.s.Guest.fExtrn &= ~CPUMCTX_EXTRN_IDTR;
     pVCpu->cpum.s.fChanged |= CPUM_CHANGED_IDTR;
     return VINF_SUCCESS; /* formality, consider it void. */
 }
