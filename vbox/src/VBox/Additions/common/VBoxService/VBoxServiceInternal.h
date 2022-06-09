@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 70196 2017-12-18 13:40:49Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 70214 2017-12-19 03:24:44Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -221,6 +221,10 @@ extern decltype(WSAGetLastError)               *g_pfnWSAGetLastError;
 extern decltype(closesocket)                   *g_pfnclosesocket;
 extern decltype(inet_ntoa)                     *g_pfninet_ntoa;
 # endif /* WINSOCK_VERSION */
+
+#ifdef SE_INTERACTIVE_LOGON_NAME
+extern decltype(LsaNtStatusToWinError)         *g_pfnLsaNtStatusToWinError;
+#endif
 
 # ifdef VBOX_WITH_GUEST_PROPS
 extern int                      VGSvcVMInfoWinWriteUsers(PVBOXSERVICEVEPROPCACHE pCache, char **ppszUserList, uint32_t *pcUsersInList);

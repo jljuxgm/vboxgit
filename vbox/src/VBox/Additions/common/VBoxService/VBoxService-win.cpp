@@ -1,4 +1,4 @@
-/* $Id: VBoxService-win.cpp 70196 2017-12-18 13:40:49Z vboxsync $ */
+/* $Id: VBoxService-win.cpp 70214 2017-12-19 03:24:44Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton, Windows Specific Parts.
  */
@@ -34,6 +34,8 @@
 #include <process.h>
 #include <aclapi.h>
 #include <tlhelp32.h>
+#define _NTDEF_
+#include <Ntsecapi.h>
 
 #include "VBoxServiceInternal.h"
 
@@ -65,6 +67,7 @@ decltype(ChangeServiceConfig2A)         *g_pfnChangeServiceConfig2A;            
 decltype(GetNamedSecurityInfoA)         *g_pfnGetNamedSecurityInfoA;            /**< NT4+ */
 decltype(SetEntriesInAclA)              *g_pfnSetEntriesInAclA;                 /**< NT4+ */
 decltype(SetNamedSecurityInfoA)         *g_pfnSetNamedSecurityInfoA;            /**< NT4+ */
+decltype(LsaNtStatusToWinError)         *g_pfnLsaNtStatusToWinError;            /**< NT3.51+ */
 /** @} */
 
 /** @name API from KERNEL32.DLL
@@ -118,6 +121,7 @@ void VGSvcWinResolveApis(void)
         RESOLVE_SYMBOL(GetNamedSecurityInfoA);
         RESOLVE_SYMBOL(SetEntriesInAclA);
         RESOLVE_SYMBOL(SetNamedSecurityInfoA);
+        RESOLVE_SYMBOL(LsaNtStatusToWinError);
         RTLdrClose(hLdrMod);
     }
 

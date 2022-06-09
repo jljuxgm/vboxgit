@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 70196 2017-12-18 13:40:49Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 70214 2017-12-19 03:24:44Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -748,14 +748,15 @@ static bool vgsvcVMInfoWinIsLoggedIn(PVBOXSERVICEVMINFOUSER pUserInfo, PLUID pSe
     AssertPtrReturn(pUserInfo, false);
     if (!pSession)
         return false;
-    if (!g_pfnLsaGetLogonSessionData)
+    if (   !g_pfnLsaGetLogonSessionData
+        || !g_pfnLsaNtStatusToWinError)
         return false;
 
     PSECURITY_LOGON_SESSION_DATA pSessionData = NULL;
     NTSTATUS rcNt = g_pfnLsaGetLogonSessionData(pSession, &pSessionData);
     if (rcNt != STATUS_SUCCESS)
     {
-        ULONG ulError = LsaNtStatusToWinError(rcNt);
+        ULONG ulError = g_pfnLsaNtStatusToWinError(rcNt);
         switch (ulError)
         {
             case ERROR_NOT_ENOUGH_MEMORY:
@@ -1085,7 +1086,7 @@ int VGSvcVMInfoWinWriteUsers(PVBOXSERVICEVEPROPCACHE pCache, char **ppszUserList
     int rc = RTOnce(&g_vgsvcWinVmInitOnce, vgsvcWinVmInfoInitOnce, NULL);
     if (RT_FAILURE(rc))
         return rc;
-    if (!g_pfnLsaEnumerateLogonSessions || !g_pfnEnumProcesses)
+    if (!g_pfnLsaEnumerateLogonSessions || !g_pfnEnumProcesses || !g_pfnLsaNtStatusToWinError)
         return VERR_NOT_SUPPORTED;
 
     rc = VbglR3GuestPropConnect(&s_uDebugGuestPropClientID);
@@ -1101,7 +1102,7 @@ int VGSvcVMInfoWinWriteUsers(PVBOXSERVICEVEPROPCACHE pCache, char **ppszUserList
     NTSTATUS rcNt = g_pfnLsaEnumerateLogonSessions(&cSessions, &paSessions);
     if (rcNt != STATUS_SUCCESS)
     {
-        ULONG uError = LsaNtStatusToWinError(rcNt);
+        ULONG uError = g_pfnLsaNtStatusToWinError(rcNt);
         switch (uError)
         {
             case ERROR_NOT_ENOUGH_MEMORY:
