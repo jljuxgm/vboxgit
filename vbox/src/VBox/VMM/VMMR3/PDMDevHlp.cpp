@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 68986 2017-10-04 14:37:38Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 68993 2017-10-05 13:54:29Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -825,7 +825,7 @@ static DECLCALLBACK(void *) pdmR3DevHlp_QueryGenericUserObject(PPDMDEVINS pDevIn
              pDevIns->pReg->szName, pDevIns->iInstance, pUuid, pUuid));
 
 #if defined(DEBUG_bird) || defined(DEBUG_ramshankar) || defined(DEBUG_sunlover) || defined(DEBUG_michael) || defined(DEBUG_andy)
-    AssertMsgFailed(("'%s' wants %RTuuid - external only interface!\n", pDevIns->pReg->szName, pUuid))
+    AssertMsgFailed(("'%s' wants %RTuuid - external only interface!\n", pDevIns->pReg->szName, pUuid));
 #endif
 
     void *pvRet;
