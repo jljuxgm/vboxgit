@@ -1,4 +1,4 @@
-/* $Id: nt.h 70171 2017-12-15 22:08:07Z vboxsync $ */
+/* $Id: nt.h 70183 2017-12-17 13:50:36Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -584,7 +584,7 @@ typedef struct _KUSER_SHARED_DATA
     KSYSTEM_TIME volatile   TimeZoneBias;                               /**< 0x020 */
     USHORT                  ImageNumberLow;                             /**< 0x02c */
     USHORT                  ImageNumberHigh;                            /**< 0x02e */
-    WCHAR                   NtSystemRoot[260];                          /**< 0x030 */
+    WCHAR                   NtSystemRoot[260];                          /**< 0x030 - Seems to be last member in NT 3.51. */
     ULONG                   MaxStackTraceDepth;                         /**< 0x238 */
     ULONG                   CryptoExponent;                             /**< 0x23c */
     ULONG                   TimeZoneId;                                 /**< 0x240 */
