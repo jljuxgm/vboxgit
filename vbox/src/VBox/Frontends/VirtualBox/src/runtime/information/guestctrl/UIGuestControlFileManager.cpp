@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 71234 2018-03-06 10:52:27Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 71255 2018-03-07 12:02:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -446,7 +446,7 @@ void UIGuestControlFileManager::sltCloseSession()
 
 void UIGuestControlFileManager::sltGuestSessionStateChanged(const CGuestSessionStateChangedEvent &cEvent)
 {
-    if (cEvent.isOk() && m_comGuestSession.isOk())
+    if (cEvent.isOk() /*&& m_comGuestSession.isOk()*/)
     {
         CVirtualBoxErrorInfo cErrorInfo = cEvent.GetError();
         if (cErrorInfo.isOk())
