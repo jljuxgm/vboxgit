@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 69639 2017-11-10 12:25:43Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 69714 2017-11-16 12:50:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -973,7 +973,7 @@ void UIGChooserItemMachine::paintMachineInfo(QPainter *pPainter, const QStyleOpt
     {
         /* Prepare variables: */
         int iMachinePixmapX = iLeftColumnIndent;
-        int iMachinePixmapY = (iFullHeight - m_pixmapSize.height()) / 2;
+        int iMachinePixmapY = (iFullHeight - m_pixmap.height() / m_pixmap.devicePixelRatio()) / 2;
         /* Paint pixmap: */
         paintPixmap(/* Painter: */
                     pPainter,
