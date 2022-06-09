@@ -1,4 +1,4 @@
-/* $Id: proxy_pollmgr.c 68754 2017-09-14 02:30:48Z vboxsync $ */
+/* $Id: proxy_pollmgr.c 68755 2017-09-14 03:02:01Z vboxsync $ */
 /** @file
  * NAT Network - poll manager.
  */
@@ -341,7 +341,7 @@ pollmgr_chan_call_handler(int slot, void *arg)
     pollmgr.chan_handlers[slot].arg = arg;
     pollmgr.chan_handlers[slot].arg_valid = true;
 
-    nevents = handler->callback(handler, -1, POLLIN);
+    nevents = handler->callback(handler, INVALID_SOCKET, POLLIN);
     if (nevents != POLLIN) {
         DPRINTF2(("%s: nevents=0x%x!\n", __func__, nevents));
     }
