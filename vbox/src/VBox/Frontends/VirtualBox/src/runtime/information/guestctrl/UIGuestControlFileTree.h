@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTree.h 71133 2018-02-27 10:13:17Z vboxsync $ */
+/* $Id: UIGuestControlFileTree.h 71169 2018-03-02 09:54:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTree class declaration.
  */
@@ -34,6 +34,7 @@
 /* Forward declarations: */
 
 
+
 class UIGuestControlFileTree : public QITreeWidget
 {
     Q_OBJECT;
@@ -44,6 +45,41 @@ public:
 private:
 
 
+};
+
+class UIGuestControlFileTreeItem : public QITreeWidgetItem
+{
+    Q_OBJECT;
+
+public:
+    UIGuestControlFileTreeItem(UIGuestControlFileTree *pTreeWidget,
+                               int depth, const QString &path,
+                               const QStringList &strings = QStringList());
+    UIGuestControlFileTreeItem(UIGuestControlFileTreeItem *pTreeWidgetItem,
+                               int depth, const QString &path,
+                               const QStringList &strings = QStringList());
+    virtual ~UIGuestControlFileTreeItem();
+
+    int depth() const;
+    const QString& path() const;
+
+    bool    isOpened() const;
+    void    setIsOpened(bool flag);
+
+    bool    isDirectory() const;
+    void    setIsDirectory(bool flag);
+
+    QList<UIGuestControlFileTreeItem*> children();
+
+private:
+
+    void    prepare();
+
+    int     m_iDepth;
+    QString m_strPath;
+    /* Makes sense for directories. Used to not to descend unnecessarily: */
+    bool    m_bIsOpened;
+    bool    m_bIsDirectory;
 };
 
 #endif /* !___UIGuestControlFileTree_h___ */
