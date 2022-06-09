@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 71223 2018-03-05 22:19:22Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 71224 2018-03-06 01:08:53Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -1767,7 +1767,12 @@ VMMR0_INT_DECL(int) NEMR0ImportState(PGVM pGVM, PVM pVM, VMCPUID idCpu, uint64_t
 
 VMMR0_INT_DECL(VBOXSTRICTRC) NEMR0RunGuestCode(PGVM pGVM, VMCPUID idCpu)
 {
+#ifdef NEM_WIN_USE_OUR_OWN_RUN_API
     PVM pVM = pGVM->pVM;
     return nemHCWinRunGC(pVM, &pVM->aCpus[idCpu], pGVM, &pGVM->aCpus[idCpu]);
+#else
+    RT_NOREF(pGVM, idCpu);
+    return VERR_NOT_IMPLEMENTED;
+#endif
 }
 
