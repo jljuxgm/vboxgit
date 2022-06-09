@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 67486 2017-06-20 07:03:42Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 67487 2017-06-20 08:14:47Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -551,6 +551,7 @@ static int paStreamOpen(PDRVHOSTPULSEAUDIO pThis, bool fIn, const char *pszName,
 static DECLCALLBACK(int) drvHostPulseAudioInit(PPDMIHOSTAUDIO pInterface)
 {
     AssertPtrReturn(pInterface, VERR_INVALID_POINTER);
+    LogRel(("drvHostPulseAudioInit\n"));
 
     PDRVHOSTPULSEAUDIO pThis = PDMIHOSTAUDIO_2_DRVHOSTPULSEAUDIO(pInterface);
 
@@ -652,6 +653,7 @@ static DECLCALLBACK(int) drvHostPulseAudioInit(PPDMIHOSTAUDIO pInterface)
         }
     }
 
+    LogRel(("drvHostPulseAudioInit done %Rrc\n", rc));
     LogFlowFuncLeaveRC(rc);
     return rc;
 }
@@ -1319,7 +1321,10 @@ static DECLCALLBACK(int) drvHostPulseAudioGetConfig(PPDMIHOSTAUDIO pInterface, P
 
     PDRVHOSTPULSEAUDIO pThis = PDMIHOSTAUDIO_2_DRVHOSTPULSEAUDIO(pInterface);
 
-    return paEnumerate(pThis, pBackendCfg, PULSEAUDIOENUMCBFLAGS_LOG /* fEnum */);
+    LogRel(("drvHostPulseAudioGetConfig\n"));
+    int rc = paEnumerate(pThis, pBackendCfg, PULSEAUDIOENUMCBFLAGS_LOG /* fEnum */);
+    LogRel(("drvHostPulseAudioGetConfig done %Rrc\n", rc));
+    return rc;
 }
 
 
