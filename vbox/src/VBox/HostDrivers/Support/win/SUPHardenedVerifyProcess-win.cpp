@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 66351 2017-03-30 08:32:12Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 67950 2017-07-13 10:23:32Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -1200,7 +1200,9 @@ static int supHardNtVpNewImage(PSUPHNTVPSTATE pThis, PSUPHNTVPIMAGE pImage, PMEM
         rc83Exp = RTNtPathExpand8dot3Path(pTmp, false /*fPathOnly*/);
         Assert(rc83Exp == VINF_SUCCESS);
         Assert(pTmp->Buffer[pTmp->Length / sizeof(RTUTF16)] == '\0');
-        if (rc83Exp != VINF_SUCCESS)
+        if (rc83Exp == VINF_SUCCESS)
+            SUP_DPRINTF(("supHardNtVpNewImage: 8dot3 -> long: '%ls' -> '%ls'\n", pLongName->Buffer, pTmp->Buffer));
+        else
             SUP_DPRINTF(("supHardNtVpNewImage: RTNtPathExpand8dot3Path returns %Rrc for '%ls' (-> '%ls')\n",
                          rc83Exp, pLongName->Buffer, pTmp->Buffer));
 
