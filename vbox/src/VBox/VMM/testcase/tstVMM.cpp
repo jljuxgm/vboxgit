@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 68022 2017-07-18 13:18:58Z vboxsync $ */
+/* $Id: tstVMM.cpp 68023 2017-07-18 13:20:27Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -36,8 +36,6 @@
 #include <iprt/string.h>
 #include <iprt/test.h>
 #include <iprt/thread.h>
-
-#include <iprt/win/windows.h>
 
 
 /*********************************************************************************************************************************
@@ -263,35 +261,13 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 68022 $\n");
+                RTPrintf("$Revision: 68023 $\n");
                 return 0;
 
             default:
                 return RTGetOptPrintError(ch, &ValueUnion);
         }
     }
-
-#if 1
-    HMODULE hmod;
-    //SetLastError(0);
-    //hmod = LoadLibraryW(L"c:\\tmp\\testdir\\nodot");
-    //RTPrintf("c:\\tmp\\testdir\\nodot -> %p %#x\n", hmod, GetLastError());
-    //
-    //SetLastError(0);
-    //hmod = LoadLibraryW(L"c:\\tmp\\testdir\\trailingdot.");
-    //RTPrintf("c:\\tmp\\testdir\\trailingdot. -> %p %#x\n", hmod, GetLastError());
-
-    RTPrintf("\n=======>\n");
-    SetLastError(0);
-    hmod = LoadLibraryW(L"\\\\localhost\\c\\tmp\\VBoxRes.dll");
-    RTPrintf("\\\\localhost\\c\\tmp\\VBoxRes.dll -> %p %#x\n", hmod, GetLastError());
-
-    RTPrintf("\n=======>\n");
-    SetLastError(0);
-    hmod = LoadLibraryW(L"\\\\?\\UNC\\localhost\\c\\tmp\\VBoxRes.dll");
-    RTPrintf("\\\\?\\UNC\\localhost\\c\\tmp\\VBoxRes.dll -> %p %#x\n", hmod, GetLastError());
-
-#else
 
     /*
      * Create the test VM.
@@ -397,7 +373,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     }
     else
         RTTestFailed(hTest, "VMR3Create failed: rc=%Rrc\n", rc);
-#endif
+
     return RTTestSummaryAndDestroy(hTest);
 }
 
