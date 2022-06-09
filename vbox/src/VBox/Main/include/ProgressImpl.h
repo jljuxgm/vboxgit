@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 67245 2017-06-02 15:12:42Z vboxsync $ */
+/* $Id: ProgressImpl.h 69002 2017-10-06 12:49:53Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -21,6 +21,7 @@
 
 #include "ProgressWrap.h"
 #include "VirtualBoxBase.h"
+#include "EventImpl.h"
 
 #include <iprt/semaphore.h>
 
@@ -150,7 +151,7 @@ protected:
     /** Weak parent. */
     VirtualBox * const      mParent;
 #endif
-
+    const ComObjPtr<EventSource> pEventSource;
     const ComPtr<IUnknown>  mInitiator;
 
     const Guid mId;
@@ -202,6 +203,7 @@ private:
     HRESULT getOperationWeight(ULONG *aOperationWeight);
     HRESULT getTimeout(ULONG *aTimeout);
     HRESULT setTimeout(ULONG aTimeout);
+    HRESULT getEventSource(ComPtr<IEventSource> &aEventSource);
 
     // wrapped IProgress methods
     HRESULT setCurrentOperationProgress(ULONG aPercent);
