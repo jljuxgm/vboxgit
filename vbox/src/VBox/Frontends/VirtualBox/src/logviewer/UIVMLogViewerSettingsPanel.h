@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSettingsPanel.h 71638 2018-04-04 05:11:10Z vboxsync $ */
+/* $Id: UIVMLogViewerSettingsPanel.h 72030 2018-04-26 08:34:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -24,8 +24,9 @@
 /* Forward declarations: */
 class QCheckBox;
 class QSpinBox;
-class UIVMLogViewerWidget;
 class QLabel;
+class QIToolButton;
+class UIVMLogViewerWidget;
 
 /** UIVMLogViewerPanel extension providing GUI to manage logviewer settings. */
 class UIVMLogViewerSettingsPanel : public UIVMLogViewerPanel
@@ -37,6 +38,7 @@ signals:
     void sigShowLineNumbers(bool show);
     void sigWrapLines(bool show);
     void sigFontSizeInPoints(int size);
+    void sigFontFace(QFont font);
 
 public:
 
@@ -59,12 +61,15 @@ protected:
 
 private slots:
 
+    void sltOpenFontDialog();
+
 private:
 
-    QCheckBox   *m_pLineNumberCheckBox;
-    QCheckBox   *m_pWrapLinesCheckBox;
-    QSpinBox    *m_pFontSizeSpinBox;
-    QLabel      *m_pFontSizeLabel;
+    QCheckBox    *m_pLineNumberCheckBox;
+    QCheckBox    *m_pWrapLinesCheckBox;
+    QSpinBox     *m_pFontSizeSpinBox;
+    QLabel       *m_pFontSizeLabel;
+    QIToolButton *m_pOpenFontDialog;
 
     /** Default font size in points. */
     const int    m_iDefaultFontSize;
@@ -72,4 +77,3 @@ private:
 };
 
 #endif /* !___UIVMLogViewerSettingsPanel_h___ */
-

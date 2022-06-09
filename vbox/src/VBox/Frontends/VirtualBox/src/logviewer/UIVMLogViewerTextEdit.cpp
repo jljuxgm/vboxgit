@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 71875 2018-04-17 14:00:53Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 72030 2018-04-26 08:34:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -159,7 +159,7 @@ UIVMLogViewerTextEdit::UIVMLogViewerTextEdit(QWidget* parent /* = 0 */)
     , m_mouseCursorLine(-1)
     , m_bShownTextIsFiltered(false)
     , m_bShowLineNumbers(true)
-    , m_bWrapLines(false)
+    , m_bWrapLines(true)
     , m_bHasContextMenu(false)
 {
     setMouseTracking(true);
@@ -190,13 +190,13 @@ void UIVMLogViewerTextEdit::prepareWidgets()
         pHorizontalScrollBar->setStyleSheet(horizontalScrollBarStyle);
 
     /* Configure this' wrap mode: */
-    setWordWrapMode(QTextOption::NoWrap);
-
+    setWrapLines(false);
     setReadOnly(true);
+}
 
-    QFont font = QFontDatabase::systemFont(QFontDatabase::FixedFont);
+void UIVMLogViewerTextEdit::setCurrentFont(QFont font)
+{
     setFont(font);
-
     if (m_pLineNumberArea)
         m_pLineNumberArea->setFont(font);
 }
@@ -504,20 +504,6 @@ void UIVMLogViewerTextEdit::setWrapLines(bool bWrapLines)
     update();
 }
 
-void UIVMLogViewerTextEdit::setFontSizeInPoints(int fontSize)
-{
-    if (fontSizeInPoints() == fontSize)
-        return;
-    QFont newFont(font());
-    newFont.setPointSize(fontSize);
-    setFont(newFont);
-}
-
-int  UIVMLogViewerTextEdit::fontSizeInPoints() const
-{
-    return font().pointSize();
-}
-
 bool UIVMLogViewerTextEdit::wrapLines() const
 {
     return m_bWrapLines;
@@ -542,6 +528,5 @@ void UIVMLogViewerTextEdit::setCurrentVerticalScrollBarValue(int value)
     viewport()->update();
     update();
 }
-
 
 #include "UIVMLogViewerTextEdit.moc"

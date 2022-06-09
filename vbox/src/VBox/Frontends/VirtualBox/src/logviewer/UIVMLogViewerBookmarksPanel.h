@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.h 71683 2018-04-05 13:07:14Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.h 72030 2018-04-26 08:34:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -86,4 +86,3 @@ private:
 };
 
 #endif /* !___UIVMLogViewerBookmarksPanel_h___ */
-

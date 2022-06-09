@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 71638 2018-04-04 05:11:10Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.h 72030 2018-04-26 08:34:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -64,8 +64,7 @@ public:
     int  currentVerticalScrollBarValue() const;
     void setCurrentVerticalScrollBarValue(int value);
 
-    void setFontSizeInPoints(int fontSize);
-    int  fontSizeInPoints() const;
+    void setCurrentFont(QFont font);
 
 protected:
 
@@ -92,6 +91,7 @@ private:
     /** If bookmark exists this function removes it, if not it adds the bookmark. */
     void toggleBookmark(const QPair<int, QString>& bookmark);
     void setBackground();
+
     /** Line number and text at the context menu position */
     QPair<int, QString>  m_iContextMenuBookmark;
     QWidget             *m_pLineNumberArea;
@@ -115,4 +115,3 @@ private:
 
 
 #endif /* !___UIVMLogPage_h___ */
-
