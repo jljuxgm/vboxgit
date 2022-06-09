@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 72221 2018-05-15 16:06:19Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 72229 2018-05-17 09:07:22Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -1960,9 +1960,12 @@ NEM_TMPL_STATIC VBOXSTRICTRC nemHCWinRunGC(PVM pVM, PVMCPU pVCpu, PGVM pGVM, PGV
 
         /*
          * Ensure that hyper-V has the whole state.
+         * (We always update the interrupt windows settings when active as hyper-V seems
+         * to forget about it after an exit.)
          */
         if (      (pCtx->fExtrn & (CPUMCTX_EXTRN_ALL | CPUMCTX_EXTRN_NEM_WIN_MASK))
                !=                 (CPUMCTX_EXTRN_ALL | CPUMCTX_EXTRN_NEM_WIN_MASK)
+            || pVCpu->nem.s.fDesiredInterruptWindows
             || pVCpu->nem.s.fCurrentInterruptWindows != pVCpu->nem.s.fDesiredInterruptWindows)
         {
             Assert(pVCpu->nem.s.fHandleAndGetFlags != VID_MSHAGN_F_GET_NEXT_MESSAGE /* not running */);
