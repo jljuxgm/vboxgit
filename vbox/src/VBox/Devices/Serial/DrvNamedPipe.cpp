@@ -1,4 +1,4 @@
-  /* $Id: DrvNamedPipe.cpp 68699 2017-09-07 15:12:54Z vboxsync $ */
+  /* $Id: DrvNamedPipe.cpp 68700 2017-09-07 15:56:49Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
@@ -688,7 +688,7 @@ static DECLCALLBACK(int) drvNamedPipeListenLoop(RTTHREAD hThreadSelf, void *pvUs
             }
             else
             {
-                LogRel(("NamedPipe%d: Failed to wrap socket with %Rrc\n", pThis->pDrvIns->iInstance));
+                LogRel(("NamedPipe%d: Failed to wrap socket with %Rrc\n", pThis->pDrvIns->iInstance, rc));
                 close(s);
             }
         }
