@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 69197 2017-10-24 10:19:03Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 69198 2017-10-24 10:41:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -18,9 +18,6 @@
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
-/* Qt includes: */
-# include <QVariant>
 
 /* GUI includes: */
 # include "UIWizardCloneVD.h"
@@ -55,10 +52,10 @@ bool UIWizardCloneVD::copyVirtualDisk()
 {
     /* Gather attributes: */
     CMedium comSourceVirtualDisk = field("sourceVirtualDisk").value<CMedium>();
-    CMediumFormat comMediumFormat = field("mediumFormat").value<CMediumFormat>();
-    qulonglong uVariant = field("mediumVariant").toULongLong();
-    QString strMediumPath = field("mediumPath").toString();
-    qulonglong uSize = field("mediumSize").toULongLong();
+    const CMediumFormat comMediumFormat = field("mediumFormat").value<CMediumFormat>();
+    const qulonglong uVariant = field("mediumVariant").toULongLong();
+    const QString strMediumPath = field("mediumPath").toString();
+    const qulonglong uSize = field("mediumSize").toULongLong();
     /* Check attributes: */
     AssertReturn(!strMediumPath.isNull(), false);
     AssertReturn(uSize > 0, false);
