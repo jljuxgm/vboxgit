@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.cpp 66694 2017-04-27 14:59:05Z vboxsync $ */
+/* $Id: HGSMIHostCmd.cpp 67066 2017-05-24 13:37:42Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI host-to-guest communication.
  */
@@ -28,6 +28,7 @@
 #include <VBoxVideoGuest.h>
 #include <VBoxVideoVBE.h>
 #include <VBoxVideoIPRT.h>
+#include <HGSMIHostCmd.h>
 
 /**
  * Initialise the host context structure.
