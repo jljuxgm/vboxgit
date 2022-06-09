@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 68229 2017-08-02 09:17:05Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 68231 2017-08-02 09:43:00Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -584,7 +584,7 @@ VMMR0DECL(int) SVMR0TermVM(PVM pVM)
  * Sets the permission bits for the specified MSR in the MSRPM.
  *
  * @param   pVmcb           Pointer to the VM control block.
- * @param   pvMsrBitmap     Pointer to the MSR bitmap.
+ * @param   pbMsrBitmap     Pointer to the MSR bitmap.
  * @param   uMsr            The MSR for which the access permissions are being set.
  * @param   enmRead         MSR read permissions.
  * @param   enmWrite        MSR write permissions.
