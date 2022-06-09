@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 70977 2018-02-12 20:45:31Z vboxsync $ */
+/* $Id: NEMR3.cpp 70979 2018-02-13 01:38:48Z vboxsync $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -233,6 +233,28 @@ VMMR3_INT_DECL(void) NEMR3ResetCpu(PVMCPU pVCpu)
     RT_NOREF(pVCpu);
 #endif
 }
+
+
+VMMR3_INT_DECL(VBOXSTRICTRC) NEMR3RunGC(PVM pVM, PVMCPU pVCpu)
+{
+    Assert(VM_IS_NEM_ENABLED(pVM));
+    return nemR3NativeRunGC(pVM, pVCpu);
+}
+
+
+VMMR3_INT_DECL(bool) NEMR3CanExecuteGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
+{
+    Assert(VM_IS_NEM_ENABLED(pVM));
+    return nemR3NativeCanExecuteGuest(pVM, pVCpu, pCtx);
+}
+
+
+VMMR3_INT_DECL(bool) NEMR3SetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable)
+{
+    Assert(VM_IS_NEM_ENABLED(pVM));
+    return nemR3NativeSetSingleInstruction(pVM, pVCpu, fEnable);
+}
+
 
 
 VMMR3_INT_DECL(int)  NEMR3NotifyPhysRamRegister(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb)

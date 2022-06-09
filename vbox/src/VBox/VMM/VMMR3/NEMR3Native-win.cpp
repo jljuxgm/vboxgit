@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 70977 2018-02-12 20:45:31Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 70979 2018-02-13 01:38:48Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  */
@@ -867,6 +867,26 @@ void nemR3NativeResetCpu(PVMCPU pVCpu)
     NOREF(pVCpu);
 }
 
+
+VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
+{
+    NOREF(pVM); NOREF(pVCpu);
+    return VERR_INTERNAL_ERROR_2;
+}
+
+
+bool nemR3NativeCanExecuteGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
+{
+    NOREF(pVM); NOREF(pVCpu); NOREF(pCtx);
+    return true;
+}
+
+
+bool nemR3NativeSetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable)
+{
+    NOREF(pVM); NOREF(pVCpu); NOREF(fEnable);
+    return false;
+}
 
 
 DECLINLINE(int) nemR3NativeGCPhys2R3PtrReadOnly(PVM pVM, RTGCPHYS GCPhys, const void **ppv)
