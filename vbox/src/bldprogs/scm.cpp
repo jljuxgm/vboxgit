@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69355 2017-10-26 14:38:46Z vboxsync $ */
+/* $Id: scm.cpp 69367 2017-10-26 15:18:48Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -689,6 +689,13 @@ static int scmSettingsBaseHandleOpt(PSCMSETTINGSBASE pSettings, int rc, PRTGETOP
             return VINF_SUCCESS;
         case SCMOPT_NO_FIX_FLOWER_BOX_MARKERS:
             pSettings->fFixFlowerBoxMarkers = false;
+            return VINF_SUCCESS;
+
+        case SCMOPT_FIX_TODOS:
+            pSettings->fFixTodos = true;
+            return VINF_SUCCESS;
+        case SCMOPT_NO_FIX_TODOS:
+            pSettings->fFixTodos = false;
             return VINF_SUCCESS;
 
         case SCMOPT_UPDATE_COPYRIGHT_YEAR:
@@ -2214,7 +2221,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69355 $";
+                static const char s_szRev[] = "$Revision: 69367 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
