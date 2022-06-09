@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67391 2017-06-14 12:13:48Z vboxsync $ */
+/* $Id: isomaker.cpp 67392 2017-06-14 12:21:38Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -634,7 +634,7 @@ RTDECL(int) RTFsIsoMakerCreate(PRTFSISOMAKER phIsoMaker)
     if (g_szPreparerIdJoliet[0] == '\0')
         RTStrPrintf(g_szPreparerIdJoliet, sizeof(g_szPreparerIdJoliet),
                     "IPRT ISO Maker v%s r%s", RTBldCfgVersion(), RTBldCfgRevisionStr());
-    if (g_szSystemId)
+    if (g_szSystemId[0] == '\0')
     {
         RTStrCopy(g_szSystemId, sizeof(g_szSystemId), RTBldCfgTargetDotArch());
         RTStrToUpper(g_szSystemId);
