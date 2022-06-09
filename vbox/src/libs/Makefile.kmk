@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70811 2018-01-30 16:58:36Z vboxsync $
+# $Id: Makefile.kmk 71850 2018-04-12 13:07:49Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -60,7 +60,7 @@ if  !defined(VBOX_ONLY_SDK) \
  && (!defined(VBOX_ONLY_ADDITIONS) || !defined(VBOX_ONLY_ADDITIONS_WITHOUT_RTISOMAKER)) \
  && (   "$(SDK_VBOX_OPENSSL_INCS)" == "$(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)" \
      || defined(VBOX_WITH_EXTPACK_PUEL_BUILD))
- include $(PATH_SUB_CURRENT)/openssl-1.1.0g/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/openssl-1.1.0h/Makefile.kmk
 endif
 
 # libjpeg for VRDP video redirection and ExtPack's DrvHostWebcam
