@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 70581 2018-01-14 20:54:55Z vboxsync $ */
+/* $Id: UIVMLogPage.h 70589 2018-01-15 13:00:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -71,6 +71,7 @@ public:
         show currently might be different than
         m_strLog. For example during filtering. */
     void setTextEdit(const QString &strText);
+    void setTextEditAsHtml(const QString &strText);
 
     /** Marks the plain text edit When we dont have a log content. */
     void markForError();
