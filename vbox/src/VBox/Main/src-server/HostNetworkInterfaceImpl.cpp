@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 67634 2017-06-27 10:46:55Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 67636 2017-06-27 13:20:06Z vboxsync $ */
 
 /** @file
  *
@@ -538,7 +538,7 @@ HRESULT HostNetworkInterface::enableStaticIPConfigV6(const com::Utf8Str &aIPV6Ad
     rc = RTNetStrToIPv6Addr(com::Utf8Str(m.realIPV6Address).c_str(), &AddrOld, &pszZoneIgnored);
     if (RT_SUCCESS(rc))
     {
-        fAddrChanged = (memcmp(&AddrNew, &AddrOld, sizeof(RTNETADDRIPV6)) == 0);
+        fAddrChanged = (AddrNew.s.Lo != AddrOld.s.Lo || AddrNew.s.Hi != AddrOld.s.Hi);
     }
     else
     {
