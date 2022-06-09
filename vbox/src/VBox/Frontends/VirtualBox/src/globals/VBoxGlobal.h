@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 71369 2018-03-16 15:11:13Z vboxsync $ */
+/* $Id: VBoxGlobal.h 71371 2018-03-16 15:53:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -128,9 +128,6 @@ public:
 
     /** Returns the thread-pool instance. */
     UIThreadPool* threadPool() const { return m_pThreadPool; }
-
-    /** Returns currently active virtual machine window. */
-    QWidget* activeMachineWindow() const;
 
     bool is3DAvailableWorker() const;
     bool is3DAvailable() const { if (m3DAvailable < 0) return is3DAvailableWorker(); return m3DAvailable != 0; }
