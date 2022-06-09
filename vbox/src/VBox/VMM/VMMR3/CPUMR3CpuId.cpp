@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 70531 2018-01-11 11:11:32Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 70550 2018-01-12 11:01:09Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -177,7 +177,7 @@ static const CPUMMICROARCH g_aenmIntelFamily06[] =
     /*[119(0x77)] = */ kCpumMicroarch_Intel_Unknown,
     /*[120(0x78)] = */ kCpumMicroarch_Intel_Unknown,
     /*[121(0x79)] = */ kCpumMicroarch_Intel_Unknown,
-    /*[122(0x7a)] = */ kCpumMicroarch_Intel_Unknown,
+    /*[122(0x7a)] = */ kCpumMicroarch_Intel_Unknown, /* ucode updates since 2017-11-17; no idea what this might be yet.*/
     /*[123(0x7b)] = */ kCpumMicroarch_Intel_Unknown,
     /*[124(0x7c)] = */ kCpumMicroarch_Intel_Unknown,
     /*[125(0x7d)] = */ kCpumMicroarch_Intel_Unknown,
