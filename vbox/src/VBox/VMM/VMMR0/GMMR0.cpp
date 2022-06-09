@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 68007 2017-07-17 17:07:37Z vboxsync $ */
+/* $Id: GMMR0.cpp 68008 2017-07-17 17:13:23Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -5193,7 +5193,7 @@ GMMR0DECL(int) GMMR0CheckSharedModules(PGVM pGVM, PVM pVM, VMCPUID idCpu)
 # endif
     return rc;
 #else
-    NOREF(pVM); NOREF(pVCpu);
+    RT_NOREF(pGVM, pVM, idCpu);
     return VERR_NOT_IMPLEMENTED;
 #endif
 }
