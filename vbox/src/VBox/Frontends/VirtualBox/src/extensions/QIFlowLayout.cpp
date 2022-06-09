@@ -1,4 +1,4 @@
-/* $Id: QIFlowLayout.cpp 67377 2017-06-13 15:24:25Z vboxsync $ */
+/* $Id: QIFlowLayout.cpp 67378 2017-06-13 15:25:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIFlowLayout class implementation.
  */
@@ -176,7 +176,6 @@ int QIFlowLayout::relayout(const QRect &rect, bool fDoLayout) const
         /* Acquire current row: */
         LayoutDataList &row = rows[i];
         /* Width expand delta is equal to total-width minus all spacing widths ... */
-        printf("row %d size: %d\n", i, row.size());
         int iExpandingWidth = contentsRect.width() - (row.size() - 1) * iSpaceX;
 
         /* Iterate through whole the row: */
