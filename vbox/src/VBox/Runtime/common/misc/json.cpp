@@ -1,4 +1,4 @@
-/* $Id: json.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: json.cpp 69520 2017-10-30 10:46:51Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -945,6 +945,10 @@ static int rtJsonParseObject(PRTJSONTOKENIZER pTokenizer, PRTJSONVALINT pJsonVal
                     char **papszNamesNew =  (char **)RTMemRealloc(papValues, cMembersMax * sizeof(char *));
                     if (RT_UNLIKELY(!papValuesNew || !papszNamesNew))
                     {
+                        if (papValuesNew)
+                            RTMemFree(papValuesNew);
+                        if (papszNamesNew)
+                            RTMemFree(papszNamesNew);
                         rc = VERR_NO_MEMORY;
                         break;
                     }
