@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69184 2017-10-24 05:43:16Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69185 2017-10-24 07:22:57Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -315,7 +315,6 @@ static FNSVMEXITHANDLER hmR0SvmExitVmsave;
 static FNSVMEXITHANDLER hmR0SvmExitInvlpga;
 static FNSVMEXITHANDLER hmR0SvmExitVmrun;
 static FNSVMEXITHANDLER hmR0SvmNestedExitIret;
-static FNSVMEXITHANDLER hmR0SvmNestedExitVIntr;
 #endif
 /** @} */
 
@@ -3280,6 +3279,8 @@ static void hmR0SvmInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMVMCB pVmc
         else if (Event.n.u3Type == SVM_EVENT_NMI)
             Assert(!fIntShadow);
         NOREF(fBlockInt);
+#else
+        Assert(!pVmcb->ctrl.EventInject.n.u1Valid);
 #endif
 
         Log4(("Injecting pending HM event\n"));
