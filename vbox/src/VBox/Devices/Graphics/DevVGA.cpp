@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 67865 2017-07-07 18:01:05Z vboxsync $ */
+/* $Id: DevVGA.cpp 67866 2017-07-07 18:27:41Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -1930,7 +1930,7 @@ static int vga_draw_text(PVGASTATE pThis, bool full_update, bool fFailOnResize, 
         for(cx = 0; cx < width; cx++) {
             ch_attr = *(uint16_t *)src;
             /* Figure out if character needs redrawing due to blink state change. */
-            blink_do_redraw = blink_enabled && chr_blink_flip && (ch_attr & 0x80);
+            blink_do_redraw = blink_enabled && chr_blink_flip && (ch_attr & 0x8000);
             if (full_update || ch_attr != (int)*ch_attr_ptr || blink_do_redraw || (src == cursor_ptr && cur_blink_flip)) {
                 if (cx < cx_min)
                     cx_min = cx;
