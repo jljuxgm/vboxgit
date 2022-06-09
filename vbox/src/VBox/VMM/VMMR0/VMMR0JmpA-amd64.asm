@@ -1,4 +1,4 @@
-; $Id: VMMR0JmpA-amd64.asm 69221 2017-10-24 15:07:46Z vboxsync $
+; $Id: VMMR0JmpA-amd64.asm 71222 2018-03-05 22:07:48Z vboxsync $
 ;; @file
 ; VMM - R0 SetJmp / LongJmp routines for AMD64.
 ;
@@ -55,6 +55,7 @@ BEGINCODE
 ; @param    pvUser2 msc:r9  gcc:rcx x86:[esp+0x10]     The argument of that function.
 ;
 BEGINPROC vmmR0CallRing3SetJmp
+GLOBALNAME vmmR0CallRing3SetJmp2
 GLOBALNAME vmmR0CallRing3SetJmpEx
     ;
     ; Save the registers.

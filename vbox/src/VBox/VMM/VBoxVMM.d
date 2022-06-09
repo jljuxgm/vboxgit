@@ -1,4 +1,4 @@
-/* $Id: VBoxVMM.d 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: VBoxVMM.d 71222 2018-03-05 22:07:48Z vboxsync $ */
 /** @file
  * VBoxVMM - Static dtrace probes.
  */
@@ -57,6 +57,7 @@ provider vboxvmm
 
     probe r0__vmm__return__to__ring3__rc(struct VMCPU *a_pVCpu, struct CPUMCTX *p_Ctx, int a_rc);
     probe r0__vmm__return__to__ring3__hm(struct VMCPU *a_pVCpu, struct CPUMCTX *p_Ctx, int a_rc);
+    probe r0__vmm__return__to__ring3__nem(struct VMCPU *a_pVCpu, struct CPUMCTX *p_Ctx, int a_rc);
 
 
     /** @name CPU Exception probes
