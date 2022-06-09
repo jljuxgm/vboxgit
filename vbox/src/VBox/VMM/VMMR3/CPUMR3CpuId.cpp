@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 67070 2017-05-24 20:23:23Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 67071 2017-05-25 08:24:12Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -1662,8 +1662,8 @@ int cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCPUM
         PCCPUMCPUIDLEAF const pSxfLeaf0 = cpumR3CpuIdFindLeafEx(paLeaves, cLeaves, 7, 0);
         if (pSxfLeaf0)
         {
-            pFeatures->fAvx2                = RT_BOOL(pSxfLeaf0->uEcx & X86_CPUID_STEXT_FEATURE_EBX_AVX2);
-            pFeatures->fAvx512Foundation    = RT_BOOL(pSxfLeaf0->uEcx & X86_CPUID_STEXT_FEATURE_EBX_AVX512F);
+            pFeatures->fAvx2                = RT_BOOL(pSxfLeaf0->uEbx & X86_CPUID_STEXT_FEATURE_EBX_AVX2);
+            pFeatures->fAvx512Foundation    = RT_BOOL(pSxfLeaf0->uEbx & X86_CPUID_STEXT_FEATURE_EBX_AVX512F);
             pFeatures->fClFlushOpt          = RT_BOOL(pSxfLeaf0->uEbx & X86_CPUID_STEXT_FEATURE_EBX_CLFLUSHOPT);
         }
 
