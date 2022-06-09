@@ -1,10 +1,10 @@
-; $Id: pmode.inc 69498 2017-10-28 15:07:25Z vboxsync $
+; $Id: pmode.inc 69500 2017-10-28 15:14:05Z vboxsync $
 ;; @file
 ; Enter and exit a minimal protected-mode environment.
 ;
 
 ;
-; Copyright (C) 2004-2015 Oracle Corporation
+; Copyright (C) 2004-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

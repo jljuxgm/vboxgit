@@ -1,10 +1,10 @@
-/* $Id: VBoxLA.cpp 69498 2017-10-28 15:07:25Z vboxsync $ */
+/* $Id: VBoxLA.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
 /** @file
  * VBoxLA - VBox Location Awareness notifications.
  */
 
 /*
- * Copyright (C) 2014-2016 Oracle Corporation
+ * Copyright (C) 2014-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

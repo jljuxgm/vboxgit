@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceToolBox.h 69498 2017-10-28 15:07:25Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.h 69500 2017-10-28 15:14:05Z vboxsync $ */
 /** @file
  * VBoxService - Toolbox header for sharing defines between toolbox binary and VBoxService.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

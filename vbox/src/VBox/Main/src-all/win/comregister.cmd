@@ -1,12 +1,12 @@
 @echo off
-REM $Id: comregister.cmd 69498 2017-10-28 15:07:25Z vboxsync $
+REM $Id: comregister.cmd 69500 2017-10-28 15:14:05Z vboxsync $
 REM
 REM Script to register the VirtualBox COM classes
 REM (both inproc and out-of-process)
 REM
 
 REM
-REM Copyright (C) 2006-2016 Oracle Corporation
+REM Copyright (C) 2006-2017 Oracle Corporation
 REM
 REM This file is part of VirtualBox Open Source Edition (OSE), as
 REM available from http://www.virtualbox.org. This file is free software;

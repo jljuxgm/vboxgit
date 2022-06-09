@@ -1,4 +1,4 @@
-/* $Id: dlm_lists.c 69498 2017-10-28 15:07:25Z vboxsync $ */
+/* $Id: dlm_lists.c 69500 2017-10-28 15:14:05Z vboxsync $ */
 /** @file
  * Implementation of all the Display Lists related routines:
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2015-2016 Oracle Corporation
+ * Copyright (C) 2015-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

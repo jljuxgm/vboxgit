@@ -1,11 +1,11 @@
-/* $Id: libXcomposite.c 69498 2017-10-28 15:07:25Z vboxsync $ */
+/* $Id: libXcomposite.c 69500 2017-10-28 15:14:05Z vboxsync $ */
 
 /** @file
  * X.Org libXcomposite.so linker stub
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

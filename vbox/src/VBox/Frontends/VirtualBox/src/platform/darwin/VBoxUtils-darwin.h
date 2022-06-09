@@ -1,10 +1,10 @@
-/* $Id: VBoxUtils-darwin.h 69498 2017-10-28 15:07:25Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.h 69500 2017-10-28 15:14:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Darwin specific tasks.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

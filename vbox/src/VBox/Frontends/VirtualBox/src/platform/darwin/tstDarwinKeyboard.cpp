@@ -1,4 +1,4 @@
-/* $Id: tstDarwinKeyboard.cpp 69498 2017-10-28 15:07:25Z vboxsync $ */
+/* $Id: tstDarwinKeyboard.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI Testcase - Common GUI Library - Darwin Keyboard routines.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

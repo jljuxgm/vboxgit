@@ -1,10 +1,10 @@
-; $Id: pcibio32.asm 69498 2017-10-28 15:07:25Z vboxsync $
+; $Id: pcibio32.asm 69500 2017-10-28 15:14:05Z vboxsync $
 ;; @file
 ; BIOS32 service directory and 32-bit PCI BIOS entry point
 ;
 
 ;
-; Copyright (C) 2006-2016 Oracle Corporation
+; Copyright (C) 2006-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
@@ -13,7 +13,6 @@
 ; Foundation, in version 2 as it comes in the "COPYING" file of the
 ; VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 ; hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
-;
 ; --------------------------------------------------------------------
 
 
