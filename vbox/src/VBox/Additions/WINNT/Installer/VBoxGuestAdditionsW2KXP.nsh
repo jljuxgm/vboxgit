@@ -1,4 +1,4 @@
-; $Id$
+; $Id: VBoxGuestAdditionsW2KXP.nsh 69354 2017-10-26 14:38:32Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;

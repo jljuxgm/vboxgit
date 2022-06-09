@@ -1,5 +1,6 @@
-; $Id$
-; @file NLS for German language.
+; $Id: German.nsh 69354 2017-10-26 14:38:32Z vboxsync $
+;; @file
+; NLS for German language.
 ;
 
 ;

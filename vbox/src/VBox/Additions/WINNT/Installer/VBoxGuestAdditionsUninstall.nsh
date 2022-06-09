@@ -1,5 +1,5 @@
-; $Id$
-; @file
+; $Id: VBoxGuestAdditionsUninstall.nsh 69354 2017-10-26 14:38:32Z vboxsync $
+;; @file
 ; VBoxGuestAdditionsUninstall.nsh - Guest Additions uninstallation.
 ;
 

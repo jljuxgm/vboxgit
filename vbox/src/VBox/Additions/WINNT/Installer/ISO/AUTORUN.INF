@@ -1,3 +1,8 @@
+; $Id: AUTORUN.INF 69354 2017-10-26 14:38:32Z vboxsync $
+;; @file
+; Auto-run file for the additions ISO image.
+;
+
 ;
 ; Copyright (C) 2006-2016 Oracle Corporation
 ;

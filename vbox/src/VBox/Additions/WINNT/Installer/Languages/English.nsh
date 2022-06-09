@@ -1,5 +1,6 @@
-; $Id$
-; @file NLS for English language.
+; $Id: English.nsh 69354 2017-10-26 14:38:32Z vboxsync $
+;; @file
+; NLS for English language.
 ;
 
 ;
