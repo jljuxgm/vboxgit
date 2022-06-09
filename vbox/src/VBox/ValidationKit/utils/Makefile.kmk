@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63490 2016-08-15 16:29:16Z vboxsync $
+# $Id: Makefile.kmk 67276 2017-06-06 15:12:41Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Utilities.
 #
@@ -39,6 +39,10 @@ ifeq ($(KBUILD_TARGET),win)
 endif
 ifeq ($(KBUILD_TARGET),linux)
  include $(PATH_SUB_CURRENT)/usb/Makefile.kmk
+endif
+
+ifdef VBOX_WITH_AUDIO_VALIDATIONKIT
+ include $(PATH_SUB_CURRENT)/audio/Makefile.kmk
 endif
 
 #
