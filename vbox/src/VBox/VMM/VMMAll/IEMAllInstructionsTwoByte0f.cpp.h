@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 67015 2017-05-22 12:56:18Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 67029 2017-05-23 09:42:53Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -4600,13 +4600,14 @@ FNIEMOP_DEF(iemOp_movd_q_Ey_Vy)
 
 /**
  * @opcode      0x7e
- * @opcodesub   !11 mr/reg
  * @oppfx       0xf3
  * @opcpuid     sse2
  * @opgroup     og_sse2_pcksclr_datamove
  * @opxcpttype  5
+ * @note        Exception type isn't really 5, but close enough...
  * @optest      op1=1 op2=2 -> op1=2
  * @optest      op1=0 op2=-42 -> op1=-42
+ * @oponly
  */
 FNIEMOP_DEF(iemOp_movq_Vq_Wq)
 {
