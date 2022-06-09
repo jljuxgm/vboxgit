@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 66227 2017-03-23 14:50:07Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 68019 2017-07-18 12:44:53Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -48,9 +48,7 @@ DECLINLINE(uint64_t) tmCpuTickGetRawVirtual(PVM pVM, bool fCheckTimers)
         u64 = TMVirtualSyncGet(pVM);
     else
         u64 = TMVirtualSyncGetNoCheck(pVM);
-    if (u64 != TMCLOCK_FREQ_VIRTUAL) /* what's the use of this test, document! */
-        u64 = ASMMultU64ByU32DivByU32(u64, pVM->tm.s.cTSCTicksPerSecond, TMCLOCK_FREQ_VIRTUAL);
-    return u64;
+    return ASMMultU64ByU32DivByU32(u64, pVM->tm.s.cTSCTicksPerSecond, TMCLOCK_FREQ_VIRTUAL);
 }
 
 
@@ -384,9 +382,7 @@ VMM_INT_DECL(uint64_t) TMCpuTickGetDeadlineAndTscOffset(PVM pVM, PVMCPU pVCpu, u
         /* The source is the timer synchronous virtual clock. */
         uint64_t cNsToDeadline;
         uint64_t u64NowVirtSync = TMVirtualSyncGetWithDeadlineNoCheck(pVM, &cNsToDeadline);
-        uint64_t u64Now = u64NowVirtSync != TMCLOCK_FREQ_VIRTUAL /* what's the use of this? */
-                        ? ASMMultU64ByU32DivByU32(u64NowVirtSync, pVM->tm.s.cTSCTicksPerSecond, TMCLOCK_FREQ_VIRTUAL)
-                        : u64NowVirtSync;
+        uint64_t u64Now = ASMMultU64ByU32DivByU32(u64NowVirtSync, pVM->tm.s.cTSCTicksPerSecond, TMCLOCK_FREQ_VIRTUAL)
         u64Now -= pVCpu->tm.s.offTSCRawSrc;
         *poffRealTsc     = u64Now - ASMReadTSC();
         *pfOffsettedTsc  = u64Now >= pVCpu->tm.s.u64TSCLastSeen;
