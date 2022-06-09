@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: gvmm.h 69475 2017-10-28 13:12:42Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */

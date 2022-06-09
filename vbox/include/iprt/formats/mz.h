@@ -1,4 +1,4 @@
-/* $Id: mz.h 69105 2017-10-17 10:20:49Z vboxsync $ */
+/* $Id: mz.h 69475 2017-10-28 13:12:42Z vboxsync $ */
 /** @file
  * IPRT, MZ Executable Header.
  */

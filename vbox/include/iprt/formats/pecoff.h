@@ -1,4 +1,4 @@
-/* $Id: pecoff.h 69105 2017-10-17 10:20:49Z vboxsync $ */
+/* $Id: pecoff.h 69475 2017-10-28 13:12:42Z vboxsync $ */
 /** @file
  * IPRT - Windows NT PE & COFF Structures and Constants.
  */
