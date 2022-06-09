@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: lockvalidator.cpp 72602 2018-06-18 15:16:04Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -1096,6 +1096,9 @@ RTDECL(int) RTLockValidatorClassCreateExV(PRTLOCKVALCLASS phClass, PCRTLOCKVALSR
     pThis->cHashMisses          = 0;
 #endif
 
+#ifdef VBOX_WITH_GCC_SANITIZER
+    __lsan_ignore_object(pThis);
+#endif
     *phClass = pThis;
     return VINF_SUCCESS;
 }

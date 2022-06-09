@@ -1,4 +1,4 @@
-/* $Id: scmsubversion.cpp 70834 2018-01-31 14:48:21Z vboxsync $ */
+/* $Id: scmsubversion.cpp 72602 2018-06-18 15:16:04Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Subversion Access.
  */
@@ -752,6 +752,10 @@ static void scmSvnTryResolveFunctions(void)
                         RTPathChangeToDosSlashes(pszEndPath, false);
 # endif
                         rc = RTLdrLoadEx(szPath, &ahMods[iLib], RTLDRLOAD_FLAGS_NT_SEARCH_DLL_LOAD_DIR , NULL);
+#ifdef VBOX_WITH_GCC_SANITIZER
+                        if (RT_SUCCESS(rc))
+                            __lsan_ignore_object(ahMods[iLib]);
+#endif
                         if (RT_SUCCESS(rc))
                             break;
                     }
