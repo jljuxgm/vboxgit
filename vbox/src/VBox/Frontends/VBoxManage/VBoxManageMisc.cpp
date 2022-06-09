@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 68151 2017-07-28 09:13:29Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 68153 2017-07-28 10:28:45Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1556,26 +1556,6 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
      */
     if (ptrMachine.isNull())
         return errorSyntax("Missing VM name/UUID");
-
-    {
-        Bstr bstrString;
-        hrc = ptrUnattended->COMGETTER(AdditionsIsoPath)(bstrString.asOutParam());
-        if (SUCCEEDED(hrc))
-        {
-            BOOL fGA = false;
-            hrc = ptrUnattended->COMGETTER(InstallGuestAdditions)(&fGA);
-            if (SUCCEEDED(hrc))
-            {
-                if (fGA == false && !bstrString.isEmpty())
-                    return errorSyntax("Parameter --additions-iso doesn't make sense without "
-                                       "parameter --install-additions");
-            }
-            else
-                return RTEXITCODE_FAILURE;
-        }
-        else
-            return RTEXITCODE_FAILURE;
-    }
 
     /*
      * Set accumulative attributes.
