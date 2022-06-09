@@ -1,8 +1,9 @@
-/* $Id: vboxext.c 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: vboxext.c 69362 2017-10-26 15:12:33Z vboxsync $ */
 /** @file
- *
  * VBox extension to Wine D3D
- *
+ */
+
+/*
  * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
@@ -13,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #include "config.h"
 #include "wine/port.h"
 #include "wined3d_private.h"

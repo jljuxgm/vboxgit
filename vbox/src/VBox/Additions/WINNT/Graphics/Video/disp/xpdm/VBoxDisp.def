@@ -1,4 +1,4 @@
-; $Id: VBoxDisp.def 69350 2017-10-26 14:18:52Z vboxsync $
+; $Id: VBoxDisp.def 69362 2017-10-26 15:12:33Z vboxsync $
 ;; @file
 ; VBox Windows Guest Additions XPDM Display Driver
 ;
@@ -16,3 +16,4 @@
 ;
 
 LIBRARY VBoxDisp
+

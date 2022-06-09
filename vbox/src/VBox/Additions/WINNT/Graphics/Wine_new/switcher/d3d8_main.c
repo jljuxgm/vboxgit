@@ -1,4 +1,4 @@
-/* $Id: d3d8_main.c 63024 2016-08-05 00:47:28Z vboxsync $ */
+/* $Id: d3d8_main.c 69362 2017-10-26 15:12:33Z vboxsync $ */
 /** @file
  * VBox D3D8 dll switcher
  */
@@ -81,7 +81,7 @@ HRESULT WINAPI D3D8GetSWInfo(void)
 void WINAPI DebugSetMute(void)
 {
     SW_CHECKCALL(g_swd3d8, DebugSetMute);
-    g_swd3d8.pDebugSetMute();    
+    g_swd3d8.pDebugSetMute();
 }
 
 IDirect3D8* WINAPI Direct3DCreate8(UINT SDKVersion)

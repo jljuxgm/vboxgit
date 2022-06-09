@@ -1,4 +1,4 @@
-/* $Id: sw_common.c 63024 2016-08-05 00:47:28Z vboxsync $ */
+/* $Id: sw_common.c 69362 2017-10-26 15:12:33Z vboxsync $ */
 /** @file
  * VBox D3D8/9 dll switcher
  */
@@ -82,8 +82,8 @@ BOOL checkOptionsExe(void)
     char *filename = name, *pName;
     int i;
 
-	if (!GetModuleFileName(NULL, name, 1000))
-		return TRUE;
+        if (!GetModuleFileName(NULL, name, 1000))
+                return TRUE;
 
     /*Extract filename*/
     for (pName=name; *pName; ++pName)
@@ -129,6 +129,6 @@ void InitD3DExports(const char *vboxName, const char *msName)
         dllName = msName;
 
     hDLL = loadSystemDll(dllName);
-    FillD3DExports(hDLL); 
+    FillD3DExports(hDLL);
 }
 

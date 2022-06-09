@@ -1,5 +1,4 @@
-/* $Id: VBoxDbgGl.h 62522 2016-07-22 19:17:25Z vboxsync $ */
-
+/* $Id: VBoxDbgGl.h 69362 2017-10-26 15:12:33Z vboxsync $ */
 /** @file
  * VBox wine & ogl debugging stuff
  */
