@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 68013 2017-07-17 17:59:59Z vboxsync $ */
+/* $Id: GVMMR0.cpp 68053 2017-07-19 16:45:07Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1235,7 +1235,7 @@ static void gvmmR0CleanupVM(PGVM pGVM)
             &&  RTR0MemObjAddress(pGVM->gvmm.s.VMMemObj) == pGVM->pVM)
         {
             LogFlow(("gvmmR0CleanupVM: Calling VMMR0TermVM\n"));
-            VMMR0TermVM(pGVM, pGVM->pVM, NIL_RTCPUID);
+            VMMR0TermVM(pGVM, pGVM->pVM, NIL_VMCPUID);
         }
         else
             AssertMsgFailed(("gvmmR0CleanupVM: VMMemObj=%p pVM=%p\n", pGVM->gvmm.s.VMMemObj, pGVM->pVM));
