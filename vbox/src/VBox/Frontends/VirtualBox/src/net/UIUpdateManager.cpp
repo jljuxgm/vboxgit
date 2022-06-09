@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 68040 2017-07-18 18:19:21Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 68041 2017-07-18 18:22:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -378,8 +378,6 @@ private slots:
         QString strVBoxVersion(vboxGlobal().vboxVersionStringNormalized());
         QByteArray abVBoxVersion = strVBoxVersion.toUtf8();
         VBoxVersion vboxVersion(strVBoxVersion);
-        strVBoxVersion = "5.1.24";
-        printf("strVBoxVersion = %s\n", strVBoxVersion.toUtf8().constData());
 
         /* Get extension pack version: */
         QString strExtPackVersion(extPack.GetVersion());
@@ -391,12 +389,12 @@ private slots:
            Note! Use RTStrVersionCompare for the comparison here as it takes
                  the beta/alpha/preview/whatever tags into consideration when
                  comparing versions. */
-//        if (   vboxVersion.z() % 2 != 0
-//            || RTStrVersionCompare(abExtPackVersion.constData(), abVBoxVersion.constData()) >= 0)
-//        {
-//            emit sigStepComplete();
-//            return;
-//        }
+        if (   vboxVersion.z() % 2 != 0
+            || RTStrVersionCompare(abExtPackVersion.constData(), abVBoxVersion.constData()) >= 0)
+        {
+            emit sigStepComplete();
+            return;
+        }
 
         QString strExtPackEdition(extPack.GetEdition());
         if (strExtPackEdition.contains("ENTERPRISE"))
