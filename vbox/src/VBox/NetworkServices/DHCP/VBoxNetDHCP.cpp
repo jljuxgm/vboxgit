@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 71204 2018-03-05 15:51:30Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -642,6 +642,11 @@ int VBoxNetDhcp::hostDnsServers(const ComHostPtr& host,
         rc = RTNetStrToIPv4Addr(com::Utf8Str(strs[i]).c_str(), &addr);
         if (RT_FAILURE(rc))
             continue;
+
+        if (addr.u == INADDR_ANY)
+        {
+            addr.u = RT_H2N_U32_C(INADDR_LOOPBACK);
+        }
 
         if (addr.au8[0] == 127)
         {
