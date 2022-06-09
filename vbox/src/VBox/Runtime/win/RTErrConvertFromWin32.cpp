@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 69793 2017-11-21 14:16:39Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -428,6 +428,8 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
         case ERROR_NOT_A_REPARSE_POINT: return VERR_NOT_SYMLINK;
 
         case NTE_BAD_ALGID:         return VERR_CR_PKIX_UNKNOWN_DIGEST_TYPE;
+
+        case ERROR_SERVICE_DOES_NOT_EXIST: return VERR_NOT_FOUND;
 
 #ifndef STATUS_ELEVATION_REQUIRED
 # define STATUS_ELEVATION_REQUIRED 0xc000042c
