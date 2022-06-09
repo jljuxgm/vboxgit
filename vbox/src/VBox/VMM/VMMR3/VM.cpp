@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 67529 2017-06-21 08:29:25Z vboxsync $ */
+/* $Id: VM.cpp 68853 2017-09-25 13:10:41Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2534,6 +2534,19 @@ DECLCALLBACK(int) vmR3Destroy(PVM pVM)
         ASMAtomicWriteU32(&pVM->fGlobalForcedActions, VM_FF_CHECK_VM_STATE); /* Can't hurt... */
         LogFlow(("vmR3Destroy: returning %Rrc\n", VINF_EM_TERMINATE));
     }
+
+    /*
+     * Decrement the active EMT count here.
+     */
+    PUVMCPU pUVCpu = &pUVM->aCpus[pVCpu->idCpu];
+    if (!pUVCpu->vm.s.fBeenThruVmDestroy)
+    {
+        pUVCpu->vm.s.fBeenThruVmDestroy = true;
+        ASMAtomicDecU32(&pUVM->vm.s.cActiveEmts);
+    }
+    else
+        AssertFailed();
+
     return VINF_EM_TERMINATE;
 }
 
