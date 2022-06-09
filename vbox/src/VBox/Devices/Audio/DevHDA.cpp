@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67467 2017-06-19 10:27:57Z vboxsync $ */
+/* $Id: DevHDA.cpp 67475 2017-06-19 13:23:12Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -5564,12 +5564,12 @@ static void hdaStreamUpdate(PHDASTATE pThis, PHDASTREAM pStream, bool fInTimer)
         if (fInTimer)
         {
 #endif
-            const uint32_t cbReadable = hdaStreamGetUsed(pStream);
-            if (cbReadable)
+            const uint32_t cbToTransfer = hdaStreamGetUsed(pStream);
+            if (cbToTransfer)
             {
                 /* When running synchronously, do the DMA data transfers here.
                  * Otherwise this will be done in the stream's async I/O thread. */
-                rc2 = hdaStreamTransfer(pThis, pStream, cbReadable);
+                rc2 = hdaStreamTransfer(pThis, pStream, cbToTransfer);
                 AssertRC(rc2);
             }
 #ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
