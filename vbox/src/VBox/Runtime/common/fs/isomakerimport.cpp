@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 67850 2017-07-07 13:09:27Z vboxsync $ */
+/* $Id: isomakerimport.cpp 67860 2017-07-07 16:08:30Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -2495,6 +2495,7 @@ RTDECL(int) RTFsIsoMakerImport(RTFSISOMAKER hIsoMaker, const char *pszIso, uint3
     pResults->cAddedDirs        = 0;
     pResults->cbAddedDataBlocks = 0;
     pResults->cAddedFiles       = 0;
+    pResults->cAddedSymlinks    = 0;
     pResults->cBootCatEntries   = UINT32_MAX;
     pResults->cbSysArea         = 0;
     pResults->cErrors           = 0;
