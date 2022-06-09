@@ -1,4 +1,4 @@
-/* $Id: sysfs.cpp 61098 2016-05-20 13:30:24Z vboxsync $ */
+/* $Id: sysfs.cpp 68050 2017-07-19 15:23:31Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -46,6 +46,7 @@
 #include <sys/sysctl.h>
 #include <sys/stat.h>
 #include <sys/fcntl.h>
+#include <sys/sysmacros.h>
 #include <errno.h>
 
 
