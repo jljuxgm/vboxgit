@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 72547 2018-06-13 15:50:39Z vboxsync $ */
+/* $Id: HostDnsService.cpp 72608 2018-06-18 22:41:46Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -193,7 +193,7 @@ void HostDnsMonitorProxy::pollGlobalExtraData()
         return;
 
     uint64_t uNow = RTTimeNanoTS();
-    if (virtualbox && (uNow - m->uLastExtraDataPoll >= RT_NS_30SEC || m->uLastExtraDataPoll == 0))
+    if (uNow - m->uLastExtraDataPoll >= RT_NS_30SEC || m->uLastExtraDataPoll == 0)
     {
         m->uLastExtraDataPoll = uNow;
 
