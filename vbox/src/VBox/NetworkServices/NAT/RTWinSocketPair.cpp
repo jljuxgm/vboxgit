@@ -1,4 +1,4 @@
-/* $Id: RTWinSocketPair.cpp 62681 2016-07-29 12:55:38Z vboxsync $ */
+/* $Id: RTWinSocketPair.cpp 68766 2017-09-14 16:28:07Z vboxsync $ */
 /** @file
  * NAT Network - socketpair(2) emulation for winsock.
  */
@@ -196,6 +196,17 @@ extern "C" int RTWinSocketPair(int domain, int type, int protocol, SOCKET socket
             goto close_socket;
         }
     }
+
+    for (int i = 0; i < 2; ++i) {
+        SOCKET s = socket_vector[i];
+        u_long mode = 1;
+
+        int status = ioctlsocket(s, FIONBIO, &mode);
+        if (status == SOCKET_ERROR) {
+            LogRel(("FIONBIO: %R[sockerr]\n", WSAGetLastError()));
+        }
+    }
+
     LogFlowFuncLeaveRC(VINF_SUCCESS);
     return VINF_SUCCESS;
 
