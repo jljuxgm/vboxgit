@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: CPUM.cpp 69900 2017-12-01 15:32:11Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1275,6 +1275,8 @@ VMMR3DECL(void) CPUMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
      */
     if (CPUMMICROARCH_IS_INTEL_CORE2(pVM->cpum.s.GuestFeatures.enmMicroarch))
         pVCpu->cpum.s.GuestMsrs.msr.PkgCStateCfgCtrl = 0x202a01;    /* From Mac Pro Harpertown, unlocked. */
+    else if (pVM->cpum.s.GuestFeatures.enmMicroarch == kCpumMicroarch_Intel_Core_Yonah)
+        pVCpu->cpum.s.GuestMsrs.msr.PkgCStateCfgCtrl = 0x26740c;    /* From MacBookPro1,1. */
 
     /*
      * Hardware virtualization state.
