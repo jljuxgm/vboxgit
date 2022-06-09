@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: PGMAll.cpp 72265 2018-05-20 13:08:29Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2417,6 +2417,20 @@ VMMDECL(const char *) PGMGetModeName(PGMMODE enmMode)
         case PGMMODE_EPT:       return "EPT";
         default:                return "unknown mode value";
     }
+}
+
+
+/**
+ * Gets the physical address represented in the guest CR3 as PGM sees it.
+ *
+ * This is mainly for logging and debugging.
+ *
+ * @returns PGM's guest CR3 value.
+ * @param   pVCpu       The cross context virtual CPU structure.
+ */
+VMM_INT_DECL(RTGCPHYS) PGMGetGuestCR3Phys(PVMCPU pVCpu)
+{
+    return pVCpu->pgm.s.GCPhysCR3;
 }
 
 
