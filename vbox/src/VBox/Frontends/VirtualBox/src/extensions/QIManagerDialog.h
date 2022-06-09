@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 70139 2017-12-15 10:59:25Z vboxsync $ */
+/* $Id: QIManagerDialog.h 70147 2017-12-15 14:08:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIManagerDialog class declaration.
  */
@@ -164,13 +164,13 @@ protected:
         void closeEvent(QCloseEvent *pEvent);
     /** @} */
 
-        /** @name Functions related to geometry restoration.
-         * @{ */
-        /* Sets the position and size of the dialog. */
+    /** @name Functions related to geometry restoration.
+     * @{ */
+        /** Sets the position and size of the dialog. */
         void setDialogGeometry(const QRect &geometry);
         /** Returns whether the window should be maximized when geometry being restored. */
         virtual bool shouldBeMaximized() const { return false; }
-        /** @} */
+    /** @} */
 
 private:
 
@@ -178,6 +178,9 @@ private:
       * @{ */
         /** Holds the widget reference to center Host Network Manager according. */
         QWidget *pCenterWidget;
+
+        /** Holds whether the manager had emitted command to be closed. */
+        bool m_fCloseEmitted;
     /** @} */
 
     /** @name Widget stuff.
