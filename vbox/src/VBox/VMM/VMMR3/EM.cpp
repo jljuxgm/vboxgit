@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 72300 2018-05-23 15:13:06Z vboxsync $ */
+/* $Id: EM.cpp 72327 2018-05-24 19:27:55Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -748,6 +748,27 @@ VMMR3DECL(int) EMR3QueryExecutionPolicy(PUVM pUVM, EMEXECPOLICY enmPolicy, bool 
             AssertFailedReturn(VERR_INTERNAL_ERROR_2);
     }
 
+    return VINF_SUCCESS;
+}
+
+
+/**
+ * Queries the main execution engine of the VM.
+ *
+ * @returns VBox status code
+ * @param   pUVM                    The user mode VM handle.
+ * @param   pbMainExecutionEngine   Where to return the result, VM_EXEC_ENGINE_XXX.
+ */
+VMMR3DECL(int) EMR3QueryMainExecutionEngine(PUVM pUVM, uint8_t *pbMainExecutionEngine)
+{
+    AssertPtrReturn(pbMainExecutionEngine, VERR_INVALID_POINTER);
+    *pbMainExecutionEngine = VM_EXEC_ENGINE_NOT_SET;
+
+    UVM_ASSERT_VALID_EXT_RETURN(pUVM, VERR_INVALID_VM_HANDLE);
+    PVM pVM = pUVM->pVM;
+    VM_ASSERT_VALID_EXT_RETURN(pVM, VERR_INVALID_VM_HANDLE);
+
+    *pbMainExecutionEngine = pVM->bMainExecutionEngine;
     return VINF_SUCCESS;
 }
 
