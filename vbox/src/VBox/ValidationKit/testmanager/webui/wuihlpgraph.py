@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpgraph.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: wuihlpgraph.py 70765 2018-01-28 20:34:43Z vboxsync $
 
 """
 Test Manager Web-UI - Graph Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70765 $"
 
 
 class WuiHlpGraphDataTable(object): # pylint: disable=R0903
@@ -104,7 +104,7 @@ if True: # pylint: disable=W0125
 else:
     try:
         import matplotlib; # pylint: disable=W0611,F0401,import-error,wrong-import-order
-        from testmanager.webui import wuihlpgraphmatplotlib     as GraphImplementation;
+        from testmanager.webui import wuihlpgraphmatplotlib     as GraphImplementation; # pylint: disable=ungrouped-imports
     except:
         from testmanager.webui import wuihlpgraphsimple         as GraphImplementation;
 

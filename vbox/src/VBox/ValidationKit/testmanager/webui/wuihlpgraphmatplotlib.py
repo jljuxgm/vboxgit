@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpgraphmatplotlib.py 70660 2018-01-21 16:18:58Z vboxsync $
+# $Id: wuihlpgraphmatplotlib.py 70765 2018-01-28 20:34:43Z vboxsync $
 
 """
 Test Manager Web-UI - Graph Helpers - Implemented using matplotlib.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70660 $"
+__version__ = "$Revision: 70765 $"
 
 # Standard Python Import and extensions installed on the system.
 import re;
@@ -39,7 +39,7 @@ else:
 import matplotlib;                              # pylint: disable=F0401
 matplotlib.use('Agg'); # Force backend.
 import matplotlib.pyplot;                       # pylint: disable=F0401
-from numpy import arange as numpy_arange;       # pylint: disable=E0611,E0401
+from numpy import arange as numpy_arange;       # pylint: disable=E0611,E0401,wrong-import-order
 
 # Validation Kit imports.
 from testmanager.webui.wuihlpgraphbase  import WuiHlpGraphBase;
