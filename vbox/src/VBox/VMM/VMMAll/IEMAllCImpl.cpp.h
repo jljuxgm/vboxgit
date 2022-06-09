@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 71641 2018-04-04 06:31:20Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 71994 2018-04-24 07:41:06Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -3870,6 +3870,7 @@ IEM_CIMPL_DEF_1(iemCImpl_iret, IEMMODE, enmEffOpSize)
 {
     /*
      * First, clear NMI blocking, if any, before causing any exceptions.
+     * See Intel spec. 6.7.1 "Handling Multiple NMIs".
      */
     VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_BLOCK_NMIS);
 
