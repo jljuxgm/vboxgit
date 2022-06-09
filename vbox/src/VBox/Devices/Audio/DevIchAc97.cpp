@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 70642 2018-01-19 12:18:45Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 71247 2018-03-06 17:16:24Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -392,10 +392,10 @@ typedef struct AC97STATE
 {
     /** The PCI device state. */
     PDMPCIDEV               PciDev;
-    /** R3 Pointer to the device instance. */
-    PPDMDEVINSR3            pDevInsR3;
     /** Critical section protecting the AC'97 state. */
     PDMCRITSECT             CritSect;
+    /** R3 Pointer to the device instance. */
+    PPDMDEVINSR3            pDevInsR3;
     /** Global Control (Bus Master Control Register). */
     uint32_t                glob_cnt;
     /** Global Status (Bus Master Control Register). */

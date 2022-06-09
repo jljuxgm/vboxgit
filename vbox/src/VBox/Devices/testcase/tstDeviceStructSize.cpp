@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 71210 2018-03-05 20:24:50Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 71247 2018-03-06 17:16:24Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -111,10 +111,10 @@
 
 #include <VBox/vmm/pdmaudioifs.h>
 
-# undef LOG_GROUP
-# include "../Audio/DevIchAc97.cpp"
-# undef LOG_GROUP
-# include "../Audio/DevHDA.cpp"
+#undef LOG_GROUP
+#include "../Audio/DevIchAc97.cpp"
+#undef LOG_GROUP
+#include "../Audio/DevHDA.cpp"
 
 #include <stdio.h>
 
@@ -280,6 +280,8 @@ int main()
     /*
      * Misc alignment checks (keep this somewhat alphabetical).
      */
+    CHECK_MEMBER_ALIGNMENT(AC97STATE, CritSect, 8);
+
     CHECK_MEMBER_ALIGNMENT(AHCI, lock, 8);
     CHECK_MEMBER_ALIGNMENT(AHCI, ahciPort[0], 8);
 
