@@ -1,4 +1,4 @@
-# $Id: Makefile.include.footer 69567 2017-11-03 14:47:27Z vboxsync $
+# $Id: Makefile.include.footer 70682 2018-01-22 17:32:24Z vboxsync $
 ## @file
 # VirtualBox Guest Additions kernel module Makefile, common parts.
 #
@@ -37,7 +37,7 @@ ifndef INCL
 endif
 KFLAGS   := -D__KERNEL__ -DMODULE $(MOD_DEFS)
 ifeq ($(BUILD_TYPE),debug)
- KFLAGS  += -DDEBUG -DDEBUG_$(subst $(subst _, ,_),_,$(USERNAME)) -DDEBUG_USERNAME=$(subst $(subst _, ,_),_,$(USERNAME))
+ KFLAGS  += -DDEBUG -DDEBUG_$(subst $(subst _, ,_),_,$(USERNAME)) -DDEBUG_USERNAME=$(subst $(subst _, ,_),_,$(USERNAME)) -Werror -Wall
 endif
 
 ifeq ($(KERN_VERSION), 24)
