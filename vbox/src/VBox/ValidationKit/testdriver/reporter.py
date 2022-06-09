@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 70572 2018-01-13 01:11:42Z vboxsync $
+# $Id: reporter.py 70573 2018-01-13 04:18:15Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70572 $"
+__version__ = "$Revision: 70573 $"
 
 
 # Standard Python imports.
@@ -745,7 +745,7 @@ class RemoteReporter(ReporterBase):
             except: pass;
 
         # Make sure it's a string which encoding we grok.
-        if sys.version_info[0] >= 3 and hasattr(sRspBody, 'decode'):
+        if hasattr(sRspBody, 'decode'):
             sRspBody = sRspBody.decode('utf-8', 'ignore');
 
         # Check the content type.

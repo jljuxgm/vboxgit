@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 70521 2018-01-10 15:49:10Z vboxsync $
+# $Id: vbox.py 70573 2018-01-13 04:18:15Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70521 $"
+__version__ = "$Revision: 70573 $"
 
 
 # Standard Python imports.
@@ -1086,6 +1086,9 @@ class TestDriver(base.TestDriver):                                              
                     reporter.logXcpt();
                     sResponse = None;
                 os.close(iPipeR);
+
+                if hasattr(sResponse, 'decode'):
+                    sResponse = sResponse.decode('utf-8', 'ignore');
 
                 if sResponse is None  or  sResponse.strip() != 'READY':
                     reporter.error('VBoxSVC failed starting up... (sResponse=%s)' % (sResponse,));
