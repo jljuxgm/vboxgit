@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: winbase.py 69541 2017-11-01 13:20:00Z vboxsync $
+# $Id: winbase.py 69544 2017-11-01 13:39:25Z vboxsync $
 
 """
 This module is here to externalize some Windows specifics that gives pychecker
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69541 $"
+__version__ = "$Revision: 69544 $"
 
 
 # Standard Python imports.
@@ -307,5 +307,4 @@ def checkProcessHeap():
         ctypes.windll.msvcrt.strcpy(None, None, 1024);
 
     return True;
-
 
