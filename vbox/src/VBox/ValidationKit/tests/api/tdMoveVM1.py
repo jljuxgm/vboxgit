@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 71554 2018-03-28 18:38:33Z vboxsync $"
+# "$Id: tdMoveVM1.py 71613 2018-04-02 09:35:11Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71554 $"
+__version__ = "$Revision: 71613 $"
 
 # Standard Python imports.
 import os
@@ -227,7 +227,7 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
     #checkAPIVersion
     #
     def checkAPIVersion(self):
-        if self.oTstDrv.fpApiVer >= 5.3:
+        if self.oTstDrv.fpApiVer >= 5.2:
             return True
 
         return False
