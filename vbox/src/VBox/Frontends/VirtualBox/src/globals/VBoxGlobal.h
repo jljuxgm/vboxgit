@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: VBoxGlobal.h 71784 2018-04-09 15:56:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -640,6 +640,12 @@ private:
     UIIconPoolGeneral *m_pIconPool;
     /** Holds the thread-pool instance. */
     UIThreadPool *m_pThreadPool;
+
+#if defined(VBOX_WS_WIN) && defined(VBOX_GUI_WITH_SHARED_LIBRARY)
+    /** Holds the ATL module instance (for use with VBoxGlobal shared library only).
+      * @note  Required internally by ATL (constructor records instance in global variable). */
+    ATL::CComModule _Module;
+#endif
 
     /** Holds the singleton VBoxGlobal instance. */
     static VBoxGlobal *s_pInstance;
