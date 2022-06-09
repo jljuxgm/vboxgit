@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.cpp 68017 2017-07-18 11:09:52Z vboxsync $ */
+/* $Id: UIMediumSizeEditor.cpp 68210 2017-07-31 15:27:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class implementation.
  */
@@ -214,6 +214,8 @@ int UIMediumSizeEditor::calculateSliderScale(qulonglong uMaximumMediumSize)
 /* static */
 int UIMediumSizeEditor::log2i(qulonglong uValue)
 {
+    if (!uValue)
+        return 0;
     int iPower = -1;
     while (uValue)
     {
