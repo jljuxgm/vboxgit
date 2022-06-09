@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibLog.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxGuestR3LibLog.cpp 68561 2017-08-31 12:10:14Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Logging.
  */
@@ -29,6 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/mem.h>
+#include <iprt/string.h>
 #include "VBGLR3Internal.h"
 
 

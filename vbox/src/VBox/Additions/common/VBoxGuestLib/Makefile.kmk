@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68550 2017-08-31 12:09:41Z vboxsync $
+# $Id: Makefile.kmk 68561 2017-08-31 12:10:14Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -73,6 +73,10 @@ VBoxGuestR0Lib_SOURCES      = \
 	HGCM.cpp \
 	VbglR0CanUsePhysPageList.cpp
 VBoxGuestR0Lib_SOURCES.win = VBoxGuestR0LibIdc-win.cpp
+VBoxGuestR0Lib_SOURCES.os2 = VBoxGuestR0LibIdc-os2.cpp
+ifn1of ($(KBUILD_TARGET), win os2)
+ VBoxGuestR0Lib_SOURCES += VBoxGuestR0LibIdc-unix.cpp
+endif
 
 #
 # VBoxGuestR0LibBase

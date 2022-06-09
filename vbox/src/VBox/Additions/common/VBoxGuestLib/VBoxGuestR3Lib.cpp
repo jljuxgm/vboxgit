@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 68561 2017-08-31 12:10:14Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -416,10 +416,10 @@ int vbglR3DoIOCtlRaw(uintptr_t uFunction, PVBGLREQHDR pHdr, size_t cbReq)
         return VINF_SUCCESS;
     return RTErrConvertFromOS2(rc);
 
-#else defined(VBOX_VBGLR3_XSERVER)
-    if (g_File != NIL_RTFILE)
+#elif defined(VBOX_VBGLR3_XSERVER)
+    if (g_File != -1)
     {
-        if (RT_LIKELY(xf86ioctl((int)g_File, uFunction, pvData) >= 0))
+        if (RT_LIKELY(xf86ioctl((int)g_File, uFunction, pHdr) >= 0))
             return VINF_SUCCESS;
         return VERR_FILE_IO_ERROR;
     }
@@ -428,7 +428,7 @@ int vbglR3DoIOCtlRaw(uintptr_t uFunction, PVBGLREQHDR pHdr, size_t cbReq)
 #else
     if (g_File != NIL_RTFILE)
     {
-        if (RT_LIKELY(ioctl((int)g_File, uFunction, pvReq) >= 0))
+        if (RT_LIKELY(ioctl((int)g_File, uFunction, pHdr) >= 0))
             return VINF_SUCCESS;
         return RTErrConvertFromErrno(errno);
     }
