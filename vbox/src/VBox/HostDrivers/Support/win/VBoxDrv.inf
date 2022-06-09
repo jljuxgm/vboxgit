@@ -1,4 +1,4 @@
-; $Id: VBoxDrv.inf 71881 2018-04-17 15:58:26Z vboxsync $
+; $Id: VBoxDrv.inf 71890 2018-04-18 06:47:40Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Windows Driver INF file.
 ;
@@ -48,8 +48,8 @@ AddService=VBoxDrv,0x00000002,VBoxDrv_Service
 ;amd64 %ORACLE%=ORACLE, NTamd64
 
 ; Models section (referenced by [Manufacturer]).
-;x86 [Oracle] 
-;amd64 [Oracle.ntamd64] 
+;x86 [Oracle]
+;amd64 [Oracle.ntamd64]
 %VBoxDrv.DRVDESC%=DefaultInstall,root\VBoxDrv
 
 [SourceDisksFiles]
