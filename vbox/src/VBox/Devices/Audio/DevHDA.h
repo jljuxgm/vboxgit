@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 70016 2017-12-08 12:02:46Z vboxsync $ */
+/* $Id: DevHDA.h 70251 2017-12-20 18:34:18Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -55,11 +55,7 @@
  */
 typedef struct HDAMIXERSINK
 {
-    /** SDn ID this sink is assigned to. 0 if not assigned. */
-    uint8_t                uSD;
-    /** Channel ID of SDn ID. Only valid if SDn ID is valid. */
-    uint8_t                uChannel;
-    uint8_t                Padding[3];
+	R3PTRTYPE(PHDASTREAM)  pStream;
     /** Pointer to the actual audio mixer sink. */
     R3PTRTYPE(PAUDMIXSINK) pMixSink;
 } HDAMIXERSINK, *PHDAMIXERSINK;

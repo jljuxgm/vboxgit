@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 70250 2017-12-20 18:21:10Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 70251 2017-12-20 18:34:18Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  */
@@ -279,7 +279,7 @@ PHDASTREAM hdaGetStreamFromSink(PHDASTATE pThis, PHDAMIXERSINK pSink)
     AssertPtrReturn(pSink, NULL);
 
     /** @todo Do something with the channel mapping here? */
-    return hdaGetStreamFromSD(pThis, pSink->uSD);
+    return pSink->pStream;
 }
 
 /**
