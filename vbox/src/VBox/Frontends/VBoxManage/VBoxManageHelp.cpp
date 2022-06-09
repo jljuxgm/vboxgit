@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 67614 2017-06-26 17:00:42Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 67949 2017-07-13 10:01:43Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1031,6 +1031,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            --iso-path <path>\n"
                      "                            [--key <CD-key>]\n"
                      "                            [--additions-iso-path <path>]\n"
+                     "                            [--install-additions]\n"
                      "                            [--image-index <index>]\n"
                      "                            [--session-type <type>]\n"
                      "\n", SEP, SEP);
