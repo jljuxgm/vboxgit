@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 67885 2017-07-10 16:45:06Z vboxsync $ */
+/* $Id: MediumImpl.cpp 68043 2017-07-19 11:51:10Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1698,6 +1698,7 @@ HRESULT Medium::setDescription(const com::Utf8Str &aDescription)
         }
 
         // save the settings
+        alock.release();
         i_markRegistriesModified();
         m->pVirtualBox->i_saveModifiedRegistries();
     }
