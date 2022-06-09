@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 67501 2017-06-20 11:49:55Z vboxsync $ */
+/* $Id: DrvAudio.cpp 67506 2017-06-20 13:32:27Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -657,7 +657,7 @@ static int drvAudioStreamInitInternal(PDRVAUDIO pThis,
     CfgHostAcq.Props.cShift = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(CfgHostAcq.Props.cBits, CfgHostAcq.Props.cChannels);
 
     /* Set set host buffer size multiplicator. */
-    const unsigned cSampleBufferHostFactor = 10; /** @todo Make this configurable. */
+    const unsigned cSampleBufferHostFactor = 2; /** @todo Make this configurable. */
 
     LogFunc(("[%s] cSamples=%RU32 (x %u)\n", pHstStream->szName, CfgHostAcq.cSampleBufferHint, cSampleBufferHostFactor));
 
