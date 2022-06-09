@@ -1,4 +1,4 @@
-/* $Id: ebda.h 70333 2017-12-23 13:21:54Z vboxsync $ */
+/* $Id: ebda.h 71426 2018-03-21 11:49:59Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
@@ -147,10 +147,10 @@ typedef struct {
     uint8_t     lhead;
     uint8_t     sig;
     uint8_t     spt;
-    uint8_t     resvd1[4];
+    uint32_t    resvd1;
     uint16_t    cyl;
     uint8_t     head;
-    uint8_t     resvd2[2];
+    uint16_t    resvd2;
     uint8_t     lspt;
     uint8_t     csum;
 } fdpt_t;
