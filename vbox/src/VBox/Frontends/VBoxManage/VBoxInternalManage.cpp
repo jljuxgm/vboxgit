@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 69706 2017-11-16 00:33:28Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1501,7 +1501,7 @@ static RTEXITCODE CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aV
     /* Check whether cbSize is actually sensible. */
     if (!cbSize || cbSize % 512)
     {
-        RTMsgError("Detected size of raw disk '%s' is %s, an invalid value", rawdisk.c_str(), cbSize);
+        RTMsgError("Detected size of raw disk '%s' is %RU64, an invalid value", rawdisk.c_str(), cbSize);
         vrc = VERR_INVALID_PARAMETER;
         goto out;
     }
