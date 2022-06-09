@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68748 2017-09-13 16:58:27Z vboxsync $
+# $Id: Config.kmk 68768 2017-09-14 17:08:31Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3473,7 +3473,6 @@ ifdef VBOX_SIGNING_MODE
   #
   # Solaris code signing.
   #
-
   ifeq ($(VBOX_SIGNING_MODE),test)
    VBOX_CERTIFICATE_FILE  ?= $(error You need to set VBOX_CERTIFICATE_FILE in LocalConfig.kmk.)
    VBOX_TOKEN_NAME        ?= $(error You need to set VBOX_TOKEN_NAME in LocalConfig.kmk.)
@@ -7014,7 +7013,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68748 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68768 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
