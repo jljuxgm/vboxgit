@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 71089 2018-02-21 17:35:07Z vboxsync $ */
+/* $Id: UIGuestControlInterface.cpp 71100 2018-02-22 13:00:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -129,8 +129,8 @@ UIGuestControlInterface::UIGuestControlInterface(QObject* parent, const CGuest &
                 "                                   [-E|--putenv <NAME>[=<VALUE>]] [--unquoted-args]\n"
                 "                                   [--ignore-operhaned-processes] [--profile]\n"
                 "                                   -- <program/arg0> [argument1] ... [argumentN]]\n"
-                "createsession                      [common-options]  [--sessionname <name>]\n"
-                "mkdir                           [common-options]\n"
+                "createsession                  [common-options]  [--sessionname <name>]\n"
+                "mkdir                            [common-options]\n"
                 "                                   [-P|--parents] [<guest directory>\n"
                 "                                   [--sessionid <id> |  [sessionname <name>]]\n"
                 )

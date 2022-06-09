@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.cpp 71089 2018-02-21 17:35:07Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.cpp 71100 2018-02-22 13:00:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestSessionTreeItem class implementation.
  */
@@ -274,13 +274,7 @@ void UIGuestSessionTreeItem::sltGuestProcessRegistered(CGuestProcess guestProces
 
 void UIGuestSessionTreeItem::addGuestProcess(CGuestProcess guestProcess)
 {
-    QStringList strList;
-    strList
-        << QString("PID: %1").arg(guestProcess.GetPID())
-        << QString("Process Name: %1").arg(guestProcess.GetName())
-        << QString("Process Status: %1").arg(processStatusString(guestProcess.GetStatus()));
-
-    UIGuestProcessTreeItem *newItem = new UIGuestProcessTreeItem(this, guestProcess, strList);
+    UIGuestProcessTreeItem *newItem = new UIGuestProcessTreeItem(this, guestProcess);
     connect(newItem, &UIGuestProcessTreeItem::sigGuestProcessErrorText,
             this, &UIGuestSessionTreeItem::sigGuestSessionErrorText);
 }
