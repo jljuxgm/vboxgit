@@ -1,4 +1,4 @@
-/* $Id: DBGFInfo.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: DBGFInfo.cpp 68254 2017-08-02 15:39:21Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Info.
  */
@@ -510,6 +510,8 @@ VMMR3_INT_DECL(int) DBGFR3InfoDeregisterDevice(PVM pVM, PPDMDEVINS pDevIns, cons
                     pUVM->dbgf.s.pInfoFirst = pInfo->pNext;
                 MMR3HeapFree(pInfo);
                 pInfo = pPrev;
+                if (!pInfo)
+                    break;
             }
         rc = VINF_SUCCESS;
     }
