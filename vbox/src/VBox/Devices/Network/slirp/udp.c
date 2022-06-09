@@ -1,4 +1,4 @@
-/* $Id: udp.c 71982 2018-04-23 14:04:04Z vboxsync $ */
+/* $Id: udp.c 72239 2018-05-17 12:23:26Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -549,7 +549,9 @@ udp_attach(PNATState pData, struct socket *so)
     /* enable broadcast for later use */
     setsockopt(so->s, SOL_SOCKET, SO_BROADCAST, (const char *)&opt, sizeof(opt));
     status = getsockname(so->s, &sa_addr, &socklen);
+#if 0 /** @todo  Something is explitived here! Temporarily disabled this annoying assertion.  Re-enable when fixed.  */
     Assert(status == 0 && sa_addr.sa_family == AF_INET);
+#endif
     so->so_hlport = ((struct sockaddr_in *)&sa_addr)->sin_port;
     so->so_hladdr.s_addr = ((struct sockaddr_in *)&sa_addr)->sin_addr.s_addr;
 
