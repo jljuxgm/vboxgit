@@ -1,4 +1,4 @@
-/* $Id: internal-r3-nt.h 69795 2017-11-21 16:29:49Z vboxsync $ */
+/* $Id: internal-r3-nt.h 70428 2018-01-02 15:01:20Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the Native NT code.
  */
@@ -36,11 +36,12 @@
 #include "internal/iprt.h"
 
 
-#ifdef DEBUG_bird
+#if 1
 /** Enables the "\\!\" NT path pass thru as well as hacks for listing NT object
  * directories. */
 # define IPRT_WITH_NT_PATH_PASSTHRU 1
 #endif
+
 
 
 /**
