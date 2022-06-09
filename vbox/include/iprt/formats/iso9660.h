@@ -1,4 +1,4 @@
-/* $Id: iso9660.h 66735 2017-05-01 23:26:04Z vboxsync $ */
+/* $Id: iso9660.h 67278 2017-06-06 16:49:24Z vboxsync $ */
 /** @file
  * IPRT, ISO 9660 File System
  */
@@ -39,6 +39,9 @@
 
 /** The (default) logical sectors size of ISO 9660. */
 #define ISO9660_SECTOR_SIZE                 2048
+/** Maximum filename length (level 2 & 3). */
+#define ISO9660_MAX_NAME_LEN                30
+
 
 /** Accessor for ISO9660U16 and ISO9660U32 that retrievs the member value for
  *  the host endianess. */
