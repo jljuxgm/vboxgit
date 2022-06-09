@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 67365 2017-06-13 14:17:59Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 67741 2017-06-30 15:42:33Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -448,8 +448,8 @@ static int audioMixBufAlloc(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamples)
     DECLCALLBACK(int64_t) audioMixBufClipFrom##_aName(_aType aVal) \
     { \
         if (_aSigned) \
-            return ((int64_t) aVal) << (32 - _aShift); \
-        return ((int64_t) aVal - ((_aMax >> 1) + 1)) << (32 - _aShift); \
+            return (int64_t) (((uint64_t) ((int64_t) aVal                     )) << (32 - _aShift)); \
+        return     (int64_t) (((uint64_t) ((int64_t) aVal - ((_aMax >> 1) + 1))) << (32 - _aShift)); \
     } \
     \
     /* Clips a single sample value to a specific output value. */ \
