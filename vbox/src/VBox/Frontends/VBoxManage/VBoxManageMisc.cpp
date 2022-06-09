@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 68192 2017-07-31 11:30:21Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 68194 2017-07-31 11:33:10Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1607,7 +1607,9 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
             ComPtr<IMachine> ptrSessonMachine;
             CHECK_ERROR2(hrc, a->session, COMGETTER(Machine)(ptrSessonMachine.asOutParam()));
             if (ptrSessonMachine.isNotNull())
+            {
                 CHECK_ERROR2(hrc, ptrSessonMachine, SetExtraData(Bstr("GUI/FirstRun").raw(), Bstr("0").raw()));
+            }
         }
 
         a->session->UnlockMachine();
