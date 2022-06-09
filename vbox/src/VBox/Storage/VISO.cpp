@@ -1,4 +1,4 @@
-/* $Id: VISO.cpp 67599 2017-06-26 09:18:19Z vboxsync $ */
+/* $Id: VISO.cpp 67603 2017-06-26 12:00:07Z vboxsync $ */
 /** @file
  * VISO - Virtual ISO disk image, Core Code.
  */
@@ -331,6 +331,7 @@ static int visoOpenWorker(PVISOIMAGE pThis)
                                             hVfsFile = NIL_RTVFSFILE;
 
                                             rc = VINF_SUCCESS;
+                                            LogRel(("VISO: %'RU64 bytes (%#RX64) - %s\n", cbImage, cbImage, pThis->pszFilename));
                                         }
 
                                         RTVfsFileRelease(hVfsFile);
