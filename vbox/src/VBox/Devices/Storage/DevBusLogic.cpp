@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 67682 2017-06-29 08:44:44Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 67806 2017-07-05 15:48:20Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -4153,7 +4153,9 @@ static DECLCALLBACK(int) buslogicR3Construct(PPDMDEVINS pDevIns, int iInstance, 
         char szName[24];
         PBUSLOGICDEVICE pDevice = &pThis->aDeviceStates[i];
 
-        RTStrPrintf(szName, sizeof(szName), "Device%u", i);
+        char *pszName;
+        if (RTStrAPrintf(&pszName, "Device%u", i) < 0)
+            AssertLogRelFailedReturn(VERR_NO_MEMORY);
 
         /* Initialize static parts of the device. */
         pDevice->iLUN = i;
@@ -4173,7 +4175,7 @@ static DECLCALLBACK(int) buslogicR3Construct(PPDMDEVINS pDevIns, int iInstance, 
         pDevice->ILed.pfnQueryStatusLed                  = buslogicR3DeviceQueryStatusLed;
 
         /* Attach SCSI driver. */
-        rc = PDMDevHlpDriverAttach(pDevIns, pDevice->iLUN, &pDevice->IBase, &pDevice->pDrvBase, szName);
+        rc = PDMDevHlpDriverAttach(pDevIns, pDevice->iLUN, &pDevice->IBase, &pDevice->pDrvBase, pszName);
         if (RT_SUCCESS(rc))
         {
             /* Query the media interface. */
