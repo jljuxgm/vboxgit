@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevPcBios.h 71062 2018-02-19 17:06:14Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device, header shared with the BIOS code.
  */
@@ -29,6 +29,12 @@
  */
 #define VBOX_DMI_TABLE_SIZE         768
 
+/** def VBOX_DMI_TABLE_SIZE
+ *
+ * The size should be at least 16-byte aligned for a proper alignment of
+ * the MPS table.
+ */
+#define VBOX_DMI_HDR_SIZE           32
 
 /** @def VBOX_LANBOOT_SEG
  *
