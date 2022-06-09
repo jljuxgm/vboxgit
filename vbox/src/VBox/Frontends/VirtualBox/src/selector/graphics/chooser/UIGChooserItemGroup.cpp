@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 69639 2017-11-10 12:25:43Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 69701 2017-11-15 12:09:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemGroup class implementation.
  */
@@ -412,8 +412,8 @@ void UIGChooserItemGroup::prepare()
     const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
     m_groupsPixmap = UIIconPool::iconSet(":/group_abstract_16px.png").pixmap(iIconMetric, iIconMetric);
     m_machinesPixmap = UIIconPool::iconSet(":/machine_abstract_16px.png").pixmap(iIconMetric, iIconMetric);
-    m_pixmapSizeGroups = m_groupsPixmap.size();
-    m_pixmapSizeMachines = m_machinesPixmap.size();
+    m_pixmapSizeGroups = m_groupsPixmap.size() / m_groupsPixmap.devicePixelRatio();
+    m_pixmapSizeMachines = m_machinesPixmap.size() / m_machinesPixmap.devicePixelRatio();
     m_minimumHeaderSize = QSize(0, 0);
 
     /* Items except roots: */
