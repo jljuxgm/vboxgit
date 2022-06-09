@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 71812 2018-04-11 01:00:30Z vboxsync $ */
+/* $Id: DevACPI.cpp 71892 2018-04-18 10:52:37Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1044,7 +1044,7 @@ static void acpiR3PmTimerReset(ACPIState *pThis, uint64_t uNow)
     Log(("acpi: uInterval = %RU64\n", uInterval));
 }
 
-#endif
+#endif /* IN_RING3 */
 
 /**
   * Used by acpiR3PMTimer & acpiPmTmrRead to update TMR_VAL and update TMR_STS
