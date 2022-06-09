@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSmokeTest1.py 70738 2018-01-25 11:33:44Z vboxsync $
+# $Id: tdSmokeTest1.py 72315 2018-05-24 09:22:38Z vboxsync $
 
 """
 VirtualBox Validation Kit - Smoke Test #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70738 $"
+__version__ = "$Revision: 72315 $"
 
 
 # Standard Python imports.
@@ -99,6 +99,9 @@ class tdSmokeTest1(vbox.TestDriver):
                 elif oTestVm.sVmName == 'tst-sol10':            # SMP, 32-bit
                     oTestVm.asVirtModesSup  = [ 'hwvirt-np' ];
                     oTestVm.acCpusSup       = range(2, 3);
+                elif oTestVm.sVmName == 'tst-nsthwvirt-ubuntu-64':  # Nested hw.virt, 64-bit
+                    oTestVm.asVirtModesSup  = [ 'hwvirt-np' ];
+                    oTestVm.acCpusSup       = range(1, 2);
                 else:
                     oTestVm.fSkip = True;
         else:

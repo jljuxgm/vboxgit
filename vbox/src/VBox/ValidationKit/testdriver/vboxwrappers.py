@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 72298 2018-05-23 12:24:41Z vboxsync $
+# $Id: vboxwrappers.py 72315 2018-05-24 09:22:38Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72298 $"
+__version__ = "$Revision: 72315 $"
 
 
 # Standard Python imports.
@@ -991,6 +991,27 @@ class SessionWrapper(TdTaskBase):
             fRc = False;
         else:
             reporter.log('set CPUPropertyType_LongMode=%s for "%s"' % (fEnable, self.sName));
+        self.oTstDrv.processPendingEvents();
+        return fRc;
+
+    def enableNestedHwVirt(self, fEnable):
+        """
+        Enables or disables Nested Hardware-Virtualization.
+        Returns True on success and False on failure.  Error information is logged.
+        """
+        # Supported.
+        if self.fpApiVer < 5.3  or  not hasattr(vboxcon, 'CPUPropertyType_HWVirt'):
+            return True;
+
+        # Enable/disable it.
+        fRc = True;
+        try:
+            self.o.machine.setCPUProperty(vboxcon.CPUPropertyType_HWVirt, fEnable);
+        except:
+            reporter.errorXcpt('failed to set CPUPropertyType_HWVirt=%s for "%s"' % (fEnable, self.sName));
+            fRc = False;
+        else:
+            reporter.log('set CPUPropertyType_HWVirt=%s for "%s"' % (fEnable, self.sName));
         self.oTstDrv.processPendingEvents();
         return fRc;
 

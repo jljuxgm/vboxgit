@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 71959 2018-04-22 12:53:58Z vboxsync $
+# $Id: vboxtestvms.py 72315 2018-05-24 09:22:38Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71959 $"
+__version__ = "$Revision: 72315 $"
 
 # Standard Python imports.
 import copy;
@@ -206,6 +206,7 @@ class TestVm(object):
                  acCpusSup = None,                          # type: List[int]
                  asVirtModesSup = None,                     # type: List[str]
                  fIoApic = None,                            # type: bool
+                 fNstHwVirt = False,                        # type: bool
                  fPae = None,                               # type: bool
                  sNic0AttachType = None,                    # type: str
                  sFloppy = None,                            # type: str
@@ -232,6 +233,7 @@ class TestVm(object):
         self.sDvdImage               = None;         # Relative to the testrsrc root.
         self.sDvdControllerType      = sDvdControllerType;
         self.fIoApic                 = fIoApic;
+        self.fNstHwVirt              = fNstHwVirt;
         self.fPae                    = fPae;
         self.sNic0AttachType         = sNic0AttachType;
         self.sHddControllerType      = sHddControllerType;
@@ -407,6 +409,7 @@ class TestVm(object):
                                      sHd                = self.sHd,
                                      sKind              = self.sKind,
                                      fIoApic            = self.fIoApic,
+                                     fNstHwVirt         = self.fNstHwVirt,
                                      fPae               = self.fPae,
                                      eNic0AttachType    = eNic0AttachType,
                                      sDvdImage          = sDvdImage,
@@ -913,6 +916,9 @@ class TestVmSet(object):
         #
         fRc = True;
         for oTestVm in self.aoTestVms:
+            if oTestVm.fNstHwVirt and not oTestDrv.isHostCpuAmd():
+                reporter.log2('Ignoring VM %s (Nested hardware-virtualization only supported on AMD CPUs).' % (oTestVm.sVmName,));
+                continue;
             if oTestVm.fSkip and self.fIgnoreSkippedVm:
                 reporter.log2('Ignoring VM %s (fSkip = True).' % (oTestVm.sVmName,));
                 continue;
@@ -1111,6 +1117,11 @@ class TestVmManager(object):
                sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi'),
         #TestVm('tst-win10-64-efi-ich9',     kfGrpStdSmoke,         sHd = '4.2/efi/win10-efi-amd64.vdi',
         #       sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi', sChipsetType = 'ich9'),
+
+        # Nested hardware-virtualization
+        #TestVm('tst-nsthwvirt-ubuntu-64',    kfGrpStdSmoke,       sHd = '4.2/nat/nsthwvirt-ubuntu64/t-nsthwvirt-ubuntu64.vdi',
+        #       sKind = 'Ubuntu_64', acCpusSup = range(1, 2), asVirtModesSup = ['hwvirt-np',], fIoApic = True, fNstHwVirt = True,
+        #       sNic0AttachType = 'nat'),
 
         # DOS and Old Windows.
         AncientTestVm('tst-dos20',              sKind = 'DOS',
