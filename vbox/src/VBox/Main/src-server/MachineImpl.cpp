@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 66945 2017-05-17 18:56:31Z vboxsync $ */
+/* $Id: MachineImpl.cpp 67618 2017-06-26 17:47:23Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12658,7 +12658,7 @@ HRESULT SessionMachine::init(Machine *aMachine)
 #ifdef VBOX_WITH_UNATTENDED
     /* create another unattended object that will be mutable */
     unconst(mUnattended).createObject();
-    mUnattended->init(this, aMachine->mUnattended);
+    mUnattended->initWithUnattended(this, aMachine->mUnattended);
 #endif
 
     /* default is to delete saved state on Saved -> PoweredOff transition */
