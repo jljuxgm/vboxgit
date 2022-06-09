@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70311 2017-12-22 11:47:24Z vboxsync $
+# $Id: Makefile.kmk 70397 2018-01-01 12:27:43Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -80,6 +80,12 @@ if !defined(VBOX_ONLY_BUILD)
  PROGRAMS += RTChMod
  RTChMod_TEMPLATE = VBoxR3Tool
  RTChMod_SOURCES = RTChMod.cpp
+
+ # RTCp - our cp clone.
+ PROGRAMS += RTCp
+ RTCp_TEMPLATE = VBoxR3Tool
+ RTCp_SOURCES = RTCp.cpp
+ RTCp_SOURCES += ../VBox/LoadVBoxDDU.cpp
 
  # RTIsoMaker - ISO image maker - build version.
  PROGRAMS += RTIsoMaker
