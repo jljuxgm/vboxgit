@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 70581 2018-01-14 20:54:55Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 70591 2018-01-15 13:50:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -552,7 +552,7 @@ void UIVMLogViewerSearchPanel::highlightAll(QTextDocument *pDocument,
             highlightCursor.mergeCharFormat(colorFormat);
             ++m_iMatchCount;
             /* The following assumes we have single line blocks only: */
-            int cursorLine = pDocument->findBlock(highlightCursor.position()).firstLineNumber();
+            int cursorLine = pDocument->findBlock(highlightCursor.position()).blockNumber();
             if (lineCount != 0)
                 m_matchLocationVector.push_back(cursorLine / static_cast<float>(lineCount));
         }
