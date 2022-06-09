@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 67210 2017-06-01 13:57:04Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 67225 2017-06-02 08:30:12Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2390,12 +2390,8 @@ HRESULT Appliance::i_writeFSImpl(TaskOVF *pTask, AutoWriteLockBase& writeLock, P
     LogFlowFuncEnter();
 
     HRESULT rc = S_OK;
-#ifdef VBOX_WITH_NEW_TAR_CREATOR
-    RTMANIFEST hManifest;
-    int vrc = RTManifestCreate(0 /*fFlags*/, &hManifest);
-
-#else
     int vrc;
+#ifndef VBOX_WITH_NEW_TAR_CREATOR
     list<STRPAIR> fileList;
 #endif
     try
