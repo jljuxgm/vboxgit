@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 66956 2017-05-18 16:08:47Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 67597 2017-06-26 08:57:57Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -1363,7 +1363,8 @@ static DECLCALLBACK(int) drvscsiConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
      * Try attach driver below and query it's media interface.
      */
     rc = PDMDrvHlpAttach(pDrvIns, fFlags, &pThis->pDrvBase);
-    AssertMsgReturn(RT_SUCCESS(rc), ("Attaching driver below failed rc=%Rrc\n", rc), rc);
+    if (RT_FAILURE(rc))
+        return rc;
 
     /*
      * Query the media interface.
