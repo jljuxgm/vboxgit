@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 64540 2016-11-03 16:50:37Z vboxsync $ */
+/* $Id: QIComboBox.h 68328 2017-08-08 07:46:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -111,6 +111,11 @@ public slots:
     void setItemIcon(int iIndex, const QIcon &icon) const;
     /** Defines the @a strText for the item with the given @a iIndex. */
     void setItemText(int iIndex, const QString &strText) const;
+
+protected:
+
+    /** Returns the embedded combo-box reference. */
+    QComboBox *comboBox() const;
 
 private:
 

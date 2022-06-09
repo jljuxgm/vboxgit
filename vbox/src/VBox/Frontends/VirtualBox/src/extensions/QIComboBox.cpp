@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 68079 2017-07-21 11:32:19Z vboxsync $ */
+/* $Id: QIComboBox.cpp 68328 2017-08-08 07:46:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIComboBox class implementation.
  */
@@ -165,6 +165,11 @@ QLineEdit *QIComboBox::lineEdit() const
     /* Redirect to combo-box: */
     AssertPtrReturn(m_pComboBox, 0);
     return m_pComboBox->lineEdit();
+}
+
+QComboBox *QIComboBox::comboBox() const
+{
+    return m_pComboBox;
 }
 
 QAbstractItemView *QIComboBox::view() const
