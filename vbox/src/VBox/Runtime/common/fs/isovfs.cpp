@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 68920 2017-09-29 08:25:15Z vboxsync $ */
+/* $Id: isovfs.cpp 68921 2017-09-29 08:44:14Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -2698,8 +2698,9 @@ static int rtFsIsoVolReadAndProcessUdfVdsSeq(PRTFSISOVOL pThis, uint64_t offSeq,
                     return VINF_SUCCESS;
 
                 default:
-                    return RTErrInfoSetF(pErrInfo, VERR_ISOFS_UNEXPECTED_VDS_DESC, "Unexpected/unknown VDS descriptor %#x",
-                                         offSeq + offInSeq, pThis->cbSector, rc);
+                    return RTErrInfoSetF(pErrInfo, VERR_ISOFS_UNEXPECTED_VDS_DESC,
+                                         "Unexpected/unknown VDS descriptor %#x at byte offset %#RX64",
+                                         pThis->cbSector, offSeq + offInSeq);
             }
         }
         /* The descriptor sequence is usually zero padded to 16 sectors.  Just
