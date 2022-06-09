@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70769 2018-01-28 21:02:33Z vboxsync $
+# $Id: Makefile.kmk 70796 2018-01-29 18:01:27Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Serial port.
 #
@@ -32,7 +32,8 @@ INSTALLS += ValidationKitTestsSerial
 ValidationKitTestsSerial_TEMPLATE = VBoxValidationKitR3
 ValidationKitTestsSerial_INST = $(INST_VALIDATIONKIT)tests/serial/
 ValidationKitTestsSerial_EXEC_SOURCES := \
-	$(PATH_SUB_CURRENT)/tdSerial1.py
+	$(PATH_SUB_CURRENT)/tdSerial1.py \
+	$(PATH_SUB_CURRENT)/loopback.py
 
 VBOX_VALIDATIONKIT_PYTHON_SOURCES += $(ValidationKitTestsSerial_EXEC_SOURCES)
 
