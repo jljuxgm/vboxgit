@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 71159 2018-02-28 16:06:10Z vboxsync $ */
+/* $Id: VBoxProxyStub.c 71160 2018-02-28 17:07:35Z vboxsync $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -6,7 +6,7 @@
  *          at least not in SDK v7.1.
  */
 
- /*
+/*
  * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
