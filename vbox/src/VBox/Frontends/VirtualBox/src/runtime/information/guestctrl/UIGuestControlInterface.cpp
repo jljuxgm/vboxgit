@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 71049 2018-02-19 12:16:09Z vboxsync $ */
+/* $Id: UIGuestControlInterface.cpp 71051 2018-02-19 12:32:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -54,7 +54,7 @@
         commandData.m_strPassword = ValueUnion.psz;   \
         break;
 
-QString generateErrorString(int getOptErrorCode, const RTGETOPTUNION &valueUnion)
+QString generateErrorString(int getOptErrorCode, const RTGETOPTUNION &/*valueUnion*/)
 {
     QString errorString;
     // if (valueUnion.pDef)
