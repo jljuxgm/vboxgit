@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
+/* $Id: fileio-win.cpp 69102 2017-10-17 10:08:07Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -254,7 +254,7 @@ RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint64_t fOpen)
         case RTFILE_O_DENY_WRITE:                               dwShareMode = FILE_SHARE_READ; break;
         case RTFILE_O_DENY_READWRITE:                           dwShareMode = 0; break;
 
-        case RTFILE_O_DENY_NOT_DELETE | RTFILE_O_DENY_NONE:     dwShareMode = FILE_SHARE_DELETE | FILE_SHARE_READ | FILE_SHARE_WRITE; break;
+        case RTFILE_O_DENY_NOT_DELETE:                          dwShareMode = FILE_SHARE_DELETE | FILE_SHARE_READ | FILE_SHARE_WRITE; break;
         case RTFILE_O_DENY_NOT_DELETE | RTFILE_O_DENY_READ:     dwShareMode = FILE_SHARE_DELETE | FILE_SHARE_WRITE; break;
         case RTFILE_O_DENY_NOT_DELETE | RTFILE_O_DENY_WRITE:    dwShareMode = FILE_SHARE_DELETE | FILE_SHARE_READ; break;
         case RTFILE_O_DENY_NOT_DELETE | RTFILE_O_DENY_READWRITE:dwShareMode = FILE_SHARE_DELETE; break;
