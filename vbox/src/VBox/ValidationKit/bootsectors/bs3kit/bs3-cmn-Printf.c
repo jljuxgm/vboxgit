@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-Printf.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-cmn-Printf.c 68604 2017-09-01 15:32:33Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3Printf, Bs3PrintfV
  */
@@ -64,7 +64,7 @@ static BS3_DECL_CALLBACK(size_t) bs3PrintFmtOutput(char ch, void BS3_FAR *pvUser
 
 
 #undef Bs3PrintfV
-BS3_CMN_DEF(size_t, Bs3PrintfV,(const char BS3_FAR *pszFormat, va_list va))
+BS3_CMN_DEF(size_t, Bs3PrintfV,(const char BS3_FAR *pszFormat, va_list BS3_FAR va))
 {
     BS3PRINTBUF Buf;
     Buf.cchBuf = 0;

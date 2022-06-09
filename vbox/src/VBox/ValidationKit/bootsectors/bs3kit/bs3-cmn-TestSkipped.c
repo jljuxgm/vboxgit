@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestSkipped.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-cmn-TestSkipped.c 68604 2017-09-01 15:32:33Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestSkipped
  */
@@ -37,7 +37,7 @@
  * Equivalent to RTTestSkippedV.
  */
 #undef Bs3TestSkippedV
-BS3_CMN_DEF(void, Bs3TestSkippedV,(const char *pszFormat, va_list va))
+BS3_CMN_DEF(void, Bs3TestSkippedV,(const char *pszFormat, va_list BS3_FAR va))
 {
     if (g_cusBs3TestErrors == g_cusBs3SubTestAtErrors)
     {

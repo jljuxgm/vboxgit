@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestSub.c 66115 2017-03-15 16:18:03Z vboxsync $ */
+/* $Id: bs3-cmn-TestSub.c 68604 2017-09-01 15:32:33Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestSub, Bs3TestSubF, Bs3TestSubV.
  */
@@ -37,7 +37,7 @@
  * Equivalent to RTTestISubV.
  */
 #undef Bs3TestSubV
-BS3_CMN_DEF(void, Bs3TestSubV,(const char *pszFormat, va_list va))
+BS3_CMN_DEF(void, Bs3TestSubV,(const char *pszFormat, va_list BS3_FAR va))
 {
     size_t cch;
 

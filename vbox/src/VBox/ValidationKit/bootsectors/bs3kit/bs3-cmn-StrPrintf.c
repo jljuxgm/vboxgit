@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-StrPrintf.c 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: bs3-cmn-StrPrintf.c 68604 2017-09-01 15:32:33Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3StrPrintf, Bs3StrPrintfV
  */
@@ -73,7 +73,7 @@ static BS3_DECL_CALLBACK(size_t) bs3StrPrintfFmtOutput(char ch, void BS3_FAR *pv
 
 
 #undef Bs3StrPrintfV
-BS3_CMN_DEF(size_t, Bs3StrPrintfV,(char BS3_FAR *pszBuf, size_t cchBuf, const char BS3_FAR *pszFormat, va_list va))
+BS3_CMN_DEF(size_t, Bs3StrPrintfV,(char BS3_FAR *pszBuf, size_t cchBuf, const char BS3_FAR *pszFormat, va_list BS3_FAR va))
 {
     BS3STRPRINTFSTATE State;
     State.pchBuf  = pszBuf;
