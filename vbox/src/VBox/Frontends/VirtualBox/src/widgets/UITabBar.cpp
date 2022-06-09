@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 68298 2017-08-04 10:30:55Z vboxsync $ */
+/* $Id: UITabBar.cpp 68299 2017-08-04 10:35:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -305,6 +305,9 @@ void UITabBarItem::mouseMoveEvent(QMouseEvent *pEvent)
         return QWidget::mouseMoveEvent(pEvent);
 
     /* Revoke hovered state: */
+#ifdef VBOX_WS_MAC
+    m_pLayoutStacked->setCurrentWidget(m_pLabelIcon);
+#endif
     m_fHovered = false;
     /* And call for repaint: */
     update();
