@@ -1,4 +1,4 @@
-/* $Id: UsbCardReader.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UsbCardReader.cpp 70237 2017-12-20 11:50:11Z vboxsync $ */
 /** @file
  * UsbCardReader - Driver Interface to USB Smart Card Reader emulation.
  */
@@ -26,7 +26,7 @@
 #include "ConsoleImpl.h"
 #include "ConsoleVRDPServer.h"
 
-#include <VBox/vmm/pdm.h>
+#include <VBox/vmm/pdmdrv.h>
 #include <VBox/vmm/pdmcardreaderinfs.h>
 
 #include <iprt/req.h>
