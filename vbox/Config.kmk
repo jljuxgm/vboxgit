@@ -1,4 +1,4 @@
-# $Id: Config.kmk 69569 2017-11-03 14:57:25Z vboxsync $
+# $Id: Config.kmk 69572 2017-11-03 18:48:36Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4207,11 +4207,12 @@ ifeq ($(KBUILD_TARGET),linux)
 
  ifndef KERN_DIR
   ifndef KERN_VER
-   KERN_VER=$(notdir $(lastword $(shell LC_ALL=C ls -t /lib/modules/)))
+   KERN_VER=$(notdir $(firstword $(patsubst %/build/.config,%,$(shell LC_ALL=C ls -t /lib/modules/*/build/.config 2>/dev/null))))
   endif
-  ifneq ($(KERN_VER),)
-   KERN_DIR=/lib/modules/$(KERN_VER)/build
+  ifeq ($(KERN_VER),)
+   KERN_VER=`uname -r`
   endif
+  KERN_DIR=/lib/modules/$(KERN_VER)/build
  endif
 
 ##
@@ -7083,7 +7084,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 69569 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 69572 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
