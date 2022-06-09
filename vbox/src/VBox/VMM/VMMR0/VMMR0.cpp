@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 67956 2017-07-13 21:31:26Z vboxsync $ */
+/* $Id: VMMR0.cpp 67987 2017-07-17 11:24:30Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -653,6 +653,7 @@ VMMR0_INT_DECL(void) VMMR0ThreadCtxHookDestroyForEmt(PVMCPU pVCpu)
 {
     int rc = RTThreadCtxHookDestroy(pVCpu->vmm.s.hCtxHook);
     AssertRC(rc);
+    pVCpu->vmm.s.hCtxHook = NIL_RTTHREADCTXHOOK;
 }
 
 
@@ -1435,8 +1436,16 @@ static int vmmR0EntryExWorker(PGVM pGVM, PVM pVM, VMCPUID idCpu, VMMR0OPERATION 
             break;
 
         case VMMR0_DO_GVMM_REGISTER_VMCPU:
-            if (pGVM != NULL && pVM != NULL )
+            if (pGVM != NULL && pVM != NULL)
                 rc = GVMMR0RegisterVCpu(pGVM, pVM, idCpu);
+            else
+                rc = VERR_INVALID_PARAMETER;
+            VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
+            break;
+
+        case VMMR0_DO_GVMM_DEREGISTER_VMCPU:
+            if (pGVM != NULL && pVM != NULL)
+                rc = GVMMR0DeregisterVCpu(pGVM, pVM, idCpu);
             else
                 rc = VERR_INVALID_PARAMETER;
             VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
