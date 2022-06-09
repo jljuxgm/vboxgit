@@ -1,6 +1,6 @@
-/* $Id: QILabel.cpp 71399 2018-03-20 13:13:24Z vboxsync $ */
+/* $Id: QILabel.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - VirtualBox Qt extensions: QILabel class implementation.
+ * VBox Qt GUI - Qt extensions: QILabel class implementation.
  */
 
 /*
@@ -362,4 +362,3 @@ Qt::TextElideMode QILabel::toTextElideMode(const QString &strType)
         enmMode  = Qt::ElideRight;
     return enmMode;
 }
-

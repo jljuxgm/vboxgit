@@ -1,6 +1,6 @@
-/* $Id: QIRichToolButton.cpp 71404 2018-03-20 14:13:45Z vboxsync $ */
+/* $Id: QIRichToolButton.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - QIRichToolButton class declaration.
+ * VBox Qt GUI - Qt extensions: QIRichToolButton class declaration.
  */
 
 /*
@@ -136,4 +136,3 @@ void QIRichToolButton::prepare()
         }
     }
 }
-

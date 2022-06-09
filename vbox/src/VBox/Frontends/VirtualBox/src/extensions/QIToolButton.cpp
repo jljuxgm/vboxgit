@@ -1,4 +1,4 @@
-/* $Id: QIToolButton.cpp 71346 2018-03-15 10:03:10Z vboxsync $ */
+/* $Id: QIToolButton.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIToolButton class implementation.
  */
@@ -47,4 +47,3 @@ void QIToolButton::removeBorder()
 {
     setStyleSheet("QToolButton { border: 0px }");
 }
-

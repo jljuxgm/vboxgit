@@ -1,6 +1,6 @@
-/* $Id: QISplitter.cpp 71420 2018-03-21 10:21:40Z vboxsync $ */
+/* $Id: QISplitter.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - VirtualBox Qt extensions: QISplitter class implementation.
+ * VBox Qt GUI - Qt extensions: QISplitter class implementation.
  */
 
 /*
@@ -338,5 +338,5 @@ QSplitterHandle *QISplitter::createHandle()
     }
 }
 
-#include "QISplitter.moc"
 
+#include "QISplitter.moc"

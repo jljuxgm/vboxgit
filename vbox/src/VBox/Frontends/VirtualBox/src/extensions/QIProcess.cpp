@@ -1,6 +1,6 @@
-/* $Id: QIProcess.cpp 71402 2018-03-20 13:43:07Z vboxsync $ */
+/* $Id: QIProcess.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - QIProcess class implementation.
+ * VBox Qt GUI - Qt extensions: QIProcess class implementation.
  */
 
 /*
@@ -64,4 +64,3 @@ QByteArray QIProcess::singleShot(const QString &strProcessName, int iTimeout /* 
 #endif /* VBOX_WS_X11 */
     return result;
 }
-

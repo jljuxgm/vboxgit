@@ -1,6 +1,6 @@
-/* $Id: QIDialogButtonBox.cpp 71397 2018-03-20 11:52:15Z vboxsync $ */
+/* $Id: QIDialogButtonBox.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - VirtualBox Qt extensions: QIDialogButtonBox class implementation.
+ * VBox Qt GUI - Qt extensions: QIDialogButtonBox class implementation.
  */
 
 /*
@@ -136,4 +136,3 @@ int QIDialogButtonBox::findEmptySpace(QBoxLayout *pLayout) const
     }
     return i;
 }
-

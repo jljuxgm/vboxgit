@@ -1,6 +1,6 @@
-/* $Id: QIMessageBox.cpp 71401 2018-03-20 13:33:21Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - QIMessageBox class implementation.
+ * VBox Qt GUI - Qt extensions: QIMessageBox class implementation.
  */
 
 /*
@@ -380,4 +380,3 @@ QPixmap QIMessageBox::standardPixmap(AlertIconType iconType, QWidget *pWidget /*
     int iSize = pStyle->pixelMetric(QStyle::PM_MessageBoxIconSize, 0, pWidget);
     return icon.pixmap(iSize, iSize);
 }
-

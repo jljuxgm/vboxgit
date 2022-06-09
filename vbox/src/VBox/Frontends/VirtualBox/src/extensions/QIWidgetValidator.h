@@ -1,4 +1,4 @@
-/* $Id: QIWidgetValidator.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: QIWidgetValidator.h 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWidgetValidator class declaration.
  */
@@ -224,4 +224,3 @@ private:
 
 
 #endif /* !___QIWidgetValidator_h___ */
-

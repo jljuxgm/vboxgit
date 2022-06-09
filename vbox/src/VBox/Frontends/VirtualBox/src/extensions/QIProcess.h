@@ -1,6 +1,6 @@
-/* $Id: QIProcess.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: QIProcess.h 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - QIProcess class declaration.
+ * VBox Qt GUI - Qt extensions: QIProcess class declaration.
  */
 
 /*
@@ -42,4 +42,3 @@ public:
 };
 
 #endif /* !___QIProcess_h___ */
-

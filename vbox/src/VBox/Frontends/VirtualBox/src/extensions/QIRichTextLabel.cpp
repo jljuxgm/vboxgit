@@ -1,6 +1,6 @@
-/* $Id: QIRichTextLabel.cpp 71403 2018-03-20 13:58:55Z vboxsync $ */
+/* $Id: QIRichTextLabel.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - VirtualBox Qt extensions: QIRichTextLabel class implementation.
+ * VBox Qt GUI - Qt extensions: QIRichTextLabel class implementation.
  */
 
 /*
@@ -128,4 +128,3 @@ void QIRichTextLabel::setText(const QString &strText)
     /* Set minimum text width to corresponding value: */
     setMinimumTextWidth(m_iMinimumTextWidth == 0 ? size.width() : m_iMinimumTextWidth);
 }
-

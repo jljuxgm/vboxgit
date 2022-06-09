@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: QIFileDialog.h 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIFileDialog class declarations.
  */
@@ -88,4 +88,3 @@ public:
 };
 
 #endif /* !___QIFileDialog_h___ */
-

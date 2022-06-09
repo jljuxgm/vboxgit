@@ -1,6 +1,6 @@
-/* $Id: QIArrowButtonPress.cpp 71393 2018-03-20 11:22:11Z vboxsync $ */
+/* $Id: QIArrowButtonPress.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - QIArrowButtonPress class implementation.
+ * VBox Qt GUI - Qt extensions: QIArrowButtonPress class implementation.
  */
 
 /*
@@ -61,4 +61,3 @@ void QIArrowButtonPress::keyPressEvent(QKeyEvent *pEvent)
     /* Call to base-class: */
     QIWithRetranslateUI<QIRichToolButton>::keyPressEvent(pEvent);
 }
-

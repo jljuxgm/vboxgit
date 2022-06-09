@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 71392 2018-03-20 11:04:03Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIFileDialog class implementation.
  */
@@ -235,4 +235,3 @@ QString QIFileDialog::getFirstExistingDir(const QString &strStartDir)
         strResult = dir.absolutePath();
     return strResult;
 }
-

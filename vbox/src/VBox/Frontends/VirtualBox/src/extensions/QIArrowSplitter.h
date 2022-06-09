@@ -1,6 +1,6 @@
-/* $Id: QIArrowSplitter.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: QIArrowSplitter.h 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - QIArrowSplitter class declaration.
+ * VBox Qt GUI - Qt extensions: QIArrowSplitter class declaration.
  */
 
 /*
@@ -109,4 +109,3 @@ private:
 };
 
 #endif /* !___QIArrowSplitter_h___ */
-

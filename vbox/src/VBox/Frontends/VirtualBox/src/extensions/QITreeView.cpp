@@ -1,6 +1,6 @@
-/* $Id: QITreeView.cpp 71884 2018-04-17 17:43:55Z vboxsync $ */
+/* $Id: QITreeView.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - VirtualBox Qt extensions: QITreeView class implementation.
+ * VBox Qt GUI - Qt extensions: QITreeView class implementation.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: QIMessageBox.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: QIMessageBox.h 71900 2018-04-18 14:40:43Z vboxsync $ */
 /** @file
- * VBox Qt GUI - QIMessageBox class declaration.
+ * VBox Qt GUI - Qt extensions: QIMessageBox class declaration.
  */
 
 /*
@@ -194,4 +194,3 @@ private:
 
 
 #endif /* !___QIMessageBox_h___ */
-
