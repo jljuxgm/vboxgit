@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.cpp 67931 2017-07-12 13:11:31Z vboxsync $ */
+/* $Id: UIMediumSizeEditor.cpp 67964 2017-07-14 12:53:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class implementation.
  */
@@ -130,7 +130,7 @@ void UIMediumSizeEditor::prepare()
                     this, &UIMediumSizeEditor::sltSizeSliderChanged);
 
             /* Add into layout: */
-            pLayout->addWidget(m_pSlider, 0, 0, 1, 2);
+            pLayout->addWidget(m_pSlider, 0, 0, 1, 2, Qt::AlignTop);
         }
 
         /* Create minimum size label: */
@@ -168,7 +168,7 @@ void UIMediumSizeEditor::prepare()
                     this, &UIMediumSizeEditor::sltSizeEditorChanged);
 
             /* Add into layout: */
-            pLayout->addWidget(m_pEditor, 0, 2);
+            pLayout->addWidget(m_pEditor, 0, 2, Qt::AlignTop);
         }
     }
 
