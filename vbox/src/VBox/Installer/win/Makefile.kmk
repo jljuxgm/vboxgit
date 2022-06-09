@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72020 2018-04-25 14:19:58Z vboxsync $
+# $Id: Makefile.kmk 72040 2018-04-26 14:01:18Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -1006,6 +1006,7 @@ RePackScripts_INSTTYPE = stage
 RePackScripts_SOURCES = \
 	Scripts/PackDriversForSubmission.cmd \
 	Scripts/UnpackBlessedDrivers.cmd \
+	Scripts/RepackExtPack.cmd \
 	$(RePackScripts_0_OUTDIR)/sign-dual.cmd \
 	$(RePackScripts_0_OUTDIR)/sign-sha1.cmd \
 	$(RePackScripts_0_OUTDIR)/VMMR0.inf \

@@ -1,5 +1,5 @@
 @echo off
-rem $Id: UnpackBlessedDrivers.cmd 72019 2018-04-25 14:19:58Z vboxsync $
+rem $Id: UnpackBlessedDrivers.cmd 72040 2018-04-26 14:01:18Z vboxsync $
 rem rem @file
 rem Windows NT batch script for unpacking drivers after being signed.
 rem
@@ -23,7 +23,7 @@ setlocal
 rem
 rem Check for environment variables we need.
 rem
-if ".%KBUILD_DEVTOOLS%" == "." (echo KBUILD_BIN_PATH is not set & goto end_failed)
+if ".%KBUILD_DEVTOOLS%" == "." (echo KBUILD_DEVTOOLS is not set & goto end_failed)
 
 rem
 rem Parse arguments.
@@ -101,7 +101,7 @@ if not exist "%_MY_OPT_BINDIR%"     goto error_bindir_does_not_exist
 
 rem figure defaults here: if ".%_MY_OPT_INPUT%" == "." if exist "%_MY_OPT_BINDIR%\x86" set _MY_OPT_INPUT=VBoxDrivers-amd64.cab
 rem figure defaults here: if ".%_MY_OPT_INPUT%" == "."       set _MY_OPT_INPUT=VBoxDrivers-x86.cab
-if not exist "%_MY_OPT_INPUT%"      goto error_input_exists
+if not exist "%_MY_OPT_INPUT%"      goto error_input_not_found
 
 rem
 rem Unpack the stuff.
@@ -111,7 +111,7 @@ rem
 rem
 rem Modify the catalog signatures.
 rem
-for %cat in (VBoxDrv.cat VBoxNetAdp6.cat VBoxNetLwf.cat VBoxUSB.cat VBoxUSBMon.cat) do (
+for %%cat in (VBoxDrv.cat VBoxNetAdp6.cat VBoxNetLwf.cat VBoxUSB.cat VBoxUSBMon.cat) do (
     copy /y "%_MY_OPT_BINDIR%\%cat%" "%_MY_OPT_BINDIR%\%cat%.ms" || goto end_failed
     call sign-dual.cmd "%_MY_OPT_BINDIR%\%cat%" || goto end_failed
     "%_MY_OPT_BINDIR%\tools\RTSignTool.exe"  add-nested-exe-signature -v "%_MY_OPT_BINDIR%\%cat%" "%_MY_OPT_BINDIR%\%cat%.ms" || goto end_failed
