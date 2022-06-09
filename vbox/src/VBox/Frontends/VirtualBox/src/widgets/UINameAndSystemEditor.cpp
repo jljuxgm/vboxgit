@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 71026 2018-02-15 14:23:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -327,10 +327,10 @@ void UINameAndSystemEditor::sltFamilyChanged(int iIndex)
         if (iIndexWin7 != -1)
             m_pComboType->setCurrentIndex(iIndexWin7);
     }
-    /* Or select Ubuntu item for Linux family as default: */
+    /* Or select Oracle Linux item for Linux family as default: */
     else if (strFamilyId == "Linux")
     {
-        QString strDefaultID = "Ubuntu";
+        QString strDefaultID = "Oracle";
         if (ARCH_BITS == 64 && m_fSupportsHWVirtEx && m_fSupportsLongMode)
             strDefaultID += "_64";
         const int iIndexUbuntu = m_pComboType->findData(strDefaultID, TypeID);
