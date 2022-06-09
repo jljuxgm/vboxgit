@@ -1,4 +1,4 @@
-/* $Id: PS2K.cpp 71351 2018-03-15 13:26:21Z vboxsync $ */
+/* $Id: PS2K.cpp 71358 2018-03-15 15:51:10Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
@@ -1445,6 +1445,7 @@ void PS2KRelocate(PPS2K pThis, RTGCINTPTR offDelta, PPDMDEVINS pDevIns)
     LogFlowFunc(("Relocating PS2K\n"));
     pThis->pKbdDelayTimerRC     = TMTimerRCPtr(pThis->pKbdDelayTimerR3);
     pThis->pKbdTypematicTimerRC = TMTimerRCPtr(pThis->pKbdTypematicTimerR3);
+    pThis->pThrottleTimerRC     = TMTimerRCPtr(pThis->pThrottleTimerR3);
     NOREF(offDelta);
 }
 
