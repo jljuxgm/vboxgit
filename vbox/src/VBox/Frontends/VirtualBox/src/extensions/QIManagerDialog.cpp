@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 70029 2017-12-08 13:52:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIManagerDialog class implementation.
  */
@@ -174,6 +174,8 @@ void QIManagerDialog::prepareButtonBox()
 
 void QIManagerDialog::prepareMenuBar()
 {
+    if (!m_pWidgetMenu)
+        return;
     /* Add widget menu: */
     menuBar()->addMenu(m_pWidgetMenu);
 

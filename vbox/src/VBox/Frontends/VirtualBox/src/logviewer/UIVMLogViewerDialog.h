@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 70027 2017-12-08 13:36:57Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.h 70029 2017-12-08 13:52:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -23,8 +23,12 @@
 #include <QString>
 
 /* GUI includes: */
-#include "QIDialog.h"
+#include "QIManagerDialog.h"
 #include "QIWithRetranslateUI.h"
+
+/* COM includes: */
+# include "COMEnums.h"
+#include "CMachine.h"
 
 /* Forward declarations: */
 class CMachine;
@@ -32,43 +36,38 @@ class QDialogButtonBox;
 class QVBoxLayout;
 class UIVMLogViewerDialog;
 
-/* Type definitions: */
-typedef QMap<QString, UIVMLogViewerDialog*> VMLogViewerMap;
+
+/** QIManagerDialogFactory  used as a factory for Virtual Media Manager dialog. */
+class UIVMLogViewerDialogFactory : public QIManagerDialogFactory
+{
+public:
+    UIVMLogViewerDialogFactory(const CMachine &machine);
+
+protected:
+    /** Creates derived @a pDialog instance.
+      * @param  pCenterWidget  Brings the widget to center wrt. pCenterWidget. */
+    virtual void create(QIManagerDialog *&pDialog, QWidget *pCenterWidget) /* override */;
+
+    CMachine m_comMachine;
+};
 
 /** A QIDialog to display machine logs. */
-class UIVMLogViewerDialog : public QIWithRetranslateUI<QIDialog>
+class UIVMLogViewerDialog : public QIWithRetranslateUI<QIManagerDialog>
 {
     Q_OBJECT;
 
 public:
-    UIVMLogViewerDialog(QWidget *pParent, const CMachine &machine);
-    ~UIVMLogViewerDialog();
+    UIVMLogViewerDialog(QWidget *pCenterWidget, const CMachine &machine);
 
-    /** Static method to create/show VM Log Viewer by passing @a pParent to QWidget base-class constructor.
-     * @param  machine  Specifies the machine for which VM Log-Viewer is requested. */
-    static void showLogViewerFor(QWidget* parent, const CMachine &machine);
+protected:
+    virtual void configure() /* override */;
+    virtual void configureCentralWidget() /* override */;
 
 private:
-
-    static void showLogViewerDialog(UIVMLogViewerDialog *logViewerDialog);
     void retranslateUi();
-    void prepare(const CMachine& machine);
-    void cleanup();
 
-    /** Load settings helper. */
-    void loadSettings();
-    /** Save settings helper. */
-    void saveSettings();
-
-    QPushButton      *m_pCloseButton;
-    QDialogButtonBox *m_pButtonBox;
-    QVBoxLayout      *m_pMainLayout;
-
-    /** Holds the UUID of the machine instance. */
-    QString m_strMachineUUID;
-
-    /** Holds the list of all VM Log Viewers. */
-    static VMLogViewerMap m_viewers;
+    CMachine m_comMachine;
 };
 
 #endif /* !___UIVMLogViewerDialog_h___ */
+
