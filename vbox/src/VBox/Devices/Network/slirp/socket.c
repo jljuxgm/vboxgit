@@ -1,4 +1,4 @@
-/* $Id: socket.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: socket.c 71945 2018-04-20 14:10:36Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -39,66 +39,6 @@
 #if defined(DECLARE_IOVEC) && defined(RT_OS_WINDOWS)
 AssertCompileMembersSameSizeAndOffset(struct iovec, iov_base, WSABUF, buf);
 AssertCompileMembersSameSizeAndOffset(struct iovec, iov_len,  WSABUF, len);
-#endif
-
-#ifdef VBOX_WITH_NAT_UDP_SOCKET_CLONE
-/**
- *
- */
-struct socket * soCloneUDPSocketWithForegnAddr(PNATState pData, bool fBindSocket, struct socket *pSo, uint32_t u32ForeignAddr)
-{
-    struct socket *pNewSocket = NULL;
-    LogFlowFunc(("Enter: fBindSocket:%RTbool, so:%R[natsock], u32ForeignAddr:%RTnaipv4\n", fBindSocket, pSo, u32ForeignAddr));
-    pNewSocket = socreate();
-    if (!pNewSocket)
-    {
-        LogFunc(("Can't create socket\n"));
-        LogFlowFunc(("Leave: NULL\n"));
-        return NULL;
-    }
-    if (fBindSocket)
-    {
-        if (udp_attach(pData, pNewSocket, 0) <= 0)
-        {
-            sofree(pData, pNewSocket);
-            LogFunc(("Can't attach fresh created socket\n"));
-            return NULL;
-        }
-    }
-    else
-    {
-        pNewSocket->so_cloneOf = (struct socket *)pSo;
-        pNewSocket->s = pSo->s;
-        insque(pData, pNewSocket, &udb);
-    }
-    pNewSocket->so_laddr = pSo->so_laddr;
-    pNewSocket->so_lport = pSo->so_lport;
-    pNewSocket->so_faddr.s_addr = u32ForeignAddr;
-    pNewSocket->so_fport = pSo->so_fport;
-    pSo->so_cCloneCounter++;
-    LogFlowFunc(("Leave: %R[natsock]\n", pNewSocket));
-    return pNewSocket;
-}
-
-struct socket *soLookUpClonedUDPSocket(PNATState pData, const struct socket *pcSo, uint32_t u32ForeignAddress)
-{
-    struct socket *pSoClone = NULL;
-    LogFlowFunc(("Enter: pcSo:%R[natsock], u32ForeignAddress:%RTnaipv4\n", pcSo, u32ForeignAddress));
-    for (pSoClone = udb.so_next; pSoClone != &udb; pSoClone = pSoClone->so_next)
-    {
-        if (   pSoClone->so_cloneOf
-            && pSoClone->so_cloneOf == pcSo
-            && pSoClone->so_lport == pcSo->so_lport
-            && pSoClone->so_fport == pcSo->so_fport
-            && pSoClone->so_laddr.s_addr == pcSo->so_laddr.s_addr
-            && pSoClone->so_faddr.s_addr == u32ForeignAddress)
-            goto done;
-    }
-    pSoClone = NULL;
-done:
-    LogFlowFunc(("Leave: pSoClone: %R[natsock]\n", pSoClone));
-    return pSoClone;
-}
 #endif
 
 #ifdef VBOX_WITH_NAT_SEND2HOME
