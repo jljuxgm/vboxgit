@@ -1,4 +1,4 @@
-/* $Id: time2-win.cpp 72142 2018-05-07 14:32:56Z vboxsync $ */
+/* $Id: time2-win.cpp 72161 2018-05-08 11:59:43Z vboxsync $ */
 /** @file
  * IPRT - Time, Windows.
  */
@@ -77,7 +77,8 @@ RTDECL(PRTTIME) RTTimeLocalExplode(PRTTIME pTime, PCRTTIMESPEC pTimeSpec)
                     if (pTime)
                     {
                         pTime->fFlags = (pTime->fFlags & ~RTTIME_FLAGS_TYPE_MASK) | RTTIME_FLAGS_TYPE_LOCAL;
-                        pTime->offUTC = (RTTimeSpecGetNano(&LocalTime) - RTTimeSpecGetNano(pTimeSpec)) / RT_NS_1MIN;
+                        pTime->offUTC = (RTTimeSpecGetMilli(&LocalTime) - RTTimeSpecGetMilli(pTimeSpec)) / RT_MS_1MIN;
+                        pTime->u32Nanosecond += RTTimeSpecGetNano(pTimeSpec) % RT_NS_1MS;
                     }
                     return pTime;
                 }
