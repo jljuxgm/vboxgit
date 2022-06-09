@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68539 2017-08-29 14:09:24Z vboxsync $
+# $Id: Makefile.kmk 69192 2017-10-24 09:12:17Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -889,7 +889,7 @@ VBoxC_SOURCES += \
 	src-client/DisplayImpl.cpp \
 	src-client/DisplayImplLegacy.cpp \
 	src-client/DisplaySourceBitmapImpl.cpp \
-	src-client/EbmlWriter.cpp \
+	src-client/EBMLWriter.cpp \
 	src-client/EmulatedUSBImpl.cpp \
 	src-client/GuestImpl.cpp \
 	src-client/GuestCtrlImpl.cpp \
