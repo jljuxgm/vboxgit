@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 72582 2018-06-16 16:55:15Z vboxsync $ */
+/* $Id: EMAll.cpp 72590 2018-06-17 19:26:27Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1865,6 +1865,8 @@ VMM_INT_DECL(int) EMInterpretCpuId(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame
 }
 
 
+#if 1 /** @todo Remove after testing and enabling @bugref{6973}. */
+
 /**
  * Interpret RDTSC.
  *
@@ -1938,6 +1940,8 @@ VMM_INT_DECL(int) EMInterpretRdtscp(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 
     return VINF_SUCCESS;
 }
+
+#endif /* Trying to use IEM APIs instead. */
 
 /**
  * Interpret RDPMC.

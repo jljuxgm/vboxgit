@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72586 2018-06-17 15:43:20Z vboxsync $ */
+/* $Id: IEMAll.cpp 72590 2018-06-17 19:26:27Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -14937,6 +14937,53 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedInvpcid(PVMCPU pVCpu, uint8_t cbInstr, 
 
     iemInitExec(pVCpu, false /*fBypassHandlers*/);
     VBOXSTRICTRC rcStrict = IEM_CIMPL_CALL_2(iemCImpl_invpcid, uType, GCPtrInvpcidDesc);
+    Assert(!pVCpu->iem.s.cActiveMappings);
+    return iemUninitExecAndFiddleStatusAndMaybeReenter(pVCpu, rcStrict);
+}
+
+
+/**
+ * Interface for HM and EM to emulate the RDTSC instruction.
+ *
+ * @returns Strict VBox status code.
+ * @retval  VINF_EM_RESCHEDULE (VINF_IEM_RAISED_XCPT) if exception is raised.
+ *
+ * @param   pVCpu               The cross context virtual CPU structure.
+ * @param   cbInstr             The instruction length in bytes.
+ *
+ * @remarks Not all of the state needs to be synced in.
+ */
+VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedRdtsc(PVMCPU pVCpu, uint8_t cbInstr)
+{
+    IEMEXEC_ASSERT_INSTR_LEN_RETURN(cbInstr, 2);
+    IEM_CTX_ASSERT(pVCpu, CPUMCTX_EXTRN_CR4 | CPUMCTX_EXTRN_RIP | CPUMCTX_EXTRN_RFLAGS);
+
+    iemInitExec(pVCpu, false /*fBypassHandlers*/);
+    VBOXSTRICTRC rcStrict = IEM_CIMPL_CALL_0(iemCImpl_rdtsc);
+    Assert(!pVCpu->iem.s.cActiveMappings);
+    return iemUninitExecAndFiddleStatusAndMaybeReenter(pVCpu, rcStrict);
+}
+
+
+/**
+ * Interface for HM and EM to emulate the RDTSCP instruction.
+ *
+ * @returns Strict VBox status code.
+ * @retval  VINF_EM_RESCHEDULE (VINF_IEM_RAISED_XCPT) if exception is raised.
+ *
+ * @param   pVCpu               The cross context virtual CPU structure.
+ * @param   cbInstr             The instruction length in bytes.
+ *
+ * @remarks Not all of the state needs to be synced in.  Recommended
+ *          to include CPUMCTX_EXTRN_TSC_AUX, to avoid extra fetch call.
+ */
+VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedRdtscp(PVMCPU pVCpu, uint8_t cbInstr)
+{
+    IEMEXEC_ASSERT_INSTR_LEN_RETURN(cbInstr, 2);
+    IEM_CTX_ASSERT(pVCpu, CPUMCTX_EXTRN_CR4 | CPUMCTX_EXTRN_RIP | CPUMCTX_EXTRN_RFLAGS);
+
+    iemInitExec(pVCpu, false /*fBypassHandlers*/);
+    VBOXSTRICTRC rcStrict = IEM_CIMPL_CALL_0(iemCImpl_rdtscp);
     Assert(!pVCpu->iem.s.cActiveMappings);
     return iemUninitExecAndFiddleStatusAndMaybeReenter(pVCpu, rcStrict);
 }
