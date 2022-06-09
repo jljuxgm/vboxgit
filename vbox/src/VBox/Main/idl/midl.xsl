@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 69734 2017-11-18 02:06:23Z vboxsync $ -->
+<!-- $Id: midl.xsl 69740 2017-11-18 03:38:05Z vboxsync $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
@@ -233,6 +233,7 @@ import "unknwn.idl";
   <xsl:value-of select="$name"/>
   <xsl:text> : </xsl:text>
   <xsl:choose>
+    <xsl:when test="(@extends = '$unknown') and (@notdual = 'yes')">IUnknown</xsl:when>
     <xsl:when test="@extends='$unknown'">IDispatch</xsl:when>
     <xsl:when test="@extends='$errorinfo'">IErrorInfo</xsl:when>
     <!-- TODO/FIXME/BUGBUG: The above $errorinfo value causes the following warning (/W4):
