@@ -1,4 +1,4 @@
-/* $Id: SUPLibLdr.cpp 66305 2017-03-28 14:33:22Z vboxsync $ */
+/* $Id: SUPLibLdr.cpp 67904 2017-07-11 11:54:41Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Loader related bits.
  */
@@ -277,7 +277,7 @@ static DECLCALLBACK(int) supLoadModuleResolveImport(RTLDRMOD hLdrMod, const char
         return VINF_SUCCESS;
     }
     return RTErrInfoSetF(pArgs->pErrInfo, VERR_SYMBOL_NOT_FOUND,
-                         "Unable to local imported symbol '%s%s%s' for module '%s'",
+                         "Unable to locate imported symbol '%s%s%s' for module '%s'",
                          pszModule ? pszModule : "",
                          pszModule && *pszModule ? "." : "",
                          pszSymbol,
