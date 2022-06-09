@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 69620 2017-11-08 17:33:30Z vboxsync $ */
+/* $Id: initterm.cpp 69732 2017-11-18 02:04:50Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -257,7 +257,7 @@ HRESULT Initialize(bool fGui /*= false*/, bool fAutoRegUpdate /*= true*/)
         SetLastError(ERROR_SUCCESS);
         HANDLE hLeakIt = CreateMutexW(NULL/*pSecAttr*/, FALSE, L"Global\\VirtualBoxComLazyRegistrationMutant");
         DWORD  dwErr   = GetLastError();
-        AssertMsg(dwErr == ERROR_SUCCESS || dwErr == ERROR_ALREADY_EXISTS, ("%u\n", dwErr));
+        AssertMsg(dwErr == ERROR_SUCCESS || dwErr == ERROR_ALREADY_EXISTS || dwErr == ERROR_ACCESS_DENIED, ("%u\n", dwErr));
         if (dwErr == ERROR_SUCCESS)
         {
             char szPath[RTPATH_MAX];
@@ -289,8 +289,8 @@ HRESULT Initialize(bool fGui /*= false*/, bool fAutoRegUpdate /*= true*/)
                     /* Just keep it loaded. */
                 }
             }
+            Assert(hLeakIt != NULL); NOREF(hLeakIt);
         }
-        Assert(hLeakIt != NULL); NOREF(hLeakIt);
     }
 # endif
 
