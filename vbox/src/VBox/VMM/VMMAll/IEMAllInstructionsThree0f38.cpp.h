@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsThree0f38.cpp.h 67040 2017-05-23 11:51:12Z vboxsync $ */
+/* $Id: IEMAllInstructionsThree0f38.cpp.h 67041 2017-05-23 11:51:28Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -153,7 +153,6 @@ FNIEMOP_STUB(iemOp_pcmpeqq_Vx_Wx);
  * @opxcpttype  1
  * @optest      op1=-1 op2=2  -> op1=2
  * @optest      op1=0 op2=-42 -> op1=-42
- * @oponly
  */
 FNIEMOP_DEF(iemOp_movntdqa_Vdq_Mdq)
 {
@@ -188,7 +187,6 @@ FNIEMOP_DEF(iemOp_movntdqa_Vdq_Mdq)
      * @opunused    immediate
      * @opcpuid     sse
      * @optest      ->
-    * @oponly
      */
     return IEMOP_RAISE_INVALID_OPCODE();
 }
