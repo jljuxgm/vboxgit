@@ -1,4 +1,4 @@
-/* $Id: ahci.c 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: ahci.c 67679 2017-06-29 08:28:50Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
@@ -1000,6 +1000,9 @@ void BIOSCALL ahci_init(void)
                     {
                         int         rc;
                         uint16_t    u16AhciIoBase = (u32Bar & 0xfff0) + u16Off;
+
+                        /* Enable PCI memory, I/O, bus mastering access in command register. */
+                        pci_write_config_word(u8Bus, u8DevFn, 4, 0x7);
 
                         DBG_AHCI("I/O base: 0x%x\n", u16AhciIoBase);
                         rc = ahci_hba_init(u16AhciIoBase);
