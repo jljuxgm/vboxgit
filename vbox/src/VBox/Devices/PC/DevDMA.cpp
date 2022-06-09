@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 71216 2018-03-05 20:49:15Z vboxsync $ */
+/* $Id: DevDMA.cpp 71218 2018-03-05 21:19:35Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -122,7 +122,9 @@ typedef struct {
     uint8_t     u8Temp;         /* Temporary (mem/mem) register. */
     uint8_t     u8ModeCtr;      /* Mode register counter for reads. */
     bool        fHiByte;        /* Byte pointer (T/F -> high/low). */
+    uint8_t     abPadding0[2];
     uint32_t    is16bit;        /* True for 16-bit DMA. */
+    uint8_t     abPadding1[4];
 } DMAControl;
 
 /* Complete DMA state information. */
@@ -131,6 +133,7 @@ typedef struct {
     R3PTRTYPE(PCPDMDMACHLP) pHlp;       /* PDM DMA helpers. */
     DMAControl              DMAC[2];    /* Two DMA controllers. */
     bool                    fRZEnabled;
+    uint8_t                 abPadding[7];
 } DMAState;
 
 /* DMA command register bits. */
