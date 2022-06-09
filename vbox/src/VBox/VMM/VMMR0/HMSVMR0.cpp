@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 70411 2018-01-02 05:17:56Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 70412 2018-01-02 05:40:48Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7400,6 +7400,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptBP(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
 }
 
 
+#if defined(HMSVM_ALWAYS_TRAP_ALL_XCPTS) || defined(VBOX_WITH_NESTED_HWVIRT)
 /**
  * \#VMEXIT handler for generic exceptions. Conditional \#VMEXIT.
  */
@@ -7442,7 +7443,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptGeneric(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIEN
     hmR0SvmSetPendingEvent(pVCpu, &Event, 0 /* GCPtrFaultAddress */);
     return VINF_SUCCESS;
 }
-
+#endif
 
 #ifdef VBOX_WITH_NESTED_HWVIRT
 /**
