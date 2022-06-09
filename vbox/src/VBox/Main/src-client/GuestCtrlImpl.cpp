@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 71635 2018-04-03 17:52:04Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 71637 2018-04-03 18:45:47Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -233,7 +233,7 @@ int Guest::i_sessionRemove(uint32_t uSessionID)
 
     LogFlowThisFunc(("Removing session (ID=%RU32) ...\n", uSessionID));
 
-    GuestSessions::const_iterator itSessions = mData.mGuestSessions.find(uSessionID);
+    GuestSessions::iterator itSessions = mData.mGuestSessions.find(uSessionID);
     if (itSessions == mData.mGuestSessions.end())
         return VERR_NOT_FOUND;
 
