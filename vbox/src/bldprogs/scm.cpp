@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 70834 2018-01-31 14:48:21Z vboxsync $ */
+/* $Id: scm.cpp 72568 2018-06-15 15:18:34Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -785,8 +785,10 @@ static PSCMCFGENTRY scmCfgEntryDup(PCSCMCFGENTRY pEntry)
         PSCMCFGENTRY pDup = (PSCMCFGENTRY)RTMemDup(pEntry, sizeof(*pEntry));
         if (pDup)
         {
-            size_t    cbRewriters = sizeof(pEntry->paRewriters[0]) * RT_ALIGN_Z(pEntry->cRewriters, 8);
-            pDup->paRewriters = (PCSCMREWRITERCFG const *)RTMemDup(pEntry->paRewriters, cbRewriters);
+            size_t cbSrcRewriters = sizeof(pEntry->paRewriters[0]) * pEntry->cRewriters;
+            size_t cbDstRewriters = sizeof(pEntry->paRewriters[0]) * RT_ALIGN_Z(pEntry->cRewriters, 8);
+            pDup->paRewriters = (PCSCMREWRITERCFG const *)RTMemDupEx(pEntry->paRewriters, cbSrcRewriters,
+                                                                     cbDstRewriters - cbSrcRewriters);
             if (pDup->paRewriters)
                 return pDup;
 
@@ -2808,7 +2810,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 70834 $";
+                static const char s_szRev[] = "$Revision: 72568 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
