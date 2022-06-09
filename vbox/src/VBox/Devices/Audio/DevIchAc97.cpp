@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 68276 2017-08-03 10:17:48Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 68377 2017-08-10 16:45:16Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -640,7 +640,7 @@ static bool ichac97StreamIsEnabled(PAC97STATE pThis, PAC97STREAM pStream)
  * @returns IPRT status code.
  * @param   pThis               AC'97 state.
  * @param   pStream             AC'97 stream to enable or disable.
- * @param   fEnable             Whether to enable or disble the stream.
+ * @param   fEnable             Whether to enable or disable the stream.
  *
  */
 static int ichac97StreamEnable(PAC97STATE pThis, PAC97STREAM pStream, bool fEnable)
