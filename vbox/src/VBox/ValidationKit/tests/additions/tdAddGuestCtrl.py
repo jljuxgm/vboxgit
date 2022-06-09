@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72169 $"
+__version__ = "$Revision: 72170 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -3239,11 +3239,11 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                         ## @todo r=klaus disabled, because this can fill up the guest disk, making other tests fail,
                         ## additionally it's not really clear if this fails reliably on all Windows versions, even
                         ## the old ones like XP with a "proper" administrator.
-                        #[ tdTestCopyTo(sUser = sUser, sPassword = sPassword, sSrc = os.path.join(sSystemRoot, 'security',
+                        #[ tdTestCopyTo(sUser = sUser, sPassword = sPassword, sSrc = os.path.join(sSystemRoot, 'security'),
                         #               sDst = sScratchGst, aFlags = [ vboxcon.DirectoryCopyFlag_CopyIntoExisting ]),
                         #  tdTestResult(fRc = False) ],
                         # Copying directories with regular files.
-                        [ tdTestCopyTo(sUser = sUser, sPassword = sPassword, sSrc = os.path.join(sSystemRoot, 'Help',
+                        [ tdTestCopyTo(sUser = sUser, sPassword = sPassword, sSrc = os.path.join(sSystemRoot, 'Help'),
                                        sDst = sScratchGst, aFlags = [ vboxcon.DirectoryCopyFlag_CopyIntoExisting ]),
                           tdTestResult(fRc = True) ]
                         ]);
