@@ -1,10 +1,10 @@
-# $Id: footer-pass2-compiling-targets.kmk 2952 2016-09-21 18:52:08Z bird $
+# $Id: footer-pass2-compiling-targets.kmk 3128 2017-12-25 13:33:14Z bird $
 ## @file
 # kBuild - Footer - Target lists - Pass 2 - Compiling Targets.
 #
 
 #
-# Copyright (c) 2004-2014 knut st. osmundsen <bird-kBuild-spam-xiv@anduin.net>
+# Copyright (c) 2004-2017 knut st. osmundsen <bird-kBuild-spam-xviiv@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -563,8 +563,8 @@ endif
 
 
 # Custom pre-link actions.
-local pre_cmds  := $(evalcall def_fn_prop_get_first_defined,PRE_CMDS)
-local post_cmds := $(evalcall def_fn_prop_get_first_defined,POST_CMDS)
+local pre_cmds  := $(evalcall def_fn_prop_get_all_prefixed_priority_last,PRE_CMDS,$(NLTAB))
+local post_cmds := $(evalcall def_fn_prop_get_all_prefixed_priority_last,POST_CMDS,$(NLTAB))
 
 # eliminate this guy?
 local objs = $($(target)_2_OBJS)
@@ -887,8 +887,8 @@ local debug_stage   := $(evalcall def_fn_prop_get_first_defined,DEBUG_STAGE)
 local debug_nostage := $(evalcall def_fn_prop_get_first_word,DEBUG_NOSTAGE)
 
 # Custom pre/post-link actions.
-local pre_cmds      := $(evalcall def_fn_prop_get_first_defined,PRE_CMDS)
-local post_cmds     := $(evalcall def_fn_prop_get_first_defined,POST_CMDS)
+local pre_cmds      := $(evalcall def_fn_prop_get_all_prefixed_priority_last,PRE_CMDS,$(NLTAB))
+local post_cmds     := $(evalcall def_fn_prop_get_all_prefixed_priority_last,POST_CMDS,$(NLTAB))
 
 # eliminate this guy?
 local objs = $($(target)_2_OBJS)
