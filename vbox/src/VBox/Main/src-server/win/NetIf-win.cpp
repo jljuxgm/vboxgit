@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 68620 2017-09-04 17:30:59Z vboxsync $ */
+/* $Id: NetIf-win.cpp 69164 2017-10-23 14:13:55Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1951,6 +1951,7 @@ int NetIfList(std::list<ComObjPtr<HostNetworkInterface> > &list)
                     info.enmStatus = pAdapter->OperStatus == IfOperStatusUp ? NETIF_S_UP : NETIF_S_DOWN;
                     info.fIsDefault = (pAdapter->IfIndex == (DWORD)iDefault);
                     info.fDhcpEnabled = pAdapter->Flags & IP_ADAPTER_DHCP_ENABLED;
+                    info.fWireless = (*it).fWireless;
                     OSVERSIONINFOEX OSInfoEx;
                     RT_ZERO(OSInfoEx);
                     OSInfoEx.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
