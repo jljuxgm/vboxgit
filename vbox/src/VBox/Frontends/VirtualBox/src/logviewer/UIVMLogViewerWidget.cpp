@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 70500 2018-01-10 09:36:36Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 70505 2018-01-10 11:02:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -237,6 +237,8 @@ bool UIVMLogViewerWidget::shouldBeMaximized() const
 
 void UIVMLogViewerWidget::sltPanelActionTriggered(bool checked)
 {
+    RT_NOREF(checked);
+
     QAction *pSenderAction = qobject_cast<QAction*>(sender());
     if(!pSenderAction)
         return;
