@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72530 2018-06-12 16:40:46Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72531 2018-06-12 16:46:20Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -138,7 +138,6 @@
  * Exception bitmap mask for real-mode guests (real-on-v86).
  *
  * We need to intercept all exceptions manually except:
- * - \#NM, \#MF handled in hmR0VmxLoadSharedCR0().
  * - \#AC and \#DB are always intercepted to prevent the CPU from deadlocking
  *   due to bugs in Intel CPUs.
  * - \#PF need not be intercepted even in real-mode if we have Nested Paging
