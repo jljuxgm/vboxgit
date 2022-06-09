@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 70233 2017-12-20 11:27:17Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 70234 2017-12-20 11:29:05Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2557,8 +2557,8 @@ VMMDECL(uint32_t) CPUMGetGuestMxCsrMask(PVM pVM)
  */
 VMM_INT_DECL(bool) CPUMCanSvmNstGstTakePhysIntr(PVMCPU pVCpu, PCCPUMCTX pCtx)
 {
-    /** @todo Optimization: can avoid this function call and use a pointer to the
-     *        relevant eflags.u32 instead setup during VMRUN emulation. */
+    /** @todo Optimization: Avoid this function call and use a pointer to the
+     *        relevant eflags instead (setup during VMRUN instruction emulation). */
 #ifdef IN_RC
     RT_NOREF2(pVCpu, pCtx);
     AssertReleaseFailedReturn(false);
