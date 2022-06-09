@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 70473 2018-01-06 18:46:16Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 70476 2018-01-07 15:28:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -104,7 +104,7 @@ protected:
 
             QPainter painter(this);
             painter.setRenderHint(QPainter::Antialiasing, true);
-            painter.setPen(QPen(QColor(255, 0, 0, 255), 1.2f));
+            painter.setPen(QPen(QColor(255, 0, 0, 75), 1.1f));
             painter.drawLine(p1, p2);
         }
     }
@@ -114,6 +114,7 @@ private:
        where we draw a horizontal line. */
     QVector<float> m_markingsVector;
 };
+
 UIVMLogViewerWidget::UIVMLogViewerWidget(EmbedTo enmEmbedding, QWidget *pParent /* = 0 */, const CMachine &machine /* = CMachine() */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_fIsPolished(false)
