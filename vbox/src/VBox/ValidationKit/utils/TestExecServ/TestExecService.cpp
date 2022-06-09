@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 70488 2018-01-08 20:40:45Z vboxsync $ */
+/* $Id: TestExecService.cpp 71000 2018-02-13 16:45:53Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -158,7 +158,9 @@ typedef TXSEXEC *PTXSEXEC;
 static const PCTXSTRANSPORT g_apTransports[] =
 {
     &g_TcpTransport,
-    //&g_SerialTransport,
+#ifndef RT_OS_OS2
+    &g_SerialTransport,
+#endif
     //&g_FileSysTransport,
     //&g_GuestPropTransport,
     //&g_TestDevTransport,
@@ -3419,7 +3421,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 70488 $\n");
+                RTPrintf("$Revision: 71000 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
