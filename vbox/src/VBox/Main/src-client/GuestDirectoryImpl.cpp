@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 71406 2018-03-20 14:44:24Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 71560 2018-03-29 11:00:30Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -333,10 +333,10 @@ HRESULT GuestDirectory::i_setErrorExternal(VirtualBoxBase *pInterface, int rcGue
 /////////////////////////////////////////////////////////////////////////////
 HRESULT GuestDirectory::close()
 {
-    LogFlowThisFuncEnter();
-
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    LogFlowThisFuncEnter();
 
     HRESULT hr = S_OK;
 
@@ -368,10 +368,10 @@ HRESULT GuestDirectory::close()
 
 HRESULT GuestDirectory::read(ComPtr<IFsObjInfo> &aObjInfo)
 {
-    LogFlowThisFuncEnter();
-
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    LogFlowThisFuncEnter();
 
     HRESULT hr = S_OK;
 

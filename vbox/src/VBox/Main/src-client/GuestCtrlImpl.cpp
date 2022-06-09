@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 71406 2018-03-20 14:44:24Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 71560 2018-03-29 11:00:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -371,11 +371,14 @@ HRESULT Guest::createSession(const com::Utf8Str &aUser, const com::Utf8Str &aPas
     ReturnComNotImplemented();
 #else /* VBOX_WITH_GUEST_CONTROL */
 
-    LogFlowFuncEnter();
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     /* Do not allow anonymous sessions (with system rights) with public API. */
     if (RT_UNLIKELY(!aUser.length()))
         return setError(E_INVALIDARG, tr("No user name specified"));
+
+    LogFlowFuncEnter();
 
     GuestSessionStartupInfo startupInfo;
     startupInfo.mName = aSessionName;
