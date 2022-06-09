@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 71106 2018-02-22 15:22:35Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 71107 2018-02-22 15:31:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -34,6 +34,9 @@
 /* COM includes: */
 # include "CExtPack.h"
 # include "CExtPackManager.h"
+
+/* External includes: */
+# include <math.h>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
