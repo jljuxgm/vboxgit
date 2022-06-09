@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 69286 2017-10-25 11:31:24Z vboxsync $ */
+/* $Id: scmrw.cpp 69291 2017-10-25 11:35:39Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1449,10 +1449,10 @@ static bool rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTR
                             for (;;)
                             {
                                 const char *pszEol = strchr(psz, '\n');
-                                size_t cchLine = pszEol ? pszEol - psz : strlen(psz);
+                                size_t cchContribLine = pszEol ? pszEol - psz : strlen(psz);
                                 ScmStreamWrite(pOut, g_aCopyrightCommentPrefix[enmCommentStyle].psz,
                                                g_aCopyrightCommentPrefix[enmCommentStyle].cch);
-                                ScmStreamWrite(pOut, psz, cchLine);
+                                ScmStreamWrite(pOut, psz, cchContribLine);
                                 ScmStreamPutEol(pOut, enmEol);
                                 if (!pszEol)
                                     break;
