@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 70010 2017-12-08 11:23:08Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -28,7 +28,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define RTMEM_WRAP_TO_EF_APIS // REMOVE REMOVE REMOVE
 #define LOG_GROUP RTLOGGROUP_FS
 #include <iprt/fsvfs.h>
 
