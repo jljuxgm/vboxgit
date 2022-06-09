@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 69092 2017-10-14 02:54:32Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -1601,6 +1601,7 @@ static void vmsvga3dInfoContextWorkerOne(PCDBGFINFOHLP pHlp, PVMSVGA3DCONTEXT pC
     for (uint32_t i = 0; i < RT_ELEMENTS(pContext->state.aClipPlane); i++)
         if (pContext->state.aClipPlane[i].fValid)
             pHlp->pfnPrintf(pHlp, "aClipPlane[%#04x]: [ " FLOAT_FMT_STR ", " FLOAT_FMT_STR ", " FLOAT_FMT_STR ", " FLOAT_FMT_STR " ]\n",
+                            i,
                             FLOAT_FMT_ARGS(pContext->state.aClipPlane[i].plane[0]),
                             FLOAT_FMT_ARGS(pContext->state.aClipPlane[i].plane[1]),
                             FLOAT_FMT_ARGS(pContext->state.aClipPlane[i].plane[2]),
