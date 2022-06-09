@@ -1,4 +1,4 @@
-; $Id: tstAsmLock-1.asm 60692 2010-04-27 08:22:32Z umoeller $
+; $Id: tstAsmFnstsw-1.asm 69373 2017-10-26 15:38:48Z vboxsync $
 ;; @file
 ; Disassembly testcase - Valid fnstsw* instructitons.
 ;
