@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 68252 2017-08-02 15:29:25Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 68260 2017-08-02 16:42:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1782,6 +1782,7 @@ void UISelectorWindow::prepareToolbar()
     AssertPtrReturnVoid(m_pToolBar);
     {
         /* Configure toolbar: */
+        m_pToolBar->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         m_pToolBar->setContextMenuPolicy(Qt::CustomContextMenu);
         m_pToolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
         // TODO: Get rid of hard-coded stuff:
@@ -1803,7 +1804,7 @@ void UISelectorWindow::prepareToolbar()
         AssertPtrReturnVoid(m_pTabBarMachine);
         {
             /* Configure tab-bar: */
-            m_pTabBarMachine->setContentsMargins(0, 0, 10, 0);
+            m_pTabBarMachine->setContentsMargins(10, 0, 10, 0);
 
             /* Add into toolbar: */
             m_pActionTabBarMachine = m_pToolBar->addWidget(m_pTabBarMachine);
@@ -1814,7 +1815,7 @@ void UISelectorWindow::prepareToolbar()
         AssertPtrReturnVoid(m_pTabBarGlobal);
         {
             /* Configure tab-bar: */
-            m_pTabBarGlobal->setContentsMargins(0, 0, 10, 0);
+            m_pTabBarGlobal->setContentsMargins(10, 0, 10, 0);
 
             /* Add into toolbar: */
             m_pActionTabBarGlobal = m_pToolBar->addWidget(m_pTabBarGlobal);
