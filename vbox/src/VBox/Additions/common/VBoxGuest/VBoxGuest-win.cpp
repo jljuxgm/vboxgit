@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 69998 2017-12-07 19:57:58Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 69999 2017-12-07 20:58:40Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -534,7 +534,7 @@ NTSTATUS vgdrvNtInit(PDRIVER_OBJECT pDrvObj, PDEVICE_OBJECT pDevObj, PUNICODE_ST
 
     if (NT_SUCCESS(rcNt))
     {
-        ULONG uValue = 0;
+        ULONG uValue = 0x123;
         NTSTATUS rcNt2 = vgdrvNtRegistryReadDWORD(RTL_REGISTRY_SERVICES, L"VBoxGuest", L"LoggingEnabled", &uValue);
         if (NT_SUCCESS(rcNt2))
         {
@@ -542,8 +542,6 @@ NTSTATUS vgdrvNtInit(PDRIVER_OBJECT pDrvObj, PDEVICE_OBJECT pDevObj, PUNICODE_ST
             if (pDevExt->Core.fLoggingEnabled)
                 LogRelFunc(("Logging to host log enabled (%#x)", uValue));
         }
-        else
-            pDevExt->Core.fLoggingEnabled = true;
 
         /* Ready to rumble! */
         LogRelFunc(("Device is ready!\n"));
