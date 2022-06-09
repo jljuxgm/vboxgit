@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 68970 2017-10-04 09:26:27Z vboxsync $ */
+/* $Id: IEMAll.cpp 68997 2017-10-06 08:39:09Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -14799,6 +14799,7 @@ DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecStatusCodeFiddling(PVMCPU pVCpu, VBOXSTRI
                       || rcStrict == VINF_EM_RAW_EMULATE_INSTR
                       || rcStrict == VINF_EM_RAW_TO_R3
                       || rcStrict == VINF_EM_RAW_EMULATE_IO_BLOCK
+                      || rcStrict == VINF_EM_TRIPLE_FAULT
                       /* raw-mode / virt handlers only: */
                       || rcStrict == VINF_EM_RAW_EMULATE_INSTR_GDT_FAULT
                       || rcStrict == VINF_EM_RAW_EMULATE_INSTR_TSS_FAULT
