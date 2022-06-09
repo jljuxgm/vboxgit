@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 72279 2018-05-22 09:22:09Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 72288 2018-05-22 14:29:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -247,6 +247,7 @@ void UINameAndSystemEditor::prepareWidgets()
         if (m_pPathLabel)
         {
             m_pPathLabel->setAlignment(Qt::AlignRight);
+            m_pPathLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
             pMainLayout->addWidget(m_pPathLabel, 1, 0, 1, 1);
         }
 
