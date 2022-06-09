@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 71241 2018-03-06 12:53:15Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 71242 2018-03-06 13:17:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -652,7 +652,7 @@ SessionTaskCopyDirTo::~SessionTaskCopyDirTo(void)
  * @param   strSource               Source directory on the host to copy to the guest.
  * @param   strFilter               DOS-style wildcard filter (?, *).  Optional.
  * @param   strDest                 Destination directory on the guest.
- * @param   fRecursive,             Whether to recursively copy the directory contents or not.
+ * @param   fRecursive              Whether to recursively copy the directory contents or not.
  * @param   fFollowSymlinks         Whether to follow symlinks or not.
  * @param   strSubDir               Current sub directory to handle. Needs to NULL and only
  *                                  is needed for recursion.
