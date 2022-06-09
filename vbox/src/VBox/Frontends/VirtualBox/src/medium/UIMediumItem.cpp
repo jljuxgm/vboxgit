@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 72374 2018-05-29 09:36:42Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 72406 2018-06-01 09:48:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -53,6 +53,13 @@ UIMediumItem::UIMediumItem(const UIMedium &guiMedium, QITreeWidget *pParent)
 }
 
 UIMediumItem::UIMediumItem(const UIMedium &guiMedium, UIMediumItem *pParent)
+    : QITreeWidgetItem(pParent)
+    , m_guiMedium(guiMedium)
+{
+    refresh();
+}
+
+UIMediumItem::UIMediumItem(const UIMedium &guiMedium, QITreeWidgetItem *pParent)
     : QITreeWidgetItem(pParent)
     , m_guiMedium(guiMedium)
 {
@@ -302,6 +309,11 @@ UIMediumItemHD::UIMediumItemHD(const UIMedium &guiMedium, UIMediumItem *pParent)
 {
 }
 
+UIMediumItemHD::UIMediumItemHD(const UIMedium &guiMedium, QITreeWidgetItem *pParent)
+    : UIMediumItem(guiMedium, pParent)
+{
+}
+
 bool UIMediumItemHD::remove()
 {
     /* Confirm medium removal: */
@@ -424,6 +436,11 @@ UIMediumItemCD::UIMediumItemCD(const UIMedium &guiMedium, QITreeWidget *pParent)
 {
 }
 
+UIMediumItemCD::UIMediumItemCD(const UIMedium &guiMedium, QITreeWidgetItem *pParent)
+    : UIMediumItem(guiMedium, pParent)
+{
+}
+
 bool UIMediumItemCD::remove()
 {
     /* Confirm medium removal: */
@@ -486,6 +503,11 @@ bool UIMediumItemCD::releaseFrom(CMachine comMachine)
 *********************************************************************************************************************************/
 
 UIMediumItemFD::UIMediumItemFD(const UIMedium &guiMedium, QITreeWidget *pParent)
+    : UIMediumItem(guiMedium, pParent)
+{
+}
+
+UIMediumItemFD::UIMediumItemFD(const UIMedium &guiMedium, QITreeWidgetItem *pParent)
     : UIMediumItem(guiMedium, pParent)
 {
 }

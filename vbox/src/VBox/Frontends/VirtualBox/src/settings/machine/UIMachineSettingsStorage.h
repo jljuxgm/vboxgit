@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 72109 2018-05-04 11:40:15Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 72406 2018-06-01 09:48:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -740,6 +740,8 @@ private:
     void prepareStorageWidgets();
     /** Prepares connections. */
     void prepareConnections();
+    /** Opens medium selector dialog and retrieves uuid of a selected medium (if any). */
+    QString openMediumSelectorDialog(UIMediumType  enmMediumType);
     /** Cleanups all. */
     void cleanup();
 

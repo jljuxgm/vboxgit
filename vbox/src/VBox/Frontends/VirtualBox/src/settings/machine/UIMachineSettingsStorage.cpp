@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 71453 2018-03-22 12:50:51Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 72406 2018-06-01 09:48:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -38,9 +38,11 @@
 # include "UIErrorString.h"
 # include "UIMessageCenter.h"
 # include "UIMachineSettingsStorage.h"
+# include "UIMediumSelector.h"
 # include "UIConverter.h"
 # include "UIMedium.h"
 # include "UIExtraDataManager.h"
+# include "UIModalWindowManager.h"
 
 /* COM includes: */
 # include "CStorageController.h"
@@ -3791,6 +3793,29 @@ void UIMachineSettingsStorage::addControllerWrapper(const QString &strName, KSto
     emit sigStorageChanged();
 }
 
+QString UIMachineSettingsStorage::openMediumSelectorDialog(UIMediumType  enmMediumType)
+{
+    QWidget *pParent = windowManager().realParentWindow(this);
+    QPointer<UIMediumSelector> pSelector = new UIMediumSelector(enmMediumType, pParent);
+
+    if (!pSelector)
+        return QString();
+    windowManager().registerNewParent(pSelector, pParent);
+    if (pSelector->execute(true, false))
+    {
+        QStringList selectedMediumIds = pSelector->selectedMediumIds();
+        delete pSelector;
+        /* Currently we only care about the 0th since we support single selection by intention: */
+        if (selectedMediumIds.isEmpty())
+            return QString();
+        else
+            return selectedMediumIds[0];
+    }
+
+    delete pSelector;
+    return QString();
+}
+
 void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType enmDevice)
 {
     const QModelIndex index = m_pTreeStorage->currentIndex();
@@ -3808,7 +3833,7 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType enmDevice)
             if (iAnswer == AlertButton_Choice1)
                 strMediumId = getWithNewHDWizard();
             else if (iAnswer == AlertButton_Choice2)
-                strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_HardDisk, this, strMachineFolder);
+                strMediumId = openMediumSelectorDialog(UIMediumType_HardDisk);
             break;
         }
         case KDeviceType_DVD:
@@ -3817,7 +3842,7 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType enmDevice)
             if (iAnswer == AlertButton_Choice1)
                 strMediumId = vboxGlobal().medium(strMediumId).id();
             else if (iAnswer == AlertButton_Choice2)
-                strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_DVD, this, strMachineFolder);
+                strMediumId = openMediumSelectorDialog(UIMediumType_DVD);
             break;
         }
         case KDeviceType_Floppy:
@@ -3826,7 +3851,7 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType enmDevice)
             if (iAnswer == AlertButton_Choice1)
                 strMediumId = vboxGlobal().medium(strMediumId).id();
             else if (iAnswer == AlertButton_Choice2)
-                strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_Floppy, this, strMachineFolder);
+                strMediumId = openMediumSelectorDialog(UIMediumType_Floppy);
             break;
         }
         default: break; /* Shut up, MSC! */
@@ -4489,4 +4514,3 @@ bool UIMachineSettingsStorage::isAttachmentCouldBeUpdated(const UISettingsCacheM
 }
 
 # include "UIMachineSettingsStorage.moc"
-
