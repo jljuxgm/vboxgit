@@ -1,4 +1,4 @@
-/* $Id: VBoxMMNotificationClient.h 68680 2017-09-06 13:54:16Z vboxsync $ */
+/* $Id: VBoxMMNotificationClient.h 68683 2017-09-06 15:26:32Z vboxsync $ */
 /** @file
  * VBoxMMNotificationClient.h - Implementation of the IMMNotificationClient interface
  *                              to detect audio endpoint changes.
@@ -24,6 +24,8 @@
 
 #include <Mmdeviceapi.h>
 
+#include "DrvAudio.h"
+
 class VBoxMMNotificationClient : IMMNotificationClient
 {
 public:
@@ -32,6 +34,8 @@ public:
     virtual ~VBoxMMNotificationClient();
 
     HRESULT Initialize();
+    int     RegisterCallback(PPDMDRVINS pDrvIns, PFNPDMHOSTAUDIOCALLBACK pfnCallback);
+    void    UnregisterCallback(void);
     void    Dispose();
 
     /** @name IUnknown interface
@@ -41,11 +45,14 @@ public:
 
 private:
 
-    bool                 m_fRegisteredClient;
-    IMMDeviceEnumerator *m_pEnum;
-    IMMDevice           *m_pEndpoint;
+    bool                        m_fRegisteredClient;
+    IMMDeviceEnumerator        *m_pEnum;
+    IMMDevice                  *m_pEndpoint;
 
-    long                 m_cRef;
+    long                        m_cRef;
+
+    PPDMDRVINS                  m_pDrvIns;
+    PFNPDMHOSTAUDIOCALLBACK     m_pfnCallback;
 
     HRESULT AttachToDefaultEndpoint();
     void    DetachFromEndpoint();
