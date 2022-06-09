@@ -1,4 +1,4 @@
-/* $Id: egl.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: egl.c 71110 2018-02-22 18:58:27Z vboxsync $ */
 
 /** @file
  * VBox OpenGL EGL implentation.
@@ -346,7 +346,11 @@ DECLEXPORT(EGLBoolean) eglChooseConfig (EGLDisplay hDisplay, const EGLint *paAtt
         /* Ignore attributes which are repeated later. */
         for (pAttrib2 = pAttrib + 2; *pAttrib2 != EGL_NONE; pAttrib2 += 2)
             if (*pAttrib2 == *pAttrib)
-                fSkip == true;
+            {
+                fSkip = true;
+                break;
+            }
+
         if (fSkip)
             continue;
         cGLXAttrib = convertEGLAttribToGLX(*pAttrib);
