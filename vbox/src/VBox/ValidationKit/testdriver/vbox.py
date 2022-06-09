@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 69632 2017-11-09 16:46:05Z vboxsync $
+# $Id: vbox.py 70392 2017-12-29 17:10:14Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69632 $"
+__version__ = "$Revision: 70392 $"
 
 
 # Standard Python imports.
@@ -463,6 +463,9 @@ class EventHandlerBase(object):
         self.fShutdown  = False;
         self.oThread    = None;
         self.fpApiVer   = fpApiVer;
+        self.dEventNo2Name = {};
+        for sKey, iValue in self.oVBoxMgr.constants.all_values('VBoxEventType').items():
+            self.dEventNo2Name[iValue] = sKey;
 
     def threadForPassiveMode(self):
         """
@@ -672,7 +675,10 @@ class ConsoleEventHandlerBase(EventHandlerBase):
                 reporter.logXcpt();
         ## @todo implement the other events.
         if eType != vboxcon.VBoxEventType_OnMousePointerShapeChanged:
-            reporter.log2('%s/%s' % (str(eType), self.sName));
+            if eType in self.dEventNo2Name:
+                reporter.log2('%s(%s)/%s' % (self.dEventNo2Name[eType], str(eType), self.sName));
+            else:
+                reporter.log2('%s/%s' % (str(eType), self.sName));
         return None;
 
 
@@ -741,7 +747,10 @@ class VirtualBoxEventHandlerBase(EventHandlerBase):
             except:
                 reporter.logXcpt();
         ## @todo implement the other events.
-        reporter.log2('%s/%s' % (str(eType), self.sName));
+        if eType in self.dEventNo2Name:
+            reporter.log2('%s(%s)/%s' % (self.dEventNo2Name[eType], str(eType), self.sName));
+        else:
+            reporter.log2('%s/%s' % (str(eType), self.sName));
         return None;
 
 
