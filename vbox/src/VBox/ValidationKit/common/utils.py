@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 69461 2017-10-27 18:07:48Z vboxsync $
+# $Id: utils.py 69547 2017-11-02 09:46:15Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69461 $"
+__version__ = "$Revision: 69547 $"
 
 
 # Standard Python imports.
@@ -736,7 +736,7 @@ def processTerminate(uPid):
                 fRc = True;
             except:
                 pass;
-            win32api.CloseHandle(hProcess)                                                      # pylint: disable=no-member
+            hProcess.Close(); #win32api.CloseHandle(hProcess)
     else:
         try:
             os.kill(uPid, signal.SIGTERM);
@@ -787,7 +787,7 @@ def processExists(uPid):
         except:
             pass;
         else:
-            win32api.CloseHandle(hProcess);                                                     # pylint: disable=no-member
+            hProcess.Close(); # win32api.CloseHandle(hProcess);
             fRc = True;
     else:
         try:
