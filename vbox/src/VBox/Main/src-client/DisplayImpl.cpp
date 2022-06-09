@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 68990 2017-10-04 15:17:45Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 69724 2017-11-17 13:20:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2764,6 +2764,10 @@ int Display::i_videoRecStart(void)
         if (RT_SUCCESS(rc))
             rc = rc2;
     }
+
+    if (RT_FAILURE(rc))
+        LogRel(("VideoRec: Failed to start video recording (%Rrc)\n", rc));
+
     return rc;
 }
 
