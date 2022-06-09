@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 69568 2017-11-03 14:56:45Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 69605 2017-11-07 12:19:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -576,6 +576,7 @@ void UIMediumDetailsWidget::prepareInformationContainer(UIMediumType enmType, in
                 AssertPtrReturnVoid(pLabel);
                 {
                     /* Configure label: */
+                    pLabel->setMargin(2);
                     pLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 
                     /* Add into layout: */
@@ -588,6 +589,7 @@ void UIMediumDetailsWidget::prepareInformationContainer(UIMediumType enmType, in
                 AssertPtrReturnVoid(pField);
                 {
                     /* Configure field: */
+                    pField->setMargin(2);
                     pField->setSizePolicy(QSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed));
                     pField->setFullSizeSelection(true);
 
