@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 70317 2017-12-22 13:00:51Z vboxsync $ */
+/* $Id: HDAStream.cpp 70321 2017-12-22 16:21:59Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -887,6 +887,8 @@ int hdaStreamTransfer(PHDASTREAM pStream, uint32_t cbToProcessMax)
 
             if (cbDMAToWrite)
             {
+                LogRel2(("HDA: FIFO underflow for stream #%RU8 (%RU32 bytes outstanding)\n", pStream->u8SD, cbDMAToWrite));
+
                 Assert(cbChunk == cbDMAWritten + cbDMAToWrite);
                 memset((uint8_t *)abChunk + cbDMAWritten, 0, cbDMAToWrite);
                 cbDMAWritten = cbChunk;
@@ -910,6 +912,9 @@ int hdaStreamTransfer(PHDASTREAM pStream, uint32_t cbToProcessMax)
 
                 if (cbDMALeft > RTCircBufFree(pCircBuf))
                 {
+                    LogRel2(("HDA: FIFO overflow for stream #%RU8 (%RU32 bytes outstanding)\n",
+                             pStream->u8SD, cbDMALeft - RTCircBufFree(pCircBuf)));
+
                     /* Try to read as much as possible. */
                     cbDMALeft = (uint32_t)RTCircBufFree(pCircBuf);
 
