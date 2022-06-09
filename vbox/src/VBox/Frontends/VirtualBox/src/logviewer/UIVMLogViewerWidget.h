@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 70549 2018-01-12 07:46:15Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 70578 2018-01-13 19:32:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -97,7 +97,7 @@ private slots:
         /** Receives delete all signal from the bookmark panel and notifies UIVMLogPage. */
         void sltDeleteAllBookmarks();
         /** Manages bookmark panel update when bookmark vector is updated */
-        void sltBoomarksUpdated();
+        void sltUpdateBookmarkPanel();
         /* Makes the current UIVMLogPage to goto (scroll) its bookmark with index @a index. */
         void gotoBookmark(int bookmarkIndex);
     /** @} */
@@ -107,7 +107,12 @@ private slots:
     void sltSearchResultHighLigting();
     /** Handles the tab change of the logviewer. */
     void sltTabIndexChange(int tabIndex);
-    void sltFilterApplied();
+    /* if @a isOriginal true than the result of the filtering is equal to
+       the original log file for some reason. */
+    void sltFilterApplied(bool isOriginal);
+    /* Handles the UIVMLogPage signal which is emitted when isFiltered property
+       of UIVMLogPage is changed. */
+    void sltLogPageFilteredChanged(bool isFiltered);
 
 private:
 

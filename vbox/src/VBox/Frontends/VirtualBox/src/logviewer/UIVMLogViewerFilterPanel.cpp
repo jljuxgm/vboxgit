@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 70539 2018-01-11 14:11:16Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 70578 2018-01-13 19:32:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -216,7 +216,7 @@ void UIVMLogViewerFilterPanel::filter()
     if (m_filterTermList.empty())
     {
         document->setPlainText(*originalLogString);
-        emit sigFilterApplied();
+        emit sigFilterApplied(true /* isOriginalLog */);
         m_iFilteredLineCount = document->lineCount();
         return;
     }
@@ -244,7 +244,7 @@ void UIVMLogViewerFilterPanel::filter()
     cursor.movePosition(QTextCursor::End, QTextCursor::MoveAnchor);
     pCurrentTextEdit->setTextCursor(cursor);
 
-    emit sigFilterApplied();
+    emit sigFilterApplied(false /* isOriginalLog */);
 }
 
 

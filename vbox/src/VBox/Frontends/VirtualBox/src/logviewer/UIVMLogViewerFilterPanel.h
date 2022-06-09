@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.h 70500 2018-01-10 09:36:36Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.h 70578 2018-01-13 19:32:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -41,8 +41,10 @@ class UIVMLogViewerFilterPanel : public UIVMLogViewerPanel
 
 signals:
 
-    /* Notifies listeners that the filter has been applied. */
-    void sigFilterApplied();
+    /* Notifies listeners that the filter has been applied. @a isOriginalLog is true
+     if filter function returns early for some reason (no filter term etc.) and log page
+     content is set to original log file. @a isOriginalLog is false if content is reduced (filtered)*/
+    void sigFilterApplied(bool isOriginalLog);
 
 public:
 
