@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 71261 2018-03-07 14:55:23Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 71264 2018-03-07 18:20:22Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -636,7 +636,7 @@ struct GuestFsObjData
 {
     /** @name Helper functions to extract the data from a certin VBoxService tool's guest stream block.
      * @{ */
-    int FromLs(const GuestProcessStreamBlock &strmBlk);
+    int FromLs(const GuestProcessStreamBlock &strmBlk, bool fLong);
     int FromMkTemp(const GuestProcessStreamBlock &strmBlk);
     int FromStat(const GuestProcessStreamBlock &strmBlk);
     /** @}  */

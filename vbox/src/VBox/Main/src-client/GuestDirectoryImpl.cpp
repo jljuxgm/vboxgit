@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 71263 2018-03-07 17:43:44Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 71264 2018-03-07 18:20:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -298,7 +298,7 @@ int GuestDirectory::i_readInternal(ComObjPtr<GuestFsObjInfo> &fsObjInfo, int *pG
             if (curBlock.GetCount()) /* Did we get content? */
             {
                 GuestFsObjData objData;
-                rc = objData.FromLs(curBlock);
+                rc = objData.FromLs(curBlock, true /* fLong */);
                 if (RT_SUCCESS(rc))
                 {
                    rc = fsObjInfo->init(objData);
