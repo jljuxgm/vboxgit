@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 68140 2017-07-27 15:16:23Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 68146 2017-07-27 17:42:45Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1289,7 +1289,7 @@ RTEXITCODE handleUnattendedDetect(HandlerArg *a)
     };
 
     RTGETOPTSTATE GetState;
-    int vrc = RTGetOptInit(&GetState, a->argc, a->argv, s_aOptions, RT_ELEMENTS(s_aOptions), 0, RTGETOPTINIT_FLAGS_OPTS_FIRST);
+    int vrc = RTGetOptInit(&GetState, a->argc, a->argv, s_aOptions, RT_ELEMENTS(s_aOptions), 1, RTGETOPTINIT_FLAGS_OPTS_FIRST);
     AssertRCReturn(vrc, RTEXITCODE_FAILURE);
 
     int c;
@@ -1414,7 +1414,7 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
     };
 
     RTGETOPTSTATE GetState;
-    int vrc = RTGetOptInit(&GetState, a->argc, a->argv, s_aOptions, RT_ELEMENTS(s_aOptions), 0, RTGETOPTINIT_FLAGS_OPTS_FIRST);
+    int vrc = RTGetOptInit(&GetState, a->argc, a->argv, s_aOptions, RT_ELEMENTS(s_aOptions), 1, RTGETOPTINIT_FLAGS_OPTS_FIRST);
     AssertRCReturn(vrc, RTEXITCODE_FAILURE);
 
     int c;
