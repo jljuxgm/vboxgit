@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.rdef 43371 2012-09-20 13:42:10Z vboxsync $ */
+/* $Id: VBoxTray.rdef 69319 2017-10-25 15:08:42Z vboxsync $ */
 /** @file
  * VBoxApp - Resource definition file containing version info and icon, Haiku Guest Additions.
  */
@@ -13,9 +13,8 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- */
-
-/*
+ *-----------------------------------------------------------------------------
+ *
  * This code is based on:
  *
  * VirtualBox Guest Additions for Haiku.
