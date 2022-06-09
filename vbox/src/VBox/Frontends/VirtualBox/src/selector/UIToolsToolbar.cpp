@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.cpp 68171 2017-07-29 11:33:06Z vboxsync $ */
+/* $Id: UIToolsToolbar.cpp 68175 2017-07-29 14:41:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class implementation.
  */
@@ -160,7 +160,7 @@ void UIToolsToolbar::prepareWidgets()
         m_pLayoutMain->setVerticalSpacing(0);
 
         /* Create stacked layout: */
-        m_pLayoutStacked = new QStackedLayout;
+        m_pLayoutStacked = new QStackedLayout(m_pLayoutMain);
         AssertPtrReturnVoid(m_pLayoutStacked);
         {
             /* Create Machine tab-bar: */

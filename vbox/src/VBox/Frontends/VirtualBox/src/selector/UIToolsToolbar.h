@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.h 68169 2017-07-29 09:44:00Z vboxsync $ */
+/* $Id: UIToolsToolbar.h 68175 2017-07-29 14:41:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class declaration.
  */
@@ -23,6 +23,9 @@
 #include <QUuid>
 #include <QWidget>
 
+/* GUI includes: */
+#include "UIToolsPaneMachine.h"
+
 /* Forward declarations: */
 class QAction;
 class QGridLayout;
@@ -34,19 +37,6 @@ class QWidget;
 class QIToolButton;
 class UIActionPool;
 class UITabBar;
-
-
-/** Machine tool types. */
-enum ToolTypeMachine
-{
-    ToolTypeMachine_Invalid,
-    ToolTypeMachine_Desktop,
-    ToolTypeMachine_Details,
-    ToolTypeMachine_Snapshots,
-};
-
-/* Make sure QVariant can eat ToolTypeMachine: */
-Q_DECLARE_METATYPE(ToolTypeMachine);
 
 
 /** Tools toolbar imlementation for Selector UI. */
