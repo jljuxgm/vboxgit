@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 67910 2017-07-11 14:40:32Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 67928 2017-07-12 11:51:13Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2862,6 +2862,15 @@ static DECLCALLBACK(int) ichac97IOPortNAMWrite(PPDMDEVINS pDevIns, void *pvUser,
                     break;
                 case AC97_Record_Select:
                     ichac97MixerRecordSelect(pThis, u32Val);
+                    break;
+                case AC97_Record_Gain_Mute:
+                    /* Newer Ubuntu guests rely on that when controlling gain and muting
+                     * the recording (capturing) levels. */
+                    ichac97MixerSetVolume(pThis, index, PDMAUDIOMIXERCTL_LINE_IN, u32Val);
+                    break;
+                case AC97_Record_Gain_Mic_Mute:
+                    /* Ditto; see note above. */
+                    ichac97MixerSetVolume(pThis, index, PDMAUDIOMIXERCTL_MIC_IN,  u32Val);
                     break;
                 case AC97_Vendor_ID1:
                 case AC97_Vendor_ID2:
