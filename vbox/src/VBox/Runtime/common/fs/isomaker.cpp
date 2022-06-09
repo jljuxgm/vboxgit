@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 68382 2017-08-11 09:46:25Z vboxsync $ */
+/* $Id: isomaker.cpp 68506 2017-08-22 12:58:30Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -1102,6 +1102,18 @@ static void rtFsIsoMakerDestroy(PRTFSISOMAKERINT pThis)
     {
         RTMemFree(pThis->paCommonSources);
         pThis->paCommonSources = NULL;
+    }
+
+    if (pThis->pbVolDescs)
+    {
+        RTMemFree(pThis->pbVolDescs);
+        pThis->pbVolDescs = NULL;
+    }
+
+    if (pThis->pbSysArea)
+    {
+        RTMemFree(pThis->pbSysArea);
+        pThis->pbSysArea = NULL;
     }
 
     pThis->uMagic = ~RTFSISOMAKERINT_MAGIC;
