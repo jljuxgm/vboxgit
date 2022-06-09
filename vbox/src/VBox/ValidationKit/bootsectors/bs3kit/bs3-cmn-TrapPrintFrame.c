@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapPrintFrame.c 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: bs3-cmn-TrapPrintFrame.c 72133 2018-05-06 23:55:06Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapPrintFrame
  */
@@ -35,14 +35,19 @@
 BS3_CMN_DEF(void, Bs3TrapPrintFrame,(PCBS3TRAPFRAME pTrapFrame))
 {
 #if 1
-    Bs3TestPrintf("Trap %#04x errcd=%#06RX64 at %04x:%016RX64 (by %04x/%04x) - test step %d (%#x)\n",
+    Bs3TestPrintf("Trap %#04x errcd=%#06RX64 at %04x:%016RX64 - test step %d (%#x)\n"
+                  "Handler: ss:rsp=%04x:%08RX64 cs=%04x cbIret=%#x rflags=%#06RX64\n"
+                  ,
                   pTrapFrame->bXcpt,
                   pTrapFrame->uErrCd,
                   pTrapFrame->Ctx.cs,
                   pTrapFrame->Ctx.rip.u64,
-                  pTrapFrame->uHandlerCs,
+                  g_usBs3TestStep, g_usBs3TestStep,
                   pTrapFrame->uHandlerSs,
-                  g_usBs3TestStep, g_usBs3TestStep);
+                  pTrapFrame->uHandlerRsp,
+                  pTrapFrame->uHandlerCs,
+                  pTrapFrame->cbIretFrame,
+                  pTrapFrame->fHandlerRfl);
     Bs3RegCtxPrint(&pTrapFrame->Ctx);
 #else
     /* This is useful if having trouble returning from real mode. */

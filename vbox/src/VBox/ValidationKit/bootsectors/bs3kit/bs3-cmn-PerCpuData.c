@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PerCpuData.c 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: bs3-cmn-PerCpuData.c 72133 2018-05-06 23:55:06Z vboxsync $ */
 /** @file
  * BS3Kit - Per CPU Data.
  *
@@ -51,6 +51,10 @@ uint32_t g_pBs3TrapSetJmpFrame = 0;
 uint8_t  g_bBs3CurrentMode = BS3_MODE_RM;
 
 uint8_t  g_bStupidUnalignedCompiler1 = 0xfe;
+
+/** Set to disable special V8086 \#GP and \#UD handling in Bs3TrapDefaultHandler.
+ * This is useful for getting   */
+bool volatile g_fBs3TrapNoV86Assist = false;
 
 /** The context of the last Bs3TrapSetJmp call.
  * This will have eax set to 1 and need only be restored when it triggers. */
