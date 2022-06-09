@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: Virtio.cpp 71112 2018-02-23 09:22:21Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -578,7 +578,16 @@ int vpciIOPortOut(PPDMDEVINS                pDevIns,
             if (u32 == 0)
                 rc = pCallbacks->pfnReset(pState);
             else if (fHasBecomeReady)
+            {
+                /* Older hypervisors were lax and did not enforce bus mastering. Older guests
+                 * (Linux prior to 2.6.34, NetBSD 6.x) were lazy and did not enable bus mastering.
+                 * We automagically enable bus mastering on driver initialization to make existing
+                 * drivers work.
+                 */
+                PDMPciDevSetCommand(&pState->pciDevice, PDMPciDevGetCommand(&pState->pciDevice) | PCI_COMMAND_BUSMASTER);
+
                 pCallbacks->pfnReady(pState);
+            }
             break;
 
         default:
