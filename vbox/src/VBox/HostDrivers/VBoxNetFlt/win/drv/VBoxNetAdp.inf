@@ -1,4 +1,4 @@
-; $Id: VBoxNetAdp.inf 71952 2018-04-21 21:57:13Z vboxsync $
+; $Id: VBoxNetAdp.inf 71971 2018-04-23 09:32:28Z vboxsync $
 ;; @file
 ; VBoxNetAdp.inf - VirtualBox Host-Only Driver inf file
 ;
@@ -86,6 +86,8 @@ HKR,    ,                         *NdisDeviceType,     0x00010001, 1   ; NDIS_DE
 HKR, Ndi,                         Service,             0, "VBoxNetAdp"
 HKR, Ndi\Interfaces,              UpperRange,          0, "ndis5"
 HKR, Ndi\Interfaces,              LowerRange,          0, "ethernet"
+
+[VBoxNetAdp.AddService]
 
 [Strings]
 Provider = "Oracle Corporation"
