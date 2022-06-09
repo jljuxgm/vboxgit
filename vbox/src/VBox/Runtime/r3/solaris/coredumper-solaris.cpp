@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 69438 2017-10-27 15:57:31Z vboxsync $ */
 /** @file
  * IPRT - Custom Core Dumper, Solaris.
  */
@@ -59,8 +59,8 @@
 # include <ucontext.h>
 #endif  /* RT_OS_SOLARIS */
 
-#include "internal/ldrELF.h"
-#include "internal/ldrELF64.h"
+#include <iprt/formats/elf.h>
+#include <iprt/formats/elf64.h>
 
 
 /*********************************************************************************************************************************
