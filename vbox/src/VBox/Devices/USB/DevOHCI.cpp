@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 69767 2017-11-20 10:43:57Z vboxsync $ */
+/* $Id: DevOHCI.cpp 69769 2017-11-20 11:36:53Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -1154,7 +1154,7 @@ static DECLCALLBACK(int) ohciRhReset(PVUSBIROOTHUBPORT pInterface, bool fResetOn
     {
         if (pThis->RootHub.aPorts[iPort].pDev)
         {
-            pThis->RootHub.aPorts[iPort].fReg = OHCI_PORT_R_CURRENT_CONNECT_STATUS | OHCI_PORT_R_CONNECT_STATUS_CHANGE;
+            pThis->RootHub.aPorts[iPort].fReg = OHCI_PORT_R_CURRENT_CONNECT_STATUS | OHCI_PORT_R_CONNECT_STATUS_CHANGE | OHCI_PORT_PPS;
             if (fResetOnLinux)
             {
                 PVM pVM = PDMDevHlpGetVM(pThis->CTX_SUFF(pDevIns));
@@ -1164,6 +1164,7 @@ static DECLCALLBACK(int) ohciRhReset(PVUSBIROOTHUBPORT pInterface, bool fResetOn
         else
             pThis->RootHub.aPorts[iPort].fReg = 0;
     }
+    ohciR3SetInterrupt(pThis, OHCI_INTR_ROOT_HUB_STATUS_CHANGE);
 
     PDMCritSectLeave(pThis->pDevInsR3->pCritSectRoR3);
     return VINF_SUCCESS;
