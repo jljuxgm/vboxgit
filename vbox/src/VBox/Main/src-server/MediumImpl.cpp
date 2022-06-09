@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 67249 2017-06-02 15:24:58Z vboxsync $ */
+/* $Id: MediumImpl.cpp 67745 2017-07-01 11:26:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -8307,7 +8307,7 @@ HRESULT Medium::i_taskCreateDiffHandler(Medium::CreateDiffTask &task)
             vrc = VDCreateDiff(hdd,
                                targetFormat.c_str(),
                                targetLocation.c_str(),
-                               (task.mVariant & ~MediumVariant_NoCreateDir) | VD_IMAGE_FLAGS_DIFF,
+                               (task.mVariant & ~(MediumVariant_NoCreateDir | MediumVariant_VmdkESX)) | VD_IMAGE_FLAGS_DIFF,
                                NULL,
                                targetId.raw(),
                                id.raw(),
