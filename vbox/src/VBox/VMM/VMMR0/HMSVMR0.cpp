@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69158 2017-10-23 10:05:46Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69159 2017-10-23 10:06:09Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3130,9 +3130,6 @@ static VBOXSTRICTRC hmR0SvmEvaluatePendingEventNested(PVMCPU pVCpu, PCPUMCTX pCt
          * Check if the nested-guest can receive virtual (injected by VMRUN) interrupts.
          * We can call CPUMCanSvmNstGstTakeVirtIntr here as we don't cache/modify any
          * nested-guest VMCB interrupt control fields besides V_INTR_MASKING, see hmR0SvmVmRunCacheVmcb.
-         *
-         * If a VINTR intercept isn't set, the virtual interrupt will be delivered when we execute
-         * the nested-guest using hardware-assisted SVM.
          */
         if (   VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_NESTED_GUEST)
             && CPUMCanSvmNstGstTakeVirtIntr(pCtx)
