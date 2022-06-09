@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 70756 2018-01-26 10:06:28Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 71375 2018-03-19 15:29:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -96,6 +96,8 @@ void UISelectorWindow::create()
     m_spInstance->prepare();
     /* Show selector-window: */
     m_spInstance->show();
+    /* Register in the modal window manager: */
+    windowManager().setMainWindowShown(m_spInstance);
 }
 
 /* static */
@@ -104,6 +106,8 @@ void UISelectorWindow::destroy()
     /* Make sure selector-window is created: */
     AssertPtrReturnVoid(m_spInstance);
 
+    /* Unregister in the modal window manager: */
+    windowManager().setMainWindowShown(0);
     /* Cleanup selector-window: */
     m_spInstance->cleanup();
     /* Destroy machine UI: */

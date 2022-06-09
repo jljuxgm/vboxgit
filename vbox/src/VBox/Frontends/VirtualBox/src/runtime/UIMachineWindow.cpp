@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 71374 2018-03-19 15:19:12Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 71375 2018-03-19 15:29:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -259,13 +259,53 @@ void UIMachineWindow::retranslateUi()
     updateAppearanceOf(UIVisualElement_WindowTitle);
 }
 
+bool UIMachineWindow::event(QEvent *pEvent)
+{
+    /* Call to base-class: */
+    const bool fResult = QIWithRetranslateUI2<QMainWindow>::event(pEvent);
+
+    /* Handle particular events: */
+    switch (pEvent->type())
+    {
+        case QEvent::WindowActivate:
+        {
+            /* Initiate registration in the modal window manager: */
+            windowManager().setMainWindowShown(this);
+            break;
+        }
+        default:
+            break;
+    }
+
+    /* Return result: */
+    return fResult;
+}
+
 void UIMachineWindow::showEvent(QShowEvent *pEvent)
 {
     /* Call to base-class: */
     QMainWindow::showEvent(pEvent);
 
+    /* Initiate registration in the modal window manager: */
+    windowManager().setMainWindowShown(this);
+
     /* Update appearance for indicator-pool: */
     updateAppearanceOf(UIVisualElement_IndicatorPoolStuff);
+}
+
+void UIMachineWindow::hideEvent(QHideEvent *pEvent)
+{
+    /* Update registration in the modal window manager: */
+    if (windowManager().mainWindowShown() == this)
+    {
+        if (machineLogic()->activeMachineWindow())
+            windowManager().setMainWindowShown(machineLogic()->activeMachineWindow());
+        else
+            windowManager().setMainWindowShown(machineLogic()->mainMachineWindow());
+    }
+
+    /* Call to base-class: */
+    QMainWindow::hideEvent(pEvent);
 }
 
 void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)

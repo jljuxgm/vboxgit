@@ -1,4 +1,4 @@
-/* $Id: UIModalWindowManager.h 71373 2018-03-19 12:36:23Z vboxsync $ */
+/* $Id: UIModalWindowManager.h 71375 2018-03-19 15:29:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class declaration.
  */
@@ -51,8 +51,10 @@ public:
     /** Registers new parent @a pWindow above the passed @a pParentWindow or as separate stack. */
     void registerNewParent(QWidget *pWindow, QWidget *pParentWindow = 0);
 
-    /** Returns main application window. */
-    QWidget *mainWindowShown() const;
+    /** Defines the main application @a pWindow shown. */
+    void setMainWindowShown(QWidget *pWindow) { m_pMainWindowShown = pWindow; }
+    /** Returns the main application window shown. */
+    QWidget *mainWindowShown() const { return m_pMainWindowShown; }
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
     /** Returns network manager or main window shown. */
     QWidget* networkManagerOrMainWindowShown() const;
@@ -78,6 +80,9 @@ private:
 
     /** Holds the list of the top-level window stacks. */
     QList<QList<QWidget*> > m_windows;
+
+    /** Holds the main application window shown. */
+    QWidget *m_pMainWindowShown;
 
     /** Holds the static singleton instance. */
     static UIModalWindowManager *s_pInstance;
