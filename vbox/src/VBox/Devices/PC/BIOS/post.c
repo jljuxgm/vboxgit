@@ -1,4 +1,4 @@
-/* $Id: post.c 69501 2017-10-28 16:12:47Z vboxsync $ */
+/* $Id: post.c 72416 2018-06-01 20:31:43Z vboxsync $ */
 /** @file
  * BIOS POST routines. Used only during initialization.
  */
@@ -166,7 +166,7 @@ void BIOSCALL apic_setup(void)
     if (apic_mode == APICMODE_X2APIC)
         mask = APICBASE_X2APIC;
     else if (apic_mode == APICMODE_DISABLED)
-        mask = APICBASE_DISABLE;
+        mask = APICBASE_DISABLE; /** @todo r=bird: Shouldn't we clear bit 11 when disabling the APIC? */
     else
         mask = 0;   /* Any other setting leaves things alone. */
 
