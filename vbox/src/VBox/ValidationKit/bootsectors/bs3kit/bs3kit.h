@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 72138 2018-05-07 13:03:51Z vboxsync $ */
+/* $Id: bs3kit.h 72146 2018-05-07 15:22:35Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -843,6 +843,8 @@ typedef uint32_t            PFNBS3FARADDRCONV;
 #define BS3_SYSCALL_SET_LDTR    UINT16_C(0x000e)
 /** Get the LDT register (value returned in ax). */
 #define BS3_SYSCALL_GET_LDTR    UINT16_C(0x000f)
+/** The last system call value. */
+#define BS3_SYSCALL_LAST        BS3_SYSCALL_GET_LDTR
 /** @} */
 
 
