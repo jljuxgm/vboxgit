@@ -1,4 +1,4 @@
-# $Id: Config.kmk 72047 2018-04-27 00:07:20Z vboxsync $
+# $Id: Config.kmk 72061 2018-04-29 21:43:23Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7094,8 +7094,11 @@ endif
 #
 VBOX_VERSION_COMP_VALID_CHAR_SET = ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz()[]{}+-.,
 ifneq ($(VBOX_BUILD_PUBLISHER),)
- if $(length $(VBOX_BUILD_PUBLISHER)) > 10
+ if !defined(VBOX_BUILD_TAG) && $(length $(VBOX_BUILD_PUBLISHER)) > 10
   $(error VBox: VBOX_BUILD_PUBLISHER must not be longer than 10 characters!)
+ else if defined(VBOX_BUILD_TAG) && $(length $(VBOX_BUILD_PUBLISHER)) > 48
+  $(error VBox: VBOX_BUILD_PUBLISHER must not be longer than 48 characters!)
+ endif
  endif
  if "$(substr $(VBOX_BUILD_PUBLISHER), 1, 1)" != "_"
   $(error VBox: VBOX_BUILD_PUBLISHER must start with an underscore!)
@@ -7289,7 +7292,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 72047 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 72061 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
