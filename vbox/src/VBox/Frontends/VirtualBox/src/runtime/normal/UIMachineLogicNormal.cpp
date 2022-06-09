@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 70201 2017-12-18 14:21:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -260,7 +260,8 @@ void UIMachineLogicNormal::sltHostScreenAvailableAreaChange()
 
     /* Make sure all machine-window(s) have previous but normalized geometry: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
-        pMachineWindow->restoreCachedGeometry();
+        if (!pMachineWindow->isMaximized())
+            pMachineWindow->restoreCachedGeometry();
 #endif /* VBOX_WS_X11 */
 
     /* Call to base-class: */
