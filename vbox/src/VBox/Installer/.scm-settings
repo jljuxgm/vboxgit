@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69395 2017-10-26 17:40:49Z vboxsync $
+# $Id: .scm-settings 69396 2017-10-26 17:45:05Z vboxsync $
 ## @file
 # Source code massager settings for the host installers.
 #
@@ -21,4 +21,17 @@
 # Dual licensed code.
 /common/vboxapisetup.py: --license-ose-dual
 
---filter-out-files *.desktop.in
+# ignore desktop files.
+--filter-out-files *.desktop.in|*.desktop
+
+# Darwin stuff.
+--filter-out-files */DS_Store
+--filter-out-files /darwin/*.rtf
+--filter-out-files /darwin/*.strings
+--filter-out-files /darwin/*.html
+/darwin/DiskImage/VirtualBox_Uninstall.tool:    --treat-as .sh
+/darwin/VBoxKEXTs/postflight:                   --treat-as .sh
+/darwin/VirtualBox/postflight:                  --treat-as .sh
+/darwin/VirtualBox/preflight:                   --treat-as .sh
+/darwin/*/distribution.dist:                    --treat-as .xml --no-convert-eol
+
