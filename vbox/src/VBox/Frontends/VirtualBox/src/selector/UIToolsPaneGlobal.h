@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneGlobal.h 68235 2017-08-02 10:23:07Z vboxsync $ */
+/* $Id: UIToolsPaneGlobal.h 68285 2017-08-03 12:42:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneGlobal class declaration.
  */
@@ -70,8 +70,6 @@ public:
     /** Closes tool of passed @a enmType, deletes one if exists. */
     void closeTool(ToolTypeGlobal enmType);
 
-    /** Defines @a strText and switches to text details pane. */
-    void setDetailsText(const QString &strText);
     /** Defines @a strError and switches to error details pane. */
     void setDetailsError(const QString &strError);
 

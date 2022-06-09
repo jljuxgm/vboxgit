@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneGlobal.cpp 68281 2017-08-03 11:50:39Z vboxsync $ */
+/* $Id: UIToolsPaneGlobal.cpp 68285 2017-08-03 12:42:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneGlobal class implementation.
  */
@@ -164,13 +164,6 @@ void UIToolsPaneGlobal::closeTool(ToolTypeGlobal enmType)
         m_pLayout->removeWidget(pWidget);
         delete pWidget;
     }
-}
-
-void UIToolsPaneGlobal::setDetailsText(const QString &strText)
-{
-    /* Update desktop pane: */
-    AssertPtrReturnVoid(m_pPaneDesktop);
-    m_pPaneDesktop->setToolsPaneText(strText);
 }
 
 void UIToolsPaneGlobal::setDetailsError(const QString &strError)
