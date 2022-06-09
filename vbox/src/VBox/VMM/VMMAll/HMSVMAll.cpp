@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 68433 2017-08-16 10:12:38Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 68434 2017-08-17 08:28:18Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -349,7 +349,7 @@ VMM_INT_DECL(void) HMSvmNstGstVmExitNotify(PVMCPU pVCpu, PSVMVMCB pVmcbNstGst)
     if (pNstGstVmcbCache->fValid)
     {
         PSVMVMCBCTRL      pVmcbNstGstCtrl  = &pVmcbNstGst->ctrl;
-        PSVMVMCBSTATESAVE pVmcbNstGstState =&pVmcbNstGst->guest;
+        PSVMVMCBSTATESAVE pVmcbNstGstState = &pVmcbNstGst->guest;
         pVmcbNstGstCtrl->u16InterceptRdCRx        = pNstGstVmcbCache->u16InterceptRdCRx;
         pVmcbNstGstCtrl->u16InterceptWrCRx        = pNstGstVmcbCache->u16InterceptWrCRx;
         pVmcbNstGstCtrl->u16InterceptRdCRx        = pNstGstVmcbCache->u16InterceptRdCRx;
