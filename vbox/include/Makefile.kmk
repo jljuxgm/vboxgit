@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66823 2017-05-08 16:51:09Z vboxsync $
+# $Id: Makefile.kmk 68621 2017-09-04 18:51:45Z vboxsync $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -64,7 +64,6 @@ hdrs := $(filter-out \
 	VBox/HostServices/glext.h \
 	VBox/HostServices/glxext.h \
 	VBox/HostServices/wglext.h \
-	VBox/VBoxGuest16.h \
 	VBox/VBoxGL2D.h \
 	VBox/WinNetConfig.h \
 	VBox/usblib-win.h \
