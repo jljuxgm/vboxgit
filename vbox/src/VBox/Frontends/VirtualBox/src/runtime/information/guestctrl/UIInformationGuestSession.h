@@ -1,4 +1,4 @@
-/* $Id: UIInformationGuestSession.h 71037 2018-02-16 12:46:20Z vboxsync $ */
+/* $Id: UIInformationGuestSession.h 71038 2018-02-16 15:48:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationGuestSession class declaration.
  */
@@ -74,7 +74,7 @@ private:
     UIGuestControlConsole   *m_pConsole;
     UIGuestControlInterface *m_pControlInterface;
 
-                /** Holds the Qt event listener instance. */
+    /** Holds the Qt event listener instance. */
     ComObjPtr<UIMainEventListenerImpl> m_pQtListener;
     /** Holds the COM event listener instance. */
     CEventListener m_comEventListener;
