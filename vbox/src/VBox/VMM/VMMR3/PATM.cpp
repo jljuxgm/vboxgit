@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: PATM.cpp 71720 2018-04-06 18:51:44Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -846,7 +846,7 @@ static DECLCALLBACK(int) patmR3RelocatePatches(PAVLOU32NODECORE pNode, void *pPa
                     rc = PGMR3HandlerVirtualRegister(pVM, VMMGetCpu(pVM), pVM->patm.s.hMonitorPageType,
                                                      pPage,
                                                      pPage + (PAGE_SIZE - 1) /* inclusive! */,
-                                                     (void *)(uintptr_t)pPage, pPage, NULL /*pszDesc*/);
+                                                     (void *)(uintptr_t)pPage, NIL_RTRCPTR /*pvUserRC*/, NULL /*pszDesc*/);
                     Assert(RT_SUCCESS(rc) || rc == VERR_PGM_HANDLER_VIRTUAL_CONFLICT);
                 }
                 else
@@ -928,7 +928,7 @@ static DECLCALLBACK(int) patmR3RelocatePatches(PAVLOU32NODECORE pNode, void *pPa
                     rc = PGMR3HandlerVirtualRegister(pVM, VMMGetCpu(pVM), pVM->patm.s.hMonitorPageType,
                                                      pPage,
                                                      pPage + (PAGE_SIZE - 1) /* inclusive! */,
-                                                     (void *)(uintptr_t)pPage, pPage, NULL /*pszDesc*/);
+                                                     (void *)(uintptr_t)pPage, NIL_RTRCPTR /*pvUserRC*/, NULL /*pszDesc*/);
                     Assert(RT_SUCCESS(rc) || rc == VERR_PGM_HANDLER_VIRTUAL_CONFLICT);
                 }
                 else
