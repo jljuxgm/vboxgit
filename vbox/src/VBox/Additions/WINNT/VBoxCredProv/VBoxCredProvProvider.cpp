@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.cpp 67772 2017-07-04 11:42:31Z vboxsync $ */
+/* $Id: VBoxCredProvProvider.cpp 67808 2017-07-05 16:59:24Z vboxsync $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -434,9 +434,19 @@ VBoxCredProvProvider::GetFieldDescriptorAt(DWORD dwIndex, CREDENTIAL_PROVIDER_FI
             hr = E_OUTOFMEMORY;
 
         if (SUCCEEDED(hr))
+        {
             *ppFieldDescriptor = pcpFieldDesc;
+        }
         else if (pcpFieldDesc)
+        {
+            if (pcpFieldDesc->pszLabel)
+            {
+                CoTaskMemFree(pcpFieldDesc->pszLabel);
+                pcpFieldDesc->pszLabel = NULL;
+            }
+
             CoTaskMemFree(pcpFieldDesc);
+        }
     }
     else
         hr = E_INVALIDARG;
