@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 67024 2017-05-23 06:35:38Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 67025 2017-05-23 06:37:26Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12979,8 +12979,7 @@ HMVMX_EXIT_DECL hmR0VmxExitApicAccess(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRAN
         if (RT_UNLIKELY(pVCpu->hm.s.Event.fPending))
         {
             STAM_COUNTER_INC(&pVCpu->hm.s.StatInjectPendingInterpret);
-            /** @todo return VINF_EM_RAW_INJECT_TRPM_EVENT? */
-            return VERR_EM_INTERPRETER;
+            return VINF_EM_RAW_INJECT_TRPM_EVENT;
         }
     }
     else
@@ -13157,8 +13156,7 @@ HMVMX_EXIT_DECL hmR0VmxExitEptMisconfig(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTR
         if (RT_UNLIKELY(pVCpu->hm.s.Event.fPending))
         {
             STAM_COUNTER_INC(&pVCpu->hm.s.StatInjectPendingInterpret);
-            /** @todo return VINF_EM_RAW_INJECT_TRPM_EVENT? */
-            return VERR_EM_INTERPRETER;
+            return VINF_EM_RAW_INJECT_TRPM_EVENT;
         }
     }
     else
