@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 72352 2018-05-26 12:37:50Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 72355 2018-05-26 13:28:34Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1491,7 +1491,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                 ULONG aWidth = 0;
                 ULONG aHeight = 0;
                 ULONG aBitsPerPixel = 0;
-                if (aStatus = GuestMonitorStatus_Enabled)
+                if (aStatus == GuestMonitorStatus_Enabled)
                 {
                     if (argc < 7)
                     {
