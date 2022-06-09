@@ -1,4 +1,4 @@
-/* $Id: DBGPlugIns.h 64371 2016-10-23 00:53:17Z vboxsync $ */
+/* $Id: DBGPlugIns.h 69474 2017-10-28 13:12:06Z vboxsync $ */
 /** @file
  * DBGPlugIns - Debugger Plug-Ins.
  *

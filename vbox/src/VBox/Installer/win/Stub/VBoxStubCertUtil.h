@@ -1,4 +1,4 @@
-/* $Id: VBoxStubCertUtil.h 64806 2010-08-13 15:57:03Z fmehnert $ */
+/* $Id: VBoxStubCertUtil.h 69474 2017-10-28 13:12:06Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub (certificate manipulations).
  */

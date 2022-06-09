@@ -1,4 +1,4 @@
-/* $Id: CFGMInternal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: CFGMInternal.h 69474 2017-10-28 13:12:06Z vboxsync $ */
 /** @file
  * CFGM - Internal header file.
  */

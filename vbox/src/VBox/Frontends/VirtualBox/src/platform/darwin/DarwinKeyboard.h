@@ -1,4 +1,4 @@
-/* $Id: $ */
+/* $Id: DarwinKeyboard.h 69474 2017-10-28 13:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Common GUI Library - Darwin Keyboard routines.
  *

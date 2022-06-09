@@ -1,4 +1,4 @@
-/* $Id: seamless.h 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: seamless.h 69474 2017-10-28 13:12:06Z vboxsync $ */
 /** @file
  * X11 Guest client - seamless mode, missing proper description while using the
  * potentially confusing word 'host'.

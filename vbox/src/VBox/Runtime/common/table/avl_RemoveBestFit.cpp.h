@@ -1,4 +1,4 @@
-/* $Id: avl_RemoveBestFit.cpp.h 65892 2017-02-27 17:04:46Z vboxsync $ */
+/* $Id: avl_RemoveBestFit.cpp.h 69474 2017-10-28 13:12:06Z vboxsync $ */
 /** @file
  * kAVLRemoveBestFit - Remove Best Fit routine for AVL trees.
  *                     Intended specially on heaps. The tree should allow duplicate keys.

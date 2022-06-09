@@ -1,4 +1,4 @@
-/* $Id: $ */
+/* $Id: UIGlobalSettingsNetworkDetailsNAT.h 69474 2017-10-28 13:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetworkDetailsNAT class declaration.
  */

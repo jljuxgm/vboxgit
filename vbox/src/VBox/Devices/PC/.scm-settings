@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69424 2017-10-27 10:56:48Z vboxsync $
+# $Id: .scm-settings 69474 2017-10-28 13:12:06Z vboxsync $
 ## @file
 # Source code massager settings for PC devices/drivers.
 #
@@ -55,7 +55,7 @@
 # PXE
 /PXE/*.asm:     --external-copyright --no-convert-tabs --no-strip-trailing-blanks
 /PXE/*.c:       --external-copyright --no-convert-tabs --no-strip-trailing-blanks
-/PXE/*.h:       --external-copyright --no-convert-tabs --no-strip-trailing-blanks
+/PXE/*.h:       --external-copyright --no-convert-tabs --no-strip-trailing-blanks --dont-set-svn-keywords
 /PXE/*.inc:     --external-copyright --no-convert-tabs --no-strip-trailing-blanks
 /PXE/*.i:       --external-copyright --no-convert-tabs --no-strip-trailing-blanks --strip-no-trailing-lines --treat-as .inc
 /PXE/*.r:       --external-copyright --no-convert-tabs --no-strip-trailing-blanks --strip-no-trailing-lines --treat-as .inc

@@ -1,4 +1,4 @@
-/* $Id: DockIconPreview.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: DockIconPreview.h 69474 2017-10-28 13:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDockIconPreview class declaration.
  */
