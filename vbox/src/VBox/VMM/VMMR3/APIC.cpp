@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: APIC.cpp 71280 2018-03-09 04:36:28Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -407,6 +407,9 @@ VMMR3_INT_DECL(void) APICR3HvSetCompatMode(PVM pVM, bool fHyperVCompatMode)
     Assert(pVM);
     PAPIC pApic = VM_TO_APIC(pVM);
     pApic->fHyperVCompatMode = fHyperVCompatMode;
+
+    if (fHyperVCompatMode)
+        LogRel(("APIC: Enabling Hyper-V x2APIC compatibility mode\n"));
 
     int rc = CPUMR3MsrRangesInsert(pVM, &g_MsrRange_x2Apic);
     AssertLogRelRC(rc);
