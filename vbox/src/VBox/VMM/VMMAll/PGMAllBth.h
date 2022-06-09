@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 68783 2017-09-18 10:45:19Z vboxsync $ */
+/* $Id: PGMAllBth.h 68785 2017-09-19 07:58:06Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -162,7 +162,7 @@ static VBOXSTRICTRC PGM_BTH_NAME(Trap0eHandlerDoAccessHandlers)(PVMCPU pVCpu, RT
 {
 # if !PGM_WITH_PAGING(PGM_GST_TYPE, PGM_SHW_TYPE)
     GSTPDE const    PdeSrcDummy = { X86_PDE_P | X86_PDE_US | X86_PDE_RW | X86_PDE_A };
-#endif
+# endif
     PVM             pVM         = pVCpu->CTX_SUFF(pVM);
     VBOXSTRICTRC    rcStrict;
 
