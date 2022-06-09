@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: DevVGA.h 67766 2017-07-04 08:04:57Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -254,6 +254,8 @@ typedef struct VGAState {
     uint8_t double_scan;
     uint8_t padding1[2];
     uint32_t line_offset;
+    uint32_t vga_addr_mask;
+    uint32_t padding1a;
     uint32_t line_compare;
     uint32_t start_addr;
     uint32_t plane_updated;
