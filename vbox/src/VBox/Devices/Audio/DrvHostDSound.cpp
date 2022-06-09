@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 68954 2017-10-02 15:06:55Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 68955 2017-10-02 15:50:39Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -622,8 +622,6 @@ static HRESULT directSoundPlayOpen(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStreamDS
     if (RT_FAILURE(rc))
         return E_INVALIDARG;
 
-    directSoundPlayInterfaceDestroy(pThis);
-
     dsoundUpdateStatusInternal(pThis);
 
     HRESULT hr = directSoundPlayInterfaceCreate(pThis);
@@ -1121,8 +1119,6 @@ static HRESULT directSoundCaptureOpen(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStrea
     if (RT_FAILURE(rc))
         return E_INVALIDARG;
 
-    directSoundCaptureInterfaceDestroy(pThis);
-
     dsoundUpdateStatusInternalEx(pThis, NULL /* Cfg */, DSOUNDENUMCBFLAGS_LOG /* fEnum */);
 
     HRESULT hr = directSoundCaptureInterfaceCreate(pThis, pCfgReq);
@@ -1223,7 +1219,7 @@ static HRESULT directSoundCaptureOpen(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStrea
 
         pStreamDS->In.hrLastCapture     = S_OK;
 
-        DSLOG(("DSound: Started capturing offReadPos=%RU32, cbBufSize=%RU32\n",
+        DSLOG(("DSound: Opened capturing offReadPos=%RU32, cbBufSize=%RU32\n",
                pStreamDS->In.offReadPos, pStreamDS->In.cbBufSize));
 
         pCfgAcq->cFrameBufferHint = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pThis->cfg.cbBufferIn);
