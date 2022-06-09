@@ -1,4 +1,4 @@
-/* $Id: isomakercmd.cpp 67860 2017-07-07 16:08:30Z vboxsync $ */
+/* $Id: isomakercmd.cpp 67862 2017-07-07 16:11:21Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker Command.
  */
@@ -776,7 +776,7 @@ static int rtFsIsoMakerCmdVerifyImageInRandomOrder(PRTFSISOMAKERCMDOPTS pOpts, R
              */
             uint32_t iBlock = RTRandU32Ex(0, cBlocks - 1);
             if (!ASMBitTestAndSet(pvBitmap, iBlock))
-                Assert(iBlock < (int32_t)cBlocks);
+                Assert(iBlock < cBlocks);
             else
             {
                 /* try 32 other random numbers. */
