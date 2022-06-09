@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 72395 2018-05-30 22:39:13Z vboxsync $ */
+/* $Id: HostDnsService.h 72402 2018-05-31 13:07:01Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -51,6 +51,8 @@ class HostDnsInformation
  */
 class HostDnsMonitor
 {
+    DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(HostDnsMonitor);
+
   public:
     static HostDnsMonitor *getHostDnsMonitor(VirtualBox *virtualbox);
     static void shutdown();
@@ -73,8 +75,6 @@ class HostDnsMonitor
     virtual int monitorWorker() = 0;
 
   private:
-    HostDnsMonitor(const HostDnsMonitor &);
-    HostDnsMonitor& operator= (const HostDnsMonitor &);
     static DECLCALLBACK(int) threadMonitoringRoutine(RTTHREAD, void *);
     void pollGlobalExtraData();
 
