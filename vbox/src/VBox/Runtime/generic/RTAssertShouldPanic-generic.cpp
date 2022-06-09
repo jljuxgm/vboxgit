@@ -1,4 +1,4 @@
-/* $Id: RTAssertShouldPanic-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTAssertShouldPanic-generic.cpp 70340 2017-12-26 14:41:01Z vboxsync $ */
 /** @file
  * IPRT - Assertions, generic RTAssertShouldPanic.
  */
@@ -31,9 +31,22 @@
 #include <iprt/assert.h>
 #include "internal/iprt.h"
 
+#ifdef IN_RING
+# if 0
+#  include <iprt/asm.h>
+#  include <iprt/asm-amd64-x86.h>
+# endif
+#endif
+
 
 RTDECL(bool) RTAssertShouldPanic(void)
 {
+#ifdef IN_RING0
+# if 0 /* this can be useful when debugging guests. */
+    ASMIntDisable();
+    ASMHalt();
+# endif
+#endif
 #if 0 /* Enable this to not panic on assertions. (Make sure this code is used!) */
     return false;
 #else
