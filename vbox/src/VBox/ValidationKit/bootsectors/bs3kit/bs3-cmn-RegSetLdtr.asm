@@ -1,6 +1,6 @@
-; $Id: bs3-cmn-RegSetDr3.asm 72138 2018-05-07 13:03:51Z vboxsync $
+; $Id: bs3-cmn-RegSetLdtr.asm 72138 2018-05-07 13:03:51Z vboxsync $
 ;; @file
-; BS3Kit - Bs3RegSetDr3
+; BS3Kit - Bs3RegSetLdtr
 ;
 
 ;
@@ -31,11 +31,12 @@ BS3_EXTERN_CMN Bs3Syscall
 %if TMPL_BITS == 16
 BS3_EXTERN_DATA16 g_bBs3CurrentMode
 %endif
+BS3_EXTERN_SYSTEM16 Bs3Gdt
 TMPL_BEGIN_TEXT
 
 
 ;;
-; @cproto   BS3_CMN_PROTO_STUB(void, Bs3RegSetDr3,(RTCCUINTXREG uValue));
+; @cproto   BS3_CMN_PROTO_STUB(void, Bs3RegSetLdtr,(uint16_t uValue));
 ;
 ; @param    uValue      The value to set.
 
@@ -43,44 +44,38 @@ TMPL_BEGIN_TEXT
 ;
 ; @uses     No GPRs.
 ;
-BS3_PROC_BEGIN_CMN Bs3RegSetDr3, BS3_PBC_HYBRID_SAFE
+BS3_PROC_BEGIN_CMN Bs3RegSetLdtr, BS3_PBC_HYBRID_SAFE
         BS3_CALL_CONV_PROLOG 1
         push    xBP
         mov     xBP, xSP
-        push    sSI
+        push    xDX
+        push    xAX
+
+        mov     dx, [xBP + xCB + cbCurRetAddr]
 
 %if TMPL_BITS == 16
         ; If V8086 mode we have to go thru a syscall.
         test    byte [BS3_DATA16_WRT(g_bBs3CurrentMode)], BS3_MODE_CODE_V86
         jnz     .via_system_call
-        cmp     byte [BS3_DATA16_WRT(g_bBs3CurrentMode)], BS3_MODE_RM
-        je      .direct_access
 %endif
         ; If not in ring-0, we have to make a system call.
-        mov     si, ss
-        and     si, X86_SEL_RPL
+        mov     ax, ss
+        and     ax, X86_SEL_RPL
         jnz     .via_system_call
 
-.direct_access:
-        mov     sSI, [xBP + xCB + cbCurRetAddr]
-        mov     dr3, sSI
+        ; Load it.
+        lldt    dx
         jmp     .return
 
 .via_system_call:
-        push    xDX
-        push    xAX
-
-        mov     sSI, [xBP + xCB + cbCurRetAddr]
-        mov     xAX, BS3_SYSCALL_SET_DRX
-        mov     dl, 3
+        mov     ax, BS3_SYSCALL_SET_LDTR
         call    Bs3Syscall
-        pop     xAX
-        pop     xDX
 
 .return:
-        pop     sSI
+        pop     xAX
+        pop     xDX
         pop     xBP
         BS3_CALL_CONV_EPILOG 1
         BS3_HYBRID_RET
-BS3_PROC_END_CMN   Bs3RegSetDr3
+BS3_PROC_END_CMN   Bs3RegSetLdtr
 

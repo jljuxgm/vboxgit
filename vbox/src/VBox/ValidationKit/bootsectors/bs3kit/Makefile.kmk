@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72133 2018-05-06 23:55:06Z vboxsync $
+# $Id: Makefile.kmk 72138 2018-05-07 13:03:51Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -131,6 +131,10 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-RegSetDr6.asm \
        bs3-cmn-RegSetDr7.asm \
        bs3-cmn-RegSetDrX.asm \
+       bs3-cmn-RegGetTr.asm \
+       bs3-cmn-RegSetTr.asm \
+       bs3-cmn-RegGetLdtr.asm \
+       bs3-cmn-RegSetLdtr.asm \
        bs3-cmn-ExtCtxInit.c \
        bs3-cmn-ExtCtxSave.asm \
        bs3-cmn-ExtCtxRestore.asm \
