@@ -1,4 +1,4 @@
-/* $Id: SerialTest.cpp 70632 2018-01-18 15:20:49Z vboxsync $ */
+/* $Id: SerialTest.cpp 70634 2018-01-18 15:27:00Z vboxsync $ */
 /** @file
  * SerialTest - Serial port testing utility.
  */
@@ -106,7 +106,7 @@ typedef struct SERIALTESTTXRXBUFCNT
     /** Number of bytes left to receive/transmit. */
     size_t                      cbTxRxLeft;
     /** The offset into the buffer to receive to/send from. */
-    uint32_t                    offBuf;
+    size_t                      offBuf;
     /** Maximum size to send/receive before processing is needed again. */
     size_t                      cbTxRxMax;
     /** The data buffer. */
