@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1-template.c 67034 2017-05-23 11:10:57Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1-template.c 67037 2017-05-23 11:31:06Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, C code template.
  */
@@ -4865,6 +4865,7 @@ bool BS3_NEAR_CODE Bs3Cg1EncodePrep(PBS3CG1STATE pThis)
 
         case BS3CG1ENC_VEX_MODRM_Mps_WO_Vps:
         case BS3CG1ENC_VEX_MODRM_Mpd_WO_Vpd:
+        case BS3CG1ENC_VEX_MODRM_Mx_WO_Vx:
             pThis->pfnEncoder        = Bs3Cg1EncodeNext_VEX_MODRM_VsomethingWO_Msomething_Wip_OR_ViceVersa;
             pThis->iRmOp             = 0;
             pThis->iRegOp            = 1;
