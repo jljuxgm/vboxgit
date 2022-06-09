@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDriver.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDispDriver.cpp 70034 2017-12-08 15:24:55Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver interface functions
  */
@@ -236,7 +236,7 @@ static int VBoxDispInitDevice(PVBOXDISPDEV pDev, DEVMODEW *pdm, GDIINFO *pGdiInf
     pDev->mode.ulWidth = selectedMode.VisScreenWidth;
     pDev->mode.ulHeight = selectedMode.VisScreenHeight;
     pDev->mode.ulBitsPerPel = selectedMode.BitsPerPlane * selectedMode.NumberOfPlanes;
-    pDev->mode.lScanlineStride = selectedMode.ScreenStride;
+    pDev->mode.lScanlineStride = RT_ALIGN_32(selectedMode.ScreenStride, 4);
     pDev->mode.flMaskR = selectedMode.RedMask;
     pDev->mode.flMaskG = selectedMode.GreenMask;
     pDev->mode.flMaskB = selectedMode.BlueMask;
