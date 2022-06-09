@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 68623 2017-09-04 18:56:56Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 68638 2017-09-05 13:30:52Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -3148,7 +3148,7 @@ static int vgdrvUpdateCapabilitiesOnHostWithReqAndLock(PVBOXGUESTDEVEXT pDevExt,
  * @param   fOrMask             The capabilities to add .
  * @param   fNotMask            The capabilities to remove.  Ignored in
  *                              VBOXGUESTCAPSACQUIRE_FLAGS_CONFIG_ACQUIRE_MODE.
- * @param   enmFlags            Confusing operation modifier.
+ * @param   fFlags              Confusing operation modifier.
  *                              VBOXGUESTCAPSACQUIRE_FLAGS_NONE means to both
  *                              configure and acquire/release the capabilities.
  *                              VBOXGUESTCAPSACQUIRE_FLAGS_CONFIG_ACQUIRE_MODE
