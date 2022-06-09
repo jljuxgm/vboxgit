@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 66818 2017-05-08 14:58:08Z vboxsync $
+# $Id: utils.py 67062 2017-05-24 12:29:07Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66818 $"
+__version__ = "$Revision: 67062 $"
 
 
 # Standard Python imports.
@@ -839,49 +839,6 @@ def processGetInfo(uPid, fSudo = False):
             [ '/usr/bin/pstack', '%u' % (uPid,), ],
             [ '/usr/bin/pmap', '%u' % (uPid,), ],
         ];
-    elif sHostOs == 'win':
-        # There are quite a few possibilities on Windows where to find CDB.
-        asCdbPathsCheck = [
-                              'c:\\Program Files\\Debugging Tools for Windows',
-                              'c:\\Program Files\\Debugging Tools for Windows (x64)',
-                              'c:\\Program Files\\Debugging Tools for Windows (x86)',
-                              'c:\\Program Files\\Windows Kits',
-                              'c:\\Program Files\\Windows Kits (x64)',
-                              'c:\\Program Files\\Windows Kits (x86)',
-                              'c:\\Programme\\Debugging Tools for Windows',
-                              'c:\\Programme\\Debugging Tools for Windows (x64)',
-                              'c:\\Programme\\Debugging Tools for Windows (x86)',
-                              'c:\\Programme\\Windows Kits',
-                              'c:\\Programme\\Windows Kits (x64)',
-                              'c:\\Programme\\Windows Kits (x86)'
-                          ];
-
-        sWinCdb = 'cdb'; # CDB must be in the path; better than nothing if we can't find anything in the paths above.
-        for sPath in asCdbPathsCheck:
-            fFound = False;
-            try:
-                for sDirPath, _, asFiles in os.walk(sPath):
-                    if 'cdb.exe' in asFiles:
-                        sWinCdb = os.path.join(sDirPath, 'cdb.exe');
-                        fFound = True;
-                        break;
-            except:
-                pass;
-
-            if fFound:
-                break;
-
-        #
-        # The commands used to gather the information are quite cryptic so they are explained
-        # below:
-        #     ~* f    -> Freeze all threads
-        #     ~* k    -> Acquire stack traces for all threads
-        #     lm -v   -> List of loaded modules, verbose
-        #     ~* u    -> Unfreeze all threads
-        #     .detach -> Detach from target process
-        #     q       -> Quit CDB
-        #
-        aasCmd = [[sWinCdb, '-p', '%u' % (uPid,), '-c', '~* f; ~* k; lm -v; ~* u; .detach; q'],];
     else:
         aasCmd = [];
 
