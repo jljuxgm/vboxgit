@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoErr.h 69022 2017-10-09 19:26:02Z vboxsync $ */
+/* $Id: VBoxVideoErr.h 69178 2017-10-23 18:08:12Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - iprt and VirtualBox macros and
  * definitions.
@@ -24,8 +24,6 @@
  * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
- *
- * Authors: Michael Thayer <michael.thayer@oracle.com>
  */
 
 #ifndef __VBOX_ERR_H__
