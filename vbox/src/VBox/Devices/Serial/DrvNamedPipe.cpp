@@ -1,4 +1,4 @@
-  /* $Id: DrvNamedPipe.cpp 68700 2017-09-07 15:56:49Z vboxsync $ */
+  /* $Id: DrvNamedPipe.cpp 69303 2017-10-25 13:40:35Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
@@ -59,6 +59,7 @@
 
 # define DRVNAMEDPIPE_WAKEUP_REASON_EXTERNAL       0
 # define DRVNAMEDPIPE_WAKEUP_REASON_NEW_CONNECTION 1
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
