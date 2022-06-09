@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInit.cpp 68641 2017-09-05 13:51:06Z vboxsync $ */
+/* $Id: VBoxGuestR0LibInit.cpp 68645 2017-09-05 14:17:02Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Library initialization.
  */
@@ -28,8 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBGL_DECL_DATA
-#include "VBGLInternal.h"
+#include "VBoxGuestR0LibInternal.h"
 
 #include <iprt/string.h>
 #include <iprt/assert.h>

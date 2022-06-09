@@ -1,6 +1,6 @@
-/* $Id: VBoxGuestR0LibIdc-solaris.cpp 68635 2017-09-05 13:21:18Z vboxsync $ */
+/* $Id: VBoxGuestR0LibIdc-solaris.cpp 68645 2017-09-05 14:17:02Z vboxsync $ */
 /** @file
- * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC, UNIX-like OSes.
+ * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC, Solaris specific.
  */
 
 /*
@@ -28,8 +28,11 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include <sys/conf.h>
+#include <sys/sunldi.h>
+#include <sys/file.h>
+#undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
 #include "VBoxGuestR0LibInternal.h"
-#include <VBox/VBoxGuest.h>
 #include <VBox/err.h>
 
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibCrOgl.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxGuestR0LibCrOgl.cpp 68645 2017-09-05 14:17:02Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-3 Support Library for VirtualBox guest additions, Chromium OpenGL Service.
  */
@@ -33,7 +33,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/string.h>
-#include "VBGLInternal.h"
+#include "VBoxGuestR0LibInternal.h"
 
 
 DECLVBGL(int) VbglR0CrCtlCreate(VBGLCRCTLHANDLE *phCtl)

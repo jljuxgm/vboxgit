@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibIdc-os2.cpp 68613 2017-09-03 15:50:07Z vboxsync $ */
+/* $Id: VBoxGuestR0LibIdc-os2.cpp 68645 2017-09-05 14:17:02Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC, OS/2 specific.
  */
@@ -29,7 +29,6 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "VBoxGuestR0LibInternal.h"
-#include <VBox/VBoxGuest.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
 

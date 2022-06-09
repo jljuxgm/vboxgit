@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibGenericRequest.cpp 68641 2017-09-05 13:51:06Z vboxsync $ */
+/* $Id: VBoxGuestR0LibGenericRequest.cpp 68645 2017-09-05 14:17:02Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Generic VMMDev request management.
  */
@@ -24,7 +24,7 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#include "VBGLInternal.h"
+#include "VBoxGuestR0LibInternal.h"
 #include <iprt/asm.h>
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/assert.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibVMMDev.cpp 68641 2017-09-05 13:51:06Z vboxsync $ */
+/* $Id: VBoxGuestR0LibVMMDev.cpp 68645 2017-09-05 14:17:02Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - VMMDev device related functions.
  */
@@ -24,7 +24,7 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#include "VBGLInternal.h"
+#include "VBoxGuestR0LibInternal.h"
 
 
 DECLVBGL(int) VbglQueryVMMDevMemory(VMMDevMemory **ppVMMDevMemory)

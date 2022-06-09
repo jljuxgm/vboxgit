@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibHGCMInternal.cpp 68641 2017-09-05 13:51:06Z vboxsync $ */
+/* $Id: VBoxGuestR0LibHGCMInternal.cpp 68645 2017-09-05 14:17:02Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -33,7 +33,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_HGCM
 
-#include "VBGLInternal.h"
+#include "VBoxGuestR0LibInternal.h"
 #include <iprt/alloca.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
