@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 69554 2017-11-02 15:26:26Z vboxsync $
+# $Id: vbox.py 69558 2017-11-03 02:23:38Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69554 $"
+__version__ = "$Revision: 69558 $"
 
 
 # Standard Python imports.
@@ -1356,6 +1356,16 @@ class TestDriver(base.TestDriver):                                              
             self.oVBox    = None;
             reporter.logXcpt("getVirtualBox / API version exception");
             return False;
+
+        # HACK ALERT! Keep COM alive past the python garbage collection on in case of dangling objects. @bugref{9037}
+        #             This is a bit of an experiment at the moment...
+        if self.sHost == 'win':
+            try:
+                import pythoncom;           # pylint: disable=F0401
+                pythoncom.CoInitializeEx(0);   # pylint: disable=no-member
+                pythoncom.CoInitializeEx(0);   # pylint: disable=no-member
+            except:
+                reporter.logXcpt("pythoncom.CoInitializeEx");
 
         # Done
         self.fImportedVBoxApi = True;
