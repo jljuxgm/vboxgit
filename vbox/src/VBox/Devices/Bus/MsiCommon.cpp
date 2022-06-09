@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.cpp 71768 2018-04-09 14:10:52Z vboxsync $ */
+/* $Id: MsiCommon.cpp 71773 2018-04-09 14:35:02Z vboxsync $ */
 /** @file
  * MSI support routines
  *
@@ -116,6 +116,9 @@ DECLINLINE(bool) msiR3BitJustSet(uint32_t uOldValue, uint32_t uNewValue, uint32_
     return !(uOldValue & uMask) && !!(uNewValue & uMask);
 }
 
+/**
+ * PCI config space accessors for MSI registers.
+ */
 void MsiR3PciConfigWrite(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPDMPCIDEV pDev,
                          uint32_t u32Address, uint32_t val, unsigned len)
 {
@@ -201,6 +204,9 @@ void MsiR3PciConfigWrite(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPDMPCIDEV pDe
     }
 }
 
+/**
+ * Initializes MSI support for the given PCI device.
+ */
 int MsiR3Init(PPDMPCIDEV pDev, PPDMMSIREG pMsiReg)
 {
     if (pMsiReg->cMsiVectors == 0)
@@ -265,11 +271,19 @@ int MsiR3Init(PPDMPCIDEV pDev, PPDMMSIREG pMsiReg)
 #endif /* IN_RING3 */
 
 
+/**
+ * Checks if MSI is enabled for the given PCI device.
+ *
+ * (Must use MSINotify() for notifications when true.)
+ */
 bool MsiIsEnabled(PPDMPCIDEV pDev)
 {
     return pciDevIsMsiCapable(pDev) && msiIsEnabled(pDev);
 }
 
+/**
+ * Device notification (aka interrupt).
+ */
 void MsiNotify(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPDMPCIDEV pDev, int iVector, int iLevel, uint32_t uTagSrc)
 {
     AssertMsg(msiIsEnabled(pDev), ("Must be enabled to use that"));
