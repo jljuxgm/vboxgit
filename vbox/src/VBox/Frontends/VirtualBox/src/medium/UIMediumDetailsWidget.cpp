@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 67999 2017-07-17 14:47:02Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 68003 2017-07-17 15:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -224,7 +224,7 @@ void UIMediumDetailsWidget::prepareTabOptions()
         {
 #ifdef VBOX_WS_MAC
             /* Configure layout: */
-            pLayoutOptions->setSpacing(5);
+            pLayoutOptions->setSpacing(10);
             pLayoutOptions->setContentsMargins(10, 10, 10, 10);
 #endif
 
