@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 69041 2017-10-11 15:44:01Z vboxsync $ */
+/* $Id: DevVGA.h 69042 2017-10-11 16:02:53Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -317,10 +317,6 @@ typedef struct VGAState {
     PPDMDEVINSR0                pDevInsR0;
     /** The R0 vram pointer... */
     R0PTRTYPE(uint8_t *)        vram_ptrR0;
-
-# if HC_ARCH_BITS == 32
-    uint32_t                    Padding3;
-# endif
 
 # ifdef VBOX_WITH_VMSVGA
     VMSVGAState                 svga;
