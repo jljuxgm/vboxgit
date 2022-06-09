@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 68140 2017-07-27 15:16:23Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 68185 2017-07-31 08:31:45Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -607,6 +607,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "  [-q|--nologo]             suppress the logo\n"
                      "  [--settingspw <pw>]       provide the settings password\n"
                      "  [--settingspwfile <file>] provide a file containing the settings password\n"
+                     "  [@<response-file>]        load arguments from the given response file (bourne style)\n"
                      " \n \n"
                      "Commands:\n \n");
 
