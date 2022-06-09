@@ -1,10 +1,10 @@
-/* $Id: GuestImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: GuestImpl.h 71406 2018-03-20 14:44:24Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -201,7 +201,6 @@ private:
         Utf8Str                     mInterfaceVersion;
 #ifdef VBOX_WITH_GUEST_CONTROL
         GuestSessions               mGuestSessions;
-        uint32_t                    mNextSessionID;
 #endif
     } mData;
 
