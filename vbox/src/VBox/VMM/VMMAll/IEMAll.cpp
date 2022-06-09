@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72505 2018-06-11 12:05:40Z vboxsync $ */
+/* $Id: IEMAll.cpp 72512 2018-06-11 14:12:21Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -11081,19 +11081,6 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PVMCPU pVCpu, uint16_t uSel)
         IEM_CTX_IMPORT_NORET(pVCpu, CPUMCTX_EXTRN_SREG_FROM_IDX(a_iSReg)); \
         (a_u32Dst) = iemSRegBaseFetchU64(pVCpu, (a_iSReg)); \
     } while (0)
-/** @todo IEM_MC_FETCH_LDTR_U16, IEM_MC_FETCH_LDTR_U32, IEM_MC_FETCH_LDTR_U64, IEM_MC_FETCH_TR_U16, IEM_MC_FETCH_TR_U32, and IEM_MC_FETCH_TR_U64 aren't worth it... */
-#define IEM_MC_FETCH_LDTR_U16(a_u16Dst) do { \
-        IEM_CTX_IMPORT_NORET(pVCpu, CPUMCTX_EXTRN_LDTR); \
-        (a_u16Dst) = pVCpu->cpum.GstCtx.ldtr.Sel; \
-   } while (0)
-#define IEM_MC_FETCH_LDTR_U32(a_u32Dst) do { \
-        IEM_CTX_IMPORT_NORET(pVCpu, CPUMCTX_EXTRN_LDTR); \
-        (a_u32Dst) = pVCpu->cpum.GstCtx.ldtr.Sel; \
-    } while (0)
-#define IEM_MC_FETCH_LDTR_U64(a_u64Dst) do { \
-        IEM_CTX_IMPORT_NORET(pVCpu, CPUMCTX_EXTRN_LDTR); \
-        (a_u64Dst) = pVCpu->cpum.GstCtx.ldtr.Sel; \
-   } while (0)
 #define IEM_MC_FETCH_TR_U16(a_u16Dst) do { \
         IEM_CTX_IMPORT_NORET(pVCpu, CPUMCTX_EXTRN_TR); \
         (a_u16Dst) = pVCpu->cpum.GstCtx.tr.Sel; \
