@@ -1,6 +1,7 @@
 #!/sbin/sh
-# $Id: smf-vboxwebsrv.sh 60532 2016-04-18 09:24:40Z vboxsync $
+# $Id: smf-vboxwebsrv.sh 69405 2017-10-27 00:18:12Z vboxsync $
 
+#
 # Copyright (C) 2008-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as

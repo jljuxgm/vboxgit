@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69404 2017-10-27 00:13:27Z vboxsync $
+# $Id: .scm-settings 69405 2017-10-27 00:18:12Z vboxsync $
 ## @file
 # Source code massager settings for the host installers.
 #
@@ -72,4 +72,18 @@
 # Caveat: If we export /linux/rpm-VBoxGuestAdditions/, the --no-update-license hack must go.
 /linux/rpm-VBoxGuestAdditions/rules:                        --no-update-license --treat-as Makefile --no-convert-eol --dont-set-svn-executable
 /linux/rpm-VBoxGuestAdditions/VBoxGuestAdditions.tmpl.spec: --no-update-license --treat-as .sh
+
+# Solaris stuff.
+/solaris/vboxconfig.sh:                         --no-convert-tabs
+/solaris/*.xml:                                 --no-convert-eol
+
+--filter-out-files /solaris/ips/vbox.mog
+--filter-out-files /solaris/vbox.pkginfo
+--filter-out-files /solaris/vbox.pkgresponse
+--filter-out-files /solaris/vbox.space
+--filter-out-files /solaris/virtualbox.applications.in
+--filter-out-files /solaris/virtualbox.keys
+--filter-out-files /solaris/virtualbox.mime
+
+
 
