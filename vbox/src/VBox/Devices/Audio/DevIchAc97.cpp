@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 68904 2017-09-28 10:00:04Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 68907 2017-09-28 13:24:47Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -3545,22 +3545,13 @@ static DECLCALLBACK(int) ichac97Attach(PPDMDEVINS pDevIns, unsigned uLUN, uint32
     if (RT_SUCCESS(rc2))
     {
         if (DrvAudioHlpStreamCfgIsValid(&pThis->StreamLineIn.State.Cfg))
-        {
-            rc2 = ichac97MixerAddDrvStream(pThis, pThis->pSinkLineIn, &pThis->StreamLineIn.State.Cfg, pDrv);
-            AssertRC(rc2);
-        }
+            ichac97MixerAddDrvStream(pThis, pThis->pSinkLineIn, &pThis->StreamLineIn.State.Cfg, pDrv);
 
         if (DrvAudioHlpStreamCfgIsValid(&pThis->StreamMicIn.State.Cfg))
-        {
-            rc2 = ichac97MixerAddDrvStream(pThis, pThis->pSinkMicIn,  &pThis->StreamMicIn.State.Cfg, pDrv);
-            AssertRC(rc2);
-        }
+            ichac97MixerAddDrvStream(pThis, pThis->pSinkMicIn,  &pThis->StreamMicIn.State.Cfg, pDrv);
 
         if (DrvAudioHlpStreamCfgIsValid(&pThis->StreamOut.State.Cfg))
-        {
-            rc2 = ichac97MixerAddDrvStream(pThis, pThis->pSinkOut,    &pThis->StreamOut.State.Cfg, pDrv);
-            AssertRC(rc2);
-        }
+            ichac97MixerAddDrvStream(pThis, pThis->pSinkOut,    &pThis->StreamOut.State.Cfg, pDrv);
     }
 
     DEVAC97_UNLOCK(pThis);
