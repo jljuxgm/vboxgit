@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 72426 2018-06-04 11:38:23Z vboxsync $ */
+/* $Id: VMM.cpp 72617 2018-06-19 15:38:27Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -604,6 +604,16 @@ VMMR3_INT_DECL(int) VMMR3InitR0(PVM pVM)
         LogRel(("VMM: Enabled thread-context hooks\n"));
     else
         LogRel(("VMM: Thread-context hooks unavailable\n"));
+
+    /* Log RTThreadPreemptIsPendingTrusty() and RTThreadPreemptIsPossible() results. */
+    if (pVM->vmm.s.fIsPreemptPendingApiTrusty)
+        LogRel(("VMM: RTThreadPreemptIsPending() can be trusted\n"));
+    else
+        LogRel(("VMM: Warning! RTThreadPreemptIsPending() cannot be trusted!  Need to update kernel info?\n"));
+    if (pVM->vmm.s.fIsPreemptPossible)
+        LogRel(("VMM: Kernel preemption is possible.\n"));
+    else
+        LogRel(("VMM: Kernel preemption is not possible it seems.\n"));
 
     /*
      * Send all EMTs to ring-0 to get their logger initialized.

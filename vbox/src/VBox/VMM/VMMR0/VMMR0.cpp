@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 72546 2018-06-13 15:45:39Z vboxsync $ */
+/* $Id: VMMR0.cpp 72617 2018-06-19 15:38:27Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -482,6 +482,13 @@ static int vmmR0InitVM(PGVM pGVM, PVM pVM, uint32_t uSvnRev, uint32_t uBuildType
                             if (RT_SUCCESS(rc))
                             {
                                 GVMMR0DoneInitVM(pGVM);
+
+                                /*
+                                 * Collect a bit of info for the VM release log.
+                                 */
+                                pVM->vmm.s.fIsPreemptPendingApiTrusty = RTThreadPreemptIsPendingTrusty();
+                                pVM->vmm.s.fIsPreemptPossible         = RTThreadPreemptIsPossible();;
+
                                 VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
                                 return rc;
                             }
