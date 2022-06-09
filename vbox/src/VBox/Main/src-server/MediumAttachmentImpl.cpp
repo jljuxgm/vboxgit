@@ -1,4 +1,4 @@
-/* $Id: MediumAttachmentImpl.cpp 66046 2017-03-10 16:58:36Z vboxsync $ */
+/* $Id: MediumAttachmentImpl.cpp 67492 2017-06-20 10:14:42Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -513,7 +513,7 @@ void MediumAttachment::i_updateName(const Utf8Str &aName)
 void MediumAttachment::i_updateMedium(const ComObjPtr<Medium> &aMedium)
 {
     Assert(isWriteLockOnCurrentThread());
-    Assert(!m->pMachine->i_isSnapshotMachine());
+    /* No assertion for a snapshot. Method used in deleting snapshot. */
 
     m->bd.backup();
     m->bd->pMedium = aMedium;
