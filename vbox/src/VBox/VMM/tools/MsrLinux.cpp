@@ -1,4 +1,4 @@
-/* $Id: MsrLinux.cpp 69582 2017-11-04 20:41:14Z vboxsync $ */
+/* $Id: MsrLinux.cpp 69584 2017-11-04 22:31:10Z vboxsync $ */
 /** @file
  * MsrLinux - Linux-specific MSR access.
  */
@@ -128,7 +128,7 @@ static int linuxMsrProberTerm(void)
     return VINF_SUCCESS;
 }
 
-int PlatformMsrProberInit(VBMSRFNS *fnsMsr)
+int PlatformMsrProberInit(VBMSRFNS *fnsMsr, bool *pfAtomicMsrMod)
 {
     if (access(MSR_DEV_NAME, F_OK))
     {
@@ -147,6 +147,7 @@ int PlatformMsrProberInit(VBMSRFNS *fnsMsr)
     fnsMsr->msrWrite      = linuxMsrProberWrite;
     fnsMsr->msrModify     = linuxMsrProberModify;
     fnsMsr->msrProberTerm = linuxMsrProberTerm;
+    *pfAtomicMsrMod       = false;  /* Can't modify/restore MSRs without trip to R3. */
 
     return VINF_SUCCESS;
 }

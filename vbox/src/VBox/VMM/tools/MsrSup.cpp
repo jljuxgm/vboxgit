@@ -1,4 +1,4 @@
-/* $Id: MsrSup.cpp 69583 2017-11-04 20:59:03Z vboxsync $ */
+/* $Id: MsrSup.cpp 69584 2017-11-04 22:31:10Z vboxsync $ */
 /** @file
  * MsrSup - SupDrv-specific MSR access.
  */
@@ -47,7 +47,7 @@ static int supMsrProberTerm(void)
     return VINF_SUCCESS;
 }
 
-int SupDrvMsrProberInit(VBMSRFNS *fnsMsr)
+int SupDrvMsrProberInit(VBMSRFNS *fnsMsr, bool *pfAtomicMsrMod)
 {
     int rc = SUPR3Init(NULL);
     if (RT_FAILURE(rc))
@@ -70,6 +70,7 @@ int SupDrvMsrProberInit(VBMSRFNS *fnsMsr)
     fnsMsr->msrWrite      = supMsrProberWrite;
     fnsMsr->msrModify     = supMsrProberModify;
     fnsMsr->msrProberTerm = supMsrProberTerm;
+    *pfAtomicMsrMod       = true;
 
     return VINF_SUCCESS;
 }
