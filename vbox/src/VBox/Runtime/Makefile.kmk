@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70423 2018-01-02 11:51:48Z vboxsync $
+# $Id: Makefile.kmk 70425 2018-01-02 14:35:34Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -558,6 +558,7 @@ RuntimeR3_SOURCES       = \
 	common/string/RTUtf16CmpAscii.cpp \
 	common/string/RTUtf16ICmpAscii.cpp \
 	common/string/RTUtf16End.cpp \
+	common/string/RTUtf16NCmpAscii.cpp \
 	common/string/RTUtf16NICmpAscii.cpp \
 	common/string/RTUtf16NLen.cpp \
 	common/string/RTUtf16NLenEx.cpp \
