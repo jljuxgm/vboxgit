@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 69722 2017-11-17 11:14:15Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 70113 2017-12-13 15:02:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -123,6 +123,8 @@ namespace UIExtraDataDefs
         extern const char* GUI_RecentFolderCD;
         /** Holds recent folder for floppy-disks. */
         extern const char* GUI_RecentFolderFD;
+        /** Holds recent folder for VISO creation content. */
+        extern const char* GUI_RecentFolderVISOContent;
         /** Holds the list of recently used hard-drives. */
         extern const char* GUI_RecentListHD;
         /** Holds the list of recently used optical-disks. */

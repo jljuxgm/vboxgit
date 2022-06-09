@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 69722 2017-11-17 11:14:15Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 70113 2017-12-13 15:02:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -262,12 +262,16 @@ public:
         QString recentFolderForOpticalDisks();
         /** Returns recent folder for floppy-disks. */
         QString recentFolderForFloppyDisks();
+        /** Returns recent folder for VISO creation content. */
+        QString recentFolderForVISOContent();
         /** Defines recent folder for hard-drives as @a strValue. */
         void setRecentFolderForHardDrives(const QString &strValue);
         /** Defines recent folder for optical-disk as @a strValue. */
         void setRecentFolderForOpticalDisks(const QString &strValue);
         /** Defines recent folder for floppy-disk as @a strValue. */
         void setRecentFolderForFloppyDisks(const QString &strValue);
+        /** Defines recent folder for VISO creation content as @a strValue. */
+        void setRecentFolderForVISOContent(const QString &strValue);
 
         /** Returns the list of recently used hard-drives. */
         QStringList recentListOfHardDrives();

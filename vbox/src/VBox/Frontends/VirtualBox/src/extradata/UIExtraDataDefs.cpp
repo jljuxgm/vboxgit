@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 69722 2017-11-17 11:14:15Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 70113 2017-12-13 15:02:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -74,6 +74,7 @@ const char* UIExtraDataDefs::GUI_ProxySettings = "GUI/ProxySettings";
 const char* UIExtraDataDefs::GUI_RecentFolderHD = "GUI/RecentFolderHD";
 const char* UIExtraDataDefs::GUI_RecentFolderCD = "GUI/RecentFolderCD";
 const char* UIExtraDataDefs::GUI_RecentFolderFD = "GUI/RecentFolderFD";
+const char* UIExtraDataDefs::GUI_RecentFolderVISOContent = "GUI/RecentFolderVISOContent";
 const char* UIExtraDataDefs::GUI_RecentListHD = "GUI/RecentListHD";
 const char* UIExtraDataDefs::GUI_RecentListCD = "GUI/RecentListCD";
 const char* UIExtraDataDefs::GUI_RecentListFD = "GUI/RecentListFD";
