@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 70598 2018-01-16 13:08:33Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 70617 2018-01-18 07:50:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -135,11 +135,7 @@ void UIVMLogViewerWidget::sltUpdateBookmarkPanel()
 {
     if (!currentLogPage() || !m_pBookmarksPanel)
         return;
-    disconnect(m_pBookmarksPanel, &UIVMLogViewerBookmarksPanel::sigBookmarkSelected,
-            this, &UIVMLogViewerWidget::gotoBookmark);
     m_pBookmarksPanel->updateBookmarkList(currentLogPage()->bookmarkVector());
-    connect(m_pBookmarksPanel, &UIVMLogViewerBookmarksPanel::sigBookmarkSelected,
-            this, &UIVMLogViewerWidget::gotoBookmark);
 }
 
 void UIVMLogViewerWidget::gotoBookmark(int bookmarkIndex)

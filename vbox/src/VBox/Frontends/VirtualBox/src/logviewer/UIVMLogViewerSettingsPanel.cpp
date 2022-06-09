@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSettingsPanel.cpp 70581 2018-01-14 20:54:55Z vboxsync $ */
+/* $Id: UIVMLogViewerSettingsPanel.cpp 70617 2018-01-18 07:50:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -45,18 +45,18 @@ UIVMLogViewerSettingsPanel::UIVMLogViewerSettingsPanel(QWidget *pParent, UIVMLog
 
 void UIVMLogViewerSettingsPanel::setShowLineNumbers(bool bShowLineNumbers)
 {
-    if(!m_pLineNumberCheckBox)
+    if (!m_pLineNumberCheckBox)
         return;
-    if(m_pLineNumberCheckBox->isChecked() == bShowLineNumbers)
+    if (m_pLineNumberCheckBox->isChecked() == bShowLineNumbers)
         return;
     m_pLineNumberCheckBox->setChecked(bShowLineNumbers);
 }
 
 void UIVMLogViewerSettingsPanel::setWrapLines(bool bWrapLines)
 {
-    if(!m_pWrapLinesCheckBox)
+    if (!m_pWrapLinesCheckBox)
         return;
-    if(m_pWrapLinesCheckBox->isChecked() == bWrapLines)
+    if (m_pWrapLinesCheckBox->isChecked() == bWrapLines)
         return;
     m_pWrapLinesCheckBox->setChecked(bWrapLines);
 }

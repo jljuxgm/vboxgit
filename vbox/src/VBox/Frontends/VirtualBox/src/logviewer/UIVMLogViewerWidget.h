@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 70581 2018-01-14 20:54:55Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 70617 2018-01-18 07:50:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -42,14 +42,6 @@ class UIVMLogViewerFilterPanel;
 class UIVMLogViewerPanel;
 class UIVMLogViewerSearchPanel;
 class UIVMLogViewerSettingsPanel;
-
-/* Type definitions: */
-/** value is the content of the log file */
-//typedef QMap<QPlainTextEdit*, QString> VMLogMap;
-/** first is line number, second is block text */
-//typedef QPair<int, QString> LogBookmark;
-/** key is log file name, value is a vector of bookmarks. */
-//typedef QMap<QString, QVector<LogBookmark> > BookmarkMap;
 
 
 /** QWidget extension providing GUI for VirtualBox LogViewer. It
