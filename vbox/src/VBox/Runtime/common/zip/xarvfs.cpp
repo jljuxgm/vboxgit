@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 62566 2016-07-26 15:16:41Z vboxsync $ */
+/* $Id: xarvfs.cpp 67116 2017-05-26 12:51:18Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -1801,6 +1801,7 @@ static const RTVFSFSSTREAMOPS rtZipXarFssOps =
     RTVFSFSSTREAMOPS_VERSION,
     0,
     rtZipXarFss_Next,
+    NULL,
     RTVFSFSSTREAMOPS_VERSION
 };
 
@@ -2084,7 +2085,8 @@ RTDECL(int) RTZipXarFsStreamFromIoStream(RTVFSIOSTREAM hVfsIosIn, uint32_t fFlag
                      */
                     PRTZIPXARFSSTREAM pThis;
                     RTVFSFSSTREAM     hVfsFss;
-                    rc = RTVfsNewFsStream(&rtZipXarFssOps, sizeof(*pThis), NIL_RTVFS, NIL_RTVFSLOCK, &hVfsFss, (void **)&pThis);
+                    rc = RTVfsNewFsStream(&rtZipXarFssOps, sizeof(*pThis), NIL_RTVFS, NIL_RTVFSLOCK, true /*fReadOnly*/,
+                                          &hVfsFss, (void **)&pThis);
                     if (RT_SUCCESS(rc))
                     {
                         pThis->hVfsIos              = hVfsIosIn;

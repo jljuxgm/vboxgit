@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
+/* $Id: pkzipvfs.cpp 67116 2017-05-26 12:51:18Z vboxsync $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -1238,6 +1238,7 @@ static const RTVFSFSSTREAMOPS rtZipPkzipFssOps =
     RTVFSFSSTREAMOPS_VERSION,
     0,
     rtZipPkzipFss_Next,
+    NULL,
     RTVFSFSSTREAMOPS_VERSION
 };
 
@@ -1260,8 +1261,8 @@ RTDECL(int) RTZipPkzipFsStreamFromIoStream(RTVFSIOSTREAM hVfsIosIn, uint32_t fFl
      */
     PRTZIPPKZIPFSSTREAM pThis;
     RTVFSFSSTREAM     hVfsFss;
-    int rc = RTVfsNewFsStream(&rtZipPkzipFssOps, sizeof(*pThis),
-                              NIL_RTVFS, NIL_RTVFSLOCK, &hVfsFss, (void **)&pThis);
+    int rc = RTVfsNewFsStream(&rtZipPkzipFssOps, sizeof(*pThis), NIL_RTVFS, NIL_RTVFSLOCK, true /*fReadOnly*/,
+                              &hVfsFss, (void **)&pThis);
     if (RT_SUCCESS(rc))
     {
         pThis->hVfsIos              = hVfsIosIn;

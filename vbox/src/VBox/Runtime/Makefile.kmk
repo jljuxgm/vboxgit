@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66739 2017-05-02 06:13:06Z vboxsync $
+# $Id: Makefile.kmk 67116 2017-05-26 12:51:18Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -617,6 +617,7 @@ RuntimeR3_SOURCES       = \
 	common/zip/tarcmd.cpp \
 	common/zip/unzipcmd.cpp \
 	common/zip/tarvfs.cpp \
+	common/zip/tarvfswriter.cpp \
 	common/zip/gzipvfs.cpp \
 	common/zip/pkzip.cpp \
 	common/zip/pkzipvfs.cpp \
