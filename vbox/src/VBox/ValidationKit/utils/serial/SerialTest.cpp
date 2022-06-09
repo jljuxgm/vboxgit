@@ -1,4 +1,4 @@
-/* $Id: SerialTest.cpp 70985 2018-02-13 09:21:58Z vboxsync $ */
+/* $Id: SerialTest.cpp 70989 2018-02-13 10:02:44Z vboxsync $ */
 /** @file
  * SerialTest - Serial port testing utility.
  */
@@ -47,6 +47,7 @@
 
 /** Number of times to toggle the status lines during the test. */
 #define SERIALTEST_STS_LINE_TOGGLE_COUNT 100
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
