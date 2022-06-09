@@ -1,4 +1,4 @@
-/* $Rev: 70066 $ */
+/* $Rev: 70085 $ */
 /** @file
  * VBoxGuest - Linux specifics.
  *
@@ -643,6 +643,11 @@ static int __init vgdrvLinuxModInit(void)
                     if (rc >= 0)
                     {
 #endif
+                        /*
+                         * Read host configuration.
+                         */
+                        VGDrvCommonProcessOptionsFromHost(&g_DevExt);
+
                         /*
                          * Finally, create the device nodes.
                          */

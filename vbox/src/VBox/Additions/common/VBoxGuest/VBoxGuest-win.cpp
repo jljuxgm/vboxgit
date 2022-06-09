@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 70067 2017-12-11 17:25:15Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 70085 2017-12-12 17:35:22Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -1275,9 +1275,7 @@ static void vgdrvNtReadConfiguration(PVBOXGUESTDEVEXTWIN pDevExt)
     /*
      * Read configuration from the host.
      */
-    LogRelFunc(("Calling VGDrvCommonProcessOptionsFromHost...\n"));
     VGDrvCommonProcessOptionsFromHost(&pDevExt->Core);
-    LogRelFunc(("VGDrvCommonProcessOptionsFromHost returned\n"));
 }
 
 

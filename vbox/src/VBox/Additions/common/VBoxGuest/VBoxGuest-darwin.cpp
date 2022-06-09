@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-darwin.cpp 70066 2017-12-11 16:33:05Z vboxsync $ */
+/* $Id: VBoxGuest-darwin.cpp 70085 2017-12-12 17:35:22Z vboxsync $ */
 /** @file
  * VBoxGuest - Darwin Specifics.
  */
@@ -925,7 +925,14 @@ bool org_virtualbox_VBoxGuest::start(IOService *pProvider)
                         {
                             if (setupVmmDevInterrupts(pProvider))
                             {
-                                /* register the service. */
+                                /*
+                                 * Read host configuration.
+                                 */
+                                VGDrvCommonProcessOptionsFromHost(&g_DevExt);
+
+                                /*
+                                 * Register the service.
+                                 */
                                 registerService();
                                 LogRel(("VBoxGuest: IOService started\n"));
                                 return true;

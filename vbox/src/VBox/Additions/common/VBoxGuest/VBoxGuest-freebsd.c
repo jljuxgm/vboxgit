@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-freebsd.c 70066 2017-12-11 16:33:05Z vboxsync $ */
+/* $Id: VBoxGuest-freebsd.c 70085 2017-12-12 17:35:22Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for FreeBSD.
  */
@@ -706,6 +706,11 @@ static int vgdrvFreeBSDAttach(device_t pDevice)
                 rc = vgdrvFreeBSDAddIRQ(pDevice, pState);
                 if (RT_SUCCESS(rc))
                 {
+                    /*
+                     * Read host configuration.
+                     */
+                    VGDrvCommonProcessOptionsFromHost(&g_DevExt);
+
                     /*
                      * Configure device cloning.
                      */

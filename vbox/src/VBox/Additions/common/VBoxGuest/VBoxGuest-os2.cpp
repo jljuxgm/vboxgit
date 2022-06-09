@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 70066 2017-12-11 16:33:05Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 70085 2017-12-12 17:35:22Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -186,6 +186,11 @@ DECLASM(int) vgdrvOS2Init(const char *pszArgs)
                     }
                     if (RT_SUCCESS(rc))
                     {
+                        /*
+                         * Read host configuration.
+                         */
+                        VGDrvCommonProcessOptionsFromHost(&g_DevExt);
+
                         /*
                          * Success
                          */
