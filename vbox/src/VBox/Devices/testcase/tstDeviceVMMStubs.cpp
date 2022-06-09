@@ -1,4 +1,4 @@
-/* $Id: tstDeviceVMMStubs.cpp 69162 2017-10-23 11:10:23Z vboxsync $ */
+/* $Id: tstDeviceVMMStubs.cpp 69183 2017-10-23 18:47:18Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, shim library exporting methods
  *             originally for VBoxVMM for intercepting (we don't want to use the PDM module
@@ -613,7 +613,8 @@ VMMDECL(RTRCPTR) MMHyperR3ToRC(PVM pVM, RTR3PTR R3Ptr)
  */
 VMMR3DECL(void) MMR3HeapFree(void *pv)
 {
-    RTMemFree(pv); /** @todo */
+    PTSTDEVMMHEAPALLOC pHeapAlloc = (PTSTDEVMMHEAPALLOC)((uint8_t *)pv - RT_OFFSETOF(TSTDEVMMHEAPALLOC, abAlloc[0]));
+    pHeapAlloc->pVmmCallbacks->pfnMMR3HeapFree(pv);
 }
 
 
