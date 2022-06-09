@@ -1,4 +1,4 @@
-/* $Id: UIInformationGuestSession.h 70882 2018-02-06 12:22:51Z vboxsync $ */
+/* $Id: UIInformationGuestSession.h 70887 2018-02-07 08:54:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class declaration.
  */
@@ -24,6 +24,7 @@
 /* COM includes: */
 #include "COMEnums.h"
 #include "CMachine.h"
+#include "CGuestSession.h"
 #include "CConsole.h"
 
 /* Forward declarations: */
@@ -47,7 +48,7 @@ public:
 
 private slots:
 
-    void sltGuestSessionRegistered(const CGuestSession &guestSession);
+    void sltGuestSessionRegistered(CGuestSession guestSession);
 
 private:
 

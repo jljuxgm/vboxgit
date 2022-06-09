@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 70882 2018-02-06 12:22:51Z vboxsync $ */
+/* $Id: UIMainEventListener.h 70887 2018-02-07 08:54:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -28,6 +28,7 @@
 #include "CMediumAttachment.h"
 #include "CNetworkAdapter.h"
 #include "CUSBDevice.h"
+#include "CGuestSession.h"
 
 /* Other VBox includes: */
 #include <VBox/com/listeners.h>
@@ -36,7 +37,7 @@
 class UIMainEventListeningThread;
 class CEventListener;
 class CEventSource;
-class CGuestSession;
+
 
 
 /* Note: On a first look this may seems a little bit complicated.
@@ -131,7 +132,7 @@ signals:
     void sigProgressTaskComplete(QString strProgressId);
 
     /** Notifies about guest session registered event @a is the registed guest session. */
-    void sigGuestSessionRegistered(const CGuestSession &guestSession);
+    void sigGuestSessionRegistered(CGuestSession guestSession);
 
 public:
 
