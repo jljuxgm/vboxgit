@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 67929 2017-07-12 11:58:26Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 67930 2017-07-12 12:05:43Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2724,7 +2724,7 @@ static DECLCALLBACK(int) ichac97IOPortNABMWrite(PPDMDEVINS pDevIns, void *pvUser
         }
 
         default:
-            AssertLogRel(("AC97: Warning: Unimplemented NABMWrite (%u byte) portIdx=%#x <- %#x\n", cbVal, uPortIdx, u32Val));
+            LogRel2(("AC97: Warning: Unimplemented NABMWrite (%u byte) portIdx=%#x <- %#x\n", cbVal, uPortIdx, u32Val));
             break;
     }
 
