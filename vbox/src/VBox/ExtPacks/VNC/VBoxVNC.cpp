@@ -1,11 +1,11 @@
-/* $Id: VBoxVNC.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: VBoxVNC.cpp 69283 2017-10-25 11:26:43Z vboxsync $ */
 /** @file
  * VBoxVNC - VNC VRDE module.
  */
 
 /*
  * Contributed by Ivo Smits <Ivo@UFO-Net.nl>, Howard Su and
- * Christophe Devriese <christophe.devriese@gmail.com>
+ * Christophe Devriese <christophe.devriese@gmail.com>.
  *
  * Copyright (C) 2011-2016 Oracle Corporation
  *
