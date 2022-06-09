@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 68725 2017-09-12 13:02:38Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 68732 2017-09-13 08:34:50Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -337,6 +337,7 @@ static int avRecSinkInit(PDRVAUDIOVIDEOREC pThis, PAVRECSINK pSink, PAVRECCONTAI
 
             case AVRECCONTAINERTYPE_WEBM:
             {
+#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
                 /* If we only record audio, create our own WebM writer instance here. */
                 if (!pSink->Con.WebM.pWebM) /* Do we already have our WebM writer instance? */
                 {
@@ -371,7 +372,9 @@ static int avRecSinkInit(PDRVAUDIOVIDEOREC pThis, PAVRECSINK pSink, PAVRECCONTAI
                         LogRel(("VideoRec: Error creating audio file path\n"));
                     }
                 }
-
+#else
+                rc = VERR_NOT_SUPPORTED;
+#endif /* VBOX_AUDIO_DEBUG_DUMP_PCM_DATA */
                 break;
             }
 
