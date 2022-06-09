@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 68251 2017-08-02 15:11:20Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 69238 2017-10-24 16:11:07Z vboxsync $ */
 /** @file
  * Implementeation of algorithms which read/parse/save scripts for unattended installation.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

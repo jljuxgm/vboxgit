@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 69063 2017-10-12 15:06:30Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 69238 2017-10-24 16:11:07Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

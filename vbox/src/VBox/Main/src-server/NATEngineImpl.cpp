@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 68447 2017-08-17 15:01:13Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 69238 2017-10-24 16:11:07Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -416,7 +416,7 @@ HRESULT NATEngine::setHostIP(const com::Utf8Str &aHostIP)
             return setError(E_INVALIDARG, "Cannot bind to a multicast address %s", aHostIP.c_str());
     }
 
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);    
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
     if (mData->m->strBindIP != aHostIP)
     {
         mData->m.backup();

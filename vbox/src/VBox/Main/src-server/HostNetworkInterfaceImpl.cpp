@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 68026 2017-07-18 14:15:32Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 69238 2017-10-24 16:11:07Z vboxsync $ */
 
 /** @file
  *
@@ -553,7 +553,7 @@ HRESULT HostNetworkInterface::enableStaticIPConfigV6(const com::Utf8Str &aIPV6Ad
     {
         fAddrChanged = true;
     }
-   
+
     if (   fAddrChanged
         || m.realIPV6PrefixLength != aIPV6NetworkMaskPrefixLength)
     {
