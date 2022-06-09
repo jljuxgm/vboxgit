@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69367 2017-10-26 15:18:48Z vboxsync $ */
+/* $Id: scm.cpp 69380 2017-10-26 16:38:03Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -488,6 +488,18 @@ static PFNSCMREWRITER const g_aRewritersFor_QtUiFiles[] =
     /** @todo copyright is in an XML 'comment' element. */
 };
 
+static PFNSCMREWRITER const g_aRewritersFor_SifFiles[] =
+{
+    rewrite_ForceCRLF,
+    rewrite_ExpandTabs,
+    rewrite_StripTrailingBlanks,
+    rewrite_AdjustTrailingLines,
+    rewrite_SvnKeywords,
+    rewrite_SvnNoExecutable,
+    rewrite_Copyright_SemicolonComment,
+};
+
+
 static PFNSCMREWRITER const g_aRewritersFor_FileLists[] = /* both makefile and shell script */
 {
     rewrite_ForceLF,
@@ -529,6 +541,7 @@ static SCMCFGENTRY const g_aConfigs[] =
     SCM_CFG_ENTRY(g_aRewritersFor_QtResourceFiles,  false, "*.qrc" ),
     SCM_CFG_ENTRY(g_aRewritersFor_QtTranslations,   false, "*.ts" ),
     SCM_CFG_ENTRY(g_aRewritersFor_QtUiFiles,        false, "*.ui" ),
+    SCM_CFG_ENTRY(g_aRewritersFor_SifFiles,         false, "*.sif" ),
     /* Must be be last: */
     SCM_CFG_ENTRY(g_aRewritersFor_FileLists,        false, "files_*" ),
 };
@@ -2221,7 +2234,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69367 $";
+                static const char s_szRev[] = "$Revision: 69380 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
