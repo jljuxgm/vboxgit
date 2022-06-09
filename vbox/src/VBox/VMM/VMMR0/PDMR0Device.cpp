@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 68470 2017-08-18 14:05:49Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 68594 2017-08-31 14:24:09Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -422,6 +422,7 @@ extern DECLEXPORT(const PDMDEVHLPR0) g_pdmR0DevHlp =
     pdmR0DevHlp_PCIPhysWrite,
     pdmR0DevHlp_PCISetIrq,
     pdmR0DevHlp_ISASetIrq,
+    pdmR0DevHlp_IoApicSendMsi,
     pdmR0DevHlp_PhysRead,
     pdmR0DevHlp_PhysWrite,
     pdmR0DevHlp_A20IsEnabled,
@@ -439,7 +440,7 @@ extern DECLEXPORT(const PDMDEVHLPR0) g_pdmR0DevHlp =
     pdmR0DevHlp_TMTimeVirtGetFreq,
     pdmR0DevHlp_TMTimeVirtGetNano,
     pdmR0DevHlp_DBGFTraceBuf,
-    pdmR0DevHlp_IoApicSendMsi,
+    NULL,
     NULL,
     NULL,
     NULL,
