@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: GMMR0.cpp 69774 2017-11-20 14:02:53Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -31,7 +31,7 @@
  * by the #GMM_CHUNK_SIZE \#define.
  *
  * Each chunk is given an unique ID. Each page also has a unique ID. The
- * relation ship between the two IDs is:
+ * relationship between the two IDs is:
  * @code
  *  GMM_CHUNK_SHIFT = log2(GMM_CHUNK_SIZE / PAGE_SIZE);
  *  idPage = (idChunk << GMM_CHUNK_SHIFT) | iPage;
