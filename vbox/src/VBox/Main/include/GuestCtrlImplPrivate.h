@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 71786 2018-04-09 16:02:26Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 71872 2018-04-17 12:16:10Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -643,6 +643,11 @@ struct GuestFsObjData
      * @{ */
     static PRTTIMESPEC TimeSpecFromKey(const GuestProcessStreamBlock &strmBlk, const Utf8Str &strKey, PRTTIMESPEC pTimeSpec);
     static int64_t UnixEpochNsFromKey(const GuestProcessStreamBlock &strmBlk, const Utf8Str &strKey);
+    /** @}  */
+
+    /** @name helper functions to work with IPRT stuff.
+     * @{ */
+    RTFMODE GetFileMode(void) const;
     /** @}  */
 
     int64_t              mAccessTime;

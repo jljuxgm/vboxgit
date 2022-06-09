@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 71561 2018-03-29 11:08:34Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 71872 2018-04-17 12:16:10Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -198,6 +198,39 @@ int GuestFsObjData::FromStat(const GuestProcessStreamBlock &strmBlk)
 
     LogFlowFuncLeaveRC(rc);
     return rc;
+}
+
+/**
+ * Returns the IPRT-compatible file mode.
+ * Note: Only handling RTFS_TYPE_ flags are implemented for now.
+ *
+ * @return IPRT file mode.
+ */
+RTFMODE GuestFsObjData::GetFileMode(void) const
+{
+    RTFMODE fMode = 0;
+
+    switch (mType)
+    {
+        case FsObjType_Directory:
+            fMode |= RTFS_TYPE_DIRECTORY;
+            break;
+
+        case FsObjType_File:
+            fMode |= RTFS_TYPE_FILE;
+            break;
+
+        case FsObjType_Symlink:
+            fMode |= RTFS_TYPE_SYMLINK;
+            break;
+
+        default:
+            break;
+    }
+
+    /** @todo Implement more stuff. */
+
+    return fMode;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
