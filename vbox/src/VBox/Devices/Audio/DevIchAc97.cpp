@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 68269 2017-08-03 07:58:51Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 68276 2017-08-03 10:17:48Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -3210,6 +3210,9 @@ static DECLCALLBACK(void) ichac97Reset(PPDMDEVINS pDevIns)
 
     /*
      * Reset mixer sinks.
+     *
+     * Do the reset here instead of in ichac97StreamReset();
+     * the mixer sink(s) might still have data to be processed when an audio stream gets reset.
      */
     AudioMixerSinkReset(pThis->pSinkLineIn);
     AudioMixerSinkReset(pThis->pSinkMicIn);
