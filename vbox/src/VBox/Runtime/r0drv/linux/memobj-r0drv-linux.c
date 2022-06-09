@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 68216 2017-08-01 11:18:19Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 68217 2017-08-01 11:22:27Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1027,9 +1027,9 @@ DECLHIDDEN(int) rtR0MemObjNativeEnterPhys(PPRTR0MEMOBJINTERNAL ppMem, RTHCPHYS P
 
 /* openSUSE Leap 42.3 detection :-/ */
 #if    LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 0) \
-    && LINUX_VERSION_CODE <  KERNEL_VERSION(4, 9, 0) \
+    && LINUX_VERSION_CODE <  KERNEL_VERSION(4, 6, 0) \
     && defined(FAULT_FLAG_REMOTE)
-# define GET_USER_PAGES_API     KERNEL_VERSION(4, 10, 0)
+# define GET_USER_PAGES_API     KERNEL_VERSION(4, 10, 0) /* no typo! */
 #else
 # define GET_USER_PAGES_API     LINUX_VERSION_CODE
 #endif
