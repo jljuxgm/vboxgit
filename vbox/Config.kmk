@@ -1,4 +1,4 @@
-# $Id: Config.kmk 70081 2017-12-12 15:48:44Z vboxsync $
+# $Id: Config.kmk 70082 2017-12-12 15:53:03Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4215,17 +4215,17 @@ ifeq ($(KBUILD_TARGET),linux)
 
  ifndef KERN_DIR
   ifndef KERN_VER
-   KERN_VER=$(patsubst /lib/modules/%/build/.config,%,$(firstword $(shell LC_ALL=C ls -t /lib/modules/*/build/.config 2>/dev/null)))
+   KERN_VER := $(patsubst /lib/modules/%/build/.config,%,$(firstword $(shell LC_ALL=C ls -t /lib/modules/*/build/.config 2>/dev/null)))
   endif
   ifeq ($(KERN_VER),)
-   KERN_VER=$(shell uname -r)
+   KERN_VER := $(shell uname -r)
   endif
-  KERN_DIR=/lib/modules/$(KERN_VER)/build
+  KERN_DIR  := /lib/modules/$(KERN_VER)/build
  endif
 
-##
-# Using the extra expansion to replace $(module) before eval, thus everything
-# else needs escaped dollars.
+ ##
+ # Using the extra expansion to replace $(module) before eval, thus everything
+ # else needs escaped dollars.
  define VBOX_LINUX_GENERATE_KMOD_TEST
   VBOX_TARGET_$(module) = $$(PATH_TARGET)/tst$(module)$(subst /,_,$(KERN_DIR))_mod.run
   TESTING      += $$(VBOX_TARGET_$(module))
@@ -7092,7 +7092,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70081 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70082 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
