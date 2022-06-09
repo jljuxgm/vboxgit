@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 68565 2017-08-31 12:10:25Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 68623 2017-09-04 18:56:56Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -3666,12 +3666,17 @@ int VGDrvCommonIoCtl(uintptr_t iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSE
                                          pSession->fUserSession);
         }
 #ifdef VBOX_WITH_HGCM
-        else if (iFunctionStripped == VBGL_IOCTL_CODE_STRIPPED(VBGL_IOCTL_HGCM_CALL(0)))
+        else if (   iFunctionStripped == VBGL_IOCTL_CODE_STRIPPED(VBGL_IOCTL_HGCM_CALL(0))
+# if ARCH_BITS == 64
+                 || iFunctionStripped == VBGL_IOCTL_CODE_STRIPPED(VBGL_IOCTL_HGCM_CALL_32(0))
+# endif
+                )
         {
             REQ_CHECK_EXPR(VBGL_IOCTL_HGCM_CALL, pReqHdr->cbIn >= sizeof(VBGLIOCHGCMCALL));
             REQ_CHECK_EXPR(VBGL_IOCTL_HGCM_CALL, pReqHdr->cbIn == pReqHdr->cbOut);
             pReqHdr->rc = vgdrvIoCtl_HGCMCallWrapper(pDevExt, pSession, (PVBGLIOCHGCMCALL)pReqHdr,
-                                                     !VBGL_IOCTL_IS_64BIT(iFunction), false /*fUserData*/, cbReq);
+                                                     iFunctionStripped == VBGL_IOCTL_CODE_STRIPPED(VBGL_IOCTL_HGCM_CALL_32(0)),
+                                                     false /*fUserData*/, cbReq);
         }
         else if (iFunctionStripped == VBGL_IOCTL_CODE_STRIPPED(VBGL_IOCTL_HGCM_CALL_WITH_USER_DATA(0)))
         {
@@ -3679,7 +3684,7 @@ int VGDrvCommonIoCtl(uintptr_t iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSE
             REQ_CHECK_EXPR(VBGL_IOCTL_HGCM_CALL, pReqHdr->cbIn >= sizeof(VBGLIOCHGCMCALL));
             REQ_CHECK_EXPR(VBGL_IOCTL_HGCM_CALL, pReqHdr->cbIn == pReqHdr->cbOut);
             pReqHdr->rc = vgdrvIoCtl_HGCMCallWrapper(pDevExt, pSession, (PVBGLIOCHGCMCALL)pReqHdr,
-                                                     !VBGL_IOCTL_IS_64BIT(iFunction), true /*fUserData*/, cbReq);
+                                                     ARCH_BITS == 32, true /*fUserData*/, cbReq);
         }
 #endif /* VBOX_WITH_HGCM */
         else
