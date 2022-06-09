@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 65066 2017-01-03 11:22:08Z vboxsync $ */
+/* $Id: ovfreader.h 68917 2017-09-28 16:09:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -22,6 +22,7 @@
 
 #include "iprt/cpp/xml.h"
 #include <map>
+#include <vector>
 
 namespace ovf
 {
@@ -491,7 +492,29 @@ typedef std::map<RTCString, DiskImage> DiskImagesMap;
 
 struct VirtualSystem;
 
-typedef std::map<uint32_t, VirtualHardwareItem> HardwareItemsMap;
+
+/**
+ * VirtualHardwareItem pointer vector with safe cleanup.
+ *
+ * We need to use object pointers because we also want EthernetPortItem and
+ * StorageItems to go into the container.
+ */
+class HardwareItemVector : public std::vector<VirtualHardwareItem *>
+{
+public:
+    HardwareItemVector() : std::vector<VirtualHardwareItem *>() { }
+    ~HardwareItemVector()
+    {
+        for (iterator it = begin(); it != end(); ++it)
+            delete(*it);
+        clear();
+    }
+
+    /* There is no copying of this vector.  We'd need something like shared_ptr for that. */
+private:
+    HardwareItemVector(const VirtualSystem &);
+
+};
 
 struct HardDiskController
 {
@@ -563,7 +586,7 @@ struct VirtualSystem
     RTCString    strVirtualSystemType;   // generic hardware description; OVF says this can be something like "vmx-4" or "xen";
                                                 // VMware Workstation 6.5 is "vmx-07"
 
-    HardwareItemsMap    mapHardwareItems;       // map of virtual hardware items, sorted by unique instance ID
+    HardwareItemVector  vecHardwareItems;       //< vector containing all virtual hardware items in parsing order.
 
     uint64_t            ullMemorySize;          // always in bytes, copied from llHardwareItems; default = 0 (unspecified)
     uint16_t            cCPUs;                  // no. of CPUs, copied from llHardwareItems; default = 1
