@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInternal.h 68645 2017-09-05 14:17:02Z vboxsync $ */
+/* $Id: VBoxGuestR0LibInternal.h 68648 2017-09-05 14:30:35Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -47,7 +47,7 @@ struct VBGLIDCHANDLEPRIVATE
     PDEVICE_OBJECT  pDeviceObject;
     /** Pointer to the NT file object. */
     PFILE_OBJECT    pFileObject;
-# elif defined(RT_OS_SOLARIS) && defined(_SPL_SUNLDI_H)
+# elif defined(RT_OS_SOLARIS) && defined(_SYS_SUNLDI_H)
     /** LDI device handle to keep the device attached. */
     ldi_handle_t    hDev;
 # endif
