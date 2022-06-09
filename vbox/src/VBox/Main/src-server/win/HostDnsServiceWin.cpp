@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceWin.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HostDnsServiceWin.cpp 72442 2018-06-05 06:26:42Z vboxsync $ */
 /** @file
  * Host DNS listener for Windows.
  */
@@ -86,7 +86,7 @@ HostDnsServiceWin::~HostDnsServiceWin()
 }
 
 
-HRESULT HostDnsServiceWin::init(VirtualBox *virtualbox)
+HRESULT HostDnsServiceWin::init(HostDnsMonitorProxy *proxy)
 {
     if (m == NULL)
         return E_FAIL;
@@ -128,7 +128,7 @@ HRESULT HostDnsServiceWin::init(VirtualBox *virtualbox)
             return E_FAIL;
     }
 
-    HRESULT hrc = HostDnsMonitor::init(virtualbox);
+    HRESULT hrc = HostDnsMonitor::init(proxy);
     if (FAILED(hrc))
         return hrc;
 
