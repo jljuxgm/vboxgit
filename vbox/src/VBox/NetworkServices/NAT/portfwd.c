@@ -1,4 +1,4 @@
-/* $Id: portfwd.c 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: portfwd.c 68619 2017-09-04 16:33:44Z vboxsync $ */
 /** @file
  * NAT Network - port-forwarding rules.
  */
@@ -87,6 +87,7 @@ portfwd_rule_add_del(struct fwspec *fwspec, int add)
 
     msg = (struct portfwd_msg *)malloc(sizeof(*msg));
     if (msg == NULL) {
+        DPRINTF0(("%s: failed to allocate message\n", __func__));
         return -1;
     }
 
