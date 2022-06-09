@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 72021 2018-04-25 15:18:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -26,7 +26,7 @@
 #include "CMedium.h"
 
 /* New Virtual Hard Drive wizard: */
-class UIWizardNewVD : public UIWizard
+class SHARED_LIBRARY_STUFF UIWizardNewVD : public UIWizard
 {
     Q_OBJECT;
 
@@ -82,4 +82,3 @@ private:
 typedef QPointer<UIWizardNewVD> UISafePointerWizardNewVD;
 
 #endif // __UIWizardNewVD_h__
-

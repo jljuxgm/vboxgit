@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.h 72021 2018-04-25 15:18:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class declaration.
  */
@@ -28,8 +28,9 @@ class QIToolButton;
 class QIRichTextLabel;
 class UIMediumSizeEditor;
 
+
 /* 3rd page of the New Virtual Hard Drive wizard (base part): */
-class UIWizardNewVDPage3 : public UIWizardPageBase
+class SHARED_LIBRARY_STUFF UIWizardNewVDPage3 : public UIWizardPageBase
 {
 protected:
 
@@ -64,8 +65,9 @@ protected:
     UIMediumSizeEditor *m_pEditorSize;
 };
 
+
 /* 3rd page of the New Virtual Hard Drive wizard (basic extension): */
-class UIWizardNewVDPageBasic3 : public UIWizardPage, public UIWizardNewVDPage3
+class SHARED_LIBRARY_STUFF UIWizardNewVDPageBasic3 : public UIWizardPage, public UIWizardNewVDPage3
 {
     Q_OBJECT;
     Q_PROPERTY(QString mediumPath READ mediumPath);
@@ -105,5 +107,5 @@ private:
     QIRichTextLabel *m_pSizeLabel;
 };
 
-#endif // __UIWizardNewVDPageBasic3_h__
 
+#endif // __UIWizardNewVDPageBasic3_h__
