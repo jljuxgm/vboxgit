@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 67707 2017-06-29 16:54:40Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 67709 2017-06-29 17:05:54Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -381,6 +381,8 @@ static int ich9pciConfigRead(PDEVPCIROOT pPciRoot, PciAddress* pPciAddr, int cb,
     int rc = VINF_SUCCESS;
 #ifdef IN_RING3
     NOREF(rcReschedule);
+#else
+    NOREF(cb);
 #endif
 
     if (pPciAddr->iBus != 0)    /* forward to subordinate bus */
@@ -1493,6 +1495,7 @@ static DECLCALLBACK(int) ich9pcibridgeR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE 
 
 void devpciR3BiosInitSetRegionAddress(PDEVPCIBUS pBus, PPDMPCIDEV pPciDev, int iRegion, uint64_t addr)
 {
+    NOREF(pBus);
     uint32_t uReg = devpciGetRegionReg(iRegion);
 
     /* Read memory type first. */
