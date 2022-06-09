@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 68239 2017-08-02 12:39:12Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 68243 2017-08-02 13:20:54Z vboxsync $ */
 /** @file
  * Implementeation of algorithms which read/parse/save scripts for unattended installation.
  */
@@ -572,6 +572,8 @@ HRESULT UnattendedScriptTemplate::getUnescapedReplacement(const char *pachPlaceh
         rValue = mpUnattended->i_getHostname();
     else if (IS_PLACEHOLDER_MATCH("HOSTNAME_WITHOUT_DOMAIN"))
         rValue.assign(mpUnattended->i_getHostname(), 0, mpUnattended->i_getHostname().find("."));
+    else if (IS_PLACEHOLDER_MATCH("HOSTNAME_WITHOUT_DOMAIN_MAX_15"))
+        rValue.assign(mpUnattended->i_getHostname(), 0, RT_MIN(mpUnattended->i_getHostname().find("."), 15));
     else if (IS_PLACEHOLDER_MATCH("HOSTNAME_DOMAIN"))
         rValue.assign(mpUnattended->i_getHostname(), mpUnattended->i_getHostname().find(".") + 1);
     else
