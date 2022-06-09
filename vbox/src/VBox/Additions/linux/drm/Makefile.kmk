@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68292 2017-08-03 18:40:25Z vboxsync $
+# $Id: Makefile.kmk 68294 2017-08-04 08:57:00Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (linux kernel OpenGL module).
 #
@@ -28,9 +28,6 @@ vboxvideo_drm-mod_SOURCES      = \
 	$(subst $(DQUOTE),,$(FILES_VBOXVIDEO_DRM_NOBIN))
 vboxvideo_drm-mod_EXEC_SOURCES = \
 	$(subst $(DQUOTE),,$(FILES_VBOXVIDEO_DRM_BIN))
-vboxvideo_drm-mod_INSTALLER = $(RM_EXT) -f -- "$2" && \
-    $(if $(filter %.c %.h,$2),indent -linux -o "$2" "$1",$(CP_EXT) "$1" "$2") && \
-    $(CHMOD_EXT) "$(if $(mode),$(mode),0644)" "$2"
 
 
 
