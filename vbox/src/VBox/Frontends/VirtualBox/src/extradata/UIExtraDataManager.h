@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 66661 2017-04-24 17:44:34Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 67942 2017-07-12 15:19:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -370,6 +370,11 @@ public:
         void setMenuBarEnabled(bool fEnabled, const QString &strID);
 #endif /* !VBOX_WS_MAC */
 
+        /** Returns whether Runtime UI menu-bar context-menu is enabled. */
+        bool menuBarContextMenuEnabled(const QString &strID);
+        /** Defines whether Runtime UI menu-bar context-menu is @a fEnabled. */
+        void setMenuBarContextMenuEnabled(bool fEnabled, const QString &strID);
+
         /** Returns restricted Runtime UI menu types. */
         UIExtraDataMetaDefs::MenuType restrictedRuntimeMenuTypes(const QString &strID);
         /** Defines restricted Runtime UI menu types. */
@@ -497,6 +502,11 @@ public:
         bool statusBarEnabled(const QString &strID);
         /** Defines whether Runtime UI status-bar is @a fEnabled. */
         void setStatusBarEnabled(bool fEnabled, const QString &strID);
+
+        /** Returns whether Runtime UI status-bar context-menu is enabled. */
+        bool statusBarContextMenuEnabled(const QString &strID);
+        /** Defines whether Runtime UI status-bar context-menu is @a fEnabled. */
+        void setStatusBarContextMenuEnabled(bool fEnabled, const QString &strID);
 
         /** Returns restricted Runtime UI status-bar indicator list. */
         QList<IndicatorType> restrictedStatusBarIndicators(const QString &strID);
