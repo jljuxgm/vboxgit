@@ -1,4 +1,4 @@
-/* $Id: UIToolsPane.cpp 67109 2017-05-26 09:53:10Z vboxsync $ */
+/* $Id: UIToolsPane.cpp 67110 2017-05-26 09:58:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPane class implementation.
  */
@@ -56,6 +56,19 @@ UIToolsPane::~UIToolsPane()
 {
     /* Cleanup: */
     cleanup();
+}
+
+bool UIToolsPane::isToolOpened(ToolType enmType) const
+{
+    for (int iTabIndex = 0; iTabIndex < m_pTabBar->count(); ++iTabIndex)
+        if (m_pTabBar->tabData(iTabIndex).value<ToolType>() == enmType)
+            return true;
+    return false;
+}
+
+void UIToolsPane::setCurrentTool(ToolType enmType)
+{
+    activateTabBarTab(enmType, true);
 }
 
 void UIToolsPane::setMachine(const CMachine &comMachine)
@@ -359,6 +372,9 @@ void UIToolsPane::activateTabBarTab(ToolType enmType, bool fCloseable)
             /* Store the data: */
             m_pTabBar->setTabData(iActualTabIndex, QVariant::fromValue(enmType));
         }
+
+        /* Notify listeners: */
+        emit sigToolOpened(enmType);
     }
 
     /* Activate corresponding indexes: */
