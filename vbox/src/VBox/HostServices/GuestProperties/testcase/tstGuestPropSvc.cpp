@@ -1,4 +1,4 @@
-/* $Id: tstGuestPropSvc.cpp 70058 2017-12-11 15:02:07Z vboxsync $ */
+/* $Id: tstGuestPropSvc.cpp 70061 2017-12-11 15:26:46Z vboxsync $ */
 /** @file
  *
  * Testcase for the guest property service.
@@ -30,9 +30,12 @@
 *********************************************************************************************************************************/
 static RTTEST g_hTest = NIL_RTTEST;
 
-using namespace guestProp;
 
+/*********************************************************************************************************************************
+*   Internal Functions                                                                                                           *
+*********************************************************************************************************************************/
 extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad (VBOXHGCMSVCFNTABLE *ptable);
+
 
 /** Simple call handle structure for the guest call completion callback */
 struct VBOXHGCMCALLHANDLE_TYPEDEF

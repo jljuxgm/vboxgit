@@ -1,4 +1,4 @@
-/* $Id: vbox-greeter.cpp 70058 2017-12-11 15:02:07Z vboxsync $ */
+/* $Id: vbox-greeter.cpp 70061 2017-12-11 15:26:46Z vboxsync $ */
 /** @file
  * vbox-greeter - an own LightDM greeter module supporting auto-logons
  *                controlled by the host.
@@ -98,8 +98,7 @@
 
 #include <VBox/log.h>
 #ifdef VBOX_WITH_GUEST_PROPS
- #include <VBox/HostServices/GuestPropertySvc.h>
- using namespace guestProp;
+# include <VBox/HostServices/GuestPropertySvc.h>
 #endif
 
 /** The program name (derived from argv[0]). */

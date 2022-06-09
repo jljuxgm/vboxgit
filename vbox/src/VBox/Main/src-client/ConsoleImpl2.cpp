@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 70058 2017-12-11 15:02:07Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 70061 2017-12-11 15:26:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -6128,7 +6128,7 @@ int configSetGlobalPropertyFlags(VMMDev * const pVMMDev, uint32_t fFlags)
                                          pvConsole);
 
 #ifdef VBOX_WITH_GUEST_PROPS_RDONLY_GUEST
-        rc = configSetGlobalPropertyFlags(pConsole->m_pVMMDev, guestProp::RDONLYGUEST);
+        rc = configSetGlobalPropertyFlags(pConsole->m_pVMMDev, GUEST_PROP_F_RDONLYGUEST);
         AssertRCReturn(rc, rc);
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 70058 2017-12-11 15:02:07Z vboxsync $ */
+/* $Id: VBoxControl.cpp 70061 2017-12-11 15:26:46Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1157,8 +1157,6 @@ static DECLCALLBACK(RTEXITCODE) handleRemoveCustomMode(int argc, char *argv[])
  */
 static RTEXITCODE getGuestProperty(int argc, char **argv)
 {
-    using namespace guestProp;
-
     bool fVerbose = false;
     if (   argc == 2
         && (   strcmp(argv[1], "-verbose")  == 0
@@ -1431,8 +1429,6 @@ static RTEXITCODE enumGuestProperty(int argc, char *argv[])
  */
 static RTEXITCODE waitGuestProperty(int argc, char **argv)
 {
-    using namespace guestProp;
-
     /*
      * Handle arguments
      */
