@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 64997 2016-12-22 07:41:39Z vboxsync $ */
+/* $Id: VBoxManage.cpp 68140 2017-07-27 15:16:23Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -119,7 +119,7 @@ static const VBMGCMD g_aCommands[] =
     { "modifyvm",           USAGE_MODIFYVM,         VBMG_CMD_TODO, handleModifyVM,             0 },
     { "startvm",            USAGE_STARTVM,          VBMG_CMD_TODO, handleStartVM,              0 },
     { "controlvm",          USAGE_CONTROLVM,        VBMG_CMD_TODO, handleControlVM,            0 },
-    { "unattended",         USAGE_UNATTENDEDINSTALL,VBMG_CMD_TODO, handleUnattendedInstall,    0 },
+    { "unattended",         USAGE_UNATTENDEDINSTALL, HELP_CMD_UNATTENDED, handleUnattended,    0 },
     { "discardstate",       USAGE_DISCARDSTATE,     VBMG_CMD_TODO, handleDiscardState,         0 },
     { "adoptstate",         USAGE_ADOPTSTATE,       VBMG_CMD_TODO, handleAdoptState,           0 },
     { "snapshot",           USAGE_SNAPSHOT,         VBMG_CMD_TODO, handleSnapshot,             0 },

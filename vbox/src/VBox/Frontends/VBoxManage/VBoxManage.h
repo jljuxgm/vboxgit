@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 65049 2017-01-02 09:01:46Z vboxsync $ */
+/* $Id: VBoxManage.h 68140 2017-07-27 15:16:23Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -215,7 +215,6 @@ RTEXITCODE handleInternalCommands(HandlerArg *a);
 
 /* VBoxManageControlVM.cpp */
 RTEXITCODE handleControlVM(HandlerArg *a);
-RTEXITCODE handleUnattendedInstall(HandlerArg *a);
 #ifndef VBOX_ONLY_DOCS
 unsigned int getMaxNics(IVirtualBox* vbox, IMachine* mach);
 #endif
@@ -276,6 +275,7 @@ RTEXITCODE handleSetExtraData(HandlerArg *a);
 RTEXITCODE handleSetProperty(HandlerArg *a);
 RTEXITCODE handleSharedFolder(HandlerArg *a);
 RTEXITCODE handleExtPack(HandlerArg *a);
+RTEXITCODE handleUnattended(HandlerArg *a);
 
 /* VBoxManageDisk.cpp */
 HRESULT openMedium(HandlerArg *a, const char *pszFilenameOrUuid,

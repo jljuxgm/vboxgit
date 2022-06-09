@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 67323 2017-06-09 14:47:35Z vboxsync $
+# $Id: Makefile.kmk 68140 2017-07-27 15:16:23Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox User Manual.
 #
@@ -191,7 +191,8 @@ endef
 ## List of refentry files (manpages).
 VBOX_MANUAL_XML_REFENTRY_FILES = \
 	man_VBoxManage-debugvm.xml \
-	man_VBoxManage-extpack.xml
+	man_VBoxManage-extpack.xml \
+	man_VBoxManage-unattended.xml
 
 
 #

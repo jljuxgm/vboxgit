@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 68055 2017-07-19 22:19:19Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 68140 2017-07-27 15:16:23Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1019,22 +1019,6 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            removeallencpasswords\n"
                      "\n", SEP);
     }
-
-    if (fCategory & USAGE_UNATTENDEDINSTALL)
-        RTStrmPrintf(pStrm, /* This will be replaced by a docbook man page. */
-                           "%s unattended %s      <uuid|vmname>\n"
-                     "         <OUTDATED-TODO>    --settings-file <file>\n"
-                     "         <OUTDATED-TODO>    [--session-type <type>]\n"
-                           "%s unattended %s      <uuid|vmname>\n"
-                     "         <OUTDATED-TODO>    --user <user>\n"
-                     "         <OUTDATED-TODO>    --password <password>\n"
-                     "         <OUTDATED-TODO>    --iso-path <path>\n"
-                     "         <OUTDATED-TODO>    [--key <CD-key>]\n"
-                     "         <OUTDATED-TODO>    [--additions-iso-path <path>]\n"
-                     "         <OUTDATED-TODO>    [--install-additions]\n"
-                     "         <OUTDATED-TODO>    [--image-index <index>]\n"
-                     "         <OUTDATED-TODO>    [--session-type <type>]\n"
-                     "\n", SEP, SEP);
 
     if (fCategory & USAGE_DISCARDSTATE)
         RTStrmPrintf(pStrm,
