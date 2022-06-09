@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 71832 2018-04-12 06:56:48Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.h 71852 2018-04-12 15:39:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -335,6 +335,9 @@ private:
     void            disableSelectionDependentActions();
     void            deSelectUpDirectoryItem();
     void            setSelectionForAll(QItemSelectionModel::SelectionFlags flags);
+    /** Start directory requires a special attention since on file systems with drive letters
+     *  drive letter are direct children of the start directory. On other systems start directory is '/' */
+    void            populateStartDirectory(UIFileTableItem *startItem);
     QGridLayout     *m_pMainLayout;
     QComboBox       *m_pLocationComboBox;
     UIToolBar       *m_pToolBar;

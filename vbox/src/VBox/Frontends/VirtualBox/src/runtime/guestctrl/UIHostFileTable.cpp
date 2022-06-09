@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 71832 2018-04-12 06:56:48Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 71852 2018-04-12 15:39:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -382,6 +382,16 @@ void  UIHostFileTable::showProperties()
 
 void UIHostFileTable::determineDriveLetters()
 {
+    //#ifdef VBOX_WS_WIN
+
+    QFileInfoList drive = QDir::drives();
+
+    for (int i = 0; i < drive.size(); ++i)
+    {
+        m_driveLetterList.push_back(drive[i].filePath());
+
+    }
+    //#endif
 }
 
 #include "UIHostFileTable.moc"
