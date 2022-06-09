@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 71702 2018-04-06 11:53:58Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 71705 2018-04-06 13:26:06Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -132,6 +132,13 @@
  *   <li> Comments on \#else indicates what begins while the comment on a
  *        \#endif indicates what ended.  Only add these when there are more than
  *        a few lines (6-10) of \#ifdef'ed code, otherwise they're just clutter.
+ *
+ *   <li> \#ifdefs around a single function shall be tight, i.e. no empty
+ *        lines between it and the function documentation and body.
+ *
+ *   <li> \#ifdefs around more than one function shall be relaxed, i.e. leave at
+ *        least one line before the first function's documentation comment and
+ *        one line after the end of the last function.
  *
  *   <li> No 'else' after if block ending with 'return', 'break', or 'continue'.
  *
