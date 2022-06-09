@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: APICAll.cpp 67050 2017-05-24 05:44:32Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -3307,13 +3307,24 @@ VMM_INT_DECL(int) APICGetApicPageForCpu(PVMCPU pVCpu, PRTHCPHYS pHCPhys, PRTR0PT
     AssertReturn(pHCPhys, VERR_INVALID_PARAMETER);
     AssertReturn(pR0Ptr,  VERR_INVALID_PARAMETER);
 
-    PCAPICCPU pApicCpu = VMCPU_TO_APICCPU(pVCpu);
-    *pHCPhys = pApicCpu->HCPhysApicPage;
-    *pR0Ptr  = pApicCpu->pvApicPageR0;
+    if (PDMHasApic(pVCpu->CTX_SUFF(pVM)))
+    {
+        PCAPICCPU pApicCpu = VMCPU_TO_APICCPU(pVCpu);
+        *pHCPhys = pApicCpu->HCPhysApicPage;
+        *pR0Ptr  = pApicCpu->pvApicPageR0;
+        if (pR3Ptr)
+            *pR3Ptr  = pApicCpu->pvApicPageR3;
+        if (pRCPtr)
+            *pRCPtr  = pApicCpu->pvApicPageRC;
+        return VINF_SUCCESS;
+    }
+
+    *pHCPhys = 0;
+    *pR0Ptr  = NIL_RTR0PTR;
     if (pR3Ptr)
-        *pR3Ptr  = pApicCpu->pvApicPageR3;
+        *pR3Ptr  = NIL_RTR3PTR;
     if (pRCPtr)
-        *pRCPtr  = pApicCpu->pvApicPageRC;
-    return VINF_SUCCESS;
+        *pRCPtr  = NIL_RTRCPTR;
+    return VERR_PDM_NO_APIC_INSTANCE;
 }
 
