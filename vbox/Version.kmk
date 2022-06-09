@@ -1,4 +1,4 @@
-# $Id: Version.kmk 68940 2017-09-29 17:00:20Z vboxsync $
+# $Id: Version.kmk 69106 2017-10-17 10:22:16Z vboxsync $
 ## @file
 #
 # The VirtualBox version.
@@ -30,7 +30,7 @@ VBOX_VERSION_BUILD = 0
 # For the convention, see checks near the end of Config.kmk.
 VBOX_BUILD_PUBLISHER =
 # Just the BETA[n],ALPHA[n],RC[n] indicators. Set to empty string for release.
-VBOX_VERSION_PRERELEASE = RC1
+VBOX_VERSION_PRERELEASE =
 # Force a release-type build with exactly matching Additions etc, even if
 # our numbering does not say this is a release build, by setting this non-empty.
 VBOX_RELEASE_EXACT_MATCH =
