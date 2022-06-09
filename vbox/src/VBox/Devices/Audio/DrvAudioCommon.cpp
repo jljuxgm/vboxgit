@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 70972 2018-02-12 12:47:16Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 70993 2018-02-13 11:11:31Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -618,6 +618,28 @@ char *DrvAudioHlpAudDevFlagsToStrA(PDMAUDIODEVFLAG fFlags)
 #undef APPEND_FLAG_TO_STR
 
     return pszFlags;
+}
+
+/**
+ * Converts a playback destination enumeration to a string.
+ *
+ * @returns Stringified playback destination, or "Unknown", if not found.
+ * @param   enmPlaybackDst      Playback destination to convert.
+ */
+const char *DrvAudioHlpPlaybackDstToStr(const PDMAUDIOPLAYBACKDEST enmPlaybackDst)
+{
+    switch (enmPlaybackDst)
+    {
+        case PDMAUDIOPLAYBACKDEST_UNKNOWN:    return "Unknown";
+        case PDMAUDIOPLAYBACKDEST_FRONT:      return "Front";
+        case PDMAUDIOPLAYBACKDEST_CENTER_LFE: return "Center / LFE";
+        case PDMAUDIOPLAYBACKDEST_REAR:       return "Rear";
+        default:
+            break;
+    }
+
+    AssertMsgFailed(("Invalid playback destination %ld\n", enmPlaybackDst));
+    return "Unknown";
 }
 
 /**
