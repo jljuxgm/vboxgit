@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 69676 2017-11-13 15:38:31Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -825,8 +825,11 @@ UIPortForwardingTable::UIPortForwardingTable(const UIPortForwardingDataList &rul
 #ifdef VBOX_WS_MAC
         /* On macOS we can do a bit of smoothness: */
         pMainLayout->setContentsMargins(0, 0, 0, 0);
-#endif
         pMainLayout->setSpacing(3);
+#else
+        const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing) / 3;
+        pMainLayout->setSpacing(iS);
+#endif
         /* Create table: */
         m_pTableView = new UIPortForwardingView;
         {

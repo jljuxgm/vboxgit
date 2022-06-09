@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIHotKeyEditor class implementation.
  */
@@ -24,6 +24,7 @@
 # include <QHBoxLayout>
 # include <QLineEdit>
 # include <QKeyEvent>
+# include <QStyle>
 
 /* GUI includes; */
 # include "UIHotKeyEditor.h"
@@ -122,7 +123,8 @@ UIHotKeyEditor::UIHotKeyEditor(QWidget *pParent)
     setFocusProxy(m_pLineEdit);
 
     /* Configure layout: */
-    m_pMainLayout->setSpacing(4);
+    const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2;
+    m_pMainLayout->setSpacing(iS);
     m_pMainLayout->setContentsMargins(0, 0, 0, 0);
     m_pMainLayout->addWidget(m_pLineEdit);
     m_pMainLayout->addLayout(m_pButtonLayout);

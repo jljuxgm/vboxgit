@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 68435 2017-08-17 08:59:12Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -754,6 +754,9 @@ void UIMachineSettingsSystem::prepareTabMotherboard()
             /* We need a little space for the focus rect: */
             m_pLayoutBootOrder->setContentsMargins(3, 3, 3, 3);
             m_pLayoutBootOrder->setSpacing(3);
+#else
+            const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing) / 3;
+            m_pLayoutBootOrder->setSpacing(iS);
 #endif
 
             /* Boot-order tree-widget created in the .ui file. */

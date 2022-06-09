@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIHostComboEditor class implementation.
  */
@@ -480,7 +480,8 @@ void UIHostComboEditor::prepare()
     QHBoxLayout *pLayout = new QHBoxLayout(this);
     {
         /* Configure layout: */
-        pLayout->setSpacing(4);
+        const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2;
+        pLayout->setSpacing(iS);
         pLayout->setContentsMargins(0, 0, 0, 0);
         /* Create UIHostComboEditorPrivate instance: */
         m_pEditor = new UIHostComboEditorPrivate;

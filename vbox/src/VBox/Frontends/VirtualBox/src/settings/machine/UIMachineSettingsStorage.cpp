@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3449,6 +3449,9 @@ void UIMachineSettingsStorage::prepare()
         /* We need a little more space for the focus rect: */
         mLtStorage->setContentsMargins(3, 0, 3, 0);
         mLtStorage->setSpacing(3);
+#else
+        const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 3;
+        mLtStorage->setSpacing(iS);
 #endif
 
         /* Prepare storage tree: */

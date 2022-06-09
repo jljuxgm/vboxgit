@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 69672 2017-11-13 14:26:53Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -814,7 +814,8 @@ void UIHostNetworkManagerWidget::prepareWidgets()
 #ifdef VBOX_WS_MAC
         layout()->setSpacing(10);
 #else
-        layout()->setSpacing(4);
+        const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2;
+        layout()->setSpacing(iS);
 #endif
 
         /* Prepare toolbar: */

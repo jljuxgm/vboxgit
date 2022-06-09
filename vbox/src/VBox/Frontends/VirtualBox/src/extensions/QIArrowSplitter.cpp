@@ -1,4 +1,4 @@
-/* $Id: QIArrowSplitter.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: QIArrowSplitter.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIArrowSplitter class implementation.
  */
@@ -235,7 +235,8 @@ void QIArrowSplitter::prepare()
     {
         /* Configure main-layout: */
         m_pMainLayout->setContentsMargins(0, 0, 0, 0);
-        m_pMainLayout->setSpacing(3);
+        const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2;
+        m_pMainLayout->setSpacing(iS);
         /* Create button-layout: */
         QHBoxLayout *pButtonLayout = new QHBoxLayout;
         AssertPtrReturnVoid(pButtonLayout);

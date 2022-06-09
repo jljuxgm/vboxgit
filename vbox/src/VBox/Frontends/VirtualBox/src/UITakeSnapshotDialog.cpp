@@ -1,4 +1,4 @@
-/* $Id: UITakeSnapshotDialog.cpp 67535 2017-06-21 10:47:28Z vboxsync $ */
+/* $Id: UITakeSnapshotDialog.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class implementation.
  */
@@ -24,6 +24,7 @@
 # include <QLabel>
 # include <QLineEdit>
 # include <QPushButton>
+# include <QStyle>
 
 /* GUI includes: */
 # include "QIDialogButtonBox.h"
@@ -99,9 +100,6 @@ void UITakeSnapshotDialog::prepare()
     QGridLayout *pLayout = new QGridLayout(this);
     AssertPtrReturnVoid(pLayout);
     {
-        /* Configure layout: */
-        pLayout->setSpacing(20);
-
         /* Create sub-layout: */
         QVBoxLayout *pSubLayout1 = new QVBoxLayout;
         AssertPtrReturnVoid(pSubLayout1);
@@ -129,7 +127,8 @@ void UITakeSnapshotDialog::prepare()
         AssertPtrReturnVoid(pSubLayout2);
         {
             /* Configure layout: */
-            pSubLayout2->setSpacing(10);
+            const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2;
+            pSubLayout2->setSpacing(iS);
 
             /* Create name label: */
             m_pLabelName = new QLabel;
@@ -161,7 +160,8 @@ void UITakeSnapshotDialog::prepare()
         AssertPtrReturnVoid(pSubLayout3);
         {
             /* Configure layout: */
-            pSubLayout3->setSpacing(10);
+            const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2;
+            pSubLayout3->setSpacing(iS);
 
             /* Create description label: */
             m_pLabelDescription = new QLabel;

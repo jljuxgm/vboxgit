@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMessageBox class implementation.
  */
@@ -180,7 +180,6 @@ void QIMessageBox::prepare()
         {
             /* Configure top-layout: */
             pTopLayout->setContentsMargins(0, 0, 0, 0);
-            pTopLayout->setSpacing(10);
             /* Create icon-label: */
             m_pLabelIcon = new QLabel;
             AssertPtrReturnVoid(m_pLabelIcon);
