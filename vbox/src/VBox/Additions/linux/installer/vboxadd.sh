@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions kernel module init script ($Revision: 68709 $)
+# Linux Additions kernel module init script ($Revision: 68849 $)
 #
 
 #
@@ -51,7 +51,6 @@
 
 PATH=$PATH:/bin:/sbin:/usr/sbin
 PACKAGE=VBoxGuestAdditions
-LOG="/var/log/vboxadd-setup.log"
 MODPROBE=/sbin/modprobe
 OLDMODULES="vboxguest vboxadd vboxsf vboxvfs vboxvideo"
 SERVICE="VirtualBox Guest Additions"
