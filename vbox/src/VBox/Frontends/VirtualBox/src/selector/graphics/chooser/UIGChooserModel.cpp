@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 70452 2018-01-03 18:05:20Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 70453 2018-01-03 18:12:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -354,7 +354,7 @@ UIGChooserItem* UIGChooserModel::findClosestUnselectedItem() const
 {
     /*
      * Take the focus item (if any) as a starting point and find
-     * the closest non-selected item
+     * the closest non-selected item.
      */
     UIGChooserItem *pItem = focusItem();
     if (!pItem)
@@ -363,7 +363,7 @@ UIGChooserItem* UIGChooserModel::findClosestUnselectedItem() const
     {
         int idxBefore = navigationList().indexOf(pItem) - 1;
         int idxAfter  = idxBefore + 2;
-        while(idxBefore >= 0 || idxAfter < navigationList().size())
+        while (idxBefore >= 0 || idxAfter < navigationList().size())
         {
             if (idxBefore >= 0)
             {
