@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 70354 2017-12-27 08:00:15Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 70356 2017-12-27 09:06:57Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -71,9 +71,11 @@
     do \
     { \
         int rc = hmR0SvmCheckExitDueToEventDelivery(pVCpu, pCtx, pSvmTransient); \
-        if (RT_LIKELY(rc == VINF_SUCCESS)) { /* likely */ } \
-        else if (rc == VINF_HM_DOUBLE_FAULT) \
-            return VINF_SUCCESS; \
+        if (RT_LIKELY(rc == VINF_SUCCESS))        { /* continue #VMEXIT handling */ } \
+        else if (     rc == VINF_HM_DOUBLE_FAULT) { return VINF_SUCCESS;            } \
+        else if (     rc == VINF_EM_RESET \
+                 &&   CPUMIsGuestSvmCtrlInterceptSet(pVCpu, pCtx, SVM_CTRL_INTERCEPT_SHUTDOWN)) \
+            return VBOXSTRICTRC_TODO(IEMExecSvmVmexit(pVCpu, SVM_EXIT_SHUTDOWN, 0, 0)); \
         else \
             return rc; \
     } while (0)
