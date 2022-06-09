@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 72328 2018-05-24 19:29:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -65,6 +65,7 @@ private:
     HRESULT getLogRelFlags(com::Utf8Str &aLogRelFlags);
     HRESULT getLogRelGroups(com::Utf8Str &aLogRelGroups);
     HRESULT getLogRelDestinations(com::Utf8Str &aLogRelDestinations);
+    HRESULT getExecutionEngine(VMExecutionEngine_T *apenmEngine);
     HRESULT getHWVirtExEnabled(BOOL *aHWVirtExEnabled);
     HRESULT getHWVirtExNestedPagingEnabled(BOOL *aHWVirtExNestedPagingEnabled);
     HRESULT getHWVirtExVPIDEnabled(BOOL *aHWVirtExVPIDEnabled);
