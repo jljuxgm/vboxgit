@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 69137 2017-10-20 08:23:18Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 69146 2017-10-20 13:05:53Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -4744,7 +4744,7 @@ int vmsvgaLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t uVersion, uint3
         /* Reallocate GMR array. */
         Assert(pSVGAState->paGMR != NULL);
         RTMemFree(pSVGAState->paGMR);
-        pSVGAState->paGMR = (PGMR)RTMemAlloc(cGMR * sizeof(GMR));
+        pSVGAState->paGMR = (PGMR)RTMemAllocZ(cGMR * sizeof(GMR));
         AssertReturn(pSVGAState->paGMR, VERR_NO_MEMORY);
         pThis->svga.cGMR = cGMR;
     }
