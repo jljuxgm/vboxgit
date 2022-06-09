@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 71547 2018-03-28 15:47:45Z vboxsync $"
+# "$Id: tdMoveVM1.py 71548 2018-03-28 15:54:20Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71547 $"
+__version__ = "$Revision: 71548 $"
 
 # Standard Python imports.
 import os
@@ -171,7 +171,6 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
     def checkLocation(self, oMachine, dsReferenceFiles):
 
         fRc = True
-        iLen = 0
 
         for key, value in self.dsKeys.iteritems():
             aActuals = set()
@@ -236,34 +235,34 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
     def __getStatesFiles(self, oMachine, fPrint = False):
         asStateFilesList = set()
         sFolder = oMachine.snapshotFolder
-        for file in os.listdir(sFolder):
-            if file.endswith(".sav"):
-                sFile = os.path.join(sFolder, file)
-                asStateFilesList.add(sFile)
+        for sFile in os.listdir(sFolder):
+            if sFile.endswith(".sav"):
+                sFullPath = os.path.join(sFolder, sFile)
+                asStateFilesList.add(sFullPath)
                 if fPrint is True:
-                    reporter.log("State file is %s" % (sFile))
+                    reporter.log("State file is %s" % (sFullPath))
         return asStateFilesList
 
     def __getSnapshotsFiles(self, oMachine, fPrint = False):
         asSnapshotsFilesList = set()
         sFolder = oMachine.snapshotFolder
-        for file in os.listdir(sFolder):
-            if file.endswith(".sav") is False:
-                sFile = os.path.join(sFolder, file)
-                asSnapshotsFilesList.add(sFile)
+        for sFile in os.listdir(sFolder):
+            if sFile.endswith(".sav") is False:
+                sFullPath = os.path.join(sFolder, sFile)
+                asSnapshotsFilesList.add(sFullPath)
                 if fPrint is True:
-                    reporter.log("Snapshot file is %s" % (sFile))
+                    reporter.log("Snapshot file is %s" % (sFullPath))
         return asSnapshotsFilesList
 
     def __getLogFiles(self, oMachine, fPrint = False):
         asLogFilesList = set()
         sFolder = oMachine.logFolder
-        for file in os.listdir(sFolder):
-            if file.endswith(".log"):
-                sFile = os.path.join(sFolder, file)
-                asLogFilesList.add(sFile)
+        for sFile in os.listdir(sFolder):
+            if sFile.endswith(".log"):
+                sFullPath = os.path.join(sFolder, sFile)
+                asLogFilesList.add(sFullPath)
                 if fPrint is True:
-                    reporter.log("Log file is %s" % (sFile))
+                    reporter.log("Log file is %s" % (sFullPath))
         return asLogFilesList
 
     def __getResourceSet(self):
@@ -595,7 +594,7 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
             if fRc is True:
                 for oAttachment in aoMediumAttachments:
                     sRes = oAttachment.medium.location.rpartition(os.sep)
-                    dsReferenceFiles['SnapshotFile'].add(sNewLoc + os.sep + oMachine.name + os.sep + 
+                    dsReferenceFiles['SnapshotFile'].add(sNewLoc + os.sep + oMachine.name + os.sep +
                                                          'Snapshots' + os.sep + sRes[2])
 
                 sSettingFile = os.path.join(sNewLoc, os.path.join(oMachine.name, oMachine.name + '.vbox'))
