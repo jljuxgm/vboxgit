@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 71406 2018-03-20 14:44:24Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 71561 2018-03-29 11:08:34Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -634,10 +634,10 @@ void GuestBase::baseUninit(void)
 {
     LogFlowThisFuncEnter();
 
-    int rc = RTCritSectDelete(&mWaitEventCritSect);
-    NOREF(rc);
+    int rc2 = RTCritSectDelete(&mWaitEventCritSect);
+    AssertRC(rc2);
 
-    LogFlowFuncLeaveRC(rc);
+    LogFlowFuncLeaveRC(rc2);
     /* No return value. */
 }
 
