@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 70085 2017-12-12 17:35:22Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 70099 2017-12-13 09:06:25Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -1146,6 +1146,8 @@ static NTSTATUS NTAPI vbdrvNtRegistryEnumCallback(PWSTR pwszValueName, ULONG uVa
         || RTUtf16ICmpAscii(pwszValueName, "ImagePath") == 0
         || RTUtf16ICmpAscii(pwszValueName, "DisplayName") == 0
         || RTUtf16ICmpAscii(pwszValueName, "Group") == 0
+        || RTUtf16ICmpAscii(pwszValueName, "DependOnGroup") == 0
+        || RTUtf16ICmpAscii(pwszValueName, "DependOnService") == 0
        )
     {
         return STATUS_SUCCESS;
