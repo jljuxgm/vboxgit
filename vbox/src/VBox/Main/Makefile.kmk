@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 67753 2017-07-03 12:29:42Z vboxsync $
+# $Id: Makefile.kmk 68057 2017-07-20 10:38:12Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -33,6 +33,7 @@ ifdef VBOX_WITH_WEBSERVICES
 endif
 include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 include $(PATH_SUB_CURRENT)/cbinding/Makefile.kmk
+include $(PATH_SUB_CURRENT)/UnattendedTemplates/Makefile.kmk
 
 
 #

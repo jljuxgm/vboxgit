@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 67782 2017-07-04 19:24:55Z vboxsync $
+# $Id: Makefile.kmk 68057 2017-07-20 10:38:12Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -497,6 +497,11 @@ ifdef VBOX_WITH_EFIFW_PACKING
  SOLARIS_COMMON += \
 	VBoxEFI32.fd \
 	VBoxEFI64.fd
+endif
+
+# Unattended installation template scripts.
+ifdef VBOX_UNATTENDED_TEMPLATES
+ SOLARIS_COMMON += $(addprefix UnattendedTemplates/,$(VBOX_UNATTENDED_TEMPLATES))
 endif
 
 # DTrace library, testcase and scripts (as the rest of this file, this makes bold
