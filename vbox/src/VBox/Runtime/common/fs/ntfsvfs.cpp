@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 72273 2018-05-21 12:51:27Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 72585 2018-06-17 15:30:26Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -1859,7 +1859,8 @@ static int rtFsNtfsVol_NewCoreForMftIdx(PRTFSNTFSVOL pThis, uint64_t idxMft, boo
             return VINF_SUCCESS;
         }
 
-        rtFsNtfsCore_Destroy(pRec->pCore);
+        if (pRec->pCore)
+            rtFsNtfsCore_Destroy(pRec->pCore);
         rtFsNtfsMftRec_Release(pRec, pThis);
     }
     return rc;
@@ -5345,7 +5346,8 @@ static int rtFsNtfsVolLoadMft(PRTFSNTFSVOL pThis, PRTERRINFO pErrInfo)
             else
                 rc = RTERRINFO_LOG_REL_SET(pErrInfo, VERR_VFS_BOGUS_FORMAT, "MFT record #0 has no unnamed DATA attribute!");
         }
-        rtFsNtfsCore_Destroy(pRec->pCore);
+        if (pRec->pCore)
+            rtFsNtfsCore_Destroy(pRec->pCore);
         rtFsNtfsMftRec_Release(pRec, pThis);
     }
     else
