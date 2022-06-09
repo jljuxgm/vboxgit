@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 71406 2018-03-20 14:44:24Z vboxsync $ */
+/* $Id: GuestImpl.h 71634 2018-04-03 17:45:44Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -104,7 +104,7 @@ public:
     VBOXOSTYPE  i_getGuestOSType(void) { return mData.mOSType; }
 #ifdef VBOX_WITH_GUEST_CONTROL
     int         i_dispatchToSession(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb);
-    int         i_sessionRemove(GuestSession *pSession);
+    int         i_sessionRemove(uint32_t uSessionID);
     int         i_sessionCreate(const GuestSessionStartupInfo &ssInfo, const GuestCredentials &guestCreds,
                                 ComObjPtr<GuestSession> &pGuestSession);
     inline bool i_sessionExists(uint32_t uSessionID);
