@@ -1,4 +1,4 @@
-/* $Id: VBoxVideo.h 71596 2018-03-31 21:23:46Z vboxsync $ */
+/* $Id: VBoxVideo.h 71602 2018-04-01 16:44:41Z vboxsync $ */
 /** @file
  * VirtualBox Video interface.
  */
@@ -1390,7 +1390,8 @@ typedef enum
     VBOXVDMA_CTL_TYPE_ENABLE,
     VBOXVDMA_CTL_TYPE_DISABLE,
     VBOXVDMA_CTL_TYPE_FLUSH,
-    VBOXVDMA_CTL_TYPE_WATCHDOG
+    VBOXVDMA_CTL_TYPE_WATCHDOG,
+    VBOXVDMA_CTL_TYPE_END
 } VBOXVDMA_CTL_TYPE;
 
 typedef struct VBOXVDMA_CTL
