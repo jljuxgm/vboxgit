@@ -1,10 +1,10 @@
-/* $Id: VirtualBoxSDSImpl.cpp 71139 2018-02-27 17:48:13Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.cpp 71142 2018-02-27 20:12:26Z vboxsync $ */
 /** @file
  * VBox Global COM Class implementation.
  */
 
 /*
- * Copyright (C) 2015-2017 Oracle Corporation
+ * Copyright (C) 2015-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
