@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 70029 2017-12-08 13:52:37Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.h 70074 2017-12-12 09:26:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -62,6 +62,7 @@ public:
 protected:
     virtual void configure() /* override */;
     virtual void configureCentralWidget() /* override */;
+    virtual void finalize() /* override */;
 
 private:
     void retranslateUi();

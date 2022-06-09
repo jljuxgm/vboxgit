@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 70031 2017-12-08 14:10:46Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 70074 2017-12-12 09:26:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1023,23 +1023,29 @@ void UISelectorWindow::sltOpenMachineLogDialog()
         if (!isActionEnabled(UIActionIndexST_M_Group_S_ShowLogDialog, QList<UIVMItem*>() << pItem))
             continue;
 
-        /* Show VM Log Viewer: */
+        QIManagerDialog *pLogViewerDialog = 0;
+        /* Create and Show VM Log Viewer: */
         if (!m_logViewers[pItem->machine().GetHardwareUUID()])
         {
-            QIManagerDialog *pLogViewerDialog;
             UIVMLogViewerDialogFactory dialogFactory(pItem->machine());
             dialogFactory.prepare(pLogViewerDialog, this);
             if (pLogViewerDialog)
             {
                 m_logViewers[pItem->machine().GetHardwareUUID()] = pLogViewerDialog;
-
-                /* Show instance: */
-                pLogViewerDialog->show();
-                pLogViewerDialog->setWindowState(pLogViewerDialog->windowState() & ~Qt::WindowMinimized);
-                pLogViewerDialog->activateWindow();
                 connect(pLogViewerDialog, &QIManagerDialog::sigClose,
                         this, &UISelectorWindow::sltCloseLogViewerWindow);
             }
+        }
+        else
+        {
+            pLogViewerDialog = m_logViewers[pItem->machine().GetHardwareUUID()];
+        }
+        if (pLogViewerDialog)
+        {
+            /* Show instance: */
+            pLogViewerDialog->show();
+            pLogViewerDialog->setWindowState(pLogViewerDialog->windowState() & ~Qt::WindowMinimized);
+            pLogViewerDialog->activateWindow();
         }
     }
 }
