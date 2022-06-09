@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInst.cpp 70350 2017-12-26 17:24:43Z vboxsync $ */
+/* $Id: VBoxGuestInst.cpp 70367 2017-12-27 17:53:36Z vboxsync $ */
 /** @file
  * Small tool to (un)install the VBoxGuest device driver.
  */
@@ -61,6 +61,20 @@ static int installDriver(bool fStartIt)
     {
         GetSystemDirectory(szDriver, sizeof(szDriver));
         strcat(strcat(szDriver, "\\drivers"), pszSlashName);
+
+        /* Try FAT name abbreviation. */
+        if (GetFileAttributesA(szDriver) == INVALID_FILE_ATTRIBUTES)
+        {
+            pszSlashName = "\\VBoxGst.sys";
+            GetCurrentDirectory(MAX_PATH, szDriver);
+            strcat(szDriver, pszSlashName);
+            if (GetFileAttributesA(szDriver) == INVALID_FILE_ATTRIBUTES)
+            {
+                GetSystemDirectory(szDriver, sizeof(szDriver));
+                strcat(strcat(szDriver, "\\drivers"), pszSlashName);
+
+            }
+        }
     }
 
     SC_HANDLE hService = CreateService(hSMgrCreate,
