@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webutils.py 72632 2018-06-20 15:42:03Z vboxsync $
+# $Id: webutils.py 72633 2018-06-20 15:44:09Z vboxsync $
 
 """
 Common Web Utility Functions.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72632 $"
+__version__ = "$Revision: 72633 $"
 
 # Standard Python imports.
 import os;
@@ -163,8 +163,8 @@ def downloadFile(sUrlFile, sDstFile, sLocalPrefix, fnLog, fnError = None, fNoPro
             elif sys.version_info[0] < 3:
                 oSrc = urllib_urlopen(sUrlFile, proxies = dict());
             else:
-                oProxyHandler = urllib.request.ProxyHandler(proxies = dict()); # p?ylint: disable=???
-                oOpener = urllib.request.build_opener(oProxyHandler)           # p?ylint: disable=???
+                oProxyHandler = urllib.request.ProxyHandler(proxies = dict()); # pylint: disable=no-member
+                oOpener = urllib.request.build_opener(oProxyHandler)           # pylint: disable=no-member
                 oSrc = oOpener.open(sUrlFile);
             oDst = utils.openNoInherit(sDstFile, 'wb');
             oDst.write(oSrc.read());
