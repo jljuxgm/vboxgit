@@ -1,4 +1,4 @@
-/* $Id: Nvram.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: Nvram.cpp 70239 2017-12-20 11:55:52Z vboxsync $ */
 /** @file
  * VBox NVRAM COM Class implementation.
  */
@@ -26,7 +26,6 @@
 #include "ConsoleImpl.h"
 #include "Global.h"
 
-#include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pdmdrv.h>
 #include <VBox/vmm/pdmnvram.h>
 #include <VBox/vmm/cfgm.h>
