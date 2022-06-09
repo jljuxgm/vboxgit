@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 64192 2016-10-10 19:06:55Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 68436 2017-08-17 10:12:58Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -105,8 +105,7 @@ VBGLR3DECL(int) VbglR3SetPointerShape(uint32_t fFlags, uint32_t xHot, uint32_t y
     AssertReturn(   !pvImg
                  || cbReq == RT_OFFSETOF(VMMDevReqMousePointer, pointerData) + cbImg,
                  VERR_INVALID_PARAMETER);
-    int rc = vbglR3GRAlloc((VMMDevRequestHeader **)&pReq, cbReq,
-                           VMMDevReq_SetPointerShape);
+    int rc = vbglR3GRAlloc((VMMDevRequestHeader **)&pReq, cbReq, VMMDevReq_SetPointerShape);
     if (RT_SUCCESS(rc))
     {
         pReq->fFlags = fFlags;

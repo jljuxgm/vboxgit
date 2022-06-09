@@ -1,4 +1,4 @@
-/* $Id: VBGLR3Internal.h 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBGLR3Internal.h 68436 2017-08-17 10:12:58Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -46,7 +46,7 @@ extern "C" xf86size_t xf86strlen(const char*);
 RT_C_DECLS_BEGIN
 
 int     vbglR3DoIOCtl(unsigned iFunction, void *pvData, size_t cbData);
-int     vbglR3GRAlloc(VMMDevRequestHeader **ppReq, uint32_t cb, VMMDevRequestType enmReqType);
+int     vbglR3GRAlloc(VMMDevRequestHeader **ppReq, size_t cb, VMMDevRequestType enmReqType);
 int     vbglR3GRPerform(VMMDevRequestHeader *pReq);
 void    vbglR3GRFree(VMMDevRequestHeader *pReq);
 
