@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71623 $"
+__version__ = "$Revision: 71631 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -1927,7 +1927,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             [ tdTestExec(sCmd = "%$%%%&", sUser = sUser, sPassword = sPassword),
               tdTestResultExec(fRc = False) ],
             # More stuff.
-            [ tdTestExec(sCmd = "ƒ‰‹ˆ÷‹¸", sUser = sUser, sPassword = sPassword),
+            [ tdTestExec(sCmd = u"ƒ‰‹ˆ÷‹¸", sUser = sUser, sPassword = sPassword),
               tdTestResultExec(fRc = False) ],
             [ tdTestExec(sCmd = "???://!!!", sUser = sUser, sPassword = sPassword),
               tdTestResultExec(fRc = False) ],
