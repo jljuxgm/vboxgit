@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 70917 2018-02-08 15:56:43Z vboxsync $ */
+/* $Id: SUPLib.cpp 70918 2018-02-08 16:11:47Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1658,10 +1658,11 @@ SUPR3DECL(int) SUPR3GipGetPhys(PRTHCPHYS pHCPhys)
 }
 
 
-SUPR3DECL(int) SUPR3QueryVTxSupported(void)
+SUPR3DECL(int) SUPR3QueryVTxSupported(const char **ppszWhy)
 {
+    *ppszWhy = NULL;
 #ifdef RT_OS_LINUX
-    return suplibOsQueryVTxSupported();
+    return suplibOsQueryVTxSupported(ppszWhy);
 #else
     return VINF_SUCCESS;
 #endif

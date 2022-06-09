@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 70917 2018-02-08 15:56:43Z vboxsync $ */
+/* $Id: VMM.cpp 70918 2018-02-08 16:11:47Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -111,6 +111,7 @@
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/mm.h>
+#include <VBox/vmm/nem.h>
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/trpm.h>
 #include <VBox/vmm/selm.h>
@@ -1493,6 +1494,7 @@ static DECLCALLBACK(int) vmmR3SendInitIpi(PVM pVM, VMCPUID idCpu)
     CPUMR3ResetCpu(pVM, pVCpu);
     EMR3ResetCpu(pVCpu);
     HMR3ResetCpu(pVCpu);
+    NEMR3ResetCpu(pVCpu);
 
     /* This will trickle up on the target EMT. */
     return VINF_EM_WAIT_SIPI;

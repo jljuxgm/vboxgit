@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HostImpl.cpp 70918 2018-02-08 16:11:47Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -334,7 +334,8 @@ HRESULT Host::init(VirtualBox *aParent)
                      && (fFeaturesEdx & X86_CPUID_FEATURE_EDX_FXSR)
                    )
                 {
-                    int rc = SUPR3QueryVTxSupported();
+                    const char *pszIgn;
+                    int rc = SUPR3QueryVTxSupported(&pszIgn);
                     if (RT_SUCCESS(rc))
                         m->fVTSupported = true;
                 }

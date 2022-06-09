@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 70732 2018-01-25 04:50:36Z vboxsync $ */
+/* $Id: tstVMStruct.h 70918 2018-02-08 16:11:47Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -431,6 +431,9 @@
     GEN_CHECK_OFF_DOT(MMLOOKUPHYPER, u.MMIO2.iRegion);
     GEN_CHECK_OFF_DOT(MMLOOKUPHYPER, u.MMIO2.off);
     GEN_CHECK_OFF(MMLOOKUPHYPER, pszDesc);
+
+    GEN_CHECK_SIZE(NEM);
+    GEN_CHECK_SIZE(NEMCPU);
 
     GEN_CHECK_SIZE(PDM);
     GEN_CHECK_OFF(PDM, CritSect);
