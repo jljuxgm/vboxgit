@@ -1,4 +1,4 @@
-/* $Id: VBoxService-win.cpp 70267 2017-12-21 11:58:59Z vboxsync $ */
+/* $Id: VBoxService-win.cpp 70346 2017-12-26 15:52:28Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton, Windows Specific Parts.
  */
@@ -77,6 +77,8 @@ decltype(Process32First)                *g_pfnProcess32First;                   
 decltype(Process32Next)                 *g_pfnProcess32Next;                    /**< W2K+, but Geoff says NT4. Hmm. */
 decltype(Module32First)                 *g_pfnModule32First;                    /**< W2K+, but Geoff says NT4. Hmm. */
 decltype(Module32Next)                  *g_pfnModule32Next;                     /**< W2K+, but Geoff says NT4. Hmm. */
+decltype(GetSystemTimeAdjustment)       *g_pfnGetSystemTimeAdjustment;          /**< NT 3.50+ */
+decltype(SetSystemTimeAdjustment)       *g_pfnSetSystemTimeAdjustment;          /**< NT 3.50+ */
 /** @} */
 
 /** @name API from NTDLL.DLL
@@ -135,6 +137,8 @@ void VGSvcWinResolveApis(void)
         RESOLVE_SYMBOL(Process32Next);
         RESOLVE_SYMBOL(Module32First);
         RESOLVE_SYMBOL(Module32Next);
+        RESOLVE_SYMBOL(GetSystemTimeAdjustment);
+        RESOLVE_SYMBOL(SetSystemTimeAdjustment);
         RTLdrClose(hLdrMod);
     }
 
