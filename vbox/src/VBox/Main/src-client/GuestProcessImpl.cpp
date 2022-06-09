@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 71301 2018-03-12 16:24:27Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 71345 2018-03-15 09:45:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1969,7 +1969,7 @@ int GuestProcessTool::init(GuestSession *pGuestSession, const GuestProcessStartu
     /* Make sure the process is hidden. */
     mStartupInfo.mFlags |= ProcessCreateFlag_Hidden;
 
-    int vrc = pSession->i_processCreateExInternal(mStartupInfo, pProcess);
+    int vrc = pSession->i_processCreateEx(mStartupInfo, pProcess);
     if (RT_SUCCESS(vrc))
     {
         int vrcGuest = VINF_SUCCESS;
