@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.h 67986 2017-07-17 11:10:18Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.h 68326 2017-08-07 18:03:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class declaration.
  */
@@ -169,8 +169,10 @@ class UIMediumDetailsWidget : public QIWithRetranslateUI<QWidget>
 
 signals:
 
-    /** Notifies listeners about data changed and whether it @a fDiffers. */
-    void sigDataChanged(bool fDiffers);
+    /** Notifies listeners about accept is allowed. */
+    void sigAcceptAllowed(bool fAllowed);
+    /** Notifies listeners about reject is allowed. */
+    void sigRejectAllowed(bool fAllowed);
 
     /** Notifies listeners about data change rejected and should be reseted. */
     void sigDataChangeRejected();
@@ -305,6 +307,9 @@ private:
 
         /** Holds the button-box instance. */
         QIDialogButtonBox *m_pButtonBox;
+
+        /** Holds whether options are valid. */
+        bool m_fValid;
     /** @} */
 
     /** @name Details variables.

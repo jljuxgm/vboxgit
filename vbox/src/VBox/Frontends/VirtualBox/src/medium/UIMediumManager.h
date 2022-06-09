@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 67765 2017-07-03 16:44:56Z vboxsync $ */
+/* $Id: UIMediumManager.h 68326 2017-08-07 18:03:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -63,8 +63,10 @@ signals:
 
     /** Notifies listeners about medium details-widget @a fVisible. */
     void sigMediumDetailsVisibilityChanged(bool fVisible);
-    /** Notifies listeners about medium details data @a fDiffers. */
-    void sigMediumDetailsDataChanged(bool fDiffers);
+    /** Notifies listeners about accept is @a fAllowed. */
+    void sigAcceptAllowed(bool fAllowed);
+    /** Notifies listeners about reject is @a fAllowed. */
+    void sigRejectAllowed(bool fAllowed);
 
 public:
 

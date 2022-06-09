@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 68326 2017-08-07 18:03:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1559,8 +1559,10 @@ void UIMediumManagerWidget::prepareDetailsWidget()
         /* Configure details-widget: */
         m_pDetailsWidget->setVisible(false);
         m_pDetailsWidget->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
-        connect(m_pDetailsWidget, &UIMediumDetailsWidget::sigDataChanged,
-                this, &UIMediumManagerWidget::sigMediumDetailsDataChanged);
+        connect(m_pDetailsWidget, &UIMediumDetailsWidget::sigAcceptAllowed,
+                this, &UIMediumManagerWidget::sigAcceptAllowed);
+        connect(m_pDetailsWidget, &UIMediumDetailsWidget::sigRejectAllowed,
+                this, &UIMediumManagerWidget::sigRejectAllowed);
         connect(m_pDetailsWidget, &UIMediumDetailsWidget::sigDataChangeRejected,
                 this, &UIMediumManagerWidget::sltResetMediumDetailsChanges);
         connect(m_pDetailsWidget, &UIMediumDetailsWidget::sigDataChangeAccepted,
@@ -2316,9 +2318,9 @@ void UIMediumManager::configureButtonBox()
             button(ButtonType_Apply), &QPushButton::setVisible);
     connect(widget(), &UIMediumManagerWidget::sigMediumDetailsVisibilityChanged,
             button(ButtonType_Reset), &QPushButton::setVisible);
-    connect(widget(), &UIMediumManagerWidget::sigMediumDetailsDataChanged,
+    connect(widget(), &UIMediumManagerWidget::sigAcceptAllowed,
             button(ButtonType_Apply), &QPushButton::setEnabled);
-    connect(widget(), &UIMediumManagerWidget::sigMediumDetailsDataChanged,
+    connect(widget(), &UIMediumManagerWidget::sigRejectAllowed,
             button(ButtonType_Reset), &QPushButton::setEnabled);
     connect(buttonBox(), &QIDialogButtonBox::clicked,
             this, &UIMediumManager::sltHandleButtonBoxClick);
