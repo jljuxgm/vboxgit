@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 72341 2018-05-25 10:05:20Z vboxsync $
 ## @file
 # Sub-Makefile for the Storage library.
 #
@@ -22,7 +22,6 @@ VBOX_PATH_STORAGE_SRC := $(PATH_SUB_CURRENT)
 
 if !defined(VBOX_ONLY_EXTPACKS)
  include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
- include $(PATH_SUB_CURRENT)/Debug/Makefile.kmk
 
  #
  # StorageLib - The storage Library.
