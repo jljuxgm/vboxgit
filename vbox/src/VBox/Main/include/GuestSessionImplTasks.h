@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 71979 2018-04-23 11:36:21Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.h 72001 2018-04-24 09:41:07Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -34,18 +34,6 @@ class Guest;
 class GuestSessionTask;
 class GuestSessionTaskInternalOpen;
 
-/**
- * Enumeration which specifies the file system source type.
- */
-enum GuestSessionFsSourceType
-{
-    /** Invalid / uknown source type, don't use. */
-    GuestSessionFsSourceType_Unknown = 0,
-    /** The source is a directory. */
-    GuestSessionFsSourceType_Dir,
-    /** The source is a file. */
-    GuestSessionFsSourceType_File
-};
 
 /**
  * Structure for keeping a file system source specification,
@@ -53,12 +41,12 @@ enum GuestSessionFsSourceType
  */
 struct GuestSessionFsSourceSpec
 {
-    Utf8Str                  strSource;
-    Utf8Str                  strFilter;
-    GuestSessionFsSourceType enmType;
-    PathStyle_T              enmPathStyle;
-    bool                     fDryRun;
-    bool                     fFollowSymlinks;
+    Utf8Str     strSource;
+    Utf8Str     strFilter;
+    FsObjType_T enmType;
+    PathStyle_T enmPathStyle;
+    bool        fDryRun;
+    bool        fFollowSymlinks;
     union
     {
         /** Directory-specific data. */
