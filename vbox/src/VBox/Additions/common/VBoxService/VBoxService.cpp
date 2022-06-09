@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 70171 2017-12-15 22:08:07Z vboxsync $ */
+/* $Id: VBoxService.cpp 70351 2017-12-27 04:26:13Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -673,9 +673,9 @@ int VGSvcStartServices(void)
                     VGSvcReportStatus(VBoxGuestFacilityStatus_Failed);
                     return rc;
                 }
+
                 g_aServices[j].fEnabled = false;
                 VGSvcVerbose(0, "Service '%s' was disabled because of missing functionality\n", g_aServices[j].pDesc->pszName);
-
             }
         }
 

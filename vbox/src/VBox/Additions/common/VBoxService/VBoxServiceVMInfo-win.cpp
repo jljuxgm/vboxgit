@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 70214 2017-12-19 03:24:44Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 70351 2017-12-27 04:26:13Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -158,7 +158,7 @@ static DECLCALLBACK(int) vgsvcWinVmInfoInitOnce(void *pvIgnored)
     }
     if (RT_FAILURE(rc))
     {
-        VGSvcVerbose(1, "Secur32.dll APIs are not availble (%Rrc)\n", rc);
+        VGSvcVerbose(1, "Secur32.dll APIs are not available (%Rrc)\n", rc);
         g_pfnLsaGetLogonSessionData = NULL;
         g_pfnLsaEnumerateLogonSessions = NULL;
         g_pfnLsaFreeReturnBuffer = NULL;
@@ -177,7 +177,7 @@ static DECLCALLBACK(int) vgsvcWinVmInfoInitOnce(void *pvIgnored)
     }
     if (RT_FAILURE(rc))
     {
-        VGSvcVerbose(1, "WtsApi32.dll APIs are not availble (%Rrc)\n", rc);
+        VGSvcVerbose(1, "WtsApi32.dll APIs are not available (%Rrc)\n", rc);
         g_pfnWTSFreeMemory = NULL;
         g_pfnWTSQuerySessionInformationA = NULL;
         Assert(g_WinVersion.dwMajorVersion < 5);
@@ -195,7 +195,7 @@ static DECLCALLBACK(int) vgsvcWinVmInfoInitOnce(void *pvIgnored)
     }
     if (RT_FAILURE(rc))
     {
-        VGSvcVerbose(1, "psapi.dll APIs are not availble (%Rrc)\n", rc);
+        VGSvcVerbose(1, "psapi.dll APIs are not available (%Rrc)\n", rc);
         g_pfnEnumProcesses = NULL;
         g_pfnGetModuleFileNameExW = NULL;
         Assert(g_WinVersion.dwMajorVersion < 5);
