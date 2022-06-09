@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 68026 2017-07-18 14:15:32Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -360,6 +360,7 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
         {
             memcpy(pNew->szName, pNIC->szName, cbNameLen);
             pNew->Uuid = pNIC->Uuid;
+            pNew->fWireless = pNIC->fWireless;
         }
         else
         {

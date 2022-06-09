@@ -1,4 +1,4 @@
-/* $Id: netif.h 67566 2017-06-22 15:42:31Z vboxsync $ */
+/* $Id: netif.h 68026 2017-07-18 14:15:32Z vboxsync $ */
 /** @file
  * Main - Network Interfaces.
  */
@@ -67,8 +67,9 @@ typedef struct NETIFINFO
     RTNETADDRIPV4  IPNetMask;
     RTNETADDRIPV6  IPv6Address;
     RTNETADDRIPV6  IPv6NetMask;
-    BOOL           bDhcpEnabled;
-    BOOL           bIsDefault;
+    BOOL           fDhcpEnabled;
+    BOOL           fIsDefault;
+    BOOL           fWireless;
     RTMAC          MACAddress;
     NETIFTYPE      enmMediumType;
     NETIFSTATUS    enmStatus;
