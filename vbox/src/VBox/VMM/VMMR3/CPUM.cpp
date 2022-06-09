@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 71342 2018-03-15 06:20:51Z vboxsync $ */
+/* $Id: CPUM.cpp 71443 2018-03-22 04:27:03Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1282,7 +1282,6 @@ VMMR3DECL(void) CPUMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
     {
         memset(pCtx->hwvirt.svm.CTX_SUFF(pVmcb), 0, SVM_VMCB_PAGES << PAGE_SHIFT);
         pCtx->hwvirt.svm.uMsrHSavePa = 0;
-        pCtx->hwvirt.svm.GCPhysVmcb = 0;
     }
 }
 
