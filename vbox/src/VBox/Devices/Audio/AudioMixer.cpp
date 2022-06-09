@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 68272 2017-08-03 08:25:32Z vboxsync $ */
+/* $Id: AudioMixer.cpp 68482 2017-08-21 11:25:00Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1623,7 +1623,7 @@ int AudioMixerSinkWrite(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *pvBuf, ui
     {
         if (!(pMixStream->pConn->pfnStreamGetStatus(pMixStream->pConn, pMixStream->pStream) & PDMAUDIOSTREAMSTS_FLAG_ENABLED))
         {
-            Log3Func(("\t%s: Stream '%s' disabled, skipping ...\n", pMixStream->pszName, pMixStream->pszName));
+            Log3Func(("[%s] Stream '%s' disabled, skipping ...\n", pSink->pszName, pMixStream->pszName));
             continue;
         }
 
