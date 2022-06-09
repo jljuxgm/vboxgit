@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 69994 2017-12-07 17:08:49Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 69995 2017-12-07 17:09:30Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -621,7 +621,7 @@ DECLCALLBACK(int) vgsvcTimeSyncWorker(bool volatile *pfShutdown)
                 }
 
                 bool fSetTimeInThisLoop = false;
-                uint32_t AbsDriftMilli = RTTimeSpecGetMilli(&AbsDrift);
+                uint64_t AbsDriftMilli = RTTimeSpecGetMilli(&AbsDrift);
                 if (AbsDriftMilli > MinAdjust)
                 {
                     /*
