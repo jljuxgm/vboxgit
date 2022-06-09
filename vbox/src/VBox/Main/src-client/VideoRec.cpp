@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 69724 2017-11-17 13:20:17Z vboxsync $ */
+/* $Id: VideoRec.cpp 70621 2018-01-18 09:43:34Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -1108,7 +1108,7 @@ int VideoRecStreamInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen)
                     break;
                 }
 
-                LogRel(("VideoRec: Recording screen #%u with %RU32x%RU32 @ %RU32 kbps, %u FPS\n",
+                LogRel(("VideoRec: Recording screen #%u with %RU32x%RU32 @ %RU32 kbps, %RU32 FPS\n",
                         uScreen, pCfg->Video.uWidth, pCfg->Video.uHeight, pCfg->Video.uRate, pCfg->Video.uFPS));
             }
 
