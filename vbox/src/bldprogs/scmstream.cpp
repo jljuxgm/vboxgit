@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 69166 2017-10-23 15:43:33Z vboxsync $ */
+/* $Id: scmstream.cpp 69207 2017-10-24 13:06:06Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -92,9 +92,8 @@ int ScmStreamInitForWriting(PSCMSTREAM pStream, PCSCMSTREAM pRelatedStream)
     scmStreamInitInternal(pStream, true /*fWriteOrRead*/);
 
     /* allocate stuff */
-    size_t cbEstimate = pRelatedStream
-                      ? pRelatedStream->cb + pRelatedStream->cb / 10
-                      : _64K;
+    size_t cbEstimate = !pRelatedStream ? _64K
+                      : pRelatedStream->cb > 0 ? pRelatedStream->cb + pRelatedStream->cb / 10 : 64;
     cbEstimate = RT_ALIGN(cbEstimate, _4K);
     pStream->pch = (char *)RTMemAlloc(cbEstimate);
     if (pStream->pch)
@@ -103,6 +102,8 @@ int ScmStreamInitForWriting(PSCMSTREAM pStream, PCSCMSTREAM pRelatedStream)
                               ? pRelatedStream->cLines + pRelatedStream->cLines / 10
                               : cbEstimate / 24;
         cLinesEstimate = RT_ALIGN(cLinesEstimate, 512);
+        if (cLinesEstimate == 0)
+            cLinesEstimate = 16;
         pStream->paLines = (PSCMSTREAMLINE)RTMemAlloc(cLinesEstimate * sizeof(SCMSTREAMLINE));
         if (pStream->paLines)
         {
@@ -254,7 +255,7 @@ bool ScmStreamIsText(PSCMSTREAM pStream)
     if (RTStrEnd(pStream->pch, pStream->cb))
         return false;
     if (!pStream->cb)
-        return false;
+        return true;
     return true;
 }
 
