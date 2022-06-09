@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 68441 2017-08-17 11:58:10Z vboxsync $ */
+/* $Id: VBoxAboutDlg.cpp 68442 2017-08-17 11:59:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
@@ -52,7 +52,7 @@ VBoxAboutDlg::VBoxAboutDlg(QWidget *pParent, const QString &strVersion)
     // On other hosts we will keep the current behavior for now.
     // First of all it's quite difficult to find native (Metro UI) Windows app which have About dialog at all.  But non-native
     // cross-platform apps (Qt Creator, VLC) centers About dialog according the app exactly.
-    : QIWithRetranslateUI2<QDialog>(pParent)
+    : QIWithRetranslateUI2<QIDialog>(pParent)
     , m_pPseudoParent(0)
 #endif
     , m_strVersion(strVersion)
