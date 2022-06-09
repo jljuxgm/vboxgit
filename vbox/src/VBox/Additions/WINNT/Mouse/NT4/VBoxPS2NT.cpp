@@ -1,4 +1,4 @@
-/* $Id: VBoxPS2NT.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxPS2NT.cpp 68636 2017-09-05 13:24:02Z vboxsync $ */
 /** @file
  * VBox NT4 Mouse Driver
  */
@@ -30,6 +30,7 @@ RT_C_DECLS_BEGIN
 #include <ntddmou.h>
 RT_C_DECLS_END
 
+#include <VBox/VMMDev.h>
 #include <VBox/VBoxGuestLib.h>
 
 /* not available on NT4 */
