@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 69708 2017-11-16 09:36:04Z vboxsync $ */
+/* $Id: UIGMachinePreview.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGMachinePreview class implementation.
  */
@@ -23,6 +23,7 @@
 # include <QGraphicsSceneContextMenuEvent>
 # include <QMenu>
 # include <QPainter>
+# include <QStyle>
 # include <QTimer>
 
 /* GUI includes: */

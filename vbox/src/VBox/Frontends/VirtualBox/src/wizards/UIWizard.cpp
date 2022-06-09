@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizard.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */
@@ -19,11 +19,12 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* Global includes: */
+/* Qt includes: */
 # include <QAbstractButton>
 # include <QLayout>
+# include <QStyle>
 
-/* Local includes: */
+/* GUI includes: */
 # include "UIIconPool.h"
 # include "UIWizard.h"
 # include "UIWizardPage.h"

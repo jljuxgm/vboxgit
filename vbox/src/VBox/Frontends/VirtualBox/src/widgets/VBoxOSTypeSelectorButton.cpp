@@ -1,4 +1,4 @@
-/* $Id: VBoxOSTypeSelectorButton.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxOSTypeSelectorButton.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxOSTypeSelectorButton class implementation.
  */
@@ -19,13 +19,14 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* VBox includes */
-# include "VBoxOSTypeSelectorButton.h"
-# include "VBoxGlobal.h"
-
 /* Qt includes */
 # include <QMenu>
 # include <QSignalMapper>
+# include <QStyle>
+
+/* GUI includes */
+# include "VBoxOSTypeSelectorButton.h"
+# include "VBoxGlobal.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 

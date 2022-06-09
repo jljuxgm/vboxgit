@@ -1,4 +1,4 @@
-/* $Id: QIDialog.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: QIDialog.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIDialog class implementation.
  */
@@ -18,6 +18,9 @@
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+/* Qt includes: */
+# include <QEventLoop>
 
 /* GUI includes: */
 # include "QIDialog.h"

@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -27,6 +27,7 @@
 #  include <iprt/win/windows.h> /* QGLWidget drags in Windows.h; -Wall forces us to use wrapper. */
 #  include <iprt/stdint.h>      /* QGLWidget drags in stdint.h; -Wall forces us to use wrapper. */
 # endif
+# include <QApplication>
 # include <QGLWidget>
 # include <QFile>
 # include <QTextStream>

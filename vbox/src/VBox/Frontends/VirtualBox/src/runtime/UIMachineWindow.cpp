@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 70756 2018-01-26 10:06:28Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -21,7 +21,9 @@
 
 /* Qt includes: */
 # include <QCloseEvent>
+# include <QGridLayout>
 # include <QProcess>
+# include <QStyle>
 # include <QTimer>
 
 /* GUI includes: */

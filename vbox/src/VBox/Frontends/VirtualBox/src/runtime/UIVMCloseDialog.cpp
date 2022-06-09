@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
@@ -20,13 +20,14 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QVBoxLayout>
-# include <QHBoxLayout>
-# include <QGridLayout>
-# include <QLabel>
-# include <QRadioButton>
 # include <QCheckBox>
+# include <QGridLayout>
+# include <QHBoxLayout>
+# include <QLabel>
 # include <QPushButton>
+# include <QRadioButton>
+# include <QStyle>
+# include <QVBoxLayout>
 
 /* GUI includes: */
 # include "UIIconPool.h"

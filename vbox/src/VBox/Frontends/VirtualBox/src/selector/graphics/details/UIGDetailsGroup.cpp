@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.cpp 69639 2017-11-10 12:25:43Z vboxsync $ */
+/* $Id: UIGDetailsGroup.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsGroup class implementation.
  */
@@ -21,6 +21,7 @@
 
 /* Qt include: */
 # include <QGraphicsScene>
+# include <QStyle>
 
 /* GUI includes: */
 # include "UIGDetailsGroup.h"

@@ -1,4 +1,4 @@
-/* $Id: UILineTextEdit.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UILineTextEdit.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UILineTextEdit class definitions.
  */
@@ -19,18 +19,19 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* VBox includes */
-# include "VBoxGlobal.h"
-# include "UILineTextEdit.h"
-# include "QIFileDialog.h"
-
-/* Qt includes */
+/* Qt includes: */
 # include <QDialogButtonBox>
 # include <QFile>
 # include <QLineEdit>
 # include <QPushButton>
 # include <QTextEdit>
 # include <QTextStream>
+# include <QVBoxLayout>
+
+/* GUI includes: */
+# include "QIFileDialog.h"
+# include "VBoxGlobal.h"
+# include "UILineTextEdit.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 

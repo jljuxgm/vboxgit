@@ -1,10 +1,10 @@
-/* $Id: VBoxGlobal.cpp 70113 2017-12-13 15:02:26Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -20,26 +20,27 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
+# include <QDesktopServices>
+# include <QDir>
 # include <QFileDialog>
+# include <QLocale>
+# include <QMenu>
+# include <QMutex>
+# include <QPainter>
+# include <QProcess>
+# include <QSpinBox>
+# include <QStandardPaths>
+# include <QThread>
+# include <QTimer>
+# include <QToolButton>
 # include <QToolTip>
 # include <QTranslator>
-#  include <QStandardPaths>
-# include <QDesktopServices>
-# include <QMutex>
-# include <QToolButton>
-# include <QProcess>
-# include <QThread>
-# include <QPainter>
-# include <QTimer>
-# include <QDir>
-# include <QLocale>
-# include <QSpinBox>
 # ifdef VBOX_WS_WIN
 #  include <QEventLoop>
 # endif /* VBOX_WS_WIN */
 # ifdef VBOX_WS_X11
-#  include <QTextBrowser>
 #  include <QScrollBar>
+#  include <QTextBrowser>
 #  include <QX11Info>
 # endif /* VBOX_WS_X11 */
 # ifdef VBOX_GUI_WITH_PIDFILE

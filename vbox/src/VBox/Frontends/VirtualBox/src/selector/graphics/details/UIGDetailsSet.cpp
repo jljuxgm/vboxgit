@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 69639 2017-11-10 12:25:43Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsSet class implementation.
  */
@@ -18,6 +18,9 @@
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+/* Qt includes: */
+# include <QStyle>
 
 /* GUI includes: */
 # include "UIGDetailsSet.h"

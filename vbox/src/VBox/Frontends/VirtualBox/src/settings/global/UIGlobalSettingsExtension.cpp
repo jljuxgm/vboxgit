@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class implementation.
  */
@@ -21,6 +21,7 @@
 
 /* Qt includes: */
 # include <QHeaderView>
+# include <QMenu>
 
 /* GUI includes: */
 # include "QIFileDialog.h"

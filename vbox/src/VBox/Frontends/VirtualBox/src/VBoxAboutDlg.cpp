@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 71006 2018-02-14 11:21:33Z vboxsync $ */
+/* $Id: VBoxAboutDlg.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
@@ -20,12 +20,14 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QDir>
 # include <QDialogButtonBox>
+# include <QDir>
 # include <QEvent>
 # include <QLabel>
 # include <QPainter>
 # include <QPushButton>
+# include <QStyle>
+# include <QVBoxLayout>
 
 /* GUI includes: */
 # include "UIConverter.h"

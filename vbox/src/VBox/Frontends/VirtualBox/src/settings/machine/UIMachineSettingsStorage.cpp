@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -22,6 +22,7 @@
 /* Qt includes: */
 # include <QHeaderView>
 # include <QItemEditorFactory>
+# include <QMenu>
 # include <QMouseEvent>
 # include <QScrollBar>
 # include <QStylePainter>

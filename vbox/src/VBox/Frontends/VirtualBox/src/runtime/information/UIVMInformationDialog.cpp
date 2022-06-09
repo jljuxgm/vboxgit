@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 71258 2018-03-07 13:53:41Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -20,8 +20,9 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QScrollBar>
 # include <QPushButton>
+# include <QScrollBar>
+# include <QVBoxLayout>
 
 /* GUI includes: */
 # include "UIVMInformationDialog.h"

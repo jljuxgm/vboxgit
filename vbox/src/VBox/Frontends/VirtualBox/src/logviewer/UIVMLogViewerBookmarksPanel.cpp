@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.cpp 70792 2018-01-29 13:12:06Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -23,10 +23,11 @@
 # include <QComboBox>
 # include <QFrame>
 # include <QHBoxLayout>
-# if defined(RT_OS_SOLARIS)
+# include <QLabel>
+# include <QStyle>
+# ifdef RT_OS_SOLARIS
 #  include <QFontDatabase>
 # endif
-# include <QLabel>
 
 /* GUI includes: */
 # include "QIToolButton.h"

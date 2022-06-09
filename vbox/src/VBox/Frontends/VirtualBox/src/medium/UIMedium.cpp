@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 71006 2018-02-14 11:21:33Z vboxsync $ */
+/* $Id: UIMedium.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -18,8 +18,11 @@
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
+# include <QApplication>
 # include <QDir>
+
 /* GUI includes: */
 # include "UIMedium.h"
 # include "VBoxGlobal.h"
@@ -27,9 +30,11 @@
 # include "UIErrorString.h"
 # include "UIExtraDataManager.h"
 # include "UIIconPool.h"
+
 /* COM includes: */
 # include "CMachine.h"
 # include "CSnapshot.h"
+
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 QString UIMedium::m_sstrNullID = QUuid().toString().remove('{').remove('}');

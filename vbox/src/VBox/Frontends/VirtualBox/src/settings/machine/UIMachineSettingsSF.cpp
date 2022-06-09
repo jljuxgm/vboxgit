@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -21,6 +21,7 @@
 
 /* Qt includes: */
 # include <QHeaderView>
+# include <QMenu>
 # include <QTimer>
 
 /* GUI includes: */

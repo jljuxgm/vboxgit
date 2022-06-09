@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 70523 2018-01-10 17:22:30Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIHostComboEditor class implementation.
  */
@@ -21,6 +21,7 @@
 
 /* Qt includes: */
 # include <QApplication>
+# include <QHBoxLayout>
 # include <QKeyEvent>
 # include <QStyleOption>
 # include <QStylePainter>

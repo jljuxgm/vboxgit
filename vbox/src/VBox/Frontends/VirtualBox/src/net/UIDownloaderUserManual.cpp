@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 70830 2018-01-31 13:22:39Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class implementation.
  */
@@ -19,11 +19,12 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* Global includes: */
+/* Qt includes: */
 # include <QDir>
 # include <QFile>
+# include <QVariant>
 
-/* Local includes: */
+/* GUI includes: */
 # include "UIDownloaderUserManual.h"
 # include "UINetworkReply.h"
 # include "QIFileDialog.h"

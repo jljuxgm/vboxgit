@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -19,14 +19,15 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* Global includes: */
+/* Qt includes: */
 # include <QDialogButtonBox>
 # include <QLabel>
 # include <QPushButton>
 # include <QTextEdit>
 # include <QTextStream>
+# include <QVBoxLayout>
 
-/* Local includes: */
+/* GUI includes: */
 # include "UIWizardImportApp.h"
 # include "UIWizardImportAppPageBasic1.h"
 # include "UIWizardImportAppPageBasic2.h"
