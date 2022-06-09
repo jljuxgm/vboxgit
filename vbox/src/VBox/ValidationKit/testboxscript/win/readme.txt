@@ -1,4 +1,4 @@
-$Id: readme.txt 67957 2017-07-14 07:18:48Z vboxsync $
+$Id: readme.txt 68414 2017-08-14 18:14:44Z vboxsync $
 
 
 Preparations:
@@ -106,6 +106,9 @@ Preparations:
         for /L %i in (6000,1,6100) do netsh firewall add portopening TCP %i "VRDP %i"
         for /L %i in (5000,1,5032) do netsh firewall add portopening TCP %i "NetPerf %i TCP"
         for /L %i in (5000,1,5032) do netsh firewall add portopening UDP %i "NetPerf %i UDP"
+        netsh firewall set icmpsetting type=ALL
+
+11b. Set a hostname which the test script can resolve to the host's IP address.
 
 12. Setup time server to "wei01-time.de.oracle.com" and update date/time.
 
