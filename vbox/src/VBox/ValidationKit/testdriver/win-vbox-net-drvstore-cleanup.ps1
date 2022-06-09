@@ -1,4 +1,4 @@
-# $Id: win-vbox-net-drvstore-cleanup.ps1 69447 2017-10-27 16:34:26Z vboxsync $
+# $Id: win-vbox-net-drvstore-cleanup.ps1 69452 2017-10-27 17:06:06Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - network cleanup script (powershell).
 #

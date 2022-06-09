@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-instantiate.c64 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: bs3-cmn-instantiate.c64 69452 2017-10-27 17:06:06Z vboxsync $ */
 /** @file
  * BS3Kit - 64-bit common C template instantiator.
  */
@@ -26,5 +26,4 @@
 
 
 #include "bs3-cmn-instantiate-common.h"
-
 
