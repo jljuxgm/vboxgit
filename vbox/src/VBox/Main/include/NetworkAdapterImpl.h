@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 66940 2017-05-17 16:44:04Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 67792 2017-07-05 11:30:48Z vboxsync $ */
 
 /** @file
  *
@@ -111,7 +111,7 @@ private:
     void i_generateMACAddress();
     HRESULT i_updateMacAddress(Utf8Str aMacAddress);
     void i_updateBandwidthGroup(BandwidthGroup *aBwGroup);
-    HRESULT i_checkAndSwitchFromNatNetworking(com::Utf8Str networkName);
+    HRESULT i_switchFromNatNetworking(const com::Utf8Str &aNatnetworkName);
     HRESULT i_switchToNatNetworking(const com::Utf8Str &aNatNetworkName);
 
 
