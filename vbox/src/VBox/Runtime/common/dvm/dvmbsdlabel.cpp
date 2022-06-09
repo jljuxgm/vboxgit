@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 69609 2017-11-07 18:59:38Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 69616 2017-11-08 13:58:58Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -520,6 +520,8 @@ DECLHIDDEN(RTDVMFMTOPS) g_rtDvmFmtBsdLbl =
 {
     /* pcszFmt */
     "BsdLabel",
+    /* enmFormat, */
+    RTDVMFORMATTYPE_BSD_LABLE,
     /* pfnProbe */
     rtDvmFmtBsdLblProbe,
     /* pfnOpen */

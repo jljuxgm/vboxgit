@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 69600 2017-11-06 15:36:02Z vboxsync $ */
+/* $Id: fatvfs.cpp 69616 2017-11-08 13:58:58Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -4146,7 +4146,7 @@ static DECLCALLBACK(int) rtFsFatDir_ReadDir(void *pvThis, PRTDIRENTRYEX pDirEntr
 
 
 /**
- * FAT file operations.
+ * FAT directory operations.
  */
 static const RTVFSDIROPS g_rtFsFatDirOps =
 {

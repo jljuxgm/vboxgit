@@ -1,4 +1,4 @@
-/* $Id: dvm.h 69609 2017-11-07 18:59:38Z vboxsync $ */
+/* $Id: dvm.h 69616 2017-11-08 13:58:58Z vboxsync $ */
 /** @file
  * IPRT - Disk Volume Management Internals.
  */
@@ -80,7 +80,9 @@ typedef const RTDVMDISK *PCRTDVMDISK;
 typedef struct RTDVMFMTOPS
 {
     /** Name of the format. */
-    const char *pcszFmt;
+    const char         *pszFmt;
+    /** The format type.   */
+    RTDVMFORMATTYPE     enmFormat;
 
     /**
      * Probes the given disk for known structures.

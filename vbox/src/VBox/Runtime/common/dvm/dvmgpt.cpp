@@ -1,4 +1,4 @@
-/* $Id: dvmgpt.cpp 69609 2017-11-07 18:59:38Z vboxsync $ */
+/* $Id: dvmgpt.cpp 69616 2017-11-08 13:58:58Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - GPT format backend.
  */
@@ -513,8 +513,10 @@ static DECLCALLBACK(int) rtDvmFmtGptVolumeWrite(RTDVMVOLUMEFMT hVolFmt, uint64_t
 
 RTDVMFMTOPS g_rtDvmFmtGpt =
 {
-    /* pcszFmt */
+    /* pszFmt */
     "GPT",
+    /* enmFormat, */
+    RTDVMFORMATTYPE_GPT,
     /* pfnProbe */
     rtDvmFmtGptProbe,
     /* pfnOpen */
