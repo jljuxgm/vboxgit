@@ -1,4 +1,4 @@
-/* $Id: Db.h 70836 2018-01-31 14:55:44Z vboxsync $ */
+/* $Id: Db.h 71689 2018-04-05 15:20:32Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -38,8 +38,6 @@ class Binding
 
 public:
     enum State { FREE, RELEASED, EXPIRED, OFFERED, ACKED };
-
-    typedef std::unary_function<const Binding *, bool> Match;
 
 private:
     const RTNETADDRIPV4 m_addr;
@@ -134,9 +132,6 @@ public:
     int init(const Config *pConfig);
 
     bool addressBelongs(RTNETADDRIPV4 addr) const { return m_pool.contains(addr); }
-
-    Binding *bindingById(const ClientId &id) const;
-    Binding *bindingByAddr(RTNETADDRIPV4 addr) const;
 
     Binding *allocateBinding(const DhcpClientMessage &req);
     bool releaseBinding(const DhcpClientMessage &req);
