@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 72261 2018-05-18 13:20:51Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 72275 2018-05-21 13:10:02Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -1739,7 +1739,7 @@ static bool vboxNetLwfWinForwardToIntNet(PVBOXNETLWF_MODULE pModuleCtx, PNET_BUF
     /* If the host (and the user) wants to see all packets we must not drop any. */
     if (pModuleCtx->fPassVmTrafficToHost && vboxNetLwfWinIsPromiscuous(pModuleCtx))
         fDropIt = false;
-        
+
     LogFlow(("<==vboxNetLwfWinForwardToIntNet: return '%s'\n",
              fDropIt ? (fDontDrop ? "do not drop (some)" : "drop it") : "do not drop (any)"));
     return fDropIt && !fDontDrop; /* Drop the list if ALL its buffers are being dropped! */
