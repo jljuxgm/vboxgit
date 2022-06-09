@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67438 2017-06-16 13:19:59Z vboxsync $ */
+/* $Id: DevHDA.cpp 67442 2017-06-16 14:02:37Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -4991,9 +4991,6 @@ static DECLCALLBACK(int) hdaStreamAsyncIOThread(RTTHREAD hThreadSelf, void *pvUs
     AssertPtr(pStream);
 
     PHDASTREAMSTATEAIO pAIO = &pCtx->pStream->State.AIO;
-
-    PRTCIRCBUF pCircBuf = pStream->State.pCircBuf;
-    AssertPtr(pCircBuf);
 
     ASMAtomicXchgBool(&pAIO->fStarted, true);
 
