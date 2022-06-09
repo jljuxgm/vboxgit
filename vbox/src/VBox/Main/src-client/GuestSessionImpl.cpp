@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 72007 2018-04-24 15:33:09Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 72045 2018-04-26 15:39:10Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -811,16 +811,16 @@ HRESULT GuestSession::i_copyFromGuest(const GuestSessionFsSourceSet &SourceSet,
                            tr("Starting thread for copying from guest to \"%s\" on the host failed"), strDestination.c_str());
 
     }
-    catch(std::bad_alloc &)
+    catch (std::bad_alloc &)
     {
         hrc = E_OUTOFMEMORY;
     }
-    catch(HRESULT eHR)
+    catch (HRESULT eHR)
     {
         hrc = eHR;
-        LogFlowThisFunc(("Exception was caught in the function\n"));
     }
 
+    LogFlowFunc(("Returning %Rhrc\n", hrc));
     return hrc;
 }
 
@@ -912,16 +912,16 @@ HRESULT GuestSession::i_copyToGuest(const GuestSessionFsSourceSet &SourceSet,
                            tr("Starting thread for copying from host to \"%s\" on the guest failed"), strDestination.c_str());
 
     }
-    catch(std::bad_alloc &)
+    catch (std::bad_alloc &)
     {
         hrc = E_OUTOFMEMORY;
     }
-    catch(HRESULT eHR)
+    catch (HRESULT eHR)
     {
         hrc = eHR;
-        LogFlowThisFunc(("Exception was caught in the function\n"));
     }
 
+    LogFlowFunc(("Returning %Rhrc\n", hrc));
     return hrc;
 }
 

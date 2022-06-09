@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 72001 2018-04-24 09:41:07Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.h 72045 2018-04-26 15:39:10Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -172,9 +172,9 @@ public:
         return S_OK;
     }
 
-    const ComObjPtr<Progress>& GetProgressObject() const { return mProgress; }
+    const ComObjPtr<Progress>& GetProgressObject(void) const { return mProgress; }
 
-    const ComObjPtr<GuestSession>& GetSession() const { return mSession; }
+    const ComObjPtr<GuestSession>& GetSession(void) const { return mSession; }
 
 protected:
 
