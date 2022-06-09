@@ -1,4 +1,4 @@
-/* $Id: RTFileSetAllocationSize-linux.cpp 59513 2016-01-28 14:53:22Z vboxsync $ */
+/* $Id: RTFileSetAllocationSize-linux.cpp 68401 2017-08-13 14:44:30Z vboxsync $ */
 /** @file
  * IPRT - RTFileSetAllocationSize, linux implementation.
  */
@@ -56,7 +56,7 @@ RTDECL(int) RTFileSetAllocationSize(RTFILE hFile, uint64_t cbSize, uint32_t fFla
                     VERR_NOT_SUPPORTED);
 
     int rc = VINF_SUCCESS;
-    PFNLNXFALLOCATE pfnLnxFAllocate = (PFNLNXFALLOCATE)(uintptr_t)dlsym(RTLD_DEFAULT, "fallocate");
+    PFNLNXFALLOCATE pfnLnxFAllocate = (PFNLNXFALLOCATE)(uintptr_t)dlsym(RTLD_DEFAULT, "fallocate64");
     if (VALID_PTR(pfnLnxFAllocate))
     {
         int fLnxFlags = (fFlags & RTFILE_ALLOC_SIZE_F_KEEP_SIZE) ? LNX_FALLOC_FL_KEEP_SIZE : 0;
