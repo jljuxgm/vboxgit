@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 70611 2018-01-17 15:47:10Z vboxsync $
+# $Id: txsclient.py 70615 2018-01-17 20:28:16Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70611 $"
+__version__ = "$Revision: 70615 $"
 
 # Standard Python imports.
 import array;
@@ -1380,7 +1380,7 @@ class Session(TdTaskBase):
             cMsTimeout, fIgnoreErrors);
 
     #
-    # Public methods - file system
+    # Public methods - system
     #
 
     def asyncReboot(self, cMsTimeout = 30000, fIgnoreErrors = False):

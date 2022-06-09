@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tst-txsclient.py 70611 2018-01-17 15:47:10Z vboxsync $
+# $Id: tst-txsclient.py 70615 2018-01-17 20:28:16Z vboxsync $
 
 """
 Simple testcase for txsclient.py.
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70611 $"
+__version__ = "$Revision: 70615 $"
 
 # Standard python imports.
 import os
@@ -74,6 +74,7 @@ def main(asArgs): # pylint: disable=C0111,R0914,R0915
     uPort           = None;
     fReversedSetup  = False;
     fReboot         = False;
+    fShutdown       = False;
     fStdTests       = True;
 
     i = 1;
@@ -92,10 +93,17 @@ def main(asArgs): # pylint: disable=C0111,R0914,R0915
             i = i + 2;
         elif asArgs[i] == '--reboot':
             fReboot   = True;
+            fShutdown = False;
+            fStdTests = False;
+            i = i + 1;
+        elif asArgs[i] == '--shutdown':
+            fShutdown = True;
+            fReboot   = False;
             fStdTests = False;
             i = i + 1;
         elif asArgs[i] == '--help':
-            print('tst-txsclient.py [--hostname <addr|name>] [--port <num>] [--timeout <cMS>] [--reboot] [--reversed-setup]');
+            print('tst-txsclient.py [--hostname <addr|name>] [--port <num>] [--timeout <cMS>] '
+                  '[--reboot|--shutdown] [--reversed-setup]');
             return 0;
         else:
             print('Unknown argument: %s' % (asArgs[i]));
@@ -275,6 +283,11 @@ def main(asArgs): # pylint: disable=C0111,R0914,R0915
             print('TESTING: syncReboot...');
             rc = oSession.syncReboot();
             print('%s: REBOOT() -> %s' % (boolRes(rc), rc));
+        elif fShutdown:
+            print('TESTING: syncShutdown...');
+            rc = oSession.syncShutdown();
+            print('%s: SHUTDOWN() -> %s' % (boolRes(rc), rc));
+
 
     if g_cFailures != 0:
         print('tst-txsclient.py: %u out of %u test failed' % (g_cFailures, g_cTests));
