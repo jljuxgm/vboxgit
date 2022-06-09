@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 68164 2017-07-28 20:59:17Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 68170 2017-07-29 10:17:46Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -149,7 +149,7 @@ typedef struct UnattendedInstallationDisk
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Unattended::Unattended()
-    : mhThreadReconfigureVM(NIL_RTNATIVETHREAD), mfGuestOs64Bit(false), mfRtcUseUtc(false)
+    : mhThreadReconfigureVM(NIL_RTNATIVETHREAD), mfRtcUseUtc(false), mfGuestOs64Bit(false)
     , mpInstaller(NULL), mpTimeZoneInfo(NULL), mfIsDefaultAuxiliaryBasePath(true)
 { }
 
