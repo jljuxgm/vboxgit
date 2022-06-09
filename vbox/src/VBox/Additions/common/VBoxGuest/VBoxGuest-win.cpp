@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 70227 2017-12-19 18:41:19Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 70245 2017-12-20 15:46:13Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -1017,6 +1017,7 @@ static void vgdrvNtDeleteDeviceResources(PVBOXGUESTDEVEXTWIN pDevExt)
  * Used during removal and legacy module unloading.  Must have called
  * vgdrvNtDeleteDeviceResources.
  *
+ * @param   pDevObj         Device object.
  * @param   pDevExt         The device extension.
  */
 static void vgdrvNtDeleteDeviceFundamentAndUnlink(PDEVICE_OBJECT pDevObj, PVBOXGUESTDEVEXTWIN pDevExt)
