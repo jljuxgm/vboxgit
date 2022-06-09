@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 71176 2018-03-02 13:30:59Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 71517 2018-03-26 15:50:44Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1498,6 +1498,9 @@ static RTEXITCODE vgsvcToolboxStat(int argc, char **argv)
 
             case VERR_PATH_NOT_FOUND:
                 return (RTEXITCODE)VBOXSERVICETOOLBOX_STAT_EXITCODE_PATH_NOT_FOUND;
+
+            case VERR_NET_PATH_NOT_FOUND:
+                return (RTEXITCODE)VBOXSERVICETOOLBOX_STAT_EXITCODE_NET_PATH_NOT_FOUND;
 
             default:
 #ifdef DEBUG_andy

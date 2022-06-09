@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 71483 2018-03-23 11:26:08Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 71517 2018-03-26 15:50:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2505,10 +2505,11 @@ int GuestProcessTool::exitCodeToRc(const char *pszTool, int32_t iExitCode)
     {
         switch (iExitCode)
         {
-            case VBOXSERVICETOOLBOX_STAT_EXITCODE_ACCESS_DENIED:  return VERR_ACCESS_DENIED;
-            case VBOXSERVICETOOLBOX_STAT_EXITCODE_FILE_NOT_FOUND: return VERR_FILE_NOT_FOUND;
-            case VBOXSERVICETOOLBOX_STAT_EXITCODE_PATH_NOT_FOUND: return VERR_PATH_NOT_FOUND;
-            default:                                              break;
+            case VBOXSERVICETOOLBOX_STAT_EXITCODE_ACCESS_DENIED:      return VERR_ACCESS_DENIED;
+            case VBOXSERVICETOOLBOX_STAT_EXITCODE_FILE_NOT_FOUND:     return VERR_FILE_NOT_FOUND;
+            case VBOXSERVICETOOLBOX_STAT_EXITCODE_PATH_NOT_FOUND:     return VERR_PATH_NOT_FOUND;
+            case VBOXSERVICETOOLBOX_STAT_EXITCODE_NET_PATH_NOT_FOUND: return VERR_NET_PATH_NOT_FOUND;
+            default:                                                  break;
         }
     }
     else if (!RTStrICmp(pszTool, VBOXSERVICE_TOOL_MKDIR))
