@@ -1,4 +1,4 @@
-/* $Id: EMR3Nem.cpp 70979 2018-02-13 01:38:48Z vboxsync $ */
+/* $Id: EMR3Nem.cpp 70980 2018-02-13 01:41:24Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - NEM interface.
  */
@@ -466,7 +466,7 @@ VBOXSTRICTRC emR3NemExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
             ||  VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_ALL_MASK))
         {
             rcStrict = emR3ForcedActions(pVM, pVCpu, VBOXSTRICTRC_TODO(rcStrict));
-            VBOXVMM_EM_FF_ALL_RET(pVCpu, rcStrict);
+            VBOXVMM_EM_FF_ALL_RET(pVCpu, VBOXSTRICTRC_VAL(rcStrict));
             if (   rcStrict != VINF_SUCCESS
                 && rcStrict != VINF_EM_RESCHEDULE_HM)
             {
