@@ -1,4 +1,4 @@
-/* $Id: precomp.h 67162 2017-05-31 10:17:25Z vboxsync $*/
+/* $Id: precomp.h 67535 2017-06-21 10:47:28Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -650,7 +650,7 @@
 #include "UISettingsSelector.h"
 #include "UISnapshotDetailsWidget.h"
 #include "UISnapshotPane.h"
-#include "VBoxTakeSnapshotDlg.h"
+#include "UITakeSnapshotDialog.h"
 #ifdef RT_OS_DARWIN
 # include "VBoxUtils-darwin.h"
 #endif
