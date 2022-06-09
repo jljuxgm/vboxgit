@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 70680 2018-01-22 16:41:57Z vboxsync $ */
+/* $Id: UIMachineView.cpp 70681 2018-01-22 16:45:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -495,6 +495,7 @@ void UIMachineView::sltHandleScaleFactorChange(const QString &strMachineID)
     /* Take the scale-factor into account: */
     const double dScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid());
     const bool fUseUnscaledHiDPIOutput = gEDataManager->useUnscaledHiDPIOutput(vboxGlobal().managedVMUuid());
+    Q_UNUSED(fUseUnscaledHiDPIOutput);
     frameBuffer()->setScaleFactor(dScaleFactor);
     /* Propagate the scale-factor to 3D service if necessary: */
     if (machine().GetAccelerate3DEnabled() && vboxGlobal().is3DAvailable())
