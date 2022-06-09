@@ -1,4 +1,4 @@
-/* $Id: RTFileSetMode-r3-nt.cpp 69795 2017-11-21 16:29:49Z vboxsync $ */
+/* $Id: RTFileSetMode-r3-nt.cpp 69802 2017-11-22 09:57:07Z vboxsync $ */
 /** @file
  * IPRT - RTFileSetMode, Native NT.
  */
@@ -80,5 +80,3 @@ RTDECL(int) RTFileSetMode(RTFILE hFile, RTFMODE fMode)
 
     return rtNtFileSetModeWorker(hNative, fMode);
 }
-
-
