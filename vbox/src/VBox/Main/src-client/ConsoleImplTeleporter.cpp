@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -19,12 +19,14 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_MAIN_CONSOLE
+#include "LoggingNew.h"
+
 #include "ConsoleImpl.h"
 #include "Global.h"
 #include "ProgressImpl.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
 #include "HashedPw.h"
 
 #include <iprt/asm.h>

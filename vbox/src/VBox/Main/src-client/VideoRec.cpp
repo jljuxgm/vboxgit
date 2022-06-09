@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 67642 2017-06-27 15:38:21Z vboxsync $ */
+/* $Id: VideoRec.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -15,7 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#define LOG_GROUP LOG_GROUP_MAIN
+#define LOG_GROUP LOG_GROUP_MAIN_DISPLAY
+#include "LoggingNew.h"
 
 #include <stdexcept>
 #include <vector>

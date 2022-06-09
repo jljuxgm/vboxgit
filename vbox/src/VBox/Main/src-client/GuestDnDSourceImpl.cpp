@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 63475 2016-08-15 13:50:49Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -19,6 +19,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_GUEST_DND //LOG_GROUP_MAIN_GUESTDNDSOURCE
+#include "LoggingNew.h"
+
 #include "GuestImpl.h"
 #include "GuestDnDSourceImpl.h"
 #include "GuestDnDPrivate.h"
@@ -38,11 +41,6 @@
 
 #include <VBox/com/array.h>
 
-#ifdef LOG_GROUP
- #undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_GUEST_DND
-#include <VBox/log.h>
 
 /**
  * Base class for a source task.

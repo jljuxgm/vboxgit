@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,11 +15,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_KEYBOARD
+#include "LoggingNew.h"
+
 #include "KeyboardImpl.h"
 #include "ConsoleImpl.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
 
 #include <VBox/com/array.h>
 #include <VBox/vmm/pdmdrv.h>

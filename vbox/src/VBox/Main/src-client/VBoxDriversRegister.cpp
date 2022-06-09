@@ -1,4 +1,4 @@
-/* $Id: VBoxDriversRegister.cpp 65171 2017-01-06 09:56:08Z vboxsync $ */
+/* $Id: VBoxDriversRegister.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  *
  * Main driver registration.
@@ -20,6 +20,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_MAIN
+#include "LoggingNew.h"
+
 #include "MouseImpl.h"
 #include "KeyboardImpl.h"
 #include "DisplayImpl.h"
@@ -40,10 +43,9 @@
 # include "PCIRawDevImpl.h"
 #endif
 
-#include "Logging.h"
-
 #include <VBox/vmm/pdmdrv.h>
 #include <VBox/version.h>
+
 
 /**
  * Register the main drivers.

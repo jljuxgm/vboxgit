@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 66217 2017-03-23 09:33:56Z vboxsync $ */
+/* $Id: SessionImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -15,16 +15,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_SESSION
+#include "LoggingNew.h"
+
 #include "SessionImpl.h"
 #include "ConsoleImpl.h"
 #include "Global.h"
 #include "ClientTokenHolder.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
 
 #include <VBox/err.h>
 #include <iprt/process.h>
+
 
 /**
  *  Local macro to check whether the session is open and return an error if not.

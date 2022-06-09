@@ -1,4 +1,4 @@
-/* $Id: ClientTokenHolder.cpp 63239 2016-08-10 09:39:08Z vboxsync $ */
+/* $Id: ClientTokenHolder.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  *
  * VirtualBox API client session token holder (in the client process)
@@ -15,6 +15,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#define LOG_GROUP LOG_GROUP_MAIN_SESSION
+#include "LoggingNew.h"
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 66870 2017-05-11 10:35:16Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -14,6 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#define LOG_GROUP LOG_GROUP_MAIN_CONSOLE
+#include "LoggingNew.h"
 
 /** @todo Move the TAP mess back into the driver! */
 #if defined(RT_OS_WINDOWS)
@@ -77,7 +80,6 @@
 
 #include "VBoxEvents.h"
 #include "AutoCaller.h"
-#include "Logging.h"
 #include "ThreadTask.h"
 
 #include <VBox/com/array.h>

@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 64978 2016-12-21 12:52:53Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -19,6 +19,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_GUEST_DND //LOG_GROUP_MAIN_GUESTDNDTARGET
+#include "LoggingNew.h"
+
 #include "GuestImpl.h"
 #include "GuestDnDTargetImpl.h"
 #include "ConsoleImpl.h"
@@ -40,12 +43,6 @@
 
 #include <VBox/GuestHost/DragAndDrop.h>
 #include <VBox/HostServices/Service.h>
-
-#ifdef LOG_GROUP
- #undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_GUEST_DND
-#include <VBox/log.h>
 
 
 /**

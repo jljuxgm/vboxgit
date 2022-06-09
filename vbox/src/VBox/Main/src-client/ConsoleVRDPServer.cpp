@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 65164 2017-01-05 17:45:12Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -14,6 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#define LOG_GROUP LOG_GROUP_MAIN_CONSOLE
+#include "LoggingNew.h"
 
 #include "ConsoleVRDPServer.h"
 #include "ConsoleImpl.h"
@@ -34,7 +37,6 @@
 
 #include "Global.h"
 #include "AutoCaller.h"
-#include "Logging.h"
 
 #include <iprt/asm.h>
 #include <iprt/alloca.h>
@@ -47,6 +49,7 @@
 #include <VBox/RemoteDesktop/VRDEOrders.h>
 #include <VBox/com/listeners.h>
 #include <VBox/HostServices/VBoxCrOpenGLSvc.h>
+
 
 class VRDPConsoleListener
 {

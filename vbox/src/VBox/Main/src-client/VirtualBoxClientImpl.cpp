@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 66926 2017-05-17 09:07:37Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,11 +15,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_VIRTUALBOXCLIENT
+#include "LoggingNew.h"
+
 #include "VirtualBoxClientImpl.h"
 
 #include "AutoCaller.h"
 #include "VBoxEvents.h"
-#include "Logging.h"
 #include "VBox/com/ErrorInfo.h"
 
 #include <iprt/asm.h>

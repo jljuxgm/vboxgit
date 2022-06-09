@@ -1,6 +1,5 @@
-/* $Id: DisplaySourceBitmapImpl.cpp 63259 2016-08-10 12:37:42Z vboxsync $ */
+/* $Id: DisplaySourceBitmapImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
- *
  * Bitmap of a guest screen implementation.
  */
 
@@ -16,8 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_DISPLAYSOURCEBITMAP
+#include "LoggingNew.h"
+
 #include "DisplayImpl.h"
-#include "Logging.h"
 
 /*
  * DisplaySourceBitmap implementation.

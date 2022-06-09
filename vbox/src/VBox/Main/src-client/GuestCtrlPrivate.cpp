@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 66900 2017-05-15 16:30:10Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -19,6 +19,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_GUEST_CONTROL
+#include "LoggingNew.h"
+
 #ifndef VBOX_WITH_GUEST_CONTROL
 # error "VBOX_WITH_GUEST_CONTROL must defined in this file"
 #endif
@@ -32,12 +35,6 @@
 #ifdef DEBUG
 # include <iprt/file.h>
 #endif /* DEBUG */
-
-#ifdef LOG_GROUP
- #undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_GUEST_CONTROL
-#include <VBox/log.h>
 
 
 

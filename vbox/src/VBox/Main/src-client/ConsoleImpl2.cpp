@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 67642 2017-06-27 15:38:21Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -24,6 +24,8 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_MAIN_CONSOLE
+#include "LoggingNew.h"
 
 // VBoxNetCfg-win.h needs winsock2.h and thus MUST be included before any other
 // header file includes Windows.h.
@@ -49,7 +51,6 @@
 #include "SchemaDefs.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
 
 #include <iprt/base64.h>
 #include <iprt/buildconfig.h>

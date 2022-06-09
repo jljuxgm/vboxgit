@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 65734 2017-02-10 15:45:38Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -20,6 +20,8 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
+#include "LoggingNew.h"
+
 #include <VBox/log.h>
 #include "DrvAudioVRDE.h"
 #include "ConsoleImpl.h"

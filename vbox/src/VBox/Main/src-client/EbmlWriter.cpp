@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.cpp 67777 2017-07-04 13:46:51Z vboxsync $ */
+/* $Id: EbmlWriter.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container handling.
  */
@@ -15,6 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_DISPLAY
+#include "LoggingNew.h"
 
 #include <list>
 #include <map>
@@ -35,7 +37,6 @@
 
 #include "EbmlWriter.h"
 #include "EbmlMkvIDs.h"
-#include "Logging.h"
 
 
 class Ebml

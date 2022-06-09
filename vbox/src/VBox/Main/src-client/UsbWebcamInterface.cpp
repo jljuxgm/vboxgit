@@ -1,4 +1,4 @@
-/* $Id: UsbWebcamInterface.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
+/* $Id: UsbWebcamInterface.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * UsbWebcamInterface - Driver Interface for USB Webcam emulation.
  */
@@ -17,6 +17,8 @@
 
 
 #define LOG_GROUP LOG_GROUP_USB_WEBCAM
+#include "LoggingNew.h"
+
 #include "UsbWebcamInterface.h"
 #include "ConsoleImpl.h"
 #include "ConsoleVRDPServer.h"

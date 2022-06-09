@@ -1,6 +1,5 @@
-/* $Id: EmulatedUSBImpl.cpp 66891 2017-05-15 13:45:23Z vboxsync $ */
+/* $Id: EmulatedUSBImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
- *
  * Emulated USB manager implementation.
  */
 
@@ -16,11 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#define LOG_GROUP_MAIN_OVERRIDE LOG_GROUP_MAIN_EMULATEDUSB
+#define LOG_GROUP LOG_GROUP_MAIN_EMULATEDUSB
+#include "LoggingNew.h"
 
 #include "EmulatedUSBImpl.h"
 #include "ConsoleImpl.h"
-#include "Logging.h"
 
 #include <VBox/vmm/pdmusb.h>
 

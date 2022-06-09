@@ -1,4 +1,4 @@
-/* $Id: HGCMThread.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: HGCMThread.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager Threads
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#define LOG_GROUP_MAIN_OVERRIDE LOG_GROUP_HGCM
-#include "Logging.h"
+#define LOG_GROUP LOG_GROUP_HGCM
+#include "LoggingNew.h"
 
 #include "HGCMThread.h"
 

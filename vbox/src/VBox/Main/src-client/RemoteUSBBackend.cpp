@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBBackend.cpp 65125 2017-01-04 17:34:28Z vboxsync $ */
+/* $Id: RemoteUSBBackend.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VirtualBox Remote USB backend
  */
@@ -16,6 +16,8 @@
  */
 
 #define LOG_GROUP LOG_GROUP_USB_REMOTE
+#include "LoggingNew.h"
+
 #include "ConsoleImpl.h"
 #include "ConsoleVRDPServer.h"
 #include "RemoteUSBBackend.h"

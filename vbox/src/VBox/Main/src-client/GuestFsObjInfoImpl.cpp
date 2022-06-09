@@ -1,4 +1,4 @@
-/* $Id: GuestFsObjInfoImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file system object information handling.
  */
@@ -19,6 +19,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_GUEST_CONTROL // LOG_GROUP_MAIN_GUESTFSOBJINFO
+#include "LoggingNew.h"
+
 #ifndef VBOX_WITH_GUEST_CONTROL
 # error "VBOX_WITH_GUEST_CONTROL must defined in this file"
 #endif
@@ -30,11 +33,6 @@
 
 #include <VBox/com/array.h>
 
-#ifdef LOG_GROUP
- #undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_GUEST_CONTROL
-#include <VBox/log.h>
 
 
 // constructor / destructor

@@ -1,4 +1,4 @@
-/* $Id: UsbCardReader.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
+/* $Id: UsbCardReader.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * UsbCardReader - Driver Interface to USB Smart Card Reader emulation.
  */
@@ -20,6 +20,8 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_USB_CARDREADER
+#include "LoggingNew.h"
+
 #include "UsbCardReader.h"
 #include "ConsoleImpl.h"
 #include "ConsoleVRDPServer.h"

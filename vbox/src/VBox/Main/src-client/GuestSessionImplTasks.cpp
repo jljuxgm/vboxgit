@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 64939 2016-12-17 01:06:47Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -19,6 +19,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_GUEST_CONTROL //LOG_GROUP_MAIN_GUESTSESSION
+#include "LoggingNew.h"
+
 #include "GuestImpl.h"
 #ifndef VBOX_WITH_GUEST_CONTROL
 # error "VBOX_WITH_GUEST_CONTROL must defined in this file"
@@ -36,12 +39,6 @@
 #include <iprt/env.h>
 #include <iprt/file.h> /* For CopyTo/From. */
 #include <iprt/path.h>
-
-#ifdef LOG_GROUP
- #undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_GUEST_CONTROL
-#include <VBox/log.h>
 
 
 /*********************************************************************************************************************************

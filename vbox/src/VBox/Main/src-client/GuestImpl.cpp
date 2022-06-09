@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 67793 2017-07-05 11:42:33Z vboxsync $ */
+/* $Id: GuestImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -15,6 +15,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_GUEST
+#include "LoggingNew.h"
+
 #include "GuestImpl.h"
 #ifdef VBOX_WITH_GUEST_CONTROL
 # include "GuestSessionImpl.h"
@@ -28,7 +31,6 @@
 #include "VMMDev.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
 #include "Performance.h"
 #include "VBoxEvents.h"
 

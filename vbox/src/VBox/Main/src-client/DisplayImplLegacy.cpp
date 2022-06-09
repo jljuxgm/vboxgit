@@ -1,6 +1,6 @@
-/* $Id: DisplayImplLegacy.cpp 67531 2017-06-21 09:17:51Z vboxsync $ */
+/* $Id: DisplayImplLegacy.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
- * VirtualBox IDisplay implementation
+ * VirtualBox IDisplay implementation, helpers for legacy GAs.
  *
  * Methods and helpers to support old guest additions 3.x or older.
  * This is not used by the current guest additions.
@@ -18,12 +18,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_DISPLAY
+#include "LoggingNew.h"
+
 #include "DisplayImpl.h"
 #include "ConsoleImpl.h"
 #include "ConsoleVRDPServer.h"
 #include "VMMDev.h"
-
-#include "Logging.h"
 
 /* generated header */
 #include "VBoxEvents.h"

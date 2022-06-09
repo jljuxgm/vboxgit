@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,12 +15,15 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_USBDEVICE
+#include "LoggingNew.h"
+
 #include "USBDeviceImpl.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
 
 #include <iprt/cpp/utils.h>
+
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////

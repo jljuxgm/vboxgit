@@ -1,6 +1,5 @@
-/* $Id: HGCM.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
+/* $Id: HGCM.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
- *
  * HGCM (Host-Guest Communication Manager)
  */
 
@@ -16,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#define LOG_GROUP_MAIN_OVERRIDE LOG_GROUP_HGCM
-#include "Logging.h"
+#define LOG_GROUP LOG_GROUP_HGCM
+#include "LoggingNew.h"
 
 #include "HGCM.h"
 #include "HGCMThread.h"

@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 67531 2017-06-21 09:17:51Z vboxsync $ */
+/* $Id: DisplayImpl.h 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -588,5 +588,5 @@ private:
     Data m;
 };
 
-#endif // ____H_DISPLAYIMPL
+#endif // !____H_DISPLAYIMPL
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

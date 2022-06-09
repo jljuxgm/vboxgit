@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 65550 2017-01-31 16:26:34Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -19,13 +19,15 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_MAIN_MACHINEDEBUGGER
+#include "LoggingNew.h"
+
 #include "MachineDebuggerImpl.h"
 
 #include "Global.h"
 #include "ConsoleImpl.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
 
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/patm.h>

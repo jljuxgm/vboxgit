@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
+/* $Id: MouseImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,6 +15,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_MOUSE
+#include "LoggingNew.h"
+
 #include <iprt/cpp/utils.h>
 
 #include "MouseImpl.h"
@@ -23,7 +26,6 @@
 #include "MousePointerShapeWrap.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
 
 #include <VBox/vmm/pdmdrv.h>
 #include <VBox/VMMDev.h>

@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 63182 2016-08-08 16:16:42Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -14,6 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#define LOG_GROUP LOG_GROUP_GUEST_CONTROL
+#include "LoggingNew.h"
 
 #include "GuestImpl.h"
 #ifdef VBOX_WITH_GUEST_CONTROL
@@ -43,12 +46,6 @@
 #include <VBox/vmm/pgm.h>
 
 #include <memory>
-
-#ifdef LOG_GROUP
- #undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_GUEST_CONTROL
-#include <VBox/log.h>
 
 
 /*

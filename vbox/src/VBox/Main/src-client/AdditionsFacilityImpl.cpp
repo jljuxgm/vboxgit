@@ -1,4 +1,4 @@
-/* $Id: AdditionsFacilityImpl.cpp 63259 2016-08-10 12:37:42Z vboxsync $ */
+/* $Id: AdditionsFacilityImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -16,11 +16,14 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_ADDITIONSFACILITY
+#include "LoggingNew.h"
+
 #include "AdditionsFacilityImpl.h"
 #include "Global.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
+
 
 /* static */
 const AdditionsFacility::FacilityInfo AdditionsFacility::s_aFacilityInfo[8] =
