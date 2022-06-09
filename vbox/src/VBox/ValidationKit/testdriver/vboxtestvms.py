@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 70791 2018-01-29 12:32:16Z vboxsync $
+# $Id: vboxtestvms.py 71959 2018-04-22 12:53:58Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70791 $"
+__version__ = "$Revision: 71959 $"
 
 # Standard Python imports.
 import copy;
@@ -117,6 +117,8 @@ g_aaNameToDetails = \
     [ 'Linux_64',       'OpenSUSE_64',           g_k64,    1, 256, ['opensuse[0-9]*-64', 'suse[0-9]*-64', ]],
     [ 'Linux',          'Ubuntu',                g_k32,    1, 256, ['ubuntu[0-9]*', ]],
     [ 'Linux_64',       'Ubuntu_64',             g_k64,    1, 256, ['ubuntu[0-9]*-64', ]],
+    [ 'Linux',          'ArchLinux',             g_k32,    1, 256, ['arch[0-9]*', ]],
+    [ 'Linux_64',       'ArchLinux_64',          g_k64,    1, 256, ['arch[0-9]*-64', ]],
     [ 'Solaris',        'Solaris',               g_k32,    1, 256, ['sol10',  'sol10u[0-9]']],
     [ 'Solaris_64',     'Solaris_64',            g_k64,    1, 256, ['sol10-64', 'sol10u-64[0-9]']],
     [ 'Solaris_64',     'Solaris11_64',          g_k64,    1, 256, ['sol11u1']],
@@ -499,6 +501,10 @@ class TestVm(object):
     def isOS2(self):
         """ Checks if it's an OS/2 VM. """
         return self.sGuestOsType == g_ksGuestOsTypeOS2;
+
+    def isLinux(self):
+        """ Checks if it's an Linux VM. """
+        return self.sGuestOsType == g_ksGuestOsTypeLinux;
 
     def is64bit(self):
         """ Checks if it's a 64-bit VM. """
@@ -1031,6 +1037,8 @@ class TestVmManager(object):
                asParavirtModesSup = [g_ksParavirtProviderKVM,]),
         TestVm('tst-rhel5',                 kfGrpSmoke,           sHd = '3.0/tcp/rhel5.vdi',
                sKind = 'RedHat', acCpusSup = range(1, 33), fIoApic = True, sNic0AttachType = 'nat'),
+        TestVm('tst-arch',                  kfGrpStandard,        sHd = '4.2/usb/tst-arch.vdi',
+               sKind = 'ArchLinux_64', acCpusSup = range(1, 33), fIoApic = True, sNic0AttachType = 'nat'),
 
         # Solaris
         TestVm('tst-sol10',                 kfGrpSmoke,           sHd = '3.0/tcp/solaris10.vdi',
