@@ -1,4 +1,4 @@
-/* $Id: ntfs.h 69924 2017-12-04 21:12:01Z vboxsync $ */
+/* $Id: ntfs.h 69925 2017-12-05 00:06:59Z vboxsync $ */
 /** @file
  * IPRT, NT File System (NTFS).
  */
@@ -456,7 +456,7 @@ typedef NTFSATSTDINFO const *PCNTFSATSTDINFO;
 #define NTFS_FA_ENCRYPTED                           UINT32_C(0x00004000)
 #define NTFS_FA_VALID_FLAGS                         UINT32_C(0x00007fb7)
 #define NTFS_FA_VALID_SET_FLAGS                     UINT32_C(0x000031a7)
-#define NTFS_FA_DUP_FILE_NAME_INDEX_PRESENT         UINT32_C(0x10000000) /**< ?? */
+#define NTFS_FA_DUP_FILE_NAME_INDEX_PRESENT         UINT32_C(0x10000000) /**< This means directory apparently. */
 #define NTFS_FA_DUP_VIEW_INDEX_PRESENT              UINT32_C(0x20000000) /**< ?? */
 /** @} */
 
