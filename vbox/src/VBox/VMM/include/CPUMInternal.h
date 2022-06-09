@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: CPUMInternal.h 72178 2018-05-09 16:18:56Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -116,7 +116,9 @@ typedef uint64_t STAMCOUNTER;
 /** @name CPUM Saved State Version.
  * @{ */
 /** The current saved state version. */
-#define CPUM_SAVED_STATE_VERSION                CPUM_SAVED_STATE_VERSION_XSAVE
+#define CPUM_SAVED_STATE_VERSION                CPUM_SAVED_STATE_VERSION_HWVIRT_SVM
+/** The saved state version including SVM hardware virtualization state. */
+#define CPUM_SAVED_STATE_VERSION_HWVIRT_SVM     18
 /** The saved state version including XSAVE state. */
 #define CPUM_SAVED_STATE_VERSION_XSAVE          17
 /** The saved state version with good CPUID leaf count. */
