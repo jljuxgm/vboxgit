@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 68561 2017-08-31 12:10:14Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 68565 2017-08-31 12:10:25Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -3977,8 +3977,8 @@ bool VGDrvCommonISR(PVBOXGUESTDEVEXT pDevExt)
      */
 #if defined(VBOXGUEST_MOUSE_NOTIFY_CAN_PREEMPT) && !defined(RT_OS_WINDOWS) /* (Windows does this in the Dpc callback) */
     if (   fMousePositionChanged
-        && pDevExt->MouseNotifyCallback.pfnNotify)
-        pDevExt->MouseNotifyCallback.pfnNotify(pDevExt->MouseNotifyCallback.pvUser);
+        && pDevExt->pfnMouseNotifyCallback)
+        pDevExt->pfnMouseNotifyCallback(pDevExt->pvMouseNotifyCallbackArg);
 #endif
 
 #if defined(VBOXGUEST_USE_DEFERRED_WAKE_UP) && !defined(RT_OS_DARWIN) && !defined(RT_OS_WINDOWS)
