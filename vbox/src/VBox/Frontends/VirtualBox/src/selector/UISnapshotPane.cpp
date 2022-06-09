@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 70523 2018-01-10 17:22:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1241,8 +1241,7 @@ void UISnapshotPane::prepareWidgets()
 #ifdef VBOX_WS_MAC
         layout()->setSpacing(10);
 #else
-        const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2;
-        layout()->setSpacing(iS);
+        layout()->setSpacing(qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2);
 #endif
 
         /* Prepare toolbar: */

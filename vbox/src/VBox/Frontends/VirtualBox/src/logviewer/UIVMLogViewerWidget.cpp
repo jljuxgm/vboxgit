@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 70519 2018-01-10 14:27:17Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 70523 2018-01-10 17:22:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -484,8 +484,7 @@ void UIVMLogViewerWidget::prepareWidgets()
 #ifdef VBOX_WS_MAC
         layout()->setSpacing(10);
 #else
-        const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2;
-        layout()->setSpacing(iS);
+        layout()->setSpacing(qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2);
 #endif
 
     /* Create VM Log-Viewer container: */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 70523 2018-01-10 17:22:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -755,8 +755,7 @@ void UIMachineSettingsSystem::prepareTabMotherboard()
             m_pLayoutBootOrder->setContentsMargins(3, 3, 3, 3);
             m_pLayoutBootOrder->setSpacing(3);
 #else
-            const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing) / 3;
-            m_pLayoutBootOrder->setSpacing(iS);
+            m_pLayoutBootOrder->setSpacing(qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing) / 3);
 #endif
 
             /* Boot-order tree-widget created in the .ui file. */

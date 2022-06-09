@@ -1,4 +1,4 @@
-/* $Id: UIFilmContainer.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
+/* $Id: UIFilmContainer.cpp 70523 2018-01-10 17:22:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilmContainer class implementation.
  */
@@ -68,8 +68,11 @@ void UIFilmContainer::setValue(const QVector<BOOL> &value)
         {
             /* Configure viewport layout: */
             pWidgetLayout->setMargin(0);
-            const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing) / 2;
-            pWidgetLayout->setSpacing(iS);
+#ifdef VBOX_WS_MAC
+            pWidgetLayout->setSpacing(5);
+#else
+            pWidgetLayout->setSpacing(qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing) / 2);
+#endif
             /* Create new widgets according passed vector: */
             for (int iScreenIndex = 0; iScreenIndex < value.size(); ++iScreenIndex)
             {

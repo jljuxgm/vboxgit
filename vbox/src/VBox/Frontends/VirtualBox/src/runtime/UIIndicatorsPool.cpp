@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 70523 2018-01-10 17:22:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -1285,8 +1285,11 @@ void UIIndicatorsPool::prepareContents()
     {
         /* Configure main-layout: */
         m_pMainLayout->setContentsMargins(0, 0, 0, 0);
-        const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing) / 2;
-        m_pMainLayout->setSpacing(iS);
+#ifdef VBOX_WS_MAC
+        m_pMainLayout->setSpacing(5);
+#else
+        m_pMainLayout->setSpacing(qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing) / 2);
+#endif
         /* Update pool: */
         updatePool();
     }

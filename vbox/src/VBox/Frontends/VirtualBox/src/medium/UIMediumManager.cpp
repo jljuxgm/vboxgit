@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 70487 2018-01-08 20:04:54Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 70523 2018-01-10 17:22:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1521,8 +1521,7 @@ void UIMediumManagerWidget::prepareWidgets()
 #ifdef VBOX_WS_MAC
         layout()->setSpacing(10);
 #else
-        const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2;
-        layout()->setSpacing(iS);
+        layout()->setSpacing(qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 2);
 #endif
 
         /* Prepare toolbar: */

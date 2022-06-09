@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 70523 2018-01-10 17:22:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3450,8 +3450,7 @@ void UIMachineSettingsStorage::prepare()
         mLtStorage->setContentsMargins(3, 0, 3, 0);
         mLtStorage->setSpacing(3);
 #else
-        const int iS = qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 3;
-        mLtStorage->setSpacing(iS);
+        mLtStorage->setSpacing(qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) / 3);
 #endif
 
         /* Prepare storage tree: */
