@@ -1,4 +1,4 @@
-/* $Id: UIInformationGuestSession.h 71049 2018-02-19 12:16:09Z vboxsync $ */
+/* $Id: UIInformationGuestSession.h 71059 2018-02-19 16:32:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationGuestSession class declaration.
  */
@@ -65,8 +65,11 @@ private:
     void prepareObjects();
     void prepareConnections();
     void prepareListener();
+    void initGuestSessionTree();
     void updateTreeWidget();
     void cleanupListener();
+    void addGuestSession(CGuestSession guestSession);
+
     CGuest                    m_comGuest;
     QVBoxLayout              *m_pMainLayout;
     QSplitter                *m_pSplitter;

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.h 71049 2018-02-19 12:16:09Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.h 71059 2018-02-19 16:32:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlTreeItem class declaration.
  */
@@ -95,7 +95,8 @@ private:
     virtual void prepareConnections() /* override */;
     virtual void cleanupListener()  /* override */;
     virtual void setColumnText()  /* override */;
-
+    void addGuestProcess(CGuestProcess guestProcess);
+    void initProcessSubTree();
     CGuestSession m_comGuestSession;
 
 };
