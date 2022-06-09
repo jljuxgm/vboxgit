@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.h 67931 2017-07-12 13:11:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class declaration.
  */
@@ -57,9 +57,6 @@ private slots:
 
     /* Location editors stuff: */
     void sltSelectLocationButtonClicked();
-    /* Size editors stuff: */
-    void sltSizeSliderValueChanged(int iValue);
-    void sltSizeEditorTextChanged(const QString &strValue);
 
 private:
 
