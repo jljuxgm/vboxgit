@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxguest 68642 2017-09-05 13:53:41Z vboxsync $
+# $Id: files_vboxguest 68643 2017-09-05 13:54:31Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -76,7 +76,7 @@ FILES_VBOXGUEST_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuest/VBoxGuestInternal.h=>VBoxGuestInternal.h \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuest/linux/Makefile=>Makefile \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuest/lib/VBoxGuestR0LibGenericRequest.cpp=>VBoxGuestR0LibGenericRequest.c \
-    ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuest/lib/HGCMInternal.cpp=>VBoxGuestR0LibHGCMInternal.c \
+    ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuest/lib/VBoxGuestR0LibHGCMInternal.cpp=>VBoxGuestR0LibHGCMInternal.c \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuest/lib/VBoxGuestR0LibInit.cpp=>VBoxGuestR0LibInit.c \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuest/lib/VBoxGuestR0LibPhysHeap.cpp=>VBoxGuestR0LibPhysHeap.c \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuest/lib/VBGLInternal.h=>VBGLInternal.h \
