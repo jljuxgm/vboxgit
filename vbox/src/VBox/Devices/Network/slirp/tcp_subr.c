@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 71982 2018-04-23 14:04:04Z vboxsync $ */
+/* $Id: tcp_subr.c 72284 2018-05-22 12:23:35Z vboxsync $ */
 /** @file
  * NAT - TCP support.
  */
@@ -453,9 +453,9 @@ int tcp_fconnect(PNATState pData, struct socket *so)
             addr.sin_addr = so->so_faddr;
         addr.sin_port = so->so_fport;
 
-        Log2((" connect()ing, addr.sin_port=%d, addr.sin_addr.s_addr=%.16s\n",
-             RT_N2H_U16(addr.sin_port), inet_ntoa(addr.sin_addr)));
-        /* We don't care what port we get */
+        Log2(("NAT: tcp connect to %RTnaipv4:%d\n",
+              addr.sin_addr.s_addr, RT_N2H_U16(addr.sin_port)));
+
         ret = connect(s,(struct sockaddr *)&addr,sizeof (addr));
 
         /*
