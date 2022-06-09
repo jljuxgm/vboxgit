@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 72200 2018-05-14 13:13:52Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 72201 2018-05-14 13:22:22Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2150,7 +2150,9 @@ HRESULT Appliance::i_importDoIt(TaskOVF *pTask, AutoWriteLockBase &rWriteLock, R
             /* If everything was successful so far check if some extension
              * pack wants to do file sanity checking. */
             if (SUCCEEDED(hrc))
+            {
                 /** @todo */;
+            }
         }
         catch (HRESULT hrcXcpt)
         {
