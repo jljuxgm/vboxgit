@@ -1,4 +1,4 @@
-# $Id: Config.kmk 69098 2017-10-17 08:59:16Z vboxsync $
+# $Id: Config.kmk 69114 2017-10-17 16:51:13Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -208,8 +208,7 @@ VBOX_VERSION_STRING_RAW = $(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VER
 # Note! The BETA[n],ALPHA[n],RC[n] indicators should be inserted before the
 #       publisher so that RTStrVersionCompare have a chance of comparing
 #       prerelease from different publishers correctly.
-VBOX_VERSION_SUFFIX=$(ifeq $(VBOX_VERSION_PRERELEASE),,,_$(VBOX_VERSION_PRERELEASE))
-VBOX_VERSION_STRING = $(VBOX_VERSION_STRING_RAW)_RC1$(VBOX_BUILD_PUBLISHER)
+VBOX_VERSION_STRING = $(VBOX_VERSION_STRING_RAW)$(addprefix _,$(VBOX_VERSION_PRERELEASE))$(VBOX_BUILD_PUBLISHER)
 
 # Force the additions.sh script to get an exact additions build when we're doing the release.
 ifeq ($(int-mod $(VBOX_VERSION_BUILD),2),0)
@@ -7047,7 +7046,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 69098 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 69114 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
