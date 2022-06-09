@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 67517 2017-06-20 17:52:13Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 67526 2017-06-21 08:07:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -775,6 +775,12 @@ void UISnapshotPane::sltHandleSnapshotDelete(QString strMachineId, QString strSn
         /* Delete item finally: */
         if (fSuccess)
         {
+            if (pItem == m_pCurrentSnapshotItem)
+            {
+                m_pCurrentSnapshotItem = UISnapshotItem::toSnapshotItem(pParent);
+                if (m_pCurrentSnapshotItem)
+                    m_pCurrentSnapshotItem->setCurrentSnapshotItem(true);
+            }
             delete pItem;
             pItem = 0;
 
@@ -1640,7 +1646,7 @@ bool UISnapshotPane::restoreSnapshot(bool fSuppressNonCriticalWarnings /* = fals
             break;
 
         /* If non-critical warnings are not hidden or current state is changed: */
-        if (!fSuppressNonCriticalWarnings || m_comMachine.GetCurrentStateModified())
+        if (!fSuppressNonCriticalWarnings && m_comMachine.GetCurrentStateModified())
         {
             /* Ask if user really wants to restore the selected snapshot: */
             int iResultCode = msgCenter().confirmSnapshotRestoring(comSnapshot.GetName(), m_comMachine.GetCurrentStateModified());
