@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 72611 2018-06-19 10:35:18Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 72618 2018-06-19 15:52:59Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -1954,14 +1954,14 @@ BOOL VBoxDispIfResizeDisplayVista(PCVBOXDISPIF const pIf, uint32_t cDispDef, con
     }
 
     vboxDispIfOpEnd(&Op);
-    
+
     for (id = 0; id < cDispDef; id++)
     {
         DEVMODE tempDevMode;
-        
+
         ZeroMemory (&tempDevMode, sizeof (tempDevMode));
         tempDevMode.dmSize = sizeof(DEVMODE);
-        
+
         EnumDisplaySettings((LPSTR)paDisplayDevices[id].DeviceName, 0xffffff, &tempDevMode);
     }
 
