@@ -1,4 +1,4 @@
-/* $Id: DevVGASavedState.h 65294 2017-01-14 17:15:41Z vboxsync $ */
+/* $Id: DevVGASavedState.h 69137 2017-10-20 08:23:18Z vboxsync $ */
 /** @file
  * DevVGA - Saved state versions.
  *
@@ -44,7 +44,8 @@
         } \
     } while (0)
 
-#define VGA_SAVEDSTATE_VERSION              17
+#define VGA_SAVEDSTATE_VERSION              18
+#define VGA_SAVEDSTATE_VERSION_VMSVGA_GMR_COUNT  18
 #define VGA_SAVEDSTATE_VERSION_VMSVGA_VGA_FB_FIX 17
 #define VGA_SAVEDSTATE_VERSION_MARKERS      16
 #define VGA_SAVEDSTATE_VERSION_MODE_HINTS   15

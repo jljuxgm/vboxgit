@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 65303 2017-01-15 18:24:27Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 69137 2017-10-20 08:23:18Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -36,7 +36,7 @@
 /** Maximum GMR pages. */
 #define VMSVGA_MAX_GMR_PAGES            0x100000
 /** Maximum nr of GMR ids. */
-#define VMSVGA_MAX_GMR_IDS              0x100
+#define VMSVGA_MAX_GMR_IDS              _8K
 /** Maximum number of GMR descriptors.  */
 #define VMSVGA_MAX_GMR_DESC_LOOP_COUNT  VMSVGA_MAX_GMR_PAGES
 
@@ -194,7 +194,7 @@ typedef struct VMSVGAState
     uint32_t                    u32RegCaps;
     /** Physical address of command mmio range. */
     RTIOPORT                    BasePort;
-    RTIOPORT                    Padding3;
+    RTIOPORT                    Padding0;
     /** Port io index register. */
     uint32_t                    u32IndexReg;
     /** The support driver session handle for use with FIFORequestSem. */
@@ -234,6 +234,9 @@ typedef struct VMSVGAState
     /** FIFO debug access handler type handle. */
     PGMPHYSHANDLERTYPE          hFifoAccessHandlerType;
 #endif
+    /** Number of GMRs. */
+    uint32_t                    cGMR;
+    uint32_t                    u32Padding1;
 
     /** Scratch array.
      * Putting this at the end since it's big it probably not . */
