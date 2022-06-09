@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 72396 2018-05-31 00:07:37Z vboxsync $ */
+/* $Id: HostDnsService.cpp 72404 2018-06-01 00:29:26Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -244,8 +244,12 @@ HRESULT HostDnsMonitor::init(VirtualBox *virtualbox)
 
 void HostDnsMonitor::pollGlobalExtraData()
 {
+    VirtualBox *virtualbox = m->virtualbox;
+    if (RT_UNLIKELY(virtualbox == NULL))
+        return;
+
     uint64_t uNow = RTTimeNanoTS();
-    if (m->virtualbox && (uNow - m->uLastExtraDataPoll >= RT_NS_30SEC || m->uLastExtraDataPoll == 0))
+    if (virtualbox && (uNow - m->uLastExtraDataPoll >= RT_NS_30SEC || m->uLastExtraDataPoll == 0))
     {
         m->uLastExtraDataPoll = uNow;
 
@@ -254,8 +258,8 @@ void HostDnsMonitor::pollGlobalExtraData()
          */
         const com::Bstr bstrHostDNSOrderIgnoreKey("VBoxInternal2/HostDNSOrderIgnore");
         com::Bstr bstrHostDNSOrderIgnore;
-        m->virtualbox->GetExtraData(bstrHostDNSOrderIgnoreKey.raw(),
-                                    bstrHostDNSOrderIgnore.asOutParam());
+        virtualbox->GetExtraData(bstrHostDNSOrderIgnoreKey.raw(),
+                                 bstrHostDNSOrderIgnore.asOutParam());
         uint32_t fDNSOrderIgnore = 0;
         if (bstrHostDNSOrderIgnore.isNotEmpty())
         {
@@ -277,8 +281,8 @@ void HostDnsMonitor::pollGlobalExtraData()
          */
         const com::Bstr bstrHostDNSSuffixesIgnoreKey("VBoxInternal2/HostDNSSuffixesIgnore");
         com::Bstr bstrHostDNSSuffixesIgnore;
-        m->virtualbox->GetExtraData(bstrHostDNSSuffixesIgnoreKey.raw(),
-                                    bstrHostDNSSuffixesIgnore.asOutParam());
+        virtualbox->GetExtraData(bstrHostDNSSuffixesIgnoreKey.raw(),
+                                 bstrHostDNSSuffixesIgnore.asOutParam());
         uint32_t fDNSSuffixesIgnore = 0;
         if (bstrHostDNSSuffixesIgnore.isNotEmpty())
         {
