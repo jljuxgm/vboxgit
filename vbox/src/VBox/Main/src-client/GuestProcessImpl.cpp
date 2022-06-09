@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 71406 2018-03-20 14:44:24Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 71483 2018-03-23 11:26:08Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -291,9 +291,6 @@ void GuestProcess::uninit(void)
         mData.mpSessionBaseEnv->releaseConst();
         mData.mpSessionBaseEnv = NULL;
     }
-
-    AssertPtr(mSession);
-    mSession->i_processUnregister(this);
 
     baseUninit();
 
