@@ -1,4 +1,4 @@
-/* $Id: VBoxMFInternal.cpp 68654 2017-09-05 17:22:12Z vboxsync $ */
+/* $Id: VBoxMFInternal.cpp 69356 2017-10-26 14:39:55Z vboxsync $ */
 /** @file
  * VBox Mouse Filter Driver - Internal functions.
  *
@@ -16,6 +16,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
