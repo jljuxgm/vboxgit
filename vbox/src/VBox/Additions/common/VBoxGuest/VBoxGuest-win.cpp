@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 70115 2017-12-13 16:12:33Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 70128 2017-12-14 12:42:25Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -536,7 +536,7 @@ static NTSTATUS vgdrvNtInit(PVBOXGUESTDEVEXTWIN pDevExt, PDEVICE_OBJECT pDevObj,
         if (NT_SUCCESS(rcNt))
             rcNt = vgdrvNtScanPCIResourceList(pResourceList, pDevExt);
 # else  /* ARCH_BITS != 32 */
-        RT_NOREF(pDrvObj, pRegPath);
+        RT_NOREF(pDevObj, pDrvObj, pRegPath);
         rcNt = STATUS_INTERNAL_ERROR;
 # endif /* ARCH_BITS != 32 */
     }
