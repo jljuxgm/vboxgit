@@ -1,6 +1,6 @@
-; $Id: vcc100-kernel32-fakesA.asm 70341 2017-12-26 14:42:28Z vboxsync $
+; $Id: vcc100-kernel32-fakesA.asm 70345 2017-12-26 15:51:56Z vboxsync $
 ;; @file
-; IPRT - Wrappers for kernel32 APIs misisng NT4.
+; IPRT - Wrappers for kernel32 APIs missing in NT4 and earlier.
 ;
 
 ;
@@ -76,5 +76,6 @@ MAKE_IMPORT_ENTRY EnumSystemLocalesA, 8
 MAKE_IMPORT_ENTRY IsValidLocale, 8
 MAKE_IMPORT_ENTRY SetThreadAffinityMask, 8
 MAKE_IMPORT_ENTRY GetProcessAffinityMask, 12
-MAKE_IMPORT_ENTRY CommandLineToArgvW, 8 ; Lazy bird: this lives in shell32.
+MAKE_IMPORT_ENTRY GetHandleInformation, 8
+MAKE_IMPORT_ENTRY SetHandleInformation, 12
 

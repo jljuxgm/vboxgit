@@ -1,4 +1,4 @@
-/* $Id: init-win.cpp 70215 2017-12-19 03:25:24Z vboxsync $ */
+/* $Id: init-win.cpp 70345 2017-12-26 15:51:56Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3, Windows Specific Code.
  */
@@ -74,6 +74,8 @@ static PFNGETCURRENTTHREADSTACKLIMITS       g_pfnGetCurrentThreadStackLimits = N
 static PFNSETUNHANDLEDEXCEPTIONFILTER       g_pfnSetUnhandledExceptionFilter = NULL;
 /** The previous unhandled exception filter. */
 static LPTOP_LEVEL_EXCEPTION_FILTER         g_pfnUnhandledXcptFilter = NULL;
+/** SystemTimeToTzSpecificLocalTime. */
+decltype(SystemTimeToTzSpecificLocalTime)  *g_pfnSystemTimeToTzSpecificLocalTime = NULL;
 
 /** The native ntdll.dll handle. */
 DECLHIDDEN(HMODULE)                         g_hModNtDll = NULL;
@@ -524,12 +526,14 @@ DECLHIDDEN(int) rtR3InitNativeFirst(uint32_t fFlags)
     g_pfnGetSystemWindowsDirectoryW = (PFNGETWINSYSDIR)GetProcAddress(g_hModKernel32, "GetSystemWindowsDirectoryW");
     if (g_pfnGetSystemWindowsDirectoryW)
         g_pfnGetSystemWindowsDirectoryW = (PFNGETWINSYSDIR)GetProcAddress(g_hModKernel32, "GetWindowsDirectoryW");
+    g_pfnSystemTimeToTzSpecificLocalTime = (decltype(SystemTimeToTzSpecificLocalTime) *)GetProcAddress(g_hModKernel32, "SystemTimeToTzSpecificLocalTime");
 
     /*
      * Resolve some ntdll.dll APIs that weren't there in early NT versions.
      */
     g_pfnNtQueryFullAttributesFile = (PFNNTQUERYFULLATTRIBUTESFILE)GetProcAddress(g_hModNtDll, "NtQueryFullAttributesFile");
     g_pfnNtDuplicateToken          = (PFNNTDUPLICATETOKEN)GetProcAddress(         g_hModNtDll, "NtDuplicateToken");
+
 
     /*
      * Resolve the winsock error getter and setter so assertions can save those too.
