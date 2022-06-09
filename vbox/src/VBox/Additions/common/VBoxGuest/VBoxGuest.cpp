@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 70085 2017-12-12 17:35:22Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 70095 2017-12-12 18:32:35Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1181,10 +1181,33 @@ void VGDrvCommonProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, con
 {
     Log(("VGDrvCommonProcessOption: pszName='%s' pszValue='%s'\n", pszName, pszValue));
 
-    if (   strcmp(pszName, "r3_log_to_host") == 0
-        || strcmp(pszName, "LoggingEnabled") == 0 /*legacy*/ )
+    if (   RTStrICmpAscii(pszName, "r3_log_to_host") == 0
+        || RTStrICmpAscii(pszName, "LoggingEnabled") == 0 /*legacy*/ )
         pDevExt->fLoggingEnabled = VBDrvCommonIsOptionValueTrue(pszValue);
-    else if (VGDrvNativeProcessOption(pDevExt, pszName, pszValue))
+    else if (   RTStrNICmp(pszName, RT_STR_TUPLE("log")) == 0
+             || RTStrNICmpAscii(pszName, RT_STR_TUPLE("dbg_log")) == 0)
+    {
+        bool const  fLogRel    = *pszName == 'd' || *pszName == 'D';
+        const char *pszSubName = &pszName[fLogRel ? 4 + 3 : 3];
+        if (   !*pszSubName
+            || RTStrICmpAscii(pszSubName, "_flags") == 0
+            || RTStrICmpAscii(pszSubName, "_dest") == 0)
+        {
+            PRTLOGGER pLogger = fLogRel ? RTLogRelGetDefaultInstance() : RTLogDefaultInstance();
+            if (pLogger)
+            {
+                if (!*pszSubName)
+                    RTLogGroupSettings(pLogger, pszValue);
+                else if (RTStrICmpAscii(pszSubName, "_flags"))
+                    RTLogFlags(pLogger, pszValue);
+                else
+                    RTLogDestinations(pLogger, pszValue);
+            }
+        }
+        else if (!VGDrvNativeProcessOption(pDevExt, pszName, pszValue))
+            LogRel(("VBoxGuest: Ignoring unknown option '%s' (value '%s')\n", pszName, pszValue));
+    }
+    else if (!VGDrvNativeProcessOption(pDevExt, pszName, pszValue))
         LogRel(("VBoxGuest: Ignoring unknown option '%s' (value '%s')\n", pszName, pszValue));
 }
 
