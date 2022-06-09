@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 64175 2016-10-07 08:46:09Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 67934 2017-07-12 14:21:05Z vboxsync $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -451,7 +451,7 @@ usage:
                     /S$\t$\tSilent install$\r$\n \
                     /D=<PATH>$\tSets the default install path$\r$\n \
                     $\r$\n \
-                    Note: Order of options and installer parameters are mandatory." /SD IDOK
+                    Note: Order of options and installer parameters is fixed, options first." /SD IDOK
 
   ; No stack restore needed, we're about to quit
   Quit
