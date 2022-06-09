@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.cpp 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 71651 2018-04-04 12:20:08Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI guest-to-host communication.
  */
@@ -164,8 +164,7 @@ DECLHIDDEN(int) VBoxQueryConfHGSMI(PHGSMIGUESTCOMMANDCONTEXT pCtx, uint32_t u32I
     VBVACONF32 *p;
 
     /* Allocate the IO buffer. */
-    p = (VBVACONF32 *)VBoxHGSMIBufferAlloc(pCtx, sizeof(*p), HGSMI_CH_VBVA,
-                                           VBVA_QUERY_CONF32);
+    p = (VBVACONF32 *)VBoxHGSMIBufferAlloc(pCtx, sizeof(*p), HGSMI_CH_VBVA, VBVA_QUERY_CONF32);
     if (!p)
         return VERR_NO_MEMORY;
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoGuest.h 71488 2018-03-23 15:12:15Z vboxsync $ */
+/* $Id: VBoxVideoGuest.h 71651 2018-04-04 12:20:08Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - OS-independent guest structures.
  */
@@ -84,7 +84,7 @@ DECLHIDDEN(int)      VBoxHGSMISendHostCtxInfo(PHGSMIGUESTCOMMANDCONTEXT pCtx,
                                               uint32_t offVRAMHostArea,
                                               uint32_t cbHostArea);
 DECLHIDDEN(int)      VBoxQueryConfHGSMI(PHGSMIGUESTCOMMANDCONTEXT pCtx,
-                                    uint32_t u32Index, uint32_t *pulValue);
+                                        uint32_t u32Index, uint32_t *pulValue);
 DECLHIDDEN(int)      VBoxQueryConfHGSMIDef(PHGSMIGUESTCOMMANDCONTEXT pCtx,
                                            uint32_t u32Index, uint32_t u32DefValue, uint32_t *pulValue);
 DECLHIDDEN(int)      VBoxHGSMIUpdatePointerShape(PHGSMIGUESTCOMMANDCONTEXT pCtx,

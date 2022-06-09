@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 71626 2018-04-02 21:12:58Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 71651 2018-04-04 12:20:08Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3545,8 +3545,7 @@ int Display::i_handleVHWACommandProcess(int enmCmd, bool fGuestCmd, VBOXVHWACMD 
     if (pFramebuffer == NULL || !fVHWASupported)
         return VERR_NOT_IMPLEMENTED; /* Implementation is not available. */
 
-    RT_NOREF(enmCmd, fGuestCmd);
-    HRESULT hr = pFramebuffer->ProcessVHWACommand((BYTE *)pCommand);
+    HRESULT hr = pFramebuffer->ProcessVHWACommand((BYTE *)pCommand, enmCmd, fGuestCmd);
     if (hr == S_FALSE)
         return VINF_SUCCESS;
     if (SUCCEEDED(hr))

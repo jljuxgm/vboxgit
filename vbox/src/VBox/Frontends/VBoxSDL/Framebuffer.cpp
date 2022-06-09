@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: Framebuffer.cpp 71651 2018-04-04 12:20:08Z vboxsync $ */
 /** @file
  * VBoxSDL - Implementation of VBoxSDLFB (SDL framebuffer) class
  */
@@ -620,9 +620,9 @@ STDMETHODIMP VBoxSDLFB::SetVisibleRegion(BYTE *aRectangles, ULONG aCount)
     return S_OK;
 }
 
-STDMETHODIMP VBoxSDLFB::ProcessVHWACommand(BYTE *pCommand)
+STDMETHODIMP VBoxSDLFB::ProcessVHWACommand(BYTE *pCommand, LONG enmCmd, BOOL fGuestCmd)
 {
-    RT_NOREF(pCommand);
+    RT_NOREF(pCommand, enmCmd, fGuestCmd);
     return E_NOTIMPL;
 }
 

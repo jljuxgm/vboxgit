@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: Framebuffer.h 71651 2018-04-04 12:20:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -94,7 +94,7 @@ public:
     STDMETHOD(GetVisibleRegion)(BYTE *aRectangles, ULONG aCount, ULONG *aCountCopied);
     STDMETHOD(SetVisibleRegion)(BYTE *aRectangles, ULONG aCount);
 
-    STDMETHOD(ProcessVHWACommand)(BYTE *pCommand);
+    STDMETHOD(ProcessVHWACommand)(BYTE *pCommand, LONG enmCmd, BOOL fGuestCmd);
 
     STDMETHOD(Notify3DEvent)(ULONG uType, ComSafeArrayIn(BYTE, aData));
 
