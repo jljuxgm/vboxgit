@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 70917 2018-02-08 15:56:43Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 71136 2018-02-27 13:17:36Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -454,6 +454,32 @@ typedef struct SUPDRVUSAGE
     /** The usage count. */
     uint32_t volatile               cUsage;
 } SUPDRVUSAGE, *PSUPDRVUSAGE;
+
+
+/**
+ * I/O control context.
+ */
+typedef struct SUPR0IOCTLCTX
+{
+    /** Magic value (SUPR0IOCTLCTX_MAGIC). */
+    uint32_t                u32Magic;
+    /** Reference counter. */
+    uint32_t volatile       cRefs;
+#ifdef RT_OS_WINDOWS
+# ifndef SUPDRV_AGNOSTIC
+    /** The file object, referenced. */
+    PFILE_OBJECT            pFileObject;
+    /** The device object, not referenced. */
+    PDEVICE_OBJECT          pDeviceObject;
+    /** Pointer to fast I/O routine if available. */
+    FAST_IO_DEVICE_CONTROL *pfnFastIoDeviceControl;
+# else
+    void                   *apvPadding[3];
+# endif
+#endif
+} SUPR0IOCTLCTX;
+/** Magic value for SUPR0IOCTLCTX (Ahmad Jamal). */
+#define SUPR0IOCTLCTX_MAGIC     UINT32_C(0x19300702)
 
 
 /**

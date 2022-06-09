@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 71075 2018-02-20 21:10:45Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 71136 2018-02-27 13:17:36Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -213,7 +213,7 @@ typedef SUPREQHDR *PSUPREQHDR;
  *
  * @remarks 0x002a0000 is used by 5.1. The next version number must be 0x002b0000.
  */
-#define SUPDRV_IOC_VERSION                              0x00290002
+#define SUPDRV_IOC_VERSION                              0x00290003
 
 /** SUP_IOCTL_COOKIE. */
 typedef struct SUPCOOKIE

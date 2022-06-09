@@ -1,4 +1,4 @@
-/* $Id: gvm.h 71075 2018-02-20 21:10:45Z vboxsync $ */
+/* $Id: gvm.h 71136 2018-02-27 13:17:36Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -124,7 +124,7 @@ typedef struct GVM
 # ifdef ___NEMInternal_h
         struct NEMR0PERVM   s;
 # endif
-        uint8_t             padding[64];
+        uint8_t             padding[128];
     } nem;
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 71087 2018-02-21 16:35:23Z vboxsync $ */
+/* $Id: VMMR0.cpp 71136 2018-02-27 13:17:36Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1971,6 +1971,13 @@ static int vmmR0EntryExWorker(PGVM pGVM, PVM pVM, VMCPUID idCpu, VMMR0OPERATION 
             if (u64Arg || pReqHdr || idCpu != 0)
                 return VERR_INVALID_PARAMETER;
             rc = NEMR0InitVM(pGVM, pVM);
+            VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
+            break;
+
+        case VMMR0_DO_NEM_INIT_VM_PART_2:
+            if (u64Arg || pReqHdr || idCpu != 0)
+                return VERR_INVALID_PARAMETER;
+            rc = NEMR0InitVMPart2(pGVM, pVM);
             VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
             break;
 

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 71075 2018-02-20 21:10:45Z vboxsync $ */
+/* $Id: SUPDrv.cpp 71136 2018-02-27 13:17:36Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -230,6 +230,11 @@ static SUPFUNC g_aFunctions[] =
     { "SUPR0TracerRegisterModule",              (void *)(uintptr_t)SUPR0TracerRegisterModule },
     { "SUPR0TracerUmodProbeFire",               (void *)(uintptr_t)SUPR0TracerUmodProbeFire },
     { "SUPR0UnlockMem",                         (void *)(uintptr_t)SUPR0UnlockMem },
+#ifdef RT_OS_WINDOWS
+    { "SUPR0IoCtlSetupForHandle",               (void *)(uintptr_t)SUPR0IoCtlSetupForHandle },  /* only-windows */
+    { "SUPR0IoCtlPerform",                      (void *)(uintptr_t)SUPR0IoCtlPerform },         /* only-windows */
+    { "SUPR0IoCtlCleanup",                      (void *)(uintptr_t)SUPR0IoCtlCleanup },         /* only-windows */
+#endif
     { "SUPSemEventClose",                       (void *)(uintptr_t)SUPSemEventClose },
     { "SUPSemEventCreate",                      (void *)(uintptr_t)SUPSemEventCreate },
     { "SUPSemEventGetResolution",               (void *)(uintptr_t)SUPSemEventGetResolution },
