@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 71910 2018-04-19 08:54:23Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 71927 2018-04-20 04:18:24Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -434,9 +434,9 @@ VMM_INT_DECL(bool) HMSvmIsIOInterceptActive(void *pvIoBitmap, uint16_t u16Port, 
 
             pIoExitInfo->u         = s_auIoOpSize[cbReg & 7];
             pIoExitInfo->u        |= s_auIoAddrSize[(cAddrSizeBits >> 4) & 7];
-            pIoExitInfo->n.u1STR   = fStrIo;
-            pIoExitInfo->n.u1REP   = fRep;
-            pIoExitInfo->n.u3SEG   = iEffSeg & 7;
+            pIoExitInfo->n.u1Str   = fStrIo;
+            pIoExitInfo->n.u1Rep   = fRep;
+            pIoExitInfo->n.u3Seg   = iEffSeg & 7;
             pIoExitInfo->n.u1Type  = enmIoType;
             pIoExitInfo->n.u16Port = u16Port;
         }
