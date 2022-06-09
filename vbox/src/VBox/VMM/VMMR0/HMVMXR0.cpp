@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72560 2018-06-15 11:00:02Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72561 2018-06-15 11:14:15Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9271,7 +9271,7 @@ static void hmR0VmxPostRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXT
          * Note! We don't have CS or RIP at this point.  Will probably address that later
          *       by amending the history entry added here.
          */
-        EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_SVM, pVmxTransient->uExitReason & EMEXIT_F_TYPE_MASK),
+        EMHistoryAddExit(pVCpu, EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_VMX, pVmxTransient->uExitReason & EMEXIT_F_TYPE_MASK),
                          UINT64_MAX, uHostTsc);
 
         if (!pVmxTransient->fVMEntryFailed)
