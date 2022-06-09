@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 66681 2017-04-26 17:08:04Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 68168 2017-07-29 09:41:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
@@ -90,6 +90,12 @@ enum UIActionIndexST
     UIActionIndexST_M_Machine_S_ShowInFileManager,
     UIActionIndexST_M_Machine_S_CreateShortcut,
     UIActionIndexST_M_Machine_S_SortParent,
+
+    /* Machine Tools actions: */
+    UIActionIndexST_M_Tools_T_Machine,
+    UIActionIndexST_M_Tools_M_Machine,
+    UIActionIndexST_M_Tools_M_Machine_Details,
+    UIActionIndexST_M_Tools_M_Machine_Snapshots,
 
     /* Maximum index: */
     UIActionIndexST_Max
