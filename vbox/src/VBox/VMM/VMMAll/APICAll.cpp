@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 67989 2017-07-17 12:13:28Z vboxsync $ */
+/* $Id: APICAll.cpp 68220 2017-08-01 15:15:06Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -986,7 +986,7 @@ DECLINLINE(VBOXSTRICTRC) apicSendIpi(PVMCPU pVCpu, int rcRZ)
             || enmDeliveryMode == XAPICDELIVERYMODE_NMI
             || enmDeliveryMode == XAPICDELIVERYMODE_INIT))
     {
-        Log2(("APIC%u: %s level de-assert unsupported, ignoring!\n", apicGetDeliveryModeName(enmDeliveryMode), pVCpu->idCpu));
+        Log2(("APIC%u: %s level de-assert unsupported, ignoring!\n", pVCpu->idCpu, apicGetDeliveryModeName(enmDeliveryMode)));
         return VINF_SUCCESS;
     }
 #else
