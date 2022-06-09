@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
+/* $Id: SessionImpl.cpp 68485 2017-08-21 13:48:12Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -585,6 +585,24 @@ HRESULT Session::onNetworkAdapterChange(const ComPtr<INetworkAdapter> &aNetworkA
     RT_NOREF(aNetworkAdapter, aChangeAdapter);
     return S_OK;
 #endif
+}
+
+HRESULT Session::onAudioAdapterChange(const ComPtr<IAudioAdapter> &aAudioAdapter)
+{
+    LogFlowThisFunc(("\n"));
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(mState == SessionState_Locked, VBOX_E_INVALID_VM_STATE);
+    AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
+#ifndef VBOX_COM_INPROC_API_CLIENT
+    AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
+
+    return mConsole->i_onAudioAdapterChange(aAudioAdapter);
+#else
+    RT_NOREF(aAudioAdapter);
+    return S_OK;
+#endif
+
 }
 
 HRESULT Session::onSerialPortChange(const ComPtr<ISerialPort> &aSerialPort)

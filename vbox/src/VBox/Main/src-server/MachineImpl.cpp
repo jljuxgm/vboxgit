@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 68133 2017-07-27 09:44:28Z vboxsync $ */
+/* $Id: MachineImpl.cpp 68485 2017-08-21 13:48:12Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -14040,6 +14040,30 @@ HRESULT SessionMachine::i_onNATRedirectRuleChange(ULONG ulSlot, BOOL aNatRuleRem
     mParent->i_onNatRedirectChange(i_getId(), ulSlot, RT_BOOL(aNatRuleRemove), aRuleName, aProto, aHostIp,
                                    (uint16_t)aHostPort, aGuestIp, (uint16_t)aGuestPort);
     return S_OK;
+}
+
+/**
+ *  @note Locks this object for reading.
+ */
+HRESULT SessionMachine::i_onAudioAdapterChange(IAudioAdapter *audioAdapter)
+{
+    LogFlowThisFunc(("\n"));
+
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
+
+    ComPtr<IInternalSessionControl> directControl;
+    {
+        AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+        if (mData->mSession.mLockType == LockType_VM)
+            directControl = mData->mSession.mDirectControl;
+    }
+
+    /* ignore notifications sent after #OnSessionEnd() is called */
+    if (!directControl)
+        return S_OK;
+
+    return directControl->OnAudioAdapterChange(audioAdapter);
 }
 
 /**

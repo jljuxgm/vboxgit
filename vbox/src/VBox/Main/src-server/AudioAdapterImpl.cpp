@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.cpp 65063 2017-01-03 11:15:49Z vboxsync $ */
+/* $Id: AudioAdapterImpl.cpp 68485 2017-08-21 13:48:12Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -213,26 +213,70 @@ HRESULT AudioAdapter::setEnabled(BOOL aEnabled)
 
 HRESULT AudioAdapter::getEnabledIn(BOOL *aEnabled)
 {
-    NOREF(aEnabled);
-    return E_NOTIMPL;
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *aEnabled = mData->fEnabledIn;
+
+    return S_OK;
 }
 
 HRESULT AudioAdapter::setEnabledIn(BOOL aEnabled)
 {
-    NOREF(aEnabled);
-    return E_NOTIMPL;
+    /* the machine needs to be mutable */
+    AutoMutableOrSavedOrRunningStateDependency adep(mParent);
+    if (FAILED(adep.rc())) return adep.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+    if (RT_BOOL(aEnabled) != mData->fEnabledIn)
+    {
+        mData.backup();
+        mData->fEnabledIn = RT_BOOL(aEnabled);
+
+        // leave the lock before informing callbacks
+        alock.release();
+
+        AutoWriteLock mlock(mParent COMMA_LOCKVAL_SRC_POS);
+        mParent->i_setModified(Machine::IsModified_AudioAdapter);
+        mlock.release();
+
+        mParent->i_onAudioAdapterChange(this);
+    }
+
+    return S_OK;
 }
 
 HRESULT AudioAdapter::getEnabledOut(BOOL *aEnabled)
 {
-    NOREF(aEnabled);
-    return E_NOTIMPL;
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *aEnabled = mData->fEnabledOut;
+
+    return S_OK;
 }
 
 HRESULT AudioAdapter::setEnabledOut(BOOL aEnabled)
 {
-    NOREF(aEnabled);
-    return E_NOTIMPL;
+    /* the machine needs to be mutable */
+    AutoMutableOrSavedOrRunningStateDependency adep(mParent);
+    if (FAILED(adep.rc())) return adep.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+    if (RT_BOOL(aEnabled) != mData->fEnabledOut)
+    {
+        mData.backup();
+        mData->fEnabledOut = RT_BOOL(aEnabled);
+
+        // leave the lock before informing callbacks
+        alock.release();
+
+        AutoWriteLock mlock(mParent COMMA_LOCKVAL_SRC_POS);
+        mParent->i_setModified(Machine::IsModified_AudioAdapter);
+        mlock.release();
+
+        mParent->i_onAudioAdapterChange(this);
+    }
+
+    return S_OK;
 }
 
 HRESULT AudioAdapter::getAudioDriver(AudioDriverType_T *aAudioDriver)
