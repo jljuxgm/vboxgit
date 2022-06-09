@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.cpp 72226 2018-05-16 13:05:40Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.cpp 72243 2018-05-17 12:53:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic1 class implementation.
  */
@@ -137,6 +137,7 @@ UIWizardCloneVMPageBasic1::UIWizardCloneVMPageBasic1(const QString &strOriginalN
     registerField("cloneName", this, "cloneName");
     registerField("cloneFilePath", this, "cloneFilePath");
     registerField("reinitMACs", this, "reinitMACs");
+    composeCloneFilePath();
 }
 
 void UIWizardCloneVMPageBasic1::retranslateUi()
