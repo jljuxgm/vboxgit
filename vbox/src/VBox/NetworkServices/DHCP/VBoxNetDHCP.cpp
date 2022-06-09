@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 71204 2018-03-05 15:51:30Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 71205 2018-03-05 15:53:15Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -645,6 +645,11 @@ int VBoxNetDhcp::hostDnsServers(const ComHostPtr& host,
 
         if (addr.u == INADDR_ANY)
         {
+            /*
+             * This doesn't seem to be very well documented except for
+             * RTFS of res_init.c, but INADDR_ANY is a valid value for
+             * for "nameserver".
+             */
             addr.u = RT_H2N_U32_C(INADDR_LOOPBACK);
         }
 
