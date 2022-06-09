@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69310 2017-10-25 14:24:45Z vboxsync $
+# $Id: .scm-settings 69338 2017-10-26 11:07:04Z vboxsync $
 ## @file
 # Source code massager settings for common/crOpenGL.
 #
@@ -52,4 +52,11 @@
 /SunOS_i386_glxapi_exports.py:  --no-external-copyright --convert-tabs
 /VBoxCROGL.rc:                  --no-external-copyright --convert-tabs
 /VBoxICDList.h:                 --no-external-copyright
+
+*_special: --treat-as Makefile
+
+# Ignore some stuff.
+--filter-out-files /COPYRIGHT.LLNL
+--filter-out-files /COPYRIGHT.REDHAT
+--filter-out-files /LICENSE
 
