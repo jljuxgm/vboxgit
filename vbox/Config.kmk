@@ -1,4 +1,4 @@
-# $Id: Config.kmk 71822 2018-04-11 12:22:31Z vboxsync $
+# $Id: Config.kmk 71823 2018-04-11 12:32:39Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7232,7 +7232,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71822 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71823 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -7297,7 +7297,7 @@ else
 endif
 
 # Java compiler options, needs some version checking.
-ifneq ($(int-ge $(VBOX_JAVA_VERSION),10800),)
+ifneq ($(int-ge $(VBOX_JAVA_VERSION),10900),)
  VBOX_JAVA_WS_OPTS ?= --add-modules java.xml.ws
 endif
 VBOX_JAVAC_OPTS   = -encoding UTF-8 -source 1.5 -target 1.5 -Xlint:unchecked
