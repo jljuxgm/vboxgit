@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: GIMKvm.cpp 71800 2018-04-10 06:14:02Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -36,7 +36,6 @@
 #include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/mem.h>
-#include <iprt/spinlock.h>
 
 
 
