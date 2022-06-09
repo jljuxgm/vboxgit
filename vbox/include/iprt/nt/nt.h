@@ -1,4 +1,4 @@
-/* $Id: nt.h 66823 2017-05-08 16:51:09Z vboxsync $ */
+/* $Id: nt.h 67316 2017-06-09 12:59:30Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2260,6 +2260,29 @@ typedef struct _SYSTEM_SESSION_PROCESS_INFORMATION
     PVOID Buffer;
 } SYSTEM_SESSION_PROCESS_INFORMATION;
 typedef SYSTEM_SESSION_PROCESS_INFORMATION *PSYSTEM_SESSION_PROCESS_INFORMATION;
+
+/** Input to SystemModuleInformation. */
+typedef struct _RTL_PROCESS_MODULE_INFORMATION
+{
+	HANDLE Section;
+	PVOID  MappedBase;
+	PVOID  ImageBase;
+	ULONG  ImageSize;
+	ULONG  Flags;
+	USHORT LoadOrderIndex;
+	USHORT InitOrderIndex;
+	USHORT LoadCount;
+	USHORT OffsetToFileName;
+	UCHAR  FullPathName[256];
+} RTL_PROCESS_MODULE_INFORMATION;
+typedef RTL_PROCESS_MODULE_INFORMATION *PRTL_PROCESS_MODULE_INFORMATION;
+
+typedef struct _RTL_PROCESS_MODULES
+{
+	ULONG  NumberOfModules;
+	RTL_PROCESS_MODULE_INFORMATION Modules[1];
+} RTL_PROCESS_MODULES;
+typedef RTL_PROCESS_MODULES *PRTL_PROCESS_MODULES;
 
 NTSYSAPI NTSTATUS NTAPI NtQuerySystemInformation(SYSTEM_INFORMATION_CLASS, PVOID, ULONG, PULONG);
 
