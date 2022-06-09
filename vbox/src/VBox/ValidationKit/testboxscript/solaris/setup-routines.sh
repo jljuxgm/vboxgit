@@ -1,4 +1,4 @@
-# $Id: setup-routines.sh 66806 2017-05-05 09:34:57Z vboxsync $
+# $Id: setup-routines.sh 69224 2017-10-24 15:12:00Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Solaris.
 #
@@ -122,7 +122,7 @@ os_load_config() {
         XMLARGS=`"${MY_SVCCFG}" "export" "${MY_SVC_FMRI}" \
                  | ${MY_TR} '\n' ' ' \
                 `;
-        case "${XMLARGS}" in 
+        case "${XMLARGS}" in
             *exec_method*)
                 XMLARGS=`echo "${XMLARGS} " \
                          | ${MY_SED} \
