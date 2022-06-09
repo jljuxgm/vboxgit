@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69414 2017-10-27 09:42:59Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69535 2017-10-31 05:22:07Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3695,8 +3695,7 @@ static int hmR0SvmPreRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIEN
     HMSVM_ASSERT_PREEMPT_SAFE();
     Assert(!CPUMIsGuestInSvmNestedHwVirtMode(pCtx));
 
-#if defined(VBOX_WITH_NESTED_HWVIRT) && defined(VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM)
-
+#ifdef VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM
     /* IEM only for executing nested guest, we shouldn't get here. */
     if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
     {

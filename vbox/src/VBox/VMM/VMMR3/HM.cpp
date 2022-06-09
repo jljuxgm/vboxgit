@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 69140 2017-10-20 08:47:53Z vboxsync $ */
+/* $Id: HM.cpp 69535 2017-10-31 05:22:07Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2689,7 +2689,7 @@ VMMR3DECL(bool) HMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
 
     Assert(HMIsEnabled(pVM));
 
-#if defined(VBOX_WITH_NESTED_HWVIRT) && defined(VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM)
+#ifdef VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM
     if (CPUMIsGuestInNestedHwVirtMode(pCtx))
     {
         Log(("HMR3CanExecuteGuest: In nested-guest mode - returning false"));
