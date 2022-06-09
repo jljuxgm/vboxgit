@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 67116 2017-05-26 12:51:18Z vboxsync $ */
+/* $Id: tarvfs.cpp 67123 2017-05-28 12:19:53Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Reader.
  */
@@ -1473,6 +1473,7 @@ static const RTVFSFSSTREAMOPS rtZipTarFssOps =
     RTVFSFSSTREAMOPS_VERSION,
     0,
     rtZipTarFss_Next,
+    NULL,
     NULL,
     RTVFSFSSTREAMOPS_VERSION
 };
