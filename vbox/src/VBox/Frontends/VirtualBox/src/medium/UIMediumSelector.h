@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 72359 2018-05-28 14:50:28Z vboxsync $ */
+/* $Id: UIMediumSelector.h 72374 2018-05-29 09:36:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -40,7 +40,7 @@ class UIToolBar;
 
 
 /** QIDialog extension providing GUI with the dialog to select an existing media. */
-class UIMediumSelector : public QIWithRetranslateUI<QIDialog>
+class SHARED_LIBRARY_STUFF UIMediumSelector : public QIWithRetranslateUI<QIDialog>
 {
 
     Q_OBJECT;
@@ -49,7 +49,7 @@ signals:
 
 public:
 
-    UIMediumSelector(KDeviceType deviceType, QWidget *pParent = 0);
+    UIMediumSelector(UIMediumType enmMediumType, QWidget *pParent = 0);
 
 private slots:
 
@@ -71,10 +71,11 @@ private:
         void finalize();
     /** @} */
 
+    void repopulateTreeWidget();
 
     QVBoxLayout  *m_pMainLayout;
     QITreeWidget *m_pTreeWidget;
-    KDeviceType   m_enmDeviceType;
+    UIMediumType  m_enmMediumType;
 };
 
 #endif /* !___UIMediumSelector_h___ */
