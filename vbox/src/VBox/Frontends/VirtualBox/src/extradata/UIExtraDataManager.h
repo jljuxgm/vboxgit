@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 69722 2017-11-17 11:14:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -480,6 +480,11 @@ public:
 #ifdef VBOX_WS_X11
         /** Returns whether legacy full-screen mode is requested. */
         bool legacyFullscreenModeRequested();
+
+        /** Returns whether internal machine-window name should be unique. */
+        bool distinguishMachineWindowGroups(const QString &strID);
+        /** Defines whether internal machine-window name should be unique. */
+        void setDistinguishMachineWindowGroups(const QString &strID, bool fEnabled);
 #endif /* VBOX_WS_X11 */
 
         /** Returns whether guest-screen auto-resize according machine-window size is enabled. */

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 69722 2017-11-17 11:14:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -247,6 +247,8 @@ namespace UIExtraDataDefs
 #ifdef VBOX_WS_X11
         /** Holds whether legacy full-screen mode is requested. */
         extern const char* GUI_Fullscreen_LegacyMode;
+        /** Holds whether internal machine-window names should be unique. */
+        extern const char* GUI_DistinguishMachineWindowGroups;
 #endif /* VBOX_WS_X11 */
         /** Holds whether guest-screen auto-resize according machine-window size is enabled. */
         extern const char* GUI_AutoresizeGuest;
