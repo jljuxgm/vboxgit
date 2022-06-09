@@ -1,4 +1,4 @@
-/* $Id: init-win.cpp 70195 2017-12-18 13:40:26Z vboxsync $ */
+/* $Id: init-win.cpp 70199 2017-12-18 14:06:48Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3, Windows Specific Code.
  */
@@ -361,7 +361,7 @@ static void rtR3InitWinSockApis(void)
             rc = RTLdrLoadSystem("wsock32.dll", true /*fNoUnload*/, &hLdrMod);
             if (RT_FAILURE(rc))
             {
-AssertMsgFailed(("rc=%Rrc\n", rc));
+                AssertMsgFailed(("rc=%Rrc\n", rc));
                 return;
             }
             g_fOldWinSock = true;
@@ -369,7 +369,6 @@ AssertMsgFailed(("rc=%Rrc\n", rc));
         g_hModWinSock = (HMODULE)RTLdrGetNativeHandle(hLdrMod);
         RTLdrClose(hLdrMod);
     }
-RTAssertMsg2("g_hModWinSock=%p\n", g_hModWinSock);
 
     g_pfnWSAStartup           = (decltype(g_pfnWSAStartup))         GetProcAddress(g_hModWinSock, "WSAStartup");
     g_pfnWSACleanup           = (decltype(g_pfnWSACleanup))         GetProcAddress(g_hModWinSock, "WSACleanup");
