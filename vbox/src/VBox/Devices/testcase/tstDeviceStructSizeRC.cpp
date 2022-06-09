@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 70964 2018-02-11 21:25:29Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 71210 2018-03-05 20:24:50Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -61,6 +61,8 @@
 # include "../../VMM/VMMR3/APIC.cpp"
 #undef LOG_GROUP
 #include "../PC/DevIoApic.cpp"
+#undef LOG_GROUP
+#include "../PC/DevDMA.cpp"
 #undef LOG_GROUP
 #include "../Storage/DevATA.cpp"
 #ifdef VBOX_WITH_USB
@@ -636,6 +638,16 @@ int main()
     GEN_CHECK_OFF(DEVPIC, StatSetIrqGC);
     GEN_CHECK_OFF(DEVPIC, StatClearedActiveSlaveIRQ);
 #endif
+
+    /* PC/DevPit-i8254.cpp */
+    GEN_CHECK_SIZE(DMAState);
+    GEN_CHECK_OFF(DMAState, DMAC);
+    GEN_CHECK_OFF(DMAState, DMAC[0].ChState[0]);
+    GEN_CHECK_OFF(DMAState, DMAC[0].ChState[1]);
+    GEN_CHECK_OFF(DMAState, DMAC[0].u8Mask);
+    GEN_CHECK_OFF(DMAState, DMAC[1].ChState[0]);
+    GEN_CHECK_OFF(DMAState, DMAC[1].ChState[1]);
+    GEN_CHECK_OFF(DMAState, DMAC[1].u8Mask);
 
     /* PC/DevPit-i8254.cpp */
     GEN_CHECK_SIZE(PITCHANNEL);
