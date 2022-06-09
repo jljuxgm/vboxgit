@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 69561 2017-11-03 11:46:58Z vboxsync $
+# $Id: vbox.py 69562 2017-11-03 13:37:01Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69561 $"
+__version__ = "$Revision: 69562 $"
 
 
 # Standard Python imports.
@@ -1273,13 +1273,20 @@ class TestDriver(base.TestDriver):                                              
         sys.path.insert(0, self.oBuild.sInstallPath);
         if self.oBuild.sSdkPath is not None:
             sys.path.insert(0, os.path.join(self.oBuild.sSdkPath, 'installer'))
-            sys.path.insert(1, os.path.join(self.oBuild.sSdkPath, 'bindings', 'xpcom', 'python'))
+            sys.path.insert(1, os.path.join(self.oBuild.sSdkPath, 'install')); # stupid stupid windows installer!
+            sys.path.insert(2, os.path.join(self.oBuild.sSdkPath, 'bindings', 'xpcom', 'python'))
         os.environ['VBOX_PROGRAM_PATH'] = self.oBuild.sInstallPath;
         reporter.log("sys.path: %s" % (sys.path));
 
         try:
+            from vboxapi import VirtualBoxManager # pylint: disable=import-error
+        except:
+            reporter.logXcpt('Error importing vboxapi');
+            return False;
+
+        # Exception and error hacks.
+        try:
             # pylint: disable=import-error
-            from vboxapi import VirtualBoxManager
             if self.sHost == 'win':
                 from pythoncom import com_error as NativeComExceptionClass  # pylint: disable=E0611
                 import winerror                 as NativeComErrorClass
@@ -1288,9 +1295,8 @@ class TestDriver(base.TestDriver):                                              
                 from xpcom import nsError       as NativeComErrorClass
             # pylint: enable=import-error
         except:
-            traceback.print_exc();
+            reporter.logXcpt('Error importing (XP)COM related stuff for exception hacks and errors');
             return False;
-
         __deployExceptionHacks__(NativeComExceptionClass)
         ComError.copyErrors(NativeComErrorClass);
 
