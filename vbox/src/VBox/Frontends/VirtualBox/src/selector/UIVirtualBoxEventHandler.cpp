@@ -1,10 +1,10 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 71571 2018-03-29 13:41:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class implementation.
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -20,10 +20,10 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* GUI includes: */
-# include "UIVirtualBoxEventHandler.h"
-# include "UIMainEventListener.h"
-# include "UIExtraDataManager.h"
 # include "VBoxGlobal.h"
+# include "UIExtraDataManager.h"
+# include "UIMainEventListener.h"
+# include "UIVirtualBoxEventHandler.h"
 
 /* COM includes: */
 # include "CEventListener.h"
@@ -242,23 +242,23 @@ void UIVirtualBoxEventHandlerProxy::cleanup()
 *********************************************************************************************************************************/
 
 /* static */
-UIVirtualBoxEventHandler *UIVirtualBoxEventHandler::m_spInstance = 0;
+UIVirtualBoxEventHandler *UIVirtualBoxEventHandler::s_pInstance = 0;
 
 /* static */
-UIVirtualBoxEventHandler* UIVirtualBoxEventHandler::instance()
+UIVirtualBoxEventHandler *UIVirtualBoxEventHandler::instance()
 {
-    if (!m_spInstance)
-        m_spInstance = new UIVirtualBoxEventHandler;
-    return m_spInstance;
+    if (!s_pInstance)
+        s_pInstance = new UIVirtualBoxEventHandler;
+    return s_pInstance;
 }
 
 /* static */
 void UIVirtualBoxEventHandler::destroy()
 {
-    if (m_spInstance)
+    if (s_pInstance)
     {
-        delete m_spInstance;
-        m_spInstance = 0;
+        delete s_pInstance;
+        s_pInstance = 0;
     }
 }
 
@@ -271,7 +271,7 @@ UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
 
 void UIVirtualBoxEventHandler::prepare()
 {
-    /* Prepare: */
+    /* Prepare connections: */
     prepareConnections();
 }
 
@@ -306,6 +306,7 @@ void UIVirtualBoxEventHandler::prepareConnections()
             this, SIGNAL(sigSnapshotRestore(QString, QString)),
             Qt::QueuedConnection);
 }
+
 
 #include "UIVirtualBoxEventHandler.moc"
 
