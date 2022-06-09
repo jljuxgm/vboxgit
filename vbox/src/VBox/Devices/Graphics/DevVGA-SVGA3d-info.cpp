@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 69163 2017-10-23 11:54:35Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 69294 2017-10-25 12:25:43Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -319,7 +319,7 @@ static int vmsvga3dSurfaceUpdateHeapBuffers(PVMSVGA3DSTATE pState, PVMSVGA3DSURF
                     switch (pSurface->enmD3DResType)
                     {
                         case VMSVGA3D_D3DRESTYPE_VOLUME_TEXTURE:
-                            AssertFailed(); ///@todo
+                            AssertFailed(); /// @todo
                             break;
 
                         case VMSVGA3D_D3DRESTYPE_SURFACE:

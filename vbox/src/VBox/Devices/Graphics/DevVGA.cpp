@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 69052 2017-10-11 19:04:39Z vboxsync $ */
+/* $Id: DevVGA.cpp 69294 2017-10-25 12:25:43Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -103,6 +103,7 @@
 /* VGA text mode blinking constants (cursor and blinking chars). */
 #define VGA_BLINK_PERIOD_FULL   (RT_NS_100MS * 4)   /* Blink cycle length. */
 #define VGA_BLINK_PERIOD_ON     (RT_NS_100MS * 2)   /* How long cursor/text is visible. */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

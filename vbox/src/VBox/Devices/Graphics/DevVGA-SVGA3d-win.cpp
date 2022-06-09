@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 69243 2017-10-24 17:28:08Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 69294 2017-10-25 12:25:43Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1460,8 +1460,8 @@ int vmsvga3dSurfaceCopy(PVGASTATE pThis, SVGA3dSurfaceImageId dest, SVGA3dSurfac
         AssertRCReturn(rc, rc);
     }
 
-    Assert(pSurfaceSrc->enmD3DResType != VMSVGA3D_D3DRESTYPE_VOLUME_TEXTURE); ///@todo
-    Assert(pSurfaceDest->enmD3DResType != VMSVGA3D_D3DRESTYPE_VOLUME_TEXTURE); ///@todo
+    Assert(pSurfaceSrc->enmD3DResType != VMSVGA3D_D3DRESTYPE_VOLUME_TEXTURE); /// @todo
+    Assert(pSurfaceDest->enmD3DResType != VMSVGA3D_D3DRESTYPE_VOLUME_TEXTURE); /// @todo
 
     if (   pSurfaceSrc->u.pSurface
         && pSurfaceDest->u.pSurface)
