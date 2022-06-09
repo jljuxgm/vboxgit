@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 68962 2017-10-03 13:26:15Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 69006 2017-10-06 15:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -58,6 +58,12 @@ namespace UIExtraDataDefs
         extern const char* GUI_UpdateCheckCount;
     /** @} */
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+
+    /** @name Progress
+      * @{ */
+        /** Holds whether legacy progress handling method is requested. */
+        extern const char* GUI_Progress_LegacyMode;
+    /** @} */
 
     /** @name Settings
       * @{ */

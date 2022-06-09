@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 68962 2017-10-03 13:26:15Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 69006 2017-10-06 15:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -41,6 +41,9 @@ const char* UIExtraDataDefs::GUI_PreventApplicationUpdate = "GUI/PreventApplicat
 const char* UIExtraDataDefs::GUI_UpdateDate = "GUI/UpdateDate";
 const char* UIExtraDataDefs::GUI_UpdateCheckCount = "GUI/UpdateCheckCount";
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+
+/* Progress: */
+const char* UIExtraDataDefs::GUI_Progress_LegacyMode = "GUI/Progress/LegacyMode";
 
 /* Settings: */
 const char* UIExtraDataDefs::GUI_Customizations = "GUI/Customizations";

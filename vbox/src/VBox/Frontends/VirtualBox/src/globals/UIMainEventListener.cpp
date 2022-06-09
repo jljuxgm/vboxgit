@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 68508 2017-08-22 14:42:51Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 69006 2017-10-06 15:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -57,6 +57,8 @@
 # include "CRuntimeErrorEvent.h"
 # include "CCanShowWindowEvent.h"
 # include "CShowWindowEvent.h"
+# include "CProgressPercentageChangedEvent.h"
+# include "CProgressTaskCompletedEvent.h"
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
@@ -401,6 +403,18 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         case KVBoxEventType_OnAudioAdapterChanged:
         {
             emit sigAudioAdapterChange();
+            break;
+        }
+        case KVBoxEventType_OnProgressPercentageChanged:
+        {
+            CProgressPercentageChangedEvent es(pEvent);
+            emit sigProgressPercentageChange(es.GetProgressId(), (int)es.GetPercent());
+            break;
+        }
+        case KVBoxEventType_OnProgressTaskCompleted:
+        {
+            CProgressTaskCompletedEvent es(pEvent);
+            emit sigProgressTaskComplete(es.GetProgressId());
             break;
         }
 

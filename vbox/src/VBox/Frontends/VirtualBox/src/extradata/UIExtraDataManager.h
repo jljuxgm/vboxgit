@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 68962 2017-10-03 13:26:15Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 69006 2017-10-06 15:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -176,6 +176,12 @@ public:
         void incrementApplicationUpdateCheckCounter();
     /** @} */
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+
+    /** @name Progress
+      * @{ */
+        /** Returns whether legacy progress handling method is requested. */
+        bool legacyProgressHandlingRequested();
+    /** @} */
 
     /** @name Settings
       * @{ */

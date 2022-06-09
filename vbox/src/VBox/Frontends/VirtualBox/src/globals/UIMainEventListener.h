@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 68508 2017-08-22 14:42:51Z vboxsync $ */
+/* $Id: UIMainEventListener.h 69006 2017-10-06 15:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -120,6 +120,11 @@ signals:
     void sigShowWindow(qint64 &winId); /* use Qt::DirectConnection */
     /** Notifies about audio adapter state change. */
     void sigAudioAdapterChange();
+
+    /** Notifies about @a iPercent change for progress with @a strProgressId. */
+    void sigProgressPercentageChange(QString strProgressId, int iPercent);
+    /** Notifies about task complete for progress with @a strProgressId. */
+    void sigProgressTaskComplete(QString strProgressId);
 
 public:
 

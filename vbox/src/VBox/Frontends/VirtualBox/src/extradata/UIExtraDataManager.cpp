@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 68962 2017-10-03 13:26:15Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 69006 2017-10-06 15:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1939,6 +1939,7 @@ QStringList UIExtraDataManagerWindow::knownExtraDataKeys()
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
            << GUI_PreventApplicationUpdate << GUI_UpdateDate << GUI_UpdateCheckCount
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+           << GUI_Progress_LegacyMode
            << GUI_RestrictedGlobalSettingsPages << GUI_RestrictedMachineSettingsPages
            << GUI_LanguageID
            << GUI_ActivateHoveredMachineWindow
@@ -2289,6 +2290,12 @@ void UIExtraDataManager::incrementApplicationUpdateCheckCounter()
     setExtraDataString(GUI_UpdateCheckCount, QString::number(applicationUpdateCheckCounter() + 1));
 }
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+
+bool UIExtraDataManager::legacyProgressHandlingRequested()
+{
+    /* 'False' unless feature allowed: */
+    return isFeatureAllowed(GUI_Progress_LegacyMode);
+}
 
 bool UIExtraDataManager::guiFeatureEnabled(GUIFeatureType enmFeature)
 {
