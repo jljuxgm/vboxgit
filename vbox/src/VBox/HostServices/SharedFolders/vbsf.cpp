@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
+/* $Id: vbsf.cpp 70726 2018-01-24 13:58:10Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -1525,9 +1525,13 @@ static int vbsfSetFileInfo(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLHANDLE Ha
 
 #ifndef RT_OS_WINDOWS
                 /* Don't allow the guest to clear the own bit, otherwise the guest wouldn't be
-                 * able to access this file anymore. Only for guests, which set the UNIX mode. */
+                 * able to access this file anymore. Only for guests, which set the UNIX mode.
+                 * Also, clear bits which we don't pass through for security reasons. */
                 if (fMode & RTFS_UNIX_MASK)
+                {
                     fMode |= RTFS_UNIX_IRUSR;
+                    fMode &= ~(RTFS_UNIX_ISUID | RTFS_UNIX_ISGID | RTFS_UNIX_ISTXT);
+                }
 #endif
 
                 rc = RTFileSetMode(pHandle->file.Handle, fMode);
