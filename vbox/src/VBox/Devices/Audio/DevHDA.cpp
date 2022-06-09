@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67496 2017-06-20 11:04:45Z vboxsync $ */
+/* $Id: DevHDA.cpp 67504 2017-06-20 13:20:12Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -4969,7 +4969,7 @@ static int hdaStreamRead(PHDASTATE pThis, PHDASTREAM pStream, uint32_t cbToRead,
 
         uint32_t cbWritten = 0;
 
-        RTCircBufAcquireReadBlock(pCircBuf, cbToRead, &pvSrc, &cbSrc);
+        RTCircBufAcquireReadBlock(pCircBuf, cbLeft, &pvSrc, &cbSrc);
 
         if (cbSrc)
         {
