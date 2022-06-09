@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: GIMKvm.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -174,7 +174,7 @@ VMMR3_INT_DECL(int) gimR3KvmInit(PVM pVM)
     }
 
     /* We always need to trap VMCALL/VMMCALL hypercall using #UDs for raw-mode VMs. */
-    if (!HMIsEnabled(pVM))
+    if (VM_IS_RAW_MODE_ENABLED(pVM))
         pKvm->fTrapXcptUD = true;
 
     return VINF_SUCCESS;

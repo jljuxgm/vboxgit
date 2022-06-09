@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PDM.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -561,14 +561,14 @@ VMMR3_INT_DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
      */
     int rc;
     PCPDMDEVHLPRC pDevHlpRC = NIL_RTRCPTR;
-    if (!HMIsEnabled(pVM))
+    if (VM_IS_RAW_MODE_ENABLED(pVM))
     {
         rc = PDMR3LdrGetSymbolRC(pVM, NULL, "g_pdmRCDevHlp", &pDevHlpRC);
         AssertReleaseMsgRC(rc, ("rc=%Rrc when resolving g_pdmRCDevHlp\n", rc));
     }
 
     PCPDMDRVHLPRC pDrvHlpRC = NIL_RTRCPTR;
-    if (!HMIsEnabled(pVM))
+    if (VM_IS_RAW_MODE_ENABLED(pVM))
     {
         rc = PDMR3LdrGetSymbolRC(pVM, NULL, "g_pdmRCDevHlp", &pDrvHlpRC);
         AssertReleaseMsgRC(rc, ("rc=%Rrc when resolving g_pdmRCDevHlp\n", rc));

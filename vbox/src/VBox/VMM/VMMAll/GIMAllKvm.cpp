@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -399,7 +399,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimKvmExecHypercallInstr(PVMCPU pVCpu, PCPUMCTX pCtx,
             PVM      pVM  = pVCpu->CTX_SUFF(pVM);
             PCGIMKVM pKvm = &pVM->gim.s.u.Kvm;
             if (   pDis->pCurInstr->uOpcode != pKvm->uOpCodeNative
-                && HMIsEnabled(pVM))
+                && !VM_IS_RAW_MODE_ENABLED(pVM))
             {
                 /** @todo r=ramshankar: we probably should be doing this in an
                  *        EMT rendezvous. */

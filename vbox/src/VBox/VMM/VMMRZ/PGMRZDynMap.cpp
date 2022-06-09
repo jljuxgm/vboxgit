@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -481,7 +481,7 @@ VMMR0DECL(int) PGMR0DynMapInitVM(PVM pVM)
     /*
      * Do we need the cache? Skip the last bit if we don't.
      */
-    if (!HMIsEnabled(pVM))
+    if (VM_IS_RAW_MODE_ENABLED(pVM))
         return VINF_SUCCESS;
 
     /*

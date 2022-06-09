@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: DBGFMem.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -433,7 +433,7 @@ static DECLCALLBACK(int) dbgfR3SelQueryInfo(PUVM pUVM, VMCPUID idCpu, RTSEL Sel,
     }
     else
     {
-        if (HMIsEnabled(pVM))
+        if (!VM_IS_RAW_MODE_ENABLED(pVM))
             rc = VERR_INVALID_STATE;
         else
             rc = SELMR3GetShadowSelectorInfo(pVM, Sel, pSelInfo);

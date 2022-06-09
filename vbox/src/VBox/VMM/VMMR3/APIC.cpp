@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: APIC.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1432,7 +1432,7 @@ static int apicR3InitState(PVM pVM)
     LogFlow(("APIC: apicR3InitState: pVM=%p\n", pVM));
 
     /* With hardware virtualization, we don't need to map the APIC in GC. */
-    bool const fNeedsGCMapping = !HMIsEnabled(pVM);
+    bool const fNeedsGCMapping = VM_IS_RAW_MODE_ENABLED(pVM);
 
     /*
      * Allocate and map the pending-interrupt bitmap (PIB).

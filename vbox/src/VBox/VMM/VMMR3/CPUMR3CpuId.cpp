@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 70913 2018-02-08 15:11:15Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -5303,7 +5303,7 @@ int cpumR3LoadCpuIdInner(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, PCPUMCPUID
      * For raw-mode we'll require that the CPUs are very similar since we don't
      * intercept CPUID instructions for user mode applications.
      */
-    if (!HMIsEnabled(pVM))
+    if (VM_IS_RAW_MODE_ENABLED(pVM))
     {
         /* CPUID(0) */
         CPUID_CHECK_RET(   aHostRawStd[0].uEbx == aRawStd[0].uEbx

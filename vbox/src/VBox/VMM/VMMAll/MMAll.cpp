@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: MMAll.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -257,7 +257,7 @@ DECLINLINE(RTR0PTR) mmHyperLookupCalcR0(PVM pVM, PMMLOOKUPHYPER pLookup, uint32_
             if (pLookup->u.Locked.pvR0)
                 return (RTR0PTR)((RTR0UINTPTR)pLookup->u.Locked.pvR0 + off);
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-            AssertMsg(!HMIsEnabled(pVM), ("%s\n", R3STRING(pLookup->pszDesc)));
+            AssertMsg(VM_IS_RAW_MODE_ENABLED(pVM), ("%s\n", R3STRING(pLookup->pszDesc)));
 #else
             AssertMsgFailed(("%s\n", R3STRING(pLookup->pszDesc))); NOREF(pVM);
 #endif

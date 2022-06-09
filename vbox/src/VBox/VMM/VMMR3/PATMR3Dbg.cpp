@@ -1,4 +1,4 @@
-/* $Id: PATMR3Dbg.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PATMR3Dbg.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager, Debugger Related Parts.
  */
@@ -267,7 +267,7 @@ static void patmR3DbgAddPatches(PVM pVM, RTDBGMOD hDbgMod)
  */
 VMMR3_INT_DECL(void) PATMR3DbgPopulateAddrSpace(PVM pVM, RTDBGAS hDbgAs)
 {
-    AssertReturnVoid(!HMIsEnabled(pVM));
+    AssertReturnVoid(VM_IS_RAW_MODE_ENABLED(pVM));
 
     /*
      * Add a fake debug module for the PATMGCSTATE structure.

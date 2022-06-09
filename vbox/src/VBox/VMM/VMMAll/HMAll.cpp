@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: HMAll.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -48,7 +48,7 @@
  */
 VMMDECL(bool) HMIsEnabledNotMacro(PVM pVM)
 {
-    Assert(pVM->fHMEnabledFixed);
+    Assert(pVM->bMainExecutionEngine != VM_EXEC_ENGINE_NOT_SET);
     return pVM->fHMEnabled;
 }
 
@@ -362,6 +362,7 @@ VMM_INT_DECL(bool) HMAreNestedPagingAndFullGuestExecEnabled(PVM pVM)
  * @returns true if long mode is allowed, false otherwise.
  * @param   pVM         The cross context VM structure.
  */
+/** @todo NEM: Check users of HMIsLongModeAllowed */
 VMM_INT_DECL(bool) HMIsLongModeAllowed(PVM pVM)
 {
     return HMIsEnabled(pVM) && pVM->hm.s.fAllow64BitGuests;

@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 70932 2018-02-09 12:54:37Z vboxsync $ */
+/* $Id: PDMDevice.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -132,7 +132,7 @@ int pdmR3DevInit(PVM pVM)
      * Get the RC & R0 devhlps and create the devhlp R3 task queue.
      */
     PCPDMDEVHLPRC pHlpRC = NIL_RTRCPTR;
-    if (!HMIsEnabled(pVM))
+    if (VM_IS_RAW_MODE_ENABLED(pVM))
     {
         rc = PDMR3LdrGetSymbolRC(pVM, NULL, "g_pdmRCDevHlp", &pHlpRC);
         AssertReleaseRCReturn(rc, rc);

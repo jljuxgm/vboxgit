@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: DBGF.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -362,7 +362,7 @@ bool dbgfR3WaitForAttach(PVM pVM, PVMCPU pVCpu, DBGFEVENTTYPE enmEvent)
 # if !defined(DEBUG) || defined(DEBUG_sandervl) || defined(DEBUG_frank) || defined(IEM_VERIFICATION_MODE)
     int cWait = 10;
 # else
-    int cWait = HMIsEnabled(pVM)
+    int cWait = !VM_IS_RAW_MODE_ENABLED(pVM)
              && (   enmEvent == DBGFEVENT_ASSERTION_HYPER
                  || enmEvent == DBGFEVENT_FATAL_ERROR)
              && !RTEnvExist("VBOX_DBGF_WAIT_FOR_ATTACH")
@@ -2102,6 +2102,7 @@ VMMR3DECL(int) DBGFR3InjectNMI(PUVM pUVM, VMCPUID idCpu)
     AssertReturn(idCpu < pVM->cCpus, VERR_INVALID_CPU_ID);
 
     /** @todo Implement generic NMI injection. */
+    /** @todo NEM: NMI injection   */
     if (!HMIsEnabled(pVM))
         return VERR_NOT_SUP_IN_RAW_MODE;
 

@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: PGMAllBth.h 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2559,7 +2559,7 @@ static int PGM_BTH_NAME(CheckDirtyPageFault)(PVMCPU pVCpu, uint32_t uErr, PSHWPD
         /* Bail out here as pgmPoolGetPage will return NULL and we'll crash below.
          * Our individual shadow handlers will provide more information and force a fatal exit.
          */
-        if (   !HMIsEnabled(pVM)
+        if (   VM_IS_RAW_MODE_ENABLED(pVM)
             && MMHyperIsInsideArea(pVM, (RTGCPTR)GCPtrPage))
         {
             LogRel(("CheckPageFault: write to hypervisor region %RGv\n", GCPtrPage));

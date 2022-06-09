@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -1326,9 +1326,12 @@ VMMDECL(RTGCPTR) MMHyperGetArea(PVM pVM, size_t *pcb)
  * @returns false if outside.
  * @param   pVM         The cross context VM structure.
  * @param   GCPtr       The pointer to check.
+ *
+ * @note    Caller must check that we're in raw-mode before calling!
  */
 VMMDECL(bool) MMHyperIsInsideArea(PVM pVM, RTGCPTR GCPtr)
 {
+    Assert(VM_IS_RAW_MODE_ENABLED(pVM));
     return (RTGCUINTPTR)GCPtr - (RTGCUINTPTR)pVM->mm.s.pvHyperAreaGC < pVM->mm.s.cbHyperArea;
 }
 

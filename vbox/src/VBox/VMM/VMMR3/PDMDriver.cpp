@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PDMDriver.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -745,7 +745,7 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                         AssertReleaseRCReturn(rc, rc);
                     }
                     if (   (pDrv->pReg->fFlags & PDM_DRVREG_FLAGS_RC)
-                        && !HMIsEnabled(pVM))
+                        && VM_IS_RAW_MODE_ENABLED(pVM))
                     {
                         pNew->pvInstanceDataR0      = MMHyperR3ToRC(pVM, &pNew->achInstanceData[0]);
                         rc = PDMR3LdrGetSymbolRC(pVM, NULL, "g_pdmRCDrvHlp", &pNew->pHlpRC);

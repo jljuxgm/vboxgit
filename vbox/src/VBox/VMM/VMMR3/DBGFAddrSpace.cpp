@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -635,7 +635,7 @@ static void dbgfR3AsLazyPopulate(PUVM pUVM, RTDBGAS hAlias)
         RTDBGAS hDbgAs = pUVM->dbgf.s.ahAsAliases[iAlias];
         if (hAlias == DBGF_AS_R0 && pUVM->pVM)
             PDMR3LdrEnumModules(pUVM->pVM, dbgfR3AsLazyPopulateR0Callback, hDbgAs);
-        else if (hAlias == DBGF_AS_RC && pUVM->pVM && !HMIsEnabled(pUVM->pVM))
+        else if (hAlias == DBGF_AS_RC && pUVM->pVM && VM_IS_RAW_MODE_ENABLED(pUVM->pVM))
         {
             LogRel(("DBGF: Lazy init of RC address space\n"));
             PDMR3LdrEnumModules(pUVM->pVM, dbgfR3AsLazyPopulateRCCallback, hDbgAs);

@@ -1,4 +1,4 @@
-/* $Id: PGMGst.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: PGMGst.h 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
@@ -58,7 +58,7 @@ PGM_GST_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
     {
         int rc;
 
-        if (!HMIsEnabled(pVM))
+        if (VM_IS_RAW_MODE_ENABLED(pVM))
         {
 #if PGM_SHW_TYPE != PGM_TYPE_AMD64 /* No AMD64 for traditional virtualization, only VT-x and AMD-V. */
             /* RC */

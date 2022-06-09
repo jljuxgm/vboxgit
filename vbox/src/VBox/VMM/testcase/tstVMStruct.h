@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 70918 2018-02-08 16:11:47Z vboxsync $ */
+/* $Id: tstVMStruct.h 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -1418,12 +1418,12 @@
     GEN_CHECK_OFF(VM, cbSelf);
     GEN_CHECK_OFF(VM, pfnVMMRCToHostAsm);
     GEN_CHECK_OFF(VM, pfnVMMRCToHostAsmNoReturn);
+    GEN_CHECK_OFF(VM, bMainExecutionEngine);
     GEN_CHECK_OFF(VM, fRecompileUser);
     GEN_CHECK_OFF(VM, fRecompileSupervisor);
     GEN_CHECK_OFF(VM, fPATMEnabled);
     GEN_CHECK_OFF(VM, fCSAMEnabled);
     GEN_CHECK_OFF(VM, fHMEnabled);
-    GEN_CHECK_OFF(VM, fHMEnabledFixed);
     GEN_CHECK_OFF(VM, fFaultTolerantMaster);
     GEN_CHECK_OFF(VM, fUseLargePages);
     GEN_CHECK_OFF(VM, hTraceBufRC);

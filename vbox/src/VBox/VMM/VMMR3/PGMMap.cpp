@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 70372 2017-12-28 10:19:33Z vboxsync $ */
+/* $Id: PGMMap.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -538,7 +538,7 @@ VMMR3DECL(int) PGMR3MappingsFix(PVM pVM, RTGCPTR GCPtrBase, uint32_t cb)
     RT_NOREF(pVM, GCPtrBase, cb);
 #endif /* PGM_WITHOUT_MAPPINGS */
 
-    Assert(HMIsEnabled(pVM));
+    Assert(!VM_IS_RAW_MODE_ENABLED(pVM));
     return VINF_SUCCESS;
 }
 

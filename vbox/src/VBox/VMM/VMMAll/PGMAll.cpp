@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PGMAll.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1012,7 +1012,7 @@ int pgmShwSyncPaePDPtr(PVMCPU pVCpu, RTGCPTR GCPtr, X86PGPAEUINT uGstPdpe, PX86P
                     /* PD not present; guest must reload CR3 to change it.
                      * No need to monitor anything in this case.
                      */
-                    Assert(!HMIsEnabled(pVM));
+                    Assert(VM_IS_RAW_MODE_ENABLED(pVM));
 
                     GCPdPt  = uGstPdpe & X86_PDPE_PG_MASK;
                     enmKind = PGMPOOLKIND_PAE_PD_PHYS;
