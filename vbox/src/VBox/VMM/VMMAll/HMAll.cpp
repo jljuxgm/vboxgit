@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 72343 2018-05-25 13:24:28Z vboxsync $ */
+/* $Id: HMAll.cpp 72462 2018-06-06 14:24:04Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -511,28 +511,6 @@ VMM_INT_DECL(bool) HMSetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable)
     pVCpu->hm.s.fSingleInstruction = fEnable;
     pVCpu->hm.s.fUseDebugLoop = fEnable || pVM->hm.s.fUseDebugLoop;
     return fOld;
-}
-
-
-/**
- * Notifies HM that paravirtualized hypercalls are now enabled.
- *
- * @param   pVCpu   The cross context virtual CPU structure.
- */
-VMM_INT_DECL(void) HMHypercallsEnable(PVMCPU pVCpu)
-{
-    pVCpu->hm.s.fHypercallsEnabled = true;
-}
-
-
-/**
- * Notifies HM that paravirtualized hypercalls are now disabled.
- *
- * @param   pVCpu   The cross context virtual CPU structure.
- */
-VMM_INT_DECL(void) HMHypercallsDisable(PVMCPU pVCpu)
-{
-    pVCpu->hm.s.fHypercallsEnabled = false;
 }
 
 

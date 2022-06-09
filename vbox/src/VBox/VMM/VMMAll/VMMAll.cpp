@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: VMMAll.cpp 72462 2018-06-06 14:24:04Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -445,41 +445,5 @@ VMM_INT_DECL(int) VMMPatchHypercall(PVM pVM, void *pvBuf, size_t cbBuf, size_t *
             AssertFailed();
             return VERR_UNSUPPORTED_CPU;
     }
-}
-
-
-/**
- * Notifies VMM that paravirtualized hypercalls are now enabled.
- *
- * @param   pVCpu   The cross context virtual CPU structure.
- */
-VMM_INT_DECL(void) VMMHypercallsEnable(PVMCPU pVCpu)
-{
-    /* If there is anything to do for raw-mode, do it here. */
-/** @todo NEM: Hypercalls. */
-#ifndef IN_RC
-    if (HMIsEnabled(pVCpu->CTX_SUFF(pVM)))
-        HMHypercallsEnable(pVCpu);
-#else
-    RT_NOREF_PV(pVCpu);
-#endif
-}
-
-
-/**
- * Notifies VMM that paravirtualized hypercalls are now disabled.
- *
- * @param   pVCpu   The cross context virtual CPU structure.
- */
-VMM_INT_DECL(void) VMMHypercallsDisable(PVMCPU pVCpu)
-{
-    /* If there is anything to do for raw-mode, do it here. */
-/** @todo NEM: Hypercalls. */
-#ifndef IN_RC
-    if (HMIsEnabled(pVCpu->CTX_SUFF(pVM)))
-        HMHypercallsDisable(pVCpu);
-#else
-    RT_NOREF_PV(pVCpu);
-#endif
 }
 
