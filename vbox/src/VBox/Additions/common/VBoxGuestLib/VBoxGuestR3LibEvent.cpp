@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibEvent.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuestR3LibEvent.cpp 67798 2017-07-05 14:06:40Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Events.
  */
@@ -86,7 +86,9 @@ VBGLR3DECL(int) VbglR3WaitEvent(uint32_t fMask, uint32_t cMillies, uint32_t *pfE
  * with a VERR_INTERRUPTED status.
  *
  * Can be used in combination with a termination flag variable for interrupting
- * event loops.  Avoiding race conditions is the responsibility of the caller.
+ * event loops.  After calling this, VBOXGUEST_IOCTL_WAITEVENT should no longer
+ * be called in the same session.  At the time of writing this is not enforced;
+ * at the time of reading it may be.
  *
  * @returns IPRT status code.
  */
