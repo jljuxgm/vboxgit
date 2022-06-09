@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 69280 2017-10-25 10:59:32Z vboxsync $ */
+/* $Id: scmrw.cpp 69286 2017-10-25 11:31:24Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1033,6 +1033,8 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
                 && RTStrNICmp(pszBody, RT_STR_TUPLE("Includes contributions from")) == 0) ) )
     {
         const char *pszNextLine = (const char *)memchr(pszBody, '\n', cchBody);
+        while (pszNextLine && pszNextLine[1] != '\n')
+            pszNextLine = (const char *)memchr(pszNextLine + 1, '\n', cchBody);
         if (pszNextLine)
         {
             pchContributedBy = pszBody;
@@ -1443,10 +1445,19 @@ static bool rewrite_Copyright_Common(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTR
                         /* Contributed by someone? */
                         if (Info.pszContributedBy)
                         {
-                            ScmStreamWrite(pOut, g_aCopyrightCommentPrefix[enmCommentStyle].psz,
-                                           g_aCopyrightCommentPrefix[enmCommentStyle].cch);
-                            ScmStreamWrite(pOut, Info.pszContributedBy, strlen(Info.pszContributedBy));
-                            ScmStreamPutEol(pOut, enmEol);
+                            const char *psz = Info.pszContributedBy;
+                            for (;;)
+                            {
+                                const char *pszEol = strchr(psz, '\n');
+                                size_t cchLine = pszEol ? pszEol - psz : strlen(psz);
+                                ScmStreamWrite(pOut, g_aCopyrightCommentPrefix[enmCommentStyle].psz,
+                                               g_aCopyrightCommentPrefix[enmCommentStyle].cch);
+                                ScmStreamWrite(pOut, psz, cchLine);
+                                ScmStreamPutEol(pOut, enmEol);
+                                if (!pszEol)
+                                    break;
+                                psz = pszEol + 1;
+                            }
 
                             ScmStreamPutLine(pOut, g_aCopyrightCommentEmpty[enmCommentStyle].psz,
                                              g_aCopyrightCommentEmpty[enmCommentStyle].cch, enmEol);

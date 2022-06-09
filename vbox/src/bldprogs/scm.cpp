@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69280 2017-10-25 10:59:32Z vboxsync $ */
+/* $Id: scm.cpp 69286 2017-10-25 11:31:24Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -290,6 +290,16 @@ static PFNSCMREWRITER const g_aRewritersFor_RC[] =
     rewrite_Copyright_CstyleComment,
 };
 
+static PFNSCMREWRITER const g_aRewritersFor_DTrace[] =
+{
+    rewrite_ForceNativeEol,
+    rewrite_ExpandTabs,
+    rewrite_StripTrailingBlanks,
+    rewrite_AdjustTrailingLines,
+    rewrite_SvnKeywords,
+    rewrite_Copyright_CstyleComment,
+};
+
 static PFNSCMREWRITER const g_aRewritersFor_ASM[] =
 {
     rewrite_ForceNativeEol,
@@ -436,6 +446,7 @@ static SCMCFGENTRY const g_aConfigs[] =
     SCM_CFG_ENTRY(g_aRewritersFor_C_and_CPP,        false, "*.c|*.cpp|*.C|*.CPP|*.cxx|*.cc|*.m|*.mm" ),
     SCM_CFG_ENTRY(g_aRewritersFor_H_and_HPP,        false, "*.h|*.hpp" ),
     SCM_CFG_ENTRY(g_aRewritersFor_RC,               false, "*.rc" ),
+    SCM_CFG_ENTRY(g_aRewritersFor_DTrace,           false, "*.d" ),
     SCM_CFG_ENTRY(g_aRewritersFor_ASM,              false, "*.asm|*.mac" ),
     SCM_CFG_ENTRY(g_aRewritersFor_DEF,              false, "*.def" ),
     SCM_CFG_ENTRY(g_aRewritersFor_ShellScripts,     false, "*.sh|configure" ),
@@ -444,7 +455,7 @@ static SCMCFGENTRY const g_aConfigs[] =
     SCM_CFG_ENTRY(g_aRewritersFor_SedScripts,       false, "*.sed" ),
     SCM_CFG_ENTRY(g_aRewritersFor_Python,           false, "*.py" ),
     SCM_CFG_ENTRY(g_aRewritersFor_ScmSettings,      false, "*.scm-settings" ),
-    SCM_CFG_ENTRY(g_aRewritersFor_Images,           true,  "*.png|*.bmp|*.jpg|*.pnm|*.ico" ),
+    SCM_CFG_ENTRY(g_aRewritersFor_Images,           true,  "*.png|*.bmp|*.jpg|*.pnm|*.ico|*.icns" ),
     SCM_CFG_ENTRY(g_aRewritersFor_Xslt,             false, "*.xsl" ),
     SCM_CFG_ENTRY(g_aRewritersFor_Xml,              false, "*.xml" ),
     SCM_CFG_ENTRY(g_aRewritersFor_QtProject,        false, "*.pro" ),
@@ -2075,7 +2086,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69280 $";
+                static const char s_szRev[] = "$Revision: 69286 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
