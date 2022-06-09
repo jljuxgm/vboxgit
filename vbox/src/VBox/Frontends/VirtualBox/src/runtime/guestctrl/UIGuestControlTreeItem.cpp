@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.cpp 71310 2018-03-13 09:39:12Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.cpp 71639 2018-04-04 06:01:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestSessionTreeItem class implementation.
  */
@@ -396,3 +396,4 @@ const CGuestProcess& UIGuestProcessTreeItem::guestProcess() const
 {
     return m_comGuestProcess;
 }
+

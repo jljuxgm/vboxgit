@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 71531 2018-03-28 07:25:36Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 71639 2018-04-04 06:01:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -711,3 +711,4 @@ void UIGuestControlFileManager::loadSettings()
 }
 
 #include "UIGuestControlFileManager.moc"
+

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 71467 2018-03-22 16:56:22Z vboxsync $ */
+/* $Id: UIGuestControlInterface.cpp 71639 2018-04-04 06:01:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -688,3 +688,4 @@ QString UIGuestControlInterface::getFsObjInfoString(const T &fsObjectInfo) const
 
     return strObjectInfo;
 }
+

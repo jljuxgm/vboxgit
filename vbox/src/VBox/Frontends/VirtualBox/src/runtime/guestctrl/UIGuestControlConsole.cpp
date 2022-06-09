@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlConsole.cpp 71191 2018-03-05 08:34:54Z vboxsync $ */
+/* $Id: UIGuestControlConsole.cpp 71639 2018-04-04 06:01:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlConsole class implementation.
  */
@@ -301,3 +301,4 @@ QList<QString> UIGuestControlConsole::matchedWords(const QString &strSearch) con
     }
     return list;
 }
+

@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.h 71563 2018-03-29 11:14:12Z vboxsync $ */
+/* $Id: UIGuestFileTable.h 71639 2018-04-04 06:01:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -62,3 +62,4 @@ private:
 };
 
 #endif /* !___UIGuestControlFileTable_h___ */
+
