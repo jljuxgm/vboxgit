@@ -1,4 +1,4 @@
-/* $Id: HDACodec.h 67534 2017-06-21 10:05:47Z vboxsync $ */
+/* $Id: HDACodec.h 67899 2017-07-11 11:03:53Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  */
@@ -17,6 +17,10 @@
 
 #ifndef DEV_HDA_CODEC_H
 #define DEV_HDA_CODEC_H
+
+#include <iprt/list.h>
+
+#include "AudioMixer.h"
 
 /** The ICH HDA (Intel) controller. */
 typedef struct HDASTATE *PHDASTATE;

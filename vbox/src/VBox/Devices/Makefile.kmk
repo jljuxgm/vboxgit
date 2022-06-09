@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 67699 2017-06-29 14:00:45Z vboxsync $
+# $Id: Makefile.kmk 67899 2017-07-11 11:03:53Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -595,7 +595,9 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
 	Audio/DevIchAc97.cpp \
 	Audio/DevSB16.cpp \
 	Audio/DevHDA.cpp \
+	Audio/DevHDACommon.cpp \
 	Audio/HDACodec.cpp \
+	Audio/HDAStream.cpp \
 	Audio/HDAStreamChannel.cpp \
 	Audio/HDAStreamMap.cpp \
 	Audio/HDAStreamPeriod.cpp \
