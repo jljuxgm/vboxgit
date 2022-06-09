@@ -1,4 +1,4 @@
-/* $Id: QIDialogButtonBox.cpp 71348 2018-03-15 10:21:52Z vboxsync $ */
+/* $Id: QIDialogButtonBox.cpp 71397 2018-03-20 11:52:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIDialogButtonBox class implementation.
  */
@@ -18,16 +18,17 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
+/* Qt includes: */
+# include <QBoxLayout>
+# include <QEvent>
+# include <QPushButton>
 
+/* GUI includes: */
 # include "QIDialogButtonBox.h"
 # include "UISpecialControls.h"
 
+/* Other VBox includes: */
 # include <iprt/assert.h>
-
-/* Qt includes */
-# include <QPushButton>
-# include <QEvent>
-# include <QBoxLayout>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
