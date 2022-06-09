@@ -1,4 +1,4 @@
-/* $Id: pointer.c 69058 2017-10-12 09:48:15Z vboxsync $ */
+/* $Id: pointer.c 69066 2017-10-12 19:03:30Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver utility functions
  */
@@ -178,9 +178,9 @@ vbox_vmm_load_cursor_image(ScrnInfoPtr pScrn, VBOXPtr pVBox,
 static void
 vbox_set_cursor_colors(ScrnInfoPtr pScrn, int bg, int fg)
 {
-    NOREF(pScrn);
-    NOREF(bg);
-    NOREF(fg);
+    RT_NOREF(pScrn);
+    RT_NOREF(bg);
+    RT_NOREF(fg);
     /* ErrorF("vbox_set_cursor_colors NOT IMPLEMENTED\n"); */
 }
 

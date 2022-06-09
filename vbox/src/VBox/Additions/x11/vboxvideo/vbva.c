@@ -1,4 +1,4 @@
-/* $Id: vbva.c 69064 2017-10-12 18:18:01Z vboxsync $ */
+/* $Id: vbva.c 69066 2017-10-12 19:03:30Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver 2D acceleration functions
  */
@@ -100,13 +100,13 @@ void vbvxHandleDirtyRect(ScrnInfoPtr pScrn, int iRects, BoxPtr aRects)
 
 static DECLCALLBACK(void *) hgsmiEnvAlloc(void *pvEnv, HGSMISIZE cb)
 {
-    NOREF(pvEnv);
+    RT_NOREF(pvEnv);
     return calloc(1, cb);
 }
 
 static DECLCALLBACK(void) hgsmiEnvFree(void *pvEnv, void *pv)
 {
-    NOREF(pvEnv);
+    RT_NOREF(pvEnv);
     free(pv);
 }
 
