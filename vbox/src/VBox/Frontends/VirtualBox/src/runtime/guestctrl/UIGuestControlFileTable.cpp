@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71278 2018-03-08 15:54:00Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 71285 2018-03-09 12:48:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -86,6 +86,7 @@ private:
 
 };
 
+
 /*********************************************************************************************************************************
 *   UIFileStringInputDialog implementation.                                                                                      *
 *********************************************************************************************************************************/
@@ -113,6 +114,7 @@ QString UIStringInputDialog::getString() const
         return QString();
     return m_pLineEdit->text();
 }
+
 
 /*********************************************************************************************************************************
 *   UIFileTableItem implementation.                                                                                              *
@@ -851,6 +853,7 @@ QStringList UIGuestControlFileTable::selectedItemPathList()
     return pathList;
 }
 
+
 /*********************************************************************************************************************************
 *   UIGuestFileTable implementation.                                                                                             *
 *********************************************************************************************************************************/
@@ -1002,6 +1005,7 @@ void UIGuestFileTable::copyHostToGuest(const QStringList &hostSourcePathList)
 {
     Q_UNUSED(hostSourcePathList);
 }
+
 
 /*********************************************************************************************************************************
 *   UIHostFileTable implementation.                                                                                              *
