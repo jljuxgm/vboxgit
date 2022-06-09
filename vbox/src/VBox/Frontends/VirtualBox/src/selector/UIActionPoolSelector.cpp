@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 71644 2018-04-04 06:55:08Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 71936 2018-04-20 12:02:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -675,11 +675,13 @@ protected:
         return QString("MoveVM");
     }
 
+#if 0 /* conflict with RenameVMGroup action to be resolved first */
     /** Returns default shortcut. */
     virtual QKeySequence defaultShortcut(UIActionPoolType) const /* override */
     {
         return QKeySequence("Ctrl+M");
     }
+#endif /* conflict with RenameVMGroup action to be resolved first */
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
