@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 66655 2017-04-24 12:32:16Z vboxsync $ */
+/* $Id: SUPLib-win.cpp 67493 2017-06-20 10:23:42Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -389,8 +389,14 @@ static int suplibOsStopService(void)
             else
             {
                 dwErr = GetLastError();
-                AssertMsgFailed(("ControlService failed with dwErr=%Rwa. status=%d\n", dwErr, Status.dwCurrentState));
-                rc = RTErrConvertFromWin32(dwErr);
+                if (   Status.dwCurrentState == SERVICE_STOP_PENDING
+                    && dwErr == ERROR_SERVICE_CANNOT_ACCEPT_CTRL)
+                    rc = VERR_RESOURCE_BUSY;    /* better than VERR_GENERAL_FAILURE */
+                else
+                {
+                    AssertMsgFailed(("ControlService failed with dwErr=%Rwa. status=%d\n", dwErr, Status.dwCurrentState));
+                    rc = RTErrConvertFromWin32(dwErr);
+                }
             }
             CloseServiceHandle(hService);
         }
