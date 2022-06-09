@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 70582 2018-01-15 10:13:41Z vboxsync $ */
+/* $Id: MachineImpl.h 70606 2018-01-16 19:05:36Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -287,6 +287,8 @@ public:
         BOOL                mTripleFaultReset;
         BOOL                mAPIC;
         BOOL                mX2APIC;
+        BOOL                mIBPBOnVMExit;
+        BOOL                mIBPBOnVMEntry;
         ULONG               mCPUCount;
         BOOL                mCPUHotPlugEnabled;
         ULONG               mCpuExecutionCap;

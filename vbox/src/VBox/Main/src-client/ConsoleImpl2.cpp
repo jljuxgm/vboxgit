@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 70579 2018-01-14 12:46:15Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 70606 2018-01-16 19:05:36Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1157,6 +1157,15 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         BOOL fEnableUX = false;
         hrc = pMachine->GetHWVirtExProperty(HWVirtExPropertyType_UnrestrictedExecution, &fEnableUX); H();
         InsertConfigInteger(pHM, "EnableUX", fEnableUX);
+
+        /* Indirect branch prediction boundraries. */
+        BOOL fIBPBOnVMExit = false;
+        hrc = pMachine->GetCPUProperty(CPUPropertyType_IBPBOnVMExit, &fIBPBOnVMExit); H();
+        InsertConfigInteger(pHM, "IBPBOnVMExit", fIBPBOnVMExit);
+
+        BOOL fIBPBOnVMEntry = false;
+        hrc = pMachine->GetCPUProperty(CPUPropertyType_IBPBOnVMEntry, &fIBPBOnVMEntry); H();
+        InsertConfigInteger(pHM, "IBPBOnVMEntry", fIBPBOnVMEntry);
 
         /* Reset overwrite. */
         if (i_isResetTurnedIntoPowerOff())
