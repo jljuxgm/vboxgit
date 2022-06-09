@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: COMDefs.h 70114 2017-12-13 15:52:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -270,8 +270,7 @@ public:
     static void FromSafeArray(const com::SafeArray<T> &aArr, QVector<T> &aVec)
     {
         aVec.resize(static_cast<int>(aArr.size()));
-        for (int i = 0; i < aVec.size(); ++i)
-            aVec[i] = aArr[i];
+        memcpy(&aVec[0], aArr.raw(), aArr.size() * sizeof(T));
     }
 
     /* Arrays of strings */
