@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 68735 2017-09-13 09:20:09Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.h 68744 2017-09-13 14:01:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -146,8 +146,8 @@ private:
     /** Updates button states. */
     void updateButtonStates();
 
-    /** Returns a details report on a given @a comMachine. */
-    QString detailsReport(const CMachine &comMachine, DetailsElementType enmType);
+    /** Returns details report of requested @a enmType for a given @a comMachine. */
+    QString detailsReport(DetailsElementType enmType, const CMachine &comMachine) const;
 
     /** Wipes the HTML stuff from the passed @a strString. */
     static QString wipeHtmlStuff(const QString &strString);
