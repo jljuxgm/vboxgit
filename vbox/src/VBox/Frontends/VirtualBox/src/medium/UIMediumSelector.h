@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 72410 2018-06-01 12:48:18Z vboxsync $ */
+/* $Id: UIMediumSelector.h 72423 2018-06-04 08:01:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -87,6 +87,8 @@ private:
     void updateOkButton();
     UIMediumItem* addTreeItem(const UIMedium &medium, QITreeWidgetItem *pParent);
     void restoreSelection(const QStringList &selectedMediums, QVector<UIMediumItem*> &mediumList);
+    UIMediumItem* createHardDiskItem(const UIMedium &medium);
+    UIMediumItem* searchItem(const QTreeWidgetItem *pParent, const QString &mediumId);
 
     QVBoxLayout       *m_pMainLayout;
     QITreeWidget      *m_pTreeWidget;
