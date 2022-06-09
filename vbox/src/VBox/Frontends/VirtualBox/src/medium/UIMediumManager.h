@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 67046 2017-05-23 15:07:57Z vboxsync $ */
+/* $Id: UIMediumManager.h 67075 2017-05-25 08:44:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -61,7 +61,7 @@ class UIMediumManagerWidget : public QIWithRetranslateUI<QWidget>
 public:
 
     /** Constructs Virtual Medium Manager widget. */
-    UIMediumManagerWidget(QWidget *pParent = 0);
+    UIMediumManagerWidget(EmbedTo enmEmbedding, QWidget *pParent = 0);
 
     /** Returns the menu. */
     QMenu *menu() const { return m_pMenu; }
@@ -250,6 +250,9 @@ private:
 
     /** @name General variables.
       * @{ */
+        /** Holds the widget embedding type. */
+        const EmbedTo m_enmEmbedding;
+
         /** Holds whether Virtual Medium Manager should preserve current item change. */
         bool m_fPreventChangeCurrentItem;
     /** @} */

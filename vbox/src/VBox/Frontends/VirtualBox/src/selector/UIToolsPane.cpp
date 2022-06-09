@@ -1,4 +1,4 @@
-/* $Id: UIToolsPane.cpp 67068 2017-05-24 17:47:44Z vboxsync $ */
+/* $Id: UIToolsPane.cpp 67075 2017-05-25 08:44:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPane class implementation.
  */
@@ -290,10 +290,10 @@ void UIToolsPane::addTabBarTab(ToolsType enmType, bool fCloseable)
                 m_pStackedWidget->addWidget(m_pPaneSnapshots);
                 break;
             case ToolsType_VirtualMediaManager:
-                m_pStackedWidget->addWidget(new UIMediumManagerWidget);
+                m_pStackedWidget->addWidget(new UIMediumManagerWidget(EmbedTo_Stack));
                 break;
             case ToolsType_HostNetworkManager:
-                m_pStackedWidget->addWidget(new UIHostNetworkManagerWidget);
+                m_pStackedWidget->addWidget(new UIHostNetworkManagerWidget(EmbedTo_Stack));
                 break;
             default:
                 AssertFailedReturnVoid();
