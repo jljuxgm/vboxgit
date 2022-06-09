@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 71165 2018-03-02 05:47:44Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 71307 2018-03-13 08:19:42Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -287,7 +287,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmexit(PVMCPU pVCpu, PCPUMCTX pCtx, uint64_t uExit
         Log(("iemSvmVmexit: Not in SVM guest mode! uExitCode=%#RX64 uExitInfo1=%#RX64 uExitInfo2=%#RX64\n", uExitCode,
              uExitInfo1, uExitInfo2));
         AssertMsgFailed(("iemSvmVmexit: Unexpected SVM-exit failure uExitCode=%#RX64\n", uExitCode));
-        rcStrict = VERR_SVM_IPE_5;
+        rcStrict = VERR_SVM_IPE_3;
     }
 
 # if defined(VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM) && defined(IN_RING3)
