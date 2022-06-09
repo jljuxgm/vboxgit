@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 70410 2018-01-02 04:59:27Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 70411 2018-01-02 05:17:56Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -342,7 +342,9 @@ static FNSVMEXITHANDLER hmR0SvmExitXcptMF;
 static FNSVMEXITHANDLER hmR0SvmExitXcptDB;
 static FNSVMEXITHANDLER hmR0SvmExitXcptAC;
 static FNSVMEXITHANDLER hmR0SvmExitXcptBP;
+#if defined(HMSVM_ALWAYS_TRAP_ALL_XCPTS) || defined(VBOX_WITH_NESTED_HWVIRT)
 static FNSVMEXITHANDLER hmR0SvmExitXcptGeneric;
+#endif
 #ifdef VBOX_WITH_NESTED_HWVIRT
 static FNSVMEXITHANDLER hmR0SvmExitXcptPFNested;
 static FNSVMEXITHANDLER hmR0SvmExitClgi;
