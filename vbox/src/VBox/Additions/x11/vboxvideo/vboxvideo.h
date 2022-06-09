@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.h 69082 2017-10-13 15:50:47Z vboxsync $ */
+/* $Id: vboxvideo.h 69346 2017-10-26 13:36:28Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver
  */
@@ -6,9 +6,7 @@
 /*
  * Copyright (C) 2006-2017 Oracle Corporation
  *
- * This code is based on:
- *
- * X11 VESA driver
+ * This file is based on the X11 VESA driver:
  *
  * Copyright (c) 2000 by Conectiva S.A. (http://www.conectiva.com)
  *
@@ -236,5 +234,5 @@ extern void vbvxCleanUpLinuxACPI(ScreenPtr pScreen);
 extern Bool VBOXEDIDSet(struct _xf86Output *output, DisplayModePtr pmode);
 #endif
 
-#endif /* _VBOXVIDEO_H_ */
+#endif /* !_VBOXVIDEO_H_ */
 
