@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UINetworkRequest.h 69550 2017-11-02 10:22:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class declaration.
  */
@@ -88,6 +88,13 @@ public:
     /** Returns the request reply. */
     UINetworkReply* reply() { return m_pReply; }
 
+public slots:
+
+    /** Initiates request retrying. */
+    void sltRetry();
+    /** Initiates request cancelling. */
+    void sltCancel();
+
 private slots:
 
     /** Handles reply about progress changed.
@@ -96,11 +103,6 @@ private slots:
     void sltHandleNetworkReplyProgress(qint64 iReceived, qint64 iTotal);
     /** Handles reply about progress finished. */
     void sltHandleNetworkReplyFinish();
-
-    /** Initiates request retrying. */
-    void sltRetry();
-    /** Initiates request cancelling. */
-    void sltCancel();
 
 private:
 

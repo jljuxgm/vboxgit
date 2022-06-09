@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestWidget.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UINetworkRequestWidget.cpp 69550 2017-11-02 10:22:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestWidget stuff implementation.
  */
@@ -54,14 +54,18 @@ UINetworkRequestWidget::UINetworkRequestWidget(UINetworkManagerDialog *pParent, 
     setOpen(true);
 
     /* Prepare listeners for m_pNetworkRequest: */
-    connect(m_pNetworkRequest, SIGNAL(sigProgress(qint64, qint64)), this, SLOT(sltSetProgress(qint64, qint64)));
-    connect(m_pNetworkRequest, SIGNAL(sigStarted()), this, SLOT(sltSetProgressToStarted()));
-    connect(m_pNetworkRequest, SIGNAL(sigFinished()), this, SLOT(sltSetProgressToFinished()));
-    connect(m_pNetworkRequest, SIGNAL(sigFailed(const QString&)), this, SLOT(sltSetProgressToFailed(const QString&)));
+    connect(m_pNetworkRequest, static_cast<void(UINetworkRequest::*)(qint64, qint64)>(&UINetworkRequest::sigProgress),
+            this, &UINetworkRequestWidget::sltSetProgress);
+    connect(m_pNetworkRequest, static_cast<void(UINetworkRequest::*)()>(&UINetworkRequest::sigStarted),
+            this, &UINetworkRequestWidget::sltSetProgressToStarted);
+    connect(m_pNetworkRequest, static_cast<void(UINetworkRequest::*)()>(&UINetworkRequest::sigFinished),
+            this, &UINetworkRequestWidget::sltSetProgressToFinished);
+    connect(m_pNetworkRequest, static_cast<void(UINetworkRequest::*)(const QString&)>(&UINetworkRequest::sigFailed),
+            this, &UINetworkRequestWidget::sltSetProgressToFailed);
 
     /* Setup timer: */
     m_pTimer->setInterval(5000);
-    connect(m_pTimer, SIGNAL(timeout()), this, SLOT(sltTimeIsOut()));
+    connect(m_pTimer, &QTimer::timeout, this, &UINetworkRequestWidget::sltTimeIsOut);
 
     /* Setup main-layout: */
     m_pMainLayout->setContentsMargins(6, 6, 6, 6);
@@ -75,13 +79,13 @@ UINetworkRequestWidget::UINetworkRequestWidget(UINetworkManagerDialog *pParent, 
     m_pRetryButton->removeBorder();
     m_pRetryButton->setFocusPolicy(Qt::NoFocus);
     m_pRetryButton->setIcon(UIIconPool::iconSet(":/refresh_16px.png"));
-    connect(m_pRetryButton, SIGNAL(clicked(bool)), this, SIGNAL(sigRetry()));
+    connect(m_pRetryButton, &QIToolButton::clicked, this, &UINetworkRequestWidget::sigRetry);
 
     /* Setup cancel-button: */
     m_pCancelButton->removeBorder();
     m_pCancelButton->setFocusPolicy(Qt::NoFocus);
     m_pCancelButton->setIcon(UIIconPool::iconSet(":/cancel_16px.png"));
-    connect(m_pCancelButton, SIGNAL(clicked(bool)), this, SIGNAL(sigCancel()));
+    connect(m_pCancelButton, &QIToolButton::clicked, this, &UINetworkRequestWidget::sigCancel);
 
     /* Setup error-label: */
     m_pErrorPane->setHidden(true);

@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIDownloader.cpp 69550 2017-11-02 10:22:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloader class implementation.
  */
@@ -73,9 +73,9 @@ UIDownloader::UIDownloader()
     : m_state(UIDownloaderState_Null)
 {
     /* Connect listeners: */
-    connect(this, SIGNAL(sigToStartAcknowledging()), this, SLOT(sltStartAcknowledging()), Qt::QueuedConnection);
-    connect(this, SIGNAL(sigToStartDownloading()), this, SLOT(sltStartDownloading()), Qt::QueuedConnection);
-    connect(this, SIGNAL(sigToStartVerifying()), this, SLOT(sltStartVerifying()), Qt::QueuedConnection);
+    connect(this, &UIDownloader::sigToStartAcknowledging, this, &UIDownloader::sltStartAcknowledging, Qt::QueuedConnection);
+    connect(this, &UIDownloader::sigToStartDownloading,   this, &UIDownloader::sltStartDownloading,   Qt::QueuedConnection);
+    connect(this, &UIDownloader::sigToStartVerifying,     this, &UIDownloader::sltStartVerifying,     Qt::QueuedConnection);
 }
 
 /* virtual override */
