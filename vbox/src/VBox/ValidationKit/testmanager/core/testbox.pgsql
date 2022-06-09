@@ -1,4 +1,4 @@
--- $Id: testbox.pgsql 69111 2017-10-17 14:26:02Z vboxsync $
+-- $Id: testbox.pgsql 69449 2017-10-27 17:00:31Z vboxsync $
 --- @file
 -- VBox Test Manager Database Stored Procedures - TestBoxes.
 --
@@ -622,5 +622,4 @@ CREATE OR REPLACE function TestBoxLogic_setCommand(a_uidAuthor          INTEGER,
         INSERT INTO TestBoxes VALUES (v_Row.*);
     END;
 $$ LANGUAGE plpgsql;
-
 

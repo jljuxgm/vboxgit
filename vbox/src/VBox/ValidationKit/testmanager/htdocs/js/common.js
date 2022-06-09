@@ -1,10 +1,9 @@
-/* $Id: common.js 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: common.js 69449 2017-10-27 17:00:31Z vboxsync $ */
 /** @file
  * Common JavaScript functions
  */
 
 /*
- *
  * Copyright (C) 2012-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
