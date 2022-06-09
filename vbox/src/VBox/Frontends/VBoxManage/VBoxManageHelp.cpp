@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 70606 2018-01-16 19:05:36Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 70712 2018-01-23 16:18:22Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -513,6 +513,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--longmode on|off]\n"
                      "                            [--ibpb-on-vm-exit on|off]\n"
                      "                            [--ibpb-on-vm-entry on|off]\n"
+                     "                            [--nested-hw-virt on|off]\n"
                      "                            [--cpu-profile \"host|Intel 80[86|286|386]\"]\n"
                      "                            [--cpuid-portability-level <0..3>\n"
                      "                            [--cpuid-set <leaf[:subleaf]> <eax> <ebx> <ecx> <edx>]\n"

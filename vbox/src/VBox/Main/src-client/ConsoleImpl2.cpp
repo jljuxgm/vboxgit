@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 70644 2018-01-19 12:20:33Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 70712 2018-01-23 16:18:22Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1020,6 +1020,11 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             uFwAPIC = 0;
             LogRel(("Limiting the firmware APIC level from APIC to Disabled\n"));
         }
+
+        /* Nested VT-x / AMD-V. */
+        BOOL fNestedHWVirt = FALSE;
+        hrc = pMachine->GetCPUProperty(CPUPropertyType_HWVirt, &fNestedHWVirt);      H();
+        InsertConfigInteger(pCPUM, "NestedHWVirt", fNestedHWVirt ? true : false);
 
         /*
          * Hardware virtualization extensions.
