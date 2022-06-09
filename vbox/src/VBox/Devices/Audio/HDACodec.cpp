@@ -1,4 +1,4 @@
-/* $Id: HDACodec.cpp 67711 2017-06-29 20:37:08Z vboxsync $ */
+/* $Id: HDACodec.cpp 67739 2017-06-30 15:27:36Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  *
@@ -2187,7 +2187,6 @@ static DECLCALLBACK(int) vrbProcSetPowerState(PHDACODEC pThis, uint32_t cmd, uin
         pu32Reg = &pThis->paNodes[CODEC_NID(cmd)].reserved.u32F05_param;
     else
     {
-        AssertFailed();
         LogRel2(("HDA: Warning: Unhandled set power state command for NID0x%02x: 0x%x\n", CODEC_NID(cmd), cmd));
     }
 
