@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 67585 2017-06-23 15:29:50Z vboxsync $ */
+/* $Id: DevACPI.cpp 67596 2017-06-26 06:48:03Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -2990,7 +2990,7 @@ static void acpiR3SetupMadt(ACPIState *pThis, RTGCPHYS32 addr)
     isos[1].u8Bus      = 0; /* Must be 0 */
     isos[1].u8Source   = 9; /* IRQ9 */
     isos[1].u32GSI     = 9; /* connected to pin 9 */
-    isos[1].u16Flags   = 0xd; /* active high, level triggered */
+    isos[1].u16Flags   = 0xf; /* active low, level triggered */
     Assert(NUMBER_OF_IRQ_SOURCE_OVERRIDES == 2);
 
     madt.header_addr()->u8Checksum = acpiR3Checksum(madt.data(), madt.size());
