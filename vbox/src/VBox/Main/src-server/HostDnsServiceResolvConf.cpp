@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceResolvConf.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HostDnsServiceResolvConf.cpp 72439 2018-06-04 22:05:25Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -69,11 +69,11 @@ HostDnsServiceResolvConf::~HostDnsServiceResolvConf()
     }
 }
 
-HRESULT HostDnsServiceResolvConf::init(VirtualBox *virtualbox, const char *aResolvConfFileName)
+HRESULT HostDnsServiceResolvConf::init(HostDnsMonitorProxy *proxy, const char *aResolvConfFileName)
 {
     m = new Data(aResolvConfFileName);
 
-    HostDnsMonitor::init(virtualbox);
+    HostDnsMonitor::init(proxy);
 
     readResolvConf();
 
