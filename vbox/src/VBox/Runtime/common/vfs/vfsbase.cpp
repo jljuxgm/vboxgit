@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 67221 2017-06-01 21:44:24Z vboxsync $ */
+/* $Id: vfsbase.cpp 67272 2017-06-06 13:42:16Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -41,6 +41,7 @@
 #include <iprt/path.h>
 #include <iprt/semaphore.h>
 #include <iprt/thread.h>
+#include <iprt/zero.h>
 
 #include "internal/file.h"
 #include "internal/fs.h"
@@ -3038,7 +3039,7 @@ RTDECL(int) RTVfsIoStrmZeroFill(RTVFSIOSTREAM hVfsIos, RTFOFF cb)
     AssertReturn(pThis->uMagic == RTVFSIOSTREAM_MAGIC, -1);
 
     int rc;
-    if (pThis->pOps->pfnSkip)
+    if (pThis->pOps->pfnZeroFill)
     {
         RTVfsLockAcquireWrite(pThis->Base.hLock);
         rc = pThis->pOps->pfnZeroFill(pThis->Base.pvThis, cb);
@@ -3046,25 +3047,17 @@ RTDECL(int) RTVfsIoStrmZeroFill(RTVFSIOSTREAM hVfsIos, RTFOFF cb)
     }
     else
     {
-        void *pvBuf = RTMemTmpAllocZ(_64K);
-        if (pvBuf)
+        rc = VINF_SUCCESS;
+        while (cb > 0)
         {
-            rc = VINF_SUCCESS;
-            while (cb > 0)
-            {
-                size_t cbToWrite = (size_t)RT_MIN(cb, _64K);
-                RTVfsLockAcquireWrite(pThis->Base.hLock);
-                rc = RTVfsIoStrmWrite(hVfsIos, pvBuf, cbToWrite, true /*fBlocking*/, NULL);
-                RTVfsLockReleaseWrite(pThis->Base.hLock);
-                if (RT_FAILURE(rc))
-                    break;
-                cb -= cbToWrite;
-            }
-
-            RTMemTmpFree(pvBuf);
+            size_t cbToWrite = (size_t)RT_MIN(cb, sizeof(g_abRTZero64K));
+            RTVfsLockAcquireWrite(pThis->Base.hLock);
+            rc = RTVfsIoStrmWrite(hVfsIos, g_abRTZero64K, cbToWrite, true /*fBlocking*/, NULL);
+            RTVfsLockReleaseWrite(pThis->Base.hLock);
+            if (RT_FAILURE(rc))
+                break;
+            cb -= cbToWrite;
         }
-        else
-            rc = VERR_NO_TMP_MEMORY;
     }
     return rc;
 }
