@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 71316 2018-03-13 17:13:32Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 71320 2018-03-14 13:00:21Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1709,7 +1709,7 @@ int VGSvcGstCtrlSessionProcessStartAllowed(const PVBOXSERVICECTRLSESSION pSessio
 static int vgsvcVGSvcGstCtrlSessionThreadCreateProcess(const PVBOXSERVICECTRLSESSIONSTARTUPINFO pSessionStartupInfo,
                                                        PVBOXSERVICECTRLSESSIONTHREAD pSessionThread, uint32_t uCtrlSessionThread)
 {
-    RT_NOREF1(uCtrlSessionThread);
+    RT_NOREF(uCtrlSessionThread);
 
     /*
      * Is this an anonymous session?  Anonymous sessions run with the same
@@ -2073,7 +2073,7 @@ int VGSvcGstCtrlSessionThreadCreate(PRTLISTANCHOR pList, const PVBOXSERVICECTRLS
  */
 int VGSvcGstCtrlSessionThreadWait(PVBOXSERVICECTRLSESSIONTHREAD pThread, uint32_t uTimeoutMS, uint32_t fFlags)
 {
-    RT_NOREF1(fFlags);
+    RT_NOREF(fFlags);
     AssertPtrReturn(pThread, VERR_INVALID_POINTER);
     /** @todo Validate closing flags. */
 
