@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69352 2017-10-26 14:25:27Z vboxsync $ */
+/* $Id: scm.cpp 69355 2017-10-26 14:38:46Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -406,6 +406,17 @@ static PFNSCMREWRITER const g_aRewritersFor_DriverInfFiles[] =
     rewrite_Copyright_SemicolonComment,
 };
 
+static PFNSCMREWRITER const g_aRewritersFor_NsisFiles[] =
+{
+    rewrite_ForceNativeEol,
+    rewrite_ExpandTabs,
+    rewrite_StripTrailingBlanks,
+    rewrite_AdjustTrailingLines,
+    rewrite_SvnKeywords,
+    rewrite_SvnNoExecutable,
+    rewrite_Copyright_SemicolonComment,
+};
+
 static PFNSCMREWRITER const g_aRewritersFor_ScmSettings[] =
 {
     rewrite_ForceNativeEol,
@@ -509,6 +520,7 @@ static SCMCFGENTRY const g_aConfigs[] =
     SCM_CFG_ENTRY(g_aRewritersFor_Python,           false, "*.py" ),
     SCM_CFG_ENTRY(g_aRewritersFor_Perl,             false, "*.pl" ),
     SCM_CFG_ENTRY(g_aRewritersFor_DriverInfFiles,   false, "*.inf" ),
+    SCM_CFG_ENTRY(g_aRewritersFor_NsisFiles,        false, "*.nsh|*.nsi" ),
     SCM_CFG_ENTRY(g_aRewritersFor_ScmSettings,      false, "*.scm-settings" ),
     SCM_CFG_ENTRY(g_aRewritersFor_Images,           true,  "*.png|*.bmp|*.jpg|*.pnm|*.ico|*.icns" ),
     SCM_CFG_ENTRY(g_aRewritersFor_Xslt,             false, "*.xsl" ),
@@ -2202,7 +2214,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69352 $";
+                static const char s_szRev[] = "$Revision: 69355 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
