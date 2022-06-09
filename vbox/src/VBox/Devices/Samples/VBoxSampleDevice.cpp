@@ -1,4 +1,4 @@
-/* $Id: VBoxSampleDevice.cpp 63911 2016-09-20 10:16:02Z vboxsync $ */
+/* $Id: VBoxSampleDevice.cpp 69067 2017-10-13 08:41:13Z vboxsync $ */
 /** @file
  * VBox Sample Device.
  */
@@ -157,11 +157,6 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
                           ("callback version %#x, expected %#x\n", pCallbacks->u32Version, PDM_DEVREG_CB_VERSION),
                           VERR_VERSION_MISMATCH);
 
-    /* Two devices in this module. */
-    extern const PDMDEVREG g_DevicePlayground;
-    int rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceSample);
-    if (RT_SUCCESS(rc))
-        rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePlayground);
-    return rc;
+    return pCallbacks->pfnRegister(pCallbacks, &g_DeviceSample);
 }
 
