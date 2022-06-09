@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 72490 2018-06-09 15:11:13Z vboxsync $ */
+/* $Id: EM.cpp 72565 2018-06-15 13:30:01Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -448,6 +448,11 @@ VMMR3_INT_DECL(int) EMR3Init(PVM pVM)
         EM_REG_COUNTER(&pVCpu->em.s.StatRAWTotal,           "/PROF/CPU%d/EM/RAWTotal",          "Profiling emR3RawExecute (excluding FFs).");
 
         EM_REG_PROFILE_ADV(&pVCpu->em.s.StatTotal,          "/PROF/CPU%d/EM/Total",             "Profiling EMR3ExecuteVM.");
+
+        rc = STAMR3RegisterF(pVM, &pVCpu->em.s.iNextExit, STAMTYPE_U64, STAMVISIBILITY_ALWAYS, STAMUNIT_OCCURENCES,
+                             "Number of recorded exits (R0/RC).", "/PROF/CPU%u/EM/RecordedExits", i);
+        AssertRC(rc);
+
     }
 
     emR3InitDbg(pVM);
