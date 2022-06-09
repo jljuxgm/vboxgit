@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 68021 2017-07-18 12:57:19Z vboxsync $ */
+/* $Id: AudioMixer.cpp 68132 2017-07-27 08:15:43Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1439,14 +1439,14 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
         PPDMIAUDIOCONNECTOR pConn = pMixStream->pConn;
         AssertPtr(pConn);
 
-        uint32_t csProc = 0;
+        uint32_t cfProc = 0;
 
         int rc2 = pConn->pfnStreamIterate(pConn, pStream);
         if (RT_SUCCESS(rc2))
         {
             if (pSink->enmDir == AUDMIXSINKDIR_INPUT)
             {
-                rc = pConn->pfnStreamCapture(pConn, pStream, &csProc);
+                rc = pConn->pfnStreamCapture(pConn, pStream, &cfProc);
                 if (RT_FAILURE(rc2))
                 {
                     LogFunc(("%s: Failed capturing stream '%s', rc=%Rrc\n", pSink->pszName, pStream->szName, rc2));
@@ -1455,12 +1455,12 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
                     continue;
                 }
 
-                if (csProc)
+                if (cfProc)
                     pSink->fStatus |= AUDMIXSINK_STS_DIRTY;
             }
             else if (pSink->enmDir == AUDMIXSINKDIR_OUTPUT)
             {
-                rc2 = pConn->pfnStreamPlay(pConn, pStream, &csProc);
+                rc2 = pConn->pfnStreamPlay(pConn, pStream, &cfProc);
                 if (RT_FAILURE(rc2))
                 {
                     LogFunc(("%s: Failed playing stream '%s', rc=%Rrc\n", pSink->pszName, pStream->szName, rc2));
@@ -1494,7 +1494,7 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
             }
         }
 
-        Log3Func(("\t%s: cPlayed/cCaptured=%RU32, rc2=%Rrc\n", pStream->szName, csProc, rc2));
+        Log3Func(("\t%s: cPlayed/cCaptured=%RU32, rc2=%Rrc\n", pStream->szName, cfProc, rc2));
     }
 
     Log3Func(("[%s] fPendingDisable=%RTbool, %RU8/%RU8 streams disabled\n",

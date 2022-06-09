@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 68085 2017-07-21 12:52:58Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 68132 2017-07-27 08:15:43Z vboxsync $ */
 /** @file
  * NULL audio driver -- also acts as a fallback if no
  * other backend is available.
@@ -175,7 +175,7 @@ static int nullCreateStreamIn(PNULLAUDIOSTREAM pStreamNull, PPDMAUDIOSTREAMCFG p
     RT_NOREF(pStreamNull, pCfgReq);
 
     if (pCfgAcq)
-        pCfgAcq->cSampleBufferHint = _1K;
+        pCfgAcq->cFrameBufferHint = _1K;
 
     return VINF_SUCCESS;
 }
@@ -186,7 +186,7 @@ static int nullCreateStreamOut(PNULLAUDIOSTREAM pStreamNull, PPDMAUDIOSTREAMCFG 
     RT_NOREF(pStreamNull, pCfgReq);
 
     if (pCfgAcq)
-        pCfgAcq->cSampleBufferHint = _1K; /** @todo Make this configurable. */
+        pCfgAcq->cFrameBufferHint = _1K; /** @todo Make this configurable. */
 
     return VINF_SUCCESS;
 }

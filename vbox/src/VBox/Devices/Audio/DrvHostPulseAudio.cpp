@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 68085 2017-07-21 12:52:58Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 68132 2017-07-27 08:15:43Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -775,7 +775,7 @@ static int paCreateStreamOut(PDRVHOSTPULSEAUDIO pThis, PPULSEAUDIOSTREAM pStream
                             pStreamPA->BufAttr.maxlength); /** @todo Make this configurable! */
     if (cbBuf)
     {
-        pCfgAcq->cSampleBufferHint = PDMAUDIOSTREAMCFG_B2S(pCfgAcq, cbBuf);
+        pCfgAcq->cFrameBufferHint = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, cbBuf);
 
         pStreamPA->pDrv = pThis;
     }
@@ -814,7 +814,7 @@ static int paCreateStreamIn(PDRVHOSTPULSEAUDIO pThis, PPULSEAUDIOSTREAM  pStream
 
     pCfgAcq->Props.uHz         = pStreamPA->SampleSpec.rate;
     pCfgAcq->Props.cChannels   = pStreamPA->SampleSpec.channels;
-    pCfgAcq->cSampleBufferHint = PDMAUDIOSTREAMCFG_B2S(pCfgAcq,
+    pCfgAcq->cFrameBufferHint = PDMAUDIOSTREAMCFG_B2F(pCfgAcq,
                                                        RT_MIN(pStreamPA->BufAttr.fragsize * 10, pStreamPA->BufAttr.maxlength));
 
     LogFlowFuncLeaveRC(rc);

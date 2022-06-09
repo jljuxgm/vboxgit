@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 68085 2017-07-21 12:52:58Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 68132 2017-07-27 08:15:43Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -1590,7 +1590,7 @@ static int coreAudioStreamInitQueue(PCOREAUDIOSTREAM pCAStream, PPDMAUDIOSTREAMC
         return rc;
     }
 
-    rc = RTCircBufCreate(&pCAStream->pCircBuf, PDMAUDIOSTREAMCFG_S2B(pCfgReq, 4096)); /** @todo Make this configurable. */
+    rc = RTCircBufCreate(&pCAStream->pCircBuf, PDMAUDIOSTREAMCFG_F2B(pCfgReq, 4096)); /** @todo Make this configurable. */
     if (RT_FAILURE(rc))
         return rc;
 
@@ -2307,7 +2307,7 @@ static DECLCALLBACK(int) drvHostCoreAudioStreamCreate(PPDMIHOSTAUDIO pInterface,
             rc = coreAudioStreamInitQueue(pCAStream, pCfgReq, pCfgAcq);
             if (RT_SUCCESS(rc))
             {
-                pCfgAcq->cSampleBufferHint = _4K; /** @todo Make this configurable. */
+                pCfgAcq->cFrameBufferHint = _4K; /** @todo Make this configurable. */
             }
             if (RT_SUCCESS(rc))
             {
