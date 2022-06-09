@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
+/* $Id: dir-posix.cpp 70884 2018-02-06 16:26:08Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -236,7 +236,13 @@ int rtDirNativeOpen(PRTDIRINTERNAL pDir, char *pszPathBuf, uintptr_t hRelativeDi
     int rc = rtPathToNative(&pszNativePath, pDir->pszPath, NULL);
     if (RT_SUCCESS(rc))
     {
-        pDir->pDir = opendir(pszNativePath);
+        if (!(pDir->fFlags & RTDIR_F_NO_FOLLOW))
+            pDir->pDir = opendir(pszNativePath);
+        else
+        {
+            AssertMsgFailed(("implement RTDIR_F_NO_FOLLOW\n"));
+            pDir->pDir = opendir(pszNativePath);
+        }
         if (pDir->pDir)
         {
             /*
