@@ -1,4 +1,4 @@
-/* $Id: Db.cpp 70836 2018-01-31 14:55:44Z vboxsync $ */
+/* $Id: Db.cpp 71512 2018-03-26 14:02:50Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -252,6 +252,7 @@ Binding *Binding::fromXML(const xml::ElementNode *ndLease)
             std::vector<uint8_t> rawopt(pBytes, pBytes + cbBytes);
             id = OptClientId(rawopt);
         }
+        delete[] pBytes;
     }
 
     /*
