@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVBVA.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDispVBVA.cpp 71592 2018-03-31 19:51:41Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver
  */
@@ -481,7 +481,7 @@ int VBoxDispVBVAInit(PVBOXDISPDEV pDev)
     return VINF_SUCCESS;
 }
 
-void VBoxDispVBVAHostCommandComplete(PVBOXDISPDEV pDev, VBVAHOSTCMD *pCmd)
+void VBoxDispVBVAHostCommandComplete(PVBOXDISPDEV pDev, VBVAHOSTCMD RT_UNTRUSTED_VOLATILE_HOST *pCmd)
 {
     pDev->hgsmi.mp.pfnCompletionHandler(pDev->hgsmi.mp.hContext, pCmd);
 }

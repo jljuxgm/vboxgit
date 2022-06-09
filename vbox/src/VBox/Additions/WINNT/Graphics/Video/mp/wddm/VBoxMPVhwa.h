@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVhwa.h 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: VBoxMPVhwa.h 71592 2018-03-31 19:51:41Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -51,10 +51,6 @@ DECLINLINE(void) vboxVhwaPutList(VBOXVTLIST *pList, VBOXVHWACMD RT_UNTRUSTED_VOL
 void vboxVhwaCompletionListProcess(PVBOXMP_DEVEXT pDevExt, VBOXVTLIST *pList);
 #endif
 
-void vboxVhwaFreeHostInfo1(PVBOXMP_DEVEXT pDevExt, VBOXVHWACMD_QUERYINFO1* pInfo);
-void vboxVhwaFreeHostInfo2(PVBOXMP_DEVEXT pDevExt, VBOXVHWACMD_QUERYINFO2* pInfo);
-VBOXVHWACMD_QUERYINFO1* vboxVhwaQueryHostInfo1(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID srcId);
-VBOXVHWACMD_QUERYINFO2* vboxVhwaQueryHostInfo2(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID srcId, uint32_t numFourCC);
 int vboxVhwaEnable(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID srcId);
 int vboxVhwaDisable(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID srcId);
 void vboxVhwaInit(PVBOXMP_DEVEXT pDevExt);
