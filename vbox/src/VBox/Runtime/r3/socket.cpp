@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 70205 2017-12-18 15:13:28Z vboxsync $ */
+/* $Id: socket.cpp 70206 2017-12-18 15:17:05Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -557,7 +557,7 @@ static int rtSocketCloseIt(RTSOCKETINT *pThis, bool fDestroy)
          * Close the event.
          */
         WSAEVENT hEvent = pThis->hEvent;
-        if (hEvent == WSA_INVALID_EVENT)
+        if (hEvent != WSA_INVALID_EVENT)
         {
             pThis->hEvent = WSA_INVALID_EVENT;
             Assert(g_pfnWSACloseEvent);
