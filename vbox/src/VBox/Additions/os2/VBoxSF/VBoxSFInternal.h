@@ -1,4 +1,4 @@
-/** $Id: VBoxSFInternal.h 3655 2007-07-16 18:47:26Z vboxsync $ */
+/** $Id: VBoxSFInternal.h 68612 2017-09-03 15:49:33Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folder IFS, Internal Header.
  */
@@ -34,6 +34,7 @@
 
 #define INCL_BASE
 #define INCL_ERROR
+#define INCL_LONGLONG
 #include <os2.h>
 #include <os2ddk/bsekee.h>
 #include <os2ddk/devhlp.h>
