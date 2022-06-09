@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 68315 2017-08-07 12:50:54Z vboxsync $ */
+/* $Id: UIKeyboardHandler.h 69273 2017-10-25 10:22:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -172,6 +172,7 @@ protected:
     bool autoCaptureSetGlobally();
     bool viewHasFocus(ulong uScreenId);
     bool isSessionRunning();
+    bool isSessionStuck();
 
     UIMachineWindow* isItListenedWindow(QObject *pWatchedObject) const;
     UIMachineView* isItListenedView(QObject *pWatchedObject) const;

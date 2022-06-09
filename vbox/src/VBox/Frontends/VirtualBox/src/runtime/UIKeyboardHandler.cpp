@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 69273 2017-10-25 10:22:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1202,7 +1202,7 @@ bool UIKeyboardHandler::eventFilter(QObject *pWatchedObject, QEvent *pEvent)
                 m_iKeyboardHookViewIndex = -1;
 
                 /* Release keyboard: */
-                if (isSessionRunning())
+                if (isSessionRunning() || isSessionStuck())
                     releaseKeyboard();
                 /* And all pressed keys: */
                 releaseAllPressedKeys(true);
@@ -1901,6 +1901,11 @@ bool UIKeyboardHandler::viewHasFocus(ulong uScreenId)
 bool UIKeyboardHandler::isSessionRunning()
 {
     return uisession()->isRunning();
+}
+
+bool UIKeyboardHandler::isSessionStuck()
+{
+    return uisession()->isStuck();
 }
 
 UIMachineWindow* UIKeyboardHandler::isItListenedWindow(QObject *pWatchedObject) const
