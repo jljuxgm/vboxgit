@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 67668 2017-06-28 16:28:34Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 67670 2017-06-28 16:38:45Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -3324,8 +3324,6 @@ static void ich9pciResetBridge(PPDMDEVINS pDevIns)
  */
 static DECLCALLBACK(void) ich9pciReset(PPDMDEVINS pDevIns)
 {
-    PDEVPCIROOT pPciRoot = PDMINS_2_DATA(pDevIns, PDEVPCIROOT);
-
     /* Reset everything under the root bridge. */
     ich9pciResetBridge(pDevIns);
 }
