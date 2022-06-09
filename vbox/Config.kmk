@@ -1,4 +1,4 @@
-# $Id: Config.kmk 71111 2018-02-23 07:44:52Z vboxsync $
+# $Id: Config.kmk 71200 2018-03-05 11:49:28Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -487,8 +487,6 @@ if1of ($(KBUILD_TARGET), darwin linux win freebsd)
 endif
 # Enable Wddm Video driver for Vista+ guests.
 VBOX_WITH_WDDM = 1
-# Enable Wddm Video driver for Windows 8 guests.
-VBOX_WITH_WDDM_W8 = 1
 # Lazy developer!!
 VBOXWDDM_WITH_VBVA = 1
 # Lazy developer!!
@@ -7162,7 +7160,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71111 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71200 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

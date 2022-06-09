@@ -1,4 +1,4 @@
-' $Id: configure.vbs 69500 2017-10-28 15:14:05Z vboxsync $
+' $Id: configure.vbs 71200 2018-03-05 11:49:28Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -2278,7 +2278,6 @@ Sub Main
    CheckSourcePath
    CheckForkBuild strOptkBuild
    CheckForWinDDK strOptDDK
-   CfgPrint "VBOX_WITH_WDDM_W8     := " '' @todo look for WinDDKv8
    CheckForVisualCPP strOptVC, strOptVCCommon, blnOptVCExpressEdition
    CheckForPlatformSDK strOptSDK
    CheckForMidl
