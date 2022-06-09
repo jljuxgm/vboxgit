@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 69504 2017-10-28 17:28:04Z vboxsync $ */
+/* $Id: scmrw.cpp 69507 2017-10-28 18:43:39Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1072,8 +1072,8 @@ static bool scmContainsWordByWordIgnoreCase(const char *pszText, size_t cchText,
 {
     Assert(!((unsigned)*pszFragment & 0x80));
     Assert(pszText[cchText] == '\0');
-    Assert(RT_C_IS_BLANK(*pszFragment));
-    Assert(RT_C_IS_PUNCT(*pszFragment));
+    Assert(!RT_C_IS_BLANK(*pszFragment));
+    Assert(!RT_C_IS_PUNCT(*pszFragment));
 
     char chLower = RT_C_TO_LOWER(*pszFragment);
     char chUpper = RT_C_TO_UPPER(*pszFragment);
