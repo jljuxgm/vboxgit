@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 69587 2017-11-05 10:42:27Z vboxsync $
+# $Id: vbox.py 69589 2017-11-05 10:52:55Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69587 $"
+__version__ = "$Revision: 69589 $"
 
 
 # Standard Python imports.
@@ -1489,7 +1489,7 @@ class TestDriver(base.TestDriver):                                              
                 if cObjs == 0 and cIfs == 0:
                     reporter.log('_teardownVBoxApi: No XPCOM interfaces or objects active. (hrc=%#x)' % (hrc,));
                 else:
-                    reporter.log('_teardownVBoxApi: %s XPCOM objects and %s interfaces still around! (hrc=%#x)' 
+                    reporter.log('_teardownVBoxApi: %s XPCOM objects and %s interfaces still around! (hrc=%#x)'
                                  % (cObjs, cIfs, hrc));
                     if hasattr(_xpcom, '_DumpInterfaces'):
                         try:    _xpcom._DumpInterfaces();       # pylint: disable=W0212
