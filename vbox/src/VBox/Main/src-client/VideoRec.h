@@ -1,4 +1,4 @@
-/* $Id: VideoRec.h 68803 2017-09-20 13:06:54Z vboxsync $ */
+/* $Id: VideoRec.h 68981 2017-10-04 13:08:07Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -56,6 +56,17 @@ typedef enum VIDEORECPROFILE
  */
 typedef struct VIDEORECCFG
 {
+    VIDEORECCFG(void)
+        : fEnabled(false)
+        , enmDst(VIDEORECDEST_INVALID)
+        , uMaxTimeS(0)
+    {
+#ifdef VBOX_WITH_AUDIO_VIDEOREC
+        RT_ZERO(Audio);
+#endif
+        RT_ZERO(Video);
+    }
+
     /** Whether recording is enabled or not (as a whole). */
     bool                    fEnabled;
     /** Array of all screens containing whether they're enabled
