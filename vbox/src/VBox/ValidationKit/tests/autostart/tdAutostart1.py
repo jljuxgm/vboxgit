@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 65963 2017-03-07 10:30:26Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 67039 2017-05-23 11:33:27Z vboxsync $"
 
 
 # Standard Python imports.
@@ -653,7 +653,7 @@ class tdAutostart(vbox.TestDriver):                                      # pylin
             self.logVmInfo(oVM);
             oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(sVmName, fCdWait = False, fNatForwardingForTxs = True);
             if oSession is not None:
-                self.addTask(oSession);
+                self.addTask(oTxsSession);
 
                 # Fudge factor - Allow the guest to finish starting up.
                 self.sleep(5);

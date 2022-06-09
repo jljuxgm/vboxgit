@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 66253 2017-03-26 23:01:18Z vboxsync $
+# $Id: tdStorageBenchmark1.py 67039 2017-05-23 11:33:27Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66253 $"
+__version__ = "$Revision: 67039 $"
 
 
 # Standard Python imports.
@@ -1087,7 +1087,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                 self.logVmInfo(oVM);
                 oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(sVmName, fCdWait = False, fNatForwardingForTxs = True);
                 if oSession is not None:
-                    self.addTask(oSession);
+                    self.addTask(oTxsSession);
 
                     # Fudge factor - Allow the guest to finish starting up.
                     self.sleep(5);

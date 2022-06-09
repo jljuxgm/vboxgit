@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65963 $"
+__version__ = "$Revision: 67039 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -3656,7 +3656,7 @@ class tdAddGuestCtrl(vbox.TestDriver):                                         #
         oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = False);
         reporter.log("TxsSession: %s" % (oTxsSession,));
         if oSession is not None:
-            self.addTask(oSession);
+            self.addTask(oTxsSession);
 
             fManual = False; # Manual override for local testing. (Committed version shall be False.)
             if not fManual:

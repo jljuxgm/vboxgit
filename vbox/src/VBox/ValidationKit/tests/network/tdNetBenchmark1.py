@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdNetBenchmark1.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: tdNetBenchmark1.py 67039 2017-05-23 11:33:27Z vboxsync $
 
 """
 VirtualBox Validation Kit - Networking benchmark #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 67039 $"
 
 
 # Standard Python imports.
@@ -498,7 +498,7 @@ class tdNetBenchmark1(vbox.TestDriver):                                         
             self.logVmInfo(oVM);
             oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(sVmName, fCdWait = True);
             if oSession is not None:
-                self.addTask(oSession);
+                self.addTask(oTxsSession);
 
                 # Fudge factor - Allow the guest to finish starting up.
                 self.sleep(5);

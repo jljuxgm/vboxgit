@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSmokeTest1.py 64427 2016-10-26 12:24:46Z vboxsync $
+# $Id: tdSmokeTest1.py 67039 2017-05-23 11:33:27Z vboxsync $
 
 """
 VirtualBox Validation Kit - Smoke Test #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 64427 $"
+__version__ = "$Revision: 67039 $"
 
 
 # Standard Python imports.
@@ -154,7 +154,7 @@ class tdSmokeTest1(vbox.TestDriver):
         self.logVmInfo(oVM);
         oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True);
         if oSession is not None:
-            self.addTask(oSession);
+            self.addTask(oTxsSession);
 
             ## @todo do some quick tests: save, restore, execute some test program, shut down the guest.
 
