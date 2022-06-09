@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68057 2017-07-20 10:38:12Z vboxsync $
+# $Id: Config.kmk 68072 2017-07-20 16:37:47Z vboxsync $
 ## @file
 # kBuild Configuration file for the installers
 #
@@ -64,7 +64,11 @@ ifdef VBOX_WITH_UNATTENDED
  	ol_ks.cfg \
  	redhat67_ks.cfg \
  	win_nt5_unattended.sif \
- 	win_nt6_unattended.xml
+ 	win_nt6_unattended.xml \
+       \
+ 	debian_postinstall.sh \
+ 	redhat_postinstall.sh \
+ 	win_postinstall.cmd
 else
  VBOX_UNATTENDED_TEMPLATES :=
 endif
