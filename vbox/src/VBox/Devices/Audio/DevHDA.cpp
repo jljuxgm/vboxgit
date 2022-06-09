@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67418 2017-06-15 09:36:52Z vboxsync $ */
+/* $Id: DevHDA.cpp 67420 2017-06-15 09:57:59Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -5487,9 +5487,11 @@ static DECLCALLBACK(int) hdaStreamAsyncIOThread(RTTHREAD hThreadSelf, void *pvUs
             }
             else /* Input (SDI). */
             {
+        #if 0
                 cbToProcess = (uint32_t)RTCircBufFree(pCircBuf);
                 if (cbToProcess)
                     rc2 = hdaStreamWrite(pThis, pStream, cbToProcess, &cbProcessed);
+        #endif
             }
 
             if (   pSink
