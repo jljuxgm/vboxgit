@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 67027 2017-05-23 07:57:09Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 67080 2017-05-25 10:10:47Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1802,6 +1802,12 @@ static int hmR0SvmLoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     AssertMsgReturn(pVmcb, ("Invalid pVmcb\n"), VERR_SVM_INVALID_PVMCB);
 
     STAM_PROFILE_ADV_START(&pVCpu->hm.s.StatLoadGuestState, x);
+
+#ifdef VBOX_WITH_NESTED_HWVIRT
+    /* Nested Hw. virt through SVM R0 execution is not yet implemented, IEM only, we shouldn't get here. */
+    if (CPUMIsGuestInNestedHwVirtMode(pCtx))
+        return VERR_NOT_IMPLEMENTED;
+#endif
 
     int rc = hmR0SvmLoadGuestControlRegs(pVCpu, pVmcb, pCtx);
     AssertLogRelMsgRCReturn(rc, ("hmR0SvmLoadGuestControlRegs! rc=%Rrc (pVM=%p pVCpu=%p)\n", rc, pVM, pVCpu), rc);
