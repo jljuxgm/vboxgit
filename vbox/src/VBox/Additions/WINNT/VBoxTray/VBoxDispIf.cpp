@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 71086 2018-02-21 13:34:03Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 71103 2018-02-22 13:49:50Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -1507,7 +1507,7 @@ DWORD vboxDispIfResizeModesWDDM(PCVBOXDISPIF const pIf, UINT iChangedMode, BOOL 
     }
 
     vboxDispIfTargetConnectivityWDDM(&Op, iChangedMode, fEnable? 1: 0);
-    
+
     /* Whether the current display is already or should be enabled. */
     BOOL fChangedEnable = fEnable || RT_BOOL(paDisplayDevices[iChangedMode].StateFlags & DISPLAY_DEVICE_ACTIVE);
 
