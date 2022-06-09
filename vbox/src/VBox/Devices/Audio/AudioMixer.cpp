@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 67444 2017-06-16 14:12:16Z vboxsync $ */
+/* $Id: AudioMixer.cpp 67693 2017-06-29 12:37:07Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -614,11 +614,13 @@ int AudioMixerSinkCreateStream(PAUDMIXSINK pSink,
     {
         CfgHost.DestSource.Source = pCfg->DestSource.Source;
         CfgHost.enmDir            = PDMAUDIODIR_IN;
+        CfgHost.enmLayout         = pCfg->enmLayout;
     }
     else
     {
         CfgHost.DestSource.Dest = pCfg->DestSource.Dest;
         CfgHost.enmDir          = PDMAUDIODIR_OUT;
+        CfgHost.enmLayout       = pCfg->enmLayout;
     }
 
     RTStrPrintf(CfgHost.szName, sizeof(CfgHost.szName), "%s", pCfg->szName);
