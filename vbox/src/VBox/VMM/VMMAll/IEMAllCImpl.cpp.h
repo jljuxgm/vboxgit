@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 72493 2018-06-10 16:08:44Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 72494 2018-06-10 16:16:36Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -7125,7 +7125,7 @@ IEM_CIMPL_DEF_4(iemCImpl_cmpxchg16b_fallback_rendezvous, PRTUINT128U, pu128Dst, 
         rcStrict = iemMemCommitAndUnmap(pVCpu, pu128Dst, IEM_ACCESS_DATA_RW);
         if (rcStrict == VINF_SUCCESS)
         {
-            PCPUMCTX pCtx = pVCpu->iem.s.CTX_SUFF(pCtx);
+            PCPUMCTX pCtx = IEM_GET_CTX(pVCpu);
             pCtx->eflags.u = *pEFlags; /* IEM_MC_COMMIT_EFLAGS */
             if (!(*pEFlags & X86_EFL_ZF))
             {

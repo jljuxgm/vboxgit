@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: IEMR3.cpp 72494 2018-06-10 16:16:36Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -66,9 +66,6 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
         PVMCPU pVCpu = &pVM->aCpus[idCpu];
-        pVCpu->iem.s.pCtxR3 = CPUMQueryGuestCtxPtr(pVCpu);
-        pVCpu->iem.s.pCtxR0 = VM_R0_ADDR(pVM, pVCpu->iem.s.pCtxR3);
-        pVCpu->iem.s.pCtxRC = VM_RC_ADDR(pVM, pVCpu->iem.s.pCtxR3);
 
         pVCpu->iem.s.CodeTlb.uTlbRevision = pVCpu->iem.s.DataTlb.uTlbRevision = uInitialTlbRevision;
         pVCpu->iem.s.CodeTlb.uTlbPhysRev  = pVCpu->iem.s.DataTlb.uTlbPhysRev  = uInitialTlbPhysRev;
@@ -193,10 +190,7 @@ VMMR3DECL(int)      IEMR3Term(PVM pVM)
 VMMR3DECL(void)     IEMR3Relocate(PVM pVM)
 {
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
-    {
-        pVM->aCpus[idCpu].iem.s.pCtxRC = VM_RC_ADDR(pVM, pVM->aCpus[idCpu].iem.s.pCtxR3);
         if (pVM->aCpus[idCpu].iem.s.pStatsRC)
             pVM->aCpus[idCpu].iem.s.pStatsRC = MMHyperR3ToRC(pVM, pVM->aCpus[idCpu].iem.s.pStatsCCR3);
-    }
 }
 

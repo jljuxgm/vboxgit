@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 72493 2018-06-10 16:08:44Z vboxsync $ */
+/* $Id: IEMInternal.h 72494 2018-06-10 16:16:36Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -605,14 +605,6 @@ typedef struct IEMCPU
     /** Instruction TLB.
      * @remarks Must be 64-byte aligned. */
     IEMTLB                  CodeTlb;
-
-    /** Pointer to the CPU context - ring-3 context.
-     * @todo put inside IEM_VERIFICATION_MODE_FULL++. */
-    R3PTRTYPE(PCPUMCTX)     pCtxR3;
-    /** Pointer to the CPU context - ring-0 context. */
-    R0PTRTYPE(PCPUMCTX)     pCtxR0;
-    /** Pointer to the CPU context - raw-mode context. */
-    RCPTRTYPE(PCPUMCTX)     pCtxRC;
 
     /** Pointer to instruction statistics for raw-mode context (same as R0). */
     RCPTRTYPE(PIEMINSTRSTATS) pStatsRC;

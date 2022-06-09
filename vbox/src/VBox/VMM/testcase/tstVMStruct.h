@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 72490 2018-06-09 15:11:13Z vboxsync $ */
+/* $Id: tstVMStruct.h 72494 2018-06-10 16:16:36Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -295,9 +295,6 @@
     GEN_CHECK_OFF_DOT(EMCPU, MWait.uMonitorRDX);
 
     GEN_CHECK_SIZE(IEMCPU);
-    GEN_CHECK_OFF(IEMCPU, pCtxR0);
-    GEN_CHECK_OFF(IEMCPU, pCtxR3);
-    GEN_CHECK_OFF(IEMCPU, pCtxRC);
     GEN_CHECK_OFF(IEMCPU, enmCpuMode);
     GEN_CHECK_OFF(IEMCPU, fPrefixes);
     GEN_CHECK_OFF(IEMCPU, abOpcode);
