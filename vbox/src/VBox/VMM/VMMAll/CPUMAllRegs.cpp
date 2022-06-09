@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 70782 2018-01-29 07:46:15Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 70783 2018-01-29 08:16:07Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2600,7 +2600,6 @@ VMM_INT_DECL(bool) CPUMCanSvmNstGstTakeVirtIntr(PVMCPU pVCpu, PCCPUMCTX pCtx)
     AssertReleaseFailedReturn(false);
 #else
     Assert(CPUMIsGuestInSvmNestedHwVirtMode(pCtx));
-    Assert(pCtx->hwvirt.fGif);
     Assert(pCtx->hwvirt.fGif);
 
     /*
