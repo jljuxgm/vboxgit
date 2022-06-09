@@ -1,4 +1,4 @@
-/* $Id: UIMenuToolBar.cpp 67060 2017-05-24 11:19:27Z vboxsync $ */
+/* $Id: UIMenuToolBar.cpp 67089 2017-05-25 15:06:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuToolBar class implementation.
  */
@@ -24,6 +24,7 @@
 # include <QHBoxLayout>
 # include <QPainter>
 # include <QStyle>
+# include <QToolButton>
 
 /* GUI includes: */
 # include "UIMenuToolBar.h"
@@ -191,6 +192,15 @@ void UIMenuToolBarPrivate::setMenuAction(QAction *pAction)
 
     /* Add action itself: */
     addAction(pAction);
+
+    /* Configure the newly added action's button: */
+    QToolButton *pButton = qobject_cast<QToolButton*>(widgetForAction(pAction));
+    AssertPtrReturnVoid(pButton);
+    {
+        /* Configure tool-button: */
+        pButton->setAutoRaise(true);
+        pButton->setPopupMode(QToolButton::InstantPopup);
+    }
 
     /* Create right margin: */
     m_pMarginRight = widgetForAction(addWidget(new QWidget));

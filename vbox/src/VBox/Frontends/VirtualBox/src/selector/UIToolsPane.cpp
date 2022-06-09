@@ -1,4 +1,4 @@
-/* $Id: UIToolsPane.cpp 67075 2017-05-25 08:44:38Z vboxsync $ */
+/* $Id: UIToolsPane.cpp 67089 2017-05-25 15:06:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPane class implementation.
  */
@@ -260,13 +260,6 @@ void UIToolsPane::prepareMenu()
 
         /* Add as tool-button into tool-bar: */
         m_pMenuToolbar->setMenuAction(m_pMenu->menuAction());
-        QToolButton *pButton = qobject_cast<QToolButton*>(m_pMenuToolbar->widgetForAction(m_pMenu->menuAction()));
-        AssertPtrReturnVoid(pButton);
-        {
-            /* Configure tool-button: */
-            pButton->setPopupMode(QToolButton::InstantPopup);
-            pButton->setAutoRaise(true);
-        }
     }
 }
 
