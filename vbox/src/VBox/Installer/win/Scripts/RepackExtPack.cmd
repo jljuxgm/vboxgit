@@ -1,5 +1,5 @@
 @echo off
-rem $Id: RepackExtPack.cmd 72041 2018-04-26 14:02:34Z vboxsync $
+rem $Id: RepackExtPack.cmd 72044 2018-04-26 15:05:24Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking an extension pack with blessed .r0 files.
 rem
@@ -127,7 +127,7 @@ goto end_failed
 rem validate specified options
 if not exist "%_MY_OPT_BINDIR_X86%" goto error_bindir_x86_does_not_exist
 
-if ".%_MY_OPT_BINDIR_AMD64%" == "." set _MY_OPT_BINDIR_AMD64=_MY_OPT_BINDIR_X86\..\..\..\win.amd64\release\bin
+if ".%_MY_OPT_BINDIR_AMD64%" == "." set _MY_OPT_BINDIR_AMD64=%_MY_OPT_BINDIR_X86%\..\..\..\win.amd64\release\bin
 if not exist "%_MY_OPT_BINDIR_AMD64%" goto error_bindir_amd64_does_not_exist
 
 if ".%_MY_OPT_INPUT%" == "."        set _MY_OPT_INPUT=%_MY_OPT_BINDIR_X86%\Oracle_VM_VirtualBox_Extension_Pack.vbox-extpack
