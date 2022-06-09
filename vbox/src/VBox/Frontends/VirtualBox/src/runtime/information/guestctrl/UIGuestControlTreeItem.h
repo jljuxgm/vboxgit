@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.h 71059 2018-02-19 16:32:29Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.h 71065 2018-02-20 09:48:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlTreeItem class declaration.
  */
@@ -29,6 +29,8 @@
 /* Forward declarations: */
 class CEventSource;
 
+/** QITreeWidgetItem extension serving as a base class
+    to UIGuestSessionTreeItem and UIGuestProcessTreeItem classes */
 class UIGuestControlTreeItem : public QITreeWidgetItem
 {
 
@@ -67,6 +69,8 @@ private:
 
 };
 
+/** UIGuestControlTreeItem extension. Represents a instance of CGuestSession
+    and acts as an event listener for this com object. */
 class UIGuestSessionTreeItem : public UIGuestControlTreeItem
 {
     Q_OBJECT;
@@ -101,6 +105,8 @@ private:
 
 };
 
+/** UIGuestControlTreeItem extension. Represents a instance of CGuestProcess
+    and acts as an event listener for this com object. */
 class UIGuestProcessTreeItem : public UIGuestControlTreeItem
 {
     Q_OBJECT;
