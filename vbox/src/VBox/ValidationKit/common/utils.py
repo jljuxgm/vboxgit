@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 71233 2018-03-06 10:47:15Z vboxsync $
+# $Id: utils.py 71963 2018-04-22 13:12:48Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71233 $"
+__version__ = "$Revision: 71963 $"
 
 
 # Standard Python imports.
@@ -327,7 +327,7 @@ def openNoInherit(sFile, sMode = 'r'):
                     offComma = sMode.find(',');
                     if offComma < 0:
                         return open(sFile, sMode + 'N');
-                    return open(sFile, sMode[:offComma] + 'N' + sMode[offComma:]);
+                    return open(sFile, sMode[:offComma] + 'N' + sMode[offComma:]); # pylint: disable=bad-open-mode
 
             # Just in case.
             return open(sFile, sMode);

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 71729 2018-04-06 22:07:33Z vboxsync $"
+# "$Id: tdMoveVM1.py 71963 2018-04-22 13:12:48Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71729 $"
+__version__ = "$Revision: 71963 $"
 
 # Standard Python imports.
 import os
@@ -96,7 +96,7 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
                 or vboxcon.MediumFormatCapabilities_CreateDynamic not in aoDskFmtCaps:
                 continue
             (asExts, aTypes) = oDskFmt.describeFileExtensions()
-            for i in range(0, len(asExts)):
+            for i in range(0, len(asExts)): #pylint: disable=consider-using-enumerate
                 if aTypes[i] is vboxcon.DeviceType_HardDisk:
                     sExt = '.' + asExts[i]
                     break
@@ -179,35 +179,35 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
             #Check standard images locations, ISO files locations, floppy images locations, snapshots files locations
             if key == 'StandardImage' or key == 'ISOImage' or key == 'FloppyImage':
                 aReferences = dsReferenceFiles[key]
-                if len (aReferences) > 0:
+                if aReferences:
                     aoMediumAttachments = oMachine.getMediumAttachmentsOfController(value)
                     for oAttachment in aoMediumAttachments:
                         aActuals.add(oAttachment.medium.location)
 
             elif key == 'SnapshotFile':
                 aReferences = dsReferenceFiles[key]
-                if len (aReferences) > 0:
+                if aReferences:
                     aActuals = self.__getSnapshotsFiles(oMachine)
 
             #Check setting file location
             elif key == 'SettingsFile':
                 aReferences = dsReferenceFiles[key]
-                if len (aReferences) > 0:
+                if aReferences:
                     aActuals.add(oMachine.settingsFilePath)
 
             #Check saved state files location
             elif key == 'SavedStateFile':
                 aReferences = dsReferenceFiles[key]
-                if len (aReferences) > 0:
+                if aReferences:
                     aActuals = self.__getStatesFiles(oMachine)
 
             #Check log files location
             elif key == 'LogFile':
                 aReferences = dsReferenceFiles[key]
-                if len (aReferences) > 0:
+                if aReferences:
                     aActuals = self.__getLogFiles(oMachine)
 
-            if len(aActuals) > 0:
+            if aActuals:
                 reporter.log('Check %s' % (key))
                 intersection = aReferences.intersection(aActuals)
                 for eachItem in intersection:
