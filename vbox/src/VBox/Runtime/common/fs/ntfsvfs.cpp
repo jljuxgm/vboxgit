@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 70010 2017-12-08 11:23:08Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 70324 2017-12-22 18:31:20Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -1522,6 +1522,7 @@ static int rtFsNtfsAttr_Read(PRTFSNTFSATTR pAttr, uint64_t off, void *pvBuf, siz
                     cbToRead -= cbThisRead;
                     if (!cbToRead)
                         break;
+                    off = 0;
 
                     /*
                      * Advance to the next extent.
