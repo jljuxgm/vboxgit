@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 69379 2017-10-26 16:23:49Z vboxsync $ -->
+<!-- $Id: midl.xsl 69734 2017-11-18 02:06:23Z vboxsync $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
@@ -218,7 +218,9 @@ import "unknwn.idl";
 <xsl:template match="interface" name="template_interface">[
     uuid(<xsl:value-of select="@uuid"/>),
     object,
+<xsl:if test="@notdual != 'yes'">
     dual,
+</xsl:if>
     oleautomation
 <xsl:if test="$g_fGenProxy = 'yes'">
   <!-- Indicates to the typelib that we are using a proxy stub DLL and that interfaces

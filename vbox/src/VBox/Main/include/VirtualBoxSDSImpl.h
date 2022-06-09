@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 69729 2017-11-17 19:55:33Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.h 69734 2017-11-18 02:06:23Z vboxsync $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -138,6 +138,12 @@ private:
     class VirtualBoxCache;
     static VirtualBoxCache m_cache;
     friend VirtualBoxToken;
+
+#ifdef VBOX_WITH_SDS_PLAN_B
+    // quick and dirty for checking the concept.
+    IVBoxSVC *m_pVBoxSVC;
+    uint32_t  m_pidVBoxSVC;
+#endif
 };
 
 
