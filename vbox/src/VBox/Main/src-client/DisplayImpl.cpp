@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 68808 2017-09-21 09:44:23Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 68809 2017-09-21 09:50:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2455,7 +2455,7 @@ int Display::i_videoCaptureInvalidate(void)
      * Audio support is considered as being experimental. There be dragons! */
     mVideoRecCfg.Video.fEnabled  = true;
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
-    mVideoRecCfg.Audio.fEnabled  = false;
+    mVideoRecCfg.Audio.fEnabled  = true;
     /* By default we use 48kHz, 16-bit, stereo for the audio track. */
     mVideoRecCfg.Audio.uHz       = 48000;
     mVideoRecCfg.Audio.cBits     = 16;
