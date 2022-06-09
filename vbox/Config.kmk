@@ -1,4 +1,4 @@
-# $Id: Config.kmk 71200 2018-03-05 11:49:28Z vboxsync $
+# $Id: Config.kmk 71486 2018-03-23 13:31:35Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3327,7 +3327,7 @@ ifdef VBOX_SIGNING_MODE
   # @param 5  Disables dual signing if non-empty.
   #
   # @remarks The parameters are the same as VBOX_SIGN_FILE_FN.
-  VBOX_SIGN_IMAGE_PLAN_B_FN = $(warning VBOX_SIGN_IMAGE_PLAN_B_FN: 1=$1 2=$2 3=$3 4=$4 5=$5)$(VBOX_SIGNTOOL) \
+  VBOX_SIGN_IMAGE_PLAN_B_FN = $(VBOX_SIGNTOOL) \
   	sign /fd sha1\
   	$(VBOX_CROSS_CERTIFICATE_FILE_ARGS) \
   	$(VBOX_CERTIFICATE_STORE_ARGS) \
@@ -7160,7 +7160,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71200 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71486 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
