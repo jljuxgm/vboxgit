@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72581 2018-06-16 16:14:16Z vboxsync $ */
+/* $Id: IEMAll.cpp 72586 2018-06-17 15:43:20Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -13674,9 +13674,9 @@ DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecStatusCodeFiddling(PVMCPU pVCpu, VBOXSTRI
  *
  * @return  Strict VBox status code.
  * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
- * @param   pVCpu       The cross context virtual CPU structure of the calling thread.
  * @param   fExecuteInhibit     If set, execute the instruction following CLI,
  *                      POP SS and MOV SS,GR.
+ * @param   pszFunction The calling function name.
  */
 DECLINLINE(VBOXSTRICTRC) iemExecOneInner(PVMCPU pVCpu, bool fExecuteInhibit, const char *pszFunction)
 {
