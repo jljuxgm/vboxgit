@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Combined-1-Prepare.cmd 72047 2018-04-27 00:07:20Z vboxsync $
+rem $Id: Combined-1-Prepare.cmd 72056 2018-04-27 11:38:50Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing both amd64 and x86 for signing submission.
 rem
@@ -153,7 +153,7 @@ rem
 if not exist "%_MY_OPT_UNTAR_DIR%"      goto error_vboxall_untar_dir_not_found
 
 set _MY_BINDIR_AMD64=%_MY_OPT_UNTAR_DIR%\win.amd64\%_MY_OPT_BUILD_TYPE%\bin
-set _MY_BINDIR_X86=%_MY_OPT_UNTAR_DIR%\win.amd64\%_MY_OPT_BUILD_TYPE%\bin
+set _MY_BINDIR_X86=%_MY_OPT_UNTAR_DIR%\win.x86\%_MY_OPT_BUILD_TYPE%\bin
 if not exist "%_MY_BINDIR_AMD64%"       goto error_amd64_bindir_not_found
 if not exist "%_MY_BINDIR_X86%"         goto error_x86_bindir_not_found
 
