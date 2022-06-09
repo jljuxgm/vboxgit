@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 69260 2017-10-25 09:09:33Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 69552 2017-11-02 14:30:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1320,6 +1320,11 @@ bool UISelectorWindow::eventFilter(QObject *pObject, QEvent *pEvent)
 
 void UISelectorWindow::prepare()
 {
+#ifdef VBOX_WS_X11
+    /* Assign same name to both WM_CLASS name & class for now: */
+    vboxGlobal().setWMClass(this, "VirtualBox Manager", "VirtualBox Manager");
+#endif
+
 #ifdef VBOX_WS_MAC
     /* We have to make sure that we are getting the front most process: */
     ::darwinSetFrontMostProcess();

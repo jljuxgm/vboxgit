@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGlobal.h 69552 2017-11-02 14:30:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -451,6 +451,11 @@ public:
     /** Assigns top-level @a pWidget geometry passed as @a rect.
       * @note  Take into account that this request may fail on X11. */
     static void setTopLevelGeometry(QWidget *pWidget, const QRect &rect);
+
+#ifdef VBOX_WS_X11
+    /** Assigns WM_CLASS property for passed @a pWidget. */
+    static void setWMClass(QWidget *pWidget, const char *pStrName, const char *pStrClass);
+#endif
 
 signals:
 
