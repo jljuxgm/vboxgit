@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 69200 2017-10-24 11:28:50Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 69518 2017-10-30 10:18:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -236,63 +236,6 @@ private:
     bool isItSuitable(UIMediumItem *pItem) const { return pItem->state() == m_state; }
     /** Holds the @a state to compare to. */
     KMediumState m_state;
-};
-
-
-/** Medium manager progress-bar.
-  * Reflects medium-enumeration progress, stays hidden otherwise. */
-class UIEnumerationProgressBar : public QWidget
-{
-    Q_OBJECT;
-
-public:
-
-    /** Constructor on the basis of passed @a pParent. */
-    UIEnumerationProgressBar(QWidget *pParent = 0)
-        : QWidget(pParent)
-    {
-        /* Prepare: */
-        prepare();
-    }
-
-    /** Defines progress-bar label-text. */
-    void setText(const QString &strText) { m_pLabel->setText(strText); }
-
-    /** Returns progress-bar current-value. */
-    int value() const { return m_pProgressBar->value(); }
-    /** Defines progress-bar current-value. */
-    void setValue(int iValue) { m_pProgressBar->setValue(iValue); }
-    /** Defines progress-bar maximum-value. */
-    void setMaximum(int iValue) { m_pProgressBar->setMaximum(iValue); }
-
-private:
-
-    /** Prepares progress-bar content. */
-    void prepare()
-    {
-        /* Create layout: */
-        QHBoxLayout *pLayout = new QHBoxLayout(this);
-        {
-            /* Configure layout: */
-            pLayout->setContentsMargins(0, 0, 0, 0);
-            /* Create label: */
-            m_pLabel = new QLabel;
-            /* Create progress-bar: */
-            m_pProgressBar = new QProgressBar;
-            {
-                /* Configure progress-bar: */
-                m_pProgressBar->setTextVisible(false);
-            }
-            /* Add widgets into layout: */
-            pLayout->addWidget(m_pLabel);
-            pLayout->addWidget(m_pProgressBar);
-        }
-    }
-
-    /** Progress-bar label. */
-    QLabel *m_pLabel;
-    /** Progress-bar itself. */
-    QProgressBar *m_pProgressBar;
 };
 
 
@@ -798,6 +741,59 @@ bool UIMediumItemFD::releaseFrom(CMachine comMachine)
 
     /* Return failure: */
     return false;
+}
+
+
+/*********************************************************************************************************************************
+*   Class UIEnumerationProgressBar implementation.                                                                               *
+*********************************************************************************************************************************/
+
+UIEnumerationProgressBar::UIEnumerationProgressBar(QWidget *pParent /* = 0 */)
+    : QWidget(pParent)
+{
+    /* Prepare: */
+    prepare();
+}
+
+void UIEnumerationProgressBar::setText(const QString &strText)
+{
+    m_pLabel->setText(strText);
+}
+
+int UIEnumerationProgressBar::value() const
+{
+    return m_pProgressBar->value();
+}
+
+void UIEnumerationProgressBar::setValue(int iValue)
+{
+    m_pProgressBar->setValue(iValue);
+}
+
+void UIEnumerationProgressBar::setMaximum(int iValue)
+{
+    m_pProgressBar->setMaximum(iValue);
+}
+
+void UIEnumerationProgressBar::prepare()
+{
+    /* Create layout: */
+    QHBoxLayout *pLayout = new QHBoxLayout(this);
+    {
+        /* Configure layout: */
+        pLayout->setContentsMargins(0, 0, 0, 0);
+        /* Create label: */
+        m_pLabel = new QLabel;
+        /* Create progress-bar: */
+        m_pProgressBar = new QProgressBar;
+        {
+            /* Configure progress-bar: */
+            m_pProgressBar->setTextVisible(false);
+        }
+        /* Add widgets into layout: */
+        pLayout->addWidget(m_pLabel);
+        pLayout->addWidget(m_pProgressBar);
+    }
 }
 
 
@@ -2432,6 +2428,4 @@ UIMediumManagerWidget *UIMediumManager::widget()
 {
     return qobject_cast<UIMediumManagerWidget*>(QIManagerDialog::widget());
 }
-
-#include "UIMediumManager.moc"
 
