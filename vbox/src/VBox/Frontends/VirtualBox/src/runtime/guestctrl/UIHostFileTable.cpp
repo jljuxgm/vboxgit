@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 71531 2018-03-28 07:25:36Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 71537 2018-03-28 12:44:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -334,35 +334,31 @@ QString UIHostFileTable::fsObjectPropertyString()
 
         return propertyString;
     }
-    else
+
+    int fileCount = 0;
+    int directoryCount = 0;
+    ULONG64 totalSize = 0;
+
+    for(int i = 0; i < selectedObjects.size(); ++i)
     {
-        int fileCount = 0;
-        int directoryCount = 0;
-        ULONG64 totalSize = 0;
-
-        for(int i = 0; i < selectedObjects.size(); ++i)
-        {
-            QFileInfo fileInfo(selectedObjects.at(i));
-            if (!fileInfo.exists())
-                continue;
-            if (fileInfo.isFile())
-                ++fileCount;
-            if (fileInfo.isDir())
-                ++directoryCount;
-            totalSize += fileInfo.size();
-        }
-        QString propertyString;
-        propertyString += "<b>Selected:</b> " + QString::number(fileCount) + " files ";
-        propertyString += "and " + QString::number(directoryCount) + " directories";
-        propertyString += "<br/>";
-        propertyString += "<b>Size:</b> " + QString::number(totalSize) + QString(" bytes");
-        if (totalSize >= m_iKiloByte)
-            propertyString += " (" + humanReadableSize(totalSize) + ")";
-
-
-        return propertyString;
+        QFileInfo fileInfo(selectedObjects.at(i));
+        if (!fileInfo.exists())
+            continue;
+        if (fileInfo.isFile())
+            ++fileCount;
+        if (fileInfo.isDir())
+            ++directoryCount;
+        totalSize += fileInfo.size();
     }
-    return QString();
+    QString propertyString;
+    propertyString += "<b>Selected:</b> " + QString::number(fileCount) + " files ";
+    propertyString += "and " + QString::number(directoryCount) + " directories";
+    propertyString += "<br/>";
+    propertyString += "<b>Size:</b> " + QString::number(totalSize) + QString(" bytes");
+    if (totalSize >= m_iKiloByte)
+        propertyString += " (" + humanReadableSize(totalSize) + ")";
+
+    return propertyString;
 }
 
 void  UIHostFileTable::showProperties()

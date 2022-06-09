@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 71509 2018-03-26 12:16:37Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 71537 2018-03-28 12:44:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -245,11 +245,11 @@ bool UIGuestFileTable::copyHostToGuest(const QString &hostSourcePath, const QStr
         /* API expects a full file path as destionation: */
         QString destinationFilePath =  UIPathOperations::mergePaths(guestDestinationPath, UIPathOperations::getObjectName(hostSourcePath));
         /** @todo listen to CProgress object to monitor copy operation: */
-        /*CProgress comProgress =*/ m_comGuestSession.FileCopyFromGuest(hostSourcePath, destinationFilePath, flags);
+        /*CProgress comProgress =*/ m_comGuestSession.FileCopyToGuest(hostSourcePath, destinationFilePath, flags);
     }
     else if(hostFileInfo.isDir())
     {
-        QVector<KDirectoryCopyFlag> aFlags(KDirectoryCopyFlag_CopyIntoExisting);
+        QVector<KDirectoryCopyFlag> aFlags(KDirectoryCopyFlag_None/*CopyIntoExisting*/);
         /** @todo listen to CProgress object to monitor copy operation: */
         /*CProgress comProgress = */ m_comGuestSession.DirectoryCopyToGuest(hostSourcePath, guestDestinationPath, aFlags);
     }
