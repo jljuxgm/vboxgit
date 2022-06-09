@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 70149 2017-12-15 14:09:47Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 70151 2017-12-15 14:34:43Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -115,6 +115,11 @@ uint8_t                                 g_uRtNtMajorVer;
 uint8_t                                 g_uRtNtMinorVer;
 /** The build number. */
 uint32_t                                g_uRtNtBuildNo;
+
+/** Pointer to the MmHighestUserAddress kernel variable - can be NULL. */
+uintptr_t const                        *g_puRtMmHighestUserAddress;
+/** Pointer to the MmSystemRangeStart kernel variable - can be NULL. */
+uintptr_t const                        *g_puRtMmSystemRangeStart;
 
 
 /**
@@ -287,6 +292,9 @@ DECLHIDDEN(int) rtR0InitNative(void)
 
     g_pfnrtHalRequestIpiW7Plus = (PFNHALREQUESTIPI_W7PLUS)RTR0DbgKrnlInfoGetSymbol(hKrnlInfo, NULL, "HalRequestIpi");
     g_pfnrtHalRequestIpiPreW7 = (PFNHALREQUESTIPI_PRE_W7)g_pfnrtHalRequestIpiW7Plus;
+
+    g_puRtMmHighestUserAddress = (uintptr_t const *)RTR0DbgKrnlInfoGetSymbol(hKrnlInfo, NULL, "MmHighestUserAddress");
+    g_puRtMmSystemRangeStart   = (uintptr_t const *)RTR0DbgKrnlInfoGetSymbol(hKrnlInfo, NULL, "MmSystemRangeStart");
 
     RTR0DbgKrnlInfoRelease(hKrnlInfo);
 

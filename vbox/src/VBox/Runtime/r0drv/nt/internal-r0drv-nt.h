@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 70150 2017-12-15 14:10:17Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 70151 2017-12-15 14:34:43Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -99,6 +99,9 @@ extern uint32_t                                g_uRtNtVersion;
 extern uint8_t                                 g_uRtNtMajorVer;
 extern uint8_t                                 g_uRtNtMinorVer;
 extern uint32_t                                g_uRtNtBuildNo;
+
+extern uintptr_t const                        *g_puRtMmHighestUserAddress;
+extern uintptr_t const                        *g_puRtMmSystemRangeStart;
 
 
 int __stdcall rtMpPokeCpuUsingDpc(RTCPUID idCpu);
