@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 68200 2017-07-31 12:41:10Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 68204 2017-07-31 13:59:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1278,8 +1278,9 @@ void UISelectorWindow::prepare()
     prepareWidgets();
     prepareConnections();
 
-    /* Make sure at least 'Details' Machine tool is opened at startup: */
+    /* Make sure 'Details' and 'Snapshots' Machine tools ares opened at startup for now: */
     actionPool()->action(UIActionIndexST_M_Tools_M_Machine_Details)->trigger();
+    actionPool()->action(UIActionIndexST_M_Tools_M_Machine_Snapshots)->trigger();
 
     /* Load settings: */
     loadSettings();
