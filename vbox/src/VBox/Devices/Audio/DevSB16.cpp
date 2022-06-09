@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 67578 2017-06-23 09:42:54Z vboxsync $ */
+/* $Id: DevSB16.cpp 67717 2017-06-30 08:11:06Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2165,6 +2165,7 @@ static int sb16OpenOut(PSB16STATE pThis, PPDMAUDIOSTREAMCFG pCfg)
 
     CfgHost.enmDir          = PDMAUDIODIR_OUT;
     CfgHost.DestSource.Dest = PDMAUDIOPLAYBACKDEST_FRONT;
+    CfgHost.enmLayout       = PDMAUDIOSTREAMLAYOUT_NON_INTERLEAVED;
 
     CfgHost.Props.uHz       = pCfg->Props.uHz;
     CfgHost.Props.cChannels = pCfg->Props.cChannels;
