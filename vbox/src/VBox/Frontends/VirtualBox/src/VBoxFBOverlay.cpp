@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 71651 2018-04-04 12:20:08Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 71652 2018-04-04 12:23:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -3406,13 +3406,15 @@ void VBoxVHWAImage::vhwaSaveExec(struct SSMHANDLE *pSSM)
      */
     const SurfList & primaryList = mDisplay.primaries().surfaces();
     uint32_t cPrimary = (uint32_t)primaryList.size();
-    if (cPrimary &&
-            (mDisplay.getVGA() == NULL || mDisplay.getVGA()->handle() == VBOXVHWA_SURFHANDLE_INVALID))
+    if (   cPrimary
+        && (   mDisplay.getVGA() == NULL
+            || mDisplay.getVGA()->handle() == VBOXVHWA_SURFHANDLE_INVALID))
     {
         cPrimary -= 1;
     }
 
     int rc = SSMR3PutU32(pSSM, cPrimary);
+    AssertRCReturnVoid(rc);
     if (cPrimary)
     {
         for (SurfList::const_iterator pr = primaryList.begin(); pr != primaryList.end(); ++ pr)
