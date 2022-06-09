@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 69976 2017-12-07 12:48:39Z vboxsync $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -205,7 +205,7 @@ DumpD3DCaps9_SDKS     = ReorderCompilerIncs $(VBOX_WINDDK_GST_WLH)
 DumpD3DCaps9_DEFS     = UNICODE _UNICODE
 DumpD3DCaps9_SOURCES  = \
 	wddm/dbg/DumpD3DCaps9.cpp
-DumpD3DCaps9_LIBS     = $(VBOX_LIB_IPRT_GUEST_R3) d3d9.lib
+DumpD3DCaps9_LIBS     = d3d9.lib
 DumpD3DCaps9_LDFLAGS.win = /SUBSYSTEM:CONSOLE
 
 PROGRAMS += D3DFeatureLevel

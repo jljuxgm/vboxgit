@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMPIf.h 69976 2017-12-07 12:48:39Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver.
  *
@@ -603,8 +603,12 @@ DECLINLINE(UINT) vboxWddmCalcBitsPerPixel(D3DDDIFORMAT enmFormat)
             return 8;
         case D3DDDIFMT_R32F:
             return 32;
+        case D3DDDIFMT_G32R32F:
+            return 64;
         case D3DDDIFMT_R16F:
             return 16;
+        case D3DDDIFMT_G16R16F:
+            return 32;
         case D3DDDIFMT_YUY2: /* 4 bytes per 2 pixels. */
         case VBOXWDDM_D3DDDIFORMAT_FROM_FOURCC('Y', 'V', '1', '2'):
             return 16;
