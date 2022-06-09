@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 69931 2017-12-05 10:20:34Z vboxsync $ */
+/* $Id: UISession.cpp 69935 2017-12-05 12:58:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1472,6 +1472,9 @@ void UISession::updateMenu()
         if (pMenuUI->isConsumable() && !pMenuUI->isConsumed())
             pMenuUI->setConsumed(true);
     }
+    /* Update the dock menu as well: */
+    if(machineLogic())
+        machineLogic()->updateDock();
 }
 #endif /* VBOX_WS_MAC */
 
