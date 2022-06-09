@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69531 2017-10-30 17:59:26Z vboxsync $
+# $Id: Makefile.kmk 70314 2017-12-22 12:17:58Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -308,6 +308,7 @@ if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) ## @todo some of 
 	$(VBOX_PATH_RUNTIME_SRC)/common/checksum/sha256str.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/checksum/sha512str.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/err/errinfo.cpp \
+	$(VBOX_PATH_RUNTIME_SRC)/common/err/errinfolog.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/path/RTPathChangeToUnixSlashes.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/path/RTPathExt.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTUtf16PrintHexBytes.cpp \
