@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 71901 2018-04-18 14:50:52Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 72279 2018-05-22 09:22:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class declaration.
  */
@@ -111,6 +111,9 @@ public:
       * @note If nothing set it's generated automatically. */
     void setToolTip(const QString &strToolTip);
 
+    void setDefaultPath(const QString &strDefaultPath);
+    const QString& defaultPath() const;
+
 public slots:
 
     /** Defines the @a strPath and @a fRefreshText after that. */
@@ -203,6 +206,9 @@ private:
 
     /** Holds the copy action instance. */
     QAction *m_pCopyAction;
+
+    /** Path is set to m_strDefaultPath when it is reset. */
+    QString m_strDefaultPath;
 };
 
 #endif /* !___UIFilePathSelector_h___ */
