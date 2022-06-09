@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 67407 2017-06-14 13:50:35Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 67408 2017-06-14 14:04:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -578,6 +578,12 @@ void UISnapshotDetailsWidget::retranslateUi()
             m_details.value(DetailsElementType_Preview)->setHidden(false);
         else if (m_pixmapScreenshot.isNull() && !m_details.value(DetailsElementType_Preview)->isHidden())
             m_details.value(DetailsElementType_Preview)->setHidden(true);
+
+        /* Update USB details visibility: */
+        const CUSBDeviceFilters &comFilters = comMachine.GetUSBDeviceFilters();
+        const bool fUSBMissing = comFilters.isNull() || !comMachine.GetUSBProxyAvailable();
+        if (fUSBMissing && !m_details.value(DetailsElementType_USB)->isHidden())
+            m_details.value(DetailsElementType_USB)->setHidden(true);
 
         /* Rebuild the details report: */
         foreach (const DetailsElementType &enmType, m_details.keys())
