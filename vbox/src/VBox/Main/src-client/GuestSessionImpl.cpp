@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 71231 2018-03-06 10:08:58Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 71232 2018-03-06 10:12:36Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2636,7 +2636,7 @@ HRESULT GuestSession::directoryCopyToGuest(const com::Utf8Str &aSource, const co
         try
         {
             pTask = new SessionTaskCopyDirTo(this /* GuestSession */, aSource, aDestination, "" /* strFilter */,
-                                             (DirectoryCopyFlags_T)fFlags);
+                                             (DirectoryCopyFlag_T)fFlags);
         }
         catch(...)
         {
