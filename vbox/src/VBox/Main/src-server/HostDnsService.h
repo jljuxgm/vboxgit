@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 72439 2018-06-04 22:05:25Z vboxsync $ */
+/* $Id: HostDnsService.h 72480 2018-06-08 10:19:45Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -95,7 +95,7 @@ class HostDnsMonitorProxy
     HostDnsMonitorProxy();
     ~HostDnsMonitorProxy();
     void init(VirtualBox *virtualbox);
-    void notify() const;
+    void notify();
 
     VirtualBox *getVirtualBox() const;
 
