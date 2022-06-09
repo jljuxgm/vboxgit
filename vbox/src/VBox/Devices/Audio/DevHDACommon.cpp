@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 70964 2018-02-11 21:25:29Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 71688 2018-04-05 15:11:16Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  */
@@ -448,13 +448,12 @@ uint32_t hdaGetINTSTS(PHDASTATE pThis)
     uint32_t intSts = 0;
 
     /* Check controller interrupts (RIRB, STATEST). */
-    if (   (HDA_REG(pThis, RIRBSTS) & HDA_REG(pThis, RIRBCTL) & (HDA_RIRBCTL_ROIC | HDA_RIRBCTL_RINTCTL))
-        /* SDIN State Change Status Flags (SCSF). */
-        || (HDA_REG(pThis, STATESTS) & HDA_STATESTS_SCSF_MASK))
+    if (HDA_REG(pThis, RIRBSTS) & HDA_REG(pThis, RIRBCTL) & (HDA_RIRBCTL_ROIC | HDA_RIRBCTL_RINTCTL))
     {
         intSts |= HDA_INTSTS_CIS; /* Set the Controller Interrupt Status (CIS). */
     }
 
+    /* Check SDIN State Change Status Flags. */
     if (HDA_REG(pThis, STATESTS) & HDA_REG(pThis, WAKEEN))
     {
         intSts |= HDA_INTSTS_CIS; /* Touch Controller Interrupt Status (CIS). */
