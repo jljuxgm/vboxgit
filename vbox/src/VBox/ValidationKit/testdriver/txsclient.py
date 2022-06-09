@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 70521 2018-01-10 15:49:10Z vboxsync $
+# $Id: txsclient.py 70541 2018-01-11 14:53:57Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70521 $"
+__version__ = "$Revision: 70541 $"
 
 # Standard Python imports.
 import array;
@@ -1669,8 +1669,6 @@ class TransportTcp(TransportBase):
 
     def __isInProgressXcpt(self, oXcpt):
         """ In progress exception? """
-        reporter.log("oXcpt=%s" % (oXcpt)) ## TMP TMP
-        reporter.log("dir(oXcpt)=%s" % (dir(oXcpt))) ## TMP TMP
         try:
             if isinstance(oXcpt, socket.error):
                 try:
