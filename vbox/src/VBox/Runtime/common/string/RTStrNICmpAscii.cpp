@@ -1,4 +1,4 @@
-/* $Id: RTStrNICmpAscii.cpp 70093 2017-12-12 18:29:01Z vboxsync $ */
+/* $Id: RTStrNICmpAscii.cpp 70107 2017-12-13 12:22:13Z vboxsync $ */
 /** @file
  * IPRT - RTStrNICmpAscii.
  */
@@ -76,5 +76,5 @@ RTDECL(int) RTStrNICmpAscii(const char *psz1, const char *psz2, size_t cchMax)
             return RTStrNCmp(psz1 - 1, psz2, cchMax + 1);
     }
 }
-RT_EXPORT_SYMBOL(RTStrICmpAscii);
+RT_EXPORT_SYMBOL(RTStrNICmpAscii);
 
