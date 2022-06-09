@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 68506 2017-08-22 12:58:30Z vboxsync $ */
+/* $Id: isomaker.cpp 68813 2017-09-21 19:53:07Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -1181,6 +1181,20 @@ RTDECL(int) RTFsIsoMakerSetIso9660Level(RTFSISOMAKER hIsoMaker, uint8_t uIsoLeve
 
     pThis->PrimaryIso.uLevel = uIsoLevel;
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Gets the ISO-9660 level.
+ *
+ * @returns The level, UINT8_MAX if invalid handle.
+ * @param   hIsoMaker           The ISO maker handle.
+ */
+RTDECL(uint8_t) RTFsIsoMakerGetIso9660Level(RTFSISOMAKER hIsoMaker)
+{
+    PRTFSISOMAKERINT pThis = hIsoMaker;
+    RTFSISOMAKER_ASSERT_VALID_HANDLE_RET_EX(pThis, UINT8_MAX);
+    return pThis->PrimaryIso.uLevel;
 }
 
 
