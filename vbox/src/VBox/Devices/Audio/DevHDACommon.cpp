@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 70132 2017-12-14 15:40:51Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 70246 2017-12-20 18:01:54Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  */
@@ -658,7 +658,7 @@ bool hdaTimerSet(PHDASTATE pThis, uint64_t tsExpire, bool fForce)
         {
             PHDASTREAM pStream = &pThis->aStreams[i];
 
-            if (!(HDA_STREAM_REG(pThis, CTL, pStream->u8SD) & HDA_SDCTL_RUN))
+            if (!pStream->State.fRunning)
                 continue;
 
             if (hdaStreamTransferIsScheduled(pStream))

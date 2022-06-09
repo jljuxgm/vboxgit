@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 70132 2017-12-14 15:40:51Z vboxsync $ */
+/* $Id: HDAStream.h 70246 2017-12-20 18:01:54Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -117,8 +117,10 @@ typedef struct HDASTREAMSTATE
     /** Flag indicating whether this stream currently is
      *  in reset mode and therefore not acccessible by the guest. */
     volatile bool           fInReset;
+	/** Flag indicating if the stream is in running state or not. */
+	volatile bool			fRunning;
     /** Unused, padding. */
-    uint32_t                Padding0;
+    uint8_t                 Padding0[3];
     /** Critical section to serialize access. */
     RTCRITSECT              CritSect;
 #ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
@@ -190,7 +192,9 @@ typedef struct HDASTREAM
 {
     /** Stream descriptor number (SDn). */
     uint8_t                  u8SD;
-    uint8_t                  Padding0[7];
+	/** Current channel index.
+	 *  For a stereo stream, this is u8Channel + 1. */
+    uint8_t                  u8Channel;
     /** DMA base address (SDnBDPU - SDnBDPL). */
     uint64_t                 u64BDLBase;
     /** Cyclic Buffer Length (SDnCBL).
