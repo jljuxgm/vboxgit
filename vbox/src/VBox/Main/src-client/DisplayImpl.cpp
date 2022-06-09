@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 70035 2017-12-08 15:50:01Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 70036 2017-12-08 16:52:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2644,13 +2644,14 @@ DECLCALLBACK(int) Display::i_videoRecConfigure(Display *pThis, PVIDEORECCFG pCfg
 
     } /* while */
 
+    unsigned uLUN = *puLUN;
+
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
     ComPtr<IAudioAdapter> audioAdapter;
     rc = pMachine->COMGETTER(AudioAdapter)(audioAdapter.asOutParam());
     AssertComRC(rc);
 
     unsigned uInstance = 0;
-    unsigned uLUN      = *puLUN;
 
     Utf8Str strAudioDev = pThis->mParent->i_getAudioAdapterDeviceName(audioAdapter);
     if (!strAudioDev.isEmpty())
