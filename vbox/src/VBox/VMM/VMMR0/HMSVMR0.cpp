@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 71841 2018-04-12 10:09:25Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 71842 2018-04-12 10:10:23Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4307,9 +4307,10 @@ static int hmR0SvmPreRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIEN
 
 
 /**
- * Prepares to run guest code in AMD-V and we've committed to doing so. This
- * means there is no backing out to ring-3 or anywhere else at this
- * point.
+ * Prepares to run guest or nested-guest code in AMD-V and we've committed to
+ * doing so.
+ *
+ * This means there is no backing out to ring-3 or anywhere else at this point.
  *
  * @param   pVM             The cross context VM structure.
  * @param   pVCpu           The cross context virtual CPU structure.
