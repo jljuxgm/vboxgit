@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 70660 2018-01-21 16:18:58Z vboxsync $
+# $Id: db.py 70662 2018-01-21 16:28:23Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70660 $"
+__version__ = "$Revision: 70662 $"
 
 
 # Standard python imports.
@@ -349,7 +349,7 @@ class TMDatabaseConnection(object):
             sBound = unicode(sOperation);
 
         if sys.version_info[0] >= 3 and not isinstance(sBound, str):
-            sBound = sBound.decode('utf-8');
+            sBound = sBound.decode('utf-8'); # pylint: disable=redefined-variable-type
 
         aasExplain = None;
         if self._oExplainCursor is not None and not sBound.startswith('DROP'):
