@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 68003 2017-07-17 15:56:45Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 68340 2017-08-08 11:52:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -1212,6 +1212,37 @@ QString UISnapshotDetailsWidget::detailsReport(const CMachine &comMachine, Detai
                 bootOrder << gpConverter->toString(KDeviceType_Null);
             strItem += QString(sSectionItemTpl2).arg(tr("Boot Order", "details report"),
                                                      bootOrder.join(", "));
+
+            /* Chipset type: */
+            const KChipsetType enmChipsetType = comMachine.GetChipsetType();
+            if (enmChipsetType == KChipsetType_ICH9)
+            {
+                ++iRowCount;
+                strItem += QString(sSectionItemTpl2).arg(tr("Chipset Type", "details report"),
+                                                         gpConverter->toString(enmChipsetType));
+            }
+
+            /* Firware type: */
+            switch (comMachine.GetFirmwareType())
+            {
+                case KFirmwareType_EFI:
+                case KFirmwareType_EFI32:
+                case KFirmwareType_EFI64:
+                case KFirmwareType_EFIDUAL:
+                {
+                    ++iRowCount;
+                    const QString strEFI = tr("Enabled", "details report (EFI)");
+                    strItem += QString(sSectionItemTpl2).arg(tr("EFI", "details report"), strEFI);
+                    break;
+                }
+                default:
+                {
+                    //++iRowCount;
+                    const QString strEFI = tr("Disabled", "details report (EFI)"); Q_UNUSED(strEFI);
+                    //strItem += QString(sSectionItemTpl2).arg(tr("EFI", "details report"), strEFI);
+                    break;
+                }
+            }
 
 #ifdef VBOX_WITH_FULL_DETAILS_REPORT
 
