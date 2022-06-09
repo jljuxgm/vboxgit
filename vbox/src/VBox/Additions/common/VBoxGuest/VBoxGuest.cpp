@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 70040 2017-12-08 18:07:32Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 70058 2017-12-11 15:02:07Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1324,10 +1324,10 @@ void VGDrvCommonProcessOptionsFromHost(PVBOXGUESTDEVEXT pDevExt)
                          * Validate and convert the flags to integer, then process the option.
                          */
                         uint32_t fFlags = 0;
-                        rc = guestProp::validateFlags(apszFields[3], &fFlags);
+                        rc = GuestPropValidateFlags(apszFields[3], &fFlags);
                         if (RT_SUCCESS(rc))
                         {
-                            if (fFlags & guestProp::RDONLYGUEST)
+                            if (fFlags & GUEST_PROP_F_RDONLYGUEST)
                             {
                                 apszFields[0] += sizeof(g_szzPattern) - 2;
                                 VGDrvCommonProcessOption(pDevExt, apszFields[0], apszFields[1]);

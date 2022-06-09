@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxControl.cpp 70058 2017-12-11 15:02:07Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1188,7 +1188,7 @@ static RTEXITCODE getGuestProperty(int argc, char **argv)
     /* The buffer for storing the data and its initial size.  We leave a bit
      * of space here in case the maximum values are raised. */
     void *pvBuf = NULL;
-    uint32_t cbBuf = MAX_VALUE_LEN + MAX_FLAGS_LEN + 1024;
+    uint32_t cbBuf = GUEST_PROP_MAX_VALUE_LEN + GUEST_PROP_MAX_FLAGS_LEN + 1024;
     if (RT_SUCCESS(rc))
     {
         /* Because there is a race condition between our reading the size of a
@@ -1496,7 +1496,7 @@ static RTEXITCODE waitGuestProperty(int argc, char **argv)
     /* The buffer for storing the data and its initial size.  We leave a bit
      * of space here in case the maximum values are raised. */
     void *pvBuf = NULL;
-    uint32_t cbBuf = MAX_NAME_LEN + MAX_VALUE_LEN + MAX_FLAGS_LEN + 1024;
+    uint32_t cbBuf = GUEST_PROP_MAX_NAME_LEN + GUEST_PROP_MAX_VALUE_LEN + GUEST_PROP_MAX_FLAGS_LEN + 1024;
     /* Because there is a race condition between our reading the size of a
      * property and the guest updating it, we loop a few times here and
      * hope.  Actually this should never go wrong, as we are generous
