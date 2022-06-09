@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
+/* $Id: EventImpl.cpp 69323 2017-10-25 19:16:02Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -861,6 +861,7 @@ HRESULT ListenerRecord::enqueue(IEvent *aEvent)
     if (queueSize > 1000 || (queueSize > 500 && sinceRead > 60 * 1000))
     {
         ::RTCritSectLeave(&mcsQLock);
+        LogRel(("Event: forcefully unregistering passive event listener %p due to excessive queue size\n", this));
         return E_ABORT;
     }
 
