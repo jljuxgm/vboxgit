@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 66193 2017-03-22 13:29:33Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 67841 2017-07-06 16:57:59Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -342,10 +342,10 @@ static DECLCALLBACK(bool) drvHostBaseIsVisible(PPDMIMEDIA pInterface)
 /** @interface_method_impl{PDMIMEDIA,pfnGetRegionCount} */
 static DECLCALLBACK(uint32_t) drvHostBaseGetRegionCount(PPDMIMEDIA pInterface)
 {
-    RT_NOREF1(pInterface);
+    PDRVHOSTBASE pThis = RT_FROM_MEMBER(pInterface, DRVHOSTBASE, IMedia);
 
     LogFlowFunc(("\n"));
-    uint32_t cRegions = 1;
+    uint32_t cRegions = pThis->fMediaPresent ? 1 : 0;
 
     /* For now just return one region for all devices. */
     /** @todo: Handle CD/DVD passthrough properly. */
@@ -363,7 +363,7 @@ static DECLCALLBACK(int) drvHostBaseQueryRegionProperties(PPDMIMEDIA pInterface,
     int rc = VINF_SUCCESS;
     PDRVHOSTBASE pThis = RT_FROM_MEMBER(pInterface, DRVHOSTBASE, IMedia);
 
-    if (uRegion < 1)
+    if (uRegion < 1 && pThis->fMediaPresent)
     {
         uint64_t cbMedia;
         rc = drvHostBaseGetMediaSizeOs(pThis, &cbMedia);
@@ -413,8 +413,6 @@ static DECLCALLBACK(int) drvHostBaseQueryRegionPropertiesForLba(PPDMIMEDIA pInte
     if (   RT_SUCCESS(rc)
         && u64LbaStart < cbMedia / cbBlock)
     {
-        rc = VERR_NOT_FOUND;
-
         if (puRegion)
             *puRegion = 0;
         if (pcBlocks)
