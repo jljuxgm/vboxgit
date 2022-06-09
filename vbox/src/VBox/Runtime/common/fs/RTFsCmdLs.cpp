@@ -1,4 +1,4 @@
-/* $Id: RTFsCmdLs.cpp 70417 2018-01-02 11:14:44Z vboxsync $ */
+/* $Id: RTFsCmdLs.cpp 70422 2018-01-02 11:25:46Z vboxsync $ */
 /** @file
  * IPRT - /bin/ls like utility for testing the VFS code.
  */
@@ -1385,7 +1385,7 @@ static RTEXITCODE rtCmdLsProcessArgument(PRTCMDLSOPTS pOpts, const char *pszArg)
  * @param   papszArgs           The argument vector.  (Note that this may be
  *                              reordered, so the memory must be writable.)
  */
-RTEXITCODE RTFsCmdLs(unsigned cArgs, char **papszArgs)
+RTR3DECL(RTEXITCODE) RTFsCmdLs(unsigned cArgs, char **papszArgs)
 {
 
     /*
