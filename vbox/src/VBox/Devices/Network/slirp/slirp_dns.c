@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: slirp_dns.c 71202 2018-03-05 14:45:44Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -192,6 +192,15 @@ static int get_dns_addr_domain(PNATState pData)
                 LogRel(("NAT: DNS server %RTnaipv4 registration detected, switching to the DNS proxy\n", address->IPv4));
                 pData->fUseDnsProxy = 1;
             }
+        }
+        else if (address->IPv4.u == INADDR_ANY)
+        {
+            /*
+             * This doesn't seem to be very well documented except for
+             * RTFS of res_init.c, but INADDR_ANY is a valid value for
+             * for "nameserver".
+             */
+            address->IPv4.u = pData->special_addr.s_addr | RT_H2N_U32_C(CTL_ALIAS);
         }
 
         pDns = RTMemAllocZ(sizeof(struct dns_entry));
