@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 70415 2018-01-02 08:36:52Z vboxsync $ */
+/* $Id: HM.cpp 70441 2018-01-03 04:05:33Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -453,13 +453,13 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
                               "|EnableVPID"
                               "|TPRPatchingEnabled"
                               "|64bitEnabled"
-                              "|VmxPleGap"
-                              "|VmxPleWindow"
-                              "|SvmPauseFilter"
-                              "|SvmPauseFilterThreshold"
                               "|Exclusive"
                               "|MaxResumeLoops"
+                              "|VmxPleGap"
+                              "|VmxPleWindow"
                               "|UseVmxPreemptTimer"
+                              "|SvmPauseFilter"
+                              "|SvmPauseFilterThreshold"
                               "|SvmVirtVmsaveVmload"
                               "|SvmVGif",
                               "" /* pszValidNodes */, "HM" /* pszWho */, 0 /* uInstance */);
