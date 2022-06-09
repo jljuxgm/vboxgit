@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 71368 2018-03-16 14:32:33Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 72057 2018-04-27 11:55:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -27,7 +27,7 @@
 # include "UIMachineSettingsDisplay.h"
 # include "UIErrorString.h"
 # include "VBoxGlobal.h"
-# include "VBoxFBOverlay.h"
+# include "VBox2DHelpers.h"
 
 /* COM includes: */
 # include "CExtPack.h"
@@ -520,7 +520,7 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
             /* 2D acceleration video RAM amount test: */
             else if (m_pCheckbox2DVideo->isChecked() && m_f2DVideoAccelerationSupported)
             {
-                uNeedBytes += VBoxQGLOverlay::required2DOffscreenVideoMemory();
+                uNeedBytes += VBox2DHelpers::required2DOffscreenVideoMemory();
                 if ((quint64)m_pEditorVideoMemorySize->value() * _1M < uNeedBytes)
                 {
                     message.second << tr("The virtual machine is currently assigned less than <b>%1</b> of video memory "
@@ -694,7 +694,7 @@ void UIMachineSettingsDisplay::polishPage()
     m_pLabelVideoOptions->setEnabled(isMachineOffline());
     m_pCheckbox3D->setEnabled(isMachineOffline());
 #ifdef VBOX_WITH_VIDEOHWACCEL
-    m_pCheckbox2DVideo->setEnabled(isMachineOffline() && VBoxQGLOverlay::isAcceleration2DVideoAvailable());
+    m_pCheckbox2DVideo->setEnabled(isMachineOffline() && VBox2DHelpers::isAcceleration2DVideoAvailable());
 #else /* !VBOX_WITH_VIDEOHWACCEL */
     m_pCheckbox2DVideo->hide();
 #endif /* !VBOX_WITH_VIDEOHWACCEL */
@@ -1206,7 +1206,7 @@ void UIMachineSettingsDisplay::checkVRAMRequirements()
 #ifdef VBOX_WITH_VIDEOHWACCEL
     if (m_pCheckbox2DVideo->isChecked() && m_f2DVideoAccelerationSupported)
     {
-        uNeedMBytes += VBoxQGLOverlay::required2DOffscreenVideoMemory() / _1M;
+        uNeedMBytes += VBox2DHelpers::required2DOffscreenVideoMemory() / _1M;
     }
 #endif
 

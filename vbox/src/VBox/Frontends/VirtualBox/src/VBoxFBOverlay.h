@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.h 71651 2018-04-04 12:20:08Z vboxsync $ */
+/* $Id: VBoxFBOverlay.h 72057 2018-04-27 11:55:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFrameBuffer Overly classes declarations.
  */
@@ -1754,12 +1754,6 @@ public:
         vboxDoCheckUpdateViewport();
         mGlCurrent = false;
     }
-
-    static bool isAcceleration2DVideoAvailable();
-
-    /** additional video memory required for the best 2D support performance
-     *  total amount of VRAM required is thus calculated as requiredVideoMemory + required2DOffscreenVideoMemory  */
-    static quint64 required2DOffscreenVideoMemory();
 
     /* not supposed to be called by clients */
     int vhwaLoadExec (struct SSMHANDLE * pSSM, uint32_t u32Version);
