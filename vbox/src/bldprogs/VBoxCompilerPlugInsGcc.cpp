@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugInsGcc.cpp 69912 2017-12-03 19:08:13Z vboxsync $ */
+/* $Id: VBoxCompilerPlugInsGcc.cpp 70558 2018-01-12 14:11:39Z vboxsync $ */
 /** @file
  * gccplugin - GCC plugin for checking IPRT format strings.
  */
@@ -695,7 +695,7 @@ static unsigned int     MyPassExecuteCallbackWithFunction(struct function *pFun)
                     State.hStmt         = hStmt;
                     State.hFmtLoc       = gimple_location(hStmt);
                     dprintf("     %s() __iprt_format%s__(iFmt=%ld, iArgs=%ld)\n",
-                            DECL_NAME(hFnDecl) ? IDENTIFIER_POINTER(DECL_NAME(hFnDecl)) : "<unamed>",
+                            hFnDecl && DECL_NAME(hFnDecl) ? IDENTIFIER_POINTER(DECL_NAME(hFnDecl)) : "<unamed>",
                             State.fMaybeNull ? "_maybe_null" : "", State.iFmt, State.iArgs);
 
                     unsigned cCallArgs = gimple_call_num_args(hStmt);
