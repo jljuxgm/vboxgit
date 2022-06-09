@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 69920 2017-12-04 14:13:15Z vboxsync $ */
+/* $Id: DevHDA.cpp 69939 2017-12-05 17:34:12Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -3597,6 +3597,9 @@ static int hdaLoadExecPost(PHDASTATE pThis)
                     tsExpire = hdaStreamTransferGetNext(pStream);
 
                 Log2Func(("[SD%RU8] tsExpire=%RU64\n", pStream->u8SD, tsExpire));
+
+                /* Also keep track of the currently active streams. */
+                pThis->cStreamsActive++;
             }
         }
     }
