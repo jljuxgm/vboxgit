@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 68272 2017-08-03 08:25:32Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 68320 2017-08-07 15:18:51Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -609,9 +609,10 @@ static DECLCALLBACK(int) drvAudioVideoRecStreamPlay(PPDMIHOSTAUDIO pInterface, P
                 break;
         }
 
-# ifdef DEBUG_andy
+# ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
         RTFILE fh;
-        RTFileOpen(&fh, "/tmp/acap.pcm", RTFILE_O_OPEN_CREATE | RTFILE_O_APPEND | RTFILE_O_WRITE | RTFILE_O_DENY_NONE);
+        RTFileOpen(&fh, VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "DrvAudioVideoRec.pcm",
+                   RTFILE_O_OPEN_CREATE | RTFILE_O_APPEND | RTFILE_O_WRITE | RTFILE_O_DENY_NONE);
         RTFileWrite(fh, abSrc, cbSrc, NULL);
         RTFileClose(fh);
 # endif
