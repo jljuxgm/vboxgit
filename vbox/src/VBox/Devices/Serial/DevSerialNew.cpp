@@ -1,4 +1,4 @@
-/* $Id: DevSerialNew.cpp 72132 2018-05-06 19:40:10Z vboxsync $ */
+/* $Id: DevSerialNew.cpp 72179 2018-05-09 17:36:40Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  *
@@ -490,6 +490,7 @@ DECLINLINE(int) serialRegThrDllWrite(PDEVSERIAL pThis, uint8_t uVal)
 #else
                 pThis->uRegThr = uVal;
                 UART_REG_CLR(pThis->uRegLsr, UART_REG_LSR_THRE | UART_REG_LSR_TEMT);
+                serialIrqUpdate(pThis);
                 if (pThis->pDrvSerial)
                 {
                     int rc2 = pThis->pDrvSerial->pfnDataAvailWrNotify(pThis->pDrvSerial, 1);
