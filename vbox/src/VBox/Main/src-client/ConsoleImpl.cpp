@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 69749 2017-11-19 12:49:36Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 70035 2017-12-08 15:50:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5516,13 +5516,19 @@ HRESULT Console::i_onVideoCaptureChange()
             /* Release lock because the call scheduled on EMT may also try to take it. */
             alock.release();
 
+            const PVIDEORECCFG pCfg = pDisplay->i_videoRecGetConfig();
+            const unsigned     uLUN = pCfg->Audio.uLUN; /* Get the currently configured LUN. */
+
             int vrc = VMR3ReqCallWaitU(ptrVM.rawUVM(), VMCPUID_ANY /*idDstCpu*/,
-                                       (PFNRT)Display::i_videoRecConfigure, 3,
-                                       pDisplay, pDisplay->i_videoRecGetConfig(), true /* fAttachDetach */);
+                                       (PFNRT)Display::i_videoRecConfigure, 4,
+                                       pDisplay, pCfg, true /* fAttachDetach */, &pCfg->Audio.uLUN);
             if (RT_SUCCESS(vrc))
             {
                 /* Make sure to acquire the lock again after we're done running in EMT. */
                 alock.acquire();
+
+                /* We don't support dynamic LUNs for this stuff yet. */
+                Assert(uLUN == pCfg->Audio.uLUN);
 
                 if (!mDisplay->i_videoRecStarted())
                 {

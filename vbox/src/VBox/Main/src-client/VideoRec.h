@@ -1,4 +1,4 @@
-/* $Id: VideoRec.h 68990 2017-10-04 15:17:45Z vboxsync $ */
+/* $Id: VideoRec.h 70035 2017-12-08 15:50:01Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -95,6 +95,8 @@ typedef struct VIDEORECCFG
     {
         /** Whether audio recording is enabled or not. */
         bool                fEnabled;
+        /** The device LUN the audio driver is attached / configured to. */
+        unsigned            uLUN;
         /** Hertz (Hz) rate. */
         uint16_t            uHz;
         /** Bits per sample. */
