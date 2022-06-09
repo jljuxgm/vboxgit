@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 70804 2018-01-30 05:12:06Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxHook.
 #
@@ -22,7 +22,7 @@ include $(KBUILD_PATH)/subheader.kmk
 include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 
 DLLS += VBoxHook
-VBoxHook_TEMPLATE = VBoxGuestR3Dll
+VBoxHook_TEMPLATE = VBoxGuestR3DllMinW2K
 VBoxHook_INCS     = ../include
 VBoxHook_SOURCES  = \
 	dllmain.cpp \
