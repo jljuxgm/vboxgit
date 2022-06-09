@@ -1,4 +1,4 @@
-/* $Id: window.cpp 70939 2018-02-09 18:15:40Z vboxsync $ */
+/* $Id: window.cpp 70976 2018-02-12 16:49:44Z vboxsync $ */
 
 /** @file
  * Presenter API: window class implementation.
@@ -313,22 +313,26 @@ void CrFbWindow::UpdateEnd()
         return;
 
     crDebug("CrFbWindow::UpdateEnd ENTER, mSpuWindow(0x%X) mpCompositor(0x%X) fForcePresentOnReenable(%d)", mSpuWindow, mpCompositor, mFlags.fForcePresentOnReenable);
-    checkRegions();
 
     if (mSpuWindow)
     {
         bool fPresentNeeded = isPresentNeeded();
+        GLdouble scaleFactorW, scaleFactorH;
+        /* Reset to default values if operation was unseccessfull. */
+        if (!GetScaleFactor(&scaleFactorW, &scaleFactorH))
+            scaleFactorW = scaleFactorH = 1.0;
+
+        if (mpCompositor)
+        {
+            CrVrScrCompositorSetStretching((VBOXVR_SCR_COMPOSITOR *)mpCompositor, scaleFactorW, scaleFactorH);
+            checkRegions();
+        }
+
         if (fPresentNeeded || mFlags.fForcePresentOnReenable)
         {
-            GLdouble scaleFactorW, scaleFactorH;
-            /* Reset to default values if operation was unseccessfull. */
-            if (!GetScaleFactor(&scaleFactorW, &scaleFactorH))
-                scaleFactorW = scaleFactorH = 1.0;
-
             mFlags.fForcePresentOnReenable = false;
             if (mpCompositor)
             {
-                CrVrScrCompositorSetStretching((VBOXVR_SCR_COMPOSITOR *)mpCompositor, scaleFactorW, scaleFactorH);
                 cr_server.head_spu->dispatch_table.VBoxPresentComposition(mSpuWindow, mpCompositor, NULL);
             }
             else
