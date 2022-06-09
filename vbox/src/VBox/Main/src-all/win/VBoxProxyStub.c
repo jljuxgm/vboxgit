@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 67623 2017-06-27 08:04:55Z vboxsync $ */
+/* $Id: VBoxProxyStub.c 67768 2017-07-04 09:51:08Z vboxsync $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -1048,12 +1048,16 @@ LSTATUS VbpsRegisterAppId(VBPSREGSTATE *pState, const char *pszModuleName, const
     }
 
     if (pState->fUpdate)
+    {
         rc = RegCreateKeyExW(pState->hkeyClassesRootDst, L"AppID", 0 /*Reserved*/, NULL /*pszClass*/, 0 /*fOptions*/,
                              pState->fSamBoth, NULL /*pSecAttr*/, &hkeyAppIds, NULL /*pdwDisposition*/);
+        if (rc == ERROR_ACCESS_DENIED)
+            return ERROR_SUCCESS;
+    }
     else
     {
         rc = RegOpenKeyExW(pState->hkeyClassesRootDst, L"AppID", 0 /*fOptions*/, pState->fSamBoth, &hkeyAppIds);
-        if (rc == ERROR_FILE_NOT_FOUND)
+        if (rc == ERROR_FILE_NOT_FOUND || rc == ERROR_ACCESS_DENIED)
             return ERROR_SUCCESS;
     }
     AssertLogRelMsgReturn(rc == ERROR_SUCCESS, ("%u\n", rc), pState->rc = rc);
