@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 70971 2018-02-12 12:25:45Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 71053 2018-02-19 13:35:01Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -120,6 +120,7 @@ public:
                                     const Utf8Str& sourcePath, const Utf8Str& targetPath);
     HRESULT moveAllDisks(const std::map<Utf8Str, MEDIUMTASK>& listOfDisks, const Utf8Str* strTargetFolder = NULL);
     HRESULT restoreAllDisks(const std::map<Utf8Str, MEDIUMTASK>& listOfDisks);
+    bool isMediumTypeSupportedForMoving(const ComPtr<IMedium> &pMedium);
 };
 
 #endif // ____H_MACHINEIMPLMOVEVM
