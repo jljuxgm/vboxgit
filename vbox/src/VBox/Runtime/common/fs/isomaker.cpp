@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67451 2017-06-16 15:35:59Z vboxsync $ */
+/* $Id: isomaker.cpp 67453 2017-06-16 17:39:39Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -3147,9 +3147,10 @@ RTDECL(int) RTFsIsoMakerBootCatSetSectionEntry(RTFSISOMAKER hIsoMaker, uint32_t 
  * @returns IPRT status code.
  * @param   hIsoMaker           The ISO maker handle.
  * @param   idxBootCat          The boot catalog entry.
+ * @param   cEntries            Number of entries in the section.
  * @param   idPlatform          The platform ID
  *                              (ISO9660_ELTORITO_PLATFORM_ID_XXX).
- * @param   pszString           CD/DVD-ROM identifier.  Optional.
+ * @param   pszString           Section identifier or something.  Optional.
  */
 RTDECL(int) RTFsIsoMakerBootCatSetSectionHeaderEntry(RTFSISOMAKER hIsoMaker, uint32_t idxBootCat, uint32_t cEntries,
                                                      uint8_t idPlatform, const char *pszString)
