@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: __init__.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: __init__.py 72296 2018-05-23 12:18:08Z vboxsync $
 
 """
 Common code between testmanager, testbox and testdriver.
@@ -26,10 +26,11 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 72296 $"
 
 
 from common import constants;
 from common import utils;
+from common import netutils;
 from common import webutils;
 
