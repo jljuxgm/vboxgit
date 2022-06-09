@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 65849 2017-02-23 09:37:26Z vboxsync $ */
+/* $Id: AudioMixer.cpp 67265 2017-06-06 09:36:12Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -244,7 +244,6 @@ int AudioMixerCreate(const char *pszName, uint32_t fFlags, PAUDIOMIXER *ppMixer)
     return rc;
 }
 
-#ifdef DEBUG
 /**
  * Helper function for the internal debugger to print the mixer's current
  * state, along with the attached sinks.
@@ -276,7 +275,6 @@ void AudioMixerDebug(PAUDIOMIXER pMixer, PCDBGFINFOHLP pHlp, const char *pszArgs
     rc2 = RTCritSectLeave(&pMixer->CritSect);
     AssertRC(rc2);
 }
-#endif
 
 /**
  * Destroys an audio mixer.
