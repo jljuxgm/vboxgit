@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 72352 2018-05-26 12:37:50Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 72476 2018-06-07 13:49:48Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -761,6 +761,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--iso]\n"
                      "                            [--options manifest|iso|nomacs|nomacsbutnat]\n"
                      "                            [--vsys <number of virtual system>]\n"
+                     "                                    [--vmname <name>]\n"
                      "                                    [--product <product name>]\n"
                      "                                    [--producturl <product url>]\n"
                      "                                    [--vendor <vendor name>]\n"

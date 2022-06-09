@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 72332 2018-05-24 20:51:23Z vboxsync $ */
+/* $Id: MachineImpl.h 72476 2018-06-07 13:49:48Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -363,6 +363,7 @@ public:
     // initializer for machine config in memory (OVF import)
     HRESULT init(VirtualBox *aParent,
                  const Utf8Str &strName,
+                 const Utf8Str &strSettingsFilename,
                  const settings::MachineConfigFile &config);
 
     void uninit();

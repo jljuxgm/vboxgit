@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 72332 2018-05-24 20:51:23Z vboxsync $ */
+/* $Id: MachineImpl.cpp 72476 2018-06-07 13:49:48Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -515,14 +515,15 @@ HRESULT Machine::initFromSettings(VirtualBox *aParent,
  *  config is ignored and we always generate a fresh one.
  *
  *  @param aParent  Associated parent object.
- *  @param strName  Name for the new machine; this overrides what is specified in config and is used
- *                  for the settings file as well.
+ *  @param strName  Name for the new machine; this overrides what is specified in config.
+ *  @param strSettingsFilename File name of .vbox file.
  *  @param config   Machine configuration loaded and parsed from XML.
  *
  *  @return  Success indicator. if not S_OK, the machine object is invalid
  */
 HRESULT Machine::init(VirtualBox *aParent,
                       const Utf8Str &strName,
+                      const Utf8Str &strSettingsFilename,
                       const settings::MachineConfigFile &config)
 {
     LogFlowThisFuncEnter();
@@ -531,15 +532,7 @@ HRESULT Machine::init(VirtualBox *aParent,
     AutoInitSpan autoInitSpan(this);
     AssertReturn(autoInitSpan.isOk(), E_FAIL);
 
-    Utf8Str strConfigFile;
-    aParent->i_getDefaultMachineFolder(strConfigFile);
-    strConfigFile.append(RTPATH_DELIMITER);
-    strConfigFile.append(strName);
-    strConfigFile.append(RTPATH_DELIMITER);
-    strConfigFile.append(strName);
-    strConfigFile.append(".vbox");
-
-    HRESULT rc = initImpl(aParent, strConfigFile);
+    HRESULT rc = initImpl(aParent, strSettingsFilename);
     if (FAILED(rc)) return rc;
 
     rc = i_tryCreateMachineConfigFile(false /* fForceOverwrite */);

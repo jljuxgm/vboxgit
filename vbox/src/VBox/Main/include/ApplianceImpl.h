@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: ApplianceImpl.h 72476 2018-06-07 13:49:48Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -125,7 +125,7 @@ private:
      */
     bool i_isApplianceIdle();
     HRESULT i_searchUniqueVMName(Utf8Str& aName) const;
-    HRESULT i_searchUniqueDiskImageFilePath(Utf8Str& aName) const;
+    HRESULT i_searchUniqueDiskImageFilePath(const Utf8Str &aMachineFolder, Utf8Str &aName) const;
     HRESULT i_setUpProgress(ComObjPtr<Progress> &pProgress,
                             const Utf8Str &strDescription,
                             SetUpProgressMode mode);
@@ -185,7 +185,7 @@ private:
                                        int32_t &lDevice);
 
     void i_importOneDiskImage(const ovf::DiskImage &di,
-                              Utf8Str *strTargetPath,
+                              const Utf8Str &strTargetPath,
                               ComObjPtr<Medium> &pTargetHD,
                               ImportStack &stack);
 

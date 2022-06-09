@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplPrivate.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: ApplianceImplPrivate.h 72476 2018-06-07 13:49:48Z vboxsync $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
@@ -309,8 +309,10 @@ struct Appliance::ImportStack
 
     // input parameters from VirtualSystemDescriptions
     Utf8Str                         strNameVBox;        // VM name
-    Utf8Str                         strMachineFolder;   // FQ host folder where the VirtualBox machine would be created
+    Utf8Str                         strSettingsFilename; // Absolute path to VM config file
+    Utf8Str                         strMachineFolder;   // Absolute path to VM folder (derived from strSettingsFilename)
     Utf8Str                         strOsTypeVBox;      // VirtualBox guest OS type as string
+    Utf8Str                         strPrimaryGroup;    // VM primary group as string
     Utf8Str                         strDescription;
     uint32_t                        cCPUs;              // CPU count
     bool                            fForceHWVirt;       // if true, we force enabling hardware virtualization

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 67273 2017-06-06 13:47:06Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 72476 2018-06-07 13:49:48Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1917,6 +1917,7 @@ void Appliance::i_buildXMLForOneVirtualSystem(AutoWriteLockBase& writeLock,
         AutoWriteLock machineLock(vsdescThis->m->pMachine COMMA_LOCKVAL_SRC_POS);
         // fill the machine config
         vsdescThis->m->pMachine->i_copyMachineDataToSettings(*pConfig);
+        pConfig->machineUserData.strName = strVMName;
 
         // Apply export tweaks to machine settings
         bool fStripAllMACs = m->optListExport.contains(ExportOptions_StripAllMACs);
