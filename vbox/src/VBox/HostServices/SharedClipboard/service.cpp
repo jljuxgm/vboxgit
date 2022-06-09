@@ -1,4 +1,4 @@
-/* $Id: service.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: service.cpp 69635 2017-11-10 10:03:06Z vboxsync $ */
 /** @file
  * Shared Clipboard: Host service entry points.
  */
@@ -196,10 +196,22 @@ static bool vboxSvcClipboardReturnMsg (VBOXCLIPBOARDCLIENTDATA *pClient, VBOXHGC
     }
     else if (pClient->fMsgReadData)
     {
+        uint32_t fFormat;
+
         LogRelFlow(("vboxSvcClipboardReturnMsg: ReadData %02X\n", pClient->u32RequestedFormat));
+        if (pClient->u32RequestedFormat & VBOX_SHARED_CLIPBOARD_FMT_UNICODETEXT)
+            fFormat = VBOX_SHARED_CLIPBOARD_FMT_UNICODETEXT;
+        else if (pClient->u32RequestedFormat & VBOX_SHARED_CLIPBOARD_FMT_BITMAP)
+            fFormat = VBOX_SHARED_CLIPBOARD_FMT_BITMAP;
+        else if (pClient->u32RequestedFormat & VBOX_SHARED_CLIPBOARD_FMT_HTML)
+            fFormat = VBOX_SHARED_CLIPBOARD_FMT_HTML;
+        else
+            AssertStmt(pClient->u32RequestedFormat == 0, pClient->u32RequestedFormat = 0);
+        pClient->u32RequestedFormat &= ~fFormat;
         VBoxHGCMParmUInt32Set (&paParms[0], VBOX_SHARED_CLIPBOARD_HOST_MSG_READ_DATA);
-        VBoxHGCMParmUInt32Set (&paParms[1], pClient->u32RequestedFormat);
-        pClient->fMsgReadData = false;
+        VBoxHGCMParmUInt32Set (&paParms[1], fFormat);
+        if (pClient->u32RequestedFormat == 0)
+            pClient->fMsgReadData = false;
     }
     else if (pClient->fMsgFormats)
     {
