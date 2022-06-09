@@ -1,4 +1,4 @@
-/* $Id: gvm.h 62476 2016-07-22 18:23:50Z vboxsync $ */
+/* $Id: gvm.h 67955 2017-07-13 21:13:23Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -81,6 +81,8 @@ typedef struct GVM
     uint32_t        hSelf;
     /** The ring-0 mapping of the VM structure. */
     PVM             pVM;
+    /** The support driver session the VM is associated with. */
+    PSUPDRVSESSION  pSession;
     /** Number of Virtual CPUs, i.e. how many entries there are in aCpus.
      * Same same as VM::cCpus. */
     uint32_t        cCpus;
