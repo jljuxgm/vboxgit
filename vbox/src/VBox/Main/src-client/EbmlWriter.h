@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.h 68332 2017-08-08 08:38:07Z vboxsync $ */
+/* $Id: EbmlWriter.h 68451 2017-08-17 19:54:52Z vboxsync $ */
 /** @file
  * EbmlWriter.h - EBML writer + WebM container.
  */
@@ -48,9 +48,9 @@ public:
     enum AudioCodec
     {
         /** No audio codec specified. */
-        AudioCodec_Unknown = 0,
+        AudioCodec_None = 0,
         /** Opus. */
-        AudioCodec_Opus    = 1
+        AudioCodec_Opus = 1
     };
 
     /**
