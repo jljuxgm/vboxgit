@@ -1,10 +1,10 @@
-/* $Id: UIConverterBackendGlobal.cpp 71056 2018-02-19 14:00:51Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 71427 2018-03-21 12:46:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
 
 /*
- * Copyright (C) 2012-2017 Oracle Corporation
+ * Copyright (C) 2012-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -25,9 +25,9 @@
 # include <QRegularExpression>
 
 /* GUI includes: */
+# include "VBoxGlobal.h"
 # include "UIConverterBackend.h"
 # include "UIIconPool.h"
-# include "VBoxGlobal.h"
 
 /* COM includes: */
 # include "CSystemProperties.h"
@@ -72,6 +72,7 @@ template<> bool canConvert<MiniToolbarAlignment>() { return true; }
 #endif
 template<> bool canConvert<InformationElementType>() { return true; }
 template<> bool canConvert<MaxGuestResolutionPolicy>() { return true; }
+
 
 /* QString <= SizeSuffix: */
 template<> QString toString(const SizeSuffix &sizeSuffix)
