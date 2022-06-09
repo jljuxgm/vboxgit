@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 71505 2018-03-26 09:03:32Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 71509 2018-03-26 12:16:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -197,7 +197,7 @@ void UIHostFileTable::readDirectory(const QString& strPath, UIFileTableItem *par
     }
     insertItemsToTree(directories, parent, true, isStartDir);
     insertItemsToTree(files, parent, false, isStartDir);
-    updateCurrentLocationEdit(strPath);
+    //updateCurrentLocationEdit(strPath);
 }
 
 void UIHostFileTable::deleteByItem(UIFileTableItem *item)
