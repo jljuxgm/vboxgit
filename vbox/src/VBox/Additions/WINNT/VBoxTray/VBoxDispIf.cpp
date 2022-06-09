@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 72000 2018-04-24 09:08:58Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 72003 2018-04-24 10:47:53Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -1710,7 +1710,7 @@ static DWORD vboxDispIfWddmResizeDisplay2(PCVBOXDISPIF const pIf, DISPLAY_DEVICE
     winEr = vboxDispIfWddmDcCreate(&DispCfg, QDC_ALL_PATHS);
 
     if (winEr != ERROR_SUCCESS)
-    {	
+    {
         WARN(("VBoxTray: (WDDM) Failed vboxDispIfWddmDcCreate\n"));
         return winEr;
     }
