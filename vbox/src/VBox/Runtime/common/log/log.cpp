@@ -1,4 +1,4 @@
-/* $Id: log.cpp 69101 2017-10-17 09:48:46Z vboxsync $ */
+/* $Id: log.cpp 69103 2017-10-17 10:08:18Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2285,7 +2285,12 @@ RTDECL(int) RTLogDestinations(PRTLOGGER pLogger, char const *pszValue)
 
         /* check no prefix. */
         fNo = false;
-        if (pszValue[0] == 'n' && pszValue[1] == 'o')
+        if (   pszValue[0] == 'n'
+            && pszValue[1] == 'o'
+            && (   pszValue[2] != 'd'
+                || pszValue[3] != 'e'
+                || pszValue[4] != 'n'
+                || pszValue[5] != 'y'))
         {
             fNo = true;
             pszValue += 2;
