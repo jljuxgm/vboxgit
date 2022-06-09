@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 69650 2017-11-10 17:59:11Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 69662 2017-11-12 16:01:20Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
@@ -48,7 +48,7 @@ RT_C_DECLS_END
 # include <stdio.h> /* for printf */
 #endif
 
-#ifndef IN_RING0 /* A linking tweak for the testcase: */
+#if !defined(IN_RING0) && !defined(DOXYGEN_RUNNING) /* A linking tweak for the testcase: */
 # include <iprt/cdefs.h>
 # undef  RTR0DECL
 # define RTR0DECL(type) DECLHIDDEN(type) RTCALL
