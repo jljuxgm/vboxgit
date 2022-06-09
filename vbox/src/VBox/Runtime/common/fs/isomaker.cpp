@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 68014 2017-07-18 10:20:31Z vboxsync $ */
+/* $Id: isomaker.cpp 68025 2017-07-18 14:11:58Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -5209,7 +5209,7 @@ static ssize_t rtFsIsoMakerOutFile_RockRidgeGenSL(const char *pszTarget, uint8_t
         else if (cchComponent == 2 && pszTarget[0] == '.' && pszTarget[1] == '.')
         {
             fFlags   = ISO9660RRIP_SL_C_PARENT;
-            cbNeeded = 0;
+            cbNeeded = 2;
         }
         else
         {
@@ -5268,11 +5268,10 @@ static ssize_t rtFsIsoMakerOutFile_RockRidgeGenSL(const char *pszTarget, uint8_t
                 pEntry->Hdr.cbEntry  = 0; /* set later. */
                 pEntry->Hdr.bVersion = ISO9660RRIPSL_VER;
                 pEntry->fFlags       = 0;
-
-
             } while (cchComponent > 0);
             if (ch == '\0')
                 break;
+            pszTarget++;
             continue;
         }
 
@@ -5287,7 +5286,7 @@ static ssize_t rtFsIsoMakerOutFile_RockRidgeGenSL(const char *pszTarget, uint8_t
 
         if (ch == '\0')
             break;
-        pszTarget += cchComponent;
+        pszTarget += cchComponent + 1;
     }
 
     Assert(off - offEntry < UINT8_MAX);
