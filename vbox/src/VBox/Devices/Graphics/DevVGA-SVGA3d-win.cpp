@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 69608 2017-11-07 17:57:05Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 69655 2017-11-10 19:24:04Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -5710,7 +5710,7 @@ int vmsvga3dDrawPrimitives(PVGASTATE pThis, uint32_t cid, uint32_t numVertexDecl
     AssertRCReturn(rc, rc);
 
     HRESULT hr;
-    
+
     /* SVGA driver may use the same surface for both index and vertex data. So we can not clear fDirty flag,
      * after updating a vertex buffer for example, because the same surface might be used for index buffer later.
      * So keep pointers to all used surfaces in the following two arrays and clear fDirty flag at the end.
