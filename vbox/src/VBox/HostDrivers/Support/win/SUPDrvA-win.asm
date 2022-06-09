@@ -1,4 +1,4 @@
-; $Id: SUPDrvA-win.asm 62490 2016-07-22 18:41:49Z vboxsync $
+; $Id: SUPDrvA-win.asm 67954 2017-07-13 21:06:09Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Windows NT specific assembly parts.
 ;
@@ -30,20 +30,6 @@
 %include "iprt/asmdefs.mac"
 
 BEGINCODE
-%ifdef RT_ARCH_AMD64
- %define _DbgPrint DbgPrint
-%endif
-extern _DbgPrint
-
-%if 1 ; see alternative in SUPDrv-win.cpp
-;;
-; Kind of alias for DbgPrint
-export NAME(SUPR0Printf)
-BEGINPROC SUPR0Printf
-        jmp     _DbgPrint
-ENDPROC SUPR0Printf
-%endif
-
 
 %ifdef VBOX_WITH_HARDENING
 
