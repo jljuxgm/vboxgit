@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 68293 2017-08-04 06:05:13Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 68361 2017-08-10 09:38:55Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -360,6 +360,7 @@ VMM_INT_DECL(void) HMSvmNstGstVmExitNotify(PVMCPU pVCpu, PSVMVMCB pVmcbNstGst)
         pVmcbCtrl->u64IOPMPhysAddr          = pNstGstVmcbCache->u64IOPMPhysAddr;
         pVmcbCtrl->u64MSRPMPhysAddr         = pNstGstVmcbCache->u64MSRPMPhysAddr;
         pVmcbCtrl->IntCtrl.n.u1VIntrMasking = pNstGstVmcbCache->fVIntrMasking;
+        pVmcbCtrl->TLBCtrl                  = pNstGstVmcbCache->TLBCtrl;
         pNstGstVmcbCache->fValid = false;
     }
     pNstGstVmcbCache->fVmrunEmulatedInR0 = false;
