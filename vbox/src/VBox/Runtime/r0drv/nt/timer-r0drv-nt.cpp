@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-nt.cpp 70212 2017-12-19 02:54:28Z vboxsync $ */
+/* $Id: timer-r0drv-nt.cpp 70341 2017-12-26 14:42:28Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, NT.
  */
@@ -509,7 +509,10 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_
     pTimer->pfnTimer = pfnTimer;
     pTimer->pvUser = pvUser;
     pTimer->u64NanoInterval = u64NanoInterval;
-    KeInitializeTimerEx(&pTimer->NtTimer, SynchronizationTimer);
+    if (g_pfnrtKeInitializeTimerEx)
+        g_pfnrtKeInitializeTimerEx(&pTimer->NtTimer, SynchronizationTimer);
+    else
+        KeInitializeTimer(&pTimer->NtTimer);
     int rc = VINF_SUCCESS;
     if (pTimer->fOmniTimer)
     {
