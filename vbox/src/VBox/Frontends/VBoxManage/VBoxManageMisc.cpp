@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 68187 2017-07-31 08:55:16Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 68188 2017-07-31 08:57:27Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1471,8 +1471,6 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
                 CHECK_ERROR2_RET(hrc, ptrUnattended, COMSETTER(InstallGuestAdditions)(FALSE), RTEXITCODE_FAILURE);
                 break;
             case 'a':   // --additions-iso
-                if (!ValueUnion.psz)
-                    return errorSyntax("No Additions ISO path specified");
                 vrc = RTPathAbs(ValueUnion.psz, szAbsPath, sizeof(szAbsPath));
                 if (RT_FAILURE(vrc))
                     return errorSyntax("RTPathAbs failed on '%s': %Rrc", ValueUnion.psz, vrc);
