@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoGuest.h 69307 2017-10-25 13:46:45Z vboxsync $ */
+/* $Id: VBoxVideoGuest.h 71146 2018-02-28 09:54:40Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - OS-independent guest structures.
  */
@@ -125,6 +125,8 @@ DECLHIDDEN(void) VBoxVBVASetupBufferContext(PVBVABUFFERCONTEXT pCtx,
  * @{ */
 
 DECLHIDDEN(uint32_t) VBoxHGSMIGetMonitorCount(PHGSMIGUESTCOMMANDCONTEXT pCtx);
+DECLHIDDEN(bool)     VBoxVGACfgAvailable(void);
+DECLHIDDEN(bool)     VBoxVGACfgQuery(uint16_t u16Id, uint32_t *pu32Value);
 DECLHIDDEN(uint32_t) VBoxVideoGetVRAMSize(void);
 DECLHIDDEN(bool)     VBoxVideoAnyWidthAllowed(void);
 DECLHIDDEN(uint16_t) VBoxHGSMIGetScreenFlags(PHGSMIGUESTCOMMANDCONTEXT pCtx);
