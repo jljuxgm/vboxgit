@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM.py 71225 2018-03-06 08:55:08Z vboxsync $"
+# "$Id: tdMoveVM.py 71226 2018-03-06 09:16:22Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71225 $"
+__version__ = "$Revision: 71226 $"
 
 # Standard Python imports.
 import os
@@ -187,10 +187,10 @@ class SubTstDrvMoveVM(base.SubTestDriverBase):
         #1. All disks attached to VM are located outside the VM's folder.
         #   There are no any snapshots and logs.
         #   In this case only VM setting file should be moved (.vbox file)
-        #   
+        #
         #2. All disks attached to VM are located inside the VM's folder.
         #   There are no any snapshots and logs.
-        #   
+        #
         #3. There are snapshots.
         #
         #4. There are one or more save state files in the snapshots folder
@@ -200,9 +200,9 @@ class SubTstDrvMoveVM(base.SubTestDriverBase):
         #
         #6. There is a floppy image (.img) attached to the VM.
         #
-        #7. There are shareable disk and immutable disk attached to the VM. 
+        #7. There are shareable disk and immutable disk attached to the VM.
         #
-        #8. There is "read-only" disk attached to the VM.  
+        #8. There is "read-only" disk attached to the VM.
 
         try:
             #create test machine
@@ -263,7 +263,7 @@ class SubTstDrvMoveVM(base.SubTestDriverBase):
                 fRc = fRc and oSession.takeSnapshot(strSnapshot)
                 if fRc is False:
                     reporter.error('Error: Can\'t take snapshot "%s".' % (strSnapshot,))
-                    reporter.testFailure('Error: Can\'t take snapshot "%s".' % (strSnapshot,));
+                    reporter.testFailure('Error: Can\'t take snapshot "%s".' % (strSnapshot,))
 
             aoMediumAttachments = aMachine.getMediumAttachmentsOfController(sController)
             if fRc is True:
