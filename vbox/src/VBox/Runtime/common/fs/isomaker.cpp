@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67348 2017-06-12 17:33:48Z vboxsync $ */
+/* $Id: isomaker.cpp 67370 2017-06-13 14:32:01Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -110,19 +110,6 @@ typedef struct RTFSISOMAKEROBJ const *PCRTFSISOMAKEROBJ;
 typedef struct RTFSISOMAKERFILE *PRTFSISOMAKERFILE;
 /** Pointer to a const ISO maker file object. */
 typedef struct RTFSISOMAKERFILE const *PCRTFSISOMAKERFILE;
-
-
-/** @name RTFSISOMAKER_NAMESPACE_XXX - Namespace selector.
- * @{
- */
-#define RTFSISOMAKER_NAMESPACE_ISO_9660     RT_BIT_32(0)            /**< The primary ISO-9660 namespace. */
-#define RTFSISOMAKER_NAMESPACE_JOLIET       RT_BIT_32(1)            /**< The joliet namespace. */
-#define RTFSISOMAKER_NAMESPACE_UDF          RT_BIT_32(2)            /**< The UDF namespace. */
-#define RTFSISOMAKER_NAMESPACE_HFS          RT_BIT_32(3)            /**< The HFS namespace */
-#define RTFSISOMAKER_NAMESPACE_ALL          UINT32_C(0x0000000f)    /**< All namespaces. */
-#define RTFSISOMAKER_NAMESPACE_VALID_MASK   UINT32_C(0x0000000f)    /**< Valid namespace bits. */
-/** @} */
-
 
 /**
  * Filesystem object type.
