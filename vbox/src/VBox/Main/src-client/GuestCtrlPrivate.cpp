@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 71264 2018-03-07 18:20:22Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 71267 2018-03-08 09:21:08Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -62,7 +62,7 @@ PRTTIMESPEC GuestFsObjData::TimeSpecFromKey(const GuestProcessStreamBlock &strmB
 }
 
 /**
- * Extracts the in nanoseconds relative from Unix epoch for a given stream block key.
+ * Extracts the nanoseconds relative from Unix epoch for a given stream block key.
  *
  * @return Nanoseconds relative from Unix epoch, or 0 if invalid / not found.
  * @param  strmBlk              Stream block to extract nanoseconds from.
