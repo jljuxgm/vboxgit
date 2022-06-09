@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 68798 2017-09-20 10:27:16Z vboxsync $ */
+/* $Id: VideoRec.cpp 68799 2017-09-20 10:32:34Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -1211,8 +1211,10 @@ VIDEORECFEATURES VideoRecGetEnabled(PVIDEORECCFG pCfg)
     if (pCfg->Video.fEnabled)
         fFeatures |= VIDEORECFEATURE_VIDEO;
 
+#ifdef VBOX_WITH_AUDIO_VIDEOREC
     if (pCfg->Audio.fEnabled)
         fFeatures |= VIDEORECFEATURE_AUDIO;
+#endif
 
     return fFeatures;
 }
