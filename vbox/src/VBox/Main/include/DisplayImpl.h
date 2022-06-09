@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 70563 2018-01-12 17:52:10Z vboxsync $ */
+/* $Id: DisplayImpl.h 71590 2018-03-31 18:34:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -168,7 +168,7 @@ public:
     void i_handleUpdateGuestVBVACapabilities(uint32_t fNewCapabilities);
     void i_handleUpdateVBVAInputMapping(int32_t xOrigin, int32_t yOrigin, uint32_t cx, uint32_t cy);
 #ifdef VBOX_WITH_VIDEOHWACCEL
-    int  i_handleVHWACommandProcess(PVBOXVHWACMD pCommand);
+    int  i_handleVHWACommandProcess(int enmCmd, VBOXVHWACMD RT_UNTRUSTED_VOLATILE_GUEST *pCommand);
 #endif
 #ifdef VBOX_WITH_CRHGSMI
     void i_handleCrHgsmiCommandCompletion(int32_t result, uint32_t u32Function, PVBOXHGCMSVCPARM pParam);
@@ -338,7 +338,8 @@ private:
                                                                    void *pvVRAM, unsigned uScreenId);
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
-    static DECLCALLBACK(int)  i_displayVHWACommandProcess(PPDMIDISPLAYCONNECTOR pInterface, PVBOXVHWACMD pCommand);
+    static DECLCALLBACK(int)  i_displayVHWACommandProcess(PPDMIDISPLAYCONNECTOR pInterface, int enmCmd,
+                                                          VBOXVHWACMD RT_UNTRUSTED_VOLATILE_GUEST *pCommand);
 #endif
 
 #ifdef VBOX_WITH_CRHGSMI

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPInternal.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMPInternal.cpp 71590 2018-03-31 18:34:28Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport internal functions
  */
@@ -451,7 +451,8 @@ static void VBoxMPSignalEvent(PVBOXMP_COMMON pCommon, uint64_t pvEvent)
 }
 
 static DECLCALLBACK(int)
-VBoxVbvaChannelGenericHandlerCB(void *pvHandler, uint16_t u16ChannelInfo, void *pvBuffer, HGSMISIZE cbBuffer)
+VBoxVbvaChannelGenericHandlerCB(void *pvHandler, uint16_t u16ChannelInfo,
+                                void RT_UNTRUSTED_VOLATILE_HOST *pvBuffer, HGSMISIZE cbBuffer)
 {
     VBVA_CHANNELCONTEXTS *pCallbacks = (VBVA_CHANNELCONTEXTS*)pvHandler;
     LOGF_ENTER();

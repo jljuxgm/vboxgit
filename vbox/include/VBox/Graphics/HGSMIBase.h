@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.h 69307 2017-10-25 13:46:45Z vboxsync $ */
+/* $Id: HGSMIBase.h 71590 2018-03-31 18:34:28Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - buffer management.
  */
@@ -47,14 +47,10 @@ DECLINLINE(void) VBoxHGSMIClearIrq(PHGSMIHOSTCOMMANDCONTEXT pCtx)
     VBVO_PORT_WRITE_U32(pCtx->port, HGSMIOFFSET_VOID);
 }
 
-DECLHIDDEN(void *)   VBoxHGSMIBufferAlloc(PHGSMIGUESTCOMMANDCONTEXT pCtx,
-                                          HGSMISIZE cbData,
-                                          uint8_t u8Ch,
-                                          uint16_t u16Op);
-DECLHIDDEN(void)     VBoxHGSMIBufferFree(PHGSMIGUESTCOMMANDCONTEXT pCtx,
-                                         void *pvBuffer);
-DECLHIDDEN(int)      VBoxHGSMIBufferSubmit(PHGSMIGUESTCOMMANDCONTEXT pCtx,
-                                           void *pvBuffer);
+DECLHIDDEN(void RT_UNTRUSTED_VOLATILE_HOST *) VBoxHGSMIBufferAlloc(PHGSMIGUESTCOMMANDCONTEXT pCtx, HGSMISIZE cbData,
+                                                                   uint8_t u8Ch, uint16_t u16Op);
+DECLHIDDEN(void) VBoxHGSMIBufferFree(PHGSMIGUESTCOMMANDCONTEXT pCtx, void RT_UNTRUSTED_VOLATILE_HOST *pvBuffer);
+DECLHIDDEN(int)  VBoxHGSMIBufferSubmit(PHGSMIGUESTCOMMANDCONTEXT pCtx, void RT_UNTRUSTED_VOLATILE_HOST *pvBuffer);
 /** @}  */
 
 RT_C_DECLS_END

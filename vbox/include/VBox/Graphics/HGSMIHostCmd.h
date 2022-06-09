@@ -1,4 +1,4 @@
-/* $Id: HGSMIHostCmd.h 69015 2017-10-09 12:50:34Z vboxsync $ */
+/* $Id: HGSMIHostCmd.h 71590 2018-03-31 18:34:28Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - buffer management.
  */
@@ -37,8 +37,7 @@ RT_C_DECLS_BEGIN
 /** @name Base HGSMI host command APIs.
  * @{ */
 
-DECLHIDDEN(void)     VBoxHGSMIHostCmdComplete(PHGSMIHOSTCOMMANDCONTEXT pCtx,
-                                              void *pvMem);
+DECLHIDDEN(void)     VBoxHGSMIHostCmdComplete(PHGSMIHOSTCOMMANDCONTEXT pCtx, void RT_UNTRUSTED_VOLATILE_HOST *pvMem);
 DECLHIDDEN(void)     VBoxHGSMIProcessHostQueue(PHGSMIHOSTCOMMANDCONTEXT pCtx);
 
 /** @}  */

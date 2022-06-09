@@ -1,4 +1,4 @@
-/* $Id: HGSMIMemAlloc.h 69346 2017-10-26 13:36:28Z vboxsync $ */
+/* $Id: HGSMIMemAlloc.h 71590 2018-03-31 18:34:28Z vboxsync $ */
 /*
  * Copyright (C) 2017 Oracle Corporation
  *
@@ -47,12 +47,12 @@ typedef struct HGSMIMADATA
 RT_C_DECLS_BEGIN
 
 int HGSMIMAInit(HGSMIMADATA *pMA, const HGSMIAREA *pArea,
-                HGSMIOFFSET *paDescriptors, uint32_t cDescriptors, HGSMISIZE cbMaxBlock,
-                const HGSMIENV *pEnv);
+                HGSMIOFFSET *paDescriptors, uint32_t cDescriptors,
+                HGSMISIZE cbMaxBlock, const HGSMIENV *pEnv);
 void HGSMIMAUninit(HGSMIMADATA *pMA);
 
-void *HGSMIMAAlloc(HGSMIMADATA *pMA, HGSMISIZE cb);
-void HGSMIMAFree(HGSMIMADATA *pMA, void *pv);
+void RT_UNTRUSTED_VOLATILE_GUEST *HGSMIMAAlloc(HGSMIMADATA *pMA, HGSMISIZE cb);
+void HGSMIMAFree(HGSMIMADATA *pMA, void RT_UNTRUSTED_VOLATILE_GUEST *pv);
 
 RT_C_DECLS_END
 

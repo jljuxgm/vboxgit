@@ -1,4 +1,4 @@
-/* $Id: HGSMIMemAlloc.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: HGSMIMemAlloc.h 71590 2018-03-31 18:34:28Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Memory allocator.
  */
@@ -75,8 +75,8 @@ int HGSMIMAInit(HGSMIMADATA *pMA, const HGSMIAREA *pArea,
                 const HGSMIENV *pEnv);
 void HGSMIMAUninit(HGSMIMADATA *pMA);
 
-void *HGSMIMAAlloc(HGSMIMADATA *pMA, HGSMISIZE cb);
-void HGSMIMAFree(HGSMIMADATA *pMA, void *pv);
+void RT_UNTRUSTED_VOLATILE_HSTGST *HGSMIMAAlloc(HGSMIMADATA *pMA, HGSMISIZE cb);
+void HGSMIMAFree(HGSMIMADATA *pMA, void RT_UNTRUSTED_VOLATILE_GUEST *pv);
 
 HGSMIMABLOCK *HGSMIMASearchOffset(HGSMIMADATA *pMA, HGSMIOFFSET off);
 

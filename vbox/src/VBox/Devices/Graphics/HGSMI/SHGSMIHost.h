@@ -1,4 +1,4 @@
-/* $Id: SHGSMIHost.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SHGSMIHost.h 71590 2018-03-31 18:34:28Z vboxsync $ */
 /** @file
  * Missing description
  */
@@ -20,9 +20,8 @@
 
 #include "HGSMIHost.h"
 
-int VBoxSHGSMICommandComplete (PHGSMIINSTANCE pIns, void *pvData);
-
-void VBoxSHGSMICommandMarkAsynchCompletion (void *pvData);
+int  VBoxSHGSMICommandComplete(PHGSMIINSTANCE pIns, void RT_UNTRUSTED_VOLATILE_GUEST *pvData);
+void VBoxSHGSMICommandMarkAsynchCompletion(void RT_UNTRUSTED_VOLATILE_GUEST *pvData);
 
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.cpp 69309 2017-10-25 13:55:39Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 71590 2018-03-31 18:34:28Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI guest-to-host communication.
  */
@@ -59,11 +59,11 @@ DECLHIDDEN(bool) VBoxHGSMIIsSupported(void)
  */
 DECLHIDDEN(int) VBoxHGSMIReportFlagsLocation(PHGSMIGUESTCOMMANDCONTEXT pCtx, HGSMIOFFSET offLocation)
 {
-    HGSMIBUFFERLOCATION *p;
 
     /* Allocate the IO buffer. */
-    p = (HGSMIBUFFERLOCATION *)VBoxHGSMIBufferAlloc(pCtx, sizeof(*p), HGSMI_CH_HGSMI,
-                                                    HGSMI_CC_HOST_FLAGS_LOCATION);
+    HGSMIBUFFERLOCATION RT_UNTRUSTED_VOLATILE_HOST *p =
+        (HGSMIBUFFERLOCATION RT_UNTRUSTED_VOLATILE_HOST *)VBoxHGSMIBufferAlloc(pCtx, sizeof(*p), HGSMI_CH_HGSMI,
+                                                                               HGSMI_CC_HOST_FLAGS_LOCATION);
     if (!p)
         return VERR_NO_MEMORY;
 
@@ -89,10 +89,10 @@ DECLHIDDEN(int) VBoxHGSMIReportFlagsLocation(PHGSMIGUESTCOMMANDCONTEXT pCtx, HGS
  */
 DECLHIDDEN(int) VBoxHGSMISendCapsInfo(PHGSMIGUESTCOMMANDCONTEXT pCtx, uint32_t fCaps)
 {
-    VBVACAPS *p;
 
     /* Allocate the IO buffer. */
-    p = (VBVACAPS *)VBoxHGSMIBufferAlloc(pCtx, sizeof(*p), HGSMI_CH_VBVA, VBVA_INFO_CAPS);
+    VBVACAPS RT_UNTRUSTED_VOLATILE_HOST *p =
+        (VBVACAPS RT_UNTRUSTED_VOLATILE_HOST *)VBoxHGSMIBufferAlloc(pCtx, sizeof(*p), HGSMI_CH_VBVA, VBVA_INFO_CAPS);
 
     if (!p)
         return VERR_NO_MEMORY;
