@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 69671 2017-11-13 12:07:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2595,16 +2595,16 @@ QRect UIExtraDataManager::selectorWindowGeometry(QWidget *pWidget)
     }
     while (0);
 
+    /* Get available-geometry [of screen with point (iX, iY) if possible]: */
+    const QRect availableGeometry = fOk ? gpDesktop->availableGeometry(QPoint(iX, iY)) :
+                                          gpDesktop->availableGeometry();
+
     /* Use geometry (loaded or default): */
-    QRect geometry = fOk ? QRect(iX, iY, iW, iH) : QRect(0, 0, 770, 550);
+    QRect geometry = fOk ? QRect(iX, iY, iW, iH) : QRect(QPoint(0, 0), availableGeometry.size() * .50 /* % */);
 
     /* Take hint-widget into account: */
     if (pWidget)
         geometry.setSize(geometry.size().expandedTo(pWidget->minimumSizeHint()));
-
-    /* Get available-geometry [of screen with point (iX, iY) if possible]: */
-    const QRect availableGeometry = fOk ? gpDesktop->availableGeometry(QPoint(iX, iY)) :
-                                          gpDesktop->availableGeometry();
 
     /* In Windows Qt fails to reposition out of screen window properly, so doing it ourselves: */
 #ifdef VBOX_WS_WIN
