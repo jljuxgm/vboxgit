@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 70277 2017-12-21 13:53:54Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 70285 2017-12-21 15:30:27Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -923,20 +923,6 @@ static int usbLibDevGetDevices(PUSBDEVICE *ppDevs, uint32_t *pcDevs)
     }
     return VINF_SUCCESS;
 }
-
-#if 0 /* unused */
-static PUSBSUP_GET_DEVICES usbLibMonGetDevRqAlloc(uint32_t cDevs, PDWORD pcbRq)
-{
-    DWORD cbRq = RT_OFFSETOF(USBSUP_GET_DEVICES, aDevices[cDevs]);
-    PUSBSUP_GET_DEVICES pRq = (PUSBSUP_GET_DEVICES)RTMemAllocZ(cbRq);
-    Assert(pRq);
-    if (!pRq)
-        return NULL;
-    pRq->cDevices = cDevs;
-    *pcbRq = cbRq;
-    return pRq;
-}
-#endif
 
 static int usbLibMonDevicesCmp(PUSBDEVICE pDev, PVBOXUSB_DEV pDevInfo)
 {
