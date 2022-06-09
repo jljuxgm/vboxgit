@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 65843 2017-02-22 19:23:56Z vboxsync $
+// $Id: vbox.dsl 68542 2017-08-30 07:40:17Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -1617,6 +1617,22 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "VBOX  ", "VBOXBIOS", 2)
                 }
 
                 Return (CRS)
+            }
+
+            Method (_OSC, 4)
+            {
+                If (LEqual (Arg0, ToUUID("33db4d5b-1ff7-401c-9657-7441c03dd766")))
+                {
+                    // OS controls everything.
+                    Return (Arg3)
+                }
+                Else
+                {
+                    // UUID not known
+                    CreateDWordField(Arg3, 0, CDW1)
+                    Or(CDW1, 4, CDW1)
+                    Return (Arg3)
+                }
             }
         }
     }
