@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: CPUM.cpp 71189 2018-03-05 06:15:13Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -794,7 +794,7 @@ static int cpumR3AllocSvmHwVirtState(PVM pVM)
     Assert(pVM->cpum.ro.GuestFeatures.fSvm);
 
     int rc = VINF_SUCCESS;
-    LogRel(("CPUM: Allocating a total of %u pages for the nested-guest SVM MSR and IO permission bitmaps\n",
+    LogRel(("CPUM: Allocating %u pages for the nested-guest SVM MSR and IO permission bitmaps\n",
             pVM->cCpus * (SVM_MSRPM_PAGES + SVM_IOPM_PAGES)));
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
