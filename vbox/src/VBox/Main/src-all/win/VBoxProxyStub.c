@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 69867 2017-11-28 19:27:43Z vboxsync $ */
+/* $Id: VBoxProxyStub.c 70106 2017-12-13 11:47:28Z vboxsync $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -584,7 +584,7 @@ static LSTATUS vbpsRegOpenInterfaceKeys(VBPSREGSTATE *pState)
                                &pState->aAltDeletes[i].hkeyInterface);
             if (rc != ERROR_SUCCESS)
             {
-                AssertMsgStmt(rc == ERROR_FILE_NOT_FOUND || ERROR_ACCESS_DENIED, ("%u\n", rc), pState->rc = rc);
+                AssertMsgStmt(rc == ERROR_FILE_NOT_FOUND || rc == ERROR_ACCESS_DENIED, ("%u\n", rc), pState->rc = rc);
                 pState->aAltDeletes[i].hkeyInterface = NULL;
             }
         }
