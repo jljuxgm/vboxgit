@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 67476 2017-06-19 13:41:19Z vboxsync $ */
+/* $Id: DevVGA.cpp 67477 2017-06-19 14:06:11Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2618,11 +2618,6 @@ static int vga_draw_blank(PVGASTATE pThis, bool full_update, bool fFailOnResize,
     }
     pDrv->pfnUpdateRect(pDrv, 0, 0, pThis->last_scr_width, pThis->last_scr_height);
     return VINF_SUCCESS;
-}
-
-static DECLCALLBACK(void) voidUpdateRect(PPDMIDISPLAYCONNECTOR pInterface, uint32_t x, uint32_t y, uint32_t cx, uint32_t cy)
-{
-    NOREF(pInterface); NOREF(x); NOREF(y); NOREF(cx); NOREF(cy);
 }
 
 
