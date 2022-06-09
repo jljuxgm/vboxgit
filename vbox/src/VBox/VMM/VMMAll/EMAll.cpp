@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 72569 2018-06-15 19:04:01Z vboxsync $ */
+/* $Id: EMAll.cpp 72570 2018-06-15 20:09:14Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -446,7 +446,7 @@ VMM_INT_DECL(VBOXSTRICTRC) EMHistoryExec(PVMCPU pVCpu, PCEMEXITREC pExitRec, uin
          */
         case EMEXITACTION_EXEC_PROBE:
         {
-            LogFlow(("EMHistoryExec/EXEC_PROBE: %RX64, max %u\n", pExitRec->uFlatPC));
+            LogFlow(("EMHistoryExec/EXEC_PROBE: %RX64\n", pExitRec->uFlatPC));
             PEMEXITREC   pExitRecUnconst = (PEMEXITREC)pExitRec;
             VBOXSTRICTRC rcStrict = IEMExecForExits(pVCpu, fWillExit,
                                                     64 /*cMinInstructions*/,
