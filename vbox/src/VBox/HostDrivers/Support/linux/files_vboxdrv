@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 67295 2017-06-08 12:05:32Z vboxsync $
+# $Id: files_vboxdrv 68682 2017-09-06 14:54:29Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -91,6 +91,8 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrvIOC.h=>SUPDrvIOC.h \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrvInternal.h=>SUPDrvInternal.h \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPLibAll.cpp=>SUPLibAll.c \
+    ${PATH_ROOT}/src/VBox/Installer/linux/Makefile.include.footer=>Makefile.include.footer \
+    ${PATH_ROOT}/src/VBox/Installer/linux/Makefile.include.header=>Makefile.include.header \
     ${PATH_ROOT}/src/VBox/Runtime/common/alloc/alloc.cpp=>common/alloc/alloc.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/alloc/heapsimple.cpp=>common/alloc/heapsimple.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/checksum/crc32.cpp=>common/checksum/crc32.c \
