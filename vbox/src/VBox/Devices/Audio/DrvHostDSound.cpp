@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 70928 2018-02-09 10:44:14Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 70957 2018-02-10 23:46:54Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -2526,6 +2526,7 @@ static DECLCALLBACK(int) drvHostDSoundSetCallback(PPDMIHOSTAUDIO pInterface, PFN
 }
 #endif
 
+
 /*********************************************************************************************************************************
 *   PDMDRVINS::IBase Interface                                                                                                   *
 *********************************************************************************************************************************/
@@ -2542,6 +2543,7 @@ static DECLCALLBACK(void *) drvHostDSoundQueryInterface(PPDMIBASE pInterface, co
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIHOSTAUDIO, &pThis->IHostAudio);
     return NULL;
 }
+
 
 /*********************************************************************************************************************************
 *   PDMDRVREG Interface                                                                                                          *
