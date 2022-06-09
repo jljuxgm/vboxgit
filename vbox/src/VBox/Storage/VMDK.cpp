@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 69036 2017-10-11 10:18:22Z vboxsync $ */
+/* $Id: VMDK.cpp 69037 2017-10-11 10:21:20Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5646,7 +5646,7 @@ static DECLCALLBACK(int) vmdkRename(void *pBackendData, const char *pszFilename)
     /* Check arguments. */
     AssertReturn((   pImage
                   && VALID_PTR(pszFilename)
-                  && *pszFilename),
+                  && *pszFilename
                   && !(pImage->uImageFlags & VD_VMDK_IMAGE_FLAGS_RAWDISK)), VERR_INVALID_PARAMETER);
 
     int rc = vmdkRenameStatePrepare(pImage, &RenameState, pszFilename);
