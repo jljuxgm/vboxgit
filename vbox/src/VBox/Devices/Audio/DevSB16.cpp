@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
+/* $Id: DevSB16.cpp 69288 2017-10-25 11:32:21Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -78,6 +78,7 @@
 #define IO_WRITE_PROTO(name)                                            \
     DECLCALLBACK(int) name (PPDMDEVINS pDevIns, void *opaque,       \
                             RTIOPORT nport, uint32_t val, unsigned cb)
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
