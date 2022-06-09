@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 63668 2016-08-31 01:34:59Z vboxsync $ */
+/* $Id: tcp_subr.c 68444 2017-08-17 13:05:10Z vboxsync $ */
 /** @file
  * NAT - TCP support.
  */
@@ -416,6 +416,21 @@ int tcp_fconnect(PNATState pData, struct socket *so)
         setsockopt(s, SOL_SOCKET, SO_REUSEADDR, (char *)&opt, sizeof(opt));
         opt = 1;
         setsockopt(s, SOL_SOCKET, SO_OOBINLINE, (char *)&opt, sizeof(opt));
+
+        if (pData->bindIP.s_addr != INADDR_ANY)
+        {
+            struct sockaddr_in self;
+            self.sin_family = AF_INET;
+            self.sin_addr = pData->bindIP;
+            self.sin_port = 0;
+
+            ret = bind(s, (struct sockaddr *)&self, sizeof(self));
+            if (ret != 0)
+            {
+                Log2(("NAT: bind(%RTnaipv4): %s\n", pData->bindIP.s_addr, strerror(errno)));
+                return ret;
+            }
+        }
 
         addr.sin_family = AF_INET;
         if ((so->so_faddr.s_addr & RT_H2N_U32(pData->netmask)) == pData->special_addr.s_addr)
