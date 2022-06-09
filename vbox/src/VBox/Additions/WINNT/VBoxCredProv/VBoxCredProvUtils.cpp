@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvUtils.cpp 67772 2017-07-04 11:42:31Z vboxsync $ */
+/* $Id: VBoxCredProvUtils.cpp 67787 2017-07-05 09:51:35Z vboxsync $ */
 /** @file
  * VBoxCredProvUtils - Misc. utility functions for VBoxCredProv.
  */
@@ -21,11 +21,11 @@
 *********************************************************************************************************************************/
 #include <iprt/win/windows.h>
 
+#include <iprt/string.h>
+#include <VBox/log.h>
 #ifdef LOG_ENABLED
 # include <iprt/stream.h>
 #endif
-#include <iprt/string.h>
-#include <VBox/log.h>
 #include <VBox/VBoxGuestLib.h>
 
 
