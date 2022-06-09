@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 69728 2017-11-17 19:30:54Z vboxsync $ */
+/* $Id: VBoxProxyStub.c 69733 2017-11-18 02:05:33Z vboxsync $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -2366,7 +2366,8 @@ static BOOL vbpsInstallWindowsService(const WCHAR *pwszVBoxDir, const WCHAR *pws
                 CloseServiceHandle(hSCM);
             }
             else
-                AssertMsgFailed(("Could not open service %ls: %u\n", pwszServiceName, GetLastError()));
+                AssertMsg(GetLastError() == ERROR_ACCESS_DENIED,
+                          ("Could not open service %ls: %u\n", pwszServiceName, GetLastError()));
         }
         else
             AssertMsgFailed(("Could not open Service Manager: %u\n", GetLastError()));
@@ -2406,11 +2407,13 @@ static BOOL vbpsUninstallWindowsService(const WCHAR *pwszServiceName)
                     AssertMsg(fRet, ("Could not delete service %ls: %u\n", pwszServiceName, GetLastError()));
                 }
                 else
-                    AssertMsgFailed(("Could not stop service %ls: %u (state=%u)\n", pwszServiceName, dwErr, Status.dwCurrentState));
+                    AssertMsg(dwErr == ERROR_ACCESS_DENIED,
+                              ("Could not stop service %ls: %u (state=%u)\n", pwszServiceName, dwErr, Status.dwCurrentState));
                 CloseServiceHandle(hService);
             }
             else
-                AssertMsgFailed(("Could not open service %ls: %u\n", pwszServiceName, GetLastError()));
+                AssertMsg(GetLastError() == ERROR_ACCESS_DENIED,
+                          ("Could not open service %ls: %u\n", pwszServiceName, GetLastError()));
             CloseServiceHandle(hSCM);
         }
         else
