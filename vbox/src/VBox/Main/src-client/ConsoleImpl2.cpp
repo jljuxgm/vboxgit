@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 67055 2017-05-24 09:10:19Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 67219 2017-06-01 17:18:24Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5864,7 +5864,7 @@ int Console::i_configNetwork(const char *pszDevice,
             case NetworkAttachmentType_Generic:
             case NetworkAttachmentType_NATNetwork:
             {
-                if (SUCCEEDED(hrc) && SUCCEEDED(rc))
+                if (SUCCEEDED(hrc) && RT_SUCCESS(rc))
                 {
                     if (fAttachDetach)
                     {
