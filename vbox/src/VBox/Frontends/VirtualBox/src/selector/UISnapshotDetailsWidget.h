@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 67277 2017-06-06 16:39:59Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.h 67306 2017-06-09 08:17:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -153,11 +153,6 @@ private:
 
     /** Holds the 'Options' layout instance. */
     QGridLayout *m_pLayoutOptions;
-
-    /** Holds the taken label instance. */
-    QLabel *m_pLabelTaken;
-    /** Holds the taken text instance. */
-    QLabel *m_pLabelTakenText;
 
     /** Holds the name label instance. */
     QLabel    *m_pLabelName;
