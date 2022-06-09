@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 70688 2018-01-22 19:38:45Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 70689 2018-01-22 19:46:37Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -235,7 +235,7 @@ static DECLCALLBACK(int) vscsiLunSbcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
                 const char *pszProductId = "HARDDISK";
                 const char *pszProductLevel = "1.0";
                 int rcTmp = vscsiLunQueryInqStrings(pVScsiLun, &pszVendorId, &pszProductId, &pszProductLevel);
-                Assert(RT_SUCCESS(rcTmp) || rcTmp == VERR_NOT_FOUND);
+                Assert(RT_SUCCESS(rcTmp) || rcTmp == VERR_NOT_FOUND); RT_NOREF(rcTmp);
 
                 scsiPadStrS(ScsiInquiryReply.achVendorId, pszVendorId, 8);
                 scsiPadStrS(ScsiInquiryReply.achProductId, pszProductId, 16);
