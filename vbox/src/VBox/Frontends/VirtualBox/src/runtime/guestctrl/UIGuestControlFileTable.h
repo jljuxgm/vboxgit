@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 71654 2018-04-04 13:26:06Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.h 71693 2018-04-06 07:43:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -268,7 +268,7 @@ protected:
     static QString   fileTypeString(FileObjectType type);
     void             goIntoDirectory(const QModelIndex &itemIndex);
     /** Follows the path trail, opens directories as it descends */
-    void             goIntoDirectory(const QList<QString> &pathTrail);
+    void             goIntoDirectory(const QStringList &pathTrail);
     /** Goes into directory pointed by the @p item */
     void             goIntoDirectory(UIFileTableItem *item);
     UIFileTableItem* indexData(const QModelIndex &index) const;

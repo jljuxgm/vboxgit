@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 71645 2018-04-04 09:41:07Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 71693 2018-04-06 07:43:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -226,7 +226,7 @@ void UIHostFileTable::goToHomeDirectory()
         return;
 
     QString userHome = UIPathOperations::sanitize(QDir::homePath());
-    QList<QString> pathList = userHome.split(UIPathOperations::delimiter, QString::SkipEmptyParts);
+    QStringList pathList = userHome.split(UIPathOperations::delimiter, QString::SkipEmptyParts);
     goIntoDirectory(pathList);
 }
 
