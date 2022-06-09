@@ -1,4 +1,4 @@
-/* $Id: VBoxService-win.cpp 70171 2017-12-15 22:08:07Z vboxsync $ */
+/* $Id: VBoxService-win.cpp 70173 2017-12-15 23:35:27Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton, Windows Specific Parts.
  */
@@ -19,8 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#undef _WIN32_WINNT           /// REMOVE WHEN VBoxServiceNT IS GONE
-#define _WIN32_WINNT 0x0501   /// REMOVE WHEN VBoxServiceNT IS GONE
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/ldr.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 70171 2017-12-15 22:08:07Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 70173 2017-12-15 23:35:27Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -29,10 +29,6 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #if defined(RT_OS_WINDOWS)
-# ifdef TARGET_NT4
-#  undef _WIN32_WINNT           /// REMOVE WHEN VBoxServiceNT IS GONE
-#  define _WIN32_WINNT 0x0501   /// REMOVE WHEN VBoxServiceNT IS GONE
-# endif
 # include <iprt/win/windows.h>
 # include <psapi.h>
 # include <winternl.h>

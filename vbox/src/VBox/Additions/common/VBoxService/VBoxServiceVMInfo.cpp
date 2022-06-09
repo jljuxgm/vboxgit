@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 70173 2017-12-15 23:35:27Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -52,10 +52,6 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #ifdef RT_OS_WINDOWS
-# ifdef TARGET_NT4 /* HACK ALERT! PMIB_IPSTATS undefined if 0x0400 with newer SDKs. */
-#  undef _WIN32_WINNT
-#  define _WIN32_WINNT 0x0500
-# endif
 # include <iprt/win/winsock2.h>
 # include <iprt/win/iphlpapi.h>
 # include <iprt/win/ws2tcpip.h>
