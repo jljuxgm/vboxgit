@@ -1,4 +1,4 @@
-/* $Id: tracelogreader.cpp 71494 2018-03-24 22:33:30Z vboxsync $ */
+/* $Id: tracelogreader.cpp 71497 2018-03-24 22:51:41Z vboxsync $ */
 /** @file
  * IPRT - Trace log reader.
  */
@@ -1097,7 +1097,7 @@ static DECLCALLBACK(int) rtTraceLogRdrEvtDataRecvd(PRTTRACELOGRDRINT pThis, RTTR
 
 
 /**
- * @copydoc{FNRTTRACELOGRDRSTREAM}
+ * @copydoc FNRTTRACELOGRDRSTREAM
  */
 static DECLCALLBACK(int) rtTraceLogRdrFileStream(void *pvUser, void *pvBuf, size_t cbBuf, size_t *pcbRead,
                                                  RTMSINTERVAL cMsTimeout)
@@ -1109,7 +1109,7 @@ static DECLCALLBACK(int) rtTraceLogRdrFileStream(void *pvUser, void *pvBuf, size
 
 
 /**
- * @copydoc{FNRTTRACELOGSTREAMCLOSE}
+ * @copydoc FNRTTRACELOGSTREAMCLOSE
  */
 static DECLCALLBACK(int) rtTraceLogRdrFileStreamClose(void *pvUser)
 {
