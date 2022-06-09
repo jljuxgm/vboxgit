@@ -1,4 +1,4 @@
-/* $Id: pointer.c 69066 2017-10-12 19:03:30Z vboxsync $ */
+/* $Id: pointer.c 69075 2017-10-13 14:17:38Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver utility functions
  */
@@ -28,7 +28,7 @@
 #include <VBox/VBoxGuestLib.h>
 
 #ifndef PCIACCESS
-# include <xf86Pci.h>
+# include "xf86Pci.h"
 # include <Pci.h>
 #endif
 

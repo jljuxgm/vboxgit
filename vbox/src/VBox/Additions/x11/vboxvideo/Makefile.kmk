@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69061 2017-10-12 14:07:17Z vboxsync $
+# $Id: Makefile.kmk 69075 2017-10-13 14:17:38Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -40,8 +40,6 @@ vboxvideo_xorg_INCS = \
 	$(VBOX_GRAPHICS_INCS)
 vboxvideo_override_INCLUDES = \
     -include $(PATH_ROOT)/src/VBox/Additions/x11/vboxvideo/HGSMIMemAlloc.h
-
-vboxvideo.c_DEPS = $(VBOX_SVN_REV_HEADER)
 
 LIBRARIES += vboxvideo_drv_lib
 

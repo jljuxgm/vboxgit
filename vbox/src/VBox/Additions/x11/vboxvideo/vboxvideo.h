@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.h 69065 2017-10-12 18:48:38Z vboxsync $ */
+/* $Id: vboxvideo.h 69075 2017-10-13 14:17:38Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver
  */
@@ -92,8 +92,6 @@ if (!(expr)) \
     vbvxMsg out; \
     vbvxAbortServer(); \
 }
-
-#define BOOL_STR(a) ((a) ? "TRUE" : "FALSE")
 
 #include <VBoxVideoVBE.h>
 

@@ -1,4 +1,4 @@
-/* $Id: edid.c 69058 2017-10-12 09:48:15Z vboxsync $ */
+/* $Id: edid.c 69075 2017-10-13 14:17:38Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver, EDID construction
@@ -36,9 +36,9 @@
  *    Michael Thayer <michael.thayer@oracle.com>
  */
 
-#include <misc.h>
-#include <xf86DDC.h>
-#include <xf86Crtc.h>
+#include "misc.h"
+#include "xf86DDC.h"
+#include "xf86Crtc.h"
 #include "vboxvideo.h"
 
 enum { EDID_SIZE = 128 };
