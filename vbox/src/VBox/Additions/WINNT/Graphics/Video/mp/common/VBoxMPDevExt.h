@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 71511 2018-03-26 13:14:10Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 71862 2018-04-16 12:49:15Z vboxsync $ */
 /** @file
  * VBox Miniport device extension header
  */
@@ -33,12 +33,6 @@
 extern DWORD g_VBoxDisplayOnly;
 # include "wddm/VBoxMPTypes.h"
 #endif
-
-typedef enum VBOX_HWTYPE
-{
-    VBOX_HWTYPE_CROGL = 0,
-    VBOX_HWTYPE_VMSVGA = 1
-} VBOX_HWTYPE;
 
 #ifdef VBOX_WDDM_MINIPORT
 typedef struct VBOXWDDM_HWRESOURCES
@@ -217,8 +211,8 @@ typedef struct _VBOXMP_DEVEXT
 
    HGSMIAREA areaDisplay;                      /* Entire VRAM chunk for this display device. */
 
-   VBOX_HWTYPE enmHwType;
 #ifdef VBOX_WDDM_MINIPORT
+   VBOXVIDEO_HWTYPE enmHwType;
    VBOXWDDM_HWRESOURCES HwResources;
 #endif
 

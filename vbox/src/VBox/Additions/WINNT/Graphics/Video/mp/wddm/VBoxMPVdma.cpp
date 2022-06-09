@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 71658 2018-04-04 14:14:02Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 71862 2018-04-16 12:49:15Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1181,7 +1181,7 @@ NTSTATUS VBoxVdmaChromiumParameteriCRSubmit(PVBOXMP_DEVEXT pDevExt, uint32_t tar
 
 static NTSTATUS vboxVdmaCrCtlGetDefaultClientId(PVBOXMP_DEVEXT pDevExt, uint32_t *pu32ClienID)
 {
-    if (pDevExt->enmHwType != VBOX_HWTYPE_CROGL)
+    if (pDevExt->enmHwType != VBOXVIDEO_HWTYPE_CROGL)
     {
         /* Should not be called at all in this case. */
         AssertFailed();
@@ -1335,7 +1335,7 @@ static NTSTATUS vboxVdmaProcessVReg(PVBOXMP_DEVEXT pDevExt,
 
 NTSTATUS vboxVdmaTexPresentSetAlloc(PVBOXMP_DEVEXT pDevExt, const VBOXWDDM_ALLOC_DATA *pAllocData)
 {
-    if (pDevExt->enmHwType != VBOX_HWTYPE_CROGL)
+    if (pDevExt->enmHwType != VBOXVIDEO_HWTYPE_CROGL)
     {
         /* Not used in this case. */
         return STATUS_SUCCESS;

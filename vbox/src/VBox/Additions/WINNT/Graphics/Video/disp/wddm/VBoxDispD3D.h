@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 70052 2017-12-10 22:10:01Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 71862 2018-04-16 12:49:15Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -75,6 +75,9 @@ typedef struct VBOXWDDMDISP_ADAPTER
     UINT uIfVersion;
     UINT uRtVersion;
     D3DDDI_ADAPTERCALLBACKS RtCallbacks;
+
+    VBOXVIDEO_HWTYPE enmHwType;     /* VBOXVIDEO_HWTYPE* */
+
     VBOXWDDMDISP_D3D D3D;
     VBOXWDDMDISP_FORMATS Formats;
     uint32_t u32VBox3DCaps;
