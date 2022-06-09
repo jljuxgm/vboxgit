@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 70251 2017-12-20 18:34:18Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 70295 2017-12-21 17:29:02Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  */
@@ -699,9 +699,6 @@ bool hdaTimerSet(PHDASTATE pThis, uint64_t tsExpire, bool fForce)
         for (uint8_t i = 0; i < HDA_MAX_STREAMS; i++)
         {
             PHDASTREAM pStream = &pThis->aStreams[i];
-
-            if (!pStream->State.fRunning)
-                continue;
 
             if (hdaStreamTransferIsScheduled(pStream))
                 tsExpireMin = RT_MIN(tsExpireMin, hdaStreamTransferGetNext(pStream));
