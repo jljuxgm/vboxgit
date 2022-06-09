@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 69983 2017-12-07 14:55:58Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 70011 2017-12-08 11:32:02Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -719,12 +719,12 @@ static struct cfdata cfdata_ioconf_vboxguest[] = {
 };
 
 static struct cfattach * const vboxguest_cfattachinit[] = {
-	&vboxguest_ca, NULL
+    &vboxguest_ca, NULL
 };
 
 static const struct cfattachinit cfattach_ioconf_vboxguest[] = {
-	{ "vboxguest", vboxguest_cfattachinit },
-	{ NULL, NULL }
+    { "vboxguest", vboxguest_cfattachinit },
+    { NULL, NULL }
 };
 
 static int
