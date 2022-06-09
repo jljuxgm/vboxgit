@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 70906 2018-02-08 10:43:56Z vboxsync $ */
+/* $Id: DrvAudio.cpp 70907 2018-02-08 10:49:54Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -143,7 +143,7 @@ static const char *drvAudioGetConfStr(PCFGMNODE pCfgHandle, const char *pszKey,
  *
  * @returns Stringified stream status flags. Must be free'd with RTStrFree().
  *          "NONE" if no flags set.
- * @param   fFlags              Stream status flags to convert.
+ * @param   fStatus             Stream status flags to convert.
  */
 static char *dbgAudioStreamStatusToStr(PDMAUDIOSTREAMSTS fStatus)
 {
