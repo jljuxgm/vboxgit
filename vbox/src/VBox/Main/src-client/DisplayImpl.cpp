@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 68852 2017-09-25 13:01:11Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 68856 2017-09-25 14:00:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4546,11 +4546,12 @@ DECLCALLBACK(int) Display::i_drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
 
     if (fEnabled)
     {
-        rc = pDisplay->i_videoCaptureInvalidate();
-        if (RT_SUCCESS(rc))
+        int rc2 = pDisplay->i_videoCaptureInvalidate();
+        if (RT_SUCCESS(rc2))
         {
-            rc = pDisplay->i_videoCaptureStart();
-            fireVideoCaptureChangedEvent(pDisplay->mParent->i_getEventSource());
+            rc2 = pDisplay->i_videoCaptureStart();
+            if (RT_SUCCESS(rc2))
+                fireVideoCaptureChangedEvent(pDisplay->mParent->i_getEventSource());
         }
     }
 #endif
