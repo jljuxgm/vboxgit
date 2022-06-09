@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 68228 2017-08-02 09:12:27Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 68438 2017-08-17 11:11:32Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2631,7 +2631,7 @@ VMM_INT_DECL(uint8_t) CPUMGetSvmNstGstInterrupt(PCCPUMCTX pCtx)
  */
 VMM_INT_DECL(void) CPUMSvmVmExitRestoreHostState(PCPUMCTX pCtx)
 {
-   /*
+    /*
      * Reload the guest's "host state".
      */
     PSVMHOSTSTATE pHostState = &pCtx->hwvirt.svm.HostState;
