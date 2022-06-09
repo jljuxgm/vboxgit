@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 70074 2017-12-12 09:26:08Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 70139 2017-12-15 10:59:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIManagerDialog class implementation.
  */
@@ -107,6 +107,9 @@ void QIManagerDialog::prepare()
 
     /* Center according requested widget: */
     VBoxGlobal::centerWidget(this, pCenterWidget, false);
+
+    /* Load the dialog's settings from extradata */
+    loadSettings();
 }
 
 void QIManagerDialog::prepareCentralWidget()
@@ -210,6 +213,7 @@ void QIManagerDialog::cleanupMenuBar()
 
 void QIManagerDialog::cleanup()
 {
+    saveSettings();
     /* Cleanup menu-bar: */
     cleanupMenuBar();
 }
@@ -220,5 +224,21 @@ void QIManagerDialog::closeEvent(QCloseEvent *pEvent)
     pEvent->ignore();
     /* But tell the listener to close us: */
     emit sigClose();
+}
+
+void QIManagerDialog::setDialogGeometry(const QRect &geometry)
+{
+#ifdef VBOX_WS_MAC
+    /* Use the old approach for OSX: */
+    move(geometry.topLeft());
+    resize(geometry.size());
+#else /* VBOX_WS_MAC */
+    /* Use the new approach for Windows/X11: */
+    VBoxGlobal::setTopLevelGeometry(this, geometry);
+#endif /* !VBOX_WS_MAC */
+
+    /* Maximize (if necessary): */
+    if (shouldBeMaximized())
+        showMaximized();
 }
 

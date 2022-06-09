@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 70098 2017-12-13 08:53:52Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 70139 2017-12-15 10:59:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -57,7 +57,7 @@ public:
     /** Destructs the VM Log-Viewer. */
     ~UIVMLogViewerWidget();
     /* Returns the width of the current log page. return 0 if there is no current log page: */
-    int currentLogPagewidth() const;
+    int defaultLogPageWidth() const;
 
     /** Returns the menu. */
     QMenu *menu() const { return m_pMenu; }

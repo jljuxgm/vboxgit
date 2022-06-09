@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 69877 2017-11-30 09:54:19Z vboxsync $ */
+/* $Id: QIManagerDialog.h 70139 2017-12-15 10:59:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIManagerDialog class declaration.
  */
@@ -123,6 +123,8 @@ protected:
         /** Performs final preparations.
           * @note Injected into prepare(), reimplement to postprocess all there. */
         virtual void finalize() {}
+        /** Loads dialog setting such as geometry from extradata. */
+        virtual void loadSettings() {}
 
         /** Cleanup menu-bar.
           * @note Injected into cleanup(), normally you don't need to reimplement it. */
@@ -130,6 +132,9 @@ protected:
         /** Cleanups all.
           * @note Normally you don't need to reimplement it. */
         void cleanup();
+        /** Saves dialog setting such as geometry into extradata. */
+        virtual void saveSettings() const {}
+
     /** @} */
 
     /** @name Widget stuff.
@@ -149,6 +154,8 @@ protected:
         QIDialogButtonBox *buttonBox() { return m_pButtonBox; }
         /** Returns button of passed @a enmType. */
         QPushButton *button(ButtonType enmType) { return m_buttons.value(enmType); }
+        /** Returns center widget. */
+        QWidget* centerWidget() const { return pCenterWidget; }
     /** @} */
 
     /** @name Event-handling stuff.
@@ -156,6 +163,14 @@ protected:
         /** Handles close @a pEvent. */
         void closeEvent(QCloseEvent *pEvent);
     /** @} */
+
+        /** @name Functions related to geometry restoration.
+         * @{ */
+        /* Sets the position and size of the dialog. */
+        void setDialogGeometry(const QRect &geometry);
+        /** Returns whether the window should be maximized when geometry being restored. */
+        virtual bool shouldBeMaximized() const { return false; }
+        /** @} */
 
 private:
 
