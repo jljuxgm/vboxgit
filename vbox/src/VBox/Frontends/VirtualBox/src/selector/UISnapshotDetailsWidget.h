@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 67312 2017-06-09 09:53:27Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.h 67375 2017-06-13 14:57:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -36,6 +36,7 @@ class QScrollArea;
 class QStackedLayout;
 class QTabWidget;
 class QTextEdit;
+class QVBoxLayout;
 class QWidget;
 class UISnapshotDetailsElement;
 
@@ -168,7 +169,7 @@ private:
     QTextEdit *m_pBrowserDescription;
 
     /** Holds the 'Details' layout instance. */
-    QGridLayout *m_pLayoutDetails;
+    QVBoxLayout *m_pLayoutDetails;
 
     /** Holds the details scroll-area instance. */
     QScrollArea *m_pScrollAreaDetails;
