@@ -1,4 +1,4 @@
-/* $Id: service.cpp 65102 2017-01-04 12:08:05Z vboxsync $ */
+/* $Id: service.cpp 68524 2017-08-24 18:39:12Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -684,7 +684,7 @@ typedef struct ClientState
         LogFlowFunc(("[Client %RU32] Tried pHostCmd=%p for %RU32 times, (last result=%Rrc, fRemove=%RTbool)\n",
                      mID, pHostCmd, mHostCmdTries, mHostCmdRc, fRemove));
 
-        if (RT_SUCCESS(rc))
+        if (RT_SUCCESS(rc)) /** @todo r=bird: confusing statement+state, rc hasn't been touched since the top and is always VINF_SUCCESS. */
             rc = mHostCmdRc;
 
         if (fRemove)
