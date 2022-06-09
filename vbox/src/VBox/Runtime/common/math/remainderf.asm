@@ -1,4 +1,4 @@
-; $Id: remainderf.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: remainderf.asm 69219 2017-10-24 15:01:30Z vboxsync $
 ;; @file
 ; IPRT - No-CRT remainderf - AMD64 & X86.
 ;
@@ -63,5 +63,4 @@ BEGINPROC RT_NOCRT(remainderf)
     leave
     ret
 ENDPROC   RT_NOCRT(remainderf)
-
 

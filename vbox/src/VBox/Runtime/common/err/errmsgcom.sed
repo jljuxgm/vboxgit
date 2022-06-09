@@ -1,8 +1,9 @@
-# $Id: errmsgcom.sed 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: errmsgcom.sed 69219 2017-10-24 15:01:30Z vboxsync $
 ## @file
 # IPRT - SED script for converting COM errors
 #
 
+#
 # Copyright (C) 2006-2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as

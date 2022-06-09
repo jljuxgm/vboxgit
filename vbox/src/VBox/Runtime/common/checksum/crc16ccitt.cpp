@@ -1,4 +1,4 @@
-/* $Id: crc16ccitt.cpp 68884 2017-09-27 10:28:56Z vboxsync $ */
+/* $Id: crc16ccitt.cpp 69219 2017-10-24 15:01:30Z vboxsync $ */
 /** @file
  * IPRT - CRC-16-CCITT.
  */
@@ -23,6 +23,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -104,5 +105,4 @@ RTDECL(uint16_t)    RTCrc16CcittFinish(uint16_t uCrc)
 {
     return uCrc;
 }
-
 

@@ -1,4 +1,4 @@
-; $Id: ASMMultU64ByU32DivByU32.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: ASMMultU64ByU32DivByU32.asm 69219 2017-10-24 15:01:30Z vboxsync $
 ;; @file
 ; IPRT - Assembly Functions, ASMMultU64ByU32DivByU32.
 ;
@@ -99,5 +99,4 @@ BEGINPROC_EXPORTED ASMMultU64ByU32DivByU32
 %endif
     ret
 ENDPROC ASMMultU64ByU32DivByU32
-
 

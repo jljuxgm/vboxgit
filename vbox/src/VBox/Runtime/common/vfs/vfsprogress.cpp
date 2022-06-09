@@ -1,4 +1,4 @@
-/* $Id: vfsprogress.cpp 67229 2017-06-02 11:18:28Z vboxsync $ */
+/* $Id: vfsprogress.cpp 69219 2017-10-24 15:01:30Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, progress filter for files.
  */
@@ -516,5 +516,4 @@ RTDECL(int) RTVfsCreateProgressForFile(RTVFSFILE hVfsFile, PFNRTPROGRESS pfnProg
     }
     return rc;
 }
-
 

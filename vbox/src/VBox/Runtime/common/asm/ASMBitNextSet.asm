@@ -1,4 +1,4 @@
-; $Id: ASMBitNextSet.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: ASMBitNextSet.asm 69219 2017-10-24 15:01:30Z vboxsync $
 ;; @file
 ; IPRT - ASMBitNextSet().
 ;
@@ -170,5 +170,4 @@ BEGINPROC_EXPORTED ASMBitNextSet
         mov     eax, 0ffffffffh
         jmp     .return
 ENDPROC ASMBitNextSet
-
 
