@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsOneByte.cpp.h 71834 2018-04-12 07:21:00Z vboxsync $ */
+/* $Id: IEMAllInstructionsOneByte.cpp.h 72180 2018-05-09 18:20:20Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -6998,8 +6998,6 @@ FNIEMOP_DEF(iemOp_aad_Ib)
 FNIEMOP_DEF(iemOp_salc)
 {
     IEMOP_MNEMONIC(salc, "salc");
-    IEMOP_HLP_MIN_286(); /* (undocument at the time) */
-    uint8_t bImm; IEM_OPCODE_GET_NEXT_U8(&bImm);
     IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
     IEMOP_HLP_NO_64BIT();
 
