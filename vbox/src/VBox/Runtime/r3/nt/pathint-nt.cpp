@@ -1,4 +1,4 @@
-/* $Id: pathint-nt.cpp 64640 2016-11-10 15:27:09Z vboxsync $ */
+/* $Id: pathint-nt.cpp 67963 2017-07-14 12:43:28Z vboxsync $ */
 /** @file
  * IPRT - Native NT, Internal Path stuff.
  */
@@ -349,9 +349,28 @@ RTDECL(int) RTNtPathFromWinUtf16Ex(struct _UNICODE_STRING *pNtName, HANDLE *phRo
     if (RT_SUCCESS(rc))
     {
         /*
-         * Add prefix and convert it to UTF16.
+         * Add prefix
          */
         memcpy(szAbsPath, pszPrefix, cchPrefix);
+
+        /*
+         * Remove trailing '.' that is used to specify no extension in the Win32/DOS world.
+         */
+        size_t cchAbsPath = strlen(szAbsPath);
+        if (   cchAbsPath > 2
+            && szAbsPath[cchAbsPath - 1] == '.')
+        {
+            char const ch = szAbsPath[cchAbsPath - 2];
+            if (   ch != '/'
+                && ch != '\\'
+                && ch != ':'
+                && ch != '.')
+                szAbsPath[--cchAbsPath] = '\0';
+        }
+
+        /*
+         * Finally convert to UNICODE_STRING.
+         */
         return rtNtPathUtf8ToUniStr(pNtName, phRootDir, szAbsPath);
     }
     return rc;
