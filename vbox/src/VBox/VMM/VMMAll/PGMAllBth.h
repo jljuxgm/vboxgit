@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 66651 2017-04-22 09:29:38Z vboxsync $ */
+/* $Id: PGMAllBth.h 68783 2017-09-18 10:45:19Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1182,7 +1182,7 @@ rc=0
 
 # else  /* Nested paging, EPT except PGM_GST_TYPE = PROT   */
     NOREF(uErr); NOREF(pRegFrame); NOREF(pvFault);
-    AssertReleaseMsgFailed(("Shw=%d Gst=%d is not implemented!\n", PGM_GST_TYPE, PGM_SHW_TYPE));
+    AssertReleaseMsgFailed(("Shw=%d Gst=%d is not implemented!\n", PGM_SHW_TYPE, PGM_GST_TYPE));
     return VERR_PGM_NOT_USED_IN_MODE;
 # endif
 }
