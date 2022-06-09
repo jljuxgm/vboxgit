@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibMouse.cpp 68645 2017-09-05 14:17:02Z vboxsync $ */
+/* $Id: VBoxGuestR0LibMouse.cpp 68653 2017-09-05 14:53:44Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Mouse Integration.
  */
@@ -24,7 +24,14 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "VBoxGuestR0LibInternal.h"
+#ifdef VBGL_VBOXGUEST
+# error "This file shouldn't be part of the VBoxGuestR0LibBase library that is linked into VBoxGuest.  It's client code."
+#endif
+
 
 /**
  * Sets the function which is called back on each mouse pointer event.  Only

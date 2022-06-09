@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibCrOgl.cpp 68645 2017-09-05 14:17:02Z vboxsync $ */
+/* $Id: VBoxGuestR0LibCrOgl.cpp 68653 2017-09-05 14:53:44Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-3 Support Library for VirtualBox guest additions, Chromium OpenGL Service.
  */
@@ -24,16 +24,16 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/* Entire file is ifdef'ed with !VBGL_VBOXGUEST */
-#ifdef VBGL_VBOXGUEST
-# error "VBGL_VBOXGUEST should not be defined"
-#endif
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/string.h>
 #include "VBoxGuestR0LibInternal.h"
+
+#ifdef VBGL_VBOXGUEST
+# error "This file shouldn't be part of the VBoxGuestR0LibBase library that is linked into VBoxGuest.  It's client code."
+#endif
 
 
 DECLVBGL(int) VbglR0CrCtlCreate(VBGLCRCTLHANDLE *phCtl)

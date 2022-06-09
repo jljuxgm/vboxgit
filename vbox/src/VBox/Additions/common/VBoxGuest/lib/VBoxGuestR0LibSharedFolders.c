@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.c 68555 2017-08-31 12:09:56Z vboxsync $ */
+/* $Id: VBoxGuestR0LibSharedFolders.c 68653 2017-09-05 14:53:44Z vboxsync $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -24,10 +24,6 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/* Entire file is ifdef'ed with !VBGL_VBOXGUEST */
-#ifndef VBGL_VBOXGUEST
-
-
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
@@ -38,6 +34,10 @@
 #include <iprt/mem.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
+
+#ifdef VBGL_VBOXGUEST
+# error "This file shouldn't be part of the VBoxGuestR0LibBase library that is linked into VBoxGuest.  It's client code."
+#endif
 
 
 /*********************************************************************************************************************************
@@ -703,5 +703,3 @@ DECLVBGL(int) VbglR0SfSetSymlinks(PVBGLSFCLIENT pClient)
     return rc;
 }
 
-
-#endif /* !VBGL_VBOXGUEST */

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibHGCM.cpp 68645 2017-09-05 14:17:02Z vboxsync $ */
+/* $Id: VBoxGuestR0LibHGCM.cpp 68653 2017-09-05 14:53:44Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager, ring-0 client drivers.
  *
@@ -30,15 +30,20 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-/* Entire file is ifdef'ed with !VBGL_VBOXGUEST */
-#ifndef VBGL_VBOXGUEST
-
 #include "VBoxGuestR0LibInternal.h"
 
 #include <iprt/assert.h>
 #include <iprt/semaphore.h>
 #include <iprt/string.h>
 
+#ifdef VBGL_VBOXGUEST
+# error "This file shouldn't be part of the VBoxGuestR0LibBase library that is linked into VBoxGuest.  It's client code."
+#endif
+
+
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
 #define VBGL_HGCM_ASSERT_MSG AssertReleaseMsg
 
 /*********************************************************************************************************************************
@@ -218,6 +223,4 @@ DECLVBGL(int) VbglR0HGCMCallUserDataRaw(VBGLHGCMHANDLE handle, PVBGLIOCHGCMCALL 
 
     return VbglR0IdcCallRaw(&handle->IdcHandle, VBGL_IOCTL_HGCM_CALL_WITH_USER_DATA(cbData), &pData->Hdr, cbData);
 }
-
-#endif /* !VBGL_VBOXGUEST */
 

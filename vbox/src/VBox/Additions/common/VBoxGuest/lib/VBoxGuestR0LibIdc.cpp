@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibIdc.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxGuestR0LibIdc.cpp 68653 2017-09-05 14:53:44Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC.
  */
@@ -32,6 +32,11 @@
 #include <VBox/err.h>
 #include <VBox/VBoxGuest.h>
 /*#include <iprt/asm.h>*/
+
+#ifdef VBGL_VBOXGUEST
+# error "This file shouldn't be part of the VBoxGuestR0LibBase library that is linked into VBoxGuest.  It's client code."
+#endif
+
 
 
 /*********************************************************************************************************************************
