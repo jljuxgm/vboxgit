@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 71061 2018-02-19 17:03:41Z vboxsync $ */
+/* $Id: DevEFI.cpp 71777 2018-04-09 15:15:14Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1464,6 +1464,7 @@ static DECLCALLBACK(int) efiIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
             /* The readable, buffered version. */
             if (u32 == '\n' || u32 == '\r')
             {
+                Assert(pThis->iMsg < sizeof(pThis->szMsg));
                 pThis->szMsg[pThis->iMsg] = '\0';
                 if (pThis->iMsg)
                     LogRel2(("efi: %s\n", pThis->szMsg));
@@ -1471,13 +1472,13 @@ static DECLCALLBACK(int) efiIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
             }
             else
             {
-                if (pThis->iMsg >= sizeof(pThis->szMsg)-1)
+                if (pThis->iMsg >= sizeof(pThis->szMsg) - 1)
                 {
                     pThis->szMsg[pThis->iMsg] = '\0';
                     LogRel2(("efi: %s\n", pThis->szMsg));
                     pThis->iMsg = 0;
                 }
-                pThis->szMsg[pThis->iMsg] = (char )u32;
+                pThis->szMsg[pThis->iMsg] = (char)u32;
                 pThis->szMsg[++pThis->iMsg] = '\0';
             }
             break;
