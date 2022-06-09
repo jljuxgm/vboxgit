@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxAboutDlg.h 68441 2017-08-17 11:58:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class declaration.
  */
@@ -66,6 +66,9 @@ private:
 
     /** Prepares close-button. */
     void prepareCloseButton();
+
+    /** Holds the pseudo parent reference. */
+    QObject *m_pPseudoParent;
 
     /** Holds the About-VirtualBox text. */
     QString m_strAboutText;
