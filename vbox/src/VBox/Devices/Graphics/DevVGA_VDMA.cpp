@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 70661 2018-01-21 16:26:54Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 71194 2018-03-05 10:34:04Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -1325,11 +1325,14 @@ static int vboxVDMACrCtlPost(PVGASTATE pVGAState, PVBOXVDMACMD_CHROMIUM_CTL pCmd
 
     /* Submit and wait for it. */
     rc = vboxVDMACrCtlPostAsync(pVGAState, pCmd, cbCmd, vboxVDMACrCtlCbSetEvent, pHdr);
-    AssertRC(rc);
     if (RT_SUCCESS(rc))
         rc = RTSemEventWaitNoResume(pHdr->hEvtDone, RT_INDEFINITE_WAIT);
     else
+    {
+        if (rc != VERR_NOT_SUPPORTED)
+            AssertRC(rc);
         vboxVDMACrCtlRelease(pCmd);
+    }
     return rc;
 }
 
