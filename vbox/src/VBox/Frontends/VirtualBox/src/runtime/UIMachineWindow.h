@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 63229 2016-08-09 17:07:59Z vboxsync $ */
+/* $Id: UIMachineWindow.h 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -41,11 +41,6 @@ class UISession;
 class UIMachineLogic;
 class UIMachineView;
 class CSession;
-#ifdef VBOX_WS_X11
-# if QT_VERSION < 0x050000
-typedef union _XEvent XEvent;
-# endif /* QT_VERSION < 0x050000 */
-#endif /* VBOX_WS_X11 */
 
 
 /* Machine-window interface: */
@@ -128,14 +123,6 @@ protected:
 
     /* Translate stuff: */
     void retranslateUi();
-
-    /* Event handlers: */
-#ifdef VBOX_WS_X11
-# if QT_VERSION < 0x050000
-    /** X11: Qt4: Handles all native events. */
-    bool x11Event(XEvent *pEvent);
-# endif /* QT_VERSION < 0x050000 */
-#endif /* VBOX_WS_X11 */
 
     /** Show event handler. */
     void showEvent(QShowEvent *pShowEvent);

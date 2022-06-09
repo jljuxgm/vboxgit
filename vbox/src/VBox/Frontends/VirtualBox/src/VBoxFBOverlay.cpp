@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 65653 2017-02-07 11:48:22Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -3669,11 +3669,7 @@ void VBoxVHWAImage::vboxDoUpdateViewport(const QRect & aRect)
 
     const OverlayList & overlays = mDisplay.overlays();
     QRect overInter = overlaysRectIntersection();
-#if QT_VERSION >= 0x050000
     overInter = overInter.intersected(aRect);
-#else /* QT_VERSION < 0x050000 */
-    overInter = overInter.intersect(aRect);
-#endif /* QT_VERSION < 0x050000 */
 
     bool bDisplayPrimary = true;
 

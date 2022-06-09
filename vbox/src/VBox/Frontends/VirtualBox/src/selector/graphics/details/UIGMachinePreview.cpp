@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 65632 2017-02-06 17:44:06Z vboxsync $ */
+/* $Id: UIGMachinePreview.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGMachinePreview class implementation.
  */
@@ -394,14 +394,12 @@ void UIGMachinePreview::paint(QPainter *pPainter, const QStyleOptionGraphicsItem
         imageRect.moveCenter(m_vRect.center());
 
 #ifdef VBOX_WS_MAC
-# if QT_VERSION >= 0x050000
         /* Set composition-mode to opaque: */
         pPainter->setCompositionMode(QPainter::CompositionMode_Source);
         /* Replace translucent background with black one: */
         pPainter->fillRect(imageRect, QColor(Qt::black));
         /* Return default composition-mode back: */
         pPainter->setCompositionMode(QPainter::CompositionMode_SourceAtop);
-# endif /* QT_VERSION >= 0x050000 */
 #endif /* VBOX_WS_MAC */
 
         /* Draw preview image: */

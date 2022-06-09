@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 65223 2017-01-10 12:41:21Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.mm 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaSpecialControls implementation.
  */
@@ -28,13 +28,11 @@
 #import <AppKit/NSFont.h>
 #import <AppKit/NSImage.h>
 #import <AppKit/NSSegmentedControl.h>
-#if QT_VERSION >= 0x050000
-# import <AppKit/NSEvent.h>
-# import <AppKit/NSColor.h>
-# import <AppKit/NSSearchFieldCell.h>
-# import <AppKit/NSSearchField.h>
-# import <AppKit/NSSegmentedCell.h>
-#endif /* QT_VERSION >= 0x050000 */
+#import <AppKit/NSEvent.h>
+#import <AppKit/NSColor.h>
+#import <AppKit/NSSearchFieldCell.h>
+#import <AppKit/NSSearchField.h>
+#import <AppKit/NSSegmentedCell.h>
 
 /* Qt includes */
 #include <QAccessibleWidget>
@@ -45,14 +43,6 @@
 
 /* Other VBox includes: */
 #include <iprt/assert.h>
-
-#if 0 /* This is a built-in according to clang. Not sure how it relates to QT_VERSION... */
-/* Interface Builder Constant,
- * hmm, where is it declared with Qt4? */
-#if QT_VERSION >= 0x050000
-# define IBAction void
-#endif /* QT_VERSION >= 0x050000 */
-#endif
 
 /* Forward declarations: */
 class UIAccessibilityInterfaceForUICocoaSegmentedButton;

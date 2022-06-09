@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 67535 2017-06-21 10:47:28Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1267,13 +1267,8 @@ void UIMachineLogic::prepareDock()
 
     pDockMenu->addMenu(pDockSettingsMenu);
 
-# if QT_VERSION < 0x050000
-    /* Add it to the dock. */
-    ::darwinSetDockIconMenu(pDockMenu);
-# else /* QT_VERSION >= 0x050000 */
     /* Add it to the dock: */
     pDockMenu->setAsDockMenu();
-# endif /* QT_VERSION >= 0x050000 */
 
     /* Now the dock icon preview: */
     QPixmap pixmap = vboxGlobal().vmUserPixmap(machine(), QSize(42, 42));

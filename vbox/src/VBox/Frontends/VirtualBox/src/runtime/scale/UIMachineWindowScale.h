@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.h 63230 2016-08-09 17:18:44Z vboxsync $ */
+/* $Id: UIMachineWindowScale.h 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class declaration.
  */
@@ -62,12 +62,6 @@ private:
 
     /** Common @a pEvent handler. */
     bool event(QEvent *pEvent);
-#ifdef VBOX_WS_WIN
-# if QT_VERSION < 0x050000
-    /** Qt4: Win: Handles all native messages. */
-    bool winEvent(MSG *pMessage, long *pResult);
-# endif /* QT_VERSION < 0x050000 */
-#endif /* VBOX_WS_WIN */
 
     /** Returns whether this window is maximized. */
     bool isMaximizedChecked();

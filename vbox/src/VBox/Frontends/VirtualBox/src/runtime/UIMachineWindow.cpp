@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 66660 2017-04-24 17:37:48Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -53,13 +53,6 @@
 # endif /* VBOX_BLEEDING_EDGE */
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
-/* External includes: */
-#ifdef VBOX_WS_X11
-# if QT_VERSION < 0x050000
-#  include <X11/Xlib.h>
-# endif /* QT_VERSION < 0x050000 */
-#endif /* VBOX_WS_X11 */
 
 
 /* static */
@@ -251,31 +244,6 @@ void UIMachineWindow::retranslateUi()
     /* Update appearance of the window-title: */
     updateAppearanceOf(UIVisualElement_WindowTitle);
 }
-
-#ifdef VBOX_WS_X11
-# if QT_VERSION < 0x050000
-bool UIMachineWindow::x11Event(XEvent *pEvent)
-{
-    /// @todo Is that really needed?
-    /* Qt bug: when the machine-view grabs the keyboard,
-     * FocusIn, FocusOut, WindowActivate and WindowDeactivate Qt events are
-     * not properly sent on top level window deactivation.
-     * The fix is to substiute the mode in FocusOut X11 event structure
-     * to NotifyNormal to cause Qt to process it as desired. */
-    if (pEvent->type == FocusOut)
-    {
-        if (pEvent->xfocus.mode == NotifyWhileGrabbed  &&
-            (pEvent->xfocus.detail == NotifyAncestor ||
-             pEvent->xfocus.detail == NotifyInferior ||
-             pEvent->xfocus.detail == NotifyNonlinear))
-        {
-             pEvent->xfocus.mode = NotifyNormal;
-        }
-    }
-    return false;
-}
-# endif /* QT_VERSION < 0x050000 */
-#endif /* VBOX_WS_X11 */
 
 void UIMachineWindow::showEvent(QShowEvent *pShowEvent)
 {

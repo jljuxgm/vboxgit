@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 68264 2017-08-03 07:35:33Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -50,11 +50,6 @@
 # include "CConsole.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
-/* Qt includes: */
-#if QT_VERSION < 0x050000
-# include <QWindowsStyle>
-#endif /* QT_VERSION < 0x050000 */
 
 
 /** Snapshot tree column tags. */

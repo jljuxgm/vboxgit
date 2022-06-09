@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 68304 2017-08-04 16:15:21Z vboxsync $ */
+/* $Id: UISelectorWindow.h 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -78,13 +78,13 @@ private slots:
     /** Handles polishing in the async way. */
     void sltHandlePolishEvent();
 
-#if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
-    /** Handles host-screen available-area change. */
-    void sltHandleHostScreenAvailableAreaChange();
-#elif QT_VERSION == 0
+#if QT_VERSION == 0
     /** Stupid moc does not warn if it cannot find headers! */
     void QT_VERSION_NOT_DEFINED
-#endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
+#elif defined(VBOX_WS_X11)
+    /** Handles host-screen available-area change. */
+    void sltHandleHostScreenAvailableAreaChange();
+#endif /* VBOX_WS_X11 */
 
     /** Handles selector-window context-menu call for passed @a position. */
     void sltShowSelectorWindowContextMenu(const QPoint &position);

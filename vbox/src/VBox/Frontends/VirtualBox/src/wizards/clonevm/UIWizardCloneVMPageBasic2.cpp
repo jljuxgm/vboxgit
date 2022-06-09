@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class implementation.
  */
@@ -79,12 +79,6 @@ UIWizardCloneVMPageBasic2::UIWizardCloneVMPageBasic2(bool fAdditionalInfo)
 void UIWizardCloneVMPageBasic2::sltButtonClicked(QAbstractButton *pButton)
 {
     setFinalPage(pButton != m_pFullCloneRadio);
-#if QT_VERSION < 0x040700
-    /* On older Qt versions the content of the current page isn't updated when
-     * using setFinalPage. So switch back and for to simulate it. */
-    wizard()->back();
-    wizard()->next();
-#endif /* QT_VERSION < 0x040700 */
 }
 
 void UIWizardCloneVMPageBasic2::retranslateUi()

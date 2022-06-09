@@ -1,4 +1,4 @@
-/* $Id: UIBootTable.cpp 63322 2016-08-11 11:07:49Z vboxsync $ */
+/* $Id: UIBootTable.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootTable class implementation.
  */
@@ -70,9 +70,6 @@ void UIBootTable::adjustSizeToFitContent()
 {
     int h = 2 * frameWidth();
     int w = h;
-#if QT_VERSION < 0x040700
-    w += 4; // WTF?
-#endif /* QT_VERSION < 0x040700 */
     setFixedSize(sizeHintForColumn(0) + w,
                  sizeHintForRow(0) * count() + h);
 }

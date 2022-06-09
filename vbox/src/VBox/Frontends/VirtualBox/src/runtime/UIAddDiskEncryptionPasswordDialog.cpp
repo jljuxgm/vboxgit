@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 64162 2016-10-06 12:29:30Z vboxsync $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -424,13 +424,8 @@ void UIEncryptionDataTable::prepare()
     verticalHeader()->hide();
     verticalHeader()->setDefaultSectionSize((int)(verticalHeader()->minimumSectionSize() * 1.33));
     horizontalHeader()->setStretchLastSection(false);
-#if QT_VERSION >= 0x050000
     horizontalHeader()->setSectionResizeMode(UIEncryptionDataTableSection_Id, QHeaderView::Interactive);
     horizontalHeader()->setSectionResizeMode(UIEncryptionDataTableSection_Password, QHeaderView::Stretch);
-#else /* QT_VERSION < 0x050000 */
-    horizontalHeader()->setResizeMode(UIEncryptionDataTableSection_Id, QHeaderView::Interactive);
-    horizontalHeader()->setResizeMode(UIEncryptionDataTableSection_Password, QHeaderView::Stretch);
-#endif /* QT_VERSION < 0x050000 */
 }
 
 UIAddDiskEncryptionPasswordDialog::UIAddDiskEncryptionPasswordDialog(QWidget *pParent,

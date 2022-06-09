@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 67942 2017-07-12 15:19:36Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -467,11 +467,11 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
     {
         case QEvent::Resize:
         {
-#if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
+#ifdef VBOX_WS_X11
             /* Prevent handling if fake screen detected: */
             if (gpDesktop->isFakeScreenDetected())
                 break;
-#endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
+#endif /* VBOX_WS_X11 */
 
             QResizeEvent *pResizeEvent = static_cast<QResizeEvent*>(pEvent);
             if (!isMaximizedChecked())
@@ -487,11 +487,11 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
         }
         case QEvent::Move:
         {
-#if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
+#ifdef VBOX_WS_X11
             /* Prevent handling if fake screen detected: */
             if (gpDesktop->isFakeScreenDetected())
                 break;
-#endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
+#endif /* VBOX_WS_X11 */
 
             if (!isMaximizedChecked())
             {
