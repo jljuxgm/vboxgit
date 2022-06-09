@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 68299 2017-08-04 10:35:36Z vboxsync $ */
+/* $Id: UITabBar.cpp 68304 2017-08-04 16:15:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -540,6 +540,14 @@ bool UITabBar::setCurrent(const QUuid &uuid)
 
     /* Return result: */
     return fSuccess;
+}
+
+QList<QUuid> UITabBar::tabOrder() const
+{
+    QList<QUuid> list;
+    foreach (UITabBarItem *pItem, m_aItems)
+        list << pItem->uuid();
+    return list;
 }
 
 void UITabBar::paintEvent(QPaintEvent *pEvent)

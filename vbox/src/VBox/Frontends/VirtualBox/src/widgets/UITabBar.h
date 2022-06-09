@@ -1,4 +1,4 @@
-/* $Id: UITabBar.h 68298 2017-08-04 10:30:55Z vboxsync $ */
+/* $Id: UITabBar.h 68304 2017-08-04 16:15:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class declaration.
  */
@@ -65,6 +65,9 @@ public:
 
     /** Makes tab with passed @a uuid current. */
     bool setCurrent(const QUuid &uuid);
+
+    /** Return tab-bar order ID list. */
+    QList<QUuid> tabOrder() const;
 
 protected:
 

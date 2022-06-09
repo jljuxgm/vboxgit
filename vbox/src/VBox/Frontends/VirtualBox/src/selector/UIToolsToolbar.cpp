@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.cpp 68230 2017-08-02 09:40:44Z vboxsync $ */
+/* $Id: UIToolsToolbar.cpp 68304 2017-08-04 16:15:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class implementation.
  */
@@ -73,6 +73,22 @@ void UIToolsToolbar::setTabBars(UITabBar *pTabBarMachine, UITabBar *pTabBarGloba
 void UIToolsToolbar::setToolButtonStyle(Qt::ToolButtonStyle enmStyle)
 {
     m_pToolBar->setToolButtonStyle(enmStyle);
+}
+
+QList<ToolTypeMachine> UIToolsToolbar::tabOrderMachine() const
+{
+    QList<ToolTypeMachine> list;
+    foreach (const QUuid &uuid, m_pTabBarMachine->tabOrder())
+        list << m_mapTabIdsMachine.key(uuid);
+    return list;
+}
+
+QList<ToolTypeGlobal> UIToolsToolbar::tabOrderGlobal() const
+{
+    QList<ToolTypeGlobal> list;
+    foreach (const QUuid &uuid, m_pTabBarGlobal->tabOrder())
+        list << m_mapTabIdsGlobal.key(uuid);
+    return list;
 }
 
 void UIToolsToolbar::sltHandleOpenToolMachine()

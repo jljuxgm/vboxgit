@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 68282 2017-08-03 11:59:34Z vboxsync $ */
+/* $Id: UISelectorWindow.h 68304 2017-08-04 16:15:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -354,6 +354,11 @@ private:
 
     /** Holds the Tools-toolbar instance. */
     UIToolsToolbar *m_pToolbarTools;
+
+    /** Holds the Machine Tools order. */
+    QList<ToolTypeMachine> m_orderMachine;
+    /** Holds the Global Tools order. */
+    QList<ToolTypeGlobal> m_orderGlobal;
 
     /** Holds the Chooser-pane instance. */
     UIGChooser         *m_pPaneChooser;

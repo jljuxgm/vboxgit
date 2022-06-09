@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 68212 2017-07-31 16:39:22Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 68304 2017-08-04 16:15:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -300,6 +300,16 @@ public:
         bool selectorWindowToolBarTextVisible();
         /** Defines whether selector-window tool-bar text @a fVisible. */
         void setSelectorWindowToolBarTextVisible(bool fVisible);
+
+        /** Returns selector-window machine tools order. */
+        QList<ToolTypeMachine> selectorWindowToolsOrderMachine();
+        /** Defines selector-window machine tools @a aOrder. */
+        void setSelectorWindowToolsOrderMachine(const QList<ToolTypeMachine> &aOrder);
+
+        /** Returns selector-window global tools order. */
+        QList<ToolTypeGlobal> selectorWindowToolsOrderGlobal();
+        /** Defines selector-window global tools @a aOrder. */
+        void setSelectorWindowToolsOrderGlobal(const QList<ToolTypeGlobal> &aOrder);
 
         /** Returns whether selector-window status-bar visible. */
         bool selectorWindowStatusBarVisible();

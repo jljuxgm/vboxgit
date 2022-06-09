@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneGlobal.h 68285 2017-08-03 12:42:45Z vboxsync $ */
+/* $Id: UIToolsPaneGlobal.h 68304 2017-08-04 16:15:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneGlobal class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
+#include "UIExtraDataDefs.h"
 
 /* Forward declarations: */
 class QHBoxLayout;
@@ -34,19 +35,6 @@ class UIHostNetworkManagerWidget;
 class UIMediumManagerWidget;
 class UIVMItem;
 class CMachine;
-
-
-/** Global tool types. */
-enum ToolTypeGlobal
-{
-    ToolTypeGlobal_Invalid,
-    ToolTypeGlobal_Desktop,
-    ToolTypeGlobal_VirtualMedia,
-    ToolTypeGlobal_HostNetwork,
-};
-
-/* Make sure QVariant can eat ToolTypeGlobal: */
-Q_DECLARE_METATYPE(ToolTypeGlobal);
 
 
 /** QWidget subclass representing container for tool panes. */

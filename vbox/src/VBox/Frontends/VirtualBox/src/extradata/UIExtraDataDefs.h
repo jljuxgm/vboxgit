@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 68212 2017-07-31 16:39:22Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 68304 2017-08-04 16:15:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -135,6 +135,10 @@ namespace UIExtraDataDefs
         extern const char* GUI_Toolbar;
         /** Holds whether selector-window tool-bar text visible. */
         extern const char* GUI_Toolbar_Text;
+        /** Holds the selector-window machine tools order. */
+        extern const char* GUI_Toolbar_MachineTools_Order;
+        /** Holds the selector-window global tools order. */
+        extern const char* GUI_Toolbar_GlobalTools_Order;
         /** Holds whether selector-window status-bar visible. */
         extern const char* GUI_Statusbar;
         /** Prefix used by composite extra-data keys,
@@ -597,6 +601,26 @@ enum WizardMode
     WizardMode_Expert
 };
 
+
+/** Selector UI: Machine tool types. */
+enum ToolTypeMachine
+{
+    ToolTypeMachine_Invalid,
+    ToolTypeMachine_Desktop,
+    ToolTypeMachine_Details,
+    ToolTypeMachine_Snapshots,
+};
+Q_DECLARE_METATYPE(ToolTypeMachine);
+
+/** Selector UI: Global tool types. */
+enum ToolTypeGlobal
+{
+    ToolTypeGlobal_Invalid,
+    ToolTypeGlobal_Desktop,
+    ToolTypeGlobal_VirtualMedia,
+    ToolTypeGlobal_HostNetwork,
+};
+Q_DECLARE_METATYPE(ToolTypeGlobal);
 
 /** Selector UI: Details-element types. */
 enum DetailsElementType

@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.h 68230 2017-08-02 09:40:44Z vboxsync $ */
+/* $Id: UIToolsToolbar.h 68304 2017-08-04 16:15:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class declaration.
  */
@@ -70,6 +70,11 @@ public:
 
     /** Defines toolbar tool button @a enmStyle. */
     void setToolButtonStyle(Qt::ToolButtonStyle enmStyle);
+
+    /** Returns Machine tab-bar order. */
+    QList<ToolTypeMachine> tabOrderMachine() const;
+    /** Returns Global tab-bar order. */
+    QList<ToolTypeGlobal> tabOrderGlobal() const;
 
 private slots:
 

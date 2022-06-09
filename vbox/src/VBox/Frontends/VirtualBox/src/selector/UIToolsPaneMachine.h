@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.h 68285 2017-08-03 12:42:45Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.h 68304 2017-08-04 16:15:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
+#include "UIExtraDataDefs.h"
 
 /* Forward declarations: */
 class QHBoxLayout;
@@ -34,19 +35,6 @@ class UIGDetails;
 class UISnapshotPane;
 class UIVMItem;
 class CMachine;
-
-
-/** Machine tool types. */
-enum ToolTypeMachine
-{
-    ToolTypeMachine_Invalid,
-    ToolTypeMachine_Desktop,
-    ToolTypeMachine_Details,
-    ToolTypeMachine_Snapshots,
-};
-
-/* Make sure QVariant can eat ToolTypeMachine: */
-Q_DECLARE_METATYPE(ToolTypeMachine);
 
 
 /** QWidget subclass representing container for tool panes. */
