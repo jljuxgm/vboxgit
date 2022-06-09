@@ -1,4 +1,4 @@
-/* $Id: scmparser.cpp 69213 2017-10-24 13:56:47Z vboxsync $ */
+/* $Id: scmparser.cpp 69258 2017-10-25 00:11:43Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Code Parsers.
  */
@@ -120,6 +120,21 @@ static size_t isBatchComment(const char *pchLine, size_t cchLine, bool fSecond)
             && RT_C_IS_SPACE(*pchLine)
             && IS_REM(pchLine, 1, cchLine))
             return 4;
+    }
+    return 0;
+}
+
+/**
+ * Callback for checking if tick comment.
+ */
+static size_t isTickComment(const char *pchLine, size_t cchLine, bool fSecond)
+{
+    if (cchLine >= 1 && *pchLine == '\'')
+    {
+        if (!fSecond)
+            return 1;
+        if (cchLine >= 2 && pchLine[1] == '\'')
+            return 2;
     }
     return 0;
 }
@@ -901,6 +916,9 @@ int ScmEnumerateComments(PSCMSTREAM pIn, SCMCOMMENTSTYLE enmCommentStyle, PFNSCM
         case kScmCommentStyle_Rem_Lower:
         case kScmCommentStyle_Rem_Camel:
             return enumerateBatchComments(pIn, pfnCallback, pvUser);
+
+        case kScmCommentStyle_Tick:
+            return enumerateSimpleLineComments(pIn, '\'', isTickComment, pfnCallback, pvUser);
 
         default:
             AssertFailedReturn(VERR_INVALID_PARAMETER);
