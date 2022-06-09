@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69183 2017-10-23 18:47:18Z vboxsync $
+# $Id: Makefile.kmk 69306 2017-10-25 13:42:40Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1355,7 +1355,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   tstDevice_LIBS.linux  = $(PATH_STAGE_BIN)/tstDeviceVBoxVMMStubs.so
   tstDevice_LIBS.darwin = $(PATH_STAGE_BIN)/tstDeviceVBoxVMMStubs.dylib
   # Required on OS X to prevent resolving symbols in the real VBoxVMM.dylib when VBoxDD.dylib is loaded
-  tstDevice_LDFLAGS.darwin += -force_flat_namespace 
+  tstDevice_LDFLAGS.darwin += -force_flat_namespace
   tstDevice_SOURCES     = \
  	testcase/tstDevice.cpp \
  	testcase/tstDevicePdmDevHlp.cpp \
