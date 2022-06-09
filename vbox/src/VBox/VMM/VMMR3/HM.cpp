@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 71415 2018-03-21 09:29:22Z vboxsync $ */
+/* $Id: HM.cpp 71755 2018-04-09 08:10:23Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -3533,6 +3533,10 @@ static DECLCALLBACK(int) hmR3Save(PVM pVM, PSSMHANDLE pSSM)
 
         rc = SSMR3PutU32(pSSM, pPatch->cFaults);
         AssertRCReturn(rc, rc);
+        /** @todo We need to save SVMNESTEDVMCBCACHE (if pCtx fHMCached is true as we
+         *        are in nested-geust execution and the cache contains pristine
+         *        fields that we only restore on #VMEXIT and not on
+         *        every exit-to-ring 3. */
     }
 #endif
     return VINF_SUCCESS;
@@ -3552,7 +3556,7 @@ static DECLCALLBACK(int) hmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, u
 {
     int rc;
 
-    Log(("hmR3Load:\n"));
+    LogFlowFunc(("uVersion=%u\n", uVersion));
     Assert(uPass == SSM_PASS_FINAL); NOREF(uPass);
 
     /*
