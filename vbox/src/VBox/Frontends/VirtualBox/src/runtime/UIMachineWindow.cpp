@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 69615 2017-11-08 13:04:15Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 69698 2017-11-15 09:21:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -313,7 +313,10 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
                                                                   restrictedCloseActions);
         /* Configure close-dialog: */
         if (uisession() && uisession()->machineWindowIcon())
-            pCloseDlg->setPixmap(uisession()->machineWindowIcon()->pixmap(QSize(32, 32)));
+        {
+            const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_LargeIconSize);
+            pCloseDlg->setPixmap(uisession()->machineWindowIcon()->pixmap(QSize(iIconMetric, iIconMetric)));
+        }
 
         /* Make sure close-dialog is valid: */
         if (pCloseDlg->isValid())
