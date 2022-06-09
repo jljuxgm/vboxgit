@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 71176 2018-03-02 13:30:59Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 71177 2018-03-02 13:34:08Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -502,7 +502,9 @@ Utf8Str GuestProcess::i_guestErrorToString(int guestRc)
     switch (guestRc)
     {
         case VERR_FILE_NOT_FOUND: /* This is the most likely error. */
-            strError += Utf8StrFmt(tr("The specified file was not found on guest"));
+            RT_FALL_THROUGH();
+        case VERR_PATH_NOT_FOUND:
+            strError += Utf8StrFmt(tr("No such file or directory on guest"));
             break;
 
         case VERR_INVALID_VM_HANDLE:
@@ -511,10 +513,6 @@ Utf8Str GuestProcess::i_guestErrorToString(int guestRc)
 
         case VERR_HGCM_SERVICE_NOT_FOUND:
             strError += Utf8StrFmt(tr("The guest execution service is not available"));
-            break;
-
-        case VERR_PATH_NOT_FOUND:
-            strError += Utf8StrFmt(tr("Could not resolve path to specified file was not found on guest"));
             break;
 
         case VERR_BAD_EXE_FORMAT:
