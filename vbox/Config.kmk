@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68163 2017-07-28 15:29:36Z vboxsync $
+# $Id: Config.kmk 68193 2017-07-31 11:32:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -439,10 +439,9 @@ if1of ($(KBUILD_TARGET), linux)
  # Enable PulseAudio audio support.
  VBOX_WITH_AUDIO_PULSE = 1
 endif
-ifeq ($(KBUILD_TYPE),debug)
- ## @todo Only build if running on test boxes?
- VBOX_WITH_AUDIO_DEBUG =
-endif
+# Enable building debugging backend.
+# Only will be used at runtime when "VBoxInternal2/Audio/Debug/Enabled" (VM / global) is set.
+VBOX_WITH_AUDIO_DEBUG = 1
 # Enable PCI passthrough support.
 VBOX_WITH_PCI_PASSTHROUGH = 1
 # Enable statically linked dbus support.
@@ -7007,7 +7006,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68163 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68193 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
