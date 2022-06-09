@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 68968 2017-10-04 07:59:44Z vboxsync $ */
+/* $Id: http-curl.cpp 68969 2017-10-04 08:03:10Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -1718,7 +1718,8 @@ static int rtHttpWinConfigureProxyForUrl(PRTHTTPINTERNAL pThis, const char *pszU
                                     || RTStrNICmp(pszUrl, RT_STR_TUPLE("http://")) == 0) ) )
                             rcRet = rtHttpUpdateAutomaticProxyDisable(pThis);
                         else
-                            AssertMsgFailed(("g_pfnWinHttpGetProxyForUrl(%s) -> %u\n", pszUrl, dwErr));
+                            AssertMsgFailed(("g_pfnWinHttpGetProxyForUrl(%s) -> %u; lpszAutoConfigUrl=%sx\n",
+                                             pszUrl, dwErr, AutoProxyOptions.lpszAutoConfigUrl));
                     }
                     RTUtf16Free(pwszUrl);
                 }
