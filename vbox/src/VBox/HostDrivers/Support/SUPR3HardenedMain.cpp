@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 69249 2017-10-24 19:05:34Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -597,6 +597,7 @@ static const SUPARGPURGEDESC g_aSupArgPurgeDescs[] =
     /* Qt related environment variables: */
     { RT_STR_TUPLE("-platformpluginpath"),          true },
 };
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *

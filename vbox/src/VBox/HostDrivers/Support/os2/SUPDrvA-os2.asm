@@ -1,4 +1,4 @@
-; $Id: SUPDrvA-os2.asm 22077 2009-08-07 16:01:57Z vboxsync $
+; $Id: SUPDrvA-os2.asm 69249 2017-10-24 19:05:34Z vboxsync $
 ;; @file
 ; VBoxDrv - OS/2 assembly file, the first file in the link.
 ;
@@ -970,5 +970,4 @@ ENDPROC VBoxDrvInitFlushText
 segment DATA32
 g_pfnDos16Write:
     dd  DOS16WRITE  ; flat
-
 

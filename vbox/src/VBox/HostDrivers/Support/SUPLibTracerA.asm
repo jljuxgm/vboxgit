@@ -1,4 +1,4 @@
-; $Id: SUPLibTracerA.asm 62490 2016-07-22 18:41:49Z vboxsync $
+; $Id: SUPLibTracerA.asm 69249 2017-10-24 19:05:34Z vboxsync $
 ;; @file
 ; VirtualBox Support Library - Tracer Interface, Assembly bits.
 ;
@@ -219,5 +219,4 @@ EXPORTEDNAME SUPTracerFireProbe
         leave
         ret
 ENDPROC SUPTracerFireProbe
-
 

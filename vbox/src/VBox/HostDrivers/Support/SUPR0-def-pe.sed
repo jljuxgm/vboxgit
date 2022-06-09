@@ -1,8 +1,9 @@
-# $Id: SUPR0-def-pe.sed 57358 2015-08-14 15:16:38Z vboxsync $
+# $Id: SUPR0-def-pe.sed 69249 2017-10-24 19:05:34Z vboxsync $
 ## @file
 # IPRT - SED script for generating SUPR0.def
 #
 
+#
 # Copyright (C) 2012-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
