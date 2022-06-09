@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 67537 2017-06-21 12:39:59Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 67544 2017-06-21 15:22:41Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -286,11 +286,11 @@ static int paWaitForEx(PDRVHOSTPULSEAUDIO pThis, pa_operation *pOP, RTMSINTERVAL
         if (!pThis->fAbortLoop)
         {
             AssertPtr(pThis->pMainLoop);
-            if (fDebug)
-                LogRel(("PulseAudio: pa_threaded_mainloop_wait\n"));
+//            if (fDebug)
+//                LogRel(("PulseAudio: pa_threaded_mainloop_wait\n"));
             pa_threaded_mainloop_wait(pThis->pMainLoop);
-            if (fDebug)
-                LogRel(("PulseAudio: pa_threaded_mainloop_wait done\n"));
+//            if (fDebug)
+//                LogRel(("PulseAudio: pa_threaded_mainloop_wait done\n"));
             if (pThis->fAbortEnumLoop)
                 break;
             if (   !pThis->pContext
