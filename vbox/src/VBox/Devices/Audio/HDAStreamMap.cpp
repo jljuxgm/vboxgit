@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.cpp 69118 2017-10-17 18:50:46Z vboxsync $ */
+/* $Id: HDAStreamMap.cpp 70131 2017-12-14 14:48:35Z vboxsync $ */
 /** @file
  * HDAStreamMap.cpp - Stream mapping functions for HD Audio.
  */
@@ -63,7 +63,7 @@ int hdaStreamMapInit(PHDASTREAMMAPPING pMapping, PPDMAUDIOPCMPROPS pProps)
     for (uint8_t i = 0; i < pProps->cChannels; i++)
     {
         pChan->uChannel = i;
-        pChan->cbStep   = (pProps->cBits / 2);
+        pChan->cbStep   = (pProps->cBits / 8);
         pChan->cbFrame  = pChan->cbStep * pProps->cChannels;
         pChan->cbFirst  = i * pChan->cbStep;
         pChan->cbOff    = pChan->cbFirst;
