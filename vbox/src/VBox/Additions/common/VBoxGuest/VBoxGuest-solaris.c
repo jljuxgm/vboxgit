@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 68638 2017-09-05 13:30:52Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 68793 2017-09-19 15:46:36Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -192,6 +192,13 @@ static kmutex_t             g_HighLevelIrqMtx;
 /** Whether soft-ints are setup. */
 static bool                 g_fSoftIntRegistered = false;
 
+/** Additional IPRT function we need to drag in for vboxfs. */
+PFNRT g_Deps[] =
+{
+    (PFNRT)RTErrConvertToErrno,
+};
+
+
 /**
  * Kernel entry points
  */
@@ -258,7 +265,7 @@ int _fini(void)
 
 int _info(struct modinfo *pModInfo)
 {
-    LogFlow((DEVICE_NAME ":_info\n"));
+    /* LogFlow((DEVICE_NAME ":_info\n")); - Called too early, causing RTThreadPreemtIsEnabled warning. */
     return mod_info(&g_vgdrvSolarisModLinkage, pModInfo);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibIdc-solaris.cpp 68645 2017-09-05 14:17:02Z vboxsync $ */
+/* $Id: VBoxGuestR0LibIdc-solaris.cpp 68793 2017-09-19 15:46:36Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC, Solaris specific.
  */
@@ -40,11 +40,13 @@ int VBOXCALL vbglR0IdcNativeOpen(PVBGLIDCHANDLE pHandle, PVBGLIOCIDCCONNECT pReq
 {
     ldi_handle_t hDev   = NULL;
     ldi_ident_t  hIdent = ldi_ident_from_anon();
+    /* Note! ldi_open_by_name actually opens the device and ends up creating a useless user session.
+             Wonder if there is any way to detect ldi_open_by_name and do I/O controls via hDev... */
     int rc = ldi_open_by_name(VBOXGUEST_DEVICE_NAME, FREAD, kcred, &hDev, hIdent);
     ldi_ident_release(hIdent);
     if (rc == 0)
     {
-        rc = VBoxGuestIDC(NULL, VBGL_IOCTL_IDC_DISCONNECT, &pReq->Hdr, sizeof(*pReq));
+        rc = VBoxGuestIDC(NULL, VBGL_IOCTL_IDC_CONNECT, &pReq->Hdr, sizeof(*pReq));
         if (RT_SUCCESS(rc) && RT_SUCCESS(pReq->Hdr.rc))
         {
             pHandle->s.hDev = hDev;
