@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 71184 2018-03-03 15:01:59Z vboxsync $ */
+/* $Id: VMMR0.cpp 71198 2018-03-05 10:59:17Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1328,7 +1328,7 @@ VMMR0DECL(void) VMMR0EntryFast(PGVM pGVM, PVM pVM, VMCPUID idCpu, VMMR0OPERATION
             break;
 
         /*
-         * Impossible.
+         * Shouldn't happen.
          */
         default:
             AssertMsgFailed(("%#x\n", enmOperation));

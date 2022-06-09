@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPDrv-os2.cpp 71198 2018-03-05 10:59:17Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -258,9 +258,13 @@ DECLASM(int) VBoxDrvIOCtlFast(uint16_t sfn, uint8_t iFunction)
     /*
      * Dispatch the fast IOCtl.
      */
-    supdrvIOCtlFast(iFunction, 0, &g_DevExt, pSession);
+    int rc;
+    if ((unsigned)(iFunction - SUP_IOCTL_FAST_DO_FIRST) < (unsigned)32)
+        rc = supdrvIOCtlFast(iFunction, 0, &g_DevExt, pSession);
+    else
+        rc = VERR_INVALID_FUNCTION;
     supdrvSessionRelease(pSession);
-    return 0;
+    return rc;
 }
 
 
