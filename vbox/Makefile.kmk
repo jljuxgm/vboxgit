@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 67129 2017-05-29 11:09:54Z vboxsync $
+# $Id: Makefile.kmk 68676 2017-09-06 11:09:36Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -27,6 +27,9 @@ ifndef VBOX_ONLY_ROOT_MAKEFILE
   include $(PATH_SUB_CURRENT)/doc/manual/Makefile.kmk
  endif
  include $(PATH_SUB_CURRENT)/src/Makefile.kmk
+ ifdef VBOX_WITH_INCLUDE_SYNTAX_CHECKING
+  include $(PATH_SUB_CURRENT)/include/Makefile.kmk
+ endif
 endif
 
 #
