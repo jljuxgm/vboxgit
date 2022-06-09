@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 70519 2018-01-10 14:27:17Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.cpp 70529 2018-01-11 07:46:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -119,7 +119,7 @@ void UIVMLogViewerPanel::hideEvent(QHideEvent *pEvent)
      * focus next child-widget in line: */
     if (pFocus && pFocus->parent() == this)
         focusNextPrevChild(true);
-    if(m_pViewer)
+    if (m_pViewer)
         m_pViewer->hidePanel(this);
 
     QWidget::hideEvent(pEvent);
