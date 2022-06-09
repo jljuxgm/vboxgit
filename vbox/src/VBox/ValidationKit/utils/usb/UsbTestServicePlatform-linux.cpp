@@ -1,4 +1,4 @@
-/* $Id: UsbTestServicePlatform-linux.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
+/* $Id: UsbTestServicePlatform-linux.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Platform
  *               specific helpers - Linux version.
@@ -124,14 +124,14 @@ static int utsPlatformLnxDummyHcdQueryBusses(PUTSPLATFORMLNXDUMMYHCD pHcd, const
     if (cchPath == RT_ELEMENTS(aszPath))
         return VERR_BUFFER_OVERFLOW;
 
-    PRTDIR pDir = NULL;
-    rc = RTDirOpenFiltered(&pDir, aszPath, RTDIRFILTER_WINNT, 0 /*fFlags*/);
+    RTDIR hDir = NULL;
+    rc = RTDirOpenFiltered(&hDir, aszPath, RTDIRFILTER_WINNT, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
         do
         {
             RTDIRENTRY DirFolderContent;
-            rc = RTDirRead(pDir, &DirFolderContent, NULL);
+            rc = RTDirRead(hDir, &DirFolderContent, NULL);
             if (RT_SUCCESS(rc))
             {
                 uint32_t uBusId = 0;
@@ -181,7 +181,7 @@ static int utsPlatformLnxDummyHcdQueryBusses(PUTSPLATFORMLNXDUMMYHCD pHcd, const
         if (rc == VERR_NO_MORE_FILES)
             rc = VINF_SUCCESS;
 
-        RTDirClose(pDir);
+        RTDirClose(hDir);
     }
 
     return rc;
@@ -204,8 +204,8 @@ static int utsPlatformLnxHcdScanByName(const char *pszHcdName, const char *pszUd
         return VERR_BUFFER_OVERFLOW;
 
     /* Enumerate the available HCD and their bus numbers. */
-    PRTDIR pDir = NULL;
-    int rc = RTDirOpenFiltered(&pDir, aszPath, RTDIRFILTER_WINNT, 0 /*fFlags*/);
+    RTDIR hDir = NULL;
+    int rc = RTDirOpenFiltered(&hDir, aszPath, RTDIRFILTER_WINNT, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
         unsigned idxHcdCur = g_cDummyHcd;
@@ -214,7 +214,7 @@ static int utsPlatformLnxHcdScanByName(const char *pszHcdName, const char *pszUd
         do
         {
             RTDIRENTRY DirFolderContent;
-            rc = RTDirRead(pDir, &DirFolderContent, NULL);
+            rc = RTDirRead(hDir, &DirFolderContent, NULL);
             if (RT_SUCCESS(rc))
             {
                 /*
@@ -269,7 +269,7 @@ static int utsPlatformLnxHcdScanByName(const char *pszHcdName, const char *pszUd
         if (rc == VERR_NO_MORE_FILES)
             rc = VINF_SUCCESS;
 
-        RTDirClose(pDir);
+        RTDirClose(hDir);
     }
 
     return rc;

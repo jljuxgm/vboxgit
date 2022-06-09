@@ -1,4 +1,4 @@
-/* $Id: tstDir.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
+/* $Id: tstDir.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * IPRT Testcase - Directory listing.
  */
@@ -80,12 +80,12 @@ int main(int argc, char **argv)
         else
         {
             /* open */
-            PRTDIR pDir;
+            RTDIR hDir;
             int rc;
             if (!fFiltered)
-                rc = RTDirOpen(&pDir, argv[i]);
+                rc = RTDirOpen(&hDir, argv[i]);
             else
-                rc = RTDirOpenFiltered(&pDir, argv[i], RTDIRFILTER_WINNT, 0 /*fFlags*/);
+                rc = RTDirOpenFiltered(&hDir, argv[i], RTDIRFILTER_WINNT, 0 /*fFlags*/);
             if (RT_SUCCESS(rc))
             {
                 /* list */
@@ -94,7 +94,7 @@ int main(int argc, char **argv)
                     for (;;)
                     {
                         RTDIRENTRY DirEntry;
-                        rc = RTDirRead(pDir, &DirEntry, NULL);
+                        rc = RTDirRead(hDir, &DirEntry, NULL);
                         if (RT_FAILURE(rc))
                             break;
                         if (!fQuiet)
@@ -125,7 +125,7 @@ int main(int argc, char **argv)
                     for (;;)
                     {
                         RTDIRENTRYEX DirEntry;
-                        rc = RTDirReadEx(pDir, &DirEntry, NULL, RTFSOBJATTRADD_UNIX, RTPATH_F_ON_LINK);
+                        rc = RTDirReadEx(hDir, &DirEntry, NULL, RTFSOBJATTRADD_UNIX, RTPATH_F_ON_LINK);
                         if (RT_FAILURE(rc))
                             break;
 
@@ -207,7 +207,7 @@ int main(int argc, char **argv)
                 }
 
                 /* close up */
-                rc = RTDirClose(pDir);
+                rc = RTDirClose(hDir);
                 if (RT_FAILURE(rc))
                 {
                     RTPrintf("tstDir: Failed to close dir! rc=%Rrc\n", rc);

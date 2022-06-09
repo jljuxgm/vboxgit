@@ -1,4 +1,4 @@
-/* $Id: DBGFR3PlugIn.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
+/* $Id: DBGFR3PlugIn.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Plug-In Support.
  */
@@ -470,15 +470,15 @@ VMMR3DECL(void) DBGFR3PlugInLoadAll(PUVM pUVM)
     AssertRCReturnVoid(rc);
     strcat(szPath, pszSuff);
 
-    PRTDIR pDir;
-    rc = RTDirOpenFiltered(&pDir, szPath, RTDIRFILTER_WINNT, 0 /*fFlags*/);
+    RTDIR hDir;
+    rc = RTDirOpenFiltered(&hDir, szPath, RTDIRFILTER_WINNT, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
         /*
          * Now read it and try load each of the plug-in modules.
          */
         RTDIRENTRY DirEntry;
-        while (RT_SUCCESS(RTDirRead(pDir, &DirEntry, NULL)))
+        while (RT_SUCCESS(RTDirRead(hDir, &DirEntry, NULL)))
         {
             szPath[offDir] = '\0';
             rc = RTPathAppend(szPath, sizeof(szPath), DirEntry.szName);
@@ -495,7 +495,7 @@ VMMR3DECL(void) DBGFR3PlugInLoadAll(PUVM pUVM)
             }
         }
 
-        RTDirClose(pDir);
+        RTDirClose(hDir);
     }
 }
 

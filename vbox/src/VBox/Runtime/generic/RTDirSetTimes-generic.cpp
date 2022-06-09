@@ -1,4 +1,4 @@
-/* $Id: RTDirSetTimes-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTDirSetTimes-generic.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * IPRT - RTDirSetTimes, generic implementation.
  */
@@ -45,14 +45,14 @@
 
 
 
-RTR3DECL(int) RTDirSetTimes(PRTDIR pDir, PCRTTIMESPEC pAccessTime, PCRTTIMESPEC pModificationTime,
+RTR3DECL(int) RTDirSetTimes(RTDIR hDir, PCRTTIMESPEC pAccessTime, PCRTTIMESPEC pModificationTime,
                             PCRTTIMESPEC pChangeTime, PCRTTIMESPEC pBirthTime)
 {
     /*
      * Validate and digest input.
      */
-    if (!rtDirValidHandle(pDir))
+    if (!rtDirValidHandle(hDir))
         return VERR_INVALID_PARAMETER;
-    return RTPathSetTimes(pDir->pszPath, pAccessTime, pModificationTime, pChangeTime, pBirthTime);
+    return RTPathSetTimes(hDir->pszPath, pAccessTime, pModificationTime, pChangeTime, pBirthTime);
 }
 

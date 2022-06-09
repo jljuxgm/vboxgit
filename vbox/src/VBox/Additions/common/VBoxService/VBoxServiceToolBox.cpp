@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -739,8 +739,8 @@ static int vgsvcToolboxLsHandleDir(const char *pszDir, uint32_t fFlags, uint32_t
         return rc;
     }
 
-    PRTDIR pDir;
-    rc = RTDirOpen(&pDir, szPathAbs);
+    RTDIR hDir;
+    rc = RTDirOpen(&hDir, szPathAbs);
     if (RT_FAILURE(rc))
     {
         if (!(fOutputFlags & VBOXSERVICETOOLBOXOUTPUTFLAG_PARSEABLE))
@@ -758,7 +758,7 @@ static int vgsvcToolboxLsHandleDir(const char *pszDir, uint32_t fFlags, uint32_t
     for (;RT_SUCCESS(rc);)
     {
         RTDIRENTRYEX DirEntry;
-        rc = RTDirReadEx(pDir, &DirEntry, NULL, RTFSOBJATTRADD_UNIX, RTPATH_F_ON_LINK);
+        rc = RTDirReadEx(hDir, &DirEntry, NULL, RTFSOBJATTRADD_UNIX, RTPATH_F_ON_LINK);
         if (RT_SUCCESS(rc))
         {
             PVBOXSERVICETOOLBOXDIRENTRY pNode = (PVBOXSERVICETOOLBOXDIRENTRY)RTMemAlloc(sizeof(VBOXSERVICETOOLBOXDIRENTRY));
@@ -775,7 +775,7 @@ static int vgsvcToolboxLsHandleDir(const char *pszDir, uint32_t fFlags, uint32_t
     if (rc == VERR_NO_MORE_FILES)
         rc = VINF_SUCCESS;
 
-    int rc2 = RTDirClose(pDir);
+    int rc2 = RTDirClose(hDir);
     if (RT_FAILURE(rc2))
     {
         if (!(fOutputFlags & VBOXSERVICETOOLBOXOUTPUTFLAG_PARSEABLE))

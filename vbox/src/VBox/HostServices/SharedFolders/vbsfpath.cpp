@@ -1,4 +1,4 @@
-/* $Id: vbsfpath.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
+/* $Id: vbsfpath.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * Shared Folders - guest/host path convertion and verification.
  */
@@ -96,7 +96,7 @@ static int vbsfCorrectCasing(SHFLCLIENTDATA *pClient, char *pszFullPath, char *p
     AssertRC(rc);
     if (RT_SUCCESS(rc))
     {
-        PRTDIR hSearch = NULL;
+        RTDIR hSearch = NULL;
         rc = RTDirOpenFiltered(&hSearch, pDirEntry->szName, RTDIRFILTER_WINNT, 0 /*fFlags*/);
         if (RT_SUCCESS(rc))
         {

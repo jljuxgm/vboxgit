@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
+/* $Id: scm.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2296,8 +2296,8 @@ static int scmProcessDirTreeRecursion(char *pszBuf, size_t cchDir, PRTDIRENTRY p
     /*
      * Try open and read the directory.
      */
-    PRTDIR pDir;
-    rc = RTDirOpenFiltered(&pDir, pszBuf, RTDIRFILTER_NONE, 0 /*fFlags*/);
+    RTDIR hDir;
+    rc = RTDirOpenFiltered(&hDir, pszBuf, RTDIRFILTER_NONE, 0 /*fFlags*/);
     if (RT_FAILURE(rc))
     {
         RTMsgError("Failed to enumerate directory '%s': %Rrc", pszBuf, rc);
@@ -2306,7 +2306,7 @@ static int scmProcessDirTreeRecursion(char *pszBuf, size_t cchDir, PRTDIRENTRY p
     for (;;)
     {
         /* Read the next entry. */
-        rc = RTDirRead(pDir, pEntry, NULL);
+        rc = RTDirRead(hDir, pEntry, NULL);
         if (RT_FAILURE(rc))
         {
             if (rc == VERR_NO_MORE_FILES)
@@ -2371,7 +2371,7 @@ static int scmProcessDirTreeRecursion(char *pszBuf, size_t cchDir, PRTDIRENTRY p
         if (RT_FAILURE(rc))
             break;
     }
-    RTDirClose(pDir);
+    RTDirClose(hDir);
     return rc;
 
 }
@@ -2759,7 +2759,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69674 $";
+                static const char s_szRev[] = "$Revision: 69753 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;

@@ -1,4 +1,4 @@
-/* $Id: RTPathRmCmd.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTPathRmCmd.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * IPRT - TAR Command.
  */
@@ -269,7 +269,7 @@ static int rtPathRmRecursive(PRTPATHRMCMDOPTS pOpts, char *pszPath, size_t cchPa
     /*
      * Traverse the directory.
      */
-    PRTDIR hDir;
+    RTDIR hDir;
     int rc = RTDirOpen(&hDir, pszPath);
     if (RT_FAILURE(rc))
         return rtPathRmError(pOpts, pszPath, rc, "Error opening directory '%s': %Rrc", pszPath, rc);

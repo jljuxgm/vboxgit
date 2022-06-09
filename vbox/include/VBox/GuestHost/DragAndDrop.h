@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: DragAndDrop.h 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * DnD: Shared functions between host and guest.
  */
@@ -76,7 +76,7 @@ protected:
     /** Open flags. */
     uint32_t                     m_fOpen;
     /** Directory handle for drop directory. */
-    PRTDIR                       m_hDir;
+    RTDIR                        m_hDir;
     /** Absolute path to drop directory. */
     RTCString                    m_strPathAbs;
     /** List for holding created directories in the case of a rollback. */

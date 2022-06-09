@@ -1,4 +1,4 @@
-/* $Id: dir2.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: dir2.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation, Part 2.
  */
@@ -61,17 +61,13 @@ static int rtDirRemoveRecursiveSub(char *pszBuf, size_t cchDir, PRTDIRENTRY pDir
     /*
      * Enumerate the directory content and dispose of it.
      */
-    PRTDIR pDir;
-    int rc = RTDirOpen(&pDir, pszBuf);
+    RTDIR hDir;
+    int rc = RTDirOpen(&hDir, pszBuf);
     if (RT_FAILURE(rc))
         return rc;
-    while (RT_SUCCESS(rc = RTDirRead(pDir, pDirEntry, NULL)))
+    while (RT_SUCCESS(rc = RTDirRead(hDir, pDirEntry, NULL)))
     {
-        if (   pDirEntry->szName[0] != '.'
-            || pDirEntry->cbName > 2
-            || (   pDirEntry->cbName == 2
-                && pDirEntry->szName[1] != '.')
-           )
+        if (!RTDirEntryIsStdDotLink(pDirEntry))
         {
             /* Construct the full name of the entry. */
             if (cchDir + pDirEntry->cbName + 1 /* dir slash */ >= RTPATH_MAX)
@@ -129,7 +125,7 @@ static int rtDirRemoveRecursiveSub(char *pszBuf, size_t cchDir, PRTDIRENTRY pDir
     }
     if (rc == VERR_NO_MORE_FILES)
         rc = VINF_SUCCESS;
-    RTDirClose(pDir);
+    RTDirClose(hDir);
     return rc;
 }
 

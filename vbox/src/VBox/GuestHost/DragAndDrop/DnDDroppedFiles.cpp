@@ -1,4 +1,4 @@
-/* $Id: DnDDroppedFiles.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DnDDroppedFiles.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * DnD: Directory handling.
  */
@@ -151,11 +151,11 @@ int DnDDroppedFiles::OpenEx(const char *pszPath, uint32_t fFlags)
         rc = RTDirCreateUniqueNumbered(pszDropDir, sizeof(pszDropDir), RTFS_UNIX_IRWXU, 3, '-');
         if (RT_SUCCESS(rc))
         {
-            PRTDIR phDir;
-            rc = RTDirOpen(&phDir, pszDropDir);
+            RTDIR hDir;
+            rc = RTDirOpen(&hDir, pszDropDir);
             if (RT_SUCCESS(rc))
             {
-                this->m_hDir       = phDir;
+                this->m_hDir       = hDir;
                 this->m_strPathAbs = pszDropDir;
                 this->m_fOpen      = fFlags;
             }

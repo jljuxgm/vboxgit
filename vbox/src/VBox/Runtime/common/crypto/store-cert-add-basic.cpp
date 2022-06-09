@@ -1,4 +1,4 @@
-/* $Id: store-cert-add-basic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: store-cert-add-basic.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store, RTCrStoreCertAddFromDir.
  */
@@ -658,7 +658,7 @@ RTDECL(int) RTCrStoreCertAddFromDir(RTCRSTORE hStore, uint32_t fFlags, const cha
             /*
              * Enumerate the directory.
              */
-            PRTDIR hDir;
+            RTDIR hDir;
             rc = RTDirOpen(&hDir, pszDir);
             if (RT_SUCCESS(rc))
             {
@@ -766,7 +766,7 @@ RTDECL(int) RTCrStoreCertAddWantedFromDir(RTCRSTORE hStore, uint32_t fFlags,
             /*
              * Enumerate the directory.
              */
-            PRTDIR hDir;
+            RTDIR hDir;
             rc = RTDirOpen(&hDir, pszDir);
             if (RT_SUCCESS(rc))
             {

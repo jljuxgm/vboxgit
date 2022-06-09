@@ -1,4 +1,4 @@
-/* $Id: tstDir-3.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
+/* $Id: tstDir-3.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * IPRT Testcase - Directory listing & filtering (no parameters needed).
  */
@@ -35,14 +35,14 @@ static int tstDirOpenFiltered(const char *pszFilter, unsigned *pcFilesMatch, int
 {
     int rcRet = 0;
     unsigned cFilesMatch = 0;
-    PRTDIR pDir;
-    int rc = RTDirOpenFiltered(&pDir, pszFilter, RTDIRFILTER_WINNT, 0 /*fFlags*/);
+    RTDIR hDir;
+    int rc = RTDirOpenFiltered(&hDir, pszFilter, RTDIRFILTER_WINNT, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
         for (;;)
         {
             RTDIRENTRY DirEntry;
-            rc = RTDirRead(pDir, &DirEntry, NULL);
+            rc = RTDirRead(hDir, &DirEntry, NULL);
             if (RT_FAILURE(rc))
                 break;
             cFilesMatch++;
@@ -55,7 +55,7 @@ static int tstDirOpenFiltered(const char *pszFilter, unsigned *pcFilesMatch, int
         }
 
         /* close up */
-        rc = RTDirClose(pDir);
+        rc = RTDirClose(hDir);
         if (RT_FAILURE(rc))
         {
             RTPrintf("tstDir-3: Failed to close dir '%s'! rc=%Rrc\n", pszFilter, rc);

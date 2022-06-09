@@ -1,4 +1,4 @@
-/* $Id: magics.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: magics.h 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -46,9 +46,9 @@
 #define RTDBGMODVTIMG_MAGIC             UINT32_C(0x19350419)
 /** Magic value for RTDBGKRNLINFOINT::u32Magic. (John Carmack) */
 #define RTDBGKRNLINFO_MAGIC             UINT32_C(0x19700820)
-/** The value of RTDIR::u32Magic. (Michael Ende) */
+/** The value of RTDIRINTERNAL::u32Magic. (Michael Ende) */
 #define RTDIR_MAGIC                     UINT32_C(0x19291112)
-/** The value of RTDIR::u32Magic after RTDirClose().  */
+/** The value of RTDIRINTERNAL::u32Magic after RTDirClose().  */
 #define RTDIR_MAGIC_DEAD                UINT32_C(0x19950829)
 /** The value of RTDVMINTERNAL::u32Magic. (Dan Brown) */
 #define RTDVM_MAGIC                     UINT32_C(0x19640622)

@@ -1,4 +1,4 @@
-/* $Id: RTDirQueryInfo-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTDirQueryInfo-generic.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * IPRT - RTDirQueryInfo, generic implementation.
  */
@@ -44,13 +44,13 @@
 #include "internal/dir.h"
 
 
-RTR3DECL(int) RTDirQueryInfo(PRTDIR pDir, PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD enmAdditionalAttribs)
+RTR3DECL(int) RTDirQueryInfo(RTDIR hDir, PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD enmAdditionalAttribs)
 {
     /*
      * Validate and digest input.
      */
-    if (!rtDirValidHandle(pDir))
+    if (!rtDirValidHandle(hDir))
         return VERR_INVALID_PARAMETER;
-    return RTPathQueryInfoEx(pDir->pszPath, pObjInfo, enmAdditionalAttribs, RTPATH_F_FOLLOW_LINK);
+    return RTPathQueryInfoEx(hDir->pszPath, pObjInfo, enmAdditionalAttribs, RTPATH_F_FOLLOW_LINK);
 }
 

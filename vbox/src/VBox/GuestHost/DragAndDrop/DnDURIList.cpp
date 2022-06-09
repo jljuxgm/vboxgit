@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DnDURIList.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
 /** @file
  * DnD: URI list class.
  */
@@ -130,7 +130,7 @@ int DnDURIList::appendPathRecursive(const char *pcszSrcPath,
 
             if (RT_SUCCESS(rc))
             {
-                PRTDIR hDir;
+                RTDIR hDir;
                 rc = RTDirOpen(&hDir, pcszSrcPath);
                 if (RT_SUCCESS(rc))
                 {
