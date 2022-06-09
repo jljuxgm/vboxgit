@@ -1,4 +1,4 @@
-/* $Id: RTFileReadAllByHandleEx-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTFileReadAllByHandleEx-generic.cpp 68183 2017-07-31 08:25:25Z vboxsync $ */
 /** @file
  * IPRT - RTFileReadAllByHandleEx, generic implementation.
  */
@@ -64,7 +64,7 @@ RTDECL(int) RTFileReadAllByHandleEx(RTFILE File, RTFOFF off, RTFOFF cbMax, uint3
                 /*
                  * Try allocate the required memory and initialize the header (hardcoded fun).
                  */
-                void *pvHdr = RTMemAlloc(cbAllocMem + 32);
+                void *pvHdr = RTMemAlloc(cbAllocMem + 32 + (fFlags & RTFILE_RDALL_F_TRAILING_ZERO_BYTE ? 1 : 0));
                 if (pvHdr)
                 {
                     memset(pvHdr, 0xff, 32);
@@ -80,6 +80,9 @@ RTDECL(int) RTFileReadAllByHandleEx(RTFILE File, RTFOFF off, RTFOFF cbMax, uint3
                         rc = RTFileRead(File, pvFile, cbAllocMem, NULL);
                         if (RT_SUCCESS(rc))
                         {
+                            if (fFlags & RTFILE_RDALL_F_TRAILING_ZERO_BYTE)
+                                ((uint8_t *)pvFile)[cbAllocFile] = '\0';
+
                             /*
                              * Success - fill in the return values.
                              */
