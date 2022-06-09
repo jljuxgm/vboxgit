@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 70966 2018-02-11 21:30:58Z vboxsync $ */
+/* $Id: DevHDA.cpp 70975 2018-02-12 16:42:51Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -3038,9 +3038,13 @@ static void hdaGCTLReset(PHDASTATE pThis)
 
     for (uint8_t uSD = 0; uSD < HDA_MAX_STREAMS; ++uSD)
     {
-        /* Remove the RUN bit from SDnCTL in case the stream was in a running state before. */
-        HDA_STREAM_REG(pThis, CTL, uSD) &= ~HDA_SDCTL_RUN;
-        hdaStreamReset(pThis, &pThis->aStreams[uSD], uSD);
+        int rc2 = hdaStreamEnable(&pThis->aStreams[uSD], false /* fEnable */);
+        if (RT_SUCCESS(rc2))
+        {
+            /* Remove the RUN bit from SDnCTL in case the stream was in a running state before. */
+            HDA_STREAM_REG(pThis, CTL, uSD) &= ~HDA_SDCTL_RUN;
+            hdaStreamReset(pThis, &pThis->aStreams[uSD], uSD);
+        }
     }
 
     /* Clear stream tags <-> objects mapping table. */
