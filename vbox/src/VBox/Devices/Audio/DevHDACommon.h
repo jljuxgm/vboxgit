@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 69119 2017-10-17 19:08:38Z vboxsync $ */
+/* $Id: DevHDACommon.h 69717 2017-11-16 14:55:34Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -230,7 +230,11 @@ extern const HDAREGDESC g_aHdaRegMap[HDA_NUM_REGS];
 
 #define HDA_REG_CORBSIZE            21          /* 0x4E */
 #define HDA_RMX_CORBSIZE            19
-/** NB: Up to and including ICH 10, sizes of CORB and RIRB are fixed at 256 entries. */
+
+/** Number of CORB buffer entries. */
+#define HDA_CORB_SIZE               256
+/** Number of RIRB buffer entries. */
+#define HDA_RIRB_SIZE               256
 
 #define HDA_REG_RIRBLBASE           22          /* 0x50 */
 #define HDA_RMX_RIRBLBASE           20
