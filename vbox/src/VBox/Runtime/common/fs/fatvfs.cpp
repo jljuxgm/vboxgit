@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
+/* $Id: fatvfs.cpp 72584 2018-06-17 15:28:08Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -5639,7 +5639,7 @@ static int rtFsFatVolTryInit(PRTFSFATVOL pThis, RTVFS hVfsSelf, RTVFSFILE hVfsBa
     if (Buf.BootSector.uSignature != FATBOOTSECTOR_SIGNATURE)
     {
         if (Buf.BootSector.uSignature != 0)
-            return RTErrInfoSetF(pErrInfo, rc, "No DOS bootsector signature: %#06x", Buf.BootSector.uSignature);
+            return RTErrInfoSetF(pErrInfo, VERR_VFS_UNKNOWN_FORMAT, "No DOS bootsector signature: %#06x", Buf.BootSector.uSignature);
         rc = rtFsFatVolTryInitDos1x(pThis, &Buf.BootSector, &Buf.ab[512], pErrInfo);
     }
     else
