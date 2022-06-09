@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 67440 2017-06-16 13:58:56Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 67639 2017-06-27 15:21:40Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1275,7 +1275,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                         fGimHvVsIf = RT_BOOL(strVal.toUInt32());
                     else if (strKey == "hypercallinterface")
                         fGimHvHypercallIf = RT_BOOL(strVal.toUInt32());
-                    else
+                    else if (strKey.isNotEmpty() || strVal.isNotEmpty())
                     {
                         AssertMsgFailed(("Unrecognized Hyper-V debug option '%s'\n", strKey.c_str()));
                         return VMR3SetError(pUVM, VERR_INVALID_PARAMETER, RT_SRC_POS,
