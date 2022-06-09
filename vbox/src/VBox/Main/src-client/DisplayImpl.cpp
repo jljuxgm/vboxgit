@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 68803 2017-09-20 13:06:54Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 68808 2017-09-21 09:44:23Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3808,13 +3808,17 @@ void  Display::i_handleCrVRecScreenshotPerform(uint32_t uScreen,
 {
     Assert(mfCrOglVideoRecState == CRVREC_STATE_SUBMITTED);
 # ifdef VBOX_WITH_VIDEOREC
-    int rc = VideoRecSendVideoFrame(mpVideoRecCtx, uScreen, x, y,
-                                    uPixelFormat,
-                                    uBitsPerPixel, uBytesPerLine,
-                                    uGuestWidth, uGuestHeight,
-                                    pu8BufferAddress, u64Timestamp);
-    NOREF(rc);
-    Assert(rc == VINF_SUCCESS /* || rc == VERR_TRY_AGAIN || rc == VINF_TRY_AGAIN*/);
+    if (   VideoRecIsActive(mpVideoRecCtx)
+        && VideoRecGetEnabled(&mVideoRecCfg) & VIDEORECFEATURE_VIDEO)
+    {
+        int rc2 = VideoRecSendVideoFrame(mpVideoRecCtx, uScreen, x, y,
+                                         uPixelFormat,
+                                         uBitsPerPixel, uBytesPerLine,
+                                         uGuestWidth, uGuestHeight,
+                                         pu8BufferAddress, u64Timestamp);
+        RT_NOREF(rc2);
+        Assert(rc2 == VINF_SUCCESS /* || rc == VERR_TRY_AGAIN || rc == VINF_TRY_AGAIN*/);
+    }
 # else
     RT_NOREF(uScreen, x, y, uPixelFormat, \
              uBitsPerPixel, uBytesPerLine, uGuestWidth, uGuestHeight, pu8BufferAddress, u64Timestamp);
