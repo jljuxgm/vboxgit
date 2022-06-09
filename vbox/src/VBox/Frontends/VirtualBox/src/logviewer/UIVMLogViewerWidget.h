@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 70281 2017-12-21 14:11:32Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 70308 2017-12-22 11:44:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -91,6 +91,8 @@ private slots:
 
     /** Handles the tab change of the logviewer. */
     void sltTabIndexChange(int tabIndex);
+
+    void sltFilterApplied();
 
 private:
 

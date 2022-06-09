@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.h 70027 2017-12-08 13:36:57Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.h 70308 2017-12-22 11:44:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -37,6 +37,11 @@ class UIVMLogViewerFilterPanel : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
+signals:
+
+    /* Notifies listeners that the filter has been applied. */
+    void sigFilterApplied();
+
 public:
 
     /** Constructs the filter-panel by passing @a pParent to the QWidget base-class constructor.
@@ -48,6 +53,7 @@ public slots:
     /** Applies filter settings and filters the current log-page.
       * @param  iCurrentIndex  Specifies index of current log-page, but it is actually not used in the method. */
     void applyFilter(const int iCurrentIndex = 0);
+
 private slots:
 
     /** Handles the textchanged event from filter editor. */
@@ -75,15 +81,15 @@ private:
     /** Holds the reference to VM Log-Viewer this filter-panel belongs to. */
     UIVMLogViewerWidget *m_pViewer;
     /** Holds the instance of main-layout we create. */
-    QHBoxLayout *m_pMainLayout;
+    QHBoxLayout         *m_pMainLayout;
     /** Holds the instance of close-button we create. */
-    UIMiniCancelButton *m_pCloseButton;
+    UIMiniCancelButton  *m_pCloseButton;
     /** Holds the instance of filter-label we create. */
-    QLabel *m_pFilterLabel;
+    QLabel              *m_pFilterLabel;
     /** Holds instance of filter combo-box we create. */
-    QComboBox *m_pFilterComboBox;
+    QComboBox           *m_pFilterComboBox;
     /** Holds the filter text. */
-    QString m_strFilterText;
+    QString              m_strFilterText;
 };
 
 #endif /* !___UIVMLogViewerFilterPanel_h___ */

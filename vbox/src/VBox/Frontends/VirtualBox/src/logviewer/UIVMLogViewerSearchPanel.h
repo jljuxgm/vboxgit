@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 70272 2017-12-21 12:35:24Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.h 70308 2017-12-22 11:44:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -42,6 +42,7 @@ class UIVMLogViewerSearchPanel : public QIWithRetranslateUI<QWidget>
     Q_OBJECT;
 
 signals:
+
     void sigHighlightingUpdated();
 
 public:
@@ -69,6 +70,7 @@ private slots:
     void sltHighlightAllCheckBox();
 
 private:
+
     enum SearchDirection { ForwardSearch, BackwardSearch };
     /** Prepares search-panel. */
     void prepare();
@@ -140,4 +142,3 @@ private:
 
 
 #endif /* !___UIVMLogViewerSearchPanel_h___ */
-
