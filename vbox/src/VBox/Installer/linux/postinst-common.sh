@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: postinst-common.sh 61379 2016-06-01 16:29:08Z vboxsync $
+# $Id: postinst-common.sh 67053 2017-05-24 08:02:36Z vboxsync $
 ## @file
 # Oracle VM VirtualBox
 # VirtualBox Linux post-installer common portions
@@ -102,9 +102,10 @@ test -n "${START}" &&
         echo "There were problems setting up VirtualBox.  To re-start the set-up process, run" >&2
         echo "  /sbin/vboxconfig" >&2
         echo "as root." >&2
+    else
+        start_init_script vboxdrv
+        start_init_script vboxballoonctrl-service
+        start_init_script vboxautostart-service
+        start_init_script vboxweb-service
     fi
-    start_init_script vboxdrv
-    start_init_script vboxballoonctrl-service
-    start_init_script vboxautostart-service
-    start_init_script vboxweb-service
 }
