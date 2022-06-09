@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 64276 2016-10-14 11:16:06Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 69397 2017-10-26 18:46:49Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
@@ -951,9 +951,10 @@ static DECLCALLBACK(int) drvHostSerialMonitorThread(PPDMDRVINS pDrvIns, PPDMTHRE
         if (!fPoll)
         {
             rcPsx = ioctl(RTFileToNative(pThis->hDeviceFile), TIOCMIWAIT, uStatusLinesToCheck);
-            if (rcPsx < 0)
+            if (rcPsx < 0 && errno != EINTR)
             {
-                LogRel(("Serial#%u: Failed to wait for status line change, switch to polling\n", pDrvIns->iInstance));
+                LogRel(("Serial#%u: Failed to wait for status line change with rcPsx=%d errno=%d, switch to polling\n",
+                        pDrvIns->iInstance, rcPsx, errno));
                 fPoll = true;
                 pThis->fStatusLines = statusLines;
             }
