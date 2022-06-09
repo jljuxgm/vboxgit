@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxcon.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: vboxcon.py 69225 2017-10-24 15:12:30Z vboxsync $
 
 """
 VirtualBox Constants.
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 69225 $"
 
 
 # Standard Python imports.
@@ -45,7 +45,7 @@ class VBoxConstantWrappingHack(object):                                         
         if self.o.machine.state == vboxcon.MachineState_Running:
             do stuff;
 
-    For our own convenience there's a vboxcon attribute set up in vbox.py, 
+    For our own convenience there's a vboxcon attribute set up in vbox.py,
     class TestDriver which is the basis for the VirtualBox testcases. It takes
     care of setting things up properly through the global variable
     'goHackModuleClass' that refers to the instance of this class(if we didn't
