@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 68183 2017-07-31 08:25:25Z vboxsync $ */
+/* $Id: isomaker.cpp 68198 2017-07-31 12:14:35Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -5771,6 +5771,8 @@ static int rtFsIsoMakerOutFile_RockRidgeSpillReadSectors(PRTFSISOMAKEROUTPUTFILE
                 }
                 idxChild++;
             }
+            if (offNext != UINT32_MAX)
+                break;
             pDir     = RTListGetNext(&pFinalizedDirs->FinalizedDirs, pDir, RTFSISOMAKERNAMEDIR, FinalizedEntry);
             idxChild = 0;
         } while (pDir != NULL);
@@ -5787,6 +5789,9 @@ static int rtFsIsoMakerOutFile_RockRidgeSpillReadSectors(PRTFSISOMAKEROUTPUTFILE
                 *pidxChildHint = idxChild;
                 break;
             }
+            cbToRead  -= cbToZero;
+            pbBuf     += cbToZero;
+            offInFile += cbToZero;
         }
         else
         {
