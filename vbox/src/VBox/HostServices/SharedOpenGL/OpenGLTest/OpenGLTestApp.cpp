@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 63325 2016-08-11 11:26:20Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 69390 2017-10-26 17:17:51Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -303,7 +303,7 @@ int main(int argc, char **argv)
                     break;
 
                 case 'V':
-                    RTPrintf("$Revision: $\n");
+                    RTPrintf("$Revision: 69390 $\n");
                     return 0;
 
                 case VERR_GETOPT_UNKNOWN_OPTION:

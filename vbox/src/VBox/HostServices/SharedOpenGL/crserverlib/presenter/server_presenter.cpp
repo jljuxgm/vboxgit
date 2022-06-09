@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
+/* $Id: server_presenter.cpp 69390 2017-10-26 17:17:51Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -1241,7 +1241,7 @@ int CrFbEntryCreateForTexId(CR_FRAMEBUFFER *pFb, GLuint idTexture, uint32_t fFla
     int rc = CrFbEntryCreateForTexData(pFb, pTex, fFlags, phEntry);
     if (!RT_SUCCESS(rc))
     {
-    	WARN(("CrFbEntryCreateForTexData failed rc %d", rc));
+        WARN(("CrFbEntryCreateForTexData failed rc %d", rc));
     }
 
     /*always release the tex, the CrFbEntryCreateForTexData will do incref as necessary */

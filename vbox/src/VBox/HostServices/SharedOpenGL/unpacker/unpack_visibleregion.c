@@ -1,5 +1,4 @@
-/* $Id: unpack_visibleregion.c 62489 2016-07-22 18:41:09Z vboxsync $ */
-
+/* $Id: unpack_visibleregion.c 69390 2017-10-26 17:17:51Z vboxsync $ */
 /** @file
  * VBox Packing VisibleRegion information
  */

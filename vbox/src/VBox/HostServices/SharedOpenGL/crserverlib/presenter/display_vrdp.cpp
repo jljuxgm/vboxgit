@@ -1,4 +1,4 @@
-/* $Id: display_vrdp.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
+/* $Id: display_vrdp.cpp 69390 2017-10-26 17:17:51Z vboxsync $ */
 
 /** @file
  * Presenter API: CrFbDisplayVrdp class implementation -- display content over VRDP.
@@ -338,7 +338,7 @@ int CrFbDisplayVrdp::vrdpCreate(HCR_FRAMEBUFFER hFb, HCR_FRAMEBUFFER_ENTRY hEntr
     }
 
     int rc = cr_server.outputRedirect.CRORContextProperty(cr_server.outputRedirect.pvContext,
-                                                          0 /* H3DOR_PROP_FORMATS */, // @todo from a header
+                                                          0 /* H3DOR_PROP_FORMATS */, /// @todo from a header
                                                           pachFormats, cbFormats, &cbFormats);
     if (RT_SUCCESS(rc))
     {
@@ -347,7 +347,7 @@ int CrFbDisplayVrdp::vrdpCreate(HCR_FRAMEBUFFER hFb, HCR_FRAMEBUFFER_ENTRY hEntr
             cr_server.outputRedirect.CRORBegin(
                 cr_server.outputRedirect.pvContext,
                 &pVrdp,
-                "H3DOR_FMT_RGBA_TOPDOWN"); // @todo from a header
+                "H3DOR_FMT_RGBA_TOPDOWN"); /// @todo from a header
 
             if (pVrdp)
             {
