@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.h 71615 2018-04-02 13:18:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class declaration.
  */
@@ -34,8 +34,6 @@ class UIMultiScreenLayout : public QObject
 
 signals:
 
-    /** Notifies about layout update. */
-    void sigScreenLayoutUpdate();
     /** Notifies about layout change. */
     void sigScreenLayoutChange();
 
@@ -65,6 +63,7 @@ private:
     /* Helpers: Prepare stuff: */
     void calculateHostMonitorCount();
     void calculateGuestScreenCount();
+    void prepareConnections();
 
     /* Other helpers: */
     void saveScreenMapping();

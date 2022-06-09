@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 71615 2018-04-02 13:18:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -54,13 +54,11 @@ UIMachineLogicFullscreen::UIMachineLogicFullscreen(QObject *pParent, UISession *
 {
     /* Create multiscreen layout: */
     m_pScreenLayout = new UIMultiScreenLayout(this);
-    actionPool()->toRuntime()->setMultiScreenLayout(m_pScreenLayout);
 }
 
 UIMachineLogicFullscreen::~UIMachineLogicFullscreen()
 {
     /* Delete multiscreen layout: */
-    actionPool()->toRuntime()->unsetMultiScreenLayout(m_pScreenLayout);
     delete m_pScreenLayout;
 }
 
