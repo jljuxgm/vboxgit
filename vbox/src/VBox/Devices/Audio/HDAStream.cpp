@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 70124 2017-12-14 10:58:42Z vboxsync $ */
+/* $Id: HDAStream.cpp 70125 2017-12-14 11:02:53Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -243,7 +243,7 @@ int hdaStreamInit(PHDASTREAM pStream, uint8_t uSD)
 
         /** @todo Use a more dynamic fragment size? */
         Assert(pStream->u16LVI <= UINT8_MAX - 1);
-        uint8_t cFragments = pStream->u16LVI;
+        uint8_t cFragments = pStream->u16LVI + 1;
         if (cFragments <= 1)
             cFragments = 2; /* At least two fragments (BDLEs) must be present. */
 
