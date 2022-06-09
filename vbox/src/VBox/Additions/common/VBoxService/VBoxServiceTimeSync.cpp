@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 70025 2017-12-08 13:24:54Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 70032 2017-12-08 14:10:54Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -523,7 +523,6 @@ static void vgsvcTimeSyncSet(PCRTTIMESPEC pDrift)
 DECLCALLBACK(int) vgsvcTimeSyncWorker(bool volatile *pfShutdown)
 {
     RTTIME Time;
-    char sz[64];
     int rc = VINF_SUCCESS;
 
     /*
@@ -611,9 +610,11 @@ DECLCALLBACK(int) vgsvcTimeSyncWorker(bool volatile *pfShutdown)
 
                 if (g_cTimeSyncVerbosity >= 4)
                 {
+                    char sz1[64];
+                    char sz2[64];
                     vgsvcTimeSyncLog(4, "vgsvcTimeSyncWorker: Host: %s (MinAdjust: %RU32 ms), Guest: %s => %RDtimespec drift\n",
-                                     RTTimeToString(RTTimeExplode(&Time, &HostNow), sz, sizeof(sz)), MinAdjust,
-                                     RTTimeToString(RTTimeExplode(&Time, &GuestNow), sz, sizeof(sz)), &Drift);
+                                     RTTimeToString(RTTimeExplode(&Time, &HostNow), sz1, sizeof(sz1)), MinAdjust,
+                                     RTTimeToString(RTTimeExplode(&Time, &GuestNow), sz2, sizeof(sz2)), &Drift);
                 }
 
                 bool fSetTimeInThisLoop = false;
