@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.h 72107 2018-05-04 10:45:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class declaration.
  */
@@ -26,10 +26,9 @@
 struct UIDataSettingsGlobalGeneral;
 typedef UISettingsCache<UIDataSettingsGlobalGeneral> UISettingsCacheGlobalGeneral;
 
-
 /** Global settings: General page. */
-class UIGlobalSettingsGeneral : public UISettingsPageGlobal,
-                                public Ui::UIGlobalSettingsGeneral
+class SHARED_LIBRARY_STUFF UIGlobalSettingsGeneral : public UISettingsPageGlobal,
+                                                     public Ui::UIGlobalSettingsGeneral
 {
     Q_OBJECT;
 
@@ -74,4 +73,3 @@ private:
 };
 
 #endif /* !___UIGlobalSettingsGeneral_h___ */
-

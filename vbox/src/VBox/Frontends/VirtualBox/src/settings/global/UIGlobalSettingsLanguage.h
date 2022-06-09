@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.h 72107 2018-05-04 10:45:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class declaration.
  */
@@ -26,10 +26,9 @@
 struct UIDataSettingsGlobalLanguage;
 typedef UISettingsCache<UIDataSettingsGlobalLanguage> UISettingsCacheGlobalLanguage;
 
-
 /** Global settings: Language page. */
-class UIGlobalSettingsLanguage : public UISettingsPageGlobal,
-                                 public Ui::UIGlobalSettingsLanguage
+class SHARED_LIBRARY_STUFF UIGlobalSettingsLanguage : public UISettingsPageGlobal,
+                                                      public Ui::UIGlobalSettingsLanguage
 {
     Q_OBJECT;
 
@@ -93,4 +92,3 @@ private:
 };
 
 #endif /* !___UIGlobalSettingsLanguage_h___ */
-

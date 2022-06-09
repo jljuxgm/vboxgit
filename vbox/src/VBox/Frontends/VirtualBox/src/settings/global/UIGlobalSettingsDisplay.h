@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIGlobalSettingsDisplay.h 72107 2018-05-04 10:45:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class declaration.
  */
@@ -26,10 +26,9 @@
 struct UIDataSettingsGlobalDisplay;
 typedef UISettingsCache<UIDataSettingsGlobalDisplay> UISettingsCacheGlobalDisplay;
 
-
 /** Global settings: Display page. */
-class UIGlobalSettingsDisplay : public UISettingsPageGlobal,
-                                public Ui::UIGlobalSettingsDisplay
+class SHARED_LIBRARY_STUFF UIGlobalSettingsDisplay : public UISettingsPageGlobal,
+                                                     public Ui::UIGlobalSettingsDisplay
 {
     Q_OBJECT;
 
@@ -82,4 +81,3 @@ private:
 };
 
 #endif /* !___UIGlobalSettingsDisplay_h___ */
-

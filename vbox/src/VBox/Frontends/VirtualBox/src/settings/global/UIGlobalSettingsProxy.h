@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.h 72107 2018-05-04 10:45:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class declaration.
  */
@@ -27,10 +27,9 @@
 struct UIDataSettingsGlobalProxy;
 typedef UISettingsCache<UIDataSettingsGlobalProxy> UISettingsCacheGlobalProxy;
 
-
 /** Global settings: Proxy page. */
-class UIGlobalSettingsProxy : public UISettingsPageGlobal,
-                              public Ui::UIGlobalSettingsProxy
+class SHARED_LIBRARY_STUFF UIGlobalSettingsProxy : public UISettingsPageGlobal,
+                                                   public Ui::UIGlobalSettingsProxy
 {
     Q_OBJECT;
 
@@ -83,4 +82,3 @@ private:
 };
 
 #endif /* !___UIGlobalSettingsProxy_h___ */
-
