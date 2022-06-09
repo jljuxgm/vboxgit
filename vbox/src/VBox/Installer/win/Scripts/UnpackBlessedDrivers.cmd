@@ -1,5 +1,5 @@
 @echo off
-rem $Id: UnpackBlessedDrivers.cmd 72047 2018-04-27 00:07:20Z vboxsync $
+rem $Id: UnpackBlessedDrivers.cmd 72049 2018-04-27 08:38:20Z vboxsync $
 rem rem @file
 rem Windows NT batch script for unpacking drivers after being signed.
 rem
@@ -134,12 +134,13 @@ for %%d in (%_MY_DRIVER_BASE_NAMES%) do (
 rem
 rem Modify the catalog signatures.
 rem
+if "%_MY_OPT_SIGN_CAT%" == "0" goto no_sign_cat
 for %%d in (%_MY_DRIVER_BASE_NAMES%) do (
     copy /y "%_MY_OPT_BINDIR%\%%d.cat" "%_MY_OPT_BINDIR%\%%d.cat.ms" || goto end_failed
     call sign-dual.cmd "%_MY_OPT_BINDIR%\%%d.cat" || goto end_failed
     "%_MY_OPT_BINDIR%\tools\RTSignTool.exe"  add-nested-exe-signature -v "%_MY_OPT_BINDIR%\%%d.cat" "%_MY_OPT_BINDIR%\%%d.cat.ms" || goto end_failed
 )
-
+:no_sign_cat
 goto end
 
 :end_failed

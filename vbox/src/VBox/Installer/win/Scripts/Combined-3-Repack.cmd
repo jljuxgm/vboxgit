@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Combined-3-Repack.cmd 72047 2018-04-27 00:07:20Z vboxsync $
+rem $Id: Combined-3-Repack.cmd 72049 2018-04-27 08:38:20Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 and x86 drivers.
 rem
@@ -33,7 +33,7 @@ rem
 rem Parse arguments.
 rem
 set _MY_OPT_UNTAR_DIR=%_MY_SCRIPT_DIR%\..\..\..\
-for %i in (%_MY_OPT_UNTAR_DIR%) do set _MY_OPT_UNTAR_DIR=%~fi
+for %%i in (%_MY_OPT_UNTAR_DIR%) do set _MY_OPT_UNTAR_DIR=%%~fi
 set _MY_OPT_EXTPACK=%_MY_OPT_UNTAR_DIR%\Oracle_VM_VirtualBox_Extension_Pack-%_MY_VER_REV%.vbox-extpack
 set _MY_OPT_EXTPACK_ENTERPRISE=%_MY_OPT_UNTAR_DIR%\Oracle_VM_VirtualBox_Extension_Pack-%_MY_VER_REV%-ENTERPRISE.vbox-extpack
 set _MY_OPT_BUILD_TYPE=@KBUILD_TYPE@
@@ -185,7 +185,7 @@ if not exist "%_MY_REPACK_DIR_AMD64%"   goto error_amd64_repack_dir_not_found
 if not exist "%_MY_REPACK_DIR_X86%"     goto error_x86_repack_dir_not_found
 
 if not exist "%_MY_OPT_EXTPACK%"        goto error_extpack_not_found
-if not ".%_MY_OPT_EXTPACK_ENTERPRISE" == "." if not exist "%_MY_OPT_EXTPACK_ENTERPRISE%" goto error_enterprise_extpack_not_found
+if not ".%_MY_OPT_EXTPACK_ENTERPRISE%" == "." if not exist "%_MY_OPT_EXTPACK_ENTERPRISE%" goto error_enterprise_extpack_not_found
 
 if not exist "%_MY_OPT_SIGNED_AMD64%"   goto error_signed_amd64_not_found
 if not exist "%_MY_OPT_SIGNED_X86%"     goto error_signed_x86_not_found
