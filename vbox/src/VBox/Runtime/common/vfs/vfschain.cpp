@@ -1,4 +1,4 @@
-/* $Id: vfschain.cpp 69984 2017-12-07 15:36:52Z vboxsync $ */
+/* $Id: vfschain.cpp 70997 2018-02-13 12:42:11Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Chains.
  */
@@ -1257,7 +1257,7 @@ RTDECL(int) RTVfsChainOpenDir(const char *pszSpec, uint32_t fOpen,
         {
             const char *pszFinal = NULL;
             RTVFSOBJ    hVfsObj  = NIL_RTVFSOBJ;
-            pSpec->fOpenFile = fOpen;
+            pSpec->fOpenFile = RTFILE_O_READ;
             rc = RTVfsChainSpecCheckAndSetup(pSpec, NULL /*pReuseSpec*/, &hVfsObj, &pszFinal, poffError, pErrInfo);
             if (RT_SUCCESS(rc))
             {
