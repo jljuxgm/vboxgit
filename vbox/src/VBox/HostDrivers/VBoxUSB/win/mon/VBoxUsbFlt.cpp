@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 70283 2017-12-21 14:28:47Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 70286 2017-12-21 15:35:40Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -1145,27 +1145,6 @@ static USBDEVICESTATE vboxUsbDevGetUserState(PVBOXUSBFLTCTX pContext, PVBOXUSBFL
             WARN(("unexpected device state(%d) for device(0x%p)", pDevice->enmState, pDevice));
             return USBDEVICESTATE_UNSUPPORTED;
     }
-}
-
-static void vboxUsbDevToUserInfo(PVBOXUSBFLTCTX pContext, PVBOXUSBFLT_DEVICE pDevice, PUSBSUP_DEVINFO pDevInfo)
-{
-#if 0
-    pDevInfo->usVendorId = pDevice->idVendor;
-    pDevInfo->usProductId = pDevice->idProduct;
-    pDevInfo->usRevision = pDevice->bcdDevice;
-    pDevInfo->enmState = vboxUsbDevGetUserState(pContext, pDevice);
-
-    strcpy(pDevInfo->szDrvKeyName, pDevice->szDrvKeyName);
-    if (pDevInfo->enmState == USBDEVICESTATE_HELD_BY_PROXY
-            || pDevInfo->enmState == USBDEVICESTATE_USED_BY_GUEST)
-    {
-        /* this is the only case where we return the obj name to the client */
-        strcpy(pDevInfo->szObjName, pDevice->szObjName);
-    }
-    pDevInfo->fHighSpeed = pDevice->fHighSpeed;
-#else
-    RT_NOREF3(pContext, pDevice, pDevInfo);
-#endif
 }
 
 NTSTATUS VBoxUsbFltGetDevice(PVBOXUSBFLTCTX pContext, HVBOXUSBDEVUSR hDevice, PUSBSUP_GETDEV_MON pInfo)
