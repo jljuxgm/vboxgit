@@ -1,4 +1,4 @@
-/* $Id: pulse_stubs.c 67952 2017-07-13 10:33:25Z vboxsync $ */
+/* $Id: pulse_stubs.c 68039 2017-07-18 17:46:43Z vboxsync $ */
 /** @file
  * Stubs for libpulse.
  */
@@ -165,6 +165,9 @@ PROXY_STUB_VOID(pa_stream_set_state_callback,
 PROXY_STUB_VOID(pa_stream_set_underflow_callback,
                 (pa_stream *s, pa_stream_notify_cb_t cb, void *userdata),
                 (s, cb, userdata))
+PROXY_STUB_VOID(pa_stream_set_overflow_callback,
+                (pa_stream *s, pa_stream_notify_cb_t cb, void *userdata),
+                (s, cb, userdata))
 PROXY_STUB_VOID(pa_stream_set_write_callback,
                 (pa_stream *s, pa_stream_request_cb_t cb, void *userdata),
                 (s, cb, userdata))
@@ -276,6 +279,7 @@ static SHARED_FUNC SharedFuncs[] =
     ELEMENT(pa_stream_set_buffer_attr),
     ELEMENT(pa_stream_set_state_callback),
     ELEMENT(pa_stream_set_underflow_callback),
+    ELEMENT(pa_stream_set_overflow_callback),
     ELEMENT(pa_stream_set_write_callback),
     ELEMENT(pa_stream_flush),
     ELEMENT(pa_stream_drain),

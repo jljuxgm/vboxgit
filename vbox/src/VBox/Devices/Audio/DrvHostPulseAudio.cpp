@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 67951 2017-07-13 10:23:33Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 68039 2017-07-18 17:46:43Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -457,6 +457,16 @@ static void paStreamCbUnderflow(pa_stream *pStream, void *pvContext)
 }
 
 
+#ifdef VBOX_STRICT
+static void paStreamCbOverflow(pa_stream *pStream, void *pvContext)
+{
+    RT_NOREF(pStream, pvContext);
+
+    Log2Func(("Warning: Hit overflow\n"));
+}
+#endif
+
+
 static void paStreamCbSuccess(pa_stream *pStream, int fSuccess, void *pvUser)
 {
     AssertPtrReturnVoid(pStream);
@@ -512,10 +522,14 @@ static int paStreamOpen(PDRVHOSTPULSEAUDIO pThis, PPULSEAUDIOSTREAM pStreamPA, b
         }
 
 #ifdef PULSEAUDIO_ASYNC
-        pa_stream_set_write_callback(pStream,     paStreamCbReqWrite,     pStreamPA);
+        pa_stream_set_write_callback       (pStream, paStreamCbReqWrite,     pStreamPA);
 #endif
-        pa_stream_set_underflow_callback(pStream, paStreamCbUnderflow,    pStreamPA);
-        pa_stream_set_state_callback(pStream,     paStreamCbStateChanged, pThis);
+        pa_stream_set_underflow_callback   (pStream, paStreamCbUnderflow,    pStreamPA);
+#ifdef VBOX_STRICT
+        if (!fIn) /* Only for output streams. */
+            pa_stream_set_overflow_callback(pStream, paStreamCbOverflow,     pStreamPA);
+#endif
+        pa_stream_set_state_callback       (pStream, paStreamCbStateChanged, pThis);
 
 #if PA_API_VERSION >= 12
         /* XXX */
