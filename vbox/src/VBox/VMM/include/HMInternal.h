@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 70606 2018-01-16 19:05:36Z vboxsync $ */
+/* $Id: HMInternal.h 71108 2018-02-22 15:38:35Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -420,8 +420,10 @@ typedef struct HM
     bool                        fIbpbOnVmExit;
     /** Set if indirect branch prediction barrier on VM entry. */
     bool                        fIbpbOnVmEntry;
+    /** Set if host manages speculation control settings. */
+    bool                        fSpecCtrlByHost;
     /** Explicit padding. */
-    bool                        afPadding[3];
+    bool                        afPadding[2];
 
     /** Maximum ASID allowed. */
     uint32_t                    uMaxAsid;

@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 71064 2018-02-20 03:59:05Z vboxsync $ */
+/* $Id: HM.cpp 71108 2018-02-22 15:38:35Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -463,6 +463,7 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
                               "|EnableVPID"
                               "|IBPBOnVMExit"
                               "|IBPBOnVMEntry"
+                              "|SpecCtrlByHost"
                               "|TPRPatchingEnabled"
                               "|64bitEnabled"
                               "|Exclusive"
@@ -648,6 +649,11 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
     /** @cfgm{/HM/IBPBOnVMEntry, bool}
      * Costly paranoia setting. */
     rc = CFGMR3QueryBoolDef(pCfgHm, "IBPBOnVMEntry", &pVM->hm.s.fIbpbOnVmEntry, false);
+    AssertLogRelRCReturn(rc, rc);
+
+    /** @cfgm{/HM/SpecCtrlByHost, bool}
+     * Another expensive paranoia setting. */
+    rc = CFGMR3QueryBoolDef(pCfgHm, "SpecCtrlByHost", &pVM->hm.s.fSpecCtrlByHost, false);
     AssertLogRelRCReturn(rc, rc);
 
     /*
