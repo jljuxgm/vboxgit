@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 69729 2017-11-17 19:55:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -58,6 +58,12 @@ namespace settings
     struct MediaRegistry;
 }
 
+
+#if defined(VBOX_WITH_SDS_PLAN_B) && !defined(VBOX_WITH_XPCOM)
+class VirtualBoxClassFactory; /* See ../src-server/win/svcmain.cpp  */
+#endif
+
+
 class ATL_NO_VTABLE VirtualBox :
     public VirtualBoxWrap
 #ifdef RT_OS_WINDOWS
@@ -73,7 +79,13 @@ public:
     class CallbackEvent;
     friend class CallbackEvent;
 
+#ifndef VBOX_WITH_XPCOM
+# ifdef VBOX_WITH_SDS_PLAN_B
+    DECLARE_CLASSFACTORY_EX(VirtualBoxClassFactory)
+# else
     DECLARE_CLASSFACTORY_SINGLETON(VirtualBox)
+# endif
+#endif
 
     // Do not use any ATL registry support.
     //DECLARE_REGISTRY_RESOURCEID(IDR_VIRTUALBOX)

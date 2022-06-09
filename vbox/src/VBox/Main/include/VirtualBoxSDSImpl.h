@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.h 69729 2017-11-17 19:55:33Z vboxsync $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -108,6 +108,10 @@ private:
     *    either from cahce or makes new one.
     */
     HRESULT getVirtualBox(ComPtr<IVirtualBox> &aVirtualBox, ComPtr<IToken> &aToken);
+
+    /* SDS plan B interfaces: */
+    HRESULT registerVBoxSVC(const ComPtr<IVBoxSVC> &aVBoxSVC, LONG aPid, ComPtr<IUnknown> &aExistingVirtualBox);
+    HRESULT deregisterVBoxSVC(const ComPtr<IVBoxSVC> &aVBoxSVC, LONG aPid);
 
     // Wrapped IVirtualBoxSDS methods
 
