@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 67821 2017-07-06 13:38:26Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 67836 2017-07-06 16:00:53Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2663,7 +2663,6 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
 
     uint32_t uMicrocodeRev;
     int rc = SUPR3QueryMicrocodeRev(&uMicrocodeRev);
-    rc = SUPR3QueryVTCaps(&uMicrocodeRev);
     if (RT_SUCCESS(rc))
     {
         LogRel(("CPUM: Microcode revision 0x%08X\n", uMicrocodeRev));
