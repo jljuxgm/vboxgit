@@ -1,4 +1,4 @@
-# $Id: Makefile 66424 2017-04-05 09:27:55Z vboxsync $
+# $Id: Makefile 67063 2017-05-24 12:46:11Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -24,6 +24,10 @@
 # You may elect to license modified versions of this file under the
 # terms and conditions of either the GPL or the CDDL or both.
 #
+
+## @todo If you make non-trivial changes to this make file, please consider
+#        rewriting it to use Makefile.include.header and
+#        Makefile.include.footer.
 
 #
 # First, figure out which architecture we're targeting and the build type.
