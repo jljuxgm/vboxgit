@@ -1,6 +1,6 @@
-/* $Id: errinfolog.cpp 69011 2017-10-09 11:52:45Z vboxsync $ */
+/* $Id: errinfolog.cpp 69012 2017-10-09 11:54:20Z vboxsync $ */
 /** @file
- * IPRT - Error Info, Setters.
+ * IPRT - Error Info, Setters with logging.
  */
 
 /*
