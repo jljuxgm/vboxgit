@@ -1,4 +1,4 @@
-/** $Id: VDIoBackendMem.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/** $Id: VDIoBackendMem.cpp 68520 2017-08-23 15:09:27Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O memory backend
@@ -160,7 +160,7 @@ int VDIoBackendMemTransfer(PVDIOBACKENDMEM pIoBackend, PVDMEMDISK pMemDisk,
         return VERR_NO_MEMORY;
 
     RTCircBufAcquireWriteBlock(pIoBackend->pRequestRing, sizeof(PVDIOBACKENDREQ), (void **)&ppReq, &cbData);
-    if (!pReq)
+    if (!ppReq)
     {
         RTMemFree(pReq);
         return VERR_NO_MEMORY;
