@@ -1,4 +1,4 @@
-# $Id: Config.kmk 67299 2017-06-08 13:28:46Z vboxsync $
+# $Id: Config.kmk 67323 2017-06-09 14:47:35Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1981,6 +1981,9 @@ ifeq ($(KBUILD_HOST),win)
 else
  VBOX_MKISOFS  ?= mkisofs
 endif
+
+# zip
+VBOX_ZIP ?= zip$(HOSTSUFF_EXE)
 
 ifeq ($(KBUILD_TARGET),win)
  ifeq ($(KBUILD_TARGET_ARCH),x86) # Normally we should test for KBUILD_HOST_ARCH but we only require MINGWW64 for 64-bit _targets_
@@ -6997,7 +7000,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 67299 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 67323 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

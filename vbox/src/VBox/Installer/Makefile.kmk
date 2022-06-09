@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62487 2016-07-22 18:40:31Z vboxsync $
+# $Id: Makefile.kmk 67323 2017-06-09 14:47:35Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages.
 #
@@ -57,7 +57,6 @@ if defined(VBOX_ONLY_SDK) ## @todo || defined(VBOX_WITH_SDK)
  OTHER_CLEANS += $(VBOX_SDK_ZIP) \
                  $(wildcard $(PATH_STAGE_BIN)/VirtualBoxSDK-*-r*.zip)
 
- VBOX_ZIP     ?= zip
 # @todo: wrong, it must depend on everything included in SDK
 $(VBOX_SDK_ZIP): \
 		$(PATH_STAGE_BIN)/sdk \

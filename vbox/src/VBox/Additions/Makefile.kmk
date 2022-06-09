@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 67321 2017-06-09 14:42:02Z vboxsync $
+# $Id: Makefile.kmk 67323 2017-06-09 14:47:35Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -336,7 +336,7 @@ $(VBOX_PATH_ADDITIONS_ISO)/VBoxGuestAdditions.iso: \
 $(VBOX_PATH_ADDITIONS_ISO)/VBoxGuestAdditions.zip: $(VBOX_PATH_ADDITIONS_ISO)/VBoxGuestAdditions.iso
 	$(call MSG_L1,Zipping image $@)
 	$(QUIET)$(RM) -f $@
-	$(QUIET)$(REDIRECT) -C $(VBOX_PATH_ADDITIONS_ISO) -- zip$(HOSTSUFF_EXE) -9 $@ $(notdir $^)
+	$(QUIET)$(REDIRECT) -C $(VBOX_PATH_ADDITIONS_ISO) -- $(VBOX_ZIP) -9 $@ $(notdir $^)
 
 # Alias for creating the iso.
 .PHONY: additions-iso
