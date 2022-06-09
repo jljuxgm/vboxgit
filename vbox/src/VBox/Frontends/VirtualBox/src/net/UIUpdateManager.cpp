@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 71461 2018-03-22 15:07:08Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 71528 2018-03-27 16:30:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -29,7 +29,6 @@
 /* GUI includes: */
 # include "QIProcess.h"
 # include "VBoxGlobal.h"
-# include "VBoxLicenseViewer.h"
 # include "VBoxUtils.h"
 # include "UIDownloaderExtensionPack.h"
 # include "UIExtraDataManager.h"
