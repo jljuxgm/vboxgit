@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69251 2017-10-24 19:23:21Z vboxsync $
+# $Id: .scm-settings 69252 2017-10-24 19:32:29Z vboxsync $
 ## @file
 # Source code massager settings for HGSMI.
 #
@@ -13,7 +13,6 @@
 # Foundation, in version 2 as it comes in the "COPYING" file of the
 # VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
-#
 #
 
 # @bugref{8524} r114561: MIT license of files upstreamed to the Linux kernel to
