@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 72336 2018-05-25 09:59:14Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 72338 2018-05-25 10:01:34Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -794,7 +794,7 @@ DECLINLINE(void) drvdiskintTraceLogFireEvtWrite(PDRVDISKINTEGRITY pThis, uintptr
     if (pThis->hIoLogger)
     {
         int rc = RTTraceLogWrEvtAddL(pThis->hIoLogger, &g_EvtWrite, RTTRACELOG_WR_ADD_EVT_F_GRP_START,
-                                     (RTTRACELOGEVTGRPID)uGrp, 0, off, cbWrite);
+                                     (RTTRACELOGEVTGRPID)uGrp, 0, fAsync, off, cbWrite);
         AssertRC(rc);
     }
 }
@@ -813,7 +813,7 @@ DECLINLINE(void) drvdiskintTraceLogFireEvtFlush(PDRVDISKINTEGRITY pThis, uintptr
     if (pThis->hIoLogger)
     {
         int rc = RTTraceLogWrEvtAddL(pThis->hIoLogger, &g_EvtFlush, RTTRACELOG_WR_ADD_EVT_F_GRP_START,
-                                     (RTTRACELOGEVTGRPID)uGrp, 0);
+                                     (RTTRACELOGEVTGRPID)uGrp, 0, fAsync);
         AssertRC(rc);
     }
 }
