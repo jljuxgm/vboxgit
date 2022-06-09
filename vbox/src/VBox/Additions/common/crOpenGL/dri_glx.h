@@ -1,4 +1,4 @@
-/* $Id: dri_glx.h 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: dri_glx.h 69040 2017-10-11 15:37:05Z vboxsync $ */
 
 /** @file
  *
@@ -134,7 +134,7 @@ extern DECLEXPORT(int) VBOXGLXTAG(glXGetFBConfigAttribSGIX)(Display *dpy, GLXFBC
  */
 extern DECLEXPORT(GLXFBConfig *) VBOXGLXTAG(glXChooseFBConfig)(Display *dpy, int screen, ATTRIB_TYPE *attrib_list, int *nelements);
 extern DECLEXPORT(GLXPbuffer) VBOXGLXTAG(glXCreatePbuffer)(Display *dpy, GLXFBConfig config, ATTRIB_TYPE *attrib_list);
-extern DECLEXPORT(GLXPixmap) VBOXGLXTAG(glXCreatePixmap)(Display *dpy, GLXFBConfig config, Pixmap pixmap, const ATTRIB_TYPE *attrib_list);
+extern DECLEXPORT(GLXPixmap) VBOXGLXTAG(glXCreatePixmap)(Display *dpy, GLXFBConfig config, Pixmap pixmap, ATTRIB_TYPE *attrib_list);
 extern DECLEXPORT(GLXWindow) VBOXGLXTAG(glXCreateWindow)(Display *dpy, GLXFBConfig config, Window win, ATTRIB_TYPE *attrib_list);
 extern DECLEXPORT(GLXContext) VBOXGLXTAG(glXCreateNewContext)
 (Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
