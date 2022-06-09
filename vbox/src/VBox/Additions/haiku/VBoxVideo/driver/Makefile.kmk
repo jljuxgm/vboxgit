@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 67066 2017-05-24 13:37:42Z vboxsync $
+# $Id: Makefile.kmk 67145 2017-05-30 15:11:29Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxVideo driver, Haiku Guest Additions.
 #
@@ -73,7 +73,7 @@ vboxvideo_INCS            = \
 vboxvideo_SOURCES         = \
 	driver.cpp \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBase.cpp \
-	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBufferAlloc.cpp \
+	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBuffers.cpp \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/Modesetting.cpp \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/VBVABase.cpp \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxGuest/VBoxGuest-haiku-stubs.c

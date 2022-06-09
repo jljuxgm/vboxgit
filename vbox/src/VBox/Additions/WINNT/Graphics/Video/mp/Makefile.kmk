@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 67066 2017-05-24 13:37:42Z vboxsync $
+# $Id: Makefile.kmk 67145 2017-05-30 15:11:29Z vboxsync $
 ## @file
 # Makefile for the Windows guest miniport driver.
 #
@@ -48,7 +48,7 @@ VBoxVideo_SOURCES       = \
 	common/VBoxMPHGSMI.cpp \
 	common/VBoxMPVidModes.cpp \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBase.cpp \
-	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBufferAlloc.cpp \
+	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBuffers.cpp \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIHostCmd.cpp \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/Modesetting.cpp
 VBoxVideo_LIBS          = \
@@ -121,7 +121,7 @@ ifdef VBOX_WITH_WDDM
  	common/VBoxMPCommon.cpp \
  	common/VBoxMPHGSMI.cpp \
  	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBase.cpp \
- 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBufferAlloc.cpp \
+ 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBuffers.cpp \
  	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIHostCmd.cpp \
  	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/VBVABase.cpp \
  	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/Modesetting.cpp
