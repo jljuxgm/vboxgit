@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.h 71948 2018-04-20 15:34:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class declaration.
  */
@@ -30,9 +30,9 @@
 
 /* Forward declarations: */
 class QRadioButton;
-class VBoxMediaComboBox;
-class QIToolButton;
 class QIRichTextLabel;
+class QIToolButton;
+class UIMediaComboBox;
 
 /* 3rd page of the New Virtual Machine wizard (base part): */
 class UIWizardNewVMPage3 : public UIWizardPageBase
@@ -79,7 +79,7 @@ protected:
     QRadioButton *m_pDiskSkip;
     QRadioButton *m_pDiskCreate;
     QRadioButton *m_pDiskPresent;
-    VBoxMediaComboBox *m_pDiskSelector;
+    UIMediaComboBox *m_pDiskSelector;
     QIToolButton *m_pVMMButton;
 };
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic1.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic1.h 71948 2018-04-20 15:34:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic1 class declaration.
  */
@@ -26,9 +26,9 @@
 #include "CMedium.h"
 
 /* Forward declarations: */
-class VBoxMediaComboBox;
-class QIToolButton;
 class QIRichTextLabel;
+class QIToolButton;
+class UIMediaComboBox;
 
 
 /** 1st page of the Clone Virtual Disk Image wizard (base part): */
@@ -48,7 +48,7 @@ protected:
     void setSourceVirtualDisk(const CMedium &comSourceVirtualDisk);
 
     /** Holds the source media combo-box instance. */
-    VBoxMediaComboBox *m_pSourceDiskSelector;
+    UIMediaComboBox *m_pSourceDiskSelector;
     /** Holds the open-source-disk button instance. */
     QIToolButton      *m_pSourceDiskOpenButton;
 };
