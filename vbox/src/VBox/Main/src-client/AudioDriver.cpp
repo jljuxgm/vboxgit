@@ -1,4 +1,4 @@
-/* $Id: AudioDriver.cpp 70580 2018-01-14 12:47:45Z vboxsync $ */
+/* $Id: AudioDriver.cpp 70583 2018-01-15 11:02:19Z vboxsync $ */
 /** @file
  * VirtualBox audio base class for Main audio drivers.
  */
@@ -278,7 +278,9 @@ int AudioDriver::configure(unsigned uLUN, bool fAttach)
     PCFGMNODE pRoot   = CFGMR3GetRootU(pUVM);
     AssertPtr(pRoot);
     PCFGMNODE pDev0   = CFGMR3GetChildF(pRoot, "Devices/%s/%u/", mCfg.strDev.c_str(), mCfg.uInst);
-    AssertPtr(pDev0);
+
+    if (!pDev0) /* No audio device configured? Bail out. */
+        return VINF_SUCCESS;
 
     PCFGMNODE pDevLun = CFGMR3GetChildF(pDev0, "LUN#%u/", uLUN);
 
