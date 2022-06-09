@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.cpp 70711 2018-01-23 16:14:36Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.cpp 70715 2018-01-23 17:39:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -156,10 +156,10 @@ void UIVMLogViewerBookmarksPanel::prepareWidgets()
     m_pDeleteAllButton = new QIToolButton(this);
     if (m_pDeleteAllButton)
     {
-        mainLayout()->addWidget(m_pDeleteAllButton, 0);
+        mainLayout()->addWidget(m_pDeleteAllButton, 2);
     }
 
-    mainLayout()->addStretch(4);
+    mainLayout()->addStretch(3);
 }
 
 void UIVMLogViewerBookmarksPanel::prepareConnections()
