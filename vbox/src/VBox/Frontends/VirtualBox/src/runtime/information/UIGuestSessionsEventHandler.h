@@ -1,4 +1,4 @@
-/* $Id: UIGuestSessionsEventHandler.h 70899 2018-02-08 09:03:30Z vboxsync $ */
+/* $Id: UIGuestSessionsEventHandler.h 70912 2018-02-08 14:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -37,7 +37,7 @@ signals:
 
 public:
 
-    UIGuestSessionsEventHandler(QObject *parent, const CGuest &comGuest);
+    UIGuestSessionsEventHandler(QObject *parent, CGuest comGuest);
     ~UIGuestSessionsEventHandler();
 
     /** Returns the guest session (and processes) hierarchy as a vector of QTreeWidgetItem */
