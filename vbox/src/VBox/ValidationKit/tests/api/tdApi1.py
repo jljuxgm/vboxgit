@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdApi1.py 70816 2018-01-30 18:20:29Z vboxsync $
+# $Id: tdApi1.py 71193 2018-03-05 10:27:41Z vboxsync $
 
 """
 VirtualBox Validation Kit - API Test wrapper #1 combining all API sub-tests
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70816 $"
+__version__ = "$Revision: 71193 $"
 
 
 # Standard Python imports.
@@ -83,5 +83,6 @@ if __name__ == '__main__':
     from tdAppliance1 import SubTstDrvAppliance1
     from tdMoveMedium1 import SubTstDrvMoveMedium1
     from tdTreeDepth1 import SubTstDrvTreeDepth1
-    sys.exit(tdApi1([SubTstDrvPython1, SubTstDrvAppliance1, SubTstDrvMoveMedium1, SubTstDrvTreeDepth1]).main(sys.argv))
+    from tdMoveVM import SubTstDrvMoveVM
+    sys.exit(tdApi1([SubTstDrvPython1, SubTstDrvAppliance1, SubTstDrvMoveMedium1, SubTstDrvTreeDepth1, SubTstDrvMoveVM]).main(sys.argv))
 
