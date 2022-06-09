@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.h 70785 2018-01-29 10:42:01Z vboxsync $ */
+/* $Id: UINetworkReply.h 70787 2018-01-29 11:16:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff declaration.
  */
@@ -74,6 +74,7 @@ public:
         ContentTypeHeader,
         ContentLengthHeader,
         LastModifiedHeader,
+        LocationHeader,
     };
 
     /** Constructs network-reply of the passed @a type for the passed @a url and @a requestHeaders. */
