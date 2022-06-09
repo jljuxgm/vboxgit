@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 69097 2017-10-17 07:11:33Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 69136 2017-10-20 07:13:09Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -11,7 +11,7 @@
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1185,7 +1185,9 @@ PDMBOTHCBDECL(int) vmsvgaReadPort(PVGASTATE pThis, uint32_t *pu32)
             rc = VINF_IOM_R3_IOPORT_READ;
 #else
             STAM_REL_COUNTER_INC(&pThis->svga.StatRegUnknownRd);
+# ifndef DEBUG_sunlover
             AssertMsgFailed(("reg=%#x\n", idxReg));
+# endif
 #endif
         }
         break;
