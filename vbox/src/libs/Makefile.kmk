@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70440 2018-01-03 04:03:59Z vboxsync $
+# $Id: Makefile.kmk 70744 2018-01-25 15:42:57Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -83,7 +83,7 @@ if defined(VBOX_WITH_MAIN) \
  if defined(VBOX_WITH_LIBVPX) && !defined(VBOX_ONLY_DOCS) && !defined(VBOX_WITH_SDK) \
    && ("$(SDK_VBOX_VPX_INCS)" == "$(SDK_VBOX_VPX_DEFAULT_INCS)")
   if1of ($(KBUILD_TARGET), darwin linux solaris win)
-   include $(PATH_SUB_CURRENT)/libvpx-1.1.0/Makefile.kmk
+   include $(PATH_SUB_CURRENT)/libvpx-1.6.1/Makefile.kmk
   endif
  endif
 
