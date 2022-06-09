@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68875 2017-09-26 12:43:39Z vboxsync $
+# $Id: Config.kmk 68930 2017-09-29 13:27:54Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1179,6 +1179,14 @@ ifdef VBOX_OSE
  VBOX_WITH_NETFLT_CROSSBOW=
  ifn1of ($(KBUILD_TARGET), darwin linux solaris win)
   VBOX_WITH_INSTALLER=
+ endif
+ if1of ($(KBUILD_TARGET), win)
+  # Undefine codec libraries which are not needed.
+  VBOX_WITH_LIBVPX=
+  VBOX_WITH_LIBOPUS=
+  # Disable video recording (with audio support).
+  VBOX_WITH_VIDEOREC=
+  VBOX_WITH_AUDIO_VIDEOREC=
  endif
  VBOX_GUI_WITH_HIDPI=
  # branding
@@ -7065,7 +7073,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68875 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68930 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
