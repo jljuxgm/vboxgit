@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 71876 2018-04-17 14:22:53Z vboxsync $ */
+/* $Id: RTSignTool.cpp 71877 2018-04-17 14:30:33Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -394,7 +394,7 @@ static RTEXITCODE SignToolPkcs7_AddNestedSignature(PSIGNTOOLPKCS7 pThis, PSIGNTO
                 RTMsgInfo("Adding UnauthenticatedAttribute #%u...", iPos);
             Assert((uint32_t)iPos < pSignerInfo->UnauthenticatedAttributes.cItems);
 
-            PRTCRPKCS7ATTRIBUTE pAttr = pSignerInfo->UnauthenticatedAttributes.papItems[iPos];
+            pAttr = pSignerInfo->UnauthenticatedAttributes.papItems[iPos];
             rc = RTAsn1ObjId_InitFromString(&pAttr->Type, RTCR_PKCS9_ID_MS_NESTED_SIGNATURE, pAttr->Allocation.pAllocator);
             if (RT_SUCCESS(rc))
             {
