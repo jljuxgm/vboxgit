@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: MM.cpp 69221 2017-10-24 15:07:46Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -853,5 +853,4 @@ VMMR3DECL(uint32_t) MMR3PhysGet4GBRamHoleSize(PVM pVM)
     VM_ASSERT_VALID_EXT_RETURN(pVM, UINT32_MAX);
     return pVM->mm.s.cbRamHole;
 }
-
 

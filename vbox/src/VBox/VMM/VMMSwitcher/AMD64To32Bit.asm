@@ -1,4 +1,4 @@
-; $Id: AMD64To32Bit.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: AMD64To32Bit.asm 69221 2017-10-24 15:07:46Z vboxsync $
 ;; @file
 ; VMM - World Switchers, AMD64 to 32-bit
 ;
@@ -32,5 +32,4 @@
 ;*******************************************************************************
 %include "VBox/asmdefs.mac"
 %include "VMMSwitcher/AMD64andLegacy.mac"
-
 

@@ -1,8 +1,9 @@
-; $Id: PATMA.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: PATMA.asm 69221 2017-10-24 15:07:46Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
 
+;
 ; Copyright (C) 2006-2017 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
