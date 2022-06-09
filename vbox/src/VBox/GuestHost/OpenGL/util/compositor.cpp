@@ -1,4 +1,4 @@
-/* $Id: compositor.cpp 70939 2018-02-09 18:15:40Z vboxsync $ */
+/* $Id: compositor.cpp 70959 2018-02-10 23:46:55Z vboxsync $ */
 /** @file
  * Compositor implementation.
  */
@@ -917,11 +917,9 @@ VBOXVREGDECL(void) CrVrScrCompositorSetStretching(PVBOXVR_SCR_COMPOSITOR pCompos
     if (pCompositor->StretchX == StretchX && pCompositor->StretchY == StretchY)
         return;
 
-    crDebug("CrVrScrCompositorSetStretching, stretch factors change " 
-        "(" FLOAT_FMT_STR ", " FLOAT_FMT_STR ") => "
-        "(" FLOAT_FMT_STR ", " FLOAT_FMT_STR ")",
-        FLOAT_FMT_ARGS(pCompositor->StretchX), FLOAT_FMT_ARGS(pCompositor->StretchY),
-        FLOAT_FMT_ARGS(StretchX), FLOAT_FMT_ARGS(StretchY));
+    crDebug("CrVrScrCompositorSetStretching, stretch factors change (" FLOAT_FMT_STR ", " FLOAT_FMT_STR ") => (" FLOAT_FMT_STR ", " FLOAT_FMT_STR ")",
+            FLOAT_FMT_ARGS(pCompositor->StretchX), FLOAT_FMT_ARGS(pCompositor->StretchY),
+            FLOAT_FMT_ARGS(StretchX), FLOAT_FMT_ARGS(StretchY));
 
     pCompositor->StretchX = StretchX;
     pCompositor->StretchY = StretchY;
