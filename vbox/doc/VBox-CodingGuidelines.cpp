@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 71705 2018-04-06 13:26:06Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 71739 2018-04-07 21:47:11Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -141,6 +141,8 @@
  *        one line after the end of the last function.
  *
  *   <li> No 'else' after if block ending with 'return', 'break', or 'continue'.
+ *
+ *   <li> The term 'last' is inclusive, whereas the term 'end' is exclusive.
  *
  *   <li> Go through all of this: https://www.slideshare.net/olvemaudal/deep-c/
  *
