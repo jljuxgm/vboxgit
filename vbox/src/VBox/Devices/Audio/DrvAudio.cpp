@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 67574 2017-06-23 09:12:15Z vboxsync $ */
+/* $Id: DrvAudio.cpp 67607 2017-06-26 12:51:19Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1627,13 +1627,7 @@ static int drvAudioStreamCaptureNonInterleaved(PDRVAUDIO pThis, PPDMAUDIOSTREAM 
                 csCapturedTotal += csCaptured;
         }
         else /* Nothing captured -- bail out. */
-        {
-#ifdef VBOX_STRICT
-            AssertMsgFailed(("[%s] Captured anything, even if announced readable data (%RU32 captured samples so far) -- backend buggy?\n",
-                             pHstStream->szName, csCapturedTotal));
-#endif
             break;
-        }
 
         if (RT_FAILURE(rc))
             break;
@@ -1716,13 +1710,7 @@ static int drvAudioStreamCaptureRaw(PDRVAUDIO pThis, PPDMAUDIOSTREAM pHstStream,
             csCapturedTotal += csCaptured;
         }
         else /* Nothing captured -- bail out. */
-        {
-#ifdef VBOX_STRICT
-            AssertMsgFailed(("[%s] Captured anything, even if announced readable data (%RU32 captured samples so far) -- backend buggy?\n",
-                             pHstStream->szName, csCapturedTotal));
-#endif
             break;
-        }
 
         if (RT_FAILURE(rc))
             break;
