@@ -1,5 +1,5 @@
 @echo off
-REM $Id: autoexec-testbox.cmd 69447 2017-10-27 16:34:26Z vboxsync $
+REM $Id: autoexec-testbox.cmd 72204 2018-05-14 16:19:59Z vboxsync $
 REM REM @file
 REM VirtualBox Validation Kit - testbox script, automatic execution wrapper.
 REM
@@ -25,11 +25,30 @@ REM You may elect to license modified versions of this file under the
 REM terms and conditions of either the GPL or the CDDL or both.
 REM
 
-@echo "$Id: autoexec-testbox.cmd 69447 2017-10-27 16:34:26Z vboxsync $"
+@echo "$Id: autoexec-testbox.cmd 72204 2018-05-14 16:19:59Z vboxsync $"
 @echo on
 setlocal EnableExtensions
 set exe=python.exe
 for /f %%x in ('tasklist /NH /FI "IMAGENAME eq %exe%"') do if %%x == %exe% goto end
-%SystemDrive%\Python27\python.exe %SystemDrive%\testboxscript\testboxscript\testboxscript.py --testrsrc-server-type=cifs --builds-server-type=cifs
+
+if not exist %SystemRoot%\System32\imdisk.exe goto defaulttest
+
+REM Take presence of imdisk.exe as order to test in ramdisk.
+set RAMDRIVE=D:
+if exist %RAMDRIVE%\TEMP goto skip
+imdisk -a -s 16GB -m %RAMDRIVE% -p "/fs:ntfs /q /y"
+:skip
+
+set VBOX_INSTALL_PATH=%RAMDRIVE%\VBoxInstall
+set TMP=%RAMDRIVE%\TEMP
+set TEMP=%TMP%
+
+mkdir %VBOX_INSTALL_PATH%
+mkdir %TMP%
+
+set TESTBOXSCRIPT_OPTS=--scratch-root=%RAMDRIVE%\testbox
+
+:defaulttest
+%SystemDrive%\Python27\python.exe %SystemDrive%\testboxscript\testboxscript\testboxscript.py --testrsrc-server-type=cifs --builds-server-type=cifs %TESTBOXSCRIPT_OPTS%
 pause
 :end
