@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 70019 2017-12-08 12:13:33Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 70020 2017-12-08 12:14:45Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -487,7 +487,7 @@ VMM_INT_DECL(bool) HMIsGuestSvmXcptInterceptSet(PVMCPU pVCpu, PCCPUMCTX pCtx, ui
  * @param   pCtx        The guest-CPU context.
  *
  * @remarks This function looks at the VMCB cache rather than directly at the
- *          nested-guest VMCB which may have been suitably modified for executing
+ *          nested-guest VMCB. The latter may have been modified for executing
  *          using hardware-assisted SVM.
  *
  * @sa      CPUMCanSvmNstGstTakePhysIntr.
