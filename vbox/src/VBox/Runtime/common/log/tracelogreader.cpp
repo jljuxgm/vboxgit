@@ -1,4 +1,4 @@
-/* $Id: tracelogreader.cpp 71498 2018-03-24 23:01:29Z vboxsync $ */
+/* $Id: tracelogreader.cpp 71500 2018-03-25 00:16:21Z vboxsync $ */
 /** @file
  * IPRT - Trace log reader.
  */
@@ -465,6 +465,7 @@ static RTTRACELOGTYPE rtTraceLogRdrConvType(uint32_t u32Type)
  * Converts the type enum to the size of the the event item data in bytes.
  *
  * @returns Event item data size in bytes.
+ * @param   pThis               The trace log reader instance.
  * @param   pEvtItemDesc        The event item descriptor.
  */
 static size_t rtTraceLogRdrGetEvtItemDataSz(PRTTRACELOGRDRINT pThis, PCRTTRACELOGEVTITEMDESC pEvtItemDesc)
