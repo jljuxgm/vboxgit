@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 69188 2017-10-24 08:59:02Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 69194 2017-10-24 09:23:34Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -88,7 +88,7 @@
 #include "ConsoleImpl.h"
 
 #include "../../Devices/Audio/DrvAudio.h"
-#include "EbmlWriter.h"
+#include "EBMLWriter.h"
 
 #include <iprt/mem.h>
 #include <iprt/cdefs.h>
