@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66769 2017-05-04 00:59:45Z vboxsync $
+# $Id: Makefile.kmk 67284 2017-06-07 19:35:17Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -111,6 +111,11 @@ if  !defined(VBOX_ONLY_ADDITIONS) \
  RTSignTool_TEMPLATE = VBoxR3Tool
  RTSignTool_SOURCES = RTSignTool.cpp
  RTSignTool_LIBS = $(PATH_STAGE_LIB)/SUPR3$(VBOX_SUFF_LIB)
+
+ # RTKrnlModInfo - our lsmod/kextstat clone (for testing the RTKrnlMod code).
+ PROGRAMS += RTKrnlModInfo
+ RTKrnlModInfo_TEMPLATE = VBoxR3Tool
+ RTKrnlModInfo_SOURCES = RTKrnlModInfo.cpp
 
 endif # !VBOX_ONLY_EXTPACKS_USE_IMPLIBS
 
