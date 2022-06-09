@@ -1,4 +1,4 @@
-/* $Id: log.cpp 69779 2017-11-20 18:14:01Z vboxsync $ */
+/* $Id: log.cpp 69969 2017-12-07 10:55:04Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -808,7 +808,7 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, uint32_t fFlags, const char *psz
     cbLogger = offInternal + sizeof(RTLOGGERINTERNAL);
     if (fFlags & RTLOGFLAGS_RESTRICT_GROUPS)
         cbLogger += cGroups * sizeof(uint32_t);
-    pLogger = (PRTLOGGER)RTMemAllocZVar(cbLogger);
+    pLogger = (PRTLOGGER)RTMemAllocZVarTag(cbLogger, "may-leak:log-instance");
     if (pLogger)
     {
 # if defined(RT_ARCH_X86) && (!defined(LOG_USE_C99) || !defined(RT_WITHOUT_EXEC_ALLOC))
