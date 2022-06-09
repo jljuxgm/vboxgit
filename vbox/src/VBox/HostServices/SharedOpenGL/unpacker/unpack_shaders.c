@@ -1,4 +1,4 @@
-/* $Id: unpack_shaders.c 71468 2018-03-22 18:48:08Z vboxsync $ */
+/* $Id: unpack_shaders.c 71470 2018-03-22 19:36:33Z vboxsync $ */
 /** @file
  * VBox OpenGL DRI driver functions
  */
@@ -56,7 +56,7 @@ void crUnpackExtendShaderSource(void)
         pos += count * sizeof(*length);
     }
 
-    pos_check = pos; 
+    pos_check = pos;
 
     if (!DATA_POINTER_CHECK(pos_check))
     {
