@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdMoveMedium1.py 71096 2018-02-22 09:39:33Z vboxsync $
+# $Id: tdMoveMedium1.py 71099 2018-02-22 10:07:34Z vboxsync $
 
 """
 VirtualBox Validation Kit - Medium Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71096 $"
+__version__ = "$Revision: 71099 $"
 
 
 # Standard Python imports.
@@ -159,7 +159,7 @@ class SubTstDrvMoveMedium1(base.SubTestDriverBase):
             #The case supposes that user has passed a destination path with a file name but hasn't added an extension/suffix
             #to this destination file. User supposes that the extension would be added automatically and to be the same as
             #for the original file. Difficult case, apparently this case should follow mv(1) logic
-            #and the file name is processed as folder name (aka mv(1) logic). 
+            #and the file name is processed as folder name (aka mv(1) logic).
             #Be discussed.
             fRc = self.setLocation(os.path.join(sNewLoc, 'newName'), aoMediumAttachments) and fRc
             asNewFiles = ['newName' + os.path.splitext(s)[1] for s in asFiles]
