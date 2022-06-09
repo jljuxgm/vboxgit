@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71186 2018-03-04 13:07:19Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 71187 2018-03-04 16:20:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -46,6 +46,7 @@ class UIFileDelegate : public QItemDelegate
 protected:
         virtual void drawFocus ( QPainter * /*painter*/, const QStyleOptionViewItem & /*option*/, const QRect & /*rect*/ ) const {}
 };
+
 
 /*********************************************************************************************************************************
 *   UIFileTableItem definition.                                                                                                  *
@@ -338,6 +339,7 @@ void UIGuestControlFileModel::endReset()
     endResetModel();
 }
 
+
 /*********************************************************************************************************************************
 *   UIGuestControlFileTable implementation.                                                                                      *
 *********************************************************************************************************************************/
@@ -538,6 +540,7 @@ void UIGuestControlFileTable::retranslateUi()
 
 }
 
+
 /*********************************************************************************************************************************
 *   UIGuestFileTable implementation.                                                                                             *
 *********************************************************************************************************************************/
@@ -604,6 +607,7 @@ void UIGuestFileTable::readDirectory(const QString& strPath,
         updateCurrentLocationEdit(strPath);
     }
 }
+
 
 /*********************************************************************************************************************************
 *   UIHostFileTable implementation.                                                                                              *
