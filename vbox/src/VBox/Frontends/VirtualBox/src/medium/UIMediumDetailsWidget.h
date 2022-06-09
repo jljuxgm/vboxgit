@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.h 67947 2017-07-13 09:56:45Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.h 67965 2017-07-14 13:01:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class declaration.
  */
@@ -200,7 +200,7 @@ private slots:
         /** Handles location change. */
         void sltLocationPathChanged(const QString &strPath);
         /** Handles size editor change. */
-        void sltSizeEditorChanged(qulonglong uSize);
+        void sltSizeValueChanged(qulonglong uSize);
 
         /** Handles button-box button click. */
         void sltHandleButtonBoxClick(QAbstractButton *pButton);
@@ -276,11 +276,11 @@ private:
         QLabel    *m_pErrorPaneType;
 
         /** Holds the location label. */
-        QLabel    *m_pLabelLocation;
+        QLabel             *m_pLabelLocation;
         /** Holds the location selector. */
         UIFilePathSelector *m_pSelectorLocation;
         /** Holds the location error pane. */
-        QLabel    *m_pErrorPaneLocation;
+        QLabel             *m_pErrorPaneLocation;
 
         /** Holds the size label. */
         QLabel             *m_pLabelSize;

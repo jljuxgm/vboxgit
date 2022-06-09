@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 67947 2017-07-13 09:56:45Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 67965 2017-07-14 13:01:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -942,10 +942,10 @@ void UIMediumManagerWidget::sltApplyMediumDetailsChanges()
 
         /* Show error message if necessary: */
         if (!comMedium.isOk())
-            msgCenter().cannotMoveHardDiskStorage(comMedium,
-                                                  oldData.m_options.m_strLocation,
-                                                  newData.m_options.m_strLocation,
-                                                  this);
+            msgCenter().cannotMoveMediumStorage(comMedium,
+                                                oldData.m_options.m_strLocation,
+                                                newData.m_options.m_strLocation,
+                                                this);
         else
         {
             /* Show move storage progress: */
@@ -954,10 +954,10 @@ void UIMediumManagerWidget::sltApplyMediumDetailsChanges()
 
             /* Show error message if necessary: */
             if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-                msgCenter().cannotMoveHardDiskStorage(comProgress,
-                                                      oldData.m_options.m_strLocation,
-                                                      newData.m_options.m_strLocation,
-                                                      this);
+                msgCenter().cannotMoveMediumStorage(comProgress,
+                                                    oldData.m_options.m_strLocation,
+                                                    newData.m_options.m_strLocation,
+                                                    this);
         }
     }
 
