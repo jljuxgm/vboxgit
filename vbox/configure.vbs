@@ -1,4 +1,4 @@
-' $Id: configure.vbs 71200 2018-03-05 11:49:28Z vboxsync $
+' $Id: configure.vbs 71902 2018-04-18 15:19:39Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -44,6 +44,9 @@ g_strPathDDK = ""
 
 dim g_strTargetArch
 g_strTargetArch = ""
+
+dim g_strHostArch
+g_strHostArch = ""
 
 dim g_blnDisableCOM, g_strDisableCOM
 g_blnDisableCOM = False
@@ -933,6 +936,7 @@ sub CheckForkBuild(strOptkBuild)
    LogPrint " Host architecture: " & str & "."
    Wscript.Echo " Host architecture: " & str & "."
    EnvPrint "set KBUILD_HOST_ARCH=" & str
+   g_strHostArch = str
 
    str = EnvGetFirst("KBUILD_HOST_CPU", "BUILD_PLATFORM_CPU")
     ' perhaps a bit pedantic this since this isn't clearly define nor used much...
@@ -947,8 +951,8 @@ sub CheckForkBuild(strOptkBuild)
    ' Determin the location of the kBuild binaries.
    '
    if g_strPathkBuildBin = "" then
-      g_strPathkBuildBin = g_strPathkBuild & "/bin/win." & g_strTargetArch
-      if FileExists(g_strPathkBuild & "/kmk.exe") = False then
+      g_strPathkBuildBin = g_strPathkBuild & "/bin/win." & g_strHostArch
+      if FileExists(g_strPathkBuildBin & "/kmk.exe") = False then
          g_strPathkBuildBin = g_strPathkBuild & "/bin/win.x86"
       end if
    end if
