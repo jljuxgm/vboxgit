@@ -1,4 +1,4 @@
-/* $Id: UIMediumDefs.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMediumDefs.h 70111 2017-12-13 14:34:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium related declarations.
  */
@@ -54,7 +54,7 @@ using namespace UIMediumDefs;
 struct UIMediumTarget
 {
     /** Medium-target types. */
-    enum UIMediumTargetType { UIMediumTargetType_WithID, UIMediumTargetType_WithLocation };
+    enum UIMediumTargetType { UIMediumTargetType_WithID, UIMediumTargetType_WithLocation, UIMediumTargetType_CreateAdHocVISO };
 
     /** Medium-target constructor. */
     UIMediumTarget(const QString &strName = QString(), LONG iPort = 0, LONG iDevice = 0,

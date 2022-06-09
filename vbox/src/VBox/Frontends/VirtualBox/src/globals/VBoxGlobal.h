@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 69615 2017-11-08 13:04:15Z vboxsync $ */
+/* $Id: VBoxGlobal.h 70111 2017-12-13 14:34:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -312,6 +312,7 @@ public:
     /* API: Medium-processing stuff: */
     void createMedium(const UIMedium &medium);
     void deleteMedium(const QString &strMediumID);
+    QString createVisoMediumWithFileOpenDialog(QWidget *pParent, const QString &strMachineFolder, bool fUseLastFolder);
     QString openMediumWithFileOpenDialog(UIMediumType mediumType, QWidget *pParent = 0,
                                          const QString &strDefaultFolder = QString(), bool fUseLastFolder = true);
     QString openMedium(UIMediumType mediumType, QString strMediumLocation, QWidget *pParent = 0);
