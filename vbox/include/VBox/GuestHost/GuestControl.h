@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 61893 2016-06-27 11:31:20Z vboxsync $ */
+/* $Id: GuestControl.h 68675 2017-09-06 10:08:59Z vboxsync $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  */
@@ -26,6 +26,8 @@
 
 #ifndef ___VBox_GuestHost_GuestControl_h
 #define ___VBox_GuestHost_GuestControl_h
+
+#include <iprt/types.h>
 
 /* Everything defined in this file lives in this namespace. */
 namespace guestControl {

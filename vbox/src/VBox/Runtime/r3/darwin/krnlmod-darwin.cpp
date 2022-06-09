@@ -1,4 +1,4 @@
-/* $Id: krnlmod-darwin.cpp 67284 2017-06-07 19:35:17Z vboxsync $ */
+/* $Id: krnlmod-darwin.cpp 68675 2017-09-06 10:08:59Z vboxsync $ */
 /** @file
  * IPRT - Kernel module, Darwin.
  */
@@ -163,7 +163,7 @@ RTDECL(int) RTKrnlModLoadedQueryInfo(const char *pszName, PRTKRNLMODINFO phKrnlM
 }
 
 
-RTDECL(uint32_t) RTKrnlModLoadedGetCount()
+RTDECL(uint32_t) RTKrnlModLoadedGetCount(void)
 {
     uint32_t cLoadedKexts = 0;
     CFDictionaryRef hLoadedKexts = OSKextCopyLoadedKextInfo(NULL, NULL /* all info */);

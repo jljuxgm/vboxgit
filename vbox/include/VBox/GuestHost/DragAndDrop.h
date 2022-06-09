@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 59855 2016-02-26 15:43:18Z vboxsync $ */
+/* $Id: DragAndDrop.h 68675 2017-09-06 10:08:59Z vboxsync $ */
 /** @file
  * DnD: Shared functions between host and guest.
  */
@@ -231,5 +231,6 @@ protected:
      *        on 32-bit guests. */
     uint64_t                m_cbTotal;
 };
-#endif /* ___VBox_GuestHost_DragAndDrop_h */
+
+#endif /* !___VBox_GuestHost_DragAndDrop_h */
 
