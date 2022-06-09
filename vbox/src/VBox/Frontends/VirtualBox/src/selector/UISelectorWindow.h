@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 67422 2017-06-15 11:10:02Z vboxsync $ */
+/* $Id: UISelectorWindow.h 68172 2017-07-29 12:10:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -32,17 +32,18 @@ class QMenu;
 class QStackedWidget;
 class QIManagerDialog;
 class QISplitter;
-class CMachine;
 class UIAction;
 class UIActionPool;
-class UIActionPolymorphic;
 class UIDesktopPane;
 class UIGChooser;
 class UIGDetails;
+#ifndef VBOX_WS_MAC
 class UIMainBar;
+#endif
 class UITexturedSegmentedButton;
 class UIToolBar;
 class UIVMItem;
+
 
 /** Singleton QIMainWindow extension
   * used as VirtualBox Manager (selector-window) instance. */
@@ -255,6 +256,8 @@ private:
         void prepareMenuMachineClose(QMenu *pMenu);
         /** Prepares status-bar. */
         void prepareStatusBar();
+        /** Prepares toolbar. */
+        void prepareToolbar();
         /** Prepares widgets. */
         void prepareWidgets();
         /** Prepares connections. */
