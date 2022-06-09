@@ -1,4 +1,4 @@
-$Id: vboxtxs-readme.txt 68181 2017-07-30 10:15:22Z vboxsync $
+$Id: vboxtxs-readme.txt 70437 2018-01-02 20:02:31Z vboxsync $
 
 
 VirtualBox Test eXecution Service
@@ -100,6 +100,15 @@ Windows Installation
      other) start C:\Apps\vboxtxs.reg
 11. reboot / done
 12. Do test.
+
+NT 3.1 and 3.x tricks:
+- Make sure the file system is NTFS.  Observed issues converting 2GB partitions,
+  more success with smaller.
+- For NT3.1 PCNET drivers can be found on the net.  No DHCP, so NAT only with
+  IP 10.0.2.15, 10.0.2.2 as gateway, and 10.0.2.3 as DNS with --natdnsproxy1 on.
+- On NT3.1 you need to add SystemDrive=C: to the environment.
+- Need to perform registry edits manually.
+- Use startup folder instead of non-exising Windows/Run key.
 
 
 Testing the setup
