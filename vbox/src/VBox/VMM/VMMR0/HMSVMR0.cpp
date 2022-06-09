@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 70379 2017-12-29 09:53:09Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 70380 2017-12-29 09:58:52Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3532,9 +3532,10 @@ static void hmR0SvmInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMVMCB pVmc
 #ifdef VBOX_WITH_NESTED_HWVIRT
         /*
          * If IEM emulated VMRUN and injected an event it would not clear the EVENTINJ::Valid bit
-         * as a physical CPU clears it as part of the #VMEXIT. However, now we are continuing
-         * nested-guest execution using hardware-assisted SVM, so we need to clear this field
-         * otherwise we will inject the event twice, see @bugref{7243#78}.
+         * as a physical CPU clears it in the VMCB as part of the #VMEXIT (if the AMD spec. is to
+         * believed, real behavior might differ). Regardless, IEM does it only on #VMEXIT for now
+         * and since we are continuing nested-guest execution using hardware-assisted SVM, we need
+         * to clear this field otherwise we will inject the event twice, see @bugref{7243#78}.
          */
         if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
             pVmcb->ctrl.EventInject.n.u1Valid = 0;
