@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68779 2017-09-16 16:16:58Z vboxsync $
+# $Id: Config.kmk 68780 2017-09-17 20:42:08Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2003,8 +2003,8 @@ ifeq ($(KBUILD_TARGET),win)
   VBOX_NM ?= $(PATH_TOOL_MINGWW64)/bin/nm.exe -p
  endif
 else ifeq ($(KBUILD_HOST),darwin) # Xcode 7.3.1 nm doesn't like -t, and -x behaves very differently.  Throwing in -B (bsd) to make sure.
- VBOX_NM ?= $(TOOL_$(VBOX_GCC_TOOL)_ENV_SETUP) $(PATH_TOOL_$(VBOX_GCC_TOOL)_TOOLCHAIN_BIN_SLASH)nm -p $(if-expr \
- 	$(VBOX_XCODE_VERSION_MAJOR) > 7 || ($(VBOX_XCODE_VERSION_MAJOR) == 7 && $(VBOX_XCODE_VERSION_MINOR) >= 3),-B,)
+ VBOX_NM ?= $(subst $(REDIRECT_INT),$(REDIRECT_EXT),$(TOOL_$(VBOX_GCC_TOOL)_ENV_SETUP) $(PATH_TOOL_$(VBOX_GCC_TOOL)_TOOLCHAIN_BIN_SLASH)nm) -p \
+        $(if-expr $(VBOX_XCODE_VERSION_MAJOR) > 7 || ($(VBOX_XCODE_VERSION_MAJOR) == 7 && $(VBOX_XCODE_VERSION_MINOR) >= 3),-B,)
 else
  VBOX_NM ?= nm -p -t x
 endif
@@ -7023,7 +7023,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68779 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68780 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
