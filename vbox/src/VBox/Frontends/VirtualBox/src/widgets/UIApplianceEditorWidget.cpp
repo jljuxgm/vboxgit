@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 72101 2018-05-04 08:04:48Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 72173 2018-05-09 13:38:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -667,7 +667,7 @@ QWidget *UIVirtualHardwareItem::createEditor(QWidget *pParent, const QStyleOptio
             {
                    UIFilePathSelector *pFileChooser = new UIFilePathSelector(pParent);
                    pFileChooser->setMode(UIFilePathSelector::Mode_File_Save);
-                   pFileChooser->setResetEnabled(false);
+                   pFileChooser->setResetEnabled(true);
                    pEditor = pFileChooser;
                 break;
             }

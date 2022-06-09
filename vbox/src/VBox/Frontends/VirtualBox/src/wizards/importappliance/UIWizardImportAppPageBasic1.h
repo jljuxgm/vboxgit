@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.h 72173 2018-05-09 13:38:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* Forward declarations: */
 class UIEmptyFilePathSelector;
+class UIFilePathSelector;
 class QIRichTextLabel;
 
 /* 1st page of the Import Appliance wizard (base part): */
@@ -35,6 +36,8 @@ protected:
 
     /* Widgets: */
     UIEmptyFilePathSelector *m_pFileSelector;
+    QIRichTextLabel         *m_pDefaultFolderLabel;
+    UIFilePathSelector      *m_pDestinationFolderSelector;
 };
 
 /* 1st page of the Import Appliance wizard (basic extension): */
@@ -64,4 +67,3 @@ private:
 };
 
 #endif /* __UIWizardImportAppPageBasic1_h__ */
-
