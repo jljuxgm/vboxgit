@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 69328 2017-10-25 21:58:47Z vboxsync $ */
+/* $Id: VD.cpp 69329 2017-10-25 21:59:54Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
@@ -4907,7 +4907,7 @@ static void vdFixupPCHSGeometry(PVDGEOMETRY pPCHS, uint64_t cbSize)
 }
 
 /**
- * internal: adjust PCHS geometry
+ * internal: adjust LCHS geometry
  */
 static void vdFixupLCHSGeometry(PVDGEOMETRY pLCHS, uint64_t cbSize)
 {
