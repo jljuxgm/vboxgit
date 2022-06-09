@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: usbgadget.py 70509 2018-01-10 11:23:52Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70509 $"
 
 # Standard Python imports.
 import array
@@ -1062,7 +1062,7 @@ class TransportTcp(TransportBase):
         try:
             oSocket.connect((self.sHostname, self.uPort));
             rc = True;
-        except socket.error, e:
+        except socket.error as e:
             iRc = e[0];
             if self.__isInProgressXcpt(e):
                 # Do the actual waiting.
@@ -1073,7 +1073,7 @@ class TransportTcp(TransportBase):
                         raise socket.error(errno.ETIMEDOUT, 'select timed out');
                     iRc = oSocket.getsockopt(socket.SOL_SOCKET, socket.SO_ERROR);
                     rc = iRc == 0;
-                except socket.error, e:
+                except socket.error as e:
                     iRc = e[0];
                 except:
                     iRc = -42;
@@ -1190,7 +1190,7 @@ class TransportTcp(TransportBase):
             cbSent = self.oSocket.send(abBuf);
             if cbSent == len(abBuf):
                 return True;
-        except Exception, oXcpt:
+        except Exception as oXcpt:
             if not self.__isWouldBlockXcpt(oXcpt):
                 reporter.errorXcpt('TranportTcp.sendBytes: %s bytes' % (len(abBuf)));
                 return False;
@@ -1222,7 +1222,7 @@ class TransportTcp(TransportBase):
                 cbSent += self.oSocket.send(abBuf[cbSent:]);
                 if cbSent == len(abBuf):
                     return True;
-            except Exception, oXcpt:
+            except Exception as oXcpt:
                 if not self.__isWouldBlockXcpt(oXcpt):
                     reporter.errorXcpt('TranportTcp.sendBytes: %s bytes' % (len(abBuf)));
                     break;
@@ -1247,7 +1247,7 @@ class TransportTcp(TransportBase):
                 abBuf = self.oSocket.recv(cb - len(self.abReadAhead));
                 if abBuf:
                     self.abReadAhead.extend(array.array('B', abBuf));
-            except Exception, oXcpt:
+            except Exception as oXcpt:
                 if not self.__isWouldBlockXcpt(oXcpt):
                     reporter.errorXcpt('TranportTcp.recvBytes: 0/%s bytes' % (cb,));
                     return None;
@@ -1290,7 +1290,7 @@ class TransportTcp(TransportBase):
 
                 self.abReadAhead.extend(array.array('B', abBuf));
 
-            except Exception, oXcpt:
+            except Exception as oXcpt:
                 reporter.log('recv => exception %s' % (oXcpt,));
                 if not self.__isWouldBlockXcpt(oXcpt):
                     if not fNoDataOk  or  not self.__isConnectionReset(oXcpt)  or  self.abReadAhead:
