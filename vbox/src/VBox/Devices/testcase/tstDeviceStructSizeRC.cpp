@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 71751 2018-04-08 23:05:36Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 71753 2018-04-09 01:15:57Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1879,7 +1879,6 @@ int main()
     GEN_CHECK_OFF(AC97STATE, pTimerR3);
     GEN_CHECK_OFF(AC97STATE, pTimerR0);
     GEN_CHECK_OFF(AC97STATE, pTimerRC);
-    GEN_CHECK_OFF(AC97STATE, Padding0);
     GEN_CHECK_OFF(AC97STATE, fTimerActive);
     GEN_CHECK_OFF(AC97STATE, u8Padding1);
     GEN_CHECK_OFF(AC97STATE, cTimerTicks);
