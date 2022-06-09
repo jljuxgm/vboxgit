@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 68228 2017-08-02 09:12:27Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 68229 2017-08-02 09:17:05Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -231,7 +231,7 @@ typedef int FNSVMEXITHANDLER(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTran
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
 static void hmR0SvmSetMsrPermission(PSVMVMCB pVmcb, uint8_t *pbMsrBitmap, unsigned uMsr, SVMMSREXITREAD enmRead,
-                                    SVMMSREXITWRITE enmWrite)
+                                    SVMMSREXITWRITE enmWrite);
 static void hmR0SvmPendingEventToTrpmTrap(PVMCPU pVCpu);
 static void hmR0SvmLeave(PVMCPU pVCpu);
 
