@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 71210 2018-03-05 20:24:50Z vboxsync $ */
+/* $Id: DevDMA.cpp 71212 2018-03-05 20:27:13Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -51,9 +51,6 @@
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
-
-#include <stdio.h>
-#include <stdlib.h>
 
 #include "VBoxDD.h"
 
