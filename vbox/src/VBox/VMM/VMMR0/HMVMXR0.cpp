@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 69850 2017-11-28 05:48:11Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 69851 2017-11-28 05:51:48Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6263,6 +6263,7 @@ static int hmR0VmxSaveGuestCR0(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
                     *     sxi "xcpt_ss"
                     *     sxi "xcpt_np"
                     */
+        /** @todo r=ramshankar: Should be fixed after r119291. */
         Assert(!HMCPU_CF_IS_PENDING(pVCpu, HM_CHANGED_GUEST_CR0));
 #endif
         uint32_t uVal    = 0;
