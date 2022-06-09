@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 70251 2017-12-20 18:34:18Z vboxsync $ */
+/* $Id: DevHDA.h 70252 2017-12-20 18:35:32Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -55,7 +55,7 @@
  */
 typedef struct HDAMIXERSINK
 {
-	R3PTRTYPE(PHDASTREAM)  pStream;
+    R3PTRTYPE(PHDASTREAM)  pStream;
     /** Pointer to the actual audio mixer sink. */
     R3PTRTYPE(PAUDMIXSINK) pMixSink;
 } HDAMIXERSINK, *PHDAMIXERSINK;
