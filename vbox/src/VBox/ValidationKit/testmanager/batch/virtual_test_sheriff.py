@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 70847 2018-02-01 10:31:00Z vboxsync $
+# $Id: virtual_test_sheriff.py 71084 2018-02-21 13:01:33Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70847 $"
+__version__ = "$Revision: 71084 $"
 
 
 # Standard python imports
@@ -187,7 +187,7 @@ class VirtualTestSheriffCaseFile(object):
 
     def getMainLog(self):
         """
-        Tries to reads the main log file since this will be the first source of information.
+        Tries to read the main log file since this will be the first source of information.
         """
         if self.sMainLog:
             return self.sMainLog;
@@ -204,7 +204,7 @@ class VirtualTestSheriffCaseFile(object):
 
     def getLogFile(self, oFile):
         """
-        Tries to reads the given file as a utf-8 log file.
+        Tries to read the given file as a utf-8 log file.
         oFile is a TestFileDataEx instance.
         Returns empty string if problems opening or reading the file.
         """
@@ -302,7 +302,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 70847 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 71084 $ \n');
 
 
     def eprint(self, sText):
@@ -485,6 +485,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Host_Reboot_OSX_Watchdog_Timeout          = ( 'Host Reboot',       'OSX Watchdog Timeout' );
     ktReason_Host_Modprobe_Failed                      = ( 'Host',              'Modprobe failed' );
     ktReason_Host_Install_Hang                         = ( 'Host',              'Install hang' );
+    ktReason_Host_NetworkMisconfiguration              = ( 'Host',              'Network misconfiguration' );
     ktReason_Networking_Nonexistent_host_nic           = ( 'Networking',        'Nonexistent host networking interface' );
     ktReason_OSInstall_GRUB_hang                       = ( 'O/S Install',       'GRUB hang' );
     ktReason_OSInstall_Sata_no_BM                      = ( 'O/S Install',       'SATA busmaster bit not set' );
@@ -571,7 +572,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 70847 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 71084 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -882,6 +883,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         ( True,  ktReason_Host_Modprobe_Failed,                     'Kernel driver not installed' ),
         ( True,  ktReason_OSInstall_Sata_no_BM,                     'PCHS=14128/14134/8224' ),
         ( True,  ktReason_Host_DoubleFreeHeap,                      'double free or corruption' ),
+        ( True,  ktReason_Host_NetworkMisconfiguration,             'most likely not unique' ),
     ];
 
     ## Things we search a VBoxHardening.log file for to figure out why something went bust.
