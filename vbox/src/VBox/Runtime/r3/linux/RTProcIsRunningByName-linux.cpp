@@ -1,4 +1,4 @@
-/* $Id: RTProcIsRunningByName-linux.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
+/* $Id: RTProcIsRunningByName-linux.cpp 69754 2017-11-19 14:32:51Z vboxsync $ */
 /** @file
  * IPRT - RTProcIsRunningByName, Linux implementation.
  */
@@ -109,7 +109,7 @@ RTR3DECL(bool) RTProcIsRunningByName(const char *pszName)
                 }
             }
         }
-        RTDirClose(pDir);
+        RTDirClose(hDir);
     }
 
     return false;
