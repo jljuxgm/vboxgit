@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71362 2018-03-16 08:16:36Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 71363 2018-03-16 08:53:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -233,8 +233,9 @@ QString UIPathOperations::constructNewItemPath(const QString &previousPath, cons
     return sanitize(mergePaths(getPathExceptObjectName(previousPath), newBaseName));
 }
 
+
 /*********************************************************************************************************************************
-*   UIGuestControlFileView implementation.                                                                                      *
+*   UIGuestControlFileView implementation.                                                                                       *
 *********************************************************************************************************************************/
 
 UIGuestControlFileView::UIGuestControlFileView(QWidget * parent)
@@ -349,6 +350,7 @@ bool UIGuestControlFileView::hasSelection() const
         return false;
     return pSelectionModel->hasSelection();
 }
+
 
 /*********************************************************************************************************************************
 *   UIFileStringInputDialog implementation.                                                                                      *
