@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 70247 2017-12-20 18:03:11Z vboxsync $ */
+/* $Id: HDAStream.h 70248 2017-12-20 18:12:25Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -195,6 +195,7 @@ typedef struct HDASTREAM
     /** Current channel index.
      *  For a stereo stream, this is u8Channel + 1. */
     uint8_t                  u8Channel;
+    uint8_t                  Padding0[6];
     /** DMA base address (SDnBDPU - SDnBDPL). */
     uint64_t                 u64BDLBase;
     /** Cyclic Buffer Length (SDnCBL).
