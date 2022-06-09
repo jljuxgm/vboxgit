@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 71677 2018-04-05 12:05:50Z vboxsync $
+# $Id: tdUsb1.py 71983 2018-04-23 14:11:09Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71677 $"
+__version__ = "$Revision: 71983 $"
 
 
 # Standard Python imports.
@@ -383,7 +383,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
 
         oUsbGadget = usbgadget.UsbGadget();
         reporter.log('Connecting to UTS: ' + sGadgetHost);
-        fRc = oUsbGadget.connectTo(30 * 1000, sGadgetHost, uPort = uGadgetPort);
+        fRc = oUsbGadget.connectTo(30 * 1000, sGadgetHost, uPort = uGadgetPort, fTryConnect = True);
         if fRc is True:
             reporter.log('Connect succeeded');
             self.oVBox.host.addUSBDeviceSource('USBIP', sGadgetHost, sGadgetHost + (':%s' % oUsbGadget.getUsbIpPort()), [], []);
@@ -431,7 +431,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
 
         oUsbGadget = usbgadget.UsbGadget();
         reporter.log('Connecting to UTS: ' + sGadgetHost);
-        fRc = oUsbGadget.connectTo(30 * 1000, sGadgetHost,  uPort = uGadgetPort);
+        fRc = oUsbGadget.connectTo(30 * 1000, sGadgetHost,  uPort = uGadgetPort, fTryConnect = True);
         if fRc is True:
             self.oVBox.host.addUSBDeviceSource('USBIP', sGadgetHost, sGadgetHost + (':%s' % oUsbGadget.getUsbIpPort()), [], []);
 
