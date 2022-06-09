@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 70185 2017-12-18 10:32:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -1023,6 +1023,31 @@ protected:
     }
 };
 
+class UIActionSimpleToolsMachineLogViewer : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionSimpleToolsMachineLogViewer(UIActionPool *pParent)
+        : UIActionSimple(pParent,
+                         ":/vm_show_logs_32px.png", ":/vm_show_logs_32px.png",
+                         ":/vm_show_logs_32px.png", ":/vm_show_logs_32px.png") {}
+
+protected:
+
+    QString shortcutExtraDataID() const
+    {
+        return QString("ToolsMachineLogViewer");
+    }
+
+    void retranslateUi()
+    {
+        setName(QApplication::translate("UIActionPool", "&LogViewer"));
+        setStatusTip(QApplication::translate("UIActionPool", "Open the machine logviewer pane"));
+    }
+};
+
 
 class UIActionToggleToolsGlobal : public UIActionToggle
 {
@@ -1319,6 +1344,7 @@ void UIActionPoolSelector::preparePool()
     m_pool[UIActionIndexST_M_Tools_M_Machine] = new UIActionMenuToolsMachine(this);
     m_pool[UIActionIndexST_M_Tools_M_Machine_S_Details] = new UIActionSimpleToolsMachineDetails(this);
     m_pool[UIActionIndexST_M_Tools_M_Machine_S_Snapshots] = new UIActionSimpleToolsMachineSnapshots(this);
+    m_pool[UIActionIndexST_M_Tools_M_Machine_S_LogViewer] = new UIActionSimpleToolsMachineLogViewer(this);
 
     /* Global Tools actions: */
     m_pool[UIActionIndexST_M_Tools_T_Global] = new UIActionToggleToolsGlobal(this);

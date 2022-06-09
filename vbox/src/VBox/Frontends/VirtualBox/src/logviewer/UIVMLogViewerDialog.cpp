@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 70165 2017-12-15 19:03:08Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 70185 2017-12-18 10:32:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -40,7 +40,7 @@
 # include "VBoxGlobal.h"
 # ifdef VBOX_WS_MAC
 #  include "VBoxUtils-darwin.h"
-# endif
+# endif /* VBOX_WS_MAC */
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 

@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.cpp 69260 2017-10-25 09:09:33Z vboxsync $ */
+/* $Id: UIToolsToolbar.cpp 70185 2017-12-18 10:32:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class implementation.
  */
@@ -218,6 +218,13 @@ void UIToolsToolbar::prepareMenu()
                 this, &UIToolsToolbar::sltHandleOpenToolMachine);
         m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_S_Snapshots)
             ->setProperty("ToolTypeMachine", QVariant::fromValue(ToolTypeMachine_Snapshots));
+
+        /* Add 'LogViewer' action: */
+        pMenuMachine->addAction(m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_S_LogViewer));
+        connect(m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_S_LogViewer), &UIAction::triggered,
+                this, &UIToolsToolbar::sltHandleOpenToolMachine);
+        m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_S_LogViewer)
+            ->setProperty("ToolTypeMachine", QVariant::fromValue(ToolTypeMachine_LogViewer));
     }
 
     /* Configure 'Machine' toggle action: */

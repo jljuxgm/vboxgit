@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 70113 2017-12-13 15:02:26Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 70185 2017-12-18 10:32:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -639,6 +639,7 @@ enum ToolTypeMachine
     ToolTypeMachine_Desktop,
     ToolTypeMachine_Details,
     ToolTypeMachine_Snapshots,
+    ToolTypeMachine_LogViewer
 };
 Q_DECLARE_METATYPE(ToolTypeMachine);
 

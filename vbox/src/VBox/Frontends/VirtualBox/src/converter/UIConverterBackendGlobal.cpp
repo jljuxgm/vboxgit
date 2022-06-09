@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 70185 2017-12-18 10:32:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -872,6 +872,7 @@ template<> QString toInternalString(const ToolTypeMachine &enmToolTypeMachine)
         case ToolTypeMachine_Invalid:   strResult = "None"; break;
         case ToolTypeMachine_Details:   strResult = "Details"; break;
         case ToolTypeMachine_Snapshots: strResult = "Snapshots"; break;
+        case ToolTypeMachine_LogViewer: strResult = "LogViewer"; break;
         default:
         {
             AssertMsgFailed(("No text for machine tool type=%d", enmToolTypeMachine));
@@ -890,6 +891,7 @@ template<> ToolTypeMachine fromInternalString<ToolTypeMachine>(const QString &st
     keys << "None";      values << ToolTypeMachine_Invalid;
     keys << "Details";   values << ToolTypeMachine_Details;
     keys << "Snapshots"; values << ToolTypeMachine_Snapshots;
+    keys << "LogViewer"; values << ToolTypeMachine_LogViewer;
     /* Invalid type for unknown words: */
     if (!keys.contains(strToolTypeMachine, Qt::CaseInsensitive))
         return ToolTypeMachine_Invalid;
