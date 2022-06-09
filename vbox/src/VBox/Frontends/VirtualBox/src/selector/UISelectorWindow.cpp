@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 72256 2018-05-18 10:09:54Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 72257 2018-05-18 10:12:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -629,6 +629,9 @@ void UISelectorWindow::sltOpenMachineSettingsDialog(const QString &strCategoryRe
                                                     const QString &strControlRef /* = QString() */,
                                                     const QString &strID /* = QString() */)
 {
+    /* This slot should not be called when there is not selection: */
+    AssertMsgReturnVoid(currentItem(), ("Current item should be selected!\n"));
+
     /* Check that we do NOT handling that already: */
     if (actionPool()->action(UIActionIndexST_M_Machine_S_Settings)->data().toBool())
         return;
