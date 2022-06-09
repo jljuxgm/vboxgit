@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 72517 2018-06-11 14:52:54Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 72518 2018-06-11 15:00:30Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -6554,15 +6554,12 @@ FNIEMOP_DEF(iemOp_pop_gs)
 /** Opcode 0x0f 0xaa. */
 FNIEMOP_DEF(iemOp_rsm)
 {
-    IEMOP_MNEMONIC(rsm, "rsm");
-    IEMOP_HLP_SVM_INSTR_INTERCEPT_AND_NRIP(pVCpu, SVM_CTRL_INTERCEPT_RSM, SVM_EXIT_RSM, 0, 0);
-    /** @todo rsm - for the regular case (above handles only the SVM nested-guest
-     *        intercept). */
-    IEMOP_BITCH_ABOUT_STUB();
-    return IEMOP_RAISE_INVALID_OPCODE();
+    IEMOP_MNEMONIC0(FIXED, RSM, rsm, DISOPTYPE_HARMLESS, 0);
+    IEMOP_HLP_MIN_386(); /* 386SL and later. */
+    IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
+    return IEM_MC_DEFER_TO_CIMPL_0(iemCImpl_rsm);
 }
 
-//IEMOP_HLP_MIN_386();
 
 
 /** Opcode 0x0f 0xab. */
