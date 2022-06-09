@@ -1,4 +1,4 @@
-# $Id: .scm-settings 70382 2017-12-29 10:59:24Z vboxsync $
+# $Id: .scm-settings 70383 2017-12-29 10:59:55Z vboxsync $
 ## @file
 # Source code massager settings for Runtime.
 #
@@ -41,7 +41,7 @@
 --filter-out-files /testcase/tstRTLdrMachORelocs-1.disas
 
 # Small C and ASM header, no copyright or license text for now.
-/r3/win/vcc100-kernel32-fakes.h:               : --external-copyright --no-update-license
+/r3/win/vcc100-kernel32-fakes.h: --external-copyright --no-update-license
 
 # external code
 /r0drv/freebsd/alloc-r0drv-freebsd.c           : --external-copyright
