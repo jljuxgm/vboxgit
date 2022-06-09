@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 70289 2017-12-21 16:15:31Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -492,12 +492,11 @@ static NTSTATUS vboxUsbRtDispatchGetDevice(PVBOXUSBDEV_EXT pDevExt, PIRP pIrp)
         && pSl->Parameters.DeviceIoControl.InputBufferLength  == sizeof(*pDev)
         && pSl->Parameters.DeviceIoControl.OutputBufferLength == sizeof(*pDev))
     {
+        /* Even if we don't return it, we need to query the HS flag for later use. */
         Status = VBoxUsbToolGetDeviceSpeed(pDevExt->pLowerDO, &pDevExt->Rt.fIsHighSpeed);
         if (NT_SUCCESS(Status))
         {
             pDev->hDevice = pDevExt->Rt.hMonDev;
-            pDev->fAttached = true;
-            pDev->fHiSpeed = pDevExt->Rt.fIsHighSpeed;
             cbOut = sizeof (*pDev);
         }
     }
