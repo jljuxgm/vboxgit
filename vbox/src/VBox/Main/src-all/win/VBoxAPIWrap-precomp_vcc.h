@@ -1,4 +1,4 @@
-/* $Id: VBoxAPIWrap-precomp_vcc.h 63935 2016-09-21 21:27:47Z vboxsync $ */
+/* $Id: VBoxAPIWrap-precomp_vcc.h 69237 2017-10-24 16:10:47Z vboxsync $ */
 /** @file
  * VirtualBox COM - Visual C++ precompiled header for the API wrappers.
  */
@@ -37,5 +37,4 @@
 #if defined(Log) || defined(LogIsEnabled)
 # error "Log() from iprt/log.h cannot be defined in the precompiled header!"
 #endif
-
 
