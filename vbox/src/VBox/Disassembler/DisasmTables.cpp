@@ -1,4 +1,4 @@
-/* $Id: DisasmTables.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: DisasmTables.cpp 69372 2017-10-26 15:37:13Z vboxsync $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -21,7 +21,6 @@
 *********************************************************************************************************************************/
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
-#include "DisasmTables.h"
 #include "DisasmInternal.h"
 
 
