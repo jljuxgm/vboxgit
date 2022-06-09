@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 67410 2017-06-14 14:48:16Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 67533 2017-06-21 09:47:08Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1898,8 +1898,9 @@ int main()
 #ifdef VBOX_WITH_HDA_MIC_IN
     GEN_CHECK_OFF(HDASTATE, SinkMicIn);
 #endif
-    GEN_CHECK_OFF(HDASTATE, u64BaseTS);
+    GEN_CHECK_OFF(HDASTATE, u64WalClk);
     GEN_CHECK_OFF(HDASTATE, u8RespIntCnt);
+    GEN_CHECK_OFF(HDASTATE, u8IRQL);
 
 #ifdef VBOX_WITH_NVME_IMPL
     GEN_CHECK_SIZE(NVMEQUEUEHDR);
