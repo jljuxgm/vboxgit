@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 72177 2018-05-09 15:57:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -35,6 +35,7 @@ class UIWizardNewVMPageExpert : public UIWizardPage,
     Q_OBJECT;
     Q_PROPERTY(QString machineFolder READ machineFolder WRITE setMachineFolder);
     Q_PROPERTY(QString machineBaseName READ machineBaseName WRITE setMachineBaseName);
+    Q_PROPERTY(QString machineFilePath READ machineFilePath WRITE setMachineFilePath);
     Q_PROPERTY(CMedium virtualDisk READ virtualDisk WRITE setVirtualDisk);
     Q_PROPERTY(QString virtualDiskId READ virtualDiskId WRITE setVirtualDiskId);
     Q_PROPERTY(QString virtualDiskLocation READ virtualDiskLocation WRITE setVirtualDiskLocation);
@@ -83,4 +84,3 @@ private:
 };
 
 #endif // __UIWizardNewVMPageExpert_h__
-

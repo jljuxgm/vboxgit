@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 72177 2018-05-09 15:57:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -105,7 +105,7 @@ bool UIWizardNewVM::createVM()
         QVector<QString> groups;
         if (!m_strGroup.isEmpty())
             groups << m_strGroup;
-        m_machine = vbox.CreateMachine(QString() /* no file-path for now */,
+        m_machine = vbox.CreateMachine(field("machineFilePath").toString(),
                                        field("name").toString(),
                                        groups, strTypeId, QString());
         if (!vbox.isOk())
@@ -396,4 +396,3 @@ QString UIWizardNewVM::getNextControllerName(KStorageBus type)
     }
     return strControllerName;
 }
-
