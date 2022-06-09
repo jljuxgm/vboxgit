@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 70731 2018-01-24 18:28:12Z vboxsync $
+# $Id: vbox.py 70738 2018-01-25 11:33:44Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70731 $"
+__version__ = "$Revision: 70738 $"
 
 
 # Standard Python imports.
@@ -2013,13 +2013,13 @@ class TestDriver(base.TestDriver):                                              
         elif oAudioAdapter.audioController == vboxcon.AudioControllerType_SB16: sType = "SB16";
         elif oAudioAdapter.audioController == vboxcon.AudioControllerType_HDA:  sType = "HDA";
         else: sType = "unknown %s" % (oAudioAdapter.audioController);
-        reporter.log("    AudioController: %s" % (sType));
-        reporter.log("    AudioEnabled: %s" % (oAudioAdapter.enabled));
-        if   oAudioAdapter.audioDriver == vboxcon.AudioDriverType_CoreAudio: sType = "CoreAudio";
-        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_DirectSound: sType = "DirectSound";
-        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_Pulse: sType = "PulseAudio";
-        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_OSS: sType = "OSS";
-        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_Null: sType = "NULL";
+        reporter.log("    AudioController:  %s" % (sType));
+        reporter.log("    AudioEnabled:     %s" % (oAudioAdapter.enabled));
+        if   oAudioAdapter.audioDriver == vboxcon.AudioDriverType_CoreAudio:    sType = "CoreAudio";
+        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_DirectSound:  sType = "DirectSound";
+        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_Pulse:        sType = "PulseAudio";
+        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_OSS:          sType = "OSS";
+        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_Null:         sType = "NULL";
         else: sType = "unknown %s" % (oAudioAdapter.audioDriver);
         reporter.log("    Host AudioDriver: %s" % (sType));
 
