@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 69681 2017-11-14 02:58:20Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 70582 2018-01-15 10:13:41Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -731,6 +731,13 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--basefolder <basefolder>]\n"
                      "                            [--uuid <uuid>]\n"
                      "                            [--register]\n"
+                     "\n", SEP);
+
+    if (fCategory & USAGE_MOVEVM)
+        RTStrmPrintf(pStrm,
+                           "%s movevm %s          <uuid|vmname>\n"
+                     "                            --type basic\n"
+                     "                            [--folder <path>]\n"
                      "\n", SEP);
 
     if (fCategory & USAGE_IMPORTAPPLIANCE)

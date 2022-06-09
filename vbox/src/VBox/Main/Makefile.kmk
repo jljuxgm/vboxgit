@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70533 2018-01-11 13:28:49Z vboxsync $
+# $Id: Makefile.kmk 70582 2018-01-15 10:13:41Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -460,6 +460,7 @@ VBoxSVC_SOURCES = \
 	src-server/HostVideoInputDeviceImpl.cpp \
 	src-server/MachineImpl.cpp \
 	src-server/MachineImplCloneVM.cpp \
+	src-server/MachineImplMoveVM.cpp \
 	src-server/Matching.cpp \
 	src-server/MediumAttachmentImpl.cpp \
 	src-server/MediumFormatImpl.cpp \

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 68938 2017-09-29 16:13:26Z vboxsync $ */
+/* $Id: MachineImpl.h 70582 2018-01-15 10:13:41Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -826,7 +826,7 @@ protected:
     friend class VirtualBox;
 
     friend class MachineCloneVM;
-
+    friend class MachineMoveVM;
 private:
     // wrapped IMachine properties
     HRESULT getParent(ComPtr<IVirtualBox> &aParent);
@@ -1187,6 +1187,9 @@ private:
                     CloneMode_T aMode,
                     const std::vector<CloneOptions_T> &aOptions,
                     ComPtr<IProgress> &aProgress);
+    HRESULT moveTo(const com::Utf8Str &aTargetPath,
+                   const com::Utf8Str &aType,
+                   ComPtr<IProgress> &aProgress);
     HRESULT saveState(ComPtr<IProgress> &aProgress);
     HRESULT adoptSavedState(const com::Utf8Str &aSavedStateFile);
     HRESULT discardSavedState(BOOL aFRemoveFile);
