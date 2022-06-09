@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 71036 2018-02-16 05:47:33Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 71048 2018-02-19 09:21:43Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -962,11 +962,15 @@ IEM_STATIC VBOXSTRICTRC iemHandleSvmEventIntercept(PVMCPU pVCpu, PCPUMCTX pCtx, 
             PSVMVMCBCTRL  pVmcbCtrl = &pCtx->hwvirt.svm.CTX_SUFF(pVmcb)->ctrl;
             uint8_t const offOpCode = pVCpu->iem.s.offOpcode;
             uint8_t const cbCurrent = pVCpu->iem.s.cbOpcode - pVCpu->iem.s.offOpcode;
-            if (   cbCurrent > 0
-                && cbCurrent < sizeof(pVmcbCtrl->abInstr))
+            if (cbCurrent >= SVM_CTRL_GUEST_INSTR_BYTES_MAX)
             {
-                Assert(cbCurrent <= sizeof(pVCpu->iem.s.abOpcode));
-                memcpy(&pVmcbCtrl->abInstr[0], &pVCpu->iem.s.abOpcode[offOpCode], cbCurrent);
+                Assert(cbCurrent <= RT_ELEMENTS(pVCpu->iem.s.abOpcode));
+                memcpy(&pVmcbCtrl->abInstr[0], &pVCpu->iem.s.abOpcode[offOpCode], SVM_CTRL_GUEST_INSTR_BYTES_MAX);
+            }
+            else
+            {
+                /** @todo fetch 15 bytes from CS:RIP and stop fetching on exceptions or CS
+                 *        limit is exceeded. */
             }
 #endif
         }
