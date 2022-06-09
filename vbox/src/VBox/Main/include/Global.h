@@ -1,4 +1,4 @@
-/* $Id: Global.h 65158 2017-01-05 16:52:22Z vboxsync $ */
+/* $Id: Global.h 67733 2017-06-30 13:35:14Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -88,6 +88,12 @@ public:
      * Maps VBOXOSTYPE to the OS type which is used in VM configs.
      */
     static const char *OSTypeId(VBOXOSTYPE aOSType);
+
+    /**
+     * Maps an OS type ID string to index into sOSTypes.
+     * @returns index on success, UINT32_MAX if not found.
+     */
+    static uint32_t getOSTypeIndexFromId(const char *pszId);
 
     /**
      * Get the network adapter limit for each chipset type.
