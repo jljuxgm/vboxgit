@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
+/* $Id: BusAssignmentManager.cpp 68371 2017-08-10 13:52:23Z vboxsync $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -46,6 +46,10 @@ struct DeviceAliasRule
 };
 
 /* Those rules define PCI slots assignment */
+/** @note
+ * The EFI takes assumptions about PCI slot assignments which are different
+ * from the following tables in certain cases, for example the IDE device
+ * is assumed to be 00:01.1! */
 
 /* Device           Bus  Device Function Priority */
 
