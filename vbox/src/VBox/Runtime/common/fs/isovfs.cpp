@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 68509 2017-08-22 14:45:13Z vboxsync $ */
+/* $Id: isovfs.cpp 68510 2017-08-22 14:53:23Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 Virtual Filesystem.
  */
@@ -2572,7 +2572,7 @@ static int rtFsIso9660VolTryInit(PRTFSISO9660VOL pThis, RTVFS hVfsSelf, RTVFSFIL
         kStateStart = 0,
         kStateNoSeq,
         kStateCdSeq,
-        kStateUdfSeq,
+        kStateUdfSeq
     }               enmState = kStateStart;
     for (uint32_t iVolDesc = 0; ; iVolDesc++, offVolDesc += cbSector)
     {
