@@ -1,4 +1,4 @@
-# $Id: Config.kmk 69212 2017-10-24 13:55:53Z vboxsync $
+# $Id: Config.kmk 69508 2017-10-28 18:49:47Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -156,6 +156,7 @@ VBOX_PATH_ADDITIONS_ISO = $(patsubst %/,%,$(PATH_STAGE)/$(INST_ADDITIONS_ISO))
 VBOX_PATH_ADDITIONS_LIB = $(patsubst %/,%,$(PATH_STAGE)/$(INST_ADDITIONS_LIB))
 VBOX_PATH_EXTPACK_PUEL= $(patsubst %/,%,$(PATH_STAGE)/$(INST_EXTPACK_PUEL))
 VBOX_PATH_PACKAGES    = $(patsubst %/,%,$(PATH_STAGE)/$(INST_PACKAGES))
+VBOX_PATH_TOOLS       = $(patsubst %/,%,$(PATH_STAGE)/$(VBOX_INST_TOOLS))
 
 
 # Delete targets on failure.
@@ -7052,7 +7053,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 69212 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 69508 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
