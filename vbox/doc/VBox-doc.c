@@ -1,4 +1,4 @@
-/* $Id: VBox-doc.c 65128 2017-01-04 18:36:36Z vboxsync $ */
+/* $Id: VBox-doc.c 68446 2017-08-17 13:45:12Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
@@ -155,6 +155,7 @@
  *  - Validation Kit:
  *      - @ref pg_validationkit_guideline
  *      - @ref pg_bs3kit
+ *  - @ref pg_vbox_guideline
  *
  * @todo Make links to the components.
  *
