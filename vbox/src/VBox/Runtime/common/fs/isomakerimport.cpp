@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 67482 2017-06-19 16:57:58Z vboxsync $ */
+/* $Id: isomakerimport.cpp 67485 2017-06-20 06:14:12Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -474,6 +474,16 @@ static int rtFsIsoImportProcessIso9660TreeWorker(PRTFSISOMKIMPORTER pThis, uint3
                 rc = RTFsIsoMakerObjSetNameAndParent(pThis->hIsoMaker, idxObj, idxDir,
                                                      !fUnicode ? RTFSISOMAKER_NAMESPACE_ISO_9660 : RTFSISOMAKER_NAMESPACE_JOLIET,
                                                      pThis->szNameBuf);
+                if (RT_SUCCESS(rc))
+                {
+                    /*
+                     * Remember the data location if this is a file, if it's a
+                     * directory push it onto the traversal stack.
+                     */
+                }
+                else
+                    rtFsIsoImpError(pThis, rc, "Invalid name at %#RX64: %.Rhxs",
+                                    off - cbChunk, pDirRec->bFileIdLength, pDirRec->achFileId);
             }
         }
         else
