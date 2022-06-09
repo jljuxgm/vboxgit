@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: testboxscript.py 70548 2018-01-11 20:46:02Z vboxsync $
 
 """
 TestBox Script Wrapper.
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70548 $"
 
 import platform;
 import subprocess;
@@ -66,10 +66,10 @@ class TestBoxScriptWrapper(object): # pylint: disable=R0903
         Cleanup
         """
         if self.oTask is not None:
-            print 'Wait for child task...'
+            print('Wait for child task...')
             self.oTask.terminate()
             self.oTask.wait()
-            print 'done. Exiting'
+            print('done. Exiting')
             self.oTask = None;
 
     def run(self):
@@ -107,10 +107,10 @@ class TestBoxScriptWrapper(object): # pylint: disable=R0903
         # Execute the testbox script almost forever in a relaxed loop.
         rcExit = TBS_EXITCODE_FAILURE;
         while True:
-            self.oTask = subprocess.Popen(asArgs,
-                                          shell = False,
-                                          creationflags = (0 if platform.system() != 'Windows'
-                                                           else subprocess.CREATE_NEW_PROCESS_GROUP)); # for Ctrl-C isolation
+            fCreationFlags = 0;
+            if platform.system() == 'Windows':
+                fCreationFlags = getattr(subprocess, 'CREATE_NEW_PROCESS_GROUP', 0x00000200); # for Ctrl-C isolation (python 2.7)
+            self.oTask = subprocess.Popen(asArgs, shell = False, creationflags = fCreationFlags);
             rcExit = self.oTask.wait();
             self.oTask = None;
             if rcExit == TBS_EXITCODE_SYNTAX:

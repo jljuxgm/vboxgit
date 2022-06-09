@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxconnection.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: testboxconnection.py 70548 2018-01-11 20:46:02Z vboxsync $
 
 """
 TestBox Script - HTTP Connection Handling.
@@ -26,14 +26,18 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70548 $"
 
 
 # Standard python imports.
-import httplib
+import sys;
 import urllib
-import urlparse
-import sys
+if sys.version_info[0] >= 3:
+    import http.client as httplib;
+    import urllib.parse as urlparse;
+else:
+    import httplib;
+    import urlparse;
 
 # Validation Kit imports.
 from common import constants
@@ -65,7 +69,7 @@ class TestBoxResponse(object):
             # Parse the body (this should be the exact reverse of what
             # TestBoxConnection.postRequestRaw).
             ##testboxcommons.log2('SERVER RESPONSE: "%s"' % (sBody,))
-            self._dResponse = urlparse.parse_qs(sBody, strict_parsing=True);
+            self._dResponse = urllib_parse_qs(sBody, strict_parsing=True);
 
             # Convert the dictionary from 'field:values' to 'field:value'. Fail
             # if a field has more than one value (i.e. given more than once).
