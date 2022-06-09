@@ -1,4 +1,4 @@
-/* $Id: waitqueue-r0drv-linux.h 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: waitqueue-r0drv-linux.h 67984 2017-07-16 20:24:39Z vboxsync $ */
 /** @file
  * IPRT - Linux Ring-0 Driver Helpers for Abstracting Wait Queues,
  */
@@ -46,7 +46,11 @@
 typedef struct RTR0SEMLNXWAIT
 {
     /** The wait queue entry. */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 13, 0)
+    wait_queue_entry_t WaitQE;
+#else
     wait_queue_t    WaitQE;
+#endif
     /** The absolute timeout given as nano seconds since the start of the
      *  monotonic clock. */
     uint64_t        uNsAbsTimeout;
