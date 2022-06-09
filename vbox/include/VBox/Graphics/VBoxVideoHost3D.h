@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHost3D.h 71607 2018-04-01 23:38:00Z vboxsync $ */
+/* $Id: VBoxVideoHost3D.h 71619 2018-04-02 17:11:37Z vboxsync $ */
 /** @file
  * VirtualBox 3D host inter-components interfaces
  */
@@ -41,7 +41,9 @@ typedef struct VBOXCMDVBVA_HDR *PVBOXCMDVBVA_HDR;
 
 typedef DECLCALLBACKPTR(void, PFNVBOXCRCMD_CLTSCR_UPDATE_BEGIN)(HVBOXCRCMDCLTSCR hClt, unsigned u32Screen);
 typedef DECLCALLBACKPTR(void, PFNVBOXCRCMD_CLTSCR_UPDATE_END)(HVBOXCRCMDCLTSCR hClt, unsigned uScreenId, int32_t x, int32_t y, uint32_t cx, uint32_t cy);
-typedef DECLCALLBACKPTR(void, PFNVBOXCRCMD_CLTSCR_UPDATE_PROCESS)(HVBOXCRCMDCLTSCR hClt, unsigned u32Screen, const struct VBVACMDHDR *pCmd, size_t cbCmd);
+typedef DECLCALLBACKPTR(void, PFNVBOXCRCMD_CLTSCR_UPDATE_PROCESS)(HVBOXCRCMDCLTSCR hClt, unsigned u32Screen,
+                                                                  struct VBVACMDHDR const RT_UNTRUSTED_VOLATILE_GUEST *pCmd,
+                                                                  size_t cbCmd);
 
 /*client callbacks to be used by the server
  * when working in the CrCmd mode */
