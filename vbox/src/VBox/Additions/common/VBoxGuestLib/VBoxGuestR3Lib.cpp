@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 68579 2017-08-31 12:11:06Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 68581 2017-08-31 12:11:13Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -384,6 +384,7 @@ VBGLR3DECL(void) VbglR3Term(void)
 int vbglR3DoIOCtlRaw(uintptr_t uFunction, PVBGLREQHDR pHdr, size_t cbReq)
 {
     Assert(cbReq == RT_MAX(pHdr->cbIn, pHdr->cbOut)); RT_NOREF1(cbReq);
+    Assert(pHdr->cbOut != 0);
 
 #if defined(RT_OS_WINDOWS)
 # if 0 /*def USE_NT_DEVICE_IO_CONTROL_FILE*/

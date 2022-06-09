@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 68568 2017-08-31 12:10:33Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 68581 2017-08-31 12:11:13Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -681,7 +681,7 @@ static int vgdrvSolarisIOCtlSlow(PVBOXGUESTSESSION pSession, int iCmd, int Mode,
     }
     cbBuf = RT_MAX(StackBuf.Hdr.cbIn, StackBuf.Hdr.cbOut);
     if (RT_UNLIKELY(   StackBuf.Hdr.cbIn < sizeof(StackBuf.Hdr)
-                    || StackBuf.Hdr.cbOut < sizeof(StackBuf.Hdr)
+                    || (StackBuf.Hdr.cbOut < sizeof(StackBuf.Hdr) && StackBuf.Hdr.cbOut != 0)
                     || cbBuf > _1M*16))
     {
         LogRel(("vgdrvSolarisIOCtlSlow: max(%#x,%#x); iCmd=%#x\n", StackBuf.Hdr.cbIn, StackBuf.Hdr.cbOut, iCmd));

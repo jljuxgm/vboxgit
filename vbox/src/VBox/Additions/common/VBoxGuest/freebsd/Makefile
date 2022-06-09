@@ -1,4 +1,4 @@
-# $Id: Makefile 66415 2017-04-04 13:17:22Z vboxsync $
+# $Id: Makefile 68581 2017-08-31 12:11:13Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -31,7 +31,6 @@ SRCS = \
 	HGCMInternal.c \
 	Init.c \
 	PhysHeap.c \
-	SysHlp.c \
 	VMMDev.c
 
 # Include needed interface headers so they are created during build
@@ -150,8 +149,7 @@ SRCS += \
 	spinlock-r0drv-freebsd.c \
 	thread-r0drv-freebsd.c \
 	thread2-r0drv-freebsd.c \
-	time-r0drv-freebsd.c \
-	timer-r0drv-freebsd.c
+	time-r0drv-freebsd.c
 
 .PATH:	${.CURDIR}/r0drv/generic
 SRCS += \

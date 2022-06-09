@@ -1,4 +1,4 @@
-/* $Id: VBGLInternal.h 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBGLInternal.h 68581 2017-08-31 12:11:13Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -26,8 +26,6 @@
 
 #ifndef ___VBoxGuestLib_VBGLInternal_h
 #define ___VBoxGuestLib_VBGLInternal_h
-
-#include "SysHlp.h"                     /* before VBoxGuest.h because of windows  */
 
 #include <VBox/VMMDev.h>
 #include <VBox/VBoxGuest.h>
