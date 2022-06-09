@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 72422 2018-06-04 07:43:44Z vboxsync $ */
+/* $Id: APICAll.cpp 72486 2018-06-08 17:16:50Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -3114,6 +3114,8 @@ VMM_INT_DECL(void) APICDequeueInterruptFromService(PVMCPU pVCpu, uint8_t u8Pendi
  * Updates pending interrupts from the pending-interrupt bitmaps to the IRR.
  *
  * @param   pVCpu               The cross context virtual CPU structure.
+ *
+ * @note    NEM/win is ASSUMING the an up to date TPR is not required here.
  */
 VMMDECL(void) APICUpdatePendingInterrupts(PVMCPU pVCpu)
 {
