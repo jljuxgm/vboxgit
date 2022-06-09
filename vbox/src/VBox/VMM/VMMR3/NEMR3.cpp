@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 72555 2018-06-14 21:28:31Z vboxsync $ */
+/* $Id: NEMR3.cpp 72575 2018-06-15 21:25:32Z vboxsync $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -344,6 +344,7 @@ VMMR3DECL(const char *) NEMR3GetExitName(uint32_t uExit)
         case NEMEXITTYPE_XCPT_DB:                       return "NEM #DB";
         case NEMEXITTYPE_XCPT_BP:                       return "NEM #BP";
         case NEMEXITTYPE_CANCELED:                      return "NEM canceled";
+        case NEMEXITTYPE_MEMORY_ACCESS:                 return "NEM memory access";
     }
 
     return NULL;
