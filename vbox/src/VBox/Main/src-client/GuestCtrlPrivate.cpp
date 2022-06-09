@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 71299 2018-03-12 11:30:08Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 71326 2018-03-14 14:28:28Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -701,7 +701,7 @@ int GuestBase::dispatchGeneric(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
 
             case GUEST_MSG_REPLY:
             {
-                if (pSvcCb->mParms >= 3)
+                if (pSvcCb->mParms >= 4)
                 {
                     int idx = 1; /* Current parameter index. */
                     CALLBACKDATA_MSG_REPLY dataCb;
@@ -714,8 +714,9 @@ int GuestBase::dispatchGeneric(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
                     AssertRCReturn(vrc, vrc);
 
                     GuestWaitEventPayload evPayload(dataCb.uType, dataCb.pvPayload, dataCb.cbPayload);
-                    int rc2 = signalWaitEventInternal(pCtxCb, dataCb.rc, &evPayload);
-                    AssertRC(rc2);
+                    vrc = signalWaitEventInternal(pCtxCb, dataCb.rc, &evPayload);
+                    if (vrc == VERR_NOT_FOUND)
+                        vrc = VINF_SUCCESS;
                 }
                 else
                     vrc = VERR_INVALID_PARAMETER;
