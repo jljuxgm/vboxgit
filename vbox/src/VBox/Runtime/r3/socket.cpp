@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 70393 2017-12-30 12:11:56Z vboxsync $ */
+/* $Id: socket.cpp 70401 2018-01-01 15:26:38Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -225,8 +225,8 @@ static int rtSocketInitWinsock(void)
         int rcWsa = g_pfnWSAStartup(s_awVersions[i], &wsaData);
         if (rcWsa == 0)
         {
-            Assert(wsaData.wVersion >= s_awVersions[i]);
-            ASMAtomicWriteU32(&g_uWinSockInitedVersion, s_awVersions[i]);
+            /* AssertMsg(wsaData.wVersion >= s_awVersions[i]); - triggers with winsock 1.1 */
+            ASMAtomicWriteU32(&g_uWinSockInitedVersion, wsaData.wVersion);
             return VINF_SUCCESS;
         }
         AssertLogRelMsg(rcWsa == WSAVERNOTSUPPORTED, ("rcWsa=%d (winsock version %#x)\n", rcWsa, s_awVersions[i]));
