@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.h 67809 2017-07-05 18:11:47Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.h 67814 2017-07-06 08:37:31Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -86,6 +86,7 @@ public:
                                 CREDENTIAL_PROVIDER_STATUS_ICON* pcpsiOptionalStatusIcon);
     /** @} */
 
+    PCRTUTF16 getField(DWORD dwFieldID);
     HRESULT setField(DWORD dwFieldID, const PRTUTF16 pcwszString, bool fNotifyUI);
     HRESULT Reset(void);
     HRESULT Initialize(CREDENTIAL_PROVIDER_USAGE_SCENARIO cpus);

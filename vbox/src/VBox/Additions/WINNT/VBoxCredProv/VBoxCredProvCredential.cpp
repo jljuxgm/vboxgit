@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.cpp 67809 2017-07-05 18:11:47Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.cpp 67814 2017-07-06 08:37:31Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -384,6 +384,25 @@ HRESULT VBoxCredProvCredential::kerberosLogonSerialize(const KERB_INTERACTIVE_LO
 #undef KERB_CRED_INIT_PACKED
 
     return S_OK;
+}
+
+
+/**
+ * Returns the current value of a specific credential provider field.
+ *
+ * @return  Pointer (const) to the credential provider field requested, or NULL if not found / invalid.
+ * @param   dwFieldID           Field ID of the credential provider field to get.
+ */
+PCRTUTF16 VBoxCredProvCredential::getField(DWORD dwFieldID)
+{
+    if (dwFieldID >= VBOXCREDPROV_NUM_FIELDS)
+        return NULL;
+
+    /* Paranoia: Don't ever reveal passwords. */
+    if (dwFieldID == VBOXCREDPROV_FIELDID_PASSWORD)
+        return NULL;
+
+    return m_apwszFields[dwFieldID];
 }
 
 
