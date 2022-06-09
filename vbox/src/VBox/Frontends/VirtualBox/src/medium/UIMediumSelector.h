@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 72423 2018-06-04 08:01:05Z vboxsync $ */
+/* $Id: UIMediumSelector.h 72431 2018-06-04 13:18:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -87,7 +87,8 @@ private:
     void updateOkButton();
     UIMediumItem* addTreeItem(const UIMedium &medium, QITreeWidgetItem *pParent);
     void restoreSelection(const QStringList &selectedMediums, QVector<UIMediumItem*> &mediumList);
-    UIMediumItem* createHardDiskItem(const UIMedium &medium);
+    /** Recursively create the hard disk hierarchy under the tree widget */
+    UIMediumItem* createHardDiskItem(const UIMedium &medium, QITreeWidgetItem *pParent);
     UIMediumItem* searchItem(const QTreeWidgetItem *pParent, const QString &mediumId);
 
     QVBoxLayout       *m_pMainLayout;
