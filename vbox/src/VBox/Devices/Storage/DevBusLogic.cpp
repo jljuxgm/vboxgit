@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 71775 2018-04-09 14:54:57Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -3855,6 +3855,13 @@ static void buslogicR3SuspendOrPowerOff(PPDMDEVINS pDevIns)
     {
         ASMAtomicWriteBool(&pThis->fSignalIdle, false);
         AssertMsg(!pThis->fNotificationSent, ("The PDM Queue should be empty at this point\n"));
+    }
+
+    for (uint32_t i = 0; i < RT_ELEMENTS(pThis->aDeviceStates); i++)
+    {
+        PBUSLOGICDEVICE pThisDevice = &pThis->aDeviceStates[i];
+        if (pThisDevice->pDrvMediaEx)
+            pThisDevice->pDrvMediaEx->pfnNotifySuspend(pThisDevice->pDrvMediaEx);
     }
 }
 

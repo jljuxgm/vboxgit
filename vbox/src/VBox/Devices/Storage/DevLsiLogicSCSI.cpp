@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 71775 2018-04-09 14:54:57Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5135,6 +5135,13 @@ static void lsilogicR3SuspendOrPowerOff(PPDMDEVINS pDevIns)
         ASMAtomicWriteBool(&pThis->fSignalIdle, false);
 
         AssertMsg(!pThis->fNotificationSent, ("The PDM Queue should be empty at this point\n"));
+    }
+
+    for (uint32_t i = 0; i < pThis->cDeviceStates; i++)
+    {
+        PLSILOGICDEVICE pThisDevice = &pThis->paDeviceStates[i];
+        if (pThisDevice->pDrvMediaEx)
+            pThisDevice->pDrvMediaEx->pfnNotifySuspend(pThisDevice->pDrvMediaEx);
     }
 }
 
