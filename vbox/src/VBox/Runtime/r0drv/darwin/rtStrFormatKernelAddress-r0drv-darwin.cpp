@@ -1,4 +1,4 @@
-/* $Id: rtStrFormatKernelAddress-r0drv-darwin.cpp 68995 2017-10-06 07:46:09Z vboxsync $ */
+/* $Id: rtStrFormatKernelAddress-r0drv-darwin.cpp 68996 2017-10-06 07:48:23Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter, ring-0 addresses.
  */
@@ -45,6 +45,6 @@ DECLHIDDEN(size_t) rtStrFormatKernelAddress(char *pszBuf, size_t cbBuf, RTR0INTP
      * Kernel addresses don't need obfuscation in R0 because the kernel log is only accessible
      * as root.
      */
-    Assert(cbBuf >= 64);
+    Assert(cbBuf >= 64); RT_NOREF(cbBuf);
     return RTStrFormatNumber(pszBuf, uPtr, 16, cchWidth, cchPrecision, fFlags);
 }
