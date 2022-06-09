@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl.xsl 66274 2017-03-28 00:19:45Z vboxsync $ -->
+<!-- $Id: xpidl.xsl 69379 2017-10-26 16:23:49Z vboxsync $ -->
 
 <!--
  *  A template to generate a XPCOM IDL compatible interface definition file
@@ -156,7 +156,7 @@
   <xsl:text>&#x0A;</xsl:text>
   <!-- all enums go first -->
   <xsl:apply-templates select="application/enum | application/if/enum"/>
-  <!-- everything else but result codes and enums 
+  <!-- everything else but result codes and enums
   <xsl:apply-templates select="*[not(self::application/result or self::application/enum) and
                                  not(self::application[result] or self::application/if[enum])]"/> -->
   <!-- the modules (i.e. everything else) -->
@@ -1042,7 +1042,7 @@
 </xsl:template>
 
 <!-- Filters for switch off VBoxSDS definitions -->
-  
+
 <xsl:template match="application[@uuid='ec0e78e8-fa43-43e8-ac0a-02c784c4a4fa']//module/class" />
 
 <xsl:template match="application[@uuid='ec0e78e8-fa43-43e8-ac0a-02c784c4a4fa']/if//interface
