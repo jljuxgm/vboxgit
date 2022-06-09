@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69246 2017-10-24 18:56:25Z vboxsync $
+# $Id: .scm-settings 69395 2017-10-26 17:40:49Z vboxsync $
 ## @file
 # Source code massager settings for the host installers.
 #
@@ -21,3 +21,4 @@
 # Dual licensed code.
 /common/vboxapisetup.py: --license-ose-dual
 
+--filter-out-files *.desktop.in
