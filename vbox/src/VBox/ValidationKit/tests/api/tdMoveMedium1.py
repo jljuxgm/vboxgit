@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdMoveMedium1.py 71099 2018-02-22 10:07:34Z vboxsync $
+# $Id: tdMoveMedium1.py 71115 2018-02-23 12:33:25Z vboxsync $
 
 """
 VirtualBox Validation Kit - Medium Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71099 $"
+__version__ = "$Revision: 71115 $"
 
 
 # Standard Python imports.
@@ -171,7 +171,11 @@ class SubTstDrvMoveMedium1(base.SubTestDriverBase):
             #case 4. Only file name
             fRc = self.setLocation('onlyMediumName', aoMediumAttachments) and fRc
             asNewFiles = ['onlyMediumName' + os.path.splitext(s)[1] for s in asFiles]
-            fRc = self.checkLocation(sNewLoc, aoMediumAttachments, asNewFiles) and fRc
+            if self.oTstDrv.fpApiVer >= 5.3:
+                fRc = self.checkLocation(sNewLoc, aoMediumAttachments, asNewFiles) and fRc
+            else:
+                fRc = self.checkLocation(sNewLoc, aoMediumAttachments,
+                                         [s.replace('.hdd', '.parallels') for s in asNewFiles]) and fRc
 
             #case 5. Move all files from a snapshot
             fRc = fRc and oSession.takeSnapshot('Snapshot1')
