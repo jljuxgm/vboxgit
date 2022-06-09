@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 71215 2018-03-05 20:44:57Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 71231 2018-03-06 10:08:58Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1868,8 +1868,8 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
             }
             else if (RTDirExists(pszSrc))
             {
-                SafeArray<DirectoryCopyFlags_T> copyFlags;
-                copyFlags.push_back(DirectoryCopyFlags_CopyIntoExisting);
+                SafeArray<DirectoryCopyFlag_T> copyFlags;
+                copyFlags.push_back(DirectoryCopyFlag_CopyIntoExisting);
                 rc = pCtx->pGuestSession->DirectoryCopyToGuest(Bstr(pszSrc).raw(), Bstr(pszDst).raw(),
                                                                ComSafeArrayAsInParam(copyFlags), pProgress.asOutParam());
             }
