@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 70556 2018-01-12 13:02:03Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 70559 2018-01-12 14:29:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -200,6 +200,15 @@ void UIVMLogViewerTextEdit::lineNumberAreaPaintEvent(QPaintEvent *event)
     while (block.isValid() && top <= event->rect().bottom()) {
         if (block.isVisible() && bottom >= event->rect().top()) {
             QString number = QString::number(blockNumber + 1);
+            if (m_bookmarkLineSet.contains(blockNumber + 1))
+            {
+                painter.setBackgroundMode(Qt::OpaqueMode);
+                painter.setBackground(QBrush(Qt::red));
+            }
+            else
+            {
+                painter.setBackgroundMode(Qt::TransparentMode);
+            }
             painter.setPen(Qt::black);
             painter.drawText(0, top, m_pLineNumberArea->width(), m_pLineNumberArea->fontMetrics().lineSpacing(),
                              Qt::AlignRight, number);
@@ -274,5 +283,35 @@ void UIVMLogViewerTextEdit::clearScrollBarMarkingsVector()
         vScrollBar->clearMarkingsVector();
 }
 
+void UIVMLogViewerTextEdit::scrollToLine(int lineNumber)
+{
+    QTextDocument* pDocument = document();
+    if(!pDocument)
+        return;
+
+    int halfPageLineCount = 0.5 * visibleLineCount() ;
+    QTextCursor cursor(pDocument->findBlockByLineNumber(qMax(lineNumber - halfPageLineCount, 0)));
+    moveCursor(QTextCursor::End);
+    setTextCursor(cursor);
+}
+
+int UIVMLogViewerTextEdit::visibleLineCount()
+{
+    int height = 0;
+    if(viewport())
+        height = viewport()->height();
+    if(verticalScrollBar() && verticalScrollBar()->isVisible())
+        height -= horizontalScrollBar()->height();
+    int singleLineHeight = fontMetrics().lineSpacing();
+    if(singleLineHeight == 0)
+        return 0;
+    return height / singleLineHeight;
+}
+
+void UIVMLogViewerTextEdit::setBookmarkLineSet(const QSet<int>& lineSet)
+{
+    m_bookmarkLineSet = lineSet;
+    repaint();
+}
 
 #include "UIVMLogViewerTextEdit.moc"

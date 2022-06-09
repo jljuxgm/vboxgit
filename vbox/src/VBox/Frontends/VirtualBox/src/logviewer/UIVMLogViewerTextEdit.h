@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 70554 2018-01-12 12:29:25Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.h 70559 2018-01-12 14:29:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -43,6 +43,10 @@ public:
     /** Forwards the call to scroll bar class */
     void clearScrollBarMarkingsVector();
 
+    void scrollToLine(int lineNumber);
+
+    void setBookmarkLineSet(const QSet<int>& lineSet);
+
 protected:
 
     void contextMenuEvent(QContextMenuEvent *pEvent);
@@ -53,6 +57,7 @@ private slots:
     void sltBookmark();
     void sltUpdateLineNumberAreaWidth(int newBlockCount);
     void sltUpdateLineNumberArea(const QRect &, int);
+    int  visibleLineCount();
 
 private:
 
@@ -62,6 +67,7 @@ private:
     /* Line number and text at the context menu position */
     QPair<int, QString>  m_iContextMenuBookmark;
     QWidget             *m_pLineNumberArea;
+    QSet<int>            m_bookmarkLineSet;
 };
 
 

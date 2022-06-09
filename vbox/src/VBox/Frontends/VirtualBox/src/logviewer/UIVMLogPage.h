@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 70554 2018-01-12 12:29:25Z vboxsync $ */
+/* $Id: UIVMLogPage.h 70559 2018-01-12 14:29:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -98,6 +98,7 @@ private:
     void prepareWidgets();
     void cleanup();
     void retranslateUi();
+    void updateTextEditBookmarkLineSet();
 
     QHBoxLayout    *m_pMainLayout;
     UIVMLogViewerTextEdit *m_pTextEdit;
