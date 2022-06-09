@@ -1,4 +1,8 @@
 #!/bin/sh
+# $Id: postflight 69315 2017-10-25 15:02:19Z vboxsync $
+## @file
+# Post flight installer script for the VirtualBox OS X kernel extensions.
+#
 
 #
 # Copyright (C) 2007-2013 Oracle Corporation

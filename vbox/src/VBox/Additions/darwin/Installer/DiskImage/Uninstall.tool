@@ -1,6 +1,9 @@
 #!/bin/sh
-#
+# $Id: Uninstall.tool 69315 2017-10-25 15:02:19Z vboxsync $
+## #file
 # VirtualBox Uninstaller Script.
+#
+
 #
 # Copyright (C) 2007-2013 Oracle Corporation
 #
@@ -103,3 +106,4 @@ done
 
 echo "Done."
 exit 0;
+
