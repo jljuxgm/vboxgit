@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 67744 2017-07-01 11:25:32Z vboxsync $ */
+/* $Id: VMDK.cpp 68787 2017-09-19 08:53:40Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -636,8 +636,12 @@ static int vmdkFileClose(PVMDKIMAGE pImage, PVMDKFILE *ppVmdkFile, bool fDelete)
             pImage->pFiles = pNext;
 
         rc = vdIfIoIntFileClose(pImage->pIfIo, pVmdkFile->pStorage);
-        if (RT_SUCCESS(rc) && pVmdkFile->fDelete)
-            rc = vdIfIoIntFileDelete(pImage->pIfIo, pVmdkFile->pszFilename);
+        if (pVmdkFile->fDelete)
+        {
+            int rc2 = vdIfIoIntFileDelete(pImage->pIfIo, pVmdkFile->pszFilename);
+            if (RT_SUCCESS(rc))
+                rc = rc2;
+        }
         RTStrFree((char *)(void *)pVmdkFile->pszFilename);
         RTMemFree(pVmdkFile);
     }
@@ -3260,7 +3264,7 @@ static int vmdkDescriptorRead(PVMDKIMAGE pImage, PVMDKFILE pFile)
     }
     else
     {
-        vdIfError(pImage->pIfError, rc, RT_SRC_POS, N_("VMDK: error reading the magic number in '%s'"), pImage->pszFilename);   
+        vdIfError(pImage->pIfError, rc, RT_SRC_POS, N_("VMDK: error reading the magic number in '%s'"), pImage->pszFilename);
         rc = VERR_VD_VMDK_INVALID_HEADER;
     }
 

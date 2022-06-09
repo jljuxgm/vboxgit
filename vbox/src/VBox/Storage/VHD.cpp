@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 66486 2017-04-10 07:23:59Z vboxsync $ */
+/* $Id: VHD.cpp 68787 2017-09-19 08:53:40Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -587,7 +587,11 @@ static int vhdFreeImage(PVHDIMAGE pImage, bool fDelete)
         }
 
         if (fDelete && pImage->pszFilename)
-            vdIfIoIntFileDelete(pImage->pIfIo, pImage->pszFilename);
+        {
+            int rc2 = vdIfIoIntFileDelete(pImage->pIfIo, pImage->pszFilename);
+            if (RT_SUCCESS(rc))
+                rc = rc2;
+        }
     }
 
     LogFlowFunc(("returns %Rrc\n", rc));

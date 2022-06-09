@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 66505 2017-04-11 09:31:25Z vboxsync $ */
+/* $Id: VDI.cpp 68787 2017-09-19 08:53:40Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -243,7 +243,11 @@ static int vdiFreeImage(PVDIIMAGEDESC pImage, bool fDelete)
         }
 
         if (fDelete && pImage->pszFilename)
-            vdIfIoIntFileDelete(pImage->pIfIo, pImage->pszFilename);
+        {
+            int rc2 = vdIfIoIntFileDelete(pImage->pIfIo, pImage->pszFilename);
+            if (RT_SUCCESS(rc))
+                rc = rc2;
+        }
     }
 
     LogFlowFunc(("returns %Rrc\n", rc));
