@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 70963 2018-02-11 12:07:16Z vboxsync $
+# $Id: tdStorageBenchmark1.py 71180 2018-03-02 19:34:21Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70963 $"
+__version__ = "$Revision: 71180 $"
 
 
 # Standard Python imports.
@@ -1176,7 +1176,16 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                     oStorCfgVm = storagecfg.StorageCfg(oExecVm, 'linux', self.getGuestDisk(oSession, oTxsSession, \
                                                                                            eStorageController));
 
-                    sMountPoint = self.prepareStorage(oStorCfgVm);
+                    iTry = 0;
+                    while iTry < 3:
+                        sMountPoint = self.prepareStorage(oStorCfgVm);
+                        if sMountPoint is not None:
+                            reporter.log('Prepared storage on %s try' % (iTry + 1,));
+                            break;
+                        else:
+                            iTry = iTry + 1;
+                            self.sleep(5);
+
                     if sMountPoint is not None:
                         self.testBenchmark('linux', sIoTest, sMountPoint, oExecVm, dTestSet, \
                                            cMsTimeout = 3 * 3600 * 1000); # 3 hours max (Benchmark and QED takes a lot of time)
