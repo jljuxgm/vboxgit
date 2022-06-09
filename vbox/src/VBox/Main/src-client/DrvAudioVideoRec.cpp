@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 68322 2017-08-07 15:25:11Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 68323 2017-08-07 15:32:13Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -52,6 +52,14 @@
 #ifdef VBOX_WITH_LIBOPUS
 # include <opus.h>
 #endif
+
+
+/*********************************************************************************************************************************
+*   Defines                                                                                                                      *
+*********************************************************************************************************************************/
+
+#define AVREC_OPUS_HZ_MAX       48000           /** Maximum sample rate (in Hz) Opus can handle. */
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
@@ -228,7 +236,7 @@ static int avRecSinkInit(PDRVAUDIOVIDEOREC pThis, PAVRECSINK pSink, PAVRECCONTAI
 
     /* Opus only supports certain input sample rates in an efficient manner.
      * So make sure that we use those by resampling the data to the requested rate. */
-    if      (uHz > 24000) uHz = 48000;
+    if      (uHz > 24000) uHz = AVREC_OPUS_HZ_MAX;
     else if (uHz > 16000) uHz = 24000;
     else if (uHz > 12000) uHz = 16000;
     else if (uHz > 8000 ) uHz = 12000;
@@ -303,7 +311,7 @@ static int avRecSinkInit(PDRVAUDIOVIDEOREC pThis, PAVRECSINK pSink, PAVRECCONTAI
 #endif
 
         /* Calculate the maximum frame size. */
-        pSink->Codec.Opus.csFrameMax = 48000                   /* Maximum sample rate Opus can handle */
+        pSink->Codec.Opus.csFrameMax = AVREC_OPUS_HZ_MAX       /* Maximum sample rate Opus can handle */
                                      * pCodecParms->cChannels; /* Number of channels */
     }
 
@@ -488,9 +496,9 @@ static DECLCALLBACK(int) drvAudioVideoRecInit(PPDMIHOSTAUDIO pInterface)
     ContainerParms.enmType = AVRECCONTAINERTYPE_MAIN_CONSOLE; /** @todo Make this configurable. */
 
     AVRECCODECPARMS CodecParms;
-    CodecParms.uHz       = 48000;  /** @todo Make this configurable. */
-    CodecParms.cChannels = 2;      /** @todo Make this configurable. */
-    CodecParms.uBitrate  = 196000; /** @todo Make this configurable. */
+    CodecParms.uHz       = AVREC_OPUS_HZ_MAX;  /** @todo Make this configurable. */
+    CodecParms.cChannels = 2;                  /** @todo Make this configurable. */
+    CodecParms.uBitrate  = 196000;             /** @todo Make this configurable. */
 
     int rc = avRecSinkInit(pThis, &pThis->Sink, &ContainerParms, &CodecParms);
     if (RT_FAILURE(rc))
