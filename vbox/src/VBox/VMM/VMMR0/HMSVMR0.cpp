@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 70703 2018-01-23 11:19:47Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 70704 2018-01-23 11:21:16Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -419,7 +419,7 @@ R0PTRTYPE(void *)           g_pvNstGstMsrBitmap      = NULL;
 static void hmR0SvmLogState(PVMCPU pVCpu, PCSVMVMCB pVmcb, PCPUMCTX pCtx, const char *pszPrefix, uint32_t fFlags,
                              uint8_t uVerbose)
 {
-    RT_NOREF(uVerbose);
+    RT_NOREF2(pVCpu, uVerbose);
 
     Log4(("%s: cs:rip=%04x:%RX64 efl=%#RX32 cr0=%#RX32 cr3=%#RX32 cr4=%#RX32\n", pszPrefix, pCtx->cs.Sel, pCtx->rip,
           pCtx->eflags.u, pCtx->cr0, pCtx->cr3, pCtx->cr4));
