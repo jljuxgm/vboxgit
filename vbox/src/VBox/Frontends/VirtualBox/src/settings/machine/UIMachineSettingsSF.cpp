@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 69710 2017-11-16 11:12:36Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */

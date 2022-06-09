@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */

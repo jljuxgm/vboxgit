@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 70530 2018-01-11 10:39:18Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */

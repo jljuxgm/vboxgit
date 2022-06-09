@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 70185 2017-12-18 10:32:04Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */

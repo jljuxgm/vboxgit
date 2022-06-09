@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 70230 2017-12-19 20:55:07Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */

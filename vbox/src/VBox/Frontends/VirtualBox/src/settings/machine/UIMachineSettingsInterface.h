@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 66490 2017-04-10 08:45:36Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */

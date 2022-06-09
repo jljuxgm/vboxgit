@@ -1,4 +1,4 @@
-/* $Id: QILabel.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: QILabel.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILabel class declaration.
  */

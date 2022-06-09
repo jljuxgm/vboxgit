@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UINetworkCustomer.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class implementation.
  */

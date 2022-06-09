@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 69538 2017-10-31 11:48:08Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */

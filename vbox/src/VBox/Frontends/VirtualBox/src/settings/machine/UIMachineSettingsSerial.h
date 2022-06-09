@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.h 66559 2017-04-13 14:06:28Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class declaration.
  */

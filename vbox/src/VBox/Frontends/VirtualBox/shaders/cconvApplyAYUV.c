@@ -1,4 +1,4 @@
-/* $Id: cconvApplyAYUV.c 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: cconvApplyAYUV.c 71027 2018-02-15 14:33:48Z vboxsync $ */
 void vboxCConvApplyAYUV(vec4 color)
 {
     float y, u, v, r, g, b;

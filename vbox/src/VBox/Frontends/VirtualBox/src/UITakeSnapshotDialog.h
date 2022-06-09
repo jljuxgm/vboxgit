@@ -1,4 +1,4 @@
-/* $Id: UITakeSnapshotDialog.h 67535 2017-06-21 10:47:28Z vboxsync $ */
+/* $Id: UITakeSnapshotDialog.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class declaration.
  */

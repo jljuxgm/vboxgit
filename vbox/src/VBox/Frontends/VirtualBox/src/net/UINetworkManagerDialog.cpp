@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerDialog.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
+/* $Id: UINetworkManagerDialog.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerDialog stuff implementation.
  */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 66552 2017-04-13 10:08:10Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */

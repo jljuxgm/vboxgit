@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.h 70787 2018-01-29 11:16:51Z vboxsync $ */
+/* $Id: UINetworkReply.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff declaration.
  */

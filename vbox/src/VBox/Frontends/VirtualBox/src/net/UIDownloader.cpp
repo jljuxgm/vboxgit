@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.cpp 69550 2017-11-02 10:22:18Z vboxsync $ */
+/* $Id: UIDownloader.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloader class implementation.
  */

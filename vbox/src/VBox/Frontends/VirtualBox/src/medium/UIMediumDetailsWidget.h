@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.h 69607 2017-11-07 16:27:16Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class declaration.
  */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.h 66482 2017-04-07 16:08:08Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class declaration.
  */

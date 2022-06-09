@@ -1,4 +1,4 @@
-/* $Id: cconvUYVY.c 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: cconvUYVY.c 71027 2018-02-15 14:33:48Z vboxsync $ */
 #extension GL_ARB_texture_rectangle : enable
 uniform sampler2DRect uSrcTex;
 void vboxCConvApplyAYUV(vec4 color);

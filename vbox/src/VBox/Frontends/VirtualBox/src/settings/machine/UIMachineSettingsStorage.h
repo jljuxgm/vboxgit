@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 68339 2017-08-08 10:49:57Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */

@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.h 66946 2017-05-18 07:52:21Z vboxsync $ */
+/* $Id: UIIndicatorsPool.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class declaration.
  */

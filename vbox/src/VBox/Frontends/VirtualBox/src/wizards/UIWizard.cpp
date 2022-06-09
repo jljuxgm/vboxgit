@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 71006 2018-02-14 11:21:33Z vboxsync $ */
+/* $Id: UIWizard.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */

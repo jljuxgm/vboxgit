@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.h 66761 2017-05-03 17:15:34Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class declaration.
  */

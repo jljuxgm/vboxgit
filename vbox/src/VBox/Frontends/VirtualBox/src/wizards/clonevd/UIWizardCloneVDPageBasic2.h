@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.h 69200 2017-10-24 11:28:50Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.h 71027 2018-02-15 14:33:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic2 class declaration.
  */
