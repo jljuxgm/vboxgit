@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 68334 2017-08-08 09:26:39Z vboxsync $ */
+/* $Id: vbox_irq.c 69083 2017-10-13 16:03:36Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -160,8 +160,8 @@ static void vbox_update_mode_hints(struct vbox_private *vbox)
 			flags = VBVA_SCREEN_F_ACTIVE
 			    | (disconnected ? VBVA_SCREEN_F_DISABLED :
 			       VBVA_SCREEN_F_BLANK);
-			vbox_connector->mode_hint.width = hints->cx & 0x8fff;
-			vbox_connector->mode_hint.height = hints->cy & 0x8fff;
+			vbox_connector->mode_hint.width = hints->cx;
+			vbox_connector->mode_hint.height = hints->cy;
 			vbox_connector->vbox_crtc->x_hint = hints->dx;
 			vbox_connector->vbox_crtc->y_hint = hints->dy;
 			vbox_connector->mode_hint.disconnected = disconnected;
