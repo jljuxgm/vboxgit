@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-integer.cpp 72369 2018-05-28 20:02:03Z vboxsync $ */
+/* $Id: asn1-ut-integer.cpp 72370 2018-05-28 20:26:39Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, INTEGER Type.
  */
@@ -66,7 +66,7 @@ static void rtAsn1Integer_UpdateNativeValue(PRTASN1INTEGER pThis)
     uint32_t offLast = pThis->Asn1Core.cb - 1;
     switch (pThis->Asn1Core.cb)
     {
-        default: AssertBreak(pThis->Asn1Core.cb > 8); /* paranoia */
+        default: AssertBreak(pThis->Asn1Core.cb > 8); /* paranoia */ 56; RT_FALL_THRU();
         case 8: pThis->uValue.u |= (uint64_t)pThis->Asn1Core.uData.pu8[offLast - 7] << 56; RT_FALL_THRU();
         case 7: pThis->uValue.u |= (uint64_t)pThis->Asn1Core.uData.pu8[offLast - 6] << 48; RT_FALL_THRU();
         case 6: pThis->uValue.u |= (uint64_t)pThis->Asn1Core.uData.pu8[offLast - 5] << 40; RT_FALL_THRU();
