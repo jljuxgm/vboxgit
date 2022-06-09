@@ -1,4 +1,8 @@
 #!/bin/sh
+# $Id: postrm 69400 2017-10-27 00:05:46Z vboxsync $
+## @file
+# VirtualBox post remove.
+#
 
 #
 # Copyright (C) 2006-2015 Oracle Corporation

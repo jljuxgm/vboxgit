@@ -1,4 +1,9 @@
 #!/usr/bin/make -f
+# $Id: rules 69400 2017-10-27 00:05:46Z vboxsync $
+## @file
+# VirtualBox rules.
+#
+
 #
 # Copyright (C) 2006-2015 Oracle Corporation
 #
