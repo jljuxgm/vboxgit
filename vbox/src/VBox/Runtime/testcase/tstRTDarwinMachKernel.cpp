@@ -1,4 +1,4 @@
-/* $Id: tstRTDarwinMachKernel.cpp 69643 2017-11-10 13:34:06Z vboxsync $ */
+/* $Id: tstRTDarwinMachKernel.cpp 69644 2017-11-10 13:37:05Z vboxsync $ */
 /** @file
  * IPRT Testcase - mach_kernel symbol resolving hack.
  */
@@ -36,7 +36,7 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-extern const char *g_pszTestKernel = "/no-such-file";
+const char *g_pszTestKernel = "/no-such-file";
 
 
 static void dotest(void)
