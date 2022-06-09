@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 72384 2018-05-29 14:48:27Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 72610 2018-06-19 08:41:01Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -756,7 +756,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
     DBGFR3InfoMulti(pVM,
                     "*",
                     "mappings|hma|cpum|cpumguest|cpumguesthwvirt|cpumguestinstr|cpumhyper|cpumhost|mode|cpuid"
-                    "|pgmpd|pgmcr3|timers|activetimers|handlers|help",
+                    "|pgmpd|pgmcr3|timers|activetimers|handlers|help|exithistory",
                     "!!\n"
                     "!! {%s}\n"
                     "!!\n",
