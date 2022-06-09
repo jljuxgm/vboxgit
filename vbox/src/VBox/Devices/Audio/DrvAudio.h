@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 68136 2017-07-27 10:52:43Z vboxsync $ */
+/* $Id: DrvAudio.h 68468 2017-08-18 13:57:08Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -120,7 +120,7 @@ typedef struct DRVAUDIO
 #endif
     /** Audio configuration settings retrieved from the backend. */
     PDMAUDIOBACKENDCFG      BackendCfg;
-#ifdef VBOX_WITH_AUDIO_DEVICE_CALLBACKS
+#ifdef VBOX_WITH_AUDIO_CALLBACKS
     /** @todo Use a map with primary key set to the callback type? */
     RTLISTANCHOR            lstCBIn;
     RTLISTANCHOR            lstCBOut;

@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 68415 2017-08-15 08:09:42Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 68468 2017-08-18 13:57:08Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -3695,7 +3695,7 @@ static DECLCALLBACK(int) ichac97Construct(PPDMDEVINS pDevIns, int iInstance, PCF
             if (!(pDrv->fFlags & PDMAUDIODRVFLAGS_PRIMARY))
                 continue;
 
-            PDMAUDIOCALLBACK AudioCallbacks[2];
+            PDMAUDIOCBRECORD AudioCallbacks[2];
 
             AC97CALLBACKCTX Ctx = { pThis, pDrv };
 

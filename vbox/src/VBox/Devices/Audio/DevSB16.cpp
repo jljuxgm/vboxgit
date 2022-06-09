@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 68389 2017-08-11 11:52:26Z vboxsync $ */
+/* $Id: DevSB16.cpp 68468 2017-08-18 13:57:08Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2523,7 +2523,7 @@ static DECLCALLBACK(int) sb16Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
             if (pDrv->fFlags != PDMAUDIODRVFLAGS_PRIMARY)
                 continue;
 
-            PDMAUDIOCALLBACK AudioCallbacks[2];
+            PDMAUDIOCBRECORD AudioCallbacks[2];
 
             SB16CALLBACKCTX Ctx = { pThis, pDrv };
 
