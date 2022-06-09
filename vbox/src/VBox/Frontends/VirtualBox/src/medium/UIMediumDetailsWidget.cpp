@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 67933 2017-07-12 13:50:30Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 67947 2017-07-13 09:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -523,8 +523,11 @@ void UIMediumDetailsWidget::loadDataForOptions()
     sltLocationPathChanged(m_pSelectorLocation->path());
 
     /* Load size: */
-    m_pLabelSize->setEnabled(m_newData.m_fValid && m_newData.m_enmType == UIMediumType_HardDisk);
-    m_pEditorSize->setEnabled(m_newData.m_fValid && m_newData.m_enmType == UIMediumType_HardDisk);
+    const bool fEnableResize =    m_newData.m_fValid
+                               && m_newData.m_enmType == UIMediumType_HardDisk
+                               && !(m_newData.m_enmVariant & KMediumVariant_Fixed);
+    m_pLabelSize->setEnabled(fEnableResize);
+    m_pEditorSize->setEnabled(fEnableResize);
     m_pEditorSize->setMediumSize(m_newData.m_options.m_uLogicalSize);
 }
 

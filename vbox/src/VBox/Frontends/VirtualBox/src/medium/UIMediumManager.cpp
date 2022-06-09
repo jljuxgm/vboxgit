@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 67923 2017-07-12 11:03:34Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 67947 2017-07-13 09:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -382,6 +382,7 @@ void UIMediumItem::refresh()
     /* Gather medium data: */
     m_fValid = !m_guiMedium.isNull();
     m_enmType = m_guiMedium.type();
+    m_enmVariant = m_guiMedium.mediumVariant();
     /* Gather medium options data: */
     m_options.m_enmType = m_guiMedium.mediumType();
     m_options.m_strLocation = m_guiMedium.location();
