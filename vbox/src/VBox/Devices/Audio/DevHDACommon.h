@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 69919 2017-12-04 14:00:05Z vboxsync $ */
+/* $Id: DevHDACommon.h 70121 2017-12-14 10:04:55Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -621,6 +621,9 @@ int           hdaSDFMTToPCMProps(uint32_t u32SDFMT, PPDMAUDIOPCMPROPS pProps);
  * @{
  */
 #ifdef IN_RING3
+# ifdef LOG_ENABLED
+void          hdaBDLEDumpAll(PHDASTATE pThis, uint64_t u64BDLBase, uint16_t cBDLE);
+# endif
 int           hdaBDLEFetch(PHDASTATE pThis, PHDABDLE pBDLE, uint64_t u64BaseDMA, uint16_t u16Entry);
 bool          hdaBDLEIsComplete(PHDABDLE pBDLE);
 bool          hdaBDLENeedsInterrupt(PHDABDLE pBDLE);
