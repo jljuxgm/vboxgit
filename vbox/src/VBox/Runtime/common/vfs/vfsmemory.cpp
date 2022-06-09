@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 67181 2017-05-31 19:56:21Z vboxsync $ */
+/* $Id: vfsmemory.cpp 67183 2017-05-31 20:31:54Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -252,7 +252,6 @@ static DECLCALLBACK(int) rtVfsMemFile_Read(void *pvThis, RTFOFF off, PCRTSGBUF p
     PRTVFSMEMFILE pThis = (PRTVFSMEMFILE)pvThis;
 
     Assert(pSgBuf->cSegs == 1);
-    Assert(off < 0);
     NOREF(fBlocking);
 
     /*
@@ -447,7 +446,6 @@ static DECLCALLBACK(int) rtVfsMemFile_Write(void *pvThis, RTFOFF off, PCRTSGBUF 
     PRTVFSMEMFILE pThis = (PRTVFSMEMFILE)pvThis;
 
     Assert(pSgBuf->cSegs == 1);
-    Assert(off < 0);
     NOREF(fBlocking);
 
     /*
