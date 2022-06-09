@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69413 2017-10-27 09:32:26Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69414 2017-10-27 09:42:59Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2666,22 +2666,6 @@ DECLINLINE(void) hmR0SvmSetPendingEvent(PVMCPU pVCpu, PSVMEVENT pEvent, RTGCUINT
 
     Log4(("hmR0SvmSetPendingEvent: u=%#RX64 u8Vector=%#x Type=%#x ErrorCodeValid=%RTbool ErrorCode=%#RX32\n", pEvent->u,
           pEvent->n.u8Vector, (uint8_t)pEvent->n.u3Type, !!pEvent->n.u1ErrorCodeValid, pEvent->n.u32ErrorCode));
-}
-
-
-/**
- * Sets an exception as pending-for-injection into the VM.
- *
- * @param   pVCpu       The cross context virtual CPU structure.
- */
-DECLINLINE(void) hmR0SvmSetPendingXcpt(PVMCPU pVCpu, uint8_t uXcpt)
-{
-    SVMEVENT Event;
-    Event.u          = 0;
-    Event.n.u1Valid  = 1;
-    Event.n.u3Type   = SVM_EVENT_EXCEPTION;
-    Event.n.u8Vector = uXcpt;
-    hmR0SvmSetPendingEvent(pVCpu, &Event, 0 /* GCPtrFaultAddress */);
 }
 
 
@@ -7442,7 +7426,7 @@ HMSVM_EXIT_DECL hmR0SvmNestedExitXcptDB(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIE
         return VINF_EM_RAW_INJECT_TRPM_EVENT;
     }
 
-    hmR0SvmSetPendingXcpt(pVCpu, X86_XCPT_DB);
+    hmR0SvmSetPendingXcptDB(pVCpu);
     return VINF_SUCCESS;
 }
 
