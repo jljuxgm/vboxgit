@@ -1,10 +1,10 @@
-/* $Id: GuestFsObjInfoImpl.cpp 71566 2018-03-29 11:59:27Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.cpp 71567 2018-03-29 12:11:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file system object information handling.
  */
 
 /*
- * Copyright (C) 2012-2017 Oracle Corporation
+ * Copyright (C) 2012-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -42,7 +42,7 @@ DEFINE_EMPTY_CTOR_DTOR(GuestFsObjInfo)
 
 HRESULT GuestFsObjInfo::FinalConstruct(void)
 {
-    LogFlowThisFunc(("\n"));
+    LogFlowThisFuncEnter();
     return BaseFinalConstruct();
 }
 
@@ -79,12 +79,12 @@ int GuestFsObjInfo::init(const GuestFsObjData &objData)
  */
 void GuestFsObjInfo::uninit(void)
 {
-    LogFlowThisFunc(("\n"));
-
     /* Enclose the state transition Ready->InUninit->NotReady. */
     AutoUninitSpan autoUninitSpan(this);
     if (autoUninitSpan.uninitDone())
         return;
+
+    LogFlowThisFuncEnter();
 }
 
 // implementation of wrapped private getters/setters for attributes
