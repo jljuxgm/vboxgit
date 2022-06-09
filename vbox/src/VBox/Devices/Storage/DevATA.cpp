@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
+/* $Id: DevATA.cpp 69304 2017-10-25 13:41:16Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -137,6 +137,7 @@
 /** @} */
 
 /** @} */
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
@@ -2486,7 +2487,7 @@ static bool atapiR3ReadTrackInformationSS(ATADevState *s)
                                                             &cBlocks, &cbBlock, &enmDataForm);
             }
             else
-                rc = VERR_NOT_FOUND; /** @todo: Return lead-in information. */
+                rc = VERR_NOT_FOUND; /** @todo Return lead-in information. */
             break;
         }
         case 0x02:

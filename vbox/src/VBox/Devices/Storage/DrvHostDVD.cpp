@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 65965 2017-03-07 10:45:04Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 69304 2017-10-25 13:41:16Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -55,6 +55,7 @@ typedef struct DRVHOSTDVD
 } DRVHOSTDVD;
 /** Pointer to the host DVD driver instance data. */
 typedef DRVHOSTDVD *PDRVHOSTDVD;
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *

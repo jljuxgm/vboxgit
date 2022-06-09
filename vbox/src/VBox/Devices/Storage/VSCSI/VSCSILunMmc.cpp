@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
+/* $Id: VSCSILunMmc.cpp 69304 2017-10-25 13:41:16Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -30,6 +30,7 @@
 #include <iprt/string.h>
 
 #include "VSCSIInternal.h"
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
@@ -936,7 +937,7 @@ static int vscsiLunMmcReadTrackInformation(PVSCSILUNMMC pVScsiLunMmc, PVSCSIREQI
                                                          &cBlocks, &cbBlock, &enmDataForm);
             }
             else
-                rc = VERR_NOT_FOUND; /** @todo: Return lead-in information. */
+                rc = VERR_NOT_FOUND; /** @todo Return lead-in information. */
             break;
         }
         case 0x02:

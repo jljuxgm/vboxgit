@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 65713 2017-02-09 16:58:55Z vboxsync $ */
+/* $Id: DrvRamDisk.cpp 69304 2017-10-25 13:41:16Z vboxsync $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -39,6 +39,7 @@
 
 #include "VBoxDD.h"
 #include "IOBufMgmt.h"
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
@@ -503,6 +504,7 @@ static int drvramdiskDiscardRecords(PDRVRAMDISK pThis, PCRTRANGE paRanges, unsig
 
 /* -=-=-=-=- IMedia -=-=-=-=- */
 
+
 /*********************************************************************************************************************************
 *   Media interface methods                                                                                                      *
 *********************************************************************************************************************************/
@@ -720,7 +722,7 @@ DECLINLINE(int) drvramdiskMediaExIoReqBufSync(PDRVRAMDISK pThis, PPDMMEDIAEXIORE
  */
 DECLINLINE(unsigned) drvramdiskMediaExIoReqIdHash(PDMMEDIAEXIOREQID uIoReqId)
 {
-    return uIoReqId % DRVVD_VDIOREQ_ALLOC_BINS; /** @todo: Find something better? */
+    return uIoReqId % DRVVD_VDIOREQ_ALLOC_BINS; /** @todo Find something better? */
 }
 
 /**
