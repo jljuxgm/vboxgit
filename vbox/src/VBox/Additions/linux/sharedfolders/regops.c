@@ -1,4 +1,4 @@
-/* $Id: regops.c 68101 2017-07-25 09:33:10Z vboxsync $ */
+/* $Id: regops.c 69151 2017-10-20 15:32:39Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders, Regular file inode and file operations.
  */
@@ -234,6 +234,7 @@ static ssize_t sf_reg_write(struct file *file, const char *buf, size_t size, lof
 
         err = VbglR0SfWritePhysCont(&client_handle, &sf_g->map, sf_r->handle,
                                     pos, &nwritten, tmp_phys);
+        err = RT_FAILURE(err) ? -EPROTO : 0;
         if (err)
             goto fail;
 
