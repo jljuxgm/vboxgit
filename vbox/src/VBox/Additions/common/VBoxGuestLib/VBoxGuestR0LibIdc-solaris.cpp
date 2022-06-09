@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibIdc-solaris.cpp 68568 2017-08-31 12:10:33Z vboxsync $ */
+/* $Id: VBoxGuestR0LibIdc-solaris.cpp 68635 2017-09-05 13:21:18Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC, UNIX-like OSes.
  */
@@ -30,6 +30,7 @@
 *********************************************************************************************************************************/
 #include "VBoxGuestR0LibInternal.h"
 #include <VBox/VBoxGuest.h>
+#include <VBox/err.h>
 
 
 int VBOXCALL vbglR0IdcNativeOpen(PVBGLIDCHANDLE pHandle, PVBGLIOCIDCCONNECT pReq)
