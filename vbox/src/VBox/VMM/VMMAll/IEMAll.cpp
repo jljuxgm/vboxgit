@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 67159 2017-05-31 09:30:28Z vboxsync $ */
+/* $Id: IEMAll.cpp 67163 2017-05-31 10:21:53Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -14910,6 +14910,10 @@ DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecStatusCodeFiddling(PVMCPU pVCpu, VBOXSTRI
         pVCpu->iem.s.cRetPassUpStatus++;
         rcStrict = pVCpu->iem.s.rcPassUp;
     }
+#ifdef VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM
+    else if (pVCpu->iem.s.fForceIemExec)
+        rcStrict = VINF_EM_RESCHEDULE_REM;
+#endif
 
     return rcStrict;
 }
