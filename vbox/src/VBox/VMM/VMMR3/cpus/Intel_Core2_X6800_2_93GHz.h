@@ -1,4 +1,4 @@
-/* $Id: Intel_Core2_X6800_2_93GHz.h 69586 2017-11-04 22:49:08Z vboxsync $ */
+/* $Id: Intel_Core2_X6800_2_93GHz.h 69653 2017-11-10 18:42:55Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core2 X6800 2.93GHz".
  * Generated at 2017-11-04T22:32:41Z by VBoxCpuReport v5.2.1r118907 on linux.amd64.
@@ -24,7 +24,7 @@
 /**
  * CPUID leaves for Intel(R) Core(TM)2 CPU         X6800  @ 2.93GHz.
  */
-static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Core2_X6800_2_93GHz[] = 
+static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Core2_X6800_2_93GHz[] =
 {
     { 0x00000000, 0x00000000, 0x00000000, 0x0000000a, 0x756e6547, 0x6c65746e, 0x49656e69, 0 },
     { 0x00000001, 0x00000000, 0x00000000, 0x000006f6, 0x00020800, 0x0000e3bd, 0xbfebfbff, 0 | CPUMCPUIDLEAF_F_CONTAINS_APIC_ID | CPUMCPUIDLEAF_F_CONTAINS_APIC },
@@ -57,7 +57,7 @@ static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Core2_X6800_2_93GHz[] =
 /**
  * MSR ranges for Intel(R) Core(TM)2 CPU         X6800  @ 2.93GHz.
  */
-static CPUMMSRRANGE const g_aMsrRanges_Intel_Core2_X6800_2_93GHz[] = 
+static CPUMMSRRANGE const g_aMsrRanges_Intel_Core2_X6800_2_93GHz[] =
 {
     MFX(0x00000000, "IA32_P5_MC_ADDR", Ia32P5McAddr, Ia32P5McAddr, 0, UINT64_C(0xfffffffffffbffff), 0), /* value=0x1398780 */
     MFI(0x00000001, "IA32_P5_MC_TYPE", Ia32P5McType), /* value=0x0 */
@@ -231,7 +231,7 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Core2_X6800_2_93GHz[] =
 /**
  * Database entry for Intel(R) Core(TM)2 CPU         X6800  @ 2.93GHz.
  */
-static CPUMDBENTRY const g_Entry_Intel_Core2_X6800_2_93GHz = 
+static CPUMDBENTRY const g_Entry_Intel_Core2_X6800_2_93GHz =
 {
     /*.pszName          = */ "Intel Core2 X6800 2.93GHz",
     /*.pszFullName      = */ "Intel(R) Core(TM)2 CPU         X6800  @ 2.93GHz",

@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.h 69584 2017-11-04 22:31:10Z vboxsync $ */
+/* $Id: VBoxCpuReport.h 69653 2017-11-10 18:42:55Z vboxsync $ */
 /** @file
  * VBoxCpuReport internal header file.
  */
@@ -26,5 +26,4 @@ extern void vbCpuRepDebug(const char *pszMsg, ...);
 extern void vbCpuRepPrintf(const char *pszMsg, ...);
 extern int SupDrvMsrProberInit(VBMSRFNS *fnsMsr, bool *pfAtomicMsrMod);
 extern int PlatformMsrProberInit(VBMSRFNS *fnsMsr, bool *pfAtomicMsrMod);
-
 
