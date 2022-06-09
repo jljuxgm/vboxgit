@@ -1,4 +1,4 @@
-/* $Id: dvmvfs.cpp 69609 2017-11-07 18:59:38Z vboxsync $ */
+/* $Id: dvmvfs.cpp 69610 2017-11-07 19:00:49Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - VFS glue.
  */
@@ -593,7 +593,7 @@ static DECLCALLBACK(int) rtDvmVfsChain_Instantiate(PCRTVFSCHAINELEMENTREG pProvi
              */
             RTVFS        hVfs  = NIL_RTVFS;
             PRTDVMVFSVOL pThis = NULL;
-            int rc = RTVfsNew(&g_rtDvmVfsVolOps, sizeof(RTDVMVFSVOL), NIL_RTVFS, RTVFSLOCK_CREATE_RW, &hVfs, (void **)&pThis);
+            rc = RTVfsNew(&g_rtDvmVfsVolOps, sizeof(RTDVMVFSVOL), NIL_RTVFS, RTVFSLOCK_CREATE_RW, &hVfs, (void **)&pThis);
             if (RT_SUCCESS(rc))
             {
                 pThis->hVolMgr   = hVolMgr;
