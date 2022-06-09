@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 70393 2017-12-30 12:11:56Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 71240 2018-03-06 12:18:10Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -422,6 +422,8 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
 #ifdef WSANO_DATA
         case WSANO_DATA:            return VERR_NET_ADDRESS_NOT_AVAILABLE;
 #endif
+
+        case 1272 /*STATUS_SMB_GUEST_LOGON_BLOCKED*/: return VERR_AUTHENTICATION_FAILURE;
 
 
 #ifndef ERROR_NOT_A_REPARSE_POINT
