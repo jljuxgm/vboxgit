@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 71529 2018-03-28 06:32:43Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 71640 2018-04-04 06:30:54Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -538,6 +538,21 @@ VMM_INT_DECL(bool) HMIsGuestSvmXcptInterceptSet(PVMCPU pVCpu, PCCPUMCTX pCtx, ui
     Assert(pCtx->hwvirt.svm.fHMCachedVmcb); NOREF(pCtx);
     PCSVMNESTEDVMCBCACHE pVmcbNstGstCache = &pVCpu->hm.s.svm.NstGstVmcbCache;
     return RT_BOOL(pVmcbNstGstCache->u32InterceptXcpt & (1 << uVector));
+}
+
+
+/**
+ * Checks if the guest VMCB has virtual-interrupts masking enabled.
+ *
+ * @returns true if virtual-interrupts are masked, @c false otherwise.
+ * @param   pVCpu   The cross context virtual CPU structure of the calling EMT.
+ * @param   pCtx    Pointer to the context.
+ */
+VMM_INT_DECL(bool) HMIsGuestSvmVirtIntrMasking(PVMCPU pVCpu, PCCPUMCTX pCtx)
+{
+    Assert(pCtx->hwvirt.svm.fHMCachedVmcb); NOREF(pCtx);
+    PCSVMNESTEDVMCBCACHE pVmcbNstGstCache = &pVCpu->hm.s.svm.NstGstVmcbCache;
+    return pVmcbNstGstCache->fVIntrMasking;
 }
 
 
