@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 70188 2017-12-18 11:45:01Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 70189 2017-12-18 13:00:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -135,7 +135,9 @@ void UIVMLogViewerDialog::saveSettings() const
     /* Save window geometry to extradata: */
     const QRect saveGeometry = geometry();
 #ifdef VBOX_WS_MAC
-    //gEDataManager->setLogWindowGeometry(saveGeometry, ::darwinIsWindowMaximized(qobject_cast<const QWidget*>(this)));
+    /* darwinIsWindowMaximized expects a non-const QWidget*. thus const_cast: */
+    QWidget *pw = const_cast<QWidget*>(qobject_cast<const QWidget*>(this));
+    gEDataManager->setLogWindowGeometry(saveGeometry, ::darwinIsWindowMaximized(pw));
 #else /* !VBOX_WS_MAC */
     gEDataManager->setLogWindowGeometry(saveGeometry, isMaximized());
 #endif /* !VBOX_WS_MAC */
