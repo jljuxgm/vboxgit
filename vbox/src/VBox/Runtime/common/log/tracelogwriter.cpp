@@ -1,4 +1,4 @@
-/* $Id: tracelogwriter.cpp 71498 2018-03-24 23:01:29Z vboxsync $ */
+/* $Id: tracelogwriter.cpp 71501 2018-03-25 00:17:47Z vboxsync $ */
 /** @file
  * IPRT - Trace log writer.
  */
@@ -425,7 +425,7 @@ DECLINLINE(size_t) rtTraceLogWrEvtInit(PTRACELOGEVT pEvt,
 DECLINLINE(int) rtTraceLogWrEvtStream(PRTTRACELOGWRINT pThis, PTRACELOGEVT pEvt, const void *pvEvtData,
                                       size_t cbEvtData, size_t *pacbRawData)
 {
-    /** @todo: Get rid of locking. */
+    /** @todo Get rid of locking. */
     int rc = RTSemMutexRequest(pThis->hMtx, RT_INDEFINITE_WAIT);
     if (RT_SUCCESS(rc))
     {
