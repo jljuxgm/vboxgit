@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 69142 2017-10-20 09:59:27Z vboxsync $ */
+/* $Id: EM.cpp 70000 2017-12-08 05:57:18Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1972,7 +1972,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                 if (fIntrEnabled)
                 {
                     if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
-                        fIntrEnabled = CPUMCanSvmNstGstTakePhysIntr(pCtx);
+                        fIntrEnabled = CPUMCanSvmNstGstTakePhysIntr(pVCpu, pCtx);
                     else
                         fIntrEnabled = pCtx->eflags.Bits.u1IF;
                 }
@@ -1986,7 +1986,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                     if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC))
                     {
 #ifdef VBOX_WITH_NESTED_HWVIRT
-                        if (CPUMIsGuestSvmCtrlInterceptSet(pCtx, SVM_CTRL_INTERCEPT_INTR))
+                        if (CPUMIsGuestSvmCtrlInterceptSet(pVCpu, pCtx, SVM_CTRL_INTERCEPT_INTR))
                         {
                             VBOXSTRICTRC rcStrict = IEMExecSvmVmexit(pVCpu, SVM_EXIT_INTR, 0, 0);
                             if (RT_SUCCESS(rcStrict))
@@ -2026,7 +2026,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                          */
                         if (CPUMCanSvmNstGstTakeVirtIntr(pCtx))
                         {
-                            if (CPUMIsGuestSvmCtrlInterceptSet(pCtx, SVM_CTRL_INTERCEPT_VINTR))
+                            if (CPUMIsGuestSvmCtrlInterceptSet(pVCpu, pCtx, SVM_CTRL_INTERCEPT_VINTR))
                             {
                                 VBOXSTRICTRC rcStrict = IEMExecSvmVmexit(pVCpu, SVM_EXIT_VINTR, 0, 0);
                                 if (RT_SUCCESS(rcStrict))

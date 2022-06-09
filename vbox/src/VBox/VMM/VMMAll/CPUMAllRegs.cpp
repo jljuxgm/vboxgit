@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 69819 2017-11-24 05:27:07Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 70000 2017-12-08 05:57:18Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2550,28 +2550,33 @@ VMMDECL(uint32_t) CPUMGetGuestMxCsrMask(PVM pVM)
  * @returns VBox status code.
  * @retval  true if it's ready, false otherwise.
  *
- * @param   pCtx        The guest-CPU context.
+ * @param   pVCpu   The cross context virtual CPU structure of the calling EMT.
+ * @param   pCtx    The guest-CPU context.
  *
  * @sa      hmR0SvmCanNstGstTakePhysIntr.
  */
-VMM_INT_DECL(bool) CPUMCanSvmNstGstTakePhysIntr(PCCPUMCTX pCtx)
+VMM_INT_DECL(bool) CPUMCanSvmNstGstTakePhysIntr(PVMCPU pVCpu, PCCPUMCTX pCtx)
 {
 #ifdef IN_RC
-    RT_NOREF(pCtx);
+    RT_NOREF2(pVCpu, pCtx);
     AssertReleaseFailedReturn(false);
 #else
     Assert(CPUMIsGuestInSvmNestedHwVirtMode(pCtx));
     Assert(pCtx->hwvirt.svm.fGif);
-    Assert(!pCtx->hwvirt.svm.fHMCachedVmcb);
 
-    PCSVMVMCBCTRL pVmcbCtrl = &pCtx->hwvirt.svm.CTX_SUFF(pVmcb)->ctrl;
-    X86EFLAGS fEFlags;
-    if (pVmcbCtrl->IntCtrl.n.u1VIntrMasking)
-        fEFlags.u = pCtx->hwvirt.svm.HostState.rflags.u;
-    else
-        fEFlags.u = pCtx->eflags.u;
+    if (!pCtx->hwvirt.svm.fHMCachedVmcb)
+    {
+        PCSVMVMCBCTRL pVmcbCtrl = &pCtx->hwvirt.svm.CTX_SUFF(pVmcb)->ctrl;
+        X86EFLAGS fEFlags;
+        if (pVmcbCtrl->IntCtrl.n.u1VIntrMasking)
+            fEFlags.u = pCtx->hwvirt.svm.HostState.rflags.u;
+        else
+            fEFlags.u = pCtx->eflags.u;
 
-    return fEFlags.Bits.u1IF;
+        return fEFlags.Bits.u1IF;
+    }
+
+    return HMCanSvmNstGstTakePhysIntr(pVCpu, pCtx);
 #endif
 }
 
