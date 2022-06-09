@@ -1,4 +1,4 @@
-/* $Id: pkzip.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: pkzip.cpp 69522 2017-10-30 11:04:53Z vboxsync $ */
 /** @file
  * IPRT - PKZIP archive I/O.
  */
@@ -220,7 +220,7 @@ RTDECL(int) RTZipPkzipMemDecompress(void **ppvDst, size_t *pcbDst, const void *p
                         if (pv)
                         {
                             RTVFSIOSTREAM hVfsIosObj = RTVfsObjToIoStream(hVfsObj);
-                            if (hVfsIos)
+                            if (hVfsIos != NIL_RTVFSIOSTREAM)
                             {
                                 rc = RTVfsIoStrmRead(hVfsIosObj, pv, cb, true /*fBlocking*/, NULL);
                                 if (RT_SUCCESS(rc))
@@ -228,9 +228,11 @@ RTDECL(int) RTZipPkzipMemDecompress(void **ppvDst, size_t *pcbDst, const void *p
                                     *ppvDst = pv;
                                     *pcbDst = cb;
                                 }
-                                else
-                                    RTMemFree(pv);
                             }
+                            else
+                                rc = VERR_INTERNAL_ERROR_4;
+                            if (RT_FAILURE(rc))
+                                RTMemFree(pv);
                         }
                     }
                 }
