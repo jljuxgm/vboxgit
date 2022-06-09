@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdMoveMedium1.py 70816 2018-01-30 18:20:29Z vboxsync $
+# $Id: tdMoveMedium1.py 70849 2018-02-01 13:27:34Z vboxsync $
 
 """
 VirtualBox Validation Kit - Medium Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70816 $"
+__version__ = "$Revision: 70849 $"
 
 
 # Standard Python imports.
@@ -43,6 +43,7 @@ sys.path.append(g_ksValidationKitDir)
 # Validation Kit imports.
 from testdriver import base
 from testdriver import reporter
+from testdriver import vboxcon
 from testdriver import vboxwrappers
 
 
@@ -50,11 +51,6 @@ class SubTstDrvMoveMedium1(base.SubTestDriverBase):
     """
     Sub-test driver for Medium Move Test #1.
     """
-
-    # List of suffixes to append.
-    suffixes = [
-        '.vdi',
-    ]
 
     def __init__(self, oTstDrv):
         base.SubTestDriverBase.__init__(self, 'move-medium', oTstDrv)
@@ -78,7 +74,8 @@ class SubTstDrvMoveMedium1(base.SubTestDriverBase):
                 reporter.errorXcpt('failed to get the medium from the IMediumAttachment "%s"' % (attachment))
 
             try:
-                oProgress = vboxwrappers.ProgressWrapper(oMedium.setLocation(sLocation), self.oTstDrv.oVBoxMgr, self.oTstDrv, 'move "%s"' % (oMedium.name,))
+                oProgress = vboxwrappers.ProgressWrapper(oMedium.setLocation(sLocation), self.oTstDrv.oVBoxMgr, self.oTstDrv,
+                                                         'move "%s"' % (oMedium.name,))
             except:
                 return reporter.errorXcpt('Medium::setLocation("%s") for medium "%s" failed' % (sLocation, oMedium.name,))
 
@@ -104,27 +101,43 @@ class SubTstDrvMoveMedium1(base.SubTestDriverBase):
             oVM = self.oTstDrv.createTestVM('test-medium-move', 1, None, 4)
             assert oVM is not None
 
-            # create virtual disk image vdi
+            # create disk images
             fRc = True
             c = 0
             oSession = self.oTstDrv.openSession(oVM)
-            for i in self.suffixes:
-                sHddPath = os.path.join(self.oTstDrv.sScratchPath, 'Test' + str(c) + i)
-                oHd = oSession.createBaseHd(sHddPath, cb=1024*1024)
+            aoDskFmts = self.oTstDrv.oVBoxMgr.getArray(self.oTstDrv.oVBox.systemProperties, 'mediumFormats')
+            for oDskFmt in aoDskFmts:
+                aoDskFmtCaps = self.oTstDrv.oVBoxMgr.getArray(oDskFmt, 'capabilities')
+                if vboxcon.MediumFormatCapabilities_File not in aoDskFmtCaps \
+                    or vboxcon.MediumFormatCapabilities_CreateDynamic not in aoDskFmtCaps:
+                    continue
+                (asExts, aTypes) = oDskFmt.describeFileExtensions()
+                for i in range(0, len(asExts)):
+                    if aTypes[i] is vboxcon.DeviceType_HardDisk:
+                        sExt = '.' + asExts[i]
+                        break
+                if sExt is None:
+                    fRc = False
+                    break
+                sHddPath = os.path.join(self.oTstDrv.sScratchPath, 'Test' + str(c) + sExt)
+                oHd = oSession.createBaseHd(sHddPath, sFmt=oDskFmt.id, cb=1024*1024)
                 if oHd is None:
                     fRc = False
                     break
 
                 # attach HDD, IDE controller exists by default, but we use SATA just in case
                 sController='SATA Controller'
-                fRc = fRc and oSession.attachHd(sHddPath, sController, iPort = c, iDevice = 0, fImmutable=False, fForceResource=False)
-                fRc = fRc and oSession.saveSettings()
+                fRc = fRc and oSession.attachHd(sHddPath, sController, iPort = c, fImmutable=False, fForceResource=False)
+                if fRc:
+                    c += 1
+
+            fRc = fRc and oSession.saveSettings()
 
             #create temporary subdirectory in the current working directory
             sOrigLoc = self.oTstDrv.sScratchPath
             sNewLoc = os.path.join(sOrigLoc, 'newLocation/')
 
-            os.makedirs(sNewLoc, 0o775)
+            os.mkdir(sNewLoc, 0o775)
 
             aListOfAttach = oVM.getMediumAttachmentsOfController(sController)
             #case 1. Only path without file name
@@ -136,7 +149,7 @@ class SubTstDrvMoveMedium1(base.SubTestDriverBase):
             self.setLocation(sLocation, aListOfAttach)
 
             #case 3. Path with file name
-            sLocation = sNewLoc + 'newName.vdi'
+            sLocation = sNewLoc + 'newName'
             self.setLocation(sLocation, aListOfAttach)
 
             #case 4. Only file name
