@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.h 68167 2017-07-29 09:36:18Z vboxsync $ */
+/* $Id: UIToolsToolbar.h 68169 2017-07-29 09:44:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class declaration.
  */
@@ -20,6 +20,7 @@
 
 /* Qt includes: */
 #include <QMap>
+#include <QUuid>
 #include <QWidget>
 
 /* Forward declarations: */
