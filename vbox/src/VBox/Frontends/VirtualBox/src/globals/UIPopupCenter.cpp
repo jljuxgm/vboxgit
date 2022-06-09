@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 71489 2018-03-23 15:21:03Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 71579 2018-03-30 10:27:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -25,7 +25,6 @@
 # include "UIErrorString.h"
 # include "UIExtraDataManager.h"
 # include "UIHostComboEditor.h"
-# include "UIMachineWindow.h"
 # include "UIPopupCenter.h"
 # include "UIPopupStack.h"
 
@@ -382,7 +381,7 @@ QString UIPopupCenter::popupStackID(QWidget *pParent)
     AssertPtrReturn(pParent, QString());
 
     /* Special handling for Runtime UI: */
-    if (qobject_cast<UIMachineWindow*>(pParent))
+    if (pParent->inherits("UIMachineWindow"))
         return QString("UIMachineWindow");
 
     /* Common handling for other cases: */
