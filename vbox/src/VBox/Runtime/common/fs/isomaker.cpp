@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67450 2017-06-16 15:35:31Z vboxsync $ */
+/* $Id: isomaker.cpp 67451 2017-06-16 15:35:59Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -3334,6 +3334,12 @@ static int rtFsIsoMakerFinalizeBootStuffPart1(PRTFSISOMAKERINT pThis)
  */
 static int rtFsIsoMakerFinalizeBootStuffPart2(PRTFSISOMAKERINT pThis)
 {
+    /*
+     * Anything?
+     */
+    if (!pThis->pBootCatFile)
+        return VINF_SUCCESS;
+
     /*
      * Fill in the descriptor.
      */
