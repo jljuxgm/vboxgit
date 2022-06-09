@@ -1,4 +1,4 @@
-/* $Id: VBoxSFInit.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxSFInit.cpp 68571 2017-08-31 12:10:42Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, Initialization.
  */
@@ -75,7 +75,7 @@ DECLASM(void) VBoxSFR0Init(void)
     /*
      * Start by initializing IPRT.
      */
-    if (    g_VBoxGuestIDC.u32Version == VMMDEV_VERSION
+    if (    g_VBoxGuestIDC.u32Version == VBGL_IOC_VERSION
         &&  VALID_PTR(g_VBoxGuestIDC.u32Session)
         &&  VALID_PTR(g_VBoxGuestIDC.pfnServiceEP))
     {
