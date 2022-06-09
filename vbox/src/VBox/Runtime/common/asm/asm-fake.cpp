@@ -1,4 +1,4 @@
-/* $Id: asm-fake.cpp 71916 2018-04-19 10:05:28Z vboxsync $ */
+/* $Id: asm-fake.cpp 71917 2018-04-19 10:09:31Z vboxsync $ */
 /** @file
  * IPRT - Fake asm.h routines for use early in a new port.
  */
@@ -474,7 +474,7 @@ RTDECL(unsigned) ASMBitFirstSetU64(uint64_t u64)
 {
     uint32_t iBit;
     for (iBit = 0; iBit < 64; iBit++)
-        if (u32 & RT_BIT_64(iBit))
+        if (u64 & RT_BIT_64(iBit))
             return iBit + 1;
     return 0;
 }
