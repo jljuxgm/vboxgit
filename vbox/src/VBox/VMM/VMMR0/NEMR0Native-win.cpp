@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 71224 2018-03-06 01:08:53Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 71243 2018-03-06 16:09:31Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -505,7 +505,6 @@ VMMR0_INT_DECL(int) NEMR0UnmapPages(PGVM pGVM, PVM pVM, VMCPUID idCpu)
  * @param   pGVM        The ring-0 VM handle.
  * @param   pGVCpu      The irng-0 VCPU handle.
  * @param   pCtx        The CPU context structure to import into.
- * @param   fWhat       What to export. To be defined, UINT64_MAX for now.
  */
 NEM_TMPL_STATIC int nemR0WinExportState(PGVM pGVM, PGVMCPU pGVCpu, PCPUMCTX pCtx)
 {
