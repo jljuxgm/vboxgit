@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 69037 2017-10-11 10:21:20Z vboxsync $ */
+/* $Id: VMDK.cpp 69230 2017-10-24 15:27:30Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -513,6 +513,7 @@ typedef struct VMDKRENAMESTATE
 } VMDKRENAMESTATE;
 /** Pointer to a VMDK rename state. */
 typedef VMDKRENAMESTATE *PVMDKRENAMESTATE;
+
 
 /*********************************************************************************************************************************
 *   Static Variables                                                                                                             *

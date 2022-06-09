@@ -1,4 +1,4 @@
-/* $Id: VDPlugin.cpp 67455 2017-06-16 20:25:22Z vboxsync $ */
+/* $Id: VDPlugin.cpp 69230 2017-10-24 15:27:30Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation, plugin related bits.
  */
@@ -52,6 +52,7 @@ typedef struct VDPLUGIN
 } VDPLUGIN;
 /** Pointer to a plugin structure. */
 typedef VDPLUGIN *PVDPLUGIN;
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
@@ -108,6 +109,7 @@ static PCVDFILTERBACKEND *g_apFilterBackends = NULL;
 /** Array of handles to the corresponding plugin. */
 static PRTLDRMOD g_pahFilterBackendPlugins = NULL;
 #endif
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
@@ -822,7 +824,7 @@ DECLHIDDEN(int) vdPluginUnloadFromPath(const char *pszPath)
          * files matching, while on other platforms enumerating the
          * files below fails. Either way: no plugins. */
     }
-    
+
     if (rc == VERR_NO_MORE_FILES)
         rc = VINF_SUCCESS;
     RTStrFree(pszPluginFilter);
