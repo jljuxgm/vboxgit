@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 67477 2017-06-19 14:06:11Z vboxsync $ */
+/* $Id: DevVGA.cpp 67478 2017-06-19 14:07:08Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4400,7 +4400,7 @@ static DECLCALLBACK(void) vgaInfoSR(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, cons
 
     pHlp->pfnPrintf(pHlp, "VGA Sequencer (3C5): SR index 3C4:%02X\n", pThis->sr_index);
     Assert(sizeof(pThis->sr) >= 8);
-    for (i = 0; i < 5; ++i)
+    for (i = 0; i < 8; ++i)
         pHlp->pfnPrintf(pHlp, " SR%02X:%02X", i, pThis->sr[i]);
     pHlp->pfnPrintf(pHlp, "\n");
 }
