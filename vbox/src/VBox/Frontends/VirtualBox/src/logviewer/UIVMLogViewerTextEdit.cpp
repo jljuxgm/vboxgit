@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 70589 2018-01-15 13:00:21Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 70592 2018-01-15 14:34:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -180,6 +180,15 @@ void UIVMLogViewerTextEdit::prepareWidgets()
     if (pHorizontalScrollBar)
         pHorizontalScrollBar->setStyleSheet(horizontalScrollBarStyle);
 
+    /* Configure this' wrap mode: */
+    setWordWrapMode(QTextOption::NoWrap);
+    setWordWrapMode(QTextOption::NoWrap);
+    setReadOnly(true);
+    /* Set colors to have a selection with bluebackground and white foreground: */
+    QPalette mPalette = palette();
+    mPalette.setColor(QPalette::Highlight, QColor(48, 140, 198, 255));
+    mPalette.setColor(QPalette::HighlightedText, QColor(255, 255, 255, 255));
+    setPalette(mPalette);
 
 #if defined(RT_OS_SOLARIS)
     /* Use system fixed-width font on Solaris hosts as the Courier family fonts don't render well. */
@@ -189,9 +198,6 @@ void UIVMLogViewerTextEdit::prepareWidgets()
     font.setFamily("Courier New,courier");
 #endif
     setFont(font);
-    setWordWrapMode(QTextOption::NoWrap);
-    setWordWrapMode(QTextOption::NoWrap);
-    setReadOnly(true);
     if (m_pLineNumberArea)
         m_pLineNumberArea->setFont(font);
 
