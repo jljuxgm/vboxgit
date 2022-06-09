@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 67955 2017-07-13 21:13:23Z vboxsync $ */
+/* $Id: VMMR0.cpp 67956 2017-07-13 21:31:26Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2009,6 +2009,7 @@ static DECLCALLBACK(int) vmmR0EntryExWrapper(void *pvArgs)
  * The Ring 0 entry point, called by the support library (SUP).
  *
  * @returns VBox status code.
+ * @param   pGVM            The global (ring-0) VM structure.
  * @param   pVM             The cross context VM structure.
  * @param   idCpu           Virtual CPU ID argument. Must be NIL_VMCPUID if pVM
  *                          is NIL_RTR0PTR, and may be NIL_VMCPUID if it isn't
