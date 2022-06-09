@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 71327 2018-03-14 14:29:43Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 71334 2018-03-14 15:03:53Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -563,7 +563,7 @@ HRESULT GuestSession::getUserHome(com::Utf8Str &aUserHome)
                         hr = setError(VBOX_E_IPRT_ERROR, tr("Getting the user's home path is not supported by installed Guest Additions"));
                         break;
 
-                    break;
+                    default:
                         hr = setError(VBOX_E_IPRT_ERROR, tr("Getting the user's home path failed on the guest: %Rrc"), rcGuest);
                         break;
                 }
@@ -599,7 +599,7 @@ HRESULT GuestSession::getUserDocuments(com::Utf8Str &aUserDocuments)
                         hr = setError(VBOX_E_IPRT_ERROR, tr("Getting the user's documents path is not supported by installed Guest Additions"));
                         break;
 
-                    break;
+                    default:
                         hr = setError(VBOX_E_IPRT_ERROR, tr("Getting the user's documents path failed on the guest: %Rrc"), rcGuest);
                         break;
                 }
