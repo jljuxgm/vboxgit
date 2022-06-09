@@ -1,4 +1,4 @@
-/* $Id: VBoxMouseLog.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxMouseLog.h 68560 2017-08-31 12:10:10Z vboxsync $ */
 /** @file
  * VBox Mouse drivers, logging helper
  */
@@ -18,9 +18,8 @@
 #ifndef VBOXMOUSELOG_H
 #define VBOXMOUSELOG_H
 
-#ifdef DEBUG_misha
-# include <iprt/assert.h>
-#endif
+#include <VBox/log.h>
+#include <iprt/assert.h>
 
 #define VBOX_MOUSE_LOG_NAME "VBoxMouse"
 
@@ -46,7 +45,7 @@
         _logger((VBOX_MOUSE_LOG_SUFFIX_FMT  VBOX_MOUSE_LOG_SUFFIX_PARMS));  \
     } while (0)
 
-#ifdef DEBUG_misha
+#if 1 /* Exclude yourself if you're not keen on this. */
 # define BREAK_WARN() AssertFailed()
 #else
 # define BREAK_WARN() do {} while(0)
