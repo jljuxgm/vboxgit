@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 71829 2018-04-11 17:17:06Z vboxsync $ */
+/* $Id: VBoxDD.h 72616 2018-06-19 14:50:09Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -40,6 +40,7 @@ extern const PDMDEVREG g_DeviceI8254;
 extern const PDMDEVREG g_DeviceI8259;
 extern const PDMDEVREG g_DeviceHPET;
 extern const PDMDEVREG g_DeviceSmc;
+extern const PDMDEVREG g_DeviceFlash;
 extern const PDMDEVREG g_DeviceMC146818;
 extern const PDMDEVREG g_DevicePIIX3IDE;
 extern const PDMDEVREG g_DeviceFloppyController;

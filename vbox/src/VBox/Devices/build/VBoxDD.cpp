@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 71829 2018-04-11 17:17:06Z vboxsync $ */
+/* $Id: VBoxDD.cpp 72616 2018-06-19 14:50:09Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -84,6 +84,9 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     if (RT_FAILURE(rc))
         return rc;
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceSmc);
+    if (RT_FAILURE(rc))
+        return rc;
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceFlash);
     if (RT_FAILURE(rc))
         return rc;
 #ifdef VBOX_WITH_EFI
