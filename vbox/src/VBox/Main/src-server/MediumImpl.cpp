@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 67745 2017-07-01 11:26:18Z vboxsync $ */
+/* $Id: MediumImpl.cpp 67885 2017-07-10 16:45:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3810,6 +3810,15 @@ bool Medium::i_isMediumFormatFile() const
 uint64_t Medium::i_getSize() const
 {
     return m->size;
+}
+
+/**
+ * Internal method to return the medium's size. Must have caller + locking!
+ * @return
+ */
+uint64_t Medium::i_getLogicalSize() const
+{
+    return m->logicalSize;
 }
 
 /**

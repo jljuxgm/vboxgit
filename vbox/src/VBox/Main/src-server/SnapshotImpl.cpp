@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 67884 2017-07-10 16:42:37Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 67885 2017-07-10 16:45:06Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -2804,6 +2804,15 @@ void SessionMachine::i_deleteSnapshotHandler(DeleteSnapshotTask &task)
             // when all snapshots are deleted the only remaining image is a
             // base image. Important e.g. for medium formats which do not have
             // a file representation such as iSCSI.
+
+            // not going to merge a big source into a small target
+            if (pSource->i_getLogicalSize() > pTarget->i_getLogicalSize())
+            {
+                rc = setError(E_FAIL,
+                              tr("Unable to merge storage '%s', because it is smaller than the source image. If you resize it to have a capacity of at least %lld bytes you can retry"),
+                              pTarget->i_getLocationFull().c_str(), pSource->i_getLogicalSize());
+                throw rc;
+            }
 
             // a couple paranoia checks for backward merges
             if (pMediumLockList != NULL && !fMergeForward)

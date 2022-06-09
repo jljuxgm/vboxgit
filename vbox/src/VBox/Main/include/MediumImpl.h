@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 67249 2017-06-02 15:24:58Z vboxsync $ */
+/* $Id: MediumImpl.h 67885 2017-07-10 16:45:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -108,6 +108,7 @@ public:
     const ComObjPtr<MediumFormat> & i_getMediumFormat() const;
     bool i_isMediumFormatFile() const;
     uint64_t i_getSize() const;
+    uint64_t i_getLogicalSize() const;
     DeviceType_T i_getDeviceType() const;
     MediumType_T i_getType() const;
     Utf8Str i_getName();
