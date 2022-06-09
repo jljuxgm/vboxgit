@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 69655 2017-11-10 19:24:04Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 69665 2017-11-13 07:00:48Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -950,6 +950,9 @@ D3DFORMAT vmsvga3dSurfaceFormat2D3D(SVGA3dSurfaceFormat format)
         return D3DFMT_A1R5G5B5;
     case SVGA3D_A4R4G4B4:
         return D3DFMT_A4R4G4B4;
+
+    case SVGA3D_R8G8B8A8_UNORM:
+        return D3DFMT_A8B8G8R8;
 
     case SVGA3D_Z_D32:
         return D3DFMT_D32;
@@ -5800,6 +5803,8 @@ int vmsvga3dDrawPrimitives(PVGASTATE pThis, uint32_t cid, uint32_t numVertexDecl
         ++iCurrentStreamId;
     }
 
+    /* iCurrentStreamId is equal to the total number of streams and the value is used for cleanup at the function end. */
+
     AssertRCReturn(rc, rc);
 
     /* Mark the end. */
@@ -5930,12 +5935,15 @@ int vmsvga3dDrawPrimitives(PVGASTATE pThis, uint32_t cid, uint32_t numVertexDecl
         AssertMsg(hr2 == D3D_OK, ("SetStreamSource(%d, NULL) failed with %x\n", i, hr2)); RT_NOREF(hr2);
     }
 
-    /* "When you are finished rendering the instance data, be sure to reset the vertex stream frequency back..." */
-    for (i = 0; i < cVertexDivisor; ++i)
+    if (cVertexDivisor)
     {
-        LogFunc(("reset stream freq %d\n", i));
-        HRESULT hr2 = pContext->pDevice->SetStreamSourceFreq(i, 1);
-        AssertMsg(hr2 == D3D_OK, ("SetStreamSourceFreq(%d, 1) failed with %x\n", i, hr2)); RT_NOREF(hr2);
+        /* "When you are finished rendering the instance data, be sure to reset the vertex stream frequency back..." */
+        for (i = 0; i < iCurrentStreamId; ++i)
+        {
+            LogFunc(("reset stream freq %d\n", i));
+            HRESULT hr2 = pContext->pDevice->SetStreamSourceFreq(i, 1);
+            AssertMsg(hr2 == D3D_OK, ("SetStreamSourceFreq(%d, 1) failed with %x\n", i, hr2)); RT_NOREF(hr2);
+        }
     }
 
     if (RT_SUCCESS(rc))
