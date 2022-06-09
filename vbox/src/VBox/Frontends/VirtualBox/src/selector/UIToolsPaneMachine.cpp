@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.cpp 68285 2017-08-03 12:42:45Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.cpp 68286 2017-08-03 13:00:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class implementation.
  */
@@ -182,8 +182,8 @@ void UIToolsPaneMachine::setDetailsError(const QString &strError)
 void UIToolsPaneMachine::setCurrentItem(UIVMItem *pItem)
 {
     /* Do we need translation after that? */
-    const bool fTranslationRequired =  !pItem && m_pItem
-                                    || pItem && !m_pItem;
+    const bool fTranslationRequired =  (!pItem &&  m_pItem)
+                                    || ( pItem && !m_pItem);
 
     /* Remember new item: */
     m_pItem = pItem;
