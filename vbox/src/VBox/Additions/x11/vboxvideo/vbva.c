@@ -1,4 +1,4 @@
-/* $Id: vbva.c 69058 2017-10-12 09:48:15Z vboxsync $ */
+/* $Id: vbva.c 69064 2017-10-12 18:18:01Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver 2D acceleration functions
  */
@@ -182,7 +182,7 @@ static Bool vboxSetupVRAMVbva(VBOXPtr pVBox)
     return TRUE;
 }
 
-static bool haveHGSMIModeHintAndCursorReportingInterface(VBOXPtr pVBox)
+static Bool haveHGSMIModeHintAndCursorReportingInterface(VBOXPtr pVBox)
 {
     uint32_t fModeHintReporting, fCursorReporting;
 
@@ -192,7 +192,7 @@ static bool haveHGSMIModeHintAndCursorReportingInterface(VBOXPtr pVBox)
            && fCursorReporting == VINF_SUCCESS;
 }
 
-static bool hostHasScreenBlankingFlag(VBOXPtr pVBox)
+static Bool hostHasScreenBlankingFlag(VBOXPtr pVBox)
 {
     uint32_t fScreenFlags;
 
@@ -210,7 +210,7 @@ static bool hostHasScreenBlankingFlag(VBOXPtr pVBox)
 Bool
 vboxEnableVbva(ScrnInfoPtr pScrn)
 {
-    bool rc = TRUE;
+    Bool rc = TRUE;
     unsigned i;
     VBOXPtr pVBox = pScrn->driverPrivate;
 
