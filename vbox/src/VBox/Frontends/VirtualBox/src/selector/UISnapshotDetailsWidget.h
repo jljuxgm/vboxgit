@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 68762 2017-09-14 14:54:52Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.h 68763 2017-09-14 15:37:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -158,7 +158,7 @@ private:
     /** Acquires @a comMachine acceleration report. */
     static QString accelerationReport(const CMachine &comMachine);
     /** Acquires @a comMachine scale-factor report. */
-    static QString scaleFactorReport(CMachine comMachine);
+    static double scaleFactorReport(CMachine comMachine);
 #ifdef VBOX_WS_MAC
     /** Acquires @a comMachine unscaled output report. */
     static QString unscaledOutputReport(CMachine comMachine);
