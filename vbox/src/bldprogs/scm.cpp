@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69467 2017-10-28 12:30:09Z vboxsync $ */
+/* $Id: scm.cpp 69473 2017-10-28 12:41:18Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1935,7 +1935,7 @@ static int scmProcessFileInner(PSCMRWSTATE pState, const char *pszFilename, cons
                 SCMEOL      enmIgn;
                 size_t      cchFirst;
                 const char *pchFirst = ScmStreamGetLine(&Stream1, &cchFirst, &enmIgn);
-                if (cchFirst >= 9 && *pchFirst == '#')
+                if (cchFirst >= 9 && pchFirst && *pchFirst == '#')
                 {
                     do
                     {
@@ -2660,7 +2660,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69467 $";
+                static const char s_szRev[] = "$Revision: 69473 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
