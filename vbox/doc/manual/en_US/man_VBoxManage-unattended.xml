@@ -15,12 +15,8 @@
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 <refentry id="vboxmanage-unattended" lang="en">
 
-<!-- INCOMPLETE -->
-<!-- INCOMPLETE -->
-<!-- INCOMPLETE -->
-
   <refentryinfo>
-    <pubdate>$Date: 2017-07-28 01:21:21 +0800 (Fri, 28 Jul 2017) $</pubdate>
+    <pubdate>$Date: 2017-07-28 01:39:18 +0800 (Fri, 28 Jul 2017) $</pubdate>
     <title>VBoxManage unattended</title>
   </refentryinfo>
 
