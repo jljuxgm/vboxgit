@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 69439 2017-10-27 15:58:19Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 69440 2017-10-27 15:58:34Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -52,7 +52,7 @@
 #include <iprt/param.h>
 #include <iprt/file.h>
 #include <iprt/mem.h>
-#include <irpt/formats/elf64.h>
+#include <iprt/formats/elf64.h>
 
 #include "DBGFInternal.h"
 
