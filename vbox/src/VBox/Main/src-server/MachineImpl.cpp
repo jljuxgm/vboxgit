@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 67726 2017-06-30 12:06:06Z vboxsync $ */
+/* $Id: MachineImpl.cpp 67729 2017-06-30 12:29:35Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -8423,6 +8423,8 @@ HRESULT Machine::initDataAndChildObjects()
 
 #ifdef VBOX_WITH_UNATTENDED
     /* create the unattended object (always present) */
+    /** @todo r=bird: Why don't we create this when the IUnattended instance
+     *        is queried? */
     unconst(mUnattended).createObject();
     mUnattended->init(this);
 #endif
@@ -12657,6 +12659,8 @@ HRESULT SessionMachine::init(Machine *aMachine)
 
 #ifdef VBOX_WITH_UNATTENDED
     /* create another unattended object that will be mutable */
+    /** @todo r=bird: Why don't we create this when the IUnattended instance
+     *        is queried? */
     unconst(mUnattended).createObject();
     mUnattended->initWithUnattended(this, aMachine->mUnattended);
 #endif
