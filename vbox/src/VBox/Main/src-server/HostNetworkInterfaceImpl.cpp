@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 67431 2017-06-15 21:41:18Z vboxsync $ */
 
 /** @file
  *
@@ -162,11 +162,14 @@ HRESULT HostNetworkInterface::updateConfig()
     int rc = NetIfGetConfig(this, &info);
     if (RT_SUCCESS(rc))
     {
+        int iPrefixIPv6;
+
         m.realIPAddress = m.IPAddress = info.IPAddress.u;
         m.realNetworkMask = m.networkMask = info.IPNetMask.u;
         m.dhcpEnabled = info.bDhcpEnabled;
         m.realIPV6Address = m.IPV6Address = composeIPv6Address(&info.IPv6Address);
-        m.realIPV6PrefixLength = m.IPV6NetworkMaskPrefixLength = composeIPv6PrefixLenghFromAddress(&info.IPv6NetMask);
+        RTNetMaskToPrefixIPv6(&info.IPv6NetMask, &iPrefixIPv6);
+        m.realIPV6PrefixLength = m.IPV6NetworkMaskPrefixLength = iPrefixIPv6;
         m.hardwareAddress = composeHardwareAddress(&info.MACAddress);
 #ifdef RT_OS_WINDOWS
         m.mediumType = (HostNetworkInterfaceMediumType)info.enmMediumType;
@@ -219,10 +222,13 @@ HRESULT HostNetworkInterface::init(Bstr aInterfaceName, HostNetworkInterfaceType
     }
     mIfType = ifType;
 
+    int iPrefixIPv6;
+
     m.realIPAddress = m.IPAddress = pIf->IPAddress.u;
     m.realNetworkMask = m.networkMask = pIf->IPNetMask.u;
     m.realIPV6Address = m.IPV6Address = composeIPv6Address(&pIf->IPv6Address);
-    m.realIPV6PrefixLength = m.IPV6NetworkMaskPrefixLength = composeIPv6PrefixLenghFromAddress(&pIf->IPv6NetMask);
+    RTNetMaskToPrefixIPv6(&pIf->IPv6NetMask, &iPrefixIPv6);
+    m.realIPV6PrefixLength = m.IPV6NetworkMaskPrefixLength = iPrefixIPv6;
     m.dhcpEnabled = pIf->bDhcpEnabled;
     m.hardwareAddress = composeHardwareAddress(&pIf->MACAddress);
 #ifdef RT_OS_WINDOWS

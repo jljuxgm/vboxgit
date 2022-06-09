@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 65583 2017-02-02 09:47:40Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 67431 2017-06-15 21:41:18Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -1897,7 +1897,7 @@ static HRESULT netIfEnableStaticIpConfigV6(const GUID *pGuid, IN_BSTR aIPV6Addre
 static HRESULT netIfEnableStaticIpConfigV6(const GUID *pGuid, IN_BSTR aIPV6Address, ULONG aIPV6MaskPrefixLength)
 {
     RTNETADDRIPV6 Mask;
-    int rc = prefixLength2IPv6Address(aIPV6MaskPrefixLength, &Mask);
+    int rc = RTNetPrefixToMaskIPv6(aIPV6MaskPrefixLength, &Mask);
     if (RT_SUCCESS(rc))
     {
         Bstr maskStr = composeIPv6Address(&Mask);

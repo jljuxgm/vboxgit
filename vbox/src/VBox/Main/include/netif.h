@@ -1,4 +1,4 @@
-/* $Id: netif.h 65428 2017-01-24 15:32:55Z vboxsync $ */
+/* $Id: netif.h 67431 2017-06-15 21:41:18Z vboxsync $ */
 /** @file
  * Main - Network Interfaces.
  */
@@ -114,26 +114,6 @@ DECLINLINE(Bstr) composeIPv6Address(PRTNETADDRIPV6 aAddrPtr)
                     aAddrPtr->au8[12], aAddrPtr->au8[13],
                     aAddrPtr->au8[14], aAddrPtr->au8[15]);
     return Bstr(szTmp);
-}
-
-DECLINLINE(ULONG) composeIPv6PrefixLenghFromAddress(PRTNETADDRIPV6 aAddrPtr)
-{
-    int res = ASMBitFirstClear(aAddrPtr, sizeof(RTNETADDRIPV6)*8);
-    return res != -1 ? res : 128;
-}
-
-DECLINLINE(int) prefixLength2IPv6Address(ULONG cPrefix, PRTNETADDRIPV6 aAddrPtr)
-{
-    if (cPrefix > 128)
-        return VERR_INVALID_PARAMETER;
-    if (!aAddrPtr)
-        return VERR_INVALID_PARAMETER;
-
-    RT_ZERO(*aAddrPtr);
-
-    ASMBitSetRange(aAddrPtr, 0, cPrefix);
-
-    return VINF_SUCCESS;
 }
 
 DECLINLINE(Bstr) composeHardwareAddress(PRTMAC aMacPtr)
