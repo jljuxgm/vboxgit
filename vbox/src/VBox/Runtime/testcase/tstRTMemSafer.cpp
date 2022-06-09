@@ -1,4 +1,4 @@
-/* $Id: tstRTMemSafer.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTMemSafer.cpp 71916 2018-04-19 10:05:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMemSafer* functions.
  */
@@ -35,7 +35,7 @@
 #include <iprt/rand.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
-#ifdef VBOX
+#if defined(VBOX) && (defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64))
 # include <VBox/sup.h>
 #endif
 
@@ -148,7 +148,7 @@ int main()
     if (rcExit != RTEXITCODE_SUCCESS)
         return rcExit;
     RTTestBanner(hTest);
-#ifdef VBOX
+#if defined(VBOX) && (defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64))
     SUPR3Init(NULL);
 #endif
 
