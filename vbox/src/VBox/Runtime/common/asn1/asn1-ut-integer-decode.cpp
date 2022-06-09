@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-integer-decode.cpp 72367 2018-05-28 18:05:58Z vboxsync $ */
+/* $Id: asn1-ut-integer-decode.cpp 72369 2018-05-28 20:02:03Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, INTEGER Type, Decoding.
  */
@@ -68,10 +68,9 @@ RTDECL(int) RTAsn1Integer_DecodeAsn1(PRTASN1CURSOR pCursor, uint32_t fFlags, PRT
                 pThis->Asn1Core.pOps    = &g_RTAsn1Integer_Vtable;
                 return VINF_SUCCESS;
             }
-            else
-                rc = RTAsn1CursorSetInfo(pCursor, VERR_ASN1_INVALID_INTEGER_ENCODING,
-                                         "%s: Invalid integer length, exepcted more than 0: %#x",
-                                         pszErrorTag, pThis->Asn1Core.cb);
+            rc = RTAsn1CursorSetInfo(pCursor, VERR_ASN1_INVALID_INTEGER_ENCODING,
+                                     "%s: Invalid integer length, exepcted more than 0: %#x",
+                                     pszErrorTag, pThis->Asn1Core.cb);
         }
     }
     RT_ZERO(*pThis);
