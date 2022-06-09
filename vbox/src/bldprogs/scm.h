@@ -1,4 +1,4 @@
-/* $Id: scm.h 69316 2017-10-25 15:02:31Z vboxsync $ */
+/* $Id: scm.h 69324 2017-10-25 19:45:13Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -240,6 +240,7 @@ typedef enum SCMLICENSE
     kScmLicense_OseCddl,            /**< VBox OSE CDDL if public. */
     kScmLicense_Lgpl,               /**< LGPL if public. */
     kScmLicense_Mit,                /**< MIT if public. */
+    kScmLicense_BasedOnMit,         /**< Copyright us but based on someone else's MIT . */
     kScmLicense_End
 } SCMLICENSE;
 
