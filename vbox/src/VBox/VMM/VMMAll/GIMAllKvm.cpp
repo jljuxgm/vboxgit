@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 72469 2018-06-07 11:35:23Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 72524 2018-06-12 10:23:47Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -270,6 +270,11 @@ VMM_INT_DECL(VBOXSTRICTRC) gimKvmWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMS
                 if (RT_SUCCESS(rc2))
                     pKvmCpu->fSystemTimeFlags = (SystemTime.fFlags & GIM_KVM_SYSTEM_TIME_FLAGS_GUEST_PAUSED);
             }
+
+            /* We ASSUME that ring-0/raw-mode have updated these. */
+            /** @todo Get logically atomic NanoTS/TSC pairs in ring-3. */
+            Assert(pKvmCpu->uTsc);
+            Assert(pKvmCpu->uVirtNanoTS);
 
             /* Enable and populate the system-time struct. */
             pKvmCpu->u64SystemTimeMsr      = uRawValue;
