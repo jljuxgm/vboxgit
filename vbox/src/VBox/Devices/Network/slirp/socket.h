@@ -1,4 +1,4 @@
-/* $Id: socket.h 71945 2018-04-20 14:10:36Z vboxsync $ */
+/* $Id: socket.h 71982 2018-04-23 14:04:04Z vboxsync $ */
 /** @file
  * NAT - socket handling (declarations/defines).
  */
@@ -166,6 +166,7 @@ void so_init (void);
 struct socket * solookup (struct socket *, struct in_addr, u_int, struct in_addr, u_int);
 struct socket * socreate (void);
 void sofree (PNATState, struct socket *);
+int sobind(PNATState, struct socket *);
 int soread (PNATState, struct socket *);
 void sorecvoob (PNATState, struct socket *);
 int sosendoob (struct socket *);
