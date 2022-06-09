@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72591 2018-06-17 21:07:43Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72595 2018-06-18 12:48:42Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6254,7 +6254,7 @@ HMSVM_EXIT_DECL hmR0SvmExitCpuid(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvm
 HMSVM_EXIT_DECL hmR0SvmExitRdtsc(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTransient)
 {
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS();
-#if 0 /** @todo Needs testing. @bugref{6973} */
+#if 1 /** @todo Needs testing. @bugref{6973} */
     VBOXSTRICTRC rcStrict = IEMExecDecodedRdtsc(pVCpu, hmR0SvmGetInstrLengthHwAssist(pVCpu, pCtx, 2));
     if (rcStrict == VINF_SUCCESS)
         pSvmTransient->fUpdateTscOffsetting = true;
@@ -6287,7 +6287,7 @@ HMSVM_EXIT_DECL hmR0SvmExitRdtsc(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvm
 HMSVM_EXIT_DECL hmR0SvmExitRdtscp(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTransient)
 {
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS();
-#if 0 /** @todo Needs testing. @bugref{6973} */
+#if 1 /** @todo Needs testing. @bugref{6973} */
     VBOXSTRICTRC rcStrict = IEMExecDecodedRdtscp(pVCpu, hmR0SvmGetInstrLengthHwAssist(pVCpu, pCtx, 2));
     if (rcStrict == VINF_SUCCESS)
         pSvmTransient->fUpdateTscOffsetting = true;
