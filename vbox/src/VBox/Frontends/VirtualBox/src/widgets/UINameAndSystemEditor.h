@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 72177 2018-05-09 15:57:09Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 72182 2018-05-09 20:03:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -48,6 +48,7 @@ signals:
 
     /** Notifies listeners about VM name change. */
     void sigNameChanged(const QString &strNewName);
+    void sigPathChanged(const QString &strName);
 
     /** Notifies listeners about VM OS type change. */
     void sigOsTypeChanged();
@@ -72,6 +73,9 @@ public:
     void setType(const CGuestOSType &enmType);
 
     void setNameFieldValidator(const QString &strValidatorString);
+
+    /** Forwards the machine name to UIVMNamePathSelector member instance. */
+    void setMachineFilePath(const QString &strPath);
 
 protected:
 

@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 72177 2018-05-09 15:57:09Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 72182 2018-05-09 20:03:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -333,6 +333,8 @@ void UINameAndSystemEditor::prepareConnections()
     /* Prepare connections: */
     connect(m_pNamePathSelector, &UIVMNamePathSelector::sigNameChanged,
             this, &UINameAndSystemEditor::sigNameChanged);
+    connect(m_pNamePathSelector, &UIVMNamePathSelector::sigPathChanged,
+            this, &UINameAndSystemEditor::sigPathChanged);
     connect(m_pComboFamily, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &UINameAndSystemEditor::sltFamilyChanged);
     connect(m_pComboType, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
@@ -344,4 +346,11 @@ void UINameAndSystemEditor::setNameFieldValidator(const QString &strValidatorStr
     if (!m_pNamePathSelector)
         return;
     m_pNamePathSelector->setNameFieldValidator(strValidatorString);
+}
+
+void UINameAndSystemEditor::setMachineFilePath(const QString &strPath)
+{
+    if (!m_pNamePathSelector)
+        return;
+    m_pNamePathSelector->setToolTipText(strPath);
 }
