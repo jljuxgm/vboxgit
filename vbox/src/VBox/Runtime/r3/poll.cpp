@@ -1,4 +1,4 @@
-/* $Id: poll.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: poll.cpp 70477 2018-01-07 18:38:38Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows+Posix Implementation.
  */
@@ -848,8 +848,8 @@ RTDECL(int) RTPollSetAdd(RTPOLLSET hPollSet, PCRTHANDLE pHandle, uint32_t fEvent
 
             if (iPrev != UINT32_MAX)
             {
-                Assert(pThis->paHandles[i].fFinalEntry);
-                pThis->paHandles[i].fFinalEntry = false;
+                Assert(pThis->paHandles[iPrev].fFinalEntry);
+                pThis->paHandles[iPrev].fFinalEntry = false;
             }
 
             /*
