@@ -1,4 +1,4 @@
-/* $Id: the-nt-kernel.h 70153 2017-12-15 15:07:27Z vboxsync $ */
+/* $Id: the-nt-kernel.h 70157 2017-12-15 16:18:28Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the NT kernel.
  */
@@ -73,6 +73,7 @@ RT_C_DECLS_END
  * installed by the later DDKs.
  */
 #undef ExAllocatePool
+#undef ExFreePool
 
 /** @def IPRT_NT_POOL_TAG
  * Tag to use with the NT Pool APIs.
