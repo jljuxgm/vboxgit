@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 68004 2017-07-17 16:03:51Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 68005 2017-07-17 16:31:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -515,6 +515,9 @@ void UIMediumDetailsWidget::prepareInformationContainer(UIMediumType enmType, in
                 QLabel *pLabel = infoLabel(enmType, i);
                 AssertPtrReturnVoid(pLabel);
                 {
+                    /* Configure label: */
+                    pLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+
                     /* Add into layout: */
                     pLayout->addWidget(pLabel, i, 0);
                 }
