@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 69960 2017-12-06 17:05:52Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 69962 2017-12-06 21:29:34Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -2066,6 +2066,7 @@ static int rtFsNtfsCore_QueryInfo(PRTFSNTFSCORE pThis, PRTFSNTFSATTR pAttr, PRTF
         {
             default:
                 AssertFailed();
+                RT_FALL_THRU();
             case NTFS_AT_DATA:
                 fFileAttribs = NTFS_FA_NORMAL;
                 break;
