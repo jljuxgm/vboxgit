@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 72511 2018-06-11 14:12:17Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 72523 2018-06-12 09:58:49Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -200,7 +200,8 @@ HRESULT Appliance::interpret()
 
             /* VM Primary Group */
             Utf8Str strPrimaryGroup;
-            if (pNewDesc->m->pConfig->machineUserData.llGroups.size())
+            if (   vsysThis.pelmVBoxMachine
+                && pNewDesc->m->pConfig->machineUserData.llGroups.size())
                 strPrimaryGroup = pNewDesc->m->pConfig->machineUserData.llGroups.front();
             if (strPrimaryGroup.isEmpty())
                 strPrimaryGroup = "/";
