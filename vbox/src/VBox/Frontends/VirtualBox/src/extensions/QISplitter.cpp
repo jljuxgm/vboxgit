@@ -1,4 +1,4 @@
-/* $Id: QISplitter.cpp 71407 2018-03-20 14:55:53Z vboxsync $ */
+/* $Id: QISplitter.cpp 71420 2018-03-21 10:21:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QISplitter class implementation.
  */
@@ -128,11 +128,11 @@ void QIShadeSplitterHandle::paintEvent(QPaintEvent *pEvent)
 }
 
 
-#ifdef VBOX_WS_MAC
-
 /*********************************************************************************************************************************
 *   Class QIDarwinSplitterHandle implementation.                                                                                 *
 *********************************************************************************************************************************/
+
+#ifdef VBOX_WS_MAC
 
 QIDarwinSplitterHandle::QIDarwinSplitterHandle(Qt::Orientation enmOrientation, QISplitter *pParent)
     : QSplitterHandle(enmOrientation, pParent)
