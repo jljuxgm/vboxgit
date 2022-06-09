@@ -1,4 +1,4 @@
-/* $Id: RTLdrCheckImports.cpp 70363 2017-12-27 17:00:46Z vboxsync $ */
+/* $Id: RTLdrCheckImports.cpp 70512 2018-01-10 11:28:23Z vboxsync $ */
 /** @file
  * IPRT - Module dependency checker.
  */
@@ -28,7 +28,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define RTMEM_WRAP_TO_EF_APIS
 #include <iprt/ctype.h>
 #include <iprt/err.h>
 #include <iprt/getopt.h>
