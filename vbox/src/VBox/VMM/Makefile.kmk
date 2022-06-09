@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66641 2017-04-21 08:45:43Z vboxsync $
+# $Id: Makefile.kmk 67040 2017-05-23 11:51:12Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -354,7 +354,12 @@ $(VBoxVMM_0_OUTDIR)/CommonGenIncs/IEMInstructionStatisticsTmpl.h.ts \
 		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstructions.cpp.h \
 		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstructionsOneByte.cpp.h \
 		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstructionsTwoByte0f.cpp.h \
-		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstructionsVexMap1.cpp.h
+		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstructionsThree0f38.cpp.h \
+		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstructionsThree0f3a.cpp.h \
+		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstructionsVexMap1.cpp.h \
+		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstructionsVexMap2.cpp.h \
+		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstructionsVexMap3.cpp.h \
+		$(PATH_SUB_CURRENT)/VMMAll/IEMAllInstructions3DNow.cpp.h
 	$(QUIET)$(call MSG_GENERATE,VBoxVMM,$@,VMMAll/IEMAllInstructions*.cpp.h)
 	$(QUIET)$(RM) -f -- "$@.tmp" "$@.tmp" "$@.sorted"
 	$(QUIET)$(MKDIR) -p -- "$(dir $@)"

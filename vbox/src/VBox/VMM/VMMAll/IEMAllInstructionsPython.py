@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 67037 2017-05-23 11:31:06Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 67040 2017-05-23 11:51:12Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67037 $"
+__version__ = "$Revision: 67040 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -252,6 +252,7 @@ g_kdOpTypes = {
     'Md':           ( 'IDX_UseModRM',       'rm',     '%Md',  'Md',      ),
     'Md_RO':        ( 'IDX_UseModRM',       'rm',     '%Md',  'Md',      ),
     'Md_WO':        ( 'IDX_UseModRM',       'rm',     '%Md',  'Md',      ),
+    'Mdq':          ( 'IDX_UseModRM',       'rm',     '%Mdq', 'Mdq',     ),
     'Mdq_WO':       ( 'IDX_UseModRM',       'rm',     '%Mdq', 'Mdq',     ),
     'Mq':           ( 'IDX_UseModRM',       'rm',     '%Mq',  'Mq',      ),
     'Mq_WO':        ( 'IDX_UseModRM',       'rm',     '%Mq',  'Mq',      ),
@@ -453,8 +454,8 @@ g_kdCpuIdFlags = {
     'fma':          'X86_CPUID_FEATURE_ECX_FMA',
     'cx16':         'X86_CPUID_FEATURE_ECX_CX16',
     'pcid':         'X86_CPUID_FEATURE_ECX_PCID',
-    'sse41':        'X86_CPUID_FEATURE_ECX_SSE4_1',
-    'sse42':        'X86_CPUID_FEATURE_ECX_SSE4_2',
+    'sse4.1':       'X86_CPUID_FEATURE_ECX_SSE4_1',
+    'sse4.2':       'X86_CPUID_FEATURE_ECX_SSE4_2',
     'movbe':        'X86_CPUID_FEATURE_ECX_MOVBE',
     'popcnt':       'X86_CPUID_FEATURE_ECX_POPCNT',
     'aes':          'X86_CPUID_FEATURE_ECX_AES',
