@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.cpp 66270 2017-03-27 18:33:42Z vboxsync $ */
+/* $Id: MsiCommon.cpp 68118 2017-07-26 10:41:56Z vboxsync $ */
 /** @file
  * MSI support routines
  *
@@ -244,8 +244,6 @@ int MsiInit(PPDMPCIDEV pDev, PPDMMSIREG pMsiReg)
         /* How many vectors we're capable of */
         iFlags |= iMmc;
     }
-    else
-        AssertReturn(cVectors == 1, VERR_TOO_MUCH_DATA);
 
     if (f64bit)
         iFlags |= VBOX_PCI_MSI_FLAGS_64BIT;
