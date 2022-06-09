@@ -1,10 +1,10 @@
-/* $Id: GuestDirectoryImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 71173 2018-03-02 10:59:38Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
 
 /*
- * Copyright (C) 2012-2017 Oracle Corporation
+ * Copyright (C) 2012-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_GUEST_CONTROL //LOG_GROUP_MAIN_GUESTDIRECTORY
+#define LOG_GROUP LOG_GROUP_MAIN_GUESTDIRECTORY
 #include "LoggingNew.h"
 
 #ifndef VBOX_WITH_GUEST_CONTROL

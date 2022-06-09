@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 71125 2018-02-26 13:36:42Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 71173 2018-03-02 10:59:38Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_GUEST_CONTROL //LOG_GROUP_MAIN_GUESTPROCESS
+#define LOG_GROUP LOG_GROUP_MAIN_GUESTPROCESS
 #include "LoggingNew.h"
 
 #ifndef VBOX_WITH_GUEST_CONTROL
