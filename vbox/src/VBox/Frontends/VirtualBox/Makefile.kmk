@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 71336 2018-03-14 15:08:49Z vboxsync $
+# $Id: Makefile.kmk 71346 2018-03-15 10:03:10Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -672,6 +672,7 @@ VirtualBox_SOURCES = \
 	src/extensions/QIStatusBar.cpp \
 	src/extensions/QIStatusBarIndicator.cpp \
 	src/extensions/QITableView.cpp \
+	src/extensions/QIToolButton.cpp \
 	src/extensions/QITreeView.cpp \
 	src/extensions/QITreeWidget.cpp \
 	src/extensions/QIWidgetValidator.cpp \
