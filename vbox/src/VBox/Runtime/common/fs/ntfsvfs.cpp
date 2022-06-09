@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 69862 2017-11-28 19:04:10Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 69863 2017-11-28 19:04:52Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -414,7 +414,7 @@ static void rtfsNtfsMftRec_Log(PRTFSNTFSMFTREC pRec)
                         int64_t iVnc = pHdr->NonRes.iVcnFirst;
                         Log2(("NTFS:     Mapping Pairs: %.*Rhxsd\n", cbMaxPairs, pbPairs));
                         if (!iVnc && !*pbPairs)
-                            Log2(("NTFS:         [0]: Empty\n", cbMaxPairs, pbPairs));
+                            Log2(("NTFS:         [0]: Empty\n"));
                         else
                         {
                             if (iVnc != 0)
