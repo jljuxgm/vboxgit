@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 69828 2017-11-24 17:32:23Z vboxsync $ */
+/* $Id: isovfs.cpp 69831 2017-11-24 20:03:23Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -3067,6 +3067,7 @@ static DECLCALLBACK(int) rtFsIsoDir_Open(void *pvThis, const char *pszEntry, uin
 }
 
 
+#if 0
 /**
  * @interface_method_impl{RTVFSDIROPS,pfnOpenFile}
  */
@@ -3149,6 +3150,7 @@ static DECLCALLBACK(int) rtFsIsoDir_OpenFile(void *pvThis, const char *pszFilena
     }
     return rc;
 }
+#endif
 
 
 #if 0
@@ -3735,7 +3737,7 @@ static const RTVFSDIROPS g_rtFsIsoDirOps =
     },
     rtFsIsoDir_Open,
     NULL /* pfnFollowAbsoluteSymlink */,
-    rtFsIsoDir_OpenFile,
+    NULL /* pfnOpenFile */,
     NULL /* pfnOpenDir */,
     rtFsIsoDir_CreateDir,
     rtFsIsoDir_OpenSymlink,
