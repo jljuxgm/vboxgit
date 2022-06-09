@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 69681 2017-11-14 02:58:20Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 69693 2017-11-14 16:30:25Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -286,15 +286,15 @@ RTEXITCODE handleStorageAttach(HandlerArg *a)
                 bstrPassword = ValueUnion.psz;
                 break;
 
-			case 'w':   // --passwordFile
-			{
-				Utf8Str utf8Password;
-				RTEXITCODE rcExit = readPasswordFile(ValueUnion.psz, &utf8Password);
-				if (rcExit != RTEXITCODE_SUCCESS)
-					rc = E_FAIL;
-				bstrPassword = utf8Password;
-				break;
-			}
+            case 'w':   // --passwordFile
+            {
+                Utf8Str utf8Password;
+                RTEXITCODE rcExit = readPasswordFile(ValueUnion.psz, &utf8Password);
+                if (rcExit != RTEXITCODE_SUCCESS)
+                    rc = E_FAIL;
+                bstrPassword = utf8Password;
+                break;
+            }
             case 'N':   // --initiator
                 bstrInitiator = ValueUnion.psz;
                 break;
