@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 69663 2017-11-12 16:17:36Z vboxsync $ */
+/* $Id: fatvfs.cpp 69678 2017-11-13 15:45:03Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -28,7 +28,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define RTMEM_WRAP_TO_EF_APIS
 #define LOG_GROUP RTLOGGROUP_FS
 #include "internal/iprt.h"
 #include <iprt/fsvfs.h>
