@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.h 70390 2017-12-29 16:54:17Z vboxsync $ */
 /** @file
  * VBoxService - Toolbox header for sharing defines between toolbox binary and VBoxService.
  */
@@ -25,5 +25,5 @@ extern bool                     VGSvcToolboxMain(int argc, char **argv, RTEXITCO
 extern int                      VGSvcToolboxExitCodeConvertToRc(const char *pszTool, RTEXITCODE rcExit);
 RT_C_DECLS_END
 
-#endif /* ___VBoxServiceToolBox_h */
+#endif /* !___VBoxServiceToolBox_h */
 
