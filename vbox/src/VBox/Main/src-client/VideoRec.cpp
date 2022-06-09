@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 68850 2017-09-25 10:49:29Z vboxsync $ */
+/* $Id: VideoRec.cpp 68982 2017-10-04 13:49:18Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -929,7 +929,7 @@ static void videoRecStreamUnlock(PVIDEORECSTREAM pStream)
  * @param   pStream             Recording stream to open file for.
  * @param   pCfg                Recording configuration to use.
  */
-int videoRecStreamOpenFile(PVIDEORECSTREAM pStream, PVIDEORECCFG pCfg)
+static int videoRecStreamOpenFile(PVIDEORECSTREAM pStream, PVIDEORECCFG pCfg)
 {
     AssertPtrReturn(pStream, VERR_INVALID_POINTER);
     AssertPtrReturn(pCfg,    VERR_INVALID_POINTER);
