@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67797 2017-07-05 14:00:39Z vboxsync $ */
+/* $Id: isomaker.cpp 67801 2017-07-05 14:16:48Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -3305,7 +3305,7 @@ RTDECL(int) RTFsIsoMakerAddFileWithVfsFile(RTFSISOMAKER hIsoMaker, const char *p
  * Will fail if no namespace is configured that supports symlinks.
  *
  * @returns IPRT status code
- * @retrval VERR_ISOMK_SYMLINK_SUPPORT_DISABLED if not supported.
+ * @retval  VERR_ISOMK_SYMLINK_SUPPORT_DISABLED if not supported.
  * @param   hIsoMaker           The ISO maker handle.
  * @param   pObjInfo            Pointer to object attributes, must be set to
  *                              UNIX.  The size and hardlink counts are ignored.
