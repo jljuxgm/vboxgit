@@ -1,10 +1,10 @@
-/* $Id: QIDialog.cpp 71355 2018-03-15 15:13:11Z vboxsync $ */
+/* $Id: QIDialog.cpp 71396 2018-03-20 11:48:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIDialog class implementation.
  */
 
 /*
- * Copyright (C) 2008-2017 Oracle Corporation
+ * Copyright (C) 2008-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -29,8 +29,8 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-QIDialog::QIDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags flags /* = 0 */)
-    : QDialog(pParent, flags)
+QIDialog::QIDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = 0 */)
+    : QDialog(pParent, enmFlags)
     , m_fPolished(false)
 {
     /* Do not count that window as important for application,
