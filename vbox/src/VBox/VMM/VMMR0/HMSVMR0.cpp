@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69715 2017-11-16 12:54:12Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69763 2017-11-20 04:36:39Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -902,6 +902,13 @@ static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMVMCB pVmcb)
         fNewAsid = true;
     }
 
+#ifdef VBOX_WITH_NESTED_HWVIRT
+    if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
+        fNewAsid = true;
+#else
+    RT_NOREF(pCtx);
+#endif
+
     /* Set TLB flush state as checked until we return from the world switch. */
     ASMAtomicWriteBool(&pVCpu->hm.s.fCheckedTLBFlush, true);
 
@@ -932,24 +939,7 @@ static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMVMCB pVmcb)
     }
     else
     {
-#ifdef VBOX_WITH_NESTED_HWVIRT
-        /*
-         * Only if the nested hypervisor says it does not need to flush anything in the TLB,
-         * can we possibly apply it on the host. Otherwise, the nested-guest TLB flush setting
-         * should be used and then the host settings be added on top.
-         */
-        if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
-        {
-            PCSVMNESTEDVMCBCACHE pVmcbNstGstCache = &pVCpu->hm.s.svm.NstGstVmcbCache;
-            if (pVmcbNstGstCache->TLBCtrl.n.u8TLBFlush == SVM_TLB_FLUSH_NOTHING)
-                pVmcb->ctrl.TLBCtrl.n.u8TLBFlush = SVM_TLB_FLUSH_NOTHING;
-            else
-                pVmcb->ctrl.TLBCtrl.n.u8TLBFlush = pVmcbNstGstCache->TLBCtrl.n.u8TLBFlush;
-        }
-#else
-        RT_NOREF(pCtx);
         pVmcb->ctrl.TLBCtrl.n.u8TLBFlush = SVM_TLB_FLUSH_NOTHING;
-#endif
         if (pVCpu->hm.s.fForceTLBFlush)
         {
             /* Clear the VMCB Clean Bit for NP while flushing the TLB. See @bugref{7152}. */
@@ -996,10 +986,6 @@ static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMVMCB pVmcb)
         pVmcb->ctrl.TLBCtrl.n.u32ASID = pVCpu->hm.s.uCurrentAsid;
         pVmcb->ctrl.u64VmcbCleanBits &= ~HMSVM_VMCB_CLEAN_ASID;
     }
-
-#ifdef VBOX_WITH_NESTED_HWVIRT
-    Assert(CPUMIsGuestInSvmNestedHwVirtMode(pCtx) || pVmcb->ctrl.TLBCtrl.n.u8TLBFlush != SVM_TLB_FLUSH_NOTHING);
-#endif
 
     AssertMsg(pVCpu->hm.s.idLastCpu == pCpu->idCpu,
               ("vcpu idLastCpu=%u pcpu idCpu=%u\n", pVCpu->hm.s.idLastCpu, pCpu->idCpu));
