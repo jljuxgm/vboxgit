@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 68722 2017-09-12 11:45:58Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 68765 2017-09-14 16:02:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -584,6 +584,9 @@ void UISnapshotPane::sltHandleMachineDataChange(QString strMachineId)
 
     /* Recache "current state" item data: */
     m_pCurrentStateItem->recache();
+
+    /* Choose current item again (to update details-widget): */
+    sltHandleCurrentItemChange();
 }
 
 void UISnapshotPane::sltHandleMachineStateChange(QString strMachineId, KMachineState enmState)
