@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 69734 2017-11-18 02:06:23Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.h 69741 2017-11-18 04:04:44Z vboxsync $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -141,8 +141,8 @@ private:
 
 #ifdef VBOX_WITH_SDS_PLAN_B
     // quick and dirty for checking the concept.
-    IVBoxSVC *m_pVBoxSVC;
-    uint32_t  m_pidVBoxSVC;
+    ComPtr<IVBoxSVC> m_ptrVBoxSVC;
+    ComPtr<IVBoxSVC> m_ptrOtherVBoxSVC;
 #endif
 };
 
