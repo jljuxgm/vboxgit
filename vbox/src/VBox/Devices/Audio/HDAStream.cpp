@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 70017 2017-12-08 12:04:03Z vboxsync $ */
+/* $Id: HDAStream.cpp 70023 2017-12-08 12:26:39Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -150,7 +150,10 @@ void hdaStreamDestroy(PHDASTREAM pStream)
     if (pStream->Dbg.Runtime.fEnabled)
     {
         DrvAudioHlpFileDestroy(pStream->Dbg.Runtime.pFileStream);
+        pStream->Dbg.Runtime.pFileStream = NULL;
+
         DrvAudioHlpFileDestroy(pStream->Dbg.Runtime.pFileDMA);
+        pStream->Dbg.Runtime.pFileDMA = NULL;
     }
 
     LogFlowFuncLeave();
