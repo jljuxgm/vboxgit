@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72004 2018-04-24 14:40:13Z vboxsync $
+# $Id: Makefile.kmk 72005 2018-04-24 15:12:15Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -754,8 +754,7 @@ endif # linux freebsd
 
 ifeq ($(KBUILD_TARGET), win)
  INSTALLS.win += VBoxDrv-inf
- VBoxDrv-inf_INST = $(INST_BIN)
- VBoxDrv-inf_MODE = a+r,u+w
+ VBoxDrv-inf_TEMPLATE = VBoxR0DrvInfCat
  VBoxDrv-inf_SOURCES = \
  	$(PATH_TARGET)/VBoxDrvCat.dir/VBoxDrv.inf
  VBoxDrv-inf_CLEAN = $(VBoxDrv-inf_SOURCES)

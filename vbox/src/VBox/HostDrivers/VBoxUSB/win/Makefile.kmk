@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72004 2018-04-24 14:40:13Z vboxsync $
+# $Id: Makefile.kmk 72005 2018-04-24 15:12:15Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows USB drivers.
 #
@@ -152,8 +152,7 @@ USBTest_LIBS = \
 #
 # Install the INF files.
 #
-install-infs_INST = bin/
-install-infs_MODE = a+r,u+w
+install-infs_TEMPLATE = VBoxR0DrvInfCat
 install-infs_SOURCES = \
 	$(PATH_TARGET)/VBoxUSBCat.dir/VBoxUSB.inf \
 	$(PATH_TARGET)/VBoxUSBMonCat.dir/VBoxUSBMon.inf

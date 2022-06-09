@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72004 2018-04-24 14:40:13Z vboxsync $
+# $Id: Makefile.kmk 72005 2018-04-24 15:12:15Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Adapter Driver (VBoxNetAdp).
 #
@@ -123,8 +123,7 @@ ifeq ($(KBUILD_TARGET),win)
 
 
  INSTALLS.win += VBoxNetAdp6-inf
- VBoxNetAdp6-inf_INST = $(INST_BIN)
- VBoxNetAdp6-inf_MODE = a+r,u+w
+ VBoxNetAdp6-inf_TEMPLATE = VBoxR0DrvInfCat
  VBoxNetAdp6-inf_SOURCES = \
  	$(PATH_TARGET)/VBoxNetAdp6Cat.dir/VBoxNetAdp6.inf
  VBoxNetAdp6-inf_CLEAN = $(VBoxNetAdp6-inf_SOURCES)
