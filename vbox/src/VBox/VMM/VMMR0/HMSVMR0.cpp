@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69915 2017-12-04 07:28:16Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69916 2017-12-04 07:28:51Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2389,7 +2389,7 @@ static void hmR0SvmLeave(PVMCPU pVCpu)
 
     /* Restore host FPU state if necessary and resync on next R0 reentry .*/
     if (CPUMR0FpuStateMaybeSaveGuestAndRestoreHost(pVCpu))
-        HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_CR0); /** @todo r=ramshankar: This shouldn't be necessary, it's set in HMR0Enter. */
+        HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_CR0); /** @todo r=ramshankar: This shouldn't be necessary, it's set in HMR0EnterCpu. */
 
     /*
      * Restore host debug registers if necessary and resync on next R0 reentry.
@@ -2403,7 +2403,7 @@ static void hmR0SvmLeave(PVMCPU pVCpu)
     }
 #endif
     if (CPUMR0DebugStateMaybeSaveGuestAndRestoreHost(pVCpu, false /* save DR6 */))
-        HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_DEBUG);/** @todo r=ramshankar: This shouldn't be necessary, it's set in HMR0Enter. */
+        HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_DEBUG);/** @todo r=ramshankar: This shouldn't be necessary, it's set in HMR0EnterCpu. */
 
     Assert(!CPUMIsHyperDebugStateActive(pVCpu));
     Assert(!CPUMIsGuestDebugStateActive(pVCpu));
