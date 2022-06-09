@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69392 2017-10-26 17:24:52Z vboxsync $
+# $Id: .scm-settings 69393 2017-10-26 17:25:32Z vboxsync $
 ## @file
 # Source code massager settings for the OpenGL guest/host code.
 #
@@ -46,5 +46,4 @@
 --filter-out-files *_special
 --filter-out-files /LICENSE
 --filter-out-files *.txt
-
 
