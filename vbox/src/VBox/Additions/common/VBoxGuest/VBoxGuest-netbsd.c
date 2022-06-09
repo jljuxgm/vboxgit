@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 70066 2017-12-11 16:33:05Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 70069 2017-12-11 17:38:36Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -460,7 +460,7 @@ static int VBoxGuestNetBSDDetach(device_t self, int flags)
 /**
  * Removes IRQ for VMMDev.
  *
- * @param   vboxguest  Opaque pointer to the state info structure.
+ * @param   sc      Opaque pointer to the state info structure.
  */
 static void VBoxGuestNetBSDRemoveIRQ(vboxguest_softc *sc)
 {
