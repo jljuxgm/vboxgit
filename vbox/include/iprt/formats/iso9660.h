@@ -1,4 +1,4 @@
-/* $Id: iso9660.h 67278 2017-06-06 16:49:24Z vboxsync $ */
+/* $Id: iso9660.h 67326 2017-06-09 19:37:52Z vboxsync $ */
 /** @file
  * IPRT, ISO 9660 File System
  */
@@ -154,8 +154,8 @@ typedef struct ISO9660DIRREC
 {
     /** 0x00: Length of this record in bytes. */
     uint8_t             cbDirRec;
-    /** 0x01: Extended attribute record length in bytes? */
-    uint8_t             cbExtAttr;
+    /** 0x01: Extended attribute record length in logical blocks. */
+    uint8_t             cExtAttrBlocks;
     /** 0x02: Location of extent (logical block number).
      * @note Misaligned. */
     ISO9660U32          offExtent;
