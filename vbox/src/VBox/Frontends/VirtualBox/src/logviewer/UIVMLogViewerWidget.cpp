@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 70191 2017-12-18 13:30:52Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 70207 2017-12-18 16:01:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -301,7 +301,7 @@ void UIVMLogViewerWidget::prepareActions()
     m_pActionSave = new QAction(this);
     AssertPtrReturnVoid(m_pActionSave);
     {
-        /* tie Ctrl+S to save only if we show this in a dialog since Ctrl+S is 
+        /* tie Ctrl+S to save only if we show this in a dialog since Ctrl+S is
            already assigned to another action in the selector UI: */
         if (m_enmEmbedding == EmbedTo_Dialog)
         {
