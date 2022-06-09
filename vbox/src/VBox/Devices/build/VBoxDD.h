@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 69121 2017-10-17 19:14:35Z vboxsync $ */
+/* $Id: VBoxDD.h 71829 2018-04-11 17:17:06Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -88,6 +88,9 @@ extern const PDMDEVREG g_DeviceEFI;
 extern const PDMDEVREG g_DevicePciRaw;
 #endif
 extern const PDMDEVREG g_DeviceGIMDev;
+#ifdef VBOX_WITH_NEW_LPC_DEVICE
+extern const PDMDEVREG g_DeviceLPC;
+#endif
 #ifdef VBOX_WITH_VIRTUALKD
 extern const PDMDEVREG g_DeviceVirtualKD;
 #endif

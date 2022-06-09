@@ -1,4 +1,4 @@
-/* $Id: VBoxDD2.cpp 69121 2017-10-17 19:14:35Z vboxsync $ */
+/* $Id: VBoxDD2.cpp 71829 2018-04-11 17:17:06Z vboxsync $ */
 /** @file
  * VBoxDD2 - Built-in drivers & devices part 2.
  *
@@ -61,9 +61,13 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     LogFlow(("VBoxDevicesRegister: u32Version=%#x\n", u32Version));
     AssertReleaseMsg(u32Version == VBOX_VERSION, ("u32Version=%#x VBOX_VERSION=%#x\n", u32Version, VBOX_VERSION));
 
+#ifndef VBOX_WITH_NEW_LPC_DEVICE
     int rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceLPC);
     if (RT_FAILURE(rc))
         return rc;
+#else
+    RT_NOREF(pCallbacks);
+#endif
 
     return VINF_SUCCESS;
 }
