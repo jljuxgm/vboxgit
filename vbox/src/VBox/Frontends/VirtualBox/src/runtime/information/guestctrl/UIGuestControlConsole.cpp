@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlConsole.cpp 70988 2018-02-13 09:47:08Z vboxsync $ */
+/* $Id: UIGuestControlConsole.cpp 71019 2018-02-14 19:17:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlConsole class implementation.
  */
@@ -117,7 +117,7 @@ void UIGuestControlConsole::keyPressEvent(QKeyEvent *pEvent)
                 emit commandEntered(strCommand);
                 if(!m_tCommandHistory.contains(strCommand))
                     m_tCommandHistory.push_back(strCommand);
-                m_uCommandHistoryIndex = m_tCommandHistory.size();
+                m_uCommandHistoryIndex = m_tCommandHistory.size()-1;
                 moveCursor(QTextCursor::End);
                 QPlainTextEdit::keyPressEvent(pEvent);
                 startNextLine();
