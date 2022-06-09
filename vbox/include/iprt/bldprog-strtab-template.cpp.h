@@ -1,4 +1,4 @@
-/* $Id: bldprog-strtab-template.cpp.h 69686 2017-11-14 13:29:33Z vboxsync $ */
+/* $Id: bldprog-strtab-template.cpp.h 69694 2017-11-14 20:51:03Z vboxsync $ */
 /** @file
  * IPRT - Build Program - String Table Generator.
  */
@@ -1043,5 +1043,4 @@ static void BldProgStrTab_WriteStringTable(PBLDPROGSTRTAB pThis, FILE *pOut,
 #endif
 
 #endif /* __cplusplus && IN_RING3 */
-
 

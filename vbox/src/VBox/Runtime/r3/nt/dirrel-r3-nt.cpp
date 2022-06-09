@@ -1,4 +1,4 @@
-/* $Id: dirrel-r3-nt.cpp 69691 2017-11-14 15:27:52Z vboxsync $ */
+/* $Id: dirrel-r3-nt.cpp 69694 2017-11-14 20:51:03Z vboxsync $ */
 /** @file
  * IPRT - Directory relative base APIs, NT implementation
  */
@@ -556,5 +556,4 @@ RTDECL(int) RTDirRelSymlinkRead(PRTDIR hDir, const char *pszSymlink, char *pszTa
         rc = RTSymlinkRead(szPath, pszTarget, cbTarget, fRead);
     return rc;
 }
-
 
