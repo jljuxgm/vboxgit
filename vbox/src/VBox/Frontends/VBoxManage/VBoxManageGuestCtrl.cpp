@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 71815 2018-04-11 09:29:45Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 72006 2018-04-24 15:31:19Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1899,7 +1899,7 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
     {
         vrc = gctlPrintError(pCtx->pGuestSession, COM_IIDOF(IGuestSession));
     }
-    else
+    else if (pProgress.isNotNull())
     {
         if (pCtx->cVerbose)
             rc = showProgress(pProgress);
