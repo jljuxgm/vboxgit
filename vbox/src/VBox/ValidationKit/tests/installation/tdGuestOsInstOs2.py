@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstOs2.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: tdGuestOsInstOs2.py 69545 2017-11-01 14:32:04Z vboxsync $
 
 """
 VirtualBox Validation Kit - OS/2 install tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 69545 $"
 
 
 # Standard Python imports.
@@ -245,4 +245,15 @@ class tdGuestOsInstOs2(vbox.TestDriver):
         return False
 
 if __name__ == '__main__':
-    sys.exit(tdGuestOsInstOs2().main(sys.argv))
+    # sys.exit(tdGuestOsInstOs2().main(sys.argv);
+    # TEMPORARY hacking.
+    g_oDrv = tdGuestOsInstOs2();
+    g_iExitCode = g_oDrv.main(sys.argv);
+    if g_oDrv.fDoHeapChecks:
+        from testdriver import winbase;
+        winbase.checkProcessHeap();
+        del g_oDrv;
+        g_oDrv = None;
+        winbase.checkProcessHeap();
+    sys.exit(g_iExitCode);
+
