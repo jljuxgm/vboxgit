@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69319 2017-10-25 15:08:42Z vboxsync $
+# $Id: .scm-settings 69320 2017-10-25 15:09:45Z vboxsync $
 ## @file
 # Source code massager settings for haiku guest additions.
 #
@@ -17,6 +17,4 @@
 
 
 /VBoxTray/VBoxTray.rdef: --treat-as .rc
-
-
 
