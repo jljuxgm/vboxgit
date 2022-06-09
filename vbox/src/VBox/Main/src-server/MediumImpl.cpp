@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 71055 2018-02-19 13:49:24Z vboxsync $ */
+/* $Id: MediumImpl.cpp 71097 2018-02-22 09:43:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3041,6 +3041,15 @@ HRESULT Medium::setLocation(const com::Utf8Str &aLocation, ComPtr<IProgress> &aP
                 /* Set the target extension like on the source. Any conversions are prohibited */
                 suffix.toLower();
                 destPath.stripSuffix().append('.').append(suffix);
+            }
+
+            /* Simple check for existence */
+            if (RTFileExists(destPath.c_str()))
+            {
+                rc = setError(VBOX_E_FILE_ERROR,
+                              tr("The given path '%s' is an existing file. Delete or rename this file."),
+                              destPath.c_str());
+                throw rc;
             }
 
             if (!i_isMediumFormatFile())
