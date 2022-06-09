@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 70356 2017-12-27 09:06:57Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 70357 2017-12-27 09:11:51Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -67,7 +67,8 @@
 /** Macro for checking and returning from the using function for
  * \#VMEXIT intercepts that maybe caused during delivering of another
  * event in the guest. */
-#define HMSVM_CHECK_EXIT_DUE_TO_EVENT_DELIVERY() \
+#ifdef VBOX_WITH_NESTED_HWVIRT
+# define HMSVM_CHECK_EXIT_DUE_TO_EVENT_DELIVERY() \
     do \
     { \
         int rc = hmR0SvmCheckExitDueToEventDelivery(pVCpu, pCtx, pSvmTransient); \
@@ -79,6 +80,17 @@
         else \
             return rc; \
     } while (0)
+#else
+# define HMSVM_CHECK_EXIT_DUE_TO_EVENT_DELIVERY() \
+    do \
+    { \
+        int rc = hmR0SvmCheckExitDueToEventDelivery(pVCpu, pCtx, pSvmTransient); \
+        if (RT_LIKELY(rc == VINF_SUCCESS))        { /* continue #VMEXIT handling */ } \
+        else if (     rc == VINF_HM_DOUBLE_FAULT) { return VINF_SUCCESS;            } \
+        else \
+            return rc; \
+    } while (0)
+#endif
 
 /**
  * Updates interrupt shadow for the current RIP.
