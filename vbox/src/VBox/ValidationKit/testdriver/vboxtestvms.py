@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 70686 2018-01-22 19:28:51Z vboxsync $
+# $Id: vboxtestvms.py 70695 2018-01-22 23:17:53Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70686 $"
+__version__ = "$Revision: 70695 $"
 
 # Standard Python imports.
 import copy;
@@ -614,12 +614,12 @@ class TestVmSet(object):
         """
         reporter.log('');
         reporter.log('Test VM selection and general config options:');
-        reporter.log('  --virt-modes   <m1[:m2[:]]');
+        reporter.log('  --virt-modes   <m1[:m2[:...]]>');
         reporter.log('      Default: %s' % (':'.join(self.asVirtModesDef)));
-        reporter.log('  --skip-virt-modes <m1[:m2[:]]');
+        reporter.log('  --skip-virt-modes <m1[:m2[:...]]>');
         reporter.log('      Use this to avoid hwvirt or hwvirt-np when not supported by the host');
         reporter.log('      since we cannot detect it using the main API. Use after --virt-modes.');
-        reporter.log('  --cpu-counts   <c1[:c2[:]]');
+        reporter.log('  --cpu-counts   <c1[:c2[:...]]>');
         reporter.log('      Default: %s' % (':'.join(str(c) for c in self.acCpusDef)));
         reporter.log('  --test-vms     <vm1[:vm2[:...]]>');
         reporter.log('      Test the specified VMs in the given order. Use this to change');
@@ -629,7 +629,7 @@ class TestVmSet(object):
         reporter.log('      Skip the specified VMs when testing.');
         reporter.log('  --snapshot-restore-current');
         reporter.log('      Restores the current snapshot and resumes execution.');
-        reporter.log('  --paravirt-modes   <pv1[:pv2[:]]>');
+        reporter.log('  --paravirt-modes   <pv1[:pv2[:...]]>');
         reporter.log('      Set of paravirtualized providers (modes) to tests. Intersected with what the test VM supports.');
         reporter.log('      Default is the first PV mode the test VMs support, generally same as "legacy".');
         ## @todo Add more options for controlling individual VMs.
@@ -955,7 +955,13 @@ class TestVmManager(object):
         #       sHddControllerType = 'SATA Controller', sChipsetType = 'ich9'),
 
         # NT 3.x
-        TestVm('tst-nt310',                 kfGrpSmoke,           sHd = '5.2/great-old-ones/t-nt310/t-nt310.vdi',
+        TestVm('tst-nt310',                 kfGrpAncient,               sHd = '5.2/great-old-ones/t-nt310/t-nt310.vdi',
+               sKind = 'WindowsNT3x', acCpusSup = [1], sHddControllerType = 'BusLogic SCSI Controller',
+               sDvdControllerType = 'BusLogic SCSI Controller'),
+        TestVm('tst-nt350',                 kfGrpAncient,               sHd = '5.2/great-old-ones/t-nt350/t-nt350.vdi',
+               sKind = 'WindowsNT3x', acCpusSup = [1], sHddControllerType = 'BusLogic SCSI Controller',
+               sDvdControllerType = 'BusLogic SCSI Controller'),
+        TestVm('tst-nt351',                 kfGrpAncient,               sHd = '5.2/great-old-ones/t-nt350/t-nt350.vdi',
                sKind = 'WindowsNT3x', acCpusSup = [1], sHddControllerType = 'BusLogic SCSI Controller',
                sDvdControllerType = 'BusLogic SCSI Controller'),
 
