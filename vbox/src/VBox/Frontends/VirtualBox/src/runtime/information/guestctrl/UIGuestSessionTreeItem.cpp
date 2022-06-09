@@ -1,4 +1,4 @@
-/* $Id: UIGuestSessionTreeItem.cpp 71025 2018-02-15 14:11:16Z vboxsync $ */
+/* $Id: UIGuestSessionTreeItem.cpp 71037 2018-02-16 12:46:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestSessionTreeItem class implementation.
  */
@@ -21,7 +21,6 @@
 
 /* GUI includes: */
 # include "UIGuestSessionTreeItem.h"
-# include "UIGuestSessionsEventHandler.h"
 # include "VBoxGlobal.h"
 
 /* COM includes: */

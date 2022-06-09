@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 70899 2018-02-08 09:03:30Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 71037 2018-02-16 12:46:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -242,14 +242,16 @@ void UIVMInformationDialog::prepareTabWidget()
             m_pTabWidget->addTab(m_tabs.value(1), QString());
         }
 
-        UIInformationGuestSession *pGuestSessionWidget =
-            new UIInformationGuestSession(this, m_pMachineWindow->console());
-        if (pGuestSessionWidget)
+        if(m_pMachineWindow->console().isOk())
         {
-            m_tabs.insert(2, pGuestSessionWidget);
-            m_pTabWidget->addTab(m_tabs.value(2), QString());
+            UIInformationGuestSession *pGuestSessionWidget =
+                new UIInformationGuestSession(this, m_pMachineWindow->console().GetGuest());
+            if (pGuestSessionWidget)
+            {
+                m_tabs.insert(2, pGuestSessionWidget);
+                m_pTabWidget->addTab(m_tabs.value(2), QString());
+            }
         }
-
         /* Set Runtime Information tab as default: */
         m_pTabWidget->setCurrentIndex(1);
 
