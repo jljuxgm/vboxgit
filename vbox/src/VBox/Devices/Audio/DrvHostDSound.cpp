@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 68677 2017-09-06 11:14:16Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 68678 2017-09-06 11:15:29Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -2420,7 +2420,7 @@ static DECLCALLBACK(int) drvHostDSoundConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
 
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
-    HRESULT hr = CoInitializeEx(NULL, 0);
+    HRESULT hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
     if (FAILED(hr))
     {
         DSLOGREL(("DSound: CoInitializeEx failed with %Rhrc\n", hr));
