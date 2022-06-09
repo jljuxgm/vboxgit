@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71276 2018-03-08 15:28:52Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 71278 2018-03-08 15:54:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -995,10 +995,12 @@ bool UIGuestFileTable::createDirectory(const QString &path, const QString &direc
 
 void UIGuestFileTable::copyGuestToHost(const QString& hostDestinationPath)
 {
+    Q_UNUSED(hostDestinationPath);
 }
 
 void UIGuestFileTable::copyHostToGuest(const QStringList &hostSourcePathList)
 {
+    Q_UNUSED(hostSourcePathList);
 }
 
 /*********************************************************************************************************************************
