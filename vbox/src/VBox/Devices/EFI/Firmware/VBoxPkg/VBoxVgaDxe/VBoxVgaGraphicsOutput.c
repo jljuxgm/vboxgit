@@ -1,4 +1,4 @@
-/* $Id: VBoxVgaGraphicsOutput.c 62500 2016-07-22 19:06:59Z vboxsync $ */
+/* $Id: VBoxVgaGraphicsOutput.c 67352 2017-06-12 18:02:10Z vboxsync $ */
 /** @file
  * VBoxVgaGraphicsOutput.c
  */
@@ -443,7 +443,7 @@ VBoxVgaGraphicsOutputConstructor (
 {
   EFI_STATUS                   Status;
   EFI_GRAPHICS_OUTPUT_PROTOCOL *GraphicsOutput;
-  UINT32                        GopMode = 2;
+  UINT32                        GopMode = 2; /* 1024x768 */
 
   GraphicsOutput            = &Private->GraphicsOutput;
   GraphicsOutput->QueryMode = VBoxVgaGraphicsOutputQueryMode;
