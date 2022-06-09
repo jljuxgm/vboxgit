@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 67250 2017-06-02 15:39:58Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 67573 2017-06-23 08:59:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -2298,16 +2298,13 @@ void UIMediumManager::retranslateUi()
     setWindowTitle(tr("Virtual Media Manager"));
 }
 
-void UIMediumManager::prepareDialog()
+void UIMediumManager::configure()
 {
     /* Apply window icons: */
     setWindowIcon(UIIconPool::iconSetFull(":/diskimage_32px.png", ":/diskimage_16px.png"));
-
-    /* Apply language settings: */
-    retranslateUi();
 }
 
-void UIMediumManager::prepareWidget()
+void UIMediumManager::configureCentralWidget()
 {
     /* Create widget: */
     UIMediumManagerWidget *pWidget = new UIMediumManagerWidget(EmbedTo_Dialog, this);
@@ -2322,6 +2319,17 @@ void UIMediumManager::prepareWidget()
         /* Add into layout: */
         centralWidget()->layout()->addWidget(pWidget);
     }
+}
+
+void UIMediumManager::finalize()
+{
+    /* Apply language settings: */
+    retranslateUi();
+}
+
+UIMediumManagerWidget *UIMediumManager::widget()
+{
+    return qobject_cast<UIMediumManagerWidget*>(QIManagerDialog::widget());
 }
 
 #include "UIMediumManager.moc"

@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.h 67251 2017-06-02 15:42:28Z vboxsync $ */
+/* $Id: UIHostNetworkManager.h 67573 2017-06-23 08:59:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class declaration.
  */
@@ -196,10 +196,18 @@ protected:
 
     /** @name Prepare/cleanup cascade.
       * @{ */
-        /** Prepares dialog. */
-        void prepareDialog();
-        /** Prepares widget. */
-        void prepareWidget();
+        /** Configures all. */
+        virtual void configure() /* override */;
+        /** Configures central-widget. */
+        virtual void configureCentralWidget() /* override */;
+        /** Perform final preparations. */
+        virtual void finalize() /* override */;
+    /** @} */
+
+    /** @name Widget stuff.
+      * @{ */
+        /** Returns the widget. */
+        virtual UIHostNetworkManagerWidget *widget() /* override */;
     /** @} */
 
     /** Allow factory access to private/protected members: */

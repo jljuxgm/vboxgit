@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 67452 2017-06-16 15:45:36Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 67573 2017-06-23 08:59:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -1048,16 +1048,13 @@ void UIHostNetworkManager::retranslateUi()
     setWindowTitle(tr("Host Network Manager"));
 }
 
-void UIHostNetworkManager::prepareDialog()
+void UIHostNetworkManager::configure()
 {
     /* Apply window icons: */
     setWindowIcon(UIIconPool::iconSetFull(":/host_iface_manager_32px.png", ":/host_iface_manager_16px.png"));
-
-    /* Apply language settings: */
-    retranslateUi();
 }
 
-void UIHostNetworkManager::prepareWidget()
+void UIHostNetworkManager::configureCentralWidget()
 {
     /* Create widget: */
     UIHostNetworkManagerWidget *pWidget = new UIHostNetworkManagerWidget(EmbedTo_Dialog, this);
@@ -1072,5 +1069,16 @@ void UIHostNetworkManager::prepareWidget()
         /* Add into layout: */
         centralWidget()->layout()->addWidget(pWidget);
     }
+}
+
+void UIHostNetworkManager::finalize()
+{
+    /* Apply language settings: */
+    retranslateUi();
+}
+
+UIHostNetworkManagerWidget *UIHostNetworkManager::widget()
+{
+    return qobject_cast<UIHostNetworkManagerWidget*>(QIManagerDialog::widget());
 }
 
