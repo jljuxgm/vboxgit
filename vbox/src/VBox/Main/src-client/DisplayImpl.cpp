@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 68984 2017-10-04 14:24:57Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 68990 2017-10-04 15:17:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2536,7 +2536,7 @@ DECLCALLBACK(int) Display::i_videoRecConfigure(Display *pThis, PVIDEORECCFG pCfg
     AssertComRCReturn(rc, VERR_COM_UNEXPECTED);
     rc = pMachine->COMGETTER(VideoCaptureFPS)((ULONG *)&pCfg->Video.uFPS);
     AssertComRCReturn(rc, VERR_COM_UNEXPECTED);
-    rc = pMachine->COMGETTER(VideoCaptureFile)(&pCfg->File.strFile);
+    rc = pMachine->COMGETTER(VideoCaptureFile)(pCfg->File.strName.asOutParam());
     AssertComRCReturn(rc, VERR_COM_UNEXPECTED);
     rc = pMachine->COMGETTER(VideoCaptureMaxFileSize)((ULONG *)&pCfg->File.uMaxSizeMB);
     AssertComRCReturn(rc, VERR_COM_UNEXPECTED);
