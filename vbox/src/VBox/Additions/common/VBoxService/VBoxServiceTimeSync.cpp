@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 64300 2016-10-17 14:20:08Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 68557 2017-08-31 12:10:02Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -618,8 +618,6 @@ DECLCALLBACK(int) vgsvcTimeSyncWorker(bool volatile *pfShutdown)
     }
 
     vgsvcTimeSyncCancelAdjust();
-    RTSemEventMultiDestroy(g_TimeSyncEvent);
-    g_TimeSyncEvent = NIL_RTSEMEVENTMULTI;
     return rc;
 }
 
@@ -629,7 +627,8 @@ DECLCALLBACK(int) vgsvcTimeSyncWorker(bool volatile *pfShutdown)
  */
 static DECLCALLBACK(void) vgsvcTimeSyncStop(void)
 {
-    RTSemEventMultiSignal(g_TimeSyncEvent);
+    if (g_TimeSyncEvent != NIL_RTSEMEVENTMULTI)
+        RTSemEventMultiSignal(g_TimeSyncEvent);
 }
 
 
