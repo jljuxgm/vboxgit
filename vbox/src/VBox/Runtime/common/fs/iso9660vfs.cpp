@@ -1,4 +1,4 @@
-/* $Id: iso9660vfs.cpp 67612 2017-06-26 16:21:49Z vboxsync $ */
+/* $Id: iso9660vfs.cpp 67774 2017-07-04 12:01:16Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 Virtual Filesystem.
  */
@@ -1860,7 +1860,8 @@ static void rtFsIso9660DirShrd_LogContent(PRTFSISO9660DIRSHRD pThis)
             uint32_t offSysUse = RT_OFFSETOF(ISO9660DIRREC, achFileId[pDirRec->bFileIdLength]) + !(pDirRec->bFileIdLength & 1);
             if (offSysUse < pDirRec->cbDirRec)
             {
-                Log2(("ISO9660:       system use:\n%.*Rhxd\n", pDirRec->cbDirRec - offSysUse, (uint8_t *)pDirRec + offSysUse));
+                Log2(("ISO9660:       system use (%#x bytes):\n%.*Rhxd\n", pDirRec->cbDirRec - offSysUse,
+                      pDirRec->cbDirRec - offSysUse, (uint8_t *)pDirRec + offSysUse));
             }
 
             /* advance */
