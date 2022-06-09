@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 71824 2018-04-11 12:37:42Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.h 71847 2018-04-12 12:23:29Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -115,6 +115,8 @@ protected:
     /** Progress object for getting updated when running
      *  asynchronously. Optional. */
     ComObjPtr<Progress>     mProgress;
+    /** The guest's path style (depending on the guest OS type set). */
+    uint32_t                mfPathStyle;
 };
 
 /**
@@ -143,18 +145,21 @@ class GuestSessionCopyTask : public GuestSessionTask
 public:
 
     GuestSessionCopyTask(GuestSession *pSession)
-        : GuestSessionTask(pSession) { RT_ZERO(u); }
+        : GuestSessionTask(pSession)
+    {
+        RT_ZERO(u);
+    }
 
     virtual ~GuestSessionCopyTask() { }
 
 protected:
 
     /** Source to copy from. */
-    Utf8Str mSource;
+    Utf8Str  mSource;
     /** Destination to copy to. */
-    Utf8Str mDest;
+    Utf8Str  mDest;
     /** Filter (wildcard-style) when copying directories. */
-    Utf8Str mFilter;
+    Utf8Str  mFilter;
 
     union
     {
