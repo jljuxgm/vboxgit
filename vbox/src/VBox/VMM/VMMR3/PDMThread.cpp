@@ -1,4 +1,4 @@
-/* $Id: PDMThread.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PDMThread.cpp 69175 2017-10-23 18:01:55Z vboxsync $ */
 /** @file
  * PDM Thread - VM Thread Management.
  */
@@ -185,7 +185,7 @@ static int pdmR3ThreadInit(PVM pVM, PPPDMTHREAD ppThread, size_t cbStack, RTTHRE
         RTSemEventMultiDestroy(pThread->Internal.s.BlockEvent);
         pThread->Internal.s.BlockEvent = NIL_RTSEMEVENTMULTI;
     }
-    MMHyperFree(pVM, pThread);
+    MMR3HeapFree(pThread);
     *ppThread = NULL;
 
     return rc;
