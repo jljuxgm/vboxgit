@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 70918 2018-02-08 16:11:47Z vboxsync $ */
+/* $Id: HostImpl.cpp 72326 2018-05-24 18:56:44Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -390,6 +390,13 @@ HRESULT Host::init(VirtualBox *aParent)
         }
         else
             m->fRecheckVTSupported = true; /* Try again later when the driver is loaded. */
+    }
+
+    /* Check for NEM in root paritition (hyper-V / windows). */
+    if (!m->fVTSupported && SUPR3IsNemSupportedWhenNoVtxOrAmdV())
+    {
+        m->fVTSupported = m->fNestedPagingSupported = true;
+        m->fRecheckVTSupported = false;
     }
 
 #ifdef VBOX_WITH_CROGL

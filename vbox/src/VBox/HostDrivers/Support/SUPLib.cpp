@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 71198 2018-03-05 10:59:17Z vboxsync $ */
+/* $Id: SUPLib.cpp 72326 2018-05-24 18:56:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1702,6 +1702,16 @@ SUPR3DECL(int) SUPR3QueryVTCaps(uint32_t *pfCaps)
             *pfCaps = Req.u.Out.fCaps;
     }
     return rc;
+}
+
+
+SUPR3DECL(bool) SUPR3IsNemSupportedWhenNoVtxOrAmdV(void)
+{
+#ifdef RT_OS_WINDOWS
+    return suplibOsIsNemSupportedWhenNoVtxOrAmdV();
+#else
+    return false;
+#endif
 }
 
 
