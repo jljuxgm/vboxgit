@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 70000 2017-12-08 05:57:18Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 70019 2017-12-08 12:13:33Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -483,6 +483,7 @@ VMM_INT_DECL(bool) HMIsGuestSvmXcptInterceptSet(PVMCPU pVCpu, PCCPUMCTX pCtx, ui
  * interrupts.
  *
  * @returns true if it's ready, false otherwise.
+ * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   pCtx        The guest-CPU context.
  *
  * @remarks This function looks at the VMCB cache rather than directly at the
