@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 72357 2018-05-28 14:37:10Z vboxsync $ */
+/* $Id: UIMediumSelector.h 72359 2018-05-28 14:50:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -49,7 +49,7 @@ signals:
 
 public:
 
-    UIMediumSelector(KDeviceType deviceType, QWidget *pParent = 0, Qt::WindowFlags enmFlags = 0);
+    UIMediumSelector(KDeviceType deviceType, QWidget *pParent = 0);
 
 private slots:
 
@@ -74,6 +74,7 @@ private:
 
     QVBoxLayout  *m_pMainLayout;
     QITreeWidget *m_pTreeWidget;
+    KDeviceType   m_enmDeviceType;
 };
 
 #endif /* !___UIMediumSelector_h___ */
