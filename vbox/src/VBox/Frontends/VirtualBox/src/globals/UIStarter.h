@@ -1,4 +1,4 @@
-/* $Id: UIStarter.h 72360 2018-05-28 16:34:15Z vboxsync $ */
+/* $Id: UIStarter.h 72361 2018-05-28 16:39:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class declaration.
  */
@@ -32,11 +32,6 @@ class UIStarter : public QObject
     /** Destructs UI starter. */
     virtual ~UIStarter() /* override */;
 
-    /** Prepares everything. */
-    void prepare();
-    /** Cleanups everything. */
-    void cleanup();
-
 public:
 
     /** Returns the singleton UI starter instance. */
@@ -54,12 +49,16 @@ public:
 
 private slots:
 
+    /** Prepares everything. */
+    void prepare();
+
     /** Starts corresponding part of the UI. */
     void sltStartUI();
     /** Restarts corresponding part of the UI. */
     void sltRestartUI();
-    /** Destroys corresponding part of the UI. */
-    void sltDestroyUI();
+
+    /** Cleanups everything. */
+    void cleanup();
 
     /** Opens URLs in Selector UI. */
     void sltOpenURLs();
