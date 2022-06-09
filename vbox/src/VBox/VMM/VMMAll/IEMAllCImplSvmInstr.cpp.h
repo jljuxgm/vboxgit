@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 70001 2017-12-08 05:58:00Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 70057 2017-12-11 14:40:43Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -545,8 +545,6 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, uint8_t cbInstr
             || pVmcbCtrl->TLBCtrl.n.u8TLBFlush == SVM_TLB_FLUSH_SINGLE_CONTEXT_RETAIN_GLOBALS)
             PGMFlushTLB(pVCpu, pVmcbNstGst->u64CR3, true /* fGlobal */);
 #endif
-
-        /** @todo @bugref{7243}: SVM TSC offset, see tmCpuTickGetInternal. */
 
         /*
          * Copy the remaining guest state from the VMCB to the guest-CPU context.
