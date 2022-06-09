@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 71845 2018-04-12 10:19:15Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 71924 2018-04-19 13:56:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -25,9 +25,10 @@
 
 /* GUI includes: */
 # include "QIWidgetValidator.h"
+# include "VBoxGlobal.h"
 # include "UIConverter.h"
-# include "UIMachineSettingsGeneral.h"
 # include "UIErrorString.h"
+# include "UIMachineSettingsGeneral.h"
 # include "UIModalWindowManager.h"
 # include "UIProgressDialog.h"
 
