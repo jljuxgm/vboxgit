@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 71546 2018-03-28 15:43:50Z vboxsync $"
+# "$Id: tdMoveVM1.py 71547 2018-03-28 15:47:45Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71546 $"
+__version__ = "$Revision: 71547 $"
 
 # Standard Python imports.
 import os
@@ -376,8 +376,8 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
         #detach ISO image
         fRes = oSession.detachHd(sController, iPort, 0)
         if fRes is False:
-            reporter.log('5th scenario: Couldn\'t detach image from the controller %s 
-                         port %s device %s' % (sController, iPort, 0))
+            reporter.log('5th scenario: Couldn\'t detach image from the controller %s '
+                         'port %s device %s' % (sController, iPort, 0))
 
         fRes = oSession.saveSettings()
         if fRes is False:
