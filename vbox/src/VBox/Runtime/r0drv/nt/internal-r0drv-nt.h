@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 70341 2017-12-26 14:42:28Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 72639 2018-06-21 13:51:44Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -84,6 +84,7 @@ extern PFNKEDEREGISTERPROCESSORCHANGECALLBACK  g_pfnrtKeDeregisterProcessorChang
 extern decltype(KeSetImportanceDpc)           *g_pfnrtKeSetImportanceDpc;
 extern decltype(KeSetTargetProcessorDpc)      *g_pfnrtKeSetTargetProcessorDpc;
 extern decltype(KeInitializeTimerEx)          *g_pfnrtKeInitializeTimerEx;
+extern PFNKESHOULDYIELDPROCESSOR               g_pfnrtKeShouldYieldProcessor;
 extern decltype(MmProtectMdlSystemAddress)    *g_pfnrtMmProtectMdlSystemAddress;
 extern decltype(MmAllocatePagesForMdl)        *g_pfnrtMmAllocatePagesForMdl;
 extern decltype(MmFreePagesFromMdl)           *g_pfnrtMmFreePagesFromMdl;
