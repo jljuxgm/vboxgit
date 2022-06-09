@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 71213 2018-03-05 20:30:44Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 71215 2018-03-05 20:44:57Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1848,7 +1848,7 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
     }
 
     ComPtr<IProgress> pProgress;
-    HRESULT rc;
+    HRESULT rc = S_OK;
 
     for (unsigned long s = 0; s < vecSources.size(); s++)
     {
