@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 68485 2017-08-21 13:48:12Z vboxsync $ */
+/* $Id: ConsoleImpl.h 68798 2017-09-20 10:27:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -154,6 +154,7 @@ public:
 
     HRESULT i_updateMachineState(MachineState_T aMachineState);
     HRESULT i_getNominalState(MachineState_T &aNominalState);
+    Utf8Str i_getAudioAdapterDeviceName(IAudioAdapter *aAudioAdapter);
 
     // events from IInternalSessionControl
     HRESULT i_onNetworkAdapterChange(INetworkAdapter *aNetworkAdapter, BOOL changeAdapter);
