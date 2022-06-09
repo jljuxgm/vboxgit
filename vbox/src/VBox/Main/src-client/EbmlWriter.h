@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.h 68451 2017-08-17 19:54:52Z vboxsync $ */
+/* $Id: EbmlWriter.h 68796 2017-09-20 10:25:19Z vboxsync $ */
 /** @file
  * EbmlWriter.h - EBML writer + WebM container.
  */
@@ -96,7 +96,19 @@ public:
     virtual ~WebMWriter();
 
     /**
-     * Creates output file.
+     * Creates an output file using an already open file handle.
+     *
+     * @param   a_pszFilename   Name of the file the file handle points at.
+     * @param   a_phFile        Pointer to open file handle to use.
+     * @param   a_enmAudioCodec Audio codec to use.
+     * @param   a_enmVideoCodec Video codec to use.
+     *
+     * @returns VBox status code. */
+    int CreateEx(const char *a_pszFilename, PRTFILE a_phFile,
+                 WebMWriter::AudioCodec a_enmAudioCodec, WebMWriter::VideoCodec a_enmVideoCodec);
+
+    /**
+     * Creates an output file.
      *
      * @param   a_pszFilename   Name of the file to create.
      * @param   a_fOpen         File open mode of type RTFILE_O_.
