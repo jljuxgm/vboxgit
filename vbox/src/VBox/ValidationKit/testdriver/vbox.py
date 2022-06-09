@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 72315 2018-05-24 09:22:38Z vboxsync $
+# $Id: vbox.py 72379 2018-05-29 11:05:23Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72315 $"
+__version__ = "$Revision: 72379 $"
 
 
 # Standard Python imports.
@@ -3065,7 +3065,7 @@ class TestDriver(base.TestDriver):                                              
         Returns True / False.
         """
         sCpuDesc = self._getHostCpuDesc(fQuiet);
-        return sCpuDesc.startswith("AMD") or sCpuDesc == 'AuthenticAMD';
+        return 'AMD' in sCpuDesc or sCpuDesc == 'AuthenticAMD';
 
     def isHostCpuIntel(self, fQuiet = False):
         """
