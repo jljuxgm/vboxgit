@@ -1,4 +1,4 @@
-# $Id: Makefile 69255 2017-10-24 19:39:05Z vboxsync $
+# $Id: Makefile 69269 2017-10-25 10:15:56Z vboxsync $
 ## @file
 # Makefile for building the VirtualBox keyboard handler library.
 #
@@ -6,6 +6,7 @@
 # Note that for reasons of convenience, VirtualBox builds this library
 # from inside its own build system rather than using this file.
 
+#
 # Copyright (C) 2007-2010 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
