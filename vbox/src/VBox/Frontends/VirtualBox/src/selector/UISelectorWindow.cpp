@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 71632 2018-04-03 16:58:07Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 71633 2018-04-03 17:06:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -670,7 +670,7 @@ void UISelectorWindow::sltOpenMachineSettingsDialog(const QString &strCategoryRe
     actionPool()->action(UIActionIndexST_M_Machine_S_Settings)->setData(false);
 }
 
-void UISelectorWindow::sltOpenCLonemachinewizard()
+void UISelectorWindow::sltOpenCloneMachineWizard()
 {
     /* Get current item: */
     UIVMItem *pItem = currentItem();
