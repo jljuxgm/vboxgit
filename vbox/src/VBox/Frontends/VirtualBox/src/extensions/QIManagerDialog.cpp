@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 67581 2017-06-23 10:36:22Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 67631 2017-06-27 10:11:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIManagerDialog class implementation.
  */
@@ -139,16 +139,16 @@ void QIManagerDialog::prepareButtonBox()
     AssertPtrReturnVoid(m_pButtonBox);
     {
         /* Configure button-box: */
-#ifdef VBOX_WS_MAC
-        m_pButtonBox->setStandardButtons(QDialogButtonBox::Reset | QDialogButtonBox::Apply |  QDialogButtonBox::Close);
-#else
+#ifdef VBOX_WS_WIN
         m_pButtonBox->setStandardButtons(QDialogButtonBox::Reset | QDialogButtonBox::Save |  QDialogButtonBox::Close);
+#else
+        m_pButtonBox->setStandardButtons(QDialogButtonBox::Reset | QDialogButtonBox::Apply |  QDialogButtonBox::Close);
 #endif
         m_buttons[ButtonType_Reset] = m_pButtonBox->button(QDialogButtonBox::Reset);
-#ifdef VBOX_WS_MAC
-        m_buttons[ButtonType_Apply] = m_pButtonBox->button(QDialogButtonBox::Apply);
-#else
+#ifdef VBOX_WS_WIN
         m_buttons[ButtonType_Apply] = m_pButtonBox->button(QDialogButtonBox::Save);
+#else
+        m_buttons[ButtonType_Apply] = m_pButtonBox->button(QDialogButtonBox::Apply);
 #endif
         m_buttons[ButtonType_Close] = m_pButtonBox->button(QDialogButtonBox::Close);
         /* Assign shortcuts: */
