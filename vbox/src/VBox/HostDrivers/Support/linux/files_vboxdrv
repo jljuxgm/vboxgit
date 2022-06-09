@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 66424 2017-04-05 09:27:55Z vboxsync $
+# $Id: files_vboxdrv 67293 2017-06-08 11:50:14Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -108,6 +108,7 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Runtime/common/math/gcc/qdivrem.c=>math/gcc/qdivrem.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/math/gcc/quad.h=>math/gcc/quad.h \
     ${PATH_ROOT}/src/VBox/Runtime/common/math/gcc/udivdi3.c=>math/gcc/udivdi3.c \
+    ${PATH_ROOT}/src/VBox/Runtime/common/math/gcc/udivmoddi4.c=>math/gcc/udivmoddi4.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/math/gcc/umoddi3.c=>math/gcc/umoddi3.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/misc/RTAssertMsg1Weak.cpp=>common/misc/RTAssertMsg1Weak.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/misc/RTAssertMsg2.cpp=>common/misc/RTAssertMsg2.c \

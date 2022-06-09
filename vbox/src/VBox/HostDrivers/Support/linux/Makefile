@@ -1,4 +1,4 @@
-# $Id: Makefile 67063 2017-05-24 12:46:11Z vboxsync $
+# $Id: Makefile 67293 2017-06-08 11:50:14Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -162,6 +162,7 @@ OBJS += math/gcc/divdi3.o \
 	math/gcc/moddi3.o \
 	math/gcc/qdivrem.o \
 	math/gcc/udivdi3.o \
+	math/gcc/udivmoddi4.o \
 	math/gcc/divdi3.o \
 	math/gcc/umoddi3.o
 endif
