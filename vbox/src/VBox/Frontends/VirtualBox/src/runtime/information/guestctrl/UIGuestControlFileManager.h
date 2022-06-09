@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 71195 2018-03-05 10:37:56Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 71234 2018-03-06 10:52:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -63,6 +63,7 @@ private slots:
     void sltCreateSession(QString strUserName, QString strPassword);
     void sltCloseSession();
     void sltGuestSessionStateChanged(const CGuestSessionStateChangedEvent &cEvent);
+    void sltReceieveLogOutput(QString strOutput);
 
 private:
 
