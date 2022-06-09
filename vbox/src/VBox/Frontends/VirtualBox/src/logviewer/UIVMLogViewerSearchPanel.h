@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 70664 2018-01-22 07:09:07Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.h 70699 2018-01-23 10:05:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -28,7 +28,6 @@
 class QCheckBox;
 class QHBoxLayout;
 class QLabel;
-class UIMiniCancelButton;
 class UIRoundRectSegmentedButton;
 class UISearchField;
 class UIVMLogViewerWidget;
