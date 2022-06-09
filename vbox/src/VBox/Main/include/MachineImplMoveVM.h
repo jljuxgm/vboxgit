@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 71053 2018-02-19 13:35:01Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 71581 2018-03-30 10:38:27Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -36,27 +36,27 @@ enum VBoxFolder_t
 
 typedef struct
 {
+    bool                    fSnapshot;
     Utf8Str                 strBaseName;
     ComPtr<IMedium>         pMedium;
     uint32_t                uIdx;
     ULONG                   uWeight;
-    bool                    fSnapshot;
-} MEDIUMTASK;
+} MEDIUMTASKMOVE;
 
 typedef struct
 {
-    RTCList<MEDIUMTASK>     chain;
+    RTCList<MEDIUMTASKMOVE>     chain;
     DeviceType_T            devType;
     bool                    fCreateDiffs;
     bool                    fAttachLinked;
-} MEDIUMTASKCHAIN;
+} MEDIUMTASKCHAINMOVE;
 
 typedef struct
 {
     Guid                    snapshotUuid;
     Utf8Str                 strSaveStateFile;
     ULONG                   uWeight;
-} SAVESTATETASK;
+} SAVESTATETASKMOVE;
 
 struct fileList_t;
 
@@ -86,10 +86,10 @@ public:
     static DECLCALLBACK(int) copyFileProgress(unsigned uPercentage, void *pvUser);
     static void i_MoveVMThreadTask(MachineMoveVM* task);
 
-    RTCList<MEDIUMTASKCHAIN>    llMedias;
-    RTCList<SAVESTATETASK>      llSaveStateFiles;
-    std::map<Utf8Str, MEDIUMTASK>     finalMediumsMap;
-    std::map<Utf8Str, SAVESTATETASK>  finalSaveStateFilesMap;
+    RTCList<MEDIUMTASKCHAINMOVE>    llMedias;
+    RTCList<SAVESTATETASKMOVE>      llSaveStateFiles;
+    std::map<Utf8Str, MEDIUMTASKMOVE>     finalMediumsMap;
+    std::map<Utf8Str, SAVESTATETASKMOVE>  finalSaveStateFilesMap;
     std::map<VBoxFolder_t, Utf8Str> vmFolders;
 
     ComObjPtr<Machine>  m_pMachine;
@@ -110,16 +110,16 @@ public:
     HRESULT createMachineList(const ComPtr<ISnapshot> &pSnapshot, std::vector< ComObjPtr<Machine> > &aMachineList) const;
     inline HRESULT queryBaseName(const ComPtr<IMedium> &pMedium, Utf8Str &strBaseName) const;
     HRESULT queryMediasForAllStates(const std::vector<ComObjPtr<Machine> > &aMachineList);
-    void updateProgressStats(MEDIUMTASKCHAIN &mtc, ULONG &uCount, ULONG &uTotalWeight) const;
+    void updateProgressStats(MEDIUMTASKCHAINMOVE &mtc, ULONG &uCount, ULONG &uTotalWeight) const;
     HRESULT addSaveState(const ComObjPtr<Machine> &machine);
     void printStateFile(settings::SnapshotsList &snl);
     HRESULT getFilesList(const Utf8Str& strRootFolder, fileList_t &filesList);
     HRESULT getFolderSize(const Utf8Str& strRootFolder, uint64_t& size);
     HRESULT deleteFiles(const RTCList<Utf8Str>& listOfFiles);
-    HRESULT updatePathsToStateFiles(const std::map<Utf8Str, SAVESTATETASK>& listOfFiles,
+    HRESULT updatePathsToStateFiles(const std::map<Utf8Str, SAVESTATETASKMOVE>& listOfFiles,
                                     const Utf8Str& sourcePath, const Utf8Str& targetPath);
-    HRESULT moveAllDisks(const std::map<Utf8Str, MEDIUMTASK>& listOfDisks, const Utf8Str* strTargetFolder = NULL);
-    HRESULT restoreAllDisks(const std::map<Utf8Str, MEDIUMTASK>& listOfDisks);
+    HRESULT moveAllDisks(const std::map<Utf8Str, MEDIUMTASKMOVE>& listOfDisks, const Utf8Str* strTargetFolder = NULL);
+    HRESULT restoreAllDisks(const std::map<Utf8Str, MEDIUMTASKMOVE>& listOfDisks);
     bool isMediumTypeSupportedForMoving(const ComPtr<IMedium> &pMedium);
 };
 
