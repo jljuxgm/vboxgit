@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: PGMInternal.h 70954 2018-02-10 20:10:44Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -4194,7 +4194,7 @@ int             pgmHandlerPhysicalExCreate(PVM pVM, PGMPHYSHANDLERTYPE hType, RT
                                            RTRCPTR pvUserRC, R3PTRTYPE(const char *) pszDesc, PPGMPHYSHANDLER *ppPhysHandler);
 int             pgmHandlerPhysicalExDup(PVM pVM, PPGMPHYSHANDLER pPhysHandlerSrc, PPGMPHYSHANDLER *ppPhysHandler);
 int             pgmHandlerPhysicalExRegister(PVM pVM, PPGMPHYSHANDLER pPhysHandler, RTGCPHYS GCPhys, RTGCPHYS GCPhysLast);
-int             pgmHandlerPhysicalExDeregister(PVM pVM, PPGMPHYSHANDLER pPhysHandler);
+int             pgmHandlerPhysicalExDeregister(PVM pVM, PPGMPHYSHANDLER pPhysHandler, int fRestoreAsRAM);
 int             pgmHandlerPhysicalExDestroy(PVM pVM, PPGMPHYSHANDLER pHandler);
 void            pgmR3HandlerPhysicalUpdateAll(PVM pVM);
 bool            pgmHandlerPhysicalIsAll(PVM pVM, RTGCPHYS GCPhys);
