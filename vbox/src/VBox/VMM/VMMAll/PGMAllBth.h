@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: PGMAllBth.h 70977 2018-02-12 20:45:31Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3223,7 +3223,8 @@ static int PGM_BTH_NAME(SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RT
     Assert(!PdeDst.n.u1Present); /* We're only supposed to call SyncPT on PDE!P and conflicts.*/
 
 # if defined(PGM_WITH_LARGE_PAGES) && PGM_SHW_TYPE != PGM_TYPE_32BIT && PGM_SHW_TYPE != PGM_TYPE_PAE
-    if (BTH_IS_NP_ACTIVE(pVM))
+    if (    BTH_IS_NP_ACTIVE(pVM)
+        && !VM_IS_NEM_ENABLED(pVM)) /** @todo NEM: Large page support. */
     {
         /* Check if we allocated a big page before for this 2 MB range. */
         PPGMPAGE pPage;

@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PGMR0SharedPage.cpp 70977 2018-02-12 20:45:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Page Sharing, Ring-0.
  */
@@ -133,7 +133,7 @@ VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PGVM pGVM, VMCPUID idCpu, PGMMSHA
 
 # ifdef VBOX_STRICT /* check sum hack */
                         pPage->s.u2Unused0 = PageDesc.u32StrictChecksum        & 3;
-                        pPage->s.u2Unused1 = (PageDesc.u32StrictChecksum >> 8) & 3;
+                        //pPage->s.u2Unused1 = (PageDesc.u32StrictChecksum >> 8) & 3;
 # endif
                     }
                 }
