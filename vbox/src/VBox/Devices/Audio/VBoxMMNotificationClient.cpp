@@ -1,11 +1,11 @@
-/* $Id: VBoxMMNotificationClient.cpp 68749 2017-09-13 17:37:47Z vboxsync $ */
+/* $Id: VBoxMMNotificationClient.cpp 70470 2018-01-05 15:24:56Z vboxsync $ */
 /** @file
  * VBoxMMNotificationClient.cpp - Implementation of the IMMNotificationClient interface
  *                                to detect audio endpoint changes.
  */
 
 /*
- * Copyright (C) 2017 Oracle Corporation
+ * Copyright (C) 2017-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -63,6 +63,8 @@ HRESULT VBoxMMNotificationClient::Initialize(void)
         hr = m_pEnum->RegisterEndpointNotificationCallback(this);
         if (SUCCEEDED(hr))
         {
+            m_fRegisteredClient = true;
+
             hr = AttachToDefaultEndpoint();
         }
     }
