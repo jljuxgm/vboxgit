@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 63105 2016-08-06 16:20:00Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 68261 2017-08-02 21:45:09Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -185,7 +185,7 @@ DECLINLINE(const char*) vboxDispLogD3DRcType(D3DRESOURCETYPE enmType)
     }
 }
 
-#include "VBoxDispMpLogger.h"
+#include <VBoxDispMpLogger.h>
 
 VBOXDISPMPLOGGER_DECL(void) VBoxDispMpLoggerDumpD3DCAPS9(struct _D3DCAPS9 *pCaps);
 

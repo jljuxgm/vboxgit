@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 65381 2017-01-20 09:23:53Z vboxsync $
+# $Id: Makefile.kmk 68261 2017-08-02 21:45:09Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host OpenGL part
 #
@@ -109,7 +109,9 @@ VBoxOGLcrutil_DEFS       += CR_NO_GL_SYSTEM_PATH
 endif
 ifdef VBOX_WITH_CRHGSMI
 VBoxOGLcrutil_DEFS.win    += VBOX_WITH_CRHGSMI
-VBoxOGLcrutil_LIBS.win    += $(VBOX_PATH_ADDITIONS_LIB)/VBoxCrHgsmi$(VBOX_SUFF_LIB)
+VBoxOGLcrutil_LIBS.win    += \
+	$(VBOX_PATH_ADDITIONS_LIB)/VBoxWddmUmKmt$(VBOX_SUFF_LIB) \
+	$(VBOX_PATH_ADDITIONS_LIB)/VBoxCrHgsmi$(VBOX_SUFF_LIB)
 endif
 ifdef VBOX_WITH_WDDM
 VBoxOGLcrutil_DEFS.win    += VBOX_WITH_WDDM
@@ -142,7 +144,9 @@ VBoxOGLcrutil-x86_LIBS.win = \
 	$(PATH_SDK_$(VBOX_WINDDK)_LIB.x86)/dxguid.lib
 ifdef VBOX_WITH_CRHGSMI
 # VBOX_WITH_CRHGSMI define is inherited from VBoxOGLcrutil
-VBoxOGLcrutil-x86_LIBS.win    += $(VBOX_PATH_ADDITIONS_LIB)/VBoxCrHgsmi-x86$(VBOX_SUFF_LIB)
+VBoxOGLcrutil-x86_LIBS.win    += \
+	$(VBOX_PATH_ADDITIONS_LIB)/VBoxWddmUmKmt-x86$(VBOX_SUFF_LIB) \
+	$(VBOX_PATH_ADDITIONS_LIB)/VBoxCrHgsmi-x86$(VBOX_SUFF_LIB)
 endif
 VBoxOGLcrutil-x86_DEFS = $(VBoxOGLcrutil_DEFS) VBOX_WDDM_WOW64
 ifdef VBOX_WITH_WDDM

@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMpLogger.cpp 64186 2016-10-10 10:25:32Z vboxsync $ */
+/* $Id: VBoxDispMpLogger.cpp 68261 2017-08-02 21:45:09Z vboxsync $ */
 
 /** @file
  * VBox WDDM Display backdoor logger implementation
@@ -43,15 +43,15 @@
 #   else
 #       include <iprt/win/windows.h>
 #   endif
-#include "VBoxDispMpLogger.h"
+#include <VBoxDispMpLogger.h>
 #include <d3d9types.h>
 #include <D3dumddi.h>
 #include <d3dhal.h>
-#include "../../common/wddm/VBoxMPIf.h"
-#include "VBoxDispKmt.h"
+#include <../../../common/wddm/VBoxMPIf.h>
+#include <VBoxDispKmt.h>
 
 #define VBOX_VIDEO_LOG_NAME "VBoxDispMpLogger"
-#include <common/VBoxVideoLog.h>
+#include <../../../common/VBoxVideoLog.h>
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>

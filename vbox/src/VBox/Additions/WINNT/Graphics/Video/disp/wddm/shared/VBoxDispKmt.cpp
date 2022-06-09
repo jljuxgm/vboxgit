@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.cpp 63033 2016-08-05 11:19:40Z vboxsync $ */
+/* $Id: VBoxDispKmt.cpp 68261 2017-08-02 21:45:09Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User Mode Dll.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include "VBoxDispD3DBase.h"
-#include "VBoxDispKmt.h"
+#include <../VBoxDispD3DBase.h>
+#include <VBoxDispKmt.h>
 
 #include <iprt/assert.h>
 #include <iprt/log.h>
