@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 69556 2017-11-03 00:10:29Z vboxsync $
+# $Id: vboxapi.py 69557 2017-11-03 00:13:31Z vboxsync $
 """
 VirtualBox Python API Glue.
 """
@@ -25,7 +25,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69556 $"
+__version__ = "$Revision: 69557 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -661,8 +661,6 @@ class PlatformMSCOM(PlatformBase):
         return True
 
     def deinit(self):
-        import pythoncom
-
         for oHandle in self.aoHandles:
             if oHandle is not None:
                 oHandle.Close();
@@ -671,7 +669,10 @@ class PlatformMSCOM(PlatformBase):
         del self.oClient;
         self.oClient = None;
 
-        pythoncom.CoUninitialize()
+        # This non-sense doesn't pair up with any pythoncom.CoInitialize[Ex].
+        # See @bugref{9037}.
+        #import pythoncom
+        #pythoncom.CoUninitialize()
 
     def queryInterface(self, oIUnknown, sClassName):
         from win32com.client import CastTo
