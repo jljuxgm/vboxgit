@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 68393 2017-08-11 12:41:23Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 70535 2018-01-11 13:33:05Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -569,8 +569,8 @@ static DECLCALLBACK(void *) drvAudioVRDEQueryInterface(PPDMIBASE pInterface, con
 
 
 AudioVRDE::AudioVRDE(Console *pConsole)
-    : mpDrv(NULL),
-      mParent(pConsole)
+    : AudioDriver(pConsole)
+    , mpDrv(NULL)
 {
 }
 
@@ -584,6 +584,12 @@ AudioVRDE::~AudioVRDE(void)
     }
 }
 
+
+void AudioVRDE::configureDriver(PCFGMNODE pLunCfg)
+{
+    CFGMR3InsertInteger(pLunCfg, "Object", (uintptr_t)this);
+    CFGMR3InsertInteger(pLunCfg, "ObjectVRDPServer", (uintptr_t)mpConsole->i_consoleVRDPServer());
+}
 
 int AudioVRDE::onVRDEControl(bool fEnable, uint32_t uFlags)
 {
