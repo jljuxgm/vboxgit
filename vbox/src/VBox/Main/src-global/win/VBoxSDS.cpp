@@ -1,13 +1,10 @@
-/* $Id: VBoxSDS.cpp 71144 2018-02-27 22:45:00Z vboxsync $ */
+/* $Id: VBoxSDS.cpp 71159 2018-02-28 16:06:10Z vboxsync $ */
 /** @file
  * VBoxSDS - COM global service main entry (System Directory Service)
  */
 
  /*
- * Copyright(C) 2017 - 2018 Oracle Corporation
- *
- * Oracle Corporation confidential
- * All rights reserved
+ * Copyright (C) 2017-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
