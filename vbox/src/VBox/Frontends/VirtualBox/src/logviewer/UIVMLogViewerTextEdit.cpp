@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 71638 2018-04-04 05:11:10Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 71875 2018-04-17 14:00:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -194,14 +194,7 @@ void UIVMLogViewerTextEdit::prepareWidgets()
 
     setReadOnly(true);
 
-
-#if defined(RT_OS_SOLARIS)
-    /* Use system fixed-width font on Solaris hosts as the Courier family fonts don't render well. */
     QFont font = QFontDatabase::systemFont(QFontDatabase::FixedFont);
-#else
-    QFont font;
-    font.setFamily("Courier New,courier");
-#endif
     setFont(font);
 
     if (m_pLineNumberArea)
@@ -552,4 +545,3 @@ void UIVMLogViewerTextEdit::setCurrentVerticalScrollBarValue(int value)
 
 
 #include "UIVMLogViewerTextEdit.moc"
-
