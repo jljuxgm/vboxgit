@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 69704 2017-11-15 13:05:01Z vboxsync $ */
+/* $Id: DevPS2.cpp 71351 2018-03-15 13:26:21Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -962,7 +962,7 @@ static DECLCALLBACK(int) kbdConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
     /*
      * Validate and read the configuration.
      */
-    if (!CFGMR3AreValuesValid(pCfg, "GCEnabled\0R0Enabled\0"))
+    if (!CFGMR3AreValuesValid(pCfg, "GCEnabled\0R0Enabled\0KbdThrottleEnabled\0"))
         return VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES;
     rc = CFGMR3QueryBoolDef(pCfg, "GCEnabled", &fGCEnabled, true);
     if (RT_FAILURE(rc))
@@ -980,7 +980,7 @@ static DECLCALLBACK(int) kbdConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
     pThis->pDevInsR0 = PDMDEVINS_2_R0PTR(pDevIns);
     pThis->pDevInsRC = PDMDEVINS_2_RCPTR(pDevIns);
 
-    rc = PS2KConstruct(&pThis->Kbd, pDevIns, pThis, iInstance);
+    rc = PS2KConstruct(&pThis->Kbd, pDevIns, pThis, iInstance, pCfg);
     if (RT_FAILURE(rc))
         return rc;
 
