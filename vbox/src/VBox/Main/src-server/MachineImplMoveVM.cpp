@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 71315 2018-03-13 16:38:10Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 71376 2018-03-19 16:43:09Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -1007,10 +1007,12 @@ HRESULT MachineMoveVM::moveAllDisks(const std::map<Utf8Str, MEDIUMTASK>& listOfD
             rc = pMedium->COMGETTER(DeviceType)(&deviceType);
             if (FAILED(rc)) throw rc;
 
+            /* Drop lock early because IMedium::SetLocation needs to get the VirtualBox one. */
+            machineLock.release();
+
             ComPtr<IProgress> moveDiskProgress;
             rc = pMedium->SetLocation(bstrLocation.raw(), moveDiskProgress.asOutParam());
             /* Wait until the async process has finished. */
-            machineLock.release();
 
             rc = m_pProgress->WaitForAsyncProgressCompletion(moveDiskProgress);
 
