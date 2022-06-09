@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Trace.cpp 63753 2016-09-07 16:21:09Z vboxsync $ */
+/* $Id: DBGFR3Trace.cpp 67724 2017-06-30 10:40:14Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Tracing.
  */
@@ -438,7 +438,7 @@ static DECLCALLBACK(void) dbgfR3TraceInfo(PVM pVM, PCDBGFINFOHLP pHlp, const cha
 {
     RTTRACEBUF hTraceBuf = pVM->hTraceBufR3;
     if (hTraceBuf == NIL_RTTRACEBUF)
-        pHlp->pfnPrintf(pHlp, "Tracing is disable\n");
+        pHlp->pfnPrintf(pHlp, "Tracing is disabled\n");
     else
     {
         pHlp->pfnPrintf(pHlp, "Trace buffer %p - %u entries of %u bytes\n",
