@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 68222 2017-08-01 19:05:50Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 68239 2017-08-02 12:39:12Z vboxsync $ */
 /** @file
  * Implementeation of algorithms which read/parse/save scripts for unattended installation.
  */
@@ -564,6 +564,8 @@ HRESULT UnattendedScriptTemplate::getUnescapedReplacement(const char *pachPlaceh
         Assert(rValue[2] == '_');
         rValue.replace(2, 1, "-");
     }
+    else if (IS_PLACEHOLDER_MATCH("LANGUAGE"))
+        rValue = mpUnattended->i_getLanguage();
     else if (IS_PLACEHOLDER_MATCH("COUNTRY"))
         rValue = mpUnattended->i_getCountry();
     else if (IS_PLACEHOLDER_MATCH("HOSTNAME_FQDN"))
