@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 72484 2018-06-08 17:05:40Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 72488 2018-06-09 12:24:35Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -2134,6 +2134,8 @@ NEM_TMPL_STATIC int nemR0WinImportState(PGVM pGVM, PGVMCPU pGVCpu, PCPUMCTX pCtx
 
     /* Almost done, just update extrn flags and maybe change PGM mode. */
     pCtx->fExtrn &= ~fWhat;
+    if (!(pCtx->fExtrn & (CPUMCTX_EXTRN_ALL | (CPUMCTX_EXTRN_NEM_WIN_MASK & ~CPUMCTX_EXTRN_NEM_WIN_EVENT_INJECT))))
+        pCtx->fExtrn = 0;
 
     /* Typical. */
     if (!fMaybeChangedMode && !fFlushTlb && !fUpdateApicBase)

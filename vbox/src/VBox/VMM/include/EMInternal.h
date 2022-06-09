@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 72462 2018-06-06 14:24:04Z vboxsync $ */
+/* $Id: EMInternal.h 72488 2018-06-09 12:24:35Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -473,7 +473,7 @@ int     emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc);
 
 EMSTATE emR3Reschedule(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx);
 int     emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc);
-int     emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, int rc);
+VBOXSTRICTRC emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, VBOXSTRICTRC rc);
 
 int     emR3RawUpdateForceFlag(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc);
 int     emR3RawResumeHyper(PVM pVM, PVMCPU pVCpu);
