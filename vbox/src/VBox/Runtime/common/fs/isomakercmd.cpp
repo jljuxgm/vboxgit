@@ -1,4 +1,4 @@
-/* $Id: isomakercmd.cpp 70398 2018-01-01 12:29:24Z vboxsync $ */
+/* $Id: isomakercmd.cpp 71014 2018-02-14 17:28:23Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker Command.
  */
@@ -2006,12 +2006,15 @@ static int rtFsIsoMakerCmdAddSomething(PRTFSISOMAKERCMDOPTS pOpts, const char *p
             if (   Parsed.aNames[i].cchPath > 0
                 && (Parsed.aNames[i].fNameSpecifiers & RTFSISOMAKERCMDNAME_MAJOR_MASK))
             {
+                /* Make sure we remove all objects by this name. */
                 pszFirstNm = Parsed.aNames[i].szPath;
-                uint32_t idxObj = RTFsIsoMakerGetObjIdxForPath(pOpts->hIsoMaker,
-                                                               Parsed.aNames[i].fNameSpecifiers & RTFSISOMAKERCMDNAME_MAJOR_MASK,
-                                                               Parsed.aNames[i].szPath);
-                if (idxObj != UINT32_MAX)
+                for (;;)
                 {
+                    uint32_t idxObj = RTFsIsoMakerGetObjIdxForPath(pOpts->hIsoMaker,
+                                                                   Parsed.aNames[i].fNameSpecifiers & RTFSISOMAKERCMDNAME_MAJOR_MASK,
+                                                                   Parsed.aNames[i].szPath);
+                    if (idxObj == UINT32_MAX)
+                        break;
                     rc = RTFsIsoMakerObjRemove(pOpts->hIsoMaker, idxObj);
                     if (RT_FAILURE(rc))
                         return rtFsIsoMakerCmdErrorRc(pOpts, rc, "Failed to remove '%s': %Rrc", pszSpec, rc);
