@@ -1,10 +1,10 @@
-/* $Id: QIGraphicsView.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: QIGraphicsView.cpp 71897 2018-04-18 13:26:37Z vboxsync $ */
 /** @file
- * VBox Qt GUI - QIGraphicsView class implementation.
+ * VBox Qt GUI - Qt extensions: QIGraphicsView class implementation.
  */
 
 /*
- * Copyright (C) 2015-2017 Oracle Corporation
+ * Copyright (C) 2015-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -30,6 +30,7 @@
 # include "iprt/assert.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 QIGraphicsView::QIGraphicsView(QWidget *pParent /* = 0 */)
     : QGraphicsView(pParent)
@@ -106,4 +107,3 @@ bool QIGraphicsView::event(QEvent *pEvent)
     /* Call to base-class: */
     return QGraphicsView::event(pEvent);
 }
-
