@@ -1,10 +1,10 @@
-/* $Id: QIComboBox.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: QIComboBox.cpp 71865 2018-04-16 14:11:11Z vboxsync $ */
 /** @file
- * VBox Qt GUI - VirtualBox Qt extensions: QIComboBox class implementation.
+ * VBox Qt GUI - Qt extensions: QIComboBox class implementation.
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -335,4 +335,3 @@ void QIComboBox::prepare()
         }
     }
 }
-

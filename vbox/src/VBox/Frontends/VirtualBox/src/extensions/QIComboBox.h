@@ -1,10 +1,10 @@
-/* $Id: QIComboBox.h 71509 2018-03-26 12:16:37Z vboxsync $ */
+/* $Id: QIComboBox.h 71865 2018-04-16 14:11:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -21,9 +21,11 @@
 /* Qt includes: */
 #include <QComboBox>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
 
 /** QWidget subclass extending standard functionality of QComboBox. */
-class QIComboBox : public QWidget
+class SHARED_LIBRARY_STUFF QIComboBox : public QWidget
 {
     Q_OBJECT;
 
