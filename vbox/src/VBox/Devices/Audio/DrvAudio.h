@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 70013 2017-12-08 11:52:00Z vboxsync $ */
+/* $Id: DrvAudio.h 70639 2018-01-19 12:03:12Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -92,6 +92,8 @@ typedef struct DRVAUDIO
     PPDMDRVINS              pDrvIns;
     /** Pointer to audio driver below us. */
     PPDMIHOSTAUDIO          pHostDrvAudio;
+    /** Pointer to CFGM configuration node of this driver. */
+    PCFGMNODE               pCFGMNode;
     /** List of host input/output audio streams. */
     RTLISTANCHOR            lstHstStreams;
     /** List of guest input/output audio streams. */
