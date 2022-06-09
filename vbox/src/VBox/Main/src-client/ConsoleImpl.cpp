@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 68798 2017-09-20 10:27:16Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 68800 2017-09-20 10:38:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5502,9 +5502,9 @@ HRESULT Console::i_onVideoCaptureChange()
             int vrc = mDisplay->i_videoCaptureInvalidate();
             if (RT_SUCCESS(vrc))
             {
+# ifdef VBOX_WITH_AUDIO_VIDEOREC
                 VIDEORECFEATURES fFeatures = mDisplay->i_videoCaptureGetEnabled();
 
-# ifdef VBOX_WITH_AUDIO_VIDEOREC
                 ComPtr<IAudioAdapter> audioAdapter;
                 rc = mMachine->COMGETTER(AudioAdapter)(audioAdapter.asOutParam());
                 AssertComRC(rc);
