@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68057 2017-07-20 10:38:12Z vboxsync $
+# $Id: Makefile.kmk 68062 2017-07-20 11:05:15Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -702,7 +702,7 @@ if 1
 endif
 ifdef VBOX_UNATTENDED_TEMPLATES
 # Unattended installation template scripts.
-	$(MKDIR) -p -m 0755 -- $(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/UnattendedTemplates)
+	$(MKDIR) -p -m 0755 -- $(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/UnattendedTemplates
 	$(foreach file, $(VBOX_UNATTENDED_TEMPLATES) \
 		,$(INSTALL) -m 0655 $(VBOX_PATH_DIST)/VirtualBox.app/Contents/MacOS/UnattendedTemplates/$(file) \
 			$(VBOX_PATH_VBOX_APP_TMP)/Contents/MacOS/UnattendedTemplates/$(file)$(NLTAB))
