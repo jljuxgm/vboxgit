@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68291 2017-08-03 18:28:46Z vboxsync $
+# $Id: Config.kmk 68374 2017-08-10 14:56:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -350,7 +350,7 @@ VBOX_WITH_DOCS = 1
 # Include documentation in the package
 VBOX_WITH_DOCS_PACKING = 1
 # Include CHM when building docs (unset in LocalConfig.kmk to suppress CHM)
-ifn1of ($(KBUILD_TARGET), linux)
+if1of ($(KBUILD_TARGET), win)
  VBOX_WITH_DOCS_CHM = 1
 endif
 # By default only include translations in documentation-only builds
@@ -7013,7 +7013,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68291 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68374 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
