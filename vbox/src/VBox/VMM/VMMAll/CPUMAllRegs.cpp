@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 67524 2017-06-21 07:46:54Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 67696 2017-06-29 12:40:49Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2559,7 +2559,7 @@ VMM_INT_DECL(bool) CPUMCanSvmNstGstTakePhysIntr(PCCPUMCTX pCtx)
 
     PCSVMVMCBCTRL pVmcbCtrl = &pCtx->hwvirt.svm.VmcbCtrl;
     X86EFLAGS fEFlags;
-    if (!pVmcbCtrl->IntCtrl.n.u1VIntrMasking)
+    if (pVmcbCtrl->IntCtrl.n.u1VIntrMasking)
         fEFlags.u = pCtx->hwvirt.svm.HostState.rflags.u;
     else
         fEFlags.u = pCtx->eflags.u;
