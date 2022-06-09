@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 71517 2018-03-26 15:50:44Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 71518 2018-03-26 16:11:16Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2521,9 +2521,8 @@ int GuestProcessTool::exitCodeToRc(const char *pszTool, int32_t iExitCode)
         }
     }
 
-#ifdef DEBUG_andy
-    AssertMsgFailed(("Exit code %d for tool '%s' not handled\n", iExitCode, pszTool));
-#endif
+    LogFunc(("Warning: Exit code %d not handled for tool '%s', returning VERR_GENERAL_FAILURE\n", iExitCode, pszTool));
+
     if (iExitCode == RTEXITCODE_SYNTAX)
         return VERR_INTERNAL_ERROR_5;
     return VERR_GENERAL_FAILURE;
