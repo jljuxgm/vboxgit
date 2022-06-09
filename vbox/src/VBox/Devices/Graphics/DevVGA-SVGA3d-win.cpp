@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 69905 2017-12-02 09:27:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 69922 2017-12-04 18:24:57Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2928,8 +2928,10 @@ int vmsvga3dContextDestroy(PVGASTATE pThis, uint32_t cid)
                 memcpy(face, pSurface->faces, sizeof(pSurface->faces));
 
                 /* Recreate the surface with the original settings; destroys the contents, but that seems fairly safe since the context is also destroyed. */
+#ifdef DEBUG_sunlover
                 /** @todo not safe with shared objects */
                 Assert(pSurface->pSharedObjectTree == NULL);
+#endif
 
                 rc = vmsvga3dSurfaceDestroy(pThis, sid);
                 AssertRC(rc);
@@ -5991,6 +5993,18 @@ int vmsvga3dDrawPrimitives(PVGASTATE pThis, uint32_t cid, uint32_t numVertexDecl
         /* Make sure we can track drawing usage of active render targets and textures. */
         vmsvga3dContextTrackUsage(pThis, pContext);
     }
+
+#if 0
+    /* Dump render target to a bitmap. */
+    if (pContext->state.aRenderTargets[SVGA3D_RT_COLOR0] != SVGA3D_INVALID_ID)
+    {
+        vmsvga3dUpdateHeapBuffersForSurfaces(pThis, pContext->state.aRenderTargets[SVGA3D_RT_COLOR0]);
+        PVMSVGA3DSURFACE pSurface;
+        int rc2 = vmsvga3dSurfaceFromSid(pState, pContext->state.aRenderTargets[SVGA3D_RT_COLOR0], &pSurface);
+        if (RT_SUCCESS(rc2))
+            vmsvga3dInfoSurfaceToBitmap(NULL, pSurface, "bmp", "rt", "-post");
+    }
+#endif
 
     return rc;
 }

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 69163 2017-10-23 11:54:35Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 69922 2017-12-04 18:24:57Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -120,7 +120,7 @@ int vmsvga3dSendThreadMessage(RTTHREAD pWindowThread, RTSEMEVENT WndRequestSem, 
 
 void vmsvga3dUpdateHeapBuffersForSurfaces(PVGASTATE pThis, uint32_t sid);
 void vmsvga3dInfoContextWorker(PVGASTATE pThis, PCDBGFINFOHLP pHlp, uint32_t cid, bool fVerbose);
-void vmsvga3dInfoSurfaceWorker(PVGASTATE pThis, PCDBGFINFOHLP pHlp, uint32_t sid, bool fVerbose, uint32_t cxAscii, bool fInvY);
+void vmsvga3dInfoSurfaceWorker(PVGASTATE pThis, PCDBGFINFOHLP pHlp, uint32_t sid, bool fVerbose, uint32_t cxAscii, bool fInvY, const char *pszBitmapPath);
 
 
 /* DevVGA-SVGA3d-shared.cpp: */

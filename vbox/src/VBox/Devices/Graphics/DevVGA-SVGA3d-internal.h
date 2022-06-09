@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 69905 2017-12-02 09:27:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 69922 2017-12-04 18:24:57Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1225,6 +1225,9 @@ int vmsvga3dOcclusionQueryDelete(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pContex
 int vmsvga3dOcclusionQueryBegin(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pContext);
 int vmsvga3dOcclusionQueryEnd(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pContext);
 int vmsvga3dOcclusionQueryGetData(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pContext, uint32_t *pu32Pixels);
+
+void vmsvga3dInfoSurfaceToBitmap(PCDBGFINFOHLP pHlp, PVMSVGA3DSURFACE pSurface,
+                                 const char *pszPath, const char *pszNamePrefix, const char *pszNameSuffix);
 
 #endif
 
