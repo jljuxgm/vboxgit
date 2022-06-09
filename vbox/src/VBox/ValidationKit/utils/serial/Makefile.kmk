@@ -1,10 +1,10 @@
 # $Id: Makefile.kmk 69985 2017-12-07 15:46:13Z vboxsync $
 ## @file
-# VirtualBox Validation Kit - Utilities.
+# VirtualBox Validation Kit - Serial port tests.
 #
 
 #
-# Copyright (C) 2010-2017 Oracle Corporation
+# Copyright (C) 2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -24,43 +24,16 @@
 # terms and conditions of either the GPL or the CDDL or both.
 #
 
-SUB_DEPTH = ../../../..
+SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 #
-# Include sub-makefiles.
+# Serial port testing utility.
 #
-include $(PATH_SUB_CURRENT)/TestExecServ/Makefile.kmk
-include $(PATH_SUB_CURRENT)/cpu/Makefile.kmk
-include $(PATH_SUB_CURRENT)/misc/Makefile.kmk
-include $(PATH_SUB_CURRENT)/network/Makefile.kmk
-include $(PATH_SUB_CURRENT)/serial/Makefile.kmk
-ifeq ($(KBUILD_TARGET),win)
- include $(PATH_SUB_CURRENT)/nt/Makefile.kmk
-endif
-ifeq ($(KBUILD_TARGET),linux)
- include $(PATH_SUB_CURRENT)/usb/Makefile.kmk
-endif
+PROGRAMS += SerialTest
+SerialTest_TEMPLATE = VBoxValidationKitR3
+SerialTest_SOURCES  = SerialTest.cpp
 
-ifdef VBOX_WITH_AUDIO_VALIDATIONKIT
- include $(PATH_SUB_CURRENT)/audio/Makefile.kmk
-endif
-
-#
-# On OS/2 the binaries requires the libc DLLs
-# (no official static linking support).
-#
-INSTALLS.os2 += ValidationKitOs2LibC
-ValidationKitOs2LibC_TEMPLATE = VBoxValidationKitR3
-ValidationKitOs2LibC_SOURCES = \
-	$(KBUILD_BIN_PATH)/libc06.dll \
-	$(KBUILD_BIN_PATH)/libc061.dll \
-	$(KBUILD_BIN_PATH)/libc062.dll \
-	$(KBUILD_BIN_PATH)/libc063.dll \
-	$(KBUILD_BIN_PATH)/libc064.dll \
-	$(KBUILD_BIN_PATH)/libc065.dll \
-	$(KBUILD_BIN_PATH)/libc066.dll
-
-
+$(evalcall def_vbox_validationkit_process_python_sources)
 include $(FILE_KBUILD_SUB_FOOTER)
 
