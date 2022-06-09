@@ -1,4 +1,4 @@
-/* $Id: time.cpp 72144 2018-05-07 15:02:01Z vboxsync $ */
+/* $Id: time.cpp 72150 2018-05-07 15:57:55Z vboxsync $ */
 /** @file
  * IPRT - Time.
  */
@@ -417,7 +417,7 @@ RTDECL(PRTTIMESPEC) RTTimeImplode(PRTTIMESPEC pTimeSpec, PCRTTIME pTime)
     AssertMsgReturn(pTime->i32Year <= RTTIME_MAX_YEAR && pTime->i32Year >= RTTIME_MIN_YEAR, ("%RI32\n", pTime->i32Year), NULL);
 
     RTTIME TimeUTC;
-    if ((pTime->fFlags & RTTIME_FLAGS_TYPE_MASK) != RTTIME_FLAGS_TYPE_UTC)
+    if ((pTime->fFlags & RTTIME_FLAGS_TYPE_MASK) == RTTIME_FLAGS_TYPE_LOCAL)
     {
         TimeUTC = *pTime;
         pTime = rtTimeConvertToZulu(&TimeUTC);
