@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 70890 2018-02-07 14:05:43Z vboxsync $ */
+/* $Id: dir-posix.cpp 70892 2018-02-07 14:08:47Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -277,7 +277,7 @@ int rtDirNativeOpen(PRTDIRINTERNAL pDir, char *pszPathBuf, uintptr_t hRelativeDi
             { /* likely */ }
             else
             {
-                pfnFdOpenDir = (PFNFDOPENDIR)dlsym(RTLD_DEFAULT, "fdopendir");
+                pfnFdOpenDir = (PFNFDOPENDIR)(uintptr_t)dlsym(RTLD_DEFAULT, "fdopendir");
                 s_pfnFdOpenDir = pfnFdOpenDir;
                 ASMAtomicWriteBool(&s_fInitalized, true);
             }
