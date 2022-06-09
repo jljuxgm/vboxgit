@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.cpp 65541 2017-01-31 13:44:29Z vboxsync $ */
+/* $Id: EbmlWriter.cpp 67777 2017-07-04 13:46:51Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container handling.
  */
@@ -192,7 +192,7 @@ public:
 
         u.f = value;
 
-        for (int8_t i = 3; i >= 0; i--) /* Converts values to big endian. */
+        for (int i = 3; i >= 0; i--) /* Converts values to big endian. */
             write(&u.u8[i], 1);
 
         return *this;
