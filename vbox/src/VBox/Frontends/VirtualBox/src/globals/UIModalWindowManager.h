@@ -1,4 +1,4 @@
-/* $Id: UIModalWindowManager.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIModalWindowManager.h 69003 2017-10-06 13:22:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class declaration.
  */
@@ -29,6 +29,11 @@
 class UIModalWindowManager : public QObject
 {
     Q_OBJECT;
+
+signals:
+
+    /** Notifies about stack changed. */
+    void sigStackChanged();
 
 public:
 
