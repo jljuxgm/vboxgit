@@ -1,4 +1,4 @@
-/* $Id: timezoneinfo.cpp 68107 2017-07-25 14:06:30Z vboxsync $ */
+/* $Id: timezoneinfo.cpp 68116 2017-07-26 09:03:26Z vboxsync $ */
 /** @file
  * IPRT - Time zone mapping info.
  */
@@ -1141,7 +1141,7 @@ RTDECL(PCRTTIMEZONEINFO) RTTimeZoneGetInfoByWindowsName(const char *pszName)
     {
         PCRTTIMEZONEINFO pZone = &g_aTimeZones[g_aidxWinTimeZones[i]];
         if (   pZone->cchWindowsName == cchName
-            && RTStrICmpAscii(pszName, g_aTimeZones[i].pszWindowsName) == 0)
+            && RTStrICmpAscii(pszName, pZone->pszWindowsName) == 0)
             return pZone;
     }
     return NULL;
