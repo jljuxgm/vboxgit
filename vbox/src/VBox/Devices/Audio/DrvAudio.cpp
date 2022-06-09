@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 68485 2017-08-21 13:48:12Z vboxsync $ */
+/* $Id: DrvAudio.cpp 68486 2017-08-21 13:56:07Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2719,7 +2719,7 @@ static DECLCALLBACK(int) drvAudioEnable(PPDMIAUDIOCONNECTOR pInterface, PDMAUDIO
  */
 static DECLCALLBACK(bool) drvAudioIsEnabled(PPDMIAUDIOCONNECTOR pInterface, PDMAUDIODIR enmDir)
 {
-    AssertPtrReturn(pInterface, VERR_INVALID_POINTER);
+    AssertPtrReturn(pInterface, false);
 
     PDRVAUDIO pThis = PDMIAUDIOCONNECTOR_2_DRVAUDIO(pInterface);
 
@@ -2733,7 +2733,7 @@ static DECLCALLBACK(bool) drvAudioIsEnabled(PPDMIAUDIOCONNECTOR pInterface, PDMA
     else if (enmDir == PDMAUDIODIR_OUT)
         pfEnabled = &pThis->Out.fEnabled;
     else
-        AssertFailedReturn(VERR_INVALID_PARAMETER);
+        AssertFailedReturn(false);
 
     const bool fIsEnabled = *pfEnabled;
 
