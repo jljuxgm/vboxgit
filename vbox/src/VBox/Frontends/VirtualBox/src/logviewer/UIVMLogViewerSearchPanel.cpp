@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 70591 2018-01-15 13:50:29Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 70645 2018-01-19 12:27:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -73,11 +73,6 @@ void UIVMLogViewerSearchPanel::reset()
     m_iSearchPosition = 0;
     m_matchLocationVector.clear();
     m_iMatchCount = -1;
-    if (m_pHighlightAllCheckBox)
-    {
-        if (m_pHighlightAllCheckBox->checkState() == Qt::Checked)
-            m_pHighlightAllCheckBox->setCheckState(Qt::Unchecked);
-    }
     configureInfoLabels();
 }
 

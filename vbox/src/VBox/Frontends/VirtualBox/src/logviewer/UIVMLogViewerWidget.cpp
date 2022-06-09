@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 70617 2018-01-18 07:50:33Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 70645 2018-01-19 12:27:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -262,13 +262,9 @@ void UIVMLogViewerWidget::sltTabIndexChange(int tabIndex)
 {
     Q_UNUSED(tabIndex);
 
-    // if (m_iCurrentTabIndex == tabIndex)
-    //     return;
-
     resetHighlighthing();
     if (m_pSearchPanel)
         m_pSearchPanel->reset();
-    // m_iCurrentTabIndex = tabIndex;
 
     /* We keep a separate QVector<LogBookmark> for each log page: */
     if (m_pBookmarksPanel && currentLogPage())
@@ -849,11 +845,11 @@ void UIVMLogViewerWidget::createLogPage(const QString &strFileName, const QStrin
     pLogPage->setLogString(strLogContent);
     /* Set text edit since we want to display this text: */
     if (!noLogsToShow)
-        pLogPage->setTextEdit(strLogContent);
+        pLogPage->setTextEditText(strLogContent);
     /* In case there are some errors append the error text as html: */
     else
     {
-        pLogPage->setTextEditAsHtml(strLogContent);
+        pLogPage->setTextEditTextAsHtml(strLogContent);
         pLogPage->markForError();
     }
 }

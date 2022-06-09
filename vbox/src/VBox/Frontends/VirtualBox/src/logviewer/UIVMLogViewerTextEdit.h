@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 70598 2018-01-16 13:08:33Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.h 70645 2018-01-19 12:27:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -51,6 +51,11 @@ public:
 
     void setShowLineNumbers(bool bShowLineNumbers);
     void setWrapLines(bool bWrapLines);
+
+    /** currentVerticalScrollBarValue is used by UIVMLogPage to store and restore scrolled
+        plain text position as we switch from a tab to another */
+    int  currentVerticalScrollBarValue() const;
+    void setCurrentVerticalScrollBarValue(int value);
 
 protected:
 
