@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxsf 68628 2017-09-05 09:55:32Z vboxsync $
+# $Id: files_vboxsf 68629 2017-09-05 10:17:34Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -50,7 +50,6 @@ FILES_VBOXSF_NOBIN=" \
     ${PATH_ROOT}/include/VBox/shflsvc.h=>include/VBox/shflsvc.h \
     ${PATH_ROOT}/include/VBox/types.h=>include/VBox/types.h \
     ${PATH_ROOT}/include/VBox/VBoxGuest.h=>include/VBox/VBoxGuest.h \
-    ${PATH_ROOT}/include/VBox/VBoxGuest2.h=>include/VBox/VBoxGuest2.h \
     ${PATH_ROOT}/include/VBox/VBoxGuestLib.h=>include/VBox/VBoxGuestLib.h \
     ${PATH_ROOT}/include/VBox/VBoxGuestLibSharedFolders.h=>include/VBox/VBoxGuestLibSharedFolders.h \
     ${PATH_ROOT}/include/VBox/VBoxGuestMangling.h=>include/VBox/VBoxGuestMangling.h \
