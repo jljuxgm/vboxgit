@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-nt.cpp 70203 2017-12-18 14:59:05Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-nt.cpp 70204 2017-12-18 14:59:50Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, NT.
  */
@@ -625,7 +625,7 @@ RTR0DECL(int) RTR0DbgKrnlInfoQuerySymbol(RTDBGKRNLINFO hKrnlInfo, const char *ps
     {
         /*
          * Search both ntoskrnl and hal, may use MmGetSystemRoutineAddress as fallback.
-         * Note! MmGetSystemRoutineAddress was buggy in before XP SP2 according to Geoff Chappell.
+         * Note! MmGetSystemRoutineAddress was buggy before XP SP2 according to Geoff Chappell.
          */
         if (g_NtOsKrnlInfo.pbImageBase)
             rc = VINF_SUCCESS;
