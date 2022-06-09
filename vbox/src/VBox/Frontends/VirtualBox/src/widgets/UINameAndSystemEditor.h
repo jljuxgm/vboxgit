@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 72279 2018-05-22 09:22:09Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 72594 2018-06-18 12:46:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -55,8 +55,9 @@ signals:
 public:
 
     /** Constructs VM parameters editor passing @a pParent to the base-class.
-      * @param  fChooseFullPath  Brings whether we should propose to choose location. */
-    UINameAndSystemEditor(QWidget *pParent, bool fChooseLocation = false);
+      * @param  fChooseFullPath  Controls whether we should propose to choose location.
+      * @param  strGroupName  is used while setting the path and defaultPath of the path selection widget. */
+    UINameAndSystemEditor(QWidget *pParent, bool fChooseLocation = false, const QString &strGroupName = QString());
 
     /** Returns the VM name. */
     QString name() const;
@@ -128,6 +129,7 @@ private:
     QComboBox              *m_pComboFamily;
     /** Holds the VM OS type combo instance. */
     QComboBox              *m_pComboType;
+    QString                 m_strGroupName;
 };
 
 #endif /* !___UINameAndSystemEditor_h___ */
