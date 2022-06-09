@@ -1,4 +1,4 @@
-/* $Id: RTLs.cpp 66850 2017-05-09 14:29:29Z vboxsync $ */
+/* $Id: RTLs.cpp 67560 2017-06-22 13:49:03Z vboxsync $ */
 /** @file
  * IPRT - /bin/ls like utility for testing the VFS code.
  */
@@ -1052,6 +1052,7 @@ static RTEXITCODE rtCmdLsAddOne(PRTCMDLSCOLLECTION pCollection, const char *pszE
         pEntry->pszTarget = NULL; /** @todo symbolic links. */
         pEntry->cchName   = cchEntry;
         memcpy(pEntry->szName, pszEntry, cchEntry);
+        pEntry->szName[cchEntry] = '\0';
 
         pCollection->papEntries[pCollection->cEntries++] = pEntry;
         pCollection->cbTotalAllocated += pEntry->Info.cbAllocated;
