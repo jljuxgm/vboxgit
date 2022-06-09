@@ -1,10 +1,10 @@
-/* $Id: SessionImpl.h 68485 2017-08-21 13:48:12Z vboxsync $ */
+/* $Id: SessionImpl.h 68986 2017-10-04 14:37:38Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class definition
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -136,6 +136,7 @@ private:
     HRESULT resumeWithReason(Reason_T aReason);
     HRESULT saveStateWithReason(Reason_T aReason,
                                 const ComPtr<IProgress> &aProgress,
+                                const ComPtr<ISnapshot> &aSnapshot,
                                 const Utf8Str &aStateFilePath,
                                 BOOL aPauseVM,
                                 BOOL *aLeftPaused);

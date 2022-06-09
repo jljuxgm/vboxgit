@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 67885 2017-07-10 16:45:06Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 68986 2017-10-04 14:37:38Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1734,6 +1734,7 @@ void SessionMachine::i_takeSnapshotHandler(TakeSnapshotTask &task)
                 task.m_pProgress->i_setCancelCallback(i_takeSnapshotProgressCancelCallback, &task);
                 rc = task.m_pDirectControl->SaveStateWithReason(Reason_Snapshot,
                                                                 task.m_pProgress,
+                                                                task.m_pSnapshot,
                                                                 Bstr(task.m_strStateFilePath).raw(),
                                                                 task.m_fPause,
                                                                 &fSuspendedBySave);

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 68956 2017-10-02 16:29:32Z vboxsync $ */
+/* $Id: MachineImpl.cpp 68986 2017-10-04 14:37:38Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12983,7 +12983,7 @@ void SessionMachine::i_saveStateHandler(SaveStateTask &task)
                            tr("Trying to save state without a running VM"));
         alock.release();
         BOOL fSuspendedBySave;
-        rc = directControl->SaveStateWithReason(task.m_enmReason, task.m_pProgress, Bstr(task.m_strStateFilePath).raw(), task.m_machineStateBackup != MachineState_Paused, &fSuspendedBySave);
+        rc = directControl->SaveStateWithReason(task.m_enmReason, task.m_pProgress, NULL, Bstr(task.m_strStateFilePath).raw(), task.m_machineStateBackup != MachineState_Paused, &fSuspendedBySave);
         Assert(!fSuspendedBySave);
         alock.acquire();
 
