@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 71056 2018-02-19 14:00:51Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 71104 2018-02-22 14:14:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -277,8 +277,6 @@ namespace UIExtraDataDefs
         /** Holds whether 2D acceleration should use AYUV pixel format. */
         extern const char* GUI_Accelerate2D_PixformatAYUV;
 #endif /* VBOX_WITH_VIDEOHWACCEL */
-        /** Holds whether Runtime UI should use unscaled HiDPI output. */
-        extern const char* GUI_HiDPI_UnscaledOutput;
 #ifndef VBOX_WS_MAC
         /** Holds whether mini-toolbar is enabled for full and seamless screens. */
         extern const char* GUI_ShowMiniToolBar;

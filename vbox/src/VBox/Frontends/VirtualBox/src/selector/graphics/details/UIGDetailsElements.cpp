@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 71104 2018-02-22 14:14:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement[Name] classes implementation.
  */
@@ -418,22 +418,6 @@ void UIGDetailsUpdateTaskDisplay::run()
                 table << UITextTableLine(QApplication::translate("UIGDetails", "Scale-factor", "details (display)"),
                                          QString::number(dValue, 'f', 2));
         }
-
-#ifdef VBOX_WS_MAC
-        /* Get 'Unscaled HiDPI Video Output' mode value: */
-        const QString strUnscaledHiDPIMode = machine.GetExtraData(UIExtraDataDefs::GUI_HiDPI_UnscaledOutput);
-        {
-            /* Try to convert loaded data to bool: */
-            const bool fEnabled  = strUnscaledHiDPIMode.compare("true", Qt::CaseInsensitive) == 0 ||
-                                   strUnscaledHiDPIMode.compare("yes", Qt::CaseInsensitive) == 0 ||
-                                   strUnscaledHiDPIMode.compare("on", Qt::CaseInsensitive) == 0 ||
-                                   strUnscaledHiDPIMode == "1";
-            /* Append information: */
-            if (fEnabled)
-                table << UITextTableLine(QApplication::translate("UIGDetails", "Unscaled HiDPI Video Output", "details (display)"),
-                                         QApplication::translate("UIGDetails", "Enabled", "details (display/Unscaled HiDPI Video Output)"));
-        }
-#endif /* VBOX_WS_MAC */
 
         QStringList acceleration;
 #ifdef VBOX_WITH_VIDEOHWACCEL
