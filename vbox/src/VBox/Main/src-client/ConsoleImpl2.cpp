@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 70766 2018-01-28 20:53:14Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 70767 2018-01-28 20:55:30Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4295,6 +4295,9 @@ int Console::i_configMediumAttachment(const char *pcszDevice,
         hrc = pMediumAtt->COMGETTER(NonRotational)(&fNonRotational);                        H();
         BOOL fDiscard;
         hrc = pMediumAtt->COMGETTER(Discard)(&fDiscard);                                    H();
+
+        if (lType == DeviceType_DVD)
+            fInsertDiskIntegrityDrv = false;
 
         unsigned uLUN;
         PCFGMNODE pLunL0 = NULL;
