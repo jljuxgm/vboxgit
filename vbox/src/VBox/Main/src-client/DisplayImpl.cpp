@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 68534 2017-08-28 10:11:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3051,6 +3051,12 @@ HRESULT Display::setScreenLayout(ScreenLayoutMode_T aScreenLayoutMode,
 {
     NOREF(aScreenLayoutMode);
     NOREF(aGuestScreenInfo);
+    return E_NOTIMPL;
+}
+
+HRESULT Display::detachScreens(const std::vector<LONG> &aScreenIds)
+{
+    NOREF(aScreenIds);
     return E_NOTIMPL;
 }
 

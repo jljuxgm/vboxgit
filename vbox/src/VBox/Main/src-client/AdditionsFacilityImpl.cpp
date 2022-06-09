@@ -1,4 +1,4 @@
-/* $Id: AdditionsFacilityImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
+/* $Id: AdditionsFacilityImpl.cpp 68534 2017-08-28 10:11:16Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -36,6 +36,7 @@ const AdditionsFacility::FacilityInfo AdditionsFacility::s_aFacilityInfo[8] =
     { "VirtualBox Desktop Integration", AdditionsFacilityType_VBoxTrayClient, AdditionsFacilityClass_Program },
     { "Seamless Mode", AdditionsFacilityType_Seamless, AdditionsFacilityClass_Feature },
     { "Graphics Mode", AdditionsFacilityType_Graphics, AdditionsFacilityClass_Feature },
+    { "Guest Monitor Attach", AdditionsFacilityType_MonitorAttach, AdditionsFacilityClass_Feature },
 };
 
 // constructor / destructor

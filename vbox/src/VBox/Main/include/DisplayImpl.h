@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 67914 2017-07-11 20:46:37Z vboxsync $ */
+/* $Id: DisplayImpl.h 68534 2017-08-28 10:11:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -290,6 +290,7 @@ private:
     virtual HRESULT notifyHiDPIOutputPolicyChange(BOOL fUnscaledHiDPI);
     virtual HRESULT setScreenLayout(ScreenLayoutMode_T aScreenLayoutMode,
                                     const std::vector<ComPtr<IGuestScreenInfo> > &aGuestScreenInfo);
+    virtual HRESULT detachScreens(const std::vector<LONG> &aScreenIds);
 
     // Wrapped IEventListener properties
 
