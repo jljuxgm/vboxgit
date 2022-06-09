@@ -1,4 +1,4 @@
-/* $Id: vfsprogress.cpp 67224 2017-06-02 08:27:45Z vboxsync $ */
+/* $Id: vfsprogress.cpp 67228 2017-06-02 11:10:06Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, progress filter for files.
  */
@@ -92,7 +92,7 @@ static int rtVfsProgressFile_UpdateProgress(PRTVFSPROGRESSFILE pThis)
     pThis->uCurPct = uPct;
 
     int rc = pThis->pfnProgress(uPct, pThis->pvUser);
-    if (!(pThis->fFlags & RTVFSPROGRESS_F_ALLOW_CANCEL))
+    if (!(pThis->fFlags & RTVFSPROGRESS_F_CANCELABLE))
         rc = VINF_SUCCESS;
     else if (RT_FAILURE(rc) && RT_SUCCESS(pThis->rcCanceled))
         pThis->rcCanceled = rc;
@@ -446,8 +446,8 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtVfsProgressFileOps =
 };
 
 
-RTDECL(int) RTVfsIoStrmCreateProgress(RTVFSIOSTREAM hVfsIos, PFNRTPROGRESS pfnProgress, void *pvUser, uint32_t fFlags,
-                                      uint64_t cbExpectedRead, uint64_t cbExpectedWritten, PRTVFSIOSTREAM phVfsIos)
+RTDECL(int) RTVfsCreateProgressForIoStream(RTVFSIOSTREAM hVfsIos, PFNRTPROGRESS pfnProgress, void *pvUser, uint32_t fFlags,
+                                           uint64_t cbExpectedRead, uint64_t cbExpectedWritten, PRTVFSIOSTREAM phVfsIos)
 {
     AssertPtrReturn(pfnProgress, VERR_INVALID_POINTER);
     AssertReturn(!(fFlags & ~RTVFSPROGRESS_F_VALID_MASK), VERR_INVALID_FLAGS);
@@ -481,8 +481,8 @@ RTDECL(int) RTVfsIoStrmCreateProgress(RTVFSIOSTREAM hVfsIos, PFNRTPROGRESS pfnPr
 }
 
 
-RTDECL(int) RTVfsFileCreateProgress(RTVFSFILE hVfsFile, PFNRTPROGRESS pfnProgress, void *pvUser, uint32_t fFlags,
-                                    uint64_t cbExpectedRead, uint64_t cbExpectedWritten, PRTVFSFILE phVfsFile)
+RTDECL(int) RTVfsCreateProgressForFile(RTVFSFILE hVfsFile, PFNRTPROGRESS pfnProgress, void *pvUser, uint32_t fFlags,
+                                       uint64_t cbExpectedRead, uint64_t cbExpectedWritten, PRTVFSFILE phVfsFile)
 {
     AssertPtrReturn(pfnProgress, VERR_INVALID_POINTER);
     AssertReturn(!(fFlags & ~RTVFSPROGRESS_F_VALID_MASK), VERR_INVALID_FLAGS);
