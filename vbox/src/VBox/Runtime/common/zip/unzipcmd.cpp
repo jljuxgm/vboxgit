@@ -1,4 +1,4 @@
-/* $Id: unzipcmd.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: unzipcmd.cpp 72034 2018-04-26 11:32:13Z vboxsync $ */
 /** @file
  * IPRT - A mini UNZIP Command.
  */
@@ -424,7 +424,7 @@ RTDECL(RTEXITCODE) RTZipUnzipCmd(unsigned cArgs, char **papszArgs)
                     return RTMsgErrorExit(RTEXITCODE_SYNTAX,
                                           "Conflicting unzip operation (%s already set, now %s)",
                                           Opts.pszOperation, ValueUnion.pDef->pszLong);
-                Opts.iOperation   = rc;
+                Opts.iOperation   = 'l';
                 Opts.pszOperation = ValueUnion.pDef->pszLong;
                 break;
 
