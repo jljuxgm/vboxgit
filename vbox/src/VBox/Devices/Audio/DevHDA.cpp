@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 68701 2017-09-07 16:13:53Z vboxsync $ */
+/* $Id: DevHDA.cpp 68711 2017-09-11 10:02:31Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -2490,6 +2490,7 @@ static DECLCALLBACK(int) hdaMixerSetVolume(PHDASTATE pThis,
 /**
  * Starts the internal audio device timer.
  *
+ * @return  IPRT status code.
  * @param   pThis               HDA state.
  */
 static int hdaTimerStart(PHDASTATE pThis)
@@ -2519,6 +2520,7 @@ static int hdaTimerStart(PHDASTATE pThis)
 /**
  * Starts the internal audio device timer (if not started yet).
  *
+ * @return  IPRT status code.
  * @param   pThis               HDA state.
  */
 static int hdaTimerMaybeStart(PHDASTATE pThis)
@@ -2540,6 +2542,7 @@ static int hdaTimerMaybeStart(PHDASTATE pThis)
 /**
  * Stops the internal audio device timer.
  *
+ * @return  IPRT status code.
  * @param   pThis               HDA state.
  */
 static int hdaTimerStop(PHDASTATE pThis)
@@ -2570,6 +2573,7 @@ static int hdaTimerStop(PHDASTATE pThis)
  * then checks if the internal audio device timer can be
  * stopped.
  *
+ * @return  IPRT status code.
  * @param   pThis               HDA state.
  */
 static int hdaTimerMaybeStop(PHDASTATE pThis)
@@ -2593,7 +2597,6 @@ static int hdaTimerMaybeStop(PHDASTATE pThis)
 /**
  * Main routine for the device timer.
  *
- * @returns IPRT status code.
  * @param   pThis               HDA state.
  */
 static void hdaTimerMain(PHDASTATE pThis)
