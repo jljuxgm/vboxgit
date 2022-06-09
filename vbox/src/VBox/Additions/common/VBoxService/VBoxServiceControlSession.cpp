@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 71781 2018-04-09 15:43:14Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 72097 2018-05-03 16:11:38Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -389,6 +389,10 @@ static int vgsvcGstCtrlSessionHandleFileWrite(const PVBOXSERVICECTRLSESSION pSes
     int rc = VbglR3GuestCtrlFileGetWrite(pHostCtx, &uHandle, pvScratchBuf, (uint32_t)cbScratchBuf, &cbToWrite);
     if (RT_SUCCESS(rc))
     {
+        /* Make sure that we only write up to cbScratchBuf bytes. */
+        if (cbToWrite > (uint32_t)cbScratchBuf)
+            cbToWrite = (uint32_t)cbScratchBuf;
+
         size_t cbWritten = 0;
         PVBOXSERVICECTRLFILE pFile = vgsvcGstCtrlSessionFileGetLocked(pSession, uHandle);
         if (pFile)
