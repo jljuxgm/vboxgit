@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 68234 2017-08-02 10:13:56Z vboxsync $ */
+/* $Id: UITabBar.cpp 68237 2017-08-02 10:48:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -200,9 +200,15 @@ void UITabBarItem::paintEvent(QPaintEvent * /* pEvent */)
 
     /* Prepare palette colors: */
     const QPalette pal = palette();
+#ifdef VBOX_WS_MAC
+    const QColor color0 = m_fCurrent ? pal.color(QPalette::Highlight).lighter(110)
+                        : m_fHovered ? pal.color(QPalette::Highlight).lighter(120)
+                        :              pal.color(QPalette::Window);
+#else /* !VBOX_WS_MAC */
     const QColor color0 = m_fCurrent ? pal.color(QPalette::Highlight).lighter(150)
                         : m_fHovered ? pal.color(QPalette::Highlight).lighter(170)
                         :              pal.color(QPalette::Window);
+#endif /* !VBOX_WS_MAC */
     QColor color1 = pal.color(QPalette::Window).lighter(110);
     color1.setAlpha(0);
     QColor color2 = pal.color(QPalette::Window).darker(200);
