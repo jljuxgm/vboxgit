@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 68312 2017-08-07 09:28:10Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 68457 2017-08-18 10:27:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIFileDialog class implementation.
  */
@@ -241,7 +241,9 @@ QString QIFileDialog::getExistingDirectory (const QString &aDir,
      * See "New Ways of Using Dialogs" in http://doc.trolltech.com/qq/QtQuarterly30.pdf why.
      * We want the old behavior for file-save dialog. Unfortunately there is a bug in Qt 4.5.x
      * which result in showing the native & the Qt dialog at the same time. */
-    QFileDialog dlg(aParent);
+    QWidget *pParent = windowManager().realParentWindow(aParent);
+    QFileDialog dlg(pParent);
+    windowManager().registerNewParent(&dlg, pParent);
     dlg.setWindowTitle(aCaption);
     dlg.setDirectory(aDir);
     dlg.setResolveSymlinks(aResolveSymlinks);
@@ -301,7 +303,9 @@ QString QIFileDialog::getSaveFileName (const QString &aStartWith,
      * See "New Ways of Using Dialogs" in http://doc.trolltech.com/qq/QtQuarterly30.pdf why.
      * We want the old behavior for file-save dialog. Unfortunately there is a bug in Qt 4.5.x
      * which result in showing the native & the Qt dialog at the same time. */
-    QFileDialog dlg(aParent);
+    QWidget *pParent = windowManager().realParentWindow(aParent);
+    QFileDialog dlg(pParent);
+    windowManager().registerNewParent(&dlg, pParent);
     dlg.setWindowTitle(aCaption);
 
     /* Some predictive algorithm which seems missed in native code. */
@@ -407,7 +411,9 @@ QStringList QIFileDialog::getOpenFileNames (const QString &aStartWith,
      * See "New Ways of Using Dialogs" in http://doc.trolltech.com/qq/QtQuarterly30.pdf why.
      * We want the old behavior for file-save dialog. Unfortunately there is a bug in Qt 4.5.x
      * which result in showing the native & the Qt dialog at the same time. */
-    QFileDialog dlg(aParent);
+    QWidget *pParent = windowManager().realParentWindow(aParent);
+    QFileDialog dlg(pParent);
+    windowManager().registerNewParent(&dlg, pParent);
     dlg.setWindowTitle(aCaption);
 
     /* Some predictive algorithm which seems missed in native code. */
