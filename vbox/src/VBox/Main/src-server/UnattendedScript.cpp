@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 68164 2017-07-28 20:59:17Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 68222 2017-08-01 19:05:50Z vboxsync $ */
 /** @file
  * Implementeation of algorithms which read/parse/save scripts for unattended installation.
  */
@@ -558,6 +558,12 @@ HRESULT UnattendedScriptTemplate::getUnescapedReplacement(const char *pachPlaceh
     }
     else if (IS_PLACEHOLDER_MATCH("LOCALE"))
         rValue = mpUnattended->i_getLocale();
+    else if (IS_PLACEHOLDER_MATCH("DASH_LOCALE"))
+    {
+        rValue = mpUnattended->i_getLocale();
+        Assert(rValue[2] == '_');
+        rValue.replace(2, 1, "-");
+    }
     else if (IS_PLACEHOLDER_MATCH("COUNTRY"))
         rValue = mpUnattended->i_getCountry();
     else if (IS_PLACEHOLDER_MATCH("HOSTNAME_FQDN"))
