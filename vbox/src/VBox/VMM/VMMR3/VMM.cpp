@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 70918 2018-02-08 16:11:47Z vboxsync $ */
+/* $Id: VMM.cpp 70941 2018-02-09 19:41:03Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -663,15 +663,17 @@ VMMR3_INT_DECL(int) VMMR3InitRC(PVM pVM)
                 break;
         }
 
-        if (   (   RT_FAILURE(rc)
-                && rc != VERR_SUPDRV_NO_RAW_MODE_HYPER_V_ROOT)
-            || (rc >= VINF_EM_FIRST && rc <= VINF_EM_LAST) )
+        /* Don't trigger assertions or guru if raw-mode is unavailable. */
+        if (rc != VERR_SUPDRV_NO_RAW_MODE_HYPER_V_ROOT)
         {
-            VMMR3FatalDump(pVM, pVCpu, rc);
-            if (rc >= VINF_EM_FIRST && rc <= VINF_EM_LAST)
-                rc = VERR_IPE_UNEXPECTED_INFO_STATUS;
+            if (RT_FAILURE(rc) || (rc >= VINF_EM_FIRST && rc <= VINF_EM_LAST))
+            {
+                VMMR3FatalDump(pVM, pVCpu, rc);
+                if (rc >= VINF_EM_FIRST && rc <= VINF_EM_LAST)
+                    rc = VERR_IPE_UNEXPECTED_INFO_STATUS;
+            }
+            AssertRC(rc);
         }
-        AssertRC(rc);
     }
     return rc;
 }
