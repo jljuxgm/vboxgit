@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 71753 2018-04-09 01:15:57Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 71891 2018-04-18 09:15:38Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1642,7 +1642,7 @@ int main()
     GEN_CHECK_OFF(VMMDEV, fKeepCredentials);
     GEN_CHECK_OFF(VMMDEV, fHeapEnabled);
 #ifdef VBOX_WITH_HGCM
-    GEN_CHECK_OFF(VMMDEV, pHGCMCmdList);
+    GEN_CHECK_OFF(VMMDEV, listHGCMCmd);
     GEN_CHECK_OFF(VMMDEV, critsectHGCMCmdList);
     GEN_CHECK_OFF(VMMDEV, u32HGCMEnabled);
 #endif
