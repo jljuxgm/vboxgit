@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 70559 2018-01-12 14:29:48Z vboxsync $ */
+/* $Id: UIVMLogPage.h 70574 2018-01-13 13:18:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -81,6 +81,7 @@ public:
     void documentUndo();
 
     void deleteBookmark(int index);
+    void deleteBookmark(LogBookmark bookmark);
 
     const QVector<LogBookmark>& bookmarkVector() const;
     void deleteAllBookmarks();
@@ -92,6 +93,7 @@ protected:
 private slots:
 
     void sltAddBookmark(LogBookmark bookmark);
+    void sltDeleteBookmark(LogBookmark bookmark);
 
 private:
     void prepare();
