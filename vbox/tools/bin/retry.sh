@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: retry.sh 59430 2016-01-21 19:49:56Z vboxsync $
+# $Id: retry.sh 69210 2017-10-24 13:38:47Z vboxsync $
 ## @file
 # Script for retrying a command 5 times.
 #
@@ -34,6 +34,6 @@ do
         exit 0;
     fi
 done
-echo "retry.sh: Giving up: exitcode=${EXITCODE}  command: $@" 
+echo "retry.sh: Giving up: exitcode=${EXITCODE}  command: $@"
 exit ${EXITCODE};
 
