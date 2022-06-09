@@ -1,4 +1,4 @@
-# $Id: Makefile 69762 2017-11-19 16:12:34Z vboxsync $
+# $Id: Makefile 69768 2017-11-20 11:22:25Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -86,6 +86,7 @@ MOD_OBJS = \
 	common/misc/handletable.o \
 	common/misc/handletablectx.o \
 	common/misc/thread.o \
+	common/string/RTStrCat.o \
 	common/string/RTStrCopy.o \
 	common/string/RTStrCopyEx.o \
 	common/string/RTStrCopyP.o \
