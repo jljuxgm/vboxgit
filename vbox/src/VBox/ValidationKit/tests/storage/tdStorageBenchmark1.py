@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 68703 2017-09-07 17:57:15Z vboxsync $
+# $Id: tdStorageBenchmark1.py 68710 2017-09-10 12:05:19Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 68703 $"
+__version__ = "$Revision: 68710 $"
 
 
 # Standard Python imports.
@@ -995,7 +995,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                 try:
                     oIProgress = oHd.changeEncryption('', self.sEncryptAlgo, self.sEncryptPw, self.ksPwId);
                     oProgress = vboxwrappers.ProgressWrapper(oIProgress, self.oVBoxMgr, self, 'Encrypting "%s"' % (sDiskPath,));
-                    oProgress.wait();
+                    oProgress.wait(60*60000); # Wait for up to one hour, fixed disks take longer to encrypt.
                     if oProgress.logResult() is False:
                         raise base.GenError('Encrypting disk "%s" failed' % (sDiskPath, ));
                 except:
