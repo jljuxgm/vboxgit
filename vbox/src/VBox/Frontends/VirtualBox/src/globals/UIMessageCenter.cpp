@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 67863 2017-07-07 17:40:58Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 67923 2017-07-12 11:03:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1339,6 +1339,22 @@ void UIMessageCenter::cannotMoveHardDiskStorage(const CProgress &comProgress, co
     error(pParent, MessageType_Error,
           tr("Failed to move the storage unit of the hard disk <b>%1</b> to <b>%2</b>.")
              .arg(strLocationOld, strLocationNew),
+          formatErrorInfo(comProgress));
+}
+
+void UIMessageCenter::cannotResizeHardDiskStorage(const CMedium &comMedium, const QString &strLocation, const QString &strSizeOld, const QString &strSizeNew, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to resize the storage unit of the hard disk <b>%1</b> from <b>%2</b> to <b>%3</b>.")
+             .arg(strLocation, strSizeOld, strSizeNew),
+          formatErrorInfo(comMedium));
+}
+
+void UIMessageCenter::cannotResizeHardDiskStorage(const CProgress &comProgress, const QString &strLocation, const QString &strSizeOld, const QString &strSizeNew, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to resize the storage unit of the hard disk <b>%1</b> from <b>%2</b> to <b>%3</b>.")
+             .arg(strLocation, strSizeOld, strSizeNew),
           formatErrorInfo(comProgress));
 }
 
