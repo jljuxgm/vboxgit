@@ -1,4 +1,4 @@
-/* $Id: symvers.h 70936 2018-02-09 15:55:18Z vboxsync $ */
+/* $Id: symvers.h 72087 2018-05-03 12:42:07Z vboxsync $ */
 /** @file
  * IPRT - Linux symver and compatibility definitions.
  */
@@ -50,6 +50,10 @@ __asm__(".symver posix_spawn,posix_spawn@GLIBC_2.2");
 /* Do not use __isoc99_* functions */
 #undef __USE_GNU
 #define __USE_GNU 1
+
+/* And EL5 wants this too with __USE_GNU */
+#undef _GNU_SOURCE
+#define _GNU_SOURCE 1
 
 /* Tell IPRT not to use newer functions */
 #include <features.h>
