@@ -1,4 +1,4 @@
-/* $Id: VCICache.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VCICache.cpp 71522 2018-03-26 18:15:27Z vboxsync $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -1425,7 +1425,7 @@ static int vciCreateImage(PVCICACHE pCache, uint64_t cbSize,
 
         /* Setup the root tree. */
         memset(&NodeRoot, 0, sizeof(VciTreeNode));
-        NodeRoot.u8Type = RT_H2LE_U32(VCI_TREE_NODE_TYPE_LEAF);
+        NodeRoot.u8Type = VCI_TREE_NODE_TYPE_LEAF;
 
         rc = vdIfIoIntFileWriteSync(pCache->pIfIo, pCache->pStorage, offTreeRoot,
                                     &NodeRoot, VCI_BYTE2BLOCK(sizeof(VciTreeNode)));

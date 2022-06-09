@@ -1,4 +1,4 @@
-# $Id: Config.kmk 71486 2018-03-23 13:31:35Z vboxsync $
+# $Id: Config.kmk 71522 2018-03-26 18:15:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -169,7 +169,7 @@ if  $(KBUILD_VERSION_MAJOR) == 0 \
      || (   $(KBUILD_VERSION_MINOR) == 1 \
          && $(KBUILD_VERSION_PATCH) >= 999))
  VBOX_MIN_KMK_REVISION        := 3093
- VBOX_MIN_KBUILD_KMK_REVISION := $(if-expr "$(KBUILD_HOST)" == "win",3097,3074)
+ VBOX_MIN_KBUILD_KMK_REVISION := $(if-expr "$(KBUILD_HOST)" == "win",3097,$(if-expr "$(KBUILD_HOST).$(KBUILD_HOST_ARCH)" == "solaris.sparc64",2511,3074))
  if $(KMK_REVISION) >= $(VBOX_MIN_KMK_REVISION)
   if $(KBUILD_KMK_REVISION) >= $(VBOX_MIN_KBUILD_KMK_REVISION)
    # OK.
@@ -7160,7 +7160,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71486 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71522 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
