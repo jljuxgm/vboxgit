@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 68455 2017-08-18 09:54:45Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 68456 2017-08-18 09:59:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -673,12 +673,20 @@ void UISelectorWindow::sltOpenCloneMachineWizard()
     UIVMItem *pItem = currentItem();
     AssertMsgReturnVoid(pItem, ("Current item should be selected!\n"));
 
-    /* Show Clone VM wizard: */
-    UISafePointerWizard pWizard = new UIWizardCloneVM(this, pItem->machine());
+    /* Lock the action preventing cascade calls: */
+    actionPool()->action(UIActionIndexST_M_Machine_S_Clone)->setEnabled(false);
+
+    /* Use the "safe way" to open stack of Mac OS X Sheets: */
+    QWidget *pWizardParent = windowManager().realParentWindow(this);
+    UISafePointerWizard pWizard = new UIWizardCloneVM(pWizardParent, pItem->machine());
+    windowManager().registerNewParent(pWizard, pWizardParent);
     pWizard->prepare();
     pWizard->exec();
     if (pWizard)
         delete pWizard;
+
+    /* Unlock the action allowing further calls: */
+    actionPool()->action(UIActionIndexST_M_Machine_S_Clone)->setEnabled(true);
 }
 
 void UISelectorWindow::sltPerformStartOrShowMachine()
