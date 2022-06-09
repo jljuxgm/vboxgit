@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 71645 2018-04-04 09:41:07Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.h 71654 2018-04-04 13:26:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -132,6 +132,7 @@ class UIPathOperations
 public:
     static QString removeMultipleDelimiters(const QString &path);
     static QString removeTrailingDelimiters(const QString &path);
+    static QString addTrailingDelimiters(const QString &path);
     static QString addStartDelimiter(const QString &path);
 
     static QString sanitize(const QString &path);
@@ -333,3 +334,4 @@ private:
 };
 
 #endif /* !___UIGuestControlFileTable_h___ */
+

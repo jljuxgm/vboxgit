@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 71645 2018-04-04 09:41:07Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 71654 2018-04-04 13:26:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -128,3 +128,4 @@ private:
 };
 
 #endif /* !___UIGuestControlFileManager_h___ */
+

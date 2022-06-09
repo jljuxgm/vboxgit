@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 71645 2018-04-04 09:41:07Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 71654 2018-04-04 13:26:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -346,14 +346,14 @@ bool UIGuestFileTable::copyHostToGuest(const QString &hostSourcePath, const QStr
     if (hostFileInfo.isFile() || hostFileInfo.isSymLink())
     {
         QVector<KFileCopyFlag> flags(KFileCopyFlag_FollowLinks);
-        /* API expects a full file path as destionation: */
-        QString destinationFilePath =  UIPathOperations::mergePaths(guestDestinationPath, UIPathOperations::getObjectName(hostSourcePath));
+        QString destinationFilePath =  UIPathOperations::addTrailingDelimiters(guestDestinationPath);
         /** @todo listen to CProgress object to monitor copy operation: */
-        /*CProgress comProgress =*/ m_comGuestSession.FileCopyToGuest(hostSourcePath, destinationFilePath, flags);
+        /*CProgress comProgress =*/ m_comGuestSession.FileCopyToGuest(hostSourcePath, "/home/vbox/temp/", flags);
     }
     else if(hostFileInfo.isDir())
     {
-        QVector<KDirectoryCopyFlag> aFlags(KDirectoryCopyFlag_None/*CopyIntoExisting*/);
+
+        QVector<KDirectoryCopyFlag> aFlags(KDirectoryCopyFlag_CopyIntoExisting);
         /** @todo listen to CProgress object to monitor copy operation: */
         /*CProgress comProgress = */ m_comGuestSession.DirectoryCopyToGuest(hostSourcePath, guestDestinationPath, aFlags);
     }
