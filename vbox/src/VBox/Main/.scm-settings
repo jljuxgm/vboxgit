@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69388 2017-10-26 17:02:54Z vboxsync $
+# $Id: .scm-settings 69412 2017-10-27 09:31:49Z vboxsync $
 ## @file
 # Source code massager settings for the Main API.
 #
@@ -23,7 +23,6 @@
 
 # The Python bindings is licensed under dual GPL and CDDL.
 /glue/vboxapi.py:                       --license-ose-dual
-/glue/tests/*.java:                     --treat-as .c
 
 # Source dirs.
 --filter-out-files /src-all/VBoxAPI-end.d
@@ -53,7 +52,6 @@
 
 # The webservice samples are MIT and need some hacks to handle unusual file types.
 /webservice/samples/*:                  --license-mit
-/webservice/samples/*.java:             --treat-as .c
 /webservice/samples/*/Makefile.glue:    --treat-as Makefile
 /webservice/samples/php/clienttest.php: --treat-as .c
 
