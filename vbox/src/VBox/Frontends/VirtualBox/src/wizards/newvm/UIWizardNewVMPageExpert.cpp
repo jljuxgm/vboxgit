@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 72191 2018-05-10 17:24:37Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 72314 2018-05-24 09:16:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -54,7 +54,7 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
             m_pNameAndSystemCnt->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
             QHBoxLayout *pNameAndSystemCntLayout = new QHBoxLayout(m_pNameAndSystemCnt);
             {
-                m_pNameAndSystemEditor = new UINameAndSystemEditor(m_pNameAndSystemCnt);
+                m_pNameAndSystemEditor = new UINameAndSystemEditor(m_pNameAndSystemCnt, true);
                 pNameAndSystemCntLayout->addWidget(m_pNameAndSystemEditor);
             }
         }
