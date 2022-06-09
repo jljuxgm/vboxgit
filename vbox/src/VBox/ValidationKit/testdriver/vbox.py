@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 71539 2018-03-28 13:09:16Z vboxsync $
+# $Id: vbox.py 71572 2018-03-29 15:00:33Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71539 $"
+__version__ = "$Revision: 71572 $"
 
 
 # Standard Python imports.
@@ -2597,8 +2597,6 @@ class TestDriver(base.TestDriver):                                              
             sLogDest = 'file=%s' % sLogFile;
         sEnv = 'VBOX_LOG=%s\nVBOX_LOG_FLAGS=%s\nVBOX_LOG_DEST=nodeny %s\nVBOX_RELEASE_LOG_FLAGS=append time' \
              % (self.sLogSessionGroups, self.sLogSessionFlags, sLogDest,);
-        # Extra audio logging
-        sEnv += '\nVBOX_RELEASE_LOG=drv_audio.e.l.l2+drv_host_audio.e.l.l2'
         if sType == 'gui':
             sEnv += '\nVBOX_GUI_DBG_ENABLED=1'
         if asEnv is not None and asEnv:
