@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 68241 2017-08-02 12:45:03Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 68272 2017-08-03 08:25:32Z vboxsync $ */
 /** @file
  * Debug audio driver -- host backend for dumping and injecting audio data
  * from/to the device emulation.
@@ -377,11 +377,11 @@ static DECLCALLBACK(uint32_t) drvHostDebugAudioStreamGetWritable(PPDMIHOSTAUDIO 
 /**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetWritable}
  */
-static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostDebugAudioStreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(PDMAUDIOSTREAMSTS) drvHostDebugAudioStreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
 {
     RT_NOREF(pInterface, pStream);
 
-    return (PDMAUDIOSTRMSTS_FLAG_INITIALIZED | PDMAUDIOSTRMSTS_FLAG_ENABLED);
+    return (PDMAUDIOSTREAMSTS_FLAG_INITIALIZED | PDMAUDIOSTREAMSTS_FLAG_ENABLED);
 }
 
 

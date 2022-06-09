@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 67806 2017-07-05 15:48:20Z vboxsync $ */
+/* $Id: DevSB16.cpp 68272 2017-08-03 08:25:32Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1896,9 +1896,9 @@ static DECLCALLBACK(void) sb16TimerIO(PPDMDEVINS pDevIns, PTMTIMER pTimer, void 
             }
         }
 
-        PDMAUDIOSTRMSTS strmSts = pConn->pfnStreamGetStatus(pConn, pStream);
-        fIsPlaying |= (   (strmSts & PDMAUDIOSTRMSTS_FLAG_ENABLED)
-                       || (strmSts & PDMAUDIOSTRMSTS_FLAG_PENDING_DISABLE));
+        PDMAUDIOSTREAMSTS strmSts = pConn->pfnStreamGetStatus(pConn, pStream);
+        fIsPlaying |= (   (strmSts & PDMAUDIOSTREAMSTS_FLAG_ENABLED)
+                       || (strmSts & PDMAUDIOSTREAMSTS_FLAG_PENDING_DISABLE));
     }
 
     bool fTimerActive = ASMAtomicReadBool(&pThis->fTimerActive);
@@ -2483,7 +2483,7 @@ static DECLCALLBACK(int) sb16Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         AssertPtr(pCon);
 
         /** @todo No input streams available for SB16 yet. */
-        bool fValidOut = pCon->pfnStreamGetStatus(pCon, pDrv->Out.pStream) & PDMAUDIOSTRMSTS_FLAG_INITIALIZED;
+        bool fValidOut = pCon->pfnStreamGetStatus(pCon, pDrv->Out.pStream) & PDMAUDIOSTREAMSTS_FLAG_INITIALIZED;
         if (!fValidOut)
         {
             LogRel(("SB16: Falling back to NULL backend (no sound audible)\n"));

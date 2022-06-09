@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 68132 2017-07-27 08:15:43Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 68272 2017-08-03 08:25:32Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -1570,20 +1570,20 @@ static DECLCALLBACK(uint32_t) drvHostPulseAudioStreamGetWritable(PPDMIHOSTAUDIO 
 /**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetStatus}
  */
-static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostPulseAudioStreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+static DECLCALLBACK(PDMAUDIOSTREAMSTS) drvHostPulseAudioStreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
 {
     AssertPtrReturn(pInterface, VERR_INVALID_POINTER);
     RT_NOREF(pStream);
 
     PDRVHOSTPULSEAUDIO pThis = PDMIHOSTAUDIO_2_DRVHOSTPULSEAUDIO(pInterface);
 
-    PDMAUDIOSTRMSTS strmSts  = PDMAUDIOSTRMSTS_FLAG_NONE;
+    PDMAUDIOSTREAMSTS strmSts  = PDMAUDIOSTREAMSTS_FLAG_NONE;
 
     /* Check PulseAudio's general status. */
     if (   pThis->pContext
         && PA_CONTEXT_IS_GOOD(pa_context_get_state(pThis->pContext)))
     {
-       strmSts = PDMAUDIOSTRMSTS_FLAG_INITIALIZED | PDMAUDIOSTRMSTS_FLAG_ENABLED;
+       strmSts = PDMAUDIOSTREAMSTS_FLAG_INITIALIZED | PDMAUDIOSTREAMSTS_FLAG_ENABLED;
     }
 
     return strmSts;
