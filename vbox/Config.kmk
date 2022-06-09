@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68741 2017-09-13 11:37:54Z vboxsync $
+# $Id: Config.kmk 68748 2017-09-13 16:58:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -449,6 +449,8 @@ endif
 # Enable building debugging backend.
 # Only will be used at runtime when "VBoxInternal2/Audio/Debug/Enabled" (VM / global) is set.
 VBOX_WITH_AUDIO_DEBUG = 1
+# Enables the audio endpoint detection on Windows hosts.
+VBOX_WITH_AUDIO_MMNOTIFICATION_CLIENT = 1
 # Enable PCI passthrough support.
 VBOX_WITH_PCI_PASSTHROUGH = 1
 # Enable statically linked dbus support.
@@ -7012,7 +7014,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68741 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68748 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

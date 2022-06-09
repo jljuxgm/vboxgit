@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68747 2017-09-13 16:45:03Z vboxsync $
+# $Id: Makefile.kmk 68748 2017-09-13 16:58:27Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -594,9 +594,6 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   VBOX_DEFS   += VBOX_WITH_AUDIO_AC97_CALLBACKS
   VBOX_DEFS   += VBOX_WITH_AUDIO_HDA_CALLBACKS
  endif
-
- # Enables the audio endpoint detection on Windows hosts.
- VBoxDD_DEFS.win += VBOX_WITH_AUDIO_MMNOTIFICATION_CLIENT
 
  VBoxDD_SOURCES         += \
 	Audio/DevIchAc97.cpp \
