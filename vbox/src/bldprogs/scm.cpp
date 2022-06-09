@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69286 2017-10-25 11:31:24Z vboxsync $ */
+/* $Id: scm.cpp 69290 2017-10-25 11:34:49Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -447,7 +447,7 @@ static SCMCFGENTRY const g_aConfigs[] =
     SCM_CFG_ENTRY(g_aRewritersFor_H_and_HPP,        false, "*.h|*.hpp" ),
     SCM_CFG_ENTRY(g_aRewritersFor_RC,               false, "*.rc" ),
     SCM_CFG_ENTRY(g_aRewritersFor_DTrace,           false, "*.d" ),
-    SCM_CFG_ENTRY(g_aRewritersFor_ASM,              false, "*.asm|*.mac" ),
+    SCM_CFG_ENTRY(g_aRewritersFor_ASM,              false, "*.asm|*.mac|*.inc" ),
     SCM_CFG_ENTRY(g_aRewritersFor_DEF,              false, "*.def" ),
     SCM_CFG_ENTRY(g_aRewritersFor_ShellScripts,     false, "*.sh|configure" ),
     SCM_CFG_ENTRY(g_aRewritersFor_BatchFiles,       false, "*.bat|*.cmd|*.btm" ),
@@ -2086,7 +2086,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69286 $";
+                static const char s_szRev[] = "$Revision: 69290 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
