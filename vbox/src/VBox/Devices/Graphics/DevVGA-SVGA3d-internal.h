@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 69415 2017-10-27 10:00:34Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 69859 2017-11-28 11:54:06Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -794,8 +794,6 @@ typedef struct VMSVGA3DCONTEXT
     void                   *pShaderContext;
 #endif
 
-    /* Current active render target (if any) */
-    uint32_t                sidRenderTarget;
     /* Current selected texture surfaces (if any) */
     uint32_t                aSidActiveTextures[SVGA3D_MAX_SAMPLERS];
     /* Per context pixel and vertex shaders. */
@@ -870,7 +868,6 @@ static SSMFIELD const g_aVMSVGA3DCONTEXTFields[] =
     SSMFIELD_ENTRY_IGN_HCPTR(       VMSVGA3DCONTEXT, pShaderContext),
 #endif
 
-    SSMFIELD_ENTRY_IGNORE(          VMSVGA3DCONTEXT, sidRenderTarget),
     SSMFIELD_ENTRY_IGNORE(          VMSVGA3DCONTEXT, aSidActiveTextures),
     SSMFIELD_ENTRY(                 VMSVGA3DCONTEXT, cPixelShaders),
     SSMFIELD_ENTRY_IGN_HCPTR(       VMSVGA3DCONTEXT, paPixelShader),

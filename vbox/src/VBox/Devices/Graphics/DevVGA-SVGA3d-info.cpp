@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 69294 2017-10-25 12:25:43Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 69859 2017-11-28 11:54:06Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -1551,7 +1551,6 @@ static void vmsvga3dInfoContextWorkerOne(PCDBGFINFOHLP pHlp, PVMSVGA3DCONTEXT pC
     pHlp->pfnPrintf(pHlp, "glxContext:              %p\n", pContext->glxContext);
 
 #endif
-    pHlp->pfnPrintf(pHlp, "sidRenderTarget:         %#x\n", pContext->sidRenderTarget);
 
     for (uint32_t i = 0; i < RT_ELEMENTS(pContext->aSidActiveTextures); i++)
         if (pContext->aSidActiveTextures[i] != SVGA3D_INVALID_ID)
