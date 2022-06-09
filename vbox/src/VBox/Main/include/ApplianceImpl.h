@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 65088 2017-01-03 20:52:49Z vboxsync $ */
+/* $Id: ApplianceImpl.h 67142 2017-05-30 14:11:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -216,7 +216,8 @@ private:
     HRESULT i_writeFS(TaskOVF *pTask);
     HRESULT i_writeFSOVF(TaskOVF *pTask, AutoWriteLockBase& writeLock);
     HRESULT i_writeFSOVA(TaskOVF *pTask, AutoWriteLockBase& writeLock);
-    HRESULT i_writeFSImpl(TaskOVF *pTask, AutoWriteLockBase& writeLock, PVDINTERFACEIO pCallbacks, PSHASTORAGE pStorage);
+    HRESULT i_writeFSImpl(TaskOVF *pTask, AutoWriteLockBase &writeLock, RTVFSFSSTREAM hVfsFss,
+                          PVDINTERFACEIO pCallbacks, PSHASTORAGE pStorage);
 
     struct XMLStack;
 

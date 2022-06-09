@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplIO.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: ApplianceImplIO.cpp 67142 2017-05-30 14:11:46Z vboxsync $ */
 /** @file
  * IO helper for IAppliance COM class implementations.
  */
@@ -1226,6 +1226,39 @@ PVDINTERFACEIO FileCreateInterface()
     pCallbacks->pfnFlushSync           = fileFlushSyncCallback;
 
     return pCallbacks;
+}
+
+
+/**
+ * Writes a memory buffer to a file in the output file system stream.
+ *
+ * @returns IPRT status code.
+ * @param   pszFilename     The file name (w/ path if desired).
+ * @param   pvContent       Pointer to buffer containing the file content.
+ * @param   cbContent       Size of the content.
+ * @param   hVfsFss         The file system stream to add the file to.
+ */
+int writeBufferToFile(const char *pszFilename, const void *pvContent, size_t cbContent, RTVFSFSSTREAM hVfsFss)
+{
+    /*
+     * Create a VFS file around the memory, converting it to a base VFS object handle.
+     */
+    RTVFSFILE hVfsFile;
+    int rc = RTVfsFileFromBuffer(RTFILE_O_READ, pvContent, cbContent, &hVfsFile);
+    if (RT_SUCCESS(rc))
+    {
+        RTVFSOBJ hVfsObj = RTVfsObjFromFile(hVfsFile);
+        RTVfsFileRelease(hVfsFile);
+        AssertReturn(hVfsObj != NIL_RTVFSOBJ, VERR_INTERNAL_ERROR_2);
+
+        /*
+         * Add it to the stream.
+         */
+        rc = RTVfsFsStrmAdd(hVfsFss, pszFilename, hVfsObj, 0);
+        RTVfsObjRelease(hVfsObj);
+    }
+
+    return rc;
 }
 
 int writeBufferToFile(const char *pcszFilename, void *pvBuf, size_t cbSize, PVDINTERFACEIO pIfIo, void *pvUser)
