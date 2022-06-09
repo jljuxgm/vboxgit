@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 71976 2018-04-23 10:52:51Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.h 71979 2018-04-23 11:36:21Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -26,6 +26,7 @@
 #include "ThreadTask.h"
 
 #include <iprt/isofs.h> /* For UpdateAdditions. */
+#include <iprt/fs.h> /* For PCRTFSOBJINFO. */
 
 #include <vector>
 
