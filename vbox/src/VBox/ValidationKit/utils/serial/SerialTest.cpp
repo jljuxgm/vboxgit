@@ -1,4 +1,4 @@
-/* $Id: SerialTest.cpp 70634 2018-01-18 15:27:00Z vboxsync $ */
+/* $Id: SerialTest.cpp 70652 2018-01-19 16:07:36Z vboxsync $ */
 /** @file
  * SerialTest - Serial port testing utility.
  */
@@ -114,6 +114,7 @@ typedef struct SERIALTESTTXRXBUFCNT
 } SERIALTESTTXRXBUFCNT;
 /** Pointer to a TX/RX buffer. */
 typedef SERIALTESTTXRXBUFCNT *PSERIALTESTTXRXBUFCNT;
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
