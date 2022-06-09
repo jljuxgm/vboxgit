@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 69987 2017-12-07 16:02:40Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 69990 2017-12-07 16:38:41Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -218,20 +218,20 @@ static DECLCALLBACK(int) vgsvcTimeSyncPreInit(void)
         if (   RT_SUCCESS(rc)
             || rc == VERR_NOT_FOUND)
         {
-            uint32_t value;
+            uint32_t uValue;
             rc = VGSvcReadPropUInt32(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-on-restore",
-                                     &value, 1, 1);
+                                     &uValue, 0 /*uMin*/, 1 /*uMax*/);
             if (RT_SUCCESS(rc))
-                g_fTimeSyncSetOnRestore = !!value;
+                g_fTimeSyncSetOnRestore = uValue != 0;
         }
         if (   RT_SUCCESS(rc)
             || rc == VERR_NOT_FOUND)
         {
-            uint32_t value;
+            uint32_t uValue;
             rc = VGSvcReadPropUInt32(uGuestPropSvcClientID, "/VirtualBox/GuestAdd/VBoxService/--timesync-verbosity",
-                                     &value, 0, 255);
+                                     &uValue, 0 /*uMin*/, 255 /*uMax*/);
             if (RT_SUCCESS(rc))
-                g_uTimeSyncVerbosity = (unsigned)value;
+                g_uTimeSyncVerbosity = (unsigned)uValue;
         }
         VbglR3GuestPropDisconnect(uGuestPropSvcClientID);
     }
