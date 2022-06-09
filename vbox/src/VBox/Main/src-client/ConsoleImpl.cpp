@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 70766 2018-01-28 20:53:14Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 70773 2018-01-28 21:36:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5187,7 +5187,7 @@ HRESULT Console::i_onSerialPortChange(ISerialPort *aSerialPort)
     if (ptrVM.isOk())
     {
         ULONG ulSlot;
-        BOOL fEnabled;
+        BOOL fEnabled = FALSE;
         hrc = aSerialPort->COMGETTER(Slot)(&ulSlot);
         if (SUCCEEDED(hrc))
             hrc = aSerialPort->COMGETTER(Enabled)(&fEnabled);
