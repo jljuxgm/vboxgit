@@ -1,4 +1,4 @@
-/* $Id: main.cpp 69957 2017-12-06 13:35:06Z vboxsync $ */
+/* $Id: main.cpp 70112 2017-12-13 14:37:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -399,7 +399,9 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 
         /* Enable HiDPI support: */
         QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#if (!defined(DEBUG_bird) || defined(RT_OS_DARWIN))
         QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
 
         /* Create application: */
         QApplication a(argc, argv);
