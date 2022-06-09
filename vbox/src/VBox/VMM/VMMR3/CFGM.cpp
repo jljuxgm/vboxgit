@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 65852 2017-02-23 11:43:37Z vboxsync $ */
+/* $Id: CFGM.cpp 68484 2017-08-21 13:45:40Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -284,7 +284,7 @@ VMMR3DECL(PCFGMNODE) CFGMR3GetRootU(PUVM pUVM)
  *
  * @returns Pointer to the parent node.
  * @returns NULL if pNode is Root or pNode is the start of a
- *          restricted subtree (use CFGMr3GetParentEx() for that).
+ *          restricted subtree (use CFGMR3GetParentEx() for that).
  *
  * @param   pNode           The node which parent we query.
  */
