@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 71359 2018-03-15 16:05:10Z vboxsync $
+# $Id: virtual_test_sheriff.py 71361 2018-03-15 17:26:31Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71359 $"
+__version__ = "$Revision: 71361 $"
 
 
 # Standard python imports
@@ -225,9 +225,9 @@ class VirtualTestSheriffCaseFile(object):
         on the raw pixels.
         Returns SHA-2 digest string on success, None on failure.
         """
-        (oFile, _, _) = self.oTestSet.openFile(oFile.sFile, 'rb');
+        (oImgFile, _, _) = self.oTestSet.openFile(oFile.sFile, 'rb');
         try:
-            abImageFile = oFile.read();
+            abImageFile = oImgFile.read();
         except Exception as oXcpt:
             self.oSheriff.vprint(u'Error reading the "%s" image file: %s' % (oFile.sFile, oXcpt,))
         else:
@@ -302,7 +302,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 71359 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 71361 $ \n');
 
 
     def eprint(self, sText):
@@ -575,7 +575,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 71359 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 71361 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
