@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 70986 2018-02-13 09:41:54Z vboxsync $ */
+/* $Id: HM.cpp 71047 2018-02-19 09:21:00Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1745,6 +1745,8 @@ static int hmR3InitFinalizeR0Amd(PVM pVM)
     /*
      * SVM R0 code assumes if the decode-assist feature exists, NRIP feature exists too.
      */
+    /** @todo This might not be true anymore, re-verify SVM R0 code for
+     *        assumption of this combination. */
     AssertLogRelReturn(  !(pVM->hm.s.svm.u32Features & X86_CPUID_SVM_FEATURE_EDX_DECODE_ASSISTS)
                        || (pVM->hm.s.svm.u32Features & X86_CPUID_SVM_FEATURE_EDX_NRIP_SAVE),
                        VERR_HM_UNSUPPORTED_CPU_FEATURE_COMBO);
