@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 70575 2018-01-13 14:28:28Z vboxsync $
+# $Id: vbox.py 70576 2018-01-13 14:29:04Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70575 $"
+__version__ = "$Revision: 70576 $"
 
 
 # Standard Python imports.
@@ -1070,7 +1070,7 @@ class TestDriver(base.TestDriver):                                              
                 #
                 iPipeR, iPipeW = os.pipe();
                 if hasattr(os, 'set_inheritable'):
-                    os.set_inheritable(iPipeW, fTrue);             # pylint: disable=no-member
+                    os.set_inheritable(iPipeW, True);             # pylint: disable=no-member
                 os.environ['NSPR_INHERIT_FDS'] = 'vboxsvc:startup-pipe:5:0x%x' % (iPipeW,);
                 reporter.log2("NSPR_INHERIT_FDS=%s" % (os.environ['NSPR_INHERIT_FDS']));
 
