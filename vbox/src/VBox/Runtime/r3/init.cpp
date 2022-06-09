@@ -1,4 +1,4 @@
-/* $Id: init.cpp 70345 2017-12-26 15:51:56Z vboxsync $ */
+/* $Id: init.cpp 71282 2018-03-09 11:19:39Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -446,7 +446,7 @@ static int rtR3InitBody(uint32_t fFlags, int cArgs, char ***ppapszArgs, const ch
     if (fFlags & RTR3INIT_FLAGS_SUPLIB)
     {
         rc = SUPR3Init(NULL);
-        AssertMsgRCReturn(rc, ("Failed to initializable the support library, rc=%Rrc!\n", rc), rc);
+        AssertMsgRCReturn(rc, ("Failed to initialize the support library, rc=%Rrc!\n", rc), rc);
     }
 #endif
 
