@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIVMItem.h 72215 2018-05-15 14:20:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMItem class declarations.
  */
@@ -64,7 +64,7 @@ public:
     KSessionState sessionState() const { return m_sessionState; }
 
     QString settingsFile() const { return m_strSettingsFile; }
-
+    const QStringList &groups();
     bool recache();
 
     bool canSwitchTo() const;
@@ -110,6 +110,7 @@ private:
 
     bool m_fHasDetails;
 
+    QStringList m_groups;
     /** Holds configuration access level. */
     ConfigurationAccessLevel m_configurationAccessLevel;
 };
@@ -139,4 +140,3 @@ private:
 };
 
 #endif /* __UIVMItem_h__ */
-

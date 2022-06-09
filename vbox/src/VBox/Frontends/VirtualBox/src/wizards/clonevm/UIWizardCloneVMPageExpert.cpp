@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.cpp 72199 2018-05-14 12:57:36Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.cpp 72215 2018-05-15 14:20:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class implementation.
  */
@@ -35,8 +35,9 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalName, const QString &strDefaultPath, bool fAdditionalInfo, bool fShowChildsOption)
-    : UIWizardCloneVMPage1(strOriginalName, strDefaultPath)
+UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalName, const QString &strDefaultPath,
+                                                     bool fAdditionalInfo, bool fShowChildsOption, const QString &strGroup)
+    : UIWizardCloneVMPage1(strOriginalName, strDefaultPath, strGroup)
     , UIWizardCloneVMPage2(fAdditionalInfo)
     , UIWizardCloneVMPage3(fShowChildsOption)
 {
@@ -116,7 +117,7 @@ UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalN
     qRegisterMetaType<KCloneMode>();
     /* Register fields: */
     registerField("cloneName", this, "cloneName");
-    registerField("clonePath", this, "clonePath");
+    registerField("cloneFilePath", this, "cloneFilePath");
     registerField("reinitMACs", this, "reinitMACs");
     registerField("linkedClone", this, "linkedClone");
     registerField("cloneMode", this, "cloneMode");
