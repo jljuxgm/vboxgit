@@ -1,3 +1,4 @@
+/* $Id: inlines.h 69501 2017-10-28 16:12:47Z vboxsync $ */
 /** @file
  * Inline routines for Watcom C.
  */

@@ -1,3 +1,4 @@
+/* $Id: post.c 69501 2017-10-28 16:12:47Z vboxsync $ */
 /** @file
  * BIOS POST routines. Used only during initialization.
  */

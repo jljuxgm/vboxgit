@@ -1,3 +1,4 @@
+/* $Id: pciutil.h 69501 2017-10-28 16:12:47Z vboxsync $ */
 /** @file
  * Utility routines for calling the PCI BIOS.
  */
