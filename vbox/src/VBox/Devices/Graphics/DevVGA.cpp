@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 69047 2017-10-11 16:24:38Z vboxsync $ */
+/* $Id: DevVGA.cpp 69052 2017-10-11 19:04:39Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6791,7 +6791,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
      */
     if (cCustomModes)
     {
-        uint16_t u16CurMode = 0x160;
+        uint16_t u16CurMode = VBE_VBOX_MODE_CUSTOM1;
         for (i = 1; i <= cCustomModes; i++)
         {
             char szExtraDataKey[sizeof("CustomVideoModeXX")];
