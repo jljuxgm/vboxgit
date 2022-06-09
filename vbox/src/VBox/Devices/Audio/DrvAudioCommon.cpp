@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 68136 2017-07-27 10:52:43Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 68390 2017-08-11 11:54:33Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -945,10 +945,12 @@ PPDMAUDIOSTREAMCFG DrvAudioHlpStreamCfgDup(const PPDMAUDIOSTREAMCFG pCfg)
  */
 void DrvAudioHlpStreamCfgPrint(const PPDMAUDIOSTREAMCFG pCfg)
 {
-    AssertPtrReturnVoid(pCfg);
+    if (!pCfg)
+        return;
 
-    LogFlowFunc(("uHz=%RU32, cChannels=%RU8, cBits=%RU8%s",
-                 pCfg->Props.uHz, pCfg->Props.cChannels, pCfg->Props.cBits, pCfg->Props.fSigned ? "S" : "U"));
+    LogFunc(("szName=%s, enmDir=%RU32 (uHz=%RU32, cBits=%RU8%s, cChannels=%RU8)\n",
+             pCfg->szName, pCfg->enmDir,
+             pCfg->Props.uHz, pCfg->Props.cBits, pCfg->Props.fSigned ? "S" : "U", pCfg->Props.cChannels));
 }
 
 /**
