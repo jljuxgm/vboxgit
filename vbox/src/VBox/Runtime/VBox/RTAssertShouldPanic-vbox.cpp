@@ -1,10 +1,10 @@
-/* $Id: RTAssertShouldPanic-vbox.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTAssertShouldPanic-vbox.cpp 71507 2018-03-26 09:24:21Z vboxsync $ */
 /** @file
  * IPRT - Assertions, generic RTAssertShouldPanic.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -84,6 +84,10 @@ static bool rtAssertShouldPanicWorker(void)
     /* 'breakpoint' or 'panic' means default behaviour. */
     if (!strcmp(psz, "breakpoint") || !strcmp(psz, "panic"))
         return true;
+
+    /* 'disabled' does not trigger a breakpoint. */
+    if (!strcmp(psz, "disabled"))
+        return false;
 
 #ifdef VBOX_RTASSERT_WITH_WAIT
     /* 'wait' - execute a sigwait(3) while a debugger is attached. */
