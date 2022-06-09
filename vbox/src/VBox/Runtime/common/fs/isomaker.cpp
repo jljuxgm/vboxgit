@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67342 2017-06-12 17:08:40Z vboxsync $ */
+/* $Id: isomaker.cpp 67344 2017-06-12 17:22:39Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_FS
 #include "internal/iprt.h"
-#include <iprt/fsvfs.h>
+#include <iprt/fsisomaker.h>
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
