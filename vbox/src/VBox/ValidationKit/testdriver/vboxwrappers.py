@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 70762 2018-01-28 20:21:06Z vboxsync $
+# $Id: vboxwrappers.py 70795 2018-01-29 18:00:14Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70762 $"
+__version__ = "$Revision: 70795 $"
 
 
 # Standard Python imports.
@@ -2403,6 +2403,62 @@ class SessionWrapper(TdTaskBase):
         self.oTstDrv.processPendingEvents();
         return fRc;
 
+
+    def enableSerialPort(self, iSerialPort):
+        """
+        Enables the given serial port setting the initial port mode to disconnected.
+        """
+        try:
+            oPort = self.o.machine.getSerialPort(iSerialPort);
+        except:
+            fRc = reporter.errorXcpt('failed to get serial port #%u' % (iSerialPort,));
+        else:
+            try:
+                oPort.hostMode = vboxcon.PortMode_Disconnected;
+            except:
+                fRc = reporter.errorXcpt('failed to set the "hostMode" property on serial port #%u to PortMode_Disconnected'
+                                         % (iSerialPort,));
+            else:
+                try:
+                    oPort.enabled = True;
+                except:
+                    fRc = reporter.errorXcpt('failed to set the "enable" property on serial port #%u to True'
+                                             % (iSerialPort,));
+                else:
+                    reporter.log('set SerialPort[%s].enabled/hostMode/=True/Disconnected' % (iSerialPort,));
+                    fRc = True;
+        self.oTstDrv.processPendingEvents();
+        return fRc;
+
+
+    def changeSerialPortAttachment(self, iSerialPort, ePortMode, sPath, fServer):
+        """
+        Changes the attachment of the given serial port to the attachment config given.
+        """
+        try:
+            oPort = self.o.machine.getSerialPort(iSerialPort);
+        except:
+            fRc = reporter.errorXcpt('failed to get serial port #%u' % (iSerialPort,));
+        else:
+            try:
+                # Change port mode to disconnected first so changes get picked up by a potentially running VM.
+                oPort.hostMode = vboxcon.PortMode_Disconnected;
+            except:
+                fRc = reporter.errorXcpt('failed to set the "hostMode" property on serial port #%u to PortMode_Disconnected'
+                                         % (iSerialPort,));
+            else:
+                try:
+                    oPort.path     = sPath;
+                    oPort.server   = fServer;
+                    oPort.hostMode = ePortMode;
+                except:
+                    fRc = reporter.errorXcpt('failed to configure the serial port');
+                else:
+                    reporter.log('set SerialPort[%s].hostMode/path/server=%s/%s/%s'
+                                 % (iSerialPort, ePortMode, sPath, fServer));
+                    fRc = True;
+        self.oTstDrv.processPendingEvents();
+        return fRc;
 
     #
     # IConsole wrappers.
