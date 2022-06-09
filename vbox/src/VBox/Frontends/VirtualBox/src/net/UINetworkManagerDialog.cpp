@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerDialog.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UINetworkManagerDialog.cpp 67837 2017-07-06 16:07:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerDialog stuff implementation.
  */
@@ -56,7 +56,7 @@ void UINetworkManagerDialog::showNormal()
 UINetworkManagerDialog::UINetworkManagerDialog()
 {
     /* Apply window icons: */
-    setWindowIcon(UIIconPool::iconSetFull(":/nw_32px.png", ":/nw_16px.png"));
+    setWindowIcon(UIIconPool::iconSetFull(":/download_manager_32px.png", ":/download_manager_16px.png"));
 
     /* Do not count that window as important for application,
      * it will NOT be taken into account when other top-level windows will be closed: */

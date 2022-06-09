@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerIndicator.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UINetworkManagerIndicator.cpp 67837 2017-07-06 16:07:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerIndicator stuff implementation.
  */
@@ -31,9 +31,9 @@
 UINetworkManagerIndicator::UINetworkManagerIndicator()
 {
     /* Assign state icons: */
-    setStateIcon(UINetworkManagerIndicatorState_Idle, UIIconPool::iconSet(":/nw_16px.png"));
-    setStateIcon(UINetworkManagerIndicatorState_Loading, UIIconPool::iconSet(":/nw_loading_16px.png"));
-    setStateIcon(UINetworkManagerIndicatorState_Error, UIIconPool::iconSet(":/nw_error_16px.png"));
+    setStateIcon(UINetworkManagerIndicatorState_Idle, UIIconPool::iconSet(":/download_manager_16px.png"));
+    setStateIcon(UINetworkManagerIndicatorState_Loading, UIIconPool::iconSet(":/download_manager_loading_16px.png"));
+    setStateIcon(UINetworkManagerIndicatorState_Error, UIIconPool::iconSet(":/download_manager_error_16px.png"));
 
     /* Translate content: */
     retranslateUi();

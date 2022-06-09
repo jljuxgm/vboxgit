@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 63317 2016-08-11 10:30:18Z vboxsync $ */
+/* $Id: UIActionPool.cpp 67837 2017-07-06 16:07:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -784,7 +784,7 @@ class UIActionSimpleNetworkAccessManager : public UIActionSimple
 public:
 
     UIActionSimpleNetworkAccessManager(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/nw_16px.png", ":/nw_disabled_16px.png")
+        : UIActionSimple(pParent, ":/download_manager_16px.png")
     {
         setMenuRole(QAction::ApplicationSpecificRole);
         retranslateUi();

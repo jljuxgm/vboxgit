@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestWidget.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: UINetworkRequestWidget.cpp 67837 2017-07-06 16:07:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestWidget stuff implementation.
  */
@@ -48,7 +48,7 @@ UINetworkRequestWidget::UINetworkRequestWidget(UINetworkManagerDialog *pParent, 
     , m_pTimer(new QTimer(this))
 {
     /* Setup self: */
-    setTitleIcon(UIIconPool::iconSet(":/nw_16px.png"));
+    setTitleIcon(UIIconPool::iconSet(":/download_manager_16px.png"));
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     setContentWidget(m_pContentWidget);
     setOpen(true);
