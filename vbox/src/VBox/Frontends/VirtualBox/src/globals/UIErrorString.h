@@ -1,10 +1,10 @@
-/* $Id: UIErrorString.h 68435 2017-08-17 08:59:12Z vboxsync $ */
+/* $Id: UIErrorString.h 71436 2018-03-21 15:04:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIErrorString class declaration.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -30,7 +30,6 @@ class COMErrorInfo;
 class COMResult;
 class CProgress;
 class CVirtualBoxErrorInfo;
-
 
 /** Namespace simplifying COM error formatting. */
 class UIErrorString
