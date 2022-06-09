@@ -1,4 +1,4 @@
-/* $Id: UIGuestRAMSlider.cpp 71943 2018-04-20 13:55:21Z vboxsync $ */
+/* $Id: UIGuestRAMSlider.cpp 72502 2018-06-11 11:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestRAMSlider class implementation.
  */
@@ -157,7 +157,11 @@ void UIGuestRAMSlider::prepare()
     setSingleStep(pageStep() / 4);
     setTickInterval(pageStep());
     /* Setup the scale so that ticks are at page step boundaries */
-    setMinimum((m_uMinRAM / pageStep()) * pageStep());
+    if (m_uMinRAM >= static_cast<uint>(pageStep()))
+        setMinimum((m_uMinRAM / pageStep()) * pageStep());
+    else
+        setMinimum(m_uMinRAM);
+
     setMaximum(m_uMaxRAM);
     setSnappingEnabled(true);
     setOptimalHint(m_uMinRAM, m_uMaxRAMOpt);
