@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 67262 2017-06-05 16:37:11Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 67266 2017-06-06 10:33:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -644,6 +644,7 @@ void UISnapshotPane::sltUpdateSnapshotsAge()
 
 void UISnapshotPane::sltToggleSnapshotDetailsVisibility(bool fVisible)
 {
+    printf("sltToggleSnapshotDetailsVisibility(%d)\n", fVisible);
     /* Show/hide commit action and details-widget: */
     m_pActionCommitSnapshotDetails->setVisible(fVisible);
     m_pDetailsWidget->setVisible(fVisible);
@@ -1006,6 +1007,7 @@ void UISnapshotPane::prepareToolbar()
             connect(m_pActionShowSnapshotDetails, &QAction::toggled,
                     m_pActionCommitSnapshotDetails, &QAction::setVisible);
             m_pActionCommitSnapshotDetails->setShortcut(QString("Ctrl+Return"));
+            m_pActionCommitSnapshotDetails->setVisible(false);
         }
 
         m_pToolBar->addSeparator();
