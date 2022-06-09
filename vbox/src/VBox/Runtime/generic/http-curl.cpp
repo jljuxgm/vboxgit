@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 63451 2016-08-15 00:39:40Z vboxsync $ */
+/* $Id: http-curl.cpp 68968 2017-10-04 07:59:44Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -1712,10 +1712,13 @@ static int rtHttpWinConfigureProxyForUrl(PRTHTTPINTERNAL pThis, const char *pszU
                     else
                     {
                         DWORD dwErr = GetLastError();
-                        if (dwErr == ERROR_WINHTTP_AUTODETECTION_FAILED)
+                        if (   dwErr == ERROR_WINHTTP_AUTODETECTION_FAILED
+                            || (   dwErr == ERROR_WINHTTP_UNRECOGNIZED_SCHEME
+                                && (   RTStrNICmp(pszUrl, RT_STR_TUPLE("https://")) == 0
+                                    || RTStrNICmp(pszUrl, RT_STR_TUPLE("http://")) == 0) ) )
                             rcRet = rtHttpUpdateAutomaticProxyDisable(pThis);
                         else
-                            AssertMsgFailed(("g_pfnWinHttpGetProxyForUrl -> %u\n", dwErr));
+                            AssertMsgFailed(("g_pfnWinHttpGetProxyForUrl(%s) -> %u\n", pszUrl, dwErr));
                     }
                     RTUtf16Free(pwszUrl);
                 }
