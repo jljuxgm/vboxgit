@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 67743 2017-06-30 15:48:42Z vboxsync $
+# $Id: vbox.py 68263 2017-08-03 06:34:30Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67743 $"
+__version__ = "$Revision: 68263 $"
 
 
 # Standard Python imports.
@@ -2692,6 +2692,8 @@ class TestDriver(base.TestDriver):                                              
                                      ('cpumguestinstr', 'symbol all'),
                                      ('pic', ''),
                                      ('apic', ''),
+                                     ('apiclvt', ''),
+                                     ('apictimer', ''),
                                      ('ioapic', ''),
                                      ('pit', ''),
                                      ('phys', ''),
