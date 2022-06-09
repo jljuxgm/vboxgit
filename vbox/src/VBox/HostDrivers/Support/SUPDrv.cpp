@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 67822 2017-07-06 13:46:52Z vboxsync $ */
+/* $Id: SUPDrv.cpp 67823 2017-07-06 13:52:09Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4290,7 +4290,7 @@ int VBOXCALL supdrvQueryUcodeRev(uint32_t *puRevision)
  *          readable microcode rev.
  *
  * @param   pSession        The session handle.
- * @param   puRevisoion     Where to store the microcode revision.
+ * @param   puRevision      Where to store the microcode revision.
  */
 SUPR0DECL(int) SUPR0QueryUcodeRev(PSUPDRVSESSION pSession, uint32_t *puRevision)
 {
