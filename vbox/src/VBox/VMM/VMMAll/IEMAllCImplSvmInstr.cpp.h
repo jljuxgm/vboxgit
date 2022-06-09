@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 70736 2018-01-25 10:06:30Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 70863 2018-02-05 12:41:03Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -260,7 +260,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmexit(PVMCPU pVCpu, PCPUMCTX pCtx, uint64_t uExit
                 rcStrict = VINF_SVM_VMEXIT;
             else if (RT_SUCCESS(rcStrict))
             {
-                LogFlow(("iemSvmVmexit: Setting passup status from iemSvmWorldSwitch %Rrc\n", rcStrict));
+                LogFlow(("iemSvmVmexit: Setting passup status from iemSvmWorldSwitch %Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
                 iemSetPassUpStatus(pVCpu, rcStrict);
                 rcStrict = VINF_SVM_VMEXIT;
             }
