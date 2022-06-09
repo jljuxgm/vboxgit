@@ -1,4 +1,4 @@
-/* $Id: tracelogwriter.cpp 71494 2018-03-24 22:33:30Z vboxsync $ */
+/* $Id: tracelogwriter.cpp 71495 2018-03-24 22:37:15Z vboxsync $ */
 /** @file
  * IPRT - Trace log writer.
  */
@@ -387,9 +387,9 @@ DECLINLINE(size_t) rtTraceLogWrEvtInit(PTRACELOGEVT pEvt,
                                        RTTRACELOGEVTGRPID uGrpId, RTTRACELOGEVTGRPID uParentGrpId,
                                        size_t *pacbRawData)
 {
-    uint32_t cbEvtData = pEvtDescInt->cbEvtData;
+    uint32_t cbEvtData = (uint32_t)pEvtDescInt->cbEvtData;
     for (unsigned i = 0; i < pEvtDescInt->cRawDataNonStatic; i++)
-        cbEvtData += pacbRawData[i];
+        cbEvtData += (uint32_t)pacbRawData[i];
 
     uint32_t fEvtFlags = 0;
     if (fFlags & RTTRACELOG_WR_ADD_EVT_F_GRP_START)
