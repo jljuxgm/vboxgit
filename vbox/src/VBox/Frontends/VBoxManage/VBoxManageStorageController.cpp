@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 69681 2017-11-14 02:58:20Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -69,6 +69,7 @@ static const RTGETOPTDEF g_aStorageAttachOptions[] =
     { "--encodedlun",       'E', RTGETOPT_REQ_STRING },
     { "--username",         'U', RTGETOPT_REQ_STRING },
     { "--password",         'W', RTGETOPT_REQ_STRING },
+    { "--passwordfile",     'w', RTGETOPT_REQ_STRING },
     { "--initiator",        'N', RTGETOPT_REQ_STRING },
     { "--intnet",           'I', RTGETOPT_REQ_NOTHING },
 };
@@ -285,6 +286,15 @@ RTEXITCODE handleStorageAttach(HandlerArg *a)
                 bstrPassword = ValueUnion.psz;
                 break;
 
+			case 'w':   // --passwordFile
+			{
+				Utf8Str utf8Password;
+				RTEXITCODE rcExit = readPasswordFile(ValueUnion.psz, &utf8Password);
+				if (rcExit != RTEXITCODE_SUCCESS)
+					rc = E_FAIL;
+				bstrPassword = utf8Password;
+				break;
+			}
             case 'N':   // --initiator
                 bstrInitiator = ValueUnion.psz;
                 break;
