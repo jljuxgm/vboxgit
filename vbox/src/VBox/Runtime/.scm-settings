@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69434 2017-10-27 15:48:25Z vboxsync $
+# $Id: .scm-settings 69441 2017-10-27 16:02:15Z vboxsync $
 ## @file
 # Source code massager settings for Runtime.
 #
@@ -28,11 +28,6 @@
 
 
 /common/asn1/oiddb.cfg: --treat-as Makefile
-
-# TODO:
---filter-out-dirs  "/r0drv/solaris/vbi/*/."
---filter-out-dirs  "/common/math/gcc/."
-
 
 # Skip test certificates.
 --filter-out-files /testcase/tstRTCrX509*.pem
@@ -98,6 +93,8 @@
 /r3/win/VBoxRT-msvcp100-win32.def              : --external-copyright
 /r3/win/VBoxRT-msvcr100-win32.def              : --external-copyright
 
-/common/math/x86/fenv-x86.c                    : --external-copyright
+/common/math/x86/fenv-x86.c                    : --external-copyright --no-convert-tabs
 
+/common/math/gcc/*                             : --external-copyright --no-convert-tabs --dont-set-svn-keywords
+/common/math/gcc/udivmoddi4.c                  : --no-external-copyright --convert-tabs --set-svn-keywords
 
