@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 71298 2018-03-12 09:23:17Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 71310 2018-03-13 09:39:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -394,7 +394,7 @@ void UIGuestControlFileManager::prepareConnections()
     if (m_pQtGuestListener)
     {
         connect(m_pQtGuestListener->getWrapped(), &UIMainEventListener::sigGuestSessionUnregistered,
-                this, &UIGuestControlFileManager::sltGuestSessionUnregistered, Qt::DirectConnection);
+                this, &UIGuestControlFileManager::sltGuestSessionUnregistered);
     }
     if (m_pSessionCreateWidget)
     {

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlWidget.cpp 71191 2018-03-05 08:34:54Z vboxsync $ */
+/* $Id: UIGuestControlWidget.cpp 71310 2018-03-13 09:39:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlWidget class implementation.
  */
@@ -250,9 +250,9 @@ void UIGuestControlWidget::prepareConnections()
     if (m_pQtListener)
     {
         connect(m_pQtListener->getWrapped(), &UIMainEventListener::sigGuestSessionRegistered,
-                this, &UIGuestControlWidget::sltGuestSessionRegistered, Qt::DirectConnection);
+                this, &UIGuestControlWidget::sltGuestSessionRegistered);
         connect(m_pQtListener->getWrapped(), &UIMainEventListener::sigGuestSessionUnregistered,
-                this, &UIGuestControlWidget::sltGuestSessionUnregistered, Qt::DirectConnection);
+                this, &UIGuestControlWidget::sltGuestSessionUnregistered);
     }
 }
 
