@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 67546 2017-06-21 15:39:01Z vboxsync $ */
+/* $Id: UISnapshotPane.h 68962 2017-10-03 13:26:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -150,6 +150,8 @@ private:
         void prepareTreeWidget();
         /** Prepares details-widget. */
         void prepareDetailsWidget();
+        /** Load settings: */
+        void loadSettings();
 
         /** Refreshes everything. */
         void refreshAll();

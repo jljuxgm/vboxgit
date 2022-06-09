@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 68508 2017-08-22 14:42:51Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 68962 2017-10-03 13:26:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -150,6 +150,24 @@ namespace UIExtraDataDefs
         extern const char* GUI_DetailsPageBoxes;
         /** Holds selector-window details-pane' preview update interval. */
         extern const char* GUI_PreviewUpdate;
+    /** @} */
+
+    /** @name Snapshot Manager
+      * @{ */
+        /** Holds whether Snapshot Manager details expanded. */
+        extern const char* GUI_SnapshotManager_Details_Expanded;
+    /** @} */
+
+    /** @name Virtual Media Manager
+      * @{ */
+        /** Holds whether Virtual Media Manager details expanded. */
+        extern const char* GUI_VirtualMediaManager_Details_Expanded;
+    /** @} */
+
+    /** @name Host Network Manager
+      * @{ */
+        /** Holds whether Host Network Manager details expanded. */
+        extern const char* GUI_HostNetworkManager_Details_Expanded;
     /** @} */
 
     /** @name Wizards

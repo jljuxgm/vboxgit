@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 68304 2017-08-04 16:15:21Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 68962 2017-10-03 13:26:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -337,6 +337,30 @@ public:
         PreviewUpdateIntervalType selectorWindowPreviewUpdateInterval();
         /** Defines selector-window details-pane' preview update @a interval. */
         void setSelectorWindowPreviewUpdateInterval(PreviewUpdateIntervalType interval);
+    /** @} */
+
+    /** @name Snapshot Manager
+      * @{ */
+        /** Returns whether Snapshot Manager details expanded. */
+        bool snapshotManagerDetailsExpanded();
+        /** Defines whether Snapshot Manager details @a fExpanded. */
+        void setSnapshotManagerDetailsExpanded(bool fExpanded);
+    /** @} */
+
+    /** @name Virtual Media Manager
+      * @{ */
+        /** Returns whether Virtual Media Manager details expanded. */
+        bool virtualMediaManagerDetailsExpanded();
+        /** Defines whether Virtual Media Manager details @a fExpanded. */
+        void setVirtualMediaManagerDetailsExpanded(bool fExpanded);
+    /** @} */
+
+    /** @name Host Network Manager
+      * @{ */
+        /** Returns whether Host Network Manager details expanded. */
+        bool hostNetworkManagerDetailsExpanded();
+        /** Defines whether Host Network Manager details @a fExpanded. */
+        void setHostNetworkManagerDetailsExpanded(bool fExpanded);
     /** @} */
 
     /** @name Wizards

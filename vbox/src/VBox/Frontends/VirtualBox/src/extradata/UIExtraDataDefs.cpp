@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 68304 2017-08-04 16:15:21Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 68962 2017-10-03 13:26:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -87,6 +87,15 @@ const char* UIExtraDataDefs::GUI_GroupDefinitions = "GUI/GroupDefinitions";
 const char* UIExtraDataDefs::GUI_LastItemSelected = "GUI/LastItemSelected";
 const char* UIExtraDataDefs::GUI_DetailsPageBoxes = "GUI/DetailsPageBoxes";
 const char* UIExtraDataDefs::GUI_PreviewUpdate = "GUI/PreviewUpdate";
+
+/* Snapshot Manager: */
+const char* UIExtraDataDefs::GUI_SnapshotManager_Details_Expanded = "GUI/SnapshotManager/Details/Expanded";
+
+/* Virtual Media Manager: */
+const char* UIExtraDataDefs::GUI_VirtualMediaManager_Details_Expanded = "GUI/VirtualMediaManager/Details/Expanded";
+
+/* Host Network Manager: */
+const char* UIExtraDataDefs::GUI_HostNetworkManager_Details_Expanded = "GUI/HostNetworkManager/Details/Expanded";
 
 /* Wizards: */
 const char* UIExtraDataDefs::GUI_HideDescriptionForWizards = "GUI/HideDescriptionForWizards";

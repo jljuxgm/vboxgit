@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 68765 2017-09-14 16:02:08Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 68962 2017-10-03 13:26:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -914,7 +914,9 @@ void UISnapshotPane::sltUpdateSnapshotsAge()
 
 void UISnapshotPane::sltToggleSnapshotDetailsVisibility(bool fVisible)
 {
-    /* Show/hide commit action and details-widget: */
+    /* Save the setting: */
+    gEDataManager->setSnapshotManagerDetailsExpanded(fVisible);
+    /* Show/hide details-widget: */
     m_pDetailsWidget->setVisible(fVisible);
     /* If details-widget is visible: */
     if (m_pDetailsWidget->isVisible())
@@ -1221,6 +1223,9 @@ void UISnapshotPane::prepare()
     /* Prepare widgets: */
     prepareWidgets();
 
+    /* Load settings: */
+    loadSettings();
+
     /* Apply language settings: */
     retranslateUi();
 }
@@ -1356,6 +1361,12 @@ void UISnapshotPane::prepareDetailsWidget()
         /* Add into layout: */
         layout()->addWidget(m_pDetailsWidget);
     }
+}
+
+void UISnapshotPane::loadSettings()
+{
+    /* Details action/widget: */
+    m_pActionShowSnapshotDetails->setChecked(gEDataManager->snapshotManagerDetailsExpanded());
 }
 
 void UISnapshotPane::refreshAll()
