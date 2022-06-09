@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 71846 2018-04-12 12:12:17Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 71976 2018-04-23 10:52:51Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -78,6 +78,19 @@ private:
     /** Wrapped @name IGuestSession methods.
      * @{ */
     HRESULT close();
+
+    HRESULT copyFromGuest(const std::vector<com::Utf8Str> &aSources,
+                          const std::vector<com::Utf8Str> &aFilters,
+                          const std::vector<FsObjType_T> &aTypes,
+                          const std::vector<GuestCopyFlag_T> &aFlags,
+                          const com::Utf8Str &aDestination,
+                          ComPtr<IProgress> &aProgress);
+    HRESULT copyToGuest(const std::vector<com::Utf8Str> &aSources,
+                        const std::vector<com::Utf8Str> &aFilters,
+                        const std::vector<FsObjType_T> &aTypes,
+                        const std::vector<GuestCopyFlag_T> &aFlags,
+                        const com::Utf8Str &aDestination,
+                        ComPtr<IProgress> &aProgress);
 
     HRESULT directoryCopy(const com::Utf8Str &aSource,
                           const com::Utf8Str &aDestination,

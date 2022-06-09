@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 71648 2018-04-04 10:54:39Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 71976 2018-04-23 10:52:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -534,12 +534,12 @@ HRESULT Guest::updateGuestAdditions(const com::Utf8Str &aSource, const std::vect
         {
 
             ComObjPtr<Progress> pProgress;
-            SessionTaskUpdateAdditions *pTask = NULL;
+            GuestSessionTaskUpdateAdditions *pTask = NULL;
             try
             {
                 try
                 {
-                    pTask = new SessionTaskUpdateAdditions(pSession /* GuestSession */, aSource, aArgs, fFlags);
+                    pTask = new GuestSessionTaskUpdateAdditions(pSession /* GuestSession */, aSource, aArgs, fFlags);
                 }
                 catch(...)
                 {
