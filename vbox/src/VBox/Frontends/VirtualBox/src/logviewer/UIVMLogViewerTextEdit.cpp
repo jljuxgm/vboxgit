@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 70663 2018-01-21 21:28:37Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 70665 2018-01-22 08:30:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -270,7 +270,8 @@ void UIVMLogViewerTextEdit::retranslateUi()
 void UIVMLogViewerTextEdit::setBackground()
 {
     QPalette mPalette = palette();
-    /* When the text is marked as filtered blend a background indicating that */
+    /* Paint a string to the background of the text edit to indicate that
+       the text has been filtered */
     if (m_bShownTextIsFiltered)
     {
         QImage image(300, 100, QImage::Format_ARGB32_Premultiplied);
@@ -285,7 +286,7 @@ void UIVMLogViewerTextEdit::setBackground()
         fontColor.setAlpha(22);
         painter.setPen(fontColor);
         pfont.setBold(true);
-        pfont.setPixelSize(40);
+        pfont.setPixelSize(46);
         painter.setFont(pfont);
 
         painter.drawText(image.rect(), Qt::AlignCenter | Qt::AlignVCenter, m_strBackgroungText);
