@@ -1,4 +1,4 @@
-/* $Id: RTLdrCheckImports.cpp 70256 2017-12-21 06:13:13Z vboxsync $ */
+/* $Id: RTLdrCheckImports.cpp 70271 2017-12-21 12:26:39Z vboxsync $ */
 /** @file
  * IPRT - Module dependency checker.
  */
@@ -96,7 +96,7 @@ typedef struct RTCHECKIMPORTSTATE
     /** Number modules. */
     uint32_t                cImports;
     /** Import modules. */
-    RTCHECKIMPORTMODULE     aImports[];
+    RTCHECKIMPORTMODULE     aImports[RT_FLEXIBLE_ARRAY];
 } RTCHECKIMPORTSTATE;
 /** Pointer to the import checker state. */
 typedef RTCHECKIMPORTSTATE *PRTCHECKIMPORTSTATE;
