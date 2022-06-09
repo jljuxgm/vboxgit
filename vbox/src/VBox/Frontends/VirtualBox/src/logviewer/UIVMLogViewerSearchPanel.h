@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 70242 2017-12-20 13:04:06Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.h 70272 2017-12-21 12:35:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -41,6 +41,9 @@ class UIVMLogViewerSearchPanel : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
+signals:
+    void sigHighlightingUpdated();
+
 public:
 
     /** Constructs search-panel by passing @a pParent to the QWidget base-class constructor.
@@ -49,6 +52,7 @@ public:
     /** Resets the saech position and starts a new search. */
     void refresh();
     void reset();
+    const QVector<float> &getMatchLocationVector() const;
 
 protected:
 
@@ -62,8 +66,8 @@ private slots:
     /** Handles textchanged signal from search-editor.
       * @param  strSearchString  Specifies search-string. */
     void findCurrent(const QString &strSearchString);
-
     void sltHighlightAllCheckBox();
+
 private:
     enum SearchDirection { ForwardSearch, BackwardSearch };
     /** Prepares search-panel. */
@@ -130,7 +134,10 @@ private:
       0: no matches found
       n > 0: n matches found. */
     int          m_iMatchCount;
+    /** Stores relative positions of the lines of the matches. The values are [0,1] 0 being the first line 1 being the last. */
+    QVector<float> m_matchLocationVector;
 };
 
 
 #endif /* !___UIVMLogViewerSearchPanel_h___ */
+

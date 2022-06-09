@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69933 2017-12-05 11:11:39Z vboxsync $
+# $Id: Makefile.kmk 70272 2017-12-21 12:35:24Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -544,6 +544,7 @@ VirtualBox_QT_MOCSRCS = \
 	src/globals/UIActionPool.cpp \
 	src/globals/UIMainEventListener.cpp \
 	src/globals/UIThreadPool.cpp \
+	src/logviewer/UIVMLogViewerWidget.cpp \
 	src/medium/UIMediumEnumerator.cpp \
 	src/runtime/UIActionPoolRuntime.cpp \
 	src/runtime/UIAddDiskEncryptionPasswordDialog.cpp \
