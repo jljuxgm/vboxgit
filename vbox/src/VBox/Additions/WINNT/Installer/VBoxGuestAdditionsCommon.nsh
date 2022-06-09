@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsCommon.nsh 69500 2017-10-28 15:14:05Z vboxsync $
+; $Id: VBoxGuestAdditionsCommon.nsh 70164 2017-12-15 17:32:56Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsCommon.nsh - Common / shared utility functions.
 ;
@@ -203,11 +203,6 @@ Function ExtractFiles
   FILE "$%PATH_OUT%\bin\additions\VBoxTray.exe"
   FILE "$%PATH_OUT%\bin\additions\VBoxHook.dll"
   FILE "$%PATH_OUT%\bin\additions\VBoxControl.exe"
-
-!if $%BUILD_TARGET_ARCH% == "x86"
-  SetOutPath "$0\VBoxGuest\NT4"
-  FILE "$%PATH_OUT%\bin\additions\VBoxGuestNT.sys"
-!endif
 
   ; VBoxService
   SetOutPath "$0\Bin"

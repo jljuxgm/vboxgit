@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInst.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuestInst.cpp 70164 2017-12-15 17:32:56Z vboxsync $ */
 /** @file
  * Small tool to (un)install the VBoxGuest device driver.
  */
@@ -55,7 +55,7 @@ static int installDriver(void)
 
     char szDriver[MAX_PATH];
     GetSystemDirectory(szDriver, sizeof(szDriver));
-    strcat(szDriver, "\\drivers\\VBoxGuestNT.sys");
+    strcat(szDriver, "\\drivers\\VBoxGuest.sys");
 
     SC_HANDLE hService = CreateService(hSMgrCreate,
                                        VBOXGUEST_SERVICE_NAME,

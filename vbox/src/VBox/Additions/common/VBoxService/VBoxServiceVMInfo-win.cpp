@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 70164 2017-12-15 17:32:56Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -1365,11 +1365,10 @@ int VGSvcVMInfoWinGetComponentVersions(uint32_t uClientID)
 # endif
 #endif /* !RT_ARCH_AMD64 */
 
+        { szDriversDir, "VBoxGuest.sys" },
 #ifdef TARGET_NT4
-        { szDriversDir, "VBoxGuestNT.sys" },
         { szDriversDir, "VBoxMouseNT.sys" },
 #else
-        { szDriversDir, "VBoxGuest.sys" },
         { szDriversDir, "VBoxMouse.sys" },
         { szDriversDir, "VBoxSF.sys"    },
 #endif
