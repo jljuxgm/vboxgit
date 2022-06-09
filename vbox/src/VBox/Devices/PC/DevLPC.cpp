@@ -1,4 +1,4 @@
-/* $Id: DevLPC.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevLPC.cpp 69502 2017-10-28 16:14:09Z vboxsync $ */
 /** @file
  * DevLPC - LPC device emulation
  *
@@ -44,6 +44,15 @@
  * same as the ISA-bridge in the existing PIIX implementation, but
  * more recent and includes support for HPET and Power Management.
  *
+ */
+
+/*
+ * Oracle LGPL Disclaimer: For the avoidance of doubt, except that if any license choice
+ * other than GPL or LGPL is available it will apply instead, Oracle elects to use only
+ * the Lesser General Public License version 2.1 (LGPLv2) at this time for any software where
+ * a choice of LGPL license versions is made available with the language indicating
+ * that LGPLv2 or any later version may be used, or where a choice of which version
+ * of the LGPL is applied is otherwise unspecified.
  */
 
 
