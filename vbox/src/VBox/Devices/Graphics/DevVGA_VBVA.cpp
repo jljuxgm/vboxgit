@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 70075 2017-12-12 09:54:21Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2736,6 +2736,8 @@ static DECLCALLBACK(int) vbvaChannelHandler(void *pvHandler, uint16_t u16Channel
             LogRelFlowFunc(("VBVA: ChannelHandler: VBVA_CURSOR_POSITION: fReportPosition=%RTbool, x=%RU32, y=%RU32\n",
                             RT_BOOL(pReport->fReportPosition), pReport->x, pReport->y));
 
+            pVGAState->pDrv->pfnVBVAReportCursorPosition(pVGAState->pDrv, pReport->fReportPosition,
+                                                         pReport->x, pReport->y);
             pReport->x = pCtx->xCursor;
             pReport->y = pCtx->yCursor;
         } break;

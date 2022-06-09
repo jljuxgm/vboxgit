@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMainEventListener.h 70075 2017-12-12 09:54:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -125,6 +125,9 @@ signals:
     void sigProgressPercentageChange(QString strProgressId, int iPercent);
     /** Notifies about task complete for progress with @a strProgressId. */
     void sigProgressTaskComplete(QString strProgressId);
+
+    /** Notifies about guest requests to change the cursor position. If @a fData is not set this merely notifies that the guest supports this.  This notification must be sent after every screen configuration change. */
+    void sigCursorPositionChange(bool fData, unsigned long X, unsigned long Y);
 
 public:
 

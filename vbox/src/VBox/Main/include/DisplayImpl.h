@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 70035 2017-12-08 15:50:01Z vboxsync $ */
+/* $Id: DisplayImpl.h 70075 2017-12-12 09:54:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -382,6 +382,7 @@ private:
 
     static DECLCALLBACK(void)  i_displayVBVAInputMappingUpdate(PPDMIDISPLAYCONNECTOR pInterface, int32_t xOrigin, int32_t yOrigin,
                                                                uint32_t cx, uint32_t cy);
+    static DECLCALLBACK(void)  i_displayVBVAReportCursorPosition(PPDMIDISPLAYCONNECTOR pInterface, bool fData, uint32_t x, uint32_t y);
 #endif
 
 #if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL)

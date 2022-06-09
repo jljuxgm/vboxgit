@@ -1,4 +1,4 @@
-/* $Id: VBoxVideo.h 69307 2017-10-25 13:46:45Z vboxsync $ */
+/* $Id: VBoxVideo.h 70075 2017-12-12 09:54:21Z vboxsync $ */
 /** @file
  * VirtualBox Video interface.
  */
@@ -1278,8 +1278,11 @@ typedef struct VBVAREPORTINPUTMAPPING
 } VBVAREPORTINPUTMAPPING;
 
 /** Report the guest cursor position and query the host one.  The host may wish
- *  to use the guest information to re-position its own cursor (though this is
- *  currently unlikely).
+ *  to use the guest information to re-position its own cursor, particularly
+ *  when the cursor is captured and the guest does not support switching to a
+ *  software cursor.  After every mode switch the guest must signal that it
+ *  supports sending position information by sending an event with
+ *  @a fReportPosition set to false.
  *  @see VBVA_CURSOR_POSITION */
 typedef struct VBVACURSORPOSITION
 {

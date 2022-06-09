@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 70075 2017-12-12 09:54:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -196,7 +196,8 @@ void UIConsoleEventHandlerProxy::prepareListener()
         << KVBoxEventType_OnRuntimeError
         << KVBoxEventType_OnCanShowWindow
         << KVBoxEventType_OnShowWindow
-        << KVBoxEventType_OnAudioAdapterChanged;
+        << KVBoxEventType_OnAudioAdapterChanged
+        << KVBoxEventType_OnCursorPositionChanged;
 
     /* Register event listener for console event source: */
     comEventSourceConsole.RegisterListener(m_comEventListener, eventTypes,
