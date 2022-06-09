@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 71237 2018-03-06 11:28:48Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 71245 2018-03-06 16:12:36Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -1155,7 +1155,7 @@ static NDIS_STATUS vboxNetLwfWinAttach(IN NDIS_HANDLE hFilter, IN NDIS_HANDLE hD
         pModuleCtx->cbOffloadConfig = pParameters->DefaultOffloadConfiguration->Header.Size;
     else
         vboxNetLwfLogErrorEvent(IO_ERR_INTERNAL_ERROR, STATUS_SUCCESS, 8);
-    
+
     pModuleCtx->pSavedOffloadConfig =
         (PNDIS_OFFLOAD)NdisAllocateMemoryWithTagPriority(hFilter, pModuleCtx->cbOffloadConfig,
                                                          VBOXNETLWF_MEM_TAG, LowPoolPriority);
