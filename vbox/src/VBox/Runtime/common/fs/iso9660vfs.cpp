@@ -1,4 +1,4 @@
-/* $Id: iso9660vfs.cpp 67568 2017-06-22 16:24:56Z vboxsync $ */
+/* $Id: iso9660vfs.cpp 67569 2017-06-22 16:28:41Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 Virtual Filesystem.
  */
@@ -933,6 +933,7 @@ static PRTFSISO9660CORE rtFsIso9660Dir_LookupShared(PRTFSISO9660DIRSHRD pThis, u
 }
 
 
+#ifdef RT_STRICT
 /**
  * Checks if @a pNext is an extent of @a pFirst.
  *
@@ -953,6 +954,7 @@ DECLINLINE(bool) rtFsIso9660Dir_IsDirRecNextExtent(PCISO9660DIRREC pFirst, PCISO
     }
     return false;
 }
+#endif /* RT_STRICT */
 
 
 /**
