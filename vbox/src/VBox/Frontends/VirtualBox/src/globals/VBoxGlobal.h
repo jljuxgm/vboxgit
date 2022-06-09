@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 66662 2017-04-24 17:55:47Z vboxsync $ */
+/* $Id: VBoxGlobal.h 67212 2017-06-01 14:33:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -310,7 +310,10 @@ public:
     QString toolTip (const CUSBDeviceFilter &aFilter) const;
     QString toolTip(const CHostVideoInputDevice &webcam) const;
 
-    QString detailsReport (const CMachine &aMachine, bool aWithLinks);
+    /** Returns a details report on a given VM represented as a HTML table.
+      * @param  comMachine  Brings the machine object to create a report for.
+      * @param  fWithLinks  Brings @c true if section titles should be hypertext links. */
+    QString detailsReport(const CMachine &comMachine, bool fWithLinks);
 
     /* VirtualBox helpers */
 
