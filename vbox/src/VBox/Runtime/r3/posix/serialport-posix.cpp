@@ -1,4 +1,4 @@
-/* $Id: serialport-posix.cpp 70633 2018-01-18 15:21:10Z vboxsync $ */
+/* $Id: serialport-posix.cpp 70760 2018-01-28 20:18:59Z vboxsync $ */
 /** @file
  * IPRT - Serial Port API, POSIX Implementation.
  */
@@ -933,7 +933,7 @@ RTDECL(int) RTSerialPortEvtPoll(RTSERIALPORT hSerialPort, uint32_t fEvtMask, uin
         if (aPollFds[0].revents != 0)
         {
             fEvtsPending |= (aPollFds[0].revents & POLLIN) ? RTSERIALPORT_EVT_F_DATA_RX : 0;
-            fEvtsPending |= (aPollFds[0].revents & POLLIN) ? RTSERIALPORT_EVT_F_DATA_TX : 0;
+            fEvtsPending |= (aPollFds[0].revents & POLLOUT) ? RTSERIALPORT_EVT_F_DATA_TX : 0;
             /** @todo BREAK condition detection. */
         }
 
