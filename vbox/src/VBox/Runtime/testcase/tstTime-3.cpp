@@ -1,4 +1,4 @@
-/* $Id: tstTime-3.cpp 70405 2018-01-01 17:45:14Z vboxsync $ */
+/* $Id: tstTime-3.cpp 70406 2018-01-01 17:46:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime test.
  */
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
         RTThreadSleep(cSeconds * 1000);
 
         uint64_t u64RTElapsedTS = RTTimeNanoTS();
-        uint64_t u64OSElapsedTS = OSNanoTS();
+        uint64_t u64OSElapsedTS = RTTimeSystemNanoTS();
         u64RTElapsedTS -= u64RTStartTS;
         u64OSElapsedTS -= u64OSStartTS;
 
