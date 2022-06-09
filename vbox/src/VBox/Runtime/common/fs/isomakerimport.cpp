@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 67842 2017-07-06 17:27:42Z vboxsync $ */
+/* $Id: isomakerimport.cpp 67843 2017-07-06 17:29:04Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -677,7 +677,6 @@ static void rtFsIsoImportProcessIso9660TreeWorkerParseRockRidge(PRTFSISOMKIMPORT
              */
             case MAKE_SIG(ISO9660SUSPCE_SIG1, ISO9660SUSPCE_SIG2):
             {
-__debugbreak();
                 if (RT_BE2H_U32(pUnion->CE.offBlock.be) != RT_LE2H_U32(pUnion->CE.offBlock.le))
                     LogRel(("rtFsIsoImport/Rock: Invalid CE offBlock field: be=%#x vs le=%#x\n",
                             RT_BE2H_U32(pUnion->CE.offBlock.be), RT_LE2H_U32(pUnion->CE.offBlock.le)));
