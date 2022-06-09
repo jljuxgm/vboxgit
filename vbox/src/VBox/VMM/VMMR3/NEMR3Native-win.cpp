@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 71286 2018-03-09 12:52:43Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 71289 2018-03-09 13:37:04Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -2368,6 +2368,15 @@ void nemR3NativeNotifySetA20(PVMCPU pVCpu, bool fEnabled)
  *   Workaround: Insert a WHvRunVirtualProcessor call and make sure to get a GPA
  *   unmapped exit between the two calls.  Not entirely great performance wise
  *   (or the santity of our code).
+ *
+ *
+ * - Implementing A20 gate behavior is tedious, where as correctly emulating the
+ *   A20M# pin (present on 486 and later) is near impossible for SMP setups
+ *   (e.g. possiblity of two CPUs with different A20 status).
+ *
+ *   Workaround: Only do A20 on CPU 0, restricting the emulation to HMA.  We
+ *   unmap all pages related to HMA (0x100000..0x10ffff) when the A20 state
+ *   changes, lazily syncing the right pages back when accessed.
  *
  *
  * - WHVRunVirtualProcessor wastes time converting VID/Hyper-V messages to its
