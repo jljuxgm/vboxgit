@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: HM.cpp 70986 2018-02-13 09:41:54Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1241,15 +1241,15 @@ static int hmR3InitFinalizeR0(PVM pVM)
                 pCpuCtx->fWorldSwitcher |= CPUMCTX_WSF_IBPB_ENTRY;
         }
         if (iCpu == 0)
-            LogRel(("HM: fWorldSwitcher=%#x (fIbpbOnVmExit=%d fIbpbOnVmEntry=%d)\n",
+            LogRel(("HM: fWorldSwitcher=%#x (fIbpbOnVmExit=%RTbool fIbpbOnVmEntry=%RTbool)\n",
                     pCpuCtx->fWorldSwitcher, pVM->hm.s.fIbpbOnVmExit, pVM->hm.s.fIbpbOnVmEntry));
     }
 
     /*
-     * Do the vendor specific initialization                                                                                                               .
-     *                                                                                                                                                    .
-     * Note! We disable release log buffering here since we're doing relatively                                                                           .
-     *       lot of logging and doesn't want to hit the disk with each LogRel                                                                             .
+     * Do the vendor specific initialization
+     *
+     * Note! We disable release log buffering here since we're doing relatively
+     *       lot of logging and doesn't want to hit the disk with each LogRel
      *       statement.
      */
     AssertLogRelReturn(!pVM->hm.s.fInitialized, VERR_HM_IPE_5);
