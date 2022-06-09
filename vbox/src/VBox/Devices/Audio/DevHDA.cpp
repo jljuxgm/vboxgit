@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 70642 2018-01-19 12:18:45Z vboxsync $ */
+/* $Id: DevHDA.cpp 70669 2018-01-22 09:08:52Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -4613,6 +4613,8 @@ static DECLCALLBACK(int) hdaAttach(PPDMDEVINS pDevIns, unsigned uLUN, uint32_t f
 
     DEVHDA_LOCK_RETURN(pThis, VINF_IOM_R3_MMIO_WRITE);
 
+    LogFunc(("uLUN=%u, fFlags=0x%x\n", uLUN, fFlags));
+
     PHDADRIVER pDrv;
     int rc2 = hdaAttachInternal(pThis, uLUN, fFlags, &pDrv);
     if (RT_SUCCESS(rc2))
@@ -4653,9 +4655,9 @@ static DECLCALLBACK(void) hdaDetach(PPDMDEVINS pDevIns, unsigned uLUN, uint32_t 
 {
     PHDASTATE pThis = PDMINS_2_DATA(pDevIns, PHDASTATE);
 
-    LogFunc(("uLUN=%u, fFlags=0x%x\n", uLUN, fFlags));
-
     DEVHDA_LOCK(pThis);
+
+    LogFunc(("uLUN=%u, fFlags=0x%x\n", uLUN, fFlags));
 
     PHDADRIVER pDrv, pDrvNext;
     RTListForEachSafe(&pThis->lstDrv, pDrv, pDrvNext, HDADRIVER, Node)
