@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 71996 2018-04-24 07:49:53Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 71997 2018-04-24 08:05:09Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -189,7 +189,7 @@ HRESULT MachineMoveVM::init()
                 LogRelFunc(("Can't create a test file %s (The error is %Rrc)\n", strTempFile.c_str(), vrc));
                 Utf8StrFmt errorDesc("Can't create a test file test.txt in the %s. Check the access rights of "
                                      "the destination folder.", strTargetFolder.c_str());
-                errorsList.push_back(ErrorInfoItem(vrc, errorDesc.c_str()));
+                errorsList.push_back(ErrorInfoItem(HRESULT(vrc), errorDesc.c_str()));
                 rc = m_pMachine->setError(vrc, m_pMachine->tr(errorDesc.c_str()));
 
             }

@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 71990 2018-04-24 06:48:25Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 71997 2018-04-24 08:05:09Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -64,7 +64,7 @@ class MachineMoveVM : public ThreadTask
 {
     struct ErrorInfoItem
     {
-        ErrorInfoItem(unsigned int aCode, const char* aDescription):
+        ErrorInfoItem(HRESULT aCode, const char* aDescription):
             m_code(aCode),
             m_description(aDescription == NULL ? "There is no description" : aDescription)
         {
