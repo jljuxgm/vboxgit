@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67420 2017-06-15 09:57:59Z vboxsync $ */
+/* $Id: DevHDA.cpp 67421 2017-06-15 10:39:37Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -5292,7 +5292,7 @@ static int hdaStreamDoDMA(PHDASTATE pThis, PHDASTREAM pStream, void *pvBuf, uint
  */
 uint32_t hdaStreamGetDataSize(PHDASTREAM pStream)
 {
-    AssertPtrReturn(pStream, VERR_INVALID_POINTER);
+    AssertPtrReturn(pStream, 0);
 
     if (!pStream->State.pCircBuf)
         return 0;
