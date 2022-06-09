@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 71454 2018-03-22 13:21:57Z vboxsync $ */
+/* $Id: UIMainEventListener.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -21,6 +21,9 @@
 /* Qt includes: */
 #include <QList>
 #include <QObject>
+
+/* GUI includes: */
+#include "UILibraryDefs.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -57,7 +60,7 @@ class CGuestSessionStateChangedEvent;
  * queue and deliver it later on. */
 
 /** Main event listener. */
-class UIMainEventListener : public QObject
+class SHARED_LIBRARY_STUFF UIMainEventListener : public QObject
 {
     Q_OBJECT;
 

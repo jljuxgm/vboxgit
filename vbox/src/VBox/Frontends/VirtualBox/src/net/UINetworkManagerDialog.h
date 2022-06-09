@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerDialog.h 71466 2018-03-22 16:39:35Z vboxsync $ */
+/* $Id: UINetworkManagerDialog.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerDialog stuff declaration.
  */
@@ -25,6 +25,7 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
+#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QLabel;
@@ -35,7 +36,7 @@ class UINetworkRequest;
 class UINetworkRequestWidget;
 
 /** QMainWindow reimplementation to reflect network-requests. */
-class UINetworkManagerDialog : public QIWithRetranslateUI<QMainWindow>
+class SHARED_LIBRARY_STUFF UINetworkManagerDialog : public QIWithRetranslateUI<QMainWindow>
 {
     Q_OBJECT;
 

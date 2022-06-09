@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.h 71461 2018-03-22 15:07:08Z vboxsync $ */
+/* $Id: UIUpdateManager.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class declaration.
  */
@@ -21,12 +21,15 @@
 /* Qt includes: */
 #include <QObject>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* Forward declarations: */
 class UIUpdateQueue;
 
 /** Singleton to perform new version checks
   * and update of various VirtualBox parts. */
-class UIUpdateManager : public QObject
+class SHARED_LIBRARY_STUFF UIUpdateManager : public QObject
 {
     Q_OBJECT;
 

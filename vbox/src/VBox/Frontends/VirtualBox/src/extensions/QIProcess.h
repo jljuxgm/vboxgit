@@ -1,4 +1,4 @@
-/* $Id: QIProcess.h 71402 2018-03-20 13:43:07Z vboxsync $ */
+/* $Id: QIProcess.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIProcess class declaration.
  */
@@ -21,8 +21,11 @@
 /* Qt includes: */
 #include <QProcess>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /** QProcess extension for VBox GUI needs. */
-class QIProcess : public QProcess
+class SHARED_LIBRARY_STUFF QIProcess : public QProcess
 {
     Q_OBJECT;
 

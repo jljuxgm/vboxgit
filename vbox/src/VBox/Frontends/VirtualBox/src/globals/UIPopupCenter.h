@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.h 71489 2018-03-23 15:21:03Z vboxsync $ */
+/* $Id: UIPopupCenter.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class declaration.
  */
@@ -24,6 +24,7 @@
 #include <QPointer>
 
 /* GUI includes: */
+#include "UILibraryDefs.h"
 #include "UIMediumDefs.h"
 
 /* Forward declaration: */
@@ -56,7 +57,7 @@ enum UIPopupStackOrientation
 
 /** Singleton QObject extension
   * providing GUI with various popup messages. */
-class UIPopupCenter: public QObject
+class SHARED_LIBRARY_STUFF UIPopupCenter: public QObject
 {
     Q_OBJECT;
 

@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.h 71392 2018-03-20 11:04:03Z vboxsync $ */
+/* $Id: QIFileDialog.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIFileDialog class declarations.
  */
@@ -21,8 +21,11 @@
 /* Qt includes: */
 #include <QFileDialog>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /** QFileDialog subclass simplifying access to it's static stuff. */
-class QIFileDialog : public QFileDialog
+class SHARED_LIBRARY_STUFF QIFileDialog : public QFileDialog
 {
     Q_OBJECT;
 

@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.h 71434 2018-03-21 14:12:10Z vboxsync $ */
+/* $Id: UIDownloader.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloader class declaration.
  */
@@ -23,6 +23,7 @@
 #include <QList>
 
 /* GUI includes: */
+#include "UILibraryDefs.h"
 #include "UINetworkCustomer.h"
 #include "UINetworkDefs.h"
 
@@ -32,7 +33,7 @@ class UINetworkReply;
 
 /** Downloader interface.
   * UINetworkCustomer class extension which allows background http downloading. */
-class UIDownloader : public UINetworkCustomer
+class SHARED_LIBRARY_STUFF UIDownloader : public UINetworkCustomer
 {
     Q_OBJECT;
 

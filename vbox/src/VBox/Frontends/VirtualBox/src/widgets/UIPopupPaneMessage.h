@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneMessage.h 71515 2018-03-26 14:32:57Z vboxsync $ */
+/* $Id: UIPopupPaneMessage.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneMessage class declaration.
  */
@@ -21,12 +21,15 @@
 /* Qt includes: */
 #include <QWidget>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* Forward declarations: */
 class QLabel;
 class UIAnimation;
 
 /** QWidget extension providing GUI with popup-pane message-pane prototype class. */
-class UIPopupPaneMessage : public QWidget
+class SHARED_LIBRARY_STUFF UIPopupPaneMessage : public QWidget
 {
     Q_OBJECT;
     Q_PROPERTY(QSize collapsedSizeHint READ collapsedSizeHint);

@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 71428 2018-03-21 13:01:35Z vboxsync $ */
+/* $Id: UIDefs.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -21,6 +21,9 @@
 /* Qt includes: */
 #include <QEvent>
 #include <QStringList>
+
+/* GUI includes: */
+#include "UILibraryDefs.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -76,18 +79,18 @@ namespace UIDefs
     };
 
     /** Default guest additions image name. */
-    extern const char* GUI_GuestAdditionsName;
+    SHARED_LIBRARY_STUFF extern const char* GUI_GuestAdditionsName;
     /** Default extension pack name. */
-    extern const char* GUI_ExtPackName;
+    SHARED_LIBRARY_STUFF extern const char* GUI_ExtPackName;
 
     /** Allowed VBox file extensions. */
-    extern QStringList VBoxFileExts;
+    SHARED_LIBRARY_STUFF extern QStringList VBoxFileExts;
     /** Allowed VBox Extension Pack file extensions. */
-    extern QStringList VBoxExtPackFileExts;
+    SHARED_LIBRARY_STUFF extern QStringList VBoxExtPackFileExts;
     /** Allowed OVF file extensions. */
-    extern QStringList OVFFileExts;
+    SHARED_LIBRARY_STUFF extern QStringList OVFFileExts;
     /** Allowed OPC file extensions. */
-    extern QStringList OPCFileExts;
+    SHARED_LIBRARY_STUFF extern QStringList OPCFileExts;
 }
 using namespace UIDefs /* if header included */;
 

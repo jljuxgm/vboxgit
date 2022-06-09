@@ -1,4 +1,4 @@
-/* $Id: QIArrowSplitter.h 71395 2018-03-20 11:40:33Z vboxsync $ */
+/* $Id: QIArrowSplitter.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIArrowSplitter class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
+#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QVBoxLayout;
@@ -36,7 +37,7 @@ typedef QList<QStringPair> QStringPairList;
 
 /** QWidget extension
   * allowing to toggle visibility for any other child widget. */
-class QIArrowSplitter : public QIWithRetranslateUI<QWidget>
+class SHARED_LIBRARY_STUFF QIArrowSplitter : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 71459 2018-03-22 14:41:03Z vboxsync $ */
+/* $Id: UIMessageCenter.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -22,6 +22,7 @@
 #include <QObject>
 
 /* GUI includes: */
+#include "UILibraryDefs.h"
 #include "UIMediumDefs.h"
 
 /* COM includes: */
@@ -51,7 +52,7 @@ Q_DECLARE_METATYPE(MessageType);
 
 /** Singleton QObject extension
   * providing GUI with corresponding messages. */
-class UIMessageCenter : public QObject
+class SHARED_LIBRARY_STUFF UIMessageCenter : public QObject
 {
     Q_OBJECT;
 

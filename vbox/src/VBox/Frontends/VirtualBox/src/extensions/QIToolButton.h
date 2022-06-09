@@ -1,4 +1,4 @@
-/* $Id: QIToolButton.h 71346 2018-03-15 10:03:10Z vboxsync $ */
+/* $Id: QIToolButton.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIToolButton class declaration.
  */
@@ -21,8 +21,11 @@
 /* Qt includes: */
 #include <QToolButton>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /** QToolButton subclass with extended functionality. */
-class QIToolButton : public QToolButton
+class SHARED_LIBRARY_STUFF QIToolButton : public QToolButton
 {
     Q_OBJECT;
 

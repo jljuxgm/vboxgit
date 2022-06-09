@@ -1,4 +1,4 @@
-/* $Id: UIErrorString.h 71436 2018-03-21 15:04:34Z vboxsync $ */
+/* $Id: UIErrorString.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIErrorString class declaration.
  */
@@ -21,6 +21,9 @@
 /* Qt includes: */
 #include <QString>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* Other VBox includes: */
 #include <VBox/com/defs.h>
 
@@ -32,7 +35,7 @@ class CProgress;
 class CVirtualBoxErrorInfo;
 
 /** Namespace simplifying COM error formatting. */
-class UIErrorString
+class SHARED_LIBRARY_STUFF UIErrorString
 {
 public:
 

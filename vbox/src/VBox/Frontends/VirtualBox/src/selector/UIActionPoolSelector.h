@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 71621 2018-04-02 17:32:27Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
@@ -20,6 +20,7 @@
 
 /* GUI includes: */
 #include "UIActionPool.h"
+#include "UILibraryDefs.h"
 
 
 /** Runtime action-pool index enum.
@@ -112,7 +113,7 @@ enum UIActionIndexST
 
 /** UIActionPool extension
   * representing action-pool singleton for Selector UI. */
-class UIActionPoolSelector : public UIActionPool
+class SHARED_LIBRARY_STUFF UIActionPoolSelector : public UIActionPool
 {
     Q_OBJECT;
 

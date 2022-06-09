@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.h 71528 2018-03-27 16:30:31Z vboxsync $ */
+/* $Id: UIUpdateDefs.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Update routine related declarations.
  */
@@ -22,6 +22,7 @@
 #include <QDate>
 
 /* GUI includes: */
+#include "UILibraryDefs.h"
 #include "UIVersion.h"
 
 
@@ -40,7 +41,7 @@ typedef QList<VBoxUpdateDay> VBoxUpdateDayList;
 
 
 /** Class used to encode/decode update data. */
-class VBoxUpdateData
+class SHARED_LIBRARY_STUFF VBoxUpdateData
 {
 public:
 

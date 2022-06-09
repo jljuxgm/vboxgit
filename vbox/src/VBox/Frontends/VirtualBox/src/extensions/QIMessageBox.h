@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.h 71401 2018-03-20 13:33:21Z vboxsync $ */
+/* $Id: QIMessageBox.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMessageBox class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* GUI includes: */
 #include "QIDialog.h"
+#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QCheckBox;
@@ -77,7 +78,7 @@ enum AlertIconType
 
 
 /** QIDialog extension representing GUI alerts. */
-class QIMessageBox : public QIDialog
+class SHARED_LIBRARY_STUFF QIMessageBox : public QIDialog
 {
     Q_OBJECT;
 

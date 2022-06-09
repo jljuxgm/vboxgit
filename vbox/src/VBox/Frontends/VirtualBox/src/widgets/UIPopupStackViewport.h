@@ -1,4 +1,4 @@
-/* $Id: UIPopupStackViewport.h 71521 2018-03-26 17:09:08Z vboxsync $ */
+/* $Id: UIPopupStackViewport.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStackViewport class declaration.
  */
@@ -22,13 +22,16 @@
 #include <QWidget>
 #include <QMap>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* Forward declaration: */
 class QSize;
 class QString;
 class UIPopupPane;
 
 /** QWidget extension providing GUI with popup-stack viewport prototype class. */
-class UIPopupStackViewport : public QWidget
+class SHARED_LIBRARY_STUFF UIPopupStackViewport : public QWidget
 {
     Q_OBJECT;
 

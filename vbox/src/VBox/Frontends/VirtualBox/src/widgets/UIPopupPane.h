@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.h 71490 2018-03-23 15:49:49Z vboxsync $ */
+/* $Id: UIPopupPane.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPane class declaration.
  */
@@ -24,6 +24,7 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
+#include "UILibraryDefs.h"
 
 /* Forward declaration: */
 class QEvent;
@@ -41,7 +42,7 @@ class UIPopupPaneMessage;
 class UIPopupPaneButtonPane;
 
 /** QWidget extension used as popup-center pane prototype. */
-class UIPopupPane : public QIWithRetranslateUI<QWidget>
+class SHARED_LIBRARY_STUFF UIPopupPane : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
     Q_PROPERTY(QSize hiddenSizeHint READ hiddenSizeHint);

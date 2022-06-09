@@ -1,4 +1,4 @@
-/* $Id: QISplitter.h 71407 2018-03-20 14:55:53Z vboxsync $ */
+/* $Id: QISplitter.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QISplitter class declaration.
  */
@@ -21,11 +21,14 @@
 /* Qt includes: */
 #include <QSplitter>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* Forward declarations: */
 class QSplitterHandle;
 
 /** QSplitter subclass with extended functionality. */
-class QISplitter : public QSplitter
+class SHARED_LIBRARY_STUFF QISplitter : public QSplitter
 {
     Q_OBJECT;
 

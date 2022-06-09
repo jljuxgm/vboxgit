@@ -1,4 +1,4 @@
-/* $Id: QILabel.h 71399 2018-03-20 13:13:24Z vboxsync $ */
+/* $Id: QILabel.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILabel class declaration.
  */
@@ -25,8 +25,11 @@
 /* Qt includes: */
 #include <QLabel>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /** QLabel subclass extending it with advanced functionality. */
-class QILabel : public QLabel
+class SHARED_LIBRARY_STUFF QILabel : public QLabel
 {
     Q_OBJECT;
 

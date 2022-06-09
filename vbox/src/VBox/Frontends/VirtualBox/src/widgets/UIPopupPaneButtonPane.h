@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneButtonPane.h 71513 2018-03-26 14:11:28Z vboxsync $ */
+/* $Id: UIPopupPaneButtonPane.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneButtonPane class declaration.
  */
@@ -22,6 +22,9 @@
 #include <QWidget>
 #include <QMap>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* Forward declarations: */
 class QHBoxLayout;
 class QIcon;
@@ -30,7 +33,7 @@ class QString;
 class QIToolButton;
 
 /** QWidget extension providing GUI with popup-pane button-pane prototype class. */
-class UIPopupPaneButtonPane : public QWidget
+class SHARED_LIBRARY_STUFF UIPopupPaneButtonPane : public QWidget
 {
     Q_OBJECT;
 

@@ -1,4 +1,4 @@
-/* $Id: QIWidgetValidator.h 71410 2018-03-20 16:24:46Z vboxsync $ */
+/* $Id: QIWidgetValidator.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWidgetValidator class declaration.
  */
@@ -23,6 +23,9 @@
 #include <QPixmap>
 #include <QValidator>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* Forward declarations: */
 class QPixmap;
 class QString;
@@ -31,7 +34,7 @@ class UISettingsPage;
 
 /** QObject extension,
   * providing passed QObject with validation routine. */
-class QObjectValidator : public QObject
+class SHARED_LIBRARY_STUFF QObjectValidator : public QObject
 {
     Q_OBJECT;
 
@@ -70,7 +73,7 @@ private:
 
 /** QObject extension,
   * which can group various QObjectValidator instances to operate on. */
-class QObjectValidatorGroup : public QObject
+class SHARED_LIBRARY_STUFF QObjectValidatorGroup : public QObject
 {
     Q_OBJECT;
 
@@ -114,7 +117,7 @@ private:
 
 
 /** Page validator prototype. */
-class UIPageValidator : public QObject
+class SHARED_LIBRARY_STUFF UIPageValidator : public QObject
 {
     Q_OBJECT;
 
@@ -175,7 +178,7 @@ private:
 
 /** QValidator extension,
   * for long number validations. */
-class QIULongValidator : public QValidator
+class SHARED_LIBRARY_STUFF QIULongValidator : public QValidator
 {
 public:
 

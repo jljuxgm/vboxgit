@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils.h 71551 2018-03-28 16:24:48Z vboxsync $ */
+/* $Id: VBoxUtils.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions.
  */
@@ -24,6 +24,7 @@
 #include <QTextBrowser>
 
 /* GUI includes: */
+#include "UILibraryDefs.h"
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
 #endif
@@ -34,7 +35,7 @@
 
 /** QObject subclass,
   * allowing to apply string-property value for a certain QObject. */
-class QObjectPropertySetter : public QObject
+class SHARED_LIBRARY_STUFF QObjectPropertySetter : public QObject
 {
     Q_OBJECT;
 

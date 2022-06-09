@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -23,6 +23,7 @@
 #include <QSet>
 
 /* GUI includes: */
+#include "UILibraryDefs.h"
 #include "UIMedium.h"
 #include "QIWithRetranslateUI.h"
 
@@ -35,7 +36,7 @@ typedef QMap<QString, CMedium> CMediumMap;
 
 /* Medium-enumerator prototype.
  * Manages access to medium information using thread-pool interface. */
-class UIMediumEnumerator : public QIWithRetranslateUI3<QObject>
+class SHARED_LIBRARY_STUFF UIMediumEnumerator : public QIWithRetranslateUI3<QObject>
 {
     Q_OBJECT;
 

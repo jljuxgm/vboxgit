@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 71429 2018-03-21 13:16:51Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -25,12 +25,15 @@
 # include <QRect>
 #endif
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* Forward declarations: */
 class QScreen;
 
 /** Singleton QObject extension used as desktop-widget
   * watchdog aware of the host-screen geometry changes. */
-class UIDesktopWidgetWatchdog : public QObject
+class SHARED_LIBRARY_STUFF UIDesktopWidgetWatchdog : public QObject
 {
     Q_OBJECT;
 

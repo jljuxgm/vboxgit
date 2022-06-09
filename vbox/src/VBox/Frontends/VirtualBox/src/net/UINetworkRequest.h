@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.h 71466 2018-03-22 16:39:35Z vboxsync $ */
+/* $Id: UINetworkRequest.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class declaration.
  */
@@ -23,6 +23,7 @@
 #include <QPointer>
 
 /* GUI inludes: */
+#include "UILibraryDefs.h"
 #include "UINetworkDefs.h"
 #include "UINetworkReply.h"
 
@@ -34,7 +35,7 @@ class UINetworkRequestWidget;
 class UINetworkCustomer;
 
 /** QObject extension used as network-request container. */
-class UINetworkRequest : public QObject
+class SHARED_LIBRARY_STUFF UINetworkRequest : public QObject
 {
     Q_OBJECT;
 

@@ -1,4 +1,4 @@
-/* $Id: UIModalWindowManager.h 71375 2018-03-19 15:29:54Z vboxsync $ */
+/* $Id: UIModalWindowManager.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class declaration.
  */
@@ -23,9 +23,12 @@
 #include <QWidget>
 #include <QList>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /** QObject subclass which contains a stack(s) of guarded-pointer(s) to the current top-level
   * modal-window(s) which could be used to determine parents for new top-level modal-dialog(s). */
-class UIModalWindowManager : public QObject
+class SHARED_LIBRARY_STUFF UIModalWindowManager : public QObject
 {
     Q_OBJECT;
 

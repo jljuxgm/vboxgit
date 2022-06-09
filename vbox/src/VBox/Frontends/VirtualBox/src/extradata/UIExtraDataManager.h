@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 71580 2018-03-30 10:33:47Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -43,7 +43,7 @@ typedef QMap<QString, ExtraDataMap> MapOfExtraDataMaps;
 /** Singleton QObject extension
   * providing GUI with corresponding extra-data values,
   * and notifying it whenever any of those values changed. */
-class UIExtraDataManager : public QObject
+class SHARED_LIBRARY_STUFF UIExtraDataManager : public QObject
 {
     Q_OBJECT;
 

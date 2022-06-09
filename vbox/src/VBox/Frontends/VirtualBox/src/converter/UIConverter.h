@@ -1,4 +1,4 @@
-/* $Id: UIConverter.h 71427 2018-03-21 12:46:12Z vboxsync $ */
+/* $Id: UIConverter.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverter declaration.
  */
@@ -23,7 +23,7 @@
 
 /** High-level interface for different conversions between GUI classes.
   * @todo Replace singleton with static template interface. */
-class UIConverter
+class SHARED_LIBRARY_STUFF UIConverter
 {
 public:
 

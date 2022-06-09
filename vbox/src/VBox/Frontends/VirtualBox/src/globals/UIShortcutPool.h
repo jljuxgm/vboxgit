@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.h 71525 2018-03-27 15:26:40Z vboxsync $ */
+/* $Id: UIShortcutPool.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
+#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QKeySequence;
@@ -32,7 +33,7 @@ class UIAction;
 
 
 /** Shortcut descriptor prototype. */
-class UIShortcut
+class SHARED_LIBRARY_STUFF UIShortcut
 {
 public:
 
@@ -84,7 +85,7 @@ private:
 
 
 /** QObject extension used as shortcut pool singleton. */
-class UIShortcutPool : public QIWithRetranslateUI3<QObject>
+class SHARED_LIBRARY_STUFF UIShortcutPool : public QIWithRetranslateUI3<QObject>
 {
     Q_OBJECT;
 

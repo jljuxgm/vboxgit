@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerIndicator.h 71466 2018-03-22 16:39:35Z vboxsync $ */
+/* $Id: UINetworkManagerIndicator.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerIndicator stuff declaration.
  */
@@ -25,6 +25,7 @@
 /* GUI includes: */
 #include "QIStatusBarIndicator.h"
 #include "QIWithRetranslateUI.h"
+#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class UINetworkRequest;
@@ -40,7 +41,7 @@ enum UINetworkManagerIndicatorState
 
 
 /** QIStateStatusBarIndicator extension for network-manager indicator. */
-class UINetworkManagerIndicator : public QIWithRetranslateUI<QIStateStatusBarIndicator>
+class SHARED_LIBRARY_STUFF UINetworkManagerIndicator : public QIWithRetranslateUI<QIStateStatusBarIndicator>
 {
     Q_OBJECT;
 

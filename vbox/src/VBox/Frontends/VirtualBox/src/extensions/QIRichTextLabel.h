@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.h 71403 2018-03-20 13:58:55Z vboxsync $ */
+/* $Id: QIRichTextLabel.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIRichTextLabel class declaration.
  */
@@ -21,9 +21,12 @@
 /* Qt includes: */
 #include <QTextEdit>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /** QLabel analog to reflect rich-text,
  ** based on private QTextEdit functionality. */
-class QIRichTextLabel : public QWidget
+class SHARED_LIBRARY_STUFF QIRichTextLabel : public QWidget
 {
     Q_OBJECT;
     Q_PROPERTY(QString text READ text WRITE setText);

@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.h 71466 2018-03-22 16:39:35Z vboxsync $ */
+/* $Id: UINetworkCustomer.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class declaration.
  */
@@ -22,6 +22,7 @@
 #include <QObject>
 
 /* GUI includes: */
+#include "UILibraryDefs.h"
 #include "UINetworkDefs.h"
 
 /* Forward declarations: */
@@ -29,7 +30,7 @@ class UINetworkReply;
 class QUrl;
 
 /** Interface to access UINetworkManager protected functionality. */
-class UINetworkCustomer : public QObject
+class SHARED_LIBRARY_STUFF UINetworkCustomer : public QObject
 {
     Q_OBJECT;
 

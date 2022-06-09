@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 71624 2018-04-02 17:55:33Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -25,6 +25,7 @@
 /* GUI includes: */
 #include "UIActionPool.h"
 #include "UIExtraDataDefs.h"
+#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QSize;
@@ -137,7 +138,7 @@ enum UIActionIndexRT
 
 /** UIActionPool extension
   * representing action-pool singleton for Runtime UI. */
-class UIActionPoolRuntime : public UIActionPool
+class SHARED_LIBRARY_STUFF UIActionPoolRuntime : public UIActionPool
 {
     Q_OBJECT;
 

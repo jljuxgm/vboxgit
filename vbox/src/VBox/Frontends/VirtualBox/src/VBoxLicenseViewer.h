@@ -1,4 +1,4 @@
-/* $Id: VBoxLicenseViewer.h 71552 2018-03-28 17:01:46Z vboxsync $ */
+/* $Id: VBoxLicenseViewer.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxLicenseViewer class declaration.
  */
@@ -23,13 +23,14 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
+#include "UILibraryDefs.h"
 
 /* Forward declarations: */
 class QTextBrowser;
 class QPushButton;
 
 /** QDialog subclass used to show a user license under linux. */
-class VBoxLicenseViewer : public QIWithRetranslateUI2<QDialog>
+class SHARED_LIBRARY_STUFF VBoxLicenseViewer : public QIWithRetranslateUI2<QDialog>
 {
     Q_OBJECT;
 

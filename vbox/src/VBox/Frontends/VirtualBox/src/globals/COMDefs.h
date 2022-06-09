@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 70114 2017-12-13 15:52:42Z vboxsync $ */
+/* $Id: COMDefs.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -82,6 +82,9 @@
 #include <QStringList>
 #include <QMetaType>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /*
  * Additional COM / XPCOM defines and includes
  */
@@ -103,7 +106,7 @@ class XPCOMEventQSocketListener;
 class CVirtualBoxErrorInfo;
 
 /** Represents extended error information */
-class COMErrorInfo
+class SHARED_LIBRARY_STUFF COMErrorInfo
 {
 public:
 
@@ -186,7 +189,7 @@ private:
  * Base COM class the CInterface template and all wrapper classes are derived
  * from. Provides common functionality for all COM wrappers.
  */
-class COMBase
+class SHARED_LIBRARY_STUFF COMBase
 {
 public:
 

@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.h 71434 2018-03-21 14:12:10Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class declaration.
  */
@@ -25,7 +25,7 @@
 class QByteArray;
 
 /** UIDownloader extension for background extension-pack downloading. */
-class UIDownloaderExtensionPack : public UIDownloader
+class SHARED_LIBRARY_STUFF UIDownloaderExtensionPack : public UIDownloader
 {
     Q_OBJECT;
 

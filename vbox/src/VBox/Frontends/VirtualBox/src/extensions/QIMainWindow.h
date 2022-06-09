@@ -1,4 +1,4 @@
-/* $Id: QIMainWindow.h 71400 2018-03-20 13:17:08Z vboxsync $ */
+/* $Id: QIMainWindow.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMainWindow class declaration.
  */
@@ -21,9 +21,12 @@
 /* Qt includes: */
 #include <QMainWindow>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /** QMainWindow extension providing GUI
   * with the extended geometry management support. */
-class QIMainWindow : public QMainWindow
+class SHARED_LIBRARY_STUFF QIMainWindow : public QMainWindow
 {
     Q_OBJECT;
 

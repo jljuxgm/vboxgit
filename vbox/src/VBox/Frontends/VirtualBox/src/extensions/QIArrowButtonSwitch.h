@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonSwitch.h 71394 2018-03-20 11:27:00Z vboxsync $ */
+/* $Id: QIArrowButtonSwitch.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIArrowButtonSwitch class declaration.
  */
@@ -23,11 +23,12 @@
 
 /* GUI includes: */
 #include "QIRichToolButton.h"
+#include "UILibraryDefs.h"
 
 /** QIRichToolButton extension
   * representing arrow tool-button with text-label,
   * can be used as collaps/expand switch in various places. */
-class QIArrowButtonSwitch : public QIRichToolButton
+class SHARED_LIBRARY_STUFF QIArrowButtonSwitch : public QIRichToolButton
 {
     Q_OBJECT;
 

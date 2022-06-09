@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestWidget.h 71466 2018-03-22 16:39:35Z vboxsync $ */
+/* $Id: UINetworkRequestWidget.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestWidget stuff declaration.
  */
@@ -20,6 +20,7 @@
 
 /* GUI inludes: */
 #include "QIWithRetranslateUI.h"
+#include "UILibraryDefs.h"
 #include "UIPopupBox.h"
 
 /* Forward declarations: */
@@ -33,7 +34,7 @@ class UINetworkRequest;
 class QTimer;
 
 /** UIPopupBox reimplementation to reflect network-request status. */
-class UINetworkRequestWidget : public QIWithRetranslateUI<UIPopupBox>
+class SHARED_LIBRARY_STUFF UINetworkRequestWidget : public QIWithRetranslateUI<UIPopupBox>
 {
     Q_OBJECT;
 

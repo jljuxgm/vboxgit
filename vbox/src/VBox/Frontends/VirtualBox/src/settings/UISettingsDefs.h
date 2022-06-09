@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.h 71524 2018-03-27 14:57:29Z vboxsync $ */
+/* $Id: UISettingsDefs.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */
@@ -23,6 +23,9 @@
 #include <QPair>
 #include <QString>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* COM includes: */
 #include "COMEnums.h"
 
@@ -46,8 +49,8 @@ namespace UISettingsDefs
     };
 
     /** Determines configuration access level for passed @a enmSessionState and @a enmMachineState. */
-    ConfigurationAccessLevel configurationAccessLevel(KSessionState enmSessionState,
-                                                      KMachineState enmMachineState);
+    SHARED_LIBRARY_STUFF ConfigurationAccessLevel configurationAccessLevel(KSessionState enmSessionState,
+                                                                           KMachineState enmMachineState);
 }
 
 

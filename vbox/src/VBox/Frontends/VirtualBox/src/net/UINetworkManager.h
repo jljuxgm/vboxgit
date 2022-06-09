@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 71466 2018-03-22 16:39:35Z vboxsync $ */
+/* $Id: UINetworkManager.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager stuff declaration.
  */
@@ -23,6 +23,7 @@
 #include <QUuid>
 
 /* GUI inludes: */
+#include "UILibraryDefs.h"
 #include "UINetworkDefs.h"
 
 /* Forward declarations: */
@@ -35,7 +36,7 @@ class UINetworkRequest;
 
 /** QObject class extension.
   * Providing network access for VirtualBox application purposes. */
-class UINetworkManager : public QObject
+class SHARED_LIBRARY_STUFF UINetworkManager : public QObject
 {
     Q_OBJECT;
 

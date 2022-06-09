@@ -1,4 +1,4 @@
-/* $Id: UIToolBar.h 71527 2018-03-27 16:08:16Z vboxsync $ */
+/* $Id: UIToolBar.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBar class declaration.
  */
@@ -21,12 +21,15 @@
 /* Qt includes: */
 #include <QToolBar>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* Forward declarations: */
 class QMainWindow;
 
 /** QToolBar extension
   * with few settings presets. */
-class UIToolBar : public QToolBar
+class SHARED_LIBRARY_STUFF UIToolBar : public QToolBar
 {
     Q_OBJECT;
 

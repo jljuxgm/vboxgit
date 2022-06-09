@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneDetails.h 71515 2018-03-26 14:32:57Z vboxsync $ */
+/* $Id: UIPopupPaneDetails.h 71630 2018-04-03 16:37:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneDetails class declaration.
  */
@@ -21,12 +21,15 @@
 /* Qt includes: */
 #include <QWidget>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
+
 /* Forward declarations: */
 class QTextEdit;
 class UIAnimation;
 
 /** QWidget extension providing GUI with popup-pane details-pane prototype class. */
-class UIPopupPaneDetails : public QWidget
+class SHARED_LIBRARY_STUFF UIPopupPaneDetails : public QWidget
 {
     Q_OBJECT;
     Q_PROPERTY(QSize collapsedSizeHint READ collapsedSizeHint);
