@@ -1,6 +1,7 @@
 #! /bin/sh
-#
-# Linux Additions X11 setup init script ($Revision: 68705 $)
+# $Id: vboxadd-x11.sh 69327 2017-10-25 19:49:49Z vboxsync $
+## @file
+# Linux Additions X11 setup init script ($Revision: 69327 $)
 #
 
 #

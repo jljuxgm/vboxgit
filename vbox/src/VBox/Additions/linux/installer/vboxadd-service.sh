@@ -1,6 +1,9 @@
 #!/bin/sh
-#
+# $Id: vboxadd-service.sh 69327 2017-10-25 19:49:49Z vboxsync $
+## @file
 # Linux Additions Guest Additions service daemon init script.
+#
+
 #
 # Copyright (C) 2006-2012 Oracle Corporation
 #

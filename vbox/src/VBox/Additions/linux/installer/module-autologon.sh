@@ -1,7 +1,10 @@
 # Oracle VM VirtualBox
+# $Id: module-autologon.sh 69327 2017-10-25 19:49:49Z vboxsync $
+## @file
 # VirtualBox Linux Guest Additions installer - autologon module
 #
 
+#
 # Copyright (C) 2012 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
