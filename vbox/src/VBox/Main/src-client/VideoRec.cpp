@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 68430 2017-08-16 08:46:05Z vboxsync $ */
+/* $Id: VideoRec.cpp 68431 2017-08-16 08:51:29Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -901,13 +901,14 @@ int VideoRecStreamInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen, const char *pszF
         char szWhat[32] = { 0 };
         if (fHasVideoTrack)
             RTStrCat(szWhat, sizeof(szWhat), "video");
+#ifdef VBOX_WITH_AUDIO_VIDEOREC
         if (fHasAudioTrack)
         {
             if (fHasVideoTrack)
                 RTStrCat(szWhat, sizeof(szWhat), " + ");
             RTStrCat(szWhat, sizeof(szWhat), "audio");
         }
-
+#endif
         LogRel(("Recording %s to '%s'\n", szWhat, pszFile));
     }
 
