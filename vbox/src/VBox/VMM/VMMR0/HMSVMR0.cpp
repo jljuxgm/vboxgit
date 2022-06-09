@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69185 2017-10-24 07:22:57Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69186 2017-10-24 07:44:17Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3597,8 +3597,7 @@ static int hmR0SvmPreRunGuestNested(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTR
     /** @todo Get new STAM counter for this? */
     STAM_COUNTER_INC(&pVCpu->hm.s.StatLoadFull);
 
-    PCSVMNESTEDVMCBCACHE pNstGstVmcbCache = &pVCpu->hm.s.svm.NstGstVmcbCache;
-    Assert(pNstGstVmcbCache->fValid);
+    Assert(pVCpu->hm.s.svm.NstGstVmcbCache.fValid);
 
     /*
      * No longjmps to ring-3 from this point on!!!
