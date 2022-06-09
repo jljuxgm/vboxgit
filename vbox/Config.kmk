@@ -1,4 +1,4 @@
-# $Id: Config.kmk 67067 2017-05-24 15:43:59Z vboxsync $
+# $Id: Config.kmk 67283 2017-06-07 16:28:03Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5963,7 +5963,6 @@ ifdef VBOX_WITH_QTGUI
   TEMPLATE_VBOXQTGUIEXE_LDFLAGS.debug = $(VBOX_GCC_SANITIZER_FLAGS)
   TEMPLATE_VBOXQTGUIEXE_LIBS = \
 	$(VBOX_LIBS_QT) \
-	$(LIB_SDL) \
 	$(LIB_RUNTIME) \
 	$(if-expr "$(LIB_VMM)" == "$(VBOX_LIB_VMM_LAZY)",$(LIB_REM),) \
 	$(VBOX_LIB_VMM_LAZY)
@@ -6994,7 +6993,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 67067 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 67283 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
