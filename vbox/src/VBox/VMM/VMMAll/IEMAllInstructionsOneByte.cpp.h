@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsOneByte.cpp.h 72180 2018-05-09 18:20:20Z vboxsync $ */
+/* $Id: IEMAllInstructionsOneByte.cpp.h 72209 2018-05-15 04:12:25Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -4455,7 +4455,7 @@ FNIEMOP_DEF(iemOp_nop)
     if (pVCpu->iem.s.fPrefixes & IEM_OP_PRF_LOCK)
     {
         IEMOP_MNEMONIC(pause, "pause");
-#ifdef VBOX_WITH_NESTED_HWVIRT
+#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
         bool fCheckIntercept = true;
         if (IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fSvmPauseFilter)
         {
