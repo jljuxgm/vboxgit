@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 68719 2017-09-12 09:48:11Z vboxsync $ */
+/* $Id: DevHDA.cpp 68900 2017-09-28 08:58:25Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -188,18 +188,18 @@ typedef struct HDADRIVER
     /** Audio connector interface to the underlying host backend. */
     R3PTRTYPE(PPDMIAUDIOCONNECTOR)     pConnector;
     /** Mixer stream for line input. */
-    HDADRIVERSTREAM                     LineIn;
+    HDADRIVERSTREAM                    LineIn;
 #ifdef VBOX_WITH_AUDIO_HDA_MIC_IN
     /** Mixer stream for mic input. */
-    HDADRIVERSTREAM                     MicIn;
+    HDADRIVERSTREAM                    MicIn;
 #endif
     /** Mixer stream for front output. */
-    HDADRIVERSTREAM                     Front;
+    HDADRIVERSTREAM                    Front;
 #ifdef VBOX_WITH_AUDIO_HDA_51_SURROUND
     /** Mixer stream for center/LFE output. */
-    HDADRIVERSTREAM                     CenterLFE;
+    HDADRIVERSTREAM                    CenterLFE;
     /** Mixer stream for rear output. */
-    HDADRIVERSTREAM                     Rear;
+    HDADRIVERSTREAM                    Rear;
 #endif
 } HDADRIVER;
 
