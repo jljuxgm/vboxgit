@@ -1,4 +1,4 @@
-/* $Id: UISlidingWidget.h 68166 2017-07-29 08:52:19Z vboxsync $ */
+/* $Id: UISlidingWidget.h 68287 2017-08-03 14:23:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingWidget class declaration.
  */
@@ -61,6 +61,9 @@ public:
     void moveBackward() { emit sigBackward(); }
 
 protected:
+
+    /** Handles any Qt @a pEvent. */
+    virtual bool event(QEvent *pEvent) /* override */;
 
     /** Handles resize @a pEvent. */
     virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
