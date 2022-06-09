@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 70957 2018-02-10 23:46:54Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 70967 2018-02-11 21:43:05Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -891,8 +891,11 @@ static HRESULT directSoundPlayStop(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStreamDS
 
     if (SUCCEEDED(hr))
     {
-        if (fFlush)
+        if (   fFlush
+            && pStreamDS->pCircBuf)
+        {
             RTCircBufReset(pStreamDS->pCircBuf);
+        }
     }
 
     if (FAILED(hr))
@@ -1265,8 +1268,11 @@ static HRESULT directSoundCaptureStop(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStrea
 
     if (SUCCEEDED(hr))
     {
-        if (fFlush)
+        if (   fFlush
+            && pStreamDS->pCircBuf)
+        {
             RTCircBufReset(pStreamDS->pCircBuf);
+        }
     }
 
     if (FAILED(hr))
