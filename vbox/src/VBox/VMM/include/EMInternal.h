@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 72569 2018-06-15 19:04:01Z vboxsync $ */
+/* $Id: EMInternal.h 72576 2018-06-15 21:27:49Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -395,6 +395,8 @@ typedef struct EMCPU
 #ifdef VBOX_WITH_RAW_MODE
     /** Pointer to the PATM status structure. (R3 Ptr) */
     R3PTRTYPE(PPATMGCSTATE) pPatmGCState;
+#else
+    RTR3PTR                 R3PtrPaddingNoRaw;
 #endif
 
     /** Pointer to the guest CPUM state. (R3 Ptr) */
