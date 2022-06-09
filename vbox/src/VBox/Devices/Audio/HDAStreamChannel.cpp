@@ -1,4 +1,4 @@
-/* $Id: HDAStreamChannel.cpp 67907 2017-07-11 14:00:07Z vboxsync $ */
+/* $Id: HDAStreamChannel.cpp 67908 2017-07-11 14:05:57Z vboxsync $ */
 /** @file
  * HDAStreamChannel.cpp - Stream channel functions for HD Audio.
  */
@@ -144,16 +144,16 @@ int hdaStreamChannelAdvance(PPDMAUDIOSTREAMCHANNEL pChan, size_t cbAdv)
  *
  * @returns IPRT status code.
  * @param   pChanData           Channel data to acquire audio channel data from.
- * @param   pvData              Pointer to buffer where to store the acquired data.
+ * @param   ppvData             Where to store the pointer to the acquired data.
  * @param   pcbData             Size (in bytes) of acquired data.
  */
-int hdaStreamChannelAcquireData(PPDMAUDIOSTREAMCHANNELDATA pChanData, void *pvData, size_t *pcbData)
+int hdaStreamChannelAcquireData(PPDMAUDIOSTREAMCHANNELDATA pChanData, void **ppvData, size_t *pcbData)
 {
     AssertPtrReturn(pChanData, VERR_INVALID_POINTER);
-    AssertPtrReturn(pvData,    VERR_INVALID_POINTER);
+    AssertPtrReturn(ppvData,   VERR_INVALID_POINTER);
     AssertPtrReturn(pcbData,   VERR_INVALID_POINTER);
 
-    RTCircBufAcquireReadBlock(pChanData->pCircBuf, 256 /** @todo Make this configurarble? */, &pvData, &pChanData->cbAcq);
+    RTCircBufAcquireReadBlock(pChanData->pCircBuf, 256 /** @todo Make this configurarble? */, ppvData, &pChanData->cbAcq);
 
     *pcbData = pChanData->cbAcq;
     return VINF_SUCCESS;

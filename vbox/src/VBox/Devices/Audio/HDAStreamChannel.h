@@ -1,4 +1,4 @@
-/* $Id: HDAStreamChannel.h 67698 2017-06-29 13:58:29Z vboxsync $ */
+/* $Id: HDAStreamChannel.h 67908 2017-07-11 14:05:57Z vboxsync $ */
 /** @file
  * HDAStreamChannel.h - Stream channel functions for HD Audio.
  */
@@ -22,7 +22,7 @@ int hdaStreamChannelDataInit(PPDMAUDIOSTREAMCHANNELDATA pChanData, uint32_t fFla
 void hdaStreamChannelDataDestroy(PPDMAUDIOSTREAMCHANNELDATA pChanData);
 int hdaStreamChannelExtract(PPDMAUDIOSTREAMCHANNEL pChan, const void *pvBuf, size_t cbBuf);
 int hdaStreamChannelAdvance(PPDMAUDIOSTREAMCHANNEL pChan, size_t cbAdv);
-int hdaStreamChannelAcquireData(PPDMAUDIOSTREAMCHANNELDATA pChanData, void *pvData, size_t *pcbData);
+int hdaStreamChannelAcquireData(PPDMAUDIOSTREAMCHANNELDATA pChanData, void *ppvData, size_t *pcbData);
 int hdaStreamChannelReleaseData(PPDMAUDIOSTREAMCHANNELDATA pChanData);
 
 #endif /* !HDA_STREAMCHANNEL_H */
