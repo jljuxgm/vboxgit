@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 67304 2017-06-08 15:26:43Z vboxsync $
+# $Id: Makefile.kmk 67317 2017-06-09 13:00:38Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -826,6 +826,7 @@ RuntimeR3_SOURCES.win = \
 	r3/win/errvars-win.cpp \
 	r3/win/fileio-win.cpp \
 	r3/win/init-win.cpp \
+	r3/win/krnlmod-win.cpp \
 	r3/win/ldrNative-win.cpp \
 	r3/win/localipc-win.cpp \
 	r3/win/mp-win.cpp \
