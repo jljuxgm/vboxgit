@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 70054 2017-12-11 11:50:39Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 70073 2017-12-12 09:14:37Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1237,6 +1237,7 @@ void DrvAudioHlpFileDestroy(PPDMAUDIOFILE pFile)
  * @returns IPRT status code.
  * @param   pFile               Pointer to audio file handle to use.
  * @param   fOpen               Open flags.
+ *                              Use PDMAUDIOFILE_DEFAULT_OPEN_FLAGS for the default open flags.
  * @param   pProps              PCM properties to use.
  */
 int DrvAudioHlpFileOpen(PPDMAUDIOFILE pFile, uint32_t fOpen, const PPDMAUDIOPCMPROPS pProps)
