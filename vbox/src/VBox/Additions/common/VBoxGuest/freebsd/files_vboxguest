@@ -1,7 +1,7 @@
 #!/bin/sh
-# $Id: files_vboxguest 69313 2017-10-25 14:31:20Z vboxsync $
+# $Id: files_vboxguest 69335 2017-10-26 10:55:12Z vboxsync $
 ## @file
-# Shared file between Makefile.kmk and export_modules
+# Shared file between Makefile.kmk and export_modules.sh.
 #
 
 #
