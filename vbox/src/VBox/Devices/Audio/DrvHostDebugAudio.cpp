@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 68272 2017-08-03 08:25:32Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 68740 2017-09-13 11:37:18Z vboxsync $ */
 /** @file
  * Debug audio driver -- host backend for dumping and injecting audio data
  * from/to the device emulation.
@@ -429,6 +429,10 @@ static DECLCALLBACK(int) drvHostDebugAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNOD
     pDrvIns->IBase.pfnQueryInterface = drvHostDebugAudioQueryInterface;
     /* IHostAudio */
     PDMAUDIO_IHOSTAUDIO_CALLBACKS(drvHostDebugAudio);
+
+#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
+    RTFileDelete(VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "AudioDebugOutput.pcm");
+#endif
 
     return VINF_SUCCESS;
 }
