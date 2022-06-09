@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 69840 2017-11-27 15:19:30Z vboxsync $ */
+/* $Id: vbox-img.cpp 69841 2017-11-27 15:24:08Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -1456,7 +1456,7 @@ static int handleCompact(HandlerArg *a)
                             rc = RTDvmVolumeQueryName(hVol, &pszVolName);
                             if (RT_FAILURE(rc))
                                 pszVolName = NULL;
-                            RTMsgInfo("Vol%u: %Rhcb %u %s%s%s\n", iVol, RTDvmVolumeGetSize(hVol),
+                            RTMsgInfo("Vol%u: %Rhcb %s%s%s\n", iVol, RTDvmVolumeGetSize(hVol),
                                       RTDvmVolumeTypeGetDescr(RTDvmVolumeGetType(hVol)),
                                       pszVolName ? " " : "", pszVolName ? pszVolName : "");
                             RTStrFree(pszVolName);
