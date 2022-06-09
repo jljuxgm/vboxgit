@@ -1,4 +1,4 @@
-/* $Id: Init.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: Init.cpp 68103 2017-07-25 09:39:16Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Library initialization.
  */
@@ -254,7 +254,7 @@ DECLVBGL(int) VbglInitClient(void)
             vbglQueryDriverInfo ();
 
 # ifdef VBOX_WITH_HGCM
-            rc = vbglR0HGCMInit ();
+            rc = VbglR0HGCMInit ();
 # endif /* VBOX_WITH_HGCM */
 
             if (RT_FAILURE(rc))
@@ -277,7 +277,7 @@ DECLVBGL(int) VbglInitClient(void)
 DECLVBGL(void) VbglTerminate (void)
 {
 # ifdef VBOX_WITH_HGCM
-    vbglR0HGCMTerminate ();
+    VbglR0HGCMTerminate ();
 # endif
 
     /* driver open could fail, which does not prevent VbglInit from succeeding,
