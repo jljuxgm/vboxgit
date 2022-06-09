@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: AudioDriver.h 70538 2018-01-11 14:08:14Z vboxsync $ */
 /** @file
  * VirtualBox audio base class for Main audio drivers.
  */
