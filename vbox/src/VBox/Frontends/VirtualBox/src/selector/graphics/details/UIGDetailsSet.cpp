@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 69639 2017-11-10 12:25:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsSet class implementation.
  */
@@ -232,7 +232,7 @@ QVariant UIGDetailsSet::data(int iKey) const
     {
         /* Layout hints: */
         case SetData_Margin: return 0;
-        case SetData_Spacing: return 3;
+        case SetData_Spacing: return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 5;
         /* Default: */
         default: break;
     }

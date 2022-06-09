@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGDetailsGroup.cpp 69639 2017-11-10 12:25:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsGroup class implementation.
  */
@@ -127,8 +127,8 @@ QVariant UIGDetailsGroup::data(int iKey) const
     switch (iKey)
     {
         /* Layout hints: */
-        case GroupData_Margin: return 2;
-        case GroupData_Spacing: return 10;
+        case GroupData_Margin: return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 6;
+        case GroupData_Spacing: return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 2;
         /* Default: */
         default: break;
     }

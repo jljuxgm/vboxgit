@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGDetailsElement.h 69639 2017-11-10 12:25:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class declaration.
  */
@@ -113,8 +113,7 @@ protected:
     {
         /* Hints: */
         ElementData_Margin,
-        ElementData_Spacing,
-        ElementData_MinimumTextColumnWidth
+        ElementData_Spacing
     };
 
     /** This event handler is delivered after the widget has been resized. */

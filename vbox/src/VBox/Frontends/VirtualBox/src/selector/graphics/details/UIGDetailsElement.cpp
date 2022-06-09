@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 69639 2017-11-10 12:25:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class implementation.
  */
@@ -45,7 +45,7 @@ UIGDetailsElement::UIGDetailsElement(UIGDetailsSet *pParent, DetailsElementType 
     : UIGDetailsItem(pParent)
     , m_pSet(pParent)
     , m_type(type)
-    , m_iCornerRadius(10)
+    , m_iCornerRadius(QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 2)
     , m_iMinimumHeaderWidth(0)
     , m_iMinimumHeaderHeight(0)
     , m_pButton(0)
@@ -215,9 +215,8 @@ QVariant UIGDetailsElement::data(int iKey) const
     switch (iKey)
     {
         /* Hints: */
-        case ElementData_Margin: return 5;
-        case ElementData_Spacing: return 10;
-        case ElementData_MinimumTextColumnWidth: return 100;
+        case ElementData_Margin: return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 4;
+        case ElementData_Spacing: return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 2;
         /* Default: */
         default: break;
     }

@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 69639 2017-11-10 12:25:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -196,9 +196,9 @@ QVariant UIGChooserItemMachine::data(int iKey) const
     switch (iKey)
     {
         /* Layout hints: */
-        case MachineItemData_Margin: return 5;
-        case MachineItemData_MajorSpacing: return 10;
-        case MachineItemData_MinorSpacing: return 4;
+        case MachineItemData_Margin: return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 4;
+        case MachineItemData_MajorSpacing: return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 2;
+        case MachineItemData_MinorSpacing: return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 4;
         case MachineItemData_TextSpacing: return 0;
 
         /* Pixmaps: */
