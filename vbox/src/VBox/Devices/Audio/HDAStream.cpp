@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 70013 2017-12-08 11:52:00Z vboxsync $ */
+/* $Id: HDAStream.cpp 70017 2017-12-08 12:04:03Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -66,8 +66,10 @@ int hdaStreamCreate(PHDASTREAM pStream, PHDASTATE pThis, uint8_t u8SD)
             rc = RTCritSectInit(&pStream->State.CritSect);
     }
 
+    int rc2;
+
 #ifdef DEBUG
-    int rc2 = RTCritSectInit(&pStream->Dbg.CritSect);
+    rc2 = RTCritSectInit(&pStream->Dbg.CritSect);
     AssertRC(rc2);
 #endif
 
