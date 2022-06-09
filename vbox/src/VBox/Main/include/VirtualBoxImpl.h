@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 69729 2017-11-17 19:55:33Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 69783 2017-11-20 18:58:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -59,7 +59,7 @@ namespace settings
 }
 
 
-#if defined(VBOX_WITH_SDS_PLAN_B) && !defined(VBOX_WITH_XPCOM)
+#if defined(VBOX_WITH_SDS) && !defined(VBOX_WITH_XPCOM)
 class VirtualBoxClassFactory; /* See ../src-server/win/svcmain.cpp  */
 #endif
 
@@ -80,7 +80,7 @@ public:
     friend class CallbackEvent;
 
 #ifndef VBOX_WITH_XPCOM
-# ifdef VBOX_WITH_SDS_PLAN_B
+# ifdef VBOX_WITH_SDS
     DECLARE_CLASSFACTORY_EX(VirtualBoxClassFactory)
 # else
     DECLARE_CLASSFACTORY_SINGLETON(VirtualBox)
