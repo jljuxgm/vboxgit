@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 70181 2017-12-17 13:16:28Z vboxsync $ */
+/* $Id: DevACPI.cpp 71809 2018-04-10 11:49:53Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -41,7 +41,6 @@
 #ifdef LOG_ENABLED
 # define DEBUG_ACPI
 #endif
-
 
 
 /*********************************************************************************************************************************
@@ -3536,6 +3535,7 @@ static DECLCALLBACK(void) acpiR3Relocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta
  */
 static DECLCALLBACK(int) acpiR3Destruct(PPDMDEVINS pDevIns)
 {
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
     ACPIState *pThis = PDMINS_2_DATA(pDevIns, ACPIState *);
     if (pThis->pu8CustBin)
     {
@@ -3550,8 +3550,8 @@ static DECLCALLBACK(int) acpiR3Destruct(PPDMDEVINS pDevIns)
  */
 static DECLCALLBACK(int) acpiR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
-    ACPIState *pThis = PDMINS_2_DATA(pDevIns, ACPIState *);
     PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
+    ACPIState *pThis = PDMINS_2_DATA(pDevIns, ACPIState *);
 
     /*
      * Init data and set defaults.

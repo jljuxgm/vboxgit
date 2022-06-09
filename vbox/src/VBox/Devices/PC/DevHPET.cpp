@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevHPET.cpp 71809 2018-04-10 11:49:53Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -1308,12 +1308,11 @@ static DECLCALLBACK(void) hpetR3Reset(PPDMDEVINS pDevIns)
  */
 static DECLCALLBACK(int) hpetR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
-    RT_NOREF(iInstance);
     PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
-    HPET   *pThis = PDMINS_2_DATA(pDevIns, HPET *);
+    HPET *pThis = PDMINS_2_DATA(pDevIns, HPET *);
 
     /* Only one HPET device now, as we use fixed MMIO region. */
-    Assert(iInstance == 0);
+    Assert(iInstance == 0); RT_NOREF(iInstance);
 
     /*
      * Initialize the device state.

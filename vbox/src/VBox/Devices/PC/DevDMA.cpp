@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 71218 2018-03-05 21:19:35Z vboxsync $ */
+/* $Id: DevDMA.cpp 71809 2018-04-10 11:49:53Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -1068,6 +1068,7 @@ static DECLCALLBACK(int) dmaLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32
  */
 static DECLCALLBACK(int) dmaConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
     RT_NOREF(iInstance);
     DMAState *pThis = PDMINS_2_DATA(pDevIns, DMAState *);
 

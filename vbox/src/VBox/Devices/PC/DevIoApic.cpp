@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 70875 2018-02-05 18:46:19Z vboxsync $ */
+/* $Id: DevIoApic.cpp 71809 2018-04-10 11:49:53Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -1142,9 +1142,9 @@ static DECLCALLBACK(void) ioapicR3Relocate(PPDMDEVINS pDevIns, RTGCINTPTR offDel
  */
 static DECLCALLBACK(int) ioapicR3Destruct(PPDMDEVINS pDevIns)
 {
+    PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns);
     PIOAPIC pThis = PDMINS_2_DATA(pDevIns, PIOAPIC);
     LogFlow(("IOAPIC: ioapicR3Destruct: pThis=%p\n", pThis));
-    PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns);
 
 # ifndef IOAPIC_WITH_PDM_CRITSECT
     /*
@@ -1165,10 +1165,10 @@ static DECLCALLBACK(int) ioapicR3Destruct(PPDMDEVINS pDevIns)
  */
 static DECLCALLBACK(int) ioapicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
-    RT_NOREF(iInstance);
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
     PIOAPIC pThis = PDMINS_2_DATA(pDevIns, PIOAPIC);
     LogFlow(("IOAPIC: ioapicR3Construct: pThis=%p iInstance=%d\n", pThis, iInstance));
-    Assert(iInstance == 0);
+    Assert(iInstance == 0); RT_NOREF(iInstance);
 
     /*
      * Initialize the state data.
