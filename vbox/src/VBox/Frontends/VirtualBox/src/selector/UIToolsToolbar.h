@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.h 68212 2017-07-31 16:39:22Z vboxsync $ */
+/* $Id: UIToolsToolbar.h 68225 2017-08-02 08:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class declaration.
  */
@@ -30,7 +30,6 @@
 /* Forward declarations: */
 class QAction;
 class QHBoxLayout;
-class QStackedLayout;
 class QUuid;
 class QWidget;
 class UIActionPool;
@@ -97,9 +96,7 @@ private:
     UIActionPool *m_pActionPool;
 
     /** Holds the main layout instance. */
-    QHBoxLayout    *m_pLayoutMain;
-    /** Holds the stacked layout instance. */
-    QStackedLayout *m_pLayoutStacked;
+    QHBoxLayout *m_pLayoutMain;
 
     /** Holds the Machine tab-bar instance. */
     UITabBar *m_pTabBarMachine;
