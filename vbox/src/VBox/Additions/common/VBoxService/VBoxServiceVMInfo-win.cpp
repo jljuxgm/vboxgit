@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 70164 2017-12-15 17:32:56Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 70170 2017-12-15 22:05:49Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -1354,7 +1354,7 @@ int VGSvcVMInfoWinGetComponentVersions(uint32_t uClientID)
         { szSysWowDir, "VBoxOGLfeedbackspu.dll" },
         { szSysWowDir, "VBoxOGL.dll" },
 #else  /* !RT_ARCH_AMD64 */
-# ifdef TARGET_NT4
+# ifndef TARGET_NT4
         { szSysDir, "VBoxOGLarrayspu.dll" },
         { szSysDir, "VBoxOGLcrutil.dll" },
         { szSysDir, "VBoxOGLerrorspu.dll" },
