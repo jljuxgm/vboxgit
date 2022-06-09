@@ -1,4 +1,4 @@
-/* $Id: VBoxMMNotificationClient.cpp 68683 2017-09-06 15:26:32Z vboxsync $ */
+/* $Id: VBoxMMNotificationClient.cpp 68749 2017-09-13 17:37:47Z vboxsync $ */
 /** @file
  * VBoxMMNotificationClient.cpp - Implementation of the IMMNotificationClient interface
  *                                to detect audio endpoint changes.
@@ -132,19 +132,21 @@ STDMETHODIMP VBoxMMNotificationClient::OnDeviceStateChanged(LPCWSTR pwstrDeviceI
 
 STDMETHODIMP VBoxMMNotificationClient::OnDeviceAdded(LPCWSTR pwstrDeviceId)
 {
+    RT_NOREF(pwstrDeviceId);
     LogFunc(("%ls\n", pwstrDeviceId));
     return S_OK;
 }
 
 STDMETHODIMP VBoxMMNotificationClient::OnDeviceRemoved(LPCWSTR pwstrDeviceId)
 {
+    RT_NOREF(pwstrDeviceId);
     LogFunc(("%ls\n", pwstrDeviceId));
     return S_OK;
 }
 
 STDMETHODIMP VBoxMMNotificationClient::OnDefaultDeviceChanged(EDataFlow eFlow, ERole eRole, LPCWSTR pwstrDefaultDeviceId)
 {
-    RT_NOREF(eRole, pwstrDefaultDeviceId);
+    RT_NOREF(eFlow, eRole, pwstrDefaultDeviceId);
 
     if (eFlow == eRender)
     {
