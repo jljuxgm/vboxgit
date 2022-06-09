@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71792 2018-04-09 17:08:47Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 71793 2018-04-09 17:20:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -1230,6 +1230,8 @@ void UIGuestControlFileTable::sltShowProperties()
 
 void UIGuestControlFileTable::sltSelectionChanged(const QItemSelection & selected, const QItemSelection & deselected)
 {
+    Q_UNUSED(selected);
+    Q_UNUSED(deselected);
     if (m_pView->hasSelection())
         enableSelectionDependentActions();
     else
