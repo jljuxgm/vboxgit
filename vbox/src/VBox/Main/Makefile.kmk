@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69196 2017-10-24 09:33:32Z vboxsync $
+# $Id: Makefile.kmk 69241 2017-10-24 16:13:48Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -127,7 +127,7 @@ if "$(KBUILD_TARGET)" != "win"
  BLDDIRS += \
 	$(VBOX_PATH_SDK)/bindings/xpcom/idl \
 	$(VBOX_PATH_SDK)/bindings/xpcom/include
- # disable VBoxSDS for XPCOM	
+ # disable VBoxSDS for XPCOM
  override VBOX_WITH_SDS =
 endif # xpcom
 

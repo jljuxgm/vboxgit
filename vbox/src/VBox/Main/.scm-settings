@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69236 2017-10-24 16:10:08Z vboxsync $
+# $Id: .scm-settings 69241 2017-10-24 16:13:48Z vboxsync $
 ## @file
 # Source code massager settings for the Main API.
 #
@@ -18,4 +18,7 @@
 # cbindings have different licences.
 /cbinding/*.h: --license-lgpl
 /cbinding/VBoxCAPIGlue.c: --license-mit
+
+# The Python bindings is licensed under dual GPL and CDDL.
+/glue/vboxapi.py: --license-ose-dual
 

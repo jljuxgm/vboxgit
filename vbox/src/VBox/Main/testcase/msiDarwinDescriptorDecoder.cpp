@@ -1,4 +1,4 @@
-/* $Id: msiDarwinDescriptorDecoder.cpp 63806 2016-09-12 22:59:49Z vboxsync $ */
+/* $Id: msiDarwinDescriptorDecoder.cpp 69241 2017-10-24 16:13:48Z vboxsync $ */
 /** @file
  * msiDarwinDescriptorDecoder
  */
@@ -68,5 +68,4 @@ int wmain(int cArgs, wchar_t **papwszArgs)
 
     return rcExit;
 }
-
 

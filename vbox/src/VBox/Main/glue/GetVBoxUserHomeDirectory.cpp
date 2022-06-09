@@ -1,4 +1,4 @@
-/* $Id: GetVBoxUserHomeDirectory.cpp 68538 2017-08-29 14:07:06Z vboxsync $ */
+/* $Id: GetVBoxUserHomeDirectory.cpp 69241 2017-10-24 16:13:48Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - GetVBoxUserHomeDirectory.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
