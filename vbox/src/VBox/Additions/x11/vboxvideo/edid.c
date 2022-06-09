@@ -1,20 +1,11 @@
-/* $Id: edid.c 63221 2016-08-09 16:13:14Z vboxsync $ */
+/* $Id: edid.c 69058 2017-10-12 09:48:15Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver, EDID construction
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
- *
- * This file is part of VirtualBox Open Source Edition (OSE), as
- * available from http://www.virtualbox.org. This file is free software;
- * you can redistribute it and/or modify it under the terms of the GNU
- * General Public License (GPL) as published by the Free Software
- * Foundation, in version 2 as it comes in the "COPYING" file of the
- * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- * --------------------------------------------------------------------
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This code is based on drmmode_display.c from the X.Org xf86-video-intel
  * driver with the following copyright notice:
@@ -42,6 +33,7 @@
  *
  * Authors:
  *    Dave Airlie <airlied@redhat.com>
+ *    Michael Thayer <michael.thayer@oracle.com>
  */
 
 #include <misc.h>
