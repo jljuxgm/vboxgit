@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 69824 2017-11-24 12:50:34Z vboxsync $ */
+/* $Id: UISession.cpp 69858 2017-11-28 10:56:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -2073,6 +2073,15 @@ int UISession::countOfVisibleWindows()
         if (m_monitorVisibilityVector[i])
             ++cCountOfVisibleWindows;
     return cCountOfVisibleWindows;
+}
+
+QList<int> UISession::listOfVisibleWindows() const
+{
+    QList<int> visibleWindows;
+    for (int i = 0; i < m_monitorVisibilityVector.size(); ++i)
+        if (m_monitorVisibilityVector.at(i))
+            visibleWindows.push_back(i);
+    return visibleWindows;
 }
 
 void UISession::loadVMSettings()

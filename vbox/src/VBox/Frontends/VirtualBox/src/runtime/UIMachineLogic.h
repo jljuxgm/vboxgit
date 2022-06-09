@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineLogic.h 69858 2017-11-28 10:56:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -224,6 +224,7 @@ protected:
     virtual void prepareMenu() {}
 #ifdef VBOX_WS_MAC
     virtual void prepareDock();
+    virtual void updateDock();
 #endif /* VBOX_WS_MAC */
 #ifdef VBOX_WITH_DEBUGGER_GUI
     virtual void prepareDebugger();
@@ -405,6 +406,7 @@ private:
     bool m_fIsDockIconEnabled;
     UIDockIconPreview *m_pDockIconPreview;
     QActionGroup *m_pDockPreviewSelectMonitorGroup;
+    QAction *m_pDockSettingsMenuSeparator;
     int m_DockIconPreviewMonitor;
 #endif /* VBOX_WS_MAC */
 

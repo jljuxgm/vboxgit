@@ -1,4 +1,4 @@
-/* $Id: UISession.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UISession.h 69858 2017-11-28 10:56:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -273,6 +273,9 @@ public:
 
     /** Returns VM's effective paravirtualization provider. */
     KParavirtProvider paraVirtProvider() const { return m_paraVirtProvider; }
+
+    /** Returns the list of visible guest windows. */
+    QList<int> listOfVisibleWindows() const;
 
 signals:
 
