@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 71309 2018-03-13 09:06:18Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 71315 2018-03-13 16:38:10Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -1058,7 +1058,7 @@ HRESULT MachineMoveVM::updatePathsToStateFiles(const std::map<Utf8Str, SAVESTATE
     while (itState != listOfFiles.end())
     {
         const SAVESTATETASK &sst = itState->second;
-           
+
         if (sst.snapshotUuid != Guid::Empty)
         {
             Utf8Str strGuidMachine = sst.snapshotUuid.toString();
