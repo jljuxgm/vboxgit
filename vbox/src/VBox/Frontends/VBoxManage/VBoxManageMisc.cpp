@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 67654 2017-06-27 18:23:33Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 67655 2017-06-28 07:25:50Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1515,7 +1515,7 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
                  " image index:           %u\n"
                  " isoPath:               %ls\n"
                  " additionsIsoPath:      %ls\n"
-                 " installGuestAdditions: %RTbool",
+                 " installGuestAdditions: %RTbool\n"
                  " auxiliaryBasePath:     %ls",
                  bstrUser.raw(),
                  bstrPassword.raw(),
