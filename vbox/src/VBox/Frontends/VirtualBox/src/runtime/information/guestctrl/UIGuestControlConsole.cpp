@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlConsole.cpp 71089 2018-02-21 17:35:07Z vboxsync $ */
+/* $Id: UIGuestControlConsole.cpp 71135 2018-02-27 12:56:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlConsole class implementation.
  */
@@ -105,7 +105,7 @@ void UIGuestControlConsole::keyPressEvent(QKeyEvent *pEvent)
         case Qt::Key_Left:
         case Qt::Key_Right:
         {
-            if (textCursor().positionInBlock() > m_strPrompt.length())
+            if (textCursor().positionInBlock() > m_strPrompt.length()-1)
                 QPlainTextEdit::keyPressEvent(pEvent);
             break;
         }

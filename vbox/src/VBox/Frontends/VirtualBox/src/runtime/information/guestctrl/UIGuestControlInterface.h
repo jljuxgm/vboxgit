@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.h 71089 2018-02-21 17:35:07Z vboxsync $ */
+/* $Id: UIGuestControlInterface.h 71135 2018-02-27 12:56:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class declaration.
  */
@@ -74,6 +74,9 @@ private:
     bool handleCreateSession(int, char**);
     /* Handles the 'mkdir' session command to create guest directories */
     bool handleMkdir(int, char**);
+    bool handleStat(int, char**);
+
+    QString getFsObjInfoString(const CGuestFsObjInfo &fsObjectInfo) const;
 
     CGuest        m_comGuest;
     const QString m_strHelp;
