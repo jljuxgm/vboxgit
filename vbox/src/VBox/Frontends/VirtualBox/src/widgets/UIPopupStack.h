@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIPopupStack.h 68540 2017-08-29 14:22:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class declaration.
  */
@@ -38,7 +38,7 @@ class UIPopupStack : public QWidget
 signals:
 
     /* Notifier: Layout stuff: */
-    void sigProposeStackViewportWidth(int iWidth);
+    void sigProposeStackViewportSize(QSize newSize);
 
     /* Notifier: Popup-pane stuff: */
     void sigPopupPaneDone(QString strPopupPaneID, int iResultCode);
@@ -87,7 +87,7 @@ private:
     void showEvent(QShowEvent *pEvent);
 
     /* Helper: Layout stuff: */
-    void propagateWidth();
+    void propagateSize();
 
     /* Static helpers: Prepare stuff: */
     static int parentMenuBarHeight(QWidget *pParent);

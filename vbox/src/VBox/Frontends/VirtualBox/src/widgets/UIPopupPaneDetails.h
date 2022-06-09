@@ -1,6 +1,6 @@
-/* $Id: UIPopupPaneTextPane.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIPopupPaneDetails.h 68540 2017-08-29 14:22:33Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIPopupPaneTextPane class declaration.
+ * VBox Qt GUI - UIPopupPaneDetails class declaration.
  */
 
 /*
@@ -15,18 +15,18 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __UIPopupPaneTextPane_h__
-#define __UIPopupPaneTextPane_h__
+#ifndef ___UIPopupPaneDetails_h___
+#define ___UIPopupPaneDetails_h___
 
 /* Qt includes: */
 #include <QWidget>
 
 /* Forward declarations: */
-class QLabel;
+class QTextEdit;
 class UIAnimation;
 
 /* Popup-pane text-pane prototype class: */
-class UIPopupPaneTextPane : public QWidget
+class UIPopupPaneDetails : public QWidget
 {
     Q_OBJECT;
     Q_PROPERTY(QSize collapsedSizeHint READ collapsedSizeHint);
@@ -45,7 +45,7 @@ signals:
 public:
 
     /* Constructor: */
-    UIPopupPaneTextPane(QWidget *pParent, const QString &strText, bool fFocused);
+    UIPopupPaneDetails(QWidget *pParent, const QString &strText, bool fFocused);
 
     /* API: Text stuff: */
     void setText(const QString &strText);
@@ -55,10 +55,15 @@ public:
     void setMinimumSizeHint(const QSize &minimumSizeHint);
     void layoutContent();
 
-private slots:
+    /* Property: Focus stuff: */
+    QSize collapsedSizeHint() const { return m_collapsedSizeHint; }
+    QSize expandedSizeHint() const { return m_expandedSizeHint; }
 
-    /* Handler: Layout stuff: */
+public slots:
+
+    /* Handlers: Layout stuff: */
     void sltHandleProposalForWidth(int iWidth);
+    void sltHandleProposalForHeight(int iHeight);
 
     /* Handlers: Focus stuff: */
     void sltFocusEnter();
@@ -73,10 +78,7 @@ private:
 
     /* Helper: Layout stuff: */
     void updateSizeHint();
-
-    /* Property: Focus stuff: */
-    QSize collapsedSizeHint() const { return m_collapsedSizeHint; }
-    QSize expandedSizeHint() const { return m_expandedSizeHint; }
+    void updateVisibility();
 
     /* Static helper: Font stuff: */
     static QFont tuneFont(QFont font);
@@ -84,19 +86,21 @@ private:
     /* Variables: Layout stuff: */
     const int m_iLayoutMargin;
     const int m_iLayoutSpacing;
-    QSize m_labelSizeHint;
+    QSize m_textEditSizeHint;
     QSize m_collapsedSizeHint;
     QSize m_expandedSizeHint;
     QSize m_minimumSizeHint;
 
     /* Variables: Widget stuff: */
     QString m_strText;
-    QLabel *m_pLabel;
-    int m_iDesiredLabelWidth;
+    QTextEdit *m_pTextEdit;
+    int m_iDesiredTextEditWidth;
+    int m_iDesiredTextEditHeight;
 
     /* Variables: Focus stuff: */
     bool m_fFocused;
     UIAnimation *m_pAnimation;
 };
 
-#endif /* __UIPopupPaneTextPane_h__ */
+#endif /* !___UIPopupPaneDetails_h___ */
+
