@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 70918 2018-02-08 16:11:47Z vboxsync $ */
+/* $Id: VM.cpp 70945 2018-02-09 23:45:56Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -938,7 +938,9 @@ static int vmR3InitRing3(PVM pVM, PUVM pUVM)
             rc = CPUMR3Init(pVM);
             if (RT_SUCCESS(rc))
             {
-                rc = PGMR3Init(pVM);
+                rc = NEMR3InitAfterCPUM(pVM);
+                if (RT_SUCCESS(rc))
+                    rc = PGMR3Init(pVM);
                 if (RT_SUCCESS(rc))
                 {
 #ifdef VBOX_WITH_REM
