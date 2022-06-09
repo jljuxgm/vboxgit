@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 67660 2017-06-28 10:17:05Z vboxsync $ */
+/* $Id: HM.cpp 68887 2017-09-27 12:19:32Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1805,6 +1805,8 @@ VMMR3_INT_DECL(void) HMR3PagingModeChanged(PVM pVM, PVMCPU pVCpu, PGMMODE enmSha
         Log(("HMR3PagingModeChanged indicates real mode execution\n"));
         pVCpu->hm.s.vmx.fWasInRealMode = true;
     }
+    else
+        Log(("HMR3PagingModeChanged indicates %d mode execution\n", enmGuestMode));
 }
 
 
