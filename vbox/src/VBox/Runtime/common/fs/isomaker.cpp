@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
+/* $Id: isomaker.cpp 70155 2017-12-15 15:50:47Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -5528,6 +5528,12 @@ static DECLCALLBACK(int) rtFsIsoMakerOutFile_Close(void *pvThis)
 
     RTFsIsoMakerRelease(pThis->pIsoMaker);
     pThis->pIsoMaker = NULL;
+
+    if (pThis->hVfsSrcFile != NIL_RTVFSFILE)
+    {
+        RTVfsFileRelease(pThis->hVfsSrcFile);
+        pThis->hVfsSrcFile = NIL_RTVFSFILE;
+    }
 
     return VINF_SUCCESS;
 }
