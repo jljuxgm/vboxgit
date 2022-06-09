@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 69073 2017-10-13 13:58:45Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 69074 2017-10-13 14:04:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -24,6 +24,7 @@
 # include <QTimer>
 # include <QLabel>
 # include <QMenu>
+# include <QMoveEvent>
 # include <QToolButton>
 # include <QStateMachine>
 # include <QPainter>
