@@ -1,7 +1,10 @@
-#
+# $Id: Makefile.module 69334 2017-10-26 10:38:50Z vboxsync $
+## @file
 # VirtualBox Guest Additions Module Makefile.
 #
 # (For 2.6.x this file must be 'Makefile'!)
+#
+
 #
 # Copyright (C) 2006-2011 Oracle Corporation
 #
