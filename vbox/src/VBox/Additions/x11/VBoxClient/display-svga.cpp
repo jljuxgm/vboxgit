@@ -1,4 +1,4 @@
-/* $Id: display-svga.cpp 67755 2017-07-03 13:33:55Z vboxsync $ */
+/* $Id: display-svga.cpp 67759 2017-07-03 14:07:23Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to guest
  * driver.
@@ -361,7 +361,9 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
     rc = VbglR3CtlFilterMask(VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST, 0);
     if (RT_FAILURE(rc))
         VBClFatalError(("Failed to request display change events, rc=%Rrc\n", rc));
-    rc = VbglR3SetGuestCaps(VMMDEV_GUEST_SUPPORTS_GRAPHICS, 0);
+    rc = VbglR3AcquireGuestCaps(VMMDEV_GUEST_SUPPORTS_GRAPHICS, 0, false);
+    if (rc == VERR_RESOURCE_BUSY)  /* Someone else has already acquired it. */
+        return VINF_SUCCESS;
     if (RT_FAILURE(rc))
         VBClFatalError(("Failed to register resizing support, rc=%Rrc\n", rc));
     for (;;)
