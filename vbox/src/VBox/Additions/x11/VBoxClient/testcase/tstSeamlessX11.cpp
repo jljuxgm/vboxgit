@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11.cpp 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: tstSeamlessX11.cpp 67796 2017-07-05 13:37:55Z vboxsync $ */
 /** @file
  * Linux seamless guest additions simulator in host.
  */
@@ -77,16 +77,6 @@ int VbglR3SeamlessWaitEvent(VMMDevSeamlessMode *pMode)
     else
         rc = RTSemEventWait(eventSem, RT_INDEFINITE_WAIT);
     return rc;
-}
-
-int VbglR3WaitEvent(uint32_t , uint32_t cMillies, uint32_t *)
-{
-    return RTSemEventWait(eventSem, cMillies);
-}
-
-int VbglR3InterruptEventWaits(void)
-{
-    return RTSemEventSignal(eventSem);
 }
 
 VBGLR3DECL(int)     VbglR3InitUser(void) { return VINF_SUCCESS; }
