@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 71626 2018-04-02 21:12:58Z vboxsync $ */
+/* $Id: DisplayImpl.h 72014 2018-04-25 13:28:31Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -208,7 +208,7 @@ public:
 
 #ifdef VBOX_WITH_VIDEOREC
     PVIDEORECCFG             i_videoRecGetConfig(void) { return &mVideoRecCfg; }
-    VIDEORECFEATURES         i_videoRecGetEnabled(void);
+    VIDEORECFEATURES         i_videoRecGetFeatures(void);
     bool                     i_videoRecStarted(void);
     void                     i_videoRecInvalidate();
     int                      i_videoRecSendAudio(const void *pvData, size_t cbData, uint64_t uDurationMs);
