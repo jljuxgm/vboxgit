@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 65399 2017-01-23 11:16:30Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 67564 2017-06-22 14:39:12Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1793,7 +1793,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                 break;
             }
 
-            CHECK_ERROR_BREAK(sessionMachine, COMSETTER(VideoCaptureFile)(Bstr(a->argv[3]).raw()));
+            CHECK_ERROR_BREAK(sessionMachine, COMSETTER(VideoCaptureFile)(Bstr(a->argv[2]).raw()));
         }
         else if (!strcmp(a->argv[1], "videocapres"))
         {
