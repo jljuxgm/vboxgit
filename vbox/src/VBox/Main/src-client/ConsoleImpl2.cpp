@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 70086 2017-12-12 17:36:51Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 70090 2017-12-12 17:53:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5973,7 +5973,7 @@ int configSetGlobalPropertyFlags(VMMDev * const pVMMDev, uint32_t fFlags)
     if (RT_FAILURE(rc))
     {
         char szFlags[GUEST_PROP_MAX_FLAGS_LEN];
-        if (RT_FAILURE(GuestPropWriteFlags(fFlags, szFlags, sizeof(szFlags))))
+        if (RT_FAILURE(GuestPropWriteFlags(fFlags, szFlags)))
             Log(("Failed to set the global flags.\n"));
         else
             Log(("Failed to set the global flags \"%s\".\n", szFlags));
