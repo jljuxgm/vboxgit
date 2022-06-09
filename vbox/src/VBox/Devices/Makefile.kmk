@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72301 2018-05-23 15:30:54Z vboxsync $
+# $Id: Makefile.kmk 72302 2018-05-23 15:32:47Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -819,6 +819,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   VBoxDD_CLEAN       += \
  	$(VBoxDD_0_OUTDIR)/vboxaml.hex \
  	$(VBoxDD_0_OUTDIR)/vboxaml.aml \
+ 	$(VBoxDD_0_OUTDIR)/vboxaml.aml.tmp \
  	$(VBoxDD_0_OUTDIR)/vboxssdt_standard.hex \
  	$(VBoxDD_0_OUTDIR)/vboxssdt_standard.aml \
  	$(VBoxDD_0_OUTDIR)/vboxssdt_standard.aml.tmp \
