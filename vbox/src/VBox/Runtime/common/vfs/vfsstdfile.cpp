@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 69592 2017-11-06 12:39:17Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -244,7 +244,14 @@ static DECLCALLBACK(int) rtVfsStdFile_Write(void *pvThis, RTFOFF off, PCRTSGBUF 
 static DECLCALLBACK(int) rtVfsStdFile_Flush(void *pvThis)
 {
     PRTVFSSTDFILE pThis = (PRTVFSSTDFILE)pvThis;
-    return RTFileFlush(pThis->hFile);
+    int rc = RTFileFlush(pThis->hFile);
+#ifdef RT_OS_WINDOWS
+    /* Workaround for console handles. */  /** @todo push this further down? */
+    if (   rc == VERR_INVALID_HANDLE
+        && RTFileIsValid(pThis->hFile))
+        rc = VINF_NOT_SUPPORTED; /* not flushable */
+#endif
+    return rc;
 }
 
 
