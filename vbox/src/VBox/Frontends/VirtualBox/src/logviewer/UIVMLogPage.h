@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 70617 2018-01-18 07:50:33Z vboxsync $ */
+/* $Id: UIVMLogPage.h 70618 2018-01-18 07:52:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -123,7 +123,7 @@ private:
     int             m_tabIndex;
     /** Stores the bookmarks of the logpage. All other bookmark related containers are updated wrt. this one. */
     QVector<LogBookmark> m_bookmarkVector;
-    use following two variables
+
     /** Keeps the index of the selected bookmark. Used especially when moving from one tab to another. */
     int                  m_iSelectedBookmarkIndex;
     /** Keeps the scrolled line number. Used when switching between tabs. */
