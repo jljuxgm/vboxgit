@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 71943 2018-04-20 13:55:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -35,7 +35,7 @@
 # include "UIWizardNewVM.h"
 # include "UIIconPool.h"
 # include "UINameAndSystemEditor.h"
-# include "VBoxGuestRAMSlider.h"
+# include "UIGuestRAMSlider.h"
 # include "VBoxMediaComboBox.h"
 # include "QIToolButton.h"
 # include "UIMedium.h"
@@ -63,7 +63,7 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
             m_pMemoryCnt->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
             QGridLayout *pMemoryCntLayout = new QGridLayout(m_pMemoryCnt);
             {
-                m_pRamSlider = new VBoxGuestRAMSlider(m_pMemoryCnt);
+                m_pRamSlider = new UIGuestRAMSlider(m_pMemoryCnt);
                 {
                     m_pRamSlider->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
                     m_pRamSlider->setOrientation(Qt::Horizontal);
@@ -139,7 +139,7 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
             this, &UIWizardNewVMPageExpert::sltNameChanged);
     connect(m_pNameAndSystemEditor, &UINameAndSystemEditor::sigOsTypeChanged,
             this, &UIWizardNewVMPageExpert::sltOsTypeChanged);
-    connect(m_pRamSlider, &VBoxGuestRAMSlider::valueChanged,
+    connect(m_pRamSlider, &UIGuestRAMSlider::valueChanged,
             this, &UIWizardNewVMPageExpert::sltRamSliderValueChanged);
     connect(m_pRamEditor, static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, &UIWizardNewVMPageExpert::sltRamEditorValueChanged);
