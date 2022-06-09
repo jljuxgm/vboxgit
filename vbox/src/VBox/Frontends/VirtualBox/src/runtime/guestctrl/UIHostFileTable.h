@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.h 71388 2018-03-20 10:16:28Z vboxsync $ */
+/* $Id: UIHostFileTable.h 71412 2018-03-20 16:27:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -41,6 +41,12 @@ protected:
     virtual bool renameItem(UIFileTableItem *item, QString newBaseName);
     virtual bool createDirectory(const QString &path, const QString &directoryName);
     virtual QString fsObjectPropertyString() /* override */;
+
+private:
+
+    /** Read the directory with the path @p path recursively and collect #of objects and
+        total size */
+    void directoryStatisticsRecursive(const QString &path);
 
 };
 

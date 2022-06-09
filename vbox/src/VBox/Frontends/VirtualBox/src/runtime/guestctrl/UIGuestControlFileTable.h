@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 71388 2018-03-20 10:16:28Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.h 71412 2018-03-20 16:27:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -181,7 +181,7 @@ protected:
     UIFileTableItem* indexData(const QModelIndex &index) const;
     void keyPressEvent(QKeyEvent * pEvent);
     CGuestFsObjInfo guestFsObjectInfo(const QString& path, CGuestSession &comGuestSession) const;
-
+    static QString humanReadableSize(ULONG64 size);
 
     UIFileTableItem         *m_pRootItem;
 

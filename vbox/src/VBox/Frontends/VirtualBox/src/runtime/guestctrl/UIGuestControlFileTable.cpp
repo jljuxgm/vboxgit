@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71388 2018-03-20 10:16:28Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 71412 2018-03-20 16:27:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -1331,5 +1331,24 @@ QString UIGuestControlFileTable::fileTypeString(FileObjectType type)
     }
     return strType;
 }
+
+QString UIGuestControlFileTable::humanReadableSize(ULONG64 size)
+{
+    int i = 0;
+    double dSize = size;
+    const char* units[] = {" B", " kB", " MB", " GB", " TB", " PB", " EB", " ZB", " YB"};
+    while (size > 1024) {
+        size /= 1024;
+        dSize /= (double)1024;
+        i++;
+    }
+    if (i > 8)
+        return QString();
+
+    QString strResult(QString::number(dSize, 'f', 2));
+    strResult += units[i];
+    return strResult;
+}
+
 
 #include "UIGuestControlFileTable.moc"
