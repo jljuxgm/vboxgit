@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 68799 2017-09-20 10:32:34Z vboxsync $ */
+/* $Id: VideoRec.cpp 68806 2017-09-20 15:03:16Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -1196,7 +1196,7 @@ int VideoRecStreamInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen)
  * Returns which recording features currently are enabled for a given configuration.
  *
  * @returns Enabled video recording features.
- * @param   pCtx                Pointer to recording configuration.
+ * @param   pCfg                Pointer to recording configuration.
  */
 VIDEORECFEATURES VideoRecGetEnabled(PVIDEORECCFG pCfg)
 {
