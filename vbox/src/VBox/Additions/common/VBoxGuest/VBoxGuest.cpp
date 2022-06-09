@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 70226 2017-12-19 18:40:41Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 70608 2018-01-17 10:56:21Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2420,6 +2420,8 @@ static int vgdrvCheckIfVmmReqIsAllowed(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSI
                 return VINF_SUCCESS;
             break;
         case kLevel_TrustedUsers:
+            if (pSession->fUserSession)
+                break;
         case kLevel_AllUsers:
             return VINF_SUCCESS;
     }
