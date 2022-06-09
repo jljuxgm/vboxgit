@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 68516 2017-08-23 12:29:10Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 68541 2017-08-29 17:21:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -455,7 +455,7 @@ private:
         }
         else
         {
-            strFullData = QString(s_strTableRow2).arg(QApplication::translate("UIGDetails", "Disabled", "details (audio)"));
+            strFullData = QString(s_strTableRow1).arg(QApplication::translate("UIGDetails", "Disabled", "details (audio)"));
             setState(AudioState_AllOff);
         }
 
