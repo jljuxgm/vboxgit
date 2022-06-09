@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 68334 2017-08-08 09:26:39Z vboxsync $ */
+/* $Id: vbox_mode.c 68848 2017-09-24 16:58:46Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -37,14 +37,14 @@
  *          Hans de Goede <hdegoede@redhat.com>
  */
 #include "vbox_drv.h"
-
-#include <VBoxVideo.h>
-
 #include <linux/export.h>
 #include <drm/drm_crtc_helper.h>
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(RHEL_73)
 #include <drm/drm_plane_helper.h>
 #endif
+
+#include "VBoxVideo.h"
+#include "hgsmi_channels.h"
 
 static int vbox_cursor_set2(struct drm_crtc *crtc, struct drm_file *file_priv,
 			    u32 handle, u32 width, u32 height,

@@ -1,4 +1,4 @@
-/* $Id: Modesetting.cpp 67268 2017-06-06 11:54:32Z vboxsync $ */
+/* $Id: Modesetting.cpp 68848 2017-09-24 16:58:46Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -28,6 +28,7 @@
 
 #include <VBoxVideoGuest.h>
 #include <VBoxVideoVBE.h>
+#include <HGSMIChannels.h>
 
 #ifndef VBOX_GUESTR3XF86MOD
 # include <VBoxVideoIPRT.h>
@@ -383,9 +384,9 @@ DECLHIDDEN(int) VBoxHGSMIGetModeHints(PHGSMIGUESTCOMMANDCONTEXT pCtx,
 DECLHIDDEN(uint16_t) VBoxHGSMIGetScreenFlags(PHGSMIGUESTCOMMANDCONTEXT pCtx)
 {
     uint32_t u32Flags = 0;
-    int rc = VBoxQueryConfHGSMIDef(pCtx, VBOX_VBVA_CONF32_SCREEN_FLAGS, 0, &u32Flags);
+    int rc = VBoxQueryConfHGSMI(pCtx, VBOX_VBVA_CONF32_SCREEN_FLAGS, &u32Flags);
     // LogFunc(("u32Flags = 0x%x rc %Rrc\n", u32Flags, rc));
-    if (RT_FAILURE(rc))
+    if (RT_FAILURE(rc) || u32Flags > UINT16_MAX)
         u32Flags = 0;
     return (uint16_t)u32Flags;
 }
