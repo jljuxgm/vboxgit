@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: setup-routines.sh 66800 2017-05-04 23:55:34Z vboxsync $
+# $Id: setup-routines.sh 67192 2017-06-01 08:42:40Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup.
 #
@@ -122,5 +122,19 @@ test_coredumps() {
         else
             echo "Warning: Apport not installed! This package is required for core dump handling!"
         fi
+    fi
+}
+
+##
+# Test if unattended updates are disabled. See
+#   http://ask.xmodulo.com/disable-automatic-updates-ubuntu.html
+test_unattended_updates_disabled() {
+    if grep "APT::Periodic::Unattended-Upgrade.*1" /etc/apt/apt.conf.d/* 2>/dev/null
+        echo "Unattended updates enabled?"
+        return 1
+    fi
+    if grep "APT::Periodic::Update-Package-List.*1" /etc/apt/apt.conf.d/* 2>/dev/null
+        echo "Unattended package updates enabled?"
+        return 1
     fi
 }

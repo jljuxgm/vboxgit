@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# $Id: setup.sh 66805 2017-05-05 09:27:08Z vboxsync $
+# $Id: setup.sh 67192 2017-06-01 08:42:40Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Unixy platforms.
 #
@@ -312,6 +312,13 @@ test_coredumps() {
     return 0;
 }
 
+##
+# Test if unattended updates are disabled. See
+#   http://ask.xmodulo.com/disable-automatic-updates-ubuntu.html
+test_unattended_updates_disabled() {
+    # This is a linux hook.
+    return 0;
+}
 
 ##
 # Grants the user write access to the testboxscript files so it can perform
@@ -592,7 +599,7 @@ do
             exit 0;
             ;;
         -V|--version)
-            echo '$Revision: 66805 $'
+            echo '$Revision: 67192 $'
             exit 0;
             ;;
 
@@ -664,6 +671,7 @@ check_proxy_config;
 maybe_add_testboxscript_user;
 test_user;
 test_coredumps;
+test_unattended_updates_disabled;
 
 grant_user_testboxscript_write_access;
 
