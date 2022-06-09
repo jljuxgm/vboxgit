@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62522 2016-07-22 19:17:25Z vboxsync $
+# $Id: Makefile.kmk 68552 2017-08-31 12:09:48Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows guest shared folders.
 #
@@ -22,4 +22,9 @@ include $(KBUILD_PATH)/subheader.kmk
 include $(PATH_SUB_CURRENT)/np/Makefile.kmk
 include $(PATH_SUB_CURRENT)/driver/Makefile.kmk
 
+INSTALLS += VBoxSFScripts
+VBoxSFScripts_TEMPLATE = VBoxGuestR3Exe
+VBoxSFScripts_SOURCES  = VBoxSFInst.cmd
+
 include $(FILE_KBUILD_SUB_FOOTER)
+
