@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 70823 2018-01-31 11:35:09Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 70833 2018-01-31 14:05:24Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -116,7 +116,7 @@ public:
     HRESULT getFilesList(const Utf8Str& strRootFolder, fileList_t &filesList);
     HRESULT getFolderSize(const Utf8Str& strRootFolder, uint64_t& size);
     HRESULT deleteFiles(const RTCList<Utf8Str>& listOfFiles);
-    HRESULT updatePathsToStateFiles(const std::map<Utf8Str, SAVESTATETASK>& listOfFiles, 
+    HRESULT updatePathsToStateFiles(const std::map<Utf8Str, SAVESTATETASK>& listOfFiles,
                                     const Utf8Str& sourcePath, const Utf8Str& targetPath);
     HRESULT moveAllDisks(const std::map<Utf8Str, MEDIUMTASK>& listOfDisks, const Utf8Str* strTargetFolder = NULL);
     HRESULT restoreAllDisks(const std::map<Utf8Str, MEDIUMTASK>& listOfDisks);
