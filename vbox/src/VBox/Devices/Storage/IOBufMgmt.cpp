@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.cpp 65220 2017-01-10 11:22:14Z vboxsync $ */
+/* $Id: IOBufMgmt.cpp 68205 2017-07-31 14:00:31Z vboxsync $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -430,7 +430,8 @@ DECLHIDDEN(int) IOBUFMgrAllocBuf(IOBUFMGR hIoBufMgr, PIOBUFDESC pIoBufDesc, size
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
     AssertReturn(cbIoBuf > 0, VERR_INVALID_PARAMETER);
 
-    if (!pThis->cbFree)
+    if (   !pThis->cbFree
+        || pThis->fAllocSuspended)
         return VERR_NO_MEMORY;
 
     int rc = RTCritSectEnter(&pThis->CritSectAlloc);
