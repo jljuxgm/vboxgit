@@ -1,4 +1,4 @@
-/* $Id: VDVfs.cpp 70304 2017-12-22 08:24:29Z vboxsync $ */
+/* $Id: VDVfs.cpp 70305 2017-12-22 08:27:01Z vboxsync $ */
 /** @file
  * Virtual Disk Container implementation. - VFS glue.
  */
@@ -111,7 +111,7 @@ static int vdReadHelper(PVDISK pDisk, uint64_t off, void *pvBuf, size_t cbRead)
         if (   RT_SUCCESS(rc)
             && cbRead)
         {
-            Assert(cbWrite == cbMisalign);
+            Assert(cbRead == cbMisalign);
             Assert(cbRead < 512);
             Assert(!(off % 512));
 
