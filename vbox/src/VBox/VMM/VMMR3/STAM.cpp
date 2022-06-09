@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 67067 2017-05-24 15:43:59Z vboxsync $ */
+/* $Id: STAM.cpp 68519 2017-08-23 14:28:01Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -2081,7 +2081,7 @@ static int stamR3SnapshotPrintf(PSTAMR3SNAPSHOTONE pThis, const char *pszFormat,
  */
 VMMR3DECL(int)  STAMR3SnapshotFree(PUVM pUVM, char *pszSnapshot)
 {
-    if (!pszSnapshot)
+    if (pszSnapshot)
         RTMemFree(pszSnapshot);
     NOREF(pUVM);
     return VINF_SUCCESS;
