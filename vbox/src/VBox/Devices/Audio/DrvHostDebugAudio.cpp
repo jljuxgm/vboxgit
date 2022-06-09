@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 68132 2017-07-27 08:15:43Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 68241 2017-08-02 12:45:03Z vboxsync $ */
 /** @file
  * Debug audio driver -- host backend for dumping and injecting audio data
  * from/to the device emulation.
@@ -242,7 +242,7 @@ static DECLCALLBACK(int) drvHostDebugAudioStreamPlay(PPDMIHOSTAUDIO pInterface,
             break;
         }
 
-        Assert(cbAvail >= cbAvail);
+        Assert(cbAvail >= cbChunk);
         cbAvail        -= cbChunk;
 
         cbWrittenTotal += cbChunk;
