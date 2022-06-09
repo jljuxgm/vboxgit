@@ -1,4 +1,4 @@
-/* $Id: UsbMouse.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
+/* $Id: UsbMouse.cpp 69341 2017-10-26 12:02:49Z vboxsync $ */
 /** @file
  * UsbMouse - USB Human Interface Device Emulation (Mouse).
  */
@@ -2286,6 +2286,9 @@ static DECLCALLBACK(int) usbHidUsbReset(PPDMUSBINS pUsbIns, bool fResetOnLinux)
     PUSBHID pThis = PDMINS_2_DATA(pUsbIns, PUSBHID);
     LogRelFlow(("usbHidUsbReset/#%u:\n", pUsbIns->iInstance));
     RTCritSectEnter(&pThis->CritSect);
+
+    /* We can not handle any input until device is configured again. */
+    pThis->Lun0.pDrv->pfnReportModes(pThis->Lun0.pDrv, false, false, false);
 
     int rc = usbHidResetWorker(pThis, NULL, false /*fSetConfig*/);
 
