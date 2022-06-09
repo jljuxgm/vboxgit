@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 67529 2017-06-21 08:29:25Z vboxsync $ */
+/* $Id: EM.cpp 67553 2017-06-22 08:54:39Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1976,7 +1976,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                         fIntrEnabled = pCtx->eflags.Bits.u1IF;
                 }
 #else
-                fIntrEnabled = pCtx->eflags.Bits.u1IF;
+                fIntrEnabled &= pCtx->eflags.Bits.u1IF;
 #endif
                 if (fIntrEnabled)
                 {
