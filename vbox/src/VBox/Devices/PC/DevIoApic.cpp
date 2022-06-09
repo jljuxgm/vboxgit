@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 70867 2018-02-05 14:50:28Z vboxsync $ */
+/* $Id: DevIoApic.cpp 70868 2018-02-05 15:24:33Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -882,7 +882,7 @@ static DECLCALLBACK(int) ioapicDbgReg_GetVersion(void *pvUser, PCDBGFREGDESC pDe
 }
 
 
-/** @interface_method_impl{DBGFREGDESC,pfnGetArb} */
+/** @interface_method_impl{DBGFREGDESC,pfnGet} */
 static DECLCALLBACK(int) ioapicDbgReg_GetArb(void *pvUser, PCDBGFREGDESC pDesc, PDBGFREGVAL pValue)
 {
     RT_NOREF(pvUser, pDesc);
