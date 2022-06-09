@@ -1,4 +1,4 @@
-/* $Id: EMR3Dbg.cpp 72557 2018-06-14 21:32:49Z vboxsync $ */
+/* $Id: EMR3Dbg.cpp 72558 2018-06-14 21:37:33Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager, Debugger Related Bits.
  */
@@ -229,7 +229,7 @@ static DECLCALLBACK(void) emR3InfoExitHistory(PVM pVM, PCDBGFINFOHLP pHlp, const
          */
         pHlp->pfnPrintf(pHlp,
                         "CPU[%u]: VM-exit history:\n"
-                        "   Exit No.:      TSC timestamp / delta    Flat RIP         Exit   Name\n"
+                        "   Exit No.:     TSC timestamp / delta    Flat RIP         Exit   Name\n"
                         , pVCpu->idCpu);
 
         /*
