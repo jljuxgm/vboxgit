@@ -1,4 +1,4 @@
-/* $Id: vcc100-kernel32-fakes.cpp 70394 2017-12-30 19:27:35Z vboxsync $ */
+/* $Id: vcc100-kernel32-fakes.cpp 70480 2018-01-07 18:43:58Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -321,7 +321,7 @@ DECL_KERNEL32(BOOL) Fake_IsProcessorFeaturePresent(DWORD enmProcessorFeature)
 
 DECL_KERNEL32(BOOL) Fake_CancelIo(HANDLE hHandle)
 {
-    /* NT 3.51 have the NTDLL API this corresponds to. */
+    /* All NT versions the NTDLL API this corresponds to. */
     RESOLVE_NTDLL_API(NtCancelIoFile);
     if (pfnNtCancelIoFile)
     {
