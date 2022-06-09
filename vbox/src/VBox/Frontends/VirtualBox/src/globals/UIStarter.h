@@ -1,4 +1,4 @@
-/* $Id: UIStarter.h 71369 2018-03-16 15:11:13Z vboxsync $ */
+/* $Id: UIStarter.h 72360 2018-05-28 16:34:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class declaration.
  */
@@ -54,8 +54,8 @@ public:
 
 private slots:
 
-    /** Shows corresponding part of the UI. */
-    void sltShowUI();
+    /** Starts corresponding part of the UI. */
+    void sltStartUI();
     /** Restarts corresponding part of the UI. */
     void sltRestartUI();
     /** Destroys corresponding part of the UI. */
@@ -77,4 +77,3 @@ private:
 #define gStarter UIStarter::instance()
 
 #endif /* !___UIStarter_h___ */
-

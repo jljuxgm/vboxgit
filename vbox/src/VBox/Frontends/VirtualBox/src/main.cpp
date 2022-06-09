@@ -1,4 +1,4 @@
-/* $Id: main.cpp 72242 2018-05-17 12:49:06Z vboxsync $ */
+/* $Id: main.cpp 72360 2018-05-28 16:34:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -487,8 +487,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
                 qApp->setQuitOnLastWindowClosed(false);
             }
 
-            /* Request to Show UI _after_ QApplication executed: */
-            QMetaObject::invokeMethod(gStarter, "sltShowUI", Qt::QueuedConnection);
+            /* Request to Start UI _after_ QApplication executed: */
+            QMetaObject::invokeMethod(gStarter, "sltStartUI", Qt::QueuedConnection);
 
             /* Start application: */
             iResultCode = a.exec();
