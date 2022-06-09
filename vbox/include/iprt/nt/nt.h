@@ -1,4 +1,4 @@
-/* $Id: nt.h 67360 2017-06-13 12:47:29Z vboxsync $ */
+/* $Id: nt.h 67979 2017-07-15 11:02:00Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2663,6 +2663,12 @@ NTSYSAPI NTSTATUS NTAPI RtlDosApplyFileIsolationRedirection_Ustr(IN ULONG fFlags
                                                                  IN PULONG pfNewFlags OPTIONAL,
                                                                  IN PSIZE_T pcbFilename OPTIONAL,
                                                                  IN PSIZE_T pcbNeeded OPTIONAL);
+/** @since Windows 8.
+ * @note Status code is always zero in windows 10 build 14393. */
+NTSYSAPI NTSTATUS ApiSetQueryApiSetPresence(IN PCUNICODE_STRING pAllegedApiSetDll, OUT PBOOLEAN pfPresent);
+/** @copydoc ApiSetQueryApiSetPresence */
+typedef NTSTATUS (NTAPI *PFNAPISETQUERYAPISETPRESENCE)(IN PCUNICODE_STRING pAllegedApiSetDll, OUT PBOOLEAN pfPresent);
+
 
 # ifdef IPRT_NT_USE_WINTERNL
 typedef NTSTATUS NTAPI RTL_HEAP_COMMIT_ROUTINE(PVOID, PVOID *, PSIZE_T);
