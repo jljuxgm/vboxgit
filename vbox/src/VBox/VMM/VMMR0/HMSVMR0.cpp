@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 71446 2018-03-22 10:50:35Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 71450 2018-03-22 11:00:43Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1444,9 +1444,9 @@ static void hmR0SvmLoadSharedCR0(PVMCPU pVCpu, PSVMVMCB pVmcb, PCPUMCTX pCtx)
     }
 
     /*
-     * Use the #MF style of legacy-FPU error reporting for now as IEM needs work
-     * if we want to fully emulate it properly. AMD-V has MSRs that lets us isolate
-     * the host from it, but IEM needs work, see @bugref{7243#c103}.
+     * Use the #MF style of legacy-FPU error reporting for now as IEM needs work if we want to fully
+     * emulate it properly. AMD-V has MSRs that lets us isolate the host from it, but IEM/REM needs
+     * work, see @bugref{7243#c103}.
      */
     if (!(uGuestCr0 & X86_CR0_NE))
     {
