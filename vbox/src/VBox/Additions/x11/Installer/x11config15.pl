@@ -1,6 +1,9 @@
 #!/usr/bin/perl -w
-#
+# $Id: x11config15.pl 69348 2017-10-26 13:47:29Z vboxsync $
+## @file
 # Guest Additions X11 config update script for X.org 1.5
+#
+
 #
 # Copyright (C) 2006-2010 Oracle Corporation
 #

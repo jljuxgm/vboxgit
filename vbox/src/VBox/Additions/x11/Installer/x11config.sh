@@ -1,6 +1,9 @@
 #!/bin/sh
-#
+# $Id: x11config.sh 69348 2017-10-26 13:47:29Z vboxsync $
+## @file
 # Guest Additions X11 config update script
+#
+
 #
 # Copyright (C) 2006-2012 Oracle Corporation
 #

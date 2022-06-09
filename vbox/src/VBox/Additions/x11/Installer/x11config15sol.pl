@@ -1,6 +1,9 @@
 #!/usr/bin/perl
-#
+# $Id: x11config15sol.pl 69348 2017-10-26 13:47:29Z vboxsync $
+## @file
 # Guest Additions X11 config update script
+#
+
 #
 # Copyright (C) 2006-2012 Oracle Corporation
 #
@@ -59,8 +62,8 @@ foreach $cfg (@cfg_files)
                     $in_section = 1;
                 }
             }
-			else
-		    {
+            else
+            {
                 if ($line =~ /^\s*EndSection/i)
                 {
                     $in_section = 0;
