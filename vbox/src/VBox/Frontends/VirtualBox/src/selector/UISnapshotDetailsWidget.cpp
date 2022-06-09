@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 67582 2017-06-23 11:17:44Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 67628 2017-06-27 09:54:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -1058,9 +1058,10 @@ void UISnapshotDetailsWidget::loadSnapshotData()
         // returned by the CMachine::ReadSavedThumbnailToArray is too small.
         const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_LargeIconSize);
         const QSize thumbnailSize = QSize(iIconMetric * 4, iIconMetric * 4);
+        const QPixmap pixThumbnail = m_pixmapScreenshot.isNull() ? m_pixmapScreenshot
+                                   : m_pixmapScreenshot.scaled(thumbnailSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
         m_details.value(DetailsElementType_Preview)->document()->addResource(
-            QTextDocument::ImageResource, QUrl("details://thumbnail"),
-            QVariant(m_pixmapScreenshot.scaled(thumbnailSize, Qt::KeepAspectRatio, Qt::SmoothTransformation)));
+            QTextDocument::ImageResource, QUrl("details://thumbnail"), QVariant(pixThumbnail));
     }
     else
     {
