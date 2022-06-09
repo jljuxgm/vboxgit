@@ -1,4 +1,4 @@
-/* $Id: HDACodec.h 67387 2017-06-14 10:14:06Z vboxsync $ */
+/* $Id: HDACodec.h 67534 2017-06-21 10:05:47Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  */
@@ -117,9 +117,13 @@ int hdaCodecLoadState(PHDACODEC pThis, PSSMHANDLE pSSM, uint32_t uVersion);
 int hdaCodecAddStream(PHDACODEC pThis, PDMAUDIOMIXERCTL enmMixerCtl, PPDMAUDIOSTREAMCFG pCfg);
 int hdaCodecRemoveStream(PHDACODEC pThis, PDMAUDIOMIXERCTL enmMixerCtl);
 
-/** Added (Controller): Base time stamp for correctly handling the WALCLK register on resume.
-  * Added (Streams):    Ring buffer. This is optional and can be skipped if (not) needed.
-  * Added (Streams):    Struct aSSMStreamStateFields7. */
+/** Added (Controller):              Current wall clock value (this independent from WALCLK register value).
+  * Added (Controller):              Current IRQ level.
+  * Added (Per stream):              Ring buffer. This is optional and can be skipped if (not) needed.
+  * Added (Per stream):              Struct g_aSSMStreamStateFields7.
+  * Added (Per stream):              Struct g_aSSMStreamPeriodFields7.
+  * Added (Current BDLE per stream): Struct g_aSSMBDLEDescFields7.
+  * Added (Current BDLE per stream): Struct g_aSSMBDLEStateFields7. */
 #define HDA_SSM_VERSION   7
 /** Saves the current BDLE state. */
 #define HDA_SSM_VERSION_6 6
