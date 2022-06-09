@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.c 63522 2016-08-15 23:37:16Z vboxsync $ */
+/* $Id: VBoxGuestR0LibSharedFolders.c 68104 2017-07-25 09:40:46Z vboxsync $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -55,6 +55,10 @@
 
 
 
+/** @todo We only need HGCM, not physical memory, so other guests should also
+ *        switch to calling vbglR0HGCMInit() and vbglR0HGCMTerminate() instead
+ *        of VbglR0SfInit() and VbglR0SfTerm(). */
+#ifndef RT_OS_LINUX
 DECLVBGL(int) VbglR0SfInit(void)
 {
     return VbglInitClient();
@@ -64,6 +68,7 @@ DECLVBGL(void) VbglR0SfTerm(void)
 {
     VbglTerminate();
 }
+#endif
 
 DECLVBGL(int) VbglR0SfConnect(PVBGLSFCLIENT pClient)
 {
