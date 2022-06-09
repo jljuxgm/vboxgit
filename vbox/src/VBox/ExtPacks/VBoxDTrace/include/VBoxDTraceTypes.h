@@ -1,5 +1,5 @@
 
-/* $Id: VBoxDTraceTypes.h 69281 2017-10-25 10:59:57Z vboxsync $ */
+/* $Id: VBoxDTraceTypes.h 69435 2017-10-27 15:54:24Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  *
@@ -435,7 +435,7 @@ extern int dtrace_close(struct dtrace_state *state);
 /*
  * gelf
  */
-# include "../../../Runtime/include/internal/ldrELF64.h"
+# include <iprt/formats/elf64.h>
 typedef Elf64_Half  GElf_Half;
 typedef Elf64_Xword GElf_Xword;
 typedef Elf64_Shdr  GElf_Shdr;

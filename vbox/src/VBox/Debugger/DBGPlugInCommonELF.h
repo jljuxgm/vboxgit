@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELF.h 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: DBGPlugInCommonELF.h 69435 2017-10-27 15:54:24Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Common code for dealing with ELF images, Header.
  */
@@ -19,8 +19,8 @@
 #define ___Debugger_DBGPlugInCommonELF_h
 
 #include <VBox/types.h>
-#include "../Runtime/include/internal/ldrELF32.h"
-#include "../Runtime/include/internal/ldrELF64.h"
+#include <iprt/formats/elf32.h>
+#include <iprt/formats/elf64.h>
 
 /** @name DBGDiggerCommonParseElf32Mod and DBGDiggerCommonParseElf64Mod flags
  * @{ */
