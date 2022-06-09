@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVrdp.cpp 68436 2017-08-17 10:12:58Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVrdp.cpp 68439 2017-08-17 11:14:02Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, VRDP.
  */
@@ -29,12 +29,14 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/time.h>
+#include <iprt/string.h>
 #include "VBGLR3Internal.h"
 
 
 VBGLR3DECL(int) VbglR3VrdpGetChangeRequest(bool *pfActive, uint32_t *puExperienceLevel)
 {
-    VMMDevVRDPChangeRequest Req = {0};
+    VMMDevVRDPChangeRequest Req;
+    RT_ZERO(Req); /* implicit padding */
     vmmdevInitRequest(&Req.header, VMMDevReq_GetVRDPChangeRequest); //VMMDEV_REQ_HDR_INIT(&Req.header, sizeof(Req), VMMDevReq_GetVRDPChangeRequest);
     int rc = vbglR3GRPerform(&Req.header);
     if (RT_SUCCESS(rc))
