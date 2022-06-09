@@ -1,6 +1,6 @@
-# $Id: .scm-settings 69325 2017-10-25 19:45:45Z vboxsync $
+# $Id: .scm-settings 69326 2017-10-25 19:47:54Z vboxsync $
 ## @file
-# Source code massager settings for haiku guest additions.
+# Source code massager settings for linux drm driver.
 #
 
 #
