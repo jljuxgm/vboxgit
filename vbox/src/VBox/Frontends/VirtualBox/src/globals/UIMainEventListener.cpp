@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 70882 2018-02-06 12:22:51Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 70883 2018-02-06 12:47:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -430,7 +430,9 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         case KVBoxEventType_OnGuestSessionRegistered:
         {
             CGuestSessionRegisteredEvent cEvent(pEvent);
-            emit sigGuestSessionRegistered(cEvent.GetSession());
+            CGuestSession guestSession = cEvent.GetSession();
+            emit sigGuestSessionRegistered(guestSession);
+
             break;
         }
         case KVBoxEventType_OnGuestSessionStateChanged:
