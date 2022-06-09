@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 68394 2017-08-11 13:14:04Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 68461 2017-08-18 11:17:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -558,8 +558,8 @@ void UISnapshotDetailsWidget::clearData()
 void UISnapshotDetailsWidget::retranslateUi()
 {
     /* Translate labels: */
-    m_pEmptyWidgetLabel->setText("<p>You have the <b>Current State</b> item selected.<br>"
-                                 "Press <b>Take</b> button if you wish to take a new snapshot.</p>");
+    m_pEmptyWidgetLabel->setText(tr("<p>You have the <b>Current State</b> item selected.<br>"
+                                    "Press the <b>Take</b> button if you wish to take a new snapshot.</p>"));
     m_pTabWidget->setTabText(0, tr("&Attributes"));
     m_pTabWidget->setTabText(1, tr("&Information"));
     m_pLabelName->setText(tr("&Name:"));
