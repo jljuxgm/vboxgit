@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 67931 2017-07-12 13:11:31Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 67933 2017-07-12 13:50:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -244,13 +244,16 @@ void UIMediumDetailsWidget::prepareTabOptions()
                 {
                     /* Configure editor: */
                     m_pLabelType->setBuddy(m_pComboBoxType);
-                    m_pComboBoxType->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+                    m_pComboBoxType->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
                     connect(m_pComboBoxType, static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
                             this, &UIMediumDetailsWidget::sltTypeIndexChanged);
 
                     /* Add into layout: */
                     pLayoutType->addWidget(m_pComboBoxType);
                 }
+
+                /* Add stretch: */
+                pLayoutType->addStretch();
 
                 /* Create type error pane: */
                 m_pErrorPaneType = new QLabel;
