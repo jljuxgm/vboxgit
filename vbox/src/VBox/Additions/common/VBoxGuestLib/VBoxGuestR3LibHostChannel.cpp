@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibHostChannel.cpp 68458 2017-08-18 10:31:10Z vboxsync $ */
+/* $Id: VBoxGuestR3LibHostChannel.cpp 68462 2017-08-18 11:23:02Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Host Channel.
  */
@@ -59,11 +59,7 @@ VBGLR3DECL(int) VbglR3HostChannelInit(uint32_t *pu32HGCMClientId)
 
 VBGLR3DECL(void) VbglR3HostChannelTerm(uint32_t u32HGCMClientId)
 {
-    VBoxGuestHGCMDisconnectInfo disconnectInfo;
-    disconnectInfo.result = VERR_WRONG_ORDER;
-    disconnectInfo.u32ClientID = u32HGCMClientId;
-
-    vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_DISCONNECT, &disconnectInfo, sizeof(disconnectInfo));
+    VbglR3HGCMDisconnect(u32HGCMClientId);
 }
 
 VBGLR3DECL(int) VbglR3HostChannelAttach(uint32_t *pu32ChannelHandle,

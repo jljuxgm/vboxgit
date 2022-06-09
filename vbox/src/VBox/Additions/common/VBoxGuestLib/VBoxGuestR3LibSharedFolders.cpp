@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSharedFolders.cpp 68458 2017-08-18 10:31:10Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSharedFolders.cpp 68462 2017-08-18 11:23:02Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, shared folders.
  */
@@ -74,14 +74,7 @@ VBGLR3DECL(int) VbglR3SharedFolderConnect(HGCMCLIENTID *pidClient)
  */
 VBGLR3DECL(int) VbglR3SharedFolderDisconnect(HGCMCLIENTID idClient)
 {
-    VBoxGuestHGCMDisconnectInfo Info;
-    Info.result = VERR_WRONG_ORDER;
-    Info.u32ClientID = idClient;
-
-    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_DISCONNECT, &Info, sizeof(Info));
-    if (RT_SUCCESS(rc))
-        rc = Info.result;
-    return rc;
+    return VbglR3HGCMDisconnect(idClient);
 }
 
 
