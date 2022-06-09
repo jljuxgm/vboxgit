@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 70316 2017-12-22 12:58:24Z vboxsync $ */
+/* $Id: HDAStream.cpp 70317 2017-12-22 13:00:51Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -577,7 +577,7 @@ bool hdaStreamTransferIsScheduled(PHDASTREAM pStream)
                                 || pStream->State.tsTransferNext > TMTimerGet(pStream->pHDAState->pTimer));
 
     Log3Func(("[SD%RU8] tsTransferNext=%RU64, cTransferPendingInterrupts=%RU8 -> %RTbool\n",
-              pStream->u8SD, pStream->State.tsTransferNext, fScheduled));
+              pStream->u8SD, pStream->State.tsTransferNext, pStream->State.cTransferPendingInterrupts, fScheduled));
 
     return fScheduled;
 }
