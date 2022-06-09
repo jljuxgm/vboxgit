@@ -1,4 +1,4 @@
-/* $Id: scmsubversion.cpp 69442 2017-10-27 16:10:22Z vboxsync $ */
+/* $Id: scmsubversion.cpp 69471 2017-10-28 12:35:04Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Subversion Access.
  */
@@ -168,6 +168,7 @@ static svn_client_ctx_t    *g_pSvnClientCtx = NULL;
 static uint32_t             g_cSvnClientCtxUsed = 0;
 
 #endif
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
