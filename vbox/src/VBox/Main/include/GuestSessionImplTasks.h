@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 72045 2018-04-26 15:39:10Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.h 72067 2018-04-30 10:27:37Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -41,6 +41,12 @@ class GuestSessionTaskInternalOpen;
  */
 struct GuestSessionFsSourceSpec
 {
+    GuestSessionFsSourceSpec()
+        : enmType(FsObjType_Unknown)
+        , enmPathStyle(PathStyle_Unknown)
+        , fDryRun(false)
+        , fFollowSymlinks(false) { }
+
     Utf8Str     strSource;
     Utf8Str     strFilter;
     FsObjType_T enmType;
