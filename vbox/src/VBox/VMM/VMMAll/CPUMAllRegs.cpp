@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 69408 2017-10-27 04:13:33Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2627,9 +2627,10 @@ VMM_INT_DECL(uint8_t) CPUMGetSvmNstGstInterrupt(PCCPUMCTX pCtx)
 /**
  * Restores the host-state from the host-state save area as part of a \#VMEXIT.
  *
+ * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   pCtx        The guest-CPU context.
  */
-VMM_INT_DECL(void) CPUMSvmVmExitRestoreHostState(PCPUMCTX pCtx)
+VMM_INT_DECL(void) CPUMSvmVmExitRestoreHostState(PVMCPU pVCpu, PCPUMCTX pCtx)
 {
     /*
      * Reload the guest's "host state".
@@ -2641,10 +2642,10 @@ VMM_INT_DECL(void) CPUMSvmVmExitRestoreHostState(PCPUMCTX pCtx)
     pCtx->ds         = pHostState->ds;
     pCtx->gdtr       = pHostState->gdtr;
     pCtx->idtr       = pHostState->idtr;
-    pCtx->msrEFER    = pHostState->uEferMsr;
-    pCtx->cr0        = pHostState->uCr0 | X86_CR0_PE;
+    CPUMSetGuestMsrEferNoCheck(pVCpu, pCtx->msrEFER, pHostState->uEferMsr);
+    CPUMSetGuestCR0(pVCpu, pHostState->uCr0 | X86_CR0_PE);
     pCtx->cr3        = pHostState->uCr3;
-    pCtx->cr4        = pHostState->uCr4;
+    CPUMSetGuestCR4(pVCpu, pHostState->uCr4);
     pCtx->rflags     = pHostState->rflags;
     pCtx->rflags.Bits.u1VM = 0;
     pCtx->rip        = pHostState->uRip;
