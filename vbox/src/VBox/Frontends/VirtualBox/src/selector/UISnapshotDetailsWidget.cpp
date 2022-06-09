@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 67217 2017-06-01 16:55:31Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 67218 2017-06-01 17:14:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -383,7 +383,11 @@ void UISnapshotDetailsWidget::retranslateUi()
         m_pLabelThumbnail->setToolTip(QString());
 
         /* Clear the details report: */
-        m_pBrowserDetails->clear();
+        // WORKAROUND:
+        // How stupid Qt *is* to wipe out registered icons not just on clear()
+        // call but on setText(QString()) and even setText("") as well.
+        // Nice way to oversmart itself..
+        m_pBrowserDetails->setText("<empty>");
     }
 }
 
