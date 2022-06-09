@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 70285 2017-12-21 15:30:27Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 70294 2017-12-21 16:42:22Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -45,7 +45,6 @@
 #include <VBox/usblib-win.h>
 #include <VBox/usb.h>
 #include <VBox/VBoxDrvCfg-win.h>
-#include <stdio.h>
 #pragma warning (disable:4200) /* shuts up the empty array member warnings */
 #include <iprt/win/setupapi.h>
 #include <usbdi.h>
@@ -903,7 +902,7 @@ static int usbLibDevGetDevices(PUSBDEVICE *ppDevs, uint32_t *pcDevs)
 
     for (int i = 0; i < 10; ++i)
     {
-        sprintf(CtlName, "\\\\.\\HCD%d", i);
+        RTStrPrintf(CtlName, sizeof(CtlName), "\\\\.\\HCD%d", i);
         HANDLE hCtl = CreateFile(CtlName, GENERIC_WRITE, FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
         if (hCtl != INVALID_HANDLE_VALUE)
         {

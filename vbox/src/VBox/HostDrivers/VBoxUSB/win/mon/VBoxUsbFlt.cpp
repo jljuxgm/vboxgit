@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 70286 2017-12-21 15:35:40Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 70294 2017-12-21 16:42:22Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -35,10 +35,8 @@
 #include <iprt/process.h>
 #include <iprt/assert.h>
 #include <VBox/err.h>
-//#include <VBox/sup.h>
 
 #include <iprt/assert.h>
-#include <stdio.h>
 
 #pragma warning(disable : 4200)
 #include "usbdi.h"
