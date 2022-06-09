@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 67301 2017-06-08 13:49:41Z vboxsync $ */
+/* $Id: fatvfs.cpp 67302 2017-06-08 14:02:51Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -1664,7 +1664,7 @@ static DECLCALLBACK(int) rtFsFatFile_Read(void *pvThis, RTFOFF off, PCRTSGBUF pS
     pThis->offFile = off;
     if (pcbRead)
         *pcbRead = cbRead;
-    return VINF_SUCCESS;
+    return rc;
 }
 
 
@@ -1833,7 +1833,7 @@ static DECLCALLBACK(int) rtFsFatFile_Write(void *pvThis, RTFOFF off, PCRTSGBUF p
     pThis->offFile = off;
     if (pcbWritten)
         *pcbWritten = cbWritten;
-    return VINF_SUCCESS;
+    return rc;
 }
 
 
