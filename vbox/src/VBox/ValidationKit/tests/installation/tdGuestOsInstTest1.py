@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 70657 2018-01-20 19:02:11Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 70739 2018-01-25 11:34:37Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70657 $"
+__version__ = "$Revision: 70739 $"
 
 
 # Standard Python imports.
@@ -178,9 +178,6 @@ class InstallTestVm(vboxtestvms.TestVm):
                         raise base.InvalidOption('Invalid extradata specified: %s' % sExtraData)
                     reporter.log('Set extradata: %s => %s' % (sKey, sValue))
                     fRc = fRc and oSession.setExtraData(sKey, sValue)
-
-                # Enable audio adapter
-                oSession.o.machine.audioAdapter.enabled = True;
 
                 # Other variations?
 
