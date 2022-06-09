@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 67972 2017-07-14 13:44:02Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -30,6 +30,8 @@
 #define SVGA3D_MAX_TEXTURE_STAGE                8
 /** Arbitrary upper limit; seen 8 so far. */
 #define SVGA3D_MAX_LIGHTS                       32
+/** Arbitrary upper limit; 2GB enough for 32768x16384*4. */
+#define SVGA3D_MAX_SURFACE_MEM_SIZE             0x80000000
 
 
 /**@def FLOAT_FMT_STR

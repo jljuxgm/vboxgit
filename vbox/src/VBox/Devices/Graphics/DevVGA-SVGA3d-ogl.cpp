@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 67972 2017-07-14 13:44:02Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1904,14 +1904,14 @@ int vmsvga3dSurfaceCopy(PVGASTATE pThis, SVGA3dSurfaceImageId dest, SVGA3dSurfac
         srcBox.z = pBox[i].srcz;
         srcBox.w = pBox[i].w;
         srcBox.h = pBox[i].h;
-        srcBox.d = pBox[i].z; /* XXX what about pBox[i].d? */
+        srcBox.d = pBox[i].d;
 
         destBox.x = pBox[i].x;
         destBox.y = pBox[i].y;
         destBox.z = pBox[i].z;
         destBox.w = pBox[i].w;
         destBox.h = pBox[i].h;
-        destBox.z = pBox[i].z; /* XXX initializing destBox.z again? What about pBox[i].d and destBox.d? */
+        destBox.d = pBox[i].d;
 
         rc = vmsvga3dSurfaceStretchBlt(pThis, &dest, &destBox, &src, &srcBox, SVGA3D_STRETCH_BLT_LINEAR);
         AssertRCReturn(rc, rc);
@@ -2924,14 +2924,14 @@ int vmsvga3dCommandPresent(PVGASTATE pThis, uint32_t sid, uint32_t cRects, SVGA3
         else
             continue;
 
-        if (RT_LIKELY(ClippedRect.w < VMSVGA_MAX_Y))
+        if (RT_LIKELY(ClippedRect.w < VMSVGA_MAX_X))
         { /* likely */ }
         else
-            ClippedRect.w = VMSVGA_MAX_Y;
-        if (RT_LIKELY(ClippedRect.w < VMSVGA_MAX_Y))
+            ClippedRect.w = VMSVGA_MAX_X;
+        if (RT_LIKELY(ClippedRect.h < VMSVGA_MAX_Y))
         { /* likely */ }
         else
-            ClippedRect.w = VMSVGA_MAX_Y;
+            ClippedRect.h = VMSVGA_MAX_Y;
 
 
         /*
