@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.cpp 68097 2017-07-24 13:33:51Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.cpp 68098 2017-07-24 13:58:12Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -1124,7 +1124,7 @@ HRESULT VBoxCredProvCredential::GetSerialization(CREDENTIAL_PROVIDER_GET_SERIALI
                             /* We're done -- let the logon UI know. */
                             *pcpGetSerializationResponse = CPGSR_RETURN_CREDENTIAL_FINISHED;
 
-                            VBoxCredProvVerbose(1, "VBoxCredProvCredential::GetSerialization: Finished for user '%ls' (domain '%s')\n",
+                            VBoxCredProvVerbose(1, "VBoxCredProvCredential::GetSerialization: Finished for user '%ls' (domain '%ls')\n",
                                                 m_apwszFields[VBOXCREDPROV_FIELDID_USERNAME],
                                                 m_apwszFields[VBOXCREDPROV_FIELDID_DOMAINNAME]);
                         }
