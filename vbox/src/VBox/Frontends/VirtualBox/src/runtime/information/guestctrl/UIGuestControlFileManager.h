@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 71172 2018-03-02 10:28:13Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 71185 2018-03-04 11:58:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -37,6 +37,7 @@ class QVBoxLayout;
 class QSplitter;
 class CGuestSessionStateChangedEvent;
 class UIGuestFileTable;
+class UIHostFileTable;
 class UIGuestSessionCreateWidget;
 
 /** QWidget extension
@@ -90,7 +91,7 @@ private:
 
     UIGuestSessionCreateWidget *m_pSessionCreateWidget;
     UIGuestFileTable           *m_pGuestFileTable;
-
+    UIHostFileTable            *m_pHostFileTable;
     ComObjPtr<UIMainEventListenerImpl> m_pQtGuestListener;
     ComObjPtr<UIMainEventListenerImpl> m_pQtSessionListener;
     CEventListener m_comSessionListener;
