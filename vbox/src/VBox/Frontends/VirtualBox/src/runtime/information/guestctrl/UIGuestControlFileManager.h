@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 71191 2018-03-05 08:34:54Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 71195 2018-03-05 10:37:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -81,11 +81,11 @@ private:
                          CEventSource comEventSource);
 
     void initFileTable();
+    void postSessionCreated();
+    void postSessionClosed();
 
     template<typename T>
     QStringList   getFsObjInfoStringList(const T &fsObjectInfo) const;
-
-
 
     const int         m_iMaxRecursionDepth;
     CGuest            m_comGuest;

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.h 71169 2018-03-02 09:54:36Z vboxsync $ */
+/* $Id: UIGuestControlInterface.h 71195 2018-03-05 10:37:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class declaration.
  */
@@ -53,7 +53,7 @@ public:
      * @{ */
         /** Pass a non-const ref since for some reason CGuest::GetAdditionsStatus
             is non-const?! */
-       static bool    isGuestAdditionsAvaible(CGuest &guest);
+       static bool    isGuestAdditionsAvailable(const CGuest &guest);
        static QString getFsObjTypeString(KFsObjType type);
     /** @} */
 
