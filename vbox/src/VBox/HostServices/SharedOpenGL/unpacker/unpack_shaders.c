@@ -1,4 +1,4 @@
-/* $Id: unpack_shaders.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: unpack_shaders.c 71462 2018-03-22 15:07:47Z vboxsync $ */
 /** @file
  * VBox OpenGL DRI driver functions
  */
@@ -46,6 +46,12 @@ void crUnpackExtendShaderSource(void)
     {
         length = DATA_POINTER(pos, GLint);
         pos += count*sizeof(*length);
+    }
+
+    if (count >= UINT32_MAX / sizeof(char*))
+    {
+        crError("crUnpackExtendShaderSource: count %u is out of range", count);
+        return;
     }
 
     ppStrings = crAlloc(count*sizeof(char*));
