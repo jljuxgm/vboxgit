@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 67631 2017-06-27 10:11:01Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 67967 2017-07-14 13:04:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIManagerDialog class implementation.
  */
@@ -82,7 +82,7 @@ void QIManagerDialog::prepare()
         /* On the basis of current host-screen geometry if possible: */
         const QRect screenGeometry = gpDesktop->screenGeometry(iHostScreen);
         if (screenGeometry.isValid())
-            proposedSize = screenGeometry.size() * 2 / 5;
+            proposedSize = screenGeometry.size() * 7 / 15;
     }
     /* Fallback to default size if we failed: */
     if (proposedSize.isNull())
