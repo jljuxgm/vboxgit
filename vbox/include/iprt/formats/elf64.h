@@ -1,10 +1,10 @@
-/* $Id: elf64.h 68687 2017-09-06 18:11:39Z vboxsync $ */
+/* $Id: elf64.h 69105 2017-10-17 10:20:49Z vboxsync $ */
 /** @file
  * IPRT - ELF 64-bit header.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

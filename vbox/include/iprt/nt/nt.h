@@ -1,10 +1,10 @@
-/* $Id: nt.h 67980 2017-07-15 12:28:41Z vboxsync $ */
+/* $Id: nt.h 69105 2017-10-17 10:20:49Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

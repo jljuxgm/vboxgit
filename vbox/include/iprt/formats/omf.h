@@ -1,4 +1,4 @@
-/* $Id: omf.h 68687 2017-09-06 18:11:39Z vboxsync $ */
+/* $Id: omf.h 69105 2017-10-17 10:20:49Z vboxsync $ */
 /** @file
  * IPRT - Relocatable Object Module Format (OMF).
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
