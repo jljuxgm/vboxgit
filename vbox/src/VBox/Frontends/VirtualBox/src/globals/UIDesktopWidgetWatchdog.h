@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 69931 2017-12-05 10:20:34Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 70934 2018-02-09 14:26:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -109,6 +109,11 @@ public:
     double devicePixelRatio(int iHostScreenIndex = -1);
     /** Returns device-pixel-ratio of the host-screen which contains @a pWidget. */
     double devicePixelRatio(QWidget *pWidget);
+
+    /** Returns actual device-pixel-ratio of the host-screen with @a iHostScreenIndex. */
+    double devicePixelRatioActual(int iHostScreenIndex = -1);
+    /** Returns actual device-pixel-ratio of the host-screen which contains @a pWidget. */
+    double devicePixelRatioActual(QWidget *pWidget);
 
 private slots:
 
