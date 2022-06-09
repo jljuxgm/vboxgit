@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInternal.h 68568 2017-08-31 12:10:33Z vboxsync $ */
+/* $Id: VBoxGuestR0LibInternal.h 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Internal header for the ring-0 client library.
  */
@@ -60,6 +60,7 @@ struct VBGLIDCHANDLEPRIVATE
 /** Indicate that the structure is present. */
 #define VBGLIDCHANDLEPRIVATE_DECLARED 1
 
+#include <VBox/VBoxGuest.h>
 #include <VBox/VBoxGuestLib.h>
 AssertCompile(RT_SIZEOFMEMB(VBGLIDCHANDLE, apvPadding) >= sizeof(struct VBGLIDCHANDLEPRIVATE));
 

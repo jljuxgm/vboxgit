@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 66507 2017-04-11 10:15:57Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -17,6 +17,7 @@
 
 #include "VBoxMPWddm.h"
 #include <VBoxVideoVBE.h>
+#include <iprt/param.h>
 #include <stdio.h>
 
 /* simple handle -> value table API */
@@ -68,7 +69,7 @@ NTSTATUS vboxWddmHTableRealloc(PVBOXWDDM_HTABLE pTbl, uint32_t cNewSize)
         pTbl->paData = pvNewData;
         return STATUS_SUCCESS;
     }
-    else if (cNewSize >= pTbl->cData)
+    if (cNewSize >= pTbl->cData)
     {
         AssertFailed();
         return STATUS_NOT_IMPLEMENTED;

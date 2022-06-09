@@ -1,4 +1,4 @@
-/* $Id: vboxmrxnp.cpp 63085 2016-08-06 14:35:30Z vboxsync $ */
+/* $Id: vboxmrxnp.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Network provider dll
  */
@@ -15,6 +15,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/win/windows.h>
 #include <winsvc.h>
 #include <winnetwk.h>
@@ -22,14 +25,13 @@
 #include <devioctl.h>
 #include <stdio.h>
 
-#include "..\driver\vbsfshared.h"
+#include "../driver/vbsfshared.h"
 
 #include <iprt/alloc.h>
 #include <iprt/initterm.h>
 #include <iprt/string.h>
 #include <iprt/log.h>
 #include <VBox/version.h>
-#include <VBox/VMMDev.h>
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/Log.h>
 

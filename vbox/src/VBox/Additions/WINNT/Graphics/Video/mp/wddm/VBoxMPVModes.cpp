@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVModes.cpp 68117 2017-07-26 09:10:09Z vboxsync $ */
+/* $Id: VBoxMPVModes.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -17,8 +17,9 @@
 
 #include "VBoxMPWddm.h"
 #include "common/VBoxMPCommon.h"
+#include <iprt/param.h> /* PAGE_OFFSET_MASK */
 
-#include <stdio.h>
+#include <stdio.h> /* for swprintf */
 
 
 int VBoxVModesInit(VBOX_VMODES *pModes, uint32_t cTargets)

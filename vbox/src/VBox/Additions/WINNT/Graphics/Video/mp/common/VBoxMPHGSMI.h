@@ -1,4 +1,4 @@
-/* $Id: VBoxMPHGSMI.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxMPHGSMI.h 68630 2017-09-05 11:33:54Z vboxsync $ */
 
 /** @file
  * VBox Miniport HGSMI related header
@@ -26,4 +26,4 @@ void VBoxSetupDisplaysHGSMI(PVBOXMP_COMMON pCommon, PHYSICAL_ADDRESS phVRAM, uin
 void VBoxFreeDisplaysHGSMI(PVBOXMP_COMMON pCommon);
 RT_C_DECLS_END
 
-#endif /*VBOXMPHGSMI_H*/
+#endif /*!VBOXMPHGSMI_H*/

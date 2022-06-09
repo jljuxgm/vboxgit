@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.cpp 68437 2017-08-17 10:18:32Z vboxsync $ */
+/* $Id: VBoxVRDP.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
@@ -22,7 +22,7 @@
 #include "VBoxHelpers.h"
 #include "VBoxVRDP.h"
 
-#include <VBox/VMMDev.h>
+#include <VBox/VMMDev.h> /* for VMMDEV_EVENT_VRDP and VRDP_EXPERIENCE_LEVEL_XXX */
 #ifdef DEBUG
 # define LOG_ENABLED
 # define LOG_GROUP LOG_GROUP_DEFAULT

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -60,6 +60,7 @@
 #include <iprt/system.h>
 #include <iprt/time.h>
 #include <iprt/thread.h>
+#include <VBox/VMMDev.h> /* For VMMDevReportGuestStats and indirectly VbglR3StatReport. */
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
 #include "VBoxServiceUtils.h"

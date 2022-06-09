@@ -1,4 +1,4 @@
-/* $Id: VBoxMF.h 68556 2017-08-31 12:09:59Z vboxsync $ */
+/* $Id: VBoxMF.h 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBox Mouse Filter Driver - Internal Header.
  */
@@ -30,7 +30,7 @@ RT_C_DECLS_BEGIN
 #include <ntddkbd.h>
 #include <ntdd8042.h>
 RT_C_DECLS_END
-#include <VBox/VMMDev.h>
+#include <VBox/VMMDev.h> /* for VMMDevReqMouseStatus */
 
 #define IOCTL_INTERNAL_MOUSE_CONNECT CTL_CODE(FILE_DEVICE_MOUSE, 0x0080, METHOD_NEITHER, FILE_ANY_ACCESS)
 

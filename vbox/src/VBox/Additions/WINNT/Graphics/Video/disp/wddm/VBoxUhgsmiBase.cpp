@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiBase.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxUhgsmiBase.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -16,6 +16,8 @@
  */
 
 #include "VBoxDispD3DCmn.h"
+#include <VBox/VMMDev.h>  /* for HGCMFunctionParameter */
+
 
 DECLCALLBACK(int) vboxUhgsmiBaseEscBufferLock(PVBOXUHGSMI_BUFFER pBuf, uint32_t offLock, uint32_t cbLock,
                                               VBOXUHGSMI_BUFFER_LOCK_FLAGS fFlags, void**pvLock)

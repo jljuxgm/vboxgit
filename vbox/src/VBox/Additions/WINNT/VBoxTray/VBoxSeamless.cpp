@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 68437 2017-08-17 10:18:32Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -29,7 +29,7 @@
 # define LOG_GROUP LOG_GROUP_DEFAULT
 #endif
 #include <VBox/log.h>
-#include <VBox/VMMDev.h>
+#include <VBox/VMMDev.h> /* for VMMDEV_EVENT_SEAMLESS_MODE_CHANGE_REQUEST */
 
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -22,9 +22,10 @@
 #include "VBoxMPVidPn.h"
 
 #include <iprt/asm.h>
-//#include <iprt/initterm.h>
+#include <iprt/param.h>
 
 #include <VBox/VBoxGuestLib.h>
+#include <VBox/VMMDev.h> /* for VMMDevVideoSetVisibleRegion */
 #include <VBoxVideo.h>
 #include <wingdi.h> /* needed for RGNDATA definition */
 #include <VBoxDisplay.h> /* this is from Additions/WINNT/include/ to include escape codes */

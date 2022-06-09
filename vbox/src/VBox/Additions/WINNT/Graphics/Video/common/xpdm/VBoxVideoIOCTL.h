@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIOCTL.h 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: VBoxVideoIOCTL.h 68630 2017-09-05 11:33:54Z vboxsync $ */
 
 /** @file
  * VBox Miniport IOCTL related header
@@ -19,7 +19,7 @@
 #ifndef VBOXVIDEOIOCTL_H
 #define VBOXVIDEOIOCTL_H
 
-#include <VBox/VMMDev.h>
+#include <VBox/VMMDev.h> /* VBVAMEMORY */
 #include <HGSMI.h>
 
 /* ==================== Virtual Box specific VRP's ==================== */

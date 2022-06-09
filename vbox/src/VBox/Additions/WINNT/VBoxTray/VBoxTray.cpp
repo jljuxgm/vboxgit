@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 68559 2017-08-31 12:10:07Z vboxsync $ */
+/* $Id: VBoxTray.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -44,6 +44,7 @@
 #include <iprt/asm.h>
 #include <iprt/buildconfig.h>
 #include <iprt/ldr.h>
+#include <iprt/path.h>
 #include <iprt/process.h>
 #include <iprt/system.h>
 #include <iprt/time.h>

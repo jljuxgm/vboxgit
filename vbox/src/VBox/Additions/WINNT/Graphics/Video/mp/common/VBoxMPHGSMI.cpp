@@ -1,4 +1,4 @@
-/* $Id: VBoxMPHGSMI.cpp 63823 2016-09-14 06:35:39Z vboxsync $ */
+/* $Id: VBoxMPHGSMI.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBox Miniport HGSMI related functions
  */
@@ -17,7 +17,6 @@
 
 #include "VBoxMPHGSMI.h"
 #include "VBoxMPCommon.h"
-#include <VBox/VMMDev.h>
 #include <iprt/alloc.h>
 
 static DECLCALLBACK(void *) hgsmiEnvAlloc(void *pvEnv, HGSMISIZE cb)

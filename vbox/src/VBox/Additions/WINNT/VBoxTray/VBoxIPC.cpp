@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 64326 2016-10-19 17:37:25Z vboxsync $ */
+/* $Id: VBoxIPC.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -37,8 +37,7 @@
 #include <iprt/mem.h>
 #include <iprt/process.h>
 
-#include <VBox/VMMDev.h>
-#ifdef DEBUG
+#ifdef DEBUG /** @todo r=bird: these are all default settings...  */
 # define LOG_ENABLED
 # define LOG_GROUP LOG_GROUP_DEFAULT
 #endif

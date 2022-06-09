@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvPoller.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxCredProvPoller.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
 /** @file
  * VBoxCredPoller - Thread for querying / retrieving user credentials.
  */
@@ -23,7 +23,6 @@
 
 #include <VBox/VBoxGuest.h>
 #include <VBox/VBoxGuestLib.h>
-#include <VBox/VMMDev.h>
 #include <iprt/string.h>
 
 #include "VBoxCredProvProvider.h"
