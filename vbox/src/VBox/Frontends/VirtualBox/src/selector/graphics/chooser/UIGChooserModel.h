@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGChooserModel.h 70452 2018-01-03 18:05:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class declaration.
  */
@@ -119,6 +119,7 @@ public:
     void unsetCurrentItem();
     void addToCurrentItems(UIGChooserItem *pItem);
     void removeFromCurrentItems(UIGChooserItem *pItem);
+    UIGChooserItem* findClosestUnselectedItem() const;
     void makeSureSomeItemIsSelected();
     void notifyCurrentItemChanged();
     bool isSingleGroupSelected() const;

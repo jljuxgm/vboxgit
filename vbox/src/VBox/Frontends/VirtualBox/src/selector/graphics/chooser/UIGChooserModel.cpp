@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 70452 2018-01-03 18:05:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -348,6 +348,40 @@ void UIGChooserModel::removeFromCurrentItems(UIGChooserItem *pItem)
     list.removeAll(pItem);
     /* Call for wrapper above: */
     setCurrentItems(list);
+}
+
+UIGChooserItem* UIGChooserModel::findClosestUnselectedItem() const
+{
+    /*
+     * Take the focus item (if any) as a starting point and find
+     * the closest non-selected item
+     */
+    UIGChooserItem *pItem = focusItem();
+    if (!pItem)
+        pItem = currentItem();
+    if (pItem)
+    {
+        int idxBefore = navigationList().indexOf(pItem) - 1;
+        int idxAfter  = idxBefore + 2;
+        while(idxBefore >= 0 || idxAfter < navigationList().size())
+        {
+            if (idxBefore >= 0)
+            {
+                pItem = navigationList().at(idxBefore);
+                if (!currentItems().contains(pItem))
+                    return pItem;
+                idxBefore--;
+            }
+            if (idxAfter < navigationList().size())
+            {
+                pItem = navigationList().at(idxAfter);
+                if (!currentItems().contains(pItem))
+                    return pItem;
+                idxAfter++;
+            }
+        }
+    }
+    return 0;
 }
 
 void UIGChooserModel::makeSureSomeItemIsSelected()
@@ -1526,8 +1560,8 @@ void UIGChooserModel::unregisterMachines(const QStringList &ids)
     if (iResultCode == AlertButton_Cancel)
         return;
 
-    /* Unset current item(s): */
-    unsetCurrentItem();
+    /* Change selection to some close by item: */
+    setCurrentItem(findClosestUnselectedItem());
 
     /* For every selected item: */
     for (int iMachineIndex = 0; iMachineIndex < machines.size(); ++iMachineIndex)
