@@ -1,10 +1,13 @@
-/* $Id: VirtualBoxSDSImpl.h 71139 2018-02-27 17:48:13Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.h 71144 2018-02-27 22:45:00Z vboxsync $ */
 /** @file
  * VBox Global COM Class definition
  */
 
-/*
- * Copyright (C) 2015-2017 Oracle Corporation
+ /*
+ * Copyright(C) 2017 - 2018 Oracle Corporation
+ *
+ * Oracle Corporation confidential
+ * All rights reserved
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
