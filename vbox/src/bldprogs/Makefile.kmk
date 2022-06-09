@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 69166 2017-10-23 15:43:33Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -39,6 +39,7 @@ ifndef VBOX_ONLY_BUILD
  	scm.cpp \
  	scmdiff.cpp \
  	scmrw.cpp \
+       scmparser.cpp \
  	scmstream.cpp \
  	scmsubversion.cpp
  ifdef VBOX_PATH_SUBVERSION_INCS
