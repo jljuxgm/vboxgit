@@ -1,4 +1,4 @@
-; $Id: ntdll-mini-implib.def 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: ntdll-mini-implib.def 71128 2018-02-26 15:24:41Z vboxsync $
 ;; @file
 ; IPRT - Minimal NTDLL import library defintion file.
 ;
@@ -31,6 +31,7 @@ EXPORTS
 
     CsrClientCallServer                   ;;= _CsrClientCallServer@16
 
+    NtAlertThread                         ;;= _NtAlertThread@4
     NtAllocateVirtualMemory               ;;= _NtAllocateVirtualMemory@24
     NtClearEvent                          ;;= _NtClearEvent@4
     NtClose                               ;;= _NtClose@4
