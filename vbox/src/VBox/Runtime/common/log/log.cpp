@@ -1,4 +1,4 @@
-/* $Id: log.cpp 69745 2017-11-18 20:52:38Z vboxsync $ */
+/* $Id: log.cpp 69746 2017-11-18 20:55:07Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2457,7 +2457,7 @@ RTDECL(int) RTLogClearFileDelayFlag(PRTLOGGER pLogger, PRTERRINFO pErrInfo)
             if (   pLogger->fDestFlags & RTLOGDEST_FILE
                 && pLogger->pInt->hFile == NIL_RTFILE)
             {
-                int rc = rtR3LogOpenFileDestination(pLogger, NULL, 0);
+                rc = rtR3LogOpenFileDestination(pLogger, NULL, 0);
                 if (RT_SUCCESS(rc))
                     rtlogFlush(pLogger, false /*fNeedSpace*/);
             }
