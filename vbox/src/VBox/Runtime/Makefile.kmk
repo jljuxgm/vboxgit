@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69929 2017-12-05 10:01:52Z vboxsync $
+# $Id: Makefile.kmk 69966 2017-12-07 08:42:05Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -858,6 +858,7 @@ RuntimeR3_SOURCES.win = \
 	r3/win/semevent-win.cpp \
 	r3/win/semeventmulti-win.cpp \
 	r3/win/semmutex-win.cpp \
+	r3/win/serialport-win.cpp \
 	r3/win/symlink-win.cpp \
 	r3/win/thread-win.cpp \
 	r3/win/thread2-win.cpp \
