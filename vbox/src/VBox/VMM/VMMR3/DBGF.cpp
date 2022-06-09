@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: DBGF.cpp 72493 2018-06-10 16:08:44Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -359,7 +359,7 @@ bool dbgfR3WaitForAttach(PVM pVM, PVMCPU pVCpu, DBGFEVENTTYPE enmEvent)
      */
 #ifndef RT_OS_L4
 
-# if !defined(DEBUG) || defined(DEBUG_sandervl) || defined(DEBUG_frank) || defined(IEM_VERIFICATION_MODE)
+# if !defined(DEBUG) || defined(DEBUG_sandervl) || defined(DEBUG_frank)
     int cWait = 10;
 # else
     int cWait = !VM_IS_RAW_MODE_ENABLED(pVM)

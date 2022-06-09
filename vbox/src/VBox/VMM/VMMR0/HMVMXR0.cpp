@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72484 2018-06-08 17:05:40Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72493 2018-06-10 16:08:44Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8935,7 +8935,6 @@ static VBOXSTRICTRC hmR0VmxPreRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx
     else
         return rcStrict;
 
-#ifndef IEM_VERIFICATION_MODE_FULL
     /*
      * Setup the virtualized-APIC accesses.
      *
@@ -8966,7 +8965,6 @@ static VBOXSTRICTRC hmR0VmxPreRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx
         /* Update the per-VCPU cache of the APIC base MSR. */
         pVCpu->hm.s.vmx.u64MsrApicBase = u64MsrApicBase;
     }
-#endif /* !IEM_VERIFICATION_MODE_FULL */
 
     if (TRPMHasTrap(pVCpu))
         hmR0VmxTrpmTrapToPendingEvent(pVCpu);
