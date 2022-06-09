@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 72476 2018-06-07 13:49:48Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 72508 2018-06-11 13:23:26Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -944,7 +944,7 @@ HRESULT Appliance::i_searchUniqueVMName(Utf8Str& aName) const
     while (mVirtualBox->FindMachine(Bstr(tmpName).raw(), &machine) != VBOX_E_OBJECT_NOT_FOUND)
     {
         RTStrFree(tmpName);
-        RTStrAPrintf(&tmpName, "%s_%d", aName.c_str(), i);
+        RTStrAPrintf(&tmpName, "%s %d", aName.c_str(), i);
         ++i;
     }
     aName = tmpName;
