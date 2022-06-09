@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 71758 2018-04-09 10:13:46Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 71759 2018-04-09 10:24:25Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2111,6 +2111,8 @@ static void hmR0SvmLoadGuestXcptInterceptsNested(PVMCPU pVCpu, PSVMVMCB pVmcbNst
         Assert(   (pVmcbNstGst->ctrl.u64InterceptCtrl & HMSVM_MANDATORY_GUEST_CTRL_INTERCEPTS)
                == HMSVM_MANDATORY_GUEST_CTRL_INTERCEPTS);
 
+        /** @todo This doesn't make sense. Re-think and remove. */
+#if 1
         /*
          * If we don't expose Virtualized-VMSAVE/VMLOAD feature to the outer guest, we
          * need to intercept VMSAVE/VMLOAD instructions executed by the nested-guest.
@@ -2130,6 +2132,7 @@ static void hmR0SvmLoadGuestXcptInterceptsNested(PVMCPU pVCpu, PSVMVMCB pVmcbNst
             pVmcbNstGst->ctrl.u64InterceptCtrl |= SVM_CTRL_INTERCEPT_CLGI
                                                |  SVM_CTRL_INTERCEPT_STGI;
         }
+#endif
 
         /* Finally, update the VMCB clean bits. */
         pVmcbNstGst->ctrl.u32VmcbCleanBits  &= ~HMSVM_VMCB_CLEAN_INTERCEPTS;
