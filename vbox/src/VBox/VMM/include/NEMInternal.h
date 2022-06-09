@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 72463 2018-06-06 14:45:54Z vboxsync $ */
+/* $Id: NEMInternal.h 72470 2018-06-07 11:41:23Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -189,6 +189,8 @@ typedef struct NEMCPU
 {
     /** NEMCPU_MAGIC. */
     uint32_t                    u32Magic;
+    /** Whether \#UD needs to be intercepted and presented to GIM. */
+    bool                        fGIMTrapXcptUD : 1;
 #ifdef RT_OS_WINDOWS
     /** The current state of the interrupt windows (NEM_WIN_INTW_F_XXX). */
     uint8_t                     fCurrentInterruptWindows;
@@ -196,7 +198,6 @@ typedef struct NEMCPU
     uint8_t                     fDesiredInterruptWindows;
     /** Last copy of HV_X64_VP_EXECUTION_STATE::InterruptShadow. */
     bool                        fLastInterruptShadow : 1;
-    bool                        afPadding[1];
     /** Pending APIC base value.
      * This is set to UINT64_MAX when not pending  */
     uint64_t                    uPendingApicBase;
