@@ -1,4 +1,4 @@
-; $Id: bs3-wc16-U4D.asm 68605 2017-09-01 15:33:25Z vboxsync $
+; $Id: bs3-wc16-U4D.asm 68607 2017-09-01 15:35:59Z vboxsync $
 ;; @file
 ; BS3Kit - 16-bit Watcom C/C++, 32-bit unsigned integer division.
 ;
@@ -37,10 +37,10 @@
 ;
 ; @uses     Nothing.
 ;
-ifdef BS3KIT_WITH_REAL_WATCOM_INTRINSIC_NAMES
+%ifdef BS3KIT_WITH_REAL_WATCOM_INTRINSIC_NAMES
 global __U4D
 __U4D:
-endif
+%endif
 global $_?U4D
 $_?U4D:
 %if TMPL_BITS >= 32
