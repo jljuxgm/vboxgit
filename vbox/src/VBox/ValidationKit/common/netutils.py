@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: netutils.py 72296 2018-05-23 12:18:08Z vboxsync $
+# $Id: netutils.py 72297 2018-05-23 12:18:19Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72296 $"
+__version__ = "$Revision: 72297 $"
 
 
 # Standard Python imports.
@@ -84,8 +84,8 @@ def getHostnameFqdn():
     except:
         return None;
 
-    #if '.' in sHostname or sHostname.startswith('localhost'):
-    #    return sHostname;
+    if '.' in sHostname or sHostname.startswith('localhost'):
+        return sHostname;
 
     #
     # Somewhat misconfigured system, needs expensive approach to guessing FQDN.
