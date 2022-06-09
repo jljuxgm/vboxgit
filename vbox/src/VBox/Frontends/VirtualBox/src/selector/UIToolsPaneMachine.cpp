@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.cpp 71644 2018-04-04 06:55:08Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.cpp 72042 2018-04-26 14:20:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class implementation.
  */
@@ -201,7 +201,9 @@ void UIToolsPaneMachine::setCurrentItem(UIVMItem *pItem)
 {
     /* Do we need translation after that? */
     const bool fTranslationRequired =  (!pItem &&  m_pItem)
-                                    || ( pItem && !m_pItem);
+                                    || ( pItem && !m_pItem)
+                                    || (!pItem->accessible() &&  m_pItem->accessible())
+                                    || ( pItem->accessible() && !m_pItem->accessible());
 
     /* Remember new item: */
     m_pItem = pItem;
