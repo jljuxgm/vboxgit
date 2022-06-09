@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: tdAddBasic1.py 67032 2017-05-23 10:00:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 67032 $"
 
 
 # Standard Python imports.
@@ -56,7 +56,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
     Additions Basics #1.
     """
     ## @todo
-    # - More of the settings stuff can e and need to be generalized!
+    # - More of the settings stuff can be and need to be generalized!
     #
 
     def __init__(self):
@@ -127,7 +127,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True, \
                                                                   sFileCdWait = 'AUTORUN.INF');
         if oSession is not None:
-            self.addTask(oSession);
+            self.addTask(oTxsSession);
             # Do the testing.
             reporter.testStart('Install');
             fRc, oTxsSession = self.testInstallAdditions(oSession, oTxsSession, oTestVm);
@@ -145,7 +145,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                 fRc = fRc2 and fRc;
             reporter.testDone(fSkip);
 
-            ## @todo Save an restore test.
+            ## @todo Save and restore test.
 
             ## @todo Reset tests.
 
@@ -153,7 +153,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
             # Cleanup.
             self.removeTask(oTxsSession);
-            #self.terminateVmBySession(oSession)
+            self.terminateVmBySession(oSession)
         return fRc;
 
     def testInstallAdditions(self, oSession, oTxsSession, oTestVm):
