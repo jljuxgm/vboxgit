@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlConsole.cpp 71052 2018-02-19 13:22:57Z vboxsync $ */
+/* $Id: UIGuestControlConsole.cpp 71066 2018-02-20 09:49:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlConsole class implementation.
  */
@@ -36,6 +36,7 @@ UIGuestControlConsole::UIGuestControlConsole(QWidget* parent /* = 0 */)
     , m_uCommandHistoryIndex(0)
 {
     /* Configure this: */
+    setUndoRedoEnabled(false);
     setWordWrapMode(QTextOption::NoWrap);
     reset();
 }
@@ -91,8 +92,7 @@ void UIGuestControlConsole::keyPressEvent(QKeyEvent *pEvent)
         case Qt::Key_PageDown:
         case Qt::Key_Down:
         {
-            if (lastLine)
-                replaceLineContent(getNextCommandFromHistory(getCommandString()));
+            replaceLineContent(getNextCommandFromHistory(getCommandString()));
             break;
         }
         case Qt::Key_Backspace:
@@ -137,8 +137,17 @@ void UIGuestControlConsole::keyPressEvent(QKeyEvent *pEvent)
             break;
         }
         default:
-            if (lastLine)
+        {
+            if(pEvent->modifiers() == Qt::ControlModifier && pEvent->key() == Qt::Key_C)
+            {
                 QPlainTextEdit::keyPressEvent(pEvent);
+            }
+            else
+            {
+                if (lastLine)
+                    QPlainTextEdit::keyPressEvent(pEvent);
+            }
+        }
             break;
     }
 }
@@ -179,6 +188,7 @@ QString UIGuestControlConsole::getCommandString()
 
 void UIGuestControlConsole::replaceLineContent(const QString &stringNewContent)
 {
+    moveCursor(QTextCursor::End);
     QTextCursor cursor = textCursor();
     cursor.movePosition(QTextCursor::StartOfLine, QTextCursor::KeepAnchor);
     cursor.removeSelectedText();
