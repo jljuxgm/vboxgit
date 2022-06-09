@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 70792 2018-01-29 13:12:06Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.h 71477 2018-03-23 10:04:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -20,7 +20,7 @@
 
 /* Qt includes: */
 #include <QWidget>
-
+#include <QKeySequence>
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
 
@@ -40,6 +40,7 @@ class UIVMLogViewerPanel : public QIWithRetranslateUI<QWidget>
 public:
 
     UIVMLogViewerPanel(QWidget *pParent, UIVMLogViewerWidget *pViewer);
+    void setCloseButtonShortCut(QKeySequence shortCut);
 
 protected:
 

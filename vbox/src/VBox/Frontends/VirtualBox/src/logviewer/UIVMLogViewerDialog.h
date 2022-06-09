@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 70792 2018-01-29 13:12:06Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.h 71477 2018-03-23 10:04:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -36,7 +36,6 @@ class QDialogButtonBox;
 class QVBoxLayout;
 class UIVMLogViewerDialog;
 
-
 /** QIManagerDialogFactory  used as a factory for Virtual Media Manager dialog. */
 class UIVMLogViewerDialogFactory : public QIManagerDialogFactory
 {
@@ -72,6 +71,10 @@ protected:
     /** @} */
     /* Reads the related extradata to determine if the dialog should be maximized. */
     virtual bool shouldBeMaximized() const /* override */;
+
+private slots:
+
+    void sltSetCloseButtonShortCut(QKeySequence shortCut);
 
 private:
 

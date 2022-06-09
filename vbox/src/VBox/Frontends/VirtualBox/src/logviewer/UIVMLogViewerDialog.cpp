@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 70745 2018-01-25 15:52:00Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 71477 2018-03-23 10:04:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -84,6 +84,8 @@ void UIVMLogViewerDialog::configureCentralWidget()
 #endif
         /* Add into layout: */
         centralWidget()->layout()->addWidget(pWidget);
+        connect(pWidget, &UIVMLogViewerWidget::sigSetCloseButtonShortCut,
+                this, &UIVMLogViewerDialog::sltSetCloseButtonShortCut);
     }
 }
 
@@ -96,6 +98,7 @@ void UIVMLogViewerDialog::configure()
 void UIVMLogViewerDialog::finalize()
 {
     retranslateUi();
+    button(ButtonType_Close)->setShortcut(Qt::Key_Escape);
 }
 
 void UIVMLogViewerDialog::loadSettings()
@@ -147,4 +150,10 @@ void UIVMLogViewerDialog::saveSettings() const
 bool UIVMLogViewerDialog::shouldBeMaximized() const
 {
     return gEDataManager->logWindowShouldBeMaximized();
+}
+
+void UIVMLogViewerDialog::sltSetCloseButtonShortCut(QKeySequence shortCut)
+{
+    if (button(ButtonType_Close))
+        button(ButtonType_Close)->setShortcut(shortCut);
 }
