@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 72597 2018-06-18 13:11:48Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 72603 2018-06-18 15:43:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -44,7 +44,7 @@ enum
 };
 
 
-UINameAndSystemEditor::UINameAndSystemEditor(QWidget *pParent, bool fChooseLocation /* = false */, const QString &strGroupName /* = QString() */)
+UINameAndSystemEditor::UINameAndSystemEditor(QWidget *pParent, bool fChooseLocation /* = false */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_fChooseLocation(fChooseLocation)
     , m_fSupportsHWVirtEx(false)
@@ -58,7 +58,6 @@ UINameAndSystemEditor::UINameAndSystemEditor(QWidget *pParent, bool fChooseLocat
     , m_pPathSelector(0)
     , m_pComboFamily(0)
     , m_pComboType(0)
-    , m_strGroupName(strGroupName)
 {
     /* Prepare: */
     prepare();
@@ -261,10 +260,6 @@ void UINameAndSystemEditor::prepareWidgets()
             {
                 pMainLayout->addWidget(m_pPathSelector, iRow++, 1, 1, 2);
                 QString strDefaultMachineFolder = vboxGlobal().virtualBox().GetSystemProperties().GetDefaultMachineFolder();
-                /* Add the group name to the default machine path: */
-                if (!m_strGroupName.isEmpty() && m_strGroupName != "/")
-                    strDefaultMachineFolder += m_strGroupName;
-
                 m_pPathSelector->setPath(strDefaultMachineFolder);
                 m_pPathSelector->setDefaultPath(strDefaultMachineFolder);
             }
