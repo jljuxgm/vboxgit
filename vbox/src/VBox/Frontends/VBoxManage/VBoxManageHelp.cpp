@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 70582 2018-01-15 10:13:41Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 70588 2018-01-15 12:54:32Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -671,7 +671,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--vrdevideochannel on|off]\n"
                      "                            [--vrdevideochannelquality <percent>]\n");
         RTStrmPrintf(pStrm,
-                     "                            [--usb on|off]\n"
+                     "                            [--usbohci on|off]\n"
                      "                            [--usbehci on|off]\n"
                      "                            [--usbxhci on|off]\n"
                      "                            [--usbrename <oldname> <newname>]\n"
