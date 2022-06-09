@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.h 70645 2018-01-19 12:27:22Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.h 70664 2018-01-22 07:09:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -65,11 +65,9 @@ protected:
     virtual void prepareWidgets() /* override */;
     virtual void prepareConnections() /* override */;
 
-    /** Handles the translation event. */
     void retranslateUi() /* override */;
     /** Handles Qt @a pEvent, used for keyboard processing. */
     bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
-    /** Handles the Qt show @a pEvent. */
     void showEvent(QShowEvent *pEvent) /* override */;
 
 private slots:

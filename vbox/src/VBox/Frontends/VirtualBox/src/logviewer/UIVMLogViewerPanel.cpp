@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 70539 2018-01-11 14:11:16Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.cpp 70664 2018-01-22 07:09:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -73,13 +73,16 @@ void UIVMLogViewerPanel::prepare()
 void UIVMLogViewerPanel::prepareWidgets()
 {
     m_pMainLayout = new QHBoxLayout(this);
-    AssertPtrReturnVoid(m_pMainLayout);
-    m_pMainLayout->setContentsMargins(0, 0, 0, 0);
-    m_pMainLayout->setSpacing(2);
-
+    if (m_pMainLayout)
+    {
+        m_pMainLayout->setContentsMargins(0, 0, 0, 0);
+        m_pMainLayout->setSpacing(2);
+    }
     m_pCloseButton = new UIMiniCancelButton(this);
-    AssertPtrReturnVoid(m_pCloseButton);
-    m_pMainLayout->addWidget(m_pCloseButton, 0, Qt::AlignLeft);
+    if (m_pCloseButton)
+    {
+        m_pMainLayout->addWidget(m_pCloseButton, 0, Qt::AlignLeft);
+    }
 }
 
 void UIVMLogViewerPanel::prepareConnections()

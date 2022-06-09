@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 70610 2018-01-17 14:45:30Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 70664 2018-01-22 07:09:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -75,7 +75,7 @@ void UIVMLogViewerDialog::configureCentralWidget()
 {
     /* Create widget: */
     UIVMLogViewerWidget *pWidget = new UIVMLogViewerWidget(EmbedTo_Dialog, this, m_comMachine);
-    AssertPtrReturnVoid(pWidget);
+    if (pWidget)
     {
         /* Configure widget: */
         setWidget(pWidget);
