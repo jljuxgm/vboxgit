@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67533 2017-06-21 09:47:08Z vboxsync $ */
+/* $Id: DevHDA.cpp 67536 2017-06-21 11:28:33Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -3283,11 +3283,11 @@ static int hdaRegWriteSDFMT(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
     {
         /* Add the stream to the device setup. */
         rc = hdaAddStream(pThis, &pStream->State.strmCfg);
-#ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
+# ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
         if (RT_SUCCESS(rc))
             rc = hdaStreamAsyncIOCreate(pThis, pStream);
+# endif
     }
-#endif
     return VINF_SUCCESS; /* Never return failure. */
 #else /* !IN_RING3 */
     RT_NOREF_PV(pThis); RT_NOREF_PV(iReg); RT_NOREF_PV(u32Value);
