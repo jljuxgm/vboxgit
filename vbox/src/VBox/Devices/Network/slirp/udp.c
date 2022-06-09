@@ -1,4 +1,4 @@
-/* $Id: udp.c 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: udp.c 69426 2017-10-27 11:08:36Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -367,7 +367,7 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
         *ip = save_ip;
         Log2(("NAT: UDP tx errno = %d (%s) on sent to %RTnaipv4\n",
               errno, strerror(errno), ip->ip_dst));
-	icmp_error(pData, m, ICMP_UNREACH, ICMP_UNREACH_NET, 0, strerror(errno));
+        icmp_error(pData, m, ICMP_UNREACH, ICMP_UNREACH_NET, 0, strerror(errno));
         so->so_m = NULL;
         LogFlowFuncLeave();
         return;

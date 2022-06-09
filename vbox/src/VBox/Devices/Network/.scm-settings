@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69298 2017-10-25 12:56:50Z vboxsync $
+# $Id: .scm-settings 69426 2017-10-27 11:08:36Z vboxsync $
 ## @file
 # Source code massager settings for network devices/drivers.
 #
@@ -32,10 +32,10 @@
 
 
 # fun
-/slirp/dnsproxy/dnsproxy.h: --external-copyright
-/slirp/dnsproxy/hash.c:     --external-copyright
-/slirp/libalias/*:          --external-copyright
-/slirp/bsd/*:               --external-copyright
+/slirp/dnsproxy/dnsproxy.h: --external-copyright --no-convert-tabs
+/slirp/dnsproxy/hash.c:     --external-copyright --no-convert-tabs
+/slirp/libalias/*:          --external-copyright --no-convert-tabs
+/slirp/bsd/*:               --external-copyright --no-convert-tabs --dont-set-svn-keywords
 
 # well...
 /lwipopts.h: --external-copyright
