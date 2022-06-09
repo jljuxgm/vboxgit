@@ -1,4 +1,4 @@
-/* $Id: PDMR0Driver.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDMR0Driver.cpp 68009 2017-07-17 17:17:59Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Driver parts.
  */
@@ -23,6 +23,7 @@
 #include "PDMInternal.h"
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/vm.h>
+#include <VBox/vmm/gvmm.h>
 
 #include <VBox/log.h>
 #include <VBox/err.h>
@@ -34,25 +35,30 @@
  * PDMDrvHlpCallR0 helper.
  *
  * @returns See PFNPDMDRVREQHANDLERR0.
+ * @param   pGVM    The global (ring-0) VM structure. (For validation.)
  * @param   pVM     The cross context VM structure. (For validation.)
  * @param   pReq    Pointer to the request buffer.
  */
-VMMR0_INT_DECL(int) PDMR0DriverCallReqHandler(PVM pVM, PPDMDRIVERCALLREQHANDLERREQ pReq)
+VMMR0_INT_DECL(int) PDMR0DriverCallReqHandler(PGVM pGVM, PVM pVM, PPDMDRIVERCALLREQHANDLERREQ pReq)
 {
     /*
      * Validate input and make the call.
      */
-    AssertPtrReturn(pVM, VERR_INVALID_POINTER);
-    AssertPtrReturn(pReq, VERR_INVALID_POINTER);
-    AssertMsgReturn(pReq->Hdr.cbReq == sizeof(*pReq), ("%#x != %#x\n", pReq->Hdr.cbReq, sizeof(*pReq)), VERR_INVALID_PARAMETER);
+    int rc = GVMMR0ValidateGVMandVM(pGVM, pVM);
+    if (RT_SUCCESS(rc))
+    {
+        AssertPtrReturn(pReq, VERR_INVALID_POINTER);
+        AssertMsgReturn(pReq->Hdr.cbReq == sizeof(*pReq), ("%#x != %#x\n", pReq->Hdr.cbReq, sizeof(*pReq)), VERR_INVALID_PARAMETER);
 
-    PPDMDRVINS pDrvIns = pReq->pDrvInsR0;
-    AssertPtrReturn(pDrvIns, VERR_INVALID_POINTER);
-    AssertReturn(pDrvIns->Internal.s.pVMR0 == pVM, VERR_INVALID_PARAMETER);
+        PPDMDRVINS pDrvIns = pReq->pDrvInsR0;
+        AssertPtrReturn(pDrvIns, VERR_INVALID_POINTER);
+        AssertReturn(pDrvIns->Internal.s.pVMR0 == pVM, VERR_INVALID_PARAMETER);
 
-    PFNPDMDRVREQHANDLERR0 pfnReqHandlerR0 = pDrvIns->Internal.s.pfnReqHandlerR0;
-    AssertPtrReturn(pfnReqHandlerR0, VERR_INVALID_POINTER);
+        PFNPDMDRVREQHANDLERR0 pfnReqHandlerR0 = pDrvIns->Internal.s.pfnReqHandlerR0;
+        AssertPtrReturn(pfnReqHandlerR0, VERR_INVALID_POINTER);
 
-    return pfnReqHandlerR0(pDrvIns, pReq->uOperation, pReq->u64Arg);
+        rc = pfnReqHandlerR0(pDrvIns, pReq->uOperation, pReq->u64Arg);
+    }
+    return rc;
 }
 
