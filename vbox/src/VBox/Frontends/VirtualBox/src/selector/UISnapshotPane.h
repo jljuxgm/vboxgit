@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 67160 2017-05-31 09:44:38Z vboxsync $ */
+/* $Id: UISnapshotPane.h 67260 2017-06-05 16:08:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -68,8 +68,11 @@ public:
 
 protected:
 
-    /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    /** @name Event-handling stuff.
+      * @{ */
+        /** Handles translation event. */
+        virtual void retranslateUi() /* override */;
+    /** @} */
 
 private slots:
 
