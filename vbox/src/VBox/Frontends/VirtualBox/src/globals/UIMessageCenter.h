@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIMessageCenter.h 71632 2018-04-03 16:58:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -281,6 +281,8 @@ public:
     void cannotPowerDownMachine(const CConsole &console) const;
     void cannotPowerDownMachine(const CProgress &progress, const QString &strMachineName) const;
     bool confirmStartMultipleMachines(const QString &strNames) const;
+    void cannotMoveMachine(const CMachine &machine, QWidget *pParent = 0) const;
+    void cannotMoveMachine(const CProgress &progress, const QString &strMachineName, QWidget *pParent = 0) const;
 
     /* API: Snapshot warnings: */
     int confirmSnapshotRestoring(const QString &strSnapshotName, bool fAlsoCreateNewSnapshot) const;
@@ -535,4 +537,3 @@ inline UIMessageCenter &msgCenter() { return *UIMessageCenter::instance(); }
 
 
 #endif /* !___UIMessageCenter_h___ */
-

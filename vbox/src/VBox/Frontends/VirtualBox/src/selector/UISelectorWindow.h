@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 70185 2017-12-18 10:32:04Z vboxsync $ */
+/* $Id: UISelectorWindow.h 71632 2018-04-03 16:58:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -156,6 +156,8 @@ private slots:
                                           const QString &strID = QString());
         /** Handles call to open Clone Machine wizard. */
         void sltOpenCloneMachineWizard();
+        /** Handles the Move Machine action. */
+        void sltPerformMoveMachine();
         /** Handles call to start or show machine. */
         void sltPerformStartOrShowMachine();
         /** Handles call to start machine in normal mode. */
@@ -386,4 +388,3 @@ private:
 #define gpSelectorWindow UISelectorWindow::instance()
 
 #endif /* !___UISelectorWindow_h___ */
-

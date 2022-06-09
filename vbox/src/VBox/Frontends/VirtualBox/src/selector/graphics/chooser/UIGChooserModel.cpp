@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 71438 2018-03-21 16:34:59Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 71632 2018-04-03 16:58:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -1268,6 +1268,7 @@ void UIGChooserModel::prepareContextMenu()
     m_pContextMenuMachine = new QMenu;
     m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Settings));
     m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Clone));
+    m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Move));
     m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Remove));
     m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_AddGroup));
     m_pContextMenuMachine->addSeparator();
@@ -2238,4 +2239,3 @@ void UIGroupOrderSaveThread::run()
     /* COM cleanup: */
     COMBase::CleanupCOM();
 }
-
