@@ -1,4 +1,4 @@
-/* $Id: UIGuestSessionsEventHandler.cpp 70912 2018-02-08 14:56:45Z vboxsync $ */
+/* $Id: UIGuestSessionsEventHandler.cpp 70923 2018-02-09 09:05:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -23,6 +23,7 @@
 /* GUI includes: */
 # include "UIExtraDataManager.h"
 # include "UIGuestSessionsEventHandler.h"
+# include "UIGuestSessionTreeItem.h"
 # include "UIMainEventListener.h"
 # include "VBoxGlobal.h"
 
@@ -563,7 +564,8 @@ void UIGuestSessionsEventHandler::populateGuestSessionsTree(QITreeWidget *pTreeW
                        << iterator.value()->guestSessionName()
                        << iterator.value()->guestSessionStatus();
         const GuestProcessMap& processMap = iterator.value()->guestProcessMap();
-        QITreeWidgetItem *treeItem = new QITreeWidgetItem(pTreeWidget, itemStringList);
+        UIGuestSessionTreeItem *treeItem = new UIGuestSessionTreeItem(pTreeWidget, itemStringList,
+                                                                      UIGuestSessionTreeItem::SessionTreeItem);
         pTreeWidget->insertTopLevelItem(iterator.key(), treeItem);
         for (GuestProcessMap::const_iterator processIterator = processMap.begin();
             processIterator != processMap.end(); ++processIterator)
@@ -572,7 +574,7 @@ void UIGuestSessionsEventHandler::populateGuestSessionsTree(QITreeWidget *pTreeW
             processStringList << QString("%1").arg(processIterator.value()->guestPID())
                               << processIterator.value()->guestProcessName()
                               << processIterator.value()->guestProcessStatus();
-            new QTreeWidgetItem(treeItem, processStringList);
+            new UIGuestSessionTreeItem(treeItem, processStringList, UIGuestSessionTreeItem::ProcessTreeItem);
         }
 
         itemStringList.clear();
