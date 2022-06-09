@@ -1,4 +1,4 @@
-/* $Id: internal-r3-win.h 70345 2017-12-26 15:51:56Z vboxsync $ */
+/* $Id: internal-r3-win.h 71150 2018-02-28 10:44:38Z vboxsync $ */
 /** @file
  * IPRT - some Windows OS type constants.
  */
@@ -108,6 +108,9 @@ typedef NTSTATUS (NTAPI *PFNNTQUERYFULLATTRIBUTESFILE)(struct _OBJECT_ATTRIBUTES
 extern DECLHIDDEN(PFNNTQUERYFULLATTRIBUTESFILE) g_pfnNtQueryFullAttributesFile;
 typedef NTSTATUS (NTAPI *PFNNTDUPLICATETOKEN)(HANDLE, ACCESS_MASK, struct _OBJECT_ATTRIBUTES *, BOOLEAN, TOKEN_TYPE, PHANDLE);
 extern DECLHIDDEN(PFNNTDUPLICATETOKEN)             g_pfnNtDuplicateToken;
+#ifdef ___iprt_nt_nt_h___
+extern decltype(NtAlertThread)                    *g_pfnNtAlertThread;
+#endif
 
 extern DECLHIDDEN(HMODULE)                         g_hModWinSock;
 
