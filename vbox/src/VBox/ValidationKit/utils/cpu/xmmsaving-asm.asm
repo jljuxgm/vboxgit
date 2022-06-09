@@ -1,4 +1,4 @@
-; $Id: xmmsaving-asm.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: xmmsaving-asm.asm 69227 2017-10-24 15:19:58Z vboxsync $
 ;; @file
 ; xmmsaving - assembly helpers.
 ;
@@ -149,5 +149,4 @@ BEGINPROC XmmSavingTestLoadSet
     leave
     ret
 ENDPROC   XmmSavingTestLoadSet
-
 

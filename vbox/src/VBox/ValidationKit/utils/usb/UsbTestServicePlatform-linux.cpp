@@ -1,4 +1,4 @@
-/* $Id: UsbTestServicePlatform-linux.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: UsbTestServicePlatform-linux.cpp 69227 2017-10-24 15:19:58Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Platform
  *               specific helpers - Linux version.
@@ -281,7 +281,7 @@ DECLHIDDEN(int) utsPlatformInit(void)
     int rc = utsPlatformModuleLoad("libcomposite", NULL, 0);
     if (RT_SUCCESS(rc))
     {
-        const char *apszArg[] = { "num=20" }; /** @todo: Make configurable from config. */
+        const char *apszArg[] = { "num=20" }; /** @todo Make configurable from config. */
         rc = utsPlatformModuleLoad("dummy_hcd", &apszArg[0], RT_ELEMENTS(apszArg));
         if (RT_SUCCESS(rc))
             rc = utsPlatformModuleLoad("dummy_hcd_ss", &apszArg[0], RT_ELEMENTS(apszArg));
