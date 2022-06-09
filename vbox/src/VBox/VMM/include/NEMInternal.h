@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 72526 2018-06-12 13:06:02Z vboxsync $ */
+/* $Id: NEMInternal.h 72541 2018-06-13 12:14:00Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -239,6 +239,15 @@ typedef struct NEMCPU
             uint64_t            cTicks;
             uint32_t            uAux;
         }                       QueryCpuTick;
+        /** Input and output for NEMR0DoExperiment. */
+        struct
+        {
+            uint32_t            uItem;
+            bool                fSuccess;
+            uint64_t            uStatus;
+            uint64_t            uLoValue;
+            uint64_t            uHiValue;
+        }                       Experiment;
     } Hypercall;
     /** I/O control buffer, we always use this for I/O controls. */
     union
