@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 71477 2018-03-23 10:04:53Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 71479 2018-03-23 10:43:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -213,7 +213,7 @@ void UIVMLogViewerWidget::sltRefresh()
         m_pActionSave->setEnabled(!noLogsToShow);
     if (m_pActionBookmarks)
         m_pActionBookmarks->setEnabled(!noLogsToShow);
-    //m_pTabWidget->setEnabled(!noLogsToShow);
+
     if (m_pActionSettings)
         m_pActionSettings->setEnabled(!noLogsToShow);
     m_pTabWidget->show();
@@ -296,15 +296,7 @@ void UIVMLogViewerWidget::sltLogPageFilteredChanged(bool isFiltered)
     /* Disable bookmark panel since bookmarks are stored as line numbers within
        the original log text and does not mean much in a reduced/filtered one. */
     if (m_pBookmarksPanel)
-    {
-        if (isFiltered)
-        {
-            m_pBookmarksPanel->setEnabled(false);
-            m_pBookmarksPanel->setVisible(false);
-        }
-        else
-            m_pBookmarksPanel->setEnabled(true);
-    }
+        m_pBookmarksPanel->disableEnableBookmarking(!isFiltered);
 }
 
 void UIVMLogViewerWidget::sltShowLineNumbers(bool bShowLineNumbers)

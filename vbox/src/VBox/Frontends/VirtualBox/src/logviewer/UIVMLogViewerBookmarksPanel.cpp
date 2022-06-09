@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.cpp 71370 2018-03-16 15:20:58Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.cpp 71479 2018-03-23 10:43:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -79,6 +79,17 @@ void UIVMLogViewerBookmarksPanel::updateBookmarkList(const QVector<QPair<int, QS
     m_pBookmarksComboBox->setCurrentIndex(m_pBookmarksComboBox->count()-1);
     connect(m_pBookmarksComboBox, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &UIVMLogViewerBookmarksPanel::sltBookmarkSelected);
+}
+
+void UIVMLogViewerBookmarksPanel::disableEnableBookmarking(bool flag)
+{
+    m_pBookmarksComboBox->setEnabled(flag);
+    m_pGotoSelectedBookmark->setEnabled(flag);
+    m_pDeleteAllButton->setEnabled(flag);
+    m_pDeleteCurrentButton->setEnabled(flag);
+    m_pNextButton->setEnabled(flag);
+    m_pPreviousButton->setEnabled(flag);
+    m_pNextPreviousButtonContainer->setEnabled(flag);
 }
 
 void UIVMLogViewerBookmarksPanel::setBookmarkIndex(int index)
