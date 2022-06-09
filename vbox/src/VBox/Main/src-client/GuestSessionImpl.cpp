@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 71634 2018-04-03 17:45:44Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 71647 2018-04-04 10:38:51Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2522,9 +2522,8 @@ HRESULT GuestSession::close()
 
     LogFlowThisFuncEnter();
 
-    HRESULT hr = i_isReadyExternal();
-    if (FAILED(hr))
-        return hr;
+    /* Note: Don't check if the session is ready via i_isReadyExternal() here;
+     *       the session (already) could be in a stopped / aborted state. */
 
     /* Close session on guest. */
     int rcGuest = VINF_SUCCESS;
@@ -2541,8 +2540,8 @@ HRESULT GuestSession::close()
     if (RT_SUCCESS(rc))
         rc = rc2;
 
-    LogFlowThisFunc(("Returning rc=%Rrc, rcGuest=%Rrc\n",
-                     rc, rcGuest));
+    LogFlowThisFunc(("Returning rc=%Rrc, rcGuest=%Rrc\n", rc, rcGuest));
+
     if (RT_FAILURE(rc))
     {
         if (rc == VERR_GSTCTL_GUEST_ERROR)
