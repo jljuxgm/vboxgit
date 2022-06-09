@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 71652 2018-04-04 12:23:27Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 71666 2018-04-04 15:56:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 #if defined(VBOX_GUI_USE_QGL) /* entire file */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -163,6 +164,7 @@
 #define VBOXQGL_LOAD_OVERLAYSTOP(_pSSM) do{}while(0)
 
 #endif
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
