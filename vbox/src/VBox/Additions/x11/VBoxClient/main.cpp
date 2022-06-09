@@ -1,4 +1,4 @@
-/* $Id: main.cpp 67319 2017-06-09 13:11:48Z vboxsync $ */
+/* $Id: main.cpp 67755 2017-07-03 13:33:55Z vboxsync $ */
 /** @file
  *
  * VirtualBox Guest Service:
@@ -328,9 +328,6 @@ int main(int argc, char *argv[])
                           (*g_pService)->getPidFilePath());
         if (RT_FAILURE(rc))
             VBClFatalError(("Creating PID file path failed: %Rrc\n", rc));
-    }
-    if ((*g_pService)->getPidFilePath || (*g_pService)->fDaemonise)
-    {
         if (fDaemonise)
             rc = VbglR3Daemonize(false /* fNoChDir */, false /* fNoClose */, fRespawn, &cRespawn);
         if (RT_FAILURE(rc))
