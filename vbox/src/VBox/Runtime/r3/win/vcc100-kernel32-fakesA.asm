@@ -1,4 +1,4 @@
-; $Id: vcc100-kernel32-fakesA.asm 70195 2017-12-18 13:40:26Z vboxsync $
+; $Id: vcc100-kernel32-fakesA.asm 70213 2017-12-19 02:56:25Z vboxsync $
 ;; @file
 ; IPRT - Wrappers for kernel32 APIs misisng NT4.
 ;
@@ -61,4 +61,6 @@ MAKE_IMPORT_ENTRY VerifyVersionInfoA, 16
 MAKE_IMPORT_ENTRY VerSetConditionMask, 16
 MAKE_IMPORT_ENTRY IsProcessorFeaturePresent, 4
 MAKE_IMPORT_ENTRY CancelIo, 4
+MAKE_IMPORT_ENTRY IsDebuggerPresent, 0
+MAKE_IMPORT_ENTRY GetSystemTimeAsFileTime, 4
 
