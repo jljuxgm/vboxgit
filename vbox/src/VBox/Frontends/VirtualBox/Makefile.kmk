@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72289 2018-05-22 14:51:38Z vboxsync $
+# $Id: Makefile.kmk 72349 2018-05-25 17:23:12Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -2094,11 +2094,11 @@ else
  #
  # VirtualBox - GUI Global Shared Library.
  #
- includedep $(PATH_TARGET)/VboxGlobalComWrapperFiles.dep
+ includedep $(PATH_TARGET)/VBoxGlobalComWrapperFiles.dep
  VBoxGlobal_BLDDIRS       += $(VBoxGlobal_0_OUTDIR)/include
  VBoxGlobal_INTERMEDIATES += $(VBoxGlobal_0_OUTDIR)/include/COMWrappers
  VBoxGlobal_SOURCES       += $(VBoxGlobal_0_OUTDIR)/include/COMWrappers.cpp
- VBoxGlobal_CLEAN         += $(wildcard $(VBoxGlobal_0_OUTDIR)/include/*) $(PATH_TARGET)/VboxGlobalComWrapperFiles.dep
+ VBoxGlobal_CLEAN         += $(wildcard $(VBoxGlobal_0_OUTDIR)/include/*) $(PATH_TARGET)/VBoxGlobalComWrapperFiles.dep
 
  ## @todo kmk doesn't remake optional outputs when they are missing...
  $$(VBoxGlobal_0_OUTDIR)/include/COMWrappers \
