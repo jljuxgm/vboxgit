@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 70603 2018-01-16 17:56:07Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 70755 2018-01-26 08:09:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1013,6 +1013,13 @@ void UISelectorWindow::sltOpenMachineLogDialog()
     QList<UIVMItem*> items = currentItems();
     AssertMsgReturnVoid(!items.isEmpty(), ("At least one item should be selected!\n"));
 
+    /* First check if a logviewer is already opened in embedded mode: */
+    if (m_pPaneToolsMachine->isToolOpened(ToolTypeMachine_LogViewer))
+    {
+        sltHandleToolOpenedMachine(ToolTypeMachine_LogViewer);
+        return;
+    }
+
     /* For each selected item: */
     foreach (UIVMItem *pItem, items)
     {
@@ -1171,7 +1178,7 @@ void UISelectorWindow::sltHandleToolOpenedMachine(ToolTypeMachine enmType)
     if (   enmType == ToolTypeMachine_Details
         && m_pPaneToolsMachine->isToolOpened(ToolTypeMachine_Details))
         m_pPaneToolsMachine->setItems(currentItems());
-    /* If that was 'Snapshot' => pass there current or null machine: */
+    /* If that was 'Snapshot' or 'LogViewer' => pass there current or null machine: */
     if (enmType == ToolTypeMachine_Snapshots || enmType == ToolTypeMachine_LogViewer)
     {
         UIVMItem *pItem = currentItem();
@@ -2714,4 +2721,3 @@ bool UISelectorWindow::isAtLeastOneItemRunning(const QList<UIVMItem*> &items)
             return true;
     return false;
 }
-
