@@ -1,4 +1,4 @@
-/* $Id: gvm.h 69475 2017-10-28 13:12:42Z vboxsync $ */
+/* $Id: gvm.h 71075 2018-02-20 21:10:45Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -53,6 +53,17 @@ typedef struct GVMCPU
 #endif
         uint8_t             padding[64];
     } gvmm;
+
+#ifdef VBOX_WITH_NEM_R0
+    /** The NEM per vcpu data. */
+    union
+    {
+# ifdef ___NEMInternal_h
+        struct NEMR0PERVCPU s;
+# endif
+        uint8_t             padding[64];
+    } nem;
+#endif
 } GVMCPU;
 /** Pointer to the GVMCPU data. */
 typedef GVMCPU *PGVMCPU;
@@ -106,15 +117,25 @@ typedef struct GVM
         uint8_t             padding[512];
     } gmm;
 
+#ifdef VBOX_WITH_NEM_R0
+    /** The NEM per vcpu data. */
+    union
+    {
+# ifdef ___NEMInternal_h
+        struct NEMR0PERVM   s;
+# endif
+        uint8_t             padding[64];
+    } nem;
+#endif
+
     /** The RAWPCIVM per vm data. */
     union
     {
 #ifdef ___VBox_rawpci_h
         struct RAWPCIPERVM s;
 #endif
-        uint8_t     padding[64];
+        uint8_t             padding[64];
     } rawpci;
-
 
     /** GVMCPU array for the configured number of virtual CPUs. */
     GVMCPU          aCpus[1];

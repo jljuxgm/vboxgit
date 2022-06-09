@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70979 2018-02-13 01:38:48Z vboxsync $
+# $Id: Makefile.kmk 71075 2018-02-20 21:10:45Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -827,6 +827,11 @@ ifndef VBOX_ONLY_EXTPACKS
  	VMMR0/VMMR0JmpA-amd64.asm
  VMMR0_SOURCES.x86 = \
  	VMMR0/VMMR0JmpA-x86.asm
+
+ if1of ($(USERNAME),bird) # experimental.
+  VMMR0_SOURCES.win.amd64 += VMMR0/NEMR0Native-win.cpp
+  VMMR0_DEFS.win.amd64    += VBOX_WITH_NATIVE_NEM VBOX_WITH_NEM_R0
+ endif
 
  VMMR0_LIBS = \
  	$(PATH_STAGE_LIB)/ServicesR0$(VBOX_SUFF_LIB) \
