@@ -1,4 +1,4 @@
-/* $Id: Config.h 70836 2018-01-31 14:55:44Z vboxsync $ */
+/* $Id: Config.h 71353 2018-03-15 14:11:55Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -53,8 +53,8 @@ private:
 
 public: /* factory methods */
     static Config *hardcoded();                   /* for testing */
+    static Config *create(int argc, char **argv); /* --config */
     static Config *compat(int argc, char **argv); /* old VBoxNetDHCP flags */
-    static Config *read(const char *pszFileName);
 
 public: /* accessors */
     void setHome(const std::string &strHome) { m_strHome = strHome; }
@@ -78,6 +78,8 @@ public:
                         const OptVendorClassId &vendor = OptVendorClassId()) const;
 
 private:
+    static Config *read(const char *pszFileName);
+
     void sanitizeBaseName();
 
     void fillDefaultOptions(optmap_t &optmap,

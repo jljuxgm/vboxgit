@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 71305 2018-03-13 00:50:08Z vboxsync $ */
+/* $Id: VBoxNetDhcpd.cpp 71353 2018-03-15 14:11:55Z vboxsync $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -579,6 +579,8 @@ int VBoxNetDhcpd::main(int argc, char **argv)
 
     if (argc < 2)
         m_Config = Config::hardcoded();
+    else if (strcmp(argv[1], "--config") == 0)
+        m_Config = Config::create(argc, argv);
     else
         m_Config = Config::compat(argc, argv);
 
