@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 67689 2017-06-29 11:50:06Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 67691 2017-06-29 12:33:32Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -886,8 +886,11 @@ bool DrvAudioHlpStreamCfgIsValid(const PPDMAUDIOSTREAMCFG pCfg)
 
     bool fValid = (   pCfg->enmDir == PDMAUDIODIR_IN
                    || pCfg->enmDir == PDMAUDIODIR_OUT);
-
     AssertMsg(fValid, ("Stream direction not set / invalid\n"));
+
+    fValid &= (   pCfg->enmLayout == PDMAUDIOSTREAMLAYOUT_NON_INTERLEAVED
+               || pCfg->enmLayout == PDMAUDIOSTREAMLAYOUT_RAW);
+    AssertMsg(fValid, ("Stream layout not set / invalid\n"));
 
     if (fValid)
         fValid = DrvAudioHlpPCMPropsAreValid(&pCfg->Props);
