@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 72513 2018-06-11 14:20:47Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 72514 2018-06-11 14:23:25Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -558,8 +558,6 @@ FNIEMOP_DEF(iemOp_Grp7_rdtscp)
 {
     IEMOP_MNEMONIC(rdtscp, "rdtscp");
     IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
-    /** @todo SVM intercept removal from here. */
-    IEMOP_HLP_SVM_INSTR_INTERCEPT_AND_NRIP(pVCpu, SVM_CTRL_INTERCEPT_RDTSCP, SVM_EXIT_RDTSCP, 0, 0);
     return IEM_MC_DEFER_TO_CIMPL_0(iemCImpl_rdtscp);
 }
 
