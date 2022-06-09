@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 69717 2017-11-16 14:55:34Z vboxsync $ */
+/* $Id: DevHDACommon.h 69719 2017-11-16 15:11:55Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -248,7 +248,9 @@ extern const HDAREGDESC g_aHdaRegMap[HDA_NUM_REGS];
 
 #define HDA_REG_RINTCNT             25          /* 0x5A */
 #define HDA_RMX_RINTCNT             23
-#define RINTCNT_N(pThis)            (HDA_REG(pThis, RINTCNT) & 0xff)
+
+/** Maximum number of Response Interrupts. */
+#define HDA_MAX_RINTCNT             256
 
 #define HDA_REG_RIRBCTL             26          /* 0x5C */
 #define HDA_RMX_RIRBCTL             24

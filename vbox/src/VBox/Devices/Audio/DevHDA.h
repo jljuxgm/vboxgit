@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 69119 2017-10-17 19:08:38Z vboxsync $ */
+/* $Id: DevHDA.h 69719 2017-11-16 15:11:55Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -203,11 +203,11 @@ typedef struct HDASTATE
     uint8_t                            au8Padding2[7];
 #endif
     /** Response Interrupt Count (RINTCNT). */
-    uint8_t                            u8RespIntCnt;
+    uint16_t                           u16RespIntCnt;
     /** Current IRQ level. */
     uint8_t                            u8IRQL;
     /** Padding for alignment. */
-    uint8_t                            au8Padding3[6];
+    uint8_t                            au8Padding3[5];
 #ifdef DEBUG
     HDASTATEDBGINFO                    Dbg;
 #endif
