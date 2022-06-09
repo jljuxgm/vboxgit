@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 71256 2018-03-07 13:11:42Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 71263 2018-03-07 17:43:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1717,7 +1717,7 @@ int SessionTaskUpdateAdditions::runFileOnGuest(GuestSession *pSession, GuestProc
     if (RT_SUCCESS(vrc))
     {
         if (RT_SUCCESS(rcGuest))
-            vrc = procTool.i_wait(GUESTPROCESSTOOL_FLAG_NONE, &rcGuest);
+            vrc = procTool.i_wait(GUESTPROCESSTOOL_WAIT_FLAG_NONE, &rcGuest);
         if (RT_SUCCESS(vrc))
             vrc = procTool.i_terminatedOk();
     }

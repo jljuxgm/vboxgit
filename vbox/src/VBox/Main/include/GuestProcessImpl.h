@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 70388 2017-12-29 16:51:03Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 71263 2018-03-07 17:43:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -170,16 +170,16 @@ private:
 };
 
 /**
- * Guest process tool flags.
+ * Guest process tool wait flags.
  */
-/** No flags specified; wait until process terminates.
+/** No wait flags specified; wait until process terminates.
  *  The maximum waiting time is set in the process' startup
  *  info. */
-#define GUESTPROCESSTOOL_FLAG_NONE            0
+#define GUESTPROCESSTOOL_WAIT_FLAG_NONE            0
 /** Wait until next stream block from stdout has been
  *  read in completely, then return.
  */
-#define GUESTPROCESSTOOL_FLAG_STDOUT_BLOCK    RT_BIT(0)
+#define GUESTPROCESSTOOL_WAIT_FLAG_STDOUT_BLOCK    RT_BIT(0)
 
 /**
  * Structure for keeping a VBoxService toolbox tool's error info around.
