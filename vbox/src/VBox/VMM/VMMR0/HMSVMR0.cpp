@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 71445 2018-03-22 10:40:37Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 71446 2018-03-22 10:50:35Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1442,6 +1442,19 @@ static void hmR0SvmLoadSharedCR0(PVMCPU pVCpu, PSVMVMCB pVmcb, PCPUMCTX pCtx)
         uShadowCr0 |= X86_CR0_PG      /* Use shadow page tables. */
                    |  X86_CR0_WP;     /* Guest CPL 0 writes to its read-only pages should cause a #PF #VMEXIT. */
     }
+
+    /*
+     * Use the #MF style of legacy-FPU error reporting for now as IEM needs work
+     * if we want to fully emulate it properly. AMD-V has MSRs that lets us isolate
+     * the host from it, but IEM needs work, see @bugref{7243#c103}.
+     */
+    if (!(uGuestCr0 & X86_CR0_NE))
+    {
+        uShadowCr0 |= X86_CR0_NE;
+        hmR0SvmAddXcptIntercept(pVmcb, X86_XCPT_MF);
+    }
+    else
+        hmR0SvmRemoveXcptIntercept(pVCpu, pCtx, pVmcb, X86_XCPT_MF);
 
     /*
      * If the shadow and guest CR0 are identical we can avoid intercepting CR0 reads.
