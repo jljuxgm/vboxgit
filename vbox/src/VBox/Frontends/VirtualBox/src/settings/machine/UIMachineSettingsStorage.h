@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 66543 2017-04-12 16:44:14Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 68339 2017-08-08 10:49:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -774,7 +774,8 @@ private:
     /** Creates existing storage controller described by the @a controllerCache. */
     bool createStorageController(const UISettingsCacheMachineStorageController &controllerCache);
     /** Updates existing storage controller described by the @a controllerCache. */
-    bool updateStorageController(const UISettingsCacheMachineStorageController &controllerCache);
+    bool updateStorageController(const UISettingsCacheMachineStorageController &controllerCache,
+                                 bool fRemovingStep);
     /** Removes existing storage attachment described by the @a controllerCache and @a attachmentCache. */
     bool removeStorageAttachment(const UISettingsCacheMachineStorageController &controllerCache,
                                  const UISettingsCacheMachineStorageAttachment &attachmentCache);
