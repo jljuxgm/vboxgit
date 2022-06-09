@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 67743 2017-06-30 15:48:42Z vboxsync $
+# $Id: vboxtestvms.py 67746 2017-07-03 08:02:58Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67743 $"
+__version__ = "$Revision: 67746 $"
 
 # Standard Python imports.
 import re;
@@ -869,10 +869,12 @@ class TestVmManager(object):
                          sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi');
         oSet.aoTestVms.append(oTestVm);
 
+        """
         oTestVm = TestVm(oSet, 'tst-win10-64-efi-ich9', sHd = '4.2/efi/win10-efi-amd64.vdi',
                          sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
                          sChipsetType = 'ich9');
         oSet.aoTestVms.append(oTestVm);
+        """
 
         oTestVm = TestVm(oSet, 'tst-ubuntu-15_10-64-efi', sHd = '4.2/efi/ubuntu-15_10-efi-amd64.vdi',
                          sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi');
@@ -926,9 +928,11 @@ class TestVmManager(object):
                          sKind = 'Windows8_64', acCpusSup = range(1, 33), fIoApic = True);
         oSet.aoTestVms.append(oTestVm);
 
+        """
         oTestVm = TestVm(oSet, 'tst-win8-64-ich9', sHd = '4.2/win8-64/t-win8-64.vdi',
                          sKind = 'Windows8_64', acCpusSup = range(1, 33), fIoApic = True, sChipsetType = 'ich9');
         oSet.aoTestVms.append(oTestVm);
+        """
 
         return oSet;
 
@@ -947,10 +951,12 @@ class TestVmManager(object):
                          sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi');
         oSet.aoTestVms.append(oTestVm);
 
+        """
         oTestVm = TestVm(oSet, 'tst-win10-64-efi-ich9', sHd = '4.2/efi/win10-efi-amd64.vdi',
                          sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
                          sChipsetType = 'ich9');
         oSet.aoTestVms.append(oTestVm);
+        """
 
         oTestVm = TestVm(oSet, 'tst-ubuntu-15_10-64-efi', sHd = '4.2/efi/ubuntu-15_10-efi-amd64.vdi',
                          sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi',
@@ -986,10 +992,12 @@ class TestVmManager(object):
                          fIoApic = True, sHddControllerType = 'SATA Controller');
         oSet.aoTestVms.append(oTestVm);
 
+        """
         oTestVm = TestVm(oSet, 'tst-sol11u1-ich9', sHd = '4.2/nat/sol11u1/t-sol11u1.vdi',
                          sKind = 'Solaris11_64', acCpusSup = range(1, 33), sNic0AttachType = 'nat',
                          fIoApic = True, sHddControllerType = 'SATA Controller', sChipsetType = 'ich9');
         oSet.aoTestVms.append(oTestVm);
+        """
 
         oTestVm = TestVm(oSet, 'tst-nt4sp6', sHd = '4.2/nt4sp6/t-nt4sp6.vdi',
                          sKind = 'WindowsNT4', acCpusSup = range(1, 33));
@@ -1031,9 +1039,11 @@ class TestVmManager(object):
                          sKind = 'Windows8_64', acCpusSup = range(1, 33), fIoApic = True);
         oSet.aoTestVms.append(oTestVm);
 
+        """
         oTestVm = TestVm(oSet, 'tst-win8-64-ich9', sHd = '4.2/win8-64/t-win8-64.vdi',
                          sKind = 'Windows8_64', acCpusSup = range(1, 33), fIoApic = True, sChipsetType = 'ich9');
         oSet.aoTestVms.append(oTestVm);
+        """
 
         return oSet;
 
