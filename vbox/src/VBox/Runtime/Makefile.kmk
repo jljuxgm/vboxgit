@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70425 2018-01-02 14:35:34Z vboxsync $
+# $Id: Makefile.kmk 70917 2018-02-08 15:56:43Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2282,6 +2282,7 @@ RuntimeR0Drv_SOURCES.linux = \
 	r0drv/powernotification-r0drv.c
 
 RuntimeR0Drv_SOURCES.win = \
+	common/asm/ASMCpuIdExSlow.asm \
 	common/ldr/ldr.cpp \
 	common/ldr/ldrEx.cpp \
 	common/ldr/ldrPE.cpp \
