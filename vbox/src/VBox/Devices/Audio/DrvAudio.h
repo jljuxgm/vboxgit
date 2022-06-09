@@ -1,10 +1,10 @@
-/* $Id: DrvAudio.h 70639 2018-01-19 12:03:12Z vboxsync $ */
+/* $Id: DrvAudio.h 70821 2018-01-31 10:34:09Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -195,6 +195,7 @@ int DrvAudioHlpFileOpen(PPDMAUDIOFILE pFile, uint32_t fOpen, const PPDMAUDIOPCMP
 int DrvAudioHlpFileClose(PPDMAUDIOFILE pFile);
 int DrvAudioHlpFileDelete(PPDMAUDIOFILE pFile);
 size_t DrvAudioHlpFileGetDataSize(PPDMAUDIOFILE pFile);
+bool DrvAudioHlpFileIsOpen(PPDMAUDIOFILE pFile);
 int DrvAudioHlpFileWrite(PPDMAUDIOFILE pFile, const void *pvBuf, size_t cbBuf, uint32_t fFlags);
 
 #define AUDIO_MAKE_FOURCC(c0, c1, c2, c3) RT_H2LE_U32_C(RT_MAKE_U32_FROM_U8(c0, c1, c2, c3))
