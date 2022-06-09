@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 72553 2018-06-14 10:51:14Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 72569 2018-06-15 19:04:01Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -6800,6 +6800,7 @@ IEM_CIMPL_DEF_0(iemCImpl_cpuid)
     pVCpu->cpum.GstCtx.rdx &= UINT32_C(0xffffffff);
 
     iemRegAddToRipAndClearRF(pVCpu, cbInstr);
+    pVCpu->iem.s.cPotentialExits++;
     return VINF_SUCCESS;
 }
 
