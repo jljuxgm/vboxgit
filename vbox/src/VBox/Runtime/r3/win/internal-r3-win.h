@@ -1,4 +1,4 @@
-/* $Id: internal-r3-win.h 70195 2017-12-18 13:40:26Z vboxsync $ */
+/* $Id: internal-r3-win.h 70215 2017-12-19 03:25:24Z vboxsync $ */
 /** @file
  * IPRT - some Windows OS type constants.
  */
@@ -55,7 +55,8 @@ typedef enum RTWINOSTYPE
     kRTWinOSType_ME,
     kRTWinOSType_9XLAST     = 99,
     kRTWinOSType_NTFIRST    = 100,
-    kRTWinOSType_NT31       = kRTWinOSType_NTFIRST,
+    kRTWinOSType_NT310      = kRTWinOSType_NTFIRST,
+    kRTWinOSType_NT350,
     kRTWinOSType_NT351,
     kRTWinOSType_NT4,
     kRTWinOSType_2K,                        /* 5.0 */
