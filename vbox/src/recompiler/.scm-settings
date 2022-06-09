@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69463 2017-10-28 10:58:50Z vboxsync $
+# $Id: .scm-settings 69465 2017-10-28 11:01:38Z vboxsync $
 ## @file
 # Source code massager settings for the recompiler.
 #
@@ -17,12 +17,12 @@
 
 
 # This is external stuff.
---external-copyright
-/.scm-settings:         --no-external-copyright
-/Makefile.kmk:          --no-external-copyright
-/VBox*:                 --no-external-copyright
-/Sun/*:                 --no-external-copyright
-/Sun/e_*.S:             --external-copyright
+--external-copyright --no-convert-tabs
+/.scm-settings:         --no-external-copyright --convert-tabs
+/Makefile.kmk:          --no-external-copyright --convert-tabs
+/VBox*:                 --no-external-copyright --convert-tabs
+/Sun/*:                 --no-external-copyright --convert-tabs
+/Sun/e_*.S:             --external-copyright --no-convert-tabs
 
 *.com:                  --treat-as binary
 
