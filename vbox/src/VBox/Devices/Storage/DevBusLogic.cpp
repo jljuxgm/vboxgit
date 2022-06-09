@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 67887 2017-07-10 17:19:26Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 67917 2017-07-12 09:19:59Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -2247,8 +2247,12 @@ static int buslogicRegisterRead(PBUSLOGIC pBusLogic, unsigned iRegister, uint32_
                     /*
                      * Reply finished, set command complete bit, unset data-in ready bit and
                      * interrupt the guest if enabled.
+                     * NB: Some commands do not set the CMDC bit / raise completion interrupt.
                      */
-                    buslogicCommandComplete(pBusLogic, false);
+                    if (pBusLogic->uOperationCode == BUSLOGICCOMMAND_FETCH_HOST_ADAPTER_LOCAL_RAM)
+                        buslogicCommandComplete(pBusLogic, true /* fSuppressIrq */);
+                    else
+                        buslogicCommandComplete(pBusLogic, false);
                 }
             }
             LogFlowFunc(("data=%02x, iReply=%d, cbReplyParametersLeft=%u\n", *pu32,
