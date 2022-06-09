@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 71807 2018-04-10 10:08:46Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -492,6 +492,12 @@ static DECLCALLBACK(int) drvHostBaseQueryFeatures(PPDMIMEDIAEX pInterface, uint3
 
     *pfFeatures = pThis->IMediaEx.pfnIoReqSendScsiCmd ? PDMIMEDIAEX_FEATURE_F_RAWSCSICMD : 0;
     return VINF_SUCCESS;
+}
+
+/** @interface_method_impl{PDMIMEDIAEX,pfnNotifySuspend} */
+static DECLCALLBACK(void) drvHostBaseNotifySuspend(PPDMIMEDIAEX pInterface)
+{
+    RT_NOREF(pInterface); /* Nothing to do here. */
 }
 
 /** @interface_method_impl{PDMIMEDIAEX,pfnIoReqAllocSizeSet} */
@@ -1294,6 +1300,7 @@ DECLHIDDEN(int) DRVHostBaseInit(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, const char *
 
     /* IMediaEx */
     pThis->IMediaEx.pfnQueryFeatures            = drvHostBaseQueryFeatures;
+    pThis->IMediaEx.pfnNotifySuspend            = drvHostBaseNotifySuspend;
     pThis->IMediaEx.pfnIoReqAllocSizeSet        = drvHostBaseIoReqAllocSizeSet;
     pThis->IMediaEx.pfnIoReqAlloc               = drvHostBaseIoReqAlloc;
     pThis->IMediaEx.pfnIoReqFree                = drvHostBaseIoReqFree;
