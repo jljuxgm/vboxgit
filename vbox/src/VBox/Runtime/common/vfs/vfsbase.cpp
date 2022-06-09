@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 69813 2017-11-23 18:33:30Z vboxsync $ */
+/* $Id: vfsbase.cpp 69814 2017-11-23 18:47:09Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -1220,7 +1220,7 @@ RTDECL(int)             RTVfsObjOpen(RTVFS hVfs, const char *pszPath, uint64_t f
 
                 /*
                  * If we've got a trailing directory slash, use pfnOpenDir
-                 * instead of pfnOpenObj.
+                 * instead of pfnOpen.
                  */
                 if (pPath->fDirSlash)
                 {
