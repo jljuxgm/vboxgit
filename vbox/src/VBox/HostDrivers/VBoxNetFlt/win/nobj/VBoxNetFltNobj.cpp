@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltNobj.cpp 70798 2018-01-29 19:38:48Z vboxsync $ */
+/* $Id: VBoxNetFltNobj.cpp 70799 2018-01-29 19:49:44Z vboxsync $ */
 /** @file
  * VBoxNetFltNobj.cpp - Notify Object for Bridged Networking Driver.
  * Used to filter Bridged Networking Driver bindings
@@ -663,7 +663,7 @@ AdHocRegKey *AdHocRegKey::create(LPCWSTR pcwszSubkey, LPCWSTR pcwszDefaultValue)
 void AdHocRegKey::setValue(LPCWSTR pcwszName, LPCWSTR pcwszValue)
 {
     LSTATUS rc = RegSetValueExW(m_hKey, pcwszName, 0, REG_SZ, (const BYTE *)pcwszValue,
-                                (wcslen(pcwszValue) + 1) * sizeof(WCHAR));
+                                (DWORD)((wcslen(pcwszValue) + 1) * sizeof(WCHAR)));
     if (rc != ERROR_SUCCESS)
         throw AdHocRegError(rc);
 }
