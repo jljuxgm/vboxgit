@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 68467 2017-08-18 12:08:50Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 68471 2017-08-18 15:23:27Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1713,7 +1713,7 @@ static int vbglR3DnDGHSendFile(PVBGLR3GUESTDNDCMDCTX pCtx, DnDURIObject *pObj)
         MsgHdr.fMode.SetUInt32(pObj->GetMode());                                         /* File mode */
         MsgHdr.cbTotal.SetUInt64(pObj->GetSize());                                       /* File size (in bytes). */
 
-        rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(MsgHdr)), &MsgHdr, sizeof(MsgHdr));
+        rc = VbglR3HGCMCall(&MsgHdr.hdr, sizeof(MsgHdr));
 
         LogFlowFunc(("Sending file header resulted in %Rrc\n", rc));
     }
