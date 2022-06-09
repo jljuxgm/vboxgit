@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 72643 2018-06-21 16:02:03Z vboxsync $ */
+/* $Id: EM.cpp 72657 2018-06-22 11:05:11Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -182,6 +182,17 @@ VMMR3_INT_DECL(int) EMR3Init(PVM pVM)
         pVM->aCpus[i].em.s.fExitOptimizationEnabled                  = fExitOptimizationEnabled;
         pVM->aCpus[i].em.s.fExitOptimizationEnabledR0                = fExitOptimizationEnabledR0;
         pVM->aCpus[i].em.s.fExitOptimizationEnabledR0PreemptDisabled = fExitOptimizationEnabledR0PreemptDisabled;
+
+        pVM->aCpus[i].em.s.cHistoryExecMaxInstructions               = 8192;
+        pVM->aCpus[i].em.s.cHistoryProbeMinInstructions              = 48;
+        pVM->aCpus[i].em.s.cHistoryProbeMaxInstructionsWithoutExit   = 24;
+#ifdef RT_OS_WINDOWS
+        if (VM_IS_NEM_ENABLED(pVM))
+        {
+            pVM->aCpus[i].em.s.cHistoryProbeMaxInstructionsWithoutExit = 32;
+            pVM->aCpus[i].em.s.cHistoryProbeMinInstructions            = 64;
+        }
+#endif
     }
 
 #ifdef VBOX_WITH_REM
