@@ -1,4 +1,4 @@
-/* $Id: time.cpp 70895 2018-02-07 23:14:02Z vboxsync $ */
+/* $Id: time.cpp 70896 2018-02-07 23:18:51Z vboxsync $ */
 /** @file
  * IPRT - Time.
  */
@@ -981,7 +981,7 @@ static PRTTIME rtTimeAddMinutes(PRTTIME pTime, int32_t cAddend)
     /*
      * Work on minutes of the day.
      */
-    unsigned const  cMinutesInDay = 24 * 60;
+    int32_t const   cMinutesInDay = 24 * 60;
     int32_t         iDayMinute    = (unsigned)pTime->u8Hour * 60 + pTime->u8Minute;
     iDayMinute += cAddend;
 
