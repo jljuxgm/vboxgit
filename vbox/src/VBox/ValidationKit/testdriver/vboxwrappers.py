@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 70738 2018-01-25 11:33:44Z vboxsync $
+# $Id: vboxwrappers.py 70762 2018-01-28 20:21:06Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70738 $"
+__version__ = "$Revision: 70762 $"
 
 
 # Standard Python imports.
@@ -2376,7 +2376,7 @@ class SessionWrapper(TdTaskBase):
         Returns the True on success, False on failure (logged).
         """
         try:
-            oPort = self.o.machine.GetSerialPort(iSerialPort);
+            oPort = self.o.machine.getSerialPort(iSerialPort);
         except:
             fRc = reporter.errorXcpt('failed to get serial port #%u' % (iSerialPort,));
         else:
