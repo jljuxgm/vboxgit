@@ -1,5 +1,4 @@
-/* $Id: VBoxVideoIOCTL.h 68630 2017-09-05 11:33:54Z vboxsync $ */
-
+/* $Id: VBoxVideoIOCTL.h 69350 2017-10-26 14:18:52Z vboxsync $ */
 /** @file
  * VBox Miniport IOCTL related header
  */
@@ -155,4 +154,4 @@ typedef struct _VHWAQUERYINFO
 
 #define VBOXVIDEO_REGISTRY_FLAGS_DISABLE_BITMAP_CACHE 0x00000001
 
-#endif /*VBOXVIDEOIOCTL_H*/
+#endif /* !VBOXVIDEOIOCTL_H */

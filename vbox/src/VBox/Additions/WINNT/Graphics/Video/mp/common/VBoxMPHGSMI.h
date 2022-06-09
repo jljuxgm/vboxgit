@@ -1,5 +1,4 @@
-/* $Id: VBoxMPHGSMI.h 68630 2017-09-05 11:33:54Z vboxsync $ */
-
+/* $Id: VBoxMPHGSMI.h 69350 2017-10-26 14:18:52Z vboxsync $ */
 /** @file
  * VBox Miniport HGSMI related header
  */

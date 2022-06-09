@@ -1,5 +1,4 @@
-/* $Id: VBoxDispMpInternal.h 62679 2016-07-29 12:52:10Z vboxsync $ */
-
+/* $Id: VBoxDispMpInternal.h 69350 2017-10-26 14:18:52Z vboxsync $ */
 /** @file
  * VBoxVideo Display external interface config
  */

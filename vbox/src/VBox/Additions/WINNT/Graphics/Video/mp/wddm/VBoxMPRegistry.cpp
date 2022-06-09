@@ -1,5 +1,4 @@
-/* $Id: VBoxMPRegistry.cpp 63057 2016-08-05 20:12:05Z vboxsync $ */
-
+/* $Id: VBoxMPRegistry.cpp 69350 2017-10-26 14:18:52Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport registry related functions
  */

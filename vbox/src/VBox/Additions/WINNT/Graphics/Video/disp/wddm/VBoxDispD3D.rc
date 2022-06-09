@@ -1,5 +1,4 @@
-/* $Id: VBoxDispD3D.rc 62522 2016-07-22 19:17:25Z vboxsync $ */
-
+/* $Id: VBoxDispD3D.rc 69350 2017-10-26 14:18:52Z vboxsync $ */
 /** @file
  * VBoxDispD3D - Resource file containing version info and icon.
  */

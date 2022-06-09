@@ -1,5 +1,4 @@
-/* $Id: VBoxDispDDraw.h 62522 2016-07-22 19:17:25Z vboxsync $ */
-
+/* $Id: VBoxDispDDraw.h 69350 2017-10-26 14:18:52Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver, direct draw callbacks
  */
@@ -42,4 +41,4 @@ DWORD APIENTRY VBoxDispDDSetOverlayPosition(PDD_SETOVERLAYPOSITIONDATA lpSetOver
 DWORD APIENTRY VBoxDispDDUpdateOverlay(PDD_UPDATEOVERLAYDATA lpUpdateOverlay);
 #endif
 
-#endif /*VBOXDISPDDRAW_H*/
+#endif /*!VBOXDISPDDRAW_H*/

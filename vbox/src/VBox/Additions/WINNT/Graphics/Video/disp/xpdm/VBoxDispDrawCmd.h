@@ -1,5 +1,4 @@
-/* $Id: VBoxDispDrawCmd.h 62522 2016-07-22 19:17:25Z vboxsync $ */
-
+/* $Id: VBoxDispDrawCmd.h 69350 2017-10-26 14:18:52Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver
  */

@@ -1,5 +1,8 @@
-; $Id: VBoxVideoWinDbg.def 62522 2016-07-22 19:17:25Z vboxsync $
-; @file
+; $Id: VBoxVideoWinDbg.def 69350 2017-10-26 14:18:52Z vboxsync $
+;; @file
+; ???
+;
+
 ;
 ; Copyright (C) 2011-2016 Oracle Corporation
 ;

@@ -1,5 +1,4 @@
-/* $Id: VBoxD3DIf.cpp 66826 2017-05-08 16:53:25Z vboxsync $ */
-
+/* $Id: VBoxD3DIf.cpp 69350 2017-10-26 14:18:52Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -15,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #include "VBoxDispD3DCmn.h"
 
 /* DDI2D3D */

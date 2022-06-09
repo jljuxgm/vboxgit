@@ -1,5 +1,4 @@
-/* $Id: VBoxDispDDraw.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
-
+/* $Id: VBoxDispDDraw.cpp 69350 2017-10-26 14:18:52Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver, DirectDraw callbacks
  */

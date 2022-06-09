@@ -1,5 +1,4 @@
-/* $Id: VBoxMPCommon.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
-
+/* $Id: VBoxMPCommon.cpp 69350 2017-10-26 14:18:52Z vboxsync $ */
 /** @file
  * VBox Miniport common utils
  */

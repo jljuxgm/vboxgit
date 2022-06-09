@@ -1,5 +1,4 @@
-/* $Id: VBoxDispDrawCmd.cpp 63058 2016-08-05 20:19:24Z vboxsync $ */
-
+/* $Id: VBoxDispDrawCmd.cpp 69350 2017-10-26 14:18:52Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver drawing interface functions
  */
