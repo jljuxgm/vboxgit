@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.h 69519 2017-10-30 10:31:13Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.h 69526 2017-10-30 13:04:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class declaration.
  */
@@ -298,10 +298,10 @@ private:
         QLabel       *m_pLabelLocation;
         /** Holds the location editor. */
         QLineEdit    *m_pEditorLocation;
-        /** Holds the location button. */
-        QIToolButton *m_pButtonLocation;
         /** Holds the location error pane. */
         QLabel       *m_pErrorPaneLocation;
+        /** Holds the location button. */
+        QIToolButton *m_pButtonLocation;
 
         /** Holds the description label. */
         QLabel    *m_pLabelDescription;
