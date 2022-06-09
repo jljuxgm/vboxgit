@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 70699 2018-01-23 10:05:42Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.h 70706 2018-01-23 13:24:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -30,6 +30,7 @@ class QHBoxLayout;
 class QLabel;
 class UIRoundRectSegmentedButton;
 class UISearchField;
+class UIVMLogViewerSearchField;
 class UIVMLogViewerWidget;
 
 /** QWidget extension
@@ -103,7 +104,7 @@ private:
     /** Holds the instance of search-label we create. */
     QLabel *m_pSearchLabel;
     /** Holds the instance of search-editor we create. */
-    UISearchField *m_pSearchEditor;
+    UIVMLogViewerSearchField *m_pSearchEditor;
     /** Holds the instance of next/back button-box we create. */
     UIRoundRectSegmentedButton *m_pNextPrevButtons;
     /** Holds the instance of case-sensitive checkbox we create. */

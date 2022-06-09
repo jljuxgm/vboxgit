@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 70645 2018-01-19 12:27:22Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.h 70706 2018-01-23 13:24:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -28,7 +28,7 @@
 class QHBoxLayout;
 class QPlainTextEdit;
 class QTextDocument;
-class UIMiniCancelButton;
+class QIToolButton;
 class UIVMLogViewerWidget;
 
 
@@ -74,7 +74,7 @@ private:
     /** Holds the instance of main-layout we create. */
     QHBoxLayout         *m_pMainLayout;
     /** Holds the instance of close-button we create. */
-    UIMiniCancelButton  *m_pCloseButton;
+    QIToolButton        *m_pCloseButton;
 };
 
 #endif /* !___UIVMLogViewerPanel!_h___ */

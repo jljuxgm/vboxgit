@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 70676 2018-01-22 12:59:41Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 70706 2018-01-23 13:24:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -38,7 +38,6 @@
 /* GUI includes: */
 # include "QIToolButton.h"
 # include "UIIconPool.h"
-# include "UISpecialControls.h"
 # include "UIVMLogPage.h"
 # include "UIVMLogViewerFilterPanel.h"
 # include "UIVMLogViewerWidget.h"

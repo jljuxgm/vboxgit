@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 70676 2018-01-22 12:59:41Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.cpp 70706 2018-01-23 13:24:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -28,8 +28,8 @@
 # include <QToolButton>
 
 /* GUI includes: */
+# include "QIToolButton.h"
 # include "UIIconPool.h"
-# include "UISpecialControls.h"
 # include "UIVMLogPage.h"
 # include "UIVMLogViewerPanel.h"
 # include "UIVMLogViewerWidget.h"
@@ -78,9 +78,10 @@ void UIVMLogViewerPanel::prepareWidgets()
         m_pMainLayout->setContentsMargins(0, 0, 0, 0);
         m_pMainLayout->setSpacing(2);
     }
-    m_pCloseButton = new UIMiniCancelButton;
+    m_pCloseButton = new QIToolButton;
     if (m_pCloseButton)
     {
+        m_pCloseButton->setIcon(m_pCloseButton->style()->standardIcon(QStyle::SP_TitleBarCloseButton));
         m_pMainLayout->addWidget(m_pCloseButton, 0, Qt::AlignLeft);
     }
 }
@@ -88,10 +89,8 @@ void UIVMLogViewerPanel::prepareWidgets()
 void UIVMLogViewerPanel::prepareConnections()
 {
     if (m_pCloseButton)
-        connect(m_pCloseButton, &UIMiniCancelButton::clicked, this, &UIVMLogViewerPanel::hide);
-
+        connect(m_pCloseButton, &QIToolButton::clicked, this, &QIToolButton::hide);
 }
-
 
 void UIVMLogViewerPanel::retranslateUi()
 {
