@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 70592 2018-01-15 14:34:05Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 70598 2018-01-16 13:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -134,13 +134,15 @@ protected:
 
     void mouseMoveEvent(QMouseEvent *pEvent)
     {
-        m_pTextEdit->setMouseCursorLine(m_pTextEdit->lineNumberForPos(pEvent->pos()));
+        if (m_pTextEdit)
+            m_pTextEdit->setMouseCursorLine(m_pTextEdit->lineNumberForPos(pEvent->pos()));
         repaint();
     }
 
     void mousePressEvent(QMouseEvent *pEvent)
     {
-        m_pTextEdit->toggleBookmark(m_pTextEdit->bookmarkForPos(pEvent->pos()));
+        if (m_pTextEdit)
+            m_pTextEdit->toggleBookmark(m_pTextEdit->bookmarkForPos(pEvent->pos()));
     }
 
 private:

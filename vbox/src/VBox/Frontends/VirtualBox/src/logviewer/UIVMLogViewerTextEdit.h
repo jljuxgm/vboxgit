@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 70581 2018-01-14 20:54:55Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.h 70598 2018-01-16 13:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -37,6 +37,7 @@ signals:
 public:
 
     UIVMLogViewerTextEdit(QWidget* parent = 0);
+
     int  lineNumberAreaWidth();
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     /** Forwards the call to scroll bar class */
@@ -57,7 +58,7 @@ protected:
     virtual void contextMenuEvent(QContextMenuEvent *pEvent) /* override */;
     virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
     virtual void mouseMoveEvent(QMouseEvent *pEvent) /* override */;
-    virtual void leaveEvent(QEvent * event) /* override */;
+    virtual void leaveEvent(QEvent * pEvent) /* override */;
 
 private slots:
 

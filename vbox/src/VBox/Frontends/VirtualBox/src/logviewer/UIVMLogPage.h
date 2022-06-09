@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 70589 2018-01-15 13:00:21Z vboxsync $ */
+/* $Id: UIVMLogPage.h 70598 2018-01-16 13:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -94,6 +94,10 @@ public:
 
     void setShowLineNumbers(bool bShowLineNumbers);
     void setWrapLines(bool bWrapLines);
+
+protected:
+
+    virtual void showEvent(QShowEvent *pEvent) /* override */;
 
 private slots:
 
