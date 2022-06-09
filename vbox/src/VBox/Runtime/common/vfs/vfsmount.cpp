@@ -1,4 +1,4 @@
-/* $Id: vfsmount.cpp 69840 2017-11-27 15:19:30Z vboxsync $ */
+/* $Id: vfsmount.cpp 69853 2017-11-28 09:38:18Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Mounting.
  */
@@ -43,8 +43,6 @@
 #include <iprt/formats/iso9660.h>
 #include <iprt/formats/udf.h>
 #include <iprt/formats/ext2.h>
-
-
 
 
 /*********************************************************************************************************************************
@@ -462,5 +460,4 @@ RTDECL(int) RTVfsMountVol(RTVFSFILE hVfsFileIn, uint32_t fFlags, PRTVFS phVfs, P
 
     return rc;
 }
-
 
