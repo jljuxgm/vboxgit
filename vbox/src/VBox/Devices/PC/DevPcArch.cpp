@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.cpp 70740 2018-01-25 14:13:56Z vboxsync $ */
+/* $Id: DevPcArch.cpp 70743 2018-01-25 15:19:14Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
@@ -235,6 +235,7 @@ static DECLCALLBACK(int) pcarchInitComplete(PPDMDEVINS pDevIns)
                                            pcarchReservedMemoryWrite, pcarchReservedMemoryRead,
                                            MMR3HeapAPrintf(pVM, MM_TAG_PGM_PHYS /* bad bird*/, "PC Arch Reserved #%u", iRegion));
             AssertLogRelRCReturn(rc, rc);
+            iRegion++;
         }
     } while (GCPhysCur < GCPhysEnd);
 
