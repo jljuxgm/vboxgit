@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 70230 2017-12-19 20:55:07Z vboxsync $ */
+/* $Id: UIIconPool.cpp 71006 2018-02-14 11:21:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -46,7 +46,8 @@ QPixmap UIIconPool::pixmap(const QString &strName)
     QIcon icon = iconSet(strName);
 
     /* Return pixmap of first available size: */
-    return icon.pixmap(icon.availableSizes().first());
+    const int iHint = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
+    return icon.pixmap(icon.availableSizes().value(0, QSize(iHint, iHint)));
 }
 
 /* static */

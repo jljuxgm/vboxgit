@@ -1,4 +1,4 @@
-/* $Id: UISettingsSerializer.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UISettingsSerializer.cpp 71006 2018-02-14 11:21:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSerializer class implementation.
  */
@@ -265,7 +265,7 @@ void UISettingsSerializerProgress::prepare()
                 {
                     /* Configure label: */
                     const QIcon icon = UIIconPool::iconSet(":/progress_settings_90px.png");
-                    pLabelPixmap->setPixmap(icon.pixmap(icon.availableSizes().first()));
+                    pLabelPixmap->setPixmap(icon.pixmap(icon.availableSizes().value(0, QSize(90, 90))));
                     /* Add label into layout: */
                     pLayoutPixmap->addWidget(pLabelPixmap);
                 }

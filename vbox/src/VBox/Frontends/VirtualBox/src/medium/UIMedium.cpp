@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 69568 2017-11-03 14:56:45Z vboxsync $ */
+/* $Id: UIMedium.cpp 71006 2018-02-14 11:21:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -472,7 +472,7 @@ QPixmap UIMedium::icon(bool fNoDiffs /* = false */, bool fCheckRO /* = false */)
     if (fCheckRO && m_fReadOnly)
     {
         QIcon icon = UIIconPool::iconSet(":/hd_new_16px.png");
-        pixmap = VBoxGlobal::joinPixmaps(pixmap, icon.pixmap(icon.availableSizes().first()));
+        pixmap = VBoxGlobal::joinPixmaps(pixmap, icon.pixmap(icon.availableSizes().value(0, QSize(16, 16))));
     }
 
     return pixmap;

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 70870 2018-02-05 15:51:16Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 71006 2018-02-14 11:21:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -416,7 +416,7 @@ void UIChooserPaneDelegate::fetchPixmapInfo(const QModelIndex &index, QPixmap &p
     {
         /* For global ID we return static pixmap/size: */
         const QIcon icon = UIIconPool::iconSet(":/edataglobal_32px.png");
-        pixmapSize = icon.availableSizes().first();
+        pixmapSize = icon.availableSizes().value(0, QSize(32, 32));
         pixmap = icon.pixmap(pixmapSize);
     }
 }
