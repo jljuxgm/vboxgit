@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69324 2017-10-25 19:45:13Z vboxsync $ */
+/* $Id: scm.cpp 69349 2017-10-26 13:47:39Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -385,6 +385,16 @@ static PFNSCMREWRITER const g_aRewritersFor_Python[] =
     rewrite_Copyright_PythonComment,
 };
 
+static PFNSCMREWRITER const g_aRewritersFor_Perl[] =
+{
+    /** @todo rewrite_ForceLFIfExecutable */
+    rewrite_ExpandTabs,
+    rewrite_StripTrailingBlanks,
+    rewrite_AdjustTrailingLines,
+    rewrite_SvnKeywords,
+    rewrite_Copyright_HashComment,
+};
+
 static PFNSCMREWRITER const g_aRewritersFor_ScmSettings[] =
 {
     rewrite_ForceNativeEol,
@@ -486,6 +496,7 @@ static SCMCFGENTRY const g_aConfigs[] =
     SCM_CFG_ENTRY(g_aRewritersFor_BasicScripts,     false, "*.vbs|*.vb" ),
     SCM_CFG_ENTRY(g_aRewritersFor_SedScripts,       false, "*.sed" ),
     SCM_CFG_ENTRY(g_aRewritersFor_Python,           false, "*.py" ),
+    SCM_CFG_ENTRY(g_aRewritersFor_Perl,             false, "*.pl" ),
     SCM_CFG_ENTRY(g_aRewritersFor_ScmSettings,      false, "*.scm-settings" ),
     SCM_CFG_ENTRY(g_aRewritersFor_Images,           true,  "*.png|*.bmp|*.jpg|*.pnm|*.ico|*.icns" ),
     SCM_CFG_ENTRY(g_aRewritersFor_Xslt,             false, "*.xsl" ),
@@ -2179,7 +2190,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69324 $";
+                static const char s_szRev[] = "$Revision: 69349 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
