@@ -1,4 +1,4 @@
-/* $Id: PS2M.cpp 65648 2017-02-07 11:43:22Z vboxsync $ */
+/* $Id: PS2M.cpp 68052 2017-07-19 15:51:09Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -556,7 +556,7 @@ static void ps2mReportAccumulatedEvents(PPS2M pThis, GeneriQ *pQueue, bool fAccu
     if (fAccumBtns)
     {
         pThis->fReportedB = pThis->fAccumB;
-        pThis->fAccumB    = 0;
+        pThis->fAccumB    = pThis->fCurrB;
     }
 }
 
@@ -847,7 +847,7 @@ static DECLCALLBACK(void) ps2mThrottleTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer,
     /* If the input queue is not empty, restart the timer. */
 #else
     /* If more movement is accumulated, report it and restart the timer. */
-    uHaveEvents = pThis->iAccumX | pThis->iAccumY | pThis->iAccumZ | (pThis->fCurrB != pThis->fReportedB);
+    uHaveEvents = pThis->iAccumX | pThis->iAccumY | pThis->iAccumZ | (pThis->fAccumB != pThis->fReportedB);
     LogFlowFunc(("Have%s events\n", uHaveEvents ? "" : " no"));
 
     if (uHaveEvents)
