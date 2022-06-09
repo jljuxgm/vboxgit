@@ -1,4 +1,4 @@
-/* $Id: tstDeviceSUP.cpp 69183 2017-10-23 18:47:18Z vboxsync $ */
+/* $Id: tstDeviceSUP.cpp 69305 2017-10-25 13:41:41Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, SUP library exports.
  */
@@ -26,6 +26,7 @@
 #include <iprt/semaphore.h>
 
 #include "tstDeviceInternal.h"
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *

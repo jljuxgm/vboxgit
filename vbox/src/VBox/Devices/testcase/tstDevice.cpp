@@ -1,4 +1,4 @@
-/* $Id: tstDevice.cpp 69183 2017-10-23 18:47:18Z vboxsync $ */
+/* $Id: tstDevice.cpp 69305 2017-10-25 13:41:41Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers
  */
@@ -38,6 +38,7 @@
 #include <iprt/trace.h>
 
 #include "tstDeviceInternal.h"
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
@@ -188,6 +189,7 @@ typedef struct TSTDEVPDMR0IMPORTS
     PFNRT                           pfn;
 } TSTDEVPDMR0IMPORTS;
 typedef const TSTDEVPDMR0IMPORTS *PCTSTDEVPDMR0IMPORTS;
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
@@ -694,7 +696,7 @@ static int tstDevPdmLoadR0RcMod(PTSTDEVPDMMOD pMod)
 
 
 /**
- * Loads the given 
+ * Loads the given
  */
 static int tstDevPdmLoadR3Mod(PTSTDEVPDMMOD pMod)
 {

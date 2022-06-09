@@ -1,4 +1,4 @@
-/* $Id: tstDeviceVMM.cpp 69183 2017-10-23 18:47:18Z vboxsync $ */
+/* $Id: tstDeviceVMM.cpp 69305 2017-10-25 13:41:41Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, VMM callbacks implementation.
  */
@@ -28,6 +28,7 @@
 
 #include "tstDeviceInternal.h"
 
+
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
@@ -36,6 +37,7 @@
 #define TMCLOCK_FREQ_REAL       UINT32_C(1000)
 /** Frequency of the virtual clock. */
 #define TMCLOCK_FREQ_VIRTUAL    UINT32_C(1000000000)
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
