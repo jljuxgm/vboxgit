@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 66544 2017-04-12 17:02:30Z vboxsync $ */
+/* $Id: vbox_drv.h 67175 2017-05-31 14:38:02Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -89,7 +89,7 @@ struct vbox_private {
 
     u8 __iomem *guest_heap;
     u8 __iomem *vbva_buffers;
-    HGSMIGUESTCOMMANDCONTEXT submit_info;
+    struct gen_pool *guest_pool;
     struct VBVABUFFERCONTEXT *vbva_info;
     bool any_pitch;
     unsigned num_crtcs;
