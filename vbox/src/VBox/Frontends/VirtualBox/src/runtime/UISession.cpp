@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 72057 2018-04-27 11:55:52Z vboxsync $ */
+/* $Id: UISession.cpp 72329 2018-05-24 19:52:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -955,6 +955,7 @@ UISession::UISession(UIMachine *pMachine)
     , m_fIsMouseIntegrated(true)
     , m_fIsValidPointerShapePresent(false)
     , m_fIsHidingHostPointer(true)
+    , m_enmVMExecutionEngine(KVMExecutionEngine_NotSet)
     /* CPU hardware virtualization features for VM: */
     , m_fIsHWVirtExEnabled(false)
     , m_fIsHWVirtExNestedPagingEnabled(false)
@@ -2120,6 +2121,8 @@ QList<int> UISession::listOfVisibleWindows() const
 
 void UISession::loadVMSettings()
 {
+    /* Cache IMachine::ExecutionEngine value. */
+    m_enmVMExecutionEngine = m_debugger.GetExecutionEngine();
     /* Load CPU hardware virtualization extension: */
     m_fIsHWVirtExEnabled = m_debugger.GetHWVirtExEnabled();
     /* Load nested-paging CPU hardware virtualization extension: */

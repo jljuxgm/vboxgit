@@ -1,4 +1,4 @@
-/* $Id: UISession.h 71374 2018-03-19 15:19:12Z vboxsync $ */
+/* $Id: UISession.h 72329 2018-05-24 19:52:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -265,6 +265,8 @@ public:
 
     /** @name CPU hardware virtualization features for VM.
      ** @{ */
+    /** Returns whether CPU hardware virtualization extension is enabled. */
+    KVMExecutionEngine getVMExecutionEngine() const { return m_enmVMExecutionEngine; }
     /** Returns whether CPU hardware virtualization extension is enabled. */
     bool isHWVirtExEnabled() const { return m_fIsHWVirtExEnabled; }
     /** Returns whether nested-paging CPU hardware virtualization extension is enabled. */
@@ -541,6 +543,9 @@ private:
     bool m_fIsMouseIntegrated : 1;
     bool m_fIsValidPointerShapePresent : 1;
     bool m_fIsHidingHostPointer : 1;
+
+    /** Copy of IMachineDebugger::ExecutionEngine */
+    KVMExecutionEngine m_enmVMExecutionEngine;
 
     /** @name CPU hardware virtualization features for VM.
      ** @{ */
