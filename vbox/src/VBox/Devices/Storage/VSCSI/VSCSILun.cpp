@@ -1,4 +1,4 @@
-/* $Id: VSCSILun.cpp 67959 2017-07-14 09:01:23Z vboxsync $ */
+/* $Id: VSCSILun.cpp 67960 2017-07-14 09:02:50Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: LUN handling
  */
@@ -28,8 +28,6 @@
 extern VSCSILUNDESC g_VScsiLunTypeSbc;
 /** MMC descriptor */
 extern VSCSILUNDESC g_VScsiLunTypeMmc;
-/** SSC descriptor */
-extern VSCSILUNDESC g_VScsiLunTypeSsc;
 
 /**
  * Array of supported SCSI LUN types.
@@ -38,7 +36,6 @@ static PVSCSILUNDESC g_aVScsiLunTypesSupported[] =
 {
     &g_VScsiLunTypeSbc,
     &g_VScsiLunTypeMmc,
-    &g_VScsiLunTypeSsc,
 };
 
 VBOXDDU_DECL(int) VSCSILunCreate(PVSCSILUN phVScsiLun, VSCSILUNTYPE enmLunType,
