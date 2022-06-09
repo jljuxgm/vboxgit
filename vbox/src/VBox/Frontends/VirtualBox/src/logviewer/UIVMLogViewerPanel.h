@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 70519 2018-01-10 14:27:17Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.h 70539 2018-01-11 14:11:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -25,12 +25,9 @@
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
-class QComboBox;
 class QHBoxLayout;
-class QLabel;
-class QLineEdit;
-class QPushButton;
-class UIVMFilterLineEdit;
+class QPlainTextEdit;
+class QTextDocument;
 class UIMiniCancelButton;
 class UIVMLogViewerWidget;
 
@@ -68,6 +65,10 @@ protected:
     /** Handles the Qt hide @a pEvent. */
     void hideEvent(QHideEvent *pEvent);
 
+    QTextDocument  *textDocument();
+    QPlainTextEdit *textEdit();
+    /* Return the unmodified log. */
+    const QString* logString() const;
 private slots:
 
 

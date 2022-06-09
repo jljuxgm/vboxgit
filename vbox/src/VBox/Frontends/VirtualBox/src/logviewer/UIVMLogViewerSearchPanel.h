@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 70500 2018-01-10 09:36:36Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.h 70539 2018-01-11 14:11:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -105,6 +105,7 @@ private:
     void configureInfoLabels();
     /** Constructs the find flags for QTextDocument::find function. */
     QTextDocument::FindFlags constructFindFlags(SearchDirection eDirection);
+
 
     /** Holds the instance of search-label we create. */
     QLabel *m_pSearchLabel;
