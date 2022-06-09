@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 68315 2017-08-07 12:50:54Z vboxsync $ */
+/* $Id: UISelectorWindow.h 68392 2017-08-11 12:38:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -35,9 +35,6 @@ class QISplitter;
 class UIAction;
 class UIActionPool;
 class UIGChooser;
-#ifndef VBOX_WS_MAC
-class UIMainBar;
-#endif
 class UISlidingWidget;
 class UITabBar;
 class UIToolBar;
@@ -336,10 +333,6 @@ private:
     /** Holds the central splitter instance. */
     QISplitter *m_pSplitter;
 
-#ifndef VBOX_WS_MAC
-    /** Holds the main bar instance. */
-    UIMainBar *m_pBar;
-#endif
     /** Holds the main toolbar instance. */
     UIToolBar *m_pToolBar;
 

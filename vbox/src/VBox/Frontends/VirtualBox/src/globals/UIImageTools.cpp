@@ -1,4 +1,4 @@
-/* $Id: UIImageTools.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: UIImageTools.cpp 68392 2017-08-11 12:38:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Implementation of utility classes and functions for image manipulation.
  */
@@ -264,21 +264,5 @@ static QImage betaLabelImage(const QSize& ls)
 QPixmap betaLabel(const QSize &ls /* = QSize(80, 16) */)
 {
     return QPixmap::fromImage(betaLabelImage(ls));
-}
-
-QPixmap betaLabelSleeve(const QSize &ls /* = QSize(80, 16) */)
-{
-    const QImage &i = betaLabelImage(ls);
-    /* Create a secondary image which will contain the rotated banner. */
-    int w = (int)sqrtf(powf(ls.width(), 2) / 2);
-    QImage i1(w, w, QImage::Format_ARGB32);
-    i1.fill(Qt::transparent);
-    QPainter p1(&i1);
-    p1.setRenderHints(QPainter::SmoothPixmapTransform);
-    p1.rotate(45);
-    p1.drawImage(0, -ls.height(), i);
-    p1.end();
-
-    return QPixmap::fromImage(i1);
 }
 

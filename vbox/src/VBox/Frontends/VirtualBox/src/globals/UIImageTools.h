@@ -1,4 +1,4 @@
-/* $Id: UIImageTools.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIImageTools.h 68392 2017-08-11 12:38:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for image manipulation.
  */
@@ -28,7 +28,6 @@ void blurImageHorizontal(const QImage &source, QImage &dest, int r);
 void blurImageVertical(const QImage &source, QImage &dest, int r);
 
 QPixmap betaLabel(const QSize &ls = QSize(80, 16));
-QPixmap betaLabelSleeve(const QSize &ls = QSize(80, 16));
 
 #endif /* !__UIImageTools_h__ */
 

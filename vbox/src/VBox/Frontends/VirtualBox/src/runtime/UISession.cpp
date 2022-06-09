@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 68315 2017-08-07 12:50:54Z vboxsync $ */
+/* $Id: UISession.cpp 68392 2017-08-11 12:38:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -22,6 +22,7 @@
 /* Qt includes: */
 # include <QApplication>
 # include <QBitmap>
+# include <QMenuBar>
 # include <QWidget>
 # ifdef VBOX_WS_MAC
 #  include <QTimer>
@@ -48,7 +49,6 @@
 #  include "VBoxFBOverlay.h"
 # endif /* VBOX_WITH_VIDEOHWACCEL */
 # ifdef VBOX_WS_MAC
-#  include "UIMenuBar.h"
 #  include "VBoxUtils-darwin.h"
 # endif /* VBOX_WS_MAC */
 
@@ -1043,7 +1043,7 @@ void UISession::prepareActions()
 
 #ifdef VBOX_WS_MAC
         /* Create Mac OS X menu-bar: */
-        m_pMenuBar = new UIMenuBar;
+        m_pMenuBar = new QMenuBar;
         AssertPtrReturnVoid(m_pMenuBar);
         {
             /* Configure Mac OS X menu-bar: */
