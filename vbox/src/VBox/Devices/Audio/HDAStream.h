@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 70013 2017-12-08 11:52:00Z vboxsync $ */
+/* $Id: HDAStream.h 70132 2017-12-14 15:40:51Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -147,7 +147,8 @@ typedef struct HDASTREAMSTATE
     /** How many interrupts are pending due to
      *  BDLE interrupt-on-completion (IOC) bits set. */
     uint8_t                 cTransferPendingInterrupts;
-    uint8_t                 Padding1[4];
+    /** The stream's current audio frame size (in bytes). */
+    uint32_t                cbFrameSize;
     /** How many audio data frames are left to be processed
      *  for the position adjustment handling.
      *

@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 70121 2017-12-14 10:04:55Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 70132 2017-12-14 15:40:51Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  */
@@ -361,7 +361,7 @@ int hdaDMAWrite(PHDASTATE pThis, PHDASTREAM pStream, const void *pvBuf, uint32_t
 
         /* Sanity checks. */
         Assert(cbChunk <= pBDLE->Desc.u32BufSize - pBDLE->State.u32BufOff);
-        Assert(cbChunk % HDA_FRAME_SIZE == 0);
+        Assert(cbChunk % pStream->State.cbFrameSize == 0);
         Assert((cbChunk >> 1) >= 1);
 
         if (pStream->Dbg.Runtime.fEnabled)
