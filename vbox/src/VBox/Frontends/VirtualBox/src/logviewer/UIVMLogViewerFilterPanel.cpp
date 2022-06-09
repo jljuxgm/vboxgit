@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 70649 2018-01-19 14:38:44Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 70663 2018-01-21 21:28:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -274,7 +274,7 @@ bool UIVMLogViewerFilterPanel::applyFilterTermsToString(const QString& string)
     /* Number of the filter terms contained with the @p string: */
     int hitCount = 0;
 
-    for(QSet<QString>::const_iterator iterator = m_filterTermSet.begin();
+    for (QSet<QString>::const_iterator iterator = m_filterTermSet.begin();
         iterator != m_filterTermSet.end(); ++iterator)
     {
         const QString& filterTerm = *iterator;

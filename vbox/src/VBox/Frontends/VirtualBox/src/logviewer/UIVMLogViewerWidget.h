@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 70617 2018-01-18 07:50:33Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 70663 2018-01-21 21:28:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -107,8 +107,12 @@ private slots:
        of UIVMLogPage is changed. */
     void sltLogPageFilteredChanged(bool isFiltered);
 
-    void sltShowLineNumbers(bool bShowLineNumbers);
-    void sltWrapLines(bool bWrapLine);
+    /** @name Slots to handle signals from settings panel
+     * @{ */
+        void sltShowLineNumbers(bool bShowLineNumbers);
+        void sltWrapLines(bool bWrapLine);
+        void sltFontSizeChanged(int fontSize);
+    /** @} */
 
 private:
 
@@ -200,6 +204,7 @@ private:
             UIVMLogViewerWidget and applies to all log pages (all tabs) */
         bool m_bShowLineNumbers;
         bool m_bWrapLines;
+        int  m_iFontSizeInPoints;
     /** @} */
 
     friend class UIVMLogViewerBookmarksPanel;
