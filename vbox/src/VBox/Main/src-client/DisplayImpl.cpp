@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 68871 2017-09-26 10:24:37Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 68942 2017-10-02 10:55:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2506,7 +2506,7 @@ int Display::i_videoCaptureInvalidate(void)
         else if (key.compare("ac_enabled", Utf8Str::CaseInsensitive) == 0)
         {
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
-            if (value.compare("false", Utf8Str::CaseInsensitive))
+            if (value.compare("false", Utf8Str::CaseInsensitive) == 0)
             {
                 mVideoRecCfg.Audio.fEnabled = false;
                 LogRel(("VideoRec: Only video will be recorded\n"));
