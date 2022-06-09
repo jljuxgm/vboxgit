@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68720 2017-09-12 10:21:01Z vboxsync $
+# $Id: Config.kmk 68726 2017-09-12 16:06:43Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3802,7 +3802,7 @@ endif
 
 ifdef VBOX_WITH_LIBVPX
  SDK_VBOX_VPX       = .
- SDK_VBOX_VPX_DEFAULT_INCS := $(PATH_ROOT)/src/libs/libvpx
+ SDK_VBOX_VPX_DEFAULT_INCS := $(PATH_ROOT)/src/libs/libvpx-1.1.0
  SDK_VBOX_VPX_INCS ?= $(SDK_VBOX_VPX_DEFAULT_INCS)
  SDK_VBOX_VPX_LIBS ?= $(PATH_STAGE_LIB)/VBox-libvpx$(VBOX_SUFF_LIB)
 endif
@@ -7014,7 +7014,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68720 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68726 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
