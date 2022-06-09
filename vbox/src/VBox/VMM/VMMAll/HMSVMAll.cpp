@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 70178 2017-12-16 09:36:23Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 70258 2017-12-21 06:52:11Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -362,7 +362,7 @@ VMM_INT_DECL(void) HMSvmNstGstVmExitNotify(PVMCPU pVCpu, PCPUMCTX pCtx)
         pVmcbNstGstState->u64CR3                  = pNstGstVmcbCache->u64CR3;
         pVmcbNstGstState->u64CR4                  = pNstGstVmcbCache->u64CR4;
         pVmcbNstGstState->u64EFER                 = pNstGstVmcbCache->u64EFER;
-        pVmcbNstGstCtrl->u64VmcbCleanBits         = pNstGstVmcbCache->u64VmcbCleanBits;
+        pVmcbNstGstCtrl->u32VmcbCleanBits         = pNstGstVmcbCache->u32VmcbCleanBits;
         pVmcbNstGstCtrl->u64IOPMPhysAddr          = pNstGstVmcbCache->u64IOPMPhysAddr;
         pVmcbNstGstCtrl->u64MSRPMPhysAddr         = pNstGstVmcbCache->u64MSRPMPhysAddr;
         pVmcbNstGstCtrl->u64TSCOffset             = pNstGstVmcbCache->u64TSCOffset;
