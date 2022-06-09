@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 67735 2017-06-30 13:40:00Z vboxsync $ */
+/* $Id: Global.cpp 67883 2017-07-10 16:00:46Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -741,6 +741,7 @@ Global::vboxStatusCodeToCOM(int aVBoxStatus)
         /* Other errors. */
         case VERR_UNRESOLVED_ERROR:             return E_FAIL;
         case VERR_NOT_EQUAL:                    return VBOX_E_FILE_ERROR;
+        case VERR_FILE_NOT_FOUND:               return VBOX_E_OBJECT_NOT_FOUND;
 
         default:
             AssertMsgFailed(("%Rrc\n", aVBoxStatus));
