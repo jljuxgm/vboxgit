@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70101 2017-12-13 09:37:51Z vboxsync $
+# $Id: Makefile.kmk 70103 2017-12-13 10:09:27Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -104,7 +104,6 @@ if1of ($(KBUILD_TARGET), darwin freebsd haiku netbsd os2 solaris win)
   	VBoxGuest.cpp
   ifeq ($(KBUILD_TARGET), win)
    VBoxGuest_SOURCES += \
-  	VBoxGuest-$(KBUILD_TARGET)-pnp.cpp \
   	win/VBoxGuest.rc
   endif
   VBoxGuest_LIBS        += \
