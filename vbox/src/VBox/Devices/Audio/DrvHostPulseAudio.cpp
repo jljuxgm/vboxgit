@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 67497 2017-06-20 11:13:04Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 67513 2017-06-20 15:39:53Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -947,7 +947,7 @@ static void paEnumSinkCb(pa_context *pCtx, const pa_sink_info *pInfo, int eol, v
     LogRel(("DEBUG: paEnumSinkCb\n"));
     if (eol != 0)
     {
-//        LogRel(("DEBUG: paEnumSinkCb return EOL=1\n"));
+        LogRel(("DEBUG: paEnumSinkCb return EOL!=0\n"));
         return;
     }
     if (!pCtx)
@@ -978,7 +978,10 @@ static void paEnumSinkCb(pa_context *pCtx, const pa_sink_info *pInfo, int eol, v
 static void paEnumSourceCb(pa_context *pCtx, const pa_source_info *pInfo, int eol, void *pvUserData)
 {
     if (eol != 0)
+    {
+        LogRel(("DEBUG: paEnumSourceCb return EOL!=0\n"));
         return;
+    }
 
     if (!pCtx)
         LogRel(("DEBUG: paEnumSourceCb return because of !pCtx\n"));
