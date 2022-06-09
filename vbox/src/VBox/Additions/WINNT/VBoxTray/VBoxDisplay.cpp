@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 68664 2017-09-05 18:48:28Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -34,7 +34,6 @@
 # define LOG_GROUP LOG_GROUP_DEFAULT
 #endif
 #include <VBox/log.h>
-#include <VBox/VMMDev.h> /* for VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST & VMMDEV_EVENT_MOUSE_CAPABILITIES_CHANGED */
 
 #include <VBoxDisplay.h>
 #include <VBoxHook.h>
