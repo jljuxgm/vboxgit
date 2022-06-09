@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69511 2017-10-28 19:09:00Z vboxsync $
+# $Id: .scm-settings 69512 2017-10-28 19:09:56Z vboxsync $
 ## @file
 # Source code massager settings for RDP.
 #
@@ -32,5 +32,4 @@
 /client-*/*.h: --external-copyright --lgpl-disclaimer --no-convert-tabs --no-fix-todos --no-strip-trailing-blanks
 /client-*/configure: --external-copyright --lgpl-disclaimer --no-convert-tabs --no-fix-todos --no-strip-trailing-blanks
 /client-*/vrdp/*: --no-external-copyright --no-lgpl-disclaimer --fix-todos --strip-trailing-blanks
-
 
