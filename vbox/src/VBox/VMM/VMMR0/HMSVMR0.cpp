@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 71171 2018-03-02 10:08:09Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 71188 2018-03-05 05:30:48Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5470,7 +5470,7 @@ static int hmR0SvmHandleExit(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTran
         case SVM_EXIT_WRITE_CR8:
         {
             uint8_t const uCr = uExitCode - SVM_EXIT_WRITE_CR0;
-            Log4(("hmR0SvmHandleExitNested: Write CR%u\n", uCr)); NOREF(uCr);
+            Log4(("hmR0SvmHandleExit: Write CR%u\n", uCr)); NOREF(uCr);
             return hmR0SvmExitWriteCRx(pVCpu, pCtx, pSvmTransient);
         }
 
