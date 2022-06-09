@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 69577 2017-11-04 10:19:04Z vboxsync $
+# $Id: vbox.py 69580 2017-11-04 13:34:01Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69577 $"
+__version__ = "$Revision: 69580 $"
 
 
 # Standard Python imports.
@@ -1347,7 +1347,7 @@ class TestDriver(base.TestDriver):                                              
 
         # HACK ALERT! Keep COM alive past the python garbage collection on in case of dangling objects. @bugref{9037}
         #             This is a bit of an experiment at the moment...
-        if self.sHost == 'win':
+        if self.sHost == 'win' and self.fpApiVer < 5.2:
             try:
                 import pythoncom;           # pylint: disable=import-error
                 pythoncom.CoInitializeEx(0);   # pylint: disable=no-member
