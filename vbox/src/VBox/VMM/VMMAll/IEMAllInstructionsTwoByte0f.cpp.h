@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 72516 2018-06-11 14:49:11Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 72517 2018-06-11 14:52:54Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -800,15 +800,10 @@ FNIEMOP_DEF(iemOp_invd)
 /** Opcode 0x0f 0x09. */
 FNIEMOP_DEF(iemOp_wbinvd)
 {
-    IEMOP_MNEMONIC(wbinvd, "wbinvd");
+    IEMOP_MNEMONIC0(FIXED, WBINVD, wbinvd, DISOPTYPE_PRIVILEGED, 0);
     IEMOP_HLP_MIN_486();
     IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
-    IEM_MC_BEGIN(0, 0);
-    IEM_MC_RAISE_GP0_IF_CPL_NOT_ZERO();
-    IEMOP_HLP_SVM_INSTR_INTERCEPT_AND_NRIP(pVCpu, SVM_CTRL_INTERCEPT_WBINVD, SVM_EXIT_WBINVD, 0, 0);
-    IEM_MC_ADVANCE_RIP();
-    IEM_MC_END();
-    return VINF_SUCCESS; /* ignore for now */
+    return IEM_MC_DEFER_TO_CIMPL_0(iemCImpl_wbinvd);
 }
 
 
