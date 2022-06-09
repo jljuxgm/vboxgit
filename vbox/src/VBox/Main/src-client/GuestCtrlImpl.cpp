@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 71637 2018-04-03 18:45:47Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 71648 2018-04-04 10:54:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -21,6 +21,7 @@
 #include "GuestImpl.h"
 #ifdef VBOX_WITH_GUEST_CONTROL
 # include "GuestSessionImpl.h"
+# include "GuestSessionImplTasks.h"
 # include "GuestCtrlImplPrivate.h"
 #endif
 
