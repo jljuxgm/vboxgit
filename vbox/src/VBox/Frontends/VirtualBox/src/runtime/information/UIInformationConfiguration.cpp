@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 65337 2017-01-16 14:05:31Z vboxsync $ */
+/* $Id: UIInformationConfiguration.cpp 68394 2017-08-11 13:14:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -125,16 +125,6 @@ void UIInformationConfiguration::prepareModel()
             /* Add serial-ports data-item to model: */
             m_pModel->addItem(pSerialPorts);
         }
-
-#ifdef VBOX_WITH_PARALLEL_PORTS
-        /* Create parallel-ports data-item: */
-        UIInformationDataItem *pParallelPorts = new UIInformationDataParallelPorts(m_machine, m_console, m_pModel);
-        AssertPtrReturnVoid(pParallelPorts);
-        {
-            /* Add parallel-ports data-item to model: */
-            m_pModel->addItem(pParallelPorts);
-        }
-#endif /* VBOX_WITH_PARALLEL_PORTS */
 
         /* Create usb data-item: */
         UIInformationDataItem *pUSB = new UIInformationDataUSB(m_machine, m_console, m_pModel);

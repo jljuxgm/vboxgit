@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 68190 2017-07-31 10:25:22Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 68394 2017-08-11 13:14:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -60,7 +60,6 @@
 # include "CDHCPServer.h"
 # include "CAudioAdapter.h"
 # include "CNATEngine.h"
-# include "CParallelPort.h"
 # include "CSerialPort.h"
 # include "CSharedFolder.h"
 # include "CSnapshot.h"

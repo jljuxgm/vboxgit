@@ -1,4 +1,4 @@
-/* $Id: precomp.h 68392 2017-08-11 12:38:02Z vboxsync $*/
+/* $Id: precomp.h 68394 2017-08-11 13:14:04Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -384,7 +384,6 @@
 #include "CNATNetwork.h"
 #include "CNetworkAdapter.h"
 //#include "CNetworkAdapterChangedEvent.h" - only used once
-#include "CParallelPort.h"
 #include "CProgress.h"
 //#include "CRuntimeErrorEvent.h" - only used once
 #include "CSerialPort.h"
@@ -516,7 +515,6 @@
 #include "UIMachineSettingsGeneral.h"
 #include "UIMachineSettingsInterface.h"
 #include "UIMachineSettingsNetwork.h"
-#include "UIMachineSettingsParallel.h"
 #include "UIMachineSettingsPortForwardingDlg.h"
 #include "UIMachineSettingsSF.h"
 #include "UIMachineSettingsSFDetails.h"
