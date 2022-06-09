@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 70648 2018-01-19 14:23:00Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 70675 2018-01-22 12:04:27Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -94,6 +94,7 @@ public:
 
     ComObjPtr<Machine>  m_pMachine;
     ComObjPtr<Progress> m_pProgress;
+    ComObjPtr<Progress> m_pRollBackProgress;
     ComPtr<ISession>    m_pSession;
     ComPtr<IMachine>    m_pSessionMachine;
     Utf8Str             m_targetPath;
