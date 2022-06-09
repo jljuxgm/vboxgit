@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 71774 2018-04-09 14:50:53Z vboxsync $ */
+/* $Id: DevPCI.cpp 72270 2018-05-21 06:33:10Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -728,7 +728,7 @@ static int pciR3FakePCIBIOS(PPDMDEVINS pDevIns)
     uint64_t const  cbAbove4GB = MMR3PhysGetRamSizeAbove4GB(pVM);
     RT_NOREF(cbBelow4GB, cbAbove4GB);
 
-    LogRel(("PCI: setting up resources and interrupts\n"));
+    LogRel(("PCI: Setting up resources and interrupts\n"));
 
     /*
      * Set the start addresses.
