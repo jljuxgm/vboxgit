@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg.cpp 66885 2017-05-12 19:59:22Z vboxsync $ */
+/* $Id: CPUMDbg.cpp 67052 2017-05-24 07:48:10Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -405,7 +405,10 @@ static DECLCALLBACK(int) cpumR3RegGstGet_crX(void *pvUser, PCDBGFREGDESC pDesc, 
 
     uint64_t u64Value;
     int rc = CPUMGetGuestCRx(pVCpu, pDesc->offRegister, &u64Value);
-    AssertRCReturn(rc, rc);
+    if (rc == VERR_PDM_NO_APIC_INSTANCE) /* CR8 might not be available, see @bugref{8868}.*/
+        u64Value = 0;
+    else
+        AssertRCReturn(rc, rc);
     switch (pDesc->enmType)
     {
         case DBGFREGVALTYPE_U64:    pValue->u64 = u64Value; break;
