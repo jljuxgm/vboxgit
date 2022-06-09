@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 71004 2018-02-14 07:58:57Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 71171 2018-03-02 10:08:09Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3459,12 +3459,11 @@ static VBOXSTRICTRC hmR0SvmEvaluatePendingEventNested(PVMCPU pVCpu, PCPUMCTX pCt
          */
         if (!fIntShadow)
         {
-            PCSVMNESTEDVMCBCACHE pVmcbNstGstCache = &pVCpu->hm.s.svm.NstGstVmcbCache;
             if (   VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)
                 && !pVCpu->hm.s.fSingleInstruction
                 && CPUMCanSvmNstGstTakePhysIntr(pVCpu, pCtx))
             {
-                if (pVmcbNstGstCache->u64InterceptCtrl & SVM_CTRL_INTERCEPT_INTR)
+                if (CPUMIsGuestSvmCtrlInterceptSet(pVCpu, pCtx, SVM_CTRL_INTERCEPT_INTR))
                 {
                     Log4(("Intercepting external interrupt -> #VMEXIT\n"));
                     return IEMExecSvmVmexit(pVCpu, SVM_EXIT_INTR, 0, 0);
