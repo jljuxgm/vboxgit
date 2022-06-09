@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 70306 2017-12-22 08:30:29Z vboxsync $ */
+/* $Id: CPUM.cpp 70323 2017-12-22 17:02:42Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2303,7 +2303,7 @@ DECLINLINE(void) cpumR3InfoSvmVmcbSelReg(PCDBGFINFOHLP pHlp, PCSVMSELREG pSel, c
  * Helper for dumping the SVM VMCB GDTR/IDTR registers.
  *
  * @param   pHlp        The info helper functions.
- * @param   pSel        Pointer to the descriptor table register.
+ * @param   pXdtr       Pointer to the descriptor table register.
  * @param   pszName     Name of the descriptor table register.
  * @param   pszPrefix   Caller specified string prefix.
  */
