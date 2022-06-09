@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-x0.c 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2-x0.c 72126 2018-05-04 22:10:24Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, C test driver code (16-bit).
  */
@@ -3206,7 +3206,7 @@ BS3_DECL_FAR(uint8_t) BS3_CMN_FAR_NM(bs3CpuBasic2_iret)(uint8_t bMode)
         Bs3TestFailedF("cbUnused=%u #%u\n", cbUnused, 2);
 
     /*
-     * Third variation: 16-bit in 64-bit mode (truely unlikely)
+     * Third variation: 16-bit in 64-bit mode (truly unlikely)
      */
     if (BS3_MODE_IS_64BIT_CODE(bMode))
     {
