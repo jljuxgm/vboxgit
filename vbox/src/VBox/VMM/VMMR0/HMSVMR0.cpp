@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69713 2017-11-16 12:32:33Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69715 2017-11-16 12:54:12Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2043,6 +2043,7 @@ static void hmR0SvmVmRunCacheVmcb(PVMCPU pVCpu, PCPUMCTX pCtx)
         pNstGstVmcbCache->u64InterceptCtrl  = pVmcbNstGstCtrl->u64InterceptCtrl;
         pNstGstVmcbCache->u64CR3            = pVmcbNstGstState->u64CR3;
         pNstGstVmcbCache->u64CR4            = pVmcbNstGstState->u64CR4;
+        pNstGstVmcbCache->u64EFER           = pVmcbNstGstState->u64EFER;
         pNstGstVmcbCache->u64IOPMPhysAddr   = pVmcbNstGstCtrl->u64IOPMPhysAddr;
         pNstGstVmcbCache->u64MSRPMPhysAddr  = pVmcbNstGstCtrl->u64MSRPMPhysAddr;
         pNstGstVmcbCache->u64VmcbCleanBits  = pVmcbNstGstCtrl->u64VmcbCleanBits;
