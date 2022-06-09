@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69509 2017-10-28 18:52:48Z vboxsync $
+# $Id: .scm-settings 69685 2017-11-14 13:27:55Z vboxsync $
 ## @file
 # Source code massager settings for the NT GA installer.
 #
@@ -15,7 +15,7 @@
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 #
 
-/ISO/AUTORUN.INF: --treat-as .inf --del-action force-native-eol --add-action force-crlf
+/ISO/AUTORUN.INF: --treat-as drvinf --del-action force-native-eol --add-action force-crlf
 --filter-out-files /ISO/ReadmeDrivers.txt
 
 /dumplog.nsh:           --external-copyright
