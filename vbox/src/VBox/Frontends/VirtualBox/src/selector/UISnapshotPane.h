@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 67424 2017-06-15 13:46:34Z vboxsync $ */
+/* $Id: UISnapshotPane.h 67470 2017-06-19 12:18:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -92,8 +92,14 @@ private slots:
         /** Handles session @a enmState change for machine with @a strMachineId. */
         void sltHandleSessionStateChange(QString strMachineId, KSessionState enmState);
 
-        /** Handles any snapshot change for machine with @a strMachineId. */
-        void sltHandleSnapshotChange(QString strMachineId);
+        /** Handles snapshot take event for machine with @a strMachineId. */
+        void sltHandleSnapshotTake(QString strMachineId, QString strSnapshotId);
+        /** Handles snapshot delete event for machine with @a strMachineId. */
+        void sltHandleSnapshotDelete(QString strMachineId, QString strSnapshotId);
+        /** Handles snapshot change event for machine with @a strMachineId. */
+        void sltHandleSnapshotChange(QString strMachineId, QString strSnapshotId);
+        /** Handles snapshot restore event for machine with @a strMachineId. */
+        void sltHandleSnapshotRestore(QString strMachineId, QString strSnapshotId);
     /** @} */
 
     /** @name Timer event handlers.
