@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 70109 2017-12-13 12:53:26Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 70143 2017-12-15 12:33:26Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1450,6 +1450,8 @@ int DrvAudioHlpFileWrite(PPDMAUDIOFILE pFile, const void *pvBuf, size_t cbBuf, u
 
     if (!cbBuf)
         return VINF_SUCCESS;
+
+    AssertReturn(RTFileIsValid(pFile->hFile), VERR_WRONG_ORDER);
 
     int rc;
 
