@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTInlineAsm.cpp 71674 2018-04-05 11:39:15Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -230,6 +230,8 @@ void tstASMCpuId(void)
             && iStd != 0x07 /* Structured Extended Feature Flags */
             && iStd != 0x0b /* Extended Topology Enumeration Leafs */
             && iStd != 0x0d /* Extended State Enumeration Leafs */
+            && iStd != 0x0f /* Platform qualifity of service monitoring (PQM)  */
+            && iStd != 0x10 /* Platform qualifity of service enforcement (PQE) */
             && iStd != 0x14 /* Trace Enumeration Leafs */)
         {
             u32 = ASMCpuId_EAX(iStd);
