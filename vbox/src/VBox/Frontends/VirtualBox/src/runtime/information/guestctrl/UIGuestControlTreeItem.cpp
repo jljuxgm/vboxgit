@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.cpp 71049 2018-02-19 12:16:09Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.cpp 71052 2018-02-19 13:22:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestSessionTreeItem class implementation.
  */
@@ -114,6 +114,8 @@ QString processStatusString(KProcessStatus status)
     }
     return statusString;
 }
+
+
 /*********************************************************************************************************************************
 *   UIGuestControlTreeItem implementation.                                                                                       *
 *********************************************************************************************************************************/
@@ -276,6 +278,7 @@ void UIGuestSessionTreeItem::setColumnText()
     setText(1, QString("Session Name: %1").arg(m_comGuestSession.GetName()));
     setText(2, QString("Session Status: %1").arg(sessionStatusString(m_comGuestSession.GetStatus())));
 }
+
 
 /*********************************************************************************************************************************
 *   UIGuestProcessTreeItem implementation.                                                                                       *
