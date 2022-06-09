@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcommand.py 70660 2018-01-21 16:18:58Z vboxsync $
+# $Id: testboxcommand.py 72629 2018-06-20 14:03:51Z vboxsync $
 
 """
 TestBox Script - Command Processor.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70660 $"
+__version__ = "$Revision: 72629 $"
 
 # Standard python imports.
 import os;
@@ -298,7 +298,7 @@ class TestBoxCommand(object):
                     except Exception as oXcpt2:
                         testboxcommons.log('Failed to NACK "%s": %s' % (sCmdName, oXcpt2));
         elif sCmdName in [constants.tbresp.STATUS_DEAD, constants.tbresp.STATUS_NACK]:
-            testboxcommons.log('Received status in stead of command: %s' % (sCmdName, ));
+            testboxcommons.log('Received status instead of command: %s' % (sCmdName, ));
         else:
             # NOTSUP the unknown command.
             testboxcommons.log('Received unknown command: %s' % (sCmdName, ));
