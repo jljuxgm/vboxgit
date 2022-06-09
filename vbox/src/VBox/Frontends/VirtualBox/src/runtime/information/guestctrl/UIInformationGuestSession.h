@@ -1,4 +1,4 @@
-/* $Id: UIInformationGuestSession.h 70988 2018-02-13 09:47:08Z vboxsync $ */
+/* $Id: UIInformationGuestSession.h 70998 2018-02-13 14:16:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class declaration.
  */
@@ -28,6 +28,7 @@
 /* Forward declarations: */
 class QITreeWidget;
 class QVBoxLayout;
+class QSplitter;
 class UIGuestControlConsole;
 class UIGuestControlInterface;
 class UIGuestSessionsEventHandler;
@@ -58,6 +59,7 @@ private:
 
     CConsole                 m_comConsole;
     QVBoxLayout             *m_pMainLayout;
+    QSplitter               *m_pSplitter;
     UIGuestSessionsEventHandler *m_pGuestSessionsEventHandler;
     QITreeWidget            *m_pTreeWidget;
     UIGuestControlConsole   *m_pConsole;
