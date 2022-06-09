@@ -1,10 +1,10 @@
-/* $Id: UIDefs.cpp 70723 2018-01-24 12:00:26Z vboxsync $ */
+/* $Id: UIDefs.cpp 71428 2018-03-21 13:01:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
