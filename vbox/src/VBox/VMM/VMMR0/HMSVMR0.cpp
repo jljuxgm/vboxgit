@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72065 2018-04-30 06:27:34Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72066 2018-04-30 06:34:05Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3506,7 +3506,7 @@ DECLINLINE(void) hmR0SvmSetIntWindowExiting(PVMCPU pVCpu, PSVMVMCB pVmcb, PCPUMC
     bool const fEnableIntWindow = !VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_NESTED_GUEST);
     if (!fEnableIntWindow)
     {
-        Assert(CPUMIsGuestInSvmNestedHwVirtMode(pCtx));
+        Assert(CPUMIsGuestInSvmNestedHwVirtMode(pCtx)); RT_NOREF(pCtx);
         Log4(("Nested-guest V_IRQ already pending\n"));
     }
 #else
