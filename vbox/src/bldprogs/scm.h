@@ -1,4 +1,4 @@
-/* $Id: scm.h 69433 2017-10-27 14:49:11Z vboxsync $ */
+/* $Id: scm.h 69442 2017-10-27 16:10:22Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -163,6 +163,9 @@ typedef struct SCMRWSTATE
     /** Set after the printing the first verbose message about a file under
      *  rewrite. */
     bool                fFirst;
+    /** Cached ScmSvnIsInWorkingCopy response. 0 indicates not known, 1 means it
+     * is in WC, -1 means it doesn't. */
+    int8_t              fIsInSvnWorkingCopy;
     /** The number of SVN property changes. */
     size_t              cSvnPropChanges;
     /** Pointer to an array of SVN property changes. */
@@ -313,6 +316,7 @@ typedef struct SCMPATRNOPTPAIR
     char *pszPattern;
     char *pszOptions;
     char *pszRelativeTo;
+    bool  fMultiPattern;
 } SCMPATRNOPTPAIR;
 /** Pointer to a pattern + option pair. */
 typedef SCMPATRNOPTPAIR *PSCMPATRNOPTPAIR;
