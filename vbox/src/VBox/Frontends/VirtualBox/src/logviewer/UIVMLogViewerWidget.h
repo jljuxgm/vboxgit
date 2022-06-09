@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 72030 2018-04-26 08:34:29Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 72037 2018-04-26 11:50:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -119,7 +119,8 @@ private slots:
         void sltShowLineNumbers(bool bShowLineNumbers);
         void sltWrapLines(bool bWrapLine);
         void sltFontSizeChanged(int fontSize);
-        void sltFontFace(QFont font);
+        void sltChangeFont(QFont font);
+        void sltResetSettingsToDefault();
     /** @} */
 
 private:
