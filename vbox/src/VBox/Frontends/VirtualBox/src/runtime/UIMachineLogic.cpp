@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 69935 2017-12-05 12:58:22Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 69958 2017-12-06 13:56:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1216,7 +1216,7 @@ void UIMachineLogic::prepareDock()
     QMenu *pDockMenu = actionPool()->action(UIActionIndexRT_M_Dock)->menu();
     /* Clear the menu to get rid of any previously added actions and separators: */
     pDockMenu->clear();
-    
+
     /* Add all the 'Machine' menu entries to the 'Dock' menu: */
     QList<QAction*> actions = actionPool()->action(UIActionIndexRT_M_Machine)->menu()->actions();
     m_dockMachineMenuActions.clear();
@@ -1365,9 +1365,9 @@ void UIMachineLogic::updateDock()
 
     if (!allowedActions.empty())
     {
-        QAction *separator = new QAction(pDockMenu);
-        separator->setSeparator(true);
-        allowedActions.push_back(separator);
+        QAction *pSeparator = new QAction(pDockMenu);
+        pSeparator->setSeparator(true);
+        allowedActions.push_back(pSeparator);
         pDockMenu->insertActions(m_pDockSettingMenuAction, allowedActions);
         m_dockMachineMenuActions = allowedActions;
     }
@@ -1400,7 +1400,7 @@ void UIMachineLogic::updateDock()
         }
         if (!m_pDockSettingsMenuSeparator)
             m_pDockSettingsMenuSeparator = pDockSettingsMenu->addSeparator();
-        for (int i = 0; i < cVisibleGuestScreens; ++i)
+        for (int i=0; i < cVisibleGuestScreens; ++i)
         {
             QAction *pAction = new QAction(m_pDockPreviewSelectMonitorGroup);
             pAction->setCheckable(true);
@@ -3060,4 +3060,3 @@ void UIMachineLogic::dbgAdjustRelativePos()
     }
 }
 #endif
-

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 69935 2017-12-05 12:58:22Z vboxsync $ */
+/* $Id: UIMachineLogic.h 69958 2017-12-06 13:56:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -409,7 +409,7 @@ private:
     QAction *m_pDockSettingsMenuSeparator;
     int m_DockIconPreviewMonitor;
     QAction *m_pDockSettingMenuAction;
-    /* Keep a list of machine menu actions that we add to dock menu: */
+    /* Keeps a list of machine menu actions that we add to dock menu. */
     QList<QAction*> m_dockMachineMenuActions;
 #endif /* VBOX_WS_MAC */
 
