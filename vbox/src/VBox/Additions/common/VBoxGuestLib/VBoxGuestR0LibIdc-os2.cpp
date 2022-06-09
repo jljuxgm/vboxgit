@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibIdc-os2.cpp 68570 2017-08-31 12:10:39Z vboxsync $ */
+/* $Id: VBoxGuestR0LibIdc-os2.cpp 68590 2017-08-31 12:46:27Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC, OS/2 specific.
  */
@@ -39,7 +39,7 @@
 *********************************************************************************************************************************/
 /* This is defined in some assembly file.  The AttachDD operation
    is done in the driver init code. */
-extern VBOXGUESTOS2IDCCONNECT g_VBoxGuestIDC;
+extern VBGLOS2ATTACHDD g_VBoxGuestIDC;
 
 
 
