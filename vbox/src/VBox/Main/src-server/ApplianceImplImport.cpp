@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 67249 2017-06-02 15:24:58Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 68158 2017-07-28 14:36:33Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -3465,20 +3465,21 @@ void Appliance::i_importVBoxMachine(ComObjPtr<VirtualSystemDescription> &vsdescT
     {
         /** @todo r=klaus add support for arbitrary USB controller types, this can't handle
          *  multiple controllers due to its design anyway */
-        /* usually the OHCI controller is enabled already, need to check */
+        /* Usually the OHCI controller is enabled already, need to check. But
+         * do this only if there is no xHCI controller. */
         bool fOHCIEnabled = false;
+        bool fXHCIEnabled = false;
         settings::USBControllerList &llUSBControllers = config.hardwareMachine.usbSettings.llUSBControllers;
         settings::USBControllerList::iterator it;
         for (it = llUSBControllers.begin(); it != llUSBControllers.end(); ++it)
         {
             if (it->enmType == USBControllerType_OHCI)
-            {
                 fOHCIEnabled = true;
-                break;
-            }
+            if (it->enmType == USBControllerType_XHCI)
+                fXHCIEnabled = true;
         }
 
-        if (!fOHCIEnabled)
+        if (!fXHCIEnabled && !fOHCIEnabled)
         {
             settings::USBController ctrl;
             ctrl.strName = "OHCI";
