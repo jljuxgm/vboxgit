@@ -1,4 +1,4 @@
-/* $Id: path.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: path.h 69705 2017-11-15 16:42:59Z vboxsync $ */
 /** @file
  * IPRT - RTPath Internal header.
  */
@@ -129,6 +129,14 @@ int rtPathFromNativeCopy(char *pszPath, size_t cbPath, const char *pszNativePath
  *                          representation.  NULL if current directory.
  */
 int rtPathFromNativeDup(char **ppszPath, const char *pszNativePath, const char *pszBasePath);
+
+
+#if defined(RT_OS_WINDOWS) && defined(___iprt_fs_h) && defined(UNICODE_NULL)
+DECLHIDDEN(int) rtPathNtQueryInfoWorker(HANDLE hRootDir, struct _UNICODE_STRING *pNtName, PRTFSOBJINFO pObjInfo,
+                                        RTFSOBJATTRADD enmAdditionalAttribs, uint32_t fFlags, const char *pszPath);
+DECLHIDDEN(int) rtPathNtQueryInfoFromHandle(HANDLE hFile, void *pvBuf, size_t cbBuf, PRTFSOBJINFO pObjInfo,
+                                            RTFSOBJATTRADD enmAddAttr, const char *pszPath, ULONG uReparseTag);
+#endif
 
 
 RT_C_DECLS_END

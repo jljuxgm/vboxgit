@@ -1,4 +1,4 @@
-/* $Id: dirrel-r3-generic.cpp 69677 2017-11-13 15:44:20Z vboxsync $ */
+/* $Id: dirrel-r3-generic.cpp 69705 2017-11-15 16:42:59Z vboxsync $ */
 /** @file
  * IPRT - Directory relative base APIs, generic implementation.
  */
@@ -442,7 +442,7 @@ RTDECL(int) RTDirRelPathRename(PRTDIR hDirSrc, const char *pszSrc, PRTDIR hDirDs
         char szDstPath[RTPATH_MAX];
         rc = rtDirRelBuildFullPath(pThis, szDstPath, sizeof(szDstPath), pszDst);
         if (RT_SUCCESS(rc))
-            rc = RTPathRename(pszSrc, pszDst, fRename);
+            rc = RTPathRename(szSrcPath, szDstPath, fRename);
     }
     return rc;
 }

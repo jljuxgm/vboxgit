@@ -1,4 +1,4 @@
-/* $Id: vfschain.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
+/* $Id: vfschain.cpp 69705 2017-11-15 16:42:59Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Chains.
  */
@@ -144,7 +144,7 @@ static DECLCALLBACK(int) rtVfsChainOpen_Validate(PCRTVFSCHAINELEMENTREG pProvide
         if (pElement->enmTypeIn == RTVFSOBJTYPE_INVALID)
         {
             /*
-             * First element: Ttransform into 'stdfile' or 'stddir' if registered.
+             * First element: Transform into 'stdfile' or 'stddir' if registered.
              */
             const char            *pszNewProvider = pElement->enmType == RTVFSOBJTYPE_DIR ? "stddir" : "stdfile";
             PCRTVFSCHAINELEMENTREG pNewProvider   = rtVfsChainFindProviderLocked(pszNewProvider);
@@ -176,13 +176,16 @@ static DECLCALLBACK(int) rtVfsChainOpen_Validate(PCRTVFSCHAINELEMENTREG pProvide
             *poffError = pElement->cArgs > 1 ? pElement->paArgs[1].offSpec : pElement->offSpec;
             return VERR_VFS_CHAIN_INVALID_ARGUMENT;
         }
+        return rc;
     }
+
 
     /*
      * Directory checks.  Path argument only, optional. If not given the root directory of a VFS or the
      */
     if (pElement->cArgs > 1)
         return VERR_VFS_CHAIN_AT_MOST_ONE_ARG;
+    pElement->uProvider = 0;
     return VINF_SUCCESS;
 }
 
