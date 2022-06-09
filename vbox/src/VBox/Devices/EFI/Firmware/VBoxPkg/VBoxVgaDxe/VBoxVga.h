@@ -1,4 +1,4 @@
-/* $Id: VBoxVga.h 67352 2017-06-12 18:02:10Z vboxsync $ */
+/* $Id: VBoxVga.h 67356 2017-06-13 11:22:15Z vboxsync $ */
 /** @file
  * VBoxVga.h
  */
@@ -80,7 +80,7 @@
 #define VBOX_VGA_DEVICE_ID           0xbeef
 
 //
-// VirtualBox VGA Mode Data
+// VirtualBox VGA Graphical Mode Data
 //
 typedef struct {
   UINT32  ModeNumber;
@@ -111,10 +111,8 @@ typedef struct {
   UINTN                                 CurrentMode;
   UINTN                                 MaxMode;
   VBOX_VGA_MODE_DATA                    *ModeData;
-  UINT32                                *LineBuffer;
   BOOLEAN                               HardwareNeedsStarting;
   UINT32                                VRAMSize;
-  void         *TmpBuf;
 } VBOX_VGA_PRIVATE_DATA;
 
 ///
