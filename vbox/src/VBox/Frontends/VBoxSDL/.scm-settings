@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69256 2017-10-25 00:11:02Z vboxsync $
+# $Id: .scm-settings 69272 2017-10-25 10:20:06Z vboxsync $
 ## @file
 # Source code massager settings for VBoxSDL.
 #
@@ -17,3 +17,6 @@
 
 /VBoxSDLMain-darwin.h: --external-copyright
 /VBoxSDLMain-darwin.m: --external-copyright
+
+--filter-out-files /diff_SDL13_svn
+
