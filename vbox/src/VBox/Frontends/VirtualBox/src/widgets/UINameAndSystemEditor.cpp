@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 72594 2018-06-18 12:46:05Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 72597 2018-06-18 13:11:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -262,8 +262,8 @@ void UINameAndSystemEditor::prepareWidgets()
                 pMainLayout->addWidget(m_pPathSelector, iRow++, 1, 1, 2);
                 QString strDefaultMachineFolder = vboxGlobal().virtualBox().GetSystemProperties().GetDefaultMachineFolder();
                 /* Add the group name to the default machine path: */
-                // if (!m_strGroupName.isEmpty() && m_strGroupName != "/")
-                //     strDefaultMachineFolder += m_strGroupName;
+                if (!m_strGroupName.isEmpty() && m_strGroupName != "/")
+                    strDefaultMachineFolder += m_strGroupName;
 
                 m_pPathSelector->setPath(strDefaultMachineFolder);
                 m_pPathSelector->setDefaultPath(strDefaultMachineFolder);
