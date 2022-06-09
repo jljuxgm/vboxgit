@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67344 2017-06-12 17:22:39Z vboxsync $ */
+/* $Id: isomaker.cpp 67346 2017-06-12 17:25:33Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -2236,7 +2236,7 @@ static int rtFsIsoMakerObjRemoveWorker(PRTFSISOMAKERINT pThis, PRTFSISOMAKEROBJ 
         int rc2 = rtFsIsoMakerObjUnsetName(pThis, pNamespace, pObj);
         if (RT_SUCCESS(rc2) || RT_FAILURE(rc))
             continue;
-            rc = rc2;
+        rc = rc2;
     }
 
     /*
