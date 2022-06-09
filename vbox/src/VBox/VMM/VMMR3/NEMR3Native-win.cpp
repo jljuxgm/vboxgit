@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 72419 2018-06-03 12:49:33Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 72420 2018-06-03 18:59:15Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -2641,6 +2641,11 @@ void nemR3NativeNotifySetA20(PVMCPU pVCpu, bool fEnabled)
  *   We've not trouble getting/setting all the registers defined by
  *   WHV_REGISTER_NAME in one hypercall (around 80).  Some kind of stack
  *   buffering or similar?
+ *
+ *
+ * - To handle the VMMCALL / VMCALL instructions, it seems we need to intercept
+ *   \#UD exceptions and inspect the opcodes.  A dedicated exit for hypercalls
+ *   would be more efficient, esp. for guests using \#UD for other purposes..
  *
  *
  * - Wrong instruction length in the VpContext with unmapped GPA memory exit
