@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 71108 2018-02-22 15:38:35Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 71415 2018-03-21 09:29:22Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9069,16 +9069,24 @@ static void hmR0VmxPreRunGuestCommitted(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCt
 
 #ifdef HMVMX_ALWAYS_SWAP_FPU_STATE
     if (!CPUMIsGuestFPUStateActive(pVCpu))
+    {
+        STAM_PROFILE_ADV_START(&pVCpu->hm.s.StatLoadGuestFpuState, x);
         if (CPUMR0LoadGuestFPU(pVM, pVCpu) == VINF_CPUM_HOST_CR0_MODIFIED)
             HMCPU_CF_SET(pVCpu, HM_CHANGED_HOST_CONTEXT);
+        STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatLoadGuestFpuState, x);
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatLoadGuestFpu);
+    }
     HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_CR0);
 #endif
 
     if (   pVCpu->hm.s.fPreloadGuestFpu
         && !CPUMIsGuestFPUStateActive(pVCpu))
     {
+        STAM_PROFILE_ADV_START(&pVCpu->hm.s.StatLoadGuestFpuState, x);
         if (CPUMR0LoadGuestFPU(pVM, pVCpu) == VINF_CPUM_HOST_CR0_MODIFIED)
             HMCPU_CF_SET(pVCpu, HM_CHANGED_HOST_CONTEXT);
+        STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatLoadGuestFpuState, x);
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatLoadGuestFpu);
         Assert(HMVMXCPU_GST_IS_UPDATED(pVCpu, HMVMX_UPDATED_GUEST_CR0));
         HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_CR0);
     }
