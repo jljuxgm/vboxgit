@@ -1,4 +1,4 @@
-/* $Id: scmsubversion.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: scmsubversion.cpp 69515 2017-10-29 18:12:20Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Subversion Access.
  */
@@ -714,13 +714,13 @@ static void scmSvnTryResolveFunctions(void)
 # else
             { "../lib/lib", ".so" },
             { "../lib/lib", "-1.so" },
-# ifdef RT_ARCH_X86
+#  ifdef RT_ARCH_X86
             { "../lib/i386-linux-gnu/lib", ".so" },
             { "../lib/i386-linux-gnu/lib", "-1.so" },
-# else
+#  else
             { "../lib/x86_64-linux-gnu/lib", ".so" },
             { "../lib/x86_64-linux-gnu/lib", "-1.so" },
-# endif
+#  endif
 # endif
         };
         for (unsigned iVar = 0; iVar < RT_ELEMENTS(s_aVariations); iVar++)
