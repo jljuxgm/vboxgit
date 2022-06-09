@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67429 2017-06-15 16:23:13Z vboxsync $ */
+/* $Id: DevHDA.cpp 67430 2017-06-15 16:28:33Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -1350,6 +1350,7 @@ DECLINLINE(uint8_t) hdaSDFIFOWToBytes(uint32_t u32RegFIFOW)
  * @returns Set LPIB value.
  * @param   pThis               HDA state.
  * @param   pStream             HDA stream to update read / write position for.
+ * @param   u32LPIB             New LPIB (position) value to set.
  */
 DECLINLINE(uint32_t) hdaStreamUpdateLPIB(PHDASTATE pThis, PHDASTREAM pStream, uint32_t u32LPIB)
 {
