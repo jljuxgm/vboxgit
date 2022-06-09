@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 71523 2018-03-27 09:52:56Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 71580 2018-03-30 10:33:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -731,8 +731,8 @@ private:
       * If @a fSameRuleForPrimary is 'true' same rule will be used for *primary* screen-index. Used for storing per-screen extra-data. */
     static QString extraDataKeyPerScreen(const QString &strBase, ulong uScreenIndex, bool fSameRuleForPrimary = false);
 
-    /** Singleton Extra-data Manager instance. */
-    static UIExtraDataManager *m_spInstance;
+    /** Holds the singleton instance. */
+    static UIExtraDataManager *s_pInstance;
 
     /** Holds extra-data event-handler instance. */
     UIExtraDataEventHandler *m_pHandler;
