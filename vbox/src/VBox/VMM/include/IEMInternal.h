@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 72494 2018-06-10 16:16:36Z vboxsync $ */
+/* $Id: IEMInternal.h 72495 2018-06-10 16:25:20Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -608,6 +608,8 @@ typedef struct IEMCPU
 
     /** Pointer to instruction statistics for raw-mode context (same as R0). */
     RCPTRTYPE(PIEMINSTRSTATS) pStatsRC;
+    /** Alignment padding. */
+    RTRCPTR                   RCPtrPadding;
     /** Pointer to instruction statistics for ring-0 context (same as RC). */
     R0PTRTYPE(PIEMINSTRSTATS) pStatsR0;
     /** Pointer to instruction statistics for non-ring-3 code. */
