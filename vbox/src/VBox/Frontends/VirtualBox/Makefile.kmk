@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72157 2018-05-08 09:26:50Z vboxsync $
+# $Id: Makefile.kmk 72158 2018-05-08 09:40:53Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1571,6 +1571,8 @@ endif
 
 # Pull in the ui files
 $(eval VirtualBox_SOURCES += $(FORMS))
+$(eval VBoxGlobal_SOURCES += $(FORMS))
+
 
 # Resource files with some OSE differences (VirtualBoxBrand.qrc is created further down).
 VirtualBox_SOURCES            += VirtualBox1.qrc
