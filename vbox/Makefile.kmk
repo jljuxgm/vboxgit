@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69094 2017-10-14 03:20:21Z vboxsync $
+# $Id: Makefile.kmk 69096 2017-10-14 04:01:57Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -427,6 +427,7 @@ $$(buildserver-extpacks_0_OUTDIR)/Oracle_VM_VirtualBox_Extension_Pack.vbox-extpa
 	$(RM) -f -- "$@.tmp" "$@"
 	$(SHELL) $(PATH_DEVTOOLS)/bin/extpacks.sh --cmd fetch --filename "$@.tmp" --vbox-version "$(VBOX_VERSION_STRING)"
 	$(MV) -f -- "$@.tmp" "$@"
+	$(TOUCH) -- "$@"
 
 endif
 
