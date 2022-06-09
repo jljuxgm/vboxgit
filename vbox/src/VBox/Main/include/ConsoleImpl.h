@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 68992 2017-10-05 09:02:27Z vboxsync $ */
+/* $Id: ConsoleImpl.h 70322 2017-12-22 16:53:41Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -737,7 +737,8 @@ private:
 
     static DECLCALLBACK(int) i_usbAttachCallback(Console *that, PUVM pUVM, IUSBDevice *aHostDevice, PCRTUUID aUuid,
                                                  const char *aBackend, const char *aAddress, void *pvRemoteBackend,
-                                                 USHORT aPortVersion, ULONG aMaskedIfs, const char *pszCaptureFilename);
+                                                 USBConnectionSpeed_T enmSpeed, ULONG aMaskedIfs,
+                                                 const char *pszCaptureFilename);
     static DECLCALLBACK(int) i_usbDetachCallback(Console *that, PUVM pUVM, PCRTUUID aUuid);
 #endif
 
