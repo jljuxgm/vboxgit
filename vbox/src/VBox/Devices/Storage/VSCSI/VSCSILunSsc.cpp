@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSsc.cpp 67961 2017-07-14 09:27:42Z vboxsync $ */
+/* $Id: VSCSILunSsc.cpp 67962 2017-07-14 09:29:38Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SSC LUN implementation (Streaming tape)
  */
@@ -147,7 +147,7 @@ static int vscsiLUNSSCReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq)
         }
         case SCSI_MODE_SENSE_6:
         {
-            uint8_t uModePage = pVScsiReq->pbCDB[2] & 0x3f;
+//            uint8_t uModePage = pVScsiReq->pbCDB[2] & 0x3f;
             uint8_t aReply[24];
             uint8_t *pu8ReplyPos;
             uint8_t uReplyLen;
