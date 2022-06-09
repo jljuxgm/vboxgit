@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 69643 2017-11-10 13:34:06Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
@@ -46,6 +46,12 @@ RT_C_DECLS_END
 /*# include <miscfs/specfs/specdev.h>*/
 #else
 # include <stdio.h> /* for printf */
+#endif
+
+#ifndef IN_RING0 /* A linking tweak for the testcase: */
+# include <iprt/cdefs.h>
+# undef  RTR0DECL
+# define RTR0DECL(type) DECLHIDDEN(type) RTCALL
 #endif
 
 #include "internal/iprt.h"
@@ -116,6 +122,10 @@ RT_C_DECLS_END
 /** @} */
 
 #define VERR_LDR_UNEXPECTED     (-641)
+
+#ifndef RT_OS_DARWIN
+# define MAC_OS_X_VERSION_MIN_REQUIRED 1050
+#endif
 
 
 /*********************************************************************************************************************************
@@ -1085,12 +1095,18 @@ RTR0DECL(int) RTR0DbgKrnlInfoOpen(PRTDBGKRNLINFO phKrnlInfo, uint32_t fFlags)
      * Note! We should try fish kcsuffix out of bootargs or somewhere one day.
      */
     static bool s_fFirstCall = true;
+#ifdef IN_RING3
+    extern const char *g_pszTestKernel;
+#endif
     struct
     {
         const char *pszLocation;
         int         rc;
     } aKernels[] =
     {
+#ifdef IN_RING3
+        { g_pszTestKernel, VERR_WRONG_ORDER },
+#endif
         { "/System/Library/Kernels/kernel", VERR_WRONG_ORDER },
         { "/System/Library/Kernels/kernel.development", VERR_WRONG_ORDER },
         { "/System/Library/Kernels/kernel.debug", VERR_WRONG_ORDER },

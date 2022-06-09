@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 69643 2017-11-10 13:34:06Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -156,7 +156,9 @@ PROGRAMS.win += \
 	tstRTProcWait \
 	tstFileAppendWin-1 \
 	tstRTNtPath-1 \
-	ntGetTimerResolution
+	ntGetTimerResolution \
+	tstRTDarwinMachKernel
+
 PROGRAMS.linux += \
 	tstRTProcWait \
 	tstRTProcIsRunningByName \
