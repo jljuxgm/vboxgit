@@ -1,4 +1,4 @@
-/* $Id: file.h 69691 2017-11-14 15:27:52Z vboxsync $ */
+/* $Id: file.h 69795 2017-11-21 16:29:49Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFile header.
  */
@@ -71,6 +71,7 @@ RTFILE rtFileGetStandard(RTHANDLESTD enmStdHandle);
 DECLHIDDEN(int) rtFileNtValidateAndConvertFlags(uint64_t fOpen, uint32_t *pfDesiredAccess, uint32_t *pfObjAttribs,
                                                 uint32_t *pfFileAttribs, uint32_t *pfShareAccess, uint32_t *pfCreateDisposition,
                                                 uint32_t *pfCreateOptions);
+
 #endif
 
 RT_C_DECLS_END

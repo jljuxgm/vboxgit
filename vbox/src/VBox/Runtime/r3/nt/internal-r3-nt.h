@@ -1,4 +1,4 @@
-/* $Id: internal-r3-nt.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: internal-r3-nt.h 69795 2017-11-21 16:29:49Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the Native NT code.
  */
@@ -67,4 +67,13 @@ DECLINLINE(bool) rtNtCompWideStrAndAscii(WCHAR const *pwsz1, size_t cch1, const 
 }
 
 #endif
+
+/**
+ * Common worker for RTFileSetMode, RTPathSetMode and RTDirRelPathSetMode.
+ *
+ * @returns IPRT status code.
+ * @param   hNativeFile The NT handle to the file system object.
+ * @param   fMode       Valid and normalized file mode mask to set.
+ */
+DECLHIDDEN(int) rtNtFileSetModeWorker(HANDLE hNativeFile, RTFMODE fMode);
 

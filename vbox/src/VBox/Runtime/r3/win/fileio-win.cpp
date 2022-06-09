@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 69536 2017-10-31 09:18:24Z vboxsync $ */
+/* $Id: fileio-win.cpp 69795 2017-11-21 16:29:49Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -976,6 +976,7 @@ RTR3DECL(int) RTFileSetTimes(RTFILE hFile, PCRTTIMESPEC pAccessTime, PCRTTIMESPE
 }
 
 
+#if 0 /* RTFileSetMode is implemented by RTFileSetMode-r3-nt.cpp */
 /* This comes from a source file with a different set of system headers (DDK)
  * so it can't be declared in a common header, like internal/file.h.
  */
@@ -1002,6 +1003,7 @@ RTR3DECL(int) RTFileSetMode(RTFILE hFile, RTFMODE fMode)
     }
     return VINF_SUCCESS;
 }
+#endif
 
 
 /* RTFileQueryFsSizes is implemented by ../nt/RTFileQueryFsSizes-nt.cpp */
