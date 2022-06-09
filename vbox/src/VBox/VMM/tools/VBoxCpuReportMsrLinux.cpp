@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReportMsrLinux.cpp 69654 2017-11-10 19:22:45Z vboxsync $ */
+/* $Id: VBoxCpuReportMsrLinux.cpp 69661 2017-11-12 15:39:02Z vboxsync $ */
 /** @file
  * MsrLinux - Linux-specific MSR access.
  */
@@ -51,7 +51,7 @@ static int              g_fdMsr;
 /**
  * @interface_method_impl{VBCPUREPMSRACCESSORS,pfnMsrProberRead}
  */
-static int linuxMsrProberRead(uint32_t uMsr, RTCPUID idCpu, uint64_t *puValue, bool *pfGp)
+static DECLCALLBACK(int) linuxMsrProberRead(uint32_t uMsr, RTCPUID idCpu, uint64_t *puValue, bool *pfGp)
 {
     int  rc = VINF_SUCCESS;
 
@@ -74,7 +74,7 @@ static int linuxMsrProberRead(uint32_t uMsr, RTCPUID idCpu, uint64_t *puValue, b
 /**
  * @interface_method_impl{VBCPUREPMSRACCESSORS,pfnMsrProberWrite}
  */
-static int linuxMsrProberWrite(uint32_t uMsr, RTCPUID idCpu, uint64_t uValue, bool *pfGp)
+static DECLCALLBACK(int) linuxMsrProberWrite(uint32_t uMsr, RTCPUID idCpu, uint64_t uValue, bool *pfGp)
 {
     int  rc = VINF_SUCCESS;
 
