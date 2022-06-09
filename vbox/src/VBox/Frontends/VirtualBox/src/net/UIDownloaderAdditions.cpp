@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderAdditions.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIDownloaderAdditions.cpp 70723 2018-01-24 12:00:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderAdditions class implementation.
  */
@@ -83,7 +83,7 @@ UIDownloaderAdditions::UIDownloaderAdditions()
     }
 
     /* Prepare source/target: */
-    const QString strSourceName = QString("VBoxGuestAdditions_%1.iso").arg(strVersion);
+    const QString strSourceName = QString("%1_%2.iso").arg(GUI_GuestAdditionsName, strVersion);
     const QString strSourceFolder = QString("http://download.virtualbox.org/virtualbox/%1/").arg(strVersion);
     const QString strSource = strSourceFolder + strSourceName;
     const QString strPathSHA256SumsFile = QString("https://www.virtualbox.org/download/hashes/%1/SHA256SUMS").arg(strVersion);

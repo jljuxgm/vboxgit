@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 70029 2017-12-08 13:52:37Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 70723 2018-01-24 12:00:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2321,7 +2321,7 @@ void UIMachineLogic::sltInstallGuestAdditions()
 
     /* Check for the already registered image */
     CVirtualBox vbox = vboxGlobal().virtualBox();
-    const QString &name = QString("VBoxGuestAdditions_%1.iso").arg(vboxGlobal().vboxVersionStringNormalized());
+    const QString &strName = QString("%1_%2.iso").arg(GUI_GuestAdditionsName, vboxGlobal().vboxVersionStringNormalized());
 
     CMediumVector vec = vbox.GetDVDImages();
     for (CMediumVector::ConstIterator it = vec.begin(); it != vec.end(); ++ it)
@@ -2329,7 +2329,7 @@ void UIMachineLogic::sltInstallGuestAdditions()
         QString path = it->GetLocation();
         /* Compare the name part ignoring the file case */
         QString fn = QFileInfo(path).fileName();
-        if (RTPathCompare(name.toUtf8().constData(), fn.toUtf8().constData()) == 0)
+        if (RTPathCompare(strName.toUtf8().constData(), fn.toUtf8().constData()) == 0)
             return uisession()->sltInstallGuestAdditionsFrom(path);
     }
 

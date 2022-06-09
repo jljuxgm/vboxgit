@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIDefs.h 70723 2018-01-24 12:00:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -79,7 +79,8 @@ namespace UIDefs
         FormatSize_RoundUp
     };
 
-    /* Extension-pack declarations: */
+    /* File name declarations: */
+    extern const char* GUI_GuestAdditionsName;
     extern const char* GUI_ExtPackName;
 
     /* File extensions declarations: */
