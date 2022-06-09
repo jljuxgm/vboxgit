@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 69749 2017-11-19 12:49:36Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -114,7 +114,6 @@ static int vboxInitLogging(const char *pszFilename, bool bGenNameSuffix)
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
     fFlags |= RTLOGFLAGS_USECRLF;
 #endif
-    char szError[RTPATH_MAX + 128] = "";
     const char * pszFilenameFmt;
     RTLOGDEST enmLogDest;
     if(pszFilename)
@@ -134,7 +133,7 @@ static int vboxInitLogging(const char *pszFilename, bool bGenNameSuffix)
     int vrc = RTLogCreateEx(&loggerRelease, fFlags, "all",
                             "VBOX_RELEASE_LOG", RT_ELEMENTS(s_apszGroups), s_apszGroups, enmLogDest,
                             NULL /* pfnBeginEnd */, 0 /* cHistory */, 0 /* cbHistoryFileMax */, 0 /* uHistoryTimeMax */,
-                            szError, sizeof(szError), pszFilenameFmt, pszFilename, RTTimeMilliTS());
+                            NULL /* pErrInfo */, pszFilenameFmt, pszFilename, RTTimeMilliTS());
     if (RT_SUCCESS(vrc))
     {
         /* some introductory information */
@@ -303,7 +302,7 @@ int main(int argc, char **argv)
                     break;
 
                 case 'V':
-                    RTPrintf("$Revision: 69500 $\n");
+                    RTPrintf("$Revision: 69749 $\n");
                     return 0;
 
                 case VERR_GETOPT_UNKNOWN_OPTION:

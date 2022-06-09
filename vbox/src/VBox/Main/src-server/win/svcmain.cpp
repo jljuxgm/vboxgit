@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 69747 2017-11-18 20:55:10Z vboxsync $ */
+/* $Id: svcmain.cpp 69749 2017-11-19 12:49:36Z vboxsync $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -808,7 +808,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpC
             pszLogFile = szLogFile;
         }
 
-        char szError[RTPATH_MAX + 128];
+        RTERRINFOSTATIC ErrInfo;
         vrc = com::VBoxLogRelCreate("COM Server", pszLogFile,
                                     RTLOGFLAGS_PREFIX_THREAD | RTLOGFLAGS_PREFIX_TIME_PROG,
                                     VBOXSVC_LOG_DEFAULT, "VBOXSVC_RELEASE_LOG",
@@ -818,9 +818,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpC
                                     RTLOGDEST_FILE,
 #endif
                                     UINT32_MAX /* cMaxEntriesPerGroup */, cHistory, uHistoryFileTime, uHistoryFileSize,
-                                    szError, sizeof(szError));
+                                    RTErrInfoInitStatic(&ErrInfo));
         if (RT_FAILURE(vrc))
-            return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open release log (%s, %Rrc)", szError, vrc);
+            return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open release log (%s, %Rrc)", ErrInfo.Core.pszMsg, vrc);
     }
 
     /* Set up a build identifier so that it can be seen from core dumps what

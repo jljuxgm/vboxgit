@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 69749 2017-11-19 12:49:36Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -1098,15 +1098,15 @@ int main(int argc, char *argv[])
     displayHeader();
 
     /* create release logger, to stdout */
-    char szError[RTPATH_MAX + 128];
+    RTERRINFOSTATIC ErrInfo;
     rc = com::VBoxLogRelCreate("Watchdog", g_fDaemonize ? NULL : pszLogFile,
                                RTLOGFLAGS_PREFIX_THREAD | RTLOGFLAGS_PREFIX_TIME_PROG,
                                "all", "VBOXBALLOONCTRL_RELEASE_LOG",
                                RTLOGDEST_STDOUT, UINT32_MAX /* cMaxEntriesPerGroup */,
                                g_cHistory, g_uHistoryFileTime, g_uHistoryFileSize,
-                               szError, sizeof(szError));
+                               RTErrInfoInitStatic(&ErrInfo));
     if (RT_FAILURE(rc))
-        return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open release log (%s, %Rrc)", szError, rc);
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open release log (%s, %Rrc)", ErrInfo.Core.pszMsg, rc);
 
 #if defined(RT_OS_DARWIN) || defined(RT_OS_LINUX) || defined (RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)
     if (g_fDaemonize)
@@ -1134,9 +1134,9 @@ int main(int argc, char *argv[])
                                    "all", "VBOXBALLOONCTRL_RELEASE_LOG",
                                    RTLOGDEST_FILE, UINT32_MAX /* cMaxEntriesPerGroup */,
                                    g_cHistory, g_uHistoryFileTime, g_uHistoryFileSize,
-                                   szError, sizeof(szError));
+                                   RTErrInfoInitStatic(&ErrInfo));
         if (RT_FAILURE(rc))
-            return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open release log (%s, %Rrc)", szError, rc);
+            return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open release log (%s, %Rrc)", ErrInfo.Core.pszMsg, rc);
     }
 #endif
 

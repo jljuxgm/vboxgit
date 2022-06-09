@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxService.cpp 69749 2017-11-19 12:49:36Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -309,7 +309,6 @@ int VGSvcLogCreate(const char *pszLogFile)
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
     fFlags |= RTLOGFLAGS_USECRLF;
 #endif
-    char szError[RTPATH_MAX + 128] = "";
     int rc = RTLogCreateEx(&g_pLoggerRelease, fFlags, "all",
 #ifdef DEBUG
                            "VBOXSERVICE_LOG",
@@ -319,7 +318,7 @@ int VGSvcLogCreate(const char *pszLogFile)
                            RT_ELEMENTS(s_apszGroups), s_apszGroups,
                            RTLOGDEST_STDOUT | RTLOGDEST_USER,
                            vgsvcLogHeaderFooter, g_cHistory, g_uHistoryFileSize, g_uHistoryFileTime,
-                           szError, sizeof(szError), pszLogFile);
+                           NULL /*pErrInfo*/, pszLogFile);
     if (RT_SUCCESS(rc))
     {
         /* register this logger as the release logger */
