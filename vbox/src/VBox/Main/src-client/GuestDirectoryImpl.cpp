@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 71560 2018-03-29 11:00:30Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 71566 2018-03-29 11:59:27Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -67,7 +67,7 @@ int GuestDirectory::init(Console *pConsole, GuestSession *pSession, ULONG aObjec
 
     /* Enclose the state transition NotReady->InInit->Ready. */
     AutoInitSpan autoInitSpan(this);
-    AssertReturn(autoInitSpan.isOk(), E_FAIL);
+    AssertReturn(autoInitSpan.isOk(), VERR_OBJECT_DESTROYED);
 
     int vrc = bindToSession(pConsole, pSession, aObjectID);
     if (RT_SUCCESS(vrc))
