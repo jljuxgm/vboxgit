@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.d 69121 2017-10-17 19:14:35Z vboxsync $ */
+/* $Id: VBoxDD.d 69292 2017-10-25 11:36:15Z vboxsync $ */
 /** @file
  * VBoxDD - Static dtrace probes
  */
@@ -31,5 +31,4 @@ provider vboxdd
 #pragma D attributes Private/Private/Unknown  provider vboxdd function
 #pragma D attributes Evolving/Evolving/Common provider vboxdd name
 #pragma D attributes Evolving/Evolving/Common provider vboxdd args
-
 
