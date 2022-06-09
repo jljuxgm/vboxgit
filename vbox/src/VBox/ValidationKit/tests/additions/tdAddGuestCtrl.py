@@ -27,10 +27,13 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71534 $"
+__version__ = "$Revision: 71535 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
+
+# Disable bitching about semicolons at the end of lines.
+# pylint: disable=W0301
 
 ## @todo Convert map() usage to a cleaner alternative Python now offers.
 # pylint: disable=W0141
