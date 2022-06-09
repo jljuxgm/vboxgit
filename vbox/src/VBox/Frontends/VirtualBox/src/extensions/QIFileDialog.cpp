@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 71356 2018-03-15 15:16:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIFileDialog class implementation.
  */
@@ -19,7 +19,10 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* VBox includes */
+/* Qt includes: */
+# include <QEventLoop>
+
+/* GUI includes: */
 # include "VBoxGlobal.h"
 # include "UIModalWindowManager.h"
 # include "UIMessageCenter.h"
@@ -28,7 +31,6 @@
 # ifdef VBOX_WS_WIN
 /* Qt includes */
 #  include <QEvent>
-#  include <QEventLoop>
 #  include <QThread>
 
 /* WinAPI includes */
