@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 72343 2018-05-25 13:24:28Z vboxsync $ */
+/* $Id: VM.cpp 72642 2018-06-21 15:41:14Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1196,6 +1196,8 @@ static int vmR3InitDoCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
         rc = PGMR3InitCompleted(pVM, enmWhat);
     if (RT_SUCCESS(rc))
         rc = CPUMR3InitCompleted(pVM, enmWhat);
+    if (RT_SUCCESS(rc))
+        rc = EMR3InitCompleted(pVM, enmWhat);
     if (enmWhat == VMINITCOMPLETED_RING3)
     {
 #ifndef VBOX_WITH_RAW_MODE

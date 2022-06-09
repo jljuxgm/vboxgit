@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72639 2018-06-21 13:51:44Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72642 2018-06-21 15:41:14Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -11853,8 +11853,11 @@ HMVMX_EXIT_DECL hmR0VmxExitCpuid(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
     AssertRCReturn(rc, rc);
 
     VBOXSTRICTRC rcStrict;
-    PCEMEXITREC pExitRec = EMHistoryUpdateFlagsAndTypeAndPC(pVCpu, EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM, EMEXITTYPE_CPUID),
-                                                            pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base);
+    PCEMEXITREC pExitRec;
+    pExitRec = EMHistoryUpdateFlagsAndTypeAndPC(pVCpu,
+                                                EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM | EMEXIT_F_PREEMPT_DISABLED,
+                                                                           EMEXITTYPE_CPUID),
+                                                pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base);
     if (!pExitRec)
     {
         /*
@@ -12824,11 +12827,15 @@ HMVMX_EXIT_DECL hmR0VmxExitIoInstr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIE
         pExitRec = EMHistoryUpdateFlagsAndTypeAndPC(pVCpu,
                                                     !fIOString
                                                     ? !fIOWrite
-                                                    ? EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_READ)
-                                                    : EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_WRITE)
+                                                    ? EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM | EMEXIT_F_PREEMPT_DISABLED,
+                                                                                 EMEXITTYPE_IO_PORT_READ)
+                                                    : EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM | EMEXIT_F_PREEMPT_DISABLED,
+                                                                                 EMEXITTYPE_IO_PORT_WRITE)
                                                     : !fIOWrite
-                                                    ? EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_STR_READ)
-                                                    : EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM, EMEXITTYPE_IO_PORT_STR_WRITE),
+                                                    ? EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM | EMEXIT_F_PREEMPT_DISABLED,
+                                                                                 EMEXITTYPE_IO_PORT_STR_READ)
+                                                    : EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM | EMEXIT_F_PREEMPT_DISABLED,
+                                                                                 EMEXITTYPE_IO_PORT_STR_WRITE),
                                                     pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base);
     if (!pExitRec)
     {
@@ -13317,8 +13324,11 @@ HMVMX_EXIT_DECL hmR0VmxExitEptMisconfig(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTR
     AssertRCReturn(rc, rc);
 
     VBOXSTRICTRC rcStrict;
-    PCEMEXITREC pExitRec = EMHistoryUpdateFlagsAndTypeAndPC(pVCpu, EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM, EMEXITTYPE_MMIO),
-                                                            pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base);
+    PCEMEXITREC pExitRec;
+    pExitRec = EMHistoryUpdateFlagsAndTypeAndPC(pVCpu,
+                                                EMEXIT_MAKE_FLAGS_AND_TYPE(EMEXIT_F_KIND_EM | EMEXIT_F_PREEMPT_DISABLED,
+                                                                           EMEXITTYPE_MMIO),
+                                                pVCpu->cpum.GstCtx.rip + pVCpu->cpum.GstCtx.cs.u64Base);
     if (!pExitRec)
     {
         /*
