@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 65737 2017-02-10 16:10:45Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 67362 2017-06-13 14:05:59Z vboxsync $ */
 /** @file
  * Debug audio driver -- host backend for dumping and injecting audio data
  * from/to the device emulation.
@@ -226,11 +226,12 @@ static DECLCALLBACK(int) drvHostDebugAudioStreamPlay(PPDMIHOSTAUDIO pInterface,
         uint32_t cbChunk = RT_MIN(cbAvail, pStreamDbg->Out.cbPlayBuffer);
 
         memcpy(pStreamDbg->Out.auPlayBuffer, (uint8_t *)pvBuf + cbWrittenTotal, cbChunk);
-#if 0
+
+#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
         RTFILE fh;
-        RTFileOpen(&fh, "/tmp/AudioDebug-Output.pcm",
+        RTFileOpen(&fh, VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "AudioDebugOutput.pcm",
                    RTFILE_O_OPEN_CREATE | RTFILE_O_APPEND | RTFILE_O_WRITE | RTFILE_O_DENY_NONE);
-        RTFileWrite(fh, pStreamDbg->Out.pu8PlayBuffer, cbChunk, NULL);
+        RTFileWrite(fh, pStreamDbg->Out.auPlayBuffer, cbChunk, NULL);
         RTFileClose(fh);
 #endif
         int rc2 = DrvAudioHlpWAVFileWrite(&pStreamDbg->File,

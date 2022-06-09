@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 65738 2017-02-10 16:11:40Z vboxsync $ */
+/* $Id: DrvAudio.h 67362 2017-06-13 14:05:59Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -53,6 +53,18 @@
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pdmaudioifs.h>
+
+#ifdef DEBUG_andy
+# define VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
+#endif
+
+#ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
+# ifdef RT_OS_WINDOWS
+#  define VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "c:\\temp\\"
+# else
+#  define VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH "/tmp/"
+# endif
+#endif /* VBOX_AUDIO_DEBUG_DUMP_PCM_DATA */
 
 typedef enum
 {
