@@ -1,4 +1,4 @@
-/* $Id: QIWidgetValidator.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: QIWidgetValidator.h 68079 2017-07-21 11:32:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWidgetValidator class declaration.
  */
@@ -53,7 +53,7 @@ public:
     /** Returns last validation state. */
     QValidator::State state() const { return m_state; }
 
-private slots:
+public slots:
 
     /** Performs validation: */
     void sltValidate(QString strInput = QString());

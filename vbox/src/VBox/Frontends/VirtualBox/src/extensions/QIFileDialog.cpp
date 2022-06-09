@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 63317 2016-08-11 10:30:18Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 68079 2017-07-21 11:32:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIFileDialog class implementation.
  */
@@ -356,8 +356,8 @@ QString QIFileDialog::getExistingDirectory (const QString &aDir,
     dlg.setFileMode(aDirOnly ? QFileDialog::DirectoryOnly : QFileDialog::Directory);
 
     QEventLoop eventLoop;
-    QObject::connect(&dlg, SIGNAL(finished(int)),
-                     &eventLoop, SLOT(quit()));
+    QObject::connect(&dlg, &QFileDialog::finished,
+                     &eventLoop, &QEventLoop::quit);
     dlg.open();
     eventLoop.exec();
 
@@ -592,8 +592,8 @@ QString QIFileDialog::getSaveFileName (const QString &aStartWith,
     dlg.setConfirmOverwrite(fConfirmOverwrite);
 
     QEventLoop eventLoop;
-    QObject::connect(&dlg, SIGNAL(finished(int)),
-                     &eventLoop, SLOT(quit()));
+    QObject::connect(&dlg, &QFileDialog::finished,
+                     &eventLoop, &QEventLoop::quit);
     dlg.open();
     eventLoop.exec();
 
@@ -850,8 +850,8 @@ QStringList QIFileDialog::getOpenFileNames (const QString &aStartWith,
     dlg.setResolveSymlinks(aResolveSymlinks);
 
     QEventLoop eventLoop;
-    QObject::connect(&dlg, SIGNAL(finished(int)),
-                     &eventLoop, SLOT(quit()));
+    QObject::connect(&dlg, &QFileDialog::finished,
+                     &eventLoop, &QEventLoop::quit);
     dlg.open();
     eventLoop.exec();
 

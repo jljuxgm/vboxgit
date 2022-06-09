@@ -1,4 +1,4 @@
-/* $Id: QIRichToolButton.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: QIRichToolButton.cpp 68079 2017-07-21 11:32:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIRichToolButton class declaration.
  */
@@ -120,8 +120,8 @@ void QIRichToolButton::prepare()
             /* Configure tool-button: */
             m_pButton->removeBorder();
             m_pButton->setFocusPolicy(Qt::NoFocus);
-            connect(m_pButton, SIGNAL(clicked(bool)), this, SLOT(sltButtonClicked()));
-            connect(m_pButton, SIGNAL(clicked(bool)), this, SIGNAL(sigClicked()));
+            connect(m_pButton, &QIToolButton::clicked, this, &QIRichToolButton::sltButtonClicked);
+            connect(m_pButton, &QIToolButton::clicked, this, &QIRichToolButton::sigClicked);
             /* Add tool-button into main-layout: */
             pMainLayout->addWidget(m_pButton);
         }

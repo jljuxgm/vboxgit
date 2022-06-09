@@ -1,4 +1,4 @@
-/* $Id: QILabel.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: QILabel.cpp 68079 2017-07-21 11:32:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QILabel class implementation.
  */
@@ -254,7 +254,7 @@ void QILabel::init()
     addAction (mCopyAction);
     mCopyAction->setShortcut (QKeySequence (QKeySequence::Copy));
     mCopyAction->setShortcutContext (Qt::WidgetShortcut);
-    connect (mCopyAction, SIGNAL (triggered()), this, SLOT (copy()));
+    connect(mCopyAction, &QAction::triggered, this, &QILabel::copy);
 }
 
 void QILabel::updateSizeHint() const

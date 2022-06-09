@@ -1,4 +1,4 @@
-/* $Id: QIStatusBar.cpp 65253 2017-01-12 10:20:08Z vboxsync $ */
+/* $Id: QIStatusBar.cpp 68079 2017-07-21 11:32:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIStatusBar class implementation.
  */
@@ -61,8 +61,8 @@ QIStatusBar::QIStatusBar(QWidget *pParent)
     QAccessible::installFactory(QIAccessibilityInterfaceForQIStatusBar::pFactory);
 
     /* Make sure we remember the last one status message: */
-    connect(this, SIGNAL(messageChanged(const QString &)),
-            this, SLOT(sltRememberLastMessage(const QString &)));
+    connect(this, &QIStatusBar::messageChanged,
+            this, &QIStatusBar::sltRememberLastMessage);
 
     /* Remove that ugly border around the status-bar items on every platform: */
     setStyleSheet("QStatusBar::item { border: 0px none black; }");

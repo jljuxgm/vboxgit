@@ -1,4 +1,4 @@
-/* $Id: QITableView.cpp 64479 2016-10-28 16:01:01Z vboxsync $ */
+/* $Id: QITableView.cpp 68079 2017-07-21 11:32:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITableView class implementation.
  */
@@ -432,7 +432,7 @@ void QITableView::makeSureEditorDataCommitted()
 void QITableView::sltEditorCreated(QWidget *pEditor, const QModelIndex &index)
 {
     /* Connect created editor to the table and store it: */
-    connect(pEditor, SIGNAL(destroyed(QObject *)), this, SLOT(sltEditorDestroyed(QObject *)));
+    connect(pEditor, &QWidget::destroyed, this, &QITableView::sltEditorDestroyed);
     m_editors[index] = pEditor;
 }
 
@@ -470,8 +470,8 @@ void QITableView::prepare()
         /* Assign newly created delegate to the table: */
         setItemDelegate(pStyledItemDelegate);
         /* Connect newly created delegate to the table: */
-        connect(pStyledItemDelegate, SIGNAL(sigEditorCreated(QWidget *, const QModelIndex &)),
-                this, SLOT(sltEditorCreated(QWidget *, const QModelIndex &)));
+        connect(pStyledItemDelegate, &QIStyledItemDelegate::sigEditorCreated,
+                this, &QITableView::sltEditorCreated);
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: QIWidgetValidator.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: QIWidgetValidator.cpp 68079 2017-07-21 11:32:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIWidgetValidator class implementation.
  */
@@ -87,8 +87,8 @@ void QObjectValidatorGroup::addObjectValidator(QObjectValidator *pObjectValidato
     m_group.insert(pObjectValidator, toResult(pObjectValidator->state()));
 
     /* Attach object-validator to group: */
-    connect(pObjectValidator, SIGNAL(sigValidityChange(QValidator::State)),
-            this, SLOT(sltValidate(QValidator::State)));
+    connect(pObjectValidator, &QObjectValidator::sigValidityChange,
+            this, &QObjectValidatorGroup::sltValidate);
 }
 
 void QObjectValidatorGroup::sltValidate(QValidator::State state)
