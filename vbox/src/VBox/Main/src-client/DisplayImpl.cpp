@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 68946 2017-10-02 11:04:27Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 68947 2017-10-02 11:07:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2690,6 +2690,8 @@ DECLCALLBACK(int) Display::i_videoCaptureConfigure(Display *pThis, PVIDEORECCFG 
     }
     else
         LogRel2(("VideoRec: No audio hardware configured, skipping to record audio\n"));
+#else
+    RT_NOREF(fAttachDetach);
 #endif
 
     /*
