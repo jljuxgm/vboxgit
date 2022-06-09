@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 70066 2017-12-11 16:33:05Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -601,6 +601,13 @@ void VGDrvNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
 {
     /* No polling on OS/2 */
     NOREF(pDevExt);
+}
+
+
+bool VGDrvNativeProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, const char *pszValue)
+{
+    RT_NOREF(pDevExt); RT_NOREF(pszName); RT_NOREF(pszValue);
+    return false;
 }
 
 

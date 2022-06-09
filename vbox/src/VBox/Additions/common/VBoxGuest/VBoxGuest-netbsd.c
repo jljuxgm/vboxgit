@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 70065 2017-12-11 16:07:43Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 70066 2017-12-11 16:33:05Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -526,6 +526,13 @@ void VGDrvNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
                       0, 0, /* z, w */
                       WSMOUSE_INPUT_ABSOLUTE_X | WSMOUSE_INPUT_ABSOLUTE_Y);
     }
+}
+
+
+bool VGDrvNativeProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, const char *pszValue)
+{
+    RT_NOREF(pDevExt); RT_NOREF(pszName); RT_NOREF(pszValue);
+    return false;
 }
 
 

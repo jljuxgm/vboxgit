@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 70041 2017-12-08 22:45:30Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 70066 2017-12-11 16:33:05Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -1084,6 +1084,22 @@ void VGDrvNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
 
 
 /**
+ * Hook for handling OS specfic options from the host.
+ *
+ * @returns true if handled, false if not.
+ * @param   pDevExt         The device extension.
+ * @param   pszName         The option name.
+ * @param   pszValue        The option value.
+ */
+bool VGDrvNativeProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, const char *pszValue)
+{
+    RT_NOREF(pDevExt); RT_NOREF(pszName); RT_NOREF(pszValue);
+    return false;
+}
+
+
+
+/**
  * Queries (gets) a DWORD value from the registry.
  *
  * @return  NTSTATUS
@@ -1137,12 +1153,12 @@ static void vgdrvNtReadConfiguration(PVBOXGUESTDEVEXTWIN pDevExt)
             LogRelFunc(("Logging to host log enabled (%#x)", uValue));
     }
 
-#if 0 /* test me */
     /*
      * Read configuration from the host.
      */
+    LogRelFunc(("Calling VGDrvCommonProcessOptionsFromHost...\n"));
     VGDrvCommonProcessOptionsFromHost(&pDevExt->Core);
-#endif
+    LogRelFunc(("VGDrvCommonProcessOptionsFromHost returned\n"));
 }
 
 

@@ -1,4 +1,4 @@
-/* $Rev: 70033 $ */
+/* $Rev: 70066 $ */
 /** @file
  * VBoxGuest - Linux specifics.
  *
@@ -1054,6 +1054,13 @@ void VGDrvNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
     }
 #endif
     Log3(("VGDrvNativeISRMousePollEvent: done\n"));
+}
+
+
+bool VGDrvNativeProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, const char *pszValue)
+{
+    RT_NOREF(pDevExt); RT_NOREF(pszName); RT_NOREF(pszValue);
+    return false;
 }
 
 

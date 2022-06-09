@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuest-haiku.c 70066 2017-12-11 16:33:05Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, implementation.
  */
@@ -350,6 +350,13 @@ void VGDrvNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
         err = B_ERROR;
 
     RTSpinlockRelease(g_Spinlock);
+}
+
+
+bool VGDrvNativeProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, const char *pszValue)
+{
+    RT_NOREF(pDevExt); RT_NOREF(pszName); RT_NOREF(pszValue);
+    return false;
 }
 
 

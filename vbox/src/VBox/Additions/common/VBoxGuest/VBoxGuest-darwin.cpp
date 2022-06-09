@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-darwin.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuest-darwin.cpp 70066 2017-12-11 16:33:05Z vboxsync $ */
 /** @file
  * VBoxGuest - Darwin Specifics.
  */
@@ -666,6 +666,13 @@ int VBOXCALL VBoxGuestIDC(void *pvSession, uintptr_t uReq, PVBGLREQHDR pReqHdr, 
 void VGDrvNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
 {
     NOREF(pDevExt);
+}
+
+
+bool VGDrvNativeProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, const char *pszValue)
+{
+    RT_NOREF(pDevExt); RT_NOREF(pszName); RT_NOREF(pszValue);
+    return false;
 }
 
 
