@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 70232 2017-12-20 11:20:39Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 70253 2017-12-21 04:56:26Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3302,9 +3302,8 @@ static VBOXSTRICTRC hmR0SvmEvaluatePendingEventNested(PVMCPU pVCpu, PCPUMCTX pCt
             else if (rc == VERR_APIC_INTR_MASKED_BY_TPR)
             {
                 /*
-                 * AMD-V has no TPR thresholding feature. We just avoid posting the interrupt.
-                 * We just avoid delivering the TPR-masked interrupt here. TPR and the force-flag
-                 * will be updated eventually when the TPR is written by the guest.
+                 * AMD-V has no TPR thresholding feature. TPR and the force-flag will be
+                 * updated eventually when the TPR is written by the guest.
                  */
                 STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchTprMaskedIrq);
             }
@@ -3417,9 +3416,8 @@ static void hmR0SvmEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
                 else if (rc == VERR_APIC_INTR_MASKED_BY_TPR)
                 {
                     /*
-                     * AMD-V has no TPR thresholding feature. We just avoid posting the interrupt.
-                     * We just avoid delivering the TPR-masked interrupt here. TPR and the force-flag
-                     * will be updated eventually when the TPR is written by the guest.
+                     * AMD-V has no TPR thresholding feature. TPR and the force-flag will be
+                     * updated eventually when the TPR is written by the guest.
                      */
                     STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchTprMaskedIrq);
                 }
