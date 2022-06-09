@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 71690 2018-04-05 15:24:22Z vboxsync $
+# $Id: virtual_test_sheriff.py 72537 2018-06-13 11:25:24Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71690 $"
+__version__ = "$Revision: 72537 $"
 
 
 # Standard python imports
@@ -302,7 +302,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 71690 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 72537 $ \n');
 
 
     def eprint(self, sText):
@@ -511,6 +511,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Buggy_Build_Broken_Build                  = ( 'Broken Build',      'Buggy build' );
     ktReason_Unknown_VM_Start_Error                    = ( 'Unknown',           'VM Start Error' );
     ktReason_Unknown_VM_Runtime_Error                  = ( 'Unknown',           'VM Runtime Error' );
+    ktReason_GuestBug_CompizVBoxQt                     = ( 'Guest Bug',         'Compiz + VirtualBox Qt GUI crash' );
+
     ## @}
 
     ## BSOD category.
@@ -575,7 +577,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 71690 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 72537 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -903,6 +905,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         ( True,  ktReason_Panic_HugeMemory,                         'mm/huge_memory.c:1988' ),
         ( True,  ktReason_Panic_IOAPICDoesntWork,                   'IO-APIC + timer doesn''t work' ),
         ( True,  ktReason_Panic_TxUnitHang,                         'Detected Tx Unit Hang' ),
+        ( True,  ktReason_GuestBug_CompizVBoxQt,                    'error 4 in libQt5CoreVBox'),
     ];
 
     ## Things we search the _RIGHT_ _STRIPPED_ vgatext for.
