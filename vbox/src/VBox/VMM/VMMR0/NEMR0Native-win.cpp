@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 72207 2018-05-14 19:16:43Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 72221 2018-05-15 16:06:19Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -518,7 +518,8 @@ NEM_TMPL_STATIC int nemR0WinExportState(PGVM pGVM, PGVMCPU pGVCpu, PCPUMCTX pCtx
     pInput->RsvdZ       = 0;
 
     uint64_t const fWhat = ~pCtx->fExtrn & (CPUMCTX_EXTRN_ALL | CPUMCTX_EXTRN_NEM_WIN_MASK);
-    if (!fWhat)
+    if (   !fWhat
+        && pVCpu->nem.s.fCurrentInterruptWindows == pVCpu->nem.s.fDesiredInterruptWindows)
         return VINF_SUCCESS;
     uintptr_t iReg = 0;
 

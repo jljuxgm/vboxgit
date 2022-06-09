@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 72207 2018-05-14 19:16:43Z vboxsync $ */
+/* $Id: NEMInternal.h 72221 2018-05-15 16:06:19Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -243,7 +243,7 @@ typedef struct NEMCPU
     STAMCOUNTER                 StatBreakOnFFPost;
     STAMCOUNTER                 StatBreakOnStatus;
     /** @} */
-#endif
+#endif /* RT_OS_WINDOWS */
 } NEMCPU;
 /** Pointer to NEM VMCPU instance data. */
 typedef NEMCPU *PNEMCPU;
