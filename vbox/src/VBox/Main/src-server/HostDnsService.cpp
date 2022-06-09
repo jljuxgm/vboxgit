@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 72480 2018-06-08 10:19:45Z vboxsync $ */
+/* $Id: HostDnsService.cpp 72483 2018-06-08 13:58:25Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -370,17 +370,6 @@ HRESULT HostDnsMonitorProxy::GetSearchStrings(std::vector<com::Utf8Str> &aSearch
     detachVectorOfString(m->info->searchList, aSearchStrings);
 
     return S_OK;
-}
-
-bool HostDnsMonitorProxy::operator==(PCHostDnsMonitorProxy& rhs)
-{
-    if (!m || !rhs->m)
-        return false;
-
-    /**
-     * we've assigned to the same instance of VirtualBox.
-     */
-    return m->virtualbox == rhs->m->virtualbox;
 }
 
 void HostDnsMonitorProxy::updateInfo()

@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 72480 2018-06-08 10:19:45Z vboxsync $ */
+/* $Id: HostDnsService.h 72483 2018-06-08 13:58:25Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -102,8 +102,6 @@ class HostDnsMonitorProxy
     HRESULT GetNameServers(std::vector<com::Utf8Str> &aNameServers);
     HRESULT GetDomainName(com::Utf8Str *pDomainName);
     HRESULT GetSearchStrings(std::vector<com::Utf8Str> &aSearchStrings);
-
-    bool operator==(PCHostDnsMonitorProxy&);
 
     private:
     void updateInfo();
