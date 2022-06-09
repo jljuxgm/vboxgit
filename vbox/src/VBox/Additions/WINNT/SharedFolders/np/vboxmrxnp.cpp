@@ -1,4 +1,4 @@
-/* $Id: vboxmrxnp.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
+/* $Id: vboxmrxnp.cpp 69357 2017-10-26 14:42:59Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Network provider dll
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

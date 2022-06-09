@@ -1,5 +1,5 @@
 @echo off
-rem $Id: VBoxSFInst.cmd 68624 2017-09-04 19:03:21Z vboxsync $
+rem $Id: VBoxSFInst.cmd 69357 2017-10-26 14:42:59Z vboxsync $
 rem rem @file
 rem Windows NT batch script for manually installing the shared folders guest addition driver.
 rem
@@ -74,28 +74,28 @@ reg delete /f "HKLM\SYSTEM\CurrentControlSet\Services\VBoxSF\NetworkProvider" /v
 
 "%MY_VBOXDRVINST%" service delete VBoxSF
 
-del "%SYSTEMROOT%\system32\drivers\VBoxSF.sys" 
-del "%SYSTEMROOT%\system32\VBoxMRXNP.dll" 
-if "%PROCESSOR_ARCHITECTURE%" == "AMD64" del "%SYSTEMROOT%\SysWOW64\VBoxMRXNP.dll" 
+del "%SYSTEMROOT%\system32\drivers\VBoxSF.sys"
+del "%SYSTEMROOT%\system32\VBoxMRXNP.dll"
+if "%PROCESSOR_ARCHITECTURE%" == "AMD64" del "%SYSTEMROOT%\SysWOW64\VBoxMRXNP.dll"
 
 
-rem 
+rem
 rem Install anything?
-rem 
+rem
 if "%1" == "-u" goto end
 if "%1" == "--uninstall" goto end
 
-rem 
+rem
 rem Copy the new files to the system dir.
-rem 
+rem
 echo "Copying files..."
-copy "%MY_VBOXSF_SYS%"    "%SYSTEMROOT%\system32\drivers\" 
-copy "%MY_VBOXMRXNP_DLL%" "%SYSTEMROOT%\system32\" 
+copy "%MY_VBOXSF_SYS%"    "%SYSTEMROOT%\system32\drivers\"
+copy "%MY_VBOXMRXNP_DLL%" "%SYSTEMROOT%\system32\"
 if "%PROCESSOR_ARCHITECTURE%" == "AMD64" copy "%MY_VBOXMRXNP_X86_DLL%" "%SYSTEMROOT%\SysWow64\VBoxMRXNP.dll"
 
 rem
 rem Register the service.
-rem 
+rem
 echo "Installing service..."
 "%MY_VBOXDRVINST%" service create VBoxSF "VirtualBox Shared Folders" 2 1 "%SYSTEMROOT%\System32\drivers\VBoxSF.sys" NetworkProvider
 
