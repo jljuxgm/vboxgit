@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 69180 2017-10-23 18:08:32Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 69201 2017-10-24 11:50:08Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -725,26 +725,15 @@ static BOOL ResizeDisplayDevice(PVBOXDISPLAYCONTEXT pCtx,
             paDeviceModes[i].dmFields));
     }
 
-#ifdef VBOX_WITH_WDDM
     if (enmDriverType == VBOXDISPLAY_DRIVER_TYPE_WDDM)
     {
-        LogFlowFunc(("Request to resize the displa\n"));
         DWORD err = VBoxDispIfResizeModes(&pCtx->pEnv->dispIf, Id, fEnabled, fExtDispSup, paDisplayDevices, paDeviceModes, DevNum);
-        if (err != ERROR_RETRY)
-        {
-            if (err == NO_ERROR)
-                LogFlowFunc(("VBoxDispIfResizeModes succeeded\n"));
-            else
-               LogFlowFunc(("Failure VBoxDispIfResizeModes (%d)\n", err));
-            return FALSE;
-        }
 
-        LogFlowFunc(("ResizeDisplayDevice: RETRY requested\n"));
-        return TRUE;
+        return (err == ERROR_RETRY);
     }
-#endif
-    /* Without this, Windows will not ask the miniport for its
-     * mode table but uses an internal cache instead.
+
+    /* The XPDM code path goes below.
+     * Re-requesting modes with EnumDisplaySettings forces Windows to again ask the miniport for its mode table.
      */
     for (i = 0; i < NumDevices; i++)
     {
