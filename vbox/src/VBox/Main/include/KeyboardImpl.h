@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: KeyboardImpl.h 68852 2017-09-25 13:01:11Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -85,10 +85,6 @@ private:
     Console * const         mParent;
     /** Pointer to the associated keyboard driver(s). */
     struct DRVMAINKEYBOARD *mpDrv[KEYBOARD_MAX_DEVICES];
-    /** Pointer to the device instance for the VMM Device. */
-    PPDMDEVINS              mpVMMDev;
-    /** Set after the first attempt to find the VMM Device. */
-    bool                    mfVMMDevInited;
 
     /* The current guest keyboard LED status. */
     PDMKEYBLEDS menmLeds;

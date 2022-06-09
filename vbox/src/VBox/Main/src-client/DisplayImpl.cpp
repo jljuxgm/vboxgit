@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 68835 2017-09-22 15:42:52Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 68852 2017-09-25 13:01:11Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -131,8 +131,6 @@ HRESULT Display::FinalConstruct()
 #endif
 
     mpDrv = NULL;
-    mpVMMDev = NULL;
-    mfVMMDevInited = false;
 
     rc = RTCritSectInit(&mVideoAccelLock);
     AssertRC(rc);
@@ -746,8 +744,6 @@ void Display::uninit()
         mpDrv->pDisplay = NULL;
 
     mpDrv = NULL;
-    mpVMMDev = NULL;
-    mfVMMDevInited = true;
 }
 
 /**
@@ -4439,7 +4435,6 @@ DECLCALLBACK(void) Display::i_drvDestruct(PPDMDRVINS pDrvIns)
         pThis->pDisplay->i_destructCrHgsmiData();
 #endif
         pThis->pDisplay->mpDrv = NULL;
-        pThis->pDisplay->mpVMMDev = NULL;
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 68852 2017-09-25 13:01:11Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -78,8 +78,6 @@ Keyboard::~Keyboard()
 HRESULT Keyboard::FinalConstruct()
 {
     RT_ZERO(mpDrv);
-    mpVMMDev = NULL;
-    mfVMMDevInited = false;
     menmLeds = PDMKEYBLEDS_NONE;
     return BaseFinalConstruct();
 }
@@ -140,9 +138,6 @@ void Keyboard::uninit()
             mpDrv[i]->pKeyboard = NULL;
         mpDrv[i] = NULL;
     }
-
-    mpVMMDev = NULL;
-    mfVMMDevInited = true;
 
     menmLeds = PDMKEYBLEDS_NONE;
 
@@ -356,7 +351,6 @@ DECLCALLBACK(void) Keyboard::i_drvDestruct(PPDMDRVINS pDrvIns)
                 pThis->pKeyboard->mpDrv[cDev] = NULL;
                 break;
             }
-        pThis->pKeyboard->mpVMMDev = NULL;
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 68850 2017-09-25 10:49:29Z vboxsync $ */
+/* $Id: DisplayImpl.h 68852 2017-09-25 13:01:11Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -401,10 +401,6 @@ private:
     Console * const         mParent;
     /** Pointer to the associated display driver. */
     struct DRVMAINDISPLAY   *mpDrv;
-    /** Pointer to the device instance for the VMM Device. */
-    PPDMDEVINS              mpVMMDev;
-    /** Set after the first attempt to find the VMM Device. */
-    bool                    mfVMMDevInited;
 
     unsigned mcMonitors;
     /** Input mapping rectangle top left X relative to the first screen. */
