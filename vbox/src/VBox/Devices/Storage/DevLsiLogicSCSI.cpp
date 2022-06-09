@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 67806 2017-07-05 15:48:20Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 67890 2017-07-10 18:20:00Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -2258,7 +2258,13 @@ static int lsilogicR3ProcessSCSIIORequest(PLSILOGICSCSI pThis, RTGCPHYS GCPhysMe
                 PDMMEDIAEXIOREQSCSITXDIR enmXferDir = PDMMEDIAEXIOREQSCSITXDIR_UNKNOWN;
                 uint8_t uDataDirection = MPT_SCSIIO_REQUEST_CONTROL_TXDIR_GET(pLsiReq->GuestRequest.SCSIIO.u32Control);
 
-                if (uDataDirection == MPT_SCSIIO_REQUEST_CONTROL_TXDIR_NONE)
+                 /*
+                  * Keep the direction to unknown if there is a mismatch between the data length
+                  * and the transfer direction bit.
+                  * The Solaris 9 driver is buggy and sets it to none for INQUIRY requests.
+                  */
+                if (   uDataDirection == MPT_SCSIIO_REQUEST_CONTROL_TXDIR_NONE
+                    && pLsiReq->GuestRequest.SCSIIO.u32DataLength == 0)
                     enmXferDir = PDMMEDIAEXIOREQSCSITXDIR_NONE;
                 else if (uDataDirection == MPT_SCSIIO_REQUEST_CONTROL_TXDIR_WRITE)
                     enmXferDir = PDMMEDIAEXIOREQSCSITXDIR_TO_DEVICE;
