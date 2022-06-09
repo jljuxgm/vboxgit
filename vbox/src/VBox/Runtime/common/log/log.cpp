@@ -1,4 +1,4 @@
-/* $Id: log.cpp 69749 2017-11-19 12:49:36Z vboxsync $ */
+/* $Id: log.cpp 69750 2017-11-19 12:51:16Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -881,7 +881,7 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, uint32_t fFlags, const char *psz
             rc = VERR_NO_MEMORY;
 #  ifdef RT_OS_LINUX
                 /* Most probably SELinux causing trouble since the larger RTMemAlloc succeeded. */
-            RTErrInfoSet(rc, N_("mmap(PROT_WRITE | PROT_EXEC) failed -- SELinux?"));
+            RTErrInfoSet(pErrInfo, rc, N_("mmap(PROT_WRITE | PROT_EXEC) failed -- SELinux?"));
 #  endif
         }
         if (RT_SUCCESS(rc))
