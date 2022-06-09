@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 72497 2018-06-10 17:33:31Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 72505 2018-06-11 12:05:40Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5091,6 +5091,69 @@ IEM_CIMPL_DEF_2(iemCImpl_mov_Rd_Cd, uint8_t, iGReg, uint8_t, iCrReg)
 
     iemRegAddToRipAndClearRF(pVCpu, cbInstr);
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Implements smsw GReg
+ *
+ * @param   iGReg           The general register to store the CRx value in.
+ * @param   enmEffOpSize    The operand size.
+ */
+IEM_CIMPL_DEF_2(iemCImpl_smsw_reg, uint8_t, iGReg, uint8_t, enmEffOpSize)
+{
+    IEMOP_HLP_SVM_READ_CR_INTERCEPT(pVCpu, /*cr*/ 0, 0 /* uExitInfo1 */, 0 /* uExitInfo2 */);
+
+    switch (enmEffOpSize)
+    {
+        case IEMMODE_16BIT:
+            if (IEM_GET_TARGET_CPU(pVCpu) > IEMTARGETCPU_386)
+                *(uint16_t *)iemGRegRef(pVCpu, iGReg) = (uint16_t)pVCpu->cpum.GstCtx.cr0;
+            else if (IEM_GET_TARGET_CPU(pVCpu) >= IEMTARGETCPU_386)
+                *(uint16_t *)iemGRegRef(pVCpu, iGReg) = (uint16_t)pVCpu->cpum.GstCtx.cr0 | 0xffe0;
+            else
+                *(uint16_t *)iemGRegRef(pVCpu, iGReg) = (uint16_t)pVCpu->cpum.GstCtx.cr0 | 0xfff0;
+            break;
+
+        case IEMMODE_32BIT:
+            *(uint64_t *)iemGRegRef(pVCpu, iGReg) = (uint32_t)pVCpu->cpum.GstCtx.cr0;
+            break;
+
+        case IEMMODE_64BIT:
+            *(uint64_t *)iemGRegRef(pVCpu, iGReg) = pVCpu->cpum.GstCtx.cr0;
+            break;
+
+        IEM_NOT_REACHED_DEFAULT_CASE_RET();
+    }
+
+    iemRegAddToRipAndClearRF(pVCpu, cbInstr);
+    return VINF_SUCCESS;
+}
+
+
+/**
+ * Implements smsw mem.
+ *
+ * @param   iGReg           The general register to store the CRx value in.
+ * @param   iEffSeg         The effective segment register to use with @a GCPtrMem.
+ * @param   GCPtrEffDst     Where to store the 16-bit CR0 value.
+ */
+IEM_CIMPL_DEF_2(iemCImpl_smsw_mem, uint8_t, iEffSeg, RTGCPTR, GCPtrEffDst)
+{
+    IEMOP_HLP_SVM_READ_CR_INTERCEPT(pVCpu, /*cr*/ 0, 0 /* uExitInfo1 */, 0 /* uExitInfo2 */);
+
+    uint16_t u16Value;
+    if (IEM_GET_TARGET_CPU(pVCpu) > IEMTARGETCPU_386)
+        u16Value = (uint16_t)pVCpu->cpum.GstCtx.cr0;
+    else if (IEM_GET_TARGET_CPU(pVCpu) >= IEMTARGETCPU_386)
+        u16Value = (uint16_t)pVCpu->cpum.GstCtx.cr0 | 0xffe0;
+    else
+        u16Value = (uint16_t)pVCpu->cpum.GstCtx.cr0 | 0xfff0;
+
+    VBOXSTRICTRC rcStrict = iemMemStoreDataU16(pVCpu, iEffSeg, GCPtrEffDst, u16Value);
+    if (rcStrict == VINF_SUCCESS)
+        iemRegAddToRipAndClearRF(pVCpu, cbInstr);
+    return rcStrict;
 }
 
 
