@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 69083 2017-10-13 16:03:36Z vboxsync $ */
+/* $Id: vbox_drv.h 69748 2017-11-18 20:56:56Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -252,7 +252,6 @@ int vbox_framebuffer_init(struct drm_device *dev,
 int vbox_fbdev_init(struct drm_device *dev);
 void vbox_fbdev_fini(struct drm_device *dev);
 void vbox_fbdev_set_suspend(struct drm_device *dev, int state);
-void vbox_fbdev_set_base(struct vbox_private *vbox, unsigned long gpu_addr);
 
 struct vbox_bo {
 	struct ttm_buffer_object bo;
