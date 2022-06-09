@@ -1,4 +1,4 @@
-/* $Id: isomakercmd.cpp 68841 2017-09-23 01:05:34Z vboxsync $ */
+/* $Id: isomakercmd.cpp 68842 2017-09-23 13:46:08Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker Command.
  */
@@ -1199,7 +1199,7 @@ static int rtFsIsoMakerCmdVerifyImageInRandomOrder(PRTFSISOMAKERCMDOPTS pOpts, R
                 {
                     iBlock = RTRandU32Ex(0, cBlocks - 1);
                     fBitSet = ASMBitTestAndSet(pvBitmap, iBlock);
-                } while (fBitSet && ++cTries < /*32 - testing buggy assembly*/ 1);
+                } while (fBitSet && ++cTries < 32);
                 if (fBitSet)
                 {
                     /* Look for the next clear bit after it (with wrap around). */
