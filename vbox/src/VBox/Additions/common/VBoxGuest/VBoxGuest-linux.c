@@ -1,4 +1,4 @@
-/* $Rev: 70874 $ */
+/* $Rev: 70886 $ */
 /** @file
  * VBoxGuest - Linux specifics.
  *
@@ -682,8 +682,8 @@ static int __init vgdrvLinuxModInit(void)
                         rc = RTErrConvertFromErrno(rc);
                     }
                     VGDrvCommonCloseSession(&g_DevExt, g_pKernelSession);
-#endif
                 }
+#endif
                 VGDrvCommonDeleteDevExt(&g_DevExt);
             }
             else
