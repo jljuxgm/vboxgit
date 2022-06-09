@@ -1,4 +1,4 @@
-/* $Id: server_texture.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: server_texture.c 70601 2018-01-16 16:26:58Z vboxsync $ */
 /** @file
  * VBox crOpenGL - teximage functions.
  */
@@ -199,8 +199,16 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchBindTexture( GLenum target, GLuint
 
 void SERVER_DISPATCH_APIENTRY crServerDispatchDeleteTextures( GLsizei n, const GLuint *textures)
 {
-    GLuint *newTextures = (GLuint *) crAlloc(n * sizeof(GLuint));
+    GLuint *newTextures;
     GLint i;
+
+    if (n >= UINT32_MAX / sizeof(GLuint))
+    {
+        crError("crServerDispatchDeleteTextures: parameter 'n' is out of range");
+        return;
+    }
+
+    newTextures = (GLuint *)crAlloc(n * sizeof(GLuint));
 
     if (!newTextures)
     {

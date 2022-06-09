@@ -1,4 +1,4 @@
-/* $Id: server_glsl.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: server_glsl.c 70601 2018-01-16 16:26:58Z vboxsync $ */
 /** @file
  * VBox OpenGL - GLSL related functions
  */
@@ -178,8 +178,17 @@ GLuint crServerTranslateProgramID( GLuint id )
 
 void SERVER_DISPATCH_APIENTRY crServerDispatchDeleteProgramsARB(GLsizei n, const GLuint * programs)
 {
-    GLuint *pLocalProgs = (GLuint *) crAlloc(n * sizeof(GLuint));
+    GLuint *pLocalProgs;
     GLint i;
+
+    if (n >= UINT32_MAX / sizeof(GLuint))
+    {
+        crError("crServerDispatchDeleteProgramsARB: parameter 'n' is out of range");
+        return;
+    }
+
+    pLocalProgs = (GLuint *)crAlloc(n * sizeof(GLuint));
+
     if (!pLocalProgs) {
         crError("crServerDispatchDeleteProgramsARB: out of memory");
         return;
