@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 67538 2017-06-21 12:48:19Z vboxsync $ */
+/* $Id: isomaker.cpp 67539 2017-06-21 12:54:41Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -3202,7 +3202,7 @@ RTDECL(int) RTFsIsoMakerBootCatSetFile(RTFSISOMAKER hIsoMaker, uint32_t idxObj)
                 /*
                  * Just morph pFile into a boot catalog file.
                  */
-                if (pFile->enmSrcType)
+                if (pFile->enmSrcType == RTFSISOMAKERSRCTYPE_VFS_FILE)
                 {
                     RTVfsFileRelease(pFile->u.hVfsFile);
                     pFile->u.hVfsFile = NIL_RTVFSFILE;
