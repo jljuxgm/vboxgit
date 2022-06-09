@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 71755 2018-04-09 08:10:23Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 71813 2018-04-11 04:42:38Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -1115,7 +1115,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmHandleMsrIntercept(PVMCPU pVCpu, PCPUMCTX pCtx, ui
          */
         uint8_t *pbMsrpm = (uint8_t *)pCtx->hwvirt.svm.CTX_SUFF(pvMsrBitmap);
         pbMsrpm += offMsrpm;
-        if (ASMBitTest(pbMsrpm, uMsrpmBit))
+        if (*pbMsrpm & RT_BIT(uMsrpmBit))
         {
             IEM_SVM_UPDATE_NRIP(pVCpu);
             return iemSvmVmexit(pVCpu, pCtx, SVM_EXIT_MSR, uExitInfo1, 0 /* uExitInfo2 */);
