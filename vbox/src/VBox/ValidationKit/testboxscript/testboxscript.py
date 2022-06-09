@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript.py 70548 2018-01-11 20:46:02Z vboxsync $
+# $Id: testboxscript.py 70657 2018-01-20 19:02:11Z vboxsync $
 
 """
 TestBox Script Wrapper.
@@ -8,6 +8,8 @@ TestBox Script Wrapper.
 This script aimes at respawning the Test Box Script when it terminates
 abnormally or due to an UPGRADE request.
 """
+
+from __future__ import print_function;
 
 __copyright__ = \
 """
@@ -30,7 +32,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70548 $"
+__version__ = "$Revision: 70657 $"
 
 import platform;
 import subprocess;
@@ -66,10 +68,10 @@ class TestBoxScriptWrapper(object): # pylint: disable=R0903
         Cleanup
         """
         if self.oTask is not None:
-            print('Wait for child task...')
+            print('Wait for child task...');
             self.oTask.terminate()
             self.oTask.wait()
-            print('done. Exiting')
+            print('done. Exiting');
             self.oTask = None;
 
     def run(self):

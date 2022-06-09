@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 70657 2018-01-20 19:02:11Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70657 $"
 
 
 # Standard Python imports.
@@ -80,7 +80,7 @@ class InstallTestVm(vboxtestvms.TestVm):
 
 
     def __init__(self, oSet, sVmName, sKind, sInstallIso, sHdCtrlNm, cGbHdd, fFlags):
-        vboxtestvms.TestVm.__init__(self, oSet, sVmName, sKind = sKind, sHddControllerType = sHdCtrlNm,
+        vboxtestvms.TestVm.__init__(self, sVmName, oSet = oSet, sKind = sKind, sHddControllerType = sHdCtrlNm,
                                     fRandomPvPMode = (fFlags & self.kfNoWin81Paravirt) == 0);
         self.sDvdImage    = os.path.join(self.ksIsoPathBase, sInstallIso);
         self.cGbHdd       = cGbHdd;

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tdGuestHostTimings.py 69452 2017-10-27 17:06:06Z vboxsync $
+# $Id: tdGuestHostTimings.py 70657 2018-01-20 19:02:11Z vboxsync $
 
 """
 ????????
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69452 $"
+__version__ = "$Revision: 70657 $"
 
 
 import os
@@ -55,12 +55,13 @@ class tdGuestHostTimings(vbox.TestDriver):                                      
         vbox.TestDriver.__init__(self);
         self.sSessionTypeDef = 'gui';
 
-        self.oTestVmSet = self.oTestVmManager.getStandardVmSet('nat')
+        self.oTestVmSet = self.oTestVmManager.getStandardVmSet('nat') ## ???
 
         # Use the command line "--test-vms mw7x64 execute" to run the only "mw7x64" VM
-        oTestVm = vboxtestvms.TestVm(self.oTestVmSet, 'mw7x64', sHd = 'mw7x64.vdi',
-                         sKind = 'Windows7', acCpusSup = range(1, 2), fIoApic = True, sFirmwareType = 'bios',
-                            asParavirtModesSup = ['hyperv'], asVirtModesSup = ['hwvirt-np'], sHddControllerType = 'SATA Controller');
+        oTestVm = vboxtestvms.TestVm('mw7x64', oSet = self.oTestVmSet, sHd = 'mw7x64.vdi',
+                                     sKind = 'Windows7', acCpusSup = range(1, 2), fIoApic = True, sFirmwareType = 'bios',
+                                     asParavirtModesSup = ['hyperv'], asVirtModesSup = ['hwvirt-np'],
+                                     sHddControllerType = 'SATA Controller');
 
         self.oTestVmSet.aoTestVms.append(oTestVm);
 
