@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 70173 2017-12-15 23:35:27Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 70196 2017-12-18 13:40:49Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -218,11 +218,13 @@ static DECLCALLBACK(int) vgsvcWinVmInfoInitOnce(void *pvIgnored)
     g_WinVersion.dwOSVersionInfoSize = sizeof(g_WinVersion);
     if (!GetVersionExA((OSVERSIONINFO *)&g_WinVersion))
     {
-        AssertFailed();
         RT_ZERO(g_WinVersion);
         g_WinVersion.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
         if (!GetVersionExA((OSVERSIONINFO *)&g_WinVersion))
+        {
+            AssertFailed();
             RT_ZERO(g_WinVersion);
+        }
     }
 
     return VINF_SUCCESS;
