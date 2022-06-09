@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71208 2018-03-05 17:39:39Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 71209 2018-03-05 17:46:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -875,9 +875,9 @@ void UIHostFileTable::readDirectory(const QString& strPath, UIFileTableItem *par
     updateCurrentLocationEdit(strPath);
 }
 
-void UIHostFileTable::deleteByItem(UIFileTableItem */*item */)
+void UIHostFileTable::deleteByItem(UIFileTableItem *item)
 {
-
+    Q_UNUSED(item);
 }
 
 #include "UIGuestControlFileTable.moc"
