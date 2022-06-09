@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibGenericRequest.cpp 70873 2018-02-05 18:13:55Z vboxsync $ */
+/* $Id: VBoxGuestR0LibGenericRequest.cpp 72352 2018-05-26 12:37:50Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Generic VMMDev request management.
  */
@@ -81,6 +81,7 @@ DECLR0VBGL(int) VbglGR0Verify(const VMMDevRequestHeader *pReq, size_t cbReq)
      * Note: Keep this list sorted for easier human lookup!
      */
     if (   pReq->requestType == VMMDevReq_ChangeMemBalloon
+        || pReq->requestType == VMMDevReq_GetDisplayChangeRequestMulti
 #ifdef VBOX_WITH_64_BITS_GUESTS
         || pReq->requestType == VMMDevReq_HGCMCall32
         || pReq->requestType == VMMDevReq_HGCMCall64

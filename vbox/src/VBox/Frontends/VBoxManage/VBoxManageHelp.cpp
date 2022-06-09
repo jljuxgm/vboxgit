@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 71868 2018-04-17 09:51:32Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 72352 2018-05-26 12:37:50Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -824,6 +824,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            setvideomodehint <xres> <yres> <bpp>\n"
                      "                                            [[<display>] [<enabled:yes|no> |\n"
                      "                                              [<xorigin> <yorigin>]]] |\n"
+                     "                            setscreenlayout <display> on|primary <xorigin> <yorigin> <xres> <yres> <bpp> | off\n"
                      "                            screenshotpng <file> [display] |\n"
                      "                            videocap on|off |\n"
                      "                            videocapscreens all|none|<screen>,[<screen>...] |\n"
