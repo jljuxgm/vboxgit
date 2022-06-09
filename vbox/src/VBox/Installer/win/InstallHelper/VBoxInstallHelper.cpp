@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 66312 2017-03-28 18:02:37Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 67958 2017-07-14 07:20:06Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -1051,24 +1051,23 @@ static UINT _createHostOnlyInterface(MSIHANDLE hModule, LPCWSTR pwszId, LPCWSTR 
 
     if (SUCCEEDED(hr))
     {
-    //first, try to update Host Only Network Interface
+        //first, try to update Host Only Network Interface
         BOOL fRebootRequired = FALSE;
         hr = VBoxNetCfgWinUpdateHostOnlyNetworkInterface(pwszInfPath, &fRebootRequired, pwszId);
         if (SUCCEEDED(hr))
         {
             if (fRebootRequired)
             {
-                logStringW(hModule, L"UpdateHostOnlyInterfaces: Reboot required, setting REBOOT property to force");
+                logStringW(hModule, L"CreateHostOnlyInterface: Reboot required for update, setting REBOOT property to force");
                 HRESULT hr2 = MsiSetPropertyW(hModule, L"REBOOT", L"Force");
                 if (hr2 != ERROR_SUCCESS)
-                    logStringW(hModule, L"UpdateHostOnlyInterfaces: Failed to set REBOOT property, error = 0x%x", hr2);
+                    logStringW(hModule, L"CreateHostOnlyInterface: Failed to set REBOOT property for update, error = 0x%x", hr2);
             }
         }
         else
-            logStringW(hModule, L"UpdateHostOnlyInterfaces: VBoxNetCfgWinUpdateHostOnlyNetworkInterface failed, hr = 0x%x", hr);
-    //in fail case call CreateHostOnlyInterface
-        if (FAILED(hr))
         {
+            //in fail case call CreateHostOnlyInterface
+            logStringW(hModule, L"CreateHostOnlyInterface: VBoxNetCfgWinUpdateHostOnlyNetworkInterface failed, hr = 0x%x", hr);
             logStringW(hModule, L"CreateHostOnlyInterface: calling VBoxNetCfgWinCreateHostOnlyNetworkInterface");
 #ifdef VBOXNETCFG_DELAYEDRENAME
             BSTR devId;
