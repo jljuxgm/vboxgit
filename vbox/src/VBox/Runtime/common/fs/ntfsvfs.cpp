@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 69911 2017-12-03 17:17:15Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 69913 2017-12-03 19:09:15Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -1727,7 +1727,7 @@ static int rtFsNtfsVol_NewSharedDirFromCore(PRTFSNTFSVOL pThis, PRTFSNTFSCORE pC
         return RTERRINFO_LOG_REL_SET_F(pErrInfo, VERR_VFS_BOGUS_FORMAT, "%s: INDEX_ROOT is is not resident", pszWhat);
     if (pRootAttr->cbResident < sizeof(NTFSATINDEXROOT))
         return RTERRINFO_LOG_REL_SET_F(pErrInfo, VERR_VFS_BOGUS_FORMAT, "%s: INDEX_ROOT is too small: %#x, min %#x ",
-                                       pRootAttr->cbResident, sizeof(pRootAttr->cbResident));
+                                       pszWhat, pRootAttr->cbResident, sizeof(pRootAttr->cbResident));
 
     PCNTFSATINDEXROOT pIdxRoot = (PCNTFSATINDEXROOT)NTFSATTRIBHDR_GET_RES_VALUE_PTR(pRootAttr->pAttrHdr);
 #ifdef LOG_ENABLED
