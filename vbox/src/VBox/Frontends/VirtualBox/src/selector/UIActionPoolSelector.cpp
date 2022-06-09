@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 68418 2017-08-15 14:11:37Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 69057 2017-10-12 09:43:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -1317,14 +1317,14 @@ void UIActionPoolSelector::preparePool()
     /* Machine Tools actions: */
     m_pool[UIActionIndexST_M_Tools_T_Machine] = new UIActionToggleToolsMachine(this);
     m_pool[UIActionIndexST_M_Tools_M_Machine] = new UIActionMenuToolsMachine(this);
-    m_pool[UIActionIndexST_M_Tools_M_Machine_Details] = new UIActionSimpleToolsMachineDetails(this);
-    m_pool[UIActionIndexST_M_Tools_M_Machine_Snapshots] = new UIActionSimpleToolsMachineSnapshots(this);
+    m_pool[UIActionIndexST_M_Tools_M_Machine_S_Details] = new UIActionSimpleToolsMachineDetails(this);
+    m_pool[UIActionIndexST_M_Tools_M_Machine_S_Snapshots] = new UIActionSimpleToolsMachineSnapshots(this);
 
     /* Global Tools actions: */
     m_pool[UIActionIndexST_M_Tools_T_Global] = new UIActionToggleToolsGlobal(this);
     m_pool[UIActionIndexST_M_Tools_M_Global] = new UIActionMenuToolsGlobal(this);
-    m_pool[UIActionIndexST_M_Tools_M_Global_VirtualMediaManager] = new UIActionSimpleToolsGlobalVirtualMediaManager(this);
-    m_pool[UIActionIndexST_M_Tools_M_Global_HostNetworkManager] = new UIActionSimpleToolsGlobalHostNetworkManager(this);
+    m_pool[UIActionIndexST_M_Tools_M_Global_S_VirtualMediaManager] = new UIActionSimpleToolsGlobalVirtualMediaManager(this);
+    m_pool[UIActionIndexST_M_Tools_M_Global_S_HostNetworkManager] = new UIActionSimpleToolsGlobalHostNetworkManager(this);
 
     /* Call to base-class: */
     UIActionPool::preparePool();

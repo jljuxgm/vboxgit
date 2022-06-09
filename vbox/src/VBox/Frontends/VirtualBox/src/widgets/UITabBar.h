@@ -1,4 +1,4 @@
-/* $Id: UITabBar.h 68480 2017-08-21 09:31:21Z vboxsync $ */
+/* $Id: UITabBar.h 69057 2017-10-12 09:43:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class declaration.
  */
@@ -25,6 +25,7 @@
 #include <QWidget>
 
 /* Forward declarations: */
+class QAction;
 class QDragEnterEvent;
 class QDragLeaveEvent;
 class QDragMoveEvent;
@@ -57,8 +58,8 @@ public:
     /** Constructs tab-bar passing @a pParent to the base-class. */
     UITabBar(QWidget *pParent = 0);
 
-    /** Adds new tab with passed @a icon and @a strName. @returns unique tab ID. */
-    QUuid addTab(const QIcon &icon = QIcon(), const QString &strName = QString());
+    /** Adds new tab for passed @a pAction. @returns unique tab ID. */
+    QUuid addTab(const QAction *pAction);
 
     /** Removes tab with passed @a uuid. */
     bool removeTab(const QUuid &uuid);

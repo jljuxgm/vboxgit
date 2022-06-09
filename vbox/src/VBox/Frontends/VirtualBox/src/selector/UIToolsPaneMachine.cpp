@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.cpp 68418 2017-08-15 14:11:37Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.cpp 69057 2017-10-12 09:43:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class implementation.
  */
@@ -252,12 +252,12 @@ void UIToolsPaneMachine::retranslateUi()
     /* Add tool descriptions: */
     if (m_pItem && m_pItem->accessible())
     {
-        QAction *pAction1 = m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_Details);
+        QAction *pAction1 = m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_S_Details);
         m_pPaneDesktop->addToolDescription(pAction1,
                                            tr("Tool to observe virtual machine (VM) details. "
                                               "Reflects groups of <u>properties</u> for the currently chosen VM and allows "
                                               "basic operations on certain properties (like the machine storage devices)."));
-        QAction *pAction2 = m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_Snapshots);
+        QAction *pAction2 = m_pActionPool->action(UIActionIndexST_M_Tools_M_Machine_S_Snapshots);
         m_pPaneDesktop->addToolDescription(pAction2,
                                            tr("Tool to control virtual machine (VM) snapshots. "
                                               "Reflects <u>snapshots</u> created for the currently selected VM and allows "
