@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxServiceUtils.h 69991 2017-12-07 16:54:23Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Guest Additions Services (Utilities).
  */
@@ -23,6 +23,7 @@
 #ifdef VBOX_WITH_GUEST_PROPS
 int VGSvcReadProp(uint32_t u32ClientId, const char *pszPropName, char **ppszValue, char **ppszFlags, uint64_t *puTimestamp);
 int VGSvcReadPropUInt32(uint32_t u32ClientId, const char *pszPropName, uint32_t *pu32, uint32_t u32Min, uint32_t u32Max);
+int VGSvcCheckPropExist(uint32_t u32ClientId, const char *pszPropName);
 int VGSvcReadHostProp(uint32_t u32ClientId, const char *pszPropName, bool fReadOnly, char **ppszValue, char **ppszFlags,
                       uint64_t *puTimestamp);
 int VGSvcWritePropF(uint32_t u32ClientId, const char *pszName, const char *pszValueFormat, ...);
