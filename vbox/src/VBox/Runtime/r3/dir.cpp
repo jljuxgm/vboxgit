@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
+/* $Id: dir.cpp 69757 2017-11-19 15:15:36Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation, Part 1.
  */
@@ -792,5 +792,63 @@ RTDECL(bool) RTDirEntryExIsStdDotLink(PCRTDIRENTRYEX pDirEntryEx)
     if (pDirEntryEx->cbName != 2)
         return false;
     return pDirEntryEx->szName[1] == '.';
+}
+
+
+RTDECL(int) RTDirReadExA(RTDIR hDir, PRTDIRENTRYEX *ppDirEntry, size_t *pcbDirEntry, RTFSOBJATTRADD enmAddAttr, uint32_t fFlags)
+{
+    PRTDIRENTRYEX pDirEntry  = *ppDirEntry;
+    size_t        cbDirEntry = *pcbDirEntry;
+    if (pDirEntry != NULL && cbDirEntry >= sizeof(RTDIRENTRYEX))
+    { /* likely */ }
+    else
+    {
+        Assert(pDirEntry == NULL);
+        Assert(cbDirEntry == 0);
+
+        cbDirEntry  = RT_ALIGN_Z(sizeof(RTDIRENTRYEX), 16);
+        *ppDirEntry = pDirEntry = (PRTDIRENTRYEX)RTMemTmpAlloc(cbDirEntry);
+        if (pDirEntry)
+            *pcbDirEntry = cbDirEntry;
+        else
+        {
+            *pcbDirEntry = 0;
+            return VERR_NO_TMP_MEMORY;
+        }
+    }
+
+    for (;;)
+    {
+        int rc = RTDirReadEx(hDir, pDirEntry, &cbDirEntry, enmAddAttr, fFlags);
+        if (rc != VERR_BUFFER_OVERFLOW)
+            return rc;
+
+        /* Grow the buffer. */
+        RTMemTmpFree(pDirEntry);
+        cbDirEntry = RT_MAX(RT_ALIGN_Z(cbDirEntry, 64), *pcbDirEntry + 64);
+        *ppDirEntry = pDirEntry = (PRTDIRENTRYEX)RTMemTmpAlloc(cbDirEntry);
+        if (pDirEntry)
+            *pcbDirEntry = cbDirEntry;
+        else
+        {
+            *pcbDirEntry = 0;
+            return VERR_NO_TMP_MEMORY;
+        }
+    }
+}
+
+
+RTDECL(void) RTDirReadExAFree(PRTDIRENTRYEX *ppDirEntry, size_t *pcbDirEntry)
+{
+    PRTDIRENTRYEX pDirEntry = *ppDirEntry;
+    if (pDirEntry != NULL && *pcbDirEntry >= sizeof(*pcbDirEntry))
+        RTMemTmpFree(pDirEntry);
+    else
+    {
+        Assert(pDirEntry == NULL);
+        Assert(*pcbDirEntry == 0);
+    }
+    *ppDirEntry  = NULL;
+    *pcbDirEntry = 0;
 }
 
