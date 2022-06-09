@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 72576 2018-06-15 21:27:49Z vboxsync $ */
+/* $Id: EMInternal.h 72579 2018-06-16 14:32:26Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -505,10 +505,19 @@ typedef struct EMCPU
     uint64_t                iNextExit;
     /** Exit history table (6KB). */
     EMEXITENTRY             aExitHistory[256];
+
+    /** Hit statistics for each lookup step. */
+    STAMCOUNTER             aStatHistoryRecHits[16];
+    /** Type change statistics for each lookup step. */
+    STAMCOUNTER             aStatHistoryRecTypeChanged[16];
+    /** Replacement statistics for each lookup step. */
+    STAMCOUNTER             aStatHistoryRecReplaced[16];
+    /** New record statistics for each lookup step. */
+    STAMCOUNTER             aStatHistoryRecNew[16];
     /** Number of exit records in use. */
     uint32_t                cExitRecordUsed;
-    /** Number of exit records collisions. */
-    uint32_t                cExitRecordCollisions;
+    /** Explicit padding. */
+    uint32_t                uPadding2;
     /** Exit records (32KB). (Aligned on 32 byte boundrary.) */
     EMEXITREC               aExitRecords[1024];
 } EMCPU;
