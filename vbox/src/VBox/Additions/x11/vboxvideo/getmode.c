@@ -1,4 +1,4 @@
-/* $Id: getmode.c 64185 2016-10-10 08:40:56Z vboxsync $ */
+/* $Id: getmode.c 68632 2017-09-05 11:43:45Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver dynamic video mode functions.
  */
@@ -16,7 +16,6 @@
  */
 
 #include "vboxvideo.h"
-#include <VBox/VMMDev.h>
 
 #define NEED_XF86_TYPES
 #include <iprt/string.h>

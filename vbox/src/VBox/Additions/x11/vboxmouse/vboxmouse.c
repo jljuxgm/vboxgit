@@ -1,4 +1,4 @@
-/* $Id: vboxmouse.c 63435 2016-08-14 09:56:30Z vboxsync $ */
+/* $Id: vboxmouse.c 68632 2017-09-05 11:43:45Z vboxsync $ */
 /** @file
  * VirtualBox X11 Guest Additions, mouse driver for X.Org server 1.5
  */
@@ -44,7 +44,7 @@
  *      Adam Jackson (ajax@redhat.com)
  */
 
-#include <VBox/VMMDev.h>
+#include <VBox/VMMDev.h> /* for VMMDEV_MOUSE_XXX */
 #include <VBox/VBoxGuestLib.h>
 #include <iprt/err.h>
 #include <xf86.h>

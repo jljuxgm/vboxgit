@@ -1,4 +1,4 @@
-/* $Id: vbva.c 65122 2017-01-04 17:11:20Z vboxsync $ */
+/* $Id: vbva.c 68632 2017-09-05 11:43:45Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver 2D acceleration functions
  */
@@ -15,7 +15,6 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <VBox/VMMDev.h>
 #include <VBox/VBoxGuestLib.h>
 
 #include <iprt/string.h>
