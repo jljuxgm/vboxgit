@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 70977 2018-02-12 20:45:31Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 70978 2018-02-12 20:48:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -894,8 +894,8 @@ int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
             || pgmPhysGetPage(pVM, GCPhys) == pPage)
         {
             uint8_t u2State = PGM_PAGE_GET_NEM_STATE(pPage);
-            int rc2 = NEMHCNotifyPhysPageAllocated(pVM, GCPhys & ~(RTGCPHYS)X86_PAGE_OFFSET_MASK, HCPhys,
-                                                   pgmPhysPageCalcNemProtection(pPage, enmType), enmType, &u2State);
+            rc2 = NEMHCNotifyPhysPageAllocated(pVM, GCPhys & ~(RTGCPHYS)X86_PAGE_OFFSET_MASK, HCPhys,
+                                               pgmPhysPageCalcNemProtection(pPage, enmType), enmType, &u2State);
             if (RT_SUCCESS(rc))
                 PGM_PAGE_SET_NEM_STATE(pPage, u2State);
             else
