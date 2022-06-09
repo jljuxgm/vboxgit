@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: EMAll.cpp 71341 2018-03-15 06:13:31Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -267,8 +267,9 @@ VMM_INT_DECL(bool) EMMonitorWaitShouldContinue(PVMCPU pVCpu, PCPUMCTX pCtx)
  */
 VMM_INT_DECL(bool) EMShouldContinueAfterHalt(PVMCPU pVCpu, PCPUMCTX pCtx)
 {
+    /** @todo Shouldn't we be checking GIF here? */
     if (pCtx->eflags.Bits.u1IF)
-        return !!VMCPU_FF_IS_PENDING(pVCpu, (VMCPU_FF_UPDATE_APIC | VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC));
+        return VMCPU_FF_IS_PENDING(pVCpu, (VMCPU_FF_UPDATE_APIC | VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC));
     return false;
 }
 
