@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: thread-win.cpp 71127 2018-02-26 15:21:36Z vboxsync $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -375,4 +375,27 @@ RTR3DECL(int) RTThreadGetExecutionTimeMilli(uint64_t *pKernelTime, uint64_t *pUs
     AssertMsgFailed(("GetThreadTimes failed, LastError=%d\n", iLastError));
     return RTErrConvertFromWin32(iLastError);
 }
+
+
+/**
+ * Gets the native thread handle for a IPRT thread.
+ *
+ * @returns The thread handle. INVALID_HANDLE_VALUE on failure.
+ * @param   hThread     The IPRT thread handle.
+ *
+ * @note    Windows only.
+ * @note    Only valid after parent returns from the thread creation call.
+ */
+RTDECL(uintptr_t) RTThreadGetNativeHandle(RTTHREAD hThread)
+{
+    PRTTHREADINT pThread = rtThreadGet(hThread);
+    if (pThread)
+    {
+        uintptr_t hHandle = pThread->hThread;
+        rtThreadRelease(pThread);
+        return hHandle;
+    }
+    return (uintptr_t)INVALID_HANDLE_VALUE;
+}
+RT_EXPORT_SYMBOL(RTThreadGetNativeHandle);
 
