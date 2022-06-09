@@ -1,4 +1,4 @@
-/* $Id: vcc100-ntdll-fakes.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: vcc100-ntdll-fakes.cpp 70360 2017-12-27 16:57:22Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP - NTDLL.DLL.
  */
@@ -44,7 +44,7 @@
     static bool volatile    s_fInitialized = false; \
     static decltype(ApiNm) *s_pfnApi = NULL; \
     decltype(ApiNm)        *pfnApi; \
-    if (!s_fInitialized) \
+    if (s_fInitialized) \
         pfnApi = s_pfnApi; \
     else \
     { \

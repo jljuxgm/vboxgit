@@ -1,4 +1,4 @@
-/* $Id: vcc100-shell32-fakes.cpp 70345 2017-12-26 15:51:56Z vboxsync $ */
+/* $Id: vcc100-shell32-fakes.cpp 70360 2017-12-27 16:57:22Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -52,7 +52,7 @@
     static decltype(ShellExecuteW) * volatile s_pfnInitialized = NULL; \
     static decltype(ApiNm) *s_pfnApi = NULL; \
     decltype(ApiNm)        *pfnApi; \
-    if (!s_pfnInitialized) \
+    if (s_pfnInitialized) \
         pfnApi = s_pfnApi; \
     else \
     { \
