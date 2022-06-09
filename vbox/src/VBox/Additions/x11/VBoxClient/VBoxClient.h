@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 67755 2017-07-03 13:33:55Z vboxsync $ */
+/* $Id: VBoxClient.h 68562 2017-08-31 12:10:16Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -35,7 +35,7 @@ do { \
 extern DECLNORETURN(void) vbclFatalError(char *pszMessage);
 
 /** Call clean-up for the current service and exit. */
-extern void VBClCleanUp();
+extern void VBClCleanUp(bool fExit = true);
 
 /** A simple interface describing a service.  VBoxClient will run exactly one
  * service per invocation. */
