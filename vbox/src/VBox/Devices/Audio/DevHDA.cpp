@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 71727 2018-04-06 21:44:21Z vboxsync $ */
+/* $Id: DevHDA.cpp 71735 2018-04-07 14:55:31Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -590,7 +590,7 @@ static void hdaReschedulePendingInterrupts(PHDASTATE pThis)
 
     LogFunc(("fInterrupt=%RTbool\n", fInterrupt));
 
-# ifndef DEBUG
+# ifndef LOG_ENABLED
     hdaProcessInterrupt(pThis);
 # else
     hdaProcessInterrupt(pThis, __FUNCTION__);
@@ -874,7 +874,7 @@ static int hdaR3CORBCmdProcess(PHDASTATE pThis)
             {
                 HDA_REG(pThis, RIRBSTS) |= HDA_RIRBSTS_RINTFL;
 
-# ifndef DEBUG
+# ifndef LOG_ENABLED
                 rc = hdaProcessInterrupt(pThis);
 # else
                 rc = hdaProcessInterrupt(pThis, __FUNCTION__);
@@ -1514,7 +1514,7 @@ static int hdaRegWriteSDSTS(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
         hdaStreamPeriodUnlock(pPeriod); /* Unlock before processing interrupt. */
     }
 
-# ifndef DEBUG
+# ifndef LOG_ENABLED
     hdaProcessInterrupt(pThis);
 # else
     hdaProcessInterrupt(pThis, __FUNCTION__);
@@ -2286,7 +2286,7 @@ static int hdaRegWriteRIRBSTS(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
     uint8_t v = HDA_REG(pThis, RIRBSTS);
     HDA_REG(pThis, RIRBSTS) &= ~(v & u32Value);
 
-#ifndef DEBUG
+#ifndef LOG_ENABLED
     int rc = hdaProcessInterrupt(pThis);
 #else
     int rc = hdaProcessInterrupt(pThis, __FUNCTION__);

@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 71704 2018-04-06 12:52:24Z vboxsync $ */
+/* $Id: HDAStream.cpp 71735 2018-04-07 14:55:31Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1190,7 +1190,7 @@ int hdaStreamTransfer(PHDASTREAM pStream, uint32_t cbToProcessMax)
 
         /* Trigger an interrupt first and let hdaRegWriteSDSTS() deal with
          * ending / beginning a period. */
-#ifndef DEBUG
+#ifndef LOG_ENABLED
         hdaProcessInterrupt(pThis);
 #else
         hdaProcessInterrupt(pThis, __FUNCTION__);
