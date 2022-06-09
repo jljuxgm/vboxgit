@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 65898 2017-02-28 14:41:34Z vboxsync $ */
+/* $Id: VMMR0.cpp 67130 2017-05-29 12:46:19Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2243,9 +2243,10 @@ DECLEXPORT(void) RTCALL RTAssertMsg1Weak(const char *pszExpr, unsigned uLine, co
     if (pVM)
         RTStrPrintf(pVM->vmm.s.szRing0AssertMsg1, sizeof(pVM->vmm.s.szRing0AssertMsg1),
                     "\n!!R0-Assertion Failed!!\n"
-                    "Expression: %s\n"
+                    "Expression: %.*s\n"
                     "Location  : %s(%d) %s\n",
-                    pszExpr, pszFile, uLine, pszFunction);
+                    sizeof(pVM->vmm.s.szRing0AssertMsg1) / 4 * 3, pszExpr,
+                    pszFile, uLine, pszFunction);
 
     /*
      * Continue the normal way.
