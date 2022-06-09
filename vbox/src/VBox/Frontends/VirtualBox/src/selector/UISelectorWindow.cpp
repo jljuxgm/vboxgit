@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 70755 2018-01-26 08:09:08Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 70756 2018-01-26 10:06:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1370,7 +1370,7 @@ void UISelectorWindow::prepare()
 {
 #ifdef VBOX_WS_X11
     /* Assign same name to both WM_CLASS name & class for now: */
-    vboxGlobal().setWMClass(this, "VirtualBox Manager", "VirtualBox Manager");
+    VBoxGlobal::setWMClass(this, "VirtualBox Manager", "VirtualBox Manager");
 #endif
 
 #ifdef VBOX_WS_MAC
