@@ -1,4 +1,4 @@
-/* $Id: VBoxPeSetVersion.cpp 70369 2017-12-27 17:54:48Z vboxsync $ */
+/* $Id: VBoxPeSetVersion.cpp 70373 2017-12-28 20:42:59Z vboxsync $ */
 /** @file
  * IPRT - Change the OS and SubSystem version to value suitable for NT v3.1.
  *
@@ -213,7 +213,7 @@ int main(int argc, char **argv)
      * Parse arguments.
      * This stucks
      */
-    unsigned    uNtVersion     = 31;
+    unsigned    uNtVersion     = MK_VER(3,10);
     const char *pszFilename    = NULL;
     bool        fAcceptOptions = true;
     for (int i = 1; i < argc; i++)
@@ -242,13 +242,13 @@ int main(int argc, char **argv)
                 else
                 {
                     if (strcmp(psz, "nt31") == 0)
-                        uNtVersion = MK_VER(3, 10);
+                        uNtVersion = MK_VER(3,10);
                     else if (strcmp(psz, "nt350") == 0)
-                        uNtVersion = MK_VER(3, 50);
+                        uNtVersion = MK_VER(3,50);
                     else if (strcmp(psz, "nt351") == 0)
-                        uNtVersion = MK_VER(3, 51);
+                        uNtVersion = MK_VER(3,51);
                     else if (strcmp(psz, "nt4") == 0)
-                        uNtVersion = MK_VER(4, 0);
+                        uNtVersion = MK_VER(4,0);
                     else if (strcmp(psz, "w2k") == 0)
                         uNtVersion = MK_VER(5,0);
                     else if (strcmp(psz, "xp") == 0)
