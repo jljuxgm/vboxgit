@@ -1,5 +1,5 @@
 @echo off
-rem $Id: loadall.cmd 56293 2015-06-09 14:23:56Z vboxsync $
+rem $Id: loadall.cmd 69250 2017-10-24 19:18:49Z vboxsync $
 rem rem @file
 rem Windows NT batch script for launching loadall.sh
 rem
@@ -14,6 +14,15 @@ rem General Public License (GPL) as published by the Free Software
 rem Foundation, in version 2 as it comes in the "COPYING" file of the
 rem VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 rem hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+rem
+rem The contents of this file may alternatively be used under the terms
+rem of the Common Development and Distribution License Version 1.0
+rem (CDDL) only, as it comes in the "COPYING.CDDL" file of the
+rem VirtualBox OSE distribution, in which case the provisions of the
+rem CDDL are applicable instead of those of the GPL.
+rem
+rem You may elect to license modified versions of this file under the
+rem terms and conditions of either the GPL or the CDDL or both.
 rem
 
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB.cpp 64432 2016-10-26 16:57:32Z vboxsync $ */
+/* $Id: VBoxUSB.cpp 69250 2017-10-24 19:18:49Z vboxsync $ */
 /** @file
  * VirtualBox USB driver for Darwin.
  *
@@ -17,6 +17,15 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ *
+ * The contents of this file may alternatively be used under the terms
+ * of the Common Development and Distribution License Version 1.0
+ * (CDDL) only, as it comes in the "COPYING.CDDL" file of the
+ * VirtualBox OSE distribution, in which case the provisions of the
+ * CDDL are applicable instead of those of the GPL.
+ *
+ * You may elect to license modified versions of this file under the
+ * terms and conditions of either the GPL or the CDDL or both.
  */
 
 

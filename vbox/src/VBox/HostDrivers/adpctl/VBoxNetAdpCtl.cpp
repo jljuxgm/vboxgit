@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 68056 2017-07-20 09:47:06Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 69250 2017-10-24 19:18:49Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -676,6 +676,7 @@ int Adapter::doIOCtl(unsigned long iCmd, VBOXNETADPREQ *pReq)
 
     return rc;
 }
+
 
 /*********************************************************************************************************************************
 *   Main logic, argument parsing, etc.                                                                                           *
