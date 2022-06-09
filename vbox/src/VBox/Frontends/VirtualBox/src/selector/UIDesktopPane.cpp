@@ -1,4 +1,4 @@
-/* $Id: UIDesktopPane.cpp 68354 2017-08-09 14:50:26Z vboxsync $ */
+/* $Id: UIDesktopPane.cpp 68359 2017-08-09 15:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopPane class implementation.
  */
@@ -612,7 +612,7 @@ void UIDesktopPanePrivate::setToolsPaneText(const QString &strText)
     m_pLabelToolsPaneText->setText(strText);
 
     /* Raise corresponding widget: */
-    setCurrentWidget(m_pToolsPane);
+    setCurrentWidget(m_pScrollArea);
 }
 
 void UIDesktopPanePrivate::setToolsPaneIcon(const QIcon &icon)
@@ -624,7 +624,7 @@ void UIDesktopPanePrivate::setToolsPaneIcon(const QIcon &icon)
     m_pLabelToolsPaneIcon->setPixmap(icon.pixmap(QSize(200, 200)));
 
     /* Raise corresponding widget: */
-    setCurrentWidget(m_pToolsPane);
+    setCurrentWidget(m_pScrollArea);
 }
 
 void UIDesktopPanePrivate::addToolDescription(QAction *pAction, const QString &strDescription)
@@ -641,7 +641,7 @@ void UIDesktopPanePrivate::addToolDescription(QAction *pAction, const QString &s
     }
 
     /* Raise corresponding widget: */
-    setCurrentWidget(m_pToolsPane);
+    setCurrentWidget(m_pScrollArea);
 }
 
 void UIDesktopPanePrivate::removeToolDescriptions()
