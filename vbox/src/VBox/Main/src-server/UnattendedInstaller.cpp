@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.cpp 71007 2018-02-14 12:46:17Z vboxsync $ */
+/* $Id: UnattendedInstaller.cpp 71011 2018-02-14 16:11:18Z vboxsync $ */
 /** @file
  * UnattendedInstaller class and it's descendants implementation
  */
@@ -78,6 +78,8 @@ using namespace std;
                 pUinstaller = new UnattendedRhel6And7Installer(pParent);
             else if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "5") >= 0)
                 pUinstaller = new UnattendedRhel5Installer(pParent);
+            else if (RTStrVersionCompare(strDetectedOSVersion.c_str(), "4") >= 0)
+                pUinstaller = new UnattendedRhel4Installer(pParent);
             else
                 pUinstaller = new UnattendedRhel6And7Installer(pParent);
         }
