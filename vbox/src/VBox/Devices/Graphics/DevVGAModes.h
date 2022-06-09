@@ -1,4 +1,4 @@
-/* $Id: DevVGAModes.h 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: DevVGAModes.h 69047 2017-10-11 16:24:38Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, VBE modes.
  *
@@ -17,8 +17,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-#ifdef VBE_NEW_DYN_LIST
 
 #include <VBoxVideoVBE.h>
 
@@ -191,5 +189,3 @@ typedef struct ModeInfoListItem
 #include "vbetables.h"
 
 #define MODE_INFO_SIZE ( sizeof(mode_info_list) / sizeof(ModeInfoListItem) )
-
-#endif /* VBE_NEW_DYN_LIST */
