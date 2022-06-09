@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 68462 2017-08-18 11:23:02Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 68464 2017-08-18 11:27:42Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -128,22 +128,9 @@ using namespace guestProp;
  */
 VBGLR3DECL(int) VbglR3GuestPropConnect(HGCMCLIENTID *pidClient)
 {
-    VBoxGuestHGCMConnectInfo Info;
-    Info.result = VERR_WRONG_ORDER;
-    Info.Loc.type = VMMDevHGCMLoc_LocalHost_Existing;
-    RT_ZERO(Info.Loc.u);
-    strcpy(Info.Loc.u.host.achName, "VBoxGuestPropSvc");
-    Info.u32ClientID = UINT32_MAX;  /* try make valgrind shut up. */
-
-    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CONNECT, &Info, sizeof(Info));
-    if (RT_SUCCESS(rc))
-    {
-        rc = Info.result;
-        if (RT_SUCCESS(rc))
-            *pidClient = Info.u32ClientID;
-        if (rc == VERR_NOT_IMPLEMENTED || rc == VERR_HGCM_SERVICE_NOT_FOUND)
-            rc = VERR_NOT_SUPPORTED;
-    }
+    int rc = VbglR3HGCMConnect("VBoxGuestPropSvc", pidClient);
+    if (rc == VERR_NOT_IMPLEMENTED || rc == VERR_HGCM_SERVICE_NOT_FOUND)
+        rc = VERR_NOT_SUPPORTED;
     return rc;
 }
 

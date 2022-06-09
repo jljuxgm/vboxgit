@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSharedFolders.cpp 68462 2017-08-18 11:23:02Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSharedFolders.cpp 68464 2017-08-18 11:27:42Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, shared folders.
  */
@@ -48,21 +48,7 @@
  */
 VBGLR3DECL(int) VbglR3SharedFolderConnect(HGCMCLIENTID *pidClient)
 {
-    VBoxGuestHGCMConnectInfo Info;
-    Info.result = VERR_WRONG_ORDER;
-    Info.Loc.type = VMMDevHGCMLoc_LocalHost_Existing;
-    RT_ZERO(Info.Loc.u);
-    strcpy(Info.Loc.u.host.achName, "VBoxSharedFolders");
-    Info.u32ClientID = UINT32_MAX;  /* try make valgrind shut up. */
-
-    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CONNECT, &Info, sizeof(Info));
-    if (RT_SUCCESS(rc))
-    {
-        rc = Info.result;
-        if (RT_SUCCESS(rc))
-            *pidClient = Info.u32ClientID;
-    }
-    return rc;
+    return VbglR3HGCMConnect("VBoxSharedFolders", pidClient);
 }
 
 
