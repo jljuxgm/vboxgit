@@ -1,4 +1,4 @@
-/* $Id: VirtualKD.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VirtualKD.cpp 71780 2018-04-09 15:32:35Z vboxsync $ */
 /** @file
  * VirtualKD - Device stub/loader for fast Windows kernel-mode debugging.
  *
@@ -218,9 +218,7 @@ static DECLCALLBACK(int) vkdConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
         return VINF_SUCCESS;
     }
 
-    PDMDevHlpIOPortRegister(pDevIns, 0x5658, 2, NULL, vkdPortWrite, vkdPortRead, NULL, NULL, "VirtualKD");
-
-    return VINF_SUCCESS;
+    return PDMDevHlpIOPortRegister(pDevIns, 0x5658, 2, NULL, vkdPortWrite, vkdPortRead, NULL, NULL, "VirtualKD");
 }
 
 
