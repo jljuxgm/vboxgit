@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 69500 2017-10-28 15:14:05Z vboxsync $
+# $Id: vboxshell.py 71179 2018-03-02 15:08:52Z vboxsync $
 
 """
 VirtualBox Python Shell.
@@ -33,7 +33,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 69500 $"
+__version__ = "$Revision: 71179 $"
 
 
 import gc
@@ -3278,7 +3278,7 @@ commands = {'help':['Prints help information', helpCmd, 0],
             'monitorGuestKbd':['Monitor guest keyboard for some time: monitorGuestKbd Win32 10', monitorGuestKbdCmd, 0],
             'monitorGuestMouse':['Monitor guest mouse for some time: monitorGuestMouse Win32 10', monitorGuestMouseCmd, 0],
             'monitorGuestMultiTouch':['Monitor guest touch screen for some time: monitorGuestMultiTouch Win32 10', monitorGuestMultiTouchCmd, 0],
-            'monitorVBox':['Monitor what happens with Virtual Box for some time: monitorVBox 10', monitorVBoxCmd, 0],
+            'monitorVBox':['Monitor what happens with VirtualBox for some time: monitorVBox 10', monitorVBoxCmd, 0],
             'portForward':['Setup permanent port forwarding for a VM, takes adapter number host port and guest port: portForward Win32 0 8080 80', portForwardCmd, 0],
             'showLog':['Show log file of the VM, : showLog Win32', showLogCmd, 0],
             'findLog':['Show entries matching pattern in log file of the VM, : findLog Win32 PDM|CPUM', findLogCmd, 0],
