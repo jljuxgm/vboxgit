@@ -1,4 +1,4 @@
-/* $Id: vbva.c 69066 2017-10-12 19:03:30Z vboxsync $ */
+/* $Id: vbva.c 69079 2017-10-13 15:27:12Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver 2D acceleration functions
  */
@@ -25,15 +25,16 @@
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <VBox/VBoxGuestLib.h>
-
-#include <iprt/string.h>
+#if defined(IN_XF86_MODULE) && !defined(NO_ANSIC)
+# include "xf86_ansic.h"
+#endif
 #include "compiler.h"
 
 #include "vboxvideo.h"
 
 #ifdef XORG_7X
 # include <stdlib.h>
+# include <string.h>
 #endif
 
 /**************************************************************************

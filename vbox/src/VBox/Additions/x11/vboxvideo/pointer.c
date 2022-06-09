@@ -1,4 +1,4 @@
-/* $Id: pointer.c 69075 2017-10-13 14:17:38Z vboxsync $ */
+/* $Id: pointer.c 69079 2017-10-13 15:27:12Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver utility functions
  */
@@ -25,8 +25,6 @@
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <VBox/VBoxGuestLib.h>
-
 #ifndef PCIACCESS
 # include "xf86Pci.h"
 # include <Pci.h>
@@ -34,7 +32,6 @@
 
 #include "xf86.h"
 #define NEED_XF86_TYPES
-#include <iprt/string.h>
 #include "compiler.h"
 #include "cursorstr.h"
 #include "servermd.h"
@@ -43,6 +40,7 @@
 
 #ifdef XORG_7X
 # include <stdlib.h>
+# include <string.h>
 #endif
 
 #define VBOX_MAX_CURSOR_WIDTH 64

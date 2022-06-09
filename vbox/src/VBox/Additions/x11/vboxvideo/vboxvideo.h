@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.h 69078 2017-10-13 15:04:27Z vboxsync $ */
+/* $Id: vboxvideo.h 69079 2017-10-13 15:27:12Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver
  */
@@ -85,7 +85,7 @@ if (!(expr)) \
 { \
     xf86ErrorF("\nAssertion failed!\n\n"); \
     xf86ErrorF("%s\n", #expr); \
-    xf86ErrorF("at %s (%s:%d)\n", RT_GCC_EXTENSION __PRETTY_FUNCTION__, __FILE__, __LINE__); \
+    xf86ErrorF("at %s (%s:%d)\n", __func__, __FILE__, __LINE__); \
     xf86ErrorF out; \
     FatalError("Assertion"); \
 }
