@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 69197 2017-10-24 10:19:03Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 69199 2017-10-24 10:50:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class implementation.
  */
@@ -229,7 +229,7 @@ void UIWizardCloneVDPageExpert::sltMediumFormatChanged()
     m_pSplitBox->setEnabled(fIsCreateSplitPossible);
 
     /* Compose virtual-disk extension: */
-    m_strDefaultExtension = defaultExtension(mf);
+    acquireExtensions(mf, m_aAllowedExtensions, m_strDefaultExtension);
 
     /* Broadcast complete-change: */
     emit completeChanged();
