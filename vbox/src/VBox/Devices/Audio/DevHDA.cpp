@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 70436 2018-01-02 16:56:54Z vboxsync $ */
+/* $Id: DevHDA.cpp 70642 2018-01-19 12:18:45Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -2463,11 +2463,13 @@ static int hdaMixerAddDrvStreams(PHDASTATE pThis, PAUDMIXSINK pMixSink, PPDMAUDI
     RTListForEach(&pThis->lstDrv, pDrv, HDADRIVER, Node)
     {
         int rc2 = hdaMixerAddDrvStream(pThis, pMixSink, pCfg, pDrv);
-        if (RT_SUCCESS(rc))
-            rc = rc2;
+        if (RT_FAILURE(rc2))
+            LogFunc(("Attaching stream failed with %Rrc\n", rc2));
+
+        /* Do not pass failure to rc here, as there might be drivers which aren't
+         * configured / ready yet. */
     }
 
-    LogFlowFuncLeaveRC(rc);
     return rc;
 }
 
