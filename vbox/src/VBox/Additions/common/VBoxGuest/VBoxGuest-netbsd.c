@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 70044 2017-12-09 00:52:16Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 70045 2017-12-09 01:12:43Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -583,7 +583,7 @@ VBoxGuestNetBSDWsmIOCtl(void *cookie, u_long cmd, void *data, int flag, struct l
     case WSMOUSEIO_GCALIBCOORDS:
         return tpcalib_ioctl(&sc->sc_tpcalib, cmd, data, flag, l);
 
-    default: 
+    default:
         return EPASSTHROUGH;
     }
     return 0;
