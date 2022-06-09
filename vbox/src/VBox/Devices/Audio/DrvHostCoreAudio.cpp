@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 68272 2017-08-03 08:25:32Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 68469 2017-08-18 14:02:16Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -1056,7 +1056,7 @@ static DECLCALLBACK(OSStatus) coreAudioDefaultDeviceChangedCb(AudioObjectID prop
 
 #ifdef VBOX_WITH_AUDIO_CALLBACKS
     if (pfnCallback)
-        /* Ignore rc */ pfnCallback(pThis->pDrvIns, PDMAUDIOCBTYPE_DEVICES_CHANGED, NULL, 0);
+        /* Ignore rc */ pfnCallback(pThis->pDrvIns, PDMAUDIOBACKENDCBTYPE_DEVICES_CHANGED, NULL, 0);
 #endif
 
     return noErr;
