@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 67219 2017-06-01 17:18:24Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 67440 2017-06-16 13:58:56Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1801,15 +1801,17 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             InsertConfigNode(pDev,     "0", &pInst);
             InsertConfigInteger(pInst, "Trusted", 1); /* boolean */
             InsertConfigNode(pInst,    "Config", &pCfg);
-            InsertConfigInteger(pCfg,  "NumCPUs",          cCpus);
-            InsertConfigString(pCfg,   "EfiRom",           efiRomFile);
-            InsertConfigString(pCfg,   "BootArgs",         bootArgs);
-            InsertConfigString(pCfg,   "DeviceProps",      deviceProps);
-            InsertConfigInteger(pCfg,  "IOAPIC",           fIOAPIC);
-            InsertConfigInteger(pCfg,  "APIC",             uFwAPIC);
+            InsertConfigInteger(pCfg,  "NumCPUs",     cCpus);
+            InsertConfigInteger(pCfg,  "McfgBase",    uMcfgBase);
+            InsertConfigInteger(pCfg,  "McfgLength",  cbMcfgLength);
+            InsertConfigString(pCfg,   "EfiRom",      efiRomFile);
+            InsertConfigString(pCfg,   "BootArgs",    bootArgs);
+            InsertConfigString(pCfg,   "DeviceProps", deviceProps);
+            InsertConfigInteger(pCfg,  "IOAPIC",      fIOAPIC);
+            InsertConfigInteger(pCfg,  "APIC",        uFwAPIC);
             InsertConfigBytes(pCfg,    "UUID", &HardwareUuid,sizeof(HardwareUuid));
-            InsertConfigInteger(pCfg,  "64BitEntry", f64BitEntry); /* boolean */
-            InsertConfigInteger(pCfg,  "GopMode", u32GopMode);
+            InsertConfigInteger(pCfg,  "64BitEntry",  f64BitEntry); /* boolean */
+            InsertConfigInteger(pCfg,  "GopMode",     u32GopMode);
             InsertConfigInteger(pCfg,  "UgaHorizontalResolution", u32UgaHorizontal);
             InsertConfigInteger(pCfg,  "UgaVerticalResolution", u32UgaVertical);
 
