@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 65988 2017-03-07 16:49:43Z vboxsync $ */
+/* $Id: PGM.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -4033,7 +4033,7 @@ static DECLCALLBACK(int) pgmR3CmdPhysToFile(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp,
 
                     default:
                         AssertFailed();
-                        /* fall thru */
+                        RT_FALL_THRU();
                     case PGMPAGETYPE_MMIO:
                     case PGMPAGETYPE_MMIO2_ALIAS_MMIO:
                     case PGMPAGETYPE_SPECIAL_ALIAS_MMIO:

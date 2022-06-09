@@ -1,4 +1,4 @@
-/* $Id: pkix-util.cpp 65813 2017-02-20 12:19:15Z vboxsync $ */
+/* $Id: pkix-util.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Infrastructure API, Utilities.
  */
@@ -62,7 +62,7 @@ RTDECL(const char *) RTCrPkixGetCiperOidFromSignatureAlgorithm(PCRTASN1OBJID pAl
                 case 14:
                     return RTCR_PKCS1_RSA_OID;
                 case 1: AssertFailed();
-                    /* fall thru */
+                    RT_FALL_THRU();
                 default:
                     return NULL;
             }

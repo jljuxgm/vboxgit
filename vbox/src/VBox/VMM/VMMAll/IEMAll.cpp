@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 68997 2017-10-06 08:39:09Z vboxsync $ */
+/* $Id: IEMAll.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3502,7 +3502,7 @@ IEM_STATIC VBOXSTRICTRC iemRaiseLoadStackFromTss32Or16(PVMCPU pVCpu, PCCPUMCTX p
         /*
          * 16-bit TSS (X86TSS16).
          */
-        case X86_SEL_TYPE_SYS_286_TSS_AVAIL: AssertFailed(); /* fall thru */
+        case X86_SEL_TYPE_SYS_286_TSS_AVAIL: AssertFailed(); RT_FALL_THRU();
         case X86_SEL_TYPE_SYS_286_TSS_BUSY:
         {
             uint32_t off = uCpl * 4 + 2;
@@ -3529,7 +3529,7 @@ IEM_STATIC VBOXSTRICTRC iemRaiseLoadStackFromTss32Or16(PVMCPU pVCpu, PCCPUMCTX p
         /*
          * 32-bit TSS (X86TSS32).
          */
-        case X86_SEL_TYPE_SYS_386_TSS_AVAIL: AssertFailed(); /* fall thru */
+        case X86_SEL_TYPE_SYS_386_TSS_AVAIL: AssertFailed(); RT_FALL_THRU();
         case X86_SEL_TYPE_SYS_386_TSS_BUSY:
         {
             uint32_t off = uCpl * 8 + 4;
@@ -4690,7 +4690,7 @@ iemRaiseXcptOrIntInProtMode(PVMCPU      pVCpu,
 
         case X86_SEL_TYPE_SYS_286_INT_GATE:
             f32BitGate = false;
-            /* fall thru */
+            RT_FALL_THRU();
         case X86_SEL_TYPE_SYS_386_INT_GATE:
             fEflToClear |= X86_EFL_IF;
             break;
@@ -5776,7 +5776,7 @@ DECL_NO_INLINE(IEM_STATIC, VBOXSTRICTRC) iemRaisePageFault(PVMCPU pVCpu, RTGCPTR
 
         default:
             AssertMsgFailed(("%Rrc\n", rc));
-            /* fall thru */
+            RT_FALL_THRU();
         case VERR_ACCESS_DENIED:
             uErr = X86_TRAP_PF_P;
             break;

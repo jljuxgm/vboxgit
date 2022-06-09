@@ -1,4 +1,4 @@
-/* $Id: WinKeyboard.cpp 63315 2016-08-11 10:17:35Z vboxsync $ */
+/* $Id: WinKeyboard.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Windows keyboard handling..
  */
@@ -246,7 +246,7 @@ void WinAltGrMonitor::updateStateFromKeyEvent(unsigned iDownScanCode,
             }
             else
                 m_enmFakeControlDetectionState = LEFT_CONTROL_DOWN;
-            /* Fall through. */
+            RT_FALL_THRU();
         case LEFT_CONTROL_DOWN:
             if (   iDownScanCode == 0x1D /* left control */
                 && !fKeyDown

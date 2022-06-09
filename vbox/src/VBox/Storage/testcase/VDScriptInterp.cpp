@@ -1,4 +1,4 @@
-/** $Id: VDScriptInterp.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/** $Id: VDScriptInterp.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - scripting engine, interpreter.
@@ -504,7 +504,7 @@ static int vdScriptInterpreterEvaluateExpression(PVDSCRIPTINTERPCTX pThis, PVDSC
         case VDSCRIPTEXPRTYPE_POSTFIX_INCREMENT:
         case VDSCRIPTEXPRTYPE_POSTFIX_DECREMENT:
             AssertMsgFailed(("TODO\n"));
-            /* fall thru */
+            RT_FALL_THRU();
         case VDSCRIPTEXPRTYPE_POSTFIX_FNCALL:
         {
             PVDSCRIPTFN pFn = (PVDSCRIPTFN)RTStrSpaceGet(&pThis->pScriptCtx->hStrSpaceFn, pExpr->FnCall.pFnIde->pIde->aszIde);
@@ -571,7 +571,7 @@ static int vdScriptInterpreterEvaluateExpression(PVDSCRIPTINTERPCTX pThis, PVDSC
         case VDSCRIPTEXPRTYPE_ASSIGN_OR:
         case VDSCRIPTEXPRTYPE_ASSIGNMENT_LIST:
             AssertMsgFailed(("TODO\n"));
-            /* fall thru */
+            RT_FALL_THRU();
         default:
             AssertMsgFailed(("Invalid expression type: %d\n", pExpr->enmType));
     }

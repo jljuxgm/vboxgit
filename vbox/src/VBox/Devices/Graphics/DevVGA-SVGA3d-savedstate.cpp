@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-savedstate.cpp 68994 2017-10-05 14:20:22Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-savedstate.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Saved state and assocated stuff.
  */
@@ -755,7 +755,7 @@ int vmsvga3dSaveExec(PVGASTATE pThis, PSSMHANDLE pSSM)
                         {
                         default:
                             AssertFailed();
-                            /* Fall through */
+                            RT_FALL_THRU();
                         case SVGA3D_SURFACE_HINT_DEPTHSTENCIL:
                         case SVGA3D_SURFACE_HINT_DEPTHSTENCIL | SVGA3D_SURFACE_HINT_TEXTURE:
                             /** @todo fetch data from the renderbuffer */

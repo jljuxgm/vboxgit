@@ -1,4 +1,4 @@
-/* $Id: DBGCEval.cpp 65118 2017-01-04 17:09:04Z vboxsync $ */
+/* $Id: DBGCEval.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, command evaluator.
  */
@@ -833,7 +833,7 @@ static int dbgcCheckAndTypePromoteArgument(PDBGC pDbgc, DBGCVARCAT enmCategory, 
         case DBGCVAR_CAT_POINTER_NUMBER_NO_RANGE:
             if (pArg->enmRangeType != DBGCVAR_RANGE_NONE)
                 return VERR_DBGC_PARSE_NO_RANGE_ALLOWED;
-            /* fallthru */
+            RT_FALL_THRU();
         case DBGCVAR_CAT_POINTER:
         case DBGCVAR_CAT_POINTER_NUMBER:
             switch (pArg->enmType)
@@ -888,7 +888,7 @@ static int dbgcCheckAndTypePromoteArgument(PDBGC pDbgc, DBGCVARCAT enmCategory, 
         case DBGCVAR_CAT_GC_POINTER_NO_RANGE:
             if (pArg->enmRangeType != DBGCVAR_RANGE_NONE)
                 return VERR_DBGC_PARSE_NO_RANGE_ALLOWED;
-            /* fallthru */
+            RT_FALL_THRU();
         case DBGCVAR_CAT_GC_POINTER:
             switch (pArg->enmType)
             {
@@ -942,7 +942,7 @@ static int dbgcCheckAndTypePromoteArgument(PDBGC pDbgc, DBGCVARCAT enmCategory, 
         case DBGCVAR_CAT_NUMBER_NO_RANGE:
             if (pArg->enmRangeType != DBGCVAR_RANGE_NONE)
                 return VERR_DBGC_PARSE_NO_RANGE_ALLOWED;
-            /* fallthru */
+            RT_FALL_THRU();
         case DBGCVAR_CAT_NUMBER:
             switch (pArg->enmType)
             {

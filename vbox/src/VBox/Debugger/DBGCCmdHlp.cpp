@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdHlp.cpp 65118 2017-01-04 17:09:04Z vboxsync $ */
+/* $Id: DBGCCmdHlp.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -554,7 +554,7 @@ static DECLCALLBACK(int) dbgcHlpMemWrite(PDBGCCMDHLP pCmdHlp, const void *pvBuff
             Var.enmType = DBGCVAR_TYPE_GC_FLAT;
             Var.u.GCFlat = Address.FlatPtr;
         }
-        /* fall thru */
+        RT_FALL_THRU();
         case DBGCVAR_TYPE_GC_FLAT:
             rc = DBGFR3MemWrite(pDbgc->pUVM, pDbgc->idCpu,
                                 DBGFR3AddrFromFlat(pDbgc->pUVM, &Address, Var.u.GCFlat),

@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 68594 2017-08-31 14:24:09Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -2565,7 +2565,7 @@ DECLCALLBACK(void) devpciR3CommonDefaultConfigWrite(PPDMDEVINS pDevIns, PPDMPCID
 
                     case VBOX_PCI_ROM_ADDRESS:    case VBOX_PCI_ROM_ADDRESS   +1: case VBOX_PCI_ROM_ADDRESS   +2: case VBOX_PCI_ROM_ADDRESS   +3:
                         fRom = true;
-                        /* fall thru */
+                        RT_FALL_THRU();
                     case VBOX_PCI_BASE_ADDRESS_0: case VBOX_PCI_BASE_ADDRESS_0+1: case VBOX_PCI_BASE_ADDRESS_0+2: case VBOX_PCI_BASE_ADDRESS_0+3:
                     case VBOX_PCI_BASE_ADDRESS_1: case VBOX_PCI_BASE_ADDRESS_1+1: case VBOX_PCI_BASE_ADDRESS_1+2: case VBOX_PCI_BASE_ADDRESS_1+3:
                     case VBOX_PCI_BASE_ADDRESS_2: case VBOX_PCI_BASE_ADDRESS_2+1: case VBOX_PCI_BASE_ADDRESS_2+2: case VBOX_PCI_BASE_ADDRESS_2+3:
@@ -2605,7 +2605,7 @@ DECLCALLBACK(void) devpciR3CommonDefaultConfigWrite(PPDMDEVINS pDevIns, PPDMPCID
                                 bVal |= 0x01;
                         }
                         /* (bridge config space which isn't a BAR) */
-                        /* fall thru */
+                        RT_FALL_THRU();
                     default:
                         if (fWritable)
                             /* safe, only needs to go to the config space array */

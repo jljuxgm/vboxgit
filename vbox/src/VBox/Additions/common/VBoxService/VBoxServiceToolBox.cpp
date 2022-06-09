@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 65641 2017-02-07 11:28:09Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -808,7 +808,7 @@ static int vgsvcToolboxLsHandleDir(const char *pszDir, uint32_t fFlags, uint32_t
                     case RTFS_TYPE_SYMLINK:
                         if (!(fFlags & VBOXSERVICETOOLBOXLSFLAG_SYMLINKS))
                             break;
-                        /* fall thru */
+                        RT_FALL_THRU();
                     case RTFS_TYPE_DIRECTORY:
                     {
                         const char *pszName = pNodeIt->dirEntry.szName;

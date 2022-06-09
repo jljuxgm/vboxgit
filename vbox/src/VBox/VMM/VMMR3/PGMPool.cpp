@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
+/* $Id: PGMPool.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -682,9 +682,8 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                         pPage->iFirstPresent = NIL_PGMPOOL_PRESENT_INDEX;
                     }
                 }
-                /* fall thru */
+                RT_FALL_THRU();
 #ifdef PGM_WITH_LARGE_PAGES
-                /* fall thru */
                 default_case:
 #endif
                 default:

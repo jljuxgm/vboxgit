@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 67890 2017-07-10 18:20:00Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -1676,7 +1676,7 @@ static int lsilogicRegisterRead(PLSILOGICSCSI pThis, uint32_t offReg, uint32_t *
 #endif
             }
         }
-        /* fall thru */
+        RT_FALL_THRU();
         case LSILOGIC_REG_DIAG_RW_ADDRESS:
         {
             if (pThis->fDiagRegsEnabled)
@@ -1688,7 +1688,7 @@ static int lsilogicRegisterRead(PLSILOGICSCSI pThis, uint32_t offReg, uint32_t *
 #endif
             }
         }
-        /* fall thru */
+        RT_FALL_THRU();
         case LSILOGIC_REG_TEST_BASE_ADDRESS: /* The spec doesn't say anything about these registers, so we just ignore them */
         default: /* Ignore. */
         {

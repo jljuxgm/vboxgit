@@ -1,4 +1,4 @@
-/* $Id: DrvUDPTunnel.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: DrvUDPTunnel.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DrvUDPTunnel - UDP tunnel network transport driver
  *
@@ -292,7 +292,7 @@ static DECLCALLBACK(void) drvUDPTunnelUp_NotifyLinkChanged(PPDMINETWORKUP pInter
             break;
         default:
             AssertMsgFailed(("enmLinkState=%d\n", enmLinkState));
-            /* fall thru */
+            RT_FALL_THRU();
         case PDMNETWORKLINKSTATE_UP:
             fLinkDown = false;
             break;

@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 66848 2017-05-09 13:04:57Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -842,7 +842,7 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
              */
             pCpu->Param1.fUse  = DISUSE_IMMEDIATE8;
             pCpu->Param1.uValue = 3;
-            /* fallthru */
+            RT_FALL_THRU();
         case OP_INT:
         {
             Assert(pCpu->Param1.fUse & DISUSE_IMMEDIATE8);
@@ -898,7 +898,7 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
             if (    !PATMIsPatchGCAddr(pVM, PC)
                 &&  !CSAMIsKnownDangerousInstr(pVM, PC))
                 break;
-            /* fall thru */
+            RT_FALL_THRU();
         case OP_INVLPG:
         case OP_LLDT:
         case OP_STI:
@@ -953,7 +953,7 @@ static int trpmGCTrap0dHandlerRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
              */
             pCpu->Param1.fUse  = DISUSE_IMMEDIATE8;
             pCpu->Param1.uValue = 3;
-            /* fall thru */
+            RT_FALL_THRU();
         case OP_INT:
         {
             Assert(pCpu->Param1.fUse & DISUSE_IMMEDIATE8);

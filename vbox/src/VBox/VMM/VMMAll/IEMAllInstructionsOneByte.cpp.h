@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsOneByte.cpp.h 67006 2017-05-22 11:36:46Z vboxsync $ */
+/* $Id: IEMAllInstructionsOneByte.cpp.h 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -11519,7 +11519,7 @@ FNIEMOP_DEF_2(iemOpHlp_Grp5_far_Ep, uint8_t, bRm, FNIEMCIMPLFARBRANCH *, pfnCImp
                 return VINF_SUCCESS;
             }
             /* AMD falls thru. */
-            /* fall thru */
+            RT_FALL_THRU();
 
         case IEMMODE_32BIT:
             IEM_MC_BEGIN(3, 1);

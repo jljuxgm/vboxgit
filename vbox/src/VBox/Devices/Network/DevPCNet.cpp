@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 64393 2016-10-24 14:42:05Z vboxsync $ */
+/* $Id: DevPCNet.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -3025,7 +3025,7 @@ static int pcnetBCRWriteU16(PPCNETSTATE pThis, uint32_t u32RAP, uint32_t val)
             {
                 default:
                     Log(("#%d Bad SWSTYLE=%#04x\n", PCNET_INST_NR, val & 0xff));
-                    // fall through
+                    RT_FALL_THRU();
                 case 0:
                     val |= 0x0200; /* 16 bit */
                     pThis->iLog2DescSize = 3;
@@ -3045,7 +3045,7 @@ static int pcnetBCRWriteU16(PPCNETSTATE pThis, uint32_t u32RAP, uint32_t val)
             }
             Log(("#%d BCR_SWS=%#06x\n", PCNET_INST_NR, val));
             pThis->aCSR[58] = val;
-            /* fall through */
+            RT_FALL_THRU();
         case BCR_LNKST:
         case BCR_LED1:
         case BCR_LED2:

@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 66367 2017-03-30 14:07:17Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -710,7 +710,7 @@ static DECLCALLBACK(int) rtkldr_EnumSegments(PRTLDRMODINTERNAL pMod, PFNRTLDRENU
         {
             default:
                 AssertMsgFailed(("%d\n", paSegments[iSeg].enmProt));
-                /* fall thru */
+                RT_FALL_THRU();
             case KPROT_NOACCESS:
                 Seg.fProt = 0;
                 break;

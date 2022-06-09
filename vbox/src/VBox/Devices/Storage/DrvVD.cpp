@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 68591 2017-08-31 13:05:12Z vboxsync $ */
+/* $Id: DrvVD.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -5787,31 +5787,31 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
             {
                 default:
                     AssertFailed();
-                    /* fall thru */
+                    RT_FALL_THRU();
                 case PDMMEDIATYPE_FLOPPY_360:
                     if (cbFloppyImg > 40 * 2 * 9 * 512)
                         pThis->enmType = PDMMEDIATYPE_FLOPPY_720;
-                    /* fall thru */
+                    RT_FALL_THRU();
                 case PDMMEDIATYPE_FLOPPY_720:
                     if (cbFloppyImg > 80 * 2 * 14 * 512)
                         pThis->enmType = PDMMEDIATYPE_FLOPPY_1_20;
-                    /* fall thru */
+                    RT_FALL_THRU();
                 case PDMMEDIATYPE_FLOPPY_1_20:
                     if (cbFloppyImg > 80 * 2 * 20 * 512)
                         pThis->enmType = PDMMEDIATYPE_FLOPPY_1_44;
-                    /* fall thru */
+                    RT_FALL_THRU();
                 case PDMMEDIATYPE_FLOPPY_1_44:
                     if (cbFloppyImg > 80 * 2 * 24 * 512)
                         pThis->enmType = PDMMEDIATYPE_FLOPPY_2_88;
-                    /* fall thru */
+                    RT_FALL_THRU();
                 case PDMMEDIATYPE_FLOPPY_2_88:
                     if (cbFloppyImg > 80 * 2 * 48 * 512)
                         pThis->enmType = PDMMEDIATYPE_FLOPPY_FAKE_15_6;
-                    /* fall thru */
+                    RT_FALL_THRU();
                 case PDMMEDIATYPE_FLOPPY_FAKE_15_6:
                     if (cbFloppyImg > 255 * 2 * 63 * 512)
                         pThis->enmType = PDMMEDIATYPE_FLOPPY_FAKE_63_5;
-                    /* fall thru */
+                    RT_FALL_THRU();
                 case PDMMEDIATYPE_FLOPPY_FAKE_63_5:
                     if (cbFloppyImg > 255 * 2 * 255 * 512)
                         LogRel(("Warning: Floppy image is larger that 63.5 MB! (%llu bytes)\n", cbFloppyImg));

@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
+/* $Id: DBGF.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -882,7 +882,7 @@ static int dbgfR3VMMWait(PVM pVM)
                     /* remember return code. */
                     default:
                         AssertReleaseMsgFailed(("rc=%Rrc is not in the switch!\n", rc));
-                        /* fall thru */
+                        RT_FALL_THRU();
                     case VINF_EM_RESET:
                     case VINF_EM_SUSPEND:
                     case VINF_EM_HALT:

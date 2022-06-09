@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 64639 2016-11-10 15:27:00Z vboxsync $ */
+/* $Id: fileio-win.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -218,7 +218,7 @@ RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint64_t fOpen)
                 dwDesiredAccess = 0;
                 break;
             }
-            /* fall thru */
+            RT_FALL_THRU();
         default:
             AssertMsgFailed(("Impossible fOpen=%#llx\n", fOpen));
             return VERR_INVALID_PARAMETER;

@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 65648 2017-02-07 11:43:22Z vboxsync $ */
+/* $Id: DevPS2.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -718,7 +718,7 @@ PDMBOTHCBDECL(int) kbdIOPortStatusRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPOR
     switch (cb) {
     case 2:
         fluff = 0xff00;
-        /* fall thru */
+        RT_FALL_THRU();
     case 1:
         *pu32 = fluff | kbd_read_status(pThis, Port);
         Log2(("kbdIOPortStatusRead: Port=%#x cb=%d -> *pu32=%#x\n", Port, cb, *pu32));

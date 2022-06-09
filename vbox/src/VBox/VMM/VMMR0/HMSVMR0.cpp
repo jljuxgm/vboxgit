@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69031 2017-10-11 05:28:33Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5350,7 +5350,7 @@ static uint32_t hmR0SvmGetIemXcptFlags(PCSVMEVENT pEvent)
                 break;
             }
             /** @todo How do we distinguish ICEBP \#DB from the regular one? */
-            /* fall thru */
+            RT_FALL_THRU();
         case SVM_EVENT_NMI:
             fIemXcptFlags = IEM_XCPT_FLAGS_T_CPU_XCPT;
             break;

@@ -1,4 +1,4 @@
-/* $Id: once.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: once.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - Execute Once.
  */
@@ -241,7 +241,7 @@ static int rtOnceOtherThread(PRTONCE pOnce, PRTSEMEVENTMULTI phEvtM)
             case RTONCESTATE_DONE_HAVE_SEM:
                 if (*phEvtM == NIL_RTSEMEVENTMULTI)
                     return VINF_SUCCESS;
-                /* fall thru */
+                RT_FALL_THRU();
             case RTONCESTATE_BUSY_HAVE_SEM:
             {
                 /*

@@ -1,4 +1,4 @@
-/* $Id: RTLs.cpp 67560 2017-06-22 13:49:03Z vboxsync $ */
+/* $Id: RTLs.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - /bin/ls like utility for testing the VFS code.
  */
@@ -465,7 +465,7 @@ static void rtCmdLsSortCollections(PRTCMDLSOPTS pOpts)
         case RTCMDLSSORT_NONE:
             pfnCmp = pOpts->fGroupDirectoriesFirst ? rtCmdLsEntryCmpDirFirstUnsorted      : NULL;
             break;
-        default: AssertFailed(); /* fall thru */
+        default: AssertFailed(); RT_FALL_THRU();
         case RTCMDLSSORT_NAME:
             pfnCmp = pOpts->fGroupDirectoriesFirst ? rtCmdLsEntryCmpDirFirstName          : rtCmdLsEntryCmpName;
             break;
@@ -481,7 +481,7 @@ static void rtCmdLsSortCollections(PRTCMDLSOPTS pOpts)
         case RTCMDLSSORT_TIME:
             switch (pOpts->enmTime)
             {
-                default: AssertFailed(); /* fall thru */
+                default: AssertFailed(); RT_FALL_THRU();
                 case RTCMDLSTIME_MTIME: pfnCmp = pOpts->fGroupDirectoriesFirst ? rtCmdLsEntryCmpDirFirstMTime : rtCmdLsEntryCmpMTime; break;
                 case RTCMDLSTIME_BTIME: pfnCmp = pOpts->fGroupDirectoriesFirst ? rtCmdLsEntryCmpDirFirstBTime : rtCmdLsEntryCmpBTime; break;
                 case RTCMDLSTIME_CTIME: pfnCmp = pOpts->fGroupDirectoriesFirst ? rtCmdLsEntryCmpDirFirstCTime : rtCmdLsEntryCmpCTime; break;
@@ -754,7 +754,7 @@ static RTEXITCODE rtCmdLsDisplayCollectionInLongFormat(PRTCMDLSOPTS pOpts, PRTCM
     size_t offTime;
     switch (pOpts->enmTime)
     {
-        default: AssertFailed(); /* fall thru */
+        default: AssertFailed(); RT_FALL_THRU();
         case RTCMDLSTIME_MTIME: offTime = RT_OFFSETOF(RTCMDLSENTRY, Info.ModificationTime); break;
         case RTCMDLSTIME_BTIME: offTime = RT_OFFSETOF(RTCMDLSENTRY, Info.BirthTime); break;
         case RTCMDLSTIME_CTIME: offTime = RT_OFFSETOF(RTCMDLSENTRY, Info.ChangeTime); break;
@@ -1436,7 +1436,7 @@ RTEXITCODE RTCmdLs(unsigned cArgs, char **papszArgs)
                     return rcExit;
                 }
                 ValueUnion.psz = ".";
-                /* Fall thru. */
+                RT_FALL_THRU();
             case VINF_GETOPT_NOT_OPTION:
             {
                 RTEXITCODE rcExit2 = rtCmdLsProcessArgument(&Opts, ValueUnion.psz);

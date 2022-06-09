@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 65653 2017-02-07 11:48:22Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -2562,7 +2562,7 @@ DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                             break;
                         }
                     }
-                    /* fall through */
+                    RT_FALL_THRU();
 
                     case HKEYSTATE_DOWN:
                     {
@@ -2626,7 +2626,7 @@ DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
                     default:
                         AssertMsgFailed(("enmHKeyState=%d\n", enmHKeyState));
-                        /* fall thru */
+                        RT_FALL_THRU();
                     case HKEYSTATE_NOT_IT:
                     {
                         if ((SDL_GetModState() & ~(KMOD_MODE | KMOD_NUM | KMOD_RESERVED)) == 0)

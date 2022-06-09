@@ -1,4 +1,4 @@
-/* $Id: bootp.c 64307 2016-10-17 18:49:15Z vboxsync $ */
+/* $Id: bootp.c 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -770,7 +770,7 @@ static void dhcp_decode(PNATState pData, struct bootp_t *bp, size_t vlen)
     {
         case DHCPDISCOVER:
             fDhcpDiscover = 1;
-            /* fall through */
+            RT_FALL_THRU();
         case DHCPINFORM:
             rc = dhcp_decode_discover(pData, bp, fDhcpDiscover, m);
             if (rc > 0)

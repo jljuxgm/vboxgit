@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 69032 2017-10-11 05:29:10Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1366,7 +1366,7 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t uLeaf, uint32_t uSubLeaf,
         {
             default:
                 AssertFailed();
-                /* fall thru */
+                RT_FALL_THRU();
             case CPUMUNKNOWNCPUID_DEFAULTS:
             case CPUMUNKNOWNCPUID_LAST_STD_LEAF: /* ASSUME this is executed */
             case CPUMUNKNOWNCPUID_LAST_STD_LEAF_WITH_ECX: /** @todo Implement CPUMUNKNOWNCPUID_LAST_STD_LEAF_WITH_ECX */

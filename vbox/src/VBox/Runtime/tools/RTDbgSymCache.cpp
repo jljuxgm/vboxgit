@@ -1,4 +1,4 @@
-/* $Id: RTDbgSymCache.cpp 62724 2016-07-30 00:08:44Z vboxsync $ */
+/* $Id: RTDbgSymCache.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - Debug Symbol Cache Utility.
  */
@@ -1125,7 +1125,7 @@ static RTEXITCODE rtDbgSymCacheAddFileOrDir(const char *pszPath, const char *psz
 
         case RTDBGSYMCACHEFILETYPE_DIR_FILTER:
             Cfg.pszFilter = RTPathFilename(pszPath);
-            /* fall thru */
+            RT_FALL_THRU();
         case RTDBGSYMCACHEFILETYPE_DIR:
             rc = rtDbgSymCacheAddDir(pszPath, &Cfg);
             break;

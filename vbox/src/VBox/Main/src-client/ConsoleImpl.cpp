@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 68992 2017-10-05 09:02:27Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1157,7 +1157,7 @@ int Console::i_VRDPClientLogon(uint32_t u32ClientId, const char *pszUser, const 
 
             LogFlowFunc(("External auth asked for guest judgement\n"));
         }
-        /* fall thru */
+        RT_FALL_THRU();
 
         case AuthType_Guest:
         {
@@ -8582,7 +8582,7 @@ DECLCALLBACK(void) Console::i_vmstateChangeCallback(PUVM pUVM, VMSTATE enmState,
             {
                 default:
                     AssertFailed();
-                    /* fall through */
+                    RT_FALL_THRU();
                 case MachineState_Stopping:
                     /* successfully powered down */
                     that->i_setMachineState(MachineState_PoweredOff);

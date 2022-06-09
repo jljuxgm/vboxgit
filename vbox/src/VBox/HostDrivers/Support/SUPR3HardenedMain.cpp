@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 66858 2017-05-10 11:31:11Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1041,7 +1041,7 @@ DECLHIDDEN(void) suplibHardenedPrintFV(const char *pszFormat, va_list va)
                             break;
                         case 'X':
                             fFlags |= RTSTR_F_CAPITAL;
-                            /* fall thru */
+                            RT_FALL_THRU();
                         case 'x':
                             uBase = 16;
                             break;
@@ -1082,7 +1082,7 @@ DECLHIDDEN(void) suplibHardenedPrintFV(const char *pszFormat, va_list va)
                         pszFormat += 2;
                         break;
                     }
-                    /* fall thru */
+                    RT_FALL_THRU();
 
                 /*
                  * Custom format.

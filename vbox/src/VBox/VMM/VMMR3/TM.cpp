@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 68106 2017-07-25 11:25:50Z vboxsync $ */
+/* $Id: TM.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -2612,7 +2612,7 @@ VMMR3DECL(int) TMR3TimerSave(PTMTIMERR3 pTimer, PSSMHANDLE pSSM)
             AssertMsgFailed(("u64Expire is being updated! (%s)\n", pTimer->pszDesc));
             if (!RTThreadYield())
                 RTThreadSleep(1);
-            /* fall thru */
+            RT_FALL_THRU();
         case TMTIMERSTATE_ACTIVE:
         case TMTIMERSTATE_PENDING_SCHEDULE:
         case TMTIMERSTATE_PENDING_RESCHEDULE:

@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 63063 2016-08-05 21:14:33Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -171,7 +171,7 @@ DECLHIDDEN(int) rtR0MemObjNativeFree(RTR0MEMOBJ pMem)
                 /* Nothing to do here. */
                 break;
             }
-            /* fall thru */
+            RT_FALL_THRU();
 
         case RTR0MEMOBJTYPE_PHYS_NC:
 #ifndef IPRT_TARGET_NT4

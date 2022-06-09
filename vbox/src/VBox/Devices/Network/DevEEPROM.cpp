@@ -1,4 +1,4 @@
-/* $Id: DevEEPROM.cpp 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: DevEEPROM.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DevEEPROM - Microware-compatible 64x16-bit 93C46 EEPROM Emulation.
  */
@@ -236,7 +236,7 @@ void EEPROM93C46::write(uint32_t u32Wires)
                 break;
             case READING_DI:
                 m_u32InternalWires &= ~WIRES_DO; /* Clear ready/busy status from DO. */
-                /* Fall through! */
+                RT_FALL_THRU();
             default:
                 m_eState = STANDBY;
                 break;

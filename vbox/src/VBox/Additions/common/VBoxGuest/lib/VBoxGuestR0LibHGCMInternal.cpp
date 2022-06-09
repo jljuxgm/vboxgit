@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibHGCMInternal.cpp 68654 2017-09-05 17:22:12Z vboxsync $ */
+/* $Id: VBoxGuestR0LibHGCMInternal.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -268,7 +268,7 @@ static int vbglR0HGCMInternalPreprocessCall(PCVBGLIOCHGCMCALL pCallInfo, uint32_
                         Log4(("GstHGCMCall: parm=%u type=%#x: cb=0\n", iParm, pSrcParm->type));
                     break;
                 }
-                /* fall thru */
+                RT_FALL_THRU();
 
             case VMMDevHGCMParmType_LinAddr_In:
             case VMMDevHGCMParmType_LinAddr_Out:
@@ -542,7 +542,7 @@ static void vbglR0HGCMInternalInitCall(VMMDevHGCMCall *pHGCMCall, PCVBGLIOCHGCMC
                     pDstParm->type = vbglR0HGCMInternalConvertLinAddrType(pSrcParm->type);
                     break;
                 }
-                /* fall thru */
+                RT_FALL_THRU();
 
             case VMMDevHGCMParmType_LinAddr_In:
             case VMMDevHGCMParmType_LinAddr_Out:
@@ -809,7 +809,7 @@ static int vbglR0HGCMInternalCopyBackResult(PVBGLIOCHGCMCALL pCallInfo, VMMDevHG
                     pDstParm->u.Pointer.size = pSrcParm->u.Pointer.size;
                     break;
                 }
-                /* fall thru */
+                RT_FALL_THRU();
 
             case VMMDevHGCMParmType_LinAddr_Out:
             case VMMDevHGCMParmType_LinAddr:

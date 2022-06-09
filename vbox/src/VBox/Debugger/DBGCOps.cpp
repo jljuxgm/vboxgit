@@ -1,4 +1,4 @@
-/* $Id: DBGCOps.cpp 66885 2017-05-12 19:59:22Z vboxsync $ */
+/* $Id: DBGCOps.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Operators.
  */
@@ -226,7 +226,7 @@ static int dbgcOpHelperGetNumber(PDBGC pDbgc, PCDBGCVAR pArg, uint64_t *pu64Ret)
             if (RT_FAILURE(rc))
                 return rc;
         }
-        /* fall thru */
+        RT_FALL_THRU();
         case DBGCVAR_TYPE_STRING:
         default:
             return VERR_DBGC_PARSE_INCORRECT_ARG_TYPE;
@@ -814,7 +814,7 @@ static DECLCALLBACK(int) dbgcOpAdd(PDBGC pDbgc, PCDBGCVAR pArg1, PCDBGCVAR pArg2
                     rc = dbgcSymbolGet(pDbgc, pArg2->u.pszString, DBGCVAR_TYPE_NUMBER, &Var);
                     if (RT_FAILURE(rc))
                         return rc;
-                    /* fall thru */
+                    RT_FALL_THRU();
                 case DBGCVAR_TYPE_NUMBER:
                     pResult->u.u64Number += pArg2->u.u64Number;
                     break;
@@ -1034,7 +1034,7 @@ static DECLCALLBACK(int) dbgcOpSub(PDBGC pDbgc, PCDBGCVAR pArg1, PCDBGCVAR pArg2
                     rc = dbgcSymbolGet(pDbgc, pArg2->u.pszString, DBGCVAR_TYPE_NUMBER, &Var);
                     if (RT_FAILURE(rc))
                         return rc;
-                    /* fall thru */
+                    RT_FALL_THRU();
                 case DBGCVAR_TYPE_NUMBER:
                     pResult->u.u64Number -= pArg2->u.u64Number;
                     break;

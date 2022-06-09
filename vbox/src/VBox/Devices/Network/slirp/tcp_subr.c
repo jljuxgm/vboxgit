@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 68444 2017-08-17 13:05:10Z vboxsync $ */
+/* $Id: tcp_subr.c 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * NAT - TCP support.
  */
@@ -454,7 +454,7 @@ int tcp_fconnect(PNATState pData, struct socket *so)
                             break;
                         }
                     }
-                    /* FALLTHROUGH */
+                    RT_FALL_THRU();
                 case CTL_ALIAS:
                 default:
                     addr.sin_addr = loopback_addr;

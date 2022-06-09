@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 67919 2017-07-12 09:34:17Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -2182,7 +2182,7 @@ static int buslogicProcessCommand(PBUSLOGIC pBusLogic)
         }
         default:
             AssertMsgFailed(("Invalid command %#x\n", pBusLogic->uOperationCode));
-            /* fall thru */
+            RT_FALL_THRU();
         case BUSLOGICCOMMAND_EXT_BIOS_INFO:
         case BUSLOGICCOMMAND_UNLOCK_MAILBOX:
             /* Commands valid for Adaptec 154xC which we don't handle since

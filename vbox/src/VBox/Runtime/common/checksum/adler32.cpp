@@ -1,4 +1,4 @@
-/* $Id: adler32.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: adler32.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - Adler-32
  */
@@ -82,7 +82,7 @@ RTDECL(uint32_t) RTCrcAdler32Process(uint32_t u32Crc, void const *pv, size_t cb)
                 b += a;
                 b %= RTCRC_ADLER_32_NUMBER;
                 cb--;
-                /* fall thru */
+                RT_FALL_THRU();
 
             case 2:
                 a += *pbSrc++;
@@ -90,7 +90,7 @@ RTDECL(uint32_t) RTCrcAdler32Process(uint32_t u32Crc, void const *pv, size_t cb)
                 b += a;
                 b %= RTCRC_ADLER_32_NUMBER;
                 cb--;
-                /* fall thru */
+                RT_FALL_THRU();
 
             case 3:
                 a += *pbSrc++;
@@ -140,7 +140,7 @@ RTDECL(uint32_t) RTCrcAdler32Process(uint32_t u32Crc, void const *pv, size_t cb)
                 b += a;
                 b %= RTCRC_ADLER_32_NUMBER;
                 cb--;
-                /* fall thru */
+                RT_FALL_THRU();
 
             case 2:
                 a += *pbSrc++;
@@ -148,7 +148,7 @@ RTDECL(uint32_t) RTCrcAdler32Process(uint32_t u32Crc, void const *pv, size_t cb)
                 b += a;
                 b %= RTCRC_ADLER_32_NUMBER;
                 cb--;
-                /* fall thru */
+                RT_FALL_THRU();
 
             case 1:
                 a += *pbSrc++;

@@ -1,4 +1,4 @@
-/* $Id: PS2K.cpp 65648 2017-02-07 11:43:22Z vboxsync $ */
+/* $Id: PS2K.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
@@ -750,7 +750,7 @@ int PS2KByteToKbd(PPS2K pThis, uint8_t cmd)
             /* Fall through only to handle unrecognized commands. */
             if (fHandled)
                 break;
-            /* fall thru */
+            RT_FALL_THRU();
 
         case KCMD_INVALID_1:
         case KCMD_INVALID_2:

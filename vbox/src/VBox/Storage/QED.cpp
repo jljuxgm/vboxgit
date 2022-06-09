@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 66494 2017-04-10 09:57:25Z vboxsync $ */
+/* $Id: QED.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -1435,7 +1435,7 @@ static DECLCALLBACK(int) qedAsyncClusterAllocUpdate(void *pBackendData, PVDIOCTX
                 break;
             }
         }
-        /* fall thru */
+        RT_FALL_THRU();
         case QEDCLUSTERASYNCALLOCSTATE_L2_LINK:
         {
             /* L2 link updated in L1 , save L2 entry in cache and allocate new user data cluster. */
@@ -1461,7 +1461,7 @@ static DECLCALLBACK(int) qedAsyncClusterAllocUpdate(void *pBackendData, PVDIOCTX
                 break;
             }
         }
-        /* fall thru */
+        RT_FALL_THRU();
         case QEDCLUSTERASYNCALLOCSTATE_USER_ALLOC:
         {
             pClusterAlloc->enmAllocState = QEDCLUSTERASYNCALLOCSTATE_USER_LINK;
@@ -1480,7 +1480,7 @@ static DECLCALLBACK(int) qedAsyncClusterAllocUpdate(void *pBackendData, PVDIOCTX
                 break;
             }
         }
-        /* fall thru */
+        RT_FALL_THRU();
         case QEDCLUSTERASYNCALLOCSTATE_USER_LINK:
         {
             /* Everything done without errors, signal completion. */

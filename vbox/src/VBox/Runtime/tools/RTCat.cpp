@@ -1,4 +1,4 @@
-/* $Id: RTCat.cpp 66602 2017-04-18 15:27:30Z vboxsync $ */
+/* $Id: RTCat.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - cat like utility.
  */
@@ -211,7 +211,7 @@ RTEXITCODE RTCmdCat(unsigned cArgs, char **papszArgs)
                 if (cProcessed > 0)
                     return rcExit;
                 ValueUnion.psz = "-";
-                /* Fall thru. */
+                RT_FALL_THRU();
             case VINF_GETOPT_NOT_OPTION:
             {
                 RTVFSIOSTREAM hVfsSrc;
@@ -247,7 +247,7 @@ RTEXITCODE RTCmdCat(unsigned cArgs, char **papszArgs)
 
             case 'e':
                 Opts.fShowNonPrinting       = true;
-                /* fall thru */
+                RT_FALL_THRU();
             case 'E':
                 Opts.fShowEnds              = true;
                 break;
@@ -267,7 +267,7 @@ RTEXITCODE RTCmdCat(unsigned cArgs, char **papszArgs)
 
             case 't':
                 Opts.fShowNonPrinting       = true;
-                /* fall thru */
+                RT_FALL_THRU();
             case 'T':
                 Opts.fShowTabs              = true;
                 break;

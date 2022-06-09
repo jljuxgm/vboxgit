@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3076,7 +3076,7 @@ HRESULT GuestSession::fileOpenEx(const com::Utf8Str &aPath, FileAccessMode_T aAc
         case (FileAccessMode_T)FileAccessMode_WriteOnly: openInfo.mpszAccessMode = "w"; break;
         case (FileAccessMode_T)FileAccessMode_ReadWrite: openInfo.mpszAccessMode = "r+"; break;
         case (FileAccessMode_T)FileAccessMode_AppendOnly:
-            /* fall thru */
+            RT_FALL_THRU();
         case (FileAccessMode_T)FileAccessMode_AppendRead:
             return setError(E_NOTIMPL, tr("Append access modes are not yet implemented"));
         default:

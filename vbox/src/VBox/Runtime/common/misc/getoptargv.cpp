@@ -1,4 +1,4 @@
-/* $Id: getoptargv.cpp 67598 2017-06-26 09:17:22Z vboxsync $ */
+/* $Id: getoptargv.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing, Argument Vector.
  */
@@ -157,13 +157,13 @@ DECLINLINE(bool) rtGetOptIsAsciiInSet(char ch, const char *pszSeparators, size_t
 {
     switch (cchSeparators)
     {
-        case 8: if (ch == pszSeparators[7]) return true; /* fall thru */
-        case 7: if (ch == pszSeparators[6]) return true; /* fall thru */
-        case 6: if (ch == pszSeparators[5]) return true; /* fall thru */
-        case 5: if (ch == pszSeparators[4]) return true; /* fall thru */
-        case 4: if (ch == pszSeparators[3]) return true; /* fall thru */
-        case 3: if (ch == pszSeparators[2]) return true; /* fall thru */
-        case 2: if (ch == pszSeparators[1]) return true; /* fall thru */
+        case 8: if (ch == pszSeparators[7]) return true; RT_FALL_THRU();
+        case 7: if (ch == pszSeparators[6]) return true; RT_FALL_THRU();
+        case 6: if (ch == pszSeparators[5]) return true; RT_FALL_THRU();
+        case 5: if (ch == pszSeparators[4]) return true; RT_FALL_THRU();
+        case 4: if (ch == pszSeparators[3]) return true; RT_FALL_THRU();
+        case 3: if (ch == pszSeparators[2]) return true; RT_FALL_THRU();
+        case 2: if (ch == pszSeparators[1]) return true; RT_FALL_THRU();
         case 1: if (ch == pszSeparators[0]) return true;
             return false;
         default:

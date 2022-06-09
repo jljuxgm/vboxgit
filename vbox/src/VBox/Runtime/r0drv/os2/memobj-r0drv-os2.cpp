@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-os2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: memobj-r0drv-os2.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, OS/2.
  */
@@ -89,7 +89,7 @@ DECLHIDDEN(int) rtR0MemObjNativeFree(RTR0MEMOBJ pMem)
             if (pMemOs2->Core.u.Mapping.R0Process == NIL_RTR0PROCESS)
                 break;
 
-            /* fall thru */
+            RT_FALL_THRU();
         case RTR0MEMOBJTYPE_PAGE:
         case RTR0MEMOBJTYPE_LOW:
         case RTR0MEMOBJTYPE_CONT:

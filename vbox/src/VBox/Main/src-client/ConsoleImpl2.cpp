@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 69009 2017-10-06 17:52:55Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1453,7 +1453,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         {
             default:
                 Assert(false);
-                /* fall thru */
+                RT_FALL_THRU();
             case ChipsetType_PIIX3:
                 InsertConfigNode(pDevices, "pci", &pDev);
                 uHbcPCIAddress = (0x0 << 16) | 0;

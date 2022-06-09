@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 68459 2017-08-18 10:33:01Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -1605,7 +1605,7 @@ bool UIGChooserModel::processContextMenuEvent(QGraphicsSceneContextMenuEvent *pE
                             return true;
                         }
                     }
-                    /* fall thru */
+                    RT_FALL_THRU();
                     case UIGChooserItemType_Machine:
                     {
                         /* Machine context menu for other Group/Machine cases: */
@@ -1636,7 +1636,7 @@ bool UIGChooserModel::processContextMenuEvent(QGraphicsSceneContextMenuEvent *pE
                             return true;
                         }
                     }
-                    /* fall thru */
+                    RT_FALL_THRU();
                     case UIGChooserItemType_Machine:
                     {
                         /* Machine context menu for other Group/Machine cases: */

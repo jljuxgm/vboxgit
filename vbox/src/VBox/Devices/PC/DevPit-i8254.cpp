@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 64369 2016-10-22 18:19:08Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -614,7 +614,7 @@ static void pit_irq_timer_update(PPITCHANNEL pChan, uint64_t current_time, uint6
                     PDMDevHlpISASetIrq(pDevIns, pChan->irq, PDM_IRQ_LEVEL_FLIP_FLOP);
                     break;
                 }
-                /* Else fall through! */
+                RT_FALL_THRU();
             default:
                 PDMDevHlpISASetIrq(pDevIns, pChan->irq, irq_level);
                 break;

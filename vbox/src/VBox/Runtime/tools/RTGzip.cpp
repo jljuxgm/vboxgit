@@ -1,4 +1,4 @@
-/* $Id: RTGzip.cpp 66602 2017-04-18 15:27:30Z vboxsync $ */
+/* $Id: RTGzip.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - GZIP Utility.
  */
@@ -503,7 +503,7 @@ RTEXITCODE RTZipGzipCmd(unsigned cArgs, char **papszArgs)
                     return rcExit;
                 ValueUnion.psz = "-";
                 Opts.fStdOut = true;
-                /* Fall thru. */
+                RT_FALL_THRU();
             case VINF_GETOPT_NOT_OPTION:
             {
                 if (!*Opts.pszSuff && !Opts.fStdOut)

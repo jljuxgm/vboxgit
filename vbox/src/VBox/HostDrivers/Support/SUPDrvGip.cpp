@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 64290 2016-10-17 09:55:33Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -4190,7 +4190,7 @@ static DECLCALLBACK(int) supdrvTscDeltaThread(RTTHREAD hThread, void *pvUser)
                 rc = RTSemEventSignal(pDevExt->hTscDeltaEvent);
                 if (RT_FAILURE(rc))
                     return supdrvTscDeltaThreadButchered(pDevExt, true /* fSpinlockHeld */, "RTSemEventSignal", rc);
-                /* fall thru */
+                RT_FALL_THRU();
             }
 
             case kTscDeltaThreadState_Listening:
@@ -4219,7 +4219,7 @@ static DECLCALLBACK(int) supdrvTscDeltaThread(RTTHREAD hThread, void *pvUser)
                     return supdrvTscDeltaThreadButchered(pDevExt, true /* fSpinlockHeld */, "RTSemEventSignal", rc);
                 RTSpinlockRelease(pDevExt->hTscDeltaSpinlock);
                 RTThreadSleep(1);
-                /* fall thru */
+                RT_FALL_THRU();
             }
 
             case kTscDeltaThreadState_Measuring:

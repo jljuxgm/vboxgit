@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 68787 2017-09-19 08:53:40Z vboxsync $ */
+/* $Id: VDI.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -1185,7 +1185,7 @@ static DECLCALLBACK(int) vdiDiscardBlockAsyncUpdate(void *pBackendData, PVDIOCTX
             vdIfIoIntMetaXferRelease(pImage->pIfIo, pMetaXfer);
             pDiscardAsync->enmState = VDIBLOCKDISCARDSTATE_WRITE_BLOCK;
         }
-        /* fall thru */
+        RT_FALL_THRU();
         case VDIBLOCKDISCARDSTATE_WRITE_BLOCK:
         {
             /* Block read complete. Write to the new location (discarded block). */
@@ -1198,7 +1198,7 @@ static DECLCALLBACK(int) vdiDiscardBlockAsyncUpdate(void *pBackendData, PVDIOCTX
             if (RT_FAILURE(rc))
                 break;
         }
-        /* fall thru */
+        RT_FALL_THRU();
         case VDIBLOCKDISCARDSTATE_UPDATE_METADATA:
         {
             int rc2;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 68938 2017-09-29 16:13:26Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2460,7 +2460,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_VRDPPORT:
                 vrdeWarningDeprecatedOption("port");
-                /* fall thru */
+                RT_FALL_THRU();
 
             case MODIFYVM_VRDEPORT:
             {
@@ -2477,7 +2477,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_VRDPADDRESS:
                 vrdeWarningDeprecatedOption("address");
-                /* fall thru */
+                RT_FALL_THRU();
 
             case MODIFYVM_VRDEADDRESS:
             {
@@ -2491,7 +2491,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_VRDPAUTHTYPE:
                 vrdeWarningDeprecatedOption("authtype");
-                /* fall thru */
+                RT_FALL_THRU();
             case MODIFYVM_VRDEAUTHTYPE:
             {
                 ComPtr<IVRDEServer> vrdeServer;
@@ -2539,7 +2539,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_VRDPMULTICON:
                 vrdeWarningDeprecatedOption("multicon");
-                /* fall thru */
+                RT_FALL_THRU();
             case MODIFYVM_VRDEMULTICON:
             {
                 ComPtr<IVRDEServer> vrdeServer;
@@ -2552,7 +2552,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_VRDPREUSECON:
                 vrdeWarningDeprecatedOption("reusecon");
-                /* fall thru */
+                RT_FALL_THRU();
             case MODIFYVM_VRDEREUSECON:
             {
                 ComPtr<IVRDEServer> vrdeServer;
@@ -2565,7 +2565,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_VRDPVIDEOCHANNEL:
                 vrdeWarningDeprecatedOption("videochannel");
-                /* fall thru */
+                RT_FALL_THRU();
             case MODIFYVM_VRDEVIDEOCHANNEL:
             {
                 ComPtr<IVRDEServer> vrdeServer;
@@ -2579,7 +2579,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_VRDPVIDEOCHANNELQUALITY:
                 vrdeWarningDeprecatedOption("videochannelquality");
-                /* fall thru */
+                RT_FALL_THRU();
             case MODIFYVM_VRDEVIDEOCHANNELQUALITY:
             {
                 ComPtr<IVRDEServer> vrdeServer;
@@ -2593,7 +2593,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_VRDP:
                 vrdeWarningDeprecatedOption("");
-                /* fall thru */
+                RT_FALL_THRU();
             case MODIFYVM_VRDE:
             {
                 ComPtr<IVRDEServer> vrdeServer;

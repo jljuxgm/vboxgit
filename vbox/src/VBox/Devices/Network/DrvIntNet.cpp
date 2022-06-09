@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -574,7 +574,7 @@ static DECLCALLBACK(void) drvR3IntNetUp_NotifyLinkChanged(PPDMINETWORKUP pInterf
             break;
         default:
             AssertMsgFailed(("enmLinkState=%d\n", enmLinkState));
-            /* fall thru */
+            RT_FALL_THRU();
         case PDMNETWORKLINKSTATE_UP:
             fLinkDown = false;
             break;
@@ -919,7 +919,7 @@ static DECLCALLBACK(int) drvR3IntNetRecvThread(RTTHREAD hThreadSelf, void *pvUse
 
             default:
                 AssertMsgFailed(("Invalid state %d\n", enmRecvState));
-                /* fall thru */
+                RT_FALL_THRU();
             case RECVSTATE_TERMINATE:
                 LogFlow(("drvR3IntNetRecvThread: returns VINF_SUCCESS\n"));
                 return VINF_SUCCESS;

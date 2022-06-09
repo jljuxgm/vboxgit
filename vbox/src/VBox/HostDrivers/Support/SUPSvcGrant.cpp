@@ -1,4 +1,4 @@
-/* $Id: SUPSvcGrant.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPSvcGrant.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * VirtualBox Support Service - The Grant Service.
  */
@@ -494,7 +494,7 @@ static DECLCALLBACK(int) supSvcGrantThread(RTTHREAD hThread, void *pvThis)
                 rc = RTSemEventSignal(pThis->hResponseEvent);
                 if (RT_FAILURE(rc))
                     return supSvcGrantThreadButchered(pThis, true /* fOwnCritSect*/, "RTSemEventSignal", rc);
-                /* fall thru */
+                RT_FALL_THRU();
 
             case kSupSvcGrantState_Paused:
                 RTCritSectLeave(&pThis->CritSect);
@@ -509,7 +509,7 @@ static DECLCALLBACK(int) supSvcGrantThread(RTTHREAD hThread, void *pvThis)
                 rc = RTSemEventSignal(pThis->hResponseEvent);
                 if (RT_FAILURE(rc))
                     return supSvcGrantThreadButchered(pThis, true /* fOwnCritSect*/, "RTSemEventSignal", rc);
-                /* fall thru */
+                RT_FALL_THRU();
 
             case kSupSvcGrantState_Listen:
                 RTCritSectLeave(&pThis->CritSect);

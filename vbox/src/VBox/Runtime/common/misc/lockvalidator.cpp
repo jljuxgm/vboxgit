@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 65642 2017-02-07 11:28:56Z vboxsync $ */
+/* $Id: lockvalidator.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -4283,7 +4283,7 @@ RTDECL(void *) RTLockValidatorQueryBlocking(RTTHREAD hThread)
                             pRec = (PRTLOCKVALRECUNION)pRec->ShrdOwner.pSharedRec;
                             if (!pRec || pRec->Core.u32Magic != RTLOCKVALRECSHRD_MAGIC)
                                 break;
-                            /* fall thru */
+                            RT_FALL_THRU();
                         case RTLOCKVALRECSHRD_MAGIC:
                             pvLock = pRec->Shared.hLock;
                             break;

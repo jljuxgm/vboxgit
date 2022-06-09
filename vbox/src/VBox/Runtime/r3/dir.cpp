@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: dir.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation, Part 1.
  */
@@ -332,7 +332,7 @@ static bool rtDirFilterWinNtMatchStar(unsigned iDepth, RTUNICP uc, const char *p
                 if (rtDirFilterWinNtMatchEon(puszFilter))
                     return true;
                 ucFilter = '.';
-                /* fall thru */
+                RT_FALL_THRU();
 
             /*
              * Ok, we've got zero or more characters.

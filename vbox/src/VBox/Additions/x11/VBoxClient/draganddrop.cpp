@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 65641 2017-02-07 11:28:09Z vboxsync $ */
+/* $Id: draganddrop.cpp 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -3109,7 +3109,7 @@ int DragAndDropService::run(bool fDaemonised /* = false */)
                         }
                         /* Not breaking unconditionally is intentional. See comment above. */
                     }
-                    /* fall thru */
+                    RT_FALL_THRU();
                     case DragAndDropSvc::HOST_DND_HG_EVT_MOVE:
                     {
                         rc = m_pCurDnD->hgMove(e.hgcm.u.a.uXpos, e.hgcm.u.a.uYpos, e.hgcm.u.a.uDefAction);

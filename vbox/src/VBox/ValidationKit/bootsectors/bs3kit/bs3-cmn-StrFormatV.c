@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-StrFormatV.c 68604 2017-09-01 15:32:33Z vboxsync $ */
+/* $Id: bs3-cmn-StrFormatV.c 69046 2017-10-11 16:11:23Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3StrFormatV
  */
@@ -740,7 +740,7 @@ BS3_CMN_DEF(size_t, Bs3StrFormatV,(const char BS3_FAR *pszFormat, va_list BS3_FA
              */
             case 'P':
                 State.fFlags |= STR_F_CAPITAL;
-                /* fall thru */
+                RT_FALL_THRU();
             case 'p':
             {
                 void BS3_FAR *pv = va_arg(va, void BS3_FAR *);
