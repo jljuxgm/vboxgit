@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.h 71447 2018-03-22 10:53:16Z vboxsync $ */
+/* $Id: UIUpdateManager.h 71448 2018-03-22 10:58:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class declaration.
  */
@@ -43,6 +43,16 @@ public:
     static void shutdown();
     /** Returns manager instance. */
     static UIUpdateManager *instance() { return s_pInstance; }
+
+    /** Initiates the extension pack installation process.
+      * @param  strFilePath      Brings the extension pack file path.
+      * @param  strDigest        Brings the extension pack file digest.
+      * @param  pParent          Brings the parent dialog reference.
+      * @param  pstrExtPackName  Brings the extension pack name. */
+    static void doExtPackInstallation(QString const &strFilePath,
+                                      QString const &strDigest,
+                                      QWidget *pParent,
+                                      QString *pstrExtPackName);
 
 public slots:
 

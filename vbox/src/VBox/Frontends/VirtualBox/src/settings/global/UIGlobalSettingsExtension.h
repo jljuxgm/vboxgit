@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.h 71448 2018-03-22 10:58:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class declaration.
  */
@@ -40,13 +40,6 @@ public:
     UIGlobalSettingsExtension();
     /** Destructs Extension settings page. */
     ~UIGlobalSettingsExtension();
-
-    /** Initiates the extension pack installation process.
-      * @param  strFilePath      Brings the extension pack file path.
-      * @param  strDigest        Brings the extension pack file digest.
-      * @param  pParent          Brings the parent dialog reference.
-      * @param  pstrExtPackName  Brings the extension pack name. */
-    static void doInstallation(QString const &strFilePath, QString const &strDigest, QWidget *pParent, QString *pstrExtPackName);
 
 protected:
 
