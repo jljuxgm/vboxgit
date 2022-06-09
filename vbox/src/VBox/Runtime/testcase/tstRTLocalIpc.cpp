@@ -1,4 +1,4 @@
-/* $Id: tstRTLocalIpc.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
+/* $Id: tstRTLocalIpc.cpp 67521 2017-06-21 07:08:22Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTLocalIpc API.
  */
@@ -361,7 +361,7 @@ static void testSessionWait(const char *pszExecPath)
 
         /*
          * Wait for the server thread to indicate that it has processed one
-         * connection, the shut it all down.
+         * connection, then shut it all down.
          */
         if (RT_SUCCESS(rc))
             RTTESTI_CHECK_RC_OK(RTThreadUserWait(hListenThread, RT_MS_1MIN / 2));
@@ -639,7 +639,7 @@ static void testSessionData(const char *pszExecPath)
 
         /*
          * Wait for the server thread to indicate that it has processed one
-         * connection, the shut it all down.
+         * connection, then shut it all down.
          */
         if (RT_SUCCESS(rc))
             RTTESTI_CHECK_RC_OK(RTThreadUserWait(hListenThread, RT_MS_1MIN * 3));
@@ -838,7 +838,7 @@ static void testSessionPerf(const char *pszExecPath)
 
         /*
          * Wait for the server thread to indicate that it has processed one
-         * connection, the shut it all down.
+         * connection, then shut it all down.
          */
         if (RT_SUCCESS(rc))
             RTTESTI_CHECK_RC_OK(RTThreadUserWait(hListenThread, RT_MS_1MIN / 2));
