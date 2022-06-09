@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 67274 2017-06-06 13:47:18Z vboxsync $ */
+/* $Id: vfsbase.cpp 68505 2017-08-22 12:54:05Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -927,6 +927,11 @@ static void rtVfsObjDestroy(RTVFSOBJINTERNAL *pThis)
         if (!pThis->fNoVfsRef)
             rtVfsObjRelease(&pThis->hVfs->Base);
         pThis->hVfs = NIL_RTVFS;
+    }
+    if (pThis->hLock != NIL_RTVFSLOCK)
+    {
+        RTVfsLockRelease(pThis->hLock);
+        pThis->hLock = NIL_RTVFSLOCK;
     }
     RTMemFree(pvToFree);
 }
