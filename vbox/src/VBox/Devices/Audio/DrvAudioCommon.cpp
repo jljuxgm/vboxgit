@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 68390 2017-08-11 11:54:33Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 68902 2017-09-28 09:23:18Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -770,8 +770,6 @@ bool DrvAudioHlpPCMPropsAreValid(const PPDMAUDIOPCMPROPS pProps)
     bool fValid = (   pProps->cChannels >= 1
                    && pProps->cChannels <= 8);
 
-    AssertMsg(fValid, ("Channel count (%RU8) invalid\n", pProps->cChannels));
-
     if (fValid)
     {
         switch (pProps->cBits)
@@ -785,21 +783,14 @@ bool DrvAudioHlpPCMPropsAreValid(const PPDMAUDIOPCMPROPS pProps)
                 fValid = false;
                 break;
         }
-
-        AssertMsg(fValid, ("Bits (%RU8) invalid\n", pProps->cBits));
     }
 
     if (!fValid)
         return false;
 
     fValid &= pProps->uHz > 0;
-    AssertMsg(fValid, ("Hz (%RU32) invalid\n", pProps->uHz));
-
     fValid &= pProps->cShift == PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(pProps->cBits, pProps->cChannels);
-    AssertMsg(fValid, ("Shift (%RU8) invalid\n", pProps->cShift));
-
     fValid &= pProps->fSwapEndian == false; /** @todo Handling Big Endian audio data is not supported yet. */
-    AssertMsg(fValid, ("Swap endian (%RTbool) invalid\n", pProps->fSwapEndian));
 
     return fValid;
 }
@@ -861,11 +852,9 @@ bool DrvAudioHlpStreamCfgIsValid(const PPDMAUDIOSTREAMCFG pCfg)
 
     bool fValid = (   pCfg->enmDir == PDMAUDIODIR_IN
                    || pCfg->enmDir == PDMAUDIODIR_OUT);
-    AssertMsg(fValid, ("Stream direction not set / invalid\n"));
 
     fValid &= (   pCfg->enmLayout == PDMAUDIOSTREAMLAYOUT_NON_INTERLEAVED
                || pCfg->enmLayout == PDMAUDIOSTREAMLAYOUT_RAW);
-    AssertMsg(fValid, ("Stream layout not set / invalid\n"));
 
     if (fValid)
         fValid = DrvAudioHlpPCMPropsAreValid(&pCfg->Props);
