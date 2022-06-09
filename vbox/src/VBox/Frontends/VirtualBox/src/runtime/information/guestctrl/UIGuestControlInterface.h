@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.h 71135 2018-02-27 12:56:00Z vboxsync $ */
+/* $Id: UIGuestControlInterface.h 71138 2018-02-27 14:58:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class declaration.
  */
@@ -57,7 +57,9 @@ private:
 
     /** findOrCreateSession parses command options and determines if an existing session
         to be returned or a new one to be created */
-    bool findOrCreateSession(const CommandData &commandData, CGuestSession &guestSession);
+    bool findOrCreateSession(const CommandData &commandData, CGuestSession &outGuestSession);
+    /* Search a valid gurst session among existing ones, assign @p outGuestSession if found and return true */
+    bool findAValidGuestSession(CGuestSession &outGuestSession);
     bool findSession(const QString& strSessionName, CGuestSession& outSession);
     bool findSession(ULONG strSessionId, CGuestSession& outSession);
     bool createSession(const CommandData &commandData, CGuestSession &outSession);
