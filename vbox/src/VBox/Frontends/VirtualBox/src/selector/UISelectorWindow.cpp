@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 70029 2017-12-08 13:52:37Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 70031 2017-12-08 14:10:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1058,7 +1058,7 @@ void UISelectorWindow::sltCloseLogViewerWindow()
     QIManagerDialog* pDialog = qobject_cast<QIManagerDialog*>(sendersIterator.value());
     if (!pDialog)
         return;
-    
+
     /* First remove this log viewer dialog from the map. This should be
        done before closing the dialog which will incur a second call to
        this function and result in double delete!!!: */
