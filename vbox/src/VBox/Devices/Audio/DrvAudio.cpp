@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 68136 2017-07-27 10:52:43Z vboxsync $ */
+/* $Id: DrvAudio.cpp 68232 2017-08-02 10:04:49Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2250,7 +2250,7 @@ static int drvAudioHostInit(PDRVAUDIO pThis, PCFGMNODE pCfgHandle)
      */
     if (pThis->pHostDrvAudio->pfnSetCallback)
     {
-        int rc2 = pThis->pHostDrvAudio->pfnSetCallback(pThis->pHostDrvAudio, drvAudioBackendCallback);
+        rc2 = pThis->pHostDrvAudio->pfnSetCallback(pThis->pHostDrvAudio, drvAudioBackendCallback);
         if (RT_FAILURE(rc2))
              LogRel(("Audio: Error registering backend callback, rc=%Rrc\n", rc2));
         /* Not fatal. */
