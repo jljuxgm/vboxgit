@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 67718 2017-06-30 08:36:52Z vboxsync $ */
+/* $Id: UIMediumManager.h 67737 2017-06-30 14:26:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -233,8 +233,6 @@ private:
       * @{ */
         /** Returns tab index for passed UIMediumType. */
         static int tabIndex(UIMediumType type);
-        /** Returns UIMediumType for passed tab index. */
-        static UIMediumType mediumType(int iIndex);
 
         /** Performs search for the @a pTree child which corresponds to the @a condition but not @a pException. */
         static UIMediumItem *searchItem(QITreeWidget *pTree,
