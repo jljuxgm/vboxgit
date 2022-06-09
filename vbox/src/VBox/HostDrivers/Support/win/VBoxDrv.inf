@@ -1,4 +1,4 @@
-; $Id: VBoxDrv.inf 71986 2018-04-23 15:47:24Z vboxsync $
+; $Id: VBoxDrv.inf 71989 2018-04-23 20:49:38Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Windows Driver INF file.
 ;
@@ -36,24 +36,26 @@ DriverPackageType=KernelService
 [DestinationDirs]
 DefaultDestDir = 12
 
-;[DefaultInstall@DOT-NT-ARCH@]
-;CopyFiles=VBoxDrv_CopyFiles
-;
-;[DefaultInstall@DOT-NT-ARCH@.Services]
-;AddService=VBoxDrv,0x00000002,VBoxDrv_Service
-
-[Manufacturer]
-%ORACLE%=Oracle@COMMA-NT-ARCH@
-
-; Models section (referenced by [Manufacturer]).
-[Oracle@DOT-NT-ARCH@]
-%VBoxDrv.DRVDESC%=VBoxDrvInstall,root\VBoxDrv
-
-[VBoxDrvInstall@DOT-NT-ARCH@]
+[DefaultInstall@DOT-NT-ARCH@]
 CopyFiles=VBoxDrv_CopyFiles
 
-[VBoxDrvInstall@DOT-NT-ARCH@.Services]
+[DefaultInstall@DOT-NT-ARCH@.Services]
 AddService=VBoxDrv,0x00000002,VBoxDrv_Service
+
+;; This doesn't actually work either (see VBoxUSBMon), though it triggers in the
+;; installer rather at manual installation on my test system (could be polluted & confused).
+;; [Manufacturer]
+;; %ORACLE%=Oracle@COMMA-NT-ARCH@
+;;
+;; ; Models section (referenced by [Manufacturer]).
+;; [Oracle@DOT-NT-ARCH@]
+;; %VBoxDrv.DRVDESC%=VBoxDrvInstall,root\VBoxDrv
+;;
+;; [VBoxDrvInstall@DOT-NT-ARCH@]
+;; CopyFiles=VBoxDrv_CopyFiles
+;;
+;; [VBoxDrvInstall@DOT-NT-ARCH@.Services]
+;; AddService=VBoxDrv,0x00000002,VBoxDrv_Service
 
 [SourceDisksFiles]
 VBoxDrv.sys=1
