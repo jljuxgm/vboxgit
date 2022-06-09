@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 69589 2017-11-05 10:52:55Z vboxsync $
+# $Id: vbox.py 69591 2017-11-06 09:56:48Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69589 $"
+__version__ = "$Revision: 69591 $"
 
 
 # Standard Python imports.
@@ -2333,7 +2333,7 @@ class TestDriver(base.TestDriver):                                              
             if self.fpApiVer >= 4.0:
                 oVM = self.oVBox.findMachine(sNameOrId);
             else:
-                reporter.error('Port me!'); ## @todo Add support for older version < 4.0.
+                reporter.error('fpApiVer=%s - did you remember to initialize the API' % (self.fpApiVer,));
         except:
             reporter.errorXcpt('could not find vm "%s"' % (sNameOrId,));
             return None;
