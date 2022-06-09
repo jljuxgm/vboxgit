@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69504 2017-10-28 17:28:04Z vboxsync $ */
+/* $Id: scm.cpp 69510 2017-10-28 19:04:38Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -794,8 +794,8 @@ static void scmCfgEntryDelAction(PSCMCFGENTRY pEntry, PCSCMREWRITERCFG pAction)
     for (size_t iSrc = 0; iSrc < cEntries; iSrc++)
     {
         PCSCMREWRITERCFG pCurAction = paRewriters[iSrc];
-        if (pCurAction == pAction)
-            paRewriters[iDst++] = pAction;
+        if (pCurAction != pAction)
+            paRewriters[iDst++] = pCurAction;
     }
     pEntry->cRewriters = iDst;
 }
@@ -2759,7 +2759,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69504 $";
+                static const char s_szRev[] = "$Revision: 69510 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
