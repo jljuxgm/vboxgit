@@ -1,4 +1,4 @@
-# $Id: Config.kmk 72602 2018-06-18 15:16:04Z vboxsync $
+# $Id: Config.kmk 72625 2018-06-20 12:21:30Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2929,16 +2929,17 @@ endif
 # set VBOX_WITH_GCC_SANITIZER_STATIC in addition.
 ifdef VBOX_WITH_GCC_SANITIZER
  VBOX_GCC_SANITIZER_FLAGS := \
-	-fsanitize=undefined \
-	-fsanitize=address \
-	-fsanitize=return \
-	-fsanitize=bounds \
-	-fsanitize=object-size \
-	-fno-sanitize=alignment \
-	-fno-sanitize=vptr \
-	-fno-common \
-	-include sanitizer/lsan_interface.h \
-	-DVBOX_WITH_GCC_SANITIZER
+ 	-fsanitize=undefined \
+ 	-fsanitize=address \
+ 	-fsanitize=return \
+ 	-fsanitize=bounds \
+ 	-fsanitize=object-size \
+ 	-fno-sanitize=alignment \
+ 	-fno-sanitize=vptr \
+ 	-fno-common \
+  	-include sanitizer/lsan_interface.h \
+ 	-DIPRT_WITH_GCC_SANITIZER \
+ 	-DVBOX_WITH_GCC_SANITIZER
 else
  VBOX_GCC_SANITIZER_FLAGS =
 endif
@@ -7302,7 +7303,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 72602 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 72625 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
