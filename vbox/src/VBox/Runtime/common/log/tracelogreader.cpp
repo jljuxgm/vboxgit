@@ -1,4 +1,4 @@
-/* $Id: tracelogreader.cpp 71501 2018-03-25 00:17:47Z vboxsync $ */
+/* $Id: tracelogreader.cpp 71502 2018-03-25 15:36:26Z vboxsync $ */
 /** @file
  * IPRT - Trace log reader.
  */
@@ -242,6 +242,7 @@ typedef DECLCALLBACK(int) FNRTTRACELOGRDRSTATEHANDLER(PRTTRACELOGRDRINT pThis, R
                                                       bool *pfContinuePoll);
 /** Pointer to a trace log reader state handler. */
 typedef FNRTTRACELOGRDRSTATEHANDLER *PFNRTTRACELOGRDRSTATEHANDLER;
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *

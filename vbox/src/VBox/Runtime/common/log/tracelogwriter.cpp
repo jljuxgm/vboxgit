@@ -1,4 +1,4 @@
-/* $Id: tracelogwriter.cpp 71501 2018-03-25 00:17:47Z vboxsync $ */
+/* $Id: tracelogwriter.cpp 71502 2018-03-25 15:36:26Z vboxsync $ */
 /** @file
  * IPRT - Trace log writer.
  */
@@ -119,6 +119,7 @@ typedef struct RTTRACELOGWRTCP
 } RTTRACELOGWRTCP;
 /** Pointer to a TCP server/client state. */
 typedef RTTRACELOGWRTCP *PRTTRACELOGWRTCP;
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
