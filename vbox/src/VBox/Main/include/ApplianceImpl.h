@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 67193 2017-06-01 08:44:31Z vboxsync $ */
+/* $Id: ApplianceImpl.h 67208 2017-06-01 13:32:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -220,8 +220,7 @@ private:
     HRESULT i_writeFSOVA(TaskOVF *pTask, AutoWriteLockBase& writeLock);
     HRESULT i_writeFSOPC(TaskOVF *pTask, AutoWriteLockBase& writeLock);
 #ifdef VBOX_WITH_NEW_TAR_CREATOR
-    HRESULT i_writeFSImpl(TaskOVF *pTask, AutoWriteLockBase &writeLock, RTVFSFSSTREAM hVfsFssDst,
-                          bool fOvfFile = true, bool fStreamOptimizedVmdk = true);
+    HRESULT i_writeFSImpl(TaskOVF *pTask, AutoWriteLockBase &writeLock, RTVFSFSSTREAM hVfsFssDst);
     HRESULT i_writeBufferToFile(RTVFSFSSTREAM hVfsFssDst, const char *pszFilename, const void *pvContent, size_t cbContent);
 #else
     HRESULT i_writeFSImpl(TaskOVF *pTask, AutoWriteLockBase &writeLock, PVDINTERFACEIO pCallbacks, PSHASTORAGE pStorage);
