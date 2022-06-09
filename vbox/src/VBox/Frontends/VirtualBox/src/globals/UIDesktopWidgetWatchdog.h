@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 69931 2017-12-05 10:20:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -104,6 +104,11 @@ public:
     /** Qt5: X11: Returns whether no or fake screen detected. */
     bool isFakeScreenDetected() const;
 #endif
+
+    /** Returns device-pixel-ratio of the host-screen with @a iHostScreenIndex. */
+    double devicePixelRatio(int iHostScreenIndex = -1);
+    /** Returns device-pixel-ratio of the host-screen which contains @a pWidget. */
+    double devicePixelRatio(QWidget *pWidget);
 
 private slots:
 

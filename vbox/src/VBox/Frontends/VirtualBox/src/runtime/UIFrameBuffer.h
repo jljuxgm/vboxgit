@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIFrameBuffer.h 69931 2017-12-05 10:20:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class declaration.
  */
@@ -105,10 +105,10 @@ public:
     /** Define the scale-factor used by the frame-buffer. */
     void setScaleFactor(double dScaleFactor);
 
-    /** Returns backing-scale-factor used by HiDPI frame-buffer. */
-    double backingScaleFactor() const;
-    /** Defines backing-scale-factor used by HiDPI frame-buffer. */
-    void setBackingScaleFactor(double dBackingScaleFactor);
+    /** Returns device-pixel-ratio set for HiDPI frame-buffer. */
+    double devicePixelRatio() const;
+    /** Defines device-pixel-ratio set for HiDPI frame-buffer. */
+    void setDevicePixelRatio(double dDevicePixelRatio);
 
     /** Returns whether frame-buffer should use unscaled HiDPI output. */
     bool useUnscaledHiDPIOutput() const;

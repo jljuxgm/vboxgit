@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.h 69931 2017-12-05 10:20:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Darwin specific tasks.
  */
@@ -101,8 +101,6 @@ bool darwinIsOnActiveSpace(NativeNSWindowRef pWindow);
 bool darwinScreensHaveSeparateSpaces();
 
 bool darwinOpenFile(NativeNSStringRef pstrFile);
-
-double darwinBackingScaleFactor(NativeNSWindowRef pWindow);
 
 float darwinSmallFontSize();
 bool darwinSetFrontMostProcess();
@@ -277,8 +275,6 @@ void darwinToggleWindowZoom(QWidget *pWidget);
 bool darwinIsInFullscreenMode(QWidget *pWidget);
 bool darwinIsOnActiveSpace(QWidget *pWidget);
 bool darwinOpenFile(const QString &strFile);
-
-double darwinBackingScaleFactor(QWidget *pWidget);
 
 QString darwinSystemLanguage(void);
 QPixmap darwinCreateDragPixmap(const QPixmap& aPixmap, const QString &aText);

@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 69931 2017-12-05 10:20:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -175,11 +175,6 @@ void darwinUninstallResizeDelegate(QWidget *pWidget)
 bool darwinOpenFile(const QString& strFile)
 {
     return ::darwinOpenFile(darwinToNativeString(strFile.toUtf8().constData()));
-}
-
-double darwinBackingScaleFactor(QWidget *pWidget)
-{
-    return ::darwinBackingScaleFactor(::darwinToNativeWindow(pWidget));
 }
 
 QString darwinSystemLanguage(void)
