@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-netbsd.c 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: alloc-r0drv-netbsd.c 69217 2017-10-24 14:56:35Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NetBSD.
  */
@@ -21,6 +21,8 @@
  *
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
+ * ---------------------------------------------------------------------------
+ *
  * This code is based on:
  *
  * Copyright (c) 2014 Arto Huusko
