@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 67942 2017-07-12 15:19:36Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 68212 2017-07-31 16:39:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -295,6 +295,11 @@ public:
         bool selectorWindowToolBarVisible();
         /** Defines whether selector-window tool-bar @a fVisible. */
         void setSelectorWindowToolBarVisible(bool fVisible);
+
+        /** Returns whether selector-window tool-bar text visible. */
+        bool selectorWindowToolBarTextVisible();
+        /** Defines whether selector-window tool-bar text @a fVisible. */
+        void setSelectorWindowToolBarTextVisible(bool fVisible);
 
         /** Returns whether selector-window status-bar visible. */
         bool selectorWindowStatusBarVisible();

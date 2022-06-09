@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.h 68200 2017-07-31 12:41:10Z vboxsync $ */
+/* $Id: UIToolsToolbar.h 68212 2017-07-31 16:39:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class declaration.
  */
@@ -60,6 +60,9 @@ public:
     /** Constructs Tools toolbar passing @a pParent to the base-class.
       * @param  pActionPool  Brings the action-pool to take corresponding actions from. */
     UIToolsToolbar(UIActionPool *pActionPool, QWidget *pParent = 0);
+
+    /** Defines toolbar tool button @a enmStyle. */
+    void setToolButtonStyle(Qt::ToolButtonStyle enmStyle);
 
 private slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 67942 2017-07-12 15:19:36Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 68212 2017-07-31 16:39:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -79,6 +79,7 @@ const char* UIExtraDataDefs::GUI_RecentListFD = "GUI/RecentListFD";
 const char* UIExtraDataDefs::GUI_LastSelectorWindowPosition = "GUI/LastWindowPosition";
 const char* UIExtraDataDefs::GUI_SplitterSizes = "GUI/SplitterSizes";
 const char* UIExtraDataDefs::GUI_Toolbar = "GUI/Toolbar";
+const char* UIExtraDataDefs::GUI_Toolbar_Text = "GUI/Toolbar/Text";
 const char* UIExtraDataDefs::GUI_Statusbar = "GUI/Statusbar";
 const char* UIExtraDataDefs::GUI_GroupDefinitions = "GUI/GroupDefinitions";
 const char* UIExtraDataDefs::GUI_LastItemSelected = "GUI/LastItemSelected";

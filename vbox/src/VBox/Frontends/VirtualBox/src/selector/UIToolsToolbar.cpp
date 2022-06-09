@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.cpp 68200 2017-07-31 12:41:10Z vboxsync $ */
+/* $Id: UIToolsToolbar.cpp 68212 2017-07-31 16:39:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class implementation.
  */
@@ -49,6 +49,11 @@ UIToolsToolbar::UIToolsToolbar(UIActionPool *pActionPool, QWidget *pParent /* = 
 {
     /* Prepare: */
     prepare();
+}
+
+void UIToolsToolbar::setToolButtonStyle(Qt::ToolButtonStyle enmStyle)
+{
+    m_pToolBar->setToolButtonStyle(enmStyle);
 }
 
 void UIToolsToolbar::sltHandleOpenToolMachine()

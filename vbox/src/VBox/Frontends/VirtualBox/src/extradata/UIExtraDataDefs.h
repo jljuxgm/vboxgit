@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 67942 2017-07-12 15:19:36Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 68212 2017-07-31 16:39:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -133,6 +133,8 @@ namespace UIExtraDataDefs
         extern const char* GUI_SplitterSizes;
         /** Holds whether selector-window tool-bar visible. */
         extern const char* GUI_Toolbar;
+        /** Holds whether selector-window tool-bar text visible. */
+        extern const char* GUI_Toolbar_Text;
         /** Holds whether selector-window status-bar visible. */
         extern const char* GUI_Statusbar;
         /** Prefix used by composite extra-data keys,
