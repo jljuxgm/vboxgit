@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 70782 2018-01-29 07:46:15Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 70860 2018-02-05 10:41:07Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2916,7 +2916,7 @@ static void hmR0SvmUpdateTscOffsettingNested(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCt
 
     PSVMVMCBCTRL         pVmcbNstGstCtrl  = &pVmcbNstGst->ctrl;
     PCSVMNESTEDVMCBCACHE pVmcbNstGstCache = &pVCpu->hm.s.svm.NstGstVmcbCache;
-    Assert(pCtx->hwvirt.svm.fHMCachedVmcb);
+    Assert(pCtx->hwvirt.svm.fHMCachedVmcb); RT_NOREF(pCtx);
 
     /*
      * Only avoid intercepting if we determined the host TSC (++) is stable enough
