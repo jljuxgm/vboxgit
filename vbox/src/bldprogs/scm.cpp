@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69215 2017-10-24 14:38:50Z vboxsync $ */
+/* $Id: scm.cpp 69244 2017-10-24 18:36:08Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -629,7 +629,7 @@ static int scmSettingsBaseHandleOpt(PSCMSETTINGSBASE pSettings, int rc, PRTGETOP
                 return VINF_SUCCESS;
 
             /* Append it pattern by pattern, turning settings-relative paths into absolute ones. */
-            while (cchSrc > 0)
+            for (;;)
             {
                 const char *pszEnd = (const char *)memchr(pszSrc, '|', cchSrc);
                 size_t cchPattern = pszEnd ? pszEnd - pszSrc : cchSrc;
@@ -653,6 +653,7 @@ static int scmSettingsBaseHandleOpt(PSCMSETTINGSBASE pSettings, int rc, PRTGETOP
                 cchSrc -= 1;
                 pszSrc += cchPattern + 1;
             }
+            /* not reached */
         }
 
         default:
@@ -1974,7 +1975,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69215 $";
+                static const char s_szRev[] = "$Revision: 69244 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
