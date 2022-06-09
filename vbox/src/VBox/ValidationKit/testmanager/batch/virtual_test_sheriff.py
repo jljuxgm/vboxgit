@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 68111 2017-07-25 15:33:45Z vboxsync $
+# $Id: virtual_test_sheriff.py 68141 2017-07-27 16:13:40Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 68111 $"
+__version__ = "$Revision: 68141 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 68111 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 68141 $ \n');
 
 
     def eprint(self, sText):
@@ -490,6 +490,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Unknown_Reboot_Loop                       = ( 'Unknown',           'Reboot loop' );
     ktReason_Unknown_File_Not_Found                    = ( 'Unknown',           'File not found' );
     ktReason_Unknown_VM_Crash                          = ( 'Unknown',           'VM crash' );
+    ktReason_Unknown_HalReturnToFirmware               = ( 'Unknown',           'HalReturnToFirmware' );
     ktReason_VMM_kvm_lock_spinning                     = ( 'VMM',               'kvm_lock_spinning' );
     ktReason_Ignore_Buggy_Test_Driver                  = ( 'Ignore',            'Buggy test driver' );
     ktReason_Ignore_Stale_Files                        = ( 'Ignore',            'Stale files' );
@@ -558,7 +559,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 68111 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 68141 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -831,6 +832,11 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         _ = dLogs; _ = oCaseFile;
         return (False, None);
 
+    def investigateInfoHalReturnToFirmware(self, oCaseFile, sInfoText, dLogs):
+        """ Investigates HalReturnToFirmware hangs """
+        # hope that's sufficient
+        return (True, ktReason_Unknown_HalReturnToFirmware);
+
     ## Things we search a main or VM log for to figure out why something went bust.
     katSimpleMainAndVmLogReasons = [
         # ( Whether to stop on hit, reason tuple, needle text. )
@@ -899,6 +905,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     katInfoTextHandlers = [
         # ( Trigger text,                       handler method )
         ( "kvm_lock_spinning",                  investigateInfoKvmLockSpinning ),
+        ( "HalReturnToFirmware",                investigateInfoHalReturnToFirmware ),
     ];
 
     ## Mapping screenshot/failure SHA-256 hashes to failure reasons.
