@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: xarvfs.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -1170,6 +1170,8 @@ static const RTVFSFILEOPS g_rtZipXarFssFileOps =
     },
     rtZipXarFssFile_Seek,
     rtZipXarFssFile_QuerySize,
+    NULL /*SetSize*/,
+    NULL /*QueryMaxSize*/,
     RTVFSFILEOPS_VERSION,
 };
 

@@ -1,4 +1,4 @@
-/* $Id: tarvfswriter.cpp 67279 2017-06-06 16:50:10Z vboxsync $ */
+/* $Id: tarvfswriter.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Writer.
  */
@@ -826,6 +826,8 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtZipTarWriterFileOps =
     },
     rtZipTarWriterPush_Seek,
     rtZipTarWriterPush_QuerySize,
+    NULL /*SetSize*/,
+    NULL /*QueryMaxSize*/,
     RTVFSFILEOPS_VERSION
 };
 

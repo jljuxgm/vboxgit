@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 69942 2017-12-05 23:40:31Z vboxsync $ */
+/* $Id: vfsmemory.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -680,6 +680,28 @@ static DECLCALLBACK(int) rtVfsMemFile_QuerySize(void *pvThis, uint64_t *pcbFile)
 
 
 /**
+ * @interface_method_impl{RTVFSFILEOPS,pfnSetSize}
+ */
+static DECLCALLBACK(int) rtVfsMemFile_SetSize(void *pvThis, uint64_t cbFile, uint32_t fFlags)
+{
+    NOREF(pvThis); NOREF(cbFile); NOREF(fFlags);
+    AssertMsgFailed(("Lucky you! You get to implement this (or bug bird about it).\n"));
+    return VERR_NOT_IMPLEMENTED;
+}
+
+
+/**
+ * @interface_method_impl{RTVFSFILEOPS,pfnQueryMaxSize}
+ */
+static DECLCALLBACK(int) rtVfsMemFile_QueryMaxSize(void *pvThis, uint64_t *pcbMax)
+{
+    RT_NOREF(pvThis);
+    *pcbMax = ~(size_t)0 >> 1;
+    return VINF_SUCCESS;
+}
+
+
+/**
  * Memory file operations.
  */
 DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtVfsMemFileOps =
@@ -716,6 +738,8 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtVfsMemFileOps =
     },
     rtVfsMemFile_Seek,
     rtVfsMemFile_QuerySize,
+    rtVfsMemFile_SetSize,
+    rtVfsMemFile_QueryMaxSize,
     RTVFSFILEOPS_VERSION
 };
 

@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 69955 2017-12-06 12:26:37Z vboxsync $ */
+/* $Id: isovfs.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -2160,6 +2160,8 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtFsIsoFileOps =
     },
     rtFsIsoFile_Seek,
     rtFsIsoFile_QuerySize,
+    NULL /*SetSize*/,
+    NULL /*QueryMaxSize*/,
     RTVFSFILEOPS_VERSION
 };
 

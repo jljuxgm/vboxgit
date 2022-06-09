@@ -1,4 +1,4 @@
-/* $Id: dvmvfs.cpp 69967 2017-12-07 10:38:48Z vboxsync $ */
+/* $Id: dvmvfs.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - VFS glue.
  */
@@ -479,6 +479,8 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtDvmVfsStdFileOps =
     },
     rtDvmVfsFile_Seek,
     rtDvmVfsFile_QuerySize,
+    NULL /*SetSize*/,
+    NULL /*QueryMaxSize*/,
     RTVFSFILEOPS_VERSION
 };
 
