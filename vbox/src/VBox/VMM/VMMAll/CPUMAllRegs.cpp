@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 68226 2017-08-02 09:02:00Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 68228 2017-08-02 09:12:27Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2627,7 +2627,6 @@ VMM_INT_DECL(uint8_t) CPUMGetSvmNstGstInterrupt(PCCPUMCTX pCtx)
 /**
  * Restores the host-state from the host-state save area as part of a \#VMEXIT.
  *
- * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   pCtx        The guest-CPU context.
  */
 VMM_INT_DECL(void) CPUMSvmVmExitRestoreHostState(PCPUMCTX pCtx)
@@ -2665,7 +2664,6 @@ VMM_INT_DECL(void) CPUMSvmVmExitRestoreHostState(PCPUMCTX pCtx)
 /**
  * Saves the host-state to the host-state save area as part of a VMRUN.
  *
- * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   pCtx        The guest-CPU context.
  * @param   cbInstr     The length of the VMRUN instruction in bytes.
  */
