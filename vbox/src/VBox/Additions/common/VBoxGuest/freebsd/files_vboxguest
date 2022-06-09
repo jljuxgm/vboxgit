@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxguest 68581 2017-08-31 12:11:13Z vboxsync $
+# $Id: files_vboxguest 68628 2017-09-05 09:55:32Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -69,7 +69,7 @@ FILES_VBOXGUEST_NOBIN=" \
     ${PATH_ROOT}/include/VBox/types.h=>include/VBox/types.h \
     ${PATH_ROOT}/include/VBox/ostypes.h=>include/VBox/ostypes.h \
     ${PATH_ROOT}/include/VBox/VMMDev.h=>include/VBox/VMMDev.h \
-    ${PATH_ROOT}/include/VBox/VMMDev2.h=>include/VBox/VMMDev2.h \
+    ${PATH_ROOT}/include/VBox/VMMDevCoreTypes.h=>include/VBox/VMMDevCoreTypes.h \
     ${PATH_ROOT}/include/VBox/VBoxGuest.h=>include/VBox/VBoxGuest.h \
     ${PATH_ROOT}/include/VBox/VBoxGuest2.h=>include/VBox/VBoxGuest2.h \
     ${PATH_ROOT}/include/VBox/VBoxGuestLib.h=>include/VBox/VBoxGuestLib.h \
