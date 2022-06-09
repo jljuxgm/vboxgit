@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DIf.h 69976 2017-12-07 12:48:39Z vboxsync $ */
+/* $Id: VBoxD3DIf.h 70051 2017-12-10 20:02:31Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -129,13 +129,13 @@ DECLINLINE(IDirect3DDevice9*) VBoxD3DIfDeviceGet(PVBOXWDDMDISP_DEVICE pDevice)
     g_VBoxVDbgInternalDevice = pDevice;
 #endif
 
-    HRESULT hr = VBoxD3DIfDeviceCreateDummy(pDevice);
+    HRESULT hr = pDevice->pfnCreateDirect3DDevice(pDevice);
     Assert(hr == S_OK); NOREF(hr);
     Assert(pDevice->pDevice9If);
     return pDevice->pDevice9If;
 }
 
-#define VBOXDISPMODE_IS_3D(_p) (!!((_p)->D3D.pD3D9If))
+#define VBOXDISPMODE_IS_3D(_p) ((_p)->f3D)
 #ifdef VBOXDISP_EARLYCREATEDEVICE
 #define VBOXDISP_D3DEV(_p) (_p)->pDevice9If
 #else

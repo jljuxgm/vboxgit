@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 69976 2017-12-07 12:48:39Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 70051 2017-12-10 20:02:31Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -60,7 +60,7 @@ public:
 
     void postProcess()
     {
-        if (m_pDevice->pDevice9If)
+        if (m_pDevice->pDevice9If && m_pDevice->pAdapter->D3D.D3D.pfnVBoxWineExD3DDev9Finish)
             m_pDevice->pAdapter->D3D.D3D.pfnVBoxWineExD3DDev9Finish((IDirect3DDevice9Ex *)m_pDevice->pDevice9If);
     }
 private:
@@ -5880,7 +5880,10 @@ static HRESULT APIENTRY vboxWddmDDevDestroyDevice(IN HANDLE hDevice)
         /* ensure the device is destroyed in any way.
          * Release may not work in case of some leaking, which will leave the crOgl context refering the destroyed VBOXUHGSMI */
         if (pDevice->pDevice9If)
-            pDevice->pAdapter->D3D.D3D.pfnVBoxWineExD3DDev9Term((IDirect3DDevice9Ex *)pDevice->pDevice9If);
+        {
+            if (pDevice->pAdapter->D3D.D3D.pfnVBoxWineExD3DDev9Term)
+                pDevice->pAdapter->D3D.D3D.pfnVBoxWineExD3DDev9Term((IDirect3DDevice9Ex *)pDevice->pDevice9If);
+        }
     }
 
     HRESULT hr = vboxDispCmCtxDestroy(pDevice, &pDevice->DefaultContext);
@@ -6301,6 +6304,7 @@ static HRESULT APIENTRY vboxWddmDispCreateDevice (IN HANDLE hAdapter, IN D3DDDIA
     if (pDevice)
     {
         pDevice->cRTs = pAdapter->D3D.cMaxSimRTs;
+        pDevice->pfnCreateDirect3DDevice = VBoxD3DIfDeviceCreateDummy;
         pDevice->hDevice = pCreateData->hDevice;
         pDevice->pAdapter = pAdapter;
         pDevice->u32IfVersion = pCreateData->Interface;
@@ -6703,6 +6707,9 @@ HRESULT APIENTRY OpenAdapter(__inout D3DDDIARG_OPENADAPTER*  pOpenData)
 
                 }
             } while (0);
+
+            /* Flag indicating that the adapter instance is running in 3D mode. */
+            pAdapter->f3D = (pAdapter->D3D.pD3D9If != NULL);
         }
 #ifdef VBOX_WITH_VIDEOHWACCEL
         if (!VBOXDISPMODE_IS_3D(pAdapter))
