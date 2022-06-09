@@ -1,4 +1,4 @@
-/* $Id: VbglR0CanUsePhysPageList.cpp 68653 2017-09-05 14:53:44Z vboxsync $ */
+/* $Id: VbglR0CanUsePhysPageList.cpp 69308 2017-10-25 13:51:16Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Physical memory heap.
  */
@@ -23,6 +23,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

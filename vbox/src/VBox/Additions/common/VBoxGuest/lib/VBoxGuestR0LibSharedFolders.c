@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.c 69149 2017-10-20 14:53:19Z vboxsync $ */
+/* $Id: VBoxGuestR0LibSharedFolders.c 69308 2017-10-25 13:51:16Z vboxsync $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -23,6 +23,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
