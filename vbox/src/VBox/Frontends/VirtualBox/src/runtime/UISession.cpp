@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UISession.cpp 69824 2017-11-24 12:50:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1776,7 +1776,6 @@ void UISession::setPointerShape(const uchar *pShapeData, bool fHasAlpha,
     /* Create cursor-pixmap from the image: */
     QPixmap cursorPixmap = QPixmap::fromImage(image);
 # ifdef VBOX_WS_MAC
-#  ifdef VBOX_GUI_WITH_HIDPI
     /* Adjust backing-scale-factor: */
     /// @todo In case of multi-monitor setup check whether backing-scale factor and cursor are screen specific.
     /* Get screen-id of main-window: */
@@ -1790,7 +1789,6 @@ void UISession::setPointerShape(const uchar *pShapeData, bool fHasAlpha,
         uYHot /= dBackingScaleFactor;
         cursorPixmap.setDevicePixelRatio(dBackingScaleFactor);
     }
-#  endif /* VBOX_GUI_WITH_HIDPI */
 # endif /* VBOX_WS_MAC */
     /* Set the new cursor: */
     m_cursor = QCursor(cursorPixmap, uXHot, uYHot);

@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 68432 2017-08-16 09:53:41Z vboxsync $ */
+/* $Id: UIIconPool.cpp 69824 2017-11-24 12:50:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -244,15 +244,9 @@ void UIIconPool::addName(QIcon &icon, const QString &strName,
     icon.addPixmap(pixmap, mode, state);
 
 #ifdef VBOX_WS_MAC
-# ifdef VBOX_GUI_WITH_HIDPI
-    /* Test if HiDPI icons are enabled. Works only with a patched version of Qt 4.x
-     * with the changes from https://codereview.qt-project.org/#change,54636 applied. */
+    /* Test if HiDPI icons are enabled: */
     if (!qApp->testAttribute(Qt::AA_UseHighDpiPixmaps))
         return;
-# else /* !VBOX_GUI_WITH_HIDPI */
-    /* Otherwise HiDPI icons are useless: */
-    return;
-# endif /* !VBOX_GUI_WITH_HIDPI */
 #endif /* VBOX_WS_MAC */
 
     /* Parse name to prefix and suffix: */

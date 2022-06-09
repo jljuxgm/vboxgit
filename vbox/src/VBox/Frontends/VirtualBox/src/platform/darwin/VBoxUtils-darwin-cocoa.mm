@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 69824 2017-11-24 12:50:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -90,13 +90,11 @@ NativeNSImageRef darwinToNSImageRef(const QImage *pImage)
     CGImageRef pCGImage = ::darwinToCGImageRef(pImage);
     NativeNSImageRef pNSImage = ::darwinToNSImageRef(pCGImage);
     CGImageRelease(pCGImage);
-#ifdef VBOX_GUI_WITH_HIDPI
     /* Apply device pixel ratio: */
     double dScaleFactor = pImage->devicePixelRatio();
     NSSize imageSize = { (CGFloat)pImage->width() / dScaleFactor,
                          (CGFloat)pImage->height() / dScaleFactor };
     [pNSImage setSize:imageSize];
-#endif /* VBOX_GUI_WITH_HIDPI */
     /* Return result: */
     return pNSImage;
 }

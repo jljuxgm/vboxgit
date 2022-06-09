@@ -1,4 +1,4 @@
-/* $Id: main.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: main.cpp 69824 2017-11-24 12:50:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -411,12 +411,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 #endif /* VBOX_WS_WIN */
 
 #ifdef VBOX_WS_MAC
-# ifdef VBOX_GUI_WITH_HIDPI
-        /* Enable HiDPI icons.
-         * For this we require a patched version of Qt 4.x with
-         * the changes from https://codereview.qt-project.org/#change,54636 applied. */
+        /* Enable HiDPI icons: */
         a.setAttribute(Qt::AA_UseHighDpiPixmaps);
-# endif /* VBOX_GUI_WITH_HIDPI */
 
         /* Disable menu icons on MacOS X host: */
         ::darwinDisableIconsInMenus();
