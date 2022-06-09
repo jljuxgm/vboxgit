@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 68679 2017-09-06 13:42:56Z vboxsync $ */
+/* $Id: UIMessageCenter.h 68721 2017-09-12 11:06:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -211,6 +211,7 @@ public:
     bool cannotRestoreSnapshot(const CProgress &progress, const QString &strSnapshotName, const QString &strMachineName) const;
     void cannotRemoveSnapshot(const CMachine &machine, const QString &strSnapshotName, const QString &strMachineName) const;
     void cannotRemoveSnapshot(const CProgress &progress, const QString &strSnapshotName, const QString &strMachineName) const;
+    void cannotChangeSnapshot(const CSnapshot &comSnapshot, const QString &strSnapshotName, const QString &strMachineName) const;
     void cannotFindSnapshotByName(const CMachine &comMachine, const QString &strName, QWidget *pParent = 0) const;
     void cannotFindSnapshotById(const CMachine &comMachine, const QString &strId, QWidget *pParent = 0) const;
     void cannotAcquireSnapshotAttributes(const CSnapshot &comSnapshot, QWidget *pParent = 0);

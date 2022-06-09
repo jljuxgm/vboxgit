@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 68679 2017-09-06 13:42:56Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 68721 2017-09-12 11:06:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -945,6 +945,14 @@ void UIMessageCenter::cannotRemoveSnapshot(const CProgress &progress, const QStr
           tr("Failed to delete the snapshot <b>%1</b> of the virtual machine <b>%2</b>.")
              .arg(strSnapshotName).arg(strMachineName),
           UIErrorString::formatErrorInfo(progress));
+}
+
+void UIMessageCenter::cannotChangeSnapshot(const CSnapshot &comSnapshot, const QString &strSnapshotName, const QString &strMachineName) const
+{
+    error(0, MessageType_Error,
+          tr("Failed to change the snapshot <b>%1</b> of the virtual machine <b>%2</b>.")
+             .arg(strSnapshotName).arg(strMachineName),
+          UIErrorString::formatErrorInfo(comSnapshot));
 }
 
 void UIMessageCenter::cannotFindSnapshotByName(const CMachine &comMachine,
