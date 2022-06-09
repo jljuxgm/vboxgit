@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 68265 2017-08-03 07:39:41Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 68912 2017-09-28 15:51:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -416,7 +416,7 @@ void UIHostNetworkManagerWidget::sltAddHostNetwork()
     else
     {
         /* Show interface creation progress: */
-        msgCenter().showModalProgressDialog(progress, tr("Networking"), ":/progress_network_interface_90px.png", this, 0);
+        msgCenter().showModalProgressDialog(progress, tr("Adding network..."), ":/progress_network_interface_90px.png", this, 0);
 
         /* Show error message if necessary: */
         if (!progress.isOk() || progress.GetResultCode() != 0)
