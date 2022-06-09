@@ -1,4 +1,4 @@
-/* $Id: tarcmd.cpp 67255 2017-06-02 18:05:34Z vboxsync $ */
+/* $Id: tarcmd.cpp 67256 2017-06-02 18:11:28Z vboxsync $ */
 /** @file
  * IPRT - A mini TAR Command.
  */
@@ -289,6 +289,7 @@ static RTEXITCODE rtZipTarCmdArchiveDir(PRTZIPTARCMDOPS pOpts, RTVFSFSSTREAM hVf
 static RTEXITCODE rtZipTarCmdOpenOutputArchive(PRTZIPTARCMDOPS pOpts, PRTVFSFSSTREAM phVfsFss)
 {
     int rc;
+    *phVfsFss = NIL_RTVFSFSSTREAM;
 
     /*
      * Open the output file.
