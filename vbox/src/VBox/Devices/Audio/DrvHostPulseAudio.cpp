@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 67545 2017-06-21 15:28:30Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 67547 2017-06-21 19:08:00Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -290,8 +290,8 @@ static int paWaitForEx(PDRVHOSTPULSEAUDIO pThis, pa_operation *pOP, RTMSINTERVAL
 //            if (fDebug)
 //                LogRel(("PulseAudio: pa_threaded_mainloop_wait\n"));
             pa_threaded_mainloop_wait(pThis->pMainLoop);
-//            if (fDebug)
-//                LogRel(("PulseAudio: pa_threaded_mainloop_wait done\n"));
+            if (fDebug)
+                LogRel(("PulseAudio: pa_threaded_mainloop_wait done\n"));
             if (pThis->fAbortEnumLoop)
                 break;
             if (   !pThis->pContext
@@ -342,6 +342,7 @@ static void paContextCbStateChanged(pa_context *pCtx, void *pvUser)
             break;
 
         default:
+            LogRel(("PulseAudio: ignoring state change %d\n", pa_context_get_state(pCtx)));
             break;
     }
 }
