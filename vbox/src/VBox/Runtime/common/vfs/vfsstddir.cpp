@@ -1,4 +1,4 @@
-/* $Id: vfsstddir.cpp 69674 2017-11-13 15:29:43Z vboxsync $ */
+/* $Id: vfsstddir.cpp 69679 2017-11-13 15:53:01Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard Directory Implementation.
  */
@@ -568,13 +568,13 @@ RTDECL(int) RTVfsDirFromRTDir(PRTDIR hDir, bool fLeaveOpen, PRTVFSDIR phVfsDir)
 }
 
 
-RTDECL(int) RTVfsDirOpenNormal(const char *pszFilename, uint32_t fFlags, PRTVFSDIR phVfsDir)
+RTDECL(int) RTVfsDirOpenNormal(const char *pszPath, uint32_t fFlags, PRTVFSDIR phVfsDir)
 {
     /*
      * Open the file the normal way and pass it to RTVfsFileFromRTFile.
      */
     PRTDIR hDir;
-    int rc = RTDirOpenFiltered(&hDir, pszFilename, RTDIRFILTER_NONE, fFlags);
+    int rc = RTDirOpenFiltered(&hDir, pszPath, RTDIRFILTER_NONE, fFlags);
     if (RT_SUCCESS(rc))
     {
         /*
