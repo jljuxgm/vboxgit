@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxguest 69500 2017-10-28 15:14:05Z vboxsync $
+# $Id: files_vboxguest 69762 2017-11-19 16:12:34Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules.sh.
 #
@@ -98,6 +98,7 @@ FILES_VBOXGUEST_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Runtime/common/alloc/heapsimple.cpp=>alloc/heapsimple.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/err/RTErrConvertFromErrno.cpp=>common/err/RTErrConvertFromErrno.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/err/RTErrConvertToErrno.cpp=>common/err/RTErrConvertToErrno.c \
+    ${PATH_ROOT}/src/VBox/Runtime/common/err/errinfo.cpp=>common/err/errinfo.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/log/log.cpp=>common/log/log.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/log/logellipsis.cpp=>common/log/logellipsis.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/log/logrel.cpp=>common/log/logrel.c \

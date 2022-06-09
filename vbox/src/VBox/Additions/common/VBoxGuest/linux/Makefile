@@ -1,4 +1,4 @@
-# $Revision: 69500 $
+# $Revision: 69762 $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -65,6 +65,7 @@ MOD_OBJS   = \
 	common/alloc/alloc.o \
 	common/err/RTErrConvertFromErrno.o \
 	common/err/RTErrConvertToErrno.o \
+	common/err/errinfo.o \
 	common/log/log.o \
 	common/log/logellipsis.o \
 	common/log/logrel.o \

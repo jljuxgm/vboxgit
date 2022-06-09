@@ -1,4 +1,4 @@
-# $Id: Makefile 69500 2017-10-28 15:14:05Z vboxsync $
+# $Id: Makefile 69762 2017-11-19 16:12:34Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -55,7 +55,8 @@ SRCS += \
 .PATH:	${.CURDIR}/common/err
 SRCS += \
 	RTErrConvertFromErrno.c \
-	RTErrConvertToErrno.c
+	RTErrConvertToErrno.c \
+	errinfo.c
 
 .PATH:	${.CURDIR}/common/log
 SRCS += \

@@ -1,4 +1,4 @@
-# $Id: Makefile 69371 2017-10-26 15:34:57Z vboxsync $
+# $Id: Makefile 69762 2017-11-19 16:12:34Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -68,6 +68,7 @@ MOD_OBJS = \
 	common/checksum/ipv6.o \
 	common/err/RTErrConvertFromErrno.o \
 	common/err/RTErrConvertToErrno.o \
+	common/err/errinfo.o \
 	common/log/log.o \
 	common/log/logellipsis.o \
 	common/log/logrel.o \
