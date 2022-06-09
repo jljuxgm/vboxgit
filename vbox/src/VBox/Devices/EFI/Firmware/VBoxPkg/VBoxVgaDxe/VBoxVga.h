@@ -1,4 +1,4 @@
-/* $Id: VBoxVga.h 67356 2017-06-13 11:22:15Z vboxsync $ */
+/* $Id: VBoxVga.h 69054 2017-10-11 19:26:12Z vboxsync $ */
 /** @file
  * VBoxVga.h
  */
@@ -72,6 +72,8 @@
 
 #include "VBoxPkg.h"
 #include "DevEFI.h"
+#include "VBox/Graphics/VBoxVideoVBE.h"
+#include "VBox/Graphics/VBoxVideoVBEPrivate.h"
 
 //
 // VirtualBox VGA PCI Configuration Header values
@@ -171,10 +173,6 @@ extern EFI_DRIVER_SUPPORTED_EFI_VERSION_PROTOCOL  gVBoxVgaDriverSupportedEfiVers
 #define DAC_PIXEL_MASK_REGISTER 0x3c6
 #define PALETTE_INDEX_REGISTER  0x3c8
 #define PALETTE_DATA_REGISTER   0x3c9
-
-// IO Registers defined by VBE
-#define VBE_DISPI_IOPORT_INDEX  0x1ce
-#define VBE_DISPI_IOPORT_DATA   0x1cf
 
 
 //
