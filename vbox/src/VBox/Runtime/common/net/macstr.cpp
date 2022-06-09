@@ -1,4 +1,4 @@
-/* $Id: macstr.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: macstr.cpp 71627 2018-04-02 22:37:11Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -59,9 +59,9 @@ RTDECL(int) RTNetStrToMacAddr(const char *pszValue, PRTMAC pAddr)
     char *pszNext;
     int rc = RTStrToUInt8Ex(RTStrStripL(pszValue), &pszNext, 16, &pAddr->au8[0]);
     if (rc != VINF_SUCCESS && rc != VWRN_TRAILING_CHARS)
-        return VERR_GETOPT_INVALID_ARGUMENT_FORMAT;
+        return VERR_INVALID_PARAMETER;
     if (*pszNext++ != ':')
-        return VERR_GETOPT_INVALID_ARGUMENT_FORMAT;
+        return VERR_INVALID_PARAMETER;
 
     /* middle */
     for (unsigned i = 1; i < 5; i++)
