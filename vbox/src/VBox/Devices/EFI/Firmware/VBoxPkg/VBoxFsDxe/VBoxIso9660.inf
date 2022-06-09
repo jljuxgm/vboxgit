@@ -1,6 +1,7 @@
-# $Id: VBoxIso9660.inf 62501 2016-07-22 19:08:57Z vboxsync $
+# $Id: VBoxIso9660.inf 69429 2017-10-27 13:27:03Z vboxsync $
 ## @file
 # VBox ISO9660 FS driver
+#
 
 #
 # Copyright (C) 2010-2016 Oracle Corporation
@@ -83,4 +84,3 @@
 
   MSFT:*_*_*_CC_FLAGS = -DFSTYPE=iso9660
 
-  

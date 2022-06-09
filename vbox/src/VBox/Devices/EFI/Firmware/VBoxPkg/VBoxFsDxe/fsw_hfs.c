@@ -1,4 +1,4 @@
-/* $Id: fsw_hfs.c 62500 2016-07-22 19:06:59Z vboxsync $ */
+/* $Id: fsw_hfs.c 69429 2017-10-27 13:27:03Z vboxsync $ */
 /** @file
  * fsw_hfs.c - HFS file system driver code, see
  *
@@ -654,7 +654,7 @@ static void hfs_fill_info(struct fsw_hfs_volume *vol, HFSPlusCatalogKey *file_ke
     base = (fsw_u8*)file_key + be16_to_cpu(file_key->keyLength) + 2;
     rec_type =  be16_to_cpu(*(fsw_u16*)base);
 
-    /** @todo: read additional info */
+    /** @todo read additional info */
     switch (rec_type)
     {
         case kHFSPlusFolderRecord:
@@ -663,7 +663,7 @@ static void hfs_fill_info(struct fsw_hfs_volume *vol, HFSPlusCatalogKey *file_ke
 
             file_info->id = be32_to_cpu(info->folderID);
             file_info->type = FSW_DNODE_TYPE_DIR;
-            /* @todo: return number of elements, maybe use smth else */
+            /** @todo return number of elements, maybe use smth else */
             file_info->size = be32_to_cpu(info->valence);
             file_info->used = be32_to_cpu(info->valence);
             file_info->ctime = be32_to_cpu(info->createDate);

@@ -1,4 +1,4 @@
-/* $Id: VBoxVgaGraphicsOutput.c 67918 2017-07-12 09:30:24Z vboxsync $ */
+/* $Id: VBoxVgaGraphicsOutput.c 69429 2017-10-27 13:27:03Z vboxsync $ */
 /** @file
  * VBoxVgaGraphicsOutput.c
  */
@@ -385,7 +385,7 @@ Returns:
     // Video Fill: Source is BltBuffer, destination is Video
     //
     if (DestinationX == 0 && Width == ScreenWidth) {
-      // @todo assumes that color depth is 32 (*4, EfiPciIoWidthFillUint32) and format matches EFI_GRAPHICS_OUTPUT_BLT_PIXEL
+      /// @todo assumes that color depth is 32 (*4, EfiPciIoWidthFillUint32) and format matches EFI_GRAPHICS_OUTPUT_BLT_PIXEL
       Status = Private->PciIo->Mem.Write (
                                     Private->PciIo,
                                     EfiPciIoWidthFillUint32,
@@ -397,7 +397,7 @@ Returns:
       ASSERT_EFI_ERROR((Status));
     } else {
       for (SrcY = SourceY, DstY = DestinationY; SrcY < (Height + SourceY); SrcY++, DstY++) {
-        // @todo assumes that color depth is 32 (*4, EfiPciIoWidthFillUint32) and format matches EFI_GRAPHICS_OUTPUT_BLT_PIXEL
+        /// @todo assumes that color depth is 32 (*4, EfiPciIoWidthFillUint32) and format matches EFI_GRAPHICS_OUTPUT_BLT_PIXEL
         Status = Private->PciIo->Mem.Write (
                                       Private->PciIo,
                                       EfiPciIoWidthFillUint32,

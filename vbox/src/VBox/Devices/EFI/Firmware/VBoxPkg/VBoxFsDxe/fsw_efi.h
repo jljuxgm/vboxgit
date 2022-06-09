@@ -1,4 +1,4 @@
-/* $Id: fsw_efi.h 62500 2016-07-22 19:06:59Z vboxsync $ */
+/* $Id: fsw_efi.h 69429 2017-10-27 13:27:03Z vboxsync $ */
 /** @file
  * fsw_efi.h - EFI host environment header.
  */
@@ -22,9 +22,7 @@
  *
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
- */
-
-/*-
+ * ---------------------------------------------------------------------------
  * This code is based on:
  *
  * Copyright (c) 2006 Christoph Pfisterer

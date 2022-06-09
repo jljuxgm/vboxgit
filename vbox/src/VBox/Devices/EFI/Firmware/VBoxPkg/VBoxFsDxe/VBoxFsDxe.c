@@ -1,4 +1,4 @@
-/* $Id: VBoxFsDxe.c 62500 2016-07-22 19:06:59Z vboxsync $ */
+/* $Id: VBoxFsDxe.c 69429 2017-10-27 13:27:03Z vboxsync $ */
 /** @file
  * VBoxFsDxe.c - VirtualBox FS wrapper
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <Protocol/ComponentName.h>
 #include <Protocol/ComponentName2.h>
 #include <Protocol/DriverBinding.h>
@@ -37,9 +38,10 @@
 #include <Library/UefiLib.h>
 #include <IndustryStandard/Pci22.h>
 
-/*******************************************************************************
-*   Internal Functions                                                         *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Internal Functions                                                                                                           *
+*********************************************************************************************************************************/
 static EFI_STATUS EFIAPI
 VBoxFsDB_Supported(IN EFI_DRIVER_BINDING_PROTOCOL *This, IN EFI_HANDLE ControllerHandle,
                    IN EFI_DEVICE_PATH_PROTOCOL *RemainingDevicePath OPTIONAL);

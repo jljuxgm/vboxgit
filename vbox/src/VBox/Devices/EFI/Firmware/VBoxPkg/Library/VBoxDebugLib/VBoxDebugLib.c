@@ -1,4 +1,4 @@
-/* $Id: VBoxDebugLib.c 67350 2017-06-12 17:42:14Z vboxsync $ */
+/* $Id: VBoxDebugLib.c 69429 2017-10-27 13:27:03Z vboxsync $ */
 /** @file
  * VBoxDebugLib.c - Debug logging and assertions support routines using DevEFI.
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <Base.h>
 #include <Library/BaseLib.h>
 #include <Library/PrintLib.h>

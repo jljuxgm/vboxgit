@@ -1,4 +1,4 @@
-# $Id: VBoxDebugLib.inf 62501 2016-07-22 19:08:57Z vboxsync $
+# $Id: VBoxDebugLib.inf 69429 2017-10-27 13:27:03Z vboxsync $
 ## @file
 # VBoxDebugLib - Debug logging and assertions support routines using DevEFI.
 #
@@ -24,7 +24,6 @@
 # You may elect to license modified versions of this file under the
 # terms and conditions of either the GPL or the CDDL or both.
 #
-#/
 
 
 

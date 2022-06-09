@@ -1,8 +1,8 @@
-# $Id: Makefile 56292 2015-06-09 14:20:46Z vboxsync $
-#* @file
+# $Id: Makefile 69429 2017-10-27 13:27:03Z vboxsync $
+## @file
 # Makefile - assembling the iso image for experimenting with EFI.
-#/
 #
+
 #
 # Copyright (C) 2009-2015 Oracle Corporation
 #
@@ -23,10 +23,9 @@
 # You may elect to license modified versions of this file under the
 # terms and conditions of either the GPL or the CDDL or both.
 #
-#/
 
 #
-# Here we add modules to be burn on iso-image 
+# Here we add modules to be burn on iso-image
 #
 SOURCES += VBoxInterceptorDxe.efi
 SOURCES += VBoxMimicryDxe.efi
@@ -54,3 +53,4 @@ $(ISO_DIR)/%.efi:$(BUILD_DIR)/%.efi
 
 clean:
 	$(RM) -rf ${DEST} $(FILES_TO_ISO)
+

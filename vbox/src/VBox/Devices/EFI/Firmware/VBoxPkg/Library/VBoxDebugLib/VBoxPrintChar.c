@@ -1,4 +1,4 @@
-/* $Id: VBoxPrintChar.c 67350 2017-06-12 17:42:14Z vboxsync $ */
+/* $Id: VBoxPrintChar.c 69429 2017-10-27 13:27:03Z vboxsync $ */
 /** @file
  * VBoxPrintChar.c - Implementation of the VBoxPrintChar() debug logging routine.
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "VBoxDebugLib.h"
 #include "DevEFI.h"
 #include "iprt/asm.h"
