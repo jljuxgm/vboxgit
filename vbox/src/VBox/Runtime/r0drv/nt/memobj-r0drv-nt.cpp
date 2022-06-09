@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 70152 2017-12-15 14:51:54Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 70153 2017-12-15 15:07:27Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -220,7 +220,11 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocPage(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
      * without running into out-of-memory conditions and similar problems.
      */
     int rc = VERR_NO_PAGE_MEMORY;
-    void *pv = ExAllocatePoolWithTag(NonPagedPool, cb, IPRT_NT_POOL_TAG);
+    void *pv;
+    if (g_pfnrtExAllocatePoolWithTag)
+        pv = g_pfnrtExAllocatePoolWithTag(NonPagedPool, cb, IPRT_NT_POOL_TAG);
+    else
+        pv = ExAllocatePool(NonPagedPool, cb);
     if (pv)
     {
         PMDL pMdl = IoAllocateMdl(pv, (ULONG)cb, FALSE, FALSE, NULL);

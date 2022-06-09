@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 70152 2017-12-15 14:51:54Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 70153 2017-12-15 15:07:27Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -42,6 +42,8 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
+/** ExAllocatePoolWithTag, introduced in W2K. */
+decltype(ExAllocatePoolWithTag)        *g_pfnrtExAllocatePoolWithTag;
 /** ExSetTimerResolution, introduced in W2K. */
 PFNMYEXSETTIMERRESOLUTION               g_pfnrtNtExSetTimerResolution;
 /** KeFlushQueuedDpcs, introduced in XP. */
@@ -270,6 +272,7 @@ DECLHIDDEN(int) rtR0InitNative(void)
 #define GET_SYSTEM_ROUTINE_PRF(a_Prf,a_Name)       GET_SYSTEM_ROUTINE_EX(a_Prf, a_Name, decltype(a_Name) *)
 #define GET_SYSTEM_ROUTINE_TYPE(a_Name, a_pfnType) GET_SYSTEM_ROUTINE_EX(RT_NOTHING, a_Name, a_pfnType)
 
+    GET_SYSTEM_ROUTINE(ExAllocatePoolWithTag);
     GET_SYSTEM_ROUTINE_PRF(Nt,ExSetTimerResolution);
     GET_SYSTEM_ROUTINE_PRF(Nt,KeFlushQueuedDpcs);
     GET_SYSTEM_ROUTINE(KeIpiGenericCall);

@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 70152 2017-12-15 14:51:54Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 70153 2017-12-15 15:07:27Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -57,6 +57,7 @@ extern uint32_t                                g_cRtMpNtMaxGroups;
 extern uint32_t                                g_cRtMpNtMaxCpus;
 extern RTCPUID                                 g_aidRtMpNtByCpuSetIdx[RTCPUSET_MAX_CPUS];
 
+extern decltype(ExAllocatePoolWithTag)        *g_pfnrtExAllocatePoolWithTag;
 extern PFNMYEXSETTIMERRESOLUTION               g_pfnrtNtExSetTimerResolution;
 extern PFNMYKEFLUSHQUEUEDDPCS                  g_pfnrtNtKeFlushQueuedDpcs;
 extern PFNHALREQUESTIPI_W7PLUS                 g_pfnrtHalRequestIpiW7Plus;
