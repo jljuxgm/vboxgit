@@ -1,4 +1,4 @@
-/* $Id: fuzzmastercmd.cpp 72572 2018-06-15 20:40:14Z vboxsync $ */
+/* $Id: fuzzmastercmd.cpp 72573 2018-06-15 20:46:32Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, master command.
  */
@@ -401,7 +401,7 @@ static int rtFuzzCmdMasterFuzzRunProcessSeed(RTFUZZCTX hFuzzCtx, const char *psz
                     rc = RTVfsIoStrmFromBuffer(RTFILE_O_READ, pbSeedDecoded, cbSeedDecoded, &hVfsIosSeed);
                     if (RT_SUCCESS(rc))
                     {
-                        RTVFSIOSTREAM hVfsDecomp;
+                        RTVFSIOSTREAM hVfsDecomp = NIL_RTVFSIOSTREAM;
 
                         if (!RTStrICmp(pszCompression, "Gzip"))
                             rc = RTZipGzipDecompressIoStream(hVfsIosSeed, RTZIPGZIPDECOMP_F_ALLOW_ZLIB_HDR, &hVfsDecomp);
