@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 68654 2017-09-05 17:22:12Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -4601,7 +4601,7 @@ DxgkDdiEscape(
                      */
                     VMMDevVideoSetVisibleRegion *req = NULL;
 
-                    rc = VbglGRAlloc ((VMMDevRequestHeader **)&req,
+                    rc = VbglR0GRAlloc ((VMMDevRequestHeader **)&req,
                                       sizeof (VMMDevVideoSetVisibleRegion) + (cRects-1)*sizeof(RTRECT),
                                       VMMDevReq_VideoSetVisibleRegion);
                     AssertRC(rc);
@@ -4610,19 +4610,19 @@ DxgkDdiEscape(
                         req->cRect = cRects;
                         memcpy(&req->Rect, pRect, cRects*sizeof(RTRECT));
 
-                        rc = VbglGRPerform (&req->header);
+                        rc = VbglR0GRPerform (&req->header);
                         AssertRC(rc);
                         if (RT_SUCCESS(rc))
                             Status = STATUS_SUCCESS;
                         else
                         {
-                            WARN(("VbglGRPerform failed rc (%d)", rc));
+                            WARN(("VbglR0GRPerform failed rc (%d)", rc));
                             Status = STATUS_UNSUCCESSFUL;
                         }
                     }
                     else
                     {
-                        WARN(("VbglGRAlloc failed rc (%d)", rc));
+                        WARN(("VbglR0GRAlloc failed rc (%d)", rc));
                         Status = STATUS_UNSUCCESSFUL;
                     }
                 }

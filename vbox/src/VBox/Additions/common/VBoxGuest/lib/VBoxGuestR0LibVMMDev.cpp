@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibVMMDev.cpp 68653 2017-09-05 14:53:44Z vboxsync $ */
+/* $Id: VBoxGuestR0LibVMMDev.cpp 68654 2017-09-05 17:22:12Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - VMMDev device related functions.
  */
@@ -30,7 +30,7 @@
 #include "VBoxGuestR0LibInternal.h"
 
 
-DECLVBGL(int) VbglQueryVMMDevMemory(VMMDevMemory **ppVMMDevMemory)
+DECLVBGL(int) VbglR0QueryVMMDevMemory(VMMDevMemory **ppVMMDevMemory)
 {
     int rc = vbglR0Enter();
     if (RT_FAILURE(rc))

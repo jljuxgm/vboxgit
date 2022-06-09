@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDriver.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxMPDriver.cpp 68654 2017-09-05 17:22:12Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport driver interface functions
  */
@@ -664,7 +664,7 @@ VBoxDrvResetHW(PVOID HwDeviceExtension, ULONG Columns, ULONG Rows)
         /* ResetHW is not the place to do such cleanup. See MSDN. */
         if (pExt->u.primary.pvReqFlush != NULL)
         {
-            VbglGRFree((VMMDevRequestHeader *)pExt->u.primary.pvReqFlush);
+            VbglR0GRFree((VMMDevRequestHeader *)pExt->u.primary.pvReqFlush);
             pExt->u.primary.pvReqFlush = NULL;
         }
 

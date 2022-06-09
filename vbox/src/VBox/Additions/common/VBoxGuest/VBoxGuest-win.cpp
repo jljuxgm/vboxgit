@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 68554 2017-08-31 12:09:54Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 68654 2017-09-05 17:22:12Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -450,7 +450,7 @@ NTSTATUS vgdrvNtInit(PDRIVER_OBJECT pDrvObj, PDEVICE_OBJECT pDevObj, PUNICODE_ST
 
     if (NT_SUCCESS(rcNt))
     {
-        int vrc = VbglGRAlloc((VMMDevRequestHeader **)&pDevExt->pPowerStateRequest,
+        int vrc = VbglR0GRAlloc((VMMDevRequestHeader **)&pDevExt->pPowerStateRequest,
                               sizeof(VMMDevPowerStateRequest), VMMDevReq_SetPowerStatus);
         if (RT_FAILURE(vrc))
         {
@@ -941,7 +941,7 @@ static NTSTATUS vgdrvNtShutdown(PDEVICE_OBJECT pDevObj, PIRP pIrp)
         pReq->header.requestType = VMMDevReq_SetPowerStatus;
         pReq->powerState = VMMDevPowerState_PowerOff;
 
-        int rc = VbglGRPerform(&pReq->header);
+        int rc = VbglR0GRPerform(&pReq->header);
         if (RT_FAILURE(rc))
             LogFunc(("Error performing request to VMMDev, rc=%Rrc\n", rc));
     }
