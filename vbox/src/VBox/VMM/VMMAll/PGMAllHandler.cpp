@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 70977 2018-02-12 20:45:31Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 71043 2018-02-16 20:48:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1327,7 +1327,7 @@ VMMDECL(int)  PGMHandlerPhysicalPageTempOff(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS G
                 {
                     uint8_t     u2State = PGM_PAGE_GET_NEM_STATE(pPage);
                     PGMPAGETYPE enmType = (PGMPAGETYPE)PGM_PAGE_GET_TYPE(pPage);
-                    NEMHCNotifyPhysPageProtChanged(pVM, GCPhys, PGM_PAGE_GET_HCPHYS(pPage),
+                    NEMHCNotifyPhysPageProtChanged(pVM, GCPhysPage, PGM_PAGE_GET_HCPHYS(pPage),
                                                    pgmPhysPageCalcNemProtection(pPage, enmType), enmType, &u2State);
                     PGM_PAGE_SET_NEM_STATE(pPage, u2State);
                 }

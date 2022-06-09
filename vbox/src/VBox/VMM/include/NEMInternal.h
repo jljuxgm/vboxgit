@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 71040 2018-02-16 16:24:43Z vboxsync $ */
+/* $Id: NEMInternal.h 71043 2018-02-16 20:48:42Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -82,6 +82,9 @@ typedef struct NEM
     /** The device handle for the partition, for use with Vid APIs or direct I/O
      * controls. */
     RTR3PTR                     hPartitionDevice;
+
+    /** Number of currently mapped pages. */
+    uint32_t volatile           cMappedPages;
 #endif
 
 } NEM;
