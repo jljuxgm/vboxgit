@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69453 2017-10-27 17:08:22Z vboxsync $
+# $Id: .scm-settings 69458 2017-10-27 17:21:28Z vboxsync $
 ## @file
 # Source code massager settings for the VMM.
 #
@@ -17,4 +17,6 @@
 
 
 /VMMAll/IEMAllInstructionsPython.py: --license-ose-dual
+
+--filter-out-file /testcase/dev.tar.gz
 
