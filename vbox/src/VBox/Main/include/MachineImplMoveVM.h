@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 70833 2018-01-31 14:05:24Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 70971 2018-02-12 12:25:45Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -109,9 +109,9 @@ public:
     /* MachineCloneVM::start helper: */
     HRESULT createMachineList(const ComPtr<ISnapshot> &pSnapshot, std::vector< ComObjPtr<Machine> > &aMachineList) const;
     inline HRESULT queryBaseName(const ComPtr<IMedium> &pMedium, Utf8Str &strBaseName) const;
-    HRESULT queryMediasForAllStates(const std::vector<ComObjPtr<Machine> > &aMachineList, ULONG &uCount, ULONG &uTotalWeight);
+    HRESULT queryMediasForAllStates(const std::vector<ComObjPtr<Machine> > &aMachineList);
     void updateProgressStats(MEDIUMTASKCHAIN &mtc, ULONG &uCount, ULONG &uTotalWeight) const;
-    HRESULT addSaveState(const ComObjPtr<Machine> &machine, ULONG &uCount, ULONG &uTotalWeight);
+    HRESULT addSaveState(const ComObjPtr<Machine> &machine);
     void printStateFile(settings::SnapshotsList &snl);
     HRESULT getFilesList(const Utf8Str& strRootFolder, fileList_t &filesList);
     HRESULT getFolderSize(const Utf8Str& strRootFolder, uint64_t& size);
