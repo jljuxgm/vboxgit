@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 69552 2017-11-02 14:30:06Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 69615 2017-11-08 13:04:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -98,13 +98,7 @@ void UIMachineWindow::prepare()
 #ifdef VBOX_WS_X11
     /* Compose window name: */
     const QString strWindowName = QString("VirtualBox Machine UUID: %1").arg(vboxGlobal().managedVMUuid());
-
-    /* Assign it to both WM_CLASS name & class for now: */
-    const char *pBuffer = strWindowName.toLatin1().constData();
-    if (pBuffer)
-        vboxGlobal().setWMClass(this, pBuffer, pBuffer);
-    else
-        vboxGlobal().setWMClass(this, "VirtualBox Machine", "VirtualBox Machine");
+    vboxGlobal().setWMClass(this, strWindowName, strWindowName);
 #endif
 
     /* Prepare session-connections: */

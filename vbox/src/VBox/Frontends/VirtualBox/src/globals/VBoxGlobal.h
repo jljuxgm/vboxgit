@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 69552 2017-11-02 14:30:06Z vboxsync $ */
+/* $Id: VBoxGlobal.h 69615 2017-11-08 13:04:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -454,7 +454,7 @@ public:
 
 #ifdef VBOX_WS_X11
     /** Assigns WM_CLASS property for passed @a pWidget. */
-    static void setWMClass(QWidget *pWidget, const char *pStrName, const char *pStrClass);
+    static void setWMClass(QWidget *pWidget, const QString &strNameString, const QString &strClassString);
 #endif
 
 signals:
