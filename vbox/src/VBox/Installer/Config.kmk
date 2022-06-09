@@ -1,4 +1,4 @@
-# $Id: Config.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Config.kmk 71007 2018-02-14 12:46:17Z vboxsync $
 ## @file
 # kBuild Configuration file for the installers
 #
@@ -63,6 +63,7 @@ ifdef VBOX_WITH_UNATTENDED
  	fedora_ks.cfg \
  	ol_ks.cfg \
  	redhat67_ks.cfg \
+ 	rhel5_ks.cfg \
  	win_nt5_unattended.sif \
  	win_nt6_unattended.xml \
        \

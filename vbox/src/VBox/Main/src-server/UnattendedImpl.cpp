@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 71003 2018-02-13 19:05:22Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 71007 2018-02-14 12:46:17Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -905,7 +905,8 @@ HRESULT Unattended::prepare()
     uint32_t   const idxOSType = Global::getOSTypeIndexFromId(mStrGuestOsTypeId.c_str());
     meGuestOsType     = idxOSType < Global::cOSTypes ? Global::sOSTypes[idxOSType].osType : VBOXOSTYPE_Unknown;
 
-    mpInstaller = UnattendedInstaller::createInstance(meGuestOsType, mStrGuestOsTypeId, this);
+    mpInstaller = UnattendedInstaller::createInstance(meGuestOsType, mStrGuestOsTypeId, mStrDetectedOSVersion,
+                                                      mStrDetectedOSFlavor, mStrDetectedOSHints, this);
     if (mpInstaller != NULL)
     {
         hrc = mpInstaller->initInstaller();

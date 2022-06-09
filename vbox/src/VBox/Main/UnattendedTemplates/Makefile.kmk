@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68072 2017-07-20 16:37:47Z vboxsync $
+# $Id: Makefile.kmk 71007 2018-02-14 12:46:17Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox/Main/UnattendedTemplates.
 #
@@ -29,6 +29,7 @@ ifdef VBOX_WITH_UNATTENDED
  	debian_preseed.cfg \
  	ubuntu_preseed.cfg \
  	redhat67_ks.cfg \
+ 	rhel5_ks.cfg \
  	ol_ks.cfg \
  	fedora_ks.cfg \
  	suse_autoinstall.xml \
