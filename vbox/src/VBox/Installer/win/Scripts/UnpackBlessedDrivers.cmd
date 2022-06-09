@@ -1,5 +1,5 @@
 @echo off
-rem $Id: UnpackBlessedDrivers.cmd 71991 2018-04-24 07:11:35Z vboxsync $
+rem $Id: UnpackBlessedDrivers.cmd 72019 2018-04-25 14:19:58Z vboxsync $
 rem rem @file
 rem Windows NT batch script for unpacking drivers after being signed.
 rem
@@ -19,6 +19,11 @@ rem
 
 setlocal ENABLEEXTENSIONS
 setlocal
+
+rem
+rem Check for environment variables we need.
+rem
+if ".%KBUILD_DEVTOOLS%" == "." (echo KBUILD_BIN_PATH is not set & goto end_failed)
 
 rem
 rem Parse arguments.
@@ -100,15 +105,8 @@ if not exist "%_MY_OPT_INPUT%"      goto error_input_exists
 
 rem
 rem Unpack the stuff.
-rem ASSUME .cab capable expand on system.  The -i option means skipping
-rem subdirectories and just put all the files in the specified bin dir.
 rem
-
-rem We're getting ZIP files back now.
-rem expand "%_MY_OPT_INPUT%" "%_MY_OPT_BINDIR%" -i -f:* || goto end_failed
-echo fixme
-goto end_failed
-
+%KBUILD_DEVTOOLS%\win.x86\bin\unzip.exe -o -j "%_MY_OPT_INPUT%" -d "%_MY_OPT_BINDIR%" || goto end_failed
 
 rem
 rem Modify the catalog signatures.
