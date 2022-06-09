@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 70051 2017-12-10 20:02:31Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 70052 2017-12-10 22:10:01Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -6305,6 +6305,7 @@ static HRESULT APIENTRY vboxWddmDispCreateDevice (IN HANDLE hAdapter, IN D3DDDIA
     {
         pDevice->cRTs = pAdapter->D3D.cMaxSimRTs;
         pDevice->pfnCreateDirect3DDevice = VBoxD3DIfDeviceCreateDummy;
+        pDevice->pfnCreateSharedPrimary  = vboxD3DIfCreateSharedPrimary;
         pDevice->hDevice = pCreateData->hDevice;
         pDevice->pAdapter = pAdapter;
         pDevice->u32IfVersion = pCreateData->Interface;
