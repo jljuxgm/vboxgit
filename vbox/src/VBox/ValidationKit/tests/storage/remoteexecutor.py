@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 67388 2017-06-14 10:48:41Z vboxsync $
+# $Id: remoteexecutor.py 67389 2017-06-14 10:50:45Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67388 $"
+__version__ = "$Revision: 67389 $"
 
 
 # Standard Python imports.
@@ -163,7 +163,7 @@ class RemoteExecutor(object):
             sError = oStdErr.getOutput();
             if fRc is False:
                 reporter.log('Exit code [remote]: %s (stdout: %s stderr: %s)' % (fRc, sOutput, sError));
-            else
+            else:
                 reporter.log('Exit code [remote]: %s' % (fRc,));
         else:
             fRc, sOutput, sError = self._sudoExecuteSync([sExec, ] + list(asArgs), sInput);
