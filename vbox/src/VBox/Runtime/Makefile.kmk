@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70092 2017-12-12 18:25:40Z vboxsync $
+# $Id: Makefile.kmk 70136 2017-12-14 20:09:40Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2392,6 +2392,7 @@ RuntimeR0Drv_SOURCES.win = \
 	r0drv/powernotification-r0drv.c \
 	r0drv/nt/alloc-r0drv-nt.cpp \
 	r0drv/nt/assert-r0drv-nt.cpp \
+	r0drv/nt/dbgkrnlinfo-r0drv-nt.cpp \
 	r0drv/nt/initterm-r0drv-nt.cpp \
 	r0drv/nt/memobj-r0drv-nt.cpp \
 	r0drv/nt/memuserkernel-r0drv-nt.cpp \
