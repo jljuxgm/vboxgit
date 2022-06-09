@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 70741 2018-01-25 15:10:14Z vboxsync $ */
+/* $Id: PGM.cpp 70742 2018-01-25 15:12:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2862,9 +2862,9 @@ static DECLCALLBACK(void) pgmR3PhysInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char 
                     {
                         pszType = "MMIO";
                         pgmLock(pVM);
-                        PPGMPHYSHANDLER pCur = pgmHandlerPhysicalLookup(pVM, iFirstPage * X86_PAGE_SIZE);
-                        if (pCur)
-                            pszMore = pCur->pszDesc;
+                        PPGMPHYSHANDLER pHandler = pgmHandlerPhysicalLookup(pVM, iFirstPage * X86_PAGE_SIZE);
+                        if (pHandler)
+                            pszMore = pHandler->pszDesc;
                         pgmUnlock(pVM);
                         break;
                     }
