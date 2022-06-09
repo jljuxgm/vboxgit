@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInst.cpp 70164 2017-12-15 17:32:56Z vboxsync $ */
+/* $Id: VBoxGuestInst.cpp 70194 2017-12-18 13:39:39Z vboxsync $ */
 /** @file
  * Small tool to (un)install the VBoxGuest device driver.
  */
@@ -41,7 +41,7 @@
 
 
 
-static int installDriver(void)
+static int installDriver(bool fStartIt)
 {
     /*
      * Assume it didn't exist, so we'll create the service.
@@ -53,24 +53,40 @@ static int installDriver(void)
         return -1;
     }
 
-    char szDriver[MAX_PATH];
-    GetSystemDirectory(szDriver, sizeof(szDriver));
-    strcat(szDriver, "\\drivers\\VBoxGuest.sys");
+    const char * const pszSlashName = (GetVersion() & 0xff) < 4 ? "\\VBoxGuestNT3.sys" : "\\VBoxGuestNT.sys";
+    char szDriver[MAX_PATH * 2];
+    GetCurrentDirectory(MAX_PATH, szDriver);
+    strcat(szDriver, pszSlashName);
+    if (GetFileAttributesA(szDriver) == INVALID_FILE_ATTRIBUTES)
+    {
+        GetSystemDirectory(szDriver, sizeof(szDriver));
+        strcat(strcat(szDriver, "\\drivers"), pszSlashName);
+    }
 
     SC_HANDLE hService = CreateService(hSMgrCreate,
                                        VBOXGUEST_SERVICE_NAME,
                                        "VBoxGuest Support Driver",
-                                       SERVICE_QUERY_STATUS,
+                                       SERVICE_QUERY_STATUS | (fStartIt ? SERVICE_START : 0),
                                        SERVICE_KERNEL_DRIVER,
                                        SERVICE_BOOT_START,
                                        SERVICE_ERROR_NORMAL,
                                        szDriver,
                                        "System",
                                        NULL, NULL, NULL, NULL);
-    if (!hService)
-        printf("CreateService failed! lasterr=%d\n", GetLastError());
-    else
+    if (hService)
+    {
+        printf("Successfully created service '%s' for driver '%s'.\n", VBOXGUEST_SERVICE_NAME, szDriver);
+        if (fStartIt)
+        {
+            if (StartService(hService, 0, NULL))
+                printf("successfully started driver '%s'\n", szDriver);
+            else
+                printf("StartService failed: %d\n", GetLastError(), szDriver);
+        }
         CloseServiceHandle(hService);
+    }
+    else
+        printf("CreateService failed! lasterr=%d (szDriver=%s)\n", GetLastError(), szDriver);
     CloseServiceHandle(hSMgrCreate);
     return hService ? 0 : -1;
 }
@@ -181,7 +197,7 @@ int main(int argc, char **argv)
     else
 #endif
     if (installMode)
-        rc = installDriver();
+        rc = installDriver(true);
     else
         rc = uninstallDriver();
 
