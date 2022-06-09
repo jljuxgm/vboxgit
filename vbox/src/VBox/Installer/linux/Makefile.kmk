@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72305 2018-05-23 16:01:22Z vboxsync $
+# $Id: Makefile.kmk 72322 2018-05-24 13:24:30Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -407,7 +407,6 @@ $(VBOX_LNX_INST_OUT_DIR)/install.sh: $(VBOX_PATH_LNX_INST_SRC)/install.sh $(VBOX
 		-e "s;_BUILD_;$(date-utc );g" \
 		-e "s;_ARCH_;$(KBUILD_TARGET_ARCH);g" \
 		-e "s;_HARDENED_;$(VBOX_WITH_HARDENING);g" \
-		-e "s;_GUI_WITH_SHARED_LIBRARY_;$(VBOX_GUI_WITH_SHARED_LIBRARY);g" \
 		-e "s;_BUILDTYPE_;$(KBUILD_TYPE);g" \
 		-e "s;_USERNAME_;$(USERNAME);g" \
 		-e "s;_INSTALLATION_DIR_;$(VBOX_LNX_APP_PRIVATE);g" \
