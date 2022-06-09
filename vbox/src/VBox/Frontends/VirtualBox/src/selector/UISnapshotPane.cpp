@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 67473 2017-06-19 12:48:41Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 67489 2017-06-20 09:26:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -686,7 +686,8 @@ void UISnapshotPane::sltHandleSnapshotTake(QString strMachineId, QString strSnap
                 pCurrentStateItem = 0;
 
                 /* Create "current snapshot" item for a newly taken snapshot: */
-                m_pCurrentSnapshotItem->setCurrentSnapshotItem(false);
+                if (m_pCurrentSnapshotItem)
+                    m_pCurrentSnapshotItem->setCurrentSnapshotItem(false);
                 m_pCurrentSnapshotItem = pParentItem
                                        ? new UISnapshotItem(this, pParentItem, comSnapshot)
                                        : new UISnapshotItem(this, m_pSnapshotTree, comSnapshot);
@@ -801,6 +802,7 @@ void UISnapshotPane::sltHandleSnapshotRestore(QString strMachineId, QString strS
             pCurrentStateItem = 0;
 
             /* Move the "current snapshot" token from one to another: */
+            AssertPtrReturnVoid(m_pCurrentSnapshotItem);
             m_pCurrentSnapshotItem->setCurrentSnapshotItem(false);
             m_pCurrentSnapshotItem = pItem;
             m_pCurrentSnapshotItem->setCurrentSnapshotItem(true);
