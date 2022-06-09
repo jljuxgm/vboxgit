@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 69475 2017-10-28 13:12:42Z vboxsync $ */
+/* $Id: gvmm.h 71152 2018-02-28 12:36:04Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -166,6 +166,7 @@ GVMMR0DECL(int)     GVMMR0DestroyVM(PGVM pGVM, PVM pVM);
 GVMMR0DECL(int)     GVMMR0RegisterVCpu(PGVM pGVM, PVM pVM, VMCPUID idCpu);
 GVMMR0DECL(int)     GVMMR0DeregisterVCpu(PGVM pGVM, PVM pVM, VMCPUID idCpu);
 GVMMR0DECL(PGVM)    GVMMR0ByHandle(uint32_t hGVM);
+GVMMR0DECL(PGVM)    GVMMR0FastGetGVMByVM(PVM pVM);
 GVMMR0DECL(int)     GVMMR0ValidateGVMandVM(PGVM pGVM, PVM pVM);
 GVMMR0DECL(int)     GVMMR0ValidateGVMandVMandEMT(PGVM pGVM, PVM pVM, VMCPUID idCpu);
 GVMMR0DECL(PVM)     GVMMR0GetVMByEMT(RTNATIVETHREAD hEMT);

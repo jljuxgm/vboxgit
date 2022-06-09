@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 71136 2018-02-27 13:17:36Z vboxsync $
+# $Id: Makefile.kmk 71152 2018-02-28 12:36:04Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -1077,6 +1077,9 @@ IEMAllInstructionsVexMap3.cpp.o    IEMAllInstructionsVexMap3.cpp.obj \
 IEMAllInstructions3DNow.cpp.o      IEMAllInstructions3DNow.cpp.obj \
 IEMAllCImpl.cpp.o                  IEMAllCImpl.cpp.obj \
 IEMAllCImplStrInstr.cpp.o          IEMAllCImplStrInstr.cpp.obj: IEMAll.o
+
+# Alias the NEM template to the objects where it is used:
+NEMAllNativeTemplate-win.cpp.o:    NEMR3Native-win.o NEMR0Native-win.o
 
 # Alias the switcher templates.
 PAEand32Bit.o PAEand32Bit.obj:                 PAETo32Bit.o   PAEToPAE.o   32BitTo32Bit.o PAETo32Bit.o
