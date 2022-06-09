@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: capiidl.xsl 66832 2017-05-08 16:59:13Z vboxsync $ -->
+<!-- $Id: capiidl.xsl 69377 2017-10-26 16:21:08Z vboxsync $ -->
 
 <!--
  *  A template to generate a C header file for all relevant XPCOM interfaces
@@ -1625,7 +1625,7 @@ typedef PCVBOXCAPI (*PFNVBOXGETXPCOMCFUNCTIONS)(unsigned uVersion);
   <xsl:call-template name="xsltprocNewlineOutputHack"/>
   <!-- all enums go first -->
   <xsl:apply-templates select="application/enum | application/if/enum"/>
-  <!-- everything else but result codes and enums 
+  <!-- everything else but result codes and enums
   <xsl:apply-templates select="*[not(self::result or self::enum) and
                                  not(self::if[result] or self::if[enum])]"/> -->
     <!-- the modules (i.e. everything else) -->
