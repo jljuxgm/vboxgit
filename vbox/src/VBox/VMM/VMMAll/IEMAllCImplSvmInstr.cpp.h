@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 69765 2017-11-20 09:14:22Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 70001 2017-12-08 05:58:00Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -327,7 +327,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, uint8_t cbInstr
          * Validate guest-state and controls.
          */
         /* VMRUN must always be intercepted. */
-        if (!CPUMIsGuestSvmCtrlInterceptSet(pCtx, SVM_CTRL_INTERCEPT_VMRUN))
+        if (!CPUMIsGuestSvmCtrlInterceptSet(pVCpu, pCtx, SVM_CTRL_INTERCEPT_VMRUN))
         {
             Log(("iemSvmVmrun: VMRUN instruction not intercepted -> #VMEXIT\n"));
             return iemSvmVmexit(pVCpu, pCtx, SVM_EXIT_INVALID, 0 /* uExitInfo1 */, 0 /* uExitInfo2 */);
@@ -1001,7 +1001,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmHandleMsrIntercept(PVMCPU pVCpu, PCPUMCTX pCtx, ui
     /*
      * Check if any MSRs are being intercepted.
      */
-    Assert(CPUMIsGuestSvmCtrlInterceptSet(pCtx, SVM_CTRL_INTERCEPT_MSR_PROT));
+    Assert(CPUMIsGuestSvmCtrlInterceptSet(pVCpu, pCtx, SVM_CTRL_INTERCEPT_MSR_PROT));
     Assert(CPUMIsGuestInSvmNestedHwVirtMode(pCtx));
 
     uint64_t const uExitInfo1 = fWrite ? SVM_EXIT1_MSR_WRITE : SVM_EXIT1_MSR_READ;
