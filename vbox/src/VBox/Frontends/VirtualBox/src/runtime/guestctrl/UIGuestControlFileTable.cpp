@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71793 2018-04-09 17:20:54Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 71794 2018-04-09 17:30:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -1258,7 +1258,7 @@ void UIGuestControlFileTable::sltSelectAll()
 
 void UIGuestControlFileTable::sltInvertSelection()
 {
-    setSelectionForAll(QItemSelectionModel::QItemSelectionModel::Toggle | QItemSelectionModel::Rows);
+    setSelectionForAll(QItemSelectionModel::Toggle | QItemSelectionModel::Rows);
     deSelectUpDirectoryItem();
 }
 
@@ -1283,7 +1283,7 @@ void UIGuestControlFileTable::deSelectUpDirectoryItem()
         UIFileTableItem *item = static_cast<UIFileTableItem*>(index.internalPointer());
         if (item && item->isUpDirectory())
         {
-            pSelectionModel->select(index, QItemSelectionModel::QItemSelectionModel::Deselect | QItemSelectionModel::Rows);
+            pSelectionModel->select(index, QItemSelectionModel::Deselect | QItemSelectionModel::Rows);
         }
     }
 }
