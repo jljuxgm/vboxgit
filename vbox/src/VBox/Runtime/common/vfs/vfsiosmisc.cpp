@@ -1,4 +1,4 @@
-/* $Id: vfsiosmisc.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: vfsiosmisc.cpp 69523 2017-10-30 11:08:37Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Misc I/O Stream Operations.
  */
@@ -169,6 +169,7 @@ RTDECL(int) RTVfsIoStrmReadAll(RTVFSIOSTREAM hVfsIos, void **ppvBuf, size_t *pcb
 
                 void *pvNew = RTMemRealloc(pvBuf, cbAllocated);
                 AssertBreakStmt(pvNew, rc = VERR_NO_MEMORY);
+                pvBuf = pvNew;
 
                 cbToRead = cbAllocated - off - READ_ALL_HEADER_SIZE - 1;
             }
