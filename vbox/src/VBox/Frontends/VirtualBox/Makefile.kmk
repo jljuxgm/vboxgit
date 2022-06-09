@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 71388 2018-03-20 10:16:28Z vboxsync $
+# $Id: Makefile.kmk 71392 2018-03-20 11:04:03Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -625,8 +625,6 @@ endif
 
 VirtualBox_QT_MOCSRCS.darwin += \
 	src/platform/darwin/UIWindowMenuManager.cpp
-VirtualBox_QT_MOCSRCS.win += \
-	src/extensions/QIFileDialog.cpp
 VirtualBox_QT_MOCSRCS.linux += \
 	src/globals/UIDesktopWidgetWatchdog.cpp
 VirtualBox_QT_MOCSRCS.solaris += \
