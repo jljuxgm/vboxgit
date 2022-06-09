@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIUpdateManager.h 72435 2018-06-04 16:56:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class declaration.
  */
@@ -47,6 +47,11 @@ public:
     /** Returns manager instance. */
     static UIUpdateManager *instance() { return s_pInstance; }
 
+    /** Returns whether the Extension Pack installation is requested. */
+    bool isEPInstallationRequested() const { return m_fEPInstallationRequested; }
+    /** Defines whether the Extension Pack installation is @a fRequested. */
+    void setEPInstallationRequested(bool fRequested) { m_fEPInstallationRequested = fRequested; }
+
 public slots:
 
     /** Performs forced new version check. */
@@ -71,6 +76,9 @@ private:
     bool           m_fIsRunning;
     /** Holds the refresh period. */
     quint64        m_uTime;
+
+    /** Holds whether the Extension Pack installation is requested. */
+    bool  m_fEPInstallationRequested;
 };
 
 /** Singleton Update Manager 'official' name. */

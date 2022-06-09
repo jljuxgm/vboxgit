@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 72434 2018-06-04 16:43:41Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 72435 2018-06-04 16:56:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -331,7 +331,6 @@ VBoxGlobal::VBoxGlobal(UIType enmType)
     , m_pThreadPool(0)
     , m_pIconPool(0)
     , m_pMediumEnumerator(0)
-    , m_fEPInstallationRequested(false)
 {
     /* Assign instance: */
     s_pInstance = this;

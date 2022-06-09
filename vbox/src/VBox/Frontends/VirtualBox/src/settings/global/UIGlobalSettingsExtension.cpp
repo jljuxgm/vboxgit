@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 71461 2018-03-22 15:07:08Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 72435 2018-06-04 16:56:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class implementation.
  */
@@ -306,7 +306,7 @@ void UIGlobalSettingsExtension::sltAddPackage()
     if (!strFilePath.isEmpty())
     {
         QString strExtPackName;
-        VBoxGlobal::doExtPackInstallation(strFilePath, QString(), this, &strExtPackName);
+        vboxGlobal().doExtPackInstallation(strFilePath, QString(), this, &strExtPackName);
 
         /* Since we might be reinstalling an existing package, we have to
          * do a little refreshing regardless of what the user chose. */
