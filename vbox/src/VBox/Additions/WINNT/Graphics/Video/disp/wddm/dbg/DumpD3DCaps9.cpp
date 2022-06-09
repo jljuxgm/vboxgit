@@ -1,4 +1,4 @@
-/* $Id: DumpD3DCaps9.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DumpD3DCaps9.cpp 69978 2017-12-07 13:03:56Z vboxsync $ */
 /** @file
  * ???
  */
@@ -751,7 +751,7 @@ static char * strDupSort(const char * pcszStr)
     const char *pPrevCmp = NULL;
     const char * pCmp = "\001";
     const char * pCur;
-    int cLength, cPrevLength;
+    int cLength, cPrevLength = 0;
 
     do
     {
@@ -986,11 +986,9 @@ static D3DCAPS9* selectCaps(D3DCAPS9 *pLocalStorage, D3DCAPS9 *pLocalEmbedded1, 
         default:
         {
             Log(("Unsupported type %d", enmCapsType));
-            return NULL;
         }
     }
 
-    Log(("Should not be here!"));
     return NULL;
 }
 
