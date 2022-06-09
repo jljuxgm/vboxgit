@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71325 2018-03-14 14:21:14Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 71330 2018-03-14 14:41:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -1123,6 +1123,7 @@ bool UIGuestFileTable::copyGuestToHost(const QString &guestSourcePath, const QSt
 
 bool UIGuestFileTable::copyHostToGuest(const QString &hostSourcePath, const QString &guestDestinationPath)
 {
+    Q_UNUSED(guestDestinationPath);
     if (m_comGuestSession.isNull())
         return false;
     QFileInfo hostFileInfo(hostSourcePath);
