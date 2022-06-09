@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic4.cpp 69200 2017-10-24 11:28:50Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic4.cpp 69239 2017-10-24 16:11:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic4 class implementation.
  */
@@ -229,7 +229,7 @@ void UIWizardCloneVDPageBasic4::initializePage()
                       static_cast<UIWizardCloneVD*>(wizardImp())->sourceVirtualDiskDeviceType(),
                       m_aAllowedExtensions, m_strDefaultExtension);
     /* Compose default-name for virtual-disk copy: */
-    QString strMediumName = UIWizardCloneVD::tr("%1_copy", "copied virtual disk image name").arg(sourceFileInfo.baseName());
+    QString strMediumName = UIWizardCloneVD::tr("%1_copy", "copied virtual disk image name").arg(sourceFileInfo.completeBaseName());
     /* Set default-name as text for location editor: */
     m_pDestinationDiskEditor->setText(strMediumName);
 }
