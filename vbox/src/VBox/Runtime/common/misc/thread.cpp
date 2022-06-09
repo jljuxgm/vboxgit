@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: thread.cpp 69590 2017-11-06 09:56:18Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -281,6 +281,8 @@ static int rtThreadAdopt(RTTHREADTYPE enmType, unsigned fFlags, uint32_t fIntFla
             rtThreadSetState(pThread, RTTHREADSTATE_RUNNING);
             rtThreadRelease(pThread);
         }
+        else
+            rtThreadDestroy(pThread);
     }
     return rc;
 }
