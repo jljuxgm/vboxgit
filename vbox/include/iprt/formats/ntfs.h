@@ -1,4 +1,4 @@
-/* $Id: ntfs.h 69865 2017-11-28 19:09:42Z vboxsync $ */
+/* $Id: ntfs.h 69866 2017-11-28 19:10:50Z vboxsync $ */
 /** @file
  * IPRT, NT File System (NTFS).
  */
@@ -410,7 +410,7 @@ typedef struct NTFSATFILENAME
         uint16_t        cbPackedEas;
         /** 0x3c: Reparse tag, if no EAs. */
         uint32_t        uReparseTag;
-    };
+    } u;
     /** 0x40: Filename length in unicode chars. */
     uint8_t             cwcFilename;
     /** 0x41: Filename type (NTFS_FILENAME_T_XXX). */
@@ -419,8 +419,8 @@ typedef struct NTFSATFILENAME
     RTUTF16             wszFilename[RT_FLEXIBLE_ARRAY];
 } NTFSATFILENAME;
 AssertCompileMemberOffset(NTFSATFILENAME, cbData, 0x30);
-AssertCompileMemberOffset(NTFSATFILENAME, cbPackedEas, 0x3c);
-AssertCompileMemberOffset(NTFSATFILENAME, uReparseTag, 0x3c);
+AssertCompileMemberOffset(NTFSATFILENAME, u.cbPackedEas, 0x3c);
+AssertCompileMemberOffset(NTFSATFILENAME, u.uReparseTag, 0x3c);
 AssertCompileMemberOffset(NTFSATFILENAME, wszFilename, 0x42);
 /** Pointer to a NTFS filename attribute. */
 typedef NTFSATFILENAME *PNTFSATFILENAME;
