@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 68495 2017-08-22 05:38:05Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 68550 2017-08-31 12:09:41Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -1026,11 +1026,12 @@ void VGDrvNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
  * @param   pDevExt   Pointer to the device extension.
  * @param   pNotify   Pointer to the mouse notify struct.
  */
-int VGDrvNativeSetMouseNotifyCallback(PVBOXGUESTDEVEXT pDevExt, VBoxGuestMouseSetNotifyCallback *pNotify)
+int VGDrvNativeSetMouseNotifyCallback(PVBOXGUESTDEVEXT pDevExt, PVBGLIOCSETMOUSENOTIFYCALLBACK pNotify)
 {
     /* Take the mutex here so as to not race with VGDrvCommonISR() which invokes the mouse notify callback. */
     mutex_enter(&g_IrqMtx);
-    pDevExt->MouseNotifyCallback = *pNotify;
+    pDevExt->pfnMouseNotifyCallback   = pNotify->u.In.pfnNotify;
+    pDevExt->pvMouseNotifyCallbackArg = pNotify->u.In.pvUser;
     mutex_exit(&g_IrqMtx);
     return VINF_SUCCESS;
 }

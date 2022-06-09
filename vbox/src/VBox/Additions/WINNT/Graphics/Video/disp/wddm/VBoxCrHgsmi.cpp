@@ -1,4 +1,4 @@
-/* $Id: VBoxCrHgsmi.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: VBoxCrHgsmi.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -127,7 +127,7 @@ VBOXCRHGSMI_DECL(int) VBoxCrHgsmiCtlConGetHostCaps(PVBOXUHGSMI pHgsmi, uint32_t 
     return rc;
 }
 
-VBOXCRHGSMI_DECL(int) VBoxCrHgsmiCtlConCall(PVBOXUHGSMI pHgsmi, struct VBoxGuestHGCMCallInfo *pCallInfo, int cbCallInfo)
+VBOXCRHGSMI_DECL(int) VBoxCrHgsmiCtlConCall(PVBOXUHGSMI pHgsmi, struct VBGLIOCHGCMCALL *pCallInfo, int cbCallInfo)
 {
     PVBOXUHGSMI_PRIVATE_BASE pHgsmiPrivate = (PVBOXUHGSMI_PRIVATE_BASE)pHgsmi;
     int rc = vboxCrHgsmiPrivateCtlConCall(pHgsmiPrivate, pCallInfo, cbCallInfo);

@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiBase.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: VBoxUhgsmiBase.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -220,7 +220,7 @@ typedef struct VBOXCRHGSMI_CALLDATA
     HGCMFunctionParameter aArgs[3];
 } VBOXCRHGSMI_CALLDATA, *PVBOXCRHGSMI_CALLDATA;
 
-int vboxCrHgsmiPrivateCtlConCall(struct VBOXUHGSMI_PRIVATE_BASE *pHgsmi, struct VBoxGuestHGCMCallInfo *pCallInfo, int cbCallInfo)
+int vboxCrHgsmiPrivateCtlConCall(struct VBOXUHGSMI_PRIVATE_BASE *pHgsmi, struct VBGLIOCHGCMCALL *pCallInfo, int cbCallInfo)
 {
     VBOXCRHGSMI_CALLDATA Buf;
     PVBOXCRHGSMI_CALLDATA pBuf;

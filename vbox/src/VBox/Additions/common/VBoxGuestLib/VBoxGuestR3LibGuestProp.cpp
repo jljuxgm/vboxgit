@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 68465 2017-08-18 11:54:11Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -867,9 +867,7 @@ VBGLR3DECL(int) VbglR3GuestPropWait(HGCMCLIENTID idClient,
     Msg.timestamp.SetUInt64(u64Timestamp);
     Msg.size.SetUInt32(0);
 
-    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL_TIMED(sizeof(Msg)), &Msg, sizeof(Msg));
-    if (RT_SUCCESS(rc))
-        rc = Msg.hdr.info.result;
+    int rc = VbglR3HGCMCall(&Msg.hdr, sizeof(Msg));
 
     /*
      * The cbBufActual parameter is also returned on overflow so the caller can

@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 62526 2016-07-22 19:18:03Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
 /** @file
  * VBoxDisplayService, Haiku Guest Additions, implementation.
  */
@@ -123,7 +123,8 @@ status_t VBoxDisplayService::_ServiceThread()
     {
         uint32_t events;
         int rc = VbglR3WaitEvent(VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST, 5000, &events);
-        if (rc == -6) // timed out?
+        if (   rc == VERR_TIMEOUT
+            || rc == VERR_INTERRUPTED)
             continue;
 
         if (RT_SUCCESS(rc))

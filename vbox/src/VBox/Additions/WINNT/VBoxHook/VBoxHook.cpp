@@ -1,4 +1,4 @@
-/* $Id: VBoxHook.cpp 63096 2016-08-06 15:28:11Z vboxsync $ */
+/* $Id: VBoxHook.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
 /** @file
  * VBoxHook -- Global windows hook dll
  */
@@ -230,7 +230,7 @@ static void WriteLog(const char *pszFormat, ...)
         __debugbreak();
 
     DWORD cbReturned;
-    DeviceIoControl(hVBoxGuest, VBOXGUEST_IOCTL_VMMREQUEST(s_uBuf.Req.size),
+    DeviceIoControl(hVBoxGuest, VBGL_IOCTL_VMMDEV_REQUEST(s_uBuf.Req.size),
                     &s_uBuf.Req, s_uBuf.Req.header.size,
                     &s_uBuf.Req, s_uBuf.Req.header.size,
                     &cbReturned, NULL);

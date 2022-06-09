@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDriver.cpp 66826 2017-05-08 16:53:25Z vboxsync $ */
+/* $Id: VBoxMPDriver.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport driver interface functions
  */
@@ -138,7 +138,7 @@ VBoxDrvFindAdapter(IN PVOID HwDeviceExtension, IN PVOID HwContext, IN PWSTR Argu
     }
 
     /* Initialize VBoxGuest library, which is used for requests which go through VMMDev. */
-    rc = VbglInitClient();
+    rc = VbglR0InitClient();
     VBOXMP_WARN_VPS(rc);
 
     /* Preinitialize the primary extension. */
@@ -668,7 +668,7 @@ VBoxDrvResetHW(PVOID HwDeviceExtension, ULONG Columns, ULONG Rows)
             pExt->u.primary.pvReqFlush = NULL;
         }
 
-        VbglTerminate();
+        VbglR0TerminateClient();
 
         VBoxFreeDisplaysHGSMI(VBoxCommonFromDeviceExt(pExt));
 #endif

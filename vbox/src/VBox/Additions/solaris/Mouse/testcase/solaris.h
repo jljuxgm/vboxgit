@@ -1,4 +1,4 @@
-/* $Id: solaris.h 62681 2016-07-29 12:55:38Z vboxsync $ */
+/* $Id: solaris.h 68550 2017-08-31 12:09:41Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver for Solaris - testcase stubs.
  */
@@ -350,7 +350,7 @@ extern int vboxguestSolarisInfo(struct modinfo *pModInfo);
 #define VbglGRPerform(...) VINF_SUCCESS
 #define VbglGRFree(...) do {} while(0)
 #endif
-#define VbglInitClient(...) VINF_SUCCESS
+#define VbglR0InitClient(...) VINF_SUCCESS
 #define vbglDriverOpen(...) VINF_SUCCESS
 #define vbglDriverClose(...) do {} while(0)
 #define vbglDriverIOCtl(...) VINF_SUCCESS
