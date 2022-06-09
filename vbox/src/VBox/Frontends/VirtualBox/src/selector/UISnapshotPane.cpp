@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 67121 2017-05-26 16:09:51Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 67146 2017-05-30 15:23:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1324,9 +1324,9 @@ void UISnapshotPane::showSnapshotDetails()
 
     /* Show Snapshot Details dialog: */
     QPointer<VBoxSnapshotDetailsDlg> pDlg = new VBoxSnapshotDetailsDlg(this);
-    pDlg->getFromSnapshot(comSnapshot);
+    pDlg->setData(comSnapshot);
     if (pDlg->exec() == QDialog::Accepted)
-        pDlg->putBackToSnapshot();
+        pDlg->saveData();
     if (pDlg)
         delete pDlg;
 }
