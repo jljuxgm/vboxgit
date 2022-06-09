@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 71158 2018-02-28 15:48:46Z vboxsync $
+# $Id: utils.py 71233 2018-03-06 10:47:15Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71158 $"
+__version__ = "$Revision: 71233 $"
 
 
 # Standard Python imports.
@@ -73,7 +73,8 @@ def printOut(sString):
     Outputs a string to standard output, dealing with python 2.x encoding stupidity.
     """
     sStreamEncoding = sys.stdout.encoding;
-    if sStreamEncoding is None: sStreamEncoding = 'US-ASCII'; # files, pipes and such on 2.x
+    if sStreamEncoding is None:         # Files, pipes and such on 2.x.  (pylint is confused here)
+        sStreamEncoding = 'US-ASCII';   # pylint: disable=redefined-variable-type
     if sStreamEncoding == 'UTF-8' or not isinstance(sString, unicode):
         print(sString);
     else:
@@ -84,7 +85,8 @@ def printErr(sString):
     Outputs a string to standard error, dealing with python 2.x encoding stupidity.
     """
     sStreamEncoding = sys.stderr.encoding;
-    if sStreamEncoding is None: sStreamEncoding = 'US-ASCII'; # files, pipes and such on 2.x
+    if sStreamEncoding is None:         # Files, pipes and such on 2.x. (pylint is confused here)
+        sStreamEncoding = 'US-ASCII';   # pylint: disable=redefined-variable-type
     if sStreamEncoding == 'UTF-8' or not isinstance(sString, unicode):
         print(sString, file = sys.stderr);
     else:
