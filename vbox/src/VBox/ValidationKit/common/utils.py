@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 68139 2017-07-27 14:59:07Z vboxsync $
+# $Id: utils.py 68314 2017-08-07 10:14:51Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 68139 $"
+__version__ = "$Revision: 68314 $"
 
 
 # Standard Python imports.
@@ -214,7 +214,7 @@ def getHostOsVersion():
                      "10": "Yosemite",
                      "11": "El Capitan",
                      "12": "Sierra",
-                     "13": "Unknown 13",
+                     "13": "High Sierra",
                      "14": "Unknown 14", }
         sVersion += ' / OS X ' + sOsxVersion + ' (' + codenames[sOsxVersion.split('.')[1]] + ')'
 

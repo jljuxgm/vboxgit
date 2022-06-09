@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 67883 2017-07-10 16:00:46Z vboxsync $ */
+/* $Id: Global.cpp 68314 2017-08-07 10:14:51Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -468,6 +468,20 @@ const Global::OSType Global::sOSTypes[] =
 
     { "MacOS",   "Mac OS X",          "MacOS1011_64",       "Mac OS X 10.11 El Capitan (64-bit)",
       VBOXOSTYPE_MacOS1011_x64,   VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_EFI | VBOXOSHINT_PAE |  VBOXOSHINT_64BIT
+                                | VBOXOSHINT_USBHID | VBOXOSHINT_HPET | VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
+      2048,  16, 30 * _1G64, NetworkAdapterType_I82545EM, 0,
+      StorageControllerType_IntelAhci, StorageBus_SATA, StorageControllerType_IntelAhci, StorageBus_SATA,
+      ChipsetType_ICH9, AudioControllerType_HDA, AudioCodecType_STAC9221  },
+
+    { "MacOS",   "Mac OS X",          "MacOS1012_64",       "macOS 10.12 Sierra (64-bit)",
+      VBOXOSTYPE_MacOS1012_x64,   VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_EFI | VBOXOSHINT_PAE |  VBOXOSHINT_64BIT
+                                | VBOXOSHINT_USBHID | VBOXOSHINT_HPET | VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
+      2048,  16, 30 * _1G64, NetworkAdapterType_I82545EM, 0,
+      StorageControllerType_IntelAhci, StorageBus_SATA, StorageControllerType_IntelAhci, StorageBus_SATA,
+      ChipsetType_ICH9, AudioControllerType_HDA, AudioCodecType_STAC9221  },
+
+    { "MacOS",   "Mac OS X",          "MacOS1013_64",       "macOS 10.13 High Sierra (64-bit)",
+      VBOXOSTYPE_MacOS1013_x64,   VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_EFI | VBOXOSHINT_PAE |  VBOXOSHINT_64BIT
                                 | VBOXOSHINT_USBHID | VBOXOSHINT_HPET | VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
       2048,  16, 30 * _1G64, NetworkAdapterType_I82545EM, 0,
       StorageControllerType_IntelAhci, StorageBus_SATA, StorageControllerType_IntelAhci, StorageBus_SATA,
