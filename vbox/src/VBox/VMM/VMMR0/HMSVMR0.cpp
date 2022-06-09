@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69898 2017-12-01 13:33:44Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69914 2017-12-04 05:22:55Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -883,6 +883,10 @@ VMMR0DECL(int) SVMR0InvalidatePage(PVM pVM, PVMCPU pVCpu, RTGCPTR GCVirt)
  */
 static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMVMCB pVmcb)
 {
+#ifndef VBOX_WITH_NESTED_HWVIRT
+    RT_NOREF(pCtx);
+#endif
+
     PVM pVM               = pVCpu->CTX_SUFF(pVM);
     PHMGLOBALCPUINFO pCpu = hmR0GetCurrentCpu();
 
@@ -895,19 +899,16 @@ static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMVMCB pVmcb)
     bool fNewAsid = false;
     Assert(pCpu->idCpu != NIL_RTCPUID);
     if (   pVCpu->hm.s.idLastCpu   != pCpu->idCpu
-        || pVCpu->hm.s.cTlbFlushes != pCpu->cTlbFlushes)
+        || pVCpu->hm.s.cTlbFlushes != pCpu->cTlbFlushes
+#ifdef VBOX_WITH_NESTED_HWVIRT
+        || CPUMIsGuestInSvmNestedHwVirtMode(pCtx)
+#endif
+        )
     {
         STAM_COUNTER_INC(&pVCpu->hm.s.StatFlushTlbWorldSwitch);
         pVCpu->hm.s.fForceTLBFlush = true;
         fNewAsid = true;
     }
-
-#ifdef VBOX_WITH_NESTED_HWVIRT
-    if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
-        fNewAsid = true;
-#else
-    RT_NOREF(pCtx);
-#endif
 
     /* Set TLB flush state as checked until we return from the world switch. */
     ASMAtomicWriteBool(&pVCpu->hm.s.fCheckedTLBFlush, true);
