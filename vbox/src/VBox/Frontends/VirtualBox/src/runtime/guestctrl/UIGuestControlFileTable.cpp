@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 71421 2018-03-21 11:07:34Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 71439 2018-03-21 19:39:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -238,6 +238,12 @@ QString UIPathOperations::constructNewItemPath(const QString &previousPath, cons
     if (previousPath.length() <= 1)
          return QString(previousPath);
     return sanitize(mergePaths(getPathExceptObjectName(previousPath), newBaseName));
+}
+
+QStringList UIPathOperations::pathTrail(const QString &path)
+{
+    QList<QString> pathList = path.split(UIPathOperations::delimiter, QString::SkipEmptyParts);
+    return pathList;
 }
 
 
@@ -488,7 +494,8 @@ void UIFileTableItem::appendChild(UIFileTableItem *item)
     if (!item)
         return;
     m_childItems.append(item);
-    m_childMap.insert(item->path(), item);
+
+    m_childMap.insert(item->name(), item);
 }
 
 UIFileTableItem *UIFileTableItem::child(int row) const
@@ -516,6 +523,13 @@ int UIFileTableItem::columnCount() const
 QVariant UIFileTableItem::data(int column) const
 {
     return m_itemData.value(column);
+}
+
+QString UIFileTableItem::name() const
+{
+    if (m_itemData.isEmpty() || !m_itemData[0].canConvert(QMetaType::QString))
+        return QString();
+    return m_itemData[0].toString();
 }
 
 void UIFileTableItem::setData(const QVariant &data, int index)

@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 71421 2018-03-21 11:07:34Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 71439 2018-03-21 19:39:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -136,16 +136,9 @@ void UIHostFileTable::goToHomeDirectory()
     if (!startDirItem)
         return;
 
-    // UIFileTableItem *rootDirectoryItem
-    QDir homeDirectory(QDir::homePath());
-    QList<QString> pathTrail;//(QDir::rootPath());
-    do{
-
-        pathTrail.push_front(homeDirectory.absolutePath());
-        homeDirectory.cdUp();
-    }while(!homeDirectory.isRoot());
-
-    goIntoDirectory(pathTrail);
+    QString userHome = UIPathOperations::sanitize(QDir::homePath());
+    QList<QString> pathList = userHome.split(UIPathOperations::delimiter, QString::SkipEmptyParts);
+    goIntoDirectory(pathList);
 }
 
 bool UIHostFileTable::renameItem(UIFileTableItem *item, QString newBaseName)
