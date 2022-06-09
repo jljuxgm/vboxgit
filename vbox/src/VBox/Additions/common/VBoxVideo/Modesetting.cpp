@@ -1,4 +1,4 @@
-/* $Id: Modesetting.cpp 66544 2017-04-12 17:02:30Z vboxsync $ */
+/* $Id: Modesetting.cpp 67268 2017-06-06 11:54:32Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -340,12 +340,15 @@ DECLHIDDEN(int) VBoxHGSMIGetModeHints(PHGSMIGUESTCOMMANDCONTEXT pCtx,
                                       unsigned cScreens, VBVAMODEHINT *paHints)
 {
     int rc;
+    void *p;
+
     AssertPtr(paHints);
     if (!VALID_PTR(paHints))
         return VERR_INVALID_POINTER;
-    void *p = VBoxHGSMIBufferAlloc(pCtx,   sizeof(VBVAQUERYMODEHINTS)
-                                         + cScreens * sizeof(VBVAMODEHINT),
-                                   HGSMI_CH_VBVA, VBVA_QUERY_MODE_HINTS);
+
+    p = VBoxHGSMIBufferAlloc(pCtx, sizeof(VBVAQUERYMODEHINTS)
+                                       + cScreens * sizeof(VBVAMODEHINT),
+                             HGSMI_CH_VBVA, VBVA_QUERY_MODE_HINTS);
     if (!p)
     {
         // LogFunc(("HGSMIHeapAlloc failed\n"));
