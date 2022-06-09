@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 71297 2018-03-10 06:02:02Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 72188 2018-05-10 11:30:07Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -2617,7 +2617,7 @@ void nemR3NativeNotifySetA20(PVMCPU pVCpu, bool fEnabled)
  * address if direct access buffering or kernel address if not.
  *
  * The I/O control calls are 'abstracted' in the support driver, see
- * SUPR0IoCtlSetupForHandle(), SUPR0IoctlPerform() and SUPR0IoCtlCleanup().
+ * SUPR0IoCtlSetupForHandle(), SUPR0IoCtlPerform() and SUPR0IoCtlCleanup().
  *
  *
  * @subsection subsect_nem_win_impl_cpumctx     CPUMCTX
