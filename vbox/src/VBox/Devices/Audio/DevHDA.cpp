@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 68548 2017-08-31 09:51:53Z vboxsync $ */
+/* $Id: DevHDA.cpp 68601 2017-09-01 13:17:43Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -1109,15 +1109,15 @@ static int hdaRegWriteSDCTL(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
 
         hdaStreamLock(pStream);
 
-#ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
+# ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
         hdaStreamAsyncIOLock(pStream);
         hdaStreamAsyncIOEnable(pStream, false /* fEnable */);
-#endif
+# endif
         hdaStreamReset(pThis, pStream, pStream->u8SD);
 
-#ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
+# ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
         hdaStreamAsyncIOUnlock(pStream);
-#endif
+# endif
         hdaStreamUnlock(pStream);
     }
     else
@@ -1132,10 +1132,10 @@ static int hdaRegWriteSDCTL(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
 
             hdaStreamLock(pStream);
 
-#ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
+# ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
             hdaStreamAsyncIOLock(pStream);
             hdaStreamAsyncIOEnable(pStream, fRun /* fEnable */);
-#endif
+# endif
             /* (Re-)initialize the stream with current values. */
             int rc2 = hdaStreamInit(pStream, pStream->u8SD);
             AssertRC(rc2);
@@ -1162,19 +1162,19 @@ static int hdaRegWriteSDCTL(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
                 hdaStreamPeriodReset(&pStream->State.Period);
             }
 
-#ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
+# ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
             hdaStreamAsyncIOUnlock(pStream);
-#endif
+# endif
             /* Make sure to leave the lock before (eventually) starting the timer. */
             hdaStreamUnlock(pStream);
 
-#ifndef VBOX_WITH_AUDIO_HDA_CALLBACKS
+# ifndef VBOX_WITH_AUDIO_HDA_CALLBACKS
             /* See if we need to start or stop the timer. */
             if (!fRun)
                 hdaTimerMaybeStop(pThis);
             else
                 hdaTimerMaybeStart(pThis);
-#endif
+# endif
         }
     }
 
