@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 68090 2017-07-24 10:47:15Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 68423 2017-08-15 23:28:57Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1439,7 +1439,8 @@ static DECLCALLBACK(int) ich9pciR3CommonLoadExec(PDEVPCIBUS pBus, PSSMHANDLE pSS
         if (DevTmp.Int.s.u8MsixCapSize != 0)
         {
             Assert(pDev->Int.s.pMsixPageR3 != NULL);
-            memcpy(pDev->Int.s.pMsixPageR3, pvMsixPage, 0x1000);
+            Assert(pDev->Int.s.cbMsixRegion != 0);
+            memcpy(pDev->Int.s.pMsixPageR3, pvMsixPage, pDev->Int.s.cbMsixRegion);
         }
     }
 
