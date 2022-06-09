@@ -1,4 +1,4 @@
-/* $Id: NEMAll.cpp 72484 2018-06-08 17:05:40Z vboxsync $ */
+/* $Id: NEMAll.cpp 72522 2018-06-12 08:45:27Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, R0 and R3 context code.
  */
@@ -126,6 +126,15 @@ VMM_INT_DECL(void) NEMHCNotifyPhysPageChanged(PVM pVM, RTGCPHYS GCPhys, RTHCPHYS
 VMM_INT_DECL(int) NEMImportStateOnDemand(PVMCPU pVCpu, PCPUMCTX pCtx, uint64_t fWhat)
 {
     RT_NOREF(pVCpu, pCtx, fWhat);
+    return VERR_NEM_IPE_9;
+}
+#endif
+
+#ifndef VBOX_WITH_NATIVE_NEM
+VMM_INT_DECL(int) NEMHCQueryCpuTick(PVMCPU pVCpu, uint64_t *pcTicks, uint32_t *puAux)
+{
+    RT_NOREF(pVCpu, pcTicks, puAux);
+    AssertFailed();
     return VERR_NEM_IPE_9;
 }
 #endif

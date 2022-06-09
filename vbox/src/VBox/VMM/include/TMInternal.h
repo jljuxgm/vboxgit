@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 70018 2017-12-08 12:07:41Z vboxsync $ */
+/* $Id: TMInternal.h 72522 2018-06-12 08:45:27Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -328,7 +328,9 @@ typedef enum TMTSCMODE
     /** The guest TSC is an offset of the real TSC. */
     TMTSCMODE_REAL_TSC_OFFSET,
     /** The guest TSC is dynamically derived through emulating or offsetting. */
-    TMTSCMODE_DYNAMIC
+    TMTSCMODE_DYNAMIC,
+    /** The native API provides it. */
+    TMTSCMODE_NATIVE_API
 } TMTSCMODE;
 AssertCompileSize(TMTSCMODE, sizeof(uint32_t));
 

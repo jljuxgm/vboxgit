@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72466 2018-06-07 05:35:54Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72522 2018-06-12 08:45:27Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4417,7 +4417,7 @@ static void hmR0SvmPreRunGuestCommitted(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIE
     if (    (pVM->hm.s.cpuid.u32AMDFeatureEDX & X86_CPUID_EXT_FEATURE_EDX_RDTSCP)
         && !(pVmcb->ctrl.u64InterceptCtrl & SVM_CTRL_INTERCEPT_RDTSCP))
     {
-        uint64_t const uGuestTscAux = CPUMR0GetGuestTscAux(pVCpu);
+        uint64_t const uGuestTscAux = CPUMGetGuestTscAux(pVCpu);
         pVCpu->hm.s.u64HostTscAux   = ASMRdMsr(MSR_K8_TSC_AUX);
         if (uGuestTscAux != pVCpu->hm.s.u64HostTscAux)
             ASMWrMsr(MSR_K8_TSC_AUX, uGuestTscAux);
@@ -4560,7 +4560,7 @@ static void hmR0SvmPostRunGuest(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PSVMTRANSIENT 
     if (pSvmTransient->fRestoreTscAuxMsr)
     {
         uint64_t u64GuestTscAuxMsr = ASMRdMsr(MSR_K8_TSC_AUX);
-        CPUMR0SetGuestTscAux(pVCpu, u64GuestTscAuxMsr);
+        CPUMSetGuestTscAux(pVCpu, u64GuestTscAuxMsr);
         if (u64GuestTscAuxMsr != pVCpu->hm.s.u64HostTscAux)
             ASMWrMsr(MSR_K8_TSC_AUX, pVCpu->hm.s.u64HostTscAux);
     }
