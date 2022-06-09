@@ -1,4 +1,4 @@
-/* $Id: RTCp.cpp 70397 2018-01-01 12:27:43Z vboxsync $ */
+/* $Id: RTCp.cpp 70442 2018-01-03 04:27:32Z vboxsync $ */
 /** @file
  * IPRT - cp like utility.
  */
@@ -335,5 +335,4 @@ int main(int argc, char **argv)
         return RTMsgInitFailure(rc);
     return RTCmdCp(argc, argv);
 }
-
 
