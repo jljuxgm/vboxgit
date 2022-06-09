@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 68764 2017-09-14 15:44:36Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 68914 2017-09-28 15:52:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -644,11 +644,6 @@ void UISnapshotDetailsWidget::retranslateButtons()
     m_pButtonBox->button(QDialogButtonBox::Cancel)->setStatusTip(tr("Reset changes in current snapshot details"));
     m_pButtonBox->button(QDialogButtonBox::Cancel)->
         setToolTip(tr("Reset Changes (%1)").arg(m_pButtonBox->button(QDialogButtonBox::Cancel)->shortcut().toString()));
-    /* Common: 'Apply' button: */
-    m_pButtonBox->button(QDialogButtonBox::Ok)->setText(tr("Apply"));
-    m_pButtonBox->button(QDialogButtonBox::Ok)->setStatusTip(tr("Apply changes in current snapshot details"));
-    m_pButtonBox->button(QDialogButtonBox::Ok)->
-        setToolTip(tr("Apply Changes (%1)").arg(m_pButtonBox->button(QDialogButtonBox::Ok)->shortcut().toString()));
 
     if (m_comMachine.isNotNull())
     {
@@ -657,6 +652,14 @@ void UISnapshotDetailsWidget::retranslateButtons()
         m_pButtonBox->button(QDialogButtonBox::Ok)->setStatusTip(tr("Take snapshot on the basis of current machine state"));
         m_pButtonBox->button(QDialogButtonBox::Ok)->
             setToolTip(tr("Take Snapshot (%1)").arg(m_pButtonBox->button(QDialogButtonBox::Ok)->shortcut().toString()));
+    }
+    else
+    {
+        /* Snapshot: 'Apply' button: */
+        m_pButtonBox->button(QDialogButtonBox::Ok)->setText(tr("Apply"));
+        m_pButtonBox->button(QDialogButtonBox::Ok)->setStatusTip(tr("Apply changes in current snapshot details"));
+        m_pButtonBox->button(QDialogButtonBox::Ok)->
+            setToolTip(tr("Apply Changes (%1)").arg(m_pButtonBox->button(QDialogButtonBox::Ok)->shortcut().toString()));
     }
 }
 
