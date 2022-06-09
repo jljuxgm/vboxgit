@@ -1,4 +1,4 @@
-/* $Id: serialport-win.cpp 69982 2017-12-07 14:22:30Z vboxsync $ */
+/* $Id: serialport-win.cpp 69986 2017-12-07 15:46:42Z vboxsync $ */
 /** @file
  * IPRT - Serial Port API, Windows Implementation.
  */
@@ -237,6 +237,7 @@ RTDECL(int)  RTSerialPortOpen(PRTSERIALPORT phSerialPort, const char *pszPortAdd
     PRTSERIALPORTINTERNAL pThis = (PRTSERIALPORTINTERNAL)RTMemAllocZ(sizeof(*pThis));
     if (pThis)
     {
+        pThis->u32Magic         = RTSERIALPORT_MAGIC;
         pThis->fOpenFlags       = fFlags;
         pThis->fEvtMask         = 0;
         pThis->fWritePending    = false;

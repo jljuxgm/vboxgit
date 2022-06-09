@@ -1,4 +1,4 @@
-/* $Id: serialport-posix.cpp 69908 2017-12-03 09:00:20Z vboxsync $ */
+/* $Id: serialport-posix.cpp 69986 2017-12-07 15:46:42Z vboxsync $ */
 /** @file
  * IPRT - Serial Port API, POSIX Implementation.
  */
@@ -472,6 +472,8 @@ static DECLCALLBACK(int) rtSerialPortStsLineMonitorThrd(RTTHREAD hThreadSelf, vo
     bool fPoll = false;
 #endif
 
+    RTThreadUserSignal(hThreadSelf);
+
     int rcPsx = ioctl(pThis->iFd, TIOCMGET, &fStsLinesOld);
     if (rcPsx == -1)
     {
@@ -643,6 +645,7 @@ RTDECL(int)  RTSerialPortOpen(PRTSERIALPORT phSerialPort, const char *pszPortAdd
         else
             fPsxFlags |= O_RDWR;
 
+        pThis->u32Magic     = RTSERIALPORT_MAGIC;
         pThis->fOpenFlags   = fFlags;
         pThis->fEvtsPending = 0;
         pThis->iFd          = open(pszPortAddress, fPsxFlags);
