@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 67527 2017-06-21 08:25:39Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 67629 2017-06-27 10:03:02Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -1327,9 +1327,10 @@ IEM_CIMPL_DEF_0(iemCImpl_stgi)
     pCtx->hwvirt.svm.fGif = 1;
     iemRegAddToRipAndClearRF(pVCpu, cbInstr);
 #if defined(VBOX_WITH_NESTED_HWVIRT) && defined(VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM) && defined(IN_RING3)
-    EMR3SetExecutionPolicy(pVCpu->CTX_SUFF(pVM)->pUVM, EMEXECPOLICY_IEM_ALL, false);
-#endif
+    return EMR3SetExecutionPolicy(pVCpu->CTX_SUFF(pVM)->pUVM, EMEXECPOLICY_IEM_ALL, false);
+#else
     return VINF_SUCCESS;
+#endif
 }
 
 
