@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 71576 2018-03-29 16:15:58Z vboxsync $
+# $Id: Makefile.kmk 72069 2018-04-30 12:03:21Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -425,7 +425,8 @@ buildserver-extpacks_CLEANS = \
 $$(buildserver-extpacks_0_OUTDIR)/Oracle_VM_VirtualBox_Extension_Pack.vbox-extpack: \
 		$(VBOX_SVN_REV_KMK) $(PATH_DEVTOOLS)/bin/extpacks.sh | $$(dir $$@)
 	$(RM) -f -- "$@.tmp" "$@"
-	$(SHELL) $(PATH_DEVTOOLS)/bin/extpacks.sh --cmd fetch --filename "$@.tmp" --vbox-version "$(VBOX_VERSION_STRING)" $(if $(VBOX_USE_PROXY_FOR_BUILD_SERVER),--default-proxy,)
+	$(SHELL) $(PATH_DEVTOOLS)/bin/extpacks.sh --cmd fetch --filename "$@.tmp" --vbox-version "$(VBOX_VERSION_STRING_NO_PUB)" \
+		$(if $(VBOX_USE_PROXY_FOR_BUILD_SERVER),--default-proxy,)
 	$(MV) -f -- "$@.tmp" "$@"
 	$(TOUCH) -- "$@"
 
