@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 67682 2017-06-29 08:44:44Z vboxsync $ */
+/* $Id: DevPCI.cpp 67685 2017-06-29 09:33:11Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -1435,6 +1435,25 @@ static DECLCALLBACK(int)   pciR3Destruct(PPDMDEVINS pDevIns)
 
 
 /**
+ * @interface_method_impl{PDMDEVREG,pfnReset}
+ */
+static DECLCALLBACK(void) pciR3Reset(PPDMDEVINS pDevIns)
+{
+    PDEVPCIROOT pGlobals = PDMINS_2_DATA(pDevIns, PDEVPCIROOT);
+    PDEVPCIBUS  pBus     = &pGlobals->PciBus;
+
+    /* PCI-specific reset for each device. */
+    for (uint32_t i = 0; i < RT_ELEMENTS(pBus->apDevices); i++)
+    {
+        if (pBus->apDevices[i])
+            devpciR3ResetDevice(pBus->apDevices[i]);
+    }
+
+    pciR3Piix3Reset(&pGlobals->Piix3.PIIX3State);
+}
+
+
+/**
  * The device registration structure.
  */
 const PDMDEVREG g_DevicePCI =
@@ -1468,7 +1487,7 @@ const PDMDEVREG g_DevicePCI =
     /* pfnPowerOn */
     NULL,
     /* pfnReset */
-    NULL,
+    pciR3Reset,
     /* pfnSuspend */
     NULL,
     /* pfnResume */
