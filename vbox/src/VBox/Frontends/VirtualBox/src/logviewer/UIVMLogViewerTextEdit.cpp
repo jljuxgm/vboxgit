@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 70554 2018-01-12 12:29:25Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 70556 2018-01-12 13:02:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -114,14 +114,14 @@ public:
         :QWidget(textEdit)
         , m_pTextEdit(textEdit){}
 
-    QSize sizeHint() const override
+    QSize sizeHint() const
     {
         return QSize(m_pTextEdit->lineNumberAreaWidth(), 0);
     }
 
 protected:
 
-    void paintEvent(QPaintEvent *event) override
+    void paintEvent(QPaintEvent *event)
     {
         m_pTextEdit->lineNumberAreaPaintEvent(event);
     }
