@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 71381 2018-03-20 08:43:34Z vboxsync $ */
+/* $Id: HM.cpp 71382 2018-03-20 08:44:03Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -3760,7 +3760,7 @@ static DECLCALLBACK(void) hmR3InfoSvmNstGstVmcbCache(PVM pVM, PCDBGFINFOHLP pHlp
     {
         PCCPUMCTX            pCtx = CPUMQueryGuestCtxPtr(pVCpu);
         PCSVMNESTEDVMCBCACHE pVmcbNstGstCache = &pVCpu->hm.s.svm.NstGstVmcbCache;
-        pHlp->pfnPrintf(pHlp, "CPU[%u]: HM nested-guest VMCB cache\n", pVCpu->idCpu);
+        pHlp->pfnPrintf(pHlp, "CPU[%u]: HM SVM nested-guest VMCB cache\n", pVCpu->idCpu);
         pHlp->pfnPrintf(pHlp, "  fHMCachedVmcb     = %#RTbool\n", pCtx->hwvirt.svm.fHMCachedVmcb);
         pHlp->pfnPrintf(pHlp, "  u16InterceptRdCRx = %#RX16\n",   pVmcbNstGstCache->u16InterceptRdCRx);
         pHlp->pfnPrintf(pHlp, "  u16InterceptWrCRx = %#RX16\n",   pVmcbNstGstCache->u16InterceptWrCRx);
