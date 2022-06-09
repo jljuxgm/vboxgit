@@ -1,4 +1,4 @@
-/* $Id: isomakercmd.cpp 67868 2017-07-08 18:40:50Z vboxsync $ */
+/* $Id: isomakercmd.cpp 67869 2017-07-08 18:45:21Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker Command.
  */
@@ -1417,6 +1417,8 @@ static int rtFsIsoMakerCmdParseNameSpec(PRTFSISOMAKERCMDOPTS pOpts, const char *
         /* If the source is a input file name specifier, reduce it to something that starts with a slash. */
         if (pParsed->cNamesWithSrc == 1 && fWithSrc)
         {
+            /** @todo just take the final component and prepend a slash (or whatever
+             *        directory in the ISO we import relative to). */
             if (RTVfsChainIsSpec(pParsed->aNames[iSrc].szPath))
             {
                 uint32_t offError;
