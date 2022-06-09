@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 67581 2017-06-23 10:36:22Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 67630 2017-06-27 10:04:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -1048,7 +1048,7 @@ void UIHostNetworkManager::retranslateUi()
     button(ButtonType_Close)->setStatusTip(tr("Close dialog without saving"));
     button(ButtonType_Reset)->setShortcut(QString("Ctrl+Backspace"));
     button(ButtonType_Apply)->setShortcut(QString("Ctrl+Return"));
-    //button(ButtonType_Close)->setShortcut(Qt::Key_Escape); /* done in base-class */
+    button(ButtonType_Close)->setShortcut(Qt::Key_Escape);
     button(ButtonType_Reset)->setToolTip(tr("Reset Changes (%1)").arg(button(ButtonType_Reset)->shortcut().toString()));
     button(ButtonType_Apply)->setToolTip(tr("Apply Changes (%1)").arg(button(ButtonType_Apply)->shortcut().toString()));
     button(ButtonType_Close)->setToolTip(tr("Close Window (%1)").arg(button(ButtonType_Close)->shortcut().toString()));
