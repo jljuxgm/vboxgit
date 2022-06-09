@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72423 2018-06-04 08:01:05Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 72424 2018-06-04 08:04:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -213,7 +213,6 @@ UIMediumItem* UIMediumSelector::createHardDiskItem(const UIMedium &medium)
         return 0;
     if (!m_pTreeWidget)
         return 0;
-    printf("%s\n", qPrintable(medium.id()));
     /* Search the tree to see if we already have the item: */
     UIMediumItem *pMediumItem = searchItem(0, medium.id());
     if (pMediumItem)
