@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 70622 2018-01-18 09:52:31Z vboxsync $ */
+/* $Id: WebMWriter.h 70623 2018-01-18 10:05:23Z vboxsync $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -458,7 +458,7 @@ public:
 
     int AddAudioTrack(uint16_t uHz, uint8_t cChannels, uint8_t cBits, uint8_t *puTrack);
 
-    int AddVideoTrack(uint16_t uWidth, uint16_t uHeight, double dbFPS, uint8_t *puTrack);
+    int AddVideoTrack(uint16_t uWidth, uint16_t uHeight, uint32_t uFPS, uint8_t *puTrack);
 
     int WriteBlock(uint8_t uTrack, const void *pvData, size_t cbData);
 
