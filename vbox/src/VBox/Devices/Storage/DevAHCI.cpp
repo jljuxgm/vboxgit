@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 70685 2018-01-22 19:27:21Z vboxsync $ */
+/* $Id: DevAHCI.cpp 70687 2018-01-22 19:35:11Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -415,9 +415,7 @@ typedef struct AHCIPort
     /** The status LED state for this drive. */
     PDMLED                          Led;
 
-#if HC_ARCH_BITS == 64
     uint32_t                        u32Alignment3;
-#endif
 
     /** Async IO Thread. */
     R3PTRTYPE(PPDMTHREAD)           pAsyncIOThread;
