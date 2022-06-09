@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 70185 2017-12-18 10:32:04Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 70870 2018-02-05 15:51:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -279,8 +279,10 @@ namespace UIExtraDataDefs
 #endif /* VBOX_WITH_VIDEOHWACCEL */
         /** Holds whether Runtime UI should use unscaled HiDPI output. */
         extern const char* GUI_HiDPI_UnscaledOutput;
+#ifdef VBOX_WS_MAC
         /** Holds Runtime UI HiDPI optimization type. */
         extern const char* GUI_HiDPI_Optimization;
+#endif
 #ifndef VBOX_WS_MAC
         /** Holds whether mini-toolbar is enabled for full and seamless screens. */
         extern const char* GUI_ShowMiniToolBar;
@@ -754,12 +756,14 @@ enum ScalingOptimizationType
     ScalingOptimizationType_Performance
 };
 
+#ifdef VBOX_WS_MAC
 /** Runtime UI: HiDPI optimization types. */
 enum HiDPIOptimizationType
 {
     HiDPIOptimizationType_None,
     HiDPIOptimizationType_Performance
 };
+#endif /* VBOX_WS_MAC */
 
 #ifndef VBOX_WS_MAC
 /** Runtime UI: Mini-toolbar alignment. */

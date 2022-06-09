@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 69957 2017-12-06 13:35:06Z vboxsync $ */
+/* $Id: UIMachineView.h 70870 2018-02-05 15:51:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -131,8 +131,10 @@ protected slots:
     /** Handles the scaling-optimization change. */
     void sltHandleScalingOptimizationChange(const QString &strMachineID);
 
+#ifdef VBOX_WS_MAC
     /** Handles the HiDPI-optimization change. */
     void sltHandleHiDPIOptimizationChange(const QString &strMachineID);
+#endif
 
     /** Handles the unscaled HiDPI output mode change. */
     void sltHandleUnscaledHiDPIOutputModeChange(const QString &strMachineID);
