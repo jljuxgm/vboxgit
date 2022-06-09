@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 67625 2017-06-27 09:20:27Z vboxsync $ */
+/* $Id: MachineImpl.cpp 67626 2017-06-27 09:31:07Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -153,7 +153,7 @@ Machine::Data::~Data()
 Machine::HWData::HWData()
 {
     /* default values for a newly created machine */
-    mHWVersion = Utf8StrFmt("%d", SchemaDefs::DefaultHardwareVersion)
+    mHWVersion = Utf8StrFmt("%d", SchemaDefs::DefaultHardwareVersion);
     mMemorySize = 128;
     mCPUCount = 1;
     mCPUHotPlugEnabled = false;
