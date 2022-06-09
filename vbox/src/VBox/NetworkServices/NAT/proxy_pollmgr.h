@@ -1,4 +1,4 @@
-/* $Id: proxy_pollmgr.h 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: proxy_pollmgr.h 68753 2017-09-14 02:15:39Z vboxsync $ */
 /** @file
  * NAT Network - poll manager, definitions and declarations.
  */
@@ -35,8 +35,7 @@ enum pollmgr_slot_t {
 
     POLLMGR_CHAN_PORTFWD,       /* add/remove port forwarding rules */
 
-    POLLMGR_SLOT_STATIC_COUNT,
-    POLLMGR_SLOT_FIRST_DYNAMIC = POLLMGR_SLOT_STATIC_COUNT
+    POLLMGR_CHAN_COUNT
 };
 
 
