@@ -1,4 +1,4 @@
-/* $Id: VBGLInternal.h 62841 2016-08-01 17:20:41Z vboxsync $ */
+/* $Id: VBGLInternal.h 68102 2017-07-25 09:36:25Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -105,17 +105,6 @@ typedef struct VBGLDATA
     RTSEMMUTEX mutexDriverInit;
 
     VBGLDRIVER driver;
-
-    /** @} */
-
-    /**
-     * Fast heap for HGCM handles data.
-     * @{
-     */
-
-    RTSEMFASTMUTEX mutexHGCMHandle;
-
-    struct VBGLHGCMHANDLEDATA aHGCMHandleData[64];
 
     /** @} */
 #endif
