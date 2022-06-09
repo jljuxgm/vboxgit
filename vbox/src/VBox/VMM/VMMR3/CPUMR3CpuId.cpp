@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 69883 2017-11-30 15:39:09Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 70184 2017-12-18 07:49:59Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -1724,6 +1724,8 @@ int cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCPUM
                 pFeatures->fSvmPauseFilter          = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_PAUSE_FILTER);
                 pFeatures->fSvmPauseFilterThreshold = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_PAUSE_FILTER_THRESHOLD);
                 pFeatures->fSvmAvic                 = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_AVIC);
+                pFeatures->fSvmVirtVmsaveVmload     = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_VIRT_VMSAVE_VMLOAD);
+                pFeatures->fSvmVGif                 = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_VGIF);
                 pFeatures->uSvmMaxAsid              = pSvmLeaf->uEbx;
             }
         }
