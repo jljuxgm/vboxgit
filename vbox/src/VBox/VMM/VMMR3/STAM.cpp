@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 66683 2017-04-27 07:46:45Z vboxsync $ */
+/* $Id: STAM.cpp 67067 2017-05-24 15:43:59Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -1332,7 +1332,7 @@ static int stamR3RegisterU(PUVM pUVM, void *pvSample, PFNSTAMR3CALLBACKRESET pfn
 
     /*
      * Check that the name doesn't screw up sorting order when taking
-     * slashes into account. The QT4 GUI makes some assumptions.
+     * slashes into account. The QT GUI makes some assumptions.
      * Problematic chars are: !"#$%&'()*+,-.
      */
 #ifdef VBOX_STRICT

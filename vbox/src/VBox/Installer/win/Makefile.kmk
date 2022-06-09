@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66279 2017-03-28 07:23:33Z vboxsync $
+# $Id: Makefile.kmk 67067 2017-05-24 15:43:59Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -573,7 +573,6 @@ $(VBOX_WIN_INST_OUT_DIR)/$(lang)/VirtualBox_$(lang).wixobj: \
 		-E 'VBOX_WITH_NETFLT=$(if $(VBOX_WITH_NETFLT),yes,no)' \
 		-E 'VBOX_WITH_PYTHON=$(if $(VBOX_WITH_PYTHON),yes,no)' \
 		-E 'VBOX_WITH_QTGUI=$(if $(VBOX_WITH_QTGUI),yes,no)' \
-		-E 'VBOX_WITH_QTGUI_V5=$(if $(VBOX_WITH_QTGUI_V5),yes,no)' \
 		-E 'VBOX_WITH_SECURELABEL=$(if $(VBOX_WITH_SECURELABEL),yes,no)' \
 		-E 'VBOX_WITH_SERIALNUMBER_INSTALL=$(if $(VBOX_WITH_SERIALNUMBER_INSTALL),yes,no)' \
 		-E 'VBOX_WITH_VIDEOHWACCEL=$(if $(VBOX_WITH_VIDEOHWACCEL),yes,no)' \
@@ -665,7 +664,6 @@ $(VBOX_WIN_INST_OUT_DIR)/VBoxMerge$(module)_$(lang).wixobj: \
 		-E 'VBOX_WITH_NETFLT=$(if $(VBOX_WITH_NETFLT),yes,no)' \
 		-E 'VBOX_WITH_PYTHON=$(if $(VBOX_WITH_PYTHON),yes,no)' \
 		-E 'VBOX_WITH_QTGUI=$(if $(VBOX_WITH_QTGUI),yes,no)' \
-		-E 'VBOX_WITH_QTGUI_V5=$(if $(VBOX_WITH_QTGUI_V5),yes,no)' \
 		-E 'VBOX_WITH_SECURELABEL=$(if $(VBOX_WITH_SECURELABEL),yes,no)' \
 		-E 'VBOX_WITH_SERIALNUMBER_INSTALL=$(if $(VBOX_WITH_SERIALNUMBER_INSTALL),yes,no)' \
 		-E 'VBOX_WITH_VIDEOHWACCEL=$(if $(VBOX_WITH_VIDEOHWACCEL),yes,no)' \

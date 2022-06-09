@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt.cpp 67067 2017-05-24 15:43:59Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DBGG
-#include "VBoxDbgStatsQt4.h"
+#include "VBoxDbgStatsQt.h"
 
 #include <QLocale>
 #include <QPushButton>
