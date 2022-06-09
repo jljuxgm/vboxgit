@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 72545 2018-06-13 14:24:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -37,7 +37,7 @@ class QCheckBox;
 class QLabel;
 class QTextEdit;
 class QITreeView;
-
+class QVBoxLayout;
 
 /** Appliance tree-view section types. */
 enum ApplianceViewSection
@@ -100,6 +100,8 @@ public:
 
     /** Cache currently stored values. */
     void putBack();
+
+    void setVirtualSystemBaseFolder(const QString& path);
 
 private:
 
@@ -210,10 +212,14 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
 
+    void setVirtualSystemBaseFolder(const QString& path);
+
     /** Holds the currently set appliance reference. */
     CAppliance         *m_pAppliance;
     /** Holds the Appliance model reference. */
     UIApplianceModel *m_pModel;
+
+    QVBoxLayout *m_pLayout;
 
     /** Holds the information pane instance. */
     QWidget   *m_pPaneInformation;
@@ -245,4 +251,3 @@ private:
 };
 
 #endif /* !___UIApplianceEditorWidget_h___ */
-

@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.h 72545 2018-06-13 14:24:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class declaration.
  */
@@ -112,4 +112,3 @@ private:
 };
 
 #endif /* !___UIWizardImportAppPageBasic2_h___ */
-
