@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 68600 2017-09-01 12:40:41Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 68679 2017-09-06 13:42:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2032,15 +2032,6 @@ void UIMessageCenter::cannotSwitchScreenInSeamless(quint64 uMinVRAM) const
              "<p>You should configure the virtual machine to have at "
              "least <b>%1</b> of video memory.</p>")
              .arg(VBoxGlobal::formatSize(uMinVRAM)));
-}
-
-void UIMessageCenter::cannotMountGuestAdditions(const QString &strMachineName) const
-{
-    alert(0, MessageType_Error,
-          tr("<p>Could not insert the <b>VirtualBox Guest Additions</b> disk image file into the virtual machine <b>%1</b>, "
-             "as the machine has no optical drives. Please add a drive using the storage page of the "
-             "virtual machine settings window.</p>")
-             .arg(strMachineName));
 }
 
 void UIMessageCenter::cannotAddDiskEncryptionPassword(const CConsole &console)

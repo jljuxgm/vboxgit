@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 68663 2017-09-05 18:47:43Z vboxsync $ */
+/* $Id: UISession.cpp 68679 2017-09-06 13:42:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1891,7 +1891,7 @@ bool UISession::mountAdHocImage(KDeviceType enmDeviceType, UIMediumType enmMediu
         const CMedium comMedium = comVBox.OpenMedium(strMediumName, enmDeviceType, KAccessMode_ReadWrite, false /* fForceNewUuid */);
         if (!comVBox.isOk() || comMedium.isNull())
         {
-            msgCenter().cannotOpenMedium(comVBox, enmMediumType, strMediumName);
+            popupCenter().cannotOpenMedium(machineLogic()->activeMachineWindow(), comVBox, enmMediumType, strMediumName);
             return false;
         }
 
@@ -1934,7 +1934,7 @@ bool UISession::mountAdHocImage(KDeviceType enmDeviceType, UIMediumType enmMediu
     QList<ExactStorageSlot> sStorageSlots = aFreeStorageSlots + aBusyStorageSlots;
     if (sStorageSlots.isEmpty())
     {
-        msgCenter().cannotMountGuestAdditions(machineName());
+        popupCenter().cannotMountImage(machineLogic()->activeMachineWindow(), machineName(), strMediumName);
         return false;
     }
 
@@ -1960,7 +1960,7 @@ bool UISession::mountAdHocImage(KDeviceType enmDeviceType, UIMediumType enmMediu
     /* Show error message if necessary: */
     if (!machine().isOk())
     {
-        msgCenter().cannotSaveMachineSettings(machine(), mainMachineWindow());
+        popupCenter().cannotSaveMachineSettings(machineLogic()->activeMachineWindow(), machine());
         return false;
     }
 

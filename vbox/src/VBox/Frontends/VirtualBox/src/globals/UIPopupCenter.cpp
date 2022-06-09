@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 68600 2017-09-01 12:40:41Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 68679 2017-09-06 13:42:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -626,5 +626,33 @@ void UIPopupCenter::cannotToggleAudioInput(QWidget *pParent, const CAudioAdapter
                      QApplication::translate("UIMessageCenter", "Failed to enable the audio adapter input for the virtual machine <b>%1</b>.").arg(strMachineName) :
                      QApplication::translate("UIMessageCenter", "Failed to disable the audio adapter input for the virtual machine <b>%1</b>.").arg(strMachineName),
                      UIErrorString::formatErrorInfo(comAdapter));
+}
+
+void UIPopupCenter::cannotMountImage(QWidget *pParent, const QString &strMachineName, const QString &strMediumName)
+{
+    alert(pParent, "cannotMountImage",
+          QApplication::translate("UIMessageCenter",
+                                  "<p>Could not insert the <b>%1</b> disk image file into the virtual machine <b>%2</b>, "
+                                  "as the machine has no optical drives. Please add a drive using the storage page of the "
+                                  "virtual machine settings window.</p>")
+                                  .arg(strMediumName, strMachineName));
+}
+
+void UIPopupCenter::cannotOpenMedium(QWidget *pParent, const CVirtualBox &comVBox, UIMediumType /* enmType */, const QString &strLocation)
+{
+    alertWithDetails(pParent, "cannotOpenMedium",
+                     QApplication::translate("UIMessageCenter",
+                                             "Failed to open the disk image file <nobr><b>%1</b></nobr>.")
+                                             .arg(strLocation),
+                     UIErrorString::formatErrorInfo(comVBox));
+}
+
+void UIPopupCenter::cannotSaveMachineSettings(QWidget *pParent, const CMachine &comMachine)
+{
+    alertWithDetails(pParent, "cannotSaveMachineSettings",
+                     QApplication::translate("UIMessageCenter",
+                                             "Failed to save the settings of the virtual machine <b>%1</b> to <b><nobr>%2</nobr></b>.")
+                                             .arg(CMachine(comMachine).GetName(), CMachine(comMachine).GetSettingsFilePath()),
+                     UIErrorString::formatErrorInfo(comMachine));
 }
 
