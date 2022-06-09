@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 70484 2018-01-08 10:12:19Z vboxsync $ */
+/* $Id: socket.cpp 70485 2018-01-08 10:57:34Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -693,7 +693,7 @@ static int rtSocketCreateNativeTcpPair(RTSOCKETNATIVE *phServer, RTSOCKETNATIVE 
     if (socketpair(AF_LOCAL, SOCK_STREAM, 0, aSockets) == 0)
     {
         *phServer = aSockets[0];
-        *phClient = aSockets[0];
+        *phClient = aSockets[1];
         return VINF_SUCCESS;
     }
     return rtSocketError();
