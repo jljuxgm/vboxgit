@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 70053 2017-12-10 22:20:06Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -1013,7 +1013,7 @@ static void vboxDispD3DGlobalD3DFormatsInit(PVBOXWDDMDISP_FORMATS pFormats)
 #define VBOX_D3D_CHECK_FLAGS(level, field, flags) do { \
         if (((field) & (flags)) != (flags)) \
         { \
-            LogRel(("D3D level %s %s flags: 0x%08X -> 0x%08X\n", #level, #field, (field), (flags))); \
+            LogRel(("D3D level %s %s flags: 0x%08X -> 0x%08X (missing 0x%08X)\n", #level, #field, (field), (flags), ((field) & (flags)) ^ (flags))); \
         } \
     } while (0)
 
@@ -1031,7 +1031,7 @@ static void vboxDispD3DGlobalD3DFormatsInit(PVBOXWDDMDISP_FORMATS pFormats)
         } \
     } while (0)
 
-static void vboxDispCheckCapsLevel(const D3DCAPS9 *pCaps)
+void vboxDispCheckCapsLevel(const D3DCAPS9 *pCaps)
 {
     /* Misc. */
     VBOX_D3D_CHECK_FLAGS(misc, pCaps->Caps,                     D3DCAPS_READ_SCANLINE);
