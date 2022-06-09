@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 72352 2018-05-26 12:37:50Z vboxsync $ */
+/* $Id: VMMDev.cpp 72399 2018-05-31 08:19:39Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -541,7 +541,7 @@ static int vmmDevReqHandler_HeartbeatConfigure(PVMMDEV pThis, VMMDevRequestHeade
     }
     else
     {
-        LogRel(("VMMDev: vmmDevReqHandler_HeartbeatConfigure: No change (fHeartbeatActive=%RTbool).\n", pThis->fHeartbeatActive));
+        LogRel(("VMMDev: vmmDevReqHandler_HeartbeatConfigure: No change (fHeartbeatActive=%RTbool)\n", pThis->fHeartbeatActive));
         rc = VINF_SUCCESS;
     }
 
