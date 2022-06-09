@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 70568 2018-01-12 21:44:37Z vboxsync $
+# $Id: utils.py 70569 2018-01-12 23:57:56Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70568 $"
+__version__ = "$Revision: 70569 $"
 
 
 # Standard Python imports.
@@ -599,8 +599,8 @@ def processOutputChecked(*aPositionalArgs, **dKeywordArgs):
     else:                       sEncoding = 'utf-8';
 
     fIgnoreEncoding = dKeywordArgs.get('fIgnoreEncoding');
-    if sEncoding is not None:   del dKeywordArgs['fIgnoreEncoding'];
-    else:                       fIgnoreEncoding = True;
+    if fIgnoreEncoding is not None:   del dKeywordArgs['fIgnoreEncoding'];
+    else:                             fIgnoreEncoding = True;
 
     _processFixPythonInterpreter(aPositionalArgs, dKeywordArgs);
     oProcess = processPopenSafe(stdout=subprocess.PIPE, *aPositionalArgs, **dKeywordArgs);
