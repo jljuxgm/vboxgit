@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 67302 2017-06-08 14:02:51Z vboxsync $ */
+/* $Id: fatvfs.cpp 67340 2017-06-12 13:23:07Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -2987,7 +2987,8 @@ static int rtFsFatDir_MaybeCreateLongNameAndShortAlias(PRTFSFATDIR pThis, const 
              * the name straight into the entry without constaints.
              */
             memset(&wszEntry[cwcEntry + 1], 0xff,
-                   RT_MIN(sizeof(wszEntry) - (cwcEntry + 1) * sizeof(RTUTF16), FATDIRNAMESLOT_CHARS_PER_SLOT));
+                   RT_MIN(sizeof(wszEntry) - (cwcEntry + 1) * sizeof(RTUTF16),
+                          FATDIRNAMESLOT_CHARS_PER_SLOT * sizeof(RTUTF16)));
 
             uint8_t const   bChecksum = rtFsFatDir_CalcChecksum(pDirEntry);
             size_t const    cSlots    = (cwcEntry + FATDIRNAMESLOT_CHARS_PER_SLOT - 1) / FATDIRNAMESLOT_CHARS_PER_SLOT;
