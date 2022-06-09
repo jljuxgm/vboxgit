@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 64659 2016-11-14 14:19:26Z vboxsync $ */
+/* $Id: UIMachineLogic.h 68508 2017-08-22 14:42:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -288,6 +288,8 @@ private slots:
     /* "Device" menu functionality: */
     void sltOpenVMSettingsDialog(const QString &strCategory = QString(), const QString &strControl = QString());
     void sltOpenStorageSettingsDialog();
+    void sltToggleAudioOutput(bool fEnabled);
+    void sltToggleAudioInput(bool fEnabled);
     void sltOpenNetworkSettingsDialog();
     void sltOpenUSBDevicesSettingsDialog();
     void sltOpenSharedFoldersSettingsDialog();

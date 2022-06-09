@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 60544 2016-04-18 15:17:27Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 68508 2017-08-22 14:42:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -398,10 +398,11 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
             es.SetWinId(winId);
             break;
         }
-//        case KVBoxEventType_OnSerialPortChanged:
-//        case KVBoxEventType_OnParallelPortChanged:
-//        case KVBoxEventType_OnStorageControllerChanged:
-//        case KVBoxEventType_OnCPUChange:
+        case KVBoxEventType_OnAudioAdapterChanged:
+        {
+            emit sigAudioAdapterChange();
+            break;
+        }
 
         default: break;
     }

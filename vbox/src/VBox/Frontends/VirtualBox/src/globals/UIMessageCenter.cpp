@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 68435 2017-08-17 08:59:12Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 68508 2017-08-22 14:42:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2107,6 +2107,24 @@ void UIMessageCenter::cannotToggleVRDEServer(const CVRDEServer &server, const QS
               tr("Failed to enable the remote desktop server for the virtual machine <b>%1</b>.").arg(strMachineName) :
               tr("Failed to disable the remote desktop server for the virtual machine <b>%1</b>.").arg(strMachineName),
           UIErrorString::formatErrorInfo(server));
+}
+
+void UIMessageCenter::cannotToggleAudioOutput(const CAudioAdapter &comAdapter, const QString &strMachineName, bool fEnable)
+{
+    error(0, MessageType_Error,
+          fEnable ?
+              tr("Failed to enable the audio adapter output for the virtual machine <b>%1</b>.").arg(strMachineName) :
+              tr("Failed to disable the audio adapter output for the virtual machine <b>%1</b>.").arg(strMachineName),
+          UIErrorString::formatErrorInfo(comAdapter));
+}
+
+void UIMessageCenter::cannotToggleAudioInput(const CAudioAdapter &comAdapter, const QString &strMachineName, bool fEnable)
+{
+    error(0, MessageType_Error,
+          fEnable ?
+              tr("Failed to enable the audio adapter input for the virtual machine <b>%1</b>.").arg(strMachineName) :
+              tr("Failed to disable the audio adapter input for the virtual machine <b>%1</b>.").arg(strMachineName),
+          UIErrorString::formatErrorInfo(comAdapter));
 }
 
 void UIMessageCenter::cannotToggleNetworkAdapterCable(const CNetworkAdapter &adapter, const QString &strMachineName, bool fConnect)

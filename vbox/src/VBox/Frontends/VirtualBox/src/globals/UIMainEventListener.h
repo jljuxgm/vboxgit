@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 60250 2016-03-29 19:23:26Z vboxsync $ */
+/* $Id: UIMainEventListener.h 68508 2017-08-22 14:42:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -118,6 +118,8 @@ signals:
     void sigCanShowWindow(bool &fVeto, QString &strReason); /* use Qt::DirectConnection */
     /** Notifies about VM window with specified @a winId should be shown. */
     void sigShowWindow(qint64 &winId); /* use Qt::DirectConnection */
+    /** Notifies about audio adapter state change. */
+    void sigAudioAdapterChange();
 
 public:
 

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 68435 2017-08-17 08:59:12Z vboxsync $ */
+/* $Id: UIMessageCenter.h 68508 2017-08-22 14:42:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -319,6 +319,8 @@ public:
     void cannotDetachWebCam(const CEmulatedUSB &dispatcher, const QString &strWebCamName, const QString &strMachineName) const;
     void cannotToggleVideoCapture(const CMachine &machine, bool fEnable);
     void cannotToggleVRDEServer(const CVRDEServer &server, const QString &strMachineName, bool fEnable);
+    void cannotToggleAudioOutput(const CAudioAdapter &comAdapter, const QString &strMachineName, bool fEnable);
+    void cannotToggleAudioInput(const CAudioAdapter &comAdapter, const QString &strMachineName, bool fEnable);
     void cannotToggleNetworkAdapterCable(const CNetworkAdapter &adapter, const QString &strMachineName, bool fConnect);
     void remindAboutGuestAdditionsAreNotActive() const;
     void cannotMountGuestAdditions(const QString &strMachineName) const;

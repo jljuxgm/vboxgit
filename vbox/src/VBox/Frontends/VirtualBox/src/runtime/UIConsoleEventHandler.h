@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 60227 2016-03-28 17:38:54Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.h 68508 2017-08-22 14:42:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -77,6 +77,8 @@ signals:
     /** Notifies about VM window should be shown. */
     void sigShowWindow();
 #endif /* RT_OS_DARWIN */
+    /** Notifies about audio adapter state change. */
+    void sigAudioAdapterChange();
 
 public:
 
