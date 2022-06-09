@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69145 2017-10-20 12:11:57Z vboxsync $
+# $Id: Makefile.kmk 69150 2017-10-20 15:19:50Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -161,8 +161,10 @@ endif
 	sudo chown "$(shell whoami)" "$@"
 	sudo chown -R "$(shell whoami)" $(VBOX_PATH_PACK_TMP)/DiskImage
 ifdef VBOX_SIGNING_MODE
+ ifndef VBOX_WITHOUT_SIGNED_DMG
 	@# Sign the created dmg.
 	$(call VBOX_SIGN_FILE_FN,$@,org.virtualbox.dmg)
+ endif
 endif
 
 #
