@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 69643 2017-11-10 13:34:06Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 69647 2017-11-10 16:31:01Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
@@ -629,7 +629,7 @@ static int rtR0DbgKrnlDarwinLoadSymTab(RTDBGKRNLINFOINT *pThis)
                         RETURN_VERR_BAD_EXE_FORMAT;
                     if (pSym->n_sect > pThis->cSections)
                         RETURN_VERR_BAD_EXE_FORMAT;
-                    if (pSym->n_desc & ~(REFERENCED_DYNAMICALLY))
+                    if (pSym->n_desc & ~(REFERENCED_DYNAMICALLY | N_WEAK_DEF))
                         RETURN_VERR_BAD_EXE_FORMAT;
                     if (   pSym->n_value < pThis->apSections[pSym->n_sect - 1]->addr
                         && strcmp(pszSym, "__mh_execute_header"))    /* in 10.8 it's no longer absolute (PIE?). */
