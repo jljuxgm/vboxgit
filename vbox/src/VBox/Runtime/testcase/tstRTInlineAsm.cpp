@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 71675 2018-04-05 11:54:17Z vboxsync $ */
+/* $Id: tstRTInlineAsm.cpp 71678 2018-04-05 12:11:51Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -257,9 +257,12 @@ void tstASMCpuId(void)
                 RTTestIPrintf(RTTESTLVL_ALWAYS, "    [%02x]  %08x %08x %08x %08x\n", uECX, s.uEAX, s.uEBX, s.uECX, s.uEDX);
                 RTTESTI_CHECK_BREAK(uECX < 128);
             }
-        else if (   iStd == 0x0f /* Platform qualifity of service monitoring (PQM)  */
-                 || iStd == 0x10 /* Platform qualifity of service enforcement (PQE) */
-                 || iStd == 0x14 /* Trace Enumeration Leafs */)
+        else if (   iStd == 0x0f /* Platform quality of service monitoring (PQM)  */
+                 || iStd == 0x10 /* Platform quality of service enforcement (PQE) */
+                 || iStd == 0x12 /* SGX Enumeration */
+                 || iStd == 0x14 /* Processor Trace Enumeration */
+                 || iStd == 0x17 /* SoC Vendor Attribute Enumeration */
+                 || iStd == 0x18 /* Deterministic Address Translation Parameters */)
         {
             /** @todo  */
         }
