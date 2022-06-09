@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientListImpl.cpp 71183 2018-03-03 00:53:44Z vboxsync $ */
+/* $Id: VirtualBoxClientListImpl.cpp 71713 2018-04-06 17:24:01Z vboxsync $ */
 /** @file
  * VBox Global COM Class implementation.
  *
@@ -72,15 +72,14 @@ CClientListWatcher::CClientListWatcher(TClientSet& list, RTCRITSECTRW& clientLis
         return;
     }
 
-    /** @todo r=bird: Hanging indent on '(', please. */
     RTTHREAD watcherThread;
     rc = RTThreadCreate(&watcherThread,
-        (PFNRTTHREAD)CClientListWatcher::WatcherWorker,
-        this, // pVUser
-        0,    // cbStack
-        RTTHREADTYPE_DEFAULT,
-        RTTHREADFLAGS_WAITABLE,
-        "CLWatcher");
+                        (PFNRTTHREAD)CClientListWatcher::WatcherWorker,
+                        this, // pVUser
+                        0,    // cbStack
+                        RTTHREADTYPE_DEFAULT,
+                        RTTHREADFLAGS_WAITABLE,
+                        "CLWatcher");
     if (RT_SUCCESS(rc))
     {
         ASMAtomicWritePtr((void* volatile*)&CClientListWatcher::m_WatcherThread, watcherThread);
