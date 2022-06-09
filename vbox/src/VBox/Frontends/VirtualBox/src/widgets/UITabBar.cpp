@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 68211 2017-07-31 16:23:06Z vboxsync $ */
+/* $Id: UITabBar.cpp 68234 2017-08-02 10:13:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -313,7 +313,7 @@ void UITabBarItem::prepare()
         AssertPtrReturnVoid(m_pLabelName);
         {
             /* Configure label: */
-            m_pLabelIcon->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+            m_pLabelName->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
             m_pLabelName->setText(m_strName);
         }
 
