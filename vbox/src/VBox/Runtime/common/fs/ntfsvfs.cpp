@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 69910 2017-12-03 17:06:56Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 69911 2017-12-03 17:17:15Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -1647,6 +1647,7 @@ static void rtFsNtfsVol_LogIndexHdrAndEntries(PCNTFSINDEXHDR pIdxHdr, uint32_t c
         Log2(("NTFS: %s: Warning! Missing NTFSIDXENTRYHDR_F_END node!\n", pszPrefix));
 }
 
+# if 0 /* unused */
 static void rtFsNtfsVol_LogIndexNode(PCNTFSATINDEXALLOC pIdxNode, uint32_t cbIdxNode, uint32_t uType)
 {
     if (!LogIs2Enabled())
@@ -1667,7 +1668,7 @@ static void rtFsNtfsVol_LogIndexNode(PCNTFSATINDEXALLOC pIdxNode, uint32_t cbIdx
             Log2(("NTFS: Index Node: !Error! Invalid magic!\n"));
     }
 }
-
+# endif
 
 /**
  * Logs a index root structure and what follows (index header + entries).
