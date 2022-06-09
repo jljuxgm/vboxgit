@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 68802 2017-09-20 12:41:09Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 68803 2017-09-20 13:06:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2419,10 +2419,13 @@ int Display::i_videoCaptureInvalidate(void)
     /*
      * Get parameters from API.
      */
-    SafeArray<BOOL> aScreens;
+    com::SafeArray<BOOL> aScreens;
     HRESULT rc = pMachine->COMGETTER(VideoCaptureScreens)(ComSafeArrayAsOutParam(aScreens));
     AssertComRCReturn(rc, VERR_COM_UNEXPECTED);
-    aScreens.cloneTo(mVideoRecCfg.aScreens);
+
+    mVideoRecCfg.aScreens.resize(aScreens.size());
+    for (size_t i = 0; i < aScreens.size(); ++i)
+        mVideoRecCfg.aScreens[i] = aScreens[i];
 
     rc = pMachine->COMGETTER(VideoCaptureWidth)((ULONG *)&mVideoRecCfg.Video.uWidth);
     AssertComRCReturn(rc, VERR_COM_UNEXPECTED);
