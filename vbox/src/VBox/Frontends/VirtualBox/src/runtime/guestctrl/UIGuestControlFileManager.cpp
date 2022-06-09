@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 71523 2018-03-27 09:52:56Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 71531 2018-03-28 07:25:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -687,13 +687,7 @@ QStringList UIGuestControlFileManager::getFsObjInfoStringList(const T &fsObjectI
     if (!fsObjectInfo.isOk())
         return objectInfo;
 
-    //objectInfo << QString(UIGuestControlInterface::getFsObjTypeString(fsObjectInfo.GetType()).append("\t"));
     objectInfo << fsObjectInfo.GetName();
-    //objectInfo << QString::number(fsObjectInfo.GetObjectSize());
-
-    /* Currently I dont know a way to convert these into a meaningful date/time: */
-    // strObjectInfo.append("BirthTime", QString::number(fsObjectInfo.GetBirthTime()));
-    // strObjectInfo.append("ChangeTime", QString::number(fsObjectInfo.GetChangeTime()));
 
     return objectInfo;
 }
