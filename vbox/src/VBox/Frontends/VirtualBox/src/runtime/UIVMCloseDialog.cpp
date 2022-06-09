@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 69823 2017-11-24 12:48:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
@@ -302,9 +302,7 @@ void UIVMCloseDialog::prepare()
             }
             /* Configure layout: */
             pTopLayout->setContentsMargins(0, 0, 0, 0);
-            // WORKAROUND:
-            // Why do we need it? It should be the default one, but it's not..
-            const int iS3 = qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing);
+            const int iS3 = qApp->style()->pixelMetric(QStyle::PM_LayoutHorizontalSpacing) * 2;
             pTopLayout->setSpacing(iS3);
             pTopLayout->addItem(pTopLeftLayout);
             pTopLayout->addItem(pTopRightLayout);
