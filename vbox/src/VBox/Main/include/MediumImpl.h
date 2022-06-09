@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 62810 2016-08-01 12:08:07Z vboxsync $ */
+/* $Id: MediumImpl.h 67184 2017-05-31 20:32:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -206,7 +206,11 @@ public:
                          const ComObjPtr<MediumFormat> &aFormat,
                          MediumVariant_T aVariant,
                          SecretKeyStore *pKeyStore,
+#ifdef VBOX_WITH_NEW_TAR_CREATOR
+                         RTVFSIOSTREAM hVfsIosDst,
+#else
                          PVDINTERFACEIO aVDImageIOIf, void *aVDImageIOUser,
+#endif
                          const ComObjPtr<Progress> &aProgress);
     HRESULT i_importFile(const char *aFilename,
                         const ComObjPtr<MediumFormat> &aFormat,
