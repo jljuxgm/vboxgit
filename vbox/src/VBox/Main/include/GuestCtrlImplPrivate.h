@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 71506 2018-03-26 09:22:11Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 71783 2018-04-09 15:54:39Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -625,6 +625,8 @@ struct GuestFileOpenInfo
     uint32_t                mCreationMode;
     /** Extended open flags (currently none defined). */
     uint32_t                mfOpenEx;
+    /** Initial file offset. */
+    uint64_t                muOffset; /** @todo Remove this in the next protocol version. */
 };
 
 
