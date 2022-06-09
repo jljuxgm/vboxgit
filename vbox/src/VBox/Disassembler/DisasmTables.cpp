@@ -1,4 +1,4 @@
-/* $Id: DisasmTables.cpp 68186 2017-07-31 08:36:37Z vboxsync $ */
+/* $Id: DisasmTables.cpp 68191 2017-07-31 10:28:22Z vboxsync $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -3165,9 +3165,9 @@ const DISOPCODE g_aMapX86_Group15_mem[8] =
     OP("fxrstor %M",         IDX_ParseModRM,     0,          0,          OP_FXRSTOR, OP_PARM_M,          OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("ldmxcsr %M",         IDX_ParseModRM,     0,          0,          OP_LDMXCSR, OP_PARM_M,          OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("stmxcsr %M",         IDX_ParseModRM,     0,          0,          OP_STMXCSR, OP_PARM_M,          OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
-    OP("xsave %M",           IDX_ParseModRM,     0,          0,          OP_STMXCSR, OP_PARM_M,          OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
-    OP("xrstor %M",          IDX_ParseModRM,     0,          0,          OP_STMXCSR, OP_PARM_M,          OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
-    OP("xsaveopt %M",        IDX_ParseModRM,     0,          0,          OP_STMXCSR, OP_PARM_M,          OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("xsave %M",           IDX_ParseModRM,     0,          0,          OP_XSAVE,   OP_PARM_M,          OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("xrstor %M",          IDX_ParseModRM,     0,          0,          OP_XRSTOR,  OP_PARM_M,          OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("xsaveopt %M",        IDX_ParseModRM,     0,          0,          OP_XSAVEOPT, OP_PARM_M,         OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("clflush %Mb",        IDX_ParseModRM,     0,          0,          OP_CLFLUSH, OP_PARM_Mb,         OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
 };
 
