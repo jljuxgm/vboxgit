@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 69167 2017-10-23 15:53:14Z vboxsync $ */
+/* $Id: scmrw.cpp 69168 2017-10-23 15:53:31Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -830,7 +830,7 @@ rewrite_Copyright_CommentCallback(PCSCMCOMMENTINFO pInfo, const char *pszBody, s
         const char *pszEnd  = pszNextLine ? pszNextLine : &pszBody[cchBody];
         while (RT_C_IS_SPACE(pszEnd[-1]))
             pszEnd--;
-        if (   (pszEnd - pszBody) > sizeof(g_szCopyrightHolder)
+        if (   (uintptr_t)(pszEnd - pszBody) > sizeof(g_szCopyrightHolder)
             && RTStrNICmp(pszEnd - sizeof(g_szCopyrightHolder) + 1, RT_STR_TUPLE(g_szCopyrightHolder)) == 0)
         {
             /* Parse out the year(s). */
