@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 70413 2018-01-02 07:22:26Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 70414 2018-01-02 07:23:22Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1914,6 +1914,7 @@ static void hmR0SvmLoadGuestXcptInterceptsNested(PVMCPU pVCpu, PSVMVMCB pVmcbNst
         pVmcbNstGst->ctrl.u32InterceptXcpt  |= pVmcb->ctrl.u32InterceptXcpt;
         pVmcbNstGst->ctrl.u64InterceptCtrl  |= pVmcb->ctrl.u64InterceptCtrl
                                             |  HMSVM_MANDATORY_GUEST_CTRL_INTERCEPTS;
+
         /*
          * Remove control intercepts that we don't need while executing the nested-guest.
          *
