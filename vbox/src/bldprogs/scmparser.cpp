@@ -1,4 +1,4 @@
-/* $Id: scmparser.cpp 69345 2017-10-26 13:16:16Z vboxsync $ */
+/* $Id: scmparser.cpp 69422 2017-10-27 10:31:57Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Code Parsers.
  */
@@ -210,7 +210,7 @@ static int handleLineComment(PSCMSTREAM pIn, PFNISCOMMENT pfnIsComment,
     if (off < cchLine && RT_C_IS_SPACE(pchLine[off]))
         off++;
     size_t cchBody = cchLine;
-    while (cchBody >= off && RT_C_IS_SPACE(pchLine[cchBody - 1]))
+    while (cchBody > off && RT_C_IS_SPACE(pchLine[cchBody - 1]))
            cchBody--;
     cchBody -= off;
     size_t   cbBodyAlloc = RT_MAX(_1K, RT_ALIGN_Z(cchBody + 64, 128));
