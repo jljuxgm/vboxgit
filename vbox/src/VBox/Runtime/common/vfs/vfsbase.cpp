@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 67189 2017-06-01 07:41:20Z vboxsync $ */
+/* $Id: vfsbase.cpp 67221 2017-06-01 21:44:24Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -3083,6 +3083,13 @@ RTDECL(bool) RTVfsIoStrmIsAtEnd(RTVFSIOSTREAM hVfsIos)
 
 
 
+RTDECL(uint64_t) RTVfsIoStrmGetOpenFlags(RTVFSIOSTREAM hVfsIos)
+{
+    RTVFSIOSTREAMINTERNAL *pThis = hVfsIos;
+    AssertPtrReturn(pThis, 0);
+    AssertReturn(pThis->uMagic == RTVFSIOSTREAM_MAGIC, 0);
+    return pThis->fFlags;
+}
 
 
 
@@ -3404,3 +3411,13 @@ RTDECL(int) RTVfsFileGetSize(RTVFSFILE hVfsFile, uint64_t *pcbSize)
 
     return rc;
 }
+
+
+RTDECL(uint64_t) RTVfsFileGetOpenFlags(RTVFSFILE hVfsFile)
+{
+    RTVFSFILEINTERNAL *pThis = hVfsFile;
+    AssertPtrReturn(pThis, 0);
+    AssertReturn(pThis->uMagic == RTVFSFILE_MAGIC, 0);
+    return pThis->Stream.fFlags;
+}
+
