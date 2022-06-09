@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 67246 2017-06-02 15:16:34Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.h 67277 2017-06-06 16:39:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -123,6 +123,9 @@ private:
 
     /** Notifies listeners about data changed or not. */
     void notify();
+
+    /** Returns a details report on a given @a comMachine. */
+    QString detailsReport(const CMachine &comMachine);
 
     /** Holds the snapshot object to load data from. */
     CSnapshot  m_comSnapshot;
