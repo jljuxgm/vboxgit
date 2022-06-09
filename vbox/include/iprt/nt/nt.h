@@ -1,4 +1,4 @@
-/* $Id: nt.h 67979 2017-07-15 11:02:00Z vboxsync $ */
+/* $Id: nt.h 67980 2017-07-15 12:28:41Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2665,7 +2665,7 @@ NTSYSAPI NTSTATUS NTAPI RtlDosApplyFileIsolationRedirection_Ustr(IN ULONG fFlags
                                                                  IN PSIZE_T pcbNeeded OPTIONAL);
 /** @since Windows 8.
  * @note Status code is always zero in windows 10 build 14393. */
-NTSYSAPI NTSTATUS ApiSetQueryApiSetPresence(IN PCUNICODE_STRING pAllegedApiSetDll, OUT PBOOLEAN pfPresent);
+NTSYSAPI NTSTATUS NTAPI ApiSetQueryApiSetPresence(IN PCUNICODE_STRING pAllegedApiSetDll, OUT PBOOLEAN pfPresent);
 /** @copydoc ApiSetQueryApiSetPresence */
 typedef NTSTATUS (NTAPI *PFNAPISETQUERYAPISETPRESENCE)(IN PCUNICODE_STRING pAllegedApiSetDll, OUT PBOOLEAN pfPresent);
 
