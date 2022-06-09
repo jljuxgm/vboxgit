@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 69919 2017-12-04 14:00:05Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 70013 2017-12-08 11:52:00Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1846,6 +1846,11 @@ int main()
     GEN_CHECK_OFF(HDASTREAMSTATE, BDLE);
     GEN_CHECK_OFF(HDASTREAMSTATE, pCircBuf);
 
+    GEN_CHECK_SIZE(HDASTREAMDBGINFORT);
+
+    GEN_CHECK_SIZE(HDASTREAMDBGINFO);
+    GEN_CHECK_OFF(HDASTREAMDBGINFO, Runtime);
+
     GEN_CHECK_SIZE(HDASTREAM);
     GEN_CHECK_OFF(HDASTREAM, u8SD);
     GEN_CHECK_OFF(HDASTREAM, u64BDLBase);
@@ -1853,6 +1858,7 @@ int main()
     GEN_CHECK_OFF(HDASTREAM, u16FIFOS);
     GEN_CHECK_OFF(HDASTREAM, u16LVI);
     GEN_CHECK_OFF(HDASTREAM, State);
+    GEN_CHECK_OFF(HDASTREAM, Dbg);
 
     GEN_CHECK_SIZE(HDASTATE);
     GEN_CHECK_OFF(HDASTATE, PciDev);
