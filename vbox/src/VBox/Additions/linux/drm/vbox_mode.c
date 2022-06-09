@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 69083 2017-10-13 16:03:36Z vboxsync $ */
+/* $Id: vbox_mode.c 69525 2017-10-30 11:57:21Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -149,10 +149,6 @@ static int vbox_set_view(struct drm_crtc *crtc)
 	}
 
 	return 0;
-}
-
-static void vbox_crtc_load_lut(struct drm_crtc *crtc)
-{
 }
 
 static void vbox_crtc_dpms(struct drm_crtc *crtc, int mode)
@@ -348,7 +344,6 @@ static const struct drm_crtc_helper_funcs vbox_crtc_helper_funcs = {
 	.mode_set = vbox_crtc_mode_set,
 	/* .mode_set_base = vbox_crtc_mode_set_base, */
 	.disable = vbox_crtc_disable,
-	.load_lut = vbox_crtc_load_lut,
 	.prepare = vbox_crtc_prepare,
 	.commit = vbox_crtc_commit,
 };
