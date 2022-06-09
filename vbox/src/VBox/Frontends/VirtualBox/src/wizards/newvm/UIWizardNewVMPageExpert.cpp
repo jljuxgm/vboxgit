@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 72314 2018-05-24 09:16:58Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 72321 2018-05-24 12:03:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -67,7 +67,6 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
                 {
                     m_pRamSlider->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
                     m_pRamSlider->setOrientation(Qt::Horizontal);
-                    m_pRamSlider->setValue(m_pNameAndSystemEditor->type().GetRecommendedRAM());
                 }
                 m_pRamEditor = new QSpinBox(m_pMemoryCnt);
                 {
@@ -257,6 +256,13 @@ void UIWizardNewVMPageExpert::initializePage()
 {
     /* Translate page: */
     retranslateUi();
+
+    /* Get recommended 'ram' field value: */
+    CGuestOSType type = field("type").value<CGuestOSType>();
+    ULONG recommendedRam = type.GetRecommendedRAM();
+    m_pRamSlider->setValue(recommendedRam);
+    m_pRamEditor->setValue(recommendedRam);
+
 }
 
 void UIWizardNewVMPageExpert::cleanupPage()
