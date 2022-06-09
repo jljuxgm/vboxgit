@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 71345 2018-03-15 09:45:28Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 71349 2018-03-15 11:23:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -539,7 +539,7 @@ Utf8Str GuestProcess::i_guestErrorToString(int rcGuest)
             strError += Utf8StrFmt(tr("Invalid user/password credentials"));
             break;
 
-        case VERR_MAX_PROCS_REACHED:
+        case VERR_GSTCTL_MAX_OBJECTS_REACHED:
             strError += Utf8StrFmt(tr("Maximum number of concurrent guest processes has been reached"));
             break;
 

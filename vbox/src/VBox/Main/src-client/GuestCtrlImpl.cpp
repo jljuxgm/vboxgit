@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 71345 2018-03-15 09:45:28Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 71349 2018-03-15 11:23:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -419,7 +419,7 @@ HRESULT Guest::createSession(const com::Utf8Str &aUser, const com::Utf8Str &aPas
         switch (rc)
         {
             case VERR_MAX_PROCS_REACHED:
-                hr = setError(VBOX_E_IPRT_ERROR, tr("Maximum number of concurrent guest sessions (%ld) reached"),
+                hr = setError(VBOX_E_MAXIMUM_REACHED, tr("Maximum number of concurrent guest sessions (%ld) reached"),
                               VBOX_GUESTCTRL_MAX_SESSIONS);
                 break;
 
