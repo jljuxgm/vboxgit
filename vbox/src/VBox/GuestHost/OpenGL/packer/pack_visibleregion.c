@@ -1,4 +1,4 @@
-/* $Id: pack_visibleregion.c 63118 2016-08-06 21:19:19Z vboxsync $ */
+/* $Id: pack_visibleregion.c 69392 2017-10-26 17:24:52Z vboxsync $ */
 /** @file
  * VBox Packing VisibleRegion information
  */
