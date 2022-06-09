@@ -1,9 +1,8 @@
-# $Id: deftoimp.sed 56310 2015-06-09 22:36:56Z vboxsync $
+# $Id: deftoimp.sed 69213 2017-10-24 13:56:47Z vboxsync $
 ## @file
 # SED script for generating a dummy .c from a windows .def file.
 #
 
-#
 #
 # Copyright (C) 2006-2015 Oracle Corporation
 #

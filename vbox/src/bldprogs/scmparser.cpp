@@ -1,4 +1,4 @@
-/* $Id: scmparser.cpp 69211 2017-10-24 13:53:05Z vboxsync $ */
+/* $Id: scmparser.cpp 69213 2017-10-24 13:56:47Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Code Parsers.
  */
@@ -36,6 +36,7 @@
 #include <iprt/string.h>
 
 #include "scm.h"
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
