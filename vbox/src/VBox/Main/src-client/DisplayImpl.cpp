@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 68958 2017-10-02 16:46:26Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 68971 2017-10-04 09:56:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2497,7 +2497,7 @@ int Display::i_videoCaptureConfigureAudioDriver(const Utf8Str& strDevice,
  *
  * @returns IPRT status code.
  * @param   pThis               Display instance to configure video capturing for.
- * @param   pCfg                Video capturing configuration to use.
+ * @param   pCfg                Where to store the configuration into.
  * @param   fAttachDetach       Whether to attach/detach associated drivers or not.
  */
 /* static */

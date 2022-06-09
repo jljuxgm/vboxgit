@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 68946 2017-10-02 11:04:27Z vboxsync $ */
+/* $Id: DisplayImpl.h 68971 2017-10-04 09:56:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -470,13 +470,17 @@ private:
     void processAdapterData(void *pvVRAM, uint32_t u32VRAMSize);
     void processDisplayData(void *pvVRAM, unsigned uScreenId);
 
-    /* Serializes access to mVideoAccelLegacy and mfVideoAccelVRDP, etc between VRDP and Display. */
-    RTCRITSECT mVideoAccelLock;
+    /** Serializes access to mVideoAccelLegacy and mfVideoAccelVRDP, etc between VRDP and Display. */
+    RTCRITSECT           mVideoAccelLock;
+
 #ifdef VBOX_WITH_VIDEOREC
     /* Serializes access to video capture source bitmaps. */
     RTCRITSECT           mVideoCaptureLock;
+    /** The current video recording configuration being used. */
     VIDEORECCFG          mVideoRecCfg;
+    /** The video recording context. */
     VIDEORECCONTEXT     *mpVideoRecCtx;
+    /** Array which defines which screens are being enabled for recording. */
     bool                 maVideoRecEnabled[SchemaDefs::MaxGuestMonitors];
 #endif
 
