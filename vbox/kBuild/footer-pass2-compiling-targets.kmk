@@ -1,4 +1,4 @@
-# $Id: footer-pass2-compiling-targets.kmk 3128 2017-12-25 13:33:14Z bird $
+# $Id: footer-pass2-compiling-targets.kmk 3160 2018-03-19 22:39:19Z bird $
 ## @file
 # kBuild - Footer - Target lists - Pass 2 - Compiling Targets.
 #
@@ -91,10 +91,17 @@ endif
 $($(target)_$(source)_CMDS_)
 
 ifndef NO_COMPILE_CMDS_DEPS
-	%$$(QUIET2)$$(APPEND) '$(dep)'
-	%$$(QUIET2)$$(APPEND) '$(dep)' 'define $(target)_$(subst :,_,$(source))_CMDS_PREV_'
+ ifdef KBUILD_HAVE_OPTIMIZED_APPEND
+	%$$(QUIET2)$$(APPEND) -in '$(dep)' \
+		'' \
+		'define $(target)_$(subst :,_,$(source))_CMDS_PREV_' \
+		'--insert-command=$(obj)' \
+		'endef'
+ else
+	%$$(QUIET2)$$(APPEND) -n '$(dep)' '' 'define $(target)_$(subst :,_,$(source))_CMDS_PREV_'
 	%$$(QUIET2)$$(APPEND) -c '$(dep)' '$(obj)'
 	%$$(QUIET2)$$(APPEND) '$(dep)' 'endef'
+ endif
 endif
 
 $(basename $(notdir $(obj))).o: $(obj)
