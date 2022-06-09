@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 67556 2017-06-22 09:31:21Z vboxsync $ */
+/* $Id: DevVGA.cpp 67587 2017-06-23 16:18:49Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -1239,7 +1239,8 @@ static uint32_t vga_mem_readb(PVGASTATE pThis, RTGCPHYS addr, int *prc)
 #ifndef IN_RC
         /* If all planes are accessible, then map the page to the frame buffer and make it writable. */
         if (   (pThis->sr[2] & 3) == 3
-            && !vga_is_dirty(pThis, addr))
+            && !vga_is_dirty(pThis, addr)
+            && pThis->GCPhysVRAM)
         {
             /** @todo only allow read access (doesn't work now) */
             STAM_COUNTER_INC(&pThis->StatMapPage);
@@ -1344,7 +1345,8 @@ static int vga_mem_writeb(PVGASTATE pThis, RTGCPHYS addr, uint32_t val)
 #ifndef IN_RC
             /* If all planes are accessible, then map the page to the frame buffer and make it writable. */
             if (   (pThis->sr[2] & 3) == 3
-                && !vga_is_dirty(pThis, addr))
+                && !vga_is_dirty(pThis, addr)
+                && pThis->GCPhysVRAM)
             {
                 STAM_COUNTER_INC(&pThis->StatMapPage);
                 IOMMMIOMapMMIO2Page(PDMDevHlpGetVM(pThis->CTX_SUFF(pDevIns)), GCPhys,
@@ -5815,7 +5817,7 @@ static DECLCALLBACK(void)  vgaR3Reset(PPDMDEVINS pDevIns)
 #endif /* CONFIG_BOCHS_VBE */
 
     /*
-     * Reset the LBF mapping.
+     * Reset the LFB mapping.
      */
     pThis->fLFBUpdated = false;
     if (    (   pThis->fGCEnabled
