@@ -1,4 +1,4 @@
-/* $Id: VDVfs.cpp 70305 2017-12-22 08:27:01Z vboxsync $ */
+/* $Id: VDVfs.cpp 70307 2017-12-22 08:37:01Z vboxsync $ */
 /** @file
  * Virtual Disk Container implementation. - VFS glue.
  */
@@ -74,7 +74,6 @@ static int vdReadHelper(PVDISK pDisk, uint64_t off, void *pvBuf, size_t cbRead)
     {
         uint8_t *pbBuf = (uint8_t *)pvBuf;
         uint8_t abBuf[512];
-        rc = VINF_SUCCESS; /* Make compilers happy. */
 
         /* Unaligned buffered read of head.  Aligns the offset. */
         if (offMisalign)
@@ -89,6 +88,8 @@ static int vdReadHelper(PVDISK pDisk, uint64_t off, void *pvBuf, size_t cbRead)
                 cbRead -= cbPart;
             }
         }
+        else
+            rc = VINF_SUCCESS;
 
         /* Aligned direct read. */
         if (   RT_SUCCESS(rc)
@@ -148,7 +149,6 @@ static int vdWriteHelper(PVDISK pDisk, uint64_t off, const void *pvBuf, size_t c
     {
         uint8_t *pbBuf = (uint8_t *)pvBuf;
         uint8_t abBuf[512];
-        rc = VINF_SUCCESS; /* Make compilers happy. */
 
         /* Unaligned buffered read+write of head.  Aligns the offset. */
         if (offMisalign)
@@ -167,6 +167,8 @@ static int vdWriteHelper(PVDISK pDisk, uint64_t off, const void *pvBuf, size_t c
                 }
             }
         }
+        else
+            rc = VINF_SUCCESS;
 
         /* Aligned direct write. */
         if (   RT_SUCCESS(rc)
