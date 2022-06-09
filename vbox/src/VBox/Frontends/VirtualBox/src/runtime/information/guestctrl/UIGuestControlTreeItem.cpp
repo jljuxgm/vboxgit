@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.cpp 71038 2018-02-16 15:48:59Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.cpp 71042 2018-02-16 16:39:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestSessionTreeItem class implementation.
  */
@@ -28,6 +28,7 @@
 # include "CGuest.h"
 # include "CEventSource.h"
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 /*********************************************************************************************************************************
 *   UIGuestControlTreeItem implementation.                                                                                       *
@@ -95,6 +96,7 @@ void UIGuestControlTreeItem::cleanupListener(CEventSource comEventSource)
     comEventSource.UnregisterListener(m_comEventListener);
 }
 
+
 /*********************************************************************************************************************************
 *   UIGuestSessionTreeItem implementation.                                                                                       *
 *********************************************************************************************************************************/
@@ -156,6 +158,7 @@ void UIGuestSessionTreeItem::sltGuestProcessRegistered(CGuestProcess guestProces
 void UIGuestSessionTreeItem::sltGuestProcessUnregistered(CGuestProcess guestProcess)
 {
 }
+
 
 /*********************************************************************************************************************************
 *   UIGuestProcessTreeItem implementation.                                                                                       *
