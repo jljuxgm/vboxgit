@@ -1,4 +1,4 @@
-/* $Id: UITabBar.h 68304 2017-08-04 16:15:21Z vboxsync $ */
+/* $Id: UITabBar.h 68480 2017-08-21 09:31:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class declaration.
  */
@@ -98,6 +98,9 @@ private:
 
     /** Prepares all. */
     void prepare();
+
+    /** Updates children styles. */
+    void updateChildrenStyles();
 
     /** @name Contents: Widgets
       * @{ */
