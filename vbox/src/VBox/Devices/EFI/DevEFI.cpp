@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 67585 2017-06-23 15:29:50Z vboxsync $ */
+/* $Id: DevEFI.cpp 67586 2017-06-23 16:15:15Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1790,7 +1790,7 @@ static DECLCALLBACK(void) efiMemSetup(PPDMDEVINS pDevIns, PDMDEVMEMSETUPCTX enmC
     PDEVEFI pThis = PDMINS_2_DATA(pDevIns, PDEVEFI);
 
     /*
-     * Plan some structures in RAM.
+     * Plant some structures in RAM.
      */
     FwCommonPlantSmbiosAndDmiHdrs(pDevIns, pThis->cbDmiTables, pThis->cNumDmiTables);
     if (pThis->u8IOAPIC)
