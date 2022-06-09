@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 71833 2018-04-12 07:20:33Z vboxsync $ */
+/* $Id: tstVMStruct.h 72490 2018-06-09 15:11:13Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -282,6 +282,17 @@
     GEN_CHECK_OFF(EMCPU, pStatsR0);
     GEN_CHECK_OFF(EMCPU, pStatsRC);
     GEN_CHECK_OFF(EMCPU, pCliStatTree);
+    GEN_CHECK_OFF(EMCPU, PendingIoPortAccess);
+    GEN_CHECK_OFF_DOT(EMCPU, PendingIoPortAccess.uPort);
+    GEN_CHECK_OFF_DOT(EMCPU, PendingIoPortAccess.cbValue);
+    GEN_CHECK_OFF_DOT(EMCPU, PendingIoPortAccess.uValue);
+    GEN_CHECK_OFF(EMCPU, MWait);
+    GEN_CHECK_OFF_DOT(EMCPU, MWait.fWait);
+    GEN_CHECK_OFF_DOT(EMCPU, MWait.uMWaitRAX);
+    GEN_CHECK_OFF_DOT(EMCPU, MWait.uMWaitRCX);
+    GEN_CHECK_OFF_DOT(EMCPU, MWait.uMonitorRAX);
+    GEN_CHECK_OFF_DOT(EMCPU, MWait.uMonitorRCX);
+    GEN_CHECK_OFF_DOT(EMCPU, MWait.uMonitorRDX);
 
     GEN_CHECK_SIZE(IEMCPU);
     GEN_CHECK_OFF(IEMCPU, pCtxR0);
