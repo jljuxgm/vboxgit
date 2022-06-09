@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 64436 2016-10-27 12:46:43Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 67802 2017-07-05 14:36:01Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1726,6 +1726,10 @@ static int vgdrvIoCtl_WaitEvent(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSes
 }
 
 
+/** @todo the semantics of this IoCtl have been tightened, so that no calls to
+ *  VBOXGUEST_IOCTL_WAITEVENT are allowed in a session after it has been
+ *  called.  Change the code to make calls to VBOXGUEST_IOCTL_WAITEVENT made
+ *  after that to return VERR_INTERRUPTED or something appropriate. */
 static int vgdrvIoCtl_CancelAllWaitEvents(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession)
 {
     PVBOXGUESTWAIT          pWait;
