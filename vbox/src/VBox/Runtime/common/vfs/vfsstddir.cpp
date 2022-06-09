@@ -1,4 +1,4 @@
-/* $Id: vfsstddir.cpp 69716 2017-11-16 14:31:25Z vboxsync $ */
+/* $Id: vfsstddir.cpp 69720 2017-11-16 16:18:19Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard Directory Implementation.
  */
@@ -442,6 +442,9 @@ static DECLCALLBACK(int) rtVfsStdDir_UnlinkEntry(void *pvThis, const char *pszEn
     PRTVFSSTDDIR pThis = (PRTVFSSTDDIR)pvThis;
     if (fType != 0)
     {
+        if (fType == RTFS_TYPE_DIRECTORY)
+            return RTDirRelDirRemove(pThis->hDir, pszEntry);
+
         RTFSOBJINFO ObjInfo;
         int rc = rtVfsStdDir_QueryEntryInfo(pThis, pszEntry, &ObjInfo, RTFSOBJATTRADD_NOTHING);
         if (RT_FAILURE(rc))
