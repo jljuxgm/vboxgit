@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 71464 2018-03-22 16:15:14Z vboxsync $"
+# "$Id: tdMoveVM1.py 71465 2018-03-22 16:19:00Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71464 $"
+__version__ = "$Revision: 71465 $"
 
 # Standard Python imports.
 import os
@@ -177,7 +177,7 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
 
         return self.oTstDrv.asRsrcs
 
-    def __testScenario_4(self, oMachine, sNewLoc, sOldLoc = 0):
+    def __testScenario_4(self, oMachine, sNewLoc):
 
         #Run VM and get new Session object
         oSession = self.oTstDrv.startVm(oMachine)
@@ -209,7 +209,7 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
 
         return fRc
 
-    def __testScenario_5(self, oMachine, sNewLoc, sOldLoc = 0):
+    def __testScenario_5(self, oMachine, sNewLoc, sOldLoc):
 
         fRc = True
         #create a new Session object
@@ -252,7 +252,7 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
 
         return fRc
 
-    def __testScenario_6(self, oMachine, sNewLoc, sOldLoc = 0):
+    def __testScenario_6(self, oMachine, sNewLoc, sOldLoc):
 
         fRc = True
         #create a new Session object
