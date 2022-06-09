@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 69571 2017-11-03 17:15:22Z vboxsync $
+# $Id: base.py 70508 2018-01-10 11:21:09Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69571 $"
+__version__ = "$Revision: 70508 $"
 
 
 # Standard Python imports.
@@ -1079,7 +1079,7 @@ class TestDriverBase(object): # pylint: disable=R0902
         try:
             self.aoTasks[0].waitForTask(cMsTimeout);
             return True;
-        except Exception, oXcpt:
+        except Exception as oXcpt:
             reporter.log("waitForTasksSleepWorker: %s" % (str(oXcpt),));
             return False;
 
@@ -1443,7 +1443,7 @@ class TestDriverBase(object): # pylint: disable=R0902
                 try:
                     oFile = utils.openNoInherit(sFull, "rb");
                     oFile.close();
-                except Exception, oXcpt:
+                except Exception as oXcpt:
                     reporter.error('The file resource "%s" cannot be accessed: %s' % (sFull, oXcpt));
                     return False;
             elif os.path.isdir(sFull):
@@ -1613,9 +1613,9 @@ class TestDriverBase(object): # pylint: disable=R0902
                     if iNext == iArg:
                         raise InvalidOption('unknown option: %s' % (asArgs[iArg]))
                 iArg = iNext;
-        except QuietInvalidOption, oXcpt:
+        except QuietInvalidOption as oXcpt:
             return rtexitcode.RTEXITCODE_SYNTAX;
-        except InvalidOption, oXcpt:
+        except InvalidOption as oXcpt:
             reporter.error(oXcpt.str());
             return rtexitcode.RTEXITCODE_SYNTAX;
         except:

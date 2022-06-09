@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 70490 2018-01-08 22:14:41Z vboxsync $
+# $Id: vboxwrappers.py 70508 2018-01-10 11:21:09Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70490 $"
+__version__ = "$Revision: 70508 $"
 
 
 # Standard Python imports.
@@ -609,7 +609,7 @@ class SessionWrapper(TdTaskBase):
         try:
             try:
                 eState = self.o.machine.state;
-            except Exception, oXcpt:
+            except Exception as oXcpt:
                 if vbox.ComError.notEqual(oXcpt, vbox.ComError.E_UNEXPECTED):
                     reporter.logXcpt();
                 return True;
@@ -744,7 +744,7 @@ class SessionWrapper(TdTaskBase):
         try:
             try:
                 eState = self.o.machine.state;
-            except Exception, oXcpt:
+            except Exception as oXcpt:
                 if vbox.ComError.notEqual(oXcpt, vbox.ComError.E_UNEXPECTED):
                     reporter.logXcpt();
                 return False;
@@ -1760,7 +1760,7 @@ class SessionWrapper(TdTaskBase):
                         oImage = self.oVBox.openMedium(sFullName, vboxcon.DeviceType_DVD, vboxcon.AccessMode_ReadOnly);
                     else:
                         oImage = self.oVBox.openDVDImage(sFullName, "");
-                except vbox.ComException, oXcpt:
+                except vbox.ComException as oXcpt:
                     if oXcpt.errno != -1:
                         reporter.errorXcpt('failed to open DVD image "%s" xxx' % (sFullName));
                     else:
@@ -2679,7 +2679,7 @@ class SessionWrapper(TdTaskBase):
                     uPid = self.o.machine.sessionPid;
                 if uPid != os.getpid() and uPid != 0xffffffff:
                     self.uPid = uPid;
-            except Exception, oXcpt:
+            except Exception as oXcpt:
                 if vbox.ComError.equal(oXcpt, vbox.ComError.E_UNEXPECTED):
                     try:
                         if self.fpApiVer >= 4.2:
@@ -2750,7 +2750,7 @@ class SessionWrapper(TdTaskBase):
         # We need a console object.
         try:
             oConsole = self.o.console;
-        except Exception, oXcpt:
+        except Exception as oXcpt:
             if fMustSucceed or vbox.ComError.notEqual(oXcpt, vbox.ComError.E_UNEXPECTED):
                 reporter.errorXcpt('Failed to get ISession::console for "%s"' % (self.sName, ));
             return None;
