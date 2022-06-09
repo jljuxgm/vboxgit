@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibHGCM.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuestR3LibHGCM.cpp 68460 2017-08-18 11:17:45Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * generic HGCM.
@@ -39,7 +39,6 @@
  * Connects to an HGCM service.
  *
  * @returns VBox status code
- * @returns VERR_NOT_SUPPORTED if pass-through is not available on the host.
  * @param   pszServiceName  Name of the host service.
  * @param   pidClient       Where to put the client ID on success. The client ID
  *                          must be passed to all the other calls to the service.
@@ -59,8 +58,6 @@ VBGLR3DECL(int) VbglR3HGCMConnect(const char *pszServiceName, HGCMCLIENTID *pidC
         rc = Info.result;
         if (RT_SUCCESS(rc))
             *pidClient = Info.u32ClientID;
-        if (rc == VERR_NOT_IMPLEMENTED || rc == VERR_HGCM_SERVICE_NOT_FOUND)
-            rc = VERR_NOT_SUPPORTED;
     }
     return rc;
 }
