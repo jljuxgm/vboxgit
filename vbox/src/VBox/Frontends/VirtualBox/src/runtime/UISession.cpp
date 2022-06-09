@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 70009 2017-12-08 11:02:07Z vboxsync $ */
+/* $Id: UISession.cpp 70911 2018-02-08 14:14:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1316,8 +1316,6 @@ void UISession::loadSessionSettings()
         /* What is the default close action and the restricted are? */
         m_defaultCloseAction = gEDataManager->defaultMachineCloseAction(strMachineID);
         m_restrictedCloseActions = gEDataManager->restrictedMachineCloseActions(strMachineID);
-        /* We decided to keep the Detach close-action hidden and provide the user with the separate Machine menu action instead: */
-        m_restrictedCloseActions = static_cast<MachineCloseAction>(m_restrictedCloseActions | MachineCloseAction_Detach);
         m_fAllCloseActionsRestricted =  (!vboxGlobal().isSeparateProcess() || (m_restrictedCloseActions & MachineCloseAction_Detach))
                                      && (m_restrictedCloseActions & MachineCloseAction_SaveState)
                                      && (m_restrictedCloseActions & MachineCloseAction_Shutdown)
