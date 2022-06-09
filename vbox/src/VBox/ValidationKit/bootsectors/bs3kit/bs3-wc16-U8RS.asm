@@ -1,4 +1,4 @@
-; $Id: bs3-wc16-U8RS.asm 62484 2016-07-22 18:35:33Z vboxsync $
+; $Id: bs3-wc16-U8RS.asm 68605 2017-09-01 15:33:25Z vboxsync $
 ;; @file
 ; BS3Kit - 16-bit Watcom C/C++, 64-bit unsigned integer right shift.
 ;
@@ -34,6 +34,10 @@
 ; @param    AX:BX:CX:DX Value to shift.
 ; @param    SI          Shift count.
 ;
+ifdef BS3KIT_WITH_REAL_WATCOM_INTRINSIC_NAMES
+global __U8RS
+__U8RS:
+endif
 global $_?U8RS
 $_?U8RS:
         push    si
