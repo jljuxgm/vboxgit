@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 72294 2018-05-23 11:17:08Z vboxsync $
+# $Id: vboxconfig.sh 72295 2018-05-23 11:18:37Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -253,12 +253,12 @@ get_sysinfo()
 {
     STR_OSVER=`uname -v`
     case "$STR_OSVER" in
-    # First check 'uname -v' and weed out the recognized, unofficial distros of Solaris
+        # First check 'uname -v' and weed out the recognized, unofficial distros of Solaris
         omnios*|oi_*|illumos*)
             get_unofficial_sysinfo
             return 0
             ;;
-    # Quick escape workaround for Solaris 11.4+, changes the pkg FMRI (yet again). See BugDB #26494983.
+        # Quick escape workaround for Solaris 11.4+, changes the pkg FMRI (yet again). See BugDB #26494983.
         11.4.* | 11.5.*)
         get_s11_4_or_newer_sysinfo
         return 0
