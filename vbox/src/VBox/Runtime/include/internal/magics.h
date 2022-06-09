@@ -1,4 +1,4 @@
-/* $Id: magics.h 69753 2017-11-19 14:27:58Z vboxsync $ */
+/* $Id: magics.h 69893 2017-11-30 22:36:05Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -170,6 +170,10 @@
 #define RTSEMXROADS_MAGIC               UINT32_C(0x19350917)
 /** RTSEMXROADSINTERNAL::u32Magic value after RTSemXRoadsDestroy. */
 #define RTSEMXROADS_MAGIC_DEAD          UINT32_C(0x20011110)
+/** RTSERIALPORTINTERNAL::u32Magic value (Jules-Gabriel Verne). */
+#define RTSERIALPORT_MAGIC              UINT32_C(0x18280208)
+/** RTSERIALPORTINTERNAL::u32Magic value after RTSerialPortClose. */
+#define RTSERIALPORT_MAGIC_DEAD         UINT32_C(0x19050324)
 /** The magic value for RTSOCKETINT::u32Magic. (Stanislaw Lem) */
 #define RTSOCKET_MAGIC                  UINT32_C(0x19210912)
 /** The magic value for RTSOCKETINT::u32Magic after destruction. */
