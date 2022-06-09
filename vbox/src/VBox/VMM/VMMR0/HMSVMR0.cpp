@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 71529 2018-03-28 06:32:43Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 71559 2018-03-29 04:36:04Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5371,16 +5371,16 @@ static int hmR0SvmHandleExitNested(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
                 }
 
                 /* The exceptions not handled here are already handled individually above (as they occur more frequently). */
-                case SVM_EXIT_EXCEPTION_0:     /*case SVM_EXIT_EXCEPTION_1:*/   case SVM_EXIT_EXCEPTION_2:
-                /*case SVM_EXIT_EXCEPTION_3:*/   case SVM_EXIT_EXCEPTION_4:     case SVM_EXIT_EXCEPTION_5:
-                /*case SVM_EXIT_EXCEPTION_6:*/   case SVM_EXIT_EXCEPTION_7:     case SVM_EXIT_EXCEPTION_8:
-                case SVM_EXIT_EXCEPTION_9:       case SVM_EXIT_EXCEPTION_10:    case SVM_EXIT_EXCEPTION_11:
-                case SVM_EXIT_EXCEPTION_12:      case SVM_EXIT_EXCEPTION_13:  /*case SVM_EXIT_EXCEPTION_14:*/
-                case SVM_EXIT_EXCEPTION_15:      case SVM_EXIT_EXCEPTION_16:  /*case SVM_EXIT_EXCEPTION_17:*/
-                case SVM_EXIT_EXCEPTION_18:      case SVM_EXIT_EXCEPTION_19:    case SVM_EXIT_EXCEPTION_20:
-                case SVM_EXIT_EXCEPTION_21:      case SVM_EXIT_EXCEPTION_22:    case SVM_EXIT_EXCEPTION_23:
-                case SVM_EXIT_EXCEPTION_24:      case SVM_EXIT_EXCEPTION_25:    case SVM_EXIT_EXCEPTION_26:
-                case SVM_EXIT_EXCEPTION_27:      case SVM_EXIT_EXCEPTION_28:    case SVM_EXIT_EXCEPTION_29:
+                case SVM_EXIT_EXCEPTION_0:     /*case SVM_EXIT_EXCEPTION_1:*/     case SVM_EXIT_EXCEPTION_2:
+                /*case SVM_EXIT_EXCEPTION_3:*/   case SVM_EXIT_EXCEPTION_4:       case SVM_EXIT_EXCEPTION_5:
+                /*case SVM_EXIT_EXCEPTION_6:*/   case SVM_EXIT_EXCEPTION_7:       case SVM_EXIT_EXCEPTION_8:
+                case SVM_EXIT_EXCEPTION_9:       case SVM_EXIT_EXCEPTION_10:      case SVM_EXIT_EXCEPTION_11:
+                case SVM_EXIT_EXCEPTION_12:      case SVM_EXIT_EXCEPTION_13:    /*case SVM_EXIT_EXCEPTION_14:*/
+                case SVM_EXIT_EXCEPTION_15:    /*case SVM_EXIT_EXCEPTION_16:*/  /*case SVM_EXIT_EXCEPTION_17:*/
+                case SVM_EXIT_EXCEPTION_18:      case SVM_EXIT_EXCEPTION_19:      case SVM_EXIT_EXCEPTION_20:
+                case SVM_EXIT_EXCEPTION_21:      case SVM_EXIT_EXCEPTION_22:      case SVM_EXIT_EXCEPTION_23:
+                case SVM_EXIT_EXCEPTION_24:      case SVM_EXIT_EXCEPTION_25:      case SVM_EXIT_EXCEPTION_26:
+                case SVM_EXIT_EXCEPTION_27:      case SVM_EXIT_EXCEPTION_28:      case SVM_EXIT_EXCEPTION_29:
                 case SVM_EXIT_EXCEPTION_30:      case SVM_EXIT_EXCEPTION_31:
                 {
                     uint8_t const uVector = uExitCode - SVM_EXIT_EXCEPTION_0;
