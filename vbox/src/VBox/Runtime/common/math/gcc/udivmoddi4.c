@@ -1,4 +1,4 @@
-/* $Id: udivmoddi4.c 67290 2017-06-08 10:55:41Z vboxsync $ */
+/* $Id: udivmoddi4.c 67291 2017-06-08 11:00:58Z vboxsync $ */
 /** @file
  * IPRT - __udivmoddi4 implementation
  */
@@ -26,6 +26,8 @@
 
 #include <iprt/stdint.h>
 #include <iprt/uint64.h>
+
+uint64_t __udivmoddi4(uint64_t u64A, uint64_t u64B, uint64_t *pu64R);
 
 /**
  * __udivmoddi4() implementation to satisfy external references from 32-bit
