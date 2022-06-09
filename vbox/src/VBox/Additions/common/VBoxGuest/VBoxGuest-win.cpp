@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 70194 2017-12-18 13:39:39Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 70208 2017-12-18 20:40:57Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -2087,38 +2087,6 @@ bool VGDrvNativeProcessOption(PVBOXGUESTDEVEXT pDevExt, const char *pszName, con
 {
     RT_NOREF(pDevExt); RT_NOREF(pszName); RT_NOREF(pszValue);
     return false;
-}
-
-
-
-/**
- * Queries (gets) a DWORD value from the registry.
- *
- * @return  NTSTATUS
- * @param   uRoot       Relative path root. See RTL_REGISTRY_SERVICES or RTL_REGISTRY_ABSOLUTE.
- * @param   pwszPath    Path inside path root.
- * @param   pwszName    Actual value name to look up.
- * @param   puValue     On input this can specify the default value (if RTL_REGISTRY_OPTIONAL is
- *                      not specified in ulRoot), on output this will retrieve the looked up
- *                      registry value if found.
- */
-static NTSTATUS vgdrvNtRegistryReadDWORD(ULONG uRoot, PCWSTR pwszPath, PWSTR pwszName, PULONG puValue)
-{
-    if (!pwszPath || !pwszName || !puValue)
-        return STATUS_INVALID_PARAMETER;
-
-    ULONG                       uDefault = *puValue;
-    RTL_QUERY_REGISTRY_TABLE    aQuery[2];
-    RT_ZERO(aQuery);
-    /** @todo Add RTL_QUERY_REGISTRY_TYPECHECK! */
-    aQuery[0].Flags         = RTL_QUERY_REGISTRY_DIRECT;
-    aQuery[0].Name          = pwszName;
-    aQuery[0].EntryContext  = puValue;
-    aQuery[0].DefaultType   = REG_DWORD;
-    aQuery[0].DefaultData   = &uDefault;
-    aQuery[0].DefaultLength = sizeof(uDefault);
-
-    return RtlQueryRegistryValues(uRoot, pwszPath, &aQuery[0], NULL /* Context */, NULL /* Environment */);
 }
 
 
