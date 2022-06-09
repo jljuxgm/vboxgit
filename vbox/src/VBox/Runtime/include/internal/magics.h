@@ -1,10 +1,10 @@
-/* $Id: magics.h 67259 2017-06-05 16:02:04Z vboxsync $ */
+/* $Id: magics.h 68317 2017-08-07 14:24:08Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
 
 /*
- * Copyright (C) 2007-2016 Oracle Corporation
+ * Copyright (C) 2007-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -80,6 +80,10 @@
 #define RTHTTP_MAGIC                    UINT32_C(0x18420225)
 /** The value of RTHTTPINTERNAL::u32Magic after close. */
 #define RTHTTP_MAGIC_DEAD               UINT32_C(0x19120330)
+/** The value of RTINIFILEINT::u32Magic. (Jane Austen) */
+#define RTINIFILE_MAGIC                 UINT32_C(0x17751216)
+/** The value of RTINIFILEINT::u32Magic after close. */
+#define RTINIFILE_MAGIC_DEAD            UINT32_C(0x18170718)
 /** The magic value for RTLDRMODINTERNAL::u32Magic. (Alan Moore) */
 #define RTLDRMOD_MAGIC                  UINT32_C(0x19531118)
 /** The magic value for RTLOCALIPCSERVER::u32Magic. (Naoki Yamamoto) */
