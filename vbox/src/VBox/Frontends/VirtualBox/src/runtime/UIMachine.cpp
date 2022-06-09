@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 71374 2018-03-19 15:19:12Z vboxsync $ */
+/* $Id: UIMachine.cpp 72363 2018-05-28 16:49:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -139,6 +139,12 @@ QWidget* UIMachine::activeWindow() const
 void UIMachine::asyncChangeVisualState(UIVisualStateType visualState)
 {
     emit sigRequestAsyncVisualStateChange(visualState);
+}
+
+void UIMachine::closeRuntimeUI()
+{
+    /* Quit application: */
+    QApplication::quit();
 }
 
 void UIMachine::sltChangeVisualState(UIVisualStateType visualState)
@@ -303,9 +309,6 @@ void UIMachine::cleanup()
 
     /* Cleanup session UI: */
     cleanupSession();
-
-    /* Quit application: */
-    QApplication::quit();
 }
 
 void UIMachine::enterInitialVisualState()

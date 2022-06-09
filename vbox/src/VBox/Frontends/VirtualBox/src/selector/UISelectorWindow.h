@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 71644 2018-04-04 06:55:08Z vboxsync $ */
+/* $Id: UISelectorWindow.h 72363 2018-05-28 16:49:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -223,18 +223,20 @@ private:
     /** @name Event handling stuff.
       * @{ */
         /** Handles translation event. */
-        virtual void retranslateUi();
+        virtual void retranslateUi() /* override */;
 
-        /** Handles any Qt @a pEvent. */
-        virtual bool event(QEvent *pEvent);
-        /** Handles Qt show @a pEvent. */
-        virtual void showEvent(QShowEvent *pEvent);
-        /** Handles first Qt show @a pEvent. */
-        virtual void polishEvent(QShowEvent *pEvent);
+        /** Handles any @a pEvent. */
+        virtual bool event(QEvent *pEvent) /* override */;
+        /** Handles show @a pEvent. */
+        virtual void showEvent(QShowEvent *pEvent) /* override */;
+        /** Handles first show @a pEvent. */
+        virtual void polishEvent(QShowEvent *pEvent) /* override */;
 #ifdef VBOX_WS_MAC
-        /** Mac OS X: Preprocesses any Qt @a pEvent for passed @a pObject. */
-        virtual bool eventFilter(QObject *pObject, QEvent *pEvent);
-#endif /* VBOX_WS_MAC */
+        /** Mac OS X: Preprocesses any @a pEvent for passed @a pObject. */
+        virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
+#endif
+        /** Handles close @a pEvent. */
+        virtual void closeEvent(QCloseEvent *pEvent) /* override */;
     /** @} */
 
     /** @name Prepare/Cleanup cascade.
