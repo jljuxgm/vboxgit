@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 71108 2018-02-22 15:38:35Z vboxsync $ */
+/* $Id: MachineImpl.h 72332 2018-05-24 20:51:23Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -281,6 +281,7 @@ public:
         BOOL                mHWVirtExVPIDEnabled;
         BOOL                mHWVirtExUXEnabled;
         BOOL                mHWVirtExForceEnabled;
+        BOOL                mHWVirtExUseNativeApi;
         BOOL                mAccelerate2DVideoEnabled;
         BOOL                mPAEEnabled;
         settings::Hardware::LongModeType mLongMode;
