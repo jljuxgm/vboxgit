@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiDisp.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUhgsmiDisp.cpp 72621 2018-06-20 11:27:14Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -162,6 +162,9 @@ DECLCALLBACK(int) vboxUhgsmiD3DBufferSubmit(PVBOXUHGSMI pHgsmi, PVBOXUHGSMI_BUFF
 {
     PVBOXUHGSMI_PRIVATE_D3D pHg = VBOXUHGSMID3D_GET(pHgsmi);
     PVBOXWDDMDISP_DEVICE pDevice = pHg->pDevice;
+
+    AssertReturn(pDevice->DefaultContext.ContextInfo.hContext, VERR_GENERAL_FAILURE);
+
     UINT cbDmaCmd = pDevice->DefaultContext.ContextInfo.CommandBufferSize;
     int rc = vboxUhgsmiBaseDxDmaFill(aBuffers, cBuffers,
             pDevice->DefaultContext.ContextInfo.pCommandBuffer, &cbDmaCmd,
@@ -206,6 +209,9 @@ static DECLCALLBACK(int) vboxCrHhgsmiDispEscape(struct VBOXUHGSMI_PRIVATE_BASE *
 {
     PVBOXUHGSMI_PRIVATE_D3D pPrivate = VBOXUHGSMID3D_GET(pHgsmi);
     PVBOXWDDMDISP_DEVICE pDevice = pPrivate->pDevice;
+
+    AssertReturn(pDevice->DefaultContext.ContextInfo.hContext, VERR_GENERAL_FAILURE);
+
     D3DDDICB_ESCAPE DdiEscape = {0};
     DdiEscape.hContext = pDevice->DefaultContext.ContextInfo.hContext;
     DdiEscape.hDevice = pDevice->hDevice;

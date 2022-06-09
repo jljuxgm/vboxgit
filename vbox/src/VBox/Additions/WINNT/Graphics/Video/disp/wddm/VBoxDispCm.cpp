@@ -1,4 +1,4 @@
-/* $Id: VBoxDispCm.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDispCm.cpp 72621 2018-06-20 11:27:14Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -208,6 +208,9 @@ HRESULT vboxDispCmSessionCtxDestroy(PVBOXDISPCM_SESSION pSession, PVBOXWDDMDISP_
 
 HRESULT vboxDispCmCtxDestroy(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMDISP_CONTEXT pContext)
 {
+    if (!pContext->ContextInfo.hContext)
+        return S_OK;
+
     return vboxDispCmSessionCtxDestroy(&g_pVBoxCmMgr.Session, pDevice, pContext);
 }
 

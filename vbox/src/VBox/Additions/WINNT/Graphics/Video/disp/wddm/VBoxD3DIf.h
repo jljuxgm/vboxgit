@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DIf.h 70052 2017-12-10 22:10:01Z vboxsync $ */
+/* $Id: VBoxD3DIf.h 72621 2018-06-20 11:27:14Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -39,7 +39,6 @@ HRESULT VBoxD3DIfLockRect(struct VBOXWDDMDISP_RESOURCE *pRc, UINT iAlloc,
 HRESULT VBoxD3DIfUnlockRect(struct VBOXWDDMDISP_RESOURCE *pRc, UINT iAlloc);
 void VBoxD3DIfLockUnlockMemSynch(struct VBOXWDDMDISP_ALLOCATION *pAlloc, D3DLOCKED_RECT *pLockInfo, RECT *pRect, bool bToLockInfo);
 
-int vboxD3DIfSetHostId(PVBOXWDDMDISP_ALLOCATION pAlloc, uint32_t hostID, uint32_t *pHostID);
 IUnknown* vboxD3DIfCreateSharedPrimary(PVBOXWDDMDISP_ALLOCATION pAlloc);
 
 

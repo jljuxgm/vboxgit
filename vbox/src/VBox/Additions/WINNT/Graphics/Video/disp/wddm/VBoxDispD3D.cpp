@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 72010 2018-04-25 10:45:46Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 72621 2018-06-20 11:27:14Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -290,6 +290,9 @@ typedef struct VBOXWDDM_DBG_ALLOC
 
 static HRESULT vboxWddmDalNotifyChange(PVBOXWDDMDISP_DEVICE pDevice)
 {
+    if (!pDevice->DefaultContext.ContextInfo.hContext)
+        return E_FAIL;
+
     VBOXWDDMDISP_NSCADD NscAdd = { NULL }; /* Shuts up MSC. */
     BOOL bReinitRenderData = TRUE;
 #ifdef DEBUG_misha
@@ -470,7 +473,7 @@ BOOLEAN vboxWddmDalCheckNotifyRemove(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMDISP
         }
         else
         {
-            WARN(("vboxWddmDalNotifyChange failed %#x", hr));
+            // WARN(("vboxWddmDalNotifyChange failed %#x", hr));
             if (pAlloc->DirtyAllocListEntry.pNext)
                 vboxWddmDalRemove(pAlloc);
         }
@@ -748,6 +751,8 @@ static HRESULT vboxWddmSwapchainKmSynch(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMD
     Assert(cAllocsKm == Buf.SwapchainInfo.SwapchainInfo.cAllocs || !cAllocsKm);
     if (cAllocsKm == Buf.SwapchainInfo.SwapchainInfo.cAllocs)
     {
+        AssertReturn(pDevice->DefaultContext.ContextInfo.hContext, E_FAIL);
+
         D3DDDICB_ESCAPE DdiEscape = {0};
         DdiEscape.hContext = pDevice->DefaultContext.ContextInfo.hContext;
         DdiEscape.hDevice = pDevice->hDevice;
