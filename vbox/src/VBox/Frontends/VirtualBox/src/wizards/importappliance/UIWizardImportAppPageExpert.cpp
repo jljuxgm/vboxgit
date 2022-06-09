@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -72,7 +72,7 @@ UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(const QString &strFileN
     }
 
     /* Setup connections: */
-    connect(m_pFileSelector, SIGNAL(pathChanged(const QString&)), this, SLOT(sltFilePathChangeHandler()));
+    connect(m_pFileSelector, &UIEmptyFilePathSelector::pathChanged, this, &UIWizardImportAppPageExpert::sltFilePathChangeHandler);
 
     /* Register classes: */
     qRegisterMetaType<ImportAppliancePointer>();

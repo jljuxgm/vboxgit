@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 68418 2017-08-15 14:11:37Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -311,11 +311,11 @@ UIWizardExportAppPageBasic3::UIWizardExportAppPageBasic3()
     }
 
     /* Setup connections: */
-    connect(m_pUsernameEditor, SIGNAL(textChanged(const QString &)), this, SIGNAL(completeChanged()));
-    connect(m_pPasswordEditor, SIGNAL(textChanged(const QString &)), this, SIGNAL(completeChanged()));
-    connect(m_pHostnameEditor, SIGNAL(textChanged(const QString &)), this, SIGNAL(completeChanged()));
-    connect(m_pBucketEditor, SIGNAL(textChanged(const QString &)), this, SIGNAL(completeChanged()));
-    connect(m_pFileSelector, SIGNAL(pathChanged(const QString &)), this, SIGNAL(completeChanged()));
+    connect(m_pUsernameEditor, &QLineEdit::textChanged,             this, &UIWizardExportAppPageBasic3::completeChanged);
+    connect(m_pPasswordEditor, &QLineEdit::textChanged,             this, &UIWizardExportAppPageBasic3::completeChanged);
+    connect(m_pHostnameEditor, &QLineEdit::textChanged,             this, &UIWizardExportAppPageBasic3::completeChanged);
+    connect(m_pBucketEditor, &QLineEdit::textChanged,               this, &UIWizardExportAppPageBasic3::completeChanged);
+    connect(m_pFileSelector, &UIEmptyFilePathSelector::pathChanged, this, &UIWizardExportAppPageBasic3::completeChanged);
 
     /* Register fields: */
     registerField("format", this, "format");

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -95,9 +95,9 @@ UIWizardExportAppPageBasic2::UIWizardExportAppPageBasic2()
     }
 
     /* Setup connections: */
-    connect(m_pTypeLocalFilesystem, SIGNAL(clicked()), this, SIGNAL(completeChanged()));
-    connect(m_pTypeSunCloud, SIGNAL(clicked()), this, SIGNAL(completeChanged()));
-    connect(m_pTypeSimpleStorageSystem, SIGNAL(clicked()), this, SIGNAL(completeChanged()));
+    connect(m_pTypeLocalFilesystem, &QRadioButton::clicked,     this, &UIWizardExportAppPageBasic2::completeChanged);
+    connect(m_pTypeSunCloud, &QRadioButton::clicked,            this, &UIWizardExportAppPageBasic2::completeChanged);
+    connect(m_pTypeSimpleStorageSystem, &QRadioButton::clicked, this, &UIWizardExportAppPageBasic2::completeChanged);
 
     /* Register classes: */
     qRegisterMetaType<StorageType>();

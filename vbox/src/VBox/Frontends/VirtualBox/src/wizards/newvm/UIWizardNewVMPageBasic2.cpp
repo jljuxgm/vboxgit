@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -101,8 +101,10 @@ UIWizardNewVMPageBasic2::UIWizardNewVMPageBasic2()
     }
 
     /* Setup connections: */
-    connect(m_pRamSlider, SIGNAL(valueChanged(int)), this, SLOT(sltRamSliderValueChanged()));
-    connect(m_pRamEditor, SIGNAL(valueChanged(int)), this, SLOT(sltRamEditorValueChanged()));
+    connect(m_pRamSlider, &VBoxGuestRAMSlider::valueChanged,
+            this, &UIWizardNewVMPageBasic2::sltRamSliderValueChanged);
+    connect(m_pRamEditor, static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this, &UIWizardNewVMPageBasic2::sltRamEditorValueChanged);
 
     /* Register fields: */
     registerField("ram", m_pRamSlider, "value", SIGNAL(valueChanged(int)));

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class implementation.
  */
@@ -202,8 +202,8 @@ UIWizardNewVDPageBasic3::UIWizardNewVDPageBasic3(const QString &strDefaultName, 
     }
 
     /* Setup connections: */
-    connect(m_pLocationEditor, SIGNAL(textChanged(const QString &)), this, SIGNAL(completeChanged()));
-    connect(m_pLocationOpenButton, SIGNAL(clicked()), this, SLOT(sltSelectLocationButtonClicked()));
+    connect(m_pLocationEditor, &QLineEdit::textChanged,    this, &UIWizardNewVDPageBasic3::completeChanged);
+    connect(m_pLocationOpenButton, &QIToolButton::clicked, this, &UIWizardNewVDPageBasic3::sltSelectLocationButtonClicked);
     connect(m_pEditorSize, &UIMediumSizeEditor::sigSizeChanged, this, &UIWizardNewVDPageBasic3::completeChanged);
 
     /* Register fields: */

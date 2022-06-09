@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic1 class implementation.
  */
@@ -71,7 +71,7 @@ UIWizardCloneVMPageBasic1::UIWizardCloneVMPageBasic1(const QString &strOriginalN
     }
 
     /* Setup connections: */
-    connect(m_pNameEditor, SIGNAL(textChanged(const QString &)), this, SIGNAL(completeChanged()));
+    connect(m_pNameEditor, &QLineEdit::textChanged, this, &UIWizardCloneVMPageBasic1::completeChanged);
 
     /* Register fields: */
     registerField("cloneName", this, "cloneName");

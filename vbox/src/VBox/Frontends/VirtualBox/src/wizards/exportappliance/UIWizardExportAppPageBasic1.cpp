@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic1.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic1 class implementation.
  */
@@ -130,7 +130,7 @@ UIWizardExportAppPageBasic1::UIWizardExportAppPageBasic1(const QStringList &sele
     }
 
     /* Setup connections: */
-    connect(m_pVMSelector, SIGNAL(itemSelectionChanged()), this, SIGNAL(completeChanged()));
+    connect(m_pVMSelector, &QListWidget::itemSelectionChanged, this, &UIWizardExportAppPageBasic1::completeChanged);
 
     /* Register fields: */
     registerField("machineNames", this, "machineNames");

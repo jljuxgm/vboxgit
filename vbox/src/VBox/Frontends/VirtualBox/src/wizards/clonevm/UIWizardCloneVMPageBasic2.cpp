@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class implementation.
  */
@@ -70,7 +70,8 @@ UIWizardCloneVMPageBasic2::UIWizardCloneVMPageBasic2(bool fAdditionalInfo)
     }
 
     /* Setup connections: */
-    connect(m_pButtonGroup, SIGNAL(buttonClicked(QAbstractButton *)), this, SLOT(sltButtonClicked(QAbstractButton *)));
+    connect(m_pButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked),
+            this, &UIWizardCloneVMPageBasic2::sltButtonClicked);
 
     /* Register fields: */
     registerField("linkedClone", this, "linkedClone");

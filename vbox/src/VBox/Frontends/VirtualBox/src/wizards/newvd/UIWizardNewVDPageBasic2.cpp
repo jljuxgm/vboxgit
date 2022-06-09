@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic2.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic2.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic2 class implementation.
  */
@@ -113,8 +113,10 @@ UIWizardNewVDPageBasic2::UIWizardNewVDPageBasic2()
     }
 
     /* Setup connections: */
-    connect(m_pVariantButtonGroup, SIGNAL(buttonClicked(QAbstractButton *)), this, SIGNAL(completeChanged()));
-    connect(m_pSplitBox, SIGNAL(stateChanged(int)), this, SIGNAL(completeChanged()));
+    connect(m_pVariantButtonGroup,static_cast<void(QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked),
+            this, &UIWizardNewVDPageBasic2::completeChanged);
+    connect(m_pSplitBox, &QCheckBox::stateChanged,
+            this, &UIWizardNewVDPageBasic2::completeChanged);
 
     /* Register fields: */
     registerField("mediumVariant", this, "mediumVariant");

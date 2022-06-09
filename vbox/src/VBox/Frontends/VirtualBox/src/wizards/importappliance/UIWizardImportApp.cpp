@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -73,10 +73,10 @@ public:
         retranslateUi();
 
         /* Setup connections: */
-        connect(m_pButtonBox, SIGNAL(rejected()), this, SLOT(reject()));
-        connect(m_pButtonBox, SIGNAL(accepted()), this, SLOT(accept()));
-        connect(m_pPrintButton, SIGNAL(clicked()), this, SLOT(sltPrint()));
-        connect(m_pSaveButton, SIGNAL(clicked()), this, SLOT(sltSave()));
+        connect(m_pButtonBox, &QDialogButtonBox::rejected, this, &UIImportLicenseViewer::reject);
+        connect(m_pButtonBox, &QDialogButtonBox::accepted, this, &UIImportLicenseViewer::accept);
+        connect(m_pPrintButton, &QPushButton::clicked,     this, &UIImportLicenseViewer::sltPrint);
+        connect(m_pSaveButton,  &QPushButton::clicked,     this, &UIImportLicenseViewer::sltSave);
     }
 
     /* Content setter: */

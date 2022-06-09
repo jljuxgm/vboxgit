@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic3.cpp 69200 2017-10-24 11:28:50Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic3.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic3 class implementation.
  */
@@ -120,8 +120,10 @@ UIWizardCloneVDPageBasic3::UIWizardCloneVDPageBasic3(KDeviceType enmDeviceType)
     }
 
     /* Setup connections: */
-    connect(m_pVariantButtonGroup, SIGNAL(buttonClicked(QAbstractButton *)), this, SIGNAL(completeChanged()));
-    connect(m_pSplitBox, SIGNAL(stateChanged(int)), this, SIGNAL(completeChanged()));
+    connect(m_pVariantButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked),
+            this, &UIWizardCloneVDPageBasic3::completeChanged);
+    connect(m_pSplitBox, &QCheckBox::stateChanged,
+            this, &UIWizardCloneVDPageBasic3::completeChanged);
 
     /* Register fields: */
     registerField("mediumVariant", this, "mediumVariant");

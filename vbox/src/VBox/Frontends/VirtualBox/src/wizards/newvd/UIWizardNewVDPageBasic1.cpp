@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic1.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic1.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic1 class implementation.
  */
@@ -140,7 +140,8 @@ UIWizardNewVDPageBasic1::UIWizardNewVDPageBasic1()
     }
 
     /* Setup connections: */
-    connect(m_pFormatButtonGroup, SIGNAL(buttonClicked(QAbstractButton *)), this, SIGNAL(completeChanged()));
+    connect(m_pFormatButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked),
+            this, &UIWizardNewVDPageBasic1::completeChanged);
 
     /* Register classes: */
     qRegisterMetaType<CMediumFormat>();

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic4.cpp 69239 2017-10-24 16:11:57Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic4.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic4 class implementation.
  */
@@ -190,8 +190,8 @@ UIWizardCloneVDPageBasic4::UIWizardCloneVDPageBasic4()
     }
 
     /* Setup page connections: */
-    connect(m_pDestinationDiskEditor, SIGNAL(textChanged(const QString &)), this, SIGNAL(completeChanged()));
-    connect(m_pDestinationDiskOpenButton, SIGNAL(clicked()), this, SLOT(sltSelectLocationButtonClicked()));
+    connect(m_pDestinationDiskEditor, &QLineEdit::textChanged,    this, &UIWizardCloneVDPageBasic4::completeChanged);
+    connect(m_pDestinationDiskOpenButton, &QIToolButton::clicked, this, &UIWizardCloneVDPageBasic4::sltSelectLocationButtonClicked);
 
     /* Register fields: */
     registerField("mediumPath", this, "mediumPath");

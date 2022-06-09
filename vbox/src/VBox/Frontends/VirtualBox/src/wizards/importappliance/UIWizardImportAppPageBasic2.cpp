@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -246,8 +246,8 @@ void UIApplianceUnverifiedCertificateViewer::prepare()
             pButtonBox->setStandardButtons(QDialogButtonBox::Yes | QDialogButtonBox::No);
             pButtonBox->button(QDialogButtonBox::Yes)->setShortcut(Qt::Key_Enter);
             //pButtonBox->button(QDialogButtonBox::No)->setShortcut(Qt::Key_Esc);
-            connect(pButtonBox, SIGNAL(accepted()), this, SLOT(accept()));
-            connect(pButtonBox, SIGNAL(rejected()), this, SLOT(reject()));
+            connect(pButtonBox, &QIDialogButtonBox::accepted, this, &UIApplianceUnverifiedCertificateViewer::accept);
+            connect(pButtonBox, &QIDialogButtonBox::rejected, this, &UIApplianceUnverifiedCertificateViewer::reject);
             /* Add button-box into layout: */
             pLayout->addWidget(pButtonBox);
         }

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.cpp 70805 2018-01-30 08:30:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class implementation.
  */
@@ -100,8 +100,10 @@ UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalN
     }
 
     /* Setup connections: */
-    connect(m_pNameEditor, SIGNAL(textChanged(const QString &)), this, SIGNAL(completeChanged()));
-    connect(m_pButtonGroup, SIGNAL(buttonClicked(QAbstractButton *)), this, SLOT(sltButtonClicked(QAbstractButton *)));
+    connect(m_pNameEditor, &QLineEdit::textChanged,
+            this, &UIWizardCloneVMPageExpert::completeChanged);
+    connect(m_pButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked),
+            this, &UIWizardCloneVMPageExpert::sltButtonClicked);
 
     /* Register classes: */
     qRegisterMetaType<KCloneMode>();
