@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: winbase.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: winbase.py 69541 2017-11-01 13:20:00Z vboxsync $
 
 """
 This module is here to externalize some Windows specifics that gives pychecker
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 69541 $"
 
 
 # Standard Python imports.
@@ -270,4 +270,42 @@ def logMemoryStats():
     for sField, _ in MemoryStatusEx.kaFields:
         reporter.log('  %32s: %s' % (sField, getattr(oStats, sField)));
     return True;
+
+def checkProcessHeap():
+    """
+    Calls HeapValidate(GetProcessHeap(), 0, NULL);
+    """
+
+    # Get the process heap.
+    try:
+        hHeap = ctypes.windll.kernel32.GetProcessHeap();
+    except:
+        reporter.logXcpt();
+        return False;
+
+    # Check it.
+    try:
+        fIsOkay = ctypes.windll.kernel32.HeapValidate(hHeap, 0, None);
+    except:
+        reporter.logXcpt();
+        return False;
+
+    if fIsOkay == 0:
+        reporter.log('HeapValidate failed!');
+
+        # Try trigger a dump using c:\utils\procdump64.exe.
+        from common import utils;
+
+        iPid = os.getpid();
+        asArgs = [ 'e:\\utils\\procdump64.exe', '-ma', '%s' % (iPid,), 'c:\\CrashDumps\\python.exe-%u-heap.dmp' % (iPid,)];
+        if utils.getHostArch() != 'amd64':
+            asArgs[0] = 'c:\\utils\\procdump.exe'
+        reporter.log('Trying to dump this process using: %s' % (asArgs,));
+        utils.processCall(asArgs);
+
+        # Generate a crash exception.
+        ctypes.windll.msvcrt.strcpy(None, None, 1024);
+
+    return True;
+
 
