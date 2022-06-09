@@ -1,4 +1,4 @@
-/* $Id: VBoxLicenseViewer.cpp 71552 2018-03-28 17:01:46Z vboxsync $ */
+/* $Id: VBoxLicenseViewer.cpp 71574 2018-03-29 15:10:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxLicenseViewer class implementation.
  */
@@ -63,7 +63,7 @@ VBoxLicenseViewer::VBoxLicenseViewer(QWidget *pParent /* = 0 */)
         }
 
         /* Create agree button: */
-        /** todo rework buttons to be a part of button-box itself */
+        /** @todo rework buttons to be a part of button-box itself */
         QDialogButtonBox *pDialogButtonBox = new QIDialogButtonBox;
         if (pDialogButtonBox)
         {
