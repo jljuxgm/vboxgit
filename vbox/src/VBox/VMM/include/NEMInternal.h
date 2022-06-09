@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 70918 2018-02-08 16:11:47Z vboxsync $ */
+/* $Id: NEMInternal.h 70944 2018-02-09 22:09:03Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -21,6 +21,7 @@
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
 #include <VBox/vmm/nem.h>
+#include <VBox/vmm/cpum.h> /* For CPUMCPUVENDOR. */
 #include <VBox/vmm/stam.h>
 #include <VBox/vmm/vmapi.h>
 
@@ -43,6 +44,28 @@ typedef struct NEM
 
     /** Set if enabled. */
     bool                        fEnabled;
+#ifdef RT_OS_WINDOWS
+    /** WHvRunVpExitReasonX64Cpuid is supported. */
+    bool                        fExtendedMsrExit;
+    /** WHvRunVpExitReasonX64MsrAccess is supported. */
+    bool                        fExtendedCpuIdExit;
+    /** WHvRunVpExitReasonException is supported. */
+    bool                        fExtendedXcptExit;
+    /** The reported CPU vendor.   */
+    CPUMCPUVENDOR               enmCpuVendor;
+    /** Explicit padding. */
+    uint32_t                    u32Padding1;
+    /** The result of WHvCapabilityCodeProcessorFeatures. */
+    union
+    {
+        /** 64-bit view. */
+        uint64_t                u64;
+# ifdef _WINHVAPIDEFS_H_
+        /** Interpreed features. */
+        WHV_PROCESSOR_FEATURES  u;
+# endif
+    } uCpuFeatures;
+#endif
 
 } NEM;
 /** Pointer to NEM VM instance data. */
