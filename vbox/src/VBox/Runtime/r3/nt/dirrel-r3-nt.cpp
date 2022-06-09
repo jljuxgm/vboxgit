@@ -1,4 +1,4 @@
-/* $Id: dirrel-r3-nt.cpp 71851 2018-04-12 15:29:50Z vboxsync $ */
+/* $Id: dirrel-r3-nt.cpp 71888 2018-04-17 22:53:14Z vboxsync $ */
 /** @file
  * IPRT - Directory relative base APIs, NT implementation
  */
@@ -460,8 +460,11 @@ RTDECL(int) RTDirRelPathQueryInfo(RTDIR hDir, const char *pszRelPath, PRTFSOBJIN
                                       pThis->enmInfoClass == FileMaximumInformation);
     if (RT_SUCCESS(rc))
     {
-        rc = rtPathNtQueryInfoWorker(hRoot, &NtName, pObjInfo, enmAddAttr, fFlags, pszRelPath);
-        RTNtPathFree(&NtName, NULL);
+        if (NtName.Length != 0 || hRoot == NULL)
+            rc = rtPathNtQueryInfoWorker(hRoot, &NtName, pObjInfo, enmAddAttr, fFlags, pszRelPath);
+        else
+            rc = RTDirQueryInfo(hDir, pObjInfo, enmAddAttr);
+       RTNtPathFree(&NtName, NULL);
     }
     return rc;
 }
