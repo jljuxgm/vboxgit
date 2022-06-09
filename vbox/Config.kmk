@@ -1,4 +1,4 @@
-# $Id: Config.kmk 67323 2017-06-09 14:47:35Z vboxsync $
+# $Id: Config.kmk 67324 2017-06-09 15:00:11Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1146,6 +1146,10 @@ ifdef VBOX_OSE
  endif
  if1of ($(KBUILD_TARGET), solaris)
   VBOX_WITH_32_ON_64_MAIN_API=
+ endif
+ if1of ($(KBUILD_TARGET), win)
+  # tar/gzip uncommon on Windows
+  VBOX_WITH_EXTPACK_VBOXDTRACE=
  endif
  # Enable any translations in OSE, even partial ones.
  ifndef ($(VBOX_NO_DOCS_TRANSLATIONS))
@@ -7000,7 +7004,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 67323 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 67324 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
