@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.cpp 70125 2017-12-14 11:02:53Z vboxsync $ */
+/* $Id: HDAStreamPeriod.cpp 71711 2018-04-06 15:47:49Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.cpp - Stream period functions for HD Audio.
  *
@@ -411,13 +411,13 @@ bool hdaStreamPeriodIsComplete(PHDASTREAMPERIOD pPeriod)
                                 hdaStreamPeriodHasElapsed(pPeriod)
                              /* All frames transferred? */
                              && pPeriod->framesTransferred >= pPeriod->framesToTransfer;
-#ifdef VBOX_STRICT
+# ifdef VBOX_STRICT
     if (fIsComplete)
     {
         Assert(pPeriod->framesTransferred == pPeriod->framesToTransfer);
         Assert(pPeriod->u64ElapsedWalClk  == pPeriod->u64DurationWalClk);
     }
-#endif
+# endif
 
     Log3Func(("[SD%RU8] Period %s - runtime %RU64 / %RU64 (abs @ %RU64, starts @ %RU64, ends @ %RU64), %RU8 IRQs pending\n",
               pPeriod->u8SD,
@@ -428,5 +428,6 @@ bool hdaStreamPeriodIsComplete(PHDASTREAMPERIOD pPeriod)
 
     return fIsComplete;
 }
+
 #endif /* IN_RING3 */
 
