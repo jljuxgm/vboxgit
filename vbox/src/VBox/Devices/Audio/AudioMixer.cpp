@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 68898 2017-09-28 08:41:40Z vboxsync $ */
+/* $Id: AudioMixer.cpp 68899 2017-09-28 08:42:21Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1326,7 +1326,6 @@ void AudioMixerSinkReset(PAUDMIXSINK pSink)
 /**
  * Returns the audio format of a mixer sink.
  *
- * @returns IPRT status code.
  * @param   pSink               Sink to retrieve audio format for.
  * @param   pPCMProps           Where to the returned audio format.
  */
