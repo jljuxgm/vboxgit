@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 68320 2017-08-07 15:18:51Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 68321 2017-08-07 15:20:11Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -66,7 +66,7 @@ typedef enum AVRECCONTAINERTYPE
     AVRECCONTAINERTYPE_UNKNOWN      = 0,
     /** Recorded data goes to Main / Console. */
     AVRECCONTAINERTYPE_MAIN_CONSOLE = 1,
-    /** Recorded data will be written a .webm file. */
+    /** Recorded data will be written to a .webm file. */
     AVRECCONTAINERTYPE_WEBM         = 2
 } AVRECCONTAINERTYPE;
 
