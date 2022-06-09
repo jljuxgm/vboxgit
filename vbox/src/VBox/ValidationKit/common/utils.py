@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 70710 2018-01-23 15:35:17Z vboxsync $
+# $Id: utils.py 71157 2018-02-28 15:38:15Z vboxsync $
 # pylint: disable=C0302
 
 """
 Common Utility Functions.
 """
+
+from __future__ import print_function;
 
 __copyright__ = \
 """
@@ -27,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70710 $"
+__version__ = "$Revision: 71157 $"
 
 
 # Standard Python imports.
@@ -60,6 +62,31 @@ if sys.version_info[0] >= 3:
     unicode = str;  # pylint: disable=redefined-builtin,invalid-name
     xrange = range; # pylint: disable=redefined-builtin,invalid-name
     long = int;     # pylint: disable=redefined-builtin,invalid-name
+
+
+#
+# Output.
+#
+
+def printOut(sString):
+    """
+    Outputs a string to standard output, dealing with python 2.x encoding stupidity.
+    """
+    sStreamEncoding = sys.stdout.encoding;
+    if sStreamEncoding == 'UTF-8' or not isinstance(sString, unicode):
+        print(sString);
+    else:
+        print(sString.encode(sStreamEncoding, 'backslashreplace').decode(sStreamEncoding));
+
+def printErr(sString):
+    """
+    Outputs a string to standard error, dealing with python 2.x encoding stupidity.
+    """
+    sStreamEncoding = sys.stderr.encoding;
+    if sStreamEncoding == 'UTF-8' or not isinstance(sString, unicode):
+        print(sString, file = sys.stderr);
+    else:
+        print(sString.encode(sStreamEncoding, 'backslashreplace').decode(sStreamEncoding), file = sys.stderr);
 
 
 #
