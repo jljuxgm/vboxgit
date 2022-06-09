@@ -1,4 +1,4 @@
-/* $Id: UITabBar.cpp 68179 2017-07-29 16:27:40Z vboxsync $ */
+/* $Id: UITabBar.cpp 68206 2017-07-31 14:08:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class implementation.
  */
@@ -316,7 +316,7 @@ QUuid UITabBar::addTab(const QIcon &icon /* = QIcon() */, const QString &strName
         connect(pItem, &UITabBarItem::sigClicked,      this, &UITabBar::sltHandleMakeChildCurrent);
         connect(pItem, &UITabBarItem::sigCloseClicked, this, &UITabBar::sltHandleChildClose);
         /* Add item into layout and list: */
-        m_pLayout->addWidget(pItem);
+        m_pLayout->insertWidget(1, pItem);
         m_aItems << pItem;
         /* Return unique ID: */
         return uuid;
