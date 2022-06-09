@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-nt.cpp 70204 2017-12-18 14:59:50Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-nt.cpp 70292 2017-12-21 16:25:50Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, NT.
  */
@@ -657,14 +657,15 @@ RTR0DECL(int) RTR0DbgKrnlInfoQuerySymbol(RTDBGKRNLINFO hKrnlInfo, const char *ps
             {
                 /* We'll overwrite init failure status code here since
                    MmGetSystemRoutineAddress will do the job for us.  */
-                PRTUTF16 pwszSymbol;
-                rc = RTStrToUtf16(pszSymbol, &pwszSymbol);
+                size_t   cwcSymbol;
+                PRTUTF16 pwszSymbol = NULL;
+                rc = RTStrToUtf16Ex(pszSymbol, RTSTR_MAX, &pwszSymbol, 0, &cwcSymbol);
                 if (RT_SUCCESS(rc))
                 {
                     UNICODE_STRING UniStr;
                     UniStr.Buffer = pwszSymbol;
-                    UniStr.Length = (uint16_t)RTUtf16Len(pwszSymbol);
-                    UniStr.MaximumLength = UniStr.Length + 1;
+                    UniStr.Length = (uint16_t)(cwcSymbol * sizeof(RTUTF16));
+                    UniStr.MaximumLength = UniStr.Length + sizeof(RTUTF16);
                     *ppvSymbol = g_pfnMmGetSystemRoutineAddress(&UniStr);
                     if (*ppvSymbol)
                         rc = VINF_SUCCESS;
