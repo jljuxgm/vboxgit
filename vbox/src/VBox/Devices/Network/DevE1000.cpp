@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 68973 2017-10-04 11:34:10Z vboxsync $ */
+/* $Id: DevE1000.cpp 69001 2017-10-06 12:12:04Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2701,6 +2701,7 @@ static int e1kRegWriteCTRL(PE1KSTATE pThis, uint32_t offset, uint32_t index, uin
     }
     else
     {
+#ifdef E1K_LSC_ON_SLU
         /*
          * When the guest changes 'Set Link Up' bit from 0 to 1 we check if
          * the link is down and the cable is connected, and if they are we
@@ -2714,6 +2715,7 @@ static int e1kRegWriteCTRL(PE1KSTATE pThis, uint32_t offset, uint32_t index, uin
             /* It should take about 2 seconds for the link to come up */
             e1kArmTimer(pThis, pThis->CTX_SUFF(pLUTimer), E1K_INIT_LINKUP_DELAY_US);
         }
+#endif /* E1K_LSC_ON_SLU */
         if ((value & CTRL_VME) != (CTRL & CTRL_VME))
         {
             E1kLog(("%s VLAN Mode %s\n", pThis->szPrf, (value & CTRL_VME) ? "Enabled" : "Disabled"));
@@ -3434,7 +3436,11 @@ static DECLCALLBACK(void) e1kLinkUpTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer, vo
      * on reset even if the cable is unplugged (see @bugref{8942}).
      */
     if (pThis->fCableConnected)
-        e1kR3LinkUp(pThis);
+    {
+        /* 82543GC does not have an internal PHY */
+        if (pThis->eChip == E1K_CHIP_82543GC || (CTRL & CTRL_SLU))
+            e1kR3LinkUp(pThis);
+    }
 #ifdef E1K_LSC_ON_RESET
     else if (pThis->eChip == E1K_CHIP_82543GC)
         e1kR3LinkDown(pThis);
