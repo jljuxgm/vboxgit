@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 71196 2018-03-05 10:38:29Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 71511 2018-03-26 13:14:10Z vboxsync $ */
 /** @file
  * VBox Miniport device extension header
  */
@@ -32,6 +32,21 @@
 #ifdef VBOX_WDDM_MINIPORT
 extern DWORD g_VBoxDisplayOnly;
 # include "wddm/VBoxMPTypes.h"
+#endif
+
+typedef enum VBOX_HWTYPE
+{
+    VBOX_HWTYPE_CROGL = 0,
+    VBOX_HWTYPE_VMSVGA = 1
+} VBOX_HWTYPE;
+
+#ifdef VBOX_WDDM_MINIPORT
+typedef struct VBOXWDDM_HWRESOURCES
+{
+    PHYSICAL_ADDRESS phVRAM;
+    ULONG cbVRAM;
+    ULONG ulApertureSize;
+} VBOXWDDM_HWRESOURCES, *PVBOXWDDM_HWRESOURCES;
 #endif
 
 #define VBOXMP_MAX_VIDEO_MODES 128
@@ -201,6 +216,12 @@ typedef struct _VBOXMP_DEVEXT
    } u;
 
    HGSMIAREA areaDisplay;                      /* Entire VRAM chunk for this display device. */
+
+   VBOX_HWTYPE enmHwType;
+#ifdef VBOX_WDDM_MINIPORT
+   VBOXWDDM_HWRESOURCES HwResources;
+#endif
+
 } VBOXMP_DEVEXT, *PVBOXMP_DEVEXT;
 
 DECLINLINE(PVBOXMP_DEVEXT) VBoxCommonToPrimaryExt(PVBOXMP_COMMON pCommon)
