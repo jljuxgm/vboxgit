@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VMMDevState.h 70872 2018-02-05 17:21:49Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -192,7 +192,7 @@ typedef struct VMMDevState
      * Until this information is reported the VMMDev refuses any other requests.
      */
     VBoxGuestInfo guestInfo;
-    /** Information report \#2, chewed a litte. */
+    /** Information report \#2, chewed a little. */
     struct
     {
         uint32_t uFullVersion; /**< non-zero if info is present. */
