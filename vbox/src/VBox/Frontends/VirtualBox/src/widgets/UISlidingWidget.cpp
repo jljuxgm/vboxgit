@@ -1,4 +1,4 @@
-/* $Id: UISlidingWidget.cpp 68152 2017-07-28 09:40:18Z vboxsync $ */
+/* $Id: UISlidingWidget.cpp 68166 2017-07-29 08:52:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingWidget class implementation.
  */
@@ -19,8 +19,8 @@
 #include <QHBoxLayout>
 
 /* GUI includes: */
-#include "UISlidingWidget.h"
 #include "UIAnimationFramework.h"
+#include "UISlidingWidget.h"
 
 
 UISlidingWidget::UISlidingWidget(QWidget *pParent /* = 0 */)

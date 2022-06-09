@@ -1,4 +1,4 @@
-/* $Id: UISlidingWidget.h 68152 2017-07-28 09:40:18Z vboxsync $ */
+/* $Id: UISlidingWidget.h 68166 2017-07-29 08:52:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingWidget class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* Forward declarations: */
 class QHBoxLayout;
+class QRect;
 class QWidget;
 class UIAnimation;
 
