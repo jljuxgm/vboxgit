@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 67062 2017-05-24 12:29:07Z vboxsync $
+# $Id: utils.py 68139 2017-07-27 14:59:07Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67062 $"
+__version__ = "$Revision: 68139 $"
 
 
 # Standard Python imports.
@@ -820,6 +820,7 @@ def processGetInfo(uPid, fSudo = False):
         if not os.path.isfile(sGdb): sGdb = 'gdb';
         aasCmd = [
             [ sGdb, '-batch',
+              '-ex', 'set pagination off',
               '-ex', 'thread apply all bt',
               '-ex', 'info proc mapping',
               '-ex', 'info sharedlibrary',
