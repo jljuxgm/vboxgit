@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 68772 2017-09-15 13:01:02Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 68797 2017-09-20 10:26:24Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -329,7 +329,12 @@ static int avRecSinkInit(PDRVAUDIOVIDEOREC pThis, PAVRECSINK pSink, PAVRECCONTAI
         {
             case AVRECCONTAINERTYPE_MAIN_CONSOLE:
             {
-                pSink->Con.Main.pConsole = pThis->pConsole;
+                if (pThis->pConsole)
+                {
+                    pSink->Con.Main.pConsole = pThis->pConsole;
+                }
+                else
+                    rc = VERR_NOT_SUPPORTED;
                 break;
             }
 
@@ -1018,11 +1023,11 @@ DECLCALLBACK(int) AudioVideoRec::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
 {
     RT_NOREF(fFlags);
 
+    AssertPtrReturn(pDrvIns, VERR_INVALID_POINTER);
+    AssertPtrReturn(pCfg,    VERR_INVALID_POINTER);
+
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
     PDRVAUDIOVIDEOREC pThis = PDMINS_2_DATA(pDrvIns, PDRVAUDIOVIDEOREC);
-
-    AssertPtrReturn(pDrvIns, VERR_INVALID_POINTER);
-    AssertPtrReturn(pCfg, VERR_INVALID_POINTER);
 
     LogRel(("Audio: Initializing video recording audio driver\n"));
     LogFlowFunc(("fFlags=0x%x\n", fFlags));
@@ -1045,18 +1050,21 @@ DECLCALLBACK(int) AudioVideoRec::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
      */
     void *pvUser;
     int rc = CFGMR3QueryPtr(pCfg, "ObjectConsole", &pvUser); /** @todo r=andy Get rid of this hack and use IHostAudio::SetCallback. */
-    AssertMsgRCReturn(rc, ("Confguration error: No/bad \"ObjectConsole\" value, rc=%Rrc\n", rc), rc);
+    AssertRCReturn(rc, rc);
 
     /* CFGM tree saves the pointer to Console in the Object node of AudioVideoRec. */
     pThis->pConsole = (Console *)pvUser;
+    AssertReturn(!pThis->pConsole.isNull(), VERR_INVALID_POINTER);
 
     /*
      * Get the pointer to the audio driver instance.
      */
     rc = CFGMR3QueryPtr(pCfg, "Object", &pvUser); /** @todo r=andy Get rid of this hack and use IHostAudio::SetCallback. */
-    AssertMsgRCReturn(rc, ("Confguration error: No/bad \"Object\" value, rc=%Rrc\n", rc), rc);
+    AssertRCReturn(rc, rc);
 
     pThis->pAudioVideoRec = (AudioVideoRec *)pvUser;
+    AssertPtrReturn(pThis->pAudioVideoRec, VERR_INVALID_POINTER);
+
     pThis->pAudioVideoRec->mpDrv = pThis;
 
     /*
