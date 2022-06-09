@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 69609 2017-11-07 18:59:38Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -414,8 +414,7 @@ static DECLCALLBACK(int) rtDvmFmtBsdLblQueryFirstVolume(RTDVMFMT hVolMgrFmt, PRT
         {
             if (pThis->DiskLabel.aPartitions[i].cSectors)
             {
-                rc = rtDvmFmtBsdLblVolumeCreate(pThis, &pThis->DiskLabel.aPartitions[i],
-                                              i, phVolFmt);
+                rc = rtDvmFmtBsdLblVolumeCreate(pThis, &pThis->DiskLabel.aPartitions[i], i, phVolFmt);
                 break;
             }
         }
