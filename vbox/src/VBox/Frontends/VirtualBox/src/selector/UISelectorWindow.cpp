@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 69917 2017-12-04 11:25:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -46,7 +46,7 @@
 # include "UISlidingWidget.h"
 # include "UITabBar.h"
 # include "UIToolBar.h"
-# include "UIVMLogViewer.h"
+# include "UIVMLogViewerDialog.h"
 # include "UIVMItem.h"
 # include "UIToolsPaneMachine.h"
 # include "UIToolsToolbar.h"
@@ -1024,7 +1024,7 @@ void UISelectorWindow::sltOpenMachineLogDialog()
             continue;
 
         /* Show VM Log Viewer: */
-        UIVMLogViewer::showLogViewerFor(this, pItem->machine());
+        UIVMLogViewerDialog::showLogViewerFor(this, pItem->machine());
     }
 }
 

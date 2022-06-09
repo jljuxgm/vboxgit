@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 69858 2017-11-28 10:56:02Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 69917 2017-12-04 11:25:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -57,7 +57,7 @@
 # include "UIPopupCenter.h"
 # include "UISettingsDialogSpecific.h"
 # include "UITakeSnapshotDialog.h"
-# include "UIVMLogViewer.h"
+# include "UIVMLogViewerDialog.h"
 # include "UIConverter.h"
 # include "UIModalWindowManager.h"
 # include "UIMedium.h"
@@ -2326,7 +2326,7 @@ void UIMachineLogic::sltLoggingToggled(bool fState)
 void UIMachineLogic::sltShowLogDialog()
 {
     /* Show VM Log Viewer: */
-    UIVMLogViewer::showLogViewerFor(activeMachineWindow(), machine());
+    UIVMLogViewerDialog::showLogViewerFor(activeMachineWindow(), machine());
 }
 
 #endif /* VBOX_WITH_DEBUGGER_GUI */
