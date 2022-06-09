@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 71325 2018-03-14 14:21:14Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 71350 2018-03-15 13:22:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -405,11 +405,13 @@ void UIGuestControlFileManager::prepareConnections()
 
 void UIGuestControlFileManager::sltGuestSessionUnregistered(CGuestSession guestSession)
 {
-    if (!guestSession.isOk())
+    if (guestSession.isNull())
         return;
-    if (guestSession == m_comGuestSession && m_comGuestSession.isOk())
+    if (guestSession == m_comGuestSession && !m_comGuestSession.isNull())
+    {
         m_comGuestSession.detach();
-    postSessionClosed();
+        postSessionClosed();
+    }
 }
 
 void UIGuestControlFileManager::sltCreateSession(QString strUserName, QString strPassword)
