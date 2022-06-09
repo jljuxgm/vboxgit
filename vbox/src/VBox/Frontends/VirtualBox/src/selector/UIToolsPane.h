@@ -1,4 +1,4 @@
-/* $Id: UIToolsPane.h 67068 2017-05-24 17:47:44Z vboxsync $ */
+/* $Id: UIToolsPane.h 67090 2017-05-25 15:14:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPane class declaration.
  */
@@ -88,8 +88,8 @@ private:
     /** Prepares menu. */
     void prepareMenu();
 
-    /** Adds corresponding tab-bar tab. */
-    void addTabBarTab(ToolsType enmType, bool fCloseable);
+    /** Activates corresponding tab-bar tab, adds new if necessary. */
+    void activateTabBarTab(ToolsType enmType, bool fCloseable);
 
     /** Holds the main layout isntance. */
     QVBoxLayout               *m_pLayoutMain;
