@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 71538 2018-03-28 13:07:27Z vboxsync $
+# $Id: vbox.py 71539 2018-03-28 13:09:16Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71538 $"
+__version__ = "$Revision: 71539 $"
 
 
 # Standard Python imports.
@@ -1037,7 +1037,8 @@ class TestDriver(base.TestDriver):                                              
                 sGdbCmdLine = '%s --args %s --pidfile %s' % (sGdb, sVBoxSVC, self.sVBoxSvcPidFile);
                 reporter.log('term="%s" gdb="%s"' % (sTerm, sGdbCmdLine));
                 os.environ['SHELL'] = self.sOrgShell; # Non-working shell may cause gdb and/or the term problems.
-                self.oVBoxSvcProcess = base.Process.spawnp(sTerm, sTerm, '-e', sGdbCmdLine); ## @todo -e  is deprecated; use "-- <args>".
+                ## @todo -e  is deprecated; use "-- <args>".
+                self.oVBoxSvcProcess = base.Process.spawnp(sTerm, sTerm, '-e', sGdbCmdLine);
                 os.environ['SHELL'] = self.sOurShell;
                 if self.oVBoxSvcProcess is not None:
                     reporter.log('Press enter or return after starting VBoxSVC in the debugger...');
