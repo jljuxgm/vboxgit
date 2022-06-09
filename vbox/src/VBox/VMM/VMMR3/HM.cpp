@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 67529 2017-06-21 08:29:25Z vboxsync $ */
+/* $Id: HM.cpp 67660 2017-06-28 10:17:05Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1645,6 +1645,13 @@ static int hmR3InitFinalizeR0Amd(PVM pVM)
         for (unsigned iBit = 0; iBit < 32; iBit++)
             if (RT_BIT_32(iBit) & fSvmFeatures)
                 LogRel(("HM:   Reserved bit %u\n", iBit));
+
+    /*
+     * SVM R0 code assumes if the decode-assist feature exists, NRIP feature exists too.
+     */
+    AssertLogRelReturn(  !(pVM->hm.s.svm.u32Features & X86_CPUID_SVM_FEATURE_EDX_DECODE_ASSIST)
+                       || (pVM->hm.s.svm.u32Features & X86_CPUID_SVM_FEATURE_EDX_NRIP_SAVE),
+                       VERR_HM_UNSUPPORTED_CPU_FEATURE_COMBO);
 
     /*
      * Nested paging is determined in HMR3Init, verify the sanity of that.
