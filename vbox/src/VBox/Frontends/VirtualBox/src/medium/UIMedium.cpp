@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMedium.cpp 69568 2017-11-03 14:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -101,6 +101,7 @@ UIMedium& UIMedium::operator=(const UIMedium &other)
 
     m_strHardDiskType = other.hardDiskType();
     m_strHardDiskFormat = other.hardDiskFormat();
+    m_fHasChildren = other.hasChildren();
     m_strStorageDetails = other.storageDetails();
     m_strEncryptionPasswordID = other.encryptionPasswordID();
 
@@ -168,6 +169,7 @@ void UIMedium::refresh()
     /* Reset hard drive related parameters: */
     m_strHardDiskType = QString();
     m_strHardDiskFormat = QString();
+    m_fHasChildren = false;
     m_strStorageDetails = QString();
     m_strEncryptionPasswordID = QString();
 
@@ -252,6 +254,9 @@ void UIMedium::refresh()
             m_strHardDiskType = mediumTypeToString(m_medium);
             /* Refresh hard drive format: */
             m_strHardDiskFormat = m_medium.GetFormat();
+
+            /* Refresh hard drive parental status: */
+            m_fHasChildren = m_medium.GetChildren().size();
 
             /* Refresh hard drive storage details: */
             m_strStorageDetails = gpConverter->toString(m_enmMediumVariant);
