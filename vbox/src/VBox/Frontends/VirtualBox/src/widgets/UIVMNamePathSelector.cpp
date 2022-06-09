@@ -1,4 +1,4 @@
-/* $Id: UIVMNamePathSelector.cpp 72227 2018-05-17 08:11:13Z vboxsync $ */
+/* $Id: UIVMNamePathSelector.cpp 72228 2018-05-17 08:18:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMNamePathSelector class implementation.
  */
@@ -40,7 +40,7 @@
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-const float UIVMNamePathSelector::s_fPathLabelWidthWeight = 0.65;
+const float UIVMNamePathSelector::s_fPathLabelWidthWeight = 0.65f;
 
 class UIPathLabel : public QLabel
 {
