@@ -1,4 +1,4 @@
-# $Id: Config.kmk 70515 2018-01-10 11:55:05Z vboxsync $
+# $Id: Config.kmk 70683 2018-01-22 17:33:50Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4260,7 +4260,7 @@ $$(PATH_TARGET)/tst$(use_symvers)$(subst /,_,$(KERN_DIR))_mod.run))
 	$(QUIET)$$(if $$(eq $$(symvers_$(module)_dep),),,\
 $$(CP) $$(symvers_$(module)_dep) "$$(PATH_TARGET)/tst$(module)_mod/Module.symvers")
 	+ $(QUIET)make KBUILD_VERBOSE=$(KBUILD_VERBOSE) KERN_DIR=$(KERN_DIR) $(if-expr $(KMK_OPTS_JOBS) != 1,JOBS=$(KMK_OPTS_JOBS),) -C $$(PATH_TARGET)/tst$(module)_mod \
-		2> "$$(PATH_TARGET)/tst$(module)_mod/make.err"
+		2>&1 | tee "$$(PATH_TARGET)/tst$(module)_mod/make.err"
 	$(QUIET)! grep "^WARNING: .* undefined!$$$$" "$$(PATH_TARGET)/tst$(module)_mod/make.err"
   if1of ($(USERNAME), bird)
 	- nm -u "$$(PATH_TARGET)/tst$(module)_mod/"*.ko | sort
@@ -7123,7 +7123,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70515 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70683 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
