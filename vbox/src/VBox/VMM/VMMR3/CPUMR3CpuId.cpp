@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 70794 2018-01-29 17:54:59Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 70845 2018-02-01 03:33:59Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -6847,6 +6847,7 @@ DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszA
         pCurLeaf = cpumR3CpuIdGetLeaf(paLeaves, cLeaves, UINT32_C(0x80000008), 0);
         if (pCurLeaf != NULL)
         {
+            ASMCpuIdExSlow(UINT32_C(0x80000008), 0, 0, 0, &Host.uEax, &Host.uEbx, &Host.uEcx, &Host.uEdx);
             if (pCurLeaf->uEbx || (Host.uEbx && iVerbosity))
             {
                 if (iVerbosity < 1)
