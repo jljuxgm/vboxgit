@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 66971 2017-05-19 11:24:07Z vboxsync $
+# $Id: vbox.py 67022 2017-05-22 18:08:46Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66971 $"
+__version__ = "$Revision: 67022 $"
 
 
 # Standard Python imports.
@@ -2702,7 +2702,7 @@ class TestDriver(base.TestDriver):                                              
                     oProgress.wait();
             self.removeTask(oProgress);
 
-        # Check if the VM has terminated by it self before powering it off.
+        # Check if the VM has terminated by itself before powering it off.
         fClose = True;
         fRc    = True;
         if oSession.needsPoweringOff():
