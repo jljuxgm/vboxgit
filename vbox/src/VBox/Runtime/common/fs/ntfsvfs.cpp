@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 69873 2017-11-29 22:38:53Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 69874 2017-11-29 22:40:08Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -967,6 +967,7 @@ static uint32_t rtFsNtfsCore_Release(PRTFSNTFSCORE pThis)
 }
 
 
+#if 0 /* currently unused */
 /**
  * Retains a refernece to a core structure.
  *
@@ -979,6 +980,7 @@ static uint32_t rtFsNtfsCore_Retain(PRTFSNTFSCORE pThis)
     Assert(cRefs < 128);
     return cRefs;
 }
+#endif
 
 
 /**
