@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 68348 2017-08-09 11:41:22Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 68351 2017-08-09 13:35:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1078,8 +1078,8 @@ void UIExtraDataManagerWindow::sltAdd()
                 pButtonBox->button(QDialogButtonBox::Cancel)->setShortcut(Qt::Key_Escape);
                 connect(pValidatorGroup, &QObjectValidatorGroup::sigValidityChange,
                         pButtonBox->button(QDialogButtonBox::Ok), &QPushButton::setEnabled);
-                connect(pButtonBox, &QIDialogButtonBox::accepted, pInputDialog, &QIDialog::accept);
-                connect(pButtonBox, &QIDialogButtonBox::rejected, pInputDialog, &QIDialog::reject);
+                connect(pButtonBox, &QIDialogButtonBox::accepted, pInputDialog.data(), &QIDialog::accept);
+                connect(pButtonBox, &QIDialogButtonBox::rejected, pInputDialog.data(), &QIDialog::reject);
                 /* Add button-box into main-layout: */
                 pMainLayout->addWidget(pButtonBox);
             }
@@ -4382,9 +4382,9 @@ void UIExtraDataManager::open(QWidget *pCenterWidget)
         m_pWindow = new UIExtraDataManagerWindow;
         /* Configure window connections: */
         connect(this, &UIExtraDataManager::sigExtraDataMapAcknowledging,
-                m_pWindow, &UIExtraDataManagerWindow::sltExtraDataMapAcknowledging);
+                m_pWindow.data(), &UIExtraDataManagerWindow::sltExtraDataMapAcknowledging);
         connect(this, &UIExtraDataManager::sigExtraDataChange,
-                m_pWindow, &UIExtraDataManagerWindow::sltExtraDataChange);
+                m_pWindow.data(), &UIExtraDataManagerWindow::sltExtraDataChange);
     }
     /* Show and raise window: */
     m_pWindow->showAndRaise(pCenterWidget);
