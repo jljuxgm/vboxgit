@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 72526 2018-06-12 13:06:02Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 72542 2018-06-13 12:16:08Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -4278,5 +4278,4 @@ void nemHCNativeNotifyPhysPageChanged(PVM pVM, RTGCPHYS GCPhys, RTHCPHYS HCPhysP
     /* else: ignore since we've got the alias page at this address. */
 #endif
 }
-
 
