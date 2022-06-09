@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 71146 2018-02-28 09:54:40Z vboxsync $ */
+/* $Id: DevVGA.cpp 71148 2018-02-28 10:00:16Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2781,7 +2781,7 @@ static void vga_save(PSSMHANDLE pSSM, PVGASTATE pThis)
     AssertCompile(RT_ELEMENTS(pThis->vbe_regs) < 256);
     SSMR3PutU8(pSSM, (uint8_t)RT_ELEMENTS(pThis->vbe_regs));
     SSMR3PutU16(pSSM, pThis->vbe_index);
-    for(i = 0; i < RT_ELEMENTS(pThis->vbe_regs); i++)
+    for(i = 0; i < (int)RT_ELEMENTS(pThis->vbe_regs); i++)
         SSMR3PutU16(pSSM, pThis->vbe_regs[i]);
     SSMR3PutU32(pSSM, pThis->vbe_start_addr);
     SSMR3PutU32(pSSM, pThis->vbe_line_offset);
