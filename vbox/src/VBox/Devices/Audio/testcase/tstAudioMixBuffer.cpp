@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 67368 2017-06-13 14:27:31Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 67384 2017-06-14 08:22:46Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -92,7 +92,7 @@ static int tstSingle(RTTEST hTest)
                                         &cSamplesWritten), VERR_BUFFER_OVERFLOW);
 
     /* Offset wrap-around: When writing as much (or more) samples the mixing buffer can hold. */
-    size_t    cbSamples = cBufSize * sizeof(int16_t) * 2 /* Channels */;
+    uint32_t  cbSamples = cBufSize * sizeof(int16_t) * 2 /* Channels */;
     RTTESTI_CHECK(cbSamples);
     uint16_t *paSamples = (uint16_t *)RTMemAlloc(cbSamples);
     RTTESTI_CHECK(paSamples);
