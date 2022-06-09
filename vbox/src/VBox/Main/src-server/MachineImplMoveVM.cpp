@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 71053 2018-02-19 13:35:01Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 71063 2018-02-19 17:36:36Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -1354,7 +1354,7 @@ bool MachineMoveVM::isMediumTypeSupportedForMoving(const ComPtr<IMedium> &pMediu
     bool fSupported = true;
     Bstr bstrLocation;
     rc = pMedium->COMGETTER(Location)(bstrLocation.asOutParam());
-    if (FAILED(rc)) 
+    if (FAILED(rc))
     {
         fSupported = false;
         throw rc;
@@ -1362,7 +1362,7 @@ bool MachineMoveVM::isMediumTypeSupportedForMoving(const ComPtr<IMedium> &pMediu
 
     DeviceType_T deviceType;
     rc = pMedium->COMGETTER(DeviceType)(&deviceType);
-    if (FAILED(rc)) 
+    if (FAILED(rc))
     {
         fSupported = false;
         throw rc;
@@ -1370,7 +1370,7 @@ bool MachineMoveVM::isMediumTypeSupportedForMoving(const ComPtr<IMedium> &pMediu
 
     ComPtr<IMediumFormat> mediumFormat;
     rc = pMedium->COMGETTER(MediumFormat)(mediumFormat.asOutParam());
-    if (FAILED(rc)) 
+    if (FAILED(rc))
     {
         fSupported = false;
         throw rc;
