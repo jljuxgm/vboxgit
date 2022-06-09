@@ -1,4 +1,4 @@
-/* $Id: QIFlowLayout.cpp 67378 2017-06-13 15:25:39Z vboxsync $ */
+/* $Id: QIFlowLayout.cpp 67383 2017-06-14 08:02:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIFlowLayout class implementation.
  */
@@ -73,7 +73,7 @@ QLayoutItem *QIFlowLayout::takeAt(int iIndex)
 
 Qt::Orientations QIFlowLayout::expandingDirections() const
 {
-    return Qt::Vertical | Qt::Horizontal;
+    return Qt::Horizontal;
 }
 
 bool QIFlowLayout::hasHeightForWidth() const
