@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 71388 2018-03-20 10:16:28Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 71391 2018-03-20 10:45:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -36,7 +36,6 @@
 # include "CProgress.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 
 UIGuestFileTable::UIGuestFileTable(QWidget *pParent /*= 0*/)
     :UIGuestControlFileTable(pParent)
