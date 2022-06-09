@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: DevOHCI.cpp 67835 2017-07-06 15:32:14Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -2007,7 +2007,7 @@ static bool ohci_in_done_queue_check(POHCI pThis, uint32_t GCPhysTD)
 }
 
 
-#  ifdef VBOX_STRICT
+#  if defined(VBOX_STRICT) && defined(LOG_ENABLED)
 /**
  * Adds a TD to the in-done-queue tracking, checking that it's not there already.
  * @param   pThis       OHCI instance data.
