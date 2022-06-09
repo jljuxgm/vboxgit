@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69537 2017-10-31 11:04:11Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69707 2017-11-16 05:09:34Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7333,6 +7333,13 @@ HMSVM_EXIT_DECL hmR0SvmExitVmload(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
     /* STAM_COUNTER_INC(&pVCpu->hm.s.StatExitVmload); */
     uint8_t const cbInstr = hmR0SvmGetInstrLengthHwAssist(pVCpu, pCtx, 3);
     VBOXSTRICTRC rcStrict = IEMExecDecodedVmload(pVCpu, cbInstr);
+    if (rcStrict == VINF_SUCCESS)
+    {
+        /* We skip flagging changes made to LSTAR, STAR, SFMASK and other MSRs as they are always re-loaded. */
+        HMCPU_CF_SET(pVCpu,   HM_CHANGED_GUEST_SEGMENT_REGS
+                            | HM_CHANGED_GUEST_TR
+                            | HM_CHANGED_GUEST_LDTR);
+    }
     return VBOXSTRICTRC_VAL(rcStrict);
 }
 
