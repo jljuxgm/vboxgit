@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webservergluebase.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: webservergluebase.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70660 $"
 
 
 # Standard python imports.
@@ -545,7 +545,8 @@ class WebServerGlueBase(object):
         dInfo['sys.version']                = sys.version;
         dInfo['sys.hexversion']             = sys.hexversion;
         dInfo['sys.api_version']            = sys.api_version;
-        dInfo['sys.subversion']             = sys.subversion;
+        if hasattr(sys, 'subversion'):
+            dInfo['sys.subversion']         = sys.subversion;   # pylint: disable=no-member
         dInfo['sys.platform']               = sys.platform;
         dInfo['sys.executable']             = sys.executable;
         dInfo['sys.copyright']              = sys.copyright;

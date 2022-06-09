@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: cgiprofiling.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: cgiprofiling.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 Debug - CGI Profiling.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70660 $"
 
 
 def profileIt(fnMain, sAppendToElement = 'main', sSort = 'time'):
@@ -51,7 +51,7 @@ def profileIt(fnMain, sAppendToElement = 'main', sSort = 'time'):
           '  <pre>');
     try:
         oProfiler.print_stats(sort = sSort);
-    except Exception, oXcpt:
+    except Exception as oXcpt:
         print('<p><pre>%s</pre></p>\n' % (oXcpt,));
     else:
         print('</pre>\n');

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 70522 2018-01-10 15:55:16Z vboxsync $
+# $Id: tdStorageBenchmark1.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,14 +27,17 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70522 $"
+__version__ = "$Revision: 70660 $"
 
 
 # Standard Python imports.
 import os;
 import socket;
 import sys;
-import StringIO;
+if sys.version_info[0] >= 3:
+    from io       import StringIO as StringIO;      # pylint: disable=import-error,no-name-in-module
+else:
+    from StringIO import StringIO as StringIO;      # pylint: disable=import-error,no-name-in-module
 
 # Only the main script needs to modify the path.
 try:    __file__
@@ -96,7 +99,7 @@ class FioTest(object):
         if sIoEngine is None:
             return False;
 
-        cfgBuf = StringIO.StringIO();
+        cfgBuf = StringIO();
         cfgBuf.write('[global]\n');
         cfgBuf.write('bs=' + self.dCfg.get('RecordSize', '4k') + '\n');
         cfgBuf.write('ioengine=' + sIoEngine + '\n');
@@ -1142,8 +1145,8 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                             sCfgmPath = 'VBoxInternal/Devices/%s/0/LUN#%u/Config' % (sDrv, iLun);
 
                         sIoLogFile = '%s/%s.iolog' % (self.sIoLogPath, sDrv);
-                        print sCfgmPath;
-                        print sIoLogFile;
+                        print(sCfgmPath);
+                        print(sIoLogFile);
                         oSession.o.machine.setExtraData('%s/IoLog' % (sCfgmPath,), sIoLogFile);
                     except:
                         reporter.logXcpt();

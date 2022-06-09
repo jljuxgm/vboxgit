@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 70521 2018-01-10 15:49:10Z vboxsync $
+# $Id: remoteexecutor.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,25 +26,31 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70521 $"
+__version__ = "$Revision: 70660 $"
 
 
 # Standard Python imports.
 import array;
 import os;
 import shutil;
-import StringIO
+import sys;
+if sys.version_info[0] >= 3:
+    from io import StringIO as StringIO;            # pylint: disable=import-error,no-name-in-module
+else:
+    from StringIO import StringIO as StringIO;      # pylint: disable=import-error,no-name-in-module
 import subprocess;
 
 # Validation Kit imports.
 from common     import utils;
 from testdriver import reporter;
 
+
+
 class StdInOutBuffer(object):
     """ Standard input output buffer """
 
     def __init__(self, sInput = None):
-        self.sInput = StringIO.StringIO();
+        self.sInput = StringIO();
         if sInput is not None:
             self.sInput.write(self._toString(sInput));
             self.sInput.seek(0);

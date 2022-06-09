@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdPython1.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: tdPython1.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 VirtualBox Validation Kit - Python Bindings Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70660 $"
 
 
 # Standard Python imports.
@@ -35,7 +35,6 @@ import os
 import sys
 import time
 import threading
-import types
 
 # Only the main script needs to modify the path.
 try:    __file__
@@ -106,7 +105,7 @@ class tdPython1(vbox.TestDriver):
                 except:
                     reporter.errorXcpt();
                     break;
-                if not isinstance(rc, types.IntType):
+                if not isinstance(rc, int):
                     reporter.error('waitForEvents returns non-integer type');
                     break;
                 if rc == 1:
@@ -203,7 +202,7 @@ class tdPython1(vbox.TestDriver):
                     msElapsed = base.timestampMilli() - msNow;
 
                     # Check the return code and elapsed time.
-                    if not isinstance(rc, types.IntType):
+                    if not isinstance(rc, int):
                         reporter.error('waitForEvents returns non-integer type after %u ms, expected 1' % (msElapsed,));
                     elif rc != 1:
                         reporter.error('waitForEvents returned "%s" after %u ms, expected 1' % (rc, msElapsed));

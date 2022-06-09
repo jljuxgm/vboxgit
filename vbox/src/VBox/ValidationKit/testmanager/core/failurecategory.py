@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: failurecategory.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: failurecategory.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 Test Manager - Failure Categories.
@@ -26,13 +26,20 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70660 $"
 
+
+# Standard Python imports.
+import sys;
 
 # Validation Kit imports.
 from testmanager.core.base          import ModelDataBase, ModelLogicBase, TMRowInUse, TMInvalidData, TMRowNotFound, \
                                            ChangeLogEntry, AttributeChangeEntry;
 from testmanager.core.useraccount   import UserAccountLogic;
+
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    xrange = range; # pylint: disable=redefined-builtin,invalid-name
 
 
 class FailureCategoryData(ModelDataBase):

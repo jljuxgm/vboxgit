@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: virtual_test_sheriff.py 70660 2018-01-21 16:18:58Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -11,6 +11,8 @@ Duties:
     - Reboot or disable bad test boxes.
 
 """
+
+from __future__ import print_function;
 
 __copyright__ = \
 """
@@ -33,16 +35,19 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70660 $"
 
 
 # Standard python imports
 import sys;
 import os;
 import hashlib;
-import StringIO;
-from optparse import OptionParser;
-from PIL import Image;                  # pylint: disable=import-error
+if sys.version_info[0] >= 3:
+    from io       import StringIO as StringIO;      # pylint: disable=import-error,no-name-in-module
+else:
+    from StringIO import StringIO as StringIO;      # pylint: disable=import-error,no-name-in-module
+from optparse import OptionParser;                  # pylint: disable=deprecated-module
+from PIL import Image;                              # pylint: disable=import-error
 
 # Add Test Manager's modules path
 g_ksTestManagerDir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))));
@@ -59,6 +64,10 @@ from testmanager.core.testset               import TestSetLogic, TestSetData;
 from testmanager.core.testresults           import TestResultLogic, TestResultFileData;
 from testmanager.core.testresultfailures    import TestResultFailureLogic, TestResultFailureData;
 from testmanager.core.useraccount           import UserAccountLogic;
+
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    xrange = range; # pylint: disable=redefined-builtin,invalid-name
 
 
 class VirtualTestSheriffCaseFile(object):
@@ -223,7 +232,7 @@ class VirtualTestSheriffCaseFile(object):
             self.oSheriff.vprint(u'Error reading the "%s" image file: %s' % (oFile.sFile, oXcpt,))
         else:
             try:
-                oImage = Image.open(StringIO.StringIO(abImageFile));
+                oImage = Image.open(StringIO(abImageFile));
             except Exception as oXcpt:
                 self.oSheriff.vprint(u'Error opening the "%s" image bytes using PIL.Image.open: %s' % (oFile.sFile, oXcpt,))
             else:
@@ -293,7 +302,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 69111 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 70660 $ \n');
 
 
     def eprint(self, sText):
@@ -301,7 +310,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         Prints error messages.
         Returns 1 (for exit code usage.)
         """
-        print 'error: %s' % (sText,);
+        print('error: %s' % (sText,));
         if self.oLogFile is not None:
             self.oLogFile.write((u'error: %s\n' % (sText,)).encode('utf-8'));
         return 1;
@@ -312,7 +321,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         """
         if self.oConfig.fDebug:
             if not self.oConfig.fQuiet:
-                print 'debug: %s' % (sText, );
+                print('debug: %s' % (sText, ));
             if self.oLogFile is not None:
                 self.oLogFile.write((u'debug: %s\n' % (sText,)).encode('utf-8'));
         return 0;
@@ -322,7 +331,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         Prints verbose info.
         """
         if not self.oConfig.fQuiet:
-            print 'info: %s' % (sText,);
+            print('info: %s' % (sText,));
         if self.oLogFile is not None:
             self.oLogFile.write((u'info: %s\n' % (sText,)).encode('utf-8'));
         return 0;
@@ -562,7 +571,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 69111 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 70660 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 

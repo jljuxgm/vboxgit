@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: wuibase.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70660 $"
 
 
 # Standard python imports.
@@ -41,6 +41,11 @@ from testmanager.core.base        import ModelDataBase, ModelLogicBase, TMExcept
 from testmanager.core.db          import TMDatabaseConnection;
 from testmanager.core.systemlog   import SystemLogLogic, SystemLogData;
 from testmanager.core.useraccount import UserAccountLogic
+
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    unicode = str;  # pylint: disable=redefined-builtin,invalid-name
+    long = int;     # pylint: disable=redefined-builtin,invalid-name
 
 
 class WuiException(TMExceptionBase):
@@ -279,7 +284,7 @@ class WuiDispatcherBase(object):
         # Side menu form attributes.
         if self._dSideMenuFormAttrs:
             dReplacements['@@SIDE_MENU_FORM_ATTRS@@'] = ' '.join(['%s="%s"' % (sKey, webutils.escapeAttr(sValue))
-                                                                  for sKey, sValue in self._dSideMenuFormAttrs.iteritems()]);
+                                                                  for sKey, sValue in self._dSideMenuFormAttrs.items()]);
 
         # Special current user handling.
         if self._oCurUser is not None:

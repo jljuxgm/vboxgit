@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 70659 2018-01-21 12:21:02Z vboxsync $
+# $Id: vboxtestvms.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70659 $"
+__version__ = "$Revision: 70660 $"
 
 # Standard Python imports.
 import copy;
@@ -541,7 +541,8 @@ class BootSectorTestVm(TestVm):
         self.f64BitRequired = f64BitRequired;
         if asVirtModesSup is None:
             asVirtModesSup = list(g_asVirtModes);
-        TestVm.__init__(self, oSet, sVmName,
+        TestVm.__init__(self, sVmName,
+                        oSet = oSet,
                         acCpusSup = [1,],
                         sFloppy = sFloppy,
                         asVirtModesSup = asVirtModesSup,
@@ -1018,7 +1019,7 @@ class TestVmManager(object):
         for oVm in g_aTestVMs:
             if oVm.fGrouping & fGrouping:
                 if sTxsTransport is None  or  oVm.sNic0AttachType is None  or  sTxsTransport == oVm.sNic0AttachType:
-                    if not fCheckResources  or  len(oVm.getMissingResources(self.sResourcePath)) == 0:
+                    if not fCheckResources  or  not oVm.getMissingResources(self.sResourcePath):
                         oCopyVm = copy.deepcopy(oVm);
                         oCopyVm.oSet = oSet;
                         oSet.aoTestVms.append(oCopyVm);

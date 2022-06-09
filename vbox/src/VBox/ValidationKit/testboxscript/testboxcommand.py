@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcommand.py 70548 2018-01-11 20:46:02Z vboxsync $
+# $Id: testboxcommand.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 TestBox Script - Command Processor.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70548 $"
+__version__ = "$Revision: 70660 $"
 
 # Standard python imports.
 import os;
@@ -243,6 +243,7 @@ class TestBoxCommand(object):
         if fReboot:
             self.doReboot();
         sys.exit(TBS_EXITCODE_NEED_UPGRADE);
+        return False;                   # shuts up pylint (it will probably complain later when it learns DECL_NO_RETURN).
 
     def _cmdUpgrade(self, oResponse, oConnection):
         """

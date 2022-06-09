@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: wuihlpform.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,10 +26,11 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70660 $"
 
 # Standard python imports.
 import copy;
+import sys;
 
 # Validation Kit imports.
 from common                         import utils;
@@ -38,6 +39,10 @@ from testmanager                    import config;
 from testmanager.core.schedgroup    import SchedGroupMemberData, SchedGroupDataEx;
 from testmanager.core.testcaseargs  import TestCaseArgsData;
 from testmanager.core.testgroup     import TestGroupMemberData, TestGroupDataEx;
+
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    unicode = str;  # pylint: disable=redefined-builtin,invalid-name
 
 
 class WuiHlpForm(object):

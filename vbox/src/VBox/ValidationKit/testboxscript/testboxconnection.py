@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxconnection.py 70566 2018-01-12 18:25:48Z vboxsync $
+# $Id: testboxconnection.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 TestBox Script - HTTP Connection Handling.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70566 $"
+__version__ = "$Revision: 70660 $"
 
 
 # Standard python imports.
@@ -36,9 +36,9 @@ if sys.version_info[0] >= 3:
     import urllib.parse as urlparse;                        # pylint: disable=import-error,no-name-in-module
     from urllib.parse import urlencode as urllib_urlencode; # pylint: disable=import-error,no-name-in-module
 else:
-    import httplib;                                         # pylint: disable=import-error
-    import urlparse;                                        # pylint: disable=import-error
-    from urllib import urlencode as urllib_urlencode;       # pylint: disable=import-error
+    import httplib;                                         # pylint: disable=import-error,no-name-in-module
+    import urlparse;                                        # pylint: disable=import-error,no-name-in-module
+    from urllib import urlencode as urllib_urlencode;       # pylint: disable=import-error,no-name-in-module
 
 # Validation Kit imports.
 from common import constants

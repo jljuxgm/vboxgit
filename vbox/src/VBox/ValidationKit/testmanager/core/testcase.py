@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcase.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: testcase.py 70660 2018-01-21 16:18:58Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,11 +27,12 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70660 $"
 
 
 # Standard python imports.
 import copy;
+import sys;
 import unittest;
 
 # Validation Kit imports.
@@ -40,6 +41,10 @@ from testmanager.core.base              import ModelDataBase, ModelDataBaseTestC
                                                TMInvalidData, TMRowNotFound, ChangeLogEntry, AttributeChangeEntry;
 from testmanager.core.globalresource    import GlobalResourceData;
 from testmanager.core.useraccount       import UserAccountLogic;
+
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    long = int;     # pylint: disable=redefined-builtin,invalid-name
 
 
 
@@ -871,7 +876,7 @@ class TestCaseDataEx(TestCaseData):
                     try:
                         oTestCase.idTestCase = int(oTestCase.idTestCase);
                         oTestCase.initFromDbWithId(oDb, oTestCase.idTestCase);
-                    except Exception, oXcpt:
+                    except Exception as oXcpt:
                         asErrors.append('Test case dependency #%s: %s' % (oTestCase.idTestCase, oXcpt));
                 aoNewValues.append(oTestCase);
 
@@ -882,7 +887,7 @@ class TestCaseDataEx(TestCaseData):
                     try:
                         oGlobalRsrc.idTestCase = int(oGlobalRsrc.idGlobalRsrc);
                         oGlobalRsrc.initFromDbWithId(oDb, oGlobalRsrc.idGlobalRsrc);
-                    except Exception, oXcpt:
+                    except Exception as oXcpt:
                         asErrors.append('Resource dependency #%s: %s' % (oGlobalRsrc.idGlobalRsrc, oXcpt));
                 aoNewValues.append(oGlobalRsrc);
 

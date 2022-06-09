@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: wuicontentbase.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,11 +26,12 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70660 $"
 
 
 # Standard python imports.
 import copy;
+import sys;
 
 # Validation Kit imports.
 from common                         import webutils;
@@ -39,6 +40,10 @@ from testmanager.webui.wuibase      import WuiDispatcherBase, WuiException;
 from testmanager.webui.wuihlpform   import WuiHlpForm;
 from testmanager.core               import db;
 from testmanager.core.base          import AttributeChangeEntryPre;
+
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    unicode = str;  # pylint: disable=redefined-builtin,invalid-name
 
 
 class WuiHtmlBase(object): # pylint: disable=R0903
@@ -690,7 +695,7 @@ class WuiFormContentBase(WuiSingleContentBase): # pylint: disable=R0903
             self._populateForm(oForm, self._oData);
             if self._sRedirectTo is not None:
                 oForm.addTextHidden(self._oDisp.ksParamRedirectTo, self._sRedirectTo);
-        except WuiException, oXcpt:
+        except WuiException as oXcpt:
             sContent = unicode(oXcpt)
         else:
             sContent = oForm.finalize();

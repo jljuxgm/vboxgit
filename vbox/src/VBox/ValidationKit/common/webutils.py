@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webutils.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: webutils.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 Common Web Utility Functions.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70660 $"
 
 # Standard Python imports.
 import os;
@@ -35,13 +35,13 @@ import unittest;
 
 # Python 3 hacks:
 if sys.version_info[0] < 3:
-    from urllib2        import quote        as urllib_quote;
-    from urllib         import urlencode    as urllib_urlencode;
-    from urllib         import urlopen      as urllib_urlopen;
+    from urllib2        import quote        as urllib_quote;        # pylint: disable=import-error,no-name-in-module
+    from urllib         import urlencode    as urllib_urlencode;    # pylint: disable=import-error,no-name-in-module
+    from urllib         import urlopen      as urllib_urlopen;      # pylint: disable=import-error,no-name-in-module
 else:
-    from urllib.parse   import quote        as urllib_quote;        # pylint: disable=F0401,E0611
-    from urllib.parse   import urlencode    as urllib_urlencode;    # pylint: disable=F0401,E0611
-    from urllib.request import urlopen      as urllib_urlopen;      # pylint: disable=F0401,E0611
+    from urllib.parse   import quote        as urllib_quote;        # pylint: disable=import-error,no-name-in-module
+    from urllib.parse   import urlencode    as urllib_urlencode;    # pylint: disable=import-error,no-name-in-module
+    from urllib.request import urlopen      as urllib_urlopen;      # pylint: disable=import-error,no-name-in-module
 
 # Validation Kit imports.
 from common import utils;

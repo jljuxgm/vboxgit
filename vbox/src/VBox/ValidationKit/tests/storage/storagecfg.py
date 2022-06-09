@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 70522 2018-01-10 15:55:16Z vboxsync $
+# $Id: storagecfg.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70522 $"
+__version__ = "$Revision: 70660 $"
 
 # Standard Python imports.
 import os;
@@ -314,7 +314,7 @@ class StorageConfigOsLinux(StorageConfigOs):
         """
         fRc = True;
         sBlkDev = None;
-        if self.dSimplePools.has_key(sPool):
+        if sPool in self.dSimplePools:
             sDiskPath = self.dSimplePools.get(sPool);
             if sDiskPath.find('zram') != -1:
                 sBlkDev = sDiskPath;
@@ -356,7 +356,7 @@ class StorageConfigOsLinux(StorageConfigOs):
         fRc = oExec.execBinaryNoStdOut('umount', (sMountPoint,));
         self.dMounts.pop(sPool + '/' + sVol);
         oExec.rmDir(sMountPoint);
-        if self.dSimplePools.has_key(sPool):
+        if sPool in self.dSimplePools:
             # Wipe partition table
             sDiskPath = self.dSimplePools.get(sPool);
             if sDiskPath.find('zram') == -1:
@@ -371,7 +371,7 @@ class StorageConfigOsLinux(StorageConfigOs):
         Destroys the given storage pool.
         """
         fRc = True;
-        if self.dSimplePools.has_key(sPool):
+        if sPool in self.dSimplePools:
             self.dSimplePools.pop(sPool);
         else:
             fRc = oExec.execBinaryNoStdOut('vgremove', (sPool,));
@@ -564,7 +564,7 @@ class StorageCfg(object):
 
         fRc = True;
         sMountPoint = None;
-        if self.dPools.has_key(sPool):
+        if sPool in self.dPools:
             sVol = 'vol' + str(self.iVolId);
             sMountPoint = self.oStorOs.getMntBase() + '/' + sVol;
             self.iVolId += 1;

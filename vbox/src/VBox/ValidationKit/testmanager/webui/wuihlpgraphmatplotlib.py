@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpgraphmatplotlib.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: wuihlpgraphmatplotlib.py 70660 2018-01-21 16:18:58Z vboxsync $
 
 """
 Test Manager Web-UI - Graph Helpers - Implemented using matplotlib.
@@ -26,16 +26,20 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70660 $"
 
 # Standard Python Import and extensions installed on the system.
 import re;
-import StringIO;
+import sys;
+if sys.version_info[0] >= 3:
+    from io       import StringIO as StringIO;  # pylint: disable=import-error,no-name-in-module
+else:
+    from StringIO import StringIO as StringIO;  # pylint: disable=import-error,no-name-in-module
 
-import matplotlib;                          # pylint: disable=F0401
+import matplotlib;                              # pylint: disable=F0401
 matplotlib.use('Agg'); # Force backend.
-import matplotlib.pyplot;                   # pylint: disable=F0401
-from numpy import arange as numpy_arange;   # pylint: disable=E0611,E0401
+import matplotlib.pyplot;                       # pylint: disable=F0401
+from numpy import arange as numpy_arange;       # pylint: disable=E0611,E0401
 
 # Validation Kit imports.
 from testmanager.webui.wuihlpgraphbase  import WuiHlpGraphBase;
@@ -69,7 +73,7 @@ class WuiHlpGraphMatplotlibBase(WuiHlpGraphBase):
 
     def _produceSvg(self, oFigure, fTightLayout = True):
         """ Creates an SVG string from the given figure. """
-        oOutput = StringIO.StringIO();
+        oOutput = StringIO();
         if fTightLayout:
             oFigure.tight_layout();
         oFigure.savefig(oOutput, format = 'svg');

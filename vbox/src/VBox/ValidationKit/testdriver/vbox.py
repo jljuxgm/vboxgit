@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 70611 2018-01-17 15:47:10Z vboxsync $
+# $Id: vbox.py 70660 2018-01-21 16:18:58Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70611 $"
+__version__ = "$Revision: 70660 $"
 
 
 # Standard Python imports.
@@ -1449,7 +1449,7 @@ class TestDriver(base.TestDriver):                                              
                 reporter.logXcpt();
 
             # If not being used, we can safely uninitialize COM.
-            if cIfs == 0 and cObjs == 0 and cVBoxMgrs == 0 and len(aoObjsLeftBehind) == 0:
+            if cIfs == 0 and cObjs == 0 and cVBoxMgrs == 0 and not aoObjsLeftBehind:
                 reporter.log('_teardownVBoxApi:   Calling CoUninitialize...');
                 try:    pythoncom.CoUninitialize();             # pylint: disable=no-member
                 except: reporter.logXcpt();
@@ -1500,7 +1500,7 @@ class TestDriver(base.TestDriver):                                              
                         reporter.log('_teardownVBoxApi:     - aoObjsLeftBehind');
                     else:
                         fPrinted = False;
-                        if isinstance(oReferrer, dict) or isinstance(oReferrer, list) or isinstance(oReferrer, tuple):
+                        if isinstance(oReferrer, (dict, list, tuple)):
                             try:
                                 aoSubReferreres = gc.get_referrers(oReferrer);
                                 for oSubRef in aoSubReferreres:
