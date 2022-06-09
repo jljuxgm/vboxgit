@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 71533 2018-03-28 09:35:16Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 71562 2018-03-29 11:10:12Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -283,6 +283,9 @@ int GuestSessionTask::fileCopyFromEx(const Utf8Str &strSource, const Utf8Str &st
 
     RTMSINTERVAL msTimeout = 30 * 1000; /** @todo 30s timeout for all actions. Make this configurable? */
 
+    LogFlowFunc(("strSource=%s, strDest=%s, fCopyFlags=0x%x, cbOff=%RU64, cbSize=%RU64\n",
+                 strSource.c_str(), strDest.c_str(), enmFileCopyFlags, cbOffset, cbSize));
+
     /*
      * Note: There will be races between querying file size + reading the guest file's
      *       content because we currently *do not* lock down the guest file when doing the
@@ -522,6 +525,7 @@ int GuestSessionTask::fileCopyFromEx(const Utf8Str &strSource, const Utf8Str &st
         rc = VERR_INTERRUPTED;
     }
 
+    LogFlowFuncLeaveRC(rc);
     return rc;
 }
 
