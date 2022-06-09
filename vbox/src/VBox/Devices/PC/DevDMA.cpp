@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 71214 2018-03-05 20:31:03Z vboxsync $ */
+/* $Id: DevDMA.cpp 71216 2018-03-05 20:49:15Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -108,6 +108,7 @@ typedef struct {
     uint16_t                            u16CurAddr;     /* Current address. */
     uint16_t                            u16CurCount;    /* Current count. */
     uint8_t                             u8Mode;         /* Channel mode. */
+    uint8_t                             abPadding[7];
 } DMAChannel;
 
 /* State information for a DMA controller (DMA8 or DMA16). */
