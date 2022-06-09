@@ -1,4 +1,4 @@
-/* $Id: isomakercmd.cpp 67511 2017-06-20 14:30:30Z vboxsync $ */
+/* $Id: isomakercmd.cpp 67538 2017-06-21 12:48:19Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker Command.
  */
@@ -1873,7 +1873,8 @@ static int rtFsIsoMakerCmdOptEltoritoCommitBootCatalog(PRTFSISOMAKERCMDOPTS pOpt
                                                         pBootCatEntry->u.Section.bSystemType,
                                                         pBootCatEntry->u.Section.fBootable,
                                                         pBootCatEntry->u.Section.uLoadSeg,
-                                                        pBootCatEntry->u.Section.cSectorsToLoad);
+                                                        pBootCatEntry->u.Section.cSectorsToLoad,
+                                                        ISO9660_ELTORITO_SEL_CRIT_TYPE_NONE, NULL, 0);
                 if (RT_FAILURE(rc))
                     return rtFsIsoMakerCmdErrorRc(pOpts, rc, "RTFsIsoMakerBootCatSetSectionEntry failed on entry #%u: %Rrc\n",
                                                   idxBootCat, rc);
