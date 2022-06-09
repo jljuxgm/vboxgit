@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 70521 2018-01-10 15:49:10Z vboxsync $
+# $Id: tdUnitTest1.py 71928 2018-04-20 07:14:16Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70521 $"
+__version__ = "$Revision: 71928 $"
 
 
 # Standard Python imports.
@@ -356,6 +356,12 @@ class tdUnitTest1(vbox.TestDriver):
         sBinOrDist = 'dist' if utils.getHostOs() in [ 'darwin', ] else 'bin';
         asCandidates = [
             self.oBuild.sInstallPath,
+            os.path.join(self.sScratchPath, utils.getHostOsDotArch(), self.oBuild.sType, sBinOrDist),
+            os.path.join(self.sScratchPath, utils.getHostOsDotArch(), 'release', sBinOrDist),
+            os.path.join(self.sScratchPath, utils.getHostOsDotArch(), 'debug',   sBinOrDist),
+            os.path.join(self.sScratchPath, utils.getHostOsDotArch(), 'strict',  sBinOrDist),
+            os.path.join(self.sScratchPath, utils.getHostOsDotArch(), 'dbgopt',  sBinOrDist),
+            os.path.join(self.sScratchPath, utils.getHostOsDotArch(), 'profile', sBinOrDist),
             os.path.join(self.sScratchPath, sBinOrDist + '.' + utils.getHostArch()),
             os.path.join(self.sScratchPath, sBinOrDist, utils.getHostArch()),
             os.path.join(self.sScratchPath, sBinOrDist),
