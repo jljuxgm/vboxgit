@@ -1,4 +1,4 @@
-; $Id: VBoxSFA.asm 33540 2010-10-28 09:27:05Z vboxsync $
+; $Id: VBoxSFA.asm 68577 2017-08-31 12:11:00Z vboxsync $
 ;; @file
 ; VBoxSF - OS/2 Shared Folders, all assembly code (16 -> 32 thunking mostly).
 ;
@@ -330,11 +330,11 @@ GLOBALNAME g_VBoxGuestAttachDD
 ;;
 ; The AttachDD name of the VBoxGuest.sys driver.
 GLOBALNAME g_szVBoxGuestName
-    db VBOXGUEST_DEVICE_NAME, 0
+    db VBOXGUEST_DEVICE_NAME_SHORT, 0
 ;;
 ; The VBoxGuest IDC connection data.
 GLOBALNAME g_VBoxGuestIDC
-    times VBGOS2IDC_size db 0
+    times VBGLOS2ATTACHDD_size db 0
 
 ;;
 ; This must be present, we've got fixups against it.
