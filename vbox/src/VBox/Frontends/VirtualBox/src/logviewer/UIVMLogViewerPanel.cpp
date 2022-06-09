@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 70715 2018-01-23 17:39:38Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.cpp 70745 2018-01-25 15:52:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -106,7 +106,8 @@ void UIVMLogViewerPanel::retranslateUi()
 
 bool UIVMLogViewerPanel::eventFilter(QObject *pObject, QEvent *pEvent)
 {
-    return QWidget::eventFilter(pObject, pEvent);
+    /* Dont consume this event. Pass it back to Qt's event system: */
+    return false;
 }
 
 void UIVMLogViewerPanel::showEvent(QShowEvent *pEvent)

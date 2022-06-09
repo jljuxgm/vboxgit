@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 70711 2018-01-23 16:14:36Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 70745 2018-01-25 15:52:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -359,10 +359,10 @@ void UIVMLogViewerSearchPanel::retranslateUi()
         m_pSearchEditor->setToolTip(UIVMLogViewerWidget::tr("Enter a search string here"));
 
     if (m_pNextButton)
-        m_pNextButton->setToolTip(UIVMLogViewerWidget::tr("Search for the previous occurrence of the string"));
+        m_pNextButton->setToolTip(UIVMLogViewerWidget::tr("Search for the previous occurrence of the string (F3)"));
 
     if (m_pPreviousButton)
-        m_pPreviousButton->setToolTip(UIVMLogViewerWidget::tr("Search for the previous occurrence of the string"));
+        m_pPreviousButton->setToolTip(UIVMLogViewerWidget::tr("Search for the previous occurrence of the string (Shift+F3)"));
 
 
     if (m_pCaseSensitiveCheckBox)
@@ -419,7 +419,6 @@ bool UIVMLogViewerSearchPanel::eventFilter(QObject *pObject, QEvent *pEvent)
     /* Depending on event-type: */
     switch (pEvent->type())
     {
-
         /* Process key press only: */
         case QEvent::KeyPress:
         {

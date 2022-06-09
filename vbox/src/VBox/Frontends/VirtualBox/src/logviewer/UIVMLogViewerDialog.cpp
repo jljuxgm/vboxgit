@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 70664 2018-01-22 07:09:07Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 70745 2018-01-25 15:52:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -63,7 +63,6 @@ UIVMLogViewerDialog::UIVMLogViewerDialog(QWidget *pCenterWidget, const CMachine 
 void UIVMLogViewerDialog::retranslateUi()
 {
     button(ButtonType_Close)->setText(UIVMLogViewerWidget::tr("Close"));
-    button(ButtonType_Close)->setShortcut(Qt::Key_Escape);
     /* Setup a dialog caption: */
     if (!m_comMachine.isNull())
         setWindowTitle(tr("%1 - Log Viewer").arg(m_comMachine.GetName()));
