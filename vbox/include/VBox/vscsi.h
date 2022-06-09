@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: vscsi.h 70688 2018-01-22 19:38:45Z vboxsync $ */
 /** @file
  * VBox storage drivers - Virtual SCSI driver
  */
@@ -244,6 +244,21 @@ typedef struct VSCSILUNIOCALLBACKS
      * @param   pfFeatures      Where to return the queried features.
      */
     DECLR3CALLBACKMEMBER(int, pfnVScsiLunGetFeatureFlags,(VSCSILUN hVScsiLun, void *pvScsiLunUser, uint64_t *pfFeatures));
+
+    /**
+     * Queries the vendor and product ID and revision to report for INQUIRY commands of the given LUN.
+     *
+     * @returns VBox status status code.
+     * @retval  VERR_NOT_FOUND if the data is not available and some defaults should be sued instead.
+     * @param   hVScsiLun        Virtual SCSI LUN handle.
+     * @param   pvScsiLunUser    Opaque user data which may be used to identify the
+     *                           medium.
+     * @param   ppszVendorId     Where to store the pointer to the vendor ID string to report.
+     * @param   ppszProductId    Where to store the pointer to the product ID string to report.
+     * @param   ppszProductLevel Where to store the pointer to the product level string to report.
+     */
+    DECLR3CALLBACKMEMBER(int, pfnVScsiLunQueryInqStrings, (VSCSILUN hVScsiLun, void *pvScsiLunUser, const char **ppszVendorId,
+                                                           const char **ppszProductId, const char **ppszProductLevel));
 
 } VSCSILUNIOCALLBACKS;
 /** Pointer to a virtual SCSI LUN I/O callback table. */

@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VSCSIInternal.h 70688 2018-01-22 19:38:45Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -628,13 +628,36 @@ DECLINLINE(int) vscsiLunReqTransferEnqueue(PVSCSILUNINT pVScsiLun, PVSCSIIOREQIN
  *
  * @returns VBox status code.
  * @param   pVScsiLun   The LUN.
- * @param   pVScsiIoReq The I/O request to enqueue.
+ * @param   pfFeatures  Where to sthre supported flags on success.
  */
 DECLINLINE(int) vscsiLunGetFeatureFlags(PVSCSILUNINT pVScsiLun, uint64_t *pfFeatures)
 {
     return pVScsiLun->pVScsiLunIoCallbacks->pfnVScsiLunGetFeatureFlags(pVScsiLun,
                                                                        pVScsiLun->pvVScsiLunUser,
                                                                        pfFeatures);
+}
+
+/**
+ * Wrapper for the query INQUIRY strings I/O callback.
+ *
+ * @returns VBox status code.
+ * @param   pVScsiLun   The LUN.
+ * @param   ppszVendorId     Where to store the pointer to the vendor ID string to report.
+ * @param   ppszProductId    Where to store the pointer to the product ID string to report.
+ * @param   ppszProductLevel Where to store the pointer to the revision string to report.
+ */
+DECLINLINE(int) vscsiLunQueryInqStrings(PVSCSILUNINT pVScsiLun, const char **ppszVendorId,
+                                        const char **ppszProductId, const char **ppszProductLevel)
+{
+    if (pVScsiLun->pVScsiLunIoCallbacks->pfnVScsiLunQueryInqStrings)
+    {
+        return pVScsiLun->pVScsiLunIoCallbacks->pfnVScsiLunQueryInqStrings(pVScsiLun,
+                                                                           pVScsiLun->pvVScsiLunUser,
+                                                                           ppszVendorId, ppszProductId,
+                                                                           ppszProductLevel);
+    }
+
+    return VERR_NOT_FOUND;
 }
 
 /**
