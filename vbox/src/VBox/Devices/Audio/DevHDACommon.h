@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 70121 2017-12-14 10:04:55Z vboxsync $ */
+/* $Id: DevHDACommon.h 70250 2017-12-20 18:21:10Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -577,6 +577,7 @@ typedef struct HDABDLE
 /** @name Object lookup functions.
  * @{
  */
+PHDAMIXERSINK hdaGetDefaultSink(PHDASTATE pThis, uint8_t uSD);
 PDMAUDIODIR   hdaGetDirFromSD(uint8_t uSD);
 PHDASTREAM    hdaGetStreamFromSD(PHDASTATE pThis, uint8_t uSD);
 PHDASTREAM    hdaGetStreamFromSink(PHDASTATE pThis, PHDAMIXERSINK pSink);
