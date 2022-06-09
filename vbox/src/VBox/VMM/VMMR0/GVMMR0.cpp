@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 68011 2017-07-17 17:34:33Z vboxsync $ */
+/* $Id: GVMMR0.cpp 68013 2017-07-17 17:59:59Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1719,25 +1719,6 @@ static int gvmmR0ByGVMandVM(PGVM pGVM, PVM pVM, PGVMM *ppGVMM, bool fTakeUsedLoc
     else
         rc = VERR_INVALID_POINTER;
     return rc;
-}
-
-
-/**
- * Lookup a GVM structure by the shared VM structure.
- *
- * @returns VBox status code.
- * @param   pVM         The cross context VM structure.
- * @param   ppGVM       Where to store the GVM pointer.
- *
- * @remark  This will not take the 'used'-lock because it doesn't do
- *          nesting and this function will be used from under the lock.
- *          Update: This is no longer true.  Consider taking the lock in shared
- *          mode!
- */
-GVMMR0DECL(int) GVMMR0ByVM(PVM pVM, PGVM *ppGVM)
-{
-    PGVMM pGVMM;
-    return gvmmR0ByVM(pVM, ppGVM, &pGVMM, false /* fTakeUsedLock */);
 }
 
 
