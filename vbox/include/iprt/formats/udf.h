@@ -1,4 +1,4 @@
-/* $Id: udf.h 68397 2017-08-11 14:47:48Z vboxsync $ */
+/* $Id: udf.h 68398 2017-08-11 15:48:39Z vboxsync $ */
 /** @file
  * IPRT, Universal Disk Format (UDF).
  */
@@ -1027,7 +1027,7 @@ typedef UDFFILEIDDESC *PUDFFILEIDDESC;
 
 
 /**
- * UDF allocation extent descriptor (@ecma167{4,14.5,93}, @udf256{2.3.11,67}).
+ * UDF allocation extent descriptor (@ecma167{4,14.5,93}, @udf260{2.3.11,67}).
  */
 typedef struct UDFALLOCATIONEXTENTDESC
 {
