@@ -1,9 +1,11 @@
-/* $Id: process-r0drv-netbsd.c 63346 2016-08-11 18:51:48Z vboxsync $ */
+/* $Id: process-r0drv-netbsd.c 69214 2017-10-24 14:34:46Z vboxsync $ */
 /** @file
  * IPRT - Process Management, Ring-0 Driver, NetBSD.
  */
 
 /*
+ * Copyright (c) 2007 knut st. osmundsen <bird-src-spam@anduin.net>
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -46,3 +48,4 @@ RTR0DECL(RTR0PROCESS) RTR0ProcHandleSelf(void)
 {
     return (RTR0PROCESS)curproc;
 }
+
