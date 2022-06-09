@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 68537 2017-08-28 13:50:35Z vboxsync $ */
+/* $Id: Settings.cpp 68905 2017-09-28 12:07:49Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3825,7 +3825,11 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
         hw.vrdeSettings.fEnabled = false;
         /* The new default is disabled, before it was enabled by default. */
         hw.audioAdapter.fEnabled = false;
-        /* The new default is disabled, before it was enabled by default. */
+    }
+    else if (m->sv >= SettingsVersion_v1_17)
+    {
+        /* Starting with VirtualBox 5.2 the default is disabled, before it was
+         * enabled. This needs to matched by AudioAdapter::areDefaultSettings(). */
         hw.audioAdapter.fEnabledIn = false;
         /* The new default is disabled, before it was enabled by default. */
         hw.audioAdapter.fEnabledOut = false;
