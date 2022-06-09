@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 68485 2017-08-21 13:48:12Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 68487 2017-08-21 14:06:12Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -455,7 +455,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
         else if (!strcmp(a->argv[1], "audioin"))
         {
             ComPtr<IAudioAdapter> adapter;
-            CHECK_ERROR_BREAK(sessionMachine, GetAudioAdapter(adapter.asOutParam()));
+            CHECK_ERROR_BREAK(sessionMachine, COMGETTER(AudioAdapter)(adapter.asOutParam()));
             if (adapter)
             {
                 if (!strcmp(a->argv[2], "on"))
@@ -485,7 +485,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
         else if (!strcmp(a->argv[1], "audioout"))
         {
             ComPtr<IAudioAdapter> adapter;
-            CHECK_ERROR_BREAK(sessionMachine, GetAudioAdapter(adapter.asOutParam()));
+            CHECK_ERROR_BREAK(sessionMachine, COMGETTER(AudioAdapter)(adapter.asOutParam()));
             if (adapter)
             {
                 if (!strcmp(a->argv[2], "on"))
