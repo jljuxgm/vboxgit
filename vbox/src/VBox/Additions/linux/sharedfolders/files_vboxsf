@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxsf 67293 2017-06-08 11:50:14Z vboxsync $
+# $Id: files_vboxsf 67295 2017-06-08 12:05:32Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -38,6 +38,7 @@ FILES_VBOXSF_NOBIN=" \
     ${PATH_ROOT}/include/iprt/string.h=>include/iprt/string.h \
     ${PATH_ROOT}/include/iprt/time.h=>include/iprt/time.h \
     ${PATH_ROOT}/include/iprt/types.h=>include/iprt/types.h \
+    ${PATH_ROOT}/include/iprt/uint64.h=>include/iprt/uint64.h \
     ${PATH_ROOT}/include/iprt/uni.h=>include/iprt/uni.h \
     ${PATH_ROOT}/include/iprt/utf16.h=>include/iprt/utf16.h \
     ${PATH_ROOT}/include/VBox/cdefs.h=>include/VBox/cdefs.h \
