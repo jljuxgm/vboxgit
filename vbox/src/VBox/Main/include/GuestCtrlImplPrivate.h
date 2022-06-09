@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 71264 2018-03-07 18:20:22Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 71314 2018-03-13 15:51:14Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -982,6 +982,18 @@ public:
     uint32_t Type(void) const { return uType; }
 
     void* MutableRaw(void) { return pvData; }
+
+    Utf8Str ToString(void)
+    {
+        const char  *pszStr = (const char *)pvData;
+              size_t cbStr  = cbData;
+
+        if (!RTStrValidateEncodingEx(pszStr, cbStr,
+                                     RTSTR_VALIDATE_ENCODING_ZERO_TERMINATED | RTSTR_VALIDATE_ENCODING_EXACT_LENGTH))
+            return "";
+
+        return Utf8Str(pszStr, cbStr);
+    }
 
 protected:
 
