@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 71398 2018-03-20 12:54:33Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -26,12 +26,6 @@
 #include <VBox/hgcmsvc.h> /* For PVBOXHGCMSVCPARM. */
 #include <VBox/GuestHost/DragAndDrop.h>
 #include <VBox/HostServices/DragAndDropSvc.h>
-
-#ifdef LOG_GROUP
- #undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_GUEST_DND
-#include <VBox/log.h>
 
 /**
  * Forward prototype declarations.
