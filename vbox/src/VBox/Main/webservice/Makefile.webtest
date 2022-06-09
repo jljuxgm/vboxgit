@@ -1,4 +1,4 @@
-# $Id: Makefile.webtest 69385 2017-10-26 16:51:24Z vboxsync $
+# $Id: Makefile.webtest 69386 2017-10-26 16:53:32Z vboxsync $
 ## @files
 # ???
 #
@@ -60,7 +60,7 @@ stdsoap2.o: $(PATH_GSOAP)/stdsoap2.cpp
 gsoapH_from_xslt.h:
 	$(XSLTPROC) -o $@ $(WEBSRVWSDL2GSOAPH) $(VBOXWEBWSDL)
 
-vboxwebsrv.nsmap: 
+vboxwebsrv.nsmap:
 	$(XSLTPROC) -o $@ $(WEBSRVNSMAPXSL) $(VBOXWEBIDLSRC)
 
 $(subst soapC,%,$(SOAPCCPP)): split-soapC %.cpp
