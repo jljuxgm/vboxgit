@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.h 71479 2018-03-23 10:43:03Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.h 71577 2018-03-29 17:13:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -25,7 +25,6 @@
 class QComboBox;
 class QFrame;
 class QIToolButton;
-class UIRoundRectSegmentedButton;
 
 /** UIVMLogViewerPanel extension providing GUI for bookmark management. Show a list of bookmarks currently set
   for displayed log page. It has controls to navigate and clear bookmarks. */
