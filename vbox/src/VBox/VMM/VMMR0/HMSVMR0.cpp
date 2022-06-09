@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72600 2018-06-18 13:40:48Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72609 2018-06-19 08:37:12Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6271,7 +6271,7 @@ HMSVM_EXIT_DECL hmR0SvmExitRdtsc(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvm
 HMSVM_EXIT_DECL hmR0SvmExitRdtscp(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTransient)
 {
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS();
-    VBOXSTRICTRC rcStrict = IEMExecDecodedRdtscp(pVCpu, hmR0SvmGetInstrLengthHwAssist(pVCpu, pCtx, 2));
+    VBOXSTRICTRC rcStrict = IEMExecDecodedRdtscp(pVCpu, hmR0SvmGetInstrLengthHwAssist(pVCpu, pCtx, 3));
     if (rcStrict == VINF_SUCCESS)
         pSvmTransient->fUpdateTscOffsetting = true;
     else if (rcStrict == VINF_EM_RESCHEDULE)
