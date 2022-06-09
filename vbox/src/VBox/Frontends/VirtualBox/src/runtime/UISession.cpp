@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 72330 2018-05-24 20:17:03Z vboxsync $ */
+/* $Id: UISession.cpp 72457 2018-06-06 06:09:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -900,12 +900,12 @@ void UISession::sltAdditionsChange()
         actionPool()->toRuntime()->setGuestSupportsGraphics(m_fIsGuestSupportsGraphics);
 
         /* Notify listeners about GA state really changed: */
-        LogRel(("GUI: UISession::sltAdditionsChange: GA state really changed, notifying listeners.\n"));
+        LogRel(("GUI: UISession::sltAdditionsChange: GA state really changed, notifying listeners\n"));
         emit sigAdditionsStateActualChange();
     }
 
     /* Notify listeners about GA state change event came: */
-    LogRel(("GUI: UISession::sltAdditionsChange: GA state change event came, notifying listeners.\n"));
+    LogRel(("GUI: UISession::sltAdditionsChange: GA state change event came, notifying listeners\n"));
     emit sigAdditionsStateChange();
 }
 
