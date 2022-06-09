@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: vboxwrappers.py 70490 2018-01-08 22:14:41Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 70490 $"
 
 
 # Standard Python imports.
@@ -44,23 +44,34 @@ from testdriver import vbox;
 from testdriver.base    import TdTaskBase;
 
 
-def _ControllerNameToBus(sController):
+def _ControllerNameToBusAndType(sController):
     """ Translate a controller name to a storage bus. """
     if sController == "IDE Controller":
-        iType = vboxcon.StorageBus_IDE;
+        eBus  = vboxcon.StorageBus_IDE;
+        eType = vboxcon.StorageControllerType_PIIX4;
     elif sController == "SATA Controller":
-        iType = vboxcon.StorageBus_SATA;
+        eBus  = vboxcon.StorageBus_SATA;
+        eType = vboxcon.StorageControllerType_IntelAhci;
     elif sController == "Floppy Controller":
-        iType = vboxcon.StorageBus_Floppy;
+        eType = vboxcon.StorageControllerType_I82078;
+        eBus  = vboxcon.StorageBus_Floppy;
     elif sController == "SAS Controller":
-        iType = vboxcon.StorageBus_SAS;
+        eBus  = vboxcon.StorageBus_SAS;
+        eType = vboxcon.StorageControllerType_LsiLogicSas;
     elif sController == "SCSI Controller":
-        iType = vboxcon.StorageBus_SCSI;
+        eBus  = vboxcon.StorageBus_SCSI;
+        eType = vboxcon.StorageControllerType_LsiLogic;
+    elif sController == "BusLogic SCSI Controller":
+        eBus  = vboxcon.StorageBus_SCSI;
+        eType = vboxcon.StorageControllerType_BusLogic;
     elif sController == "NVMe Controller":
-        iType = vboxcon.StorageBus_PCIe;
+        eBus  = vboxcon.StorageBus_PCIe;
+        eType = vboxcon.StorageControllerType_NVMe;
     else:
-        iType = vboxcon.StorageBus_Null;
-    return iType;
+        eBus  = vboxcon.StorageBus_Null;
+        eType = vboxcon.StorageControllerType_Null;
+    return (eBus, eType);
+
 
 def _nameMachineState(eState):
     """ Gets the name (string) of a machine state."""
@@ -1631,13 +1642,21 @@ class SessionWrapper(TdTaskBase):
             try:
                 self.o.machine.getStorageControllerByName(sController);
             except:
-                iType = _ControllerNameToBus(sController);
+                (eBus, eType) = _ControllerNameToBusAndType(sController);
                 try:
-                    self.o.machine.addStorageController(sController, iType);
-                    reporter.log('added storage controller "%s" (type %s) to %s' % (sController, iType, self.sName));
+                    oCtl = self.o.machine.addStorageController(sController, eBus);
                 except:
-                    reporter.errorXcpt('addStorageController("%s",%s) failed on "%s"' % (sController, iType, self.sName) );
+                    reporter.errorXcpt('addStorageController("%s",%s) failed on "%s"' % (sController, eBus, self.sName) );
                     return False;
+                else:
+                    try:
+                        oCtl.controllerType = eType;
+                        reporter.log('added storage controller "%s" (bus %s, type %s) to %s'
+                                    % (sController, eBus, eType, self.sName));
+                    except:
+                        reporter.errorXcpt('controllerType = %s on ("%s" / %s) failed on "%s"'
+                                           % (eType, sController, eBus, self.sName) );
+                        return False;
         finally:
             self.oTstDrv.processPendingEvents();
         return True;
@@ -1696,12 +1715,12 @@ class SessionWrapper(TdTaskBase):
         try:
             oCtl = self.o.machine.getStorageControllerByName(sController);
         except:
-            iType = _ControllerNameToBus(sController);
+            (eBus, _) = _ControllerNameToBusAndType(sController);
             try:
-                oCtl = self.o.machine.addStorageController(sController, iType);
-                reporter.log('added storage controller "%s" (type %s) to %s' % (sController, iType, self.sName));
+                oCtl = self.o.machine.addStorageController(sController, eBus);
+                reporter.log('added storage controller "%s" (bus %s) to %s' % (sController, eBus, self.sName));
             except:
-                reporter.errorXcpt('addStorageController("%s",%s) failed on "%s"' % (sController, iType, self.sName) );
+                reporter.errorXcpt('addStorageController("%s",%s) failed on "%s"' % (sController, eBus, self.sName) );
                 return False;
         try:
             oCtl.controllerType = eType;
