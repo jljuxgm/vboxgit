@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 68272 2017-08-03 08:25:32Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 68376 2017-08-10 16:16:01Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -920,6 +920,7 @@ static int alsaStreamGetAvail(snd_pcm_t *phPCM, snd_pcm_sframes_t *pFramesAvail)
             *pFramesAvail = framesAvail;
     }
 
+    LogFunc(("cFrames=%ld, rc=%Rrc\n", framesAvail, rc));
     return rc;
 }
 
@@ -956,6 +957,8 @@ static int alsaStreamResume(snd_pcm_t *phPCM)
 
 static int drvHostALSAAudioStreamCtl(snd_pcm_t *phPCM, bool fPause)
 {
+    int rc = VINF_SUCCESS;
+
     int err;
     if (fPause)
     {
@@ -963,7 +966,7 @@ static int drvHostALSAAudioStreamCtl(snd_pcm_t *phPCM, bool fPause)
         if (err < 0)
         {
             LogRel(("ALSA: Error stopping stream %p: %s\n", phPCM, snd_strerror(err)));
-            return VERR_ACCESS_DENIED;
+            rc = VERR_ACCESS_DENIED; /** @todo Find a better rc. */
         }
     }
     else
@@ -972,11 +975,20 @@ static int drvHostALSAAudioStreamCtl(snd_pcm_t *phPCM, bool fPause)
         if (err < 0)
         {
             LogRel(("ALSA: Error preparing stream %p: %s\n", phPCM, snd_strerror(err)));
-            return VERR_ACCESS_DENIED;
+            rc = VERR_ACCESS_DENIED; /** @todo Find a better rc. */
+        }
+        else
+        {
+            err = snd_pcm_start(phPCM);
+            if (err < 0)
+            {
+                LogRel(("ALSA: Error starting stream %p: %s\n", phPCM, snd_strerror(err)));
+                rc = VERR_ACCESS_DENIED; /** @todo Find a better rc. */
+            }
         }
     }
 
-    return VINF_SUCCESS;
+    return rc;
 }
 
 
