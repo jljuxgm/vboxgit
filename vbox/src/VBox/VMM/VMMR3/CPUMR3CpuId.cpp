@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 72345 2018-05-25 13:50:14Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 72456 2018-06-06 03:53:15Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3943,10 +3943,8 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
     AssertLogRelRCReturn(rc, rc);
     if (   pConfig->fNestedHWVirt
         && !fNestedPagingAndFullGuestExec)
-    {
-        LogRel(("CPUM: Warning! Can't turn on nested VT-x/AMD-V without nested-paging and unrestricted guest execution!\n"));
-        pConfig->fNestedHWVirt = false;
-    }
+        return VMSetError(pVM, VERR_CPUM_INVALID_HWVIRT_CONFIG, RT_SRC_POS,
+                          "Cannot enable nested VT-x/AMD-V without nested-paging and unresricted guest execution!\n");
 #endif
 
     /*
