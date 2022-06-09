@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 70087 2017-12-12 17:36:57Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 70133 2017-12-14 16:20:14Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -885,6 +885,13 @@ int VBOXCALL VBoxGuestIDC(void *pvSession, uintptr_t uReq, PVBGLREQHDR pReqHdr, 
 
 MODULE(MODULE_CLASS_DRIVER, vboxguest, "pci");
 
+/*
+ * XXX: See netbsd/vboxguest.ioconf for the details.
+*/
+#if 0
+#include "ioconf.c"
+#else
+
 static const struct cfiattrdata wsmousedevcf_iattrdata = {
     "wsmousedev", 1, {
         { "mux", "0", 0 },
@@ -938,6 +945,8 @@ static const struct cfattachinit cfattach_ioconf_vboxguest[] = {
     { "vboxguest", vboxguest_cfattachinit },
     { NULL, NULL }
 };
+#endif
+
 
 static int
 vboxguest_modcmd(modcmd_t cmd, void *opaque)
