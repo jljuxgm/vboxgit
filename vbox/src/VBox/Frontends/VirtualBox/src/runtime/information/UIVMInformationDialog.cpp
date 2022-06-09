@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 71037 2018-02-16 12:46:20Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 71101 2018-02-22 13:30:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -37,7 +37,7 @@
 # include "VBoxGlobal.h"
 # include "VBoxUtils.h"
 # include "UIInformationConfiguration.h"
-# include "UIInformationGuestSession.h"
+# include "UIGuestControlWidget.h"
 # include "UIInformationRuntime.h"
 # include "UIMachine.h"
 # include "UIVMItem.h"
@@ -244,11 +244,11 @@ void UIVMInformationDialog::prepareTabWidget()
 
         if(m_pMachineWindow->console().isOk())
         {
-            UIInformationGuestSession *pGuestSessionWidget =
-                new UIInformationGuestSession(this, m_pMachineWindow->console().GetGuest());
-            if (pGuestSessionWidget)
+            UIGuestControlWidget *pGuestControlWidget =
+                new UIGuestControlWidget(this, m_pMachineWindow->console().GetGuest());
+            if (pGuestControlWidget)
             {
-                m_tabs.insert(2, pGuestSessionWidget);
+                m_tabs.insert(2, pGuestControlWidget);
                 m_pTabWidget->addTab(m_tabs.value(2), QString());
             }
         }
