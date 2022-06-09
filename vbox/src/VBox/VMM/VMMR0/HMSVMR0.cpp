@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 71965 2018-04-23 03:57:03Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 71970 2018-04-23 09:04:53Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7818,9 +7818,7 @@ HMSVM_EXIT_DECL hmR0SvmExitInvlpga(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
 HMSVM_EXIT_DECL hmR0SvmExitVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTransient)
 {
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS();
-    /** @todo Stat. */
-    /* STAM_COUNTER_INC(&pVCpu->hm.s.StatExitVmrun); */
-#if 0
+
     VBOXSTRICTRC rcStrict;
     uint8_t const cbInstr = hmR0SvmGetInstrLengthHwAssist(pVCpu, pCtx, 3);
     rcStrict = IEMExecDecodedVmrun(pVCpu, cbInstr);
@@ -7831,8 +7829,6 @@ HMSVM_EXIT_DECL hmR0SvmExitVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvm
         HMCPU_CF_SET(pVCpu, HM_CHANGED_ALL_GUEST);
     }
     return VBOXSTRICTRC_VAL(rcStrict);
-#endif
-    return VERR_EM_INTERPRETER;
 }
 
 
