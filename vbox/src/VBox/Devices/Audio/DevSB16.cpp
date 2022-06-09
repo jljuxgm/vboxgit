@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 68272 2017-08-03 08:25:32Z vboxsync $ */
+/* $Id: DevSB16.cpp 68389 2017-08-11 11:52:26Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2171,7 +2171,7 @@ static int sb16OpenOut(PSB16STATE pThis, PPDMAUDIOSTREAMCFG pCfg)
     CfgHost.Props.fSigned   = pCfg->Props.fSigned;
     CfgHost.Props.cShift    = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(CfgHost.Props.cBits, CfgHost.Props.cChannels);
 
-    RTStrPrintf(CfgHost.szName, sizeof(CfgHost.szName), "sb16.po");
+    RTStrPrintf(CfgHost.szName, sizeof(CfgHost.szName), "Output");
 
     uint8_t uLUN = 0;
 
@@ -2180,9 +2180,7 @@ static int sb16OpenOut(PSB16STATE pThis, PPDMAUDIOSTREAMCFG pCfg)
     PSB16DRIVER pDrv;
     RTListForEach(&pThis->lstDrv, pDrv, SB16DRIVER, Node)
     {
-        if (!RTStrPrintf(pCfg->szName, sizeof(pCfg->szName), "[LUN#%RU8] %s (%RU32Hz, %RU8 %s)",
-                         pDrv->uLUN, CfgHost.szName,
-                         pCfg->Props.uHz, pCfg->Props.cChannels, pCfg->Props.cChannels > 1 ? "Channels" : "Channel"))
+        if (!RTStrPrintf(pCfg->szName, sizeof(pCfg->szName), "%s", CfgHost.szName))
         {
             rc = VERR_BUFFER_OVERFLOW;
             break;

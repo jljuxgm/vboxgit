@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 68137 2017-07-27 10:54:43Z vboxsync $ */
+/* $Id: DevHDA.cpp 68389 2017-08-11 11:52:26Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -1970,8 +1970,7 @@ static DECLCALLBACK(int) hdaMixerAddStream(PHDASTATE pThis, PHDAMIXERSINK pSink,
             break;
         }
 
-        /* Include the driver's LUN in the stream name for easier identification. */
-        RTStrPrintf(pStreamCfg->szName, RT_ELEMENTS(pStreamCfg->szName), "[LUN#%RU8] %s", pDrv->uLUN, pCfg->szName);
+        RTStrPrintf(pStreamCfg->szName, RT_ELEMENTS(pStreamCfg->szName), "%s", pCfg->szName);
 
         if (pStreamCfg->enmDir == PDMAUDIODIR_IN)
         {
