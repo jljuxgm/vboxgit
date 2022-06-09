@@ -1,4 +1,4 @@
-; $Id: nt3fakesA-r0drv-nt.asm 70341 2017-12-26 14:42:28Z vboxsync $
+; $Id: nt3fakesA-r0drv-nt.asm 70381 2017-12-29 10:41:04Z vboxsync $
 ;; @file
 ; IPRT - Companion to nt3fakes-r0drv-nt.cpp that provides import stuff to satisfy the linker.
 ;
@@ -144,5 +144,4 @@ BEGINDATA
 GLOBALNAME __imp__KeTickCount
 GLOBALNAME _KeTickCount
         dd      0
-
 
