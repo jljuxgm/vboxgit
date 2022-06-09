@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 71479 2018-03-23 10:43:03Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 71638 2018-04-04 05:11:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -915,3 +915,4 @@ void UIVMLogViewerWidget::resetHighlighthing()
     logPage->documentUndo();
     logPage->clearScrollBarMarkingsVector();
 }
+

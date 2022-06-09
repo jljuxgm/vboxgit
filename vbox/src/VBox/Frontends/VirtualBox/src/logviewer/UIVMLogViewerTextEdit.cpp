@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 71370 2018-03-16 15:20:58Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 71638 2018-04-04 05:11:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -552,3 +552,4 @@ void UIVMLogViewerTextEdit::setCurrentVerticalScrollBarValue(int value)
 
 
 #include "UIVMLogViewerTextEdit.moc"
+

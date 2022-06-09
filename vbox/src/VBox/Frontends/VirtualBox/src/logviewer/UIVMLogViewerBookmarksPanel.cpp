@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.cpp 71479 2018-03-23 10:43:03Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.cpp 71638 2018-04-04 05:11:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -256,3 +256,4 @@ void UIVMLogViewerBookmarksPanel::sltGotoSelectedBookmark()
         return;
     emit sigBookmarkSelected(m_pBookmarksComboBox->currentIndex() - 1);
 }
+

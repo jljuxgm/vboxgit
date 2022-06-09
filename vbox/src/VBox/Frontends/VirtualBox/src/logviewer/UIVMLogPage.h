@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 70792 2018-01-29 13:12:06Z vboxsync $ */
+/* $Id: UIVMLogPage.h 71638 2018-04-04 05:11:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -170,3 +170,4 @@ private:
 };
 
 #endif /* !___UIVMLogPage_h___ */
+

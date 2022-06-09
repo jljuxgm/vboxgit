@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 71370 2018-03-16 15:20:58Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 71638 2018-04-04 05:11:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -658,3 +658,4 @@ QTextDocument::FindFlags UIVMLogViewerSearchPanel::constructFindFlags(SearchDire
 }
 
 #include "UIVMLogViewerSearchPanel.moc"
+

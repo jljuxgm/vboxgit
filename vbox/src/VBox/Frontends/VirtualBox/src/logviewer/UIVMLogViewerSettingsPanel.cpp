@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSettingsPanel.cpp 70663 2018-01-21 21:28:37Z vboxsync $ */
+/* $Id: UIVMLogViewerSettingsPanel.cpp 71638 2018-04-04 05:11:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -134,3 +134,4 @@ void UIVMLogViewerSettingsPanel::retranslateUi()
     m_pFontSizeLabel->setText(UIVMLogViewerWidget::tr("Font Size"));
     m_pFontSizeSpinBox->setToolTip(UIVMLogViewerWidget::tr("Log Viewer Font Size"));
 }
+
