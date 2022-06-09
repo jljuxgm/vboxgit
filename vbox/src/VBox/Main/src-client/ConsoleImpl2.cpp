@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 69008 2017-10-06 17:47:26Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 69009 2017-10-06 17:52:55Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1783,7 +1783,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             GetExtraDataBoth(virtualBox, pMachine, "VBoxInternal2/EfiResolution", &strTmp);
             if (!strTmp.isEmpty())
             {
-                size_t pos = strTmp.find('x');
+                size_t pos = strTmp.find("x");
                 if (pos != strTmp.npos)
                 {
                     Utf8Str strH, strV;
