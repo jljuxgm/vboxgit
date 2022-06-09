@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: loopback.py 71988 2018-04-23 20:08:37Z vboxsync $
+# $Id: loopback.py 72231 2018-05-17 10:55:16Z vboxsync $
 
 """
 VirtualBox Validation Kit - Serial loopback module.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71988 $"
+__version__ = "$Revision: 72231 $"
 
 # Standard Python imports.
 #import os;
@@ -119,7 +119,7 @@ class SerialLoopbackNamedPipeServ(object):
     """
     def __init__(self, sLocation, iTimeout):
         self.oConn = None;
-        self.oSock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM);
+        self.oSock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM); # pylint: disable=no-member
         self.oSock.settimeout(iTimeout);
         self.oSock.bind(sLocation);
         self.oSock.listen(1);
@@ -159,7 +159,7 @@ class SerialLoopbackNamedPipeClient(object):
     Handler for a named pipe client style connection.
     """
     def __init__(self, sLocation, iTimeout):
-        self.oConn = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM);
+        self.oConn = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM); # pylint: disable=no-member
         self.oConn.connect(sLocation);
         self.oConn.settimeout(iTimeout);
         self.iTimeout = iTimeout;

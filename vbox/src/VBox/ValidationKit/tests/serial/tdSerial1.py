@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSerial1.py 72029 2018-04-26 08:32:47Z vboxsync $
+# $Id: tdSerial1.py 72231 2018-05-17 10:55:16Z vboxsync $
 
 """
 VirtualBox Validation Kit - Serial port testing #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72029 $"
+__version__ = "$Revision: 72231 $"
 
 
 # Standard Python imports.
@@ -50,6 +50,11 @@ from testdriver import vbox;
 from testdriver import vboxcon;
 
 import loopback;
+
+# Python 3 hacks:
+if sys.version_info[0] >= 3:
+    xrange = range; # pylint: disable=redefined-builtin,invalid-name
+
 
 class tdSerial1(vbox.TestDriver):
     """
