@@ -1,4 +1,4 @@
-# $Id: Config.kmk 70082 2017-12-12 15:53:03Z vboxsync $
+# $Id: Config.kmk 70083 2017-12-12 16:07:30Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4234,7 +4234,8 @@ ifeq ($(KBUILD_TARGET),linux)
   $$(VBOX_TARGET_$(module)): $$$$($(module)_2_STAGE_TARGETS)
 	$(QUIET)$$(call MSG_L1,Doing a test build of the $(module) kernel module)
 	$(QUIET)$$(RM) -f -- "$$@"
-	$(QUIET)$$(RM) -Rf -- "$$(PATH_TARGET)/tst$(module)_mod"
+	$(QUIET)$$(TEST) -n "$$($(module)_INST)"
+	$(QUIET)$$(RM) -Rf   -- "$$(PATH_TARGET)/tst$(module)_mod"
 	$(QUIET)$$(MKDIR) -p -- "$$(PATH_TARGET)/tst$(module)_mod"
 	$(QUIET)$$(CP) -R -- "$$(PATH_STAGE_BIN)/../$$($(module)_INST)" "$$(PATH_TARGET)/tst$(module)_mod/"
 	+ $(QUIET)make KBUILD_VERBOSE=$(KBUILD_VERBOSE) KERN_DIR=$(KERN_DIR) -C $$(PATH_TARGET)/tst$(module)_mod clean
@@ -7092,7 +7093,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70082 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 70083 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
