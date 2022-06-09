@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 69193 2017-10-24 09:18:54Z vboxsync $ */
+/* $Id: VideoRec.cpp 69240 2017-10-24 16:12:23Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -1296,7 +1296,7 @@ bool VideoRecIsLimitReached(PVIDEORECCONTEXT pCtx, uint32_t uScreen, uint64_t ts
 
         /* Check for available free disk space */
         if (   pStream->File.pWEBM
-            && pStream->File.pWEBM->GetAvailableSpace() < 0x100000) /**@todo r=andy WTF? Fix this. */
+            && pStream->File.pWEBM->GetAvailableSpace() < 0x100000) /** @todo r=andy WTF? Fix this. */
         {
             LogRel(("VideoRec: Not enough free storage space available, stopping video capture\n"));
             return true;

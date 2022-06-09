@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 69194 2017-10-24 09:23:34Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 69240 2017-10-24 16:12:23Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -77,6 +77,7 @@
  * - Communicating with Main via the Console object to send the encoded audio data to.
  *   The Console object in turn then will route the data to the Display / video capturing interface then.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

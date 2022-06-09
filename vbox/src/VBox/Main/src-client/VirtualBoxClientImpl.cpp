@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 67914 2017-07-11 20:46:37Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 69240 2017-10-24 16:12:23Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -696,7 +696,7 @@ HRESULT VirtualBoxClient::checkMachineError(const ComPtr<IMachine> &aMachine)
 /////////////////////////////////////////////////////////////////////////////
 
 
-// TODO: AM Add pinging of VBoxSDS
+/// @todo AM Add pinging of VBoxSDS
 /*static*/
 DECLCALLBACK(int) VirtualBoxClient::SVCWatcherThread(RTTHREAD ThreadSelf,
                                                      void *pvUser)
