@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 68722 2017-09-12 11:45:58Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.h 68735 2017-09-13 09:20:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -148,6 +148,9 @@ private:
 
     /** Returns a details report on a given @a comMachine. */
     QString detailsReport(const CMachine &comMachine, DetailsElementType enmType);
+
+    /** Wipes the HTML stuff from the passed @a strString. */
+    static QString wipeHtmlStuff(const QString &strString);
 
     /** Summarizes generic properties. */
     static QString summarizeGenericProperties(const CNetworkAdapter &adapter);
