@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 70902 2018-02-08 10:02:08Z vboxsync $ */
+/* $Id: DrvAudio.cpp 70904 2018-02-08 10:22:48Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -3121,11 +3121,11 @@ static int drvAudioStreamDestroyInternalBackend(PDRVAUDIO pThis, PPDMAUDIOSTREAM
 
     int rc = VINF_SUCCESS;
 
-#ifdef LOG_ENABLED
+#ifdef VBOX_STRICT
     char *pszHstSts = dbgAudioStreamStatusToStr(pHstStream->fStatus);
     LogFunc(("[%s] fStatus=%s\n", pHstStream->szName, pszHstSts));
     RTStrFree(pszHstSts);
-#endif /* LOG_ENABLED */
+#endif
 
     if (pHstStream->fStatus & PDMAUDIOSTREAMSTS_FLAG_INITIALIZED)
     {
