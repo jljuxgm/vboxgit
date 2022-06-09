@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 70195 2017-12-18 13:40:26Z vboxsync $ */
+/* $Id: socket.cpp 70198 2017-12-18 13:42:18Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -794,7 +794,7 @@ RTDECL(int) RTSocketQueryAddressStr(const char *pszHost, char *pszResult, size_t
 
     /** @todo r=bird: getaddrinfo and freeaddrinfo breaks the additions on NT4. */
     struct addrinfo *pgrResults = NULL;
-    rc = g_pfngetaddrinfo(pszHost, "", &grHints, &pgrResults);
+    rc = getaddrinfo(pszHost, "", &grHints, &pgrResults);
     if (rc != 0)
         return VERR_NET_ADDRESS_NOT_AVAILABLE;
 
