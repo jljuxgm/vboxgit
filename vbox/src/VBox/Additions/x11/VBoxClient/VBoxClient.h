@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 62883 2016-08-02 15:51:18Z vboxsync $ */
+/* $Id: VBoxClient.h 67043 2017-05-23 14:07:04Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -79,5 +79,6 @@ extern struct VBCLSERVICE **VBClGetHostVersionService();
 extern struct VBCLSERVICE **VBClGetDragAndDropService();
 #endif /* VBOX_WITH_DRAG_AND_DROP */
 extern struct VBCLSERVICE **VBClCheck3DService();
+extern struct VBCLSERVICE **VBClDisplaySVGAService();
 
 #endif /* !___vboxclient_vboxclient_h */
