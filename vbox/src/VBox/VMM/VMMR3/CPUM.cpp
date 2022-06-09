@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 68329 2017-08-08 08:09:01Z vboxsync $ */
+/* $Id: CPUM.cpp 68341 2017-08-08 12:26:12Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1268,7 +1268,8 @@ VMMR3DECL(void) CPUMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
      * Hardware virtualization state.
      */
     /* SVM. */
-    memset(pCtx->hwvirt.svm.CTX_SUFF(pVmcb), 0, sizeof(SVMVMCB));
+    if (pCtx->hwvirt.svm.CTX_SUFF(pVmcb))
+        memset(pCtx->hwvirt.svm.CTX_SUFF(pVmcb), 0, SVM_VMCB_PAGES << PAGE_SHIFT);
     pCtx->hwvirt.svm.uMsrHSavePa = 0;
     pCtx->hwvirt.svm.GCPhysVmcb = 0;
     pCtx->hwvirt.svm.fGif = 1;
