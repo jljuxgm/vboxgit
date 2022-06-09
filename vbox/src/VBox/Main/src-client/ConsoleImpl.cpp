@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 68800 2017-09-20 10:38:53Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 68801 2017-09-20 10:54:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5528,7 +5528,8 @@ HRESULT Console::i_onVideoCaptureChange()
                             if (   pAudioCon
                                 && pAudioCon->pfnEnable)
                             {
-                                rc2 = pAudioCon->pfnEnable(pAudioCon, PDMAUDIODIR_OUT, fFeatures & VIDEORECFEATURE_AUDIO);
+                                rc2 = pAudioCon->pfnEnable(pAudioCon, PDMAUDIODIR_OUT,
+                                                           RT_BOOL(fFeatures & VIDEORECFEATURE_AUDIO));
                                 if (RT_FAILURE(rc2))
                                     LogRel(("VideoRec: Failed to %s audio recording, rc=%Rrc\n",
                                             fFeatures & VIDEORECFEATURE_AUDIO ? "enable" : "disable", ulLUN, rc2));
