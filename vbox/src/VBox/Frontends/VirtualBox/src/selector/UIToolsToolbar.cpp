@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.cpp 68167 2017-07-29 09:36:18Z vboxsync $ */
+/* $Id: UIToolsToolbar.cpp 68171 2017-07-29 11:33:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class implementation.
  */
@@ -99,7 +99,8 @@ void UIToolsToolbar::sltHandleButtonToggle()
 {
     /* Acquire the sender: */
     QIToolButton *pButton = sender() ? qobject_cast<QIToolButton*>(sender()) : 0;
-    AssertPtrReturnVoid(pButton);
+    if (!pButton)
+        pButton = m_mapButtons.value(m_mapButtons.keys().first());
 
     /* Handle known buttons: */
     if (m_pLayoutStacked && m_mapButtons.values().contains(pButton))
@@ -122,6 +123,9 @@ void UIToolsToolbar::prepare()
     prepareWidgets();
     /* Prepare connections: */
     prepareConnections();
+
+    /* Initialize: */
+    sltHandleButtonToggle();
 }
 
 void UIToolsToolbar::prepareMenu()
