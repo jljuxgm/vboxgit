@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic3.h 69197 2017-10-24 10:19:03Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic3.h 69200 2017-10-24 11:28:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic3 class declaration.
  */
@@ -20,6 +20,9 @@
 
 /* GUI includes: */
 #include "UIWizardPage.h"
+
+/* COM includes: */
+#include "COMEnums.h"
 
 /* Forward declarations: */
 class QButtonGroup;
@@ -61,7 +64,7 @@ class UIWizardCloneVDPageBasic3 : public UIWizardPage, public UIWizardCloneVDPag
 public:
 
     /** Constructs basic page. */
-    UIWizardCloneVDPageBasic3();
+    UIWizardCloneVDPageBasic3(KDeviceType enmDeviceType);
 
 private:
 

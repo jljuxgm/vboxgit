@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 68721 2017-09-12 11:06:05Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 69200 2017-10-24 11:28:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1624,6 +1624,30 @@ void UIMessageCenter::cannotCreateHardDiskStorage(const CProgress &progress, con
           tr("Failed to create the hard disk storage <nobr><b>%1</b>.</nobr>")
              .arg(strLocation),
           UIErrorString::formatErrorInfo(progress));
+}
+
+void UIMessageCenter::cannotCreateMediumStorage(const CVirtualBox &comVBox, const QString &strLocation, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to create the virtual disk image storage <nobr><b>%1</b>.</nobr>")
+             .arg(strLocation),
+          UIErrorString::formatErrorInfo(comVBox));
+}
+
+void UIMessageCenter::cannotCreateMediumStorage(const CMedium &comMedium, const QString &strLocation, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to create the virtual disk image storage <nobr><b>%1</b>.</nobr>")
+             .arg(strLocation),
+          UIErrorString::formatErrorInfo(comMedium));
+}
+
+void UIMessageCenter::cannotCreateMediumStorage(const CProgress &comProgress, const QString &strLocation, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to create the virtual disk image storage <nobr><b>%1</b>.</nobr>")
+             .arg(strLocation),
+          UIErrorString::formatErrorInfo(comProgress));
 }
 
 void UIMessageCenter::cannotRemoveMachineFolder(const QString &strFolderName, QWidget *pParent /* = 0*/) const

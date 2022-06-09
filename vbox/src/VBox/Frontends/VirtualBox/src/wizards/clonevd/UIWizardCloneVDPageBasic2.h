@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.h 69197 2017-10-24 10:19:03Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.h 69200 2017-10-24 11:28:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic2 class declaration.
  */
@@ -43,10 +43,12 @@ protected:
     /** Adds format button.
       * @param  pParent          Brings the parent to add button to.
       * @param  pFormatsLayout   Brings the layout to insert button to.
+      * @param  enmDeviceType    Brings the device type all buttons should be restricted to.
       * @param  comMediumFormat  Brings the medium format object to acquire format from.
       * @param  fPreferred       Brings whether curretn format is preferred or not. */
     void addFormatButton(QWidget *pParent,
                          QVBoxLayout *pFormatsLayout,
+                         KDeviceType enmDeviceType,
                          CMediumFormat comMediumFormat,
                          bool fPreferred = false);
 
@@ -72,8 +74,9 @@ class UIWizardCloneVDPageBasic2 : public UIWizardPage, public UIWizardCloneVDPag
 
 public:
 
-    /** Constructs basic page. */
-    UIWizardCloneVDPageBasic2();
+    /** Constructs basic page.
+      * @param  enmDeviceType  Brings the device type to limit format to. */
+    UIWizardCloneVDPageBasic2(KDeviceType enmDeviceType);
 
 private:
 

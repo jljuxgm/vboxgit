@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.h 69198 2017-10-24 10:41:44Z vboxsync $ */
+/* $Id: UIWizardCloneVD.h 69200 2017-10-24 11:28:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class declaration.
  */
@@ -56,6 +56,9 @@ public:
     /** Returns target virtual-disk. */
     CMedium targetVirtualDisk() const { return m_comTargetVirtualDisk; }
 
+    /** Returns the source virtual-disk device type. */
+    KDeviceType sourceVirtualDiskDeviceType() const { return m_enmSourceVirtualDiskDeviceType; }
+
     /** Makes a copy of source virtual-disk. */
     bool copyVirtualDisk();
 
@@ -71,6 +74,9 @@ private:
     CMedium m_comSourceVirtualDisk;
     /** Holds the target virtual disk wrapper. */
     CMedium m_comTargetVirtualDisk;
+
+    /** Holds the source virtual-disk device type. */
+    KDeviceType m_enmSourceVirtualDiskDeviceType;
 };
 
 #endif /* !___UIWizardCloneVD_h___ */

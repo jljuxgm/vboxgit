@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 68721 2017-09-12 11:06:05Z vboxsync $ */
+/* $Id: UIMessageCenter.h 69200 2017-10-24 11:28:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -282,6 +282,9 @@ public:
     void cannotCreateHardDiskStorage(const CVirtualBox &vbox, const QString &strLocation,QWidget *pParent = 0) const;
     void cannotCreateHardDiskStorage(const CMedium &medium, const QString &strLocation, QWidget *pParent = 0) const;
     void cannotCreateHardDiskStorage(const CProgress &progress, const QString &strLocation, QWidget *pParent = 0) const;
+    void cannotCreateMediumStorage(const CVirtualBox &comVBox, const QString &strLocation, QWidget *pParent = 0) const;
+    void cannotCreateMediumStorage(const CMedium &comMedium, const QString &strLocation, QWidget *pParent = 0) const;
+    void cannotCreateMediumStorage(const CProgress &comProgress, const QString &strLocation, QWidget *pParent = 0) const;
     void cannotRemoveMachineFolder(const QString &strFolderName, QWidget *pParent = 0) const;
     void cannotRewriteMachineFolder(const QString &strFolderName, QWidget *pParent = 0) const;
     void cannotCreateMachineFolder(const QString &strFolderName, QWidget *pParent = 0) const;
