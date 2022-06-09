@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 67992 2017-07-17 12:46:33Z vboxsync $ */
+/* $Id: GVMMR0.cpp 68001 2017-07-17 15:27:35Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1879,6 +1879,21 @@ static int gvmmR0ByGVMandVMandEMT(PGVM pGVM, PVM pVM, VMCPUID idCpu, PGVMM *ppGV
     *ppGVMM = pGVMM;
     return VINF_SUCCESS;
 }
+
+
+/**
+ * Validates a GVM/VM pair.
+ *
+ * @returns VBox status code.
+ * @param   pGVM        The global (ring-0) VM structure.
+ * @param   pVM         The cross context VM structure.
+ */
+GVMMR0DECL(int) GVMMR0ValidateGVMandVM(PGVM pGVM, PVM pVM)
+{
+    PGVMM pGVMM;
+    return gvmmR0ByGVMandVM(pGVM, pVM, &pGVMM, false /*fTakeUsedLock*/);
+}
+
 
 
 /**
