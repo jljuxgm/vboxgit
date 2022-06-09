@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 68198 2017-07-31 12:14:35Z vboxsync $ */
+/* $Id: isomaker.cpp 68382 2017-08-11 09:46:25Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -951,6 +951,13 @@ DECLINLINE(void) rtFsIsoMakerDestroyName(PRTFSISOMAKERNAME pName)
     {
         RTMemFree(pName->pszTransNm);
         pName->pszTransNm = NULL;
+    }
+    PRTFSISOMAKERNAMEDIR pDir = pName->pDir;
+    if (pDir != NULL)
+    {
+        Assert(pDir->cChildren == 0);
+        RTMemFree(pDir->papChildren);
+        pDir->papChildren = NULL;
     }
     RTMemFree(pName);
 }
