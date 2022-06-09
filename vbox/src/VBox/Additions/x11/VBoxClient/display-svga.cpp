@@ -1,4 +1,4 @@
-/* $Id: display-svga.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: display-svga.cpp 68631 2017-09-05 11:41:01Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to guest
  * driver.
@@ -40,6 +40,7 @@
 #include "VBoxClient.h"
 
 #include <VBox/VBoxGuestLib.h>
+#include <VBox/VMMDev.h> /* for VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST */
 
 #include <iprt/assert.h>
 #include <iprt/file.h>

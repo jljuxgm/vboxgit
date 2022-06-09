@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: vboxvideo.c 68631 2017-09-05 11:41:01Z vboxsync $ */
 /** @file
  * Linux Additions X11 graphics driver
  */
@@ -54,6 +54,7 @@
  */
 
 #include "vboxvideo.h"
+#include <VBox/VMMDev.h> /* for VBOX_DEVICEID and VBOX_VENDORID */
 #include <VBox/VBoxGuest.h>
 #include <VBox/VBoxGuestLib.h>
 #include <VBoxVideoVBE.h>

@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11.cpp 67796 2017-07-05 13:37:55Z vboxsync $ */
+/* $Id: tstSeamlessX11.cpp 68631 2017-09-05 11:41:01Z vboxsync $ */
 /** @file
  * Linux seamless guest additions simulator in host.
  */
@@ -17,6 +17,7 @@
 
 #include <stdlib.h> /* exit() */
 
+#include <iprt/err.h>
 #include <iprt/initterm.h>
 #include <iprt/semaphore.h>
 #include <iprt/stream.h>
