@@ -1,4 +1,5 @@
-/* $Id: VBoxDTraceTypes.h 62829 2016-08-01 16:23:00Z vboxsync $ */
+
+/* $Id: VBoxDTraceTypes.h 68989 2017-10-04 15:07:11Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  *
@@ -55,7 +56,7 @@ typedef uint64_t                    hrtime_t;
 typedef uint32_t                    id_t;
 typedef uint32_t                    zoneid_t;
 #endif
-#if !defined(NGREG) || !defined(RT_OS_LINUX)
+#if (!defined(__NGREG) && !defined(NGREG)) || !defined(RT_OS_LINUX)
 typedef RTCCINTREG                  greg_t;
 #else
 AssertCompileSize(greg_t, sizeof(RTCCINTREG));
