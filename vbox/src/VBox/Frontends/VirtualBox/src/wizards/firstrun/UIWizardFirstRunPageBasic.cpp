@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRunPageBasic.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRunPageBasic class implementation.
  */
@@ -67,8 +67,6 @@ UIWizardFirstRunPageBasic::UIWizardFirstRunPageBasic(const QString &strMachineId
     /* Create widgets: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     {
-        pMainLayout->setContentsMargins(8, 0, 8, 0);
-        pMainLayout->setSpacing(10);
         m_pLabel = new QIRichTextLabel(this);
         QHBoxLayout *pSourceDiskLayout = new QHBoxLayout;
         {

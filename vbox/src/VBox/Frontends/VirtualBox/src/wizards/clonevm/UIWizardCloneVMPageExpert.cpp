@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class implementation.
  */
@@ -42,8 +42,6 @@ UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalN
     /* Create widgets: */
     QGridLayout *pMainLayout = new QGridLayout(this);
     {
-        pMainLayout->setContentsMargins(8, 6, 8, 6);
-        pMainLayout->setSpacing(10);
         m_pNameCnt = new QGroupBox(this);
         {
             QVBoxLayout *pNameCntLayout = new QVBoxLayout(m_pNameCnt);

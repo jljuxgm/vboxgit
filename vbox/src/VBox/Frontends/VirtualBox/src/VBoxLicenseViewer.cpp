@@ -1,4 +1,4 @@
-/* $Id: VBoxLicenseViewer.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxLicenseViewer.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxLicenseViewer class implementation.
  */
@@ -57,8 +57,6 @@ VBoxLicenseViewer::VBoxLicenseViewer(QWidget *pParent /* = 0 */)
     connect (mDisagreeButton, SIGNAL (clicked()), SLOT (reject()));
 
     QVBoxLayout *mainLayout = new QVBoxLayout (this);
-    mainLayout->setSpacing (10);
-    mainLayout->setContentsMargins(10, 10, 10, 10);
     mainLayout->addWidget (mLicenseText);
     mainLayout->addWidget (dbb);
 

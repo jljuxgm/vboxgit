@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.cpp 69057 2017-10-12 09:43:58Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class implementation.
  */
@@ -271,12 +271,6 @@ void UIToolsPaneMachine::prepare()
 {
     /* Create stacked-layout: */
     m_pLayout = new QStackedLayout(this);
-    AssertPtrReturnVoid(m_pLayout);
-    {
-        /* Configure layout: */
-        m_pLayout->setSpacing(0);
-        m_pLayout->setContentsMargins(3, 4, 5, 0);
-    }
 
     /* Create desktop pane: */
     openTool(ToolTypeMachine_Desktop);

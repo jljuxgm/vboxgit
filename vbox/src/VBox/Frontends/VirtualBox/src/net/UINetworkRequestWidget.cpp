@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestWidget.cpp 69550 2017-11-02 10:22:18Z vboxsync $ */
+/* $Id: UINetworkRequestWidget.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestWidget stuff implementation.
  */
@@ -21,6 +21,7 @@
 
 /* Global includes: */
 # include <QTimer>
+# include <QStyle>
 # include <QGridLayout>
 # include <QProgressBar>
 
@@ -68,7 +69,11 @@ UINetworkRequestWidget::UINetworkRequestWidget(UINetworkManagerDialog *pParent, 
     connect(m_pTimer, &QTimer::timeout, this, &UINetworkRequestWidget::sltTimeIsOut);
 
     /* Setup main-layout: */
-    m_pMainLayout->setContentsMargins(6, 6, 6, 6);
+    const int iL = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 2;
+    const int iT = qApp->style()->pixelMetric(QStyle::PM_LayoutTopMargin) / 2;
+    const int iR = qApp->style()->pixelMetric(QStyle::PM_LayoutRightMargin) / 2;
+    const int iB = qApp->style()->pixelMetric(QStyle::PM_LayoutBottomMargin) / 2;
+    m_pMainLayout->setContentsMargins(iL, iT, iR, iB);
 
     /* Setup progress-bar: */
     m_pProgressBar->setRange(0, 0);

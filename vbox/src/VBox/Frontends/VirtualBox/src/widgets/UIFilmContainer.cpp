@@ -1,4 +1,4 @@
-/* $Id: UIFilmContainer.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIFilmContainer.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilmContainer class implementation.
  */
@@ -168,9 +168,7 @@ void UIFilm::prepareLayout()
     /* Configure layout: */
 #ifdef VBOX_WS_MAC
     m_pMainLayout->setContentsMargins(10, 10, 15, 10);
-#else /* VBOX_WS_MAC */
-    m_pMainLayout->setContentsMargins(10, 10, 10, 10);
-#endif /* !VBOX_WS_MAC */
+#endif /* VBOX_WS_MAC */
 
     /* Add strech: */
     m_pMainLayout->addStretch();

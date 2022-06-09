@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 68073 2017-07-20 17:01:42Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -46,8 +46,6 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
     /* Create widgets: */
     QGridLayout *pMainLayout = new QGridLayout(this);
     {
-        pMainLayout->setContentsMargins(8, 6, 8, 6);
-        pMainLayout->setSpacing(10);
         m_pSelectorCnt = new QGroupBox(this);
         {
             QVBoxLayout *pSelectorCntLayout = new QVBoxLayout(m_pSelectorCnt);

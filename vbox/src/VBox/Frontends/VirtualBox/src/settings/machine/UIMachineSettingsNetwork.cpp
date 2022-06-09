@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 68435 2017-08-17 08:59:12Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -1251,9 +1251,6 @@ void UIMachineSettingsNetworkPage::prepare()
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     AssertPtrReturnVoid(pMainLayout);
     {
-        /* Configure layout: */
-        pMainLayout->setContentsMargins(0, 5, 0, 5);
-
         /* Creating tab-widget: */
         m_pTabWidget = new QITabWidget;
         AssertPtrReturnVoid(m_pTabWidget);

@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerDialog.cpp 69550 2017-11-02 10:22:18Z vboxsync $ */
+/* $Id: UINetworkManagerDialog.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerDialog stuff implementation.
  */
@@ -70,7 +70,6 @@ UINetworkManagerDialog::UINetworkManagerDialog()
 
     /* Create main-layout: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(centralWidget());
-    pMainLayout->setContentsMargins(6, 6, 6, 6);
 
     /* Create description-label: */
     m_pLabel = new QLabel(centralWidget());

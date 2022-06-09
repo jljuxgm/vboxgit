@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 69670 2017-11-13 12:03:55Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -568,7 +568,6 @@ void UIMediumDetailsWidget::prepareInformationContainer(UIMediumType enmType, in
         {
             /* Configure layout: */
             pLayout->setVerticalSpacing(0);
-            pLayout->setContentsMargins(5, 5, 5, 5);
             pLayout->setColumnStretch(1, 1);
 
             /* Create labels & fields: */

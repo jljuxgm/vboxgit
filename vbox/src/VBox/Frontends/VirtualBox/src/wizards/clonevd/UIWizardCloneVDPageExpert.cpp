@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 69200 2017-10-24 11:28:50Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class implementation.
  */
@@ -48,8 +48,6 @@ UIWizardCloneVDPageExpert::UIWizardCloneVDPageExpert(const CMedium &comSourceVir
     /* Create widgets: */
     QGridLayout *pMainLayout = new QGridLayout(this);
     {
-        pMainLayout->setContentsMargins(8, 6, 8, 6);
-        pMainLayout->setSpacing(10);
         m_pSourceDiskCnt = new QGroupBox(this);
         {
             m_pSourceDiskCnt->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -54,8 +54,6 @@ UIWizardNewVDPageExpert::UIWizardNewVDPageExpert(const QString &strDefaultName, 
     /* Create widgets: */
     QGridLayout *pMainLayout = new QGridLayout(this);
     {
-        pMainLayout->setContentsMargins(8, 6, 8, 6);
-        pMainLayout->setSpacing(10);
         m_pLocationCnt = new QGroupBox(this);
         {
             m_pLocationCnt->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);

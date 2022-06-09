@@ -1,4 +1,4 @@
-/* $Id: UISpecialControls.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UISpecialControls.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSpecialButtons implementation.
  */
@@ -245,6 +245,7 @@ UIRoundRectSegmentedButton::UIRoundRectSegmentedButton(QWidget *pParent, int aCo
     m_pSignalMapper = new QSignalMapper(this);
 
     QHBoxLayout *layout = new QHBoxLayout(this);
+    layout->setContentsMargins(0, 0, 0, 0);
     for (int i=0; i < aCount; ++i)
     {
         QIToolButton *button = new QIToolButton(this);

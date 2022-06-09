@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIInformationConfiguration.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -59,7 +59,6 @@ void UIInformationConfiguration::prepareLayout()
     AssertPtrReturnVoid(m_pMainLayout);
     {
         /* Configure layout: */
-        m_pMainLayout->setContentsMargins(2, 0, 0, 0);
         m_pMainLayout->setSpacing(0);
     }
 }
