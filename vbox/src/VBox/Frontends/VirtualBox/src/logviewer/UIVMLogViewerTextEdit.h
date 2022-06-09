@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 70792 2018-01-29 13:12:06Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.h 71370 2018-03-16 15:20:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -108,6 +108,7 @@ private:
     bool                 m_bWrapLines;
     QString              m_strBackgroungText;
     friend class UILineNumberArea;
+    bool                 m_bHasContextMenu;
 };
 
 

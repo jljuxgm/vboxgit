@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 70750 2018-01-25 16:53:20Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.cpp 71370 2018-03-16 15:20:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -87,7 +87,8 @@ void UIVMLogViewerPanel::prepareWidgets()
     m_pCloseButton = new QIToolButton;
     if (m_pCloseButton)
     {
-        m_pCloseButton->setIcon(m_pCloseButton->style()->standardIcon(QStyle::SP_TitleBarCloseButton));
+        //m_pCloseButton->setIcon(UIIconPool::iconSet(":/log_viewer_close_16px.png"));
+        m_pCloseButton->setIcon(UIIconPool::iconSet(":/close_16px.png"));
         m_pMainLayout->addWidget(m_pCloseButton, 0, Qt::AlignLeft);
     }
 }
