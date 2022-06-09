@@ -1,6 +1,8 @@
-#
+# $Id: Makefile 69466 2017-10-28 11:21:03Z vboxsync $
+## @file
 # Makefile
 #
+
 #
 # Copyright (C) 2006-2015 Oracle Corporation
 #
