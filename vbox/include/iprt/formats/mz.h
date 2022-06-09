@@ -1,4 +1,4 @@
-/* $Id: mz.h 62474 2016-07-22 18:16:43Z vboxsync $ */
+/* $Id: mz.h 68687 2017-09-06 18:11:39Z vboxsync $ */
 /** @file
  * IPRT, MZ Executable Header.
  */
@@ -28,7 +28,7 @@
 #define ___iprt_formats_mz_h
 
 #include <iprt/types.h>
-#include <iprt/assert.h>
+#include <iprt/assertcompile.h>
 
 typedef struct _IMAGE_DOS_HEADER
 {

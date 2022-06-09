@@ -1,4 +1,4 @@
-/* $Id: udf.h 68409 2017-08-14 12:04:58Z vboxsync $ */
+/* $Id: udf.h 68687 2017-09-06 18:11:39Z vboxsync $ */
 /** @file
  * IPRT, Universal Disk Format (UDF).
  */
@@ -28,7 +28,7 @@
 #define ___iprt_formats_udf_h
 
 #include <iprt/types.h>
-#include <iprt/assert.h>
+#include <iprt/assertcompile.h>
 #include <iprt/formats/iso9660.h>
 
 

@@ -1,4 +1,4 @@
-/* $Id: omf.h 66446 2017-04-05 18:00:17Z vboxsync $ */
+/* $Id: omf.h 68687 2017-09-06 18:11:39Z vboxsync $ */
 /** @file
  * IPRT - Relocatable Object Module Format (OMF).
  *
@@ -32,6 +32,7 @@
 #define ___iprt_formats_omf_h
 
 #include <iprt/stdint.h>
+#include <iprt/assertcompile.h>
 
 
 /** @defgroup grp_rt_formats_omf     Relocatable Object Module Format (OMF) structures and definitions
@@ -51,6 +52,7 @@ typedef struct OMFRECHDR
     uint16_t        cbLen;
 } OMFRECHDR;
 #pragma pack()
+AssertCompileSize(OMFRECHDR, 3);
 /** Pointer to an OMF header. */
 typedef OMFRECHDR *POMFRECHDR;
 /** Pointer to a const OMF header. */

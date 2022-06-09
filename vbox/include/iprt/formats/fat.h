@@ -1,4 +1,4 @@
-/* $Id: fat.h 67911 2017-07-11 15:00:39Z vboxsync $ */
+/* $Id: fat.h 68687 2017-09-06 18:11:39Z vboxsync $ */
 /** @file
  * IPRT, File Allocation Table (FAT).
  */
@@ -28,7 +28,7 @@
 #define ___iprt_formats_fat_h
 
 #include <iprt/types.h>
-#include <iprt/assert.h>
+#include <iprt/assertcompile.h>
 
 
 /** @defgroup grp_rt_formats_fat    File Allocation Table (FAT) structures and definitions

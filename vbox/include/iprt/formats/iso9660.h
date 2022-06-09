@@ -1,4 +1,4 @@
-/* $Id: iso9660.h 68399 2017-08-11 18:09:08Z vboxsync $ */
+/* $Id: iso9660.h 68687 2017-09-06 18:11:39Z vboxsync $ */
 /** @file
  * IPRT, ISO 9660 File System
  */
@@ -28,7 +28,7 @@
 #define ___iprt_formats_iso9660_h
 
 #include <iprt/types.h>
-#include <iprt/assert.h>
+#include <iprt/assertcompile.h>
 
 
 /** @defgroup grp_rt_formats_iso9660    ISO 9660 structures and definitions

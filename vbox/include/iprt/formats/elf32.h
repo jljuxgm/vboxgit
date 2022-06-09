@@ -1,4 +1,4 @@
-/* $Id: elf32.h 62474 2016-07-22 18:16:43Z vboxsync $ */
+/* $Id: elf32.h 68687 2017-09-06 18:11:39Z vboxsync $ */
 /** @file
  * IPRT - ELF 32-bit header.
  */
@@ -27,8 +27,7 @@
 #ifndef ___iprt_formats_elf32_h
 #define ___iprt_formats_elf32_h
 
-#include <iprt/assert.h>
-
+#include <iprt/assertcompile.h>
 #include "elf-common.h"
 
 /*
