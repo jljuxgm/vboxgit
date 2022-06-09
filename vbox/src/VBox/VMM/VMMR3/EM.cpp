@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 72208 2018-05-15 04:11:35Z vboxsync $ */
+/* $Id: EM.cpp 72300 2018-05-23 15:13:06Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2107,6 +2107,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                         /* Note: it's important to make sure the return code from TRPMR3InjectEvent isn't ignored! */
                         /** @todo this really isn't nice, should properly handle this */
                         rc2 = TRPMR3InjectEvent(pVM, pVCpu, TRPM_HARDWARE_INT);
+Log(("EM: TRPMR3InjectEvent -> %d\n", rc2));
                         if (pVM->em.s.fIemExecutesAll && (   rc2 == VINF_EM_RESCHEDULE_REM
                                                           || rc2 == VINF_EM_RESCHEDULE_HM
                                                           || rc2 == VINF_EM_RESCHEDULE_RAW))
