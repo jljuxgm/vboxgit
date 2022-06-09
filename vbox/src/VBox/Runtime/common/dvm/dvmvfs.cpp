@@ -1,4 +1,4 @@
-/* $Id: dvmvfs.cpp 69828 2017-11-24 17:32:23Z vboxsync $ */
+/* $Id: dvmvfs.cpp 69829 2017-11-24 17:46:28Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - VFS glue.
  */
@@ -760,7 +760,7 @@ static DECLCALLBACK(int) rtDvmVfsDir_Open(void *pvThis, const char *pszEntry, ui
     /*
      * Open volume file.
      */
-    RTDVMVOLUME hVolume;
+    RTDVMVOLUME hVolume = NIL_RTDVMVOLUME;
     int rc = rtDvmVfsDir_FindEntry(pThis, pszEntry, &hVolume);
     if (RT_SUCCESS(rc))
     {
