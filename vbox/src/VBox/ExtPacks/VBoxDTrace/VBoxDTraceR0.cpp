@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 62879 2016-08-02 15:18:03Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 69281 2017-10-25 10:59:57Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  *
@@ -15,7 +15,6 @@
  * comes in the "COPYING.CDDL" file of the VirtualBox OSE distribution.
  * VirtualBox OSE is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY of any kind.
- *
  */
 
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceLibCWrappers.h 62496 2016-07-22 18:47:44Z vboxsync $ */
+/* $Id: VBoxDTraceLibCWrappers.h 69281 2017-10-25 10:59:57Z vboxsync $ */
 /** @file
  * VBoxDTraceTLibCWrappers.h - IPRT wrappers/fake for lib C stuff.
  *
@@ -15,7 +15,6 @@
  * comes in the "COPYING.CDDL" file of the VirtualBox OSE distribution.
  * VirtualBox OSE is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY of any kind.
- *
  */
 
 #ifndef ___VBoxDTraceLibCWrappers_h___
