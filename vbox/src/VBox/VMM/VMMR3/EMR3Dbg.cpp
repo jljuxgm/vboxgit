@@ -1,4 +1,4 @@
-/* $Id: EMR3Dbg.cpp 72558 2018-06-14 21:37:33Z vboxsync $ */
+/* $Id: EMR3Dbg.cpp 72560 2018-06-15 11:00:02Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager, Debugger Related Bits.
  */
@@ -289,8 +289,10 @@ int emR3InitDbg(PVM pVM)
     /*
      * Register info dumpers.
      */
-    int rc = DBGFR3InfoRegisterInternalEx(pVM, "exits", "Dumps the VM-exit history.",
-                                          emR3InfoExitHistory, DBGFINFO_FLAGS_ALL_EMTS);
+    const char *pszExitsDesc = "Dumps the VM-exit history. Arguments: Number of entries; 'asc', 'ascending' or 'reverse'.";
+    int rc = DBGFR3InfoRegisterInternalEx(pVM, "exits", pszExitsDesc, emR3InfoExitHistory, DBGFINFO_FLAGS_ALL_EMTS);
+    AssertLogRelRCReturn(rc, rc);
+    rc = DBGFR3InfoRegisterInternalEx(pVM, "exithistory", pszExitsDesc, emR3InfoExitHistory, DBGFINFO_FLAGS_ALL_EMTS);
     AssertLogRelRCReturn(rc, rc);
 
 #ifdef VBOX_WITH_DEBUGGER
