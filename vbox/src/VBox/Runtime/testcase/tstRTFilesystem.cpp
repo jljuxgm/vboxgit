@@ -1,4 +1,4 @@
-/* $Id: tstRTFilesystem.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTFilesystem.cpp 69840 2017-11-27 15:19:30Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPRT Filesystem API (Fileystem)
  */
@@ -28,7 +28,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <iprt/filesystem.h>
 #include <iprt/vfs.h>
 #include <iprt/err.h>
 #include <iprt/test.h>
@@ -47,10 +46,10 @@ static int tstRTFilesystem(RTTEST hTest, RTVFSFILE hVfsFile)
 
     RTTestSubF(hTest, "Create filesystem object");
 
-    rc = RTFilesystemVfsFromFile(hVfsFile, &hVfs);
+    rc = RTVfsMountVol(hVfsFile,  RTVFSMNT_F_READ_ONLY | RTVFSMNT_F_FOR_RANGE_IN_USE, &hVfs, NULL);
     if (RT_FAILURE(rc))
     {
-        RTTestIFailed("RTFilesystemVfsFromFile -> %Rrc", rc);
+        RTTestIFailed("RTVfsMountVol -> %Rrc", rc);
         return rc;
     }
 
