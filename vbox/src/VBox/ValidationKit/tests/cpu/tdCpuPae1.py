@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCpuPae1.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: tdCpuPae1.py 67038 2017-05-23 11:32:07Z vboxsync $
 
 """
 VirtualBox Validation Kit - Catch PAE not enabled.
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 67038 $"
 
 
 # Standard Python imports.
@@ -195,8 +195,6 @@ class tdCpuPae1(vbox.TestDriver):
 
                 fRc = False;
                 if oConsoleCallbacks is not None:
-                    self.addTask(oSession);
-
                     # Wait for 30 seconds for something to finish.
                     tsStart = base.timestampMilli();
                     while base.timestampMilli() - tsStart < 30000:
