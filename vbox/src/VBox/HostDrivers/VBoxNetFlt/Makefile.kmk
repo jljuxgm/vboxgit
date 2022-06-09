@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69250 2017-10-24 19:18:49Z vboxsync $
+# $Id: Makefile.kmk 72004 2018-04-24 14:40:13Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -206,7 +206,8 @@ $(PATH_TARGET)/VBoxNetLwfCat.dir/VBoxNetLwf.inf: $(PATH_SUB_CURRENT)/win/drv/VBo
  ifdef VBOX_SIGNING_MODE
 VBoxNetLwf-inf_SOURCES += \
 	$(PATH_TARGET)/VBoxNetLwfCat.dir/VBoxNetLwf.sys \
-	$(PATH_TARGET)/VBoxNetLwfCat.dir/VBoxNetLwf.cat
+	$(PATH_TARGET)/VBoxNetLwfCat.dir/VBoxNetLwf.cat \
+	$(PATH_TARGET)/VBoxNetLwfCat.dir/VBoxNetLwf.cat=>VBoxNetLwf-PreW10.cat
 
 #	$(PATH_TARGET)/VBoxNetLwfCat.dir/VBoxNetLwfNobj.dll \
 

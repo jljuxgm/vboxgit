@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69250 2017-10-24 19:18:49Z vboxsync $
+# $Id: Makefile.kmk 72004 2018-04-24 14:40:13Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows USB drivers.
 #
@@ -173,8 +173,10 @@ $(PATH_TARGET)/VBoxUSBMonCat.dir/VBoxUSBMon.inf: $(PATH_SUB_CURRENT)/mon/VBoxUSB
 ifdef VBOX_SIGNING_MODE
 install-infs_SOURCES += \
 	$(PATH_TARGET)/VBoxUSBCat.dir/VBoxUSB.cat \
+	$(PATH_TARGET)/VBoxUSBCat.dir/VBoxUSB.cat=>VBoxUSB-PreW10.cat \
 	$(PATH_TARGET)/VBoxUSBCat.dir/VBoxUSB.sys \
 	$(PATH_TARGET)/VBoxUSBMonCat.dir/VBoxUSBMon.cat \
+	$(PATH_TARGET)/VBoxUSBMonCat.dir/VBoxUSBMon.cat=>VBoxUSBMon-PreW10.cat \
 	$(PATH_TARGET)/VBoxUSBMonCat.dir/VBoxUSBMon.sys
 
 $(PATH_TARGET)/VBoxUSBCat.dir/VBoxUSB.sys: $$(VBoxUSB_1_TARGET) | $$(dir $$@)

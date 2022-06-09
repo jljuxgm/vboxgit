@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70315 2017-12-22 12:23:30Z vboxsync $
+# $Id: Makefile.kmk 72004 2018-04-24 14:40:13Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -768,7 +768,8 @@ ifeq ($(KBUILD_TARGET), win)
  ifdef VBOX_SIGNING_MODE
   VBoxDrv-inf_SOURCES += \
   	$(PATH_TARGET)/VBoxDrvCat.dir/VBoxDrv.sys \
-  	$(PATH_TARGET)/VBoxDrvCat.dir/VBoxDrv.cat
+  	$(PATH_TARGET)/VBoxDrvCat.dir/VBoxDrv.cat \
+  	$(PATH_TARGET)/VBoxDrvCat.dir/VBoxDrv.cat=>VBoxDrv-PreW10.cat
 
   $(PATH_TARGET)/VBoxDrvCat.dir/VBoxDrv.sys: $$(VBoxDrv_1_TARGET) | $$(dir $$@)
 	$(INSTALL) -m 644 $< $(@D)
