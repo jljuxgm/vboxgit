@@ -1,4 +1,4 @@
-/* $Id: scm.h 69324 2017-10-25 19:45:13Z vboxsync $ */
+/* $Id: scm.h 69433 2017-10-27 14:49:11Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -50,6 +50,8 @@ typedef SCMSVNPROP *PSCMSVNPROP;
 typedef SCMSVNPROP const *PCSCMSVNPROP;
 
 
+void ScmSvnInit(void);
+void ScmSvnTerm(void);
 bool ScmSvnIsDirInWorkingCopy(const char *pszDir);
 bool ScmSvnIsInWorkingCopy(PSCMRWSTATE pState);
 int  ScmSvnQueryProperty(PSCMRWSTATE pState, const char *pszName, char **ppszValue);

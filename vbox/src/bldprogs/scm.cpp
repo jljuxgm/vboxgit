@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 69432 2017-10-27 13:32:38Z vboxsync $ */
+/* $Id: scm.cpp 69433 2017-10-27 14:49:11Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2291,9 +2291,9 @@ int main(int argc, char **argv)
     RTGETOPTSTATE   GetOptState;
     rc = RTGetOptInit(&GetOptState, argc, argv, &s_aOpts[0], RT_ELEMENTS(s_aOpts), 1, RTGETOPTINIT_FLAGS_OPTS_FIRST);
     AssertReleaseRCReturn(rc, 1);
-    size_t          cProcessed = 0;
 
-    while ((rc = RTGetOpt(&GetOptState, &ValueUnion)) != 0)
+    while (   (rc = RTGetOpt(&GetOptState, &ValueUnion)) != 0
+           && rc != VINF_GETOPT_NOT_OPTION)
     {
         switch (rc)
         {
@@ -2323,7 +2323,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 69432 $";
+                static const char s_szRev[] = "$Revision: 69433 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
@@ -2364,34 +2364,6 @@ int main(int argc, char **argv)
                 g_fDiffSpecialChars = false;
                 break;
 
-            case VINF_GETOPT_NOT_OPTION:
-            {
-                if (!g_fDryRun)
-                {
-                    if (!cProcessed)
-                    {
-                        RTPrintf("%s: Warning! This program will make changes to your source files and\n"
-                                 "%s:          there is a slight risk that bugs or a full disk may cause\n"
-                                 "%s:          LOSS OF DATA.   So, please make sure you have checked in\n"
-                                 "%s:          all your changes already.  If you didn't, then don't blame\n"
-                                 "%s:          anyone for not warning you!\n"
-                                 "%s:\n"
-                                 "%s:          Press any key to continue...\n",
-                                 g_szProgName, g_szProgName, g_szProgName, g_szProgName, g_szProgName,
-                                 g_szProgName, g_szProgName);
-                        RTStrmGetCh(g_pStdIn);
-                    }
-                    cProcessed++;
-                }
-                rc = scmProcessSomething(ValueUnion.psz, pSettings);
-                if (RT_FAILURE(rc))
-                {
-                    scmPrintStats();
-                    return RTEXITCODE_FAILURE;
-                }
-                break;
-            }
-
             default:
             {
                 int rc2 = scmSettingsBaseHandleOpt(&pSettings->Base, rc, &ValueUnion, "/", 1);
@@ -2404,8 +2376,52 @@ int main(int argc, char **argv)
         }
     }
 
-    scmPrintStats();
+    /*
+     * Process non-options.
+     */
+    RTEXITCODE rcExit = RTEXITCODE_SUCCESS;
+    if (rc == VINF_GETOPT_NOT_OPTION)
+    {
+        ScmSvnInit();
+
+        bool fWarned = g_fDryRun;
+        while (rc == VINF_GETOPT_NOT_OPTION)
+        {
+            if (!fWarned)
+            {
+                RTPrintf("%s: Warning! This program will make changes to your source files and\n"
+                         "%s:          there is a slight risk that bugs or a full disk may cause\n"
+                         "%s:          LOSS OF DATA.   So, please make sure you have checked in\n"
+                         "%s:          all your changes already.  If you didn't, then don't blame\n"
+                         "%s:          anyone for not warning you!\n"
+                         "%s:\n"
+                         "%s:          Press any key to continue...\n",
+                         g_szProgName, g_szProgName, g_szProgName, g_szProgName, g_szProgName,
+                         g_szProgName, g_szProgName);
+                RTStrmGetCh(g_pStdIn);
+                fWarned = true;
+            }
+
+            rc = scmProcessSomething(ValueUnion.psz, pSettings);
+            if (RT_FAILURE(rc))
+            {
+                rcExit = RTEXITCODE_FAILURE;
+                break;
+            }
+
+            /* next */
+            rc = RTGetOpt(&GetOptState, &ValueUnion);
+            if (RT_FAILURE(rc))
+                rcExit = RTGetOptPrintError(rc, &ValueUnion);
+        }
+
+        scmPrintStats();
+        ScmSvnTerm();
+    }
+    else
+        RTMsgWarning("No files or directories specified. Doing nothing");
+
     scmSettingsDestroy(pSettings);
-    return 0;
+    return rcExit;
 }
 
