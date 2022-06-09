@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 71467 2018-03-22 16:56:22Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 71505 2018-03-26 09:03:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -347,7 +347,7 @@ void UIGuestControlFileManager::prepareObjects()
     {
         m_pMainLayout->addWidget(m_pVerticalSplitter);
         m_pVerticalSplitter->setOrientation(Qt::Vertical);
-        m_pVerticalSplitter->setHandleWidth(2);
+        m_pVerticalSplitter->setHandleWidth(4);
     }
 
     m_pFileTableContainerWidget = new QWidget;

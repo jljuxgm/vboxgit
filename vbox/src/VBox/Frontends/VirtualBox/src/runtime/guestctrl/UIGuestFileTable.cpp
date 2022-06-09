@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 71467 2018-03-22 16:56:22Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 71505 2018-03-26 09:03:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -327,4 +327,19 @@ QString UIGuestFileTable::fsObjectPropertyString()
         return propertyString;
     }
     return QString();
+}
+
+void UIGuestFileTable::showProperties()
+{
+    QString fsPropertyString = fsObjectPropertyString();
+    if (fsPropertyString.isEmpty())
+        return;
+
+    UIPropertiesDialog *dialog = new UIPropertiesDialog();
+    if (!dialog)
+        return;
+    dialog->setWindowTitle("Properties");
+    dialog->setPropertyText(fsPropertyString);
+    dialog->execute();
+    delete dialog;
 }

@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.h 71388 2018-03-20 10:16:28Z vboxsync $ */
+/* $Id: UIGuestFileTable.h 71505 2018-03-26 09:03:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -47,7 +47,7 @@ protected:
     virtual bool renameItem(UIFileTableItem *item, QString newBaseName);
     virtual bool createDirectory(const QString &path, const QString &directoryName);
     virtual QString fsObjectPropertyString() /* override */;
-
+    virtual void  showProperties() /* override */;
 private:
 
     static FileObjectType fileType(const CFsObjInfo &fsInfo);
