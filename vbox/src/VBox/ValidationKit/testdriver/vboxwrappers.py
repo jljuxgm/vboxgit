@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 70660 2018-01-21 16:18:58Z vboxsync $
+# $Id: vboxwrappers.py 70718 2018-01-23 22:25:22Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70660 $"
+__version__ = "$Revision: 70718 $"
 
 
 # Standard Python imports.
@@ -2363,6 +2363,39 @@ class SessionWrapper(TdTaskBase):
             return False;
         return True;
 
+
+    def setupSerialToRawFile(self, iSerialPort, sRawFile):
+        """
+        Enables the given serial port (zero based) and redirects it to sRawFile.
+        Returns the True on success, False on failure (logged).
+        """
+        try:
+            oPort = self.o.machine.GetSerialPort(iSerialPort);
+        except:
+            fRc = reporter.errorXcpt('failed to get serial port #%u' % (iSerialPort,));
+        else:
+            try:
+                oPort.path = sRawFile;
+            except:
+                fRc = reporter.errorXcpt('failed to set the "path" property on serial port #%u to "%s"'
+                                          % (iSerialPort, sRawFile));
+            else:
+                try:
+                    oPort.hostMode = vboxcon.PortMode_RawFile;
+                except:
+                    fRc = reporter.errorXcpt('failed to set the "hostMode" property on serial port #%u to PortMode_RawFile'
+                                             % (iSerialPort,));
+                else:
+                    try:
+                        oPort.enabled = True;
+                    except:
+                        fRc = reporter.errorXcpt('failed to set the "enable" property on serial port #%u to True'
+                                                 % (iSerialPort,));
+                    else:
+                        reporter.log('set SerialPort[%s].enabled/hostMode/path=True/RawFile/%s' % (iSerialPort, sRawFile,));
+                        fRc = True;
+        self.oTstDrv.processPendingEvents();
+        return fRc;
 
 
     #
