@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69707 2017-11-16 05:09:34Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69713 2017-11-16 12:32:33Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2029,6 +2029,9 @@ static void hmR0SvmVmRunCacheVmcb(PVMCPU pVCpu, PCPUMCTX pCtx)
     /*
      * Cache the nested-guest programmed VMCB fields if we have not cached it yet.
      * Otherwise we risk re-caching the values we may have modified, see @bugref{7243#c44}.
+     *
+     * Nested-paging CR3 is not saved back into the VMCB on #VMEXIT, hence no need to
+     * cache and restore it, see AMD spec. 15.25.4 "Nested Paging and VMRUN/#VMEXIT".
      */
     if (!pNstGstVmcbCache->fValid)
     {
