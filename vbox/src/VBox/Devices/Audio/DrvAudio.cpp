@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 70910 2018-02-08 12:37:31Z vboxsync $ */
+/* $Id: DrvAudio.cpp 70919 2018-02-08 16:21:02Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2321,7 +2321,7 @@ static DECLCALLBACK(int) drvAudioStreamRead(PPDMIAUDIOCONNECTOR pInterface, PPDM
 
             cReadTotal += cRead;
 
-            AudioMixBufReleaseReadBlock(&pHstStream->MixBuf, cRead);
+            AudioMixBufReleaseReadBlock(&pGstStream->MixBuf, cRead);
         }
 
         if (cReadTotal)
