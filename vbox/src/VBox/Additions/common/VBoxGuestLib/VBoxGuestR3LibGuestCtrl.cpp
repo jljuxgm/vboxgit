@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 68465 2017-08-18 11:54:11Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 68502 2017-08-22 12:01:40Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -88,7 +88,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlMsgWaitFor(uint32_t uClientId, uint32_t *puMsg, u
     VbglHGCMParmUInt32Set(&Msg.msg, 0);
     VbglHGCMParmUInt32Set(&Msg.num_parms, 0);
 
-    int rc = VbglR3HGCMCall(&Msg.hdr, sizeof(Msg));
+    int rc = VbglR3HGCMCallRaw(&Msg.hdr, sizeof(Msg));
     if (RT_SUCCESS(rc))
     {
         rc = VbglHGCMParmUInt32Get(&Msg.msg, puMsg);

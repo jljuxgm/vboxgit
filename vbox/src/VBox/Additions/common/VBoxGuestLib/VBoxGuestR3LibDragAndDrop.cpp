@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 68471 2017-08-18 15:23:27Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 68502 2017-08-22 12:01:40Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1973,7 +1973,7 @@ VBGLR3DECL(int) VbglR3DnDGHSendError(PVBGLR3GUESTDNDCMDCTX pCtx, int rcErr)
         Msg.u.v3.rc.SetUInt32((uint32_t)rcErr); /* uint32_t vs. int. */
     }
 
-    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(Msg)), &Msg, sizeof(Msg));
+    int rc = VbglR3HGCMCallRaw(&Msg.hdr, sizeof(Msg));
     if (RT_SUCCESS(rc))
     {
         if (RT_FAILURE(Msg.hdr.result))

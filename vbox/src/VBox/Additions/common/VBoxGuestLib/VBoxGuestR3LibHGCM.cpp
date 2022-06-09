@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibHGCM.cpp 68465 2017-08-18 11:54:11Z vboxsync $ */
+/* $Id: VBoxGuestR3LibHGCM.cpp 68502 2017-08-22 12:01:40Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * generic HGCM.
@@ -81,6 +81,25 @@ VBGLR3DECL(int) VbglR3HGCMDisconnect(HGCMCLIENTID idClient)
     return rc;
 }
 
+
+/**
+ * Makes a fully prepared HGCM call, but don't return the result.
+ *
+ * @returns VBox status code.
+ * @param   pInfo           Fully prepared HGCM call info.
+ * @param   cbInfo          Size of the info.  This may sometimes be larger than
+ *                          what the parameter count indicates because of
+ *                          parameter changes between versions and such.
+ */
+VBGLR3DECL(int) VbglR3HGCMCallRaw(VBoxGuestHGCMCallInfo *pInfo, size_t cbInfo)
+{
+    /* Expect caller to have filled in pInfo. */
+    Assert(sizeof(*pInfo) + pInfo->cParms * sizeof(HGCMFunctionParameter) <= cbInfo);
+    Assert(pInfo->u32ClientID != 0);
+
+    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(cbInfo), pInfo, cbInfo);
+}
+
 /**
  * Makes a fully prepared HGCM call.
  *
@@ -92,11 +111,7 @@ VBGLR3DECL(int) VbglR3HGCMDisconnect(HGCMCLIENTID idClient)
  */
 VBGLR3DECL(int) VbglR3HGCMCall(VBoxGuestHGCMCallInfo *pInfo, size_t cbInfo)
 {
-    /* Expect caller to have filled in pInfo. */
-    Assert(sizeof(*pInfo) + pInfo->cParms * sizeof(HGCMFunctionParameter) <= cbInfo);
-    Assert(pInfo->u32ClientID != 0);
-
-    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(cbInfo), pInfo, cbInfo);
+    int rc = VbglR3HGCMCallRaw(pInfo, cbInfo);
     if (RT_SUCCESS(rc))
         rc = pInfo->result;
     return rc;
