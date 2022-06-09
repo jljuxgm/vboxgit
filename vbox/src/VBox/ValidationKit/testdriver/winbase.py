@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: winbase.py 69544 2017-11-01 13:39:25Z vboxsync $
+# $Id: winbase.py 69546 2017-11-02 09:44:55Z vboxsync $
 
 """
 This module is here to externalize some Windows specifics that gives pychecker
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69544 $"
+__version__ = "$Revision: 69546 $"
 
 
 # Standard Python imports.
@@ -102,7 +102,7 @@ def processTerminate(uPid):
             fRc = True;
         except:
             reporter.logXcpt('uPid=%s' % (uPid,));
-        win32api.CloseHandle(hProcess)
+        hProcess.Close(); #win32api.CloseHandle(hProcess)
     return fRc;
 
 def processKill(uPid):
@@ -118,7 +118,7 @@ def processExists(uPid):
     except:
         reporter.logXcpt('uPid=%s' % (uPid,));
     else:
-        win32api.CloseHandle(hProcess)
+        hProcess.Close(); #win32api.CloseHandle(hProcess)
         fRc = True;
     return fRc;
 
@@ -186,7 +186,7 @@ def processCreate(sName, asArgs):
 
     # Dispense with the thread handle.
     try:
-        win32api.CloseHandle(hThread);
+        hThread.Close(); # win32api.CloseHandle(hThread);
     except:
         reporter.logXcpt();
 
@@ -202,7 +202,7 @@ def processCreate(sName, asArgs):
             | win32con.DELETE,
             False,
             0);
-        win32api.CloseHandle(hProcess);
+        hProcess.Close(); # win32api.CloseHandle(hProcess);
         hProcess = hProcessFullAccess;
     except:
         reporter.logXcpt();
