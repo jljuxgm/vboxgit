@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 67987 2017-07-17 11:24:30Z vboxsync $ */
+/* $Id: GVMMR0.cpp 67988 2017-07-17 11:30:28Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1225,16 +1225,6 @@ GVMMR0DECL(int) GVMMR0DestroyVM(PGVM pGVM, PVM pVM)
             pHandle->pvObj = NULL;
             gvmmR0CreateDestroyUnlock(pGVMM);
 
-            /** @todo this _must_ be the wrong place.   */
-            for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
-            {
-                /** @todo Can we busy wait here for all thread-context hooks to be
-                 *        deregistered before releasing (destroying) it? Only until we find a
-                 *        solution for not deregistering hooks everytime we're leaving HMR0
-                 *        context. */
-                VMMR0ThreadCtxHookDestroyForEmt(&pVM->aCpus[idCpu]);
-            }
-
             SUPR0ObjRelease(pvObj, pHandle->pSession);
         }
         else
@@ -1276,6 +1266,16 @@ static void gvmmR0CleanupVM(PGVM pGVM)
     }
 
     GMMR0CleanupVM(pGVM);
+
+    AssertCompile((uintptr_t)NIL_RTTHREADCTXHOOK == 0); /* Depends on zero initialized memory working for NIL at the moment. */
+    for (VMCPUID idCpu = 0; idCpu < pGVM->cCpus; idCpu++)
+    {
+        /** @todo Can we busy wait here for all thread-context hooks to be
+         *        deregistered before releasing (destroying) it? Only until we find a
+         *        solution for not deregistering hooks everytime we're leaving HMR0
+         *        context. */
+        VMMR0ThreadCtxHookDestroyForEmt(&pGVM->pVM->aCpus[idCpu]);
+    }
 }
 
 
