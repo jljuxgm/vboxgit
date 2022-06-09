@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineWindow.h 71374 2018-03-19 15:19:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -35,6 +35,7 @@
 /* Forward declarations: */
 class QCloseEvent;
 class QGridLayout;
+class QShowEvent;
 class QSpacerItem;
 class UIActionPool;
 class UISession;
@@ -124,8 +125,8 @@ protected:
     /* Translate stuff: */
     void retranslateUi();
 
-    /** Show event handler. */
-    void showEvent(QShowEvent *pShowEvent);
+    /** Handles show @a pEvent. */
+    virtual void showEvent(QShowEvent *pEvent) /* override */;
 
     /** Close event handler. */
     void closeEvent(QCloseEvent *pCloseEvent);

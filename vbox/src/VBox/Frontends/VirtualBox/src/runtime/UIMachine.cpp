@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachine.cpp 71374 2018-03-19 15:19:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -131,9 +131,9 @@ void UIMachine::destroy()
 
 QWidget* UIMachine::activeWindow() const
 {
-    if (machineLogic() &&  machineLogic()->activeMachineWindow())
-        return machineLogic()->activeMachineWindow();
-    return 0;
+    return   machineLogic() && machineLogic()->activeMachineWindow()
+           ? machineLogic()->activeMachineWindow()
+           : 0;
 }
 
 void UIMachine::asyncChangeVisualState(UIVisualStateType visualState)

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 71368 2018-03-16 14:32:33Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 71374 2018-03-19 15:19:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -259,10 +259,10 @@ void UIMachineWindow::retranslateUi()
     updateAppearanceOf(UIVisualElement_WindowTitle);
 }
 
-void UIMachineWindow::showEvent(QShowEvent *pShowEvent)
+void UIMachineWindow::showEvent(QShowEvent *pEvent)
 {
-    /* Call to base class: */
-    QMainWindow::showEvent(pShowEvent);
+    /* Call to base-class: */
+    QMainWindow::showEvent(pEvent);
 
     /* Update appearance for indicator-pool: */
     updateAppearanceOf(UIVisualElement_IndicatorPoolStuff);

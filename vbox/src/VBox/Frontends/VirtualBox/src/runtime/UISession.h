@@ -1,4 +1,4 @@
-/* $Id: UISession.h 69858 2017-11-28 10:56:02Z vboxsync $ */
+/* $Id: UISession.h 71374 2018-03-19 15:19:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -44,6 +44,7 @@ class QMenu;
 class UIFrameBuffer;
 class UIMachine;
 class UIMachineLogic;
+class UIMachineWindow;
 class UIActionPool;
 class CUSBDevice;
 class CNetworkAdapter;
@@ -125,6 +126,7 @@ public:
     UIMachineLogic* machineLogic() const;
     QWidget* mainMachineWindow() const;
     WId mainMachineWindowId() const;
+    UIMachineWindow *activeMachineWindow() const;
     QCursor cursor() const { return m_cursor; }
 
     /** @name Branding stuff.
