@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 70645 2018-01-19 12:27:22Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 70647 2018-01-19 13:17:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -336,11 +336,11 @@ int  UIVMLogPage::unfilteredLineCount() const
 bool UIVMLogPage::shouldFilterBeApplied(const QSet<QString> &filterTermSet, int filterOperationType) const
 {
     /* If filter terms set is different reapply the filter. */
-    if(filterTermSet != m_filterTermSet)
+    if (filterTermSet != m_filterTermSet)
         return true;
 
     /* If filter operation type set is different reapply the filter. */
-    if(filterOperationType != m_filterOperationType)
+    if (filterOperationType != m_filterOperationType)
         return true;
     return false;
 }
