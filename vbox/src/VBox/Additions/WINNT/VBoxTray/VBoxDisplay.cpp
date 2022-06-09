@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 69201 2017-10-24 11:50:08Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 69361 2017-10-26 14:51:38Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -883,7 +883,7 @@ static DECLCALLBACK(int) VBoxDisplayWorker(void *pvInstance, bool volatile *pfSh
                             ResizeDisplayDeviceNT4(cx, cy, cBits);
                             break;
                         }
-  
+
                         /* Retry the change a bit later. */
                         RTThreadSleep(1000);
                     }

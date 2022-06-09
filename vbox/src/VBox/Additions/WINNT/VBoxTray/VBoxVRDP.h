@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxVRDP.h 69361 2017-10-26 14:51:38Z vboxsync $ */
 /** @file
  * VBoxVRDP - VRDP notification
  */
@@ -23,4 +23,4 @@ int                VBoxVRDPInit    (const VBOXSERVICEENV *pEnv, void **ppInstanc
 unsigned __stdcall VBoxVRDPThread  (void *pInstance);
 void               VBoxVRDPDestroy (const VBOXSERVICEENV *pEnv, void *pInstance);
 
-#endif /* __VBOXSERVICEVRDP__H */
+#endif /* !__VBOXSERVICEVRDP__H */

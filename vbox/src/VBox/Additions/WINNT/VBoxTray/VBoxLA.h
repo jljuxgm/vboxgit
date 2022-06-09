@@ -1,4 +1,4 @@
-/* $Id: VBoxLA.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxLA.h 69361 2017-10-26 14:51:38Z vboxsync $ */
 /** @file
  * VBoxLA - Location Awareness
  */
@@ -18,5 +18,5 @@
 #ifndef __VBOXSERVICELA__H
 #define __VBOXSERVICELA__H
 
-#endif /* __VBOXSERVICELA__H */
+#endif /* !__VBOXSERVICELA__H */
 

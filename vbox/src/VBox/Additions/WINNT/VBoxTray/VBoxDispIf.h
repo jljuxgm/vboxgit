@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.h 68261 2017-08-02 21:45:09Z vboxsync $ */
+/* $Id: VBoxDispIf.h 69361 2017-10-26 14:51:38Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #include <iprt/cdefs.h>
 
 #ifdef VBOX_WITH_WDDM

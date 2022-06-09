@@ -1,8 +1,9 @@
-/* $Id: resource.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: resource.h 69361 2017-10-26 14:51:38Z vboxsync $ */
 /** @file
- *
  * VBoxService - Guest Additions Service
- *
+ */
+
+/*
  * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
@@ -15,3 +16,4 @@
  */
 
 #define IDI_VIRTUALBOX 101
+

@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 68630 2017-09-05 11:33:54Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 69361 2017-10-26 14:51:38Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

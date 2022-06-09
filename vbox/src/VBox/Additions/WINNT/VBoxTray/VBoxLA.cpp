@@ -1,4 +1,4 @@
-/* $Id: VBoxLA.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
+/* $Id: VBoxLA.cpp 69361 2017-10-26 14:51:38Z vboxsync $ */
 /** @file
  * VBoxLA - VBox Location Awareness notifications.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #define _WIN32_WINNT 0x0501
 #include <iprt/win/windows.h>
 

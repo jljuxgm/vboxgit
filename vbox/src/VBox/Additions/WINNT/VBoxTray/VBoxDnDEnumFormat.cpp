@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDEnumFormat.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxDnDEnumFormat.cpp 69361 2017-10-26 14:51:38Z vboxsync $ */
 /** @file
  * VBoxDnDEnumFormat.cpp - IEnumFORMATETC ("Format et cetera") implementation.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #include <iprt/win/windows.h>
 #include <new> /* For bad_alloc. */
 

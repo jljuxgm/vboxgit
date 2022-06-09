@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropTarget.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
+/* $Id: VBoxDnDDropTarget.cpp 69361 2017-10-26 14:51:38Z vboxsync $ */
 /** @file
  * VBoxDnDTarget.cpp - IDropTarget implementation.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #include <iprt/win/windows.h>
 #include <new> /* For bad_alloc. */
 #include <iprt/win/shlobj.h> /* For DROPFILES and friends. */
