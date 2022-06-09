@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.h 71531 2018-03-28 07:25:36Z vboxsync $ */
+/* $Id: UIHostFileTable.h 71563 2018-03-29 11:14:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -43,15 +43,9 @@ protected:
     virtual QString fsObjectPropertyString() /* override */;
     virtual void  showProperties() /* override */;
 
-private slots:
-
-    void sltReceiveDirectoryStatistics(UIDirectoryStatistics statictics);
-
 private:
 
     void prepareActions();
-
-    UIPropertiesDialog *m_pPropertiesDialog;
 };
 
 #endif /* !___UIGuestControlFileTable_h___ */
