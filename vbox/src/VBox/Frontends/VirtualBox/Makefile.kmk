@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72156 2018-05-08 09:22:26Z vboxsync $
+# $Id: Makefile.kmk 72157 2018-05-08 09:26:50Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1466,7 +1466,7 @@ VBoxGlobal_SOURCES = \
 	src/widgets/UISpecialControls.cpp \
 	src/widgets/UIStatusBarEditorWindow.cpp \
 	src/widgets/UIToolBar.cpp \
-	src/widgets/UIVMNamePathSelector.h \
+	src/widgets/UIVMNamePathSelector.cpp \
 	src/widgets/UIWarningPane.cpp \
 	src/wizards/UIWizard.cpp \
 	src/wizards/UIWizardPage.cpp \
