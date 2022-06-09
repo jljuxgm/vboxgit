@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 70612 2018-01-17 18:12:23Z vboxsync $ */
+/* $Id: IEMAll.cpp 70613 2018-01-17 18:17:54Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -16081,10 +16081,10 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedInvlpg(PVMCPU pVCpu, uint8_t cbInstr, R
 /**
  * Interface for HM and EM to emulate the INVPCID instruction.
  *
- * @param   pVCpu       The cross context virtual CPU structure.
- * @param   cbInstr     The instruction length in bytes.
- * @param   uType       The invalidation type.
- * @param   GCPtrPage   The effective address of the INVPCID descriptor.
+ * @param   pVCpu               The cross context virtual CPU structure.
+ * @param   cbInstr             The instruction length in bytes.
+ * @param   uType               The invalidation type.
+ * @param   GCPtrInvpcidDesc    The effective address of the INVPCID descriptor.
  *
  * @remarks In ring-0 not all of the state needs to be synced in.
  */
