@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 68442 2017-08-17 11:59:47Z vboxsync $ */
+/* $Id: VBoxAboutDlg.cpp 68443 2017-08-17 12:08:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
@@ -106,7 +106,8 @@ void VBoxAboutDlg::prepare()
     setAttribute(Qt::WA_DeleteOnClose);
 
     /* Make sure the dialog is deleted on pseudo-parent destruction: */
-    connect(m_pPseudoParent, &QObject::destroyed, this, &VBoxAboutDlg::close);
+    if (m_pPseudoParent)
+        connect(m_pPseudoParent, &QObject::destroyed, this, &VBoxAboutDlg::close);
 
     /* Choose default image: */
     QString strPath(":/about.png");
