@@ -1,4 +1,4 @@
-# $Id: Config.kmk 71694 2018-04-06 08:27:41Z vboxsync $
+# $Id: Config.kmk 71696 2018-04-06 10:00:55Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2850,10 +2850,18 @@ ifdef VBOX_WITH_GCC_SANITIZER
 	-fno-sanitize=alignment \
 	-fno-sanitize=vptr \
 	-fno-common \
-	-include sanitizer/lsan_interface.h \
-	-DVBOX_WITH_GCC_SANITIZER
+	-static-libasan
 else
  VBOX_GCC_SANITIZER_FLAGS =
+endif
+
+# -libasan-static is currently not supported in combination with -no-undefined.
+ifdef VBOX_WITH_GCC_SANITIZER
+ VBOX_GCC_NO_UNDEFINED    :=
+ VBOX_GCC_NO_UNDEFINED_R0 :=
+else
+ VBOX_GCC_NO_UNDEFINED    := -Wl,--no-undefined
+ VBOX_GCC_NO_UNDEFINED_R0 := -no-undefined
 endif
 
 # Disabled Visual C++ warnings, W4:
@@ -7147,7 +7155,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71694 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 71696 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
