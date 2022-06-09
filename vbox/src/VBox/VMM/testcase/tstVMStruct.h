@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 72494 2018-06-10 16:16:36Z vboxsync $ */
+/* $Id: tstVMStruct.h 72634 2018-06-20 16:08:42Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -271,7 +271,6 @@
 
     GEN_CHECK_SIZE(EM);
     GEN_CHECK_OFF(EM, offVM);
-    GEN_CHECK_OFF(EMCPU, pCtx);
     GEN_CHECK_OFF(EMCPU, enmState);
     GEN_CHECK_OFF(EMCPU, fForceRAW);
     GEN_CHECK_OFF_DOT(EMCPU, u.achPaddingFatalLongJump);

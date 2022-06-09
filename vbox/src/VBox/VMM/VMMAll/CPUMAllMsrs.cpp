@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 72522 2018-06-12 08:45:27Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 72634 2018-06-20 16:08:42Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -6331,6 +6331,7 @@ VMM_INT_DECL(void) CPUMSetGuestTscAux(PVMCPU pVCpu, uint64_t uValue)
     pVCpu->cpum.s.Guest.fExtrn &= ~CPUMCTX_EXTRN_TSC_AUX;
     pVCpu->cpum.s.GuestMsrs.msr.TscAux = uValue;
 }
+
 
 /**
  * Fast way for HM to access the IA32_SPEC_CTRL register.

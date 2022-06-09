@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 72575 2018-06-15 21:25:32Z vboxsync $ */
+/* $Id: NEMInternal.h 72634 2018-06-20 16:08:42Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -397,7 +397,7 @@ int     nemR3NativeTerm(PVM pVM);
 void    nemR3NativeReset(PVM pVM);
 void    nemR3NativeResetCpu(PVMCPU pVCpu, bool fInitIpi);
 VBOXSTRICTRC    nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu);
-bool            nemR3NativeCanExecuteGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx);
+bool            nemR3NativeCanExecuteGuest(PVM pVM, PVMCPU pVCpu);
 bool            nemR3NativeSetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable);
 void            nemR3NativeNotifyFF(PVM pVM, PVMCPU pVCpu, uint32_t fFlags);
 
