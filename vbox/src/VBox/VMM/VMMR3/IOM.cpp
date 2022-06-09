@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: IOM.cpp 72249 2018-05-17 17:33:00Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1955,7 +1955,7 @@ VMMR3_INT_DECL(VBOXSTRICTRC) IOMR3ProcessForceFlag(PVM pVM, PVMCPU pVCpu, VBOXST
     if (pVCpu->iom.s.PendingIOPortWrite.cbValue)
     {
         Log5(("IOM: Dispatching pending I/O port write: %#x LB %u -> %RTiop\n", pVCpu->iom.s.PendingIOPortWrite.u32Value,
-              pVCpu->iom.s.PendingMmioWrite.cbValue, pVCpu->iom.s.PendingIOPortWrite.IOPort));
+              pVCpu->iom.s.PendingIOPortWrite.cbValue, pVCpu->iom.s.PendingIOPortWrite.IOPort));
         VBOXSTRICTRC rcStrictCommit = IOMIOPortWrite(pVM, pVCpu, pVCpu->iom.s.PendingIOPortWrite.IOPort,
                                                      pVCpu->iom.s.PendingIOPortWrite.u32Value,
                                                      pVCpu->iom.s.PendingIOPortWrite.cbValue);
