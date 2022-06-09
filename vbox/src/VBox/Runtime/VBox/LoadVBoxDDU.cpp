@@ -1,4 +1,4 @@
-/* $Id: LoadVBoxDDU.cpp 69603 2017-11-06 17:23:11Z vboxsync $ */
+/* $Id: LoadVBoxDDU.cpp 69604 2017-11-06 17:31:31Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Try Load VBoxDDU to get VFS chain providers from storage.
  */
@@ -118,7 +118,7 @@ public:
         }
     }
 
-    static LoadVBoxDDU LoadVBoxDDU::s_LoadVBoxDDU;
+    static LoadVBoxDDU s_LoadVBoxDDU;
 };
 
 /* static*/ LoadVBoxDDU LoadVBoxDDU::s_LoadVBoxDDU;
