@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72592 2018-06-18 12:24:43Z vboxsync $ */
+/* $Id: IEMAll.cpp 72607 2018-06-18 20:48:08Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -14256,9 +14256,18 @@ VMMDECL(VBOXSTRICTRC) IEMExecForExits(PVMCPU pVCpu, uint32_t fWillExit, uint32_t
                             {
                                 if (cInstructionSinceLastExit <= cMaxInstructionsWithoutExits)
                                 {
-                                    Assert(pVCpu->iem.s.cActiveMappings == 0);
-                                    iemReInitDecoder(pVCpu);
-                                    continue;
+#ifdef IN_RING0
+                                    if (!RTThreadPreemptIsPending(NIL_RTTHREAD))
+#endif
+                                    {
+                                        Assert(pVCpu->iem.s.cActiveMappings == 0);
+                                        iemReInitDecoder(pVCpu);
+                                        continue;
+                                    }
+#ifdef IN_RING0
+                                    rcStrict = VINF_EM_RAW_INTERRUPT;
+                                    break;
+#endif
                                 }
                             }
                         }
