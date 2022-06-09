@@ -1,4 +1,4 @@
-/* $Id: iso9660vfs.cpp 67570 2017-06-22 17:49:58Z vboxsync $ */
+/* $Id: iso9660vfs.cpp 67595 2017-06-24 11:28:35Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 Virtual Filesystem.
  */
@@ -649,7 +649,6 @@ static DECLCALLBACK(int) rtFsIso9660File_Read(void *pvThis, RTFOFF off, PCRTSGBU
      */
     else
     {
-
         return VERR_NOT_IMPLEMENTED; /** @todo multi-extent stuff . */
     }
 
