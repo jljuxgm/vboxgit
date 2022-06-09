@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68865 2017-09-25 21:34:10Z vboxsync $
+# $Id: Makefile.kmk 68884 2017-09-27 10:28:56Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -338,6 +338,7 @@ RuntimeR3_SOURCES       = \
 	common/checksum/crc32.cpp \
 	common/checksum/crc32c.cpp \
 	common/checksum/crc64.cpp \
+	common/checksum/crc16ccitt.cpp \
 	common/checksum/alt-md2.cpp \
 	common/checksum/alt-md5.cpp \
 	common/checksum/alt-sha1.cpp \
