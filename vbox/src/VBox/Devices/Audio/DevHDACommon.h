@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 67899 2017-07-11 11:03:53Z vboxsync $ */
+/* $Id: DevHDACommon.h 67901 2017-07-11 11:14:35Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -549,8 +549,8 @@ typedef struct HDABDLE
  * @{
  */
 PDMAUDIODIR   hdaGetDirFromSD(uint8_t uSD);
-PHDASTREAM    hdaStreamGetFromSD(PHDASTATE pThis, uint8_t uSD);
-PHDASTREAM    hdaSinkGetStream(PHDASTATE pThis, PHDAMIXERSINK pSink);
+PHDASTREAM    hdaGetStreamFromSD(PHDASTATE pThis, uint8_t uSD);
+PHDASTREAM    hdaGetStreamFromSink(PHDASTATE pThis, PHDAMIXERSINK pSink);
 /** @} */
 
 /** @name Interrupt functions.
