@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 70466 2018-01-05 13:20:35Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 70467 2018-01-05 13:32:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -89,14 +89,14 @@ public:
 protected:
 
     /* Overload the mouseXXXEvent to control how selection is made: */
-    virtual void	mouseDoubleClickEvent(QMouseEvent * event){}
-    virtual void	mouseMoveEvent(QMouseEvent * event){}
+    virtual void	mouseDoubleClickEvent(QMouseEvent *){}
+    virtual void	mouseMoveEvent(QMouseEvent *){}
     virtual void	mousePressEvent(QMouseEvent * event)
     {
         /* Simulate double mouse click to select a word with a single click. */
         QLineEdit::mouseDoubleClickEvent(event);
     }
-    virtual void	mouseReleaseEvent(QMouseEvent * event){}
+    virtual void	mouseReleaseEvent(QMouseEvent *){}
     virtual void paintEvent(QPaintEvent *event)
     {
         QLineEdit::paintEvent(event);
