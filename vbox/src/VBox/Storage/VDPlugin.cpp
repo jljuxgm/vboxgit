@@ -1,4 +1,4 @@
-/* $Id: VDPlugin.cpp 66380 2017-03-31 11:28:52Z vboxsync $ */
+/* $Id: VDPlugin.cpp 67455 2017-06-16 20:25:22Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation, plugin related bits.
  */
@@ -84,6 +84,7 @@ static PCVDIMAGEBACKEND aStaticBackends[] =
     &g_VhdxBackend,
     &g_RawBackend,
     &g_CueBackend,
+    &g_VBoxIsoMakerBackend,
     &g_ISCSIBackend
 };
 
