@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 70954 2018-02-10 20:10:44Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 70960 2018-02-10 23:52:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -601,9 +601,9 @@ static void pgmHandlerPhysicalDeregisterNotifyREMAndNEM(PVM pVM, PPGMPHYSHANDLER
     /*
      * Tell REM and NEM.
      */
-#ifdef VBOX_WITH_REM
     const bool fRestoreAsRAM2 = pCurType->pfnHandlerR3
                              && pCurType->enmKind != PGMPHYSHANDLERKIND_MMIO; /** @todo this isn't entirely correct. */
+#ifdef VBOX_WITH_REM
 # ifndef IN_RING3
     REMNotifyHandlerPhysicalDeregister(pVM, pCurType->enmKind, GCPhysStart, GCPhysLast - GCPhysStart + 1,
                                        !!pCurType->pfnHandlerR3, fRestoreAsRAM2);
