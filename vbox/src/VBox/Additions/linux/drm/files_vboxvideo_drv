@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxvideo_drv 67169 2017-05-31 12:43:59Z vboxsync $
+# $Id: files_vboxvideo_drv 67177 2017-05-31 14:59:02Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -20,10 +20,6 @@ FILES_VBOXVIDEO_DRM_NOBIN=" \
     ${PATH_OUT}/version-generated.h=>version-generated.h \
     ${PATH_OUT}/revision-generated.h=>revision-generated.h \
     ${PATH_OUT}/product-generated.h=>product-generated.h \
-    ${PATH_ROOT}/include/iprt/cdefs.h=>include/iprt/cdefs.h \
-    ${PATH_ROOT}/include/iprt/stdarg.h=>include/iprt/stdarg.h \
-    ${PATH_ROOT}/include/iprt/stdint.h=>include/iprt/stdint.h \
-    ${PATH_ROOT}/include/iprt/types.h=>include/iprt/types.h \
     ${PATH_ROOT}/include/VBox/Graphics/VBoxVideo.h=>include/VBoxVideo.h \
     ${PATH_ROOT}/include/VBox/Graphics/VBoxVideoGuest.h=>include/VBoxVideoGuest.h \
     ${PATH_ROOT}/include/VBox/Graphics/HGSMIChannels.h=>include/HGSMIChannels.h \

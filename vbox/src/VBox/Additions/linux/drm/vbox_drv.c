@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 66544 2017-04-12 17:02:30Z vboxsync $ */
+/*  $Id: vbox_drv.c 67177 2017-05-31 14:59:02Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -326,5 +326,5 @@ MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);
 MODULE_LICENSE("GPL and additional rights");
 #ifdef MODULE_VERSION
-MODULE_VERSION(VBOX_VERSION_STRING " r" RT_XSTR(VBOX_SVN_REV));
+MODULE_VERSION(VBOX_VERSION_STRING " r" __stringify(VBOX_SVN_REV));
 #endif
