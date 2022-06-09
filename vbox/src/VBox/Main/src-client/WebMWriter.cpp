@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.cpp 69684 2017-11-14 13:23:32Z vboxsync $ */
+/* $Id: WebMWriter.cpp 69689 2017-11-14 14:50:37Z vboxsync $ */
 /** @file
  * WebMWriter.cpp - WebM container handling.
  */
