@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72406 2018-06-01 09:48:31Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 72409 2018-06-01 11:23:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -187,8 +187,6 @@ UIMediumItem* UIMediumSelector::addTreeItem(const UIMedium &medium, QITreeWidget
             return new UIMediumItemHD(medium, pParent);
             break;
     }
-
-    return 0;
 }
 
 void UIMediumSelector::restoreSelection(const QStringList &selectedMediums, QVector<UIMediumItem*> &mediumList)
