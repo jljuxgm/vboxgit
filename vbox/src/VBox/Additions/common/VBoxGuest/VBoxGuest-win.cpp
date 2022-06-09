@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 68550 2017-08-31 12:09:41Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 68554 2017-08-31 12:09:54Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -886,12 +886,7 @@ static NTSTATUS vgdrvNtDeviceControlSlow(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSES
     }
 #endif
 
-    /* complete the request. */
-    pIrp->IoStatus.Status = rcNt;
-    pIrp->IoStatus.Information = cbOut;
-    //supdrvSessionRelease(pSession);
-    IoCompleteRequest(pIrp, IO_NO_INCREMENT);
-    return rcNt;
+    return vgdrvNtCompleteRequestEx(rcNt, cbOut, pIrp);
 }
 
 
