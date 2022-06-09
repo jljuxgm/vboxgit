@@ -1,4 +1,4 @@
-/* $Id: VideoRec.h 72014 2018-04-25 13:28:31Z vboxsync $ */
+/* $Id: VideoRec.h 72015 2018-04-25 13:31:43Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -66,8 +66,6 @@ typedef struct VIDEORECCFG
         RT_ZERO(Video);
     }
 
-    /** Whether recording is enabled or not (as a whole). */
-    //bool                    fEnabled;
     /** Array of all screens containing whether they're enabled
      *  for recording or not.  */
     com::SafeArray<BOOL>    aScreens;
