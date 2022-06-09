@@ -1,4 +1,4 @@
-/* $Id: UIStarter.cpp 71360 2018-03-15 17:14:12Z vboxsync $ */
+/* $Id: UIStarter.cpp 71369 2018-03-16 15:11:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class implementation.
  */
@@ -24,6 +24,7 @@
 #include "UIMachine.h"
 #include "UIMessageCenter.h"
 #include "UISelectorWindow.h"
+#include "UISession.h"
 #include "UIStarter.h"
 
 
@@ -84,6 +85,8 @@ void UIStarter::init()
             this, &UIStarter::sltRestartUI);
     connect(&vboxGlobal(), &VBoxGlobal::sigAskToOpenURLs,
             this, &UIStarter::sltOpenURLs);
+    connect(&vboxGlobal(), &VBoxGlobal::sigAskToCommitData,
+            this, &UIStarter::sltHandleCommitDataRequest);
 }
 
 void UIStarter::deinit()
@@ -165,5 +168,20 @@ void UIStarter::sltOpenURLs()
 
     /* Ask the Selector UI to open URLs asynchronously: */
     QMetaObject::invokeMethod(gpSelectorWindow, "sltOpenUrls", Qt::QueuedConnection);
+}
+
+void UIStarter::sltHandleCommitDataRequest()
+{
+    /* Exit if VBoxGlobal is not valid: */
+    if (!vboxGlobal().isValid())
+        return;
+
+    /* For VM process: */
+    if (vboxGlobal().isVMConsoleProcess())
+    {
+        /* Temporary override the default close action to 'SaveState' if necessary: */
+        if (gpMachine->uisession()->defaultCloseAction() == MachineCloseAction_Invalid)
+            gpMachine->uisession()->setDefaultCloseAction(MachineCloseAction_SaveState);
+    }
 }
 

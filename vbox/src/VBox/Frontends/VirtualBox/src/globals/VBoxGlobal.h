@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 71368 2018-03-16 14:32:33Z vboxsync $ */
+/* $Id: VBoxGlobal.h 71369 2018-03-16 15:11:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -451,8 +451,10 @@ signals:
 
     /** Asks listener to recreate UI. */
     void sigAskToRestartUI();
-    /** Ask listener to open URLs. */
+    /** Asks listener to open URLs. */
     void sigAskToOpenURLs();
+    /** Asks listener to commit data. */
+    void sigAskToCommitData();
 
     /** Notifies listeners about the VBoxSVC availability change. */
     void sigVBoxSVCAvailabilityChange();

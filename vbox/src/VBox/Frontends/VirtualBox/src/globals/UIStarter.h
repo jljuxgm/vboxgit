@@ -1,4 +1,4 @@
-/* $Id: UIStarter.h 71360 2018-03-15 17:14:12Z vboxsync $ */
+/* $Id: UIStarter.h 71369 2018-03-16 15:11:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class declaration.
  */
@@ -21,8 +21,8 @@
 /* Qt includes: */
 #include <QObject>
 
-/** QObject subclass allowing to start GUI part
-  * of VirtualBox application in async mode. */
+/** QObject subclass allowing to control GUI part
+  * of VirtualBox application in sync/async modes. */
 class UIStarter : public QObject
 {
     Q_OBJECT;
@@ -63,6 +63,9 @@ private slots:
 
     /** Opens URLs in Selector UI. */
     void sltOpenURLs();
+
+    /** Handles commit data request. */
+    void sltHandleCommitDataRequest();
 
 private:
 
