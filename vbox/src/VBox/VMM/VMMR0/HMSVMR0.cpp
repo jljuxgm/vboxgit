@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72596 2018-06-18 12:51:15Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72600 2018-06-18 13:40:48Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6801,7 +6801,6 @@ HMSVM_EXIT_DECL hmR0SvmExitIOInstr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
     bool fUpdateRipAlready = false;
     if (IoExitInfo.n.u1Str)
     {
-#ifdef VBOX_WITH_2ND_IEM_STEP
         /* INS/OUTS - I/O String instruction. */
         /** @todo Huh? why can't we use the segment prefix information given by AMD-V
          *        in EXITINFO1? Investigate once this thing is up and running. */
@@ -6860,33 +6859,6 @@ HMSVM_EXIT_DECL hmR0SvmExitIOInstr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
             rcStrict = IEMExecOne(pVCpu);
         }
         fUpdateRipAlready = true;
-
-#else
-        /* INS/OUTS - I/O String instruction. */
-        PDISCPUSTATE pDis = &pVCpu->hm.s.DisState;
-
-        /** @todo Huh? why can't we use the segment prefix information given by AMD-V
-         *        in EXITINFO1? Investigate once this thing is up and running. */
-
-        rcStrict = EMInterpretDisasCurrent(pVM, pVCpu, pDis, NULL);
-        if (rcStrict == VINF_SUCCESS)
-        {
-            if (IoExitInfo.n.u1Type == SVM_IOIO_WRITE)
-            {
-                rcStrict = IOMInterpretOUTSEx(pVM, pVCpu, CPUMCTX2CORE(pCtx), IoExitInfo.n.u16Port, pDis->fPrefix,
-                                              (DISCPUMODE)pDis->uAddrMode, cbValue);
-                STAM_COUNTER_INC(&pVCpu->hm.s.StatExitIOStringWrite);
-            }
-            else
-            {
-                rcStrict = IOMInterpretINSEx(pVM, pVCpu, CPUMCTX2CORE(pCtx), IoExitInfo.n.u16Port, pDis->fPrefix,
-                                             (DISCPUMODE)pDis->uAddrMode, cbValue);
-                STAM_COUNTER_INC(&pVCpu->hm.s.StatExitIOStringRead);
-            }
-        }
-        else
-            rcStrict = VINF_EM_RAW_EMULATE_INSTR;
-#endif
     }
     else
     {
