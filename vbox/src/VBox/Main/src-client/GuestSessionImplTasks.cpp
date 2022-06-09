@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 71219 2018-03-05 21:32:09Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 71220 2018-03-05 21:49:29Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -38,6 +38,7 @@
 
 #include <iprt/env.h>
 #include <iprt/file.h> /* For CopyTo/From. */
+#include <iprt/dir.h>
 #include <iprt/path.h>
 
 
