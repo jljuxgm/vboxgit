@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 71638 2018-04-04 05:11:10Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 71683 2018-04-05 13:07:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -241,6 +241,12 @@ void UIVMLogPage::scrollToBookmark(int bookmarkIndex)
 const QVector<LogBookmark>& UIVMLogPage::bookmarkVector() const
 {
     return m_bookmarkVector;
+}
+
+void UIVMLogPage::setBookmarkVector(const QVector<LogBookmark>& bookmarks)
+{
+    m_bookmarkVector = bookmarks;
+    updateTextEditBookmarkLineSet();
 }
 
 void UIVMLogPage::showEvent(QShowEvent *pEvent)
