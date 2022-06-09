@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 69927 2017-12-05 09:59:40Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 69928 2017-12-05 10:01:37Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -111,14 +111,14 @@
 #ifdef VBOX_WITH_NESTED_HWVIRT
 # define HMSVM_ASSERT_NOT_IN_NESTED_GUEST(a_pCtx)       Assert(!CPUMIsGuestInSvmNestedHwVirtMode((a_pCtx)))
 #else
-# define HMSVM_ASSERT_NOT_IN_NESTED_GUEST(a_pCtx)       do { RT_NOREF((a_pCtx)); } while (0)
+# define HMSVM_ASSERT_NOT_IN_NESTED_GUEST(a_pCtx)       do { NOREF((a_pCtx)); } while (0)
 #endif
 
 /** Assert that we're executing a nested-guest. */
 #ifdef VBOX_WITH_NESTED_HWVIRT
 # define HMSVM_ASSERT_IN_NESTED_GUEST(a_pCtx)           Assert(CPUMIsGuestInSvmNestedHwVirtMode((a_pCtx)))
 #else
-# define HMSVM_ASSERT_IN_NESTED_GUEST(a_pCtx)           do { RT_NOREF((a_pCtx)); } while (0)
+# define HMSVM_ASSERT_IN_NESTED_GUEST(a_pCtx)           do { NOREF((a_pCtx)); } while (0)
 #endif
 
 /**
