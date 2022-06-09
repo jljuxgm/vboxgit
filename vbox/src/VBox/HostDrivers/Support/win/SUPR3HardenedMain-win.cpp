@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 67979 2017-07-15 11:02:00Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 67981 2017-07-15 13:22:24Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -1695,10 +1695,11 @@ static bool supR3HardenedIsApiSetDll(PUNICODE_STRING pName)
     /*
      * Fallback needed for Windows 7.  Fortunately, there aren't too many fake DLLs here.
      */
-    if (   supHardViUtf16PathStartsWithEx(pName->Buffer, pName->Length / sizeof(WCHAR),
-                                          L"api-ms-win-", 11, false /*fCheckSlash*/)
-        || supHardViUtf16PathStartsWithEx(pName->Buffer, pName->Length / sizeof(WCHAR),
-                                          L"ext-ms-win-", 11, false /*fCheckSlash*/) )
+    if (   g_uNtVerCombined >= SUP_NT_VER_W70
+        && (   supHardViUtf16PathStartsWithEx(pName->Buffer, pName->Length / sizeof(WCHAR),
+                                              L"api-ms-win-", 11, false /*fCheckSlash*/)
+            || supHardViUtf16PathStartsWithEx(pName->Buffer, pName->Length / sizeof(WCHAR),
+                                              L"ext-ms-win-", 11, false /*fCheckSlash*/) ))
     {
 #define MY_ENTRY(a) { a, sizeof(a) - 1 }
         static const struct { const char *psz; size_t cch; } s_aKnownSets[] =
