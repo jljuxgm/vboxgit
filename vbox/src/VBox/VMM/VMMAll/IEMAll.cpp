@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 67528 2017-06-21 08:26:45Z vboxsync $ */
+/* $Id: IEMAll.cpp 67627 2017-06-27 09:34:12Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -11370,6 +11370,11 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PVMCPU pVCpu, uint16_t uSel)
 #define IEM_MC_FPU_TO_MMX_MODE() do { \
         IEM_GET_CTX(pVCpu)->CTX_SUFF(pXState)->x87.FSW &= ~X86_FSW_TOP_MASK; \
         IEM_GET_CTX(pVCpu)->CTX_SUFF(pXState)->x87.FTW  = 0xff; \
+    } while (0)
+
+/** Switches the FPU state from MMX mode (FTW=0xffff). */
+#define IEM_MC_FPU_FROM_MMX_MODE() do { \
+        IEM_GET_CTX(pVCpu)->CTX_SUFF(pXState)->x87.FTW  = 0; \
     } while (0)
 
 #define IEM_MC_FETCH_MREG_U64(a_u64Value, a_iMReg) \
