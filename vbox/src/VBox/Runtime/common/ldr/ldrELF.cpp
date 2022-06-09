@@ -1,4 +1,4 @@
-/* $Id: ldrELF.cpp 69435 2017-10-27 15:54:24Z vboxsync $ */
+/* $Id: ldrELF.cpp 69437 2017-10-27 15:57:26Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Executable and Linker Format (ELF).
  */
@@ -37,17 +37,10 @@
 #include <iprt/string.h>
 #include <iprt/log.h>
 #include <iprt/err.h>
-#if 0
-#include "internal/ldrELF32.h"
-#include "internal/ldrELF64.h"
-#include "internal/ldrELFi386.h"
-#include "internal/ldrELFAmd64.h"
-#else
-# include <iprt/formats/elf32.h>
-# include <iprt/formats/elf64.h>
-# include <iprt/formats/elf-i386.h>
-# include <iprt/formats/elf-amd64.h>
-#endif
+#include <iprt/formats/elf32.h>
+#include <iprt/formats/elf64.h>
+#include <iprt/formats/elf-i386.h>
+#include <iprt/formats/elf-amd64.h>
 #include "internal/ldr.h"
 
 
