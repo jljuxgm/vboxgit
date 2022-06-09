@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 71307 2018-03-13 08:19:42Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 71530 2018-03-28 06:33:19Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -1088,11 +1088,11 @@ IEM_STATIC VBOXSTRICTRC iemSvmHandleMsrIntercept(PVMCPU pVCpu, PCPUMCTX pCtx, ui
      * Get the byte and bit offset of the permission bits corresponding to the MSR.
      */
     uint16_t offMsrpm;
-    uint32_t uMsrpmBit;
+    uint8_t  uMsrpmBit;
     int rc = HMSvmGetMsrpmOffsetAndBit(idMsr, &offMsrpm, &uMsrpmBit);
     if (RT_SUCCESS(rc))
     {
-        Assert(uMsrpmBit < 0x3fff);
+        Assert(uMsrpmBit == 0 || uMsrpmBit == 2 || uMsrpmBit == 4 || uMsrpmBit == 6);
         Assert(offMsrpm < SVM_MSRPM_PAGES << X86_PAGE_4K_SHIFT);
         if (fWrite)
             ++uMsrpmBit;
