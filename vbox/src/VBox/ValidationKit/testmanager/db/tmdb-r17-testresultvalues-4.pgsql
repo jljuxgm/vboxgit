@@ -1,4 +1,4 @@
--- $Id: tmdb-r17-testresultvalues-4.pgsql 69111 2017-10-17 14:26:02Z vboxsync $
+-- $Id: tmdb-r17-testresultvalues-4.pgsql 69448 2017-10-27 16:57:29Z vboxsync $
 --- @file
 -- VBox Test Manager Database - Log viewer related optimizations for TestResultValues.
 --
@@ -35,5 +35,4 @@ CREATE INDEX TestResultValuesLogIdx ON TestResultValues(idTestSet, tsCreated);
 COMMIT;
 
 \d+ TestResultValues
-
 

@@ -1,4 +1,4 @@
--- $Id: tmdb-r07-testresults-1.pgsql 69111 2017-10-17 14:26:02Z vboxsync $
+-- $Id: tmdb-r07-testresults-1.pgsql 69448 2017-10-27 16:57:29Z vboxsync $
 --- @file
 -- VBox Test Manager Database - Adds an index to TestResults.
 --
@@ -34,5 +34,4 @@ CREATE INDEX TestResultsNameIdx ON TestResults (idStrName, idTestResult, tsCreat
 COMMIT;
 
 \d+ TestResults
-
 
