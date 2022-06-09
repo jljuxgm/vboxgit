@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 71148 2018-02-28 10:00:16Z vboxsync $ */
+/* $Id: DevVGA.cpp 71149 2018-02-28 10:05:08Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -857,7 +857,7 @@ static uint32_t vbe_read_cfg(PVGASTATE pThis)
     {
         case VBE_DISPI_CFG_ID_VERSION:
            return fQuerySupport ? 1 : 0;
-        case VBE_DISPI_CFG_ID_VRAM_SIZE: 
+        case VBE_DISPI_CFG_ID_VRAM_SIZE:
            return fQuerySupport ? 1 : pThis->vram_size;
         case VBE_DISPI_CFG_ID_3D:
            return fQuerySupport ? 1 : pThis->f3DEnabled;
