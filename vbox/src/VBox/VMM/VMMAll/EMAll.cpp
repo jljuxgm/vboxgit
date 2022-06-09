@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 67131 2017-05-29 15:59:59Z vboxsync $ */
+/* $Id: EMAll.cpp 67989 2017-07-17 12:13:28Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -303,7 +303,7 @@ VMM_INT_DECL(int) EMUnhaltAndWakeUp(PVM pVM, PVMCPU pVCpuDst)
     /* We might be here with preemption disabled or enabled (i.e. depending on
        thread-context hooks being used), so don't try obtaining the GVMMR0 used
        lock here. See @bugref{7270#c148}. */
-    int rc = GVMMR0SchedWakeUpEx(pVM, pVCpuDst->idCpu, false /* fTakeUsedLock */);
+    int rc = GVMMR0SchedWakeUpNoGVMNoLock(pVM, pVCpuDst->idCpu);
     AssertRC(rc);
 
 #elif defined(IN_RING3)

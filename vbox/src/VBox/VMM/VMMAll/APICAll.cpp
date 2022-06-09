@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 67051 2017-05-24 07:41:42Z vboxsync $ */
+/* $Id: APICAll.cpp 67989 2017-07-17 12:13:28Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2826,11 +2826,11 @@ VMM_INT_DECL(void) apicSetInterruptFF(PVMCPU pVCpu, PDMAPICIRQ enmType)
         switch (VMCPU_GET_STATE(pVCpu))
         {
             case VMCPUSTATE_STARTED_EXEC:
-                GVMMR0SchedPokeEx(pVM, idCpu, false /* fTakeUsedLock */);
+                GVMMR0SchedPokeNoGVMNoLock(pVM, idCpu);
                 break;
 
             case VMCPUSTATE_STARTED_HALTED:
-                GVMMR0SchedWakeUpEx(pVM, idCpu, false /* fTakeUsedLock */);
+                GVMMR0SchedWakeUpNoGVMNoLock(pVM, idCpu);
                 break;
 
             default:

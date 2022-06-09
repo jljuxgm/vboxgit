@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 67987 2017-07-17 11:24:30Z vboxsync $ */
+/* $Id: VMMR0.cpp 67989 2017-07-17 12:13:28Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1455,7 +1455,7 @@ static int vmmR0EntryExWorker(PGVM pGVM, PVM pVM, VMCPUID idCpu, VMMR0OPERATION 
             if (pReqHdr)
                 return VERR_INVALID_PARAMETER;
             VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
-            rc = GVMMR0SchedHalt(pVM, idCpu, u64Arg);
+            rc = GVMMR0SchedHalt(pGVM, pVM, idCpu, u64Arg);
             VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
             break;
 
@@ -1463,14 +1463,14 @@ static int vmmR0EntryExWorker(PGVM pGVM, PVM pVM, VMCPUID idCpu, VMMR0OPERATION 
             if (pReqHdr || u64Arg)
                 return VERR_INVALID_PARAMETER;
             VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
-            rc = GVMMR0SchedWakeUp(pVM, idCpu);
+            rc = GVMMR0SchedWakeUp(pGVM, pVM, idCpu);
             VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
             break;
 
         case VMMR0_DO_GVMM_SCHED_POKE:
             if (pReqHdr || u64Arg)
                 return VERR_INVALID_PARAMETER;
-            rc = GVMMR0SchedPoke(pVM, idCpu);
+            rc = GVMMR0SchedPoke(pGVM, pVM, idCpu);
             VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
             break;
 
