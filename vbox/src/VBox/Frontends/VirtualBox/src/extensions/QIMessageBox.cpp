@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 69821 2017-11-24 12:01:19Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 70532 2018-01-11 11:30:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMessageBox class implementation.
  */
@@ -171,9 +171,11 @@ void QIMessageBox::prepare()
     {
         /* Configure main-layout: */
 #ifdef VBOX_WS_MAC
-        pMainLayout->setContentsMargins(40, 11, 40, 11);
+        pMainLayout->setContentsMargins(40, 20, 40, 20);
         pMainLayout->setSpacing(15);
-#endif /* VBOX_WS_MAC */
+#else
+        pMainLayout->setSpacing(qApp->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing) * 2);
+#endif
         /* Create top-layout: */
         QHBoxLayout *pTopLayout = new QHBoxLayout;
         AssertPtrReturnVoid(pTopLayout);
