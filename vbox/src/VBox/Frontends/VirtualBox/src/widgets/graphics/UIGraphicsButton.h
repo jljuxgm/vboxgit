@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsButton.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGraphicsButton.h 69640 2017-11-10 12:27:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsButton class declaration.
  */
@@ -86,7 +86,6 @@ private:
 
     /* Variables: */
     QIcon m_icon;
-    UIGraphicsButtonType m_buttonType;
     bool m_fParentSelected;
 };
 
