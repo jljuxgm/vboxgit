@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 68182 2017-07-31 07:12:15Z vboxsync $
+# $Id: virtual_test_sheriff.py 68223 2017-08-02 07:21:47Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 68182 $"
+__version__ = "$Revision: 68223 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 68182 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 68223 $ \n');
 
 
     def eprint(self, sText):
@@ -454,6 +454,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ## @{
     ktReason_BSOD_Recovery                             = ( 'BSOD',              'Recovery' );
     ktReason_BSOD_Automatic_Repair                     = ( 'BSOD',              'Automatic Repair' );
+    ktReason_BSOD_0000007F                             = ( 'BSOD',              '0x0000007F' );
     ktReason_BSOD_000000D1                             = ( 'BSOD',              '0x000000D1' );
     ktReason_BSOD_C0000225                             = ( 'BSOD',              '0xC0000225 (boot)' );
     ktReason_Guru_Generic                              = ( 'Guru Meditations',  'Generic Guru Meditation' );
@@ -559,7 +560,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 68182 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 68223 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -919,6 +920,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         ( True,  ktReason_BSOD_Recovery,                    '576f8e38d62b311cac7e3dc3436a0d0b9bd8cfd7fa9c43aafa95631520a45eac' ),
         ( True,  ktReason_BSOD_Automatic_Repair,            'c6a72076cc619937a7a39cfe9915b36d94cee0d4e3ce5ce061485792dcee2749' ),
         ( True,  ktReason_BSOD_Automatic_Repair,            '26c4d8a724ff2c5e1051f3d5b650dbda7b5fdee0aa3e3c6059797f7484a515df' ),
+        ( True,  ktReason_BSOD_0000007F,                    '57e1880619e13042a87100e7a38c8974b85ce3866501be621bea0cc696bb2c63' ),
         ( True,  ktReason_BSOD_000000D1,                    '134621281f00a3f8aeeb7660064bffbf6187ed56d5852142328d0bcb18ef0ede' ),
         ( True,  ktReason_BSOD_000000D1,                    '279f11258150c9d2fef041eca65501f3141da8df39256d8f6377e897e3b45a93' ),
         ( True,  ktReason_BSOD_C0000225,                    'bd13a144be9dcdfb16bc863ff4c8f02a86e263c174f2cd5ffd27ca5f3aa31789' ),
