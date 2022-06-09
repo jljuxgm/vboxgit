@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 68019 2017-07-18 12:44:53Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 68022 2017-07-18 13:18:58Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -382,7 +382,7 @@ VMM_INT_DECL(uint64_t) TMCpuTickGetDeadlineAndTscOffset(PVM pVM, PVMCPU pVCpu, u
         /* The source is the timer synchronous virtual clock. */
         uint64_t cNsToDeadline;
         uint64_t u64NowVirtSync = TMVirtualSyncGetWithDeadlineNoCheck(pVM, &cNsToDeadline);
-        uint64_t u64Now = ASMMultU64ByU32DivByU32(u64NowVirtSync, pVM->tm.s.cTSCTicksPerSecond, TMCLOCK_FREQ_VIRTUAL)
+        uint64_t u64Now = ASMMultU64ByU32DivByU32(u64NowVirtSync, pVM->tm.s.cTSCTicksPerSecond, TMCLOCK_FREQ_VIRTUAL);
         u64Now -= pVCpu->tm.s.offTSCRawSrc;
         *poffRealTsc     = u64Now - ASMReadTSC();
         *pfOffsettedTsc  = u64Now >= pVCpu->tm.s.u64TSCLastSeen;
