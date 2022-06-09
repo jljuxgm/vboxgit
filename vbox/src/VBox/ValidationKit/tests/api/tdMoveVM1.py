@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 71390 2018-03-20 10:37:27Z vboxsync $"
+# "$Id: tdMoveVM1.py 71411 2018-03-20 16:26:52Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71390 $"
+__version__ = "$Revision: 71411 $"
 
 # Standard Python imports.
 import os
@@ -312,7 +312,7 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
                 fRc = self.moveVMToLocation(sMoveLoc, oSession.o.machine) and fRc
 
                 # cleaning up: get rid of saved state
-                fRc = fRc and oSession.o.machine.discardSavedState(True)
+                fRc = fRc and oSession.discardSavedState(True)
                 if fRc is False:
                     reporter.log('Failed to discard the saved state of machine')
 

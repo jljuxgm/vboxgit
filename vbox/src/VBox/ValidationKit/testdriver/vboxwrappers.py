@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 71378 2018-03-19 19:31:49Z vboxsync $
+# $Id: vboxwrappers.py 71411 2018-03-20 16:26:52Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71378 $"
+__version__ = "$Revision: 71411 $"
 
 
 # Standard Python imports.
@@ -2518,13 +2518,13 @@ class SessionWrapper(TdTaskBase):
            and self.oVM.state is vboxcon.MachineState_Running:
             self.o.console.pause();
         if self.oVM.state is not vboxcon.MachineState_Paused:
-            vbox.reportError(oProgress, 'pause for "%s" failed' % (self.sName));
+            reporter.error('pause for "%s" failed' % (self.sName));
         # Try saving state.
         try:
             if self.fpApiVer >= 5.0:
                 oProgress = self.o.machine.saveState()
             else:
-                oProgress = self.o.console.saveState();
+                oProgress = self.o.console.saveState()
         except:
             reporter.logXcpt('IMachine::saveState failed on %s' % (self.sName));
             return False;
@@ -2538,6 +2538,24 @@ class SessionWrapper(TdTaskBase):
         # Wait for the VM to really terminate or we'll fail to open a new session to it.
         self.oTstDrv.waitOnDirectSessionClose(self.oVM, 5000);         # fudge
         return self.waitForTask(30 * 1000);                            # fudge
+
+    def discardSavedState(self, fRemove = True):
+        """
+        Discards saved state of the VM.
+
+        Returns True on success.
+        Returns False on IConsole::discardSaveState() failure.
+        """
+
+        try:
+            if self.fpApiVer >= 5.0:
+                self.o.machine.discardSavedState(fRemove)
+            else:
+                self.o.console.discardSavedState(fRemove)
+        except:
+            reporter.logXcpt('IMachine::discardSavedState failed on %s' % (self.sName))
+            return False
+        return True
 
     def restoreSnapshot(self, oSnapshot, fFudgeOnFailure = True):
         """
