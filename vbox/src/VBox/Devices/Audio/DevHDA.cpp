@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 67698 2017-06-29 13:58:29Z vboxsync $ */
+/* $Id: DevHDA.cpp 67700 2017-06-29 14:02:00Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -48,7 +48,7 @@
 #include "AudioMixer.h"
 #include "HDACodec.h"
 # if defined(VBOX_WITH_HDA_AUDIO_INTERLEAVING_STREAMS_SUPPORT) || defined(VBOX_WITH_AUDIO_HDA_51_SURROUND)
-#include "HDAStreamChannel.h"
+#  include "HDAStreamChannel.h"
 # endif
 #include "HDAStreamMap.h"
 #include "HDAStreamPeriod.h"
