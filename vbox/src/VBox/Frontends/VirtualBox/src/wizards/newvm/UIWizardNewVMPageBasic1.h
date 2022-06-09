@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 72173 2018-05-09 13:38:13Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 72174 2018-05-09 13:45:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -57,10 +57,10 @@ protected:
     /** Holds the machine base-name value. */
     QString m_strMachineBaseName;
 
-    /** Provides a path selector and a line edit field for path and name entry. */
+    /* Widgets: */
     UINameAndSystemEditor *m_pNameAndSystemEditor;
 
-    /** Variables: */
+    /* Variables: */
     QString m_strGroup;
     bool m_fSupportsHWVirtEx;
     bool m_fSupportsLongMode;
@@ -106,3 +106,4 @@ private:
 };
 
 #endif // __UIWizardNewVMPageBasic1_h__
+

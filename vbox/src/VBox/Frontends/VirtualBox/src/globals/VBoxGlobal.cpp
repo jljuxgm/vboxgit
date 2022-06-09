@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 72173 2018-05-09 13:38:13Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 72174 2018-05-09 13:45:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1159,7 +1159,6 @@ QString VBoxGlobal::openMediumWithFileOpenDialog(UIMediumType mediumType, QWidge
     }
     QString strHomeFolder = fUseLastFolder && !strLastFolder.isEmpty() ? strLastFolder :
                             strDefaultFolder.isEmpty() ? vboxGlobal().homeFolder() : strDefaultFolder;
-
 
     /* Prepare filters and backends: */
     for (int i = 0; i < filters.count(); ++i)
@@ -4676,3 +4675,4 @@ bool VBoxGlobal::launchMachine(CMachine &machine, LaunchMode enmLaunchMode /* = 
     /* True finally: */
     return true;
 }
+
