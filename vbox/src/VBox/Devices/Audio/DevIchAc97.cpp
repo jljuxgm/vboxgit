@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 67856 2017-07-07 14:50:38Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 67910 2017-07-11 14:40:32Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -50,7 +50,7 @@
 #define AC97_SSM_VERSION    1
 
 /** Default timer frequency (in Hz). */
-#define AC97_TIMER_HZ       100
+#define AC97_TIMER_HZ       200
 
 /** Maximum FIFO size (in bytes). */
 #define AC97_FIFO_MAX       256
