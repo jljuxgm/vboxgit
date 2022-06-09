@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 67827 2017-07-06 14:15:02Z vboxsync $ */
+/* $Id: AudioMixer.cpp 67831 2017-07-06 14:20:08Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -400,7 +400,6 @@ static int audioMixerRemoveSinkInternal(PAUDIOMIXER pMixer, PAUDMIXSINK pSink)
  * @param   pMixer              Mixer to remove sink from.
  * @param   pSink               Sink to remove.
  */
-
 void AudioMixerRemoveSink(PAUDIOMIXER pMixer, PAUDMIXSINK pSink)
 {
     int rc2 = RTCritSectEnter(&pMixer->CritSect);
