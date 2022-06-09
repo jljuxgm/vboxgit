@@ -1,4 +1,4 @@
-/* $Id: vboxhgsmi.c 68458 2017-08-18 10:31:10Z vboxsync $ */
+/* $Id: vboxhgsmi.c 68475 2017-08-18 15:58:38Z vboxsync $ */
 /** @file
  * VBox HGCM connection
  */
@@ -14,6 +14,8 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#error "Unused? If so, it's out of date wrt I/O controls."
 
 //#define IN_GUEST
 #ifdef IN_GUEST /* entire file */
