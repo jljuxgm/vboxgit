@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: NetIf-linux.cpp 67432 2017-06-16 02:58:18Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -193,7 +193,7 @@ static int getInterfaceInfo(int iSocket, const char *pszName, PNETIFINFO pInfo)
                     pInfo->IPv6Address.au32[1] = htonl(IPv6Address.au32[1]);
                     pInfo->IPv6Address.au32[2] = htonl(IPv6Address.au32[2]);
                     pInfo->IPv6Address.au32[3] = htonl(IPv6Address.au32[3]);
-                    ASMBitSetRange(&pInfo->IPv6NetMask, 0, uLength);
+                    RTNetPrefixToMaskIPv6(uLength, &pInfo->IPv6NetMask);
                 }
             }
             fclose(fp);
