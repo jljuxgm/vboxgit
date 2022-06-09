@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 68175 2017-07-29 14:41:24Z vboxsync $
+# $Id: Makefile.kmk 68200 2017-07-31 12:41:10Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -379,6 +379,7 @@ VirtualBox_QT_MOCHDRS = \
 	src/selector/UISelectorWindow.h \
 	src/selector/UISnapshotDetailsWidget.h \
 	src/selector/UISnapshotPane.h \
+	src/selector/UIToolsPaneGlobal.h \
 	src/selector/UIToolsPaneMachine.h \
 	src/selector/UIToolsToolbar.h \
 	src/selector/graphics/chooser/UIGChooser.h \
@@ -696,6 +697,7 @@ VirtualBox_SOURCES = \
 	src/selector/UISelectorWindow.cpp \
 	src/selector/UISnapshotDetailsWidget.cpp \
 	src/selector/UISnapshotPane.cpp \
+	src/selector/UIToolsPaneGlobal.cpp \
 	src/selector/UIToolsPaneMachine.cpp \
 	src/selector/UIToolsToolbar.cpp \
 	src/selector/graphics/chooser/UIGChooser.cpp \
