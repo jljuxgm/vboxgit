@@ -1,4 +1,4 @@
-/* $Id: UIDesktopPane.h 68235 2017-08-02 10:23:07Z vboxsync $ */
+/* $Id: UIDesktopPane.h 68281 2017-08-03 11:50:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopPane class declaration.
  */
@@ -23,6 +23,8 @@
 
 /* Forward declarations: */
 class QAction;
+class QIcon;
+class QString;
 class UIDesktopPanePrivate;
 
 
@@ -47,6 +49,8 @@ public:
 
     /** Defines a tools pane welcome @a strText. */
     void setToolsPaneText(const QString &strText);
+    /** Defines a tools pane welcome @a icon. */
+    void setToolsPaneIcon(const QIcon &icon);
     /** Add a tool element.
       * @param  pAction         Brings tool action reference.
       * @param  strDescription  Brings the tool description. */

@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.cpp 68235 2017-08-02 10:23:07Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.cpp 68281 2017-08-03 11:50:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class implementation.
  */
@@ -27,6 +27,7 @@
 # include "UIActionPoolSelector.h"
 # include "UIDesktopPane.h"
 # include "UIGDetails.h"
+# include "UIIconPool.h"
 # include "UISnapshotPane.h"
 # include "UIToolsPaneMachine.h"
 
@@ -200,7 +201,8 @@ void UIToolsPaneMachine::setMachine(const CMachine &comMachine)
 void UIToolsPaneMachine::retranslateUi()
 {
     /* Translate Machine Tools welcome screen: */
-    setDetailsText(
+    m_pPaneDesktop->setToolsPaneIcon(UIIconPool::iconSet(":/tools_200px.png"));
+    m_pPaneDesktop->setToolsPaneText(
         tr("<h3>Welcome to VirtualBox!</h3>"
            "<p>The left part of this window is a list of all virtual "
            "machines and virtual machine groups on your computer.</p>"
