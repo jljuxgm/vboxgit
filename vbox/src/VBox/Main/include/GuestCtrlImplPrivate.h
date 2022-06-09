@@ -1,10 +1,10 @@
-/* $Id: GuestCtrlImplPrivate.h 66857 2017-05-10 11:07:03Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 71261 2018-03-07 14:55:23Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
 
 /*
- * Copyright (C) 2011-2017 Oracle Corporation
+ * Copyright (C) 2011-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -634,11 +634,18 @@ struct GuestFileOpenInfo
  */
 struct GuestFsObjData
 {
-    /** Helper function to extract the data from
-     *  a certin VBoxService tool's guest stream block. */
+    /** @name Helper functions to extract the data from a certin VBoxService tool's guest stream block.
+     * @{ */
     int FromLs(const GuestProcessStreamBlock &strmBlk);
     int FromMkTemp(const GuestProcessStreamBlock &strmBlk);
     int FromStat(const GuestProcessStreamBlock &strmBlk);
+    /** @}  */
+
+    /** @name Static helper functions to work with time from stream block keys.
+     * @{ */
+    static PRTTIMESPEC TimeSpecFromKey(const GuestProcessStreamBlock &strmBlk, const Utf8Str &strKey, PRTTIMESPEC pTimeSpec);
+    static int64_t UnixEpochNsFromKey(const GuestProcessStreamBlock &strmBlk, const Utf8Str &strKey);
+    /** @}  */
 
     int64_t              mAccessTime;
     int64_t              mAllocatedSize;
