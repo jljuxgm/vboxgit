@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 71437 2018-03-21 16:29:44Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 71523 2018-03-27 09:52:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -331,6 +331,8 @@ namespace UIExtraDataDefs
         extern const char *GUI_InformationWindowGeometry;
         /** Holds information-window elements. */
         extern const char *GUI_InformationWindowElements;
+        extern const char *GUI_GuestSessionManagerTabSplitterHints;
+        extern const char *GUI_GuestFileManagerTabSplitterHints;
     /** @} */
 
     /** @name Virtual Machine: Close dialog
@@ -814,4 +816,3 @@ enum MaxGuestResolutionPolicy
 
 
 #endif /* !___UIExtraDataDefs_h___ */
-
