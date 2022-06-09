@@ -1,4 +1,4 @@
-/* $Id: DevLpc-new.cpp 71829 2018-04-11 17:17:06Z vboxsync $ */
+/* $Id: DevLpc-new.cpp 71831 2018-04-11 17:23:35Z vboxsync $ */
 /** @file
  * DevLPC - Minimal ICH9 LPC device emulation.
  */
@@ -84,7 +84,7 @@ typedef LPCSTATE *PLPCSTATE;
  */
 PDMBOTHCBDECL(int) lpcMmioRead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void *pv, unsigned cb)
 {
-    RT_NOREF(pvUser);
+    RT_NOREF(pvUser, cb);
     PLPCSTATE        pThis  = PDMINS_2_DATA(pDevIns, PLPCSTATE);
     RTGCPHYS32 const offReg = (RTGCPHYS32)GCPhysAddr - pThis->GCPhys32Rcba;
     Assert(cb == 4); Assert(!(GCPhysAddr & 3)); /* IOMMMIO_FLAGS_READ_DWORD should make sure of this */
@@ -116,7 +116,7 @@ PDMBOTHCBDECL(int) lpcMmioRead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhys
  */
 PDMBOTHCBDECL(int) lpcMmioWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void const *pv, unsigned cb)
 {
-    RT_NOREF(pvUser);
+    RT_NOREF(pvUser, pv);
     PLPCSTATE        pThis  = PDMINS_2_DATA(pDevIns, PLPCSTATE);
     RTGCPHYS32 const offReg = (RTGCPHYS32)GCPhysAddr - pThis->GCPhys32Rcba;
 
