@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.h 71406 2018-03-20 14:44:24Z vboxsync $ */
+/* $Id: GuestFileImpl.h 71782 2018-04-09 15:49:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling implementation.
  */
@@ -55,6 +55,7 @@ public:
     int             i_onGuestDisconnected(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCbData);
     int             i_onRemove(void);
     int             i_openFile(uint32_t uTimeoutMS, int *pGuestRc);
+    int             i_queryInfo(GuestFsObjData &objData, int *prcGuest);
     int             i_readData(uint32_t uSize, uint32_t uTimeoutMS, void* pvData, uint32_t cbData, uint32_t* pcbRead);
     int             i_readDataAt(uint64_t uOffset, uint32_t uSize, uint32_t uTimeoutMS,
                                  void* pvData, size_t cbData, size_t* pcbRead);
