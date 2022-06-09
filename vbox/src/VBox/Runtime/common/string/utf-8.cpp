@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: utf-8.cpp 70156 2017-12-15 15:52:10Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -1079,7 +1079,7 @@ RTDECL(int) RTStrToUtf16BigTag(const char *pszString, PRTUTF16 *ppwszString, con
     }
     return rc;
 }
-RT_EXPORT_SYMBOL(RTStrToUtf16TagBig);
+RT_EXPORT_SYMBOL(RTStrToUtf16BigTag);
 
 
 RTDECL(int)  RTStrToUtf16ExTag(const char *pszString, size_t cchString,
@@ -1596,7 +1596,7 @@ RTDECL(int)  RTStrToLatin1ExTag(const char *pszString, size_t cchString,
     }
     return rc;
 }
-RT_EXPORT_SYMBOL(RTStrToLatin1Tag);
+RT_EXPORT_SYMBOL(RTStrToLatin1ExTag);
 
 
 RTDECL(size_t) RTStrCalcLatin1Len(const char *psz)
