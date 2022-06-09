@@ -1,4 +1,4 @@
-/* $Id: UIGDetails.h 63725 2016-09-05 16:17:07Z vboxsync $ */
+/* $Id: UIGDetails.h 68156 2017-07-28 14:22:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetails class declaration.
  */
@@ -47,7 +47,7 @@ signals:
 public:
 
     /* Constructor: */
-    UIGDetails(QWidget *pParent);
+    UIGDetails(QWidget *pParent = 0);
 
     /** Return the Details-model instance. */
     UIGDetailsModel *model() const { return m_pDetailsModel; }

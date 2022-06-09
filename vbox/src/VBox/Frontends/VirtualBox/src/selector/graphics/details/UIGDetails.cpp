@@ -1,4 +1,4 @@
-/* $Id: UIGDetails.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGDetails.cpp 68156 2017-07-28 14:22:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetails class implementation.
  */
@@ -31,7 +31,7 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-UIGDetails::UIGDetails(QWidget *pParent)
+UIGDetails::UIGDetails(QWidget *pParent /* = 0 */)
     : QWidget(pParent)
     , m_pMainLayout(0)
     , m_pDetailsModel(0)
