@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.h 71654 2018-04-04 13:26:06Z vboxsync $ */
+/* $Id: UIGuestFileTable.h 71832 2018-04-12 06:56:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -48,6 +48,7 @@ protected:
     virtual bool createDirectory(const QString &path, const QString &directoryName);
     virtual QString fsObjectPropertyString() /* override */;
     virtual void  showProperties() /* override */;
+    virtual void determineDriveLetters() /* override */;
 
 private:
 
@@ -62,4 +63,3 @@ private:
 };
 
 #endif /* !___UIGuestControlFileTable_h___ */
-

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileModel.cpp 71639 2018-04-04 06:01:54Z vboxsync $ */
+/* $Id: UIGuestControlFileModel.cpp 71832 2018-04-12 06:56:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileModel class implementation.
  */
@@ -115,6 +115,8 @@ QVariant UIGuestControlFileModel::data(const QModelIndex &index, int role) const
         {
             if (item->isUpDirectory())
                 return QIcon(":/arrow_up_10px_x2.png");
+            else if(item->isDriveItem())
+                return QIcon(":/hd_32px.png");
             else
                 return QIcon(":/sf_32px.png");
         }
@@ -255,4 +257,3 @@ bool UIGuestControlFileModel::insertRows(int position, int rows, const QModelInd
 
     return true;
 }
-
