@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 70962 2018-02-11 12:06:42Z vboxsync $
+# $Id: tdStorageBenchmark1.py 70963 2018-02-11 12:07:16Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70962 $"
+__version__ = "$Revision: 70963 $"
 
 
 # Standard Python imports.
@@ -489,7 +489,6 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
         self.asHostIoCacheDef        = ['default', 'hostiocache', 'no-hostiocache'];
         self.asHostIoCache           = self.asHostIoCacheDef;
         self.asDiskFormatsDef        = ['VDI', 'VMDK', 'VHD', 'QED', 'Parallels', 'QCOW', 'iSCSI'];
-        self.asDiskFormatsDef        = ['VDI', 'VMDK', 'VHD', 'QED', 'Parallels', 'iSCSI'];
         self.asDiskFormats           = self.asDiskFormatsDef;
         self.asDiskVariantsDef       = ['Dynamic', 'Fixed', 'DynamicSplit2G', 'FixedSplit2G', 'Network'];
         self.asDiskVariants          = self.asDiskVariantsDef;
