@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 70908 2018-02-08 11:11:27Z vboxsync $ */
+/* $Id: DevSB16.cpp 71742 2018-04-07 22:25:41Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2470,7 +2470,7 @@ static DECLCALLBACK(void) sb16PowerOff(PPDMDEVINS pDevIns)
  */
 static DECLCALLBACK(int) sb16Destruct(PPDMDEVINS pDevIns)
 {
-    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
+    PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns); /* this shall come first */
     PSB16STATE pThis = PDMINS_2_DATA(pDevIns, PSB16STATE);
 
     LogFlowFuncEnter();
@@ -2490,7 +2490,7 @@ static DECLCALLBACK(int) sb16Destruct(PPDMDEVINS pDevIns)
 static DECLCALLBACK(int) sb16Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
     RT_NOREF(iInstance);
-    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns); /* this shall come first */
     PSB16STATE pThis = PDMINS_2_DATA(pDevIns, PSB16STATE);
 
     /*
