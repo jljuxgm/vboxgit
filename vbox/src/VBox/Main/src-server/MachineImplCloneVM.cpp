@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 72509 2018-06-11 13:25:05Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1378,6 +1378,7 @@ HRESULT MachineCloneVM::run()
                 }
                 mlock.acquire();
             }
+            pMedium->i_removeRegistry(p->i_getVirtualBox()->i_getGlobalRegistryId());
             pMedium->i_addRegistry(uuid);
         }
         /* Check if a snapshot folder is necessary and if so doesn't already
