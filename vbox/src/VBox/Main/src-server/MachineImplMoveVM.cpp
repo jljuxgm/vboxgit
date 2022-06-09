@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 70823 2018-01-31 11:35:09Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 70825 2018-01-31 11:45:43Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -970,9 +970,6 @@ HRESULT MachineMoveVM::updatePathsToStateFiles(const std::map<Utf8Str, SAVESTATE
     while (itState != listOfFiles.end())
     {
         const SAVESTATETASK &sst = itState->second;
-        const Utf8Str &strTargetSaveStateFilePath = Utf8StrFmt("%s%c%s", targetPath.c_str(),
-                                                           RTPATH_DELIMITER,
-                                                           RTPathFilename(sst.strSaveStateFile.c_str()));
 
         Utf8Str strGuidMachine = sst.snapshotUuid.toString();
         ComObjPtr<Snapshot> snapshotMachineObj;
