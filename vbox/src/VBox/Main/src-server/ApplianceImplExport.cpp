@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 67208 2017-06-01 13:32:35Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 67209 2017-06-01 13:37:09Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2301,9 +2301,12 @@ HRESULT Appliance::i_writeFSOPC(TaskOVF *pTask, AutoWriteLockBase &writeLock)
             if (RT_FAILURE(vrc))
                 throw setErrorVrc(vrc, tr("Failed to create '%s' (%Rrc)"), strTarballPath.c_str(), vrc);
 
-            RTVFSIOSTREAM hVfsIosGzip;
+            RTVFSIOSTREAM hVfsIosGzip = NIL_RTVFSIOSTREAM;
             vrc = RTZipGzipCompressIoStream(hVfsIosFile, 0 /*fFlags*/, 6 /*uLevel*/, &hVfsIosGzip);
             RTVfsIoStrmRelease(hVfsIosFile);
+
+            /** @todo insert I/O thread here between gzip and the tar creator. Needs
+             *        implementing. */
 
             RTVFSFSSTREAM hVfsFssTar = NIL_RTVFSFSSTREAM;
             if (RT_SUCCESS(vrc))
