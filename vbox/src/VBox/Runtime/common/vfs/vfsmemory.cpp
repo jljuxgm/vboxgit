@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 62561 2016-07-26 14:05:05Z vboxsync $ */
+/* $Id: vfsmemory.cpp 67180 2017-05-31 19:39:10Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -810,6 +810,20 @@ RTDECL(int) RTVfsMemFileCreate(RTVFSIOSTREAM hVfsIos, size_t cbEstimate, PRTVFSF
             return VINF_SUCCESS;
         }
 
+        RTVfsFileRelease(hVfsFile);
+    }
+    return rc;
+}
+
+
+RTDECL(int) RTVfsMemIoStrmCreate(RTVFSIOSTREAM hVfsIos, size_t cbEstimate, PRTVFSIOSTREAM phVfsIos)
+{
+    RTVFSFILE hVfsFile;
+    int rc = RTVfsMemFileCreate(hVfsIos, cbEstimate, &hVfsFile);
+    if (RT_SUCCESS(rc))
+    {
+        *phVfsIos = RTVfsFileToIoStream(hVfsFile);
+        AssertStmt(*phVfsIos != NIL_RTVFSIOSTREAM, rc = VERR_INTERNAL_ERROR_2);
         RTVfsFileRelease(hVfsFile);
     }
     return rc;
