@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 71857 2018-04-13 06:32:15Z vboxsync $ */
+/* $Id: IEMAll.cpp 72181 2018-05-09 18:26:28Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3655,7 +3655,6 @@ iemRaiseXcptOrIntInRealMode(PVMCPU      pVCpu,
                             uint16_t    uErr,
                             uint64_t    uCr2)
 {
-    AssertReturn(pVCpu->iem.s.enmCpuMode == IEMMODE_16BIT, VERR_IEM_IPE_6);
     NOREF(uErr); NOREF(uCr2);
 
     /*
