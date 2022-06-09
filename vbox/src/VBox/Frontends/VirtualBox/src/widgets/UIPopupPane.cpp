@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIPopupPane.cpp 70474 2018-01-07 09:10:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPane class implementation.
  */
@@ -127,7 +127,7 @@ void UIPopupPane::layoutContent()
                           iHeight - m_iLayoutSpacing);
 
     /* Details-pane: */
-    if(m_pDetailsPane->isVisible())
+    if (m_pDetailsPane->isVisible())
     {
         m_pDetailsPane->move(m_iLayoutMargin,
                              iTextPaneYOffset + iTextPaneHeight + m_iLayoutSpacing);
@@ -536,4 +536,3 @@ void UIPopupPane::prepareDetailsList(QStringPairList &aDetailsList) const
         aDetailsList << QStringPair(aParts.at(0), aParts.at(1));
     }
 }
-

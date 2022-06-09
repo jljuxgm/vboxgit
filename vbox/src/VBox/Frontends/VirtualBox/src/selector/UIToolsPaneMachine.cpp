@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.cpp 70185 2017-12-18 10:32:04Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.cpp 70474 2018-01-07 09:10:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class implementation.
  */
@@ -221,13 +221,13 @@ void UIToolsPaneMachine::setItems(const QList<UIVMItem*> &items)
 void UIToolsPaneMachine::setMachine(const CMachine &comMachine)
 {
     /* Update snapshots pane is it is open: */
-    if(isToolOpened(ToolTypeMachine_Snapshots))
+    if (isToolOpened(ToolTypeMachine_Snapshots))
     {
         AssertPtrReturnVoid(m_pPaneSnapshots);
         m_pPaneSnapshots->setMachine(comMachine);
     }
     /* Update logviewer pane is it is open: */
-    if(isToolOpened(ToolTypeMachine_LogViewer))
+    if (isToolOpened(ToolTypeMachine_LogViewer))
     {
         AssertPtrReturnVoid(m_pPaneLogViewer);
         m_pPaneLogViewer->setMachine(comMachine);
@@ -319,4 +319,3 @@ void UIToolsPaneMachine::cleanup()
         delete pWidget;
     }
 }
-

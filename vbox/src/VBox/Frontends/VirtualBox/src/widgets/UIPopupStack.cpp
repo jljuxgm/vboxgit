@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIPopupStack.cpp 70474 2018-01-07 09:10:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class implementation.
  */
@@ -341,7 +341,7 @@ int UIPopupStack::parentStatusBarHeight(QWidget *pParent)
         {
             /* Search for existing status-bar child: */
             if (QStatusBar *pStatusBar = pMainWindow->findChild<QStatusBar*>())
-                if(pStatusBar->isVisible())
+                if (pStatusBar->isVisible())
                     return pStatusBar->height();
 
         }
@@ -349,4 +349,3 @@ int UIPopupStack::parentStatusBarHeight(QWidget *pParent)
     /* Zero by default: */
     return 0;
 }
-

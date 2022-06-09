@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneDetails.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIPopupPaneDetails.cpp 70474 2018-01-07 09:10:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneDetails class implementation.
  */
@@ -218,7 +218,7 @@ void UIPopupPaneDetails::updateSizeHint()
     {
         int iNewHeight = m_iMaximumPaneHeight;
         QTextDocument *pTextDocument = m_pTextEdit->document();
-        if(pTextDocument)
+        if (pTextDocument)
         {
             /* Adjust text-edit size: */
             pTextDocument->adjustSize();
@@ -254,4 +254,3 @@ QFont UIPopupPaneDetails::tuneFont(QFont font)
 #endif
     return font;
 }
-

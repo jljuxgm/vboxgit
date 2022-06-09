@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 70147 2017-12-15 14:08:04Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 70474 2018-01-07 09:10:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIManagerDialog class implementation.
  */
@@ -194,7 +194,7 @@ void QIManagerDialog::prepareMenuBar()
 #ifdef VBOX_WS_MAC
 void QIManagerDialog::prepareToolBar()
 {
-    if(!m_pWidgetToolbar)
+    if (!m_pWidgetToolbar)
         return;
     /* Enable unified toolbar on macOS: */
     addToolBar(m_pWidgetToolbar);
@@ -246,4 +246,3 @@ void QIManagerDialog::setDialogGeometry(const QRect &geometry)
     if (shouldBeMaximized())
         showMaximized();
 }
-
