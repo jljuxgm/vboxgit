@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-cocoa.m 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-cocoa.m 70938 2018-02-09 17:32:07Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  *
@@ -47,11 +47,11 @@
 
 /**@def FLOAT_FMT_STR
  * Format string bits to go with FLOAT_FMT_ARGS. */
-#define FLOAT_FMT_STR                           "%d.%06d"
+#define FLOAT_FMT_STR                           "%d.%06u"
 /** @def FLOAT_FMT_ARGS
  * Format arguments for a float value, corresponding to FLOAT_FMT_STR.
  * @param   r       The floating point value to format.  */
-#define FLOAT_FMT_ARGS(r)                       (int)(r), ((unsigned)((r) * 1000000) % 1000000U)
+#define FLOAT_FMT_ARGS(r)                       (int)(r), ((unsigned)(RT_ABS(r) * 1000000) % 1000000U)
 
 
 

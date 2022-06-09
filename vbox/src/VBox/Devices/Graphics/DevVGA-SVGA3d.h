@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 69922 2017-12-04 18:24:57Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 70938 2018-02-09 17:32:07Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -41,11 +41,11 @@
 
 /**@def FLOAT_FMT_STR
  * Format string bits to go with FLOAT_FMT_ARGS. */
-#define FLOAT_FMT_STR                           "%d.%06d"
+#define FLOAT_FMT_STR                           "%d.%06u"
 /** @def FLOAT_FMT_ARGS
  * Format arguments for a float value, corresponding to FLOAT_FMT_STR.
  * @param   r       The floating point value to format.  */
-#define FLOAT_FMT_ARGS(r)                       (int)(r), ((unsigned)((r) * 1000000) % 1000000U)
+#define FLOAT_FMT_ARGS(r)                       (int)(r), ((unsigned)(RT_ABS(r) * 1000000) % 1000000U)
 
 
 /* DevVGA-SVGA.cpp: */
