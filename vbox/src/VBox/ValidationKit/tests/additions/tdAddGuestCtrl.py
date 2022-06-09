@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72046 $"
+__version__ = "$Revision: 72048 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -3121,7 +3121,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             sUser = "Administrator";
             sScratchGst = "C:\\Temp\\vboxtest\\testGuestCtrlCopyTo/";
             sScratchGstNotExist = "C:\\does-not-exist\\";
-            sScratchGstInvalid = "[]?:";
+            sScratchGstInvalid = ":?";
         else:
             sUser = "vbox";
             sScratchGst = "/tmp/testGuestCtrlCopyTo/";
@@ -3297,7 +3297,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         sPassword = "password";
 
         if self.oTstDrv.sHost == "win":
-            sScratchHstInvalid = "[]?:";
+            sScratchHstInvalid = ":?";
         else:
             sScratchHstInvalid = "/";
 
