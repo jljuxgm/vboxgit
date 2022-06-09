@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 70181 2017-12-17 13:16:28Z vboxsync $ */
+/* $Id: DevPCI.cpp 71774 2018-04-09 14:50:53Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -126,6 +126,7 @@ static int pci_data_write(PDEVPCIROOT pGlobals, uint32_t addr, uint32_t val, int
     iBus = (pGlobals->uConfigReg >> 16) & 0xff;
     iDevice = (pGlobals->uConfigReg >> 8) & 0xff;
     config_addr = (pGlobals->uConfigReg & 0xfc) | (addr & 3);
+    RT_UNTRUSTED_VALIDATED_FENCE(); /* paranoia */
     if (iBus != 0)
     {
         if (pGlobals->PciBus.cBridges)
@@ -173,6 +174,7 @@ static int pci_data_read(PDEVPCIROOT pGlobals, uint32_t addr, int len, uint32_t 
     iBus = (pGlobals->uConfigReg >> 16) & 0xff;
     iDevice = (pGlobals->uConfigReg >> 8) & 0xff;
     config_addr = (pGlobals->uConfigReg & 0xfc) | (addr & 3);
+    RT_UNTRUSTED_VALIDATED_FENCE();
     if (iBus != 0)
     {
         if (pGlobals->PciBus.cBridges)
