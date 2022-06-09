@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 67123 2017-05-28 12:19:53Z vboxsync $ */
+/* $Id: pkzipvfs.cpp 67149 2017-05-30 19:23:25Z vboxsync $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -1238,6 +1238,7 @@ static const RTVFSFSSTREAMOPS rtZipPkzipFssOps =
     RTVFSFSSTREAMOPS_VERSION,
     0,
     rtZipPkzipFss_Next,
+    NULL,
     NULL,
     NULL,
     RTVFSFSSTREAMOPS_VERSION

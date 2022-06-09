@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 67123 2017-05-28 12:19:53Z vboxsync $ */
+/* $Id: xarvfs.cpp 67149 2017-05-30 19:23:25Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -1801,6 +1801,7 @@ static const RTVFSFSSTREAMOPS rtZipXarFssOps =
     RTVFSFSSTREAMOPS_VERSION,
     0,
     rtZipXarFss_Next,
+    NULL,
     NULL,
     NULL,
     RTVFSFSSTREAMOPS_VERSION
