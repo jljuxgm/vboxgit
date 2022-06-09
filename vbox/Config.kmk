@@ -1,4 +1,4 @@
-# $Id: Config.kmk 68061 2017-07-20 10:59:07Z vboxsync $
+# $Id: Config.kmk 68069 2017-07-20 14:49:43Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -909,7 +909,7 @@ endif
 # If issues are found, create high priority defects and temporarily comment
 # the next line.
 VBOX_WITH_STRICT_LOCKS = 1
-## VBoxSDS is the bridge windows service that sits between 
+## VBoxSDS is the bridge windows service that sits between
 # VirtualBox object client and VBoxSVC that fixes problem
 # when multiple VBoxSVC starts for the same user
 # it is enabled for windows build only
@@ -7008,7 +7008,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68061 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 68069 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
