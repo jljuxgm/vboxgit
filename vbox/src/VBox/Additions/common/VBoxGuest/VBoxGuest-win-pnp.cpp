@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win-pnp.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuest-win-pnp.cpp 70100 2017-12-13 09:24:42Z vboxsync $ */
 /** @file
  * VBoxGuest-win-pnp - Windows Plug'n'Play specifics.
  */
@@ -46,12 +46,6 @@ static NTSTATUS vgdrvNtPnPIrpComplete(PDEVICE_OBJECT pDevObj, PIRP pIrp, PKEVENT
 static VOID     vgdrvNtShowDeviceResources(PCM_PARTIAL_RESOURCE_LIST pResourceList);
 RT_C_DECLS_END
 
-#ifdef ALLOC_PRAGMA
-# pragma alloc_text(PAGE, vgdrvNtPnP)
-# pragma alloc_text(PAGE, vgdrvNtPower)
-# pragma alloc_text(PAGE, vgdrvNtSendIrpSynchronously)
-# pragma alloc_text(PAGE, vgdrvNtShowDeviceResources)
-#endif
 
 
 /**
