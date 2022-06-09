@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 68004 2017-07-17 16:03:51Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 68018 2017-07-18 11:46:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1518,6 +1518,7 @@ void UIMediumManagerWidget::prepareTreeWidget(UIMediumType type, int iColumns)
     AssertPtrReturnVoid(pTreeWidget);
     {
         /* Configure tree-widget: */
+        pTreeWidget->setExpandsOnDoubleClick(false);
         pTreeWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
         pTreeWidget->setAlternatingRowColors(true);
