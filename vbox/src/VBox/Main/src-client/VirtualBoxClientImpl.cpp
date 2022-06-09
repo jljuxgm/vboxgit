@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 69804 2017-11-22 12:11:32Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 69805 2017-11-22 12:13:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -205,7 +205,7 @@ HRESULT VirtualBoxClient::i_investigateVirtualBoxObjectCreationFailure(HRESULT h
         if (RTUtf16Cmp(wszBuffer, L"LocalSystem") != 0)
             return setError(hrcCaller,
                             tr("VBoxSDS is misconfigured to run under the '%ls' account instead of the SYSTEM one.\n"
-                               "You ccan fix this by using the Windows Service Control Manager or by running\n"
+                               "You can fix this by using the Windows Service Control Manager or by running\n"
                                "'qc config VBoxSDS obj=LocalSystem' on a command line."),  wszBuffer);
         if (uStartType == SERVICE_DISABLED)
             return setError(hrcCaller,
