@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 72659 2018-06-22 11:34:07Z vboxsync $ */
+/* $Id: EM.cpp 72660 2018-06-22 11:34:15Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -173,7 +173,7 @@ VMMR3_INT_DECL(int) EMR3Init(PVM pVM)
      * hooks are in effect). */
     /** @todo change the default to true here */
     bool fExitOptimizationEnabledR0PreemptDisabled = true;
-    rc = CFGMR3QueryBoolDef(pCfgEM, "ExitOptimizationEnabledR0PreemptDisabled", &fExitOptimizationEnabledR0PreemptDisabled, true);
+    rc = CFGMR3QueryBoolDef(pCfgEM, "ExitOptimizationEnabledR0PreemptDisabled", &fExitOptimizationEnabledR0PreemptDisabled, false);
     AssertLogRelRCReturn(rc, rc);
     fExitOptimizationEnabledR0PreemptDisabled &= fExitOptimizationEnabledR0;
 
