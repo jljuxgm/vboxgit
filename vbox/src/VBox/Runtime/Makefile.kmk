@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69840 2017-11-27 15:19:30Z vboxsync $
+# $Id: Makefile.kmk 69842 2017-11-27 15:28:49Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -428,7 +428,7 @@ RuntimeR3_SOURCES       = \
 	common/err/errmsg.cpp \
 	common/err/RTErrConvertFromErrno.cpp \
 	common/err/RTErrConvertToErrno.cpp \
-	common/fs/filesystemext.cpp \
+	common/fs/ext2vfs.cpp \
 	common/fs/fatvfs.cpp \
 	common/fs/isovfs.cpp \
 	common/fs/isomaker.cpp \
