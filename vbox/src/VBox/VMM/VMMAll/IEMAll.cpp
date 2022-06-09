@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 70862 2018-02-05 10:58:07Z vboxsync $ */
+/* $Id: IEMAll.cpp 71078 2018-02-21 07:58:00Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10287,18 +10287,12 @@ iemMemStoreDataU256AlignedAvxJmp(PVMCPU pVCpu, uint8_t iSegReg, RTGCPTR GCPtrMem
 IEM_STATIC VBOXSTRICTRC
 iemMemStoreDataXdtr(PVMCPU pVCpu, uint16_t cbLimit, RTGCPTR GCPtrBase, uint8_t iSegReg, RTGCPTR GCPtrMem)
 {
-    VBOXSTRICTRC rcStrict;
-    if (IEM_IS_SVM_CTRL_INTERCEPT_SET(pVCpu, SVM_CTRL_INTERCEPT_IDTR_READS))
-    {
-        Log(("sidt/sgdt: Guest intercept -> #VMEXIT\n"));
-        IEM_RETURN_SVM_VMEXIT(pVCpu, SVM_EXIT_IDTR_READ, 0 /* uExitInfo1 */, 0 /* uExitInfo2 */);
-    }
 
     /*
      * The SIDT and SGDT instructions actually stores the data using two
      * independent writes.  The instructions does not respond to opsize prefixes.
      */
-    rcStrict = iemMemStoreDataU16(pVCpu, iSegReg, GCPtrMem, cbLimit);
+    VBOXSTRICTRC rcStrict = iemMemStoreDataU16(pVCpu, iSegReg, GCPtrMem, cbLimit);
     if (rcStrict == VINF_SUCCESS)
     {
         if (pVCpu->iem.s.enmCpuMode == IEMMODE_16BIT)
