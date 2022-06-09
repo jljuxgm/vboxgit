@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 67662 2017-06-28 10:26:17Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 67875 2017-07-10 12:11:37Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5394,8 +5394,13 @@ HMSVM_EXIT_DECL hmR0SvmExitVmmCall(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
     VBOXSTRICTRC rcStrict = HMSvmVmmcall(pVCpu, pCtx, &fRipUpdated);
     if (RT_SUCCESS(rcStrict))
     {
-        if (!fRipUpdated)
+        /* Only update the RIP if we're continuing guest execution and not
+           in the case of say VINF_GIM_R3_HYPERCALL. */
+        if (   rcStrict == VINF_SUCCESS
+            && !fRipUpdated)
+        {
             hmR0SvmAdvanceRipHwAssist(pVCpu, pCtx, 3 /* cbInstr */);
+        }
 
         /* If the hypercall or TPR patching changes anything other than guest's general-purpose registers,
            we would need to reload the guest changed bits here before VM-entry. */
