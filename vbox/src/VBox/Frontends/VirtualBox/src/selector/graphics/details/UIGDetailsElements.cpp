@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 71104 2018-02-22 14:14:16Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 72222 2018-05-15 20:48:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement[Name] classes implementation.
  */
@@ -250,6 +250,14 @@ void UIGDetailsUpdateTaskGeneral::run()
         /* Operating system type: */
         table << UITextTableLine(QApplication::translate("UIGDetails", "Operating System", "details (general)"),
                                  vboxGlobal().vmGuestOSTypeDescription(machine.GetOSTypeId()));
+
+        /* Location of the settings file: */
+        QString strSettingsFile = machine.GetSettingsFilePath();
+        if (!strSettingsFile.isEmpty())
+        {
+            table << UITextTableLine(QApplication::translate("UIGDetails", "Settings File Location", "details (general)"),
+                                     QFileInfo(strSettingsFile).absolutePath());
+        }
 
         /* Get groups: */
         QStringList groups = machine.GetGroups().toList();
@@ -931,4 +939,3 @@ void UIGDetailsUpdateTaskDescription::run()
     /* Save the table as property: */
     setProperty("table", QVariant::fromValue(table));
 }
-
