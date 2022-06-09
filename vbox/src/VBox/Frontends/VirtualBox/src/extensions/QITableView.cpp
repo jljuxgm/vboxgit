@@ -1,4 +1,4 @@
-/* $Id: QITableView.cpp 68079 2017-07-21 11:32:19Z vboxsync $ */
+/* $Id: QITableView.cpp 68155 2017-07-28 13:07:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITableView class implementation.
  */
@@ -408,8 +408,14 @@ QString QIAccessibilityInterfaceForQITableView::text(QAccessible::Text /* enmTex
 QITableView::QITableView(QWidget *pParent)
     : QTableView(pParent)
 {
-    /* Prepare all: */
+    /* Prepare: */
     prepare();
+}
+
+QITableView::~QITableView()
+{
+    /* Cleanup: */
+    cleanup();
 }
 
 void QITableView::makeSureEditorDataCommitted()
@@ -473,5 +479,12 @@ void QITableView::prepare()
         connect(pStyledItemDelegate, &QIStyledItemDelegate::sigEditorCreated,
                 this, &QITableView::sltEditorCreated);
     }
+}
+
+void QITableView::cleanup()
+{
+    /* Disconnect all the editors prematurelly: */
+    foreach (QObject *pEditor, m_editors.values())
+        disconnect(pEditor, 0, this, 0);
 }
 

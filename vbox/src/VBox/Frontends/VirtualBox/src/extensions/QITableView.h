@@ -1,4 +1,4 @@
-/* $Id: QITableView.h 64479 2016-10-28 16:01:01Z vboxsync $ */
+/* $Id: QITableView.h 68155 2017-07-28 13:07:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITableView class declaration.
  */
@@ -97,6 +97,8 @@ public:
 
     /** Constructs table-view passing @a pParent to the base-class. */
     QITableView(QWidget *pParent = 0);
+    /** Destructs table-view. */
+    virtual ~QITableView() /* override */;
 
     /** Returns the number of children. */
     virtual int childCount() const { return 0; }
@@ -122,6 +124,8 @@ private:
 
     /** Prepares all. */
     void prepare();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Holds the map of editors stored for passed indexes. */
     QMap<QModelIndex, QObject*> m_editors;
