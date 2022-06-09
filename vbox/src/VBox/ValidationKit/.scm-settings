@@ -1,6 +1,6 @@
-# $Id: .scm-settings 69454 2017-10-27 17:10:31Z vboxsync $
+# $Id: .scm-settings 69456 2017-10-27 17:19:54Z vboxsync $
 ## @file
-# Source code massager settings for the VMM.
+# Source code massager settings for the Validation Kit.
 #
 
 #
