@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 70003 2017-12-08 06:52:19Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 70004 2017-12-08 07:09:41Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4994,8 +4994,6 @@ static int hmR0SvmHandleExitNested(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
 
                 case SVM_EXIT_SHUTDOWN:
                 {
-                    /** @todo think about this... intercepting shutdown on host CPU shouldn't be needed
-                     *        for nested guest? */
                     if (HMIsGuestSvmCtrlInterceptSet(pVCpu, pCtx, SVM_CTRL_INTERCEPT_SHUTDOWN))
                         return HM_SVM_VMEXIT_NESTED(pVCpu, uExitCode, uExitInfo1, uExitInfo2);
                     return hmR0SvmExitShutdown(pVCpu, pCtx, pSvmTransient);
