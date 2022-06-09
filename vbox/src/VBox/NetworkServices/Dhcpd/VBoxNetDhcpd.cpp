@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 70836 2018-01-31 14:55:44Z vboxsync $ */
+/* $Id: VBoxNetDhcpd.cpp 71305 2018-03-13 00:50:08Z vboxsync $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -583,7 +583,7 @@ int VBoxNetDhcpd::main(int argc, char **argv)
         m_Config = Config::compat(argc, argv);
 
     if (m_Config == NULL)
-        return RTEXITCODE_FAILURE;
+        return VERR_GENERAL_FAILURE;
 
     homeInit();
     m_Config->setHome(m_strHome);
