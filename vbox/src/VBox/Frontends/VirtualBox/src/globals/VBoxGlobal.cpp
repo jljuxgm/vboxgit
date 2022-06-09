@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 71461 2018-03-22 15:07:08Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 71463 2018-03-22 15:09:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -52,6 +52,7 @@
 
 /* GUI includes: */
 # include "VBoxGlobal.h"
+# include "VBoxLicenseViewer.h"
 # include "UIMessageCenter.h"
 # include "UIPopupCenter.h"
 # include "QIMessageBox.h"
@@ -74,10 +75,7 @@
 # include "UIDesktopWidgetWatchdog.h"
 # ifdef VBOX_WS_X11
 #  include "UIHostComboEditor.h"
-#  ifndef VBOX_OSE
-#   include "VBoxLicenseViewer.h"
-#  endif /* VBOX_OSE */
-# endif /* VBOX_WS_X11 */
+# endif
 # ifdef VBOX_WS_MAC
 #  include "VBoxUtils-darwin.h"
 #  include "UIMachineWindowFullscreen.h"
