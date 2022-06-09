@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: setup-routines.sh 67192 2017-06-01 08:42:40Z vboxsync $
+# $Id: setup-routines.sh 67354 2017-06-13 09:11:00Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup.
 #
@@ -129,11 +129,11 @@ test_coredumps() {
 # Test if unattended updates are disabled. See
 #   http://ask.xmodulo.com/disable-automatic-updates-ubuntu.html
 test_unattended_updates_disabled() {
-    if grep "APT::Periodic::Unattended-Upgrade.*1" /etc/apt/apt.conf.d/* 2>/dev/null
+    if grep "APT::Periodic::Unattended-Upgrade.*1" /etc/apt/apt.conf.d/* 2>/dev/null; then
         echo "Unattended updates enabled?"
         return 1
     fi
-    if grep "APT::Periodic::Update-Package-List.*1" /etc/apt/apt.conf.d/* 2>/dev/null
+    if grep "APT::Periodic::Update-Package-List.*1" /etc/apt/apt.conf.d/* 2>/dev/null; then
         echo "Unattended package updates enabled?"
         return 1
     fi
