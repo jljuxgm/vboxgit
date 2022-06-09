@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuest-win.h 70101 2017-12-13 09:37:51Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -155,9 +155,7 @@ extern VGDRVNTVER g_enmVGDrvNtVer;
 
 RT_C_DECLS_BEGIN
 
-#ifdef TARGET_NT4
-NTSTATUS   vgdrvNt4CreateDevice(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath);
-#else
+#ifndef TARGET_NT4
 NTSTATUS   vgdrvNtPnP(PDEVICE_OBJECT pDevObj, PIRP pIrp);
 NTSTATUS   vgdrvNtPower(PDEVICE_OBJECT pDevObj, PIRP pIrp);
 #endif

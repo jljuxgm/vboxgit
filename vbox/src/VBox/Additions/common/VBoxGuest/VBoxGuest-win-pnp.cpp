@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win-pnp.cpp 70100 2017-12-13 09:24:42Z vboxsync $ */
+/* $Id: VBoxGuest-win-pnp.cpp 70101 2017-12-13 09:37:51Z vboxsync $ */
 /** @file
  * VBoxGuest-win-pnp - Windows Plug'n'Play specifics.
  */
@@ -152,7 +152,6 @@ NTSTATUS vgdrvNtPnP(PDEVICE_OBJECT pDevObj, PIRP pIrp)
 
             /* This must be handled first by the lower driver. */
             rc = vgdrvNtSendIrpSynchronously(pDevExt->pNextLowerDriver, pIrp, TRUE);
-
             if (   NT_SUCCESS(rc)
                 && NT_SUCCESS(pIrp->IoStatus.Status))
             {
@@ -187,8 +186,8 @@ NTSTATUS vgdrvNtPnP(PDEVICE_OBJECT pDevObj, PIRP pIrp)
 
             /* This must be handled first by the lower driver. */
             rc = vgdrvNtSendIrpSynchronously(pDevExt->pNextLowerDriver, pIrp, TRUE);
-
-            if (NT_SUCCESS(rc) && pDevExt->enmDevState == VGDRVNTDEVSTATE_PENDINGREMOVE)
+            if (   NT_SUCCESS(rc)
+                && pDevExt->enmDevState == VGDRVNTDEVSTATE_PENDINGREMOVE)
             {
                 /* Return to the state prior to receiving the IRP_MN_QUERY_REMOVE_DEVICE request. */
                 pDevExt->enmDevState = pDevExt->enmPrevDevState;
@@ -305,8 +304,8 @@ NTSTATUS vgdrvNtPnP(PDEVICE_OBJECT pDevObj, PIRP pIrp)
 
             /* This must be handled first by the lower driver. */
             rc = vgdrvNtSendIrpSynchronously(pDevExt->pNextLowerDriver, pIrp, TRUE);
-
-            if (NT_SUCCESS(rc) && pDevExt->enmDevState == VGDRVNTDEVSTATE_PENDINGSTOP)
+            if (   NT_SUCCESS(rc)
+                && pDevExt->enmDevState == VGDRVNTDEVSTATE_PENDINGSTOP)
             {
                 /* Return to the state prior to receiving the IRP_MN_QUERY_STOP_DEVICE request. */
                 pDevExt->enmDevState = pDevExt->enmPrevDevState;
