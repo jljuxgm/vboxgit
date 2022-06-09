@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceBalloon.cpp 63495 2016-08-15 17:19:46Z vboxsync $ */
+/* $Id: VBoxServiceBalloon.cpp 68662 2017-09-05 18:40:09Z vboxsync $ */
 /** @file
  * VBoxService - Memory Ballooning.
  */
@@ -54,6 +54,7 @@
 #include "VBoxServiceUtils.h"
 
 #ifdef RT_OS_LINUX
+# include <iprt/param.h>
 # include <sys/mman.h>
 # ifndef MADV_DONTFORK
 #  define MADV_DONTFORK 10
