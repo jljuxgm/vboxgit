@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UsbMsd.cpp 71964 2018-04-22 17:16:00Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1298,6 +1298,9 @@ static void usbMsdSuspendOrPowerOff(PPDMUSBINS pUsbIns)
             pThis->pReq = NULL;
         }
     }
+
+    if (pThis->Lun0.pIMediaEx)
+        pThis->Lun0.pIMediaEx->pfnNotifySuspend(pThis->Lun0.pIMediaEx);
 }
 
 
