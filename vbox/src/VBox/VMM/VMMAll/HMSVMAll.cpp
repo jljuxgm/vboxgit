@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 72065 2018-04-30 06:27:34Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 72079 2018-05-02 05:15:20Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -209,7 +209,10 @@ VMM_INT_DECL(bool) HMSvmIsVGifActive(PVM pVM)
  *          nested-guest VMCB. The latter may have been modified for executing
  *          using hardware-assisted SVM.
  *
- * @sa      CPUMApplyNestedGuestTscOffset.
+ * @note    If you make any changes to this function, please check if
+ *          hmR0SvmNstGstUndoTscOffset() needs adjusting.
+ *
+ * @sa      CPUMApplyNestedGuestTscOffset(), hmR0SvmNstGstUndoTscOffset().
  */
 VMM_INT_DECL(uint64_t) HMSvmNstGstApplyTscOffset(PVMCPU pVCpu, uint64_t uTicks)
 {
