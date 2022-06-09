@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 72175 2018-05-09 14:26:29Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 72445 2018-06-05 08:47:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -215,6 +215,11 @@ void UIVMFilterLineEdit::createButtons()
     }
 }
 
+
+/*********************************************************************************************************************************
+*   UIVMLogViewerFilterPanel implementation.                                                                                     *
+*********************************************************************************************************************************/
+
 UIVMLogViewerFilterPanel::UIVMLogViewerFilterPanel(QWidget *pParent, UIVMLogViewerWidget *pViewer)
     : UIVMLogViewerPanel(pParent, pViewer)
     , m_pFilterLabel(0)
@@ -428,20 +433,6 @@ void UIVMLogViewerFilterPanel::prepareWidgets()
     {
         mainLayout()->addWidget(m_pResultLabel,0);
     }
-        /* Create filter-label: */
-//         m_pFilterLabel = new QLabel(this);
-//         if (m_pFilterLabel)
-//         {
-//             /* Configure filter-label: */
-//             m_pFilterLabel->setBuddy(m_pFilterComboBox);
-// #ifdef VBOX_DARWIN_USE_NATIVE_CONTROLS
-//             QFont font = m_pFilterLabel->font();
-//             font.setPointSize(::darwinSmallFontSize());
-//             m_pFilterLabel->setFont(font);
-// #endif /* VBOX_DARWIN_USE_NATIVE_CONTROLS */
-//             /* Add filter-label to main-layout: */
-//             mainLayout()->addWidget(m_pFilterLabel);
-//         }
 }
 
 void UIVMLogViewerFilterPanel::prepareRadioButtonGroup()
