@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 66068 2017-03-13 18:57:58Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 67194 2017-06-01 08:44:57Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -924,8 +924,8 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
 
     if (fCategory & USAGE_EXPORTAPPLIANCE)
         RTStrmPrintf(pStrm,
-                           "%s export %s          <machines> --output|-o <name>.<ovf/ova>\n"
-                     "                            [--legacy09|--ovf09|--ovf10|--ovf20]\n"
+                           "%s export %s          <machines> --output|-o <name>.<ovf/ova/tar.gz>\n"
+                     "                            [--legacy09|--ovf09|--ovf10|--ovf20|--opc]\n"
                      "                            [--manifest]\n"
                      "                            [--iso]\n"
                      "                            [--options manifest|iso|nomacs|nomacsbutnat]\n"
