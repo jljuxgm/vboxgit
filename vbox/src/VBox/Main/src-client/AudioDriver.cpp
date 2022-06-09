@@ -1,4 +1,4 @@
-/* $Id: AudioDriver.cpp 70579 2018-01-14 12:46:15Z vboxsync $ */
+/* $Id: AudioDriver.cpp 70580 2018-01-14 12:47:45Z vboxsync $ */
 /** @file
  * VirtualBox audio base class for Main audio drivers.
  */
@@ -233,14 +233,12 @@ DECLCALLBACK(int) AudioDriver::detachDriverOnEmt(AudioDriver *pThis)
 
     Assert(pThis->muLUN != UINT8_MAX);
 
-    int vrc = VINF_SUCCESS;
-
     AudioDriverCfg *pCfg = &pThis->mCfg;
 
     LogFunc(("strName=%s, strDevice=%s, uInst=%u, uLUN=%u\n",
              pCfg->strName.c_str(), pCfg->strDev.c_str(), pCfg->uInst, pThis->muLUN));
 
-    vrc = PDMR3DriverDetach(ptrVM.rawUVM(), pCfg->strDev.c_str(), pCfg->uInst, pThis->muLUN, "AUDIO",
+    int vrc = PDMR3DriverDetach(ptrVM.rawUVM(), pCfg->strDev.c_str(), pCfg->uInst, pThis->muLUN, "AUDIO",
                             0 /* iOccurrence */, 0 /* fFlags */);
     if (RT_SUCCESS(vrc))
         vrc = pThis->configure(pThis->muLUN, false /* Detach */);
