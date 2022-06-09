@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoErr.h 69307 2017-10-25 13:46:45Z vboxsync $ */
+/* $Id: VBoxVideoErr.h 71599 2018-04-01 12:52:12Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - iprt and VirtualBox macros and
  * definitions.
@@ -65,6 +65,8 @@ extern int vbox_assert_var[1];
     vbox_assert_var[(expr) ? 1 : 0] __attribute__((__unused__))
 #define assert_compile_size(type, size) \
     assert_compile(sizeof(type) == (size))
+#define assert_ptr_return(ptr,ret) \
+    do { if (unlikely(!(ptr))) { WARN_ON_ONCE(!(ptr)); return ret; } } while (0)
 
 /** @}  */
 
