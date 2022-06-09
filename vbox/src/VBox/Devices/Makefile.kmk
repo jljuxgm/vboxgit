@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70433 2018-01-02 16:04:13Z vboxsync $
+# $Id: Makefile.kmk 70434 2018-01-02 16:14:21Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -960,6 +960,11 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   VBoxDDRC_SOURCES      += \
  	Audio/DevHDA.cpp \
  	Audio/DevHDACommon.cpp
+
+  VBoxDDRC_DEFS         += \
+	$(if $(VBOX_WITH_HP_HDA),VBOX_WITH_HP_HDA,) \
+	$(if $(VBOX_WITH_INTEL_HDA),VBOX_WITH_INTEL_HDA,) \
+	$(if $(VBOX_WITH_NVIDIA_HDA),VBOX_WITH_NVIDIA_HDA,)
 
   ifdef VBOX_WITH_E1000
    VBoxDDRC_DEFS        += VBOX_WITH_E1000
