@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 71294 2018-03-10 00:06:43Z vboxsync $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 76073 2018-12-08 19:55:23Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -344,5 +344,11 @@ RTDECL(int) RTSystemQueryOSInfo(RTSYSOSINFO enmInfo, char *pszInfo, size_t cchIn
 RTDECL(uint32_t) RTSystemGetNtBuildNo(void)
 {
     return g_WinOsInfoEx.dwBuildNumber;
+}
+
+
+RTDECL(uint32_t) RTSystemGetNtVersion(void)
+{
+    return RTSYSTEM_MAKE_NT_VERSION(g_WinOsInfoEx.dwMajorVersion, g_WinOsInfoEx.dwMinorVersion, g_WinOsInfoEx.dwBuildNumber);
 }
 
