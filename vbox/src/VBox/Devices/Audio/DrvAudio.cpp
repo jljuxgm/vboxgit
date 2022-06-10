@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 73585 2018-08-09 12:32:51Z vboxsync $ */
+/* $Id: DrvAudio.cpp 73593 2018-08-09 16:42:37Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2769,7 +2769,7 @@ static DECLCALLBACK(uint32_t) drvAudioStreamGetReadable(PPDMIAUDIOCONNECTOR pInt
 
         Log3Func(("[%s] cbReadable=%RU32 (%RU64ms)\n",
                   pStream->szName, cbReadable, DrvAudioHlpBytesToMilli(cbReadable, &pStream->Host.Cfg.Props)));
-    
+
     rc2 = RTCritSectLeave(&pThis->CritSect);
     AssertRC(rc2);
 
