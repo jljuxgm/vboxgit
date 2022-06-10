@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 76891 2019-01-18 13:17:20Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 78080 2019-04-10 11:35:55Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -400,7 +400,7 @@ static int vbglR3DnDHGRecvURIData(PVBGLR3GUESTDNDCMDCTX pCtx, PVBOXDNDSNDDATAHDR
     if (RT_FAILURE(rc))
     {
         RTMemFree(pvChunk);
-        return VERR_NO_MEMORY;
+        return rc;
     }
 
     const char *pszDropDir = pDroppedFiles->GetDirAbs();
