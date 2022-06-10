@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 75179 2018-10-30 14:34:52Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 75198 2018-10-31 02:05:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -2652,6 +2652,9 @@ void UIActionPoolSelector::updateMenus()
     /* 'Host Network Manager' menu: */
     updateMenuNetworkWindow();
     updateMenuNetwork();
+    /* 'Cloud Profile Manager' menu: */
+    updateMenuCloudWindow();
+    updateMenuCloud();
 }
 
 void UIActionPoolSelector::updateMenuMediumWindow()
