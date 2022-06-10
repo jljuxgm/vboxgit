@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 74183 2018-09-10 16:29:32Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 74187 2018-09-11 08:27:27Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -180,6 +180,11 @@ static const char * const g_apszVmxVDiagDesc[] =
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestPae                 , "GuestPae"                  ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestPatMsr              , "GuestPatMsr"               ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestPcide               , "GuestPcide"                ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestPdpteCr3ReadPhys    , "GuestPdpteCr3ReadPhys"     ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestPdpte0Rsvd          , "GuestPdpte0Rsvd"           ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestPdpte1Rsvd          , "GuestPdpte1Rsvd"           ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestPdpte2Rsvd          , "GuestPdpte2Rsvd"           ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestPdpte3Rsvd          , "GuestPdpte3Rsvd"           ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestPndDbgXcptBsNoTf    , "GuestPndDbgXcptBsNoTf"     ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestPndDbgXcptBsTf      , "GuestPndDbgXcptBsTf"       ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestPndDbgXcptRsvd      , "GuestPndDbgXcptRsvd"       ),
