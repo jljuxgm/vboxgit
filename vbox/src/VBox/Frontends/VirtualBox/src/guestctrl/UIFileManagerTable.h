@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 77932 2019-03-28 10:17:11Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 77935 2019-03-28 12:54:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -45,6 +45,7 @@ class QILabel;
 class QILineEdit;
 class QGridLayout;
 class QSortFilterProxyModel;
+class QStackedWidget;
 class QTextEdit;
 class QVBoxLayout;
 class UIActionPool;
@@ -294,6 +295,8 @@ private:
     QILineEdit      *m_pSearchLineEdit;
     QILabel         *m_pWarningLabel;
 
+    /** Contains m_pBreadCrumbsWidget and m_pLocationComboBox. */
+    QStackedWidget           *m_pNavigationWidgetWidget;
     UIFileManagerBreadCrumbs *m_pBreadCrumbsWidget;
 
     friend class     UICustomFileSystemModel;
