@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppDefs.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardImportAppDefs.h 78037 2019-04-08 11:47:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppDefs class declaration.
  */
@@ -21,11 +21,11 @@
 # pragma once
 #endif
 
-/* Global includes: */
+/* Qt includes: */
 #include <QMetaType>
 #include <QPointer>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIApplianceImportEditorWidget.h"
 
 /* Typedefs: */
@@ -33,4 +33,3 @@ typedef QPointer<UIApplianceImportEditorWidget> ImportAppliancePointer;
 Q_DECLARE_METATYPE(ImportAppliancePointer);
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_importappliance_UIWizardImportAppDefs_h */
-

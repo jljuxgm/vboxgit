@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 77388 2019-02-20 14:26:10Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 78037 2019-04-08 11:47:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -52,7 +52,7 @@ class UIWizardExportAppPageExpert : public UIWizardPage,
 
 public:
 
-    /** Constructs expert basic page.
+    /** Constructs expert page.
       * @param  selectedVMNames  Brings the list of selected VM names. */
     UIWizardExportAppPageExpert(const QStringList &selectedVMNames, bool fExportToOCIByDefault);
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardImportApp.h 78037 2019-04-08 11:47:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class declaration.
  */
@@ -21,64 +21,61 @@
 # pragma once
 #endif
 
-/* Local includes */
+/* GUI includes */
 #include "UIWizard.h"
 
-/* Import Appliance wizard: */
+/** Import Appliance wizard. */
 class UIWizardImportApp : public UIWizard
 {
     Q_OBJECT;
 
 public:
 
-    /* Page IDs: */
+    /** Basic page IDs. */
     enum
     {
         Page1,
         Page2
     };
 
-    /* Page IDs: */
+    /** Expert page IDs. */
     enum
     {
         PageExpert
     };
 
-    /* Constructor: */
+    /** Constructs export appliance wizard passing @a pParent to the base-class.
+      * @param  strFileName  Brings appliance file name. */
     UIWizardImportApp(QWidget *pParent, const QString &strFileName);
 
-    /* Pages related stuff: */
-    void prepare();
+    /** Prepares all. */
+    virtual void prepare() /* override */;
 
-    /* Is appliance valid? */
+    /** Returns whether appliance is valid. */
     bool isValid() const;
+
+    /** Imports appliance. */
+    bool importAppliance();
 
 protected:
 
-    /* Import stuff: */
-    bool importAppliance();
+    /** Handles translation event. */
+    virtual void retranslateUi() /* override */;
 
-    /* Who will be able to import appliance: */
-    friend class UIWizardImportAppPageBasic2;
-    friend class UIWizardImportAppPageExpert;
+protected slots:
 
-private slots:
-
-    /* Page change handler: */
-    void sltCurrentIdChanged(int iId);
-    /* Custom button 2 click handler: */
-    void sltCustomButtonClicked(int iId);
+    /** Handles change for page with @a iId. */
+    virtual void sltCurrentIdChanged(int iId) /* override */;
+    /** Handles custom button 2 click  for page with @a iId. */
+    virtual void sltCustomButtonClicked(int iId) /* override */;
 
 private:
 
-    /* Translation stuff: */
-    void retranslateUi();
-
-    /* Variables: */
-    QString m_strFileName;
+    /** Handles the appliance file name. */
+    QString  m_strFileName;
 };
 
+/** Safe pointer to appliance wizard. */
 typedef QPointer<UIWizardImportApp> UISafePointerWizardImportApp;
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_importappliance_UIWizardImportApp_h */
-

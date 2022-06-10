@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.h 78037 2019-04-08 11:47:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class declaration.
  */
@@ -21,14 +21,14 @@
 # pragma once
 #endif
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardImportAppPageBasic1.h"
 #include "UIWizardImportAppPageBasic2.h"
 
 /* Forward declarations: */
 class QGroupBox;
 
-/* Expert page of the Import Appliance wizard: */
+/** UIWizardPage extension for UIWizardImportAppPage1 and UIWizardImportAppPage2. */
 class UIWizardImportAppPageExpert : public UIWizardPage,
                                     public UIWizardImportAppPage1,
                                     public UIWizardImportAppPage2
@@ -38,30 +38,33 @@ class UIWizardImportAppPageExpert : public UIWizardPage,
 
 public:
 
-    /* Constructor: */
+    /** Constructs expert page.
+      * @param  strFileName  Brings appliance file name. */
     UIWizardImportAppPageExpert(const QString &strFileName);
 
 private slots:
 
-    /* File-path change handler: */
+    /** Handles file-path change. */
     void sltFilePathChangeHandler();
 
 private:
 
-    /* Translate stuff: */
-    void retranslateUi();
+    /** Handles translation event. */
+    virtual void retranslateUi() /* override */;
 
-    /* Prepare stuff: */
-    void initializePage();
+    /** Performs page initialization. */
+    virtual void initializePage() /* override */;
 
-    /* Validation stuff: */
-    bool isComplete() const;
-    bool validatePage();
+    /** Returns whether page is complete. */
+    virtual bool isComplete() const /* override */;
 
-    /* Widgets: */
+    /** Performs page validation. */
+    virtual bool validatePage() /* override */;
+
+    /** Holds the appliance container instance. */
     QGroupBox *m_pApplianceCnt;
+    /** Holds the settings container instance. */
     QGroupBox *m_pSettingsCnt;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_importappliance_UIWizardImportAppPageExpert_h */
-
