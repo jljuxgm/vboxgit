@@ -1,4 +1,4 @@
-/** $Id: VBoxServiceClipboard-os2.cpp 78181 2019-04-17 19:51:54Z vboxsync $ */
+/** $Id: VBoxServiceClipboard-os2.cpp 78307 2019-04-26 06:41:46Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Clipboard Service, OS/2.
  */
@@ -610,7 +610,7 @@ static void vgsvcClipboardOs2ReportFormats(void)
         /** @todo else bitmaps and stuff. */
     }
     VGSvcVerbose(4, "clipboard: reporting fFormats=%#x\n", fFormats);
-    VbglR3ClipboardReportFormats(g_u32ClientId, fFormats);
+    VbglR3ClipboardWriteFormats(g_u32ClientId, fFormats);
 }
 
 
@@ -657,7 +657,7 @@ static void vgsvcClipboardOs2Poll(void)
             {
                 g_fEmptyClipboard = true;
                 VGSvcVerbose(3, "Reporting empty clipboard\n");
-                VbglR3ClipboardReportFormats(g_u32ClientId, 0);
+                VbglR3ClipboardWriteFormats(g_u32ClientId, 0);
             }
         }
         WinCloseClipbrd(g_habWorker);
@@ -680,7 +680,7 @@ static void vgsvcClipboardOs2Destroyed(void)
     g_enmState = kClipboardState_Polling;
     g_fEmptyClipboard = true;
     VGSvcVerbose(3, "Reporting empty clipboard\n");
-    VbglR3ClipboardReportFormats(g_u32ClientId, 0);
+    VbglR3ClipboardWriteFormats(g_u32ClientId, 0);
 
     vgsvcClipboardOs2PollViewer();
 }

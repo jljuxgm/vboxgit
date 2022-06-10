@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78151 2019-04-17 12:03:42Z vboxsync $
+# $Id: Makefile.kmk 78307 2019-04-26 06:41:46Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -46,7 +46,8 @@ VBoxTray_VBOX_IMPORT_CHECKER.win.x86 = nt4 #nt350
 VBoxTray_VBOX_IMPORT_CHECKER.win.amd64 = xp64
 ifdef VBOX_WITH_SHARED_CLIPBOARD
  VBoxTray_DEFS     += \
-	VBOX_WITH_SHARED_CLIPBOARD
+	VBOX_WITH_SHARED_CLIPBOARD \
+	$(if $(VBOX_WITH_SHARED_CLIPBOARD_URI_LIST),VBOX_WITH_SHARED_CLIPBOARD_URI_LIST,)
  VBoxTray_SOURCES  += \
 	VBoxClipboard.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-win.cpp

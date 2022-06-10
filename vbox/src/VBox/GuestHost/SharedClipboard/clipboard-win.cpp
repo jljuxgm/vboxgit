@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 78171 2019-04-17 16:03:40Z vboxsync $ */
+/* $Id: clipboard-win.cpp 78307 2019-04-26 06:41:46Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -302,6 +302,11 @@ int VBoxClipboardWinGetFormats(PVBOXCLIPBOARDWINCTX pCtx, uint32_t *puFormats)
                     uFormats |= VBOX_SHARED_CLIPBOARD_FMT_BITMAP;
                     break;
 
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+                case CF_HDROP:
+                    uFormats |= VBOX_SHARED_CLIPBOARD_FMT_URI_LIST;
+                    break;
+#endif
                 default:
                 {
                     if (uCurFormat >= 0xC000) /** @todo r=andy Find a define for this. */
