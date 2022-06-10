@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 74249 2018-09-13 16:24:26Z vboxsync $ */
+/* $Id: UIToolsView.cpp 74369 2018-09-19 11:53:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -123,8 +123,6 @@ void UIToolsView::sltFocusChanged()
 
 void UIToolsView::sltMinimumWidthHintChanged(int iHint)
 {
-    printf("UIToolsView::sltMinimumWidthHintChanged(%d)\n", iHint);
-
     /* Is there something changed? */
     if (m_iMinimumWidthHint == iHint)
         return;
@@ -133,7 +131,7 @@ void UIToolsView::sltMinimumWidthHintChanged(int iHint)
     m_iMinimumWidthHint = iHint;
 
     /* Set minimum view width according passed width-hint: */
-    setMinimumWidth(2 * frameWidth() + m_iMinimumWidthHint + verticalScrollBar()->sizeHint().width());
+    setMinimumWidth(2 * frameWidth() + m_iMinimumWidthHint);
 
     /* Update scene-rect: */
     updateSceneRect();

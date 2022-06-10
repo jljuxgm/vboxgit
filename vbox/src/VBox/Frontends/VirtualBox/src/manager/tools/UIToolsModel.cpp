@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 74319 2018-09-17 17:35:06Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 74369 2018-09-19 11:53:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -81,6 +81,8 @@ void UIToolsModel::init()
     /* Update linked values: */
     updateLayout();
     updateNavigation();
+    sltItemMinimumWidthHintChanged();
+    sltItemMinimumHeightHintChanged();
 }
 
 void UIToolsModel::deinit()
@@ -319,16 +321,20 @@ void UIToolsModel::sltHandleViewResized()
 
 void UIToolsModel::sltItemMinimumWidthHintChanged()
 {
-    UIToolsItem *pSender = qobject_cast<UIToolsItem*>(sender());
-    AssertPtrReturnVoid(pSender);
-    /// @todo handle!
+    /* Calculate maximum horizontal width: */
+    int iMinimumWidthHint = 0;
+    foreach (UIToolsItem *pItem, items())
+        iMinimumWidthHint = qMax(iMinimumWidthHint, pItem->minimumWidthHint());
+    emit sigItemMinimumWidthHintChanged(iMinimumWidthHint);
 }
 
 void UIToolsModel::sltItemMinimumHeightHintChanged()
 {
-    UIToolsItem *pSender = qobject_cast<UIToolsItem*>(sender());
-    AssertPtrReturnVoid(pSender);
-    /// @todo handle!
+    /* Calculate summary vertical height: */
+    int iMinimumHeightHint = 0;
+    foreach (UIToolsItem *pItem, items())
+        iMinimumHeightHint += pItem->minimumHeightHint();
+    emit sigItemMinimumHeightHintChanged(iMinimumHeightHint);
 }
 
 bool UIToolsModel::eventFilter(QObject *pWatched, QEvent *pEvent)
