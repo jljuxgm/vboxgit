@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 74782 2018-10-12 09:22:40Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 76410 2018-12-23 18:33:00Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -49,6 +49,7 @@
 #include <iprt/log.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 #include <iprt/crypto/pkcs7.h>
 #include <iprt/crypto/store.h>
 

@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 76410 2018-12-23 18:33:00Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -445,6 +445,7 @@
 #include <VBox/err.h>
 #ifdef RT_OS_WINDOWS
 # include <VBox/version.h>
+# include <iprt/utf16.h>
 #endif
 #include <iprt/ctype.h>
 #include <iprt/string.h>
