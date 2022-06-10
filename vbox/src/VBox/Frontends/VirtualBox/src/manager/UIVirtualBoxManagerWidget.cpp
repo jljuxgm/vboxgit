@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74561 2018-10-01 16:52:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74578 2018-10-02 12:59:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -331,7 +331,7 @@ void UIVirtualBoxManagerWidget::sltHandleToolsPaneIndexChange()
         {
             ToolTypeGlobal enmType = ToolTypeGlobal_Invalid;
             if (!m_pPaneTools->areToolsEnabled(UIToolsClass_Global))
-                enmType = ToolTypeGlobal_Media;
+                enmType = ToolTypeGlobal_Welcome;
             else
             {
                 switch (m_pPaneTools->toolsType())

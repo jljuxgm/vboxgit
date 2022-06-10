@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 74561 2018-10-01 16:52:13Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 74578 2018-10-02 12:59:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -184,7 +184,7 @@ void UIToolPaneGlobal::prepare()
     m_pLayout = new QStackedLayout(this);
 
     /* Create desktop pane: */
-    openTool(ToolTypeGlobal_Media);
+    openTool(ToolTypeGlobal_Welcome);
 }
 
 void UIToolPaneGlobal::cleanup()
