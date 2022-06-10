@@ -1,4 +1,4 @@
-/* $Id: CloudProviderManagerImpl.h 73716 2018-08-16 15:58:57Z vboxsync $ */
+/* $Id: CloudProviderManagerImpl.h 74214 2018-09-12 10:04:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -37,7 +37,7 @@ public:
     HRESULT init(VirtualBox *aParent);
     void uninit();
 
-#ifdef VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK
+#if defined(VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK) && defined(VBOX_WITH_EXTPACK)
     // Safe helpers, take care of caller and lock themselves.
     void i_refreshProviders();
 #endif
