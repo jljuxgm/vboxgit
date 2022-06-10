@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 75931 2018-12-03 23:27:55Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 76106 2018-12-10 11:37:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -230,7 +230,7 @@ void UIHostFileTable::readDirectory(const QString& strPath, UIFileTableItem *par
         if (fileInfo.isSymLink()) /** @todo No symlinks here on windows, while fsObjectPropertyString() does see them.  RTDirReadEx works wrt symlinks, btw. */
         {
             item->setTargetPath(fileInfo.symLinkTarget());
-            item->setIsTargetADirectory(QFileInfo(fileInfo.symLinkTarget()).isDir());
+            item->setIsSymLinkToADirectory(QFileInfo(fileInfo.symLinkTarget()).isDir());
         }
         if (fileInfo.isDir())
         {

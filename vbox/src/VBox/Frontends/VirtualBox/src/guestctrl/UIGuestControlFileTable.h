@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 75973 2018-12-05 14:27:36Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.h 76106 2018-12-10 11:37:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -203,8 +203,10 @@ public:
     const QString &targetPath() const;
     void setTargetPath(const QString &path);
 
-    bool isTargetADirectory() const;
-    void setIsTargetADirectory(bool flag);
+    bool isSymLinkToADirectory() const;
+    void setIsSymLinkToADirectory(bool flag);
+
+    bool isSymLinkToAFile() const;
 
     const QString &owner() const;
     void setOwner(const QString &owner);
