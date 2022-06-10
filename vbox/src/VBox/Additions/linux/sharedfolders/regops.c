@@ -1,4 +1,4 @@
-/* $Id: regops.c 77492 2019-02-28 01:55:50Z vboxsync $ */
+/* $Id: regops.c 77515 2019-02-28 22:35:07Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -49,28 +49,6 @@
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 18)
 # define SEEK_END 2
 #endif
-
-
-#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 0)
-
-/*
- * inode compatibility glue.
- */
-#include <iprt/asm.h>
-
-DECLINLINE(loff_t) i_size_read(struct inode *inode)
-{
-	AssertCompile(sizeof(loff_t) == sizeof(uint64_t));
-	return ASMAtomicReadU64((uint64_t volatile *)&inode->i_size);
-}
-
-DECLINLINE(void) i_size_write(struct inode *inode, loff_t i_size)
-{
-	AssertCompile(sizeof(inode->i_size) == sizeof(uint64_t));
-	ASMAtomicWriteU64((uint64_t volatile *)&inode->i_size, i_size);
-}
-
-#endif /* < 2.6.0 */
 
 
 /**
@@ -1180,7 +1158,8 @@ static loff_t sf_reg_llseek(struct file *file, loff_t off, int whence)
 #endif
 		case SEEK_END: {
 			struct sf_reg_info *sf_r = file->private_data;
-			int rc = sf_inode_revalidate_with_handle(GET_F_DENTRY(file), sf_r->Handle.hHost, true /*fForce*/);
+			int rc = sf_inode_revalidate_with_handle(GET_F_DENTRY(file), sf_r->Handle.hHost, true /*fForce*/,
+								 false /*fInodeLocked*/);
 			if (rc == 0)
 				break;
 			return rc;

@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 77502 2019-02-28 12:05:56Z vboxsync $ */
+/* $Id: vfsmod.c 77515 2019-02-28 22:35:07Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -30,9 +30,11 @@
 
 /**
  * @note Anyone wishing to make changes here might wish to take a look at
- *  https://github.com/torvalds/linux/blob/master/Documentation/filesystems/vfs.txt
+ * https://github.com/torvalds/linux/blob/master/Documentation/filesystems/vfs.txt
  * which seems to be the closest there is to official documentation on
  * writing filesystem drivers for Linux.
+ *
+ * See also: http://us1.samba.org/samba/ftp/cifs-cvs/ols2006-fs-tutorial-smf.odp
  */
 
 #include "vfsmod.h"
