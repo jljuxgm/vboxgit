@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 72792 2018-07-02 10:36:19Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 73806 2018-08-21 17:30:48Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -265,6 +265,11 @@
  * </ul>
  *
  * @subsection sec_vbox_guideline_compulsory_cppmain   C++ guidelines for Main
+ *
+ * Since the Main API code is a large amount of C++ code, it is allowed but
+ * not required to use C++ style comments (as permanent comments, beyond the
+ * temporary use allowed by the general coding guideline).  This is a weak
+ * preference, i.e. large scale comment style changes are not encouraged.
  *
  * Main is currently (2009) full of hard-to-maintain code that uses complicated
  * templates. The new mid-term goal for Main is to have less custom templates
