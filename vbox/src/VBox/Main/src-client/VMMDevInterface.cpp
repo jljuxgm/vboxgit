@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 75969 2018-12-05 12:08:09Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 75990 2018-12-05 19:51:01Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -650,6 +650,16 @@ static DECLCALLBACK(int) iface_hgcmCall(PPDMIHGCMCONNECTOR pInterface, PVBOXHGCM
     return HGCMGuestCall(pDrv->pHGCMPort, pCmd, u32ClientID, u32Function, cParms, paParms, tsArrival);
 }
 
+static DECLCALLBACK(void) iface_hgcmCancelled(PPDMIHGCMCONNECTOR pInterface, PVBOXHGCMCMD pCmd, uint32_t idClient)
+{
+    Log9(("Enter\n"));
+
+    PDRVMAINVMMDEV pDrv = RT_FROM_MEMBER(pInterface, DRVMAINVMMDEV, HGCMConnector);
+    if (   pDrv->pVMMDev
+        && pDrv->pVMMDev->hgcmIsActive())
+        return HGCMGuestCancelled(pDrv->pHGCMPort, pCmd, idClient);
+}
+
 /**
  * Execute state save operation.
  *
@@ -1058,6 +1068,7 @@ DECLCALLBACK(int) VMMDev::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle,
     pThis->HGCMConnector.pfnConnect                   = iface_hgcmConnect;
     pThis->HGCMConnector.pfnDisconnect                = iface_hgcmDisconnect;
     pThis->HGCMConnector.pfnCall                      = iface_hgcmCall;
+    pThis->HGCMConnector.pfnCancelled                 = iface_hgcmCancelled;
 #endif
 
     /*
