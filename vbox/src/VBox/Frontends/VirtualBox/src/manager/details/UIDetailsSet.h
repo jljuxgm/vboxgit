@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.h 74367 2018-09-19 11:23:11Z vboxsync $ */
+/* $Id: UIDetailsSet.h 74687 2018-10-08 15:34:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class declaration.
  */
@@ -74,6 +74,12 @@ protected slots:
     virtual void sltBuildStep(QString strStepId, int iStepNumber) /* override */;
 
 protected:
+
+    /** @name Event-handling stuff.
+      * @{ */
+        /** Performs painting using passed @a pPainter, @a pOptions and optionally specified @a pWidget. */
+        virtual void paint(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions, QWidget *pWidget = 0) /* override */;
+    /** @} */
 
     /** @name Item stuff.
       * @{ */
@@ -170,6 +176,12 @@ private:
                                   QList<DetailsElementType> &outGroup,
                                   int &iAdditionalGroupHeight,
                                   int &iAdditionalPreviewHeight) const;
+    /** @} */
+
+    /** @name Painting stuff.
+      * @{ */
+        /** Paints background using specified @a pPainter and certain @a pOptions. */
+        void paintBackground(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions) const;
     /** @} */
 
     /** @name Item stuff.
