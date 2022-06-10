@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIEmptyFilePathSelector.cpp 78215 2019-04-19 14:20:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class implementation.
  */
@@ -110,6 +110,7 @@ void UIEmptyFilePathSelector::setEditable (bool aOn)
     if (aOn)
     {
         mPathWgt = mLineEdit = new QILineEdit (this);
+        setFocusProxy(mLineEdit);
         connect (mLineEdit, SIGNAL (textChanged (const QString&)),
                  this, SLOT (textChanged (const QString&)));
     }
