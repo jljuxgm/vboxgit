@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: log-vbox.cpp 78097 2019-04-10 15:50:11Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -735,7 +735,8 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
 #  ifndef IN_GUEST
         pLogger->fDestFlags |= RTLOGDEST_DEBUGGER | RTLOGDEST_STDOUT;
 #  else
-        RTLogGroupSettings(pLogger, "all=~0 -default.l6.l5.l4.l3");
+        /*RTLogGroupSettings(pLogger, "all=~0 -default.l6.l5.l4.l3");*/
+        RTLogGroupSettings(pLogger, "all=~0");
 #  endif
 # endif
 # if defined(DEBUG_sandervl) && !defined(IN_GUEST)
