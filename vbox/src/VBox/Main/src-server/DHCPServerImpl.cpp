@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 75819 2018-11-29 16:16:40Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 76132 2018-12-10 15:08:10Z vboxsync $ */
 
 /** @file
  *
@@ -466,7 +466,6 @@ HRESULT DHCPServer::addGlobalOption(DhcpOpt_T aOption, const com::Utf8Str &aValu
     /* Indirect way to understand that we're on NAT network */
     if (aOption == DhcpOpt_Router)
     {
-        m->dhcp.setOption(NetworkServiceRunner::kNsrKeyNeedMain, "on");
         m->router = true;
     }
 
@@ -787,6 +786,10 @@ HRESULT DHCPServer::start(const com::Utf8Str &aNetworkName,
 
     m->dhcp.setOption(DHCPServerRunner::kDsrKeyConfig, m->tempConfigFileName);
 #else /* !VBOX_WITH_DHCPD */
+    /* Main is needed for NATNetwork */
+    if (m->router)
+        m->dhcp.setOption(NetworkServiceRunner::kNsrKeyNeedMain, "on");
+
     /* Commmon Network Settings */
     m->dhcp.setOption(NetworkServiceRunner::kNsrKeyNetwork, aNetworkName.c_str());
 

@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 76132 2018-12-10 15:08:10Z vboxsync $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -115,6 +115,8 @@ private:
     int i_recalculateIPv6Prefix();
 
     void i_getPortForwardRulesFromMap(std::vector<Utf8Str> &aPortForwardRules, settings::NATRulesMap &aRules);
+
+    void i_updateDnsOptions();
 
     struct Data;
     Data *m;
