@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 75520 2018-11-16 16:06:57Z vboxsync $ */
+/* $Id: VMMDevState.h 75532 2018-11-17 00:15:54Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -289,7 +289,11 @@ typedef struct VMMDevState
     STAMPROFILE StatHgcmCmdArrival;
     STAMPROFILE StatHgcmCmdCompletion;
     STAMPROFILE StatHgcmCmdTotal;
+    STAMCOUNTER StatHgcmReqBufAllocs;
 #endif /* VBOX_WITH_HGCM */
+
+    /** Per CPU request 4K sized buffers, allocated as needed. */
+    R3PTRTYPE(VMMDevRequestHeader *) apReqBufs[VMM_MAX_CPU_COUNT];
 
     /** Status LUN: Shared folders LED */
     struct

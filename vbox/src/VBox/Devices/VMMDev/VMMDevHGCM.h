@@ -1,4 +1,4 @@
-/* $Id: */
+/* $Id: VMMDevHGCM.h 75532 2018-11-17 00:15:54Z vboxsync $ */
 /** @file
  * VBoxDev - HGCM - Host-Guest Communication Manager, internal header.
  */
