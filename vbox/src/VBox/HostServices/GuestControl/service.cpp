@@ -1,4 +1,4 @@
-/* $Id: service.cpp 76955 2019-01-23 16:27:57Z vboxsync $ */
+/* $Id: service.cpp 76956 2019-01-23 16:52:48Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -971,7 +971,7 @@ GstCtrlService::svcConnect(void *pvService, uint32_t idClient, void *pvClient, u
     /*
      * Create client state.
      */
-    ClientState *pClient;
+    ClientState *pClient = NULL;
     try
     {
         pClient = new (pvClient) ClientState(pThis->mpHelpers, idClient);
