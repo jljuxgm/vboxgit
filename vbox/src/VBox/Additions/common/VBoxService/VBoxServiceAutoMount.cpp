@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 75444 2018-11-14 10:25:43Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 75446 2018-11-14 12:54:10Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -1307,7 +1307,7 @@ static int vbsvcAutomounterQueryMountPoint(const char *pszMountPoint, const char
         while (getmntent(pFile, &Entry) == 0)
             if (RTPathCompare(Entry.mnt_mountp, pszMountPoint) == 0)
             {
-                if (strcmp(Entry.mnt_fstype, "vboxsf") == 0)
+                if (strcmp(Entry.mnt_fstype, "vboxfs") == 0)
                 {
                     if (RTStrICmp(Entry.mnt_special, pszName) == 0)
                     {
