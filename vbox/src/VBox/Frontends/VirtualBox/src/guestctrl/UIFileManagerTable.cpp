@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 76495 2018-12-27 12:20:17Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 76496 2018-12-27 12:44:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -465,7 +465,10 @@ void UIFileManagerTable::prepareObjects()
 
         QHeaderView *pHorizontalHeader = m_pView->horizontalHeader();
         if (pHorizontalHeader)
+        {
             pHorizontalHeader->setHighlightSections(false);
+            pHorizontalHeader->setSectionResizeMode(QHeaderView::Stretch);
+        }
 
         m_pView->setModel(m_pProxyModel);
         m_pView->setItemDelegate(new UIFileDelegate);
@@ -480,7 +483,7 @@ void UIFileManagerTable::prepareObjects()
                 this, &UIFileManagerTable::sltSelectionChanged);
         connect(m_pView, &UIGuestControlFileView::customContextMenuRequested,
                 this, &UIFileManagerTable::sltCreateFileViewContextMenu);
-
+        m_pView->hideColumn(UICustomFileSystemModelColumn_Path);
     }
     m_pWarningLabel = new QILabel(this);
     if (m_pWarningLabel)
