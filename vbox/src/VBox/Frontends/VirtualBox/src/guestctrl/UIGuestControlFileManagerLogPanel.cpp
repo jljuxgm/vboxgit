@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerLogPanel.cpp 75224 2018-11-02 12:45:59Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerLogPanel.cpp 75250 2018-11-05 15:15:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -24,6 +24,7 @@
 # include <QMenu>
 # include <QSpinBox>
 # include <QTextEdit>
+# include <QTime>
 
 /* GUI includes: */
 # include "QIToolButton.h"
@@ -63,6 +64,7 @@ private slots:
 UIFileManagerLogViewer::UIFileManagerLogViewer(QWidget *pParent /* = 0 */)
     :QTextEdit(pParent)
 {
+    setUndoRedoEnabled(false);
 }
 
 void UIFileManagerLogViewer::contextMenuEvent(QContextMenuEvent *event)
@@ -97,7 +99,7 @@ void UIGuestControlFileManagerLogPanel::appendLog(const QString &strLog)
 {
     if (!m_pLogTextEdit)
         return;
-    m_pLogTextEdit->append(strLog);
+    m_pLogTextEdit->append(QString("%1: %2").arg(QTime::currentTime().toString("hh:mm:ss")).arg(strLog));
 }
 
 QString UIGuestControlFileManagerLogPanel::panelName() const
@@ -114,7 +116,6 @@ void UIGuestControlFileManagerLogPanel::prepareWidgets()
     {
         mainLayout()->addWidget(m_pLogTextEdit);
     }
-
 }
 
 void UIGuestControlFileManagerLogPanel::prepareConnections()
