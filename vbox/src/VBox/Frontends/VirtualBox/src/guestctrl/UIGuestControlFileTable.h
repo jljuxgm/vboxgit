@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 75220 2018-11-02 08:07:11Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.h 75284 2018-11-06 13:28:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -32,6 +32,7 @@
 #include "QIDialog.h"
 #include "QITableView.h"
 #include "QIWithRetranslateUI.h"
+#include "UIGuestControlDefs.h"
 
 /* Forward declarations: */
 class QAction;
@@ -243,7 +244,7 @@ class UIGuestControlFileTable : public QIWithRetranslateUI<QWidget>
 
 signals:
 
-    void sigLogOutput(QString);
+    void sigLogOutput(QString strLog, FileManagerLogType eLogType);
 
 public:
 
@@ -251,7 +252,7 @@ public:
     virtual ~UIGuestControlFileTable();
     /** Deletes all the tree nodes */
     void        reset();
-    void        emitLogOutput(const QString& strOutput);
+    void        emitLogOutput(const QString& strOutput, FileManagerLogType eLogType);
     /** Returns the path of the rootIndex */
     QString     currentDirectoryPath() const;
     /** Returns the paths of the selected items (if any) as a list */

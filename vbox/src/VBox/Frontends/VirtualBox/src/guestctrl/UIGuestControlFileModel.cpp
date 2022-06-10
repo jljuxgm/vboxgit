@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileModel.cpp 74947 2018-10-19 15:03:34Z vboxsync $ */
+/* $Id: UIGuestControlFileModel.cpp 75284 2018-11-06 13:28:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileModel class implementation.
  */
@@ -111,7 +111,7 @@ bool UIGuestControlFileModel::setData(const QModelIndex &index, const QVariant &
             else
             {
                 if (m_pParent)
-                    m_pParent->emitLogOutput(QString(item->path()).append(" could not be renamed"));
+                    m_pParent->emitLogOutput(QString(item->path()).append(" could not be renamed"), FileManagerLogType_Error);
             }
             return true;
         }

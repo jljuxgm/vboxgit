@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 75220 2018-11-02 08:07:11Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 75284 2018-11-06 13:28:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -643,9 +643,9 @@ void UIGuestControlFileTable::reset()
     }
 }
 
-void UIGuestControlFileTable::emitLogOutput(const QString& strOutput)
+void UIGuestControlFileTable::emitLogOutput(const QString& strOutput, FileManagerLogType eLogType)
 {
-    emit sigLogOutput(strOutput);
+    emit sigLogOutput(strOutput, eLogType);
 }
 
 void UIGuestControlFileTable::prepareObjects()

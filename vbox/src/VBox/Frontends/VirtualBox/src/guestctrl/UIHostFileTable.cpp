@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 75202 2018-10-31 09:30:01Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 75284 2018-11-06 13:28:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -270,7 +270,7 @@ void UIHostFileTable::deleteByItem(UIFileTableItem *item)
     bool deleteSuccess = itemToDelete.removeRecursively();
 
      if (!deleteSuccess)
-         emit sigLogOutput(QString(item->path()).append(" could not be deleted"));
+         emit sigLogOutput(QString(item->path()).append(" could not be deleted"), FileManagerLogType_Error);
 }
 
 void UIHostFileTable::goToHomeDirectory()
@@ -304,7 +304,7 @@ bool UIHostFileTable::createDirectory(const QString &path, const QString &direct
     QDir parentDir(path);
     if (!parentDir.mkdir(directoryName))
     {
-        emit sigLogOutput(UIPathOperations::mergePaths(path, directoryName).append(" could not be created"));
+        emit sigLogOutput(UIPathOperations::mergePaths(path, directoryName).append(" could not be created"), FileManagerLogType_Error);
         return false;
     }
 

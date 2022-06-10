@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75222 2018-11-02 12:37:05Z vboxsync $
+# $Id: Makefile.kmk 75284 2018-11-06 13:28:12Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -839,6 +839,7 @@ ifndef VBOX_GUI_WITH_SHARED_LIBRARY
 	src/runtime/information/UIInformationView.h \
 	src/runtime/information/UIVMInformationDialog.h \
 	src/guestctrl/UIGuestControlConsole.h \
+	src/guestctrl/UIGuestControlDefs.h \
 	src/guestctrl/UIGuestControlFileManager.h \
 	src/guestctrl/UIGuestControlFileManagerDialog.h \
 	src/guestctrl/UIGuestControlFileManagerPanel.h \
@@ -994,6 +995,7 @@ ifdef VBOX_GUI_WITH_SHARED_LIBRARY
 	src/runtime/information/UIInformationView.h \
 	src/runtime/information/UIVMInformationDialog.h \
 	src/guestctrl/UIGuestControlConsole.h \
+	src/guestctrl/UIGuestControlDefs.h \
 	src/guestctrl/UIGuestControlFileManager.h \
 	src/guestctrl/UIGuestControlFileManagerDialog.h \
 	src/guestctrl/UIGuestControlFileManagerPanel.h \
