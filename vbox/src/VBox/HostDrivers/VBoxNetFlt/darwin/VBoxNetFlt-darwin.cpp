@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 75687 2018-11-23 13:19:11Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -1070,6 +1070,8 @@ static int vboxNetFltDarwinAttachToInterface(PVBOXNETFLTINS pThis, bool fRedisco
         return VERR_INTNET_FLT_IF_NOT_FOUND;
     }
 
+    AssertCompileMemberAlignment(VBOXNETFLTINS, u.s.pIfNet, ARCH_BITS / 8);
+    AssertMsg(!((uintptr_t)&pThis->u.s.pIfNet & (ARCH_BITS / 8 - 1)), ("pThis=%p\n", pThis));
     RTSpinlockAcquire(pThis->hSpinlock);
     ASMAtomicUoWritePtr(&pThis->u.s.pIfNet, pIfNet);
     RTSpinlockRelease(pThis->hSpinlock);
