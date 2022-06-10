@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 78127 2019-04-15 17:24:30Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 78148 2019-04-16 16:48:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -277,6 +277,7 @@ void UIWizardImportAppPage1::populateAccountInstances()
             msgCenter().cannotCreateCloudClient(m_comCloudProfile);
         else
         {
+#if 0
             /* Read Cloud Client instances: */
             QVector<QString> vmNames;
             /*const QVector<QString> vmIDs =*/
@@ -298,6 +299,9 @@ void UIWizardImportAppPage1::populateAccountInstances()
                     }
                 }
             }
+#else  // XXX: uwe
+            msgCenter().cannotAcquireCloudClientParameter(m_comCloudClient);
+#endif
         }
     }
 }
