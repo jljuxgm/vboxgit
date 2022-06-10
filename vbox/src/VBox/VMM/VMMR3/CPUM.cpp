@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 76464 2018-12-25 04:36:48Z vboxsync $ */
+/* $Id: CPUM.cpp 76465 2018-12-25 04:39:02Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1728,6 +1728,12 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
 }
 
 
+/**
+ * Gets the host hardware-virtualization MSRs.
+ *
+ * @returns VBox status code.
+ * @param   pMsrs       Where to store the MSRs.
+ */
 static int cpumR3GetHostHwvirtMsrs(PCPUMMSRS pMsrs)
 {
     Assert(pMsrs);
