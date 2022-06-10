@@ -1,4 +1,4 @@
-/* $Id: dbgstackdumpself.cpp 73761 2018-08-19 13:42:25Z vboxsync $ */
+/* $Id: dbgstackdumpself.cpp 73763 2018-08-19 13:49:00Z vboxsync $ */
 /** @file
  * IPRT - Dump current thread stack to buffer.
  */
@@ -123,7 +123,8 @@ static int rtDbgStackDumpSelfSafeMemoryReader(void *pvDst, size_t cbToRead, uint
     }
 #  endif
 # else
-#  error "PORT ME!"
+    /** @todo secure this from SIGSEGV.  */
+    memcpy(pvDst, (void const *)uSrcAddr, cbToRead);
 # endif
     return VINF_SUCCESS;
 }
