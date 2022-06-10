@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 77056 2019-01-30 18:00:43Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2321,11 +2321,9 @@ static int vgdrvCheckIfVmmReqIsAllowed(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSI
         case VMMDevReq_HGCMConnect:
         case VMMDevReq_HGCMDisconnect:
 # ifdef VBOX_WITH_64_BITS_GUESTS
-        case VMMDevReq_HGCMCall32:
         case VMMDevReq_HGCMCall64:
-# else
-        case VMMDevReq_HGCMCall:
-# endif /* VBOX_WITH_64_BITS_GUESTS */
+# endif
+        case VMMDevReq_HGCMCall32:
         case VMMDevReq_HGCMCancel:
         case VMMDevReq_HGCMCancel2:
 #endif /* VBOX_WITH_HGCM */
