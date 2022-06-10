@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 73586 2018-08-09 13:34:57Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 73588 2018-08-09 13:43:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class implementation.
  */
@@ -49,6 +49,9 @@
 
 /* Other VBox includes: */
 #include <iprt/path.h>
+
+/* External includes: */
+#include <math.h>
 
 UIWizardNewVDPage3::UIWizardNewVDPage3(const QString &strDefaultName, const QString &strDefaultPath)
     : m_strDefaultName(strDefaultName.isEmpty() ? QString("NewVirtualDisk1") : strDefaultName)
