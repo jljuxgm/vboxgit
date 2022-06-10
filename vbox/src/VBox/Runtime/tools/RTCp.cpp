@@ -1,4 +1,4 @@
-/* $Id: RTCp.cpp 72273 2018-05-21 12:51:27Z vboxsync $ */
+/* $Id: RTCp.cpp 75117 2018-10-26 19:46:27Z vboxsync $ */
 /** @file
  * IPRT - cp like utility.
  */
@@ -102,7 +102,10 @@ static RTEXITCODE rtCmdCpDoIt(PCRTCMDCPOPTS pOpts)
         return RTVfsChainMsgErrorExitFailure("RTVfsChainQueryInfo", pOpts->pszDestination, rc, offError, &ErrInfo.Core);
     else
         RT_ZERO(DstObjInfo);
+/* gcc 8.2 produces a tautological compare warning here. */
+#if __GNUC__ != 8 || __GNUC_MINOR__ != 2
     AssertCompile(!RTFS_IS_DIRECTORY(0));
+#endif
 
     /*
      * Process the sources.
