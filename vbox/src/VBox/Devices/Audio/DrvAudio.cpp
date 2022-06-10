@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 73655 2018-08-14 13:00:30Z vboxsync $ */
+/* $Id: DrvAudio.cpp 73660 2018-08-14 13:51:20Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2932,7 +2932,7 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis,
     if (pDrvCfg->uPeriodSizeMs)
         pCfgReq->Backend.cfPeriod = DrvAudioHlpMilliToFrames(pDrvCfg->uPeriodSizeMs, &pCfgReq->Props);
     else /* Set default period size. */
-        pCfgReq->Backend.cfPeriod = DrvAudioHlpMilliToFrames(200 /* ms */, &pCfgReq->Props);
+        pCfgReq->Backend.cfPeriod = DrvAudioHlpMilliToFrames(20 /* ms */, &pCfgReq->Props);
 
     LogRel2(("Audio: Using %s period size (%RU64ms, %RU32 frames) for stream '%s'\n",
              pDrvCfg->uPeriodSizeMs ? "custom" : "default", DrvAudioHlpFramesToMilli(pCfgReq->Backend.cfPeriod, &pCfgReq->Props),
@@ -2944,7 +2944,7 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis,
     if (pDrvCfg->uBufferSizeMs)
         pCfgReq->Backend.cfBufferSize = DrvAudioHlpMilliToFrames(pDrvCfg->uBufferSizeMs, &pCfgReq->Props);
     else /* Set default buffer size. */
-        pCfgReq->Backend.cfBufferSize = DrvAudioHlpMilliToFrames(400 /* ms */, &pCfgReq->Props);
+        pCfgReq->Backend.cfBufferSize = DrvAudioHlpMilliToFrames(100 /* ms */, &pCfgReq->Props);
 
     LogRel2(("Audio: Using %s buffer size (%RU64ms, %RU32 frames) for stream '%s'\n",
              pDrvCfg->uBufferSizeMs ? "custom" : "default", DrvAudioHlpFramesToMilli(pCfgReq->Backend.cfBufferSize, &pCfgReq->Props),
