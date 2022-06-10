@@ -1,6 +1,6 @@
-; $Id: VBoxRTImp-vcc64.def 74220 2018-09-12 12:26:16Z vboxsync $
+; $Id: VBoxRTImp-vcc64.def 74221 2018-09-12 12:28:35Z vboxsync $
 ;; @file
-; VirtualBox Runtime DLL - Stable C++ Interface Definition file, 32-bit Visual C++.
+; VirtualBox Runtime DLL - Stable C++ Interface Definition file, 64-bit Visual C++.
 
 ;
 ; Copyright (C) 2018 Oracle Corporation
