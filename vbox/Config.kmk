@@ -1,4 +1,4 @@
-# $Id: Config.kmk 75450 2018-11-14 14:25:26Z vboxsync $
+# $Id: Config.kmk 75452 2018-11-14 14:29:38Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -505,6 +505,10 @@ ifdef VBOX_WITH_WDDM
  VBOX_WITH_VDMA = 1
 else ifdef VBOX_WITH_VDMA
   undef VBOX_WITH_VDMA
+endif
+# Gallium based WDDM driver
+if1of ($(KBUILD_TARGET), win)
+ VBOX_WITH_MESA3D = 1
 endif
 # Disable the Intel PXE ROM (uses Etherboot).
 VBOX_WITH_INTEL_PXE =
@@ -7470,7 +7474,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75450 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75452 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
