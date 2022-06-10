@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 73272 2018-07-20 14:57:04Z vboxsync $ */
+/* $Id: PGMAllShw.h 73273 2018-07-20 14:58:52Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
