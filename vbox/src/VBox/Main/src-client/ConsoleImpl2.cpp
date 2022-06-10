@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 75821 2018-11-29 16:43:40Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 75823 2018-11-29 20:17:05Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1666,6 +1666,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 #ifdef VBOX_WITH_VMSVGA
             case GraphicsControllerType_VMSVGA:
                 InsertConfigInteger(pHM, "LovelyMesaDrvWorkaround", 1); /* hits someone else logging backdoor. */
+                RT_FALL_THROUGH();
             case GraphicsControllerType_VBoxSVGA:
 #endif
             case GraphicsControllerType_VBoxVGA:
