@@ -1,4 +1,4 @@
-; $Id: VBoxSF.def 69339 2017-10-26 11:22:26Z vboxsync $
+; $Id: VBoxSF.def 75337 2018-11-09 01:39:01Z vboxsync $
 ;; @file
 ; VBoxSF - OS/2 definition file.
 ;
@@ -84,10 +84,10 @@ EXPORTS
     FS_RMDIR
     FS_SETSWAP
     FS_SHUTDOWN
+    FS_VERIFYUNCNAME
     FS_WRITE
 
     ; 32-bit entry points.
-    FS32_CHGFILEPTR
     FS32_CHGFILEPTRL
     FS32_READ
     FS32_READFILEATCACHE
