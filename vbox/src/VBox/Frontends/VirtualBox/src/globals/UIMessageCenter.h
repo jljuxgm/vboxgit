@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMessageCenter.h 74887 2018-10-17 15:23:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -358,6 +358,11 @@ public:
     void cannotRemoveDHCPServer(const CVirtualBox &comVBox, const QString &strInterfaceName, QWidget *pParent = 0) const;
     void cannotAcquireDHCPServerParameter(const CDHCPServer &comServer, QWidget *pParent = 0) const;
     void cannotSaveDHCPServerParameter(const CDHCPServer &comServer, QWidget *pParent = 0) const;
+
+    /* API: Cloud Profile Manager warnings: */
+    void cannotAcquireCloudProviderManager(const CVirtualBox &comVBox, QWidget *pParent = 0) const;
+    void cannotAcquireCloudProviderParameter(const CCloudProvider &comProvider, QWidget *pParent = 0) const;
+    void cannotAcquireCloudProfileParameter(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
 
     /* API: Wizards warnings: */
     bool confirmHardDisklessMachine(QWidget *pParent = 0) const;

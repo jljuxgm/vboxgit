@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 74881 2018-10-17 14:38:49Z vboxsync $ */
+/* $Id: UICloudProfileManager.h 74887 2018-10-17 15:23:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -140,6 +140,9 @@ private:
 
     /** @name Tree-widget stuff.
       * @{ */
+        /** Seearches a provider item with specified @a uuid. */
+        UIItemCloudProvider *searchItem(const QUuid &uuid) const;
+
         /** Creates a new tree-widget item on the basis of passed @a data, @a fChooseItem if requested. */
         void createItemForCloudProvider(const UIDataCloudProvider &data, bool fChooseItem);
 
