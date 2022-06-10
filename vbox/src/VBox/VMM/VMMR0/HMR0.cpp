@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 72767 2018-06-29 10:54:36Z vboxsync $ */
+/* $Id: HMR0.cpp 72769 2018-06-29 11:10:00Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -20,6 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_HM
+#define VMCPU_INCL_CPUM_GST_CTX
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/pgm.h>
 #include "HMInternal.h"
@@ -1552,7 +1553,7 @@ VMMR0_INT_DECL(int) HMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
     PGMRZDynMapStartAutoSet(pVCpu);
 #endif
 
-    VBOXSTRICTRC rcStrict = g_HmR0.pfnRunGuestCode(pVM, pVCpu, CPUMQueryGuestCtxPtr(pVCpu));
+    VBOXSTRICTRC rcStrict = g_HmR0.pfnRunGuestCode(pVM, pVCpu, &pVCpu->cpum.GstCtx);
 
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
     PGMRZDynMapReleaseAutoSet(pVCpu);
