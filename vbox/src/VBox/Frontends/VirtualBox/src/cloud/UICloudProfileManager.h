@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 74887 2018-10-17 15:23:38Z vboxsync $ */
+/* $Id: UICloudProfileManager.h 74896 2018-10-17 23:36:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -100,8 +100,6 @@ private slots:
 
     /** @name Tree-widget stuff.
       * @{ */
-        /** Handles tree-widget @a pItem change. */
-        void sltHandleItemChange(QTreeWidgetItem *pItem);
         /** Handles tree-widget current item change. */
         void sltHandleCurrentItemChange();
         /** Handles context menu request for tree-widget @a position. */
