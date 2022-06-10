@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73111 2018-07-13 07:44:00Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73112 2018-07-13 07:48:33Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7398,7 +7398,6 @@ HMSVM_EXIT_DECL hmR0SvmExitPause(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
 {
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS(pVCpu, pSvmTransient);
 
-    VBOXSTRICTRC rcStrict;
     unsigned cbInstr;
     bool const fSupportsNextRipSave = hmR0SvmSupportsNextRipSave(pVCpu);
     if (fSupportsNextRipSave)
