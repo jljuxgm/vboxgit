@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMainImports-win.cpp 70137 2017-12-14 20:10:06Z vboxsync $ */
+/* $Id: SUPR3HardenedMainImports-win.cpp 76413 2018-12-23 18:35:43Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened Main, Windows Import Trickery.
  */
@@ -33,9 +33,10 @@
 #include <VBox/sup.h>
 #include <VBox/err.h>
 #include <iprt/ctype.h>
-#include <iprt/string.h>
 #include <iprt/initterm.h>
 #include <iprt/param.h>
+#include <iprt/string.h>
+#include <iprt/utf16.h>
 
 #include "SUPLibInternal.h"
 #include "SUPHardenedVerify-win.h"
