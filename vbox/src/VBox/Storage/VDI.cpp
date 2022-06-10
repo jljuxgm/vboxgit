@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 77606 2019-03-08 02:55:07Z vboxsync $ */
+/* $Id: VDI.cpp 77607 2019-03-08 03:26:23Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -546,13 +546,14 @@ static void vdiSetupImageDesc(PVDIIMAGEDESC pImage)
  * Sets up the complete image state from the given parameters.
  *
  * @returns VBox status code.
- * @param   pImage          The VDI image descriptor.
- * @param   uImageFlags     Image flags.
- * @param   pszComment      The comment for the image (optional).
- * @param   cbSize          Size of the resulting image in bytes.
- * @param   cbDataAlign     Data alignment in bytes.
- * @param   pPCHSGeometry   Physical CHS geometry for the image.
- * @param   pLCHSGeometry   Logical CHS geometry for the image.
+ * @param   pImage            The VDI image descriptor.
+ * @param   uImageFlags       Image flags.
+ * @param   pszComment        The comment for the image (optional).
+ * @param   cbSize            Size of the resulting image in bytes.
+ * @param   cbAllocationBlock Size of blocks allocated
+ * @param   cbDataAlign       Data alignment in bytes.
+ * @param   pPCHSGeometry     Physical CHS geometry for the image.
+ * @param   pLCHSGeometry     Logical CHS geometry for the image.
  */
 static int vdiSetupImageState(PVDIIMAGEDESC pImage, unsigned uImageFlags, const char *pszComment,
                               uint64_t cbSize, uint32_t cbAllocationBlock, uint32_t cbDataAlign, PCVDGEOMETRY pPCHSGeometry,
