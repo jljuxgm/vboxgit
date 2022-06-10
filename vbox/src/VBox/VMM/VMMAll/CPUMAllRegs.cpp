@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 72917 2018-07-05 13:50:01Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 74101 2018-09-06 04:30:45Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2774,7 +2774,7 @@ VMM_INT_DECL(void) CPUMSvmVmExitRestoreHostState(PVMCPU pVCpu, PCPUMCTX pCtx)
     pCtx->ds         = pHostState->ds;
     pCtx->gdtr       = pHostState->gdtr;
     pCtx->idtr       = pHostState->idtr;
-    CPUMSetGuestMsrEferNoCheck(pVCpu, pCtx->msrEFER, pHostState->uEferMsr);
+    CPUMSetGuestEferMsrNoChecks(pVCpu, pCtx->msrEFER, pHostState->uEferMsr);
     CPUMSetGuestCR0(pVCpu, pHostState->uCr0 | X86_CR0_PE);
     pCtx->cr3        = pHostState->uCr3;
     CPUMSetGuestCR4(pVCpu, pHostState->uCr4);

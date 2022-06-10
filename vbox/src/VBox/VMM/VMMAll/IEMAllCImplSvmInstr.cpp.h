@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 73165 2018-07-17 04:03:41Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 74101 2018-09-06 04:30:45Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -727,7 +727,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmrun(PVMCPU pVCpu, uint8_t cbInstr, RTGCPHYS GCPh
         pVCpu->cpum.GstCtx.rax        = pVmcbNstGst->u64RAX;
         pVCpu->cpum.GstCtx.rsp        = pVmcbNstGst->u64RSP;
         pVCpu->cpum.GstCtx.rip        = pVmcbNstGst->u64RIP;
-        CPUMSetGuestMsrEferNoCheck(pVCpu, pVCpu->cpum.GstCtx.msrEFER, uValidEfer);
+        CPUMSetGuestEferMsrNoChecks(pVCpu, pVCpu->cpum.GstCtx.msrEFER, uValidEfer);
         if (pVmcbCtrl->NestedPagingCtrl.n.u1NestedPaging)
             pVCpu->cpum.GstCtx.msrPAT = pVmcbNstGst->u64PAT;
 

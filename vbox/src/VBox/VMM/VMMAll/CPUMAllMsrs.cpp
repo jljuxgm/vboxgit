@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 74100 2018-09-06 03:11:02Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 74101 2018-09-06 04:30:45Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -1886,7 +1886,7 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrWr_Amd64Efer(PVMCPU pVCpu, uint32_t idM
     if (RT_FAILURE(rc))
         return VERR_CPUM_RAISE_GP_0;
 
-    CPUMSetGuestMsrEferNoCheck(pVCpu, uOldEfer, uValidatedEfer);
+    CPUMSetGuestEferMsrNoChecks(pVCpu, uOldEfer, uValidatedEfer);
     return VINF_SUCCESS;
 }
 
@@ -6563,7 +6563,7 @@ VMMDECL(uint64_t) CPUMGetGuestScalableBusFrequency(PVM pVM)
  * @remarks One would normally call CPUMQueryValidatedGuestEfer before calling this
  *          function to change the EFER in order to perform an EFER transition.
  */
-VMMDECL(void) CPUMSetGuestMsrEferNoCheck(PVMCPU pVCpu, uint64_t uOldEfer, uint64_t uValidEfer)
+VMMDECL(void) CPUMSetGuestEferMsrNoChecks(PVMCPU pVCpu, uint64_t uOldEfer, uint64_t uValidEfer)
 {
     pVCpu->cpum.s.Guest.msrEFER = uValidEfer;
 
