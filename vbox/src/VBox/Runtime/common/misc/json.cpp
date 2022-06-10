@@ -1,4 +1,4 @@
-/* $Id: json.cpp 73930 2018-08-28 18:09:54Z vboxsync $ */
+/* $Id: json.cpp 73956 2018-08-29 15:09:34Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -1485,24 +1485,49 @@ RTDECL(int) RTJsonValueQueryByIndex(RTJSONVAL hJsonVal, unsigned idx, PRTJSONVAL
     return VINF_SUCCESS;
 }
 
+static int rtJsonIteratorBeginWorker(PRTJSONVALINT pThis, PRTJSONIT phJsonIt)
+{
+    PRTJSONITINT pIt = (PRTJSONITINT)RTMemTmpAllocZ(sizeof(RTJSONITINT));
+    if (pIt)
+    {
+        RTJsonValueRetain(pThis);
+        pIt->pJsonVal = pThis;
+        pIt->idxCur = 0;
+
+        *phJsonIt = pIt;
+        return VINF_SUCCESS;
+    }
+    return VERR_NO_MEMORY;
+}
+
 RTDECL(int) RTJsonIteratorBegin(RTJSONVAL hJsonVal, PRTJSONIT phJsonIt)
 {
     PRTJSONVALINT pThis = hJsonVal;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
     AssertPtrReturn(phJsonIt, VERR_INVALID_POINTER);
-
     RTJSON_TYPECHECK_CONTAINER_RETURN(pThis);
 
-    PRTJSONITINT pIt = (PRTJSONITINT)RTMemTmpAllocZ(sizeof(RTJSONITINT));
-    if (RT_UNLIKELY(!pIt))
-        return VERR_NO_MEMORY;
+    return rtJsonIteratorBeginWorker(pThis, phJsonIt);
+}
 
-    RTJsonValueRetain(hJsonVal);
-    pIt->pJsonVal = pThis;
-    pIt->idxCur = 0;
-    *phJsonIt = pIt;
+RTDECL(int) RTJsonIteratorBeginArray(RTJSONVAL hJsonVal, PRTJSONIT phJsonIt)
+{
+    PRTJSONVALINT pThis = hJsonVal;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertPtrReturn(phJsonIt, VERR_INVALID_POINTER);
+    RTJSON_TYPECHECK_RETURN(pThis, RTJSONVALTYPE_ARRAY);
 
-    return VINF_SUCCESS;
+    return rtJsonIteratorBeginWorker(pThis, phJsonIt);
+}
+
+RTDECL(int) RTJsonIteratorBeginObject(RTJSONVAL hJsonVal, PRTJSONIT phJsonIt)
+{
+    PRTJSONVALINT pThis = hJsonVal;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertPtrReturn(phJsonIt, VERR_INVALID_POINTER);
+    RTJSON_TYPECHECK_RETURN(pThis, RTJSONVALTYPE_OBJECT);
+
+    return rtJsonIteratorBeginWorker(pThis, phJsonIt);
 }
 
 RTDECL(int) RTJsonIteratorQueryValue(RTJSONIT hJsonIt, PRTJSONVAL phJsonVal, const char **ppszName)

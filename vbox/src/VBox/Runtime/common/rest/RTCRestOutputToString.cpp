@@ -1,4 +1,4 @@
-/* $Id: RTCRestOutputToString.cpp 73879 2018-08-24 16:15:33Z vboxsync $ */
+/* $Id: RTCRestOutputToString.cpp 73956 2018-08-29 15:09:34Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestOutputToString implementation.
  */
@@ -34,10 +34,12 @@
 #include <iprt/string.h>
 
 
-RTCRestOutputToString::RTCRestOutputToString(RTCString *a_pDst)
+RTCRestOutputToString::RTCRestOutputToString(RTCString *a_pDst, bool a_fAppend /*= false*/)
     : m_pDst(a_pDst)
     , m_fOutOfMemory(false)
 {
+    if (!a_fAppend)
+        m_pDst->setNull();
 }
 
 
