@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GVMMR0.cpp 77126 2019-02-01 16:10:27Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1263,7 +1263,7 @@ static void gvmmR0CleanupVM(PGVM pGVM)
     NEMR0CleanupVM(pGVM);
 #endif
 
-    AssertCompile((uintptr_t)NIL_RTTHREADCTXHOOK == 0); /* Depends on zero initialized memory working for NIL at the moment. */
+    AssertCompile(NIL_RTTHREADCTXHOOK == (RTTHREADCTXHOOK)0); /* Depends on zero initialized memory working for NIL at the moment. */
     for (VMCPUID idCpu = 0; idCpu < pGVM->cCpus; idCpu++)
     {
         /** @todo Can we busy wait here for all thread-context hooks to be

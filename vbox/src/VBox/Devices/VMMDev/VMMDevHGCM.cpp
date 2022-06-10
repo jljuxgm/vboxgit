@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 77056 2019-01-30 18:00:43Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 77126 2019-02-01 16:10:27Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -2384,7 +2384,7 @@ void vmmdevHGCMDestroy(PVMMDEV pThis)
         RTCritSectDelete(&pThis->critsectHGCMCmdList);
     }
 
-    AssertCompile((uintptr_t)NIL_RTMEMCACHE == 0);
+    AssertCompile(NIL_RTMEMCACHE == (RTMEMCACHE)0);
     if (pThis->hHgcmCmdCache != NIL_RTMEMCACHE)
     {
         RTMemCacheDestroy(pThis->hHgcmCmdCache);
