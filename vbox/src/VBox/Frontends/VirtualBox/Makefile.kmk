@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74701 2018-10-09 07:24:37Z vboxsync $
+# $Id: Makefile.kmk 74740 2018-10-10 12:50:25Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -292,6 +292,7 @@ ifdef VBOX_GUI_WITH_SHARED_LIBRARY
  #VBoxGlobal_DEFS.win     += UNICODE QT_DLL
  VBoxGlobal_DEFS         += \
 	$(if $(VBOX_GUI_WITH_SHARED_LIBRARY),VBOX_GUI_WITH_SHARED_LIBRARY) \
+	$(if $(VBOX_GUI_WITH_NEW_MANAGER),VBOX_GUI_WITH_NEW_MANAGER) \
 	$(if $(VBOX_WITH_UPDATE_REQUEST),VBOX_WITH_UPDATE_REQUEST) \
 	$(if $(VBOX_WITH_AUDIO_OSS),VBOX_WITH_AUDIO_OSS) \
 	$(if $(VBOX_WITH_AUDIO_ALSA),VBOX_WITH_AUDIO_ALSA) \
