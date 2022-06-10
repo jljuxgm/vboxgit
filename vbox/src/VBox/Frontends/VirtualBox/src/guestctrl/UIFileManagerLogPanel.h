@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerLogPanel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIFileManagerLogPanel.h 76950 2019-01-23 10:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -23,20 +23,20 @@
 
 /* GUI includes: */
 #include "UIGuestControlDefs.h"
-#include "UIFileManagerPanel.h"
+#include "UIDialogPanel.h"
 
 /* Forward declarations: */
 class QTextEdit;
 class UIFileManager;
 
-/** UIFileManagerPanel extension to display file manager logs. */
-class UIFileManagerLogPanel : public UIFileManagerPanel
+/** UIDialogPanel extension to display file manager logs. */
+class UIFileManagerLogPanel : public UIDialogPanel
 {
     Q_OBJECT;
 
 public:
 
-    UIFileManagerLogPanel(UIFileManager *pManagerWidget, QWidget *pParent);
+    UIFileManagerLogPanel(QWidget *pParent = 0);
     void appendLog(const QString &str, FileManagerLogType);
     virtual QString panelName() const /* override */;
 

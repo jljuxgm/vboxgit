@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.cpp 76947 2019-01-23 09:26:31Z vboxsync $ */
+/* $Id: UIDialogPanel.cpp 76950 2019-01-23 10:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -32,7 +32,7 @@
 #endif
 
 
-UIDialogPanel::UIDialogPanel(QWidget *pParent)
+UIDialogPanel::UIDialogPanel(QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_pMainLayout(0)
     , m_pCloseButton(0)

@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.h 76947 2019-01-23 09:26:31Z vboxsync $ */
+/* $Id: UIDialogPanel.h 76950 2019-01-23 10:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -29,19 +29,17 @@
 
 /* Forward declarations: */
 class QHBoxLayout;
-class QPlainTextEdit;
-class QTextDocument;
 class QIToolButton;
 
 
-/** QWidget extension acting as the base class for UIVMLogViewerXXXPanel widgets. */
-class UIDialogPanel : public QIWithRetranslateUI<QWidget>
+/** QWidget extension acting as the base class for all the dialog panels like file manager, logviewer etc. */
+class SHARED_LIBRARY_STUFF UIDialogPanel : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
 public:
 
-    UIDialogPanel(QWidget *pParent);
+    UIDialogPanel(QWidget *pParent = 0);
     void setCloseButtonShortCut(QKeySequence shortCut);
     virtual QString panelName() const = 0;
 
@@ -71,7 +69,6 @@ protected:
 
 private:
 
-    /** Holds the reference to VM Log-Viewer this panel belongs to. */
     QHBoxLayout   *m_pMainLayout;
     QIToolButton  *m_pCloseButton;
 };

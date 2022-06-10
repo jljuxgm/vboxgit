@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerOperationsPanel.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIFileManagerOperationsPanel.cpp 76950 2019-01-23 10:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -307,9 +307,8 @@ void UIFileOperationProgressWidget::sltCancelProgress()
 *   UIFileManagerOperationsPanel implementation.                                                                     *
 *********************************************************************************************************************************/
 
-UIFileManagerOperationsPanel::UIFileManagerOperationsPanel(UIFileManager *pManagerWidget,
-                                                                                   QWidget *pParent)
-    : UIFileManagerPanel(pManagerWidget, pParent)
+UIFileManagerOperationsPanel::UIFileManagerOperationsPanel(QWidget *pParent /* = 0 */)
+    : UIDialogPanel(pParent)
     , m_pScrollArea(0)
     , m_pContainerWidget(0)
     , m_pContainerLayout(0)
@@ -379,7 +378,7 @@ void UIFileManagerOperationsPanel::prepareConnections()
 
 void UIFileManagerOperationsPanel::retranslateUi()
 {
-    UIFileManagerPanel::retranslateUi();
+    UIDialogPanel::retranslateUi();
 }
 
 void UIFileManagerOperationsPanel::contextMenuEvent(QContextMenuEvent *pEvent)

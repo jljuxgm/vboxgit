@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerOptionsPanel.h 76626 2019-01-03 21:18:50Z vboxsync $ */
+/* $Id: UIFileManagerOptionsPanel.h 76950 2019-01-23 10:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -22,7 +22,7 @@
 #endif
 
 /* GUI includes: */
-#include "UIFileManagerPanel.h"
+#include "UIDialogPanel.h"
 
 /* Forward declarations: */
 class QCheckBox;
@@ -31,16 +31,15 @@ class QLabel;
 class QIToolButton;
 class UIFileManagerOptions;
 
-/** UIFileManagerPanel extension to change file manager options. It directly
+/** UIDialogPanel extension to change file manager options. It directly
  *  modifies the options through the passed UIFileManagerOptions instance. */
-class UIFileManagerOptionsPanel : public UIFileManagerPanel
+class UIFileManagerOptionsPanel : public UIDialogPanel
 {
     Q_OBJECT;
 
 public:
 
-    UIFileManagerOptionsPanel(UIFileManager *pManagerWidget,
-                                           QWidget *pParent, UIFileManagerOptions *pFileManagerOptions);
+    UIFileManagerOptionsPanel(QWidget *pParent, UIFileManagerOptions *pFileManagerOptions);
     virtual QString panelName() const /* override */;
     /** Reads the file manager options and updates the widget accordingly. This functions is typically called
      *  when file manager options have been changed by other means and this panel needs to adapt. */

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerSessionPanel.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIFileManagerSessionPanel.cpp 76950 2019-01-23 10:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -215,8 +215,8 @@ void UIGuestSessionCreateWidget::switchSessionCloseMode()
 *   UIFileManagerSessionPanel implementation.                                                                        *
 *********************************************************************************************************************************/
 
-UIFileManagerSessionPanel::UIFileManagerSessionPanel(UIFileManager *pManagerWidget, QWidget *pParent)
-    : UIFileManagerPanel(pManagerWidget, pParent)
+UIFileManagerSessionPanel::UIFileManagerSessionPanel(QWidget *pParent /* = 0 */)
+    : UIDialogPanel(pParent)
     , m_pSessionCreateWidget(0)
 {
     prepare();
@@ -261,7 +261,7 @@ void UIFileManagerSessionPanel::prepareConnections()
 
 void UIFileManagerSessionPanel::retranslateUi()
 {
-    UIFileManagerPanel::retranslateUi();
+    UIDialogPanel::retranslateUi();
 
 }
 

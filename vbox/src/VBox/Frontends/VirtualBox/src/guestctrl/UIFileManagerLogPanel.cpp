@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerLogPanel.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIFileManagerLogPanel.cpp 76950 2019-01-23 10:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -82,8 +82,8 @@ void UIFileManagerLogViewer::sltClear()
 *   UIFileManagerLogPanel implementation.                                                                            *
 *********************************************************************************************************************************/
 
-UIFileManagerLogPanel::UIFileManagerLogPanel(UIFileManager *pManagerWidget, QWidget *pParent)
-    : UIFileManagerPanel(pManagerWidget, pParent)
+UIFileManagerLogPanel::UIFileManagerLogPanel(QWidget *pParent /* = 0 */)
+    : UIDialogPanel(pParent)
     , m_pLogTextEdit(0)
 {
     prepare();
@@ -124,7 +124,7 @@ void UIFileManagerLogPanel::prepareConnections()
 
 void UIFileManagerLogPanel::retranslateUi()
 {
-    UIFileManagerPanel::retranslateUi();
+    UIDialogPanel::retranslateUi();
 
 }
 

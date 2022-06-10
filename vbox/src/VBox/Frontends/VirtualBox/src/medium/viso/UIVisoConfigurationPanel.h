@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.h 76947 2019-01-23 09:26:31Z vboxsync $ */
+/* $Id: UIVisoConfigurationPanel.h 76950 2019-01-23 10:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class declaration.
  */
@@ -49,7 +49,6 @@ signals:
 
     void sigVisoNameChanged(const QString &strVisoName);
     void sigCustomVisoOptionsChanged(const QStringList &customVisoOptions);
-
 
 protected:
 
