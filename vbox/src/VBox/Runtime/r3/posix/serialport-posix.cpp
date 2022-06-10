@@ -1,4 +1,4 @@
-/* $Id: serialport-posix.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: serialport-posix.cpp 76908 2019-01-21 08:28:43Z vboxsync $ */
 /** @file
  * IPRT - Serial Port API, POSIX Implementation.
  */
@@ -265,7 +265,7 @@ static int rtSerialPortSetDefaultCfg(PRTSERIALPORTINTERNAL pThis)
                 /* Make sure it is clear. */
                 int fTiocmClear = TIOCM_LOOP;
                 rcPsx = ioctl(pThis->iFd, TIOCMBIC, &fTiocmClear);
-                if (rcPsx == -1)
+                if (rcPsx == -1 && errno != EINVAL) /* Pseudo terminals don't support loopback mode so ignore an error here. */
                     rc = RTErrConvertFromErrno(errno);
             }
 #else
@@ -622,7 +622,7 @@ static int rtSerialPortMonitorThreadCreate(PRTSERIALPORTINTERNAL pThis)
             }
         }
     }
-    else if (errno == ENOTTY)
+    else if (errno == ENOTTY || errno == EINVAL)
         rc = VERR_NOT_SUPPORTED;
     else
         rc = RTErrConvertFromErrno(errno);
