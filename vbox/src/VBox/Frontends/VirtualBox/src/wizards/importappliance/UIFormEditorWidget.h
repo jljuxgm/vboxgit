@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.h 78131 2019-04-15 19:20:20Z vboxsync $ */
+/* $Id: UIFormEditorWidget.h 78143 2019-04-16 11:49:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class declaration.
  */
@@ -69,10 +69,18 @@ public:
     /** Defines virtual system description @a comForm to be edited. */
     void setVirtualSystemDescriptionForm(const CVirtualSystemDescriptionForm &comForm);
 
+protected:
+
+    /** Preprocesses any Qt @a pEvent for passed @a pObject. */
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
+
 private:
 
     /** Prepares all. */
     void prepare();
+
+    /** Adjusts table column sizes. */
+    void adjustTable();
 
     /** Holds the table-view instance. */
     UIFormEditorView  *m_pTableView;
