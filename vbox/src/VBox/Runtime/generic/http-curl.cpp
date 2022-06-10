@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 74250 2018-09-13 16:33:17Z vboxsync $ */
+/* $Id: http-curl.cpp 74370 2018-09-19 14:44:10Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -81,7 +81,7 @@
 #endif
 
 #ifdef RT_OS_LINUX
-//# define IPRT_USE_LIBPROXY
+# define IPRT_USE_LIBPROXY
 #endif
 #ifdef IPRT_USE_LIBPROXY
 # include <stdlib.h> /* free */
