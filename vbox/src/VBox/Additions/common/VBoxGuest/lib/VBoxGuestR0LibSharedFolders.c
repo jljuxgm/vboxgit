@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.c 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxGuestR0LibSharedFolders.c 76144 2018-12-10 21:25:00Z vboxsync $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -103,6 +103,19 @@ DECLVBGL(void) VbglR0SfDisconnect(PVBGLSFCLIENT pClient)
     pClient->handle   = NULL;
     return;
 }
+
+/** @name       Deprecated VBGL shared folder helpers.
+ *
+ * @deprecated  These are all use the slow VbglR0HGCMCall interface, that
+ *              basically treat ring-0 and user land callers much the same.
+ *              Since 6.0 there is VbglR0HGCMFastCall() that does not bother with
+ *              repacking the request and locking/duplicating parameter buffers,
+ *              but just passes it along to the host and handles the waiting.
+ *              Also new in 6.0 is embedded buffers which saves a bit time on
+ *              guest and host by embedding parameter buffers into the request.
+ *
+ * @{
+ */
 
 DECLVBGL(int) VbglR0SfQueryMappings(PVBGLSFCLIENT pClient, SHFLMAPPING paMappings[], uint32_t *pcMappings)
 {
@@ -684,4 +697,7 @@ DECLVBGL(int) VbglR0SfSetSymlinks(PVBGLSFCLIENT pClient)
 /*    Log(("VBOXSF: VbglR0SfSetSymlinks: VbglR0HGCMCall rc = %#x, result = %#x\n", rc, data.callInfo.Hdr.rc)); */
     return rc;
 }
+
+
+/** @} */
 
