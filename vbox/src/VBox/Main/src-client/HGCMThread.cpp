@@ -1,4 +1,4 @@
-/* $Id: HGCMThread.cpp 75539 2018-11-17 02:35:23Z vboxsync $ */
+/* $Id: HGCMThread.cpp 75540 2018-11-17 02:37:19Z vboxsync $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager Threads
  */
@@ -25,6 +25,8 @@
 #include <iprt/semaphore.h>
 #include <iprt/thread.h>
 #include <iprt/string.h>
+
+#include <new> /* for std:nothrow */
 
 
 /* HGCM uses worker threads, which process messages from other threads.
@@ -126,13 +128,13 @@ class HGCMThread : public HGCMReferencedObject
         STAMCOUNTER m_StatPostMsgManyPending;
         /** @} */
 
-        inline int Enter (void);
-        inline void Leave (void);
+        inline int Enter(void);
+        inline void Leave(void);
 
-        HGCMMsgCore *FetchFreeListHead (void);
+        HGCMMsgCore *FetchFreeListHead(void);
 
     protected:
-        virtual ~HGCMThread (void);
+        virtual ~HGCMThread(void);
 
     public:
 
