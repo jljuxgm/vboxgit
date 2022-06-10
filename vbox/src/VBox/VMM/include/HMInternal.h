@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 73260 2018-07-20 10:50:55Z vboxsync $ */
+/* $Id: HMInternal.h 73264 2018-07-20 13:21:52Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -907,26 +907,6 @@ typedef struct HMCPU
         uint64_t                    u64IntInfo;
         RTGCUINTPTR                 GCPtrFaultAddress;
     } Event;
-
-    /* Pending IO operation. */
-    struct
-    {
-        /** Pending IO operation type. */
-        HMPENDINGIO             enmType;
-        uint32_t                u32Alignment0;
-        RTGCPTR                 GCPtrRip;
-        RTGCPTR                 GCPtrRipNext;
-        union
-        {
-            struct
-            {
-                uint32_t        uPort;
-                uint32_t        uAndVal;
-                uint32_t        cbSize;
-            } Port;
-            uint64_t            aRaw[2];
-        } s;
-    } PendingIO;
 
     /** The PAE PDPEs used with Nested Paging (only valid when
      *  VMCPU_FF_HM_UPDATE_PAE_PDPES is set). */

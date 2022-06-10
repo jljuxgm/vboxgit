@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 72983 2018-07-08 16:15:47Z vboxsync $ */
+/* $Id: HMR0.cpp 73264 2018-07-20 13:21:52Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1686,29 +1686,6 @@ VMMR0_INT_DECL(PHMGLOBALCPUINFO) hmR0GetCurrentCpu(void)
     RTCPUID const idCpu = RTMpCpuId();
     Assert(idCpu < RT_ELEMENTS(g_HmR0.aCpuInfo));
     return &g_HmR0.aCpuInfo[idCpu];
-}
-
-
-/**
- * Save a pending IO read.
- *
- * @param   pVCpu           The cross context virtual CPU structure.
- * @param   GCPtrRip        Address of IO instruction.
- * @param   GCPtrRipNext    Address of the next instruction.
- * @param   uPort           Port address.
- * @param   uAndVal         AND mask for saving the result in eax.
- * @param   cbSize          Read size.
- */
-VMMR0_INT_DECL(void) HMR0SavePendingIOPortRead(PVMCPU pVCpu, RTGCPTR GCPtrRip, RTGCPTR GCPtrRipNext,
-                                               unsigned uPort, unsigned uAndVal, unsigned cbSize)
-{
-    pVCpu->hm.s.PendingIO.enmType         = HMPENDINGIO_PORT_READ;
-    pVCpu->hm.s.PendingIO.GCPtrRip        = GCPtrRip;
-    pVCpu->hm.s.PendingIO.GCPtrRipNext    = GCPtrRipNext;
-    pVCpu->hm.s.PendingIO.s.Port.uPort    = uPort;
-    pVCpu->hm.s.PendingIO.s.Port.uAndVal  = uAndVal;
-    pVCpu->hm.s.PendingIO.s.Port.cbSize   = cbSize;
-    return;
 }
 
 
