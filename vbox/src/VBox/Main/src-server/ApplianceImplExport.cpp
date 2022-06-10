@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 74123 2018-09-06 15:43:18Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 74136 2018-09-07 08:54:10Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2480,7 +2480,7 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
         if (m->virtualSystemDescriptions.size() == 1) {
             cloudClient->ExportVM(m->virtualSystemDescriptions.front(), pTask->pProgress);
         } else {
-            //TODO: fail here
+            /// @todo Fail here with user notification. We do export 1 VM only
         }
     }
 #endif
