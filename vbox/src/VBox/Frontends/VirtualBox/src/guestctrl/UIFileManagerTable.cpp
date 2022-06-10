@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 78147 2019-04-16 16:27:29Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 78163 2019-04-17 14:04:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -846,6 +846,8 @@ void UIFileManagerTable::changeLocation(const QModelIndex &index)
     {
         updateCurrentLocationEdit(item->path());
     }
+    setSelectionDependentActionsEnabled(false);
+
     /** @todo check if we really need this and if not remove it */
     //m_pModel->signalUpdate();
 }
