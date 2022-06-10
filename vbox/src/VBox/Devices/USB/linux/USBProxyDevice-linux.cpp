@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 73775 2018-08-20 10:27:35Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 76331 2018-12-21 10:25:11Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -1639,6 +1639,10 @@ static VUSBSTATUS vusbProxyLinuxStatusToVUsbStatus(int iStatus)
 
         case -ESHUTDOWN:
             Log(("vusbProxyLinuxStatusToVUsbStatus: SHUTDOWN!!\n"));
+            return VUSBSTATUS_STALL;
+        
+        case -ENOENT:
+            Log(("vusbProxyLinuxStatusToVUsbStatus: ENOENT!!\n"));
             return VUSBSTATUS_STALL;
 
         default:
