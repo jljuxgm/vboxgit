@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.cpp 74691 2018-10-08 16:35:20Z vboxsync $ */
+/* $Id: UIDetailsSet.cpp 74735 2018-10-10 11:50:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class implementation.
  */
@@ -678,7 +678,7 @@ void UIDetailsSet::enumerateLayoutItems(QList<DetailsElementType> &inGroup,
         if (   fPreviewVisible
             && outGroup.isEmpty()
             && (   iGroupHeight == 0
-                || iGroupHeight + iElementHeight < iPreviewHeight))
+                || iGroupHeight + iElementHeight / 2 < iPreviewHeight))
         {
             iGroupHeight += iElementHeight;
             iGroupHeight += iSpacing;
