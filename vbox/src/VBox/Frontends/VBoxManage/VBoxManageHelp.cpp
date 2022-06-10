@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 75918 2018-12-03 17:09:43Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 75920 2018-12-03 18:17:11Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -773,6 +773,18 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                                    [--description <description info>]\n"
                      "                                    [--eula <license text>]\n"
                      "                                    [--eulafile <filename>]\n"
+                     "                            [--cloud <number of virtual system>]\n"
+                     "                                    [--vmname <name>]\n"
+                     "                                    [--cloudprofile <cloud profile name>]\n"
+                     "                                    [--cloudshape <shape>]\n"
+                     "                                    [--clouddomain <domain>]\n"
+                     "                                    [--clouddisksize <disk size>]\n"
+                     "                                    [--cloudbucket <bucket name>]\n"
+                     "                                    [--cloudocivcn <OCI vcn id>]\n"
+                     "                                    [--cloudocisubnet <OCI subnet id>]\n"
+                     "                                    [--cloudkeepobject <true/false>]\n"
+                     "                                    [--cloudlaunchinstance <true/false>]\n"
+                     "                                    [--cloudpublicip <true/false>]\n"
                      "\n", SEP);
 
     if (fCategory & USAGE_STARTVM)

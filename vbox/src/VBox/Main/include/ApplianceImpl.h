@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 75766 2018-11-27 11:00:10Z vboxsync $ */
+/* $Id: ApplianceImpl.h 75920 2018-12-03 18:17:11Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -319,6 +319,7 @@ private:
     HRESULT addDescription(VirtualSystemDescriptionType_T aType,
                            const com::Utf8Str &aVBoxValue,
                            const com::Utf8Str &aExtraConfigValue);
+    HRESULT removeDescriptionByType(VirtualSystemDescriptionType_T aType);
     void i_removeByType(VirtualSystemDescriptionType_T aType);
 
     struct Data;
