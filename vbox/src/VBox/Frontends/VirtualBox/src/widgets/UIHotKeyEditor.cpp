@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 71921 2018-04-19 13:09:04Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 72923 2018-07-05 16:05:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHotKeyEditor class implementation.
  */
@@ -407,10 +407,10 @@ void UIHotKeyEditor::handleKeyPress(QKeyEvent *pKeyEvent)
     }
 }
 
-void UIHotKeyEditor::handleKeyRelease(QKeyEvent* /*pKeyEvent*/)
+void UIHotKeyEditor::handleKeyRelease(QKeyEvent *pKeyEvent)
 {
     /* If full sequence was taken already and no modifiers are currently held: */
-    if (m_fSequenceTaken && (QApplication::keyboardModifiers() == Qt::NoModifier))
+    if (m_fSequenceTaken && (pKeyEvent->modifiers() == Qt::NoModifier))
     {
         /* Reset taken sequence: */
         m_fSequenceTaken = false;
