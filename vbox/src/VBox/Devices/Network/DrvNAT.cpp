@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DrvNAT.cpp 76017 2018-12-06 15:05:44Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1500,12 +1500,15 @@ static DECLCALLBACK(void) drvNATDestruct(PPDMDRVINS pDrvIns)
 
 #ifdef RT_OS_DARWIN
     /* Cleanup the DNS watcher. */
-    CFRunLoopRef hRunLoopMain = CFRunLoopGetMain();
-    CFRetain(hRunLoopMain);
-    CFRunLoopRemoveSource(hRunLoopMain, pThis->hRunLoopSrcDnsWatcher, kCFRunLoopCommonModes);
-    CFRelease(hRunLoopMain);
-    CFRelease(pThis->hRunLoopSrcDnsWatcher);
-    pThis->hRunLoopSrcDnsWatcher = NULL;
+    if (pThis->hRunLoopSrcDnsWatcher != NULL)
+    {
+        CFRunLoopRef hRunLoopMain = CFRunLoopGetMain();
+        CFRetain(hRunLoopMain);
+        CFRunLoopRemoveSource(hRunLoopMain, pThis->hRunLoopSrcDnsWatcher, kCFRunLoopCommonModes);
+        CFRelease(hRunLoopMain);
+        CFRelease(pThis->hRunLoopSrcDnsWatcher);
+        pThis->hRunLoopSrcDnsWatcher = NULL;
+    }
 #endif
 }
 
