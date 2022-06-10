@@ -1,4 +1,4 @@
-/* $Id: UISession.h 75291 2018-11-06 15:03:21Z vboxsync $ */
+/* $Id: UISession.h 75319 2018-11-08 10:56:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -257,7 +257,7 @@ public:
 
     /** Updates VRDE Server action state. */
     void updateStatusVRDE() { sltVRDEChange(); }
-    /** Updates Video Capture action state. */
+    /** Updates Recording action state. */
     void updateStatusRecording() { sltRecordingChange(); }
     /** Updates Audio output action state. */
     void updateAudioOutput() { sltAudioAdapterChange(); }

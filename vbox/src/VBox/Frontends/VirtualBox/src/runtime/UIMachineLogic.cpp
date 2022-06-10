@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 75291 2018-11-06 15:03:21Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 75319 2018-11-08 10:56:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2103,13 +2103,13 @@ void UIMachineLogic::sltToggleRecording(bool fEnabled)
         return;
 
     /* Make sure something had changed: */
-    CCaptureSettings recordingSettings = machine().GetCaptureSettings();
-    if (recordingSettings.GetEnabled() == static_cast<BOOL>(fEnabled))
+    CCaptureSettings comRecordingSettings = machine().GetCaptureSettings();
+    if (comRecordingSettings.GetEnabled() == static_cast<BOOL>(fEnabled))
         return;
 
     /* Update recording state: */
-    recordingSettings.SetEnabled(fEnabled);
-    if (!recordingSettings.isOk())
+    comRecordingSettings.SetEnabled(fEnabled);
+    if (!comRecordingSettings.isOk())
     {
         /* Make sure action is updated: */
         uisession()->updateStatusRecording();

@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 75291 2018-11-06 15:03:21Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 75319 2018-11-08 10:56:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -573,10 +573,10 @@ void UIPopupCenter::cannotToggleRecording(QWidget *pParent, const CMachine &comM
 {
     /* Get machine-name preserving error-info: */
     QString strMachineName(CMachine(comMachine).GetName());
-    alertWithDetails(pParent, "cannotToggleVideoCapture",
+    alertWithDetails(pParent, "cannotToggleRecording",
                      fEnable ?
-                     QApplication::translate("UIMessageCenter", "Failed to enable video capturing for the virtual machine <b>%1</b>.").arg(strMachineName) :
-                     QApplication::translate("UIMessageCenter", "Failed to disable video capturing for the virtual machine <b>%1</b>.").arg(strMachineName),
+                     QApplication::translate("UIMessageCenter", "Failed to enable recording for the virtual machine <b>%1</b>.").arg(strMachineName) :
+                     QApplication::translate("UIMessageCenter", "Failed to disable recording for the virtual machine <b>%1</b>.").arg(strMachineName),
                      UIErrorString::formatErrorInfo(comMachine));
 }
 
