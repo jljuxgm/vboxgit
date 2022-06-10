@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 78098 2019-04-10 15:51:59Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 78122 2019-04-15 09:33:32Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2148,7 +2148,7 @@ HRESULT VirtualBox::setExtraData(const com::Utf8Str &aKey,
         for (size_t i = 0; i < strKey.length(); ++i)
         {
             char ch = strKey[i];
-            if (!RTLocCIsPrint(ch))
+            if (RT_C_IS_CNTRL(ch))
                 return E_INVALIDARG;
         }
     }

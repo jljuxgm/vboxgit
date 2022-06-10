@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 78098 2019-04-10 15:51:59Z vboxsync $ */
+/* $Id: MachineImpl.cpp 78122 2019-04-15 09:33:32Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4844,7 +4844,7 @@ HRESULT Machine::setExtraData(const com::Utf8Str &aKey, const com::Utf8Str &aVal
         for (size_t i = 0; i < aKey.length(); ++i)
         {
             char ch = aKey[i];
-            if (!RTLocCIsPrint(ch))
+            if (RT_C_IS_CNTRL(ch))
                 return E_INVALIDARG;
         }
     }
