@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 73203 2018-07-18 13:00:43Z vboxsync $ */
+/* $Id: VMMInternal.h 73471 2018-08-03 12:11:07Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -182,6 +182,12 @@ typedef struct VMMR0JMPBUF
     RTHCUINTREG                 SavedEsp;
     /** EBP/RBP at the time of the jump to ring 3. */
     RTHCUINTREG                 SavedEbp;
+    /** EIP/RIP within vmmR0CallRing3LongJmp for assisting unwinding. */
+    RTHCUINTREG                 SavedEipForUnwind;
+    /** Unwind: The vmmR0CallRing3SetJmp return address value. */
+    RTHCUINTREG                 UnwindRetPcValue;
+    /** Unwind: The vmmR0CallRing3SetJmp return address stack location. */
+    RTHCUINTREG                 UnwindRetPcLocation;
 
     /** Stats: Max amount of stack used. */
     uint32_t                    cbUsedMax;

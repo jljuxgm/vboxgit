@@ -1,4 +1,4 @@
-; $Id: VMMR0JmpA-x86.asm 71222 2018-03-05 22:07:48Z vboxsync $
+; $Id: VMMR0JmpA-x86.asm 73471 2018-08-03 12:11:07Z vboxsync $
 ;; @file
 ; VMM - R0 SetJmp / LongJmp routines for X86.
 ;
@@ -333,6 +333,13 @@ BEGINPROC vmmR0CallRing3LongJmp
     rep movsd
 %endif ; !VMM_R0_SWITCH_STACK
 
+    ; Save a PC here to assist unwinding.
+.unwind_point:
+    mov     dword [xDX + VMMR0JMPBUF.SavedEipForUnwind], .unwind_point
+    mov     ecx, [xDX + VMMR0JMPBUF.ebp]
+    lea     ecx, [ecx + 4]
+    mov     [xDX + VMMR0JMPBUF.UnwindRetPcLocation], ecx
+
     ; Save ESP & EBP to enable stack dumps
     mov     ecx, ebp
     mov     [xDX + VMMR0JMPBUF.SavedEbp], ecx
@@ -352,6 +359,7 @@ BEGINPROC vmmR0CallRing3LongJmp
     mov     edi, [xDX + VMMR0JMPBUF.edi]
     mov     ebp, [xDX + VMMR0JMPBUF.ebp]
     mov     ecx, [xDX + VMMR0JMPBUF.eip]
+    mov     [xDX + VMMR0JMPBUF.UnwindRetPcValue], ecx
     mov     esp, [xDX + VMMR0JMPBUF.esp]
     push    dword [xDX + VMMR0JMPBUF.eflags]
     popf

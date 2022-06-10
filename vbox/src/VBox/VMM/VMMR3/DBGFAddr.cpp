@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 73471 2018-08-03 12:11:07Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -204,6 +204,23 @@ VMMR3DECL(PDBGFADDRESS) DBGFR3AddrFromPhys(PUVM pUVM, PDBGFADDRESS pAddress, RTG
     pAddress->off     = PhysAddr;
     pAddress->FlatPtr = PhysAddr;
     pAddress->fFlags  = DBGFADDRESS_FLAGS_PHYS | DBGFADDRESS_FLAGS_VALID;
+    return pAddress;
+}
+
+
+/**
+ * Creates a mixed address from a flat host ring-0 address.
+ *
+ * @returns pAddress
+ * @param   pAddress        Where to store the mixed address.
+ * @param   R0Ptr           The host ring-0 address.
+ */
+VMMR3_INT_DECL(PDBGFADDRESS) DBGFR3AddrFromHostR0(PDBGFADDRESS pAddress, RTR0UINTPTR R0Ptr)
+{
+    pAddress->FlatPtr = R0Ptr;
+    pAddress->off     = R0Ptr;
+    pAddress->fFlags  = DBGFADDRESS_FLAGS_RING0 | DBGFADDRESS_FLAGS_VALID;
+    pAddress->Sel     = DBGF_SEL_FLAT;
     return pAddress;
 }
 
