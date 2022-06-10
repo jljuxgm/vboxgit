@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 77651 2019-03-11 12:58:14Z vboxsync $ */
+/* $Id: fuzz.cpp 77658 2019-03-11 20:15:55Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -1624,6 +1624,18 @@ RTDECL(uint32_t) RTFuzzCtxRelease(RTFUZZCTX hFuzzCtx)
     if (cRefs == 0)
         rtFuzzCtxDestroy(pThis);
     return cRefs;
+}
+
+
+RTDECL(int) RTFuzzCtxQueryStats(RTFUZZCTX hFuzzCtx, PRTFUZZCTXSTATS pStats)
+{
+    PRTFUZZCTXINT pThis = hFuzzCtx;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertPtrReturn(pStats, VERR_INVALID_POINTER);
+
+    pStats->cbMemory   = ASMAtomicReadZ(&pThis->cbMemTotal);
+    pStats->cMutations = ASMAtomicReadU64(&pThis->cMutations);
+    return VINF_SUCCESS;
 }
 
 
