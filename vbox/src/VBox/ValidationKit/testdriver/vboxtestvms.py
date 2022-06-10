@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 76886 2019-01-18 10:57:02Z vboxsync $
+# $Id: vboxtestvms.py 77491 2019-02-27 20:32:42Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76886 $"
+__version__ = "$Revision: 77491 $"
 
 # Standard Python imports.
 import copy;
@@ -1070,6 +1070,10 @@ class TestVmManager(object):
                sKind = 'RedHat', acCpusSup = range(1, 33), fIoApic = True, sNic0AttachType = 'nat'),
         TestVm('tst-arch',                  kfGrpStandard,        sHd = '4.2/usb/tst-arch.vdi',
                sKind = 'ArchLinux_64', acCpusSup = range(1, 33), fIoApic = True, sNic0AttachType = 'nat'),
+        TestVm('tst-ubuntu-180401-64',   kfGrpStdSmoke,        sHd = '4.2/ubuntu-180401/t-ubuntu-180401-64.vdi',
+               sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True),
+        TestVm('tst-ol76-64',   kfGrpStdSmoke,        sHd = '4.2/ol76/t-ol76-64.vdi',
+               sKind = 'Oracle_64', acCpusSup = range(1, 33), fIoApic = True),
 
         # Solaris
         TestVm('tst-sol10',                 kfGrpSmoke,           sHd = '3.0/tcp/solaris10.vdi',
