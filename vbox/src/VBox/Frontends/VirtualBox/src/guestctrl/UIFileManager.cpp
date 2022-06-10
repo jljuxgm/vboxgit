@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 76627 2019-01-03 21:28:51Z vboxsync $ */
+/* $Id: UIFileManager.cpp 76734 2019-01-09 13:08:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -382,21 +382,6 @@ void UIFileManager::prepareToolBar()
                 this, &UIFileManager::sltPanelActionToggled);
         connect(m_pActionPool->action(UIActionIndex_M_FileManager_T_Operations), &QAction::toggled,
                 this, &UIFileManager::sltPanelActionToggled);
-
-#ifdef TEST_COPY
-
-        m_pToolBar->addSeparator();
-        QAction *pSession = new QAction("session", this);
-        QAction *pCopy = new QAction("Copy", this);
-        m_pToolBar->addAction(pSession);
-        m_pToolBar->addAction(pCopy);
-
-        connect(pSession, &QAction::triggered,
-                this, &UIFileManager::sltTestSession);
-        connect(pCopy, &QAction::triggered,
-                this, &UIFileManager::sltTestCopy);
-
-#endif
 
 #ifdef VBOX_WS_MAC
         /* Check whether we are embedded into a stack: */
@@ -798,19 +783,6 @@ void UIFileManager::appendLog(const QString &strLog, FileManagerLogType eLogType
     if (!m_pLogPanel)
         return;
     m_pLogPanel->appendLog(strLog, eLogType);
-}
-
-void UIFileManager::sltTestSession()
-{
-    createSession("vbox", "password");
-}
-
-void UIFileManager::sltTestCopy()
-{
-    QStringList sources;
-    sources << "/home/serkan/misos/xenialpup-7.5-uefi.iso";
-    if ( m_pGuestFileTable)
-        m_pGuestFileTable->copyHostToGuest(sources, "/home/vbox/test");
 }
 
 #include "UIFileManager.moc"
