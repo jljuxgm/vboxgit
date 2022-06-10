@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72783 2018-07-01 16:33:06Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72784 2018-07-02 06:40:19Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4165,7 +4165,7 @@ static int hmR0VmxExportSharedDebugState(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
      */
     if (uProcCtls != pVCpu->hm.s.vmx.u32ProcCtls)
     {
-        int rc2 = VMXWriteVmcs32(VMX_VMCS32_CTRL_PROC_EXEC, pVCpu->hm.s.vmx.u32ProcCtls);
+        int rc2 = VMXWriteVmcs32(VMX_VMCS32_CTRL_PROC_EXEC, uProcCtls);
         AssertRCReturn(rc2, rc2);
         pVCpu->hm.s.vmx.u32ProcCtls = uProcCtls;
     }
