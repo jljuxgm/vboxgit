@@ -1,4 +1,4 @@
-/* $Id: dbg.h 73475 2018-08-03 12:18:05Z vboxsync $ */
+/* $Id: dbg.h 73482 2018-08-03 12:34:48Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -245,13 +245,13 @@ typedef struct RTDBGUNWINDSTATE
                     /** Bitmap indicating whether a segment register was loaded (parallel to auSegs). */
                     uint8_t     fSegs;
                     /** Set if uPc was loaded. */
-                    uint8_t     fPc : 1;
+                    RT_GCC_EXTENSION uint8_t     fPc : 1;
                     /** Set if FrameAddr was loaded. */
-                    uint8_t     fFrameAddr : 1;
+                    RT_GCC_EXTENSION uint8_t     fFrameAddr : 1;
                     /** Set if uRFlags was loaded. */
-                    uint8_t     fRFlags : 1;
+                    RT_GCC_EXTENSION uint8_t     fRFlags : 1;
                     /** Set if uErrCd was loaded. */
-                    uint8_t     fErrCd : 1;
+                    RT_GCC_EXTENSION uint8_t     fErrCd : 1;
                 } s;
             } Loaded;
         } x86;
