@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 76996 2019-01-25 21:36:44Z vboxsync $ */
+/* $Id: UIMediumItem.h 76998 2019-01-25 21:53:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -71,8 +71,11 @@ public:
     /** Returns KMediumState of the wrapped UIMedium. */
     KMediumState state() const { return m_guiMedium.state(); }
 
-    /** Returns QString <i>ID</i> of the wrapped UIMedium. */
+    /** Returns QUuid <i>ID</i> of the wrapped UIMedium. */
     QUuid id() const { return m_guiMedium.id(); }
+    /** Returns QString <i>name</i> of the wrapped UIMedium. */
+    QString name() const { return m_guiMedium.name(); }
+
     /** Returns QString <i>location</i> of the wrapped UIMedium. */
     QString location() const { return m_guiMedium.location(); }
 
