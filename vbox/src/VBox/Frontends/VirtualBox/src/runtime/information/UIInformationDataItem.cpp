@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 77292 2019-02-13 10:13:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
@@ -787,7 +787,7 @@ UIInformationDataNetworkStatistics::UIInformationDataNetworkStatistics(const CMa
                 name = "VNet";
                 break;
             default:
-                name = "PCNet";
+                name = "PCnet";
                 break;
         }
 
