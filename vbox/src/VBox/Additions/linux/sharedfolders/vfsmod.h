@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77054 2019-01-30 17:40:43Z vboxsync $ */
+/* $Id: vfsmod.h 77138 2019-02-01 19:00:23Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -62,6 +62,9 @@ struct sf_glob_info {
 	int fmode;
 	int dmask;
 	int fmask;
+	/** Maximum number of pages to allow in an I/O buffer with the host.
+	 * This applies to read and write operations.  */
+	uint32_t cMaxIoPages;
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0)
 	struct backing_dev_info bdi;
 #endif
