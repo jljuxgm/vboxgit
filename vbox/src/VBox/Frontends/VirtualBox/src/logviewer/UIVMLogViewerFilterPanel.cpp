@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 72754 2018-06-29 08:30:31Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 72757 2018-06-29 08:53:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -78,8 +78,6 @@ protected:
     virtual void        mousePressEvent(QMouseEvent * event) /* override */;
     virtual void        mouseReleaseEvent(QMouseEvent *){}
     virtual void        paintEvent(QPaintEvent *event) /* override */;
-    /* Override the contextMenuEvent to disable it: */
-    virtual void        contextMenuEvent(QContextMenuEvent *) /* override */{}
 
 private slots:
 
@@ -111,6 +109,7 @@ UIVMFilterLineEdit::UIVMFilterLineEdit(QWidget *parent /*= 0*/)
 {
     setReadOnly(true);
     home(false);
+    setContextMenuPolicy(Qt::NoContextMenu);
     createButtons();
     /** Try to guess the width of the space between filter terms so that remove button
         we display when a term is selected does not hide the next/previous word: */
