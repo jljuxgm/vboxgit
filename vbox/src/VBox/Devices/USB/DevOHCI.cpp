@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 78073 2019-04-10 10:09:05Z vboxsync $ */
+/* $Id: DevOHCI.cpp 78075 2019-04-10 11:16:38Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -915,6 +915,7 @@ DECLINLINE(int) ohciR3SetInterruptInt(POHCI ohci, int rcBusy, uint32_t intr, con
  */
 DECLINLINE(void) ohciR3RaiseUnrecoverableError(POHCI pThis)
 {
+    LogRelMax(10, ("OHCI#%d: Raising unrecoverable error\n", pThis->pDevInsR3->iInstance));
     ohciR3SetInterrupt(pThis, OHCI_INTR_UNRECOVERABLE_ERROR);
 }
 
