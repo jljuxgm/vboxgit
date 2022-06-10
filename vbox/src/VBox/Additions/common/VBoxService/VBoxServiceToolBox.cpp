@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 75929 2018-12-03 23:09:03Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 75930 2018-12-03 23:10:11Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -850,9 +850,10 @@ static int vgsvcToolboxPrintFsInfo(const char *pszName, size_t cchName, uint32_t
  * a specified directory.
  *
  * @return  IPRT status code.
- * @param   pszDir                  Directory (path) to ouptut.
- * @param   fFlags                  Flags of type VBOXSERVICETOOLBOXLSFLAG.
- * @param   fOutputFlags            Flags of type  VBOXSERVICETOOLBOXOUTPUTFLAG.
+ * @param   pszDir          Directory (path) to ouptut.
+ * @param   fFlags          Flags of type VBOXSERVICETOOLBOXLSFLAG.
+ * @param   fOutputFlags    Flags of type VBOXSERVICETOOLBOXOUTPUTFLAG.
+ * @param   pIdCache        The ID cache.
  */
 static int vgsvcToolboxLsHandleDir(const char *pszDir, uint32_t fFlags, uint32_t fOutputFlags, PVGSVCTOOLBOXIDCACHE pIdCache)
 {
