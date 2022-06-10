@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 75858 2018-12-01 22:13:05Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 75890 2018-12-03 11:06:24Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -2042,7 +2042,7 @@ static int vgsvcVGSvcGstCtrlSessionThreadCreateProcess(const PVBOXSERVICECTRLSES
     {
         VGSvcVerbose(4, "Spawning parameters:\n");
         for (idxArg = 0; apszArgs[idxArg]; idxArg++)
-            VGSvcVerbose(4, "\t%s\n", apszArgs[idxArg]);
+            VGSvcVerbose(4, "    %s\n", apszArgs[idxArg]);
     }
 
     /*
