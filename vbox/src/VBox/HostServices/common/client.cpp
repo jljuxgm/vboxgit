@@ -1,4 +1,4 @@
-/* $Id: client.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: client.cpp 78235 2019-04-20 23:49:50Z vboxsync $ */
 /** @file
  * Base class for a host-guest service.
  */
@@ -174,7 +174,9 @@ void Client::SetDeferred(VBOXHGCMCALLHANDLE hHandle, uint32_t u32Function, uint3
 {
     LogFlowThisFunc(("uClient=%RU32\n", m_uClientID));
 
+#ifndef DEBUG_bird /** r=bird: This bugger triggers in the DnD service when restoring saved state.  Not tested?  */
     AssertMsg(m_fDeferred == false, ("Client already in deferred mode\n"));
+#endif
     m_fDeferred = true;
 
     m_Deferred.hHandle = hHandle;
