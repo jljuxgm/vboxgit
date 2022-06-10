@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientRequestBase.cpp 74093 2018-09-05 19:30:01Z vboxsync $ */
+/* $Id: RTCRestClientRequestBase.cpp 74117 2018-09-06 13:30:29Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientRequestBase implementation.
  */
@@ -206,6 +206,7 @@ int RTCRestClientRequestBase::doHeaderParameters(RTHTTP a_hHttp, HEADERPARAMDESC
                              VERR_REST_INTERNAL_ERROR_1);
                 RTCRestStringMapBase const *pMap    = (RTCRestStringMapBase const *)a_papHeaderParamObjs[i];
                 const size_t                cchName = strlen(a_paHeaderParams[i].pszName);
+                Assert(a_paHeaderParams[i].pszName[cchName - 1] != '*');
                 RTCString                   strTmpName;
                 for (RTCRestStringMapBase::ConstIterator it = pMap->begin(); it != pMap->end(); ++it)
                 {
