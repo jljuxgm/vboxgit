@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 76891 2019-01-18 13:17:20Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 78093 2019-04-10 15:11:29Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget + GuestDnDSource.
  */
@@ -763,7 +763,7 @@ std::vector<DnDAction_T> GuestDnD::toMainActions(VBOXDNDACTIONLIST dndActionList
 GuestDnDBase::GuestDnDBase(void)
 {
     /* Initialize public attributes. */
-    m_lstFmtSupported = GuestDnDInst()->defaultFormats();
+    m_lstFmtSupported = GUESTDNDINST()->defaultFormats();
 
     /* Initialzie private stuff. */
     mDataBase.m_cTransfersPending = 0;
@@ -928,7 +928,7 @@ int GuestDnDBase::sendCancel(void)
 
     LogRel2(("DnD: Cancelling operation on guest ..."));
 
-    return GuestDnDInst()->hostCall(Msg.getType(), Msg.getCount(), Msg.getParms());
+    return GUESTDNDINST()->hostCall(Msg.getType(), Msg.getCount(), Msg.getParms());
 }
 
 int GuestDnDBase::updateProgress(GuestDnDData *pData, GuestDnDResponse *pResp,
