@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 76500 2018-12-28 04:51:32Z vboxsync $ */
+/* $Id: EM.cpp 76501 2018-12-28 05:13:53Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2173,7 +2173,6 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                 if (rc2 == VINF_SUCCESS)
                 {
                     VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_NMI);
-                    VMCPU_FF_SET(pVCpu, VMCPU_FF_BLOCK_NMIS);
                     fWakeupPending = true;
                     if (pVM->em.s.fIemExecutesAll)
                         rc2 = VINF_EM_RESCHEDULE;
