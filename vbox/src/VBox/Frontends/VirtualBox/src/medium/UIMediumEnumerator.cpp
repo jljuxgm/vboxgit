@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 76774 2019-01-11 13:02:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -158,7 +158,11 @@ void UIMediumEnumerator::enumerateMedia(const CMediumVector &mediaList /* = CMed
         addMediaToMap(vboxGlobal().virtualBox().GetFloppyImages(), media);
     }
     else
+    {
+        addMediaToMap(vboxGlobal().host().GetDVDDrives(), media);
+        addMediaToMap(vboxGlobal().virtualBox().GetDVDImages(), media);
         addMediaToMap(mediaList, media);
+    }
     if (VBoxGlobal::isCleaningUp())
         return; /* VBoxGlobal is cleaning up, abort immediately. */
     m_media = media;
