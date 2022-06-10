@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 75018 2018-10-24 08:15:35Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 75046 2018-10-24 15:26:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -27,6 +27,11 @@
 
 /* Other VBox includes: */
 #include <iprt/cdefs.h>
+
+
+/** Typedef for QPair of QStrings. */
+typedef QPair<QString, QString> QIStringPair;
+typedef QList<QIStringPair> QIStringPairList;
 
 
 /** Extra-data namespace. */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 73349 2018-07-25 10:14:30Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 75046 2018-10-24 15:26:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -23,6 +23,7 @@
 #include <QVariant>
 
 /* GUI includes: */
+#include "UIExtraDataDefs.h"
 #include "UIWizardExportAppDefs.h"
 #include "UIWizardPage.h"
 
@@ -53,7 +54,7 @@ protected:
     /** Parses JSON string @a field. */
     static QString parseJsonFieldString(const QString &strFieldName, const QJsonValue &field);
     /** Parses JSON array @a field. */
-    static QStringList parseJsonFieldArray(const QString &strFieldName, const QJsonValue &field);
+    static QIStringPairList parseJsonFieldArray(const QString &strFieldName, const QJsonValue &field);
 
     /** Refreshes appliance settings widget. */
     void refreshApplianceSettingsWidget();

@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 73326 2018-07-23 14:20:24Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 75046 2018-10-24 15:26:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -26,6 +26,7 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
+#include "UIExtraDataDefs.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -101,12 +102,12 @@ struct AbstractVSDParameterArray
 {
     /** Public default constructor to fit Q_DECLARE_METATYPE rule. */
     AbstractVSDParameterArray()
-        : values(QStringList()) {}
+        : values(QIStringPairList()) {}
     /** Public copy constructor to fit Q_DECLARE_METATYPE rule. */
     AbstractVSDParameterArray(const AbstractVSDParameterArray &other)
         : values(other.values) {}
     /** Holds the values array. */
-    QStringList values;
+    QIStringPairList values;
 };
 Q_DECLARE_METATYPE(AbstractVSDParameterArray);
 
