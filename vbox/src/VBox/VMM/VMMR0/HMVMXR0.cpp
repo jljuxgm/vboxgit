@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72744 2018-06-29 07:36:19Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72747 2018-06-29 07:48:28Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7251,7 +7251,7 @@ static uint32_t hmR0VmxEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
 DECLINLINE(int) hmR0VmxSetPendingDebugXcptVmcs(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
 {
     RT_NOREF(pVCpu);
-    Assert(!(ASMAtomicUoReadU64(&pMixedCtx->fExtrn) & CPUMCTX_EXTRN_RFLAGS));
+    Assert(!(ASMAtomicUoReadU64(&pMixedCtx->fExtrn) & CPUMCTX_EXTRN_RFLAGS)); NOREF(pMixedCtx);
     return VMXWriteVmcs32(VMX_VMCS_GUEST_PENDING_DEBUG_EXCEPTIONS, VMX_VMCS_GUEST_DEBUG_EXCEPTIONS_BS);
 }
 
