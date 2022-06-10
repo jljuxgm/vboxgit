@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 77017 2019-01-28 10:55:20Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 77281 2019-02-12 15:13:57Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7366,10 +7366,10 @@ HMSVM_EXIT_DECL hmR0SvmExitVmmCall(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
 
     if (pVCpu->CTX_SUFF(pVM)->hm.s.fTprPatchingAllowed)
     {
-        int rc = hmSvmEmulateMovTpr(pVCpu);
+        int rc = hmEmulateSvmMovTpr(pVCpu);
         if (rc != VERR_NOT_FOUND)
         {
-            Log4Func(("hmSvmEmulateMovTpr returns %Rrc\n", rc));
+            Log4Func(("hmEmulateSvmMovTpr returns %Rrc\n", rc));
             return rc;
         }
     }
