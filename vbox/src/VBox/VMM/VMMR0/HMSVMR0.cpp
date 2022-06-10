@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73114 2018-07-13 08:00:10Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73115 2018-07-13 08:30:22Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6353,9 +6353,7 @@ HMSVM_EXIT_DECL hmR0SvmExitHlt(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
 
     if (   rcStrict == VINF_EM_HALT
         || rcStrict == VINF_SUCCESS)
-    {
         rcStrict = EMShouldContinueAfterHalt(pVCpu, &pVCpu->cpum.GstCtx) ? VINF_SUCCESS : VINF_EM_HALT;
-    }
     else if (rcStrict == VINF_IEM_RAISED_XCPT)
     {
         rcStrict = VINF_SUCCESS;
