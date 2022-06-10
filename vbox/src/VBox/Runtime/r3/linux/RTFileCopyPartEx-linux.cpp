@@ -1,4 +1,4 @@
-/* $Id: RTFileCopyPartEx-linux.cpp 77836 2019-03-21 20:52:08Z vboxsync $ */
+/* $Id: RTFileCopyPartEx-linux.cpp 77929 2019-03-28 00:07:46Z vboxsync $ */
 /** @file
  * IPRT - RTFileCopyPartEx, linux specific implementation.
  */
@@ -40,8 +40,10 @@
 #include <sys/syscall.h>
 
 #ifndef __NR_copy_file_range
-# if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
-#  define __NR_copy_file_range      285
+# if defined(RT_ARCH_X86)
+#  define __NR_copy_file_range      377
+# elif defined(RT_ARCH_AMD64)
+#  define __NR_copy_file_range      326
 # endif
 #endif
 
