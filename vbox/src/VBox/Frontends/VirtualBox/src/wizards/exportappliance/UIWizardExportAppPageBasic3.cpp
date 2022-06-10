@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 75046 2018-10-24 15:26:55Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 75056 2018-10-25 08:04:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -56,10 +56,10 @@ void UIWizardExportAppPage3::populateCloudClientParameters()
     /* Forget current parameters: */
     m_listCloudClientParameters.clear();
 
-    /* Acquire Cloud Profile: */
+    /* Make sure Cloud Profile is not null: */
     CCloudProfile comCloudProfile = fieldImp("profile").value<CCloudProfile>();
-    AssertMsgReturnVoid(comCloudProfile.isNotNull(),
-                        ("Cloud profile object is undefined!"));
+    if (comCloudProfile.isNull())
+        return;
 
     /* Create Cloud Client: */
     CCloudClient comCloudClient = comCloudProfile.CreateCloudClient();
