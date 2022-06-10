@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 73348 2018-07-25 09:25:45Z vboxsync $ */
+/* $Id: DBGConsole.cpp 73352 2018-07-25 15:06:37Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -840,7 +840,7 @@ static int dbgcProcessEvent(PDBGC pDbgc, PCDBGFEVENT pEvent)
                     else
                         rc = pDbgc->CmdHlp.pfnPrintf(&pDbgc->CmdHlp, NULL, "\ndbgf event: %s!", pEvtDesc->pszName);
                     if (pEvent->u.Generic.cArgs <= 1)
-                        rc = pDbgc->CmdHlp.pfnPrintf(&pDbgc->CmdHlp, NULL, " arg=%u%#llx\n", pEvent->u.Generic.auArgs[0]);
+                        rc = pDbgc->CmdHlp.pfnPrintf(&pDbgc->CmdHlp, NULL, " arg=%#llx\n", pEvent->u.Generic.auArgs[0]);
                     else
                     {
                         for (uint32_t i = 0; i < pEvent->u.Generic.cArgs; i++)
