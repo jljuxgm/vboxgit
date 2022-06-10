@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 77465 2019-02-26 08:16:05Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 77535 2019-03-01 15:58:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -339,10 +339,6 @@ UITextTable UIDetailsGenerator::generateMachineInformationStorage(CMachine &comM
         table << UITextTableLine(QApplication::translate("UIDetails", "Information Inaccessible", "details"), QString());
         return table;
     }
-
-    /* This is needed at least for some vm to show correct storage info. For the manager UI enumeration has been done already: */
-    if (vboxGlobal().uiType() == VBoxGlobal::UIType_RuntimeUI)
-        vboxGlobal().startMediumEnumeration();
 
     /* Iterate over all the machine controllers: */
     foreach (const CStorageController &comController, comMachine.GetStorageControllers())

@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 77535 2019-03-01 15:58:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -163,6 +163,10 @@ void UIVMInformationDialog::prepare()
     prepareThis();
     /* Load settings: */
     loadSettings();
+
+    /* This is needed at least for some vm to show correct storage info. For the manager UI enumeration has been done already: */
+    if (vboxGlobal().uiType() == VBoxGlobal::UIType_RuntimeUI)
+        vboxGlobal().startMediumEnumeration();
 }
 
 void UIVMInformationDialog::prepareThis()
