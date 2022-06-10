@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 73529 2018-08-06 16:26:43Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 73530 2018-08-06 16:48:31Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -2211,7 +2211,8 @@ static DECLCALLBACK(int) drvHostDSoundStreamDestroy(PPDMIHOSTAUDIO pInterface, P
 
     if (RT_SUCCESS(rc))
     {
-        rc = RTCritSectDelete(&pStreamDS->CritSect);
+        if (RTCritSectIsInitialized(&pStreamDS->CritSect))
+            rc = RTCritSectDelete(&pStreamDS->CritSect);
     }
 
     return rc;
