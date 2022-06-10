@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 76005 2018-12-06 09:11:44Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 76006 2018-12-06 09:49:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -3212,17 +3212,6 @@ void UIActionPoolRuntime::sltHandleConfigurationChange(const QUuid &uMachineID)
     updateConfiguration();
 }
 
-void UIActionPoolRuntime::sltHandleActionTriggerViewScaleFactor(QAction *pAction)
-{
-    /* Make sure sender is valid: */
-    AssertPtrReturnVoid(pAction);
-
-    /* Change scale-factor directly: */
-    const double dScaleFactor = pAction->property("Requested Scale Factor").toDouble();
-    const int iGuestScreenIndex = pAction->property("Guest Screen Index").toInt();
-    gEDataManager->setScaleFactor(dScaleFactor, vboxGlobal().managedVMUuid(), iGuestScreenIndex);
-}
-
 void UIActionPoolRuntime::sltPrepareMenuViewScreen()
 {
     /* Make sure sender is valid: */
@@ -3308,6 +3297,17 @@ void UIActionPoolRuntime::sltHandleActionTriggerViewScreenRemap(QAction *pAction
     const int iGuestScreenIndex = pAction->property("Guest Screen Index").toInt();
     const int iHostScreenIndex = pAction->property("Host Screen Index").toInt();
     emit sigNotifyAboutTriggeringViewScreenRemap(iGuestScreenIndex, iHostScreenIndex);
+}
+
+void UIActionPoolRuntime::sltHandleActionTriggerViewRescale(QAction *pAction)
+{
+    /* Make sure sender is valid: */
+    AssertPtrReturnVoid(pAction);
+
+    /* Change scale-factor directly: */
+    const double dScaleFactor = pAction->property("Requested Scale Factor").toDouble();
+    const int iGuestScreenIndex = pAction->property("Guest Screen Index").toInt();
+    gEDataManager->setScaleFactor(dScaleFactor, vboxGlobal().managedVMUuid(), iGuestScreenIndex);
 }
 
 void UIActionPoolRuntime::preparePool()

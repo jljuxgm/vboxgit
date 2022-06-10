@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 76005 2018-12-06 09:11:44Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 76006 2018-12-06 09:49:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -200,9 +200,6 @@ protected slots:
     /** Handles configuration-change. */
     void sltHandleConfigurationChange(const QUuid &uMachineID);
 
-    /** Handles 'View' : 'Scale Factor' menu : @a pAction trigger. */
-    void sltHandleActionTriggerViewScaleFactor(QAction *pAction);
-
     /** Prepares 'View' : 'Virtual Screen #' menu (Normal, Scale). */
     void sltPrepareMenuViewScreen();
 
@@ -212,6 +209,8 @@ protected slots:
     void sltHandleActionTriggerViewScreenResize(QAction *pAction);
     /** Handles 'View' : 'Virtual Screen #' menu : 'Remap' @a pAction trigger. */
     void sltHandleActionTriggerViewScreenRemap(QAction *pAction);
+    /** Handles 'View' : 'Virtual Screen #' menu : 'Rescale' @a pAction trigger. */
+    void sltHandleActionTriggerViewRescale(QAction *pAction);
 
 protected:
 
