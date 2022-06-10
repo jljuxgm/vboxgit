@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74635 2018-10-06 06:36:57Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74660 2018-10-08 06:39:49Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2856,6 +2856,39 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitInstrNeedsInfo(PVMCPU pVCpu, uint32_t uExitR
     }
 
     return iemVmxVmexitInstrWithInfo(pVCpu, &ExitInfo);
+}
+
+
+/**
+ * Checks whether an I/O instruction for the given port is intercepted (causes a
+ * VM-exit)  or not.
+ *
+ * @returns @c true if the instruction is intercepted, @c false otherwise.
+ * @param   pVCpu           The cross context virtual CPU structure.
+ * @param   uPort           The I/O port being accessed by the instruction.
+ */
+IEM_STATIC bool iemVmxIsIoInterceptSet(PVMCPU pVCpu, uint16_t uPort)
+{
+    PCVMXVVMCS pVmcs = pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pVmcs);
+    Assert(pVmcs);
+
+    /*
+     * Check whether the IO instruction must cause a VM-exit or not.
+     * See Intel spec. 25.1.3 "Instructions That Cause VM Exits Conditionally".
+     */
+    if (pVmcs->u32ProcCtls & VMX_PROC_CTLS_UNCOND_IO_EXIT)
+        return true;
+
+    if (pVmcs->u32ProcCtls & VMX_PROC_CTLS_USE_IO_BITMAPS)
+    {
+        uint8_t const *pbIoBitmapA = (uint8_t const *)pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pvIoBitmap);
+        uint8_t const *pbIoBitmapB = (uint8_t const *)pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pvIoBitmap) + VMX_V_IO_BITMAP_A_SIZE;
+        Assert(pbIoBitmapA);
+        Assert(pbIoBitmapB);
+        return HMVmxGetIoBitmapPermission(pbIoBitmapA, pbIoBitmapB, uPort);
+    }
+
+    return false;
 }
 
 
