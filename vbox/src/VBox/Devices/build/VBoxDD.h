@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 72616 2018-06-19 14:50:09Z vboxsync $ */
+/* $Id: VBoxDD.h 73135 2018-07-15 16:43:16Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -66,6 +66,9 @@ extern const PDMDEVREG g_DeviceACPI;
 extern const PDMDEVREG g_DeviceDMA;
 extern const PDMDEVREG g_DeviceFloppyController;
 extern const PDMDEVREG g_DeviceSerialPort;
+#ifdef VBOX_WITH_NEW_SERIAL
+extern const PDMDEVREG g_DeviceOxPcie958;
+#endif
 extern const PDMDEVREG g_DeviceParallelPort;
 #ifdef VBOX_WITH_AHCI
 extern const PDMDEVREG g_DeviceAHCI;

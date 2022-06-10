@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 72616 2018-06-19 14:50:09Z vboxsync $ */
+/* $Id: VBoxDD.cpp 73135 2018-07-15 16:43:16Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -159,6 +159,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceSerialPort);
     if (RT_FAILURE(rc))
         return rc;
+#ifdef VBOX_WITH_NEW_SERIAL
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceOxPcie958);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceParallelPort);
     if (RT_FAILURE(rc))
         return rc;
