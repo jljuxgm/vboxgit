@@ -1,4 +1,4 @@
-# $Id: Makefile-footer.gmk 77776 2019-03-19 04:30:10Z vboxsync $
+# $Id: Makefile-footer.gmk 78133 2019-04-16 00:30:26Z vboxsync $
 ## @file
 # VirtualBox Guest Additions kernel module Makefile, common parts.
 #
@@ -91,9 +91,13 @@ $(VBOXMOD_0_TARGET)-y := $(VBOXMOD_OBJS)
 obj-m += $(VBOXMOD_0_TARGET).o
 
 # Trigger parallel make job.
+ ifndef VBOX_NOJOBS
 JOBS := $(shell (getconf _NPROCESSORS_ONLN || grep -Ec '^processor|^CPU[0-9]' /proc/cpuinfo) 2>/dev/null)
- ifeq ($(JOBS),0)
-  override JOBS := 1
+  ifeq ($(JOBS),0)
+   override JOBS := 1
+  endif
+ else
+JOBS :=
  endif
 
 # rules:
