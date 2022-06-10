@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 77896 2019-03-27 04:51:37Z vboxsync $ */
+/* $Id: IEMAll.cpp 77897 2019-03-27 04:58:02Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4868,7 +4868,7 @@ iemRaiseXcptOrIntInProtMode(PVMCPU      pVCpu,
     }
 
     /* Check DPL against CPL if applicable. */
-    if (fFlags & (IEM_XCPT_FLAGS_T_SOFT_INT | IEM_XCPT_FLAGS_ICEBP_INSTR) == IEM_XCPT_FLAGS_T_SOFT_INT)
+    if ((fFlags & (IEM_XCPT_FLAGS_T_SOFT_INT | IEM_XCPT_FLAGS_ICEBP_INSTR)) == IEM_XCPT_FLAGS_T_SOFT_INT)
     {
         if (pVCpu->iem.s.uCpl > Idte.Gate.u2Dpl)
         {
@@ -5303,7 +5303,7 @@ iemRaiseXcptOrIntInLongMode(PVMCPU      pVCpu,
     }
 
     /* Check DPL against CPL if applicable. */
-    if (fFlags & (IEM_XCPT_FLAGS_T_SOFT_INT | IEM_XCPT_FLAGS_ICEBP_INSTR) == IEM_XCPT_FLAGS_T_SOFT_INT)
+    if ((fFlags & (IEM_XCPT_FLAGS_T_SOFT_INT | IEM_XCPT_FLAGS_ICEBP_INSTR)) == IEM_XCPT_FLAGS_T_SOFT_INT)
     {
         if (pVCpu->iem.s.uCpl > Idte.Gate.u2Dpl)
         {
