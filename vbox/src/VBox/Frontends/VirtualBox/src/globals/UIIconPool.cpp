@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 73127 2018-07-13 15:50:49Z vboxsync $ */
+/* $Id: UIIconPool.cpp 74815 2018-10-12 17:43:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -260,8 +260,8 @@ void UIIconPool::addName(QIcon &icon, const QString &strName,
     QString strSuffix = strName.section('.', -1, -1);
     /* Prepare HiDPI pixmaps: */
     const QStringList aPixmapNames = QStringList() << (strPrefix + "_x2." + strSuffix)
-                                                   << (strPrefix + "_x3." + strSuffix)
-                                                   << (strPrefix + "_x4." + strSuffix);
+                                                   /*<< (strPrefix + "_x3." + strSuffix)
+                                                   << (strPrefix + "_x4." + strSuffix)*/;
     foreach (const QString &strPixmapName, aPixmapNames)
     {
         QPixmap pixmapHiDPI(strPixmapName);
