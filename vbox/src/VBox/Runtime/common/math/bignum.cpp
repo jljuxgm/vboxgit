@@ -1,4 +1,4 @@
-/* $Id: bignum.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: bignum.cpp 73665 2018-08-14 17:49:23Z vboxsync $ */
 /** @file
  * IPRT - Big Integer Numbers.
  */
@@ -839,12 +839,13 @@ RTDECL(int) RTBigNumDestroy(PRTBIGNUM pBigNum)
         if (pBigNum->pauElements)
         {
             Assert(pBigNum->cAllocated > 0);
-            if (pBigNum->fSensitive)
+            if (!pBigNum->fSensitive)
+                RTMemFree(pBigNum->pauElements);
+            else
             {
                 RTMemSaferFree(pBigNum->pauElements, pBigNum->cAllocated * RTBIGNUM_ELEMENT_SIZE);
                 RT_ZERO(*pBigNum);
             }
-            RTMemFree(pBigNum->pauElements);
             pBigNum->pauElements = NULL;
         }
     }

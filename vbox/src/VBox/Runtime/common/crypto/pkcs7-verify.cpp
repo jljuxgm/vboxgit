@@ -1,4 +1,4 @@
-/* $Id: pkcs7-verify.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: pkcs7-verify.cpp 73665 2018-08-14 17:49:23Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Verification
  */
@@ -34,6 +34,7 @@
 #include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/crypto/digest.h>
+#include <iprt/crypto/key.h>
 #include <iprt/crypto/pkix.h>
 #include <iprt/crypto/store.h>
 #include <iprt/crypto/x509.h>
@@ -476,26 +477,30 @@ static int rtCrPkcs7VerifySignerInfo(PCRTCRPKCS7SIGNERINFO pSignerInfo, PCRTCRPK
          */
         if (RT_SUCCESS(rc))
         {
-            RTCRPKIXSIGNATURE hSignature;
-            rc = RTCrPkixSignatureCreateByObjId(&hSignature,
-                                                &pSignerCert->TbsCertificate.SubjectPublicKeyInfo.Algorithm.Algorithm,
-                                                false /*fSigning*/,
-                                                &pSignerCert->TbsCertificate.SubjectPublicKeyInfo.SubjectPublicKey,
-                                                &pSignerInfo->DigestEncryptionAlgorithm.Parameters);
+            RTCRKEY hKey;
+            rc = RTCrKeyCreateFromSubjectPublicKeyInfo(&hKey, &pSignerCert->TbsCertificate.SubjectPublicKeyInfo,
+                                                       pErrInfo, "pkcs7");
             if (RT_SUCCESS(rc))
             {
-                /** @todo Check that DigestEncryptionAlgorithm is compatible with hSignature
-                 *        (this is not vital). */
-                rc = RTCrPkixSignatureVerifyOctetString(hSignature, hDigest, &pSignerInfo->EncryptedDigest);
-                if (RT_FAILURE(rc))
-                    rc = RTErrInfoSetF(pErrInfo, VERR_CR_PKCS7_SIGNATURE_VERIFICATION_FAILED,
-                                       "Signature verficiation failed: %Rrc", rc);
-                RTCrPkixSignatureRelease(hSignature);
+                RTCRPKIXSIGNATURE hSignature;
+                rc = RTCrPkixSignatureCreateByObjId(&hSignature, &pSignerInfo->DigestEncryptionAlgorithm.Algorithm,
+                                                    hKey, &pSignerInfo->DigestEncryptionAlgorithm.Parameters, false /*fSigning*/);
+                RTCrKeyRelease(hKey);
+                if (RT_SUCCESS(rc))
+                {
+                    /** @todo Check that DigestEncryptionAlgorithm is compatible with hSignature
+                     *        (this is not vital). */
+                    rc = RTCrPkixSignatureVerifyOctetString(hSignature, hDigest, &pSignerInfo->EncryptedDigest);
+                    if (RT_FAILURE(rc))
+                        rc = RTErrInfoSetF(pErrInfo, VERR_CR_PKCS7_SIGNATURE_VERIFICATION_FAILED,
+                                           "Signature verficiation failed: %Rrc", rc);
+                    RTCrPkixSignatureRelease(hSignature);
+                }
+                else
+                    rc = RTErrInfoSetF(pErrInfo, rc, "Failure to instantiate public key algorithm [IPRT]: %s (%s)",
+                                       pSignerCert->TbsCertificate.SubjectPublicKeyInfo.Algorithm.Algorithm.szObjId,
+                                       pSignerInfo->DigestEncryptionAlgorithm.Algorithm.szObjId);
             }
-            else
-                rc = RTErrInfoSetF(pErrInfo, rc, "Failure to instantiate public key algorithm [IPRT]: %s (%s)",
-                                   pSignerCert->TbsCertificate.SubjectPublicKeyInfo.Algorithm.Algorithm.szObjId,
-                                   pSignerInfo->DigestEncryptionAlgorithm.Algorithm.szObjId);
         }
 
         RTCrDigestRelease(hDigest);
