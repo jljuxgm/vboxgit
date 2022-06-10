@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 76626 2019-01-03 21:18:50Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 77227 2019-02-08 17:53:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -323,13 +323,15 @@ bool UIFileManagerGuestTable::createDirectory(const QString &path, const QString
 }
 
 void UIFileManagerGuestTable::copyHostToGuest(const QStringList &hostSourcePathList,
-                                        const QString &strDestination /* = QString() */)
+                                              const QString &strDestination /* = QString() */)
 {
     if (!checkGuestSession())
         return;
     QVector<QString> sourcePaths = hostSourcePathList.toVector();
-    QVector<QString>  aFilters;
-    QVector<QString>  aFlags;
+    QVector<QString> aFilters;
+    aFilters.resize(sourcePaths.size()); /* Make sure to match the number of sources, even if empty. */
+    QVector<QString> aFlags;
+    aFlags.resize(sourcePaths.size());   /* Ditto. */
     QString strDestinationPath = strDestination;
     if (strDestinationPath.isEmpty())
         strDestinationPath = currentDirectoryPath();
@@ -356,8 +358,10 @@ void UIFileManagerGuestTable::copyGuestToHost(const QString& hostDestinationPath
     if (!checkGuestSession())
         return;
     QVector<QString> sourcePaths = selectedItemPathList().toVector();
-    QVector<QString>  aFilters;
-    QVector<QString>  aFlags;
+    QVector<QString> aFilters;
+    aFilters.resize(sourcePaths.size()); /* Make sure to match the number of sources, even if empty. */
+    QVector<QString> aFlags;
+    aFlags.resize(sourcePaths.size());   /* Ditto. */
 
     if (hostDestinationPath.isEmpty())
     {
