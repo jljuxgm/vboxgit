@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 77175 2019-02-06 13:47:04Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host OpenGL part
 #
@@ -99,6 +99,8 @@ VBoxOGLcrutil_LIBS.win = \
 	$(PATH_SDK_$(VBOX_WINDDK)_LIB)/ddraw.lib \
 	$(PATH_SDK_$(VBOX_WINDDK)_LIB)/dxguid.lib \
 	$(PATH_SDK_$(VBOX_WINDDK)_LIB)/shlwapi.lib
+VBoxOGLcrutil_LIBS.linux = \
+    crypt
 VBoxOGLcrutil_LIBS = \
 	$(VBOX_LIB_IPRT_GUEST_R3_SHARED) \
 	$(VBOX_LIB_VBGL_R3_SHARED)
