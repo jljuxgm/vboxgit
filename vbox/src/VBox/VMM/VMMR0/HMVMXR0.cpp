@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72986 2018-07-08 16:46:15Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72987 2018-07-08 16:47:40Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4207,7 +4207,6 @@ static int hmR0VmxExportSharedDebugState(PVMCPU pVCpu)
  * Strict function to validate segment registers.
  *
  * @param   pVCpu       The cross context virtual CPU structure.
- * @param   pCtx        Pointer to the guest-CPU context.
  *
  * @remarks Will import guest CR0 on strict builds during validation of
  *          segments.
