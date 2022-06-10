@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageSnapshotMerging1.py 78123 2019-04-15 14:25:27Z vboxsync $
+# $Id: tdStorageSnapshotMerging1.py 78125 2019-04-15 14:35:53Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage snapshotting and merging testcase.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78123 $"
+__version__ = "$Revision: 78125 $"
 
 
 # Standard Python imports.
@@ -182,7 +182,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
     def getSnapshotMedium(self, oSnapshot, sController):
         oVM = oSnapshot.machine;
         oMedium = self.getMedium(oVM, sController);
-        
+
         aoMediumChildren = self.oVBoxMgr.getArray(oMedium, 'children')
         if aoMediumChildren is None or len(aoMediumChildren) < 1:
             return None;
