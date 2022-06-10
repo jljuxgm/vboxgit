@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 78261 2019-04-23 16:49:28Z vboxsync $ */
+/* $Id: MachineImpl.cpp 78277 2019-04-24 15:46:27Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -15181,18 +15181,16 @@ HRESULT Machine::applyDefaults(const com::Utf8Str &aFlags)
     if (FAILED(rc)) return rc;
 
     /* Audio stuff. */
-    AudioCodecType_T audioCodec;
-    rc = osType->COMGETTER(RecommendedAudioCodec)(&audioCodec);
-    if (FAILED(rc)) return rc;
-
-    rc = mAudioAdapter->COMSETTER(AudioCodec)(audioCodec);
-    if (FAILED(rc)) return rc;
-
     AudioControllerType_T audioController;
     rc = osType->COMGETTER(RecommendedAudioController)(&audioController);
     if (FAILED(rc)) return rc;
-
     rc = mAudioAdapter->COMSETTER(AudioController)(audioController);
+    if (FAILED(rc)) return rc;
+
+    AudioCodecType_T audioCodec;
+    rc = osType->COMGETTER(RecommendedAudioCodec)(&audioCodec);
+    if (FAILED(rc)) return rc;
+    rc = mAudioAdapter->COMSETTER(AudioCodec)(audioCodec);
     if (FAILED(rc)) return rc;
 
     rc = mAudioAdapter->COMSETTER(Enabled)(true);
