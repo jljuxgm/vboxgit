@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 77831 2019-03-21 18:08:12Z vboxsync $ */
+/* $Id: FsPerf.cpp 77865 2019-03-24 15:20:10Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -1128,6 +1128,10 @@ void fsPerfRename(void)
 {
     RTTestISub("rename");
     char szPath[RTPATH_MAX];
+
+/** @todo rename directories too!   */
+/** @todo check overwriting files and directoris (empty ones should work on
+ *        unix). */
 
     /* Non-existing files. */
     strcpy(szPath, InEmptyDir(RT_STR_TUPLE("other-no-such-file")));
@@ -3659,7 +3663,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 77831 $";
+                char szRev[] = "$Revision: 77865 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
