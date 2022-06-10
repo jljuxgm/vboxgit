@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-time-decode.cpp 75176 2018-10-30 13:01:29Z vboxsync $ */
+/* $Id: asn1-ut-time-decode.cpp 75177 2018-10-30 13:25:25Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, UTC TIME and GENERALIZED TIME Types, Decoding.
  */
@@ -58,7 +58,10 @@ static int rtAsn1Time_NormalizeTime(PRTASN1CURSOR pCursor, PRTASN1TIME pThis, co
         && pThis->Time.u8Minute <  60
         && pThis->Time.u8Second <= 60)
     {
-        /* Suppress leap seconds and work around clever rounding error in DER_CFDateToUTCTime() on OS X. */
+        /* Work around clever rounding error in DER_CFDateToUTCTime() on OS X.  This also
+           supresses any attempt at feeding us leap seconds.  If we pass 60 to the
+           normalization code we'll move on to the next min/hour/day, which is wrong both
+           for the OS X issue and for unwanted leap seconds. */
         if (pThis->Time.u8Second < 60)
         { /* likely */ }
         else
