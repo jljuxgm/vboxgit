@@ -1,4 +1,4 @@
-/* $Id: VBoxLogRelCreate.cpp 77553 2019-03-04 11:10:12Z vboxsync $ */
+/* $Id: VBoxLogRelCreate.cpp 77554 2019-03-04 11:11:00Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - VBoxLogRelCreate.
  */
@@ -156,7 +156,7 @@ int VBoxLogRelCreate(const char *pcszEntity, const char *pcszLogFile,
     if (RT_SUCCESS(vrc))
     {
         /* make sure that we don't flood logfiles */
-        RTLogSetGroupLimit(pReleaseLogger, cMaxEntriesPerGroup);
+RT_NOREF(cMaxEntriesPerGroup);  // RTLogSetGroupLimit(pReleaseLogger, cMaxEntriesPerGroup); - don't commit !!!
 
         /* explicitly flush the log, to have some info when buffering */
         RTLogFlush(pReleaseLogger);

@@ -1,4 +1,4 @@
-/* $Id: HGCMThread.cpp 77553 2019-03-04 11:10:12Z vboxsync $ */
+/* $Id: HGCMThread.cpp 77554 2019-03-04 11:11:00Z vboxsync $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager Threads
  */
@@ -304,7 +304,7 @@ int HGCMThread::Initialize(const char *pszThreadName, PFNHGCMTHREAD pfnThread, v
                         STAMR3RegisterFU(pUVM, &m_StatPostMsgTwoPending, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                                          "Times a message was appended to input queue with only one pending message.",
                                          "/HGCM/%s/PostMsg2Pending", pszStatsSubDir);
-                        STAMR3RegisterFU(pUVM, &m_StatPostMsgThreePending, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                        STAMR3RegisterFU(pUVM, &m_StatPostMsgTwoPending, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                                          "Times a message was appended to input queue with only one pending message.",
                                          "/HGCM/%s/PostMsg3Pending", pszStatsSubDir);
                         STAMR3RegisterFU(pUVM, &m_StatPostMsgManyPending, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
