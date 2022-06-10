@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 74113 2018-09-06 11:49:14Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 74147 2018-09-07 18:43:08Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -1693,7 +1693,8 @@ VMM_INT_DECL(uint64_t) CPUMGetGuestIa32VmxProcbasedCtls2(PVMCPU pVCpu)
 {
     PCCPUMFEATURES pGuestFeatures = &pVCpu->CTX_SUFF(pVM)->cpum.s.GuestFeatures;
     uint64_t uVmxMsr;
-    if (pGuestFeatures->fVmx)
+    if (   pGuestFeatures->fVmx
+        && pGuestFeatures->fVmxSecondaryExecCtls)
     {
         uint32_t const fFeatures = (pGuestFeatures->fVmxVirtApicAccess    << VMX_BF_PROC_CTLS2_VIRT_APIC_ACCESS_SHIFT  )
                                  | (pGuestFeatures->fVmxEpt               << VMX_BF_PROC_CTLS2_EPT_SHIFT               )
