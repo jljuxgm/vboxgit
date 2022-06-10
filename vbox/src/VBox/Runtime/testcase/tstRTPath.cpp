@@ -1,4 +1,4 @@
-/* $Id: tstRTPath.cpp 76589 2019-01-01 08:56:07Z vboxsync $ */
+/* $Id: tstRTPath.cpp 76660 2019-01-06 19:11:08Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -762,7 +762,8 @@ int main()
         { "\\\\server\\share\\test.ext", true,  "\\\\server\\share2\\test2.ext", VERR_NOT_SUPPORTED, "" },
         { "c:\\dir\\test.ext",  true,           "f:\\dir\\test.ext",      VERR_NOT_SUPPORTED, "" },
         { "F:\\dir\\test.ext",  false,          "f:/dir//test.ext",      VINF_SUCCESS, "." } ,
-        { "F:\\dir\\test.ext",  true,           "f:/dir//test.ext",      VINF_SUCCESS, "test.ext" } ,
+        { "F:\\diR\\Test.exT",  true,           "f:/dir//test.ext",      VINF_SUCCESS, "Test.exT" } ,
+        { "F:\\K\xc3\x85RE\\Test.exT", true,    "f:/k\xc3\xa5re//test.ext", VINF_SUCCESS, "Test.exT" } ,
 #endif
     };
     for (unsigned i = 0; i < RT_ELEMENTS(s_aRelPath); i++)
