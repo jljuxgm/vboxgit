@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 74773 2018-10-11 15:19:06Z vboxsync $ */
+/* $Id: vbox_ttm.c 74810 2018-10-12 16:30:26Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -253,7 +253,7 @@ static void vbox_ttm_tt_unpopulate(struct ttm_tt *ttm)
 }
 #endif
 
-struct ttm_bo_driver vbox_bo_driver = {
+static struct ttm_bo_driver vbox_bo_driver = {
 	.ttm_tt_create = vbox_ttm_tt_create,
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 17, 0)
 	.ttm_tt_populate = vbox_ttm_tt_populate,

@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 74773 2018-10-11 15:19:06Z vboxsync $ */
+/*  $Id: vbox_drv.c 74810 2018-10-12 16:30:26Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -44,7 +44,7 @@
 #include "version-generated.h"
 #include "revision-generated.h"
 
-int vbox_modeset = -1;
+static int vbox_modeset = -1;
 
 MODULE_PARM_DESC(modeset, "Disable/Enable modesetting");
 module_param_named(modeset, vbox_modeset, int, 0400);
