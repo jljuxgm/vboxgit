@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.cpp 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: VBoxMPGaWddm.cpp 75460 2018-11-14 19:46:14Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -265,7 +265,7 @@ void GaAdapterStop(PVBOXMP_DEVEXT pDevExt)
 
         if (pGaDevExt->hw.pSvga)
         {
-            SvgaAdapterStop(pGaDevExt->hw.pSvga);
+            SvgaAdapterStop(pGaDevExt->hw.pSvga, &pDevExt->u.primary.DxgkInterface);
             pGaDevExt->hw.pSvga = NULL;
         }
 

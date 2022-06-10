@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: Svga.cpp 75460 2018-11-14 19:46:14Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -72,7 +72,8 @@ static NTSTATUS svgaHwInit(VBOXWDDM_EXT_VMSVGA *pSvga)
     return Status;
 }
 
-void SvgaAdapterStop(PVBOXWDDM_EXT_VMSVGA pSvga)
+void SvgaAdapterStop(PVBOXWDDM_EXT_VMSVGA pSvga,
+                     DXGKRNL_INTERFACE *pDxgkInterface)
 {
     if (pSvga)
     {
@@ -92,6 +93,13 @@ void SvgaAdapterStop(PVBOXWDDM_EXT_VMSVGA pSvga)
             pSvga->cbGMRBits = 0;
         }
 
+        /* Enable SVGA device. */
+        SVGARegWrite(pSvga, SVGA_REG_IRQMASK, 0);
+        SVGARegWrite(pSvga, SVGA_REG_ENABLE, SVGA_REG_ENABLE_DISABLE);
+
+        NTSTATUS Status = pDxgkInterface->DxgkCbUnmapMemory(pDxgkInterface->DeviceHandle,
+                                                            (PVOID)pSvga->pu32FIFO);
+        Assert(Status == STATUS_SUCCESS); RT_NOREF(Status);
         GaMemFree(pSvga);
     }
 }

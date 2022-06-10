@@ -1,4 +1,4 @@
-/* $Id: Svga.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: Svga.h 75460 2018-11-14 19:46:14Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -119,7 +119,8 @@ NTSTATUS SvgaAdapterStart(PVBOXWDDM_EXT_VMSVGA *ppSvga,
                           ULONG cbFIFO,
                           PHYSICAL_ADDRESS physIO,
                           ULONG cbIO);
-void SvgaAdapterStop(PVBOXWDDM_EXT_VMSVGA pSvga);
+void SvgaAdapterStop(PVBOXWDDM_EXT_VMSVGA pSvga,
+                     DXGKRNL_INTERFACE *pDxgkInterface);
 
 NTSTATUS SvgaQueryInfo(PVBOXWDDM_EXT_VMSVGA pSvga,
                        VBOXGAHWINFOSVGA *pSvgaInfo);
