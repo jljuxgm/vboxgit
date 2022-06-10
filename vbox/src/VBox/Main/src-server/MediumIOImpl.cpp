@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.cpp 74761 2018-10-11 11:26:32Z vboxsync $ */
+/* $Id: MediumIOImpl.cpp 74763 2018-10-11 11:36:19Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation: MediumIO
@@ -399,6 +399,7 @@ HRESULT MediumIO::convertToStream(const com::Utf8Str &aFormat,
                                   ComPtr<IDataStream> &aStream,
                                   ComPtr<IProgress> &aProgress)
 {
+    RT_NOREF(aFormat, aVariant, aBufferSize, aStream, aProgress);
     return E_NOTIMPL;
 }
 
