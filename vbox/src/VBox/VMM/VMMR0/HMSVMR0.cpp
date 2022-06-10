@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 76009 2018-12-06 11:15:00Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 76011 2018-12-06 11:51:06Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4306,8 +4306,11 @@ static int hmR0SvmPreRunGuestNested(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
     HMSVM_ASSERT_IN_NESTED_GUEST(pCtx);
 
 #ifdef VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM
-    Log2(("hmR0SvmPreRunGuest: Rescheduling to IEM due to nested-hwvirt or forced IEM exec -> VINF_EM_RESCHEDULE_REM\n"));
-    return VINF_EM_RESCHEDULE_REM;
+    if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx)) /* Redundant check to avoid unreachable code warning. */
+    {
+        Log2(("hmR0SvmPreRunGuest: Rescheduling to IEM due to nested-hwvirt or forced IEM exec -> VINF_EM_RESCHEDULE_REM\n"));
+        return VINF_EM_RESCHEDULE_REM;
+    }
 #endif
 
     /* Check force flag actions that might require us to go back to ring-3. */

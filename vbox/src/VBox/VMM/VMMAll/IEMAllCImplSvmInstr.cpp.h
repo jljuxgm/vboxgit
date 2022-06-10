@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 75830 2018-11-30 09:30:58Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 76011 2018-12-06 11:51:06Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -339,7 +339,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmexit(PVMCPU pVCpu, uint64_t uExitCode, uint64_t 
 
 # if defined(VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM) && defined(IN_RING3)
     /* CLGI/STGI may not have been intercepted and thus not executed in IEM. */
-    if (   HMIsEnabled(pVM)
+    if (   HMIsEnabled(pVCpu->CTX_SUFF(pVM))
         && HMSvmIsVGifActive(pVCpu->CTX_SUFF(pVM)))
         return EMR3SetExecutionPolicy(pVCpu->CTX_SUFF(pVM)->pUVM, EMEXECPOLICY_IEM_ALL, false);
 # endif
