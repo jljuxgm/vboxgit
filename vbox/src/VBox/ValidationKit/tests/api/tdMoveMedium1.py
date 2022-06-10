@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdMoveMedium1.py 74030 2018-09-03 08:50:08Z vboxsync $
+# $Id: tdMoveMedium1.py 74031 2018-09-03 09:12:30Z vboxsync $
 
 """
 VirtualBox Validation Kit - Medium Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 74030 $"
+__version__ = "$Revision: 74031 $"
 
 
 # Standard Python imports.
@@ -204,6 +204,6 @@ class SubTstDrvMoveMedium1(base.SubTestDriverBase):
 
 if __name__ == '__main__':
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-    from tdApi1 import tdApi1
+    from tdApi1 import tdApi1; # pylint: disable=relative-import
     sys.exit(tdApi1([SubTstDrvMoveMedium1]).main(sys.argv))
 
