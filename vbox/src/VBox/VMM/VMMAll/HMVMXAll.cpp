@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 74457 2018-09-25 13:12:04Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 74523 2018-09-28 12:43:19Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -55,7 +55,9 @@ static const char * const g_apszVmxVDiagDesc[] =
     VMXV_DIAG_DESC(kVmxVDiag_Vmxon_A20M                       , "A20M"                      ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmxon_Cpl                        , "Cpl"                       ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmxon_Cr0Fixed0                  , "Cr0Fixed0"                 ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmxon_Cr0Fixed1                  , "Cr0Fixed1"                 ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmxon_Cr4Fixed0                  , "Cr4Fixed0"                 ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmxon_Cr4Fixed1                  , "Cr4Fixed1"                 ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmxon_Intercept                  , "Intercept"                 ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmxon_LongModeCS                 , "LongModeCS"                ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmxon_MsrFeatCtl                 , "MsrFeatCtl"                ),
