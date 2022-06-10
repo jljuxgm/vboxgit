@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 73102 2018-07-12 23:36:45Z vboxsync $ */
+/* $Id: strcache.cpp 73105 2018-07-13 00:01:41Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -683,8 +683,7 @@ static PRTSTRCACHEENTRY rtStrCacheAllocHeapEntry(PRTSTRCACHEINT pThis, uint32_t 
     pBigEntry->Core.uHash       = (uint16_t)uHash;
     pBigEntry->Core.cchString   = RTSTRCACHEENTRY_BIG_LEN;
     /* The following is to try avoid gcc warnings/errors regarding array bounds: */
-    char *pszDst = pBigEntry->Core.szString;
-    memcpy(pszDst, pchString, cchString);
+    char *pszDst = (char *)memcpy(pBigEntry->Core.szString, pchString, cchString);
     pszDst[cchString] = '\0';
     ASMCompilerBarrier();
 
