@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 74767 2018-10-11 12:16:21Z vboxsync $ */
+/* $Id: RTSignTool.cpp 75176 2018-10-30 13:01:29Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -1802,8 +1802,16 @@ static int HandleShowExeWorkerPkcs7DisplayAttrib(PSHOWEXEPKCS7 pThis, size_t off
 
         /* Signing time (PKCS \#9), use pSigningTime. */
         case RTCRPKCS7ATTRIBUTETYPE_SIGNING_TIME:
-            RTPrintf("%sTODO: RTCRPKCS7ATTRIBUTETYPE_SIGNING_TIME! %u bytes\n",
-                     pThis->szPrefix, pAttr->uValues.pSigningTime->SetCore.Asn1Core.cb);
+            for (uint32_t i = 0; i < pAttr->uValues.pSigningTime->cItems; i++)
+            {
+                PCRTASN1TIME pTime = pAttr->uValues.pSigningTime->papItems[i];
+                char szTS[RTTIME_STR_LEN];
+                RTTimeToString(&pTime->Time, szTS, sizeof(szTS));
+                if (pAttr->uValues.pSigningTime->cItems == 1)
+                    RTPrintf("%s %s (%.*s)\n", pThis->szPrefix, szTS, pTime->Asn1Core.cb, pTime->Asn1Core.uData.pch);
+                else
+                    RTPrintf("%s #%u: %s (%.*s)\n", pThis->szPrefix, i, szTS, pTime->Asn1Core.cb, pTime->Asn1Core.uData.pch);
+            }
             break;
 
         /* Microsoft timestamp info (RFC-3161) signed data, use pContentInfo. */
