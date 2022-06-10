@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibPhysHeap.cpp 77063 2019-01-30 20:03:23Z vboxsync $ */
+/* $Id: VBoxGuestR0LibPhysHeap.cpp 77728 2019-03-15 14:18:21Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Physical memory heap.
  */
@@ -350,7 +350,7 @@ static VBGLPHYSHEAPBLOCK *vbglPhysHeapChunkAlloc (uint32_t cbSize)
 }
 
 
-void vbglPhysHeapChunkDelete (VBGLPHYSHEAPCHUNK *pChunk)
+static void vbglPhysHeapChunkDelete (VBGLPHYSHEAPCHUNK *pChunk)
 {
     char *p;
     VBGL_PH_ASSERT(pChunk != NULL);

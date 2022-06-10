@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibHGCMInternal.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxGuestR0LibHGCMInternal.cpp 77728 2019-03-15 14:18:21Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -493,7 +493,7 @@ static uint32_t vbglR0HGCMInternalLinAddrTypeToPageListFlags(HGCMFunctionParamet
         case VMMDevHGCMParmType_LinAddr_Locked_Out:
             return VBOX_HGCM_F_PARM_DIRECTION_FROM_HOST;
 
-        default: AssertFailed();
+        default: AssertFailed(); RT_FALL_THRU();
         case VMMDevHGCMParmType_LinAddr:
         case VMMDevHGCMParmType_LinAddr_Locked:
             return VBOX_HGCM_F_PARM_DIRECTION_BOTH;
