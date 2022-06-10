@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 75903 2018-12-03 13:03:37Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 75905 2018-12-03 13:18:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -768,6 +768,11 @@ void UIGuestControlFileTable::prepareObjects()
     if (m_pView)
     {
         m_pMainLayout->addWidget(m_pView, 2, 0, 5, 5);
+
+        QHeaderView *pHorizontalHeader = m_pView->horizontalHeader();
+        if (pHorizontalHeader)
+            pHorizontalHeader->setHighlightSections(false);
+
         m_pView->setModel(m_pProxyModel);
         m_pView->setItemDelegate(new UIFileDelegate);
         m_pView->setSortingEnabled(true);
