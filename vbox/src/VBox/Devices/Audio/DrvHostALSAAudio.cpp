@@ -1,10 +1,10 @@
-/* $Id: DrvHostALSAAudio.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 73371 2018-07-26 13:55:52Z vboxsync $ */
 /** @file
  * ALSA audio driver.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1368,7 +1368,7 @@ static int alsaControlStreamIn(PALSAAUDIOSTREAM pStreamALSA, PDMAUDIOSTREAMCMD e
             err = snd_pcm_drop(pStreamALSA->phPCM);
             if (err < 0)
             {
-                LogRel(("ALSA: Error disabling input %s stream: %s\n", snd_strerror(err)));
+                LogRel(("ALSA: Error disabling input stream: %s\n", snd_strerror(err)));
                 rc = VERR_ACCESS_DENIED; /** @todo Find a better rc. */
             }
             break;
