@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 76638 2019-01-04 18:46:51Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 76683 2019-01-07 16:34:47Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -399,6 +399,23 @@ VMM_INT_DECL(const char *) HMVmxGetAbortDesc(VMXABORT enmAbort)
             break;
     }
     return "Unknown/invalid";
+}
+
+
+/**
+ * Gets the description for a virtual VMCS state.
+ *
+ * @returns The descriptive string.
+ * @param   fVmcsState      The virtual-VMCS state.
+ */
+VMM_INT_DECL(const char *) HMVmxGetVmcsStateDesc(uint8_t fVmcsState)
+{
+    switch (fVmcsState)
+    {
+        case VMX_V_VMCS_STATE_CLEAR:        return "Clear";
+        case VMX_V_VMCS_STATE_LAUNCHED:     return "Launched";
+        default:                            return "Unknown";
+    }
 }
 
 
