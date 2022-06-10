@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 74547 2018-10-01 11:32:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -159,6 +159,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
+        setIconText(QApplication::translate("UIActionPool", "Import"));
         setName(QApplication::translate("UIActionPool", "&Import Appliance..."));
         setStatusTip(QApplication::translate("UIActionPool", "Import an appliance into VirtualBox"));
     }
@@ -193,6 +194,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
+        setIconText(QApplication::translate("UIActionPool", "Export"));
         setName(QApplication::translate("UIActionPool", "&Export Appliance..."));
         setStatusTip(QApplication::translate("UIActionPool", "Export one or more VirtualBox virtual machines as an appliance"));
     }
