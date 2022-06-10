@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 74850 2018-10-15 16:45:58Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 74851 2018-10-15 17:21:13Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -372,7 +372,7 @@ static int avRecSinkInit(PDRVAUDIOVIDEOREC pThis, PAVRECSINK pSink, PAVRECCONTAI
                                                            WebMWriter::AudioCodec_Opus, WebMWriter::VideoCodec_None);
                         if (RT_SUCCESS(rc))
                         {
-                            rc = pSink->Con.WebM.pWebM->AddAudioTrack(uHz, cChannels, cBits,
+                            rc = pSink->Con.WebM.pWebM->AddAudioTrack(uHz, cChannels, cBytes * 8 /* Bits */,
                                                                       &pSink->Con.WebM.uTrack);
                             if (RT_SUCCESS(rc))
                             {
