@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 73597 2018-08-09 17:32:32Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 73599 2018-08-09 17:46:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class implementation.
  */
@@ -162,7 +162,7 @@ QString UIWizardNewVDPage3::defaultExtension(const CMediumFormat &mediumFormatRe
     return QString();
 }
 
-bool UIWizardNewVDPage3::checkFATSizeLimitation()
+bool UIWizardNewVDPage3::checkFATSizeLimitation() const
 {
     /* Acquire medium variant: */
     const qulonglong uVariant = fieldImp("mediumVariant").toULongLong();
