@@ -1,4 +1,4 @@
-/* $Id: file.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: file.c 78279 2019-04-24 16:19:10Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver file routines.
  */
@@ -260,6 +260,9 @@ static NTSTATUS vbsfReadInternal(IN PRX_CONTEXT RxContext)
     if (!FlagOn(capFcb->FcbState, FCB_STATE_READCACHEING_ENABLED))
 #endif
     {
+/** @todo r=bird: How is this file size accurate given that the file resides
+ *        on the host and be grown/shrunk independently there?   Why is this
+ *        only done when FCB_STATE_READCACHEING_ENABLED is clear? */
         if (ByteOffset >= FileSize)
         {
             Log(("VBOXSF: vbsfReadInternal: EOF\n"));

@@ -1,4 +1,4 @@
-/* $Id: path.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: path.c 78279 2019-04-24 16:19:10Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Path related routines.
  */
@@ -62,7 +62,7 @@ static NTSTATUS vbsfProcessCreate(PRX_CONTEXT RxContext,
     if (EaLength)
     {
         Log(("VBOXSF: vbsfProcessCreate: Unsupported: extended attributes!\n"));
-        Status = STATUS_NOT_SUPPORTED;
+        Status = STATUS_NOT_SUPPORTED; /// @todo STATUS_EAS_NOT_SUPPORTED ?
         goto failure;
     }
 
@@ -104,8 +104,8 @@ static NTSTATUS vbsfProcessCreate(PRX_CONTEXT RxContext,
 
     CreateDisposition = RxContext->Create.NtCreateParameters.Disposition;
 
-    bf.CreateDirectory = (BOOLEAN)(bf.DirectoryFile && ((CreateDisposition == FILE_CREATE) || (CreateDisposition == FILE_OPEN_IF)));
-    bf.OpenDirectory = (BOOLEAN)(bf.DirectoryFile && ((CreateDisposition == FILE_OPEN) || (CreateDisposition == FILE_OPEN_IF)));
+    bf.CreateDirectory = (bf.DirectoryFile && ((CreateDisposition == FILE_CREATE) || (CreateDisposition == FILE_OPEN_IF)));
+    bf.OpenDirectory = (bf.DirectoryFile && ((CreateDisposition == FILE_OPEN) || (CreateDisposition == FILE_OPEN_IF)));
     bf.TemporaryFile = BooleanFlagOn(RxContext->Create.NtCreateParameters.FileAttributes, FILE_ATTRIBUTE_TEMPORARY);
 
     if (FlagOn(capFcb->FcbState, FCB_STATE_TEMPORARY))
