@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 74138 2018-09-07 11:16:21Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 74177 2018-09-10 10:22:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -711,6 +711,12 @@ bool UIChooserModel::isGroupSavingInProgress() const
            UIThreadGroupOrderSave::instance();
 }
 
+void UIChooserModel::sltHandleViewResized()
+{
+    /* Relayout: */
+    updateLayout();
+}
+
 void UIChooserModel::sltMachineStateChanged(QString strId, KMachineState)
 {
     /* Update machine-items with passed id: */
@@ -777,12 +783,6 @@ void UIChooserModel::sltSnapshotChanged(QString strId, QString)
 {
     /* Update machine-items with passed id: */
     mainRoot()->updateAllItems(strId);
-}
-
-void UIChooserModel::sltHandleViewResized()
-{
-    /* Relayout: */
-    updateLayout();
 }
 
 void UIChooserModel::sltFocusItemDestroyed()

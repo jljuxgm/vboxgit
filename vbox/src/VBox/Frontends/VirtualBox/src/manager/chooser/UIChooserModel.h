@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 74138 2018-09-07 11:16:21Z vboxsync $ */
+/* $Id: UIChooserModel.h 74177 2018-09-10 10:22:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -160,6 +160,11 @@ public:
     void saveGroupSettings();
     bool isGroupSavingInProgress() const;
 
+public slots:
+
+    /* Handler: Chooser-view stuff: */
+    void sltHandleViewResized();
+
 private slots:
 
     /* Handlers: Global events: */
@@ -168,9 +173,6 @@ private slots:
     void sltMachineRegistered(QString strId, bool fRegistered);
     void sltSessionStateChanged(QString strId, KSessionState state);
     void sltSnapshotChanged(QString strId, QString strSnapshotId);
-
-    /* Handler: Chooser-view stuff: */
-    void sltHandleViewResized();
 
     /* Handler: Focus-item stuff: */
     void sltFocusItemDestroyed();

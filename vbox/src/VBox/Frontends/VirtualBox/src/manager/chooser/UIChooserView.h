@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.h 74085 2018-09-05 13:30:48Z vboxsync $ */
+/* $Id: UIChooserView.h 74177 2018-09-10 10:22:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class declaration.
  */
@@ -45,7 +45,7 @@ public:
     /** Returns the chooser reference. */
     UIChooser *chooser() const { return m_pChooser; }
 
-private slots:
+public slots:
 
     /* Handlers: Size-hint stuff: */
     void sltMinimumWidthHintChanged(int iMinimumWidthHint);
