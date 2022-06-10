@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: scmstream.cpp 76451 2018-12-25 01:40:08Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -1279,7 +1279,7 @@ int ScmStreamCopyLines(PSCMSTREAM pDst, PSCMSTREAM pSrc, size_t cLines)
         size_t      cchLine;
         const char *pchLine = ScmStreamGetLine(pSrc, &cchLine, &enmEol);
         if (!pchLine)
-            return pDst->rc = (RT_FAILURE(pSrc->rc) ? pSrc->rc : VERR_EOF);
+            return pDst->rc = RT_FAILURE(pSrc->rc) ? pSrc->rc : VERR_EOF;
 
         int rc = ScmStreamPutLine(pDst, pchLine, cchLine, enmEol);
         if (RT_FAILURE(rc))

@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 72568 2018-06-15 15:18:34Z vboxsync $ */
+/* $Id: scm.cpp 76451 2018-12-25 01:40:08Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -76,6 +76,8 @@ typedef enum SCMOPT
     SCMOPT_NO_FIX_FLOWER_BOX_MARKERS,
     SCMOPT_FIX_TODOS,
     SCMOPT_NO_FIX_TODOS,
+    SCMOPT_FIX_ERR_H,
+    SCMOPT_NO_FIX_ERR_H,
     SCMOPT_UPDATE_COPYRIGHT_YEAR,
     SCMOPT_NO_UPDATE_COPYRIGHT_YEAR,
     SCMOPT_EXTERNAL_COPYRIGHT,
@@ -173,6 +175,7 @@ static SCMSETTINGSBASE const g_Defaults =
     /* .fFixFlowerBoxMarkers = */                   true,
     /* .cMinBlankLinesBeforeFlowerBoxMakers = */    2,
     /* .fFixTodos = */                              true,
+    /* .fFixErrH = */                               false, ///@todo true,
     /* .fUpdateCopyrightYear = */                   false,
     /* .fExternalCopyright = */                     false,
     /* .fLgplDisclaimer = */                        false,
@@ -213,6 +216,8 @@ static RTGETOPTDEF  g_aScmOpts[] =
     { "--no-fix-flower-box-markers",        SCMOPT_NO_FIX_FLOWER_BOX_MARKERS,       RTGETOPT_REQ_NOTHING },
     { "--fix-todos",                        SCMOPT_FIX_TODOS,                       RTGETOPT_REQ_NOTHING },
     { "--no-fix-todos",                     SCMOPT_NO_FIX_TODOS,                    RTGETOPT_REQ_NOTHING },
+    { "--fix-err-h",                        SCMOPT_FIX_ERR_H,                       RTGETOPT_REQ_NOTHING },
+    { "--no-fix-err-h",                     SCMOPT_NO_FIX_ERR_H,                    RTGETOPT_REQ_NOTHING },
     { "--update-copyright-year",            SCMOPT_UPDATE_COPYRIGHT_YEAR,           RTGETOPT_REQ_NOTHING },
     { "--no-update-copyright-year",         SCMOPT_NO_UPDATE_COPYRIGHT_YEAR,        RTGETOPT_REQ_NOTHING },
     { "--external-copyright",               SCMOPT_EXTERNAL_COPYRIGHT,              RTGETOPT_REQ_NOTHING },
@@ -284,6 +289,7 @@ SCM_REWRITER_CFG(g_Makefile_kup,                    "makefile-kup",             
 SCM_REWRITER_CFG(g_Makefile_kmk,                    "makefile-kmk",                 rewrite_Makefile_kmk);
 SCM_REWRITER_CFG(g_FixFlowerBoxMarkers,             "fix-flower-boxes",             rewrite_FixFlowerBoxMarkers);
 SCM_REWRITER_CFG(g_Fix_C_and_CPP_Todos,             "fix-c-todos",                  rewrite_Fix_C_and_CPP_Todos);
+SCM_REWRITER_CFG(g_Fix_Err_H,                       "fix-err-h",                    rewrite_Fix_Err_H);
 SCM_REWRITER_CFG(g_C_and_CPP,                       "c-and-cpp",                    rewrite_C_and_CPP);
 
 /** The rewriter actions. */
@@ -312,6 +318,7 @@ static PCSCMREWRITERCFG const g_papRewriterActions[] =
     &g_Makefile_kmk,
     &g_FixFlowerBoxMarkers,
     &g_Fix_C_and_CPP_Todos,
+    &g_Fix_Err_H,
     &g_C_and_CPP,
 };
 
@@ -358,6 +365,7 @@ static PCSCMREWRITERCFG const g_apRewritersFor_C_and_CPP[] =
     &g_Copyright_CstyleComment,
     &g_FixFlowerBoxMarkers,
     &g_Fix_C_and_CPP_Todos,
+    &g_Fix_Err_H,
     &g_C_and_CPP
 };
 
@@ -1002,6 +1010,13 @@ static int scmSettingsBaseHandleOpt(PSCMSETTINGSBASE pSettings, int rc, PRTGETOP
             return VINF_SUCCESS;
         case SCMOPT_NO_FIX_TODOS:
             pSettings->fFixTodos = false;
+            return VINF_SUCCESS;
+
+        case SCMOPT_FIX_ERR_H:
+            pSettings->fFixErrH = true;
+            return VINF_SUCCESS;
+        case SCMOPT_NO_FIX_ERR_H:
+            pSettings->fFixErrH = false;
             return VINF_SUCCESS;
 
         case SCMOPT_UPDATE_COPYRIGHT_YEAR:
@@ -2661,6 +2676,9 @@ static int scmHelp(PCRTGETOPTDEF paOpts, size_t cOpts)
             case SCMOPT_FIX_TODOS:
                 RTPrintf("      Fix @todo statements so doxygen sees them.  Default: %RTbool\n", g_Defaults.fFixTodos);
                 break;
+            case SCMOPT_FIX_ERR_H:
+                RTPrintf("      Fix err.h/errcore.h usage.  Default: %RTbool\n", g_Defaults.fFixErrH);
+                break;
             case SCMOPT_UPDATE_COPYRIGHT_YEAR:
                 RTPrintf("      Update the copyright year.  Default: %RTbool\n", g_Defaults.fUpdateCopyrightYear);
                 break;
@@ -2810,7 +2828,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 72568 $";
+                static const char s_szRev[] = "$Revision: 76451 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
