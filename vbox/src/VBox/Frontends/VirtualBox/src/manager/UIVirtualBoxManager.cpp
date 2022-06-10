@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 74957 2018-10-21 11:53:53Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 74958 2018-10-21 12:26:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1795,7 +1795,8 @@ void UIVirtualBoxManager::prepareMenuCloud(QMenu *pMenu)
     m_cloudProfileManagerActions << actionPool()->action(UIActionIndexST_M_Cloud_S_Add)
                                  << actionPool()->action(UIActionIndexST_M_Cloud_S_Import)
                                  << actionPool()->action(UIActionIndexST_M_Cloud_S_Remove)
-                                 << actionPool()->action(UIActionIndexST_M_Cloud_T_Details);
+                                 << actionPool()->action(UIActionIndexST_M_Cloud_T_Details)
+                                 << actionPool()->action(UIActionIndexST_M_Cloud_S_Help);
 }
 
 void UIVirtualBoxManager::prepareStatusBar()
