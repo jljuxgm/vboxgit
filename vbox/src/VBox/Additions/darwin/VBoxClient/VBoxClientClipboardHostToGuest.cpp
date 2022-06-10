@@ -1,4 +1,4 @@
-/** $Id: VBoxClientClipboardHostToGuest.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/** $Id: VBoxClientClipboardHostToGuest.cpp 76424 2018-12-23 20:32:47Z vboxsync $ */
 /** @file
  * VBoxClient - Shared Clipboard Host -> Guest copying, Darwin.
  */
@@ -23,11 +23,12 @@
 #include <signal.h>
 #include <stdlib.h>
 
-#include <iprt/thread.h>
-#include <iprt/mem.h>
-#include <iprt/stream.h>
 #include <iprt/initterm.h>
+#include <iprt/mem.h>
 #include <iprt/message.h>
+#include <iprt/stream.h>
+#include <iprt/thread.h>
+#include <iprt/utf16.h>
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include <VBox/GuestHost/clipboard-helper.h>
