@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 76640 2019-01-04 18:56:44Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 76646 2019-01-05 04:00:48Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -7493,7 +7493,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmreadCommon(PVMCPU pVCpu, uint8_t cbInstr, uint64
     }
 
     /* Supported VMCS field. */
-    if (iemVmxIsVmcsFieldValid(pVCpu, u64FieldEnc))
+    if (!iemVmxIsVmcsFieldValid(pVCpu, u64FieldEnc))
     {
         Log(("vmread: VMCS field %#RX64 invalid -> VMFail\n", u64FieldEnc));
         pVCpu->cpum.GstCtx.hwvirt.vmx.enmDiag = kVmxVDiag_Vmread_FieldInvalid;
