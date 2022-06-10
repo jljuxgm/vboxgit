@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMPUtils.h 75403 2018-11-12 17:50:58Z vboxsync $ */
 /** @file
  * VBox Miniport common utils header
  */
@@ -67,7 +67,7 @@ typedef enum
 } vboxWinVersion_t;
 
 RT_C_DECLS_BEGIN
-vboxWinVersion_t VBoxQueryWinVersion(void);
+vboxWinVersion_t VBoxQueryWinVersion(uint32_t *pbuild);
 uint32_t VBoxGetHeightReduction(void);
 bool     VBoxLikesVideoMode(uint32_t display, uint32_t width, uint32_t height, uint32_t bpp);
 bool     VBoxQueryDisplayRequest(uint32_t *xres, uint32_t *yres, uint32_t *bpp, uint32_t *pDisplayId);

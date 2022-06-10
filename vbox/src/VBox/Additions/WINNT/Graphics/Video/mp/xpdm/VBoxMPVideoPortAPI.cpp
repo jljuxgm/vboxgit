@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVideoPortAPI.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMPVideoPortAPI.cpp 75403 2018-11-12 17:50:58Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport video port api
  */
@@ -96,7 +96,7 @@ void VBoxSetupVideoPortAPI(PVBOXMP_DEVEXT pExt, PVIDEO_PORT_CONFIG_INFO pConfigI
     VBOXVIDEOPORTPROCS *pAPI = &pExt->u.primary.VideoPortProcs;
     VideoPortZeroMemory(pAPI, sizeof(VBOXVIDEOPORTPROCS));
 
-    if (VBoxQueryWinVersion() <= WINVERSION_NT4)
+    if (VBoxQueryWinVersion(NULL) <= WINVERSION_NT4)
     {
         /* VideoPortGetProcAddress is available for >= win2k */
         pAPI->pfnWaitForSingleObject = vboxWaitForSingleObjectVoid;

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDriver.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMPDriver.cpp 75403 2018-11-12 17:50:58Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport driver interface functions
  */
@@ -113,7 +113,7 @@ VBoxDrvFindAdapter(IN PVOID HwDeviceExtension, IN PVOID HwContext, IN PWSTR Argu
 
         VideoPortZeroMemory(tmpRanges, sizeof(tmpRanges));
 
-        if (VBoxQueryWinVersion() == WINVERSION_NT4)
+        if (VBoxQueryWinVersion(NULL) == WINVERSION_NT4)
         {
             /* NT crashes if either of 'vendorId, 'deviceId' or 'slot' parameters is NULL,
              * and needs PCI ids for a successful VideoPortGetAccessRanges call.
@@ -773,7 +773,7 @@ ULONG DriverEntry(IN PVOID Context1, IN PVOID Context2)
      *so we query current version and report the expected size
      *to allow our driver to be loaded.
      */
-    switch (VBoxQueryWinVersion())
+    switch (VBoxQueryWinVersion(NULL))
     {
         case WINVERSION_NT4:
             LOG(("WINVERSION_NT4"));

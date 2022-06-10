@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 75403 2018-11-12 17:50:58Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -620,11 +620,17 @@ NTSTATUS vboxWddmRegQueryDisplaySettingsKeyName(PVBOXMP_DEVEXT pDevExt, D3DDDI_V
     if (!pVGuid)
         return STATUS_UNSUCCESSFUL;
 
-    vboxWinVersion_t ver = VBoxQueryWinVersion();
+    uint32_t build;
+    vboxWinVersion_t ver = VBoxQueryWinVersion(&build);
     if (ver == WINVERSION_VISTA)
     {
         pKeyPrefix = VBOXWDDM_REG_DISPLAYSETTINGSKEY_PREFIX_VISTA;
         cbKeyPrefix = sizeof (VBOXWDDM_REG_DISPLAYSETTINGSKEY_PREFIX_VISTA);
+    }
+    else if (ver >= WINVERSION_10 && build >= 17763)
+    {
+        pKeyPrefix = VBOXWDDM_REG_DISPLAYSETTINGSKEY_PREFIX_WIN10_17763;
+        cbKeyPrefix = sizeof (VBOXWDDM_REG_DISPLAYSETTINGSKEY_PREFIX_WIN10_17763);
     }
     else
     {

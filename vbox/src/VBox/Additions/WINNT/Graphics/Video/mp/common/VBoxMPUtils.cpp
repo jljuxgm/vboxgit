@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.cpp 71196 2018-03-05 10:38:29Z vboxsync $ */
+/* $Id: VBoxMPUtils.cpp 75403 2018-11-12 17:50:58Z vboxsync $ */
 /** @file
  * VBox Miniport utils
  */
@@ -39,14 +39,20 @@ int g_bVBoxVDbgBreakFv = 0;
 #pragma alloc_text(PAGE, VBoxQueryPointerPos)
 
 /*Returns the windows version we're running on*/
-vboxWinVersion_t VBoxQueryWinVersion()
+vboxWinVersion_t VBoxQueryWinVersion(uint32_t *pbuild)
 {
-    ULONG major, minor, build;
+    ULONG major, minor;
+    static ULONG build = 0;
     BOOLEAN checkedBuild;
     static vboxWinVersion_t s_WinVersion = WINVERSION_UNKNOWN;
 
     if (s_WinVersion != WINVERSION_UNKNOWN)
+    {
+        if (pbuild)
+            *pbuild = build;
+
         return s_WinVersion;
+    }
 
     checkedBuild = PsGetVersion(&major, &minor, &build, NULL);
     LOG(("running on version %d.%d, build %d(checked=%d)", major, minor, build, (int)checkedBuild));
