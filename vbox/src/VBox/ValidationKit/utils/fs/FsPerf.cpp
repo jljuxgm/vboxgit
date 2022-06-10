@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 76914 2019-01-21 12:19:00Z vboxsync $ */
+/* $Id: FsPerf.cpp 76916 2019-01-21 12:33:24Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -2229,7 +2229,7 @@ void fsPerfMMap(RTFILE hFile1, RTFILE hFileNoCache, uint64_t cbFile)
 # endif
                     }
                     ns = RTTimeNanoTS() - ns;
-                    RTTestIValueF(ns / cPages, RTTESTUNIT_NS_PER_OCCURRENCE,  "touch/flush/%zu", cbFlush);
+                    RTTestIValueF(ns / cFlushes, RTTESTUNIT_NS_PER_OCCURRENCE,  "touch/flush/%zu", cbFlush);
 
                     /*
                      * Check that all the changes made it thru to the file:
@@ -2555,7 +2555,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 76914 $";
+                char szRev[] = "$Revision: 76916 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
