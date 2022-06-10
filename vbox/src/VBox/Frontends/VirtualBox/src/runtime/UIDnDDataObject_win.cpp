@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.cpp 76381 2018-12-22 23:00:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDrag class implementation (implements IDataObject).
  */
@@ -25,10 +25,11 @@
 #include <new> /* For bad_alloc. */
 #include <iprt/win/shlobj.h>
 
+#include <iprt/mem.h>
+#include <iprt/err.h>
 #include <iprt/path.h>
 #include <iprt/semaphore.h>
 #include <iprt/string.h>
-#include <iprt/mem.h>
 #include <iprt/uri.h>
 
 #include <QStringList>
