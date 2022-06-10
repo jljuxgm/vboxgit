@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 77116 2019-02-01 14:20:52Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 77587 2019-03-06 16:40:18Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1151,6 +1151,7 @@ protected:
  */
 class GuestObject : public GuestBase
 {
+    friend GuestSession;
 
 public:
 
@@ -1163,7 +1164,19 @@ public:
 
 protected:
 
-    virtual int i_onRemove(void) = 0;
+    /**
+     * Called by IGuestSession when the session status has been changed.
+     *
+     * @returns VBox status code.
+     * @param   enmSessionStatus    New session status.
+     */
+    virtual int i_onSessionStatusChange(GuestSessionStatus_T enmSessionStatus) = 0;
+
+    /**
+     * Called by IGuestSession right before this object gets
+     * unregistered (removed) from the public object list.
+     */
+    virtual int i_onUnregister(void) = 0;
 
     /** Callback dispatcher -- must be implemented by the actual object. */
     virtual int i_callbackDispatcher(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb) = 0;

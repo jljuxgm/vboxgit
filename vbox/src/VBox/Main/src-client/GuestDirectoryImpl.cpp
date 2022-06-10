@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 76958 2019-01-23 18:23:04Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 77587 2019-03-06 16:40:18Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -230,11 +230,25 @@ Utf8Str GuestDirectory::i_guestErrorToString(int rcGuest)
 }
 
 /**
- * Called by IGuestSession right before this directory gets
- * removed from the public directory list.
+ * @copydoc GuestObject::i_onUnregister
  */
-int GuestDirectory::i_onRemove(void)
+int GuestDirectory::i_onUnregister(void)
 {
+    LogFlowThisFuncEnter();
+
+    int vrc = VINF_SUCCESS;
+
+    LogFlowFuncLeaveRC(vrc);
+    return vrc;
+}
+
+/**
+ * @copydoc GuestObject::i_onSessionStatusChange
+ */
+int GuestDirectory::i_onSessionStatusChange(GuestSessionStatus_T enmSessionStatus)
+{
+    RT_NOREF(enmSessionStatus);
+
     LogFlowThisFuncEnter();
 
     int vrc = VINF_SUCCESS;

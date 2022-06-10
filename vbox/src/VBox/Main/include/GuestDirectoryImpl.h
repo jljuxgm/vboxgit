@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.h 77587 2019-03-06 16:40:18Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling implementation.
  */
@@ -47,11 +47,16 @@ public:
     /** @}  */
 
 public:
-    /** @name Public internal methods.
+    /** @name Implemented virtual methods from GuestObject.
      * @{ */
     int            i_callbackDispatcher(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb);
-    int            i_onRemove(void);
+    int            i_onUnregister(void);
+    int            i_onSessionStatusChange(GuestSessionStatus_T enmSessionStatus);
+    /** @}  */
 
+public:
+    /** @name Public internal methods.
+     * @{ */
     int            i_closeInternal(int *pGuestRc);
     int            i_readInternal(ComObjPtr<GuestFsObjInfo> &fsObjInfo, int *pGuestRc);
     /** @}  */
