@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72895 2018-07-04 17:03:57Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72897 2018-07-04 17:19:14Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -11444,8 +11444,7 @@ HMVMX_EXIT_DECL hmR0VmxExitVmcall(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIEN
 HMVMX_EXIT_DECL hmR0VmxExitInvlpg(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT pVmxTransient)
 {
     HMVMX_VALIDATE_EXIT_HANDLER_PARAMS();
-    PVM pVM = pVCpu->CTX_SUFF(pVM);
-    Assert(!pVM->hm.s.fNestedPaging || pVCpu->hm.s.fUsingDebugLoop);
+    Assert(!pVCpu->CTX_SUFF(pVM)->hm.s.fNestedPaging || pVCpu->hm.s.fUsingDebugLoop);
 
     int rc = hmR0VmxReadExitQualificationVmcs(pVCpu, pVmxTransient);
     rc    |= hmR0VmxReadExitInstrLenVmcs(pVmxTransient);
