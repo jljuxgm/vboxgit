@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 75934 2018-12-04 07:13:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -75,6 +75,9 @@ public:
 
     /** Returns the number of host-screens currently available on the system. */
     int screenCount() const;
+
+    /** Returns primary screen index. */
+    int primaryScreen() const;
 
     /** Returns the index of the screen which contains contains @a pWidget. */
     int screenNumber(const QWidget *pWidget) const;
