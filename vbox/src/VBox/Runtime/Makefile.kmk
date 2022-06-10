@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 77910 2019-03-27 11:33:01Z vboxsync $
+# $Id: Makefile.kmk 78048 2019-04-09 01:21:09Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -511,6 +511,7 @@ RuntimeR3_SOURCES       = \
 	common/path/RTPathAbsDup.cpp \
 	common/path/RTPathAbsEx.cpp \
 	common/path/RTPathAbsExDup.cpp \
+	common/path/RTPathAbsExEx.cpp \
 	common/path/RTPathAppend.cpp \
 	common/path/RTPathAppendEx.cpp \
 	common/path/RTPathCalcRelative.cpp \
@@ -1705,6 +1706,7 @@ RuntimeBldProg_SOURCES         = \
 	common/path/RTPathAbsDup.cpp \
 	common/path/RTPathAbsEx.cpp \
 	common/path/RTPathAbsExDup.cpp \
+	common/path/RTPathAbsExEx.cpp \
 	common/path/RTPathAppend.cpp \
 	common/path/RTPathAppendEx.cpp \
 	common/path/RTPathChangeToDosSlashes.cpp \
@@ -2719,6 +2721,7 @@ RuntimeR0Drv_SOURCES    = \
 	common/path/RTPathAbsDup.cpp \
 	common/path/RTPathAbsEx.cpp \
 	common/path/RTPathAbsExDup.cpp \
+	common/path/RTPathAbsExEx.cpp \
 	common/path/RTPathAppend.cpp \
 	common/path/RTPathAppendEx.cpp \
 	common/path/RTPathExt.cpp \

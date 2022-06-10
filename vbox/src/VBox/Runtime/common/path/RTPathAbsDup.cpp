@@ -1,4 +1,4 @@
-/* $Id: RTPathAbsDup.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTPathAbsDup.cpp 78048 2019-04-09 01:21:09Z vboxsync $ */
 /** @file
  * IPRT - RTPathAbsDup
  */
@@ -30,7 +30,8 @@
 *********************************************************************************************************************************/
 #include "internal/iprt.h"
 #include <iprt/path.h>
-#include <iprt/errcore.h>
+
+#include <iprt/err.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
 
@@ -44,10 +45,29 @@
  */
 RTDECL(char *) RTPathAbsDup(const char *pszPath)
 {
+    /* Try with a static buffer first. */
     char szPath[RTPATH_MAX];
     int rc = RTPathAbs(pszPath, szPath, sizeof(szPath));
     if (RT_SUCCESS(rc))
         return RTStrDup(szPath);
+
+    /* If it looks like we ran out of buffer space, double the size until
+       we reach 64 KB. */
+    if (rc == VERR_FILENAME_TOO_LONG || rc == VERR_BUFFER_OVERFLOW)
+    {
+        size_t cbBuf = RTPATH_MAX;
+        do
+        {
+            cbBuf *= 2;
+            char *pszBuf = RTStrAlloc(cbBuf);
+            if (!pszBuf)
+                break;
+            rc = RTPathAbs(pszPath, pszBuf, cbBuf);
+            if (RT_SUCCESS(rc))
+                return pszBuf;
+            RTStrFree(pszBuf);
+        } while (cbBuf <= _32K);
+    }
     return NULL;
 }
 
