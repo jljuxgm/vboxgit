@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 76589 2019-01-01 08:56:07Z vboxsync $ */
+/* $Id: VHD.cpp 77699 2019-03-13 23:22:08Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -795,7 +795,10 @@ static int vhdLoadDynamicDisk(PVHDIMAGE pImage, uint64_t uDynamicDiskHeaderOffse
                                uBlockAllocationTableOffset, pBlockAllocationTable,
                                pImage->cBlockAllocationTableEntries * sizeof(uint32_t));
     if (RT_FAILURE(rc))
+    {
+        RTMemFree(pBlockAllocationTable);
         return rc;
+    }
 
     /*
      * Because the offset entries inside the allocation table are stored big endian
@@ -870,7 +873,10 @@ static int vhdOpenImage(PVHDIMAGE pImage, unsigned uOpenFlags)
     }
 
     if (RT_FAILURE(rc))
+    {
+        vhdFreeImage(pImage, false);
         return rc;
+    }
 
     switch (RT_BE2H_U32(vhdFooter.DiskType))
     {
