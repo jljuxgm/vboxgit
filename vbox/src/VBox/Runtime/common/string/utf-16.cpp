@@ -1,4 +1,4 @@
-/* $Id: utf-16.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: utf-16.cpp 77118 2019-02-01 14:47:32Z vboxsync $ */
 /** @file
  * IPRT - UTF-16.
  */
@@ -194,7 +194,7 @@ RTDECL(size_t) RTUtf16Len(PCRTUTF16 pwszString)
 RT_EXPORT_SYMBOL(RTUtf16Len);
 
 
-RTDECL(int) RTUtf16Cmp(register PCRTUTF16 pwsz1, register PCRTUTF16 pwsz2)
+RTDECL(int) RTUtf16Cmp(PCRTUTF16 pwsz1, PCRTUTF16 pwsz2)
 {
     if (pwsz1 == pwsz2)
         return 0;
@@ -205,8 +205,8 @@ RTDECL(int) RTUtf16Cmp(register PCRTUTF16 pwsz1, register PCRTUTF16 pwsz2)
 
     for (;;)
     {
-        register RTUTF16  wcs = *pwsz1;
-        register int     iDiff = wcs - *pwsz2;
+        RTUTF16 wcs = *pwsz1;
+        int     iDiff = wcs - *pwsz2;
         if (iDiff || !wcs)
             return iDiff;
         pwsz1++;
