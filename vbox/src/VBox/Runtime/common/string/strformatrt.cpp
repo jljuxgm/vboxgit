@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 73909 2018-08-27 11:22:26Z vboxsync $ */
+/* $Id: strformatrt.cpp 73910 2018-08-27 11:24:28Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -60,7 +60,9 @@
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
 static char g_szHexDigits[17] = "0123456789abcdef";
+#ifdef IN_RING3
 static char g_szHexDigitsUpper[17] = "0123456789ABCDEF";
+#endif
 
 
 /**
