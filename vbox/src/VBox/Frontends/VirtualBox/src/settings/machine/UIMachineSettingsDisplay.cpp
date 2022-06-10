@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 73134 2018-07-14 20:23:03Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 73201 2018-07-18 12:20:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -1648,7 +1648,6 @@ bool UIMachineSettingsDisplay::saveVideoCaptureData()
             /* Save video capture options: */
             if (fSuccess && newDisplayData.m_strVideoCaptureOptions != oldDisplayData.m_strVideoCaptureOptions)
             {
-                printf("%s\n", qPrintable(newDisplayData.m_strVideoCaptureOptions));
                 m_machine.SetVideoCaptureOptions(newDisplayData.m_strVideoCaptureOptions);
                 fSuccess = m_machine.isOk();
             }
