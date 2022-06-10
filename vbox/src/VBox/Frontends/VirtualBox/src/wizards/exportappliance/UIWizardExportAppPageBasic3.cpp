@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 73571 2018-08-08 16:10:30Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 73580 2018-08-09 08:52:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -56,13 +56,13 @@ void UIWizardExportAppPage3::populateCloudClientParameters()
     /* Forget current parameters: */
     m_listCloudClientParameters.clear();
 
-    /* Acquire Cloud User-profiles: */
-    CCloudProvider comCloudProvider = fieldImp("profiles").value<CCloudProvider>();
+    /* Acquire Cloud Provider: */
+    CCloudProvider comCloudProvider = fieldImp("provider").value<CCloudProvider>();
     AssertMsgReturnVoid(comCloudProvider.isNotNull(),
                         ("Cloud provider object is undefined!"));
 
     /* Create Cloud Client: */
-    CCloudClient comCloudClient = comCloudProvider.CreateCloudClient(fieldImp("profile").toString());
+    CCloudClient comCloudClient = comCloudProvider.CreateCloudClient(fieldImp("profileName").toString());
     AssertMsgReturnVoid(comCloudProvider.isOk() && comCloudClient.isNotNull(),
                         ("Can't create Cloud Client object!"));
 
@@ -71,7 +71,7 @@ void UIWizardExportAppPage3::populateCloudClientParameters()
 
     /* Create JSON document on the basis of it, make sure it isn't empty: */
     const QJsonDocument document = QJsonDocument::fromJson(strJSON.toUtf8());
-    AssertMsgReturnVoid(!document.isEmpty(), ("Document is empty!"));
+    AssertMsgReturnVoid(!document.isEmpty(), ("JSON document is empty!"));
 
     /* Parse JSON document: */
     m_listCloudClientParameters = parseJsonDocument(document);
