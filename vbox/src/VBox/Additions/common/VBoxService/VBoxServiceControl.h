@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 75807 2018-11-29 07:09:21Z vboxsync $ */
+/* $Id: VBoxServiceControl.h 75858 2018-12-01 22:13:05Z vboxsync $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -250,8 +250,6 @@ typedef struct VBOXSERVICECTRLPROCESS
     bool volatile                   fStopped;
     /** Whether the guest process thread was started or not. */
     bool                            fStarted;
-    /** Client ID. */
-    uint32_t                        uClientID;
     /** Context ID. */
     uint32_t                        uContextID;
     /** Critical section for thread-safe use. */

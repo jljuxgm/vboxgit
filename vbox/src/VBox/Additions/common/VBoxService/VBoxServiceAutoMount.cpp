@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 75469 2018-11-14 20:53:20Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 75858 2018-12-01 22:13:05Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -786,7 +786,7 @@ static int vbsvcAutomounterQueryMountDirAndPrefix(char *pszDst, size_t cbDst)
         }
     }
     else
-        VGSvcError("vbsvcAutomounterQueryMountDirAndPrefix: RTPathAbs(%s) -> %Rrc\n", rc);
+        VGSvcError("vbsvcAutomounterQueryMountDirAndPrefix: RTPathAbs(%s) -> %Rrc\n", pszDir, rc);
 
 
     /*
@@ -966,6 +966,7 @@ static int vbsvcAutomounterPopulateTable(PVBSVCAUTOMOUNTERTABLE pMountTable)
      * but later we may use the same approach as on solaris.
      */
     FILE *pFile = setmntent("/proc/mounts", "r");
+    int iErrMounts = errno;
     if (!pFile)
         pFile = setmntent("/etc/mtab", "r");
     if (pFile)
@@ -987,7 +988,7 @@ static int vbsvcAutomounterPopulateTable(PVBSVCAUTOMOUNTERTABLE pMountTable)
     }
     else
         VGSvcError("vbsvcAutomounterQueryMountPoint: Could not open mount tab '%s' (errno=%d) or '/proc/mounts' (errno=%d)\n",
-                   _PATH_MOUNTED, errno);
+                   _PATH_MOUNTED, errno, iErrMounts);
 
 #elif defined(RT_OS_SOLARIS)
     /*
