@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74324 2018-09-17 21:06:52Z vboxsync $
+# $Id: Makefile.kmk 74652 2018-10-07 12:10:28Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -48,11 +48,6 @@ if  defined(VBOX_WITH_LIBCURL) \
  && !defined(VBOX_ONLY_VALIDATIONKIT) \
  && "$(SDK_VBOX_LIBCURL_INCS)" == "$(PATH_ROOT)/src/libs/curl-7.57.0/include"
  include $(PATH_SUB_CURRENT)/curl-7.57.0/Makefile.kmk
-endif
-
-# The kStuff lib used by IPRT and the debugger.
-if defined(IPRT_WITH_KSTUFF)
- include $(PATH_SUB_CURRENT)/kStuff/Makefile.kmk
 endif
 
 # OpenSSL.

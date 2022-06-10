@@ -1,4 +1,4 @@
-# $Id: Config.kmk 70510 2018-01-10 11:24:57Z vboxsync $
+# $Id: Config.kmk 74652 2018-10-07 12:10:28Z vboxsync $
 ## @file
 # kBuild Configuration file for the VirtualBox Validation Kit.
 #
@@ -70,11 +70,6 @@ TEMPLATE_VBoxValidationKitR3_LIBS.darwin = iconv
 TEMPLATE_VBoxValidationKitR3_LIBS.freebsd = iconv
 TEMPLATE_VBoxValidationKitR3_LIBS = \
 	$(PATH_STAGE_LIB)/RuntimeR3$(VBOX_SUFF_LIB)
-ifdef IPRT_WITH_KSTUFF
- TEMPLATE_VBoxValidationKitR3_LIBS += \
- 	$(PATH_STAGE_LIB)/VBox-kStuffStatic$(VBOX_SUFF_LIB) \
- 	$(PATH_STAGE_LIB)/RuntimeR3$(VBOX_SUFF_LIB)
-endif
 ifeq ($(KBUILD_TARGET),solaris)
  TEMPLATE_VBoxValidationKitR3_LIBS += \
 	kstat \
@@ -129,11 +124,6 @@ TEMPLATE_VBoxValidationKitR3Host_LIBS = \
 	$(PATH_STAGE_LIB)/RuntimeR3$(VBOX_SUFF_LIB) \
 	$(PATH_STAGE_LIB)/SUPR3Static$(VBOX_SUFF_LIB) \
 	$(PATH_STAGE_LIB)/RuntimeR3$(VBOX_SUFF_LIB)
-ifdef IPRT_WITH_KSTUFF
- TEMPLATE_VBoxValidationKitR3Host_LIBS += \
- 	$(PATH_STAGE_LIB)/VBox-kStuffStatic$(VBOX_SUFF_LIB) \
- 	$(PATH_STAGE_LIB)/RuntimeR3$(VBOX_SUFF_LIB)
-endif
 ifeq ($(KBUILD_TARGET),solaris)
  TEMPLATE_VBoxValidationKitR3Host_LIBS += \
 	kstat \
