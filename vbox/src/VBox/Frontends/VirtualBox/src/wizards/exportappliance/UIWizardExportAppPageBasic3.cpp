@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 75056 2018-10-25 08:04:11Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 75217 2018-11-01 16:51:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -78,10 +78,10 @@ void UIWizardExportAppPage3::populateCloudClientParameters()
 }
 
 /* static */
-QList<AbstractVSDParameter> UIWizardExportAppPage3::parseJsonDocument(const QJsonDocument &document)
+AbstractVSDParameterList UIWizardExportAppPage3::parseJsonDocument(const QJsonDocument &document)
 {
     /* Prepare parameters: */
-    QList<AbstractVSDParameter> parameters;
+    AbstractVSDParameterList parameters;
 
     /* Convert document to object, make sure it isn't empty: */
     QJsonObject documentObject = document.object();

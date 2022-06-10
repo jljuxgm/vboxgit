@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 75079 2018-10-25 15:21:41Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 75217 2018-11-01 16:51:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -1517,7 +1517,7 @@ void UIApplianceModel::setVirtualSystemBaseFolder(const QString& path)
     }
 }
 
-void UIApplianceModel::setVsdHints(const QList<AbstractVSDParameter> &hints)
+void UIApplianceModel::setVsdHints(const AbstractVSDParameterList &hints)
 {
     m_listVsdHints = hints;
 }
@@ -1841,7 +1841,7 @@ UIApplianceEditorWidget::UIApplianceEditorWidget(QWidget *pParent /* = 0 */)
     retranslateUi();
 }
 
-void UIApplianceEditorWidget::setVsdHints(const QList<AbstractVSDParameter> &hints)
+void UIApplianceEditorWidget::setVsdHints(const AbstractVSDParameterList &hints)
 {
     /* Save here as well: */
     m_listVsdHints = hints;

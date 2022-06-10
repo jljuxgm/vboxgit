@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 75046 2018-10-24 15:26:55Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 75217 2018-11-01 16:51:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -46,7 +46,7 @@ protected:
     void populateCloudClientParameters();
 
     /** Parses JSON @a document. */
-    static QList<AbstractVSDParameter> parseJsonDocument(const QJsonDocument &document);
+    static AbstractVSDParameterList parseJsonDocument(const QJsonDocument &document);
     /** Parses JSON bool @a field. */
     static bool parseJsonFieldBool(const QString &strFieldName, const QJsonValue &field);
     /** Parses JSON double @a field. */
@@ -63,7 +63,7 @@ protected:
     ExportAppliancePointer applianceWidget() const { return m_pApplianceWidget; }
 
     /** Holds the cloud client parameters. */
-    QList<AbstractVSDParameter> m_listCloudClientParameters;
+    AbstractVSDParameterList  m_listCloudClientParameters;
 
     /** Holds the appliance widget reference. */
     UIApplianceExportEditorWidget *m_pApplianceWidget;
