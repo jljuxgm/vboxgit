@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 73833 2018-08-22 15:40:27Z vboxsync $ */
+/* $Id: HDAStream.cpp 74037 2018-09-03 09:51:51Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1429,10 +1429,10 @@ void hdaR3StreamUpdate(PHDASTREAM pStream, bool fInTimer)
                 pStream->State.tsLastUpdateNs = tsNowNs;
             }
 # endif
-            const uint32_t cbStreamFree = hdaR3StreamGetUsed(pStream);
-            if (cbStreamFree)
+            const uint32_t cbStreamUsed = hdaR3StreamGetUsed(pStream);
+            if (cbStreamUsed)
             {
-                rc2 = hdaR3StreamTransfer(pStream, cbStreamFree);
+                rc2 = hdaR3StreamTransfer(pStream, cbStreamUsed);
                 AssertRC(rc2);
             }
 # ifdef VBOX_WITH_AUDIO_HDA_ASYNC_IO
