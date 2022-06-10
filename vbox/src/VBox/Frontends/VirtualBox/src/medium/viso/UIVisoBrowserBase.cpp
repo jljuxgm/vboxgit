@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 77330 2019-02-15 11:04:00Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.cpp 77405 2019-02-20 20:39:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -264,6 +264,13 @@ void UIVisoBrowserBase::keyPressEvent(QKeyEvent *pEvent)
     QIWithRetranslateUI<QWidget>::keyPressEvent(pEvent);
 }
 
+void UIVisoBrowserBase::sltFileTableViewContextMenu(const QPoint &point)
+{
+    QWidget *pSender = qobject_cast<QWidget*>(sender());
+    if (!pSender)
+        return;
+    emit sigCreateFileTableViewContextMenu(pSender, point);
+}
 
 void UIVisoBrowserBase::sltHandleTableViewItemDoubleClick(const QModelIndex &index)
 {

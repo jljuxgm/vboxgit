@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 77330 2019-02-15 11:04:00Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.h 77405 2019-02-20 20:39:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -45,6 +45,7 @@ class UIVisoBrowserBase : public QIWithRetranslateUI<QWidget>
 signals:
 
     void sigTreeViewVisibilityChanged(bool fVisible);
+    void sigCreateFileTableViewContextMenu(QWidget *pMenuRequester, const QPoint &point);
 
 public:
 
@@ -76,6 +77,10 @@ protected:
 
     QTreeView          *m_pTreeView;
     QGridLayout        *m_pMainLayout;
+
+protected slots:
+
+    void sltFileTableViewContextMenu(const QPoint &point);
 
 private slots:
 

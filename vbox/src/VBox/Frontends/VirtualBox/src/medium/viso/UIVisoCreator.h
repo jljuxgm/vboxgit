@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 77376 2019-02-20 12:32:25Z vboxsync $ */
+/* $Id: UIVisoCreator.h 77405 2019-02-20 20:39:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -82,6 +82,7 @@ private slots:
     void sltHandleBrowserTreeViewVisibilityChanged(bool fVisible);
     void sltHandleHostBrowserTableSelectionChanged(bool fIsSelectionEmpty);
     void sltHandleContentBrowserTableSelectionChanged(bool fIsSelectionEmpty);
+    void sltHandleShowContextMenu(const QWidget *pContextMenuRequester, const QPoint &point);
 
 private:
     struct VisoOptions
