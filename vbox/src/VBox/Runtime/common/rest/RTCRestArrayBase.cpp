@@ -1,4 +1,4 @@
-/* $Id: RTCRestArrayBase.cpp 74263 2018-09-14 12:53:18Z vboxsync $ */
+/* $Id: RTCRestArrayBase.cpp 74386 2018-09-20 15:46:38Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestArrayBase implementation.
  */
@@ -88,6 +88,20 @@ RTCRestArrayBase &RTCRestArrayBase::operator=(RTCRestArrayBase const &a_rThat);
 /*********************************************************************************************************************************
 *   Overridden methods                                                                                                           *
 *********************************************************************************************************************************/
+
+RTCRestObjectBase *RTCRestArrayBase::baseClone() const
+{
+    RTCRestArrayBase *pClone = createClone();
+    if (pClone)
+    {
+        int rc = pClone->copyArrayWorker(*this, false /*fThrow*/);
+        if (RT_SUCCESS(rc))
+            return pClone;
+        delete pClone;
+    }
+    return NULL;
+}
+
 
 int RTCRestArrayBase::resetToDefault()
 {
@@ -457,7 +471,7 @@ int RTCRestArrayBase::insertWorker(size_t a_idx, RTCRestObjectBase *a_pValue, bo
 int RTCRestArrayBase::insertCopyWorker(size_t a_idx, RTCRestObjectBase const &a_rValue, bool a_fReplace)
 {
     int rc;
-    RTCRestObjectBase *pValueCopy = createValueCopy(&a_rValue);
+    RTCRestObjectBase *pValueCopy = a_rValue.baseClone();
     if (pValueCopy)
     {
         rc = insertWorker(a_idx, pValueCopy, a_fReplace);

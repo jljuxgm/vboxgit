@@ -1,4 +1,4 @@
-/* $Id: RTCRestAnyObject.cpp 74347 2018-09-18 16:10:34Z vboxsync $ */
+/* $Id: RTCRestAnyObject.cpp 74386 2018-09-20 15:46:38Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestAnyObject implementation.
  */
@@ -378,6 +378,20 @@ int RTCRestAnyObject::assignValue(const char *a_pszValue)
         return pData->assignNoThrow(a_pszValue);
     }
     return VERR_NO_MEMORY;
+}
+
+
+RTCRestObjectBase *RTCRestAnyObject::baseClone() const
+{
+    RTCRestAnyObject *pClone = new (std::nothrow) RTCRestAnyObject();
+    if (pClone)
+    {
+        int rc = pClone->assignCopy(*this);
+        if (RT_SUCCESS(rc))
+            return pClone;
+        delete pClone;
+    }
+    return NULL;
 }
 
 
