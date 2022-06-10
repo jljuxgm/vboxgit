@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 73492 2018-08-03 15:30:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -44,7 +44,7 @@
 # include "UIChooserHandlerMouse.h"
 # include "UIChooserHandlerKeyboard.h"
 # include "UIWizardNewVM.h"
-# include "UIVirtualBoxManager.h"
+# include "UIVirtualBoxManagerWidget.h"
 # include "UIVirtualBoxEventHandler.h"
 # include "UIModalWindowManager.h"
 
@@ -927,7 +927,7 @@ void UIChooserModel::sltCreateNewMachine()
     actionPool()->action(UIActionIndexST_M_Group_S_New)->setEnabled(false);
 
     /* Use the "safe way" to open stack of Mac OS X Sheets: */
-    QWidget *pWizardParent = windowManager().realParentWindow(m_pChooser->selector());
+    QWidget *pWizardParent = windowManager().realParentWindow(m_pChooser->managerWidget());
     UISafePointerWizardNewVM pWizard = new UIWizardNewVM(pWizardParent, strGroupName);
     windowManager().registerNewParent(pWizard, pWizardParent);
     pWizard->prepare();
