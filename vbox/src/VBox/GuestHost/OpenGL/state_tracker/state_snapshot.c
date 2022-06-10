@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 78116 2019-04-12 10:03:24Z vboxsync $ */
+/* $Id: state_snapshot.c 78117 2019-04-12 10:04:58Z vboxsync $ */
 /** @file
  * VBox Context state saving/loading used by VM snapshot
  */
@@ -1296,6 +1296,7 @@ static int32_t crStateLoadClientPointer(CRVertexArrays *pArrays, int32_t index, 
     {
         rc = crStateAllocAndSSMR3GetMem(pSSM, (void**)&cp->p, cp->stride*(pArrays->lockFirst+pArrays->lockCount));
         AssertRCReturn(rc, rc);
+        cp->fRealPtr = 1;
     }
 #endif
 
