@@ -1,4 +1,4 @@
-; $Id: memcmp.asm 75129 2018-10-28 17:00:27Z vboxsync $
+; $Id: memcmp.asm 75334 2018-11-09 01:21:05Z vboxsync $
 ;; @file
 ; IPRT - No-CRT memcmp - AMD64 & X86.
 ;
@@ -34,7 +34,6 @@ BEGINCODE
 ; @param    cb      gcc: rdx  msc: r8   x86:[esp+0ch] wcall: ebx
 RT_NOCRT_BEGINPROC memcmp
         cld
-        xor     eax, eax
 
         ; Do the bulk of the work.
 %ifdef RT_ARCH_AMD64
@@ -49,6 +48,7 @@ RT_NOCRT_BEGINPROC memcmp
         mov     rcx, rdx
  %endif
         shr     rcx, 3
+        xor     eax, eax
         repe cmpsq
         jne     .not_equal_qword
 %else
@@ -68,6 +68,7 @@ RT_NOCRT_BEGINPROC memcmp
  %endif
         jecxz   .done
         shr     ecx, 2
+        xor     eax, eax
         repe cmpsd
         jne     .not_equal_dword
 %endif
