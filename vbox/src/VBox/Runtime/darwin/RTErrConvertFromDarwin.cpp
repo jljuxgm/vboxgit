@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromDarwin.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTErrConvertFromDarwin.cpp 72832 2018-07-03 16:29:06Z vboxsync $ */
 /** @file
  * IPRT - Convert Darwin Mach returns codes to iprt status codes.
  */
@@ -116,7 +116,7 @@ RTDECL(int) RTErrConvertFromDarwin(int iNativeCode)
          */
         default:
             if (    (unsigned)iNativeCode >= 0x80000000U
-                &&  (unsigned)iNativeCode >= 0x8000FFFFU)
+                &&  (unsigned)iNativeCode <= 0x8000FFFFU)
                 return RTErrConvertFromDarwinCOM(iNativeCode);
             break;
 #endif /* IN_RING3 */
