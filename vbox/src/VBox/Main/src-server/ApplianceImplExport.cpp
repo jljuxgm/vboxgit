@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 74092 2018-09-05 18:29:21Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 74123 2018-09-06 15:43:18Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2481,7 +2481,8 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
             cloudClient->ExportVM(m->virtualSystemDescriptions.front(), pTask->pProgress);
         } else {
             //TODO: fail here
-        }    }
+        }
+    }
 #endif
 
     LogFlowFuncLeave();
