@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 77968 2019-03-31 19:30:33Z vboxsync $ */
+/* $Id: FsPerf.cpp 77969 2019-04-01 01:20:22Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -2731,16 +2731,21 @@ DECL_FORCE_INLINE(int) fsPerfIoReadWorker(RTFILE hFile1, uint64_t cbFile, uint32
 void fsPerfIoReadBlockSize(RTFILE hFile1, uint64_t cbFile, uint32_t cbBlock)
 {
     RTTestISubF("IO - Sequential read %RU32", cbBlock);
-
-    uint8_t *pbBuf = (uint8_t *)RTMemPageAlloc(cbBlock);
-    if (pbBuf)
+    if (cbBlock <= cbFile)
     {
-        memset(pbBuf, 0xf7, cbBlock);
-        PROFILE_IO_FN("RTFileRead", fsPerfIoReadWorker(hFile1, cbFile, cbBlock, pbBuf, &offActual, &cSeeks));
-        RTMemPageFree(pbBuf, cbBlock);
+
+        uint8_t *pbBuf = (uint8_t *)RTMemPageAlloc(cbBlock);
+        if (pbBuf)
+        {
+            memset(pbBuf, 0xf7, cbBlock);
+            PROFILE_IO_FN("RTFileRead", fsPerfIoReadWorker(hFile1, cbFile, cbBlock, pbBuf, &offActual, &cSeeks));
+            RTMemPageFree(pbBuf, cbBlock);
+        }
+        else
+            RTTestSkipped(g_hTest, "insufficient (virtual) memory available");
     }
     else
-        RTTestSkipped(g_hTest, "insufficient (virtual) memory available");
+        RTTestSkipped(g_hTest, "test file too small");
 }
 
 
@@ -3185,15 +3190,20 @@ void fsPerfIoWriteBlockSize(RTFILE hFile1, uint64_t cbFile, uint32_t cbBlock)
 {
     RTTestISubF("IO - Sequential write %RU32", cbBlock);
 
-    uint8_t *pbBuf = (uint8_t *)RTMemPageAlloc(cbBlock);
-    if (pbBuf)
+    if (cbBlock <= cbFile)
     {
-        memset(pbBuf, 0xf7, cbBlock);
-        PROFILE_IO_FN("RTFileWrite", fsPerfIoWriteWorker(hFile1, cbFile, cbBlock, pbBuf, &offActual, &cSeeks));
-        RTMemPageFree(pbBuf, cbBlock);
+        uint8_t *pbBuf = (uint8_t *)RTMemPageAlloc(cbBlock);
+        if (pbBuf)
+        {
+            memset(pbBuf, 0xf7, cbBlock);
+            PROFILE_IO_FN("RTFileWrite", fsPerfIoWriteWorker(hFile1, cbFile, cbBlock, pbBuf, &offActual, &cSeeks));
+            RTMemPageFree(pbBuf, cbBlock);
+        }
+        else
+            RTTestSkipped(g_hTest, "insufficient (virtual) memory available");
     }
     else
-        RTTestSkipped(g_hTest, "insufficient (virtual) memory available");
+        RTTestSkipped(g_hTest, "test file too small");
 }
 
 
@@ -4590,7 +4600,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 77968 $";
+                char szRev[] = "$Revision: 77969 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
