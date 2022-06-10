@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 72689 2018-06-26 02:37:40Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 72917 2018-07-05 13:50:01Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -1307,6 +1307,7 @@ NEM_TMPL_STATIC int nemR0WinImportState(PGVM pGVM, PGVMCPU pGVCpu, PCPUMCTX pCtx
     HV_INPUT_GET_VP_REGISTERS *pInput = (HV_INPUT_GET_VP_REGISTERS *)pGVCpu->nem.s.HypercallData.pbPage;
     AssertPtrReturn(pInput, VERR_INTERNAL_ERROR_3);
     AssertReturn(g_pfnHvlInvokeHypercall, VERR_NEM_MISSING_KERNEL_API);
+    Assert(pCtx == &pGVCpu->pVCpu->cpum.GstCtx);
 
     fWhat &= pCtx->fExtrn;
 

@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 72879 2018-07-04 15:10:25Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 72917 2018-07-05 13:50:01Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2873,7 +2873,7 @@ VMM_INT_DECL(int) CPUMImportGuestStateOnDemand(PVMCPU pVCpu, uint64_t fExtrnImpo
         {
             case CPUMCTX_EXTRN_KEEPER_NEM:
             {
-                int rc = NEMImportStateOnDemand(pVCpu, &pVCpu->cpum.s.Guest, fExtrnImport);
+                int rc = NEMImportStateOnDemand(pVCpu, fExtrnImport);
                 Assert(rc == VINF_SUCCESS || RT_FAILURE_NP(rc));
                 return rc;
             }

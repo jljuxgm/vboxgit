@@ -1,4 +1,4 @@
-/* $Id: EMR3Nem.cpp 72749 2018-06-29 07:57:05Z vboxsync $ */
+/* $Id: EMR3Nem.cpp 72917 2018-07-05 13:50:01Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - NEM interface.
  */
@@ -489,7 +489,7 @@ VBOXSTRICTRC emR3NemExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
      */
     if (pVCpu->cpum.GstCtx.fExtrn)
     {
-        int rcImport = NEMImportStateOnDemand(pVCpu, &pVCpu->cpum.GstCtx, pVCpu->cpum.GstCtx.fExtrn);
+        int rcImport = NEMImportStateOnDemand(pVCpu, pVCpu->cpum.GstCtx.fExtrn);
         AssertReturn(RT_SUCCESS(rcImport) || RT_FAILURE_NP(rcStrict), rcImport);
     }
 #if defined(LOG_ENABLED) && defined(DEBUG)
