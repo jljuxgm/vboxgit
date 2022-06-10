@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-netbsd.c 77120 2019-02-01 15:08:46Z vboxsync $ */
+/* $Id: memobj-r0drv-netbsd.c 78120 2019-04-12 13:20:50Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NetBSD.
  */
@@ -498,7 +498,7 @@ DECLHIDDEN(int) rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ
 
 
 DECLHIDDEN(int) rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, RTR3PTR R3PtrFixed, size_t uAlignment,
-                                        unsigned fProt, RTR0PROCESS R0Process)
+                                        unsigned fProt, RTR0PROCESS R0Process, size_t offSub, size_t cbSub)
 {
     printf("NativeMapUser\n");
     return VERR_NOT_SUPPORTED;

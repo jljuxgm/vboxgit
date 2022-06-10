@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 78120 2019-04-12 13:20:50Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -1011,7 +1011,7 @@ DECLHIDDEN(int) rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ
 
 
 DECLHIDDEN(int) rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, PRTR0MEMOBJINTERNAL pMemToMap, RTR3PTR R3PtrFixed,
-                                        size_t uAlignment, unsigned fProt, RTR0PROCESS R0Process)
+                                        size_t uAlignment, unsigned fProt, RTR0PROCESS R0Process, size_t offSub, size_t cbSub)
 {
     /*
      * Fend off things we cannot do.
@@ -1020,6 +1020,7 @@ DECLHIDDEN(int) rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, PRTR0MEMOBJI
     AssertMsgReturn(R0Process == RTR0ProcHandleSelf(), ("%p != %p\n", R0Process, RTR0ProcHandleSelf()), VERR_NOT_SUPPORTED);
     if (uAlignment != PAGE_SIZE)
         return VERR_NOT_SUPPORTED;
+    AssertMsgReturn(!offSub && !cbSub, ("%#zx %#zx\n", offSub, cbSub), VERR_NOT_SUPPORTED); /** @todo implement sub maps */
 
     /*
      * Get parameters from the source object.

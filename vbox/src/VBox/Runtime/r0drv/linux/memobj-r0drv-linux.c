@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 77730 2019-03-15 18:31:47Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 78120 2019-04-12 13:20:50Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1529,8 +1529,8 @@ static int rtR0MemObjLinuxFixPte(struct mm_struct *mm, unsigned long ulAddr, RTH
 #endif /* VBOX_USE_PAE_HACK */
 
 
-DECLHIDDEN(int) rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, RTR3PTR R3PtrFixed,
-                                        size_t uAlignment, unsigned fProt, RTR0PROCESS R0Process)
+DECLHIDDEN(int) rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ pMemToMap, RTR3PTR R3PtrFixed, size_t uAlignment,
+                                        unsigned fProt, RTR0PROCESS R0Process, size_t offSub, size_t cbSub)
 {
     struct task_struct *pTask        = rtR0ProcessToLinuxTask(R0Process);
     PRTR0MEMOBJLNX      pMemLnxToMap = (PRTR0MEMOBJLNX)pMemToMap;
@@ -1549,6 +1549,7 @@ DECLHIDDEN(int) rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ p
         return VERR_NOT_SUPPORTED;
     if (uAlignment > PAGE_SIZE)
         return VERR_NOT_SUPPORTED;
+    AssertMsgReturn(!offSub && !cbSub, ("%#zx %#zx\n", offSub, cbSub), VERR_NOT_SUPPORTED); /** @todo implement sub maps */
 
 #ifdef VBOX_USE_PAE_HACK
     /*
