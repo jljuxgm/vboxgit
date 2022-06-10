@@ -1,4 +1,4 @@
-/* $Id: display_base.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: display_base.cpp 73624 2018-08-10 17:46:50Z vboxsync $ */
 
 /** @file
  * Presenter API: display base class implementation.
@@ -326,9 +326,9 @@ int CrFbDisplayBase::fbCleanupRemoveAllEntries()
             WARN(("err"));
             break;
         }
-
-        CrFbVisitCreatedEntries(mpFb, entriesDestroyCb, this);
     }
+
+    CrFbVisitCreatedEntries(mpFb, entriesDestroyCb, this);
 
     return rc;
 }
