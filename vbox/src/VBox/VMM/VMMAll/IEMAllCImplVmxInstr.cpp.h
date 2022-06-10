@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 75387 2018-11-12 05:59:11Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 75388 2018-11-12 07:47:59Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -6630,7 +6630,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmlaunchVmresume(PVMCPU pVCpu, uint8_t cbInstr, VM
                                  * to lowest as follows:
                                  *
                                  * 1.  Event injection.
-                                 * 2.  TPR below threshold.
+                                 * 2.  TPR below threshold / APIC-write.
                                  * 3.  SMI.
                                  * 4.  INIT.
                                  * 5.  MTF exit.
