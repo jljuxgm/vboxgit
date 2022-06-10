@@ -1,4 +1,4 @@
-/* $Id: DevSerialNew.cpp 73259 2018-07-20 10:14:05Z vboxsync $ */
+/* $Id: DevSerialNew.cpp 73299 2018-07-22 14:07:59Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  *
@@ -208,7 +208,13 @@ static DECLCALLBACK(int) serialR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, u
             rc = uartR3LoadExec(&pThis->UartCore, pSSM, uVersion, uPass, NULL, NULL);
         }
         else
+        {
+            if (uVersion > UART_SAVED_STATE_VERSION_16450)
+                enmType = UARTTYPE_16550A;
+            else
+                enmType = UARTTYPE_16450;
             rc = uartR3LoadExec(&pThis->UartCore, pSSM, uVersion, uPass, &uIrq, &PortBase);
+        }
         if (RT_SUCCESS(rc))
         {
             /* The marker. */
