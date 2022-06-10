@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 77178 2019-02-06 15:15:30Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -946,7 +946,8 @@ static RTEXITCODE DoUninstall(int argc, char **argv)
     static const RTGETOPTDEF s_aOptions[] =
     {
         { "--base-dir",     'b',   RTGETOPT_REQ_STRING },
-        { "--name",         'n',   RTGETOPT_REQ_STRING }
+        { "--name",         'n',   RTGETOPT_REQ_STRING },
+        { "--forced",       'f',   RTGETOPT_REQ_NOTHING },
     };
     RTGETOPTSTATE   GetState;
     int rc = RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 0, 0 /*fFlags*/);
@@ -975,6 +976,10 @@ static RTEXITCODE DoUninstall(int argc, char **argv)
                 pszName = ValueUnion.psz;
                 if (!VBoxExtPackIsValidName(pszName))
                     return RTMsgErrorExit(RTEXITCODE_FAILURE, "Invalid extension pack name: '%s'", pszName);
+                break;
+
+            case 'f':
+                /* ignored */
                 break;
 
             case 'h':
