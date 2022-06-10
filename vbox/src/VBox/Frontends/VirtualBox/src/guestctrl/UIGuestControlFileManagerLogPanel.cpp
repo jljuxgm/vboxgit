@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerLogPanel.cpp 75284 2018-11-06 13:28:12Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerLogPanel.cpp 75290 2018-11-06 14:58:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -95,11 +95,17 @@ UIGuestControlFileManagerLogPanel::UIGuestControlFileManagerLogPanel(UIGuestCont
     prepare();
 }
 
-void UIGuestControlFileManagerLogPanel::appendLog(const QString &strLog, FileManagerLogType)
+void UIGuestControlFileManagerLogPanel::appendLog(const QString &strLog, FileManagerLogType eLogType)
 {
     if (!m_pLogTextEdit)
         return;
-    m_pLogTextEdit->append(QString("%1: %2").arg(QTime::currentTime().toString("hh:mm:ss")).arg(strLog));
+    QString strColorTag("<font color=\"Black\">");
+    if (eLogType == FileManagerLogType_Error)
+    {
+        strColorTag = "<font color=\"Red\">";
+    }
+    QString strColoredLog = QString("%1 %2: %3 %4").arg(strColorTag).arg(QTime::currentTime().toString("hh:mm:ss")).arg(strLog).arg("</font>");
+    m_pLogTextEdit->append(strColoredLog);
 }
 
 QString UIGuestControlFileManagerLogPanel::panelName() const
