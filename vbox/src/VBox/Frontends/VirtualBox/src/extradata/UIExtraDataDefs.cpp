@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 77932 2019-03-28 10:17:11Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 78010 2019-04-04 07:27:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -206,7 +206,6 @@ const char *UIExtraDataDefs::GUI_GuestControl_FileManagerListDirectoriesFirst = 
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerShowDeleteConfirmation = "ShowDeleteConfimation";
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerShowHumanReadableSizes = "ShowHumanReadableSizes";
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerShowHiddenObjects = "ShowHiddenObjects";
-const char *UIExtraDataDefs::GUI_GuestControl_FileManagerShowBreadCrumbs = "ShowBreadCrumbs";
 
 /* Virtual Machine: Close dialog: */
 const char *UIExtraDataDefs::GUI_DefaultCloseAction = "GUI/DefaultCloseAction";
