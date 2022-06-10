@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 77003 2019-01-26 14:10:11Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxsf (linux shared folders module).
 #
@@ -30,6 +30,8 @@ vboxsf-src_SOURCES      = \
 vboxsf-src_EXEC_SOURCES = \
 	$(subst $(DQUOTE),,$(FILES_VBOXSF_BIN))
 
+# Build test for the Guest Additions kernel modules (kmk check).
+$(evalcall2 VBOX_LINUX_KMOD_TEST_BUILD_RULE_FN,vboxsf-src,vboxguest-src,)
 
 #
 # The mount util.
