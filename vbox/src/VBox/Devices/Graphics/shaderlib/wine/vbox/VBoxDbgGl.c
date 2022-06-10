@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGl.c 72836 2018-07-03 17:07:53Z vboxsync $ */
+/* $Id: VBoxDbgGl.c 72837 2018-07-03 17:09:24Z vboxsync $ */
 /** @file
  * VBox wine & ogl debugging stuff
  */
@@ -200,6 +200,7 @@ DECLEXPORT(void) dbglPrint(const char *format, ... )
 
     va_start( args, format );
     vsprintf( txt, format, args );
+    va_end( args );
 
     OutputDebugString(txt);
 }
