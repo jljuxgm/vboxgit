@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 74132 2018-09-07 06:13:39Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 74168 2018-09-10 06:15:17Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -11029,7 +11029,7 @@ static uint32_t hmR0VmxCheckGuestState(PVMCPU pVCpu)
                           || u32ActivityState != VMX_VMCS_GUEST_ACTIVITY_SIPI_WAIT, VMX_IGS_ACTIVITY_STATE_SIPI_WAIT_INVALID);
 
         /* Guest interruptibility-state. */
-        HMVMX_CHECK_BREAK(!(u32IntrState & 0xfffffff0), VMX_IGS_INTERRUPTIBILITY_STATE_RESERVED);
+        HMVMX_CHECK_BREAK(!(u32IntrState & 0xffffffe0), VMX_IGS_INTERRUPTIBILITY_STATE_RESERVED);
         HMVMX_CHECK_BREAK((u32IntrState & (VMX_VMCS_GUEST_INT_STATE_BLOCK_STI | VMX_VMCS_GUEST_INT_STATE_BLOCK_MOVSS))
                                        != (VMX_VMCS_GUEST_INT_STATE_BLOCK_STI | VMX_VMCS_GUEST_INT_STATE_BLOCK_MOVSS),
                           VMX_IGS_INTERRUPTIBILITY_STATE_STI_MOVSS_INVALID);
