@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 76821 2019-01-15 04:51:22Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 76827 2019-01-16 05:39:39Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2045,7 +2045,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxAbort(PVMCPU pVCpu, VMXABORT enmAbort)
     if (IEM_VMX_HAS_CURRENT_VMCS(pVCpu))
     {
         RTGCPHYS const GCPhysVmcs  = IEM_VMX_GET_CURRENT_VMCS(pVCpu);
-        uint32_t const offVmxAbort = RT_UOFFSETOF(VMXVVMCS, u32VmxAbortId);
+        uint32_t const offVmxAbort = RT_UOFFSETOF(VMXVVMCS, enmVmxAbort);
         PGMPhysSimpleWriteGCPhys(pVCpu->CTX_SUFF(pVM), GCPhysVmcs + offVmxAbort, &enmAbort, sizeof(enmAbort));
     }
 
