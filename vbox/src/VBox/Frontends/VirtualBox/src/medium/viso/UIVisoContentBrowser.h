@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 76750 2019-01-09 21:48:49Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.h 76762 2019-01-10 20:57:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -42,6 +42,7 @@ class UICustomFileSystemModel;
 class UICustomFileSystemProxyModel;
 class UIVisoContentTreeProxyModel;
 class UICustomFileSystemItem;
+class UIVisoContentTableView;
 
 class SHARED_LIBRARY_STUFF UIVisoContentBrowser : public QIWithRetranslateUI<UIVisoBrowserBase>
 {
@@ -78,6 +79,7 @@ private slots:
     void sltHandleRemoveItems();
     void sltHandleTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
     void sltHandleResetAction();
+    void sltHandleDroppedItems(QStringList pathList);
 
 private:
 
@@ -100,7 +102,7 @@ private:
     /** Returns a list of items which are currecntly selected
      *  in the table view. */
     QList<UICustomFileSystemItem*> tableSelectedItems();
-
+    UIVisoContentTableView       *m_pTableView;
     UICustomFileSystemModel      *m_pModel;
     UICustomFileSystemProxyModel *m_pTableProxyModel;
     UIVisoContentTreeProxyModel  *m_pTreeProxyModel;

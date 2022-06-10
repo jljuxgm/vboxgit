@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 76750 2019-01-09 21:48:49Z vboxsync $ */
+/* $Id: UIVisoHostBrowser.h 76762 2019-01-10 20:57:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -70,6 +70,8 @@ private:
     UIVisoHostBrowserModel *m_pTreeModel;
     UIVisoHostBrowserModel *m_pTableModel;
     QAction                *m_pAddAction;
+    QTableView             *m_pTableView;
+
 };
 
 
