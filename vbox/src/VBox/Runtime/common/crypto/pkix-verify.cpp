@@ -1,4 +1,4 @@
-/* $Id: pkix-verify.cpp 73705 2018-08-16 09:31:18Z vboxsync $ */
+/* $Id: pkix-verify.cpp 73706 2018-08-16 09:40:01Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Infrastructure API, Verification.
  */
@@ -151,7 +151,7 @@ RTDECL(int) RTCrPkixPubKeyVerifySignature(PCRTASN1OBJID pAlgorithm, RTCRKEY hPub
     /*
      * Check the result.
      */
-    if (   RT_SUCCESS(rcIprt) && RT_SUCCESS(rcOssl)
+    if (   (RT_SUCCESS(rcIprt) && RT_SUCCESS(rcOssl))
         || (RT_FAILURE_NP(rcIprt) && RT_FAILURE_NP(rcOssl))
         || (RT_SUCCESS(rcIprt) && rcOssl == VERR_CR_PKIX_OSSL_CIPHER_ALGO_NOT_KNOWN_EVP) )
         return rcIprt;
@@ -273,7 +273,7 @@ RTDECL(int) RTCrPkixPubKeyVerifySignedDigest(PCRTASN1OBJID pAlgorithm, RTCRKEY h
     /*
      * Check the result.
      */
-    if (   RT_SUCCESS(rcIprt) && RT_SUCCESS(rcOssl)
+    if (   (RT_SUCCESS(rcIprt) && RT_SUCCESS(rcOssl))
         || (RT_FAILURE_NP(rcIprt) && RT_FAILURE_NP(rcOssl))
         || (RT_SUCCESS(rcIprt) && rcOssl == VERR_CR_PKIX_OSSL_CIPHER_ALGO_NOT_KNOWN_EVP) )
         return rcIprt;

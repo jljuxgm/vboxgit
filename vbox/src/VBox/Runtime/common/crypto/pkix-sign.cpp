@@ -1,4 +1,4 @@
-/* $Id: pkix-sign.cpp 73672 2018-08-14 18:40:01Z vboxsync $ */
+/* $Id: pkix-sign.cpp 73706 2018-08-16 09:40:01Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Infrastructure API, Verification.
  */
@@ -240,9 +240,9 @@ RTDECL(int) RTCrPkixPubKeySignDigest(PCRTASN1OBJID pAlgorithm, RTCRKEY hPrivateK
     /*
      * Check the result.
      */
-    if (RT_SUCCESS(rcIprt) && RT_SUCCESS(rcOssl))
-        return VINF_SUCCESS;
-    if (RT_FAILURE_NP(rcIprt) && RT_FAILURE_NP(rcOssl))
+    if (   (RT_SUCCESS(rcIprt) && RT_SUCCESS(rcOssl))
+        || (RT_FAILURE_NP(rcIprt) && RT_FAILURE_NP(rcOssl))
+        || (RT_SUCCESS(rcIprt) && rcOssl == VERR_CR_PKIX_OSSL_CIPHER_ALGO_NOT_KNOWN_EVP) )
         return rcIprt;
     AssertMsgFailed(("rcIprt=%Rrc rcOssl=%Rrc\n", rcIprt, rcOssl));
     if (RT_FAILURE_NP(rcOssl))
