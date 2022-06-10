@@ -1,4 +1,4 @@
-/* $Id: bios.c 69501 2017-10-28 16:12:47Z vboxsync $ */
+/* $Id: bios.c 74613 2018-10-04 13:44:55Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
@@ -61,36 +61,6 @@
 #endif
 
 static  const char  bios_cvs_version_string[] = "VirtualBox " VBOX_VERSION_STRING;
-
-uint8_t read_byte(uint16_t seg, uint16_t offset)
-{
-    return( *(seg:>(uint8_t *)offset) );
-}
-
-void write_byte(uint16_t seg, uint16_t offset, uint8_t data)
-{
-    *(seg:>(uint8_t *)offset) = data;
-}
-
-uint16_t read_word(uint16_t seg, uint16_t offset)
-{
-    return( *(seg:>(uint16_t *)offset) );
-}
-
-void write_word(uint16_t seg, uint16_t offset, uint16_t data)
-{
-    *(seg:>(uint16_t *)offset) = data;
-}
-
-uint32_t read_dword(uint16_t seg, uint16_t offset)
-{
-    return( *(seg:>(uint32_t *)offset) );
-}
-
-void write_dword(uint16_t seg, uint16_t offset, uint32_t data)
-{
-    *(seg:>(uint32_t *)offset) = data;
-}
 
 uint8_t inb_cmos(uint8_t cmos_reg)
 {
