@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 72935 2018-07-06 12:23:52Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 73090 2018-07-12 11:55:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -289,6 +289,8 @@ bool UIWizardExportApp::exportVMs(CAppliance &comAppliance)
     QVector<KExportOptions> options;
     if (field("manifestSelected").toBool())
         options.append(KExportOptions_CreateManifest);
+    if (field("includeISOsSelected").toBool())
+        options.append(KExportOptions_ExportDVDImages);
     CProgress comProgress = comAppliance.Write(field("format").toString(), options, uri());
     if (comAppliance.isOk() && comProgress.isNotNull())
     {
