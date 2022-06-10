@@ -1,4 +1,4 @@
-/* $Id: scm.h 76546 2018-12-30 06:43:22Z vboxsync $ */
+/* $Id: scm.h 76551 2018-12-31 05:09:06Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -337,6 +337,13 @@ typedef struct SCMSETTINGSBASE
     bool            fFixHeaderGuards;
     /** Whether to include a pragma once statement with the header guard. */
     bool            fPragmaOnce;
+    /** Whether to add a comment on the \#endif part of the header guard. */
+    bool            fEndifGuardComment;
+    /** The guard name prefix.   */
+    char           *pszGuardPrefix;
+    /** Header guards should be normalized using prefix and this directory.
+     * When NULL the guard identifiers found in the header is preserved. */
+    char           *pszGuardRelativeToDir;
 
     /** Whether to fix C/C++ todos. */
     bool            fFixTodos;
