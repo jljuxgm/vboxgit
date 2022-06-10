@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DevPCNet.cpp 76710 2019-01-08 16:12:48Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -5015,7 +5015,7 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     if (!strcmp(szChipType, "Am79C970A"))
         pThis->uDevType = DEV_AM79C970A;    /* 10 Mbps PCnet-PCI II. */
     else if (!strcmp(szChipType, "Am79C973"))
-        pThis->uDevType = DEV_AM79C970A;    /* 10/100 Mbps PCnet-FAST III. */
+        pThis->uDevType = DEV_AM79C973;     /* 10/100 Mbps PCnet-FAST III. */
     else if (!strcmp(szChipType, "Am79C960"))
         pThis->uDevType = DEV_AM79C960;     /* 10 Mbps PCnet-ISA, NE2100/Am2100 compatible. */
     else
