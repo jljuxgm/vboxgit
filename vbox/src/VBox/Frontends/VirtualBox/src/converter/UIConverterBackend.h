@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 75886 2018-12-03 06:41:46Z vboxsync $ */
+/* $Id: UIConverterBackend.h 76044 2018-12-07 09:50:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -29,6 +29,7 @@
 #include "UILibraryDefs.h"
 #include "UIMediumDefs.h"
 #include "UIExtraDataDefs.h"
+#include "UISettingsDefs.h"
 
 /* Other VBox includes: */
 #include <iprt/assert.h>
@@ -119,7 +120,7 @@ template<> SHARED_LIBRARY_STUFF bool canConvert<MiniToolbarAlignment>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<InformationElementType>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<MaxGuestResolutionPolicy>();
 template<> SHARED_LIBRARY_STUFF bool canConvert<UIMediumFormat>();
-
+template<> SHARED_LIBRARY_STUFF bool canConvert<UISettingsDefs::RecordingMode>();
 
 /* Declare COM canConvert specializations: */
 template<> SHARED_LIBRARY_STUFF bool canConvert<KMachineState>();
@@ -258,6 +259,9 @@ template<> SHARED_LIBRARY_STUFF MaxGuestResolutionPolicy fromInternalString<MaxG
 template<> SHARED_LIBRARY_STUFF QString toString(const UIMediumFormat &enmUIMediumFormat);
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const UIMediumFormat &enmUIMediumFormat);
 template<> SHARED_LIBRARY_STUFF UIMediumFormat fromInternalString<UIMediumFormat>(const QString &strUIMediumFormat);
+template<> SHARED_LIBRARY_STUFF QString toString(const UISettingsDefs::RecordingMode &enmRecordingMode);
+template<> SHARED_LIBRARY_STUFF QString toInternalString(const UISettingsDefs::RecordingMode &enmRecordingMode);
+template<> SHARED_LIBRARY_STUFF UISettingsDefs::RecordingMode fromInternalString<UISettingsDefs::RecordingMode>(const QString &enmRecordingMode);
 
 
 /* Declare COM conversion specializations: */

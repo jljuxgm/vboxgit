@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UISettingsDefs.h 76044 2018-12-07 09:50:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */
@@ -46,6 +46,14 @@ namespace UISettingsDefs
         ConfigurationAccessLevel_Partial_Saved,
         /** Configuration is accessible partially, machine is in @a running state. */
         ConfigurationAccessLevel_Partial_Running,
+    };
+
+    /** Recording mode enum is used in Display setting page to determine the recording mode. */
+    enum RecordingMode
+    {
+        RecordingMode_VideoAudio = 0,
+        RecordingMode_VideoOnly  = 1,
+        RecordingMode_AudioOnly  = 2
     };
 
     /** Determines configuration access level for passed @a enmSessionState and @a enmMachineState. */
@@ -286,4 +294,3 @@ private:
 
 
 #endif /* !___UISettingsDefs_h___ */
-
