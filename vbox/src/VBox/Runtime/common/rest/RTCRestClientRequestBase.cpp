@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientRequestBase.cpp 74060 2018-09-04 09:28:28Z vboxsync $ */
+/* $Id: RTCRestClientRequestBase.cpp 74070 2018-09-04 15:17:01Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientRequestBase implementation.
  */
@@ -192,7 +192,8 @@ int RTCRestClientRequestBase::doHeaderParameters(RTHTTP a_hHttp, HEADERPARAMDESC
                 int rc = a_papHeaderParamObjs[i]->toString(&strTmpVal, a_paHeaderParams[i].fFlags);
                 AssertRCReturn(rc, rc);
 
-                rc = RTHttpAddHeader(a_hHttp, a_paHeaderParams[i].pszName, strTmpVal.c_str(), RTHTTPADDHDR_F_BACK);
+                rc = RTHttpAddHeader(a_hHttp, a_paHeaderParams[i].pszName, strTmpVal.c_str(), strTmpVal.length(),
+                                     RTHTTPADDHDR_F_BACK);
                 AssertRCReturn(rc, rc);
             }
             else if (!a_papHeaderParamObjs[i]->isNull())
@@ -216,7 +217,8 @@ int RTCRestClientRequestBase::doHeaderParameters(RTHTTP a_hHttp, HEADERPARAMDESC
                     rc = it.getValue()->toString(&strTmpVal, a_paHeaderParams[i].fFlags);
                     AssertRCReturn(rc, rc);
 
-                    rc = RTHttpAddHeader(a_hHttp, strTmpName.c_str(), strTmpVal.c_str(), RTHTTPADDHDR_F_BACK);
+                    rc = RTHttpAddHeader(a_hHttp, strTmpName.c_str(), strTmpVal.c_str(), strTmpVal.length(),
+                                         RTHTTPADDHDR_F_BACK);
                     AssertRCReturn(rc, rc);
                 }
             }
