@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 73766 2018-08-19 16:55:11Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 76249 2018-12-16 09:36:17Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -399,7 +399,6 @@ int main()
 #ifdef VBOX_WITH_VMSVGA
     CHECK_SIZE(VMSVGAState, RT_ALIGN_Z(sizeof(VMSVGAState), 8));
     CHECK_MEMBER_ALIGNMENT(VGASTATE, svga, 8);
-    CHECK_MEMBER_ALIGNMENT(VGASTATE, svga.u64HostWindowId, 8);
     CHECK_MEMBER_ALIGNMENT(VGASTATE, svga.au32ScratchRegion, 8);
     CHECK_MEMBER_ALIGNMENT(VGASTATE, svga.StatRegBitsPerPixelWr, 8);
 #endif

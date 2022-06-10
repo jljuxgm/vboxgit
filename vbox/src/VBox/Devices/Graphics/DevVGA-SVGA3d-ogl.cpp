@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 76246 2018-12-15 18:33:25Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 76249 2018-12-16 09:36:17Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2964,8 +2964,6 @@ int vmsvga3dContextDefineOgl(PVGASTATE pThis, uint32_t cid, uint32_t fFlags)
 
     for (uint32_t i = 0; i < RT_ELEMENTS(pContext->state.aRenderTargets); i++)
         pContext->state.aRenderTargets[i] = SVGA3D_INVALID_ID;
-
-    AssertReturn(pThis->svga.u64HostWindowId, VERR_INTERNAL_ERROR);
 
 #ifdef RT_OS_WINDOWS
     /* Create a context window with minimal 4x4 size. We will never use the swapchain

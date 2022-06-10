@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 76181 2018-12-12 15:16:19Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 76249 2018-12-16 09:36:17Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -162,8 +162,6 @@ typedef struct VMSVGA3DSTATE *PVMSVGA3DSTATE;
  */
 typedef struct VMSVGAState
 {
-    /** The host window handle */
-    uint64_t                    u64HostWindowId;
     /** The R3 FIFO pointer. */
     R3PTRTYPE(uint32_t *)       pFIFOR3;
     /** The R0 FIFO pointer. */
