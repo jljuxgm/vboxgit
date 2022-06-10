@@ -1,4 +1,4 @@
-# $Id: Config.kmk 74200 2018-09-11 17:43:34Z vboxsync $
+# $Id: Config.kmk 74235 2018-09-13 12:24:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2900,6 +2900,9 @@ if "$(KBUILD_HOST)" == "solaris" && $(KBUILD_HOST_VERSION_MAJOR) == 5 && $(KBUIL
 	$(QUIET)$(APPEND) '$@' 'endif'
 	$(QUIET)$(APPEND) '$@' 'VBOX_SOLARIS_11_UPDATE_VERSION := $$(word 3, $$(subst ., ,$$(word 2,$$(subst -, ,$$(VBOX_SOLARIS_11_FULLVERSION)))))'
 	$(QUIET)$(APPEND) '$@' 'VBOX_SOLARIS_11_BUILD_VERSION  := $$(word 6, $$(subst ., ,$$(word 2,$$(subst -, ,$$(VBOX_SOLARIS_11_FULLVERSION)))))'
+endif
+if1of ($(KBUILD_HOST), darwin freebsd solaris)
+	$(QUIET)$(APPEND) '$@' 'VBOX_HOST_DTRACE_VERSION := $(shell dtrace -V)'
 endif
 if defined(VBOX_PYLINT) && !defined(VBOX_WITH_PYLINT_PRE_V1_0) && !defined(VBOX_WITH_PYLINT_V1_1_PLUS) && !defined(VBOX_WITH_PYLINT_V1_2_1_PLUS)
 	$(QUIET)$(APPEND) '$@' "VBOX_PYLINT_VERSION  := $(call VBOX_PYLINT_FIGURE_VERSION, $(VBOX_PYLINT))"
@@ -7365,7 +7368,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 74200 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 74235 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

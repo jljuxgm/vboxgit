@@ -1,4 +1,4 @@
-/* $Id: dbgstackdumpself.cpp 73808 2018-08-22 08:03:15Z vboxsync $ */
+/* $Id: dbgstackdumpself.cpp 74235 2018-09-13 12:24:33Z vboxsync $ */
 /** @file
  * IPRT - Dump current thread stack to buffer.
  */
@@ -90,6 +90,13 @@ typedef struct RTDBGSTACKSELFSYMSEARCH
 } RTDBGSTACKSELFSYMSEARCH;
 typedef RTDBGSTACKSELFSYMSEARCH *PRTDBGSTACKSELFSYMSEARCH;
 
+
+/*********************************************************************************************************************************
+*   Internal Functions                                                                                                           *
+*********************************************************************************************************************************/
+RT_C_DECLS_BEGIN
+DECLASM(DECLHIDDEN(size_t)) rtDbgStackDumpSelfWorker(char *pszStack, size_t cbStack, uint32_t fFlags, PCRTCCUINTREG pauRegs);
+RT_C_DECLS_END
 
 
 /**
