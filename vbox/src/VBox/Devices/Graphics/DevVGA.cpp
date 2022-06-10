@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 77283 2019-02-12 15:30:10Z vboxsync $ */
+/* $Id: DevVGA.cpp 77287 2019-02-12 16:47:16Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5426,6 +5426,15 @@ static DECLCALLBACK(void) vgaTimerRefresh(PPDMDEVINS pDevIns, PTMTIMER pTimer, v
 
 #ifdef VBOX_WITH_CRHGSMI
     vboxCmdVBVATimerRefresh(pThis);
+#endif
+
+#ifdef VBOX_WITH_VMSVGA
+    /*
+     * Call the VMSVGA FIFO poller/watchdog so we can wake up the thread if
+     * there is work to be done.
+     */
+    if (pThis->svga.fFIFOThreadSleeping && pThis->svga.fEnabled && pThis->svga.fConfigured)
+        vmsvgaFIFOWatchdogTimer(pThis);
 #endif
 }
 
