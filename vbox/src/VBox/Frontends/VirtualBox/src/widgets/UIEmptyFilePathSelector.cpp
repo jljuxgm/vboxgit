@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.cpp 71901 2018-04-18 14:50:52Z vboxsync $ */
+/* $Id: UIEmptyFilePathSelector.cpp 73019 2018-07-10 09:06:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class implementation.
  */
@@ -52,6 +52,8 @@ UIEmptyFilePathSelector::UIEmptyFilePathSelector (QWidget *aParent /* = NULL */)
     , mHomeDir (QDir::current().absolutePath())
     , mIsModified (false)
 {
+    setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+
     mMainLayout = new QHBoxLayout (this);
     mMainLayout->setMargin (0);
 
