@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 77540 2019-03-02 20:48:24Z vboxsync $ */
+/* $Id: FsPerf.cpp 77566 2019-03-05 12:53:05Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -1213,7 +1213,9 @@ void fsPerfMkRmDir(void)
     RTTESTI_CHECK_RC(RTDirRemove(InDir(RT_STR_TUPLE("."))), VERR_INVALID_PARAMETER); /* EINVAL for '.' */
 #endif
 #if defined(RT_OS_WINDOWS)
-    RTTESTI_CHECK_RC(RTDirRemove(InDir(RT_STR_TUPLE(".."))), VERR_SHARING_VIOLATION); /* weird */
+    int rc = RTDirRemove(InDir(RT_STR_TUPLE("..")));
+    if (rc != VERR_DIR_NOT_EMPTY /*ntfs root*/ && rc != VERR_SHARING_VIOLATION /*ntfs weird*/)
+        RTTestIFailed("RTDirRemove(%s) -> %Rrc, expected VERR_DIR_NOT_EMPTY or VERR_SHARING_VIOLATION",  g_szDir, rc);
 #else
     RTTESTI_CHECK_RC(RTDirRemove(InDir(RT_STR_TUPLE(".."))), VERR_DIR_NOT_EMPTY);
 #endif
@@ -2570,9 +2572,9 @@ void fsPerfMMap(RTFILE hFile1, RTFILE hFileNoCache, uint64_t cbFile)
             RTTESTI_CHECK(memcmp(pbMapping, s_abContent, sizeof(s_abContent)) == 0);
 
             /* Now dirty everything by inverting everything. */
-            size_t *puCur  = (size_t *)pbMapping;
-            size_t  cbLeft = sizeof(s_abContent);
-            while (cbLeft-- > 0)
+            size_t *puCur = (size_t *)pbMapping;
+            size_t  cLeft = sizeof(s_abContent) / sizeof(*puCur);
+            while (cLeft-- > 0)
             {
                 *puCur = ~*puCur;
                 puCur++;
@@ -3005,7 +3007,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 77540 $";
+                char szRev[] = "$Revision: 77566 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
