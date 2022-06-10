@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: Performance.cpp 76593 2019-01-01 20:13:29Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -42,7 +42,7 @@
 
 #include <algorithm>
 
-#include "Logging.h"
+#include "LoggingNew.h"
 
 using namespace pm;
 
