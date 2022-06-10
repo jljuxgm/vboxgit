@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 74433 2018-09-24 09:19:56Z vboxsync $ */
+/* $Id: Settings.cpp 74474 2018-09-26 11:55:47Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4258,6 +4258,8 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
                     type = GraphicsControllerType_VBoxVGA;
                 else if (strGraphicsControllerType == "VMSVGA")
                     type = GraphicsControllerType_VMSVGA;
+                else if (strGraphicsControllerType == "VBOXSVGA")
+                    type = GraphicsControllerType_VBoxSVGA;
                 else if (strGraphicsControllerType == "NONE")
                     type = GraphicsControllerType_Null;
                 else
@@ -5646,6 +5648,7 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
             {
                 case GraphicsControllerType_VBoxVGA:            pcszGraphics = "VBoxVGA"; break;
                 case GraphicsControllerType_VMSVGA:             pcszGraphics = "VMSVGA"; break;
+                case GraphicsControllerType_VBoxSVGA:           pcszGraphics = "VBoxSVGA"; break;
                 default: /*case GraphicsControllerType_Null:*/  pcszGraphics = "None"; break;
             }
             pelmDisplay->setAttribute("controller", pcszGraphics);

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 73805 2018-08-21 16:40:42Z vboxsync $ */
+/* $Id: MachineImpl.cpp 74474 2018-09-26 11:55:47Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2020,6 +2020,7 @@ HRESULT Machine::setGraphicsControllerType(GraphicsControllerType_T aGraphicsCon
         case GraphicsControllerType_VBoxVGA:
 #ifdef VBOX_WITH_VMSVGA
         case GraphicsControllerType_VMSVGA:
+        case GraphicsControllerType_VBoxSVGA:
 #endif
             break;
         default:

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 73768 2018-08-19 19:07:19Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 74474 2018-09-26 11:55:47Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -864,6 +864,9 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 else if (   !RTStrICmp(ValueUnion.psz, "vmsvga")
                          || !RTStrICmp(ValueUnion.psz, "vmware"))
                     CHECK_ERROR(sessionMachine, COMSETTER(GraphicsControllerType)(GraphicsControllerType_VMSVGA));
+                else if (   !RTStrICmp(ValueUnion.psz, "vboxsvga")
+                         || !RTStrICmp(ValueUnion.psz, "svga"))
+                    CHECK_ERROR(sessionMachine, COMSETTER(GraphicsControllerType)(GraphicsControllerType_VBoxSVGA));
 #endif
                 else
                 {
