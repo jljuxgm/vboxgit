@@ -1,4 +1,4 @@
-/* $Id: tstRTFilesystem.cpp 69844 2017-11-27 15:44:03Z vboxsync $ */
+/* $Id: tstRTFilesystem.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPRT Filesystem API (Fileystem)
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/vfs.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/test.h>
 #include <iprt/file.h>
 #include <iprt/string.h>

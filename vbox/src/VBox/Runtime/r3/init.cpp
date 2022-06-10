@@ -1,4 +1,4 @@
-/* $Id: init.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
+/* $Id: init.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -53,7 +53,7 @@
 #include <iprt/initterm.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/log.h>
 #include <iprt/mem.h>
 #include <iprt/path.h>

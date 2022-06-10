@@ -1,4 +1,4 @@
-/* $Id: RTSha1Digest.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
+/* $Id: RTSha1Digest.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - SHA1 digest creation
  *
@@ -36,7 +36,7 @@
 
 #include <iprt/alloca.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/file.h>

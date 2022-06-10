@@ -1,4 +1,4 @@
-/* $Id: RTPathSplitA.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: RTPathSplitA.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTPathSplitA and RTPathSplitFree.
  */
@@ -32,7 +32,7 @@
 #include <iprt/path.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 

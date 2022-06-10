@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-os2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: alloc-r0drv-os2.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -37,7 +37,7 @@
 #include <iprt/mem.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/param.h>
 #include "r0drv/alloc-r0drv.h" /** @todo drop the r0drv/alloc-r0drv.cpp stuff on OS/2? */
 

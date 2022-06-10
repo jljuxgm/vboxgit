@@ -1,4 +1,4 @@
-/* $Id: RTCrStoreCertExportAsPem.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTCrStoreCertExportAsPem.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store, RTCrStoreCertExportAsPem.
  */
@@ -34,7 +34,7 @@
 #include <iprt/assert.h>
 #include <iprt/base64.h>
 #include <iprt/dir.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/stream.h>
 

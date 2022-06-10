@@ -1,4 +1,4 @@
-/* $Id: serialport-win.cpp 73720 2018-08-16 17:57:44Z vboxsync $ */
+/* $Id: serialport-win.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Serial Port API, Windows Implementation.
  */
@@ -34,7 +34,7 @@
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/cdefs.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>

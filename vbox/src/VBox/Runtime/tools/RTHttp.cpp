@@ -1,4 +1,4 @@
-/* $Id: RTHttp.cpp 74072 2018-09-04 15:34:41Z vboxsync $ */
+/* $Id: RTHttp.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Utility for retriving URLs.
  */
@@ -32,7 +32,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
 #include <iprt/message.h>
@@ -110,7 +110,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 74072 $\n");
+                RTPrintf("$Revision: 76452 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 's':

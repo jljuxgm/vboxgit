@@ -1,4 +1,4 @@
-/* $Id: errvars-posix.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: errvars-posix.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Save and Restore Error Variables, POSIX Ring-3.
  */
@@ -31,7 +31,7 @@
 #include <netdb.h>
 #include <errno.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include "internal/iprt.h"
 
 #include <iprt/assert.h>

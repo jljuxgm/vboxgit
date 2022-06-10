@@ -1,4 +1,4 @@
-/* $Id: LoadVBoxDDU.cpp 69604 2017-11-06 17:31:31Z vboxsync $ */
+/* $Id: LoadVBoxDDU.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Try Load VBoxDDU to get VFS chain providers from storage.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/initterm.h>
 #include <iprt/ldr.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
 

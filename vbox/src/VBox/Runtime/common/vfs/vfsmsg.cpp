@@ -1,4 +1,4 @@
-/* $Id: vfsmsg.cpp 66602 2017-04-18 15:27:30Z vboxsync $ */
+/* $Id: vfsmsg.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Error Messaging for Chains.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/vfs.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/message.h>
 
 

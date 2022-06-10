@@ -1,4 +1,4 @@
-/* $Id: tstRTNetIPv4.cpp 76061 2018-12-07 15:13:22Z vboxsync $ */
+/* $Id: tstRTNetIPv4.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPv4.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/net.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/test.h>
 

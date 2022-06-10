@@ -1,4 +1,4 @@
-/* $Id: RTFuzzMaster.cpp 72436 2018-06-04 19:59:26Z vboxsync $ */
+/* $Id: RTFuzzMaster.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing master Utility.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/fuzz.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/message.h>
 

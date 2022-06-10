@@ -1,4 +1,4 @@
-/* $Id: logformat.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: logformat.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Log Formatter.
  */
@@ -35,7 +35,7 @@
 #include <iprt/assert.h>
 #ifdef IN_RING3
 # include <iprt/thread.h>
-# include <iprt/err.h>
+# include <iprt/errcore.h>
 #endif
 
 #include <iprt/stdarg.h>

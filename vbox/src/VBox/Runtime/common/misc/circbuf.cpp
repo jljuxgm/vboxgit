@@ -1,4 +1,4 @@
-/* $Id: circbuf.cpp 67364 2017-06-13 14:12:23Z vboxsync $ */
+/* $Id: circbuf.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Lock Free Circular Buffer
  */
@@ -32,7 +32,7 @@
 #include <iprt/mem.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 /*********************************************************************************************************************************

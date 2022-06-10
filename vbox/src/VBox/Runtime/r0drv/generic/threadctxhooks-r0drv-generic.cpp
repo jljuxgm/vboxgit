@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-generic.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Thread Context Switching Hook, Ring-0 Driver, Generic.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/thread.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 #include "internal/iprt.h"
 

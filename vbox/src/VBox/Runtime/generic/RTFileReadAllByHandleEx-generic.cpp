@@ -1,4 +1,4 @@
-/* $Id: RTFileReadAllByHandleEx-generic.cpp 75045 2018-10-24 14:46:53Z vboxsync $ */
+/* $Id: RTFileReadAllByHandleEx-generic.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTFileReadAllByHandleEx, generic implementation.
  */
@@ -34,7 +34,7 @@
 #include <iprt/mem.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTDECL(int) RTFileReadAllByHandleEx(RTFILE File, RTFOFF off, RTFOFF cbMax, uint32_t fFlags, void **ppvFile, size_t *pcbFile)

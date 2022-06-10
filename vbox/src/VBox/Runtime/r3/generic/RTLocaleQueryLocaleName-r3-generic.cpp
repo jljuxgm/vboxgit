@@ -1,4 +1,4 @@
-/* $Id: RTLocaleQueryLocaleName-r3-generic.cpp 68119 2017-07-26 12:21:14Z vboxsync $ */
+/* $Id: RTLocaleQueryLocaleName-r3-generic.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTLocaleQueryLocaleName, ring-3 generic.
  */
@@ -33,7 +33,7 @@
 #include <iprt/locale.h>
 #include "internal/iprt.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 
 

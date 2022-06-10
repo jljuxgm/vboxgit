@@ -1,4 +1,4 @@
-/* $Id: RTManifest.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
+/* $Id: RTManifest.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Manifest Utility.
  */
@@ -31,7 +31,7 @@
 #include <iprt/manifest.h>
 
 #include <iprt/buildconfig.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>

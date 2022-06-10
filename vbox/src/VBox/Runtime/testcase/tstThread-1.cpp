@@ -1,4 +1,4 @@
-/* $Id: tstThread-1.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstThread-1.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - Thread Testcase no.1.
  */
@@ -31,7 +31,7 @@
 #include <iprt/thread.h>
 #include <iprt/stream.h>
 #include <iprt/initterm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 /*********************************************************************************************************************************

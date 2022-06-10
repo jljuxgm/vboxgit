@@ -1,4 +1,4 @@
-/* $Id: RTKrnlModInfo.cpp 74252 2018-09-13 17:22:06Z vboxsync $ */
+/* $Id: RTKrnlModInfo.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Utility for getting information about loaded kernel modules.
  */
@@ -31,7 +31,7 @@
 #include <iprt/krnlmod.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>

@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-os2.cpp 75553 2018-11-18 04:56:15Z vboxsync $ */
+/* $Id: initterm-r0drv-os2.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, Ring-0 Driver, OS/2.
  */
@@ -37,7 +37,7 @@
 #include "the-os2-kernel.h"
 
 #include "internal/initterm.h"
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 
 

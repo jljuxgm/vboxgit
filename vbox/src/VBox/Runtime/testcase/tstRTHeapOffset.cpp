@@ -1,4 +1,4 @@
-/* $Id: tstRTHeapOffset.cpp 73502 2018-08-05 12:40:50Z vboxsync $ */
+/* $Id: tstRTHeapOffset.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - Offset Based Heap.
  */
@@ -31,7 +31,7 @@
 #include <iprt/heap.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/log.h>
 #include <iprt/rand.h>

@@ -1,4 +1,4 @@
-/* $Id: RTUuidCreate-win.cpp 70456 2018-01-03 20:37:19Z vboxsync $ */
+/* $Id: RTUuidCreate-win.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - UUID, Windows RTUuidCreate implementation.
  */
@@ -33,7 +33,7 @@
 
 #include <iprt/uuid.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/rand.h>
 
 #include "internal-r3-win.h"

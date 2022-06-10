@@ -1,4 +1,4 @@
-/* $Id: tstRTSemXRoads.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTSemXRoads.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSemXRoads.
  */
@@ -31,7 +31,7 @@
 #include <iprt/semaphore.h>
 
 #include <iprt/asm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/test.h>
 #include <iprt/thread.h>

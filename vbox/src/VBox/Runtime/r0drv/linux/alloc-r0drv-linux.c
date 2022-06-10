@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -33,7 +33,7 @@
 #include <iprt/mem.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include "r0drv/alloc-r0drv.h"
 
 
@@ -59,7 +59,7 @@
 #ifdef RTMEMALLOC_EXEC_HEAP
 # include <iprt/heap.h>
 # include <iprt/spinlock.h>
-# include <iprt/err.h>
+# include <iprt/errcore.h>
 #endif
 
 

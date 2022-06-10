@@ -1,4 +1,4 @@
-/* $Id: tstRTFileModeStringToFlags.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
+/* $Id: tstRTFileModeStringToFlags.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - File mode string to IPRT file mode flags.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/file.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
 #include <iprt/test.h>

@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-heap-posix.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: rtmempage-exec-mmap-heap-posix.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with heap.
  */
@@ -35,7 +35,7 @@
 #include <iprt/assert.h>
 #include <iprt/avl.h>
 #include <iprt/critsect.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/once.h>
 #include <iprt/param.h>
 #include <iprt/string.h>

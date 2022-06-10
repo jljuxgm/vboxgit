@@ -1,4 +1,4 @@
-﻿/* $Id: RTNtDbgHelp.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+﻿/* $Id: RTNtDbgHelp.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTNtDbgHelp -  Tool for working/exploring DbgHelp.dll.
  */
@@ -43,7 +43,7 @@
 #include <iprt/path.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 #include <iprt/win/lazy-dbghelp.h>
 
@@ -361,7 +361,7 @@ int main(int argc, char **argv)
 
 
             case 'V':
-                RTPrintf("$Revision: 73097 $");
+                RTPrintf("$Revision: 76452 $");
                 break;
 
             case 'h':

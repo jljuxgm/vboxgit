@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-linux.c 72640 2018-06-21 14:45:13Z vboxsync $ */
+/* $Id: thread-r0drv-linux.c 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Linux.
  */
@@ -37,7 +37,7 @@
 # include <iprt/asm-amd64-x86.h>
 #endif
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mp.h>
 
 

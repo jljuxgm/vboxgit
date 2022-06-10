@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 72261 2018-05-18 13:20:51Z vboxsync $ */
+/* $Id: log-vbox.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -153,7 +153,7 @@
 
 #include <VBox/log.h>
 #include <iprt/asm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/time.h>
 #ifdef IN_RING3
 # include <iprt/param.h>

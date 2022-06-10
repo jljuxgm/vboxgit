@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-builtin.cpp 73665 2018-08-14 17:49:23Z vboxsync $ */
+/* $Id: pkix-signature-builtin.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schemas, Built-in providers.
  */
@@ -31,7 +31,7 @@
 #include "internal/iprt.h"
 #include <iprt/crypto/pkix.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 
 #ifdef IPRT_WITH_OPENSSL

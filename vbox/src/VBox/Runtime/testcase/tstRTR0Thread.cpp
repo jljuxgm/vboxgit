@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Thread.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTR0Thread.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Kernel thread.
  */
@@ -31,7 +31,7 @@
 #include <iprt/thread.h>
 
 #include <iprt/asm-amd64-x86.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <VBox/sup.h>
 #include "tstRTR0Thread.h"
 #include "tstRTR0Common.h"

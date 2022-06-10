@@ -1,4 +1,4 @@
-/* $Id: tstRTShMem.cpp 75879 2018-12-02 18:39:16Z vboxsync $ */
+/* $Id: tstRTShMem.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTShMem.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/shmem.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/log.h>
 #include <iprt/string.h>
 #include <iprt/test.h>

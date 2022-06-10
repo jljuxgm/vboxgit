@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-netbsd.c 69217 2017-10-24 14:56:35Z vboxsync $ */
+/* $Id: alloc-r0drv-netbsd.c 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NetBSD.
  */
@@ -58,7 +58,7 @@
 #include <iprt/mem.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/param.h>
 
 #include "r0drv/alloc-r0drv.h"

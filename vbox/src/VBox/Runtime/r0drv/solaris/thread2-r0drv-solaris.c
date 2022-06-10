@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-solaris.c 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: thread2-r0drv-solaris.c 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Solaris.
  */
@@ -34,7 +34,7 @@
 #include <iprt/process.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include "internal/thread.h"
 
 #define SOL_THREAD_ID_PTR           ((uint64_t *)((char *)curthread + g_offrtSolThreadId))

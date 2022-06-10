@@ -1,4 +1,4 @@
-/* $Id: asn1-safer-allocator.cpp 73662 2018-08-14 16:13:43Z vboxsync $ */
+/* $Id: asn1-safer-allocator.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Safer Allocator, for sensitive data.
  */
@@ -32,7 +32,7 @@
 #include <iprt/asn1.h>
 
 #include <iprt/memsafer.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 
 

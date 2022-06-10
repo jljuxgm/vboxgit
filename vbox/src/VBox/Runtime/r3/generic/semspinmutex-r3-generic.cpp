@@ -1,4 +1,4 @@
-/* $Id: semspinmutex-r3-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: semspinmutex-r3-generic.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Spinning Mutex Semaphores, Ring-3, Generic.
  */
@@ -32,7 +32,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/alloc.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 #include <iprt/critsect.h>
 

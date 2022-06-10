@@ -1,4 +1,4 @@
-/* $Id: tstRTProcQueryUsername.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTProcQueryUsername.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcQueryUsername.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/initterm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 #include <iprt/process.h>
 #include <iprt/test.h>

@@ -1,4 +1,4 @@
-/* $Id: tstRTThreadPoke.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
+/* $Id: tstRTThreadPoke.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTThreadPoke.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/thread.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/test.h>
 #include <iprt/string.h>
 

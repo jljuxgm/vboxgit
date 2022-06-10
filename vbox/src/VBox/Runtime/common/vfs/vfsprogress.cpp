@@ -1,4 +1,4 @@
-/* $Id: vfsprogress.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: vfsprogress.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, progress filter for files.
  */
@@ -32,7 +32,7 @@
 #include <iprt/vfslowlevel.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/poll.h>
 #include <iprt/string.h>

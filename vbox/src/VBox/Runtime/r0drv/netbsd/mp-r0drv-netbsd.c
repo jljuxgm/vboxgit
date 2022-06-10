@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-netbsd.c 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: mp-r0drv-netbsd.c 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NetBSD.
  */
@@ -31,7 +31,7 @@
 #include "the-netbsd-kernel.h"
 
 #include <iprt/mp.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/asm.h>
 #include <iprt/cpuset.h>
 #include "r0drv/mp-r0drv.h"

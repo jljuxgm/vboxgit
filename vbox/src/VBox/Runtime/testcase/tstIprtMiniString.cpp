@@ -1,4 +1,4 @@
-/* $Id: tstIprtMiniString.cpp 75008 2018-10-23 16:08:44Z vboxsync $ */
+/* $Id: tstIprtMiniString.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTCString.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/cpp/ministring.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/test.h>

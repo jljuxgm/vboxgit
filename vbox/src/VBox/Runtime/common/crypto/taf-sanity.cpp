@@ -1,4 +1,4 @@
-/* $Id: taf-sanity.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: taf-sanity.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Trust Anchor Format (RFC-5914), Sanity Checkers.
  */
@@ -31,7 +31,7 @@
 #include "internal/iprt.h"
 #include <iprt/crypto/taf.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 #include "taf-internal.h"
 

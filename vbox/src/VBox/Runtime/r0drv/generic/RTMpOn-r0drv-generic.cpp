@@ -1,4 +1,4 @@
-/* $Id: RTMpOn-r0drv-generic.cpp 75462 2018-11-14 19:51:50Z vboxsync $ */
+/* $Id: RTMpOn-r0drv-generic.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Generic Stubs.
  */
@@ -31,7 +31,7 @@
 #include <iprt/mp.h>
 #include "internal/iprt.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTDECL(int) RTMpOnAll(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)

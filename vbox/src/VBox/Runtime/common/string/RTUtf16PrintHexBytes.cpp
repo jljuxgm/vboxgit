@@ -1,4 +1,4 @@
-/* $Id: RTUtf16PrintHexBytes.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
+/* $Id: RTUtf16PrintHexBytes.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTUtf16PrintHexBytes.
  */
@@ -32,7 +32,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTDECL(int) RTUtf16PrintHexBytes(PRTUTF16 pwszBuf, size_t cwcBuf, void const *pv, size_t cb, uint32_t fFlags)

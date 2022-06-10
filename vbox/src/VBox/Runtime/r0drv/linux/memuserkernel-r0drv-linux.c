@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-linux.c 74406 2018-09-21 10:21:22Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-linux.c 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Linux.
  */
@@ -32,7 +32,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/mem.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTR0DECL(int) RTR0MemUserCopyFrom(void *pvDst, RTR3PTR R3PtrSrc, size_t cb)

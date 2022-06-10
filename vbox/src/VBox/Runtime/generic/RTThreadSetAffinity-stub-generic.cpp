@@ -1,4 +1,4 @@
-/* $Id: RTThreadSetAffinity-stub-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTThreadSetAffinity-stub-generic.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Generic RTThreadSetAffinity stub.
  */
@@ -32,7 +32,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/cpuset.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTR3DECL(int) RTThreadSetAffinity(PCRTCPUSET pCpuSet)

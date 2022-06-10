@@ -1,4 +1,4 @@
-/* $Id: uuid-win.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: uuid-win.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - UUID, Windows implementation.
  */
@@ -34,7 +34,7 @@
 #include <iprt/uuid.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTDECL(int)  RTUuidClear(PRTUUID pUuid)

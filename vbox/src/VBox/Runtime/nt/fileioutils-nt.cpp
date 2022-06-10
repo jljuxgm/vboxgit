@@ -1,4 +1,4 @@
-/* $Id: fileioutils-nt.cpp 69691 2017-11-14 15:27:52Z vboxsync $ */
+/* $Id: fileioutils-nt.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - File I/O, common NT helpers.
  */
@@ -31,7 +31,7 @@
 #include <iprt/nt/nt.h>
 #include "internal/iprt.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include "internal/file.h"
 
 

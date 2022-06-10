@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-os2.cpp 75133 2018-10-28 17:49:49Z vboxsync $ */
+/* $Id: spinlock-r0drv-os2.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, OS/2.
  */
@@ -35,7 +35,7 @@
 #include "the-os2-kernel.h"
 
 #include <iprt/spinlock.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>

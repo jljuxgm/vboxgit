@@ -1,4 +1,4 @@
-/* $Id: macstr.cpp 71627 2018-04-02 22:37:11Z vboxsync $ */
+/* $Id: macstr.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -34,7 +34,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/message.h>
 #include <iprt/string.h>
 

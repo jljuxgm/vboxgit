@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-netbsd.c 63357 2016-08-12 03:55:15Z vboxsync $ */
+/* $Id: thread2-r0drv-netbsd.c 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, NetBSD.
  */
@@ -35,7 +35,7 @@
 #include "the-netbsd-kernel.h"
 
 #include <iprt/thread.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 
 #include "internal/thread.h"

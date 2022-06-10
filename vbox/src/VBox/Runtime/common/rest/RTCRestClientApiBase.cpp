@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBase.cpp 75285 2018-11-06 13:33:15Z vboxsync $ */
+/* $Id: RTCRestClientApiBase.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation.
  */
@@ -33,7 +33,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/http.h>
 #include <iprt/log.h>
 #include <iprt/uri.h>

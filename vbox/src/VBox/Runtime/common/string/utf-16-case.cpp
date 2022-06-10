@@ -1,4 +1,4 @@
-/* $Id: utf-16-case.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
+/* $Id: utf-16-case.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - UTF-16, Case Sensitivity.
  */
@@ -35,7 +35,7 @@
 #include <iprt/alloc.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include "internal/string.h"
 
 

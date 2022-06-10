@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-netbsd.c 63549 2016-08-16 12:55:14Z vboxsync $ */
+/* $Id: spinlock-r0drv-netbsd.c 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, NetBSD.
  */
@@ -36,7 +36,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/spinlock.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>

@@ -1,4 +1,4 @@
-/* $Id: tstRTPathQueryInfo.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
+/* $Id: tstRTPathQueryInfo.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTPathQueryInfoEx testcase
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/path.h>
 #include <iprt/initterm.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/stream.h>
 #include <iprt/message.h>
 #include <iprt/time.h>

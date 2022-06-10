@@ -1,4 +1,4 @@
-/* $Id: RTChMod.cpp 69813 2017-11-23 18:33:30Z vboxsync $ */
+/* $Id: RTChMod.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Changes the mode/attributes of a file system object.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/buildconfig.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>

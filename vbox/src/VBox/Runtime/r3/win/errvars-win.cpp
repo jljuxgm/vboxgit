@@ -1,4 +1,4 @@
-/* $Id: errvars-win.cpp 70195 2017-12-18 13:40:26Z vboxsync $ */
+/* $Id: errvars-win.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Save and Restore Error Variables, Windows Ring-3.
  */
@@ -31,7 +31,7 @@
 #include <iprt/win/winsock2.h>
 #include <errno.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include "internal/iprt.h"
 
 #include <iprt/assert.h>

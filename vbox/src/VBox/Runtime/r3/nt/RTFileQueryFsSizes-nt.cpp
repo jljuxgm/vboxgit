@@ -1,4 +1,4 @@
-/* $Id: RTFileQueryFsSizes-nt.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTFileQueryFsSizes-nt.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTFileQueryFsSizes, Native NT.
  */
@@ -32,7 +32,7 @@
 #include "internal-r3-nt.h"
 
 #include <iprt/file.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 

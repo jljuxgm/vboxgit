@@ -1,4 +1,4 @@
-/* $Id: krnlmod-darwin.cpp 74254 2018-09-13 17:22:07Z vboxsync $ */
+/* $Id: krnlmod-darwin.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Kernel module, Darwin.
  */
@@ -33,7 +33,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/ldr.h>
 #include <iprt/mem.h>
 #include <iprt/once.h>

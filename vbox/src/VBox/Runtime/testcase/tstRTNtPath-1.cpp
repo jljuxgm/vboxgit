@@ -1,4 +1,4 @@
-/* $Id: tstRTNtPath-1.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
+/* $Id: tstRTNtPath-1.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTNtPath*.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/nt/nt-and-windows.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/dir.h>
 #include <iprt/env.h>
 #include <iprt/path.h>

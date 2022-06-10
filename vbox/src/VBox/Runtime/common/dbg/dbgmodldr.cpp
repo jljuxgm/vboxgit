@@ -1,4 +1,4 @@
-/* $Id: dbgmodldr.cpp 73494 2018-08-04 19:41:30Z vboxsync $ */
+/* $Id: dbgmodldr.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Image Interpretation by RTLdr.
  */
@@ -32,7 +32,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/ldr.h>
 #include <iprt/mem.h>

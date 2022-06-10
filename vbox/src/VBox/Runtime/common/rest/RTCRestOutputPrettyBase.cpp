@@ -1,4 +1,4 @@
-/* $Id: RTCRestOutputPrettyBase.cpp 74425 2018-09-23 15:41:48Z vboxsync $ */
+/* $Id: RTCRestOutputPrettyBase.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestOutputPrettyBase implementation.
  */
@@ -31,7 +31,7 @@
 #define LOG_GROUP RTLOGGROUP_REST
 #include <iprt/cpp/restoutput.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 
 

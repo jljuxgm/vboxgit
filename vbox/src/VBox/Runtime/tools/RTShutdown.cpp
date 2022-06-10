@@ -1,4 +1,4 @@
-/* $Id: RTShutdown.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
+/* $Id: RTShutdown.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - System Shutdown.
  */
@@ -31,7 +31,7 @@
 #include <iprt/system.h>
 
 #include <iprt/buildconfig.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
 #include <iprt/message.h>

@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
+/* $Id: strformatrt.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -41,7 +41,7 @@
 #include <iprt/string.h>
 #include <iprt/stdarg.h>
 #ifdef IN_RING3
-# include <iprt/err.h>
+# include <iprt/errcore.h>
 # include <iprt/thread.h>
 # include <iprt/utf16.h>
 #endif

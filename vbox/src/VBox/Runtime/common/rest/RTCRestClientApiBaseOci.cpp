@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBaseOci.cpp 74425 2018-09-23 15:41:48Z vboxsync $ */
+/* $Id: RTCRestClientApiBaseOci.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation, OCI specific bits.
  */
@@ -33,7 +33,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/base64.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/http.h>
 #include <iprt/log.h>
 #include <iprt/sha.h>

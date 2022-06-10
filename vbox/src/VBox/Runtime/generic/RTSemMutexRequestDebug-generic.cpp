@@ -1,4 +1,4 @@
-/* $Id: RTSemMutexRequestDebug-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTSemMutexRequestDebug-generic.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTSemMutexRequestDebug, generic RTSemMutexRequestNoResumeDebug wrapper.
  */
@@ -33,7 +33,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/time.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 
 

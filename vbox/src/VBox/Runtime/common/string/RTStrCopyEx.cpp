@@ -1,4 +1,4 @@
-/* $Id: RTStrCopyEx.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
+/* $Id: RTStrCopyEx.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTStrCopyEx.
  */
@@ -31,7 +31,7 @@
 #include <iprt/string.h>
 #include "internal/iprt.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTDECL(int) RTStrCopyEx(char *pszDst, size_t cbDst, const char *pszSrc, size_t cchMaxSrc)

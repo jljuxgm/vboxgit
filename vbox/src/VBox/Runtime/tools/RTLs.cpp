@@ -1,4 +1,4 @@
-/* $Id: RTLs.cpp 70421 2018-01-02 11:20:24Z vboxsync $ */
+/* $Id: RTLs.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - /bin/ls like utility for testing the VFS code.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/fs.h>
 #include <iprt/initterm.h>
 #include <iprt/message.h>

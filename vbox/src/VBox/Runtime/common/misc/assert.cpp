@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 75235 2018-11-02 21:01:36Z vboxsync $ */
+/* $Id: assert.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Assertions, common code.
  */
@@ -38,7 +38,7 @@
 # endif
 # include <iprt/dbg.h>
 #endif
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/log.h>
 #include <iprt/string.h>
 #include <iprt/stdarg.h>

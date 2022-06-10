@@ -1,4 +1,4 @@
-/* $Id: tstRTVfs.cpp 69840 2017-11-27 15:19:30Z vboxsync $ */
+/* $Id: tstRTVfs.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPRT Virtual File System (VFS) API
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/vfs.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/test.h>
 #include <iprt/file.h>
 #include <iprt/string.h>

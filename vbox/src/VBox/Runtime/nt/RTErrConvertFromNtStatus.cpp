@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromNtStatus.cpp 76119 2018-12-10 13:24:12Z vboxsync $ */
+/* $Id: RTErrConvertFromNtStatus.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Convert NT status codes to iprt status codes.
  */
@@ -31,9 +31,9 @@
 #include <ntstatus.h>
 typedef long NTSTATUS;                  /** @todo figure out which headers to include to get this one typedef... */
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #ifdef VBOX
-# include <VBox/err.h>
+# include <iprt/errcore.h>
 #endif
 #include <iprt/log.h>
 #include <iprt/assert.h>

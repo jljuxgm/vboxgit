@@ -1,4 +1,4 @@
-/* $Id: tstRTCritSect.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTCritSect.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - Critical Sections.
  */
@@ -37,7 +37,7 @@
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/getopt.h>
 #include <iprt/cpp/lock.h>
@@ -494,7 +494,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 69111 $\n");
+                RTPrintf("$Revision: 76452 $\n");
                 return 0;
 
             default:

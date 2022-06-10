@@ -1,4 +1,4 @@
-/* $Id: tstRTList.cpp 72054 2018-04-27 09:18:51Z vboxsync $ */
+/* $Id: tstRTList.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - List interface.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/list.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/test.h>

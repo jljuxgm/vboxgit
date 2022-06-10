@@ -1,4 +1,4 @@
-/* $Id: ldr.cpp 73150 2018-07-16 10:03:41Z vboxsync $ */
+/* $Id: ldr.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader.
  */
@@ -35,7 +35,7 @@
 #include <iprt/alloc.h>
 #include <iprt/string.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/log.h>
 #include "internal/ldr.h"
 

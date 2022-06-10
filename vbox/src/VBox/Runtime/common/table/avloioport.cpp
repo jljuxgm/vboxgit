@@ -1,4 +1,4 @@
-/* $Id: avloioport.cpp 65892 2017-02-27 17:04:46Z vboxsync $ */
+/* $Id: avloioport.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - AVL tree, RTIOPORT, unique keys, offset pointers.
  */
@@ -62,7 +62,7 @@ static const char szFileId[] = "Id: kAVLULInt.c,v 1.4 2003/02/13 02:02:38 bird E
 *********************************************************************************************************************************/
 #include <iprt/avl.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 /*
  * Include the code.

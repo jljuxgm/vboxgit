@@ -1,4 +1,4 @@
-/* $Id: tstRTR0SemMutex.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTR0SemMutex.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Mutex Semaphores.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/semaphore.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <VBox/sup.h>
 #include <iprt/string.h>
 #include <iprt/time.h>

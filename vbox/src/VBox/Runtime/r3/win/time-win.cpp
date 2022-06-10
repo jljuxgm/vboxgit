@@ -1,4 +1,4 @@
-/* $Id: time-win.cpp 70405 2018-01-01 17:45:14Z vboxsync $ */
+/* $Id: time-win.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Time, Windows.
  */
@@ -36,7 +36,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include "internal/time.h"
 #include "internal-r3-win.h"
 

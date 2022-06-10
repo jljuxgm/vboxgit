@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-darwin.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-darwin.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Darwin.
  */
@@ -36,7 +36,7 @@
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 # include <iprt/asm-amd64-x86.h>
 #endif
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTR0DECL(int) RTR0MemUserCopyFrom(void *pvDst, RTR3PTR R3PtrSrc, size_t cb)

@@ -1,4 +1,4 @@
-/* $Id: RTR0DbgKrnlInfoGetSymbol.cpp 70148 2017-12-15 14:08:52Z vboxsync $ */
+/* $Id: RTR0DbgKrnlInfoGetSymbol.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTR0DbgKrnlInfoGetSymbol, ring-0 drivers.
  */
@@ -31,7 +31,7 @@
 #include "internal/iprt.h"
 #include <iprt/dbg.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTR0DECL(void *) RTR0DbgKrnlInfoGetSymbol(RTDBGKRNLINFO hKrnlInfo, const char *pszModule, const char *pszSymbol)

@@ -1,4 +1,4 @@
-/* $Id: RTUtf16Copy.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
+/* $Id: RTUtf16Copy.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTUtf16Copy.
  */
@@ -31,7 +31,7 @@
 #include <iprt/utf16.h>
 #include "internal/iprt.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTDECL(int) RTUtf16Copy(PRTUTF16 pwszDst, size_t cwcDst, PCRTUTF16 pwszSrc)

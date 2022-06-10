@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-os2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: thread2-r0drv-os2.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Generic Stubs.
  */
@@ -35,7 +35,7 @@
 #include "the-os2-kernel.h"
 
 #include <iprt/thread.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include "internal/thread.h"
 
 

@@ -1,4 +1,4 @@
-/* $Id: memtracker.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: memtracker.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - Memory Tracker & Leak Detector.
  */
@@ -38,7 +38,7 @@
 #ifdef IN_RING3
 # include <iprt/file.h>
 #endif
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/list.h>
 #include <iprt/log.h>
 #include <iprt/mem.h>

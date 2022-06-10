@@ -1,4 +1,4 @@
-/* $Id: tstTime-3.cpp 70406 2018-01-01 17:46:37Z vboxsync $ */
+/* $Id: tstTime-3.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime test.
  */
@@ -33,7 +33,7 @@
 #include <iprt/string.h>
 #include <iprt/initterm.h>
 #include <iprt/thread.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 

@@ -1,4 +1,4 @@
-/* $Id: RTTimeSet-posix.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTTimeSet-posix.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
 /** @file
  * IPRT - RTTimeSet, POSIX.
  */
@@ -37,7 +37,7 @@
 #include <iprt/time.h>
 #include "internal/iprt.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 RTDECL(int) RTTimeSet(PCRTTIMESPEC pTime)
