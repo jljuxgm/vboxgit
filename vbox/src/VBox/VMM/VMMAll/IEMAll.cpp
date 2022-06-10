@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 74336 2018-09-18 09:50:48Z vboxsync $ */
+/* $Id: IEMAll.cpp 74338 2018-09-18 10:02:32Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -12538,8 +12538,6 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PVMCPU pVCpu, uint16_t uSel)
 /** This instruction raises an \#UD in real and V8086 mode or when not using a
  *  64-bit code segment when in long mode (applicable to all VMX instructions
  *  except VMCALL).
- *
- *  @note Update IEM_VMX_INSTR_CHECKS() if changes are made here.
  */
 #define IEMOP_HLP_VMX_INSTR(a_szInstr, a_InsDiagPrefix) \
     do \
