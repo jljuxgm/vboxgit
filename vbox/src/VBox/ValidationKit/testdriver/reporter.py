@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: reporter.py 77507 2019-02-28 16:44:56Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 77507 $"
 
 
 # Standard Python imports.
@@ -782,8 +782,13 @@ class RemoteReporter(ReporterBase):
         dHeader['Content-Type'] = 'application/octet-stream';
         self._writeOutput('%s: _doUploadFile: sHeader=%s' % (utils.getTimePrefix(), dHeader,));
         oSrcFile.seek(0, 2);
-        self._writeOutput('%s: _doUploadFile: size=%d' % (utils.getTimePrefix(), oSrcFile.tell(),));
+        cbFileSize = oSrcFile.tell();
+        self._writeOutput('%s: _doUploadFile: size=%d' % (utils.getTimePrefix(), cbFileSize,));
         oSrcFile.seek(0);
+
+        if cbFileSize <= 0: # The Test Manager will bitch if the file size is 0, so skip uploading.
+            self._writeOutput('%s: _doUploadFile: Empty file, skipping upload' % utils.getTimePrefix());
+            return False;
 
         from common import constants;
         sUrl = self._sTmServerPath + '&' \
@@ -1759,4 +1764,3 @@ def _InitReporterModule():
 
 if __name__ != "checker": # pychecker avoidance.
     _InitReporterModule();
-
