@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 77206 2019-02-07 22:15:01Z vboxsync $ */
+/* $Id: DevVGA.cpp 77283 2019-02-12 15:30:10Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4836,7 +4836,7 @@ static DECLCALLBACK(int) vgaPortUpdateDisplayAll(PPDMIDISPLAYPORT pInterface, bo
  * @returns VBox status code.
  * @param   pInterface          Pointer to this interface.
  * @param   cMilliesInterval    Number of millis between two refreshes.
- * @see     PDMIKEYBOARDPORT::pfnSetRefreshRate() for details.
+ * @see     PDMIDISPLAYPORT::pfnSetRefreshRate() for details.
  */
 static DECLCALLBACK(int) vgaPortSetRefreshRate(PPDMIDISPLAYPORT pInterface, uint32_t cMilliesInterval)
 {
