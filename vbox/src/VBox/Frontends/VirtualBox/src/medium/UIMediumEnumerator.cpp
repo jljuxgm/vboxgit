@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 72667 2018-06-22 16:22:27Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 73917 2018-08-27 14:35:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -171,6 +171,16 @@ void UIMediumEnumerator::enumerateMediums()
     foreach (const QString &strMediumID, m_mediums.keys())
         if (!strMediumID.isNull() && strMediumID != UIMedium::nullID())
             createMediumEnumerationTask(m_mediums[strMediumID]);
+}
+
+void UIMediumEnumerator::refreshMediums()
+{
+    /* Make sure we are not already in progress: */
+    AssertReturnVoid(!m_fMediumEnumerationInProgress);
+
+    /* Refresh all known media we have: */
+    foreach (const QString &strMediumID, m_mediums.keys())
+        m_mediums[strMediumID].refresh();
 }
 
 void UIMediumEnumerator::sltHandleMachineUpdate(QString strMachineID)
@@ -578,4 +588,3 @@ void UIMediumEnumerator::recacheFromActualUsage(const CMediumMap &currentCMedium
 
 
 #include "UIMediumEnumerator.moc"
-

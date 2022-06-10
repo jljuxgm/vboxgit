@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 73196 2018-07-18 10:45:52Z vboxsync $ */
+/* $Id: VBoxGlobal.h 73917 2018-08-27 14:35:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -477,6 +477,8 @@ public:
      * @{ */
         /** Starts medium enumeration. */
         void startMediumEnumeration();
+        /** Calls refresh for each medium which has been already enumerated. */
+        void refreshMediums();
         /** Returns whether medium enumeration is in progress. */
         bool isMediumEnumerationInProgress() const;
         /** Returns enumerated medium with certain @a strMediumID. */
