@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 77860 2019-03-24 02:38:22Z vboxsync $ */
+/* $Id: vbsf.cpp 77861 2019-03-24 02:42:58Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -2381,6 +2381,9 @@ int vbsfSymlink(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLSTRING *pNewPath, SH
         vbsfFreeFullPath(pszFullNewPath);
         return rc;
     }
+
+    /** @todo r=bird: We _must_ perform slash conversion on the target (what this
+     *        code calls 'pOldPath' for some peculiar reason)! */
 
     rc = RTSymlinkCreate(pszFullNewPath, (const char *)pOldPath->String.utf8,
                          RTSYMLINKTYPE_UNKNOWN, 0);
