@@ -1,4 +1,4 @@
-/* $Id: tstRTSymlink.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstRTSymlink.cpp 78373 2019-05-03 11:30:04Z vboxsync $ */
 /** @file
  * IPRT Testcase - Symbolic Links.
  */
@@ -66,7 +66,7 @@ static void test1Worker(RTTEST hTest, const char *pszBaseDir,
     /* Create it.*/
     RTTESTI_CHECK_RC_OK_RETV(RTPathJoin(szPath1, sizeof(szPath1), pszBaseDir, "tstRTSymlink-link-1"));
     RTSymlinkDelete(szPath1, 0); /* clean up previous run */
-    int rc = RTSymlinkCreate(szPath1, pszTarget, RTSYMLINKTYPE_FILE, 0);
+    int rc = RTSymlinkCreate(szPath1, pszTarget, enmType, 0);
     if (rc == VERR_NOT_SUPPORTED)
     {
         RTTestPrintf(hTest, RTTESTLVL_ALWAYS, "VERR_NOT_SUPPORTED - skipping\n");
