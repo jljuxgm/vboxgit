@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 77518 2019-03-01 10:05:21Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.cpp 77519 2019-03-01 10:19:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -34,15 +34,16 @@
 class UILocationSelector : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
+
+signals:
+
+    void sigExpandCollapseTreeView();
 public:
 
     UILocationSelector(QWidget *pParent = 0);
     int  lineEditWidth() const;
     void updateLineEditText(const QString &strText);
 
-signals:
-
-    void sigExpandCollapseTreeView();
 
 protected:
 

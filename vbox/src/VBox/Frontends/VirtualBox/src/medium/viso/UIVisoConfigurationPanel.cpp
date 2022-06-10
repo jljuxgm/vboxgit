@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.cpp 77518 2019-03-01 10:05:21Z vboxsync $ */
+/* $Id: UIVisoConfigurationPanel.cpp 77519 2019-03-01 10:19:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class implementation.
  */
@@ -110,13 +110,10 @@ void UIVisoConfigurationPanel::prepareConnections()
 
 bool UIVisoConfigurationPanel::eventFilter(QObject *pObject, QEvent *pEvent)
 {
-    /* Depending on event-type: */
     switch (pEvent->type())
     {
-        /* Process key press only: */
         case QEvent::KeyPress:
         {
-            /* Cast to corresponding key press event: */
             QKeyEvent *pKeyEvent = static_cast<QKeyEvent*>(pEvent);
 
              if (pKeyEvent->key() == Qt::Key_Return && m_pCustomOptionsComboBox && m_pCustomOptionsComboBox->hasFocus())
@@ -127,7 +124,6 @@ bool UIVisoConfigurationPanel::eventFilter(QObject *pObject, QEvent *pEvent)
         default:
         break;
     }
-    /* Call to base-class: */
     return UIDialogPanel::eventFilter(pObject, pEvent);
 }
 

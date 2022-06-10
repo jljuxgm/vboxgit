@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 77518 2019-03-01 10:05:21Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.h 77519 2019-03-01 10:19:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -94,7 +94,6 @@ private:
     void                    prepareConnections();
     void                    initializeModel();
     UICustomFileSystemItem *rootItem();
-
 
     /** @name Index conversion functions. These are half-smart and tries to determine the source model before conversion.
       * @{ */
