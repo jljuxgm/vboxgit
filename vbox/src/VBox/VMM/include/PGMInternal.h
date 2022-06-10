@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 73199 2018-07-18 12:13:55Z vboxsync $ */
+/* $Id: PGMInternal.h 73202 2018-07-18 12:38:49Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -4044,9 +4044,8 @@ typedef struct PGMCPU
     R0PTRTYPE(PPGMPOOLPAGE)         pShwPageCR3R0;
     /** Pointer to the page of the current active CR3 - RC Ptr. */
     RCPTRTYPE(PPGMPOOLPAGE)         pShwPageCR3RC;
-# if HC_ARCH_BITS == 64
-    RTRCPTR                         alignment6; /**< structure size alignment. */
-# endif
+    /** Explicit alignment. */
+    RTRCPTR                         alignment6;
     /** @} */
 
     /** @name Function pointers for Shadow paging.
