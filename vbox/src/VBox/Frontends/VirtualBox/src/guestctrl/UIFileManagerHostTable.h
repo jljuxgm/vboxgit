@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.h 76300 2018-12-19 19:17:55Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.h 76333 2018-12-21 12:56:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* Forward declarations: */
 class UIActionPool;
+class UICustomFileSystemItem;
 
 /** This class scans the host file system by using the Qt API
     and connects to the UICustomFileSystemModel*/
@@ -38,11 +39,11 @@ protected:
 
     KFsObjType  fileType(const QFileInfo &fsInfo);
     void            retranslateUi() /* override */;
-    virtual void    readDirectory(const QString& strPath, UIFileTableItem *parent, bool isStartDir = false) /* override */;
-    virtual void    deleteByItem(UIFileTableItem *item) /* override */;
+    virtual void    readDirectory(const QString& strPath, UICustomFileSystemItem *parent, bool isStartDir = false) /* override */;
+    virtual void    deleteByItem(UICustomFileSystemItem *item) /* override */;
     virtual void    deleteByPath(const QStringList &pathList) /* override */;
     virtual void    goToHomeDirectory() /* override */;
-    virtual bool    renameItem(UIFileTableItem *item, QString newBaseName);
+    virtual bool    renameItem(UICustomFileSystemItem *item, QString newBaseName);
     virtual bool    createDirectory(const QString &path, const QString &directoryName);
     virtual QString fsObjectPropertyString() /* override */;
     virtual void    showProperties() /* override */;
