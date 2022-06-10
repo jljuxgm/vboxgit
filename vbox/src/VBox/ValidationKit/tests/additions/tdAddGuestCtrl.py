@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77623 $"
+__version__ = "$Revision: 77643 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -2228,9 +2228,12 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
                 reporter.log('Waiting for reboot ....');
                 time.sleep(15);
-                reporter.log('Rebooting guest');
-                self.oTstDrv.txsRebootAndReconnectViaTcp(oSession, oTxsSession, cMsTimeout = 3 * 60000,
-                                                         fNatForwardingForTxs = True);
+                reporter.log('Rebooting guest and reconnecting TxS');
+
+                (oSession, oTxsSession) = self.oTstDrv.txsRebootAndReconnectViaTcp(oSession, oTxsSession, cMsTimeout = 3 * 60000);
+
+                reporter.log('Waiting for thread to finish ...');
+                oThreadReboot.join();
             try:
                 reporter.log2('Closing guest session ...');
                 oGuestSession.close();
