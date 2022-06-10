@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.h 77214 2019-02-08 10:42:20Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.h 77219 2019-02-08 13:53:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class declaration.
  */
@@ -131,6 +131,9 @@ private:
     void layoutButtons();
     /** Layout token. */
     void layoutToken();
+
+    /** Returns actual token position. */
+    QPoint actualTokenPosition() const;
 
     /** Paints background using specified @a pPainter and certain @a rectangle. */
     void paintBackground(QPainter *pPainter, const QRect &rectangle) const;
