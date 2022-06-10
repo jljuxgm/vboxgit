@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: prerm-common.sh 69500 2017-10-28 15:14:05Z vboxsync $
+# $Id: prerm-common.sh 76046 2018-12-07 10:18:49Z vboxsync $
 ## @file
 # Oracle VM VirtualBox
 # VirtualBox Linux pre-uninstaller common portions
@@ -66,5 +66,6 @@ remove_init_script vboxdrv
 stop_init_script vboxnet >/dev/null 2>&1
 delrunlevel vboxnet >/dev/null 2>&1
 remove_init_script vboxnet >/dev/null 2>&1
+finish_init_script_install
 rm -f /sbin/vboxconfig
 exit 0

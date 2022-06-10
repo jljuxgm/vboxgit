@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: postinst-common.sh 69500 2017-10-28 15:14:05Z vboxsync $
+# $Id: postinst-common.sh 76046 2018-12-07 10:18:49Z vboxsync $
 ## @file
 # Oracle VM VirtualBox
 # VirtualBox Linux post-installer common portions
@@ -56,6 +56,7 @@ install_init_script "${MY_PATH}/vboxdrv.sh" vboxdrv
 install_init_script "${MY_PATH}/vboxballoonctrl-service.sh" vboxballoonctrl-service
 install_init_script "${MY_PATH}/vboxautostart-service.sh" vboxautostart-service
 install_init_script "${MY_PATH}/vboxweb-service.sh" vboxweb-service
+finish_init_script_install
 
 delrunlevel vboxdrv
 addrunlevel vboxdrv
