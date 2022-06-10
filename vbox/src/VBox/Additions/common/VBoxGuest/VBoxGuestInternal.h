@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 75588 2018-11-19 18:07:03Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 75705 2018-11-25 01:44:41Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Internal Header.
  */
@@ -38,7 +38,7 @@
 
 /** @def VBOXGUEST_USE_DEFERRED_WAKE_UP
  * Defer wake-up of waiting thread when defined. */
-#if defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS) || defined(RT_OS_WINDOWS) || defined(DOXYGEN_RUNNING)
+#if defined(RT_OS_SOLARIS) || defined(RT_OS_WINDOWS) || defined(DOXYGEN_RUNNING)
 # define VBOXGUEST_USE_DEFERRED_WAKE_UP
 #endif
 
