@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 75903 2018-12-03 13:03:37Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.h 75932 2018-12-04 00:02:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -51,6 +51,7 @@ class UIGuestControlFileProxyModel;
 class UIGuestControlFileView;
 class UIToolBar;
 
+/** @todo r=bird: Why don't you just use KFsObjType? */
 enum FileObjectType
 {
     FileObjectType_File = 0,
