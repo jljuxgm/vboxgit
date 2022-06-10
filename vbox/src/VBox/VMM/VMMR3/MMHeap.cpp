@@ -1,4 +1,4 @@
-/* $Id: MMHeap.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: MMHeap.cpp 77187 2019-02-06 19:58:40Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Heap.
  */
@@ -85,6 +85,19 @@ int mmR3HeapCreateU(PUVM pUVM, PMMHEAP *ppHeap)
 
 
 /**
+ * MM heap statistics tree destroy callback.
+ */
+static DECLCALLBACK(int) mmR3HeapStatTreeDestroy(PAVLULNODECORE pCore, void *pvParam)
+{
+    RT_NOREF(pvParam);
+
+    /* Don't bother deregistering the stat samples as they get destroyed by STAM. */
+    RTMemFree(pCore);
+    return VINF_SUCCESS;
+}
+
+
+/**
  * Destroy a heap.
  *
  * @param   pHeap   Heap handle.
@@ -111,7 +124,7 @@ void mmR3HeapDestroy(PMMHEAP pHeap)
     /*
      * Free the stat nodes.
      */
-    /** @todo free all nodes in a AVL tree. */
+    RTAvlULDestroy(&pHeap->pStatTree, mmR3HeapStatTreeDestroy, NULL);
     RTMemFree(pHeap);
 }
 
