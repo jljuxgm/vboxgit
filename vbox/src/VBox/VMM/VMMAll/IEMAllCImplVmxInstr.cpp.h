@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 76871 2019-01-18 04:40:25Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 76875 2019-01-18 06:00:33Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2866,10 +2866,6 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexit(PVMCPU pVCpu, uint32_t uExitReason)
 
     /* We're no longer in nested-guest execution mode. */
     pVCpu->cpum.GstCtx.hwvirt.vmx.fInVmxNonRootMode = false;
-
-#ifdef IN_RING3
-    LogRel(("vmexit: uExitReason=%s\n", HMR3GetVmxExitName(uExitReason)));
-#endif
 
     /* Revert any IEM-only nested-guest execution policy if it was set earlier, otherwise return rcStrict. */
     IEM_VMX_R3_EXECPOLICY_IEM_ALL_DISABLE_RET(pVCpu, "VM-exit", rcStrict);
