@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 77068 2019-01-31 11:53:09Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.h 77495 2019-02-28 08:44:11Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -187,8 +187,10 @@ protected:
 
     /** @name Directory handling primitives.
      * @{ */
-    int directoryCreate(const com::Utf8Str &strPath, DirectoryCreateFlag_T enmDirecotryCreateFlags, uint32_t uMode,
-                        bool fFollowSymlinks);
+    int directoryCreateOnGuest(const com::Utf8Str &strPath,
+                               DirectoryCreateFlag_T enmDirectoryCreateFlags, uint32_t uMode,
+                               bool fFollowSymlinks, bool fCanExist);
+    int directoryCreateOnHost(const com::Utf8Str &strPath, uint32_t fCreate, uint32_t uMode, bool fCanExist);
     /** @}  */
 
     /** @name File handling primitives.
