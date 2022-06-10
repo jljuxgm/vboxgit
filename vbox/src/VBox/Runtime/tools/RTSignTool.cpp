@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 74707 2018-10-09 08:36:39Z vboxsync $ */
+/* $Id: RTSignTool.cpp 74716 2018-10-09 11:59:42Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -1785,6 +1785,49 @@ static int HandleShowExeWorkerPkcs7DisplayAttrib(PSHOWEXEPKCS7 pThis, size_t off
                                        pThis->szPrefix, pContentInfo->ContentType.szObjId);
                 if (RT_FAILURE(rc2) && RT_SUCCESS(rc))
                     rc = rc2;
+            }
+            break;
+
+        case RTCRPKCS7ATTRIBUTETYPE_APPLE_MULTI_CD_PLIST:
+            if (pAttr->uValues.pContentInfos->cItems != 1)
+                RTPrintf("%s%u plists, expected only 1.\n", pThis->szPrefix, pAttr->uValues.pOctetStrings->cItems);
+            for (unsigned i = 0; i < pAttr->uValues.pOctetStrings->cItems; i++)
+            {
+                PCRTASN1OCTETSTRING pOctetString = pAttr->uValues.pOctetStrings->papItems[i];
+                size_t              cbContent    = pOctetString->Asn1Core.cb;
+                char  const        *pchContent   = pOctetString->Asn1Core.uData.pch;
+                rc = RTStrValidateEncodingEx(pchContent, cbContent, RTSTR_VALIDATE_ENCODING_EXACT_LENGTH);
+                if (RT_SUCCESS(rc))
+                {
+                    while (cbContent > 0)
+                    {
+                        const char *pchNewLine = (const char *)memchr(pchContent, '\n', cbContent);
+                        size_t      cchToWrite = pchNewLine ? pchNewLine - pchContent : cbContent;
+                        if (pAttr->uValues.pOctetStrings->cItems == 1)
+                            RTPrintf("%s %.*s\n", pThis->szPrefix, cchToWrite, pchContent);
+                        else
+                            RTPrintf("%s plist[%u]: %.*s\n", pThis->szPrefix, i, cchToWrite, pchContent);
+                        if (!pchNewLine)
+                            break;
+                        pchContent = pchNewLine + 1;
+                        cbContent -= cchToWrite + 1;
+                    }
+                }
+                else
+                {
+                    if (pAttr->uValues.pContentInfos->cItems != 1)
+                        RTPrintf("%s: plist[%u]: Invalid UTF-8: %Rrc\n", pThis->szPrefix, i, rc);
+                    else
+                        RTPrintf("%s: Invalid UTF-8: %Rrc\n", pThis->szPrefix, rc);
+                    for (uint32_t off = 0; off < cbContent; off += 16)
+                    {
+                        size_t cbNow = RT_MIN(cbContent - off, 16);
+                        if (pAttr->uValues.pOctetStrings->cItems == 1)
+                            RTPrintf("%s %#06x: %.*Rhxs\n", pThis->szPrefix, off, cbNow, &pchContent[off]);
+                        else
+                            RTPrintf("%s plist[%u]: %#06x: %.*Rhxs\n", pThis->szPrefix, i, off, cbNow, &pchContent[off]);
+                    }
+                }
             }
             break;
 
