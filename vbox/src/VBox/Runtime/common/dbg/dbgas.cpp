@@ -1,4 +1,4 @@
-/* $Id: dbgas.cpp 73359 2018-07-25 18:50:19Z vboxsync $ */
+/* $Id: dbgas.cpp 74980 2018-10-22 19:48:02Z vboxsync $ */
 /** @file
  * IPRT - Debug Address Space.
  */
@@ -1275,7 +1275,7 @@ DECLINLINE(void) rtDbgAsAdjustLineAddress(PRTDBGLINE pLine, RTDBGMOD hDbgMod, RT
  * @param   pszSymbol       The symbol name.
  * @param   Addr            The address of the symbol.
  * @param   cb              The size of the symbol.
- * @param   fFlags          Symbol flags.
+ * @param   fFlags          Symbol flags, RTDBGSYMBOLADD_F_XXX.
  * @param   piOrdinal       Where to return the symbol ordinal on success. If
  *                          the interpreter doesn't do ordinals, this will be set to
  *                          UINT32_MAX. Optional
