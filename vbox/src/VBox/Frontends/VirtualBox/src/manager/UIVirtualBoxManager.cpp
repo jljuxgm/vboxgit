@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 76815 2019-01-14 13:36:28Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 76835 2019-01-16 11:54:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1239,6 +1239,10 @@ void UIVirtualBoxManager::prepare()
         ::darwinLabelWindow(this, &betaLabel, true);
     }
 #endif /* VBOX_WS_MAC */
+
+    /* If there are unhandled URLs we should handle them after manager is shown: */
+    if (vboxGlobal().argumentUrlsPresent())
+        QMetaObject::invokeMethod(this, "sltHandleOpenUrlCall", Qt::QueuedConnection);
 }
 
 void UIVirtualBoxManager::prepareIcon()

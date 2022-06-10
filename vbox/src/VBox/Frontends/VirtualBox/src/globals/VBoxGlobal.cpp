@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 76834 2019-01-16 11:18:20Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 76835 2019-01-16 11:54:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -495,13 +495,16 @@ bool VBoxGlobal::processArgs()
     /* And if there are *still* URLs: */
     if (!listArgUrls.isEmpty())
     {
-        /* We store them: */
+        /* We store them, they will be handled later: */
         m_listArgUrls = listArgUrls;
-        /* And ask UIStarter to open them: */
-        emit sigAskToOpenURLs();
     }
 
     return fResult;
+}
+
+bool VBoxGlobal::argumentUrlsPresent() const
+{
+    return !m_listArgUrls.isEmpty();
 }
 
 QList<QUrl> VBoxGlobal::takeArgumentUrls()

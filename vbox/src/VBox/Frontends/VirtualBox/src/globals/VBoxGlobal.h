@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 76826 2019-01-15 18:19:10Z vboxsync $ */
+/* $Id: VBoxGlobal.h 76835 2019-01-16 11:54:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -73,12 +73,6 @@ signals:
      * @{ */
         /** Asks #UIStarter listener to commit data. */
         void sigAskToCommitData();
-    /** @} */
-
-    /** @name Process arguments stuff.
-     * @{ */
-        /** Asks #UIStarter listener to open URLs. */
-        void sigAskToOpenURLs();
     /** @} */
 
     /** @name COM stuff.
@@ -200,6 +194,8 @@ public:
         /** Process application args. */
         bool processArgs();
 
+        /** Returns whether there are unhandled URL arguments present. */
+        bool argumentUrlsPresent() const;
         /** Takes and returns the URL argument list while clearing the source. */
         QList<QUrl> takeArgumentUrls();
 

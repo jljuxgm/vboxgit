@@ -1,4 +1,4 @@
-/* $Id: UIStarter.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIStarter.h 76835 2019-01-16 11:54:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class declaration.
  */
@@ -62,9 +62,6 @@ private slots:
 
     /** Cleanups everything. */
     void cleanup();
-
-    /** Opens URLs in Selector UI. */
-    void sltOpenURLs();
 
     /** Handles commit data request. */
     void sltHandleCommitDataRequest();
