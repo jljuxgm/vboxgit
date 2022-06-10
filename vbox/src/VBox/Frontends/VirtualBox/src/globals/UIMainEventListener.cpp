@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 75291 2018-11-06 15:03:21Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 75341 2018-11-09 08:37:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -374,7 +374,7 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
             emit sigVRDEChange();
             break;
         }
-        case KVBoxEventType_OnCaptureChanged:
+        case KVBoxEventType_OnRecordChanged:
         {
             emit sigRecordingChange();
             break;

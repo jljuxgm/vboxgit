@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 75319 2018-11-08 10:56:06Z vboxsync $ */
+/* $Id: UISession.cpp 75341 2018-11-09 08:37:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -59,7 +59,7 @@
 
 /* COM includes: */
 # include "CAudioAdapter.h"
-# include "CCaptureSettings.h"
+# include "CRecordSettings.h"
 # include "CSystemProperties.h"
 # include "CStorageController.h"
 # include "CMediumAttachment.h"
@@ -723,7 +723,7 @@ void UISession::sltVRDEChange()
 
 void UISession::sltRecordingChange()
 {
-    CCaptureSettings comRecordingSettings = machine().GetCaptureSettings();
+    CRecordSettings comRecordingSettings = machine().GetRecordSettings();
 
     /* Check/Uncheck Capture action depending on feature status: */
     actionPool()->action(UIActionIndexRT_M_View_M_Recording_T_Start)->blockSignals(true);

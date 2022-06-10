@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 75251 2018-11-05 17:55:29Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 75341 2018-11-09 08:37:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3392,7 +3392,7 @@ DECLCALLBACK(void) Display::i_displayUpdateCallback(PPDMIDISPLAYCONNECTOR pInter
 
     if (   pCtx
         && pCtx->IsStarted()
-        && pCtx->IsFeatureEnabled(CaptureFeature_Video))
+        && pCtx->IsFeatureEnabled(RecordFeature_Video))
     {
         do {
 # if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL)
@@ -3858,7 +3858,7 @@ void  Display::i_handleCrVRecScreenshotPerform(uint32_t uScreen,
 
     if (   pCtx
         && pCtx->IsStarted()
-        && pCtx->IsFeatureEnabled(CaptureFeature_Video))
+        && pCtx->IsFeatureEnabled(RecordFeature_Video))
     {
         int rc2 = pCtx->SendVideoFrame(uScreen, x, y,
                                        uPixelFormat,

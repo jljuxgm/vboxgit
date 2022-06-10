@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 75251 2018-11-05 17:55:29Z vboxsync $ */
+/* $Id: SessionImpl.cpp 75341 2018-11-09 08:37:28Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -724,7 +724,7 @@ HRESULT Session::onVRDEServerChange(BOOL aRestart)
 #endif
 }
 
-HRESULT Session::onCaptureChange()
+HRESULT Session::onRecordChange()
 {
     LogFlowThisFunc(("\n"));
 
@@ -734,7 +734,7 @@ HRESULT Session::onCaptureChange()
 #ifndef VBOX_COM_INPROC_API_CLIENT
     AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
 
-    return mConsole->i_onCaptureChange();
+    return mConsole->i_onRecordChange();
 #else
     return S_OK;
 #endif
