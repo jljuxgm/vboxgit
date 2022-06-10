@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_x11.cpp 76622 2019-01-03 15:41:31Z vboxsync $ */
+/* $Id: UIDesktopServices_x11.cpp 76731 2019-01-09 11:16:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to X11..
  */
@@ -33,9 +33,9 @@ bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, 
     if (link.open(QFile::WriteOnly | QFile::Truncate))
     {
 #ifdef VBOX_GUI_WITH_SHARED_LIBRARY
-        QString strVBox = QDir::toNativeSeparators(QCoreApplication::applicationDirPath() + "/" + VBOX_GUI_VMRUNNER_IMAGE);
+        const QString strVBox = QDir::toNativeSeparators(QCoreApplication::applicationDirPath() + "/" + VBOX_GUI_VMRUNNER_IMAGE);
 #else
-        QString strVBox = QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
+        const QString strVBox = QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
 #endif
         QTextStream out(&link);
         out.setCodec("UTF-8");
