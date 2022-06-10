@@ -1,4 +1,4 @@
-/* $Id: waitqueue-r0drv-linux.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: waitqueue-r0drv-linux.h 72889 2018-07-04 16:09:15Z vboxsync $ */
 /** @file
  * IPRT - Linux Ring-0 Driver Helpers for Abstracting Wait Queues,
  */
@@ -46,7 +46,7 @@
 typedef struct RTR0SEMLNXWAIT
 {
     /** The wait queue entry. */
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 13, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 14)  /* 4.13.0 and openSUSE */
     wait_queue_entry_t WaitQE;
 #else
     wait_queue_t    WaitQE;
