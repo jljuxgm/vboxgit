@@ -1,4 +1,4 @@
-/* $Id: proxy.c 73747 2018-08-17 18:27:04Z vboxsync $ */
+/* $Id: proxy.c 73788 2018-08-20 14:35:42Z vboxsync $ */
 /** @file
  * NAT Network - proxy setup and utilities.
  */
@@ -373,8 +373,6 @@ proxy_create_socket(int sdom, int stype)
         status = setsockopt(s, IPPROTO_TCP, TCP_NODELAY, (char *)&on, onlen);
         if (status < 0) {
             DPRINTF(("TCP_NODELAY: %R[sockerr]\n", SOCKERRNO()));
-            closesocket(s);
-            return INVALID_SOCKET;
         }
     }
 
