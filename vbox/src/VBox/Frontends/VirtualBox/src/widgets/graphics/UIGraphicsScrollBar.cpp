@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.cpp 77018 2019-01-28 13:43:11Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.cpp 77019 2019-01-28 13:47:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class implementation.
  */
@@ -27,6 +27,9 @@
 #include "UIGraphicsButton.h"
 #include "UIGraphicsScrollBar.h"
 #include "UIIconPool.h"
+
+/* External includes: */
+#include <math.h>
 
 
 /** QIGraphicsWidget subclass providing GUI with graphics scroll-bar taken. */
