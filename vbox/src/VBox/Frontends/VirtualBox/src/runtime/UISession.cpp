@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 73944 2018-08-29 12:15:37Z vboxsync $ */
+/* $Id: UISession.cpp 73946 2018-08-29 12:23:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -2121,20 +2121,20 @@ QList<int> UISession::listOfVisibleWindows() const
 CMediumVector UISession::getMachineMedia() const
 {
     CMediumVector media;
-    foreach (const CStorageController &controller, m_machine.GetStorageControllers())
+    foreach (const CStorageController &comController, m_machine.GetStorageControllers())
     {
         QString strAttData;
         /* Enumerate all the attachments: */
-        foreach (const CMediumAttachment &attachment, m_machine.GetMediumAttachmentsOfController(controller.GetName()))
+        foreach (const CMediumAttachment &comAttachment, m_machine.GetMediumAttachmentsOfController(comController.GetName()))
         {
             /* Skip unrelated attachments: */
-            if (attachment.GetType() != KDeviceType_HardDisk &&
-                attachment.GetType() != KDeviceType_Floppy &&
-                attachment.GetType() != KDeviceType_DVD)
+            if (comAttachment.GetType() != KDeviceType_HardDisk &&
+                comAttachment.GetType() != KDeviceType_Floppy &&
+                comAttachment.GetType() != KDeviceType_DVD)
                 continue;
-            if (attachment.GetIsEjected() || attachment.GetMedium().isNull())
+            if (comAttachment.GetIsEjected() || comAttachment.GetMedium().isNull())
                 continue;
-            media.append(attachment.GetMedium());
+            media.append(comAttachment.GetMedium());
         }
     }
     return media;

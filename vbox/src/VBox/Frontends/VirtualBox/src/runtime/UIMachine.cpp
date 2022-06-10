@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 73944 2018-08-29 12:15:37Z vboxsync $ */
+/* $Id: UIMachine.cpp 73946 2018-08-29 12:23:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -213,7 +213,7 @@ bool UIMachine::prepare()
     /* Cache medium data early if necessary: */
     if (vboxGlobal().agressiveCaching())
     {
-        AssertReturn(!m_pSession, false);
+        AssertReturn(m_pSession, false);
         vboxGlobal().startMediumEnumeration(m_pSession->getMachineMedia());
     }
     /* Prepare machine-logic: */
