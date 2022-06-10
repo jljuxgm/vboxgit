@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 75683 2018-11-23 11:08:15Z vboxsync $ */
+/* $Id: IEMAll.cpp 75830 2018-11-30 09:30:58Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -14291,11 +14291,11 @@ VMMDECL(VBOXSTRICTRC) IEMExecLots(PVMCPU pVCpu, uint32_t *pcInstructions)
      */
     /** @todo Can we centralize this under CPUMCanInjectInterrupt()? */
 #if defined(VBOX_WITH_NESTED_HWVIRT_SVM)
-    bool fIntrEnabled = pVCpu->cpum.GstCtx.hwvirt.fGif;
+    bool fIntrEnabled = CPUMGetGuestGif(&pVCpu->cpum.GstCtx);
     if (fIntrEnabled)
     {
         if (CPUMIsGuestInSvmNestedHwVirtMode(IEM_GET_CTX(pVCpu)))
-            fIntrEnabled = CPUMCanSvmNstGstTakePhysIntr(pVCpu, IEM_GET_CTX(pVCpu));
+            fIntrEnabled = CPUMIsGuestSvmPhysIntrEnabled(pVCpu, IEM_GET_CTX(pVCpu));
         else
             fIntrEnabled = pVCpu->cpum.GstCtx.eflags.Bits.u1IF;
     }
