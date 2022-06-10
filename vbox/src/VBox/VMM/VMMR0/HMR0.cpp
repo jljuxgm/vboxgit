@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 72744 2018-06-29 07:36:19Z vboxsync $ */
+/* $Id: HMR0.cpp 72750 2018-06-29 08:09:01Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1392,8 +1392,8 @@ VMMR0_INT_DECL(int) HMR0EnterCpu(PVMCPU pVCpu)
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
 
     int              rc    = VINF_SUCCESS;
-    RTCPUID          idCpu = RTMpCpuId();
-    PHMGLOBALCPUINFO pCpu = &g_HmR0.aCpuInfo[idCpu];
+    RTCPUID const    idCpu = RTMpCpuId();
+    PHMGLOBALCPUINFO pCpu  = &g_HmR0.aCpuInfo[idCpu];
     AssertPtr(pCpu);
 
     /* Enable VT-x or AMD-V if local init is required, or enable if it's a freshly onlined CPU. */
@@ -1436,7 +1436,7 @@ VMMR0_INT_DECL(int) HMR0Enter(PVM pVM, PVMCPU pVCpu)
     bool fStartedSet = PGMR0DynMapStartOrMigrateAutoSet(pVCpu);
 #endif
 
-    RTCPUID          idCpu = RTMpCpuId();
+    RTCPUID const    idCpu = RTMpCpuId();
     PHMGLOBALCPUINFO pCpu  = &g_HmR0.aCpuInfo[idCpu];
     Assert(pCpu);
     if (g_HmR0.vmx.fSupported)
@@ -1484,7 +1484,7 @@ VMMR0_INT_DECL(int) HMR0LeaveCpu(PVMCPU pVCpu)
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
     VMCPU_ASSERT_EMT_RETURN(pVCpu, VERR_HM_WRONG_CPU);
 
-    RTCPUID          idCpu = RTMpCpuId();
+    RTCPUID const    idCpu = RTMpCpuId();
     PHMGLOBALCPUINFO pCpu  = &g_HmR0.aCpuInfo[idCpu];
 
     if (   !g_HmR0.fGlobalInit
@@ -1680,7 +1680,7 @@ VMMR0_INT_DECL(int) HMR0InvalidatePage(PVMCPU pVCpu, RTGCPTR GCVirt)
 VMMR0_INT_DECL(PHMGLOBALCPUINFO) hmR0GetCurrentCpu(void)
 {
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
-    RTCPUID idCpu = RTMpCpuId();
+    RTCPUID const idCpu = RTMpCpuId();
     Assert(idCpu < RT_ELEMENTS(g_HmR0.aCpuInfo));
     return &g_HmR0.aCpuInfo[idCpu];
 }
