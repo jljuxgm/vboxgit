@@ -1,4 +1,4 @@
-/* $Id: server_framebuffer.c 76787 2019-01-11 20:00:15Z vboxsync $ */
+/* $Id: server_framebuffer.c 76793 2019-01-13 20:53:58Z vboxsync $ */
 /** @file
  * VBox OpenGL: EXT_framebuffer_object
  */
@@ -21,6 +21,7 @@
 #include "cr_net.h"
 #include "server_dispatch.h"
 #include "server.h"
+#include "cr_unpack.h"
 
 void SERVER_DISPATCH_APIENTRY
 crServerDispatchGenFramebuffersEXT(GLsizei n, GLuint *framebuffers)
@@ -180,12 +181,24 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchBindRenderbufferEXT(GLenum target,
 
 void SERVER_DISPATCH_APIENTRY crServerDispatchDeleteFramebuffersEXT(GLsizei n, const GLuint * framebuffers)
 {
-        crStateDeleteFramebuffersEXT(n, framebuffers);
+    if (n <= 0 || n >= INT32_MAX / sizeof(GLuint) || !DATA_POINTER_CHECK(n * sizeof(GLuint)))
+    {
+        crError("crStateDeleteFramebuffersEXT: parameter 'n' is out of range");
+        return;
+    }
+
+    crStateDeleteFramebuffersEXT(n, framebuffers);
 }
 
 void SERVER_DISPATCH_APIENTRY crServerDispatchDeleteRenderbuffersEXT(GLsizei n, const GLuint * renderbuffers)
 {
-        crStateDeleteRenderbuffersEXT(n, renderbuffers);
+    if (n <= 0 || n >= INT32_MAX / sizeof(GLuint) || !DATA_POINTER_CHECK(n * sizeof(GLuint)))
+    {
+        crError("glDeleteRenderbuffersEXT: parameter 'n' is out of range");
+        return;
+    }
+
+    crStateDeleteRenderbuffersEXT(n, renderbuffers);
 }
 
 void SERVER_DISPATCH_APIENTRY
