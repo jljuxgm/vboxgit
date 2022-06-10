@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 75578 2018-11-19 15:31:04Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 76364 2018-12-22 01:51:59Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -33,6 +33,7 @@
 #include <iprt/memobj.h>
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/log.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
