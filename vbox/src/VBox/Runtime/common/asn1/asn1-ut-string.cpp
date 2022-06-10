@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-string.cpp 77815 2019-03-20 23:56:41Z vboxsync $ */
+/* $Id: asn1-ut-string.cpp 77817 2019-03-21 00:04:34Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, XXX STRING Types.
  */
@@ -1375,7 +1375,7 @@ static int rtAsn1String_CheckSanity(PCRTASN1STRING pThis, PRTERRINFO pErrInfo, c
                 break;
             }
             return RTErrInfoSetF(pErrInfo, VERR_ASN1_INVALID_BMP_STRING_ENCODING,
-                                 "%s: Bad BMP string: odd number of bytes cch=%#x (pos %u in %.*Rhxs)",
+                                 "%s: Bad BMP string: odd number of bytes cch=%#x (%.*Rhxs)",
                                  pszErrorTag, cch, pThis->Asn1Core.cb, pThis->Asn1Core.uData.pch);
 
         default:
