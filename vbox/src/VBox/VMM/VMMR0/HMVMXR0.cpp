@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 73991 2018-08-31 10:06:30Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 73994 2018-08-31 10:31:55Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -186,7 +186,7 @@
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
 /** Macro that does the necessary privilege checks and intercepted VM-exits for
  *  guests that attempted to execute a VMX instruction. */
-#define HMVMX_CHECK_EXIT_DUE_TO_VMX_INSTR(a_pVCpu, a_uExitReason) \
+# define HMVMX_CHECK_EXIT_DUE_TO_VMX_INSTR(a_pVCpu, a_uExitReason) \
     do \
     { \
         VBOXSTRICTRC rcStrictTmp = hmR0VmxCheckExitDueToVmxInstr((a_pVCpu), (a_uExitReason)); \
