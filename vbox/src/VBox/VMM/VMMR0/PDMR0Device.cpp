@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 73203 2018-07-18 13:00:43Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -404,15 +404,6 @@ static DECLCALLBACK(RTTRACEBUF) pdmR0DevHlp_DBGFTraceBuf(PPDMDEVINS pDevIns)
 }
 
 
-/** @interface_method_impl{PDMDEVHLPR0,pfnCanEmulateIoBlock} */
-static DECLCALLBACK(bool) pdmR0DevHlp_CanEmulateIoBlock(PPDMDEVINS pDevIns)
-{
-    PDMDEV_ASSERT_DEVINS(pDevIns);
-    LogFlow(("pdmR0DevHlp_GetVM: caller='%p'/%d\n", pDevIns, pDevIns->iInstance));
-    return HMCanEmulateIoBlock(VMMGetCpu(pDevIns->Internal.s.pVMR0));
-}
-
-
 /**
  * The Ring-0 Device Helper Callbacks.
  */
@@ -434,7 +425,6 @@ extern DECLEXPORT(const PDMDEVHLPR0) g_pdmR0DevHlp =
     pdmR0DevHlp_VMSetRuntimeErrorV,
     pdmR0DevHlp_PATMSetMMIOPatchInfo,
     pdmR0DevHlp_GetVM,
-    pdmR0DevHlp_CanEmulateIoBlock,
     pdmR0DevHlp_GetVMCPU,
     pdmR0DevHlp_GetCurrentCpuId,
     pdmR0DevHlp_TMTimeVirtGet,

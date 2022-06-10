@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 72983 2018-07-08 16:15:47Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 73203 2018-07-18 13:00:43Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -252,13 +252,6 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
             break;
 
 #ifdef EMHANDLERC_WITH_HM
-        /*
-         * (MM)IO intensive code block detected; fall back to the recompiler for better performance
-         */
-        case VINF_EM_RAW_EMULATE_IO_BLOCK:
-            rc = HMR3EmulateIoBlock(pVM, &pVCpu->cpum.GstCtx);
-            break;
-
         case VINF_EM_HM_PATCH_TPR_INSTR:
             rc = HMR3PatchTprInstr(pVM, pVCpu);
             break;
