@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 75410 2018-11-12 20:17:48Z vboxsync $ */
+/* $Id: VMMDevState.h 75500 2018-11-16 01:24:39Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -273,10 +273,13 @@ typedef struct VMMDevState
     uint32_t u32HGCMEnabled;
     /** Saved state version of restored commands. */
     uint32_t u32SSMVersion;
-#if HC_ARCH_BITS == 32
+# if HC_ARCH_BITS == 32
     /** Alignment padding. */
     uint32_t u32Alignment7;
-#endif
+# endif
+    STAMPROFILE StatHgcmCmdArrival;
+    STAMPROFILE StatHgcmCmdCompletion;
+    STAMPROFILE StatHgcmCmdTotal;
 #endif /* VBOX_WITH_HGCM */
 
     /** Status LUN: Shared folders LED */

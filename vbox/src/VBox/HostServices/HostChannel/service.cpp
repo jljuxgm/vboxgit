@@ -1,4 +1,4 @@
-/* $Id: service.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: service.cpp 75500 2018-11-16 01:24:39Z vboxsync $ */
 /* @file
  * Host Channel: Host service entry points.
  */
@@ -205,9 +205,10 @@ static DECLCALLBACK(void) svcCall(void *pvService,
                                   void *pvClient,
                                   uint32_t u32Function,
                                   uint32_t cParms,
-                                  VBOXHGCMSVCPARM paParms[])
+                                  VBOXHGCMSVCPARM paParms[],
+                                  uint64_t tsArrival)
 {
-    NOREF(pvService);
+    RT_NOREF(pvService, tsArrival);
 
     int rc = VINF_SUCCESS;
 

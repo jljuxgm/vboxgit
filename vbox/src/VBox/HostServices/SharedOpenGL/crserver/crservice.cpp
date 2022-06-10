@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: crservice.cpp 75500 2018-11-16 01:24:39Z vboxsync $ */
 /** @file
  * VBox crOpenGL - Host service entry points.
  */
@@ -413,11 +413,11 @@ static void svcFreeBuffer(CRVBOXSVCBUFFER_t* pBuffer)
     RTMemFree(pBuffer);
 }
 
-static DECLCALLBACK(void) svcCall (void *, VBOXHGCMCALLHANDLE callHandle, uint32_t u32ClientID, void *pvClient, uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[])
+static DECLCALLBACK(void) svcCall (void *, VBOXHGCMCALLHANDLE callHandle, uint32_t u32ClientID, void *pvClient,
+                                   uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[], uint64_t tsArrival)
 {
+    RT_NOREF(pvClient, tsArrival);
     int rc = VINF_SUCCESS;
-
-    NOREF(pvClient);
 
     if (g_u32fCrHgcmDisabled)
     {

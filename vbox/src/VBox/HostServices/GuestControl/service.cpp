@@ -1,4 +1,4 @@
-/* $Id: service.cpp 73511 2018-08-05 14:20:03Z vboxsync $ */
+/* $Id: service.cpp 75500 2018-11-16 01:24:39Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -973,11 +973,13 @@ public:
                                       void *pvClient,
                                       uint32_t u32Function,
                                       uint32_t cParms,
-                                      VBOXHGCMSVCPARM paParms[])
+                                      VBOXHGCMSVCPARM paParms[],
+                                      uint64_t tsArrival)
     {
         AssertLogRelReturnVoid(VALID_PTR(pvService));
         SELF *pSelf = reinterpret_cast<SELF *>(pvService);
         AssertPtrReturnVoid(pSelf);
+        RT_NOREF_PV(tsArrival);
         pSelf->call(callHandle, u32ClientID, pvClient, u32Function, cParms, paParms);
     }
 
