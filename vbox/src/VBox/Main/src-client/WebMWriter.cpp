@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.cpp 70623 2018-01-18 10:05:23Z vboxsync $ */
+/* $Id: WebMWriter.cpp 74781 2018-10-12 08:44:00Z vboxsync $ */
 /** @file
  * WebMWriter.cpp - WebM container handling.
  */
@@ -147,12 +147,15 @@ int WebMWriter::Close(void)
     writeFooter();
 
     WebMTracks::iterator itTrack = CurSeg.mapTracks.begin();
-    for (; itTrack != CurSeg.mapTracks.end(); ++itTrack)
+    while (itTrack != CurSeg.mapTracks.end())
     {
         WebMTrack *pTrack = itTrack->second;
+        if (pTrack) /* Paranoia. */
+            delete pTrack;
 
-        delete pTrack;
         CurSeg.mapTracks.erase(itTrack);
+
+        itTrack = CurSeg.mapTracks.begin();
     }
 
     Assert(CurSeg.queueBlocks.Map.size() == 0);
