@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-linux.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 76823 2019-01-15 12:29:48Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
@@ -39,7 +39,7 @@
  * against glibc < 2.6.
  */
 #include "../posix/semeventmulti-posix.cpp"
-asm volatile (".global epoll_pwait");
+__asm__ (".global epoll_pwait");
 
 #else /* glibc < 2.6 */
 
