@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 77087 2019-01-31 19:05:53Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 77221 2019-02-08 14:14:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -437,8 +437,7 @@ void UIVMLogViewerTextEdit::sltHandleUpdateRequest(const QRect &rect, int dy)
         sltUpdateLineNumberAreaWidth(0);
 
     if (viewport())
-        viewport()->repaint();
-
+        viewport()->update();
 }
 
 void UIVMLogViewerTextEdit::sltBookmark()
