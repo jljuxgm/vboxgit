@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70161 2017-12-15 17:03:56Z vboxsync $
+# $Id: Makefile.kmk 75892 2018-12-03 11:30:59Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -270,7 +270,10 @@ include $(PATH_ROOT)/src/VBox/Additions/linux/drm/files_vboxvideo_drv
 VBOX_LNX_ADD_INST_FILES_VBOXVIDEO=$(patsubst =>%,$(PATH_STAGE_BIN)/additions/src/vboxvideo/%,$(filter =>%,$(subst =>, =>,$(subst $(DQUOTE),,$(FILES_VBOXVIDEO_DRM_NOBIN)))))
 
 # special rule for the kernel modules
-$(VBOX_LNX_ADD_INST_KMOD_DIR_BASE): $(PATH_STAGE_BIN)/additions/src/ | $(dir $@)
+$(VBOX_LNX_ADD_INST_KMOD_DIR_BASE): \
+		$(PATH_STAGE_BIN)/additions/src/ \
+		$(PATH_ROOT)/Version.kmk \
+		| $(dir $@)
 	$(call MSG_INST_SYM,$<,$@)
 	$(QUIET)$(RM) -Rf $@
 	$(QUIET)$(MKDIR) $@
