@@ -1,12 +1,12 @@
-/* $Id: BIOSSettingsImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: BIOSSettingsImpl.h 75139 2018-10-29 10:26:48Z vboxsync $ */
 
 /** @file
  *
- * VirtualBox COM class implementation
+ * VirtualBox COM class implementation - Machine BIOS settings.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
