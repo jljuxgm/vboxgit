@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 77680 2019-03-13 14:59:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class implementation.
  */
@@ -231,7 +231,8 @@ bool UINativeHotKey::isValidKey(int iKeyCode)
 
 #elif defined(VBOX_WS_WIN)
 
-    return (iKeyCode >= VK_SHIFT  && iKeyCode <= VK_CAPITAL)
+    return (   iKeyCode >= VK_SHIFT  && iKeyCode <= VK_CAPITAL
+            && iKeyCode != VK_PAUSE)
         || (iKeyCode >= VK_LSHIFT && iKeyCode <= VK_RMENU)
         || (iKeyCode >= VK_F1     && iKeyCode <= VK_F24)
         || iKeyCode == VK_NUMLOCK
