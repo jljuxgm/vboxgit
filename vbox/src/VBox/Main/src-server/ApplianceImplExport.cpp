@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 74601 2018-10-03 16:01:13Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 74846 2018-10-15 15:23:11Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2486,6 +2486,8 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
         /// @todo that's to be moved to ExpTack, but we need to have that method
         /// exposed in .xidl
         if (m->virtualSystemDescriptions.size() == 1) {
+            ComPtr<IVirtualBox> VBox(mVirtualBox);
+
             pTask->pProgress->init(mVirtualBox, static_cast<IAppliance*>(this),
                          Bstr("Test progress").raw(),
                          TRUE /* aCancelable */,
@@ -2494,7 +2496,7 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
                          Bstr("Do something").raw(), // aFirstOperationDescription
                          25); // ULONG ulFirstOperationWeight,
 
-            hrc = cloudClient->ExportVM(m->virtualSystemDescriptions.front(), pTask->pProgress);
+            hrc = cloudClient->ExportVM(m->virtualSystemDescriptions.front(), pTask->pProgress, VBox);
         } else {
             /// @todo Fail here with user notification. We do export 1 VM only
         }
