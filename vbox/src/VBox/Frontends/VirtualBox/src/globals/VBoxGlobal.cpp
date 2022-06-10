@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 74305 2018-09-17 11:44:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -527,6 +527,13 @@ bool VBoxGlobal::processArgs()
     }
 
     return fResult;
+}
+
+QList<QUrl> VBoxGlobal::takeArgumentUrls()
+{
+    const QList<QUrl> result = m_listArgUrls;
+    m_listArgUrls.clear();
+    return result;
 }
 
 #ifdef VBOX_WITH_DEBUGGER_GUI

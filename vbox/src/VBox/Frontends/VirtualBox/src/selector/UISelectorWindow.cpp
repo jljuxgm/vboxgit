@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 74216 2018-09-12 10:43:04Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 74305 2018-09-17 11:44:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -363,11 +363,10 @@ void UISelectorWindow::sltOpenUrls(QList<QUrl> list /* = QList<QUrl>() */)
     /// @todo What? So dangerous method for so cheap purpose?
     qApp->processEvents();
 
+    /* If passed list is empty, we take the one from VBoxGlobal: */
     if (list.isEmpty())
-    {
-        list = vboxGlobal().argUrlList();
-        vboxGlobal().argUrlList().clear();
-    }
+        list = vboxGlobal().takeArgumentUrls();
+
     /* Check if we are can handle the dropped urls. */
     for (int i = 0; i < list.size(); ++i)
     {

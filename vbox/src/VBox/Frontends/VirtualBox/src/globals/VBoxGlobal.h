@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: VBoxGlobal.h 74305 2018-09-17 11:44:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -201,8 +201,8 @@ public:
         /** Process application args. */
         bool processArgs();
 
-        /** Returns the URL arguments list. */
-        QList<QUrl> &argUrlList() { return m_listArgUrls; }
+        /** Takes and returns the URL argument list while clearing the source. */
+        QList<QUrl> takeArgumentUrls();
 
         /** Returns the --startvm option value (managed VM id). */
         QString managedVMUuid() const { return m_strManagedVMId; }

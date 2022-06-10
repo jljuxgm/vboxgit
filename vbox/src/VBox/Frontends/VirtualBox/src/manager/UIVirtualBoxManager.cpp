@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 74272 2018-09-14 15:46:37Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 74305 2018-09-17 11:44:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -309,14 +309,9 @@ void UIVirtualBoxManager::sltHandleMediumEnumerationFinish()
 
 void UIVirtualBoxManager::sltHandleOpenUrlCall(QList<QUrl> list /* = QList<QUrl>() */)
 {
-    /* If passed list is empty: */
+    /* If passed list is empty, we take the one from VBoxGlobal: */
     if (list.isEmpty())
-    {
-        /* We take the one which stored in VBoxGlobal: */
-        list = vboxGlobal().argUrlList();
-        vboxGlobal().argUrlList().clear();
-        /// @todo Rework this getter to do .clear() as well.
-    }
+        list = vboxGlobal().takeArgumentUrls();
 
     /* Check if we are can handle the dropped urls: */
     for (int i = 0; i < list.size(); ++i)
