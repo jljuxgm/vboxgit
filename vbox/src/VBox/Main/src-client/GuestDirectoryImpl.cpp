@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 73036 2018-07-10 15:02:52Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 73063 2018-07-11 13:00:03Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -291,7 +291,10 @@ int GuestDirectory::i_readInternal(ComObjPtr<GuestFsObjInfo> &fsObjInfo, int *pr
          * Note: The guest process can still be around to serve the next
          *       upcoming stream block next time.
          */
-        if (mData.mProcessTool.isRunning())
+        if (!mData.mProcessTool.isRunning())
+            rc = mData.mProcessTool.getTerminationStatus(); /* Tool process is not running (anymore). Check termination status. */
+
+        if (RT_SUCCESS(rc))
         {
             if (curBlock.GetCount()) /* Did we get content? */
             {
@@ -310,8 +313,6 @@ int GuestDirectory::i_readInternal(ComObjPtr<GuestFsObjInfo> &fsObjInfo, int *pr
                 rc = VERR_NO_MORE_FILES;
             }
         }
-        else /* Tool process is not running anymore. Return status. */
-            rc = mData.mProcessTool.getTerminationStatus();
     }
 
     LogFlowThisFunc(("Returning rc=%Rrc\n", rc));
