@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76655 2019-01-06 15:53:58Z vboxsync $
+# $Id: Makefile.kmk 76656 2019-01-06 15:54:19Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -52,10 +52,8 @@ ifdef VBOX_ONLY_SDK
 endif # !VBOX_ONLY_SDK
 
 
-#
-# VBOX_MAIN_DEFS is used by VBoxC, VBoxClient-x86, VBoxSVC and VBoxSVCM, making
+## VBOX_MAIN_DEFS is used by VBoxC, VBoxClient-x86, VBoxSVC and VBoxSVCM, making
 # sure they all have the same set of features enabled.
-#
 VBOX_MAIN_DEFS :=
 ifneq ($(KBUILD_TARGET),win)
  ifndef VBOX_WITH_XPCOM
