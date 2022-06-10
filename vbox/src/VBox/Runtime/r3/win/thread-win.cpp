@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 71150 2018-02-28 10:44:38Z vboxsync $ */
+/* $Id: thread-win.cpp 75882 2018-12-02 19:04:38Z vboxsync $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -414,7 +414,7 @@ RTDECL(int) RTThreadPoke(RTTHREAD hThread)
         rtThreadRelease(pThread);
         if (NT_SUCCESS(rcNt))
             return VINF_SUCCESS;
-        return RTErrConvertFromErrno(rcNt);
+        return RTErrConvertFromNtStatus(rcNt);
     }
     return VERR_NOT_IMPLEMENTED;
 }
