@@ -1,4 +1,4 @@
-/* $Id: aiomgr.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: aiomgr.cpp 77237 2019-02-09 18:31:23Z vboxsync $ */
 /** @file
  * IPRT - Async I/O manager.
  */
@@ -764,8 +764,8 @@ static int rtAioMgrCheckFiles(PRTAIOMGRINT pThis)
 {
     int rc = VINF_SUCCESS;
 
-    PRTAIOMGRFILEINT pIt;
-    RTListForEach(&pThis->ListFiles, pIt, RTAIOMGRFILEINT, AioMgr.NodeAioMgrFiles)
+    PRTAIOMGRFILEINT pIt, pNext;
+    RTListForEachSafe(&pThis->ListFiles, pIt, pNext, RTAIOMGRFILEINT, AioMgr.NodeAioMgrFiles)
     {
         rc = rtAioMgrQueueReqs(pThis, pIt);
         if (RT_FAILURE(rc))
