@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 72945 2018-07-07 15:29:54Z vboxsync $ */
+/* $Id: fuzz.cpp 72946 2018-07-07 15:30:57Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -49,7 +49,6 @@
 
 
 #define RTFUZZCTX_MAGIC UINT32_C(0xdeadc0de) /** @todo */
-
 
 
 /*********************************************************************************************************************************
@@ -186,7 +185,6 @@ typedef DECLCALLBACK(int) FNRTFUZZCTXMUTATOR(PRTFUZZCTXINT pThis, const void *pv
 typedef FNRTFUZZCTXMUTATOR *PFNRTFUZZCTXMUTATOR;
 
 
-
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
@@ -202,7 +200,6 @@ static DECLCALLBACK(int) rtFuzzCtxMutatorByteDelete(PRTFUZZCTXINT pThis, const v
                                                     PPRTFUZZINPUTINT ppInputMutated);
 static DECLCALLBACK(int) rtFuzzCtxMutatorByteSequenceDelete(PRTFUZZCTXINT pThis, const void *pvBuf, size_t cbBuf,
                                                             PPRTFUZZINPUTINT ppInputMutated);
-
 
 
 /*********************************************************************************************************************************
