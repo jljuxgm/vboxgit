@@ -1,4 +1,4 @@
-/* $Id: tstRTCrX509-1.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTCrX509-1.cpp 73688 2018-08-15 09:54:56Z vboxsync $ */
 /** @file
  * IPRT testcase - Crypto - X.509 \#1.
  */
@@ -156,7 +156,8 @@ static void test1()
                                 {
                                     rc = RTCrX509Certificate_VerifySignatureSelfSigned(paCerts[j], NULL /*pErrInfo*/);
                                     if (   RT_FAILURE(rc)
-                                        && (   rc != VERR_CR_PKIX_OSSL_CIPHER_ALGO_NOT_KNOWN_EVP
+                                        && (   (   rc != VERR_CR_PKIX_OSSL_CIPHER_ALGO_NOT_KNOWN_EVP
+                                                && rc != VERR_NOT_FOUND)
                                             || !g_aFiles[i].fMaybeNotInOpenSSL) )
                                         RTTestIFailed("RTCrX509Certificate_VerifySignatureSelfSigned failed for %s (#%u), variation %u: %Rrc",
                                                       g_aFiles[i].pszFile, i, j, rc);
