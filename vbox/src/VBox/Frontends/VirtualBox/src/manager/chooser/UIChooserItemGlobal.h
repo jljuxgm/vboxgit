@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 75106 2018-10-26 15:34:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -48,7 +48,7 @@ public:
     /** @name Item stuff.
       * @{ */
         /** Returns whether passed @a position belongs to tools button area. */
-        bool isToolsButtonArea(const QPoint &position) const;
+        bool isToolsButtonArea(const QPoint &position, int iMarginMultiplier = 1) const;
     /** @} */
 
     /** @name Layout stuff.

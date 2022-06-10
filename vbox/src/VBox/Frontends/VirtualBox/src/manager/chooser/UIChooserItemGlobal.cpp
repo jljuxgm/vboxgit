@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 74977 2018-10-22 17:45:47Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 75106 2018-10-26 15:34:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -129,7 +129,7 @@ UIChooserItemGlobal::~UIChooserItemGlobal()
     parentItem()->removeItem(this);
 }
 
-bool UIChooserItemGlobal::isToolsButtonArea(const QPoint &position) const
+bool UIChooserItemGlobal::isToolsButtonArea(const QPoint &position, int iMarginMultiplier /* = 1 */) const
 {
     const int iFullWidth = geometry().width();
     const int iFullHeight = geometry().height();
@@ -141,7 +141,8 @@ bool UIChooserItemGlobal::isToolsButtonArea(const QPoint &position) const
                        iToolsPixmapY,
                        m_toolsPixmap.width() / m_toolsPixmap.devicePixelRatio(),
                        m_toolsPixmap.height() / m_toolsPixmap.devicePixelRatio());
-    rect.adjust(- iButtonMargin, -iButtonMargin, iButtonMargin, iButtonMargin);
+    rect.adjust(-iMarginMultiplier * iButtonMargin, -iMarginMultiplier * iButtonMargin,
+                 iMarginMultiplier * iButtonMargin,  iMarginMultiplier * iButtonMargin);
     return rect.contains(position);
 }
 
@@ -802,12 +803,14 @@ void UIChooserItemGlobal::paintGlobalInfo(QPainter *pPainter, const QRect &recta
         const QPoint itemCursorPosition = mapFromScene(sceneCursorPosition).toPoint();
 
         /* Paint flat button: */
-        paintFlatButton(/* Painter: */
-                        pPainter,
-                        /* Button rectangle: */
-                        buttonRectangle,
-                        /* Cursor position: */
-                        itemCursorPosition);
+        if (   isHovered()
+            && isToolsButtonArea(itemCursorPosition, 4))
+            paintFlatButton(/* Painter: */
+                            pPainter,
+                            /* Button rectangle: */
+                            buttonRectangle,
+                            /* Cursor position: */
+                            itemCursorPosition);
 
         /* Paint pixmap: */
         paintPixmap(/* Painter: */

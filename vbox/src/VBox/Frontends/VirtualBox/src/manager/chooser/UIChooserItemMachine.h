@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIChooserItemMachine.h 75106 2018-10-26 15:34:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -61,7 +61,7 @@ public:
         bool isLockedMachine() const;
 
         /** Returns whether passed @a position belongs to tools button area. */
-        bool isToolsButtonArea(const QPoint &position) const;
+        bool isToolsButtonArea(const QPoint &position, int iMarginMultiplier = 1) const;
     /** @} */
 
     /** @name Navigation stuff.
