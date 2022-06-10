@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 73830 2018-08-22 14:26:41Z vboxsync $ */
+/* $Id: DrvAudio.cpp 73872 2018-08-24 11:53:14Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1607,6 +1607,9 @@ static int drvAudioStreamCaptureNonInterleaved(PDRVAUDIO pThis, PPDMAUDIOSTREAM 
         Assert(cbCaptured <= cbBuf);
         if (cbCaptured > cbBuf) /* Paranoia. */
             cbCaptured = cbBuf;
+
+        if (!cbCaptured) /* Nothing captured? Take a shortcut. */
+            break;
 
         /* We use the host side mixing buffer as an intermediate buffer to do some
          * (first) processing (if needed), so always write the incoming data at offset 0. */
