@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74073 2018-09-04 18:05:14Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74074 2018-09-04 18:08:11Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2003,7 +2003,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmentryCheckEntryCtls(PVMCPU pVCpu, const char *ps
             return VERR_VMX_VMENTRY_FAILED;
         }
 
-        /* Error code. */
+        /* Exception error code. */
         if (RT_BF_GET(uIntInfo, VMX_BF_ENTRY_INT_INFO_ERR_CODE_VALID))
         {
             /* Delivery possible only in Unrestricted-guest mode when CR0.PE is set. */
@@ -2017,6 +2017,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmentryCheckEntryCtls(PVMCPU pVCpu, const char *ps
                 return VERR_VMX_VMENTRY_FAILED;
             }
 
+            /* Exceptions that provide an error code. */
             if (   uType == VMX_ENTRY_INT_INFO_TYPE_HW_XCPT
                 && (   uVector == X86_XCPT_DF
                     || uVector == X86_XCPT_TS
