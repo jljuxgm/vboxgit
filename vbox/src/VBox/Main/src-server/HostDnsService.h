@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 77984 2019-04-02 14:06:13Z vboxsync $ */
+/* $Id: HostDnsService.h 77985 2019-04-02 14:12:23Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -56,7 +56,7 @@ class HostDnsServiceBase
     DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(HostDnsServiceBase);
 
 public:
-  
+
     static HostDnsServiceBase *createHostDnsMonitor(void);
     void shutdown();
 

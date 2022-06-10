@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceWin.cpp 77984 2019-04-02 14:06:13Z vboxsync $ */
+/* $Id: HostDnsServiceWin.cpp 77985 2019-04-02 14:12:23Z vboxsync $ */
 /** @file
  * Host DNS listener for Windows.
  */
@@ -74,7 +74,7 @@ struct HostDnsServiceWin::Data
 
 
 HostDnsServiceWin::HostDnsServiceWin()
- : HostDnsMonitor(true)
+    : HostDnsServiceBase(true)
 {
     m = new Data();
 }
