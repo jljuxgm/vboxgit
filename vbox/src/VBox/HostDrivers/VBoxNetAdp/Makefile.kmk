@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72005 2018-04-24 15:12:15Z vboxsync $
+# $Id: Makefile.kmk 76321 2018-12-20 18:01:22Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Adapter Driver (VBoxNetAdp).
 #
@@ -181,7 +181,10 @@ $$(VBoxNetAdp-src_0_OUTDIR)/Makefile: \
  endif
 	%$(QUIET2)$(APPEND) -t '$(PATH_TARGET)/VBoxNetAdp-src-1.dep' 'VBoxNetAdp/linux/Makefile_VBOX_HARDENED=$(VBOX_WITH_HARDENING)'
 
-
+ #
+ # Build test for the linux host kernel modules.
+ #
+ $(evalcall2 VBOX_LINUX_KMOD_TEST_BUILD_RULE_FN,VBoxNetAdp-src,vboxdrv-src,)
 endif # linux
 
 ifeq ($(KBUILD_TARGET),freebsd)

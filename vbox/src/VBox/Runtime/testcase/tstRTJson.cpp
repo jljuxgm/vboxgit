@@ -1,4 +1,4 @@
-/* $Id: tstRTJson.cpp 74350 2018-09-18 19:55:31Z vboxsync $ */
+/* $Id: tstRTJson.cpp 76321 2018-12-20 18:01:22Z vboxsync $ */
 /** @file
  * IPRT Testcase - JSON API.
  */
@@ -109,6 +109,7 @@ static void tstBasic(RTTEST hTest)
         { "\"\\uDbff\\uDfff\"", VINF_SUCCESS},
         { "\"\\t\\n\\b\\f\\r\\\\\\/\"", VINF_SUCCESS},
     };
+AssertFailed(); // DONT COMMIT THIS!
     for (unsigned iTest = 0; iTest < RT_ELEMENTS(aTests); iTest++)
     {
         RTERRINFOSTATIC ErrInfo;
