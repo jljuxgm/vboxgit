@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 75861 2018-12-02 00:26:36Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 75863 2018-12-02 00:43:41Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -256,9 +256,6 @@ private:
     /** Map containing all objects bound to a guest session.
      *  The key specifies the (global) context ID. */
     typedef std::map <uint32_t, SessionObject> SessionObjects;
-    /** Queue containing context IDs which are no longer in use.
-     *  Useful for quickly retrieving a new, unused context ID. */
-    typedef std::deque <uint32_t>              SessionObjectsFree;
 
 public:
     /** @name Public internal methods.

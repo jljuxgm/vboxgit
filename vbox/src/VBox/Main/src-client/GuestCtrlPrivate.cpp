@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 75861 2018-12-02 00:26:36Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 75863 2018-12-02 00:43:41Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1261,16 +1261,16 @@ int GuestBase::unregisterWaitEvent(GuestWaitEvent *pWaitEvt)
  * @param   ppEvent                 Pointer to IEvent which got triggered
  *                                  for this event. Optional.
  */
-int GuestBase::waitForEvent(GuestWaitEvent *pEvent, uint32_t msTimeout, VBoxEventType_T *pType, IEvent **ppEvent)
+int GuestBase::waitForEvent(GuestWaitEvent *pWaitEvt, uint32_t msTimeout, VBoxEventType_T *pType, IEvent **ppEvent)
 {
-    AssertPtrReturn(pEvent, VERR_INVALID_POINTER);
+    AssertPtrReturn(pWaitEvt, VERR_INVALID_POINTER);
     /* pType is optional. */
     /* ppEvent is optional. */
 
-    int vrc = pEvent->Wait(msTimeout);
+    int vrc = pWaitEvt->Wait(msTimeout);
     if (RT_SUCCESS(vrc))
     {
-        const ComPtr<IEvent> pThisEvent = pEvent->Event();
+        const ComPtr<IEvent> pThisEvent = pWaitEvt->Event();
         if (pThisEvent.isNotNull()) /* Having a VBoxEventType_ event is optional. */ /** @todo r=bird: misplaced comment? */
         {
             if (pType)
