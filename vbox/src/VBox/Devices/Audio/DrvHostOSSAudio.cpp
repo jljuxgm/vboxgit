@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 73695 2018-08-15 15:20:02Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 73696 2018-08-15 15:36:19Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -679,7 +679,11 @@ static int ossCreateStreamOut(POSSAUDIOSTREAM pStreamOSS, PPDMAUDIOSTREAMCFG pCf
 
     do
     {
-        OSSAUDIOSTREAMCFG reqStream, obtStream;
+        OSSAUDIOSTREAMCFG reqStream;
+        RT_ZERO(reqStream);
+
+        OSSAUDIOSTREAMCFG obtStream;
+        RT_ZERO(obtStream);
 
         memcpy(&reqStream.Props, &pCfgReq->Props, sizeof(PDMAUDIOPCMPROPS));
 
