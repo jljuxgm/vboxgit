@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 77638 2019-03-10 19:21:30Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 77639 2019-03-10 19:45:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -91,7 +91,7 @@ QString UIChooserNodeGroup::definition() const
     return QString("g=%1").arg(name());
 }
 
-bool UIChooserNodeGroup::hasNodes(UIChooserItemType enmType) const
+bool UIChooserNodeGroup::hasNodes(UIChooserItemType enmType /* = UIChooserItemType_Any */) const
 {
     switch (enmType)
     {
@@ -107,7 +107,7 @@ bool UIChooserNodeGroup::hasNodes(UIChooserItemType enmType) const
     return false;
 }
 
-QList<UIChooserNode*> UIChooserNodeGroup::nodes(UIChooserItemType enmType) const
+QList<UIChooserNode*> UIChooserNodeGroup::nodes(UIChooserItemType enmType /* = UIChooserItemType_Any */) const
 {
     switch (enmType)
     {

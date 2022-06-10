@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGlobal.cpp 77638 2019-03-10 19:21:30Z vboxsync $ */
+/* $Id: UIChooserNodeGlobal.cpp 77639 2019-03-10 19:45:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGlobal class implementation.
  */
@@ -70,13 +70,13 @@ QString UIChooserNodeGlobal::definition() const
     return QString("n=%1").arg("GLOBAL");
 }
 
-bool UIChooserNodeGlobal::hasNodes(UIChooserItemType enmType) const
+bool UIChooserNodeGlobal::hasNodes(UIChooserItemType enmType /* = UIChooserItemType_Any */) const
 {
     Q_UNUSED(enmType);
     AssertFailedReturn(false);
 }
 
-QList<UIChooserNode*> UIChooserNodeGlobal::nodes(UIChooserItemType enmType) const
+QList<UIChooserNode*> UIChooserNodeGlobal::nodes(UIChooserItemType enmType /* = UIChooserItemType_Any */) const
 {
     Q_UNUSED(enmType);
     AssertFailedReturn(QList<UIChooserNode*>());
