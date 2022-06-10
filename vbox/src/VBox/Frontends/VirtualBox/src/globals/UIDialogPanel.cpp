@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.cpp 77308 2019-02-14 10:39:39Z vboxsync $ */
+/* $Id: UIDialogPanel.cpp 78001 2019-04-03 15:58:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -92,14 +92,6 @@ void UIDialogPanel::retranslateUi()
 {
     if (m_pCloseButton)
         m_pCloseButton->setToolTip(QApplication::translate("UIVisoCreator", "Close the pane"));
-}
-
-bool UIDialogPanel::eventFilter(QObject *pObject, QEvent *pEvent)
-{
-    Q_UNUSED(pObject);
-    Q_UNUSED(pEvent);
-    /* Dont consume this event. Pass it back to Qt's event system: */
-    return false;
 }
 
 void UIDialogPanel::showEvent(QShowEvent *pEvent)

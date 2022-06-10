@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.h 76950 2019-01-23 10:17:54Z vboxsync $ */
+/* $Id: UIDialogPanel.h 78001 2019-04-03 15:58:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -59,8 +59,6 @@ protected:
     /** Handles the translation event. */
     void retranslateUi() /* override */;
 
-    /** Handles Qt @a pEvent, used for keyboard processing. */
-    bool eventFilter(QObject *pObject, QEvent *pEvent);
     /** Handles the Qt show @a pEvent. */
     void showEvent(QShowEvent *pEvent);
     /** Handles the Qt hide @a pEvent. */
