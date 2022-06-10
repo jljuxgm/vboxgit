@@ -1,4 +1,4 @@
-/* $Id: shflhandle.h 76570 2019-01-01 04:36:36Z vboxsync $ */
+/* $Id: shflhandle.h 77243 2019-02-10 22:44:00Z vboxsync $ */
 /** @file
  * Shared Folders Host Service - Handles helper functions header.
  */
@@ -51,12 +51,13 @@ typedef struct _SHFLFILEHANDLE
         struct
         {
             RTFILE        Handle;
+            uint64_t      fOpenFlags;       /**< RTFILE_O_XXX. */
         } file;
         struct
         {
             RTDIR         Handle;
             RTDIR         SearchHandle;
-            PRTDIRENTRYEX pLastValidEntry; /* last found file in a directory search */
+            PRTDIRENTRYEX pLastValidEntry;  /**< last found file in a directory search */
         } dir;
     };
 } SHFLFILEHANDLE;

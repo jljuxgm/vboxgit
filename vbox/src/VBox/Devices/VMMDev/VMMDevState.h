@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: VMMDevState.h 77243 2019-02-10 22:44:00Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -318,6 +318,7 @@ typedef struct VMMDevState
     STAMPROFILE StatHgcmCmdCompletion;
     STAMPROFILE StatHgcmCmdTotal;
     STAMCOUNTER StatHgcmLargeCmdAllocs;
+    STAMCOUNTER StatHgcmFailedPageListLocking;
 #endif /* VBOX_WITH_HGCM */
     STAMCOUNTER StatReqBufAllocs;
 

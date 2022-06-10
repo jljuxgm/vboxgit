@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 77056 2019-01-30 18:00:43Z vboxsync $ */
+/* $Id: VMMDev.cpp 77243 2019-02-10 22:44:00Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2301,6 +2301,7 @@ static int vmmdevReqHandler_GetHostVersion(VMMDevRequestHeader *pReqHdr)
     pReq->features  = VMMDEV_HVF_HGCM_PHYS_PAGE_LIST
                     | VMMDEV_HVF_HGCM_EMBEDDED_BUFFERS
                     | VMMDEV_HVF_HGCM_CONTIGUOUS_PAGE_LIST
+                    | VMMDEV_HVF_HGCM_NO_BOUNCE_PAGE_LIST
                     | VMMDEV_HVF_FAST_IRQ_ACK;
     return VINF_SUCCESS;
 }
@@ -4735,6 +4736,8 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
                            "Profiling whole HGCM call.",                    "/HGCM/MsgTotal");
     PDMDevHlpSTAMRegisterF(pDevIns, &pThis->StatHgcmLargeCmdAllocs,STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
                            "Times the allocation cache could not be used.", "/HGCM/LargeCmdAllocs");
+    PDMDevHlpSTAMRegisterF(pDevIns, &pThis->StatHgcmFailedPageListLocking,STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                           "Times no-bounce page list locking failed.", "/HGCM/FailedPageListLocking");
 #endif
 
     /*
