@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 72834 2018-07-03 16:44:41Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 72840 2018-07-03 18:42:06Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -62,11 +62,15 @@ struct fileList_t
         Utf8Str filename = fullPath;
         filename.stripPath();
         rangeRes_t res = m_list.equal_range(folder);
-        for (it_t it=res.first; it!=res.second; ++it)
+        for (it_t it=res.first; it!=res.second;)
         {
+            //until c++11
             if (it->second.equals(filename))
-                m_list.erase(it);
+                m_list.erase(it++);
+            else
+                ++it;
         }
+
         return rc;
     }
 
@@ -74,10 +78,13 @@ struct fileList_t
     {
         HRESULT rc = S_OK;
         rangeRes_t res = m_list.equal_range(path);
-        for (it_t it=res.first; it!=res.second; ++it)
+        for (it_t it=res.first; it!=res.second;)
         {
+            //since c++11
             if (it->second.equals(fileName))
-                m_list.erase(it);
+                it = m_list.erase(it);
+            else
+                ++it;
         }
         return rc;
     }
