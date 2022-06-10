@@ -1,4 +1,4 @@
-/* $Id: mount.vboxsf.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: mount.vboxsf.c 75433 2018-11-13 22:34:39Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions for Linux - mount(8) helper.
  *
@@ -401,6 +401,7 @@ main(int argc, char **argv)
     mntinf.signature[1] = VBSF_MOUNT_SIGNATURE_BYTE_1;
     mntinf.signature[2] = VBSF_MOUNT_SIGNATURE_BYTE_2;
     mntinf.length       = sizeof(mntinf);
+    mntinf.tag[0] = '\0';
 
     if (getuid())
         panic("Only root can mount shared folders from the host.\n");
