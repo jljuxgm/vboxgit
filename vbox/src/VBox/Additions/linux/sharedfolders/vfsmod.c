@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 77538 2019-03-02 18:31:22Z vboxsync $ */
+/* $Id: vfsmod.c 77542 2019-03-03 04:40:17Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -45,7 +45,9 @@
 #include "version-generated.h"
 #include "revision-generated.h"
 #include "product-generated.h"
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 3, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)
+# include <uapi/linux/mount.h> /* for MS_REMOUNT */
+#elif LINUX_VERSION_CODE < KERNEL_VERSION(3, 3, 0)
 # include <linux/mount.h>
 #endif
 #include <linux/seq_file.h>
