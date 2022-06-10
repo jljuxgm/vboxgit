@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 73560 2018-08-08 12:27:18Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 73871 2018-08-24 10:41:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -1147,6 +1147,10 @@ public:
         setStateIcon(1, UIIconPool::iconSet(":/hostkey_captured_16px.png"));
         setStateIcon(2, UIIconPool::iconSet(":/hostkey_pressed_16px.png"));
         setStateIcon(3, UIIconPool::iconSet(":/hostkey_captured_pressed_16px.png"));
+        setStateIcon(4, UIIconPool::iconSet(":/hostkey_checked_16px.png"));
+        setStateIcon(5, UIIconPool::iconSet(":/hostkey_captured_checked_16px.png"));
+        setStateIcon(6, UIIconPool::iconSet(":/hostkey_pressed_checked_16px.png"));
+        setStateIcon(7, UIIconPool::iconSet(":/hostkey_captured_pressed_checked_16px.png"));
         /* Configure connection: */
         connect(pSession, SIGNAL(sigKeyboardStateChange(int)), this, SLOT(setState(int)));
         setState(pSession->keyboardState());

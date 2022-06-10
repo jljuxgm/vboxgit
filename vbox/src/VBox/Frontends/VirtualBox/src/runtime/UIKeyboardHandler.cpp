@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 72393 2018-05-30 15:24:13Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 73871 2018-08-24 10:41:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -465,7 +465,8 @@ void UIKeyboardHandler::releaseAllPressedKeys(bool aReleaseHostKey /* = true */)
 int UIKeyboardHandler::state() const
 {
     return (m_fIsKeyboardCaptured ? UIViewStateType_KeyboardCaptured : 0) |
-           (m_bIsHostComboPressed ? UIViewStateType_HostKeyPressed : 0);
+           (m_bIsHostComboPressed ? UIViewStateType_HostKeyPressed : 0) |
+           (m_fHostKeyComboPressInserted ? UIViewStateType_HostKeyPressedInsertion : 0);
 }
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
@@ -964,6 +965,7 @@ UIKeyboardHandler::UIKeyboardHandler(UIMachineLogic *pMachineLogic)
     , m_bIsHostComboAlone(false)
     , m_bIsHostComboProcessed(false)
     , m_fPassCADtoGuest(false)
+    , m_fHostKeyComboPressInserted(false)
     , m_fDebuggerActive(false)
     , m_iKeyboardHookViewIndex(-1)
 #if defined(VBOX_WS_MAC)
@@ -1934,4 +1936,10 @@ UIMachineView* UIKeyboardHandler::isItListenedView(QObject *pWatchedObject) cons
         ++i;
     }
     return pResultView;
+}
+
+void UIKeyboardHandler::setHostKeyComboPressedFlag(bool bPressed)
+{
+    m_fHostKeyComboPressInserted = bPressed;
+    emit sigStateChange(state());
 }

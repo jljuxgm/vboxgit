@@ -1,4 +1,4 @@
-/* $Id: UIMachineDefs.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIMachineDefs.h 73871 2018-08-24 10:41:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Defines for Virtual Machine classes.
  */
@@ -55,9 +55,10 @@ enum UIMouseStateType
 /* Machine View states enum: */
 enum UIViewStateType
 {
-    UIViewStateType_KeyboardCaptured = RT_BIT(0),
-    UIViewStateType_HostKeyPressed   = RT_BIT(1)
+    UIViewStateType_KeyboardCaptured          = RT_BIT(0),
+    UIViewStateType_HostKeyPressed            = RT_BIT(1),
+    /* A host key combo press has been inserted to the guest but not a release yet. */
+    UIViewStateType_HostKeyPressedInsertion   = RT_BIT(2)
 };
 
 #endif // __UIMachineDefs_h__
-

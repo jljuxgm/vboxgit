@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIKeyboardHandler.h 73871 2018-08-24 10:41:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -104,6 +104,10 @@ public:
     /** Qt5: Performs pre-processing of all the native events. */
     bool nativeEventFilter(void *pMessage, ulong uScreenId);
 
+    /** Called whenever host key press/release scan codes are inserted to the guest.
+      * @a bPressed is true for press and false for release inserts. */
+    void setHostKeyComboPressedFlag(bool bPressed);
+
 protected slots:
 
     /* Machine state-change handler: */
@@ -198,6 +202,7 @@ protected:
     bool m_bIsHostComboAlone : 1;
     bool m_bIsHostComboProcessed : 1;
     bool m_fPassCADtoGuest : 1;
+    bool m_fHostKeyComboPressInserted : 1;
     /** Whether the debugger is active.
      * Currently only affects auto capturing. */
     bool m_fDebuggerActive : 1;
@@ -228,4 +233,3 @@ protected:
 };
 
 #endif // !___UIKeyboardHandler_h___
-
