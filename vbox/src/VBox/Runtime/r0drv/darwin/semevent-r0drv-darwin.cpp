@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-darwin.cpp 75704 2018-11-25 01:44:09Z vboxsync $ */
+/* $Id: semevent-r0drv-darwin.cpp 76055 2018-12-07 13:04:00Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -169,6 +169,7 @@ RTDECL(int)  RTSemEventDestroy(RTSEMEVENT hEventSem)
     RT_ASSERT_INTS_ON();
     IPRT_DARWIN_SAVE_EFL_AC();
 
+    RTCCUINTREG const fIntSaved = ASMIntDisableFlags();
     lck_spin_lock(pThis->pSpinlock);
 
     ASMAtomicWriteU32(&pThis->u32Magic, ~RTSEMEVENT_MAGIC); /* make the handle invalid */
@@ -183,6 +184,7 @@ RTDECL(int)  RTSemEventDestroy(RTSEMEVENT hEventSem)
     }
 
     lck_spin_unlock(pThis->pSpinlock);
+    ASMSetFlags(fIntSaved);
     rtR0SemEventDarwinRelease(pThis);
 
     IPRT_DARWIN_RESTORE_EFL_AC();
@@ -208,10 +210,8 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT hEventSem)
     //RT_ASSERT_INTS_ON(); - we may be called from interrupt context, which seems to be perfectly fine.
     IPRT_DARWIN_SAVE_EFL_AC();
 
+    RTCCUINTREG const fIntSaved = ASMIntDisableFlags();
     rtR0SemEventDarwinRetain(pThis);
-
-    /** @todo should probably disable interrupts here... update
-     *        semspinmutex-r0drv-generic.c when done. */
     lck_spin_lock(pThis->pSpinlock);
 
     /*
@@ -232,6 +232,7 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT hEventSem)
     }
 
     lck_spin_unlock(pThis->pSpinlock);
+    ASMSetFlags(fIntSaved);
     rtR0SemEventDarwinRelease(pThis);
 
     RT_ASSERT_PREEMPT_CPUID();
@@ -263,6 +264,7 @@ static int rtR0SemEventDarwinWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, ui
     AssertReturn(RTSEMWAIT_FLAGS_ARE_VALID(fFlags), VERR_INVALID_PARAMETER);
     IPRT_DARWIN_SAVE_EFL_AC();
 
+    RTCCUINTREG const fIntSaved = ASMIntDisableFlags();
     rtR0SemEventDarwinRetain(pThis);
     lck_spin_lock(pThis->pSpinlock);
 
@@ -389,7 +391,9 @@ static int rtR0SemEventDarwinWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, ui
     }
 
     lck_spin_unlock(pThis->pSpinlock);
+    ASMSetFlags(fIntSaved);
     rtR0SemEventDarwinRelease(pThis);
+
     IPRT_DARWIN_RESTORE_EFL_AC();
     return rc;
 }
