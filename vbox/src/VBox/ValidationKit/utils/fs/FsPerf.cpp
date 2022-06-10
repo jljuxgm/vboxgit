@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 76928 2019-01-21 19:18:08Z vboxsync $ */
+/* $Id: FsPerf.cpp 76929 2019-01-21 19:43:00Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -1687,7 +1687,7 @@ void fsPerfIoSeek(RTFILE hFile1, uint64_t cbFile)
         } \
         RTTestIValueF(ns / iIteration, \
                       RTTESTUNIT_NS_PER_OCCURRENCE, a_szOperation "/seq/%RU32 latency", cbBlock); \
-        RTTestIValueF((uint64_t)iIteration * cbBlock / ((double)ns / RT_NS_1SEC), \
+        RTTestIValueF((uint64_t)((uint64_t)iIteration * cbBlock / ((double)ns / RT_NS_1SEC)), \
                       RTTESTUNIT_BYTES_PER_SEC,     a_szOperation "/seq/%RU32 throughput", cbBlock); \
         RTTestIValueF(iIteration, \
                       RTTESTUNIT_CALLS,             a_szOperation "/seq/%RU32 calls", cbBlock); \
@@ -2618,7 +2618,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 76928 $";
+                char szRev[] = "$Revision: 76929 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
