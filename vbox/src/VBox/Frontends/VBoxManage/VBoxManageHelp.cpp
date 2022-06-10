@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 75920 2018-12-03 18:17:11Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 76276 2018-12-18 06:29:43Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -778,7 +778,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                                    [--cloudprofile <cloud profile name>]\n"
                      "                                    [--cloudshape <shape>]\n"
                      "                                    [--clouddomain <domain>]\n"
-                     "                                    [--clouddisksize <disk size>]\n"
+                     "                                    [--clouddisksize <disk size in GB>]\n"
                      "                                    [--cloudbucket <bucket name>]\n"
                      "                                    [--cloudocivcn <OCI vcn id>]\n"
                      "                                    [--cloudocisubnet <OCI subnet id>]\n"
