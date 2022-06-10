@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HMAll.cpp 76797 2019-01-14 06:06:40Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -71,7 +71,7 @@ VMMDECL(bool) HMCanExecuteGuest(PVMCPU pVCpu, PCCPUMCTX pCtx)
 
 #ifdef VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM
     if (   CPUMIsGuestInSvmNestedHwVirtMode(pCtx)
-        || CPUMIsGuestVmxEnabled(pCtx))
+        || CPUMIsGuestInVmxNonRootMode(pCtx))
     {
         LogFunc(("In nested-guest mode - returning false"));
         return false;
