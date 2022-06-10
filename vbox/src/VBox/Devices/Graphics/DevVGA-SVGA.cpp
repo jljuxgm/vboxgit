@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 73197 2018-07-18 10:54:12Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 73237 2018-07-19 12:25:07Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -4426,7 +4426,7 @@ int vmsvgaGMRTransfer(PVGASTATE pThis, const SVGA3dTransferType enmTransferType,
     int            rc;
 
     LogFunc(("%s host %p size=%d offset %d pitch=%d; guest gmr=%#x:%#x offset=%d pitch=%d cbWidth=%d cHeight=%d\n",
-             enmTransferType == SVGA3D_READ_HOST_VRAM ? "READ" : "WRITE",
+             enmTransferType == SVGA3D_READ_HOST_VRAM ? "WRITE" : "READ", /* GMR op: READ host VRAM means WRITE GMR */
              pbHstBuf, cbHstBuf, offHst, cbHstPitch,
              gstPtr.gmrId, gstPtr.offset, offGst, cbGstPitch, cbWidth, cHeight));
     AssertReturn(cbWidth && cHeight, VERR_INVALID_PARAMETER);
