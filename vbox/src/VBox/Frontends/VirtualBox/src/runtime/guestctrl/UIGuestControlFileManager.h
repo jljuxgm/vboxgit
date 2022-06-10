@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 72151 2018-05-07 17:26:23Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 74947 2018-10-19 15:03:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -47,6 +47,20 @@ class UIHostFileTable;
 class UIGuestSessionCreateWidget;
 class UIToolBar;
 
+class UIGuestControlFileManagerSettings
+{
+public:
+    static UIGuestControlFileManagerSettings* instance();
+    static void create();
+    static void destroy();
+
+    bool bListDirectoriesOnTop;
+private:
+    UIGuestControlFileManagerSettings();
+
+
+    static UIGuestControlFileManagerSettings *m_pInstance;
+};
 
 /** A QWidget extension. it includes a QWidget extension for initiating a guest session
  *  one host and one guest file table views, a log viewer
@@ -59,6 +73,7 @@ public:
 
     UIGuestControlFileManager(QWidget *pParent, const CGuest &comGuest);
     ~UIGuestControlFileManager();
+    //const UIGuestControlFileManagerSettings& settings() const;
 
 protected:
 
@@ -126,6 +141,7 @@ private:
     ComObjPtr<UIMainEventListenerImpl> m_pQtSessionListener;
     CEventListener m_comSessionListener;
     CEventListener m_comGuestListener;
+    //UIGuestControlFileManagerSettings m_settings;
 };
 
 #endif /* !___UIGuestControlFileManager_h___ */

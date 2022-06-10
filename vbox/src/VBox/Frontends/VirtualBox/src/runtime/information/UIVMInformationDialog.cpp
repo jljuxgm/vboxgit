@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 74940 2018-10-19 10:45:21Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 74947 2018-10-19 15:03:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -120,8 +120,8 @@ void UIVMInformationDialog::retranslateUi()
     /* Translate tabs: */
     m_pTabWidget->setTabText(0, tr("Configuration &Details"));
     m_pTabWidget->setTabText(1, tr("&Runtime Information"));
-    m_pTabWidget->setTabText(2, tr("&Guest Session Manager"));
-    m_pTabWidget->setTabText(3, tr("&Guest File Manager"));
+    m_pTabWidget->setTabText(2, tr("Guest &Session Manager"));
+    m_pTabWidget->setTabText(3, tr("Guest &File Manager"));
 }
 
 bool UIVMInformationDialog::event(QEvent *pEvent)
