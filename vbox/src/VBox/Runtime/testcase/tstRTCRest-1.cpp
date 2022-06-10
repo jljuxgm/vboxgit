@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 74176 2018-09-10 09:44:58Z vboxsync $ */
+/* $Id: tstRTCRest-1.cpp 74179 2018-09-10 10:46:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -1115,6 +1115,12 @@ void testString(const char *pszDummy, ...)
         RTTESTI_CHECK_RC(deserializeFromJson(&obj4, "\"\\u004f\\u004D\\u0047\\u0021 :-)\"",
                                              &ErrInfo, RT_XSTR(__LINE__)), VINF_SUCCESS);
         RTTESTI_CHECK(obj4 == "OMG! :-)");
+        RTTESTI_CHECK(obj4.isNull() == false);
+
+        obj4.setNull();
+        RTTESTI_CHECK_RC(deserializeFromJson(&obj4, "\"42:\\uD801\\udC37\\ud852\\uDf62:42\"",  /* U+10437 U+24B62 */
+                                             &ErrInfo, RT_XSTR(__LINE__)), VINF_SUCCESS);
+        RTTESTI_CHECK(obj4 == "42:" "\xf0\x90\x90\xb7" "\xf0\xa4\xad\xa2" ":42");
         RTTESTI_CHECK(obj4.isNull() == false);
 
         /* object goes to default state on failure: */
