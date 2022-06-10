@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 75070 2018-10-25 13:42:42Z vboxsync $ */
+/* $Id: UIToolsItem.h 75096 2018-10-26 13:38:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -74,11 +74,13 @@ public:
 
     /** Constructs item on the basis of passed arguments.
       * @param  pScene   Brings the scene reference to add item to.
-      * @param  icon     Brings the item icon.
-      * @param  strName  Brings the item name. */
+      * @param  enmClass Brings the item class.
+      * @param  enmType  Brings the item type.
+      * @param  strName  Brings the item name.
+      * @param  icon     Brings the item icon. */
     UIToolsItem(QGraphicsScene *pScene,
                 UIToolClass enmClass, UIToolType enmType,
-                const QIcon &icon, const QString &strName);
+                const QString &strName, const QIcon &icon);
     /** Destructs item. */
     virtual ~UIToolsItem() /* override */;
 
