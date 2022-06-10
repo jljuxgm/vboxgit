@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 73852 2018-08-23 08:51:08Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -1392,7 +1392,11 @@ DECLINLINE(ULONG) vboxNetLwfWinCalcSegments(PNET_BUFFER pNetBuf)
 {
     ULONG cSegs = 0;
     for (PMDL pMdl = NET_BUFFER_CURRENT_MDL(pNetBuf); pMdl; pMdl = NDIS_MDL_LINKAGE(pMdl))
-        cSegs++;
+    {
+        /* Skip empty MDLs (see @bugref{9233}) */
+        if (MmGetMdlByteCount(pMdl))
+            cSegs++;
+    }
     return cSegs;
 }
 
@@ -1617,6 +1621,9 @@ static PINTNETSG vboxNetLwfWinNBtoSG(PVBOXNETLWF_MODULE pModule, PNET_BUFFER pNe
             break;
         }
         ULONG cbSrc = MmGetMdlByteCount(pMdl);
+        if (cbSrc == 0)
+            continue; /* Skip empty MDLs (see @bugref{9233}) */
+
         if (uOffset)
         {
             Assert(uOffset < cbSrc);
