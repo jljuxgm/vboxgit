@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 73351 2018-07-25 13:02:11Z vboxsync $ */
+/* $Id: VMMDev.cpp 73641 2018-08-13 19:13:59Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1562,6 +1562,8 @@ static int vmmdevReqHandler_GetDisplayChangeRequestMulti(PVMMDEV pThis, VMMDevRe
             pDCR->lastReadDisplayChangeRequest = pDCR->displayChangeRequest;
             pDCR->fPending = false;
         }
+
+        pThis->displayChangeData.fGuestSentChangeEventAck = true;
     }
 
     /* Fill the guest request with monitor layout data. */
