@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-freebsd.c 70873 2018-02-05 18:13:55Z vboxsync $ */
+/* $Id: VBoxGuest-freebsd.c 75778 2018-11-27 22:35:20Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for FreeBSD.
  */
@@ -232,6 +232,10 @@ static int vgdrvFreeBSDOpen(struct cdev *pDev, int fOpen, struct thread *pTd)
 {
     int                 rc;
     PVBOXGUESTSESSION   pSession;
+    uint32_t            fRequestor;
+    struct ucred       *pCred = curthread->td_ucred;
+    if (!pCred)
+        pCred = curproc->p_ucred;
 
     LogFlow(("vgdrvFreeBSDOpen:\n"));
 
@@ -244,7 +248,18 @@ static int vgdrvFreeBSDOpen(struct cdev *pDev, int fOpen, struct thread *pTd)
     /*
      * Create a new session.
      */
-    rc = VGDrvCommonCreateUserSession(&g_DevExt, VMMDEV_REQUESTOR_USERMODE, &pSession);
+    fRequestor = VMMDEV_REQUESTOR_USERMODE | VMMDEV_REQUESTOR_TRUST_NOT_GIVEN;
+    if (pCred && pCred->cr_uid == 0)
+        fRequestor |= VMMDEV_REQUESTOR_USR_ROOT;
+    else
+        fRequestor |= VMMDEV_REQUESTOR_USR_USER;
+    if (pCred && groupmember(0, pCred))
+        fRequestor |= VMMDEV_REQUESTOR_GRP_WHEEL;
+    fRequestor |= VMMDEV_REQUESTOR_NO_USER_DEVICE; /** @todo implement /dev/vboxuser
+    if (!fUnrestricted)
+        fRequestor |= VMMDEV_REQUESTOR_USER_DEVICE; */
+    fRequestor |= VMMDEV_REQUESTOR_CON_DONT_KNOW; /** @todo see if we can figure out console relationship of pProc. */
+    rc = VGDrvCommonCreateUserSession(&g_DevExt, fRequestor, &pSession);
     if (RT_SUCCESS(rc))
     {
         if (ASMAtomicCmpXchgPtr(&pDev->si_drv1, pSession, (void *)0x42))
