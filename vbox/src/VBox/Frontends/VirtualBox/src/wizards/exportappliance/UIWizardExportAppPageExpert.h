@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 72935 2018-07-06 12:23:52Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 73014 2018-07-09 16:00:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -82,6 +82,9 @@ private slots:
 
     /** Handles format combo change. */
     void sltHandleFormatComboChange();
+
+    /** Handles change in provider combo-box. */
+    void sltHandleProviderComboChange();
 
 private:
 
