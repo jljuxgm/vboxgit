@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFoldersInline.h 76716 2019-01-08 23:36:02Z vboxsync $ */
+/* $Id: VBoxGuestLibSharedFoldersInline.h 76717 2019-01-09 02:33:22Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Shared Folders Host Request Helpers (ring-0).
  */
@@ -36,11 +36,11 @@
 
 #include <iprt/types.h>
 #include <iprt/assert.h>
-#include <VBox/shflsvc.h>
 #include <VBox/VBoxGuest.h>
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/VBoxGuestLibSharedFolders.h>
 #include <VBox/VMMDev.h>
+#include <VBox/shflsvc.h>
 #include <iprt/errcore.h>
 
 
