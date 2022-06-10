@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 72839 2018-07-03 17:18:26Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 74713 2018-10-09 11:27:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -530,7 +530,7 @@ static int supR3HardenedMainPosixHookOne(const char *pszSymbol, PFNRT pfnHook, P
         return VERR_NO_MEMORY;
 
     /* Assemble the code for resuming the call.*/
-    *ppfnReal = (PFNRT)pbPatchMem;
+    *ppfnReal = (PFNRT)(uintptr_t)pbPatchMem;
 
     /* Go through the instructions to patch and fixup any relative call instructions. */
     uint32_t offInsn = 0;
