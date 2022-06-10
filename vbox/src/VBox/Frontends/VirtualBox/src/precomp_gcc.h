@@ -1,4 +1,4 @@
-/* $Id: precomp_gcc.h 76600 2019-01-02 02:05:40Z vboxsync $*/
+/* $Id: precomp_gcc.h 76601 2019-01-02 02:18:44Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Precompiled header for Visual C++.
  */
@@ -39,8 +39,6 @@
 #include <QPushButton>
 #include <QRadioButton>
 #include <QVBoxLayout>
-
-#include <QtCore/QObject>
 
 /* The most frequently used qt headers on a linux hosts based on dependency files. */
 #include <QtCore/qobject.h> /* 1003 */
@@ -124,6 +122,17 @@
 #include <QtWidgets/qsizepolicy.h> /* 505 */
 #include <QtGui/qfontmetrics.h> /* 497 */
 #include <QtGui/qfontinfo.h> /* 496 */
+
+/* toplevel headers for which we already include the sub-headers. */
+#include <QObject>
+#include <QVector>
+#include <QMap>
+#include <QMetaType>
+#include <QRect>
+#include <QString>
+#include <QStringList>
+#include <QWidget>
+#include <QPixmap>
 
 /* cdefs.h is a little bit of a question since it defines RT_STRICT, which someone
    may want to redefine locally, but it's required by all other IPRT VBox includes. */
