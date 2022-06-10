@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 74868 2018-10-16 16:32:08Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 74920 2018-10-18 13:49:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
@@ -139,7 +139,7 @@ enum UIActionIndexST
     /* Host Cloud Profile actions: */
     UIActionIndexST_M_CloudWindow,
     UIActionIndexST_M_Cloud,
-    UIActionIndexST_M_Cloud_S_Create,
+    UIActionIndexST_M_Cloud_S_Add,
     UIActionIndexST_M_Cloud_S_Remove,
     UIActionIndexST_M_Cloud_T_Details,
     UIActionIndexST_M_Cloud_S_Refresh,

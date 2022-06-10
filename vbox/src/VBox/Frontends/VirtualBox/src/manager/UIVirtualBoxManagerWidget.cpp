@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74870 2018-10-16 16:59:07Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74920 2018-10-18 13:49:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -621,17 +621,20 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                 case ToolTypeGlobal_Media:
                 {
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Add));
+                    m_pToolBar->addSeparator();
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Copy));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Move));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Remove));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Release));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_T_Details));
+                    m_pToolBar->addSeparator();
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Refresh));
                     break;
                 }
                 case ToolTypeGlobal_Network:
                 {
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Network_S_Create));
+                    m_pToolBar->addSeparator();
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Network_S_Remove));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Network_T_Details));
                     //m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Network_S_Refresh));
@@ -639,7 +642,8 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                 }
                 case ToolTypeGlobal_Cloud:
                 {
-                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Create));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Add));
+                    m_pToolBar->addSeparator();
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Remove));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_T_Details));
                     //m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Refresh));
