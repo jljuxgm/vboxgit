@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.cpp 75078 2018-10-25 15:01:12Z vboxsync $ */
+/* $Id: UIScaleFactorEditor.cpp 75080 2018-10-25 15:28:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */
@@ -149,6 +149,11 @@ void UIScaleFactorEditor::isGlobalScaleFactor(bool bFlag)
 void UIScaleFactorEditor::setDefaultScaleFactor(double dDefaultScaleFactor)
 {
     m_dDefaultScaleFactor = dDefaultScaleFactor;
+}
+
+void UIScaleFactorEditor::setSpinBoxWidthHint(int iHint)
+{
+    m_pScaleSpinBox->setMinimumWidth(iHint);
 }
 
 void UIScaleFactorEditor::retranslateUi()

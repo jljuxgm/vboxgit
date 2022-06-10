@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.h 74837 2018-10-15 08:57:13Z vboxsync $ */
+/* $Id: UIScaleFactorEditor.h 75080 2018-10-25 15:28:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class declaration.
  */
@@ -51,6 +51,9 @@ public:
 
     void           isGlobalScaleFactor(bool bFlag);
     void           setDefaultScaleFactor(double dDefaultScaleFactor);
+
+    /** Defines minimum width @a iHint for internal spin-box. */
+    void           setSpinBoxWidthHint(int iHint);
 
 protected:
 

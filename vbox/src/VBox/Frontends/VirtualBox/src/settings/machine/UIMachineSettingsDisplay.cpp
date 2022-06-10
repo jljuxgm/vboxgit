@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 75080 2018-10-25 15:28:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -959,7 +959,7 @@ void UIMachineSettingsDisplay::prepareTabScreen()
         AssertPtrReturnVoid(m_pEditorVideoMemorySize);
         {
             /* Configure editor: */
-            vboxGlobal().setMinimumWidthAccordingSymbolCount(m_pEditorVideoMemorySize, 4);
+            vboxGlobal().setMinimumWidthAccordingSymbolCount(m_pEditorVideoMemorySize, 7);
             m_pEditorVideoMemorySize->setMinimum(m_iMinVRAM);
             m_pEditorVideoMemorySize->setMaximum(m_iMaxVRAMVisible);
         }
@@ -986,9 +986,15 @@ void UIMachineSettingsDisplay::prepareTabScreen()
         {
             /* Configure editor: */
             const uint cMaxGuestScreens = sys.GetMaxGuestMonitors();
-            vboxGlobal().setMinimumWidthAccordingSymbolCount(m_pEditorVideoScreenCount, 3);
             m_pEditorVideoScreenCount->setMinimum(1);
             m_pEditorVideoScreenCount->setMaximum(cMaxGuestScreens);
+        }
+
+        /* Scale-factor editor created in the .ui file. */
+        AssertPtrReturnVoid(m_pScaleFactorEditor);
+        {
+            /* Configure editor: */
+            m_pScaleFactorEditor->setSpinBoxWidthHint(m_pEditorVideoMemorySize->minimumWidth());
         }
     }
 }
