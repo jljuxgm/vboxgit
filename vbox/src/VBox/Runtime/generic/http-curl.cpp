@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 74094 2018-09-05 21:03:06Z vboxsync $ */
+/* $Id: http-curl.cpp 74112 2018-09-06 11:42:42Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -2315,10 +2315,12 @@ RTR3DECL(int) RTHttpSignHeaders(RTHTTP hHttp, RTHTTPMETHOD enmMethod, const char
     AssertPtrReturn(pHdr, VERR_NO_MEMORY);
     uint8_t * const pbSigRaw = (uint8_t *)pHdr + cbEstimated - cbSigRawAligned;
 
-    pHdr->cchName  = sizeof("Authorization") - 1;
-    pHdr->offValue = sizeof("Authorization") + 1;
-    char  *pszLeft = pHdr->szData;
-    size_t cbLeft  = cbEstimated - RT_UOFFSETOF(RTHTTPHEADER, szData) - cbSigRawAligned;
+    pHdr->cchName   = sizeof("Authorization") - 1;
+    pHdr->offValue  = sizeof("Authorization") + 1;
+    pHdr->Core.next = NULL;
+    pHdr->Core.data = pHdr->szData;
+    char  *pszLeft  = pHdr->szData;
+    size_t cbLeft   = cbEstimated - RT_UOFFSETOF(RTHTTPHEADER, szData) - cbSigRawAligned;
 
     size_t cch = RTStrPrintf(pszLeft, cbLeft, s_szSuffixFmt, pszKeyId);
     cbLeft -= cch;
