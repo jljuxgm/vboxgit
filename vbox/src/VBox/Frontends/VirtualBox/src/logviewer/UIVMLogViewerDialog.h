@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 75268 2018-11-06 10:10:47Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.h 75272 2018-11-06 10:56:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class declaration.
  */
@@ -77,7 +77,6 @@ public:
 
 protected:
 
-    virtual void prepare() /* override */;
     /** @name Event-handling stuff.
       * @{ */
         /** Handles translation event. */

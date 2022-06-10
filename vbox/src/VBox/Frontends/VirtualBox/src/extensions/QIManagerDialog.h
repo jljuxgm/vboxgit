@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 75268 2018-11-06 10:10:47Z vboxsync $ */
+/* $Id: QIManagerDialog.h 75272 2018-11-06 10:56:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -103,7 +103,7 @@ protected:
       * @{ */
         /** Prepares all.
           * @note Normally you don't need to reimplement it. */
-        virtual void prepare();
+        void prepare();
         /** Configures all.
           * @note Injected into prepare(), reimplement to configure all there. */
         virtual void configure() {}

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 75268 2018-11-06 10:10:47Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 75272 2018-11-06 10:56:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -73,12 +73,6 @@ UIVMLogViewerDialog::UIVMLogViewerDialog(QWidget *pCenterWidget, UIActionPool *p
 {
 }
 
-void UIVMLogViewerDialog::prepare()
-{
-    QIManagerDialog::prepare();
-    manageEscapeShortCut();
-}
-
 void UIVMLogViewerDialog::retranslateUi()
 {
     /* Translate window title: */
@@ -121,6 +115,7 @@ void UIVMLogViewerDialog::finalize()
 {
     /* Apply language settings: */
     retranslateUi();
+    manageEscapeShortCut();
 }
 
 void UIVMLogViewerDialog::loadSettings()
