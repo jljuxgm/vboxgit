@@ -1,4 +1,4 @@
-/* $Id: EMR3Nem.cpp 74798 2018-10-12 12:25:41Z vboxsync $ */
+/* $Id: EMR3Nem.cpp 76397 2018-12-23 14:32:01Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - NEM interface.
  */
@@ -46,6 +46,7 @@
 #include <VBox/vmm/cpumdis.h>
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
+#include <VBox/err.h>
 #include <VBox/vmm/dbgf.h>
 #include "VMMTracing.h"
 

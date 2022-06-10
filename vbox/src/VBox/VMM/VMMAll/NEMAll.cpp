@@ -1,4 +1,4 @@
-/* $Id: NEMAll.cpp 72917 2018-07-05 13:50:01Z vboxsync $ */
+/* $Id: NEMAll.cpp 76397 2018-12-23 14:32:01Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, R0 and R3 context code.
  */
@@ -23,6 +23,7 @@
 #include <VBox/vmm/nem.h>
 #include "NEMInternal.h"
 #include <VBox/vmm/vm.h>
+#include <VBox/err.h>
 
 
 /**

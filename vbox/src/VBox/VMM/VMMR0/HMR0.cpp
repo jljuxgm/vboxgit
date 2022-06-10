@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 76290 2018-12-19 09:11:47Z vboxsync $ */
+/* $Id: HMR0.cpp 76397 2018-12-23 14:32:01Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -26,6 +26,7 @@
 #include "HMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/hm_vmx.h>
+#include <VBox/vmm/hmvmxinline.h>
 #include <VBox/vmm/hm_svm.h>
 #include <VBox/err.h>
 #include <VBox/log.h>

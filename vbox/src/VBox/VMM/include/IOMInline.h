@@ -1,4 +1,4 @@
-/* $Id: IOMInline.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: IOMInline.h 76397 2018-12-23 14:32:01Z vboxsync $ */
 /** @file
  * IOM - Inlined functions.
  */
@@ -17,6 +17,8 @@
 
 #ifndef ___IOMInline_h
 #define ___IOMInline_h
+
+#include <iprt/errcore.h>
 
 /** @addtogroup grp_iom_int   Internals
  * @internal

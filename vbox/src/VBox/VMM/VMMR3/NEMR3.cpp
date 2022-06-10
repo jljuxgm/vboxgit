@@ -1,4 +1,4 @@
-/* $Id: NEMR3.cpp 72924 2018-07-05 16:14:26Z vboxsync $ */
+/* $Id: NEMR3.cpp 76397 2018-12-23 14:32:01Z vboxsync $ */
 /** @file
  * NEM - Native execution manager.
  */
@@ -35,6 +35,7 @@
 #include "NEMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/uvm.h>
+#include <VBox/err.h>
 
 #include <iprt/asm.h>
 

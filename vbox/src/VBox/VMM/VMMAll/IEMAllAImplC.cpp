@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 76397 2018-12-23 14:32:01Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #include "IEMInternal.h"
 #include <VBox/vmm/vm.h>
+#include <VBox/err.h>
 #include <iprt/x86.h>
 #include <iprt/uint128.h>
 

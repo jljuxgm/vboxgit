@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 74795 2018-10-12 11:24:11Z vboxsync $ */
+/* $Id: EMRaw.cpp 76397 2018-12-23 14:32:01Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -50,6 +50,7 @@
 #include <VBox/vmm/dbgf.h>
 #include "VMMTracing.h"
 
+#include <VBox/err.h>
 #include <VBox/log.h>
 #include <iprt/asm.h>
 #include <iprt/string.h>
