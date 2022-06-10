@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76317 2018-12-20 15:44:06Z vboxsync $
+# $Id: Makefile.kmk 76320 2018-12-20 17:57:32Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -68,25 +68,15 @@ endif # !defined(VBOX_ONLY_DOCS) && !defined(VBOX_ONLY_VALIDATIONKIT)
 #
 # Build test for the linux host kernel modules.
 #
-if   defined(VBOX_WITH_TESTCASES) \
- && !defined(VBOX_ONLY_SDK) \
- && !defined(VBOX_ONLY_DOCS) \
- && !defined(VBOX_ONLY_VALIDATIONKIT) \
- && !defined(VBOX_WITHOUT_LINUX_TEST_BUILDS) \
- && "$(KBUILD_TARGET)" == "linux" \
- && "$(KBUILD_HOST_ARCH)" == "$(KBUILD_TARGET_ARCH)"
- ifneq ($(KERN_DIR),)
 $(evalcall2 VBOX_LINUX_KMOD_TEST_BUILD_RULE_FN,vboxdrv-src,,save_symvers)
-  ifdef VBOX_WITH_NETFLT
+ifdef VBOX_WITH_NETFLT
 $(evalcall2 VBOX_LINUX_KMOD_TEST_BUILD_RULE_FN,VBoxNetFlt-src,vboxdrv-src,)
-  endif
-  ifdef VBOX_WITH_NETADP
+endif
+ifdef VBOX_WITH_NETADP
 $(evalcall2 VBOX_LINUX_KMOD_TEST_BUILD_RULE_FN,VBoxNetAdp-src,vboxdrv-src,)
-  endif
-  ifdef VBOX_WITH_PCI_PASSTHROUGH
+endif
+ifdef VBOX_WITH_PCI_PASSTHROUGH
 $(evalcall2 VBOX_LINUX_KMOD_TEST_BUILD_RULE_FN,VBoxPci-src,vboxdrv-src,)
-  endif
- endif
 endif
 
 
