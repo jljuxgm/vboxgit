@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 72603 2018-06-18 15:43:38Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 73129 2018-07-13 16:12:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -71,7 +71,8 @@ public:
     /** Defines the VM OS @a enmType. */
     void setType(const CGuestOSType &enmType);
 
-    void setNameFieldValidator(const QString &strValidatorString);
+    /** Defines the name-field @a strValidator. */
+    void setNameFieldValidator(const QString &strValidator);
 
 protected:
 
