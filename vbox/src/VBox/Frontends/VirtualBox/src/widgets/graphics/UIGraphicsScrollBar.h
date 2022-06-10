@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.h 77219 2019-02-08 13:53:15Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.h 77267 2019-02-11 16:35:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class declaration.
  */
@@ -120,6 +120,10 @@ private:
     void prepare();
     /** Prepares widgets. */
     void prepareWidgets();
+    /** Prepares buttons. */
+    void prepareButtons();
+    /** Prepares token. */
+    void prepareToken();
     /** Prepares animation. */
     void prepareAnimation();
 
