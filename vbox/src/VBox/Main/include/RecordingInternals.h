@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.h 75441 2018-11-14 09:08:51Z vboxsync $ */
+/* $Id: RecordingInternals.h 75488 2018-11-15 16:12:07Z vboxsync $ */
 /** @file
  * Recording internals header.
  */
@@ -47,6 +47,9 @@ typedef struct RECORDINGVIDEOCODEC
             vpx_image_t         RawImage;
             /** Pointer to the codec's internal YUV buffer. */
             uint8_t            *pu8YuvBuf;
+            /** The encoder's deadline (in ms).
+             *  The more time the encoder is allowed to spend encoding, the better the encoded
+             *  result, in exchange for higher CPU usage and time spent encoding. */
             unsigned int        uEncoderDeadline;
         } VPX;
     };
