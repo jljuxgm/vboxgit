@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69465 2017-10-28 11:01:38Z vboxsync $
+# $Id: .scm-settings 76545 2018-12-30 06:41:25Z vboxsync $
 ## @file
 # Source code massager settings for the recompiler.
 #
@@ -25,6 +25,8 @@
 /Sun/e_*.S:             --external-copyright --no-convert-tabs
 
 *.com:                  --treat-as binary
+
+*.h:                    --no-fix-header-guards
 
 /tests/linux-test.c:    --lgpl-disclaimer
 /tests/test-i386.c:     --lgpl-disclaimer
