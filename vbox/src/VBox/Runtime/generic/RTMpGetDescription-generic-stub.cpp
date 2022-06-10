@@ -1,4 +1,4 @@
-/* $Id: RTMpGetDescription-generic-stub.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTMpGetDescription-generic-stub.cpp 76353 2018-12-22 01:07:49Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetDescription stub.
  */
@@ -30,7 +30,9 @@
 *********************************************************************************************************************************/
 #include <iprt/mp.h>
 #include "internal/iprt.h"
+
 #include <iprt/string.h>
+#include <iprt/err.h>
 
 
 RTDECL(int) RTMpGetDescription(RTCPUID idCpu, char *pszBuf, size_t cbBuf)
