@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 72725 2018-06-28 15:28:11Z vboxsync $
+# $Id: vbox.py 72732 2018-06-29 06:53:30Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72725 $"
+__version__ = "$Revision: 72732 $"
 
 
 # Standard Python imports.
@@ -1766,11 +1766,11 @@ class TestDriver(base.TestDriver):                                              
         return base.TestDriver.completeOptions(self);
 
     def getResourceSet(self):
-        asRsrcs = []
+        asRsrcs = [];
         if self.oTestVmSet is not None:
-            asRsrcs.extend(self.oTestVmSet.getResourceSet())
-        asRsrcs = base.TestDriver.getResourceSet(self)
-        return asRsrcs
+            asRsrcs.extend(self.oTestVmSet.getResourceSet());
+        asRsrcs.extend(base.TestDriver.getResourceSet(self));
+        return asRsrcs;
 
     def actionExtract(self):
         return base.TestDriver.actionExtract(self);

@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72729 $"
+__version__ = "$Revision: 72732 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -931,9 +931,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             'update_additions'
         ];
         self.asTests    = self.asTestsDef;
-
-        self.asRsrcs    = []
-        self.asRsrcs.append('5.3/guestctrl/50mb_rnd.dat')
+        self.asRsrcs    = ['5.3/guestctrl/50mb_rnd.dat', ];
 
     def parseOption(self, asArgs, iArg):                                        # pylint: disable=R0912,R0915
         if asArgs[iArg] == '--add-guest-ctrl-tests':
@@ -3612,7 +3610,7 @@ class tdAddGuestCtrl(vbox.TestDriver):                                         #
     def __init__(self):
         vbox.TestDriver.__init__(self);
         self.oTestVmSet = self.oTestVmManager.getSmokeVmSet('nat');
-        self.asRsrcs    = None
+        self.asRsrcs    = None;
         self.fQuick     = False; # Don't skip lengthly tests by default.
         self.addSubTestDriver(SubTstDrvAddGuestCtrl(self));
 
@@ -3644,11 +3642,11 @@ class tdAddGuestCtrl(vbox.TestDriver):                                         #
 
     def getResourceSet(self):
         if self.asRsrcs is None:
-            self.asRsrcs = []
+            self.asRsrcs = [];
             for oSubTstDrv in self.aoSubTstDrvs:
-                self.asRsrcs.extend(oSubTstDrv.asRsrcs)
-            self.asRsrcs.extend(self.oTestVmSet.getResourceSet())
-        return self.asRsrcs
+                self.asRsrcs.extend(oSubTstDrv.asRsrcs);
+            self.asRsrcs.extend(self.oTestVmSet.getResourceSet());
+        return self.asRsrcs;
 
     def actionConfig(self):
         if not self.importVBoxApi(): # So we can use the constant below.
