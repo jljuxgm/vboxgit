@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 74080 2018-09-05 11:45:27Z vboxsync $ */
+/* $Id: UIDetailsElement.h 74081 2018-09-05 11:51:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -247,6 +247,9 @@ private:
         /** Updates icon. */
         void updateIcon();
 
+        /** Returns header darkness. */
+        int headerDarkness() const { return m_iHeaderDarkness; }
+
         /** Defines animated @a iValue. */
         void setAnimatedValue(int iValue) { m_iAnimatedValue = iValue; update(); }
         /** Returns animated value. */
@@ -295,6 +298,8 @@ private:
 
         /** Holds the corner radius. */
         int  m_iCornerRadius;
+        /** Holds the header darkness. */
+        int  m_iHeaderDarkness;
 
         /** Holds the name font. */
         QFont  m_nameFont;
