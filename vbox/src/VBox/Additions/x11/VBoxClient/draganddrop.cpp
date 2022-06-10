@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: draganddrop.cpp 74141 2018-09-07 13:18:56Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -1887,7 +1887,7 @@ int DragInstance::hgDrop(uint32_t u32xPos, uint32_t u32yPos, uint32_t uDefaultAc
     char szFormat[] = { "text/uri-list" };
 
     int rc = VbglR3DnDHGSendReqData(&m_dndCtx, szFormat);
-    logInfo("Drop event from host resuled in: %Rrc\n", rc);
+    logInfo("Drop event from host resulted in: %Rrc\n", rc);
 
     LogFlowFuncLeaveRC(rc);
     return rc;
