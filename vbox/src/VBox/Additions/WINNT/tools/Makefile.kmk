@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 77766 2019-03-18 17:38:34Z vboxsync $
+# $Id: Makefile.kmk 77769 2019-03-18 19:16:22Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows NT Additions Tools.
 #
@@ -57,7 +57,7 @@ ifdef VBOX_SIGNING_MODE
 	$(VBOX_RTSIGNTOOL) extract-exe-signer-cert --signature-index $3 --exe "$$<" --output "$$@" --der
  endef
 
- if !defined(VBOX_CERTIFICATE_SHA2_SUBJECT_NAME) && !$(intersects win all,$(VBOX_WITH_CORP_CODE_SIGNING))
+ if !defined(VBOX_CERTIFICATE_SHA2_SUBJECT_NAME) && !$(intersects win all 1,$(VBOX_WITH_CORP_CODE_SIGNING))
   $(evalcall2 def_VBoxAdditionsInstCertFiles,vbox.cer,$(VBOX_PATH_ADDITIONS)/VBoxGuest.sys,0)
  else
   $(evalcall2 def_VBoxAdditionsInstCertFiles,vbox-sha1.cer,$(VBOX_PATH_ADDITIONS)/VBoxGuest.sys,0)
