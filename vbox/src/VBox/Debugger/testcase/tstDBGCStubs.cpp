@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 73150 2018-07-16 10:03:41Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 73348 2018-07-25 09:25:45Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -541,6 +541,13 @@ VMMR3DECL(DBGFFLOWBRANCHTBL) DBGFR3FlowBranchTblItNext(DBGFFLOWBRANCHTBLIT hFlow
 }
 VMMR3DECL(int) DBGFR3FlowBranchTblItReset(DBGFFLOWBRANCHTBLIT hFlowBranchTblIt)
 {
+    return VERR_INTERNAL_ERROR;
+}
+
+VMMR3DECL(int) DBGFR3FormatBugCheck(PUVM pUVM, char *pszDetails, size_t cbDetails,
+                                    uint64_t uP0, uint64_t uP1, uint64_t uP2, uint64_t uP3, uint64_t uP4)
+{
+    pszDetails[0] = '\0';
     return VERR_INTERNAL_ERROR;
 }
 
