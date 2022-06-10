@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiBase.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxUhgsmiBase.cpp 76376 2018-12-22 22:32:24Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -47,7 +47,7 @@ static int vboxUhgsmiBaseEventChkCreate(VBOXUHGSMI_BUFFER_TYPE_FLAGS fUhgsmiType
 {
     *phSynch = NULL;
 
-    if (fUhgsmiType.fCommand)
+    if (fUhgsmiType.s.fCommand)
     {
         *phSynch = CreateEvent(
                   NULL, /* LPSECURITY_ATTRIBUTES lpEventAttributes */
@@ -185,7 +185,7 @@ DECLCALLBACK(int) vboxUhgsmiBaseEscBufferSubmit(PVBOXUHGSMI pHgsmi, PVBOXUHGSMI_
         PVBOXUHGSMI_BUFFER_SUBMIT pBufInfo = &aBuffers[i];
         PVBOXUHGSMI_BUFFER_PRIVATE_ESC_BASE pBuf = VBOXUHGSMIESCBASE_GET_BUFFER(pBufInfo->pBuf);
         pSubmInfo->hAlloc = pBuf->Alloc.hAlloc;
-        if (pBufInfo->fFlags.bEntireBuffer)
+        if (pBufInfo->fFlags.s.fEntireBuffer)
         {
             pSubmInfo->Info.offData = 0;
             pSubmInfo->Info.cbData = pBuf->BasePrivate.Base.cbBuffer;

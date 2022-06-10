@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiKmt.cpp 75445 2018-11-14 12:19:32Z vboxsync $ */
+/* $Id: VBoxUhgsmiKmt.cpp 76376 2018-12-22 22:32:24Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -53,7 +53,8 @@ DECLCALLBACK(int) vboxUhgsmiKmtBufferDestroy(PVBOXUHGSMI_BUFFER pBuf)
     return VERR_GENERAL_FAILURE;
 }
 
-DECLCALLBACK(int) vboxUhgsmiKmtBufferLock(PVBOXUHGSMI_BUFFER pBuf, uint32_t offLock, uint32_t cbLock, VBOXUHGSMI_BUFFER_LOCK_FLAGS fFlags, void**pvLock)
+DECLCALLBACK(int) vboxUhgsmiKmtBufferLock(PVBOXUHGSMI_BUFFER pBuf, uint32_t offLock, uint32_t cbLock,
+                                          VBOXUHGSMI_BUFFER_LOCK_FLAGS fFlags, void**pvLock)
 {
     PVBOXUHGSMI_BUFFER_PRIVATE_DX_ALLOC_BASE pBuffer = VBOXUHGSMDXALLOCBASE_GET_BUFFER(pBuf);
     PVBOXUHGSMI_PRIVATE_KMT pPrivate = VBOXUHGSMIKMT_GET(pBuffer->BasePrivate.pHgsmi);
