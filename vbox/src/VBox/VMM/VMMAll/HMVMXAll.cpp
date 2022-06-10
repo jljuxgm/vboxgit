@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 73937 2018-08-29 06:12:35Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 73983 2018-08-31 08:17:31Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -101,7 +101,14 @@ static const char * const g_apszVmxInstrDiagDesc[kVmxVInstrDiag_Last] =
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmwrite_LinkPtrInvalid, "LinkPtrInvalid"),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmwrite_PtrInvalid    , "PtrInvalid"    ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmwrite_PtrMap        , "PtrMap"        ),
-    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmwrite_Success       , "Success"       )
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmwrite_Success       , "Success"       ),
+    /* VMREAD. */
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmread_Cpl            , "Cpl"           ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmread_FieldInvalid   , "FieldInvalid"  ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmread_LinkPtrInvalid , "LinkPtrInvalid"),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmread_PtrInvalid     , "PtrInvalid"    ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmread_PtrMap         , "PtrMap"        ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmread_Success        , "Success"       )
     /* kVmxVInstrDiag_Last */
 };
 #undef VMX_INSTR_DIAG_DESC
