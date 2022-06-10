@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 77366 2019-02-19 16:00:39Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 77462 2019-02-25 16:37:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -36,7 +36,7 @@
 UIChooserItemGlobal::UIChooserItemGlobal(UIChooserItem *pParent,
                                          bool fFavorite,
                                          int iPosition /* = -1 */)
-    : UIChooserItem(pParent, fFavorite, pParent->isTemporary(), 0, 100)
+    : UIChooserItem(pParent, fFavorite, 0, 100)
     , m_iPosition(iPosition)
     , m_iDefaultLightnessMin(0)
     , m_iDefaultLightnessMax(0)
@@ -53,9 +53,9 @@ UIChooserItemGlobal::UIChooserItemGlobal(UIChooserItem *pParent,
 
 UIChooserItemGlobal::UIChooserItemGlobal(UIChooserItem *pParent,
                                          bool fFavorite,
-                                         UIChooserItemGlobal *pCopyFrom,
+                                         UIChooserItemGlobal *pCopiedItem,
                                          int iPosition /* = -1 */)
-    : UIChooserItem(pParent, fFavorite, pParent->isTemporary(), 0, 100)
+    : UIChooserItem(pParent, fFavorite, 0, 100)
     , m_iPosition(iPosition)
     , m_iDefaultLightnessMin(0)
     , m_iDefaultLightnessMax(0)
@@ -65,7 +65,7 @@ UIChooserItemGlobal::UIChooserItemGlobal(UIChooserItem *pParent,
     , m_iHighlightLightnessMax(0)
     , m_iMinimumNameWidth(0)
     , m_iMaximumNameWidth(0)
-    , m_iHeightHint(pCopyFrom->heightHint())
+    , m_iHeightHint(pCopiedItem->heightHint())
 {
     prepare();
 }

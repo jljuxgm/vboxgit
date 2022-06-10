@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 77434 2019-02-22 15:06:41Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 77462 2019-02-25 16:37:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -192,12 +192,11 @@ private:
 *   Class UIChooserItem implementation.                                                                                          *
 *********************************************************************************************************************************/
 
-UIChooserItem::UIChooserItem(UIChooserItem *pParent, bool fFavorite, bool fTemporary,
+UIChooserItem::UIChooserItem(UIChooserItem *pParent, bool fFavorite,
                              int iDefaultValue /* = 100 */, int iHoveredValue /* = 90 */)
     : QIWithRetranslateUI4<QIGraphicsWidget>(pParent)
     , m_pParent(pParent)
     , m_fFavorite(fFavorite)
-    , m_fTemporary(fTemporary)
     , m_iLevel(-1)
     , m_fHovered(false)
     , m_pHoveringMachine(0)

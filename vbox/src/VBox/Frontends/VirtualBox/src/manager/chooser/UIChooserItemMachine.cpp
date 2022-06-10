@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 77364 2019-02-19 15:43:03Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 77462 2019-02-25 16:37:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -42,10 +42,10 @@
 
 
 UIChooserItemMachine::UIChooserItemMachine(UIChooserItem *pParent,
-                                           const CMachine &machine,
+                                           const CMachine &comMachine,
                                            int iPosition /* = -1 */)
-    : UIChooserItem(pParent, false /* favorite? */, pParent->isTemporary(), 0, 100)
-    , UIVirtualMachineItem(machine)
+    : UIChooserItem(pParent, false /* favorite? */, 0, 100)
+    , UIVirtualMachineItem(comMachine)
     , m_iPosition(iPosition)
     , m_iDefaultLightnessMin(0)
     , m_iDefaultLightnessMax(0)
@@ -63,10 +63,10 @@ UIChooserItemMachine::UIChooserItemMachine(UIChooserItem *pParent,
 }
 
 UIChooserItemMachine::UIChooserItemMachine(UIChooserItem *pParent,
-                                           UIChooserItemMachine *pCopyFrom,
+                                           UIChooserItemMachine *pCopiedItem,
                                            int iPosition /* = -1 */)
-    : UIChooserItem(pParent, false /* favorite? */, pParent->isTemporary(), 0, 100)
-    , UIVirtualMachineItem(pCopyFrom->machine())
+    : UIChooserItem(pParent, false /* favorite? */, 0, 100)
+    , UIVirtualMachineItem(pCopiedItem->machine())
     , m_iPosition(iPosition)
     , m_iDefaultLightnessMin(0)
     , m_iDefaultLightnessMax(0)

@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 77366 2019-02-19 16:00:39Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 77462 2019-02-25 16:37:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -43,8 +43,8 @@ public:
 
     /** Constructs possible @a fFavorite item with specified @a iPosition, passing @a pParent to the base-class. */
     UIChooserItemGlobal(UIChooserItem *pParent, bool fFavorite, int iPosition = -1);
-    /** Constructs possible @a fFavorite temporary item with specified @a iPosition as a @a pCopyFrom, passing @a pParent to the base-class. */
-    UIChooserItemGlobal(UIChooserItem *pParent, bool fFavorite, UIChooserItemGlobal *pCopyFrom, int iPosition = -1);
+    /** Constructs possible @a fFavorite copy of @a pCopiedItem with specified @a iPosition, passing @a pParent to the base-class. */
+    UIChooserItemGlobal(UIChooserItem *pParent, bool fFavorite, UIChooserItemGlobal *pCopiedItem, int iPosition = -1);
     /** Destructs global item. */
     virtual ~UIChooserItemGlobal() /* override */;
 
