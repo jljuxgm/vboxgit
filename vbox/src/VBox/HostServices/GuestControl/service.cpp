@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75757 2018-11-27 04:24:13Z vboxsync $ */
+/* $Id: service.cpp 75773 2018-11-27 14:14:41Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -984,8 +984,10 @@ public:
      */
     static DECLCALLBACK(int) svcConnect(void *pvService,
                                         uint32_t u32ClientID,
-                                        void *pvClient)
+                                        void *pvClient,
+                                        uint32_t fRequestor, bool fRestoring)
     {
+        RT_NOREF(fRequestor, fRestoring);
         AssertLogRelReturn(VALID_PTR(pvService), VERR_INVALID_PARAMETER);
         SELF *pSelf = reinterpret_cast<SELF *>(pvService);
         AssertPtrReturn(pSelf, VERR_INVALID_POINTER);

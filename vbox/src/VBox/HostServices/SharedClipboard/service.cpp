@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75506 2018-11-16 02:38:27Z vboxsync $ */
+/* $Id: service.cpp 75773 2018-11-27 14:14:41Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -367,8 +367,9 @@ static DECLCALLBACK(int) svcDisconnect (void *, uint32_t u32ClientID, void *pvCl
     return VINF_SUCCESS;
 }
 
-static DECLCALLBACK(int) svcConnect (void *, uint32_t u32ClientID, void *pvClient)
+static DECLCALLBACK(int) svcConnect (void *, uint32_t u32ClientID, void *pvClient, uint32_t fRequestor, bool fRestoring)
 {
+    RT_NOREF(fRequestor, fRestoring);
     VBOXCLIPBOARDCLIENTDATA *pClient = (VBOXCLIPBOARDCLIENTDATA *)pvClient;
 
     int rc = VINF_SUCCESS;

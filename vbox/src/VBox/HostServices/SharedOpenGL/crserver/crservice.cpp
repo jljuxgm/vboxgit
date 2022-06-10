@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 75500 2018-11-16 01:24:39Z vboxsync $ */
+/* $Id: crservice.cpp 75773 2018-11-27 14:14:41Z vboxsync $ */
 /** @file
  * VBox crOpenGL - Host service entry points.
  */
@@ -110,11 +110,9 @@ static DECLCALLBACK(int) svcUnload (void *)
     return rc;
 }
 
-static DECLCALLBACK(int) svcConnect (void *, uint32_t u32ClientID, void *pvClient)
+static DECLCALLBACK(int) svcConnect (void *, uint32_t u32ClientID, void *pvClient, uint32_t fRequestor, bool fRestoring)
 {
-    int rc = VINF_SUCCESS;
-
-    NOREF(pvClient);
+    RT_NOREF(pvClient, fRequestor, fRestoring);
 
     if (g_u32fCrHgcmDisabled)
     {
@@ -124,7 +122,7 @@ static DECLCALLBACK(int) svcConnect (void *, uint32_t u32ClientID, void *pvClien
 
     Log(("SHARED_CROPENGL svcConnect: u32ClientID = %d\n", u32ClientID));
 
-    rc = crVBoxServerAddClient(u32ClientID);
+    int rc = crVBoxServerAddClient(u32ClientID);
 
     return rc;
 }
