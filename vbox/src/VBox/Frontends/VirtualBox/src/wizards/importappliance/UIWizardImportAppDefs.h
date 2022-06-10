@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppDefs.h 78046 2019-04-08 15:41:31Z vboxsync $ */
+/* $Id: UIWizardImportAppDefs.h 78062 2019-04-09 13:52:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppDefs class declaration.
  */
@@ -31,14 +31,5 @@
 /** Safe pointer to import appliance editor widget. */
 typedef QPointer<UIApplianceImportEditorWidget> ImportAppliancePointer;
 Q_DECLARE_METATYPE(ImportAppliancePointer);
-
-/** Import source types. */
-enum ImportSourceType
-{
-    ImportSourceType_Invalid,
-    ImportSourceType_Local,
-    ImportSourceType_Cloud
-};
-Q_DECLARE_METATYPE(ImportSourceType);
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_importappliance_UIWizardImportAppDefs_h */
