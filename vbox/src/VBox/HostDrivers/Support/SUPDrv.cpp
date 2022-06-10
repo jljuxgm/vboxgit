@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 71889 2018-04-17 22:54:11Z vboxsync $ */
+/* $Id: SUPDrv.cpp 72693 2018-06-26 12:36:47Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -276,10 +276,12 @@ static SUPFUNC g_aFunctions[] =
     { "RTLogDefaultInstanceEx",                 (void *)(uintptr_t)RTLogDefaultInstanceEx },
     { "RTLogGetDefaultInstance",                (void *)(uintptr_t)RTLogGetDefaultInstance },
     { "RTLogGetDefaultInstanceEx",              (void *)(uintptr_t)RTLogGetDefaultInstanceEx },
+    { "SUPR0GetDefaultLogInstanceEx",           (void *)(uintptr_t)RTLogGetDefaultInstanceEx },
     { "RTLogLoggerExV",                         (void *)(uintptr_t)RTLogLoggerExV },
     { "RTLogPrintfV",                           (void *)(uintptr_t)RTLogPrintfV },
     { "RTLogRelGetDefaultInstance",             (void *)(uintptr_t)RTLogRelGetDefaultInstance },
     { "RTLogRelGetDefaultInstanceEx",           (void *)(uintptr_t)RTLogRelGetDefaultInstanceEx },
+    { "SUPR0GetDefaultLogRelInstanceEx",        (void *)(uintptr_t)RTLogRelGetDefaultInstanceEx },
     { "RTLogSetDefaultInstanceThread",          (void *)(uintptr_t)RTLogSetDefaultInstanceThread },
     { "RTMemAllocExTag",                        (void *)(uintptr_t)RTMemAllocExTag },
     { "RTMemAllocTag",                          (void *)(uintptr_t)RTMemAllocTag },
