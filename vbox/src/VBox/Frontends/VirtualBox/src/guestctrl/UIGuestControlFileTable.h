@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 75932 2018-12-04 00:02:00Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.h 75973 2018-12-05 14:27:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -284,6 +284,7 @@ public slots:
     void sltInvertSelection();
 
 protected:
+
     /** This enum is used when performing a gueest-to-guest or host-to-host
      *  file operations. Paths of source file objects are kept in a single buffer
      *  and a flag to determine if it is a cut or copy operation is needed */
@@ -316,6 +317,7 @@ protected:
     virtual void     prepareToolbar() = 0;
     virtual void     createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) = 0;
     virtual bool     event(QEvent *pEvent) /* override */;
+
     /** @name Copy/Cut guest-to-guest (host-to-host) stuff.
      * @{ */
         /** Disable/enable paste action depending on the m_eFileOperationType. */
@@ -396,6 +398,7 @@ private:
     QComboBox       *m_pLocationComboBox;
     QILineEdit      *m_pSearchLineEdit;
     QILabel         *m_pWarningLabel;
+
     friend class     UIGuestControlFileModel;
 };
 

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 75928 2018-12-03 22:45:39Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 75973 2018-12-05 14:27:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -1317,7 +1317,9 @@ bool UIGuestControlFileTable::eventFilter(QObject *pObject, QEvent *pEvent) /* o
                 sltGoUp();
                 return true;
             }
-            else if (pKeyEvent->text().length() == 1 && pKeyEvent->text().at(0).unicode() <= 127)
+            else if (pKeyEvent->text().length() == 1 &&
+                     (pKeyEvent->text().at(0).isDigit() ||
+                      pKeyEvent->text().at(0).isLetter()))
             {
                 if (m_pSearchLineEdit)
                 {
@@ -1327,9 +1329,17 @@ bool UIGuestControlFileTable::eventFilter(QObject *pObject, QEvent *pEvent) /* o
                     m_pSearchLineEdit->setText(strText);
                 }
             }
-        }
+            else if (pKeyEvent->key() == Qt::Key_Tab)
+            {
+                return true;
+            }
+        }/* if (pKeyEvent) */
+    }/* if (pEvent->type() == QEvent::KeyPress) */
+    else if (pEvent->type() == QEvent::FocusOut)
+    {
+        disableSelectionSearch();
     }
-
+    /* Dont hold up the @pEvent but rather send it to the target @pObject: */
     return false;
 }
 

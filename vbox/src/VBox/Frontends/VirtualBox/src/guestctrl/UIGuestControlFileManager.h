@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 75903 2018-12-03 13:03:37Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 75973 2018-12-05 14:27:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -162,7 +162,7 @@ private:
         several things in the following order:
         - when there are no more panels visible assign it to the parent dialog
         - grab it from the dialog as soon as a panel becomes visible again
-        - assigned it to the most recently "unhidden" panel */
+        - assign it to the most recently "unhidden" panel */
     void manageEscapeShortCut();
     void copyToGuest();
     void copyToHost();
