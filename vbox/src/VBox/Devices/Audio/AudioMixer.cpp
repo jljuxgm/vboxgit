@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73432 2018-08-01 15:03:03Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73465 2018-08-03 09:38:01Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1381,6 +1381,7 @@ int AudioMixerSinkSetFormat(PAUDMIXSINK pSink, PPDMAUDIOPCMPROPS pPCMProps)
 {
     AssertPtrReturn(pSink,     VERR_INVALID_POINTER);
     AssertPtrReturn(pPCMProps, VERR_INVALID_POINTER);
+    AssertReturn(DrvAudioHlpPCMPropsAreValid(pPCMProps), VERR_INVALID_PARAMETER);
 
     int rc = RTCritSectEnter(&pSink->CritSect);
     if (RT_FAILURE(rc))
