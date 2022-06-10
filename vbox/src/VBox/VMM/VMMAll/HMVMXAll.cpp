@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 74054 2018-09-04 05:23:52Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 74061 2018-09-04 09:43:57Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -136,6 +136,8 @@ static const char * const g_apszVmxInstrDiagDesc[kVmxVInstrDiag_Last] =
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_BlocKMovSS               , "BlockMovSS"              ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_Cpl                      , "Cpl"                     ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_Cr3TargetCount           , "Cr3TargetCount"          ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_ExitCtlsAllowed1         , "ExitCtlsAllowed1"        ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_ExitCtlsDisallowed0      , "ExitCtlsDisallowed0"     ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_LongModeCS               , "LongModeCS"              ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_NmiWindowExit            , "NmiWindowExit"           ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_PinCtlsAllowed1          , "PinCtlsAllowed1"         ),
@@ -147,6 +149,7 @@ static const char * const g_apszVmxInstrDiagDesc[kVmxVInstrDiag_Last] =
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_PtrInvalid               , "PtrInvalid"              ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_PtrReadPhys              , "PtrReadPhys"             ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_RealOrV86Mode            , "RealOrV86Mode"           ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_SavePreemptTimer         , "SavePreemptTimer"        ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_Success                  , "Success"                 ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_TprThreshold             , "TprThreshold"            ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_TprThresholdVTpr         , "TprThresholdVTpr"        ),

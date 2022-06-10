@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 74047 2018-09-03 16:10:27Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 74061 2018-09-04 09:43:57Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3377,8 +3377,8 @@ static int hmR0VmxExportGuestExitCtls(PVMCPU pVCpu)
 
         /* Enable saving of the VMX preemption timer value on VM-exit. */
         if (    pVM->hm.s.vmx.fUsePreemptTimer
-            && (pVM->hm.s.vmx.Msrs.ExitCtls.n.allowed1 & VMX_EXIT_CTLS_SAVE_VMX_PREEMPT_TIMER))
-            fVal |= VMX_EXIT_CTLS_SAVE_VMX_PREEMPT_TIMER;
+            && (pVM->hm.s.vmx.Msrs.ExitCtls.n.allowed1 & VMX_EXIT_CTLS_SAVE_PREEMPT_TIMER))
+            fVal |= VMX_EXIT_CTLS_SAVE_PREEMPT_TIMER;
 
         if ((fVal & fZap) != fVal)
         {
