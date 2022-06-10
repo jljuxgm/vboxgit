@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 72980 2018-07-08 14:32:09Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 73003 2018-07-09 11:09:32Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -473,16 +473,16 @@ HRESULT HostUSBDevice::i_requestCaptureForVM(SessionMachine *aMachine, bool aSet
     mMaskedIfs = aMaskedIfs;
     mCaptureFilename = aCaptureFilename;
     alock.release();
-    int rc = mUSBProxyBackend->captureDevice(this);
-    if (RT_FAILURE(rc))
+    int vrc = mUSBProxyBackend->captureDevice(this);
+    if (RT_FAILURE(vrc))
     {
         alock.acquire();
         i_failTransition(kHostUSBDeviceState_Invalid);
         mMachine.setNull();
-        if (rc == VERR_SHARING_VIOLATION)
-            return setError(E_FAIL,
-                            tr("USB device '%s' with UUID {%RTuuid} is in use by someone else"),
-                            mName, mId.raw());
+        if (vrc == VERR_SHARING_VIOLATION)
+            return setErrorBoth(E_FAIL, vrc,
+                                tr("USB device '%s' with UUID {%RTuuid} is in use by someone else"),
+                                mName, mId.raw());
         return E_FAIL;
     }
 

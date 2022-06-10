@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 70766 2018-01-28 20:53:14Z vboxsync $ */
+/* $Id: ConsoleImpl.h 73003 2018-07-09 11:09:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -256,6 +256,7 @@ public:
     static const PDMDRVREG DrvStatusReg;
 
     static HRESULT i_setErrorStatic(HRESULT aResultCode, const char *pcsz, ...);
+    static HRESULT i_setErrorStaticBoth(HRESULT aResultCode, int vrc, const char *pcsz, ...);
     HRESULT i_setInvalidMachineStateError();
 
     static const char *i_storageControllerTypeToStr(StorageControllerType_T enmCtrlType);

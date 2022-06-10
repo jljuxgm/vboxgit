@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 69783 2017-11-20 18:58:25Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 73003 2018-07-09 11:09:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -351,10 +351,9 @@ private:
                                  com::Utf8Str &aFile,
                                  BOOL *aResult);
 
-    static HRESULT i_setErrorStatic(HRESULT aResultCode,
-                                    const Utf8Str &aText)
+    static HRESULT i_setErrorStaticBoth(HRESULT aResultCode, int vrc, const Utf8Str &aText)
     {
-        return setErrorInternal(aResultCode, getStaticClassIID(), getStaticComponentName(), aText, false, true);
+        return setErrorInternal(aResultCode, getStaticClassIID(), getStaticComponentName(), aText, false, true, vrc);
     }
 
     HRESULT i_registerMachine(Machine *aMachine);

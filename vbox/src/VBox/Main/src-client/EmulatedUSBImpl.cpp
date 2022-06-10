@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: EmulatedUSBImpl.cpp 73003 2018-07-09 11:09:32Z vboxsync $ */
 /** @file
  * Emulated USB manager implementation.
  */
@@ -212,8 +212,7 @@ HRESULT EUSBWEBCAM::Initialize(Console *pConsole,
     if (SUCCEEDED(hrc) && RT_FAILURE(vrc))
     {
         LogFlowThisFunc(("%Rrc\n", vrc));
-        hrc = pConsole->setError(VBOX_E_IPRT_ERROR,
-                                 "Init emulated USB webcam (%Rrc)", vrc);
+        hrc = pConsole->setErrorBoth(VBOX_E_IPRT_ERROR, vrc, "Init emulated USB webcam (%Rrc)", vrc);
     }
 
     return hrc;
@@ -312,8 +311,7 @@ HRESULT EUSBWEBCAM::Attach(Console *pConsole,
     if (SUCCEEDED(hrc) && RT_FAILURE(vrc))
     {
         LogFlowThisFunc(("%Rrc\n", vrc));
-        hrc = pConsole->setError(VBOX_E_IPRT_ERROR,
-                                 "Attach emulated USB webcam (%Rrc)", vrc);
+        hrc = pConsole->setErrorBoth(VBOX_E_VM_ERROR, vrc, "Attach emulated USB webcam (%Rrc)", vrc);
     }
 
     return hrc;
@@ -331,8 +329,7 @@ HRESULT EUSBWEBCAM::Detach(Console *pConsole,
     if (SUCCEEDED(hrc) && RT_FAILURE(vrc))
     {
         LogFlowThisFunc(("%Rrc\n", vrc));
-        hrc = pConsole->setError(VBOX_E_IPRT_ERROR,
-                                 "Detach emulated USB webcam (%Rrc)", vrc);
+        hrc = pConsole->setErrorBoth(VBOX_E_VM_ERROR, vrc, "Detach emulated USB webcam (%Rrc)", vrc);
     }
 
     return hrc;

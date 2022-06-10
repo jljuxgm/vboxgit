@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 70496 2018-01-09 16:09:23Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 73003 2018-07-09 11:09:32Z vboxsync $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -3200,15 +3200,11 @@ AuthResult ConsoleVRDPServer::Authenticate(const Guid &uuid, AuthGuestJudgement 
 
         Utf8Str filename = authLibrary;
 
-        int rc = AuthLibLoad(&mAuthLibCtx, filename.c_str());
-
-        if (RT_FAILURE(rc))
+        int vrc = AuthLibLoad(&mAuthLibCtx, filename.c_str());
+        if (RT_FAILURE(vrc))
         {
-            mConsole->setError(E_FAIL,
-                               mConsole->tr("Could not load the external authentication library '%s' (%Rrc)"),
-                               filename.c_str(),
-                               rc);
-
+            mConsole->setErrorBoth(E_FAIL, vrc, mConsole->tr("Could not load the external authentication library '%s' (%Rrc)"),
+                                   filename.c_str(), vrc);
             return AuthResultAccessDenied;
         }
     }

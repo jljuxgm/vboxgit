@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 73003 2018-07-09 11:09:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -214,9 +214,9 @@ HRESULT Keyboard::putScancodes(const std::vector<LONG> &aScancodes,
     evDesc.fire(0);
 
     if (RT_FAILURE(vrc))
-        return setError(VBOX_E_IPRT_ERROR,
-                        tr("Could not send all scan codes to the virtual keyboard (%Rrc)"),
-                        vrc);
+        return setErrorBoth(VBOX_E_IPRT_ERROR, vrc,
+                            tr("Could not send all scan codes to the virtual keyboard (%Rrc)"),
+                            vrc);
 
     return S_OK;
 }
