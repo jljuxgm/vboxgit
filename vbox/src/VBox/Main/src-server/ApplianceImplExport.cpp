@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 74846 2018-10-15 15:23:11Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 74873 2018-10-16 18:18:51Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2489,12 +2489,12 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
             ComPtr<IVirtualBox> VBox(mVirtualBox);
 
             pTask->pProgress->init(mVirtualBox, static_cast<IAppliance*>(this),
-                         Bstr("Test progress").raw(),
+                         Bstr("Exporting VM to OCI...").raw(),
                          TRUE /* aCancelable */,
                          5, // ULONG cOperations,
-                         100, // ULONG ulTotalOperationsWeight,
-                         Bstr("Do something").raw(), // aFirstOperationDescription
-                         25); // ULONG ulFirstOperationWeight,
+                         1000, // ULONG ulTotalOperationsWeight,
+                         Bstr("Exporting VM to OCI...").raw(), // aFirstOperationDescription
+                         10); // ULONG ulFirstOperationWeight,
 
             hrc = cloudClient->ExportVM(m->virtualSystemDescriptions.front(), pTask->pProgress, VBox);
         } else {
