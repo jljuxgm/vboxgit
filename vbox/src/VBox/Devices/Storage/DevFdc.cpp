@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 77025 2019-01-28 17:55:26Z vboxsync $ */
+/* $Id: DevFdc.cpp 77043 2019-01-30 13:05:21Z vboxsync $ */
 /** @file
  * VBox storage devices - Floppy disk controller
  */
@@ -341,8 +341,8 @@ static fd_format_t fd_formats[] = {
     { FDRIVE_DRV_120, 18, 83, 1, FDRIVE_RATE_500K, "1.49 MB 5\"1/4", },
     { FDRIVE_DRV_120, 20, 80, 1, FDRIVE_RATE_500K,  "1.6 MB 5\"1/4", },
     /* 720 kB 5"1/4 floppy disks */
-    { FDRIVE_DRV_120,  9, 80, 1, FDRIVE_RATE_250K,  "720 kB 5\"1/4", },
-    { FDRIVE_DRV_120, 11, 80, 1, FDRIVE_RATE_250K,  "880 kB 5\"1/4", },
+    { FDRIVE_DRV_120,  9, 80, 1, FDRIVE_RATE_300K,  "720 kB 5\"1/4", },
+    { FDRIVE_DRV_120, 11, 80, 1, FDRIVE_RATE_300K,  "880 kB 5\"1/4", },
     /* 360 kB 5"1/4 floppy disks (newer 9-sector formats) */
     { FDRIVE_DRV_120,  9, 40, 1, FDRIVE_RATE_300K,  "360 kB 5\"1/4", },
     { FDRIVE_DRV_120,  9, 40, 0, FDRIVE_RATE_300K,  "180 kB 5\"1/4", },
