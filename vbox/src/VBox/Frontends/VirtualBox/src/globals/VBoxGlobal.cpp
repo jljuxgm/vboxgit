@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 77291 2019-02-13 09:13:50Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 77335 2019-02-15 12:56:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2727,7 +2727,7 @@ QUuid VBoxGlobal::createVisoMediumWithVisoCreator(QWidget *pParent, const QStrin
         /* Produce the VISO. */
         char szVisoPath[RTPATH_MAX];
         QString strFileName = QString("%1%2").arg(strVisoName).arg(".viso");
-        int vrc = RTPathJoin(szVisoPath, sizeof(szVisoPath), strDefaultFolder.toUtf8().constData(), strFileName.toUtf8().constData());
+        int vrc = RTPathJoin(szVisoPath, sizeof(szVisoPath), strVisoSaveFolder.toUtf8().constData(), strFileName.toUtf8().constData());
         if (RT_SUCCESS(vrc))
         {
             PRTSTREAM pStrmViso;
