@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: MachineImpl.h 76678 2019-01-07 13:48:16Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -287,6 +287,8 @@ public:
         BOOL                mIBPBOnVMEntry;
         BOOL                mSpecCtrl;
         BOOL                mSpecCtrlByHost;
+        BOOL                mL1DFlushOnSched;
+        BOOL                mL1DFlushOnVMEntry;
         BOOL                mNestedHWVirt;
         ULONG               mCPUCount;
         BOOL                mCPUHotPlugEnabled;

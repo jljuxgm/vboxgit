@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 76678 2019-01-07 13:48:16Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -516,6 +516,8 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--ibpb-on-vm-exit on|off]\n"
                      "                            [--ibpb-on-vm-entry on|off]\n"
                      "                            [--spec-ctrl on|off]\n"
+                     "                            [--l1d-flush-on-sched on|off]\n"
+                     "                            [--l1d-flush-on-vm-entry on|off]\n"
                      "                            [--nested-hw-virt on|off]\n"
                      "                            [--cpu-profile \"host|Intel 80[86|286|386]\"]\n"
                      "                            [--cpuid-portability-level <0..3>\n"

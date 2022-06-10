@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: HMInternal.h 76678 2019-01-07 13:48:16Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -436,10 +436,12 @@ typedef struct HM
     bool                        fIbpbOnVmExit;
     /** Set if indirect branch prediction barrier on VM entry. */
     bool                        fIbpbOnVmEntry;
+    /** Set if level 1 data cache should be flushed on VM entry. */
+    bool                        fL1dFlushOnVmEntry;
+    /** Set if level 1 data cache should be flushed on EMT scheduling. */
+    bool                        fL1dFlushOnSched;
     /** Set if host manages speculation control settings. */
     bool                        fSpecCtrlByHost;
-    /** Explicit padding. */
-    bool                        afPadding[2];
 
     /** Maximum ASID allowed. */
     uint32_t                    uMaxAsid;
