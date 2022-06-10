@@ -1,4 +1,4 @@
-/* $Id: VBoxWddmUmHlp.h 75556 2018-11-18 19:21:02Z vboxsync $ */
+/* $Id: VBoxWddmUmHlp.h 75630 2018-11-20 19:10:04Z vboxsync $ */
 /** @file
  * VBox WDDM User Mode Driver Helpers
  */
@@ -84,6 +84,7 @@ DECLCALLBACK(void) VBoxWddmLoadAdresses(HMODULE hmod, VBOXWDDMDLLPROC *paProcs);
 DECLCALLBACK(int) D3DKMTLoad(void);
 DECLCALLBACK(D3DKMTFUNCTIONS const *) D3DKMTFunctions(void);
 
+DECLCALLBACK(void) VBoxDispMpLoggerLogF(const char *pszString, ...);
 DECLCALLBACK(void) VBoxWddmUmLog(const char *pszString);
 
 /** @todo Rename to VBoxWddm* */
