@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 74530 2018-09-28 17:45:20Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 74804 2018-10-12 15:09:44Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -1113,7 +1113,7 @@ HRESULT MachineMoveVM::moveAllDisks(const std::map<Utf8Str, MEDIUMTASKMOVE>& lis
                  * Call i_waitForOtherProgressCompletion only in success
                  */
                 /* Wait until the other process has finished. */
-                rc = m_pProgress->i_waitForOtherProgressCompletion(moveDiskProgress);
+                rc = m_pProgress->WaitForOtherProgressCompletion(moveDiskProgress, 0 /* indefinite wait */);
             }
 
             /*acquire the lock back*/

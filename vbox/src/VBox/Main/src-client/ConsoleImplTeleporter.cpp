@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 73003 2018-07-09 11:09:32Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 74804 2018-10-12 15:09:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -717,7 +717,7 @@ HRESULT Console::i_teleporterSrc(TeleporterStateSrc *pState)
     /*
      * We're at the point of no return.
      */
-    if (!pState->mptrProgress->i_notifyPointOfNoReturn())
+    if (FAILED(pState->mptrProgress->NotifyPointOfNoReturn()))
     {
         i_teleporterSrcSubmitCommand(pState, "cancel", false /*fWaitForAck*/);
         return E_FAIL;
@@ -1413,7 +1413,7 @@ Console::i_teleporterTrgServeConnection(RTSOCKET hSocket, void *pvUser)
              *       NACK) the request since this would reduce latency and
              *       make it possible to recover from some VMR3Resume failures.
              */
-            if (   pState->mptrProgress->i_notifyPointOfNoReturn()
+            if (   SUCCEEDED(pState->mptrProgress->NotifyPointOfNoReturn())
                 && pState->mfLockedMedia)
             {
                 vrc = teleporterTcpWriteACK(pState);

@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 74219 2018-09-12 11:40:50Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 74804 2018-10-12 15:09:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -162,7 +162,8 @@ protected:
                                                              const char *pcszNextOperationDescription,
                                                              uint32_t uNextOperationWeight);
     static DECLCALLBACK(uint32_t) i_hlpWaitOtherProgress(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IProgress) *pProgress,
-                                                         VBOXEXTPACK_IF_CS(IProgress) *pProgressOther);
+                                                         VBOXEXTPACK_IF_CS(IProgress) *pProgressOther,
+                                                         uint32_t cTimeoutMS);
     static DECLCALLBACK(uint32_t) i_hlpCompleteProgress(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IProgress) *pProgress,
                                                         uint32_t uResultCode);
     static DECLCALLBACK(int)    i_hlpReservedN(PCVBOXEXTPACKHLP pHlp);

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 73784 2018-08-20 11:45:50Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 74804 2018-10-12 15:09:44Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2655,7 +2655,7 @@ void Appliance::i_importOneDiskImage(const ovf::DiskImage &di,
 
                 /* Now wait for the background import operation to complete; this throws
                  * HRESULTs on error. */
-                stack.pProgress->i_waitForOtherProgressCompletion(pProgressImport);
+                stack.pProgress->WaitForOtherProgressCompletion(pProgressImport, 0 /* indefinite wait */);
             }
         }
         catch (...)

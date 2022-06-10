@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 73743 2018-08-17 17:56:34Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 74804 2018-10-12 15:09:44Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1289,7 +1289,7 @@ HRESULT MachineCloneVM::run()
 
                         /* Wait until the async process has finished. */
                         srcLock.release();
-                        rc = d->pProgress->i_waitForOtherProgressCompletion(progress2);
+                        rc = d->pProgress->WaitForOtherProgressCompletion(progress2, 0 /* indefinite wait */);
                         srcLock.acquire();
                         if (FAILED(rc)) throw rc;
 
