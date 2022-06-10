@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugIns.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxCompilerPlugIns.h 76584 2019-01-01 06:29:03Z vboxsync $ */
 /** @file
  * VBoxCompilerPlugIns - Types, Prototypes and Macros common to the VBox compiler plug-ins.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxCompilerPlugIns_h__
-#define ___VBoxCompilerPlugIns_h__
+#ifndef VBOX_INCLUDED_SRC_bldprogs_VBoxCompilerPlugIns_h
+#define VBOX_INCLUDED_SRC_bldprogs_VBoxCompilerPlugIns_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

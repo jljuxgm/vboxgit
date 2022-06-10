@@ -1,4 +1,4 @@
-/* $Id: scm.h 76555 2019-01-01 02:08:55Z vboxsync $ */
+/* $Id: scm.h 76584 2019-01-01 06:29:03Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___scm_h___
-#define ___scm_h___
+#ifndef VBOX_INCLUDED_SRC_bldprogs_scm_h
+#define VBOX_INCLUDED_SRC_bldprogs_scm_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

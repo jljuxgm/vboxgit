@@ -1,4 +1,4 @@
-/* $Id: scmdiff.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: scmdiff.h 76584 2019-01-01 06:29:03Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Diff Code.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___scmdiff_h___
-#define ___scmdiff_h___
+#ifndef VBOX_INCLUDED_SRC_bldprogs_scmdiff_h
+#define VBOX_INCLUDED_SRC_bldprogs_scmdiff_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
