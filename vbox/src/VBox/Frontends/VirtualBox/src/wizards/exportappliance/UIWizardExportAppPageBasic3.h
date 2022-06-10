@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 73009 2018-07-09 12:39:29Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 73011 2018-07-09 13:48:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -29,6 +29,7 @@ class QCheckBox;
 class QComboBox;
 class QLabel;
 class QLineEdit;
+class QStackedWidget;
 class QIRichTextLabel;
 class UIEmptyFilePathSelector;
 
@@ -80,6 +81,9 @@ protected:
 
     /** Holds the default appliance name. */
     QString  m_strDefaultApplianceName;
+
+    /** Holds the settings widget instance. */
+    QStackedWidget *m_pSettingsWidget;
 
     /** Holds the file selector label instance. */
     QLabel    *m_pFileSelectorLabel;
