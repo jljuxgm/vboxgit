@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 74852 2018-10-15 17:57:21Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 74854 2018-10-15 18:47:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -276,6 +276,7 @@ void UIVirtualBoxManager::sltHandleHostScreenAvailableAreaChange()
 
 void UIVirtualBoxManager::sltHandleMediumEnumerationFinish()
 {
+#if 0 // ohh, come on!
     /* To avoid annoying the user, we check for inaccessible media just once, after
      * the first media emumeration [started from main() at startup] is complete. */
     if (m_fFirstMediumEnumerationHandled)
@@ -299,12 +300,13 @@ void UIVirtualBoxManager::sltHandleMediumEnumerationFinish()
         }
     }
 
-//    /* Warn the user about inaccessible medium, propose to open MM window/tool: */
-//    if (fIsThereAnyInaccessibleMedium && msgCenter().warnAboutInaccessibleMedia())
-//    {
-//        /* Open the MM window: */
-//        sltOpenVirtualMediumManagerWindow();
-//    }
+    /* Warn the user about inaccessible medium, propose to open MM window/tool: */
+    if (fIsThereAnyInaccessibleMedium && msgCenter().warnAboutInaccessibleMedia())
+    {
+        /* Open the MM window: */
+        sltOpenVirtualMediumManagerWindow();
+    }
+#endif
 }
 
 void UIVirtualBoxManager::sltHandleOpenUrlCall(QList<QUrl> list /* = QList<QUrl>() */)
