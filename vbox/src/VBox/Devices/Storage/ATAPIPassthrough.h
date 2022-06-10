@@ -1,4 +1,4 @@
-/* $Id: ATAPIPassthrough.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: ATAPIPassthrough.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * VBox storage devices: ATAPI passthrough helpers (common code for DevATA and DevAHCI).
  */
@@ -14,8 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef __ATAPIPassthrough_h
 #define __ATAPIPassthrough_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/vmm/pdmifs.h>

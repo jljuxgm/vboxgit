@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 76049 2018-12-07 10:51:32Z vboxsync $ */
+/* $Id: HDAStream.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -17,6 +17,9 @@
 
 #ifndef HDA_STREAM_H
 #define HDA_STREAM_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "DevHDACommon.h"
 

@@ -1,4 +1,4 @@
-/* $Id: ebda.h 76519 2018-12-30 05:39:14Z vboxsync $ */
+/* $Id: ebda.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
@@ -54,6 +54,9 @@
 
 #ifndef VBOX_INCLUDED_BIOS_ebda_h
 #define VBOX_INCLUDED_BIOS_ebda_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <stdint.h>
 

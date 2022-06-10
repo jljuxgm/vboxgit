@@ -1,4 +1,4 @@
-/* $Id: HDACodec.h 70249 2017-12-20 18:13:26Z vboxsync $ */
+/* $Id: HDACodec.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  */
@@ -17,6 +17,9 @@
 
 #ifndef DEV_HDA_CODEC_H
 #define DEV_HDA_CODEC_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/list.h>
 

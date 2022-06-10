@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 76519 2018-12-30 05:39:14Z vboxsync $ */
+/* $Id: DevVGA.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -42,6 +42,9 @@
 
 #ifndef VBOX_INCLUDED_Graphics_DevVGA_h
 #define VBOX_INCLUDED_Graphics_DevVGA_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** Use VBE bytewise I/O. Only needed for Windows Longhorn/Vista betas and backwards compatibility. */
 #define VBE_BYTEWISE_IO

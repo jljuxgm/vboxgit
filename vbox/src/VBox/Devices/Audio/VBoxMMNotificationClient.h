@@ -1,4 +1,4 @@
-/* $Id: VBoxMMNotificationClient.h 69119 2017-10-17 19:08:38Z vboxsync $ */
+/* $Id: VBoxMMNotificationClient.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * VBoxMMNotificationClient.h - Implementation of the IMMNotificationClient interface
  *                              to detect audio endpoint changes.
@@ -18,6 +18,9 @@
 
 #ifndef ___VBOX_MMNOTIFICATIONCLIENT_H___
 #define ___VBOX_MMNOTIFICATIONCLIENT_H___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/critsect.h>
 #include <iprt/win/windows.h>

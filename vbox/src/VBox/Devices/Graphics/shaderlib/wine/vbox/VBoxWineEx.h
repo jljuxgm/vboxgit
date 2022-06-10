@@ -1,4 +1,4 @@
-/* $Id: VBoxWineEx.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxWineEx.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * VBox extension to Wine D3D
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxWineEx_h__
 #define ___VBoxWineEx_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 typedef enum
 {

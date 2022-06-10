@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 76255 2018-12-16 18:47:05Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___DevVGA_SVGA3d_internal_h
 #define ___DevVGA_SVGA3d_internal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /*
  * Assert sane compilation environment.

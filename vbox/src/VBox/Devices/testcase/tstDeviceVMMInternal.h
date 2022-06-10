@@ -1,4 +1,4 @@
-/* $Id: tstDeviceVMMInternal.h 69183 2017-10-23 18:47:18Z vboxsync $ */
+/* $Id: tstDeviceVMMInternal.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, definitions of VMM internal types.
  */
@@ -14,8 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef ___tstDeviceVMMInternal_h
 #define ___tstDeviceVMMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 #include <VBox/vmm/tm.h>

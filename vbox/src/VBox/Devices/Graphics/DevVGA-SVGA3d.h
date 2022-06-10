@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 76181 2018-12-12 15:16:19Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___DEVVMWARE3D_H___
 #define ___DEVVMWARE3D_H___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "vmsvga/svga3d_reg.h"
 #include "vmsvga/svga_escape.h"

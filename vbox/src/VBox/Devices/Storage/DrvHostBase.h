@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DrvHostBase.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __HostDrvBase_h__
 #define __HostDrvBase_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/assert.h>
 #include <iprt/err.h>

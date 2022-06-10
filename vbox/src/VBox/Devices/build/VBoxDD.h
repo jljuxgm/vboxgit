@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 73767 2018-08-19 16:58:49Z vboxsync $ */
+/* $Id: VBoxDD.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___build_VBoxDD_h
 #define ___build_VBoxDD_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vmm/pdm.h>
 

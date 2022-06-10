@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.h 71754 2018-04-09 01:27:04Z vboxsync $ */
+/* $Id: HDAStreamPeriod.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.h - Stream period functions for HD Audio.
  */
@@ -17,6 +17,9 @@
 
 #ifndef HDA_STREAMPERIOD_H
 #define HDA_STREAMPERIOD_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/critsect.h>
 #ifdef DEBUG

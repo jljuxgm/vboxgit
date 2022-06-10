@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 75802 2018-11-29 01:55:12Z vboxsync $ */
+/* $Id: DevHDA.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -17,6 +17,9 @@
 
 #ifndef DEV_HDA_H
 #define DEV_HDA_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/path.h>
 

@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.h 75990 2018-12-05 19:51:01Z vboxsync $ */
+/* $Id: VMMDevHGCM.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * VBoxDev - HGCM - Host-Guest Communication Manager, internal header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VMMDev_VMMDevHGCM_h
 #define ___VMMDev_VMMDevHGCM_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VMMDevState.h"
 

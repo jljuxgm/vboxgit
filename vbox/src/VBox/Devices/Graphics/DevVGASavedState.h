@@ -1,4 +1,4 @@
-/* $Id: DevVGASavedState.h 75715 2018-11-25 15:59:10Z vboxsync $ */
+/* $Id: DevVGASavedState.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevVGA - Saved state versions.
  *
@@ -18,9 +18,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-
 #ifndef ___Graphics_DevVGASavedState_h
 #define ___Graphics_DevVGASavedState_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** Creates an eyecatching marker in the VGA saved state ("<uSub>Marker\n"). */
 #define VGA_SAVED_STATE_MAKE_MARKER(uSub) (UINT64_C(0x0a72656b72614d30) + (uint64_t)(uSub))

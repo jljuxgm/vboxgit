@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.h 71773 2018-04-09 14:35:02Z vboxsync $ */
+/* $Id: MsiCommon.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Header for MSI/MSI-X support routines.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___MSI_COMMON_H___
 #define ___MSI_COMMON_H___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 typedef CTX_SUFF(PCPDMPCIHLP) PCPDMPCIHLP;
 

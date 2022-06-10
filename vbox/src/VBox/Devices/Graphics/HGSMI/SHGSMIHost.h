@@ -1,4 +1,4 @@
-/* $Id: SHGSMIHost.h 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: SHGSMIHost.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Missing description
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___SHGSMIHost_h___
 #define ___SHGSMIHost_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "HGSMIHost.h"
 

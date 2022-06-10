@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 75990 2018-12-05 19:51:01Z vboxsync $ */
+/* $Id: VMMDevState.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VMMDev_VMMDevState_h
 #define ___VMMDev_VMMDevState_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBoxVideo.h>  /* For VBVA definitions. */
 #include <VBox/VMMDev.h>

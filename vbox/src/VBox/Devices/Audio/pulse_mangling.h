@@ -1,4 +1,4 @@
-/* $Id: pulse_mangling.h 73462 2018-08-03 08:15:08Z vboxsync $ */
+/* $Id: pulse_mangling.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Mangle libpulse symbols.
  *
@@ -19,6 +19,9 @@
 
 #ifndef AUDIO_PULSE_MANGLING_H
 #define AUDIO_PULSE_MANGLING_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define PULSE_MANGLER(symbol) VBox_##symbol
 

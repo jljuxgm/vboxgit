@@ -1,5 +1,9 @@
+
 #ifndef __glext_h_
 #define __glext_h_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,7 +40,7 @@ extern "C" {
 */
 
 /* Header file version number, required by OpenGL ABI for Linux */
-/* glext.h last updated $Date: 2014-10-07 16:56:48 +0800 (Tue, 07 Oct 2014) $ */
+/* glext.h last updated $Date: 2018-12-30 13:39:55 +0800 (Sun, 30 Dec 2018) $ */
 /* Current version at http://www.opengl.org/registry/ */
 #define GL_GLEXT_VERSION 87
 /* Function declaration macros - to move into glplatform.h */

@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VUSBInternal.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -22,6 +22,9 @@
 
 #ifndef ___VUSBInternal_h
 #define ___VUSBInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

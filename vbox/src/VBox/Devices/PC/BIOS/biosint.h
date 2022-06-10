@@ -1,4 +1,4 @@
-/* $Id: biosint.h 76519 2018-12-30 05:39:14Z vboxsync $ */
+/* $Id: biosint.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
@@ -54,6 +54,9 @@
 
 #ifndef VBOX_INCLUDED_BIOS_biosint_h
 #define VBOX_INCLUDED_BIOS_biosint_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Compile-time assertion macro. */
 #define ct_assert(a)    extern int ct_ass_arr[!!(a) == 1];

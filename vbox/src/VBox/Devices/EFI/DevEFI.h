@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 72500 2018-06-11 11:05:32Z vboxsync $ */
+/* $Id: DevEFI.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -30,6 +30,9 @@
 
 #ifndef ___EFI_VBoxEFI_h
 #define ___EFI_VBoxEFI_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** @defgroup grp_devefi    DevEFI <-> Firmware Interfaces
  * @{

@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.h 73142 2018-07-16 09:09:38Z vboxsync $ */
+/* $Id: DevFwCommon.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code, header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___PC_FwCommon_h
 #define ___PC_FwCommon_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "DevPcBios.h"
 

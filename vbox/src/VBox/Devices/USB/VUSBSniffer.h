@@ -1,4 +1,4 @@
-/* $Id: VUSBSniffer.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VUSBSniffer.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Virtual USB - Sniffer facility.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VUSBSniffer_h
 #define ___VUSBSniffer_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

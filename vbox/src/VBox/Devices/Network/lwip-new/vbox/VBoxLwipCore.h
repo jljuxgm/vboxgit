@@ -1,4 +1,4 @@
-/* $Id: VBoxLwipCore.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxLwipCore.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 
 /** @file
  * VBox Lwip Core Initiatetor/Finilizer.
@@ -15,8 +15,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef __VBOXLWIPCORE_H__
 #define __VBOXLWIPCORE_H__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 typedef DECLCALLBACKPTR(void, PFNRT1)(void *);

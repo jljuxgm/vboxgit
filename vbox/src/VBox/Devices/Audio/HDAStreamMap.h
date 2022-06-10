@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.h 75962 2018-12-05 09:34:58Z vboxsync $ */
+/* $Id: HDAStreamMap.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * HDAStreamMap.h - Stream map functions for HD Audio.
  */
@@ -17,6 +17,9 @@
 
 #ifndef HDA_STREAMMAP_H
 #define HDA_STREAMMAP_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /**
  * Structure for keeping an audio stream data mapping.

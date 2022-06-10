@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxSCSI.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -64,6 +64,9 @@
 
 #ifndef ___Storage_VBoxSCSI_h
 #define ___Storage_VBoxSCSI_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /*******************************************************************************
 *   Header Files                                                               *

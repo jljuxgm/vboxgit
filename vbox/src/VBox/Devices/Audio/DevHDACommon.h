@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 76049 2018-12-07 10:51:32Z vboxsync $ */
+/* $Id: DevHDACommon.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -17,6 +17,9 @@
 
 #ifndef DEV_HDA_COMMON_H
 #define DEV_HDA_COMMON_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "AudioMixer.h"
 #include <VBox/log.h> /* LOG_ENABLED */

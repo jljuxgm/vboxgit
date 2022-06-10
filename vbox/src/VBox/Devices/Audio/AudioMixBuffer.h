@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.h 73714 2018-08-16 14:35:39Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Audio Mixing bufer convert audio samples to/from different rates / formats.
  */
@@ -17,6 +17,9 @@
 
 #ifndef AUDIO_MIXBUF_H
 #define AUDIO_MIXBUF_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <VBox/vmm/pdmaudioifs.h>

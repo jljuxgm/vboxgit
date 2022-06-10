@@ -1,4 +1,4 @@
-/* $Id: PS2Dev.h 71351 2018-03-15 13:26:21Z vboxsync $ */
+/* $Id: PS2Dev.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * PS/2 devices - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef PS2DEV_H
 #define PS2DEV_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** The size of the PS2K/PS2M structure fillers.
  * @note Must be at least as big as the real struct. Compile time assert

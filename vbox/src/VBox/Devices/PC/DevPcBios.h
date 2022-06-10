@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.h 71062 2018-02-19 17:06:14Z vboxsync $ */
+/* $Id: DevPcBios.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device, header shared with the BIOS code.
  */
@@ -17,6 +17,9 @@
 
 #ifndef DEV_PCBIOS_H
 #define DEV_PCBIOS_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** @def VBOX_DMI_TABLE_BASE */
 #define VBOX_DMI_TABLE_BASE         0xe1000

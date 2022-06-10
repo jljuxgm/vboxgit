@@ -1,4 +1,4 @@
-/* $Id: Virtio.h 73410 2018-07-31 12:36:41Z vboxsync $ */
+/* $Id: Virtio.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Virtio.h - Virtio Declarations
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBox_Virtio_h
 #define ___VBox_Virtio_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/ctype.h>
 

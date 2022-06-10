@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VMMDevTesting.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -15,9 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-
 #ifndef ___VMMDev_VMMDevTesting_h
 #define ___VMMDev_VMMDevTesting_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 #include <VBox/VMMDevTesting.h>

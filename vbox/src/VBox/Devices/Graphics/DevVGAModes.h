@@ -1,4 +1,4 @@
-/* $Id: DevVGAModes.h 76519 2018-12-30 05:39:14Z vboxsync $ */
+/* $Id: DevVGAModes.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, VBE modes.
  *
@@ -20,6 +20,9 @@
 
 #ifndef VBOX_INCLUDED_Graphics_DevVGAModes_h
 #define VBOX_INCLUDED_Graphics_DevVGAModes_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBoxVideoVBE.h>
 #include <VBoxVideoVBEPrivate.h>

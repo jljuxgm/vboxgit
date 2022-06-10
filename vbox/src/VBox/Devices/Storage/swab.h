@@ -1,4 +1,4 @@
-/* $Id: swab.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: swab.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -28,6 +28,9 @@
 
 #ifndef _VBOX_LINUX_SWAB_H
 #define _VBOX_LINUX_SWAB_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define _LINUX_BYTEORDER_SWAB_H
 #define _LINUX_BYTEORDER_SWABB_H

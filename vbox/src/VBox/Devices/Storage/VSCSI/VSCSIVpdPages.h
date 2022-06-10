@@ -1,4 +1,4 @@
-/* $Id: VSCSIVpdPages.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VSCSIVpdPages.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Definitions for VPD pages.
  */
@@ -14,8 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef ___VSCSIVpdPages_h
 #define ___VSCSIVpdPages_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/stdint.h>
 

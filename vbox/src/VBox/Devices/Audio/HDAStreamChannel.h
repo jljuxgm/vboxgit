@@ -1,4 +1,4 @@
-/* $Id: HDAStreamChannel.h 75962 2018-12-05 09:34:58Z vboxsync $ */
+/* $Id: HDAStreamChannel.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * HDAStreamChannel.h - Stream channel functions for HD Audio.
  */
@@ -17,6 +17,9 @@
 
 #ifndef HDA_STREAMCHANNEL_H
 #define HDA_STREAMCHANNEL_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 int  hdaR3StreamChannelDataInit(PPDMAUDIOSTREAMCHANNELDATA pChanData, uint32_t fFlags);
 void hdaR3StreamChannelDataDestroy(PPDMAUDIOSTREAMCHANNELDATA pChanData);

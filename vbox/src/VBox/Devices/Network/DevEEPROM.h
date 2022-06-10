@@ -1,4 +1,4 @@
-/* $Id: DevEEPROM.h 76519 2018-12-30 05:39:14Z vboxsync $ */
+/* $Id: DevEEPROM.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevEEPROM - Microware-compatible 64x16-bit 93C46 EEPROM Emulation, Header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOX_INCLUDED_Network_DevEEPROM_h
 #define VBOX_INCLUDED_Network_DevEEPROM_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 

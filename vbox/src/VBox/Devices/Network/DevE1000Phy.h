@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.h 76519 2018-12-30 05:39:14Z vboxsync $ */
+/** $Id: DevE1000Phy.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation, Header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOX_INCLUDED_Network_DevE1000_h
 #define VBOX_INCLUDED_Network_DevE1000_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 

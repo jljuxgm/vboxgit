@@ -1,4 +1,4 @@
-/* $Id: vboxext.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vboxext.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * VBox extension to Wine D3D
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBOXEXT_H___
 #define ___VBOXEXT_H___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifdef VBOX_WINE_WITHOUT_LIBWINE
 # ifdef _MSC_VER

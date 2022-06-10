@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller - Defines and structures.
  */
@@ -14,8 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef __DEVLSILOGICSCSI_H__
 #define __DEVLSILOGICSCSI_H__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/stdint.h>
 

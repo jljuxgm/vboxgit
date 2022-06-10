@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 74041 2018-09-03 12:46:20Z vboxsync $ */
+/* $Id: AudioMixer.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -20,6 +20,9 @@
 
 #ifndef AUDIO_MIXER_H
 #define AUDIO_MIXER_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/critsect.h>

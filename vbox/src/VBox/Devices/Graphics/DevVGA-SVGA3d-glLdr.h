@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glLdr.h 76315 2018-12-20 14:22:40Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glLdr.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevVGA - VMWare SVGA device - 3D part, dynamic loading of GL function.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___DevVGA_SVGA3d_gl_h
 #define ___DevVGA_SVGA3d_gl_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef VMSVGA3D_OPENGL
 # error "This include file is for VMSVGA3D_OPENGL."

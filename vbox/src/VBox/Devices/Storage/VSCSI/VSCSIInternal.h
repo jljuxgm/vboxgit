@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 76346 2018-12-22 00:51:28Z vboxsync $ */
+/* $Id: VSCSIInternal.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -14,8 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef ___VSCSIInternal_h
 #define ___VSCSIInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vscsi.h>
 #include <VBox/scsi.h>

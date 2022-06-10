@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 70181 2017-12-17 13:16:28Z vboxsync $ */
+/* $Id: DevPciInternal.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___Bus_DevPciInternal_h___
 #define ___Bus_DevPciInternal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef PDMPCIDEV_INCLUDE_PRIVATE
 # define PDMPCIDEV_INCLUDE_PRIVATE /* Hack to get pdmpcidevint.h included at the right point. */

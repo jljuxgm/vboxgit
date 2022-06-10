@@ -1,4 +1,4 @@
-/* $Id: alsa_mangling.h 73642 2018-08-14 08:48:55Z vboxsync $ */
+/* $Id: alsa_mangling.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Mangle libasound symbols.
  *
@@ -19,6 +19,9 @@
 
 #ifndef AUDIO_ALSA_MANGLING_H
 #define AUDIO_ALSA_MANGLING_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define ALSA_MANGLER(symbol) VBox_##symbol
 

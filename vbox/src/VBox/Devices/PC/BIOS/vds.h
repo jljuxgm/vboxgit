@@ -1,4 +1,4 @@
-/* $Id: vds.h 76519 2018-12-30 05:39:14Z vboxsync $ */
+/* $Id: vds.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * Utility routines for calling the Virtual DMA Services.
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOX_INCLUDED_BIOS_vds_h
 #define VBOX_INCLUDED_BIOS_vds_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Virtual DMA Services (VDS) */
 

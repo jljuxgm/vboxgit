@@ -1,4 +1,4 @@
-/* $Id: UartCore.h 74919 2018-10-18 13:12:30Z vboxsync $ */
+/* $Id: UartCore.h 76520 2018-12-30 05:39:55Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -16,8 +16,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef ___UartCore_h
 #define ___UartCore_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 #include <VBox/vmm/pdmdev.h>
