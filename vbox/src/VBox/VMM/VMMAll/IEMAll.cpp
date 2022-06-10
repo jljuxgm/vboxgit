@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72712 2018-06-28 08:47:47Z vboxsync $ */
+/* $Id: IEMAll.cpp 72743 2018-06-29 07:35:49Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -5302,10 +5302,6 @@ iemRaiseXcptOrInt(PVMCPU      pVCpu,
     /*
      * Get all the state that we might need here.
      */
-#ifdef IN_RING0
-    int rc = HMR0EnsureCompleteBasicContext(pVCpu, IEM_GET_CTX(pVCpu));
-    AssertRCReturn(rc, rc);
-#endif
     IEM_CTX_IMPORT_RET(pVCpu, IEM_CPUMCTX_EXTRN_XCPT_MASK);
     IEM_CTX_ASSERT(pVCpu, IEM_CPUMCTX_EXTRN_XCPT_MASK);
 
@@ -15143,6 +15139,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedInvlpga(PVMCPU pVCpu, uint8_t cbInstr)
 VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedVmrun(PVMCPU pVCpu, uint8_t cbInstr)
 {
     IEMEXEC_ASSERT_INSTR_LEN_RETURN(cbInstr, 3);
+    IEM_CTX_ASSERT(pVCpu, IEM_CPUMCTX_EXTRN_SVM_VMRUN_MASK);
 
     iemInitExec(pVCpu, false /*fBypassHandlers*/);
     VBOXSTRICTRC rcStrict = IEM_CIMPL_CALL_0(iemCImpl_vmrun);
