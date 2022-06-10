@@ -1,4 +1,4 @@
-/* $Id: Global.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: Global.h 75817 2018-11-29 15:24:26Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -70,6 +70,7 @@ public:
         const uint32_t                 recommendedRAM;
         const uint32_t                 recommendedVRAM;
         const uint64_t                 recommendedHDD;
+        const GraphicsControllerType_T graphicsControllerType;
         const NetworkAdapterType_T     networkAdapterType;
         const uint32_t                 numSerialEnabled;
         const StorageControllerType_T  dvdStorageControllerType;

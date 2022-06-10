@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 75817 2018-11-29 15:24:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -125,6 +125,9 @@ bool UIWizardNewVM::createVM()
 
     /* RAM size: */
     m_machine.SetMemorySize(field("ram").toInt());
+
+    /* Graphics Controller type: */
+    m_machine.SetGraphicsControllerType(type.GetRecommendedGraphicsController());
 
     /* VRAM size - select maximum between recommended and minimum for fullscreen: */
     m_machine.SetVRAMSize(qMax(type.GetRecommendedVRAM(), (ULONG)(VBoxGlobal::requiredVideoMemory(strTypeId) / _1M)));
