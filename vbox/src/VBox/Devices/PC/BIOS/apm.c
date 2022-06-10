@@ -1,4 +1,4 @@
-/* $Id: apm.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: apm.c 76960 2019-01-23 21:13:23Z vboxsync $ */
 /** @file
  * APM BIOS support. Implements APM version 1.2.
  */
@@ -119,7 +119,7 @@ void set_esi_hi(uint16_t val);
 
 /* The APM handler has unique requirements. It must be callable from real and
  * protected mode, both 16-bit and 32-bit. In protected mode, the caller must
- * ensures that appropriate selectors are available; these only cover the BIOS
+ * ensure that appropriate selectors are available; these only cover the BIOS
  * code and data, hence the BIOS Data Area or EBDA cannot be accessed. CMOS is
  * a good place to store information which needs to be accessible from several
  * different contexts.
