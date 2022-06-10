@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 75380 2018-11-09 22:25:30Z vboxsync $ */
+/* $Id: MachineImpl.h 75453 2018-11-14 14:46:01Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -476,7 +476,7 @@ public:
         IsModified_SharedFolders        = 0x0400,
         IsModified_Snapshots            = 0x0800,
         IsModified_BandwidthControl     = 0x1000,
-        IsModified_Record               = 0x2000
+        IsModified_Recording            = 0x2000
     };
 
     /**

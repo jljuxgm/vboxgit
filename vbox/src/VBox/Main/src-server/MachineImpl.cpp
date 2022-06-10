@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 75380 2018-11-09 22:25:30Z vboxsync $ */
+/* $Id: MachineImpl.cpp 75453 2018-11-14 14:46:01Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11726,7 +11726,7 @@ void Machine::i_rollback(bool aNotify)
     if (mBIOSSettings)
         mBIOSSettings->i_rollback();
 
-    if (mRecordingSettings && (mData->flModifications & IsModified_Record))
+    if (mRecordingSettings && (mData->flModifications & IsModified_Recording))
         mRecordingSettings->i_rollback();
 
     if (mVRDEServer && (mData->flModifications & IsModified_VRDEServer))
