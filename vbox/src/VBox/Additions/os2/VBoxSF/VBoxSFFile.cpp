@@ -1,4 +1,4 @@
-/** $Id: VBoxSFFile.cpp 75594 2018-11-19 18:51:28Z vboxsync $ */
+/** $Id: VBoxSFFile.cpp 75597 2018-11-19 19:51:02Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, the file level IFS EPs.
  */
@@ -607,7 +607,7 @@ static APIRET
 vboxSfOs2QueryFileInfo(PVBOXSFFOLDER pFolder, PSFFSI pSfFsi, PVBOXSFSYFI pSfFsd, ULONG uLevel, PBYTE pbData, ULONG cbData)
 {
     /*
-     * Performance notes:
+     * Performance notes (@bugref{9172}):
      *
      * This function was used for some performance hacking in an attempt at
      * squeezing more performance out of the HGCM and shared folders code.
