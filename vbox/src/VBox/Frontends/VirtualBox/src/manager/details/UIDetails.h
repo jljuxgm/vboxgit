@@ -1,4 +1,4 @@
-/* $Id: UIDetails.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIDetails.h 74674 2018-10-08 12:28:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetails class declaration.
  */
@@ -60,7 +60,6 @@ public:
 private:
 
     /* Helpers: Prepare stuff: */
-    void preparePalette();
     void prepareLayout();
     void prepareModel();
     void prepareView();

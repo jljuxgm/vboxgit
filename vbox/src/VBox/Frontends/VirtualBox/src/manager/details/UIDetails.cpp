@@ -1,4 +1,4 @@
-/* $Id: UIDetails.cpp 74109 2018-09-06 10:14:20Z vboxsync $ */
+/* $Id: UIDetails.cpp 74674 2018-10-08 12:28:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetails class implementation.
  */
@@ -38,9 +38,6 @@ UIDetails::UIDetails(QWidget *pParent /* = 0 */)
     , m_pDetailsModel(0)
     , m_pDetailsView(0)
 {
-    /* Prepare palette: */
-    preparePalette();
-
     /* Prepare layout: */
     prepareLayout();
 
@@ -58,16 +55,6 @@ void UIDetails::setItems(const QList<UIVirtualMachineItem*> &items)
 {
     /* Propagate to details-model: */
     m_pDetailsModel->setItems(items);
-}
-
-void UIDetails::preparePalette()
-{
-    /* Setup palette: */
-    setAutoFillBackground(true);
-    QPalette pal = qApp->palette();
-    const QColor bodyColor = pal.color(QPalette::Active, QPalette::Mid).lighter(155);
-    pal.setColor(QPalette::Base, bodyColor);
-    setPalette(pal);
 }
 
 void UIDetails::prepareLayout()
