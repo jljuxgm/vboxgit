@@ -1,4 +1,4 @@
-/* $Id: pathint-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
+/* $Id: pathint-win.cpp 74461 2018-09-25 15:55:40Z vboxsync $ */
 /** @file
  * IPRT - Windows, Internal Path stuff.
  */
@@ -71,6 +71,7 @@ DECL_NO_INLINE(static, bool) rtPathWinTryConvertToAbs(PRTUTF16 *ppwszPath)
 RTDECL(int)  RTPathWinFromUtf8(PRTUTF16 *ppwszPath, const char *pszPath, uint32_t fFlags)
 {
     Assert(fFlags == 0);
+    RT_NOREF(fFlags);
 
     /*
      * Do a straight conversion first.
