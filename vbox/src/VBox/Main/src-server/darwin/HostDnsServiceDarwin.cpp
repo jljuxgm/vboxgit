@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 77995 2019-04-03 15:29:37Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 77996 2019-04-03 15:33:49Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -116,7 +116,7 @@ void HostDnsServiceDarwin::uninit(void)
     HostDnsServiceBase::uninit();
 }
 
-void HostDnsServiceDarwin::monitorThreadShutdown(RTMSINTERVAL uTimeoutMs)
+int HostDnsServiceDarwin::monitorThreadShutdown(RTMSINTERVAL uTimeoutMs)
 {
     RTCLock grab(m_LockMtx);
     if (!m->m_fStop)
@@ -127,6 +127,8 @@ void HostDnsServiceDarwin::monitorThreadShutdown(RTMSINTERVAL uTimeoutMs)
 
         RTSemEventWait(m->m_evtStop, uTimeoutMs);
     }
+
+    return VINF_SUCCESS;
 }
 
 int HostDnsServiceDarwin::monitorThreadProc(void)
