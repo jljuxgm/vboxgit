@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 73203 2018-07-18 13:00:43Z vboxsync $ */
+/* $Id: EMHM.cpp 73224 2018-07-19 04:22:02Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -243,6 +243,7 @@ DECLINLINE(int) emR3HmExecuteInstruction(PVM pVM, PVMCPU pVCpu, const char *pszP
     return emR3HmExecuteInstructionWorker(pVM, pVCpu, rcGC);
 #endif
 }
+
 
 /**
  * Executes one (or perhaps a few more) IO instruction(s).
