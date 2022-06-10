@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIDetailsElements.h 77427 2019-02-22 11:11:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes declaration.
  */
@@ -326,9 +326,6 @@ private:
     /** Contains update task body. */
     void run();
 
-    /** Summarizes generic properties. */
-    static QString summarizeGenericProperties(const CNetworkAdapter &adapter);
-
     /** Holds the options. */
     UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork m_fOptions;
 };
@@ -547,4 +544,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_details_UIDetailsElements_h */
-
