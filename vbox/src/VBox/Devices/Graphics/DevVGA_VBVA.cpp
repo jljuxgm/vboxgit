@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 77370 2019-02-20 08:04:38Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 77451 2019-02-25 06:32:10Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2851,10 +2851,11 @@ DECLCALLBACK(void) vbvaPortReportHostCursorCapabilities(PPDMIDISPLAYPORT pInterf
 #endif
 }
 
-DECLCALLBACK(void) vbvaPortReportHostCursorPosition(PPDMIDISPLAYPORT pInterface, uint32_t x, uint32_t y)
+DECLCALLBACK(void) vbvaPortReportHostCursorPosition(PPDMIDISPLAYPORT pInterface, uint32_t x, uint32_t y, bool fOutOfRange)
 {
     PVGASTATE pThis = IDISPLAYPORT_2_VGASTATE(pInterface);
     VBVACONTEXT *pCtx = (VBVACONTEXT *)HGSMIContext(pThis->pHGSMI);
+    RT_NOREF(fOutOfRange);
     int rc = PDMCritSectEnter(&pThis->CritSect, VERR_SEM_BUSY);
     AssertRC(rc);
     pCtx->xCursor = x;

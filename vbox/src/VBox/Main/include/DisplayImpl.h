@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 77370 2019-02-20 08:04:38Z vboxsync $ */
+/* $Id: DisplayImpl.h 77451 2019-02-25 06:32:10Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -135,7 +135,7 @@ public:
     virtual void i_getFramebufferDimensions(int32_t *px1, int32_t *py1,
                                             int32_t *px2, int32_t *py2) = 0;
     virtual HRESULT i_reportHostCursorCapabilities(uint32_t fCapabilitiesAdded, uint32_t fCapabilitiesRemoved) = 0;
-    virtual HRESULT i_reportHostCursorPosition(int32_t x, int32_t y) = 0;
+    virtual HRESULT i_reportHostCursorPosition(int32_t x, int32_t y, bool fOutOfRange) = 0;
     virtual bool i_isInputMappingSet(void) = 0;
 };
 
@@ -220,7 +220,7 @@ public:
     virtual void i_getFramebufferDimensions(int32_t *px1, int32_t *py1,
                                             int32_t *px2, int32_t *py2);
     virtual HRESULT i_reportHostCursorCapabilities(uint32_t fCapabilitiesAdded, uint32_t fCapabilitiesRemoved);
-    virtual HRESULT i_reportHostCursorPosition(int32_t x, int32_t y);
+    virtual HRESULT i_reportHostCursorPosition(int32_t x, int32_t y, bool fOutOfRange);
     virtual bool i_isInputMappingSet(void)
     {
         return cxInputMapping != 0 && cyInputMapping != 0;
