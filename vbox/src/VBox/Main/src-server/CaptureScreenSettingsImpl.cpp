@@ -1,4 +1,4 @@
-/* $Id: CaptureScreenSettingsImpl.cpp 75269 2018-11-06 10:20:06Z vboxsync $ */
+/* $Id: CaptureScreenSettingsImpl.cpp 75277 2018-11-06 12:29:18Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Capture settings of one virtual screen.
@@ -72,7 +72,7 @@ void CaptureScreenSettings::FinalRelease()
  *
  * @returns COM result indicator
  */
-HRESULT CaptureScreenSettings::init(Machine *aParent, unsigned long uScreenId, const settings::CaptureScreenSettings& data)
+HRESULT CaptureScreenSettings::init(Machine *aParent, unsigned long uScreenId, const settings::CaptureScreenSettings &data)
 {
     LogFlowThisFuncEnter();
     LogFlowThisFunc(("aParent: %p\n", aParent));
@@ -88,9 +88,10 @@ HRESULT CaptureScreenSettings::init(Machine *aParent, unsigned long uScreenId, c
     /* share the parent weakly */
     unconst(m->pMachine) = aParent;
 
-    // simply copy
+    /* Simply copy the settings data. */
     m->uScreenId = uScreenId;
-    m->bd.assignCopy(&data);
+    m->bd.allocate();
+    m->bd->operator=(data);
 
     autoInitSpan.setSucceeded();
 
