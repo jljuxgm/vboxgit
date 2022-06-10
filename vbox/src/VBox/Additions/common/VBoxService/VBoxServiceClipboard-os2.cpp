@@ -1,4 +1,4 @@
-/** $Id: VBoxServiceClipboard-os2.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/** $Id: VBoxServiceClipboard-os2.cpp 78181 2019-04-17 19:51:54Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Clipboard Service, OS/2.
  */
@@ -52,6 +52,7 @@
 #include <iprt/time.h>
 #include <iprt/utf16.h>
 #include <VBox/VBoxGuestLib.h>
+#include <VBox/GuestHost/SharedClipboard.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include "VBoxServiceInternal.h"
 
