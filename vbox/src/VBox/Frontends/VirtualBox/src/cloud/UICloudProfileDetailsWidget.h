@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.h 74897 2018-10-18 00:17:39Z vboxsync $ */
+/* $Id: UICloudProfileDetailsWidget.h 74898 2018-10-18 00:40:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class declaration.
  */
@@ -29,6 +29,7 @@
 /* Forward declarations: */
 class QAbstractButton;
 class QTableWidget;
+class QTableWidgetItem;
 class QIDialogButtonBox;
 
 
@@ -126,7 +127,7 @@ private slots:
     /** @name Change handling stuff.
       * @{ */
         /** Handles table change. */
-        void sltTableChanged();
+        void sltTableChanged(QTableWidgetItem *pItem);
 
         /** Handles button-box button click. */
         void sltHandleButtonBoxClick(QAbstractButton *pButton);
