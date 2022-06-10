@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 75495 2018-11-15 20:53:00Z vboxsync $ */
+/* $Id: HGCM.cpp 75497 2018-11-15 23:30:55Z vboxsync $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -39,6 +39,7 @@
 #include <iprt/thread.h>
 
 #include <VBox/VMMDev.h>
+#include <new>
 
 /**
  * A service gets one thread, which synchronously delivers messages to
