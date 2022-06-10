@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 78085 2019-04-10 12:46:12Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 78089 2019-04-10 14:01:38Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -845,14 +845,22 @@ int GuestDnDSource::i_onReceiveFileHdr(PRECVDATACTX pCtx, const char *pszPath, u
             if (mDataBase.m_uProtocolVersion >= 2)
                 rc = pObj->SetSize(cbSize);
 
-            /** @todo Unescpae path before printing. */
+            /** @todo Unescape path before printing. */
             LogRel2(("DnD: Transferring guest file '%s' to host (%RU64 bytes, mode 0x%x)\n",
                      pObj->GetDestPathAbs().c_str(), pObj->GetSize(), pObj->GetMode()));
 
             /** @todo Set progress object title to current file being transferred? */
 
-            if (!cbSize) /* 0-byte file? Close again. */
+            if (pObj->IsComplete()) /* 0-byte file? We're done already. */
+            {
+                /** @todo Sanitize path. */
+                LogRel2(("DnD: Transferring guest file '%s' (0 bytes) to host complete\n", pObj->GetDestPathAbs().c_str()));
+
+                pCtx->mURI.processObject(*pObj);
                 pObj->Close();
+
+                objCtx.reset();
+            }
         }
 
     } while (0);
