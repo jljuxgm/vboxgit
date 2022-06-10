@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 78219 2019-04-19 17:18:15Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 78244 2019-04-22 11:10:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -725,9 +725,16 @@ QITableView *UIFormEditorModel::parentTable() const
 
 void UIFormEditorModel::updateGeneration()
 {
-    foreach (UIFormEditorRow *pRow, m_dataList)
+    for (int i = 0; i < m_dataList.size(); ++i)
+    {
+        UIFormEditorRow *pRow = m_dataList.at(i);
         if (pRow->isGenerationChanged())
+        {
             pRow->updateValueCells();
+            const QModelIndex changedIndex = index(i, 1);
+            emit dataChanged(changedIndex, changedIndex);
+        }
+    }
 }
 
 
