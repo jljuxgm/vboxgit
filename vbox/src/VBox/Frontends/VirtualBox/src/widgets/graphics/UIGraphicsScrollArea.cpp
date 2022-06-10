@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollArea.cpp 77228 2019-02-08 18:05:46Z vboxsync $ */
+/* $Id: UIGraphicsScrollArea.cpp 77229 2019-02-08 18:13:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollArea class implementation.
  */
@@ -161,7 +161,7 @@ bool UIGraphicsScrollArea::eventFilter(QObject *pObject, QEvent *pEvent)
             {
                 if (angleDelta.y() > 0)
                     m_pScrollBar->setValue(m_pScrollBar->value() - m_pScrollBar->step());
-                else
+                else if (angleDelta.y() < 0)
                     m_pScrollBar->setValue(m_pScrollBar->value() + m_pScrollBar->step());
                 break;
             }
