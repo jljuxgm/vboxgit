@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 75673 2018-11-22 15:56:42Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 75685 2018-11-23 12:27:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -786,8 +786,16 @@ void UIGuestControlFileTable::prepareObjects()
     if (m_pWarningLabel)
     {
         m_pMainLayout->addWidget(m_pWarningLabel, 2, 0, 5, 5);
-        m_pWarningLabel->setStyleSheet("font: 24pt;");
+        QFont labelFont = m_pWarningLabel->font();
+        float fSizeMultiplier = 2.5;
+        if (labelFont.pointSize() != -1)
+            labelFont.setPointSize(fSizeMultiplier * labelFont.pointSize());
+        else
+            labelFont.setPixelSize(fSizeMultiplier * labelFont.pixelSize());
+        labelFont.setBold(true);
+        m_pWarningLabel->setFont(labelFont);
         m_pWarningLabel->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
+        m_pWarningLabel->setWordWrap(true);
     }
     m_pWarningLabel->setVisible(!isEnabled());
     m_pView->setVisible(isEnabled());
