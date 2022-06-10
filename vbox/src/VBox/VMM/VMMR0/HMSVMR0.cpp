@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72968 2018-07-08 10:43:02Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72969 2018-07-08 10:45:34Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1495,6 +1495,8 @@ static bool hmR0SvmClearCtrlIntercept(PVMCPU pVCpu, PSVMVMCB pVmcb, uint64_t fCt
             PCSVMNESTEDVMCBCACHE pVmcbNstGstCache = hmR0SvmGetNestedVmcbCache(pVCpu);
             fRemove = !(pVmcbNstGstCache->u64InterceptCtrl & fCtrlIntercept);
         }
+#else
+        RT_NOREF(pVCpu);
 #endif
         if (fRemove)
         {
