@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 74898 2018-10-18 00:40:48Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 74921 2018-10-18 14:15:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1640,6 +1640,13 @@ void UIMessageCenter::cannotFindCloudProfile(const CCloudProvider &comProvider, 
           UIErrorString::formatErrorInfo(comProvider));
 }
 
+void UIMessageCenter::cannotCreateCloudProfle(const CCloudProvider &comProvider, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to create cloud profile."),
+          UIErrorString::formatErrorInfo(comProvider));
+}
+
 void UIMessageCenter::cannotAcquireCloudProfileParameter(const CCloudProfile &comProfile, QWidget *pParent /* = 0 */) const
 {
     error(pParent, MessageType_Error,
@@ -1652,6 +1659,17 @@ void UIMessageCenter::cannotAssignCloudProfileParameter(const CCloudProfile &com
     error(pParent, MessageType_Error,
           tr("Failed to assign cloud profile parameter."),
           UIErrorString::formatErrorInfo(comProfile));
+}
+
+bool UIMessageCenter::confirmCloudProfileRemoval(const QString &strName, QWidget *pParent /* = 0 */) const
+{
+    return questionBinary(pParent, MessageType_Question,
+                          tr("<p>Do you want to remove the cloud profile <nobr><b>%1</b>?</nobr></p>")
+                             .arg(strName),
+                          0 /* auto-confirm id */,
+                          tr("Remove") /* ok button text */,
+                          QString() /* cancel button text */,
+                          false /* ok button by default? */);
 }
 
 bool UIMessageCenter::confirmHardDisklessMachine(QWidget *pParent /* = 0*/) const
