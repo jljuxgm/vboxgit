@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 73226 2018-07-19 08:03:30Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 73227 2018-07-19 08:19:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -282,14 +282,15 @@ void UIWizardExportAppPage3::refreshIncludeISOsCheckBoxAccess()
     /* If the format is set to OPC: */
     if (fieldImp("format").toString() == "opc-1.0")
     {
-        /* Disable manifest check-box: */
-        m_pManifestCheckbox->setEnabled(false);
+        /* Disable include ISO check-box: */
+        m_pIncludeISOsCheckbox->setChecked(false);
+        m_pIncludeISOsCheckbox->setEnabled(false);
     }
     /* Otherwise: */
     else
     {
-        /* Enable manifest check-box: */
-        m_pManifestCheckbox->setEnabled(true);
+        /* Enable include ISO check-box: */
+        m_pIncludeISOsCheckbox->setEnabled(true);
     }
 }
 
