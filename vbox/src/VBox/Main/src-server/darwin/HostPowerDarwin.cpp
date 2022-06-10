@@ -1,7 +1,6 @@
-/* $Id: HostPowerDarwin.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HostPowerDarwin.cpp 76367 2018-12-22 04:09:29Z vboxsync $ */
 /** @file
- *
- * VirtualBox interface to host's power notification service
+ * VirtualBox interface to host's power notification service, darwin specifics.
  */
 
 /*
@@ -18,6 +17,7 @@
 
 #include "HostPower.h"
 #include "Logging.h"
+#include "iprt/err.h"
 
 #include <IOKit/IOMessage.h>
 #include <IOKit/ps/IOPowerSources.h>
