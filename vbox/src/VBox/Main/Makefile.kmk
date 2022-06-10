@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75251 2018-11-05 17:55:29Z vboxsync $
+# $Id: Makefile.kmk 75261 2018-11-05 19:42:13Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -796,6 +796,7 @@ VBoxC_SDKS = VBOX_LIBPNG VBOX_ZLIB
 
 ifdef VBOX_WITH_VIDEOREC
    VBoxC_SOURCES += \
+	xml/Settings.cpp \
 	src-client/EBMLWriter.cpp \
 	src-client/WebMWriter.cpp
   ifdef VBOX_WITH_LIBVPX
