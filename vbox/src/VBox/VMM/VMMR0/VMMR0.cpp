@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 76290 2018-12-19 09:11:47Z vboxsync $ */
+/* $Id: VMMR0.cpp 76464 2018-12-25 04:36:48Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1925,14 +1925,6 @@ static int vmmR0EntryExWorker(PGVM pGVM, PVM pVM, VMCPUID idCpu, VMMR0OPERATION 
          */
         case VMMR0_DO_HM_SETUP_VM:
             rc = HMR0SetupVM(pVM);
-            VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
-            break;
-
-        /*
-         * Pre-initialize hardware-assisted mode per-VM data.
-         */
-        case VMMR0_DO_HM_PRE_INIT:
-            rc = HMR0PreInitVM(pVM);
             VMM_CHECK_SMAP_CHECK2(pVM, RT_NOTHING);
             break;
 

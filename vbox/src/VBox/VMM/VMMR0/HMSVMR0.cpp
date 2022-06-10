@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 76402 2018-12-23 15:13:04Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 76464 2018-12-25 04:36:48Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -524,10 +524,11 @@ static void hmR0SvmLogState(PVMCPU pVCpu, PCSVMVMCB pVmcb, const char *pszPrefix
  * @param   pvCpuPage       Pointer to the global CPU page.
  * @param   HCPhysCpuPage   Physical address of the global CPU page.
  * @param   fEnabledByHost  Whether the host OS has already initialized AMD-V.
- * @param   pvArg           Unused on AMD-V.
+ * @param   pHwvirtMsrs     Pointer to the hardware-virtualization MSRs (currently
+ *                          unused).
  */
 VMMR0DECL(int) SVMR0EnableCpu(PHMGLOBALCPUINFO pHostCpu, PVM pVM, void *pvCpuPage, RTHCPHYS HCPhysCpuPage, bool fEnabledByHost,
-                              void *pvArg)
+                              PCSUPHWVIRTMSRS pHwvirtMsrs)
 {
     Assert(!fEnabledByHost);
     Assert(HCPhysCpuPage && HCPhysCpuPage != NIL_RTHCPHYS);
@@ -535,8 +536,7 @@ VMMR0DECL(int) SVMR0EnableCpu(PHMGLOBALCPUINFO pHostCpu, PVM pVM, void *pvCpuPag
     Assert(pvCpuPage); NOREF(pvCpuPage);
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
 
-    NOREF(pvArg);
-    NOREF(fEnabledByHost);
+    RT_NOREF2(fEnabledByHost, pHwvirtMsrs);
 
     /* Paranoid: Disable interrupt as, in theory, interrupt handlers might mess with EFER. */
     RTCCUINTREG const fEFlags = ASMIntDisableFlags();

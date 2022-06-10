@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 76397 2018-12-23 14:32:01Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 76464 2018-12-25 04:36:48Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -361,85 +361,6 @@ static const char * const g_apszVmxVDiagDesc[] =
 };
 AssertCompile(RT_ELEMENTS(g_apszVmxVDiagDesc) == kVmxVDiag_End);
 #undef VMXV_DIAG_DESC
-
-
-/**
- * Gets a copy of the VMX host MSRs that were read by HM during ring-0
- * initialization.
- *
- * @return VBox status code.
- * @param   pVM        The cross context VM structure.
- * @param   pVmxMsrs   Where to store the VMXMSRS struct (only valid when
- *                     VINF_SUCCESS is returned).
- *
- * @remarks Caller needs to take care not to call this function too early. Call
- *          after HM initialization is fully complete.
- */
-VMM_INT_DECL(int) HMVmxGetHostMsrs(PVM pVM, PVMXMSRS pVmxMsrs)
-{
-    AssertPtrReturn(pVM,      VERR_INVALID_PARAMETER);
-    AssertPtrReturn(pVmxMsrs, VERR_INVALID_PARAMETER);
-    if (pVM->hm.s.vmx.fSupported)
-    {
-        *pVmxMsrs = pVM->hm.s.vmx.Msrs;
-        return VINF_SUCCESS;
-    }
-    return VERR_VMX_NO_VMX;
-}
-
-
-/**
- * Gets the specified VMX host MSR that was read by HM during ring-0
- * initialization.
- *
- * @return VBox status code.
- * @param   pVM        The cross context VM structure.
- * @param   idMsr      The MSR.
- * @param   puValue    Where to store the MSR value (only updated when VINF_SUCCESS
- *                     is returned).
- *
- * @remarks Caller needs to take care not to call this function too early. Call
- *          after HM initialization is fully complete.
- */
-VMM_INT_DECL(int) HMVmxGetHostMsr(PVM pVM, uint32_t idMsr, uint64_t *puValue)
-{
-    AssertPtrReturn(pVM,     VERR_INVALID_PARAMETER);
-    AssertPtrReturn(puValue, VERR_INVALID_PARAMETER);
-
-    if (pVM->hm.s.vmx.fSupported)
-    {
-        PCVMXMSRS pVmxMsrs = &pVM->hm.s.vmx.Msrs;
-        switch (idMsr)
-        {
-            case MSR_IA32_FEATURE_CONTROL:         *puValue =  pVmxMsrs->u64FeatCtrl;      break;
-            case MSR_IA32_VMX_BASIC:               *puValue =  pVmxMsrs->u64Basic;         break;
-            case MSR_IA32_VMX_PINBASED_CTLS:       *puValue =  pVmxMsrs->PinCtls.u;        break;
-            case MSR_IA32_VMX_PROCBASED_CTLS:      *puValue =  pVmxMsrs->ProcCtls.u;       break;
-            case MSR_IA32_VMX_PROCBASED_CTLS2:     *puValue =  pVmxMsrs->ProcCtls2.u;      break;
-            case MSR_IA32_VMX_EXIT_CTLS:           *puValue =  pVmxMsrs->ExitCtls.u;       break;
-            case MSR_IA32_VMX_ENTRY_CTLS:          *puValue =  pVmxMsrs->EntryCtls.u;      break;
-            case MSR_IA32_VMX_TRUE_PINBASED_CTLS:  *puValue =  pVmxMsrs->TruePinCtls.u;    break;
-            case MSR_IA32_VMX_TRUE_PROCBASED_CTLS: *puValue =  pVmxMsrs->TrueProcCtls.u;   break;
-            case MSR_IA32_VMX_TRUE_ENTRY_CTLS:     *puValue =  pVmxMsrs->TrueEntryCtls.u;  break;
-            case MSR_IA32_VMX_TRUE_EXIT_CTLS:      *puValue =  pVmxMsrs->TrueExitCtls.u;   break;
-            case MSR_IA32_VMX_MISC:                *puValue =  pVmxMsrs->u64Misc;          break;
-            case MSR_IA32_VMX_CR0_FIXED0:          *puValue =  pVmxMsrs->u64Cr0Fixed0;     break;
-            case MSR_IA32_VMX_CR0_FIXED1:          *puValue =  pVmxMsrs->u64Cr0Fixed1;     break;
-            case MSR_IA32_VMX_CR4_FIXED0:          *puValue =  pVmxMsrs->u64Cr4Fixed0;     break;
-            case MSR_IA32_VMX_CR4_FIXED1:          *puValue =  pVmxMsrs->u64Cr4Fixed1;     break;
-            case MSR_IA32_VMX_VMCS_ENUM:           *puValue =  pVmxMsrs->u64VmcsEnum;      break;
-            case MSR_IA32_VMX_VMFUNC:              *puValue =  pVmxMsrs->u64VmFunc;        break;
-            case MSR_IA32_VMX_EPT_VPID_CAP:        *puValue =  pVmxMsrs->u64EptVpidCaps;   break;
-            default:
-            {
-                AssertMsgFailed(("Invalid MSR %#x\n", idMsr));
-                return VERR_NOT_FOUND;
-            }
-        }
-        return VINF_SUCCESS;
-    }
-    return VERR_VMX_NO_VMX;
-}
 
 
 /**
