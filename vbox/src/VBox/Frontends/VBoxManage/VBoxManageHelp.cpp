@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 74003 2018-08-31 14:47:37Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 74431 2018-09-24 09:16:17Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1057,6 +1057,8 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            loghistorycount <value>\n"
                      "                            defaultfrontend default|<name>\n"
                      "                            logginglevel <log setting>\n"
+                     "                            proxymode system|noproxy|manual\n"
+                     "                            proxyurl <url>\n"
                      "\n", SEP);
 
     if (fCategory & USAGE_USBFILTER_ADD)

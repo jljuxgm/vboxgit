@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 74431 2018-09-24 09:16:17Z vboxsync $ */
 
 /** @file
  *
@@ -105,6 +105,10 @@ private:
     HRESULT getDefaultFrontend(com::Utf8Str &aDefaultFrontend);
     HRESULT setDefaultFrontend(const com::Utf8Str &aDefaultFrontend);
     HRESULT getScreenShotFormats(std::vector<BitmapFormat_T> &aScreenShotFormats);
+    HRESULT getProxyMode(ProxyMode_T *pProxyMode);
+    HRESULT setProxyMode(ProxyMode_T aProxyMode);
+    HRESULT getProxyURL(com::Utf8Str &aProxyURL);
+    HRESULT setProxyURL(const com::Utf8Str &aProxyURL);
 
     // wrapped ISystemProperties methods
     HRESULT getMaxNetworkAdapters(ChipsetType_T aChipset,
