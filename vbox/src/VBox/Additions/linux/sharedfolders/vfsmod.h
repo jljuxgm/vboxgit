@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77739 2019-03-17 01:46:38Z vboxsync $ */
+/* $Id: vfsmod.h 77741 2019-03-17 03:42:04Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -58,9 +58,10 @@
 /*
  * Logging wrappers.
  */
-#if 1
+#if 0
 # define TRACE()                LogFunc(("tracepoint\n"))
-# define SFLOGFLOW(aArgs)       Log(aArgs)
+# define SFLOG(aArgs)           Log(aArgs)
+# define SFLOGFLOW(aArgs)       LogFlow(aArgs)
 # define SFLOG2(aArgs)          Log2(aArgs)
 # define SFLOG3(aArgs)          Log3(aArgs)
 # define SFLOGRELBOTH(aArgs)    LogRel(aArgs)
@@ -69,6 +70,7 @@
 # endif
 #else
 # define TRACE()                RTLogBackdoorPrintf("%s: tracepoint\n", __FUNCTION__)
+# define SFLOG(aArgs)           RTLogBackdoorPrintf aArgs
 # define SFLOGFLOW(aArgs)       RTLogBackdoorPrintf aArgs
 # define SFLOG2(aArgs)          RTLogBackdoorPrintf aArgs
 # define SFLOG3(aArgs)          RTLogBackdoorPrintf aArgs

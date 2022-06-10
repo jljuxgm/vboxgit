@@ -1,4 +1,4 @@
-/* $Id: dirops.c 77708 2019-03-14 22:20:48Z vboxsync $ */
+/* $Id: dirops.c 77741 2019-03-17 03:42:04Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
@@ -287,7 +287,7 @@ DECL_NO_INLINE(static, bool) vbsf_dir_emit_nls(
                                                struct vbsf_super_info *sf_g)
 {
     char szDstName[NAME_MAX];
-    int rc = vbsf_nlscpy(sf_g, szDstName, sizeof(szDstName), pszSrcName, cchSrcName + 1);
+    int rc = vbsf_nlscpy(sf_g, szDstName, sizeof(szDstName), pszSrcName, cchSrcName);
     if (rc == 0) {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 11, 0)
         return dir_emit(ctx, szDstName, strlen(szDstName), d_ino, d_type);
