@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72869 2018-07-04 11:31:55Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 72903 2018-07-04 19:59:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -479,8 +479,8 @@ void UIMediumSelector::sltAddMedium()
 
 void UIMediumSelector::sltCreateMedium()
 {
-
-    UIFDCreationDialog *pDialog = new UIFDCreationDialog(this, m_strMachineName, m_strMachineSettingsFilePath);
+    QString strMachineFolder = QFileInfo(m_strMachineSettingsFilePath).absolutePath();
+    UIFDCreationDialog *pDialog = new UIFDCreationDialog(this, m_strMachineName, strMachineFolder);
     if (pDialog->exec())
     {
         sltHandleRefresh();
