@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 75759 2018-11-27 07:10:10Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 76402 2018-12-23 15:13:04Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -26,6 +26,8 @@
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/vm.h>
+
+#include <VBox/err.h>
 
 
 #ifndef IN_RC

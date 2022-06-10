@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 73285 2018-07-21 01:49:30Z vboxsync $ */
+/* $Id: APICInternal.h 76402 2018-12-23 15:13:04Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -21,6 +21,7 @@
 #include <VBox/sup.h>
 #include <VBox/types.h>
 #include <VBox/vmm/apic.h>
+#include <VBox/vmm/pdmdev.h>
 
 /** @defgroup grp_apic_int       Internal
  * @ingroup grp_apic

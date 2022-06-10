@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 73389 2018-07-28 07:03:03Z vboxsync $ */
+/* $Id: GIMHv.cpp 76402 2018-12-23 15:13:04Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -31,10 +31,10 @@
 #include "GIMInternal.h"
 #include <VBox/vmm/vm.h>
 
+#include <VBox/err.h>
 #include <VBox/version.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/mem.h>
 #include <iprt/semaphore.h>
