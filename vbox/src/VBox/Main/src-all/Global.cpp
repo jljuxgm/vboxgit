@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 77581 2019-03-06 12:22:09Z vboxsync $ */
+/* $Id: Global.cpp 77637 2019-03-10 16:12:14Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -409,7 +409,7 @@ const Global::OSType Global::sOSTypes[] =
         StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_SB16, AudioCodecType_SB16  },
 
     { "OS2",     "IBM OS/2",          "OS2eCS",             "eComStation",
-      VBOXOSTYPE_ECS,             VBOXOSHINT_HWVIRTEX,
+      VBOXOSTYPE_ECS,             VBOXOSHINT_HWVIRTEX | VBOXOSHINT_FLOPPY,
         256,  4,  2 * _1G64, GraphicsControllerType_VBoxVGA, NetworkAdapterType_Am79C973, 1, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97, AudioCodecType_STAC9700  },
 
