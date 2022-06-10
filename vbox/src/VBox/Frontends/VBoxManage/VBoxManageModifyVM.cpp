@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 75341 2018-11-09 08:37:28Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 75345 2018-11-09 10:03:36Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -213,7 +213,7 @@ enum
 #ifdef VBOX_WITH_USB_CARDREADER
     MODIFYVM_USBCARDREADER,
 #endif
-#ifdef VBOX_WITH_VIDEOREC
+#ifdef VBOX_WITH_RECORDING
     MODIFYVM_RECORD,
     MODIFYVM_RECORD_FEATURES,
     MODIFYVM_RECORD_SCREENS,
@@ -393,7 +393,7 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--faulttolerancepassword",   MODIFYVM_FAULT_TOLERANCE_PASSWORD,  RTGETOPT_REQ_STRING },
     { "--faulttolerancesyncinterval", MODIFYVM_FAULT_TOLERANCE_SYNC_INTERVAL, RTGETOPT_REQ_UINT32 },
     { "--chipset",                  MODIFYVM_CHIPSET,                   RTGETOPT_REQ_STRING },
-#ifdef VBOX_WITH_VIDEOREC
+#ifdef VBOX_WITH_RECORDING
     { "--record",                   MODIFYVM_RECORD,                    RTGETOPT_REQ_BOOL_ONOFF },
     { "--recordscreens",            MODIFYVM_RECORD_SCREENS,            RTGETOPT_REQ_STRING },
     { "--recordfile",               MODIFYVM_RECORD_FILENAME,           RTGETOPT_REQ_STRING },
@@ -463,7 +463,7 @@ void parseGroups(const char *pcszGroups, com::SafeArray<BSTR> *pGroups)
     }
 }
 
-#ifdef VBOX_WITH_VIDEOREC
+#ifdef VBOX_WITH_RECORDING
 static int parseScreens(const char *pcszScreens, com::SafeArray<BOOL> *pScreens)
 {
     while (pcszScreens && *pcszScreens)
@@ -2926,7 +2926,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                 }
                 break;
             }
-#ifdef VBOX_WITH_VIDEOREC
+#ifdef VBOX_WITH_RECORDING
             case MODIFYVM_RECORD:
                 RT_FALL_THROUGH();
             case MODIFYVM_RECORD_SCREENS:

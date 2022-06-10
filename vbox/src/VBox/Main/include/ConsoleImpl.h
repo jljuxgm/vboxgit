@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 75344 2018-11-09 09:17:06Z vboxsync $ */
+/* $Id: ConsoleImpl.h 75345 2018-11-09 10:03:36Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -23,7 +23,7 @@
 #include "EventImpl.h"
 #include "SecretKeyStore.h"
 #include "ConsoleWrap.h"
-#ifdef VBOX_WITH_VIDEOREC
+#ifdef VBOX_WITH_RECORDING
 # include "Recording.h"
 #endif
 
@@ -39,7 +39,7 @@ class SharedFolder;
 class VRDEServerInfo;
 class EmulatedUSB;
 class AudioVRDE;
-#ifdef VBOX_WITH_AUDIO_VIDEOREC
+#ifdef VBOX_WITH_AUDIO_RECORDING
 class AudioVideoRec;
 #endif
 class Nvram;
@@ -140,7 +140,7 @@ public:
 #ifdef VBOX_WITH_AUDIO_VRDE
     AudioVRDE *i_getAudioVRDE() const { return mAudioVRDE; }
 #endif
-#ifdef VBOX_WITH_AUDIO_VIDEOREC
+#ifdef VBOX_WITH_AUDIO_RECORDING
     int i_videoRecCreate(void);
     void i_videoRecDestroy(void);
     int i_videoRecEnable(BOOL fEnable, util::AutoWriteLock *pAutoLock);
@@ -1029,7 +1029,7 @@ private:
 
     ComPtr<IEventListener> mVmListener;
 
-#ifdef VBOX_WITH_VIDEOREC
+#ifdef VBOX_WITH_RECORDING
     struct Capture
     {
         Capture()
@@ -1038,12 +1038,12 @@ private:
 
         /** The capturing context. */
         CaptureContext       *mpVideoRecCtx;
-# ifdef VBOX_WITH_AUDIO_VIDEOREC
+# ifdef VBOX_WITH_AUDIO_RECORDING
         /** Pointer to capturing audio backend. */
         AudioVideoRec * const mAudioVideoRec;
 # endif
     } Capture;
-#endif /* VBOX_WITH_VIDEOREC */
+#endif /* VBOX_WITH_RECORDING */
 
     friend class VMTask;
     friend class ConsoleVRDPServer;

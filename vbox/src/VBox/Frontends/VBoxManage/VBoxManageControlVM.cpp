@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 75341 2018-11-09 08:37:28Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 75345 2018-11-09 10:03:36Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1853,7 +1853,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
             }
             RTFileClose(pngFile);
         }
-#ifdef VBOX_WITH_VIDEOREC
+#ifdef VBOX_WITH_RECORDING
         else if (!strcmp(a->argv[1], "record"))
         {
             if (a->argc < 3)
@@ -2074,7 +2074,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                     CHECK_ERROR_BREAK(saRecordScreenScreens[i], COMSETTER(Options)(Bstr(a->argv[3]).raw()));
             }
         }
-#endif /* VBOX_WITH_VIDEOREC */
+#endif /* VBOX_WITH_RECORDING */
         else if (!strcmp(a->argv[1], "webcam"))
         {
             if (a->argc < 3)
