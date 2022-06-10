@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 77528 2019-03-01 13:07:07Z vboxsync $ */
+/* $Id: UIFileManager.cpp 77870 2019-03-25 12:16:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -717,6 +717,9 @@ void UIFileManager::restorePanelVisibility()
             }
         }
     }
+    /* Make sure Session panel is visible: */
+    if (m_pSessionPanel && !m_pSessionPanel->isVisible())
+        showPanel(m_pSessionPanel);
 }
 
 void UIFileManager::loadOptions()
