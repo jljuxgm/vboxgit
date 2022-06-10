@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 77595 2019-03-07 12:42:31Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -260,7 +260,7 @@ static RTEXITCODE handleOp(HandlerArg *a, OPCODE enmCode, int iStart)
                                            "previous vm option edition wasn't finished");
                     else
                         fVmOptionRead = true;
-                    u8Slot = (uint8_t)~0; /* clear slor */
+                    u8Slot = (uint8_t)~0; /* clear slot */
                     pszVmName = RTStrDup(ValueUnion.psz);
                 }
                 break; /* end of --vm */

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 77595 2019-03-07 12:42:31Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1085,7 +1085,7 @@ RTEXITCODE handleSharedFolder(HandlerArg *a)
     {
         /* we need at least four more parameters */
         if (a->argc < 5)
-            return errorSyntax(USAGE_SHAREDFOLDER_ADD, "Not enough parameters");
+            return errorSyntaxEx(USAGE_SHAREDFOLDER, HELP_SCOPE_SHAREDFOLDER_ADD, "Not enough parameters");
 
         char *name = NULL;
         char *hostpath = NULL;
@@ -1135,16 +1135,16 @@ RTEXITCODE handleSharedFolder(HandlerArg *a)
                 pszAutoMountPoint = a->argv[i];
             }
             else
-                return errorSyntax(USAGE_SHAREDFOLDER_ADD, "Invalid parameter '%s'", Utf8Str(a->argv[i]).c_str());
+                return errorSyntaxEx(USAGE_SHAREDFOLDER, HELP_SCOPE_SHAREDFOLDER_ADD, "Invalid parameter '%s'", Utf8Str(a->argv[i]).c_str());
         }
 
         if (NULL != strstr(name, " "))
-            return errorSyntax(USAGE_SHAREDFOLDER_ADD, "No spaces allowed in parameter '-name'!");
+            return errorSyntaxEx(USAGE_SHAREDFOLDER, HELP_SCOPE_SHAREDFOLDER_ADD, "No spaces allowed in parameter '-name'!");
 
         /* required arguments */
         if (!name || !hostpath)
         {
-            return errorSyntax(USAGE_SHAREDFOLDER_ADD, "Parameters --name and --hostpath are required");
+            return errorSyntaxEx(USAGE_SHAREDFOLDER, HELP_SCOPE_SHAREDFOLDER_ADD, "Parameters --name and --hostpath are required");
         }
 
         if (fTransient)
@@ -1189,7 +1189,7 @@ RTEXITCODE handleSharedFolder(HandlerArg *a)
     {
         /* we need at least two more parameters */
         if (a->argc < 3)
-            return errorSyntax(USAGE_SHAREDFOLDER_REMOVE, "Not enough parameters");
+            return errorSyntaxEx(USAGE_SHAREDFOLDER, HELP_SCOPE_SHAREDFOLDER_REMOVE, "Not enough parameters");
 
         char *name = NULL;
         bool fTransient = false;
@@ -1210,12 +1210,12 @@ RTEXITCODE handleSharedFolder(HandlerArg *a)
                 fTransient = true;
             }
             else
-                return errorSyntax(USAGE_SHAREDFOLDER_REMOVE, "Invalid parameter '%s'", Utf8Str(a->argv[i]).c_str());
+                return errorSyntaxEx(USAGE_SHAREDFOLDER, HELP_SCOPE_SHAREDFOLDER_REMOVE, "Invalid parameter '%s'", Utf8Str(a->argv[i]).c_str());
         }
 
         /* required arguments */
         if (!name)
-            return errorSyntax(USAGE_SHAREDFOLDER_REMOVE, "Parameter --name is required");
+            return errorSyntaxEx(USAGE_SHAREDFOLDER, HELP_SCOPE_SHAREDFOLDER_REMOVE, "Parameter --name is required");
 
         if (fTransient)
         {
