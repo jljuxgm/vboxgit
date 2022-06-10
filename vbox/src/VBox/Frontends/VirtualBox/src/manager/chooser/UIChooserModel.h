@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 77891 2019-03-26 17:33:58Z vboxsync $ */
+/* $Id: UIChooserModel.h 77909 2019-03-27 11:09:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -93,9 +93,9 @@ public:
     /** @name General stuff.
       * @{ */
         /** Inits model. */
-        void init();
+        virtual void init() /* override */;
         /** Deinits model. */
-        void deinit();
+        virtual void deinit() /* override */;
 
         /** Returns the Chooser reference. */
         UIChooser *chooser() const;
