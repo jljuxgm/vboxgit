@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74483 2018-09-26 16:27:10Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74502 2018-09-27 14:32:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -311,11 +311,16 @@ void UIVirtualBoxManagerWidget::sltHandleSlidingAnimationComplete(SlidingDirecti
 
 void UIVirtualBoxManagerWidget::sltHandleToolMenuRequested(UIToolsClass enmClass, const QPoint &position)
 {
+    /* Define current tools class: */
     m_pPaneTools->setToolsClass(enmClass);
-    if (m_pPaneTools->minimumSize().isValid())
-        m_pPaneTools->resize(m_pPaneTools->minimumSize());
+
+    /* Move, resize and show: */
     m_pPaneTools->move(m_pPaneChooser->mapToGlobal(position));
     m_pPaneTools->show();
+    // WORKAROUND:
+    // Don't want even to think why, but for Qt::Popup resize to
+    // smaller size often being ignored until it is actually shown.
+    m_pPaneTools->resize(m_pPaneTools->minimumSizeHint());
 }
 
 void UIVirtualBoxManagerWidget::sltHandleToolsPaneIndexChange()
