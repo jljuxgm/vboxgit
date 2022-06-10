@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74827 2018-10-13 02:55:59Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74870 2018-10-16 16:59:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -339,6 +339,7 @@ void UIVirtualBoxManagerWidget::sltHandleToolsPaneIndexChange()
                     case UIToolsType_Welcome: enmType = ToolTypeGlobal_Welcome; break;
                     case UIToolsType_Media:   enmType = ToolTypeGlobal_Media; break;
                     case UIToolsType_Network: enmType = ToolTypeGlobal_Network; break;
+                    case UIToolsType_Cloud:   enmType = ToolTypeGlobal_Cloud; break;
                     default: break;
                 }
             }
@@ -634,6 +635,14 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Network_S_Remove));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Network_T_Details));
                     //m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Network_S_Refresh));
+                    break;
+                }
+                case ToolTypeGlobal_Cloud:
+                {
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Create));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Remove));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_T_Details));
+                    //m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Refresh));
                     break;
                 }
                 default:

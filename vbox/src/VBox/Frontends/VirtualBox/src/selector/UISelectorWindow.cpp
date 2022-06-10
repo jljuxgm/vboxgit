@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 74868 2018-10-16 16:32:08Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 74870 2018-10-16 16:59:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -505,6 +505,13 @@ void UISelectorWindow::sltCloseHostNetworkManagerWindow()
 
 void UISelectorWindow::sltOpenCloudProfileManagerWindow()
 {
+    /* First check if instance of widget opened embedded: */
+    if (m_pPaneToolsGlobal->isToolOpened(ToolTypeGlobal_CloudProfile))
+    {
+        sltHandleToolOpenedGlobal(ToolTypeGlobal_CloudProfile);
+        return;
+    }
+
     /* Create instance if not yet created: */
     if (!m_pManagerCloudProfile)
     {
