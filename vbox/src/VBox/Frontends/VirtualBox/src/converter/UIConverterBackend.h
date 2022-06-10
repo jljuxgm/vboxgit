@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 76058 2018-12-07 13:52:59Z vboxsync $ */
+/* $Id: UIConverterBackend.h 76059 2018-12-07 14:03:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -261,7 +261,6 @@ template<> SHARED_LIBRARY_STUFF QString toInternalString(const UIMediumFormat &e
 template<> SHARED_LIBRARY_STUFF UIMediumFormat fromInternalString<UIMediumFormat>(const QString &strUIMediumFormat);
 template<> SHARED_LIBRARY_STUFF QString toString(const UISettingsDefs::RecordingMode &enmRecordingMode);
 template<> SHARED_LIBRARY_STUFF UISettingsDefs::RecordingMode fromString<UISettingsDefs::RecordingMode>(const QString &enmRecordingMode);
-
 
 /* Declare COM conversion specializations: */
 template<> SHARED_LIBRARY_STUFF QColor toColor(const KMachineState &state);
