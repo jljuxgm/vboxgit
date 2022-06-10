@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 72963 2018-07-08 05:56:09Z vboxsync $ */
+/* $Id: HM.cpp 72966 2018-07-08 06:22:48Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1188,7 +1188,6 @@ static void hmR3DisableRawMode(PVM pVM)
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
         PVMCPU pVCpu = &pVM->aCpus[i];
-
         PGMR3ChangeMode(pVM, pVCpu, PGMMODE_REAL);
     }
 }
