@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 78239 2019-04-22 07:31:39Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 78371 2019-05-03 08:21:44Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3063,7 +3063,7 @@ IEM_STATIC bool iemVmxIsIoInterceptSet(PCVMCPU pVCpu, uint16_t u16Port, uint8_t 
         uint8_t const *pbIoBitmapB = (uint8_t const *)pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pvIoBitmap) + VMX_V_IO_BITMAP_A_SIZE;
         Assert(pbIoBitmapA);
         Assert(pbIoBitmapB);
-        return HMGetVmxIoBitmapPermission(pbIoBitmapA, pbIoBitmapB, u16Port, cbAccess);
+        return CPUMGetVmxIoBitmapPermission(pbIoBitmapA, pbIoBitmapB, u16Port, cbAccess);
     }
 
     return false;
@@ -7758,7 +7758,7 @@ IEM_STATIC bool iemVmxIsRdmsrWrmsrInterceptSet(PCVMCPU pVCpu, uint32_t uExitReas
     if (pVmcs->u32ProcCtls & VMX_PROC_CTLS_USE_MSR_BITMAPS)
     {
         Assert(pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pvMsrBitmap));
-        uint32_t fMsrpm = HMGetVmxMsrPermission(pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pvMsrBitmap), idMsr);
+        uint32_t fMsrpm = CPUMGetVmxMsrPermission(pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pvMsrBitmap), idMsr);
         if (uExitReason == VMX_EXIT_RDMSR)
             return RT_BOOL(fMsrpm & VMXMSRPM_EXIT_RD);
         return RT_BOOL(fMsrpm & VMXMSRPM_EXIT_WR);
