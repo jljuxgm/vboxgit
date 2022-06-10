@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 73588 2018-08-09 13:43:53Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 73591 2018-08-09 14:14:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class implementation.
  */
@@ -48,10 +48,8 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Other VBox includes: */
+#include <iprt/cdefs.h>
 #include <iprt/path.h>
-
-/* External includes: */
-#include <math.h>
 
 UIWizardNewVDPage3::UIWizardNewVDPage3(const QString &strDefaultName, const QString &strDefaultPath)
     : m_strDefaultName(strDefaultName.isEmpty() ? QString("NewVirtualDisk1") : strDefaultName)
@@ -277,7 +275,7 @@ bool UIWizardNewVDPageBasic3::validatePage()
 
         /* Try to create virtual hard drive file: */
         fResult = qobject_cast<UIWizardNewVD*>(wizard())->createVirtualDisk();
-       /* Unlock finish button: */
+        /* Unlock finish button: */
         endProcessing();
     }
 
@@ -295,7 +293,7 @@ bool UIWizardNewVDPage3::checkFATSizeLimitation()
         if (enmType == RTFSTYPE_FAT)
         {
             /* Limit the medium size to 4GB. minus 128 MB for file overhead: */
-            qulonglong fatLimit = 4 * pow(2,30) - 128 * pow(2, 20);
+            qulonglong fatLimit = _4G - _128M;
             if (mediumSize() >= fatLimit)
                 return false;
         }
