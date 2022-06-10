@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 76978 2019-01-24 14:44:27Z vboxsync $ */
+/* $Id: vbox_mode.c 77850 2019-03-22 14:49:18Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -41,6 +41,9 @@
 #include <drm/drm_crtc_helper.h>
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(RHEL_72)
 #include <drm/drm_plane_helper.h>
+#endif
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 1, 0)
+#include <drm/drm_probe_helper.h>
 #endif
 
 #include "VBoxVideo.h"

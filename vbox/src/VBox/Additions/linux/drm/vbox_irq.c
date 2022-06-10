@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 76937 2019-01-22 16:39:05Z vboxsync $ */
+/* $Id: vbox_irq.c 77850 2019-03-22 14:49:18Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -33,7 +33,11 @@
  */
 #include "vbox_drv.h"
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 1, 0)
 #include <drm/drm_crtc_helper.h>
+#else
+#include <drm/drm_probe_helper.h>
+#endif
 #include <VBoxVideo.h>
 
 static void vbox_clear_irq(void)
