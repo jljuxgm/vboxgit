@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 76954 2019-01-23 12:56:07Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 78003 2019-04-03 16:03:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -571,11 +571,15 @@ void UIVMLogViewerFilterPanel::retranslateUi()
 
 bool UIVMLogViewerFilterPanel::eventFilter(QObject *pObject, QEvent *pEvent)
 {
+    /* Handle only events sent to viewer(): */
+    if (pObject != viewer())
+        return UIVMLogViewerPanel::eventFilter(pObject, pEvent);
+
     /* Depending on event-type: */
     switch (pEvent->type())
     {
         /* Process key press only: */
-    case QEvent::KeyPress:
+        case QEvent::KeyPress:
         {
             /* Cast to corresponding key press event: */
             QKeyEvent *pKeyEvent = static_cast<QKeyEvent*>(pEvent);
@@ -594,9 +598,10 @@ bool UIVMLogViewerFilterPanel::eventFilter(QObject *pObject, QEvent *pEvent)
 
             break;
         }
-    default:
-        break;
+        default:
+            break;
     }
+
     /* Call to base-class: */
     return UIVMLogViewerPanel::eventFilter(pObject, pEvent);
 }

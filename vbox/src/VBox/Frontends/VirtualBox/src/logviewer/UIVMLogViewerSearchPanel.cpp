@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 77087 2019-01-31 19:05:53Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 78003 2019-04-03 16:03:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -333,6 +333,10 @@ void UIVMLogViewerSearchPanel::keyPressEvent(QKeyEvent *pEvent)
 
 bool UIVMLogViewerSearchPanel::eventFilter(QObject *pObject, QEvent *pEvent)
 {
+    /* Handle only events sent to viewer(): */
+    if (pObject != viewer())
+        return UIVMLogViewerPanel::eventFilter(pObject, pEvent);
+
     /* Depending on event-type: */
     switch (pEvent->type())
     {
@@ -386,9 +390,10 @@ bool UIVMLogViewerSearchPanel::eventFilter(QObject *pObject, QEvent *pEvent)
             }
             break;
         }
-    default:
-        break;
+        default:
+            break;
     }
+
     /* Call to base-class: */
     return UIVMLogViewerPanel::eventFilter(pObject, pEvent);
 }
