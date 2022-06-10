@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 73040 2018-07-10 16:08:51Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 75095 2018-10-26 12:35:32Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1809,13 +1809,19 @@ int GuestSessionTaskCopyTo::Run(void)
                     if (!pList->mSourceSpec.fDryRun)
                     {
                         rc = directoryCreate(strDstAbs.c_str(), DirectoryCreateFlag_None, fDirMode, fFollowSymlinks);
-                        if (   rc == VERR_ALREADY_EXISTS
-                            && !fCopyIntoExisting)
+                        if (RT_FAILURE(rc))
                         {
-                            setProgressErrorMsg(VBOX_E_IPRT_ERROR,
-                                                Utf8StrFmt(GuestSession::tr("Destination directory \"%s\" already exists"),
-                                                           strDstAbs.c_str()));
-                            break;
+                            if (rc == VERR_ALREADY_EXISTS)
+                            {
+                                if (!fCopyIntoExisting)
+                                {
+                                    setProgressErrorMsg(VBOX_E_IPRT_ERROR,
+                                                        Utf8StrFmt(GuestSession::tr("Destination directory '%s' already exists"),
+                                                                   strDstAbs.c_str()));
+                                }
+                                else /* Copy into destination directory. */
+                                    rc = VINF_SUCCESS;
+                            }
                         }
                     }
                     break;
