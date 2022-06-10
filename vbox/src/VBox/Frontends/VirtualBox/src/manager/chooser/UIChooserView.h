@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.h 77750 2019-03-18 11:51:29Z vboxsync $ */
+/* $Id: UIChooserView.h 77812 2019-03-20 16:33:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class declaration.
  */
@@ -53,9 +53,9 @@ public:
 
     /** @name Virtual Machine search stuff.
       * @{ */
-        /** Shows/hides machine search widget. */
-        void toggleSearchWidget();
-        /** Shows/hides machine search widget. */
+        /** Returns if the search widget is visible or not. */
+        bool isSearchWidgetVisible() const;
+        /** Shows/hides wrt. @a fVisible machine search widget. */
         void setSearchWidgetVisible(bool fVisible);
         /** Updates the search widget's counts. */
         void setSearchResultsCount(int iTotalMacthCount, int iCurrentlyScrolledItemIndex);
