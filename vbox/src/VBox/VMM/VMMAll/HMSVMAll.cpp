@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 77714 2019-03-15 07:58:02Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 77902 2019-03-27 08:49:11Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -436,16 +436,23 @@ VMM_INT_DECL(bool) HMIsSvmIoInterceptActive(void *pvIoBitmap, uint16_t u16Port, 
  *          of recognized trap types.
  *
  * @param   pEvent       Pointer to the SVM event.
+ * @param   uVector      The vector associated with the event.
  */
-VMM_INT_DECL(TRPMEVENT) HMSvmEventToTrpmEventType(PCSVMEVENT pEvent)
+VMM_INT_DECL(TRPMEVENT) HMSvmEventToTrpmEventType(PCSVMEVENT pEvent, uint8_t uVector)
 {
     uint8_t const uType = pEvent->n.u3Type;
     switch (uType)
     {
         case SVM_EVENT_EXTERNAL_IRQ:    return TRPM_HARDWARE_INT;
         case SVM_EVENT_SOFTWARE_INT:    return TRPM_SOFTWARE_INT;
-        case SVM_EVENT_EXCEPTION:
         case SVM_EVENT_NMI:             return TRPM_TRAP;
+        case SVM_EVENT_EXCEPTION:
+        {
+            if (   uVector == X86_XCPT_BP
+                || uVector == X86_XCPT_OF)
+                return TRPM_SOFTWARE_INT;
+            return TRPM_TRAP;
+        }
         default:
             break;
     }

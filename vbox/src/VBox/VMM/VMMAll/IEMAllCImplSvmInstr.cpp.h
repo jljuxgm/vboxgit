@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 76993 2019-01-25 14:34:46Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 77902 2019-03-27 08:49:11Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -768,7 +768,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmrun(PVMCPU pVCpu, uint8_t cbInstr, RTGCPHYS GCPh
         if (pEventInject->n.u1Valid)
         {
             uint8_t   const uVector    = pEventInject->n.u8Vector;
-            TRPMEVENT const enmType    = HMSvmEventToTrpmEventType(pEventInject);
+            TRPMEVENT const enmType    = HMSvmEventToTrpmEventType(pEventInject, uVector);
             uint16_t  const uErrorCode = pEventInject->n.u1ErrorCodeValid ? pEventInject->n.u32ErrorCode : 0;
 
             /* Validate vectors for hardware exceptions, see AMD spec. 15.20 "Event Injection". */
