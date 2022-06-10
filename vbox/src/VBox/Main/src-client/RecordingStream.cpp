@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 75490 2018-11-15 16:30:43Z vboxsync $ */
+/* $Id: RecordingStream.cpp 75491 2018-11-15 16:33:50Z vboxsync $ */
 /** @file
  * Recording stream code.
  */
@@ -721,7 +721,7 @@ int RecordingStream::SendVideoFrame(uint32_t x, uint32_t y, uint32_t uPixelForma
             {
                 RT_NOREF(ex);
 
-                RTMemFree(pBlock);
+                delete pBlock;
                 rc = VERR_NO_MEMORY;
             }
         }
