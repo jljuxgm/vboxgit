@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 75781 2018-11-27 22:52:01Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 76443 2018-12-24 15:46:17Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -671,7 +671,7 @@ static int VBoxGuestNetBSDOpen(dev_t device, int flags, int fmt, struct lwp *pLw
         kmem_free(fdata, sizeof(*fdata));
     }
     else
-        error = NOMEM;
+        error = ENOMEM;
     return error;
 
 }
