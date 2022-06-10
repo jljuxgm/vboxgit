@@ -1,4 +1,4 @@
-/* $Id: VBoxWddmUmHlp.h 75531 2018-11-16 20:09:45Z vboxsync $ */
+/* $Id: VBoxWddmUmHlp.h 75556 2018-11-18 19:21:02Z vboxsync $ */
 /** @file
  * VBox WDDM User Mode Driver Helpers
  */
@@ -79,7 +79,7 @@ typedef struct D3DKMTFUNCTIONS
 } D3DKMTFUNCTIONS;
 
 DECLCALLBACK(HMODULE) VBoxWddmLoadSystemDll(const char *pszName);
-DECLCALLBACK(HMODULE) VBoxWddmLoadAdresses(const char *pszModName, VBOXWDDMDLLPROC *paProcs);
+DECLCALLBACK(void) VBoxWddmLoadAdresses(HMODULE hmod, VBOXWDDMDLLPROC *paProcs);
 
 DECLCALLBACK(int) D3DKMTLoad(void);
 DECLCALLBACK(D3DKMTFUNCTIONS const *) D3DKMTFunctions(void);
