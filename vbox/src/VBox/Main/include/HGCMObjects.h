@@ -1,4 +1,4 @@
-/* $Id: HGCMObjects.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HGCMObjects.h 75535 2018-11-17 00:17:28Z vboxsync $ */
 /** @file
  * HGCMObjects - Host-Guest Communication Manager objects header.
  */
@@ -51,14 +51,14 @@ class HGCMObject
 
     protected:
         virtual ~HGCMObject()
-        {};
+        {}
 
     public:
         HGCMObject(HGCMOBJ_TYPE enmObjType)
             : m_cRefs(0)
         {
             this->m_enmObjType  = enmObjType;
-        };
+        }
 
         void Reference()
         {
@@ -86,12 +86,12 @@ class HGCMObject
         uint32_t Handle()
         {
             return (uint32_t)m_core.AvlCore.Key;
-        };
+        }
 
         HGCMOBJ_TYPE Type()
         {
             return m_enmObjType;
-        };
+        }
 };
 
 int hgcmObjInit();
