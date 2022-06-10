@@ -1,4 +1,4 @@
-/* $Id: dirops.c 77863 2019-03-24 14:42:15Z vboxsync $ */
+/* $Id: dirops.c 77864 2019-03-24 14:50:02Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
@@ -1095,16 +1095,15 @@ static int vbsf_inode_mkdir(struct inode *parent, struct dentry *dentry, int mod
  */
 static int vbsf_unlink_worker(struct inode *parent, struct dentry *dentry, int fDirectory)
 {
-    int rc, err;
     struct vbsf_super_info *sf_g = VBSF_GET_SUPER_INFO(parent->i_sb);
     struct vbsf_inode_info *sf_parent_i = VBSF_GET_INODE_INFO(parent);
     SHFLSTRING *path;
+    int rc;
 
     TRACE();
-    BUG_ON(!sf_g);
 
-    err = vbsf_path_from_dentry(sf_g, sf_parent_i, dentry, &path, __func__);
-    if (!err) {
+    rc = vbsf_path_from_dentry(sf_g, sf_parent_i, dentry, &path, __func__);
+    if (!rc) {
         VBOXSFREMOVEREQ *pReq = (VBOXSFREMOVEREQ *)VbglR0PhysHeapAlloc(RT_UOFFSETOF(VBOXSFREMOVEREQ, StrPath.String)
                                                                        + path->u16Size);
         if (pReq) {
@@ -1122,21 +1121,22 @@ static int vbsf_unlink_worker(struct inode *parent, struct dentry *dentry, int f
 
             if (RT_SUCCESS(rc)) {
                 sf_parent_i->force_restat = true; /* directory access/change time changed */
-                err = 0;
+                rc = 0;
             } else if (rc == VERR_FILE_NOT_FOUND || rc == VERR_PATH_NOT_FOUND) {
                 LogFunc(("(%d): VbglR0SfRemove(%s) failed rc=%Rrc; calling d_drop on %p\n",
                          fDirectory, path->String.ach, rc, dentry));
                 d_drop(dentry);
+                rc = 0; /** @todo ??? */
             } else {
                 LogFunc(("(%d): VbglR0SfRemove(%s) failed rc=%Rrc\n", fDirectory, path->String.ach, rc));
-                err = -RTErrConvertToErrno(rc);
+                rc = -RTErrConvertToErrno(rc);
             }
             VbglR0PhysHeapFree(pReq);
         } else
-            err = -ENOMEM;
+            rc = -ENOMEM;
         kfree(path);
     }
-    return err;
+    return rc;
 }
 
 
