@@ -1,4 +1,4 @@
-/* $Id: CloudUserProfileManagerImpl.cpp 73177 2018-07-17 12:19:50Z vboxsync $ */
+/* $Id: CloudUserProfileManagerImpl.cpp 73204 2018-07-18 14:19:21Z vboxsync $ */
 /** @file
  * ICloudUserProfileManager  COM class implementations.
  */
@@ -137,17 +137,26 @@ HRESULT CloudUserProfileManager::getProfilesByProvider(CloudProviderId_T aProvid
                                      .append(RTPATH_SLASH_STR)
                                      .append("config");
                         LogRel(("config = %s\n", strConfigPath.c_str()));
-                        hrc = ptrOCIUserProfileList->readProfiles(strConfigPath);
-                        if (SUCCEEDED(hrc))
+                        if (RTFileExists(strConfigPath.c_str()))
                         {
-                            LogRel(("Reading profiles from %s has been done\n", strConfigPath.c_str()));
+                            hrc = ptrOCIUserProfileList->readProfiles(strConfigPath);
+                            if (SUCCEEDED(hrc))
+                            {
+                                LogRel(("Reading profiles from %s has been done\n", strConfigPath.c_str()));
+                            }
+                            else
+                            {
+                                LogRel(("Reading profiles from %s hasn't been done\n", strConfigPath.c_str()));
+                            }
+
+                            ptrCloudUserProfileList = ptrOCIUserProfileList;
+                            hrc = ptrCloudUserProfileList.queryInterfaceTo(aProfiles.asOutParam());
                         }
                         else
                         {
-                            LogRel(("Reading profiles from %s hasn't been done\n", strConfigPath.c_str()));
+                            hrc = setError(VERR_FILE_NOT_FOUND, tr("Could not locate the config file '%s'"),
+                                           strConfigPath.c_str());
                         }
-                        ptrCloudUserProfileList = ptrOCIUserProfileList;
-                        hrc = ptrCloudUserProfileList.queryInterfaceTo(aProfiles.asOutParam());
                     }
                     else
                         hrc = setErrorVrc(vrc);
