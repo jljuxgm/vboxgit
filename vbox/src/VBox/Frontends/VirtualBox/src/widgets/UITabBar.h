@@ -1,4 +1,4 @@
-/* $Id: UITabBar.h 69057 2017-10-12 09:43:58Z vboxsync $ */
+/* $Id: UITabBar.h 73533 2018-08-06 18:26:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class declaration.
  */
@@ -55,8 +55,11 @@ signals:
 
 public:
 
+    /** Alignment types. */
+    enum Alignment { Align_Left, Align_Right };
+
     /** Constructs tab-bar passing @a pParent to the base-class. */
-    UITabBar(QWidget *pParent = 0);
+    UITabBar(Alignment enmAlignment, QWidget *pParent = 0);
 
     /** Adds new tab for passed @a pAction. @returns unique tab ID. */
     QUuid addTab(const QAction *pAction);
@@ -102,6 +105,12 @@ private:
 
     /** Updates children styles. */
     void updateChildrenStyles();
+
+    /** @name Contents: Common
+      * @{ */
+        /** Holds the alignment. */
+        Alignment m_enmAlignment;
+    /** @} */
 
     /** @name Contents: Widgets
       * @{ */

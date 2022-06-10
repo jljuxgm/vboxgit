@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 72707 2018-06-27 17:24:41Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 73533 2018-08-06 18:26:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1956,7 +1956,7 @@ void UISelectorWindow::prepareToolbar()
 #endif /* VBOX_WS_MAC */
 
         /* Create Machine tab-bar: */
-        m_pTabBarMachine = new UITabBar;
+        m_pTabBarMachine = new UITabBar(UITabBar::Align_Right);
         AssertPtrReturnVoid(m_pTabBarMachine);
         {
             /* Configure tab-bar: */
@@ -1969,7 +1969,7 @@ void UISelectorWindow::prepareToolbar()
         }
 
         /* Create Global tab-bar: */
-        m_pTabBarGlobal = new UITabBar;
+        m_pTabBarGlobal = new UITabBar(UITabBar::Align_Right);
         AssertPtrReturnVoid(m_pTabBarGlobal);
         {
             /* Configure tab-bar: */
