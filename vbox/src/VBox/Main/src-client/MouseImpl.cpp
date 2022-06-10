@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 77451 2019-02-25 06:32:10Z vboxsync $ */
+/* $Id: MouseImpl.cpp 77452 2019-02-25 06:37:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -674,7 +674,7 @@ HRESULT Mouse::i_reportAbsEventToDisplayDevice(int32_t x, int32_t y)
         if (x < 0x7fffffff && y < 0x7fffffff)
             pDisplay->i_reportHostCursorPosition(x - 1, y - 1, false);
         else  /* Out of range. */
-            pDisplay->i_reportHostCursorPosition(0, 0, true);            
+            pDisplay->i_reportHostCursorPosition(0, 0, true);
     }
     return S_OK;
 }
