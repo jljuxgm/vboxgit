@@ -1,4 +1,4 @@
-/* $Id: VBoxSDS.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxSDS.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * VBoxSDS - COM global service main entry (System Directory Service)
  */
@@ -78,6 +78,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_MAIN_VIRTUALBOXSDS
 #include <iprt/win/windows.h>
 #include <iprt/win/shlobj.h>
 
@@ -86,7 +87,7 @@
 #include "VBox/com/VirtualBox.h"
 
 #include "VirtualBoxSDSImpl.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <iprt/errcore.h>
 #include <iprt/asm.h>

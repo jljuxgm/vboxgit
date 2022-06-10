@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: NetIf-linux.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -20,7 +20,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_MAIN
+#define LOG_GROUP LOG_GROUP_MAIN_HOST
 
 #include <iprt/errcore.h>
 #include <list>
@@ -36,7 +36,7 @@
 
 #include "HostNetworkInterfaceImpl.h"
 #include "netif.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 /**
  * Obtain the name of the interface used for default routing.

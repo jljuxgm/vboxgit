@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: USBProxyService.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_USBPROXYBACKEND
 #include "USBProxyService.h"
 #include "HostUSBDeviceImpl.h"
 #include "HostImpl.h"
@@ -22,7 +23,7 @@
 #include "VirtualBoxImpl.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <VBox/com/array.h>
 #include <iprt/errcore.h>

@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 
+#define LOG_GROUP LOG_GROUP_MAIN_HOSTUSBDEVICE
 #include <iprt/types.h> /* for UINT64_C */
 
 #include "HostUSBDeviceImpl.h"
@@ -24,9 +25,9 @@
 #include "VirtualBoxErrorInfoImpl.h"
 #include "USBProxyBackend.h"
 #include "USBIdDatabase.h"
+#include "LoggingNew.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
 
 #include <VBox/err.h>
 #include <iprt/cpp/utils.h>

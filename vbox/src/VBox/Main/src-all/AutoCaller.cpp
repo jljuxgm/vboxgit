@@ -1,7 +1,5 @@
-/* $Id: AutoCaller.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
-
+/* $Id: AutoCaller.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
- *
  * VirtualBox object state implementation
  */
 
@@ -17,11 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN
 #include <iprt/semaphore.h>
 
 #include "VirtualBoxBase.h"
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////

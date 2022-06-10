@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: EventImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -49,13 +49,14 @@
  * waiters may never know that event processing finished.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_EVENT
 #include <list>
 #include <map>
 #include <deque>
 
 #include "EventImpl.h"
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <iprt/asm.h>
 #include <iprt/critsect.h>

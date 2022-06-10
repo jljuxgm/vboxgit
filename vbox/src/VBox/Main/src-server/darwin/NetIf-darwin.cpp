@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -20,6 +20,8 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_MAIN_HOST
+
 /*
  * Deal with conflicts first.
  * PVM - BSD mess, that FreeBSD has correct a long time ago.
@@ -51,7 +53,7 @@
 #include "HostNetworkInterfaceImpl.h"
 #include "netif.h"
 #include "iokit.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #if 0
 int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)

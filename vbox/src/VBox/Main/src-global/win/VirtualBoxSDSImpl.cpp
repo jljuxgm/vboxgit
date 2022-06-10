@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * VBox Global COM Class implementation.
  */
@@ -19,11 +19,12 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_MAIN_VIRTUALBOXSDS
 #include <VBox/com/VirtualBox.h>
 #include "VirtualBoxSDSImpl.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <iprt/errcore.h>
 #include <iprt/asm.h>

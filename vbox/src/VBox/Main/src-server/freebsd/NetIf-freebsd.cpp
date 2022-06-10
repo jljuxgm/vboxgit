@@ -1,4 +1,4 @@
-/* $Id: NetIf-freebsd.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: NetIf-freebsd.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * Main - NetIfList, FreeBSD implementation.
  */
@@ -24,7 +24,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_MAIN
+#define LOG_GROUP LOG_GROUP_MAIN_HOST
 #include <sys/types.h>
 
 #include <sys/sysctl.h>
@@ -53,7 +53,7 @@
 
 #include "HostNetworkInterfaceImpl.h"
 #include "netif.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #define ROUNDUP(a) \
     ((a) > 0 ? (1 + (((a) - 1) | (sizeof(long) - 1))) : sizeof(long))

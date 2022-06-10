@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendUsbIp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: USBProxyBackendUsbIp.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend, USB/IP.
  */
@@ -19,9 +19,10 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_MAIN_USBPROXYBACKEND
 #include "USBProxyService.h"
 #include "USBGetDevices.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <VBox/usb.h>
 #include <VBox/usblib.h>

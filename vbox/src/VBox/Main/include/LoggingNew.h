@@ -1,4 +1,4 @@
-/* $Id: LoggingNew.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: LoggingNew.h 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * VirtualBox COM - logging macros and function definitions, for new code.
  */
@@ -35,6 +35,15 @@
 #endif
 
 #include <VBox/log.h>
+
+
+#ifndef VBOXSVC_LOG_DEFAULT
+# define VBOXSVC_LOG_DEFAULT "all"
+#endif
+
+#ifndef VBOXSDS_LOG_DEFAULT
+# define VBOXSDS_LOG_DEFAULT "all"
+#endif
 
 #endif /* !MAIN_INCLUDED_LoggingNew_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

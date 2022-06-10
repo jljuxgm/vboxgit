@@ -1,7 +1,5 @@
-/* $Id: VirtualBoxBase.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
-
+/* $Id: VirtualBoxBase.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM base classes implementation
  */
 
@@ -17,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN
 #include <iprt/semaphore.h>
 #include <iprt/asm.h>
 #include <iprt/cpp/exception.h>
@@ -35,8 +34,8 @@
 #include "VirtualBoxBase.h"
 #include "AutoCaller.h"
 #include "VirtualBoxErrorInfoImpl.h"
-#include "Logging.h"
 #include "Global.h"
+#include "LoggingNew.h"
 
 #include "VBox/com/ErrorInfo.h"
 #include "VBox/com/MultiResult.h"

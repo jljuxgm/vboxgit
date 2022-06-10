@@ -1,6 +1,5 @@
-/* $Id: BandwidthControlImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: BandwidthControlImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM class implementation
  */
 
@@ -16,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_BANDWIDTHCONTROL
 #include "BandwidthControlImpl.h"
 #include "BandwidthGroupImpl.h"
 #include "MachineImpl.h"
@@ -23,7 +23,7 @@
 
 #include "AutoStateDep.h"
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <iprt/cpp/utils.h>
 #include <VBox/com/array.h>

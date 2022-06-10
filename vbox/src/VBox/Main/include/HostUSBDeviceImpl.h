@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.h 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -24,7 +24,6 @@
 #include "VirtualBoxBase.h"
 #include "USBDeviceFilterImpl.h"
 #include <VBox/usb.h>
-#include "Logging.h"
 #include "HostUSBDeviceWrap.h"
 
 class SessionMachine;

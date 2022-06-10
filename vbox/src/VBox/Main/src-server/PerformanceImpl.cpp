@@ -1,7 +1,5 @@
-/* $Id: PerformanceImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
-
+/* $Id: PerformanceImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
- *
  * VBox Performance API COM Classes implementation
  */
 
@@ -31,10 +29,11 @@
  * 5) Pre-collection methods cannot modify metric data.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_PERFORMANCECOLLECTOR
 #include "PerformanceImpl.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <iprt/process.h>
 

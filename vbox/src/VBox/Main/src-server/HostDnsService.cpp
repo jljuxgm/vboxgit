@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HostDnsService.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -15,13 +15,14 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_HOST
 #include <VBox/com/array.h>
 #include <VBox/com/ptr.h>
 #include <VBox/com/string.h>
 
 #include <iprt/cpp/utils.h>
 
-#include "Logging.h"
+#include "LoggingNew.h"
 #include "VirtualBoxImpl.h"
 #include <iprt/time.h>
 #include <iprt/thread.h>

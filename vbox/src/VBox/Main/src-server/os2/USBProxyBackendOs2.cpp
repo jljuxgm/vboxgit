@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendOs2.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: USBProxyBackendOs2.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, OS/2 Specialization.
  */
@@ -19,10 +19,11 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_MAIN_USBPROXYBACKEND
 #define INCL_BASE
 #define INCL_ERRORS
 #include "USBProxyBackend.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <VBox/usb.h>
 #include <iprt/errcore.h>

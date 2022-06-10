@@ -1,6 +1,5 @@
-/* $Id: VirtualBoxErrorInfoImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfoImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
- *
  * VirtualBoxErrorInfo COM class implementation
  */
 
@@ -16,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN
 #include "VirtualBoxErrorInfoImpl.h"
-#include "Logging.h"
 
 #include <VBox/com/ErrorInfo.h>
 

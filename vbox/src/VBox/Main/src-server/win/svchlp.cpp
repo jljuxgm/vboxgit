@@ -1,4 +1,4 @@
-/* $Id: svchlp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: svchlp.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * Definition of SVC Helper Process control routines.
  */
@@ -15,15 +15,15 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN
 #include "svchlp.h"
 
 //#include "HostImpl.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <iprt/errcore.h>
 
-int netIfNetworkInterfaceHelperServer (SVCHlpClient *aClient,
-                                        SVCHlpMsg::Code aMsgCode);
+int netIfNetworkInterfaceHelperServer(SVCHlpClient *aClient, SVCHlpMsg::Code aMsgCode);
 
 using namespace com;
 

@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_USBCONTROLLER
 #include "USBControllerImpl.h"
 
 #include "Global.h"
@@ -33,7 +34,7 @@
 
 #include "AutoStateDep.h"
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 // defines
 /////////////////////////////////////////////////////////////////////////////

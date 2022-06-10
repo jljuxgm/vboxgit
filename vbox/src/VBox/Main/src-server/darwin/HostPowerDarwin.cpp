@@ -1,4 +1,4 @@
-/* $Id: HostPowerDarwin.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HostPowerDarwin.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * VirtualBox interface to host's power notification service, darwin specifics.
  */
@@ -15,8 +15,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_HOST
 #include "HostPower.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 #include <iprt/errcore.h>
 
 #include <IOKit/IOMessage.h>

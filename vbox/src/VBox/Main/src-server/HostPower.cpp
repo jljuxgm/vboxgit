@@ -1,6 +1,5 @@
-/* $Id: HostPower.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HostPower.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
- *
  * VirtualBox interface to host's power notification service
  */
 
@@ -20,9 +19,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-
+#define LOG_GROUP LOG_GROUP_MAIN_HOST
 #include "HostPower.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <VBox/com/ptr.h>
 

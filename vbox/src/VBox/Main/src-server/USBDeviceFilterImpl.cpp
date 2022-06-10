@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_USBDEVICEFILTER
 #include "USBDeviceFilterImpl.h"
 #include "USBDeviceFiltersImpl.h"
 #include "MachineImpl.h"
@@ -25,7 +26,7 @@
 
 #include "AutoStateDep.h"
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Internal Helpers

@@ -1,4 +1,4 @@
-/* $Id: DisplayPNGUtil.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DisplayPNGUtil.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * PNG utilities
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include "Logging.h"
+#define LOG_GROUP LOG_GROUP_MAIN_DISPLAY
 #include "DisplayImpl.h"
 
 #include <iprt/alloc.h>

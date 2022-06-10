@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_APPLIANCE
 #include <iprt/alloca.h>
 #include <iprt/path.h>
 #include <iprt/dir.h>
@@ -44,7 +45,7 @@
 #include "HostImpl.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include "ApplianceImplPrivate.h"
 #include "CertificateImpl.h"

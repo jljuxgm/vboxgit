@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: MediumImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -14,6 +14,8 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#define LOG_GROUP LOG_GROUP_MAIN_MEDIUM
 #include "MediumImpl.h"
 #include "MediumIOImpl.h"
 #include "TokenImpl.h"
@@ -23,7 +25,7 @@
 #include "ExtPackManagerImpl.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 #include "ThreadTask.h"
 #include "VBox/com/MultiResult.h"
 #include "VBox/com/ErrorInfo.h"

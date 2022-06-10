@@ -1,6 +1,5 @@
-/* $Id: MediumAttachmentImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: MediumAttachmentImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM class implementation
  */
 
@@ -16,13 +15,14 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_MAIN_MEDIUMATTACHMENT
 #include "MediumAttachmentImpl.h"
 #include "MachineImpl.h"
 #include "MediumImpl.h"
 #include "Global.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include <iprt/cpp/utils.h>
 

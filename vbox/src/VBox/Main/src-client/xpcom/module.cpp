@@ -1,6 +1,5 @@
-/* $Id: module.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: module.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
- *
  * XPCOM module implementation functions
  */
 
@@ -15,6 +14,8 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#define LOG_GROUP LOG_GROUP_MAIN
 
 /* Make sure all the stdint.h macros are included - must come first! */
 #ifndef __STDC_LIMIT_MACROS
@@ -33,8 +34,6 @@
 #include "VirtualBoxClientImpl.h"
 #include "RemoteUSBDeviceImpl.h"
 #include "USBDeviceImpl.h"
-
-#include "Logging.h"
 
 // XPCOM glue code unfolding
 
@@ -69,28 +68,35 @@ public:
         FinalRelease();
         instance = 0;
     }
+
     static nsresult GetInstance(VirtualBoxClient **inst)
     {
         int rv = NS_OK;
         if (instance == 0)
         {
             instance = new VirtualBoxClientClassFactory();
-            if (instance) {
+            if (instance)
+            {
                 instance->AddRef(); // protect FinalConstruct()
                 rv = instance->FinalConstruct();
                 if (NS_FAILED(rv))
                     instance->Release();
                 else
                     instance->AddRef(); // self-reference
-            } else {
+            }
+            else
+            {
                 rv = NS_ERROR_OUT_OF_MEMORY;
             }
-        } else {
+        }
+        else
+        {
             instance->AddRef();
         }
         *inst = instance;
         return rv;
     }
+
     static nsresult FactoryDestructor()
     {
         if (instance)

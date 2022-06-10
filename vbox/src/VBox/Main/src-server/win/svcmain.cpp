@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: svcmain.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -19,7 +19,8 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-# include <iprt/win/windows.h>
+#define LOG_GROUP LOG_GROUP_MAIN_VBOXSVC
+#include <iprt/win/windows.h>
 #ifdef DEBUG_bird
 # include <RpcAsync.h>
 #endif
@@ -29,7 +30,7 @@
 #include "VBox/com/VirtualBox.h"
 
 #include "VirtualBoxImpl.h"
-#include "Logging.h"
+#include "LoggingNew.h"
 
 #include "svchlp.h"
 

@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: NetIf-win.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -20,7 +20,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_MAIN
+#define LOG_GROUP LOG_GROUP_MAIN_HOST
 
 #define NETIF_WITHOUT_NETCFG
 
@@ -41,7 +41,7 @@
 #include <iprt/win/iphlpapi.h>
 #include <iprt/win/ntddndis.h>
 
-#include "Logging.h"
+#include "LoggingNew.h"
 #include "HostNetworkInterfaceImpl.h"
 #include "ProgressImpl.h"
 #include "VirtualBoxImpl.h"
