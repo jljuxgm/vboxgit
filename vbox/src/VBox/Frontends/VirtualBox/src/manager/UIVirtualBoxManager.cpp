@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 76835 2019-01-16 11:54:21Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 76838 2019-01-16 15:04:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1208,6 +1208,9 @@ void UIVirtualBoxManager::prepare()
 #ifdef VBOX_WS_MAC
     /* We have to make sure that we are getting the front most process: */
     ::darwinSetFrontMostProcess();
+    /* Install global event-filter, since vmstarter.app can send us FileOpen events,
+     * see UIVirtualBoxManager::eventFilter for handler implementation. */
+    qApp->installEventFilter(this);
 #endif
 
     /* Cache medium data early if necessary: */
