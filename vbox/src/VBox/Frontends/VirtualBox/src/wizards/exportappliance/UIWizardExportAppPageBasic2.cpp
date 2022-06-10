@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 73007 2018-07-09 12:02:55Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 73068 2018-07-11 15:08:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -132,9 +132,9 @@ void UIWizardExportAppPageBasic2::retranslateUi()
     /* Translate widgets: */
     m_pLabel->setText(UIWizardExportApp::tr("Please choose where to create the virtual appliance. "
                                             "You can create it on your own computer "
-                                            "or on one of cloud servers you have registered."));
+                                            "or on one of cloud services you have registered."));
     m_pTypeLocalFilesystem->setText(UIWizardExportApp::tr("&This computer"));
-    m_pTypeCloudServiceProvider->setText(UIWizardExportApp::tr("&Cloud service provider"));
+    m_pTypeCloudServiceProvider->setText(UIWizardExportApp::tr("&Cloud service"));
 }
 
 void UIWizardExportAppPageBasic2::initializePage()
