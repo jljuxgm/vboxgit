@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 72957 2018-07-07 19:12:04Z vboxsync $ */
+/* $Id: MediumImpl.h 72999 2018-07-09 07:59:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -226,8 +226,8 @@ public:
 
     const Utf8Str& i_getKeyId();
 
-    HRESULT i_openHddForIO(bool fWritable, SecretKeyStore *pKeyStore, PVDISK *ppHdd, MediumLockList *pMediumLockList,
-                           struct MediumCryptoFilterSettings *pCryptoSettings);
+    HRESULT i_openForIO(bool fWritable, SecretKeyStore *pKeyStore, PVDISK *ppHdd, MediumLockList *pMediumLockList,
+                        struct MediumCryptoFilterSettings *pCryptoSettingsRead);
 
 private:
 
@@ -369,9 +369,6 @@ private:
     static DECLCALLBACK(int) i_vdCryptoKeyStoreSave(void *pvUser, const void *pvKeyStore, size_t cbKeyStore);
     static DECLCALLBACK(int) i_vdCryptoKeyStoreReturnParameters(void *pvUser, const char *pszCipher,
                                                                 const uint8_t *pbDek, size_t cbDek);
-
-    HRESULT i_openHddForReading(SecretKeyStore *pKeyStore, PVDISK *ppHdd, MediumLockList *pMediumLockList,
-                                struct MediumCryptoFilterSettings *pCryptoSettingsRead);
 
     class Task;
     class CreateBaseTask;
