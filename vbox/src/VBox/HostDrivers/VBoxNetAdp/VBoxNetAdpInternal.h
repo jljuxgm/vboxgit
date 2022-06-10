@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxNetAdpInternal.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Network Filter Driver (Host), Internal Header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxNetAdpInternal_h___
-#define ___VBoxNetAdpInternal_h___
+#ifndef VBOX_INCLUDED_SRC_VBoxNetAdp_VBoxNetAdpInternal_h
+#define VBOX_INCLUDED_SRC_VBoxNetAdp_VBoxNetAdpInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -189,5 +189,5 @@ DECLHIDDEN(int) vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMac);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_VBoxNetAdp_VBoxNetAdpInternal_h */
 

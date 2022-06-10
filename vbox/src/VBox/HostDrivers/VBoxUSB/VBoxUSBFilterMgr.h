@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBFilterMgr.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxUSBFilterMgr.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * VirtualBox Ring-0 USB Filter Manager.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxUSBFilterMgr_h
-#define ___VBoxUSBFilterMgr_h
+#ifndef VBOX_INCLUDED_SRC_VBoxUSB_VBoxUSBFilterMgr_h
+#define VBOX_INCLUDED_SRC_VBoxUSB_VBoxUSBFilterMgr_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -55,4 +55,4 @@ VBOXUSBFILTER_CONTEXT VBoxUSBFilterGetOwner(uintptr_t uId);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_VBoxUSB_VBoxUSBFilterMgr_h */

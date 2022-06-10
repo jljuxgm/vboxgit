@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltCmn-win.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxNetFltCmn-win.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * VBoxNetFltCmn-win.h - Bridged Networking Driver, Windows Specific Code.
  * Common header with configuration defines and global defs
@@ -25,8 +25,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxNetFltCmn_win_h___
-#define ___VBoxNetFltCmn_win_h___
+#ifndef VBOX_INCLUDED_SRC_VBoxNetFlt_win_drv_VBoxNetFltCmn_win_h
+#define VBOX_INCLUDED_SRC_VBoxNetFlt_win_drv_VBoxNetFltCmn_win_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -520,4 +520,4 @@ AssertCompile(sizeof (UINT) == sizeof (uint32_t));
 #endif
 #include "VBoxNetFltM-win.h"
 
-#endif /* #ifndef ___VBoxNetFltCmn_win_h___ */
+#endif /* !VBOX_INCLUDED_SRC_VBoxNetFlt_win_drv_VBoxNetFltCmn_win_h */

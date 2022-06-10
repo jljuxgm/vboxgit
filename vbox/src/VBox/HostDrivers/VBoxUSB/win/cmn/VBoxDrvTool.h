@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvTool.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDrvTool.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * Windows Driver R0 Tooling.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxDrvTool_win_h___
-#define ___VBoxDrvTool_win_h___
+#ifndef VBOX_INCLUDED_SRC_VBoxUSB_win_cmn_VBoxDrvTool_h
+#define VBOX_INCLUDED_SRC_VBoxUSB_win_cmn_VBoxDrvTool_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -99,5 +99,5 @@ VBOXDRVTOOL_DECL(VOID) VBoxDrvToolStrFree(PUNICODE_STRING pStr);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_VBoxUSB_win_cmn_VBoxDrvTool_h */
 

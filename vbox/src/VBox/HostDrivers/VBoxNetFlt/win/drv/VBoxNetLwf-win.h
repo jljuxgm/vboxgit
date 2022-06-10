@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.h - Bridged Networking Driver, Windows-specific code.
  */
@@ -23,8 +23,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxNetLwf_win_h___
-#define ___VBoxNetLwf_win_h___
+#ifndef VBOX_INCLUDED_SRC_VBoxNetFlt_win_drv_VBoxNetLwf_win_h
+#define VBOX_INCLUDED_SRC_VBoxNetFlt_win_drv_VBoxNetLwf_win_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -42,4 +42,4 @@
 #define VBOXNETLWF_MEM_TAG                   'FLBV'
 #define VBOXNETLWF_REQ_ID                    'fLBV'
 
-#endif /* #ifndef ___VBoxNetLwf_win_h___ */
+#endif /* !VBOX_INCLUDED_SRC_VBoxNetFlt_win_drv_VBoxNetLwf_win_h */

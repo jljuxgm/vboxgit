@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbTool.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxUsbTool.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * Windows USB R0 Tooling.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxUsbTool_h___
-#define ___VBoxUsbTool_h___
+#ifndef VBOX_INCLUDED_SRC_VBoxUSB_win_cmn_VBoxUsbTool_h
+#define VBOX_INCLUDED_SRC_VBoxUSB_win_cmn_VBoxUsbTool_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -76,4 +76,4 @@ VBOXUSBTOOL_DECL(VOID) VBoxUsbToolStringDescriptorToUnicodeString(PUSB_STRING_DE
 
 RT_C_DECLS_END
 
-#endif /* #ifndef ___VBoxUsbTool_h___ */
+#endif /* !VBOX_INCLUDED_SRC_VBoxUSB_win_cmn_VBoxUsbTool_h */

@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___win_SUPHardenedVerify_win_h
-#define ___win_SUPHardenedVerify_win_h
+#ifndef VBOX_INCLUDED_SRC_Support_win_SUPHardenedVerify_win_h
+#define VBOX_INCLUDED_SRC_Support_win_SUPHardenedVerify_win_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -279,5 +279,5 @@ extern uint32_t         g_uNtVerCombined;
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Support_win_SUPHardenedVerify_win_h */
 

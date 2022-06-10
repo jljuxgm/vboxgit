@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbCmn.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxUsbCmn.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * VBoxUsmCmn.h - USB device. Common defs
  */
@@ -23,8 +23,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxUsbCmn_h___
-#define ___VBoxUsbCmn_h___
+#ifndef VBOX_INCLUDED_SRC_VBoxUSB_win_dev_VBoxUsbCmn_h
+#define VBOX_INCLUDED_SRC_VBoxUSB_win_dev_VBoxUsbCmn_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -90,4 +90,4 @@ DECLHIDDEN(VOID) vboxUsbMemFree(PVOID pvMem);
 #include "VBoxUsbDev.h"
 
 
-#endif /* #ifndef ___VBoxUsbCmn_h___ */
+#endif /* !VBOX_INCLUDED_SRC_VBoxUSB_win_dev_VBoxUsbCmn_h */

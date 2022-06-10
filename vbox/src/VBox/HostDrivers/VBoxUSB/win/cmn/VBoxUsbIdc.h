@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbIdc.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxUsbIdc.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * Windows USB Proxy - Monitor Driver communication interface.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxUsbIdc_h___
-#define ___VBoxUsbIdc_h___
+#ifndef VBOX_INCLUDED_SRC_VBoxUSB_win_cmn_VBoxUsbIdc_h
+#define VBOX_INCLUDED_SRC_VBoxUSB_win_cmn_VBoxUsbIdc_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -82,4 +82,4 @@ VOID VBoxUsbIdcTerm();
 NTSTATUS VBoxUsbIdcProxyStarted(PDEVICE_OBJECT pPDO, HVBOXUSBIDCDEV *phDev);
 NTSTATUS VBoxUsbIdcProxyStopped(HVBOXUSBIDCDEV hDev);
 
-#endif /* #ifndef ___VBoxUsbIdc_h___ */
+#endif /* !VBOX_INCLUDED_SRC_VBoxUSB_win_cmn_VBoxUsbIdc_h */

@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___SUPDrvIOC_h___
-#define ___SUPDrvIOC_h___
+#ifndef VBOX_INCLUDED_SRC_Support_SUPDrvIOC_h
+#define VBOX_INCLUDED_SRC_Support_SUPDrvIOC_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -1675,5 +1675,5 @@ typedef struct SUPGETHWVIRTMSRS
 
 #pragma pack()                          /* paranoia */
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Support_SUPDrvIOC_h */
 

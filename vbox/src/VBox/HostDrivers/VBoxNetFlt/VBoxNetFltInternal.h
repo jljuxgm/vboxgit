@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxNetFltInternal_h___
-#define ___VBoxNetFltInternal_h___
+#ifndef VBOX_INCLUDED_SRC_VBoxNetFlt_VBoxNetFltInternal_h
+#define VBOX_INCLUDED_SRC_VBoxNetFlt_VBoxNetFltInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -486,5 +486,5 @@ DECLHIDDEN(int) vboxNetFltOsPreInitInstance(PVBOXNETFLTINS pThis);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_VBoxNetFlt_VBoxNetFltInternal_h */
 

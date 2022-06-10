@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIDC.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: SUPDrvIDC.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Inter-Driver Communication (IDC) definitions.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___SUPDrvIDC_h___
-#define ___SUPDrvIDC_h___
+#ifndef VBOX_INCLUDED_SRC_Support_SUPDrvIDC_h
+#define VBOX_INCLUDED_SRC_Support_SUPDrvIDC_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -274,5 +274,5 @@ typedef DECLCALLBACK(int) FNSUPDRVIDCENTRY(PSUPDRVSESSION pSession, uint32_t uRe
 
 #pragma pack()                          /* paranoia */
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Support_SUPDrvIDC_h */
 

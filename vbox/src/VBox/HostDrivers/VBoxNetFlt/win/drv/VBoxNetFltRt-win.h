@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.h 76568 2019-01-01 04:34:11Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.h - Bridged Networking Driver, Windows Specific Code.
  * NetFlt Runtime API
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxNetFltRt_win_h___
-#define ___VBoxNetFltRt_win_h___
+#ifndef VBOX_INCLUDED_SRC_VBoxNetFlt_win_drv_VBoxNetFltRt_win_h
+#define VBOX_INCLUDED_SRC_VBoxNetFlt_win_drv_VBoxNetFltRt_win_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -959,4 +959,4 @@ DECLHIDDEN(int) vboxNetFltWinMAC2NdisString(RTMAC *pMac, PNDIS_STRING pNdisStrin
 DECLHIDDEN(int) vboxNetFltWinMACFromNdisString(RTMAC *pMac, PNDIS_STRING pNdisString);
 
 #endif
-#endif /* #ifndef ___VBoxNetFltRt_win_h___ */
+#endif /* !VBOX_INCLUDED_SRC_VBoxNetFlt_win_drv_VBoxNetFltRt_win_h */
