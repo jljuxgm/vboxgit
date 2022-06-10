@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 73146 2018-07-16 09:54:57Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 73175 2018-07-17 11:52:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -23,6 +23,9 @@
 
 /* GUI includes: */
 #include "UIWizardPage.h"
+
+/* COM includes: */
+#include "COMEnums.h"
 
 /* Forward declarations: */
 class QCheckBox;
@@ -115,9 +118,9 @@ protected:
     void setIncludeISOsSelected(bool fChecked);
 
     /** Returns provider. */
-    QString provider() const;
+    KCloudProviderId provider() const;
     /** Defines @a strProvider. */
-    void setProvider(const QString &strProvider);
+    void setProvider(KCloudProviderId enmProvider);
 
     /** Returns profile. */
     QString profile() const;
@@ -180,7 +183,7 @@ class UIWizardExportAppPageBasic3 : public UIWizardPage, public UIWizardExportAp
     Q_PROPERTY(MACAddressPolicy macAddressPolicy READ macAddressPolicy WRITE setMACAddressPolicy);
     Q_PROPERTY(bool manifestSelected READ isManifestSelected WRITE setManifestSelected);
     Q_PROPERTY(bool includeISOsSelected READ isIncludeISOsSelected WRITE setIncludeISOsSelected);
-    Q_PROPERTY(QString provider READ provider WRITE setProvider);
+    Q_PROPERTY(KCloudProviderId provider READ provider WRITE setProvider);
 
 public:
 
