@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 73378 2018-07-27 08:48:37Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 73379 2018-07-27 09:03:35Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1060,6 +1060,42 @@ uint32_t DrvAudioHlpCalcBitrate(uint8_t cBits, uint32_t uHz, uint8_t cChannels)
 uint32_t DrvAudioHlpCalcBitrate(const PPDMAUDIOPCMPROPS pProps)
 {
     return DrvAudioHlpCalcBitrate(pProps->cBits, pProps->uHz, pProps->cChannels);
+}
+
+/**
+ * Aligns the given byte amount to the given PCM properties and returns the aligned
+ * size.
+ *
+ * @return  Aligned size (in bytes).
+ * @param   cbSize              Size (in bytes) to align.
+ * @param   pProps              PCM properties to align size to.
+ */
+uint32_t DrvAudioHlpBytesAlign(uint32_t cbSize, const PPDMAUDIOPCMPROPS pProps)
+{
+    AssertPtrReturn(pProps, 0);
+
+    if (!cbSize)
+        return 0;
+
+    const uint32_t cbFrameSize = DrvAudioHlpPCMPropsBytesPerFrame(pProps);
+    return (cbSize / cbFrameSize) * cbFrameSize;
+}
+
+/**
+ * Returns if the the given size is properly aligned to the given PCM properties.
+ *
+ * @return  @c true if properly aligned, @c false if not.
+ * @param   cbSize              Size (in bytes) to check alignment for.
+ * @param   pProps              PCM properties to use for checking the alignment.
+ */
+bool DrvAudioHlpBytesIsAligned(uint32_t cbSize, const PPDMAUDIOPCMPROPS pProps)
+{
+    AssertPtrReturn(pProps, 0);
+
+    if (!cbSize)
+        return true;
+
+    return (cbSize % DrvAudioHlpPCMPropsBytesPerFrame(pProps) == 0);
 }
 
 /**
