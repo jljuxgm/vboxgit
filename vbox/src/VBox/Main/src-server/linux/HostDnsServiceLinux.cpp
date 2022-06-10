@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceLinux.cpp 77984 2019-04-02 14:06:13Z vboxsync $ */
+/* $Id: HostDnsServiceLinux.cpp 77993 2019-04-03 15:11:36Z vboxsync $ */
 /** @file
  * Linux specific DNS information fetching.
  */
@@ -89,13 +89,25 @@ struct InotifyEventWithName
 
 HostDnsServiceLinux::~HostDnsServiceLinux()
 {
-    monitorThreadShutdown();
 }
 
-
-int HostDnsServiceLinux::monitorWorker(void)
+HRESULT HostDnsServiceLinux::init(HostDnsMonitorProxy *pProxy)
 {
+    return HostDnsServiceResolvConf::init(pProxy, "/etc/resolv.conf");
+}
 
+int HostDnsServiceLinux::monitorThreadShutdown(RTMSINTERVAL uTimeoutMs)
+{
+    RT_NOREF(uTimeoutMs);
+
+    send(g_DnsMonitorStop[0], "", 1, 0);
+
+    /** @todo r=andy Do we have to wait for something here? Can this fail? */
+    return VINF_SUCCESS;
+}
+
+int HostDnsServiceLinux::monitorThreadProc(void)
+{
     AutoNotify a;
 
     int rc = socketpair(AF_LOCAL, SOCK_DGRAM, 0, g_DnsMonitorStop);
@@ -113,7 +125,7 @@ int HostDnsServiceLinux::monitorWorker(void)
     polls[1].fd = g_DnsMonitorStop[1];
     polls[1].events = POLLIN;
 
-    monitorThreadInitializationDone();
+    onMonitorThreadInitDone();
 
     int wd[2];
     wd[0] = wd[1] = -1;
@@ -228,8 +240,3 @@ int HostDnsServiceLinux::monitorWorker(void)
     }
 }
 
-
-void HostDnsServiceLinux::monitorThreadShutdown()
-{
-    send(g_DnsMonitorStop[0], "", 1, 0);
-}

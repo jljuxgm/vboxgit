@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceResolvConf.cpp 77984 2019-04-02 14:06:13Z vboxsync $ */
+/* $Id: HostDnsServiceResolvConf.cpp 77993 2019-04-03 15:11:36Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -54,12 +54,6 @@ struct HostDnsServiceResolvConf::Data
     std::string resolvConfFilename;
 };
 
-const std::string& HostDnsServiceResolvConf::resolvConf(void) const
-{
-    return m->resolvConfFilename;
-}
-
-
 HostDnsServiceResolvConf::~HostDnsServiceResolvConf()
 {
     if (m)
@@ -71,13 +65,29 @@ HostDnsServiceResolvConf::~HostDnsServiceResolvConf()
 
 HRESULT HostDnsServiceResolvConf::init(HostDnsMonitorProxy *pProxy, const char *aResolvConfFileName)
 {
+    HRESULT hr = HostDnsServiceBase::init(pProxy);
+    AssertComRCReturn(hr, hr);
+
     m = new Data(aResolvConfFileName);
+    AssertPtrReturn(m, E_OUTOFMEMORY);
 
-    HostDnsServiceBase::init(pProxy);
+    return readResolvConf();
+}
 
-    readResolvConf();
+void HostDnsServiceResolvConf::uninit(void)
+{
+    if (m)
+    {
+        delete m;
+        m = NULL;
+    }
 
-    return S_OK;
+    HostDnsServiceBase::uninit();
+}
+
+const std::string& HostDnsServiceResolvConf::getResolvConf(void) const
+{
+    return m->resolvConfFilename;
 }
 
 HRESULT HostDnsServiceResolvConf::readResolvConf(void)
