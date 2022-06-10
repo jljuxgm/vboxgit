@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: CPUMR0.cpp 76139 2018-12-10 17:19:00Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -130,8 +130,6 @@ VMMR0_INT_DECL(int) CPUMR0ModuleTerm(void)
 
 
 /**
- *
- *
  * Check the CPUID features of this particular CPU and disable relevant features
  * for the guest which do not exist on this CPU. We have seen systems where the
  * X86_CPUID_FEATURE_ECX_MONITOR feature flag is only set on some host CPUs, see
