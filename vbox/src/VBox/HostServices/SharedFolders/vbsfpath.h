@@ -1,4 +1,4 @@
-/* $Id: vbsfpath.h 76570 2019-01-01 04:36:36Z vboxsync $ */
+/* $Id: vbsfpath.h 77848 2019-03-22 13:24:24Z vboxsync $ */
 /** @file
  * Shared Folders Service - Guest/host path convertion and verification.
  */
@@ -43,7 +43,7 @@
  * @param pfu32PathFlags         VBSF_F_PATH_* flags. Optional, can be NULL.
  */
 int vbsfPathGuestToHost(SHFLCLIENTDATA *pClient, SHFLROOT hRoot,
-                        PSHFLSTRING pGuestString, uint32_t cbGuestString,
+                        PCSHFLSTRING pGuestString, uint32_t cbGuestString,
                         char **ppszHostPath, uint32_t *pcbHostPathRoot,
                         uint32_t fu32Options, uint32_t *pfu32PathFlags);
 
