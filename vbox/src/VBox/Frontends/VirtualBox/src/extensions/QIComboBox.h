@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 78041 2019-04-08 14:44:25Z vboxsync $ */
+/* $Id: QIComboBox.h 78059 2019-04-09 13:17:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -99,6 +99,11 @@ public:
     QIcon itemIcon(int iIndex) const;
     /** Returns the text for the item with the given @a iIndex. */
     QString itemText(int iIndex) const;
+
+    /** Returns the index of the item containing the given @a data for the given @a iRole; otherwise returns -1.
+      * @param  flags  Specifies how the items in the combobox are searched. */
+    int findData(const QVariant &data, int iRole = Qt::UserRole,
+                 Qt::MatchFlags flags = static_cast<Qt::MatchFlags>(Qt::MatchExactly | Qt::MatchCaseSensitive)) const;
 
 public slots:
 
