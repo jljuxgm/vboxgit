@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 74507 2018-09-27 17:28:22Z vboxsync $ */
+/* $Id: DrvAudio.cpp 74518 2018-09-28 11:47:33Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2437,23 +2437,11 @@ static DECLCALLBACK(int) drvAudioStreamCreate(PPDMIAUDIOCONNECTOR pInterface,
         AssertPtr(pDrvAudioInst);
         AssertPtr(pDrvAudioInst->pReg);
 
-#if 0 /** @todo r=bird: Don't use strlen to check for empty strings.  Don't use RTStrPrintf to do RTStrCopy work. */
-        char szDriver[64];
-        RTStrPrintf(szDriver, RT_ELEMENTS(szDriver), "%s", pDrvAudioInst->pReg->szName);
-        if (!strlen(szDriver))
-        {
-            RTStrPrintf(szDriver, RT_ELEMENTS(szDriver), "Untitled");
-            AssertFailed(); /* Should never happen. */
-        }
-
-        RTStrPrintf(pStream->szName, RT_ELEMENTS(pStream->szName), "[%s] %s",
-                    szDriver, strlen(pCfgHost->szName) ? pCfgHost->szName : "<Untitled>");
-#else
         Assert(pDrvAudioInst->pReg->szName[0] != '\0');
         RTStrPrintf(pStream->szName, RT_ELEMENTS(pStream->szName), "[%s] %s",
                     pDrvAudioInst->pReg->szName[0] != '\0' ? pDrvAudioInst->pReg->szName : "Untitled",
                     pCfgHost->szName[0] != '\0' ? pCfgHost->szName : "<Untitled>");
-#endif
+
         pStream->enmDir = pCfgHost->enmDir;
 
         /*
