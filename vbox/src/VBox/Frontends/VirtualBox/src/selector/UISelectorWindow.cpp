@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 73717 2018-08-16 16:00:08Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 73735 2018-08-17 12:57:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -483,7 +483,7 @@ void UISelectorWindow::sltOpenHostNetworkManagerWindow()
     /* Create instance if not yet created: */
     if (!m_pManagerHostNetwork)
     {
-        UIHostNetworkManagerFactory().prepare(m_pManagerHostNetwork, this);
+        UIHostNetworkManagerFactory(m_pActionPool).prepare(m_pManagerHostNetwork, this);
         connect(m_pManagerHostNetwork, &QIManagerDialog::sigClose,
                 this, &UISelectorWindow::sltCloseHostNetworkManagerWindow);
     }

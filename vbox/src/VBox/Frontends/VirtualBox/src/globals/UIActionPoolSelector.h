@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 73717 2018-08-16 16:00:08Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 73735 2018-08-17 12:57:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
@@ -125,6 +125,13 @@ enum UIActionIndexST
     UIActionIndexST_M_Medium_T_Details,
     UIActionIndexST_M_Medium_S_Refresh,
 
+    /* Host Network Manager actions: */
+    UIActionIndexST_M_Network,
+    UIActionIndexST_M_Network_S_Create,
+    UIActionIndexST_M_Network_S_Remove,
+    UIActionIndexST_M_Network_T_Details,
+    UIActionIndexST_M_Network_S_Refresh,
+
     /* Maximum index: */
     UIActionIndexST_Max
 };
@@ -153,6 +160,8 @@ protected:
 
     /** Updates 'Medium' menu. */
     void updateMenuMedium();
+    /** Updates 'Network' menu. */
+    void updateMenuNetwork();
 
     /** Updates shortcuts. */
     virtual void updateShortcuts() /* override */;

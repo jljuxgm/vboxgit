@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 73721 2018-08-16 18:09:07Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 73735 2018-08-17 12:57:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -130,7 +130,7 @@ void UIToolPaneGlobal::openTool(ToolTypeGlobal enmType)
             case ToolTypeGlobal_HostNetwork:
             {
                 /* Create Host Network Manager: */
-                m_pPaneNetwork = new UIHostNetworkManagerWidget(EmbedTo_Stack);
+                m_pPaneNetwork = new UIHostNetworkManagerWidget(EmbedTo_Stack, m_pActionPool);
                 AssertPtrReturnVoid(m_pPaneNetwork);
                 {
 #ifndef VBOX_WS_MAC
