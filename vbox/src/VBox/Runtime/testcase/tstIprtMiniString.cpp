@@ -1,4 +1,4 @@
-/* $Id: tstIprtMiniString.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstIprtMiniString.cpp 75008 2018-10-23 16:08:44Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTCString.
  */
@@ -81,6 +81,12 @@ static void test1(RTTEST hTest)
     RTCString empty;
     CHECK(empty.length() == 0);
     CHECK(empty.capacity() == 0);
+
+    empty.reserve(1);
+    CHECK(empty.length() == 0);
+    CHECK(empty.capacity() == 1);
+    char *pszEmpty = empty.mutableRaw();
+    CHECK(pszEmpty != NULL);
 
     RTCString sixbytes("12345");
     CHECK(sixbytes.length() == 5);
