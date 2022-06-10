@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 75696 2018-11-23 19:57:37Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 75752 2018-11-26 20:05:57Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1020,6 +1020,7 @@ typedef struct VMSVGA3DSTATE
         PFNGLDRAWELEMENTSINSTANCEDPROC                  glDrawElementsInstanced;
         PFNGLCOMPRESSEDTEXIMAGE2DPROC                   glCompressedTexImage2D;
         PFNGLCOMPRESSEDTEXIMAGE3DPROC                   glCompressedTexImage3D;
+        PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC                glCompressedTexSubImage2D;
     } ext;
 
     struct

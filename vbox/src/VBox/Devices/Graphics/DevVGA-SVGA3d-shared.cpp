@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-shared.cpp 74549 2018-10-01 11:56:56Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-shared.cpp 75752 2018-11-26 20:05:57Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -313,11 +313,11 @@ uint32_t vmsvga3dSurfaceFormatSize(SVGA3dSurfaceFormat format,
         return 2;
 
     case SVGA3D_DXT1:
-    case SVGA3D_DXT2:
         *pcxBlock = 4;
         *pcyBlock = 4;
         return 8;
 
+    case SVGA3D_DXT2:
     case SVGA3D_DXT3:
     case SVGA3D_DXT4:
     case SVGA3D_DXT5:
