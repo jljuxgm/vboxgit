@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 74923 2018-10-18 15:14:57Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 74950 2018-10-19 16:41:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
@@ -43,6 +43,11 @@ enum UIActionIndexST
     UIActionIndexST_M_File_S_ShowExtraDataManager,
 #endif /* VBOX_GUI_WITH_EXTRADATA_MANAGER_UI */
     UIActionIndexST_M_File_S_Close,
+
+    /* 'Welcome' menu actions: */
+    UIActionIndexST_M_Welcome,
+    UIActionIndexST_M_Welcome_S_New,
+    UIActionIndexST_M_Welcome_S_Add,
 
     /* 'Group' menu actions: */
     UIActionIndexST_M_Group,

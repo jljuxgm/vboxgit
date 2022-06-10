@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74923 2018-10-18 15:14:57Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74950 2018-10-19 16:41:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -614,8 +614,8 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_File_S_ImportAppliance));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_File_S_ExportAppliance));
                     m_pToolBar->addSeparator();
-                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_New));
-                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Add));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Welcome_S_New));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Welcome_S_Add));
                     break;
                 }
                 case ToolTypeGlobal_Media:

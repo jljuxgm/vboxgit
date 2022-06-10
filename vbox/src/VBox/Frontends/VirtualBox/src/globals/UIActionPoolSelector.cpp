@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 74933 2018-10-18 19:12:23Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 74950 2018-10-19 16:41:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -2556,6 +2556,11 @@ void UIActionPoolSelector::preparePool()
     m_pool[UIActionIndexST_M_File_S_ShowExtraDataManager] = new UIActionSimpleSelectorFileShowExtraDataManager(this);
 #endif
     m_pool[UIActionIndexST_M_File_S_Close] = new UIActionSimpleSelectorFilePerformExit(this);
+
+    /* 'Welcome' actions: */
+    m_pool[UIActionIndexST_M_Welcome] = new UIActionMenuSelectorMachine(this);
+    m_pool[UIActionIndexST_M_Welcome_S_New] = new UIActionSimpleSelectorMachinePerformCreate(this);
+    m_pool[UIActionIndexST_M_Welcome_S_Add] = new UIActionSimpleSelectorMachinePerformAdd(this);
 
     /* 'Group' actions: */
     m_pool[UIActionIndexST_M_Group] = new UIActionMenuSelectorGroup(this);

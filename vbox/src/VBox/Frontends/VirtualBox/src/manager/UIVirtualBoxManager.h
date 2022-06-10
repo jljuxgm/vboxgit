@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 74950 2018-10-19 16:41:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -240,6 +240,8 @@ private:
         void prepareMenuBar();
         /** Prepares @a pMenu File. */
         void prepareMenuFile(QMenu *pMenu);
+        /** Prepares @a pMenu Welcome. */
+        void prepareMenuWelcome(QMenu *pMenu);
         /** Prepares @a pMenu Group. */
         void prepareMenuGroup(QMenu *pMenu);
         /** Prepares @a pMenu Machine. */
@@ -351,6 +353,11 @@ private:
 
     /** Holds the action-pool instance. */
     UIActionPool *m_pActionPool;
+
+    /** Holds the list of Welcome menu actions. */
+    QList<UIAction*>  m_welcomeActions;
+    /** Holds the Welcome menu parent action. */
+    QAction          *m_pWelcomeMenuAction;
 
     /** Holds the list of Group menu actions. */
     QList<UIAction*>  m_groupActions;
