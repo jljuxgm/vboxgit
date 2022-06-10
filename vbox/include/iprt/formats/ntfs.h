@@ -1,4 +1,4 @@
-/* $Id: ntfs.h 69925 2017-12-05 00:06:59Z vboxsync $ */
+/* $Id: ntfs.h 76442 2018-12-24 15:41:05Z vboxsync $ */
 /** @file
  * IPRT, NT File System (NTFS).
  */
@@ -72,9 +72,9 @@ typedef union NTFSMFTREF
     struct
     {
         /** Index of the master file table record. */
-        uint64_t        idxMft : 48;
+        RT_GCC_EXTENSION uint64_t idxMft : 48;
         /** MFT record reuse sequence number (for catching dangling references). */
-        uint64_t        uRecReuseSeqNo : 16;
+        RT_GCC_EXTENSION uint64_t uRecReuseSeqNo : 16;
     } s;
 } NTFSMFTREF;
 AssertCompileSize(NTFSMFTREF, 8);
