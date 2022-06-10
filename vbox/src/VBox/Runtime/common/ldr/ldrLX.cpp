@@ -1,4 +1,4 @@
-/* $Id: ldrLX.cpp 74641 2018-10-06 19:28:12Z vboxsync $ */
+/* $Id: ldrLX.cpp 74642 2018-10-06 19:29:15Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the Linear eXecutable (LX) Format.
  */
@@ -2251,7 +2251,7 @@ static DECLCALLBACK(int) rtldrLX_RelocateBits(PRTLDRMODINTERNAL pMod, void *pvBi
              */
             while (pb < pbFixupRecEnd)
             {
-                union _rel
+                union
                 {
 
                     const uint8_t          *pb;
