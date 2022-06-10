@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 72010 2018-04-25 10:45:46Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 74477 2018-09-26 12:47:25Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -1261,7 +1261,7 @@ static HRESULT vboxDispD3DGlobalDoOpen(PVBOXWDDMDISP_D3D pD3D, VBOXWDDM_QAI cons
     memset(pD3D, 0, sizeof (*pD3D));
 
     HRESULT hr;
-    if (pAdapterInfo->enmHwType == VBOXVIDEO_HWTYPE_CROGL)
+    if (pAdapterInfo->enmHwType == VBOXVIDEO_HWTYPE_VBOX)
         hr = vboxDispD3DGlobalDoOpenWine(pD3D);
     else
         hr = E_FAIL;

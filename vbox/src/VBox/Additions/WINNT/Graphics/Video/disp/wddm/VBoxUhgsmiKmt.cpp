@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiKmt.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxUhgsmiKmt.cpp 74477 2018-09-26 12:47:25Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -330,8 +330,8 @@ static HRESULT vboxUhgsmiKmtQueryCaps(PVBOXUHGSMI_PRIVATE_KMT pHgsmi, uint32_t *
         return E_FAIL;
     }
 
-    if (Query.enmHwType == VBOXVIDEO_HWTYPE_CROGL)
-        *pu32Caps = Query.u.crogl.u32VBox3DCaps;
+    if (Query.enmHwType == VBOXVIDEO_HWTYPE_VBOX)
+        *pu32Caps = Query.u.vbox.u32VBox3DCaps;
     else
         *pu32Caps = 0;
 
