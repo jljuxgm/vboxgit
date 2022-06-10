@@ -1,4 +1,4 @@
-/* $Id: RTNtPathExpand8dot3Path.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTNtPathExpand8dot3Path.cpp 76360 2018-12-22 01:42:05Z vboxsync $ */
 /** @file
  * IPRT - Native NT, RTNtPathExpand8dot3Path.
  */
@@ -36,6 +36,7 @@
 #endif
 
 #include <iprt/mem.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 
 

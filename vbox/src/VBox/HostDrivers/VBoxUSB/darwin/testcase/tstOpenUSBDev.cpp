@@ -1,6 +1,6 @@
-/* $Id: tstOpenUSBDev.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tstOpenUSBDev.cpp 76360 2018-12-22 01:42:05Z vboxsync $ */
 /** @file
- * Testcase that attempts to locate and open the specfied device.
+ * Testcase that attempts to locate and open the specified device.
  */
 
 /*
@@ -37,6 +37,7 @@
 #include <IOKit/usb/IOUSBLib.h>
 #include <IOKit/IOCFPlugIn.h>
 
+#include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/process.h>
@@ -45,6 +46,7 @@
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
 #include <iprt/stream.h>
+
 
 /**
  * Gets an unsigned 32-bit integer value.
@@ -214,7 +216,7 @@ int main(int argc, char **argv)
             case 'h':
                 return tstSyntax(argv[0]);
             case 'V':
-                RTPrintf("$Revision: 69500 $\n");
+                RTPrintf("$Revision: 76360 $\n");
                 return 0;
 
             default:
