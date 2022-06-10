@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorDefs.h 76674 2019-01-07 12:36:52Z vboxsync $ */
+/* $Id: UIVisoCreatorDefs.h 76675 2019-01-07 12:43:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorDefs class declaration.
  */
@@ -30,7 +30,6 @@ struct VisoOptions
     {
         return m_strVisoName == otherOptions.m_strVisoName;
     }
-
     QString m_strVisoName;
 };
 
@@ -42,7 +41,7 @@ struct BrowserOptions
     {
         return m_bShowHiddenObjects == otherOptions.m_bShowHiddenObjects;
     }
-    bool m_bShowHiddenObjects = true;
+    bool m_bShowHiddenObjects;
 };
 
 
