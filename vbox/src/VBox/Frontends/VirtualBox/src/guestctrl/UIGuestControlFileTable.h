@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 75643 2018-11-21 14:27:42Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.h 75673 2018-11-22 15:56:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -306,6 +306,7 @@ protected:
     virtual void     determineDriveLetters() = 0;
     virtual void     prepareToolbar() = 0;
     virtual void     createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) = 0;
+    virtual bool     event(QEvent *pEvent) /* override */;
     QString          fileTypeString(FileObjectType type);
     /* @p item index is item location in model not in 'proxy' model */
     void             goIntoDirectory(const QModelIndex &itemIndex);
@@ -377,7 +378,8 @@ private:
      *  list will be cleaned after a paste operation or overwritten by a subsequent cut/copy */
     QStringList      m_copyCutBuffer;
     QILineEdit      *m_pSearchLineEdit;
-    friend class    UIGuestControlFileModel;
+    QILabel         *m_pWarningLabel;
+    friend class     UIGuestControlFileModel;
 };
 
 #endif /* !___UIGuestControlFileTable_h___ */
