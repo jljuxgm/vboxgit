@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 75959 2018-12-05 09:12:37Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 75972 2018-12-05 13:35:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -403,8 +403,18 @@ void UIMachineSettingsSystem::putToCache()
 
     /* Gather 'Acceleration' data: */
     newSystemData.m_paravirtProvider = (KParavirtProvider)m_pComboParavirtProvider->itemData(m_pComboParavirtProvider->currentIndex()).toInt();
-    newSystemData.m_fEnabledHwVirtEx = isHWVirtExEnabled() || m_pSliderCPUCount->value() > 1;
-    newSystemData.m_fEnabledNestedPaging = isNestedPagingEnabled();
+    /* Enable HW Virt Ex automatically if it's supported and
+     * 1. multiple CPUs, 2. Nested Paging or 3. Nested HW Virt Ex is requested. */
+    newSystemData.m_fEnabledHwVirtEx =    isHWVirtExEnabled()
+                                       || (   isHWVirtExSupported()
+                                           && (   m_pSliderCPUCount->value() > 1
+                                               || isNestedPagingEnabled()
+                                               || isNestedHWVirtExEnabled()));
+    /* Enable Nested Paging automatically if it's supported and
+     * Nested HW Virt Ex is requested. */
+    newSystemData.m_fEnabledNestedPaging =    isNestedPagingEnabled()
+                                           || (   isNestedPagingSupported()
+                                               && isNestedHWVirtExEnabled());
 
     /* Cache new system data: */
     m_pCache->cacheCurrentData(newSystemData);

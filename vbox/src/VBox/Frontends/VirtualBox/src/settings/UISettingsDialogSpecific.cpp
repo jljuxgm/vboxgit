@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 75959 2018-12-05 09:12:37Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 75972 2018-12-05 13:35:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -463,29 +463,6 @@ void UISettingsDialogMachine::saveOwnData()
         if (pGeneralPage && pSystemPage &&
             pGeneralPage->is64BitOSTypeSelected() && !pSystemPage->isHWVirtExEnabled())
             m_machine.SetHWVirtExProperty(KHWVirtExPropertyType_Enabled, true);
-
-        /* System page fixes: */
-        if (pSystemPage)
-        {
-            /* Nested Paging || Nested HW Virt Ex: */
-            if (   pSystemPage->isNestedPagingEnabled()
-                || pSystemPage->isNestedHWVirtExEnabled())
-            {
-                /* Enable HW Virt Ex if supported: */
-                if (   pSystemPage->isHWVirtExSupported()
-                    && !pSystemPage->isHWVirtExEnabled())
-                    m_machine.SetHWVirtExProperty(KHWVirtExPropertyType_Enabled, true);
-            }
-
-            /* Nested HW Virt Ex: */
-            if (pSystemPage->isNestedHWVirtExEnabled())
-            {
-                /* Enable Nested Paging if supported: */
-                if (   pSystemPage->isHWVirtExSupported()
-                    && !pSystemPage->isNestedPagingEnabled())
-                    m_machine.SetHWVirtExProperty(KHWVirtExPropertyType_NestedPaging, true);
-            }
-        }
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
         /* Disable 2D Video Acceleration for non-Windows guests: */
