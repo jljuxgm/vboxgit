@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 77241 2019-02-10 22:30:33Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -960,6 +960,75 @@ static DECLCALLBACK(void) pdmR3DevHlp_PhysReleasePageMappingLock(PPDMDEVINS pDev
     PGMPhysReleasePageMappingLock(pVM, pLock);
 
     Log(("pdmR3DevHlp_PhysReleasePageMappingLock: caller='%s'/%d: returns void\n", pDevIns->pReg->szName, pDevIns->iInstance));
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnPhysBulkGCPhys2CCPtr} */
+static DECLCALLBACK(int) pdmR3DevHlp_PhysBulkGCPhys2CCPtr(PPDMDEVINS pDevIns, uint32_t cPages, PCRTGCPHYS paGCPhysPages,
+                                                          uint32_t fFlags, void **papvPages, PPGMPAGEMAPLOCK paLocks)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    PVM pVM = pDevIns->Internal.s.pVMR3;
+    LogFlow(("pdmR3DevHlp_PhysBulkGCPhys2CCPtr: caller='%s'/%d: cPages=%#x paGCPhysPages=%p (%RGp,..) fFlags=%#x papvPages=%p paLocks=%p\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, cPages, paGCPhysPages, paGCPhysPages[0], fFlags, papvPages, paLocks));
+    AssertReturn(!fFlags, VERR_INVALID_PARAMETER);
+    AssertReturn(cPages > 0, VERR_INVALID_PARAMETER);
+
+#if defined(VBOX_STRICT) && defined(PDM_DEVHLP_DEADLOCK_DETECTION)
+    if (!VM_IS_EMT(pVM))
+    {
+        char szNames[128];
+        uint32_t cLocks = PDMR3CritSectCountOwned(pVM, szNames, sizeof(szNames));
+        AssertMsg(cLocks == 0, ("cLocks=%u %s\n", cLocks, szNames));
+    }
+#endif
+
+    int rc = PGMR3PhysBulkGCPhys2CCPtrExternal(pVM, cPages, paGCPhysPages, papvPages, paLocks);
+
+    Log(("pdmR3DevHlp_PhysBulkGCPhys2CCPtr: caller='%s'/%d: returns %Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
+    return rc;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnPhysBulkGCPhys2CCPtrReadOnly} */
+static DECLCALLBACK(int) pdmR3DevHlp_PhysBulkGCPhys2CCPtrReadOnly(PPDMDEVINS pDevIns, uint32_t cPages, PCRTGCPHYS paGCPhysPages,
+                                                                  uint32_t fFlags, const void **papvPages, PPGMPAGEMAPLOCK paLocks)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    PVM pVM = pDevIns->Internal.s.pVMR3;
+    LogFlow(("pdmR3DevHlp_PhysBulkGCPhys2CCPtrReadOnly: caller='%s'/%d: cPages=%#x paGCPhysPages=%p (%RGp,...) fFlags=%#x papvPages=%p paLocks=%p\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, cPages, paGCPhysPages, paGCPhysPages[0], fFlags, papvPages, paLocks));
+    AssertReturn(!fFlags, VERR_INVALID_PARAMETER);
+    AssertReturn(cPages > 0, VERR_INVALID_PARAMETER);
+
+#if defined(VBOX_STRICT) && defined(PDM_DEVHLP_DEADLOCK_DETECTION)
+    if (!VM_IS_EMT(pVM))
+    {
+        char szNames[128];
+        uint32_t cLocks = PDMR3CritSectCountOwned(pVM, szNames, sizeof(szNames));
+        AssertMsg(cLocks == 0, ("cLocks=%u %s\n", cLocks, szNames));
+    }
+#endif
+
+    int rc = PGMR3PhysBulkGCPhys2CCPtrReadOnlyExternal(pVM, cPages, paGCPhysPages, papvPages, paLocks);
+
+    Log(("pdmR3DevHlp_PhysBulkGCPhys2CCPtrReadOnly: caller='%s'/%d: returns %Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
+    return rc;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnPhysReleasePageMappingLocks} */
+static DECLCALLBACK(void) pdmR3DevHlp_PhysBulkReleasePageMappingLocks(PPDMDEVINS pDevIns, uint32_t cPages, PPGMPAGEMAPLOCK paLocks)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    PVM pVM = pDevIns->Internal.s.pVMR3;
+    LogFlow(("pdmR3DevHlp_PhysBulkReleasePageMappingLocks: caller='%s'/%d: cPages=%#x paLocks=%p\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, cPages, paLocks));
+    Assert(cPages > 0);
+
+    PGMPhysBulkReleasePageMappingLocks(pVM, cPages, paLocks);
+
+    Log(("pdmR3DevHlp_PhysBulkReleasePageMappingLocks: caller='%s'/%d: returns void\n", pDevIns->pReg->szName, pDevIns->iInstance));
 }
 
 
@@ -3725,9 +3794,9 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_CallR0,
     pdmR3DevHlp_VMGetSuspendReason,
     pdmR3DevHlp_VMGetResumeReason,
-    0,
-    0,
-    0,
+    pdmR3DevHlp_PhysBulkGCPhys2CCPtr,
+    pdmR3DevHlp_PhysBulkGCPhys2CCPtrReadOnly,
+    pdmR3DevHlp_PhysBulkReleasePageMappingLocks,
     0,
     0,
     0,
@@ -3995,9 +4064,9 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_CallR0,
     pdmR3DevHlp_VMGetSuspendReason,
     pdmR3DevHlp_VMGetResumeReason,
-    0,
-    0,
-    0,
+    pdmR3DevHlp_PhysBulkGCPhys2CCPtr,
+    pdmR3DevHlp_PhysBulkGCPhys2CCPtrReadOnly,
+    pdmR3DevHlp_PhysBulkReleasePageMappingLocks,
     0,
     0,
     0,
