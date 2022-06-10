@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 76835 2019-01-16 11:54:21Z vboxsync $ */
+/* $Id: VBoxGlobal.h 76883 2019-01-18 10:31:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -870,6 +870,8 @@ private:
 
         /** Holds the medium enumerator. */
         UIMediumEnumerator *m_pMediumEnumerator;
+        /** List of medium names that should not appears in the recently used media extra data. */
+        QStringList         m_recentMediaExcludeList;
     /** @} */
 
 #if defined(VBOX_WS_WIN)
