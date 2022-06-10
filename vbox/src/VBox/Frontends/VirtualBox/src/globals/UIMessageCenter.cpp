@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 75216 2018-11-01 13:24:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1617,6 +1617,13 @@ void UIMessageCenter::cannotAcquireCloudProviderManager(const CVirtualBox &comVB
     error(pParent, MessageType_Error,
           tr("Failed to acquire cloud provider manager."),
           UIErrorString::formatErrorInfo(comVBox));
+}
+
+void UIMessageCenter::cannotAcquireCloudProviderManagerParameter(const CCloudProviderManager &comManager, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to acquire cloud provider manager parameter."),
+          UIErrorString::formatErrorInfo(comManager));
 }
 
 void UIMessageCenter::cannotFindCloudProvider(const CCloudProviderManager &comManager, const QUuid &uId, QWidget *pParent /* = 0 */) const

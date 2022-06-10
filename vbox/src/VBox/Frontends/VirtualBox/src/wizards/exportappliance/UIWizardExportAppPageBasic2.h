@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 75055 2018-10-25 08:03:31Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 75216 2018-11-01 13:24:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -149,6 +149,8 @@ protected:
 
     /** Holds the Cloud Provider Manager reference. */
     CCloudProviderManager  m_comCloudProviderManager;
+    /** Holds the Cloud Provider object reference. */
+    CCloudProvider         m_comCloudProvider;
     /** Holds the Cloud Profile object reference. */
     CCloudProfile          m_comCloudProfile;
 

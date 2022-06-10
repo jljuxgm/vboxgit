@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIMessageCenter.h 75216 2018-11-01 13:24:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -361,6 +361,7 @@ public:
 
     /* API: Cloud Profile Manager warnings: */
     void cannotAcquireCloudProviderManager(const CVirtualBox &comVBox, QWidget *pParent = 0) const;
+    void cannotAcquireCloudProviderManagerParameter(const CCloudProviderManager &comManager, QWidget *pParent = 0) const;
     void cannotFindCloudProvider(const CCloudProviderManager &comManager, const QUuid &uId, QWidget *pParent = 0) const;
     void cannotAcquireCloudProviderParameter(const CCloudProvider &comProvider, QWidget *pParent = 0) const;
     void cannotFindCloudProfile(const CCloudProvider &comProvider, const QString &strName, QWidget *pParent = 0) const;
