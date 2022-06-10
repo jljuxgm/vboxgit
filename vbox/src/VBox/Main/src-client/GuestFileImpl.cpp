@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 73505 2018-08-05 13:58:10Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 75094 2018-10-26 12:31:07Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -399,6 +399,10 @@ Utf8Str GuestFile::i_guestErrorToString(int rcGuest)
     /** @todo pData->u32Flags: int vs. uint32 -- IPRT errors are *negative* !!! */
     switch (rcGuest)
     {
+        case VERR_ACCESS_DENIED:
+            strError += Utf8StrFmt(tr("Access denied"));
+            break;
+
         case VERR_ALREADY_EXISTS:
             strError += Utf8StrFmt(tr("File already exists"));
             break;
