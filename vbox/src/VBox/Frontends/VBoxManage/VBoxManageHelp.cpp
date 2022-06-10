@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 72476 2018-06-07 13:49:48Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 72883 2018-07-04 15:22:02Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -965,7 +965,8 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--size <megabytes>|--sizebyte <bytes>]\n"
                      "                            [--diffparent <uuid>|<filename>\n"
                      "                            [--format VDI|VMDK|VHD] (default: VDI)\n"
-                     "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
+                     "                            [--variant Standard,Fixed,Split2G,Stream,ESX,\n"
+                     "                                       Formatted]\n"
                      "\n", SEP);
 
     if (fCategory & USAGE_MODIFYMEDIUM)

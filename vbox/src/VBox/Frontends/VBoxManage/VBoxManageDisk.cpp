@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 72883 2018-07-04 15:22:02Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -83,6 +83,8 @@ static int parseMediumVariant(const char *psz, MediumVariant_T *pMediumVariant)
                 uMediumVariant |= MediumVariant_VmdkStreamOptimized;
             else if (!RTStrNICmp(psz, "esx", len))
                 uMediumVariant |= MediumVariant_VmdkESX;
+            else if (!RTStrNICmp(psz, "formatted", len))
+                uMediumVariant |= MediumVariant_Formatted;
             else
                 rc = VERR_PARSE_ERROR;
         }

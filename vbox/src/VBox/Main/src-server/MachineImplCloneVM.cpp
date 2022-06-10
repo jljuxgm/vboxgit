@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 72509 2018-06-11 13:25:05Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 72883 2018-07-04 15:22:02Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1249,7 +1249,7 @@ HRESULT MachineCloneVM::run()
                         ComObjPtr<Medium> pLMedium = static_cast<Medium*>((IMedium*)pMedium);
                         srcLock.release();
                         rc = pLMedium->i_cloneToEx(pTarget,
-                                                   srcVar,
+                                                   (MediumVariant_T)srcVar,
                                                    pNewParent,
                                                    progress2.asOutParam(),
                                                    uSrcParentIdx,

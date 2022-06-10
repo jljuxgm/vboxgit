@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 72703 2018-06-27 15:27:32Z vboxsync $ */
+/* $Id: MediumImpl.h 72883 2018-07-04 15:22:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -219,7 +219,7 @@ public:
                         const ComObjPtr<Medium> &aParent,
                         const ComObjPtr<Progress> &aProgress);
 
-    HRESULT i_cloneToEx(const ComObjPtr<Medium> &aTarget, ULONG aVariant,
+    HRESULT i_cloneToEx(const ComObjPtr<Medium> &aTarget, MediumVariant_T aVariant,
                         const ComObjPtr<Medium> &aParent, IProgress **aProgress,
                         uint32_t idxSrcImageSame, uint32_t idxDstImageSame);
 
