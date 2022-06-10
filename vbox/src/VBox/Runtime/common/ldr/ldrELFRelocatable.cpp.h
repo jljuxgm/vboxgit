@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 73086 2018-07-12 11:15:55Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -359,6 +359,7 @@ static int RTLDRELF_NAME(RelocateSectionExecDyn)(PRTLDRMODELF pModElf, Elf_Addr 
              * PC relative addressing.
              */
             case R_X86_64_PC32:
+            case R_X86_64_PLT32: /* binutils commit 451875b4f976a527395e9303224c7881b65e12ed feature/regression. */
             {
                 const Elf_Addr SourceAddr = SecAddr + paRels[iRel].r_offset + BaseAddr; /* Where the source really is. */
                 Value -= SourceAddr;
