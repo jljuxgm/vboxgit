@@ -1,4 +1,4 @@
-/* $Id: VBoxVNC.cpp 72857 2018-07-04 09:47:12Z vboxsync $ */
+/* $Id: VBoxVNC.cpp 75764 2018-11-27 10:57:02Z vboxsync $ */
 /** @file
  * VBoxVNC - VNC VRDE module.
  */
@@ -817,6 +817,16 @@ DECLCALLBACK(void) VNCServerImpl::VRDEUpdate(HVRDESERVER hServer, unsigned uScre
                     return;
                 }
             /// @todo more orders
+            }
+        }
+
+        if (!instance->mScreenBuffer)
+        {
+            VRDEResize(hServer);
+            if (!instance->mScreenBuffer)
+            {
+                LogRel(("VNCServerImpl::VRDEUpdate: Cannot get frame buffer"));
+                return;
             }
         }
 
