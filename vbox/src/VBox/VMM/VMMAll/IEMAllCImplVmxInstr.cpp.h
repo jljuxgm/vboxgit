@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 76722 2019-01-09 08:15:04Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 76735 2019-01-09 13:24:08Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -6085,8 +6085,8 @@ IEM_STATIC int iemVmxVmentryCheckHostState(PVMCPU pVCpu, const char *pszInstr)
         IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVDiag_Vmentry_HostEferMsrRsvd);
 
     bool const fHostInLongMode = RT_BOOL(pVmcs->u32ExitCtls & VMX_EXIT_CTLS_HOST_ADDR_SPACE_SIZE);
-    bool const fHostLma        = RT_BOOL(pVmcs->u64HostEferMsr.u & MSR_K6_EFER_BIT_LMA);
-    bool const fHostLme        = RT_BOOL(pVmcs->u64HostEferMsr.u & MSR_K6_EFER_BIT_LME);
+    bool const fHostLma        = RT_BOOL(pVmcs->u64HostEferMsr.u & MSR_K6_EFER_LMA);
+    bool const fHostLme        = RT_BOOL(pVmcs->u64HostEferMsr.u & MSR_K6_EFER_LME);
     if (   fHostInLongMode == fHostLma
         && fHostInLongMode == fHostLme)
     { /* likely */ }
