@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.cpp 76159 2018-12-11 11:03:40Z vboxsync $ */
+/* $Id: UIScaleFactorEditor.cpp 76184 2018-12-12 15:24:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */
@@ -69,7 +69,7 @@ void UIScaleFactorEditor::setMonitorCount(int iMonitorCount)
     if (iCurrentMonitorCount < iEndMonitorCount)
     {
         for (int i = iCurrentMonitorCount; i < iEndMonitorCount; ++i)
-            m_pMonitorComboBox->insertItem(i, QString("Monitor %1").arg(i));
+            m_pMonitorComboBox->insertItem(i, tr("Monitor %1").arg(i));
     }
     else
     {
@@ -178,9 +178,9 @@ void UIScaleFactorEditor::retranslateUi()
     {
         m_pMonitorComboBox->setItemText(0, tr("All Monitors"));
         for (int i = 1; i < m_pMonitorComboBox->count(); ++i)
-            m_pMonitorComboBox->setItemText(i, tr("Monitor(%1)").arg(i));
+            m_pMonitorComboBox->setItemText(i, tr("Monitor %1").arg(i));
     }
-    setToolTip(tr("Controls the guest screen scale factor"));
+    setToolTip(tr("Controls the guest screen scale factor."));
 }
 
 void UIScaleFactorEditor::sltScaleSpinBoxValueChanged(int value)
