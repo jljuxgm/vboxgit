@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: NetworkServiceRunner.cpp 75512 2018-11-16 11:33:38Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -65,6 +65,12 @@ int NetworkServiceRunner::setOption(const std::string& key, const std::string& v
 {
     m->mOptions.insert(std::map<std::string, std::string>::value_type(key, val));
     return VINF_SUCCESS;
+}
+
+
+void NetworkServiceRunner::clearOptions()
+{
+    m->mOptions.clear();
 }
 
 

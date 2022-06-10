@@ -1,4 +1,4 @@
-/* $Id: Db.cpp 73076 2018-07-11 16:39:52Z vboxsync $ */
+/* $Id: Db.cpp 75512 2018-11-16 11:33:38Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -290,7 +290,7 @@ Binding *Binding::fromXML(const xml::ElementNode *ndLease)
      * Lease/Time
      */
     const xml::ElementNode *ndTime = ndLease->findChildElement("Time");
-    if (time == NULL)
+    if (ndTime == NULL)
         return NULL;
 
     /*
