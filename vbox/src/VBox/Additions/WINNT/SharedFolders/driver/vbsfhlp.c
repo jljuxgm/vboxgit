@@ -1,4 +1,4 @@
-/* $Id: vbsfhlp.c 78279 2019-04-24 16:19:10Z vboxsync $ */
+/* $Id: vbsfhlp.c 78280 2019-04-24 16:29:00Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver system helpers
  */
@@ -103,14 +103,14 @@ NTSTATUS vbsfHlpDeleteDriveLetter(WCHAR Letter)
  * Convert VBox error code to NT status code
  *
  * @returns NT status code
- * @param   vboxRC          VBox error code
+ * @param   vrc             VBox status code.
  *
  */
-NTSTATUS VBoxErrorToNTStatus(int vboxRC)
+NTSTATUS VBoxErrorToNTStatus(int vrc)
 {
     NTSTATUS Status;
 
-    switch (vboxRC)
+    switch (vrc)
     {
         case VINF_SUCCESS:
             Status = STATUS_SUCCESS;
@@ -191,7 +191,7 @@ NTSTATUS VBoxErrorToNTStatus(int vboxRC)
             /** @todo error handling */
             Status = STATUS_INVALID_PARAMETER;
             Log(("Unexpected vbox error %Rrc\n",
-                 vboxRC));
+                 vrc));
             break;
     }
     return Status;

@@ -1,4 +1,4 @@
-/* $Id: vbsfhlp.h 78279 2019-04-24 16:19:10Z vboxsync $ */
+/* $Id: vbsfhlp.h 78280 2019-04-24 16:29:00Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver helpers
  */
@@ -33,15 +33,7 @@ NTSTATUS vbsfHlpCreateDriveLetter(WCHAR Letter, UNICODE_STRING *pDeviceName);
 NTSTATUS vbsfHlpDeleteDriveLetter(WCHAR Letter);
 uint32_t VBoxToNTFileAttributes(uint32_t fIprtMode);
 uint32_t NTToVBoxFileAttributes(uint32_t fNtAttribs);
-
-/**
- * Convert VBox error code to NT status code
- *
- * @returns NT status code
- * @param   vboxRC          VBox error code
- *
- */
-NTSTATUS VBoxErrorToNTStatus(int vboxRC);
+NTSTATUS VBoxErrorToNTStatus(int vrc);
 
 PVOID    vbsfAllocNonPagedMem(ULONG ulSize);
 void     vbsfFreeNonPagedMem(PVOID lpMem);
