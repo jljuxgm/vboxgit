@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 74034 2018-09-03 09:46:02Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 74035 2018-09-03 09:47:49Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -1365,18 +1365,18 @@ int coreAudioInputQueueProcBuffer(PCOREAUDIOSTREAM pCAStream, AudioQueueBufferRe
     size_t cbWritten = 0;
 
     size_t cbToWrite = audioBuffer->mAudioDataByteSize;
-    size_t cbLeft    = cbToWrite;
+    size_t cbLeft    = RT_MIN(cbToWrite, RTCircBufFree(pCircBuf));
 
     while (cbLeft)
     {
         /* Try to acquire the necessary block from the ring buffer. */
         RTCircBufAcquireWriteBlock(pCircBuf, cbLeft, (void **)&pvDst, &cbToWrite);
 
-        if (!cbToWrite)
-            break;
-
-        /* Copy the data from our ring buffer to the core audio buffer. */
-        memcpy((UInt8 *)pvDst, pvSrc + cbWritten, cbToWrite);
+        if (cbToWrite)
+        {
+            /* Copy the data from our ring buffer to the core audio buffer. */
+            memcpy((UInt8 *)pvDst, pvSrc + cbWritten, cbToWrite);
+        }
 
         /* Release the read buffer, so it could be used for new data. */
         RTCircBufReleaseWriteBlock(pCircBuf, cbToWrite);
