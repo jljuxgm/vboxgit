@@ -1,4 +1,4 @@
-/* $Id: UIDetails.cpp 75427 2018-11-13 16:39:09Z vboxsync $ */
+/* $Id: UIDetails.cpp 75525 2018-11-16 16:36:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetails class implementation.
  */
@@ -74,6 +74,8 @@ void UIDetails::prepare()
     }
 
     /* Extra-data events connections: */
+    connect(gEDataManager, &UIExtraDataManager::sigDetailsCategoriesChange,
+            m_pDetailsModel, &UIDetailsModel::sltHandleExtraDataCategoriesChange);
     connect(gEDataManager, &UIExtraDataManager::sigDetailsOptionsChange,
             m_pDetailsModel, &UIDetailsModel::sltHandleExtraDataOptionsChange);
 

@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 75522 2018-11-16 16:19:32Z vboxsync $ */
+/* $Id: UIDetailsModel.h 75525 2018-11-16 16:36:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -93,6 +93,8 @@ public slots:
     void sltHandleToggleStarted();
     void sltHandleToggleFinished();
 
+    /** Handle extra-data categories change. */
+    void sltHandleExtraDataCategoriesChange();
     /** Handle extra-data options change for category of certain @a enmType. */
     void sltHandleExtraDataOptionsChange(DetailsElementType enmType);
 

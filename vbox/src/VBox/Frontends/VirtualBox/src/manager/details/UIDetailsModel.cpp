@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.cpp 75524 2018-11-16 16:25:21Z vboxsync $ */
+/* $Id: UIDetailsModel.cpp 75525 2018-11-16 16:36:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class implementation.
  */
@@ -129,6 +129,12 @@ void UIDetailsModel::sltHandleToggleStarted()
 
 void UIDetailsModel::sltHandleToggleFinished()
 {
+    m_pRoot->rebuildGroup();
+}
+
+void UIDetailsModel::sltHandleExtraDataCategoriesChange()
+{
+    m_categories = gEDataManager->selectorWindowDetailsElements();
     m_pRoot->rebuildGroup();
 }
 

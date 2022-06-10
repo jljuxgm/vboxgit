@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 75524 2018-11-16 16:25:21Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 75525 2018-11-16 16:36:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4610,6 +4610,9 @@ void UIExtraDataManager::sltExtraDataChange(const QUuid &uMachineID, const QStri
             /* Runtime UI host-key combintation changed? */
             else if (strKey == GUI_Input_HostKeyCombination)
                 emit sigRuntimeUIHostKeyCombinationChange();
+            /* Details categories: */
+            else if (strKey == GUI_Details_Elements)
+                emit sigDetailsCategoriesChange();
             /* Details options: */
             else if (strKey.startsWith(QString(GUI_Details_Elements) + '/'))
             {

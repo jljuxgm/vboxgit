@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 75427 2018-11-13 16:39:09Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 75525 2018-11-16 16:36:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -71,6 +71,8 @@ signals:
     /** Notifies about Runtime UI host-key combination change. */
     void sigRuntimeUIHostKeyCombinationChange();
 
+    /** Notifies about VirtualBox Manager / Details pane categories change. */
+    void sigDetailsCategoriesChange();
     /** Notifies about VirtualBox Manager / Details pane options change. */
     void sigDetailsOptionsChange(DetailsElementType enmType);
 
