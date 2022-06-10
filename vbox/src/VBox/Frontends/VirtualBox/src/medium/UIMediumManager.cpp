@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 77016 2019-01-28 10:52:17Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 77161 2019-02-05 10:58:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1537,8 +1537,7 @@ bool UIMediumManagerWidget::checkMediumFor(UIMediumItem *pItem, Action action)
         }
         case Action_Copy:
         {
-            /* False for children: */
-            return pItem->medium().parentID() == UIMedium::nullID();
+            return true;
         }
         case Action_Remove:
         {
