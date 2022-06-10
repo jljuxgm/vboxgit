@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 75903 2018-12-03 13:03:37Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 75907 2018-12-03 13:26:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestFileTable class implementation.
  */
@@ -570,7 +570,7 @@ void UIGuestFileTable::prepareToolbar()
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Delete));
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Rename));
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_CreateNewDirectory));
-        m_pToolBar->addSeparator();
+
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Copy));
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Cut));
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Paste));
@@ -584,6 +584,11 @@ void UIGuestFileTable::prepareToolbar()
         m_selectionDependentActions.insert(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Copy));
         m_selectionDependentActions.insert(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Cut));
         m_selectionDependentActions.insert(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_ShowProperties));
+
+        /* Hide these actions for now until we have a suitable guest-to-guest copy function: */
+        m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Copy)->setVisible(false);
+        m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Cut)->setVisible(false);
+        m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Paste)->setVisible(false);
     }
     setSelectionDependentActionsEnabled(false);
     setPasteActionEnabled(false);
