@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 75592 2018-11-19 18:35:07Z vboxsync $ */
+/* $Id: VMMDevState.h 75775 2018-11-27 16:51:58Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -136,10 +136,10 @@ typedef struct VMMDevState
     /** Does the guest currently want the host pointer to be shown? */
     uint32_t fHostCursorRequested;
 
-#if HC_ARCH_BITS == 32
-    /** Alignment padding. */
-    uint32_t u32Alignment0;
-#endif
+//#if HC_ARCH_BITS == 32
+//    /** Alignment padding. */
+//    uint32_t u32Alignment0;
+//#endif
 
     /** Pointer to device instance - RC pointer. */
     PPDMDEVINSRC pDevInsRC;
