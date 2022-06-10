@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 77578 2019-03-06 10:02:07Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 77590 2019-03-06 20:52:35Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -13349,10 +13349,10 @@ static int hmR0VmxExitXcptGP(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
              * The guest is no longer in real-mode, check if we can continue executing the
              * guest using hardware-assisted VMX. Otherwise, fall back to emulation.
              */
+            pVCpu->hm.s.vmx.RealMode.fRealOnV86Active = false;
             if (HMCanExecuteVmxGuest(pVCpu, pCtx))
             {
                 Log4Func(("Mode changed but guest still suitable for executing using VT-x\n"));
-                pVCpu->hm.s.vmx.RealMode.fRealOnV86Active = false;
                 ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_ALL_GUEST);
             }
             else
