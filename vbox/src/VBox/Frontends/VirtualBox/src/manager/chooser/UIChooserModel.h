@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 77677 2019-03-13 13:07:35Z vboxsync $ */
+/* $Id: UIChooserModel.h 77683 2019-03-13 16:22:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -186,6 +186,12 @@ public:
         void updateNavigation();
     /** @} */
 
+    /** @name Virtual Machine/Group search stuff.
+      * @{ */
+        /** Performs a search starting from the m_pInvisibleRootNode. */
+        void performSearch(const QString &strSearchTerm, int iItemSearchFlags);
+    /** @} */
+
     /** @name Children stuff.
       * @{ */
         /** Returns invisible root node instance. */
@@ -276,8 +282,8 @@ private slots:
         void sltEditGroupName();
         /** Handles group sort request. */
         void sltSortGroup();
-        /** Handles machine search request. */
-        void sltMachineSearch();
+        /** Handles machine search widget show/hide request. */
+        void sltShowHideSearchWidget();
         /** Handles group destroy request. */
         void sltUngroupSelectedGroup();
 

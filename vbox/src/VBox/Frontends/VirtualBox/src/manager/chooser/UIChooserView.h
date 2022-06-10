@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.h 77677 2019-03-13 13:07:35Z vboxsync $ */
+/* $Id: UIChooserView.h 77683 2019-03-13 16:22:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class declaration.
  */
@@ -71,6 +71,10 @@ protected:
         /** Handles resize @a pEvent. */
         virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
     /** @} */
+
+private slots:
+
+    void sltRedoSearch(const QString &strSearchTerm, int iItemSearchFlags);
 
 private:
 

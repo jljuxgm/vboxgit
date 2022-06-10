@@ -1,4 +1,4 @@
-/* $Id: UIChooserSearchWidget.h 77677 2019-03-13 13:07:35Z vboxsync $ */
+/* $Id: UIChooserSearchWidget.h 77683 2019-03-13 16:22:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserSearchWidget class declaration.
  */
@@ -38,7 +38,7 @@ class UIChooserSearchWidget : public QIWithRetranslateUI<QWidget>
 
 signals:
 
-    void sigSearchTermChanged(const QString &strSearchTerm);
+    void sigRedoSearch(const QString &strSearchTerm, int iItemSearchFlags);
 
 public:
 
@@ -52,6 +52,8 @@ protected:
 public slots:
 
 private slots:
+
+    void sltHandleSearchTermChange(const QString &strSearchTerm);
 
 private:
 

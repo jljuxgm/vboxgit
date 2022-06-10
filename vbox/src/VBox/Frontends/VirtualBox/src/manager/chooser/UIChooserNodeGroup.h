@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.h 77639 2019-03-10 19:45:56Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.h 77683 2019-03-13 16:22:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class declaration.
  */
@@ -93,6 +93,10 @@ public:
     void open() { m_fOpened = true; }
     /** Closes this group node. */
     void close() { m_fOpened = false; }
+
+
+    /** Recursively searches for a children wrt.  @a strSearchTerm and @a iItemSearchFlags and updates the @a matchedItems. */
+    virtual void searchForNodes(const QString &strSearchTerm, int iItemSearchFlags, QList<UIChooserNode*> &matchedItems) /* override */;
 
 protected:
 
