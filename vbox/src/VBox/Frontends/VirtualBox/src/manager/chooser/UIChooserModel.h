@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIChooserModel.h 75016 2018-10-23 19:42:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -68,7 +68,7 @@ signals:
     /** @name General stuff.
       * @{ */
         /** Notify listeners about tool menu popup request for certain @a enmClass and @a position. */
-        void sigToolMenuRequested(UIToolsClass enmClass, const QPoint &position);
+        void sigToolMenuRequested(UIToolClass enmClass, const QPoint &position);
     /** @} */
 
     /** @name Selection stuff.

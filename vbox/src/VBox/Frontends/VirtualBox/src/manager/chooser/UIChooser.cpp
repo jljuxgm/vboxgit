@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 74827 2018-10-13 02:55:59Z vboxsync $ */
+/* $Id: UIChooser.cpp 75016 2018-10-23 19:42:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -100,7 +100,7 @@ void UIChooser::sltHandleToolbarResize(const QSize &newSize)
     model()->setGlobalItemHeightHint(newSize.height());
 }
 
-void UIChooser::sltToolMenuRequested(UIToolsClass enmClass, const QPoint &position)
+void UIChooser::sltToolMenuRequested(UIToolClass enmClass, const QPoint &position)
 {
     /* Translate scene coordinates to global one: */
     emit sigToolMenuRequested(enmClass, mapToGlobal(view()->mapFromScene(position)));

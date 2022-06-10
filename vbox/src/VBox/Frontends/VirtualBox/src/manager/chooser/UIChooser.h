@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 74827 2018-10-13 02:55:59Z vboxsync $ */
+/* $Id: UIChooser.h 75016 2018-10-23 19:42:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -53,7 +53,7 @@ signals:
         void sigToggleFinished();
 
         /** Notifies listeners about tool popup-menu request for certain tool @a enmClass and in specified @a position. */
-        void sigToolMenuRequested(UIToolsClass enmClass, const QPoint &position);
+        void sigToolMenuRequested(UIToolClass enmClass, const QPoint &position);
     /** @} */
 
     /** @name Group saving stuff.
@@ -122,7 +122,7 @@ private slots:
     /** @name General stuff.
       * @{ */
         /** Handles signal about tool popup-menu request for certain tool @a enmClass and in specified @a position. */
-        void sltToolMenuRequested(UIToolsClass enmClass, const QPoint &position);
+        void sltToolMenuRequested(UIToolClass enmClass, const QPoint &position);
     /** @} */
 
 private:
