@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 74483 2018-09-26 16:27:10Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 74560 2018-10-01 16:50:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -150,8 +150,6 @@ private:
       * @{ */
         /** Prepares window. */
         void prepare();
-        /** Prepares toolbar. */
-        void prepareToolbar();
         /** Prepares widgets. */
         void prepareWidgets();
         /** Prepares connections. */
