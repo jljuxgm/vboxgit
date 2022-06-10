@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 75256 2018-11-05 18:54:52Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 75276 2018-11-06 11:46:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6976,13 +6976,12 @@ int Console::i_videoRecStart(void)
  */
 int Console::i_videoRecStop(void)
 {
-    if (Capture.mpVideoRecCtx && Capture.mpVideoRecCtx->IsStarted())
+    if (!Capture.mpVideoRecCtx || !Capture.mpVideoRecCtx->IsStarted())
         return VINF_SUCCESS;
 
     LogRel(("VideoRec: Stopping ...\n"));
 
     const size_t cStreams = Capture.mpVideoRecCtx->GetStreamCount();
-
     for (unsigned uScreen = 0; uScreen < cStreams; ++uScreen)
         mDisplay->i_videoRecScreenChanged(uScreen);
 
