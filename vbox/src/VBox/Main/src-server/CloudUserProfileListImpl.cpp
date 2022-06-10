@@ -1,4 +1,4 @@
-/* $Id: CloudUserProfileListImpl.cpp 73168 2018-07-17 07:56:12Z vboxsync $ */
+/* $Id: CloudUserProfileListImpl.cpp 73169 2018-07-17 08:08:42Z vboxsync $ */
 /** @file
  * ICloudUserProfileList COM class implementations.
  */
@@ -520,7 +520,7 @@ HRESULT OCIUserProfileList::createProfile(const com::Utf8Str &aProfileName,
     return hrc;
 }
 
-HRESULT OCIUserProfileList::updateProfile(const com::Utf8Str &aProfileName, 
+HRESULT OCIUserProfileList::updateProfile(const com::Utf8Str &aProfileName,
                                           const std::map <Utf8Str, Utf8Str> &aProfile)
 {
     HRESULT hrc = S_OK;
