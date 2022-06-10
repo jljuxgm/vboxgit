@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 77235 2019-02-09 18:30:14Z vboxsync $
+# $Id: Makefile.kmk 77545 2019-03-03 20:10:08Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2091,6 +2091,7 @@ VBoxRT_SOURCES                := \
 	common/checksum/crc32-zlib.cpp \
 	common/fuzz/fuzz.cpp \
 	common/fuzz/fuzz-observer.cpp \
+	common/fuzz/fuzz-target-recorder.cpp \
 	common/fuzz/fuzzmastercmd.cpp \
 	common/fuzz/fuzzclientcmd.cpp \
 	common/misc/aiomgr.cpp
