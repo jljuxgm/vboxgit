@@ -1,4 +1,4 @@
-/* $Id: UIImageTools.h 72043 2018-04-26 14:26:02Z vboxsync $ */
+/* $Id: UIImageTools.h 74961 2018-10-21 13:35:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for image manipulation.
  */
@@ -29,7 +29,7 @@
 namespace UIImageTools
 {
     /** Converts @a image to gray-scale. */
-    QImage toGray(const QImage &image);
+    SHARED_LIBRARY_STUFF QImage toGray(const QImage &image);
 
     /** Makes @a image more dark and dim. */
     SHARED_LIBRARY_STUFF void dimImage(QImage &image);
