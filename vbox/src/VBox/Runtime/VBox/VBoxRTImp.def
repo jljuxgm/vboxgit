@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 74327 2018-09-17 22:13:09Z vboxsync $
+; $Id: VBoxRTImp.def 74329 2018-09-18 02:01:26Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -30,7 +30,7 @@ EXPORTS
     g_aRTUniFlagsRanges             DATA
     g_aRTUniLowerRanges             DATA
     g_aRTUniUpperRanges             DATA
-    g_fRTAlignmentChecks            DATA
+    ;g_fRTAlignmentChecks            DATA - depends on build type, is internal, so not stable.
     g_pSUPGlobalInfoPage            DATA
     g_pStdErr                       DATA
     g_pStdIn                        DATA
