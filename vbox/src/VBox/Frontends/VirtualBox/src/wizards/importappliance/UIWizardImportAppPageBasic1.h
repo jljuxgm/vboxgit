@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 78213 2019-04-19 13:55:43Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.h 78214 2019-04-19 14:17:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -179,6 +179,9 @@ protected:
     /** Performs page validation. */
     virtual bool validatePage() /* override */;
 
+    /** Updates page appearance. */
+    virtual void updatePageAppearance() /* override */;
+
 private slots:
 
     /** Handles import source change. */
@@ -192,8 +195,10 @@ private slots:
 
 private:
 
-    /** Holds the label instance. */
-    QIRichTextLabel *m_pLabel;
+    /** Holds the main label instance. */
+    QIRichTextLabel *m_pLabelMain;
+    /** Holds the description label instance. */
+    QIRichTextLabel *m_pLabelDescription;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_importappliance_UIWizardImportAppPageBasic1_h */
