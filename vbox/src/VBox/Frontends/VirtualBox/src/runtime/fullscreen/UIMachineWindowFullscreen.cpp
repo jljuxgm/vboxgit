@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 73521 2018-08-06 12:20:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -352,6 +352,9 @@ void UIMachineWindowFullscreen::placeOnScreen()
         resize(workingArea.size());
     /* Resize window to the appropriate size on ML and next if it's screen has no own user-space: */
     else if (!pFullscreenLogic->screensHaveSeparateSpaces() && m_uScreenId != 0)
+        resize(workingArea.size());
+    /* Resize the window if we are already in the full screen mode. This covers cases like host-resolution changes while in full screen mode: */
+    else if(darwinIsInFullscreenMode(this))
         resize(workingArea.size());
     else
     {
