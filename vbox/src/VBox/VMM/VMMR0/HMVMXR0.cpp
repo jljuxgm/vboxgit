@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78258 2019-04-23 09:17:44Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78259 2019-04-23 10:40:45Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7279,8 +7279,7 @@ static int hmR0VmxImportGuestIntrState(PVMCPU pVCpu, PCVMXVMCSINFO pVmcsInfo)
             rc |= hmR0VmxImportGuestRFlags(pVCpu, pVmcsInfo);
             if (RT_SUCCESS(rc))
             {
-                if (u32Val & (  VMX_VMCS_GUEST_INT_STATE_BLOCK_MOVSS
-                              | VMX_VMCS_GUEST_INT_STATE_BLOCK_STI))
+                if (u32Val & (VMX_VMCS_GUEST_INT_STATE_BLOCK_MOVSS | VMX_VMCS_GUEST_INT_STATE_BLOCK_STI))
                     EMSetInhibitInterruptsPC(pVCpu, pVCpu->cpum.GstCtx.rip);
                 else if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS))
                     VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS);
@@ -10254,7 +10253,8 @@ static VBOXSTRICTRC hmR0VmxPreRunGuest(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient
      * possible because they are not merged yet.
      */
     PVM pVM = pVCpu->CTX_SUFF(pVM);
-    PVMXVMCSINFO pVmcsInfo = hmGetVmxActiveVmcsInfo(pVCpu);
+    PCVMXVMCSINFO pVmcsInfo = pVmxTransient->pVmcsInfo;
+    Assert(pVmcsInfo);
     if (   !pVCpu->hm.s.vmx.u64GstMsrApicBase
         && (pVmcsInfo->u32ProcCtls2 & VMX_PROC_CTLS2_VIRT_APIC_ACCESS)
         && PDMHasApic(pVM))
