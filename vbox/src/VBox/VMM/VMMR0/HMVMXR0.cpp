@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 74360 2018-09-19 08:43:05Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 74489 2018-09-27 08:29:52Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8066,13 +8066,13 @@ static void hmR0VmxClearIntNmiWindowsVmcs(PVMCPU pVCpu)
     if (pVCpu->hm.s.vmx.u32ProcCtls & VMX_PROC_CTLS_INT_WINDOW_EXIT)
     {
         hmR0VmxClearIntWindowExitVmcs(pVCpu);
-        Log4Func(("Cleared interrupt widow\n"));
+        Log4Func(("Cleared interrupt window\n"));
     }
 
     if (pVCpu->hm.s.vmx.u32ProcCtls & VMX_PROC_CTLS_NMI_WINDOW_EXIT)
     {
         hmR0VmxClearNmiWindowExitVmcs(pVCpu);
-        Log4Func(("Cleared interrupt widow\n"));
+        Log4Func(("Cleared NMI window\n"));
     }
 }
 
