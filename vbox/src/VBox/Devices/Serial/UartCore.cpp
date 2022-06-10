@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 73302 2018-07-22 14:46:03Z vboxsync $ */
+/* $Id: UartCore.cpp 73303 2018-07-22 14:54:24Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -334,6 +334,7 @@ static void uartIrqUpdate(PUARTCORE pThis)
 }
 
 
+#ifdef IN_RING3
 /**
  * Clears the given FIFO.
  *
@@ -474,7 +475,6 @@ DECLINLINE(size_t) uartFifoCopyFrom(PUARTFIFO pFifo, void *pvSrc, size_t cbCopy)
 #endif
 
 
-#ifdef IN_RING3
 /**
  * Updates the delta bits for the given MSR register value which has the status line
  * bits set.
