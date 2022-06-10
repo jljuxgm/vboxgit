@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerDialog.cpp 75761 2018-11-27 09:10:13Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerDialog.cpp 75809 2018-11-29 07:57:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManagerDialog class implementation.
  */
@@ -74,7 +74,7 @@ UIGuestControlFileManagerDialog::UIGuestControlFileManagerDialog(QWidget *pCente
 void UIGuestControlFileManagerDialog::retranslateUi()
 {
     /* Translate window title: */
-    setWindowTitle(UIGuestControlFileManager::tr("%1 - Guest Control").arg(m_strMachineName));
+    setWindowTitle(UIGuestControlFileManager::tr("%1 - Guest Control File Manager").arg(m_strMachineName));
     /* Translate buttons: */
     button(ButtonType_Close)->setText(UIGuestControlFileManager::tr("Close"));
 }
