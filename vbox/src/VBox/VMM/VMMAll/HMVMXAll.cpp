@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 74227 2018-09-12 16:49:05Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 74258 2018-09-14 04:20:16Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -307,6 +307,11 @@ static const char * const g_apszVmxVDiagDesc[] =
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_HostSs                   , "HostSs"                    ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_HostSysenterEspEip       , "HostSysenterEspEip"        ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_LongModeCS               , "LongModeCS"                ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_MsrLoad                  , "MsrLoad"                   ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_MsrLoadCount             , "MsrLoadCount"              ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_MsrLoadPtrReadPhys       , "MsrLoadPtrReadPhys"        ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_MsrLoadRing3             , "MsrLoadRing3"              ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_MsrLoadRsvd              , "MsrLoadRsvd"               ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_NmiWindowExit            , "NmiWindowExit"             ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_PinCtlsAllowed1          , "PinCtlsAllowed1"           ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_PinCtlsDisallowed0       , "PinCtlsDisallowed0"        ),
