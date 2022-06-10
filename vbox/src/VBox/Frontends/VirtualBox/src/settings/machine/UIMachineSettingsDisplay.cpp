@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 74837 2018-10-15 08:57:13Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 74862 2018-10-16 08:23:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -444,10 +444,11 @@ void UIMachineSettingsDisplay::getFromCache()
                                                                                    UIDataSettingsMachineDisplay::VideoCaptureOption_VC);
     if (fAudioCapture && fVideoCapture)
         m_pComboBoxCaptureMode->setCurrentIndex(static_cast<int>(UIDataSettingsMachineDisplay::CaptureMode_VideoAudio));
-    else if (!fAudioCapture && fVideoCapture)
-        m_pComboBoxCaptureMode->setCurrentIndex(static_cast<int>(UIDataSettingsMachineDisplay::CaptureMode_VideoOnly));
     else if (fAudioCapture && !fVideoCapture)
         m_pComboBoxCaptureMode->setCurrentIndex(static_cast<int>(UIDataSettingsMachineDisplay::CaptureMode_AudioOnly));
+    else
+        m_pComboBoxCaptureMode->setCurrentIndex(static_cast<int>(UIDataSettingsMachineDisplay::CaptureMode_VideoOnly));
+
     m_pSliderAudioCaptureQuality->setValue(UIDataSettingsMachineDisplay::getAudioQualityFromOptions(oldDisplayData.m_strVideoCaptureOptions));
 
     /* Polish page finally: */
