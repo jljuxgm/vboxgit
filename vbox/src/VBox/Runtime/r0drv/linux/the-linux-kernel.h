@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 77198 2019-02-07 15:15:22Z vboxsync $ */
+/* $Id: the-linux-kernel.h 77417 2019-02-21 23:50:47Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -162,7 +162,7 @@
 # include <linux/tqueue.h>
 #endif
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 4)
 # include <linux/kthread.h>
 #endif
 
