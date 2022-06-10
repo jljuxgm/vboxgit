@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 72406 2018-06-01 09:48:31Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 72815 2018-07-03 09:55:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -796,6 +796,8 @@ private:
     QString  m_strMachineId;
     /** Holds the machine settings file-path. */
     QString  m_strMachineSettingsFilePath;
+    /** Holds the machine settings file-path. */
+    QString  m_strMachineName;
     /** Holds the machine guest OS type ID. */
     QString  m_strMachineGuestOSTypeId;
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72529 2018-06-12 15:40:17Z vboxsync $
+# $Id: Makefile.kmk 72815 2018-07-03 09:55:30Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -795,6 +795,7 @@ ifndef VBOX_GUI_WITH_SHARED_LIBRARY
 	src/logviewer/UIVMLogViewerSettingsPanel.h \
 	src/logviewer/UIVMLogViewerTextEdit.h \
 	src/logviewer/UIVMLogViewerWidget.h \
+	src/medium/UIFDCreationDialog.h \
 	src/medium/UIMediumEnumerator.h \
 	src/medium/UIMediumSelector.h \
 	src/runtime/UIActionPoolRuntime.h \
@@ -1067,6 +1068,7 @@ ifdef VBOX_GUI_WITH_SHARED_LIBRARY
 	src/logviewer/UIVMLogViewerSettingsPanel.h \
 	src/logviewer/UIVMLogViewerTextEdit.h \
 	src/logviewer/UIVMLogViewerWidget.h \
+	src/medium/UIFDCreationDialog.h \
 	src/medium/UIMediumEnumerator.h \
 	src/medium/UIMediumSelector.h \
 	src/runtime/UIActionPoolRuntime.h \
@@ -1470,6 +1472,7 @@ ifndef VBOX_GUI_WITH_SHARED_LIBRARY
 	src/logviewer/UIVMLogViewerSettingsPanel.cpp \
 	src/logviewer/UIVMLogViewerTextEdit.cpp \
 	src/logviewer/UIVMLogViewerWidget.cpp \
+	src/medium/UIFDCreationDialog.cpp \
 	src/medium/UIMedium.cpp \
 	src/medium/UIMediumDefs.cpp \
 	src/medium/UIMediumEnumerator.cpp \
@@ -1800,6 +1803,7 @@ ifdef VBOX_GUI_WITH_SHARED_LIBRARY
 	src/logviewer/UIVMLogViewerSettingsPanel.cpp \
 	src/logviewer/UIVMLogViewerTextEdit.cpp \
 	src/logviewer/UIVMLogViewerWidget.cpp \
+	src/medium/UIFDCreationDialog.cpp \
 	src/medium/UIMedium.cpp \
 	src/medium/UIMediumDefs.cpp \
 	src/medium/UIMediumEnumerator.cpp \

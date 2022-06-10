@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 72406 2018-06-01 09:48:31Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 72815 2018-07-03 09:55:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -2192,6 +2192,7 @@ void UIMachineSettingsStorage::loadToCacheFrom(QVariant &data)
     /* Gather old common data: */
     m_strMachineId = m_machine.GetId();
     m_strMachineSettingsFilePath = m_machine.GetSettingsFilePath();
+    m_strMachineName = m_machine.GetName();
     m_strMachineGuestOSTypeId = m_machine.GetOSTypeId();
 
     /* For each controller: */
@@ -3796,7 +3797,8 @@ void UIMachineSettingsStorage::addControllerWrapper(const QString &strName, KSto
 QString UIMachineSettingsStorage::openMediumSelectorDialog(UIMediumType  enmMediumType)
 {
     QWidget *pParent = windowManager().realParentWindow(this);
-    QPointer<UIMediumSelector> pSelector = new UIMediumSelector(enmMediumType, pParent);
+    QPointer<UIMediumSelector> pSelector = new UIMediumSelector(enmMediumType, m_strMachineName,
+                                                                m_strMachineSettingsFilePath, pParent);
 
     if (!pSelector)
         return QString();
