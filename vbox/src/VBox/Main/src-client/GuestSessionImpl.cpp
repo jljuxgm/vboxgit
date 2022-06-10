@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 77582 2019-03-06 14:18:39Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 77583 2019-03-06 14:23:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1767,21 +1767,14 @@ bool GuestSession::i_isTerminated(void) const
 {
     switch (mData.mStatus)
     {
-        case GuestSessionStatus_Undefined:
-            RT_FALL_THROUGH();
-        case GuestSessionStatus_Starting:
-            RT_FALL_THROUGH();
-        case GuestSessionStatus_Started:
-            RT_FALL_THROUGH();
-        case GuestSessionStatus_Terminating:
-            RT_FALL_THROUGH();
-        case GuestSessionStatus_32BitHack:
-            break;
-
         case GuestSessionStatus_Terminated:
+            RT_FALL_THROUGH();
         case GuestSessionStatus_TimedOutKilled:
+            RT_FALL_THROUGH();
         case GuestSessionStatus_TimedOutAbnormally:
+            RT_FALL_THROUGH();
         case GuestSessionStatus_Down:
+            RT_FALL_THROUGH();
         case GuestSessionStatus_Error:
             return true;
 
