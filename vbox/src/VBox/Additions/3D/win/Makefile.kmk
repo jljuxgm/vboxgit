@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75443 2018-11-14 10:17:08Z vboxsync $
+# $Id: Makefile.kmk 75562 2018-11-19 10:01:56Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows guest components using Mesa3D.
 #
@@ -20,6 +20,7 @@ include $(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefile.
 include $(PATH_SUB_CURRENT)/VBoxWddmUmHlp/Makefile.kmk
+include $(PATH_SUB_CURRENT)/VBoxICD/Makefile.kmk
 include $(PATH_SUB_CURRENT)/VBoxGL/Makefile.kmk
 include $(PATH_SUB_CURRENT)/VBoxNine/Makefile.kmk
 include $(PATH_SUB_CURRENT)/VBoxSVGA/Makefile.kmk
