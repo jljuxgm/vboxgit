@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: makepackage.sh 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: makepackage.sh 76818 2019-01-14 16:17:07Z vboxsync $
 ## @file
 # VirtualBox package creation script, Solaris hosts.
 #
@@ -23,15 +23,11 @@
 
 # Parse options.
 HARDENED=""
-GUISHAREDLIB=""
 while test $# -ge 1;
 do
     case "$1" in
         --hardened)
             HARDENED=1
-            ;;
-        --guisharedlib)
-            GUISHAREDLIB=1
             ;;
     *)
         break
@@ -189,9 +185,7 @@ dirlist_fixup prototype  '$3 == "var/svc/manifest/application/virtualbox"'      
 # Hardening requires some executables to be marked setuid.
 if test -n "$HARDENED"; then
     $VBOX_AWK 'NF == 6 \
-        && (    (   $3 == "opt/VirtualBox/amd64/VirtualBox" \
-                 && "'$GUISHAREDLIB'" == "") \
-            ||  $3 == "opt/VirtualBox/amd64/VirtualBoxVM" \
+        && (    $3 == "opt/VirtualBox/amd64/VirtualBoxVM" \
             ||  $3 == "opt/VirtualBox/amd64/VBoxHeadless" \
             ||  $3 == "opt/VirtualBox/amd64/VBoxSDL" \
             ||  $3 == "opt/VirtualBox/i386/VirtualBox" \

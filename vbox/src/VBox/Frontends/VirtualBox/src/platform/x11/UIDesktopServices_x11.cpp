@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_x11.cpp 76731 2019-01-09 11:16:46Z vboxsync $ */
+/* $Id: UIDesktopServices_x11.cpp 76818 2019-01-14 16:17:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to X11..
  */
@@ -32,11 +32,7 @@ bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, 
     QFile link(strDstPath + QDir::separator() + strName + ".desktop");
     if (link.open(QFile::WriteOnly | QFile::Truncate))
     {
-#ifdef VBOX_GUI_WITH_SHARED_LIBRARY
         const QString strVBox = QDir::toNativeSeparators(QCoreApplication::applicationDirPath() + "/" + VBOX_GUI_VMRUNNER_IMAGE);
-#else
-        const QString strVBox = QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
-#endif
         QTextStream out(&link);
         out.setCodec("UTF-8");
         /* Create a link which starts VirtualBox with the machine uuid. */

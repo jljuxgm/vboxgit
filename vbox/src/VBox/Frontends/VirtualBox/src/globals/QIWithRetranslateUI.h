@@ -1,4 +1,4 @@
-/* $Id: QIWithRetranslateUI.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: QIWithRetranslateUI.h 76818 2019-01-14 16:17:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWithRetranslateUI class declaration.
  */
@@ -66,7 +66,6 @@ protected:
     virtual void retranslateUi() = 0;
 };
 
-#ifdef VBOX_GUI_WITH_SHARED_LIBRARY
 /** Explicit QIWithRetranslateUI instantiation for QWidget class.
   * @note  On Windows it's important that all template cases are instantiated just once across
   *        the linking space. In case we have particular template case instantiated from both
@@ -75,7 +74,6 @@ protected:
   *        I would also note that it would be incorrect to just make whole the template exported
   *        to library because latter can have lack of required instantiations (current case). */
 template class SHARED_LIBRARY_STUFF QIWithRetranslateUI<QWidget>;
-#endif
 
 
 /** Template for automatic language translations of underlying QWidget with certain flags. */

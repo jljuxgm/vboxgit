@@ -1,4 +1,4 @@
-/* $Id: UILibraryDefs.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UILibraryDefs.h 76818 2019-01-14 16:17:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global library definitions.
  */
@@ -25,15 +25,10 @@
 #include <iprt/cdefs.h>
 
 /* Define shared library stuff: */
-#ifdef VBOX_GUI_WITH_SHARED_LIBRARY
-# ifdef VBOX_GUI_LIBRARY
-#  define SHARED_LIBRARY_STUFF DECLEXPORT_CLASS
-# else
-#  define SHARED_LIBRARY_STUFF DECLIMPORT_CLASS
-# endif
+#ifdef VBOX_GUI_LIBRARY
+# define SHARED_LIBRARY_STUFF DECLEXPORT_CLASS
 #else
-# define SHARED_LIBRARY_STUFF
+# define SHARED_LIBRARY_STUFF DECLIMPORT_CLASS
 #endif
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UILibraryDefs_h */
-

@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_win.cpp 76731 2019-01-09 11:16:46Z vboxsync $ */
+/* $Id: UIDesktopServices_win.cpp 76818 2019-01-14 16:17:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to Windows..
  */
@@ -31,11 +31,7 @@ bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, 
 {
     IShellLink *pShl = NULL;
     IPersistFile *pPPF = NULL;
-#ifdef VBOX_GUI_WITH_SHARED_LIBRARY
     const QString strVBox = QDir::toNativeSeparators(QCoreApplication::applicationDirPath() + "/" + VBOX_GUI_VMRUNNER_IMAGE);
-#else
-    const QString strVBox = QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
-#endif
     QFileInfo fi(strVBox);
     QString strVBoxDir = QDir::toNativeSeparators(fi.absolutePath());
     HRESULT rc = CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, IID_IShellLink, (void**)(&pShl));

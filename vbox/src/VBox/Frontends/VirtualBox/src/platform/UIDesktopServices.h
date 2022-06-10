@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices.h 76622 2019-01-03 15:41:31Z vboxsync $ */
+/* $Id: UIDesktopServices.h 76818 2019-01-14 16:17:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Desktop Services..
  */
@@ -24,10 +24,8 @@
 /* Qt includes */
 #include <QUuid>
 
-#ifdef VBOX_GUI_WITH_SHARED_LIBRARY
 /** Name of the executable (image) used to start VMs. */
-# define VBOX_GUI_VMRUNNER_IMAGE "VirtualBoxVM"
-#endif
+#define VBOX_GUI_VMRUNNER_IMAGE "VirtualBoxVM"
 
 /* Qt forward declarations */
 class QString;
