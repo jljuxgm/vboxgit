@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.h 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIHostFileTable.h 75610 2018-11-20 11:14:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostFileTable class declaration.
  */
@@ -33,6 +33,7 @@ class UIHostFileTable : public UIGuestControlFileTable
 public:
 
     UIHostFileTable(UIActionPool *pActionPool, QWidget *pParent = 0);
+    void setDeleteAfterCopyCache(const QUuid &progressId, const QStringList &sourceObjectsList);
 
 protected:
 
@@ -40,6 +41,7 @@ protected:
     void            retranslateUi() /* override */;
     virtual void    readDirectory(const QString& strPath, UIFileTableItem *parent, bool isStartDir = false) /* override */;
     virtual void    deleteByItem(UIFileTableItem *item) /* override */;
+    virtual void    deleteByPath(const QStringList &pathList) /* override */;
     virtual void    goToHomeDirectory() /* override */;
     virtual bool    renameItem(UIFileTableItem *item, QString newBaseName);
     virtual bool    createDirectory(const QString &path, const QString &directoryName);
