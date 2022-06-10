@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 77189 2019-02-06 20:47:57Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 77192 2019-02-07 09:04:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -445,8 +445,12 @@ void UIMediumSelector::sltCreateMedium()
 
     if (!uMediumId.isNull())
     {
+        /* Update the tree widget making sure we show the new item: */
         repopulateTreeWidget();
+        /* Select the new item: */
         selectMedium(uMediumId);
+        /* Update the search: */
+        m_pSearchWidget->search(m_pTreeWidget);
     }
 }
 
@@ -486,6 +490,8 @@ void UIMediumSelector::sltHandleRefresh()
 {
     /* Initialize media enumation: */
     vboxGlobal().startMediumEnumeration();
+    /* Update the search: */
+    m_pSearchWidget->search(m_pTreeWidget);
 }
 
 void UIMediumSelector::sltHandlePerformSearch()

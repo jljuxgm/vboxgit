@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.cpp 77174 2019-02-06 13:38:20Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.cpp 77192 2019-02-07 09:04:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class implementation.
  */
@@ -117,9 +117,11 @@ void UISearchLineEdit::paintEvent(QPaintEvent *pEvent)
 {
     QLineEdit::paintEvent(pEvent);
 
+    /* No search terms. no search. nothing to show here. mone along please: */
+    if (text().isEmpty())
+        return;
 
     QPainter painter(this);
-
     QFont pfont = font();
     QString strText = QString("%1/%2").arg(QString::number(m_iScrollToIndex + 1)).arg(QString::number(m_iMatchCount));
     QSize textSize(QApplication::fontMetrics().width(strText),
