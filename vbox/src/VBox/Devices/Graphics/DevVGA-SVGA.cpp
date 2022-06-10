@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 76234 2018-12-14 14:03:40Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 76246 2018-12-15 18:33:25Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -4047,6 +4047,14 @@ static DECLCALLBACK(int) vmsvgaFIFOLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread)
                     AssertBreak(pHdr->size < pThis->svga.cbFIFO);
                     uint32_t cbCmd = sizeof(SVGA3dCmdHeader) + pHdr->size;
                     VMSVGAFIFO_GET_MORE_CMD_BUFFER_BREAK(pHdr, SVGA3dCmdHeader, cbCmd);
+
+                    if (RT_LIKELY(pThis->svga.f3DEnabled))
+                    { /* likely */ }
+                    else
+                    {
+                        LogRelMax(8, ("VMSVGA3d: 3D disabled, command %d skipped\n", enmCmdId));
+                        break;
+                    }
 
 /**
  * Check that the 3D command has at least a_cbMin of payload bytes after the

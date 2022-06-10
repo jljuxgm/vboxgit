@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 76181 2018-12-12 15:16:19Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 76246 2018-12-15 18:33:25Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -37,6 +37,10 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "DevVGA-SVGA3d.h"
+
+#if defined(VMSVGA3D_DYNAMIC_LOAD) && defined(VMSVGA3D_OPENGL)
+#include "DevVGA-SVGA3d-glLdr.h"
+#endif
 
 #ifdef RT_OS_WINDOWS
 # include <iprt/win/windows.h>
