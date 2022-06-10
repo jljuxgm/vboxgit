@@ -1,4 +1,4 @@
-/* $Id: precomp.h 73349 2018-07-25 10:14:30Z vboxsync $*/
+/* $Id: precomp.h 75209 2018-10-31 16:41:46Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -421,7 +421,7 @@
 #endif
 #include "UIActionPool.h"
 #include "UIActionPoolRuntime.h"
-#include "UIActionPoolSelector.h"
+#include "UIActionPoolManager.h"
 #include "UIAnimationFramework.h"
 #include "UIApplianceEditorWidget.h"
 #include "UIApplianceExportEditorWidget.h"

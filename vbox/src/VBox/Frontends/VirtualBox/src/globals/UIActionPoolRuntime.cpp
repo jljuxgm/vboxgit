@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 75191 2018-10-30 16:54:34Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -4293,9 +4293,9 @@ void UIActionPoolRuntime::updateShortcuts()
 {
     /* Call to base-class: */
     UIActionPool::updateShortcuts();
-    /* Create temporary Selector UI pool to do the same: */
+    /* Create temporary Manager UI pool to do the same: */
     if (!m_fTemporary)
-        UIActionPool::createTemporary(UIActionPoolType_Selector);
+        UIActionPool::createTemporary(UIActionPoolType_Manager);
 }
 
 QString UIActionPoolRuntime::shortcutsExtraDataID() const

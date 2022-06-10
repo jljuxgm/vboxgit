@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 75102 2018-10-26 14:50:02Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -33,7 +33,7 @@
 /* GUI includes: */
 # include "QIMessageBox.h"
 # include "VBoxGlobal.h"
-# include "UIActionPoolSelector.h"
+# include "UIActionPoolManager.h"
 # include "UIChooser.h"
 # include "UIChooserHandlerMouse.h"
 # include "UIChooserHandlerKeyboard.h"

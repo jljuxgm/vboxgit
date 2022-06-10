@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 75093 2018-10-26 12:22:34Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -27,7 +27,7 @@
 
 /* GUI includes: */
 # include "QISplitter.h"
-# include "UIActionPoolSelector.h"
+# include "UIActionPoolManager.h"
 # include "UIErrorString.h"
 # include "UIExtraDataManager.h"
 # include "UIChooser.h"

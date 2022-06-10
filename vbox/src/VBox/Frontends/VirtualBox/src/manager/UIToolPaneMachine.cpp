@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 75144 2018-10-29 13:10:42Z vboxsync $ */
+/* $Id: UIToolPaneMachine.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -27,7 +27,7 @@
 # include <QUuid>
 
 /* GUI includes */
-# include "UIActionPoolSelector.h"
+# include "UIActionPoolManager.h"
 # include "UIErrorPane.h"
 # include "UIDetails.h"
 # include "UIIconPool.h"

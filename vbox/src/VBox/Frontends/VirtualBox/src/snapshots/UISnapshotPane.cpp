@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 75161 2018-10-29 17:57:17Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -36,7 +36,7 @@
 /* GUI includes: */
 # include "QIMessageBox.h"
 # include "QITreeWidget.h"
-# include "UIActionPoolSelector.h"
+# include "UIActionPoolManager.h"
 # include "UIConverter.h"
 # include "UIExtraDataManager.h"
 # include "UIIconPool.h"

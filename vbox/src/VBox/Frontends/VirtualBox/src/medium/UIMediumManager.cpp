@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 75161 2018-10-29 17:57:17Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -35,7 +35,7 @@
 # include "QIMessageBox.h"
 # include "QITabWidget.h"
 # include "VBoxGlobal.h"
-# include "UIActionPoolSelector.h"
+# include "UIActionPoolManager.h"
 # include "UIExtraDataManager.h"
 # include "UIMediumDetailsWidget.h"
 # include "UIMediumItem.h"

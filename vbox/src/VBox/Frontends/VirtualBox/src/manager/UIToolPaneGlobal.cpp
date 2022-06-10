@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 75054 2018-10-25 07:22:29Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -27,7 +27,7 @@
 # include <QUuid>
 
 /* GUI includes */
-# include "UIActionPoolSelector.h"
+# include "UIActionPoolManager.h"
 # include "UICloudProfileManager.h"
 # include "UIHostNetworkManager.h"
 # include "UIMediumManager.h"

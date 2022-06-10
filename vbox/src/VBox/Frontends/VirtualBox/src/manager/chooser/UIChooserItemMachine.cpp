@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 75204 2018-10-31 10:55:45Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -32,7 +32,7 @@
 # include "UIChooserItemGroup.h"
 # include "UIChooserItemMachine.h"
 # include "UIChooserModel.h"
-# include "UIActionPoolSelector.h"
+# include "UIActionPoolManager.h"
 # include "UIIconPool.h"
 # include "UIImageTools.h"
 # include "UIVirtualBoxManager.h"

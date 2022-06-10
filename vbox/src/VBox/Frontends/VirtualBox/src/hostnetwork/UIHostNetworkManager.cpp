@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 75161 2018-10-29 17:57:17Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -28,7 +28,7 @@
 /* GUI includes: */
 # include "QIDialogButtonBox.h"
 # include "QITreeWidget.h"
-# include "UIActionPoolSelector.h"
+# include "UIActionPoolManager.h"
 # include "UIExtraDataManager.h"
 # include "UIIconPool.h"
 # include "UIHostNetworkDetailsWidget.h"
