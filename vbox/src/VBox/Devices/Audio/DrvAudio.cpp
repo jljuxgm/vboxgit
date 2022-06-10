@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 76699 2019-01-08 09:54:53Z vboxsync $ */
+/* $Id: DrvAudio.cpp 76702 2019-01-08 11:46:08Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -3025,7 +3025,7 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis,
      */
     if (pCfgReq->Backend.cfBufferSize < pCfgReq->Backend.cfPeriod)
     {
-        LogRel(("Audio: Error for stream '%s': Buffer size (%RU64ms) must not be smaller than the period size (%RU64ms)\n",
+        LogRel(("Audio: Error for stream '%s': Buffering size (%RU64ms) must not be smaller than the period size (%RU64ms)\n",
                 pStream->szName, DrvAudioHlpFramesToMilli(pCfgReq->Backend.cfBufferSize, &pCfgReq->Props),
                 DrvAudioHlpFramesToMilli(pCfgReq->Backend.cfPeriod, &pCfgReq->Props)));
         return VERR_INVALID_PARAMETER;
@@ -3034,9 +3034,9 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis,
     if (   pCfgReq->Backend.cfPreBuf != UINT32_MAX /* Custom pre-buffering set? */
         && pCfgReq->Backend.cfPreBuf)
     {
-        if (pCfgReq->Backend.cfBufferSize <= pCfgReq->Backend.cfPreBuf)
+        if (pCfgReq->Backend.cfBufferSize < pCfgReq->Backend.cfPreBuf)
         {
-            LogRel(("Audio: Error for stream '%s': Buffering size (%RU64ms) must not be smaller as or equal to the pre-buffering size (%RU64ms)\n",
+            LogRel(("Audio: Error for stream '%s': Buffering size (%RU64ms) must not be smaller than the pre-buffering size (%RU64ms)\n",
                     pStream->szName, DrvAudioHlpFramesToMilli(pCfgReq->Backend.cfPreBuf, &pCfgReq->Props),
                     DrvAudioHlpFramesToMilli(pCfgReq->Backend.cfBufferSize, &pCfgReq->Props)));
             return VERR_INVALID_PARAMETER;
