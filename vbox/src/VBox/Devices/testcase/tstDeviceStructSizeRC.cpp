@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 73135 2018-07-15 16:43:16Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 73243 2018-07-19 15:08:34Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1331,8 +1331,11 @@ int main()
     GEN_CHECK_OFF(UARTCORE, pDrvSerial);
     GEN_CHECK_OFF(UARTCORE, fFlags);
     GEN_CHECK_OFF(UARTCORE, enmType);
+    GEN_CHECK_OFF(UARTCORE, pTimerRcvFifoTimeoutR3);
     GEN_CHECK_OFF(UARTCORE, pfnUartIrqReqR3);
+    GEN_CHECK_OFF(UARTCORE, pTimerRcvFifoTimeoutR0);
     GEN_CHECK_OFF(UARTCORE, pfnUartIrqReqR0);
+    GEN_CHECK_OFF(UARTCORE, pTimerRcvFifoTimeoutRC);
     GEN_CHECK_OFF(UARTCORE, pfnUartIrqReqRC);
     GEN_CHECK_OFF(UARTCORE, uRegDivisor);
     GEN_CHECK_OFF(UARTCORE, uRegRbr);
@@ -1345,8 +1348,10 @@ int main()
     GEN_CHECK_OFF(UARTCORE, uRegLsr);
     GEN_CHECK_OFF(UARTCORE, uRegMsr);
     GEN_CHECK_OFF(UARTCORE, uRegScr);
+    GEN_CHECK_OFF(UARTCORE, fIrqCtiPending);
     GEN_CHECK_OFF(UARTCORE, FifoXmit);
     GEN_CHECK_OFF(UARTCORE, FifoRecv);
+    GEN_CHECK_OFF(UARTCORE, cSymbolXferTicks);
     GEN_CHECK_OFF(UARTCORE, cbAvailRdr);
 
     /* Serial/DevSerialNew.cpp */

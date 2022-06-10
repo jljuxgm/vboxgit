@@ -1,4 +1,4 @@
-/* $Id: DrvCharNew.cpp 72117 2018-05-04 16:43:55Z vboxsync $ */
+/* $Id: DrvCharNew.cpp 73243 2018-07-19 15:08:34Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMISERIALCONNECTOR / PDMISERIALPORT.
  */
@@ -230,8 +230,16 @@ static DECLCALLBACK(int) drvCharIoLoop(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
                                                           &cbFetched);
                     AssertRC(rc);
 
-                    ASMAtomicSubZ(&pThis->cbAvailWr, cbFetched);
-                    pThis->cbTxUsed += cbFetched;
+                    if (cbFetched > 0)
+                    {
+                        ASMAtomicSubZ(&pThis->cbAvailWr, cbFetched);
+                        pThis->cbTxUsed += cbFetched;
+                    }
+                    else
+                    {
+                        /* The guest reset the send queue and there is no data available anymore. */
+                        pThis->cbAvailWr = 0;
+                    }
                 }
 
                 size_t cbProcessed = pThis->cbTxUsed;
