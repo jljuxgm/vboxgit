@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 77910 2019-03-27 11:33:01Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 78064 2019-04-09 14:18:33Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2981,7 +2981,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
             case MODIFYVM_RECORDING_OPTIONS:
             {
                 ComPtr<IRecordingSettings> recordingSettings;
-                CHECK_ERROR_BREAK(machine, COMGETTER(RecordingSettings)(recordingSettings.asOutParam()));
+                CHECK_ERROR_BREAK(sessionMachine, COMGETTER(RecordingSettings)(recordingSettings.asOutParam()));
                 SafeIfaceArray <IRecordingScreenSettings> saRecordingScreenScreens;
                 CHECK_ERROR_BREAK(recordingSettings, COMGETTER(Screens)(ComSafeArrayAsOutParam(saRecordingScreenScreens)));
 
