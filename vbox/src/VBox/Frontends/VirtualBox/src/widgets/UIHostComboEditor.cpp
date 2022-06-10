@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 71920 2018-04-19 12:42:46Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 73507 2018-08-05 14:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class implementation.
  */
@@ -758,7 +758,7 @@ bool UIHostComboEditorPrivate::nativeEvent(const QByteArray &eventType, void *pM
             RT_GCC_NO_WARN_DEPRECATED_BEGIN
             const KeySym ks = ::XKeycodeToKeysym(QX11Info::display(), pKeyEvent->detail, 0);
             RT_GCC_NO_WARN_DEPRECATED_END
-            const int iKeySym = static_cast<const int>(ks);
+            const int iKeySym = static_cast<int>(ks);
 
             /* Handle key-event: */
             return processKeyEvent(iKeySym, (pEvent->response_type & ~0x80) == XCB_KEY_PRESS);
