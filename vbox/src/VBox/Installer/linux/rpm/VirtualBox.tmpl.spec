@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: VirtualBox.tmpl.spec 76758 2019-01-10 16:27:30Z vboxsync $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -141,6 +141,8 @@ for i in additions/VBoxGuestAdditions.iso; do
   mv $i $RPM_BUILD_ROOT/usr/share/virtualbox; done
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/VirtualBox
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/virtualbox
+ln -s VBox $RPM_BUILD_ROOT/usr/bin/VirtualBoxVM
+ln -s VBox $RPM_BUILD_ROOT/usr/bin/virtualboxvm
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxManage
 ln -s VBox $RPM_BUILD_ROOT/usr/bin/vboxmanage
 test -f VBoxSDL && ln -s VBox $RPM_BUILD_ROOT/usr/bin/VBoxSDL

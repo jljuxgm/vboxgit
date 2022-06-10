@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: rules 76758 2019-01-10 16:27:30Z vboxsync $
 ## @file
 # VirtualBox rules.
 #
@@ -288,6 +288,8 @@ endif
 	dh_link \
 	    $(if $(NOQT),,usr/bin/VBox          usr/bin/VirtualBox) \
 	    $(if $(NOQT),,usr/bin/VBox          usr/bin/virtualbox) \
+	    $(if $(NOQT),,usr/bin/VBox          usr/bin/VirtualBoxVM) \
+	    $(if $(NOQT),,usr/bin/VBox          usr/bin/virtualboxvm) \
 	    usr/bin/VBox                        usr/bin/VBoxManage \
 	    usr/bin/VBox                        usr/bin/vboxmanage \
 	    $(if $(HEADLESS),,usr/bin/VBox      usr/bin/VBoxSDL) \
