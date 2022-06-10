@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76033 2018-12-06 20:49:28Z vboxsync $
+# $Id: Makefile.kmk 76271 2018-12-18 05:29:30Z vboxsync $
 ## @file
 # Sub-Makefile for the vboximg-mount Program.
 
@@ -19,7 +19,7 @@ SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 ifeq ($(KBUILD_TARGET),darwin)
- VBOX_PATH_FUSE ?= $(lastword $(sort $(wildcard $(KBUILD_DEVTOOLS_TRG)/osxfuse/v*)))
+ VBOX_PATH_FUSE := $(lastword $(sort $(wildcard $(KBUILD_DEVTOOLS_TRG)/osxfuse/v*)))
  ifneq ($(VBOX_PATH_FUSE),)
   LIB_FUSE     := $(VBOX_PATH_FUSE)/lib/libosxfuse.dylib
   LIBPATH_FUSE := $(VBOX_PATH_FUSE)/lib
@@ -47,6 +47,11 @@ vboximg-mount_DEFS        = _FILE_OFFSET_BITS=64
 vboximg-mount_SOURCES = \
     vboximg-mount.cpp \
     vboximg-mount.h \
+    vboximgCrypto.cpp \
+    vboximgCrypto.h \
+    vboximgMedia.cpp \
+    vboximgMedia.h \
+    vboximgOpts.h \
     SelfSizingTable.h
 
 vboximg-mount_LIBS = \
