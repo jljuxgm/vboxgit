@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 74976 2018-10-22 16:58:49Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 74993 2018-10-23 11:33:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -386,6 +386,7 @@ void UICloudProfileManagerWidget::sltAddCloudProfile()
                             UIDataCloudProfile updatedData;
                             loadCloudProfile(comCloudProfile, updatedData);
                             updateItemForCloudProfile(updatedData, true, static_cast<UIItemCloudProfile*>(m_pTreeWidget->currentItem()));
+                            sltHandleCurrentItemChange();
                         }
                     }
 
