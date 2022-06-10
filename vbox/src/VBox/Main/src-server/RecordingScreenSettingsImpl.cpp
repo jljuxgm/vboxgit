@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.cpp 78068 2019-04-10 09:38:27Z vboxsync $ */
+/* $Id: RecordingScreenSettingsImpl.cpp 78070 2019-04-10 09:57:16Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Recording settings of one virtual screen.
@@ -43,9 +43,9 @@ struct RecordingScreenSettings::Data
         : pParent(NULL)
     { }
 
-    RecordingSettings * const          pParent;
-    ComObjPtr<RecordingScreenSettings> pPeer;
-    uint32_t                           uScreenId;
+    RecordingSettings * const                pParent;
+    const ComObjPtr<RecordingScreenSettings> pPeer;
+    uint32_t                                 uScreenId;
 
     // use the XML settings structure in the members for simplicity
     Backupable<settings::RecordingScreenSettings> bd;
@@ -137,7 +137,7 @@ HRESULT RecordingScreenSettings::init(RecordingSettings *aParent, RecordingScree
     m = new Data();
 
     unconst(m->pParent) = aParent;
-    m->pPeer = aThat;
+    unconst(m->pPeer)   = aThat;
 
     AutoWriteLock thatlock(aThat COMMA_LOCKVAL_SRC_POS);
 
