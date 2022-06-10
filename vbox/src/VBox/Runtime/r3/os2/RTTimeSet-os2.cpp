@@ -1,4 +1,4 @@
-/* $Id: RTTimeSet-os2.cpp 75297 2018-11-07 00:28:36Z vboxsync $ */
+/* $Id: RTTimeSet-os2.cpp 75321 2018-11-08 14:12:18Z vboxsync $ */
 /** @file
  * IPRT - RTTimeSet, OS/2.
  */
@@ -34,6 +34,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_TIME
 #define INCL_DOSDATETIME
+#define INCL_DOSERRORS
 #include <os2.h>
 
 #include <iprt/time.h>
@@ -51,7 +52,7 @@ RTDECL(int) RTTimeSet(PCRTTIMESPEC pTime)
     int64_t    cNsLocalDelta = RTTimeLocalDeltaNanoFor(pTime);
     RTTIMESPEC TimeLocal     = *pTime;
     RTTIME     Exploded;
-    if (RTTimeExplode(&Exploded, RTTimeSpecAddNano(&TimeLocal, cNsLocalDelta))))
+    if (RTTimeExplode(&Exploded, RTTimeSpecAddNano(&TimeLocal, cNsLocalDelta)))
     {
         /*
          * Fill in the OS/2 structure and make the call.
