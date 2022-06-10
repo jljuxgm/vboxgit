@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 76243 2018-12-15 17:13:27Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 76281 2018-12-18 09:08:46Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -1611,7 +1611,7 @@ typedef struct SUPGIPSETFLAGS
  *
  * @{
  */
-#define SUP_IOCTL_UCODE_REV                             SUP_CTL_CODE_SIZE(40, SUP_IOCTL_VT_CAPS_SIZE)
+#define SUP_IOCTL_UCODE_REV                             SUP_CTL_CODE_SIZE(40, SUP_IOCTL_UCODE_REV_SIZE)
 #define SUP_IOCTL_UCODE_REV_SIZE                        sizeof(SUPUCODEREV)
 #define SUP_IOCTL_UCODE_REV_SIZE_IN                     sizeof(SUPREQHDR)
 #define SUP_IOCTL_UCODE_REV_SIZE_OUT                    sizeof(SUPUCODEREV)
