@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 73756 2018-08-18 05:13:26Z vboxsync $ */
+/* $Id: IEMAll.cpp 73787 2018-08-20 14:27:59Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -5510,7 +5510,7 @@ iemRaiseXcptOrInt(PVMCPU      pVCpu,
              u8Vector, pVCpu->cpum.GstCtx.cs.Sel, pVCpu->cpum.GstCtx.rip, cbInstr, fFlags, uErr, uCr2, pVCpu->iem.s.uCurXcpt,
              pVCpu->iem.s.cXcptRecursions + 1, fPrevXcpt));
 
-        if (pVCpu->iem.s.cXcptRecursions >= 3)
+        if (pVCpu->iem.s.cXcptRecursions >= 4)
         {
 #ifdef DEBUG_bird
             AssertFailed();
