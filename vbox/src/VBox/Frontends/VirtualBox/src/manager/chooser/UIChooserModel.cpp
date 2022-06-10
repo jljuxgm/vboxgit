@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77916 2019-03-27 12:43:21Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77918 2019-03-27 13:01:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -560,7 +560,7 @@ void UIChooserModel::setCurrentDragObject(QDrag *pDragObject)
 
     /* Remember new drag-object: */
     m_pCurrentDragObject = pDragObject;
-    connect(m_pCurrentDragObject, &QDrag::destroyed,
+    connect(m_pCurrentDragObject.data(), &QDrag::destroyed,
             this, &UIChooserModel::sltCurrentDragObjectDestroyed);
 }
 
