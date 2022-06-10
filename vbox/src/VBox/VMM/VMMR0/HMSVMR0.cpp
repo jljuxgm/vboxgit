@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73143 2018-07-16 09:19:24Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73144 2018-07-16 09:36:51Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1107,9 +1107,11 @@ VMMR0DECL(int) SVMR0SetupVM(PVM pVM)
         Assert(pVCpuCur->hm.s.fGIMTrapXcptUD == pVCpu->hm.s.fGIMTrapXcptUD);
     }
 
-    LogRel(("HM: fUsePauseFilter=%RTbool fUseLbrVirt=%RTbool\n", fUsePauseFilter, fUseLbrVirt));
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM
-    LogRel(("HM: fUseVGif=%RTbool fUseVirtVmsaveVmload=%RTbool\n", fUseVGif, fUseVirtVmsaveVmload));
+    LogRel(("HM: fUsePauseFilter=%RTbool fUseLbrVirt=%RTbool fUseVGif=%RTbool fUseVirtVmsaveVmload=%RTbool\n", fUsePauseFilter,
+            fUseLbrVirt, fUseVGif, fUseVirtVmsaveVmload));
+#else
+    LogRel(("HM: fUsePauseFilter=%RTbool fUseLbrVirt=%RTbool\n", fUsePauseFilter, fUseLbrVirt));
 #endif
     return VINF_SUCCESS;
 }
