@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72806 2018-07-03 04:20:19Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72807 2018-07-03 04:21:34Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3324,6 +3324,7 @@ static int hmR0SvmExitToRing3(PVMCPU pVCpu, PCPUMCTX pCtx, int rcExit)
  * Updates the use of TSC offsetting mode for the CPU and adjusts the necessary
  * intercepts.
  *
+ * @param   pVCpu       The cross context virtual CPU structure.
  * @param   pCtx        Pointer to the guest-CPU or nested-guest-CPU context.
  * @param   pVmcb       Pointer to the VM control block.
  *
