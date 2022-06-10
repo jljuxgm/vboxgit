@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 74603 2018-10-04 06:07:20Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 74604 2018-10-04 06:28:11Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5455,10 +5455,7 @@ static int hmR0VmxInitVmcsReadCache(PVMCPU pVCpu)
 
     /* Natural width guest-state fields. */
     VMXLOCAL_INIT_READ_CACHE_FIELD(pCache, VMX_VMCS_RO_EXIT_QUALIFICATION);
-#if 0
-    /* Currently unused field. */
-    VMXLOCAL_INIT_READ_CACHE_FIELD(pCache, VMX_VMCS_RO_EXIT_GUEST_LINEAR_ADDR);
-#endif
+    VMXLOCAL_INIT_READ_CACHE_FIELD(pCache, VMX_VMCS_RO_GUEST_LINEAR_ADDR);
 
     if (pVCpu->CTX_SUFF(pVM)->hm.s.fNestedPaging)
     {
