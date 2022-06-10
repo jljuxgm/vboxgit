@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 75055 2018-10-25 08:03:31Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 75225 2018-11-02 14:33:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -69,6 +69,8 @@ protected:
 
     /** Performs page initialization. */
     virtual void initializePage() /* override */;
+    /** Performs page uninitialization. */
+    virtual void cleanupPage() /* override */;
 
     /** Returns whether page is complete. */
     virtual bool isComplete() const /* override */;
