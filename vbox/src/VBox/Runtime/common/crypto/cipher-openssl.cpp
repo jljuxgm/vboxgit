@@ -1,4 +1,4 @@
-/* $Id: cipher-openssl.cpp 74327 2018-09-17 22:13:09Z vboxsync $ */
+/* $Id: cipher-openssl.cpp 74352 2018-09-18 21:50:57Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Symmetric Cipher using OpenSSL.
  */
@@ -188,10 +188,10 @@ RTDECL(int) RTCrCipherEncrypt(RTCRCIPHER hCipher, void const *pvKey, size_t cbKe
     RTCRCIPHERINT *pThis = hCipher;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
     AssertReturn(pThis->u32Magic == RTCRCIPHERINT_MAGIC, VERR_INVALID_HANDLE);
-    AssertMsgReturn((ssize_t)cbKey != EVP_CIPHER_key_length(pThis->pCipher),
+    AssertMsgReturn((ssize_t)cbKey == EVP_CIPHER_key_length(pThis->pCipher),
                     ("%zu, expected %d\n", cbKey, EVP_CIPHER_key_length(pThis->pCipher)),
                     VERR_CR_CIPHER_INVALID_KEY_LENGTH);
-    AssertMsgReturn((ssize_t)cbInitVector != EVP_CIPHER_iv_length(pThis->pCipher),
+    AssertMsgReturn((ssize_t)cbInitVector == EVP_CIPHER_iv_length(pThis->pCipher),
                     ("%zu, expected %d\n", cbInitVector, EVP_CIPHER_iv_length(pThis->pCipher)),
                     VERR_CR_CIPHER_INVALID_INITIALIZATION_VECTOR_LENGTH);
     AssertReturn(cbPlainText > 0, VERR_NO_DATA);
@@ -272,10 +272,10 @@ RTDECL(int) RTCrCipherDecrypt(RTCRCIPHER hCipher, void const *pvKey, size_t cbKe
     RTCRCIPHERINT *pThis = hCipher;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
     AssertReturn(pThis->u32Magic == RTCRCIPHERINT_MAGIC, VERR_INVALID_HANDLE);
-    AssertMsgReturn((ssize_t)cbKey != EVP_CIPHER_key_length(pThis->pCipher),
+    AssertMsgReturn((ssize_t)cbKey == EVP_CIPHER_key_length(pThis->pCipher),
                     ("%zu, expected %d\n", cbKey, EVP_CIPHER_key_length(pThis->pCipher)),
                     VERR_CR_CIPHER_INVALID_KEY_LENGTH);
-    AssertMsgReturn((ssize_t)cbInitVector != EVP_CIPHER_iv_length(pThis->pCipher),
+    AssertMsgReturn((ssize_t)cbInitVector == EVP_CIPHER_iv_length(pThis->pCipher),
                     ("%zu, expected %d\n", cbInitVector, EVP_CIPHER_iv_length(pThis->pCipher)),
                     VERR_CR_CIPHER_INVALID_INITIALIZATION_VECTOR_LENGTH);
     AssertReturn(cbPlainText > 0, VERR_NO_DATA);
