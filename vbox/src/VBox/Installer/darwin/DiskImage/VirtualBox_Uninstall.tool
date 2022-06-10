@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: VirtualBox_Uninstall.tool 73855 2018-08-23 08:58:12Z vboxsync $
+# $Id: VirtualBox_Uninstall.tool 76014 2018-12-06 13:05:12Z vboxsync $
 ## @file
 # VirtualBox Uninstaller Script.
 #
@@ -199,6 +199,18 @@ if test "$my_default_prompt" != "Yes"; then
     echo ""
 fi
 
+my_fuse_macos_core_uninstall=0
+if test "$my_default_prompt" != "Yes" -a -f "/Library/Filesystems/osxfuse.fs/Contents/Resources/uninstall_osxfuse.app/Contents/Resources/Scripts/uninstall_osxfuse.sh"; then
+    echo "VirtualBox detected the FUSE for macOS core package which might've been installed"
+    echo "by VirtualBox itself for the vboximg-mount utility. Do you wish to uninstall"
+    echo "the FUSE for macOS core package (Yes/No)?"
+    read my_answer
+    if test "$my_answer" == "Yes"  -o  "$my_answer" == "YES"  -o  "$my_answer" == "yes"; then
+        my_fuse_macos_core_uninstall=1;
+    fi
+    echo ""
+fi
+
 #
 # Unregister has to be done before the files are removed.
 #
@@ -228,6 +240,11 @@ if test -n "${my_files[*]}"  -o  -n "${my_directories[*]}"; then
         test "$my_default_prompt" != "Yes" && read -p "Press <ENTER> to exit"
         exit 1;
     fi
+fi
+
+if test "$my_fuse_macos_core_uninstall" != 0; then
+    echo "Uninstalling the FUSE for macOS core package"
+    /usr/bin/sudo -p "Please enter %u's password:" /Library/Filesystems/osxfuse.fs/Contents/Resources/uninstall_osxfuse.app/Contents/Resources/Scripts/uninstall_osxfuse.sh
 fi
 
 my_rc=0
