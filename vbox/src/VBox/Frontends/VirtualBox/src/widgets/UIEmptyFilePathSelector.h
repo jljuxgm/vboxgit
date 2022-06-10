@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.h 71901 2018-04-18 14:50:52Z vboxsync $ */
+/* $Id: UIEmptyFilePathSelector.h 73231 2018-07-19 10:18:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class declaration.
  */
@@ -31,7 +31,7 @@ class QILineEdit;
 /* Qt forward declarations */
 class QHBoxLayout;
 class QAction;
-class QIToolButton;
+class QToolButton;
 
 
 class UIEmptyFilePathSelector: public QIWithRetranslateUI<QWidget>
@@ -107,7 +107,7 @@ private:
     QILabel *mLabel;
     UIEmptyFilePathSelector::Mode mMode;
     QILineEdit *mLineEdit;
-    QIToolButton *mSelectButton;
+    QToolButton *mSelectButton;
     bool m_fButtonToolTipSet;
     QString mFileDialogTitle;
     QString mFileFilters;
