@@ -1,4 +1,4 @@
-/* $Id: info.c 76428 2018-12-23 20:36:07Z vboxsync $ */
+/* $Id: info.c 76430 2018-12-23 22:43:51Z vboxsync $ */
 /** @file
  *
  * VirtualBox Windows Guest Shared Folders
@@ -20,6 +20,7 @@
 
 #include "vbsf.h"
 #include <iprt/err.h>
+
 
 /** Macro for copying a SHFLSTRING file name into a FILE_DIRECTORY_INFORMATION structure. */
 #define INIT_FILE_NAME(obj, str) \
