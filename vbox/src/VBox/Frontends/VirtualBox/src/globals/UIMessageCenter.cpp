@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 77190 2019-02-06 20:50:30Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 78166 2019-04-17 14:46:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1657,6 +1657,13 @@ void UIMessageCenter::cannotAcquireCloudClientParameter(const CCloudClient &comC
     error(pParent, MessageType_Error,
           tr("Failed to acquire cloud client parameter."),
           UIErrorString::formatErrorInfo(comClient));
+}
+
+void UIMessageCenter::cannotAcquireCloudClientParameter(const CProgress &comProgress, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to acquire cloud client parameter."),
+          UIErrorString::formatErrorInfo(comProgress));
 }
 
 bool UIMessageCenter::confirmCloudProfileRemoval(const QString &strName, QWidget *pParent /* = 0 */) const

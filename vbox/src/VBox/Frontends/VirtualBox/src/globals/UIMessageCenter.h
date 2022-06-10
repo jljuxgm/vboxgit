@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 77190 2019-02-06 20:50:30Z vboxsync $ */
+/* $Id: UIMessageCenter.h 78166 2019-04-17 14:46:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -372,6 +372,7 @@ public:
     void cannotAssignCloudProfileParameter(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
     void cannotCreateCloudClient(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
     void cannotAcquireCloudClientParameter(const CCloudClient &comClient, QWidget *pParent = 0) const;
+    void cannotAcquireCloudClientParameter(const CProgress &comProgress, QWidget *pParent = 0) const;
     bool confirmCloudProfileRemoval(const QString &strName, QWidget *pParent = 0) const;
     bool confirmCloudProfilesImport(QWidget *pParent = 0) const;
 
