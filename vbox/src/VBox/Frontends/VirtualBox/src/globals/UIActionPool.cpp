@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 76773 2019-01-11 12:59:21Z vboxsync $ */
+/* $Id: UIActionPool.cpp 76864 2019-01-17 14:54:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -1126,7 +1126,10 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionSimplePreferences(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/global_settings_32px.png", ":/global_settings_16px.png", true)
+        : UIActionSimple(pParent,
+                         ":/global_settings_32px.png", ":/global_settings_16px.png",
+                         ":/global_settings_disabled_32px.png", ":/global_settings_disabled_16px.png",
+                         true)
     {
         setMenuRole(QAction::PreferencesRole);
         retranslateUi();
