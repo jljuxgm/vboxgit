@@ -1,4 +1,4 @@
-/* $Id: lx.h 74638 2018-10-06 18:31:59Z vboxsync $ */
+/* $Id: lx.h 74639 2018-10-06 18:33:17Z vboxsync $ */
 /** @file
  * LX structures, types and defines.
  */
@@ -483,5 +483,4 @@ struct e32_entry
 #pragma pack()
 
 #endif
-
 
