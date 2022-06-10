@@ -1,4 +1,4 @@
-# $Id: Config.kmk 75568 2018-11-19 11:52:10Z vboxsync $
+# $Id: Config.kmk 75569 2018-11-19 12:04:20Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -770,8 +770,6 @@ VBOX_WITH_NETSHAPER = 1
 if1of ($(KBUILD_TARGET), freebsd linux)
  VBOX_WITH_VDE = 1
 endif
-# Use new VBoxNetDhcpd instead of old VBoxNetDHCP
-VBOX_WITH_DHCPD = 1
 ## @}
 
 
@@ -7476,7 +7474,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75568 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75569 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
