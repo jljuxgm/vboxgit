@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientResponseBase.cpp 74250 2018-09-13 16:33:17Z vboxsync $ */
+/* $Id: RTCRestClientResponseBase.cpp 74251 2018-09-13 16:35:23Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientResponseBase implementation.
  */
@@ -299,7 +299,7 @@ int RTCRestClientResponseBase::deserializeHeaderIntoMap(RTCRestStringMapBase *a_
                  * Create a value object and put it into the map.
                  */
                 RTCRestObjectBase *pValue;
-                int rc = a_pMap->putNewValue(&pValue, a_pchField, a_cchField);
+                rc = a_pMap->putNewValue(&pValue, a_pchField, a_cchField);
                 if (RT_SUCCESS(rc))
                 {
                     /*
