@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 72178 2018-05-09 16:18:56Z vboxsync $ */
+/* $Id: CPUMInternal.h 73389 2018-07-28 07:03:03Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -440,7 +440,7 @@ typedef struct CPUM
 } CPUM;
 #ifndef VBOX_FOR_DTRACE_LIB
 AssertCompileMemberOffset(CPUM, HostFeatures, 64);
-AssertCompileMemberOffset(CPUM, GuestFeatures, 96);
+AssertCompileMemberOffset(CPUM, GuestFeatures, 104);
 #endif
 /** Pointer to the CPUM instance data residing in the shared VM structure. */
 typedef CPUM *PCPUM;

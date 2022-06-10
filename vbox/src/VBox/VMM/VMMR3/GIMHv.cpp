@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 73340 2018-07-24 03:12:17Z vboxsync $ */
+/* $Id: GIMHv.cpp 73389 2018-07-28 07:03:03Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -554,8 +554,8 @@ VMMR3_INT_DECL(int) gimR3HvInitCompleted(PVM pVM)
     if (!pVM->gim.s.u32Version)
     {
         /* Hypervisor capabilities; features used by the hypervisor. */
-        pHv->uHyperCaps  = HMIsNestedPagingActive(pVM)   ? GIM_HV_HOST_FEAT_NESTED_PAGING : 0;
-        pHv->uHyperCaps |= HMAreMsrBitmapsAvailable(pVM) ? GIM_HV_HOST_FEAT_MSR_BITMAP : 0;
+        pHv->uHyperCaps  = HMIsNestedPagingActive(pVM) ? GIM_HV_HOST_FEAT_NESTED_PAGING : 0;
+        pHv->uHyperCaps |= HMIsMsrBitmapActive(pVM)    ? GIM_HV_HOST_FEAT_MSR_BITMAP    : 0;
     }
 
     CPUMCPUIDLEAF HyperLeaf;
