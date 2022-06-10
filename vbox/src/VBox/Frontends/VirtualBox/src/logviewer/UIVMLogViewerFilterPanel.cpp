@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 76607 2019-01-02 05:41:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -39,6 +39,7 @@
 #ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
 #endif
+
 
 /*********************************************************************************************************************************
 *   UIVMFilterLineEdit definition.                                                                                               *
