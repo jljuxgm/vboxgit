@@ -1,4 +1,4 @@
-/* $Id: dbgcfg.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: dbgcfg.cpp 73334 2018-07-23 16:52:04Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
@@ -807,6 +807,7 @@ static int rtDbgCfgTryDownloadAndOpen(PRTDBGCFGINT pThis, const char *pszServer,
         if (RT_SUCCESS(rc))
         {
             RTHttpUseSystemProxySettings(hHttp);
+            RTHttpSetFollowRedirects(hHttp, 8);
 
             static const char * const s_apszHeaders[] =
             {

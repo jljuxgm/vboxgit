@@ -1,4 +1,4 @@
-/* $Id: http.h 69105 2017-10-17 10:20:49Z vboxsync $ */
+/* $Id: http.h 73334 2018-07-23 16:52:04Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -219,6 +219,18 @@ RTR3DECL(int) RTHttpUseSystemProxySettings(RTHTTP hHttp);
  */
 RTR3DECL(int) RTHttpSetProxy(RTHTTP hHttp, const char *pszProxyUrl, uint32_t uPort,
                              const char *pszProxyUser, const char *pszProxyPwd);
+
+/**
+ * Set follow redirects (3xx)
+ *
+ * @returns iprt status code.
+ *
+ * @param   hHttp           The HTTP client instance.
+ * @param   cMaxRedirects   Max number of redirects to follow.  Zero if no
+ *                          redirects should be followed but instead returned
+ *                          to caller.
+ */
+RTR3DECL(int) RTHttpSetFollowRedirects(RTHTTP hHttp, uint32_t cMaxRedirects);
 
 /**
  * Set custom headers.
