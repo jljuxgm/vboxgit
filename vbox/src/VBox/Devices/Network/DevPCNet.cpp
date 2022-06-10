@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 77132 2019-02-01 17:32:12Z vboxsync $ */
+/* $Id: DevPCNet.cpp 78269 2019-04-24 10:53:40Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -950,7 +950,7 @@ static void pcnetDescTouch(PPCNETSTATE pThis, RTGCPHYS32 addr)
 #endif /* IN_RING3 */
 
 /** Checks if it's a bad (as in invalid) RMD.*/
-#define IS_RMD_BAD(rmd)      ((rmd).rmd1.ones != 15 || (rmd).rmd2.zeros != 0)
+#define IS_RMD_BAD(rmd)      ((rmd).rmd1.ones != 15)
 
 /** The network card is the owner of the RDTE/TDTE, actually it is this driver */
 #define CARD_IS_OWNER(desc)   (((desc) & 0x8000))
