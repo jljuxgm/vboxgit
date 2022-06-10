@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 77325 2019-02-15 07:55:09Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 77548 2019-03-04 05:36:46Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -327,6 +327,7 @@ static const char * const g_apszVmxVDiagDesc[] =
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_ProcCtls2Allowed1        , "ProcCtls2Allowed1"         ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_ProcCtls2Disallowed0     , "ProcCtls2Disallowed0"      ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_PtrInvalid               , "PtrInvalid"                ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_PtrShadowVmcs            , "PtrShadowVmcs"             ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_RealOrV86Mode            , "RealOrV86Mode"             ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_SavePreemptTimer         , "SavePreemptTimer"          ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_TprThresholdRsvd         , "TprThresholdRsvd"          ),
