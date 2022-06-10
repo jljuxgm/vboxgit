@@ -1,4 +1,4 @@
-/* $Id: CaptureScreenSettingsImpl.h 75324 2018-11-08 15:39:50Z vboxsync $ */
+/* $Id: CaptureScreenSettingsImpl.h 75326 2018-11-08 15:50:17Z vboxsync $ */
 
 /** @file
  *
@@ -60,6 +60,7 @@ private:
     HRESULT isFeatureEnabled(CaptureFeature_T aFeature, BOOL *aEnabled);
 
     // wrapped ICaptureScreenSettings properties
+    HRESULT getId(ULONG *id);
     HRESULT getEnabled(BOOL *enabled);
     HRESULT setEnabled(BOOL enabled);
     HRESULT getFeatures(ULONG *aFeatures);

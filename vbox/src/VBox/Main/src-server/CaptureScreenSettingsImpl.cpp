@@ -1,4 +1,4 @@
-/* $Id: CaptureScreenSettingsImpl.cpp 75324 2018-11-08 15:39:50Z vboxsync $ */
+/* $Id: CaptureScreenSettingsImpl.cpp 75326 2018-11-08 15:50:17Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Capture settings of one virtual screen.
@@ -238,6 +238,18 @@ HRESULT CaptureScreenSettings::isFeatureEnabled(CaptureFeature_T aFeature, BOOL 
 
     *aEnabled = (   itFeature != m->bd->featureMap.end()
                  && itFeature->second == true);
+
+    return S_OK;
+}
+
+HRESULT CaptureScreenSettings::getId(ULONG *id)
+{
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *id = m->uScreenId;
 
     return S_OK;
 }
