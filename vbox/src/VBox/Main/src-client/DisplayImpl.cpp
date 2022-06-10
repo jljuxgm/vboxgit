@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 73104 2018-07-12 23:53:10Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 74413 2018-09-21 18:03:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1010,7 +1010,7 @@ int Display::i_handleDisplayResize(unsigned uScreenId, uint32_t bpp, void *pvVRA
     }
     else
     {
-        pFBInfo->flags = 0;
+        pFBInfo->flags = VBVA_SCREEN_F_ACTIVE;
         if (fVGABlank)
             pFBInfo->flags |= VBVA_SCREEN_F_BLANK;
         pFBInfo->fDisabled = false;
