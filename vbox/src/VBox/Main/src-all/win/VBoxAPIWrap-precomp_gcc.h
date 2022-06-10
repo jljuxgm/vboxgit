@@ -1,4 +1,4 @@
-/* $Id: VBoxAPIWrap-precomp_gcc.h 76514 2018-12-30 05:16:36Z vboxsync $ */
+/* $Id: VBoxAPIWrap-precomp_gcc.h 76522 2018-12-30 05:44:55Z vboxsync $ */
 /** @file
  * VirtualBox COM - GCC precompiled header for the API wrappers.
  */
@@ -17,9 +17,6 @@
 
 #ifndef ___VBoxAPIWrap_precomp_gcc_h___
 #define ___VBoxAPIWrap_precomp_gcc_h___
-#ifndef RT_WITHOUT_PRAGMA_ONCE
-# pragma once
-#endif
 
 #include <iprt/cdefs.h>
 #include <VBox/cdefs.h>
