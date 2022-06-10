@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 74138 2018-09-07 11:16:21Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 74481 2018-09-26 15:43:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -204,14 +204,12 @@ private:
 
     /** @name Painting stuff.
       * @{ */
-        /** Paints decorations using specified @a pPainter and certain @a pOptions. */
-        void paintDecorations(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions);
-        /** Paints background using specified @a pPainter and certain @a rect. */
-        void paintBackground(QPainter *pPainter, const QRect &rect);
-        /** Paints frame rectangle using specified @a pPainter and certain @a rect. */
-        void paintFrameRectangle(QPainter *pPainter, const QRect &rect);
+        /** Paints background using specified @a pPainter and certain @a rectangle. */
+        void paintBackground(QPainter *pPainter, const QRect &rectangle) const;
+        /** Paints frame using specified @a pPainter and certain @a rect. */
+        void paintFrame(QPainter *pPainter, const QRect &rectangle) const;
         /** Paints global info using specified @a pPainter and certain @a pOptions. */
-        void paintGlobalInfo(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions);
+        void paintGlobalInfo(QPainter *pPainter, const QRect &rectangle) const;
     /** @} */
 
     /** @name Item stuff.
