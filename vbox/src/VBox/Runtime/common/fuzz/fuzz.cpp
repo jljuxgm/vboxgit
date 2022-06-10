@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 77482 2019-02-27 13:17:24Z vboxsync $ */
+/* $Id: fuzz.cpp 77483 2019-02-27 13:21:29Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -420,7 +420,7 @@ static int rtFuzzCtxMutationAdd(PRTFUZZCTXINT pThis, PRTFUZZMUTATION pMutation)
     rc = RTSemRWRequestWrite(pThis->hSemRwMutations, RT_INDEFINITE_WAIT);
     AssertRC(rc); RT_NOREF(rc);
     bool fIns = RTAvlU64Insert(&pThis->TreeMutations, &pMutation->Core);
-    Assert(fIns);
+    Assert(fIns); RT_NOREF(fIns);
     rc = RTSemRWReleaseWrite(pThis->hSemRwMutations);
     AssertRC(rc); RT_NOREF(rc);
 
