@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.h 75619 2018-11-20 13:05:41Z vboxsync $ */
+/* $Id: UIHostFileTable.h 75760 2018-11-27 07:22:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostFileTable class declaration.
  */
@@ -50,6 +50,12 @@ protected:
     virtual void    determineDriveLetters() /* override */;
     virtual void    prepareToolbar() /* override */;
     virtual void    createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) /* override */;
+    /** @name Copy/Cut host-to-host stuff. Currently not implemented.
+     * @{ */
+        /** Disable/enable paste action depending on the m_eFileOperationType. */
+        virtual void  setPasteActionEnabled(bool) /* override */{}
+        virtual void  pasteCutCopiedObjects() /* override */{}
+    /** @} */
 
 private:
 
