@@ -1,4 +1,4 @@
-/** $Id: VBoxSF.cpp 77640 2019-03-10 21:13:03Z vboxsync $ */
+/** $Id: VBoxSF.cpp 77642 2019-03-11 02:19:27Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, the FS and FSD level IFS EPs
  */
@@ -181,7 +181,7 @@ PRTTIMESPEC vboxSfOs2DateTimeToTimeSpec(FDATE DosDate, FTIME DosTime, int16_t cM
     Time.u8Second       = DosTime.twosecs * 2;
     Time.u32Nanosecond  = 0;
     Time.fFlags         = RTTIME_FLAGS_TYPE_LOCAL;
-    Time.offUTC         = cMinLocalTimeDelta;
+    Time.offUTC         = -cMinLocalTimeDelta;
     if (RTTimeLocalNormalize(&Time))
         return RTTimeImplode(pDstTimeSpec, &Time);
     return NULL;
