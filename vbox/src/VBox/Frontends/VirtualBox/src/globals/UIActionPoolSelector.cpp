@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 75026 2018-10-24 11:26:34Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 75060 2018-10-25 10:17:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -173,7 +173,7 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionSimpleSelectorFileShowImportApplianceWizard(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/import_16px.png", ":/import_16px.png")
+        : UIActionSimple(pParent, ":/import_32px.png", ":/import_16px.png")
     {}
 
 protected:
@@ -210,7 +210,7 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionSimpleSelectorFileShowExportApplianceWizard(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/export_16px.png", ":/export_16px.png")
+        : UIActionSimple(pParent, ":/export_32px.png", ":/export_16px.png")
     {}
 
 protected:
@@ -377,7 +377,7 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionSimpleSelectorGroupPerformAddMachine(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/vm_add_16px.png", ":/vm_add_16px.png")
+        : UIActionSimple(pParent, ":/vm_add_32px.png", ":/vm_add_16px.png")
     {}
 
 protected:
@@ -565,7 +565,7 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionSimpleSelectorMachinePerformAdd(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/vm_add_16px.png", ":/vm_add_16px.png")
+        : UIActionSimple(pParent, ":/vm_add_32px.png", ":/vm_add_16px.png")
     {}
 
 protected:
