@@ -1,8 +1,9 @@
-/* $Id: AudioMixer.h 73355 2018-07-25 15:48:31Z vboxsync $ */
+/* $Id: AudioMixer.h 73356 2018-07-25 15:52:35Z vboxsync $ */
 /** @file
- * VBox audio: Mixing routines, mainly used by the various audio device
- *             emulations to achieve proper multiplexing from/to attached
- *             devices LUNs.
+ * VBox audio - Mixing routines.
+ *
+ * The mixing routines are mainly used by the various audio device emulations
+ * to achieve proper multiplexing from/to attached devices LUNs.
  */
 
 /*
