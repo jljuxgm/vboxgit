@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 75148 2018-10-29 13:56:53Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 75157 2018-10-29 16:30:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestFileTable class implementation.
  */
@@ -579,6 +579,7 @@ void UIGuestFileTable::determineDriveLetters()
 
     /** @todo Currently API lacks a way to query windows drive letters.
      *  so we enumarate them by using CGuestSession::DirectoryExists() */
+    m_driveLetterList.clear();
     for (int i = 'A'; i <= 'Z'; ++i)
     {
         QString path((char)i);
