@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.h 77174 2019-02-06 13:38:20Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.h 77261 2019-02-11 13:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class declaration.
  */
@@ -25,14 +25,10 @@
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
-class QAction;
 class QTreeWidgetItem;
-class QLineEdit;
 class QIComboBox;
-class QIDialogButtonBox;
 class QIToolButton;
 class QITreeWidget;
-class UIMediumItem;
 class UISearchLineEdit;
 
 

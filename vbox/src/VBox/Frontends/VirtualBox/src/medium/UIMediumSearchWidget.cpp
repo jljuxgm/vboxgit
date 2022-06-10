@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.cpp 77192 2019-02-07 09:04:06Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.cpp 77261 2019-02-11 13:41:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class implementation.
  */
@@ -19,18 +19,16 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QPainter>
-#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 /* GUI includes: */
 #include "QIComboBox.h"
-#include "QIDialogButtonBox.h"
 #include "QIToolButton.h"
 #include "QITreeWidget.h"
-#include "UIFDCreationDialog.h"
 #include "UIIconPool.h"
 #include "UIMediumItem.h"
 #include "UIMediumSearchWidget.h"
-#include "UIToolBar.h"
+
 
 #ifdef VBOX_WS_MAC
 # include "UIWindowMenuManager.h"
