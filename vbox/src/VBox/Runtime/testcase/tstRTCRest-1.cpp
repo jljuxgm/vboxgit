@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 74197 2018-09-11 14:49:55Z vboxsync $ */
+/* $Id: tstRTCRest-1.cpp 74198 2018-09-11 14:52:55Z vboxsync $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -1973,8 +1973,9 @@ int main()
         testDouble();
         testString("dummy", 1, 2);
         testDate();
-        //testArray();
+        testArray();
         testStringMap();
+        /** @todo test request & response base classes too.   */
 
         rcExit = RTTestSummaryAndDestroy(g_hTest);
     }
