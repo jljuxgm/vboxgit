@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74151 2018-09-08 05:42:01Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74152 2018-09-08 10:49:05Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2539,10 +2539,8 @@ IEM_STATIC int iemVmxVmentryCheckGuestSegRegs(PVMCPU pVCpu, const char *pszInstr
             }
 
             /* Granularity. */
-            if (   (   (SelReg.u32Limit & 0xfff) != 0xfff
-                    && uGranularity == 0)
-                || (   (SelReg.u32Limit & 0xfff00000)
-                    && uGranularity == 1))
+            if (   ((SelReg.u32Limit & 0x00000fff) == 0x00000fff || !uGranularity)
+                && ((SelReg.u32Limit & 0xfff00000) == 0x00000000 ||  uGranularity))
             { /* likely */ }
             else
             {
@@ -2706,10 +2704,8 @@ IEM_STATIC int iemVmxVmentryCheckGuestSegRegs(PVMCPU pVCpu, const char *pszInstr
             else
                 IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVInstrDiag_Vmentry_GuestSegAttrLdtrPresent);
 
-            if (   (   (Ldtr.u32Limit & 0xfff) != 0xfff
-                    && Ldtr.Attr.n.u1Granularity == 0)
-                || (   (Ldtr.u32Limit & 0xfff00000)
-                    && Ldtr.Attr.n.u1Granularity == 1))
+            if (   ((Ldtr.u32Limit & 0x00000fff) == 0x00000fff || !Ldtr.Attr.n.u1Granularity)
+                && ((Ldtr.u32Limit & 0xfff00000) == 0x00000000 ||  Ldtr.Attr.n.u1Granularity))
             { /* likely */ }
             else
                 IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVInstrDiag_Vmentry_GuestSegAttrLdtrGran);
@@ -2770,10 +2766,8 @@ IEM_STATIC int iemVmxVmentryCheckGuestSegRegs(PVMCPU pVCpu, const char *pszInstr
         else
             IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVInstrDiag_Vmentry_GuestSegAttrTrPresent);
 
-        if (   (   (Tr.u32Limit & 0xfff) != 0xfff
-                && Tr.Attr.n.u1Granularity == 0)
-            || (   (Tr.u32Limit & 0xfff00000)
-                && Tr.Attr.n.u1Granularity == 1))
+        if (   ((Tr.u32Limit & 0x00000fff) == 0x00000fff || !Tr.Attr.n.u1Granularity)
+            && ((Tr.u32Limit & 0xfff00000) == 0x00000000 ||  Tr.Attr.n.u1Granularity))
         { /* likely */ }
         else
             IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVInstrDiag_Vmentry_GuestSegAttrTrGran);
