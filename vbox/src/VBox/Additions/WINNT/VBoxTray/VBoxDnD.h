@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 74442 2018-09-24 13:09:14Z vboxsync $ */
+/* $Id: VBoxDnD.h 74473 2018-09-26 11:55:28Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -331,7 +331,7 @@ public:
     int OnCreate(void);
     void OnDestroy(void);
 
-    /* H->G */
+    /* Host -> Guest */
     int OnHgEnter(const RTCList<RTCString> &formats, VBOXDNDACTIONLIST dndLstActionsAllowed);
     int OnHgMove(uint32_t u32xPos, uint32_t u32yPos, VBOXDNDACTION dndAction);
     int OnHgDrop(void);
@@ -340,6 +340,7 @@ public:
     int OnHgCancel(void);
 
 #ifdef VBOX_WITH_DRAG_AND_DROP_GH
+    /* Guest -> Host */
     int OnGhIsDnDPending(void);
     int OnGhDrop(const RTCString &strFormat, VBOXDNDACTION dndActionDefault);
 #endif
@@ -347,16 +348,14 @@ public:
     void PostMessage(UINT uMsg, WPARAM wParam, LPARAM lParam);
     int ProcessEvent(PVBOXDNDEVENT pEvent);
 
-public:
-
-    int hide(void);
+    void Reset(void);
 
 protected:
 
+    int hide(void);
     int makeFullscreen(void);
     int mouseMove(int x, int y, DWORD dwMouseInputFlags);
     int mouseRelease(void);
-    void reset(void);
     int setMode(Mode enmMode);
 
 public: /** @todo Make protected! */
