@@ -1,4 +1,4 @@
-# $Id: Config.kmk 75187 2018-10-30 16:43:49Z vboxsync $
+# $Id: Config.kmk 75190 2018-10-30 16:53:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3624,7 +3624,7 @@ ifdef VBOX_SIGNING_MODE
 	--verbose=9 \
 	--force \
 	--file-list - \
-	$(if-expr VBOX_TSA_URL,--timestamp="$(VBOX_TSA_URL)") \
+	$(if-expr defined(VBOX_TSA_URL),--timestamp="$(VBOX_TSA_URL)") \
        $(3) \
 	$(VBOX_CERTIFICATE_SUBJECT_NAME_ARGS) \
 	$(1) $(if $(2),--identifier "$(2)",)
@@ -3636,7 +3636,7 @@ ifdef VBOX_SIGNING_MODE
 	--verbose=9 \
 	--force \
 	--file-list - \
-	$(if-expr VBOX_TSA_URL,--timestamp="$(VBOX_TSA_URL)") \
+	$(if-expr defined(VBOX_TSA_URL),--timestamp="$(VBOX_TSA_URL)") \
 	$(VBOX_CERTIFICATE_SUBJECT_NAME_ARGS) \
 	$(1) \
 	$(if $(2),--identifier "$(2)",)
@@ -3653,7 +3653,7 @@ ifdef VBOX_SIGNING_MODE
 	--verbose=9 \
 	--force \
 	--file-list - \
-	$(if-expr VBOX_TSA_URL,--timestamp="$(VBOX_TSA_URL)") \
+	$(if-expr defined(VBOX_TSA_URL),--timestamp="$(VBOX_TSA_URL)") \
 	$(VBOX_CERTIFICATE_SUBJECT_NAME_ARGS) \
 	$(1) \
 	$(if $(2),--identifier "$(2)",)
@@ -7409,7 +7409,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75187 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75190 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
