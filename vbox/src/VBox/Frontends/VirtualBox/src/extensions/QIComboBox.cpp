@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: QIComboBox.cpp 78041 2019-04-08 14:44:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class implementation.
  */
@@ -206,6 +206,13 @@ int QIComboBox::currentIndex() const
     /* Redirect to combo-box: */
     AssertPtrReturn(m_pComboBox, -1);
     return m_pComboBox->currentIndex();
+}
+
+void QIComboBox::addItem(const QString &strText, const QVariant &userData /* = QVariant() */) const
+{
+    /* Redirect to combo-box: */
+    AssertPtrReturnVoid(m_pComboBox);
+    return m_pComboBox->addItem(strText, userData);
 }
 
 void QIComboBox::insertItem(int iIndex, const QString &strText, const QVariant &userData /* = QVariant() */) const
