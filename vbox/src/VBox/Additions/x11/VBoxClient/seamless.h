@@ -1,4 +1,4 @@
-/* $Id: seamless.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: seamless.h 76535 2018-12-30 06:17:14Z vboxsync $ */
 /** @file
  * X11 Guest client - seamless mode, missing proper description while using the
  * potentially confusing word 'host'.
@@ -17,7 +17,10 @@
  */
 
 #ifndef __Additions_client_seamless_host_h
-# define __Additions_client_seamless_host_h
+#define __Additions_client_seamless_host_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/thread.h>
 

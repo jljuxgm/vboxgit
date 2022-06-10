@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.h 69346 2017-10-26 13:36:28Z vboxsync $ */
+/* $Id: vboxvideo.h 76535 2018-12-30 06:17:14Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver
  */
@@ -39,6 +39,9 @@
 
 #ifndef _VBOXVIDEO_H_
 #define _VBOXVIDEO_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBoxVideoGuest.h>
 #include <VBoxVideo.h>

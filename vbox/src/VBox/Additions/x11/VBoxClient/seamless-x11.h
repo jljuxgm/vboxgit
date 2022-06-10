@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: seamless-x11.h 76535 2018-12-30 06:17:14Z vboxsync $ */
 /** @file
  *
  * Seamless mode:
@@ -18,7 +18,10 @@
  */
 
 #ifndef __Additions_linux_seamless_x11_h
-# define __Additions_linux_seamless_x11_h
+#define __Additions_linux_seamless_x11_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/log.h>
 #include <iprt/avl.h>

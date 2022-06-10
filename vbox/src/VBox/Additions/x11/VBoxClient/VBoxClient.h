@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 70126 2017-12-14 11:14:08Z vboxsync $ */
+/* $Id: VBoxClient.h 76535 2018-12-30 06:17:14Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -17,7 +17,10 @@
  */
 
 #ifndef ___vboxclient_vboxclient_h
-# define ___vboxclient_vboxclient_h
+#define ___vboxclient_vboxclient_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/log.h>
 #include <iprt/cpp/utils.h>

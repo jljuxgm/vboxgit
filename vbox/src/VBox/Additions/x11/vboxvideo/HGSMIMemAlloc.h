@@ -1,4 +1,4 @@
-/* $Id: HGSMIMemAlloc.h 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: HGSMIMemAlloc.h 76535 2018-12-30 06:17:14Z vboxsync $ */
 /*
  * Copyright (C) 2017 Oracle Corporation
  *
@@ -28,8 +28,12 @@
 /* In builds inside of the VirtualBox source tree we override the default
  * HGSMIMemAlloc.h using -include, therefore this define must match the one
  * there. */
+
 #ifndef ___VBox_Graphics_HGSMIMemAlloc_h
 #define ___VBox_Graphics_HGSMIMemAlloc_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "HGSMIDefs.h"
 #include "VBoxVideoIPRT.h"

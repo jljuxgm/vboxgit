@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69348 2017-10-26 13:47:29Z vboxsync $
+# $Id: .scm-settings 76535 2018-12-30 06:17:14Z vboxsync $
 ## @file
 # Source code massager settings for the x11 guest addition components.
 #
@@ -19,7 +19,7 @@
 
 # x11include
 --filter-out-files /x11include/*README
-/x11include/*: --external-copyright --no-convert-tabs --strip-no-trailing-lines --no-strip-trailing-blanks --no-fix-flower-box-markers --no-convert-eol --no-force-final-eol --dont-set-svn-eol --dont-set-svn-keywords
+/x11include/*: --external-copyright --no-convert-tabs --strip-no-trailing-lines --no-strip-trailing-blanks --no-fix-flower-box-markers --no-convert-eol --no-force-final-eol --dont-set-svn-eol --dont-set-svn-keywords --no-fix-header-guards
 /x11include/*h.in: --treat-as .h
 
 # vboxvideo

@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIPRT.h 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxVideoIPRT.h 76535 2018-12-30 06:17:14Z vboxsync $ */
 /*
  * Copyright (C) 2017 Oracle Corporation
  *
@@ -27,8 +27,12 @@
 /* In builds inside of the VirtualBox source tree we override the default
  * VBoxVideoIPRT.h using -include, therefore this define must match the one
  * there. */
+
 #ifndef ___VBox_Graphics_VBoxVideoIPRT_h
 #define ___VBox_Graphics_VBoxVideoIPRT_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 # include "VBoxVideoErr.h"
 
