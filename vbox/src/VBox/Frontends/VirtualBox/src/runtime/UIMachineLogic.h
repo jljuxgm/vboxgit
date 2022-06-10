@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 73976 2018-08-30 12:03:58Z vboxsync $ */
+/* $Id: UIMachineLogic.h 75018 2018-10-24 08:15:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -273,6 +273,7 @@ private slots:
     void sltTypeHostKeyComboPressRelease(bool fToggleSequence);
     void sltTakeSnapshot();
     void sltShowInformationDialog();
+    void sltShowGuestControlDialog();
     void sltReset();
     void sltPause(bool fOn);
     void sltDetach();
@@ -426,6 +427,7 @@ private:
 
     /** Holds the log viewer dialog instance. */
     QIManagerDialog *m_pLogViewerDialog;
+    QIManagerDialog *m_pGuestControlDialog;
 
     /* Friend classes: */
     friend class UIMachineWindow;
