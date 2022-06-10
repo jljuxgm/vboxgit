@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 72900 2018-07-04 19:42:18Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 72901 2018-07-04 19:42:50Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -238,9 +238,6 @@ static const osTypePattern g_aOsTypesPattern64[] =
 /**
  * Private helper func that suggests a VirtualBox guest OS type
  * for the given OVF operating system type.
- * @param strType
- * @param c
- * @param cStr
  */
 void convertCIMOSType2VBoxOSType(Utf8Str &strType, ovf::CIMOSType_T c, const Utf8Str &cStr)
 {
