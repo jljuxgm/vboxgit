@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 77241 2019-02-10 22:30:33Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 77249 2019-02-11 01:34:51Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1017,7 +1017,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_PhysBulkGCPhys2CCPtrReadOnly(PPDMDEVINS pDe
 }
 
 
-/** @interface_method_impl{PDMDEVHLPR3,pfnPhysReleasePageMappingLocks} */
+/** @interface_method_impl{PDMDEVHLPR3,pfnPhysBulkReleasePageMappingLocks} */
 static DECLCALLBACK(void) pdmR3DevHlp_PhysBulkReleasePageMappingLocks(PPDMDEVINS pDevIns, uint32_t cPages, PPGMPAGEMAPLOCK paLocks)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
