@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 72971 2018-07-08 13:06:49Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 72972 2018-07-08 13:07:58Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -1132,8 +1132,7 @@ bool NetworkAdapter::i_isModified()
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     bool fChanged = mData.isBackedUp();
-    if (!fChanged && mData->mode == NetworkAttachmentType_NAT)
-        fChanged = mNATEngine->i_isModified();
+    fChanged     |= mNATEngine->i_isModified();
     return fChanged;
 }
 
