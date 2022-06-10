@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 77346 2019-02-18 13:07:09Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 77347 2019-02-18 13:26:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -41,10 +41,10 @@ public:
     /** RTTI item type. */
     enum { Type = UIChooserItemType_Global };
 
-    /** Constructs item with specified @a iPosition, passing @a pParent to the base-class. */
-    UIChooserItemGlobal(UIChooserItem *pParent, int iPosition = -1);
-    /** Constructs temporary item with specified @a iPosition as a @a pCopyFrom, passing @a pParent to the base-class. */
-    UIChooserItemGlobal(UIChooserItem *pParent, UIChooserItemGlobal *pCopyFrom, int iPosition = -1);
+    /** Constructs possible @a fFavorite item with specified @a iPosition, passing @a pParent to the base-class. */
+    UIChooserItemGlobal(UIChooserItem *pParent, bool fFavorite, int iPosition = -1);
+    /** Constructs possible @a fFavorite temporary item with specified @a iPosition as a @a pCopyFrom, passing @a pParent to the base-class. */
+    UIChooserItemGlobal(UIChooserItem *pParent, bool fFavorite, UIChooserItemGlobal *pCopyFrom, int iPosition = -1);
     /** Destructs global item. */
     virtual ~UIChooserItemGlobal() /* override */;
 

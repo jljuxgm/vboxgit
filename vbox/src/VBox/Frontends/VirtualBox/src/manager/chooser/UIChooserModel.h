@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 77315 2019-02-14 15:53:43Z vboxsync $ */
+/* $Id: UIChooserModel.h 77347 2019-02-18 13:26:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -410,6 +410,9 @@ private:
         void addMachineIntoTheTree(const CMachine &comMachine, bool fMakeItVisible = false);
         /** Cleanups group tree starting from the passed @a pParentItem. */
         void cleanupGroupTree(UIChooserItem *pParentItem);
+
+        /** Returns whether global item within the @a pParentItem is favorite. */
+        bool isGlobalItemFavorite(UIChooserItem *pParentItem) const;
 
         /** Acquires group item, creates one if necessary.
           * @param  strName           Brings the name of group we looking for.
