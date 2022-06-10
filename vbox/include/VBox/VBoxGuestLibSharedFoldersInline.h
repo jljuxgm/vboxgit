@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFoldersInline.h 77858 2019-03-24 00:10:24Z vboxsync $ */
+/* $Id: VBoxGuestLibSharedFoldersInline.h 77881 2019-03-26 15:02:05Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Shared Folders Host Request Helpers (ring-0).
  */
@@ -1404,7 +1404,7 @@ DECLINLINE(int) VbglR0SfHostReqReadLinkContigSimple(SHFLROOT idRoot, const char 
     if (cchPath < _64K - 1)
     {
         VBOXSFREADLINKREQ *pReq = (VBOXSFREADLINKREQ *)VbglR0PhysHeapAlloc(RT_UOFFSETOF(VBOXSFREADLINKREQ, StrPath.String)
-                                                                           + SHFLSTRING_HEADER_SIZE + cchPath);
+                                                                           + SHFLSTRING_HEADER_SIZE + (uint32_t)cchPath);
         if (pReq)
         {
             pReq->StrPath.u16Length = (uint16_t)cchPath;
