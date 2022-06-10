@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 75251 2018-11-05 17:55:29Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 75254 2018-11-05 18:35:21Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -1087,10 +1087,10 @@ AudioVideoRec::~AudioVideoRec(void)
  * @returns IPRT status code.
  * @param   Settings        Capturing configuration to apply.
  */
-int AudioVideoRec::applyConfiguration(const settings::CaptureSettings &a_Settings)
+int AudioVideoRec::applyConfiguration(const settings::CaptureSettings &Settings)
 {
     /** @todo Do some validation here. */
-    mVideoRecCfg = a_Settings; /* Note: Does have an own copy operator. */
+    mVideoRecCfg = Settings; /* Note: Does have an own copy operator. */
     return VINF_SUCCESS;
 }
 

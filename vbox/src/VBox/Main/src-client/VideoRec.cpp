@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 75251 2018-11-05 17:55:29Z vboxsync $ */
+/* $Id: VideoRec.cpp 75254 2018-11-05 18:35:21Z vboxsync $ */
 /** @file
  * Video recording (with optional audio recording) code.
  *
@@ -186,8 +186,7 @@ int CaptureContext::threadNotify(void)
  * Creates a video recording context.
  *
  * @returns IPRT status code.
- * @param   cScreens            Number of screens to create context for.
- * @param   pVideoRecCfg        Pointer to video recording configuration to use.
+ * @param   a_Settings          Capture settings to use for context creation.
  */
 int CaptureContext::createInternal(const settings::CaptureSettings &a_Settings)
 {

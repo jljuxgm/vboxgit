@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.h 75251 2018-11-05 17:55:29Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.h 75254 2018-11-05 18:35:21Z vboxsync $ */
 /** @file
  * VirtualBox driver interface video recording audio backend.
  */
@@ -44,7 +44,7 @@ public:
 
 public:
 
-    int applyConfiguration(const settings::CaptureSettings &a_Settings);
+    int applyConfiguration(const settings::CaptureSettings &Settings);
 
 public:
 
