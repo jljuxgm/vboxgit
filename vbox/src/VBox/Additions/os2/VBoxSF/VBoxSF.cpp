@@ -1,4 +1,4 @@
-/** $Id: VBoxSF.cpp 75471 2018-11-14 21:38:08Z vboxsync $ */
+/** $Id: VBoxSF.cpp 75558 2018-11-18 19:46:03Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, the FS and FSD level IFS EPs
  */
@@ -129,7 +129,7 @@ int16_t vboxSfOs2GetLocalTimeDelta(void)
 void vboxSfOs2DateTimeFromTimeSpec(FDATE *pDosDate, FTIME *pDosTime, RTTIMESPEC SrcTimeSpec, int16_t cMinLocalTimeDelta)
 {
     if (cMinLocalTimeDelta != 0)
-        RTTimeSpecAddSeconds(&SrcTimeSpec, cMinLocalTimeDelta * 60);
+        RTTimeSpecAddSeconds(&SrcTimeSpec, -cMinLocalTimeDelta * 60);
 
     RTTIME Time;
     if (   RTTimeSpecGetNano(&SrcTimeSpec) >= RTTIME_OFFSET_DOS_TIME
