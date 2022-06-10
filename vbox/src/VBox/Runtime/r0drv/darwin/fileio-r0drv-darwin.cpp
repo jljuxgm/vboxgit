@@ -1,4 +1,4 @@
-/* $Id: fileio-r0drv-darwin.cpp 75039 2018-10-24 13:47:40Z vboxsync $ */
+/* $Id: fileio-r0drv-darwin.cpp 75042 2018-10-24 14:02:37Z vboxsync $ */
 /** @file
  * IPRT - File I/O, R0 Driver, Darwin.
  */
@@ -263,5 +263,49 @@ RTDECL(int) RTFileGetSize(RTFILE hFile, uint64_t *pcbSize)
         return VINF_SUCCESS;
     }
     return RTErrConvertFromErrno(rc);
+}
+
+
+RTDECL(int) RTFileSeek(RTFILE hFile, int64_t offSeek, unsigned uMethod, uint64_t *poffActual)
+{
+    RTFILEINT *pThis = hFile;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->u32Magic == RTFILE_MAGIC, VERR_INVALID_HANDLE);
+
+    uint64_t offNew;
+    switch (uMethod)
+    {
+        case RTFILE_SEEK_BEGIN:
+            AssertReturn(offSeek >= 0, VERR_NEGATIVE_SEEK);
+            offNew = offSeek;
+            break;
+
+        case RTFILE_SEEK_CURRENT:
+            offNew = pThis->offFile + offSeek;
+            break;
+
+        case RTFILE_SEEK_END:
+        {
+            uint64_t cbFile = 0;
+            int rc = RTFileGetSize(hFile, &cbFile);
+            if (RT_SUCCESS(rc))
+                offNew = cbFile + offSeek;
+            else
+                return rc;
+            break;
+        }
+
+        default:
+            return VERR_INVALID_PARAMETER;
+    }
+
+    if ((RTFOFF)offNew > 0)
+    {
+        pThis->offFile = offNew;
+        if (poffActual)
+            *poffActual = offNew;
+        return VINF_SUCCESS;
+    }
+    return VERR_NEGATIVE_SEEK;
 }
 
