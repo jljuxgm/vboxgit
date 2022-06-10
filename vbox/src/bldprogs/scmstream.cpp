@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: scmstream.cpp 76663 2019-01-07 01:00:44Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -926,6 +926,7 @@ bool ScmStreamIsWhiteLine(PSCMSTREAM pStream, size_t iLine)
     return cchLine == 0;
 }
 
+
 /**
  * Try figure out the end of line style of the give stream.
  *
@@ -957,6 +958,7 @@ SCMEOL ScmStreamGetEol(PSCMSTREAM pStream)
     return enmEol;
 }
 
+
 /**
  * Get the end of line indicator type for a line.
  *
@@ -978,6 +980,7 @@ SCMEOL ScmStreamGetEolByLine(PSCMSTREAM pStream, size_t iLine)
 #endif
     return enmEol;
 }
+
 
 /**
  * Appends a line to the stream.
@@ -1351,6 +1354,7 @@ bool ScmStreamCMatchingWordM1(PSCMSTREAM pStream, const char *pszWord, size_t cc
     pStream->off += cchWord - 1;
     return true;
 }
+
 
 /**
  * Get's the C word starting at the current position.
