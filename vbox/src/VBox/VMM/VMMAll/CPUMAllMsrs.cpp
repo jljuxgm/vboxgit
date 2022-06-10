@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 73274 2018-07-20 15:40:10Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 73290 2018-07-21 05:13:03Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -1298,11 +1298,13 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrRd_Ia32VmxBasic(PVMCPU pVCpu, uint32_t 
         uint64_t const fDualMonSmiSmm   = 0;
         uint64_t const fVmcsMemType     = VMX_VMCS_MEM_TYPE_WB;
         uint64_t const fVmcsInsOutsInfo = pVCpu->CTX_SUFF(pVM)->cpum.s.GuestFeatures.fVmxInsOutInfo;
+        uint64_t const fTrueCapMsrs     = 0;
         *puValue = fVmcsRevisionId
                  | (f32BitAddrLimit  << MSR_IA32_VMX_BASIC_VMCS_PHYS_WIDTH_SHIFT)
                  | (fDualMonSmiSmm   << MSR_IA32_VMX_BASIC_DUAL_MON_SHIFT)
                  | (fVmcsMemType     << MSR_IA32_VMX_BASIC_VMCS_MEM_TYPE_SHIFT)
-                 | (fVmcsInsOutsInfo << MSR_IA32_VMX_BASIC_VMCS_INS_OUTS_SHIFT);
+                 | (fVmcsInsOutsInfo << MSR_IA32_VMX_BASIC_VMCS_INS_OUTS_SHIFT)
+                 | (fTrueCapMsrs     << MSR_IA32_VMX_BASIC_TRUE_CONTROLS_SHIFT);
     }
     else
         *puValue = 0;
