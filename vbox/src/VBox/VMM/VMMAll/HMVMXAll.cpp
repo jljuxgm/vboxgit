@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 74164 2018-09-09 15:52:31Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 74166 2018-09-09 18:11:30Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -149,6 +149,11 @@ static const char * const g_apszVmxVDiagDesc[] =
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_EntryXcptErrCodeRsvd     , "EntryXcptErrCodeRsvd"      ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_ExitCtlsAllowed1         , "ExitCtlsAllowed1"          ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_ExitCtlsDisallowed0      , "ExitCtlsDisallowed0"       ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestActStateHlt         , "GuestActStateHlt"          ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestActStateRsvd        , "GuestActStateRsvd"         ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestActStateShutdown    , "GuestActStateShutdown"     ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestActStateSsDpl       , "GuestActStateSsDpl"        ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestActStateStiMovSs    , "GuestActStateStiMovSs"     ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestCr0Fixed0           , "GuestCr0Fixed0"            ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestCr0Fixed1           , "GuestCr0Fixed1"            ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_GuestCr0PgPe             , "GuestCr0PgPe"              ),
