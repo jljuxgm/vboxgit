@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 74464 2018-09-25 18:13:54Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 74465 2018-09-25 18:15:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -126,6 +126,7 @@ void UIToolsModel::setToolsClass(UIToolsClass enmClass)
         m_enmCurrentClass = enmClass;
         updateLayout();
         updateNavigation();
+        sltItemMinimumHeightHintChanged();
     }
 }
 
@@ -334,7 +335,8 @@ void UIToolsModel::sltItemMinimumHeightHintChanged()
     /* Calculate summary vertical height: */
     int iMinimumHeightHint = 0;
     foreach (UIToolsItem *pItem, items())
-        iMinimumHeightHint += pItem->minimumHeightHint();
+        if (pItem->isVisible())
+            iMinimumHeightHint += pItem->minimumHeightHint();
     emit sigItemMinimumHeightHintChanged(iMinimumHeightHint);
 }
 
