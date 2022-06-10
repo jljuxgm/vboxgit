@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 75307 2018-11-07 13:56:14Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 75313 2018-11-07 17:13:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -885,10 +885,7 @@ private:
         /* Update indicator state early: */
         CCaptureSettings captureSettings = machine.GetCaptureSettings();
         Assert(captureSettings.isOk());
-        /* For now all screens have the same config: */
-        CCaptureScreenSettings captureScreen0Settings = captureSettings.GetScreenSettings(0);
-        Assert(captureScreen0Settings.isOk());
-        if (!captureScreen0Settings.GetEnabled())
+        if (!captureSettings.GetEnabled())
             setState(UIIndicatorStateRecording_Disabled);
         else if (!fMachinePaused)
             setState(UIIndicatorStateRecording_Enabled);
@@ -918,6 +915,10 @@ private:
                     strToolTip = "Audio capture file";
                 else if (m_eRecordingMode & UIIndicatorStateRecordingMode_Video)
                     strToolTip = "Video capture file";
+
+                /* For now all screens have the same config: */
+                CCaptureScreenSettings captureScreen0Settings = captureSettings.GetScreenSettings(0);
+                Assert(captureScreen0Settings.isOk());
 
                 strFullData += s_strTableRow2 /** @todo r=andy Refine this tooltip (audio and/or video). */
                     .arg(QApplication::translate("UIIndicatorsPool", strToolTip.toLatin1().constData(), "Video capture tooltip"))

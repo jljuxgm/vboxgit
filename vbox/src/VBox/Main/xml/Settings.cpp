@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 75307 2018-11-07 13:56:14Z vboxsync $ */
+/* $Id: Settings.cpp 75313 2018-11-07 17:13:56Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2482,6 +2482,7 @@ void CaptureSettings::applyDefaults(void)
     {
         /* Always add screen 0 to the default configuration. */
         CaptureScreenSettings screenSettings; /* Apply default settings for screen 0. */
+        screenSettings.fEnabled = true;       /* Enabled by default. */
         mapScreens[0] = screenSettings;
     }
     catch (std::bad_alloc &)

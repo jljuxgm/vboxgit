@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 75307 2018-11-07 13:56:14Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 75313 2018-11-07 17:13:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -1586,16 +1586,16 @@ bool UIMachineSettingsDisplay::saveRecordingData()
                         recordingScreenSettings.SetVideoRate(newDisplayData.m_iRecordingVideoBitRate);
                         fSuccess = recordingScreenSettings.isOk();
                     }
-                    /* Save recording screens: */
-                    if (fSuccess && newDisplayData.m_vecRecordingScreens != oldDisplayData.m_vecRecordingScreens)
-                    {
-                        recordingScreenSettings.SetEnabled(newDisplayData.m_vecRecordingScreens[iScreenIndex]);
-                        fSuccess = recordingScreenSettings.isOk();
-                    }
                     /* Save recording options: */
                     if (fSuccess && newDisplayData.m_strRecordingVideoOptions != oldDisplayData.m_strRecordingVideoOptions)
                     {
                         recordingScreenSettings.SetOptions(newDisplayData.m_strRecordingVideoOptions);
+                        fSuccess = recordingScreenSettings.isOk();
+                    }
+                    /* Save recording screens: */
+                    if (fSuccess && newDisplayData.m_vecRecordingScreens != oldDisplayData.m_vecRecordingScreens)
+                    {
+                        recordingScreenSettings.SetEnabled(newDisplayData.m_vecRecordingScreens[iScreenIndex]);
                         fSuccess = recordingScreenSettings.isOk();
                     }
                 }
