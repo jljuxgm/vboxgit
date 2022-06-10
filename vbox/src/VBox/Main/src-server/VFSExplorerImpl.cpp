@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 73003 2018-07-09 11:09:32Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 76363 2018-12-22 01:48:54Z vboxsync $ */
 /** @file
  * IVFSExplorer COM class implementations.
  */
@@ -209,7 +209,7 @@ void VFSExplorer::TaskVFSExplorer::handler()
             if (pVFSExplorer->m->storageType == VFSType_File)
                 rc = pVFSExplorer->i_updateFS(this);
             else if (pVFSExplorer->m->storageType == VFSType_S3)
-                rc = VERR_NOT_IMPLEMENTED;
+                rc = E_NOTIMPL;
             break;
         }
         case TaskVFSExplorer::Delete:
@@ -217,7 +217,7 @@ void VFSExplorer::TaskVFSExplorer::handler()
             if (pVFSExplorer->m->storageType == VFSType_File)
                 rc = pVFSExplorer->i_deleteFS(this);
             else if (pVFSExplorer->m->storageType == VFSType_S3)
-                rc = VERR_NOT_IMPLEMENTED;
+                rc = E_NOTIMPL;
             break;
         }
         default:
@@ -335,7 +335,7 @@ HRESULT VFSExplorer::i_updateFS(TaskVFSExplorer *aTask)
     LogFlowFunc(("rc=%Rhrc\n", rc));
     LogFlowFuncLeave();
 
-    return VINF_SUCCESS;
+    return S_OK; /** @todo ??? */
 }
 
 HRESULT VFSExplorer::i_deleteFS(TaskVFSExplorer *aTask)
