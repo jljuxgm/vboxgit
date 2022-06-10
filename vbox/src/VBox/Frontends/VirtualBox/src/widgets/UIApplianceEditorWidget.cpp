@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 74788 2018-10-12 10:29:33Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 74802 2018-10-12 13:01:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -1545,7 +1545,17 @@ KVirtualSystemDescriptionType UIApplianceSortProxyModel::s_aSortList[] =
     KVirtualSystemDescriptionType_HardDiskControllerIDE,
     KVirtualSystemDescriptionType_HardDiskControllerSATA,
     KVirtualSystemDescriptionType_HardDiskControllerSCSI,
-    KVirtualSystemDescriptionType_HardDiskControllerSAS
+    KVirtualSystemDescriptionType_HardDiskControllerSAS,
+    /* OCI */
+    KVirtualSystemDescriptionType_CloudOCIBucket,
+    KVirtualSystemDescriptionType_CloudOCIKeepObject,
+    KVirtualSystemDescriptionType_CloudOCILaunchInstance,
+    KVirtualSystemDescriptionType_CloudOCIInstanceShape,
+    KVirtualSystemDescriptionType_CloudOCIBootDiskSize,
+    KVirtualSystemDescriptionType_CloudOCIVCN,
+    KVirtualSystemDescriptionType_CloudOCISubnet,
+    KVirtualSystemDescriptionType_CloudOCIPublicIP,
+    KVirtualSystemDescriptionType_CloudOCIDomain
 };
 
 UIApplianceSortProxyModel::UIApplianceSortProxyModel(QObject *pParent)
