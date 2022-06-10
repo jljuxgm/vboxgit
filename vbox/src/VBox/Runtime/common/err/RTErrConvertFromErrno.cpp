@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 77110 2019-02-01 11:00:12Z vboxsync $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -36,10 +36,10 @@
 #include <iprt/errno.h>
 
 
-RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
+RTDECL(int)  RTErrConvertFromErrno(int iNativeCode)
 {
     /* very fast check for no error. */
-    if (uNativeCode == 0)
+    if (iNativeCode == 0)
         return VINF_SUCCESS;
 
     /*
@@ -51,7 +51,7 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
      * This switch is arranged like the Linux i386 errno.h! This switch is mirrored
      * by RTErrConvertToErrno.
      */
-    switch (uNativeCode)
+    switch (iNativeCode)
     {                                                                           /* Linux number */
 #ifdef EPERM
         case EPERM:             return VERR_ACCESS_DENIED;                      /*   1 */
