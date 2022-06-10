@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 73676 2018-08-14 19:02:08Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 73691 2018-08-15 13:20:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1930,11 +1930,6 @@ void UIVirtualBoxManager::updateActionsVisibility()
     /* Determine whether Snapshot actions should be visible: */
     const bool fSnapshotMenuShown = fMachineOrGroupMenuShown && m_pWidget->currentMachineTool() == ToolTypeMachine_Snapshots;
     m_pSnapshotMenuAction->setVisible(fSnapshotMenuShown);
-    actionPool()->action(UIActionIndexST_M_Snapshot_S_Take)->setVisible(fSnapshotMenuShown);
-    actionPool()->action(UIActionIndexST_M_Snapshot_S_Delete)->setVisible(fSnapshotMenuShown);
-    actionPool()->action(UIActionIndexST_M_Snapshot_S_Restore)->setVisible(fSnapshotMenuShown);
-    actionPool()->action(UIActionIndexST_M_Snapshot_T_Properties)->setVisible(fSnapshotMenuShown);
-    actionPool()->action(UIActionIndexST_M_Snapshot_S_Clone)->setVisible(fSnapshotMenuShown);
 
     /* Hide action shortcuts: */
     if (!fMachineMenuShown)
@@ -1949,6 +1944,8 @@ void UIVirtualBoxManager::updateActionsVisibility()
         pAction->setVisible(fMachineOrGroupMenuShown);
     foreach (UIAction *pAction, m_groupActions)
         pAction->setVisible(fMachineOrGroupMenuShown);
+    foreach (UIAction *pAction, m_snapshotActions)
+        pAction->setVisible(fSnapshotMenuShown);
 
     /* Show action shortcuts: */
     if (fMachineMenuShown)
