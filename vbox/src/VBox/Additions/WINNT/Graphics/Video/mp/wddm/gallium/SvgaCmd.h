@@ -1,4 +1,4 @@
-/* $Id: SvgaCmd.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: SvgaCmd.h 75655 2018-11-21 23:30:22Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA command encoders.
  */
@@ -20,7 +20,9 @@
 
 #include "SvgaHw.h"
 
-void SvgaCmdDefineScreen(void *pvCmd, uint32_t u32Id, uint32_t u32Width, uint32_t u32Height, uint32_t u32Offset);
+void SvgaCmdDefineScreen(void *pvCmd, uint32_t u32Id, bool fActivate,
+                         int32_t xOrigin, int32_t yOrigin, uint32_t u32Width, uint32_t u32Height,
+                         bool fPrimary, uint32_t u32VRAMOffset, bool fBlank);
 void SvgaCmdDestroyScreen(void *pvCmd, uint32_t u32Id);
 void SvgaCmdUpdate(void *pvCmd, uint32_t u32X, uint32_t u32Y, uint32_t u32Width, uint32_t u32Height);
 void SvgaCmdFence(void *pvCmd, uint32_t u32Fence);
