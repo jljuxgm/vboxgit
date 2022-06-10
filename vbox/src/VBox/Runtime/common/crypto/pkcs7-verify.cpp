@@ -1,4 +1,4 @@
-/* $Id: pkcs7-verify.cpp 74760 2018-10-11 11:25:24Z vboxsync $ */
+/* $Id: pkcs7-verify.cpp 74828 2018-10-13 03:00:50Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Verification
  */
@@ -829,5 +829,4 @@ RTDECL(int) RTCrPkcs7VerifySignedDataWithExternalData(PCRTCRPKCS7CONTENTINFO pCo
     return rtCrPkcs7VerifySignedDataEx(pContentInfo, fFlags, hAdditionalCerts, hTrustedCerts, pValidationTime,
                                        pfnVerifyCert, pvUser, pvData, cbData, pErrInfo);
 }
-
 
