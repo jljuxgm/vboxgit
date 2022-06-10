@@ -1,4 +1,4 @@
-/* $Id: RTCRestAnyObject.cpp 74402 2018-09-21 09:25:55Z vboxsync $ */
+/* $Id: RTCRestAnyObject.cpp 74414 2018-09-21 18:23:01Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestAnyObject implementation.
  */
@@ -33,6 +33,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/err.h>
+#include <iprt/cpp/restoutput.h>
 
 
 
@@ -418,7 +419,7 @@ RTCRestOutputBase &RTCRestAnyObject::serializeAsJson(RTCRestOutputBase &a_rDst) 
 {
     if (m_pData)
         return m_pData->serializeAsJson(a_rDst);
-    a_rDst.printf("null");
+    a_rDst.nullValue();
     return a_rDst;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: rest-binary.cpp 74402 2018-09-21 09:25:55Z vboxsync $ */
+/* $Id: rest-binary.cpp 74414 2018-09-21 18:23:01Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestBinary and Descendants.
  */
@@ -34,6 +34,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/err.h>
+#include <iprt/cpp/restoutput.h>
 
 
 /*********************************************************************************************************************************
@@ -208,7 +209,7 @@ int RTCRestBinary::resetToDefault(void)
 RTCRestOutputBase &RTCRestBinary::serializeAsJson(RTCRestOutputBase &a_rDst) const
 {
     AssertMsgFailed(("We should never get here!\n"));
-    a_rDst.printf("null");
+    a_rDst.nullValue();
     return a_rDst;
 }
 
