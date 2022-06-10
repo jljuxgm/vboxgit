@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 76098 2018-12-10 09:07:39Z vboxsync $ */
+/* $Id: VBoxTray.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBOXTRAY_H
 #define ___VBOXTRAY_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #       define _InterlockedExchange           _InterlockedExchange_StupidDDKVsCompilerCrap
 #       define _InterlockedExchangeAdd        _InterlockedExchangeAdd_StupidDDKVsCompilerCrap

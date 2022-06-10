@@ -1,4 +1,4 @@
-/* $Id: VBoxPresent.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: VBoxPresent.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium D3D9 state tracker interface.
  *
@@ -19,6 +19,9 @@
 
 #ifndef ___VBoxPresent_h__
 #define ___VBoxPresent_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/win/d3d9.h>
 

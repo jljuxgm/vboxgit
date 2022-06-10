@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMini.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDispMini.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver, helper functions which interacts with our miniport driver
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOXDISPMINI_H
 #define VBOXDISPMINI_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxDisp.h"
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 74670 2018-10-08 11:35:07Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxDispDbg_h__
 #define ___VBoxDispDbg_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define VBOX_VIDEO_LOG_NAME "VBoxD3D"
 #define VBOX_VIDEO_LOG_LOGGER vboxVDbgInternalLogLogger

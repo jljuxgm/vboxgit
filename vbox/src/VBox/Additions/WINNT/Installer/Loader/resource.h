@@ -1,4 +1,4 @@
-/* $Id: resource.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: resource.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * AutoStartMenu - resource header file.
  */
@@ -15,4 +15,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifndef VBOX_INCLUDED_Installer_Loader_resource_h
+#define VBOX_INCLUDED_Installer_Loader_resource_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
+
 #define IDI_VIRTUALBOX 101
+
+#endif
+

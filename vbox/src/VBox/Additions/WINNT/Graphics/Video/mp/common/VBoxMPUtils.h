@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.h 75403 2018-11-12 17:50:58Z vboxsync $ */
+/* $Id: VBoxMPUtils.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox Miniport common utils header
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOXMPUTILS_H
 #define VBOXMPUTILS_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /*Sanity check*/
 #if defined(VBOX_XPDM_MINIPORT) == defined(VBOX_WDDM_MINIPORT)

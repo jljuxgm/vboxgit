@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 76105 2018-12-10 11:21:07Z vboxsync $ */
+/* $Id: VBoxDnD.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __VBOXTRAYDND__H
 #define __VBOXTRAYDND__H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/critsect.h>
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCommon.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMPCommon.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox Miniport common functions used by XPDM/WDDM drivers
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOXMPCOMMON_H
 #define VBOXMPCOMMON_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxMPDevExt.h"
 

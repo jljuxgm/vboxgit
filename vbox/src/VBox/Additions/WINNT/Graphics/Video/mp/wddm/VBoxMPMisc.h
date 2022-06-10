@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 71196 2018-03-05 10:38:29Z vboxsync $ */
+/* $Id: VBoxMPMisc.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxMPMisc_h__
 #define ___VBoxMPMisc_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "../../common/VBoxVideoTools.h"
 

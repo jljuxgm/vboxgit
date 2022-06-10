@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMPVidPn.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxMPVidPn_h___
 #define ___VBoxMPVidPn_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define VBOXVDPN_C_DISPLAY_HBLANK_SIZE 200
 #define VBOXVDPN_C_DISPLAY_VBLANK_SIZE 180

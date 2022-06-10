@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.h 75697 2018-11-23 22:45:22Z vboxsync $ */
+/* $Id: VBoxMPGaWddm.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxMPGaWddm_h__
 #define ___VBoxMPGaWddm_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "common/VBoxMPDevExt.h"
 

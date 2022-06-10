@@ -1,4 +1,4 @@
-/* $Id: vbsfhlp.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vbsfhlp.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver helpers
  */
@@ -17,6 +17,9 @@
 
 #ifndef __VBSFHLP__H
 #define __VBSFHLP__H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/nt/nt.h> /* includes ntifs.h and wdm.h */
 #include <iprt/win/ntverp.h>

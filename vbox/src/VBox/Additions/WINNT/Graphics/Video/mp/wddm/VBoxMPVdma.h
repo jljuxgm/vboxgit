@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxMPVdma.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxMPVdma_h___
 #define ___VBoxMPVdma_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/asm.h>

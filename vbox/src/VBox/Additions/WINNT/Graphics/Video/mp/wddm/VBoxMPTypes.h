@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 75445 2018-11-14 12:19:32Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxMPTypes_h___
 #define ___VBoxMPTypes_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 typedef struct _VBOXMP_DEVEXT *PVBOXMP_DEVEXT;
 #ifdef VBOX_WITH_CROGL

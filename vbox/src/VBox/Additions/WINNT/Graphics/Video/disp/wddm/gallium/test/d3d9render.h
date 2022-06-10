@@ -1,4 +1,4 @@
-/* $Id: d3d9render.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: d3d9render.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * Gallium D3D testcase. Interface for D3D9 tests.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __D3D9RENDER__H
 #define __D3D9RENDER__H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "d3dhlp.h"
 

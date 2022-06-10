@@ -1,4 +1,4 @@
-/* $Id: VBoxTrayMsg.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxTrayMsg.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxTrayMsg - Globally registered messages (RPC) to/from VBoxTray.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBOXTRAY_MSG_H
 #define ___VBOXTRAY_MSG_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** The IPC pipe's prefix (native).
  * Will be followed by the username VBoxTray runs under. */

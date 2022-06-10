@@ -1,4 +1,4 @@
-/* $Id: d3dhlp.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: d3dhlp.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * Gallium D3D testcase. Various D3D helpers.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __D3DHLP__H
 #define __D3DHLP__H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifdef VBOX
 #include <iprt/win/d3d9.h>

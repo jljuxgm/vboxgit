@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoTools.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxVideoTools.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox Video tooling
  */
@@ -14,8 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef ___VBoxVideoTools_h__
 #define ___VBoxVideoTools_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/assert.h>

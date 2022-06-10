@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.h 67814 2017-07-06 08:37:31Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBOX_CREDPROV_CREDENTIAL_H___
 #define ___VBOX_CREDPROV_CREDENTIAL_H___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 /*******************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPInternal.h 71592 2018-03-31 19:51:41Z vboxsync $ */
+/* $Id: VBoxMPInternal.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport internal header
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOXMPINTERNAL_H
 #define VBOXMPINTERNAL_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "common/VBoxMPUtils.h"
 #include "common/VBoxMPDevExt.h"

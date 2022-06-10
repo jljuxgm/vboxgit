@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVrdpBmp.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDispVrdpBmp.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOXDISPVRDPBMP_H
 #define VBOXDISPVRDPBMP_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* RDP cache holds about 350 tiles 64x64. Therefore
  * the driver does not have to cache more then the

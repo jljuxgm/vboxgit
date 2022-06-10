@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDrawCmd.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDispDrawCmd.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOXDISPDRAWCMD_H
 #define VBOXDISPDRAWCMD_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define VBVA_DECL_OP(__fn, __args) \
     void vbvaDrv##__fn __args;     \

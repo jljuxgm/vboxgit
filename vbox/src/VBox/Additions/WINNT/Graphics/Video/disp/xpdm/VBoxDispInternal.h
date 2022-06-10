@@ -1,4 +1,4 @@
-/* $Id: VBoxDispInternal.h 71592 2018-03-31 19:51:41Z vboxsync $ */
+/* $Id: VBoxDispInternal.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver, internal header
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOXDISPINTERNAL_H
 #define VBOXDISPINTERNAL_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #define LOG_GROUP LOG_GROUP_DRV_DISPLAY

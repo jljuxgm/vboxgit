@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvFactory.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxCredProvFactory.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxCredentialProvFactory - The VirtualBox Credential Provider Factory.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBOX_CREDPROV_FACTORY_H___
 #define ___VBOX_CREDPROV_FACTORY_H___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/win/windows.h>
 

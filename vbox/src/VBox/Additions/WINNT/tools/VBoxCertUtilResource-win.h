@@ -1,4 +1,4 @@
-/* $Id: VBoxCertUtilResource-win.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxCertUtilResource-win.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service, resource IDs.
  */
@@ -15,5 +15,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifndef VBOX_INCLUDED_tools_VBoxCertUtilResource_win_h
+#define VBOX_INCLUDED_tools_VBoxCertUtilResource_win_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
+
 #define IDI_VIRTUALBOX 101
+
+#endif
 

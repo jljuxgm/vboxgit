@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DBase.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDispD3DBase.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D Base Include
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxDispD3DBase_h
 #define ___VBoxDispD3DBase_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Include nt-and-windows.h here so we get NT_SUCCESS, but don't try if
    something windowsy is already included because that'll cause conflicts. */

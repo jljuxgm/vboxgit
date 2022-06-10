@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 75445 2018-11-14 12:19:32Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxDispD3D_h___
 #define ___VBoxDispD3D_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxDispD3DIf.h"
 #include "../../common/wddm/VBoxMPIf.h"

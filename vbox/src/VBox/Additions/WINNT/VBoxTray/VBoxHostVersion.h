@@ -1,4 +1,4 @@
-/* $Id: VBoxHostVersion.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxHostVersion.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxHostVersion - Checks the host's VirtualBox version and notifies
  *                   the user in case of an update.
@@ -18,6 +18,9 @@
 
 #ifndef ___VBoxHostVersion_h
 #define ___VBoxHostVersion_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 int VBoxCheckHostVersion();
 

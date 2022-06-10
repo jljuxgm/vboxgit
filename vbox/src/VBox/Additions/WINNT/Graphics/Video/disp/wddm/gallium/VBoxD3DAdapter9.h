@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DAdapter9.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: VBoxD3DAdapter9.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface.
  *
@@ -19,6 +19,9 @@
 
 #ifndef ___VBoxD3DAdapter9_h__
 #define ___VBoxD3DAdapter9_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxPresent.h"
 

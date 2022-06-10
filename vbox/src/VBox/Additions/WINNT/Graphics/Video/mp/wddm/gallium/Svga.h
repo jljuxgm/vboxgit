@@ -1,4 +1,4 @@
-/* $Id: Svga.h 75697 2018-11-23 22:45:22Z vboxsync $ */
+/* $Id: Svga.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___Svga_h__
 #define ___Svga_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxMPGaUtils.h"
 

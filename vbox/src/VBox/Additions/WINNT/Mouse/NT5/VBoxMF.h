@@ -1,4 +1,4 @@
-/* $Id: VBoxMF.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMF.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox Mouse Filter Driver - Internal Header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef VBOXMF_H
 #define VBOXMF_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #define LOG_GROUP LOG_GROUP_DRV_MOUSE

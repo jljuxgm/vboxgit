@@ -1,4 +1,4 @@
-/* $Id: GaDdi.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: GaDdi.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium WDDM user mode driver functions.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___GaDdi_h__
 #define ___GaDdi_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <d3dumddi.h>
 

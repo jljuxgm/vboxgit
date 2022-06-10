@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 75445 2018-11-14 12:19:32Z vboxsync $ */
+/* $Id: VBoxMPIf.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver.
  *
@@ -24,6 +24,9 @@
 
 #ifndef ___VBoxMPIf_h___
 #define ___VBoxMPIf_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBoxVideo.h>
 #include "../../../../include/VBoxDisplay.h"

@@ -1,4 +1,4 @@
-/* $Id: VBoxHook.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxHook.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxHook -- Global windows hook dll.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___winnt_include_VBoxHook_h
 #define ___winnt_include_VBoxHook_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* custom messages as we must install the hook from the main thread */
 /** @todo r=andy Use WM_APP + n offsets here! */

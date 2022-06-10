@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiDisp.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUhgsmiDisp.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxUhgsmiDisp_h__
 #define ___VBoxUhgsmiDisp_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxUhgsmiBase.h"
 #include "VBoxDispD3DCmn.h"

@@ -1,4 +1,4 @@
-/* $Id: SvgaCmd.h 75655 2018-11-21 23:30:22Z vboxsync $ */
+/* $Id: SvgaCmd.h 76540 2018-12-30 06:26:37Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA command encoders.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___SvgaCmd_h__
 #define ___SvgaCmd_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "SvgaHw.h"
 
