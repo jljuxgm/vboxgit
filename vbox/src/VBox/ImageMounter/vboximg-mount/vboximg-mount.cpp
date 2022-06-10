@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.cpp 75970 2018-12-05 12:30:09Z vboxsync $ */
+/* $Id: vboximg-mount.cpp 75977 2018-12-05 15:43:41Z vboxsync $ */
 /** @file
  * vboximg-mount - Disk Image Flattening FUSE Program.
  */
@@ -277,7 +277,7 @@ vboximgOptHandler(void *data, const char *arg, int optKey, struct fuse_args *out
 /** @copydoc fuse_operations::open */
 static int vboximgOp_open(const char *pszPath, struct fuse_file_info *pInfo)
 {
-    (void) pInfo;
+    RT_NOREF(pszPath, pInfo);
     LogFlowFunc(("pszPath=%s\n", pszPath));
     uint32_t notsup = 0;
     int rc = 0;
