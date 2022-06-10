@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 72769 2018-06-29 11:10:00Z vboxsync $ */
+/* $Id: HMR0.cpp 72772 2018-06-29 11:28:28Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1617,7 +1617,7 @@ VMMR0_INT_DECL(int) HMR0SaveDebugState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 {
     RT_NOREF(pCtx);
     STAM_COUNTER_INC(&pVCpu->hm.s.StatDebug64SwitchBack);
-    if (pVCpu->CTX_SUFF(pVM)->hm.s.vmx.fSupported)
+    if (pVM->hm.s.vmx.fSupported)
         return VMXR0Execute64BitsHandler(pVCpu, HM64ON32OP_HMRCSaveGuestDebug64, 0, NULL);
     return SVMR0Execute64BitsHandler(pVCpu, HM64ON32OP_HMRCSaveGuestDebug64, 0, NULL);
 }
