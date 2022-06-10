@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 75720 2018-11-25 18:37:51Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 75727 2018-11-26 08:39:43Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1335,16 +1335,10 @@ static RTEXITCODE vgsvcGstCtrlSessionSpawnWorker(PVBOXSERVICECTRLSESSION pSessio
         VGSvcVerbose(1, "Using client ID=%RU32\n", uClientID);
     }
     else
-/** @todo r=bird: This should return to caller, shouldn't it it?!?
- * Because VbglR3GuestCtrlSessionNotify() below is now using an uninitialized
- * uClientID, right?  If you check VbglR3GuestCtrlConnect, you can clearly see
- * that it will not be set, except on success.  So, this is a terrible idea!
- *
- * Did this happen because of a weird desire to have a single return statement?
- * Or was it some other confusion wrt program flow/state?  Indentation fright?
- * Please figure out why and try not to do it again. :-)
- */
+    {
         VGSvcError("Error connecting to guest control service, rc=%Rrc\n", rc);
+        return RTEXITCODE_FAILURE;
+    }
 
     /* Report started status. */
     VBGLR3GUESTCTRLCMDCTX ctx = { uClientID, VBOX_GUESTCTRL_CONTEXTID_MAKE_SESSION(pSession->StartupInfo.uSessionID) };
