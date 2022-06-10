@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 74195 2018-09-11 11:45:35Z vboxsync $ */
+/* $Id: tstRTCRest-1.cpp 74196 2018-09-11 11:48:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -1718,7 +1718,7 @@ static void testArray()
                 else
                     RTTESTI_CHECK_RC(Arr4.prepend(pDirect), VINF_SUCCESS);
             }
-            RTTESTI_CHECK(Arr4.size() == i + 1);
+            RTTESTI_CHECK((ssize_t)Arr4.size() == i + 1);
             RTTESTI_CHECK(Arr4.isEmpty() == false);
         }
 
