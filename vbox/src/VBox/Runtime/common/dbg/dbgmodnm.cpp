@@ -1,4 +1,4 @@
-/* $Id: dbgmodnm.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: dbgmodnm.cpp 77907 2019-03-27 10:41:43Z vboxsync $ */
 /** @file
  * IPRT - Debug Map Reader For NM Like Mapfiles.
  */
@@ -526,6 +526,7 @@ static DECLCALLBACK(int) rtDbgModNm_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch
                 }
             }
             RTDbgModRelease(pThis->hCnt);
+            RTMemFree(pThis);
         }
         else
             rc = VERR_NO_MEMORY;
