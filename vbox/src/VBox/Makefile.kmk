@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74926 2018-10-18 15:32:37Z vboxsync $
+# $Id: Makefile.kmk 75970 2018-12-05 12:30:09Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -100,6 +100,7 @@ else
   endif
  endif
  include $(PATH_SUB_CURRENT)/ExtPacks/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/ImageMounter/Makefile.kmk
  ifdef VBOX_WITH_INSTALLER
   include $(PATH_SUB_CURRENT)/Installer/Makefile.kmk 		        # Keep this last.
  endif
