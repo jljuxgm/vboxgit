@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 69714 2017-11-16 12:50:32Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 72704 2018-06-27 15:38:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -25,6 +25,7 @@
 # include <QGraphicsSceneMouseEvent>
 
 /* GUI includes: */
+# include "UIGChooser.h"
 # include "UIGChooserItemMachine.h"
 # include "UIGChooserItemGroup.h"
 # include "UIGChooserModel.h"
@@ -253,7 +254,7 @@ void UIGChooserItemMachine::updateStatePixmap()
     const QIcon stateIcon = machineStateIcon();
     AssertReturnVoid(!stateIcon.isNull());
     const QSize statePixmapSize = QSize(iIconMetric, iIconMetric);
-    const QPixmap statePixmap = stateIcon.pixmap(statePixmapSize);
+    const QPixmap statePixmap = stateIcon.pixmap(model()->chooser()->window()->windowHandle(), statePixmapSize);
     /* Update linked values: */
     if (m_statePixmapSize != statePixmapSize)
     {
@@ -809,6 +810,16 @@ void UIGChooserItemMachine::resetDragToken()
 QMimeData* UIGChooserItemMachine::createMimeData()
 {
     return new UIGChooserItemMimeData(this);
+}
+
+void UIGChooserItemMachine::showEvent(QShowEvent *pEvent)
+{
+    /* Call to base-class: */
+    UIGChooserItem::showEvent(pEvent);
+
+    /* Recache and update pixmaps: */
+    recachePixmap();
+    updatePixmaps();
 }
 
 void UIGChooserItemMachine::resizeEvent(QGraphicsSceneResizeEvent *pEvent)

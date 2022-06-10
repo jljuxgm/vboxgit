@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.h 72704 2018-06-27 15:38:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class declaration.
  */
@@ -137,6 +137,9 @@ private:
     void processDrop(QGraphicsSceneDragDropEvent *pEvent, UIGChooserItem *pFromWho, DragToken where);
     void resetDragToken();
     QMimeData* createMimeData();
+
+    /** Handles show @a pEvent. */
+    virtual void showEvent(QShowEvent *pEvent) /* override */;
 
     /* Handler: Resize handling stuff: */
     void resizeEvent(QGraphicsSceneResizeEvent *pEvent);
