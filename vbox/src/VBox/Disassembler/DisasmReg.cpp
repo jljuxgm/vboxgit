@@ -1,4 +1,4 @@
-/* $Id: DisasmReg.cpp 73514 2018-08-05 14:33:18Z vboxsync $ */
+/* $Id: DisasmReg.cpp 76455 2018-12-25 01:49:12Z vboxsync $ */
 /** @file
  * VBox disassembler- Register Info Helpers.
  */
@@ -22,7 +22,7 @@
 #define LOG_GROUP LOG_GROUP_DIS
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <VBox/vmm/cpum.h>
 #include <iprt/assert.h>

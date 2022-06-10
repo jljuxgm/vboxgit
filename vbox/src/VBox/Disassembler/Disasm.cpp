@@ -1,4 +1,4 @@
-/* $Id: Disasm.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: Disasm.cpp 76455 2018-12-25 01:49:12Z vboxsync $ */
 /** @file
  * VBox disassembler - Disassemble and optionally format.
  */
@@ -22,7 +22,7 @@
 #define LOG_GROUP LOG_GROUP_DIS
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include "DisasmInternal.h"
