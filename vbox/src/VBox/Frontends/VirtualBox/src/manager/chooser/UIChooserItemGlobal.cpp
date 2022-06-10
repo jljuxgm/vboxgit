@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 73600 2018-08-09 18:02:16Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 73658 2018-08-14 13:43:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -299,7 +299,7 @@ void UIChooserItemGlobal::updateAll(const QString &)
 
 void UIChooserItemGlobal::removeAll(const QString &)
 {
-    AssertMsgFailed(("Global graphics item do NOT support deleting!"));
+    // Just do nothing ..
 }
 
 UIChooserItem *UIChooserItemGlobal::searchForItem(const QString &, int iItemSearchFlags)
