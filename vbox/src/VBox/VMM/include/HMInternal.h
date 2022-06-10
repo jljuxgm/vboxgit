@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 72811 2018-07-03 08:01:59Z vboxsync $ */
+/* $Id: HMInternal.h 72854 2018-07-04 07:46:06Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1113,7 +1113,7 @@ AssertCompileMemberAlignment(HMCPU, Event, 8);
 
 #ifdef IN_RING0
 VMMR0_INT_DECL(PHMGLOBALCPUINFO) hmR0GetCurrentCpu(void);
-VMMR0_INT_DECL(int)              hmR0EnterCpu(PVMCPU pVCpu);
+VMMR0_INT_DECL(int) hmR0EnterCpu(PVMCPU pVCpu);
 
 # ifdef VBOX_STRICT
 VMMR0_INT_DECL(void) hmR0DumpRegs(PVMCPU pVCpu, PCPUMCTX pCtx);
