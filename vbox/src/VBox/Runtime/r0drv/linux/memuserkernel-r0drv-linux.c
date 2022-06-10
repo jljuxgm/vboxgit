@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-linux.c 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-linux.c 74406 2018-09-21 10:21:22Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Linux.
  */
@@ -136,7 +136,8 @@ static int rtR0MemKernelCopyLnxWorker(void *pvDst, void const *pvSrc, size_t cb)
                           "2:\n\t"
                           ".section .fixup,\"ax\"\n"
                           "3:\n\t"
-                          "movl %4, %0\n"
+                          "movl %4, %0\n\t"
+                          "jmp 2b\n\t"
                           ".previous\n"
                           _ASM_EXTABLE(1b, 3b)
                           : "=r" (rc),
