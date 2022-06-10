@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 72988 2018-07-09 02:27:49Z vboxsync $ */
+/* $Id: HMInternal.h 73015 2018-07-10 04:38:01Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -156,7 +156,7 @@ RT_C_DECLS_BEGIN
                                                   | HM_CHANGED_KEEPER_STATE_MASK)
 
 /** Mask of what state might have changed when IEM raised an exception.
-  This is a combination IEM_CPUMCTX_EXTRN_MUST_MASK and IEM_CPUMCTX_EXTRN_XCPT_MASK. */
+ *  This is a based on IEM_CPUMCTX_EXTRN_XCPT_MASK. */
 #define HM_CHANGED_XCPT_RAISED_MASK              (  HM_CHANGED_GUEST_GPRS_MASK  \
                                                   | HM_CHANGED_GUEST_RIP        \
                                                   | HM_CHANGED_GUEST_RFLAGS     \
