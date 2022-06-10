@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 75148 2018-10-29 13:56:53Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 75162 2018-10-29 19:01:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -91,7 +91,6 @@ protected:
 
     virtual void selectionChanged(const QItemSelection & selected, const QItemSelection & deselected) /*override */;
     void contextMenuEvent(QContextMenuEvent *pEvent);
-    //void keyPressEvent(QKeyEvent * pEvent);
 
 private:
 
@@ -1109,6 +1108,7 @@ void UIGuestControlFileTable::refresh()
         readDirectory(treeItem->path(), treeItem, isRootDir);
     m_pModel->endReset();
     m_pView->setRootIndex(m_pProxyModel->mapFromSource(currentIndex));
+    setSelectionDependentActionsEnabled(m_pView->hasSelection());
 }
 
 void UIGuestControlFileTable::sltDelete()
@@ -1207,12 +1207,8 @@ void UIGuestControlFileTable::sltSelectionChanged(const QItemSelection & selecte
 {
     Q_UNUSED(selected);
     Q_UNUSED(deselected);
-    if (m_pView->hasSelection())
-        enableSelectionDependentActions();
-    else
-        disableSelectionDependentActions();
+    setSelectionDependentActionsEnabled(m_pView->hasSelection());
 }
-
 
 void UIGuestControlFileTable::prepareActionConnections()
 {
@@ -1482,22 +1478,11 @@ CGuestFsObjInfo UIGuestControlFileTable::guestFsObjectInfo(const QString& path, 
     return comFsObjInfo;
 }
 
-void UIGuestControlFileTable::enableSelectionDependentActions()
+void UIGuestControlFileTable::setSelectionDependentActionsEnabled(bool fIsEnabled)
 {
-    for (int i = 0; i < m_selectionDependentActions.size(); ++i)
+    foreach (QAction *pAction, m_selectionDependentActions)
     {
-        if (m_selectionDependentActions[i])
-            m_selectionDependentActions[i]->setEnabled(true);
-    }
-}
-
-void UIGuestControlFileTable::disableSelectionDependentActions()
-{
-    /* Disable all the action that operate on some selection: */
-    for (int i = 0; i < m_selectionDependentActions.size(); ++i)
-    {
-        if (m_selectionDependentActions[i])
-            m_selectionDependentActions[i]->setEnabled(false);
+        pAction->setEnabled(fIsEnabled);
     }
 }
 

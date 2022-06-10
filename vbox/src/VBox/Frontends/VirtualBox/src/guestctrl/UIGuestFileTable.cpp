@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 75157 2018-10-29 16:30:19Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 75162 2018-10-29 19:01:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestFileTable class implementation.
  */
@@ -610,9 +610,15 @@ void UIGuestFileTable::prepareToolbar()
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_InvertSelection));
         m_pToolBar->addSeparator();
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_ShowProperties));
-    }
 
-    disableSelectionDependentActions();
+        m_selectionDependentActions.insert(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Delete));
+        m_selectionDependentActions.insert(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Rename));
+        m_selectionDependentActions.insert(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Copy));
+        m_selectionDependentActions.insert(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_Cut));
+        m_selectionDependentActions.insert(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_ShowProperties));
+
+    }
+    setSelectionDependentActionsEnabled(false);
 }
 
 #include "UIGuestFileTable.moc"
