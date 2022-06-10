@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.h 76910 2019-01-21 10:06:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -57,7 +57,7 @@ protected:
     QHBoxLayout*               mainLayout();
 
     /** Handles the translation event. */
-    void retranslateUi();
+    void retranslateUi() /* override */;
 
     /** Handles Qt @a pEvent, used for keyboard processing. */
     bool eventFilter(QObject *pObject, QEvent *pEvent);
@@ -80,4 +80,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerPanel_h */
-

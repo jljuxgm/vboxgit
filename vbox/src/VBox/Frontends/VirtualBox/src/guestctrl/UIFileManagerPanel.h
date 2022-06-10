@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerPanel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIFileManagerPanel.h 76910 2019-01-21 10:06:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -63,9 +63,6 @@ protected:
     void showEvent(QShowEvent *pEvent);
     /** Handles the Qt hide @a pEvent. */
     void hideEvent(QHideEvent *pEvent);
-
-    /* Return the unmodified log. */
-    const QString* logString() const;
 
 private:
 
