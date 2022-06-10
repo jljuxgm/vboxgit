@@ -1,4 +1,4 @@
-/* $Id: fileio-at-posix.cpp 77210 2019-02-08 00:07:03Z vboxsync $ */
+/* $Id: fileio-at-posix.cpp 77235 2019-02-09 18:30:14Z vboxsync $ */
 /** @file
  * IPRT - File I/O, RTFileReadAt and RTFileWriteAt, posix.
  */
@@ -85,8 +85,8 @@ RTDECL(int)  RTFileWriteAt(RTFILE hFile, RTFOFF off, const void *pvBuf, size_t c
             {
                 ssize_t cbWrittenPart = pwrite(RTFileToNative(hFile), (const char *)pvBuf + cbWritten, cbToWrite - cbWritten,
                                                off + cbWritten);
-                if (cbWrittenPart <= 0)
-                    return RTErrConvertFromErrno(errno);
+                if (cbWrittenPart < 0)
+                    return cbWrittenPart < 0 ? RTErrConvertFromErrno(errno) : VERR_TRY_AGAIN;
                 cbWritten += cbWrittenPart;
             }
         }
