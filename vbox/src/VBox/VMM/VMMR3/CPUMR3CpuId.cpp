@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 76464 2018-12-25 04:36:48Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 76550 2018-12-31 04:15:57Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -4461,8 +4461,8 @@ int cpumR3InitCpuIdAndMsrs(PVM pVM, PCCPUMMSRS pHostMsrs)
          * Finally, initialize guest VMX MSRs.
          *
          * This needs to be done -after- exploding guest features and sanitizing CPUID leaves
-         * as constructing VMX capabilities MSRs rely on CPU feature bits such as long mode,
-         * unrestricted execution and possibly more in the future.
+         * as constructing VMX capabilities MSRs rely on CPU feature bits like long mode,
+         * unrestricted-guest execution, CR4 feature bits and possibly more in the future.
          */
         if (pVM->cpum.s.GuestFeatures.fVmx)
         {
