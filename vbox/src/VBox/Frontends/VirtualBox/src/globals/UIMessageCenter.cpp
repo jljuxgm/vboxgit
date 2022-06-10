@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 78166 2019-04-17 14:46:26Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 78177 2019-04-17 17:31:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -52,6 +52,8 @@
 #endif
 
 /* COM includes: */
+#include "CBooleanFormValue.h"
+#include "CChoiceFormValue.h"
 #include "CCloudClient.h"
 #include "CCloudProfile.h"
 #include "CCloudProvider.h"
@@ -63,6 +65,7 @@
 #include "CSharedFolder.h"
 #include "CSnapshot.h"
 #include "CStorageController.h"
+#include "CStringFormValue.h"
 #include "CConsole.h"
 #include "CMachine.h"
 #include "CSystemProperties.h"
@@ -1686,6 +1689,34 @@ bool UIMessageCenter::confirmCloudProfilesImport(QWidget *pParent /* = 0 */) con
                           tr("Import") /* ok button text */,
                           QString() /* cancel button text */,
                           false /* ok button by default? */);
+}
+
+void UIMessageCenter::cannotAssignFormValue(const CBooleanFormValue &comValue, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to assign form value."),
+          UIErrorString::formatErrorInfo(comValue));
+}
+
+void UIMessageCenter::cannotAssignFormValue(const CStringFormValue &comValue, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to assign form value."),
+          UIErrorString::formatErrorInfo(comValue));
+}
+
+void UIMessageCenter::cannotAssignFormValue(const CChoiceFormValue &comValue, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to assign form value."),
+          UIErrorString::formatErrorInfo(comValue));
+}
+
+void UIMessageCenter::cannotAssignFormValue(const CProgress &comProgress, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to assign form value."),
+          UIErrorString::formatErrorInfo(comProgress));
 }
 
 bool UIMessageCenter::confirmHardDisklessMachine(QWidget *pParent /* = 0*/) const
