@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 77130 2019-02-01 16:55:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4453,14 +4453,19 @@ DECLCALLBACK(void) Display::i_displayVBVAInputMappingUpdate(PPDMIDISPLAYCONNECTO
     pThis->i_handleUpdateVBVAInputMapping(xOrigin, yOrigin, cx, cy);
 }
 
-DECLCALLBACK(void) Display::i_displayVBVAReportCursorPosition(PPDMIDISPLAYCONNECTOR pInterface, bool fData, uint32_t x, uint32_t y)
+DECLCALLBACK(void) Display::i_displayVBVAReportCursorPosition(PPDMIDISPLAYCONNECTOR pInterface, uint32_t fFlags, ULONG aScreenId, uint32_t x, uint32_t y)
 {
     LogFlowFunc(("\n"));
 
     PDRVMAINDISPLAY pDrv = PDMIDISPLAYCONNECTOR_2_MAINDISPLAY(pInterface);
     Display *pThis = pDrv->pDisplay;
 
-    fireCursorPositionChangedEvent(pThis->mParent->i_getEventSource(), fData, x, y);
+    if (fFlags & VBVA_CURSOR_SCREEN_RELATIVE)
+    {
+        x += pThis->maFramebuffers[aScreenId].xOrigin;
+        y += pThis->maFramebuffers[aScreenId].yOrigin;
+    }
+    fireCursorPositionChangedEvent(pThis->mParent->i_getEventSource(), RT_BOOL(fFlags & VBVA_CURSOR_VALID_DATA), x, y);
 }
 
 #endif /* VBOX_WITH_HGSMI */
