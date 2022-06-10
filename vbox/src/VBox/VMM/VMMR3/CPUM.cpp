@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 76466 2018-12-25 04:39:36Z vboxsync $ */
+/* $Id: CPUM.cpp 76467 2018-12-25 04:41:10Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1745,7 +1745,7 @@ static int cpumR3GetHostHwvirtMsrs(PCPUMMSRS pMsrs)
         if (fCaps & (SUPVTCAPS_VT_X | SUPVTCAPS_AMD_V))
         {
             SUPHWVIRTMSRS HwvirtMsrs;
-            int rc = SUPR3GetHwvirtMsrs(&HwvirtMsrs, false /* fForceRequery */);
+            rc = SUPR3GetHwvirtMsrs(&HwvirtMsrs, false /* fForceRequery */);
             if (RT_SUCCESS(rc))
             {
                 if (fCaps & SUPVTCAPS_VT_X)
