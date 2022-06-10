@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 76330 2018-12-21 09:01:04Z vboxsync $
+# $Id: virtual_test_sheriff.py 76334 2018-12-21 13:15:28Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76330 $"
+__version__ = "$Revision: 76334 $"
 
 
 # Standard python imports
@@ -310,7 +310,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 76330 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 76334 $ \n');
 
 
     def eprint(self, sText):
@@ -398,6 +398,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         except smtplib.SMTPException as oXcpt:
             rcExit = self.eprint('Failed to send mail: %s' % (oXcpt,));
 
+        return rcExit;
 
 
     def badTestBoxManagement(self):
@@ -511,11 +512,10 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                 rcExit = self.eprint('Failed to get data for test box #%u in badTestBoxManagement: %s' % (idTestBox, oXcpt,));
                 continue;
             # Skip if the testbox is already disabled, already reset or there's no iLOM
-            if not oTestBox.fEnabled or oTestBox.ipLom is None or \
-                oTestBox.sComment is not None and oTestBox.sComment.find('Automatically reset') >= 0:
-                    self.dprint(u'badTestBoxManagement: Skipping test box #%u (%s) as it has been disabled already.'
-                                % ( idTestBox, oTestBox.sName, ));
-                    continue;
+            if not oTestBox.fEnabled or oTestBox.ipLom is None or oTestBox.sComment is not None and oTestBox.sComment.find('Automatically reset') >= 0:
+                self.dprint(u'badTestBoxManagement: Skipping test box #%u (%s) as it has been disabled already.'
+                            % ( idTestBox, oTestBox.sName, ));
+                continue;
             ## @todo get iLOM credentials from a table?
             sCmd = 'sshpass -p%s ssh -oStrictHostKeyChecking=no root@%s show /SP && reset /SYS' % (g_ksLomPassword, oTestBox.ipLom,);
             try:
@@ -652,7 +652,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 76330 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 76334 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
