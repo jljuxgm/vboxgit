@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 73258 2018-07-20 09:29:47Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 73308 2018-07-22 20:15:18Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2689,6 +2689,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             }
 
             InsertConfigNode(pDev, Utf8StrFmt("%u", ulInstance).c_str(), &pInst);
+            InsertConfigInteger(pInst, "Trusted", 1); /* boolean */
             InsertConfigNode(pInst, "Config", &pCfg);
 
             ULONG ulIRQ;
