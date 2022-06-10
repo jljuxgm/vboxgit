@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 73403 2018-07-31 08:59:13Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1558,10 +1558,23 @@ static int ichac97R3MixerAddDrvStream(PAC97STATE pThis, PAUDMIXSINK pMixSink, PP
 
         PAUDMIXSTREAM pMixStrm;
         rc = AudioMixerSinkCreateStream(pMixSink, pDrv->pConnector, pStreamCfg, 0 /* fFlags */, &pMixStrm);
+        LogFlowFunc(("LUN#%RU8: Created stream \"%s\" for sink, rc=%Rrc\n", pDrv->uLUN, pStreamCfg->szName, rc));
         if (RT_SUCCESS(rc))
         {
             rc = AudioMixerSinkAddStream(pMixSink, pMixStrm);
-            LogFlowFunc(("LUN#%RU8: Created stream \"%s\", rc=%Rrc\n", pDrv->uLUN, pCfg->szName, rc));
+            LogFlowFunc(("LUN#%RU8: Added stream \"%s\" to sink, rc=%Rrc\n", pDrv->uLUN, pStreamCfg->szName, rc));
+            if (RT_SUCCESS(rc))
+            {
+                /* If this is an input stream, always set the latest (added) stream
+                 * as the recording source.
+                 * @todo Make the recording source dynamic (CFGM?). */
+                if (pStreamCfg->enmDir == PDMAUDIODIR_IN)
+                {
+                    rc = AudioMixerSinkSetRecordingSource(pMixSink, pMixStrm);
+                    LogFlowFunc(("LUN#%RU8: Recording source is now \"%s\", rc=%Rrc\n", pDrv->uLUN, pStreamCfg->szName, rc));
+                    LogRel2(("HDA: Set recording source to '%s'\n", pStreamCfg->szName));
+                }
+            }
         }
 
         if (RT_SUCCESS(rc))
