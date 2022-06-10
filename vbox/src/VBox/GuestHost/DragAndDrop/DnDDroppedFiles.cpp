@@ -1,10 +1,10 @@
-/* $Id: DnDDroppedFiles.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
+/* $Id: DnDDroppedFiles.cpp 74526 2018-09-28 15:08:24Z vboxsync $ */
 /** @file
  * DnD: Directory handling.
  */
 
 /*
- * Copyright (C) 2014-2017 Oracle Corporation
+ * Copyright (C) 2014-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -37,7 +37,7 @@ DnDDroppedFiles::DnDDroppedFiles(void)
     : m_fOpen(0)
     , m_hDir(NULL) { }
 
-DnDDroppedFiles::DnDDroppedFiles(const char *pszPath, uint32_t fFlags)
+DnDDroppedFiles::DnDDroppedFiles(const char *pszPath, DNDURIDROPPEDFILEFLAGS fFlags /* = DNDURIDROPPEDFILE_FLAGS_NONE */)
     : m_fOpen(0)
     , m_hDir(NULL)
 {
@@ -100,7 +100,7 @@ bool DnDDroppedFiles::IsOpen(void) const
     return (this->m_hDir != NULL);
 }
 
-int DnDDroppedFiles::OpenEx(const char *pszPath, uint32_t fFlags)
+int DnDDroppedFiles::OpenEx(const char *pszPath, DNDURIDROPPEDFILEFLAGS fFlags /* = DNDURIDROPPEDFILE_FLAGS_NONE */)
 {
     AssertPtrReturn(pszPath, VERR_INVALID_POINTER);
     AssertReturn(fFlags == 0, VERR_INVALID_PARAMETER); /* Flags not supported yet. */
@@ -167,7 +167,7 @@ int DnDDroppedFiles::OpenEx(const char *pszPath, uint32_t fFlags)
     return rc;
 }
 
-int DnDDroppedFiles::OpenTemp(uint32_t fFlags)
+int DnDDroppedFiles::OpenTemp(DNDURIDROPPEDFILEFLAGS fFlags /* = DNDURIDROPPEDFILE_FLAGS_NONE */)
 {
     AssertReturn(fFlags == 0, VERR_INVALID_PARAMETER); /* Flags not supported yet. */
 
