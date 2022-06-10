@@ -1,4 +1,4 @@
-/* $Id: pkcs7-asn1-decoder.cpp 74672 2018-10-08 12:08:51Z vboxsync $ */
+/* $Id: pkcs7-asn1-decoder.cpp 74760 2018-10-11 11:25:24Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Decoder for ASN.1.
  */
@@ -143,7 +143,7 @@ static int rtCrPkcs7ContentInfo_DecodeExtra(PRTASN1CURSOR pCursor, uint32_t fFla
                         break;
                 }
                 if (RT_SUCCESS(rc))
-                    rc = RTAsn1CursorCheckEnd(&ContentCursor);
+                    rc = RTAsn1CursorCheckOctStrEnd(&ContentCursor, &pThis->Content);
                 if (RT_SUCCESS(rc))
                     return VINF_SUCCESS;
 

@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 74721 2018-10-09 16:04:49Z vboxsync $ */
+/* $Id: ldrPE.cpp 74760 2018-10-11 11:25:24Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -2898,6 +2898,7 @@ static DECLCALLBACK(int) rtldrPE_VerifySignature(PRTLDRMODINTERNAL pMod, PFNRTLD
             {
                 rc = pfnCallback(&pModPe->Core, RTLDRSIGNATURETYPE_PKCS7_SIGNED_DATA,
                                  &pSignature->ContentInfo, sizeof(pSignature->ContentInfo),
+                                 NULL /*pvExternalData*/, 0 /*cbExternalData*/,
                                  pErrInfo, pvUser);
             }
             rtldrPE_VerifySignatureDestroy(pModPe, pSignature);

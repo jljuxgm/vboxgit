@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 74750 2018-10-10 17:42:48Z vboxsync $ */
+/* $Id: ldrMachO.cpp 74760 2018-10-11 11:25:24Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -4848,6 +4848,7 @@ rtldrMachO_VerifySignature(PRTLDRMODINTERNAL pMod, PFNRTLDRVALIDATESIGNEDDATA pf
                      */
                     rc = pfnCallback(&pThis->Core, RTLDRSIGNATURETYPE_PKCS7_SIGNED_DATA,
                                      &pSignature->ContentInfo, sizeof(pSignature->ContentInfo),
+                                     pSignature->aCodeDirs[0].pCodeDir, pSignature->aCodeDirs[0].cb,
                                      pErrInfo, pvUser);
                 }
             }
