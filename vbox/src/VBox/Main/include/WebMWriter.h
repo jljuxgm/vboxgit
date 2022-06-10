@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 75030 2018-10-24 11:43:09Z vboxsync $ */
+/* $Id: WebMWriter.h 75031 2018-10-24 11:45:40Z vboxsync $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -529,7 +529,7 @@ protected:
     int writeSimpleBlockOpus(WebMTrack *a_pTrack, const void *pvData, size_t cbData, WebMTimecodeAbs tcAbsPTSMs);
 #endif
 
-    int processQueues(WebMQueue *pQueue, bool fForce);
+    int processQueue(WebMQueue *pQueue, bool fForce);
 
 protected:
 
