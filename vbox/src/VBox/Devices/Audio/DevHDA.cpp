@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 73529 2018-08-06 16:26:43Z vboxsync $ */
+/* $Id: DevHDA.cpp 73565 2018-08-08 14:05:48Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -2455,7 +2455,7 @@ static int hdaR3MixerAddDrvStream(PHDASTATE pThis, PAUDMIXSINK pMixSink, PPDMAUD
                     {
                         rc = AudioMixerSinkSetRecordingSource(pMixSink, pMixStrm);
                         LogFlowFunc(("LUN#%RU8: Recording source is now '%s', rc=%Rrc\n", pDrv->uLUN, pStreamCfg->szName, rc));
-                        LogRel2(("HDA: Set recording source to '%s'\n", pStreamCfg->szName));
+                        LogRel2(("HDA: Set recording source to '%s' (LUN#%RU8)\n", pStreamCfg->szName, pDrv->uLUN));
                     }
                     else if (RT_FAILURE(rc))
                         LogFunc(("LUN#%RU8: Unable to retrieve backend configuratio for '%s', rc=%Rrc\n",
