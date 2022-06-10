@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 77535 2019-03-01 15:58:30Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 77584 2019-03-06 15:28:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -35,6 +35,7 @@
 #include "VBoxUtils.h"
 #include "UIInformationConfiguration.h"
 #include "UIInformationRuntime.h"
+#include "UIGuestProcessControlWidget.h"
 #include "UIMachine.h"
 
 /* COM includes: */
@@ -109,6 +110,7 @@ void UIVMInformationDialog::retranslateUi()
     /* Translate tabs: */
     m_pTabWidget->setTabText(0, tr("Configuration &Details"));
     m_pTabWidget->setTabText(1, tr("&Runtime Information"));
+    m_pTabWidget->setTabText(2, tr("Guest Control &Session Information"));
 }
 
 bool UIVMInformationDialog::event(QEvent *pEvent)
@@ -236,6 +238,16 @@ void UIVMInformationDialog::prepareTabWidget()
             m_tabs.insert(1, pInformationRuntimeWidget);
             m_pTabWidget->addTab(m_tabs.value(1), QString());
         }
+
+        UIGuestProcessControlWidget *pGuestProcessControlWidget =
+            new UIGuestProcessControlWidget(EmbedTo_Dialog, m_pMachineWindow->console().GetGuest(), this, false /* fShowToolbar */);
+
+        if (pGuestProcessControlWidget)
+        {
+            m_tabs.insert(2, pGuestProcessControlWidget);
+            m_pTabWidget->addTab(m_tabs.value(2), QString());
+        }
+
         /* Set Runtime Information tab as default: */
         m_pTabWidget->setCurrentIndex(1);
 

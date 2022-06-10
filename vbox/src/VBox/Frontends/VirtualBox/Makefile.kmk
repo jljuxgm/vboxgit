@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 77457 2019-02-25 14:20:51Z vboxsync $
+# $Id: Makefile.kmk 77584 2019-03-06 15:28:19Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -273,9 +273,6 @@ ifdef VBOX_WITH_LIBCURL
 endif
 if  "$(KBUILD_TYPE)" != "release" || defined(VBOX_GUI_WITH_EXTRADATA_MANAGER_UI)
  VBoxGlobal_DEFS        += VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
-endif
-if  "$(KBUILD_TYPE)" != "release" || defined(VBOX_GUI_WITH_GUEST_CONTROL_UI)
- VBoxGlobal_DEFS        += VBOX_GUI_WITH_GUEST_CONTROL_UI
 endif
 ifndef VBOX_WITHOUT_LESS_VIRTUALBOX_INCLUDING
  VBoxGlobal_DEFS        += VBOX_WITH_LESS_VIRTUALBOX_INCLUDING

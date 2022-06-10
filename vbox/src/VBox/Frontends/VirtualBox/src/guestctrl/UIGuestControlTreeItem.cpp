@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.cpp 77584 2019-03-06 15:28:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestSessionTreeItem class implementation.
  */
@@ -218,6 +218,7 @@ void UIGuestSessionTreeItem::prepareConnections()
 {
 
     qRegisterMetaType<CGuestProcess>();
+    qRegisterMetaType<CGuestSessionStateChangedEvent>();
     connect(m_pQtListener->getWrapped(), &UIMainEventListener::sigGuestSessionStatedChanged,
             this, &UIGuestSessionTreeItem::sltGuestSessionUpdated);
     connect(m_pQtListener->getWrapped(), &UIMainEventListener::sigGuestProcessRegistered,
@@ -307,9 +308,9 @@ void UIGuestSessionTreeItem::setColumnText()
 {
     if (!m_comGuestSession.isOk())
         return;
-    setText(0, QString("Session Id: %1").arg(m_comGuestSession.GetId()));
-    setText(1, QString("Session Name: %1").arg(m_comGuestSession.GetName()));
-    setText(2, QString("Session Status: %1").arg(sessionStatusString(m_comGuestSession.GetStatus())));
+    setText(0, QString("%1").arg(m_comGuestSession.GetId()));
+    setText(1, QString("%1").arg(m_comGuestSession.GetName()));
+    setText(2, QString("%1").arg(sessionStatusString(m_comGuestSession.GetStatus())));
 }
 
 
@@ -392,4 +393,3 @@ const CGuestProcess& UIGuestProcessTreeItem::guestProcess() const
 {
     return m_comGuestProcess;
 }
-

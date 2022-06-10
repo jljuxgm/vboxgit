@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIMachineLogic.h 77584 2019-03-06 15:28:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -278,8 +278,6 @@ private slots:
     void sltShowInformationDialog();
     void sltShowFileManagerDialog();
     void sltCloseFileManagerDialog();
-    void sltShowGuestProcessControlDialog();
-    void sltCloseGuestProcessControlDialog();
     void sltReset();
     void sltPause(bool fOn);
     void sltDetach();
