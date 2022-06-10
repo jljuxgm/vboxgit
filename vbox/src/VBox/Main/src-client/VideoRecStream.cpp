@@ -1,4 +1,4 @@
-/* $Id: VideoRecStream.cpp 74992 2018-10-23 11:09:22Z vboxsync $ */
+/* $Id: VideoRecStream.cpp 74994 2018-10-23 12:04:40Z vboxsync $ */
 /** @file
  * Video recording stream code.
  */
@@ -21,8 +21,7 @@
 #define LOG_GROUP LOG_GROUP_MAIN_DISPLAY
 #include "LoggingNew.h"
 
-#include "VideoRec.h"
-#include "VideoRecStream.h"
+#include <stdexcept>
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
@@ -35,6 +34,9 @@
 
 #include <VBox/err.h>
 #include <VBox/com/VirtualBox.h>
+
+#include "VideoRec.h"
+#include "VideoRecStream.h"
 
 
 /**
