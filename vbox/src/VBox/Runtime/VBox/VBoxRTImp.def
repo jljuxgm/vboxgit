@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 74329 2018-09-18 02:01:26Z vboxsync $
+; $Id: VBoxRTImp.def 74654 2018-10-07 13:00:04Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -1165,7 +1165,6 @@ EXPORTS
     RTLdrLoad
     RTLdrLoadAppPriv
     RTLdrOpen
-    RTLdrOpenkLdr
     RTLdrRelocate
     RTLdrSize
     RTLinuxFindDevicePath               ; only-linux
