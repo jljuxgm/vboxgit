@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 75924 2018-12-03 20:10:25Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 75925 2018-12-03 20:45:48Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -603,6 +603,7 @@ static const char *vgsvcToolboxIdCacheGetUidName(PVGSVCTOOLBOXIDCACHE pIdCache, 
 
     /* Miss. */
     RTFSOBJINFO ObjInfo;
+    RT_ZERO(ObjInfo); /* shut up msc */
     int rc;
     if (!pszRelativeTo)
         rc = RTPathQueryInfoEx(pszEntry, &ObjInfo, RTFSOBJATTRADD_UNIX_OWNER, RTPATH_F_ON_LINK);
@@ -651,6 +652,7 @@ static const char *vgsvcToolboxIdCacheGetGidName(PVGSVCTOOLBOXIDCACHE pIdCache, 
 
     /* Miss. */
     RTFSOBJINFO ObjInfo;
+    RT_ZERO(ObjInfo); /* shut up msc */
     int rc;
     if (!pszRelativeTo)
         rc = RTPathQueryInfoEx(pszEntry, &ObjInfo, RTFSOBJATTRADD_UNIX_GROUP, RTPATH_F_ON_LINK);
