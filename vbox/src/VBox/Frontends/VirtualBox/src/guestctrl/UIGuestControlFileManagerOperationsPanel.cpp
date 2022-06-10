@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerOperationsPanel.cpp 75788 2018-11-28 13:18:29Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerOperationsPanel.cpp 75789 2018-11-28 13:19:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -138,22 +138,6 @@ void UIFileOperationProgressWidget::retranslateUi()
     if (m_pCancelButton)
         m_pCancelButton->setToolTip(UIGuestControlFileManager::tr("Close the pane"));
 }
-
-// void UIFileOperationProgressWidget::focusInEvent(QFocusEvent *pEvent)
-// {
-//     Q_UNUSED(pEvent);
-//     //setFrameStyle(QFrame::Panel);
-//     setLineWidth(3);
-//     printf("booo\n");
-//     repaint();
-// }
-
-// void UIFileOperationProgressWidget::focusOutEvent(QFocusEvent *pEvent)
-// {
-//     Q_UNUSED(pEvent);
-//     //setFrameStyle(QFrame::NoFrame);
-//     setLineWidth(0);
-// }
 
 void UIFileOperationProgressWidget::prepare()
 {
