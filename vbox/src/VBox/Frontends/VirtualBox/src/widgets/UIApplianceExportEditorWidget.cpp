@@ -1,4 +1,4 @@
-/* $Id: UIApplianceExportEditorWidget.cpp 75971 2018-12-05 12:50:24Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.cpp 76192 2018-12-12 18:15:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class implementation.
  */
@@ -56,7 +56,7 @@ public:
             << KVirtualSystemDescriptionType_HardDiskControllerSATA
             << KVirtualSystemDescriptionType_HardDiskControllerSCSI
             << KVirtualSystemDescriptionType_HardDiskControllerSAS
-            << KVirtualSystemDescriptionType_CloudOCIProfileName;
+            << KVirtualSystemDescriptionType_CloudProfileName;
     }
 };
 
