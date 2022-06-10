@@ -1,4 +1,4 @@
-/* $Id: base64.cpp 73587 2018-08-09 13:37:52Z vboxsync $ */
+/* $Id: base64.cpp 73704 2018-08-16 09:29:48Z vboxsync $ */
 /** @file
  * IPRT - Base64, MIME content transfer encoding.
  */
@@ -80,8 +80,7 @@ static const uint8_t    g_au8CharToVal[256] =
 };
 
 /** Value to Base64 character. (RFC 2045) */
-static const char       g_szValToChar[64+1] =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+static const char       g_szValToChar[64+1] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 
 #ifdef RT_STRICT
