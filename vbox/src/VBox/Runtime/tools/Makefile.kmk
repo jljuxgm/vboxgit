@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74295 2018-09-16 15:36:08Z vboxsync $
+# $Id: Makefile.kmk 74298 2018-09-16 15:49:06Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -55,21 +55,22 @@ if !defined(VBOX_ONLY_DOCS)
  bldRTManifest_TEMPLATE = VBoxAdvBldProg
  bldRTManifest_SOURCES  = RTManifest.cpp
 
- if !defined(VBOX_ONLY_EXTPACKS)
 
+ if !defined(VBOX_ONLY_EXTPACKS) || "$(KBUILD_TARGET)" == "win"
   # RTSignTool - Signing utility - build version.  Signed on windows so we can get the certificate from it.
   BLDPROGS += bldRTSignTool
   bldRTSignTool_TEMPLATE = VBoxAdvBldProg
   bldRTSignTool_SOURCES = RTSignTool.cpp
   bldRTSignTool_DEFS = IPRT_IN_BUILD_TOOL
   bldRTSignTool_POST_CMDS.win = $(VBOX_SIGN_IMAGE_CMDS)
+ endif
 
+ if !defined(VBOX_ONLY_EXTPACKS)
   # RTLdrCheckImports - import checker.
   PROGRAMS += bldRTLdrCheckImports
   bldRTLdrCheckImports_TEMPLATE = VBoxAdvBldProg
   bldRTLdrCheckImports_DEFS = IPRT_IN_BUILD_TOOL
   bldRTLdrCheckImports_SOURCES = RTLdrCheckImports.cpp
-
  endif
 endif
 
