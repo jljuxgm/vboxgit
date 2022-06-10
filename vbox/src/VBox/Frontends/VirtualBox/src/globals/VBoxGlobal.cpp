@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 76690 2019-01-07 19:58:10Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 76737 2019-01-09 13:40:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2724,6 +2724,7 @@ QUuid VBoxGlobal::createVisoMediumWithVisoCreator(QWidget *pParent, const QStrin
     if (pVisoCreator->execute(true, false))
     {
         QStringList files = pVisoCreator->entryList();
+        QString strVisoName = pVisoCreator->visoName();
         if (files.empty() || files[0].isEmpty())
             return QUuid();
 
@@ -2741,6 +2742,8 @@ QUuid VBoxGlobal::createVisoMediumWithVisoCreator(QWidget *pParent, const QStrin
                 if (RT_SUCCESS(vrc))
                 {
                     RTStrmPrintf(pStrmViso, "--iprt-iso-maker-file-marker-bourne-sh %RTuuid\n", &Uuid);
+                    if (!strVisoName.isEmpty())
+                        RTStrmPrintf(pStrmViso, "--volume-id=%s\n", strVisoName.toUtf8().constData());
 
                     for (int iFile = 0; iFile < files.size(); iFile++)
                     {
