@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 73680 2018-08-15 06:39:12Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 73681 2018-08-15 06:42:44Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -2362,7 +2362,6 @@ static DECLCALLBACK(int) drvHostCoreAudioStreamDestroy(PPDMIHOSTAUDIO pInterface
 #endif
           ))
     {
-        AssertFailed();
         return VINF_SUCCESS;
     }
 
