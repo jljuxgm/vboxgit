@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 73023 2018-07-10 09:45:22Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 75791 2018-11-28 15:25:46Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -205,6 +205,7 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
 
         case ERROR_INVALID_IMAGE_HASH:      return VERR_LDR_IMAGE_HASH;
         case ERROR_UNRECOGNIZED_VOLUME:     return VERR_MEDIA_NOT_RECOGNIZED;
+        case ERROR_ELEVATION_REQUIRED:      return VERR_PROC_ELEVATION_REQUIRED;
 
 
         /*
