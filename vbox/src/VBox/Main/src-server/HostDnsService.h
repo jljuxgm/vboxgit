@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 78012 2019-04-04 11:36:37Z vboxsync $ */
+/* $Id: HostDnsService.h 78014 2019-04-04 11:43:28Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -241,7 +241,6 @@ public:
 public:
 
     HRESULT init(HostDnsMonitorProxy *pProxy);
-    void uninit(void);
 
 protected:
 
