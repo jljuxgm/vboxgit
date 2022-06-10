@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 74480 2018-09-26 14:41:43Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -447,6 +447,10 @@ if (   defined(VBOX_WITH_QTGUI) \
     VBoxTestOGL_LIBS += GL
    endif
   endif
+  # Don't let ld strip out explicitly linked libraries even when they are not needed.
+  # This was causing some dynamic library loading problems in case of indirect dependencies 
+  # in systems where RUNPATH instead of RPATH is utilized.
+  VBoxTestOGL_LDFLAGS.linux = -Wl,--no-as-needed
   VBoxTestOGL_LDFLAGS.win = /SUBSYSTEM:windows
  endif
 endif
