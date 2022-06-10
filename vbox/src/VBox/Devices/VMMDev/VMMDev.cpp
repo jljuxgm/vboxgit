@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 75990 2018-12-05 19:51:01Z vboxsync $ */
+/* $Id: VMMDev.cpp 76196 2018-12-12 19:24:05Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2298,7 +2298,10 @@ static int vmmdevReqHandler_GetHostVersion(VMMDevRequestHeader *pReqHdr)
     pReq->minor     = RTBldCfgVersionMinor();
     pReq->build     = RTBldCfgVersionBuild();
     pReq->revision  = RTBldCfgRevision();
-    pReq->features  = VMMDEV_HVF_HGCM_PHYS_PAGE_LIST | VMMDEV_HVF_HGCM_EMBEDDED_BUFFERS | VMMDEV_HVF_FAST_IRQ_ACK;
+    pReq->features  = VMMDEV_HVF_HGCM_PHYS_PAGE_LIST
+                    | VMMDEV_HVF_HGCM_EMBEDDED_BUFFERS
+                    | VMMDEV_HVF_HGCM_CONTIGUOUS_PAGE_LIST
+                    | VMMDEV_HVF_FAST_IRQ_ACK;
     return VINF_SUCCESS;
 }
 
