@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlWidget.cpp 75057 2018-10-25 08:58:53Z vboxsync $ */
+/* $Id: UIGuestControlWidget.cpp 75058 2018-10-25 09:21:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlWidget class implementation.
  */
@@ -50,13 +50,14 @@
 
 UIGuestControlWidget::UIGuestControlWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,
                                            const CGuest &comGuest, bool fShowToolbar /* = true */, QWidget *pParent /*= 0 */)
-    : m_enmEmbedding(enmEmbedding)
+    : QIWithRetranslateUI<QWidget>(pParent)
+    , m_enmEmbedding(enmEmbedding)
     , m_pActionPool(pActionPool)
     , m_comGuest(comGuest)
-
     , m_pTabWidget(0)
     , m_pProcessControlWidget(0)
     , m_pFileManager(0)
+    , m_fShowToolbar(fShowToolbar)
 {
     prepare();
 }
