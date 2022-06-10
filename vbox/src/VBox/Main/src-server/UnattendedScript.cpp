@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 73826 2018-08-22 12:54:55Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 74936 2018-10-19 09:02:58Z vboxsync $ */
 /** @file
  * Implementeation of algorithms which read/parse/save scripts for unattended installation.
  */
@@ -650,7 +650,7 @@ HRESULT UnattendedScriptTemplate::getConditional(const char *pachPlaceholder, si
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 HRESULT GeneralTextScript::parse()
 {
-    AssertReturn(!mfDataParsed, mpSetError->setErrorBoth(E_FAIL, VERR_WRONG_ORDER, "parse called more than once"));
+//  AssertReturn(!mfDataParsed, mpSetError->setErrorBoth(E_FAIL, VERR_WRONG_ORDER, "parse called more than once"));
 
     /*
      * Split the raw context into an array of lines.
