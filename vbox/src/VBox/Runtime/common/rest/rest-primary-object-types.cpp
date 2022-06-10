@@ -1,4 +1,4 @@
-/* $Id: rest-primary-object-types.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: rest-primary-object-types.cpp 77262 2019-02-11 13:44:23Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestObjectBase implementation.
  */
@@ -982,7 +982,7 @@ RTCRestOutputBase &RTCRestDouble::serializeAsJson(RTCRestOutputBase &a_rDst) con
         snprintf(szValue, sizeof(szValue), "%.18g", m_rdValue);
 #endif
         size_t cchValue = strlen(szValue);
-        while (cchValue > 0 && szValue[-1] == '0')
+        while (cchValue > 0 && szValue[cchValue - 1] == '0')
             cchValue--;
         szValue[cchValue] = '\0';
 
@@ -1050,7 +1050,7 @@ int RTCRestDouble::toString(RTCString *a_pDst, uint32_t a_fFlags /*= kCollection
         snprintf(szValue, sizeof(szValue), "%.18g", m_rdValue);
 #endif
         size_t cchValue = strlen(szValue);
-        while (cchValue > 0 && szValue[-1] == '0')
+        while (cchValue > 0 && szValue[cchValue - 1] == '0')
             cchValue--;
         szValue[cchValue] = '\0';
 
