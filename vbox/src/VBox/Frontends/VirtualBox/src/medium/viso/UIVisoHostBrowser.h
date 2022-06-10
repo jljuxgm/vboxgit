@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 76730 2019-01-09 11:09:17Z vboxsync $ */
+/* $Id: UIVisoHostBrowser.h 76750 2019-01-09 21:48:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -54,7 +54,6 @@ protected:
     virtual void tableViewItemDoubleClick(const QModelIndex &index) /* override */;
     virtual void setTableRootIndex(QModelIndex index = QModelIndex()) /* override */;
     virtual void setTreeCurrentIndex(QModelIndex index = QModelIndex()) /* override */;
-
     virtual void treeSelectionChanged(const QModelIndex &selectedTreeIndex) /* override */;
 
 private slots:

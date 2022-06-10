@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 76707 2019-01-08 15:24:35Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.h 76750 2019-01-09 21:48:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -60,6 +60,7 @@ public:
     QList<const UICustomFileSystemItem*> children() const;
     /** Removes the item from the list of children and !!DELETES!! the item. */
     void removeChild(UICustomFileSystemItem *pItem);
+    void removeChildren();
     int columnCount() const;
     QVariant data(int column) const;
     void setData(const QVariant &data, int index);

@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 76707 2019-01-08 15:24:35Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 76750 2019-01-09 21:48:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -106,6 +106,11 @@ void UICustomFileSystemItem::removeChild(UICustomFileSystemItem *pItem)
     m_childMap.remove(pItem->name());
     delete pItem;
     pItem = 0;
+}
+
+void UICustomFileSystemItem::removeChildren()
+{
+    reset();
 }
 
 int UICustomFileSystemItem::columnCount() const
