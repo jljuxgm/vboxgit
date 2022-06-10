@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 76933 2019-01-22 11:58:11Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 76935 2019-01-22 12:18:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -619,6 +619,12 @@ void UIChooserItemMachine::prepare()
     /* Configure connections: */
     connect(gpManager, &UIVirtualBoxManager::sigWindowRemapped,
             this, &UIChooserItemMachine::sltHandleWindowRemapped);
+    connect(model(), &UIChooserModel::sigSelectionChanged,
+            this, &UIChooserItemMachine::sltUpdateFirstRowMaximumWidth);
+    connect(this, &UIChooserItemMachine::sigHoverEnter,
+            this, &UIChooserItemMachine::sltUpdateFirstRowMaximumWidth);
+    connect(this, &UIChooserItemMachine::sigHoverLeave,
+            this, &UIChooserItemMachine::sltUpdateFirstRowMaximumWidth);
 
     /* Init: */
     updatePixmaps();
@@ -771,8 +777,12 @@ void UIChooserItemMachine::updateFirstRowMaximumWidth()
     iFirstRowMaximumWidth -= iMargin; /* left margin */
     iFirstRowMaximumWidth -= m_pixmapSize.width(); /* left pixmap width */
     iFirstRowMaximumWidth -= iMajorSpacing; /* spacing between left pixmap and name(s) */
-    iFirstRowMaximumWidth -= iMajorSpacing; /* spacing between name(s) and right pixmap */
-    iFirstRowMaximumWidth -= m_toolsPixmapSize.width() + 2 * iButtonMargin; /* right pixmap width */
+    if (   model()->currentItem() == this
+        || isHovered())
+    {
+        iFirstRowMaximumWidth -= iMajorSpacing; /* spacing between name(s) and right pixmap */
+        iFirstRowMaximumWidth -= m_toolsPixmapSize.width() + 2 * iButtonMargin; /* right pixmap width */
+    }
     iFirstRowMaximumWidth -= iMargin; /* right margin */
 
     /* Is there something changed? */
