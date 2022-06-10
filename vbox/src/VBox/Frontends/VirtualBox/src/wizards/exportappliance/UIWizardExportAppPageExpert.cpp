@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 73236 2018-07-19 12:02:43Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 73325 2018-07-23 14:18:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -386,6 +386,8 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
     registerField("macAddressPolicy", this, "macAddressPolicy");
     registerField("manifestSelected", this, "manifestSelected");
     registerField("includeISOsSelected", this, "includeISOsSelected");
+    registerField("profiles", this, "profiles");
+    registerField("profile", this, "profile");
     registerField("applianceWidget", this, "applianceWidget");
 }
 
