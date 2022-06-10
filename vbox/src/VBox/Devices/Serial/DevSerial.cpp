@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 73766 2018-08-19 16:55:11Z vboxsync $ */
+/* $Id: DevSerial.cpp 74754 2018-10-11 09:21:09Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  *
@@ -465,6 +465,8 @@ static DECLCALLBACK(int) serialR3Construct(PPDMDEVINS pDevIns, int iInstance, PC
     /* Init the UART core structure. */
     rc = uartR3Init(&pThis->UartCore, pDevIns, enmUartType, 0,
                     fYieldOnLSRRead ? UART_CORE_YIELD_ON_LSR_READ : 0, serialIrqReq, pfnSerialIrqReqR0, pfnSerialIrqReqRC);
+    if (RT_FAILURE(rc))
+        return rc;
 
     serialR3Reset(pDevIns);
     return VINF_SUCCESS;
