@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 75921 2018-12-03 18:25:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -151,7 +151,8 @@ QString UIWizardExportApp::uri(bool fWithFile) const
 {
     /* For Cloud formats: */
     if (field("isFormatCloudOne").toBool())
-        return QString("%1://%2").arg(field("providerShortName").toString(), field("profileName").toString());
+//      return QString("%1://%2").arg(field("providerShortName").toString(), field("profileName").toString());
+        return QString("%1://%2").arg(field("providerShortName").toString(), field("path").toString());
     else
     {
         /* Prepare storage path: */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 75434 2018-11-13 23:56:46Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 75921 2018-12-03 18:25:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -406,6 +406,14 @@ AbstractVSDParameterList UIWizardExportAppPage2::parseJsonDocument(const QJsonDo
                 get.values = parseJsonFieldArray(strFieldName, field);
                 parameter.get = QVariant::fromValue(get);
                 parameter.kind = ParameterKind_Array;
+            }
+            else
+            if (strFieldName == "name")
+            {
+                AbstractVSDParameterString get;
+                get.value = parseJsonFieldString(strFieldName, field);
+                parameter.get = QVariant::fromValue(get);
+                parameter.kind = ParameterKind_String;
             }
         }
 
