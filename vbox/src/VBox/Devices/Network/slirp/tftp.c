@@ -1,4 +1,4 @@
-/* $Id: tftp.c 76782 2019-01-11 16:36:34Z vboxsync $ */
+/* $Id: tftp.c 76783 2019-01-11 16:47:35Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -438,6 +438,7 @@ DECLINLINE(int) tftpSessionEvaluateOptions(PNATState pData, PTFTPSESSION pTftpSe
     int rc;
     RTFILE hSessionFile;
     uint64_t cbSessionFile = 0;
+    int cOptions;
     LogFlowFunc(("pTftpSession:%p\n", pTftpSession));
 
     rc = pftpSessionOpenFile(pData, pTftpSession, true /*fVerbose*/, &hSessionFile);
@@ -455,7 +456,7 @@ DECLINLINE(int) tftpSessionEvaluateOptions(PNATState pData, PTFTPSESSION pTftpSe
         return rc;
     }
 
-    int cOptions = 0;
+    cOptions = 0;
 
     if (pTftpSession->OptionTSize.fRequested)
     {
