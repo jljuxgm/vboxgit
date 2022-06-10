@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 73033 2018-07-10 11:44:12Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 73060 2018-07-11 10:52:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -189,6 +189,7 @@ void UIWizardExportAppPage3::refreshManifestCheckBoxAccess()
     else
     {
         /* Enable manifest check-box: */
+        m_pManifestCheckbox->setChecked(true);
         m_pManifestCheckbox->setEnabled(true);
     }
 }
