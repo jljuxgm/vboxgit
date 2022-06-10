@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 74504 2018-09-27 15:13:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -756,7 +756,7 @@ bool UIMessageCenter::warnAboutInaccessibleMedia() const
                              "see which files are inaccessible, or press <b>Ignore</b> to "
                              "ignore this message.</p>"),
                           "warnAboutInaccessibleMedia",
-                          tr("Ignore"), tr("Check", "inaccessible media message box"));
+                          tr("Check", "inaccessible media message box"), tr("Ignore"));
 }
 
 bool UIMessageCenter::confirmDiscardSavedState(const QString &strNames) const

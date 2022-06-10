@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 74320 2018-09-17 17:45:41Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 74504 2018-09-27 15:13:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -300,7 +300,7 @@ void UIVirtualBoxManager::sltHandleMediumEnumerationFinish()
     }
 
     /* Warn the user about inaccessible medium, propose to open MM window/tool: */
-    if (fIsThereAnyInaccessibleMedium && !msgCenter().warnAboutInaccessibleMedia())
+    if (fIsThereAnyInaccessibleMedium && msgCenter().warnAboutInaccessibleMedia())
     {
         /* Open the MM window: */
         sltOpenVirtualMediumManagerWindow();

@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 74305 2018-09-17 11:44:43Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 74504 2018-09-27 15:13:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -350,7 +350,7 @@ void UISelectorWindow::sltHandleMediumEnumerationFinish()
     }
 
     /* Warn the user about inaccessible medium: */
-    if (fIsThereAnyInaccessibleMedium && !msgCenter().warnAboutInaccessibleMedia())
+    if (fIsThereAnyInaccessibleMedium && msgCenter().warnAboutInaccessibleMedia())
     {
         /* Open the MM window: */
         sltOpenVirtualMediumManagerWindow();
