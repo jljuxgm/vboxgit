@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 77462 2019-02-25 16:37:15Z vboxsync $ */
+/* $Id: UIChooserItemMachine.h 77567 2019-03-05 17:18:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -172,12 +172,12 @@ protected:
         /** Returns whether item drop is allowed.
           * @param  pEvent    Brings information about drop event.
           * @param  enmPlace  Brings the place of drag token to the drop moment. */
-        virtual bool isDropAllowed(QGraphicsSceneDragDropEvent *pEvent, DragToken where) const /* override */;
+        virtual bool isDropAllowed(QGraphicsSceneDragDropEvent *pEvent, UIChooserItemDragToken where) const /* override */;
         /** Processes item drop.
           * @param  pEvent    Brings information about drop event.
           * @param  pFromWho  Brings the item according to which we choose drop position.
           * @param  enmPlace  Brings the place of drag token to the drop moment (according to item mentioned above). */
-        virtual void processDrop(QGraphicsSceneDragDropEvent *pEvent, UIChooserItem *pFromWho, DragToken where) /* override */;
+        virtual void processDrop(QGraphicsSceneDragDropEvent *pEvent, UIChooserItem *pFromWho, UIChooserItemDragToken where) /* override */;
         /** Reset drag token. */
         virtual void resetDragToken() /* override */;
 

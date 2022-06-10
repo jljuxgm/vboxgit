@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 77462 2019-02-25 16:37:15Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 77567 2019-03-05 17:18:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -369,13 +369,13 @@ QPixmap UIChooserItemGlobal::toPixmap()
     AssertFailedReturn(QPixmap());
 }
 
-bool UIChooserItemGlobal::isDropAllowed(QGraphicsSceneDragDropEvent *, DragToken) const
+bool UIChooserItemGlobal::isDropAllowed(QGraphicsSceneDragDropEvent *, UIChooserItemDragToken) const
 {
     /* No drops at all: */
     return false;
 }
 
-void UIChooserItemGlobal::processDrop(QGraphicsSceneDragDropEvent *, UIChooserItem *, DragToken)
+void UIChooserItemGlobal::processDrop(QGraphicsSceneDragDropEvent *, UIChooserItem *, UIChooserItemDragToken)
 {
     /* Nothing to process: */
 }
