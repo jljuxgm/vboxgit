@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt.cpp 76219 2018-12-13 19:32:57Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -3156,7 +3156,7 @@ void
 VBoxDbgStats::closeEvent(QCloseEvent *a_pCloseEvt)
 {
     a_pCloseEvt->accept();
-    delete this;
+    delete this; /** @todo This is wrong! We get more events after this one and end up using memory after freeing it in vPolishSizeAndPos().  (Qt3 holdover?) */
 }
 
 
