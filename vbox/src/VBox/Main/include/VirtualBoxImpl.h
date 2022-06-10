@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 73571 2018-08-08 16:10:30Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 73716 2018-08-16 15:58:57Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -288,6 +288,7 @@ private:
     HRESULT getExtensionPackManager(ComPtr<IExtPackManager> &aExtensionPackManager);
     HRESULT getInternalNetworks(std::vector<com::Utf8Str> &aInternalNetworks);
     HRESULT getGenericNetworkDrivers(std::vector<com::Utf8Str> &aGenericNetworkDrivers);
+    HRESULT getCloudProviderManager(ComPtr<ICloudProviderManager> &aCloudProviderManager);
 
    // wrapped IVirtualBox methods
     HRESULT composeMachineFilename(const com::Utf8Str &aName,
@@ -312,7 +313,6 @@ private:
                              std::vector<MachineState_T> &aStates);
     HRESULT createAppliance(ComPtr<IAppliance> &aAppliance);
     HRESULT createUnattendedInstaller(ComPtr<IUnattended> &aUnattended);
-    HRESULT createCloudProviderManager(ComPtr<ICloudProviderManager> &aManager);
     HRESULT createMedium(const com::Utf8Str &aFormat,
                          const com::Utf8Str &aLocation,
                          AccessMode_T aAccessMode,

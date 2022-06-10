@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 73029 2018-07-10 10:14:16Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 73716 2018-08-16 15:58:57Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -1379,6 +1379,7 @@ HRESULT showMediumInfo(const ComPtr<IVirtualBox> &pVirtualBox,
                 RTPrintf("%s%ls=%ls\n",
                          fFirst ? "Property:       " : "                ",
                          names[i], value.raw());
+                fFirst = false;
             }
         }
 

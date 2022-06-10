@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 73663 2018-08-14 16:28:27Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 73716 2018-08-16 15:58:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -37,7 +37,7 @@
 /* COM includes: */
 # include "CAppliance.h"
 # include "CCloudClient.h"
-# include "CCloudProvider.h"
+# include "CCloudProfile.h"
 # include "CMachine.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -56,14 +56,14 @@ void UIWizardExportAppPage3::populateCloudClientParameters()
     /* Forget current parameters: */
     m_listCloudClientParameters.clear();
 
-    /* Acquire Cloud Provider: */
-    CCloudProvider comCloudProvider = fieldImp("provider").value<CCloudProvider>();
-    AssertMsgReturnVoid(comCloudProvider.isNotNull(),
-                        ("Cloud provider object is undefined!"));
+    /* Acquire Cloud Profile: */
+    CCloudProfile comCloudProfile = fieldImp("profile").value<CCloudProfile>();
+    AssertMsgReturnVoid(comCloudProfile.isNotNull(),
+                        ("Cloud profile object is undefined!"));
 
     /* Create Cloud Client: */
-    CCloudClient comCloudClient = comCloudProvider.CreateCloudClient(fieldImp("profileName").toString());
-    AssertMsgReturnVoid(comCloudProvider.isOk() && comCloudClient.isNotNull(),
+    CCloudClient comCloudClient = comCloudProfile.CreateCloudClient();
+    AssertMsgReturnVoid(comCloudProfile.isOk() && comCloudClient.isNotNull(),
                         ("Can't create Cloud Client object!"));
 
     /* Read Cloud Client parameters for Export VM operation: */

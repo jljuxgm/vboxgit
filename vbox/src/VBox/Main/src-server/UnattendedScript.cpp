@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 73505 2018-08-05 13:58:10Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 73716 2018-08-16 15:58:57Z vboxsync $ */
 /** @file
  * Implementeation of algorithms which read/parse/save scripts for unattended installation.
  */
@@ -195,6 +195,8 @@ HRESULT BaseTextScript::save(const Utf8Str &rStrFilename, bool fOverwrite)
     }
     return hrc;
 }
+
+#ifdef VBOX_WITH_UNATTENDED
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -634,6 +636,8 @@ HRESULT UnattendedScriptTemplate::getConditional(const char *pachPlaceholder, si
     return S_OK;
 #undef IS_PLACEHOLDER_MATCH
 }
+
+#endif /* VBOX_WITH_UNATTENDED */
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
