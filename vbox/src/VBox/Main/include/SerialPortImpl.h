@@ -1,4 +1,4 @@
-/* $Id: SerialPortImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SerialPortImpl.h 73768 2018-08-19 19:07:19Z vboxsync $ */
 
 /** @file
  *
@@ -78,6 +78,8 @@ private:
     HRESULT setServer(BOOL aServer);
     HRESULT getPath(com::Utf8Str &aPath);
     HRESULT setPath(const com::Utf8Str &aPath);
+    HRESULT getUartType(UartType_T *aUartType);
+    HRESULT setUartType(UartType_T aUartType);
 
     struct Data;
     Data *m;

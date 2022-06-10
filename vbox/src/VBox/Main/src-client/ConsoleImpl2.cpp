@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 73629 2018-08-13 09:40:01Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 73768 2018-08-19 19:07:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2705,6 +2705,18 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             BOOL  fServer;
             hrc = serialPort->COMGETTER(Server)(&fServer);                                  H();
             hrc = serialPort->COMGETTER(Path)(bstr.asOutParam());                           H();
+            UartType_T eUartType;
+            const char *pszUartType;
+            hrc = serialPort->COMGETTER(UartType)(&eUartType);                              H();
+            switch (eUartType)
+            {
+                case UartType_U16450: pszUartType = "16450"; break;
+                case UartType_U16750: pszUartType = "16750"; break;
+                default: AssertFailed(); RT_FALL_THRU();
+                case UartType_U16550A: pszUartType = "16550A"; break;
+            }
+            InsertConfigString(pCfg, "UartType", pszUartType);
+
             PortMode_T eHostMode;
             hrc = serialPort->COMGETTER(HostMode)(&eHostMode);                              H();
 

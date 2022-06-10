@@ -1,4 +1,4 @@
-/* $Id: SerialPortImpl.cpp 72973 2018-07-08 13:23:58Z vboxsync $ */
+/* $Id: SerialPortImpl.cpp 73768 2018-08-19 19:07:19Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -475,6 +475,42 @@ HRESULT SerialPort::setServer(BOOL aServer)
     {
         m->bd.backup();
         m->bd->fServer = RT_BOOL(aServer);
+
+        m->fModified = true;
+        // leave the lock before informing callbacks
+        alock.release();
+
+        AutoWriteLock mlock(m->pMachine COMMA_LOCKVAL_SRC_POS);
+        m->pMachine->i_setModified(Machine::IsModified_SerialPorts);
+        mlock.release();
+
+        m->pMachine->i_onSerialPortChange(this);
+    }
+
+    return S_OK;
+}
+
+HRESULT SerialPort::getUartType(UartType_T *aUartType)
+{
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *aUartType = m->bd->uartType;
+
+    return S_OK;
+}
+
+HRESULT SerialPort::setUartType(UartType_T aUartType)
+{
+    /* the machine needs to be mutable */
+    AutoMutableOrSavedOrRunningStateDependency adep(m->pMachine);
+    if (FAILED(adep.rc())) return adep.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    if (m->bd->uartType != aUartType)
+    {
+        m->bd.backup();
+        m->bd->uartType = aUartType;
 
         m->fModified = true;
         // leave the lock before informing callbacks
