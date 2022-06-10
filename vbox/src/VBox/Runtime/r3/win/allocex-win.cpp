@@ -1,4 +1,4 @@
-/* $Id: allocex-win.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: allocex-win.cpp 76357 2018-12-22 01:18:23Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc Workers, Windows.
  */
@@ -33,6 +33,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/param.h>
 #include "../allocex.h"
