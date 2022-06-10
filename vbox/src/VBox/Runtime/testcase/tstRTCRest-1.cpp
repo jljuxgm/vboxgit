@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 74194 2018-09-11 11:38:01Z vboxsync $ */
+/* $Id: tstRTCRest-1.cpp 74195 2018-09-11 11:45:35Z vboxsync $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -1679,7 +1679,7 @@ static void testArray()
         {
             RTTESTI_CHECK_RC(Arr3.removeAt(i), VINF_SUCCESS);
             cElements--;
-            RTTESTI_CHECK((ssize_t)Arr3.size() == cElements);
+            RTTESTI_CHECK(Arr3.size() == cElements);
         }
 
         /* Verify after removal: */
@@ -1739,6 +1739,22 @@ static void testArray()
 }
 
 
+void testStringMap(void)
+{
+    RTTestSub(g_hTest, "RTCRestMap");
+
+    {
+        RTCRestStringMap<RTCRestString> obj1;
+        RTTESTI_CHECK(obj1.size() == 0);
+        RTTESTI_CHECK(obj1.isEmpty() == true);
+        RTTESTI_CHECK(obj1.isNull() == false);
+        RTTESTI_CHECK(strcmp(obj1.typeName(), "RTCRestStringMap<ValueType>") == 0);
+        RTTESTI_CHECK(obj1.typeClass() == RTCRestObjectBase::kTypeClass_StringMap);
+    }
+
+}
+
+
 int main()
 {
     RTEXITCODE rcExit = RTTestInitAndCreate("tstRTRest-1", &g_hTest);
@@ -1752,6 +1768,7 @@ int main()
         testString("dummy", 1, 2);
         testDate();
         testArray();
+        testStringMap();
 
         rcExit = RTTestSummaryAndDestroy(g_hTest);
     }
