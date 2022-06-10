@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInLinux.cpp 77874 2019-03-26 01:37:19Z vboxsync $ */
+/* $Id: DBGPlugInLinux.cpp 78019 2019-04-04 14:06:32Z vboxsync $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
@@ -441,6 +441,7 @@ static int dbgDiggerLinuxQueryAsciiLogBufferPtrs(PDBGDIGGERLINUX pThis, PUVM pUV
                         case OP_LEA:
                         case OP_AND:
                         case OP_CBW:
+                        case OP_DEC:
                             break;
                         case OP_RETN:
                             /* emit_log_char returned, abort disassembling. */
