@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 77826 2019-03-21 14:27:05Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 77829 2019-03-21 15:55:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -48,6 +48,12 @@ signals:
         void sigToggleStarted();
         /** Notifies listeners about toggle finish. */
         void sigToggleFinished();
+    /** @} */
+
+    /** @name Layout stuff.
+      * @{ */
+        /** Notifies listeners about @a iMinimumWidthHint change. */
+        void sigMinimumWidthHintChanged(int iMinimumWidthHint);
     /** @} */
 
 public:
@@ -362,6 +368,9 @@ private:
 
     /** @name Layout stuff.
       * @{ */
+        /** Holds previous minimum width hint. */
+        int  m_iPreviousMinimumWidthHint;
+
         /** Holds cached visible name size. */
         QSize  m_visibleNameSize;
         /** Holds cached group children pixmap size. */

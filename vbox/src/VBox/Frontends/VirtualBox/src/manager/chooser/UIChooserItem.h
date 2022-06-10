@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 77827 2019-03-21 14:37:07Z vboxsync $ */
+/* $Id: UIChooserItem.h 77829 2019-03-21 15:55:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -80,12 +80,6 @@ signals:
         void sigHoverEnter();
         /** Notifies listeners about hover leave. */
         void sigHoverLeave();
-    /** @} */
-
-    /** @name Layout stuff.
-      * @{ */
-        /** Notifies listeners about @a iMinimumWidthHint change. */
-        void sigMinimumWidthHintChanged(int iMinimumWidthHint);
     /** @} */
 
 public:
@@ -340,9 +334,6 @@ private:
       * @{ */
         /** Holds previous geometry. */
         QRectF  m_previousGeometry;
-
-        /** Holds previous minimum width hint. */
-        int  m_iPreviousMinimumWidthHint;
     /** @} */
 
     /** @name Navigation stuff.
