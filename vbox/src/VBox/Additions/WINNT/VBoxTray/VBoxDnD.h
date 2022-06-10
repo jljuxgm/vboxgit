@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 74439 2018-09-24 12:30:47Z vboxsync $ */
+/* $Id: VBoxDnD.h 74442 2018-09-24 13:09:14Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -96,7 +96,7 @@ public:
 
 public:
 
-    uint32_t GetCurrentAction(void) { return muCurAction; }
+    VBOXDNDACTION GetCurrentAction(void) { return mDnDActionCurrent; }
 
 public: /* IUnknown methods. */
 
@@ -118,7 +118,7 @@ protected:
     /** Current drag effect. */
     DWORD                 mdwCurEffect;
     /** Current action to perform on the host. */
-    uint32_t              muCurAction;
+    VBOXDNDACTION         mDnDActionCurrent;
 };
 
 class VBoxDnDDropTarget : public IDropTarget
@@ -332,8 +332,8 @@ public:
     void OnDestroy(void);
 
     /* H->G */
-    int OnHgEnter(const RTCList<RTCString> &formats, uint32_t uAllActions);
-    int OnHgMove(uint32_t u32xPos, uint32_t u32yPos, uint32_t uAllActions);
+    int OnHgEnter(const RTCList<RTCString> &formats, VBOXDNDACTIONLIST dndLstActionsAllowed);
+    int OnHgMove(uint32_t u32xPos, uint32_t u32yPos, VBOXDNDACTION dndAction);
     int OnHgDrop(void);
     int OnHgLeave(void);
     int OnHgDataReceive(PVBGLR3GUESTDNDMETADATA pMeta);
@@ -341,7 +341,7 @@ public:
 
 #ifdef VBOX_WITH_DRAG_AND_DROP_GH
     int OnGhIsDnDPending(void);
-    int OnGhDrop(const RTCString &strFormat, uint32_t uDefAction);
+    int OnGhDrop(const RTCString &strFormat, VBOXDNDACTION dndActionDefault);
 #endif
 
     void PostMessage(UINT uMsg, WPARAM wParam, LPARAM lParam);
