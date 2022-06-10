@@ -1,4 +1,4 @@
-/* $Id: RTCRestBinaryString.cpp 74126 2018-09-06 18:29:40Z vboxsync $ */
+/* $Id: RTCRestBinaryString.cpp 74127 2018-09-06 18:32:37Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestBinaryString implementation.
  */
@@ -54,8 +54,8 @@ RTCRestBinaryString::RTCRestBinaryString()
     , m_fFreeData(false)
     , m_cbContentLength(UINT64_MAX)
     , m_pvCallbackData(NULL)
-    , m_strContentType()
     , m_pfnProducer(NULL)
+    , m_strContentType()
     , m_pfnConsumer(NULL)
     , m_cbDownloaded(0)
     , m_cbMaxDownload(RTCREST_MAX_DOWNLOAD_SIZE_DEFAULT)
