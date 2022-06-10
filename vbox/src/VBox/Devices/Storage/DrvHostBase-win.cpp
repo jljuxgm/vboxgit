@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-win.cpp 76385 2018-12-23 01:01:58Z vboxsync $ */
+/* $Id: DrvHostBase-win.cpp 76404 2018-12-23 15:48:33Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Windows specifics.
  */
@@ -27,6 +27,7 @@
 #include <iprt/ctype.h>
 #include <iprt/file.h>
 #include <iprt/string.h>
+#include <VBox/err.h>
 #include <VBox/scsi.h>
 
 /**

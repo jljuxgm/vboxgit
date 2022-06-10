@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 76404 2018-12-23 15:48:33Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -23,6 +23,7 @@
 
 #include <VBox/vmm/pdmdrv.h>
 #include <VBox/vmm/pdmstorageifs.h>
+#include <VBox/err.h>
 #include <iprt/assert.h>
 #include <iprt/file.h>
 #include <iprt/path.h>

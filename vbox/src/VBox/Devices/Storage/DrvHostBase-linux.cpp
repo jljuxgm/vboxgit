@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-linux.cpp 76396 2018-12-23 04:28:07Z vboxsync $ */
+/* $Id: DrvHostBase-linux.cpp 76404 2018-12-23 15:48:33Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Linux specifics.
  */
@@ -42,6 +42,7 @@
 #include <iprt/mem.h>
 #include <iprt/file.h>
 #include <iprt/string.h>
+#include <VBox/err.h>
 #include <VBox/scsi.h>
 
 

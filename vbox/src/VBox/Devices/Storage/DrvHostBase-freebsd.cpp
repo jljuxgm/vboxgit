@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-freebsd.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DrvHostBase-freebsd.cpp 76404 2018-12-23 15:48:33Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, FreeBSD specifics.
  */
@@ -14,6 +14,11 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_HOST_BASE
 #include <sys/cdefs.h>
 #include <sys/param.h>
@@ -23,12 +28,15 @@
 #include <cam/cam_ccb.h>
 #include <cam/scsi/scsi_message.h>
 #include <cam/scsi/scsi_pass.h>
+#include <VBox/err.h>
+
 #include <VBox/scsi.h>
 #include <iprt/log.h>
 
-/** Maximum buffer size supported by the CAM subsystem. */
-#define FBSD_SCSI_MAX_BUFFER_SIZE (64 * _1K)
 
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
 /**
  * Host backend specific data.
  */
@@ -51,6 +59,14 @@ AssertCompile(sizeof(DRVHOSTBASEOS) <= 64);
 
 #define DRVHOSTBASE_OS_INT_DECLARED
 #include "DrvHostBase.h"
+
+
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
+/** Maximum buffer size supported by the CAM subsystem. */
+#define FBSD_SCSI_MAX_BUFFER_SIZE (64 * _1K)
+
 
 
 DECLHIDDEN(int) drvHostBaseScsiCmdOs(PDRVHOSTBASE pThis, const uint8_t *pbCmd, size_t cbCmd, PDMMEDIATXDIR enmTxDir,
