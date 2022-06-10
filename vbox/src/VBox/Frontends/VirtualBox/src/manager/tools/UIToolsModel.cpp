@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 74870 2018-10-16 16:59:07Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 74888 2018-10-17 15:58:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -451,7 +451,7 @@ void UIToolsModel::prepareItems()
     icons << UIIconPool::iconSet(":/welcome_screen_24px.png");
     icons << UIIconPool::iconSet(":/media_manager_24px.png");
     icons << UIIconPool::iconSet(":/host_iface_manager_24px.png");
-    //icons << UIIconPool::iconSet(":/host_iface_manager_24px.png");
+    icons << UIIconPool::iconSet(":/cloud_profile_manager_24px.png");
     icons << UIIconPool::iconSet(":/machine_details_manager_24px.png");
     icons << UIIconPool::iconSet(":/snapshot_manager_24px.png");
     icons << UIIconPool::iconSet(":/vm_show_logs_24px.png");

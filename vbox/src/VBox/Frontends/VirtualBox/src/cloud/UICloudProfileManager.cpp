@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 74887 2018-10-17 15:23:38Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 74888 2018-10-17 15:58:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -626,7 +626,7 @@ void UICloudProfileManager::configure()
 {
     /* Apply window icons: */
     /// @todo apply proper cloud profile manager icons!
-    setWindowIcon(UIIconPool::iconSetFull(":/host_iface_manager_32px.png", ":/host_iface_manager_16px.png"));
+    setWindowIcon(UIIconPool::iconSetFull(":/cloud_profile_manager_32px.png", ":/cloud_profile_manager_16px.png"));
 }
 
 void UICloudProfileManager::configureCentralWidget()
