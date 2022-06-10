@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74152 2018-09-08 10:49:05Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74153 2018-09-08 11:11:02Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2569,8 +2569,8 @@ IEM_STATIC int iemVmxVmentryCheckGuestSegRegs(PVMCPU pVCpu, const char *pszInstr
                 else
                     IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVInstrDiag_Vmentry_GuestSegAttrCsDplEqSs);
             }
-            else if (   uSegType == (X86_SEL_TYPE_CODE | X86_SEL_TYPE_CONF | X86_SEL_TYPE_ACCESSED)
-                     || uSegType == (X86_SEL_TYPE_CODE | X86_SEL_TYPE_CONF | X86_SEL_TYPE_READ | X86_SEL_TYPE_ACCESSED))
+            else if ((uSegType & (X86_SEL_TYPE_CODE | X86_SEL_TYPE_CONF | X86_SEL_TYPE_ACCESSED))
+                              == (X86_SEL_TYPE_CODE | X86_SEL_TYPE_CONF | X86_SEL_TYPE_ACCESSED))
             {
                 X86DESCATTR SsAttr; SsAttr.u = pVmcs->u32GuestSsAttr;
                 if (uDpl <= SsAttr.n.u2Dpl)
