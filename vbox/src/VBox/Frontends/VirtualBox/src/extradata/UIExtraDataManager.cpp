@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 75016 2018-10-23 19:42:38Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 75017 2018-10-23 20:18:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2736,14 +2736,30 @@ void UIExtraDataManager::setSelectorWindowToolBarTextVisible(bool fVisible)
     setExtraDataString(GUI_Toolbar_Text, toFeatureRestricted(!fVisible));
 }
 
-QString UIExtraDataManager::toolsPaneLastItemsChosen()
+QList<UIToolType> UIExtraDataManager::toolsPaneLastItemsChosen()
 {
-    return extraDataString(GUI_Tools_LastItemsSelected);
+    /* Parse loaded data: */
+    QList<UIToolType> result;
+    foreach (const QString &strValue, extraDataStringList(GUI_Tools_LastItemsSelected))
+    {
+        const UIToolType enmType = gpConverter->fromInternalString<UIToolType>(strValue);
+        if (enmType != UIToolType_Invalid)
+            result << enmType;
+    }
+
+    /* Return result: */
+    return result;
 }
 
-void UIExtraDataManager::setToolsPaneLastItemsChosen(const QString &strSet)
+void UIExtraDataManager::setToolsPaneLastItemsChosen(const QList<UIToolType> &set)
 {
-    setExtraDataString(GUI_Tools_LastItemsSelected, strSet);
+    /* Serialize passed values: */
+    QStringList data;
+    foreach (const UIToolType &enmType, set)
+        data << gpConverter->toInternalString(enmType);
+
+    /* Re-cache corresponding extra-data: */
+    setExtraDataStringList(GUI_Tools_LastItemsSelected, data);
 }
 
 bool UIExtraDataManager::selectorWindowStatusBarVisible()

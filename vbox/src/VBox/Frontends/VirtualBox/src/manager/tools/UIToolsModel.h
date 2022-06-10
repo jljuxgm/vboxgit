@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 75016 2018-10-23 19:42:38Z vboxsync $ */
+/* $Id: UIToolsModel.h 75017 2018-10-23 20:18:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -226,16 +226,6 @@ private:
       * @{ */
         /** Returns abstractly stored data value for certain @a iKey. */
         QVariant data(int iKey) const;
-
-        /** Returns @a enmType string representation.
-          * @todo move to UIConverter one day .. */
-        static QString typeToString(UIToolType enmType);
-        /** Returns @a strType converted to corresponding UIToolType.
-          * @todo move to UIConverter one day .. */
-        static UIToolType typeFromString(const QString &strType);
-
-        /** Returns whether passed @a enmType is of passed @a enmClass. */
-        static bool isTypeOfClass(UIToolType enmType, UIToolClass enmClass);
     /** @} */
 
     /** @name General stuff.

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 75016 2018-10-23 19:42:38Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 75017 2018-10-23 20:18:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -683,6 +683,14 @@ enum UIToolType
     UIToolType_Logs,
 };
 Q_DECLARE_METATYPE(UIToolType);
+
+
+/** Contains stuff related to tools handling. */
+namespace UIToolStuff
+{
+    /** Returns whether passed @a enmType is of passed @a enmClass. */
+    SHARED_LIBRARY_STUFF bool isTypeOfClass(UIToolType enmType, UIToolClass enmClass);
+}
 
 
 /** Selector UI: Details-element types. */
