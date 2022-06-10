@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 75775 2018-11-27 16:51:58Z vboxsync $ */
+/* $Id: VMMDevState.h 75855 2018-11-30 19:45:26Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -155,6 +155,9 @@ typedef struct VMMDevState
 #ifdef VBOX_WITH_HGCM
     /** LUN\#0: HGCM port interface. */
     PDMIHGCMPORT IHGCMPort;
+# if HC_ARCH_BITS == 32
+    RTR3PTR      R3PtrAlignment1;
+# endif
 #endif
     /** Pointer to base interface of the driver. */
     R3PTRTYPE(PPDMIBASE) pDrvBase;
