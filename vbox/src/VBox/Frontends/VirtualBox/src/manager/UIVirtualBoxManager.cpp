@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 74975 2018-10-22 16:56:50Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 74985 2018-10-22 21:49:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -385,10 +385,10 @@ void UIVirtualBoxManager::sltHandleToolTypeChange()
     /* Make sure separate dialogs are closed when corresponding tools are opened: */
     switch (m_pWidget->toolsType())
     {
-        case UIToolsType_Media:   sltCloseVirtualMediumManagerWindow();
-        case UIToolsType_Network: sltCloseHostNetworkManagerWindow();
-        case UIToolsType_Cloud:   sltCloseCloudProfileManagerWindow();
-        case UIToolsType_Logs:    sltCloseLogViewerWindow();
+        case UIToolsType_Media:   sltCloseVirtualMediumManagerWindow(); break;
+        case UIToolsType_Network: sltCloseHostNetworkManagerWindow(); break;
+        case UIToolsType_Cloud:   sltCloseCloudProfileManagerWindow(); break;
+        case UIToolsType_Logs:    sltCloseLogViewerWindow(); break;
         default: break;
     }
 }
