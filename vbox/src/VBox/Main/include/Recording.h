@@ -1,4 +1,4 @@
-/* $Id: Recording.h 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: Recording.h 75441 2018-11-14 09:08:51Z vboxsync $ */
 /** @file
  * Recording code header.
  */
@@ -117,6 +117,8 @@ protected:
     /** Vector of current recording streams.
      *  Per VM screen (display) one recording stream is being used. */
     RecordingStreams          vecStreams;
+    /** Number of streams in vecStreams which currently are enabled for recording. */
+    uint16_t                  cStreamsEnabled;
     /** Timestamp (in ms) of when recording has been started. */
     uint64_t                  tsStartMs;
     /** Block map of common blocks which need to get multiplexed

@@ -1,4 +1,4 @@
-/* $Id: RecordingInternals.cpp 75356 2018-11-09 11:28:54Z vboxsync $ */
+/* $Id: RecordingInternals.cpp 75441 2018-11-14 09:08:51Z vboxsync $ */
 /** @file
  * Recording internals code.
  */
@@ -58,36 +58,5 @@ void RecordingVideoFrameFree(PRECORDINGVIDEOFRAME pFrame)
         RTMemFree(pFrame->pu8RGBBuf);
     }
     RTMemFree(pFrame);
-}
-
-/**
- * Frees a recording (data) block.
- *
- * @returns IPRT status code.
- * @param   pBlock              Recording (data) block to free. The pointer will be invalid after return.
- */
-void RecordingBlockFree(PRECORDINGBLOCK pBlock)
-{
-    if (!pBlock)
-        return;
-
-    switch (pBlock->enmType)
-    {
-        case RECORDINGBLOCKTYPE_VIDEO:
-            RecordingVideoFrameFree((PRECORDINGVIDEOFRAME)pBlock->pvData);
-            break;
-
-#ifdef VBOX_WITH_AUDIO_RECORDING
-        case RECORDINGBLOCKTYPE_AUDIO:
-            RecordingAudioFrameFree((PRECORDINGAUDIOFRAME)pBlock->pvData);
-            break;
-#endif
-        default:
-            AssertFailed();
-            break;
-    }
-
-    RTMemFree(pBlock);
-    pBlock = NULL;
 }
 

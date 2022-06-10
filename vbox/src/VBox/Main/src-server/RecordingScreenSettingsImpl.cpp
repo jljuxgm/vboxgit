@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.cpp 75418 2018-11-13 12:09:09Z vboxsync $ */
+/* $Id: RecordingScreenSettingsImpl.cpp 75441 2018-11-14 09:08:51Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Recording settings of one virtual screen.
@@ -809,7 +809,9 @@ int RecordingScreenSettings::i_initInternal(void)
 {
     Assert(m);
 
-    int rc = VINF_SUCCESS;
+    int rc = i_parseOptionsString(m->bd->strOptions, *m->bd.data());
+    if (RT_FAILURE(rc))
+        return rc;
 
     switch (m->bd->enmDest)
     {

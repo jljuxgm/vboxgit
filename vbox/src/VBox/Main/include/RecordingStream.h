@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 75417 2018-11-13 12:07:20Z vboxsync $ */
+/* $Id: RecordingStream.h 75441 2018-11-14 09:08:51Z vboxsync $ */
 /** @file
  * Recording stream code header.
  */
@@ -50,16 +50,16 @@ struct RecordingBlocks
     {
         while (!List.empty())
         {
-            PRECORDINGBLOCK pBlock = List.front();
-            RecordingBlockFree(pBlock);
+            RecordingBlock *pBlock = List.front();
             List.pop_front();
+            delete pBlock;
         }
 
         Assert(List.size() == 0);
     }
 
     /** The actual block list for this timecode. */
-    RECORDINGBLOCKList List;
+    RecordingBlockList List;
 };
 
 /** A block map containing all currently queued blocks.
@@ -124,6 +124,7 @@ public:
                        uint32_t uSrcWidth, uint32_t uSrcHeight, uint8_t *puSrcData, uint64_t uTimeStampMs);
 
     const settings::RecordingScreenSettings &GetConfig(void) const;
+    uint16_t GetID(void) const { return this->uScreenID; };
     bool IsLimitReached(uint64_t tsNowMs) const;
     bool IsReady(void) const;
 
@@ -166,7 +167,7 @@ protected:
     };
 
     /** Recording context this stream is associated to. */
-    RecordingContext         *pCtx;
+    RecordingContext       *pCtx;
     /** The current state. */
     RECORDINGSTREAMSTATE    enmState;
     struct
@@ -205,7 +206,7 @@ protected:
     settings::RecordingScreenSettings ScreenSettings;
     /** Common set of recording (data) blocks, needed for
      *  multiplexing to all recording streams. */
-    RecordingBlockSet              Blocks;
+    RecordingBlockSet                 Blocks;
 };
 
 /** Vector of recording streams. */
