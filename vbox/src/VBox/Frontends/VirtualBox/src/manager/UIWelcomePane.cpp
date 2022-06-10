@@ -1,4 +1,4 @@
-/* $Id: UIWelcomePane.cpp 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIWelcomePane.cpp 73456 2018-08-02 12:56:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class implementation.
  */
@@ -227,7 +227,7 @@ private:
 
 
 /*********************************************************************************************************************************
-*   Class UIScrollAreaTools implementation.                                                                                       *
+*   Class UIScrollAreaTools implementation.                                                                                      *
 *********************************************************************************************************************************/
 
 UIScrollAreaTools::UIScrollAreaTools(QWidget *pParent /* = 0 */)
@@ -249,7 +249,7 @@ QSize UIScrollAreaTools::minimumSizeHint() const
 
 
 /*********************************************************************************************************************************
-*   Class UIWrappableLabel implementation.                                                                                                *
+*   Class UIWrappableLabel implementation.                                                                                       *
 *********************************************************************************************************************************/
 
 UIWrappableLabel::UIWrappableLabel(QWidget *pParent /* = 0 */)
