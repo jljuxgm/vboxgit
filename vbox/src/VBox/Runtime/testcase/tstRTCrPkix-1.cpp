@@ -1,4 +1,4 @@
-/* $Id: tstRTCrPkix-1.cpp 73749 2018-08-18 00:25:57Z vboxsync $ */
+/* $Id: tstRTCrPkix-1.cpp 73807 2018-08-22 08:02:29Z vboxsync $ */
 /** @file
  * IPRT testcase - Crypto - Public-Key Infrastructure \#1.
  */
@@ -341,6 +341,7 @@ static void test1()
              */
             static struct { void const *pv; size_t cb; } const s_aTexts[] =
             {
+                {  RT_STR_TUPLE("") },
                 {  RT_STR_TUPLE("IPRT") },
                 {  RT_STR_TUPLE("abcdef") },
             };
@@ -354,6 +355,8 @@ static void test1()
                 rc = RTCrDigestCreateByObjIdString(&hDigest, s_aSignatures[iSig].pszObjId);
                 if (RT_SUCCESS(rc))
                 {
+                    RTTESTI_CHECK_RC(RTCrDigestUpdate(hDigest, s_aTexts[iText].pv, s_aTexts[iText].cb), VINF_SUCCESS);
+
                     rc = RTCrPkixSignatureSign(hSign, hDigest, abSignature, &cbSignature);
                     if (RT_SUCCESS(rc))
                     {
@@ -366,6 +369,7 @@ static void test1()
                     else if (rc != VERR_CR_PKIX_HASH_TOO_LONG_FOR_KEY)
                         RTTestIFailed("RTCrPkixSignatureSign failed with %Rrc for %u bits MD with %u bits key (%s)",
                                       rc, s_aSignatures[iSig].cBits, g_aKeyPairs[i].cBits, s_aSignatures[iSig].pszObjId);
+                    RTCrDigestRelease(hDigest);
                 }
                 else
                     RTTestIFailed("RTCrDigestCreateByObjIdString failed with %Rrc for %s (%u bits)",
