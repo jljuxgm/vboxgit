@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplPrivate.h 73892 2018-08-26 15:30:15Z vboxsync $ */
+/* $Id: ApplianceImplPrivate.h 73929 2018-08-28 18:00:59Z vboxsync $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
@@ -229,6 +229,22 @@ struct Appliance::Data
     SecretKeyStore            *m_pSecretKeyStore;
     /** Number of passwords provided. */
     uint32_t                  m_cPwProvided;
+
+    struct OciExportData_T {
+        Utf8Str strDisplayMachineName;
+        Utf8Str strProfileFilePath;
+        Utf8Str strProfileName;
+        Utf8Str strInstanceShapeId;
+        Utf8Str strDomainName;
+        Utf8Str strBootDiskSize;
+        Utf8Str strBucketId;
+        Utf8Str strVCN;
+        bool    fPublicIP;
+        Utf8Str strUserId;
+        Utf8Str strBootImageName;
+    };
+
+    OciExportData_T m_OciExportData;
 };
 
 struct Appliance::XMLStack
