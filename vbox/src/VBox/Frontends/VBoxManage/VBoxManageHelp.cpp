@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 73716 2018-08-16 15:58:57Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 73740 2018-08-17 16:52:08Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -477,6 +477,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--register]\n"
                      "                            [--basefolder <path>]\n"
                      "                            [--uuid <uuid>]\n"
+                     "                            [--default]\n"
                      "\n", SEP);
 
     if (fCategory & USAGE_MODIFYVM)
