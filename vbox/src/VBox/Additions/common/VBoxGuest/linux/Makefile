@@ -1,4 +1,4 @@
-# $Id: Makefile 77399 2019-02-20 18:23:31Z vboxsync $
+# $Id: Makefile 77403 2019-02-20 18:44:36Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -146,7 +146,10 @@ ifeq ($(KERN_VERSION),24)
 VBOXMOD_DEFS += EXPORT_SYMTAB
 endif
 
-VBOXMOD_INCL  = -I$(VBOXGUEST_DIR) -I$(VBOXGUEST_DIR)include -I$(VBOXGUEST_DIR)r0drv/linux
+VBOXMOD_INCL = \
+	$(VBOXGUEST_DIR) \
+	$(VBOXGUEST_DIR)include \
+	$(VBOXGUEST_DIR)r0drv/linux
 
 ifeq ($(KERN_VERSION),24)
 VBOXMOD_CFLAGS =

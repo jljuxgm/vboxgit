@@ -1,4 +1,4 @@
-# $Id: Makefile.module 77399 2019-02-20 18:23:31Z vboxsync $
+# $Id: Makefile.module 77403 2019-02-20 18:44:36Z vboxsync $
 ## @file
 # VBox Linux Shared Folders VFS Module Makefile.
 #
@@ -48,9 +48,9 @@ VBOXMOD_OBJS += \
 	qdivrem.o
 endif
 VBOXMOD_INCL = \
-	-I$(VBOXSF_DIR) \
-	-I$(VBOXSF_DIR)include \
-	-I$(VBOXSF_DIR)r0drv/linux
+	$(VBOXSF_DIR) \
+	$(VBOXSF_DIR)include \
+	$(VBOXSF_DIR)r0drv/linux
 VBOXMOD_DEFS = \
 	RT_OS_LINUX \
 	IN_RING0 \

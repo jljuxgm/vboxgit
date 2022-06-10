@@ -1,4 +1,4 @@
-# $Id: Makefile 77399 2019-02-20 18:23:31Z vboxsync $
+# $Id: Makefile 77403 2019-02-20 18:44:36Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Virtual Network Adapter Driver.
 #
@@ -46,9 +46,9 @@ VBOXMOD_OBJS += \
 	math/gcc/umoddi3.o
 endif
 VBOXMOD_INCL = \
-	-I$(VBOXNETADPT_DIR) \
-	-I$(VBOXNETADPT_DIR)include \
-	-I$(VBOXNETADPT_DIR)r0drv/linux
+	$(VBOXNETADPT_DIR) \
+	$(VBOXNETADPT_DIR)include \
+	$(VBOXNETADPT_DIR)r0drv/linux
 VBOXMOD_DEFS = \
 	RT_OS_LINUX \
 	IN_RING0 \

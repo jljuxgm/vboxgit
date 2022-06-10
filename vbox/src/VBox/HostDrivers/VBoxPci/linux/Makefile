@@ -1,4 +1,4 @@
-# $Id: Makefile 77399 2019-02-20 18:23:31Z vboxsync $
+# $Id: Makefile 77403 2019-02-20 18:44:36Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host PCI Driver.
 #
@@ -50,9 +50,9 @@ VBOXMOD_OBJS += \
 	math/gcc/umoddi3.o
 endif
 VBOXMOD_INCL = \
-	-I$(VBOXPCI_DIR) \
-	-I$(VBOXPCI_DIR)include \
-	-I$(VBOXPCI_DIR)r0drv/linux
+	$(VBOXPCI_DIR) \
+	$(VBOXPCI_DIR)include \
+	$(VBOXPCI_DIR)r0drv/linux
 VBOXMOD_DEFS = \
 	RT_OS_LINUX \
 	IN_RING0 \

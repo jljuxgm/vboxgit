@@ -1,4 +1,4 @@
-# $Id: Makefile 77400 2019-02-20 18:36:27Z vboxsync $
+# $Id: Makefile 77403 2019-02-20 18:44:36Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -136,13 +136,13 @@ ifdef VBOX_WITH_NATIVE_DTRACE
 VBOXMOD_OBJS += SUPDrvDTrace.o
 endif
 VBOXMOD_INCL  = \
-	-I$(VBOXDRV_DIR) \
-	-I$(VBOXDRV_DIR)include \
-	-I$(VBOXDRV_DIR)r0drv/linux
+	$(VBOXDRV_DIR) \
+	$(VBOXDRV_DIR)include \
+	$(VBOXDRV_DIR)r0drv/linux
 ifdef VBOX_WITH_NATIVE_DTRACE
 VBOXMOD_INCL += \
-	-I/usr/include/linux \
-	-I/usr/include
+	/usr/include/linux \
+	/usr/include
 endif
 VBOXMOD_DEFS = \
 	RT_OS_LINUX \
