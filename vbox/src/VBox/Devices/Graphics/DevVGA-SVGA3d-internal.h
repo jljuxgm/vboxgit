@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 73373 2018-07-26 18:59:02Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 75696 2018-11-23 19:57:37Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1025,7 +1025,6 @@ typedef struct VMSVGA3DSTATE
     struct
     {
         GLint                           maxActiveLights;
-        GLint                           maxTextureBufferSize;
         GLint                           maxTextures;
         GLint                           maxClipDistances;
         GLint                           maxColorAttachments;
