@@ -1,4 +1,4 @@
-/* $Id: dbgstackdumpself.cpp 73779 2018-08-20 10:47:03Z vboxsync $ */
+/* $Id: dbgstackdumpself.cpp 73808 2018-08-22 08:03:15Z vboxsync $ */
 /** @file
  * IPRT - Dump current thread stack to buffer.
  */
@@ -150,6 +150,7 @@ static DECLCALLBACK(int) rtDbgStackDumpSelfReader(PRTDBGUNWINDSTATE pThis, RTUIN
     RT_NOREF(pThis);
     return rtDbgStackDumpSelfSafeMemoryReader(pvDst, cbToRead, uSp);
 }
+
 
 #ifdef RT_OS_WINDOWS
 /**
