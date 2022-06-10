@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 74526 2018-09-28 15:08:24Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 74544 2018-10-01 08:00:28Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1561,8 +1561,8 @@ static int vbglR3DnDGHSendDataInternal(PVBGLR3GUESTDNDCMDCTX pCtx,
  */
 static int vbglR3DnDGHSendDir(PVBGLR3GUESTDNDCMDCTX pCtx, DnDURIObject *pObj)
 {
-    AssertPtrReturn(pObj,                                   	  VERR_INVALID_POINTER);
-    AssertPtrReturn(pCtx,                              		      VERR_INVALID_POINTER);
+    AssertPtrReturn(pObj,                                         VERR_INVALID_POINTER);
+    AssertPtrReturn(pCtx,                                         VERR_INVALID_POINTER);
     AssertReturn(pObj->GetType() == DnDURIObject::Type_Directory, VERR_INVALID_PARAMETER);
 
     RTCString strPath = pObj->GetDestPath();
