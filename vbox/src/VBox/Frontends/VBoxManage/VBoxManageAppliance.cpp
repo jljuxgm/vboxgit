@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 76192 2018-12-12 18:15:04Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -34,6 +34,7 @@
 #include <map>
 #endif /* !VBOX_ONLY_DOCS */
 
+#include <iprt/err.h>
 #include <iprt/stream.h>
 #include <iprt/getopt.h>
 #include <iprt/ctype.h>

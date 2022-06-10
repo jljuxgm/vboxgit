@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 72847 2018-07-04 02:04:32Z vboxsync $ */
+/* $Id: EventImpl.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -57,9 +57,10 @@
 #include "AutoCaller.h"
 #include "Logging.h"
 
-#include <iprt/semaphore.h>
-#include <iprt/critsect.h>
 #include <iprt/asm.h>
+#include <iprt/critsect.h>
+#include <iprt/err.h>
+#include <iprt/semaphore.h>
 #include <iprt/time.h>
 
 #include <VBox/com/array.h>

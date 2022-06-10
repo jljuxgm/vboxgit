@@ -1,3 +1,4 @@
+/* $Id: ThreadTask.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
 /** @file
  * Implementation of ThreadTask
  */
@@ -14,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include <iprt/err.h>
 #include <iprt/thread.h>
 
 #include "VirtualBoxBase.h"

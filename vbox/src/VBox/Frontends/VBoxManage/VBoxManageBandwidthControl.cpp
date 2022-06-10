@@ -1,4 +1,4 @@
-/* $Id: VBoxManageBandwidthControl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxManageBandwidthControl.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
 /** @file
  * VBoxManage - The bandwidth control related commands.
  */
@@ -27,6 +27,7 @@
 #include <VBox/com/errorprint.h>
 #include <VBox/com/VirtualBox.h>
 
+#include <iprt/err.h>
 #include <iprt/path.h>
 #include <iprt/param.h>
 #include <iprt/string.h>

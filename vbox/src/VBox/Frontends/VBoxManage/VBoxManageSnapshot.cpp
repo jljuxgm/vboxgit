@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -27,8 +27,9 @@
 
 #include <VBox/com/VirtualBox.h>
 
-#include <iprt/stream.h>
+#include <iprt/err.h>
 #include <iprt/getopt.h>
+#include <iprt/stream.h>
 #include <iprt/time.h>
 
 #include "VBoxManage.h"

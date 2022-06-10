@@ -1,4 +1,4 @@
-/* $Id: CertificateImpl.cpp 72980 2018-07-08 14:32:09Z vboxsync $ */
+/* $Id: CertificateImpl.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
 /** @file
  * ICertificate COM class implementations.
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include <iprt/err.h>
 #include <iprt/path.h>
 #include <iprt/cpp/utils.h>
 #include <VBox/com/array.h>

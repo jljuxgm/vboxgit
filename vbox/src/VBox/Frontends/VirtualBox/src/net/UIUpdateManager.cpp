@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 75668 2018-11-22 14:17:43Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -46,6 +46,7 @@
 # include "CSystemProperties.h"
 
 /* Other VBox includes: */
+# include <iprt/err.h>
 # include <iprt/path.h>
 # include <iprt/system.h>
 # include <VBox/version.h>

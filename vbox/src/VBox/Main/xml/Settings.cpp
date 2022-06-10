@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 75396 2018-11-12 12:13:23Z vboxsync $ */
+/* $Id: Settings.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -71,15 +71,16 @@
 
 #include "VBox/com/string.h"
 #include "VBox/settings.h"
-#include <iprt/cpp/xml.h>
-#include <iprt/stream.h>
-#include <iprt/ctype.h>
-#include <iprt/file.h>
-#include <iprt/process.h>
-#include <iprt/ldr.h>
 #include <iprt/base64.h>
-#include <iprt/uri.h>
 #include <iprt/cpp/lock.h>
+#include <iprt/cpp/xml.h>
+#include <iprt/ctype.h>
+#include <iprt/err.h>
+#include <iprt/file.h>
+#include <iprt/ldr.h>
+#include <iprt/process.h>
+#include <iprt/stream.h>
+#include <iprt/uri.h>
 
 // generated header
 #include "SchemaDefs.h"

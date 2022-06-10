@@ -1,4 +1,4 @@
-/* $Id: Guid.h 72906 2018-07-04 22:22:16Z vboxsync $ */
+/* $Id: Guid.h 76366 2018-12-22 02:16:26Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Guid class declaration.
  */
@@ -38,7 +38,6 @@
 #include "VBox/com/string.h"
 
 #include <iprt/uuid.h>
-#include <iprt/err.h>
 
 
 /** @defgroup grp_com_guid  GUID Class

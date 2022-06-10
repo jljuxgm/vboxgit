@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 72547 2018-06-13 15:50:39Z vboxsync $ */
+/* $Id: HostDnsService.h 76366 2018-12-22 02:16:26Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -19,8 +19,7 @@
 #define ___H_DNSHOSTSERVICE
 #include "VirtualBoxBase.h"
 
-#include <iprt/cdefs.h>
-#include <iprt/types.h>
+#include <iprt/err.h> /* VERR_IGNORED */
 #include <iprt/cpp/lock.h>
 
 #include <list>

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 75945 2018-12-04 12:36:59Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -28,6 +28,7 @@
 #endif /* !VBOX_ONLY_DOCS */
 
 #include <iprt/cidr.h>
+#include <iprt/err.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/stream.h>
