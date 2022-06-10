@@ -1,4 +1,4 @@
-/* $Id: hostres.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: hostres.c 76031 2018-12-06 20:24:40Z vboxsync $ */
 /** @file
  * Host resolver
  */
@@ -265,14 +265,14 @@ verify_header(PNATState pData, struct mbuf **pMBuf)
     if (RT_UNLIKELY(pHdr->qdcount != RT_H2N_U16_C(1)))
     {
         LogErr(("NAT: hostres: multiple questions\n"));
-        refuse_mbuf(m, RCode_NotImp);
+        refuse_mbuf(m, RCode_FormErr);
         return VERR_PARSE_ERROR;
     }
 
     if (RT_UNLIKELY(pHdr->ancount != 0))
     {
         LogErr(("NAT: hostres: answers in query\n"));
-        refuse_mbuf(m, RCode_NotImp);
+        refuse_mbuf(m, RCode_FormErr);
         return VERR_PARSE_ERROR;
     }
 
@@ -511,7 +511,7 @@ respond(struct response *res)
         && qclass != Class_ANY)
     {
         LogErr(("NAT: hostres: unsupported qclass %d\n", qclass));
-        return refuse(res, RCode_NotImp);
+        return refuse(res, RCode_NXDomain);
     }
 
     if (   qtype != Type_A
@@ -520,7 +520,7 @@ respond(struct response *res)
         && qtype != Type_ANY)
     {
         LogErr(("NAT: hostres: unsupported qtype %d\n", qtype));
-        return refuse(res, RCode_NotImp);
+        return refuse(res, RCode_NXDomain);
     }
 
 
