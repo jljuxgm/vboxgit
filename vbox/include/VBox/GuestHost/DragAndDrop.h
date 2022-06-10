@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 74714 2018-10-09 11:50:22Z vboxsync $ */
+/* $Id: DragAndDrop.h 74715 2018-10-09 11:56:08Z vboxsync $ */
 /** @file
  * DnD: Shared functions between host and guest.
  */
@@ -266,6 +266,9 @@ typedef uint32_t DNDURILISTFLAGS;
 /** Lazy loading: Only enumerate sub directories when needed.
  ** @todo Implement lazy loading.  */
 #define DNDURILIST_FLAGS_LAZY                   RT_BIT(3)
+
+/** Mask of all valid DnD URI list flags. */
+#define DNDURILIST_FLAGS_VALID_MASK             UINT32_C(0xF)
 
 class DnDURIList
 {
