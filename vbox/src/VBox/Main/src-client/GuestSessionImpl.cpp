@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 74953 2018-10-19 17:28:17Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 75605 2018-11-20 10:04:56Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3858,6 +3858,16 @@ HRESULT GuestSession::fsObjRemove(const com::Utf8Str &aPath)
     }
 
     return hrc;
+}
+
+HRESULT GuestSession::fsObjRemoveArray(const std::vector<com::Utf8Str> &aPaths, ComPtr<IProgress> &aProgress)
+{
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    RT_NOREF(aPaths, aProgress);
+
+    return E_NOTIMPL;
 }
 
 HRESULT GuestSession::fsObjRename(const com::Utf8Str &aSource,

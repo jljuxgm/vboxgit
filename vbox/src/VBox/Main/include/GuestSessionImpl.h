@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 74734 2018-10-10 11:47:54Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 75605 2018-11-20 10:04:56Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -172,6 +172,8 @@ private:
                            BOOL aFollowSymlinks,
                            ComPtr<IGuestFsObjInfo> &aInfo);
     HRESULT fsObjRemove(const com::Utf8Str &aPath);
+    HRESULT fsObjRemoveArray(const std::vector<com::Utf8Str> &aPaths,
+                             ComPtr<IProgress> &aProgress);
     HRESULT fsObjRename(const com::Utf8Str &aOldPath,
                         const com::Utf8Str &aNewPath,
                         const std::vector<FsObjRenameFlag_T> &aFlags);
