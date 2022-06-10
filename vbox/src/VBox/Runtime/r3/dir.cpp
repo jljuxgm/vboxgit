@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 78186 2019-04-17 21:36:59Z vboxsync $ */
+/* $Id: dir.cpp 78207 2019-04-18 14:59:30Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation, Part 1.
  */
@@ -754,7 +754,7 @@ RTDECL(int) RTDirFlushParent(const char *pszChild)
     char        *pszPathFree = NULL;
     size_t const cchChild    = strlen(pszChild);
     if (cchChild < RTPATH_MAX)
-        pszPath = (char *)alloca(cchChild);
+        pszPath = (char *)alloca(cchChild + 1);
     else
     {
         pszPathFree = pszPath = (char *)RTMemTmpAlloc(cchChild + 1);
