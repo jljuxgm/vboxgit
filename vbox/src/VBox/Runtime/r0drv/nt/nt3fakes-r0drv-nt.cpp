@@ -1,4 +1,4 @@
-/* $Id: nt3fakes-r0drv-nt.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: nt3fakes-r0drv-nt.cpp 76426 2018-12-23 20:34:37Z vboxsync $ */
 /** @file
  * IPRT - NT 3.x fakes for NT 4.0 KPIs.
  */
@@ -39,6 +39,7 @@
 #include <iprt/err.h>
 #include <iprt/log.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 #include <iprt/x86.h>
 #include <iprt/formats/mz.h>
 #include <iprt/formats/pecoff.h>
