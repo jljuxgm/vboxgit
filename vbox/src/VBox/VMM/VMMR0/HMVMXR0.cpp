@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72763 2018-06-29 10:33:38Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72766 2018-06-29 10:43:48Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5326,6 +5326,7 @@ DECLASM(int) VMXR0SwitcherStartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVMCSCACHE 
                                                                      pCache->TestOut.pCtx));
     Assert(!(pCache->TestOut.eflags & X86_EFL_IF));
 #endif
+    NOREF(pCtx);
     return rc;
 }
 
