@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.h 74049 2018-09-03 16:45:09Z vboxsync $ */
+/* $Id: UIDetailsSet.h 74367 2018-09-19 11:23:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class declaration.
  */
@@ -157,6 +157,19 @@ private:
 
         /** Creates element of specified @a enmElementType in @a fOpen state. */
         UIDetailsElement *createElement(DetailsElementType enmElementType, bool fOpen);
+    /** @} */
+
+    /** @name Layout stuff.
+      * @{ */
+        /** Enumerates item being placed into layout.
+          * @param  inGroup   Will contain a list of items in preview group.
+          * @param  outGroup  Will contain a list of items ouside of preview group.
+          * @param  iAdditionalGroupHeight    Will have additional group height.
+          * @param  iAdditionalPreviewHeight  Will have additional preview height. */
+        void enumerateLayoutItems(QList<DetailsElementType> &inGroup,
+                                  QList<DetailsElementType> &outGroup,
+                                  int &iAdditionalGroupHeight,
+                                  int &iAdditionalPreviewHeight) const;
     /** @} */
 
     /** @name Item stuff.
