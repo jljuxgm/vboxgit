@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 77061 2019-01-30 18:12:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -121,11 +121,6 @@ protected:
       * @{ */
         /** Returns RTTI item type. */
         virtual int type() const /* override */ { return Type; }
-
-        /** Shows item. */
-        virtual void show() /* override */;
-        /** Hides item. */
-        virtual void hide() /* override */;
 
         /** Starts item editing. */
         virtual void startEditing() /* override */;

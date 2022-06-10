@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 76920 2019-01-21 13:33:09Z vboxsync $ */
+/* $Id: UIChooserItem.h 77061 2019-01-30 18:12:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -133,11 +133,6 @@ public:
         int level() const;
         /** Defines a @a iLevel of item. */
         void setLevel(int iLevel);
-
-        /** Shows item. */
-        virtual void show();
-        /** Hides item. */
-        virtual void hide();
 
         /** Starts item editing. */
         virtual void startEditing() = 0;

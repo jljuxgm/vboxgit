@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 77041 2019-01-30 12:48:39Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 77061 2019-01-30 18:12:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -591,7 +591,6 @@ void UIChooserItemMachine::prepare()
     /* Add item to the parent: */
     AssertPtrReturnVoid(parentItem());
     parentItem()->addItem(this, m_iPosition);
-    setZValue(parentItem()->zValue() + 1);
 
     /* Configure connections: */
     connect(gpManager, &UIVirtualBoxManager::sigWindowRemapped,

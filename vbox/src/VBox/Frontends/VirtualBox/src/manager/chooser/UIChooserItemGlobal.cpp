@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 77042 2019-01-30 12:51:31Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 77061 2019-01-30 18:12:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -390,7 +390,6 @@ void UIChooserItemGlobal::prepare()
     /* Add item to the parent: */
     AssertPtrReturnVoid(parentItem());
     parentItem()->addItem(this, m_iPosition);
-    setZValue(parentItem()->zValue() + 1);
 
     /* Configure connections: */
     connect(gpManager, &UIVirtualBoxManager::sigWindowRemapped,
