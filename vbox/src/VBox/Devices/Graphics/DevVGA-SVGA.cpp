@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 77288 2019-02-12 16:49:26Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 77867 2019-03-25 09:12:25Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -1424,7 +1424,14 @@ int vmsvgaUpdateScreen(PVGASTATE pThis, VMSVGASCREENOBJECT *pScreen, int x, int 
     }
     else
     {
+        VBVACMDHDR cmd;
+        cmd.x = (int16_t)(pScreen->xOrigin + x);
+        cmd.y = (int16_t)(pScreen->yOrigin + y);
+        cmd.w = (uint16_t)w;
+        cmd.h = (uint16_t)h;
+
         pThis->pDrv->pfnVBVAUpdateBegin(pThis->pDrv, pScreen->idScreen);
+        pThis->pDrv->pfnVBVAUpdateProcess(pThis->pDrv, pScreen->idScreen, &cmd, sizeof(cmd));
         pThis->pDrv->pfnVBVAUpdateEnd(pThis->pDrv, pScreen->idScreen,
                                       pScreen->xOrigin + x, pScreen->yOrigin + y, w, h);
     }
