@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerOperationsPanel.h 75897 2018-12-03 12:29:15Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerOperationsPanel.h 75915 2018-12-03 15:48:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -73,6 +73,7 @@ private slots:
 
     void sltHandleWidgetFocusIn(QWidget *pWidget);
     void sltHandleWidgetFocusOut(QWidget *pWidget);
+    void sltScrollToBottom(int iMin, int iMax);
 
 private:
 
