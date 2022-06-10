@@ -1,4 +1,4 @@
-/* $Id: UIDetails.cpp 74083 2018-09-05 13:08:01Z vboxsync $ */
+/* $Id: UIDetails.cpp 74109 2018-09-06 10:14:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetails class implementation.
  */
@@ -65,7 +65,7 @@ void UIDetails::preparePalette()
     /* Setup palette: */
     setAutoFillBackground(true);
     QPalette pal = qApp->palette();
-    const QColor bodyColor = pal.color(QPalette::Active, QPalette::Midlight).darker(110);
+    const QColor bodyColor = pal.color(QPalette::Active, QPalette::Mid).lighter(155);
     pal.setColor(QPalette::Base, bodyColor);
     setPalette(pal);
 }
