@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerLogPanel.h 75295 2018-11-06 18:24:52Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerOperationsPanel.h 75295 2018-11-06 18:24:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -15,27 +15,28 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIGuestControlFileManagerLogPanel_h___
-#define ___UIGuestControlFileManagerLogPanel_h___
+#ifndef ___UIGuestControlFileManagerOperationsPanel_h___
+#define ___UIGuestControlFileManagerOperationsPanel_h___
 
 /* GUI includes: */
 #include "UIGuestControlDefs.h"
 #include "UIGuestControlFileManagerPanel.h"
 
 /* Forward declarations: */
-class QTextEdit;
+class QTableWidget;
 class UIGuestControlFileManager;
 
 /** UIVMLogViewerPanel extension providing GUI to manage logviewer settings. */
-class UIGuestControlFileManagerLogPanel : public UIGuestControlFileManagerPanel
+class UIGuestControlFileManagerOperationsPanel : public UIGuestControlFileManagerPanel
 {
     Q_OBJECT;
 
 public:
 
-    UIGuestControlFileManagerLogPanel(UIGuestControlFileManager *pManagerWidget, QWidget *pParent);
-    void appendLog(const QString &str, FileManagerLogType);
+    UIGuestControlFileManagerOperationsPanel(UIGuestControlFileManager *pManagerWidget, QWidget *pParent);
     virtual QString panelName() const /* override */;
+
+signals:
 
 protected:
 
@@ -49,8 +50,8 @@ private slots:
 
 
 private:
+    QTableWidget *m_pTableWidget;
 
-    QTextEdit *m_pLogTextEdit;
 };
 
-#endif /* !___UIGuestControlFileManagerLogPanel_h___ */
+#endif /* !___UIGuestControlFileManagerOperationsPanel_h___ */
