@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMouseHandler.h 75938 2018-12-04 08:42:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class declaration.
  */
@@ -138,6 +138,12 @@ protected:
     QPoint m_capturedMousePos;
     int m_iLastMouseWheelDelta;
     int m_iMouseCaptureViewIndex;
+
+#ifdef VBOX_WS_WIN
+    /** Holds whether cursor position was just
+      * reseted to simulate infinite mouse moving. */
+    bool m_fCursorPositionReseted;
+#endif
 };
 
 #endif // !___UIMouseHandler_h___
