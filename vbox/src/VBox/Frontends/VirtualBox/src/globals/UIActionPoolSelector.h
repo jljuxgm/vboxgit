@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 73384 2018-07-27 09:40:34Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 73671 2018-08-14 18:21:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
@@ -106,6 +106,14 @@ enum UIActionIndexST
     UIActionIndexST_M_Tools_M_Global,
     UIActionIndexST_M_Tools_M_Global_S_VirtualMediaManager,
     UIActionIndexST_M_Tools_M_Global_S_HostNetworkManager,
+
+    /* Snapshot Pane actions: */
+    UIActionIndexST_M_Snapshot,
+    UIActionIndexST_M_Snapshot_S_Take,
+    UIActionIndexST_M_Snapshot_S_Delete,
+    UIActionIndexST_M_Snapshot_S_Restore,
+    UIActionIndexST_M_Snapshot_T_Properties,
+    UIActionIndexST_M_Snapshot_S_Clone,
 
     /* Maximum index: */
     UIActionIndexST_Max

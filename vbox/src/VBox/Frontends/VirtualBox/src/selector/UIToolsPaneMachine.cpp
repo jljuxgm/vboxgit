@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.cpp 72258 2018-05-18 10:18:13Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.cpp 73671 2018-08-14 18:21:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class implementation.
  */
@@ -130,7 +130,7 @@ void UIToolsPaneMachine::openTool(ToolTypeMachine enmType)
             case ToolTypeMachine_Snapshots:
             {
                 /* Create Snapshots pane: */
-                m_pPaneSnapshots = new UISnapshotPane;
+                m_pPaneSnapshots = new UISnapshotPane(m_pActionPool);
                 AssertPtrReturnVoid(m_pPaneSnapshots);
                 {
                     /* Configure pane: */

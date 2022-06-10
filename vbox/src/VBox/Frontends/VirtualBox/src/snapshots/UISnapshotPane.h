@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UISnapshotPane.h 73671 2018-08-14 18:21:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -31,6 +31,7 @@ class QReadWriteLock;
 class QTimer;
 class QTreeWidgetItem;
 class QITreeWidgetItem;
+class UIActionPool;
 class UISnapshotDetailsWidget;
 class UISnapshotItem;
 class UISnapshotTree;
@@ -56,7 +57,7 @@ class UISnapshotPane : public QIWithRetranslateUI<QWidget>
 public:
 
     /** Constructs snapshot pane passing @a pParent to the base-class. */
-    UISnapshotPane(QWidget *pParent = 0);
+    UISnapshotPane(UIActionPool *pActionPool, QWidget *pParent = 0);
     /** Destructs snapshot pane. */
     virtual ~UISnapshotPane() /* override */;
 
@@ -194,6 +195,8 @@ private:
 
     /** @name General variables.
       * @{ */
+        /** Holds the action-pool reference. */
+        UIActionPool  *m_pActionPool;
         /** Holds the COM machine object. */
         CMachine       m_comMachine;
         /** Holds the machine object ID. */
@@ -220,16 +223,6 @@ private:
       * @{ */
         /** Holds the toolbar instance. */
         UIToolBar *m_pToolBar;
-        /** Holds the Take Snapshot action instance. */
-        QAction   *m_pActionTakeSnapshot;
-        /** Holds the Delete Snapshot action instance. */
-        QAction   *m_pActionDeleteSnapshot;
-        /** Holds the Restore Snapshot action instance. */
-        QAction   *m_pActionRestoreSnapshot;
-        /** Holds the Show Snapshot Details action instance. */
-        QAction   *m_pActionShowSnapshotDetails;
-        /** Holds the Clone Snapshot action instance. */
-        QAction   *m_pActionCloneSnapshot;
 
         /** Holds the snapshot tree instance. */
         UISnapshotTree *m_pSnapshotTree;
