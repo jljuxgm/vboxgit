@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 76724 2019-01-09 09:38:28Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 76725 2019-01-09 09:51:30Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -823,10 +823,10 @@ static DECLCALLBACK(void) usbProxyLinuxClose(PUSBPROXYDEV pProxyDev)
 
 
 /** @interface_method_impl{USBPROXYBACK,pfnReset} */
-static DECLCALLBACK(int) usbProxyLinuxReset(PUSBPROXYDEV pProxyDev, bool fRootHubReset)
+static DECLCALLBACK(int) usbProxyLinuxReset(PUSBPROXYDEV pProxyDev, bool fResetOnLinux)
 {
     PUSBPROXYDEVLNX pDevLnx = USBPROXYDEV_2_DATA(pProxyDev, PUSBPROXYDEVLNX);
-    RT_NOREF(fRootHubReset);
+    RT_NOREF(fResetOnLinux);
     Assert(!pProxyDev->fMaskedIfs);
     LogFlow(("usbProxyLinuxReset: pProxyDev=%s\n", usbProxyGetName(pProxyDev)));
 
