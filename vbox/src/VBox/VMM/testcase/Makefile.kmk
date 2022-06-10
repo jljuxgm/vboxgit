@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74583 2018-10-02 14:53:36Z vboxsync $
+# $Id: Makefile.kmk 74587 2018-10-02 19:53:34Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -407,7 +407,7 @@ ifdef VBOX_WITH_RAW_MODE
 endif # VBOX_WITH_RAW_MODE
 
 
-if defined(VBOX_ONLY_EXTPACKS_USE_IMPLIBS)
+if !defined(VBOX_ONLY_EXTPACKS_USE_IMPLIBS)
  #
  # Special NEM host testcase.
  #
