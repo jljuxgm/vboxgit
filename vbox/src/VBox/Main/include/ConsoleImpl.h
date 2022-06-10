@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 75251 2018-11-05 17:55:29Z vboxsync $ */
+/* $Id: ConsoleImpl.h 75287 2018-11-06 14:10:14Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -141,7 +141,10 @@ public:
     AudioVRDE *i_getAudioVRDE() const { return mAudioVRDE; }
 #endif
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
-    int i_videoRecLoad(settings::CaptureSettings &Settings);
+    int i_videoRecCreate(void);
+    void i_videoRecDestroy(void);
+    int i_videoRecEnable(BOOL fEnable, util::AutoWriteLock *pAutoLock);
+    int i_videoRecGetSettings(settings::CaptureSettings &Settings);
     int i_videoRecStart(void);
     int i_videoRecStop(void);
     AudioVideoRec *i_videoRecGetAudioDrv(void) const { return Capture.mAudioVideoRec; }
@@ -206,10 +209,6 @@ public:
     EventSource *i_getEventSource() { return mEventSource; }
 #ifdef VBOX_WITH_USB_CARDREADER
     UsbCardReader *i_getUsbCardReader() { return mUsbCardReader; }
-#endif
-
-#ifdef VBOX_WITH_VIDEOREC
-    int i_videoCaptureEnable(BOOL fEnable, util::AutoWriteLock *pAutoLock);
 #endif
 
     int i_VRDPClientLogon(uint32_t u32ClientId, const char *pszUser, const char *pszPassword, const char *pszDomain);
