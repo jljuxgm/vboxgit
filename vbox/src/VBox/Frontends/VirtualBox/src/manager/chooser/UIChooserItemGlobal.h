@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 77026 2019-01-28 18:14:00Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 77042 2019-01-30 12:51:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -194,6 +194,8 @@ private:
       * @{ */
         /** Prepares all. */
         void prepare();
+        /** Cleanups all. */
+        void cleanup();
     /** @} */
 
     /** @name Item stuff.
@@ -230,6 +232,9 @@ private:
 
     /** @name Item stuff.
       * @{ */
+        /** Holds initial item position. */
+        const int  m_iPosition;
+
         /** Holds item minimum default lightness. */
         int  m_iDefaultLightnessMin;
         /** Holds item maximum default lightness. */
