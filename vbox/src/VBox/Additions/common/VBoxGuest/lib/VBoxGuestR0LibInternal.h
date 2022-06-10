@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInternal.h 72627 2018-06-20 13:53:28Z vboxsync $ */
+/* $Id: VBoxGuestR0LibInternal.h 75547 2018-11-18 04:50:34Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -105,14 +105,6 @@ struct _VBGLPHYSHEAPBLOCK;
 typedef struct _VBGLPHYSHEAPBLOCK VBGLPHYSHEAPBLOCK;
 struct _VBGLPHYSHEAPCHUNK;
 typedef struct _VBGLPHYSHEAPCHUNK VBGLPHYSHEAPCHUNK;
-
-#ifndef VBGL_VBOXGUEST
-struct VBGLHGCMHANDLEDATA
-{
-    uint32_t fAllocated;
-    VBGLIDCHANDLE IdcHandle;
-};
-#endif
 
 enum VbglLibStatus
 {

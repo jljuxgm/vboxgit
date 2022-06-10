@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibHGCM.cpp 72627 2018-06-20 13:53:28Z vboxsync $ */
+/* $Id: VBoxGuestR0LibHGCM.cpp 75547 2018-11-18 04:50:34Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager, ring-0 client drivers.
  *
@@ -228,5 +228,12 @@ DECLR0VBGL(int) VbglR0HGCMCallUserDataRaw(VBGLHGCMHANDLE handle, PVBGLIOCHGCMCAL
                           sizeof(VBGLIOCHGCMCALL) + pData->cParms * sizeof(VBGLIOCHGCMCALL)));
 
     return VbglR0IdcCallRaw(&handle->IdcHandle, VBGL_IOCTL_HGCM_CALL_WITH_USER_DATA(cbData), &pData->Hdr, cbData);
+}
+
+
+DECLR0VBGL(int) VbglR0HGCMFastCall(VBGLHGCMHANDLE hHandle, PVBGLIOCIDCHGCMFASTCALL pCallReq, uint32_t cbCallReq)
+{
+    /* pCallReq->Hdr.rc and pCallReq->HgcmCallReq.header.header.rc; are not used by this IDC. */
+    return VbglR0IdcCallRaw(&hHandle->IdcHandle, VBGL_IOCTL_IDC_HGCM_FAST_CALL, &pCallReq->Hdr, cbCallReq);
 }
 
