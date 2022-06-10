@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 75993 2018-12-05 21:38:00Z vboxsync $ */
+/* $Id: vbsf.cpp 76143 2018-12-10 21:24:46Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -29,6 +29,7 @@
 #include "vbsf.h"
 #include "shflhandle.h"
 
+#include <VBox/AssertGuest.h>
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
@@ -1578,6 +1579,29 @@ static int vbsfSetFileInfo(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLHANDLE Ha
             AssertFailed();
     }
 
+    return rc;
+}
+
+
+/**
+ * Handles SHFL_FN_SET_FILE_SIZE.
+ */
+int vbsfSetFileSize(SHFLCLIENTDATA *pClient, SHFLROOT idRoot, SHFLHANDLE hHandle, uint64_t cbNewSize)
+{
+    /*
+     * Resolve handle and validate write access.
+     */
+    SHFLFILEHANDLE *pHandle = vbsfQueryFileHandle(pClient, hHandle);
+    ASSERT_GUEST_RETURN(pHandle, VERR_INVALID_HANDLE);
+
+    int rc = vbsfCheckHandleAccess(pClient, idRoot, pHandle, VBSF_CHECK_ACCESS_WRITE);
+    if (RT_SUCCESS(rc))
+    {
+        /*
+         * Execute the request.
+         */
+        rc = RTFileSetSize(pHandle->file.Handle, cbNewSize);
+    }
     return rc;
 }
 
