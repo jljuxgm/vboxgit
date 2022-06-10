@@ -1,4 +1,4 @@
-/* $Id: direnum-win.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: direnum-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
 /** @file
  * IPRT - Directory Enumeration, Windows.
  */
@@ -81,9 +81,8 @@ int rtDirNativeOpen(PRTDIRINTERNAL pDir, char *pszPathBuf, uintptr_t hRelativeDi
     /*
      * Attempt opening the search.
      */
-    int rc = VINF_SUCCESS;
     PRTUTF16 pwszName;
-    rc = RTStrToUtf16(pszPathBuf, &pwszName);
+    int rc = RTPathWinFromUtf8(pwszPathBuf, &pwszName, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
         pDir->hDir = FindFirstFileW((LPCWSTR)pwszName, &pDir->Data);
@@ -99,7 +98,7 @@ int rtDirNativeOpen(PRTDIRINTERNAL pDir, char *pszPathBuf, uintptr_t hRelativeDi
             else
                 rc = RTErrConvertFromWin32(GetLastError());
         }
-        RTUtf16Free(pwszName);
+        RTPathWinFree(pwszName);
     }
 
     return rc;

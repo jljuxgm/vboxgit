@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 74458 2018-09-25 13:50:18Z vboxsync $ */
+/* $Id: ldrNative-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -68,6 +68,7 @@ int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, uint32_t fFlag
     /*
      * Convert to UTF-16 and make sure it got a .DLL suffix.
      */
+    /** @todo Implement long path support for native DLL loading on windows. @bugref{9248} */
     int rc;
     RTUTF16 *pwszNative = NULL;
     if (RTPathHasSuffix(pszFilename) || (fFlags & RTLDRLOAD_FLAGS_NO_SUFFIX))

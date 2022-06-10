@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: localipc-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -365,7 +365,8 @@ static int rtLocalIpcWinValidateName(const char *pszName, size_t *pcwcFullName, 
  * Constructs the full pipe name as UTF-16.
  *
  * @returns IPRT status code.
- * @param   pszName         The user supplied name.
+ * @param   pszName         The user supplied name.  ASSUMES reasonable length
+ *                          for now, so no long path prefixing needed.
  * @param   pwszFullName    The output buffer.
  * @param   cwcFullName     The output buffer size excluding the terminator.
  * @param   fNative         Whether the user supplied name is a native or

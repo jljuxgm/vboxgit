@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: dir-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
 /** @file
  * IPRT - Directory, Windows.
  */
@@ -57,7 +57,7 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode, uint32_t fCreate)
          * Convert to UTF-16.
          */
         PRTUTF16 pwszString;
-        rc = RTStrToUtf16(pszPath, &pwszString);
+        rc = RTPathWinFromUtf8(&pwszString, pszPath, 0 /*fFlags*/);
         AssertRC(rc);
         if (RT_SUCCESS(rc))
         {
@@ -88,7 +88,7 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode, uint32_t fCreate)
                     rc = RTErrConvertFromWin32(GetLastError());
             }
 
-            RTUtf16Free(pwszString);
+            RTPathWinFree(pwszString);
         }
     }
     else
@@ -108,7 +108,7 @@ RTDECL(int) RTDirRemove(const char *pszPath)
      * Convert to UTF-16.
      */
     PRTUTF16 pwszString;
-    int rc = RTStrToUtf16(pszPath, &pwszString);
+    int rc = RTPathWinFromUtf8(&pwszString, pszPath, 0 /*fFlags*/);
     AssertRC(rc);
     if (RT_SUCCESS(rc))
     {
@@ -120,7 +120,7 @@ RTDECL(int) RTDirRemove(const char *pszPath)
         else
             rc = RTErrConvertFromWin32(GetLastError());
 
-        RTUtf16Free(pwszString);
+        RTPathWinFree(pwszString);
     }
 
     LogFlow(("RTDirRemove(%p:{%s}): returns %Rrc\n", pszPath, pszPath, rc));

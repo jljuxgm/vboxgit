@@ -1,4 +1,4 @@
-/* $Id: fs-win.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: fs-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
 /** @file
  * IPRT - File System, Win32.
  */
@@ -280,7 +280,7 @@ RTR3DECL(int) RTFsQuerySerial(const char *pszFsPath, uint32_t *pu32Serial)
              pszFsPath, Err, rc));
     }
 
-    RTUtf16Free(pwszFsRoot);
+    rtFsFreeRoot(pwszFsRoot);
     return rc;
 }
 
@@ -332,7 +332,7 @@ RTR3DECL(int) RTFsQueryProperties(const char *pszFsPath, PRTFSPROPERTIES pProper
              pszFsPath, Err, rc));
     }
 
-    RTUtf16Free(pwszFsRoot);
+    rtFsFreeRoot(pwszFsRoot);
     return rc;
 }
 
@@ -378,7 +378,7 @@ RTR3DECL(int) RTFsQueryType(const char *pszFsPath, PRTFSTYPE penmType)
      * Convert the path and try open it.
      */
     PRTUTF16 pwszFsPath;
-    int rc = RTStrToUtf16(pszFsPath, &pwszFsPath);
+    int rc = RTPathWinFromUtf8(&pwszFsPath, pszFsPath, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
     {
         HANDLE hFile = CreateFileW(pwszFsPath,
@@ -421,7 +421,7 @@ RTR3DECL(int) RTFsQueryType(const char *pszFsPath, PRTFSTYPE penmType)
         }
         else
             rc = RTErrConvertFromWin32(GetLastError());
-        RTUtf16Free(pwszFsPath);
+        RTPathWinFree(pwszFsPath);
     }
     return rc;
 }
