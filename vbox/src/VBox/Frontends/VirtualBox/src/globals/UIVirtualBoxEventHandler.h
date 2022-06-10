@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.h 73385 2018-07-27 10:11:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
