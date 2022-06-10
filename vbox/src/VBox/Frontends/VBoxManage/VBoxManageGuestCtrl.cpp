@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 75846 2018-11-30 12:11:15Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 75847 2018-11-30 12:18:14Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1846,7 +1846,7 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
         RT_NOREF(strFilter);
         if (strFilter.isNotEmpty())
             rcExit = RTMsgErrorExitFailure("Skipping '%s/%s' because wildcard expansion isn't implemented yet\n",
-                                           strSrc.c_str(),  strFilter.c_src());
+                                           strSrc.c_str(),  strFilter.c_str());
         else if (fHostToGuest)
         {
             /*
