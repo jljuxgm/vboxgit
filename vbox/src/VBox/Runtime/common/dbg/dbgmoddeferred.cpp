@@ -1,4 +1,4 @@
-/* $Id: dbgmoddeferred.cpp 73375 2018-07-27 07:59:25Z vboxsync $ */
+/* $Id: dbgmoddeferred.cpp 73401 2018-07-31 08:28:41Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Deferred Loading Stub.
  */
@@ -56,6 +56,7 @@ static void rtDbgModDeferredReleaseInstanceData(PRTDBGMODDEFERRED pThis)
     {
         RTDbgCfgRelease(pThis->hDbgCfg);
         pThis->hDbgCfg = NIL_RTDBGCFG;
+        pThis->uMagic = UINT32_C(0xdeadf00d);
         RTMemFree(pThis);
     }
 }
@@ -639,6 +640,7 @@ DECLHIDDEN(int) rtDbgModDeferredCreate(PRTDBGMODINT pDbgMod, PFNRTDBGMODDEFERRED
 
     pDeferred->cbImage     = cbImage;
     pDeferred->cRefs       = 1 + (pDbgMod->pImgVt == NULL);
+    pDeferred->uMagic      = UINT32_C(0xbeef0001);
     if (hDbgCfg != NIL_RTDBGCFG)
         RTDbgCfgRetain(hDbgCfg);
     pDeferred->hDbgCfg     = hDbgCfg;
