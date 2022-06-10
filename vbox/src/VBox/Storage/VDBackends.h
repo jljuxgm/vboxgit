@@ -1,4 +1,4 @@
-/* $Id: VDBackends.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VDBackends.h 76530 2018-12-30 06:00:13Z vboxsync $ */
 /** @file
  * VD - builtin backends.
  */
@@ -18,8 +18,12 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+
 #ifndef ___VDBackends_h
 #define ___VDBackends_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vd-plugin.h>
 

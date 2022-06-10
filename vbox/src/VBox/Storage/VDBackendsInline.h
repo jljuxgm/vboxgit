@@ -1,4 +1,4 @@
-/* $Id: VDBackendsInline.h 67463 2017-06-19 10:05:52Z vboxsync $ */
+/* $Id: VDBackendsInline.h 76530 2018-12-30 06:00:13Z vboxsync $ */
 /** @file
  * VD - backends inline helpers.
  */
@@ -18,8 +18,12 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+
 #ifndef ___VDBackendsInline_h
 #define ___VDBackendsInline_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 

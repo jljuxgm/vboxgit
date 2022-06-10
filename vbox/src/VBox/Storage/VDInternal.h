@@ -1,4 +1,4 @@
-/* $Id: VDInternal.h 75349 2018-11-09 10:36:54Z vboxsync $ */
+/* $Id: VDInternal.h 76530 2018-12-30 06:00:13Z vboxsync $ */
 /** @file
  * VD - Virtual Disk container implementation, internal header file.
  */
@@ -18,8 +18,12 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+
 #ifndef ___VDInternal_h
 #define ___VDInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 #include <VBox/vd.h>
 #include <VBox/vd-plugin.h>
 

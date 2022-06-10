@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VDICore.h 76530 2018-12-30 06:00:13Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -16,6 +16,10 @@
  */
 
 #ifndef ___VDICore_h___
+#define ___VDICore_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 /*******************************************************************************
