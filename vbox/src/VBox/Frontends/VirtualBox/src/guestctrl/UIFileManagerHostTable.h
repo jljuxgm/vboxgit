@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.h 76297 2018-12-19 16:32:48Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.h 76300 2018-12-19 19:17:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class declaration.
  */
@@ -36,7 +36,7 @@ public:
 
 protected:
 
-    FileObjectType  fileType(const QFileInfo &fsInfo);
+    KFsObjType  fileType(const QFileInfo &fsInfo);
     void            retranslateUi() /* override */;
     virtual void    readDirectory(const QString& strPath, UIFileTableItem *parent, bool isStartDir = false) /* override */;
     virtual void    deleteByItem(UIFileTableItem *item) /* override */;

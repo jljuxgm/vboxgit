@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 76177 2018-12-12 13:38:57Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.h 76300 2018-12-19 19:17:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -72,8 +72,8 @@ protected:
 
 private:
 
-    FileObjectType  fileType(const CFsObjInfo &fsInfo);
-    FileObjectType  fileType(const CGuestFsObjInfo &fsInfo);
+    KFsObjType  fileType(const CFsObjInfo &fsInfo);
+    KFsObjType  fileType(const CGuestFsObjInfo &fsInfo);
 
     void prepareActionConnections();
     bool checkGuestSession();

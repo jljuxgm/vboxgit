@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 76297 2018-12-19 16:32:48Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 76300 2018-12-19 19:17:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -275,12 +275,12 @@ void UIFileManagerHostTable::deleteByPath(const QStringList &pathList)
     foreach (const QString &strPath, pathList)
     {
         bool deleteSuccess = true;
-        FileObjectType eType = fileType(QFileInfo(strPath));
-        if (eType == FileObjectType_File || eType == FileObjectType_SymLink)
+        KFsObjType eType = fileType(QFileInfo(strPath));
+        if (eType == KFsObjType_File || eType == KFsObjType_Symlink)
         {
             deleteSuccess = QDir().remove(strPath);
         }
-        else if (eType == FileObjectType_Directory)
+        else if (eType == KFsObjType_Directory)
         {
             QDir itemToDelete(strPath);
             itemToDelete.setFilter(QDir::NoDotAndDotDot);
@@ -329,20 +329,20 @@ bool UIFileManagerHostTable::createDirectory(const QString &path, const QString 
     return true;
 }
 
-FileObjectType UIFileManagerHostTable::fileType(const QFileInfo &fsInfo)
+KFsObjType UIFileManagerHostTable::fileType(const QFileInfo &fsInfo)
 {
     if (!fsInfo.exists())
-        return FileObjectType_Unknown;
+        return KFsObjType_Unknown;
     /* first check if it is symlink becacuse for Qt
        being smylin and directory/file is not mutually exclusive: */
     if (fsInfo.isSymLink())
-        return FileObjectType_SymLink;
+        return KFsObjType_Symlink;
     else if (fsInfo.isFile())
-        return FileObjectType_File;
+        return KFsObjType_File;
     else if (fsInfo.isDir())
-        return FileObjectType_Directory;
+        return KFsObjType_Directory;
 
-    return FileObjectType_Other;
+    return KFsObjType_Unknown;
 }
 
 QString UIFileManagerHostTable::fsObjectPropertyString()
