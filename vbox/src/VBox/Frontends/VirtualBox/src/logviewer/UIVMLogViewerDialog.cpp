@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 72701 2018-06-27 14:03:43Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 72713 2018-06-28 09:34:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -57,14 +57,7 @@ void UIVMLogViewerDialogFactory::create(QIManagerDialog *&pDialog, QWidget *pCen
 UIVMLogViewerDialog::UIVMLogViewerDialog(QWidget *pCenterWidget, const CMachine &machine)
     : QIWithRetranslateUI<QIManagerDialog>(pCenterWidget)
     , m_comMachine(machine)
-    , pWidget(0)
 {
-}
-
-UIVMLogViewerDialog::~UIVMLogViewerDialog()
-{
-    if (pWidget)
-        pWidget->setBeingClosed(true);
 }
 
 void UIVMLogViewerDialog::retranslateUi()
@@ -80,7 +73,7 @@ void UIVMLogViewerDialog::retranslateUi()
 void UIVMLogViewerDialog::configureCentralWidget()
 {
     /* Create widget: */
-    pWidget = new UIVMLogViewerWidget(EmbedTo_Dialog, this, m_comMachine);
+    UIVMLogViewerWidget *pWidget = new UIVMLogViewerWidget(EmbedTo_Dialog, this, m_comMachine);
     if (pWidget)
     {
         /* Configure widget: */
@@ -164,4 +157,3 @@ void UIVMLogViewerDialog::sltSetCloseButtonShortCut(QKeySequence shortCut)
     if (button(ButtonType_Close))
         button(ButtonType_Close)->setShortcut(shortCut);
 }
-
