@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 77638 2019-03-10 19:21:30Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 77654 2019-03-11 14:40:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -433,18 +433,30 @@ void UIChooserItemGroup::removeItem(UIChooserItem *pItem)
         {
             AssertMsg(m_globalItems.contains(pItem), ("Global-item was not found!"));
             m_globalItems.removeAt(m_globalItems.indexOf(pItem));
+            if (pItem->isFavorite())
+                m_pLayoutFavorite->removeItem(pItem);
+            else
+                m_pLayoutGlobal->removeItem(pItem);
             break;
         }
         case UIChooserItemType_Group:
         {
             AssertMsg(m_groupItems.contains(pItem), ("Group-item was not found!"));
             m_groupItems.removeAt(m_groupItems.indexOf(pItem));
+            if (pItem->isFavorite())
+                m_pLayoutFavorite->removeItem(pItem);
+            else
+                m_pLayoutGroup->removeItem(pItem);
             break;
         }
         case UIChooserItemType_Machine:
         {
             AssertMsg(m_machineItems.contains(pItem), ("Machine-item was not found!"));
             m_machineItems.removeAt(m_machineItems.indexOf(pItem));
+            if (pItem->isFavorite())
+                m_pLayoutFavorite->removeItem(pItem);
+            else
+                m_pLayoutMachine->removeItem(pItem);
             break;
         }
         default:
@@ -536,12 +548,12 @@ void UIChooserItemGroup::sortItems()
 
 void UIChooserItemGroup::updateGeometry()
 {
-    /* Call to base-class: */
-    UIChooserItem::updateGeometry();
-
     /* Update/activate children layout: */
     m_pLayout->updateGeometry();
     m_pLayout->activate();
+
+    /* Call to base-class: */
+    UIChooserItem::updateGeometry();
 }
 
 void UIChooserItemGroup::updateLayout()
