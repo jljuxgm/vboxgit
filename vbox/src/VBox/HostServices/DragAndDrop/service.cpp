@@ -1,4 +1,4 @@
-/* $Id: service.cpp 74213 2018-09-12 10:04:12Z vboxsync $ */
+/* $Id: service.cpp 74439 2018-09-24 12:30:47Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -34,6 +34,7 @@
 #include <map>
 
 #include <VBox/GuestHost/DragAndDrop.h>
+#include <VBox/GuestHost/DragAndDropDefs.h>
 #include <VBox/HostServices/Service.h>
 #include <VBox/HostServices/DragAndDropSvc.h>
 

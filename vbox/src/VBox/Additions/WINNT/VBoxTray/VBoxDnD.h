@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 74380 2018-09-20 10:02:42Z vboxsync $ */
+/* $Id: VBoxDnD.h 74439 2018-09-24 12:30:47Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -379,9 +379,8 @@ public: /** @todo Make protected! */
     /** List of formats for the current
      *  drag'n drop operation. */
     RTCList<RTCString>         lstFmtActive;
-    /** Flags of all current drag'n drop
-     *  actions allowed. */
-    uint32_t                   uAllActions;
+    /** List of all current drag'n drop actions allowed. */
+    VBOXDNDACTIONLIST          dndLstActionsAllowed;
     /** The startup information required
      *  for the actual DoDragDrop() call. */
     VBOXDNDSTARTUPINFO         startupInfo;
