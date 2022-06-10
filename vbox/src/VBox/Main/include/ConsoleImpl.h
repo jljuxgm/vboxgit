@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 73258 2018-07-20 09:29:47Z vboxsync $ */
+/* $Id: ConsoleImpl.h 74765 2018-10-11 11:42:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -199,6 +199,10 @@ public:
     EventSource *i_getEventSource() { return mEventSource; }
 #ifdef VBOX_WITH_USB_CARDREADER
     UsbCardReader *i_getUsbCardReader() { return mUsbCardReader; }
+#endif
+
+#ifdef VBOX_WITH_VIDEOREC
+    int i_videoCaptureEnable(BOOL fEnable, util::AutoWriteLock *pAutoLock);
 #endif
 
     int i_VRDPClientLogon(uint32_t u32ClientId, const char *pszUser, const char *pszPassword, const char *pszDomain);
