@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIDetailsGroup.cpp 75522 2018-11-16 16:19:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class implementation.
  */
@@ -196,7 +196,7 @@ void UIDetailsGroup::sltBuildStep(const QUuid &uStepId, int iStepNumber)
         m_pBuildStep = new UIPrepareStep(this, pSet, uStepId, iStepNumber + 1);
 
         /* Build set: */
-        pSet->buildSet(m_machineItems[iStepNumber], m_machineItems.size() == 1, model()->settings());
+        pSet->buildSet(m_machineItems[iStepNumber], m_machineItems.size() == 1, model()->categories());
     }
     else
     {

@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 75427 2018-11-13 16:39:09Z vboxsync $ */
+/* $Id: UIDetailsModel.h 75522 2018-11-16 16:19:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -80,8 +80,8 @@ public:
     /* API: Current-item(s) stuff: */
     void setItems(const QList<UIVirtualMachineItem*> &items);
 
-    /** Returns the details settings. */
-    const QMap<DetailsElementType, bool>& settings() const { return m_settings; }
+    /** Returns the details categories. */
+    const QMap<DetailsElementType, bool> &categories() const { return m_categories; }
 
 public slots:
 
@@ -93,7 +93,7 @@ public slots:
     void sltHandleToggleStarted();
     void sltHandleToggleFinished();
 
-    /** Handle extra-data options change. */
+    /** Handle extra-data options change for category of certain @a enmType. */
     void sltHandleExtraDataOptionsChange(DetailsElementType enmType);
 
 private slots:
@@ -128,8 +128,9 @@ private:
     QGraphicsScene *m_pScene;
     UIDetailsGroup *m_pRoot;
     UIDetailsElementAnimationCallback *m_pAnimationCallback;
-    /** Holds the details settings. */
-    QMap<DetailsElementType, bool> m_settings;
+
+    /** Holds the details categories. */
+    QMap<DetailsElementType, bool>  m_categories;
 };
 
 /* Details-element animation callback: */
