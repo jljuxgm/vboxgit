@@ -1,4 +1,4 @@
-/* $Id: path.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: path.h 76559 2019-01-01 02:55:59Z vboxsync $ */
 /** @file
  * IPRT - RTPath Internal header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___internal_path_h
-#define ___internal_path_h
+#ifndef IPRT_INCLUDED_INTERNAL_path_h
+#define IPRT_INCLUDED_INTERNAL_path_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

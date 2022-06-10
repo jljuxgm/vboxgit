@@ -1,4 +1,4 @@
-/* $Id: fs.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: fs.h 76559 2019-01-01 02:55:59Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFs header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___internal_fs_h
-#define ___internal_fs_h
+#ifndef IPRT_INCLUDED_INTERNAL_fs_h
+#define IPRT_INCLUDED_INTERNAL_fs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

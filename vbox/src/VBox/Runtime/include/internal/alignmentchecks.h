@@ -1,4 +1,4 @@
-/* $Id: alignmentchecks.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: alignmentchecks.h 76559 2019-01-01 02:55:59Z vboxsync $ */
 /** @file
  * IPRT - Internal header for hacking alignment checks on x86 and AMD64.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___internal_alignmentchecks_h
-#define ___internal_alignmentchecks_h
+#ifndef IPRT_INCLUDED_INTERNAL_alignmentchecks_h
+#define IPRT_INCLUDED_INTERNAL_alignmentchecks_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

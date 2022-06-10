@@ -1,4 +1,4 @@
-/* $Id: sched.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: sched.h 76559 2019-01-01 02:55:59Z vboxsync $ */
 /** @file
  * IPRT - Internal RTSched header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___internal_sched_h
-#define ___internal_sched_h
+#ifndef IPRT_INCLUDED_INTERNAL_sched_h
+#define IPRT_INCLUDED_INTERNAL_sched_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
