@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.h 75291 2018-11-06 15:03:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -58,8 +58,8 @@ private slots:
     void sltNetworkAdapterChange();
     /** Handles shared folder change event. */
     void sltSharedFolderChange();
-    /** Handles video capture change event. */
-    void sltVideoCaptureChange();
+    /** Handles recording change event. */
+    void sltRecordingChange();
     /** Handles CPU execution cap change event. */
     void sltCPUExecutionCapChange();
     /** Handles UISession initialized event. */

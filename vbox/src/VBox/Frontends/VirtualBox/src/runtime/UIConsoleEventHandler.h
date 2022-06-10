@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.h 75291 2018-11-06 15:03:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -59,8 +59,8 @@ signals:
     void sigMediumChange(CMediumAttachment attachment);
     /** Notifies about VRDE device state change. */
     void sigVRDEChange();
-    /** Notifies about Video Capture device state change. */
-    void sigVideoCaptureChange();
+    /** Notifies about recording state change. */
+    void sigRecordingChange();
     /** Notifies about USB controller state change. */
     void sigUSBControllerChange();
     /** Notifies about USB @a device state change to @a fAttached, holding additional @a error information. */

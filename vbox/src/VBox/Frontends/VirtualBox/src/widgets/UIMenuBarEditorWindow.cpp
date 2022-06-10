@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 75251 2018-11-05 17:55:29Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 75291 2018-11-06 15:03:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -1303,7 +1303,7 @@ void UIMenuBarEditorWidget::prepareMenuView()
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize));
         pMenu->addSeparator();
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_S_TakeScreenshot));
-        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_M_Capture_T_Start));
+        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_M_Recording_T_Start));
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_T_VRDEServer));
         pMenu->addSeparator();
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_M_MenuBar));
