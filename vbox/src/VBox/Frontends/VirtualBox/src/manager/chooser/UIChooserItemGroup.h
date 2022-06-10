@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 73600 2018-08-09 18:02:16Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 73927 2018-08-28 11:40:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -142,8 +142,8 @@ private:
     QList<UIChooserItem*> items(UIChooserItemType type = UIChooserItemType_Any) const;
     bool hasItems(UIChooserItemType type = UIChooserItemType_Any) const;
     void clearItems(UIChooserItemType type = UIChooserItemType_Any);
-    void updateAll(const QString &strId);
-    void removeAll(const QString &strId);
+    void updateAllItems(const QString &strId);
+    void removeAllItems(const QString &strId);
     UIChooserItem *searchForItem(const QString &strSearchTag, int iItemSearchFlags);
     UIChooserItem *firstMachineItem();
     void sortItems();
