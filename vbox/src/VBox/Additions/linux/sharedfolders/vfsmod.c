@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 77709 2019-03-15 01:49:43Z vboxsync $ */
+/* $Id: vfsmod.c 77731 2019-03-15 22:32:02Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -298,7 +298,10 @@ static int vbsf_init_backing_dev(struct super_block *sb, struct vbsf_super_info 
                       | BDI_CAP_EXEC_MAP    /* can be mapped for execution */
 #  endif
 #  ifdef BDI_CAP_STRICTLIMIT
+#   if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0) /* Trouble with 3.16.x/debian8.  Process stops after dirty page throttling.
+                                                       * Only tested successfully with 4.19.  Maybe skip altogether? */
                       | BDI_CAP_STRICTLIMIT;
+#   endif
 #  endif
               ;
 #  ifdef BDI_CAP_STRICTLIMIT
