@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 76626 2019-01-03 21:18:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -1159,7 +1159,10 @@ void UIFileManagerTable::optionsUpdated()
     if (pOptions)
     {
         if (m_pProxyModel)
+        {
             m_pProxyModel->setListDirectoriesOnTop(pOptions->bListDirectoriesOnTop);
+            m_pProxyModel->setShowHiddenObjects(pOptions->bShowHiddenObjects);
+        }
         if (m_pModel)
             m_pModel->setShowHumanReadableSizes(pOptions->bShowHumanReadableSizes);
     }

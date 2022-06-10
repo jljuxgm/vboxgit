@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIFileManager.cpp 76626 2019-01-03 21:18:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -107,6 +107,7 @@ UIFileManagerOptions::UIFileManagerOptions()
     : bListDirectoriesOnTop(true)
     , bAskDeleteConfirmation(false)
     , bShowHumanReadableSizes(true)
+    , bShowHiddenObjects(true)
 {
 }
 
@@ -699,8 +700,9 @@ void UIFileManager::saveOptions()
     if (pOptions)
     {
         gEDataManager->setFileManagerOptions(pOptions->bListDirectoriesOnTop,
-                                                         pOptions->bAskDeleteConfirmation,
-                                                         pOptions->bShowHumanReadableSizes);
+                                             pOptions->bAskDeleteConfirmation,
+                                             pOptions->bShowHumanReadableSizes,
+                                             pOptions->bShowHiddenObjects);
     }
 }
 
@@ -739,6 +741,7 @@ void UIFileManager::loadOptions()
         pOptions->bListDirectoriesOnTop = gEDataManager->fileManagerListDirectoriesFirst();
         pOptions->bAskDeleteConfirmation = gEDataManager->fileManagerShowDeleteConfirmation();
         pOptions->bShowHumanReadableSizes = gEDataManager->fileManagerShowHumanReadableSizes();
+        pOptions->bShowHiddenObjects = gEDataManager->fileManagerShowHiddenObjects();
     }
 }
 

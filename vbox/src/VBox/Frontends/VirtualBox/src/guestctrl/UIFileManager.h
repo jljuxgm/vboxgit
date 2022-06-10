@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIFileManager.h 76626 2019-01-03 21:18:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -72,6 +72,7 @@ public:
     bool bListDirectoriesOnTop;
     bool bAskDeleteConfirmation;
     bool bShowHumanReadableSizes;
+    bool bShowHiddenObjects;
 
 private:
 

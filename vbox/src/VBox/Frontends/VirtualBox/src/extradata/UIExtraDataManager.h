@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 76626 2019-01-03 21:18:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -653,10 +653,13 @@ public:
     /** @name File Manager options
       * @{ */
         void setFileManagerOptions(bool fListDirectoriesFirst,
-                                   bool fShowDeleteConfirmation, bool fshowHumanReadableSizes);
+                                   bool fShowDeleteConfirmation,
+                                   bool fshowHumanReadableSizes,
+                                   bool fShowHiddenObjects);
         bool fileManagerListDirectoriesFirst();
         bool fileManagerShowDeleteConfirmation();
         bool fileManagerShowHumanReadableSizes();
+        bool fileManagerShowHiddenObjects();
     /** @} */
 
     /** @name Virtual Machine: Close dialog

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 76626 2019-01-03 21:18:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4239,7 +4239,9 @@ QStringList UIExtraDataManager::fileManagerVisiblePanels()
 }
 
 void UIExtraDataManager::setFileManagerOptions(bool fListDirectoriesFirst,
-                                               bool fShowDeleteConfirmation, bool fShowHumanReadableSizes)
+                                               bool fShowDeleteConfirmation,
+                                               bool fShowHumanReadableSizes,
+                                               bool fShowHiddenObjects)
 {
     /* Serialize passed values: */
     QStringList data;
@@ -4250,7 +4252,8 @@ void UIExtraDataManager::setFileManagerOptions(bool fListDirectoriesFirst,
         data << GUI_GuestControl_FileManagerShowDeleteConfirmation;
     if (fShowHumanReadableSizes)
         data << GUI_GuestControl_FileManagerShowHumanReadableSizes;
-
+    if (fShowHiddenObjects)
+        data << GUI_GuestControl_FileManagerShowHiddenObjects;
     /* Re-cache corresponding extra-data: */
     setExtraDataStringList(GUI_GuestControl_FileManagerOptions, data);
 }
@@ -4283,6 +4286,17 @@ bool UIExtraDataManager::fileManagerShowHumanReadableSizes()
     for (int i = 0; i < data.size(); ++i)
     {
         if (data[i] == GUI_GuestControl_FileManagerShowHumanReadableSizes)
+            return true;
+    }
+    return false;
+}
+
+bool UIExtraDataManager::fileManagerShowHiddenObjects()
+{
+    const QStringList data = extraDataStringList(GUI_GuestControl_FileManagerOptions);
+    for (int i = 0; i < data.size(); ++i)
+    {
+        if (data[i] == GUI_GuestControl_FileManagerShowHiddenObjects)
             return true;
     }
     return false;

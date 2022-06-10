@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 76621 2019-01-03 14:40:48Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 76626 2019-01-03 21:18:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -161,6 +161,7 @@ UIFileManagerHostTable::UIFileManagerHostTable(UIActionPool *pActionPool, QWidge
             item->setTargetPath(fileInfo.symLinkTarget());
             item->setIsSymLinkToADirectory(QFileInfo(fileInfo.symLinkTarget()).isDir());
         }
+        item->setIsHidden(fileInfo.isHidden());
         fileObjects.insert(fileInfo.fileName(), item);
         item->setIsOpened(false);
     }

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerOptionsPanel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIFileManagerOptionsPanel.h 76626 2019-01-03 21:18:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -63,12 +63,14 @@ private slots:
     void sltListDirectoryCheckBoxToogled(bool bChecked);
     void sltDeleteConfirmationCheckBoxToogled(bool bChecked);
     void sltHumanReabableSizesCheckBoxToogled(bool bChecked);
+    void sltShowHiddenObjectsCheckBoxToggled(bool bChecked);
 
 private:
 
     QCheckBox  *m_pListDirectoriesOnTopCheckBox;
     QCheckBox  *m_pDeleteConfirmationCheckBox;
     QCheckBox  *m_pHumanReabableSizesCheckBox;
+    QCheckBox  *m_pShowHiddenObjectsCheckBox;
     UIFileManagerOptions *m_pFileManagerOptions;
 };
 
