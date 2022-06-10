@@ -1,4 +1,4 @@
-/* $Id: HGCM.h 75167 2018-10-29 21:03:40Z vboxsync $ */
+/* $Id: HGCM.h 75495 2018-11-15 20:53:00Z vboxsync $ */
 /** @file
  * HGCM - Host-Guest Communication Manager.
  */
@@ -38,7 +38,7 @@ int HGCMHostShutdown (void);
 
 int HGCMHostReset (void);
 
-int HGCMHostLoad (const char *pszServiceLibrary, const char *pszServiceName);
+int HGCMHostLoad (const char *pszServiceLibrary, const char *pszServiceName, PUVM pUVM);
 
 int HGCMHostRegisterServiceExtension (HGCMSVCEXTHANDLE *pHandle, const char *pszServiceName, PFNHGCMSVCEXT pfnExtension, void *pvExtension);
 void HGCMHostUnregisterServiceExtension (HGCMSVCEXTHANDLE handle);

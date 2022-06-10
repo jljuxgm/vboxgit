@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 75495 2018-11-15 20:53:00Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+# define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"
 
@@ -28,10 +29,6 @@
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include <strsafe.h>
 
-#ifdef DEBUG /** @todo r=bird: these are all default values. sigh. */
-# define LOG_ENABLED
-# define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
-#endif
 #include <VBox/log.h>
 
 

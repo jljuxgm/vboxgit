@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 75488 2018-11-15 16:12:07Z vboxsync $ */
+/* $Id: ConsoleImpl.h 75495 2018-11-15 20:53:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -734,7 +734,7 @@ private:
                         PCFGMNODE pLunL0, PCFGMNODE pInst,
                         bool fAttachDetach, bool fIgnoreConnectFailure);
     int i_configSerialPort(PCFGMNODE pInst, PortMode_T ePortMode, const char *pszPath, bool fServer);
-    static DECLCALLBACK(int) i_configGuestProperties(void *pvConsole, PUVM pUVM);
+    static DECLCALLBACK(int) i_configGuestProperties(void *pvConsole);
     static DECLCALLBACK(int) i_configGuestControl(void *pvConsole);
     static DECLCALLBACK(void) i_vmstateChangeCallback(PUVM pUVM, VMSTATE enmState, VMSTATE enmOldState, void *pvUser);
     static DECLCALLBACK(int) i_unplugCpu(Console *pThis, PUVM pUVM, VMCPUID idCpu);

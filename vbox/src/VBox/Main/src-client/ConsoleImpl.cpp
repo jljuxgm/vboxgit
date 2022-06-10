@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 75488 2018-11-15 16:12:07Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 75495 2018-11-15 20:53:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8217,7 +8217,6 @@ HRESULT Console::i_powerDown(IProgress *aProgress /*= NULL*/)
         /* Leave the lock since EMT might wait for it and will call us back as addVMCaller() */
         alock.release();
 
-        DBGFR3InfoDeregisterExternal(pUVM, "guestprops"); /* will crash in unloaded code if we guru later */
         m_pVMMDev->hgcmShutdown();
 
         alock.acquire();
