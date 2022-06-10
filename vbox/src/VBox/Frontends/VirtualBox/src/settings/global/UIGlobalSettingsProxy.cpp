@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 74451 2018-09-25 09:59:16Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 74497 2018-09-27 13:10:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -160,12 +160,23 @@ bool UIGlobalSettingsProxy::validate(QList<UIValidationMessage> &messages)
     /* Prepare message: */
     UIValidationMessage message;
 
-    /* Check for host value: */
+    /* Check for URL presence: */
     if (m_pHostEditor->text().trimmed().isEmpty())
     {
-        message.second << tr("No proxy host is currently specified.");
+        message.second << tr("No proxy URL is currently specified.");
         fPass = false;
     }
+
+    else
+
+    /* Check for URL validness: */
+    if (!QUrl(m_pHostEditor->text().trimmed()).isValid())
+    {
+        message.second << tr("Invalid proxy URL is currently specified.");
+        fPass = true;
+    }
+
+    else
 
     /* Check for password presence: */
     if (!QUrl(m_pHostEditor->text().trimmed()).password().isEmpty())
@@ -189,6 +200,14 @@ void UIGlobalSettingsProxy::retranslateUi()
 {
     /* Translate uic generated strings: */
     Ui::UIGlobalSettingsProxy::retranslateUi(this);
+
+    /* Translate proxy URL editor: */
+    m_pHostEditor->setWhatsThis(tr("Holds the proxy URL. "
+                                   "The format is: "
+                                   "<table cellspacing=0 style='white-space:pre'>"
+                                   "<tr><td>[{type}://][{userid}[:{password}]@]{server}[:{port}]</td></tr>"
+                                   "<tr><td>http://username:password@proxy.host.com:port</td></tr>"
+                                   "</table>"));
 }
 
 void UIGlobalSettingsProxy::sltHandleProxyToggle()
