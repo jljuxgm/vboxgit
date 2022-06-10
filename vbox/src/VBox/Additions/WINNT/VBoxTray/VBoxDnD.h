@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 74478 2018-09-26 13:43:47Z vboxsync $ */
+/* $Id: VBoxDnD.h 76105 2018-12-10 11:21:07Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -330,6 +330,8 @@ public:
 
     int OnCreate(void);
     void OnDestroy(void);
+
+    int Abort(void);
 
     /* Host -> Guest */
     int OnHgEnter(const RTCList<RTCString> &formats, VBOXDNDACTIONLIST dndLstActionsAllowed);
