@@ -1,4 +1,4 @@
-/* $Id: dbg.h 73460 2018-08-02 21:06:59Z vboxsync $ */
+/* $Id: dbg.h 73475 2018-08-03 12:18:05Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -273,10 +273,6 @@ typedef struct RTDBGUNWINDSTATE
     void               *pvUser;
 
 } RTDBGUNWINDSTATE;
-/** Pointer to an unwind machine state. */
-typedef struct RTDBGUNWINDSTATE *PRTDBGUNWINDSTATE;
-/** Pointer to a const unwind machine state. */
-typedef struct RTDBGUNWINDSTATE const *PCRTDBGUNWINDSTATE;
 
 
 
