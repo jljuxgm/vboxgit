@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 78155 2019-04-17 13:06:05Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -211,7 +211,7 @@ static void testSetHeadless(void)
     rc = table.pfnHostCall(NULL, VBOX_SHARED_CLIPBOARD_HOST_FN_SET_HEADLESS,
                            1, parms);
     RTTESTI_CHECK_RC_OK(rc);
-    fHeadless = vboxSvcClipboardGetHeadless();
+    fHeadless = VBoxSvcClipboardGetHeadless();
     RTTESTI_CHECK_MSG(fHeadless == false, ("fHeadless=%RTbool\n", fHeadless));
     rc = table.pfnHostCall(NULL, VBOX_SHARED_CLIPBOARD_HOST_FN_SET_HEADLESS,
                            0, parms);
@@ -227,13 +227,13 @@ static void testSetHeadless(void)
     rc = table.pfnHostCall(NULL, VBOX_SHARED_CLIPBOARD_HOST_FN_SET_HEADLESS,
                            1, parms);
     RTTESTI_CHECK_RC_OK(rc);
-    fHeadless = vboxSvcClipboardGetHeadless();
+    fHeadless = VBoxSvcClipboardGetHeadless();
     RTTESTI_CHECK_MSG(fHeadless == true, ("fHeadless=%RTbool\n", fHeadless));
     HGCMSvcSetU32(&parms[0], 99);
     rc = table.pfnHostCall(NULL, VBOX_SHARED_CLIPBOARD_HOST_FN_SET_HEADLESS,
                            1, parms);
     RTTESTI_CHECK_RC_OK(rc);
-    fHeadless = vboxSvcClipboardGetHeadless();
+    fHeadless = VBoxSvcClipboardGetHeadless();
     RTTESTI_CHECK_MSG(fHeadless == true, ("fHeadless=%RTbool\n", fHeadless));
     table.pfnUnload(NULL);
 }
