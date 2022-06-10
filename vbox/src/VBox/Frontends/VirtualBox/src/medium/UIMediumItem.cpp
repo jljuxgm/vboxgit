@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 78353 2019-04-29 17:19:02Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 78354 2019-04-29 17:32:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -176,6 +176,8 @@ bool UIMediumItem::operator<(const QTreeWidgetItem &other) const
 bool UIMediumItem::isMediumModifiable() const
 {
     if (medium().isNull())
+        return false;
+    if (m_enmDeviceType == UIMediumDeviceType_DVD || m_enmDeviceType == UIMediumDeviceType_Floppy)
         return false;
     foreach (const QUuid &uMachineId, medium().curStateMachineIds())
     {
