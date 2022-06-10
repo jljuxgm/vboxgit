@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 77366 2019-02-19 16:00:39Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 77375 2019-02-20 12:17:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -443,6 +443,10 @@ void UIChooserItemGroup::startEditing()
     if (model()->isGroupSavingInProgress())
         return;
 
+    /* Make sure item visible: */
+    AssertPtrReturnVoid(parentItem());
+    parentItem()->toGroupItem()->makeSureItemIsVisible(this);
+
     /* Assign name-editor text: */
     m_pNameEditorWidget->setText(name());
 
@@ -451,8 +455,8 @@ void UIChooserItemGroup::startEditing()
     const int iHeaderHeight = 2 * iMargin + m_minimumHeaderSize.height();
     const QSize headerSize = QSize(geometry().width(), iHeaderHeight);
     const QGraphicsView *pView = model()->scene()->views().first();
-    const QPoint viewPoint = pView->mapFromScene(geometry().topLeft().toPoint());
-    const QPoint globalPoint = pView->parentWidget()->mapToGlobal(viewPoint);
+    const QPointF viewPoint = pView->mapFromScene(mapToScene(QPointF(0, 0)));
+    const QPoint globalPoint = pView->parentWidget()->mapToGlobal(viewPoint.toPoint());
     m_pNameEditorWidget->move(globalPoint);
     m_pNameEditorWidget->resize(headerSize);
 
