@@ -1,4 +1,4 @@
-/* $Id: EBMLWriter.h 74991 2018-10-23 10:59:33Z vboxsync $ */
+/* $Id: EBMLWriter.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * EBMLWriter.h - EBML writer.
  */
@@ -15,8 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____EBMLWRITER
-#define ____EBMLWRITER
+#ifndef ____H_EBMLWRITER
+#define ____H_EBMLWRITER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/file.h>
 #include <VBox/com/string.h> /* For Utf8Str. */
@@ -134,4 +137,5 @@ private:
     void operator=(const EBMLWriter &);
 };
 
-#endif /* !____EBMLWRITER */
+#endif
+

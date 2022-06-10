@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 73036 2018-07-10 15:02:52Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_GUESTPROCESSIMPL
 #define ____H_GUESTPROCESSIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "GuestCtrlImplPrivate.h"
 #include "GuestProcessWrap.h"

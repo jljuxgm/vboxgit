@@ -1,4 +1,4 @@
-/* $Id: AutoCaller.h 75660 2018-11-22 12:20:52Z vboxsync $ */
+/* $Id: AutoCaller.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  *
  * VirtualBox object caller handling definitions
@@ -18,6 +18,9 @@
 
 #ifndef ____H_AUTOCALLER
 #define ____H_AUTOCALLER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "ObjectState.h"
 

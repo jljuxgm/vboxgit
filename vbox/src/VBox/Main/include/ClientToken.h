@@ -1,4 +1,4 @@
-/* $Id: ClientToken.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: ClientToken.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 
 /** @file
  *
@@ -19,6 +19,9 @@
 
 #ifndef ____H_CLIENTTOKEN
 #define ____H_CLIENTTOKEN
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/com/ptr.h>
 #include <VBox/com/AutoLock.h>

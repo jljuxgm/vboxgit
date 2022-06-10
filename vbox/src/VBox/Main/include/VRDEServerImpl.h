@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VRDEServerImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 
 /** @file
  *
@@ -19,6 +19,9 @@
 
 #ifndef ____H_VRDPSERVER
 #define ____H_VRDPSERVER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VRDEServerWrap.h"
 

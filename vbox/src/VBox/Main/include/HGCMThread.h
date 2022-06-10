@@ -1,4 +1,4 @@
-/* $Id: HGCMThread.h 75747 2018-11-26 18:54:55Z vboxsync $ */
+/* $Id: HGCMThread.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager worker threads header.
  */
@@ -15,8 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___HGCMThread_h
-#define ___HGCMThread_h
+#ifndef ____H_HGCMTHREAD
+#define ____H_HGCMTHREAD
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 
@@ -219,5 +222,5 @@ int hgcmMsgGet(HGCMThread *pThread, HGCMMsgCore **ppMsg);
 int hgcmMsgComplete(HGCMMsgCore *pMsg, int32_t result);
 
 
-#endif /* !___HGCMThread_h */
+#endif
 

@@ -1,4 +1,4 @@
-/* $Id: EBML_MKV.h 74988 2018-10-23 08:54:28Z vboxsync $ */
+/* $Id: EBML_MKV.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * EbmlMkvIDs.h - Matroska EBML Class IDs.
  */
@@ -14,6 +14,13 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#ifndef ____H_EBMLMKV
+#define ____H_EBMLMKV
+
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** Matroska EBML Class IDs supported by WebM.
  *
@@ -84,4 +91,6 @@ enum MkvElem
     MkvElem_CueTrack                = 0xF7,
     MkvElem_CueClusterPosition      = 0xF1
 };
+
+#endif
 

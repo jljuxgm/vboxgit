@@ -1,4 +1,4 @@
-/* $Id: vector.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vector.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * STL-inspired vector implementation in C
  * @note  functions in this file are inline to prevent warnings about
@@ -25,17 +25,21 @@
  */
 
 #ifndef MAIN_VECTOR_H
-# define MAIN_VECTOR_H
+#define MAIN_VECTOR_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <stdlib.h>
 
-/*******************************************************************************
-*   Helper macros and definitions                                              *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Helper macros and definitions                                                                                                *
+*********************************************************************************************************************************/
 
 /** The unit by which the vector capacity is increased */
 #define VECTOR_ALLOC_UNIT 16
@@ -216,9 +220,10 @@ DECLINLINE(int) vecPushBackPtr(VECTOR_PTR *pvec, unsigned uTypeHash,
     return VINF_SUCCESS;
 }
 
-/*******************************************************************************
-*   Public interface macros                                                    *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Public interface macros                                                                                                      *
+*********************************************************************************************************************************/
 
 /**
  * Initialise a vector structure.  Always succeeds.
@@ -346,4 +351,4 @@ DECLINLINE(int) vecPushBackPtr(VECTOR_PTR *pvec, unsigned uTypeHash,
          && pIterator < (type *) (pvec)->mpvaElements + (pvec)->mcElements; \
          ++pIterator)
 
-#endif /* MAIN_VECTOR_H */
+#endif /* !MAIN_VECTOR_H */

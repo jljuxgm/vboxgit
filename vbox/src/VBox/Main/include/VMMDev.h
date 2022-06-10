@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 76382 2018-12-23 00:47:17Z vboxsync $ */
+/* $Id: VMMDev.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to VMM device
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_VMMDEV
 #define ____H_VMMDEV
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VirtualBoxBase.h"
 #include <VBox/vmm/pdmdrv.h>

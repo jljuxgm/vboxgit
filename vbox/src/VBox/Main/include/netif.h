@@ -1,4 +1,4 @@
-/* $Id: netif.h 72979 2018-07-08 14:22:30Z vboxsync $ */
+/* $Id: netif.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Main - Network Interfaces.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___netif_h
 #define ___netif_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>

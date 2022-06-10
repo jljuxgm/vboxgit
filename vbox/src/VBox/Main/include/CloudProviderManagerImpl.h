@@ -1,4 +1,4 @@
-/* $Id: CloudProviderManagerImpl.h 75663 2018-11-22 14:00:59Z vboxsync $ */
+/* $Id: CloudProviderManagerImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -18,6 +18,9 @@
 
 #ifndef ____H_CLOUDPROVIDERMANAGERIMPL
 #define ____H_CLOUDPROVIDERMANAGERIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "CloudProviderManagerWrap.h"
 

@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 75891 2018-12-03 11:27:32Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_GUESTSESSIONIMPL
 #define ____H_GUESTSESSIONIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "GuestSessionWrap.h"
 #include "EventImpl.h"

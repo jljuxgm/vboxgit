@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_GUESTDNDSOURCEIMPL
 #define ____H_GUESTDNDSOURCEIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/GuestHost/DragAndDrop.h>
 #include <VBox/HostServices/DragAndDropSvc.h>

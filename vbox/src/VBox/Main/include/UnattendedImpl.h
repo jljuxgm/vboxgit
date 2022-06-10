@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 70999 2018-02-13 16:37:08Z vboxsync $ */
+/* $Id: UnattendedImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_UNATTENDED
 #define ____H_UNATTENDED
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/ostypes.h>
 #include <iprt/time.h>

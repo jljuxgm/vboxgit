@@ -1,4 +1,4 @@
-/* $Id: SerialPortImpl.h 73768 2018-08-19 19:07:19Z vboxsync $ */
+/* $Id: SerialPortImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 
 /** @file
  *
@@ -19,6 +19,9 @@
 
 #ifndef ____H_SERIALPORTIMPL
 #define ____H_SERIALPORTIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "SerialPortWrap.h"
 

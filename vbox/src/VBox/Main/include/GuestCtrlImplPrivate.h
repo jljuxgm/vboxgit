@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 76403 2018-12-23 15:19:41Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_GUESTIMPLPRIVATE
 #define ____H_GUESTIMPLPRIVATE
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "ConsoleImpl.h"
 #include "Global.h"

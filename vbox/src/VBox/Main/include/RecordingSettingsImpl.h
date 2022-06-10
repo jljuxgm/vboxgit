@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.h 75926 2018-12-03 21:52:50Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - Machine recording screen settings.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_RecordSettings
 #define ____H_RecordSettings
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "RecordingSettingsWrap.h"
 

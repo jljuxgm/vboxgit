@@ -1,4 +1,4 @@
-/* $Id: BIOSSettingsImpl.h 75139 2018-10-29 10:26:48Z vboxsync $ */
+/* $Id: BIOSSettingsImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 
 /** @file
  *
@@ -19,6 +19,9 @@
 
 #ifndef ____H_BIOSSETTINGS
 #define ____H_BIOSSETTINGS
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "BIOSSettingsWrap.h"
 

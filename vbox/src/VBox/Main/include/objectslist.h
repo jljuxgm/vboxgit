@@ -1,4 +1,4 @@
-/* $Id: objectslist.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: objectslist.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  *
  * List of COM objects
@@ -18,6 +18,9 @@
 
 #ifndef ____H_OBJECTSLIST
 #define ____H_OBJECTSLIST
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <list>
 #include <VBox/com/ptr.h>

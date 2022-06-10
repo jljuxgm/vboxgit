@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 75737 2018-11-26 15:44:41Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -18,6 +18,9 @@
 
 #ifndef ____H_GUESTDNDPRIVATE
 #define ____H_GUESTDNDPRIVATE
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/dir.h>
 #include <iprt/file.h>

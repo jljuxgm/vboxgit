@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 74431 2018-09-24 09:16:17Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 
 /** @file
  *
@@ -19,6 +19,9 @@
 
 #ifndef ____H_SYSTEMPROPERTIESIMPL
 #define ____H_SYSTEMPROPERTIESIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "MediumFormatImpl.h"
 #include "SystemPropertiesWrap.h"

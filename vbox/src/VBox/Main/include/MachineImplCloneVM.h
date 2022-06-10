@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: MachineImplCloneVM.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Definition of MachineCloneVM
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_MACHINEIMPLCLONEVM
 #define ____H_MACHINEIMPLCLONEVM
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "MachineImpl.h"
 #include "ProgressImpl.h"

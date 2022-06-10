@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 75574 2018-11-19 14:31:44Z vboxsync $ */
+/* $Id: HostImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_HOSTIMPL
 #define ____H_HOSTIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "HostWrap.h"
 

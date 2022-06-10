@@ -1,4 +1,4 @@
-/* $Id: Global.h 75817 2018-11-29 15:24:26Z vboxsync $ */
+/* $Id: Global.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_GLOBAL
 #define ____H_GLOBAL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* interface definitions */
 #include "VBox/com/VirtualBox.h"

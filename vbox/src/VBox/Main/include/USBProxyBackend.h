@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: USBProxyBackend.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend (base) class.
  */
@@ -18,6 +18,9 @@
 
 #ifndef ____H_USBPROXYBACKEND
 #define ____H_USBPROXYBACKEND
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/usb.h>
 #include <VBox/usbfilter.h>

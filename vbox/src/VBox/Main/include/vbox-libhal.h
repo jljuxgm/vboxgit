@@ -1,4 +1,4 @@
-/* $Id: vbox-libhal.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vbox-libhal.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  *
  * Module to dynamically load libhal and libdbus and load all symbols
@@ -19,6 +19,9 @@
 
 #ifndef ____H_VBOX_LIBHAL
 #define ____H_VBOX_LIBHAL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <stdint.h>
 

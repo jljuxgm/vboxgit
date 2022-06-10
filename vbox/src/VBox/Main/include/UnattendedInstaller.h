@@ -1,4 +1,4 @@
-/* $Id: UnattendedInstaller.h 71018 2018-02-14 18:42:52Z vboxsync $ */
+/* $Id: UnattendedInstaller.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * UnattendedInstaller class header
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_UNATTENDEDINSTALLER
 #define ____H_UNATTENDEDINSTALLER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "UnattendedScript.h"
 

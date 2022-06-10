@@ -1,4 +1,4 @@
-/* $Id: TextScript.h 76167 2018-12-11 17:03:05Z vboxsync $ */
+/* $Id: TextScript.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving text scripts (unattended installation, ++).
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_TEXTSCRIPT
 #define ____H_TEXTSCRIPT
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VirtualBoxBase.h"
 #include <iprt/cpp/utils.h>

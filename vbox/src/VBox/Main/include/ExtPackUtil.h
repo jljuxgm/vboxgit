@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.h 68828 2017-09-22 14:15:57Z vboxsync $ */
+/* $Id: ExtPackUtil.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_EXTPACKUTIL
 #define ____H_EXTPACKUTIL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifdef __cplusplus
 # include <iprt/cpp/ministring.h>

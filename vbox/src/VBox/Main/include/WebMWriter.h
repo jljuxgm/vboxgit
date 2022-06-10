@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 75047 2018-10-24 15:27:20Z vboxsync $ */
+/* $Id: WebMWriter.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____WEBMWRITER
 #define ____WEBMWRITER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "EBMLWriter.h"
 

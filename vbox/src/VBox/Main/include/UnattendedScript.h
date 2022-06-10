@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.h 76167 2018-12-11 17:03:05Z vboxsync $ */
+/* $Id: UnattendedScript.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_UNATTENDEDSCRIPT
 #define ____H_UNATTENDEDSCRIPT
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "TextScript.h"
 

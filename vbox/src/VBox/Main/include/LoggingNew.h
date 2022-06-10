@@ -1,4 +1,4 @@
-/* $Id: LoggingNew.h 67913 2017-07-11 20:15:52Z vboxsync $ */
+/* $Id: LoggingNew.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox COM - logging macros and function definitions, for new code.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_LOGGINGNEW
 #define ____H_LOGGINGNEW
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifdef ____H_LOGGING
 # error "You must include LoggingNew.h as the first include!"

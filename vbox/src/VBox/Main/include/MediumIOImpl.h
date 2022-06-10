@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.h 74822 2018-10-12 18:40:09Z vboxsync $ */
+/* $Id: MediumIOImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - MediumIO.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_MEDIUMIOIMPL
 #define ____H_MEDIUMIOIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "MediumIOWrap.h"
 #include "VirtualBoxBase.h"

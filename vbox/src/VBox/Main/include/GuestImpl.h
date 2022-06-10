@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 76394 2018-12-23 02:14:05Z vboxsync $ */
+/* $Id: GuestImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_GUESTIMPL
 #define ____H_GUESTIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "GuestWrap.h"
 #include "VirtualBoxBase.h"

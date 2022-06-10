@@ -1,4 +1,4 @@
-/* $Id: AudioDriver.h 70644 2018-01-19 12:20:33Z vboxsync $ */
+/* $Id: AudioDriver.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox audio base class for Main audio drivers.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_AUDIODRIVER
 #define ____H_AUDIODRIVER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/com/ptr.h>
 #include <VBox/com/string.h>

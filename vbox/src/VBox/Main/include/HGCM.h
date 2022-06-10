@@ -1,4 +1,4 @@
-/* $Id: HGCM.h 76394 2018-12-23 02:14:05Z vboxsync $ */
+/* $Id: HGCM.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * HGCM - Host-Guest Communication Manager.
  */
@@ -15,8 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___HGCM_h_
-#define ___HGCM_h_
+#ifndef ____H_HGCM
+#define ____H_HGCM
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vmm/pdmifs.h>
 
@@ -58,5 +61,5 @@ int HGCMHostLoadState(PSSMHANDLE pSSM, uint32_t uVersion);
 
 RT_C_DECLS_END
 
-#endif /* !___HGCM_h_ */
+#endif
 

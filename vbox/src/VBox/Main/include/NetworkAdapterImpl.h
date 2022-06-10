@@ -1,7 +1,5 @@
-/* $Id: NetworkAdapterImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
-
+/* $Id: NetworkAdapterImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM class implementation
  */
 
@@ -19,6 +17,9 @@
 
 #ifndef ____H_NETWORKADAPTER
 #define ____H_NETWORKADAPTER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "NetworkAdapterWrap.h"
 

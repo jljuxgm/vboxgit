@@ -1,7 +1,5 @@
-/* $Id: MediumFormatImpl.h 72900 2018-07-04 19:42:18Z vboxsync $ */
-
+/* $Id: MediumFormatImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
- *
  * MediumFormat COM class implementation
  */
 
@@ -17,8 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef MEDIUMFORMAT_IMPL_H_
-#define MEDIUMFORMAT_IMPL_H_
+#ifndef ____H_MEDIUMFORMATIMPL
+#define ____H_MEDIUMFORMATIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "MediumFormatWrap.h"
 
@@ -109,6 +110,6 @@ private:
     Data m;
 };
 
-#endif // MEDIUMFORMAT_IMPL_H_
+#endif
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

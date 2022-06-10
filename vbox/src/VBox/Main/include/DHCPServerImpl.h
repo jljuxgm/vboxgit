@@ -1,7 +1,5 @@
-/* $Id: DHCPServerImpl.h 76190 2018-12-12 16:58:55Z vboxsync $ */
-
+/* $Id: DHCPServerImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM class implementation
  */
 
@@ -17,8 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_H_DHCPSERVERIMPL
-#define ____H_H_DHCPSERVERIMPL
+#ifndef ____H_DHCPSERVERIMPL
+#define ____H_DHCPSERVERIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "DHCPServerWrap.h"
 

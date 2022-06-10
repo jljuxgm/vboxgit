@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.h 75648 2018-11-21 18:02:38Z vboxsync $ */
+/* $Id: NetworkServiceRunner.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server.
  */
@@ -14,6 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#ifndef ____H_NETWORKSERVICERUNNER
+#define ____H_NETWORKSERVICERUNNER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/err.h>
 #include <iprt/types.h>
@@ -55,3 +61,6 @@ private:
     struct Data;
     Data *m;
 };
+
+#endif
+

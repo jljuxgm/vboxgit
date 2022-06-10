@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 71998 2018-04-24 08:12:20Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_MACHINEIMPLMOVEVM
 #define ____H_MACHINEIMPLMOVEVM
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "MachineImpl.h"
 #include "ProgressImpl.h"

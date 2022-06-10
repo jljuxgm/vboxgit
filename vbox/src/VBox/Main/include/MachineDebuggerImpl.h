@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 72328 2018-05-24 19:29:45Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_MACHINEDEBUGGER
 #define ____H_MACHINEDEBUGGER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "MachineDebuggerWrap.h"
 #include <iprt/log.h>

@@ -1,4 +1,4 @@
-/* $Id: SharedFolderImpl.h 75458 2018-11-14 18:20:05Z vboxsync $ */
+/* $Id: SharedFolderImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_SHAREDFOLDERIMPL
 #define ____H_SHAREDFOLDERIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "SharedFolderWrap.h"
 #include <VBox/shflsvc.h>

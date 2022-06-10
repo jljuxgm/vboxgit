@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Declaration of USBDeviceFilter and HostUSBDeviceFilter.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_USBDEVICEFILTERIMPL
 #define ____H_USBDEVICEFILTERIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/settings.h>
 #include "Matching.h"

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 76083 2018-12-09 19:26:37Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_VIRTUALBOXSDSIMPL
 #define ____H_VIRTUALBOXSDSIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VirtualBoxBase.h"
 

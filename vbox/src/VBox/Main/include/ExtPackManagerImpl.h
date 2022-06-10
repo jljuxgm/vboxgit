@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 75663 2018-11-22 14:00:59Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_EXTPACKMANAGERIMPL
 #define ____H_EXTPACKMANAGERIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VirtualBoxBase.h"
 #include <VBox/ExtPack/ExtPack.h>

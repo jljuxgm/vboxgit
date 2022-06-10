@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 76394 2018-12-23 02:14:05Z vboxsync $ */
+/* $Id: DisplayImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_DISPLAYIMPL
 #define ____H_DISPLAYIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "SchemaDefs.h"
 

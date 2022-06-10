@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplPrivate.h 75920 2018-12-03 18:17:11Z vboxsync $ */
+/* $Id: ApplianceImplPrivate.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_APPLIANCEIMPLPRIVATE
 #define ____H_APPLIANCEIMPLPRIVATE
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 class VirtualSystemDescription;

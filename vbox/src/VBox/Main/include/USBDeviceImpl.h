@@ -1,5 +1,4 @@
-/* $Id: USBDeviceImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
-
+/* $Id: USBDeviceImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
  */
@@ -18,6 +17,9 @@
 
 #ifndef ____H_USBDEVICEIMPL
 #define ____H_USBDEVICEIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "USBDeviceWrap.h"
 

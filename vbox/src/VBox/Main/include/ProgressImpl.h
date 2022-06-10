@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 74804 2018-10-12 15:09:44Z vboxsync $ */
+/* $Id: ProgressImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -18,6 +18,9 @@
 
 #ifndef ____H_PROGRESSIMPL
 #define ____H_PROGRESSIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "ProgressWrap.h"
 #include "VirtualBoxBase.h"

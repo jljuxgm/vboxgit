@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.h 75488 2018-11-15 16:12:07Z vboxsync $ */
+/* $Id: SessionImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class definition
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_SESSIONIMPL
 #define ____H_SESSIONIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "SessionWrap.h"
 #include "ConsoleImpl.h"

@@ -1,5 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 69804 2017-11-22 12:11:32Z vboxsync $ */
-
+/* $Id: VirtualBoxClientImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
  */
@@ -18,6 +17,9 @@
 
 #ifndef ____H_VIRTUALBOXCLIENTIMPL
 #define ____H_VIRTUALBOXCLIENTIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VirtualBoxClientWrap.h"
 #include "EventImpl.h"

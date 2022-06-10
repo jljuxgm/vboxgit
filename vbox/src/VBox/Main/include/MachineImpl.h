@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 75488 2018-11-15 16:12:07Z vboxsync $ */
+/* $Id: MachineImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_MACHINEIMPL
 #define ____H_MACHINEIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "AuthLibrary.h"
 #include "VirtualBoxBase.h"

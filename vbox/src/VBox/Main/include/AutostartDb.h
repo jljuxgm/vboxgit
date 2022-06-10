@@ -1,4 +1,4 @@
-/* $Id: AutostartDb.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: AutostartDb.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * Main - Autostart database Interfaces.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___autostart_h
 #define ___autostart_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>

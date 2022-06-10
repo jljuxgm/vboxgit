@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.h 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: DrvAudioRec.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox driver interface video recording audio backend.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_DRVAUDIORECORDING
 #define ____H_DRVAUDIORECORDING
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/com/ptr.h>
 #include <VBox/settings.h>

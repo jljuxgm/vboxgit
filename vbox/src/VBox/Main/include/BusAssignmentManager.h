@@ -1,7 +1,5 @@
-/* $Id: BusAssignmentManager.h 69500 2017-10-28 15:14:05Z vboxsync $ */
-
+/* $Id: BusAssignmentManager.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
- *
  * VirtualBox bus slots assignment manager
  */
 
@@ -16,8 +14,11 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#ifndef __BusAssignmentManager_h
-#define __BusAssignmentManager_h
+#ifndef ___H_BUSASSIGNMENTMANAGER
+#define ___H_BUSASSIGNMENTMANAGER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBox/types.h"
 #include "VBox/pci.h"

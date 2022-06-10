@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 76153 2018-12-11 08:52:44Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -15,8 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_H_NATNETWORKIMPL
-#define ____H_H_NATNETWORKIMPL
+#ifndef ____H_NATNETWORKIMPL
+#define ____H_NATNETWORKIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
+
 #include "VBoxEvents.h"
 #include "NATNetworkWrap.h"
 

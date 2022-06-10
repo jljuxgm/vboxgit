@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.h 73370 2018-07-26 13:52:12Z vboxsync $ */
+/* $Id: DrvAudioVRDE.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox driver interface to VRDE backend.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_DRVAUDIOVRDE
 #define ____H_DRVAUDIOVRDE
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/com/ptr.h>
 #include <VBox/com/string.h>

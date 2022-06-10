@@ -1,4 +1,4 @@
-/* $Id: HGCMObjects.h 75541 2018-11-17 03:50:40Z vboxsync $ */
+/* $Id: HGCMObjects.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * HGCMObjects - Host-Guest Communication Manager objects header.
  */
@@ -15,8 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___HGCMOBJECTS__H
-#define ___HGCMOBJECTS__H
+#ifndef ____H_HGCMOBJECTS
+#define ____H_HGCMOBJECTS
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/assert.h>
 #include <iprt/avl.h>
@@ -122,4 +125,4 @@ uint32_t    hgcmObjQueryHandleCount();
 void        hgcmObjSetHandleCount(uint32_t u32HandleCount);
 
 
-#endif /* !___HGCMOBJECTS__H */
+#endif

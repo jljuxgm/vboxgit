@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HostHardwareLinux.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Classes for handling hardware detection under Linux.
  *
@@ -19,7 +19,10 @@
  */
 
 #ifndef ____H_HOSTHARDWARELINUX
-# define ____H_HOSTHARDWARELINUX
+#define ____H_HOSTHARDWARELINUX
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/err.h>
 #include <iprt/cpp/ministring.h>

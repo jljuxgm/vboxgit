@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 75955 2018-12-04 21:08:55Z vboxsync $ */
+/* $Id: ConsoleImpl.h 76487 2018-12-27 03:31:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -17,6 +17,9 @@
 
 #ifndef ____H_CONSOLEIMPL
 #define ____H_CONSOLEIMPL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VirtualBoxBase.h"
 #include "VBox/com/array.h"
