@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: ldrNative-win.cpp 74458 2018-09-25 13:50:18Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -70,7 +70,7 @@ int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, uint32_t fFlag
      */
     int rc;
     RTUTF16 *pwszNative = NULL;
-    if (RTPathHasSuffix(pszFilename))
+    if (RTPathHasSuffix(pszFilename) || (fFlags & RTLDRLOAD_FLAGS_NO_SUFFIX))
         rc = RTStrToUtf16(pszFilename, &pwszNative);
     else
     {
