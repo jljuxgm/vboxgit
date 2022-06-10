@@ -1,4 +1,4 @@
-/* $Id: fuzzclientcmd.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: fuzzclientcmd.cpp 77482 2019-02-27 13:17:24Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, fuzzed client command.
  */
@@ -84,7 +84,7 @@ static int rtFuzzCmdClientMainloop(PRTFUZZCMDCLIENT pThis)
         {
             void *pv = NULL;
             size_t cb = 0;
-            rc = RTFuzzInputQueryData(hFuzzInput, &pv, &cb);
+            rc = RTFuzzInputQueryBlobData(hFuzzInput, &pv, &cb);
             if (RT_SUCCESS(rc))
             {
                 char bResp = '.';
