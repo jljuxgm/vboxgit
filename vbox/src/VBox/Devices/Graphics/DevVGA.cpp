@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 74474 2018-09-26 11:55:47Z vboxsync $ */
+/* $Id: DevVGA.cpp 75715 2018-11-25 15:59:10Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2276,10 +2276,10 @@ static int vmsvga_draw_graphic(PVGASTATE pThis, bool fFullUpdate, bool fFailOnRe
 {
     RT_NOREF1(fFailOnResize);
 
-    uint32_t const cx        = pThis->svga.uWidth;
+    uint32_t const cx        = pThis->last_scr_width;
     uint32_t const cxDisplay = cx;
-    uint32_t const cy        = pThis->svga.uHeight;
-    uint32_t       cBits     = pThis->svga.uBpp;
+    uint32_t const cy        = pThis->last_scr_height;
+    uint32_t       cBits     = pThis->last_bpp;
 
     if (   cx    == VMSVGA_VAL_UNINITIALIZED
         || cx    == 0

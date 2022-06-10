@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 75514 2018-11-16 12:33:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 75715 2018-11-25 15:59:10Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -3845,8 +3845,8 @@ int vmsvga3dSetRenderTarget(PVGASTATE pThis, uint32_t cid, SVGA3dRenderTargetTyp
                  * into a depth buffer without wishing to update an actual color render target.
                  */
                 IDirect3DSurface9 *pDummyRenderTarget;
-                hr = pContext->pDevice->CreateRenderTarget(pThis->svga.uWidth,
-                                                           pThis->svga.uHeight,
+                hr = pContext->pDevice->CreateRenderTarget(4,
+                                                           4,
                                                            FOURCC_NULL,
                                                            D3DMULTISAMPLE_NONE,
                                                            0,
