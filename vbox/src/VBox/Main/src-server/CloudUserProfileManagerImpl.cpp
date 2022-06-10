@@ -1,4 +1,4 @@
-/* $Id: CloudUserProfileManagerImpl.cpp 73167 2018-07-17 07:41:21Z vboxsync $ */
+/* $Id: CloudUserProfileManagerImpl.cpp 73170 2018-07-17 09:16:00Z vboxsync $ */
 /** @file
  * ICloudUserProfileManager  COM class implementations.
  */
@@ -61,9 +61,15 @@ void CloudUserProfileManager::FinalRelease()
 
 HRESULT CloudUserProfileManager::init(VirtualBox *aParent)
 {
+    /* Enclose the state transition NotReady->InInit->Ready */
+    AutoInitSpan autoInitSpan(this);
+    AssertReturn(autoInitSpan.isOk(), E_FAIL);
+
     unconst(mParent) = aParent;
     mSupportedProviders.clear();
     mSupportedProviders.push_back(CloudProviderId_OCI);
+
+    autoInitSpan.setSucceeded();
     return S_OK;
 }
 
