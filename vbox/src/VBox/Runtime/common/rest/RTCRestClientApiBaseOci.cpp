@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBaseOci.cpp 74125 2018-09-06 16:14:13Z vboxsync $ */
+/* $Id: RTCRestClientApiBaseOci.cpp 74149 2018-09-07 18:51:37Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation, OCI specific bits.
  */
@@ -58,7 +58,7 @@ static int ociSignRequestEnsureDateOrXDate(RTHTTP hHttp)
 
     RTTIMESPEC NowSpec;
     RTTIME     Now;
-    char       szDate[RTTIME_RTC2822_LEN];
+    char       szDate[RTTIME_RFC2822_LEN];
     ssize_t cch = RTTimeToRfc2822(RTTimeExplode(&Now, RTTimeNow(&NowSpec)), szDate, sizeof(szDate), RTTIME_RFC2822_F_GMT);
     AssertRCReturn((int)cch, (int)cch);
 

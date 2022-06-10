@@ -1,4 +1,4 @@
-/* $Id: RTCRestAnyObject.cpp 74117 2018-09-06 13:30:29Z vboxsync $ */
+/* $Id: RTCRestAnyObject.cpp 74149 2018-09-07 18:51:37Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestAnyObject implementation.
  */
@@ -107,8 +107,10 @@ int RTCRestAnyObject::assignCopy(RTCRestAnyObject const &a_rThat)
             case kTypeClass_StringMap:  return assignCopy(*(RTCRestStringMap<RTCRestAnyObject> const *)a_rThat.m_pData);
 
             /* Currently unused of invalid: */
+            case kTypeClass_Date:
+            case kTypeClass_Uuid:
+            case kTypeClass_Binary:
             case kTypeClass_StringEnum:
-            case kTypeClass_BinaryString:
             case kTypeClass_Object:
             case kTypeClass_Invalid:
                 AssertFailedReturn(VERR_REST_INTERNAL_ERROR_7);
@@ -540,8 +542,10 @@ const char *RTCRestAnyObject::typeName(void) const
             case kTypeClass_StringMap:  return "RTCRestAnyObject[StringMap]";
 
             /* Currently unused of invalid: */
+            case kTypeClass_Date:
+            case kTypeClass_Uuid:
+            case kTypeClass_Binary:
             case kTypeClass_StringEnum:
-            case kTypeClass_BinaryString:
             case kTypeClass_Object:
             case kTypeClass_Invalid:
                 AssertFailed();

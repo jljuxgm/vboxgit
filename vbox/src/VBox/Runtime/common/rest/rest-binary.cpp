@@ -1,4 +1,4 @@
-/* $Id: rest-binary.cpp 74143 2018-09-07 13:32:11Z vboxsync $ */
+/* $Id: rest-binary.cpp 74149 2018-09-07 18:51:37Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestBinary and Descendants.
  */
@@ -221,7 +221,7 @@ int RTCRestBinary::fromString(RTCString const &a_rValue, const char *a_pszName, 
 
 RTCRestObjectBase::kTypeClass RTCRestBinary::typeClass(void) const
 {
-    return kTypeClass_BinaryString;
+    return kTypeClass_Binary;
 }
 
 
