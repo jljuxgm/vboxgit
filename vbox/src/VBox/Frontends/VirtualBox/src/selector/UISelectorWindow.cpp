@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 74089 2018-09-05 16:38:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -2055,7 +2055,9 @@ void UISelectorWindow::prepareWidgets()
                 {
                     /* Configure splitter: */
 #ifdef VBOX_WS_X11
-                    m_pSplitter->setHandleType(QISplitter::Native);
+                    m_pSplitter = new QISplitter(Qt::Horizontal, QISplitter::Native);
+#else
+                    m_pSplitter = new QISplitter(Qt::Horizontal, QISplitter::Flat);
 #endif
 
                     /* Create Chooser-pane: */
