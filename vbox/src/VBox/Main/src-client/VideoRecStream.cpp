@@ -1,4 +1,4 @@
-/* $Id: VideoRecStream.cpp 75254 2018-11-05 18:35:21Z vboxsync $ */
+/* $Id: VideoRecStream.cpp 75255 2018-11-05 18:43:22Z vboxsync $ */
 /** @file
  * Video recording stream code.
  */
@@ -752,11 +752,10 @@ int CaptureStream::initInternal(uint32_t uScreen, const settings::CaptureScreenS
 
     if (RT_SUCCESS(rc))
     {
-        this->pCtx      = pCtx;
-        this->fEnabled  = true;
-        this->uScreenID = uScreen;
-        this->tsStartMs = RTTimeMilliTS();
-        this->ScreenSettings  = Settings;
+        this->fEnabled       = true;
+        this->uScreenID      = uScreen;
+        this->tsStartMs      = RTTimeMilliTS();
+        this->ScreenSettings = Settings;
     }
     else
     {
