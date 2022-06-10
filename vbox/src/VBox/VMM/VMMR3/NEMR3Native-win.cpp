@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 74791 2018-10-12 10:44:17Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 74795 2018-10-12 11:24:11Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1708,7 +1708,7 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
                             && !VMCPU_FF_IS_ANY_SET(pVCpu,   (VMCPU_FF_HIGH_PRIORITY_POST_MASK | VMCPU_FF_HP_R0_PRE_HM_MASK)
                                                            & ~VMCPU_FF_RESUME_GUEST_MASK))
                         {
-                            VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_RESUME_GUEST_MASK);
+                            VMCPU_FF_CLEAR_MASK(pVCpu, VMCPU_FF_RESUME_GUEST_MASK);
                             continue;
                         }
                         rcStrict = VINF_SUCCESS;
