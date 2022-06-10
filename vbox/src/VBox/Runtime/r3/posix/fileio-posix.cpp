@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 76902 2019-01-19 14:25:38Z vboxsync $ */
+/* $Id: fileio-posix.cpp 77234 2019-02-09 18:28:44Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
@@ -515,7 +515,7 @@ RTR3DECL(int)  RTFileWrite(RTFILE hFile, const void *pvBuf, size_t cbToWrite, si
             {
                 ssize_t cbWrittenPart = write(RTFileToNative(hFile), (const char *)pvBuf + cbWritten, cbToWrite - cbWritten);
                 if (cbWrittenPart <= 0)
-                    return RTErrConvertFromErrno(errno);
+                    return cbWrittenPart < 0 ? RTErrConvertFromErrno(errno) : VERR_TRY_AGAIN;
                 cbWritten += cbWrittenPart;
             }
         }
