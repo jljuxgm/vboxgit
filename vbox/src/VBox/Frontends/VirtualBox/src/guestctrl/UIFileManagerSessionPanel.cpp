@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerSessionPanel.cpp 76950 2019-01-23 10:17:54Z vboxsync $ */
+/* $Id: UIFileManagerSessionPanel.cpp 77044 2019-01-30 14:18:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -55,8 +55,9 @@ public:
 
 protected:
 
-    void retranslateUi();
-    void keyPressEvent(QKeyEvent * pEvent);
+    void retranslateUi() /* override */;
+    void keyPressEvent(QKeyEvent * pEvent) /* override */;
+    void showEvent(QShowEvent *pEvent) /* override */;
 
 private slots:
 
@@ -184,6 +185,13 @@ void UIGuestSessionCreateWidget::keyPressEvent(QKeyEvent * pEvent)
             sigCreateSession(m_pUserNameEdit->text(), m_pPasswordEdit->text());
     }
     QWidget::keyPressEvent(pEvent);
+}
+
+void UIGuestSessionCreateWidget::showEvent(QShowEvent *pEvent)
+{
+    QIWithRetranslateUI<QWidget>::showEvent(pEvent);
+    if (m_pUserNameEdit)
+        m_pUserNameEdit->setFocus();
 }
 
 void UIGuestSessionCreateWidget::switchSessionCreateMode()
