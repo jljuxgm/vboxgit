@@ -1,4 +1,4 @@
-/* $Id: RTTimeSet-os2.cpp 75466 2018-11-14 20:19:03Z vboxsync $ */
+/* $Id: RTTimeSet-os2.cpp 75557 2018-11-18 19:46:03Z vboxsync $ */
 /** @file
  * IPRT - RTTimeSet, OS/2.
  */
@@ -72,7 +72,7 @@ RTDECL(int) RTTimeSet(PCRTTIMESPEC pTime)
            that timezones west of UTC should have a positive value.  The kernel fails
            the call if we're more than +/-780 min (13h) distant, so clamp it in
            case of bogus TZ values. */
-        DateTime.timezone   = (int16_t)(-cNsLocalDelta / RT_NS_1MIN);
+        DateTime.timezone   = (int16_t)(-cNsLocalDelta / (int64_t)RT_NS_1MIN);
         if (DateTime.timezone > 780)
             DateTime.timezone = 780;
         else if (DateTime.timezone < -780)
