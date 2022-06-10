@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 73689 2018-08-15 09:55:52Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 73695 2018-08-15 15:20:02Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -629,6 +629,7 @@ static int ossCreateStreamIn(POSSAUDIOSTREAM pStreamOSS, PPDMAUDIOSTREAMCFG pCfg
         ossReq.cbFragmentSize = s_OSSConf.fragsize;
 
         OSSAUDIOSTREAMCFG ossAcq;
+        RT_ZERO(ossAcq);
 
         rc = ossStreamOpen(s_OSSConf.devpath_in, O_RDONLY | O_NONBLOCK, &ossReq, &ossAcq, &hFile);
         if (RT_SUCCESS(rc))
