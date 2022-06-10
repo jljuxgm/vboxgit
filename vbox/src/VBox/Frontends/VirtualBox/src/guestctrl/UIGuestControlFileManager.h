@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 75610 2018-11-20 11:14:35Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 75619 2018-11-20 13:05:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -115,6 +115,7 @@ private slots:
     void sltListDirectoriesBeforeChanged();
     void sltReceieveNewFileOperation(const CProgress &comProgress);
     void sltFileOperationComplete(QUuid progressId);
+    void sltCacheHostFileObjectsForDeletion(const QUuid &moveProgessId, const QStringList &hostPathList);
 
 private:
 

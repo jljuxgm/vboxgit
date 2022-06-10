@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 75610 2018-11-20 11:14:35Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 75619 2018-11-20 13:05:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -1361,7 +1361,6 @@ QString UIGuestControlFileTable::fileTypeString(FileObjectType type)
 
 void UIGuestControlFileTable::continueWithMove(const QUuid &progressId)
 {
-    QStringList sourcePathList = m_deleteAfterCopyCache.value(progressId);
     deleteByPath(m_deleteAfterCopyCache.value(progressId, QStringList()));
 }
 

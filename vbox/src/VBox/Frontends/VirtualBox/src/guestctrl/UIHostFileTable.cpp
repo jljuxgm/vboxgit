@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 75610 2018-11-20 11:14:35Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 75619 2018-11-20 13:05:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -133,7 +133,7 @@ UIHostFileTable::UIHostFileTable(UIActionPool *pActionPool, QWidget *pParent /* 
     retranslateUi();
 }
 
-void UIHostFileTable::setDeleteAfterCopyCache(const QUuid &progressId, const QStringList &sourceObjectsList)
+void UIHostFileTable::updateDeleteAfterCopyCache(const QUuid &progressId, const QStringList &sourceObjectsList)
 {
     m_deleteAfterCopyCache[progressId] = sourceObjectsList;
 }
