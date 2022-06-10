@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 73838 2018-08-22 16:15:08Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 74841 2018-10-15 10:01:48Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -523,7 +523,9 @@ static int avRecCreateStreamOut(PDRVAUDIOVIDEOREC pThis, PAVRECSTREAM pStreamAV,
             pCfgAcq->Props.cShift      = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(pCfgAcq->Props.cBytes, pCfgAcq->Props.cChannels);
 
             /* Every Opus frame marks a period for now. Optimize this later. */
-            pCfgAcq->Backend.cfPeriod  = DrvAudioHlpMilliToFrames(pSink->Codec.Opus.msFrame, &pCfgAcq->Props); /** @todo Make this configurable. */
+            pCfgAcq->Backend.cfPeriod     = DrvAudioHlpMilliToFrames(pSink->Codec.Opus.msFrame, &pCfgAcq->Props);
+            pCfgAcq->Backend.cfBufferSize = DrvAudioHlpMilliToFrames(100 /* ms */, &pCfgAcq->Props); /** @todo Make this configurable. */
+            pCfgAcq->Backend.cfPreBuf     = pCfgAcq->Backend.cfPeriod * 2;
         }
     }
 #else
