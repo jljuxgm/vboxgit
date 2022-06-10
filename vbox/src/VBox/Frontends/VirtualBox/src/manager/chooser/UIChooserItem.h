@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIChooserItem.h 76920 2019-01-21 13:33:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -131,6 +131,8 @@ public:
 
         /** Returns a level of item. */
         int level() const;
+        /** Defines a @a iLevel of item. */
+        void setLevel(int iLevel);
 
         /** Shows item. */
         virtual void show();
@@ -332,6 +334,8 @@ private:
 
         /** Holds whether item is root. */
         bool  m_fRoot;
+        /** Holds the item level according to root. */
+        int   m_iLevel;
 
         /** Holds whether item is hovered. */
         bool                m_fHovered;

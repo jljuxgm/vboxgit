@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 76920 2019-01-21 13:33:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -197,6 +197,7 @@ UIChooserItem::UIChooserItem(UIChooserItem *pParent, bool fTemporary,
     : m_pParent(pParent)
     , m_fTemporary(fTemporary)
     , m_fRoot(!pParent)
+    , m_iLevel(-1)
     , m_fHovered(false)
     , m_pHoveringMachine(0)
     , m_pHoveringAnimationForward(0)
@@ -323,6 +324,11 @@ UIActionPool *UIChooserItem::actionPool() const
 
 int UIChooserItem::level() const
 {
+    /* Check whether it is specified manually: */
+    if (m_iLevel != -1)
+        return m_iLevel;
+
+    /* Otherwise calculate ourself: */
     int iLevel = 0;
     UIChooserItem *pParentItem = parentItem();
     while (pParentItem && !pParentItem->isRoot())
@@ -331,6 +337,11 @@ int UIChooserItem::level() const
         ++iLevel;
     }
     return iLevel;
+}
+
+void UIChooserItem::setLevel(int iLevel)
+{
+    m_iLevel = iLevel;
 }
 
 void UIChooserItem::show()
