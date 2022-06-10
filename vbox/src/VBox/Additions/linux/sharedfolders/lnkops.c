@@ -1,4 +1,4 @@
-/* $Id: lnkops.c 77859 2019-03-24 02:36:08Z vboxsync $ */
+/* $Id: lnkops.c 77873 2019-03-26 01:36:36Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, operations for symbolic links.
  */
@@ -127,6 +127,7 @@ static const char *vbsf_get_link(struct dentry *dentry, struct inode *inode, str
                 SFLOGFLOW(("vbsf_get_link: %s -> %s\n", sf_i->path->String.ach, pszTarget));
                 rc = vbsf_symlink_nls_convert(sf_g, pszTarget, PAGE_SIZE);
                 if (rc == 0) {
+                    vbsf_dentry_chain_increase_ttl(dentry);
                     set_delayed_call(done, kfree_link, pszTarget);
                     return pszTarget;
                 }
@@ -163,8 +164,10 @@ static int vbsf_readlink(struct dentry *dentry, char *buffer, int len)
             pszTarget[PAGE_SIZE - 1] = '\0';
             SFLOGFLOW(("vbsf_readlink: %s -> %*s\n", sf_i->path->String.ach, pszTarget));
             rc = vbsf_symlink_nls_convert(sf_g, pszTarget, PAGE_SIZE);
-            if (rc == 0)
+            if (rc == 0) {
+                vbsf_dentry_chain_increase_ttl(dentry);
                 rc = vfs_readlink(dentry, buffer, len, pszTarget);
+            }
         } else {
             SFLOGFLOW(("vbsf_readlink: VbglR0SfHostReqReadLinkContigSimple failed on '%s': %Rrc\n", sf_i->path->String.ach, rc));
             rc = vbsf_convert_symlink_error(rc);
@@ -208,6 +211,7 @@ static int         vbsf_follow_link(struct dentry *dentry, struct nameidata *nd)
                  * call vfs_follow_link() which will try continue the walking
                  * using the buffer we pass it here.
                  */
+                vbsf_dentry_chain_increase_ttl(dentry);
 # if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
                 *cookie = pszTarget;
                 return pszTarget;
