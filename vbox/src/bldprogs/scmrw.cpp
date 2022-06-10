@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 76460 2018-12-25 04:19:10Z vboxsync $ */
+/* $Id: scmrw.cpp 76478 2018-12-25 17:57:30Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2698,7 +2698,8 @@ bool rewrite_Fix_Err_H(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTREAM pOut, PCSC
     /*
      * Second pass: Change err.h to errcore.h if we detected a need for change.
      */
-    if (iIncludeLevel <= iUsageLevel)
+    if (   iIncludeLevel <= iUsageLevel
+        || iIncludeLevel <= 1 /* we cannot safely eliminate errcore.h includes atm. */)
         return false;
 
     unsigned cChanges = 0;
