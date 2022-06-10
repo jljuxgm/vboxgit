@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 74144 2018-09-07 14:16:16Z vboxsync $ */
+/* $Id: draganddrop.cpp 74226 2018-09-12 15:42:18Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -286,8 +286,8 @@ private:
 
 /* Some xHelpers convenience defines. */
 #define gX11 xHelpers::getInstance()
-#define xAtom(xa) gX11->xAtom((xa))
-#define xAtomToString(xa) gX11->xAtomToString((xa))
+#define xAtom(xa) xHelpers::getInstance()->xAtom((xa))
+#define xAtomToString(xa) xHelpers::getInstance()->xAtomToString((xa))
 
 /*******************************************************************************
  *
