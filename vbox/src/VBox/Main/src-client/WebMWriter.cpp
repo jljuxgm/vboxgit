@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.cpp 74911 2018-10-18 09:44:09Z vboxsync $ */
+/* $Id: WebMWriter.cpp 74912 2018-10-18 10:01:14Z vboxsync $ */
 /** @file
  * WebMWriter.cpp - WebM container handling.
  */
@@ -161,9 +161,18 @@ int WebMWriter::Close(void)
     Assert(CurSeg.queueBlocks.Map.size() == 0);
     Assert(CurSeg.mapTracks.size() == 0);
 
+    Utf8Str strFileName = getFileName().c_str();
+
     close();
 
-    return VINF_SUCCESS;
+    int rc = VINF_SUCCESS;
+
+    /* If no clusters (= data) was written, delete the file again. */
+    if (!CurSeg.cClusters)
+        rc = RTFileDelete(strFileName.c_str());
+
+    LogFlowFuncLeaveRC(rc);
+    return rc;
 }
 
 /**
