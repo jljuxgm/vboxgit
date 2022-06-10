@@ -1,10 +1,10 @@
-/* $Id: UIScaleFactorEditor.cpp 75370 2018-11-09 16:41:58Z vboxsync $ */
+/* $Id: UIScaleFactorEditor.cpp 75372 2018-11-09 17:52:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */
 
 /*
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
