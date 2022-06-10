@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 74119 2018-09-06 14:42:38Z vboxsync $ */
+/* $Id: http-curl.cpp 74120 2018-09-06 14:43:15Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -3346,7 +3346,7 @@ RTR3DECL(int) RTHttpPerform(RTHTTP hHttp, const char *pszUrl, RTHTTPMETHOD enmMe
     {
         Log4(("RTHttpPerform: headers:\n"));
         for (struct curl_slist const *pCur = pThis->pHeaders; pCur; pCur = pCur->next)
-            Log4(("%s", pCur->data));
+            Log4(("%s\n", pCur->data));
     }
     if (pvReqBody && cbReqBody)
         Log5(("RTHttpPerform: request body:\n%.*Rhxd\n", cbReqBody, pvReqBody));
