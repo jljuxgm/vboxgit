@@ -1,4 +1,4 @@
-/* $Id: CloudUserProfileListImpl.cpp 73173 2018-07-17 11:47:51Z vboxsync $ */
+/* $Id: CloudUserProfileListImpl.cpp 73188 2018-07-17 15:24:13Z vboxsync $ */
 /** @file
  * ICloudUserProfileList COM class implementations.
  */
@@ -77,6 +77,8 @@ HRESULT SimpleConfigFile::parse()
 
             LogRel(("Content of the line %d is %s \n", i, strLineContent.c_str()));
 
+            //strips the white-space characters from the string. It's needed for strings on Windows with "\n\r".
+            strLineContent = strLineContent.strip();
             if ( strLineContent.startsWith("[") && strLineContent.endsWith("]") )
             {
                 LogRel(("Found section in the line %d\n", i));
