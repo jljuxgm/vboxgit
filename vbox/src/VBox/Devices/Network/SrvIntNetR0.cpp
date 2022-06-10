@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 74484 2018-09-26 17:03:31Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 74496 2018-09-27 12:15:48Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -6062,7 +6062,7 @@ static DECLCALLBACK(void) intnetR0NetworkDestruct(void *pvObj, void *pvUser1, vo
          * exceed the time the reconnection thread waits on acquiring the big mutex, otherwise
          * we will give up waiting for thread termination prematurely. Unfortunately it seems
          * we have no way to terminate the thread if it failed to stop gracefully.
-         * 
+         *
          * Note that it is ok if the thread has already wiped out hTrunkReconnectThread by now,
          * this means we no longer need to wait for it.
          */
@@ -6769,7 +6769,7 @@ INTNETR0DECL(void) IntNetR0Term(void)
     /*
      * @todo Do we really need to be paranoid enough to go over the list of networks here,
      * trying to terminate trunk re-connection threads here?
-     */ 
+     */
     if (pIntNet->hMtxCreateOpenDestroy != NIL_RTSEMMUTEX)
     {
         RTSemMutexDestroy(pIntNet->hMtxCreateOpenDestroy);
