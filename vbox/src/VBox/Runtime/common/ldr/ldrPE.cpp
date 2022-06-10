@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 74843 2018-10-15 12:51:11Z vboxsync $ */
+/* $Id: ldrPE.cpp 75084 2018-10-25 17:46:50Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -4314,6 +4314,7 @@ static int rtldrPEValidateDirectoriesAndRememberStuff(PRTLDRMODPE pModPe, const 
                     return rc;
                 if (   fNewerStructureHack
                     && Dir.Size > cbMaxKnown
+                    && !(fFlags & (RTLDR_O_FOR_DEBUG | RTLDR_O_FOR_VALIDATION))
                     && !ASMMemIsZero(&u.abZeros[cbMaxKnown], Dir.Size - cbMaxKnown))
                 {
                     Log(("rtldrPEOpen: %s: load cfg dir: Unknown bytes are non-zero (%u bytes of which %u expected to be zero): %.*Rhxs\n",
