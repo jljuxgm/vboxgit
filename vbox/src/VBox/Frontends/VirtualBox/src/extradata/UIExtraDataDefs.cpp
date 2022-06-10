@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 75224 2018-11-02 12:45:59Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 75305 2018-11-07 12:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -219,6 +219,16 @@ const char *UIExtraDataDefs::GUI_LogViewerSettings = "GUI/LogViewerSettings";
 const char *UIExtraDataDefs::GUI_LogViewerWrapLinesEnabled = "WrapLines";
 const char *UIExtraDataDefs::GUI_LogViewerShowLineNumbersDisabled = "showLineNumbersDisabled";
 const char *UIExtraDataDefs::GUI_LogViewerNoFontStyleName = "noFontStyleName";
+
+
+/* Obsolete keys: */
+QMap<QString, QString> UIExtraDataDefs::prepareObsoleteKeysMap()
+{
+    QMap<QString, QString> map;
+    // Define substitutes here..
+    return map;
+}
+QMap<QString, QString> UIExtraDataDefs::g_mapOfObsoleteKeys = UIExtraDataDefs::prepareObsoleteKeysMap();
 
 
 bool UIToolStuff::isTypeOfClass(UIToolType enmType, UIToolClass enmClass)
