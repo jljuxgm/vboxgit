@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 76958 2019-01-23 18:23:04Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 77071 2019-01-31 12:04:47Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -532,10 +532,6 @@ Utf8Str GuestProcess::i_guestErrorToString(int rcGuest)
 
         case VERR_CANCELLED:
             strError += Utf8StrFmt(tr("The execution operation was canceled"));
-            break;
-
-        case VERR_PERMISSION_DENIED: /** @todo r=bird: This is probably completely and utterly misleading. VERR_AUTHENTICATION_FAILURE could have this message. */
-            strError += Utf8StrFmt(tr("Invalid user/password credentials"));
             break;
 
         case VERR_GSTCTL_MAX_OBJECTS_REACHED:
