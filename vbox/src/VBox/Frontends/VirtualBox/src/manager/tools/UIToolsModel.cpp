@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 75228 2018-11-02 15:02:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -201,18 +201,14 @@ void UIToolsModel::setCurrentItem(UIToolsItem *pItem)
     {
         /* Set this item to current if navigation list contains it: */
         if (navigationList().contains(pItem))
-        {
             m_pCurrentItem = pItem;
-            switch (m_pCurrentItem->itemClass())
-            {
-                case UIToolClass_Global:  m_pLastItemGlobal  = m_pCurrentItem; break;
-                case UIToolClass_Machine: m_pLastItemMachine = m_pCurrentItem; break;
-                default: break;
-            }
+        /* Update last item in any case: */
+        switch (pItem->itemClass())
+        {
+            case UIToolClass_Global:  m_pLastItemGlobal  = pItem; break;
+            case UIToolClass_Machine: m_pLastItemMachine = pItem; break;
+            default: break;
         }
-        /* Otherwise it's error: */
-        else
-            AssertMsgFailed(("Passed item is not in navigation list!"));
     }
     /* Otherwise reset current item: */
     else
