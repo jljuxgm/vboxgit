@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 73429 2018-08-01 14:47:53Z vboxsync $ */
+/* $Id: DrvAudio.h 73467 2018-08-03 09:49:55Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -122,10 +122,8 @@ typedef struct DRVAUDIO
     PPDMIHOSTAUDIO          pHostDrvAudio;
     /** Pointer to CFGM configuration node of this driver. */
     PCFGMNODE               pCFGMNode;
-    /** List of host input/output audio streams. */
-    RTLISTANCHOR            lstHstStreams;
-    /** List of guest input/output audio streams. */
-    RTLISTANCHOR            lstGstStreams;
+    /** List of audio streams. */
+    RTLISTANCHOR            lstStreams;
 #ifdef VBOX_WITH_AUDIO_ENUM
     /** Flag indicating to perform an (re-)enumeration of the host audio devices. */
     bool                    fEnumerateDevices;
