@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 71452 2018-03-22 12:48:08Z vboxsync $ */
+/* $Id: UIIconPool.cpp 72711 2018-06-27 18:33:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -28,6 +28,7 @@
 /* GUI includes: */
 # include "UIIconPool.h"
 # include "UIExtraDataManager.h"
+# include "UIModalWindowManager.h"
 
 /* COM includes: */
 # include "COMEnums.h"
@@ -523,8 +524,11 @@ QPixmap UIIconPoolGeneral::guestOSTypePixmapDefault(const QString &strOSTypeID, 
         if (pLogicalSize)
             *pLogicalSize = iconSize;
 
-        /* Get pixmap of requested size: */
-        pixmap = icon.pixmap(iconSize);
+        /* Get pixmap of requested size (take into account the DPI of the main shown window, if possible): */
+        if (windowManager().mainWindowShown() && windowManager().mainWindowShown()->windowHandle())
+            pixmap = icon.pixmap(windowManager().mainWindowShown()->windowHandle(), iconSize);
+        else
+            pixmap = icon.pixmap(iconSize);
     }
 
     /* Return pixmap: */
