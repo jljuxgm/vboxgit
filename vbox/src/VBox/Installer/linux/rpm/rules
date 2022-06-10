@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 73123 2018-07-13 13:40:59Z vboxsync $
+# $Id: rules 74326 2018-09-17 21:15:13Z vboxsync $
 ## @file
 # VirtualBox rules.
 #
@@ -138,6 +138,7 @@ cfg_flags := $(if $(NOQT),--disable-qt,) \
 	     $(if $(NOSDL),--disable-vboxsdl,) \
 	     $(if $(filter el5 el6,$(rpmrel)),--build-libvpx,) \
 	     $(if $(filter el5 el6,$(rpmrel)),--build-libopus,) \
+	     $(if $(filter el5 el6,$(rpmrel)),--build-libssl,) \
 	     $(if $(filter el5,$(rpmrel)),--build-libcurl,) \
 	     $(if $(filter el5,$(rpmrel)),--disable-sdl-ttf,) \
 	     $(if $(filter el5,$(rpmrel)),--disable-pulse,) \
