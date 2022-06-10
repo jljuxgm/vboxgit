@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 72924 2018-07-05 16:14:26Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 73035 2018-07-10 14:04:41Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -41,6 +41,7 @@
 #include <iprt/dbg.h>
 #include <iprt/memobj.h>
 #include <iprt/string.h>
+#include <iprt/time.h>
 
 
 /* Assert compile context sanity. */
