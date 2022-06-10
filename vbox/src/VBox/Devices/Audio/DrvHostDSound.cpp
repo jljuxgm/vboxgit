@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 73546 2018-08-07 13:01:59Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 73547 2018-08-07 13:05:22Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1360,7 +1360,7 @@ static HRESULT directSoundCaptureOpen(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStrea
         bd.dwBufferBytes = DrvAudioHlpFramesToBytes(pCfgReq->Backend.cfBufferSize, &pCfgReq->Props);
 
         DSLOG(("DSound: Requested capture buffer is %RU64ms (%ld bytes)\n",
-               pCfgReq->Backend.cfBufferSize, DrvAudioHlpBytesToMilli(bd.dwBufferBytes, &pCfgReq->Props), bd.dwBufferBytes));
+               DrvAudioHlpBytesToMilli(bd.dwBufferBytes, &pCfgReq->Props), bd.dwBufferBytes));
 
         LPDIRECTSOUNDCAPTUREBUFFER pDSCB;
         hr = IDirectSoundCapture_CreateCaptureBuffer(pThis->pDSC, &bd, &pDSCB, NULL);
