@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
+/* $Id: fileio-win.cpp 75536 2018-11-17 00:17:59Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -836,6 +836,8 @@ RTR3DECL(int) RTFileQueryInfo(RTFILE hFile, PRTFSOBJINFO pObjInfo, RTFSOBJATTRAD
      * Query file info.
      */
     HANDLE hHandle = (HANDLE)RTFileToNative(hFile);
+
+/** @todo use GetFileInformationByHandleEx here as GetFileInformationByHandle wastes time query the volume serial number! */
 
     BY_HANDLE_FILE_INFORMATION Data;
     if (!GetFileInformationByHandle(hHandle, &Data))
