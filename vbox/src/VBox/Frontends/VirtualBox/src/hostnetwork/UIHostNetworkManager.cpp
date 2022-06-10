@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 74894 2018-10-17 22:17:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -816,6 +816,7 @@ void UIHostNetworkManagerWidget::loadSettings()
 {
     /* Details action/widget: */
     m_pActionPool->action(UIActionIndexST_M_Network_T_Details)->setChecked(gEDataManager->hostNetworkManagerDetailsExpanded());
+    sltToggleHostNetworkDetailsVisibility(m_pActionPool->action(UIActionIndexST_M_Network_T_Details)->isChecked());
 }
 
 void UIHostNetworkManagerWidget::loadHostNetworks()

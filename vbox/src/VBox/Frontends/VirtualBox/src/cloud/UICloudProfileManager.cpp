@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 74893 2018-10-17 18:48:46Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 74894 2018-10-17 22:17:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -422,6 +422,7 @@ void UICloudProfileManagerWidget::loadSettings()
 {
     /* Details action/widget: */
     m_pActionPool->action(UIActionIndexST_M_Cloud_T_Details)->setChecked(gEDataManager->cloudProfileManagerDetailsExpanded());
+    sltToggleCloudProfileDetailsVisibility(m_pActionPool->action(UIActionIndexST_M_Cloud_T_Details)->isChecked());
 }
 
 void UICloudProfileManagerWidget::loadCloudStuff()
