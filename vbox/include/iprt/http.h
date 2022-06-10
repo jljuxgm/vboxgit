@@ -1,4 +1,4 @@
-/* $Id: http.h 74202 2018-09-11 22:48:41Z vboxsync $ */
+/* $Id: http.h 74203 2018-09-11 22:54:46Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -345,8 +345,9 @@ RTR3DECL(size_t)    RTHttpGetHeaderCount(RTHTTP hHttp);
  * Can be used together with RTHttpGetHeaderCount by test case and debug code to
  * iterate headers specified by RTHttpAddHeader, RTHttpAddRawHeader or RTHttpSetHeaders.
  *
- * @returns Number of headers.
+ * @returns The header string ("field: value").
  * @param   hHttp           The HTTP client handle.
+ * @param   iOrdinal        The number of the header to get.
  * @note    This can be slow and is only really intended for test cases and debugging!
  */
 RTR3DECL(const char *) RTHttpGetByOrdinal(RTHTTP hHttp, size_t iOrdinal);
