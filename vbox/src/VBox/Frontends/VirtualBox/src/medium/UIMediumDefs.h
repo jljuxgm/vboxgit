@@ -1,4 +1,4 @@
-/* $Id: UIMediumDefs.h 72822 2018-07-03 13:43:06Z vboxsync $ */
+/* $Id: UIMediumDefs.h 72869 2018-07-04 11:31:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium related declarations.
  */
@@ -72,6 +72,10 @@ namespace UIMediumDefs
     QList<QPair<QString, QString> > DVDBackends(const CVirtualBox &comVBox);
     /** Returns which floppy disk formats are currently supported by @a comVBox. */
     QList<QPair<QString, QString> > FloppyBackends(const CVirtualBox &comVBox);
+
+    /** Returns the first file extension of the list of file extension support for the @a enmDeviceType. */
+   QString getPreferredExtensionForMedium(KDeviceType enmDeviceType);
+   QVector<CMediumFormat>  getFormatsForDeviceType(KDeviceType enmDeviceType);
 }
 /* Using this namespace globally: */
 using namespace UIMediumDefs;

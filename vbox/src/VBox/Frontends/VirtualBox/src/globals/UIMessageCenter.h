@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 72347 2018-05-25 16:38:31Z vboxsync $ */
+/* $Id: UIMessageCenter.h 72869 2018-07-04 11:31:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -538,4 +538,3 @@ inline UIMessageCenter &msgCenter() { return *UIMessageCenter::instance(); }
 
 
 #endif /* !___UIMessageCenter_h___ */
-

@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72815 2018-07-03 09:55:30Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 72869 2018-07-04 11:31:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -480,29 +480,12 @@ void UIMediumSelector::sltAddMedium()
 void UIMediumSelector::sltCreateMedium()
 {
 
-    UIFDCreationDialog *pDialog = new UIFDCreationDialog(this, m_strMachineSettingsFilePath, m_strMachineName);
-    pDialog->exec();
-
-    // QVector<CMediumFormat>  mediumFormats = vboxGlobal().getFormatsForDeviceType(UIMediumDefs::mediumTypeToGlobal(m_enmMediumType));
-    // if (mediumFormats.isEmpty())
-    //     return;
-    // QString strMachineFolder = QFileInfo(m_strMachineSettingsFilePath).absolutePath();
-    // QString strMediumPath =vboxGlobal().getNewMediumPath(m_enmMediumType, this,
-    //                                             strMachineFolder, m_strMachineName);
-    // if (strMediumPath.isEmpty())
-    //     return;
-    // //
-    // CVirtualBox vbox = vboxGlobal().virtualBox();
-
-    // CMedium newMedium = vbox.CreateMedium(mediumFormats[0].GetName(), strMediumPath,
-    //                                       KAccessMode_ReadWrite, UIMediumDefs::mediumTypeToGlobal(m_enmMediumType));
-    // if (!vbox.isOk())
-    // {
-    //     msgCenter().cannotCreateHardDiskStorage(vbox, strMediumPath, this);
-    //     return;
-    // }
-
-
+    UIFDCreationDialog *pDialog = new UIFDCreationDialog(this, m_strMachineName, m_strMachineSettingsFilePath);
+    if (pDialog->exec())
+    {
+        sltHandleRefresh();
+    }
+    delete pDialog;
 }
 
 void UIMediumSelector::sltHandleItemSelectionChanged()
