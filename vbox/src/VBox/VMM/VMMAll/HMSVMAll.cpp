@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 77280 2019-02-12 15:09:41Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 77714 2019-03-15 07:58:02Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -50,7 +50,7 @@
  * @param   pVCpu               The cross context virtual CPU structure.
  * @param   pCtx                Pointer to the guest-CPU context.
  */
-int hmEmulateSvmMovTpr(PVMCPU pVCpu)
+VMM_INT_DECL(int) hmEmulateSvmMovTpr(PVMCPU pVCpu)
 {
     PCPUMCTX pCtx = &pVCpu->cpum.GstCtx;
     Log4(("Emulated VMMCall TPR access replacement at RIP=%RGv\n", pCtx->rip));
