@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 75365 2018-11-09 13:55:30Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 75390 2018-11-12 08:54:38Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -3021,7 +3021,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                         int vrc = RTStrToUInt32Ex(ValueUnion.psz, &pszNext, 0, &uWidth);
                         if (RT_FAILURE(vrc) || vrc != VWRN_TRAILING_CHARS || !pszNext || *pszNext != 'x')
                         {
-                            errorArgument("Error parsing geomtry '%s' (expected <width>x<height>)", ValueUnion.psz);
+                            errorArgument("Error parsing video resolution '%s' (expected <width>x<height>)", ValueUnion.psz);
                             rc = E_FAIL;
                             break;
                         }
@@ -3029,7 +3029,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                         vrc = RTStrToUInt32Ex(pszNext+1, NULL, 0, &uHeight);
                         if (vrc != VINF_SUCCESS)
                         {
-                            errorArgument("Error parsing geomtry '%s' (expected <width>x<height>)", ValueUnion.psz);
+                            errorArgument("Error parsing video resolution '%s' (expected <width>x<height>)", ValueUnion.psz);
                             rc = E_FAIL;
                             break;
                         }
