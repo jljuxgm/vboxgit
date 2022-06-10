@@ -1,5 +1,5 @@
 
-/* $Id: vboximgOpts.h 76271 2018-12-18 05:29:30Z vboxsync $ $Revision: 76271 $ $Date: 2018-12-18 13:29:30 +0800 (Tue, 18 Dec 2018) $ $Author: vboxsync $ */
+/* $Id: vboximgOpts.h 76528 2018-12-30 05:56:28Z vboxsync $ $Revision: 76528 $ $Date: 2018-12-30 13:56:28 +0800 (Sun, 30 Dec 2018) $ $Author: vboxsync $ */
 
 /** @file
  * vboximgOpts.h
@@ -19,6 +19,9 @@
 
 #ifndef ___vboximgopts_h
 #define ___vboximgopts_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 typedef struct vboximgOpts {
