@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 76325 2018-12-20 19:08:46Z vboxsync $
+# $Id: config.py 76330 2018-12-21 09:01:04Z vboxsync $
 
 """
 Test Manager Configuration.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76325 $"
+__version__ = "$Revision: 76330 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.1.0';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 76325 $')[11:-2];
+g_ksRevision            = ('$Revision: 76330 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
@@ -192,9 +192,13 @@ g_ksTestBoxDispXpctLog  = '/tmp/testmanager-testboxdisp-xcpt.log'
 g_ksSmtpHost            = 'internal-mail-router.oracle.com';
 ## SMTP server port number.
 g_kcSmtpPort            = 25;
+## Default email 'From' for email alert.
+g_ksAlertFrom           = 'vseriff@oracle.com';
 ## Subject for email alert.
 g_ksAlertSubject        = 'Virtual Sheriff alert';
 ## List of users to send alerts.
 g_asAlertList           = ['lelik', 'werner'];
+## iLOM password.
+g_ksLomPassword         = 'password';
 
 ## @}
