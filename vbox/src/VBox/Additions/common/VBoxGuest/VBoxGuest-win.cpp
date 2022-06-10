@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 73351 2018-07-25 13:02:11Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 75783 2018-11-27 22:54:50Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -2498,7 +2498,8 @@ static uint32_t vgdrvNtCalcRequestorFlags(void)
     uint32_t fRequestor = VMMDEV_REQUESTOR_USERMODE
                         | VMMDEV_REQUESTOR_USR_NOT_GIVEN
                         | VMMDEV_REQUESTOR_CON_DONT_KNOW
-                        | VMMDEV_REQUESTOR_TRUST_NOT_GIVEN;
+                        | VMMDEV_REQUESTOR_TRUST_NOT_GIVEN
+                        | VMMDEV_REQUESTOR_NO_USER_DEVICE;
     HANDLE   hToken = NULL;
     NTSTATUS rcNt = ZwOpenProcessToken(NtCurrentProcess(), TOKEN_QUERY, &hToken);
     if (NT_SUCCESS(rcNt))
