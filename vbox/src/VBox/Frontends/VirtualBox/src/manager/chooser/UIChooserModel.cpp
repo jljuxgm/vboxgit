@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77605 2019-03-07 16:47:51Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77620 2019-03-08 15:03:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -2064,7 +2064,7 @@ void UIChooserModel::gatherGroupOrders(QMap<QString, QStringList> &orders,
     /* Iterate over all the machine-items: */
     foreach (UIChooserItem *pItem, pParentItem->items(UIChooserItemType_Machine))
         orders[strExtraDataKey] << QString("m=%1").arg(toOldStyleUuid(pItem->toMachineItem()->id()));
-    }
+}
 
 void UIChooserModel::makeSureGroupDefinitionsSaveIsFinished()
 {

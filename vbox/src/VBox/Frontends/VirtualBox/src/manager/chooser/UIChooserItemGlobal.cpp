@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 77596 2019-03-07 13:24:43Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 77620 2019-03-08 15:03:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -16,14 +16,12 @@
  */
 
 /* Qt includes: */
-#include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsView>
 #include <QPainter>
 #include <QStyleOptionGraphicsItem>
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
 #include "UIChooserItemGlobal.h"
 #include "UIChooserModel.h"
 #include "UIIconPool.h"
@@ -225,7 +223,7 @@ void UIChooserItemGlobal::startEditing()
 
 void UIChooserItemGlobal::updateToolTip()
 {
-//    setToolTip(toolTipText());
+    // Nothing for now..
 }
 
 bool UIChooserItemGlobal::hasItems(UIChooserItemType) const

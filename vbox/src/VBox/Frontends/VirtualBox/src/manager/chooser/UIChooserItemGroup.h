@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 77596 2019-03-07 13:24:43Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 77620 2019-03-08 15:03:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -21,22 +21,11 @@
 # pragma once
 #endif
 
-/* Qt includes: */
-#include <QPixmap>
-#include <QString>
-#include <QWidget>
-
 /* GUI includes: */
 #include "UIChooserItem.h"
 
 /* Forward declarations: */
 class QGraphicsLinearLayout;
-class QGraphicsScene;
-class QLineEdit;
-class QMenu;
-class QMimeData;
-class QPainter;
-class QStyleOptionGraphicsItem;
 class UIEditorGroupRename;
 class UIGraphicsButton;
 class UIGraphicsRotatorButton;

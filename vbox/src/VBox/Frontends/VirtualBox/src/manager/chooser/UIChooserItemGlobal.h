@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 77596 2019-03-07 13:24:43Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 77620 2019-03-08 15:03:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -23,13 +23,6 @@
 
 /* GUI includes: */
 #include "UIChooserItem.h"
-
-/* Forward declarations: */
-class QMimeData;
-class QPainter;
-class QStyleOptionGraphicsItem;
-class UIGraphicsToolBar;
-class UIGraphicsZoomButton;
 
 
 /** UIChooserItem extension implementing global item. */

@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 77596 2019-03-07 13:24:43Z vboxsync $ */
+/* $Id: UIChooserItem.h 77620 2019-03-08 15:03:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -252,7 +252,7 @@ protected:
     /** @name Layout stuff.
       * @{ */
         /** Returns previous geometry. */
-        const QRectF &previousGeometry() const { return m_previousGeometry; }
+        QRectF previousGeometry() const { return m_previousGeometry; }
         /** Defines previous @a geometry. */
         void setPreviousGeometry(const QRectF &geometry) { m_previousGeometry = geometry; }
 

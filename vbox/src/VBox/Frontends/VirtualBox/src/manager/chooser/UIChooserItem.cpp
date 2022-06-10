@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 77596 2019-03-07 13:24:43Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 77620 2019-03-08 15:03:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -31,11 +31,14 @@
 /* GUI includes: */
 #include "UIChooser.h"
 #include "UIChooserItem.h"
-#include "UIChooserView.h"
-#include "UIChooserModel.h"
 #include "UIChooserItemGroup.h"
 #include "UIChooserItemGlobal.h"
 #include "UIChooserItemMachine.h"
+#include "UIChooserView.h"
+#include "UIChooserModel.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 
 /** QAccessibleObject extension used as an accessibility interface for Chooser-view items. */
