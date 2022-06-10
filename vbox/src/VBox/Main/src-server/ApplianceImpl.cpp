@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 74186 2018-09-11 06:13:54Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 74217 2018-09-12 11:14:39Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1036,8 +1036,8 @@ HRESULT Appliance::i_setUpProgress(ComObjPtr<Progress> &pProgress,
         }
         case ExportOCI:
             cOperations = 1 + 7;
-            m->ulWeightForXmlOperation = 1;
-            ulTotalOperationsWeight = 100;
+            ulTotalOperationsWeight = 100*cOperations;
+            m->ulWeightForXmlOperation = 100;
             break;
     }
     Log(("Setting up progress object: ulTotalMB = %d, cDisks = %d, => cOperations = %d, ulTotalOperationsWeight = %d, m->ulWeightForXmlOperation = %d\n",
