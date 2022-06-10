@@ -1,4 +1,4 @@
-/* $Id: vboxfs_prov.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vboxfs_prov.c 76425 2018-12-23 20:33:46Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider implementation.
  * Portions contributed by: Ronald.
@@ -45,6 +45,7 @@
 #undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
 
 #include "vboxfs_prov.h"
+#include <iprt/err.h>
 
 #define	SFPROV_VERSION	1
 
