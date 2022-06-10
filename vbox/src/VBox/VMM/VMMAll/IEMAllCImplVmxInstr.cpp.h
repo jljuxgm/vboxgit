@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74166 2018-09-09 18:11:30Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74167 2018-09-09 19:13:25Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2866,8 +2866,8 @@ IEM_STATIC int iemVmxVmentryCheckGuestRipRFlags(PVMCPU pVCpu,  const char *pszIn
     }
 
     /* RFLAGS (bits 63:22 (or 31:22), bits 15, 5, 3 are reserved, bit 1 MB1). */
-    uint64_t fMbzMask = IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fLongMode ? UINT64_C(0xffffffffffc08028) : UINT32_C(0xffc08028);
-    uint64_t fMb1Mask = X86_EFL_RA1_MASK;
+    uint64_t const fMbzMask = IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fLongMode ? UINT64_C(0xffffffffffc08028) : UINT32_C(0xffc08028);
+    uint64_t const fMb1Mask = X86_EFL_RA1_MASK;
     if (   !(pVmcs->u64GuestRFlags.u & fMbzMask)
         &&  (pVmcs->u64GuestRFlags.u & fMb1Mask) == fMb1Mask)
     { /* likely */ }
