@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 77112 2019-02-01 11:23:33Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 77385 2019-02-20 14:14:58Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -155,9 +155,11 @@ int GuestFile::init(Console *pConsole, GuestSession *pSession,
     {
         mSession = pSession;
 
+        mData.mOpenInfo    = openInfo;
         mData.mInitialSize = 0;
-        mData.mStatus = FileStatus_Undefined;
-        mData.mOpenInfo = openInfo;
+        mData.mStatus      = FileStatus_Undefined;
+        mData.mLastError   = VINF_SUCCESS;
+        mData.mOffCurrent  = 0;
 
         unconst(mEventSource).createObject();
         HRESULT hr = mEventSource->init();
