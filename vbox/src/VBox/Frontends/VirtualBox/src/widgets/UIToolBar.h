@@ -1,4 +1,4 @@
-/* $Id: UIToolBar.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIToolBar.h 74137 2018-09-07 11:05:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBar class declaration.
  */
@@ -33,6 +33,11 @@ class SHARED_LIBRARY_STUFF UIToolBar : public QToolBar
 {
     Q_OBJECT;
 
+signals:
+
+    /** Notifies listeners about @a newSize. */
+    void sigResized(const QSize &newSize);
+
 public:
 
     /** Constructs tool-bar passing @a pParent to the base-class. */
@@ -49,6 +54,11 @@ public:
     /** Mac OS X: Updates native tool-bar layout. */
     void updateLayout();
 #endif /* VBOX_WS_MAC */
+
+protected:
+
+    /** Handles resize @a pEvent. */
+    virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
 
 private:
 
