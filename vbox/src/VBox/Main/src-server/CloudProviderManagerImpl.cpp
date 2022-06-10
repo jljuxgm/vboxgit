@@ -1,4 +1,4 @@
-/* $Id: CloudProviderManagerImpl.cpp 73733 2018-08-17 12:31:24Z vboxsync $ */
+/* $Id: CloudProviderManagerImpl.cpp 73873 2018-08-24 13:47:20Z vboxsync $ */
 /** @file
  * ICloudProviderManager  COM class implementations.
  */
@@ -20,11 +20,7 @@
 
 #include "VirtualBoxImpl.h"
 #include "CloudProviderManagerImpl.h"
-#ifdef VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK
-# include "ExtPackManagerImpl.h"
-#else
-# include "OCIProvider.h"
-#endif
+#include "ExtPackManagerImpl.h"
 #include "AutoCaller.h"
 #include "Logging.h"
 
@@ -77,14 +73,7 @@ HRESULT CloudProviderManager::init(VirtualBox *aParent)
         i_refreshProviders();
     }
 #else
-    ComObjPtr<OCIProvider> pOCIProvider;
-    HRESULT hrc = pOCIProvider.createObject();
-    if (FAILED(hrc))
-        return hrc;
-    hrc = pOCIProvider->init(aParent);
-    if (FAILED(hrc))
-        return hrc;
-    m_apCloudProviders.push_back(pOCIProvider);
+    RT_NOREF(aParent);
 #endif
 
     autoInitSpan.setSucceeded();
