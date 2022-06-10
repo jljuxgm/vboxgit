@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIActionPool.h 76773 2019-01-11 12:59:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -525,6 +525,10 @@ public:
     /** Returns all the actions action-pool contains. */
     QList<UIAction*> actions() const { return m_pool.values(); }
 
+    /** Returns the action group for the passed @a iIndex.
+      * @note Only menu actions can have action groups. */
+    QActionGroup *actionGroup(int iIndex) const;
+
     /** Returns the list of main menus. */
     QList<QMenu*> menus() const { return m_mainMenus; }
 
@@ -640,6 +644,9 @@ protected:
 
     /** Holds the map of actions. */
     QMap<int, UIAction*>          m_pool;
+    /** Holds the map of action groups.
+      * @note Only menu actions can have action groups. */
+    QMap<int, QActionGroup*>      m_groupPool;
     /** Holds the map of validation handlers. */
     QMap<int, PointerToFunction>  m_menuUpdateHandlers;
     /** Holds the set of invalidated action indexes. */

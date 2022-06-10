@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIActionPool.cpp 76773 2019-01-11 12:59:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -2279,6 +2279,12 @@ UIActionPoolManager *UIActionPool::toManager()
     return qobject_cast<UIActionPoolManager*>(this);
 }
 
+QActionGroup *UIActionPool::actionGroup(int iIndex) const
+{
+    AssertReturn(m_groupPool.contains(iIndex), 0);
+    return m_groupPool.value(iIndex);
+}
+
 bool UIActionPool::isAllowedInMenuBar(UIExtraDataMetaDefs::MenuType enmType) const
 {
     foreach (const UIExtraDataMetaDefs::MenuType &enmRestriction, m_restrictedMenus.values())
@@ -2516,7 +2522,7 @@ void UIActionPool::prepareConnections()
 
 void UIActionPool::cleanupPool()
 {
-    /* Cleanup pool: */
+    qDeleteAll(m_groupPool);
     qDeleteAll(m_pool);
 }
 
