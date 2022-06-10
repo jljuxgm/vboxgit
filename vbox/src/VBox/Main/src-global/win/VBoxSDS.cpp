@@ -1,4 +1,4 @@
-/* $Id: VBoxSDS.cpp 73358 2018-07-25 18:47:23Z vboxsync $ */
+/* $Id: VBoxSDS.cpp 76065 2018-12-07 21:27:24Z vboxsync $ */
 /** @file
  * VBoxSDS - COM global service main entry (System Directory Service)
  */
@@ -18,9 +18,9 @@
 
 /** @page pg_VBoxSDS    VBoxSDS - Per user CLSID_VirtualBox coordinater
  *
- * VBoxSDS is short for VirtualBox System Directory Service (SDS).  It's purpose
- * is to make sure there only one CLSID_VirtualBox object running for each user
- * uisng VirtualBox on a Windows host system.
+ * VBoxSDS is short for VirtualBox System Directory Service (SDS).  Its purpose
+ * is to make sure there is only one CLSID_VirtualBox object running for each
+ * user using VirtualBox on a Windows host system.
  *
  *
  * @section sec_vboxsds_backgroud   Background
@@ -33,7 +33,7 @@
  * would talk different AAA COM server instances depending on the elevation
  * level too.
  *
- * VBoxSVC is a service affected by this issue.  Using VirtualBox accross logins
+ * VBoxSVC is a service affected by this issue.  Using VirtualBox across logins
  * or between user elevation levels was impossible to do simultaneously.  This
  * was confusing and illogical to the user.
  *
@@ -102,7 +102,7 @@
 
 #include <VBox/com/microatl.h>
 
-#define _ATL_FREE_THREADED
+#define _ATL_FREE_THREADED /** @todo r=bird: WTF? */
 
 /**
  * Implements Windows Service
@@ -187,7 +187,7 @@ public:
     }
 
 private:
-    void serviceMain( DWORD , LPTSTR* ) throw()
+    void serviceMain(DWORD, LPTSTR *) throw()
     {
         LogFunc(("Enter into serviceMain\n"));
         // Register the control request handler
@@ -939,7 +939,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                     /*
                      * Do registration work and quit.
                      */
-                    // The VBoxProxyStub should do all work for COM registration
+                    /// @todo The VBoxProxyStub should do all work for COM registration
                     if (fUnregister)
                         hrcExit = pServiceModule->unregisterService();
                     if (fRegister)
