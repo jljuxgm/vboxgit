@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 77308 2019-02-14 10:39:39Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.cpp 77309 2019-02-14 11:00:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -61,9 +61,6 @@ private:
     QLineEdit   *m_pLineEdit;
     QGridLayout *m_pMainLayout;
     QIToolButton *m_pExpandButton;
-    bool          m_fExpanded;
-    QDialog           *m_pDialog;
-
 };
 
 /*********************************************************************************************************************************
@@ -75,8 +72,6 @@ UILocationSelector::UILocationSelector(QWidget *pParent /* = 0 */)
     , m_pLineEdit(0)
     , m_pMainLayout(0)
     , m_pExpandButton(0)
-    , m_fExpanded(false)
-    , m_pDialog(0)
 {
     prepareWidget();
 }
