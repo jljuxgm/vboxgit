@@ -1,4 +1,4 @@
-/* $Id: Quad_Core_AMD_Opteron_2384.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Quad_Core_AMD_Opteron_2384.h 76561 2019-01-01 03:13:40Z vboxsync $ */
 /** @file
  * CPU database entry "Quad-Core AMD Opteron 2384".
  * Generated at 2013-12-09T21:56:56Z by VBoxCpuReport v4.3.51r91133 on win.amd64.
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_CPUDB_Quad_Core_AMD_Opteron_2384
-#define VBOX_CPUDB_Quad_Core_AMD_Opteron_2384
+#ifndef VBOX_CPUDB_Quad_Core_AMD_Opteron_2384_h
+#define VBOX_CPUDB_Quad_Core_AMD_Opteron_2384_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

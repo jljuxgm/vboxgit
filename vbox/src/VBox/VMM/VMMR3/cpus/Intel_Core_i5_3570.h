@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i5_3570.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Intel_Core_i5_3570.h 76561 2019-01-01 03:13:40Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i5-3570".
  * Generated at 2013-12-13T16:13:56Z by VBoxCpuReport v4.3.53r91216 on linux.amd64.
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_CPUDB_Intel_Core_i5_3570
-#define VBOX_CPUDB_Intel_Core_i5_3570
+#ifndef VBOX_CPUDB_Intel_Core_i5_3570_h
+#define VBOX_CPUDB_Intel_Core_i5_3570_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

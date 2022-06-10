@@ -1,4 +1,4 @@
-/* $Id: PDMNetShaperInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: PDMNetShaperInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Internal data structures and functions common for both R0 and R3 parts.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_PDMNetShaperInternal_h
-#define VBOX_INCLUDED_PDMNetShaperInternal_h
+#ifndef VMM_INCLUDED_SRC_include_PDMNetShaperInternal_h
+#define VMM_INCLUDED_SRC_include_PDMNetShaperInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

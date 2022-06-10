@@ -1,4 +1,4 @@
-/* $Id: tstDeviceVMMInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstDeviceVMMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, definitions of VMM internal types.
  */
@@ -213,8 +213,8 @@ typedef struct PDMNSFILTER
 #define PDMCRITSECTINT_DECLARED
 #define PDMTHREADINT_DECLARED
 #define PDMDEVINSINT_DECLARED
-#define ___VMInternal_h
-#define ___VMMInternal_h
+#define VMM_INCLUDED_SRC_include_VMInternal_h
+#define VMM_INCLUDED_SRC_include_VMMInternal_h
 RT_C_DECLS_END
 #include <VBox/vmm/pdmcritsect.h>
 #include <VBox/vmm/vm.h>

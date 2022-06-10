@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HMSVMR0.h 76561 2019-01-01 03:13:40Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Internal header file.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___HMSVMR0_h
-#define ___HMSVMR0_h
+#ifndef VMM_INCLUDED_SRC_VMMR0_HMSVMR0_h
+#define VMM_INCLUDED_SRC_VMMR0_HMSVMR0_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

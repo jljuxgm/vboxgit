@@ -1,4 +1,4 @@
-/* $Id: Intel_80286.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Intel_80286.h 76561 2019-01-01 03:13:40Z vboxsync $ */
 /** @file
  * CPU database entry "Intel 80286".
  * Handcrafted.
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_CPUDB_Intel_80286
-#define VBOX_CPUDB_Intel_80286
+#ifndef VBOX_CPUDB_Intel_80286_h
+#define VBOX_CPUDB_Intel_80286_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

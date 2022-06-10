@@ -1,4 +1,4 @@
-/* $Id: AMD_Athlon_64_X2_Dual_Core_4200.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: AMD_Athlon_64_X2_Dual_Core_4200.h 76561 2019-01-01 03:13:40Z vboxsync $ */
 /** @file
  * CPU database entry "AMD Athlon 64 X2 Dual Core 4200+".
  * Generated at 2014-02-28T15:19:16Z by VBoxCpuReport v4.3.53r92578 on linux.amd64                                                        .
@@ -21,8 +21,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_CPUDB_AMD_Athlon_64_X2_Dual_Core_4200
-#define VBOX_CPUDB_AMD_Athlon_64_X2_Dual_Core_4200
+#ifndef VBOX_CPUDB_AMD_Athlon_64_X2_Dual_Core_4200_h
+#define VBOX_CPUDB_AMD_Athlon_64_X2_Dual_Core_4200_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

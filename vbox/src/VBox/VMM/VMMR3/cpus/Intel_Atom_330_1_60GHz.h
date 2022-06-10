@@ -1,4 +1,4 @@
-/* $Id: Intel_Atom_330_1_60GHz.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Intel_Atom_330_1_60GHz.h 76561 2019-01-01 03:13:40Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Atom 330 1.60GHz".
  * Generated at 2015-11-04T12:58:59Z by VBoxCpuReport v5.0.51r103818 on linux.amd64.
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_CPUDB_Intel_Atom_330_1_60GHz
-#define VBOX_CPUDB_Intel_Atom_330_1_60GHz
+#ifndef VBOX_CPUDB_Intel_Atom_330_1_60GHz_h
+#define VBOX_CPUDB_Intel_Atom_330_1_60GHz_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

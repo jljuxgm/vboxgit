@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_3960X.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Intel_Core_i7_3960X.h 76561 2019-01-01 03:13:40Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-3960X".
  * Generated at 2013-12-12T15:29:11Z by VBoxCpuReport v4.3.53r91237 on win.amd64.
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_CPUDB_Intel_Core_i7_3960X
-#define VBOX_CPUDB_Intel_Core_i7_3960X
+#ifndef VBOX_CPUDB_Intel_Core_i7_3960X_h
+#define VBOX_CPUDB_Intel_Core_i7_3960X_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

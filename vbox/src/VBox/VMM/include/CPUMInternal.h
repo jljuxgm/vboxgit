@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: CPUMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___CPUMInternal_h
-#define ___CPUMInternal_h
+#ifndef VMM_INCLUDED_SRC_include_CPUMInternal_h
+#define VMM_INCLUDED_SRC_include_CPUMInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

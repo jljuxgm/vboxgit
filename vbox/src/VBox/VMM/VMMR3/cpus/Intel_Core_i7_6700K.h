@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_6700K.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Intel_Core_i7_6700K.h 76561 2019-01-01 03:13:40Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-6700K".
  * Generated at 2015-11-04T14:22:26Z by VBoxCpuReport v5.0.51r103906 on win.amd64.
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_CPUDB_Intel_Core_i7_6700K
-#define VBOX_CPUDB_Intel_Core_i7_6700K
+#ifndef VBOX_CPUDB_Intel_Core_i7_6700K_h
+#define VBOX_CPUDB_Intel_Core_i7_6700K_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
