@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibIdc-os2.cpp 72627 2018-06-20 13:53:28Z vboxsync $ */
+/* $Id: VBoxGuestR0LibIdc-os2.cpp 75126 2018-10-28 14:53:12Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC, OS/2 specific.
  */
@@ -56,6 +56,7 @@ int VBOXCALL vbglR0IdcNativeOpen(PVBGLIDCHANDLE pHandle, PVBGLIOCIDCCONNECT pReq
         && RT_VALID_PTR(g_VBoxGuestIDC.pfnServiceEP))
         return g_VBoxGuestIDC.pfnServiceEP(g_VBoxGuestIDC.u32Session, VBGL_IOCTL_IDC_CONNECT, &pReq->Hdr, sizeof(*pReq));
     Log(("vbglDriverOpen: failed\n"));
+    RT_NOREF(pHandle);
     return VERR_FILE_NOT_FOUND;
 }
 
