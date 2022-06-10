@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 72895 2018-07-04 17:03:57Z vboxsync $ */
+/* $Id: EMAll.cpp 74204 2018-09-12 05:18:25Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -188,6 +188,17 @@ VMM_INT_DECL(int) EMMonitorWaitPerform(PVMCPU pVCpu, uint64_t rax, uint64_t rcx)
     return VINF_EM_HALT;
 }
 
+
+/**
+ * Clears any address-range monitoring that is active.
+ *
+ * @param   pVCpu   The cross context virtual CPU structure of the calling EMT.
+ */
+VMM_INT_DECL(void) EMMonitorWaitClear(PVMCPU pVCpu)
+{
+    LogFlowFunc(("Clearing MWAIT\n"));
+    pVCpu->em.s.MWait.fWait &= ~(EMMWAIT_FLAG_ACTIVE | EMMWAIT_FLAG_BREAKIRQIF0);
+}
 
 
 /**
