@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77479 $"
+__version__ = "$Revision: 77480 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -1769,16 +1769,13 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
 
         if oTestVm.isWindows():
             sUser = "Administrator";
-            sPassword = "password";
-            sDomain = "";
             sCmd = "C:\\windows\\system32\\cmd.exe";
-            aArgs = [sCmd,];
         elif oTestVm.isLinux():
             sUser = "vbox";
-            sPassword = "password";
-            sDomain = "";
             sCmd = "/bin/sh";
-            aArgs = [sCmd,];
+        sPassword = "password";
+        sDomain = "";
+        aArgs = [sCmd,];
 
         # Number of stale guest processes to create.
         cStaleProcs = 10;
