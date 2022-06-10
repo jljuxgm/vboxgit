@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 77078 2019-01-31 15:34:30Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 77087 2019-01-31 19:05:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -161,6 +161,8 @@ void UIVMLogViewerSearchPanel::sltSearchTextChanged(const QString &strSearchStri
         pBrowser->setTextCursor(cursor);
     }
     m_iSearchPosition = -1;
+    m_iMatchCount = 0;
+    emit sigSearchUpdated();
     clearHighlighting();
 }
 

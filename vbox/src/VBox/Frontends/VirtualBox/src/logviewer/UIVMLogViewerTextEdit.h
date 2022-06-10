@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 77078 2019-01-31 15:34:30Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.h 77087 2019-01-31 19:05:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -96,7 +96,6 @@ private:
     void setMouseCursorLine(int lineNumber);
     /** If bookmark exists this function removes it, if not it adds the bookmark. */
     void toggleBookmark(const QPair<int, QString>& bookmark);
-    void setBackground();
 
     /** Line number and text at the context menu position */
     QPair<int, QString>  m_iContextMenuBookmark;
