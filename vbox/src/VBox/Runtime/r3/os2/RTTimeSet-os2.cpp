@@ -1,4 +1,4 @@
-/* $Id: RTTimeSet-os2.cpp 75321 2018-11-08 14:12:18Z vboxsync $ */
+/* $Id: RTTimeSet-os2.cpp 75328 2018-11-08 16:53:28Z vboxsync $ */
 /** @file
  * IPRT - RTTimeSet, OS/2.
  */
@@ -40,6 +40,7 @@
 #include <iprt/time.h>
 #include "internal/iprt.h"
 
+#include <iprt/assert.h>
 #include <iprt/err.h>
 
 
@@ -58,7 +59,7 @@ RTDECL(int) RTTimeSet(PCRTTIMESPEC pTime)
          * Fill in the OS/2 structure and make the call.
          */
         DATETIME DateTime;
-        DateTime.hour       = Exploded.u8Hour;
+        DateTime.hours      = Exploded.u8Hour;
         DateTime.minutes    = Exploded.u8Minute;
         DateTime.seconds    = Exploded.u8Second;
         DateTime.hundredths = (uint8_t)(Exploded.u32Nanosecond / (RT_NS_1SEC_64 / 100));
