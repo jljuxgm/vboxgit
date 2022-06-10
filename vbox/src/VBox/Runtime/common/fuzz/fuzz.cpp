@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 72942 2018-07-07 13:58:16Z vboxsync $ */
+/* $Id: fuzz.cpp 72945 2018-07-07 15:29:54Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -49,6 +49,8 @@
 
 
 #define RTFUZZCTX_MAGIC UINT32_C(0xdeadc0de) /** @todo */
+
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
