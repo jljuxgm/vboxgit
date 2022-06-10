@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 75663 2018-11-22 14:00:59Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 75669 2018-11-22 14:24:12Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -1279,8 +1279,6 @@ bool ExtPack::i_areThereCloudProviderUninstallVetos()
  * Notifies the Cloud Provider Manager that there is a new extension pack.
  *
  * This is called when installing an extension pack.
- *
- * @param   a_pExtPack          The extension pack to be added.
  */
 void ExtPack::i_notifyCloudProviderManager()
 {
