@@ -1,4 +1,4 @@
-/* $Id: RTCRestArrayBase.cpp 74008 2018-08-31 19:08:02Z vboxsync $ */
+/* $Id: RTCRestArrayBase.cpp 74023 2018-09-02 13:43:59Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestArrayBase implementation.
  */
@@ -241,6 +241,18 @@ int RTCRestArrayBase::fromString(RTCString const &a_rValue, const char *a_pszNam
 {
     /** @todo proper fromString implementation for arrays. */
     return RTCRestObjectBase::fromString(a_rValue, a_pszName, a_pErrInfo, a_fFlags);
+}
+
+
+RTCRestObjectBase::kTypeClass RTCRestArrayBase::typeClass(void) const
+{
+    return kTypeClass_Array;
+}
+
+
+const char *RTCRestArrayBase::typeName(void) const
+{
+    return "RTCRestArray<ElementType>";
 }
 
 
