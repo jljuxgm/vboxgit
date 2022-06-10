@@ -1,4 +1,4 @@
-/* $Id: UIApplianceExportEditorWidget.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.cpp 73326 2018-07-23 14:20:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class implementation.
  */
@@ -86,6 +86,7 @@ void UIApplianceExportEditorWidget::populate()
     QVector<CVirtualSystemDescription> vsds = m_pAppliance->GetVirtualSystemDescriptions();
 
     m_pModel = new UIApplianceModel(vsds, m_pTreeViewSettings);
+    m_pModel->setVsdHints(m_listVsdHints);
 
     ExportSortProxyModel *pProxy = new ExportSortProxyModel(this);
     pProxy->setSourceModel(m_pModel);
