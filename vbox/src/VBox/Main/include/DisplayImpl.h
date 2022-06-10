@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 75352 2018-11-09 10:56:10Z vboxsync $ */
+/* $Id: DisplayImpl.h 75448 2018-11-14 13:44:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -321,6 +321,7 @@ private:
     static DECLCALLBACK(void*) i_drvQueryInterface(PPDMIBASE pInterface, const char *pszIID);
     static DECLCALLBACK(int)   i_drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(void)  i_drvDestruct(PPDMDRVINS pDrvIns);
+    static DECLCALLBACK(void)  i_drvPowerOff(PPDMDRVINS pDrvIns);
     static DECLCALLBACK(int)   i_displayResizeCallback(PPDMIDISPLAYCONNECTOR pInterface, uint32_t bpp, void *pvVRAM,
                                                        uint32_t cbLine, uint32_t cx, uint32_t cy);
     static DECLCALLBACK(void)  i_displayUpdateCallback(PPDMIDISPLAYCONNECTOR pInterface,
