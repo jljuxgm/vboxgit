@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: VMMRZ.cpp 72859 2018-07-04 09:56:53Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -146,6 +146,8 @@ VMMRZDECL(void) VMMRZCallRing3Disable(PVMCPU pVCpu)
         if (pVCpu->vmm.s.pR0LoggerR0)
             pVCpu->vmm.s.pR0LoggerR0->fFlushingDisabled = true;
 # endif
+        if (pVCpu->vmm.s.pR0RelLoggerR0)
+            pVCpu->vmm.s.pR0RelLoggerR0->fFlushingDisabled = true;
 #endif
     }
 
@@ -178,6 +180,8 @@ VMMRZDECL(void) VMMRZCallRing3Enable(PVMCPU pVCpu)
         if (pVCpu->vmm.s.pR0LoggerR0)
             pVCpu->vmm.s.pR0LoggerR0->fFlushingDisabled = false;
 # endif
+        if (pVCpu->vmm.s.pR0RelLoggerR0)
+            pVCpu->vmm.s.pR0RelLoggerR0->fFlushingDisabled = false;
 #endif
     }
 
