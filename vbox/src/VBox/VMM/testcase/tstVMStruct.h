@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 74479 2018-09-26 14:28:55Z vboxsync $ */
+/* $Id: tstVMStruct.h 74542 2018-10-01 05:42:25Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -165,6 +165,8 @@
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVmwriteBitmapR3);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pAutoMsrAreaR0);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pAutoMsrAreaR3);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvMsrBitmapR0);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvMsrBitmapR3);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.enmHwvirt);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.fLocalForcedActions);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.fGif);
