@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76656 2019-01-06 15:54:19Z vboxsync $
+# $Id: Makefile.kmk 76657 2019-01-06 16:03:09Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -28,7 +28,7 @@ endif
 #
 # Include sub-makefile(s).
 #
-if 0 #ndef VBOX_ONLY_EXTPACKS
+ifndef VBOX_ONLY_EXTPACKS
  ifdef VBOX_WITH_WEBSERVICES
   include $(PATH_SUB_CURRENT)/webservice/Makefile.kmk
  endif
