@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: HostDnsService.h 77506 2019-02-28 16:25:19Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -57,7 +57,7 @@ class HostDnsMonitor
 
   public:
     static HostDnsMonitor *createHostDnsMonitor();
-    static void shutdown();
+    void shutdown();
 
     /* @note: method will wait till client call
        HostDnsService::monitorThreadInitializationDone() */
@@ -94,6 +94,7 @@ class HostDnsMonitorProxy
     HostDnsMonitorProxy();
     ~HostDnsMonitorProxy();
     void init(VirtualBox *virtualbox);
+    void uninit();
     void notify(const HostDnsInformation &info);
 
     HRESULT GetNameServers(std::vector<com::Utf8Str> &aNameServers);

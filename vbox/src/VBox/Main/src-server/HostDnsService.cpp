@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: HostDnsService.cpp 77506 2019-02-28 16:25:19Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -153,11 +153,9 @@ HostDnsMonitor *HostDnsMonitor::createHostDnsMonitor()
 
 void HostDnsMonitor::shutdown()
 {
-    /** @todo never called.
-     * HostDnsMonitor should be referenced by HostDnsMonitorProxy objects and the Host object
-     * and automatically deleted when not referenced anymore.
-     * Currently HostDnsMonitor can use already deleted m->virtualbox.
-     */
+    monitorThreadShutdown();
+    int rc = RTThreadWait(m->hMonitoringThread, 5000, NULL);
+    AssertRCSuccess(rc);
 }
 
 
@@ -178,7 +176,8 @@ HRESULT HostDnsMonitor::init(HostDnsMonitorProxy *proxy)
 
         rc = RTThreadCreate(&m->hMonitoringThread,
                             HostDnsMonitor::threadMonitoringRoutine,
-                            this, 128 * _1K, RTTHREADTYPE_IO, 0, "dns-monitor");
+                            this, 128 * _1K, RTTHREADTYPE_IO,
+                            RTTHREADFLAGS_WAITABLE, "dns-monitor");
         AssertRCReturn(rc, E_FAIL);
 
         RTSemEventWait(m->hDnsInitEvent, RT_INDEFINITE_WAIT);
@@ -266,12 +265,7 @@ HostDnsMonitorProxy::HostDnsMonitorProxy()
 
 HostDnsMonitorProxy::~HostDnsMonitorProxy()
 {
-    if (m)
-    {
-        /* XXX: m->monitor */
-        delete m;
-        m = NULL;
-    }
+    Assert(!m);
 }
 
 void HostDnsMonitorProxy::init(VirtualBox* aParent)
@@ -281,6 +275,13 @@ void HostDnsMonitorProxy::init(VirtualBox* aParent)
     m->monitor->init(this);
 }
 
+
+void HostDnsMonitorProxy::uninit()
+{
+    m->monitor->shutdown();
+    delete m;
+    m = NULL;
+}
 
 void HostDnsMonitorProxy::notify(const HostDnsInformation &info)
 {

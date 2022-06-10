@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 77436 2019-02-22 17:40:00Z vboxsync $ */
+/* $Id: HostImpl.cpp 77506 2019-02-28 16:25:19Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -497,6 +497,8 @@ void Host::uninit()
         pNet->uninit();
         m->llNetIfs.pop_front();
     }
+
+    m->hostDnsMonitorProxy.uninit();
 
 #ifdef VBOX_WITH_USB
     /* wait for USB proxy service to terminate before we uninit all USB
