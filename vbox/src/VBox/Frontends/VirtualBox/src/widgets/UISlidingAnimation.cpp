@@ -1,4 +1,4 @@
-/* $Id: UISlidingAnimation.cpp 73842 2018-08-22 17:15:51Z vboxsync $ */
+/* $Id: UISlidingAnimation.cpp 73844 2018-08-22 18:16:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingAnimation class implementation.
  */
@@ -26,9 +26,10 @@
 #include "UISlidingAnimation.h"
 
 
-UISlidingAnimation::UISlidingAnimation(Qt::Orientation enmOrientation, QWidget *pParent /* = 0 */)
+UISlidingAnimation::UISlidingAnimation(Qt::Orientation enmOrientation, bool fReverse, QWidget *pParent /* = 0 */)
     : QWidget(pParent)
     , m_enmOrientation(enmOrientation)
+    , m_fReverse(fReverse)
     , m_pAnimation(0)
     , m_pWidget(0)
     , m_pLabel1(0)
@@ -107,7 +108,7 @@ void UISlidingAnimation::prepare()
     m_pAnimation = UIAnimation::installPropertyAnimation(this,
                                                          "widgetGeometry",
                                                          "startWidgetGeometry", "finalWidgetGeometry",
-                                                         SIGNAL(sigForward()), SIGNAL(sigReverse()));
+                                                         SIGNAL(sigForward()), SIGNAL(sigReverse()), m_fReverse);
     connect(m_pAnimation, &UIAnimation::sigStateEnteredStart, this, &UISlidingAnimation::sltHandleStateEnteredStart);
     connect(m_pAnimation, &UIAnimation::sigStateEnteredFinal, this, &UISlidingAnimation::sltHandleStateEnteredFinal);
 
