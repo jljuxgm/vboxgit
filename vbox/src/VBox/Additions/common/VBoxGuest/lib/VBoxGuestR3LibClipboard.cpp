@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 78308 2019-04-26 06:46:50Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 78315 2019-04-26 09:06:32Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Clipboard.
  */
@@ -153,17 +153,17 @@ VBGLR3DECL(int) VbglR3ClipboardReadData(HGCMCLIENTID idClient, uint32_t fFormat,
 
 
 /**
- * Writes (advertises) guest clipboard formats to the host.
+ * Reports (advertises) guest clipboard formats to the host.
  *
  * @returns VBox status code.
  * @param   idClient        The client id returned by VbglR3ClipboardConnect().
  * @param   fFormats        The formats to advertise.
  */
-VBGLR3DECL(int) VbglR3ClipboardWriteFormats(HGCMCLIENTID idClient, uint32_t fFormats)
+VBGLR3DECL(int) VbglR3ClipboardReportFormats(HGCMCLIENTID idClient, uint32_t fFormats)
 {
     VBoxClipboardWriteFormats Msg;
 
-    VBGL_HGCM_HDR_INIT(&Msg.hdr, idClient, VBOX_SHARED_CLIPBOARD_FN_WRITE_FORMATS, 1);
+    VBGL_HGCM_HDR_INIT(&Msg.hdr, idClient, VBOX_SHARED_CLIPBOARD_FN_REPORT_FORMATS, 1);
     VbglHGCMParmUInt32Set(&Msg.formats, fFormats);
 
     return VbglR3HGCMCall(&Msg.hdr, sizeof(Msg));
