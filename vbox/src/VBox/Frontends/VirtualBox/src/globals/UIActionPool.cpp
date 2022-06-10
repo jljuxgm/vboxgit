@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 76174 2018-12-12 12:14:58Z vboxsync $ */
+/* $Id: UIActionPool.cpp 76176 2018-12-12 12:16:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -2784,10 +2784,11 @@ void UIActionPool::updateMenuGuestControlFileManager()
 
 void UIActionPool::updateMenuGuestControlFileManagerWrapper(UIMenu *pMenu)
 {
-    addAction(pMenu, action(UIActionIndex_M_GuestControlFileManager_T_Options));
-    addAction(pMenu, action(UIActionIndex_M_GuestControlFileManager_T_Log));
-    addAction(pMenu, action(UIActionIndex_M_GuestControlFileManager_T_FileOperations));
     addAction(pMenu, action(UIActionIndex_M_GuestControlFileManager_T_Session));
+    addAction(pMenu, action(UIActionIndex_M_GuestControlFileManager_T_Options));
+    addAction(pMenu, action(UIActionIndex_M_GuestControlFileManager_T_FileOperations));
+    addAction(pMenu, action(UIActionIndex_M_GuestControlFileManager_T_Log));
+
     addAction(pMenu, action(UIActionIndex_M_GuestControlFileManager_M_HostSubmenu));
     addAction(pMenu, action(UIActionIndex_M_GuestControlFileManager_M_GuestSubmenu));
 
