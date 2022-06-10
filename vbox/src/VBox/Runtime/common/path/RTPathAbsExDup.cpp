@@ -1,4 +1,4 @@
-/* $Id: RTPathAbsExDup.cpp 78090 2019-04-10 14:19:04Z vboxsync $ */
+/* $Id: RTPathAbsExDup.cpp 78098 2019-04-10 15:51:59Z vboxsync $ */
 /** @file
  * IPRT - RTPathAbsExDup
  */
@@ -50,7 +50,7 @@ RTDECL(char *) RTPathAbsExDup(const char *pszBase, const char *pszPath)
 {
     char szPath[RTPATH_MAX];
     size_t cbPath = sizeof(szPath);
-    int rc = RTPathAbsExEx(pszBase, pszPath, RTPATH_STR_F_STYLE_HOST, szPath, &cbPath);
+    int rc = RTPathAbsEx(pszBase, pszPath, RTPATH_STR_F_STYLE_HOST, szPath, &cbPath);
     if (RT_SUCCESS(rc))
         return RTStrDup(szPath);
 
@@ -65,7 +65,7 @@ RTDECL(char *) RTPathAbsExDup(const char *pszBase, const char *pszPath)
             char *pszAbsPath = (char *)RTStrAlloc(cbPath);
             if (pszAbsPath)
             {
-                rc = RTPathAbsExEx(pszBase, pszPath, RTPATH_STR_F_STYLE_HOST, pszAbsPath, &cbPath);
+                rc = RTPathAbsEx(pszBase, pszPath, RTPATH_STR_F_STYLE_HOST, pszAbsPath, &cbPath);
                 if (RT_SUCCESS(rc))
                     return pszAbsPath;
                 RTStrFree(pszAbsPath);

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 78090 2019-04-10 14:19:04Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 78098 2019-04-10 15:51:59Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -4013,11 +4013,11 @@ int VirtualBox::i_calculateFullPath(const Utf8Str &strPath, Utf8Str &aResult)
 
     char szFolder[RTPATH_MAX];
     size_t cbFolder = sizeof(szFolder);
-    int vrc = RTPathAbsExEx(m->strHomeDir.c_str(),
-                            strPath.c_str(),
-                            RTPATH_STR_F_STYLE_HOST,
-                            szFolder,
-                            &cbFolder);
+    int vrc = RTPathAbsEx(m->strHomeDir.c_str(),
+                          strPath.c_str(),
+                          RTPATH_STR_F_STYLE_HOST,
+                          szFolder,
+                          &cbFolder);
     if (RT_SUCCESS(vrc))
         aResult = szFolder;
 
