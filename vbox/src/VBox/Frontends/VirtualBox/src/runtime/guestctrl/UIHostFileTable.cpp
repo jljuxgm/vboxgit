@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 75136 2018-10-29 08:47:55Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 75148 2018-10-29 13:56:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -128,8 +128,9 @@ UIHostFileTable::UIHostFileTable(UIActionPool *pActionPool, QWidget *pParent /* 
     :UIGuestControlFileTable(pActionPool, pParent)
 {
     initializeFileTree();
+    prepareToolbar();
+    prepareActionConnections();
     retranslateUi();
-    prepareActions();
 }
 
 void UIHostFileTable::retranslateUi()
@@ -139,7 +140,7 @@ void UIHostFileTable::retranslateUi()
     UIGuestControlFileTable::retranslateUi();
 }
 
-void UIHostFileTable::prepareActions()
+void UIHostFileTable::prepareToolbar()
 {
     if (m_pToolBar && m_pActionPool)
     {
@@ -171,7 +172,7 @@ void UIHostFileTable::prepareActions()
     // if (m_pPaste)
     //     m_pPaste->setVisible(false);
 
-    UIGuestControlFileTable::prepareActions();
+    disableSelectionDependentActions();
 }
 
 void UIHostFileTable::readDirectory(const QString& strPath, UIFileTableItem *parent, bool isStartDir /*= false*/)
