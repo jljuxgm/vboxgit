@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 74695 2018-10-09 05:56:37Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 74696 2018-10-09 05:58:08Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -969,7 +969,7 @@ VMM_INT_DECL(bool) HMVmxGetIoBitmapPermission(void const *pvIoBitmapA, void cons
     Assert(cbAccess == 1 || cbAccess == 2 || cbAccess == 4);
 
     /*
-     * If the I/O port accecss wraps around the 16-bit port I/O space,
+     * If the I/O port access wraps around the 16-bit port I/O space,
      * we must cause a VM-exit.
      *
      * See Intel spec. 25.1.3 "Instructions That Cause VM Exits Conditionally".
