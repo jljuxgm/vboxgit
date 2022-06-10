@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DevAHCI.cpp 77182 2019-02-06 18:24:30Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -6186,6 +6186,9 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         else
             return PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS,
                                        N_("AHCI: Failed to attach drive to %s"), pszName);
+
+        RTStrFree(pszName);
+        pszName = NULL;
     }
 
     /*
