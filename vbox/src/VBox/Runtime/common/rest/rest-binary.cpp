@@ -1,4 +1,4 @@
-/* $Id: rest-binary.cpp 74149 2018-09-07 18:51:37Z vboxsync $ */
+/* $Id: rest-binary.cpp 74228 2018-09-12 16:52:21Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestBinary and Descendants.
  */
@@ -263,6 +263,8 @@ int RTCRestBinaryParameter::assignCopy(RTCRestBinaryParameter const &a_rThat)
     if (RT_SUCCESS(rc))
         rc = m_strContentType.assignNoThrow(a_rThat.m_strContentType);
     m_cbContentLength = a_rThat.m_cbContentLength;
+    m_pfnProducer = a_rThat.m_pfnProducer;
+    m_pvCallbackData = a_rThat.m_pvCallbackData;
     return VINF_SUCCESS;
 }
 
