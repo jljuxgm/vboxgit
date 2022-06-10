@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 73287 2018-07-21 04:50:51Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 73288 2018-07-21 04:54:31Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1168,11 +1168,11 @@ static void hmR0VmxSetMsrPermission(PVMCPU pVCpu, uint32_t uMsr, VMXMSREXITREAD 
      * 0x800 - 0xbff - Low MSR write bits
      * 0xc00 - 0xfff - High MSR write bits
      */
-    if (uMsr <= 0x00001FFF)
+    if (uMsr <= 0x00001fff)
         iBit = uMsr;
-    else if (uMsr - UINT32_C(0xC0000000) <= UINT32_C(0x00001FFF))
+    else if (uMsr - UINT32_C(0xc0000000) <= UINT32_C(0x00001fff))
     {
-        iBit = uMsr - UINT32_C(0xC0000000);
+        iBit = uMsr - UINT32_C(0xc0000000);
         pbMsrBitmap += 0x400;
     }
     else
@@ -1213,12 +1213,12 @@ static int hmR0VmxGetMsrPermission(PVMCPU pVCpu, uint32_t uMsr, PVMXMSREXITREAD 
     uint8_t *pbMsrBitmap = (uint8_t *)pVCpu->hm.s.vmx.pvMsrBitmap;
 
     /* See hmR0VmxSetMsrPermission() for the layout. */
-    if (uMsr <= 0x00001FFF)
+    if (uMsr <= 0x00001fff)
         iBit = uMsr;
-    else if (   uMsr >= 0xC0000000
-             && uMsr <= 0xC0001FFF)
+    else if (   uMsr >= 0xc0000000
+             && uMsr <= 0xc0001fff)
     {
-        iBit = (uMsr - 0xC0000000);
+        iBit = (uMsr - 0xc0000000);
         pbMsrBitmap += 0x400;
     }
     else
