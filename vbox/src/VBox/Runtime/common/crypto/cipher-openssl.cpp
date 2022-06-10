@@ -1,4 +1,4 @@
-/* $Id: cipher-openssl.cpp 74315 2018-09-17 15:57:18Z vboxsync $ */
+/* $Id: cipher-openssl.cpp 74327 2018-09-17 22:13:09Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Symmetric Cipher using OpenSSL.
  */
@@ -157,7 +157,7 @@ RTDECL(uint32_t) RTCrCipherGetKeyLength(RTCRCIPHER hCipher)
 }
 
 
-RTDECL(uint32_t) RTCrCipherGetInitialVectorLength(RTCRCIPHER hCipher)
+RTDECL(uint32_t) RTCrCipherGetInitializationVectorLength(RTCRCIPHER hCipher)
 {
     RTCRCIPHERINT *pThis = hCipher;
     AssertPtrReturn(pThis, 0);
