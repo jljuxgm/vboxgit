@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 76821 2019-01-15 04:51:22Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 76888 2019-01-18 11:08:08Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -24,7 +24,7 @@
 #include "HMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/pdmapi.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 
 /*********************************************************************************************************************************
