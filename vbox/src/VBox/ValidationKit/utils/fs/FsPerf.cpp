@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 76878 2019-01-18 10:15:56Z vboxsync $ */
+/* $Id: FsPerf.cpp 76889 2019-01-18 12:06:18Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -1309,7 +1309,7 @@ void fsPerfIoSeek(RTFILE hFile1, uint64_t cbFile)
     {
         switch (RTRandU32Ex(RTFILE_SEEK_BEGIN, RTFILE_SEEK_END))
         {
-            default: AssertFailed();
+            default: AssertFailedBreak();
             case RTFILE_SEEK_BEGIN:
                 aSeeks[i].uMethod   = RTFILE_SEEK_BEGIN;
                 aSeeks[i].rc        = VINF_SUCCESS;
@@ -1724,7 +1724,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 76878 $";
+                char szRev[] = "$Revision: 76889 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
