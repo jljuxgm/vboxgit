@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 76958 2019-01-23 18:23:04Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 77075 2019-01-31 13:18:05Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -531,16 +531,17 @@ int GuestFile::i_onFileNotify(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOST
                 if (RT_FAILURE(rc))
                     break;
 
-                Log3ThisFunc(("cbWritten=%RU32\n", dataCb.u.write.cbWritten));
+                const uint32_t cbWritten = dataCb.u.write.cbWritten;
+
+                Log3ThisFunc(("cbWritten=%RU32\n", cbWritten));
 
                 AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-                mData.mOffCurrent += dataCb.u.write.cbWritten;
+                mData.mOffCurrent += cbWritten;
 
                 alock.release();
 
-                fireGuestFileWriteEvent(mEventSource, mSession, this, mData.mOffCurrent,
-                                        dataCb.u.write.cbWritten);
+                fireGuestFileWriteEvent(mEventSource, mSession, this, mData.mOffCurrent, cbWritten);
             }
             break;
         }
