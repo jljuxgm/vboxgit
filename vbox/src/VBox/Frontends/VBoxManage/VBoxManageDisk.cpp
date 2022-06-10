@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 72952 2018-07-07 16:46:43Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 72956 2018-07-07 19:09:11Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -2243,7 +2243,7 @@ static RTEXITCODE handleMediumIOCat(HandlerArg *a, int iFirst, PMEDIUMIOCOMMONOP
                 if (cbReturned)
                 {
                     BYTE const *pbBuf = SafeArrayBuf.raw();
-                    int vrc;
+                    int vrc = VINF_SUCCESS;
                     if (!fHex)
                         vrc = RTStrmWrite(pOut, pbBuf, cbReturned);
                     else
