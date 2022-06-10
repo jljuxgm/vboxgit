@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 72972 2018-07-08 13:07:58Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 75674 2018-11-22 18:08:42Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -484,8 +484,6 @@ HRESULT NetworkAdapter::setBridgedInterface(const com::Utf8Str &aBridgedInterfac
     AutoMutableOrSavedOrRunningStateDependency adep(mParent);
     if (FAILED(adep.rc())) return adep.rc();
 
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-
     Bstr canonicalName = aBridgedInterface;
 #ifdef RT_OS_DARWIN
     com::SafeIfaceArray<IHostNetworkInterface> hostNetworkInterfaces;
@@ -508,6 +506,8 @@ HRESULT NetworkAdapter::setBridgedInterface(const com::Utf8Str &aBridgedInterfac
         }
     }
 #endif /* RT_OS_DARWIN */
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
     if (Bstr(mData->strBridgedName) != canonicalName)
     {
         /* if an empty/null string is to be set, bridged interface must be
