@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: Recording.cpp 75391 2018-11-12 09:22:42Z vboxsync $ */
 /** @file
  * Recording (with optional audio recording) code.
  *
@@ -144,7 +144,7 @@ DECLCALLBACK(int) RecordingContext::threadMain(RTTHREAD hThreadSelf, void *pvUse
         }
 
         if (RT_FAILURE(rc))
-            LogRel(("Recording: Encoding thread failed with rc=%Rrc\n", rc));
+            LogRel(("Recording: Encoding thread failed (%Rrc)\n", rc));
 
         /* Keep going in case of errors. */
 
@@ -237,8 +237,11 @@ int RecordingContext::startInternal(void)
 
     if (RT_SUCCESS(rc))
     {
+        LogRel(("Recording: Started\n"));
         this->enmState = RECORDINGSTS_STARTED;
     }
+    else
+        Log(("Recording: Failed to start (%Rrc)\n", rc));
 
     return rc;
 }
@@ -260,8 +263,11 @@ int RecordingContext::stopInternal(void)
 
     if (RT_SUCCESS(rc))
     {
+        LogRel(("Recording: Stopped\n"));
         this->enmState = RECORDINGSTS_CREATED;
     }
+    else
+        Log(("Recording: Failed to stop (%Rrc)\n", rc));
 
     LogFlowThisFunc(("%Rrc\n", rc));
     return rc;
