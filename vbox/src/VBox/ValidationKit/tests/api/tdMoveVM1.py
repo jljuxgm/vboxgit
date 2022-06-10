@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 72732 2018-06-29 06:53:30Z vboxsync $"
+# "$Id: tdMoveVM1.py 72742 2018-06-29 07:34:14Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72732 $"
+__version__ = "$Revision: 72742 $"
 
 # Standard Python imports.
 import os
@@ -58,8 +58,11 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
     def __init__(self, oTstDrv):
         base.SubTestDriverBase.__init__(self, 'move-vm', oTstDrv)
 
-        self.asRsrcs.append(os.path.join('5.3','isos','tdMoveVM1.iso'));
-        self.asRsrcs.append(os.path.join('5.3','floppy','tdMoveVM1.img'));
+        # Note! Hardcoded indexing in test code further down.
+        self.asRsrcs = [
+            os.path.join('5.3','isos','tdMoveVM1.iso'),
+            os.path.join('5.3','floppy','tdMoveVM1.img')
+        ];
 
         self.asImagesNames = []
         self.dsKeys = {

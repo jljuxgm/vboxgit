@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 72732 2018-06-29 06:53:30Z vboxsync $
+# $Id: base.py 72742 2018-06-29 07:34:14Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72732 $"
+__version__ = "$Revision: 72742 $"
 
 
 # Standard Python imports.
@@ -856,7 +856,7 @@ class TestDriverBase(object): # pylint: disable=R0902
         self.secTimeoutFudge = 30;
 
         # List of sub-test drivers (SubTestDriverBase derivatives).
-        self.aoSubTstDrvs    = [];
+        self.aoSubTstDrvs    = [];          # type: list(SubTestDriverBase)
 
         # Use the scratch path for temporary files.
         if self.sHost in ['win', 'os2']:
@@ -1383,9 +1383,12 @@ class TestDriverBase(object): # pylint: disable=R0902
         Returns a set of file and/or directory names relative to
         TESTBOX_PATH_RESOURCES.
 
-        Override this.
+        Override this, call super when using sub-test drivers.
         """
-        return [];
+        asRsrcs = [];
+        for oSubTstDrv in self.aoSubTstDrvs:
+            asRsrcs.extend(oSubTstDrv.asRsrcs);
+        return asRsrcs;
 
     def actionExtract(self):
         """
