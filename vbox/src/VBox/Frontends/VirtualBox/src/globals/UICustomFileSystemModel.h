@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 76626 2019-01-03 21:18:50Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.h 76671 2019-01-07 12:15:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -57,6 +57,7 @@ public:
     /** Searches for the child by path and returns it if found. */
     UICustomFileSystemItem *child(const QString &path) const;
     int childCount() const;
+    QList<const UICustomFileSystemItem*> children() const;
     int columnCount() const;
     QVariant data(int column) const;
     void setData(const QVariant &data, int index);

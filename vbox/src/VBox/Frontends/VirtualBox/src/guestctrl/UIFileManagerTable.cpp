@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 76627 2019-01-03 21:28:51Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 76671 2019-01-07 12:15:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -879,7 +879,6 @@ void UIFileManagerTable::sltHandleItemRenameAttempt(UICustomFileSystemItem *pIte
         sigLogOutput(QString(pItem->path()).append(" could not be renamed"), FileManagerLogType_Error);
     }
 }
-
 
 void UIFileManagerTable::sltCreateFileViewContextMenu(const QPoint &point)
 {
