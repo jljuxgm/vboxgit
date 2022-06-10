@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 73850 2018-08-22 22:13:47Z vboxsync $
+# $Id: Makefile.kmk 73911 2018-08-27 12:09:03Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -800,7 +800,7 @@ if defined(VBOX_WITH_HARDENING) && !defined(VBOX_GUI_WITH_SHARED_LIBRARY)
 	$(INSTALL) -m 0755 $(VBOX_PATH_DI_SRC)/VirtualBox/postflight                        $(VBOX_PATH_PACK_TMP)/VirtualBox.pkg.res/
 else
 	$(SED)	$(if-expr !defined(VBOX_WITH_HARDENING),-e '/WITH_HARDENING/d',) \
-		$(if-expr !defined(VBOX_GUI_WITH_SHARED_LIBRARY),-e '/WITH_SHARED_LIBRARY/d',) \
+		$(if-expr !defined(VBOX_GUI_WITH_SHARED_LIBRARY),-e '/WITH_SHARED_LIBRARY/d',-e '/WITHOUT_SHARED_LIBRARY/d') \
 		--output $(VBOX_PATH_PACK_TMP)/VirtualBox.pkg.res/postflight \
 		$(VBOX_PATH_DI_SRC)/VirtualBox/postflight
 	$(CHMOD) 0755 $(VBOX_PATH_PACK_TMP)/VirtualBox.pkg.res/postflight
