@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 73846 2018-08-22 18:27:21Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 73882 2018-08-24 16:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -658,12 +658,12 @@ void UIVirtualBoxManagerWidget::updateToolbar()
     /* Add 'Log Viewer' actions block: */
     if (isToolOpened(ToolTypeMachine_LogViewer))
     {
-        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_LogViewer_S_Save));
-        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_LogViewer_T_Find));
-        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_LogViewer_T_Filter));
-        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_LogViewer_T_Bookmark));
-        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_LogViewer_T_Settings));
-        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_LogViewer_S_Refresh));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Log_S_Save));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Log_T_Find));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Log_T_Filter));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Log_T_Bookmark));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Log_T_Settings));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_Log_S_Refresh));
     }
 
     /* Add 'Medium' actions block: */

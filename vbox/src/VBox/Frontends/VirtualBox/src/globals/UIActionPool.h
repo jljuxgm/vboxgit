@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 73859 2018-08-23 16:33:13Z vboxsync $ */
+/* $Id: UIActionPool.h 73882 2018-08-24 16:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -87,15 +87,15 @@ enum UIActionIndex
     UIActionIndex_Simple_About,
 #endif
 
-    /* 'Log Viewer' menu actions: */
-    UIActionIndex_M_LogViewerWindow,
-    UIActionIndex_M_LogViewer,
-    UIActionIndex_M_LogViewer_T_Find,
-    UIActionIndex_M_LogViewer_T_Filter,
-    UIActionIndex_M_LogViewer_T_Bookmark,
-    UIActionIndex_M_LogViewer_T_Settings,
-    UIActionIndex_M_LogViewer_S_Refresh,
-    UIActionIndex_M_LogViewer_S_Save,
+    /* 'Log' menu actions: */
+    UIActionIndex_M_LogWindow,
+    UIActionIndex_M_Log,
+    UIActionIndex_M_Log_T_Find,
+    UIActionIndex_M_Log_T_Filter,
+    UIActionIndex_M_Log_T_Bookmark,
+    UIActionIndex_M_Log_T_Settings,
+    UIActionIndex_M_Log_S_Refresh,
+    UIActionIndex_M_Log_S_Save,
 
     /* Maximum index: */
     UIActionIndex_Max
