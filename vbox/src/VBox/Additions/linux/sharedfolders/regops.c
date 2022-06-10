@@ -1,6 +1,6 @@
-/* $Id: regops.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: regops.c 76733 2019-01-09 12:58:33Z vboxsync $ */
 /** @file
- * vboxsf - VBox Linux Shared Folders, Regular file inode and file operations.
+ * vboxsf - VBox Linux Shared Folders VFS, Regular file inode and file operations.
  */
 
 /*

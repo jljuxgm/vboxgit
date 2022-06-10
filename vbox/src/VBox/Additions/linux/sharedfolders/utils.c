@@ -1,8 +1,8 @@
+/* $Id: utils.c 76733 2019-01-09 12:58:33Z vboxsync $ */
 /** @file
+ * vboxsf - VBox Linux Shared Folders VFS, utility functions.
  *
- * vboxsf -- VirtualBox Guest Additions for Linux:
- * Utility functions.
- * Mainly conversion from/to VirtualBox/Linux data structures
+ * Utility functions (mainly conversion from/to VirtualBox/Linux data structures).
  */
 
 /*

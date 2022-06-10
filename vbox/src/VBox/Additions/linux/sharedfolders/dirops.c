@@ -1,7 +1,6 @@
+/* $Id: dirops.c 76733 2019-01-09 12:58:33Z vboxsync $ */
 /** @file
- *
- * vboxsf -- VirtualBox Guest Additions for Linux:
- * Directory inode and file operations
+ * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations
  */
 
 /*

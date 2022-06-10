@@ -1,5 +1,6 @@
+/* $Id: vbsfmount.h 76733 2019-01-09 12:58:33Z vboxsync $ */
 /** @file
- * vboxsf -- VirtualBox Guest Additions for Linux: mount(2) parameter structure.
+ * vboxsf - VBox Linux Shared Folders VFS, mount(2) parameter structure.
  */
 
 /*

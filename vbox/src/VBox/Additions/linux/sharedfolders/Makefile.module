@@ -1,6 +1,6 @@
-# $Id: Makefile.module 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.module 76733 2019-01-09 12:58:33Z vboxsync $
 ## @file
-# VirtualBox Guest Additions Module Makefile.
+# VBox Linux Shared Folders VFS Module Makefile.
 #
 # (For 2.6.x this file must be 'Makefile'!)
 #

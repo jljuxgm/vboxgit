@@ -1,6 +1,6 @@
-# $Id: .scm-settings 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: .scm-settings 76733 2019-01-09 12:58:33Z vboxsync $
 ## @file
-# Source code massager settings for linux shared folders driver.
+# Source code massager settings for linux shared folders module.
 #
 
 #

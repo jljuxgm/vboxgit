@@ -1,5 +1,6 @@
+/* $Id: vfsmod.h 76733 2019-01-09 12:58:33Z vboxsync $ */
 /** @file
- * vboxsf - VirtualBox Guest Additions for Linux.
+ * vboxsf - Linux Shared Folders VFS, internal header.
  */
 
 /*

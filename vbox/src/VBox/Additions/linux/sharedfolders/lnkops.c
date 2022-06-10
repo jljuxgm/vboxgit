@@ -1,7 +1,6 @@
+/* $Id: lnkops.c 76733 2019-01-09 12:58:33Z vboxsync $ */
 /** @file
- *
- * vboxsf -- VirtualBox Guest Additions for Linux:
- * Operations for symbolic links.
+ * vboxsf - VBox Linux Shared Folders VFS, operations for symbolic links.
  */
 
 /*
