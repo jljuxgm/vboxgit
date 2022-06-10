@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 73133 2018-07-13 18:32:18Z vboxsync $ */
+/* $Id: ApplianceImpl.h 73743 2018-08-17 17:56:34Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -129,7 +129,6 @@ private:
     HRESULT i_setUpProgress(ComObjPtr<Progress> &pProgress,
                             const Utf8Str &strDescription,
                             SetUpProgressMode mode);
-    void i_waitForAsyncProgress(ComObjPtr<Progress> &pProgressThis, ComPtr<IProgress> &pProgressAsync);
     void i_addWarning(const char* aWarning, ...);
     void i_disksWeight();
     void i_parseBucket(Utf8Str &aPath, Utf8Str &aBucket);

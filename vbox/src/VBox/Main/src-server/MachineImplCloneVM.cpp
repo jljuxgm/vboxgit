@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 73664 2018-08-14 16:40:00Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 73743 2018-08-17 17:56:34Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1289,18 +1289,10 @@ HRESULT MachineCloneVM::run()
 
                         /* Wait until the async process has finished. */
                         srcLock.release();
-                        rc = d->pProgress->WaitForAsyncProgressCompletion(progress2);
+                        rc = d->pProgress->i_waitForOtherProgressCompletion(progress2);
                         srcLock.acquire();
                         if (FAILED(rc)) throw rc;
 
-                        /* Check the result of the async process. */
-                        LONG iRc;
-                        rc = progress2->COMGETTER(ResultCode)(&iRc);
-                        if (FAILED(rc)) throw rc;
-                        /* If the thread of the progress object has an error, then
-                         * retrieve the error info from there, or it'll be lost. */
-                        if (FAILED(iRc))
-                            throw p->setError(ProgressErrorInfo(progress2));
                         /* Remember created medium. */
                         newMedia.append(pTarget);
                         /* Get the medium type from the source and set it to the
