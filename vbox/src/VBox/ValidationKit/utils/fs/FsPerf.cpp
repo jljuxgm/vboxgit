@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 77002 2019-01-26 14:09:25Z vboxsync $ */
+/* $Id: FsPerf.cpp 77007 2019-01-26 18:46:50Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -2235,6 +2235,7 @@ void fsPerfMMap(RTFILE hFile1, RTFILE hFileNoCache, uint64_t cbFile)
 
 # ifdef RT_OS_WINDOWS
         HANDLE hSection;
+        pbMapping = NULL;
         for (;; cbMapping /= 2)
         {
             hSection = CreateFileMapping((HANDLE)RTFileToNative(hFile1), NULL,
@@ -2787,7 +2788,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 77002 $";
+                char szRev[] = "$Revision: 77007 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
