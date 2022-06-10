@@ -1,4 +1,4 @@
-/* $Id: resource.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: resource.h 76575 2019-01-01 06:01:16Z vboxsync $ */
 /** @file
  * VBoxStub - resource header file.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_win_Stub_resource_h
-#define VBOX_INCLUDED_win_Stub_resource_h
+#ifndef VBOX_INCLUDED_SRC_Stub_resource_h
+#define VBOX_INCLUDED_SRC_Stub_resource_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

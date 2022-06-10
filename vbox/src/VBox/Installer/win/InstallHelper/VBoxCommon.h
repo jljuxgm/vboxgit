@@ -1,4 +1,4 @@
-/* $Id: VBoxCommon.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxCommon.h 76575 2019-01-01 06:01:16Z vboxsync $ */
 /** @file
  * VBoxCommon - Misc helper routines for install helper.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxInstallHelper_Common_h
-#define ___VBoxInstallHelper_Common_h
+#ifndef VBOX_INCLUDED_SRC_InstallHelper_VBoxCommon_h
+#define VBOX_INCLUDED_SRC_InstallHelper_VBoxCommon_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

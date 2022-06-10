@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxStub.h 76575 2019-01-01 06:01:16Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_win_Stub_VBoxStub_h
-#define VBOX_INCLUDED_win_Stub_VBoxStub_h
+#ifndef VBOX_INCLUDED_SRC_Stub_VBoxStub_h
+#define VBOX_INCLUDED_SRC_Stub_VBoxStub_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
