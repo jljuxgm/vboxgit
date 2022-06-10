@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIToolPaneMachine.cpp 76771 2019-01-11 12:51:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -58,7 +58,9 @@ UIToolPaneMachine::~UIToolPaneMachine()
 
 UIToolType UIToolPaneMachine::currentTool() const
 {
-    return m_pLayout->currentWidget()->property("ToolType").value<UIToolType>();
+    return   m_pLayout && m_pLayout->currentWidget()
+           ? m_pLayout->currentWidget()->property("ToolType").value<UIToolType>()
+           : UIToolType_Invalid;
 }
 
 bool UIToolPaneMachine::isToolOpened(UIToolType enmType) const

@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 76771 2019-01-11 12:51:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -55,7 +55,9 @@ UIToolPaneGlobal::~UIToolPaneGlobal()
 
 UIToolType UIToolPaneGlobal::currentTool() const
 {
-    return m_pLayout->currentWidget()->property("ToolType").value<UIToolType>();
+    return   m_pLayout && m_pLayout->currentWidget()
+           ? m_pLayout->currentWidget()->property("ToolType").value<UIToolType>()
+           : UIToolType_Invalid;
 }
 
 bool UIToolPaneGlobal::isToolOpened(UIToolType enmType) const
