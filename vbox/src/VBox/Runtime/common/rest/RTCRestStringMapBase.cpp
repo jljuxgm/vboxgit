@@ -1,4 +1,4 @@
-/* $Id: RTCRestStringMapBase.cpp 73956 2018-08-29 15:09:34Z vboxsync $ */
+/* $Id: RTCRestStringMapBase.cpp 73965 2018-08-29 17:19:20Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestStringMapBase implementation.
  */
@@ -255,7 +255,7 @@ bool RTCRestStringMapBase::remove(RTCString const &a_rStrKey)
 *   Protected methods                                                                                                            *
 *********************************************************************************************************************************/
 
-int RTCRestStringMapBase::copyMapWorker(RTCRestStringMapBase const &a_rThat, bool fThrow)
+int RTCRestStringMapBase::copyMapWorker(RTCRestStringMapBase const &a_rThat, bool a_fThrow)
 {
     Assert(this != &a_rThat);
     clear();
@@ -266,7 +266,7 @@ int RTCRestStringMapBase::copyMapWorker(RTCRestStringMapBase const &a_rThat, boo
         int rc = putCopyWorker(pCur->strKey.c_str(), *pCur->pValue, true /*a_fReplace*/);
         if (RT_SUCCESS(rc))
         { /* likely */ }
-        else if (fThrow)
+        else if (a_fThrow)
             throw std::bad_alloc();
         else
             return rc;
