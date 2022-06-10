@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 74431 2018-09-24 09:16:17Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 74432 2018-09-24 09:19:19Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -765,6 +765,9 @@ static HRESULT listSystemProperties(const ComPtr<IVirtualBox> &pVirtualBox)
         case ProxyMode_System:              psz = "System"; break;
         case ProxyMode_NoProxy:             psz = "NoProxy"; break;
         case ProxyMode_Manual:              psz = "Manual"; break;
+#ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK
+        case ProxyMode_32BitHack:           break; /* Shut up compiler warnings. */
+#endif
     }
     RTPrintf("Proxy Mode:                      %s\n", psz);
     systemProperties->COMGETTER(ProxyURL)(str.asOutParam());
