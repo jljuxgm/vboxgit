@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 74692 2018-10-08 18:48:31Z vboxsync $ */
+/* $Id: RTSignTool.cpp 74707 2018-10-09 08:36:39Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -1420,15 +1420,22 @@ static RTEXITCODE HandleVerifyExeWorker(VERIFYEXESTATE *pState, const char *pszF
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "Error opening executable image '%s': %Rrc", pszFilename, rc);
 
 
+    RTTIMESPEC Now;
+    bool       fTriedNow = false;
     rc = RTLdrQueryProp(hLdrMod, RTLDRPROP_TIMESTAMP_SECONDS, &pState->uTimestamp, sizeof(pState->uTimestamp));
+    if (rc == VERR_NOT_FOUND)
+    {
+        fTriedNow = true;
+        pState->uTimestamp = RTTimeSpecGetSeconds(RTTimeNow(&Now));
+        rc = VINF_SUCCESS;
+    }
     if (RT_SUCCESS(rc))
     {
         rc = RTLdrVerifySignature(hLdrMod, VerifyExeCallback, pState, RTErrInfoInitStatic(pStaticErrInfo));
         if (RT_SUCCESS(rc))
             RTMsgInfo("'%s' is valid.\n", pszFilename);
-        else if (rc == VERR_CR_X509_CPV_NOT_VALID_AT_TIME)
+        else if (rc == VERR_CR_X509_CPV_NOT_VALID_AT_TIME && !fTriedNow)
         {
-            RTTIMESPEC Now;
             pState->uTimestamp = RTTimeSpecGetSeconds(RTTimeNow(&Now));
             rc = RTLdrVerifySignature(hLdrMod, VerifyExeCallback, pState, RTErrInfoInitStatic(pStaticErrInfo));
             if (RT_SUCCESS(rc))
