@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic4.cpp 73318 2018-07-23 12:58:55Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic4.cpp 73319 2018-07-23 13:20:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic4 class implementation.
  */
@@ -78,10 +78,10 @@ void UIWizardExportAppPage4::populateCloudClientParameters()
 }
 
 /* static */
-QList<CloudClientParameter> UIWizardExportAppPage4::parseJsonDocument(const QJsonDocument &document)
+QList<AbstractVSDParameter> UIWizardExportAppPage4::parseJsonDocument(const QJsonDocument &document)
 {
     /* Prepare parameters: */
-    QList<CloudClientParameter> parameters;
+    QList<AbstractVSDParameter> parameters;
 
     /* Convert document to object, make sure it isn't empty: */
     QJsonObject documentObject = document.object();
@@ -93,7 +93,7 @@ QList<CloudClientParameter> UIWizardExportAppPage4::parseJsonDocument(const QJso
         //printf("Element name: \"%s\"\n", strElementName.toUtf8().constData());
 
         /* Prepare parameter: */
-        CloudClientParameter parameter;
+        AbstractVSDParameter parameter;
 
         /* Assign name: */
         parameter.name = strElementName;
@@ -124,7 +124,7 @@ QList<CloudClientParameter> UIWizardExportAppPage4::parseJsonDocument(const QJso
             else
             if (strFieldName == "bool")
             {
-                CloudClientParameterBool get;
+                AbstractVSDParameterBool get;
                 get.value = parseJsonFieldBool(strFieldName, field);
                 parameter.get = QVariant::fromValue(get);
                 parameter.kind = ParameterKind_Bool;
@@ -132,7 +132,7 @@ QList<CloudClientParameter> UIWizardExportAppPage4::parseJsonDocument(const QJso
             else
             if (strFieldName == "min")
             {
-                CloudClientParameterDouble get = parameter.get.value<CloudClientParameterDouble>();
+                AbstractVSDParameterDouble get = parameter.get.value<AbstractVSDParameterDouble>();
                 get.minimum = parseJsonFieldDouble(strFieldName, field);
                 parameter.get = QVariant::fromValue(get);
                 parameter.kind = ParameterKind_Double;
@@ -140,7 +140,7 @@ QList<CloudClientParameter> UIWizardExportAppPage4::parseJsonDocument(const QJso
             else
             if (strFieldName == "max")
             {
-                CloudClientParameterDouble get = parameter.get.value<CloudClientParameterDouble>();
+                AbstractVSDParameterDouble get = parameter.get.value<AbstractVSDParameterDouble>();
                 get.maximum = parseJsonFieldDouble(strFieldName, field);
                 parameter.get = QVariant::fromValue(get);
                 parameter.kind = ParameterKind_Double;
@@ -148,7 +148,7 @@ QList<CloudClientParameter> UIWizardExportAppPage4::parseJsonDocument(const QJso
             else
             if (strFieldName == "unit")
             {
-                CloudClientParameterDouble get = parameter.get.value<CloudClientParameterDouble>();
+                AbstractVSDParameterDouble get = parameter.get.value<AbstractVSDParameterDouble>();
                 get.unit = parseJsonFieldString(strFieldName, field);
                 parameter.get = QVariant::fromValue(get);
                 parameter.kind = ParameterKind_Double;
@@ -156,7 +156,7 @@ QList<CloudClientParameter> UIWizardExportAppPage4::parseJsonDocument(const QJso
             else
             if (strFieldName == "items")
             {
-                CloudClientParameterArray get;
+                AbstractVSDParameterArray get;
                 get.values = parseJsonFieldArray(strFieldName, field);
                 parameter.get = QVariant::fromValue(get);
                 parameter.kind = ParameterKind_Array;
