@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 75224 2018-11-02 12:45:59Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 75424 2018-11-13 16:05:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -688,9 +688,9 @@ public:
         void setLogWindowGeometry(const QRect &geometry, bool fMaximized);
     /** @} */
 
-    /** @name Virtual Machine: Log Viewer widget settings
+    /** @name Virtual Machine: Log Viewer widget options
       * @{ */
-        void setLogViweverSettings(const QFont &font, bool wrapLines, bool showLineNumbers);
+        void setLogViweverOptions(const QFont &font, bool wrapLines, bool showLineNumbers);
         /** Returns log-viewer line wrapping flag. */
         bool logViewerWrapLines();
         /** Returns log-viewer show line numbers flag. */
