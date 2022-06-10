@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 75948 2018-12-04 15:24:58Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 75950 2018-12-04 16:26:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -61,7 +61,7 @@
 # include "CGuestSessionStateChangedEvent.h"
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-
+#define TEST_COPY
 
 /*********************************************************************************************************************************
 *   UIFileOperationsList definition.                                                                                   *

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerOperationsPanel.cpp 75937 2018-12-04 08:24:34Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerOperationsPanel.cpp 75950 2018-12-04 16:26:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -292,6 +292,7 @@ void UIFileOperationProgressWidget::sltHandleProgressComplete(const QUuid &uProg
     }
     if (m_pProgressBar)
         m_pProgressBar->setEnabled(false);
+    cleanupEventHandler();
     retranslateUi();
 }
 
@@ -304,6 +305,7 @@ void UIFileOperationProgressWidget::sltCancelProgress()
     if (m_pProgressBar)
         m_pProgressBar->setEnabled(false);
     m_eStatus = OperationStatus_Canceled;
+    cleanupEventHandler();
     retranslateUi();
 }
 
