@@ -1,4 +1,4 @@
-/* $Id: Virtio.h 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: Virtio.h 73410 2018-07-31 12:36:41Z vboxsync $ */
 /** @file
  * Virtio.h - Virtio Declarations
  */
@@ -212,14 +212,17 @@ typedef struct VPCIState_st
     VQUEUE                 Queues[VIRTIO_MAX_NQUEUES];
 
 #if defined(VBOX_WITH_STATISTICS)
-    STAMPROFILEADV         StatIOReadGC;
-    STAMPROFILEADV         StatIOReadHC;
-    STAMPROFILEADV         StatIOWriteGC;
-    STAMPROFILEADV         StatIOWriteHC;
+    STAMPROFILEADV         StatIOReadR3;
+    STAMPROFILEADV         StatIOReadR0;
+    STAMPROFILEADV         StatIOReadRC;
+    STAMPROFILEADV         StatIOWriteR3;
+    STAMPROFILEADV         StatIOWriteR0;
+    STAMPROFILEADV         StatIOWriteRC;
     STAMCOUNTER            StatIntsRaised;
     STAMCOUNTER            StatIntsSkipped;
-    STAMPROFILE            StatCsGC;
-    STAMPROFILE            StatCsHC;
+    STAMPROFILE            StatCsR3;
+    STAMPROFILE            StatCsR0;
+    STAMPROFILE            StatCsRC;
 #endif /* VBOX_WITH_STATISTICS */
 } VPCISTATE;
 /** Pointer to the core (/common) state of a VirtIO PCI device. */
@@ -275,9 +278,9 @@ PVQUEUE vpciAddQueue(VPCISTATE* pState, unsigned uSize, PFNVPCIQUEUECALLBACK pfn
 DECLINLINE(int) vpciCsEnter(VPCISTATE *pState, int rcBusy)
 {
 #ifdef VPCI_CS
-    STAM_PROFILE_START(&pState->CTXSUFF(StatCs), a);
+    STAM_PROFILE_START(&pState->CTX_SUFF(StatCs), a);
     int rc = PDMCritSectEnter(&pState->cs, rcBusy);
-    STAM_PROFILE_STOP(&pState->CTXSUFF(StatCs), a);
+    STAM_PROFILE_STOP(&pState->CTX_SUFF(StatCs), a);
     return rc;
 #else
     return VINF_SUCCESS;
