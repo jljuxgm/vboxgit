@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 75819 2018-11-29 16:16:40Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 75850 2018-11-30 13:02:35Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -797,9 +797,8 @@ static HRESULT listVmSlotDhcpOptions(const ComPtr<IDHCPServer> pSrv, const Utf8S
     if (options.size())
         RTPrintf("Options for slot #%d of '%ls':\n", uSlot, vmName.raw());
     for (size_t i = 0; i < options.size(); ++i)
-    {
         RTPrintf("   %ls\n", options[i]);
-    }
+
     return S_OK;
 }
 
