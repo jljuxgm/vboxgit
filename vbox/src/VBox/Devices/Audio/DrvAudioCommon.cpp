@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 73429 2018-08-01 14:47:53Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 73463 2018-08-03 09:25:19Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -976,6 +976,14 @@ int DrvAudioHlpStreamCfgCopy(PPDMAUDIOSTREAMCFG pDstCfg, const PPDMAUDIOSTREAMCF
 PPDMAUDIOSTREAMCFG DrvAudioHlpStreamCfgDup(const PPDMAUDIOSTREAMCFG pCfg)
 {
     AssertPtrReturn(pCfg, NULL);
+
+#ifdef VBOX_STRICT
+    if (!DrvAudioHlpStreamCfgIsValid(pCfg))
+    {
+        AssertMsgFailed(("Stream config '%s' (%p) is invalid\n", pCfg->szName, pCfg));
+        return NULL;
+    }
+#endif
 
     PPDMAUDIOSTREAMCFG pDst = (PPDMAUDIOSTREAMCFG)RTMemAllocZ(sizeof(PDMAUDIOSTREAMCFG));
     if (!pDst)
