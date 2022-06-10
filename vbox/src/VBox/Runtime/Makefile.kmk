@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78048 2019-04-09 01:21:09Z vboxsync $
+# $Id: Makefile.kmk 78091 2019-04-10 14:22:43Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1815,6 +1815,7 @@ RuntimeBldProg_SOURCES         = \
 	generic/RTLogWriteStdOut-generic.cpp \
 	generic/RTLogWriteUser-generic.cpp \
 	generic/RTPathIsSame-generic.cpp \
+	generic/RTPathGetCurrentDrive-generic.cpp \
 	generic/rtStrFormatKernelAddress-generic.cpp \
 	generic/RTTimerLRCreate-generic.cpp \
 	generic/semfastmutex-generic.cpp \
@@ -1888,7 +1889,6 @@ RuntimeBldProg_SOURCES.win = \
 	generic/RTFileExists-generic.cpp \
 	generic/RTFileSetAllocationSize-generic.cpp \
 	generic/RTPathAbs-generic.cpp \
-	generic/RTPathGetCurrentDrive-generic.cpp \
 	generic/RTRandAdvCreateSystemFaster-generic.cpp \
 	generic/RTRandAdvCreateSystemTruer-generic.cpp \
 	generic/RTSemEventMultiWait-2-ex-generic.cpp \
@@ -1958,7 +1958,6 @@ RuntimeBldProg_SOURCES.os2 += \
 	generic/RTFileSetAllocationSize-generic.cpp \
 	generic/RTLogWriteDebugger-generic.cpp \
 	generic/RTPathAbs-generic.cpp \
-	generic/RTPathGetCurrentDrive-generic.cpp \
 	generic/RTPathGetCurrentOnDrive-generic.cpp \
 	generic/RTRandAdvCreateSystemFaster-generic.cpp \
 	generic/RTRandAdvCreateSystemTruer-generic.cpp \
