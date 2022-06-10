@@ -1,4 +1,4 @@
-/* $Id: UIMediumDefs.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIMediumDefs.h 78154 2019-04-17 12:53:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium related declarations.
  */
@@ -91,6 +91,7 @@ struct UIMediumTarget
     {
         UIMediumTargetType_WithID,
         UIMediumTargetType_WithLocation,
+        UIMediumTargetType_WithFileDialog,
         UIMediumTargetType_CreateAdHocVISO,
         UIMediumTargetType_CreateFloppyDisk
     };

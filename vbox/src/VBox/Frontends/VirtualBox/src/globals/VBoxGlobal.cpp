@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 77560 2019-03-04 16:29:38Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 78154 2019-04-17 12:53:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2978,6 +2978,16 @@ void VBoxGlobal::prepareStorageMenu(QMenu &menu,
                                                                "This is used for hard disks, optical media and floppies"));
 
 
+    /* Prepare open medium file action: */
+    QAction *pActionFileSelector = menu.addAction(UIIconPool::iconSet(":/select_file_16px.png"),
+                                                  QString(), pListener, pszSlotName);
+    pActionFileSelector->setData(QVariant::fromValue(UIMediumTarget(strControllerName, comCurrentAttachment.GetPort(),
+                                                                    comCurrentAttachment.GetDevice(), enmMediumType,
+                                                                    UIMediumTarget::UIMediumTargetType_WithFileDialog)));
+    pActionFileSelector->setText(QApplication::translate("UIMachineSettingsStorage", "Choose a medium file...",
+                                                         "This is used for selecting an existing medium file"));
+
+
     /* Insert separator: */
     menu.addSeparator();
 
@@ -3116,6 +3126,7 @@ void VBoxGlobal::updateMachineStorage(const CMachine &comConstMachine, const UIM
     {
         /* Do we have an exact ID or do we let the user open a medium? */
         case UIMediumTarget::UIMediumTargetType_WithID:
+        case UIMediumTarget::UIMediumTargetType_WithFileDialog:
         case UIMediumTarget::UIMediumTargetType_CreateAdHocVISO:
         case UIMediumTarget::UIMediumTargetType_CreateFloppyDisk:
         {
@@ -3145,6 +3156,11 @@ void VBoxGlobal::updateMachineStorage(const CMachine &comConstMachine, const UIM
                     if (iDialogReturn == UIMediumSelector::ReturnCode_LeftEmpty &&
                         (target.mediumType == UIMediumDeviceType_DVD || target.mediumType == UIMediumDeviceType_Floppy))
                         fMount = false;
+                }
+                else if (target.type == UIMediumTarget::UIMediumTargetType_WithFileDialog)
+                {
+                    uMediumID = openMediumWithFileOpenDialog(target.mediumType, windowManager().mainWindowShown(),
+                                                             strMachineFolder, false /* fUseLastFolder */);
                 }
                 else if(target.type == UIMediumTarget::UIMediumTargetType_CreateAdHocVISO)
                     uMediumID = createVisoMediumWithVisoCreator(windowManager().mainWindowShown(), strMachineFolder, comConstMachine.GetName());
