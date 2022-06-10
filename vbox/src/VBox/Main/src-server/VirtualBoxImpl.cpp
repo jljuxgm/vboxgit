@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 78122 2019-04-15 09:33:32Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 78124 2019-04-15 14:29:49Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -125,6 +125,8 @@ std::map<com::Utf8Str, int> VirtualBox::sNatNetworkNameToRefCount;
 
 // static leaked (todo: find better place to free it.)
 RWLockHandle *VirtualBox::spMtxNatNetworkNameToRefCountLock;
+
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // CallbackEvent class
@@ -2141,14 +2143,14 @@ HRESULT VirtualBox::setExtraData(const com::Utf8Str &aKey,
     Utf8Str strOldValue;            // empty
     HRESULT rc = S_OK;
 
-    /* Because non-ASCII characters in aKey have caused problems in the settings
+    /* Because control characters in aKey have caused problems in the settings
      * they are rejected unless the key should be deleted. */
     if (!strValue.isEmpty())
     {
         for (size_t i = 0; i < strKey.length(); ++i)
         {
             char ch = strKey[i];
-            if (RT_C_IS_CNTRL(ch))
+            if (RTLocCIsCntrl(ch))
                 return E_INVALIDARG;
         }
     }
