@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 73480 2018-08-03 12:31:54Z vboxsync $ */
+/* $Id: DrvAudio.cpp 73485 2018-08-03 13:15:54Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -3131,7 +3131,7 @@ static int drvAudioStreamUninitInternal(PDRVAUDIO pThis, PPDMAUDIOSTREAM pStream
         /* Reset status. */
         pStream->fStatus &= ~PDMAUDIOSTREAMSTS_FLAG_INITIALIZED;
 
-#ifdef VBOX_STRICT
+#ifdef LOG_ENABLED
         if (pStream->fStatus != PDMAUDIOSTREAMSTS_FLAG_NONE)
         {
             char *pszStreamSts = dbgAudioStreamStatusToStr(pStream->fStatus);
