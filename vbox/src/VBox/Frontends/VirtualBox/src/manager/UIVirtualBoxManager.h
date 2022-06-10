@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 75054 2018-10-25 07:22:29Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 75055 2018-10-25 08:03:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -61,6 +61,9 @@ public:
 
     /** Returns the action-pool instance. */
     UIActionPool *actionPool() const { return m_pActionPool; }
+
+    /** Opens Cloud Profile Manager. */
+    void openCloudProfileManager() { sltOpenCloudProfileManagerWindow(); }
 
 protected:
 

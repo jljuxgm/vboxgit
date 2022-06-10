@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 75055 2018-10-25 08:03:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -89,6 +89,9 @@ private slots:
 
     /** Handles change in account combo-box. */
     void sltHandleAccountComboChange();
+
+    /** Handles account tool-button click. */
+    void sltHandleAccountButtonClick();
 
 private:
 
