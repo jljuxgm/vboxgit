@@ -1,4 +1,4 @@
-; $Id: dbgstackdumpself-amd64-x86.asm 74255 2018-09-13 17:48:55Z vboxsync $
+; $Id: dbgstackdumpself-amd64-x86.asm 75235 2018-11-02 21:01:36Z vboxsync $
 ;; @file
 ; IPRT - RTDbgStackDumpSelf assembly wrapper calling rtDbgStackDumpSelfWorker.
 ;
@@ -79,7 +79,7 @@ BEGINPROC_EXPORTED RTDbgStackDumpSelf
         push    xSI
         SEH64_PUSH_GREG xSI
 %ifdef RT_ARCH_AMD64
-        mov     r10, [xBP + xCB * 2]        ; Caller RBP.
+        mov     r10, [xBP]                  ; Caller RBP.
         push    r10
         lea     r10, [xBP + xCB * 2]        ; Caller RSP.
         push    r10

@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 73531 2018-08-06 17:08:57Z vboxsync $ */
+/* $Id: dbgmod.h 75235 2018-11-02 21:01:36Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -707,8 +707,9 @@ DECLHIDDEN(int) rtDbgModDeferredCreate(PRTDBGMODINT pDbgMod, PFNRTDBGMODDEFERRED
 
 DECLHIDDEN(int) rtDbgModLdrOpenFromHandle(PRTDBGMODINT pDbgMod, RTLDRMOD hLdrMod);
 
-DECLHIDDEN(int) rtDwarfUnwind_EhData(void const *pvSection, size_t cbSection, RTDBGSEGIDX idxSeg, RTUINTPTR offSeg,
-                                     RTUINTPTR uRva, PRTDBGUNWINDSTATE pState, RTLDRARCH enmArch);
+DECLHIDDEN(int) rtDwarfUnwind_EhData(void const *pvSection, size_t cbSection, RTUINTPTR uRvaSection,
+                                     RTDBGSEGIDX idxSeg, RTUINTPTR offSeg, RTUINTPTR uRva,
+                                     PRTDBGUNWINDSTATE pState, RTLDRARCH enmArch);
 
 /** @} */
 
