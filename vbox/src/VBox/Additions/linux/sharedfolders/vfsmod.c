@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 78138 2019-04-16 01:32:45Z vboxsync $ */
+/* $Id: vfsmod.c 78204 2019-04-18 11:42:57Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -210,6 +210,7 @@ static int vbsf_super_info_alloc_and_map_it(struct vbsf_mount_info_new *info, st
     struct vbsf_super_info *pSuperInfo;
 
     TRACE();
+    *sf_gp = NULL; /* (old gcc maybe used initialized) */
 
     /*
      * Validate info.

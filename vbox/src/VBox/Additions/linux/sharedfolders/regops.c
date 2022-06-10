@@ -1,4 +1,4 @@
-/* $Id: regops.c 78185 2019-04-17 21:33:09Z vboxsync $ */
+/* $Id: regops.c 78204 2019-04-18 11:42:57Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -1309,7 +1309,7 @@ DECLINLINE(void) vbsf_get_page(struct page *pPage)
 
 
 /** Companion to vbsf_lock_user_pages(). */
-DECLINLINE(void) vbsf_unlock_user_pages(struct page **papPages, size_t cPages, bool fSetDirty, bool fLockPgHack)
+static void vbsf_unlock_user_pages(struct page **papPages, size_t cPages, bool fSetDirty, bool fLockPgHack)
 {
     /* We don't mark kernel pages dirty: */
     if (fLockPgHack)
