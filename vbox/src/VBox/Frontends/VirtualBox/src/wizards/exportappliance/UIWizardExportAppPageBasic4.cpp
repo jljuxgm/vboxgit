@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic4.cpp 72920 2018-07-05 14:51:50Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic4.cpp 73147 2018-07-16 09:57:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic4 class implementation.
  */
@@ -123,7 +123,7 @@ UIWizardExportAppPageBasic4::UIWizardExportAppPageBasic4()
 void UIWizardExportAppPageBasic4::retranslateUi()
 {
     /* Translate page: */
-    setTitle(UIWizardExportApp::tr("Appliance settings"));
+    setTitle(UIWizardExportApp::tr("Virtual system settings"));
 
     /* Translate widgets: */
     m_pLabel->setText(UIWizardExportApp::tr("This is the descriptive information which will be added "
