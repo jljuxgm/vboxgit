@@ -1,4 +1,4 @@
-/* $Id: HostPowerWin.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HostPowerWin.cpp 76380 2018-12-22 22:52:41Z vboxsync $ */
 /** @file
  *
  * VirtualBox interface to host's power notification service
@@ -28,10 +28,16 @@ extern "C" {
 }
 
 #include <VBox/com/ptr.h>
+#include <iprt/err.h>
 #include "HostPower.h"
 #include "Logging.h"
 
+
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
 static WCHAR gachWindowClassName[] = L"VBoxPowerNotifyClass";
+
 
 HostPowerServiceWin::HostPowerServiceWin(VirtualBox *aVirtualBox) : HostPowerService(aVirtualBox), mThread(NIL_RTTHREAD)
 {

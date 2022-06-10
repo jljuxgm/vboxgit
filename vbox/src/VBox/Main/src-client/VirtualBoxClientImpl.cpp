@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 73003 2018-07-09 11:09:32Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 76380 2018-12-22 22:52:41Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -31,6 +31,7 @@
 #include <iprt/cpp/utils.h>
 #include <iprt/utf16.h>
 #ifdef RT_OS_WINDOWS
+# include <iprt/err.h>
 # include <iprt/ldr.h>
 # include <msi.h>
 # include <WbemIdl.h>
