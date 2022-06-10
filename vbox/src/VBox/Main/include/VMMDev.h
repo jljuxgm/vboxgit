@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 75969 2018-12-05 12:08:09Z vboxsync $ */
+/* $Id: VMMDev.h 76382 2018-12-23 00:47:17Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to VMM device
  */
@@ -20,6 +20,7 @@
 
 #include "VirtualBoxBase.h"
 #include <VBox/vmm/pdmdrv.h>
+#include <VBox/hgcmsvc.h>
 #include <iprt/asm.h>
 
 class Console;

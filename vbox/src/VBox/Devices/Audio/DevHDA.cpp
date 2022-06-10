@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 76158 2018-12-11 11:02:50Z vboxsync $ */
+/* $Id: DevHDA.cpp 76382 2018-12-23 00:47:17Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -39,10 +39,10 @@
 #include <iprt/asm-math.h>
 #include <iprt/file.h>
 #include <iprt/list.h>
+# include <iprt/string.h>
 #ifdef IN_RING3
 # include <iprt/mem.h>
 # include <iprt/semaphore.h>
-# include <iprt/string.h>
 # include <iprt/uuid.h>
 #endif
 

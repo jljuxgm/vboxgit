@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 72493 2018-06-10 16:08:44Z vboxsync $ */
+/* $Id: IOMAll.cpp 76382 2018-12-23 00:47:17Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -34,6 +34,7 @@
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
+#include <iprt/string.h>
 #include "IOMInline.h"
 
 

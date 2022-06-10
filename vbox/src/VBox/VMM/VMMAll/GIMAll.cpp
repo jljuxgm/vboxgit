@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 72469 2018-06-07 11:35:23Z vboxsync $ */
+/* $Id: GIMAll.cpp 76382 2018-12-23 00:47:17Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -27,6 +27,7 @@
 
 #include <VBox/dis.h>       /* For DISCPUSTATE */
 #include <VBox/err.h>
+#include <iprt/string.h>
 
 /* Include all the providers. */
 #include "GIMHvInternal.h"

@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 73415 2018-07-31 17:21:54Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 76382 2018-12-23 00:47:17Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -29,10 +29,11 @@
 #include <iprt/asm.h>
 #include <iprt/net.h>
 #include <iprt/semaphore.h>
+#include <iprt/string.h>
 #ifdef IN_RING3
 # include <iprt/mem.h>
 # include <iprt/uuid.h>
-#endif /* IN_RING3 */
+#endif
 #include <VBox/VBoxPktDmp.h>
 #include "VBoxDD.h"
 #include "../VirtIO/Virtio.h"
