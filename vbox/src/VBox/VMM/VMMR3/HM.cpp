@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 75821 2018-11-29 16:43:40Z vboxsync $ */
+/* $Id: HM.cpp 76135 2018-12-10 16:44:13Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1830,7 +1830,6 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
     rc = SUPR3CallVMMR0Ex(pVM->pVMR0, 0 /* idCpu */, VMMR0_DO_HM_SETUP_VM, 0 /* u64Arg */, NULL /* pReqHdr */);
     if (rc != VINF_SUCCESS)
     {
-        AssertMsgFailed(("%Rrc\n", rc));
         LogRel(("HM: VMX setup failed with rc=%Rrc!\n", rc));
         for (VMCPUID i = 0; i < pVM->cCpus; i++)
         {
