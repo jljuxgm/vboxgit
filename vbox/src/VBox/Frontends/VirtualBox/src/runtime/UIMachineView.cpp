@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 71106 2018-02-22 15:22:35Z vboxsync $ */
+/* $Id: UIMachineView.cpp 74722 2018-10-09 17:08:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -247,7 +247,7 @@ void UIMachineView::destroy(UIMachineView *pMachineView)
 void UIMachineView::applyMachineViewScaleFactor()
 {
     /* Acquire selected scale-factor: */
-    double dScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid());
+    double dScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid(), m_uScreenId);
 
     /* Take the device-pixel-ratio into account: */
     const double dDevicePixelRatioActual = frameBuffer()->devicePixelRatioActual();
@@ -507,7 +507,7 @@ void UIMachineView::sltHandleScaleFactorChange(const QString &strMachineID)
         return;
 
     /* Acquire selected scale-factor: */
-    double dScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid());
+    double dScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid(), m_uScreenId);
 
     /* Take the device-pixel-ratio into account: */
     const double dDevicePixelRatioActual = frameBuffer()->devicePixelRatioActual();
@@ -701,7 +701,7 @@ void UIMachineView::prepareFrameBuffer()
         m_pFrameBuffer->setScalingOptimizationType(gEDataManager->scalingOptimizationType(vboxGlobal().managedVMUuid()));
 
         /* Acquire selected scale-factor: */
-        double dScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid());
+        double dScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid(), m_uScreenId);
 
         /* Take the device-pixel-ratio into account: */
         const double dDevicePixelRatioFormal = gpDesktop->devicePixelRatio(machineWindow());
@@ -1903,4 +1903,3 @@ QSize UIMachineView::scaledBackward(QSize size) const
     /* Return result: */
     return size;
 }
-

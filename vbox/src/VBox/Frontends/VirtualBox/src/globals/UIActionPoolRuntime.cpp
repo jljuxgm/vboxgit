@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 73847 2018-08-22 19:03:19Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 74722 2018-10-09 17:08:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -3156,7 +3156,7 @@ void UIActionPoolRuntime::sltHandleActionTriggerViewScaleFactor(QAction *pAction
 
     /* Change scale-factor directly: */
     const double dScaleFactor = pAction->property("Requested Scale Factor").toDouble();
-    gEDataManager->setScaleFactor(dScaleFactor, vboxGlobal().managedVMUuid());
+    gEDataManager->setScaleFactor(dScaleFactor, vboxGlobal().managedVMUuid(), 0);
 }
 
 void UIActionPoolRuntime::sltPrepareMenuViewScreen()
@@ -3782,7 +3782,7 @@ void UIActionPoolRuntime::updateMenuViewScaleFactor()
         pActionGroup->setExclusive(true);
 
         /* Get current scale-factor: */
-        const double dCurrentScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid());
+        const double dCurrentScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid(), 0);
 
         /* Get device-pixel-ratio: */
         bool fDevicePixelRatioMentioned = false;

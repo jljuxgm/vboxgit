@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 73134 2018-07-14 20:23:03Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 74722 2018-10-09 17:08:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -92,10 +92,6 @@ private slots:
     void sltHandleGuestScreenCountSliderChange();
     /** Handles Guest Screen count editor change. */
     void sltHandleGuestScreenCountEditorChange();
-    /** Handles Guest Screen scale-factor slider change. */
-    void sltHandleGuestScreenScaleSliderChange();
-    /** Handles Guest Screen scale-factor editor change. */
-    void sltHandleGuestScreenScaleEditorChange();
 
     /** Handles Video Capture toggle. */
     void sltHandleVideoCaptureCheckboxToggle();
