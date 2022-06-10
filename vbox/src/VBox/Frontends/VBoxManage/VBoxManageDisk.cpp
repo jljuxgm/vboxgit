@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 74003 2018-08-31 14:47:37Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 74354 2018-09-18 21:51:57Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -2161,7 +2161,7 @@ static RTEXITCODE handleMediumIOCat(HandlerArg *a, int iFirst, PMEDIUMIOCOMMONOP
         MEDIUMIOCOMMONOPT_DEFS(),
         { "--hex",      'H', RTGETOPT_REQ_NOTHING },
         { "--offset",   'o', RTGETOPT_REQ_UINT64  },
-        { "--output",   'O', RTGETOPT_REQ_UINT64  },
+        { "--output",   'O', RTGETOPT_REQ_STRING  },
         { "--size",     's', RTGETOPT_REQ_UINT64  },
     };
     bool        fHex      = false;
