@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75337 2018-11-09 01:39:01Z vboxsync $
+# $Id: Makefile.kmk 75461 2018-11-14 19:51:23Z vboxsync $
 ## @file
 # Makefile for the OS/2 Guest Additions Shared Folder FSD.
 #
@@ -209,12 +209,16 @@ endif
 # Simple utility for attaching a shared folder to a drive letter.
 #
 PROGRAMS += VBoxSFUtil
+ifdef VBOX_USE_WATCOM_FOR_OS2
 VBoxSFUtil_TEMPLATE = DUMMY
 VBoxSFUtil_TOOL     = OPENWATCOM
 VBoxSFUtil_ASTOOL   = NASM
 VBoxSFUtil_ASFLAGS  = -f obj -DASM_FORMAT_OMF
 VBoxSFUtil_INCS     = $(PATH_TOOL_OPENWATCOM)/h/os2
 VBoxSFUtil_LDFLAGS  = -bcl=os2v2
+else
+VBoxSFUtil_TEMPLATE = VBoxGuestR3Exe
+endif
 VBoxSFUtil_SOURCES  = \
 	VBoxSFUtil.cpp \
 	VBoxSFUtilA.asm
