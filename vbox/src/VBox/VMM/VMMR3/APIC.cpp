@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 77098 2019-02-01 10:21:32Z vboxsync $ */
+/* $Id: APIC.cpp 78208 2019-04-18 15:54:40Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1025,6 +1025,13 @@ static DECLCALLBACK(int) apicR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
         { /* Load any new additional per-VM data. */ }
     }
 
+    /*
+     * Restore per CPU state.
+     *
+     * Note! PDM will restore the VMCPU_FF_INTERRUPT_APIC flag for us.
+     *       This code doesn't touch it.  No devices should make us touch
+     *       it later during the restore either, only during the 'done' phase.
+     */
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
         PVMCPU   pVCpu    = &pVM->aCpus[idCpu];

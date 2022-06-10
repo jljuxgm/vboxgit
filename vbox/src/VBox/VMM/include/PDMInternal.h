@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: PDMInternal.h 78208 2019-04-18 15:54:40Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1079,8 +1079,11 @@ typedef struct PDM
 
     /** Pending reset flags (PDMVMRESET_F_XXX). */
     uint32_t volatile               fResetFlags;
+
+    /** Set by pdmR3LoadExec for use in assertions. */
+    bool                            fStateLoaded;
     /** Alignment padding. */
-    uint32_t volatile               u32Padding;
+    bool                            afPadding[3];
 
     /** The tracing ID of the next device instance.
      *
