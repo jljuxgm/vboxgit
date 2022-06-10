@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 75032 2018-10-24 11:49:04Z vboxsync $ */
+/* $Id: WebMWriter.h 75033 2018-10-24 11:50:41Z vboxsync $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -381,6 +381,7 @@ public:
             , offSeekInfo(0)
             , offTracks(0)
             , offCues(0)
+            , cClusters(0)
         {
             uTimecodeScaleFactor = VBOX_WEBM_TIMECODESCALE_FACTOR_MS;
 
