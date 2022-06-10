@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 73072 2018-07-11 16:15:10Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 73085 2018-07-12 10:05:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -43,6 +43,7 @@ class UIWizardExportAppPageExpert : public UIWizardPage,
     Q_PROPERTY(QString path READ path WRITE setPath);
     Q_PROPERTY(QString format READ format WRITE setFormat);
     Q_PROPERTY(bool manifestSelected READ isManifestSelected WRITE setManifestSelected);
+    Q_PROPERTY(bool includeISOsSelected READ isIncludeISOsSelected WRITE setIncludeISOsSelected);
     Q_PROPERTY(ExportAppliancePointer applianceWidget READ applianceWidget);
 
 public:
