@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 74010 2018-08-31 20:37:06Z vboxsync $ */
+/* $Id: DrvAudio.cpp 74033 2018-09-03 09:43:19Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2400,11 +2400,14 @@ static DECLCALLBACK(int) drvAudioStreamCreate(PPDMIAUDIOCONNECTOR pInterface,
         }
 
         /* Note: cbHstStrm will contain the size of the data the backend needs to operate on. */
-        size_t cbHstStrm = 0;
+        size_t cbHstStrm;
         if (pCfgHost->enmDir == PDMAUDIODIR_IN)
         {
             if (!pThis->In.cStreamsFree)
-                LogFunc(("Warning: No more input streams free to use\n"));
+            {
+                LogFlowFunc(("Maximum number of host input streams reached\n"));
+                RC_BREAK(VERR_AUDIO_NO_FREE_INPUT_STREAMS);
+            }
 
             cbHstStrm = pThis->BackendCfg.cbStreamIn;
         }
