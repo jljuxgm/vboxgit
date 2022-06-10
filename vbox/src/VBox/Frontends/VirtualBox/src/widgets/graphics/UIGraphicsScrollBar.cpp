@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.cpp 77085 2019-01-31 17:13:28Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.cpp 77155 2019-02-04 18:06:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class implementation.
  */
@@ -183,6 +183,16 @@ QSizeF UIGraphicsScrollBar::minimumSizeHint() const
 void UIGraphicsScrollBar::setStep(int iStep)
 {
     m_iStep = iStep;
+}
+
+int UIGraphicsScrollBar::step() const
+{
+    return m_iStep;
+}
+
+int UIGraphicsScrollBar::wheelStep() const
+{
+    return 10 * step();
 }
 
 void UIGraphicsScrollBar::setMinimum(int iMinimum)
