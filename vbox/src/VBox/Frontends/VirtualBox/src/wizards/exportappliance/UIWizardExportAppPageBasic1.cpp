@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic1.cpp 72920 2018-07-05 14:51:50Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.cpp 73083 2018-07-12 09:00:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic1 class implementation.
  */
@@ -200,10 +200,4 @@ bool UIWizardExportAppPageBasic1::validatePage()
 
     /* Return result: */
     return fResult;
-}
-
-int UIWizardExportAppPageBasic1::nextId() const
-{
-    /* Skip next (2nd, storage-type) page for now! */
-    return UIWizardExportApp::Page3;
 }

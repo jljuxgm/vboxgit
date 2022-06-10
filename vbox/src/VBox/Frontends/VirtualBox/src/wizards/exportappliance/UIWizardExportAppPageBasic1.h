@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic1.h 72920 2018-07-05 14:51:50Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.h 73083 2018-07-12 09:00:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic1 class declaration.
  */
@@ -73,9 +73,6 @@ private:
 
     /** Performs page validation. */
     virtual bool validatePage() /* override */;
-
-    /** Returns next page ID. */
-    virtual int nextId() const /* override */;
 
 private:
 
