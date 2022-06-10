@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 75471 2018-11-14 21:38:08Z vboxsync $ */
+/* $Id: VBoxControl.cpp 75702 2018-11-25 01:40:54Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1425,7 +1425,7 @@ static RTEXITCODE enumGuestProperty(int argc, char *argv[])
             while (RT_SUCCESS(rc) && pszName)
             {
                 RTPrintf("Name: %s, value: %s, timestamp: %lld, flags: %s\n",
-                         pszName, pszValue, u64Timestamp, pszFlags);
+                         pszName, pszValue ? pszValue : "", u64Timestamp, pszFlags);
 
                 rc = VbglR3GuestPropEnumNext(pHandle, &pszName, &pszValue, &u64Timestamp, &pszFlags);
                 if (RT_FAILURE(rc))
