@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 74377 2018-09-20 00:37:23Z vboxsync $ */
+/* $Id: http-curl.cpp 74379 2018-09-20 00:57:08Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -836,13 +836,15 @@ static int rtHttpConfigureProxyFromUrl(PRTHTTPINTERNAL pThis, const char *pszPro
                 if (uProxyPort == UINT32_MAX)
                     uProxyPort = 80;
             }
-#if CURL_AT_LEAST_VERSION(7,52,0)
+#ifdef CURL_AT_LEAST_VERSION
+# if CURL_AT_LEAST_VERSION(7,52,0)
             else if (RTUriIsSchemeMatch(pszProxyUrl, "https"))
             {
                 enmProxyType  = CURLPROXY_HTTPS;
                 if (uProxyPort == UINT32_MAX)
                     uProxyPort = 443;
             }
+# endif
 #endif
             else if (   RTUriIsSchemeMatch(pszProxyUrl, "socks4")
                      || RTUriIsSchemeMatch(pszProxyUrl, "socks"))
