@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBMon-solaris.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUSBMon-solaris.c 76356 2018-12-22 01:17:18Z vboxsync $ */
 /** @file
  * VirtualBox USB Monitor Driver, Solaris Hosts.
  */
@@ -37,12 +37,13 @@
 #include <VBox/types.h>
 #include <VBox/version.h>
 #include <iprt/assert.h>
-#include <iprt/string.h>
+#include <iprt/err.h>
 #include <iprt/initterm.h>
-#include <iprt/process.h>
 #include <iprt/mem.h>
-#include <iprt/semaphore.h>
+#include <iprt/process.h>
 #include <iprt/path.h>
+#include <iprt/semaphore.h>
+#include <iprt/string.h>
 
 #define USBDRV_MAJOR_VER    2
 #define USBDRV_MINOR_VER    0
