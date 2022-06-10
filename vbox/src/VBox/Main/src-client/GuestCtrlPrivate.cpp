@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 75863 2018-12-02 00:43:41Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 75888 2018-12-03 09:42:49Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -854,7 +854,6 @@ int GuestBase::registerWaitEvent(uint32_t uSessionID, uint32_t uObjectID, GuestW
 int GuestBase::registerWaitEventEx(uint32_t uSessionID, uint32_t uObjectID, const GuestEventTypes &lstEvents,
                                    GuestWaitEvent **ppEvent)
 {
-    AssertReturn(!lstEvents.empty(), VERR_INVALID_PARAMETER);
     AssertPtrReturn(ppEvent, VERR_INVALID_POINTER);
 
     uint32_t idContext;
