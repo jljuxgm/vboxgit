@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77317 $"
+__version__ = "$Revision: 77339 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -2615,7 +2615,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                   tdTestResultDirRead(fRc = False) ]
             ]);
 
-            if oTestVm.sVmName == 'tst-xppro':
+            if oTestVm.sKind == "WindowsXP":
                 aaTests.extend([
                     # Reading directories.
                     [ tdTestDirRead(sUser = sUser, sPassword = sPassword, sDirectory = '../../Windows/Fonts'),
@@ -2696,7 +2696,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                   tdTestResult(fRc = False) ]
             ]);
 
-            if oTestVm.sVmName == 'tst-xppro':
+            if oTestVm.sKind == "WindowsXP":
                 aaTests.extend([
                     # Try delete some unimportant media stuff.
                     [ tdTestFileRemove(sUser = sUser, sPassword = sPassword, sFile = 'c:\\Windows\\Media\\chimes.wav'),
