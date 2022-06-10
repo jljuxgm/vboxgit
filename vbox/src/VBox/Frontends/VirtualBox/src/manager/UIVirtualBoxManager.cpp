@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 74719 2018-10-09 14:03:41Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 74744 2018-10-10 13:10:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1196,6 +1196,13 @@ void UIVirtualBoxManager::prepareMenuBar()
 #ifndef VBOX_WS_MAC
     /* Create menu-bar: */
     setMenuBar(new UIMenuBar);
+
+    /* Make sure menu-bar fills own solid background: */
+    menuBar()->setAutoFillBackground(true);
+    QPalette pal = menuBar()->palette();
+    const QColor color = pal.color(QPalette::Active, QPalette::Mid).lighter(160);
+    pal.setColor(QPalette::Active, QPalette::Button, color);
+    menuBar()->setPalette(pal);
 #endif
 
     /* Create action-pool: */
