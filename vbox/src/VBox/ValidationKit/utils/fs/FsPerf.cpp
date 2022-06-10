@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 76916 2019-01-21 12:33:24Z vboxsync $ */
+/* $Id: FsPerf.cpp 76917 2019-01-21 12:50:59Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -2136,7 +2136,7 @@ void fsPerfMMap(RTFILE hFile1, RTFILE hFileNoCache, uint64_t cbFile)
             hSection = CreateFileMapping((HANDLE)RTFileToNative(hFile1), NULL,
                                          enmState == kMMap_ReadOnly    ? PAGE_READONLY
                                          : enmState == kMMap_WriteCopy ? PAGE_WRITECOPY : PAGE_READWRITE,
-                                         (uint32_t)(cbMapping >> 32), (uint32_t)cbMapping, NULL);
+                                         (uint32_t)((uint64_t)cbMapping >> 32), (uint32_t)cbMapping, NULL);
             DWORD dwErr1 = GetLastError();
             DWORD dwErr2 = 0;
             if (hSection != NULL)
@@ -2555,7 +2555,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 76916 $";
+                char szRev[] = "$Revision: 76917 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
