@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 77375 2019-02-20 12:17:35Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 77430 2019-02-22 13:24:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -1280,20 +1280,12 @@ void UIChooserItemGroup::sltIndentRoot()
 {
     /* Unhover before indenting: */
     setHovered(false);
-
-#if 0
-    /* Indent to this root: */
-    model()->indentRoot(this);
-#endif
 }
 
 void UIChooserItemGroup::sltUnindentRoot()
 {
     /* Unhover before unindenting: */
     setHovered(false);
-
-    /* Unindent to previous root: */
-    model()->unindentRoot();
 }
 
 void UIChooserItemGroup::prepare()
