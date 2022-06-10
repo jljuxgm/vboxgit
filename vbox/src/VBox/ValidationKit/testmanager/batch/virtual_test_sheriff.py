@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 77644 2019-03-11 09:26:00Z vboxsync $
+# $Id: virtual_test_sheriff.py 77645 2019-03-11 10:03:19Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77644 $"
+__version__ = "$Revision: 77645 $"
 
 
 # Standard python imports
@@ -310,7 +310,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 77644 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 77645 $ \n');
 
 
     def eprint(self, sText):
@@ -479,10 +479,11 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
             # We react if there are two or more bad-testbox statuses at the head of the
             # history and at least three in the last 10 results.
             if iFirstOkay >= 2 and cBad > 2:
-                # Frank: For now don't reboot boxes automatically
-                if True or oTestBoxLogic.hasTestBoxRecentlyBeenRebooted(idTestBox, cHoursBack = cHoursBack, tsNow = tsNow):
-                    self.vprint(u'Disabling testbox #%u (%s) - iFirstOkay=%u cBad=%u cOkay=%u'
-                                % ( idTestBox, oTestBox.sName, iFirstOkay, cBad, cOkay));
+                if oTestBoxLogic.hasTestBoxRecentlyBeenRebooted(idTestBox, cHoursBack = cHoursBack, tsNow = tsNow):
+                    sComment = u'Disabling testbox #%u (%s) - iFirstOkay=%u cBad=%u cOkay=%u' \
+                             % (idTestBox, oTestBox.sName, iFirstOkay, cBad, cOkay);
+                    self.vprint(sComment);
+                    self.sendEmailAlert(self.uidSelf, sComment);
                     if self.oConfig.fRealRun is True:
                         try:
                             oTestBoxLogic.disableTestBox(idTestBox, self.uidSelf, fCommit = True,
@@ -491,8 +492,10 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                         except Exception as oXcpt:
                             rcExit = self.eprint(u'Error disabling testbox #%u (%u): %s\n' % (idTestBox, oTestBox.sName, oXcpt,));
                 else:
-                    self.vprint(u'Rebooting testbox #%u (%s) - iFirstOkay=%u cBad=%u cOkay=%u'
-                                % ( idTestBox, oTestBox.sName, iFirstOkay, cBad, cOkay));
+                    sComment = u'Rebooting testbox #%u (%s) - iFirstOkay=%u cBad=%u cOkay=%u' \
+                             % (idTestBox, oTestBox.sName, iFirstOkay, cBad, cOkay);
+                    self.vprint(sComment);
+                    self.sendEmailAlert(self.uidSelf, sComment);
                     if self.oConfig.fRealRun is True:
                         try:
                             oTestBoxLogic.rebootTestBox(idTestBox, self.uidSelf, fCommit = True,
@@ -503,6 +506,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
             else:
                 self.dprint(u'badTestBoxManagement: #%u (%s) looks ok:  iFirstOkay=%u cBad=%u cOkay=%u'
                             % ( idTestBox, oTestBox.sName, iFirstOkay, cBad, cOkay));
+
         #
         # Reset hanged testboxes
         #
@@ -657,7 +661,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 77644 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 77645 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
