@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 72197 2018-05-11 22:11:22Z vboxsync $ */
+/* $Id: VBoxDbgConsole.h 76518 2018-12-30 05:19:58Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___Debugger_VBoxDbgConsole_h
 #define ___Debugger_VBoxDbgConsole_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxDbgBase.h"
 

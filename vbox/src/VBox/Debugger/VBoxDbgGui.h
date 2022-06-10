@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDbgGui.h 76518 2018-12-30 05:19:58Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___Debugger_VBoxDbgGui_h
 #define ___Debugger_VBoxDbgGui_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 // VirtualBox COM interfaces declarations (generated header)
 #ifdef VBOX_WITH_XPCOM

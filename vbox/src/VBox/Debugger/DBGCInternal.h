@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 73348 2018-07-25 09:25:45Z vboxsync $ */
+/* $Id: DBGCInternal.h 76518 2018-12-30 05:19:58Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -15,9 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-
 #ifndef ___Debugger_DBGCInternal_h
 #define ___Debugger_DBGCInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 /*******************************************************************************

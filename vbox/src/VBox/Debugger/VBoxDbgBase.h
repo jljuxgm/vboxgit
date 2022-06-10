@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDbgBase.h 76518 2018-12-30 05:19:58Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -15,9 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-
 #ifndef ___Debugger_VBoxDbgBase_h
 #define ___Debugger_VBoxDbgBase_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #include <VBox/vmm/stam.h>

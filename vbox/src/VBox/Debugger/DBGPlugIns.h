@@ -1,4 +1,4 @@
-/* $Id: DBGPlugIns.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DBGPlugIns.h 76518 2018-12-30 05:19:58Z vboxsync $ */
 /** @file
  * DBGPlugIns - Debugger Plug-Ins.
  *
@@ -20,6 +20,9 @@
 
 #ifndef ___Debugger_DBGPlugIns_h
 #define ___Debugger_DBGPlugIns_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vmm/dbgf.h>
 

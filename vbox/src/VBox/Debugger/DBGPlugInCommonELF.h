@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELF.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DBGPlugInCommonELF.h 76518 2018-12-30 05:19:58Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Common code for dealing with ELF images, Header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___Debugger_DBGPlugInCommonELF_h
 #define ___Debugger_DBGPlugInCommonELF_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 #include <iprt/formats/elf32.h>
