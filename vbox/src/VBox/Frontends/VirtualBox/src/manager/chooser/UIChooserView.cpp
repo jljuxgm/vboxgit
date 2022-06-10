@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 74184 2018-09-10 19:08:23Z vboxsync $ */
+/* $Id: UIChooserView.cpp 74959 2018-10-21 13:09:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -153,7 +153,9 @@ void UIChooserView::sltMinimumHeightHintChanged(int iHint)
 void UIChooserView::retranslateUi()
 {
     /* Translate this: */
+#if 0 /* we will leave that for accessibility needs. */
     setToolTip(tr("Contains a tree of Virtual Machines and their groups"));
+#endif  /* to be integrated to accessibility interface. */
 }
 
 void UIChooserView::prepare()
