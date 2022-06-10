@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
+/* $Id: xml.cpp 73502 2018-08-05 12:40:50Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1940,7 +1940,7 @@ int XmlStringWriter::write(const Document &rDoc, RTCString *pStrDst)
             {
                 pThis->m_pStrDst->append(pachBuf, (size_t)cbToWrite);
             }
-            catch (std::bad_alloc)
+            catch (std::bad_alloc &)
             {
                 pThis->m_fOutOfMemory = true;
                 return -1;

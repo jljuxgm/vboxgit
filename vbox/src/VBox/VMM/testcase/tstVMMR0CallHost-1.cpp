@@ -1,4 +1,4 @@
-/* $Id: tstVMMR0CallHost-1.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstVMMR0CallHost-1.cpp 73502 2018-08-05 12:40:50Z vboxsync $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
@@ -132,7 +132,7 @@ void tst(int iFrom, int iTo, int iInc)
 
     for (int i = iFrom, iItr = 0; i != iTo; i += iInc, iItr++)
     {
-        int rc = stackRandom(&g_Jmp, (PFNVMMR0SETJMP)tst2, (PVM)(uintptr_t)i, 0);
+        int rc = stackRandom(&g_Jmp, (PFNVMMR0SETJMP)(uintptr_t)tst2, (PVM)(uintptr_t)i, 0);
         RTTESTI_CHECK_MSG_RETV(rc == 0 || rc == 42, ("i=%d rc=%d setjmp; cbFoo=%#x cbFooUsed=%#x\n", i, rc, g_cbFoo, g_cbFooUsed));
 
 #ifdef VMM_R0_SWITCH_STACK

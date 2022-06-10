@@ -1,4 +1,4 @@
-/* $Id: RTFsCmdLs.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: RTFsCmdLs.cpp 73502 2018-08-05 12:40:50Z vboxsync $ */
 /** @file
  * IPRT - /bin/ls like utility for testing the VFS code.
  */
@@ -491,6 +491,7 @@ static void rtCmdLsSortCollections(PRTCMDLSOPTS pOpts)
                 case RTCMDLSTIME_CTIME: pfnCmp = pOpts->fGroupDirectoriesFirst ? rtCmdLsEntryCmpDirFirstCTime : rtCmdLsEntryCmpCTime; break;
                 case RTCMDLSTIME_ATIME: pfnCmp = pOpts->fGroupDirectoriesFirst ? rtCmdLsEntryCmpDirFirstATime : rtCmdLsEntryCmpATime; break;
             }
+            break;
         case RTCMDLSSORT_VERSION:
             pfnCmp = pOpts->fGroupDirectoriesFirst ? rtCmdLsEntryCmpDirFirstVersion       : rtCmdLsEntryCmpVersion;
             break;

@@ -1,4 +1,4 @@
-/* $Id: tstRTHeapSimple.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTHeapSimple.cpp 73502 2018-08-05 12:40:50Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple Heap.
  */
@@ -97,7 +97,7 @@ int main(int argc, char **argv)
         {        16,          0,    NULL,  7 },
     };
     unsigned i;
-    RTHeapSimpleDump(Heap, (PFNRTHEAPSIMPLEPRINTF)RTPrintf); /** @todo Add some detail info output with a signature identical to RTPrintf. */
+    RTHeapSimpleDump(Heap, (PFNRTHEAPSIMPLEPRINTF)(uintptr_t)RTPrintf); /** @todo Add some detail info output with a signature identical to RTPrintf. */
     size_t cbBefore = RTHeapSimpleGetFreeSize(Heap);
     static char szFill[] = "01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -180,7 +180,7 @@ int main(int argc, char **argv)
         RTTestIPrintf(RTTESTLVL_ALWAYS,
                       "Warning: Either we've split out an alignment chunk at the start, or we've got\n"
                       "         an alloc/free accounting bug: cbBefore=%d cbAfter=%d\n", cbBefore, cbAfter);
-        RTHeapSimpleDump(Heap, (PFNRTHEAPSIMPLEPRINTF)RTPrintf);
+        RTHeapSimpleDump(Heap, (PFNRTHEAPSIMPLEPRINTF)(uintptr_t)RTPrintf);
     }
 
     /* relocate and free the bits in heap2 now. */
