@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 77069 2019-01-31 11:59:33Z vboxsync $ */
+/* $Id: GuestControl.h 78035 2019-04-08 11:03:56Z vboxsync $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -93,7 +93,7 @@ enum eProcessStatus
 /** Only delete the content of the directory, omit the directory it self. */
 #define DIRREMOVEREC_FLAG_CONTENT_ONLY         RT_BIT(2)
 /** Mask of valid flags. */
-#define DIRREMOVEREC_FLAG_VALID_MASK           UINT32_C(0x00000003)
+#define DIRREMOVEREC_FLAG_VALID_MASK           UINT32_C(0x00000007)
 /** @}   */
 
 /** @name EXECUTEPROCESSFLAG_XXX - Guest process creation flags.
