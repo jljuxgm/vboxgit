@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 72924 2018-07-05 16:14:26Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 72926 2018-07-05 17:03:08Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -1597,7 +1597,7 @@ DECLINLINE(void) nemR3WinAdvanceGuestRipAndClearRF(PVMCPU pVCpu, WHV_VP_EXIT_CON
     Assert(!(pVCpu->cpum.GstCtx.fExtrn & (CPUMCTX_EXTRN_RIP | CPUMCTX_EXTRN_RFLAGS)));
 
     /* Advance the RIP. */
-    Assert(pExitCtx->InstructionLength >= cbMinInstr);
+    Assert(pExitCtx->InstructionLength >= cbMinInstr); RT_NOREF_PV(cbMinInstr);
     pVCpu->cpum.GstCtx.rip += pExitCtx->InstructionLength;
     pVCpu->cpum.GstCtx.rflags.Bits.u1RF = 0;
 
