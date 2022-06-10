@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 76954 2019-01-23 12:56:07Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 77030 2019-01-29 13:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -254,28 +254,6 @@ void UIVMLogViewerSearchPanel::prepareWidgets()
         mainLayout()->addLayout(pSearchFieldLayout);
     }
 
-    /* Create case-sensitive check-box: */
-    m_pCaseSensitiveCheckBox = new QCheckBox;
-    if (m_pCaseSensitiveCheckBox)
-    {
-        mainLayout()->addWidget(m_pCaseSensitiveCheckBox);
-    }
-
-    /* Create whole-word check-box: */
-    m_pMatchWholeWordCheckBox = new QCheckBox;
-    if (m_pMatchWholeWordCheckBox)
-    {
-        setFocusProxy(m_pMatchWholeWordCheckBox);
-        mainLayout()->addWidget(m_pMatchWholeWordCheckBox);
-    }
-
-    /* Create highlight-all check-box: */
-    m_pHighlightAllCheckBox = new QCheckBox;
-    if (m_pHighlightAllCheckBox)
-    {
-        mainLayout()->addWidget(m_pHighlightAllCheckBox);
-    }
-
     /* Create search field layout: */
     QHBoxLayout *pSearchErrorLayout = new QHBoxLayout;
     if (pSearchErrorLayout)
@@ -307,6 +285,28 @@ void UIVMLogViewerSearchPanel::prepareWidgets()
         }
 
         mainLayout()->addLayout(pSearchErrorLayout);
+    }
+
+    /* Create case-sensitive check-box: */
+    m_pCaseSensitiveCheckBox = new QCheckBox;
+    if (m_pCaseSensitiveCheckBox)
+    {
+        mainLayout()->addWidget(m_pCaseSensitiveCheckBox);
+    }
+
+    /* Create whole-word check-box: */
+    m_pMatchWholeWordCheckBox = new QCheckBox;
+    if (m_pMatchWholeWordCheckBox)
+    {
+        setFocusProxy(m_pMatchWholeWordCheckBox);
+        mainLayout()->addWidget(m_pMatchWholeWordCheckBox);
+    }
+
+    /* Create highlight-all check-box: */
+    m_pHighlightAllCheckBox = new QCheckBox;
+    if (m_pHighlightAllCheckBox)
+    {
+        mainLayout()->addWidget(m_pHighlightAllCheckBox);
     }
 }
 
