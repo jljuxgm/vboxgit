@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 77193 2019-02-07 10:06:19Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 77194 2019-02-07 10:23:12Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -2375,14 +2375,15 @@ vmsvgaR3FIFOAccessHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, 
     PVGASTATE   pThis = (PVGASTATE)pvUser;
     int         rc;
     Assert(pThis);
-    Assert(GCPhys >= pThis->svga.GCPhysFIFO);
     NOREF(pVCpu); NOREF(pvPhys); NOREF(pvBuf); NOREF(cbBuf); NOREF(enmOrigin);
 
     SUPSemEventSignal(pThis->svga.pSupDrvSession, pThis->svga.FIFORequestSem);
 # ifdef DEBUG_FIFO_ACCESS
+    Assert(GCPhys >= pThis->svga.GCPhysFIFO);
     rc = vmsvgaDebugFIFOAccess(pVM, pThis, GCPhys, enmAccessType == PGMACCESSTYPE_WRITE);
 # else
     NOREF(enmAccessType);
+    NOREF(GCPhys);
 // #  ifdef DEBUG
     /* Invariant: the access handler should never trigger twice within a certain
      * time span; calling it 500ms here for simplicity. */
