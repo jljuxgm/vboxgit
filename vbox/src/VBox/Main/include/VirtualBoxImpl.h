@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 73716 2018-08-16 15:58:57Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 75380 2018-11-09 22:25:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -328,7 +328,8 @@ private:
     HRESULT createSharedFolder(const com::Utf8Str &aName,
                                const com::Utf8Str &aHostPath,
                                BOOL aWritable,
-                               BOOL aAutomount);
+                               BOOL aAutomount,
+                               const com::Utf8Str &aAutoMountPoint);
     HRESULT removeSharedFolder(const com::Utf8Str &aName);
     HRESULT getExtraDataKeys(std::vector<com::Utf8Str> &aKeys);
     HRESULT getExtraData(const com::Utf8Str &aKey,

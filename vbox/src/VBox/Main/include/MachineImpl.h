@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: MachineImpl.h 75380 2018-11-09 22:25:30Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1114,7 +1114,8 @@ private:
     HRESULT createSharedFolder(const com::Utf8Str &aName,
                                const com::Utf8Str &aHostPath,
                                BOOL aWritable,
-                               BOOL aAutomount);
+                               BOOL aAutomount,
+                               const com::Utf8Str &aAutoMountPoint);
     HRESULT removeSharedFolder(const com::Utf8Str &aName);
     HRESULT canShowConsoleWindow(BOOL *aCanShow);
     HRESULT showConsoleWindow(LONG64 *aWinId);

@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: Settings.cpp 75380 2018-11-09 22:25:30Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2875,10 +2875,11 @@ SharedFolder::SharedFolder() :
 bool SharedFolder::operator==(const SharedFolder &g) const
 {
     return (this == &g)
-        || (   strName       == g.strName
-            && strHostPath   == g.strHostPath
-            && fWritable     == g.fWritable
-            && fAutoMount    == g.fAutoMount);
+        || (   strName           == g.strName
+            && strHostPath       == g.strHostPath
+            && fWritable         == g.fWritable
+            && fAutoMount        == g.fAutoMount
+            && strAutoMountPoint == g.strAutoMountPoint);
 }
 
 /**
@@ -4698,6 +4699,7 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
                 pelmFolder->getAttributeValue("hostPath", sf.strHostPath);
                 pelmFolder->getAttributeValue("writable", sf.fWritable);
                 pelmFolder->getAttributeValue("autoMount", sf.fAutoMount);
+                pelmFolder->getAttributeValue("autoMountPoint", sf.strAutoMountPoint);
                 hw.llSharedFolders.push_back(sf);
             }
         }
@@ -6458,6 +6460,8 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
             pelmThis->setAttribute("hostPath", sf.strHostPath);
             pelmThis->setAttribute("writable", sf.fWritable);
             pelmThis->setAttribute("autoMount", sf.fAutoMount);
+            if (sf.strAutoMountPoint.isNotEmpty())
+                pelmThis->setAttribute("autoMountPoint", sf.strAutoMountPoint);
         }
     }
 
@@ -7291,6 +7295,15 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
             m->sv = SettingsVersion_v1_17;
             return;
         }
+        if (hardwareMachine.llSharedFolders.size())
+            for (SharedFoldersList::const_iterator it = hardwareMachine.llSharedFolders.begin();
+                 it != hardwareMachine.llSharedFolders.end();
+                 ++it)
+                if (it->strAutoMountPoint.isNotEmpty())
+                {
+                    m->sv = SettingsVersion_v1_17;
+                    return;
+                }
 
         /*
          * Check if any serial port uses a non 16550A serial port.

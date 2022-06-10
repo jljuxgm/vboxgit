@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 73805 2018-08-21 16:40:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 75380 2018-11-09 22:25:30Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2012,12 +2012,14 @@ HRESULT VirtualBox::getGuestOSType(const com::Utf8Str &aId,
 HRESULT VirtualBox::createSharedFolder(const com::Utf8Str &aName,
                                        const com::Utf8Str &aHostPath,
                                        BOOL aWritable,
-                                       BOOL aAutomount)
+                                       BOOL aAutomount,
+                                       const com::Utf8Str &aAutoMountPoint)
 {
     NOREF(aName);
     NOREF(aHostPath);
     NOREF(aWritable);
     NOREF(aAutomount);
+    NOREF(aAutoMountPoint);
 
     return setError(E_NOTIMPL, "Not yet implemented");
 }
