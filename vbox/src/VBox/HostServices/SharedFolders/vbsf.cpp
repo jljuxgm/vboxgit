@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 75653 2018-11-21 21:01:28Z vboxsync $ */
+/* $Id: vbsf.cpp 75993 2018-12-05 21:38:00Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -2070,5 +2070,14 @@ int vbsfDisconnect(SHFLCLIENTDATA *pClient)
             vbsfClose(pClient, pHandle->root, Handle);
         }
     }
+
+    for (uint32_t i = 0; i < RT_ELEMENTS(pClient->acMappings); i++)
+        if (pClient->acMappings[i])
+        {
+            uint16_t cMappings = pClient->acMappings[i];
+            while (cMappings-- > 0)
+                vbsfUnmapFolder(pClient, i);
+        }
+
     return VINF_SUCCESS;
 }
