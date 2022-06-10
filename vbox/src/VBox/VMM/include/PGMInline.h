@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: PGMInline.h 77240 2019-02-10 16:34:51Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1491,6 +1491,23 @@ DECLINLINE(bool) pgmPoolIsPageLocked(PPGMPOOLPAGE pPage)
         return true;
     }
     return false;
+}
+
+
+/**
+ * Check if the specified page is dirty (not write monitored)
+ *
+ * @return dirty or not
+ * @param   pVM             The cross context VM structure.
+ * @param   GCPhys          Guest physical address
+ */
+DECLINLINE(bool) pgmPoolIsDirtyPage(PVM pVM, RTGCPHYS GCPhys)
+{
+    PPGMPOOL pPool = pVM->pgm.s.CTX_SUFF(pPool);
+    PGM_LOCK_ASSERT_OWNER(pVM);
+    if (!pPool->cDirtyPages)
+        return false;
+    return pgmPoolIsDirtyPageSlow(pVM, GCPhys);
 }
 
 
