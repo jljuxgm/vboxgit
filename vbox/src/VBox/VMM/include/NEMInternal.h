@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 72924 2018-07-05 16:14:26Z vboxsync $ */
+/* $Id: NEMInternal.h 73282 2018-07-20 20:04:26Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -231,11 +231,8 @@ typedef struct NEMCPU
     uint8_t                     fDesiredInterruptWindows;
     /** Last copy of HV_X64_VP_EXECUTION_STATE::InterruptShadow. */
     bool                        fLastInterruptShadow : 1;
-    /** Pending APIC base value.
-     * This is set to UINT64_MAX when not pending  */
-    uint64_t                    uPendingApicBase;
 # ifdef NEM_WIN_WITH_RING0_RUNLOOP
-    /** Pending VINF_NEM_CHANGE_PGM_MODE, VINF_NEM_FLUSH_TLB or VINF_NEM_UPDATE_APIC_BASE. */
+    /** Pending VINF_NEM_FLUSH_TLB. */
     int32_t                     rcPending;
 # else
     uint32_t                    uPadding;
