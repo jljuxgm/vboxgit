@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 73150 2018-07-16 10:03:41Z vboxsync $ */
+/* $Id: DBGPlugInWinNt.cpp 73413 2018-07-31 16:58:20Z vboxsync $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -797,21 +797,9 @@ static DECLCALLBACK(void)  dbgDiggerWinNtTerm(PUVM pUVM, void *pvData)
     PDBGDIGGERWINNT pThis = (PDBGDIGGERWINNT)pvData;
     Assert(pThis->fValid);
 
-    pThis->fValid = false;
-}
-
-
-/**
- * @copydoc DBGFOSREG::pfnRefresh
- */
-static DECLCALLBACK(int)  dbgDiggerWinNtRefresh(PUVM pUVM, void *pvData)
-{
-    PDBGDIGGERWINNT pThis = (PDBGDIGGERWINNT)pvData;
-    NOREF(pThis);
-    Assert(pThis->fValid);
-
     /*
-     * For now we'll flush and reload everything.
+     * As long as we're using our private LDR reader implementation,
+     * we must unlink and ditch the modules we created.
      */
     RTDBGAS hDbgAs = DBGFR3AsResolveAndRetain(pUVM, DBGF_AS_KERNEL);
     if (hDbgAs != NIL_RTDBGAS)
@@ -833,7 +821,24 @@ static DECLCALLBACK(int)  dbgDiggerWinNtRefresh(PUVM pUVM, void *pvData)
         RTDbgAsRelease(hDbgAs);
     }
 
+    pThis->fValid = false;
+}
+
+
+/**
+ * @copydoc DBGFOSREG::pfnRefresh
+ */
+static DECLCALLBACK(int)  dbgDiggerWinNtRefresh(PUVM pUVM, void *pvData)
+{
+    PDBGDIGGERWINNT pThis = (PDBGDIGGERWINNT)pvData;
+    NOREF(pThis);
+    Assert(pThis->fValid);
+
+    /*
+     * For now we'll flush and reload everything.
+     */
     dbgDiggerWinNtTerm(pUVM, pvData);
+
     return dbgDiggerWinNtInit(pUVM, pvData);
 }
 
