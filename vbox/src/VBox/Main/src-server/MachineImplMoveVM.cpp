@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 71999 2018-04-24 08:40:39Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 72834 2018-07-03 16:44:41Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -142,7 +142,7 @@ HRESULT MachineMoveVM::init()
         RTStrCopy(path, len, m_targetPath.c_str());
         RTPathEnsureTrailingSeparator(path, len);
         strTargetFolder = m_targetPath = path;
-        delete path;
+        delete[] path;
     }
 
     /*
