@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 71492 2018-03-24 22:23:10Z vboxsync $
+# $Id: Makefile.kmk 72959 2018-07-07 21:30:12Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -79,7 +79,6 @@ PROGRAMS += \
 	tstRTInlineAsm \
 	tstIprtList \
 	tstIprtMiniString \
-	tstRTIsoFs \
 	tstLdr \
 	tstLdrLoad \
 	tstRTLocalIpc \
@@ -400,9 +399,6 @@ tstIprtList_SOURCES = tstIprtList.cpp
 
 tstIprtMiniString_TEMPLATE = VBOXR3TSTEXE
 tstIprtMiniString_SOURCES = tstIprtMiniString.cpp
-
-tstRTIsoFs_TEMPLATE = VBOXR3TSTEXE
-tstRTIsoFs_SOURCES = tstRTIsoFs.cpp
 
 tstLdr_TEMPLATE = VBOXR3TSTEXE
 tstLdr_SOURCES = tstLdr.cpp

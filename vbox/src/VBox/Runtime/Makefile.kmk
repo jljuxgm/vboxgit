@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72940 2018-07-07 13:37:19Z vboxsync $
+# $Id: Makefile.kmk 72959 2018-07-07 21:30:12Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -679,7 +679,6 @@ RuntimeR3_SOURCES       = \
 	r3/fileio.cpp \
 	r3/fs.cpp \
 	r3/init.cpp \
-	r3/isofs.cpp \
 	r3/memsafer-r3.cpp \
 	r3/path.cpp \
 	r3/poll.cpp \
