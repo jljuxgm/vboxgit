@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 73462 2018-08-03 08:15:08Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -643,6 +643,8 @@ static DECLCALLBACK(int) drvHostPulseAudioInit(PPDMIHOSTAUDIO pInterface)
         LogRel(("PulseAudio: Failed to load the PulseAudio shared library! Error %Rrc\n", rc));
         return rc;
     }
+
+    LogRel(("PulseAudio: Using v%s\n", pa_get_library_version()));
 
     pThis->fAbortLoop = false;
     pThis->pMainLoop = NULL;
