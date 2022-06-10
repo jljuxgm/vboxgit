@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 71364 2018-03-16 09:58:05Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 75724 2018-11-25 19:12:16Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -35,6 +35,10 @@
 #include <iprt/stdarg.h>
 #include <VBox/log.h>
 #include <VBox/HostServices/GuestControlSvc.h>
+
+#ifndef RT_OS_WINDOWS
+# include <signal.h>
+#endif
 
 #include "VBoxGuestR3LibInternal.h"
 
@@ -98,8 +102,30 @@ VBGLR3DECL(int) VbglR3GuestCtrlMsgWaitFor(uint32_t uClientId, uint32_t *pidMsg, 
      *       info about a pending message (returning VINF_SUCCESS), and a separate
      *       one for retriving the actual message parameters.  Not this weird
      *       stuff, to put it rather bluntly.
+     *
+     * Note! As a result of this weird design, we are not able to correctly
+     *       retrieve message if we're interrupted by a signal, like SIGCHLD.
+     *       Because IPRT wants to use waitpid(), we're forced to have a handler
+     *       installed for SIGCHLD, so when working with child processes there
+     *       will be signals in the air and we will get VERR_INTERRUPTED returns.
+     *       The way HGCM handles interrupted calls is to silently (?) drop them
+     *       as they complete (see VMMDev), so the server knows little about it
+     *       and just goes on to the next message inline.
+     *
+     *       So, as a "temporary" mesasure, we block SIGCHLD here while waiting,
+     *       because it will otherwise be impossible do simple stuff like 'mkdir'
+     *       on a mac os x guest, and probably most other unix guests.
      */
+#ifdef RT_OS_WINDOWS
     int rc = VbglR3HGCMCall(&Msg.hdr, sizeof(Msg));
+#else
+    sigset_t SigSet;
+    sigemptyset(&SigSet);
+    sigaddset(&SigSet, SIGCHLD);
+    sigprocmask(SIG_BLOCK, &SigSet, NULL);
+    int rc = VbglR3HGCMCall(&Msg.hdr, sizeof(Msg));
+    sigprocmask(SIG_UNBLOCK, &SigSet, NULL);
+#endif
     if (   rc == VERR_TOO_MUCH_DATA
         || RT_SUCCESS(rc))
     {
