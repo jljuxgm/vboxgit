@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.h 77013 2019-01-28 08:24:12Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.h 77174 2019-02-06 13:38:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class declaration.
  */
@@ -33,6 +33,7 @@ class QIDialogButtonBox;
 class QIToolButton;
 class QITreeWidget;
 class UIMediumItem;
+class UISearchLineEdit;
 
 
 /** QWidget extension providing a simple way to enter a earch term and search type for medium searching
@@ -79,8 +80,10 @@ private:
     /** Increases (or decreases if @p fNext is false) the m_iScrollToIndex and
      *  takes care of the necessary decoration changes to mark the current item. */
     void    goToNextPrevious(bool fNext);
+    /** Updates the feedback text of th line edit that shows # of matches. */
+    void    updateSearchLineEdit(int iMatchCount, int iScrollToIndex);
     QIComboBox       *m_pSearchComboxBox;
-    QLineEdit        *m_pSearchTermLineEdit;
+    UISearchLineEdit *m_pSearchTermLineEdit;
     QIToolButton     *m_pShowNextMatchButton;
     QIToolButton     *m_pShowPreviousMatchButton;
 
