@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.h 73062 2018-07-11 12:40:08Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.h 73137 2018-07-15 19:23:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class declaration.
  */
@@ -23,6 +23,7 @@
 
 /* Forward declarations: */
 class UIFilePathSelector;
+class QIRichTextLabel;
 
 class UIApplianceImportEditorWidget: public UIApplianceEditorWidget
 {
@@ -48,7 +49,7 @@ private slots:
 private:
 
     void      prepareWidgets();
-    QLabel    *m_pPathSelectorLabel;
+    QIRichTextLabel    *m_pPathSelectorLabel;
     UIFilePathSelector *m_pPathSelector;
 
     /** Holds the 'reinit MACs' check-box instance. */
