@@ -1,4 +1,4 @@
-/* $Id: VDVfs.cpp 72997 2018-07-09 07:43:53Z vboxsync $ */
+/* $Id: VDVfs.cpp 73061 2018-07-11 11:20:50Z vboxsync $ */
 /** @file
  * Virtual Disk Container implementation. - VFS glue.
  */
@@ -674,7 +674,7 @@ static DECLCALLBACK(int) vdVfsChain_Instantiate(PCRTVFSCHAINELEMENTREG pProvider
             else
             {
                 uint32_t cChain = pElement->cArgs;
-                if (pElement->cArgs == 2 && pElement->paArgs[pElement->cArgs - 1].uProvider != 0)
+                if (pElement->cArgs >= 2 && pElement->paArgs[pElement->cArgs - 1].uProvider != 0)
                     cChain--;
                 uint32_t const  fFinal    = (uint32_t)pElement->uProvider;
                 uint32_t const  fReadOnly = (fFinal & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_NORMAL)) | VD_OPEN_FLAGS_READONLY;
