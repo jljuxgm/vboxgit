@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 76926 2019-01-21 18:49:48Z vboxsync $ */
+/* $Id: FsPerf.cpp 76927 2019-01-21 18:52:14Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -55,9 +55,11 @@
 #else
 # include <errno.h>
 # include <unistd.h>
-# include <sys/fcntl.h>
-# include <sys/mman.h>
 # include <sys/types.h>
+# include <sys/fcntl.h>
+# ifndef RT_OS_OS2
+#  include <sys/mman.h>
+# endif
 #endif
 
 
@@ -2172,7 +2174,7 @@ DECL_FORCE_INLINE(int) fsPerfMSyncWorker(uint8_t *pbMapping, size_t offMapping, 
 void fsPerfMMap(RTFILE hFile1, RTFILE hFileNoCache, uint64_t cbFile)
 {
     RTTestISub("mmap");
-#if defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX) || defined(RT_OS_DARWIN)
+#if !defined(RT_OS_OS2)
     static const char * const s_apszStates[] = { "readonly", "writecopy", "readwrite" };
     enum { kMMap_ReadOnly = 0, kMMap_WriteCopy, kMMap_ReadWrite, kMMap_End };
     for (int enmState = kMMap_ReadOnly; enmState < kMMap_End; enmState++)
@@ -2614,7 +2616,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 76926 $";
+                char szRev[] = "$Revision: 76927 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
