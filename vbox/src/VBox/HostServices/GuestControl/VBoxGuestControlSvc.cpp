@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 76963 2019-01-24 08:38:26Z vboxsync $ */
+/* $Id: VBoxGuestControlSvc.cpp 77115 2019-02-01 13:25:13Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -2120,7 +2120,7 @@ int GstCtrlService::hostCallback(uint32_t u32Function, uint32_t cParms, VBOXHGCM
     int rc;
     if (mpfnHostCallback)
     {
-        VBOXGUESTCTRLHOSTCALLBACK data(cParms, paParms);
+        VBOXGUESTCTRLHOSTCALLBACK data = { cParms, paParms };
         rc = mpfnHostCallback(mpvHostData, u32Function, &data, sizeof(data));
     }
     else
