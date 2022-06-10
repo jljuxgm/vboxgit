@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72934 2018-07-06 11:51:54Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 72937 2018-07-06 13:04:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -698,9 +698,9 @@ UIMediumItem* UIMediumSelector::searchItem(const QTreeWidgetItem *pParent, const
                 return mediumItem;
             }
         }
-        UIMediumItem *result = searchItem(pChild, mediumId);
-        if (result)
-            return result;
+        UIMediumItem *pResult = searchItem(pChild, mediumId);
+        if (pResult)
+            return pResult;
     }
     return 0;
 }
