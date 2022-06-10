@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 75173 2018-10-30 10:51:36Z vboxsync $
 ## @file
 # Sub-Makefile for the X86 and AMD64 Instruction Tests.
 #
@@ -22,7 +22,7 @@ include $(KBUILD_PATH)/subheader.kmk
 # Python linting (can't live without pylint!).
 #
 ifdef VBOX_WITH_PYLINT
- TESTING +=
+TESTING +=
 endif
 BLDDIRS += $(PATH_TARGET)/pylint
 
