@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 74003 2018-08-31 14:47:37Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 74530 2018-09-28 17:45:20Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -1424,7 +1424,9 @@ HRESULT MachineMoveVM::queryMediasForAllStates(const std::vector<ComObjPtr<Machi
             }
 
             MEDIUMTASKCHAINMOVE mtc;
-            mtc.devType = deviceType;
+            mtc.devType       = deviceType;
+            mtc.fAttachLinked = false;
+            mtc.fCreateDiffs  = false;
 
             while (!pMedium.isNull())
             {
