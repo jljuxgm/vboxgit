@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 73673 2018-08-14 18:43:35Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 73676 2018-08-14 19:02:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -85,6 +85,10 @@ public:
         /** Returns whether single group is selected. */
         bool isSingleGroupSelected() const;
 
+        /** Returns a type of curent Machine tool. */
+        ToolTypeMachine currentMachineTool() const;
+        /** Returns a type of curent Global tool. */
+        ToolTypeGlobal currentGlobalTool() const;
         /** Returns whether Machine tool of passed @a enmType is opened. */
         bool isToolOpened(ToolTypeMachine enmType) const;
         /** Returns whether Global tool of passed @a enmType is opened. */

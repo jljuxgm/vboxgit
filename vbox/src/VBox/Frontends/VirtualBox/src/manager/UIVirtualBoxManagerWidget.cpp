@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 73673 2018-08-14 18:43:35Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 73676 2018-08-14 19:02:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -101,6 +101,16 @@ bool UIVirtualBoxManagerWidget::isAllItemsOfOneGroupSelected() const
 bool UIVirtualBoxManagerWidget::isSingleGroupSelected() const
 {
     return m_pPaneChooser->isSingleGroupSelected();
+}
+
+ToolTypeMachine UIVirtualBoxManagerWidget::currentMachineTool() const
+{
+    return m_pPaneToolsMachine->currentTool();
+}
+
+ToolTypeGlobal UIVirtualBoxManagerWidget::currentGlobalTool() const
+{
+    return m_pPaneToolsGlobal->currentTool();
 }
 
 bool UIVirtualBoxManagerWidget::isToolOpened(ToolTypeMachine enmType) const
@@ -392,10 +402,19 @@ void UIVirtualBoxManagerWidget::prepareToolbar()
         m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Settings));
         m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Discard));
         m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_M_StartOrShow));
+
+        /* Add Snapshot actions block: */
+        m_pToolBar->addSeparator();
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Snapshot_S_Take));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Snapshot_S_Delete));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Snapshot_S_Restore));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Snapshot_T_Properties));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Snapshot_S_Clone));
+
 #ifdef VBOX_WS_MAC
         // WORKAROUND:
         // Actually Qt should do that itself but by some unknown reason it sometimes
-        // forget to update toolbar after changing its actions on cocoa platform.
+        // forget to update toolbar after changing its actions on Cocoa platform.
         connect(actionPool()->action(UIActionIndexST_M_Machine_S_New), &UIAction::changed,
                 m_pToolBar, static_cast<void(UIToolBar::*)(void)>(&UIToolBar::update));
         connect(actionPool()->action(UIActionIndexST_M_Machine_S_Settings), &UIAction::changed,
@@ -404,16 +423,14 @@ void UIVirtualBoxManagerWidget::prepareToolbar()
                 m_pToolBar, static_cast<void(UIToolBar::*)(void)>(&UIToolBar::update));
         connect(actionPool()->action(UIActionIndexST_M_Machine_M_StartOrShow), &UIAction::changed,
                 m_pToolBar, static_cast<void(UIToolBar::*)(void)>(&UIToolBar::update));
-#endif /* VBOX_WS_MAC */
 
-#ifdef VBOX_WS_MAC
         // WORKAROUND:
         // There is a bug in Qt Cocoa which result in showing a "more arrow" when
         // the necessary size of the toolbar is increased. Also for some languages
         // the with doesn't match if the text increase. So manually adjust the size
         // after changing the text.
         m_pToolBar->updateLayout();
-#endif
+#endif /* VBOX_WS_MAC */
     }
 }
 

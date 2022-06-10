@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 73671 2018-08-14 18:21:31Z vboxsync $ */
+/* $Id: UISnapshotPane.h 73676 2018-08-14 19:02:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -57,7 +57,7 @@ class UISnapshotPane : public QIWithRetranslateUI<QWidget>
 public:
 
     /** Constructs snapshot pane passing @a pParent to the base-class. */
-    UISnapshotPane(UIActionPool *pActionPool, QWidget *pParent = 0);
+    UISnapshotPane(UIActionPool *pActionPool, bool fShowToolbar = true, QWidget *pParent = 0);
     /** Destructs snapshot pane. */
     virtual ~UISnapshotPane() /* override */;
 
@@ -197,6 +197,8 @@ private:
       * @{ */
         /** Holds the action-pool reference. */
         UIActionPool  *m_pActionPool;
+        /** Holds whether we should show toolbar. */
+        bool           m_fShowToolbar;
         /** Holds the COM machine object. */
         CMachine       m_comMachine;
         /** Holds the machine object ID. */

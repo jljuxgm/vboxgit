@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 73673 2018-08-14 18:43:35Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 73676 2018-08-14 19:02:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -247,6 +247,8 @@ private:
         void prepareMenuGroupClose(QMenu *pMenu);
         /** Prepares @a pMenu Machine => Close. */
         void prepareMenuMachineClose(QMenu *pMenu);
+        /** Prepares @a pMenu Snapshot. */
+        void prepareMenuSnapshot(QMenu *pMenu);
         /** Prepares status-bar. */
         void prepareStatusBar();
         /** Prepares toolbar. */
@@ -346,6 +348,11 @@ private:
     QList<UIAction*>  m_machineActions;
     /** Holds the Machine menu parent action. */
     QAction          *m_pMachineMenuAction;
+
+    /** Holds the list of Snapshot menu actions. */
+    QList<UIAction*>  m_snapshotActions;
+    /** Holds the Snapshot menu parent action. */
+    QAction          *m_pSnapshotMenuAction;
 
     /** Holds the Virtual Media Manager window instance. */
     QIManagerDialog *m_pManagerVirtualMedia;
