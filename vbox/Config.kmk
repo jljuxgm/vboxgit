@@ -1,4 +1,4 @@
-# $Id: Config.kmk 75976 2018-12-05 15:40:01Z vboxsync $
+# $Id: Config.kmk 76010 2018-12-06 11:17:50Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -831,6 +831,10 @@ endif
 # Set this to enable building of the vboximg-mount FUSE mounting utility.
 if1of ($(KBUILD_TARGET), darwin)
  VBOX_WITH_VBOXIMGMOUNT = 1
+endif
+# Set this to enable packaging the fuse related bits into our installer.
+if1of ($(KBUILD_TARGET), darwin)
+ VBOX_WITH_FUSE_PACKING = 1
 endif
 ## @}
 
@@ -7485,7 +7489,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75976 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 76010 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
