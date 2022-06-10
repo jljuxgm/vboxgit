@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __UIWizardNewVDPageExpert_h__
-#define __UIWizardNewVDPageExpert_h__
+#ifndef FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDPageExpert_h
+#define FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDPageExpert_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -80,4 +80,4 @@ private:
     QGroupBox *m_pSizeCnt;
 };
 
-#endif // __UIWizardNewVDPageExpert_h__
+#endif /* !FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDPageExpert_h */

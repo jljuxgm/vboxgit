@@ -1,4 +1,4 @@
-/* $Id: UIImageTools.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIImageTools.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for image manipulation.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIImageTools_h___
-#define ___UIImageTools_h___
+#ifndef FEQT_INCLUDED_SRC_globals_UIImageTools_h
+#define FEQT_INCLUDED_SRC_globals_UIImageTools_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -49,4 +49,4 @@ namespace UIImageTools
 }
 using namespace UIImageTools /* if header included */;
 
-#endif /* !___UIImageTools_h___ */
+#endif /* !FEQT_INCLUDED_SRC_globals_UIImageTools_h */

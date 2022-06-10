@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDesktopServices.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Desktop Services..
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIDesktopServices_h___
-#define ___UIDesktopServices_h___
+#ifndef FEQT_INCLUDED_SRC_platform_UIDesktopServices_h
+#define FEQT_INCLUDED_SRC_platform_UIDesktopServices_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -34,5 +34,5 @@ public:
     static bool openInFileManager(const QString &strFile);
 };
 
-#endif /* !___UIDesktopServices_h___ */
+#endif /* !FEQT_INCLUDED_SRC_platform_UIDesktopServices_h */
 

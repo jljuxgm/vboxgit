@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIDesktopWidgetWatchdog_h___
-#define ___UIDesktopWidgetWatchdog_h___
+#ifndef FEQT_INCLUDED_SRC_globals_UIDesktopWidgetWatchdog_h
+#define FEQT_INCLUDED_SRC_globals_UIDesktopWidgetWatchdog_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -175,5 +175,5 @@ private:
 /** 'Official' name for the desktop-widget watchdog singleton. */
 #define gpDesktop UIDesktopWidgetWatchdog::instance()
 
-#endif /* !___UIDesktopWidgetWatchdog_h___ */
+#endif /* !FEQT_INCLUDED_SRC_globals_UIDesktopWidgetWatchdog_h */
 

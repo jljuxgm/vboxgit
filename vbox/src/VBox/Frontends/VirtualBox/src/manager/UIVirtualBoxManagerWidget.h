@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIVirtualBoxManagerWidget_h___
-#define ___UIVirtualBoxManagerWidget_h___
+#ifndef FEQT_INCLUDED_SRC_manager_UIVirtualBoxManagerWidget_h
+#define FEQT_INCLUDED_SRC_manager_UIVirtualBoxManagerWidget_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -213,4 +213,4 @@ private:
     UITools            *m_pPaneTools;
 };
 
-#endif /* !___UIVirtualBoxManagerWidget_h___ */
+#endif /* !FEQT_INCLUDED_SRC_manager_UIVirtualBoxManagerWidget_h */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIMachineWindowSeamless_h___
-#define ___UIMachineWindowSeamless_h___
+#ifndef FEQT_INCLUDED_SRC_runtime_seamless_UIMachineWindowSeamless_h
+#define FEQT_INCLUDED_SRC_runtime_seamless_UIMachineWindowSeamless_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -122,5 +122,5 @@ private:
     friend class UIMachineWindow;
 };
 
-#endif /* !___UIMachineWindowSeamless_h___ */
+#endif /* !FEQT_INCLUDED_SRC_runtime_seamless_UIMachineWindowSeamless_h */
 

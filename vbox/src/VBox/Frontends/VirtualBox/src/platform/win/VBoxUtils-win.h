@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-win.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxUtils-win.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Windows specific tasks.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxUtils_win_h___
-#define ___VBoxUtils_win_h___
+#ifndef FEQT_INCLUDED_SRC_platform_win_VBoxUtils_win_h
+#define FEQT_INCLUDED_SRC_platform_win_VBoxUtils_win_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -37,4 +37,4 @@ namespace NativeWindowSubsystem
     SHARED_LIBRARY_STUFF const QRegion areaCoveredByTopMostWindows();
 }
 
-#endif /* !___VBoxUtils_win_h___ */
+#endif /* !FEQT_INCLUDED_SRC_platform_win_VBoxUtils_win_h */

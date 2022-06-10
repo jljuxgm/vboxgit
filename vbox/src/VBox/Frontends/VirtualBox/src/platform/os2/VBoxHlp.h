@@ -1,4 +1,4 @@
-/* $Id: VBoxHlp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxHlp.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declaration of OS/2-specific helpers that require to reside in a DLL.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxHlp_h
-#define ___VBoxHlp_h
+#ifndef FEQT_INCLUDED_SRC_platform_os2_VBoxHlp_h
+#define FEQT_INCLUDED_SRC_platform_os2_VBoxHlp_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -35,5 +35,5 @@ VBOXHLPDECL(bool) VBoxHlpInstallKbdHook (HAB aHab, HWND aHwnd,
 VBOXHLPDECL(bool) VBoxHlpUninstallKbdHook (HAB aHab, HWND aHwnd,
                                            unsigned long aMsg);
 
-#endif /* !___VBoxHlp_h */
+#endif /* !FEQT_INCLUDED_SRC_platform_os2_VBoxHlp_h */
 

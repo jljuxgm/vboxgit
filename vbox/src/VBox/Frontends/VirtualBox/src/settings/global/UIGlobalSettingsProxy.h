@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIGlobalSettingsProxy_h___
-#define ___UIGlobalSettingsProxy_h___
+#ifndef FEQT_INCLUDED_SRC_settings_global_UIGlobalSettingsProxy_h
+#define FEQT_INCLUDED_SRC_settings_global_UIGlobalSettingsProxy_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -84,4 +84,4 @@ private:
     UISettingsCacheGlobalProxy *m_pCache;
 };
 
-#endif /* !___UIGlobalSettingsProxy_h___ */
+#endif /* !FEQT_INCLUDED_SRC_settings_global_UIGlobalSettingsProxy_h */

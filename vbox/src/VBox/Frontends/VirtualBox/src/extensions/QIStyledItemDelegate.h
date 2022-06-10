@@ -1,4 +1,4 @@
-/* $Id: QIStyledItemDelegate.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIStyledItemDelegate.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIStyledItemDelegate class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___QIStyledItemDelegate_h___
-#define ___QIStyledItemDelegate_h___
+#ifndef FEQT_INCLUDED_SRC_extensions_QIStyledItemDelegate_h
+#define FEQT_INCLUDED_SRC_extensions_QIStyledItemDelegate_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -66,4 +66,4 @@ private:
     bool m_fWatchForEditorEnterKeyTriggering : 1;
 };
 
-#endif /* !___QIStyledItemDelegate_h___ */
+#endif /* !FEQT_INCLUDED_SRC_extensions_QIStyledItemDelegate_h */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMachineViewScale.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIMachineViewScale_h___
-#define ___UIMachineViewScale_h___
+#ifndef FEQT_INCLUDED_SRC_runtime_scale_UIMachineViewScale_h
+#define FEQT_INCLUDED_SRC_runtime_scale_UIMachineViewScale_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -66,5 +66,5 @@ private:
     friend class UIMachineView;
 };
 
-#endif // !___UIMachineViewScale_h___
+#endif /* !FEQT_INCLUDED_SRC_runtime_scale_UIMachineViewScale_h */
 

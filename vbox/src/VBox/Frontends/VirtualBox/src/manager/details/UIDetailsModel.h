@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDetailsModel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIDetailsModel_h___
-#define ___UIDetailsModel_h___
+#ifndef FEQT_INCLUDED_SRC_manager_details_UIDetailsModel_h
+#define FEQT_INCLUDED_SRC_manager_details_UIDetailsModel_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -300,4 +300,4 @@ private:
 };
 
 
-#endif /* !___UIDetailsModel_h___ */
+#endif /* !FEQT_INCLUDED_SRC_manager_details_UIDetailsModel_h */

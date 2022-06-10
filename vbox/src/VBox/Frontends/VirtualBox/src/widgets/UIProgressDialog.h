@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIProgressDialog.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIProgressDialog_h___
-#define ___UIProgressDialog_h___
+#ifndef FEQT_INCLUDED_SRC_widgets_UIProgressDialog_h
+#define FEQT_INCLUDED_SRC_widgets_UIProgressDialog_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -218,5 +218,5 @@ private:
 };
 
 
-#endif /* !___UIProgressDialog_h___ */
+#endif /* !FEQT_INCLUDED_SRC_widgets_UIProgressDialog_h */
 

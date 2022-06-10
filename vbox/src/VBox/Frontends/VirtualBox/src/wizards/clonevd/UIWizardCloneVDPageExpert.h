@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIWizardCloneVDPageExpert_h___
-#define ___UIWizardCloneVDPageExpert_h___
+#ifndef FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageExpert_h
+#define FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageExpert_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -98,5 +98,5 @@ private:
     QGroupBox *m_pDestinationCnt;
 };
 
-#endif /* !___UIWizardCloneVDPageExpert_h___ */
+#endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageExpert_h */
 

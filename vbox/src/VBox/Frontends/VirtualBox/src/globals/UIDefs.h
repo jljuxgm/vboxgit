@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDefs.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIDefs_h___
-#define ___UIDefs_h___
+#ifndef FEQT_INCLUDED_SRC_globals_UIDefs_h
+#define FEQT_INCLUDED_SRC_globals_UIDefs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -158,4 +158,4 @@ struct ExactStorageSlot : public StorageSlot
 };
 
 
-#endif /* !___UIDefs_h___ */
+#endif /* !FEQT_INCLUDED_SRC_globals_UIDefs_h */

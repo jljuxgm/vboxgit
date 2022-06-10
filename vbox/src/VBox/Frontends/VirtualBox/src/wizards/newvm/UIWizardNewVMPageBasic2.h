@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __UIWizardNewVMPageBasic2_h__
-#define __UIWizardNewVMPageBasic2_h__
+#ifndef FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMPageBasic2_h
+#define FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMPageBasic2_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -81,5 +81,5 @@ private:
     QIRichTextLabel *m_pLabel;
 };
 
-#endif // __UINewVMWzd_h__
+#endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVMPageBasic2_h */
 

@@ -1,4 +1,4 @@
-/* $Id: QIGraphicsView.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIGraphicsView.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIGraphicsView class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___QIGraphicsView_h___
-#define ___QIGraphicsView_h___
+#ifndef FEQT_INCLUDED_SRC_extensions_graphics_QIGraphicsView_h
+#define FEQT_INCLUDED_SRC_extensions_graphics_QIGraphicsView_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -52,4 +52,4 @@ private:
     int m_iVerticalScrollBarPosition;
 };
 
-#endif /* !___QIGraphicsView_h___ */
+#endif /* !FEQT_INCLUDED_SRC_extensions_graphics_QIGraphicsView_h */

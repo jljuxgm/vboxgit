@@ -1,4 +1,4 @@
-/* $Id: UIStarter.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIStarter.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIStarter_h___
-#define ___UIStarter_h___
+#ifndef FEQT_INCLUDED_SRC_globals_UIStarter_h
+#define FEQT_INCLUDED_SRC_globals_UIStarter_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -78,4 +78,4 @@ private:
 /** Singleton UI starter 'official' name. */
 #define gStarter UIStarter::instance()
 
-#endif /* !___UIStarter_h___ */
+#endif /* !FEQT_INCLUDED_SRC_globals_UIStarter_h */

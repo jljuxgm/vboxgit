@@ -1,4 +1,4 @@
-/* $Id: QIWithRetranslateUI.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIWithRetranslateUI.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWithRetranslateUI class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___QIWithRetranslateUI_h___
-#define ___QIWithRetranslateUI_h___
+#ifndef FEQT_INCLUDED_SRC_globals_QIWithRetranslateUI_h
+#define FEQT_INCLUDED_SRC_globals_QIWithRetranslateUI_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -182,5 +182,5 @@ protected:
 };
 
 
-#endif /* !___QIWithRetranslateUI_h___ */
+#endif /* !FEQT_INCLUDED_SRC_globals_QIWithRetranslateUI_h */
 

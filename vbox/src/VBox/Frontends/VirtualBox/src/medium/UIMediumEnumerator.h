@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIMediumEnumerator_h___
-#define ___UIMediumEnumerator_h___
+#ifndef FEQT_INCLUDED_SRC_medium_UIMediumEnumerator_h
+#define FEQT_INCLUDED_SRC_medium_UIMediumEnumerator_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -106,4 +106,4 @@ private:
     UIMediumMap m_media;
 };
 
-#endif /* !___UIMediumEnumerator_h___ */
+#endif /* !FEQT_INCLUDED_SRC_medium_UIMediumEnumerator_h */

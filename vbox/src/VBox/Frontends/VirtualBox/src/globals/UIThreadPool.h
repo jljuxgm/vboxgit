@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIThreadPool.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask classes declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIThreadPool_h___
-#define ___UIThreadPool_h___
+#ifndef FEQT_INCLUDED_SRC_globals_UIThreadPool_h
+#define FEQT_INCLUDED_SRC_globals_UIThreadPool_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -158,5 +158,5 @@ private:
 };
 
 
-#endif /* !___UIThreadPool_h___ */
+#endif /* !FEQT_INCLUDED_SRC_globals_UIThreadPool_h */
 

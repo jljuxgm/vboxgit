@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UISettingsPage.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UISettingsPage_h___
-#define ___UISettingsPage_h___
+#ifndef FEQT_INCLUDED_SRC_settings_UISettingsPage_h
+#define FEQT_INCLUDED_SRC_settings_UISettingsPage_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -269,4 +269,4 @@ protected:
 };
 
 
-#endif /* !___UISettingsPage_h___ */
+#endif /* !FEQT_INCLUDED_SRC_settings_UISettingsPage_h */

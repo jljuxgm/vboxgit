@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UINetworkManager.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager stuff declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UINetworkManager_h___
-#define ___UINetworkManager_h___
+#ifndef FEQT_INCLUDED_SRC_net_UINetworkManager_h
+#define FEQT_INCLUDED_SRC_net_UINetworkManager_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -135,5 +135,5 @@ private:
 /** Singleton Network Manager 'official' name. */
 #define gNetworkManager UINetworkManager::instance()
 
-#endif /* !___UINetworkManager_h___ */
+#endif /* !FEQT_INCLUDED_SRC_net_UINetworkManager_h */
 

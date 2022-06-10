@@ -1,4 +1,4 @@
-/* $Id: VBoxLicenseViewer.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxLicenseViewer.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxLicenseViewer class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxLicenseViewer___
-#define ___VBoxLicenseViewer___
+#ifndef FEQT_INCLUDED_SRC_VBoxLicenseViewer_h
+#define FEQT_INCLUDED_SRC_VBoxLicenseViewer_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -80,5 +80,5 @@ private:
     QPushButton *m_pButtonDisagree;
 };
 
-#endif /* !___VBoxLicenseViewer___ */
+#endif /* !FEQT_INCLUDED_SRC_VBoxLicenseViewer_h */
 

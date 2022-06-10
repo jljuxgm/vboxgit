@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic4.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic4.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic4 class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIWizardCloneVDPageBasic4_h___
-#define ___UIWizardCloneVDPageBasic4_h___
+#ifndef FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageBasic4_h
+#define FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageBasic4_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -121,5 +121,5 @@ private:
     QIRichTextLabel *m_pLabel;
 };
 
-#endif /* !___UIWizardCloneVDPageBasic4_h___ */
+#endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVDPageBasic4_h */
 

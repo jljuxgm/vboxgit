@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlConsole.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIGuestControlConsole.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlConsole class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIGuestControlConsole_h___
-#define ___UIGuestControlConsole_h___
+#ifndef FEQT_INCLUDED_SRC_guestctrl_UIGuestControlConsole_h
+#define FEQT_INCLUDED_SRC_guestctrl_UIGuestControlConsole_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -75,5 +75,5 @@ private:
     unsigned       m_uCommandHistoryIndex;
 };
 
-#endif /* !___UIGuestControlConsole_h___ */
+#endif /* !FEQT_INCLUDED_SRC_guestctrl_UIGuestControlConsole_h */
 

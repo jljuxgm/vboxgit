@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMachineLogicScale.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIMachineLogicScale_h___
-#define ___UIMachineLogicScale_h___
+#ifndef FEQT_INCLUDED_SRC_runtime_scale_UIMachineLogicScale_h
+#define FEQT_INCLUDED_SRC_runtime_scale_UIMachineLogicScale_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -77,5 +77,5 @@ private:
     friend class UIMachineLogic;
 };
 
-#endif /* !___UIMachineLogicScale_h___ */
+#endif /* !FEQT_INCLUDED_SRC_runtime_scale_UIMachineLogicScale_h */
 

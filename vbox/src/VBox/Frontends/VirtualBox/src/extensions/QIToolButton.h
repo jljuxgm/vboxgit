@@ -1,4 +1,4 @@
-/* $Id: QIToolButton.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIToolButton.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIToolButton class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___QIToolButton_h___
-#define ___QIToolButton_h___
+#ifndef FEQT_INCLUDED_SRC_extensions_QIToolButton_h
+#define FEQT_INCLUDED_SRC_extensions_QIToolButton_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -44,4 +44,4 @@ public:
     void removeBorder();
 };
 
-#endif /* !___QIToolButton_h___ */
+#endif /* !FEQT_INCLUDED_SRC_extensions_QIToolButton_h */

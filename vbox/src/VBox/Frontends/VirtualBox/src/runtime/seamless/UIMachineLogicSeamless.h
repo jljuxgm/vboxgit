@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIMachineLogicSeamless_h___
-#define ___UIMachineLogicSeamless_h___
+#ifndef FEQT_INCLUDED_SRC_runtime_seamless_UIMachineLogicSeamless_h
+#define FEQT_INCLUDED_SRC_runtime_seamless_UIMachineLogicSeamless_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -109,5 +109,5 @@ private:
     friend class UIMachineViewSeamless;
 };
 
-#endif /* !___UIMachineLogicSeamless_h___ */
+#endif /* !FEQT_INCLUDED_SRC_runtime_seamless_UIMachineLogicSeamless_h */
 

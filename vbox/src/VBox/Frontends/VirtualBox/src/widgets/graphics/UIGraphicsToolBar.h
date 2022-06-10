@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsToolBar.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIGraphicsToolBar.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsToolBar class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __UIGraphicsToolBar_h__
-#define __UIGraphicsToolBar_h__
+#ifndef FEQT_INCLUDED_SRC_widgets_graphics_UIGraphicsToolBar_h
+#define FEQT_INCLUDED_SRC_widgets_graphics_UIGraphicsToolBar_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -64,5 +64,5 @@ private:
     QMap<UIGraphicsToolBarIndex, UIGraphicsButton*> m_buttons;
 };
 
-#endif /* __UIGraphicsToolBar_h__ */
+#endif /* !FEQT_INCLUDED_SRC_widgets_graphics_UIGraphicsToolBar_h */
 

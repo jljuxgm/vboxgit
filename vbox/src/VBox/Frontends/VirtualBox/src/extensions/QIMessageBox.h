@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIMessageBox.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMessageBox class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___QIMessageBox_h___
-#define ___QIMessageBox_h___
+#ifndef FEQT_INCLUDED_SRC_extensions_QIMessageBox_h
+#define FEQT_INCLUDED_SRC_extensions_QIMessageBox_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -196,4 +196,4 @@ private:
 };
 
 
-#endif /* !___QIMessageBox_h___ */
+#endif /* !FEQT_INCLUDED_SRC_extensions_QIMessageBox_h */

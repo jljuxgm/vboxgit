@@ -1,4 +1,4 @@
-/* $Id: UIApplianceExportEditorWidget.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __UIApplianceExportEditorWidget_h__
-#define __UIApplianceExportEditorWidget_h__
+#ifndef FEQT_INCLUDED_SRC_widgets_UIApplianceExportEditorWidget_h
+#define FEQT_INCLUDED_SRC_widgets_UIApplianceExportEditorWidget_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -37,5 +37,5 @@ public:
     void prepareExport();
 };
 
-#endif /* __UIApplianceExportEditorWidget_h__ */
+#endif /* !FEQT_INCLUDED_SRC_widgets_UIApplianceExportEditorWidget_h */
 

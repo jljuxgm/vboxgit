@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UISettingsDefs.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UISettingsDefs_h___
-#define ___UISettingsDefs_h___
+#ifndef FEQT_INCLUDED_SRC_settings_UISettingsDefs_h
+#define FEQT_INCLUDED_SRC_settings_UISettingsDefs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -296,4 +296,4 @@ private:
 };
 
 
-#endif /* !___UISettingsDefs_h___ */
+#endif /* !FEQT_INCLUDED_SRC_settings_UISettingsDefs_h */

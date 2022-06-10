@@ -1,4 +1,4 @@
-/* $Id: QIArrowSplitter.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIArrowSplitter.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIArrowSplitter class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___QIArrowSplitter_h___
-#define ___QIArrowSplitter_h___
+#ifndef FEQT_INCLUDED_SRC_extensions_QIArrowSplitter_h
+#define FEQT_INCLUDED_SRC_extensions_QIArrowSplitter_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -111,4 +111,4 @@ private:
     int               m_iDetailsIndex;
 };
 
-#endif /* !___QIArrowSplitter_h___ */
+#endif /* !FEQT_INCLUDED_SRC_extensions_QIArrowSplitter_h */

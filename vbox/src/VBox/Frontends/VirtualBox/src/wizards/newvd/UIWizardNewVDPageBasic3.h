@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __UIWizardNewVDPageBasic3_h__
-#define __UIWizardNewVDPageBasic3_h__
+#ifndef FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDPageBasic3_h
+#define FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDPageBasic3_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -114,4 +114,4 @@ private:
 };
 
 
-#endif // __UIWizardNewVDPageBasic3_h__
+#endif /* !FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVDPageBasic3_h */

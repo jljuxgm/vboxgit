@@ -1,4 +1,4 @@
-/* $Id: QIGraphicsWidget.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIGraphicsWidget.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIGraphicsWidget class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___QIGraphicsWidget_h___
-#define ___QIGraphicsWidget_h___
+#ifndef FEQT_INCLUDED_SRC_extensions_graphics_QIGraphicsWidget_h
+#define FEQT_INCLUDED_SRC_extensions_graphics_QIGraphicsWidget_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -41,4 +41,4 @@ public:
     virtual QSizeF minimumSizeHint() const;
 };
 
-#endif /* !___QIGraphicsWidget_h___ */
+#endif /* !FEQT_INCLUDED_SRC_extensions_graphics_QIGraphicsWidget_h */

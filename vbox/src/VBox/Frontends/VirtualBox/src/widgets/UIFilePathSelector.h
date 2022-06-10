@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIFilePathSelector_h___
-#define ___UIFilePathSelector_h___
+#ifndef FEQT_INCLUDED_SRC_widgets_UIFilePathSelector_h
+#define FEQT_INCLUDED_SRC_widgets_UIFilePathSelector_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -214,4 +214,4 @@ private:
     QString m_strDefaultPath;
 };
 
-#endif /* !___UIFilePathSelector_h___ */
+#endif /* !FEQT_INCLUDED_SRC_widgets_UIFilePathSelector_h */

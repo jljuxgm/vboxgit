@@ -1,4 +1,4 @@
-/* $Id: UIAbstractDockIconPreview.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIAbstractDockIconPreview.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Abstract class for the dock icon preview.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIAbstractDockIconPreview_h___
-#define ___UIAbstractDockIconPreview_h___
+#ifndef FEQT_INCLUDED_SRC_platform_darwin_UIAbstractDockIconPreview_h
+#define FEQT_INCLUDED_SRC_platform_darwin_UIAbstractDockIconPreview_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -72,5 +72,5 @@ public:
     CGRect m_monitorRect;
 };
 
-#endif /* ___UIAbstractDockIconPreview_h___ */
+#endif /* !FEQT_INCLUDED_SRC_platform_darwin_UIAbstractDockIconPreview_h */
 

@@ -1,4 +1,4 @@
-/* $Id: UIFilmContainer.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIFilmContainer.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilmContainer class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIFilmContainer_h___
-#define ___UIFilmContainer_h___
+#ifndef FEQT_INCLUDED_SRC_widgets_UIFilmContainer_h
+#define FEQT_INCLUDED_SRC_widgets_UIFilmContainer_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -70,4 +70,4 @@ private:
     QList<UIFilm*>  m_widgets;
 };
 
-#endif /* !___UIFilmContainer_h___ */
+#endif /* !FEQT_INCLUDED_SRC_widgets_UIFilmContainer_h */

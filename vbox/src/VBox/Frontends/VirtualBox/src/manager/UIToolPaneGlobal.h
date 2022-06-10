@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIToolPaneGlobal_h___
-#define ___UIToolPaneGlobal_h___
+#ifndef FEQT_INCLUDED_SRC_manager_UIToolPaneGlobal_h
+#define FEQT_INCLUDED_SRC_manager_UIToolPaneGlobal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -90,5 +90,5 @@ private:
     UICloudProfileManagerWidget *m_pPaneCloud;
 };
 
-#endif /* !___UIToolPaneGlobal_h___ */
+#endif /* !FEQT_INCLUDED_SRC_manager_UIToolPaneGlobal_h */
 

@@ -1,4 +1,4 @@
-/* $Id: CIShared.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: CIShared.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Common VirtualBox classes: CIShared class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __CIShared_h__
-#define __CIShared_h__
+#ifndef FEQT_INCLUDED_SRC_globals_CIShared_h
+#define FEQT_INCLUDED_SRC_globals_CIShared_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -407,5 +407,5 @@ template< class D > bool CIShared<D>::Data::deref() {
 
 #endif // VBOX_CHECK_STATE
 
-#endif // __CIShared_h__
+#endif /* !FEQT_INCLUDED_SRC_globals_CIShared_h */
 

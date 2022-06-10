@@ -1,4 +1,4 @@
-/* $Id: QIMenu.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIMenu.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMenu class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___QIMenu_h___
-#define ___QIMenu_h___
+#ifndef FEQT_INCLUDED_SRC_extensions_QIMenu_h
+#define FEQT_INCLUDED_SRC_extensions_QIMenu_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -44,4 +44,4 @@ private slots:
     void sltHighlightFirstAction();
 };
 
-#endif /* !___QIMenu_h___ */
+#endif /* !FEQT_INCLUDED_SRC_extensions_QIMenu_h */

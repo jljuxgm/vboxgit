@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UICustomFileSystemModel_h___
-#define ___UICustomFileSystemModel_h___
+#ifndef FEQT_INCLUDED_SRC_globals_UICustomFileSystemModel_h
+#define FEQT_INCLUDED_SRC_globals_UICustomFileSystemModel_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -186,4 +186,4 @@ private:
 };
 
 
-#endif /* !___UICustomFileSystemModel_h___ */
+#endif /* !FEQT_INCLUDED_SRC_globals_UICustomFileSystemModel_h */

@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIToolPaneMachine.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIToolPaneMachine_h___
-#define ___UIToolPaneMachine_h___
+#ifndef FEQT_INCLUDED_SRC_manager_UIToolPaneMachine_h
+#define FEQT_INCLUDED_SRC_manager_UIToolPaneMachine_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -125,5 +125,5 @@ private:
     CMachine                      m_comMachine;
 };
 
-#endif /* !___UIToolPaneMachine_h___ */
+#endif /* !FEQT_INCLUDED_SRC_manager_UIToolPaneMachine_h */
 

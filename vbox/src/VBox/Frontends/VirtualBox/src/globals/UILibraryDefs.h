@@ -1,4 +1,4 @@
-/* $Id: UILibraryDefs.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UILibraryDefs.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global library definitions.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UILibraryDefs_h___
-#define ___UILibraryDefs_h___
+#ifndef FEQT_INCLUDED_SRC_globals_UILibraryDefs_h
+#define FEQT_INCLUDED_SRC_globals_UILibraryDefs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -35,5 +35,5 @@
 # define SHARED_LIBRARY_STUFF
 #endif
 
-#endif /* !___UILibraryDefs_h___ */
+#endif /* !FEQT_INCLUDED_SRC_globals_UILibraryDefs_h */
 

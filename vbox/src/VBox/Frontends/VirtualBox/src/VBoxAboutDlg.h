@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxAboutDlg.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxAboutDlg_h___
-#define ___VBoxAboutDlg_h___
+#ifndef FEQT_INCLUDED_SRC_VBoxAboutDlg_h
+#define FEQT_INCLUDED_SRC_VBoxAboutDlg_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -87,5 +87,5 @@ private:
     QLabel      *m_pLabel;
 };
 
-#endif /* !___VBoxAboutDlg_h___ */
+#endif /* !FEQT_INCLUDED_SRC_VBoxAboutDlg_h */
 

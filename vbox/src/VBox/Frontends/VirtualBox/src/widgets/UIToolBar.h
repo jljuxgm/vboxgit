@@ -1,4 +1,4 @@
-/* $Id: UIToolBar.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIToolBar.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBar class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIToolBar_h___
-#define ___UIToolBar_h___
+#ifndef FEQT_INCLUDED_SRC_widgets_UIToolBar_h
+#define FEQT_INCLUDED_SRC_widgets_UIToolBar_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -89,4 +89,4 @@ private:
 #endif
 };
 
-#endif /* !___UIToolBar_h___ */
+#endif /* !FEQT_INCLUDED_SRC_widgets_UIToolBar_h */

@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: COMDefs.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -19,8 +19,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __COMDefs_h__
-#define __COMDefs_h__
+#ifndef FEQT_INCLUDED_SRC_globals_COMDefs_h
+#define FEQT_INCLUDED_SRC_globals_COMDefs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -1147,5 +1147,5 @@ public:
 
 /** @} */
 
-#endif // !__COMDefs_h__
+#endif /* !FEQT_INCLUDED_SRC_globals_COMDefs_h */
 

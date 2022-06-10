@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UICloudProfileManager.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UICloudProfileManager_h___
-#define ___UICloudProfileManager_h___
+#ifndef FEQT_INCLUDED_SRC_cloud_UICloudProfileManager_h
+#define FEQT_INCLUDED_SRC_cloud_UICloudProfileManager_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -265,4 +265,4 @@ private:
     friend class UICloudProfileManagerFactory;
 };
 
-#endif /* !___UICloudProfileManager_h___ */
+#endif /* !FEQT_INCLUDED_SRC_cloud_UICloudProfileManager_h */

@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxX11Helpers_h___
-#define ___VBoxX11Helpers_h___
+#ifndef FEQT_INCLUDED_SRC_platform_x11_VBoxX11Helper_h
+#define FEQT_INCLUDED_SRC_platform_x11_VBoxX11Helper_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -53,4 +53,4 @@ SHARED_LIBRARY_STUFF void X11ScreenSaverSettingsRestore();
 /** X11: Returns true if XLib extension with name @p extensionName is avaible, false otherwise. */
 SHARED_LIBRARY_STUFF bool X11CheckExtension(const char *extensionName);
 
-#endif /* !___VBoxX11Helpers_h___ */
+#endif /* !FEQT_INCLUDED_SRC_platform_x11_VBoxX11Helper_h */

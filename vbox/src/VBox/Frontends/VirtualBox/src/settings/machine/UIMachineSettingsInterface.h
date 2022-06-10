@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIMachineSettingsInterface_h___
-#define ___UIMachineSettingsInterface_h___
+#ifndef FEQT_INCLUDED_SRC_settings_machine_UIMachineSettingsInterface_h
+#define FEQT_INCLUDED_SRC_settings_machine_UIMachineSettingsInterface_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -93,4 +93,4 @@ private:
     UISettingsCacheMachineInterface *m_pCache;
 };
 
-#endif /* !___UIMachineSettingsInterface_h___ */
+#endif /* !FEQT_INCLUDED_SRC_settings_machine_UIMachineSettingsInterface_h */

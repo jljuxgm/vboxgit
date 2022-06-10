@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIMachineWindowFullscreen_h___
-#define ___UIMachineWindowFullscreen_h___
+#ifndef FEQT_INCLUDED_SRC_runtime_fullscreen_UIMachineWindowFullscreen_h
+#define FEQT_INCLUDED_SRC_runtime_fullscreen_UIMachineWindowFullscreen_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -145,5 +145,5 @@ private:
     friend class UIMachineWindow;
 };
 
-#endif /* !___UIMachineWindowFullscreen_h___ */
+#endif /* !FEQT_INCLUDED_SRC_runtime_fullscreen_UIMachineWindowFullscreen_h */
 

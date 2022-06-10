@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIVMLogPage.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIVMLogPage_h___
-#define ___UIVMLogPage_h___
+#ifndef FEQT_INCLUDED_SRC_logviewer_UIVMLogPage_h
+#define FEQT_INCLUDED_SRC_logviewer_UIVMLogPage_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -164,4 +164,4 @@ private:
 
 };
 
-#endif /* !___UIVMLogPage_h___ */
+#endif /* !FEQT_INCLUDED_SRC_logviewer_UIVMLogPage_h */

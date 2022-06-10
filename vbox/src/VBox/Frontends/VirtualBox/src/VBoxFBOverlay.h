@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxFBOverlay.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFrameBuffer Overly classes declarations.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __VBoxFBOverlay_h__
-#define __VBoxFBOverlay_h__
+#ifndef FEQT_INCLUDED_SRC_VBoxFBOverlay_h
+#define FEQT_INCLUDED_SRC_VBoxFBOverlay_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -1855,4 +1855,4 @@ private:
 
 #endif /* defined(VBOX_GUI_USE_QGL) || defined(VBOX_WITH_VIDEOHWACCEL) */
 
-#endif /* #ifndef __VBoxFBOverlay_h__ */
+#endif /* !FEQT_INCLUDED_SRC_VBoxFBOverlay_h */

@@ -1,4 +1,4 @@
-/* $Id: UITakeSnapshotDialog.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UITakeSnapshotDialog.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UITakeSnapshotDialog_h___
-#define ___UITakeSnapshotDialog_h___
+#ifndef FEQT_INCLUDED_SRC_UITakeSnapshotDialog_h
+#define FEQT_INCLUDED_SRC_UITakeSnapshotDialog_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -111,4 +111,4 @@ private:
     QIDialogButtonBox *m_pButtonBox;
 };
 
-#endif /* !___UITakeSnapshotDialog_h___ */
+#endif /* !FEQT_INCLUDED_SRC_UITakeSnapshotDialog_h */

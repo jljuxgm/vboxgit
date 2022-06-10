@@ -1,4 +1,4 @@
-/* $Id: QIInputDialog.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIInputDialog.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIInputDialog class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___QIInputDialog_h___
-#define ___QIInputDialog_h___
+#ifndef FEQT_INCLUDED_SRC_extensions_QIInputDialog_h
+#define FEQT_INCLUDED_SRC_extensions_QIInputDialog_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -86,4 +86,4 @@ private:
 /** Safe pointer to the QIInputDialog class. */
 typedef QPointer<QIInputDialog> QISafePointerInputDialog;
 
-#endif /* !___QIInputDialog_h___ */
+#endif /* !FEQT_INCLUDED_SRC_extensions_QIInputDialog_h */

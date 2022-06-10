@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardCloneVD.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIWizardCloneVD_h___
-#define ___UIWizardCloneVD_h___
+#ifndef FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVD_h
+#define FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVD_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -82,5 +82,5 @@ private:
     KDeviceType m_enmSourceVirtualDiskDeviceType;
 };
 
-#endif /* !___UIWizardCloneVD_h___ */
+#endif /* !FEQT_INCLUDED_SRC_wizards_clonevd_UIWizardCloneVD_h */
 

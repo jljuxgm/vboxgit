@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDnDHandler.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class declaration..
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIDnDHandler_h___
-#define ___UIDnDHandler_h___
+#ifndef FEQT_INCLUDED_SRC_runtime_UIDnDHandler_h
+#define FEQT_INCLUDED_SRC_runtime_UIDnDHandler_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -163,5 +163,5 @@ protected:
     friend class UIDnDMIMEData;
 #endif
 };
-#endif /* ___UIDnDHandler_h___ */
+#endif /* !FEQT_INCLUDED_SRC_runtime_UIDnDHandler_h */
 

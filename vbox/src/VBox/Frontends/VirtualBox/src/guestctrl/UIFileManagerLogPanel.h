@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerLogPanel.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIFileManagerLogPanel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIFileManagerLogPanel_h___
-#define ___UIFileManagerLogPanel_h___
+#ifndef FEQT_INCLUDED_SRC_guestctrl_UIFileManagerLogPanel_h
+#define FEQT_INCLUDED_SRC_guestctrl_UIFileManagerLogPanel_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -56,4 +56,4 @@ private:
     QTextEdit *m_pLogTextEdit;
 };
 
-#endif /* !___UIFileManagerLogPanel_h___ */
+#endif /* !FEQT_INCLUDED_SRC_guestctrl_UIFileManagerLogPanel_h */

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIVMLogViewerBookmarksPanel_h___
-#define ___UIVMLogViewerBookmarksPanel_h___
+#ifndef FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerBookmarksPanel_h
+#define FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerBookmarksPanel_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -87,4 +87,4 @@ private:
     QIToolButton *m_pPreviousButton;
 };
 
-#endif /* !___UIVMLogViewerBookmarksPanel_h___ */
+#endif /* !FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerBookmarksPanel_h */

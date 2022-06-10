@@ -1,4 +1,4 @@
-/* $Id: VBoxCocoaHelper.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxCocoaHelper.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxCocoa Helper.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___darwin_VBoxCocoaHelper_h
-#define ___darwin_VBoxCocoaHelper_h
+#ifndef FEQT_INCLUDED_SRC_platform_darwin_VBoxCocoaHelper_h
+#define FEQT_INCLUDED_SRC_platform_darwin_VBoxCocoaHelper_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -59,5 +59,5 @@ inline QString darwinNSStringToQString(const NSString *aString)
 
 #endif /* __OBJC__ */
 
-#endif /* ___darwin_VBoxCocoaHelper_h */
+#endif /* !FEQT_INCLUDED_SRC_platform_darwin_VBoxCocoaHelper_h */
 

@@ -1,4 +1,4 @@
-/* $Id: QIDialogButtonBox.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIDialogButtonBox.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialogButtonBox class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___QIDialogButtonBox_h___
-#define ___QIDialogButtonBox_h___
+#ifndef FEQT_INCLUDED_SRC_extensions_QIDialogButtonBox_h
+#define FEQT_INCLUDED_SRC_extensions_QIDialogButtonBox_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -84,4 +84,4 @@ private:
     QPointer<UIHelpButton> m_pHelpButton;
 };
 
-#endif /* !___QIDialogButtonBox_h___ */
+#endif /* !FEQT_INCLUDED_SRC_extensions_QIDialogButtonBox_h */

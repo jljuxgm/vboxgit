@@ -1,4 +1,4 @@
-/* $Id: WinKeyboard.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: WinKeyboard.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Windows Keyboard specific tasks.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___WinKeyboard_h___
-#define ___WinKeyboard_h___
+#ifndef FEQT_INCLUDED_SRC_platform_win_WinKeyboard_h
+#define FEQT_INCLUDED_SRC_platform_win_WinKeyboard_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -88,5 +88,5 @@ private:
     LONG m_timeOfLastKeyEvent;
 };
 
-#endif
+#endif /* !FEQT_INCLUDED_SRC_platform_win_WinKeyboard_h */
 

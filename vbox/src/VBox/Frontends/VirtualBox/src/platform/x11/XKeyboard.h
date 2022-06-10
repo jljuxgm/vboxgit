@@ -1,4 +1,4 @@
-/* $Id: XKeyboard.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: XKeyboard.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of Linux-specific keyboard functions.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___XKeyboard_h___
-#define ___XKeyboard_h___
+#ifndef FEQT_INCLUDED_SRC_platform_x11_XKeyboard_h
+#define FEQT_INCLUDED_SRC_platform_x11_XKeyboard_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -41,5 +41,5 @@ SHARED_LIBRARY_STUFF void doXKeyboardLogging(Display *pDisplay);
 SHARED_LIBRARY_STUFF unsigned long wrapXkbKeycodeToKeysym(Display *pDisplay, unsigned char cCode,
                                                           unsigned int cGroup, unsigned int cIndex);
 
-#endif /* !___XKeyboard_h___ */
+#endif /* !FEQT_INCLUDED_SRC_platform_x11_XKeyboard_h */
 

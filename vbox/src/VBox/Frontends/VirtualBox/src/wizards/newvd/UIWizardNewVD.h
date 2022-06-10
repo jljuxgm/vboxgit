@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 76581 2019-01-01 06:24:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __UIWizardNewVD_h__
-#define __UIWizardNewVD_h__
+#ifndef FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVD_h
+#define FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVD_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -84,4 +84,4 @@ private:
 
 typedef QPointer<UIWizardNewVD> UISafePointerWizardNewVD;
 
-#endif // __UIWizardNewVD_h__
+#endif /* !FEQT_INCLUDED_SRC_wizards_newvd_UIWizardNewVD_h */
