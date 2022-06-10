@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 72224 2018-05-16 10:42:33Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 72678 2018-06-25 14:25:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -416,7 +416,7 @@ void UIScreenshotViewer::prepare()
     /* Screenshot viewer is an application-modal window: */
     setWindowModality(Qt::ApplicationModal);
     /* With the pointing-hand cursor: */
-    setCursor(Qt::PointingHandCursor);
+    VBoxGlobal::setCursor(this, Qt::PointingHandCursor);
     /* And it's being deleted when closed: */
     setAttribute(Qt::WA_DeleteOnClose);
 

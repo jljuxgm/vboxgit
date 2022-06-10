@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 72678 2018-06-25 14:25:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -30,6 +30,7 @@
 /* GUI includes: */
 # include "UIGraphicsTextPane.h"
 # include "UIRichTextString.h"
+# include "VBoxGlobal.h"
 
 /* Other VBox includes: */
 # include <iprt/assert.h>
@@ -391,7 +392,7 @@ void UIGraphicsTextPane::updateHoverStuff()
     if (m_strHoveredAnchor.isNull())
         unsetCursor();
     else
-        setCursor(Qt::PointingHandCursor);
+        VBoxGlobal::setCursor(this, Qt::PointingHandCursor);
 
     /* Update text-layout: */
     updateTextLayout();
@@ -521,4 +522,3 @@ QString UIGraphicsTextPane::searchForHoveredAnchor(QPaintDevice *pPaintDevice, c
     /* Null string by default: */
     return QString();
 }
-

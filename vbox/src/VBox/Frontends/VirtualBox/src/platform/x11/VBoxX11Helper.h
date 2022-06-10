@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 72678 2018-06-25 14:25:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -47,7 +47,7 @@ SHARED_LIBRARY_STUFF void X11ScreenSaverSettingsInit();
 SHARED_LIBRARY_STUFF void X11ScreenSaverSettingsSave();
 /** X11: Restores previously saved screen saver settings. */
 SHARED_LIBRARY_STUFF void X11ScreenSaverSettingsRestore();
-
+/** X11: Returns true if XLib extension with name @p extensionName is avaible, false otherwise. */
+SHARED_LIBRARY_STUFF bool X11CheckExtension(const char *extensionName);
 
 #endif /* !___VBoxX11Helpers_h___ */
-

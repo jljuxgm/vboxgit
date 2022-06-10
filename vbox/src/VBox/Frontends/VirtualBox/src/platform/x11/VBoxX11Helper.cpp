@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.cpp 71544 2018-03-28 15:35:23Z vboxsync $ */
+/* $Id: VBoxX11Helper.cpp 72678 2018-06-25 14:25:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -146,3 +146,11 @@ void X11ScreenSaverSettingsRestore()
         DPMSEnable(pDisplay);
 }
 
+SHARED_LIBRARY_STUFF bool X11CheckExtension(const char *extensionName)
+{
+    Display *pDisplay = QX11Info::display();
+    int major_opcode;
+    int first_event;
+    int first_error;
+    return XQueryExtension(pDisplay, extensionName, &major_opcode, &first_event, &first_error);
+}
