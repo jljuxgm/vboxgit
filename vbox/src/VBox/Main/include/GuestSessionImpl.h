@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 77068 2019-01-31 11:53:09Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 77582 2019-03-06 14:18:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -306,7 +306,9 @@ public:
     Utf8Str                 i_getName(void);
     ULONG                   i_getId(void) { return mData.mSession.mID; }
     static Utf8Str          i_guestErrorToString(int guestRc);
-    HRESULT                 i_isReadyExternal(void);
+    bool                    i_isStarted(void) const;
+    HRESULT                 i_isStartedExternal(void);
+    bool                    i_isTerminated(void) const;
     int                     i_onRemove(void);
     int                     i_onSessionStatusChange(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCbData);
     PathStyle_T             i_getPathStyle(void);
