@@ -1,10 +1,10 @@
-/* $Id: EBMLWriter.h 74988 2018-10-23 08:54:28Z vboxsync $ */
+/* $Id: EBMLWriter.h 74991 2018-10-23 10:59:33Z vboxsync $ */
 /** @file
  * EBMLWriter.h - EBML writer.
  */
 
 /*
- * Copyright (C) 2013-2017 Oracle Corporation
+ * Copyright (C) 2013-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -22,12 +22,6 @@
 #include <VBox/com/string.h> /* For Utf8Str. */
 
 using namespace com;
-
-#ifdef LOG_GROUP
-# undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_MAIN_DISPLAY
-#include "LoggingNew.h"
 
 #include <list>
 #include <map>
