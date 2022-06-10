@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFoldersInline.h 76717 2019-01-09 02:33:22Z vboxsync $ */
+/* $Id: VBoxGuestLibSharedFoldersInline.h 76720 2019-01-09 02:55:20Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Shared Folders Host Request Helpers (ring-0).
  */
@@ -47,13 +47,20 @@
 /** @defgroup grp_vboxguest_lib_r0_sf_inline    Shared Folders Host Request Helpers
  * @ingroup grp_vboxguest_lib_r0
  *
- * @todo generalize these and put back into VbglR0Sf.
+ * @note Using inline functions to avoid wasting precious ring-0 stack space on
+ *       passing parameters that ends up in the structure @a pReq points to.  It
+ *       is also safe to assume that it's faster too.  It's worth a few bytes
+ *       larger code section in the resulting shared folders driver.
  *
- * @{  */
+ * @note This currently requires a C++ compiler or a C compiler capable of
+ *       mixing code and variables (i.e. C99).
+ *
+ * @{
+ */
 
 /** VMMDEV_HVF_XXX (set during init). */
 extern uint32_t g_fHostFeatures;
-extern VBGLSFCLIENT g_SfClient; /**< Move this into the parameters. */
+extern VBGLSFCLIENT g_SfClient; /**< Move this into the parameters? */
 
 /** Request structure for VbglR0SfHostReqMapFolderWithBuf.  */
 typedef struct VBOXSFMAPFOLDERWITHBUFREQ
