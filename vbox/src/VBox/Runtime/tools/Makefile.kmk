@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72436 2018-06-04 19:59:26Z vboxsync $
+# $Id: Makefile.kmk 74237 2018-09-13 13:08:34Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -60,11 +60,13 @@ if !defined(VBOX_ONLY_DOCS)
  bldRTSignTool_DEFS = IPRT_IN_BUILD_TOOL
  bldRTSignTool_POST_CMDS.win = $(VBOX_SIGN_IMAGE_CMDS)
 
- # RTLdrCheckImports - import checker.
- PROGRAMS += bldRTLdrCheckImports
- bldRTLdrCheckImports_TEMPLATE = VBoxAdvBldProg
- bldRTLdrCheckImports_DEFS = IPRT_IN_BUILD_TOOL
- bldRTLdrCheckImports_SOURCES = RTLdrCheckImports.cpp
+ if !defined(VBOX_ONLY_EXTPACKS)
+  # RTLdrCheckImports - import checker.
+  PROGRAMS += bldRTLdrCheckImports
+  bldRTLdrCheckImports_TEMPLATE = VBoxAdvBldProg
+  bldRTLdrCheckImports_DEFS = IPRT_IN_BUILD_TOOL
+  bldRTLdrCheckImports_SOURCES = RTLdrCheckImports.cpp
+ endif
 
 endif
 
