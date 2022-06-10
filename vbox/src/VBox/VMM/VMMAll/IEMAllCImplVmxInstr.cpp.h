@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74422 2018-09-22 15:06:57Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74423 2018-09-22 15:11:59Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -4364,8 +4364,6 @@ IEM_STATIC int iemVmxVmentryInjectEvent(PVMCPU pVCpu, const char *pszInstr)
             VMCPU_FF_SET(pVCpu, VMCPU_FF_MTF);
             return VINF_SUCCESS;
         }
-
-
 
         int rc = HMVmxEntryIntInfoInjectTrpmEvent(pVCpu, uEntryIntInfo, pVmcs->u32EntryXcptErrCode, pVmcs->u32EntryInstrLen,
                                                   pVCpu->cpum.GstCtx.cr2);
