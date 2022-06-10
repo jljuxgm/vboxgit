@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 73927 2018-08-28 11:40:48Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 74138 2018-09-07 11:16:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -188,6 +188,22 @@ void UIChooserModel::updateLayout()
     root()->updateLayout();
     /* Make sure root-item is shown: */
     root()->show();
+}
+
+void UIChooserModel::setGlobalItemHeightHint(int iHint)
+{
+    /* Walk thrugh all the items of navigation list: */
+    foreach (UIChooserItem *pItem, navigationList())
+    {
+        /* And for each global item: */
+        if (pItem->type() == UIChooserItemType_Global)
+        {
+            /* Apply the height hint we have: */
+            UIChooserItemGlobal *pGlobalItem = pItem->toGlobalItem();
+            if (pGlobalItem)
+                pGlobalItem->setHeightHint(iHint);
+        }
+    }
 }
 
 const QList<UIChooserItem*>& UIChooserModel::navigationList() const

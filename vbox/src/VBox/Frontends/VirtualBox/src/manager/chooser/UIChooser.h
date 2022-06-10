@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 73631 2018-08-13 11:05:01Z vboxsync $ */
+/* $Id: UIChooser.h 74138 2018-09-07 11:16:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -80,6 +80,11 @@ public:
 
     /* API: Group-saving stuff: */
     bool isGroupSavingInProgress() const;
+
+public slots:
+
+    /** Handles toolbar resize to @a newSize. */
+    void sltHandleToolbarResize(const QSize &newSize);
 
 private:
 

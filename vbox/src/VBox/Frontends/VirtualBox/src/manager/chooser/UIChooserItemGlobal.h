@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 73954 2018-08-29 14:53:36Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 74138 2018-09-07 11:16:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -44,6 +44,12 @@ public:
     UIChooserItemGlobal(UIChooserItem *pParent, UIChooserItemGlobal *pCopyFrom, int iPosition = -1);
     /** Destructs global item. */
     virtual ~UIChooserItemGlobal() /* override */;
+
+    /** @name Layout stuff.
+      * @{ */
+        /** Defines height @a iHint. */
+        void setHeightHint(int iHint);
+    /** @} */
 
 protected:
 
@@ -242,6 +248,9 @@ private:
         int  m_iMinimumNameWidth;
         /** Holds maximum name width. */
         int  m_iMaximumNameWidth;
+
+        /** Holds the height hint. */
+        int  m_iHeightHint;
     /** @} */
 };
 

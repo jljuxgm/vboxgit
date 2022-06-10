@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74108 2018-09-06 10:02:59Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74138 2018-09-07 11:16:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -549,6 +549,8 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
 void UIVirtualBoxManagerWidget::prepareConnections()
 {
     /* Tool-bar connections: */
+    connect(m_pToolBar, &UIToolBar::sigResized,
+            m_pPaneChooser, &UIChooser::sltHandleToolbarResize);
     connect(m_pToolBar, &UIToolBar::customContextMenuRequested,
             this, &UIVirtualBoxManagerWidget::sltHandleContextMenuRequest);
     connect(m_pToolbarTools, &UIToolbarTools::sigToolOpenedMachine,

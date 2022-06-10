@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 74085 2018-09-05 13:30:48Z vboxsync $ */
+/* $Id: UIChooser.cpp 74138 2018-09-07 11:16:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -109,6 +109,12 @@ bool UIChooser::isAllItemsOfOneGroupSelected() const
 bool UIChooser::isGroupSavingInProgress() const
 {
     return m_pChooserModel->isGroupSavingInProgress();
+}
+
+void UIChooser::sltHandleToolbarResize(const QSize &newSize)
+{
+    /* Pass height to a model: */
+    model()->setGlobalItemHeightHint(newSize.height());
 }
 
 void UIChooser::preparePalette()

@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 73631 2018-08-13 11:05:01Z vboxsync $ */
+/* $Id: UIChooserModel.h 74138 2018-09-07 11:16:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -102,6 +102,8 @@ public:
 
     /* API: Layout stuff: */
     void updateLayout();
+    /** Defines global item height @a iHint. */
+    void setGlobalItemHeightHint(int iHint);
 
     /* API: Navigation stuff: */
     const QList<UIChooserItem*>& navigationList() const;
