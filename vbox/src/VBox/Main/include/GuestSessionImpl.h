@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 77587 2019-03-06 16:40:18Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 78038 2019-04-08 12:15:00Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -282,7 +282,7 @@ public:
     HRESULT                 i_directoryCopyFlagFromStr(const com::Utf8Str &strFlags, DirectoryCopyFlag_T *pfFlags);
     inline bool             i_directoryExists(uint32_t uDirID, ComObjPtr<GuestDirectory> *pDir);
     int                     i_directoryUnregister(GuestDirectory *pDirectory);
-    int                     i_directoryRemove(const Utf8Str &strPath, uint32_t uFlags, int *pGuestRc);
+    int                     i_directoryRemove(const Utf8Str &strPath, uint32_t fFlags, int *pGuestRc);
     int                     i_directoryCreate(const Utf8Str &strPath, uint32_t uMode, uint32_t uFlags, int *pGuestRc);
     int                     i_directoryOpen(const GuestDirectoryOpenInfo &openInfo,
                                             ComObjPtr<GuestDirectory> &pDirectory, int *pGuestRc);
