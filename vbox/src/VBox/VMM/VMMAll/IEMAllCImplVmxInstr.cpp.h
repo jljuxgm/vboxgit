@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 77406 2019-02-21 06:45:33Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 77408 2019-02-21 10:04:07Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -5426,7 +5426,7 @@ IEM_STATIC int iemVmxVmentryCheckGuestSegRegs(PVMCPU pVCpu, const char *pszInstr
                 IEM_VMX_VMENTRY_FAILED_RET(pVCpu, pszInstr, pszFailure, kVmxVDiag_Vmentry_GuestSegAttrSsType);
 
             /* DPL. */
-            if (fUnrestrictedGuest)
+            if (!fUnrestrictedGuest)
             {
                 if (uDpl == (SelReg.Sel & X86_SEL_RPL))
                 { /* likely */ }
@@ -5435,7 +5435,7 @@ IEM_STATIC int iemVmxVmentryCheckGuestSegRegs(PVMCPU pVCpu, const char *pszInstr
             }
             X86DESCATTR AttrCs; AttrCs.u = pVmcs->u32GuestCsAttr;
             if (   AttrCs.n.u4Type == (X86_SEL_TYPE_RW | X86_SEL_TYPE_ACCESSED)
-                || (pVmcs->u64GuestCr0.u & X86_CR0_PE))
+                || !(pVmcs->u64GuestCr0.u & X86_CR0_PE))
             {
                 if (uDpl == 0)
                 { /* likely */ }
