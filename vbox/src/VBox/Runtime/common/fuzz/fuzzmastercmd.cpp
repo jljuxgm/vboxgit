@@ -1,4 +1,4 @@
-/* $Id: fuzzmastercmd.cpp 77509 2019-02-28 19:14:03Z vboxsync $ */
+/* $Id: fuzzmastercmd.cpp 77652 2019-03-11 13:16:01Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, master command.
  */
@@ -1139,7 +1139,8 @@ static DECLCALLBACK(int) rtFuzzCmdMasterTcpServe(RTSOCKET hSocket, void *pvUser)
         {
             size_t cbThisRead = cbReqMax - cbReq;
             int rc = RTTcpRead(hSocket, pbCur, cbThisRead, &cbThisRead);
-            if (RT_SUCCESS(rc))
+            if (   RT_SUCCESS(rc)
+                && cbThisRead)
             {
                 cbReq += cbThisRead;
 
