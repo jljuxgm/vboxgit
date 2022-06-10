@@ -1,4 +1,4 @@
-/* $Id: vbsfpath.cpp 77848 2019-03-22 13:24:24Z vboxsync $ */
+/* $Id: vbsfpath.cpp 77849 2019-03-22 13:32:57Z vboxsync $ */
 /** @file
  * Shared Folders Service - guest/host path convertion and verification.
  */
@@ -333,7 +333,7 @@ static int vbsfCorrectPathCasing(SHFLCLIENTDATA *pClient, char *pszFullPath, siz
  * @param ppwszDst Where to store the pointer to the resulting normalized string.
  * @param pcwcDst  Where to store length of the normalized string in characters (without the trailing nul).
  */
-static int vbsfNormalizeStringDarwin(const PRTUTF16 pwszSrc, uint32_t cwcSrc, PRTUTF16 *ppwszDst, uint32_t *pcwcDst)
+static int vbsfNormalizeStringDarwin(PCRTUTF16 pwszSrc, uint32_t cwcSrc, PRTUTF16 *ppwszDst, uint32_t *pcwcDst)
 {
     /** @todo This belongs in rtPathToNative or in the windows shared folder file system driver...
      * The question is simply whether the NFD normalization is actually applied on a (virtual) file
