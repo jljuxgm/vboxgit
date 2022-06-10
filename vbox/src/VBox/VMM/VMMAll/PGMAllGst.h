@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 73124 2018-07-13 14:52:44Z vboxsync $ */
+/* $Id: PGMAllGst.h 73199 2018-07-18 12:13:55Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -29,6 +29,12 @@ PGM_GST_DECL(int,  GetPage)(PVMCPU pVCpu, RTGCPTR GCPtr, uint64_t *pfFlags, PRTG
 PGM_GST_DECL(int,  ModifyPage)(PVMCPU pVCpu, RTGCPTR GCPtr, size_t cb, uint64_t fFlags, uint64_t fMask);
 PGM_GST_DECL(int,  GetPDE)(PVMCPU pVCpu, RTGCPTR GCPtr, PX86PDEPAE pPDE);
 PGM_GST_DECL(bool, HandlerVirtualUpdate)(PVM pVM, uint32_t cr4);
+
+#ifdef IN_RING3 /* r3 only for now.  */
+PGM_GST_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3);
+PGM_GST_DECL(int, Relocate)(PVMCPU pVCpu, RTGCPTR offDelta);
+PGM_GST_DECL(int, Exit)(PVMCPU pVCpu);
+#endif
 RT_C_DECLS_END
 
 

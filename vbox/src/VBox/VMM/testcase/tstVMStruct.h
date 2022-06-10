@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 72866 2018-07-04 10:42:51Z vboxsync $ */
+/* $Id: tstVMStruct.h 73199 2018-07-18 12:13:55Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -672,19 +672,8 @@
     GEN_CHECK_OFF(PGMCPU, pfnR3ShwModifyPage);
     GEN_CHECK_OFF(PGMCPU, pfnRCShwGetPage);
     GEN_CHECK_OFF(PGMCPU, pfnRCShwModifyPage);
-    GEN_CHECK_OFF(PGMCPU, pfnR3GstRelocate);
-    GEN_CHECK_OFF(PGMCPU, pfnR3GstExit);
     GEN_CHECK_OFF(PGMCPU, pfnR3BthMapCR3);
     GEN_CHECK_OFF(PGMCPU, pfnR3BthUnmapCR3);
-    GEN_CHECK_OFF(PGMCPU, pfnR3GstGetPage);
-    GEN_CHECK_OFF(PGMCPU, pfnR3GstModifyPage);
-    GEN_CHECK_OFF(PGMCPU, pfnR3GstGetPDE);
-    GEN_CHECK_OFF(PGMCPU, pfnRCGstGetPage);
-    GEN_CHECK_OFF(PGMCPU, pfnRCGstModifyPage);
-    GEN_CHECK_OFF(PGMCPU, pfnRCGstGetPDE);
-    GEN_CHECK_OFF(PGMCPU, pfnR0GstGetPage);
-    GEN_CHECK_OFF(PGMCPU, pfnR0GstModifyPage);
-    GEN_CHECK_OFF(PGMCPU, pfnR0GstGetPDE);
     GEN_CHECK_OFF(PGMCPU, pfnR3BthRelocate);
     GEN_CHECK_OFF(PGMCPU, pfnR3BthSyncCR3);
     GEN_CHECK_OFF(PGMCPU, pfnR3BthInvalidatePage);
