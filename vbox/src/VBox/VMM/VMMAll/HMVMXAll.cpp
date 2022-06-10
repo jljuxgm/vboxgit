@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 74151 2018-09-08 05:42:01Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 74154 2018-09-08 11:31:22Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -159,6 +159,10 @@ static const char * const g_apszVmxInstrDiagDesc[] =
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_GuestDr7                 , "GuestDr7"                ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_GuestEferMsr             , "GuestEferMsr"            ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_GuestEferMsrRsvd         , "GuestEferMsrRsvd"        ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_GuestGdtrBase            , "GuestGdtrBase"           ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_GuestGdtrLimit           , "GuestGdtrLimit"          ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_GuestIdtrBase            , "GuestIdtrBase"           ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_GuestIdtrLimit           , "GuestIdtrLimit"          ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_GuestPae                 , "GuestPae"                ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_GuestPatMsr              , "GuestPatMsr"             ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_GuestPcide               , "GuestPcide"              ),
