@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 73997 2018-08-31 10:45:01Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 73999 2018-08-31 10:52:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -829,7 +829,7 @@ void UIChooserItemGroup::updateLayout()
         }
 
         /* Prepare body indent: */
-        iPreviousVerticalIndent = 3 * iVerticalMargin + iFullHeaderHeight;
+        iPreviousVerticalIndent = 2 * iVerticalMargin + iFullHeaderHeight;
     }
 
     /* No body for closed group: */
@@ -1468,8 +1468,6 @@ int UIChooserItemGroup::minimumHeightHintForGroup(bool fGroupOpened) const
         /* But if group-item is opened: */
         if (fGroupOpened)
         {
-            /* We should take into spacing between header and body: */
-            iProposedHeight += iVerticalMargin;
             /* And every existing child height: */
             foreach (UIChooserItem *pItem, items())
                 iProposedHeight += pItem->minimumHeightHint();
