@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 75318 2018-11-08 08:38:26Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 75606 2018-11-20 10:26:04Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -1595,7 +1595,7 @@ static int coreAudioStreamInitQueue(PCOREAUDIOSTREAM pCAStream, PPDMAUDIOSTREAMC
         return rc;
     }
 
-    rc = RTCircBufCreate(&pCAStream->pCircBuf, PDMAUDIOSTREAMCFG_F2B(pCfgReq, 4096)); /** @todo Make this configurable. */
+    rc = RTCircBufCreate(&pCAStream->pCircBuf, PDMAUDIOSTREAMCFG_F2B(pCfgReq, pCfgReq->Backend.cfBufferSize));
     if (RT_FAILURE(rc))
         return rc;
 

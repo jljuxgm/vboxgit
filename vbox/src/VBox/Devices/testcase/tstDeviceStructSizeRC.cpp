@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 75586 2018-11-19 18:05:39Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 75606 2018-11-20 10:26:04Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1916,15 +1916,13 @@ int main()
     GEN_CHECK_OFF(AC97STATE, StreamMicIn);
     GEN_CHECK_OFF(AC97STATE, StreamOut);
     GEN_CHECK_OFF(AC97STATE, cStreamsActive);
-#ifndef VBOX_WITH_AUDIO_AC97_CALLBACKS
     GEN_CHECK_OFF(AC97STATE, pTimerR3);
     GEN_CHECK_OFF(AC97STATE, pTimerR0);
     GEN_CHECK_OFF(AC97STATE, pTimerRC);
     GEN_CHECK_OFF(AC97STATE, fTimerActive);
-    GEN_CHECK_OFF(AC97STATE, u8Padding1);
+    GEN_CHECK_OFF(AC97STATE, uTimerHz);
     GEN_CHECK_OFF(AC97STATE, cTimerTicks);
     GEN_CHECK_OFF(AC97STATE, uTimerTS);
-#endif
 #ifdef VBOX_WITH_STATISTICS
     GEN_CHECK_OFF(AC97STATE, StatTimer);
     GEN_CHECK_OFF(AC97STATE, StatIn);
