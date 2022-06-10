@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 71179 2018-03-02 15:08:52Z vboxsync $
+# $Id: vboxshell.py 72919 2018-07-05 14:44:31Z vboxsync $
 
 """
 VirtualBox Python Shell.
@@ -33,7 +33,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 71179 $"
+__version__ = "$Revision: 72919 $"
 
 
 import gc
@@ -961,12 +961,15 @@ def infoCmd(ctx, args):
     mach = argsToMach(ctx, args)
     if mach == None:
         return 0
-    vmos = ctx['vb'].getGuestOSType(mach.OSTypeId)
+    try:
+        vmos = ctx['vb'].getGuestOSType(mach.OSTypeId)
+    except:
+        vmos = None
     print(" One can use setvar <mach> <var> <value> to change variable, using name in [].")
     print("  Name [name]: %s" % (colVm(ctx, mach.name)))
     print("  Description [description]: %s" % (mach.description))
     print("  ID [n/a]: %s" % (mach.id))
-    print("  OS Type [via OSTypeId]: %s" % (vmos.description))
+    print("  OS Type [via OSTypeId]: %s" % (vmos.description if vmos is not None else mach.OSTypeId))
     print("  Firmware [firmwareType]: %s (%s)" % (asEnumElem(ctx, "FirmwareType", mach.firmwareType), mach.firmwareType))
     print()
     print("  CPUs [CPUCount]: %d" % (mach.CPUCount))

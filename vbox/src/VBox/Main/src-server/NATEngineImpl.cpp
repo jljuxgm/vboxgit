@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 72919 2018-07-05 14:44:31Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -19,7 +19,6 @@
 #include "AutoCaller.h"
 #include "Logging.h"
 #include "MachineImpl.h"
-#include "GuestOSTypeImpl.h"
 
 #include <iprt/string.h>
 #include <iprt/cpp/utils.h>

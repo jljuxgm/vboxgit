@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 70790 2018-01-29 12:31:54Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 72919 2018-07-05 14:44:31Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -672,13 +672,15 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
     }
 
     SHOW_STRING_PROP(      machine, Name,                       "name",                 "Name:");
-
+    SHOW_STRINGARRAY_PROP( machine, Groups,                     "groups",               "Groups:");
     Bstr osTypeId;
     CHECK_ERROR2I_RET(machine, COMGETTER(OSTypeId)(osTypeId.asOutParam()), hrcCheck);
     ComPtr<IGuestOSType> osType;
-    CHECK_ERROR2I_RET(pVirtualBox, GetGuestOSType(osTypeId.raw(), osType.asOutParam()), hrcCheck);
-    SHOW_STRINGARRAY_PROP( machine, Groups,                     "groups",               "Groups:");
-    SHOW_STRING_PROP(       osType, Description,                "ostype",               "Guest OS:");
+    pVirtualBox->GetGuestOSType(osTypeId.raw(), osType.asOutParam());
+    if (!osType.isNull())
+        SHOW_STRING_PROP(       osType, Description,                "ostype",               "Guest OS:");
+    else
+        SHOW_STRING_PROP(      machine, OSTypeId,                   "ostype",               "Guest OS:");
     SHOW_UUID_PROP(        machine, Id,                         "UUID",                 "UUID:");
     SHOW_STRING_PROP(      machine, SettingsFilePath,           "CfgFile",              "Config file:");
     SHOW_STRING_PROP(      machine, SnapshotFolder,             "SnapFldr",             "Snapshot folder:");

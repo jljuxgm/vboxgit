@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 72343 2018-05-25 13:24:28Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 72919 2018-07-05 14:44:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -819,12 +819,16 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             break;
     }
 
-    ComPtr<IGuestOSType> guestOSType;
-    hrc = virtualBox->GetGuestOSType(osTypeId.raw(), guestOSType.asOutParam());             H();
+    ComPtr<IGuestOSType> pGuestOSType;
+    virtualBox->GetGuestOSType(osTypeId.raw(), pGuestOSType.asOutParam());
 
-    Bstr guestTypeFamilyId;
-    hrc = guestOSType->COMGETTER(FamilyId)(guestTypeFamilyId.asOutParam());                 H();
-    BOOL fOsXGuest = guestTypeFamilyId == Bstr("MacOS");
+    BOOL fOsXGuest = FALSE;
+    if (!pGuestOSType.isNull())
+    {
+        Bstr guestTypeFamilyId;
+        hrc = pGuestOSType->COMGETTER(FamilyId)(guestTypeFamilyId.asOutParam());            H();
+        fOsXGuest = guestTypeFamilyId == Bstr("MacOS");
+    }
 
     ULONG maxNetworkAdapters;
     hrc = systemProperties->GetMaxNetworkAdapters(chipsetType, &maxNetworkAdapters);        H();

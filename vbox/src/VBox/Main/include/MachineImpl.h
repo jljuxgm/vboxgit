@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 72476 2018-06-07 13:49:48Z vboxsync $ */
+/* $Id: MachineImpl.h 72919 2018-07-05 14:44:31Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -350,6 +350,7 @@ public:
                  const Utf8Str &strConfigFile,
                  const Utf8Str &strName,
                  const StringsList &llGroups,
+                 const Utf8Str &strOsTypeId,
                  GuestOSType *aOsType,
                  const Guid &aId,
                  bool fForceOverwrite,

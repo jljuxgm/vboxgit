@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 72143 2018-05-07 14:52:10Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 72919 2018-07-05 14:44:31Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -563,18 +563,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
             }
             case MODIFYVM_OSTYPE:
             {
-                ComPtr<IGuestOSType> guestOSType;
-                CHECK_ERROR(a->virtualBox, GetGuestOSType(Bstr(ValueUnion.psz).raw(),
-                                                          guestOSType.asOutParam()));
-                if (SUCCEEDED(rc) && guestOSType)
-                {
-                    CHECK_ERROR(sessionMachine, COMSETTER(OSTypeId)(Bstr(ValueUnion.psz).raw()));
-                }
-                else
-                {
-                    errorArgument("Invalid guest OS type '%s'", ValueUnion.psz);
-                    rc = E_FAIL;
-                }
+                CHECK_ERROR(sessionMachine, COMSETTER(OSTypeId)(Bstr(ValueUnion.psz).raw()));
                 break;
             }
 

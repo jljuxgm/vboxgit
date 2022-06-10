@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 72482 2018-06-08 13:29:34Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 72919 2018-07-05 14:44:31Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -1232,9 +1232,18 @@ void NetworkAdapter::i_applyDefaults(GuestOSType *aOsType)
     e1000enabled = true;
 #endif // VBOX_WITH_E1000
 
-    NetworkAdapterType_T defaultType = NetworkAdapterType_Am79C973;
+    NetworkAdapterType_T defaultType;
     if (aOsType)
         defaultType = aOsType->i_networkAdapterType();
+    else
+    {
+#ifdef VBOX_WITH_E1000
+        defaultType = NetworkAdapterType_I82540EM;
+#else
+        defaultType = NetworkAdapterType_Am79C973A;
+#endif
+    }
+
 
     /* Set default network adapter for this OS type */
     if (defaultType == NetworkAdapterType_I82540EM ||
