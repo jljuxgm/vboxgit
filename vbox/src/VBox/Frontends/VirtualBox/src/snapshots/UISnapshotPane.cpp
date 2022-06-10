@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 75027 2018-10-24 11:34:04Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 75093 2018-10-26 12:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -503,6 +503,11 @@ void UISnapshotPane::setMachine(const CMachine &comMachine)
 const QIcon *UISnapshotPane::snapshotItemIcon(bool fOnline) const
 {
     return !fOnline ? m_pIconSnapshotOffline : m_pIconSnapshotOnline;
+}
+
+bool UISnapshotPane::isCurrentStateItemSelected() const
+{
+    return m_pCurrentStateItem && m_pSnapshotTree->currentItem() == m_pCurrentStateItem;
 }
 
 void UISnapshotPane::retranslateUi()
@@ -1050,6 +1055,9 @@ void UISnapshotPane::sltHandleCurrentItemChange()
         else
             m_pDetailsWidget->setData(*pSnapshotItem, pSnapshotItem->snapshot());
     }
+
+    /* Notify listeners: */
+    emit sigCurrentItemChange();
 }
 
 void UISnapshotPane::sltHandleContextMenuRequest(const QPoint &position)

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 75086 2018-10-25 18:11:38Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 75093 2018-10-26 12:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -59,6 +59,9 @@ signals:
     /** Notifies listeners about Cloud Profile Manager change. */
     void sigCloudProfileManagerChange();
 
+    /** Notifies listeners about current Snapshots pane item change. */
+    void sigCurrentSnapshotItemChange();
+
 public:
 
     /** Constructs VirtualBox Manager widget. */
@@ -110,6 +113,12 @@ public:
         void closeGlobalTool(UIToolType enmType);
         /** Closes Machine tool of passed @a enmType. */
         void closeMachineTool(UIToolType enmType);
+    /** @} */
+
+    /** @name Snapshot pane stuff.
+      * @{ */
+        /** Returns whether current-state item of Snapshot pane is selected. */
+        bool isCurrentStateItemSelected() const;
     /** @} */
 
 public slots:

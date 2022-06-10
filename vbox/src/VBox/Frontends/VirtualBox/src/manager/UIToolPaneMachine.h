@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 75016 2018-10-23 19:42:38Z vboxsync $ */
+/* $Id: UIToolPaneMachine.h 75093 2018-10-26 12:22:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -53,6 +53,9 @@ signals:
     /** Redirects signal from UIDetails to UIVirtualBoxManager. */
     void sigLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &uId);
 
+    /** Notifies listeners about current Snapshot pane item change. */
+    void sigCurrentSnapshotItemChange();
+
 public:
 
     /** Constructs tools pane passing @a pParent to the base-class. */
@@ -80,6 +83,9 @@ public:
 
     /** Defines the @a comMachine object. */
     void setMachine(const CMachine &comMachine);
+
+    /** Returns whether current-state item of Snapshot pane is selected. */
+    bool isCurrentStateItemSelected() const;
 
 private:
 
