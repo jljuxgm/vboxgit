@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 78010 2019-04-04 07:27:13Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 78024 2019-04-05 10:19:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -238,7 +238,6 @@ protected:
     UIPropertiesDialog      *m_pPropertiesDialog;
     UIActionPool            *m_pActionPool;
     UIToolBar               *m_pToolBar;
-
     /** Stores the drive letters the file system has (for windows system). For non-windows
      *  systems this is empty and for windows system it should at least contain C:/ */
     QStringList              m_driveLetterList;
