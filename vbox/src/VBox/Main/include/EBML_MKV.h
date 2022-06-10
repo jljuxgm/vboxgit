@@ -1,4 +1,4 @@
-/* $Id: EBML_MKV.h 76487 2018-12-27 03:31:39Z vboxsync $ */
+/* $Id: EBML_MKV.h 76517 2018-12-30 05:19:23Z vboxsync $ */
 /** @file
  * EbmlMkvIDs.h - Matroska EBML Class IDs.
  */
@@ -17,10 +17,10 @@
 
 #ifndef ____H_EBMLMKV
 #define ____H_EBMLMKV
-
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
+
 
 /** Matroska EBML Class IDs supported by WebM.
  *

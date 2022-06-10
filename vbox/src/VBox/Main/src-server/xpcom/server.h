@@ -1,4 +1,4 @@
-/* $Id: server.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: server.h 76517 2018-12-30 05:19:23Z vboxsync $ */
 /** @file
  *
  * Common header for XPCOM server and its module counterpart
@@ -18,6 +18,9 @@
 
 #ifndef ____H_LINUX_SERVER
 #define ____H_LINUX_SERVER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/com/com.h>
 

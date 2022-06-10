@@ -1,4 +1,4 @@
-/* $Id: resource.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: resource.h 76517 2018-12-30 05:19:23Z vboxsync $ */
 /** @file
  *
  * Resource definitions
@@ -18,6 +18,9 @@
 
 #ifndef __H_RESOURCEVBOXCOM
 #define __H_RESOURCEVBOXCOM
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 // registry script resource ID
