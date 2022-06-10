@@ -1,4 +1,4 @@
-/* $Id: dir.h 70890 2018-02-07 14:05:43Z vboxsync $ */
+/* $Id: dir.h 75652 2018-11-21 21:00:31Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDir.
  */
@@ -98,6 +98,8 @@ typedef struct RTDIRINTERNAL
 
 #ifndef RTDIR_AGNOSTIC
 # ifdef RT_OS_WINDOWS
+    /** Set by RTDirRewind. */
+    bool                fRestartScan;
     /** Handle to the opened directory search. */
     HANDLE              hDir;
 #  ifndef RTNT_USE_NATIVE_NT

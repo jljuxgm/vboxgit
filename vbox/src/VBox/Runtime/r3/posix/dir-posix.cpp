@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: dir-posix.cpp 75652 2018-11-21 21:00:31Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -645,6 +645,27 @@ RTDECL(int) RTDirReadEx(RTDIR hDir, PRTDIRENTRYEX pDirEntry, size_t *pcbDirEntry
     }
 
     return rc;
+}
+
+
+RTDECL(int) RTDirRewind(RTDIR hDir)
+{
+    PRTDIRINTERNAL pDir = hDir;
+
+    /*
+     * Validate and digest input.
+     */
+    if (!rtDirValidHandle(pDir))
+        return VERR_INVALID_PARAMETER;
+
+    /*
+     * Do the rewinding.
+     */
+    /** @todo OS/2 does not rescan the directory as it should. */
+    rewinddir(pDir->pDir);
+    pDir->fDataUnread = false;
+
+    return VINF_SUCCESS;
 }
 
 
