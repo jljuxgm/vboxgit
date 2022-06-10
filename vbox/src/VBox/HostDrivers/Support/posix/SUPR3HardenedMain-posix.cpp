@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 66847 2017-05-09 11:55:28Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 72838 2018-07-03 17:17:20Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -215,8 +215,8 @@ DECLASM(bool) supR3HardenedPosixMonitor_VerifyLibrary(const char *pszFilename)
 static void *supR3HardenedMainPosixGetStartBySymbol(const char *pszSymbol, PFNSUPHARDENEDSYMRESOLVE pfnResolve)
 {
 #ifndef RT_OS_SOLARIS
-    return dlsym(RTLD_DEFAULT, pszSymbol);
     RT_NOREF(pfnResolve);
+    return dlsym(RTLD_DEFAULT, pszSymbol);
 
 #else  /* RT_OS_SOLARIS */
     /*
