@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 76757 2019-01-10 16:16:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1047,6 +1047,21 @@ void UIVirtualBoxManager::sltPerformPowerOffMachine()
     }
 }
 
+void UIVirtualBoxManager::sltPerformShowMachineToolDetails()
+{
+    m_pWidget->setToolsType(UIToolType_Details);
+}
+
+void UIVirtualBoxManager::sltPerformShowMachineToolSnapshots()
+{
+    m_pWidget->setToolsType(UIToolType_Snapshots);
+}
+
+void UIVirtualBoxManager::sltPerformShowMachineToolLogs()
+{
+    m_pWidget->setToolsType(UIToolType_Logs);
+}
+
 void UIVirtualBoxManager::sltOpenLogViewerWindow()
 {
     /* Get selected items: */
@@ -1443,6 +1458,22 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltPerformShutdownMachine);
     connect(actionPool()->action(UIActionIndexST_M_Machine_M_Close_S_PowerOff), &UIAction::triggered,
             this, &UIVirtualBoxManager::sltPerformPowerOffMachine);
+
+    /* 'Group/Tools' menu connections: */
+    connect(actionPool()->action(UIActionIndexST_M_Group_M_Tools_S_Details), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltPerformShowMachineToolDetails);
+    connect(actionPool()->action(UIActionIndexST_M_Group_M_Tools_S_Snapshots), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltPerformShowMachineToolSnapshots);
+    connect(actionPool()->action(UIActionIndexST_M_Group_M_Tools_S_Logs), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltPerformShowMachineToolLogs);
+
+    /* 'Machine/Tools' menu connections: */
+    connect(actionPool()->action(UIActionIndexST_M_Machine_M_Tools_S_Details), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltPerformShowMachineToolDetails);
+    connect(actionPool()->action(UIActionIndexST_M_Machine_M_Tools_S_Snapshots), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltPerformShowMachineToolSnapshots);
+    connect(actionPool()->action(UIActionIndexST_M_Machine_M_Tools_S_Logs), &UIAction::triggered,
+            this, &UIVirtualBoxManager::sltPerformShowMachineToolLogs);
 }
 
 void UIVirtualBoxManager::loadSettings()

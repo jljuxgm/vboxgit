@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 76757 2019-01-10 16:16:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -221,6 +221,13 @@ private slots:
         void sltPerformShutdownMachine();
         /** Handles call to power machine off. */
         void sltPerformPowerOffMachine();
+
+        /** Handles call to show machine Details tool. */
+        void sltPerformShowMachineToolDetails();
+        /** Handles call to show machine Snapshots tool. */
+        void sltPerformShowMachineToolSnapshots();
+        /** Handles call to show machine Logs tool. */
+        void sltPerformShowMachineToolLogs();
 
         /** Handles call to open machine Log Viewer window. */
         void sltOpenLogViewerWindow();
