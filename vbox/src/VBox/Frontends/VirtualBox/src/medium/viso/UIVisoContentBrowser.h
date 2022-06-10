@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 76826 2019-01-15 18:19:10Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.h 76913 2019-01-21 11:48:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -43,7 +43,7 @@ class UIVisoContentTreeProxyModel;
 class UICustomFileSystemItem;
 class UIVisoContentTableView;
 
-class SHARED_LIBRARY_STUFF UIVisoContentBrowser : public UIVisoBrowserBase
+class UIVisoContentBrowser : public UIVisoBrowserBase
 {
     Q_OBJECT;
 

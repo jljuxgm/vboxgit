@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorOptionsDialog.h 76747 2019-01-09 16:42:42Z vboxsync $ */
+/* $Id: UIVisoCreatorOptionsDialog.h 76913 2019-01-21 11:48:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorOptionsDialog class declaration.
  */
@@ -30,7 +30,7 @@
 class QGridLayout;
 class QIDialogButtonBox;
 
-class SHARED_LIBRARY_STUFF UIVisoCreatorOptionsDialog : public QIDialog
+class UIVisoCreatorOptionsDialog : public QIDialog
 {
     Q_OBJECT;
 

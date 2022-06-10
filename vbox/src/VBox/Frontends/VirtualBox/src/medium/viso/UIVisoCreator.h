@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 76826 2019-01-15 18:19:10Z vboxsync $ */
+/* $Id: UIVisoCreator.h 76913 2019-01-21 11:48:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -45,7 +45,7 @@ class UIToolBar;
 class UIVisoHostBrowser;
 class UIVisoContentBrowser;
 
-class SHARED_LIBRARY_STUFF UIVisoCreator : public QIWithRetranslateUI<QIMainDialog>
+class UIVisoCreator : public QIWithRetranslateUI<QIMainDialog>
 {
     Q_OBJECT;
 
