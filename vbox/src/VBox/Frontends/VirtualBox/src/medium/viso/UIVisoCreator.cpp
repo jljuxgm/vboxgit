@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 76690 2019-01-07 19:58:10Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 76730 2019-01-09 11:09:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -160,9 +160,6 @@ void UIVisoCreator::prepareActions()
     m_pActionOptions = new QAction(this);
     if (m_pActionOptions)
     {
-        /* Configure add-action: */
-        m_pActionOptions->setShortcut(QKeySequence("Ctrl+A"));
-
         m_pActionOptions->setIcon(UIIconPool::iconSetFull(":/file_manager_options_32px.png",
                                                           ":/%file_manager_options_16px.png",
                                                           ":/file_manager_options_disabled_32px.png",

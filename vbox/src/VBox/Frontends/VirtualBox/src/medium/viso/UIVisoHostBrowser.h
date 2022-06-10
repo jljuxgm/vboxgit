@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 76671 2019-01-07 12:15:00Z vboxsync $ */
+/* $Id: UIVisoHostBrowser.h 76730 2019-01-09 11:09:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -60,7 +60,7 @@ protected:
 private slots:
 
     void sltHandleTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
-    void sltHandleAddButtonClicked();
+    void sltHandleAddAction();
 
 private:
 
@@ -70,6 +70,7 @@ private:
     /** We have two file system models (one for each item view) since we set different filter on each of these models. */
     UIVisoHostBrowserModel *m_pTreeModel;
     UIVisoHostBrowserModel *m_pTableModel;
+    QAction                *m_pAddAction;
 };
 
 

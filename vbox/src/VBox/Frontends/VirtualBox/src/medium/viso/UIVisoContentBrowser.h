@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 76707 2019-01-08 15:24:35Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.h 76730 2019-01-09 11:09:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -101,8 +101,11 @@ private:
     UICustomFileSystemModel      *m_pModel;
     UICustomFileSystemProxyModel *m_pTableProxyModel;
     UIVisoContentTreeProxyModel  *m_pTreeProxyModel;
-    QIToolButton                 *m_pNewDirectoryButton;
-    QIToolButton                 *m_pRenameButton;
+    QAction                 *m_pRemoveAction;
+    QAction                 *m_pNewDirectoryAction;
+    QAction                 *m_pRenameAction;
+    QAction                 *m_pResetAction;
+
     QString                       m_strVisoName;
     /** keys of m_entryMap are iso locations and values are
      *  local location of file objects. these keys and values are

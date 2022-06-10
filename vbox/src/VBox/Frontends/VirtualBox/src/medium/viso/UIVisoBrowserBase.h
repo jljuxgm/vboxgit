@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 76671 2019-01-07 12:15:00Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.h 76730 2019-01-09 11:09:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -33,7 +33,7 @@ class QSplitter;
 class QVBoxLayout;
 class QTableView;
 class QTreeView;
-class QIToolButton;
+class UIToolBar;
 
 class UIVisoBrowserBase : public QWidget
 {
@@ -59,9 +59,9 @@ protected:
     QTreeView          *m_pTreeView;
     QTableView         *m_pTableView;
     QLabel             *m_pTitleLabel;
-    QIToolButton       *m_pAddRemoveButton;
     QWidget            *m_pRightContainerWidget;
     QGridLayout        *m_pRightContainerLayout;
+    UIToolBar          *m_pVerticalToolBar;
 
 private:
     QGridLayout    *m_pMainLayout;

@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 76671 2019-01-07 12:15:00Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.cpp 76730 2019-01-09 11:09:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -25,18 +25,17 @@
 #include <QVBoxLayout>
 
 /* GUI includes: */
-#include "QIToolButton.h"
 #include "UIVisoBrowserBase.h"
-
+#include "UIToolBar.h"
 
 UIVisoBrowserBase::UIVisoBrowserBase(QWidget *pParent)
     : QWidget(pParent)
     , m_pTreeView(0)
     , m_pTableView(0)
     , m_pTitleLabel(0)
-    , m_pAddRemoveButton(0)
     , m_pRightContainerWidget(0)
     , m_pRightContainerLayout(0)
+    , m_pVerticalToolBar(0)
     , m_pMainLayout(0)
     , m_pHorizontalSplitter(0)
 {
@@ -97,7 +96,7 @@ void UIVisoBrowserBase::prepareObjects()
     m_pTableView = new QTableView;
     if (m_pTableView)
     {
-        m_pRightContainerLayout->addWidget(m_pTableView, 0, 0, 4, 4);
+        m_pRightContainerLayout->addWidget(m_pTableView, 0, 0, 6, 4);
         m_pTableView->setSelectionMode(QAbstractItemView::ContiguousSelection);
         m_pTableView->setShowGrid(false);
         m_pTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -118,11 +117,11 @@ void UIVisoBrowserBase::prepareObjects()
         }
     }
 
-    m_pAddRemoveButton = new QIToolButton;
-    if (m_pAddRemoveButton)
+    m_pVerticalToolBar = new UIToolBar;
+    if (m_pVerticalToolBar)
     {
-        m_pRightContainerLayout->addWidget(m_pAddRemoveButton, 0, 5, 1, 1);
-        m_pAddRemoveButton->setEnabled(false);
+        m_pVerticalToolBar->setOrientation(Qt::Vertical);
+        m_pRightContainerLayout->addWidget(m_pVerticalToolBar, 0, 5, 6, 1);
     }
 
     m_pHorizontalSplitter->addWidget(pLeftContainerWidget);
