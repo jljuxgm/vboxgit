@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 73697 2018-08-15 15:58:48Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 73721 2018-08-16 18:09:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -420,6 +420,15 @@ void UIVirtualBoxManagerWidget::prepareToolbar()
         m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_LogViewer_T_Bookmark));
         m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_LogViewer_T_Settings));
         m_pToolBar->addAction(actionPool()->action(UIActionIndex_M_LogViewer_S_Refresh));
+
+        /* Add 'Medium' actions block: */
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Add));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Copy));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Move));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Remove));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Release));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_T_Details));
+        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Medium_S_Refresh));
 
 #ifdef VBOX_WS_MAC
         // WORKAROUND:

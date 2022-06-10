@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 73717 2018-08-16 16:00:08Z vboxsync $ */
+/* $Id: UIMediumManager.h 73721 2018-08-16 18:09:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -104,8 +104,11 @@ signals:
 
 public:
 
-    /** Constructs Virtual Media Manager widget. */
-    UIMediumManagerWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool, QWidget *pParent = 0);
+    /** Constructs Virtual Media Manager widget.
+      * @param  enmEmbedding  Brings the type of widget embedding.
+      * @param  pActionPool   Brings the action-pool reference.
+      * @param  fShowToolbar  Brings whether we should create/show toolbar. */
+    UIMediumManagerWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool, bool fShowToolbar = true, QWidget *pParent = 0);
 
     /** Returns the menu. */
     QMenu *menu() const;
@@ -297,9 +300,10 @@ private:
       * @{ */
         /** Holds the widget embedding type. */
         const EmbedTo m_enmEmbedding;
-
         /** Holds the action-pool reference. */
         UIActionPool *m_pActionPool;
+        /** Holds whether we should create/show toolbar. */
+        const bool    m_fShowToolbar;
 
         /** Holds whether Virtual Media Manager should preserve current item change. */
         bool m_fPreventChangeCurrentItem;

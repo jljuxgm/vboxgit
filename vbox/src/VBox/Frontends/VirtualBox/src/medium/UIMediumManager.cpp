@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 73717 2018-08-16 16:00:08Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 73721 2018-08-16 18:09:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -148,10 +148,12 @@ void UIEnumerationProgressBar::prepare()
 *   Class UIMediumManagerWidget implementation.                                                                                  *
 *********************************************************************************************************************************/
 
-UIMediumManagerWidget::UIMediumManagerWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool, QWidget *pParent /* = 0 */)
+UIMediumManagerWidget::UIMediumManagerWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,
+                                             bool fShowToolbar /* = true */, QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_enmEmbedding(enmEmbedding)
     , m_pActionPool(pActionPool)
+    , m_fShowToolbar(fShowToolbar)
     , m_fPreventChangeCurrentItem(false)
     , m_pTabWidget(0)
     , m_iTabCount(3)
@@ -768,7 +770,8 @@ void UIMediumManagerWidget::prepareWidgets()
 #endif
 
         /* Prepare toolbar: */
-        prepareToolBar();
+        if (m_fShowToolbar)
+            prepareToolBar();
         /* Prepare tab-widget: */
         prepareTabWidget();
         /* Prepare details-widget: */

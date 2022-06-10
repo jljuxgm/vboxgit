@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 73717 2018-08-16 16:00:08Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 73721 2018-08-16 18:09:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -110,7 +110,7 @@ void UIToolPaneGlobal::openTool(ToolTypeGlobal enmType)
             case ToolTypeGlobal_VirtualMedia:
             {
                 /* Create Virtual Media Manager: */
-                m_pPaneMedia = new UIMediumManagerWidget(EmbedTo_Stack, m_pActionPool);
+                m_pPaneMedia = new UIMediumManagerWidget(EmbedTo_Stack, m_pActionPool, false /* show toolbar */);
                 AssertPtrReturnVoid(m_pPaneMedia);
                 {
 #ifndef VBOX_WS_MAC

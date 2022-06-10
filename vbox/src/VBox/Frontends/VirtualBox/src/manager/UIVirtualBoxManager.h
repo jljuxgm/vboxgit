@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 73697 2018-08-15 15:58:48Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 73721 2018-08-16 18:09:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -251,6 +251,8 @@ private:
         void prepareMenuSnapshot(QMenu *pMenu);
         /** Prepares @a pMenu Log Viewer. */
         void prepareMenuLogViewer(QMenu *pMenu);
+        /** Prepares @a pMenu Medium. */
+        void prepareMenuMedium(QMenu *pMenu);
         /** Prepares status-bar. */
         void prepareStatusBar();
         /** Prepares toolbar. */
@@ -358,8 +360,13 @@ private:
 
     /** Holds the list of Log Viewer menu actions. */
     QList<UIAction*>  m_logViewerActions;
-    /** Holds the Log menu parent action. */
+    /** Holds the Log Viewer menu parent action. */
     QAction          *m_pLogViewerMenuAction;
+
+    /** Holds the list of Virtual Media Manager menu actions. */
+    QList<UIAction*>  m_virtualMediaManagerActions;
+    /** Holds the Virtual Media Manager menu parent action. */
+    QAction          *m_pVirtualMediaManagerMenuAction;
 
     /** Holds the Virtual Media Manager window instance. */
     QIManagerDialog *m_pManagerVirtualMedia;
