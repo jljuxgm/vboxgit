@@ -1,4 +1,4 @@
-/* $Id: dvmvfs.cpp 73156 2018-07-16 12:37:19Z vboxsync $ */
+/* $Id: dvmvfs.cpp 73265 2018-07-20 13:30:05Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - VFS glue.
  */
@@ -971,7 +971,7 @@ static DECLCALLBACK(int) rtDvmVfsDir_Open(void *pvThis, const char *pszEntry, ui
             else if (fFlags & RTVFSOBJ_F_OPEN_SYMLINK)
             {
                 /* Create symlink object */
-                RTVFSSYMLINK hVfsSym;
+                RTVFSSYMLINK hVfsSym = NIL_RTVFSSYMLINK; /* (older gcc maybe used uninitialized) */
                 rc = rtDvmVfsCreateSymlinkForVolume(hVolume, pThis->pVfsVol ? pThis->pVfsVol->hVolMgr : NIL_RTDVM, iVol,
                                                     pszSymlink, &hVfsSym);
                 if (RT_SUCCESS(rc))
