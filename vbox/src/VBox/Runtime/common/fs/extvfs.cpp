@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 76293 2018-12-19 13:51:13Z vboxsync $ */
+/* $Id: extvfs.cpp 76294 2018-12-19 14:00:23Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -1252,7 +1252,7 @@ static int rtFsExtVolLoadAndParseSuperBlockV0(PRTFSEXTVOL pThis, PCEXTSUPERBLOCK
 
     pThis->f64Bit          = false;
     pThis->cBlockShift     = 10 + RT_LE2H_U32(pSb->cLogBlockSize);
-    pThis->cbBlock         = 1 << pThis->cBlockShift;
+    pThis->cbBlock         = UINT64_C(1) << pThis->cBlockShift;
     pThis->cbInode         = sizeof(EXTINODE);
     pThis->cbBlkGrpDesc    = sizeof(EXTBLOCKGROUPDESC32);
     pThis->cBlocksPerGroup = RT_LE2H_U32(pSb->cBlocksPerGroup);
