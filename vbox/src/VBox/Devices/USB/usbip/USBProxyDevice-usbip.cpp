@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-usbip.cpp 75583 2018-11-19 17:17:45Z vboxsync $ */
+/* $Id: USBProxyDevice-usbip.cpp 75598 2018-11-19 20:16:07Z vboxsync $ */
 /** @file
  * USB device proxy - USB/IP backend.
  */
@@ -1276,7 +1276,7 @@ static PUSBPROXYURBUSBIP usbProxyUsbIpPollWorker(PUSBPROXYDEVUSBIP pProxyDevUsbI
 
     if (!fPollWakePipe)
     {
-        rc = RTPollSetRemove(pProxyDevUsbIp->hPollSet, USBIP_POLL_ID_PIPE);
+        rc = RTPollSetEventsChange(pProxyDevUsbIp->hPollSet, USBIP_POLL_ID_PIPE, RTPOLL_EVT_ERROR);
         AssertRC(rc);
     }
 
@@ -1328,8 +1328,7 @@ static PUSBPROXYURBUSBIP usbProxyUsbIpPollWorker(PUSBPROXYDEVUSBIP pProxyDevUsbI
 
     if (!fPollWakePipe)
     {
-        rc = RTPollSetAddPipe(pProxyDevUsbIp->hPollSet, pProxyDevUsbIp->hPipeR,
-                              RTPOLL_EVT_READ, USBIP_POLL_ID_PIPE);
+        rc = RTPollSetEventsChange(pProxyDevUsbIp->hPollSet, USBIP_POLL_ID_PIPE, RTPOLL_EVT_READ);
         AssertRC(rc);
     }
 
