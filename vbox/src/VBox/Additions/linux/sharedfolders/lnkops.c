@@ -1,4 +1,4 @@
-/* $Id: lnkops.c 76939 2019-01-22 16:51:28Z vboxsync $ */
+/* $Id: lnkops.c 77419 2019-02-21 23:53:28Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, operations for symbolic links.
  */
@@ -30,7 +30,7 @@
 
 #include "vfsmod.h"
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 8) /* no generic_readlink() before 2.6.8 */
 
 # if LINUX_VERSION_CODE < KERNEL_VERSION(4, 5, 0)
 #  if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
@@ -116,4 +116,4 @@ struct inode_operations sf_lnk_iops = {
 # endif
 };
 
-#endif	/* LINUX_VERSION_CODE >= 2.6.0 */
+#endif	/* LINUX_VERSION_CODE >= 2.6.8 */
