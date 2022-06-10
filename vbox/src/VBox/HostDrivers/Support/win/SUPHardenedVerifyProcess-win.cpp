@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 72247 2018-05-17 17:28:18Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 76412 2018-12-23 18:35:17Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -42,6 +42,7 @@
 #include <iprt/ctype.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 #include <iprt/zero.h>
 
 #ifdef IN_RING0
