@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 73139 2018-07-16 09:05:25Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 73165 2018-07-17 04:03:41Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -1265,8 +1265,8 @@ IEM_CIMPL_DEF_0(iemCImpl_vmsave)
     if (rcStrict == VINF_SUCCESS)
     {
         LogFlow(("vmsave: Saving VMCB at %#RGp enmEffAddrMode=%d\n", GCPhysVmcb, pVCpu->iem.s.enmEffAddrMode));
-        IEM_CTX_IMPORT_RET(pVCpu,   CPUMCTX_EXTRN_FS | CPUMCTX_EXTRN_GS | CPUMCTX_EXTRN_TR | CPUMCTX_EXTRN_LDTR
-                                  | CPUMCTX_EXTRN_KERNEL_GS_BASE | CPUMCTX_EXTRN_SYSCALL_MSRS | CPUMCTX_EXTRN_SYSENTER_MSRS);
+        IEM_CTX_IMPORT_RET(pVCpu, CPUMCTX_EXTRN_FS | CPUMCTX_EXTRN_GS | CPUMCTX_EXTRN_TR | CPUMCTX_EXTRN_LDTR
+                                | CPUMCTX_EXTRN_KERNEL_GS_BASE | CPUMCTX_EXTRN_SYSCALL_MSRS | CPUMCTX_EXTRN_SYSENTER_MSRS);
 
         HMSVM_SEG_REG_COPY_TO_VMCB(IEM_GET_CTX(pVCpu), &VmcbNstGst, FS, fs);
         HMSVM_SEG_REG_COPY_TO_VMCB(IEM_GET_CTX(pVCpu), &VmcbNstGst, GS, gs);
