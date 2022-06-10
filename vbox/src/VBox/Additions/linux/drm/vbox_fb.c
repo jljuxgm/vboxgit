@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 76936 2019-01-22 15:40:01Z vboxsync $ */
+/* $Id: vbox_fb.c 76938 2019-01-22 16:50:18Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -343,7 +343,7 @@ static int vboxfb_create(struct drm_fb_helper *helper,
 	drm_fb_helper_fill_var(info, &fbdev->helper, sizes->fb_width,
 			       sizes->fb_height);
 
-	info->screen_base = bo->kmap.virtual;
+	info->screen_base = (char __iomem *)bo->kmap.virtual;
 	info->screen_size = size;
 
 #ifdef CONFIG_FB_DEFERRED_IO
