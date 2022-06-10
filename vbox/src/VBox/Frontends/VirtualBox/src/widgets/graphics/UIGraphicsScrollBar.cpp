@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.cpp 77076 2019-01-31 13:50:28Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.cpp 77084 2019-01-31 16:59:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class implementation.
  */
@@ -195,6 +195,11 @@ void UIGraphicsScrollBar::setMinimum(int iMinimum)
     layoutToken();
 }
 
+int UIGraphicsScrollBar::minimum() const
+{
+    return m_iMinimum;
+}
+
 void UIGraphicsScrollBar::setMaximum(int iMaximum)
 {
     m_iMaximum = iMaximum;
@@ -203,6 +208,11 @@ void UIGraphicsScrollBar::setMaximum(int iMaximum)
     if (m_iValue > m_iMaximum)
         m_iValue = m_iMaximum;
     layoutToken();
+}
+
+int UIGraphicsScrollBar::maximum() const
+{
+    return m_iMaximum;
 }
 
 void UIGraphicsScrollBar::setValue(int iValue)

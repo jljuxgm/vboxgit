@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.h 77018 2019-01-28 13:43:11Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.h 77084 2019-01-31 16:59:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class declaration.
  */
@@ -55,8 +55,14 @@ public:
 
     /** Defines @a iMinimum scroll-bar value. */
     void setMinimum(int iMinimum);
+    /** Returns minimum scroll-bar value. */
+    int minimum() const;
+
     /** Defines @a iMaximum scroll-bar value. */
     void setMaximum(int iMaximum);
+    /** Returns minimum scroll-bar value. */
+    int maximum() const;
+
     /** Defines current scroll-bar @a iValue. */
     void setValue(int iValue);
     /** Returns current scroll-bar value. */
