@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 76312 2018-12-20 13:02:13Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 76329 2018-12-21 07:43:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -26,7 +26,7 @@
 /* GUI includes: */
 # include "UIErrorString.h"
 # include "UICustomFileSystemModel.h"
-# include "UIFileManagerTable.h"
+# include "UIPathOperations.h"
 # include "VBoxGlobal.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
