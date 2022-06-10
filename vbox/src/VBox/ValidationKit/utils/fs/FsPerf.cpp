@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 77690 2019-03-13 19:47:51Z vboxsync $ */
+/* $Id: FsPerf.cpp 77692 2019-03-13 20:05:59Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -735,8 +735,8 @@ static void tstOpenExTest(unsigned uLine, int cbExist, int cbNext, const char *p
             {
                 while (cbExist > 0)
                 {
-                    size_t cbToWrite = strlen(pszFilename);
-                    if ((ssize_t)cbToWrite > cbExist)
+                    int cbToWrite = (int)strlen(pszFilename);
+                    if (cbToWrite > cbExist)
                         cbToWrite = cbExist;
                     rc = RTFileWrite(hFile, pszFilename, cbToWrite, NULL);
                     if (RT_FAILURE(rc))
@@ -785,8 +785,8 @@ static void tstOpenExTest(unsigned uLine, int cbExist, int cbNext, const char *p
 
         while (cbNext > 0)
         {
-            size_t cbToWrite = strlen(pszFilename);
-            if ((ssize_t)cbToWrite > cbNext)
+            int cbToWrite = (int)strlen(pszFilename);
+            if (cbToWrite > cbNext)
                 cbToWrite = cbNext;
             rc = RTFileWrite(hFile, pszFilename, cbToWrite, NULL);
             if (RT_FAILURE(rc))
@@ -3452,7 +3452,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 77690 $";
+                char szRev[] = "$Revision: 77692 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
