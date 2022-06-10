@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 73838 2018-08-22 16:15:08Z vboxsync $ */
+/* $Id: DevHDA.cpp 74004 2018-08-31 17:07:23Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -2459,7 +2459,7 @@ static int hdaR3MixerAddDrvStream(PHDASTATE pThis, PAUDMIXSINK pMixSink, PPDMAUD
                                         pStreamCfg->szName, Cfg.szName));
                         }
                         else
-                            LogRel(("HDA: Backend '%s' currently is not offering any recording source for '%s', muting\n",
+                            LogRel(("HDA: Backend '%s' currently is not offering any recording source for '%s'\n",
                                     Cfg.szName, pStreamCfg->szName));
                     }
                     else if (RT_FAILURE(rc))
