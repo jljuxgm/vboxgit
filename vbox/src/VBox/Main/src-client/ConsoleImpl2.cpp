@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 72980 2018-07-08 14:32:09Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 73000 2018-07-09 08:28:52Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2864,6 +2864,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
                         InsertConfigInteger(pCfg, "DebugEnabled", fDebugEnabled);
                         InsertConfigString (pCfg, "DebugPathOut", strDebugPathOut);
+                    break;
                 }
                 default: AssertFailedBreak();
             }
