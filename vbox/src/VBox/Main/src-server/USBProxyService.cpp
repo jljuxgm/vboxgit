@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: USBProxyService.cpp 72833 2018-07-03 16:32:31Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -577,7 +577,7 @@ void USBProxyService::i_deviceAdded(ComObjPtr<HostUSBDevice> &aDevice,
             && pHostDevice->i_compare(pDev) < 0)
             break;
 
-        it++;
+        ++it;
     }
 
     mDevices.insert(it, aDevice);
