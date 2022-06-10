@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 73389 2018-07-28 07:03:03Z vboxsync $ */
+/* $Id: HMAll.cpp 73395 2018-07-30 15:19:54Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -580,7 +580,6 @@ VMM_INT_DECL(int) HMVmxGetHostMsrs(PVM pVM, PVMXMSRS pVmxMsrs)
 }
 
 
-#if 0 /** @todo Update comment hm_vmx.h VMXMSRS struct if this is removed. */
 /**
  * Gets the specified VMX host MSR that was read by HM during ring-0
  * initialization.
@@ -632,7 +631,6 @@ VMM_INT_DECL(int) HMVmxGetHostMsr(PVM pVM, uint32_t idMsr, uint64_t *puValue)
     }
     return VINF_SUCCESS;
 }
-#endif
 
 
 #ifndef IN_RC
