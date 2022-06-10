@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 75380 2018-11-09 22:25:30Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 75663 2018-11-22 14:00:59Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -554,7 +554,7 @@ HRESULT VirtualBox::init()
         /* cloud provider manager */
         rc = unconst(m->pCloudProviderManager).createObject();
         if (SUCCEEDED(rc))
-            rc = m->pCloudProviderManager->init(this);
+            rc = m->pCloudProviderManager->init();
         ComAssertComRCThrowRC(rc);
         if (FAILED(rc)) throw rc;
     }
@@ -3765,6 +3765,11 @@ const ComObjPtr<Host>& VirtualBox::i_host() const
 SystemProperties* VirtualBox::i_getSystemProperties() const
 {
     return m->pSystemProperties;
+}
+
+CloudProviderManager *VirtualBox::i_getCloudProviderManager() const
+{
+    return m->pCloudProviderManager;
 }
 
 #ifdef VBOX_WITH_EXTPACK

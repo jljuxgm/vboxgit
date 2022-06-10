@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 74804 2018-10-12 15:09:44Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 75663 2018-11-22 14:00:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -130,6 +130,10 @@ public:
     HRESULT     i_getLibraryName(const char *a_pszModuleName, Utf8Str *a_pstrLibrary);
     bool        i_wantsToBeDefaultVrde(void) const;
     HRESULT     i_refresh(bool *pfCanDelete);
+#ifndef VBOX_COM_INPROC
+    bool        i_areThereCloudProviderUninstallVetos();
+    void        i_notifyCloudProviderManager();
+#endif
     /** @}  */
 
 protected:
