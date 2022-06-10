@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic4.h 72920 2018-07-05 14:51:50Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic4.h 73318 2018-07-23 12:58:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic4 class declaration.
  */
@@ -19,6 +19,7 @@
 #define ___UIWizardExportAppPageBasic4_h___
 
 /* Qt includes: */
+#include <QList>
 #include <QVariant>
 
 /* GUI includes: */
@@ -26,6 +27,8 @@
 #include "UIWizardPage.h"
 
 /* Forward declarations: */
+class QJsonDocument;
+class QJsonValue;
 class QIRichTextLabel;
 class UIWizardExportApp;
 
@@ -38,11 +41,28 @@ protected:
     /** Constructs 4th page base. */
     UIWizardExportAppPage4();
 
+    /** Populates cloud client parameters. */
+    void populateCloudClientParameters();
+
+    /** Parses JSON @a document. */
+    static QList<CloudClientParameter> parseJsonDocument(const QJsonDocument &document);
+    /** Parses JSON bool @a field. */
+    static bool parseJsonFieldBool(const QString &strFieldName, const QJsonValue &field);
+    /** Parses JSON double @a field. */
+    static double parseJsonFieldDouble(const QString &strFieldName, const QJsonValue &field);
+    /** Parses JSON string @a field. */
+    static QString parseJsonFieldString(const QString &strFieldName, const QJsonValue &field);
+    /** Parses JSON array @a field. */
+    static QStringList parseJsonFieldArray(const QString &strFieldName, const QJsonValue &field);
+
     /** Refreshes appliance settings widget. */
     void refreshApplianceSettingsWidget();
 
     /** Returns the appliance widget reference. */
     ExportAppliancePointer applianceWidget() const { return m_pApplianceWidget; }
+
+    /** Holds the cloud client parameters. */
+    QList<CloudClientParameter> m_listCloudClientParameters;
 
     /** Holds the appliance widget reference. */
     UIApplianceExportEditorWidget *m_pApplianceWidget;
