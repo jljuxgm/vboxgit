@@ -1,4 +1,4 @@
-/* $Id: DBGFR3BugCheck.cpp 73357 2018-07-25 16:05:24Z vboxsync $ */
+/* $Id: DBGFR3BugCheck.cpp 73360 2018-07-25 18:51:12Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, NT Bug Checks.
  */
@@ -86,7 +86,8 @@ static const char *dbgfR3FormatSymbol(PUVM pUVM, char *pszSymbol, size_t cchSymb
     DBGFADDRESS  Addr;
     RTGCINTPTR   offDisp = 0;
     PRTDBGSYMBOL pSym = DBGFR3AsSymbolByAddrA(pUVM, DBGF_AS_GLOBAL, DBGFR3AddrFromFlat(pUVM, &Addr, uFlatAddr),
-                                              0 /*fFlags*/, &offDisp, NULL /*phMod*/);
+                                              RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL | RTDBGSYMADDR_FLAGS_SKIP_ABS_IN_DEFERRED,
+                                              &offDisp, NULL /*phMod*/);
     if (pSym)
     {
         if (!offDisp)

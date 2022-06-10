@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 72880 2018-07-04 15:11:47Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 73360 2018-07-25 18:51:12Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -552,7 +552,8 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
                             DBGFR3AddrFromFlat(pVM->pUVM, &Addr, uAddr);
                             RTGCINTPTR   offDisp = 0;
                             PRTDBGSYMBOL pSym  = DBGFR3AsSymbolByAddrA(pVM->pUVM, DBGF_AS_R0, &Addr,
-                                                                       RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL, &offDisp, NULL);
+                                                                       RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL | RTDBGSYMADDR_FLAGS_SKIP_ABS_IN_DEFERRED,
+                                                                       &offDisp, NULL);
                             RTGCINTPTR   offLineDisp;
                             PRTDBGLINE   pLine = DBGFR3AsLineByAddrA(pVM->pUVM, DBGF_AS_R0, &Addr, &offLineDisp, NULL);
                             if (pLine || pSym)

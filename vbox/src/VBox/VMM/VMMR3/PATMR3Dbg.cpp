@@ -1,4 +1,4 @@
-/* $Id: PATMR3Dbg.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: PATMR3Dbg.cpp 73360 2018-07-25 18:51:12Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager, Debugger Related Parts.
  */
@@ -197,7 +197,7 @@ void patmR3DbgAddPatch(PVM pVM, PPATMPATCHREC pPatchRec)
 
             int rc = DBGFR3AsSymbolByAddr(pVM->pUVM, DBGF_AS_GLOBAL,
                                           DBGFR3AddrFromFlat(pVM->pUVM, &Addr, pPatchRec->patch.pPrivInstrGC),
-                                          RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL,
+                                          RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL | RTDBGSYMADDR_FLAGS_SKIP_ABS_IN_DEFERRED,
                                           &offDisp, &Symbol, NULL /*phMod*/);
             if (RT_SUCCESS(rc))
             {
