@@ -1,4 +1,4 @@
-/* $Id: fuzz-target-recorder.cpp 77546 2019-03-03 20:14:30Z vboxsync $ */
+/* $Id: fuzz-target-recorder.cpp 77547 2019-03-03 20:29:12Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, target state recorder.
  */
@@ -218,7 +218,7 @@ static void rtFuzzTgtRecDestroy(PRTFUZZTGTRECINT pThis)
  */
 static void rtFuzzTgtStateDestroy(PRTFUZZTGTSTATEINT pThis)
 {
-    pThis->u32Magic = ~0; /** @todo Dead magic */
+    pThis->u32Magic = ~(uint32_t)0; /** @todo Dead magic */
     rtFuzzTgtStdOutErrBufFree(&pThis->StdOutBuf);
     rtFuzzTgtStdOutErrBufFree(&pThis->StdErrBuf);
     RTMemFree(pThis);
