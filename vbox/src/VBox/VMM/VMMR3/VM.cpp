@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 75004 2018-10-23 14:43:06Z vboxsync $ */
+/* $Id: VM.cpp 76138 2018-12-10 17:18:51Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1070,7 +1070,7 @@ static int vmR3InitRing3(PVM pVM, PUVM pUVM)
 
 
 /**
- * Initializes all R0 components of the VM
+ * Initializes all R0 components of the VM.
  */
 static int vmR3InitRing0(PVM pVM)
 {
