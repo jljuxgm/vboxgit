@@ -1,4 +1,4 @@
-/* $Id: nt3fakes-r0drv-nt.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: nt3fakes-r0drv-nt.cpp 77473 2019-02-26 16:24:35Z vboxsync $ */
 /** @file
  * IPRT - NT 3.x fakes for NT 4.0 KPIs.
  */
@@ -805,7 +805,7 @@ Nt3Fb_ExReleaseFastMutex(PFAST_MUTEX pFastMtx)
     KIRQL    OldIrql  = pFastMtx->OldIrql;
     pFastMtx->Owner   = NULL;
     int32_t  cLockers = ASMAtomicIncS32((int32_t volatile *)&pFastMtx->Count);
-    if (cLockers < 0)
+    if (cLockers <= 0)
         KeSetEvent(&pFastMtx->Event, EVENT_INCREMENT, FALSE /*fWait*/);
     if (OldIrql != APC_LEVEL)
         KeLowerIrql(OldIrql);
