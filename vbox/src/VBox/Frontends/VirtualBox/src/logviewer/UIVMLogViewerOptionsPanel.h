@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerOptionsPanel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIVMLogViewerOptionsPanel.h 76954 2019-01-23 12:56:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -51,6 +51,7 @@ public:
     void setShowLineNumbers(bool bShowLineNumbers);
     void setWrapLines(bool bWrapLines);
     void setFontSizeInPoints(int fontSizeInPoints);
+    virtual QString panelName() const /* override */;
 
 public slots:
 

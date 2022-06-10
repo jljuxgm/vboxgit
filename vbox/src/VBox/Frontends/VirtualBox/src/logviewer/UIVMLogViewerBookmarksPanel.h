@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerBookmarksPanel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIVMLogViewerBookmarksPanel.h 76954 2019-01-23 12:56:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -35,12 +35,6 @@ class UIVMLogViewerBookmarksPanel : public UIVMLogViewerPanel
 {
     Q_OBJECT;
 
-signals:
-
-    void sigDeleteBookmark(int bookmarkIndex);
-    void sigDeleteAllBookmarks();
-    void sigBookmarkSelected(int index);
-
 public:
 
     UIVMLogViewerBookmarksPanel(QWidget *pParent, UIVMLogViewerWidget *pViewer);
@@ -54,8 +48,12 @@ public:
     void updateBookmarkList(const QVector<QPair<int, QString> > &bookmarkVector);
     /** Disable/enable all the widget except the close button */
     void disableEnableBookmarking(bool flag);
+    virtual QString panelName() const /* override */;
+signals:
 
-public slots:
+    void sigDeleteBookmark(int bookmarkIndex);
+    void sigDeleteAllBookmarks();
+    void sigBookmarkSelected(int index);
 
 protected:
 

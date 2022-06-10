@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerOptionsPanel.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIVMLogViewerOptionsPanel.cpp 76954 2019-01-23 12:56:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -69,6 +69,11 @@ void UIVMLogViewerOptionsPanel::setFontSizeInPoints(int fontSizeInPoints)
     if (m_pFontSizeSpinBox->value() == fontSizeInPoints)
         return;
     m_pFontSizeSpinBox->setValue(fontSizeInPoints);
+}
+
+QString UIVMLogViewerOptionsPanel::panelName() const
+{
+    return "OptionsPanel";
 }
 
 void UIVMLogViewerOptionsPanel::prepareWidgets()

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 76954 2019-01-23 12:56:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -107,6 +107,11 @@ void UIVMLogViewerSearchPanel::reset()
 const QVector<float> &UIVMLogViewerSearchPanel::getMatchLocationVector() const
 {
     return m_matchLocationVector;
+}
+
+QString UIVMLogViewerSearchPanel::panelName() const
+{
+    return "SearchPanel";
 }
 
 void UIVMLogViewerSearchPanel::hideEvent(QHideEvent *pEvent)
@@ -611,4 +616,3 @@ QTextDocument::FindFlags UIVMLogViewerSearchPanel::constructFindFlags(SearchDire
 }
 
 #include "UIVMLogViewerSearchPanel.moc"
-

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.h 76954 2019-01-23 12:56:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -55,6 +55,7 @@ public:
     void refresh();
     void reset();
     const QVector<float> &getMatchLocationVector() const;
+    virtual QString panelName() const /* override */;
 
 protected:
 
@@ -130,4 +131,3 @@ private:
 
 
 #endif /* !FEQT_INCLUDED_SRC_logviewer_UIVMLogViewerSearchPanel_h */
-

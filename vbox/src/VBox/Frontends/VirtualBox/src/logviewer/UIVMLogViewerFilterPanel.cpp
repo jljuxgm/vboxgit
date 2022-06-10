@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 76607 2019-01-02 05:41:14Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 76954 2019-01-23 12:56:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -256,6 +256,11 @@ UIVMLogViewerFilterPanel::UIVMLogViewerFilterPanel(QWidget *pParent, UIVMLogView
     , m_iFilteredLineCount(0)
 {
     prepare();
+}
+
+QString UIVMLogViewerFilterPanel::panelName() const
+{
+    return "FilterPanel";
 }
 
 void UIVMLogViewerFilterPanel::applyFilter(const int iCurrentIndex /* = 0 */)
