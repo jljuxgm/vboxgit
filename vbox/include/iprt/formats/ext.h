@@ -1,4 +1,4 @@
-/* $Id: ext.h 76305 2018-12-20 00:03:23Z vboxsync $ */
+/* $Id: ext.h 76316 2018-12-20 15:33:24Z vboxsync $ */
 /** @file
  * IPRT, Ext2/3/4 format.
  */
@@ -830,6 +830,8 @@ typedef const EXTEXTENTHDR *PCEXTEXTENTHDR;
 
 /** Magic number identifying an extent header. */
 #define EXT_EXTENT_HDR_MAGIC                         UINT16_C(0xf30a)
+/** Maximum depth an extent header can have. */
+#define EXT_EXTENT_HDR_DEPTH_MAX                     UINT16_C(5)
 
 
 /**
@@ -872,6 +874,9 @@ AssertCompileSize(EXTEXTENT, 12);
 typedef EXTEXTENT *PEXTEXTENT;
 /** Pointer to a const leaf node. */
 typedef const EXTEXTENT *PCEXTEXTENT;
+
+/** Length field limit for a populated extent, fields greater than that limit indicate a sparse extent. */
+#define EXT_EXTENT_LENGTH_LIMIT                      UINT16_C(32768)
 
 
 /**
