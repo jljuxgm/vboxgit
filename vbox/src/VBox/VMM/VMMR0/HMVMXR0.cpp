@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 74791 2018-10-12 10:44:17Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 75142 2018-10-29 12:09:28Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -538,7 +538,7 @@ static const PFNVMXEXITHANDLER g_apfnVMExitHandlers[VMX_EXIT_MAX + 1] =
 };
 #endif /* HMVMX_USE_FUNCTION_TABLE */
 
-#ifdef VBOX_STRICT
+#if defined(VBOX_STRICT) && defined(LOG_ENABLED)
 static const char * const g_apszVmxInstrErrors[HMVMX_INSTR_ERROR_MAX + 1] =
 {
     /*  0 */ "(Not Used)",
