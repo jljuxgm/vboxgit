@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELF.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DBGPlugInCommonELF.h 76564 2019-01-01 03:57:14Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Common code for dealing with ELF images, Header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___Debugger_DBGPlugInCommonELF_h
-#define ___Debugger_DBGPlugInCommonELF_h
+#ifndef DEBUGGER_INCLUDED_SRC_DBGPlugInCommonELF_h
+#define DEBUGGER_INCLUDED_SRC_DBGPlugInCommonELF_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -49,5 +49,5 @@ int DBGDiggerCommonParseElf64Mod(PUVM pUVM, const char *pszModName, const char *
                                  char const *pbStrings, size_t cbMaxStrings,
                                  RTGCPTR MinAddr, RTGCPTR MaxAddr, uint64_t uModTag);
 
-#endif
+#endif /* !DEBUGGER_INCLUDED_SRC_DBGPlugInCommonELF_h */
 

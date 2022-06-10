@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDbgConsole.h 76564 2019-01-01 03:57:14Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___Debugger_VBoxDbgConsole_h
-#define ___Debugger_VBoxDbgConsole_h
+#ifndef DEBUGGER_INCLUDED_SRC_VBoxDbgConsole_h
+#define DEBUGGER_INCLUDED_SRC_VBoxDbgConsole_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -432,5 +432,5 @@ private:
 };
 
 
-#endif
+#endif /* !DEBUGGER_INCLUDED_SRC_VBoxDbgConsole_h */
 

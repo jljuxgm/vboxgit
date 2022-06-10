@@ -1,4 +1,4 @@
-/* $Id: DBGPlugIns.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DBGPlugIns.h 76564 2019-01-01 03:57:14Z vboxsync $ */
 /** @file
  * DBGPlugIns - Debugger Plug-Ins.
  *
@@ -18,8 +18,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___Debugger_DBGPlugIns_h
-#define ___Debugger_DBGPlugIns_h
+#ifndef DEBUGGER_INCLUDED_SRC_DBGPlugIns_h
+#define DEBUGGER_INCLUDED_SRC_DBGPlugIns_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -37,5 +37,5 @@ extern const DBGFOSREG g_DBGDiggerWinNt;
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !DEBUGGER_INCLUDED_SRC_DBGPlugIns_h */
 
