@@ -1,4 +1,4 @@
-/* $Id: fuzz-observer.cpp 77509 2019-02-28 19:14:03Z vboxsync $ */
+/* $Id: fuzz-observer.cpp 77510 2019-02-28 19:18:10Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, observer.
  */
@@ -61,6 +61,7 @@
 
 /** Length of the input queue for an observer thread. */
 # define RTFUZZOBS_THREAD_INPUT_QUEUE_MAX       UINT32_C(5)
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
