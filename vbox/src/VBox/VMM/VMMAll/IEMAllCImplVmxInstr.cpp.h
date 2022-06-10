@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 77475 2019-02-27 06:44:43Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 77517 2019-03-01 09:23:54Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -1144,12 +1144,9 @@ DECL_FORCE_INLINE(void) iemVmxVmFailInvalid(PVMCPU pVCpu)
  */
 DECL_FORCE_INLINE(void) iemVmxVmFailValid(PVMCPU pVCpu, VMXINSTRERR enmInsErr)
 {
-    if (IEM_VMX_HAS_CURRENT_VMCS(pVCpu))
-    {
-        pVCpu->cpum.GstCtx.eflags.u32 &= ~(X86_EFL_CF | X86_EFL_PF | X86_EFL_AF | X86_EFL_ZF | X86_EFL_SF | X86_EFL_OF);
-        pVCpu->cpum.GstCtx.eflags.u32 |= X86_EFL_ZF;
-        iemVmxVmcsSetVmInstrErr(pVCpu, enmInsErr);
-    }
+    pVCpu->cpum.GstCtx.eflags.u32 &= ~(X86_EFL_CF | X86_EFL_PF | X86_EFL_AF | X86_EFL_ZF | X86_EFL_SF | X86_EFL_OF);
+    pVCpu->cpum.GstCtx.eflags.u32 |= X86_EFL_ZF;
+    iemVmxVmcsSetVmInstrErr(pVCpu, enmInsErr);
 }
 
 
