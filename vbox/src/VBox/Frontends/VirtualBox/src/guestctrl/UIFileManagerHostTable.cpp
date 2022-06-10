@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 77871 2019-03-25 13:42:12Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 77932 2019-03-28 10:17:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -171,7 +171,7 @@ UIFileManagerHostTable::UIFileManagerHostTable(UIActionPool *pActionPool, QWidge
 void UIFileManagerHostTable::retranslateUi()
 {
     if (m_pLocationLabel)
-        m_pLocationLabel->setText(UIFileManager::tr("Host System"));
+        m_pLocationLabel->setText(UIFileManager::tr("Host File System"));
     UIFileManagerTable::retranslateUi();
 }
 
