@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 74303 2018-09-17 09:33:58Z vboxsync $ */
+/* $Id: tstVMStruct.h 74421 2018-09-22 14:38:39Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -148,6 +148,8 @@
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.GCPhysVmxon);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.GCPhysVmcs);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.enmDiag);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.enmAbort);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uAbortAux);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.fInVmxRootMode);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.fInVmxNonRootMode);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.fInterceptEvents);
@@ -163,7 +165,6 @@
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVmwriteBitmapR3);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pAutoMsrAreaR0);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pAutoMsrAreaR3);
-    GEN_CHECK_OFF(CPUMCTX, hwvirt.uInhibitRip);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.fLocalForcedActions);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.fGif);
     /** @todo NSTVMX: add rest of hwvirt fields when code is more
