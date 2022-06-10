@@ -1,4 +1,4 @@
-/* $Id: CaptureSettingsImpl.cpp 75251 2018-11-05 17:55:29Z vboxsync $ */
+/* $Id: CaptureSettingsImpl.cpp 75264 2018-11-05 22:54:41Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.

@@ -1,4 +1,4 @@
-/* $Id: CaptureScreenSettingsImpl.cpp 75262 2018-11-05 19:48:32Z vboxsync $ */
+/* $Id: CaptureScreenSettingsImpl.cpp 75264 2018-11-05 22:54:41Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Capture settings of one virtual screen.
