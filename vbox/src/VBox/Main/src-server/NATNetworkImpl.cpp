@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 76153 2018-12-11 08:52:44Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 76170 2018-12-12 00:58:13Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -667,6 +667,10 @@ void NATNetwork::i_updateDomainNameServerOption(ComPtr<IHost> &host)
         LogRel(("NATNetwork: Failed to parse cidr %s with %Rrc\n", m->s.strIPv4NetworkCidr.c_str(), rc));
         return;
     }
+
+    /* XXX: these are returned, surprisingly, in host order */
+    networkid.u = RT_H2N_U32(networkid.u);
+    netmask.u = RT_H2N_U32(netmask.u);
 
     com::SafeArray<BSTR> nameServers;
     HRESULT hrc = host->COMGETTER(NameServers)(ComSafeArrayAsOutParam(nameServers));
