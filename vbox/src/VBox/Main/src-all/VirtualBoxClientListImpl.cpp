@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientListImpl.cpp 73361 2018-07-25 19:46:52Z vboxsync $ */
+/* $Id: VirtualBoxClientListImpl.cpp 73368 2018-07-26 10:03:25Z vboxsync $ */
 /** @file
  * VBox Global COM Class implementation.
  *
@@ -138,7 +138,7 @@ void CClientListWatcher::NotifySDSAllClientsFinished()
 /**
  * Deregister all staled VBoxSVC through VBoxSDS and forcebly close VBoxSVC process
  * @param   ThreadSelf  current thread id
- * @param   pvUser      pointer to CClientListWatcher that created this thread. 
+ * @param   pvUser      pointer to CClientListWatcher that created this thread.
  */
 DECLCALLBACK(int) CClientListWatcher::WatcherWorker(RTTHREAD ThreadSelf, void *pvUser)
 {
