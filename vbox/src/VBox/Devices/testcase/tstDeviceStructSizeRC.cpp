@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 73766 2018-08-19 16:55:11Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 74068 2018-09-04 13:34:53Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1939,7 +1939,6 @@ int main()
     GEN_CHECK_OFF(AC97STATE, uCodecModel);
 
     GEN_CHECK_SIZE(HDADRIVERSTREAM);
-    GEN_CHECK_OFF(HDADRIVERSTREAM, DestSource);
     GEN_CHECK_OFF(HDADRIVERSTREAM, pMixStrm);
 
     GEN_CHECK_SIZE(HDADRIVER);
