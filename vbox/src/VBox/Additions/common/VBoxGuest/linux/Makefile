@@ -1,4 +1,4 @@
-# $Id: Makefile 77403 2019-02-20 18:44:36Z vboxsync $
+# $Id: Makefile 77404 2019-02-20 19:57:07Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -151,10 +151,10 @@ VBOXMOD_INCL = \
 	$(VBOXGUEST_DIR)include \
 	$(VBOXGUEST_DIR)r0drv/linux
 
-ifeq ($(KERN_VERSION),24)
-VBOXMOD_CFLAGS =
-else
-VBOXMOD_CFLAGS = -Wno-declaration-after-statement -include $(VBOXGUEST_DIR)include/VBox/VBoxGuestMangling.h -fno-pie
+VBOXMOD_CFLAGS := $(call VBOX_GCC_CHECK_CC,-Wno-declaration-after-statement,-Wno-declaration-after-statement,,)
+VBOXMOD_CFLAGS += $(call VBOX_GCC_CHECK_CC,-fno-pie,-fno-pie,,)
+ifneq ($(KERN_VERSION),24)
+VBOXMOD_CFLAGS += -include $(VBOXGUEST_DIR)include/VBox/VBoxGuestMangling.h
 endif
 
 VBOXMOD_CLEAN = \
