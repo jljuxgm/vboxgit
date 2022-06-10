@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 76935 2019-01-22 12:18:08Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 76942 2019-01-22 18:46:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -1293,7 +1293,8 @@ void UIChooserItemMachine::paintMachineInfo(QPainter *pPainter, const QRect &rec
                                       m_toolsPixmap.width() / m_toolsPixmap.devicePixelRatio(),
                                       m_toolsPixmap.height() / m_toolsPixmap.devicePixelRatio());
         buttonRectangle.adjust(- iButtonMargin, -iButtonMargin, iButtonMargin, iButtonMargin);
-        const QPoint sceneCursorPosition = model()->scene()->views().first()->mapFromGlobal(QCursor::pos());
+        QGraphicsView *pView = model()->scene()->views().first();
+        const QPointF sceneCursorPosition = pView->mapToScene(pView->mapFromGlobal(QCursor::pos()));
         const QPoint itemCursorPosition = mapFromScene(sceneCursorPosition).toPoint();
 
         /* Paint flat button: */
