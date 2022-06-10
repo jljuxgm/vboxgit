@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 77447 2019-02-24 16:20:52Z vboxsync $ */
+/* $Id: FsPerf.cpp 77448 2019-02-24 16:42:10Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -2495,7 +2495,6 @@ void fsPerfMMap(RTFILE hFile1, RTFILE hFileNoCache, uint64_t cbFile)
 
         /* Memory map it read-write (no COW). */
 #ifdef RT_OS_WINDOWS
-        uint8_t *pbMapping = NULL;
         HANDLE hSection = CreateFileMapping((HANDLE)RTFileToNative(hFile2), NULL, PAGE_READWRITE, 0, sizeof(s_abContent), NULL);
         RTTESTI_CHECK_MSG(hSection  != NULL, ("last error %u\n", GetLastError));
         uint8_t *pbMapping = (uint8_t *)MapViewOfFile(hSection, FILE_MAP_WRITE, 0, 0, sizeof(s_abContent));
@@ -2961,7 +2960,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 77447 $";
+                char szRev[] = "$Revision: 77448 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
