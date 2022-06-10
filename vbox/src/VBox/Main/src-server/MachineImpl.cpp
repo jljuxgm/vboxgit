@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 77910 2019-03-27 11:33:01Z vboxsync $ */
+/* $Id: MachineImpl.cpp 78072 2019-04-10 10:04:06Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1946,7 +1946,8 @@ HRESULT Machine::getBIOSSettings(ComPtr<IBIOSSettings> &aBIOSSettings)
 
 HRESULT Machine::getRecordingSettings(ComPtr<IRecordingSettings> &aRecordingSettings)
 {
-    /* mRecordingSettings is constant during life time, no need to lock */
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
     aRecordingSettings = mRecordingSettings;
 
     return S_OK;
