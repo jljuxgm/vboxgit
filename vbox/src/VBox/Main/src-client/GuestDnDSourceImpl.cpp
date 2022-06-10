@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 78084 2019-04-10 12:34:03Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 78085 2019-04-10 12:46:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -1230,10 +1230,10 @@ int GuestDnDSource::i_receiveURIData(PRECVDATACTX pCtx, RTMSINTERVAL msTimeout)
     {
         rc = droppedFiles.OpenTemp(0 /* fFlags */);
         if (RT_FAILURE(rc))
+        {
+            LogRel(("DnD: Opening dropped files directory '%s' on the host failed with rc=%Rrc\n", droppedFiles.GetDirAbs(), rc));
             break;
-        LogFlowFunc(("rc=%Rrc, strDropDir=%s\n", rc, droppedFiles.GetDirAbs()));
-        if (RT_FAILURE(rc))
-            break;
+        }
 
         /*
          * Receive the URI list.
