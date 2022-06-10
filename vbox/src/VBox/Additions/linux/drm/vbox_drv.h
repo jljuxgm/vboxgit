@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: vbox_drv.h 76937 2019-01-22 16:39:05Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -236,8 +236,8 @@ struct vbox_connector {
 	char name[32];
 	struct vbox_crtc *vbox_crtc;
 	struct {
-		u16 width;
-		u16 height;
+		u32 width;
+		u32 height;
 		bool disconnected;
 	} mode_hint;
 };

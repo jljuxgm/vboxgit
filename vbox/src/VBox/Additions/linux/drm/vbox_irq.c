@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vbox_irq.c 76937 2019-01-22 16:39:05Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -158,8 +158,8 @@ static void vbox_update_mode_hints(struct vbox_private *vbox)
 
 		disconnected = !(hints->fEnabled);
 		crtc_id = vbox_conn->vbox_crtc->crtc_id;
-		vbox_conn->mode_hint.width = hints->cx & 0x8fff;
-		vbox_conn->mode_hint.height = hints->cy & 0x8fff;
+		vbox_conn->mode_hint.width = hints->cx;
+		vbox_conn->mode_hint.height = hints->cy;
 		vbox_conn->vbox_crtc->x_hint = hints->dx;
 		vbox_conn->vbox_crtc->y_hint = hints->dy;
 		vbox_conn->mode_hint.disconnected = disconnected;
