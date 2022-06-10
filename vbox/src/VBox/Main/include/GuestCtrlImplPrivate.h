@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 77079 2019-01-31 16:05:05Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 77116 2019-02-01 14:20:52Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -64,7 +64,6 @@ struct GuestCredentials
     Utf8Str                     mPassword;
     Utf8Str                     mDomain;
 };
-
 
 
 /**
@@ -223,7 +222,6 @@ public:
         return RTEnvApplyChanges(m_hEnv, rChanges.m_hEnv);
     }
 
-
     /**
      * See RTEnvQueryUtf8Block for details.
      * @returns IPRT status code.
@@ -290,7 +288,6 @@ public:
         }
         return rc;
     }
-
 
     /**
      * Get an environment variable.
