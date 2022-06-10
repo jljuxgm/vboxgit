@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 75830 2018-11-30 09:30:58Z vboxsync $ */
+/* $Id: EM.cpp 75831 2018-11-30 09:35:12Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2131,7 +2131,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                     && CPUMIsGuestInVmxNonRootMode(&pVCpu->cpum.GstCtx)
                     && CPUMIsGuestVmxVirtIntrEnabled(pVCpu, &pVCpu->cpum.GstCtx))
                 {
-                    /** @todo NSTVMX: virtual interrupt delivery. */
+                    /** @todo NSTVMX: virtual-interrupt delivery. */
                     rc2 = VINF_NO_CHANGE;
                 }
                 /* In SVM, physical interrupts take priority over virtual interrupts. */

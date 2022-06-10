@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 75830 2018-11-30 09:30:58Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 75831 2018-11-30 09:35:12Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2802,7 +2802,7 @@ VMM_INT_DECL(bool) CPUMIsGuestVmxPhysIntrEnabled(PVMCPU pVCpu, PCCPUMCTX pCtx)
 
 /**
  * Checks whether the VMX nested-guest is in a state to receive virtual interrupts
- * (those injected with the "virtual interrupt delivery" feature).
+ * (those injected with the "virtual-interrupt delivery" feature).
  *
  * @returns VBox status code.
  * @retval  true if it's ready, false otherwise.
