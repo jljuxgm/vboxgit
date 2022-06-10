@@ -1,4 +1,4 @@
-# $Id: .scm-settings 76571 2019-01-01 04:37:31Z vboxsync $
+# $Id: .scm-settings 76588 2019-01-01 06:38:09Z vboxsync $
 ## @file
 # Source code massager settings for the host HGCM services.
 #
@@ -15,5 +15,5 @@
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 #
 
-/*.h: --guard-relative-to-dir . --guard-prefix VBOX_INCLUDED_SRC_ --fix-header-guard-endif
+/*.h: --guard-relative-to-dir .
 

@@ -1,4 +1,4 @@
-# $Id: .scm-settings 76564 2019-01-01 03:57:14Z vboxsync $
+# $Id: .scm-settings 76588 2019-01-01 06:38:09Z vboxsync $
 ## @file
 # Source code massager settings for the Debugger.
 #
@@ -15,5 +15,5 @@
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 #
 
-/*.h: --guard-relative-to-dir . --guard-prefix DEBUGGER_INCLUDED_SRC_ --fix-header-guard-endif
+/*.h: --guard-relative-to-dir . --guard-prefix DEBUGGER_INCLUDED_SRC_
 

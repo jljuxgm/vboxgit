@@ -1,4 +1,4 @@
-# $Id: .scm-settings 76563 2019-01-01 03:53:56Z vboxsync $
+# $Id: .scm-settings 76588 2019-01-01 06:38:09Z vboxsync $
 ## @file
 # Source code massager settings for the Additions.
 #
@@ -15,7 +15,7 @@
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 #
 
-/*.h: --guard-relative-to-dir . --guard-prefix GA_INCLUDED_SRC_ --fix-header-guard-endif
+/*.h: --guard-relative-to-dir . --guard-prefix GA_INCLUDED_SRC_
 /3D/mesa/include/*.h:   --guard-relative-to-dir 3D/mesa/include --guard-prefix GA_INCLUDED_3D_MESA_
 /3D/win/include/*.h:    --guard-relative-to-dir 3D/win/include  --guard-prefix GA_INCLUDED_3D_WIN_
 /WINNT/include/*.h:     --guard-relative-to-dir WINNT/include   --guard-prefix GA_INCLUDED_WINNT_
