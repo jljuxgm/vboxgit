@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 76103 2018-12-10 11:01:56Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 76104 2018-12-10 11:03:44Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -1857,8 +1857,6 @@ DECLCALLBACK(int) VBoxDnDWorker(void *pInstance, bool volatile *pfShutdown)
         {
             if (pEvent)
             {
-                VbglR3DnDEventFree(pEvent->pVbglR3Event);
-
                 RTMemFree(pEvent);
                 pEvent = NULL;
             }
