@@ -1,4 +1,4 @@
-/** $Id: VBoxSFInternal.h 76146 2018-12-11 05:22:18Z vboxsync $ */
+/** $Id: VBoxSFInternal.h 76449 2018-12-25 00:58:28Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folder IFS, Internal Header.
  */
@@ -251,6 +251,7 @@ DECLASM(PVBOXSFVP) Fsh32GetVolParams(USHORT hVbp, PVPFSI *ppVpFsi /*optional*/);
  *
  * @{  */
 
+#include <iprt/err.h>
 
 /** Request structure for vboxSfOs2HostReqMapFolderWithBuf.  */
 typedef struct VBOXSFMAPFOLDERWITHBUFREQ
