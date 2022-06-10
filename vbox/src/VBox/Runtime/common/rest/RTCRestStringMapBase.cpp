@@ -1,4 +1,4 @@
-/* $Id: RTCRestStringMapBase.cpp 74023 2018-09-02 13:43:59Z vboxsync $ */
+/* $Id: RTCRestStringMapBase.cpp 74025 2018-09-02 14:14:43Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestStringMapBase implementation.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_REST
-#include <iprt/cpp/restbase.h>
+#include <iprt/cpp/reststringmap.h>
 
 #include <iprt/err.h>
 #include <iprt/string.h>

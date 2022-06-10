@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBase.cpp 74013 2018-08-31 20:57:59Z vboxsync $ */
+/* $Id: RTCRestClientApiBase.cpp 74025 2018-09-02 14:14:43Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_REST
-#include <iprt/cpp/restbase.h>
+#include <iprt/cpp/restclient.h>
 
 #include <iprt/err.h>
 #include <iprt/http.h>
