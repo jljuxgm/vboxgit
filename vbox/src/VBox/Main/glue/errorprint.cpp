@@ -1,4 +1,4 @@
-/* $Id: errorprint.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: errorprint.cpp 72943 2018-07-07 15:24:14Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -83,11 +83,10 @@ void GluePrintErrorContext(const char *pcszContext, const char *pcszSourceFile, 
 {
     // pcszSourceFile comes from __FILE__ macro, which always contains the full path,
     // which we don't want to see printed:
-    Utf8Str strFilename(RTPathFilename(pcszSourceFile));
     Utf8Str str = Utf8StrFmt("Context: \"%s\" at line %d of file %s\n",
                              pcszContext,
                              ulLine,
-                             strFilename.c_str());
+                             RTPathFilename(pcszSourceFile));
     // print and log
     RTMsgError("%s", str.c_str());
     Log(("%s", str.c_str()));
