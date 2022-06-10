@@ -1,4 +1,4 @@
-/* $Id: Defs.h 75513 2018-11-16 11:57:04Z vboxsync $ */
+/* $Id: Defs.h 75568 2018-11-19 11:52:10Z vboxsync $ */
 /** @file
  * DHCP server - common definitions
  */
@@ -26,12 +26,16 @@
 #include <memory>
 #include <vector>
 
+#ifdef _MSC_VER
+# define __func__ __FUNCTION__
+#endif
+
 typedef std::vector<uint8_t> octets_t;
 
 typedef std::map<uint8_t, octets_t> rawopts_t;
 
 class DhcpOption;
-typedef std::map<uint8_t, std::shared_ptr<DhcpOption>> optmap_t;
+typedef std::map<uint8_t, std::shared_ptr<DhcpOption> > optmap_t;
 
 inline bool operator==(const RTMAC &l, const RTMAC &r)
 {
