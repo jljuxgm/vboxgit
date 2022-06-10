@@ -1,4 +1,4 @@
-/* $Id: dbgmodnm.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: dbgmodnm.cpp 73494 2018-08-04 19:41:30Z vboxsync $ */
 /** @file
  * IPRT - Debug Map Reader For NM Like Mapfiles.
  */
@@ -53,6 +53,14 @@ typedef struct RTDBGMODNM
 /** Pointer to instance data NM map reader. */
 typedef RTDBGMODNM *PRTDBGMODNM;
 
+
+
+/** @interface_method_impl{RTDBGMODVTDBG,pfnUnwindFrame} */
+static DECLCALLBACK(int) rtDbgModNm_UnwindFrame(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off, PRTDBGUNWINDSTATE pState)
+{
+    RT_NOREF(pMod, iSeg, off, pState);
+    return VERR_DBG_NO_UNWIND_INFO;
+}
 
 
 /** @interface_method_impl{RTDBGMODVTDBG,pfnLineByAddr} */
@@ -554,6 +562,8 @@ DECL_HIDDEN_CONST(RTDBGMODVTDBG) const g_rtDbgModVtDbgNm =
     /*.pfnLineCount = */        rtDbgModNm_LineCount,
     /*.pfnLineByOrdinal = */    rtDbgModNm_LineByOrdinal,
     /*.pfnLineByAddr = */       rtDbgModNm_LineByAddr,
+
+    /*.pfnUnwindFrame = */      rtDbgModNm_UnwindFrame,
 
     /*.u32EndMagic = */         RTDBGMODVTDBG_MAGIC
 };

@@ -1,4 +1,4 @@
-/* $Id: dbgmoddeferred.cpp 73412 2018-07-31 16:50:04Z vboxsync $ */
+/* $Id: dbgmoddeferred.cpp 73494 2018-08-04 19:41:30Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Deferred Loading Stub.
  */
@@ -149,6 +149,17 @@ static int rtDbgModDeferredDoIt(PRTDBGMODINT pMod, bool fForcedRetry)
  * D e b u g   I n f o   M e t h o d s
  *
  */
+
+/** @interface_method_impl{RTDBGMODVTDBG,pfnUnwindFrame} */
+static DECLCALLBACK(int)
+rtDbgModDeferredDbg_UnwindFrame(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off, PRTDBGUNWINDSTATE pState)
+{
+    Assert(((PRTDBGMODDEFERRED)pMod->pvDbgPriv)->u32Magic == RTDBGMODDEFERRED_MAGIC);
+    int rc = rtDbgModDeferredDoIt(pMod, false /*fForceRetry*/);
+    if (RT_SUCCESS(rc))
+        rc = pMod->pDbgVt->pfnUnwindFrame(pMod, iSeg, off, pState);
+    return rc;
+}
 
 
 /** @interface_method_impl{RTDBGMODVTDBG,pfnLineByAddr} */
@@ -445,6 +456,8 @@ DECL_HIDDEN_CONST(RTDBGMODVTDBG) const g_rtDbgModVtDbgDeferred =
     /*.pfnLineByOrdinal = */    rtDbgModDeferredDbg_LineByOrdinal,
     /*.pfnLineByAddr = */       rtDbgModDeferredDbg_LineByAddr,
 
+    /*.pfnUnwindFrame = */      rtDbgModDeferredDbg_UnwindFrame,
+
     /*.u32EndMagic = */         RTDBGMODVTDBG_MAGIC
 };
 
@@ -458,6 +471,18 @@ DECL_HIDDEN_CONST(RTDBGMODVTDBG) const g_rtDbgModVtDbgDeferred =
  * I m a g e   M e t h o d s
  *
  */
+
+/** @interface_method_impl{RTDBGMODVTIMG,pfnUnwindFrame} */
+static DECLCALLBACK(int)
+rtDbgModDeferredImg_UnwindFrame(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off, PRTDBGUNWINDSTATE pState)
+{
+    Assert(((PRTDBGMODDEFERRED)pMod->pvImgPriv)->u32Magic == RTDBGMODDEFERRED_MAGIC);
+    int rc = rtDbgModDeferredDoIt(pMod, false /*fForceRetry*/);
+    if (RT_SUCCESS(rc))
+        rc = pMod->pImgVt->pfnUnwindFrame(pMod, iSeg, off, pState);
+    return rc;
+}
+
 
 /** @interface_method_impl{RTDBGMODVTIMG,pfnQueryProp} */
 static DECLCALLBACK(int)
@@ -637,6 +662,7 @@ DECL_HIDDEN_CONST(RTDBGMODVTIMG) const g_rtDbgModVtImgDeferred =
     /*.pfnGetFormat = */                rtDbgModDeferredImg_GetFormat,
     /*.pfnGetArch = */                  rtDbgModDeferredImg_GetArch,
     /*.pfnQueryProp = */                rtDbgModDeferredImg_QueryProp,
+    /*.pfnUnwindFrame = */              rtDbgModDeferredImg_UnwindFrame,
 
     /*.u32EndMagic = */                 RTDBGMODVTIMG_MAGIC
 };

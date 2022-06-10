@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 73494 2018-08-04 19:41:30Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -4524,6 +4524,14 @@ static int rtDwarfSyms_LoadAll(PRTDBGMODDWARF pThis)
  */
 
 
+/** @interface_method_impl{RTDBGMODVTDBG,pfnUnwindFrame} */
+static DECLCALLBACK(int) rtDbgModDwarf_UnwindFrame(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off, PRTDBGUNWINDSTATE pState)
+{
+    RT_NOREF(pMod, iSeg, off, pState);
+    return VERR_DBG_NO_UNWIND_INFO;
+}
+
+
 /** @interface_method_impl{RTDBGMODVTDBG,pfnLineByAddr} */
 static DECLCALLBACK(int) rtDbgModDwarf_LineByAddr(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off,
                                                   PRTINTPTR poffDisp, PRTDBGLINE pLineInfo)
@@ -4966,6 +4974,8 @@ DECL_HIDDEN_CONST(RTDBGMODVTDBG) const g_rtDbgModVtDbgDwarf =
     /*.pfnLineCount = */        rtDbgModDwarf_LineCount,
     /*.pfnLineByOrdinal = */    rtDbgModDwarf_LineByOrdinal,
     /*.pfnLineByAddr = */       rtDbgModDwarf_LineByAddr,
+
+    /*.pfnUnwindFrame = */      rtDbgModDwarf_UnwindFrame,
 
     /*.u32EndMagic = */         RTDBGMODVTDBG_MAGIC
 };

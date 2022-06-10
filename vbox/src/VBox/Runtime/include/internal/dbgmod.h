@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 73412 2018-07-31 16:50:04Z vboxsync $ */
+/* $Id: dbgmod.h 73494 2018-08-04 19:41:30Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -241,6 +241,25 @@ typedef struct RTDBGMODVTIMG
      * @sa      RTLdrQueryPropEx
      */
     DECLCALLBACKMEMBER(int, pfnQueryProp)(PRTDBGMODINT pMod, RTLDRPROP enmProp, void *pvBuf, size_t cbBuf, size_t *pcbRet);
+
+    /**
+     * Try use unwind information to unwind one frame.
+     *
+     * @returns IPRT status code.  Last informational status from stack reader callback.
+     * @retval  VERR_DBG_NO_UNWIND_INFO if the module contains no unwind information.
+     * @retval  VERR_DBG_UNWIND_INFO_NOT_FOUND if no unwind information was found
+     *          for the location given by iSeg:off.
+     *
+     * @param   pMod        Pointer to the module structure.
+     * @param   iSeg        The segment number of the program counter.
+     * @param   off         The offset into @a iSeg.  Together with @a iSeg
+     *                      this corresponds to the RTDBGUNWINDSTATE::uPc
+     *                      value pointed to by @a pState.
+     * @param   pState      The unwind state to work.
+     *
+     * @sa      RTLdrUnwindFrame, RTDbgModUnwindFrame
+     */
+    DECLCALLBACKMEMBER(int, pfnUnwindFrame)(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off, PRTDBGUNWINDSTATE pState);
 
     /** For catching initialization errors (RTDBGMODVTIMG_MAGIC). */
     uint32_t    u32EndMagic;
@@ -511,8 +530,27 @@ typedef struct RTDBGMODVTDBG
      * @param   pLineInfo   Where to store the information about the closest line
      *                      number.
      */
-    DECLCALLBACKMEMBER(int, pfnLineByAddr)(PRTDBGMODINT pMod, uint32_t iSeg, RTUINTPTR off, PRTINTPTR poffDisp, PRTDBGLINE pLineInfo);
+    DECLCALLBACKMEMBER(int, pfnLineByAddr)(PRTDBGMODINT pMod, uint32_t iSeg, RTUINTPTR off,
+                                           PRTINTPTR poffDisp, PRTDBGLINE pLineInfo);
 
+    /**
+     * Try use unwind information to unwind one frame.
+     *
+     * @returns IPRT status code.  Last informational status from stack reader callback.
+     * @retval  VERR_DBG_NO_UNWIND_INFO if the module contains no unwind information.
+     * @retval  VERR_DBG_UNWIND_INFO_NOT_FOUND if no unwind information was found
+     *          for the location given by iSeg:off.
+     *
+     * @param   pMod        Pointer to the module structure.
+     * @param   iSeg        The segment number of the program counter.
+     * @param   off         The offset into @a iSeg.  Together with @a iSeg
+     *                      this corresponds to the RTDBGUNWINDSTATE::uPc
+     *                      value pointed to by @a pState.
+     * @param   pState      The unwind state to work.
+     *
+     * @sa      RTDbgModUnwindFrame
+     */
+    DECLCALLBACKMEMBER(int, pfnUnwindFrame)(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off, PRTDBGUNWINDSTATE pState);
 
     /** For catching initialization errors (RTDBGMODVTDBG_MAGIC). */
     uint32_t    u32EndMagic;

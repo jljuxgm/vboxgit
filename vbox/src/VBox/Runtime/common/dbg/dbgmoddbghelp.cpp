@@ -1,4 +1,4 @@
-/* $Id: dbgmoddbghelp.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: dbgmoddbghelp.cpp 73494 2018-08-04 19:41:30Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader Using DbgHelp.dll if Present.
  */
@@ -64,6 +64,14 @@ typedef struct RTDBGMODBGHELPARGS
     /** Number of bytes pwszPrev points to. */
     size_t          cbPrevUtf16Alloc;
 } RTDBGMODBGHELPARGS;
+
+
+/** @interface_method_impl{RTDBGMODVTDBG,pfnUnwindFrame} */
+static DECLCALLBACK(int) rtDbgModDbgHelp_UnwindFrame(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off, PRTDBGUNWINDSTATE pState)
+{
+    RT_NOREF(pMod, iSeg, off, pState);
+    return VERR_DBG_NO_UNWIND_INFO;
+}
 
 
 
@@ -497,6 +505,8 @@ DECL_HIDDEN_CONST(RTDBGMODVTDBG) const g_rtDbgModVtDbgDbgHelp =
     /*.pfnLineCount = */        rtDbgModDbgHelp_LineCount,
     /*.pfnLineByOrdinal = */    rtDbgModDbgHelp_LineByOrdinal,
     /*.pfnLineByAddr = */       rtDbgModDbgHelp_LineByAddr,
+
+    /*.pfnUnwindFrame = */      rtDbgModDbgHelp_UnwindFrame,
 
     /*.u32EndMagic = */         RTDBGMODVTDBG_MAGIC
 };

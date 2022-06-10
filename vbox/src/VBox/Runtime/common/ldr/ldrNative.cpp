@@ -1,4 +1,4 @@
-/* $Id: ldrNative.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: ldrNative.cpp 73494 2018-08-04 19:41:30Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Native interface.
  */
@@ -85,6 +85,7 @@ static const RTLDROPS g_rtldrNativeOps =
     NULL,
     NULL,
     NULL,
+    NULL /*pfnUnwindFrame*/,
     42
 };
 
