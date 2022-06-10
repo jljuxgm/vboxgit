@@ -1,4 +1,4 @@
-/* $Id: file.cpp 78304 2019-04-26 01:19:49Z vboxsync $ */
+/* $Id: file.cpp 78321 2019-04-26 12:39:27Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver file routines.
  */
@@ -15,11 +15,17 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "vbsf.h"
 #include <iprt/fs.h>
 #include <iprt/mem.h>
 
 
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
 /* How much data to transfer in one HGCM request. */
 #define VBSF_MAX_READ_WRITE_PAGES 256
 

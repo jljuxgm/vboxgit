@@ -1,4 +1,4 @@
-/* $Id: net.cpp 78304 2019-04-26 01:19:49Z vboxsync $ */
+/* $Id: net.cpp 78321 2019-04-26 12:39:27Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver network redirector subsystem routines
  */
@@ -15,7 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "vbsf.h"
+
 
 NTSTATUS VBoxMRxUpdateNetRootState(IN OUT PMRX_NET_ROOT pNetRoot)
 {

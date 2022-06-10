@@ -1,4 +1,4 @@
-/* $Id: path.cpp 78304 2019-04-26 01:19:49Z vboxsync $ */
+/* $Id: path.cpp 78321 2019-04-26 12:39:27Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Path related routines.
  */
@@ -15,11 +15,18 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "vbsf.h"
 #include <iprt/err.h>
 
 
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
 static UNICODE_STRING g_UnicodeBackslash = { 2, 4, L"\\" };
+
 
 static NTSTATUS vbsfProcessCreate(PRX_CONTEXT RxContext,
                                   PUNICODE_STRING RemainingName,
