@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 72821 2018-07-03 11:57:53Z vboxsync $ */
+/* $Id: UIConverterBackend.h 73163 2018-07-16 17:21:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -234,24 +234,24 @@ template<> SHARED_LIBRARY_STUFF QString toString(const KNetworkAttachmentType &t
 template<> SHARED_LIBRARY_STUFF QString toString(const KNetworkAdapterType &type);
 template<> SHARED_LIBRARY_STUFF QString toString(const KNetworkAdapterPromiscModePolicy &policy);
 template<> SHARED_LIBRARY_STUFF QString toString(const KPortMode &mode);
+template<> SHARED_LIBRARY_STUFF KPortMode fromString<KPortMode>(const QString &strMode);
 template<> SHARED_LIBRARY_STUFF QString toString(const KUSBControllerType &type);
 template<> SHARED_LIBRARY_STUFF QString toString(const KUSBDeviceState &state);
 template<> SHARED_LIBRARY_STUFF QString toString(const KUSBDeviceFilterAction &action);
+template<> SHARED_LIBRARY_STUFF KUSBDeviceFilterAction fromString<KUSBDeviceFilterAction>(const QString &strAction);
 template<> SHARED_LIBRARY_STUFF QString toString(const KAudioDriverType &type);
+template<> SHARED_LIBRARY_STUFF KAudioDriverType fromString<KAudioDriverType>(const QString &strType);
 template<> SHARED_LIBRARY_STUFF QString toString(const KAudioControllerType &type);
+template<> SHARED_LIBRARY_STUFF KAudioControllerType fromString<KAudioControllerType>(const QString &strType);
 template<> SHARED_LIBRARY_STUFF QString toString(const KAuthType &type);
+template<> SHARED_LIBRARY_STUFF KAuthType fromString<KAuthType>(const QString &strType);
 template<> SHARED_LIBRARY_STUFF QString toString(const KStorageBus &bus);
 template<> SHARED_LIBRARY_STUFF QString toString(const KStorageControllerType &type);
+template<> SHARED_LIBRARY_STUFF KStorageControllerType fromString<KStorageControllerType>(const QString &strType);
 template<> SHARED_LIBRARY_STUFF QString toString(const KChipsetType &type);
 template<> SHARED_LIBRARY_STUFF QString toString(const KNATProtocol &protocol);
 template<> SHARED_LIBRARY_STUFF QString toInternalString(const KNATProtocol &protocol);
 template<> SHARED_LIBRARY_STUFF KNATProtocol fromInternalString<KNATProtocol>(const QString &strProtocol);
-template<> SHARED_LIBRARY_STUFF KPortMode fromString<KPortMode>(const QString &strMode);
-template<> SHARED_LIBRARY_STUFF KUSBDeviceFilterAction fromString<KUSBDeviceFilterAction>(const QString &strAction);
-template<> SHARED_LIBRARY_STUFF KAudioDriverType fromString<KAudioDriverType>(const QString &strType);
-template<> SHARED_LIBRARY_STUFF KAudioControllerType fromString<KAudioControllerType>(const QString &strType);
-template<> SHARED_LIBRARY_STUFF KAuthType fromString<KAuthType>(const QString &strType);
-template<> SHARED_LIBRARY_STUFF KStorageControllerType fromString<KStorageControllerType>(const QString &strType);
 
 
 #endif /* !___UIConverterBackend_h___ */
