@@ -1,4 +1,4 @@
-# $Id: Config.kmk 77767 2019-03-18 18:36:54Z vboxsync $
+# $Id: Config.kmk 77768 2019-03-18 18:42:08Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3515,8 +3515,8 @@ ifdef VBOX_SIGNING_MODE
    if $(intersects win all,$(VBOX_WITH_CORP_CODE_SIGNING))
     VBOX_SIGN_FILE_FN     = $(call VBOX_CCS_SIGN_CMD,driver$(if-expr "$3" == "/ph",_pagehash,),$1,$(dir $1),-digest_algo SHA1) \
         $(if-expr "$5" == "",\
-         $(if-expr "$6" == "",$(if-expr "$4" == "2",$$(NLTAB),$(NLTAB)),$6)$(call VBOX_CCS_SIGN_CMD,\
-          driver$(if-expr "$3" == "/ph",_pagehash,),$1,$(dir $1),-dual_sign -digest_algo SHA2))
+         $(if-expr "$6" == "",$(if-expr "$4" == "2",$$(NLTAB),$(NLTAB)),$6) \
+         $(call VBOX_CCS_SIGN_CMD,driver$(if-expr "$3" == "/ph",_pagehash,),$1,$(dir $1),-dual_sign -digest_algo SHA2))
    else ifdef VBOX_CERTIFICATE_SHA2_SUBJECT_NAME
     VBOX_SIGN_FILE_FN     = $(VBOX_SIGNTOOL) \
     	sign /fd sha1\
@@ -7682,7 +7682,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 77767 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 77768 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
