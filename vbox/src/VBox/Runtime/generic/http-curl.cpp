@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 74076 2018-09-05 08:27:18Z vboxsync $ */
+/* $Id: http-curl.cpp 74077 2018-09-05 09:05:45Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -3354,16 +3354,15 @@ RTR3DECL(const char *) RTHttpMethodName(RTHTTPMETHOD enmMethod)
 *   Callback APIs.                                                                                                               *
 *********************************************************************************************************************************/
 
-RTR3DECL(int) RTHttpSetDownloadProgressCallback(RTHTTP hHttp, PFNRTHTTPDOWNLDPROGRCALLBACK pfnDownloadProgress, void *pvUser)
+RTR3DECL(int) RTHttpSetDownloadProgressCallback(RTHTTP hHttp, PFNRTHTTPDOWNLDPROGRCALLBACK pfnCallback, void *pvUser)
 {
     PRTHTTPINTERNAL pThis = hHttp;
     RTHTTP_VALID_RETURN(pThis);
 
-    pThis->pfnDownloadProgress = pfnDownloadProgress;
+    pThis->pfnDownloadProgress    = pfnCallback;
     pThis->pvDownloadProgressUser = pvUser;
     return VINF_SUCCESS;
 }
-
 
 
 /** @todo questionable wrt calling convension */
