@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 73539 2018-08-07 09:51:47Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 73545 2018-08-07 12:30:02Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -832,14 +832,14 @@ bool DrvAudioHlpPCMPropsAreValid(const PPDMAUDIOPCMPROPS pProps)
                if (pProps->fSigned)
                    fValid = false;
                break;
-           case 2: /* 16 bit */
-               if (!pProps->fSigned)
-                   fValid = false;
-               break;
-           /** @todo Do we need support for 24 bit samples? */
-           case 4: /* 32 bit */
-               if (!pProps->fSigned)
-                   fValid = false;
+            case 2: /* 16 bit */
+                if (!pProps->fSigned)
+                    fValid = false;
+                break;
+            /** @todo Do we need support for 24 bit samples? */
+            case 4: /* 32 bit */
+                if (!pProps->fSigned)
+                    fValid = false;
                 break;
             default:
                 fValid = false;
