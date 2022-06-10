@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 73349 2018-07-25 10:14:30Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 73634 2018-08-13 12:25:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -151,7 +151,7 @@ QString UIWizardExportApp::uri(bool fWithFile) const
 {
     /* For Cloud Service Providers: */
     if (field("format").toString() == "csp-1.0")
-        return QString("OCI://%1").arg(field("profile").toString());
+        return QString("OCI://%1").arg(field("profileName").toString());
     else
     {
         /* Prepare storage path: */
