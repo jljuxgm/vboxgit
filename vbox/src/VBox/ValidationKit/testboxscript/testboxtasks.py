@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxtasks.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: testboxtasks.py 77165 2019-02-05 13:59:37Z vboxsync $
 
 """
 TestBox Script - Async Tasks.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 77165 $"
 
 
 # Standard python imports.
@@ -788,6 +788,24 @@ class TestBoxExecTask(TestBoxTestDriverTask):
             raise Exception('Failed to write "%s": %s' % (sPath, oXcpt));
         return True;
 
+    @staticmethod
+    def _environTxtContent():
+        """
+        Collects environment variables and values for the environ.txt stat file
+        (for external monitoring tool).
+        """
+        sText = '';
+        for sVar in [ 'TESTBOX_PATH_BUILDS',   'TESTBOX_PATH_RESOURCES', 'TESTBOX_PATH_SCRATCH',      'TESTBOX_PATH_SCRIPTS',
+                      'TESTBOX_PATH_UPLOAD',   'TESTBOX_HAS_HW_VIRT',    'TESTBOX_HAS_NESTED_PAGING', 'TESTBOX_HAS_IOMMU',
+                      'TESTBOX_SCRIPT_REV',    'TESTBOX_CPU_COUNT',      'TESTBOX_MEM_SIZE',          'TESTBOX_SCRATCH_SIZE',
+                      'TESTBOX_WITH_RAW_MODE', 'TESTBOX_WITH_RAW_MODE',  'TESTBOX_MANAGER_URL',       'TESTBOX_UUID',
+                      'TESTBOX_REPORTER',      'TESTBOX_NAME',           'TESTBOX_ID',                'TESTBOX_TEST_SET_ID',
+                      'TESTBOX_TIMEOUT',       'TESTBOX_TIMEOUT_ABS', ]:
+            sValue = os.environ.get(sVar);
+            if sValue:
+                sText += sVar + '=' + sValue + '\n';
+        return sText;
+
     def _saveState(self):
         """
         Saves the task state on disk so we can launch a TestBoxCleanupTask job
@@ -801,6 +819,7 @@ class TestBoxExecTask(TestBoxTestDriverTask):
             self._writeStateFile(os.path.join(sScriptState, 'result-id.txt'),      str(self._idResult));
             self._writeStateFile(os.path.join(sScriptState, 'testbox-id.txt'),     str(self._oTestBoxScript.getTestBoxId()));
             self._writeStateFile(os.path.join(sScriptState, 'testbox-name.txt'),   self._oTestBoxScript.getTestBoxName());
+            self._writeStateFile(os.path.join(sScriptState, 'environ.txt'),        self._environTxtContent());
         except Exception as oXcpt:
             self._log('Failed to write state: %s' % (oXcpt,));
             return False;
