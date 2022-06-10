@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 78074 2019-04-10 10:43:14Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 78077 2019-04-10 11:24:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -161,8 +161,6 @@ protected:
     QString providerShortName() const;
     /** Returns profile name. */
     QString profileName() const;
-    /** Returns Cloud Profile object. */
-    CCloudProfile profile() const;
     /** Returns Cloud Client parameters. */
     AbstractVSDParameterList cloudClientParameters() const;
 
@@ -240,8 +238,6 @@ class UIWizardExportAppPageBasic2 : public UIWizardPage, public UIWizardExportAp
     Q_PROPERTY(bool manifestSelected READ isManifestSelected WRITE setManifestSelected);
     Q_PROPERTY(bool includeISOsSelected READ isIncludeISOsSelected WRITE setIncludeISOsSelected);
     Q_PROPERTY(QString providerShortName READ providerShortName);
-    Q_PROPERTY(QString profileName READ profileName);
-    Q_PROPERTY(CCloudProfile profile READ profile);
     Q_PROPERTY(AbstractVSDParameterList cloudClientParameters READ cloudClientParameters);
 
 public:

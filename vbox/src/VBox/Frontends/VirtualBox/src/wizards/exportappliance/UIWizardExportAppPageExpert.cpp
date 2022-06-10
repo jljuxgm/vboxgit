@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 78074 2019-04-10 10:43:14Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 78077 2019-04-10 11:24:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -380,8 +380,6 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
     registerField("manifestSelected", this, "manifestSelected");
     registerField("includeISOsSelected", this, "includeISOsSelected");
     registerField("providerShortName", this, "providerShortName");
-    registerField("profileName", this, "profileName");
-    registerField("profile", this, "profile");
     registerField("cloudClientParameters", this, "cloudClientParameters");
     registerField("applianceWidget", this, "applianceWidget");
 }
@@ -525,15 +523,11 @@ bool UIWizardExportAppPageExpert::isComplete() const
                           || field("format").toString() == "ovf-2.0";
         const bool fCSP =    field("isFormatCloudOne").toBool();
 
-        const QString &strFile = field("path").toString().toLower();
-        const QString &strAccount = field("profileName").toString();
-        const AbstractVSDParameterList &parameters = field("cloudClientParameters").value<AbstractVSDParameterList>();
-
         fResult =    (   fOVF
-                      && VBoxGlobal::hasAllowedExtension(strFile, OVFFileExts))
+                      && VBoxGlobal::hasAllowedExtension(path().toLower(), OVFFileExts))
                   || (   fCSP
-                      && !strAccount.isNull()
-                      && !parameters.isEmpty());
+                      && !m_comCloudProfile.isNull()
+                      && !m_cloudClientParameters.isEmpty());
     }
 
     return fResult;
