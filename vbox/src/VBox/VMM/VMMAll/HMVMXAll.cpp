@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 75611 2018-11-20 11:20:25Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 76222 2018-12-14 05:14:39Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -383,7 +383,7 @@ VMM_INT_DECL(int) HMVmxGetHostMsrs(PVM pVM, PVMXMSRS pVmxMsrs)
         *pVmxMsrs = pVM->hm.s.vmx.Msrs;
         return VINF_SUCCESS;
     }
-    return VERR_VMX_NOT_SUPPORTED;
+    return VERR_VMX_NO_VMX;
 }
 
 
@@ -437,7 +437,7 @@ VMM_INT_DECL(int) HMVmxGetHostMsr(PVM pVM, uint32_t idMsr, uint64_t *puValue)
         }
         return VINF_SUCCESS;
     }
-    return VERR_VMX_NOT_SUPPORTED;
+    return VERR_VMX_NO_VMX;
 }
 
 
