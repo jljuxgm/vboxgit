@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 77812 2019-03-20 16:33:59Z vboxsync $ */
+/* $Id: UIChooserView.cpp 77813 2019-03-20 17:06:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -113,7 +113,7 @@ void UIChooserView::setSearchWidgetVisible(bool fVisible)
     if (!m_pSearchWidget)
         return;
 
-    /** Make sure keyboard focus is managed ccorectly. */
+    /* Make sure keyboard focus is managed ccorectly: */
     if (fVisible)
         m_pSearchWidget->setFocus();
     else
