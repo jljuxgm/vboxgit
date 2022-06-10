@@ -1,4 +1,4 @@
-/* $Id: file.cpp 78326 2019-04-26 14:45:38Z vboxsync $ */
+/* $Id: file.cpp 78329 2019-04-26 15:35:04Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver file routines.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
