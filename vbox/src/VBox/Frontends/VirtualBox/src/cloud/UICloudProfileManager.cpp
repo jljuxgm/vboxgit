@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 74993 2018-10-23 11:33:44Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 75014 2018-10-23 18:12:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -407,8 +407,9 @@ void UICloudProfileManagerWidget::sltImportCloudProfiles()
     UIItemCloudProvider *pProviderItem = static_cast<UIItemCloudProvider*>(m_pTreeWidget->currentItem());
     AssertMsgReturnVoid(pProviderItem, ("Current item must not be null!\n"));
 
-    /* Confirm cloud profile removal: */
-    if (!msgCenter().confirmCloudProfilesImport(this))
+    /* If there are profiles exist => confirm cloud profile import. */
+    if (   pProviderItem->childCount() != 0
+        && !msgCenter().confirmCloudProfilesImport(this))
         return;
 
     /* Get VirtualBox for further activities: */
