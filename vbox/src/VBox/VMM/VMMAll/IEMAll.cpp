@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 76275 2018-12-18 06:29:00Z vboxsync $ */
+/* $Id: IEMAll.cpp 76462 2018-12-25 04:29:39Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -100,6 +100,9 @@
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM
 # include <VBox/vmm/em.h>
 # include <VBox/vmm/hm_svm.h>
+#endif
+#ifdef VBOX_WITH_NESTED_HWVIRT_VMX
+# include <VBox/vmm/hmvmxinline.h>
 #endif
 #include <VBox/vmm/tm.h>
 #include <VBox/vmm/dbgf.h>
