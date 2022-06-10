@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 73069 2018-07-11 15:45:59Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -614,6 +614,9 @@ static DECLCALLBACK(int) drvHostOSSAudioGetConfig(PPDMIHOSTAUDIO pInterface, PPD
     }
     else
         LogRel(("OSS: No devices found, audio is not available\n"));
+
+    if (hFile != -1)
+        close(hFile);
 
     return VINF_SUCCESS;
 }
