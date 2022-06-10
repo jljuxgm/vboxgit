@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 73752 2018-08-18 04:04:56Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 73755 2018-08-18 04:49:35Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -915,6 +915,17 @@ IEM_CIMPL_DEF_1(iemCImpl_vmptrld, RTGCPTR, GCPtrVmcs)
     return iemVmxVmptrld(pVCpu, cbInstr, GCPtrVmcs, &ExitInstrInfo, GCPtrDisp);
 }
 
+
+/**
+ * Implements 'VMPTRST'.
+ */
+IEM_CIMPL_DEF_1(iemCImpl_vmptrst, RTGCPTR, GCPtrVmcs)
+{
+    RTGCPTR GCPtrDisp;
+    VMXEXITINSTRINFO ExitInstrInfo;
+    ExitInstrInfo.u = iemVmxGetExitInstrInfo(pVCpu, VMX_EXIT_VMPTRST, VMX_INSTR_ID_NONE, &GCPtrDisp);
+    return iemVmxVmptrst(pVCpu, cbInstr, GCPtrVmcs, &ExitInstrInfo, GCPtrDisp);
+}
 
 #endif
 
