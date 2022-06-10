@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 74276 2018-09-14 16:04:37Z vboxsync $ */
+/* $Id: tstRTCRest-1.cpp 74277 2018-09-14 16:08:36Z vboxsync $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -1883,7 +1883,7 @@ void testStringMap(void)
             RTTESTI_CHECK(MyRestInt16::s_cInstances == 11);
 
             RTTESTI_CHECK(Map2Copy1.remove("putNewValue") == true);
-            verifyMap(Map2Copy1, __LINE__, 4, "0x0001",1, "0x0002",2, "0x0000",0);
+            verifyMap(Map2Copy1, __LINE__, 4, "0x0001",1, "0x0002",2, "0x0000",0, "towel",42);
             RTTESTI_CHECK(MyRestInt16::s_cInstances == 10);
 
             RTTESTI_CHECK(Map2Copy1.remove("towel") == true);
