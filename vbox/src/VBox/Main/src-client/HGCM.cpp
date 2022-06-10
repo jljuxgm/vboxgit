@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 75773 2018-11-27 14:14:41Z vboxsync $ */
+/* $Id: HGCM.cpp 75774 2018-11-27 14:45:52Z vboxsync $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -1512,6 +1512,8 @@ int HGCMService::CreateAndConnectClient(uint32_t *pu32ClientIdOut, uint32_t u32C
             HGCMMsgSvcConnect *pMsg = (HGCMMsgSvcConnect *)pCoreMsg;
 
             pMsg->u32ClientId = handle;
+            pMsg->fRequestor = fRequestor;
+            pMsg->fRestoring = fRestoring;
 
             rc = hgcmMsgSend(pMsg);
 
