@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 75574 2018-11-19 14:31:44Z vboxsync $ */
+/* $Id: HGCM.cpp 75740 2018-11-26 15:59:11Z vboxsync $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -894,17 +894,21 @@ HGCMService::svcHlpStamRegisterV(void *pvInstance, void *pvSample, STAMTYPE enmT
 }
 
 
-static DECLCALLBACK(void) hgcmMsgCompletionCallback(int32_t result, HGCMMsgCore *pMsgCore)
+static DECLCALLBACK(int) hgcmMsgCompletionCallback(int32_t result, HGCMMsgCore *pMsgCore)
 {
     /* Call the VMMDev port interface to issue IRQ notification. */
     HGCMMsgHeader *pMsgHdr = (HGCMMsgHeader *)pMsgCore;
 
     LogFlow(("MAIN::hgcmMsgCompletionCallback: message %p\n", pMsgCore));
 
-    if (pMsgHdr->pHGCMPort && !g_fResetting)
+    if (pMsgHdr->pHGCMPort)
     {
-        pMsgHdr->pHGCMPort->pfnCompleted(pMsgHdr->pHGCMPort, g_fSaveState? VINF_HGCM_SAVE_STATE: result, pMsgHdr->pCmd);
+        if (!g_fResetting)
+            return pMsgHdr->pHGCMPort->pfnCompleted(pMsgHdr->pHGCMPort,
+                                                    g_fSaveState ? VINF_HGCM_SAVE_STATE : result, pMsgHdr->pCmd);
+        return VERR_ALREADY_RESET; /* best I could find. */
     }
+    return VERR_NOT_AVAILABLE;
 }
 
 /*
@@ -1722,7 +1726,7 @@ int HGCMService::HostCall(uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM
 
 #ifdef VBOX_WITH_CRHGSMI
 
-static DECLCALLBACK(void) hgcmMsgFastCallCompletionCallback(int32_t result, HGCMMsgCore *pMsgCore)
+static DECLCALLBACK(int) hgcmMsgFastCallCompletionCallback(int32_t result, HGCMMsgCore *pMsgCore)
 {
     /* Call the VMMDev port interface to issue IRQ notification. */
     LogFlow(("MAIN::hgcmMsgFastCallCompletionCallback: message %p\n", pMsgCore));
@@ -1730,6 +1734,7 @@ static DECLCALLBACK(void) hgcmMsgFastCallCompletionCallback(int32_t result, HGCM
     HGCMMsgHostFastCallAsyncSvc *pMsg = (HGCMMsgHostFastCallAsyncSvc *)pMsgCore;
     if (pMsg->pfnCompletion)
         pMsg->pfnCompletion(result, pMsg->u32Function, &pMsg->Param, pMsg->pvCompletion);
+    return VINF_SUCCESS;
 }
 
 int HGCMService::HandleAcquired()
