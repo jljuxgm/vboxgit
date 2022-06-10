@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 72855 2018-07-04 08:36:12Z vboxsync $ */
+/* $Id: HMInternal.h 72907 2018-07-05 03:55:29Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -566,8 +566,8 @@ typedef struct HM
         uint32_t                    u32AMDFeatureEDX;
     } cpuid;
 
-    /** Saved error from detection */
-    int32_t                 lLastError;
+    /** Last recorded error code during HM ring-0 init. */
+    int32_t                 rcInit;
 
     /** HMR0Init was run */
     bool                    fHMR0Init;
