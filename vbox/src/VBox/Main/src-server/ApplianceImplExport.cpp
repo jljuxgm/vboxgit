@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 73975 2018-08-30 10:34:16Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 74086 2018-09-05 16:21:43Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2385,6 +2385,8 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
     ComObjPtr<ICloudClient> cloudClient;
     hrc = ociProfile->CreateCloudClient(cloudClient.asOutParam());
 
+#ifndef VBOX_WITH_CLOUD_PROVIDERS_NO_COMMANDS
+
     //fills by values from m->m_OciExportData
     //mostly all names(keys) come from official OCI API documentation (see LaunchInstance description)
     SafeArray <BSTR> paramNames;
@@ -2467,11 +2469,22 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
 
         cloudClient.setNull();
     }
+#else
+    if (SUCCEEDED(hrc))
+    {
+        LogRel(("Appliance::i_writeFSOCI(): calling OCICloudClient::exportVM\n"));
+
+        if (m->virtualSystemDescriptions.size() == 1) {
+            cloudClient.exportVM(m->virtualSystemDescriptions.front(), pTask->pProgress);
+        } else {
+            //TODO: fail here
+        }
+    }
+#endif
 
     LogFlowFuncLeave();
     return hrc;
 }
-
 /**
  * Writes the Oracle Public Cloud appliance.
  *
