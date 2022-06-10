@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 77895 2019-03-27 02:14:16Z vboxsync $ */
+/* $Id: FsPerf.cpp 77908 2019-03-27 10:44:32Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -67,7 +67,9 @@
 #  include <sys/mman.h>
 #  include <sys/uio.h>
 # endif
-# include <sys/sendfile.h>
+# ifdef RT_OS_LINUX
+#  include <sys/sendfile.h>
+# endif
 #endif
 
 
@@ -3829,7 +3831,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 77895 $";
+                char szRev[] = "$Revision: 77908 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
