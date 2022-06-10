@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 74914 2018-10-18 12:06:17Z vboxsync $ */
+/* $Id: UIActionPool.cpp 74951 2018-10-19 16:53:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -1178,6 +1178,8 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "&Preferences...", "global preferences window"));
         setStatusTip(QApplication::translate("UIActionPool", "Display the global preferences window"));
+        setToolTip(text().remove('&').remove('.') +
+                   (shortcut().toString().isEmpty() ? "" : QString(" (%1)").arg(shortcut().toString())));
     }
 };
 
