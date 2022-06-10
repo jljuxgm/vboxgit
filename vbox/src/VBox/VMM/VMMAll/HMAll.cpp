@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 78245 2019-04-22 11:17:22Z vboxsync $ */
+/* $Id: HMAll.cpp 78253 2019-04-23 04:17:43Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -738,36 +738,6 @@ VMM_INT_DECL(bool) HMSetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable)
     pVCpu->hm.s.fSingleInstruction = fEnable;
     pVCpu->hm.s.fUseDebugLoop = fEnable || pVM->hm.s.fUseDebugLoop;
     return fOld;
-}
-
-
-/**
- * Notifies HM that GIM provider wants to trap \#UD.
- *
- * @param   pVCpu   The cross context virtual CPU structure.
- */
-VMM_INT_DECL(void) HMTrapXcptUDForGIMEnable(PVMCPU pVCpu)
-{
-    pVCpu->hm.s.fGIMTrapXcptUD = true;
-    if (pVCpu->CTX_SUFF(pVM)->hm.s.vmx.fSupported)
-        ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_VMX_GUEST_XCPT_INTERCEPTS);
-    else
-        ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_SVM_GUEST_XCPT_INTERCEPTS);
-}
-
-
-/**
- * Notifies HM that GIM provider no longer wants to trap \#UD.
- *
- * @param   pVCpu   The cross context virtual CPU structure.
- */
-VMM_INT_DECL(void) HMTrapXcptUDForGIMDisable(PVMCPU pVCpu)
-{
-    pVCpu->hm.s.fGIMTrapXcptUD = false;
-    if (pVCpu->CTX_SUFF(pVM)->hm.s.vmx.fSupported)
-        ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_VMX_GUEST_XCPT_INTERCEPTS);
-    else
-        ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_SVM_GUEST_XCPT_INTERCEPTS);
 }
 
 
