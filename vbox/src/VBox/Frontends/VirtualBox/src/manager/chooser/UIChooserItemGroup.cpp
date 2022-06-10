@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 74393 2018-09-20 17:05:11Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 74597 2018-10-03 14:28:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -857,8 +857,10 @@ void UIChooserItemGroup::updateLayout()
             pItem->resize(iWidth, iMinimumHeight);
             /* Relayout group: */
             pItem->updateLayout();
-            /* Update indent for next items: */
-            iPreviousVerticalIndent += (iMinimumHeight + iChildrenSpacing);
+            /* Advance indent for next items: */
+            iPreviousVerticalIndent += iMinimumHeight;
+            if (pItem->type() != UIChooserItemType_Global)
+                iPreviousVerticalIndent += iChildrenSpacing;
         }
     }
 }
@@ -1460,7 +1462,11 @@ int UIChooserItemGroup::minimumHeightHintForGroup(bool fGroupOpened) const
         {
             /* And every existing child height: */
             foreach (UIChooserItem *pItem, items())
-                iProposedHeight += (pItem->minimumHeightHint() + iChildrenSpacing);
+            {
+                iProposedHeight += pItem->minimumHeightHint();
+                if (pItem->type() != UIChooserItemType_Global)
+                    iProposedHeight += iChildrenSpacing;
+            }
         }
         /* Minus last spacing: */
         iProposedHeight -= iChildrenSpacing;
