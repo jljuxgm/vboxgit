@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 73728 2018-08-17 08:14:49Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 73952 2018-08-29 13:31:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -118,8 +118,6 @@ void UIWizardExportAppPage2::populateAccounts()
 
     /* Acquire provider list: */
     QVector<CCloudProvider> comProviders = m_comCloudProviderManager.GetProviders();
-    /* Make sure at least one provider is supported: */
-    AssertReturnVoid(!comProviders.isEmpty());
 
     /* Iterate through providers: */
     foreach (const CCloudProvider &comProvider, comProviders)
