@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 73529 2018-08-06 16:26:43Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 73680 2018-08-15 06:39:12Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -2448,24 +2448,26 @@ static DECLCALLBACK(uint32_t) drvHostCoreAudioStreamGetWritable(PPDMIHOSTAUDIO p
 
     PCOREAUDIOSTREAM pCAStream = (PCOREAUDIOSTREAM)pStream;
 
-    if (ASMAtomicReadU32(&pCAStream->enmStatus) != COREAUDIOSTATUS_INIT)
-        return 0;
+    uint32_t cbWritable = 0;
 
-    AssertPtr(pCAStream->pCfg);
-    AssertPtr(pCAStream->pCircBuf);
-
-    switch (pCAStream->pCfg->enmDir)
+    if (ASMAtomicReadU32(&pCAStream->enmStatus) == COREAUDIOSTATUS_INIT)
     {
-        case PDMAUDIODIR_OUT:
-            return (uint32_t)RTCircBufFree(pCAStream->pCircBuf);
+        AssertPtr(pCAStream->pCfg);
+        AssertPtr(pCAStream->pCircBuf);
 
-        case PDMAUDIODIR_IN:
-        default:
-            AssertFailed();
-            break;
+        switch (pCAStream->pCfg->enmDir)
+        {
+            case PDMAUDIODIR_OUT:
+                cbWritable = (uint32_t)RTCircBufFree(pCAStream->pCircBuf);
+                break;
+
+            default:
+                break;
+        }
     }
 
-    return 0;
+    LogFlowFunc(("cbWritable=%RU32\n", cbWritable));
+    return cbWritable;
 }
 
 
