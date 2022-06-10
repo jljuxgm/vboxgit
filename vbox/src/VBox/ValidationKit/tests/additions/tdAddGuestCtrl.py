@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77477 $"
+__version__ = "$Revision: 77478 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -3113,10 +3113,10 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                             self.oTstDrv.txsDownloadFiles(oSession, oTxsSession, aGstFiles, fIgnoreErrors = True);
 
                             # Create files with buffer contents and upload those for later (manual) inspection.
-                            self.uploadLogData(self.oTstDrv, curRes.aBuf, ('testGuestCtrlWriteTest%d-BufExcepted' % i),
-                                                                          ('Test #%d: Expected buffer' % i));
-                            self.uploadLogData(self.oTstDrv, aBufRead,    ('testGuestCtrlWriteTest%d-BufGot' % i),
-                                                                          ('Test #%d: Got buffer' % i));
+                            curTest.uploadLogData(self.oTstDrv, curRes.aBuf, ('testGuestCtrlWriteTest%d-BufExcepted' % i),
+                                                                             ('Test #%d: Expected buffer' % i));
+                            curTest.uploadLogData(self.oTstDrv, aBufRead,    ('testGuestCtrlWriteTest%d-BufGot' % i),
+                                                                             ('Test #%d: Got buffer' % i));
                             fRc = False;
                 # Test final offset.
                 curOffset = long(curFile.offset);
