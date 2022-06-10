@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 76483 2018-12-26 04:14:43Z vboxsync $ */
+/* $Id: HMInternal.h 76489 2018-12-27 05:12:31Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -571,22 +571,22 @@ typedef struct HM
      * AVL tree with all patches (active or disabled) sorted by guest instruction
      * address.
      */
-    AVLOU32TREE                     PatchTree;
-    uint32_t                        cPatches;
-    HMTPRPATCH                      aPatches[64];
+    AVLOU32TREE                 PatchTree;
+    uint32_t                    cPatches;
+    HMTPRPATCH                  aPatches[64];
 
     /** Last recorded error code during HM ring-0 init. */
-    int32_t                 rcInit;
+    int32_t                     rcInit;
 
     /** HMR0Init was run */
-    bool                    fHMR0Init;
-    bool                    u8Alignment1[3];
+    bool                        fHMR0Init;
+    bool                        u8Alignment1[3];
 
-    STAMCOUNTER             StatTprPatchSuccess;
-    STAMCOUNTER             StatTprPatchFailure;
-    STAMCOUNTER             StatTprReplaceSuccessCr8;
-    STAMCOUNTER             StatTprReplaceSuccessVmc;
-    STAMCOUNTER             StatTprReplaceFailure;
+    STAMCOUNTER                 StatTprPatchSuccess;
+    STAMCOUNTER                 StatTprPatchFailure;
+    STAMCOUNTER                 StatTprReplaceSuccessCr8;
+    STAMCOUNTER                 StatTprReplaceSuccessVmc;
+    STAMCOUNTER                 StatTprReplaceFailure;
 } HM;
 /** Pointer to HM VM instance data. */
 typedef HM *PHM;
