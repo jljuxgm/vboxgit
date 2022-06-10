@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 75199 2018-10-31 09:03:20Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 75215 2018-11-01 03:48:26Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -11939,7 +11939,7 @@ HMVMX_EXIT_DECL hmR0VmxExitRdmsr(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
     rc    |= HMVMX_CPUMCTX_IMPORT_STATE(pVCpu, IEM_CPUMCTX_EXTRN_EXEC_DECODED_NO_MEM_MASK | CPUMCTX_EXTRN_ALL_MSRS);
     switch (idMsr)
     {
-        /* The FS and GS base MSRs are not part of the above all MSRs mask. */
+        /* The FS and GS base MSRs are not part of the above all-MSRs mask. */
         case MSR_K8_FS_BASE: rc |= HMVMX_CPUMCTX_IMPORT_STATE(pVCpu, CPUMCTX_EXTRN_FS); break;
         case MSR_K8_GS_BASE: rc |= HMVMX_CPUMCTX_IMPORT_STATE(pVCpu, CPUMCTX_EXTRN_GS); break;
     }
@@ -12006,7 +12006,7 @@ HMVMX_EXIT_DECL hmR0VmxExitWrmsr(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
     switch (idMsr)
     {
         /*
-         * The FS and GS base MSRs are not part of the above all MSRs mask.
+         * The FS and GS base MSRs are not part of the above all-MSRs mask.
          *
          * Although we don't need to fetch the base as it will be overwritten shortly, while
          * loading guest-state we would also load the entire segment register including limit
