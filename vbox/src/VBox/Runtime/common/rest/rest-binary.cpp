@@ -1,4 +1,4 @@
-/* $Id: rest-binary.cpp 74142 2018-09-07 13:29:43Z vboxsync $ */
+/* $Id: rest-binary.cpp 74143 2018-09-07 13:32:11Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestBinary and Descendants.
  */
@@ -232,7 +232,7 @@ const char *RTCRestBinary::typeName(void) const
 
 
 /** Factory method. */
-static DECLCALLBACK(RTCRestObjectBase *) createInstance(void)
+/*static*/ DECLCALLBACK(RTCRestObjectBase *) RTCRestBinary::createInstance(void)
 {
     return new (std::nothrow) RTCRestBinary();
 }
