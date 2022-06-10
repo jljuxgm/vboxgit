@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.h 77528 2019-03-01 13:07:07Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.h 77647 2019-03-11 10:43:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlTreeItem class declaration.
  */
@@ -26,6 +26,7 @@
 #include "UIMainEventListener.h"
 
 /* COM includes: */
+#include "COMEnums.h"
 #include "CEventListener.h"
 #include "CGuestSession.h"
 
@@ -46,6 +47,7 @@ public:
     UIGuestControlTreeItem(QITreeWidget *pTreeWidget, const QStringList &strings = QStringList());
     UIGuestControlTreeItem(UIGuestControlTreeItem *pTreeWidgetItem, const QStringList &strings = QStringList());
     virtual ~UIGuestControlTreeItem();
+    virtual QString propertyString() const = 0;
 
 private slots:
 
@@ -87,6 +89,8 @@ public:
     virtual ~UIGuestSessionTreeItem();
     const CGuestSession& guestSession() const;
     void errorString(QString strError);
+    KGuestSessionStatus status() const;
+    virtual QString propertyString() const /* override */;
 
 protected:
 
@@ -127,7 +131,8 @@ public:
     UIGuestProcessTreeItem(UIGuestControlTreeItem *pTreeWidgetItem, CGuestProcess& guestProcess, const QStringList &strings = QStringList());
     const CGuestProcess& guestProcess() const;
     virtual ~UIGuestProcessTreeItem();
-
+    KProcessStatus status() const;
+    virtual QString propertyString() const /* override */;
 
 protected:
 

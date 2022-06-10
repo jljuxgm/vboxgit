@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 77594 2019-03-07 12:03:54Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 77647 2019-03-11 10:43:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -238,9 +238,16 @@ void UIVMInformationDialog::prepareTabWidget()
             m_tabs.insert(1, pInformationRuntimeWidget);
             m_pTabWidget->addTab(m_tabs.value(1), QString());
         }
-
+        QString strMachineName;
+        if (m_pMachineWindow && m_pMachineWindow->console().isOk())
+        {
+            CMachine comMachine = m_pMachineWindow->console().GetMachine();
+            if (comMachine.isOk())
+                strMachineName = comMachine.GetName();
+        }
         UIGuestProcessControlWidget *pGuestProcessControlWidget =
-            new UIGuestProcessControlWidget(EmbedTo_Dialog, m_pMachineWindow->console().GetGuest(), this, false /* fShowToolbar */);
+            new UIGuestProcessControlWidget(EmbedTo_Dialog, m_pMachineWindow->console().GetGuest(),
+                                            this, strMachineName, false /* fShowToolbar */);
 
         if (pGuestProcessControlWidget)
         {

@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlDialog.cpp 77584 2019-03-06 15:28:19Z vboxsync $ */
+/* $Id: UIGuestProcessControlDialog.cpp 77647 2019-03-11 10:43:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlDialog class implementation.
  */
@@ -82,7 +82,7 @@ void UIGuestProcessControlDialog::configure()
 void UIGuestProcessControlDialog::configureCentralWidget()
 {
     /* Create widget: */
-    UIGuestProcessControlWidget *pWidget = new UIGuestProcessControlWidget(EmbedTo_Dialog, m_comGuest, this);
+    UIGuestProcessControlWidget *pWidget = new UIGuestProcessControlWidget(EmbedTo_Dialog, m_comGuest, this, m_strMachineName);
 
     if (pWidget)
     {

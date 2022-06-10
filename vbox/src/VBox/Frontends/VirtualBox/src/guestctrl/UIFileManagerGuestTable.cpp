@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 77279 2019-02-12 14:47:36Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 77647 2019-03-11 10:43:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -541,7 +541,7 @@ void UIFileManagerGuestTable::showProperties()
     if (fsPropertyString.isEmpty())
         return;
 
-    m_pPropertiesDialog = new UIPropertiesDialog();
+    m_pPropertiesDialog = new UIPropertiesDialog(this);
     if (!m_pPropertiesDialog)
         return;
 
