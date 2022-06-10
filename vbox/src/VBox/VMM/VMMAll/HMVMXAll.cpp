@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 74163 2018-09-09 15:51:39Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 74164 2018-09-09 15:52:31Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -391,7 +391,7 @@ VMM_INT_DECL(int) HMVmxGetHostMsr(PVM pVM, uint32_t idMsr, uint64_t *puValue)
  * Gets the description of a VMX instruction/Vm-exit diagnostic.
  *
  * @returns The descriptive string.
- * @param   enmInstrDiag    The VMX instruction diagnostic.
+ * @param   enmDiag    The VMX diagnostic.
  */
 VMM_INT_DECL(const char *) HMVmxGetDiagDesc(VMXVDIAG enmDiag)
 {
