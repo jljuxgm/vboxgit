@@ -1,4 +1,4 @@
-/* $Id: display-svga.cpp 70126 2017-12-14 11:14:08Z vboxsync $ */
+/* $Id: display-svga.cpp 75961 2018-12-05 09:34:44Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to drm guest
  * driver.
@@ -231,8 +231,14 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
         {
             if (afEnabled[i])
             {
-                aRects[cHeads].x = (int32_t)adx[i];
-                aRects[cHeads].y = (int32_t)ady[i];
+                if ((i == 0) || (adx[i] || ady[i]))
+                {
+                    aRects[cHeads].x = (int32_t)adx[i];
+                    aRects[cHeads].y = (int32_t)ady[i];
+                } else {
+                    aRects[cHeads].x = (int32_t)(adx[i - 1] + acx[i - 1]);
+                    aRects[cHeads].y = (int32_t)ady[i - 1];
+                }
                 aRects[cHeads].w = acx[i];
                 aRects[cHeads].h = acy[i];
                 ++cHeads;
