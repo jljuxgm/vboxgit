@@ -1,4 +1,4 @@
-/* $Id: RTCRestArrayBase.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
+/* $Id: RTCRestArrayBase.cpp 73978 2018-08-30 13:19:36Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestArrayBase implementation.
  */
@@ -178,6 +178,8 @@ int RTCRestArrayBase::deserializeFromJson(RTCRestJsonCursor const &a_rCursor)
 
         RTJsonIteratorFree(hIterator);
     }
+    else if (rcRet == VERR_JSON_IS_EMPTY)
+        rcRet = VINF_SUCCESS;
     else
         rcRet = a_rCursor.m_pPrimary->addError(a_rCursor, rcRet, "RTJsonIteratorBeginArray failed: %Rrc", rcRet);
     return rcRet;

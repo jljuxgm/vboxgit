@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientRequestBase.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
+/* $Id: RTCRestClientRequestBase.cpp 73978 2018-08-30 13:19:36Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientRequestBase implementation.
  */
@@ -108,6 +108,32 @@ int RTCRestClientRequestBase::doPathParameters(RTCString *a_pStrPath, const char
                     a_paPathParams[j].offName += cchAdjust;
     }
 
+    return VINF_SUCCESS;
+}
+
+
+int RTCRestClientRequestBase::doQueryParameters(RTCString *a_pStrQuery, QUERYPARAMDESC const *a_paQueryParams,
+                                                RTCRestObjectBase const **a_papQueryParamObjs, size_t a_cQueryParams) const
+{
+    RTCString strTmpVal;
+    char chSep = a_pStrQuery->isEmpty() ? '?' : '&';
+    for (size_t i = 0; i < a_cQueryParams; i++)
+    {
+        if ((a_paQueryParams[i].fFlags & RTCRestObjectBase::kCollectionFormat_Mask) != RTCRestObjectBase::kCollectionFormat_multi)
+        {
+            int rc = a_papQueryParamObjs[i]->toString(&strTmpVal, a_paQueryParams[i].fFlags);
+            AssertRCReturn(rc, rc);
+
+            rc = a_pStrQuery->appendPrintfNoThrow("%c%RMpq=%RMpq", chSep, a_paQueryParams[i].pszName, strTmpVal.c_str());
+            AssertRCReturn(rc, rc);
+
+            chSep = '&';
+        }
+        else
+        {
+            AssertFailedReturn(VERR_NOT_IMPLEMENTED);
+        }
+    }
     return VINF_SUCCESS;
 }
 

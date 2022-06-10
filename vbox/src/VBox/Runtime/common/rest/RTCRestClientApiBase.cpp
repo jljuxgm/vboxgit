@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBase.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
+/* $Id: RTCRestClientApiBase.cpp 73978 2018-08-30 13:19:36Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation.
  */
@@ -116,10 +116,8 @@ void RTCRestClientApiBase::doCall(RTCRestClientRequestBase const &a_rRequest, RT
                 }
                 if (strQuery.isNotEmpty())
                 {
-                    if (RT_SUCCESS(rc))
-                        rc = strFullUrl.appendNoThrow('?');
-                    if (RT_SUCCESS(rc))
-                        rc = strFullUrl.appendNoThrow(strQuery);
+                    Assert(strQuery.startsWith("?"));
+                    rc = strFullUrl.appendNoThrow(strQuery);
                     strQuery.setNull();
                 }
                 if (RT_SUCCESS(rc))
