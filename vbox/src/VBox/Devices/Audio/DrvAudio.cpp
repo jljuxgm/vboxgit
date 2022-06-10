@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 76686 2019-01-07 16:45:48Z vboxsync $ */
+/* $Id: DrvAudio.cpp 76697 2019-01-08 09:51:38Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1441,6 +1441,20 @@ static DECLCALLBACK(int) drvAudioStreamPlay(PPDMIAUDIOCONNECTOR pInterface,
         Log3Func(("[%s] Last played %RU64ns (%RU64ms), filled with %RU64ms (%RU8%%) total (fThresholdReached=%RTbool)\n",
                   pStream->szName, tsDeltaPlayedCapturedNs, tsDeltaPlayedCapturedNs / RT_NS_1MS_64,
                   DrvAudioHlpFramesToMilli(cfLive, &pStream->Host.Cfg.Props), uLivePercent, pStream->fThresholdReached));
+
+        /* Has the treshold been reached (e.g. are we in playing stage) and we now have less live samples
+         * then time which has been passed? Then enter the buffering stage again. */
+        if (   pStream->fThresholdReached
+            && cfLive < cfPassedReal)
+        {
+            LogRel2(("Audio: Buffer underrun for stream '%s' occurred (%RU64ms passed but only %RU64ms in buffer)\n",
+                     pStream->szName,
+                     DrvAudioHlpFramesToMilli(cfPassedReal, &pStream->Host.Cfg.Props),
+                     DrvAudioHlpFramesToMilli(cfLive, &pStream->Host.Cfg.Props)));
+
+            /* Enter buffering stage again. */
+            pStream->fThresholdReached = false;
+        }
 
         bool fDoPlay      = pStream->fThresholdReached;
         bool fJustStarted = false;
