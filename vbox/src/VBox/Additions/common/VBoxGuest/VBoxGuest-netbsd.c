@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 76444 2018-12-24 15:58:06Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 76445 2018-12-24 16:01:51Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -64,6 +64,7 @@
 #endif
 #include "VBoxGuestInternal.h"
 #include <VBox/log.h>
+#include <iprt/err.h>
 #include <iprt/assert.h>
 #include <iprt/initterm.h>
 #include <iprt/process.h>
