@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 75121 2018-10-27 14:27:30Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 75122 2018-10-27 17:53:48Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -1390,7 +1390,8 @@ static void vboxNetLwfWinDestroySG(PINTNETSG pSG)
 
 /**
  * Worker for vboxNetLwfWinNBtoSG() that gets the max segment count needed.
- * @note  vboxNetLwfWinNBtoSG may use fewer depending on cbPacket and offset!
+ * @note vboxNetLwfWinNBtoSG may use fewer depending on cbPacket and offset!
+ * @note vboxNetAdpWinCalcSegments() is a copy of this code.
  */
 DECLINLINE(ULONG) vboxNetLwfWinCalcSegments(PNET_BUFFER pNetBuf)
 {
@@ -1598,6 +1599,9 @@ static PNET_BUFFER_LIST vboxNetLwfWinSGtoNB(PVBOXNETLWF_MODULE pModule, PINTNETS
     return pBufList;
 }
 
+/**
+ * @note vboxNetAdpWinNBtoSG() is a copy of this code.
+ */
 static PINTNETSG vboxNetLwfWinNBtoSG(PVBOXNETLWF_MODULE pModule, PNET_BUFFER pNetBuf)
 {
     ULONG cbPacket = NET_BUFFER_DATA_LENGTH(pNetBuf);
