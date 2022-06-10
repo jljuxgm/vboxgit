@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 73832 2018-08-22 15:24:59Z vboxsync $ */
+/* $Id: http-curl.cpp 73834 2018-08-22 15:51:01Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -2178,7 +2178,9 @@ static int rtHttpGetCalcStatus(PRTHTTPINTERNAL pThis, int rcCurl)
 /**
  * cURL callback for reporting progress, we use it for checking for abort.
  */
-static int rtHttpProgress(void *pData, double rdTotalDownload, double rdDownloaded, double rdTotalUpload, double rdUploaded)
+static int rtHttpProgress(void *pData,
+                          curl_off_t rdTotalDownload, curl_off_t rdDownloaded,
+                          curl_off_t rdTotalUpload, curl_off_t rdUploaded)
 {
     PRTHTTPINTERNAL pThis = (PRTHTTPINTERNAL)pData;
     AssertReturn(pThis->u32Magic == RTHTTP_MAGIC, 1);
@@ -2256,10 +2258,10 @@ static int rtHttpApplySettings(PRTHTTPINTERNAL pThis, const char *pszUrl)
     /*
      * Progress/abort.
      */
-    rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_PROGRESSFUNCTION, &rtHttpProgress);
+    rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_XFERINFOFUNCTION, &rtHttpProgress);
     if (CURL_FAILURE(rcCurl))
         return VERR_HTTP_CURL_ERROR;
-    rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_PROGRESSDATA, (void *)pThis);
+    rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_XFERINFODATA, (void *)pThis);
     if (CURL_FAILURE(rcCurl))
         return VERR_HTTP_CURL_ERROR;
     rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_NOPROGRESS, (long)0);
