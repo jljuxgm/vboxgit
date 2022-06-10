@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74685 2018-10-08 15:31:17Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74718 2018-10-09 13:48:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -378,7 +378,7 @@ void UIVirtualBoxManagerWidget::prepare()
 #ifdef VBOX_WS_MAC
     const QColor color = pal.color(QPalette::Active, QPalette::Mid).lighter(145);
 #else
-    const QColor color = pal.color(QPalette::Active, QPalette::Mid).lighter(155);
+    const QColor color = pal.color(QPalette::Active, QPalette::Mid).lighter(160);
 #endif
     pal.setColor(QPalette::Window, color);
     setPalette(pal);

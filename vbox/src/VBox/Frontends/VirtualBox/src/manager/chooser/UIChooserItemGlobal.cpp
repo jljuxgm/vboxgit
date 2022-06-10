@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 74688 2018-10-08 16:24:12Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 74718 2018-10-09 13:48:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -618,7 +618,7 @@ void UIChooserItemGlobal::paintBackground(QPainter *pPainter, const QRect &recta
         pPainter->fillRect(rectangle, bgGrad);
 #else
         /* Prepare color: */
-        QColor backgroundColor = pal.color(QPalette::Active, QPalette::Mid).lighter(155);
+        QColor backgroundColor = pal.color(QPalette::Active, QPalette::Mid).lighter(160);
         /* Draw gradient: */
         pPainter->fillRect(rectangle, backgroundColor);
 #endif
