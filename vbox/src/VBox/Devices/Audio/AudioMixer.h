@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 73039 2018-07-10 16:06:45Z vboxsync $ */
+/* $Id: AudioMixer.h 73342 2018-07-24 14:46:55Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2014-2017 Oracle Corporation
+ * Copyright (C) 2014-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -67,6 +67,11 @@ typedef struct AUDMIXSTREAM
     PPDMIAUDIOCONNECTOR     pConn;
     /** Pointer to PDM audio stream this mixer stream handles. */
     PPDMAUDIOSTREAM         pStream;
+    /** Last read (recording) / written (playback) timestamp (in ms). */
+    uint64_t                tsLastReadWrittenMs;
+    /** The stream's circular buffer for temporarily 
+     *  holding (raw) device audio data. */
+    PRTCIRCBUF              pCircBuf;
 } AUDMIXSTREAM, *PAUDMIXSTREAM;
 
 /** Defines an audio sink's current status. */
