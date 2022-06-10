@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 75576 2018-11-19 14:42:45Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 75599 2018-11-19 20:39:52Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -447,8 +447,10 @@ static int vboxPciLinuxDevDetachHostDriver(PVBOXRAWPCIINS pIns)
         struct file*       pFile;
         int                iCmdLen;
         const int          cMaxBuf = 128;
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29)
         const struct cred *pOldCreds;
         struct cred       *pNewCreds;
+#endif
 
         /*
          * Now perform kernel analog of:

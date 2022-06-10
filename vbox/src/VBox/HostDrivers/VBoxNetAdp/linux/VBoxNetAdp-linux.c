@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 75599 2018-11-19 20:39:52Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -126,7 +126,11 @@ static struct miscdevice g_CtlDev =
 # endif
 };
 
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 19)
 static const struct ethtool_ops gEthToolOpsVBoxNetAdp =
+# else
+static struct ethtool_ops gEthToolOpsVBoxNetAdp =
+# endif
 {
     .get_drvinfo        = vboxNetAdpEthGetDrvinfo,
     .get_settings       = vboxNetAdpEthGetSettings,

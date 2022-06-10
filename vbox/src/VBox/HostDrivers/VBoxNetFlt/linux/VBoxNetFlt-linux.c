@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 75599 2018-11-19 20:39:52Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -688,7 +688,9 @@ static struct sk_buff *vboxNetFltLinuxSkBufFromSG(PVBOXNETFLTINS pThis, PINTNETS
 {
     struct sk_buff *pPkt;
     struct net_device *pDev;
+#if defined(VBOXNETFLT_WITH_GSO_XMIT_WIRE) || defined(VBOXNETFLT_WITH_GSO_XMIT_HOST)
     unsigned fGsoType = 0;
+#endif
 
     if (pSG->cbTotal == 0)
     {
@@ -1780,6 +1782,18 @@ static bool vboxNetFltNeedsLinkState(PVBOXNETFLTINS pThis, struct net_device *pD
 
     return false;
 }
+
+#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 18)
+DECLINLINE(void) netif_tx_lock_bh(struct net_device *pDev)
+{
+    spin_lock_bh(&pDev->xmit_lock);
+}
+
+DECLINLINE(void) netif_tx_unlock_bh(struct net_device *pDev)
+{
+    spin_unlock_bh(&pDev->xmit_lock);
+}
+#endif
 
 /**
  * Some devices need link state change when filter attaches/detaches
