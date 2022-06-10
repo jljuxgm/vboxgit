@@ -1,4 +1,4 @@
-/* $Id: fs-nt.cpp 77231 2019-02-08 23:18:13Z vboxsync $ */
+/* $Id: fs-nt.cpp 77233 2019-02-09 13:57:33Z vboxsync $ */
 /** @file
  * IPRT - File System, Native NT.
  */
@@ -224,6 +224,8 @@ int rtNtQueryFsType(HANDLE hHandle, PRTFSTYPE penmType)
             *penmType = RTFSTYPE_ISO9660;
         else if (IS_FS("HPFS"))
             *penmType = RTFSTYPE_HPFS;
+        else if (IS_FS("ReFS")) /** @todo verify ReFS signature. */
+            *penmType = RTFSTYPE_REFS;
         else if (IS_FS("VBoxSharedFolderFS"))
             *penmType = RTFSTYPE_VBOXSHF;
 #undef IS_FS

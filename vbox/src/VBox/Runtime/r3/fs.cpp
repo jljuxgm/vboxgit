@@ -1,4 +1,4 @@
-/* $Id: fs.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: fs.cpp 77233 2019-02-09 13:57:33Z vboxsync $ */
 /** @file
  * IPRT - File System.
  */
@@ -211,12 +211,14 @@ RTDECL(const char *) RTFsTypeName(RTFSTYPE enmType)
         case RTFSTYPE_NTFS:         return "ntfs";
         case RTFSTYPE_FAT:          return "fat";
         case RTFSTYPE_EXFAT:        return "exfat";
+        case RTFSTYPE_REFS:         return "refs";
 
         case RTFSTYPE_ZFS:          return "zfs";
         case RTFSTYPE_UFS:          return "ufs";
         case RTFSTYPE_NFS:          return "nfs";
 
         case RTFSTYPE_HFS:          return "hfs";
+        case RTFSTYPE_APFS:         return "apfs";
         case RTFSTYPE_AUTOFS:       return "autofs";
         case RTFSTYPE_DEVFS:        return "devfs";
 

@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: fs-posix.cpp 77233 2019-02-09 13:57:33Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -294,6 +294,8 @@ RTR3DECL(int) RTFsQueryType(const char *pszFsPath, PRTFSTYPE penmType)
             {
                 if (!strcmp("hfs", statfsBuf.f_fstypename))
                     *penmType = RTFSTYPE_HFS;
+                else if (!strcmp("apfs", statfsBuf.f_fstypename)) /** @todo verify apfs signature. */
+                    *penmType = RTFSTYPE_APFS;
                 else if (   !strcmp("fat", statfsBuf.f_fstypename)
                          || !strcmp("msdos", statfsBuf.f_fstypename))
                     *penmType = RTFSTYPE_FAT;
