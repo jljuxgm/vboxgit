@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 76988 2019-01-25 13:09:08Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 77048 2019-01-30 15:55:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -320,6 +320,10 @@ void UIChooserItemGroup::hoverMoveEvent(QGraphicsSceneHoverEvent *pEvent)
     if (pos.y() >= iFullHeaderHeight)
         return;
 
+    /* Show enter-button: */
+    if (!isRoot() && m_pEnterButton)
+        m_pEnterButton->show();
+
     /* Call to base-class: */
     UIChooserItem::hoverMoveEvent(pEvent);
 
@@ -332,6 +336,10 @@ void UIChooserItemGroup::hoverLeaveEvent(QGraphicsSceneHoverEvent *pEvent)
     /* Skip if not hovered: */
     if (!isHovered())
         return;
+
+    /* Hide enter-button: */
+    if (m_pEnterButton)
+        m_pEnterButton->hide();
 
     /* Call to base-class: */
     UIChooserItem::hoverLeaveEvent(pEvent);
@@ -1775,10 +1783,6 @@ void UIChooserItemGroup::paintHeader(QPainter *pPainter, const QRect &rect)
     /* Should we add more info? */
     if (isHovered())
     {
-        /* Show enter-button: */
-        if (!isRoot() && m_pEnterButton)
-            m_pEnterButton->show();
-
         /* Prepare variables: */
         int iEnterButtonWidth = m_enterButtonSize.width();
 
@@ -1846,12 +1850,6 @@ void UIChooserItemGroup::paintHeader(QPainter *pPainter, const QRect &rect)
                         /* Pixmap to paint: */
                         m_groupsPixmap);
         }
-    }
-    else
-    {
-        /* Hide enter-button: */
-        if (m_pEnterButton)
-            m_pEnterButton->hide();
     }
 }
 
