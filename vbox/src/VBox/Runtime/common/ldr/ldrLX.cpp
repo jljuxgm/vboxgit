@@ -1,4 +1,4 @@
-/* $Id: ldrLX.cpp 74646 2018-10-06 21:03:45Z vboxsync $ */
+/* $Id: ldrLX.cpp 74664 2018-10-08 09:51:47Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the Linear eXecutable (LX) Format.
  */
@@ -1439,7 +1439,7 @@ static int kldrModLXDoLoadBits(PKLDRMODLX pModLX, void *pvBits)
 
                 case RANGE:
                     KLDRMODLX_ASSERT(!"RANGE");
-                    /* Falls through. */
+                    RT_FALL_THRU();
                 default:
                     rc = VERR_LDRLX_BAD_PAGE_MAP;
                     break;
@@ -2417,7 +2417,7 @@ static DECLCALLBACK(int) rtldrLX_RelocateBits(PRTLDRMODINTERNAL pMod, void *pvBi
 
                     case NRRENT:
                         KLDRMODLX_ASSERT(!"NRRENT");
-                        /* Falls through. */
+                        RT_FALL_THRU();
                     default:
                         iSelector = -1;
                         break;

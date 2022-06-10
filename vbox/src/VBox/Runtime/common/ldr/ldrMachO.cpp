@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 74656 2018-10-07 18:28:21Z vboxsync $ */
+/* $Id: ldrMachO.cpp 74664 2018-10-08 09:51:47Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -743,7 +743,7 @@ static int kldrModMachOPreParseLoadCommands(uint8_t *pbLoadCommands, const mach_
                                 /** @todo this requires a query API or flag... (e.g. C++ constructors) */ \
                                 RTLDRMODMACHO_CHECK_RETURN(fOpenFlags & RTLDR_O_FOR_DEBUG, \
                                                           VERR_LDRMACHO_UNSUPPORTED_INIT_SECTION); \
-                                /* Falls through. */ \
+                                RT_FALL_THRU(); \
                             case S_MOD_TERM_FUNC_POINTERS: \
                                 /** @todo this requires a query API or flag... (e.g. C++ destructors) */ \
                                 RTLDRMODMACHO_CHECK_RETURN(fOpenFlags & RTLDR_O_FOR_DEBUG, \
@@ -847,7 +847,7 @@ static int kldrModMachOPreParseLoadCommands(uint8_t *pbLoadCommands, const mach_
                                     if (cSegments == 1) /* The link address is set by the first segment. */  \
                                         *pLinkAddress = pSect->addr; \
                                 } \
-                                /* Falls through. */ \
+                                RT_FALL_THRU(); \
                             case MH_EXECUTE: \
                             case MH_DYLIB: \
                             case MH_BUNDLE: \
@@ -3076,7 +3076,7 @@ static int  kldrModMachOFixupSectionAMD64(PRTLDRMODMACHO pThis, uint8_t *pbSectB
                 case X86_64_RELOC_SIGNED_2:
                 case X86_64_RELOC_SIGNED_4:
                     RTLDRMODMACHO_CHECK_RETURN(Fixup.r.r_pcrel, VERR_LDR_BAD_FIXUP);
-                    /* Falls through. */
+                    RT_FALL_THRU();
                 default:
                 {
                     /* Adjust with fixup specific addend and vierfy unsigned/r_pcrel. */
