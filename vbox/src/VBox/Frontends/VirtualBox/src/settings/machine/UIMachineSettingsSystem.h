@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 72467 2018-06-07 08:28:16Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.h 72677 2018-06-25 12:05:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -141,8 +141,8 @@ private:
     /** Saves existing 'Acceleration' data from the cache. */
     bool saveAccelerationData();
 
-    /** Disable/enable "hardware virtualization" and "nested paging" check boxes
-     * (but not the "Paravirtualization Interface" combobox)  */
+    /** Defines whether "hardware virtualization" and "nested paging" check-boxes
+      * (but not the "Paravirtualization Interface" combo-box) is @a fEnabled. */
     void setAccelerationCheckBoxesEnabled(bool fEnabled);
 
     /** Holds the list of all possible boot items. */
