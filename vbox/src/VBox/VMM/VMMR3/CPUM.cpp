@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: CPUM.cpp 76629 2019-01-04 06:27:18Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1223,7 +1223,7 @@ DECLCALLBACK(void) cpumR3InfoVmxFeatures(PVM pVM, PCDBGFINFOHLP pHlp, const char
         /* Miscellaneous data. */
         VMXFEATDUMP("ExitSaveEferLma - Save EFER.LMA on VM-exit             ", fVmxExitSaveEferLma);
         VMXFEATDUMP("IntelPt - Intel PT (Processor Trace) in VMX operation  ", fVmxIntelPt);
-        VMXFEATDUMP("VmwriteAll - Inject softint. with 0-len instr.         ", fVmxVmwriteAll);
+        VMXFEATDUMP("VmwriteAll - Write allowed to read-only VMCS fields    ", fVmxVmwriteAll);
         VMXFEATDUMP("EntryInjectSoftInt - Inject softint. with 0-len instr. ", fVmxEntryInjectSoftInt);
 #undef VMXFEATDUMP
     }
