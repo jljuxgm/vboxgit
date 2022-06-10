@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 77998 2019-04-03 15:50:49Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 77999 2019-04-03 15:56:10Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -82,7 +82,7 @@ HRESULT HostDnsServiceDarwin::init(HostDnsMonitorProxy *pProxy)
 
     ctx.info = this;
 
-    m->m_store = SCDynamicStoreCreate(NULL, CFSTR("org.virtualbox.VBoxSVC"),
+    m->m_store = SCDynamicStoreCreate(NULL, CFSTR("org.virtualbox.VBoxSVC.HostDNS"),
                                       (SCDynamicStoreCallBack)HostDnsServiceDarwin::hostDnsServiceStoreCallback,
                                       &ctx);
     AssertReturn(m->m_store, E_FAIL);
