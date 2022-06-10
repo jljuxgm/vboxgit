@@ -1,4 +1,4 @@
-/* $Id: MsiHack.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: MsiHack.cpp 72831 2018-07-03 16:19:10Z vboxsync $ */
 /** @file
  * MsiHack - Exterimental DLL that intercept small ReadFile calls from
  *           MSI, CABINET and WINTEROP, buffering them using memory mapped files.
@@ -256,7 +256,7 @@ static bool MsiHackHandleEnter(PMSIHACKHANDLE pHandle, HANDLE hHandle)
         if (pvNew)
         {
             g_papHandles = (PMSIHACKHANDLE *)pvNew;
-            memset(&g_papHandles[g_cHandles], 0, (cNew - g_cHandles) * sizeof(sizeof(g_papHandles[0])));
+            memset(&g_papHandles[g_cHandles], 0, (cNew - g_cHandles) * sizeof(g_papHandles[0]));
             g_cHandles   = cNew;
             fOkay = true;
         }
