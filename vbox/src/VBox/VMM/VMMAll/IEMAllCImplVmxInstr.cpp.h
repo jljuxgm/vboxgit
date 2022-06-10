@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74661 2018-10-08 09:46:26Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74662 2018-10-08 09:50:07Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3309,9 +3309,6 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitInstrIo(PVMCPU pVCpu, VMXINSTRID uInstrId, u
 {
     Assert(uInstrId == VMXINSTRID_IO_IN || uInstrId == VMXINSTRID_IO_OUT);
     Assert(cbAccess == 1 || cbAccess == 2 || cbAccess == 4);
-
-    PCVMXVVMCS pVmcs = pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pVmcs);
-    Assert(pVmcs);
 
     bool const fIntercept = iemVmxIsIoInterceptSet(pVCpu, u16Port);
     if (fIntercept)
