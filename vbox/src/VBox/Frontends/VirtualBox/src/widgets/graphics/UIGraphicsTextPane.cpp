@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 72678 2018-06-25 14:25:49Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 72692 2018-06-26 11:26:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -390,7 +390,7 @@ void UIGraphicsTextPane::updateHoverStuff()
 {
     /* Update mouse-cursor: */
     if (m_strHoveredAnchor.isNull())
-        unsetCursor();
+        VBoxGlobal::unsetCursor(this);
     else
         VBoxGlobal::setCursor(this, Qt::PointingHandCursor);
 

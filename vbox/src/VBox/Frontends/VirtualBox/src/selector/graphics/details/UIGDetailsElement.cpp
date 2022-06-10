@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 72678 2018-06-25 14:25:49Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 72692 2018-06-26 11:26:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class implementation.
  */
@@ -682,7 +682,7 @@ void UIGDetailsElement::updateNameHoverLink()
     if (m_fNameHovered)
         VBoxGlobal::setCursor(this, Qt::PointingHandCursor);
     else
-        unsetCursor();
+        VBoxGlobal::unsetCursor(this);
     update();
 }
 

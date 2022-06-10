@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 72678 2018-06-25 14:25:49Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 72692 2018-06-26 11:26:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -501,7 +501,7 @@ void UIMouseHandler::sltMousePointerShapeChanged()
     {
         QList<ulong> screenIds = m_viewports.keys();
         for (int i = 0; i < screenIds.size(); ++i)
-            m_viewports[screenIds[i]]->unsetCursor();
+            VBoxGlobal::unsetCursor(m_viewports[screenIds[i]]);
     }
 }
 

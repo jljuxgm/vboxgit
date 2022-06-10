@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 72681 2018-06-25 15:25:29Z vboxsync $ */
+/* $Id: VBoxGlobal.h 72692 2018-06-26 11:26:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -394,6 +394,8 @@ public:
         /** Does some checks on certain platforms before calling QWidget::setCursor(...). */
         static void setCursor(QWidget *pWidget, const QCursor &cursor);
         static void setCursor(QGraphicsWidget *pWidget, const QCursor &cursor);
+        static void unsetCursor(QWidget *pWidget);
+        static void unsetCursor(QGraphicsWidget *pWidget);
 
 #ifdef VBOX_WS_X11
         /** X11: Test whether the current window manager supports full screen mode. */

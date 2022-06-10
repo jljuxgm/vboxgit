@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 72681 2018-06-25 15:25:29Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 72692 2018-06-26 11:26:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1851,6 +1851,59 @@ void VBoxGlobal::setCursor(QGraphicsWidget *pWidget, const QCursor &cursor)
     pWidget->setCursor(cursor);
 #endif
 }
+
+/* static */
+void VBoxGlobal::unsetCursor(QWidget *pWidget)
+{
+    if (!pWidget)
+        return;
+
+#ifdef VBOX_WS_X11
+    /* As reported in https://www.virtualbox.org/ticket/16348,
+     * in X11 QWidget::unsetCursor(..) call uses RENDER
+     * extension. Qt (before 5.11) fails to handle the case where the mentioned extension
+     * is missing. Please see https://codereview.qt-project.org/#/c/225665/ for Qt patch: */
+    if ((VBoxGlobal::qtRTMajorVersion() < 5) ||
+        (VBoxGlobal::qtRTMajorVersion() == 5 && VBoxGlobal::qtRTMinorVersion() < 11))
+    {
+        if (X11CheckExtension("RENDER"))
+            pWidget->unsetCursor();
+    }
+    else
+    {
+        pWidget->unsetCursor();
+    }
+#else
+    pWidget->unsetCursor();
+#endif
+}
+
+/* static */
+void VBoxGlobal::unsetCursor(QGraphicsWidget *pWidget)
+{
+    if (!pWidget)
+        return;
+
+#ifdef VBOX_WS_X11
+    /* As reported in https://www.virtualbox.org/ticket/16348,
+     * in X11 QGraphicsWidget::unsetCursor(..) call uses RENDER
+     * extension. Qt (before 5.11) fails to handle the case where the mentioned extension
+     * is missing. Please see https://codereview.qt-project.org/#/c/225665/ for Qt patch: */
+    if ((VBoxGlobal::qtRTMajorVersion() < 5) ||
+        (VBoxGlobal::qtRTMajorVersion() == 5 && VBoxGlobal::qtRTMinorVersion() < 11))
+    {
+        if (X11CheckExtension("RENDER"))
+            pWidget->unsetCursor();
+    }
+    else
+    {
+        pWidget->unsetCursor();
+    }
+#else
+    pWidget->unsetCursor();
+#endif
+}
+
 
 #if defined(VBOX_WS_X11)
 
