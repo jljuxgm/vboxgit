@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 74140 2018-09-07 13:14:44Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -393,11 +393,10 @@ static int vbglR3DnDHGRecvURIData(PVBGLR3GUESTDNDCMDCTX pCtx, PVBOXDNDSNDDATAHDR
     /* Anything to do at all? */
     if (fDoAccounting)
     {
-        if (   !cbToRecvBytes
-            && !cToRecvObjs)
-        {
+        /* Note: Do not check for cbToRecvBytes == 0 here, as this might be just
+         *       a bunch of 0-byte files to be transferred. */
+        if (!cToRecvObjs)
             return VINF_SUCCESS;
-        }
     }
 
     /*
