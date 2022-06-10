@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75407 2018-11-12 20:06:57Z vboxsync $
+# $Id: Makefile.kmk 75469 2018-11-14 20:53:20Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -136,7 +136,7 @@ VBoxService_SOURCES      += \
 endif
 
 ifdef VBOX_WITH_SHARED_FOLDERS
- if1of ($(KBUILD_TARGET), win linux solaris)
+ if1of ($(KBUILD_TARGET), linux os2 solaris win)
 VBoxService_DEFS         += VBOX_WITH_SHARED_FOLDERS
 VBoxService_SOURCES      += \
 	VBoxServiceAutoMount.cpp
