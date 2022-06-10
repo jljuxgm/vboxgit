@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 75835 2018-11-30 10:34:56Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 75897 2018-12-03 12:29:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -124,6 +124,9 @@ private slots:
     /** Performs whatever necessary when some signal about option change has been receieved. */
     void sltHandleOptionsUpdated();
 
+    void sltTestCopy();
+    void sltTestSession();
+
 private:
 
     void prepareObjects();
@@ -169,7 +172,6 @@ private:
     template<typename T>
     QStringList               getFsObjInfoStringList(const T &fsObjectInfo) const;
     void                      appendLog(const QString &strLog, FileManagerLogType eLogType);
-
     CGuest                    m_comGuest;
     CGuestSession             m_comGuestSession;
     QVBoxLayout              *m_pMainLayout;

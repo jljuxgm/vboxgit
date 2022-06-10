@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerOperationsPanel.h 75788 2018-11-28 13:18:29Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerOperationsPanel.h 75897 2018-12-03 12:29:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -67,17 +67,23 @@ protected:
 
 private slots:
 
-    void sltCleanFinished();
-    void sltCleanAll();
+    void sltRemoveFinished();
+    void sltRemoveAll();
+    void sltRemoveSelected();
+
+    void sltHandleWidgetFocusIn(QWidget *pWidget);
+    void sltHandleWidgetFocusOut(QWidget *pWidget);
 
 private:
 
     /** @name Member variables.
       * @{ */
-        QScrollArea *m_pScrollArea;
-        QWidget     *m_pContainerWidget;
-        QVBoxLayout *m_pContainerLayout;
-        QSpacerItem *m_pContainerSpaceItem;
+        QScrollArea    *m_pScrollArea;
+        QWidget        *m_pContainerWidget;
+        QVBoxLayout    *m_pContainerLayout;
+        QSpacerItem    *m_pContainerSpaceItem;
+        QWidget        *m_pWidgetInFocus;
+        QSet<QWidget*>  m_widgetSet;
     /** @} */
 
 
