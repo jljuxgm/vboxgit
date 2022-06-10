@@ -1,4 +1,4 @@
-/* $Id: path2-posix.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: path2-posix.cpp 77744 2019-03-17 04:14:55Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX, Part 2 - RTPathQueryInfo.
  */
@@ -194,7 +194,23 @@ RTR3DECL(int) RTPathSetTimesEx(const char *pszPath, PCRTTIMESPEC pAccessTime, PC
                 else
                 {
                     if (lutimes(pszNativePath, aTimevals))
-                        rc = RTErrConvertFromErrno(errno);
+                    {
+                        /* If lutimes is not supported (e.g. linux < 2.6.22), try fall back on utimes: */
+                        if (errno != ENOSYS)
+                            rc = RTErrConvertFromErrno(errno);
+                        else
+                        {
+                            if (pAccessTime && pModificationTime)
+                                rc = RTPathQueryInfoEx(pszPath, &ObjInfo, RTFSOBJATTRADD_UNIX, fFlags);
+                            if (RT_SUCCESS(rc) && !RTFS_IS_SYMLINK(ObjInfo.Attr.fMode))
+                            {
+                                if (utimes(pszNativePath, aTimevals))
+                                    rc = RTErrConvertFromErrno(errno);
+                            }
+                            else
+                                rc = VERR_NOT_SUPPORTED;
+                        }
+                    }
                 }
 #else
                 else
