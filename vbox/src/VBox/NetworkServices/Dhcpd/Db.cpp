@@ -1,4 +1,4 @@
-/* $Id: Db.cpp 71689 2018-04-05 15:20:32Z vboxsync $ */
+/* $Id: Db.cpp 73076 2018-07-11 16:39:52Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -19,6 +19,13 @@
 #include <iprt/stream.h>
 
 #include "Db.h"
+
+
+Db::Db()
+  : m_pConfig(NULL)
+{
+    return;
+}
 
 
 Db::~Db()

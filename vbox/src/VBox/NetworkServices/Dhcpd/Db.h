@@ -1,4 +1,4 @@
-/* $Id: Db.h 71689 2018-04-05 15:20:32Z vboxsync $ */
+/* $Id: Db.h 73076 2018-07-11 16:39:52Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -126,7 +126,7 @@ private:
     IPv4Pool m_pool;
 
 public:
-    Db() {}
+    Db();
     ~Db();
 
     int init(const Config *pConfig);
