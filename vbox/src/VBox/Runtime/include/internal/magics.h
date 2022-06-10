@@ -1,4 +1,4 @@
-/* $Id: magics.h 74313 2018-09-17 15:50:55Z vboxsync $ */
+/* $Id: magics.h 75879 2018-12-02 18:39:16Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -190,6 +190,10 @@
 #define RTSERIALPORT_MAGIC              UINT32_C(0x18280208)
 /** RTSERIALPORTINTERNAL::u32Magic value after RTSerialPortClose. */
 #define RTSERIALPORT_MAGIC_DEAD         UINT32_C(0x19050324)
+/** RTSHMEMINT::u32Magic value (Stephen William Hawking) */
+#define RTSHMEM_MAGIC                   UINT32_C(0x19420108)
+/** RTSHMEMINT::u32Magic value after RTShMemClose */
+#define RTSHMEM_MAGIC_DEAD              UINT32_C(0x20180314)
 /** The magic value for RTSOCKETINT::u32Magic. (Stanislaw Lem) */
 #define RTSOCKET_MAGIC                  UINT32_C(0x19210912)
 /** The magic value for RTSOCKETINT::u32Magic after destruction. */

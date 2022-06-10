@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74169 2018-09-10 06:49:09Z vboxsync $
+# $Id: Makefile.kmk 75879 2018-12-02 18:39:16Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -150,7 +150,8 @@ PROGRAMS += \
 	tstVector \
 	tstRTVfs \
 	tstRTZip \
-	tstRTJson
+	tstRTJson \
+	tstRTShMem
 
 PROGRAMS.win += \
 	tstRTCritSectW32 \
@@ -729,6 +730,9 @@ tstRTZip_SOURCES = tstRTZip.cpp
 
 tstRTJson_TEMPLATE = VBOXR3TSTEXE
 tstRTJson_SOURCES = tstRTJson.cpp
+
+tstRTShMem_TEMPLATE = VBOXR3TSTEXE
+tstRTShMem_SOURCES = tstRTShMem.cpp
 
 #
 # Ring-0 testcases.

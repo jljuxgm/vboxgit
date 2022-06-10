@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 74672 2018-10-08 12:08:51Z vboxsync $
+; $Id: VBoxRTImp.def 75879 2018-12-02 18:39:16Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -1661,6 +1661,13 @@ EXPORTS
     RTSha512Init
     RTSha512ToString
     RTSha512Update
+    RTShMemClose
+    RTShMemMapRegion
+    RTShMemOpen
+    RTShMemQuerySize
+    RTShMemRefCount
+    RTShMemSetSize
+    RTShMemUnmapRegion
     RTSocketClose
     RTSocketFromNative
     RTSocketGetLocalAddress
