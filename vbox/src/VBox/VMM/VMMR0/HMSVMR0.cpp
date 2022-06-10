@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 74798 2018-10-12 12:25:41Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 75146 2018-10-29 13:34:56Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -507,7 +507,7 @@ static void hmR0SvmLogState(PVMCPU pVCpu, PCSVMVMCB pVmcb, const char *pszPrefix
         Log4(("%s: br_from=%#RX64 br_to=%#RX64 lastxcpt_from=%#RX64 lastxcpt_to=%#RX64\n", pszPrefix, pVmcbGuest->u64BR_FROM,
               pVmcbGuest->u64BR_TO, pVmcbGuest->u64LASTEXCPFROM, pVmcbGuest->u64LASTEXCPTO));
     }
-    NOREF(pVmcbGuest); NOREF(pCtx);
+    NOREF(pszPrefix); NOREF(pVmcbGuest); NOREF(pCtx);
 }
 #endif  /* VBOX_STRICT */
 
