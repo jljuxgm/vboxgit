@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerLogPanel.cpp 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerLogPanel.cpp 75761 2018-11-27 09:10:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -70,9 +70,8 @@ UIFileManagerLogViewer::UIFileManagerLogViewer(QWidget *pParent /* = 0 */)
 void UIFileManagerLogViewer::contextMenuEvent(QContextMenuEvent *event)
 {
     QMenu *menu = createStandardContextMenu();
-    void sltClear();
 
-    QAction *pClearAction = menu->addAction(tr("Clear"));
+    QAction *pClearAction = menu->addAction(UIGuestControlFileManager::tr("Clear"));
     connect(pClearAction, &QAction::triggered, this, &UIFileManagerLogViewer::sltClear);
     menu->exec(event->globalPos());
     delete menu;
