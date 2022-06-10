@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 74256 2018-09-13 18:42:00Z vboxsync $ */
+/* $Id: UIToolsItem.cpp 74272 2018-09-14 15:46:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -193,12 +193,12 @@ UIToolsItem::UIToolsItem(QGraphicsScene *pScene,
     , m_iDefaultValue(100)
     , m_iHoveredValue(90)
     , m_iAnimatedValue(m_iDefaultValue)
-    , m_iPreviousMinimumWidthHint(0)
-    , m_iPreviousMinimumHeightHint(0)
     , m_iHoverLightnessMin(0)
     , m_iHoverLightnessMax(0)
     , m_iHighlightLightnessMin(0)
     , m_iHighlightLightnessMax(0)
+    , m_iPreviousMinimumWidthHint(0)
+    , m_iPreviousMinimumHeightHint(0)
     , m_iMaximumNameWidth(0)
 {
     /* Prepare: */

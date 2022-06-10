@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 74272 2018-09-14 15:46:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -20,6 +20,7 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
+# include <QMenuBar>
 # include <QResizeEvent>
 # include <QStandardPaths>
 # include <QStatusBar>

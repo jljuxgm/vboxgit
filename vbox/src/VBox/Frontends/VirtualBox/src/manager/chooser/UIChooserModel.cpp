@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 74246 2018-09-13 15:42:21Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 74272 2018-09-14 15:46:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -71,16 +71,16 @@ UIChooserModel:: UIChooserModel(UIChooser *pParent)
     : QObject(pParent)
     , m_pChooser(pParent)
     , m_pScene(0)
+    , m_pMouseHandler(0)
+    , m_pKeyboardHandler(0)
+    , m_pContextMenuGroup(0)
+    , m_pContextMenuMachine(0)
     , m_fSliding(false)
     , m_pLeftRoot(0)
     , m_pRightRoot(0)
     , m_pAfterSlidingFocus(0)
-    , m_pMouseHandler(0)
-    , m_pKeyboardHandler(0)
     , m_iScrollingTokenSize(30)
     , m_fIsScrollingInProgress(false)
-    , m_pContextMenuGroup(0)
-    , m_pContextMenuMachine(0)
     , m_pLookupTimer(0)
 {
     /* Prepare: */
