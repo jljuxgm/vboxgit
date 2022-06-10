@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedNoCrt-win.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SUPR3HardenedNoCrt-win.cpp 76414 2018-12-23 18:39:32Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -45,6 +45,7 @@
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/mem.h>
+#include <iprt/utf16.h>
 
 #include "SUPLibInternal.h"
 #include "win/SUPHardenedVerify-win.h"
