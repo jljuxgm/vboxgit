@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvChar.cpp 77324 2019-02-14 21:23:14Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMISERIALCONNECTOR / PDMISERIALPORT.
  */
@@ -258,7 +258,8 @@ static DECLCALLBACK(int) drvCharIoLoop(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
         {
             if (fEvtsRecv & RTPOLL_EVT_WRITE)
             {
-                if (pThis->fAvailWrInt)
+                if (   pThis->fAvailWrInt
+                    && pThis->cbTxUsed < RT_ELEMENTS(pThis->abTxBuf))
                 {
                     /* Stuff as much data into the TX buffer as we can. */
                     size_t cbToFetch = RT_ELEMENTS(pThis->abTxBuf) - pThis->cbTxUsed;
@@ -283,7 +284,8 @@ static DECLCALLBACK(int) drvCharIoLoop(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
                     if (RT_SUCCESS(rc))
                     {
                         pThis->cbTxUsed -= cbProcessed;
-                        if (pThis->cbTxUsed)
+                        if (   pThis->cbTxUsed
+                            && cbProcessed)
                         {
                             /* Move the data in the TX buffer to the front to fill the end again. */
                             memmove(&pThis->abTxBuf[0], &pThis->abTxBuf[cbProcessed], pThis->cbTxUsed);
