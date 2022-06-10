@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.cpp 74938 2018-10-19 09:54:12Z vboxsync $ */
+/* $Id: MediumIOImpl.cpp 74944 2018-10-19 14:24:23Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation: MediumIO
@@ -798,12 +798,18 @@ HRESULT MediumIO::convertToStream(const com::Utf8Str &aFormat,
     ComObjPtr<DataStream> pDataStream;
     MediumIO::StreamTask *pTask = NULL;
 
-    pProgress.createObject();
-    pDataStream.createObject();
-
     try
     {
+        pDataStream.createObject();
         rc = pDataStream->init(aBufferSize);
+        if (FAILED(rc))
+            throw rc;
+
+        pProgress.createObject();
+        rc = pProgress->init(m->ptrVirtualBox,
+                             static_cast<IMediumIO*>(this),
+                             BstrFmt(tr("Converting medium '%s' to data stream"), m->ptrMedium->i_getLocationFull().c_str()),
+                             TRUE /* aCancelable */);
         if (FAILED(rc))
             throw rc;
 
