@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 72821 2018-07-03 11:57:53Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 73847 2018-08-22 19:03:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -686,6 +686,7 @@ template<> QString toInternalString(const UIExtraDataMetaDefs::RuntimeMenuInputA
         case UIExtraDataMetaDefs::RuntimeMenuInputActionType_TypeAltPrintScreen: strResult = "TypeAltPrintScreen"; break;
         case UIExtraDataMetaDefs::RuntimeMenuInputActionType_Mouse:              strResult = "Mouse"; break;
         case UIExtraDataMetaDefs::RuntimeMenuInputActionType_MouseIntegration:   strResult = "MouseIntegration"; break;
+        case UIExtraDataMetaDefs::RuntimeMenuInputActionType_TypeHostKeyCombo:   strResult = "TypeHostKeyCombo"; break;
         case UIExtraDataMetaDefs::RuntimeMenuInputActionType_All:                strResult = "All"; break;
         default:
         {
@@ -714,6 +715,7 @@ template<> UIExtraDataMetaDefs::RuntimeMenuInputActionType fromInternalString<UI
     keys << "TypeAltPrintScreen"; values << UIExtraDataMetaDefs::RuntimeMenuInputActionType_TypeAltPrintScreen;
     keys << "Mouse";              values << UIExtraDataMetaDefs::RuntimeMenuInputActionType_Mouse;
     keys << "MouseIntegration";   values << UIExtraDataMetaDefs::RuntimeMenuInputActionType_MouseIntegration;
+    keys << "TypeHostKeyCombo";   values << UIExtraDataMetaDefs::RuntimeMenuInputActionType_TypeHostKeyCombo;
     keys << "All";                values << UIExtraDataMetaDefs::RuntimeMenuInputActionType_All;
     /* Invalid type for unknown words: */
     if (!keys.contains(strRuntimeMenuInputActionType, Qt::CaseInsensitive))
