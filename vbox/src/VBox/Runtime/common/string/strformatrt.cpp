@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 73914 2018-08-27 12:40:34Z vboxsync $ */
+/* $Id: strformatrt.cpp 74708 2018-10-09 09:22:34Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -1458,7 +1458,7 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                     ssize_t     offLast;
 
                     *ppszFormat += 2;
-                    AssertMsgBreak(chVariant == 'p' || chVariant == 'q' || chVariant == 'f',
+                    AssertMsgBreak(chVariant == 'a' || chVariant == 'p' || chVariant == 'q' || chVariant == 'f',
                                    ("Invalid IPRT format type '%.10s'!\n", pszFormatOrg));
 
                     if (!VALID_PTR(pszStr))
