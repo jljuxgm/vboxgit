@@ -1,4 +1,4 @@
-/* $Id: reqqueue.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: reqqueue.cpp 77910 2019-03-27 11:33:01Z vboxsync $ */
 /** @file
  * IPRT - Request Queue.
  */
@@ -166,7 +166,6 @@ RTDECL(int) RTReqQueueProcess(RTREQQUEUE hQueue, RTMSINTERVAL cMillies)
 
             /* Process the request. */
             rc = rtReqProcessOne(pReq);
-            AssertRC(rc);
             if (rc != VINF_SUCCESS)
             {
                 /* Propagate the return code to caller.  If more requests pending, queue them for later. */

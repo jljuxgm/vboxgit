@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 77910 2019-03-27 11:33:01Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -40,6 +40,7 @@
 
 #include <list>
 
+VMProcPriority_T nameToVMProcPriority(const char *pszName);
 
 /**
  * Parses a number.
@@ -2272,6 +2273,26 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                 CHECK_ERROR(uart, COMSETTER(Path)(Bstr(a->argv[2]).raw()));
                 CHECK_ERROR(uart, COMSETTER(HostMode)(PortMode_HostDevice));
             }
+        }
+        else if (!strncmp(a->argv[1], "vm-process-priority", 14))
+        {
+            if (a->argc != 3)
+            {
+                errorArgument("Incorrect arguments to '%s'", a->argv[1]);
+                rc = E_FAIL;
+                break;
+            }
+            VMProcPriority_T enmPriority = nameToVMProcPriority(a->argv[2]);
+            if (enmPriority == VMProcPriority_Invalid)
+            {
+                errorArgument("Invalid vm-process-priority '%s'", a->argv[2]);
+                rc = E_FAIL;
+            }
+            else
+            {
+                CHECK_ERROR(sessionMachine, COMSETTER(VMProcessPriority)(enmPriority));
+            }
+            break;
         }
         else
         {

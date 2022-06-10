@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: ConsoleImpl.h 77910 2019-03-27 11:33:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -207,6 +207,7 @@ public:
                                 ULONG aSourceIdx, ULONG aTargetIdx,
                                 IProgress *aProgress);
     HRESULT i_reconfigureMediumAttachments(const std::vector<ComPtr<IMediumAttachment> > &aAttachments);
+    HRESULT i_onVMProcessPriorityChange(VMProcPriority_T priority);
     int i_hgcmLoadService(const char *pszServiceLibrary, const char *pszServiceName);
     VMMDev *i_getVMMDev() { return m_pVMMDev; }
 

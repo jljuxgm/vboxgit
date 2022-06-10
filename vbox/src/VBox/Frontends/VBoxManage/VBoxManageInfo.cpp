@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 77162 2019-02-05 13:13:55Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 77910 2019-03-27 11:33:01Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -931,6 +931,29 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
     SHOW_BOOLEAN_PROP(    machine,  AutostartEnabled,           "autostart-enabled",        "Autostart Enabled:");
     SHOW_ULONG_PROP(      machine,  AutostartDelay,             "autostart-delay",          "Autostart Delay:", "");
     SHOW_STRING_PROP(     machine,  DefaultFrontend,            "defaultfrontend",          "Default Frontend:");
+
+    VMProcPriority_T enmVMProcPriority;
+    CHECK_ERROR2I_RET(machine, COMGETTER(VMProcessPriority)(&enmVMProcPriority), hrcCheck);
+    const char *pszVMProcPriority;
+    switch (enmVMProcPriority)
+    {
+        case VMProcPriority_Flat:
+            pszVMProcPriority = "flat";
+            break;
+        case VMProcPriority_Low:
+            pszVMProcPriority = "low";
+            break;
+        case VMProcPriority_Normal:
+            pszVMProcPriority = "normal";
+            break;
+        case VMProcPriority_High:
+            pszVMProcPriority = "high";
+            break;
+        default:
+            pszVMProcPriority = "default";
+            break;
+    }
+    SHOW_UTF8_STRING("vmprocpriority", "VM process priority:", pszVMProcPriority);
 
 /** @todo Convert the remainder of the function to SHOW_XXX macros and add error
  *        checking where missing. */

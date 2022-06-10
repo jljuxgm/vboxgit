@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: SessionImpl.h 77910 2019-03-27 11:33:01Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class definition
  */
@@ -98,6 +98,7 @@ private:
     HRESULT onStorageDeviceChange(const ComPtr<IMediumAttachment> &aMediumAttachment,
                                   BOOL aRemove,
                                   BOOL aSilent);
+    HRESULT onVMProcessPriorityChange(VMProcPriority_T priority);
     HRESULT onClipboardModeChange(ClipboardMode_T aClipboardMode);
     HRESULT onDnDModeChange(DnDMode_T aDndMode);
     HRESULT onCPUChange(ULONG aCpu,
