@@ -1,4 +1,4 @@
-/* $Id: RTPathAbsExEx.cpp 78048 2019-04-09 01:21:09Z vboxsync $ */
+/* $Id: RTPathAbsExEx.cpp 78049 2019-04-09 01:23:41Z vboxsync $ */
 /** @file
  * IPRT - RTPathAbsExEx
  */
@@ -475,8 +475,8 @@ static int rtPathAbsExExRootSlash(const char *pszBase, const char *pszPath, PRTP
                     memcpy(pszAbsPath, &pszBase[uBase.Parsed.aComps[0].off], cchRootPrefix);
                 else
                 {
-                    int rc = RTPathParsedReassemble(pszPath, pParsed, fFlags & RTPATH_STR_F_STYLE_MASK, pszAbsPath, 0);
-                    Assert(rc == VERR_BUFFER_OVERFLOW); RT_NOREF(rc);
+                    rc = RTPathParsedReassemble(pszPath, pParsed, fFlags & RTPATH_STR_F_STYLE_MASK, pszAbsPath, 0);
+                    Assert(rc == VERR_BUFFER_OVERFLOW);
 
                     *pcbAbsPath = cchRootPrefix + pParsed->cchPath + 1;
                     return VERR_BUFFER_OVERFLOW;
@@ -504,8 +504,8 @@ static int rtPathAbsExExRootSlash(const char *pszBase, const char *pszPath, PRTP
                 }
                 else
                 {
-                    int rc = RTPathParsedReassemble(pszPath, pParsed, fFlags & RTPATH_STR_F_STYLE_MASK, pszAbsPath, 0);
-                    Assert(rc == VERR_BUFFER_OVERFLOW); RT_NOREF(rc);
+                    rc = RTPathParsedReassemble(pszPath, pParsed, fFlags & RTPATH_STR_F_STYLE_MASK, pszAbsPath, 0);
+                    Assert(rc == VERR_BUFFER_OVERFLOW);
 
                     *pcbAbsPath = cchRootPrefix + pParsed->cchPath + 1;
                     return VERR_BUFFER_OVERFLOW;
@@ -525,8 +525,8 @@ static int rtPathAbsExExRootSlash(const char *pszBase, const char *pszPath, PRTP
             {
                 if (rc == VERR_BUFFER_OVERFLOW)
                 {
-                    int rc = RTPathParsedReassemble(pszPath, pParsed, fFlags & RTPATH_STR_F_STYLE_MASK, pszAbsPath, 0);
-                    Assert(rc == VERR_BUFFER_OVERFLOW); RT_NOREF(rc);
+                    int rc2 = RTPathParsedReassemble(pszPath, pParsed, fFlags & RTPATH_STR_F_STYLE_MASK, pszAbsPath, 0);
+                    Assert(rc2 == VERR_BUFFER_OVERFLOW); RT_NOREF(rc2);
 
                     char *pszTmp = (char *)RTMemTmpAlloc(RTPATH_BIG_MAX);
                     if (pszTmp)
