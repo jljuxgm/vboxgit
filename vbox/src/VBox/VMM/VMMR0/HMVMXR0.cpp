@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 75611 2018-11-20 11:20:25Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 75646 2018-11-21 15:38:10Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7540,7 +7540,7 @@ static uint32_t hmR0VmxEvaluatePendingEvent(PVMCPU pVCpu)
      * Check if the guest can receive external interrupts (PIC/APIC). Once PDMGetInterrupt() returns
      * a valid interrupt we must- deliver the interrupt. We can no longer re-request it from the APIC.
      */
-    else if (   VMCPU_FF_IS_ANY_SET(pVCpu, (VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC))
+    else if (   VMCPU_FF_IS_ANY_SET(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)
              && !pVCpu->hm.s.fSingleInstruction)
     {
         Assert(!DBGFIsStepping(pVCpu));

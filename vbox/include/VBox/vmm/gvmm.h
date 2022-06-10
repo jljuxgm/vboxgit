@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 72778 2018-06-29 20:02:35Z vboxsync $ */
+/* $Id: gvmm.h 75646 2018-11-21 15:38:10Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -171,7 +171,8 @@ GVMMR0DECL(int)     GVMMR0ValidateGVMandVM(PGVM pGVM, PVM pVM);
 GVMMR0DECL(int)     GVMMR0ValidateGVMandVMandEMT(PGVM pGVM, PVM pVM, VMCPUID idCpu);
 GVMMR0DECL(PVM)     GVMMR0GetVMByEMT(RTNATIVETHREAD hEMT);
 GVMMR0DECL(PGVMCPU) GVMMR0GetGVCpuByEMT(RTNATIVETHREAD hEMT);
-GVMMR0DECL(int)     GVMMR0SchedHalt(PGVM pGVM, PVM pVM, VMCPUID idCpu, uint64_t u64ExpireGipTime);
+GVMMR0DECL(int)     GVMMR0SchedHalt(PGVM pGVM, PVM pVM, PGVMCPU pCurGVCpu, uint64_t u64ExpireGipTime);
+GVMMR0DECL(int)     GVMMR0SchedHaltReq(PGVM pGVM, PVM pVM, VMCPUID idCpu, uint64_t u64ExpireGipTime);
 GVMMR0DECL(int)     GVMMR0SchedWakeUp(PGVM pGVM, PVM pVM, VMCPUID idCpu);
 GVMMR0DECL(int)     GVMMR0SchedWakeUpEx(PGVM pGVM, PVM pVM, VMCPUID idCpu, bool fTakeUsedLock);
 GVMMR0DECL(int)     GVMMR0SchedWakeUpNoGVMNoLock(PVM pVM, VMCPUID idCpu);
