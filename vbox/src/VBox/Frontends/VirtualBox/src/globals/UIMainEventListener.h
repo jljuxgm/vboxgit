@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIMainEventListener.h 77986 2019-04-02 16:53:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -103,6 +103,27 @@ signals:
         void sigExtraDataChange(const QUuid &uId, const QString &strKey, const QString &strValue);
     /** @} */
 
+    /** @name VirtualBox Medium related signals
+      * @{ */
+        /** Notifies about storage controller change. */
+        void sigStorageControllerChange();
+        /** Notifies about storage device change.
+          * @param  comAttachment  Brings corresponding attachment.
+          * @param  fRemoved       Brings whether medium is removed or added.
+          * @param  fSilent        Brings whether this change has gone silent for guest. */
+        void sigStorageDeviceChange(CMediumAttachment comAttachment, bool fRemoved, bool fSilent);
+
+        /** Notifies about storage medium @a comAttachment state change. */
+        void sigMediumChange(CMediumAttachment comAttachment);
+        /** Notifies about storage @a comMedium config change. */
+        void sigMediumConfigChange(const CMedium &comMedium);
+        /** Notifies about storage medium is (un)registered.
+          * @param  uMediumId      Brings corresponding medium ID.
+          * @param  enmMediumType  Brings corresponding medium type.
+          * @param  fRegistered    Brings whether medium is registered or unregistered. */
+        void sigMediumRegistered(const QUuid &uMediumId, KDeviceType enmMediumType, bool fRegistered);
+    /** @} */
+
     /** @name Console related signals
       * @{ */
         /** Notifies about mouse pointer become @a fVisible and his shape changed to @a fAlpha, @a hotCorner, @a size and @a shape. */
@@ -120,10 +141,6 @@ signals:
         void sigAdditionsChange();
         /** Notifies about network @a adapter state change. */
         void sigNetworkAdapterChange(CNetworkAdapter comAdapter);
-        /** Notifies about storage device change for @a attachment, which was @a fRemoved and it was @a fSilent for guest. */
-        void sigStorageDeviceChange(CMediumAttachment comAttachment, bool fRemoved, bool fSilent);
-        /** Notifies about storage medium @a attachment state change. */
-        void sigMediumChange(CMediumAttachment comAttachment);
         /** Notifies about VRDE device state change. */
         void sigVRDEChange();
         /** Notifies about recording state change. */
