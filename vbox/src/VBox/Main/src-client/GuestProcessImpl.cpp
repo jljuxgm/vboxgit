@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 77587 2019-03-06 16:40:18Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 78234 2019-04-20 23:49:01Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1608,6 +1608,12 @@ int GuestProcess::i_waitForOutput(GuestWaitEvent *pEvent, uint32_t uHandle, uint
     return vrc;
 }
 
+/**
+ * Undocumented, you guess what it does.
+ *
+ * @note Similar code in GuestFile::i_waitForStatusChange() and
+ *       GuestSession::i_waitForStatusChange().
+ */
 int GuestProcess::i_waitForStatusChange(GuestWaitEvent *pEvent, uint32_t uTimeoutMS,
                                         ProcessStatus_T *pProcessStatus, int *prcGuest)
 {
@@ -1648,6 +1654,10 @@ int GuestProcess::i_waitForStatusChange(GuestWaitEvent *pEvent, uint32_t uTimeou
         if (prcGuest)
             *prcGuest = (int)lGuestRc;
     }
+    /* waitForEvent may also return VERR_GSTCTL_GUEST_ERROR like we do above, so make prcGuest is set. */
+    else if (vrc == VERR_GSTCTL_GUEST_ERROR && prcGuest)
+        *prcGuest = pEvent->GuestResult();
+    Assert(vrc != VERR_GSTCTL_GUEST_ERROR || !prcGuest || *prcGuest != (int)0xcccccccc);
 
     LogFlowFuncLeaveRC(vrc);
     return vrc;
