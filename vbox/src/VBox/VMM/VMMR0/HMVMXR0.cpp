@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 73988 2018-08-31 09:43:26Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 73991 2018-08-31 10:06:30Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -13461,9 +13461,6 @@ HMVMX_EXIT_DECL hmR0VmxExitVmread(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
         rcStrict = VINF_SUCCESS;
     }
     return rcStrict;
-
-
-    return VINF_SUCCESS;
 }
 
 
