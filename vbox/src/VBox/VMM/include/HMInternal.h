@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 72967 2018-07-08 10:38:08Z vboxsync $ */
+/* $Id: HMInternal.h 72983 2018-07-08 16:15:47Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1116,7 +1116,7 @@ VMMR0_INT_DECL(PHMGLOBALCPUINFO) hmR0GetCurrentCpu(void);
 VMMR0_INT_DECL(int) hmR0EnterCpu(PVMCPU pVCpu);
 
 # ifdef VBOX_STRICT
-VMMR0_INT_DECL(void) hmR0DumpRegs(PVMCPU pVCpu, PCPUMCTX pCtx);
+VMMR0_INT_DECL(void) hmR0DumpRegs(PVMCPU pVCpu);
 VMMR0_INT_DECL(void) hmR0DumpDescriptor(PCX86DESCHC pDesc, RTSEL Sel, const char *pszMsg);
 # endif
 

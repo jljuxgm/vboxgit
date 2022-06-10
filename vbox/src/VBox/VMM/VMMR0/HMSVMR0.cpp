@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72970 2018-07-08 11:02:29Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72983 2018-07-08 16:15:47Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4058,7 +4058,7 @@ static void hmR0SvmReportWorldSwitchError(PVMCPU pVCpu, int rcVMRun)
     if (rcVMRun == VERR_SVM_INVALID_GUEST_STATE)
     {
 #ifdef VBOX_STRICT
-        hmR0DumpRegs(pVCpu, &pVCpu->cpum.GstCtx);
+        hmR0DumpRegs(pVCpu);
         PCSVMVMCB pVmcb = hmR0SvmGetCurrentVmcb(pVCpu);
         Log4(("ctrl.u32VmcbCleanBits                 %#RX32\n",   pVmcb->ctrl.u32VmcbCleanBits));
         Log4(("ctrl.u16InterceptRdCRx                %#x\n",      pVmcb->ctrl.u16InterceptRdCRx));

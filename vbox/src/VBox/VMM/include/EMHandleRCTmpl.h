@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 72634 2018-06-20 16:08:42Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 72983 2018-07-08 16:15:47Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -260,7 +260,7 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
             break;
 
         case VINF_EM_HM_PATCH_TPR_INSTR:
-            rc = HMR3PatchTprInstr(pVM, pVCpu, &pVCpu->cpum.GstCtx);
+            rc = HMR3PatchTprInstr(pVM, pVCpu);
             break;
 #endif
 
