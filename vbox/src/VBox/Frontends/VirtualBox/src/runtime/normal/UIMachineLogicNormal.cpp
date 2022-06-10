@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 70201 2017-12-18 14:21:05Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 75339 2018-11-09 07:02:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -350,6 +350,17 @@ void UIMachineLogicNormal::cleanupMenu()
 }
 #endif /* !VBOX_WS_MAC */
 
+void UIMachineLogicNormal::prepareActionGroups()
+{
+    /* Call to base-class: */
+    UIMachineLogic::prepareActionGroups();
+
+    /* Restrict 'Adjust Window', 'Guest Autoresize', 'Status Bar' and 'Resize' actions for 'View' menu: */
+    actionPool()->toRuntime()->setRestrictionForMenuView(UIActionRestrictionLevel_Logic,
+                                                         (UIExtraDataMetaDefs::RuntimeMenuViewActionType)
+                                                         (UIExtraDataMetaDefs::RuntimeMenuViewActionType_Multiscreen));
+}
+
 void UIMachineLogicNormal::cleanupMachineWindows()
 {
     /* Do not destroy machine-window(s) if they destroyed already: */
@@ -387,4 +398,3 @@ void UIMachineLogicNormal::cleanupActionConnections()
     /* Call to base-class: */
     UIMachineLogic::cleanupActionConnections();
 }
-

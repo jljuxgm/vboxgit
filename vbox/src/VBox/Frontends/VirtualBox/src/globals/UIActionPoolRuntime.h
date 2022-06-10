@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 75291 2018-11-06 15:03:21Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 75339 2018-11-09 07:02:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -205,8 +205,6 @@ protected slots:
 
     /** Prepares 'View' : 'Virtual Screen #' menu (Normal, Scale). */
     void sltPrepareMenuViewScreen();
-    /** Prepares 'View' : 'Virtual Screen #' menu (Fullscreen, Seamless). */
-    void sltPrepareMenuViewMultiscreen();
 
     /** Handles 'View' : 'Virtual Screen #' menu : 'Toggle' action trigger. */
     void sltHandleActionTriggerViewScreenToggle();

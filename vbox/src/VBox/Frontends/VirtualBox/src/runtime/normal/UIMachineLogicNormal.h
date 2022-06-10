@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.h 75339 2018-11-09 07:02:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class declaration.
  */
@@ -74,6 +74,7 @@ private slots:
 private:
 
     /* Prepare helpers: */
+    virtual void prepareActionGroups() /* override */;
     void prepareActionConnections();
     void prepareMachineWindows();
 #ifndef VBOX_WS_MAC
@@ -97,4 +98,3 @@ private:
 };
 
 #endif /* !___UIMachineLogicNormal_h___ */
-
