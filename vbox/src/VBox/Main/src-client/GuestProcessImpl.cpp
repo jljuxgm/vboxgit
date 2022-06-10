@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 77071 2019-01-31 12:04:47Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 77074 2019-01-31 13:04:40Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1640,13 +1640,10 @@ int GuestProcess::i_waitForStatusChange(GuestWaitEvent *pEvent, uint32_t uTimeou
 }
 
 /* static */
-bool GuestProcess::i_waitResultImpliesEx(ProcessWaitResult_T waitResult,
-                                         ProcessStatus_T procStatus, uint32_t uProcFlags,
-                                         uint32_t uProtocol)
+bool GuestProcess::i_waitResultImpliesEx(ProcessWaitResult_T waitResult, ProcessStatus_T procStatus, uint32_t uProtocol)
 {
-    /** @todo r=bird: If you subscribe to HN, which the 'u' in 'uProcFlags'
-     *        indicates, you should actually be using 'fProc'! */
-    RT_NOREF(uProtocol, uProcFlags);
+    RT_NOREF(uProtocol);
+
     bool fImplies;
 
     switch (waitResult)
