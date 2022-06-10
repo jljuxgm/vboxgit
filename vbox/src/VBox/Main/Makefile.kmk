@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75648 2018-11-21 18:02:38Z vboxsync $
+# $Id: Makefile.kmk 76064 2018-12-07 20:12:42Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -319,9 +319,9 @@ if defined(VBOX_WITH_SDS) && "$(KBUILD_TARGET)" == "win"
  	src-all/AutoCaller.cpp \
  	src-all/VirtualBoxBase.cpp \
  	src-all/VirtualBoxErrorInfoImpl.cpp \
- 	src-all/VirtualBoxClientListImpl.cpp \
  	src-global/VirtualBoxSDSImpl.cpp
  VBoxSDS_SOURCES.win = \
+ 	src-global/win/VirtualBoxClientListImpl.cpp \
  	src-global/win/VBoxSDS.cpp \
  	src-global/win/VBoxSDS.rc
  $(call KB_FN_DO_PASS0_ON_TARGET,VBoxSDS) # Sets VBoxSDS_0_OUTDIR
