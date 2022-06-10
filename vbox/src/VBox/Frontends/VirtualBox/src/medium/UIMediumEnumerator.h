@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 73931 2018-08-28 18:59:00Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 73938 2018-08-29 07:31:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -64,7 +64,7 @@ public:
 
     /* API: Medium-enumeration stuff: */
     bool isMediumEnumerationInProgress() const { return m_fMediumEnumerationInProgress; }
-    void enumerateMedia();
+    void enumerateMedia(const CMediumVector &mediaList = CMediumVector());
     void refreshMedia();
 
 private slots:
