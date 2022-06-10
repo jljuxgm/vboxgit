@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 73483 2018-08-03 12:47:32Z vboxsync $ */
+/* $Id: DBGFStack.cpp 73486 2018-08-03 13:59:46Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -488,6 +488,7 @@ static bool dbgUnwindPeAmd64DoOne(RTDBGMOD hMod, PCIMAGE_RUNTIME_FUNCTION_ENTRY 
                         case IMAGE_AMD64_UWOP_SET_FPREG:
                             iFrameReg = uOpInfo;
                             offFrameReg = pInfo->FrameOffset * 16;
+                            pThis->u.x86.auRegs[X86_GREG_xSP] = pThis->u.x86.auRegs[iFrameReg] - offFrameReg;
                             iOpcode++;
                             break;
 
