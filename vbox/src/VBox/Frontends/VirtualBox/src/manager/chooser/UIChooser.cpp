@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 77224 2019-02-08 15:38:03Z vboxsync $ */
+/* $Id: UIChooser.cpp 77228 2019-02-08 18:05:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -166,8 +166,6 @@ void UIChooser::prepareConnections()
     /* Setup chooser-model connections: */
     connect(m_pChooserModel, &UIChooserModel::sigRootItemMinimumWidthHintChanged,
             m_pChooserView, &UIChooserView::sltMinimumWidthHintChanged);
-    connect(m_pChooserModel, &UIChooserModel::sigFocusChanged,
-            m_pChooserView, &UIChooserView::sltFocusChanged);
     connect(m_pChooserModel, &UIChooserModel::sigToolMenuRequested,
             this, &UIChooser::sltToolMenuRequested);
 

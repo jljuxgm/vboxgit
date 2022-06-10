@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 77224 2019-02-08 15:38:03Z vboxsync $ */
+/* $Id: UIChooserItem.h 77228 2019-02-08 18:05:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -211,6 +211,8 @@ public:
       * @{ */
         /** Makes sure item is visible. */
         virtual void makeSureItsVisible();
+        /** Makes sure passed child @a pItem is visible. */
+        virtual void makeSureItemIsVisible(UIChooserItem *pItem) { Q_UNUSED(pItem); }
 
         /** Returns pixmap item representation. */
         virtual QPixmap toPixmap() = 0;

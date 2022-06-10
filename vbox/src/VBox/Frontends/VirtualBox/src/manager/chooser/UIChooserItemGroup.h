@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 77224 2019-02-08 15:38:03Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 77228 2019-02-08 18:05:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -98,6 +98,9 @@ public:
       * @{ */
         /** Class-name used for drag&drop mime-data format. */
         static QString className();
+
+        /** Makes sure passed child @a pItem is visible. */
+        virtual void makeSureItemIsVisible(UIChooserItem *pItem) /* override */;
     /** @} */
 
 protected:

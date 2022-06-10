@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 77224 2019-02-08 15:38:03Z vboxsync $ */
+/* $Id: UIChooserView.cpp 77228 2019-02-08 18:05:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -97,21 +97,6 @@ UIChooserView::UIChooserView(UIChooser *pParent)
 {
     /* Prepare: */
     prepare();
-}
-
-void UIChooserView::sltFocusChanged()
-{
-    /* Make sure focus-item set: */
-    const UIChooserItem *pFocusItem = chooser() && chooser()->model()
-                                    ? chooser()->model()->focusItem()
-                                    : 0;
-    if (!pFocusItem)
-        return;
-
-    const QSize viewSize = viewport()->size();
-    QRectF geo = pFocusItem->geometry();
-    geo &= QRectF(geo.topLeft(), viewSize);
-    ensureVisible(geo, 0, 0);
 }
 
 void UIChooserView::sltMinimumWidthHintChanged(int iHint)

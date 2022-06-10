@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 77224 2019-02-08 15:38:03Z vboxsync $ */
+/* $Id: UIChooserModel.h 77228 2019-02-08 18:05:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -78,8 +78,6 @@ signals:
       * @{ */
         /** Notifies about selection changed. */
         void sigSelectionChanged();
-        /** Notifies about focus changed. */
-        void sigFocusChanged();
 
         /** Notifies about root sliding started. */
         void sigSlidingStarted();

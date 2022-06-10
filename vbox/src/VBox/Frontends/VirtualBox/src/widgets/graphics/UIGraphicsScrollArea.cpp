@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollArea.cpp 77203 2019-02-07 17:06:17Z vboxsync $ */
+/* $Id: UIGraphicsScrollArea.cpp 77228 2019-02-08 18:05:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollArea class implementation.
  */
@@ -95,6 +95,41 @@ void UIGraphicsScrollArea::setViewport(QIGraphicsWidget *pViewport)
 QIGraphicsWidget *UIGraphicsScrollArea::viewport() const
 {
     return m_pViewport;
+}
+
+void UIGraphicsScrollArea::makeSureRectIsVisible(const QRectF &rect)
+{
+    /* Make sure rect size is bound by the scroll-area size: */
+    QRectF actualRect = rect;
+    QSizeF actualRectSize = actualRect.size();
+    actualRectSize = actualRectSize.boundedTo(size());
+    actualRect.setSize(actualRectSize);
+
+    switch (m_enmOrientation)
+    {
+        /* Scroll viewport horizontally: */
+        case Qt::Horizontal:
+        {
+            /* If rectangle is at least partially right of visible area: */
+            if (actualRect.x() + actualRect.width() > size().width())
+                m_pScrollBar->setValue(m_pScrollBar->value() + actualRect.x() + actualRect.width() - size().width());
+            /* If rectangle is at least partially left of visible area: */
+            else if (actualRect.x() < 0)
+                m_pScrollBar->setValue(m_pScrollBar->value() + actualRect.x());
+            break;
+        }
+        /* Scroll viewport vertically: */
+        case Qt::Vertical:
+        {
+            /* If rectangle is at least partially under visible area: */
+            if (actualRect.y() + actualRect.height() > size().height())
+                m_pScrollBar->setValue(m_pScrollBar->value() + actualRect.y() + actualRect.height() - size().height());
+            /* If rectangle is at least partially above visible area: */
+            else if (actualRect.y() < 0)
+                m_pScrollBar->setValue(m_pScrollBar->value() + actualRect.y());
+            break;
+        }
+    }
 }
 
 bool UIGraphicsScrollArea::eventFilter(QObject *pObject, QEvent *pEvent)
