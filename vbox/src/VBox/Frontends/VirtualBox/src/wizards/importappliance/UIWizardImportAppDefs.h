@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppDefs.h 78037 2019-04-08 11:47:34Z vboxsync $ */
+/* $Id: UIWizardImportAppDefs.h 78044 2019-04-08 15:34:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppDefs class declaration.
  */
@@ -28,7 +28,7 @@
 /* GUI includes: */
 #include "UIApplianceImportEditorWidget.h"
 
-/* Typedefs: */
+/** Safe pointer to import appliance editor widget. */
 typedef QPointer<UIApplianceImportEditorWidget> ImportAppliancePointer;
 Q_DECLARE_METATYPE(ImportAppliancePointer);
 
