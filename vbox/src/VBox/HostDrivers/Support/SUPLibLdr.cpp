@@ -1,4 +1,4 @@
-/* $Id: SUPLibLdr.cpp 71136 2018-02-27 13:17:36Z vboxsync $ */
+/* $Id: SUPLibLdr.cpp 74675 2018-10-08 12:50:40Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Loader related bits.
  */
@@ -196,8 +196,8 @@ static DECLCALLBACK(int) supLoadModuleResolveImport(RTLDRMOD hLdrMod, const char
     /*
      * Lookup symbol.
      */
+    /* Skip the 64-bit ELF import prefix first. */
     /** @todo is this actually used??? */
-    /* skip the 64-bit ELF import prefix first. */
     if (!strncmp(pszSymbol, RT_STR_TUPLE("SUPR0$")))
         pszSymbol += sizeof("SUPR0$") - 1;
 
