@@ -1,4 +1,4 @@
-/* $Id: cipher-openssl.cpp 74314 2018-09-17 15:54:12Z vboxsync $ */
+/* $Id: cipher-openssl.cpp 74315 2018-09-17 15:57:18Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Symmetric Cipher using OpenSSL.
  */
@@ -141,7 +141,7 @@ RTDECL(uint32_t) RTCrCipherRelease(RTCRCIPHER hCipher)
 
     uint32_t cRefs = ASMAtomicDecU32(&pThis->cRefs);
     Assert(cRefs < 1024);
-    if (!cRefs == 0)
+    if (cRefs == 0)
         return rtCrCipherDestroy(pThis);
     return cRefs;
 }
