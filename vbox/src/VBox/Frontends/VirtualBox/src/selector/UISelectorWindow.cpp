@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 74089 2018-09-05 16:38:03Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 74216 2018-09-12 10:43:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -24,6 +24,7 @@
 # include <QResizeEvent>
 # include <QStandardPaths>
 # include <QStatusBar>
+# include <QStyle>
 # include <QToolButton>
 # include <QTimer>
 
