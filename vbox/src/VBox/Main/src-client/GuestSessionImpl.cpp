@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 72070 2018-04-30 12:30:52Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 72804 2018-07-03 00:20:29Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -889,7 +889,7 @@ HRESULT GuestSession::i_directoryCopyFlagFromStr(const com::Utf8Str &strFlags, D
             pszNext = RTStrStripL(pszNext);
 
             const char * const pszComma = strchr(pszNext, ',');
-            size_t cchKeyword = pszComma ? pszComma - pszNext : strlen(pszComma);
+            size_t cchKeyword = pszComma ? pszComma - pszNext : strlen(pszNext);
             while (cchKeyword > 0 && RT_C_IS_SPACE(pszNext[cchKeyword - 1]))
                 cchKeyword--;
 
@@ -1356,7 +1356,7 @@ HRESULT GuestSession::i_fileCopyFlagFromStr(const com::Utf8Str &strFlags, FileCo
             pszNext = RTStrStripL(pszNext);
 
             const char * const pszComma = strchr(pszNext, ',');
-            size_t cchKeyword = pszComma ? pszComma - pszNext : strlen(pszComma);
+            size_t cchKeyword = pszComma ? pszComma - pszNext : strlen(pszNext);
             while (cchKeyword > 0 && RT_C_IS_SPACE(pszNext[cchKeyword - 1]))
                 cchKeyword--;
 
