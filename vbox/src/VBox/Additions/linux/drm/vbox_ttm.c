@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 75421 2018-11-13 12:43:19Z vboxsync $ */
+/* $Id: vbox_ttm.c 75546 2018-11-17 12:43:14Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -402,12 +402,12 @@ int vbox_bo_create(struct drm_device *dev, int size, int align,
 
 	ret = ttm_bo_init(&vbox->ttm.bdev, &vboxbo->bo, size,
 			  ttm_bo_type_device, &vboxbo->placement,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 17, 0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 17, 0) && !defined(RHEL_76)
 			  align >> PAGE_SHIFT, false, NULL, acc_size,
 #else
 			  align >> PAGE_SHIFT, false, acc_size,
 #endif
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(RHEL_72)) && !defined(RHEL_76)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(RHEL_72)
 			  NULL, NULL, vbox_bo_ttm_destroy);
 #else
 			  NULL, vbox_bo_ttm_destroy);
