@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 73119 2018-07-13 12:44:55Z vboxsync $ */
+/* $Id: VBoxGlobal.h 73196 2018-07-18 10:45:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -801,7 +801,7 @@ private:
         enum LaunchRunning  m_enmLaunchRunning;
 #endif
 
-        /** Holds the --settingspw option value. */
+        /** Holds the --settingspw option value or the content of --settingspwfile. */
         char  m_astrSettingsPw[256];
         /** Holds the --settingspwfile option value. */
         bool  m_fSettingsPwSet;
