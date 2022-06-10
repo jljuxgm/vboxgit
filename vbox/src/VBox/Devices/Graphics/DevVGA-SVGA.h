@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 77193 2019-02-07 10:06:19Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -258,12 +258,12 @@ typedef struct VMSVGAState
     /** Set by vmsvgaR3RunExtCmdOnFifoThread when it temporarily resumes the FIFO
      * thread and does not want it do anything but the command. */
     bool volatile               fFifoExtCommandWakeup;
-#if defined(DEBUG_GMR_ACCESS) || defined(DEBUG_FIFO_ACCESS)
+// #if defined(DEBUG_GMR_ACCESS)  /* Needed for alignment. */
     /** GMR debug access handler type handle. */
     PGMPHYSHANDLERTYPE          hGmrAccessHandlerType;
+// #endif
     /** FIFO debug access handler type handle. */
     PGMPHYSHANDLERTYPE          hFifoAccessHandlerType;
-#endif
     /** Number of GMRs. */
     uint32_t                    cGMR;
     uint32_t                    uScreenOffset; /* Used only for loading older saved states. */
