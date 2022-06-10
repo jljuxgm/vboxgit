@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 74752 2018-10-11 08:08:42Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 75737 2018-11-26 15:44:41Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -747,11 +747,12 @@ int GuestBase::dispatchGeneric(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
                     int idx = 1; /* Current parameter index. */
                     CALLBACKDATA_MSG_REPLY dataCb;
                     /* pSvcCb->mpaParms[0] always contains the context ID. */
-                    vrc = pSvcCb->mpaParms[idx++].getUInt32(&dataCb.uType);
+                    vrc = HGCMSvcGetU32(&pSvcCb->mpaParms[idx++], &dataCb.uType);
                     AssertRCReturn(vrc, vrc);
-                    vrc = pSvcCb->mpaParms[idx++].getUInt32(&dataCb.rc);
+                    vrc = HGCMSvcGetU32(&pSvcCb->mpaParms[idx++], &dataCb.rc);
                     AssertRCReturn(vrc, vrc);
-                    vrc = pSvcCb->mpaParms[idx++].getPointer(&dataCb.pvPayload, &dataCb.cbPayload);
+                    vrc = HGCMSvcGetPv(&pSvcCb->mpaParms[idx++], &dataCb.pvPayload,
+                                       &dataCb.cbPayload);
                     AssertRCReturn(vrc, vrc);
 
                     GuestWaitEventPayload evPayload(dataCb.uType, dataCb.pvPayload, dataCb.cbPayload);
