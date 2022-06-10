@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 75812 2018-11-29 12:57:29Z vboxsync $ */
+/* $Id: VBoxStub.cpp 76370 2018-12-22 04:24:37Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -42,6 +42,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/dir.h>
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
