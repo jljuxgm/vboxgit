@@ -1,4 +1,4 @@
-; $Id: __U4D.asm 75248 2018-11-05 10:35:20Z vboxsync $
+; $Id: __U4D.asm 75263 2018-11-05 21:02:30Z vboxsync $
 ;; @file
 ; Compiler support routines.
 ;
@@ -76,7 +76,7 @@ else
                 ;
                 test    cx, cx
                 jnz     do_it_the_hard_way
-                
+
                 div     bx              ; dx:ax / bx -> ax=quotient, dx=remainder
 
                 mov     bx, dx          ; remainder in cx:bx, and we know cx=0
