@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77228 2019-02-08 18:05:46Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77297 2019-02-13 12:58:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1413,6 +1413,7 @@ void UIChooserModel::prepareContextMenu()
     {
         m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Settings));
         m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Clone));
+        m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Export));
         m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Move));
         m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Remove));
         m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_AddGroup));

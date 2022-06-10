@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 77297 2019-02-13 12:58:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* Qt includes: */
+#include <QAbstractButton>
 #include <QFileInfo>
 #include <QVariant>
 
@@ -36,9 +37,12 @@
 #include "CVFSExplorer.h"
 
 
-UIWizardExportApp::UIWizardExportApp(QWidget *pParent, const QStringList &selectedVMNames)
+UIWizardExportApp::UIWizardExportApp(QWidget *pParent,
+                                     const QStringList &selectedVMNames /* = QStringList() */,
+                                     bool fFastTraverToPage2 /* = false */)
     : UIWizard(pParent, WizardType_ExportAppliance)
     , m_selectedVMNames(selectedVMNames)
+    , m_fFastTraverToPage2(fFastTraverToPage2)
 {
 #ifndef VBOX_WS_MAC
     /* Assign watermark: */
@@ -225,6 +229,11 @@ void UIWizardExportApp::prepare()
 
     /* Call to base-class: */
     UIWizard::prepare();
+
+    /* Now, when we are ready, we can
+     * fast traver to page 2 if requested: */
+    if (m_fFastTraverToPage2)
+        button(QWizard::NextButton)->click();
 }
 
 bool UIWizardExportApp::exportVMs(CAppliance &comAppliance)
