@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSerial1.py 73623 2018-08-10 17:35:18Z vboxsync $
+# $Id: tdSerial1.py 75170 2018-10-30 09:04:34Z vboxsync $
 
 """
 VirtualBox Validation Kit - Serial port testing #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 73623 $"
+__version__ = "$Revision: 75170 $"
 
 
 # Standard Python imports.
@@ -232,7 +232,7 @@ class tdSerial1(vbox.TestDriver):
                 oFile = open(self.sLocation, 'rb');
                 sFmt = '=I';
                 cBytes = 4;
-                for i in xrange(1048576 / 4):
+                for i in xrange(1048576 // 4):
                     _ = i;
                     sData = oFile.read(cBytes);
                     tupUnpacked = struct.unpack(sFmt, sData);
