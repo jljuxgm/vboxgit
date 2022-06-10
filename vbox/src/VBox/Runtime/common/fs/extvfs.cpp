@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 76305 2018-12-20 00:03:23Z vboxsync $ */
+/* $Id: extvfs.cpp 76306 2018-12-20 00:13:23Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -1043,8 +1043,8 @@ static int rtFsExtInode_MapBlockToFs(PRTFSEXTVOL pThis, PRTFSEXTINODE pInode, ui
         *piBlockFs = pInode->aiBlocks[iBlock];
     else
     {
-        uint32_t cEntriesPerBlockMap = pThis->cbBlock << sizeof(uint32_t);
-        uint32_t *paBlockMap = (uint32_t *)RTMemTmpAllocZ(cEntriesPerBlockMap * sizeof(uint32_t));
+        uint32_t cEntriesPerBlockMap = (uint32_t)(pThis->cbBlock >> sizeof(uint32_t));
+        uint32_t *paBlockMap = (uint32_t *)RTMemTmpAllocZ(pThis->cbBlock);
 
         if (!paBlockMap)
             return VERR_NO_MEMORY;
@@ -1205,7 +1205,7 @@ static DECLCALLBACK(int) rtFsExtFile_Read(void *pvThis, RTFOFF off, PCRTSGBUF pS
         }
         else
         {
-            if (off + cbRead <= (uint64_t)pInode->ObjInfo.cbObject)
+            if ((uint64_t)off + cbRead <= (uint64_t)pInode->ObjInfo.cbObject)
                 rc = rtFsExtInode_Read(pThis->pVol, pThis->pInode, (uint64_t)off, pSgBuf->paSegs[0].pvSeg, cbRead, NULL);
             else
             {
