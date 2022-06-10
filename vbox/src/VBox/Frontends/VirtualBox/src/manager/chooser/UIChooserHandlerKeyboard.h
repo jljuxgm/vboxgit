@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.h 77844 2019-03-22 10:41:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class declaration.
  */
@@ -43,8 +43,8 @@ enum UIItemShiftDirection
     UIItemShiftDirection_Down
 };
 
-/* Item shift size: */
-enum UIItemShiftSize
+/** Item shift types. */
+enum UIItemShiftType
 {
     UIItemShiftSize_Item,
     UIItemShiftSize_Full
@@ -73,11 +73,11 @@ private:
     bool handleKeyRelease(QKeyEvent *pEvent) const;
 
     /* Helper: Item shift delegate: */
-    void shift(UIItemShiftDirection direction, UIItemShiftSize size) const;
+    void shift(UIItemShiftDirection enmDirection, UIItemShiftType enmShiftType) const;
 
     /* Variables: */
     UIChooserModel *m_pModel;
-    QMap<int, UIItemShiftSize> m_shiftMap;
+    QMap<int, UIItemShiftType> m_shiftMap;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_chooser_UIChooserHandlerKeyboard_h */
