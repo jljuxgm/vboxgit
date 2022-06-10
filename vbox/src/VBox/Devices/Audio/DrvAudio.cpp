@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 74007 2018-08-31 17:57:44Z vboxsync $ */
+/* $Id: DrvAudio.cpp 74010 2018-08-31 20:37:06Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2089,7 +2089,7 @@ static int drvAudioHostInit(PDRVAUDIO pThis, PCFGMNODE pCfgHandle)
     rc = pThis->pHostDrvAudio->pfnGetConfig(pThis->pHostDrvAudio, &pThis->BackendCfg);
     if (RT_FAILURE(rc))
     {
-        LogRel(("Audio: Getting host driver configuration failed with %Rrc\n", pThis->szName, rc));
+        LogRel(("Audio: Getting configuration for driver '%s' failed with %Rrc\n", pThis->szName, rc));
         return VERR_AUDIO_BACKEND_INIT_FAILED;
     }
 
