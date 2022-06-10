@@ -1,4 +1,4 @@
-/* $Id: ldrELF.cpp 69437 2017-10-27 15:57:26Z vboxsync $ */
+/* $Id: ldrELF.cpp 73531 2018-08-06 17:08:57Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Executable and Linker Format (ELF).
  */
@@ -34,6 +34,7 @@
 
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
+#include <iprt/dbg.h>
 #include <iprt/string.h>
 #include <iprt/log.h>
 #include <iprt/err.h>
@@ -42,6 +43,7 @@
 #include <iprt/formats/elf-i386.h>
 #include <iprt/formats/elf-amd64.h>
 #include "internal/ldr.h"
+#include "internal/dbgmod.h"
 
 
 
