@@ -1,4 +1,4 @@
-/* $Id: manifest2.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: manifest2.cpp 73041 2018-07-10 18:07:58Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the core.
  */
@@ -469,7 +469,7 @@ static DECLCALLBACK(int) rtManifestAttributeCompare(PRTSTRSPACECORE pStr, void *
     /*
      * Compare them.
      */
-    if (strcmp(pAttr1->pszValue, pAttr2->pszValue))
+    if (RTStrICmp(pAttr1->pszValue, pAttr2->pszValue))
     {
         if (*pEquals->pszCurEntry)
             RTStrPrintf(pEquals->pszError, pEquals->cbError,
