@@ -1,6 +1,6 @@
-# $Id: .scm-settings 76565 2019-01-01 04:23:20Z vboxsync $
+# $Id: .scm-settings 76569 2019-01-01 04:35:23Z vboxsync $
 ## @file
-# Source code massager settings for the Debugger.
+# Source code massager settings for the PDM Devices and Drivers.
 #
 
 #
