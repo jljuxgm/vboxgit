@@ -1,6 +1,6 @@
 # $Id: Makefile.kmk 76795 2019-01-14 04:30:24Z vboxsync $
 ## @file
-# VirtualBox Validation Kit - Utilities.
+# VirtualBox Validation Kit - File system tests.
 #
 
 #
@@ -24,46 +24,16 @@
 # terms and conditions of either the GPL or the CDDL or both.
 #
 
-SUB_DEPTH = ../../../..
+SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 #
-# Include sub-makefiles.
+# File System Performance (think shared folders).
 #
-include $(PATH_SUB_CURRENT)/TestExecServ/Makefile.kmk
-include $(PATH_SUB_CURRENT)/cpu/Makefile.kmk
-include $(PATH_SUB_CURRENT)/fs/Makefile.kmk
-include $(PATH_SUB_CURRENT)/misc/Makefile.kmk
-include $(PATH_SUB_CURRENT)/network/Makefile.kmk
-ifneq ($(KBUILD_TARGET),os2)
- include $(PATH_SUB_CURRENT)/serial/Makefile.kmk
-endif
-ifeq ($(KBUILD_TARGET),win)
- include $(PATH_SUB_CURRENT)/nt/Makefile.kmk
-endif
-ifeq ($(KBUILD_TARGET),linux)
- include $(PATH_SUB_CURRENT)/usb/Makefile.kmk
-endif
+PROGRAMS += FsPerf
+FsPerf_TEMPLATE = VBoxValidationKitR3
+FsPerf_SOURCES  = FsPerf.cpp
 
-ifdef VBOX_WITH_AUDIO_VALIDATIONKIT
- include $(PATH_SUB_CURRENT)/audio/Makefile.kmk
-endif
-
-#
-# On OS/2 the binaries requires the libc DLLs
-# (no official static linking support).
-#
-INSTALLS.os2 += ValidationKitOs2LibC
-ValidationKitOs2LibC_TEMPLATE = VBoxValidationKitR3
-ValidationKitOs2LibC_SOURCES = \
-	$(KBUILD_BIN_PATH)/libc06.dll \
-	$(KBUILD_BIN_PATH)/libc061.dll \
-	$(KBUILD_BIN_PATH)/libc062.dll \
-	$(KBUILD_BIN_PATH)/libc063.dll \
-	$(KBUILD_BIN_PATH)/libc064.dll \
-	$(KBUILD_BIN_PATH)/libc065.dll \
-	$(KBUILD_BIN_PATH)/libc066.dll
-
-
+$(evalcall def_vbox_validationkit_process_python_sources)
 include $(FILE_KBUILD_SUB_FOOTER)
 
