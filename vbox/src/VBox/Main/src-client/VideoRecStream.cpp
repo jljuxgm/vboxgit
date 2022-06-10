@@ -1,4 +1,4 @@
-/* $Id: VideoRecStream.cpp 75255 2018-11-05 18:43:22Z vboxsync $ */
+/* $Id: VideoRecStream.cpp 75256 2018-11-05 18:54:52Z vboxsync $ */
 /** @file
  * Video recording stream code.
  */
@@ -1063,8 +1063,6 @@ int CaptureStream::writeVideoVPX(uint64_t uTimeStampMs, PVIDEORECVIDEOFRAME pFra
 
 /**
  * Locks a recording stream.
- *
- * @param   pStream             Recording stream to lock.
  */
 void CaptureStream::lock(void)
 {
@@ -1074,8 +1072,6 @@ void CaptureStream::lock(void)
 
 /**
  * Unlocks a locked recording stream.
- *
- * @param   pStream             Recording stream to unlock.
  */
 void CaptureStream::unlock(void)
 {
