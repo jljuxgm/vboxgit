@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73581 2018-08-09 09:27:19Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73582 2018-08-09 09:50:52Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1535,8 +1535,8 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
         && pSink->In.pStreamRecSource == NULL)
         return rc;
 
-    /* Number of detected disabled streams of this sink. */
-    uint8_t cStreamsDisabled = 0;
+    /* Number of disabled streams of this sink. */
+    uint8_t cStreamsDisabled = pSink->cStreams;
 
     PAUDMIXSTREAM pMixStream, pMixStreamNext;
     RTListForEachSafe(&pSink->lstStreams, pMixStream, pMixStreamNext, AUDMIXSTREAM, Node)
@@ -1586,15 +1586,16 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
                 AssertFailedStmt(rc = VERR_NOT_IMPLEMENTED);
                 continue;
             }
+        }
 
-            PDMAUDIOSTREAMSTS strmSts = pConn->pfnStreamGetStatus(pConn, pStream);
+        PDMAUDIOSTREAMSTS strmSts = pConn->pfnStreamGetStatus(pConn, pStream);
 
-            /* Is the stream not enabled and also is not in a pending disable state anymore? */
-            if (   !(strmSts & PDMAUDIOSTREAMSTS_FLAG_ENABLED)
-                && !(strmSts & PDMAUDIOSTREAMSTS_FLAG_PENDING_DISABLE))
-            {
-                cStreamsDisabled++;
-            }
+        /* Is the stream enabled or in pending disable state?
+         * Don't consider this stream as being disabled then. */
+        if (   (strmSts & PDMAUDIOSTREAMSTS_FLAG_ENABLED)
+            || (strmSts & PDMAUDIOSTREAMSTS_FLAG_PENDING_DISABLE))
+        {
+            cStreamsDisabled--;
         }
 
         Log3Func(("\t%s: cPlayed/cCaptured=%RU32, rc2=%Rrc\n", pStream->szName, cfProc, rc2));
