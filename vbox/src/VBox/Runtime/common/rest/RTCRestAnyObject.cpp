@@ -1,4 +1,4 @@
-/* $Id: RTCRestAnyObject.cpp 74386 2018-09-20 15:46:38Z vboxsync $ */
+/* $Id: RTCRestAnyObject.cpp 74402 2018-09-21 09:25:55Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestAnyObject implementation.
  */
@@ -577,5 +577,19 @@ const char *RTCRestAnyObject::typeName(void) const
 /*static*/ DECLCALLBACK(RTCRestObjectBase *) RTCRestAnyObject::createInstance(void)
 {
     return new (std::nothrow) RTCRestAnyObject();
+}
+
+
+/**
+ * @copydoc RTCRestObjectBase::FNDESERIALIZEINSTANCEFROMJSON
+ */
+/*static*/ DECLCALLBACK(int)
+RTCRestAnyObject::deserializeInstanceFromJson(RTCRestJsonCursor const &a_rCursor, RTCRestObjectBase **a_ppInstance)
+{
+    RTCRestObjectBase *pObj = createInstance();
+    *a_ppInstance = pObj;
+    if (pObj)
+        return pObj->deserializeFromJson(a_rCursor);
+    return a_rCursor.m_pPrimary->addError(a_rCursor, VERR_NO_MEMORY, "Out of memory");
 }
 

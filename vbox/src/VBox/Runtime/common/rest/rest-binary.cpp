@@ -1,4 +1,4 @@
-/* $Id: rest-binary.cpp 74386 2018-09-20 15:46:38Z vboxsync $ */
+/* $Id: rest-binary.cpp 74402 2018-09-21 09:25:55Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestBinary and Descendants.
  */
@@ -250,6 +250,20 @@ const char *RTCRestBinary::typeName(void) const
 /*static*/ DECLCALLBACK(RTCRestObjectBase *) RTCRestBinary::createInstance(void)
 {
     return new (std::nothrow) RTCRestBinary();
+}
+
+
+/**
+ * @copydoc RTCRestObjectBase::FNDESERIALIZEINSTANCEFROMJSON
+ */
+/*static*/ DECLCALLBACK(int)
+RTCRestBinary::deserializeInstanceFromJson(RTCRestJsonCursor const &a_rCursor, RTCRestObjectBase **a_ppInstance)
+{
+    RTCRestObjectBase *pObj;
+    *a_ppInstance = pObj = createInstance();
+    if (pObj)
+        return pObj->deserializeFromJson(a_rCursor);
+    return a_rCursor.m_pPrimary->addError(a_rCursor, VERR_NO_MEMORY, "Out of memory");
 }
 
 
