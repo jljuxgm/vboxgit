@@ -1,4 +1,4 @@
-/* $Id: service.cpp 72827 2018-07-03 15:28:17Z vboxsync $ */
+/* $Id: service.cpp 73511 2018-08-05 14:20:03Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -1090,7 +1090,7 @@ void DragAndDropService::guestCall(VBOXHGCMCALLHANDLE callHandle, uint32_t u32Cl
             pClient->setDeferred(callHandle, u32Function, cParms, paParms);
             m_clientQueue.push_back(u32ClientID);
         }
-        catch (std::bad_alloc)
+        catch (std::bad_alloc &)
         {
             rc = VERR_NO_MEMORY;
             /* Don't report to guest. */
