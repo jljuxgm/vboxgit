@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 74610 2018-10-04 12:07:36Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 74611 2018-10-04 12:15:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
@@ -92,7 +92,7 @@ void UIApplianceImportEditorWidget::prepareWidgets()
     m_pMACComboBox = new QComboBox;
     if (m_pMACComboBox)
     {
-        m_pMACComboBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::QSizePolicy::Preferred);
+        m_pMACComboBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
         /* Add into layout: */
         m_pOptionsLayout->addWidget(m_pMACComboBox, 0, 1);
     }
