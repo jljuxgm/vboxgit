@@ -1,4 +1,4 @@
-/* $Id: ldr.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: ldr.cpp 73150 2018-07-16 10:03:41Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader.
  */
@@ -155,4 +155,22 @@ RTDECL(int) RTLdrClose(RTLDRMOD hLdrMod)
     return VINF_SUCCESS;
 }
 RT_EXPORT_SYMBOL(RTLdrClose);
+
+
+RTDECL(RTLDRARCH) RTLdrGetHostArch(void)
+{
+#if   defined(RT_ARCH_AMD64)
+    RTLDRARCH enmArch = RTLDRARCH_AMD64;
+#elif defined(RT_ARCH_X86)
+    RTLDRARCH enmArch = RTLDRARCH_X86_32;
+#elif defined(RT_ARCH_ARM) || defined(RT_ARCH_ARM32)
+    RTLDRARCH enmArch = RTLDRARCH_ARM32;
+#elif defined(RT_ARCH_ARM64)
+    RTLDRARCH enmArch = RTLDRARCH_ARM64;
+#else
+    RTLDRARCH enmArch = RTLDRARCH_WHATEVER;
+#endif
+    return enmArch;
+}
+RT_EXPORT_SYMBOL(RTLdrGetHostArch);
 

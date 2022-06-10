@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 72268 2018-05-20 23:29:26Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 73150 2018-07-16 10:03:41Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -185,6 +185,15 @@ VMMR3DECL(int) DBGFR3AsSymbolByAddr(PUVM pUVM, RTDBGAS hDbgAs, PCDBGFADDRESS pAd
     return VERR_INTERNAL_ERROR;
 }
 VMMR3DECL(int) DBGFR3AsSymbolByName(PUVM pUVM, RTDBGAS hDbgAs, const char *pszSymbol, PRTDBGSYMBOL pSymbol, PRTDBGMOD phMod)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3AsLinkModule(PUVM pUVM, RTDBGAS hDbgAs, RTDBGMOD hMod, PCDBGFADDRESS pModAddress, RTDBGSEGIDX iModSeg, uint32_t fFlags)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3ModInMem(PUVM pUVM, PCDBGFADDRESS pImageAddr, uint32_t fFlags, const char *pszName,
+                              RTLDRARCH enmArch, uint32_t cbImage, PRTDBGMOD phDbgMod, PRTERRINFO pErrInfo)
 {
     return VERR_INTERNAL_ERROR;
 }

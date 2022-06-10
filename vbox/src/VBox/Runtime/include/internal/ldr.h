@@ -1,4 +1,4 @@
-/* $Id: ldr.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: ldr.h 73150 2018-07-16 10:03:41Z vboxsync $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -496,7 +496,6 @@ int rtldrMachoOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, RTF
 
 
 DECLHIDDEN(int) rtLdrReadAt(RTLDRMOD hLdrMod, void *pvBuf, uint32_t iDbgInfo, RTFOFF off, size_t cb);
-DECLHIDDEN(const char *) rtLdrArchName(RTLDRARCH enmArch);
 
 RT_C_DECLS_END
 

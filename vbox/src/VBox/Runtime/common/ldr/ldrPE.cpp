@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: ldrPE.cpp 73150 2018-07-16 10:03:41Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -3950,7 +3950,7 @@ int rtldrPEOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, RTFOFF
     {
         if (!(fFlags & RTLDR_O_IGNORE_ARCH_IF_NO_CODE))
             return RTERRINFO_LOG_SET_F(pErrInfo, VERR_LDR_ARCH_MISMATCH, "Image is for '%s', only accepting images for '%s'.",
-                                       rtldrPEGetArchName(FileHdr.Machine), rtLdrArchName(enmArch));
+                                       rtldrPEGetArchName(FileHdr.Machine), RTLdrArchName(enmArch));
         fArchNoCodeCheckPending = true;
     }
 
@@ -3969,7 +3969,7 @@ int rtldrPEOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, RTFOFF
     if (fArchNoCodeCheckPending && OptHdr.SizeOfCode != 0)
         return RTERRINFO_LOG_SET_F(pErrInfo, VERR_LDR_ARCH_MISMATCH,
                                    "Image is for '%s' and contains code (%#x), only accepting images for '%s' with code.",
-                                   rtldrPEGetArchName(FileHdr.Machine), OptHdr.SizeOfCode, rtLdrArchName(enmArch));
+                                   rtldrPEGetArchName(FileHdr.Machine), OptHdr.SizeOfCode, RTLdrArchName(enmArch));
 
     /*
      * Read and validate section headers.

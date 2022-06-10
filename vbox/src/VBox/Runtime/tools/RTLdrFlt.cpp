@@ -1,4 +1,4 @@
-/* $Id: RTLdrFlt.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
+/* $Id: RTLdrFlt.cpp 73150 2018-07-16 10:03:41Z vboxsync $ */
 /** @file
  * IPRT - Utility for translating addresses into symbols+offset.
  */
@@ -224,7 +224,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 69434 $\n");
+                RTPrintf("$Revision: 73150 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:
@@ -256,7 +256,7 @@ int main(int argc, char **argv)
                 if (enmOpenMethod == kOpenMethod_FromImage)
                     rc = RTDbgModCreateFromImage(&hMod, pszModule, NULL, enmArch, hDbgCfg);
                 else
-                    rc = RTDbgModCreateFromPeImage(&hMod, pszModule, NULL, NIL_RTLDRMOD, cbImage, uTimestamp, hDbgCfg);
+                    rc = RTDbgModCreateFromPeImage(&hMod, pszModule, NULL, NULL, cbImage, uTimestamp, hDbgCfg);
                 if (RT_FAILURE(rc))
                     return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTDbgModCreateFromImage(,%s,,) -> %Rrc", pszModule, rc);
 
