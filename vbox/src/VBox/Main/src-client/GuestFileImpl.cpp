@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 77075 2019-01-31 13:18:05Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 77097 2019-02-01 09:27:26Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -81,7 +81,7 @@ public:
             {
                 AssertPtrReturn(mFile, E_POINTER);
                 int rc2 = mFile->signalWaitEvent(aType, aEvent);
-                NOREF(rc2);
+                RT_NOREF(rc2);
 #ifdef DEBUG_andy
                 LogFlowFunc(("Signalling events of type=%RU32, file=%p resulted in rc=%Rrc\n",
                              aType, mFile, rc2));
