@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 74566 2018-10-02 06:01:50Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 74568 2018-10-02 06:26:37Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5946,6 +5946,14 @@ IEM_CIMPL_DEF_1(iemCImpl_invlpg, RTGCPTR, GCPtrPage)
         return iemRaiseGeneralProtectionFault0(pVCpu);
     Assert(!pVCpu->cpum.GstCtx.eflags.Bits.u1VM);
     IEM_CTX_ASSERT(pVCpu, CPUMCTX_EXTRN_CR0 | CPUMCTX_EXTRN_CR3 | CPUMCTX_EXTRN_CR4 | CPUMCTX_EXTRN_EFER);
+
+#ifdef VBOX_WITH_NESTED_HWVIRT_VMX
+    if (IEM_VMX_IS_PROCCTLS_SET(pVCpu, VMX_PROC_CTLS_INVLPG_EXIT))
+    {
+        Log(("invlpg: Guest intercept (%RGp) -> VM-exit\n", GCPtrPage));
+        iemVmxVmexitInstrInvlpg(pVCpu, GCPtrPage, cbInstr);
+    }
+#endif
 
     if (IEM_SVM_IS_CTRL_INTERCEPT_SET(pVCpu, SVM_CTRL_INTERCEPT_INVLPG))
     {
