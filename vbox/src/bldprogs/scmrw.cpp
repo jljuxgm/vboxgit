@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 76459 2018-12-25 04:11:31Z vboxsync $ */
+/* $Id: scmrw.cpp 76460 2018-12-25 04:19:10Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2634,7 +2634,12 @@ bool rewrite_Fix_Err_H(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTREAM pOut, PCSC
 
                 /* Special hack for error info. */
                 if (cchFilename == sizeof("errmsgdata.h") - 1 && memcmp(pchFilename, RT_STR_TUPLE("errmsgdata.h")) == 0)
-                    iUsageLevel = 3;
+                    iUsageLevel = 4;
+
+                /* Special hack for code templates. */
+                if (   cchFilename >= sizeof(".cpp.h")
+                    && memcmp(&pchFilename[cchFilename - sizeof(".cpp.h") + 1], RT_STR_TUPLE(".cpp.h")) == 0)
+                    iUsageLevel = 4;
                 continue;
             }
         }
