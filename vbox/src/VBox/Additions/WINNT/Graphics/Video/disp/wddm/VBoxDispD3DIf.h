@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.h 72010 2018-04-25 10:45:46Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.h 75445 2018-11-14 12:19:32Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -17,6 +17,10 @@
 
 #ifndef ___VBoxDispD3DIf_h___
 #define ___VBoxDispD3DIf_h___
+
+#ifdef VBOX_WITH_MESA3D
+#include "gallium/VBoxGallium.h"
+#endif
 
 /* D3D headers */
 #include <iprt/critsect.h>
@@ -90,6 +94,10 @@ typedef struct VBOXWDDMDISP_D3D
     IDirect3D9Ex *pD3D9If;
     VBOXDISPD3D D3D;
 
+#ifdef VBOX_WITH_MESA3D
+    /* Gallium backend. */
+    IGalliumStack *pGalliumStack;
+#endif
 } VBOXWDDMDISP_D3D;
 
 void VBoxDispD3DGlobalInit(void);

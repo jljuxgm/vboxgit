@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiKmt.cpp 74477 2018-09-26 12:47:25Z vboxsync $ */
+/* $Id: VBoxUhgsmiKmt.cpp 75445 2018-11-14 12:19:32Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -332,6 +332,11 @@ static HRESULT vboxUhgsmiKmtQueryCaps(PVBOXUHGSMI_PRIVATE_KMT pHgsmi, uint32_t *
 
     if (Query.enmHwType == VBOXVIDEO_HWTYPE_VBOX)
         *pu32Caps = Query.u.vbox.u32VBox3DCaps;
+#ifdef VBOX_WITH_MESA3D
+    /** @todo Remove the hack. u32VBox3DCaps should not be used with Gallium. */
+    else if (Query.enmHwType == VBOXVIDEO_HWTYPE_VMSVGA)
+        *pu32Caps = CR_VBOX_CAP_TEX_PRESENT | CR_VBOX_CAP_CMDVBVA;
+#endif
     else
         *pu32Caps = 0;
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 71934 2018-04-20 11:45:18Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 75445 2018-11-14 12:19:32Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -296,6 +296,9 @@ typedef struct VBOXWDDMDISP_ALLOCATION
     VBOXWDDM_DIRTYREGION DirtyRegion; /* <- dirty region to notify host about */
     VBOXWDDM_SURFACE_DESC SurfDesc;
     PVBOXWDDMDISP_SWAPCHAIN pSwapchain;
+#ifdef VBOX_WITH_MESA3D
+    uint32_t hostID;
+#endif
 } VBOXWDDMDISP_ALLOCATION, *PVBOXWDDMDISP_ALLOCATION;
 
 typedef struct VBOXWDDMDISP_RESOURCE

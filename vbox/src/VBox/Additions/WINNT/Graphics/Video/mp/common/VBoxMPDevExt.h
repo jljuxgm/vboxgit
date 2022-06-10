@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 71862 2018-04-16 12:49:15Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 75445 2018-11-14 12:19:32Z vboxsync $ */
 /** @file
  * VBox Miniport device extension header
  */
@@ -40,8 +40,19 @@ typedef struct VBOXWDDM_HWRESOURCES
     PHYSICAL_ADDRESS phVRAM;
     ULONG cbVRAM;
     ULONG ulApertureSize;
-} VBOXWDDM_HWRESOURCES, *PVBOXWDDM_HWRESOURCES;
+#ifdef VBOX_WITH_MESA3D
+    PHYSICAL_ADDRESS phFIFO;
+    ULONG cbFIFO;
+    PHYSICAL_ADDRESS phIO;
+    ULONG cbIO;
 #endif
+} VBOXWDDM_HWRESOURCES, *PVBOXWDDM_HWRESOURCES;
+
+#ifdef VBOX_WITH_MESA3D
+typedef struct VBOXWDDM_EXT_GA *PVBOXWDDM_EXT_GA;
+#endif
+
+#endif /* VBOX_WDDM_MINIPORT */
 
 #define VBOXMP_MAX_VIDEO_MODES 128
 typedef struct VBOXMP_COMMON
@@ -214,6 +225,10 @@ typedef struct _VBOXMP_DEVEXT
 #ifdef VBOX_WDDM_MINIPORT
    VBOXVIDEO_HWTYPE enmHwType;
    VBOXWDDM_HWRESOURCES HwResources;
+#endif
+
+#ifdef VBOX_WITH_MESA3D
+   PVBOXWDDM_EXT_GA pGa;                       /* Pointer to Gallium backend data. */
 #endif
 
 } VBOXMP_DEVEXT, *PVBOXMP_DEVEXT;
