@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 73770 2018-08-20 06:44:55Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 73943 2018-08-29 10:10:48Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5847,8 +5847,8 @@ DECLINLINE(void) hmR0VmxSetPendingXcptSS(PVMCPU pVCpu, uint32_t u32ErrCode)
 /**
  * Decodes the memory operand of a VM-exit due to instruction execution.
  *
- * For instructions with two operands, the second operand is usually found in the
- * VM-exit qualification field.
+ * The VM-exit qualification field provides the displacement field for memory
+ * operand instructions, if any.
  *
  * @returns Strict VBox status code (i.e. informational status codes too).
  * @retval  VINF_SUCCESS if the operand was successfully decoded.
