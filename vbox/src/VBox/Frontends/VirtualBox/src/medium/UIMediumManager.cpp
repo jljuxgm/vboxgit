@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 77277 2019-02-12 14:45:05Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 77359 2019-02-19 11:16:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -488,7 +488,8 @@ void UIMediumManagerWidget::sltHandleMediumEnumerationFinish()
 void UIMediumManagerWidget::sltAddMedium()
 {
     QString strDefaultMachineFolder = vboxGlobal().virtualBox().GetSystemProperties().GetDefaultMachineFolder();
-    vboxGlobal().openMediumWithFileOpenDialog(currentMediumType(), this, strDefaultMachineFolder);
+    vboxGlobal().openMediumWithFileOpenDialog(currentMediumType(), this,
+                                              strDefaultMachineFolder, true /* use most recent medium folder */);
 }
 
 void UIMediumManagerWidget::sltCreateMedium()
