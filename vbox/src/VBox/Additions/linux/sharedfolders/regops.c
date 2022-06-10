@@ -1,4 +1,4 @@
-/* $Id: regops.c 77559 2019-03-04 16:19:23Z vboxsync $ */
+/* $Id: regops.c 77561 2019-03-04 19:56:32Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -1360,10 +1360,10 @@ struct file_operations vbsf_reg_fops = {
 struct inode_operations vbsf_reg_iops = {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 18)
     .getattr = vbsf_inode_getattr,
-    .setattr = vbsf_inode_setattr
 #else
-    .revalidate = vbsf_inode_revalidate
+    .revalidate = vbsf_inode_revalidate,
 #endif
+    .setattr = vbsf_inode_setattr,
 };
 
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFoldersInline.h 77537 2019-03-02 15:27:42Z vboxsync $ */
+/* $Id: VBoxGuestLibSharedFoldersInline.h 77561 2019-03-04 19:56:32Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Shared Folders Host Request Helpers (ring-0).
  */
@@ -397,6 +397,49 @@ DECLINLINE(int) VbglR0SfHostReqSetObjInfo(SHFLROOT idRoot, VBOXSFOBJINFOREQ *pRe
 
     pReq->Parms.f32Flags.type                   = VMMDevHGCMParmType_32bit;
     pReq->Parms.f32Flags.u.value32              = SHFL_INFO_SET | SHFL_INFO_FILE;
+
+    pReq->Parms.cb32.type                       = VMMDevHGCMParmType_32bit;
+    pReq->Parms.cb32.u.value32                  = sizeof(pReq->ObjInfo);
+
+    if (g_fHostFeatures & VMMDEV_HVF_HGCM_EMBEDDED_BUFFERS)
+    {
+        pReq->Parms.pInfo.type                  = VMMDevHGCMParmType_Embedded;
+        pReq->Parms.pInfo.u.Embedded.cbData     = sizeof(pReq->ObjInfo);
+        pReq->Parms.pInfo.u.Embedded.offData    = RT_UOFFSETOF(VBOXSFOBJINFOREQ, ObjInfo) - sizeof(VBGLIOCIDCHGCMFASTCALL);
+        pReq->Parms.pInfo.u.Embedded.fFlags     = VBOX_HGCM_F_PARM_DIRECTION_BOTH;
+    }
+    else
+    {
+        pReq->Parms.pInfo.type                  = VMMDevHGCMParmType_LinAddr;
+        pReq->Parms.pInfo.u.LinAddr.cb          = sizeof(pReq->ObjInfo);
+        pReq->Parms.pInfo.u.LinAddr.uAddr       = (uintptr_t)&pReq->ObjInfo;
+    }
+
+    int vrc = VbglR0HGCMFastCall(g_SfClient.handle, &pReq->Hdr, cbReq);
+    if (RT_SUCCESS(vrc))
+        vrc = pReq->Call.header.result;
+    return vrc;
+}
+
+
+/**
+ * SHFL_FN_INFORMATION[SHFL_INFO_SET | SHFL_INFO_SIZE] request.
+ */
+DECLINLINE(int) VbglR0SfHostReqSetFileSizeOld(SHFLROOT idRoot, VBOXSFOBJINFOREQ *pReq, uint64_t hHostFile)
+{
+    uint32_t const cbReq = g_fHostFeatures & VMMDEV_HVF_HGCM_EMBEDDED_BUFFERS
+                         ? sizeof(*pReq) : RT_UOFFSETOF(VBOXSFOBJINFOREQ, ObjInfo);
+    VBGLIOCIDCHGCMFASTCALL_INIT(&pReq->Hdr, VbglR0PhysHeapGetPhysAddr(pReq), &pReq->Call, g_SfClient.idClient,
+                                SHFL_FN_INFORMATION, SHFL_CPARMS_INFORMATION, cbReq);
+
+    pReq->Parms.id32Root.type                   = VMMDevHGCMParmType_32bit;
+    pReq->Parms.id32Root.u.value32              = idRoot;
+
+    pReq->Parms.u64Handle.type                  = VMMDevHGCMParmType_64bit;
+    pReq->Parms.u64Handle.u.value64             = hHostFile;
+
+    pReq->Parms.f32Flags.type                   = VMMDevHGCMParmType_32bit;
+    pReq->Parms.f32Flags.u.value32              = SHFL_INFO_SET | SHFL_INFO_SIZE;
 
     pReq->Parms.cb32.type                       = VMMDevHGCMParmType_32bit;
     pReq->Parms.cb32.u.value32                  = sizeof(pReq->ObjInfo);
