@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 78296 2019-04-25 15:52:38Z vboxsync $ */
+/* $Id: MachineImpl.cpp 78352 2019-04-29 16:05:46Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -15181,8 +15181,9 @@ HRESULT Machine::applyDefaults(const com::Utf8Str &aFlags)
     mRecordingSettings->i_applyDefaults();
 
     /* Initialize default BIOS settings here */
-    mHWData->mAPIC = osType->i_recommendedIOAPIC();
-    mHWData->mHWVirtExEnabled = osType->i_recommendedVirtEx();
+    /* Hardware virtualization must be ON by default */
+    //mHWData->mAPIC = true;
+    //mHWData->mHWVirtExEnabled = true;
 
     rc = osType->COMGETTER(RecommendedRAM)(&mHWData->mMemorySize);
     if (FAILED(rc)) return rc;
