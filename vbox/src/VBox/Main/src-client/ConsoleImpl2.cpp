@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 75495 2018-11-15 20:53:00Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 75700 2018-11-24 14:02:41Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3837,7 +3837,8 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
             {
                 LONG64 winId = 0;
                 /** @todo deal with multimonitor setup */
-                Assert(cMonitorCount == 1);
+                /** @todo The device should not need "HostWindowId". */
+                // Assert(cMonitorCount == 1);
                 hrc = pFramebuffer->COMGETTER(WinId)(&winId);
                 InsertConfigInteger(pCfg, "HostWindowId", winId);
                 pFramebuffer->Release();
