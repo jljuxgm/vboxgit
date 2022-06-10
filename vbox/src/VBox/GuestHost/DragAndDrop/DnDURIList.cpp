@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DnDURIList.cpp 78021 2019-04-05 08:25:19Z vboxsync $ */
 /** @file
  * DnD - URI list class.
  */
@@ -64,20 +64,17 @@ int DnDURIList::addEntry(const char *pcszSource, const char *pcszTarget, DNDURIL
             DnDURIObject *pObjFile = new DnDURIObject(DnDURIObject::Type_File, pcszSource, pcszTarget);
             if (pObjFile)
             {
-                if (fFlags & DNDURILIST_FLAGS_KEEP_OPEN) /* Shall we keep the file open while being added to this list? */
-                {
-                    /** @todo Add a standard fOpen mode for this list. */
-                    rc = pObjFile->Open(DnDURIObject::View_Source, RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_DENY_WRITE);
-                }
-                else /* Just query the information without opening the file. */
-                    rc = pObjFile->QueryInfo(DnDURIObject::View_Source);
-
+                /** @todo Add a standard fOpen mode for this list. */
+                rc = pObjFile->Open(DnDURIObject::View_Source, RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_DENY_WRITE);
                 if (RT_SUCCESS(rc))
                 {
                     m_lstTree.append(pObjFile);
 
                     m_cTotal++;
                     m_cbTotal += pObjFile->GetSize();
+
+                    if (!(fFlags & DNDURILIST_FLAGS_KEEP_OPEN)) /* Shall we keep the file open while being added to this list? */
+                        pObjFile->Close();
                 }
                 else
                     delete pObjFile;
