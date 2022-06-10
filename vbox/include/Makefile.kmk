@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78176 2019-04-17 16:28:47Z vboxsync $
+# $Id: Makefile.kmk 78309 2019-04-26 07:02:31Z vboxsync $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -71,6 +71,7 @@ VBOX_HDRS_R3_ONLY := \
 	VBox/vscsi.h \
 	VBox/ExtPack/% \
 	VBox/GuestHost/SharedClipboard-win.h \
+	VBox/GuestHost/SharedClipboard-uri.h \
 	VBox/GuestHost/DragAndDrop.h \
 	VBox/HostServices/Service.h \
 	iprt/win/% \
