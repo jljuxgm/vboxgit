@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 75801 2018-11-29 01:54:46Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 75854 2018-11-30 19:36:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -178,10 +178,8 @@ int Guest::i_dispatchToSession(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
             HGCMSvcGetU32(&pSvcCb->mpaParms[3], &dataCb.uFlags);
             HGCMSvcGetPv(&pSvcCb->mpaParms[4], &dataCb.pvData, &dataCb.cbData);
 
-            if (   (         dataCb.uStatus == PROC_STS_ERROR)
-                   /** @todo Note: Due to legacy reasons we cannot change uFlags to
-                    *              int32_t, so just cast it for now. */
-                && ((int32_t)dataCb.uFlags  == VERR_TOO_MUCH_DATA))
+            if (   dataCb.uStatus == PROC_STS_ERROR
+                && (int32_t)dataCb.uFlags == VERR_TOO_MUCH_DATA)
             {
                 LogFlowFunc(("Requested command with too much data, skipping dispatching ...\n"));
 
