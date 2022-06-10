@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 74745 2018-10-10 13:20:09Z vboxsync $ */
+/* $Id: dbgmodcodeview.cpp 74981 2018-10-22 19:48:54Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -591,7 +591,7 @@ static int rtDbgModCvAddSymbol(PRTDBGMODCV pThis, uint32_t iSeg, uint64_t off, c
         rc = rtDbgModCvAdjustSegAndOffset(pThis, &iSeg, &off);
         if (RT_SUCCESS(rc))
         {
-            rc = RTDbgModSymbolAdd(pThis->hCnt, pszName, iSeg, off, cbSym, 0 /*fFlags*/, NULL);
+            rc = RTDbgModSymbolAdd(pThis->hCnt, pszName, iSeg, off, cbSym, RTDBGSYMBOLADD_F_ADJUST_SIZES_ON_CONFLICT, NULL);
 
             /* Simple duplicate symbol mangling, just to get more details. */
             if (rc == VERR_DBG_DUPLICATE_SYMBOL && cchName < _2K)
@@ -608,6 +608,9 @@ static int rtDbgModCvAddSymbol(PRTDBGMODCV pThis, uint32_t iSeg, uint64_t off, c
                 }
 
             }
+            else if (rc == VERR_DBG_ADDRESS_CONFLICT && cbSym)
+                rc = RTDbgModSymbolAdd(pThis->hCnt, pszName, iSeg, off, cbSym,
+                                       RTDBGSYMBOLADD_F_REPLACE_SAME_ADDR | RTDBGSYMBOLADD_F_ADJUST_SIZES_ON_CONFLICT, NULL);
 
             Log(("Symbol: %04x:%08x %.*s [%Rrc]\n", iSeg, off, cchName, pchName, rc));
             if (rc == VERR_DBG_ADDRESS_CONFLICT || rc == VERR_DBG_DUPLICATE_SYMBOL)
