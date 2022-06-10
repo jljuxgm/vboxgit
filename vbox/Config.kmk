@@ -1,4 +1,4 @@
-# $Id: Config.kmk 74281 2018-09-14 18:46:34Z vboxsync $
+# $Id: Config.kmk 74294 2018-09-16 15:12:40Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -609,7 +609,7 @@ VBOX_MIDL_PROXY_CLSID    := {0bb3b78c-1807-4249-5ba5-ea42d66af0bf}
 VBOX_MIDL_PROXY_CLSID_IS := {0x0bb3b78c,0x1807,0x4249,{0x5b,0xa5,0xea,0x42,0xd6,0x6a,0xf0,0xbf}}
 # Whether to also ship 32-bit main API on 64-bit systems.
 if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), solaris.amd64 win.amd64)
- if !defined(VBOX_ONLY_VALIDATIONKIT) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBOX_ONLY_DOCS)
+ if !defined(VBOX_ONLY_VALIDATIONKIT) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBOX_ONLY_DOCS) && !defined(VBOX_ONLY_EXTPACKS)
   VBOX_WITH_32_ON_64_MAIN_API = 1
  endif
 endif
@@ -7372,7 +7372,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 74281 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 74294 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
