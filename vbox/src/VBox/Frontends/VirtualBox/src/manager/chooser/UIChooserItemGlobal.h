@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 74482 2018-09-26 16:10:40Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 74596 2018-10-03 14:25:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -225,12 +225,18 @@ private:
 
     /** @name Item stuff.
       * @{ */
-        /** Holds item hover lightness. */
-        int  m_iHoverLightness;
-        /** Holds item highlight lightness. */
-        int  m_iHighlightLightness;
-        /** Holds item hover highlight lightness. */
-        int  m_iHoverHighlightLightness;
+        /** Holds item minimum default lightness. */
+        int  m_iDefaultLightnessMin;
+        /** Holds item maximum default lightness. */
+        int  m_iDefaultLightnessMax;
+        /** Holds item minimum hover lightness. */
+        int  m_iHoverLightnessMin;
+        /** Holds item maximum hover lightness. */
+        int  m_iHoverLightnessMax;
+        /** Holds item minimum highlight lightness. */
+        int  m_iHighlightLightnessMin;
+        /** Holds item maximum highlight lightness. */
+        int  m_iHighlightLightnessMax;
 
         /** Holds item pixmap. */
         QPixmap  m_pixmap;

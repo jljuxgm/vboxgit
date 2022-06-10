@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74578 2018-10-02 12:59:35Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74596 2018-10-03 14:25:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -440,6 +440,9 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                         m_pToolBar->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
                         m_pToolBar->setContextMenuPolicy(Qt::CustomContextMenu);
                         m_pToolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+#ifdef VBOX_WS_MAC
+                        m_pToolBar->emulateMacToolbar();
+#endif
 
                         /* Add tool-bar into layout: */
                         pLayoutRight->addWidget(m_pToolBar);
