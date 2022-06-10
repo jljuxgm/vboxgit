@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 72603 2018-06-18 15:43:38Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class implementation.
  */
@@ -111,7 +111,7 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
                 pDiskCntLayout->setColumnMinimumWidth(0, iWidth);
                 m_pDiskSelector = new UIMediaComboBox(m_pDiskCnt);
                 {
-                    m_pDiskSelector->setType(UIMediumType_HardDisk);
+                    m_pDiskSelector->setType(UIMediumDeviceType_HardDisk);
                     m_pDiskSelector->repopulate();
                 }
                 m_pVMMButton = new QIToolButton(m_pDiskCnt);

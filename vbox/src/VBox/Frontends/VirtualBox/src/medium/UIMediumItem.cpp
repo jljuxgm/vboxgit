@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 72406 2018-06-01 09:48:31Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -214,7 +214,7 @@ void UIMediumItem::refresh()
     m_details.m_aFields.clear();
     switch (m_enmType)
     {
-        case UIMediumType_HardDisk:
+        case UIMediumDeviceType_HardDisk:
         {
             m_details.m_aLabels << QApplication::translate("UIMediumManager", "Format:");
             m_details.m_aLabels << QApplication::translate("UIMediumManager", "Storage details:");
@@ -234,8 +234,8 @@ void UIMediumItem::refresh()
 
             break;
         }
-        case UIMediumType_DVD:
-        case UIMediumType_Floppy:
+        case UIMediumDeviceType_DVD:
+        case UIMediumDeviceType_Floppy:
         {
             m_details.m_aLabels << QApplication::translate("UIMediumManager", "Attached to:");
             m_details.m_aLabels << QApplication::translate("UIMediumManager", "UUID:");
@@ -365,7 +365,7 @@ bool UIMediumItemHD::releaseFrom(CMachine comMachine)
         if (!comMachine.isOk())
         {
             /* Return failure: */
-            msgCenter().cannotDetachDevice(comMachine, UIMediumType_HardDisk, location(),
+            msgCenter().cannotDetachDevice(comMachine, UIMediumDeviceType_HardDisk, location(),
                                            StorageSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice()),
                                            treeWidget());
             return false;

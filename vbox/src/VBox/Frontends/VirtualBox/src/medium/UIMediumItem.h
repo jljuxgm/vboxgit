@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 72406 2018-06-01 09:48:31Z vboxsync $ */
+/* $Id: UIMediumItem.h 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -60,8 +60,8 @@ public:
     /** Defines UIMedium wrapped by <i>this</i> item. */
     void setMedium(const UIMedium &guiMedium);
 
-    /** Returns UIMediumType of the wrapped UIMedium. */
-    UIMediumType mediumType() const { return m_guiMedium.type(); }
+    /** Returns UIMediumDeviceType of the wrapped UIMedium. */
+    UIMediumDeviceType mediumType() const { return m_guiMedium.type(); }
 
     /** Returns KMediumState of the wrapped UIMedium. */
     KMediumState state() const { return m_guiMedium.state(); }

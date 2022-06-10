@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRunPageBasic.cpp 71948 2018-04-20 15:34:35Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRunPageBasic class implementation.
  */
@@ -73,7 +73,7 @@ UIWizardFirstRunPageBasic::UIWizardFirstRunPageBasic(const QString &strMachineId
             m_pMediaSelector = new UIMediaComboBox(this);
             {
                 m_pMediaSelector->setMachineId(strMachineId);
-                m_pMediaSelector->setType(UIMediumType_DVD);
+                m_pMediaSelector->setType(UIMediumDeviceType_DVD);
                 m_pMediaSelector->repopulate();
             }
             m_pSelectMediaButton = new QIToolButton(this);

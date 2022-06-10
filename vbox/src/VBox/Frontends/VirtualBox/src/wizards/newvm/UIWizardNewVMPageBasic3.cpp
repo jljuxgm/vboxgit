@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 71948 2018-04-20 15:34:35Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -67,7 +67,7 @@ void UIWizardNewVMPage3::updateVirtualDiskSource()
 void UIWizardNewVMPage3::getWithFileOpenDialog()
 {
     /* Get opened medium id: */
-    QString strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_HardDisk, thisImp());
+    QString strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumDeviceType_HardDisk, thisImp());
     if (!strMediumId.isNull())
     {
         /* Update medium-combo if necessary: */
@@ -146,7 +146,7 @@ UIWizardNewVMPageBasic3::UIWizardNewVMPageBasic3()
             pDiskLayout->setColumnMinimumWidth(0, iWidth);
             m_pDiskSelector = new UIMediaComboBox(this);
             {
-                m_pDiskSelector->setType(UIMediumType_HardDisk);
+                m_pDiskSelector->setType(UIMediumDeviceType_HardDisk);
                 m_pDiskSelector->repopulate();
             }
             m_pVMMButton = new QIToolButton(this);

@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIPopupCenter.h 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class declaration.
  */
@@ -172,7 +172,7 @@ public:
     void cannotToggleAudioInput(QWidget *pParent, const CAudioAdapter &comAdapter,
                                 const QString &strMachineName, bool fEnable);
     void cannotMountImage(QWidget *pParent, const QString &strMachineName, const QString &strMediumName);
-    void cannotOpenMedium(QWidget *pParent, const CVirtualBox &comVBox, UIMediumType enmType, const QString &strLocation);
+    void cannotOpenMedium(QWidget *pParent, const CVirtualBox &comVBox, UIMediumDeviceType enmType, const QString &strLocation);
     void cannotSaveMachineSettings(QWidget *pParent, const CMachine &comMachine);
 
 private slots:

@@ -1,4 +1,4 @@
-/* $Id: UISession.h 73944 2018-08-29 12:15:37Z vboxsync $ */
+/* $Id: UISession.h 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -414,7 +414,7 @@ private:
     /* Common helpers: */
     void setPointerShape(const uchar *pShapeData, bool fHasAlpha, uint uXHot, uint uYHot, uint uWidth, uint uHeight);
     bool preprocessInitialization();
-    bool mountAdHocImage(KDeviceType enmDeviceType, UIMediumType enmMediumType, const QString &strMediumName);
+    bool mountAdHocImage(KDeviceType enmDeviceType, UIMediumDeviceType enmMediumType, const QString &strMediumName);
     bool postprocessInitialization();
     int countOfVisibleWindows();
     /** Loads VM settings. */

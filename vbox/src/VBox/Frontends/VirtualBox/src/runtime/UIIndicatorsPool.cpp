@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 73871 2018-08-24 10:41:54Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -222,7 +222,7 @@ private:
                 /* Append attachment data: */
                 strAttData += s_strTableRow4
                     .arg(gpConverter->toString(StorageSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice())))
-                    .arg(UIMedium(attachment.GetMedium(), UIMediumType_HardDisk).location());
+                    .arg(UIMedium(attachment.GetMedium(), UIMediumDeviceType_HardDisk).location());
                 fAttachmentsPresent = true;
             }
             /* Append controller data: */
@@ -286,7 +286,7 @@ private:
                 if (attachment.GetType() != KDeviceType_DVD)
                     continue;
                 /* Append attachment data: */
-                UIMedium vboxMedium(attachment.GetMedium(), UIMediumType_DVD);
+                UIMedium vboxMedium(attachment.GetMedium(), UIMediumDeviceType_DVD);
                 strAttData += s_strTableRow4
                     .arg(gpConverter->toString(StorageSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice())))
                     .arg(vboxMedium.isNull() || vboxMedium.isHostDrive() ? vboxMedium.name() : vboxMedium.location());
@@ -355,7 +355,7 @@ private:
                 if (attachment.GetType() != KDeviceType_Floppy)
                     continue;
                 /* Append attachment data: */
-                UIMedium vboxMedium(attachment.GetMedium(), UIMediumType_Floppy);
+                UIMedium vboxMedium(attachment.GetMedium(), UIMediumDeviceType_Floppy);
                 strAttData += s_strTableRow4
                     .arg(gpConverter->toString(StorageSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice())))
                     .arg(vboxMedium.isNull() || vboxMedium.isHostDrive() ? vboxMedium.name() : vboxMedium.location());

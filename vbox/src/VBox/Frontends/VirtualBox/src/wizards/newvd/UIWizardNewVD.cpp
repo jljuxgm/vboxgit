@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 73597 2018-08-09 17:32:32Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -109,7 +109,7 @@ bool UIWizardNewVD::createVirtualDisk()
     m_virtualDisk = virtualDisk;
 
     /* Inform VBoxGlobal about it: */
-    vboxGlobal().createMedium(UIMedium(m_virtualDisk, UIMediumType_HardDisk, KMediumState_Created));
+    vboxGlobal().createMedium(UIMedium(m_virtualDisk, UIMediumDeviceType_HardDisk, KMediumState_Created));
 
     return true;
 }

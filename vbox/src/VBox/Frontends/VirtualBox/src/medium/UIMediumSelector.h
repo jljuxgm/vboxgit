@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 73034 2018-07-10 12:24:47Z vboxsync $ */
+/* $Id: UIMediumSelector.h 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -47,7 +47,7 @@ signals:
 
 public:
 
-    UIMediumSelector(UIMediumType enmMediumType, const QString &machineName = QString(),
+    UIMediumSelector(UIMediumDeviceType enmMediumType, const QString &machineName = QString(),
                      const QString &machineSettigFilePath = QString(), QWidget *pParent = 0);
     QStringList selectedMediumIds() const;
 
@@ -103,7 +103,7 @@ private:
 
     QVBoxLayout          *m_pMainLayout;
     QITreeWidget         *m_pTreeWidget;
-    UIMediumType          m_enmMediumType;
+    UIMediumDeviceType          m_enmMediumType;
     QIDialogButtonBox    *m_pButtonBox;
     UIToolBar            *m_pToolBar;
     QAction              *m_pActionAdd;

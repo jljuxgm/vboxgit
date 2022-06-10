@@ -1,4 +1,4 @@
-/* $Id: UIMediaComboBox.h 71948 2018-04-20 15:34:35Z vboxsync $ */
+/* $Id: UIMediaComboBox.h 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediaComboBox class declaration.
  */
@@ -45,9 +45,9 @@ public:
     void repopulate();
 
     /** Defines @a enmMediaType. */
-    void setType(UIMediumType enmMediaType) { m_enmMediaType = enmMediaType; }
+    void setType(UIMediumDeviceType enmMediaType) { m_enmMediaType = enmMediaType; }
     /** Returns media type. */
-    UIMediumType type() const { return m_enmMediaType; }
+    UIMediumDeviceType type() const { return m_enmMediaType; }
 
     /** Defines @a strMachineId. */
     void setMachineId(const QString &strMachineId) { m_strMachineId = strMachineId; }
@@ -95,7 +95,7 @@ protected:
     bool findMediaIndex(const QString &strId, int &iIndex);
 
     /** Holds the media type. */
-    UIMediumType  m_enmMediaType;
+    UIMediumDeviceType  m_enmMediaType;
 
     /** Holds the machine ID. */
     QString  m_strMachineId;

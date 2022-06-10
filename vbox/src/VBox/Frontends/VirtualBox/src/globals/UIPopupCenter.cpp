@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 71579 2018-03-30 10:27:53Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -637,7 +637,7 @@ void UIPopupCenter::cannotMountImage(QWidget *pParent, const QString &strMachine
                                   .arg(strMediumName, strMachineName));
 }
 
-void UIPopupCenter::cannotOpenMedium(QWidget *pParent, const CVirtualBox &comVBox, UIMediumType /* enmType */, const QString &strLocation)
+void UIPopupCenter::cannotOpenMedium(QWidget *pParent, const CVirtualBox &comVBox, UIMediumDeviceType /* enmType */, const QString &strLocation)
 {
     alertWithDetails(pParent, "cannotOpenMedium",
                      QApplication::translate("UIMessageCenter",
