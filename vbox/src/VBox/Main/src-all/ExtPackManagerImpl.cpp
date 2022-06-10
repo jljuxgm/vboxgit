@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 73916 2018-08-27 14:10:00Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 74219 2018-09-12 11:40:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -752,6 +752,7 @@ HRESULT ExtPack::initWithDir(VirtualBox *a_pVirtualBox, VBOXEXTPACKCTX a_enmCont
         /* pfnGetCanceledProgress = */ ExtPack::i_hlpGetCanceledProgress,
         /* pfnUpdateProgress    = */ ExtPack::i_hlpUpdateProgress,
         /* pfnNextOperationProgress = */ ExtPack::i_hlpNextOperationProgress,
+        /* pfnWaitOtherProgress = */ ExtPack::i_hlpWaitOtherProgress,
         /* pfnCompleteProgress  = */ ExtPack::i_hlpCompleteProgress,
         /* pfnReserved1         = */ ExtPack::i_hlpReservedN,
         /* pfnReserved2         = */ ExtPack::i_hlpReservedN,
@@ -1827,6 +1828,23 @@ ExtPack::i_hlpNextOperationProgress(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IPr
     AssertReturn(pHlp->u32Version == VBOXEXTPACKHLP_VERSION, (uint32_t)E_INVALIDARG);
 
     return pProgress->SetNextOperation(Bstr(pcszNextOperationDescription).raw(), uNextOperationWeight);
+}
+
+/*static*/ DECLCALLBACK(uint32_t)
+ExtPack::i_hlpWaitOtherProgress(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IProgress) *pProgress,
+                                VBOXEXTPACK_IF_CS(IProgress) *pProgressOther)
+{
+    /*
+     * Validate the input and get our bearings.
+     */
+    AssertPtrReturn(pProgress, (uint32_t)E_INVALIDARG);
+    AssertPtrReturn(pProgressOther, (uint32_t)E_INVALIDARG);
+
+    AssertPtrReturn(pHlp, (uint32_t)E_INVALIDARG);
+    AssertReturn(pHlp->u32Version == VBOXEXTPACKHLP_VERSION, (uint32_t)E_INVALIDARG);
+
+    Progress *pProgressInt = static_cast<Progress *>(pProgress);
+    return pProgressInt->i_waitForOtherProgressCompletion(pProgressOther);
 }
 
 /*static*/ DECLCALLBACK(uint32_t)
