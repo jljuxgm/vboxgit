@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 73401 2018-07-31 08:28:41Z vboxsync $ */
+/* $Id: dbgmod.h 73412 2018-07-31 16:50:04Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -540,14 +540,14 @@ typedef FNRTDBGMODDEFERRED *PFNRTDBGMODDEFERRED;
  */
 typedef struct RTDBGMODDEFERRED
 {
+    /** Magic value (RTDBGMODDEFERRED_MAGIC). */
+    uint32_t            u32Magic;
+    /** Reference counter. */
+    uint32_t volatile   cRefs;
     /** The image size.
      * Deferred loading is almost pointless without knowing the module size, as
      * it cannot be mapped (correctly) without it. */
     RTUINTPTR           cbImage;
-    /** Reference counter. */
-    uint32_t volatile   cRefs;
-    /** Magic value for debug purposes. */
-    uint32_t            uMagic;
     /** The configuration instance (referenced), can be NIL. */
     RTDBGCFG            hDbgCfg;
     /** Performs deferred loading of the module. */
