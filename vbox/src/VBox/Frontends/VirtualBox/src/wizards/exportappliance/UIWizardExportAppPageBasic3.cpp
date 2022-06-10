@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 75038 2018-10-24 13:01:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -66,12 +66,8 @@ void UIWizardExportAppPage3::populateCloudClientParameters()
     AssertMsgReturnVoid(comCloudProfile.isOk() && comCloudClient.isNotNull(),
                         ("Can't create Cloud Client object!"));
 
-#ifndef VBOX_WITH_CLOUD_PROVIDERS_NO_COMMANDS
     /* Read Cloud Client parameters for Export VM operation: */
-    QString strJSON = comCloudClient.GetOperationParameters(KCloudOperation_exportVM);
-#else
     QString strJSON = comCloudClient.GetExportParameters();
-#endif
 
     /* Create JSON document on the basis of it, make sure it isn't empty: */
     const QJsonDocument document = QJsonDocument::fromJson(strJSON.toUtf8());
