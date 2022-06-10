@@ -1,4 +1,4 @@
-/* $Id: VBoxVNC.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxVNC.cpp 72857 2018-07-04 09:47:12Z vboxsync $ */
 /** @file
  * VBoxVNC - VNC VRDE module.
  */
@@ -312,7 +312,7 @@ DECLCALLBACK(int) VNCServerImpl::VRDEEnableConnections(HVRDESERVER hServer, bool
     else
     {
         const char szFeatName[] = "Property/TCP/Ports";
-        const uint32_t featLen = sizeof(VRDEFEATURE) + RT_MAX(sizeof(VNC_PORTSSIZE), sizeof(szFeatName)) - 1;
+        const uint32_t featLen = sizeof(VRDEFEATURE) + RT_MAX(VNC_PORTSSIZE, sizeof(szFeatName)) - 1;
         VRDEFEATURE *feature = (VRDEFEATURE *)RTMemTmpAlloc(featLen);
         feature->u32ClientId = 0;
         RTStrCopy(feature->achInfo, featLen - sizeof(VRDEFEATURE) + 1, szFeatName);
