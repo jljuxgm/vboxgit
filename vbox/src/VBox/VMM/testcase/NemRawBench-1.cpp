@@ -1,4 +1,4 @@
-/* $Id: NemRawBench-1.cpp 74534 2018-09-30 15:17:04Z vboxsync $ */
+/* $Id: NemRawBench-1.cpp 74536 2018-09-30 15:26:07Z vboxsync $ */
 /** @file
  * NEM Benchmark.
  */
@@ -1290,4 +1290,9 @@ int main(int argc, char **argv)
  *     34 485     OUT instructions per second (400 001 exits in 11 598 918 200 ns)
  *     34 043   CPUID instructions per second (400 001 exits in 11 749 753 200 ns)
  *     33 124 MMIO/r1 instructions per second (400 001 exits in 12 075 617 000 ns)
+ *
+ * - Windows build 17763; 3.4GHz AMD Threadripper 1950X:
+ *     65 633     OUT instructions per second (400 001 exits in 6 094 409 100 ns)
+ *     65 245   CPUID instructions per second (400 001 exits in 6 130 720 600 ns)
+ *     61 642 MMIO/r1 instructions per second (400 001 exits in 6 489 013 700 ns)
  */
