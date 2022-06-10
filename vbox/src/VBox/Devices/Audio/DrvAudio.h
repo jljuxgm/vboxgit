@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 73423 2018-08-01 13:53:18Z vboxsync $ */
+/* $Id: DrvAudio.h 73429 2018-08-01 14:47:53Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -219,6 +219,8 @@ const char *DrvAudioHlpStreamCmdToStr(PDMAUDIOSTREAMCMD enmCmd);
 
 /** @name Audio stream helper methods.
  * @{ */
+bool DrvAudioHlpStreamStatusCanRead(PDMAUDIOSTREAMSTS enmStatus);
+bool DrvAudioHlpStreamStatusCanWrite(PDMAUDIOSTREAMSTS enmStatus);
 bool DrvAudioHlpStreamStatusIsReady(PDMAUDIOSTREAMSTS enmStatus);
 /** @}  */
 
