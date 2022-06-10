@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 77106 2019-02-01 10:31:23Z vboxsync $ */
+/* $Id: SUPDrv.cpp 77423 2019-02-22 04:38:58Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4602,7 +4602,7 @@ SUPR0DECL(int) SUPR0GetHwvirtMsrs(PSUPHWVIRTMSRS pMsrs, uint32_t fCaps, bool fFo
      * already cached, simply copy the cached MSRs and we're done.
      */
     if (   !fForce
-        && g_fHwvirtMsrsCached)
+        && ASMAtomicReadBool(&g_fHwvirtMsrsCached))
     {
         memcpy(pMsrs, &g_HwvirtMsrs, sizeof(*pMsrs));
         RTThreadPreemptRestore(&PreemptState);
@@ -4657,12 +4657,12 @@ SUPR0DECL(int) SUPR0GetHwvirtMsrs(PSUPHWVIRTMSRS pMsrs, uint32_t fCaps, bool fFo
                 if (fProcCtls2Allowed1 & VMX_PROC_CTLS2_VMFUNC)
                     g_HwvirtMsrs.u.vmx.u64VmFunc = ASMRdMsr(MSR_IA32_VMX_VMFUNC);
             }
-            g_fHwvirtMsrsCached = true;
+            ASMAtomicWriteBool(&g_fHwvirtMsrsCached, true);
         }
         else if (fCaps & SUPVTCAPS_AMD_V)
         {
             g_HwvirtMsrs.u.svm.u64MsrHwcr = ASMRdMsr(MSR_K8_HWCR);
-            g_fHwvirtMsrsCached = true;
+            ASMAtomicWriteBool(&g_fHwvirtMsrsCached, true);
         }
         else
         {
