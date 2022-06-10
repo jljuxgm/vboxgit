@@ -1,4 +1,4 @@
-/* $Id: mp-solaris.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: mp-solaris.cpp 76418 2018-12-23 19:07:50Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */
@@ -38,11 +38,12 @@
 #include <iprt/mp.h>
 #include <iprt/cpuset.h>
 #include <iprt/assert.h>
-#include <iprt/string.h>
-#include <iprt/alloc.h>
+#include <iprt/critsect.h>
+#include <iprt/err.h>
+#include <iprt/mem.h>
 #include <iprt/log.h>
 #include <iprt/once.h>
-#include <iprt/critsect.h>
+#include <iprt/string.h>
 
 
 /*********************************************************************************************************************************
