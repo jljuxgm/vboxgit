@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 75831 2018-11-30 09:35:12Z vboxsync $ */
+/* $Id: EM.cpp 75833 2018-11-30 09:36:41Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2181,7 +2181,9 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                         TRPMAssertTrap(pVCpu, uNstGstVector, TRPM_HARDWARE_INT);
                         Log(("EM: Asserting nested-guest virt. hardware intr: %#x\n", uNstGstVector));
                         rc2 = VINF_EM_RESCHEDULE;
+#ifdef VBOX_STRICT
                         rcIrq = rc2;
+#endif
                     }
                     UPDATE_RC();
                 }
