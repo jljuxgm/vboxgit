@@ -1,4 +1,4 @@
-/* $Id: vbsfhlp.c 78282 2019-04-24 17:23:28Z vboxsync $ */
+/* $Id: vbsfhlp.c 78285 2019-04-25 00:30:32Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver system helpers
  */
@@ -185,6 +185,10 @@ NTSTATUS VBoxErrorToNTStatus(int vrc)
 
         case VERR_NOT_SUPPORTED:
             Status = STATUS_NOT_SUPPORTED;
+            break;
+
+        case VERR_INVALID_NAME:
+            Status = STATUS_OBJECT_NAME_INVALID;
             break;
 
         default:
@@ -408,14 +412,14 @@ NTSTATUS vbsfShflStringFromUnicodeAlloc(PSHFLSTRING *ppShflString, const WCHAR *
     NTSTATUS Status = STATUS_SUCCESS;
 
     PSHFLSTRING pShflString;
-    ULONG ulShflStringSize;
+    ULONG cbShflString;
 
     /* Calculate length required for the SHFL structure: header + chars + nul. */
-    ulShflStringSize = SHFLSTRING_HEADER_SIZE + cb + sizeof(WCHAR);
-    pShflString = (PSHFLSTRING)vbsfAllocNonPagedMem(ulShflStringSize);
+    cbShflString = SHFLSTRING_HEADER_SIZE + cb + sizeof(WCHAR);
+    pShflString = (PSHFLSTRING)vbsfAllocNonPagedMem(cbShflString);
     if (pShflString)
     {
-        if (ShflStringInitBuffer(pShflString, ulShflStringSize))
+        if (ShflStringInitBuffer(pShflString, cbShflString))
         {
             if (pwc)
             {
@@ -427,6 +431,7 @@ NTSTATUS vbsfShflStringFromUnicodeAlloc(PSHFLSTRING *ppShflString, const WCHAR *
             }
             else
             {
+                /** @todo r=bird: vbsfAllocNonPagedMem already zero'ed it...   */
                 RtlZeroMemory(pShflString->String.ucs2, cb + sizeof(WCHAR));
                 pShflString->u16Length = 0; /* without terminating null */
                 AssertMsg(pShflString->u16Size >= sizeof(WCHAR),
