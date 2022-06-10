@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 74445 2018-09-24 15:35:26Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 74451 2018-09-25 09:59:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -165,6 +165,16 @@ bool UIGlobalSettingsProxy::validate(QList<UIValidationMessage> &messages)
     {
         message.second << tr("No proxy host is currently specified.");
         fPass = false;
+    }
+
+    /* Check for password presence: */
+    if (!QUrl(m_pHostEditor->text().trimmed()).password().isEmpty())
+    {
+        message.second << tr("You have provided a proxy password. "
+                             "Please be aware that the password will be saved in plain text. "
+                             "You may wish to configure a system-wide proxy instead and not "
+                             "store application-specific settings.");
+        fPass = true;
     }
 
     /* Serialize message: */
