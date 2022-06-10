@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 73295 2018-07-21 18:47:11Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 73296 2018-07-21 18:50:41Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2157,7 +2157,7 @@ int vmsvga3dBackCreateTexture(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pContext, 
             PVMSVGA3DMIPMAPLEVEL pMipLevel = &pSurface->pMipmapLevels[i];
 
             if (pMipLevel->fDirty)
-                LogFunc(("sync dirty texture mipmap level %d (pitch %x)\n", i, pMipLevel->fDirty, pMipLevel->cbSurfacePitch));
+                LogFunc(("sync dirty texture mipmap level %d (pitch %x)\n", i, pMipLevel->cbSurfacePitch));
 
             pState->ext.glTexImage3D(GL_TEXTURE_3D,
                                      i,
@@ -2216,7 +2216,7 @@ int vmsvga3dBackCreateTexture(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pContext, 
             Assert(pMipLevel->mipmapSize.depth == 1);
 
             if (pMipLevel->fDirty)
-                LogFunc(("sync dirty texture mipmap level %d (pitch %x)\n", i, pMipLevel->fDirty, pMipLevel->cbSurfacePitch));
+                LogFunc(("sync dirty texture mipmap level %d (pitch %x)\n", i, pMipLevel->cbSurfacePitch));
 
             glTexImage2D(GL_TEXTURE_2D,
                          i,
