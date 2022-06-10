@@ -1,4 +1,4 @@
-/* $Id: DrvHostValidationKit.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
+/* $Id: DrvHostValidationKit.cpp 73381 2018-07-27 09:16:19Z vboxsync $ */
 /** @file
  * ValidationKit audio driver - host backend for dumping and injecting audio data
  *                              from/to the device emulation.
@@ -163,7 +163,7 @@ static int debugCreateStreamOut(PDRVHOSTVAKITAUDIO pDrv, PVAKITAUDIOSTREAM pStre
         {
             char szFile[RTPATH_MAX + 1];
 
-            rc = DrvAudioHlpGetFileName(szFile, RT_ELEMENTS(szFile), szTemp, "VaKit",
+            rc = DrvAudioHlpFileNameGet(szFile, RT_ELEMENTS(szFile), szTemp, "VaKit",
                                         0 /* Instance */, PDMAUDIOFILETYPE_WAV, PDMAUDIOFILENAME_FLAG_NONE);
             if (RT_SUCCESS(rc))
             {

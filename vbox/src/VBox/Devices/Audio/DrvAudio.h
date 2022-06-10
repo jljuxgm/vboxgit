@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 73380 2018-07-27 09:12:35Z vboxsync $ */
+/* $Id: DrvAudio.h 73381 2018-07-27 09:16:19Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -215,8 +215,8 @@ const char *DrvAudioHlpStreamCmdToStr(PDMAUDIOSTREAMCMD enmCmd);
 
 /** @name Audio file (name) helper methods.
  * @{ */
-int DrvAudioHlpSanitizeFileName(char *pszPath, size_t cbPath);
-int DrvAudioHlpGetFileName(char *pszFile, size_t cchFile, const char *pszPath, const char *pszName, uint32_t uInstance, PDMAUDIOFILETYPE enmType, PDMAUDIOFILENAMEFLAGS fFlags);
+int DrvAudioHlpFileNameSanitize(char *pszPath, size_t cbPath);
+int DrvAudioHlpFileNameGet(char *pszFile, size_t cchFile, const char *pszPath, const char *pszName, uint32_t uInstance, PDMAUDIOFILETYPE enmType, PDMAUDIOFILENAMEFLAGS fFlags);
 /** @}  */
 
 /** @name Audio device methods.

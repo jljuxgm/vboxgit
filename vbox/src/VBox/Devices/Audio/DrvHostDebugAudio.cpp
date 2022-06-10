@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 73380 2018-07-27 09:12:35Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 73381 2018-07-27 09:16:19Z vboxsync $ */
 /** @file
  * Debug audio driver.
  *
@@ -138,7 +138,7 @@ static int debugCreateStreamOut(PDRVHOSTDEBUGAUDIO pDrv, PDEBUGAUDIOSTREAM pStre
     if (RT_SUCCESS(rc))
     {
         char szFile[RTPATH_MAX];
-        rc = DrvAudioHlpGetFileName(szFile, RT_ELEMENTS(szFile), szTemp, "DebugAudioOut",
+        rc = DrvAudioHlpFileNameGet(szFile, RT_ELEMENTS(szFile), szTemp, "DebugAudioOut",
                                     pDrv->pDrvIns->iInstance, PDMAUDIOFILETYPE_WAV, PDMAUDIOFILENAME_FLAG_NONE);
         if (RT_SUCCESS(rc))
         {
