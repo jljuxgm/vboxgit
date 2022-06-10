@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 74882 2018-10-17 14:47:16Z vboxsync $ */
+/* $Id: vbox_mode.c 74986 2018-10-23 05:53:25Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -495,8 +495,8 @@ static void vbox_set_edid(struct drm_connector *connector, int width,
 	drm_connector_update_edid_property(connector, (struct edid *)edid);
 #else
 	drm_mode_connector_update_edid_property(connector, (struct edid *)edid);
-}
 #endif
+}
 
 static int vbox_get_modes(struct drm_connector *connector)
 {
