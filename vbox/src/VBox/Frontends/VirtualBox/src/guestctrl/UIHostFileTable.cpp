@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 75682 2018-11-23 09:40:56Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 75686 2018-11-23 12:54:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -202,9 +202,6 @@ void UIHostFileTable::createFileViewContextMenu(const QWidget *pWidget, const QP
     menu.addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Host_InvertSelection));
     menu.addSeparator();
     menu.addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Host_ShowProperties));
-
-
-
     menu.exec(pWidget->mapToGlobal(point));
 }
 
