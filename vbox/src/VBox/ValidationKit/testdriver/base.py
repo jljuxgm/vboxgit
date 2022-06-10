@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 72745 2018-06-29 07:36:21Z vboxsync $
+# $Id: base.py 72755 2018-06-29 08:36:29Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72745 $"
+__version__ = "$Revision: 72755 $"
 
 
 # Standard Python imports.
@@ -1394,10 +1394,28 @@ class TestDriverBase(object): # pylint: disable=R0902
         Handle the action that extracts the test resources for off site use.
         Returns a success indicator and error details with the reporter.
 
-        Usually no need to override this.
+        There is usually no need to override this.
         """
-        reporter.error('the extract action is not implemented')
-        return False;
+        fRc = True;
+        asRsrcs = self.getResourceSet();
+        for iRsrc, sRsrc in enumerate(asRsrcs):
+            reporter.log('Resource #%s: "%s"' % (iRsrc, sRsrc));
+            sSrcPath = os.path.normpath(os.path.abspath(os.path.join(self.sResourcePath, sRsrc.replace('/', os.path.sep))));
+            sDstPath = os.path.normpath(os.path.join(self.sExtractDstPath, sRsrc.replace('/', os.path.sep)));
+
+            sDstDir = os.path.dirname(sDstPath);
+            if not os.path.exists(sDstDir):
+                try:    os.makedirs(sDstDir, 0o775);
+                except: fRc = reporter.errorXcpt('Error creating directory "%s":' % (sDstDir,));
+
+            if os.path.isfile(sSrcPath):
+                try:    utils.copyFileSimple(sSrcPath, sDstPath);
+                except: fRc = reporter.errorXcpt('Error copying "%s" to "%s":' % (sSrcPath, sDstPath,));
+            elif os.path.isdir(sSrcPath):
+                fRc = reporter.error('Extracting directories have not been implemented yet');
+            else:
+                fRc = reporter.error('Missing or unsupported resource type: %s' % (sSrcPath,));
+        return fRc;
 
     def actionVerify(self):
         """
