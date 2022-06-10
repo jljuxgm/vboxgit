@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 74747 2018-10-10 15:26:04Z vboxsync $ */
+/* $Id: ldrMachO.cpp 74748 2018-10-10 15:28:17Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -4418,17 +4418,17 @@ static int rtldrMachO_VerifySignatureValidateCdHashesPlist(PRTLDRMACHOSIGNATURE 
     } while (0)
 #define SKIP_SPACE_BETWEEN_ELEMENTS_OR_RETURN() \
     do { /* currently only permitting spaces, tabs and newline, following char must be '<'. */ \
-        char ch; \
-        while ((ch = *pszPlist) == ' ' || ch == '\n' || ch == '\t') \
+        char chMacro; \
+        while ((chMacro = *pszPlist) == ' ' || chMacro == '\n' || chMacro == '\t') \
             pszPlist++; \
-        if (ch == '<') { /* likely */ } \
+        if (chMacro == '<') { /* likely */ } \
         else return RTErrInfoSetF(pErrInfo, VERR_LDRVI_BAD_CERT_FORMAT, \
                                   "Expected '<' found '%.16s...' at %#zu in plist", pszPlist, pszPlist - pszStart); \
     } while (0)
 #define SKIP_SPACE_BEFORE_VALUE() \
     do { /* currently only permitting spaces, tabs and newline. */ \
-        char ch; \
-        while ((ch = *pszPlist) == ' ' || ch == '\n' || ch == '\t') \
+        char chMacro; \
+        while ((chMacro = *pszPlist) == ' ' || chMacro == '\n' || chMacro == '\t') \
             pszPlist++; \
     } while (0)
 #define SKIP_REQUIRED_SPACE_BETWEEN_ATTRIBUTES_OR_RETURN() \
