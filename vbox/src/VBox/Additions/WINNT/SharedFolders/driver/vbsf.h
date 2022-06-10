@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 78330 2019-04-26 15:49:19Z vboxsync $ */
+/* $Id: vbsf.h 78338 2019-04-26 22:08:31Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
@@ -220,8 +220,7 @@ NTSTATUS vbsfNtCreateConnection(IN PRX_CONTEXT RxContext,
                                 OUT PBOOLEAN PostToFsp);
 
 NTSTATUS vbsfNtSetEndOfFile(IN OUT struct _RX_CONTEXT * RxContext,
-                            IN OUT PLARGE_INTEGER pNewFileSize,
-                            OUT PLARGE_INTEGER pNewAllocationSize);
+                            IN uint64_t cbNewFileSize);
 NTSTATUS vbsfNtRename(IN PRX_CONTEXT RxContext,
                       IN FILE_INFORMATION_CLASS FileInformationClass,
                       IN PVOID pBuffer,
