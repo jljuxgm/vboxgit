@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 76867 2019-01-17 15:53:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -375,14 +375,7 @@ int UIChooserItemGlobal::minimumHeightHint() const
 
 QPixmap UIChooserItemGlobal::toPixmap()
 {
-    /* Ask item to paint itself into pixmap: */
-    const QSize minimumSize = minimumSizeHint().toSize();
-    QPixmap pixmap(minimumSize);
-    QPainter painter(&pixmap);
-    QStyleOptionGraphicsItem options;
-    options.rect = QRect(QPoint(0, 0), minimumSize);
-    paint(&painter, &options);
-    return pixmap;
+    AssertFailedReturn(QPixmap());
 }
 
 bool UIChooserItemGlobal::isDropAllowed(QGraphicsSceneDragDropEvent *, DragToken) const

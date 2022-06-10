@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 76867 2019-01-17 15:53:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -24,6 +24,7 @@
 #include <QPainter>
 #include <QStyleOptionGraphicsItem>
 #include <QGraphicsProxyWidget>
+#include <QWindow>
 
 /* GUI includes: */
 #include "UIChooserItemGroup.h"
@@ -880,13 +881,13 @@ QSizeF UIChooserItemGroup::sizeHint(Qt::SizeHint enmWhich, const QSizeF &constra
 QPixmap UIChooserItemGroup::toPixmap()
 {
     /* Ask item to paint itself into pixmap: */
-    QSize minimumSize = minimumSizeHintForProup(false).toSize();
-    QPixmap pixmap(minimumSize);
-    pixmap.fill(Qt::transparent);
+    qreal dDpr = gpManager->windowHandle()->devicePixelRatio();
+    QSize actualSize = size().toSize();
+    QPixmap pixmap(actualSize * dDpr);
+    pixmap.setDevicePixelRatio(dDpr);
     QPainter painter(&pixmap);
-    painter.setRenderHint(QPainter::Antialiasing);
     QStyleOptionGraphicsItem options;
-    options.rect = QRect(QPoint(0, 0), minimumSize);
+    options.rect = QRect(QPoint(0, 0), actualSize);
     paint(&painter, &options);
     return pixmap;
 }
