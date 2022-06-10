@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 76334 2018-12-21 13:15:28Z vboxsync $
+# $Id: virtual_test_sheriff.py 76553 2019-01-01 01:45:53Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -16,7 +16,7 @@ from __future__ import print_function;
 
 __copyright__ = \
 """
-Copyright (C) 2012-2017 Oracle Corporation
+Copyright (C) 2012-2019 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76334 $"
+__version__ = "$Revision: 76553 $"
 
 
 # Standard python imports
@@ -310,7 +310,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 76334 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 76553 $ \n');
 
 
     def eprint(self, sText):
@@ -652,7 +652,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 76334 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 76553 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 

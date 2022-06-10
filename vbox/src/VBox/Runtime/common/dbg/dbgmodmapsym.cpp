@@ -1,4 +1,4 @@
-/* $Id: dbgmodmapsym.cpp 75481 2018-11-15 12:39:41Z vboxsync $ */
+/* $Id: dbgmodmapsym.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - Debug Map Reader for MAPSYM files (used by SYMDBG from old MASM).
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

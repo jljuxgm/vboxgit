@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 76487 2018-12-27 03:31:39Z vboxsync $ */
+/* $Id: ovfreader.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2017 Oracle Corporation
+ * Copyright (C) 2008-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

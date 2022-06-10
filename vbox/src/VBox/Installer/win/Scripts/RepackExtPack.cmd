@@ -1,11 +1,11 @@
 @echo off
-rem $Id: RepackExtPack.cmd 72047 2018-04-27 00:07:20Z vboxsync $
+rem $Id: RepackExtPack.cmd 76553 2019-01-01 01:45:53Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking an extension pack with blessed .r0 files.
 rem
 
 rem
-rem Copyright (C) 2018 Oracle Corporation
+rem Copyright (C) 2018-2019 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DevATA.cpp 75772 2018-11-27 13:13:16Z vboxsync $ */
+/* $Id: DevATA.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

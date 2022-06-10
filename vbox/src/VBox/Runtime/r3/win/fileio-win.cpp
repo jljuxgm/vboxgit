@@ -1,10 +1,10 @@
-/* $Id: fileio-win.cpp 75651 2018-11-21 19:28:03Z vboxsync $ */
+/* $Id: fileio-win.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
 
 /*
- * Copyright (C) 2006-2018 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

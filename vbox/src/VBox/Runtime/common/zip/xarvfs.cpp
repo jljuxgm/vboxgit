@@ -1,10 +1,10 @@
-/* $Id: xarvfs.cpp 73516 2018-08-05 15:00:30Z vboxsync $ */
+/* $Id: xarvfs.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

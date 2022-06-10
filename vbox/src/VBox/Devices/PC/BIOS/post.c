@@ -1,10 +1,10 @@
-/* $Id: post.c 72499 2018-06-11 10:24:01Z vboxsync $ */
+/* $Id: post.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * BIOS POST routines. Used only during initialization.
  */
 
 /*
- * Copyright (C) 2004-2017 Oracle Corporation
+ * Copyright (C) 2004-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

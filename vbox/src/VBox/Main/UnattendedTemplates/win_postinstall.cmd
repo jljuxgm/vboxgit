@@ -1,5 +1,5 @@
 @echo off
-rem $Id: win_postinstall.cmd 68222 2017-08-01 19:05:50Z vboxsync $
+rem $Id: win_postinstall.cmd 76553 2019-01-01 01:45:53Z vboxsync $
 rem rem @file
 rem Post installation script template for Windows.
 rem
@@ -8,7 +8,7 @@ rem part of the first logon.
 rem
 
 rem
-rem Copyright (C) 2017 Oracle Corporation
+rem Copyright (C) 2017-2019 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

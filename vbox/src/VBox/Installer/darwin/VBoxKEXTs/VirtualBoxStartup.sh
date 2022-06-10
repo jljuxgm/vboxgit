@@ -1,12 +1,12 @@
 #!/bin/sh
-# $Id: VirtualBoxStartup.sh 69500 2017-10-28 15:14:05Z vboxsync $
+# $Id: VirtualBoxStartup.sh 76553 2019-01-01 01:45:53Z vboxsync $
 ## @file
 # Startup service for loading the kernel extensions and select the set of VBox
 # binaries that matches the kernel architecture.
 #
 
 #
-# Copyright (C) 2007-2017 Oracle Corporation
+# Copyright (C) 2007-2019 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxNetDhcpdHardened.cpp 76166 2018-12-11 16:43:14Z vboxsync $ */
+/* $Id: VBoxNetDhcpdHardened.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxNetDhcpd - Hardened main().
  */
 
 /*
- * Copyright (C) 2009-2018 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

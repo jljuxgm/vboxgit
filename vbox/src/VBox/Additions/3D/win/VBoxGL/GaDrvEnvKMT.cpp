@@ -1,10 +1,10 @@
-/* $Id: GaDrvEnvKMT.cpp 75630 2018-11-20 19:10:04Z vboxsync $ */
+/* $Id: GaDrvEnvKMT.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver using Kernel Mode Thunks.
  */
 
 /*
- * Copyright (C) 2016-2018 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

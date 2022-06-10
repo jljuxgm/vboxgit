@@ -1,10 +1,10 @@
-; $Id: VMMR0TripleFaultHackA.asm 69111 2017-10-17 14:26:02Z vboxsync $
+; $Id: VMMR0TripleFaultHackA.asm 76553 2019-01-01 01:45:53Z vboxsync $
 ;; @file
 ; VMM - Host Context Ring 0, Assembly Code for The Triple Fault Debugging Hack.
 ;
 
 ;
-; Copyright (C) 2011-2017 Oracle Corporation
+; Copyright (C) 2011-2019 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

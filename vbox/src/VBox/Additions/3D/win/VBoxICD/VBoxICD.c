@@ -1,10 +1,10 @@
-/* $Id: VBoxICD.c 75562 2018-11-19 10:01:56Z vboxsync $ */
+/* $Id: VBoxICD.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - OpenGL driver loader.
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

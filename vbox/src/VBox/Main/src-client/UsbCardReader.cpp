@@ -1,10 +1,10 @@
-/* $Id: UsbCardReader.cpp 70237 2017-12-20 11:50:11Z vboxsync $ */
+/* $Id: UsbCardReader.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * UsbCardReader - Driver Interface to USB Smart Card Reader emulation.
  */
 
 /*
- * Copyright (C) 2011-2017 Oracle Corporation
+ * Copyright (C) 2011-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: rdtsc.cpp 72552 2018-06-13 18:17:05Z vboxsync $ */
+/* $Id: rdtsc.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * rdtsc - Test if three consecutive rdtsc instructions return different values.
  */
 
 /*
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

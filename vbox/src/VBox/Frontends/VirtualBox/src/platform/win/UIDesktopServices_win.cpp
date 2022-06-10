@@ -1,10 +1,10 @@
-/* $Id: UIDesktopServices_win.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIDesktopServices_win.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to Windows..
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

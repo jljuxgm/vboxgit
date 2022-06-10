@@ -1,10 +1,10 @@
-/* $Id: tstDeviceVMM.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: tstDeviceVMM.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, VMM callbacks implementation.
  */
 
 /*
- * Copyright (C) 2017 Oracle Corporation
+ * Copyright (C) 2017-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

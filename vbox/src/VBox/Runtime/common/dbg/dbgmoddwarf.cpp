@@ -1,10 +1,10 @@
-/* $Id: dbgmoddwarf.cpp 75238 2018-11-03 02:53:46Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
 
 /*
- * Copyright (C) 2011-2017 Oracle Corporation
+ * Copyright (C) 2011-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

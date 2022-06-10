@@ -1,10 +1,10 @@
-/* $Id: VBoxModAPIMonitor.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxModAPIMonitor.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxModAPIMonitor - API monitor module for detecting host isolation.
  */
 
 /*
- * Copyright (C) 2012-2017 Oracle Corporation
+ * Copyright (C) 2012-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

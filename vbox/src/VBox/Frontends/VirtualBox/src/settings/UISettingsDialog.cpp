@@ -1,10 +1,10 @@
-/* $Id: UISettingsDialog.cpp 72059 2018-04-27 14:33:48Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
 
 /*
- * Copyright (C) 2006-2018 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

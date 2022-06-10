@@ -1,10 +1,10 @@
-/* $Id: RTUtf16PrintHexBytes.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
+/* $Id: RTUtf16PrintHexBytes.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - RTUtf16PrintHexBytes.
  */
 
 /*
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

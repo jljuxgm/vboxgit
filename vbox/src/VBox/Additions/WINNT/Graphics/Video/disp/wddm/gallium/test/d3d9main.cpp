@@ -1,10 +1,10 @@
-/* $Id: d3d9main.cpp 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: d3d9main.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * Gallium D3D testcase. Win32 application to run Gallium D3D9 tests.
  */
 
 /*
- * Copyright (C) 2017 Oracle Corporation
+ * Copyright (C) 2017-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

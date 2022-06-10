@@ -1,10 +1,10 @@
-/* $Id: strtonum.cpp 74160 2018-09-09 13:53:25Z vboxsync $ */
+/* $Id: strtonum.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - String To Number Conversion.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

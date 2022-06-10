@@ -1,10 +1,10 @@
-/* $Id: DevLpc-new.cpp 71831 2018-04-11 17:23:35Z vboxsync $ */
+/* $Id: DevLpc-new.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * DevLPC - Minimal ICH9 LPC device emulation.
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

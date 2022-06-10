@@ -1,10 +1,10 @@
-/* $Id: HDAStreamChannel.cpp 75962 2018-12-05 09:34:58Z vboxsync $ */
+/* $Id: HDAStreamChannel.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * HDAStreamChannel.cpp - Stream channel functions for HD Audio.
  */
 
 /*
- * Copyright (C) 2017 Oracle Corporation
+ * Copyright (C) 2017-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

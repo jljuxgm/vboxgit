@@ -1,10 +1,10 @@
-/* $Id: QIStyledItemDelegate.cpp 71874 2018-04-17 13:49:21Z vboxsync $ */
+/* $Id: QIStyledItemDelegate.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIStyledItemDelegate class implementation.
  */
 
 /*
- * Copyright (C) 2006-2018 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxPci-linux.c 75599 2018-11-19 20:39:52Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
 
 /*
- * Copyright (C) 2011-2017 Oracle Corporation
+ * Copyright (C) 2011-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIToolsHandlerKeyboard.cpp 74249 2018-09-13 16:24:26Z vboxsync $ */
+/* $Id: UIToolsHandlerKeyboard.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsHandlerKeyboard class implementation.
  */
 
 /*
- * Copyright (C) 2012-2018 Oracle Corporation
+ * Copyright (C) 2012-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: vboxfs_prov.c 76425 2018-12-23 20:33:46Z vboxsync $ */
+/* $Id: vboxfs_prov.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider implementation.
  * Portions contributed by: Ronald.
  */
 
 /*
- * Copyright (C) 2008-2017 Oracle Corporation
+ * Copyright (C) 2008-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

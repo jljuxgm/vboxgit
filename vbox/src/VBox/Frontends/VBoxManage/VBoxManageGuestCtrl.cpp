@@ -1,10 +1,10 @@
-/* $Id: VBoxManageGuestCtrl.cpp 75927 2018-12-03 21:55:52Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
 
 /*
- * Copyright (C) 2010-2018 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UINetworkRequestWidget.cpp 71466 2018-03-22 16:39:35Z vboxsync $ */
+/* $Id: UINetworkRequestWidget.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestWidget stuff implementation.
  */
 
 /*
- * Copyright (C) 2011-2018 Oracle Corporation
+ * Copyright (C) 2011-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

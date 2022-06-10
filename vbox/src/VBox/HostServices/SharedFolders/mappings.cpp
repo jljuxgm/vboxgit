@@ -1,10 +1,10 @@
-/* $Id: mappings.cpp 75993 2018-12-05 21:38:00Z vboxsync $ */
+/* $Id: mappings.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * Shared Folders Service - Mappings support.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

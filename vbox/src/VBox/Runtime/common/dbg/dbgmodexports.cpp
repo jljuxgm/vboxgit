@@ -1,10 +1,10 @@
-/* $Id: dbgmodexports.cpp 73760 2018-08-19 13:41:26Z vboxsync $ */
+/* $Id: dbgmodexports.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Using Image Exports.
  */
 
 /*
- * Copyright (C) 2013-2017 Oracle Corporation
+ * Copyright (C) 2013-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

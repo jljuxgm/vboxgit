@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-ExtCtxFree.c 66214 2017-03-22 20:56:06Z vboxsync $ */
+/* $Id: bs3-cmn-ExtCtxFree.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3ExtCtxFree
  */
 
 /*
- * Copyright (C) 2007-2017 Oracle Corporation
+ * Copyright (C) 2007-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

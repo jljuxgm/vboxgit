@@ -1,10 +1,10 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 71662 2018-04-04 15:24:06Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
 
 /*
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

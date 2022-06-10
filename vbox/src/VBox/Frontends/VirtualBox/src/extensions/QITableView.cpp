@@ -1,10 +1,10 @@
-/* $Id: QITableView.cpp 71882 2018-04-17 17:21:54Z vboxsync $ */
+/* $Id: QITableView.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITableView class implementation.
  */
 
 /*
- * Copyright (C) 2010-2018 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

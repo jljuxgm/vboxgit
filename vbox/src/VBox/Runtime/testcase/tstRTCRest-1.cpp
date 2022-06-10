@@ -1,10 +1,10 @@
-/* $Id: tstRTCRest-1.cpp 75125 2018-10-28 01:39:36Z vboxsync $ */
+/* $Id: tstRTCRest-1.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 76532 2018-12-30 06:08:06Z vboxsync $ */
+/* $Id: COMDefs.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DrvUDP.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: DrvUDP.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * UDP socket stream driver.
  */
 
 /*
- * Copyright (C) 2015-2017 Oracle Corporation
+ * Copyright (C) 2015-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

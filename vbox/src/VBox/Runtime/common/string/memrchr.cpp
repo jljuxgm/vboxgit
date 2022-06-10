@@ -1,10 +1,10 @@
-/* $Id: memrchr.cpp 71917 2018-04-19 10:09:31Z vboxsync $ */
+/* $Id: memrchr.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - CRT Strings, memrchr().
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

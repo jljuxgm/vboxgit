@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibVrdp.cpp 68650 2017-09-05 14:34:23Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVrdp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, VRDP.
  */
 
 /*
- * Copyright (C) 2007-2017 Oracle Corporation
+ * Copyright (C) 2007-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: TestExecServiceSerial.cpp 71001 2018-02-13 17:17:58Z vboxsync $ */
+/* $Id: TestExecServiceSerial.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service, Serial port Transport Layer.
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

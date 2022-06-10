@@ -1,4 +1,4 @@
-; $Id: tstAsmFnstsw-1.asm 69373 2017-10-26 15:38:48Z vboxsync $
+; $Id: tstAsmFnstsw-1.asm 76553 2019-01-01 01:45:53Z vboxsync $
 ;; @file
 ; Disassembly testcase - Valid fnstsw* instructitons.
 ;
@@ -8,7 +8,7 @@
 ;
 
 ;
-; Copyright (C) 2008-2017 Oracle Corporation
+; Copyright (C) 2008-2019 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

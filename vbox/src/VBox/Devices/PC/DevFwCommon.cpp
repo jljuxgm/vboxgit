@@ -1,10 +1,10 @@
-/* $Id: DevFwCommon.cpp 73142 2018-07-16 09:09:38Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
 
 /*
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

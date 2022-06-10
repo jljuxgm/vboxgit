@@ -1,10 +1,10 @@
-/* $Id: RTFileSetMode-r3-nt.cpp 69802 2017-11-22 09:57:07Z vboxsync $ */
+/* $Id: RTFileSetMode-r3-nt.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - RTFileSetMode, Native NT.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-; $Id: WinExit.asm 70653 2018-01-19 19:37:08Z vboxsync $
+; $Id: WinExit.asm 76553 2019-01-01 01:45:53Z vboxsync $
 ;; @file
 ; 16-bit windows program that exits windows.
 ;
@@ -6,7 +6,7 @@
 ;
 
 ;
-; Copyright (C) 2018 Oracle Corporation
+; Copyright (C) 2018-2019 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: digest-builtin.cpp 73705 2018-08-16 09:31:18Z vboxsync $ */
+/* $Id: digest-builtin.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Cryptographic Hash / Message Digest API, Built-in providers.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

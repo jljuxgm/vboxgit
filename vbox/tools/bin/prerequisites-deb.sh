@@ -1,11 +1,11 @@
 #!/bin/sh
 # @file
-## $Id: prerequisites-deb.sh 76314 2018-12-20 14:01:27Z vboxsync $
+## $Id: prerequisites-deb.sh 76553 2019-01-01 01:45:53Z vboxsync $
 # Fetches prerequisites for Debian based GNU/Linux systems.
 #
 
 #
-# Copyright (C) 2018 Oracle Corporation
+# Copyright (C) 2018-2019 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIIconPool.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIIconPool.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
 
 /*
- * Copyright (C) 2010-2018 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

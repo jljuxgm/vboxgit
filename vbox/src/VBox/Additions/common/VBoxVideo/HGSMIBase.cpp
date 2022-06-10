@@ -1,10 +1,10 @@
-/* $Id: HGSMIBase.cpp 71651 2018-04-04 12:20:08Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI guest-to-host communication.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

@@ -1,10 +1,10 @@
-/* $Id: VBoxUSBMon-solaris.c 76356 2018-12-22 01:17:18Z vboxsync $ */
+/* $Id: VBoxUSBMon-solaris.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox USB Monitor Driver, Solaris Hosts.
  */
 
 /*
- * Copyright (C) 2008-2017 Oracle Corporation
+ * Copyright (C) 2008-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

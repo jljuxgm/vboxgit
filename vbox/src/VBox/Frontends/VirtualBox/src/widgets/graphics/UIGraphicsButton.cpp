@@ -1,10 +1,10 @@
-/* $Id: UIGraphicsButton.cpp 72718 2018-06-28 12:06:46Z vboxsync $ */
+/* $Id: UIGraphicsButton.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsButton class definition.
  */
 
 /*
- * Copyright (C) 2012-2017 Oracle Corporation
+ * Copyright (C) 2012-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

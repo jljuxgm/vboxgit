@@ -1,10 +1,10 @@
-/* $Id: init-win.cpp 71950 2018-04-20 21:31:06Z vboxsync $ */
+/* $Id: init-win.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3, Windows Specific Code.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

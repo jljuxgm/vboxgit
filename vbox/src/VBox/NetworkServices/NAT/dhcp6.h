@@ -1,10 +1,10 @@
-/* $Id: dhcp6.h 76525 2018-12-30 05:51:31Z vboxsync $ */
+/* $Id: dhcp6.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * NAT Network - DHCPv6 protocol definitions.
  */
 
 /*
- * Copyright (C) 2013-2017 Oracle Corporation
+ * Copyright (C) 2013-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

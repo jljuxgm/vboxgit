@@ -1,9 +1,9 @@
-/* $Id: VBoxUsbCmn.h 76527 2018-12-30 05:55:44Z vboxsync $ */
+/* $Id: VBoxUsbCmn.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxUsmCmn.h - USB device. Common defs
  */
 /*
- * Copyright (C) 2011-2017 Oracle Corporation
+ * Copyright (C) 2011-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

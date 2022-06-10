@@ -1,10 +1,10 @@
-/* $Id: ldrMachO.cpp 75703 2018-11-25 01:43:02Z vboxsync $ */
+/* $Id: ldrMachO.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: display-svga.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
+/* $Id: display-svga.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to drm guest
  * driver.
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: fs-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
+/* $Id: fs-win.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - File System, Win32.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

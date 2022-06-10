@@ -1,10 +1,10 @@
-/* $Id: dvmbsdlabel.cpp 69616 2017-11-08 13:58:58Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
 
 /*
- * Copyright (C) 2011-2017 Oracle Corporation
+ * Copyright (C) 2011-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

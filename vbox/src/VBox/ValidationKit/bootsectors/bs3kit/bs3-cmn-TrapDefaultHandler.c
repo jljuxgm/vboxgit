@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-TrapDefaultHandler.c 72146 2018-05-07 15:22:35Z vboxsync $ */
+/* $Id: bs3-cmn-TrapDefaultHandler.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapDefaultHandler
  */
 
 /*
- * Copyright (C) 2007-2017 Oracle Corporation
+ * Copyright (C) 2007-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

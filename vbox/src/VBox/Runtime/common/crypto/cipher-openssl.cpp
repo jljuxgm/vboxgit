@@ -1,10 +1,10 @@
-/* $Id: cipher-openssl.cpp 74362 2018-09-19 09:50:35Z vboxsync $ */
+/* $Id: cipher-openssl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Symmetric Cipher using OpenSSL.
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

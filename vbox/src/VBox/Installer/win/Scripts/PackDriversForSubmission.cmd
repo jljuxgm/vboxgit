@@ -1,11 +1,11 @@
 @echo off
-rem $Id: PackDriversForSubmission.cmd 74770 2018-10-11 12:59:30Z vboxsync $
+rem $Id: PackDriversForSubmission.cmd 76553 2019-01-01 01:45:53Z vboxsync $
 rem rem @file
 rem Windows NT batch script for preparing for signing submission.
 rem
 
 rem
-rem Copyright (C) 2018 Oracle Corporation
+rem Copyright (C) 2018-2019 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

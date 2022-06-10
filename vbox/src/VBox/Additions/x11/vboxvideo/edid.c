@@ -1,12 +1,11 @@
-/* $Id: edid.c 69346 2017-10-26 13:36:28Z vboxsync $ */
+/* $Id: edid.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver, EDID construction
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
- *
+ * Copyright (C) 2006-2019 Oracle Corporation
  * This file is based on drmmode_display.c from the X.Org xf86-video-intel
  * driver with the following copyright notice:
  *

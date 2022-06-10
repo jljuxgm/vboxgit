@@ -1,10 +1,10 @@
-/* $Id: UIModalWindowManager.cpp 71375 2018-03-19 15:29:54Z vboxsync $ */
+/* $Id: UIModalWindowManager.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class implementation.
  */
 
 /*
- * Copyright (C) 2013-2018 Oracle Corporation
+ * Copyright (C) 2013-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

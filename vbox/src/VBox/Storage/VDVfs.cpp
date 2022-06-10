@@ -1,10 +1,10 @@
-/* $Id: VDVfs.cpp 74355 2018-09-18 21:54:56Z vboxsync $ */
+/* $Id: VDVfs.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * Virtual Disk Container implementation. - VFS glue.
  */
 
 /*
- * Copyright (C) 2012-2017 Oracle Corporation
+ * Copyright (C) 2012-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

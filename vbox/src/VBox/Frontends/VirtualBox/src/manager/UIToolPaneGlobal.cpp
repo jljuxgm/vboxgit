@@ -1,10 +1,10 @@
-/* $Id: UIToolPaneGlobal.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
 
 /*
- * Copyright (C) 2017-2018 Oracle Corporation
+ * Copyright (C) 2017-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

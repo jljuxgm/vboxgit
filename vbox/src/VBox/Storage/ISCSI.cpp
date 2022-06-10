@@ -1,10 +1,10 @@
-/* $Id: ISCSI.cpp 74990 2018-10-23 09:26:39Z vboxsync $ */
+/* $Id: ISCSI.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

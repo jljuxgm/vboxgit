@@ -1,6 +1,6 @@
-/* $Id: hgsmimemalloc.c 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: hgsmimemalloc.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /*
- * Copyright (C) 2017 Oracle Corporation
+ * Copyright (C) 2017-2019 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

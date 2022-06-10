@@ -1,4 +1,4 @@
-/* $Id: UartCore.h 76520 2018-12-30 05:39:55Z vboxsync $ */
+/* $Id: UartCore.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

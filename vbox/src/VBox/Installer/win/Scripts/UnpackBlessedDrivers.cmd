@@ -1,11 +1,11 @@
 @echo off
-rem $Id: UnpackBlessedDrivers.cmd 72056 2018-04-27 11:38:50Z vboxsync $
+rem $Id: UnpackBlessedDrivers.cmd 76553 2019-01-01 01:45:53Z vboxsync $
 rem rem @file
 rem Windows NT batch script for unpacking drivers after being signed.
 rem
 
 rem
-rem Copyright (C) 2018 Oracle Corporation
+rem Copyright (C) 2018-2019 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

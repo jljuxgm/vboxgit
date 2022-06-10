@@ -1,10 +1,10 @@
-/* $Id: VCICache.cpp 71522 2018-03-26 18:15:27Z vboxsync $ */
+/* $Id: VCICache.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

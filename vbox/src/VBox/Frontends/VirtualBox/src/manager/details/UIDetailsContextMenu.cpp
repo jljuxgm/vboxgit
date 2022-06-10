@@ -1,10 +1,10 @@
-/* $Id: UIDetailsContextMenu.cpp 76155 2018-12-11 09:11:54Z vboxsync $ */
+/* $Id: UIDetailsContextMenu.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsContextMenu class implementation.
  */
 
 /*
- * Copyright (C) 2012-2018 Oracle Corporation
+ * Copyright (C) 2012-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

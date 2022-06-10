@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 67072 2017-05-25 08:26:51Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 76553 2019-01-01 01:45:53Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -12,7 +12,7 @@ disassembler tables and tests.
 
 __copyright__ = \
 """
-Copyright (C) 2017 Oracle Corporation
+Copyright (C) 2017-2019 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67072 $"
+__version__ = "$Revision: 76553 $"
 
 # pylint: disable=anomalous-backslash-in-string
 

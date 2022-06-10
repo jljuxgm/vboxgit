@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tst-a1.py 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: tst-a1.py 76553 2019-01-01 01:45:53Z vboxsync $
 
 """
 Analyzer Experiment  1.
@@ -8,7 +8,7 @@ Analyzer Experiment  1.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2017 Oracle Corporation
+Copyright (C) 2010-2019 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 69111 $"
+__version__ = "$Revision: 76553 $"
 
 
 import os.path

@@ -1,4 +1,4 @@
-/* $Id: VirtualKD.cpp 71780 2018-04-09 15:32:35Z vboxsync $ */
+/* $Id: VirtualKD.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualKD - Device stub/loader for fast Windows kernel-mode debugging.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

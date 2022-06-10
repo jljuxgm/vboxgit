@@ -1,10 +1,10 @@
-/* $Id: CPUMAllMsrs.cpp 76200 2018-12-13 09:23:47Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
 
 /*
- * Copyright (C) 2013-2017 Oracle Corporation
+ * Copyright (C) 2013-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

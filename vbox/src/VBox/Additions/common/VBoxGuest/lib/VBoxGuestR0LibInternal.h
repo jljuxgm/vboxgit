@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR0LibInternal.h 76533 2018-12-30 06:14:15Z vboxsync $ */
+/* $Id: VBoxGuestR0LibInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
 
 /*
- * Copyright (C) 2006-2018 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

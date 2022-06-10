@@ -1,10 +1,10 @@
-/* $Id: QIMenu.cpp 71895 2018-04-18 13:08:11Z vboxsync $ */
+/* $Id: QIMenu.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMenu class implementation.
  */
 
 /*
- * Copyright (C) 2010-2018 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

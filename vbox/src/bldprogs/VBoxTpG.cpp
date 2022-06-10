@@ -1,10 +1,10 @@
-/* $Id: VBoxTpG.cpp 76506 2018-12-30 03:41:21Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
 
 /*
- * Copyright (C) 2012-2017 Oracle Corporation
+ * Copyright (C) 2012-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -437,7 +437,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 76506 2018-12-30 03:41:21Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 76553 2019-01-01 01:45:53Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -961,7 +961,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 76506 2018-12-30 03:41:21Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1169,7 +1169,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 76506 2018-12-30 03:41:21Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2377,7 +2377,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 76506 $";
+                static const char s_szRev[] = "$Revision: 76553 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;

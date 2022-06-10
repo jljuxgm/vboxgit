@@ -1,10 +1,10 @@
-/* $Id: QIMainWindow.h 76532 2018-12-30 06:08:06Z vboxsync $ */
+/* $Id: QIMainWindow.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMainWindow class declaration.
  */
 
 /*
- * Copyright (C) 2016-2018 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

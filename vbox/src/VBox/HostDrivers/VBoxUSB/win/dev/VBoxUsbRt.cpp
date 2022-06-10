@@ -1,10 +1,10 @@
-/* $Id: VBoxUsbRt.cpp 70289 2017-12-21 16:15:31Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
 
 /*
- * Copyright (C) 2011-2017 Oracle Corporation
+ * Copyright (C) 2011-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

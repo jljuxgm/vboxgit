@@ -1,10 +1,10 @@
-/* $Id: VBoxNetDhcpd.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
+/* $Id: VBoxNetDhcpd.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
 
 /*
- * Copyright (C) 2009-2018 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

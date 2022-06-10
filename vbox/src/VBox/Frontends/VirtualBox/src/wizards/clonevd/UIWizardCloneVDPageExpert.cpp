@@ -1,10 +1,10 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 72821 2018-07-03 11:57:53Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class implementation.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

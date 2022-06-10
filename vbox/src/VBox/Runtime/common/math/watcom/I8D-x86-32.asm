@@ -1,10 +1,10 @@
-; $Id: I8D-x86-32.asm 75129 2018-10-28 17:00:27Z vboxsync $
+; $Id: I8D-x86-32.asm 76553 2019-01-01 01:45:53Z vboxsync $
 ;; @file
 ; BS3Kit - 32-bit Watcom C/C++, 64-bit signed integer division.
 ;
 
 ;
-; Copyright (C) 2007-2017 Oracle Corporation
+; Copyright (C) 2007-2019 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

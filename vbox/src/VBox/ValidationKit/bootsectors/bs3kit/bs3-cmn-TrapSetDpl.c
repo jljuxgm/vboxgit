@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-TrapSetDpl.c 72125 2018-05-04 22:10:02Z vboxsync $ */
+/* $Id: bs3-cmn-TrapSetDpl.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapSetDpl
  */
 
 /*
- * Copyright (C) 2007-2018 Oracle Corporation
+ * Copyright (C) 2007-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: Intel_Core_Duo_T2600_2_16GHz.h 76543 2018-12-30 06:38:55Z vboxsync $ */
+/* $Id: Intel_Core_Duo_T2600_2_16GHz.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core Duo T2600 2.16GHz".
  * Generated at 2017-11-02T10:39:16Z by VBoxCpuReport v5.2.0_RC1r118339 on linux.x86.
  */
 
 /*
- * Copyright (C) 2013-2016 Oracle Corporation
+ * Copyright (C) 2013-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

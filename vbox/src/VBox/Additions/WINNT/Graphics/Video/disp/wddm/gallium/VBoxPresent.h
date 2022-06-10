@@ -1,4 +1,4 @@
-/* $Id: VBoxPresent.h 76540 2018-12-30 06:26:37Z vboxsync $ */
+/* $Id: VBoxPresent.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium D3D9 state tracker interface.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

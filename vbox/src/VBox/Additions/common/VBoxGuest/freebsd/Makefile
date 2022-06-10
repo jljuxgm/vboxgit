@@ -1,10 +1,10 @@
-# $Id: Makefile 70160 2017-12-15 16:54:43Z vboxsync $
+# $Id: Makefile 76553 2019-01-01 01:45:53Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
 
 #
-# Copyright (C) 2006-2017 Oracle Corporation
+# Copyright (C) 2006-2019 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

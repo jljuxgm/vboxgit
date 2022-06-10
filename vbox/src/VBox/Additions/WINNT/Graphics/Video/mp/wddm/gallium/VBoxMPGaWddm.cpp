@@ -1,10 +1,10 @@
-/* $Id: VBoxMPGaWddm.cpp 75697 2018-11-23 22:45:22Z vboxsync $ */
+/* $Id: VBoxMPGaWddm.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
 
 /*
- * Copyright (C) 2016-2018 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: BusMouse.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: BusMouse.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * BusMouse - Microsoft Bus (parallel) mouse controller device.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

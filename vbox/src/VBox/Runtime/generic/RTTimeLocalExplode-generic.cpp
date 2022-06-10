@@ -1,10 +1,10 @@
-/* $Id: RTTimeLocalExplode-generic.cpp 72163 2018-05-08 12:52:17Z vboxsync $ */
+/* $Id: RTTimeLocalExplode-generic.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - Time, generic RTTimeLocalExplode.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

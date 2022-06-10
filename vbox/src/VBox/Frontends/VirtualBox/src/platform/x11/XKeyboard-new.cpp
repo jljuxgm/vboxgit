@@ -1,10 +1,10 @@
-/* $Id: XKeyboard-new.cpp 71540 2018-03-28 15:12:45Z vboxsync $ */
+/* $Id: XKeyboard-new.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Implementation of Linux-specific keyboard functions.
  */
 
 /*
- * Copyright (C) 2006-2018 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

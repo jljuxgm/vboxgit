@@ -1,10 +1,10 @@
-/* $Id: avl_DoWithAll.cpp.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: avl_DoWithAll.cpp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * kAVLDoWithAll - Do with all nodes routine for AVL trees.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

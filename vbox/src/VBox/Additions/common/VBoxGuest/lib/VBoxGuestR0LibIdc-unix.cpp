@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR0LibIdc-unix.cpp 72627 2018-06-20 13:53:28Z vboxsync $ */
+/* $Id: VBoxGuestR0LibIdc-unix.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Ring-0 Support Library for VBoxGuest, IDC, UNIX-like OSes.
  */
 
 /*
- * Copyright (C) 2008-2018 Oracle Corporation
+ * Copyright (C) 2008-2019 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

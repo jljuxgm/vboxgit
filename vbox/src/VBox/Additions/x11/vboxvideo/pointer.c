@@ -1,10 +1,10 @@
-/* $Id: pointer.c 69346 2017-10-26 13:36:28Z vboxsync $ */
+/* $Id: pointer.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver utility functions
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

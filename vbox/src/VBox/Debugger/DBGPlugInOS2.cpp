@@ -1,10 +1,10 @@
-/* $Id: DBGPlugInOS2.cpp 75242 2018-11-03 02:59:35Z vboxsync $ */
+/* $Id: DBGPlugInOS2.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * DBGPlugInOS2 - Debugger and Guest OS Digger Plugin For OS/2.
  */
 
 /*
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

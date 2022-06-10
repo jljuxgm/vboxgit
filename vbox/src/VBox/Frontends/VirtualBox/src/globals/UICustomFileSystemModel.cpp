@@ -1,10 +1,10 @@
-/* $Id: UICustomFileSystemModel.cpp 76498 2018-12-27 13:13:30Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
 
 /*
- * Copyright (C) 2016-2018 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

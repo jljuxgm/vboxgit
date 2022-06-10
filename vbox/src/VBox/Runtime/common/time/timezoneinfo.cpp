@@ -1,10 +1,10 @@
-/* $Id: timezoneinfo.cpp 68116 2017-07-26 09:03:26Z vboxsync $ */
+/* $Id: timezoneinfo.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - Time zone mapping info.
  */
 
 /*
- * Copyright (C) 2017 Oracle Corporation
+ * Copyright (C) 2017-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

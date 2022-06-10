@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFltNobj.cpp 70815 2018-01-30 18:06:26Z vboxsync $ */
+/* $Id: VBoxNetFltNobj.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxNetFltNobj.cpp - Notify Object for Bridged Networking Driver.
  * Used to filter Bridged Networking Driver bindings
  */
 /*
- * Copyright (C) 2011-2017 Oracle Corporation
+ * Copyright (C) 2011-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

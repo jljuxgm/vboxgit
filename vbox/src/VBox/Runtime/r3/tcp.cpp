@@ -1,10 +1,10 @@
-/* $Id: tcp.cpp 70482 2018-01-07 18:46:33Z vboxsync $ */
+/* $Id: tcp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

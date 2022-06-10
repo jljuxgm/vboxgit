@@ -1,10 +1,10 @@
-/* $Id: hardenedmain.cpp 72247 2018-05-17 17:28:18Z vboxsync $ */
+/* $Id: hardenedmain.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Hardened main().
  */
 
 /*
- * Copyright (C) 2008-2017 Oracle Corporation
+ * Copyright (C) 2008-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

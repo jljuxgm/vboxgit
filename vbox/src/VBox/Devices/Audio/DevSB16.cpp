@@ -1,10 +1,10 @@
-/* $Id: DevSB16.cpp 76158 2018-12-11 11:02:50Z vboxsync $ */
+/* $Id: DevSB16.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
 
 /*
- * Copyright (C) 2015-2018 Oracle Corporation
+ * Copyright (C) 2015-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

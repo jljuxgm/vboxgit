@@ -1,10 +1,10 @@
-/* $Id: VBoxSF.cpp 75678 2018-11-22 21:39:48Z vboxsync $ */
+/* $Id: VBoxSF.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxSF - Darwin Shared Folders, KEXT entry points.
  */
 
 /*
- * Copyright (C) 2013-2018 Oracle Corporation
+ * Copyright (C) 2013-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

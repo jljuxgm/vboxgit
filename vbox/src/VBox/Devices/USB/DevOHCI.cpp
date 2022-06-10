@@ -1,10 +1,10 @@
-/* $Id: DevOHCI.cpp 70371 2017-12-27 18:46:43Z vboxsync $ */
+/* $Id: DevOHCI.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

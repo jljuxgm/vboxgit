@@ -1,10 +1,10 @@
-/* $Id: DBGFOS.cpp 73460 2018-08-02 21:06:59Z vboxsync $ */
+/* $Id: DBGFOS.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest OS Diggers.
  */
 
 /*
- * Copyright (C) 2008-2017 Oracle Corporation
+ * Copyright (C) 2008-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

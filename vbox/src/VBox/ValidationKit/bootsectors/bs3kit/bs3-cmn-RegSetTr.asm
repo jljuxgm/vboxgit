@@ -1,10 +1,10 @@
-; $Id: bs3-cmn-RegSetTr.asm 72138 2018-05-07 13:03:51Z vboxsync $
+; $Id: bs3-cmn-RegSetTr.asm 76553 2019-01-01 01:45:53Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3RegSetTr
 ;
 
 ;
-; Copyright (C) 2007-2018 Oracle Corporation
+; Copyright (C) 2007-2019 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

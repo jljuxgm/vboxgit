@@ -1,10 +1,10 @@
-/* $Id: VBoxDev-haiku.c 70873 2018-02-05 18:13:55Z vboxsync $ */
+/* $Id: VBoxDev-haiku.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBoxGuest kernel driver, Haiku Guest Additions, implementation.
  */
 
 /*
- * Copyright (C) 2012-2017 Oracle Corporation
+ * Copyright (C) 2012-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

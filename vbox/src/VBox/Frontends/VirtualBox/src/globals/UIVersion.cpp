@@ -1,10 +1,10 @@
-/* $Id: UIVersion.cpp 75571 2018-11-19 12:24:49Z vboxsync $ */
+/* $Id: UIVersion.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVersion class implementation.
  */
 
 /*
- * Copyright (C) 2006-2018 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

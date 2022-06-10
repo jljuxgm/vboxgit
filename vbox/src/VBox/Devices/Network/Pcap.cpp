@@ -1,10 +1,10 @@
-/* $Id: Pcap.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
+/* $Id: Pcap.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * Helpers for writing libpcap files.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

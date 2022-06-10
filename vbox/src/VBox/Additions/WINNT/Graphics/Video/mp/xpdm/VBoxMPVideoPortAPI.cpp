@@ -1,10 +1,10 @@
-/* $Id: VBoxMPVideoPortAPI.cpp 75403 2018-11-12 17:50:58Z vboxsync $ */
+/* $Id: VBoxMPVideoPortAPI.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport video port api
  */
 
 /*
- * Copyright (C) 2011-2017 Oracle Corporation
+ * Copyright (C) 2011-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

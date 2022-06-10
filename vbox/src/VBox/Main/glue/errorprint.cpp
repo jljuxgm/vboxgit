@@ -1,4 +1,4 @@
-/* $Id: errorprint.cpp 73505 2018-08-05 13:58:10Z vboxsync $ */
+/* $Id: errorprint.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

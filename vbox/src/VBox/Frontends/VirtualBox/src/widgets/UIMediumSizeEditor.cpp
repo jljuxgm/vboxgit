@@ -1,10 +1,10 @@
-/* $Id: UIMediumSizeEditor.cpp 76199 2018-12-13 09:08:47Z vboxsync $ */
+/* $Id: UIMediumSizeEditor.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class implementation.
  */
 
 /*
- * Copyright (C) 2006-2018 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

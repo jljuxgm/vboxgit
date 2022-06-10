@@ -1,10 +1,10 @@
-/* $Id: AudioDriver.cpp 70670 2018-01-22 09:10:06Z vboxsync $ */
+/* $Id: AudioDriver.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox audio base class for Main audio drivers.
  */
 
 /*
- * Copyright (C) 2018 Oracle Corporation
+ * Copyright (C) 2018-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

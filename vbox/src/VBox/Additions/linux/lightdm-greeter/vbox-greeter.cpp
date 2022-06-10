@@ -1,11 +1,11 @@
-/* $Id: vbox-greeter.cpp 70061 2017-12-11 15:26:46Z vboxsync $ */
+/* $Id: vbox-greeter.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * vbox-greeter - an own LightDM greeter module supporting auto-logons
  *                controlled by the host.
  */
 
 /*
- * Copyright (C) 2012-2017 Oracle Corporation
+ * Copyright (C) 2012-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

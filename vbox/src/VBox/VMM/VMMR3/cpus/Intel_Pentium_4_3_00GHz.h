@@ -1,11 +1,11 @@
-/* $Id: Intel_Pentium_4_3_00GHz.h 76543 2018-12-30 06:38:55Z vboxsync $ */
+/* $Id: Intel_Pentium_4_3_00GHz.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Pentium 4 3.00GHz".
  * Generated at 2013-12-18T06:37:54Z by VBoxCpuReport v4.3.53r91376 on win.amd64.
  */
 
 /*
- * Copyright (C) 2013-2017 Oracle Corporation
+ * Copyright (C) 2013-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

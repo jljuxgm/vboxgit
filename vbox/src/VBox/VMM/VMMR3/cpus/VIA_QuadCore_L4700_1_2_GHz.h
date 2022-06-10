@@ -1,11 +1,11 @@
-/* $Id: VIA_QuadCore_L4700_1_2_GHz.h 76543 2018-12-30 06:38:55Z vboxsync $ */
+/* $Id: VIA_QuadCore_L4700_1_2_GHz.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * CPU database entry "VIA QuadCore L4700 1.2+ GHz".
  * Generated at 2013-12-20T14:40:07Z by VBoxCpuReport v4.3.53r91411 on linux.amd64.
  */
 
 /*
- * Copyright (C) 2013-2017 Oracle Corporation
+ * Copyright (C) 2013-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

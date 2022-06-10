@@ -1,10 +1,10 @@
-/* $Id: avl_RemoveNode.cpp.h 65892 2017-02-27 17:04:46Z vboxsync $ */
+/* $Id: avl_RemoveNode.cpp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * kAVLRemove2 - Remove specific node (by pointer) from an AVL tree.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

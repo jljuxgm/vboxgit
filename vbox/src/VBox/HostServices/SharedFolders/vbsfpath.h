@@ -1,10 +1,10 @@
-/* $Id: vbsfpath.h 76526 2018-12-30 05:52:33Z vboxsync $ */
+/* $Id: vbsfpath.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * Shared Folders Service - Guest/host path convertion and verification.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

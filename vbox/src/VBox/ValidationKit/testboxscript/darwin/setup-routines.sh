@@ -1,10 +1,10 @@
-# $Id: setup-routines.sh 66800 2017-05-04 23:55:34Z vboxsync $
+# $Id: setup-routines.sh 76553 2019-01-01 01:45:53Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Mac OS X (darwin).
 #
 
 #
-# Copyright (C) 2006-2017 Oracle Corporation
+# Copyright (C) 2006-2019 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

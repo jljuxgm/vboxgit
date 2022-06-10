@@ -1,10 +1,10 @@
-/* $Id: UIHotKeyEditor.cpp 72923 2018-07-05 16:05:30Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHotKeyEditor class implementation.
  */
 
 /*
- * Copyright (C) 2013-2018 Oracle Corporation
+ * Copyright (C) 2013-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

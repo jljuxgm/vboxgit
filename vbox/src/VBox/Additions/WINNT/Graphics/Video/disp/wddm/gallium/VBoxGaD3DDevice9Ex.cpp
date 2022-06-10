@@ -1,4 +1,4 @@
-/* $Id: VBoxGaD3DDevice9Ex.cpp 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: VBoxGaD3DDevice9Ex.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: EMR3Nem.cpp 76397 2018-12-23 14:32:01Z vboxsync $ */
+/* $Id: EMR3Nem.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - NEM interface.
  */
 
 /*
- * Copyright (C) 2006-2018 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

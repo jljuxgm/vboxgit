@@ -1,10 +1,10 @@
-/* $Id: asn1-ut-time-decode.cpp 75178 2018-10-30 13:34:54Z vboxsync $ */
+/* $Id: asn1-ut-time-decode.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, UTC TIME and GENERALIZED TIME Types, Decoding.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

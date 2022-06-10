@@ -1,10 +1,10 @@
-/* $Id: dvmvfs.cpp 73265 2018-07-20 13:30:05Z vboxsync $ */
+/* $Id: dvmvfs.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - VFS glue.
  */
 
 /*
- * Copyright (C) 2012-2017 Oracle Corporation
+ * Copyright (C) 2012-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

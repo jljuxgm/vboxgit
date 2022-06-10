@@ -1,5 +1,5 @@
 <?php
-/* $Id: clienttest.php 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: clienttest.php 76553 2019-01-01 01:45:53Z vboxsync $ */
 /*!file
  * Sample client for the VirtualBox webservice, written in PHP.
  *
@@ -12,7 +12,7 @@
 /*
  * Contributed by James Lucas (mjlucas at eng.uts.edu.au).
  *
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

@@ -1,10 +1,10 @@
-/* $Id: wddm_screen.h 76539 2018-12-30 06:22:29Z vboxsync $ */
+/* $Id: wddm_screen.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA hardware driver.
  */
 
 /*
- * Copyright (C) 2016-2018 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

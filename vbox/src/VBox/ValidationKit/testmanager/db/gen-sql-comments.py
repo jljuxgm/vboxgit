@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: gen-sql-comments.py 69781 2017-11-20 18:41:33Z vboxsync $
+# $Id: gen-sql-comments.py 76553 2019-01-01 01:45:53Z vboxsync $
 
 """
 Converts doxygen style comments in SQL script to COMMENT ON statements.
@@ -8,7 +8,7 @@ Converts doxygen style comments in SQL script to COMMENT ON statements.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2017 Oracle Corporation
+Copyright (C) 2012-2019 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;

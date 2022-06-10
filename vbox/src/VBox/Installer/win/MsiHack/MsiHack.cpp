@@ -1,4 +1,4 @@
-/* $Id: MsiHack.cpp 72831 2018-07-03 16:19:10Z vboxsync $ */
+/* $Id: MsiHack.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * MsiHack - Exterimental DLL that intercept small ReadFile calls from
  *           MSI, CABINET and WINTEROP, buffering them using memory mapped files.
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

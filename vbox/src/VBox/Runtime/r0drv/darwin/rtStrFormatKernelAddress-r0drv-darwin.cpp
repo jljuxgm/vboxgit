@@ -1,10 +1,10 @@
-/* $Id: rtStrFormatKernelAddress-r0drv-darwin.cpp 68996 2017-10-06 07:48:23Z vboxsync $ */
+/* $Id: rtStrFormatKernelAddress-r0drv-darwin.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter, ring-0 addresses.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

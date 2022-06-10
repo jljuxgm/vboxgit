@@ -1,4 +1,4 @@
-# $Id: stdsoap2.sed 69500 2017-10-28 15:14:05Z vboxsync $
+# $Id: stdsoap2.sed 76553 2019-01-01 01:45:53Z vboxsync $
 ## @file
 # WebService - SED script for inserting a iprt/win/windows.h include
 #              before stdsoap2.h in soapStub.h.  This prevents hacking
@@ -6,7 +6,7 @@
 #
 
 #
-# Copyright (C) 2016-2017 Oracle Corporation
+# Copyright (C) 2016-2019 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

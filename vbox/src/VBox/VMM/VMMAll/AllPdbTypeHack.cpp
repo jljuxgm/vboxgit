@@ -1,10 +1,10 @@
-/* $Id: AllPdbTypeHack.cpp 71290 2018-03-09 15:32:56Z vboxsync $ */
+/* $Id: AllPdbTypeHack.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * Debug info hack for the VM and VMCPU structures.
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

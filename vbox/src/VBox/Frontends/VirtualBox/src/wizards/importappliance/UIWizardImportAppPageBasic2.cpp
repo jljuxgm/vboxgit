@@ -1,10 +1,10 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 72545 2018-06-13 14:24:53Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
 
 /*
- * Copyright (C) 2009-2017 Oracle Corporation
+ * Copyright (C) 2009-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

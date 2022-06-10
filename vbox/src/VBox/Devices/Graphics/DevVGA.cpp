@@ -1,10 +1,10 @@
-/* $Id: DevVGA.cpp 76249 2018-12-16 09:36:17Z vboxsync $ */
+/* $Id: DevVGA.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

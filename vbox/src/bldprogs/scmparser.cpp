@@ -1,10 +1,10 @@
-/* $Id: scmparser.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
+/* $Id: scmparser.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Code Parsers.
  */
 
 /*
- * Copyright (C) 2010-2017 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

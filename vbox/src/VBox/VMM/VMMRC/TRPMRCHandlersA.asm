@@ -1,10 +1,10 @@
-; $Id: TRPMRCHandlersA.asm 72254 2018-05-18 07:28:30Z vboxsync $
+; $Id: TRPMRCHandlersA.asm 76553 2019-01-01 01:45:53Z vboxsync $
 ;; @file
 ; TRPM - Raw-mode Context Trap Handlers
 ;
 
 ;
-; Copyright (C) 2006-2017 Oracle Corporation
+; Copyright (C) 2006-2019 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

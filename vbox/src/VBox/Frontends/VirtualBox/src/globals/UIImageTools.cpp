@@ -1,10 +1,10 @@
-/* $Id: UIImageTools.cpp 72043 2018-04-26 14:26:02Z vboxsync $ */
+/* $Id: UIImageTools.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Implementation of utility classes and functions for image manipulation.
  */
 
 /*
- * Copyright (C) 2010-2018 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

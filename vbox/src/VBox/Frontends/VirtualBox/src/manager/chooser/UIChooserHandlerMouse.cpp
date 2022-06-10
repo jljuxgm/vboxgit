@@ -1,10 +1,10 @@
-/* $Id: UIChooserHandlerMouse.cpp 74483 2018-09-26 16:27:10Z vboxsync $ */
+/* $Id: UIChooserHandlerMouse.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerMouse class implementation.
  */
 
 /*
- * Copyright (C) 2012-2017 Oracle Corporation
+ * Copyright (C) 2012-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

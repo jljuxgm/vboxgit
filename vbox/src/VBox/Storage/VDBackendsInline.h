@@ -1,10 +1,10 @@
-/* $Id: VDBackendsInline.h 76530 2018-12-30 06:00:13Z vboxsync $ */
+/* $Id: VDBackendsInline.h 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VD - backends inline helpers.
  */
 
 /*
- * Copyright (C) 2017 Oracle Corporation
+ * Copyright (C) 2017-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

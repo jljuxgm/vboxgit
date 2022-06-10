@@ -1,10 +1,10 @@
-/* $Id: UIGuestControlInterface.cpp 76361 2018-12-22 01:43:57Z vboxsync $ */
+/* $Id: UIGuestControlInterface.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
 
 /*
- * Copyright (C) 2016-2018 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

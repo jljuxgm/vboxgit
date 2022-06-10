@@ -1,10 +1,10 @@
-/* $Id: DrvHostCoreAudio.cpp 75606 2018-11-20 10:26:04Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
 
 /*
- * Copyright (C) 2010-2018 Oracle Corporation
+ * Copyright (C) 2010-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

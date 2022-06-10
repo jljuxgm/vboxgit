@@ -1,10 +1,10 @@
-/* $Id: GVMMR0.cpp 75661 2018-11-22 12:33:18Z vboxsync $ */
+/* $Id: GVMMR0.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
 
 /*
- * Copyright (C) 2007-2017 Oracle Corporation
+ * Copyright (C) 2007-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

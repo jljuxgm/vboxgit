@@ -1,10 +1,10 @@
-/* $Id: UIInformationDataItem.cpp 72333 2018-05-25 08:55:20Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

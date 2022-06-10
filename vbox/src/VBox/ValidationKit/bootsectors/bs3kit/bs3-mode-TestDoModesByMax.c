@@ -1,10 +1,10 @@
-/* $Id: bs3-mode-TestDoModesByMax.c 66180 2017-03-21 15:02:37Z vboxsync $ */
+/* $Id: bs3-mode-TestDoModesByMax.c 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestDoModesByMax
  */
 
 /*
- * Copyright (C) 2007-2017 Oracle Corporation
+ * Copyright (C) 2007-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

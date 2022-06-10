@@ -1,10 +1,10 @@
-/* $Id: UISlidingAnimation.cpp 73845 2018-08-22 18:18:34Z vboxsync $ */
+/* $Id: UISlidingAnimation.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingAnimation class implementation.
  */
 
 /*
- * Copyright (C) 2017-2018 Oracle Corporation
+ * Copyright (C) 2017-2019 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

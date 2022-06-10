@@ -1,10 +1,10 @@
-; $Id: rdtsc-asm.asm 72549 2018-06-13 17:58:19Z vboxsync $
+; $Id: rdtsc-asm.asm 76553 2019-01-01 01:45:53Z vboxsync $
 ;; @file
 ; RDTSC test, assembly code
 ;
 
 ;
-; Copyright (C) 2009-2018 Oracle Corporation
+; Copyright (C) 2009-2019 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
