@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 73912 2018-08-27 12:19:32Z vboxsync $ */
+/* $Id: CFGM.cpp 75171 2018-10-30 09:30:43Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -231,7 +231,7 @@ VMMR3DECL(int) CFGMR3Init(PVM pVM, PFNCFGMCONSTRUCTOR pfnCFGMConstructor, void *
         CFGMR3Dump(CFGMR3GetRoot(pVM));
     }
     else
-        AssertMsgFailed(("Constructor failed with rc=%Rrc pfnCFGMConstructor=%p\n", rc, pfnCFGMConstructor));
+        LogRel(("Constructor failed with rc=%Rrc pfnCFGMConstructor=%p\n", rc, pfnCFGMConstructor));
 
     return rc;
 }
