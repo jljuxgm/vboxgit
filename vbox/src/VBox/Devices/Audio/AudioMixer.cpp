@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73557 2018-08-08 11:39:55Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73561 2018-08-08 12:59:57Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1444,8 +1444,11 @@ int AudioMixerSinkSetVolume(PAUDMIXSINK pSink, PPDMAUDIOVOLUME pVol)
 
     memcpy(&pSink->Volume, pVol, sizeof(PDMAUDIOVOLUME));
 
-    LogFlowFunc(("[%s] fMuted=%RTbool, lVol=%RU32, rVol=%RU32\n",
+    LogFlowFunc(("[%s] fMuted=%RTbool, lVol=%RU8, rVol=%RU8\n",
                  pSink->pszName, pSink->Volume.fMuted, pSink->Volume.uLeft, pSink->Volume.uRight));
+
+    LogRel2(("Mixer: Setting volume of sink '%s' to %RU8/%RU8 (%s)\n",
+             pSink->pszName, pVol->uLeft, pVol->uRight, pVol->fMuted ? "Muted" : "Unmuted"));
 
     AssertPtr(pSink->pParent);
     rc = audioMixerSinkUpdateVolume(pSink, &pSink->pParent->VolMaster);
@@ -1671,7 +1674,7 @@ int audioMixerSinkWriteToStreams(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *
         {
             LogFunc(("[%s] Warning: Only written %RU32/%RU32 bytes for stream '%s'\n",
                      pSink->pszName, cbWritten, cbBuf, pMixStream->pszName));
-            LogRel2(("Audio: Buffer overrun for mixer stream '%s' (sink '%s')\n", pMixStream->pszName, pSink->pszName));
+            LogRel2(("Mixer: Buffer overrun for mixer stream '%s' (sink '%s')\n", pMixStream->pszName, pSink->pszName));
 #ifdef DEBUG_andy
             AssertFailed();
 #endif
@@ -1779,7 +1782,7 @@ int AudioMixerSinkWrite(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *pvBuf, ui
     if (   RT_FAILURE(rc)
         || cbWritten < cbBuf)
     {
-        LogRel2(("Audio: Buffer overrun for mixer sink '%s' (only %RU32/%RU32 bytes written)\n",
+        LogRel2(("Mixer: Buffer overrun for mixer sink '%s' (only %RU32/%RU32 bytes written)\n",
                  pSink->pszName, cbWritten, cbBuf));
 # ifdef DEBUG_andy
         AssertFailed();
