@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerOperationsPanel.cpp 77158 2019-02-04 19:17:25Z vboxsync $ */
+/* $Id: UIFileManagerOperationsPanel.cpp 77528 2019-03-01 13:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -48,19 +48,19 @@ class UIFileOperationProgressWidget : public QIWithRetranslateUI<QFrame>
 
     Q_OBJECT;
 
-public:
-
-    UIFileOperationProgressWidget(const CProgress &comProgress, QWidget *pParent = 0);
-    ~UIFileOperationProgressWidget();
-    bool isCompleted() const;
-    bool isCanceled() const;
-
 signals:
 
     void sigProgressComplete(QUuid progressId);
     void sigProgressFail(QString strErrorString, FileManagerLogType eLogType);
     void sigFocusIn(QWidget *pWidget);
     void sigFocusOut(QWidget *pWidget);
+
+public:
+
+    UIFileOperationProgressWidget(const CProgress &comProgress, QWidget *pParent = 0);
+    ~UIFileOperationProgressWidget();
+    bool isCompleted() const;
+    bool isCanceled() const;
 
 protected:
 
@@ -85,8 +85,8 @@ private:
         OperationStatus_Failed,
         OperationStatus_Invalid,
         OperationStatus_Max
-
     };
+
     void prepare();
     void prepareWidgets();
     void prepareEventHandler();

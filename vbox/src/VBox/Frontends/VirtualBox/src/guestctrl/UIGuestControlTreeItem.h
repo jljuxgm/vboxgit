@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.h 77528 2019-03-01 13:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlTreeItem class declaration.
  */
@@ -109,7 +109,6 @@ private:
     void addGuestProcess(CGuestProcess guestProcess);
     void initProcessSubTree();
     CGuestSession m_comGuestSession;
-
 };
 
 /** UIGuestControlTreeItem extension. Represents a instance of CGuestProcess
@@ -150,4 +149,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_guestctrl_UIGuestControlTreeItem_h */
-

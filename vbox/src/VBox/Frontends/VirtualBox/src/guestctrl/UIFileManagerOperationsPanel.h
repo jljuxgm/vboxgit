@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerOperationsPanel.h 76950 2019-01-23 10:17:54Z vboxsync $ */
+/* $Id: UIFileManagerOperationsPanel.h 77528 2019-03-01 13:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -45,16 +45,16 @@ class UIFileManagerOperationsPanel : public UIDialogPanel
 {
     Q_OBJECT;
 
+signals:
+
+    void sigFileOperationComplete(QUuid progressId);
+    void sigFileOperationFail(QString strErrorString, FileManagerLogType eLogType);
+
 public:
 
     UIFileManagerOperationsPanel(QWidget *pParent = 0);
     virtual QString panelName() const /* override */;
     void addNewProgress(const CProgress &comProgress);
-
-signals:
-
-    void sigFileOperationComplete(QUuid progressId);
-    void sigFileOperationFail(QString strErrorString, FileManagerLogType eLogType);
 
 protected:
 
@@ -89,9 +89,6 @@ private:
         QWidget        *m_pWidgetInFocus;
         QSet<QWidget*>  m_widgetSet;
     /** @} */
-
-
-
 };
 
 #endif /* !FEQT_INCLUDED_SRC_guestctrl_UIFileManagerOperationsPanel_h */

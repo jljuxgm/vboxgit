@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIFileManagerDialog.h 77528 2019-03-01 13:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class declaration.
  */
@@ -57,7 +57,6 @@ protected:
     CGuest        m_comGuest;
     QString       m_strMachineName;
 };
-
 
 /** QIManagerDialog extension providing GUI with the dialog displaying file manager releated logs. */
 class UIFileManagerDialog : public QIWithRetranslateUI<QIManagerDialog>

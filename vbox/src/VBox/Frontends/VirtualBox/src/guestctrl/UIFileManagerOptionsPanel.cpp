@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerOptionsPanel.cpp 76950 2019-01-23 10:17:54Z vboxsync $ */
+/* $Id: UIFileManagerOptionsPanel.cpp 77528 2019-03-01 13:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -16,20 +16,13 @@
  */
 
 /* Qt includes: */
-#include <QComboBox>
 #include <QHBoxLayout>
-#include <QFontDatabase>
-#include <QFontDialog>
 #include <QCheckBox>
-#include <QLabel>
-#include <QSpinBox>
 
 /* GUI includes: */
 #include "QIToolButton.h"
-#include "UIIconPool.h"
 #include "UIFileManager.h"
 #include "UIFileManagerOptionsPanel.h"
-
 
 UIFileManagerOptionsPanel::UIFileManagerOptionsPanel(QWidget *pParent, UIFileManagerOptions *pFileManagerOptions)
     : UIDialogPanel(pParent)

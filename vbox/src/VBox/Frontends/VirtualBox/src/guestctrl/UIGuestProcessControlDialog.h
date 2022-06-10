@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlDialog.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIGuestProcessControlDialog.h 77528 2019-03-01 13:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlDialog class declaration.
  */
@@ -33,12 +33,9 @@
 #include "CGuest.h"
 
 /* Forward declarations: */
-class QDialogButtonBox;
-class QVBoxLayout;
 class UIActionPool;
 class UIGuestProcessControlDialog;
 class CGuest;
-
 
 /** QIManagerDialogFactory extension used as a factory for the Guest Control dialog. */
 class UIGuestProcessControlDialogFactory : public QIManagerDialogFactory

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.h 77528 2019-03-01 13:07:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class declaration.
  */
@@ -68,7 +68,6 @@ private:
 
     static QString permissionString(QFileDevice::Permissions permissions);
     void    prepareActionConnections();
-
 };
 
 #endif /* !FEQT_INCLUDED_SRC_guestctrl_UIFileManagerHostTable_h */
