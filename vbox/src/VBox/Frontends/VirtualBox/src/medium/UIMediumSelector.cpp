@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72937 2018-07-06 13:04:16Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 73008 2018-07-09 12:19:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -227,7 +227,6 @@ void UIMediumSelector::configure()
     prepareActions();
     prepareWidgets();
     prepareConnections();
-
 }
 
 void UIMediumSelector::prepareActions()
@@ -304,7 +303,10 @@ void UIMediumSelector::prepareConnections()
         connect(m_pActionRefresh, &QAction::triggered, this, &UIMediumSelector::sltHandleRefresh);
 
     if (m_pTreeWidget)
+    {
         connect(m_pTreeWidget, &QITreeWidget::itemSelectionChanged, this, &UIMediumSelector::sltHandleItemSelectionChanged);
+        connect(m_pTreeWidget, &QITreeWidget::itemDoubleClicked, this, &UIMediumSelector::sltHandleTreeWidgetDoubleClick);
+    }
 
     if (m_pButtonBox)
     {
@@ -497,6 +499,15 @@ void UIMediumSelector::sltHandleItemSelectionChanged()
 {
     updateOkButton();
 }
+
+void UIMediumSelector::sltHandleTreeWidgetDoubleClick(QTreeWidgetItem * item, int column)
+{
+    Q_UNUSED(column);
+    if (!dynamic_cast<UIMediumItem*>(item))
+        return;
+    accept();
+}
+
 
 void UIMediumSelector::sltHandleMediumEnumerationStart()
 {
