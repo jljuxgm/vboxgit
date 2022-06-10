@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 74061 2018-09-04 09:43:57Z vboxsync $ */
+/* $Id: CPUM.cpp 74098 2018-09-06 02:44:39Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1038,6 +1038,8 @@ DECLCALLBACK(void) cpumR3InfoVmxFeatures(PVM pVM, PCDBGFINFOHLP pHlp, const char
         pHlp->pfnPrintf(pHlp, "Nested hardware virtualization - VMX features\n");
         pHlp->pfnPrintf(pHlp, "  Mnemonic - Description                                  = guest (host)\n");
         VMXFEATDUMP("VMX - Virtual-Machine Extensions                       ", fVmx);
+        if (!pGuestFeatures->fVmx)
+            return;
         /* Basic. */
         VMXFEATDUMP("InsOutInfo - INS/OUTS instruction info.                ", fVmxInsOutInfo);
         /* Pin-based controls. */
