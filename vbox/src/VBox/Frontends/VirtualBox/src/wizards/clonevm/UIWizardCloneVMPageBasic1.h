@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.h 74550 2018-10-01 12:57:05Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.h 74576 2018-10-02 10:05:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic1 class declaration.
  */
@@ -68,6 +68,12 @@ protected:
     /** Defines @a enmMACAddressClonePolicy. */
     void setMACAddressClonePolicy(MACAddressClonePolicy enmMACAddressClonePolicy);
 
+    bool keepDiskNames() const;
+    void setKeepDiskNames(bool fKeepDiskNames);
+
+    bool keepHWUUIDs() const;
+    void setKeepHWUUIDs(bool bKeepHWUUIDs);
+
     QString      m_strOriginalName;
     QString      m_strDefaultPath;
     QString      m_strGroup;
@@ -82,6 +88,9 @@ protected:
     QLabel      *m_pPathLabel;
     QLabel      *m_pMACComboBoxLabel;
     QComboBox   *m_pMACComboBox;
+    QLabel      *m_pAdditionalOptionsLabel;
+    QCheckBox   *m_pKeepDiskNamesCheckBox;
+    QCheckBox   *m_pKeepHWUUIDsCheckBox;
 };
 
 /* 1st page of the Clone Virtual Machine wizard (basic extension): */
@@ -91,6 +100,9 @@ class UIWizardCloneVMPageBasic1 : public UIWizardPage, public UIWizardCloneVMPag
     Q_PROPERTY(QString cloneName READ cloneName WRITE setCloneName);
     Q_PROPERTY(QString cloneFilePath READ cloneFilePath WRITE setCloneFilePath);
     Q_PROPERTY(MACAddressClonePolicy macAddressClonePolicy READ macAddressClonePolicy WRITE setMACAddressClonePolicy);
+    Q_PROPERTY(bool keepDiskNames READ keepDiskNames WRITE setKeepDiskNames);
+    Q_PROPERTY(bool keepHWUUIDs READ keepHWUUIDs WRITE setKeepHWUUIDs);
+
 
 public:
 

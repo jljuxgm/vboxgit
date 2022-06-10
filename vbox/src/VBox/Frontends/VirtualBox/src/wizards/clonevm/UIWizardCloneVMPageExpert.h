@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.h 74550 2018-10-01 12:57:05Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.h 74576 2018-10-02 10:05:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class declaration.
  */
@@ -38,6 +38,8 @@ class UIWizardCloneVMPageExpert : public UIWizardPage,
     Q_PROPERTY(bool linkedClone READ isLinkedClone);
     Q_PROPERTY(KCloneMode cloneMode READ cloneMode WRITE setCloneMode);
     Q_PROPERTY(MACAddressClonePolicy macAddressClonePolicy READ macAddressClonePolicy WRITE setMACAddressClonePolicy);
+    Q_PROPERTY(bool keepDiskNames READ keepDiskNames WRITE setKeepDiskNames);
+    Q_PROPERTY(bool keepHWUUIDs READ keepHWUUIDs WRITE setKeepHWUUIDs);
 
 public:
 
