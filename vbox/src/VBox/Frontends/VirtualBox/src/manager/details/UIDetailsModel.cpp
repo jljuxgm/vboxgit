@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.cpp 74049 2018-09-03 16:45:09Z vboxsync $ */
+/* $Id: UIDetailsModel.cpp 74110 2018-09-06 10:21:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class implementation.
  */
@@ -95,15 +95,14 @@ UIDetailsItem *UIDetailsModel::root() const
 void UIDetailsModel::updateLayout()
 {
     /* Prepare variables: */
-    int iSceneMargin = data(DetailsModelData_Margin).toInt();
-    QSize viewportSize = paintDevice()->viewport()->size();
-    int iViewportWidth = viewportSize.width() - 2 * iSceneMargin;
-    int iViewportHeight = viewportSize.height() - 2 * iSceneMargin;
+    const int iSceneMargin = data(DetailsModelData_Margin).toInt();
+    const QSize viewportSize = paintDevice()->viewport()->size();
+    const int iViewportWidth = viewportSize.width() - 2 * iSceneMargin;
 
     /* Move root: */
     m_pRoot->setPos(iSceneMargin, iSceneMargin);
     /* Resize root: */
-    m_pRoot->resize(iViewportWidth, iViewportHeight);
+    m_pRoot->resize(iViewportWidth, m_pRoot->minimumHeightHint());
     /* Layout root content: */
     m_pRoot->updateLayout();
 }

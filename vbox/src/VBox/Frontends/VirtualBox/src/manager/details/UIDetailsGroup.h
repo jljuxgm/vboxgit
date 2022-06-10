@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.h 74109 2018-09-06 10:14:20Z vboxsync $ */
+/* $Id: UIDetailsGroup.h 74110 2018-09-06 10:21:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class declaration.
  */
@@ -70,6 +70,11 @@ public:
       * @{ */
         /** Updates layout. */
         virtual void updateLayout() /* override */;
+
+        /** Returns minimum width-hint. */
+        virtual int minimumWidthHint() const /* override */;
+        /** Returns minimum height-hint. */
+        virtual int minimumHeightHint() const /* override */;
     /** @} */
 
 protected slots:
@@ -116,11 +121,6 @@ protected:
       * @{ */
         /** Updates geometry. */
         virtual void updateGeometry() /* override */;
-
-        /** Returns minimum width-hint. */
-        virtual int minimumWidthHint() const /* override */;
-        /** Returns minimum height-hint. */
-        virtual int minimumHeightHint() const /* override */;
     /** @} */
 
 private:
