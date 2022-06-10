@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 77847 2019-03-22 13:22:06Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 77890 2019-03-26 17:16:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -418,7 +418,7 @@ void UIChooserItemMachine::processDrop(QGraphicsSceneDragDropEvent *pEvent, UICh
                 UIChooserNodeGroup *pNewGroupNode = new UIChooserNodeGroup(parentItem()->node(),
                                                                            false /* favorite */,
                                                                            parentItem()->node()->nodes().size(),
-                                                                           UIChooserModel::uniqueGroupName(parentItem()),
+                                                                           UIChooserModel::uniqueGroupName(parentItem()->node()),
                                                                            true /* true */);
                 UIChooserItemGroup *pNewGroupItem = new UIChooserItemGroup(parentItem(), pNewGroupNode);
                 UIChooserNodeMachine *pNewMachineNode1 = new UIChooserNodeMachine(pNewGroupNode,
