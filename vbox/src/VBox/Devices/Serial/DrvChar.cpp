@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 74446 2018-09-24 16:05:11Z vboxsync $ */
+/* $Id: DrvChar.cpp 74447 2018-09-24 16:08:23Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMISERIALCONNECTOR / PDMISERIALPORT.
  */
@@ -76,6 +76,10 @@ typedef struct DRVCHAR
     volatile size_t             cbRemaining;
     /** Current position into the read buffer. */
     uint8_t                     *pbBuf;
+
+#if HC_ARCH_BITS == 32
+    uint32_t                    uAlignment0;
+#endif
 
     /** Read/write statistics */
     STAMCOUNTER                 StatBytesRead;
