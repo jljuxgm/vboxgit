@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.h 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: RecordingScreenSettingsImpl.h 75366 2018-11-09 16:07:55Z vboxsync $ */
 
 /** @file
  *
@@ -104,7 +104,11 @@ private:
 private:
 
     // internal methods
-    int  i_initInternal();
+    int i_initInternal();
+
+private:
+
+    static int i_parseOptionsString(const com::Utf8Str &strOptions, settings::RecordingScreenSettings &screenSettings);
 
 private:
 
