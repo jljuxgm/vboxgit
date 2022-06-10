@@ -1,4 +1,4 @@
-/* $Id: VBoxWddmUmHlp.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: VBoxWddmUmHlp.h 75531 2018-11-16 20:09:45Z vboxsync $ */
 /** @file
  * VBox WDDM User Mode Driver Helpers
  */
@@ -85,6 +85,11 @@ DECLCALLBACK(int) D3DKMTLoad(void);
 DECLCALLBACK(D3DKMTFUNCTIONS const *) D3DKMTFunctions(void);
 
 DECLCALLBACK(void) VBoxWddmUmLog(const char *pszString);
+
+/** @todo Rename to VBoxWddm* */
+NTSTATUS vboxDispKmtOpenAdapter2(D3DKMT_HANDLE *phAdapter, LUID *pLuid);
+NTSTATUS vboxDispKmtOpenAdapter(D3DKMT_HANDLE *phAdapter);
+NTSTATUS vboxDispKmtCloseAdapter(D3DKMT_HANDLE hAdapter);
 
 RT_C_DECLS_END
 
