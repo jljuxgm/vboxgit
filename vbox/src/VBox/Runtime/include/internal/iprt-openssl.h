@@ -1,4 +1,4 @@
-/* $Id: iprt-openssl.h 73665 2018-08-14 17:49:23Z vboxsync $ */
+/* $Id: iprt-openssl.h 73672 2018-08-14 18:40:01Z vboxsync $ */
 /** @file
  * IPRT - Internal header for the OpenSSL helpers.
  */
@@ -39,7 +39,7 @@ DECLHIDDEN(int)  rtCrOpenSslErrInfoCallback(const char *pach, size_t cch, void *
 DECLHIDDEN(int)  rtCrOpenSslAddX509CertToStack(void *pvOsslStack, PCRTCRX509CERTIFICATE pCert);
 
 DECLHIDDEN(int)  rtCrKeyToOpenSslKey(RTCRKEY hKey, bool fNeedPublic, const char *pszAlgoObjId,
-                                     struct evp_pkey_st **ppEvpKey, const struct evp_md_st **ppEvpMdType, PRTERRINFO pErrInfo);
+                                     void /*EVP_PKEY*/ **ppEvpKey, const void /*EVP_MD*/ **ppEvpMdType, PRTERRINFO pErrInfo);
 
 RT_C_DECLS_END
 
