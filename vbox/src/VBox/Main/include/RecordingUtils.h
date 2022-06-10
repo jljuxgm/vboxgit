@@ -1,4 +1,4 @@
-/* $Id: RecordingUtils.h 75354 2018-11-09 11:22:09Z vboxsync $ */
+/* $Id: RecordingUtils.h 75393 2018-11-12 09:53:28Z vboxsync $ */
 /** @file
  * Recording utility header.
  */
@@ -197,9 +197,9 @@ private:
     uint8_t *mBuf;
 };
 
-int recordingRGBToYUV(uint32_t uPixelFormat,
-                      uint8_t *paDst, uint32_t uDstWidth, uint32_t uDstHeight,
-                      uint8_t *paSrc, uint32_t uSrcWidth, uint32_t uSrcHeight);
+int RecordingUtilsRGBToYUV(uint32_t uPixelFormat,
+                           uint8_t *paDst, uint32_t uDstWidth, uint32_t uDstHeight,
+                           uint8_t *paSrc, uint32_t uSrcWidth, uint32_t uSrcHeight);
 
 #endif /* ____H_RECORDING_UTILS */
 
