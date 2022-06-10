@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 76299 2018-12-19 19:10:01Z vboxsync $ */
+/* $Id: extvfs.cpp 76304 2018-12-19 20:14:10Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -832,7 +832,7 @@ static int rtFsExtInodeLoad(PRTFSEXTVOL pThis, uint32_t iInode, PRTFSEXTINODE *p
                     uint32_t fInodeMode = RT_LE2H_U32(Inode.Core.fMode);
                     switch (EXT_INODE_MODE_TYPE_GET_TYPE(fInodeMode))
                     {
-                        case EXT_INODE_MODE_TYPE_FIFO: 
+                        case EXT_INODE_MODE_TYPE_FIFO:
                             pInode->ObjInfo.Attr.fMode |= RTFS_TYPE_FIFO;
                             break;
                         case EXT_INODE_MODE_TYPE_CHAR:
