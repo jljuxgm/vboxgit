@@ -1,4 +1,4 @@
-/* $Id: SharedFolderImpl.h 75380 2018-11-09 22:25:30Z vboxsync $ */
+/* $Id: SharedFolderImpl.h 75458 2018-11-14 18:20:05Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -91,8 +91,11 @@ private:
     HRESULT getHostPath(com::Utf8Str &aHostPath);
     HRESULT getAccessible(BOOL *aAccessible);
     HRESULT getWritable(BOOL *aWritable);
+    HRESULT setWritable(BOOL aWritable);
     HRESULT getAutoMount(BOOL *aAutoMount);
+    HRESULT setAutoMount(BOOL aAutoMount);
     HRESULT getAutoMountPoint(com::Utf8Str &aAutoMountPoint);
+    HRESULT setAutoMountPoint(com::Utf8Str const &aAutoMountPoint);
     HRESULT getLastAccessError(com::Utf8Str &aLastAccessError);
 
     VirtualBoxBase * const mParent;
