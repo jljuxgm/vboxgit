@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 72673 2018-06-24 13:35:05Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 72687 2018-06-26 01:52:02Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -49,6 +49,7 @@
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/apic.h>
 #include <VBox/vmm/pdm.h>
+#include <VBox/vmm/dbgftrace.h>
 #include "NEMInternal.h"
 #include <VBox/vmm/vm.h>
 
