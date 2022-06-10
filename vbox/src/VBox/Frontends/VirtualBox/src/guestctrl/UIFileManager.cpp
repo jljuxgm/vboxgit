@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 76626 2019-01-03 21:18:50Z vboxsync $ */
+/* $Id: UIFileManager.cpp 76627 2019-01-03 21:28:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -104,10 +104,10 @@ void UIFileManagerOptions::destroy()
 }
 
 UIFileManagerOptions::UIFileManagerOptions()
-    : bListDirectoriesOnTop(true)
-    , bAskDeleteConfirmation(false)
-    , bShowHumanReadableSizes(true)
-    , bShowHiddenObjects(true)
+    : fListDirectoriesOnTop(true)
+    , fAskDeleteConfirmation(false)
+    , fShowHumanReadableSizes(true)
+    , fShowHiddenObjects(true)
 {
 }
 
@@ -699,10 +699,10 @@ void UIFileManager::saveOptions()
     UIFileManagerOptions *pOptions = UIFileManagerOptions::instance();
     if (pOptions)
     {
-        gEDataManager->setFileManagerOptions(pOptions->bListDirectoriesOnTop,
-                                             pOptions->bAskDeleteConfirmation,
-                                             pOptions->bShowHumanReadableSizes,
-                                             pOptions->bShowHiddenObjects);
+        gEDataManager->setFileManagerOptions(pOptions->fListDirectoriesOnTop,
+                                             pOptions->fAskDeleteConfirmation,
+                                             pOptions->fShowHumanReadableSizes,
+                                             pOptions->fShowHiddenObjects);
     }
 }
 
@@ -738,10 +738,10 @@ void UIFileManager::loadOptions()
     UIFileManagerOptions *pOptions = UIFileManagerOptions::instance();
     if (pOptions)
     {
-        pOptions->bListDirectoriesOnTop = gEDataManager->fileManagerListDirectoriesFirst();
-        pOptions->bAskDeleteConfirmation = gEDataManager->fileManagerShowDeleteConfirmation();
-        pOptions->bShowHumanReadableSizes = gEDataManager->fileManagerShowHumanReadableSizes();
-        pOptions->bShowHiddenObjects = gEDataManager->fileManagerShowHiddenObjects();
+        pOptions->fListDirectoriesOnTop = gEDataManager->fileManagerListDirectoriesFirst();
+        pOptions->fAskDeleteConfirmation = gEDataManager->fileManagerShowDeleteConfirmation();
+        pOptions->fShowHumanReadableSizes = gEDataManager->fileManagerShowHumanReadableSizes();
+        pOptions->fShowHiddenObjects = gEDataManager->fileManagerShowHiddenObjects();
     }
 }
 
