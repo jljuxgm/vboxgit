@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 70660 2018-01-21 16:18:58Z vboxsync $
+# $Id: reporter.py 72694 2018-06-26 13:58:57Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 70660 $"
+__version__ = "$Revision: 72694 $"
 
 
 # Standard Python imports.
@@ -530,7 +530,7 @@ class LocalReporter(ReporterBase):
         # Open the destination file and copy over the data.
         fRc = True;
         try:
-            oDstFile = utils.openNoInherit(sDstFilename, 'w');
+            oDstFile = utils.openNoInherit(sDstFilename, 'wb');
         except Exception as oXcpt:
             self.log(0, 'error opening %s: %s' % (sDstFilename, oXcpt), sCaller, sTsPrf);
         else:
