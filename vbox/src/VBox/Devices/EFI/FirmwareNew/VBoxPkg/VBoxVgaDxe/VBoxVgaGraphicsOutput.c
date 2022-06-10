@@ -1,4 +1,4 @@
-/* $Id: VBoxVgaGraphicsOutput.c 76900 2019-01-19 12:43:26Z vboxsync $ */
+/* $Id: VBoxVgaGraphicsOutput.c 77669 2019-03-12 16:34:13Z vboxsync $ */
 /** @file
  * VBoxVgaGraphicsOutput.c
  */
@@ -500,8 +500,8 @@ VBoxVgaGraphicsOutputConstructor (
     Private->ModeData[Private->GraphicsOutput.Mode->Mode].VerticalResolution
     );
 
-  PcdSet32(PcdVideoHorizontalResolution, Private->ModeData[Private->GraphicsOutput.Mode->Mode].HorizontalResolution);
-  PcdSet32(PcdVideoVerticalResolution, Private->ModeData[Private->GraphicsOutput.Mode->Mode].VerticalResolution);
+  PcdSet32S(PcdVideoHorizontalResolution, Private->ModeData[Private->GraphicsOutput.Mode->Mode].HorizontalResolution);
+  PcdSet32S(PcdVideoVerticalResolution, Private->ModeData[Private->GraphicsOutput.Mode->Mode].VerticalResolution);
 
   return EFI_SUCCESS;
 }
