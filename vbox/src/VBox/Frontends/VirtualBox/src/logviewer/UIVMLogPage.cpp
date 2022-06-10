@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 77078 2019-01-31 15:34:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -338,7 +338,18 @@ QFont UIVMLogPage::currentFont() const
 
 void UIVMLogPage::setCurrentFont(QFont font)
 {
-    if (!m_pTextEdit)
-        return;
-    m_pTextEdit->setCurrentFont(font);
+    if (m_pTextEdit)
+        m_pTextEdit->setCurrentFont(font);
+}
+
+void UIVMLogPage::setSearchResultOverlayShowHide(bool fShow)
+{
+    if (m_pTextEdit)
+        m_pTextEdit->setSearchResultOverlayShowHide(fShow);
+}
+
+void UIVMLogPage::setSearchMatchCount(int iMatchCount)
+{
+    if (m_pTextEdit)
+        m_pTextEdit->setSearchMatchCount(iMatchCount);
 }

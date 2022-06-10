@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIVMLogPage.h 77078 2019-01-31 15:34:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -115,6 +115,9 @@ public:
 
     QFont currentFont() const;
     void setCurrentFont(QFont font);
+
+    void setSearchResultOverlayShowHide(bool fShow);
+    void setSearchMatchCount(int iMatchCount);
 
 private slots:
 
