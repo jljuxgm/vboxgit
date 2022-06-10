@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 71983 2018-04-23 14:11:09Z vboxsync $
+# $Id: usbgadget.py 75738 2018-11-26 15:53:20Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 71983 $"
+__version__ = "$Revision: 75738 $"
 
 # Standard Python imports.
 import array
@@ -981,9 +981,10 @@ class TransportTcp(TransportBase):
                     if oXcpt[0] == errno.EINPROGRESS:
                         return True;
                 except: pass;
-                # Windows?
                 try:
                     if oXcpt[0] == errno.EWOULDBLOCK:
+                        return True;
+                    if utils.getHostOs == 'win' and oXcpt[0] == errno.WSAEWOULDBLOCK: # pylint: disable=E1101
                         return True;
                 except: pass;
         except:
