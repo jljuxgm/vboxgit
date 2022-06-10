@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.h 77647 2019-03-11 10:43:02Z vboxsync $ */
+/* $Id: UIGuestProcessControlWidget.h 77822 2019-03-21 08:23:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class declaration.
  */
@@ -65,11 +65,8 @@ protected:
 private slots:
 
     void sltGuestSessionsUpdated();
-    void sltConsoleCommandEntered(const QString &strCommand);
-    void sltConsoleOutputReceived(const QString &strOutput);
     void sltGuestSessionRegistered(CGuestSession guestSession);
     void sltGuestSessionUnregistered(CGuestSession guestSession);
-    void sltGuestControlErrorText(QString strError);
     void sltTreeItemUpdated();
     void sltCloseSessionOrProcess();
     void sltShowProperties();
@@ -91,8 +88,6 @@ private:
     QVBoxLayout              *m_pMainLayout;
     QSplitter                *m_pSplitter;
     UIGuestControlTreeWidget *m_pTreeWidget;
-    UIGuestControlConsole    *m_pConsole;
-    UIGuestControlInterface  *m_pControlInterface;
     const EmbedTo             m_enmEmbedding;
     UIToolBar                *m_pToolBar;
 

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIGuestControlInterface.h 77822 2019-03-21 08:23:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class declaration.
  */
@@ -60,7 +60,6 @@ public:
        static QString getFsObjTypeString(KFsObjType type);
     /** @} */
 
-
 private slots:
 
 private:
@@ -92,7 +91,6 @@ private:
     template<typename T>
     QString getFsObjInfoString(const T &fsObjectInfo) const;
 
-
     CGuest        m_comGuest;
     const QString m_strHelp;
     QString       m_strStatus;
@@ -101,4 +99,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_guestctrl_UIGuestControlInterface_h */
-

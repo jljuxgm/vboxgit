@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 77584 2019-03-06 15:28:19Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 77822 2019-03-21 08:23:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -121,6 +121,7 @@ enum UIActionIndexRT
     UIActionIndexRT_M_Debug_S_ShowCommandLine,
     UIActionIndexRT_M_Debug_T_Logging,
     UIActionIndexRT_M_Debug_S_ShowLogDialog,
+    UIActionIndexRT_M_Debug_S_GuestControlConsole,
 #endif
 
 #ifdef VBOX_WS_MAC

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlConsole.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIGuestControlConsole.h 77822 2019-03-21 08:23:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlConsole class declaration.
  */
@@ -24,19 +24,21 @@
 /* Qt includes: */
 # include <QPlainTextEdit>
 
+/* COM includes: */
+#include "COMEnums.h"
+#include "CGuest.h"
+
+class UIGuestControlInterface;
 /** QPlainTextEdit extension to provide a simple terminal like widget. */
 class UIGuestControlConsole : public QPlainTextEdit
 {
 
     Q_OBJECT;
 
-signals:
-    /* This is emitted when return key is pressed */
-    void commandEntered(QString command);
 
 public:
 
-    UIGuestControlConsole(QWidget* parent = 0);
+    UIGuestControlConsole(const CGuest &comGuest, QWidget* parent = 0);
     /* @p strOutput is displayed in the console */
     void putOutput(const QString &strOutput);
 
@@ -49,6 +51,7 @@ protected:
 
 private slots:
 
+    void sltOutputReceived(const QString &strOutput);
 
 private:
 
@@ -65,15 +68,18 @@ private:
     QString        getNextCommandFromHistory(const QString &originalString = QString());
     QString        getPreviousCommandFromHistory(const QString &originalString = QString());
     void           completeByTab();
+    void           commandEntered(const QString &strCommand);
+
     /* Return a list of words that start with @p strSearch */
     QList<QString> matchedWords(const QString &strSearch) const;
+    CGuest         m_comGuest;
     const QString  m_strGreet;
     const QString  m_strPrompt;
     TabDictionary  m_tabDictinary;
     /* A vector of entered commands */
     CommandHistory m_tCommandHistory;
     unsigned       m_uCommandHistoryIndex;
+    UIGuestControlInterface  *m_pControlInterface;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_guestctrl_UIGuestControlConsole_h */
-
