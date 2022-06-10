@@ -1,4 +1,4 @@
-/* $Id: dbgmoddeferred.cpp 73359 2018-07-25 18:50:19Z vboxsync $ */
+/* $Id: dbgmoddeferred.cpp 73375 2018-07-27 07:59:25Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Deferred Loading Stub.
  */
@@ -444,11 +444,12 @@ DECL_HIDDEN_CONST(RTDBGMODVTDBG) const g_rtDbgModVtDbgDeferred =
  */
 
 /** @interface_method_impl{RTDBGMODVTIMG,pfnQueryProp} */
-static DECLCALLBACK(int ) rtDbgModDeferredImg_QueryProp(PRTDBGMODINT pMod, RTLDRPROP enmProp, void *pvBuf, size_t cbBuf)
+static DECLCALLBACK(int)
+rtDbgModDeferredImg_QueryProp(PRTDBGMODINT pMod, RTLDRPROP enmProp, void *pvBuf, size_t cbBuf, size_t *pcbRet)
 {
     int rc = rtDbgModDeferredDoIt(pMod, false /*fForceRetry*/);
     if (RT_SUCCESS(rc))
-        rc = pMod->pImgVt->pfnQueryProp(pMod, enmProp, pvBuf, cbBuf);
+        rc = pMod->pImgVt->pfnQueryProp(pMod, enmProp, pvBuf, cbBuf, pcbRet);
     return rc;
 }
 

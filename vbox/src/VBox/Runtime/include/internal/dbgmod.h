@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: dbgmod.h 73375 2018-07-27 07:59:25Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -235,9 +235,12 @@ typedef struct RTDBGMODVTIMG
      * @param   enmProp         The property to query.
      * @param   pvBuf           Pointer to the return buffer.
      * @param   cbBuf           The size of the return buffer.
-     * @sa      RTLdrQueryProp
+     * @param   pcbRet          How many bytes was actually returned.  In the
+     *                          case of VERR_BUFFER_OVERFLOW this will contain
+     *                          the required buffer size.  Optional.
+     * @sa      RTLdrQueryPropEx
      */
-    DECLCALLBACKMEMBER(int, pfnQueryProp)(PRTDBGMODINT pMod, RTLDRPROP enmProp, void *pvBuf, size_t cbBuf);
+    DECLCALLBACKMEMBER(int, pfnQueryProp)(PRTDBGMODINT pMod, RTLDRPROP enmProp, void *pvBuf, size_t cbBuf, size_t *pcbRet);
 
     /** For catching initialization errors (RTDBGMODVTIMG_MAGIC). */
     uint32_t    u32EndMagic;

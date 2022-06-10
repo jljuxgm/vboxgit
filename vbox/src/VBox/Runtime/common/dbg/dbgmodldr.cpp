@@ -1,4 +1,4 @@
-/* $Id: dbgmodldr.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: dbgmodldr.cpp 73375 2018-07-27 07:59:25Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Image Interpretation by RTLdr.
  */
@@ -61,10 +61,10 @@ typedef RTDBGMODLDR *PRTDBGMODLDR;
 
 
 /** @interface_method_impl{RTDBGMODVTIMG,pfnQueryProp} */
-static DECLCALLBACK(int) rtDbgModLdr_QueryProp(PRTDBGMODINT pMod, RTLDRPROP enmProp, void *pvBuf, size_t cbBuf)
+static DECLCALLBACK(int) rtDbgModLdr_QueryProp(PRTDBGMODINT pMod, RTLDRPROP enmProp, void *pvBuf, size_t cbBuf, size_t *pcbRet)
 {
     PRTDBGMODLDR pThis = (PRTDBGMODLDR)pMod->pvImgPriv;
-    return RTLdrQueryProp(pThis->hLdrMod, enmProp, pvBuf, cbBuf);
+    return RTLdrQueryPropEx(pThis->hLdrMod, enmProp, NULL /*pvBits*/, pvBuf, cbBuf, pcbRet);
 }
 
 
