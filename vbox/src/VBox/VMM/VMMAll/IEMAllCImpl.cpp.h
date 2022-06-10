@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 75620 2018-11-20 14:42:07Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 75631 2018-11-21 04:55:45Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5911,6 +5911,7 @@ IEM_CIMPL_DEF_4(iemCImpl_load_CrX, uint8_t, iCrReg, uint64_t, uNewCrX, IEMACCESS
                  * See Intel spec. 27.1 "Architectural State Before A VM-exit"
                  */
                 uint32_t const uTpr = (uNewCrX & 0xf) << 4;
+                Log(("iemCImpl_load_Cr%#x: Virtualizing TPR (%#x) write\n", iCrReg, uTpr));
                 iemVmxVirtApicWriteRaw32(pVCpu, XAPIC_OFF_TPR, uTpr);
                 iemVmxVirtApicSetPendingWrite(pVCpu, XAPIC_OFF_TPR);
                 rcStrict = VINF_SUCCESS;
