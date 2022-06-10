@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 77377 2019-02-20 13:00:16Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 77845 2019-03-22 12:35:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -411,10 +411,10 @@ public:
 
     /** @name Virtual Machine
       * @{ */
-        /** Returns whether machine should be shown in selector-window chooser-pane. */
-        bool showMachineInSelectorChooser(const QUuid &uID);
-        /** Returns whether machine should be shown in selector-window details-pane. */
-        bool showMachineInSelectorDetails(const QUuid &uID);
+        /** Returns whether machine should be shown in VirtualBox Manager Chooser-pane. */
+        bool showMachineInVirtualBoxManagerChooser(const QUuid &uID);
+        /** Returns whether machine should be shown in VirtualBox Manager Details-pane. */
+        bool showMachineInVirtualBoxManagerDetails(const QUuid &uID);
 
         /** Returns whether machine reconfiguration enabled. */
         bool machineReconfigurationEnabled(const QUuid &uID);

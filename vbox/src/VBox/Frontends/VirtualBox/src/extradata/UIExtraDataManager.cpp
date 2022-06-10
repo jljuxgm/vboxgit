@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 77377 2019-02-20 13:00:16Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 77845 2019-03-22 12:35:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -3058,13 +3058,13 @@ void UIExtraDataManager::setModeForWizardType(WizardType type, WizardMode mode)
         setExtraDataStringList(GUI_HideDescriptionForWizards, newValue);
 }
 
-bool UIExtraDataManager::showMachineInSelectorChooser(const QUuid &uID)
+bool UIExtraDataManager::showMachineInVirtualBoxManagerChooser(const QUuid &uID)
 {
     /* 'True' unless 'restriction' feature allowed: */
     return !isFeatureAllowed(GUI_HideFromManager, uID);
 }
 
-bool UIExtraDataManager::showMachineInSelectorDetails(const QUuid &uID)
+bool UIExtraDataManager::showMachineInVirtualBoxManagerDetails(const QUuid &uID)
 {
     /* 'True' unless 'restriction' feature allowed: */
     return !isFeatureAllowed(GUI_HideDetails, uID);

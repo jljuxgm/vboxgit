@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIMedium.cpp 77845 2019-03-22 12:35:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -339,7 +339,7 @@ void UIMedium::refresh()
                 }
 
                 /* Finally we can precisely check if current machine is 'hidden': */
-                if (gEDataManager->showMachineInSelectorChooser(uMachineID))
+                if (gEDataManager->showMachineInVirtualBoxManagerChooser(uMachineID))
                     m_fUsedByHiddenMachinesOnly = false;
 
                 /* Prepare snapshot usage: */
