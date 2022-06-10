@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73645 2018-08-14 11:22:28Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73646 2018-08-14 11:26:22Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1760,7 +1760,7 @@ int audioMixerSinkWriteToStreams(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *
             Assert(cbToWriteStream >= cbChunk);
             cbToWriteStream -= (uint32_t)cbChunk;
 
-            cbWrittenStream += cbChunk;
+            cbWrittenStream += (uint32_t)cbChunk;
             Assert(cbWrittenStream <= cbBuf);
         }
 
