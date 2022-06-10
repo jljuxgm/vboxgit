@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 77014 2019-01-28 08:24:50Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 77027 2019-01-29 10:20:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -3129,10 +3129,10 @@ void UIActionPoolManager::updateMenuMediumWrapper(UIMenu *pMenu)
     fSeparator = addAction(pMenu, action(UIActionIndexST_M_Medium_S_Remove)) || fSeparator;
     /* 'Release' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexST_M_Medium_S_Release)) || fSeparator;
-    /* 'Properties' action: */
-    fSeparator = addAction(pMenu, action(UIActionIndexST_M_Medium_T_Details)) || fSeparator;
     /* 'Search' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexST_M_Medium_T_Search)) || fSeparator;
+    /* 'Properties' action: */
+    fSeparator = addAction(pMenu, action(UIActionIndexST_M_Medium_T_Details)) || fSeparator;
 
     /* Separator? */
     if (fSeparator)
