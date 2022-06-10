@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 73657 2018-08-14 13:20:19Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 73663 2018-08-14 16:28:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -270,7 +270,7 @@ void UIWizardExportAppPage3::refreshApplianceSettingsWidget()
                             switch (parameter.kind)
                             {
                                 case ParameterKind_Bool:
-                                    strValue = QString();
+                                    strValue = QString("true");
                                     break;
                                 case ParameterKind_Double:
                                     strValue = QString::number(parameter.get.value<AbstractVSDParameterDouble>().minimum);
