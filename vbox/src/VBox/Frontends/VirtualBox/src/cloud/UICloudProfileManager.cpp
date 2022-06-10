@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 74928 2018-10-18 16:46:59Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 74929 2018-10-18 17:23:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -188,7 +188,9 @@ void UICloudProfileManagerWidget::sltApplyCloudProfileDetailsChanges()
 {
     /* Is can be that there is provider item, not profile item currently selected.
      * In such case we are not applying parameters, we are creating new one profile. */
-    UIItemCloudProvider *pMaybeProviderItem = static_cast<UIItemCloudProvider*>(m_pTreeWidget->currentItem());
+    QTreeWidgetItem *pItem = m_pTreeWidget->currentItem();
+    UIItemCloudProvider *pMaybeProviderItem = pItem && pItem->data(0, Data_ItemType).value<CloudItemType>() == CloudItemType_Provider
+                                            ? static_cast<UIItemCloudProvider*>(pItem) : 0;
     if (pMaybeProviderItem)
         return sltAddCloudProfile();
 
