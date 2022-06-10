@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 73182 2018-07-17 14:47:55Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 73281 2018-07-20 19:55:33Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1674,8 +1674,8 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
                 if (pVCpu->nem.s.uPendingApicBase != UINT64_MAX)
                 {
                     LogFlow(("nemR3NativeRunGC: calling APICSetBaseMsr(,%RX64)...\n", pVCpu->nem.s.uPendingApicBase));
-                    VBOXSTRICTRC rc2 = APICSetBaseMsr(pVCpu, pVCpu->nem.s.uPendingApicBase);
-                    AssertLogRelMsg(rc2 == VINF_SUCCESS, ("rc2=%Rrc [%#RX64]\n", VBOXSTRICTRC_VAL(rc2), pVCpu->nem.s.uPendingApicBase));
+                    int rc2 = APICSetBaseMsr(pVCpu, pVCpu->nem.s.uPendingApicBase);
+                    AssertLogRelMsg(rc2 == VINF_SUCCESS, ("rc2=%Rrc [%#RX64]\n", rc2, pVCpu->nem.s.uPendingApicBase));
                     pVCpu->nem.s.uPendingApicBase = UINT64_MAX;
                 }
 

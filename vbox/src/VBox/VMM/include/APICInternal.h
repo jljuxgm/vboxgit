@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: APICInternal.h 73281 2018-07-20 19:55:33Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1448,10 +1448,8 @@ VMM_INT_DECL(void)            apicStartTimer(PVMCPU pVCpu, uint32_t uInitialCoun
 VMM_INT_DECL(void)            apicStopTimer(PVMCPU pVCpu);
 VMM_INT_DECL(void)            apicSetInterruptFF(PVMCPU pVCpu, PDMAPICIRQ enmType);
 VMM_INT_DECL(void)            apicClearInterruptFF(PVMCPU pVCpu, PDMAPICIRQ enmType);
-
-#ifdef IN_RING3
-VMMR3_INT_DECL(void)          apicR3ResetCpu(PVMCPU pVCpu, bool fResetApicBaseMsr);
-#endif
+void                          apicInitIpi(PVMCPU pVCpu);
+void                          apicResetCpu(PVMCPU pVCpu, bool fResetApicBaseMsr);
 
 RT_C_DECLS_END
 
