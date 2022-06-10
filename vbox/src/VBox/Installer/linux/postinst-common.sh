@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: postinst-common.sh 77196 2019-02-07 13:33:50Z vboxsync $
+# $Id: postinst-common.sh 78174 2019-04-17 16:23:30Z vboxsync $
 ## @file
 # Oracle VM VirtualBox
 # VirtualBox Linux post-installer common portions
@@ -105,7 +105,7 @@ test -n "${START}" &&
         echo "  /sbin/vboxconfig" >&2
         echo "as root.  If your system is using EFI Secure Boot you may need to sign the" >&2
         echo "kernel modules (vboxdrv, vboxnetflt, vboxnetadp, vboxpci) before you can load" >&2
-        echo " them. Please see your Linux system's documentation for more information." >&2
+        echo "them. Please see your Linux system's documentation for more information." >&2
     else
         start_init_script vboxdrv
         start_init_script vboxballoonctrl-service
