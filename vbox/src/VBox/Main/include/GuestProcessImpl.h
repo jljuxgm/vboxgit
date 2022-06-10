@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 71564 2018-03-29 11:47:25Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 73036 2018-07-10 15:02:52Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -231,7 +231,9 @@ public:
 
     bool isRunning(void);
 
-    int terminatedOk(int32_t *piExitCode = NULL);
+    bool isTerminatedOk(void);
+
+    int getTerminationStatus(int32_t *piExitCode = NULL);
 
     int terminate(uint32_t uTimeoutMS, int *pGuestRc);
 
