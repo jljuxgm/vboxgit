@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 77996 2019-04-03 15:33:49Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 77997 2019-04-03 15:42:27Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -105,6 +105,9 @@ HRESULT HostDnsServiceDarwin::init(HostDnsMonitorProxy *pProxy)
 
 void HostDnsServiceDarwin::uninit(void)
 {
+    CFRunLoopRemoveSource(m->m_RunLoopRef, m->m_Stopper, kCFRunLoopCommonModes);
+    CFRelease(m->m_Stopper);
+
     CFRelease(m->m_RunLoopRef);
 
     CFRelease(m->m_DnsWatcher);
