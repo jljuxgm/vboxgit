@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 74703 2018-10-09 08:13:35Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 74704 2018-10-09 08:19:56Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -7583,6 +7583,9 @@ IEM_CIMPL_DEF_0(iemCImpl_xsetbv)
         if (pVCpu->iem.s.uCpl == 0)
         {
             IEM_CTX_IMPORT_RET(pVCpu, CPUMCTX_EXTRN_XCRx);
+
+            if (IEM_VMX_IS_NON_ROOT_MODE(pVCpu))
+                IEM_VMX_VMEXIT_INSTR_RET(pVCpu, VMX_EXIT_XSETBV, cbInstr);
 
             uint32_t uEcx = pVCpu->cpum.GstCtx.ecx;
             uint64_t uNewValue = RT_MAKE_U64(pVCpu->cpum.GstCtx.eax, pVCpu->cpum.GstCtx.edx);
