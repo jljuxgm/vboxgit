@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 73963 2018-08-29 16:39:29Z vboxsync $ */
+/* $Id: ministring.cpp 74174 2018-09-10 09:40:08Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -204,6 +204,8 @@ RTCString &RTCString::assign(size_t a_cTimes, char a_ch)
 {
     reserve(a_cTimes + 1);
     memset(m_psz, a_ch, a_cTimes);
+    m_psz[a_cTimes] = '\0';
+    m_cch = a_cTimes;
     return *this;
 }
 
@@ -214,6 +216,8 @@ int RTCString::assignNoThrow(size_t a_cTimes, char a_ch) RT_NOEXCEPT
     if (RT_SUCCESS(rc))
     {
         memset(m_psz, a_ch, a_cTimes);
+        m_psz[a_cTimes] = '\0';
+        m_cch = a_cTimes;
         return VINF_SUCCESS;
     }
     return rc;
