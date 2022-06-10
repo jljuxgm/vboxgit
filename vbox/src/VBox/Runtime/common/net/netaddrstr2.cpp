@@ -1,4 +1,4 @@
-/* $Id: netaddrstr2.cpp 71435 2018-03-21 14:30:29Z vboxsync $ */
+/* $Id: netaddrstr2.cpp 76061 2018-12-07 15:13:22Z vboxsync $ */
 /** @file
  * IPRT - Network Address String Handling.
  */
@@ -193,6 +193,48 @@ RTDECL(int) RTNetPrefixToMaskIPv4(int iPrefix, PRTNETADDRIPV4 pMask)
     return VINF_SUCCESS;
 }
 RT_EXPORT_SYMBOL(RTNetPrefixToMaskIPv4);
+
+
+RTDECL(int) RTNetStrToIPv4Cidr(const char *pcszAddr, PRTNETADDRIPV4 pAddr, int *piPrefix)
+{
+    RTNETADDRIPV4 Addr;
+    uint8_t u8Prefix;
+    char *pszNext;
+    int rc;
+
+    AssertPtrReturn(pcszAddr, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pAddr, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(piPrefix, VERR_INVALID_PARAMETER);
+
+    pcszAddr = RTStrStripL(pcszAddr);
+    rc = rtNetStrToIPv4AddrEx(pcszAddr, &Addr, &pszNext);
+    if (RT_FAILURE(rc))
+        return rc;
+
+    /* if prefix is missing, treat is as exact (/32) address specification */
+    if (*pszNext == '\0' || rc == VWRN_TRAILING_SPACES)
+    {
+        *pAddr = Addr;
+        *piPrefix = 32;
+        return VINF_SUCCESS;
+    }
+
+    if (*pszNext != '/')
+        return VERR_INVALID_PARAMETER;
+
+    ++pszNext;
+    rc = RTStrToUInt8Ex(pszNext, &pszNext, 10, &u8Prefix);
+    if (RT_FAILURE(rc) || rc == VWRN_TRAILING_CHARS)
+        return VERR_INVALID_PARAMETER;
+
+    if (u8Prefix == 0 || u8Prefix > 32)
+        return VERR_INVALID_PARAMETER;
+
+    *pAddr = Addr;
+    *piPrefix = u8Prefix;
+    return VINF_SUCCESS;
+}
+RT_EXPORT_SYMBOL(RTNetStrToIPv4Cidr);
 
 
 static int rtNetStrToHexGroup(const char *pcszValue, char **ppszNext,
