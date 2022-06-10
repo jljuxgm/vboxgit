@@ -1,6 +1,6 @@
 #!/bin/sh -e
 # @file
-## $Id: prerequisites-rpm.sh 73095 2018-07-12 19:27:59Z vboxsync $
+## $Id: prerequisites-rpm.sh 73121 2018-07-13 13:33:11Z vboxsync $
 # Fetches prerequisites for RPM based GNU/Linux systems.
 #
 
@@ -23,7 +23,7 @@ Usage: `basename ${0}` [--with-docs]
 Install the dependencies needed for building VirtualBox on an RPM-based Linux
 system.  Additional distributions will be added as needed.  There are no plans
 to add support for or to accept patches for distributions we do not package.
-The \`--docs\' parameter is to install the packages needed for building
+The \`--with-docs\' parameter is to install the packages needed for building
 documentation.  It will also be implemented per distribution as needed."
 
 # To repeat: there are no plans to add support for or to accept patches
