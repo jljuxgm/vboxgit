@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerOperationsPanel.cpp 75809 2018-11-29 07:57:38Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerOperationsPanel.cpp 75827 2018-11-30 08:24:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -140,6 +140,7 @@ void UIFileOperationProgressWidget::prepare()
 {
     prepareWidgets();
     prepareEventHandler();
+    retranslateUi();
 }
 
 void UIFileOperationProgressWidget::prepareWidgets()
