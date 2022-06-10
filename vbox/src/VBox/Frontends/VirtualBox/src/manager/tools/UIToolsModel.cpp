@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 75096 2018-10-26 13:38:08Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 75099 2018-10-26 14:34:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -316,6 +316,14 @@ QList<UIToolsItem*> UIToolsModel::items() const
     return m_items;
 }
 
+UIToolsItem *UIToolsModel::item(UIToolType enmType) const
+{
+    foreach (UIToolsItem *pItem, items())
+        if (pItem->itemType() == enmType)
+            return pItem;
+    return 0;
+}
+
 void UIToolsModel::updateLayout()
 {
     /* Prepare variables: */
@@ -508,7 +516,8 @@ void UIToolsModel::loadLastSelectedItems()
     foreach (UIToolsItem *pItem, items())
         if (pItem->itemType() == enmTypeGlobal)
             m_pLastItemGlobal = pItem;
-    AssertPtr(m_pLastItemGlobal.data());
+    if (m_pLastItemGlobal.isNull())
+        m_pLastItemGlobal = item(UIToolType_Welcome);
 
     /* Second of them is current machine class item definition: */
     UIToolType enmTypeMachine = data.value(1);
@@ -517,7 +526,8 @@ void UIToolsModel::loadLastSelectedItems()
     foreach (UIToolsItem *pItem, items())
         if (pItem->itemType() == enmTypeMachine)
             m_pLastItemMachine = pItem;
-    AssertPtr(m_pLastItemMachine.data());
+    if (m_pLastItemMachine.isNull())
+        m_pLastItemMachine = item(UIToolType_Details);
 }
 
 void UIToolsModel::saveLastSelectedItems()
