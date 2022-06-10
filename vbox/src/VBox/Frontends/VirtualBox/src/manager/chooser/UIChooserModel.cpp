@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77686 2019-03-13 18:00:56Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77701 2019-03-14 11:57:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -453,11 +453,35 @@ void UIChooserModel::updateNavigation()
 
 void UIChooserModel::performSearch(const QString &strSearchTerm, int iItemSearchFlags)
 {
-    if (!m_pInvisibleRootNode || strSearchTerm.isEmpty())
+    if (!m_pInvisibleRootNode)
         return;
 
-    QList<UIChooserNode*> matchedItems;
-    m_pInvisibleRootNode->searchForNodes(strSearchTerm, iItemSearchFlags, matchedItems);
+    /* Currently we perform the search only for machines. when this to be changed make sure the disabled flags
+       of the other item types are also managed correctly: */
+    QList<UIChooserNode*> allNodes;
+    /* Calling UIChooserNode::searchForNodes with an empty search string returns a list all nodes (of the whole treee) of the required type: */
+    m_pInvisibleRootNode->searchForNodes(QString(), iItemSearchFlags, allNodes);
+
+    /* Reset the disabled flag of the node items first. */
+    foreach (UIChooserNode* pNode, allNodes)
+    {
+        if (!pNode)
+            continue;
+        pNode->setDisabled(false);
+    }
+
+    if (strSearchTerm.isEmpty())
+        return;
+
+    QList<UIChooserNode*> matchedNodes;
+    m_pInvisibleRootNode->searchForNodes(strSearchTerm, iItemSearchFlags, matchedNodes);
+
+    foreach (UIChooserNode* pNode, allNodes)
+    {
+        if (!pNode)
+            continue;
+        pNode->setDisabled(!matchedNodes.contains(pNode));
+    }
 }
 
 UIChooserNode *UIChooserModel::invisibleRoot() const

@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 77683 2019-03-13 16:22:23Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 77701 2019-03-14 11:57:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -187,21 +187,28 @@ void UIChooserNodeGroup::setName(const QString &strName)
         item()->updateItem();
 }
 
-
 void UIChooserNodeGroup::searchForNodes(const QString &strSearchTerm, int iItemSearchFlags, QList<UIChooserNode*> &matchedItems)
 {
 
     if (iItemSearchFlags & UIChooserItemSearchFlag_Group)
     {
-        if (iItemSearchFlags & UIChooserItemSearchFlag_ExactName)
+        /* if the search term is empty we just add the node to the matched list: */
+        if (strSearchTerm.isEmpty())
         {
-            if (name() == strSearchTerm)
-                matchedItems << this;
+            matchedItems << this;
         }
         else
         {
-            if (name().contains(strSearchTerm, Qt::CaseInsensitive))
-                matchedItems << this;
+            if (iItemSearchFlags & UIChooserItemSearchFlag_ExactName)
+            {
+                if (name() == strSearchTerm)
+                    matchedItems << this;
+            }
+            else
+            {
+                if (name().contains(strSearchTerm, Qt::CaseInsensitive))
+                    matchedItems << this;
+            }
         }
     }
 
@@ -213,7 +220,6 @@ void UIChooserNodeGroup::searchForNodes(const QString &strSearchTerm, int iItemS
 
     foreach (UIChooserNode* pNode, m_nodesMachine)
         pNode->searchForNodes(strSearchTerm, iItemSearchFlags, matchedItems);
-
 }
 
 

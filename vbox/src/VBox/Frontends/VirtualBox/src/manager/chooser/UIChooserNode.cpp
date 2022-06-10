@@ -1,4 +1,4 @@
-/* $Id: UIChooserNode.cpp 77638 2019-03-10 19:21:30Z vboxsync $ */
+/* $Id: UIChooserNode.cpp 77701 2019-03-14 11:57:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNode class definition.
  */
@@ -26,6 +26,7 @@ UIChooserNode::UIChooserNode(UIChooserNode *pParent /* = 0 */, bool fFavorite /*
     : QIWithRetranslateUI3<QObject>(pParent)
     , m_pParent(pParent)
     , m_fFavorite(fFavorite)
+    , m_fDisabled(false)
 {
 }
 
@@ -53,4 +54,18 @@ UIChooserNodeMachine *UIChooserNode::toMachineNode()
 int UIChooserNode::position()
 {
     return parentNode() ? parentNode()->positionOf(this) : 0;
+}
+
+bool UIChooserNode::isDisabled() const
+{
+    return m_fDisabled;
+}
+
+void UIChooserNode::setDisabled(bool fDisabled)
+{
+    if (fDisabled == m_fDisabled)
+        return;
+    m_fDisabled = fDisabled;
+    if (m_pItem)
+        m_pItem->disableEnableItem(m_fDisabled);
 }

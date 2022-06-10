@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGlobal.cpp 77683 2019-03-13 16:22:23Z vboxsync $ */
+/* $Id: UIChooserNodeGlobal.cpp 77701 2019-03-14 11:57:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGlobal class implementation.
  */
@@ -118,6 +118,13 @@ void UIChooserNodeGlobal::searchForNodes(const QString &strSearchTerm, int iItem
 {
     if (!(iItemSearchFlags & UIChooserItemSearchFlag_Global))
         return;
+
+    if (strSearchTerm.isEmpty())
+    {
+        matchedItems << this;
+        return;
+    }
+
     if (iItemSearchFlags & UIChooserItemSearchFlag_ExactName)
     {
         if (name() == strSearchTerm)

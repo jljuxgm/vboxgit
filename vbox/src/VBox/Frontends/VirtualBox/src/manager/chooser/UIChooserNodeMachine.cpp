@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 77683 2019-03-13 16:22:23Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 77701 2019-03-14 11:57:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -135,6 +135,13 @@ void UIChooserNodeMachine::searchForNodes(const QString &strSearchTerm, int iIte
 {
     if (!(iItemSearchFlags & UIChooserItemSearchFlag_Machine))
         return;
+
+    if (strSearchTerm.isEmpty())
+    {
+        matchedItems << this;
+        return;
+    }
+
     if (iItemSearchFlags & UIChooserItemSearchFlag_ExactName)
     {
         if (name() == strSearchTerm)
