@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77631 2019-03-10 04:14:09Z vboxsync $ */
+/* $Id: vfsmod.h 77704 2019-03-14 17:00:37Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -284,6 +284,8 @@ struct vbsf_reg_info {
      * @note Must be first!  */
     struct vbsf_handle  Handle;
 };
+
+uint32_t vbsf_linux_oflags_to_vbox(unsigned fLnxOpen, uint32_t *pfHandle, const char *pszCaller);
 
 
 /**
