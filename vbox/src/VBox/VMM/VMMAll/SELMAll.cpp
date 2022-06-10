@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: SELMAll.cpp 74785 2018-10-12 10:14:19Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -77,7 +77,7 @@ selmGuestGDTWriteHandler(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvPtr, void
     selmRCGuestGdtPreWriteCheck(pVM, pVCpu, offGuestGdt, cbBuf, pCtx);
     memcpy(pvBuf, pvPtr, cbBuf);
     VBOXSTRICTRC rcStrict = selmRCGuestGdtPostWriteCheck(pVM, pVCpu, offGuestGdt, cbBuf, pCtx);
-    if (!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_SELM_SYNC_GDT))
+    if (!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_SELM_SYNC_GDT))
         STAM_COUNTER_INC(&pVM->selm.s.StatRCWriteGuestGDTHandled);
     else
         STAM_COUNTER_INC(&pVM->selm.s.StatRCWriteGuestGDTUnhandled);

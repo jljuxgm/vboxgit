@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 74709 2018-10-09 09:31:14Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 74785 2018-10-12 10:14:19Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -7188,7 +7188,7 @@ IEM_CIMPL_DEF_0(iemCImpl_mwait)
             && !pVCpu->cpum.GstCtx.eflags.Bits.u1IF)
         {
             if (   IEM_VMX_IS_PROCCTLS_SET(pVCpu, VMX_PROC_CTLS_INT_WINDOW_EXIT)
-                || VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_NESTED_GUEST))
+                || VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INTERRUPT_NESTED_GUEST))
             {
                 iemRegAddToRipAndClearRF(pVCpu, cbInstr);
                 return VINF_SUCCESS;

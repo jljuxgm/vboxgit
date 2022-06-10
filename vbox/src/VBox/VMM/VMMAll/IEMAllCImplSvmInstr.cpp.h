@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 74603 2018-10-04 06:07:20Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 74785 2018-10-12 10:14:19Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -201,7 +201,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmexit(PVMCPU pVCpu, uint64_t uExitCode, uint64_t 
              *   - Interrupt shadow: Tracked using VMCPU_FF_INHIBIT_INTERRUPTS and RIP.
              */
             PSVMVMCBCTRL pVmcbMemCtrl = &pVmcbMem->ctrl;
-            if (!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_NESTED_GUEST))       /* V_IRQ. */
+            if (!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INTERRUPT_NESTED_GUEST))           /* V_IRQ. */
                 pVmcbMemCtrl->IntCtrl.n.u1VIrqPending = 0;
             else
             {
@@ -211,7 +211,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmexit(PVMCPU pVCpu, uint64_t uExitCode, uint64_t 
 
             pVmcbMemCtrl->IntCtrl.n.u8VTPR = pVmcbCtrl->IntCtrl.n.u8VTPR;           /* V_TPR. */
 
-            if (   VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS)          /* Interrupt shadow. */
+            if (   VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS)              /* Interrupt shadow. */
                 && EMGetInhibitInterruptsPC(pVCpu) == pVCpu->cpum.GstCtx.rip)
             {
                 pVmcbMemCtrl->IntShadow.n.u1IntShadow = 1;
@@ -732,7 +732,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmrun(PVMCPU pVCpu, uint8_t cbInstr, RTGCPHYS GCPh
         if (pVmcbCtrl->IntCtrl.n.u1VIrqPending)
             VMCPU_FF_SET(pVCpu, VMCPU_FF_INTERRUPT_NESTED_GUEST);
         else
-            Assert(!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_NESTED_GUEST));
+            Assert(!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INTERRUPT_NESTED_GUEST));
 
         /*
          * Update PGM, IEM and others of a world-switch.

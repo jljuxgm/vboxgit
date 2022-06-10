@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 72685 2018-06-26 01:49:48Z vboxsync $ */
+/* $Id: TMAll.cpp 74785 2018-10-12 10:14:19Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -800,7 +800,7 @@ DECL_FORCE_INLINE(uint64_t) tmTimerPollInternal(PVM pVM, PVMCPU pVCpu, uint64_t 
     {
         if (!VMCPU_FF_IS_SET(pVCpuDst, VMCPU_FF_TIMER))
         {
-            Log5(("TMAll(%u): FF: %d -> 1\n", __LINE__, VMCPU_FF_IS_PENDING(pVCpuDst, VMCPU_FF_TIMER)));
+            Log5(("TMAll(%u): FF: %d -> 1\n", __LINE__, VMCPU_FF_IS_SET(pVCpuDst, VMCPU_FF_TIMER)));
             VMCPU_FF_SET(pVCpuDst, VMCPU_FF_TIMER);
 #if defined(IN_RING3) && defined(VBOX_WITH_REM)
             REMR3NotifyTimerPending(pVM, pVCpuDst);
@@ -846,7 +846,7 @@ DECL_FORCE_INLINE(uint64_t) tmTimerPollInternal(PVM pVM, PVMCPU pVCpu, uint64_t 
                 if (    !pVM->tm.s.fRunningQueues
                     &&  !VMCPU_FF_IS_SET(pVCpuDst, VMCPU_FF_TIMER))
                 {
-                    Log5(("TMAll(%u): FF: %d -> 1\n", __LINE__, VMCPU_FF_IS_PENDING(pVCpuDst, VMCPU_FF_TIMER)));
+                    Log5(("TMAll(%u): FF: %d -> 1\n", __LINE__, VMCPU_FF_IS_SET(pVCpuDst, VMCPU_FF_TIMER)));
                     VMCPU_FF_SET(pVCpuDst, VMCPU_FF_TIMER);
 #if defined(IN_RING3) && defined(VBOX_WITH_REM)
                     REMR3NotifyTimerPending(pVM, pVCpuDst);
@@ -945,7 +945,7 @@ DECL_FORCE_INLINE(uint64_t) tmTimerPollInternal(PVM pVM, PVMCPU pVCpu, uint64_t 
         if (    !pVM->tm.s.fRunningQueues
             &&  !VMCPU_FF_IS_SET(pVCpuDst, VMCPU_FF_TIMER))
         {
-            Log5(("TMAll(%u): FF: %d -> 1\n", __LINE__, VMCPU_FF_IS_PENDING(pVCpuDst, VMCPU_FF_TIMER)));
+            Log5(("TMAll(%u): FF: %d -> 1\n", __LINE__, VMCPU_FF_IS_SET(pVCpuDst, VMCPU_FF_TIMER)));
             VMCPU_FF_SET(pVCpuDst, VMCPU_FF_TIMER);
 #if defined(IN_RING3) && defined(VBOX_WITH_REM)
             REMR3NotifyTimerPending(pVM, pVCpuDst);
