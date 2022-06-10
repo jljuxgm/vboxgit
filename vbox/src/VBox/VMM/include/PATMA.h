@@ -1,4 +1,4 @@
-/* $Id: PATMA.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: PATMA.h 76515 2018-12-30 05:17:24Z vboxsync $ */
 /** @file
  * PATM macros & definitions (identical to PATMA.mac!).
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___PATMA_H
 #define ___PATMA_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** @name Patch Fixup Types
  * @remarks These fixups types are part of the saved state.

@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 74789 2018-10-12 10:34:32Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 76515 2018-12-30 05:17:24Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___EMHandleRCTmpl_h
 #define ___EMHandleRCTmpl_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #if defined(EMHANDLERC_WITH_PATM) + defined(EMHANDLERC_WITH_HM) + defined(EMHANDLERC_WITH_NEM) != 1
 # error "Exactly one of these must be defined: EMHANDLERC_WITH_PATM, EMHANDLERC_WITH_HM, EMHANDLERC_WITH_NEM"

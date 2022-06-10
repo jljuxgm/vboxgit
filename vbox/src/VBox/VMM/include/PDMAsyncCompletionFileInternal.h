@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 76515 2018-12-30 05:17:24Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___PDMAsyncCompletionFileInternal_h
 #define ___PDMAsyncCompletionFileInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vmm/cfgm.h>
 #include <VBox/vmm/stam.h>

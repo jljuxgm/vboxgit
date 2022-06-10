@@ -1,4 +1,4 @@
-/* $Id: CFGMInternal.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: CFGMInternal.h 76515 2018-12-30 05:17:24Z vboxsync $ */
 /** @file
  * CFGM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___CFGMInternal_h
 #define ___CFGMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

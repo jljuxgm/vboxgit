@@ -1,4 +1,4 @@
-/* $Id: VMMTracing.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: VMMTracing.h 76515 2018-12-30 05:17:24Z vboxsync $ */
 /** @file
  * VBoxVMM - Trace point macros for the VMM.
  */
@@ -15,9 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-
 #ifndef ___VMMTracing_h___
 #define ___VMMTracing_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 /*******************************************************************************

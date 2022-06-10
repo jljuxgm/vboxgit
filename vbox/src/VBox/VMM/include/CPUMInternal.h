@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 76464 2018-12-25 04:36:48Z vboxsync $ */
+/* $Id: CPUMInternal.h 76515 2018-12-30 05:17:24Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___CPUMInternal_h
 #define ___CPUMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef VBOX_FOR_DTRACE_LIB
 # include <VBox/cdefs.h>

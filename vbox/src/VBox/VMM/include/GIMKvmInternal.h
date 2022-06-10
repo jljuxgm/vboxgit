@@ -1,4 +1,4 @@
-/* $Id: GIMKvmInternal.h 73340 2018-07-24 03:12:17Z vboxsync $ */
+/* $Id: GIMKvmInternal.h 76515 2018-12-30 05:17:24Z vboxsync $ */
 /** @file
  * GIM - KVM, Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___GIMKvmInternal_h
 #define ___GIMKvmInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/cpum.h>
