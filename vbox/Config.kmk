@@ -1,4 +1,4 @@
-# $Id: Config.kmk 73863 2018-08-23 18:05:22Z vboxsync $
+# $Id: Config.kmk 73913 2018-08-27 12:37:56Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -629,7 +629,7 @@ VBOX_WITH_WEBSERVICES = 1
 VBOX_WITH_WEBSERVICES_SSL = 1
 # The Qt GUI.
 VBOX_WITH_QTGUI = 1
-if1of ($(KBUILD_TARGET), win linux)
+if1of ($(KBUILD_TARGET), win linux darwin)
  VBOX_GUI_WITH_SHARED_LIBRARY=1
 endif
 # Indicates the Qt is Cocoa based on the Mac.
@@ -7365,7 +7365,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 73863 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 73913 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
