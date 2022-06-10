@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbTool.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUsbTool.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * Windows USB R0 Tooling.
  */
@@ -30,6 +30,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 #include <VBox/log.h>
 #include <VBox/usblib.h>
 

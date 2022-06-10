@@ -1,4 +1,4 @@
-/* $Id: dbgstackdumpself.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
+/* $Id: dbgstackdumpself.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - Dump current thread stack to buffer.
  */
@@ -47,6 +47,7 @@
 
 #ifdef RT_OS_WINDOWS
 # include <iprt/param.h>
+# include <iprt/utf16.h>
 # include <iprt/win/windows.h>
 #elif defined(RT_OS_LINUX)
 # include <dlfcn.h>

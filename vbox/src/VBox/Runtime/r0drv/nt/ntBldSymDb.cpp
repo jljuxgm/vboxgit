@@ -1,4 +1,4 @@
-﻿/* $Id: ntBldSymDb.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+﻿/* $Id: ntBldSymDb.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - RTDirCreateUniqueNumbered, generic implementation.
  */
@@ -34,6 +34,7 @@
 #include <iprt/alloca.h>
 #include <iprt/dir.h>
 #include <iprt/file.h>
+#include <iprt/err.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
 #include <iprt/list.h>
@@ -42,7 +43,7 @@
 #include <iprt/path.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
-#include <iprt/err.h>
+#include <iprt/utf16.h>
 
 #include "r0drv/nt/symdb.h"
 
@@ -1154,7 +1155,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 73097 $");
+                RTPrintf("$Revision: 76409 $");
                 break;
 
             case 'h':

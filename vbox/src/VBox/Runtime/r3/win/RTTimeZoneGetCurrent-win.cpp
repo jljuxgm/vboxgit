@@ -1,4 +1,4 @@
-/* $Id: RTTimeZoneGetCurrent-win.cpp 68113 2017-07-25 18:37:32Z vboxsync $ */
+/* $Id: RTTimeZoneGetCurrent-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - RTTimeZoneGetCurrent, generic.
  */
@@ -34,6 +34,7 @@
 #include <iprt/err.h>
 #include <iprt/env.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 #include <iprt/win/windows.h>
 #include "internal-r3-win.h"
 

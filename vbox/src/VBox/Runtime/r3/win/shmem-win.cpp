@@ -1,4 +1,4 @@
-/* $Id: shmem-win.cpp 75883 2018-12-02 20:58:27Z vboxsync $ */
+/* $Id: shmem-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - Named shared memory object, Windows Implementation.
  */
@@ -39,6 +39,7 @@
 #include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 #include "internal/magics.h"
 #include "internal/path.h"
 #include "internal-r3-win.h" /* For g_enmWinVer + kRTWinOSType_XXX */

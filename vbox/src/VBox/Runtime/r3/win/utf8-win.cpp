@@ -1,4 +1,4 @@
-/* $Id: utf8-win.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: utf8-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - UTF8 helpers.
  */
@@ -35,6 +35,7 @@
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
+#include <iprt/utf16.h>
 
 
 RTR3DECL(int)  RTStrUtf8ToCurrentCPTag(char **ppszString, const char *pszString, const char *pszTag)

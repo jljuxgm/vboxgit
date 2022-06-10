@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 75783 2018-11-27 22:54:50Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -45,6 +45,7 @@
 #include <iprt/mp.h>
 #include <iprt/spinlock.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 
 #ifdef TARGET_NT4
 # include <VBox/pci.h>

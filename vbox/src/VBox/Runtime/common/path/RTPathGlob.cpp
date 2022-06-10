@@ -1,4 +1,4 @@
-/* $Id: RTPathGlob.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: RTPathGlob.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - RTPathGlob
  */
@@ -43,6 +43,7 @@
 #include <iprt/uni.h>
 
 #if defined(RT_OS_WINDOWS)
+# include <iprt/utf16.h>
 # include <iprt/win/windows.h>
 # include "../../r3/win/internal-r3-win.h"
 

@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 74774 2018-10-11 16:35:40Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -72,6 +72,7 @@
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 
 #include "SUPLibInternal.h"
 #if defined(RT_OS_WINDOWS) && defined(VBOX_WITH_HARDENING)

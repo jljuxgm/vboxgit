@@ -1,4 +1,4 @@
-/* $Id: direnum-r3-nt.cpp 75652 2018-11-21 21:00:31Z vboxsync $ */
+/* $Id: direnum-r3-nt.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - Directory Enumeration, Native NT.
  */
@@ -39,6 +39,7 @@
 #include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/log.h>
+#include <iprt/utf16.h>
 #include "internal/fs.h"
 #include "internal/dir.h"
 #include "internal/path.h"

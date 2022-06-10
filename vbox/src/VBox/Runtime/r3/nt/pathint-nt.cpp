@@ -1,4 +1,4 @@
-/* $Id: pathint-nt.cpp 70430 2018-01-02 15:08:02Z vboxsync $ */
+/* $Id: pathint-nt.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - Native NT, Internal Path stuff.
  */
@@ -31,11 +31,12 @@
 #define LOG_GROUP RTLOGGROUP_FS
 #include "internal-r3-nt.h"
 
-#include <iprt/path.h>
-#include <iprt/mem.h>
-#include <iprt/string.h>
-#include <iprt/err.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
+#include <iprt/mem.h>
+#include <iprt/path.h>
+#include <iprt/string.h>
+#include <iprt/utf16.h>
 
 
 /*********************************************************************************************************************************

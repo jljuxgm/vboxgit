@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: stream.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -58,6 +58,7 @@
 # include <fcntl.h>
 #endif
 #ifdef RT_OS_WINDOWS
+# include <iprt/utf16.h>
 # include <iprt/win/windows.h>
 #else
 # include <termios.h>

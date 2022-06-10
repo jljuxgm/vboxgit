@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 74638 2018-10-06 18:31:59Z vboxsync $ */
+/* $Id: ldrNative-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -40,11 +40,11 @@
 #include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/log.h>
+#include <iprt/once.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 
-#include <iprt/once.h>
-#include <iprt/string.h>
 #include "internal/ldr.h"
 #include "internal-r3-win.h"
 

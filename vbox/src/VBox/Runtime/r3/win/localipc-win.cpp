@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
+/* $Id: localipc-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -59,6 +59,7 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include <iprt/time.h>
+#include <iprt/utf16.h>
 
 #include "internal/magics.h"
 #include "internal-r3-win.h"

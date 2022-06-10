@@ -1,4 +1,4 @@
-/* $Id: dirrel-r3-nt.cpp 71888 2018-04-17 22:53:14Z vboxsync $ */
+/* $Id: dirrel-r3-nt.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - Directory relative base APIs, NT implementation
  */
@@ -38,6 +38,7 @@
 #include <iprt/path.h>
 #include <iprt/string.h>
 #include <iprt/symlink.h>
+#include <iprt/utf16.h>
 #include "internal/dir.h"
 #include "internal/file.h"
 #include "internal/fs.h"

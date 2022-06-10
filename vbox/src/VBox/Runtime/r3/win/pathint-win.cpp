@@ -1,4 +1,4 @@
-/* $Id: pathint-win.cpp 74462 2018-09-25 15:56:16Z vboxsync $ */
+/* $Id: pathint-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - Windows, Internal Path stuff.
  */
@@ -35,6 +35,7 @@
 #include <iprt/ctype.h>
 #include <iprt/err.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 
 #include <iprt/nt/nt-and-windows.h>
 

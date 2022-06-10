@@ -1,4 +1,4 @@
-/* $Id: init.cpp 72863 2018-07-04 10:13:40Z vboxsync $ */
+/* $Id: init.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -60,6 +60,9 @@
 #include <iprt/time.h>
 #include <iprt/string.h>
 #include <iprt/param.h>
+#ifdef RT_OS_WINDOWS
+# include <iprt/utf16.h>
+#endif
 #if !defined(IN_GUEST) && !defined(RT_NO_GIP)
 # include <iprt/file.h>
 # include <VBox/sup.h>

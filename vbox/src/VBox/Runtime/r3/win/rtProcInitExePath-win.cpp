@@ -1,4 +1,4 @@
-/* $Id: rtProcInitExePath-win.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: rtProcInitExePath-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - rtProcInitName, Windows.
  */
@@ -31,11 +31,12 @@
 #define LOG_GROUP RTLOGGROUP_PROCESS
 #include <iprt/win/windows.h>
 
-#include <iprt/string.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/path.h>
 #include <iprt/param.h>
+#include <iprt/string.h>
+#include <iprt/utf16.h>
 #include "internal/process.h"
 
 

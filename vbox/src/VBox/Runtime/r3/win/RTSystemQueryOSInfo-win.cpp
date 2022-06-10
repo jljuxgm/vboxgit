@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 76362 2018-12-22 01:45:59Z vboxsync $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -38,6 +38,7 @@
 #include <iprt/ctype.h>
 #include <iprt/err.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 
 
 /*********************************************************************************************************************************

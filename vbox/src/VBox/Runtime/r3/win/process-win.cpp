@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
+/* $Id: process-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -61,7 +61,7 @@
 #include <iprt/pipe.h>
 #include <iprt/string.h>
 #include <iprt/socket.h>
-
+#include <iprt/utf16.h>
 
 
 /*********************************************************************************************************************************

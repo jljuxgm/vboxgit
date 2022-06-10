@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.cpp 68099 2017-07-24 14:32:33Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -36,6 +36,7 @@
 #include <iprt/initterm.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 
 
 

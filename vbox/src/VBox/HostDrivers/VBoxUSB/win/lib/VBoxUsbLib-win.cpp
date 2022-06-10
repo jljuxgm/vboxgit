@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 70294 2017-12-21 16:42:22Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -40,6 +40,7 @@
 #include <iprt/alloc.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>
+#include <iprt/utf16.h>
 #include <VBox/log.h>
 #include <VBox/usblib.h>
 #include <VBox/usblib-win.h>

@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
+/* $Id: path-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -34,13 +34,14 @@
 
 #include <iprt/path.h>
 #include <iprt/assert.h>
-#include <iprt/string.h>
-#include <iprt/time.h>
+#include <iprt/err.h>
 #include <iprt/ldr.h>
+#include <iprt/log.h>
 #include <iprt/mem.h>
 #include <iprt/param.h>
-#include <iprt/log.h>
-#include <iprt/err.h>
+#include <iprt/string.h>
+#include <iprt/time.h>
+#include <iprt/utf16.h>
 #include "internal/path.h"
 #include "internal/fs.h"
 

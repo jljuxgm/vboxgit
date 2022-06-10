@@ -1,4 +1,4 @@
-/* $Id: RTSystemShutdown-win.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: RTSystemShutdown-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * IPRT - RTSystemShutdown, Windows.
  */
@@ -34,6 +34,7 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 
 #include <iprt/win/windows.h>
 

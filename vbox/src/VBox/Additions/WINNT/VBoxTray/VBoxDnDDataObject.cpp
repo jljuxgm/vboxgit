@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDataObject.cpp 74380 2018-09-20 10:02:42Z vboxsync $ */
+/* $Id: VBoxDnDDataObject.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * VBoxDnDDataObject.cpp - IDataObject implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 
+#define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <iprt/win/windows.h>
 #include <new> /* For bad_alloc. */
 #include <iprt/win/shlobj.h>
@@ -23,11 +24,8 @@
 #include <iprt/path.h>
 #include <iprt/semaphore.h>
 #include <iprt/uri.h>
+#include <iprt/utf16.h>
 
-#ifdef LOG_GROUP
-# undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <VBox/log.h>
 
 #include "VBoxTray.h"

@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 75506 2018-11-16 02:38:27Z vboxsync $ */
+/* $Id: darwin-pasteboard.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */
@@ -24,9 +24,10 @@
 #define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
 #include <Carbon/Carbon.h>
 
-#include <iprt/mem.h>
 #include <iprt/assert.h>
-#include "iprt/err.h"
+#include <iprt/mem.h>
+#include <iprt/err.h>
+#include <iprt/utf16.h>
 
 #include "VBox/log.h"
 #include "VBox/HostServices/VBoxClipboardSvc.h"

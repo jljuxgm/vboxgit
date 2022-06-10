@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 74572 2018-10-02 08:23:22Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -27,6 +27,7 @@
 #include <iprt/alloc.h>
 #include <iprt/system.h>
 #include <iprt/uuid.h>
+#include <iprt/utf16.h>
 
 #include "DrvAudio.h"
 #include "VBoxDD.h"

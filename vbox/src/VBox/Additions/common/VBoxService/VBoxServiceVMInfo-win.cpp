@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 70351 2017-12-27 04:26:13Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -39,6 +39,7 @@
 #include <iprt/system.h>
 #include <iprt/time.h>
 #include <iprt/thread.h>
+#include <iprt/utf16.h>
 
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"

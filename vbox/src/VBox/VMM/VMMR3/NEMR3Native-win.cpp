@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 74795 2018-10-12 11:24:11Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -57,6 +57,7 @@
 #include <iprt/path.h>
 #include <iprt/string.h>
 #include <iprt/system.h>
+#include <iprt/utf16.h>
 
 
 /*********************************************************************************************************************************

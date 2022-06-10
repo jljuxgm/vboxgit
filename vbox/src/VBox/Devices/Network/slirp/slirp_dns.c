@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 71203 2018-03-05 15:47:29Z vboxsync $ */
+/* $Id: slirp_dns.c 76409 2018-12-23 18:27:21Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -26,6 +26,7 @@
 #include <iprt/file.h>
 
 #ifdef RT_OS_WINDOWS
+# include <iprt/utf16.h>
 # include <Winnls.h>
 # define _WINSOCK2API_
 # include <iprt/win/iphlpapi.h>
