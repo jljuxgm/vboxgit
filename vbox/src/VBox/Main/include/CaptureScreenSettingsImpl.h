@@ -1,4 +1,4 @@
-/* $Id: CaptureScreenSettingsImpl.h 75313 2018-11-07 17:13:56Z vboxsync $ */
+/* $Id: CaptureScreenSettingsImpl.h 75322 2018-11-08 14:24:05Z vboxsync $ */
 
 /** @file
  *
