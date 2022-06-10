@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 74250 2018-09-13 16:33:17Z vboxsync $ */
+/* $Id: tstRTCRest-1.cpp 74263 2018-09-14 12:53:18Z vboxsync $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -2227,8 +2227,8 @@ void testClientResponseBase()
         RTTESTI_CHECK_RC(Resp1.pushHeader("x-integer", "398679406"), VINF_SUCCESS);
         RTTESTI_CHECK(Resp1.m_pInteger && Resp1.m_pInteger->m_iValue == 398679406);
 
-        //RTTESTI_CHECK_RC(Resp1.pushHeader("x-array", "zero,one,two,three"), VINF_SUCCESS);
-        //RTTESTI_CHECK(Resp1.m_pArray && Resp1.m_pArray->size() == 4);
+        RTTESTI_CHECK_RC(Resp1.pushHeader("x-array", "zero,one,two,three"), VINF_SUCCESS);
+        RTTESTI_CHECK(Resp1.m_pArray && Resp1.m_pArray->size() == 4);
 
         RTTESTI_CHECK_RC(Resp1.pushHeader("x-map-", "empty-key"), VINF_SUCCESS);
         RTTESTI_CHECK(Resp1.m_pMap && Resp1.m_pMap->size() == 1 && Resp1.m_pMap->get("") != NULL && Resp1.m_pMap->get("")->equals("empty-key"));
