@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 70623 2018-01-18 10:05:23Z vboxsync $ */
+/* $Id: WebMWriter.h 74992 2018-10-23 11:09:22Z vboxsync $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
