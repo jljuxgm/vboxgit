@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.cpp 77465 2019-02-26 08:16:05Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 77466 2019-02-26 09:25:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
@@ -21,29 +21,20 @@
 
 /* GUI includes: */
 #include "VBoxGlobal.h"
-#include "UIDetailsGenerator.h"
-#include "UIMachine.h"
-#include "UISession.h"
 #include "UIConverter.h"
+#include "UIDetailsGenerator.h"
 #include "UIInformationItem.h"
 #include "UIInformationModel.h"
 #include "UIInformationDataItem.h"
+#include "UIMachine.h"
+#include "UISession.h"
 
 /* COM includes: */
-#include "CMedium.h"
-#include "CSerialPort.h"
-#include "CVRDEServer.h"
-#include "CAudioAdapter.h"
-#include "CSharedFolder.h"
-#include "CUSBController.h"
 #include "CNetworkAdapter.h"
-#include "CVRDEServerInfo.h"
-#include "CUSBDeviceFilter.h"
 #include "CMediumAttachment.h"
 #include "CSystemProperties.h"
-#include "CUSBDeviceFilters.h"
 #include "CStorageController.h"
-
+#include "CVRDEServerInfo.h"
 
 /*********************************************************************************************************************************
 *   Class UIInformationDataItem implementation.                                                                                  *
