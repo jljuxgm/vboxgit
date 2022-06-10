@@ -1,4 +1,4 @@
-/* $Id: CloudProviderManagerImpl.cpp 73873 2018-08-24 13:47:20Z vboxsync $ */
+/* $Id: CloudProviderManagerImpl.cpp 74206 2018-09-12 09:32:18Z vboxsync $ */
 /** @file
  * ICloudProviderManager  COM class implementations.
  */
@@ -61,6 +61,7 @@ HRESULT CloudProviderManager::init(VirtualBox *aParent)
     m_apCloudProviders.clear();
 
 #ifdef VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK
+# ifdef VBOX_WITH_EXTPACK
     // Engage the extension pack manager and get all the implementations of
     // this class and all implemented cloud providers.
     ExtPackManager *pExtPackMgr = aParent->i_getExtPackManager();
@@ -72,6 +73,7 @@ HRESULT CloudProviderManager::init(VirtualBox *aParent)
         mcExtPackMgrUpdate--;
         i_refreshProviders();
     }
+# endif
 #else
     RT_NOREF(aParent);
 #endif
@@ -94,6 +96,8 @@ void CloudProviderManager::i_refreshProviders()
     uint64_t cExtPackMgrUpdate;
     {
         AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+        if (mpExtPackMgr.isNull())
+            return;
         cExtPackMgrUpdate = mpExtPackMgr->i_getUpdateCounter();
         if (cExtPackMgrUpdate == mcExtPackMgrUpdate)
             return;
