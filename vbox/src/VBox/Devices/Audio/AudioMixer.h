@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: AudioMixer.h 73039 2018-07-10 16:06:45Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -191,6 +191,12 @@ typedef struct AUDMIXSINK
     PDMAUDIOVOLUME          VolumeCombined;
     /** Timestamp (in ms) since last update. */
     uint64_t                tsLastUpdatedMS;
+#ifdef VBOX_AUDIO_MIXER_DEBUG
+    struct
+    {
+        PPDMAUDIOFILE       pFile;
+    } Dbg;
+#endif
 } AUDMIXSINK, *PAUDMIXSINK;
 
 /**
