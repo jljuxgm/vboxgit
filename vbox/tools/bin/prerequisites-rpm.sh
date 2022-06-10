@@ -1,4 +1,8 @@
 #!/bin/sh -e
+# @file
+## $Id: prerequisites-rpm.sh 72787 2018-07-02 09:01:32Z vboxsync $
+# Fetches prerequisites for RPM based GNU/Linux systems.
+#
 
 #
 # Copyright (C) 2018 Oracle Corporation
