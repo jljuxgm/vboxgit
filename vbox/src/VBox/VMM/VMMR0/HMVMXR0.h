@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.h 77481 2019-02-27 12:59:58Z vboxsync $ */
+/* $Id: HMVMXR0.h 78220 2019-04-20 04:08:44Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Internal header file.
  */
@@ -45,11 +45,11 @@ VMMR0DECL(int)          VMXR0ExportHostState(PVMCPU pVCpu);
 VMMR0DECL(int)          VMXR0InvalidatePage(PVMCPU pVCpu, RTGCPTR GCVirt);
 VMMR0DECL(int)          VMXR0ImportStateOnDemand(PVMCPU pVCpu, uint64_t fWhat);
 VMMR0DECL(VBOXSTRICTRC) VMXR0RunGuestCode(PVMCPU pVCpu);
-DECLASM(int)            VMXR0StartVM32(RTHCUINT fResume, PCPUMCTX pCtx, PVMXVMCSBATCHCACHE pVmcsCache, PVM pVM, PVMCPU pVCpu);
-DECLASM(int)            VMXR0StartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVMXVMCSBATCHCACHE pVmcsCache, PVM pVM, PVMCPU pVCpu);
+DECLASM(int)            VMXR0StartVM32(RTHCUINT fResume, PCPUMCTX pCtx, PVMXVMCSCACHE pVmcsCache, PVM pVM, PVMCPU pVCpu);
+DECLASM(int)            VMXR0StartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVMXVMCSCACHE pVmcsCache, PVM pVM, PVMCPU pVCpu);
 
 # if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
-DECLASM(int)            VMXR0SwitcherStartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVMXVMCSBATCHCACHE pVmcsCache, PVM pVM, PVMCPU pVCpu);
+DECLASM(int)            VMXR0SwitcherStartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVMXVMCSCACHE pVmcsCache, PVM pVM, PVMCPU pVCpu);
 VMMR0DECL(int)          VMXR0Execute64BitsHandler(PVMCPU pVCpu, HM64ON32OP enmOp, uint32_t cbParam, uint32_t *paParam);
 # endif
 
@@ -60,7 +60,7 @@ VMMR0DECL(int) VMXWriteCachedVmcsEx(PVMCPU pVCpu, uint32_t idxField, uint64_t u6
 DECLINLINE(int) VMXReadCachedVmcsEx(PVMCPU pVCpu, uint32_t idxCache, RTGCUINTREG *pVal)
 {
     Assert(idxCache <= VMX_VMCS_MAX_NESTED_PAGING_CACHE_IDX);
-    *pVal = pVCpu->hm.s.vmx.VmcsBatchCache.Read.aFieldVal[idxCache];
+    *pVal = pVCpu->hm.s.vmx.VmcsCache.Read.aFieldVal[idxCache];
     return VINF_SUCCESS;
 }
 # endif
