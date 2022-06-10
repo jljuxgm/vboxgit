@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 76886 2019-01-18 10:57:02Z vboxsync $
+# $Id: vbox.py 77470 2019-02-26 15:47:23Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,8 +27,9 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76886 $"
+__version__ = "$Revision: 77470 $"
 
+# pylint: disable=unnecessary-semicolon
 
 # Standard Python imports.
 import datetime
@@ -3291,13 +3292,14 @@ class TestDriver(base.TestDriver):                                              
         """
         fRc = True;
         for sGstFile in asFiles:
+            # First try to remove (unlink) an existing temporary file, as we don't truncate the file.
+            try:    os.unlink(sTmpFile);
+            except: pass;
             ## @todo Check for already existing files on the host and create a new
             #        name for the current file to download.
             sTmpFile = os.path.join(self.sScratchPath, 'tmp-' + os.path.basename(sGstFile));
             reporter.log2('Downloading file "%s" to "%s" ...' % (sGstFile, sTmpFile));
             fRc = self.txsDownloadFile(oSession, oTxsSession, sGstFile, sTmpFile, 30 * 1000, fIgnoreErrors);
-            try:    os.unlink(sTmpFile);
-            except: pass;
             if fRc:
                 reporter.addLogFile(sTmpFile, 'misc/other', 'guest - ' + sGstFile);
             else:
@@ -3821,4 +3823,3 @@ class TestDriver(base.TestDriver):                                              
         else:
             sRet = None;
         return sRet;
-
