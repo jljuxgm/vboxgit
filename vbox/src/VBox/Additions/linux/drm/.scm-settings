@@ -1,4 +1,4 @@
-# $Id: .scm-settings 74821 2018-10-12 18:32:51Z vboxsync $
+# $Id: .scm-settings 74826 2018-10-12 19:34:49Z vboxsync $
 ## @file
 # Source code massager settings for linux drm driver.
 #
@@ -19,7 +19,6 @@
 #Sources are MIT licensed for simplier upstreaming, several files are external.
 /*.c|/*.h:     --license-based-on-mit --no-convert-tabs
 /vbox_hgsmi.c: --license-mit
-/vbox_prime.c: --license-mit
 /Makefile.module.kms: --treat-as Makefile
 
 --filter-out-files /README.testing
