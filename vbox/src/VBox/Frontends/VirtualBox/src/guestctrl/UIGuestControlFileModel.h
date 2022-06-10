@@ -1,10 +1,10 @@
-/* $Id: UIGuestControlFileModel.h 74947 2018-10-19 15:03:34Z vboxsync $ */
+/* $Id: UIGuestControlFileModel.h 75425 2018-11-13 16:16:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileModel class declaration.
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIGuestControlFileTable.cpp 75284 2018-11-06 13:28:12Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 75425 2018-11-13 16:16:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

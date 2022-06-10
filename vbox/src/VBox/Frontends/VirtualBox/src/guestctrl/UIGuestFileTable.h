@@ -1,10 +1,10 @@
-/* $Id: UIGuestFileTable.h 75202 2018-10-31 09:30:01Z vboxsync $ */
+/* $Id: UIGuestFileTable.h 75425 2018-11-13 16:16:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestFileTable class declaration.
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -40,6 +40,10 @@ public:
     void initGuestFileTable(const CGuestSession &session);
     void copyGuestToHost(const QString& hostDestinationPath);
     void copyHostToGuest(const QStringList &hostSourcePathList);
+
+signals:
+
+    void sigNewFileOperation(const CProgress &comProgress);
 
 protected:
 

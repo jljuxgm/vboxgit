@@ -1,10 +1,10 @@
-/* $Id: UIHostFileTable.h 75202 2018-10-31 09:30:01Z vboxsync $ */
+/* $Id: UIHostFileTable.h 75425 2018-11-13 16:16:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostFileTable class declaration.
  */
 
 /*
- * Copyright (C) 2016-2017 Oracle Corporation
+ * Copyright (C) 2016-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
