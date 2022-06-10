@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73381 2018-07-27 09:16:19Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73391 2018-07-30 09:13:57Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -576,11 +576,11 @@ int AudioMixerSinkAddStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream)
  * @param   pSink               Sink to use for creating the stream.
  * @param   pConn               Audio connector interface to use.
  * @param   pCfg                Audio stream configuration to use.
- * @param   fFlags              Stream creation flags. Currently unused, set to 0.
+ * @param   fFlags              Stream flags. Currently unused, set to 0.
  * @param   ppStream            Pointer which receives the newly created audio stream.
  */
 int AudioMixerSinkCreateStream(PAUDMIXSINK pSink,
-                               PPDMIAUDIOCONNECTOR pConn, PPDMAUDIOSTREAMCFG pCfg, uint32_t fFlags, PAUDMIXSTREAM *ppStream)
+                               PPDMIAUDIOCONNECTOR pConn, PPDMAUDIOSTREAMCFG pCfg, AUDMIXSTREAMFLAGS fFlags, PAUDMIXSTREAM *ppStream)
 {
     AssertPtrReturn(pSink, VERR_INVALID_POINTER);
     AssertPtrReturn(pConn, VERR_INVALID_POINTER);

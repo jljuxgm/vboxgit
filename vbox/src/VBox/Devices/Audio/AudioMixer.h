@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 73370 2018-07-26 13:52:12Z vboxsync $ */
+/* $Id: AudioMixer.h 73391 2018-07-30 09:13:57Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -42,6 +42,9 @@ typedef struct AUDIOMIXER
     /** Number of used audio sinks. */
     uint8_t                 cSinks;
 } AUDIOMIXER, *PAUDIOMIXER;
+
+/** Defines an audio mixer stream's flags. */
+#define AUDMIXSTREAMFLAGS uint32_t
 
 /** No flags specified. */
 #define AUDMIXSTREAM_FLAG_NONE                  0
@@ -234,7 +237,7 @@ int AudioMixerSetMasterVolume(PAUDIOMIXER pMixer, PPDMAUDIOVOLUME pVol);
 void AudioMixerDebug(PAUDIOMIXER pMixer, PCDBGFINFOHLP pHlp, const char *pszArgs);
 
 int AudioMixerSinkAddStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream);
-int AudioMixerSinkCreateStream(PAUDMIXSINK pSink, PPDMIAUDIOCONNECTOR pConnector, PPDMAUDIOSTREAMCFG pCfg, uint32_t fFlags, PAUDMIXSTREAM *ppStream);
+int AudioMixerSinkCreateStream(PAUDMIXSINK pSink, PPDMIAUDIOCONNECTOR pConnector, PPDMAUDIOSTREAMCFG pCfg, AUDMIXSTREAMFLAGS fFlags, PAUDMIXSTREAM *ppStream);
 int AudioMixerSinkCtl(PAUDMIXSINK pSink, AUDMIXSINKCMD enmCmd);
 void AudioMixerSinkDestroy(PAUDMIXSINK pSink);
 uint32_t AudioMixerSinkGetReadable(PAUDMIXSINK pSink);
