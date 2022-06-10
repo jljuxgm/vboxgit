@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerDialog.cpp 75273 2018-11-06 11:06:56Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerDialog.cpp 75309 2018-11-07 14:28:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManagerDialog class implementation.
  */
@@ -82,7 +82,7 @@ void UIGuestControlFileManagerDialog::retranslateUi()
 void UIGuestControlFileManagerDialog::configure()
 {
     /* Apply window icons: */
-    //setWindowIcon(UIIconPool::iconSetFull(":/vm_show_logs_32px.png", ":/vm_show_logs_16px.png"));
+    setWindowIcon(UIIconPool::iconSetFull(":/file_manager_32px.png", ":/file_manager_16px.png"));
 }
 
 void UIGuestControlFileManagerDialog::configureCentralWidget()

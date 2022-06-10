@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 75295 2018-11-06 18:24:52Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 75309 2018-11-07 14:28:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -324,6 +324,8 @@ void UIGuestControlFileManager::prepareVerticalToolBar(QHBoxLayout *layout)
     m_pToolBar->addWidget(topSpacerWidget);
     m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_CopyToHost));
     m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_CopyToGuest));
+    m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_MoveToHost));
+    m_pToolBar->addAction(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_MoveToGuest));
     m_pToolBar->addWidget(bottomSpacerWidget);
 
     connect(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_CopyToHost), &QAction::triggered,
