@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 74804 2018-10-12 15:09:44Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 74955 2018-10-19 18:14:51Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5630,7 +5630,11 @@ int Console::i_videoCaptureEnable(BOOL fEnable, util::AutoWriteLock *pAutoLock)
                 /* Attach the video recording audio driver if required. */
                 if (   pDisplay->i_videoRecGetFeatures() & VIDEORECFEATURE_AUDIO
                     && mAudioVideoRec)
-                    vrc = mAudioVideoRec->doAttachDriverViaEmt(mpUVM, pAutoLock);
+                {
+                    vrc = mAudioVideoRec->applyConfiguration(pDisplay->i_videoRecGetConfig());
+                    if (RT_SUCCESS(vrc))
+                        vrc = mAudioVideoRec->doAttachDriverViaEmt(mpUVM, pAutoLock);
+                }
 # endif
                 if (   RT_SUCCESS(vrc)
                     && pDisplay->i_videoRecGetFeatures()) /* Any video recording (audio and/or video) feature enabled? */

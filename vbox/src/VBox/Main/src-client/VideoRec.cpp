@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 74909 2018-10-18 08:58:13Z vboxsync $ */
+/* $Id: VideoRec.cpp 74955 2018-10-19 18:14:51Z vboxsync $ */
 /** @file
  * Video recording (with optional audio recording) code.
  *
@@ -1336,7 +1336,7 @@ int VideoRecStreamInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen)
                 }
 
                 LogRel(("VideoRec: Recording audio in %RU16Hz, %RU8 bit, %RU8 %s\n",
-                        pCfg->Audio.uHz, pCfg->Audio.cBits, pCfg->Audio.cChannels, pCfg->Audio.cChannels ? "channel" : "channels"));
+                        pCfg->Audio.uHz, pCfg->Audio.cBits, pCfg->Audio.cChannels, pCfg->Audio.cChannels ? "channels" : "channel"));
             }
 #endif
 
