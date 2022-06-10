@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 73592 2018-08-09 16:05:17Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 73595 2018-08-09 16:55:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1690,7 +1690,7 @@ void UIMessageCenter::cannotCreateHardDiskStorage(const CProgress &progress, con
 void UIMessageCenter::cannotCreateHardDiskStorageInFAT(const QString &strLocation, QWidget *pParent /* = 0 */) const
 {
     alert(pParent, MessageType_Info,
-          tr("Failed to create the hard disk storage <nobr><b>%1</b>.</nobr> FAT file systems has 4GB (minus some overhead) size limit")
+          tr("Failed to create the hard disk storage <nobr><b>%1</b>.</nobr> FAT file systems have 4GB file size limit")
           .arg(strLocation));
 }
 
