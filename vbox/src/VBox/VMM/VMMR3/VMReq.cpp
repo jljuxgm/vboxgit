@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VMReq.cpp 77099 2019-02-01 10:22:42Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -669,7 +669,7 @@ VMMR3DECL(int) VMR3ReqAlloc(PUVM pUVM, PVMREQ *ppReq, VMREQTYPE enmType, VMCPUID
             Assert(pReq->enmType == VMREQTYPE_INVALID);
             Assert(pReq->enmState == VMREQSTATE_FREE);
             Assert(pReq->pUVM == pUVM);
-            ASMAtomicXchgSize(&pReq->pNext, NULL);
+            ASMAtomicWriteNullPtr(&pReq->pNext);
             pReq->enmState = VMREQSTATE_ALLOCATED;
             pReq->iStatus  = VERR_VM_REQUEST_STATUS_STILL_PENDING;
             pReq->fFlags   = VMREQFLAGS_VBOX_STATUS;
