@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 77094 2019-02-01 08:54:35Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 77168 2019-02-06 04:15:16Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -4587,7 +4587,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVirtApicAccessMsrRead(PVMCPU pVCpu, uint32_t idMsr
 {
     PCVMXVVMCS pVmcs = pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pVmcs);
     Assert(pVmcs);
-    Assert(pVmcs->u32ProcCtls & VMX_PROC_CTLS2_VIRT_X2APIC_MODE);
+    Assert(pVmcs->u32ProcCtls2 & VMX_PROC_CTLS2_VIRT_X2APIC_MODE);
     Assert(pu64Value);
 
     if (pVmcs->u32ProcCtls2 & VMX_PROC_CTLS2_APIC_REG_VIRT)
