@@ -1,4 +1,4 @@
-/* $Id: CloudClientImpl.cpp 73337 2018-07-23 22:05:26Z vboxsync $*/
+/* $Id: CloudClientImpl.cpp 73505 2018-08-05 13:58:10Z vboxsync $*/
 /** @file
  * ICloudClient  COM class implementations.
  */
@@ -147,7 +147,7 @@ HRESULT CloudClient::initCloudClient(CloudUserProfiles *aProfiles,
         hrc = arc;
         LogRel(("Get cought an exception %d\n", hrc));
     }
-    catch (std::bad_alloc)
+    catch (std::bad_alloc &)
     {
         return E_OUTOFMEMORY;
     }
@@ -302,7 +302,7 @@ HRESULT CloudClientOCI::initCloudClient(CloudUserProfiles *aProfiles,
         hrc = arc;
         LogRel(("Get cought an exception %d\n", hrc));
     }
-    catch (std::bad_alloc)
+    catch (std::bad_alloc &)
     {
         return E_OUTOFMEMORY;
     }

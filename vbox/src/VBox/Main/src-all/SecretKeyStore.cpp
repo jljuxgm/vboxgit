@@ -1,4 +1,4 @@
-/* $Id: SecretKeyStore.cpp 72939 2018-07-06 21:16:26Z vboxsync $ */
+/* $Id: SecretKeyStore.cpp 73505 2018-08-05 13:58:10Z vboxsync $ */
 /** @file
  * Main - Secret key interface.
  */
@@ -146,7 +146,7 @@ int SecretKeyStore::addSecretKey(const com::Utf8Str &strKeyId, const uint8_t *pb
     {
         return rc;
     }
-    catch (std::bad_alloc)
+    catch (std::bad_alloc &)
     {
         if (pKey)
             delete pKey;

@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 71873 2018-04-17 12:24:26Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 73505 2018-08-05 13:58:10Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -767,7 +767,7 @@ int GuestBase::dispatchGeneric(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
                 break;
         }
     }
-    catch (std::bad_alloc)
+    catch (std::bad_alloc &)
     {
         vrc = VERR_NO_MEMORY;
     }

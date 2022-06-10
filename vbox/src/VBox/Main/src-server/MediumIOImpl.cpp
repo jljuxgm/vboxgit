@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.cpp 72999 2018-07-09 07:59:18Z vboxsync $ */
+/* $Id: MediumIOImpl.cpp 73505 2018-08-05 13:58:10Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation: MediumIO
@@ -244,7 +244,7 @@ HRESULT MediumIO::read(LONG64 a_off, ULONG a_cbRead, std::vector<BYTE> &a_rData)
     {
         a_rData.resize(a_cbRead);
     }
-    catch (std::bad_alloc)
+    catch (std::bad_alloc &)
     {
         return E_OUTOFMEMORY;
     }

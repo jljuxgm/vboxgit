@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 73505 2018-08-05 13:58:10Z vboxsync $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -3193,7 +3193,7 @@ AuthResult ConsoleVRDPServer::Authenticate(const Guid &uuid, AuthGuestJudgement 
         if (SUCCEEDED(hr) && authResult == "granted")
             result = AuthResultAccessGranted;
     }
-    catch (std::bad_alloc)
+    catch (std::bad_alloc &)
     {
     }
 #else
@@ -3264,7 +3264,7 @@ void ConsoleVRDPServer::AuthDisconnect(const Guid &uuid, uint32_t u32ClientId)
                                                               authResult.asOutParam());
         LogFlowFunc(("%Rhrc [%ls]\n", hr, authResult.raw())); NOREF(hr);
     }
-    catch (std::bad_alloc)
+    catch (std::bad_alloc &)
     {
     }
 #else

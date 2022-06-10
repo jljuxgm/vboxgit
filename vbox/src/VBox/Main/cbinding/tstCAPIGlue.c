@@ -1,4 +1,4 @@
-/* $Id: tstCAPIGlue.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tstCAPIGlue.c 73505 2018-08-05 13:58:10Z vboxsync $ */
 /** @file tstCAPIGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -102,12 +102,20 @@ static const char *GetStateName(MachineState_T machineState)
  *
  * @param  iInfo    Platform dependent detail info (ignored).
  */
+#ifdef WIN32
 static BOOL VBOX_WINAPI ctrlCHandler(DWORD iInfo)
 {
     (void)iInfo;
     g_fStop = 1;
     return TRUE;
 }
+#else
+static void ctrlCHandler(int iInfo)
+{
+    (void)iInfo;
+    g_fStop = 1;
+}
+#endif
 
 /**
  * Sample event processing function, dumping some event information.
@@ -604,7 +612,7 @@ static void registerPassiveEventListener(ISession *session)
 #ifdef WIN32
                     SetConsoleCtrlHandler(ctrlCHandler, TRUE);
 #else
-                    signal(SIGINT, (void (*)(int))ctrlCHandler);
+                    signal(SIGINT, ctrlCHandler);
 #endif
 
                     while (!g_fStop)

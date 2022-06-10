@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 73408 2018-07-31 11:32:55Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 73505 2018-08-05 13:58:10Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -391,7 +391,7 @@ static int avRecSinkInit(PDRVAUDIOVIDEOREC pThis, PAVRECSINK pSink, PAVRECCONTAI
                 break;
         }
     }
-    catch (std::bad_alloc)
+    catch (std::bad_alloc &)
     {
 #ifdef VBOX_AUDIO_DEBUG_DUMP_PCM_DATA
         rc = VERR_NO_MEMORY;
