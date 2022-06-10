@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileModel.cpp 75762 2018-11-27 10:10:23Z vboxsync $ */
+/* $Id: UIGuestControlFileModel.cpp 76101 2018-12-10 10:20:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileModel class implementation.
  */
@@ -182,16 +182,16 @@ QVariant UIGuestControlFileModel::data(const QModelIndex &index, int role) const
             else if(item->isDriveItem())
                 return QIcon(":/hd_32px.png");
             else
-                return QIcon(":/sf_32px.png");
+                return QIcon(":/file_manager_folder_16px.png");
         }
         else if (item->isFile())
-            return QIcon(":/vm_open_filemanager_16px.png");
+            return QIcon(":/file_manager_file_16px.png");
         else if (item->isSymLink())
         {
             if (item->isTargetADirectory())
-                return QIcon(":/sf_read_16px.png");
+                return QIcon(":/file_manager_folder_symlink_16px.png");
             else
-                return QIcon(":/drag_drop_16px.png");
+                return QIcon(":/file_manager_file_symlink_16px.png");
         }
     }
 
