@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: tarvfs.cpp 73501 2018-08-05 12:39:49Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Reader.
  */
@@ -771,6 +771,7 @@ static int rtZipTarReaderGetFsObjInfo(PRTZIPTARREADER pThis, PRTFSOBJINFO pObjIn
                 case 0:
                     return VERR_TAR_UNKNOWN_TYPE_FLAG; /** @todo new status code */
             }
+            break;
 
         default:
             return VERR_TAR_UNKNOWN_TYPE_FLAG; /* Should've been caught in validate. */
