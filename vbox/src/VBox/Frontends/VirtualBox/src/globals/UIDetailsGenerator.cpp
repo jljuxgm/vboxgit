@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 77457 2019-02-25 14:20:51Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 77465 2019-02-26 08:16:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -326,7 +326,8 @@ UITextTable UIDetailsGenerator::generateMachineInformationDisplay(CMachine &comM
 }
 
 UITextTable UIDetailsGenerator::generateMachineInformationStorage(CMachine &comMachine,
-                                                                  const UIExtraDataMetaDefs::DetailsElementOptionTypeStorage &fOptions)
+                                                                  const UIExtraDataMetaDefs::DetailsElementOptionTypeStorage &fOptions,
+                                                                  bool fLink /* = true */)
 {
     UITextTable table;
 
@@ -338,6 +339,10 @@ UITextTable UIDetailsGenerator::generateMachineInformationStorage(CMachine &comM
         table << UITextTableLine(QApplication::translate("UIDetails", "Information Inaccessible", "details"), QString());
         return table;
     }
+
+    /* This is needed at least for some vm to show correct storage info. For the manager UI enumeration has been done already: */
+    if (vboxGlobal().uiType() == VBoxGlobal::UIType_RuntimeUI)
+        vboxGlobal().startMediumEnumeration();
 
     /* Iterate over all the machine controllers: */
     foreach (const CStorageController &comController, comMachine.GetStorageControllers())
@@ -393,13 +398,18 @@ UITextTable UIDetailsGenerator::generateMachineInformationStorage(CMachine &comM
                     enmDeviceType == KDeviceType_HardDisk ? QString("attach") : QString();
                 const CMedium medium = attachment.GetMedium();
                 const QString strMediumLocation = medium.isNull() ? QString() : medium.GetLocation();
-                attachmentsMap.insert(attachmentSlot,
-                                      QString("<a href=#%1,%2,%3,%4>%5</a>")
-                                      .arg(strAnchorType,
-                                           comController.GetName(),
-                                           gpConverter->toString(attachmentSlot),
-                                           strMediumLocation,
-                                           strDeviceType + strAttachmentInfo));
+                if (fLink)
+                    attachmentsMap.insert(attachmentSlot,
+                                          QString("<a href=#%1,%2,%3,%4>%5</a>")
+                                          .arg(strAnchorType,
+                                               comController.GetName(),
+                                               gpConverter->toString(attachmentSlot),
+                                               strMediumLocation,
+                                               strDeviceType + strAttachmentInfo));
+                else
+                    attachmentsMap.insert(attachmentSlot,
+                                          QString("%1")
+                                          .arg(strDeviceType + strAttachmentInfo));
             }
         }
 

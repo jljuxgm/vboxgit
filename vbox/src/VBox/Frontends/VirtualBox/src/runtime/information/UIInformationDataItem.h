@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIInformationDataItem.h 77465 2019-02-26 08:16:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class declaration.
  */
@@ -68,8 +68,8 @@ protected:
     /** Holds the name of information data-item. */
     QString m_strName;
 
-    /** Holds the machine reference. */
-    CMachine m_machine;
+    /** Holds the machine reference. Mutable since our API wrapper getter are not const for some religious reason. */
+    mutable CMachine m_machine;
 
     /** Holds the machine console reference. */
     CConsole m_console;
@@ -359,4 +359,3 @@ private:
 };
 
 #endif /* !FEQT_INCLUDED_SRC_runtime_information_UIInformationDataItem_h */
-
