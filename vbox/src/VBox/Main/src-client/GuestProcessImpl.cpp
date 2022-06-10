@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 77093 2019-02-01 08:53:18Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 77496 2019-02-28 09:21:24Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2538,6 +2538,22 @@ int GuestProcessTool::exitCodeToRc(const char *pszTool, int32_t iExitCode)
         switch (iExitCode)
         {
             case RTEXITCODE_FAILURE: return VERR_CANT_CREATE;
+            default:                 break;
+        }
+    }
+    else if (!RTStrICmp(pszTool, VBOXSERVICE_TOOL_MKTEMP))
+    {
+        switch (iExitCode)
+        {
+            case RTEXITCODE_FAILURE: return VERR_CANT_CREATE;
+            default:                 break;
+        }
+    }
+    else if (!RTStrICmp(pszTool, VBOXSERVICE_TOOL_RM))
+    {
+        switch (iExitCode)
+        {
+            case RTEXITCODE_FAILURE: return VERR_ACCESS_DENIED;
             default:                 break;
         }
     }
