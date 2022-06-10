@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 74734 2018-10-10 11:47:54Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 74752 2018-10-11 08:08:42Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1136,7 +1136,7 @@ int GuestBase::waitForEvent(GuestWaitEvent *pEvent, uint32_t uTimeoutMS,
  * Converts RTFMODE to FsObjType_T.
  *
  * @return  Converted FsObjType_T type.
- * @param   enmType             RTFMODE to convert.
+ * @param   fMode               RTFMODE to convert.
  */
 /* static */
 FsObjType_T GuestBase::fileModeToFsObjType(RTFMODE fMode)
