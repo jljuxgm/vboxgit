@@ -1,4 +1,4 @@
-/* $Id: inlines.h 74613 2018-10-04 13:44:55Z vboxsync $ */
+/* $Id: inlines.h 76519 2018-12-30 05:39:14Z vboxsync $ */
 /** @file
  * Inline routines for Watcom C.
  */
@@ -15,6 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifndef VBOX_INCLUDED_BIOS_inlines_h
+#define VBOX_INCLUDED_BIOS_inlines_h
 
 extern unsigned inp(unsigned port);
 extern unsigned outp(unsigned port, unsigned value);
@@ -237,3 +239,6 @@ void cpuid( uint32_t __far cpu_id[4], uint32_t leaf );
     parm [es di] [dx ax] modify [bx cx dx]
 
 #endif
+
+#endif
+

@@ -1,4 +1,4 @@
-/* $Id: pciutil.h 69501 2017-10-28 16:12:47Z vboxsync $ */
+/* $Id: pciutil.h 76519 2018-12-30 05:39:14Z vboxsync $ */
 /** @file
  * Utility routines for calling the PCI BIOS.
  */
@@ -15,6 +15,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifndef VBOX_INCLUDED_BIOS_pciutils_h
+#define VBOX_INCLUDED_BIOS_pciutils_h
+
 extern  uint16_t    pci_find_device(uint16_t v_id, uint16_t d_id);
 /* Warning: pci_find_classcode destroys the high bits of ECX. */
 extern  uint16_t    pci_find_classcode(uint32_t dev_class);
@@ -26,4 +29,6 @@ extern  void        pci_write_config_byte(uint8_t bus, uint8_t dev_fn, uint8_t r
 extern  void        pci_write_config_word(uint8_t bus, uint8_t dev_fn, uint8_t reg, uint16_t val);
 /* Warning: pci_write_config_dword destroys the high bits of ECX. */
 extern  void        pci_write_config_dword(uint8_t bus, uint8_t dev_fn, uint8_t reg, uint32_t val);
+
+#endif
 

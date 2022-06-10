@@ -1,4 +1,4 @@
-/* $Id: DevEEPROM.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevEEPROM.h 76519 2018-12-30 05:39:14Z vboxsync $ */
 /** @file
  * DevEEPROM - Microware-compatible 64x16-bit 93C46 EEPROM Emulation, Header.
  */
@@ -15,7 +15,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Interface */
+#ifndef VBOX_INCLUDED_Network_DevEEPROM_h
+#define VBOX_INCLUDED_Network_DevEEPROM_h
+
 #include <iprt/types.h>
 
 /** The current Saved state version. */
@@ -132,3 +134,5 @@ struct EEPROM93C46
     void storeWord(uint32_t u32Addr, uint16_t u16Value);
 #endif /* IN_RING3 */
 };
+
+#endif

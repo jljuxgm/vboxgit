@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69474 2017-10-28 13:12:06Z vboxsync $
+# $Id: .scm-settings 76519 2018-12-30 05:39:14Z vboxsync $
 ## @file
 # Source code massager settings for PC devices/drivers.
 #
@@ -55,7 +55,7 @@
 # PXE
 /PXE/*.asm:     --external-copyright --no-convert-tabs --no-strip-trailing-blanks
 /PXE/*.c:       --external-copyright --no-convert-tabs --no-strip-trailing-blanks
-/PXE/*.h:       --external-copyright --no-convert-tabs --no-strip-trailing-blanks --dont-set-svn-keywords
+/PXE/*.h:       --external-copyright --no-convert-tabs --no-strip-trailing-blanks --dont-set-svn-keywords --no-fix-header-guards
 /PXE/*.inc:     --external-copyright --no-convert-tabs --no-strip-trailing-blanks
 /PXE/*.i:       --external-copyright --no-convert-tabs --no-strip-trailing-blanks --strip-no-trailing-lines --treat-as .inc
 /PXE/*.r:       --external-copyright --no-convert-tabs --no-strip-trailing-blanks --strip-no-trailing-lines --treat-as .inc
@@ -81,6 +81,7 @@
 /ipxe/src/util/get-pci-ids:      --treat-as .sh
 /ipxe/contrib/vm/cow:            --treat-as .sh
 /ipxe/contrib/vm/serial-console: --treat-as .pl
+/ipxe/*:                         --no-fix-header-guards
 
 --filter-out-files /ipxe/*.txt
 --filter-out-files /ipxe/COPYING

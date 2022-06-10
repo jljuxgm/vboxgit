@@ -1,4 +1,4 @@
-/* $Id: vds.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vds.h 76519 2018-12-30 05:39:14Z vboxsync $ */
 /** @file
  * Utility routines for calling the Virtual DMA Services.
  */
@@ -15,6 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifndef VBOX_INCLUDED_BIOS_vds_h
+#define VBOX_INCLUDED_BIOS_vds_h
 
 /* Virtual DMA Services (VDS) */
 
@@ -112,4 +114,6 @@ int vds_free_sg_list( vds_edds __far *edds );
 /* Helper for translating 16:16 real mode addresses to 32-bit linear. */
 
 uint32_t vds_real_to_lin( void __far *ptr );
+
+#endif
 

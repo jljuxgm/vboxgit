@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/** $Id: DevE1000Phy.h 76519 2018-12-30 05:39:14Z vboxsync $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation, Header.
  */
@@ -14,6 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#ifndef VBOX_INCLUDED_Network_DevE1000_h
+#define VBOX_INCLUDED_Network_DevE1000_h
 
 #include <VBox/types.h>
 
@@ -105,7 +108,8 @@ typedef struct Phy::Phy_st PHY;
 typedef PHY *PPHY;
 
 /* Interface *****************************************************************/
-namespace Phy {
+namespace Phy
+{
     /** Initialize PHY. */
     void     init(PPHY pPhy, int iNICInstance, uint16_t u16EPid);
     /** Read PHY register at specified address. */
@@ -127,4 +131,6 @@ namespace Phy {
     /** Restore previously saved PHY state. */
     int      loadState(PSSMHANDLE pSSMHandle, PPHY pPhy);
 }
+
+#endif
 

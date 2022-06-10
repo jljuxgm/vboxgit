@@ -1,4 +1,4 @@
-/* $Id: ebda.h 71426 2018-03-21 11:49:59Z vboxsync $ */
+/* $Id: ebda.h 76519 2018-12-30 05:39:14Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
@@ -52,6 +52,8 @@
  * of the LGPL is applied is otherwise unspecified.
  */
 
+#ifndef VBOX_INCLUDED_BIOS_ebda_h
+#define VBOX_INCLUDED_BIOS_ebda_h
 
 #include <stdint.h>
 
@@ -373,3 +375,5 @@ extern int edd_fill_dpt(dpt_t __far *dpt, bio_dsk_t __far *bios_dsk, uint8_t dev
 #define SET_DISK_RET_STATUS(status) write_byte(0x0040, 0x0074, status)
 
 #endif
+#endif
+
