@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 77321 2019-02-14 19:56:39Z vboxsync $ */
+/* $Id: UIVisoCreator.h 77322 2019-02-14 20:11:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -70,8 +70,6 @@ public:
 protected:
 
     virtual void retranslateUi() /* override */;
-    // virtual bool event(QEvent *pEvent) /* override */;
-    // virtual bool eventFilter(QObject *pObj, QEvent *pEvent) /* override */;
 
 private slots:
 

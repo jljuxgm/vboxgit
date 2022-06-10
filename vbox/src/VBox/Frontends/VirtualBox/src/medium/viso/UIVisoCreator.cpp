@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 77321 2019-02-14 19:56:39Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 77322 2019-02-14 20:11:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -118,26 +118,6 @@ void UIVisoCreator::retranslateUi()
     if (m_pVisoContentBrowserMenu)
         m_pVisoContentBrowserMenu->setTitle(tr("VISO Browser"));
 }
-
-// bool UIVisoCreator::event(QEvent *pEvent)
-// {
-
-//     if (pEvent->type() == QEvent::KeyPress)
-//     {
-//         printf("key press %d\n", pEvent->type());
-//     }
-//     return false;
-// }
-
-// bool UIVisoCreator::eventFilter(QObject *, QEvent *pEvent)
-// {
-//     if (pEvent->type() == QEvent::KeyPress)
-//     {
-//         printf("key press in filter %d\n", pEvent->type());
-//     }
-
-//     return false;
-// }
 
 void UIVisoCreator::sltHandleAddObjectsToViso(QStringList pathList)
 {
