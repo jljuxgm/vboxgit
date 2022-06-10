@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 72823 2018-07-03 14:31:50Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 72976 2018-07-08 13:58:59Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -913,6 +913,9 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                             /** @todo  VirtualSystemDescriptionType_Miscellaneous? */
                             break;
                         case VirtualSystemDescriptionType_Ignore:
+#ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK
+                        case VirtualSystemDescriptionType_32BitHack:
+#endif
                             break;
                     }
 
