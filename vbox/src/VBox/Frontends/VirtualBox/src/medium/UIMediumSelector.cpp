@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72697 2018-06-27 07:21:20Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 72698 2018-06-27 09:13:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -86,6 +86,7 @@ private:
     QIComboBox       *m_pSearchComboxBox;
     QLineEdit         *m_pSearchTermLineEdit;
 };
+
 
 /*********************************************************************************************************************************
 *   UIMediumSearchWidget implementation.                                                                                         *
