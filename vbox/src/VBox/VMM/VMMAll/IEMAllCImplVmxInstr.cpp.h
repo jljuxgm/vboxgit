@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74736 2018-10-10 12:05:41Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74737 2018-10-10 12:12:28Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3688,7 +3688,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitEvent(PVMCPU pVCpu, uint8_t uVector, uint32_
         iemVmxVmcsSetExitIntInfo(pVCpu, uExitIntInfo);
         iemVmxVmcsSetExitIntErrCode(pVCpu, uErrCode);
         iemVmxVmcsSetExitQual(pVCpu, uExitQual);
-        iemVmxVmexit(pVCpu, uExitReason);
+        return iemVmxVmexit(pVCpu, uExitReason);
     }
 
     return VINF_VMX_INTERCEPT_NOT_ACTIVE;
