@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 76927 2019-01-21 18:52:14Z vboxsync $ */
+/* $Id: FsPerf.cpp 76928 2019-01-21 19:18:08Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -2152,6 +2152,7 @@ void fsPerfFSync(RTFILE hFile1, uint64_t cbFile)
 }
 
 
+#ifndef RT_OS_OS2
 /**
  * Worker for profiling msync.
  */
@@ -2169,6 +2170,7 @@ DECL_FORCE_INLINE(int) fsPerfMSyncWorker(uint8_t *pbMapping, size_t offMapping, 
         *pcbFlushed = offMapping + cbFlush;
     return VINF_SUCCESS;
 }
+#endif /* !RT_OS_OS2 */
 
 
 void fsPerfMMap(RTFILE hFile1, RTFILE hFileNoCache, uint64_t cbFile)
@@ -2616,7 +2618,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 76927 $";
+                char szRev[] = "$Revision: 76928 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
