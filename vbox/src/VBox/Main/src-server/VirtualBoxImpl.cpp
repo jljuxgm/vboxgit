@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 73804 2018-08-21 16:21:23Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 73805 2018-08-21 16:40:42Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2077,7 +2077,7 @@ HRESULT VirtualBox::setExtraData(const com::Utf8Str &aKey,
      * they are rejected unless the key should be deleted. */
     if (!strValue.isEmpty())
     {
-        for (int i = 0; i < strKey.length(); ++i)
+        for (size_t i = 0; i < strKey.length(); ++i)
         {
             char ch = strKey[i];
             if (!RTLocCIsPrint(ch))

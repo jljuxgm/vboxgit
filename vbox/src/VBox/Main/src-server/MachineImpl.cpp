@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 73804 2018-08-21 16:21:23Z vboxsync $ */
+/* $Id: MachineImpl.cpp 73805 2018-08-21 16:40:42Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5076,7 +5076,7 @@ HRESULT Machine::setExtraData(const com::Utf8Str &aKey, const com::Utf8Str &aVal
      * they are rejected unless the key should be deleted. */
     if (!aValue.isEmpty())
     {
-        for (int i = 0; i < aKey.length(); ++i)
+        for (size_t i = 0; i < aKey.length(); ++i)
         {
             char ch = aKey[i];
             if (!RTLocCIsPrint(ch))
