@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: GMMR0.cpp 76393 2018-12-23 02:04:19Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -159,6 +159,7 @@
 #include <VBox/log.h>
 #include <VBox/param.h>
 #include <VBox/err.h>
+#include <VBox/VMMDev.h>
 #include <iprt/asm.h>
 #include <iprt/avl.h>
 #ifdef VBOX_STRICT

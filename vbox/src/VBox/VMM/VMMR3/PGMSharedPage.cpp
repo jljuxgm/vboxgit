@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 76393 2018-12-23 02:04:19Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -29,6 +29,7 @@
 #include <VBox/param.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
+#include <VBox/VMMDev.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/mem.h>
