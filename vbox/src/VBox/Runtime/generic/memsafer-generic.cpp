@@ -1,4 +1,4 @@
-/* $Id: memsafer-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: memsafer-generic.cpp 76354 2018-12-22 01:12:35Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocate for Sensitive Data, generic heap-based implementation.
  */
@@ -32,6 +32,7 @@
 #include <iprt/memsafer.h>
 
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 
 
