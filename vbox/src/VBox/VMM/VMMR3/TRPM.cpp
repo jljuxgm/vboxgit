@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 74860 2018-10-16 04:03:25Z vboxsync $ */
+/* $Id: TRPM.cpp 74875 2018-10-17 08:22:42Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -1528,7 +1528,7 @@ VMMR3DECL(int) TRPMR3InjectEvent(PVM pVM, PVMCPU pVCpu, TRPMEVENT enmEvent)
                 VBOXSTRICTRC rcStrict = IEMExecVmxVmexitExtInt(pVCpu, u8Interrupt, false /* fIntPending */);
                 Assert(rcStrict != VINF_PGM_CHANGE_MODE);
                 if (rcStrict != VINF_VMX_INTERCEPT_NOT_ACTIVE)
-                    return rcStrict;
+                    return VBOXSTRICTRC_TODO(rcStrict);
             }
         }
 #endif
