@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-darwin.cpp 75712 2018-11-25 11:45:15Z vboxsync $ */
+/* $Id: VBoxGuest-darwin.cpp 75714 2018-11-25 11:59:43Z vboxsync $ */
 /** @file
  * VBoxGuest - Darwin Specifics.
  */
@@ -1041,8 +1041,8 @@ bool org_virtualbox_VBoxGuest::setupVmmDevInterrupts(IOService *pProvider)
 
     if (m_pInterruptProvider != pProvider)
     {
-	pProvider->retain();
-	if (m_pInterruptProvider)
+        pProvider->retain();
+        if (m_pInterruptProvider)
             m_pInterruptProvider->release();
         m_pInterruptProvider = pProvider;
     }
