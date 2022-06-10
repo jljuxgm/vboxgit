@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 76941 2019-01-22 18:26:28Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 76949 2019-01-23 09:46:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -194,7 +194,7 @@ void UIVirtualBoxManager::moveEvent(QMoveEvent *pEvent)
 #ifdef VBOX_WS_X11
     /* Prevent further handling if fake screen detected: */
     if (gpDesktop->isFakeScreenDetected())
-        break;
+        return;
 #endif
 
     /* Prevent handling for yet/already invisible window or if window is in minimized state: */
@@ -216,7 +216,7 @@ void UIVirtualBoxManager::resizeEvent(QResizeEvent *pEvent)
 #ifdef VBOX_WS_X11
     /* Prevent handling if fake screen detected: */
     if (gpDesktop->isFakeScreenDetected())
-        break;
+        return;
 #endif
 
     /* Prevent handling for yet/already invisible window or if window is in minimized state: */
