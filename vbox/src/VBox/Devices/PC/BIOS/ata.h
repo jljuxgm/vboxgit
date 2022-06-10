@@ -1,4 +1,4 @@
-/* $Id: ata.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ata.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
@@ -52,8 +52,8 @@
  * of the LGPL is applied is otherwise unspecified.
  */
 
-#ifndef VBOX_INCLUDED_PC_BIOS_ata_h
-#define VBOX_INCLUDED_PC_BIOS_ata_h
+#ifndef VBOX_INCLUDED_SRC_PC_BIOS_ata_h
+#define VBOX_INCLUDED_SRC_PC_BIOS_ata_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -186,5 +186,5 @@
 
 extern void     ata_reset(uint16_t device);
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_PC_BIOS_ata_h */
 

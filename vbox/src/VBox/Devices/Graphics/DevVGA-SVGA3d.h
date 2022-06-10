@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___DEVVMWARE3D_H___
-#define ___DEVVMWARE3D_H___
+#ifndef VBOX_INCLUDED_SRC_Graphics_DevVGA_SVGA3d_h
+#define VBOX_INCLUDED_SRC_Graphics_DevVGA_SVGA3d_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -227,5 +227,5 @@ const char *vmsvgaSurfaceType2String(SVGA3dSurfaceFormat format);
 const char *vmsvga3dPrimitiveType2String(SVGA3dPrimitiveType PrimitiveType);
 #endif
 
-#endif  /* !___DEVVMWARE3D_H___ */
+#endif /* !VBOX_INCLUDED_SRC_Graphics_DevVGA_SVGA3d_h */
 

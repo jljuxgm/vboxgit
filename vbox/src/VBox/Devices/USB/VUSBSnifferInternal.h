@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VUSBSnifferInternal.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Virtual USB Sniffer facility - Internal header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VUSBSnifferInternal_h
-#define ___VUSBSnifferInternal_h
+#ifndef VBOX_INCLUDED_SRC_USB_VUSBSnifferInternal_h
+#define VBOX_INCLUDED_SRC_USB_VUSBSnifferInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -106,4 +106,4 @@ extern const VUSBSNIFFERFMT g_VUsbSnifferFmtVmx;
 extern const VUSBSNIFFERFMT g_VUsbSnifferFmtUsbMon;
 
 RT_C_DECLS_END
-#endif /** !___VUSBSnifferInternal_h */
+#endif /* !VBOX_INCLUDED_SRC_USB_VUSBSnifferInternal_h */

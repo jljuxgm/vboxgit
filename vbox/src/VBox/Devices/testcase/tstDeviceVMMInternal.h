@@ -1,4 +1,4 @@
-/* $Id: tstDeviceVMMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: tstDeviceVMMInternal.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, definitions of VMM internal types.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___tstDeviceVMMInternal_h
-#define ___tstDeviceVMMInternal_h
+#ifndef VBOX_INCLUDED_SRC_testcase_tstDeviceVMMInternal_h
+#define VBOX_INCLUDED_SRC_testcase_tstDeviceVMMInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -360,5 +360,5 @@ extern const TSTDEVVMMCALLBACKS g_tstDevVmmCallbacks;
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_testcase_tstDeviceVMMInternal_h */
 

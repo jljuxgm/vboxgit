@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HGSMIHost.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), host part.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___HGSMIHost_h
-#define ___HGSMIHost_h
+#ifndef VBOX_INCLUDED_SRC_Graphics_HGSMI_HGSMIHost_h
+#define VBOX_INCLUDED_SRC_Graphics_HGSMI_HGSMIHost_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -109,5 +109,5 @@ int HGSMIHostSaveStateExec(PHGSMIINSTANCE pIns, PSSMHANDLE pSSM);
 int HGSMICompleteGuestCommand(PHGSMIINSTANCE pIns, void RT_UNTRUSTED_VOLATILE_GUEST *pvMem, bool fDoIrq);
 #endif
 
-#endif /* !___HGSMIHost_h*/
+#endif /* !VBOX_INCLUDED_SRC_Graphics_HGSMI_HGSMIHost_h */
 

@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DevHDA.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef DEV_HDA_H
-#define DEV_HDA_H
+#ifndef VBOX_INCLUDED_SRC_Audio_DevHDA_h
+#define VBOX_INCLUDED_SRC_Audio_DevHDA_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -218,5 +218,5 @@ typedef struct HDASTATE
 /** Value for HDASTATE:uAlignmentCheckMagic. */
 #define HDASTATE_ALIGNMENT_CHECK_MAGIC  UINT64_C(0x1298afb75893e059)
 
-#endif /* !DEV_HDA_H */
+#endif /* !VBOX_INCLUDED_SRC_Audio_DevHDA_h */
 

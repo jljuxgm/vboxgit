@@ -1,4 +1,4 @@
-/* $Id: VBoxWineEx.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxWineEx.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VBox extension to Wine D3D
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxWineEx_h__
-#define ___VBoxWineEx_h__
+#ifndef VBOX_INCLUDED_SRC_Graphics_shaderlib_wine_vbox_VBoxWineEx_h
+#define VBOX_INCLUDED_SRC_Graphics_shaderlib_wine_vbox_VBoxWineEx_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -150,4 +150,4 @@ typedef struct VBOXWINEEX_D3DPRESENT_PARAMETERS
 
 #endif /* #ifndef IN_VBOXLIBWINE */
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Graphics_shaderlib_wine_vbox_VBoxWineEx_h */

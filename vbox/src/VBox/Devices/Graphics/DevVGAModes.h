@@ -1,4 +1,4 @@
-/* $Id: DevVGAModes.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DevVGAModes.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, VBE modes.
  *
@@ -18,8 +18,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_Graphics_DevVGAModes_h
-#define VBOX_INCLUDED_Graphics_DevVGAModes_h
+#ifndef VBOX_INCLUDED_SRC_Graphics_DevVGAModes_h
+#define VBOX_INCLUDED_SRC_Graphics_DevVGAModes_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -31,5 +31,5 @@
 
 #define MODE_INFO_SIZE ( sizeof(mode_info_list) / sizeof(ModeInfoListItem) )
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Graphics_DevVGAModes_h */
 

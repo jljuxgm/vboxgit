@@ -1,4 +1,4 @@
-/* $Id: HBDMgmt.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HBDMgmt.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VBox storage devices: Host block device management API.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __HBDMgmt_h
-#define __HBDMgmt_h
+#ifndef VBOX_INCLUDED_SRC_Storage_HBDMgmt_h
+#define VBOX_INCLUDED_SRC_Storage_HBDMgmt_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -91,4 +91,4 @@ DECLHIDDEN(bool) HBDMgrIsBlockDeviceClaimed(HBDMGR hHbdMgr, const char *pszFilen
 
 RT_C_DECLS_END
 
-#endif /* __HBDMgmt_h */
+#endif /* !VBOX_INCLUDED_SRC_Storage_HBDMgmt_h */

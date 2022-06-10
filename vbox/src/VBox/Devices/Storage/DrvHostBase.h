@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvHostBase.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __HostDrvBase_h__
-#define __HostDrvBase_h__
+#ifndef VBOX_INCLUDED_SRC_Storage_DrvHostBase_h
+#define VBOX_INCLUDED_SRC_Storage_DrvHostBase_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -189,4 +189,4 @@ DECLHIDDEN(int) drvHostBaseBufferRelease(PDRVHOSTBASE pThis, PDRVHOSTBASEREQ pRe
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Storage_DrvHostBase_h */

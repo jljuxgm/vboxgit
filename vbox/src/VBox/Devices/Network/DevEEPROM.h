@@ -1,4 +1,4 @@
-/* $Id: DevEEPROM.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DevEEPROM.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * DevEEPROM - Microware-compatible 64x16-bit 93C46 EEPROM Emulation, Header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_Network_DevEEPROM_h
-#define VBOX_INCLUDED_Network_DevEEPROM_h
+#ifndef VBOX_INCLUDED_SRC_Network_DevEEPROM_h
+#define VBOX_INCLUDED_SRC_Network_DevEEPROM_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -138,4 +138,4 @@ struct EEPROM93C46
 #endif /* IN_RING3 */
 };
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Network_DevEEPROM_h */

@@ -1,4 +1,4 @@
-/* $Id: Virtio.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Virtio.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Virtio.h - Virtio Declarations
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBox_Virtio_h
-#define ___VBox_Virtio_h
+#ifndef VBOX_INCLUDED_SRC_VirtIO_Virtio_h
+#define VBOX_INCLUDED_SRC_VirtIO_Virtio_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -331,4 +331,4 @@ DECLINLINE(bool) vqueueIsEmpty(PVPCISTATE pState, PVQUEUE pQueue)
     return (vringReadAvailIndex(pState, &pQueue->VRing) == pQueue->uNextAvailIndex);
 }
 
-#endif /* !___VBox_Virtio_h */
+#endif /* !VBOX_INCLUDED_SRC_VirtIO_Virtio_h */

@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/** $Id: DevE1000Phy.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation, Header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_Network_DevE1000_h
-#define VBOX_INCLUDED_Network_DevE1000_h
+#ifndef VBOX_INCLUDED_SRC_Network_DevE1000Phy_h
+#define VBOX_INCLUDED_SRC_Network_DevE1000Phy_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -135,5 +135,5 @@ namespace Phy
     int      loadState(PSSMHANDLE pSSMHandle, PPHY pPhy);
 }
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Network_DevE1000Phy_h */
 

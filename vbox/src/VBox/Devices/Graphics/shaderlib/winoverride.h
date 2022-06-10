@@ -1,4 +1,4 @@
-/* $Id: winoverride.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: winoverride.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * DevVMWare/Shaderlib - Wine Function Portability Overrides
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __WINOVERRIDE_H__
-#define __WINOVERRIDE_H__
+#ifndef VBOX_INCLUDED_SRC_Graphics_shaderlib_winoverride_h
+#define VBOX_INCLUDED_SRC_Graphics_shaderlib_winoverride_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -32,5 +32,5 @@ BOOL        WINAPI VBoxHeapFree(HANDLE hHeap, DWORD heaptype, LPVOID ptr);
 LPVOID      WINAPI VBoxHeapReAlloc(HANDLE hHeap,DWORD heaptype, LPVOID ptr, SIZE_T size);
 void VBoxDebugBreak(void);
 
-#endif /* !__WINOVERRIDE_H__ */
+#endif /* !VBOX_INCLUDED_SRC_Graphics_shaderlib_winoverride_h */
 

@@ -1,4 +1,4 @@
-/* $Id: PS2Dev.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: PS2Dev.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * PS/2 devices - Internal header file.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef PS2DEV_H
-#define PS2DEV_H
+#ifndef VBOX_INCLUDED_SRC_Input_PS2Dev_h
+#define VBOX_INCLUDED_SRC_Input_PS2Dev_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -91,4 +91,4 @@ typedef enum
 
 int32_t XlateAT2PC(int32_t state, uint8_t scanIn, uint8_t *pScanOut);
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Input_PS2Dev_h */

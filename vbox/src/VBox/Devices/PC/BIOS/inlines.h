@@ -1,4 +1,4 @@
-/* $Id: inlines.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: inlines.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Inline routines for Watcom C.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_BIOS_inlines_h
-#define VBOX_INCLUDED_BIOS_inlines_h
+#ifndef VBOX_INCLUDED_SRC_PC_BIOS_inlines_h
+#define VBOX_INCLUDED_SRC_PC_BIOS_inlines_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -243,5 +243,5 @@ void cpuid( uint32_t __far cpu_id[4], uint32_t leaf );
 
 #endif
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_PC_BIOS_inlines_h */
 

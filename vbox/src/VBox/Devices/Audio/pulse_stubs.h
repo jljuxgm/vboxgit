@@ -1,4 +1,4 @@
-/* $Id: pulse_stubs.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: pulse_stubs.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Stubs for libpulse.
  */
@@ -15,11 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef AUDIO_PULSE_STUBS_H
-#define AUDIO_PULSE_STUBS_H
+#ifndef VBOX_INCLUDED_SRC_Audio_pulse_stubs_h
+#define VBOX_INCLUDED_SRC_Audio_pulse_stubs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
 extern int audioLoadPulseLib(void);
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Audio_pulse_stubs_h */
 

@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Audio Mixing bufer convert audio samples to/from different rates / formats.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef AUDIO_MIXBUF_H
-#define AUDIO_MIXBUF_H
+#ifndef VBOX_INCLUDED_SRC_Audio_AudioMixBuffer_h
+#define VBOX_INCLUDED_SRC_Audio_AudioMixBuffer_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -89,5 +89,5 @@ void AudioMixBufDbgPrint(PPDMAUDIOMIXBUF pMixBuf);
 void AudioMixBufDbgPrintChain(PPDMAUDIOMIXBUF pMixBuf);
 #endif
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Audio_AudioMixBuffer_h */
 

@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VMMDevHGCM.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VBoxDev - HGCM - Host-Guest Communication Manager, internal header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VMMDev_VMMDevHGCM_h
-#define ___VMMDev_VMMDevHGCM_h
+#ifndef VBOX_INCLUDED_SRC_VMMDev_VMMDevHGCM_h
+#define VBOX_INCLUDED_SRC_VMMDev_VMMDevHGCM_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -45,5 +45,5 @@ void vmmdevHGCMDestroy(PVMMDEV pThis);
 int  vmmdevHGCMInit(PVMMDEV pThis);
 RT_C_DECLS_END
 
-#endif /* !___VMMDev_VMMDevHGCM_h */
+#endif /* !VBOX_INCLUDED_SRC_VMMDev_VMMDevHGCM_h */
 

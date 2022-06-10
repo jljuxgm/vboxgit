@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvAudio.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef DRV_AUDIO_H
-#define DRV_AUDIO_H
+#ifndef VBOX_INCLUDED_SRC_Audio_DrvAudio_h
+#define VBOX_INCLUDED_SRC_Audio_DrvAudio_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -276,5 +276,5 @@ int DrvAudioHlpFileWrite(PPDMAUDIOFILE pFile, const void *pvBuf, size_t cbBuf, u
 
 #define AUDIO_MAKE_FOURCC(c0, c1, c2, c3) RT_H2LE_U32_C(RT_MAKE_U32_FROM_U8(c0, c1, c2, c3))
 
-#endif /* !DRV_AUDIO_H */
+#endif /* !VBOX_INCLUDED_SRC_Audio_DrvAudio_h */
 

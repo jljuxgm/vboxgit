@@ -1,4 +1,4 @@
-/* $Id: ATAPIPassthrough.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ATAPIPassthrough.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VBox storage devices: ATAPI passthrough helpers (common code for DevATA and DevAHCI).
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __ATAPIPassthrough_h
-#define __ATAPIPassthrough_h
+#ifndef VBOX_INCLUDED_SRC_Storage_ATAPIPassthrough_h
+#define VBOX_INCLUDED_SRC_Storage_ATAPIPassthrough_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -97,4 +97,4 @@ DECLHIDDEN(bool) ATAPIPassthroughParseCdb(const uint8_t *pbCdb, size_t cbCdb, si
 
 RT_C_DECLS_END
 
-#endif /* __ATAPIPassthrough_h */
+#endif /* !VBOX_INCLUDED_SRC_Storage_ATAPIPassthrough_h */

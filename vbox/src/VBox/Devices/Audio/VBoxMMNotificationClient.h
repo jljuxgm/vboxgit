@@ -1,4 +1,4 @@
-/* $Id: VBoxMMNotificationClient.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMMNotificationClient.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VBoxMMNotificationClient.h - Implementation of the IMMNotificationClient interface
  *                              to detect audio endpoint changes.
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBOX_MMNOTIFICATIONCLIENT_H___
-#define ___VBOX_MMNOTIFICATIONCLIENT_H___
+#ifndef VBOX_INCLUDED_SRC_Audio_VBoxMMNotificationClient_h
+#define VBOX_INCLUDED_SRC_Audio_VBoxMMNotificationClient_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -87,5 +87,5 @@ private:
     IFACEMETHODIMP_(ULONG) AddRef();
     /** @} */
 };
-#endif /* !___VBOX_MMNOTIFICATIONCLIENT_H___ */
+#endif /* !VBOX_INCLUDED_SRC_Audio_VBoxMMNotificationClient_h */
 

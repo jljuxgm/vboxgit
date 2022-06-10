@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDbgGl.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VBox wine & ogl debugging stuff
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxDbgGl_h__
-#define ___VBoxDbgGl_h__
+#ifndef VBOX_INCLUDED_SRC_Graphics_shaderlib_wine_vbox_VBoxDbgGl_h
+#define VBOX_INCLUDED_SRC_Graphics_shaderlib_wine_vbox_VBoxDbgGl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -42,4 +42,4 @@ void dbglCheckTexUnits(const struct wined3d_gl_info *gl_info, const struct IWine
 extern DWORD g_VBoxDbgGlFCheckDrawPrim;
 extern DWORD g_VBoxDbgGlFBreakDrawPrimIfCanNotMatch;
 
-#endif /* #ifndef ___VBoxDbgGl_h__ */
+#endif /* !VBOX_INCLUDED_SRC_Graphics_shaderlib_wine_vbox_VBoxDbgGl_h */

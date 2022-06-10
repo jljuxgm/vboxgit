@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: IOBufMgmt.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __IOBufMgmt_h
-#define __IOBufMgmt_h
+#ifndef VBOX_INCLUDED_SRC_Storage_IOBufMgmt_h
+#define VBOX_INCLUDED_SRC_Storage_IOBufMgmt_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -108,4 +108,4 @@ DECLHIDDEN(void) IOBUFMgrFreeBuf(PIOBUFDESC pIoBufDesc);
 
 RT_C_DECLS_END
 
-#endif /* __HBDMgmt_h */
+#endif /* !VBOX_INCLUDED_SRC_Storage_IOBufMgmt_h */

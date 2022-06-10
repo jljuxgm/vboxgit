@@ -1,4 +1,4 @@
-/* $Id: VUSBSniffer.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VUSBSniffer.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Virtual USB - Sniffer facility.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VUSBSniffer_h
-#define ___VUSBSniffer_h
+#ifndef VBOX_INCLUDED_SRC_USB_VUSBSniffer_h
+#define VBOX_INCLUDED_SRC_USB_VUSBSniffer_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -97,5 +97,5 @@ DECLHIDDEN(int) VUSBSnifferRecordEvent(VUSBSNIFFER hSniffer, PVUSBURB pUrb, VUSB
 
 
 RT_C_DECLS_END
-#endif
+#endif /* !VBOX_INCLUDED_SRC_USB_VUSBSniffer_h */
 

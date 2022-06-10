@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -14,8 +14,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___DevVGA_SVGA_h___
-#define ___DevVGA_SVGA_h___
+#ifndef VBOX_INCLUDED_SRC_Graphics_DevVGA_SVGA_h
+#define VBOX_INCLUDED_SRC_Graphics_DevVGA_SVGA_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -389,5 +389,5 @@ void vmsvgaClipBox(const SVGA3dSize *pSize,
 void vmsvgaClipRect(SVGASignedRect const *pBound,
                     SVGASignedRect *pRect);
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Graphics_DevVGA_SVGA_h */
 

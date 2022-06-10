@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DevEFI.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -28,8 +28,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___EFI_VBoxEFI_h
-#define ___EFI_VBoxEFI_h
+#ifndef VBOX_INCLUDED_SRC_EFI_DevEFI_h
+#define VBOX_INCLUDED_SRC_EFI_DevEFI_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -253,4 +253,4 @@ typedef enum EFIDBGPOINT
 
 /** @} */
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_EFI_DevEFI_h */

@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VSCSIInternal.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VSCSIInternal_h
-#define ___VSCSIInternal_h
+#ifndef VBOX_INCLUDED_SRC_Storage_VSCSI_VSCSIInternal_h
+#define VBOX_INCLUDED_SRC_Storage_VSCSI_VSCSIInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -689,5 +689,5 @@ DECLINLINE(int) vscsiLunReqSenseErrorInfoSet(PVSCSILUNINT pVScsiLun, PVSCSIREQIN
     return vscsiReqSenseErrorInfoSet(&pVScsiLun->pVScsiDevice->VScsiSense, pVScsiReq, uSCSISenseKey, uSCSIASC, uSCSIASCQ, uInfo);
 }
 
-#endif /* ___VSCSIInternal_h */
+#endif /* !VBOX_INCLUDED_SRC_Storage_VSCSI_VSCSIInternal_h */
 

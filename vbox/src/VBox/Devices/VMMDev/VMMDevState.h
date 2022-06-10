@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VMMDevState.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VMMDev_VMMDevState_h
-#define ___VMMDev_VMMDevState_h
+#ifndef VBOX_INCLUDED_SRC_VMMDev_VMMDevState_h
+#define VBOX_INCLUDED_SRC_VMMDev_VMMDevState_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -452,5 +452,5 @@ void VMMDevCtlSetGuestFilterMask(VMMDEV *pVMMDevState, uint32_t u32OrMask, uint3
  *  This doesn't have the config part. */
 #define VMMDEV_SAVED_STATE_VERSION_VBOX_30                      11
 
-#endif /* !___VMMDev_VMMDevState_h */
+#endif /* !VBOX_INCLUDED_SRC_VMMDev_VMMDevState_h */
 

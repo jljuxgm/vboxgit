@@ -1,4 +1,4 @@
-/* $Id: swab.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: swab.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -26,8 +26,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef _VBOX_LINUX_SWAB_H
-#define _VBOX_LINUX_SWAB_H
+#ifndef VBOX_INCLUDED_SRC_Storage_swab_h
+#define VBOX_INCLUDED_SRC_Storage_swab_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -61,4 +61,4 @@ static __inline__ __u64 __swab64p(const __u64 *px)
            | ((x >> 40) & 0xff00) | ((x >> 56) & 0xff);
 }
 
-#endif /* _VBOX_LINUX_SWAB_H */
+#endif /* !VBOX_INCLUDED_SRC_Storage_swab_h */

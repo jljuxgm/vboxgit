@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HDAStream.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef HDA_STREAM_H
-#define HDA_STREAM_H
+#ifndef VBOX_INCLUDED_SRC_Audio_HDAStream_h
+#define VBOX_INCLUDED_SRC_Audio_HDAStream_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -305,5 +305,5 @@ void              hdaR3StreamAsyncIOEnable(PHDASTREAM pStream, bool fEnable);
 /** @} */
 
 #endif /* IN_RING3 */
-#endif /* !HDA_STREAM_H */
+#endif /* !VBOX_INCLUDED_SRC_Audio_HDAStream_h */
 

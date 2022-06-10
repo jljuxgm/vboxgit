@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HDAStreamPeriod.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.h - Stream period functions for HD Audio.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef HDA_STREAMPERIOD_H
-#define HDA_STREAMPERIOD_H
+#ifndef VBOX_INCLUDED_SRC_Audio_HDAStreamPeriod_h
+#define VBOX_INCLUDED_SRC_Audio_HDAStreamPeriod_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -110,5 +110,5 @@ void     hdaR3StreamPeriodInc(PHDASTREAMPERIOD pPeriod, uint32_t framesInc);
 bool     hdaR3StreamPeriodIsComplete(PHDASTREAMPERIOD pPeriod);
 #endif /* IN_RING3 */
 
-#endif /* !HDA_STREAMPERIOD_H */
+#endif /* !VBOX_INCLUDED_SRC_Audio_HDAStreamPeriod_h */
 

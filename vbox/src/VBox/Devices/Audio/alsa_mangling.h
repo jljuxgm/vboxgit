@@ -1,4 +1,4 @@
-/* $Id: alsa_mangling.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: alsa_mangling.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Mangle libasound symbols.
  *
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef AUDIO_ALSA_MANGLING_H
-#define AUDIO_ALSA_MANGLING_H
+#ifndef VBOX_INCLUDED_SRC_Audio_alsa_mangling_h
+#define VBOX_INCLUDED_SRC_Audio_alsa_mangling_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -69,4 +69,4 @@
 #define snd_pcm_sw_params_set_start_threshold   ALSA_MANGLER(snd_pcm_sw_params_set_start_threshold)
 #define snd_pcm_sw_params_sizeof                ALSA_MANGLER(snd_pcm_sw_params_sizeof)
 
-#endif /* !AUDIO_ALSA_MANGLING_H */
+#endif /* !VBOX_INCLUDED_SRC_Audio_alsa_mangling_h */

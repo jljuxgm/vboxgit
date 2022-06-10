@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: AudioMixer.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -18,8 +18,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef AUDIO_MIXER_H
-#define AUDIO_MIXER_H
+#ifndef VBOX_INCLUDED_SRC_Audio_AudioMixer_h
+#define VBOX_INCLUDED_SRC_Audio_AudioMixer_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -264,5 +264,5 @@ void AudioMixerStreamDestroy(PAUDMIXSTREAM pStream);
 bool AudioMixerStreamIsActive(PAUDMIXSTREAM pStream);
 bool AudioMixerStreamIsValid(PAUDMIXSTREAM pStream);
 
-#endif /* !AUDIO_MIXER_H */
+#endif /* !VBOX_INCLUDED_SRC_Audio_AudioMixer_h */
 

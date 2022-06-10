@@ -1,4 +1,4 @@
-/* $Id: VSCSIVpdPages.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VSCSIVpdPages.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Definitions for VPD pages.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VSCSIVpdPages_h
-#define ___VSCSIVpdPages_h
+#ifndef VBOX_INCLUDED_SRC_Storage_VSCSI_VSCSIVpdPages_h
+#define VBOX_INCLUDED_SRC_Storage_VSCSI_VSCSIVpdPages_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -198,5 +198,5 @@ AssertCompileSize(VSCSIVPDPAGEBLOCKPROV, VSCSI_VPD_BLOCK_PROV_SIZE);
 typedef VSCSIVPDPAGEBLOCKPROV *PVSCSIVPDPAGEBLOCKPROV;
 typedef const VSCSIVPDPAGEBLOCKPROV *PCVSCSIVPDPAGEBLOCKPROVS;
 
-#endif /* ___VSCSIVpdPages_h */
+#endif /* !VBOX_INCLUDED_SRC_Storage_VSCSI_VSCSIVpdPages_h */
 

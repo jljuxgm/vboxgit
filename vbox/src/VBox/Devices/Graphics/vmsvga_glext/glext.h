@@ -40,7 +40,7 @@ extern "C" {
 */
 
 /* Header file version number, required by OpenGL ABI for Linux */
-/* glext.h last updated $Date: 2018-12-30 13:39:55 +0800 (Sun, 30 Dec 2018) $ */
+/* glext.h last updated $Date: 2019-01-01 12:23:20 +0800 (Tue, 01 Jan 2019) $ */
 /* Current version at http://www.opengl.org/registry/ */
 #define GL_GLEXT_VERSION 87
 /* Function declaration macros - to move into glplatform.h */
@@ -13147,4 +13147,4 @@ typedef void (APIENTRYP PFNGLDRAWTEXTURENVPROC) (GLuint texture, GLuint sampler,
 }
 #endif
 
-#endif
+#endif /* !__glext_h_ */

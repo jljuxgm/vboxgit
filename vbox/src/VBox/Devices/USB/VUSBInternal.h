@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VUSBInternal.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -20,8 +20,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VUSBInternal_h
-#define ___VUSBInternal_h
+#ifndef VBOX_INCLUDED_SRC_USB_VUSBInternal_h
+#define VBOX_INCLUDED_SRC_USB_VUSBInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -743,5 +743,5 @@ extern const VUSBDESCENDPOINTEX g_Endpoint0;
 extern const VUSBDESCCONFIGEX g_Config0;
 
 RT_C_DECLS_END
-#endif
+#endif /* !VBOX_INCLUDED_SRC_USB_VUSBInternal_h */
 

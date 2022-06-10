@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DevPciInternal.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___Bus_DevPciInternal_h___
-#define ___Bus_DevPciInternal_h___
+#ifndef VBOX_INCLUDED_SRC_Bus_DevPciInternal_h
+#define VBOX_INCLUDED_SRC_Bus_DevPciInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -236,5 +236,5 @@ DECLINLINE(void) devpciR3SetDWord(PPDMPCIDEV pPciDev, int32_t iRegister, uint32_
 
 #endif /* IN_RING3 */
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Bus_DevPciInternal_h */
 

@@ -1,4 +1,4 @@
-/* $Id: PciInline.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: PciInline.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * PCI - The PCI Controller And Devices, inline device helpers.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___Bus_PciInline_h
-#define ___Bus_PciInline_h
+#ifndef VBOX_INCLUDED_SRC_Bus_PciInline_h
+#define VBOX_INCLUDED_SRC_Bus_PciInline_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -101,5 +101,5 @@ DECLINLINE(bool) pciDevIsPassthrough(PPDMPCIDEV pDev)
     return (pDev->Int.s.fFlags & PCIDEV_FLAG_PASSTHROUGH) != 0;
 }
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Bus_PciInline_h */
 

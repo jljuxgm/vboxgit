@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDD.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___build_VBoxDD_h
-#define ___build_VBoxDD_h
+#ifndef VBOX_INCLUDED_SRC_build_VBoxDD_h
+#define VBOX_INCLUDED_SRC_build_VBoxDD_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -194,5 +194,5 @@ int acpiCleanupSsdt(PPDMDEVINS pDevIns, void *pvPtr);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_build_VBoxDD_h */
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxSCSI.h 76565 2019-01-01 04:23:20Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -62,8 +62,8 @@
  * This part has no R0 or RC components.
  */
 
-#ifndef ___Storage_VBoxSCSI_h
-#define ___Storage_VBoxSCSI_h
+#ifndef VBOX_INCLUDED_SRC_Storage_VBoxSCSI_h
+#define VBOX_INCLUDED_SRC_Storage_VBoxSCSI_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -154,5 +154,5 @@ DECLHIDDEN(int) vboxscsiR3SaveExec(PVBOXSCSI pVBoxSCSI, PSSMHANDLE pSSM);
 RT_C_DECLS_END
 #endif /* IN_RING3 */
 
-#endif /* !___Storage_VBoxSCSI_h */
+#endif /* !VBOX_INCLUDED_SRC_Storage_VBoxSCSI_h */
 
