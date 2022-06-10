@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 73548 2018-08-07 15:18:17Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 73562 2018-08-08 13:03:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2916,7 +2916,7 @@ HRESULT ExtPackManager::i_queryObjects(const com::Utf8Str &aObjUuid, std::vector
 
         for (ExtPackList::iterator it = m->llInstalledExtPacks.begin();
              it != m->llInstalledExtPacks.end();
-             /* advancing below */)
+             ++it)
         {
             ComPtr<IUnknown> ptrIf;
             HRESULT hrc2 = (*it)->queryObject(aObjUuid, ptrIf);
