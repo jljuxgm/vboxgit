@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 76772 2019-01-11 12:54:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -104,17 +104,17 @@ void UIVirtualBoxManagerWidget::setToolsType(UIToolType enmType)
 
 UIToolType UIVirtualBoxManagerWidget::toolsType() const
 {
-    return m_pPaneTools->toolsType();
+    return m_pPaneTools ? m_pPaneTools->toolsType() : UIToolType_Invalid;
 }
 
 UIToolType UIVirtualBoxManagerWidget::currentGlobalTool() const
 {
-    return m_pPaneToolsGlobal->currentTool();
+    return m_pPaneToolsGlobal ? m_pPaneToolsGlobal->currentTool() : UIToolType_Invalid;
 }
 
 UIToolType UIVirtualBoxManagerWidget::currentMachineTool() const
 {
-    return m_pPaneToolsMachine->currentTool();
+    return m_pPaneToolsMachine ? m_pPaneToolsMachine->currentTool() : UIToolType_Invalid;
 }
 
 bool UIVirtualBoxManagerWidget::isGlobalToolOpened(UIToolType enmType) const
