@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 77952 2019-03-29 15:20:19Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 77954 2019-03-29 17:13:58Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -1479,13 +1479,15 @@ DECLINLINE(void) vmsvgaUpdatePitch(PVGASTATE pThis)
     uint32_t uRegPitchLock  = pThis->svga.u32PitchLock;
 
     /* Sanitize values. */
-    uFifoPitchLock = (uint16_t)uFifoPitchLock;
-    uRegPitchLock  = (uint16_t)uFifoPitchLock;
+    if ((uFifoPitchLock < 200) || (uFifoPitchLock > 32768))
+        uFifoPitchLock = 0;
+    if ((uRegPitchLock  < 200) || (uRegPitchLock  > 32768))
+        uRegPitchLock = 0;
 
     /* Prefer the register value to the FIFO value.*/
-    if (pThis->svga.u32PitchLock)
+    if (uRegPitchLock)
         pThis->svga.cbScanline = pThis->svga.u32PitchLock;
-    if (uFifoPitchLock)
+    else if (uFifoPitchLock)
         pThis->svga.cbScanline = uFifoPitchLock;
     else
         pThis->svga.cbScanline = pThis->svga.uWidth * (RT_ALIGN(pThis->svga.uBpp, 8) / 8);
