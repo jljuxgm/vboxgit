@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 78326 2019-04-26 14:45:38Z vboxsync $ */
+/* $Id: vbsf.h 78327 2019-04-26 14:46:29Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
@@ -228,18 +228,13 @@ NTSTATUS vbsfNtRemove(IN PRX_CONTEXT RxContext);
 
 void     vbsfNtCopyInfoToLegacy(PMRX_VBOX_FOBX pVBoxFobx, PCSHFLFSOBJINFO pInfo);
 
-
-
 NTSTATUS vbsfNtVBoxStatusToNt(int vrc);
-
 PVOID    vbsfNtAllocNonPagedMem(ULONG ulSize);
 void     vbsfNtFreeNonPagedMem(PVOID lpMem);
-
+NTSTATUS vbsfNtShflStringFromUnicodeAlloc(PSHFLSTRING *ppShflString, const WCHAR *pwc, uint16_t cb);
 #if defined(DEBUG) || defined(LOG_ENABLED)
 const char *vbsfNtMajorFunctionName(UCHAR MajorFunction, LONG MinorFunction);
 #endif
-
-NTSTATUS vbsfNtShflStringFromUnicodeAlloc(PSHFLSTRING *ppShflString, const WCHAR *pwc, uint16_t cb);
 
 /**
  * Converts VBox (IPRT) file mode to NT file attributes.
