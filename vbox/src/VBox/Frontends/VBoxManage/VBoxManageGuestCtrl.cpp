@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 72006 2018-04-24 15:31:19Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 72958 2018-07-07 21:27:53Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -39,7 +39,6 @@
 #include <iprt/asm.h>
 #include <iprt/dir.h>
 #include <iprt/file.h>
-#include <iprt/isofs.h>
 #include <iprt/getopt.h>
 #include <iprt/list.h>
 #include <iprt/path.h>
