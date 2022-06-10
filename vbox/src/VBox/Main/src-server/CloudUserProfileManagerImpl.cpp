@@ -1,4 +1,4 @@
-/* $Id: CloudUserProfileManagerImpl.cpp 73174 2018-07-17 11:52:00Z vboxsync $ */
+/* $Id: CloudUserProfileManagerImpl.cpp 73177 2018-07-17 12:19:50Z vboxsync $ */
 /** @file
  * ICloudUserProfileManager  COM class implementations.
  */
@@ -128,24 +128,29 @@ HRESULT CloudUserProfileManager::getProfilesByProvider(CloudProviderId_T aProvid
                 if (SUCCEEDED(hrc))
                 {
                     char szHomeDir[RTPATH_MAX];
-                    RTPathUserHome(szHomeDir, sizeof(szHomeDir));
-                    Utf8Str strConfigPath(szHomeDir);
-                    strConfigPath.append(RTPATH_SLASH_STR)
-                                 .append(".oci")
-                                 .append(RTPATH_SLASH_STR)
-                                 .append("config");
-                    LogRel(("config = %s\n", strConfigPath.c_str()));
-                    hrc = ptrOCIUserProfileList->readProfiles(strConfigPath);
-                    if (SUCCEEDED(hrc))
+                    int vrc = RTPathUserHome(szHomeDir, sizeof(szHomeDir));
+                    if (RT_SUCCESS(vrc))
                     {
-                        LogRel(("Reading profiles from %s has been done\n", strConfigPath.c_str()));
+                        Utf8Str strConfigPath(szHomeDir);
+                        strConfigPath.append(RTPATH_SLASH_STR)
+                                     .append(".oci")
+                                     .append(RTPATH_SLASH_STR)
+                                     .append("config");
+                        LogRel(("config = %s\n", strConfigPath.c_str()));
+                        hrc = ptrOCIUserProfileList->readProfiles(strConfigPath);
+                        if (SUCCEEDED(hrc))
+                        {
+                            LogRel(("Reading profiles from %s has been done\n", strConfigPath.c_str()));
+                        }
+                        else
+                        {
+                            LogRel(("Reading profiles from %s hasn't been done\n", strConfigPath.c_str()));
+                        }
+                        ptrCloudUserProfileList = ptrOCIUserProfileList;
+                        hrc = ptrCloudUserProfileList.queryInterfaceTo(aProfiles.asOutParam());
                     }
                     else
-                    {
-                        LogRel(("Reading profiles from %s hasn't been done\n", strConfigPath.c_str()));
-                    }
-                    ptrCloudUserProfileList = ptrOCIUserProfileList;
-                    hrc = ptrCloudUserProfileList.queryInterfaceTo(aProfiles.asOutParam());
+                        hrc = setErrorVrc(vrc);
                 }
             }
             break;
