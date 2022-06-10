@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 73540 2018-08-07 11:43:17Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 73541 2018-08-07 11:45:00Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -570,7 +570,7 @@ static int avRecControlStreamOut(PDRVAUDIOVIDEOREC pThis,
 {
     RT_NOREF(pThis, pStreamAV);
 
-    int rc;
+    int rc = VINF_SUCCESS;
 
     switch (enmStreamCmd)
     {
@@ -578,7 +578,6 @@ static int avRecControlStreamOut(PDRVAUDIOVIDEOREC pThis,
         case PDMAUDIOSTREAMCMD_DISABLE:
         case PDMAUDIOSTREAMCMD_RESUME:
         case PDMAUDIOSTREAMCMD_PAUSE:
-            rc = VINF_SUCCESS;
             break;
 
         default:
