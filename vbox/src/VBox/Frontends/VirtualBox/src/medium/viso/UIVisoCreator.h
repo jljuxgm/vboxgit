@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 76737 2019-01-09 13:40:57Z vboxsync $ */
+/* $Id: UIVisoCreator.h 76747 2019-01-09 16:42:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -68,8 +68,9 @@ private slots:
 
     void sltHandleAddObjectsToViso(QStringList pathList);
     void sltHandleOptionsAction();
+    void sltHandleConfigurationAction();
 
-private:
+ private:
 
     void prepareObjects();
     void prepareConnections();
@@ -86,9 +87,10 @@ private:
     UIVisoContentBrowser *m_pVisoBrowser;
     QIDialogButtonBox    *m_pButtonBox;
     UIToolBar            *m_pToolBar;
+    QAction              *m_pActionConfiguration;
     QAction              *m_pActionOptions;
-    VisoOptions          m_visoOptions;
-    BrowserOptions       m_browserOptions;
+    VisoOptions           m_visoOptions;
+    BrowserOptions        m_browserOptions;
 
 };
 
