@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 75365 2018-11-09 13:55:30Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 75819 2018-11-29 16:16:40Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1209,7 +1209,10 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            --netmask <network_mask>\n"
                      "                            --lowerip <lower_ip>\n"
                      "                            --upperip <upper_ip>]\n"
-                     "                            [--enable | --disable]\n\n"
+                     "                            [--enable | --disable]\n"
+                     "                            [--options [--vm <name> --slot <number>]\n"
+                     "                             --id <number> [--value <string> | --remove]]\n"
+                     "                             (multiple options allowed after --options)\n\n"
                            "%s dhcpserver %s      remove --netname <network_name> |\n"
 #if defined(VBOX_WITH_NETFLT)
                      "                                   --ifname <hostonly_if_name>\n"
