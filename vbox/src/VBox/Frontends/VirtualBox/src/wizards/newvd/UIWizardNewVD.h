@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.h 72021 2018-04-25 15:18:49Z vboxsync $ */
+/* $Id: UIWizardNewVD.h 73592 2018-08-09 16:05:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class declaration.
  */
@@ -62,6 +62,9 @@ protected:
 
     /* Creates virtual-disk: */
     bool createVirtualDisk();
+
+    /* Checks if the medium file is bigger than what is allowed in FAT file systems. */
+    bool checkFATSizeLimitation();
 
     /* Who will be able to create virtual-disk: */
     friend class UIWizardNewVDPageBasic3;
