@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 77703 2019-03-14 16:47:54Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 78343 2019-04-29 07:31:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1391,7 +1391,9 @@ void Display::i_UpdateDeviceCursorCapabilities(void)
                 fMoveCursor = false;
         }
     }
-    mpDrv->pUpPort->pfnReportHostCursorCapabilities(mpDrv->pUpPort, fRenderCursor, fMoveCursor);
+
+    if (mpDrv)
+        mpDrv->pUpPort->pfnReportHostCursorCapabilities(mpDrv->pUpPort, fRenderCursor, fMoveCursor);
 }
 
 HRESULT Display::i_reportHostCursorCapabilities(uint32_t fCapabilitiesAdded, uint32_t fCapabilitiesRemoved)
@@ -2872,6 +2874,8 @@ HRESULT Display::querySourceBitmap(ULONG aScreenId,
     Console::SafeVMPtr ptrVM(mParent);
     if (!ptrVM.isOk())
         return ptrVM.rc();
+
+    CHECK_CONSOLE_DRV(mpDrv);
 
     bool fSetRenderVRAM = false;
     bool fInvalidate = false;
