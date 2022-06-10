@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 76757 2019-01-10 16:16:12Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 76776 2019-01-11 13:21:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -73,9 +73,9 @@ enum UIActionIndexST
     UIActionIndexST_M_Group_M_Close_S_Shutdown,
     UIActionIndexST_M_Group_M_Close_S_PowerOff,
     UIActionIndexST_M_Group_M_Tools,
-    UIActionIndexST_M_Group_M_Tools_S_Details,
-    UIActionIndexST_M_Group_M_Tools_S_Snapshots,
-    UIActionIndexST_M_Group_M_Tools_S_Logs,
+    UIActionIndexST_M_Group_M_Tools_T_Details,
+    UIActionIndexST_M_Group_M_Tools_T_Snapshots,
+    UIActionIndexST_M_Group_M_Tools_T_Logs,
     UIActionIndexST_M_Group_S_Discard,
     UIActionIndexST_M_Group_S_ShowLogDialog,
     UIActionIndexST_M_Group_S_Refresh,
@@ -104,9 +104,9 @@ enum UIActionIndexST
     UIActionIndexST_M_Machine_M_Close_S_Shutdown,
     UIActionIndexST_M_Machine_M_Close_S_PowerOff,
     UIActionIndexST_M_Machine_M_Tools,
-    UIActionIndexST_M_Machine_M_Tools_S_Details,
-    UIActionIndexST_M_Machine_M_Tools_S_Snapshots,
-    UIActionIndexST_M_Machine_M_Tools_S_Logs,
+    UIActionIndexST_M_Machine_M_Tools_T_Details,
+    UIActionIndexST_M_Machine_M_Tools_T_Snapshots,
+    UIActionIndexST_M_Machine_M_Tools_T_Logs,
     UIActionIndexST_M_Machine_S_Discard,
     UIActionIndexST_M_Machine_S_ShowLogDialog,
     UIActionIndexST_M_Machine_S_Refresh,
