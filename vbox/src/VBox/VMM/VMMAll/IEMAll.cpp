@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 77380 2019-02-20 13:40:22Z vboxsync $ */
+/* $Id: IEMAll.cpp 77381 2019-02-20 13:41:14Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -14442,7 +14442,7 @@ VMMDECL(VBOXSTRICTRC) IEMExecLots(PVMCPU pVCpu, uint32_t cMaxInstructions, uint3
                         {
                             if (cMaxInstructions-- > 0)
                             {
-                                /* Poll timers every 2048 instructions. */
+                                /* Poll timers every now an then according to the caller's specs. */
                                 if (   (cMaxInstructions & cPollRate) != 0
                                     || !TMTimerPollBool(pVM, pVCpu))
                                 {
