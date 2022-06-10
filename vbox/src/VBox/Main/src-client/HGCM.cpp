@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 72064 2018-04-30 06:15:31Z vboxsync $ */
+/* $Id: HGCM.cpp 75385 2018-11-10 13:22:03Z vboxsync $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -27,7 +27,6 @@
 #include <VBox/sup.h>
 
 #include <iprt/alloc.h>
-#include <iprt/alloca.h>
 #include <iprt/avl.h>
 #include <iprt/critsect.h>
 #include <iprt/asm.h>
@@ -1254,18 +1253,17 @@ void HGCMService::ReleaseService(void)
         AssertRCReturn(rc, rc);
         AssertReturn(u32 <= VBOX_HGCM_SVC_NAME_MAX_BYTES, VERR_SSM_UNEXPECTED_DATA);
 
-        char *pszServiceName = (char *)alloca(u32);
-
         /* Get the service name. */
-        rc = SSMR3GetStrZ(pSSM, pszServiceName, u32);
+        char szServiceName[VBOX_HGCM_SVC_NAME_MAX_BYTES];
+        rc = SSMR3GetStrZ(pSSM, szServiceName, u32);
         AssertRCReturn(rc, rc);
 
-        LogRel(("HGCM: Restoring [%s]\n", pszServiceName));
+        LogRel(("HGCM: Restoring [%s]\n", szServiceName));
 
         /* Resolve the service instance. */
         HGCMService *pSvc;
-        rc = ResolveService(&pSvc, pszServiceName);
-        AssertLogRelMsgReturn(pSvc, ("rc=%Rrc, %s\n", rc, pszServiceName), VERR_SSM_UNEXPECTED_DATA);
+        rc = ResolveService(&pSvc, szServiceName);
+        AssertLogRelMsgReturn(pSvc, ("rc=%Rrc, %s\n", rc, szServiceName), VERR_SSM_UNEXPECTED_DATA);
 
         /* Get the number of clients. */
         uint32_t cClients;
@@ -1294,7 +1292,7 @@ void HGCMService::ReleaseService(void)
             if (RT_FAILURE(rc))
             {
                 pSvc->ReleaseService();
-                AssertLogRelMsgFailed(("rc=%Rrc %s\n", rc, pszServiceName));
+                AssertLogRelMsgFailed(("rc=%Rrc %s\n", rc, szServiceName));
                 return rc;
             }
 
@@ -1303,7 +1301,7 @@ void HGCMService::ReleaseService(void)
             if (RT_FAILURE(rc))
             {
                 pSvc->ReleaseService();
-                AssertLogRelMsgFailed(("rc=%Rrc %s\n", rc, pszServiceName));
+                AssertLogRelMsgFailed(("rc=%Rrc %s\n", rc, szServiceName));
                 return rc;
             }
         }
