@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 75532 2018-11-17 00:15:54Z vboxsync $ */
+/* $Id: VMMDevState.h 75537 2018-11-17 01:26:43Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -28,6 +28,8 @@
 #endif
 
 #include <iprt/list.h>
+#include <iprt/memcache.h>
+
 
 #define VMMDEV_WITH_ALT_TIMESYNC
 
@@ -282,15 +284,13 @@ typedef struct VMMDevState
     uint32_t u32HGCMEnabled;
     /** Saved state version of restored commands. */
     uint32_t u32SSMVersion;
-# if HC_ARCH_BITS == 32
-    /** Alignment padding. */
-    uint32_t u32Alignment7;
-# endif
+    RTMEMCACHE  hHgcmCmdCache;
     STAMPROFILE StatHgcmCmdArrival;
     STAMPROFILE StatHgcmCmdCompletion;
     STAMPROFILE StatHgcmCmdTotal;
-    STAMCOUNTER StatHgcmReqBufAllocs;
+    STAMCOUNTER StatHgcmLargeCmdAllocs;
 #endif /* VBOX_WITH_HGCM */
+    STAMCOUNTER StatReqBufAllocs;
 
     /** Per CPU request 4K sized buffers, allocated as needed. */
     R3PTRTYPE(VMMDevRequestHeader *) apReqBufs[VMM_MAX_CPU_COUNT];
@@ -404,6 +404,7 @@ AssertCompileMemberAlignment(VMMDEV, TestingData.Value.u64Value, 8);
 
 void VMMDevNotifyGuest(VMMDEV *pVMMDevState, uint32_t u32EventMask);
 void VMMDevCtlSetGuestFilterMask(VMMDEV *pVMMDevState, uint32_t u32OrMask, uint32_t u32NotMask);
+
 
 /** The saved state version. */
 #define VMMDEV_SAVED_STATE_VERSION                              VMMDEV_SAVED_STATE_VERSION_HGCM_PARAMS

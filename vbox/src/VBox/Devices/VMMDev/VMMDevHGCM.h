@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.h 75532 2018-11-17 00:15:54Z vboxsync $ */
+/* $Id: VMMDevHGCM.h 75537 2018-11-17 01:26:43Z vboxsync $ */
 /** @file
  * VBoxDev - HGCM - Host-Guest Communication Manager, internal header.
  */
@@ -36,6 +36,7 @@ int vmmdevHGCMLoadState(VMMDevState *pVMMDevState, PSSMHANDLE pSSM, uint32_t u32
 int vmmdevHGCMLoadStateDone(VMMDevState *pVMMDevState);
 
 void vmmdevHGCMDestroy(PVMMDEV pThis);
+int  vmmdevHGCMInit(PVMMDEV pThis);
 RT_C_DECLS_END
 
 #endif /* !___VMMDev_VMMDevHGCM_h */
