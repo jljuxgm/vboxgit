@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 77960 2019-03-30 01:44:13Z vboxsync $ */
+/* $Id: vfsmod.c 77976 2019-04-01 11:12:02Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -70,7 +70,7 @@ VBGLSFCLIENT g_SfClient;
 uint32_t     g_fHostFeatures = 0;
 /** Last valid shared folders function number. */
 uint32_t     g_uSfLastFunction = SHFL_FN_SET_FILE_SIZE;
-/** Shared folders features. */
+/** Shared folders features (SHFL_FEATURE_XXX). */
 uint64_t     g_fSfFeatures = 0;
 
 /** Protects all the vbsf_inode_info::HandleList lists. */
