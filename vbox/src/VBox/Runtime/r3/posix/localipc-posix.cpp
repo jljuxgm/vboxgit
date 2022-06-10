@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: localipc-posix.cpp 77258 2019-02-11 13:15:32Z vboxsync $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -528,8 +528,9 @@ RTDECL(int) RTLocalIpcSessionConnect(PRTLOCALIPCSESSION phSession, const char *p
                             return VINF_SUCCESS;
                         }
                     }
-                    RTCritSectDelete(&pThis->CritSect);
+                    RTSocketRelease(pThis->hSocket);
                 }
+                RTCritSectDelete(&pThis->CritSect);
             }
             RTMemFree(pThis);
         }
