@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 75070 2018-10-25 13:42:42Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 75081 2018-10-25 15:47:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -152,6 +152,16 @@ void UIToolsModel::setToolsType(UIToolType enmType)
 UIToolType UIToolsModel::toolsType() const
 {
     return currentItem()->itemType();
+}
+
+UIToolType UIToolsModel::lastSelectedToolGlobal() const
+{
+    return m_pLastItemGlobal->itemType();
+}
+
+UIToolType UIToolsModel::lastSelectedToolMachine() const
+{
+    return m_pLastItemMachine->itemType();
 }
 
 void UIToolsModel::setToolsEnabled(UIToolClass enmClass, bool fEnabled)

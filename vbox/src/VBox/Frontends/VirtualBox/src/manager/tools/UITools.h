@@ -1,4 +1,4 @@
-/* $Id: UITools.h 75016 2018-10-23 19:42:38Z vboxsync $ */
+/* $Id: UITools.h 75081 2018-10-25 15:47:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -79,6 +79,11 @@ public:
         void setToolsType(UIToolType enmType);
         /** Returns current tools type. */
         UIToolType toolsType() const;
+
+        /** Returns last selected global tool. */
+        UIToolType lastSelectedToolGlobal() const;
+        /** Returns last selected machine tool. */
+        UIToolType lastSelectedToolMachine() const;
 
         /** Defines whether certain @a enmClass of tools is @a fEnabled.*/
         void setToolsEnabled(UIToolClass enmClass, bool fEnabled);
