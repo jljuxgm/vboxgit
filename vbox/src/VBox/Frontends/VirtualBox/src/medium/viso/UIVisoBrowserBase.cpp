@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 76762 2019-01-10 20:57:13Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.cpp 76826 2019-01-15 18:19:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -28,13 +28,14 @@
 #include "UIVisoBrowserBase.h"
 #include "UIToolBar.h"
 
-UIVisoBrowserBase::UIVisoBrowserBase(QWidget *pParent)
-    : QWidget(pParent)
+UIVisoBrowserBase::UIVisoBrowserBase(QWidget *pParent /* = 0 */, QMenu *pMenu /*= 0*/)
+    : QIWithRetranslateUI<QWidget>(pParent)
     , m_pTreeView(0)
     , m_pTitleLabel(0)
     , m_pRightContainerWidget(0)
     , m_pRightContainerLayout(0)
     , m_pVerticalToolBar(0)
+    , m_pMenu(pMenu)
     , m_pMainLayout(0)
     , m_pHorizontalSplitter(0)
 {

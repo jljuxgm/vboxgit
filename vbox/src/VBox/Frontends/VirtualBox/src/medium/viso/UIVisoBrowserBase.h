@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 76762 2019-01-10 20:57:13Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.h 76826 2019-01-15 18:19:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -25,23 +25,28 @@
 #include <QModelIndex>
 #include <QWidget>
 
+/* GUI includes: */
+#include "QIWithRetranslateUI.h"
+
 /* Forward declarations: */
 class QItemSelection;
 class QGridLayout;
 class QLabel;
+class QMenu;
 class QSplitter;
 class QVBoxLayout;
 class QTableView;
 class QTreeView;
 class UIToolBar;
 
-class UIVisoBrowserBase : public QWidget
+class UIVisoBrowserBase : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
 public:
-
-    UIVisoBrowserBase(QWidget *pParent = 0);
+    /** @p pMenu is the pointer to the menu related to this browser widget.
+     *  any member actions will be added to this menu. */
+    UIVisoBrowserBase(QWidget *pParent = 0, QMenu *pMenu = 0);
     ~UIVisoBrowserBase();
     virtual void showHideHiddenObjects(bool bShow) = 0;
 
@@ -65,7 +70,7 @@ protected:
     QWidget            *m_pRightContainerWidget;
     QGridLayout        *m_pRightContainerLayout;
     UIToolBar          *m_pVerticalToolBar;
-
+    QMenu              *m_pMenu;
 private:
     QGridLayout    *m_pMainLayout;
     QSplitter      *m_pHorizontalSplitter;
