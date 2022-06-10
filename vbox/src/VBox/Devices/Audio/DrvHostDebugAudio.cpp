@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 73383 2018-07-27 09:38:32Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 73393 2018-07-30 12:10:55Z vboxsync $ */
 /** @file
  * Debug audio driver.
  *
@@ -116,13 +116,7 @@ static DECLCALLBACK(PDMAUDIOBACKENDSTS) drvHostDebugAudioGetStatus(PPDMIHOSTAUDI
 static int debugCreateStreamIn(PDRVHOSTDEBUGAUDIO pDrv, PDEBUGAUDIOSTREAM pStreamDbg,
                                PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
-    RT_NOREF(pDrv, pStreamDbg, pCfgReq);
-
-    if (pCfgAcq)
-    {
-        pCfgAcq->Backend.cfPeriod     = DrvAudioHlpMsToFrames(1000 /* ms */, &pCfgReq->Props);
-        pCfgAcq->Backend.cfBufferSize = pCfgAcq->Backend.cfPeriod * 2; /* Use "double buffering". */
-    }
+    RT_NOREF(pDrv, pStreamDbg, pCfgReq, pCfgAcq);
 
     return VINF_SUCCESS;
 }
@@ -131,7 +125,7 @@ static int debugCreateStreamIn(PDRVHOSTDEBUGAUDIO pDrv, PDEBUGAUDIOSTREAM pStrea
 static int debugCreateStreamOut(PDRVHOSTDEBUGAUDIO pDrv, PDEBUGAUDIOSTREAM pStreamDbg,
                                 PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
-    RT_NOREF(pDrv);
+    RT_NOREF(pDrv, pCfgAcq);
 
     char szTemp[RTPATH_MAX];
     int rc = RTPathTemp(szTemp, sizeof(szTemp));
@@ -157,15 +151,6 @@ static int debugCreateStreamOut(PDRVHOSTDEBUGAUDIO pDrv, PDEBUGAUDIOSTREAM pStre
     }
     else
         LogRel(("DebugAudio: Unable to retrieve temp dir: %Rrc\n", rc));
-
-    if (RT_SUCCESS(rc))
-    {
-        if (pCfgAcq)
-        {
-            pCfgAcq->Backend.cfPeriod     = DrvAudioHlpMsToFrames(50 /* ms */, &pCfgReq->Props);
-            pCfgAcq->Backend.cfBufferSize = pCfgAcq->Backend.cfPeriod * 2; /* Use "double buffering". */
-        }
-    }
 
     return rc;
 }
