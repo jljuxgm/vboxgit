@@ -1,4 +1,4 @@
-/* $Id: vboxweb.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vboxweb.h 76542 2018-12-30 06:33:37Z vboxsync $ */
 /** @file
  * vboxweb.h - header file for "real" web server code.
  */
@@ -14,6 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#ifndef VBOX_INCLUDED_webservice_vboxweb_h
+#define VBOX_INCLUDED_webservice_vboxweb_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define LOG_GROUP LOG_GROUP_WEBSERVICE
 #include <VBox/log.h>
@@ -355,3 +361,6 @@ const WSDLT_ID& createOrFindRefFromComPtr(const WSDLT_ID &idParent,
     // new reference which couldn't be used anyway.
     return g_EmptyWSDLID;
 }
+
+#endif
+

@@ -1,4 +1,4 @@
-/* $Id: iokit.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: iokit.h 76542 2018-12-30 06:33:37Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___darwin_iokit_h___
 #define ___darwin_iokit_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>

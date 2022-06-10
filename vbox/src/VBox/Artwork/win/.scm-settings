@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69287 2017-10-25 11:31:33Z vboxsync $
+# $Id: .scm-settings 76542 2018-12-30 06:33:37Z vboxsync $
 ## @file
 # Source code massager settings for windows artwork related files.
 #
@@ -26,4 +26,6 @@
 
 # These files are included into lots of different things, so dual licensed.
 --license-ose-dual
+
+/TemplateRsrcDefs.h: --no-fix-header-guards
 

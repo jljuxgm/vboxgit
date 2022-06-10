@@ -1,4 +1,4 @@
-/* $Id: svchlp.h 76070 2018-12-08 18:59:57Z vboxsync $ */
+/* $Id: svchlp.h 76542 2018-12-30 06:33:37Z vboxsync $ */
 /** @file
  * Declaration of SVC Helper Process control routines.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBox_svchlp_h___
 #define ___VBox_svchlp_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBox/com/string.h"
 #include "VBox/com/guid.h"
