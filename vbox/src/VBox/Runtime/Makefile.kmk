@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74742 2018-10-10 12:51:06Z vboxsync $
+# $Id: Makefile.kmk 75039 2018-10-24 13:47:40Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2941,6 +2941,7 @@ RuntimeR0Drv_SOURCES.darwin = \
 	r0drv/darwin/assert-r0drv-darwin.cpp \
 	r0drv/darwin/initterm-r0drv-darwin.cpp \
 	r0drv/darwin/dbgkrnlinfo-r0drv-darwin.cpp \
+	r0drv/darwin/fileio-r0drv-darwin.cpp \
 	r0drv/darwin/memobj-r0drv-darwin.cpp \
 	r0drv/darwin/mp-r0drv-darwin.cpp \
 	r0drv/darwin/memuserkernel-r0drv-darwin.cpp \
