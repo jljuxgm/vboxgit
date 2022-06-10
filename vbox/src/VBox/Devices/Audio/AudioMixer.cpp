@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 74041 2018-09-03 12:46:20Z vboxsync $ */
+/* $Id: AudioMixer.cpp 74057 2018-09-04 09:10:59Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1524,11 +1524,11 @@ static int audioMixerSinkSetRecSourceInternal(PAUDMIXSINK pSink, PAUDMIXSTREAM p
  * @return  IPRT status code.
  * @param   pSink               Input mixer sink to set recording source for.
  * @param   pStream             Mixer stream to set as current recording source. Must be an input stream.
+ *                              Set to NULL to un-set the current recording source.
  */
 int AudioMixerSinkSetRecordingSource(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream)
 {
     AssertPtrReturn(pSink, VERR_INVALID_POINTER);
-    AssertPtrReturn(pStream, VERR_INVALID_POINTER);
 
     int rc = RTCritSectEnter(&pSink->CritSect);
     if (RT_FAILURE(rc))
