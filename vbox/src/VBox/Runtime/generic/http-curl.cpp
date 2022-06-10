@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 73888 2018-08-25 13:26:05Z vboxsync $ */
+/* $Id: http-curl.cpp 73890 2018-08-25 13:28:15Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -32,6 +32,7 @@
 #include <iprt/http.h>
 #include "internal/iprt.h"
 
+#include <iprt/alloca.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/cidr.h>
