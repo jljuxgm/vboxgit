@@ -1,4 +1,4 @@
-/* $Id: UIInformationItem.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIInformationItem.h 74553 2018-10-01 14:43:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationItem class declaration.
  */
@@ -24,7 +24,6 @@
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
 #include "UIExtraDataDefs.h"
-#include "UIGDetailsItem.h"
 
 /* Forward declarations: */
 class QStyleOptionViewItem;
