@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 74305 2018-09-17 11:44:43Z vboxsync $ */
+/* $Id: VBoxGlobal.h 74743 2018-10-10 13:01:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -165,6 +165,11 @@ public:
 
         /** Returns whether VBoxGlobal instance is properly initialized. */
         bool isValid() const { return m_fValid; }
+
+#ifdef VBOX_GUI_WITH_SHARED_LIBRARY
+        /** Returns the UI type. */
+        UIType uiType() const { return m_enmType; }
+#endif
 
         /** Returns VBox version string. */
         QString vboxVersionString() const;
