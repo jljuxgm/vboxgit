@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 77829 2019-03-21 15:55:55Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 77933 2019-03-28 12:30:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -185,8 +185,8 @@ public:
         state.focusable = true;
         state.selectable = true;
 
-        /* Compose the state of current item: */
-        if (item() && item() == item()->model()->currentItem())
+        /* Compose the state of first selected-item: */
+        if (item() && item() == item()->model()->firstSelectedItem())
         {
             state.active = true;
             state.focused = true;

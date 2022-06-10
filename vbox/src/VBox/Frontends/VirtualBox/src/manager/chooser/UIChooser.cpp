@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 77228 2019-02-08 18:05:46Z vboxsync $ */
+/* $Id: UIChooser.cpp 77933 2019-03-28 12:30:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -50,12 +50,12 @@ UIActionPool *UIChooser::actionPool() const
 
 UIVirtualMachineItem *UIChooser::currentItem() const
 {
-    return m_pChooserModel->currentMachineItem();
+    return m_pChooserModel->firstSelectedMachineItem();
 }
 
 QList<UIVirtualMachineItem*> UIChooser::currentItems() const
 {
-    return m_pChooserModel->currentMachineItems();
+    return m_pChooserModel->selectedMachineItems();
 }
 
 bool UIChooser::isGroupItemSelected() const
