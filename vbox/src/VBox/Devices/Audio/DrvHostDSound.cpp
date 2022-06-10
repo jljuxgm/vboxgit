@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 73563 2018-08-08 13:39:53Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 73689 2018-08-15 09:55:52Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1774,7 +1774,7 @@ static int dsoundCreateStreamOut(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStreamDS,
             dsoundStreamReset(pThis, pStreamDS);
     }
     else
-        rc = VERR_GENERAL_FAILURE; /** @todo Fudge! */
+        rc = VERR_AUDIO_STREAM_COULD_NOT_CREATE;
 
     LogFlowFuncLeaveRC(rc);
     return rc;
@@ -1948,7 +1948,7 @@ static int dsoundCreateStreamIn(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStreamDS,
             dsoundStreamReset(pThis, pStreamDS);
     }
     else
-        rc = VERR_GENERAL_FAILURE; /** @todo Fudge! */
+        rc = VERR_AUDIO_STREAM_COULD_NOT_CREATE;
 
     return rc;
 }

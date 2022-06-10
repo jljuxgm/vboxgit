@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 73681 2018-08-15 06:42:44Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 73689 2018-08-15 09:55:52Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -2336,7 +2336,7 @@ static DECLCALLBACK(int) drvHostCoreAudioStreamCreate(PPDMIHOSTAUDIO pInterface,
         }
     }
     else
-        rc = VERR_NOT_AVAILABLE;
+        rc = VERR_AUDIO_STREAM_COULD_NOT_CREATE;
 
     LogFunc(("Returning %Rrc\n", rc));
     return rc;
