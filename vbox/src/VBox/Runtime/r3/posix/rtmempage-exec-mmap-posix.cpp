@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-posix.cpp 78334 2019-04-26 19:53:32Z vboxsync $ */
+/* $Id: rtmempage-exec-mmap-posix.cpp 78345 2019-04-29 10:15:06Z vboxsync $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with mmap only.
  */
@@ -158,7 +158,7 @@ RTDECL(void *) RTMemPageAllocZTag(size_t cb, const char *pszTag) RT_NO_THROW_DEF
 
 RTDECL(void *) RTMemPageAllocExTag(size_t cb, uint32_t fFlags, const char *pszTag) RT_NO_THROW_DEF
 {
-    AssertReturn(!(fFlags & RTMEMPAGEALLOC_F_VALID_MASK), NULL);
+    AssertReturn(!(fFlags & ~RTMEMPAGEALLOC_F_VALID_MASK), NULL);
     return rtMemPagePosixAlloc(cb, pszTag, fFlags, 0);
 }
 
