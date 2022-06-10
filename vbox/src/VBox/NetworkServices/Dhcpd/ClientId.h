@@ -1,4 +1,4 @@
-/* $Id: ClientId.h 75617 2018-11-20 11:59:31Z vboxsync $ */
+/* $Id: ClientId.h 75648 2018-11-21 18:02:38Z vboxsync $ */
 /** @file
  * DHCP server - client identifier
  */
@@ -34,8 +34,8 @@ class ClientId
 public:
     ClientId()
       : m_mac(), m_id() {}
-    ClientId(const RTMAC &mac, const OptClientId &id)
-      : m_mac(mac), m_id(id) {}
+    ClientId(const RTMAC &macParam, const OptClientId &idParam)
+      : m_mac(macParam), m_id(idParam) {}
 
     const RTMAC &mac() const { return m_mac; }
     const OptClientId &id() const { return m_id; }

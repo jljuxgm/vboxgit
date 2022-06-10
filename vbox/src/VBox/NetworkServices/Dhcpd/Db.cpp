@@ -1,4 +1,4 @@
-/* $Id: Db.cpp 75573 2018-11-19 14:06:36Z vboxsync $ */
+/* $Id: Db.cpp 75648 2018-11-21 18:02:38Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -499,7 +499,7 @@ Binding *Db::allocateAddress(const ClientId &id, RTNETADDRIPV4 addr)
         {
             idBinding = reuseBinding;
             LogDHCP(("> .... reusing %s binding %R[binding]\n",
-                     reuseBinding->stateName()));
+                     reuseBinding->stateName(), reuseBinding));
         }
     }
 
