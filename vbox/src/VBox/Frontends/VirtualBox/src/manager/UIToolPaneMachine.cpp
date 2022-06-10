@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIToolPaneMachine.cpp 73637 2018-08-13 13:53:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -21,6 +21,9 @@
 
 /* Qt includes: */
 # include <QStackedLayout>
+# ifndef VBOX_WS_MAC
+#  include <QStyle>
+# endif
 # include <QUuid>
 
 /* GUI includes */
@@ -133,6 +136,11 @@ void UIToolPaneMachine::openTool(ToolTypeMachine enmType)
                 m_pPaneSnapshots = new UISnapshotPane;
                 AssertPtrReturnVoid(m_pPaneSnapshots);
                 {
+#ifndef VBOX_WS_MAC
+                    const int iMargin = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 4;
+                    m_pPaneSnapshots->setContentsMargins(iMargin, 0, iMargin, 0);
+#endif
+
                     /* Configure pane: */
                     m_pPaneSnapshots->setProperty("ToolType", QVariant::fromValue(ToolTypeMachine_Snapshots));
 
@@ -148,6 +156,11 @@ void UIToolPaneMachine::openTool(ToolTypeMachine enmType)
                 m_pPaneLogViewer = new UIVMLogViewerWidget(EmbedTo_Stack);
                 AssertPtrReturnVoid(m_pPaneLogViewer);
                 {
+#ifndef VBOX_WS_MAC
+                    const int iMargin = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 4;
+                    m_pPaneLogViewer->setContentsMargins(iMargin, 0, iMargin, 0);
+#endif
+
                     /* Configure pane: */
                     m_pPaneLogViewer->setProperty("ToolType", QVariant::fromValue(ToolTypeMachine_LogViewer));
 

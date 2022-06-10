@@ -1,4 +1,4 @@
-/* $Id: UIToolbarTools.cpp 73601 2018-08-09 18:04:22Z vboxsync $ */
+/* $Id: UIToolbarTools.cpp 73637 2018-08-13 13:53:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolbarTools class implementation.
  */
@@ -255,7 +255,10 @@ void UIToolbarTools::prepareWidgets()
     if (m_pLayoutMain)
     {
         /* Configure layout: */
-        m_pLayoutMain->setContentsMargins(0, 0, 0, 0);
+#ifndef VBOX_WS_MAC
+        const int iL = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 9;
+        m_pLayoutMain->setContentsMargins(iL, 0, 0, 0);
+#endif
 
         /* Create Machine tab-bar: */
         m_pTabBarMachine = new UITabBar(UITabBar::Align_Left);
