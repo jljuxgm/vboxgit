@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 77859 2019-03-24 02:36:08Z vboxsync $ */
+/* $Id: vfsmod.c 77863 2019-03-24 14:42:15Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -133,6 +133,8 @@ static void vbsf_super_info_copy_remount_options(struct vbsf_super_info *sf_g, s
             printk(KERN_WARNING "vboxsf: max I/O page count (%#x) is out of range, using default (%#x) instead.\n",
                    info->cMaxIoPages, sf_g->cMaxIoPages);
     }
+
+    sf_g->cbDirBuf = _64K; /** @todo make configurable. */
 }
 
 /**

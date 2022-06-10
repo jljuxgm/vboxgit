@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77858 2019-03-24 00:10:24Z vboxsync $ */
+/* $Id: vfsmod.h 77863 2019-03-24 14:42:15Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -143,6 +143,8 @@ struct vbsf_super_info {
     /** Maximum number of pages to allow in an I/O buffer with the host.
      * This applies to read and write operations.  */
     uint32_t cMaxIoPages;
+    /** The default directory buffer size. */
+    uint32_t cbDirBuf;
     /** Mount tag for VBoxService automounter.  @since 6.0 */
     char tag[32];
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0) && LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
