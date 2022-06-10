@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-os2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: semevent-r0drv-os2.cpp 75129 2018-10-28 17:00:27Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, OS/2.
  */
@@ -78,6 +78,7 @@ RTDECL(int)  RTSemEventCreateEx(PRTSEMEVENT phEventSem, uint32_t fFlags, RTLOCKV
     Assert(!(fFlags & RTSEMEVENT_FLAGS_BOOTSTRAP_HACK) || (fFlags & RTSEMEVENT_FLAGS_NO_LOCK_VAL));
     AssertCompile(sizeof(RTSEMEVENTINTERNAL) > sizeof(void *));
     AssertPtrReturn(phEventSem, VERR_INVALID_POINTER);
+    RT_NOREF(hClass, pszNameFmt);
 
     PRTSEMEVENTINTERNAL pThis = (PRTSEMEVENTINTERNAL)RTMemAlloc(sizeof(*pThis));
     if (!pThis)

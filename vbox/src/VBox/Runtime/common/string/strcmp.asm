@@ -1,4 +1,4 @@
-; $Id: strcmp.asm 69219 2017-10-24 15:01:30Z vboxsync $
+; $Id: strcmp.asm 75129 2018-10-28 17:00:27Z vboxsync $
 ;; @file
 ; IPRT - No-CRT strcmp - AMD64 & X86.
 ;
@@ -29,8 +29,8 @@
 BEGINCODE
 
 ;;
-; @param    psz1   gcc: rdi  msc: rcx  x86:[esp+4]
-; @param    psz2   gcc: rsi  msc: rdx  x86:[esp+8]
+; @param    psz1   gcc: rdi  msc: rcx  x86:[esp+4]  wcall: eax
+; @param    psz2   gcc: rsi  msc: rdx  x86:[esp+8]  wcall: edx
 RT_NOCRT_BEGINPROC strcmp
         ; input
 %ifdef RT_ARCH_AMD64
@@ -42,10 +42,14 @@ RT_NOCRT_BEGINPROC strcmp
   %define psz2 rsi
  %endif
 %else
+ %ifdef ASM_CALL32_WATCOM
+        mov     ecx, eax
+ %else
         mov     ecx, [esp + 4]
         mov     edx, [esp + 8]
-  %define psz1 ecx
-  %define psz2 edx
+ %endif
+ %define psz1 ecx
+ %define psz2 edx
 %endif
 
         ;

@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-os2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: assert-r0drv-os2.cpp 75129 2018-10-28 17:00:27Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, OS/2.
  */
@@ -45,10 +45,12 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
+RT_C_DECLS_BEGIN /* for watcom */
 /** The last assert message. (in DATA16) */
 extern char g_szRTAssertMsg[2048];
 /** The length of the last assert message. (in DATA16) */
 extern size_t g_cchRTAssertMsg;
+RT_C_DECLS_END
 
 
 /*********************************************************************************************************************************

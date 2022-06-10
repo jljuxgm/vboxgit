@@ -1,4 +1,4 @@
-; $Id: strcpy.asm 69219 2017-10-24 15:01:30Z vboxsync $
+; $Id: strcpy.asm 75129 2018-10-28 17:00:27Z vboxsync $
 ;; @file
 ; IPRT - No-CRT strcpy - AMD64 & X86.
 ;
@@ -29,8 +29,8 @@
 BEGINCODE
 
 ;;
-; @param    pszDst   gcc: rdi  msc: rcx  x86:[esp+4]
-; @param    pszSrc   gcc: rsi  msc: rdx  x86:[esp+8]
+; @param    pszDst   gcc: rdi  msc: rcx  x86:[esp+4]  wcall:eax
+; @param    pszSrc   gcc: rsi  msc: rdx  x86:[esp+8]  wcall:edx
 RT_NOCRT_BEGINPROC strcpy
         ; input
 %ifdef RT_ARCH_AMD64
@@ -43,10 +43,14 @@ RT_NOCRT_BEGINPROC strcpy
  %endif
         mov     r8, pszDst
 %else
+ %ifdef ASM_CALL32_WATCOM
+        mov     ecx, eax
+ %else
         mov     ecx, [esp + 4]
         mov     edx, [esp + 8]
-  %define pszDst ecx
-  %define pszSrc edx
+ %endif
+ %define pszDst ecx
+ %define pszSrc edx
         push    pszDst
 %endif
 

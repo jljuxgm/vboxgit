@@ -1,4 +1,4 @@
-/* $Id: strpbrk.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: strpbrk.cpp 75129 2018-10-28 17:00:27Z vboxsync $ */
 /** @file
  * IPRT - strpbrk().
  */
@@ -42,6 +42,8 @@ _CRTIMP __checkReturn _CONST_RETURN char *  __cdecl strpbrk(__in_z const char *p
 # else
 _CRTIMP char * __cdecl strpbrk(const char *pszStr, const char *pszChars)
 # endif
+#elif defined(__WATCOMC__)
+_WCRTLINK char *std::strpbrk(const char *pszStr, const char *pszChars)
 #else
 char *strpbrk(const char *pszStr, const char *pszChars)
 # if defined(__THROW) && !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2)

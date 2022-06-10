@@ -1,4 +1,4 @@
-/* $Id: the-os2-kernel.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: the-os2-kernel.h 75129 2018-10-28 17:00:27Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The OS/2 Kernel Headers.
  */
@@ -35,9 +35,11 @@
 #include <iprt/types.h>
 
 #define INCL_ERRORS
-#include <os2ddk/bsekee.h>
+#define INCL_DOSSEMAPHORES /* for SEM_INDEFINITE_WAIT */
 #undef RT_MAX
+#include <os2ddk/bsekee.h>
 #include <os2ddk/devhlp.h>
+#undef RT_MAX
 
 RT_C_DECLS_BEGIN
 
