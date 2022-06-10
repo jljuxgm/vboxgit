@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIDetailsElements.h 74049 2018-09-03 16:45:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes declaration.
  */
@@ -100,7 +100,7 @@ private:
     /** Returns minimum height hint.
       * @param fClosed allows to specify whether the hint should
       *                be calculated for the closed element. */
-    int minimumHeightHint(bool fClosed) const;
+    int minimumHeightHintForElement(bool fClosed) const;
     /** Updates layout. */
     void updateLayout();
 

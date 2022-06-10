@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.cpp 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIDetailsElements.cpp 74049 2018-09-03 16:45:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes implementation.
  */
@@ -165,7 +165,7 @@ int UIDetailsElementPreview::minimumWidthHint() const
     return iProposedWidth;
 }
 
-int UIDetailsElementPreview::minimumHeightHint(bool fClosed) const
+int UIDetailsElementPreview::minimumHeightHintForElement(bool fClosed) const
 {
     /* Prepare variables: */
     int iMargin = data(ElementData_Margin).toInt();
@@ -202,9 +202,9 @@ void UIDetailsElementPreview::updateLayout()
     UIDetailsElement::updateLayout();
 
     /* Show/hide preview: */
-    if (closed() && m_pPreview->isVisible())
+    if (isClosed() && m_pPreview->isVisible())
         m_pPreview->hide();
-    if (opened() && !m_pPreview->isVisible() && !isAnimationRunning())
+    if (isOpened() && !m_pPreview->isVisible() && !isAnimationRunning())
         m_pPreview->show();
 
     /* And update preview layout itself: */
