@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlDialog.cpp 75057 2018-10-25 08:58:53Z vboxsync $ */
+/* $Id: UIGuestControlDialog.cpp 75059 2018-10-25 10:07:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlDialog class implementation.
  */
@@ -20,15 +20,7 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# if defined(RT_OS_SOLARIS)
-#  include <QFontDatabase>
-# endif
-# include <QDialogButtonBox>
-# include <QKeyEvent>
-# include <QLabel>
-# include <QPlainTextEdit>
 # include <QPushButton>
-# include <QScrollBar>
 # include <QVBoxLayout>
 
 /* GUI includes: */
@@ -150,7 +142,7 @@ void UIGuestControlDialog::saveSettings() const
 #else /* !VBOX_WS_MAC */
     gEDataManager->setGuestControlDialogGeometry(saveGeometry, isMaximized());
 #endif /* !VBOX_WS_MAC */
-    LogRel2(("GUI: UIVMLogViewer: Geometry saved as: Origin=%dx%d, Size=%dx%d\n",
+    LogRel2(("GUI: Guest Control Dialog: Geometry saved as: Origin=%dx%d, Size=%dx%d\n",
              saveGeometry.x(), saveGeometry.y(), saveGeometry.width(), saveGeometry.height()));
 }
 

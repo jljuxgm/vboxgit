@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlWidget.cpp 75058 2018-10-25 09:21:21Z vboxsync $ */
+/* $Id: UIGuestControlWidget.cpp 75059 2018-10-25 10:07:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlWidget class implementation.
  */
@@ -20,25 +20,14 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QApplication>
-# include <QMenu>
-# include <QSplitter>
 # include <QVBoxLayout>
 
-
 /* GUI includes: */
-// # include "QITreeWidget.h"
-// # include "UIExtraDataManager.h"
-// # include "UIGuestControlConsole.h"
-// # include "UIGuestControlInterface.h"
-
 # include "QITabWidget.h"
 # include "UIActionPool.h"
 # include "UIGuestControlFileManager.h"
 # include "UIGuestControlWidget.h"
-
 # include "UIGuestProcessControlWidget.h"
-// # include "UIVMInformationDialog.h"
 # include "VBoxGlobal.h"
 
 
@@ -62,12 +51,13 @@ UIGuestControlWidget::UIGuestControlWidget(EmbedTo enmEmbedding, UIActionPool *p
     prepare();
 }
 
-UIGuestControlWidget::~UIGuestControlWidget(){}
-
-
 void UIGuestControlWidget::retranslateUi()
 {
-
+    if (m_pTabWidget)
+    {
+        m_pTabWidget->setTabText(TabIndex_FileManager, tr("File Manager"));
+        m_pTabWidget->setTabText(TabIndex_ProcessControl, tr("Process Control"));
+    }
 }
 
 void UIGuestControlWidget::prepare()
