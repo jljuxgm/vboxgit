@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 73494 2018-08-04 19:41:30Z vboxsync $ */
+/* $Id: ldrPE.cpp 73496 2018-08-04 19:58:03Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -3391,7 +3391,7 @@ static DECLCALLBACK(int) rtldrPE_UnwindFrame(PRTLDRMODINTERNAL pMod, void const 
      * Note! On windows we try catch access violations so we can safely use
      *       this code on mapped images during assertions.
      */
-#ifdef _MSC_VER
+#if defined(_MSC_VER) && defined(IN_RING3) && !defined(IN_SUP_HARDENED_R3)
     __try
     {
 #endif
@@ -3408,7 +3408,7 @@ static DECLCALLBACK(int) rtldrPE_UnwindFrame(PRTLDRMODINTERNAL pMod, void const 
                 rc = VERR_DBG_UNWIND_INFO_NOT_FOUND;
                 break;
         }
-#ifdef _MSC_VER
+#if defined(_MSC_VER) && defined(IN_RING3) && !defined(IN_SUP_HARDENED_R3)
     }
     __except (1 /*EXCEPTION_EXECUTE_HANDLER*/)
     {
