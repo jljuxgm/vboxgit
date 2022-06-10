@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.cpp 76082 2018-12-09 19:25:00Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.cpp 76111 2018-12-10 12:11:26Z vboxsync $ */
 /** @file
  * VBox Global COM Class implementation.
  */
@@ -639,7 +639,7 @@ typedef struct VBoxSDSWatcher
     HANDLE              aHandles[MAXIMUM_WAIT_OBJECTS];
     /** Array the runs parallel to aHandles with the VBoxSVC data. */
     VBoxSDSWatcherData  aData[MAXIMUM_WAIT_OBJECTS];
-    /** Todo items. */
+    /** Pending changes. */
     struct
     {
         /** If NULL the data is being removed, otherwise it's being added and
