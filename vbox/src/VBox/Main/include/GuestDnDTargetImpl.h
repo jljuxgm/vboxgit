@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.h 76891 2019-01-18 13:17:20Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -86,7 +86,6 @@ protected:
 
 protected:
 
-    int i_cancelOperation(void);
     int i_sendData(PSENDDATACTX pCtx, RTMSINTERVAL msTimeout);
     int i_sendDataBody(PSENDDATACTX pCtx, GuestDnDData *pData);
     int i_sendDataHeader(PSENDDATACTX pCtx, GuestDnDData *pData, GuestDnDURIData *pURIData /* = NULL */);
