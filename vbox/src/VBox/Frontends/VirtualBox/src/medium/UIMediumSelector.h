@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 76829 2019-01-16 08:59:55Z vboxsync $ */
+/* $Id: UIMediumSelector.h 76892 2019-01-18 13:40:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -68,10 +68,9 @@ private slots:
     void sltHandleMediumEnumerated();
     void sltHandleMediumEnumerationFinish();
     void sltHandleRefresh();
-    void sltHandleSearchTypeChange(int type);
-    void sltHandleSearchTermChange(QString searchTerm);
+    void sltHandlePerformSearch();
 
-private:
+ private:
 
 
     /** @name Event-handling stuff.

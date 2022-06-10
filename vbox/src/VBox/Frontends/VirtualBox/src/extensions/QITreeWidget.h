@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: QITreeWidget.h 76892 2019-01-18 13:40:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class declaration.
  */
@@ -85,7 +85,7 @@ signals:
     /** Notifies about tree-widget being resized from @a oldSize to @a size. */
     void resized(const QSize &size, const QSize &oldSize);
 
-public:
+ public:
 
     /** Constructs tree-widget passing @a pParent to the base-class. */
     QITreeWidget(QWidget *pParent = 0);
@@ -97,6 +97,7 @@ public:
     int childCount() const;
     /** Returns the child item with @a iIndex. */
     QITreeWidgetItem *childItem(int iIndex) const;
+    QModelIndex itemIndex(QTreeWidgetItem *pItem);
 
 protected:
 

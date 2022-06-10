@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: QITreeWidget.cpp 76892 2019-01-18 13:40:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class implementation.
  */
@@ -430,6 +430,11 @@ QITreeWidgetItem *QITreeWidget::childItem(int iIndex) const
 {
     /* Return the child item with iIndex if any: */
     return invisibleRootItem()->child(iIndex) ? QITreeWidgetItem::toItem(invisibleRootItem()->child(iIndex)) : 0;
+}
+
+QModelIndex QITreeWidget::itemIndex(QTreeWidgetItem *pItem)
+{
+    return indexFromItem(pItem);
 }
 
 void QITreeWidget::paintEvent(QPaintEvent *pEvent)
