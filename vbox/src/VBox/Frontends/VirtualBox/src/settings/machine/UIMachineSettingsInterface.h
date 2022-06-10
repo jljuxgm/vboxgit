@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -36,7 +36,7 @@ class SHARED_LIBRARY_STUFF UIMachineSettingsInterface : public UISettingsPageMac
 public:
 
     /** Constructs User Interface settings page. */
-    UIMachineSettingsInterface(const QUuid &aMachineId);
+    UIMachineSettingsInterface(const QUuid &uMachineId);
     /** Destructs User Interface settings page. */
     ~UIMachineSettingsInterface();
 

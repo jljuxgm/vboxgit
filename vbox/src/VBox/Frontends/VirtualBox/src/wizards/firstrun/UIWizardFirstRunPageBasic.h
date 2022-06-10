@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRunPageBasic.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRunPageBasic class declaration.
  */
@@ -43,7 +43,7 @@ protected:
 
     /* Stuff for 'id' field: */
     QUuid id() const;
-    void setId(const QUuid &aId);
+    void setId(const QUuid &uId);
 
     /* Variables: */
     bool m_fBootHardDiskWasSet;
@@ -63,7 +63,7 @@ class UIWizardFirstRunPageBasic : public UIWizardPage, public UIWizardFirstRunPa
 public:
 
     /* Constructor: */
-    UIWizardFirstRunPageBasic(const QUuid &aMachineId, bool fBootHardDiskWasSet);
+    UIWizardFirstRunPageBasic(const QUuid &uMachineId, bool fBootHardDiskWasSet);
 
 protected:
 

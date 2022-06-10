@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIDetailsElement.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -62,8 +62,8 @@ signals:
         /** Notifies about element link clicked.
           * @param  strCategory  Brings the link category.
           * @param  strControl   Brings the wanted settings control.
-          * @param  strId        Brings the ID. */
-        void sigLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &strId);
+          * @param  uId          Brings the ID. */
+        void sigLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &uId);
     /** @} */
 
 public:

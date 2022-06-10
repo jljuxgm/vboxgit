@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMedium.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -570,10 +570,10 @@ QUuid UIMedium::nullID()
 }
 
 /* static */
-QUuid UIMedium::normalizedID(const QUuid &aID)
+QUuid UIMedium::normalizedID(const QUuid &uID)
 {
     /// @todo wipe out!
-    return aID;
+    return uID;
 }
 
 /* static */

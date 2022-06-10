@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMachine.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -42,7 +42,7 @@
 UIMachine* UIMachine::m_spInstance = 0;
 
 /* static */
-bool UIMachine::startMachine(const QUuid &aID)
+bool UIMachine::startMachine(const QUuid &uID)
 {
     /* Make sure machine is not created: */
     AssertReturn(!m_spInstance, false);
@@ -51,7 +51,7 @@ bool UIMachine::startMachine(const QUuid &aID)
     if (vboxGlobal().shouldRestoreCurrentSnapshot())
     {
         /* Create temporary session: */
-        CSession session = vboxGlobal().openSession(aID, KLockType_VM);
+        CSession session = vboxGlobal().openSession(uID, KLockType_VM);
         if (session.isNull())
             return false;
 

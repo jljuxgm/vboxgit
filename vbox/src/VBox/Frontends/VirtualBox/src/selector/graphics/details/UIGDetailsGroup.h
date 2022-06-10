@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIGDetailsGroup.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsGroup class declaration.
  */
@@ -55,7 +55,7 @@ public:
 private slots:
 
     /* Handler: Build stuff: */
-    void sltBuildStep(const QUuid &aStepId, const int iStepNumber);
+    void sltBuildStep(const QUuid &uStepId, const int iStepNumber);
 
 private:
 

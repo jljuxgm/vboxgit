@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class declaration.
  */
@@ -53,7 +53,7 @@ protected:
 
     /* Stuff for 'virtualDiskId' field: */
     QUuid virtualDiskId() const { return m_uVirtualDiskId; }
-    void setVirtualDiskId(const QUuid &aVirtualDiskId) { m_uVirtualDiskId = aVirtualDiskId; }
+    void setVirtualDiskId(const QUuid &uVirtualDiskId) { m_uVirtualDiskId = uVirtualDiskId; }
 
     /* Stuff for 'virtualDiskName' field: */
     QString virtualDiskName() const { return m_strVirtualDiskName; }

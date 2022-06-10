@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class implementation.
  */
@@ -57,10 +57,10 @@ class UIProgressEventHandler : public QObject
 
 signals:
 
-    /** Notifies about @a iPercent change for progress with @a strProgressId. */
-    void sigProgressPercentageChange(const QUuid &aProgressId, const int iPercent);
-    /** Notifies about task complete for progress with @a strProgressId. */
-    void sigProgressTaskComplete(const QUuid &aProgressId);
+    /** Notifies about @a iPercent change for progress with @a uProgressId. */
+    void sigProgressPercentageChange(const QUuid &uProgressId, const int iPercent);
+    /** Notifies about task complete for progress with @a uProgressId. */
+    void sigProgressTaskComplete(const QUuid &uProgressId);
 
 public:
 

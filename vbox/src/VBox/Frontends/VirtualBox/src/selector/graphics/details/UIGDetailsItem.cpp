@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIGDetailsItem.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsItem class definition.
  */
@@ -328,9 +328,9 @@ void UIGDetailsItem::paintText(QPainter *pPainter, QPoint point,
     pPainter->restore();
 }
 
-UIBuildStep::UIBuildStep(QObject *pParent, QObject *pBuildObject, const QUuid &aStepId, int iStepNumber)
+UIBuildStep::UIBuildStep(QObject *pParent, QObject *pBuildObject, const QUuid &uStepId, int iStepNumber)
     : QObject(pParent)
-    , m_uStepId(aStepId)
+    , m_uStepId(uStepId)
     , m_iStepNumber(iStepNumber)
 {
     /* Prepare connections: */

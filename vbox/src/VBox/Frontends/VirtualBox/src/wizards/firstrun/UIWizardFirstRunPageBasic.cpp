@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRunPageBasic.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRunPageBasic class implementation.
  */
@@ -56,12 +56,12 @@ QUuid UIWizardFirstRunPage::id() const
     return m_pMediaSelector->id();
 }
 
-void UIWizardFirstRunPage::setId(const QUuid &aId)
+void UIWizardFirstRunPage::setId(const QUuid &uId)
 {
-    m_pMediaSelector->setCurrentItem(aId);
+    m_pMediaSelector->setCurrentItem(uId);
 }
 
-UIWizardFirstRunPageBasic::UIWizardFirstRunPageBasic(const QUuid &aMachineId, bool fBootHardDiskWasSet)
+UIWizardFirstRunPageBasic::UIWizardFirstRunPageBasic(const QUuid &uMachineId, bool fBootHardDiskWasSet)
     : UIWizardFirstRunPage(fBootHardDiskWasSet)
 {
     /* Create widgets: */
@@ -72,7 +72,7 @@ UIWizardFirstRunPageBasic::UIWizardFirstRunPageBasic(const QUuid &aMachineId, bo
         {
             m_pMediaSelector = new UIMediaComboBox(this);
             {
-                m_pMediaSelector->setMachineId(aMachineId);
+                m_pMediaSelector->setMachineId(uMachineId);
                 m_pMediaSelector->setType(UIMediumDeviceType_DVD);
                 m_pMediaSelector->repopulate();
             }

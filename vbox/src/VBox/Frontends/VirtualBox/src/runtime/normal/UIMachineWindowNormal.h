@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -67,13 +67,13 @@ private slots:
 
 #ifndef RT_OS_DARWIN
     /** Handles menu-bar configuration-change. */
-    void sltHandleMenuBarConfigurationChange(const QUuid &aMachineID);
+    void sltHandleMenuBarConfigurationChange(const QUuid &uMachineID);
     /** Handles menu-bar context-menu-request. */
     void sltHandleMenuBarContextMenuRequest(const QPoint &position);
 #endif /* !RT_OS_DARWIN */
 
     /** Handles status-bar configuration-change. */
-    void sltHandleStatusBarConfigurationChange(const QUuid &aMachineID);
+    void sltHandleStatusBarConfigurationChange(const QUuid &uMachineID);
     /** Handles status-bar context-menu-request. */
     void sltHandleStatusBarContextMenuRequest(const QPoint &position);
     /** Handles status-bar indicator context-menu-request. */

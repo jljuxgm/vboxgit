@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class implementation.
  */
@@ -133,8 +133,8 @@ struct UIDataSettingsMachineInterface
 };
 
 
-UIMachineSettingsInterface::UIMachineSettingsInterface(const QUuid &aMachineId)
-    : m_uMachineId(aMachineId)
+UIMachineSettingsInterface::UIMachineSettingsInterface(const QUuid &uMachineId)
+    : m_uMachineId(uMachineId)
     , m_pActionPool(0)
     , m_pCache(0)
 {

@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -576,10 +576,10 @@ void UIAddDiskEncryptionPasswordDialog::prepare()
 }
 
 /* static */
-bool UIAddDiskEncryptionPasswordDialog::isPasswordValid(const QUuid &aMediumId, const QString strPassword)
+bool UIAddDiskEncryptionPasswordDialog::isPasswordValid(const QUuid &uMediumId, const QString strPassword)
 {
     /* Look for the medium with passed ID: */
-    const UIMedium uimedium = vboxGlobal().medium(aMediumId);
+    const UIMedium uimedium = vboxGlobal().medium(uMediumId);
     if (!uimedium.isNull())
     {
         /* Check wrapped medium for validity: */

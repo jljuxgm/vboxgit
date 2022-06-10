@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIIndicatorsPool.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class declaration.
  */
@@ -66,7 +66,7 @@ public:
 private slots:
 
     /** Handles configuration change. */
-    void sltHandleConfigurationChange(const QUuid &aMachineID);
+    void sltHandleConfigurationChange(const QUuid &uMachineID);
 
     /** Handles indicator-states auto-update. */
     void sltAutoUpdateIndicatorStates();

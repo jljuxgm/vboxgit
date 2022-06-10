@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -137,10 +137,10 @@ void UIMachineWindowNormal::sltHandleSessionInitialized()
 }
 
 #ifndef RT_OS_DARWIN
-void UIMachineWindowNormal::sltHandleMenuBarConfigurationChange(const QUuid &aMachineID)
+void UIMachineWindowNormal::sltHandleMenuBarConfigurationChange(const QUuid &uMachineID)
 {
     /* Skip unrelated machine IDs: */
-    if (vboxGlobal().managedVMUuid() != aMachineID)
+    if (vboxGlobal().managedVMUuid() != uMachineID)
         return;
 
     /* Check whether menu-bar is enabled: */
@@ -171,10 +171,10 @@ void UIMachineWindowNormal::sltHandleMenuBarContextMenuRequest(const QPoint &pos
 }
 #endif /* !RT_OS_DARWIN */
 
-void UIMachineWindowNormal::sltHandleStatusBarConfigurationChange(const QUuid &aMachineID)
+void UIMachineWindowNormal::sltHandleStatusBarConfigurationChange(const QUuid &uMachineID)
 {
     /* Skip unrelated machine IDs: */
-    if (vboxGlobal().managedVMUuid() != aMachineID)
+    if (vboxGlobal().managedVMUuid() != uMachineID)
         return;
 
     /* Check whether status-bar is enabled: */

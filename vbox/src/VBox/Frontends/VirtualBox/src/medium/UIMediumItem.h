@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMediumItem.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -109,8 +109,8 @@ private:
     /** Refreshes item information such as icon, text and tool-tip. */
     void refresh();
 
-    /** Releases UIMedium wrapped by <i>this</i> item from virtual machine with @a strMachineId. */
-    bool releaseFrom(const QUuid &aMachineId);
+    /** Releases UIMedium wrapped by <i>this</i> item from virtual machine with @a uMachineId. */
+    bool releaseFrom(const QUuid &uMachineId);
 
     /** Formats field text. */
     static QString formatFieldText(const QString &strText, bool fCompact = true, const QString &strElipsis = "middle");

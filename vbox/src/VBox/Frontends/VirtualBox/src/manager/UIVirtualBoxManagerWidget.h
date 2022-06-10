@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -51,7 +51,7 @@ signals:
     void sigGroupSavingStateChanged();
 
     /** Notifies aboud Details-pane link clicked. */
-    void sigMachineSettingsLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &aId);
+    void sigMachineSettingsLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &uId);
 
     /** Notifies about Tool type change. */
     void sigToolTypeChange();

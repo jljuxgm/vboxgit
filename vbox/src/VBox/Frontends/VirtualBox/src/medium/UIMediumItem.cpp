@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -251,10 +251,10 @@ void UIMediumItem::refresh()
     }
 }
 
-bool UIMediumItem::releaseFrom(const QUuid &aMachineId)
+bool UIMediumItem::releaseFrom(const QUuid &uMachineId)
 {
     /* Open session: */
-    CSession session = vboxGlobal().openSession(aMachineId);
+    CSession session = vboxGlobal().openSession(uMachineId);
     if (session.isNull())
         return false;
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -135,8 +135,8 @@ protected:
     /** Returns whether include ISOs selected. */
     bool isIncludeISOsSelected() const;
 
-    /** Defines provider by @a strId. */
-    void setProviderById(const QUuid &strId);
+    /** Defines provider by @a uId. */
+    void setProviderById(const QUuid &uId);
     /** Returns provider ID. */
     QUuid providerId() const;
     /** Returns provider short name. */

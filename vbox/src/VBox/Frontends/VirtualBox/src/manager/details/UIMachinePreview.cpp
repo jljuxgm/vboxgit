@@ -1,4 +1,4 @@
-/* $Id: UIMachinePreview.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMachinePreview.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachinePreview class implementation.
  */
@@ -169,10 +169,10 @@ CMachine UIMachinePreview::machine() const
     return m_machine;
 }
 
-void UIMachinePreview::sltMachineStateChange(const QUuid &aId)
+void UIMachinePreview::sltMachineStateChange(const QUuid &uId)
 {
     /* Make sure its the event for our machine: */
-    if (m_machine.isNull() || m_machine.GetId() != aId)
+    if (m_machine.isNull() || m_machine.GetId() != uId)
         return;
 
     /* Restart the preview: */

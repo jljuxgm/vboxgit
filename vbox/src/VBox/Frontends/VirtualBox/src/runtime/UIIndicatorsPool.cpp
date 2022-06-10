@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -1266,10 +1266,10 @@ void UIIndicatorsPool::setAutoUpdateIndicatorStates(bool fEnabled)
         m_pTimerAutoUpdate->stop();
 }
 
-void UIIndicatorsPool::sltHandleConfigurationChange(const QUuid &aMachineID)
+void UIIndicatorsPool::sltHandleConfigurationChange(const QUuid &uMachineID)
 {
     /* Skip unrelated machine IDs: */
-    if (vboxGlobal().managedVMUuid() != aMachineID)
+    if (vboxGlobal().managedVMUuid() != uMachineID)
         return;
 
     /* Update pool: */

@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIProgressDialog.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class declaration.
  */
@@ -87,10 +87,10 @@ protected:
 
 private slots:
 
-    /** Handles percentage changed event for progress with @a strProgressId to @a iPercent. */
-    void sltHandleProgressPercentageChange(const QUuid &aProgressId, const int iPercent);
-    /** Handles task completed event for progress with @a strProgressId. */
-    void sltHandleProgressTaskComplete(const QUuid &aProgressId);
+    /** Handles percentage changed event for progress with @a uProgressId to @a iPercent. */
+    void sltHandleProgressPercentageChange(const QUuid &uProgressId, const int iPercent);
+    /** Handles task completed event for progress with @a uProgressId. */
+    void sltHandleProgressTaskComplete(const QUuid &uProgressId);
 
     /** Handles window stack changed signal. */
     void sltHandleWindowStackChange();

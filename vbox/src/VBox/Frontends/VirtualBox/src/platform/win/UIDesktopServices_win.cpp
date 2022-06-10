@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_win.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIDesktopServices_win.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to Windows..
  */
@@ -33,7 +33,7 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, const QString &strDstPath, const QString &strName, const QUuid &aUuid)
+bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, const QString &strDstPath, const QString &strName, const QUuid &uUuid)
 {
     IShellLink *pShl = NULL;
     IPersistFile *pPPF = NULL;
@@ -51,7 +51,7 @@ bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, 
         rc = pShl->SetWorkingDirectory(strVBoxDir.utf16());
         if (FAILED(rc))
             break;
-        QString strArgs = QString("--comment \"%1\" --startvm \"%2\"").arg(strName).arg(aUuid.toString());
+        QString strArgs = QString("--comment \"%1\" --startvm \"%2\"").arg(strName).arg(uUuid.toString());
         rc = pShl->SetArguments(strArgs.utf16());
         if (FAILED(rc))
             break;

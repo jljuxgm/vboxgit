@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -544,11 +544,11 @@ void UIMediumSelector::sltHandleSearchTermChange(QString searchTerm)
     performMediumSearch();
 }
 
-void UIMediumSelector::selectMedium(const QUuid &aMediumID)
+void UIMediumSelector::selectMedium(const QUuid &uMediumID)
 {
     if (!m_pTreeWidget)
         return;
-    UIMediumItem *pMediumItem = searchItem(0, aMediumID);
+    UIMediumItem *pMediumItem = searchItem(0, uMediumID);
     if (pMediumItem)
     {
         m_pTreeWidget->setCurrentItem(pMediumItem);

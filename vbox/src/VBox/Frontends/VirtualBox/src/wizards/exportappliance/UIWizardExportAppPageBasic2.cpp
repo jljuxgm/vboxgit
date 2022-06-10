@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -438,9 +438,9 @@ bool UIWizardExportAppPage2::isIncludeISOsSelected() const
     return m_pIncludeISOsCheckbox->isChecked();
 }
 
-void UIWizardExportAppPage2::setProviderById(const QUuid &aId)
+void UIWizardExportAppPage2::setProviderById(const QUuid &uId)
 {
-    const int iIndex = m_pFormatComboBox->findData(aId, FormatData_ID);
+    const int iIndex = m_pFormatComboBox->findData(uId, FormatData_ID);
     AssertMsg(iIndex != -1, ("Data not found!"));
     m_pFormatComboBox->setCurrentIndex(iIndex);
 }

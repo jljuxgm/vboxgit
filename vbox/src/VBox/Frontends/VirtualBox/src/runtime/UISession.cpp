@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UISession.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -597,10 +597,10 @@ void UISession::sltCloseRuntimeUI()
 }
 
 #ifdef RT_OS_DARWIN
-void UISession::sltHandleMenuBarConfigurationChange(const QUuid &aMachineID)
+void UISession::sltHandleMenuBarConfigurationChange(const QUuid &uMachineID)
 {
     /* Skip unrelated machine IDs: */
-    if (vboxGlobal().managedVMUuid() != aMachineID)
+    if (vboxGlobal().managedVMUuid() != uMachineID)
         return;
 
     /* Update Mac OS X menu-bar: */

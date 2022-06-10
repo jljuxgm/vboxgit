@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 74885 2018-10-17 15:13:30Z vboxsync $ */
+/* $Id: UIMachineView.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -500,10 +500,10 @@ void UIMachineView::sltDesktopResized()
     setMaxGuestSize();
 }
 
-void UIMachineView::sltHandleScaleFactorChange(const QUuid &aMachineID)
+void UIMachineView::sltHandleScaleFactorChange(const QUuid &uMachineID)
 {
     /* Skip unrelated machine IDs: */
-    if (aMachineID != vboxGlobal().managedVMUuid())
+    if (uMachineID != vboxGlobal().managedVMUuid())
         return;
 
     /* Acquire selected scale-factor: */
@@ -548,10 +548,10 @@ void UIMachineView::sltHandleScaleFactorChange(const QUuid &aMachineID)
     updateViewport();
 }
 
-void UIMachineView::sltHandleScalingOptimizationChange(const QUuid &aMachineID)
+void UIMachineView::sltHandleScalingOptimizationChange(const QUuid &uMachineID)
 {
     /* Skip unrelated machine IDs: */
-    if (aMachineID != vboxGlobal().managedVMUuid())
+    if (uMachineID != vboxGlobal().managedVMUuid())
         return;
 
     /* Take the scaling-optimization type into account: */

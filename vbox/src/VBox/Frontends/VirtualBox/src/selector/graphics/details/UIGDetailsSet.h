@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIGDetailsSet.h 74942 2018-10-19 12:51:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsSet class declaration.
  */
@@ -62,11 +62,11 @@ public:
 private slots:
 
     /* Handler: Build stuff: */
-    void sltBuildStep(const QUuid &aStepId, const int iStepNumber);
+    void sltBuildStep(const QUuid &uStepId, const int iStepNumber);
 
     /* Handlers: Global event stuff: */
-    void sltMachineStateChange(const QUuid &aId);
-    void sltMachineAttributesChange(const QUuid &aId);
+    void sltMachineStateChange(const QUuid &uId);
+    void sltMachineAttributesChange(const QUuid &uId);
 
     /* Handler: Update stuff: */
     void sltUpdateAppearance();
