@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UIFDCreationDialog.cpp 74805 2018-10-12 15:23:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -91,7 +91,7 @@ void UIFDCreationDialog::prepare()
 {
 
 #ifndef VBOX_WS_MAC
-    setWindowIcon(QIcon(":/fd_add_22px.png"));
+    setWindowIcon(QIcon(":/fd_add_32px.png"));
 #endif
 
     setWindowModality(Qt::WindowModal);
