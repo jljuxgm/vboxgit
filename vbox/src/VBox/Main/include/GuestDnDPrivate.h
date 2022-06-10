@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 74526 2018-09-28 15:08:24Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 74714 2018-10-09 11:50:22Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -389,7 +389,7 @@ public:
 
 public:
 
-    int createIntermediate(DnDURIObject::Type enmType = DnDURIObject::Type_Unknown)
+    int createIntermediate(DnDURIObject::Type enmType)
     {
         reset();
 

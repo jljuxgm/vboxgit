@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 74574 2018-10-02 09:38:42Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 74714 2018-10-09 11:50:22Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -509,7 +509,7 @@ static int vbglR3DnDHGRecvURIData(PVBGLR3GUESTDNDCMDCTX pCtx, PVBOXDNDSNDDATAHDR
 #else
                                 uint32_t fCreationMode = (fMode & RTFS_UNIX_MASK) | RTFS_UNIX_IRUSR | RTFS_UNIX_IWUSR;
 #endif
-                                rc = objFile.OpenEx(strPathAbs, DnDURIObject::Type_File, DnDURIObject::View_Target, fOpen, fCreationMode);
+                                rc = objFile.OpenEx(strPathAbs, DnDURIObject::View_Target, fOpen, fCreationMode);
                                 if (RT_SUCCESS(rc))
                                 {
                                     rc = pDroppedFiles->AddFile(strPathAbs.c_str());
