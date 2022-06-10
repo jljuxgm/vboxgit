@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 77619 2019-03-08 14:17:22Z vboxsync $
+# $Id: vboxtestvms.py 78310 2019-04-26 07:11:56Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77619 $"
+__version__ = "$Revision: 78310 $"
 
 # Standard Python imports.
 import copy;
@@ -1153,6 +1153,9 @@ class TestVmManager(object):
                sKind = 'Ubuntu_64', acCpusSup = range(1, 2), asVirtModesSup = ['hwvirt-np',], fIoApic = True, fNstHwVirt = True,
                sNic0AttachType = 'nat'),
 
+        TestVm('tst-ubuntu1804-own',    kfGrpStdSmoke,       sHd = 'own/ubuntu1804.vdi',
+               sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True),
+
         # DOS and Old Windows.
         AncientTestVm('tst-dos20',              sKind = 'DOS',
                       sHd = '5.2/great-old-ones/t-dos20/t-dos20.vdi'),
@@ -1178,7 +1181,7 @@ class TestVmManager(object):
     def __init__(self, sResourcePath):
         self.sResourcePath = sResourcePath;
 
-    def selectSet(self, fGrouping, sTxsTransport = None, fCheckResources = True):
+    def selectSet(self, fGrouping, sTxsTransport = None, fCheckResources = False):
         """
         Returns a VM set with the selected VMs.
         """
@@ -1208,4 +1211,3 @@ class TestVmManager(object):
     def shutUpPyLint(self):
         """ Shut up already! """
         return self.sResourcePath;
-
