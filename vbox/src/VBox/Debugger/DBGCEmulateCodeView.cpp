@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 73348 2018-07-25 09:25:45Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 73351 2018-07-25 13:02:11Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -625,6 +625,7 @@ const DBGCSXEVT g_aDbgcSxEvents[] =
     { DBGFEVENT_MEMORY_ROM_WRITE,       "rom_write",            NULL,       kDbgcSxEventKind_Plain,     kDbgcEvtState_Disabled, 0,                    NULL },
     { DBGFEVENT_BSOD_MSR,               "bsod_msr",             NULL,       kDbgcSxEventKind_Plain,     kDbgcEvtState_Disabled, DBGCSXEVT_F_BUGCHECK, NULL },
     { DBGFEVENT_BSOD_EFI,               "bsod_efi",             NULL,       kDbgcSxEventKind_Plain,     kDbgcEvtState_Disabled, DBGCSXEVT_F_BUGCHECK, NULL },
+    { DBGFEVENT_BSOD_VMMDEV,            "bsod_vmmdev",          NULL,       kDbgcSxEventKind_Plain,     kDbgcEvtState_Disabled, DBGCSXEVT_F_BUGCHECK, NULL },
 };
 /** Number of entries in g_aDbgcSxEvents.  */
 const uint32_t   g_cDbgcSxEvents = RT_ELEMENTS(g_aDbgcSxEvents);

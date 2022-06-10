@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 70873 2018-02-05 18:13:55Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 73351 2018-07-25 13:02:11Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -2958,10 +2958,35 @@ static NTSTATUS vgdrvNtNotSupportedStub(PDEVICE_OBJECT pDevObj, PIRP pIrp)
 static VOID NTAPI vgdrvNtBugCheckCallback(PVOID pvBuffer, ULONG cbBuffer)
 {
     if (g_pauKiBugCheckData)
+    {
         RTLogBackdoorPrintf("VBoxGuest: BugCheck! P0=%#zx P1=%#zx P2=%#zx P3=%#zx P4=%#zx\n", g_pauKiBugCheckData[0],
-                            g_pauKiBugCheckData[1],  g_pauKiBugCheckData[2], g_pauKiBugCheckData[3],  g_pauKiBugCheckData[4]);
+                            g_pauKiBugCheckData[1], g_pauKiBugCheckData[2], g_pauKiBugCheckData[3], g_pauKiBugCheckData[4]);
+
+        VMMDevReqNtBugCheck *pReq = NULL;
+        int rc = VbglR0GRAlloc((VMMDevRequestHeader **)&pReq, sizeof(*pReq), VMMDevReq_NtBugCheck);
+        if (RT_SUCCESS(rc))
+        {
+            pReq->uBugCheck       = g_pauKiBugCheckData[0];
+            pReq->auParameters[0] = g_pauKiBugCheckData[1];
+            pReq->auParameters[1] = g_pauKiBugCheckData[2];
+            pReq->auParameters[2] = g_pauKiBugCheckData[3];
+            pReq->auParameters[3] = g_pauKiBugCheckData[4];
+            VbglR0GRPerform(&pReq->header);
+            VbglR0GRFree(&pReq->header);
+        }
+    }
     else
+    {
         RTLogBackdoorPrintf("VBoxGuest: BugCheck!\n");
+
+        VMMDevRequestHeader *pReqHdr = NULL;
+        int rc = VbglR0GRAlloc(&pReqHdr, sizeof(*pReqHdr), VMMDevReq_NtBugCheck);
+        if (RT_SUCCESS(rc))
+        {
+            VbglR0GRPerform(pReqHdr);
+            VbglR0GRFree(pReqHdr);
+        }
+    }
 
     RT_NOREF(pvBuffer, cbBuffer);
 }

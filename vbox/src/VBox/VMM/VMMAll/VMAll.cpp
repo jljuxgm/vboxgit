@@ -1,4 +1,4 @@
-/* $Id: VMAll.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: VMAll.cpp 73351 2018-07-25 13:02:11Z vboxsync $ */
 /** @file
  * VM - Virtual Machine All Contexts.
  */
@@ -388,5 +388,44 @@ VMMDECL(const char *) VMGetStateName(VMSTATE enmState)
         default:
             return "Unknown";
     }
+}
+
+
+/**
+ * Gets the total reset count.
+ *
+ * @returns Reset count. UINT32_MAX if @a pVM is invalid.
+ * @param   pVM         The VM handle.
+ */
+VMMDECL(uint32_t) VMGetResetCount(PVM pVM)
+{
+    VM_ASSERT_VALID_EXT_RETURN(pVM, UINT32_MAX);
+    return pVM->vm.s.cResets;
+}
+
+
+/**
+ * Gets the soft reset count.
+ *
+ * @returns Soft reset count. UINT32_MAX if @a pVM is invalid.
+ * @param   pVM         The VM handle.
+ */
+VMMDECL(uint32_t) VMGetSoftResetCount(PVM pVM)
+{
+    VM_ASSERT_VALID_EXT_RETURN(pVM, UINT32_MAX);
+    return pVM->vm.s.cSoftResets;
+}
+
+
+/**
+ * Gets the hard reset count.
+ *
+ * @returns Hard reset count. UINT32_MAX if @a pVM is invalid.
+ * @param   pVM         The VM handle.
+ */
+VMMDECL(uint32_t) VMGetHardResetCount(PVM pVM)
+{
+    VM_ASSERT_VALID_EXT_RETURN(pVM, UINT32_MAX);
+    return pVM->vm.s.cHardResets;
 }
 

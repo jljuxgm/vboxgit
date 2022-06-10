@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VM.cpp 73351 2018-07-25 13:02:11Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2753,6 +2753,8 @@ static DECLCALLBACK(VBOXSTRICTRC) vmR3SoftReset(PVM pVM, PVMCPU pVCpu, void *pvU
                                  VMSTATE_SOFT_RESETTING_LS,  VMSTATE_RUNNING_LS);
         if (RT_FAILURE(rc))
             return rc;
+        pVM->vm.s.cResets++;
+        pVM->vm.s.cSoftResets++;
     }
 
     /*
@@ -2843,6 +2845,8 @@ static DECLCALLBACK(VBOXSTRICTRC) vmR3HardReset(PVM pVM, PVMCPU pVCpu, void *pvU
                                  VMSTATE_RESETTING_LS,  VMSTATE_RUNNING_LS);
         if (RT_FAILURE(rc))
             return rc;
+        pVM->vm.s.cResets++;
+        pVM->vm.s.cHardResets++;
     }
 
     /*
