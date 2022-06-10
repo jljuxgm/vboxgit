@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 73199 2018-07-18 12:13:55Z vboxsync $ */
+/* $Id: PGMAllGst.h 73261 2018-07-20 11:00:53Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -36,6 +36,40 @@ PGM_GST_DECL(int, Relocate)(PVMCPU pVCpu, RTGCPTR offDelta);
 PGM_GST_DECL(int, Exit)(PVMCPU pVCpu);
 #endif
 RT_C_DECLS_END
+
+
+/**
+ * Enters the guest mode.
+ *
+ * @returns VBox status code.
+ * @param   pVCpu       The cross context virtual CPU structure.
+ * @param   GCPhysCR3   The physical address from the CR3 register.
+ */
+PGM_GST_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
+{
+    /*
+     * Map and monitor CR3
+     */
+    uintptr_t idxBth = pVCpu->pgm.s.idxBothModeData;
+    AssertReturn(idxBth < RT_ELEMENTS(g_aPgmBothModeData), VERR_PGM_MODE_IPE);
+    AssertReturn(g_aPgmBothModeData[idxBth].pfnMapCR3, VERR_PGM_MODE_IPE);
+    return g_aPgmBothModeData[idxBth].pfnMapCR3(pVCpu, GCPhysCR3);
+}
+
+
+/**
+ * Exits the guest mode.
+ *
+ * @returns VBox status code.
+ * @param   pVCpu       The cross context virtual CPU structure.
+ */
+PGM_GST_DECL(int, Exit)(PVMCPU pVCpu)
+{
+    uintptr_t idxBth = pVCpu->pgm.s.idxBothModeData;
+    AssertReturn(idxBth < RT_ELEMENTS(g_aPgmBothModeData), VERR_PGM_MODE_IPE);
+    AssertReturn(g_aPgmBothModeData[idxBth].pfnUnmapCR3, VERR_PGM_MODE_IPE);
+    return g_aPgmBothModeData[idxBth].pfnUnmapCR3(pVCpu);
+}
 
 
 #if PGM_GST_TYPE == PGM_TYPE_32BIT \
