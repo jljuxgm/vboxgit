@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 76750 2019-01-09 21:48:49Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.h 77286 2019-02-12 15:51:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -75,8 +75,8 @@ public:
     bool isOpened() const;
     void setIsOpened(bool flag);
 
-    /** Full absolute path of the item. Without the trailing '/' */
-    QString  path() const;
+    /** Full absolute path of the item. With or without the trailing '/' */
+    QString  path(bool fRemoveTrailingDelimiters = false) const;
     void setPath(const QString &path);
 
     /** Returns true if this is directory and name is ".." */
