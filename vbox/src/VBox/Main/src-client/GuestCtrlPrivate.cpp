@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 76403 2018-12-23 15:19:41Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -34,7 +34,7 @@
 #include <iprt/ctype.h>
 #ifdef DEBUG
 # include <iprt/file.h>
-#endif /* DEBUG */
+#endif
 #include <iprt/fs.h>
 #include <iprt/rand.h>
 #include <iprt/time.h>

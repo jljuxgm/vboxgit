@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 75926 2018-12-03 21:52:50Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 76403 2018-12-23 15:19:41Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -30,6 +30,7 @@
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/string.h>
 #include <VBox/com/VirtualBox.h>
+#include <VBox/err.h> /* VERR_GSTCTL_GUEST_ERROR */
 
 #include <map>
 #include <vector>

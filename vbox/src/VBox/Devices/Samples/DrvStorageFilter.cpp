@@ -1,4 +1,4 @@
-/* $Id: DrvStorageFilter.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DrvStorageFilter.cpp 76403 2018-12-23 15:19:41Z vboxsync $ */
 /** @file
  * VBox storage filter driver sample.
  */
@@ -22,8 +22,9 @@
 #define LOG_GROUP LOG_GROUP_MISC
 #include <VBox/vmm/pdmdrv.h>
 #include <VBox/vmm/pdmstorageifs.h>
-#include <VBox/version.h>
+#include <VBox/err.h>
 #include <VBox/log.h>
+#include <VBox/version.h>
 
 #include <iprt/uuid.h>
 
