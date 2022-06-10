@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76654 2019-01-06 15:53:14Z vboxsync $
+# $Id: Makefile.kmk 76655 2019-01-06 15:53:58Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -161,10 +161,9 @@ ifdef VBOX_WITH_EHCI
  VBOX_MAIN_DEFS += VBOX_WITH_EHCI
  endif
 endif
-
-
 # Unconditionally enable the new semaphore key generation code
 VBOX_MAIN_DEFS += VBOX_WITH_NEW_SYS_V_KEYGEN
+
 
 VBOX_IDL_FILE.MSCOM    = $(VBOX_PATH_SDK)/bindings/mscom/idl/VirtualBox.idl
 VBOX_IDL_FILE.XPCOM    = $(VBOX_PATH_SDK)/bindings/xpcom/idl/VirtualBox_XPCOM.idl
