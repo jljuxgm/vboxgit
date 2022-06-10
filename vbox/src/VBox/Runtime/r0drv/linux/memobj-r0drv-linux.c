@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 77464 2019-02-26 06:48:27Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 77549 2019-03-04 10:00:34Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -38,6 +38,7 @@
 #include <iprt/process.h>
 #include <iprt/string.h>
 #include "internal/memobj.h"
+#include "internal/iprt.h"
 
 
 /*********************************************************************************************************************************
@@ -894,7 +895,7 @@ static int rtR0MemObjLinuxAllocPhysSub(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJTYP
  * @returns Pointer to the page structur or NULL if it could not be found.
  * @param   pv      The kernel virtual address.
  */
-static struct page *rtR0MemObjLinuxVirtToPage(void *pv)
+RTDECL(struct page *) rtR0MemObjLinuxVirtToPage(void *pv)
 {
     unsigned long   ulAddr = (unsigned long)pv;
     unsigned long   pfn;
@@ -984,6 +985,7 @@ static struct page *rtR0MemObjLinuxVirtToPage(void *pv)
         return NULL;
     return pte_page(u.Entry);
 }
+RT_EXPORT_SYMBOL(rtR0MemObjLinuxVirtToPage);
 
 
 DECLHIDDEN(int) rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS PhysHighest, size_t uAlignment)

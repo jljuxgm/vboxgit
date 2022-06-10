@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 77417 2019-02-21 23:50:47Z vboxsync $ */
+/* $Id: the-linux-kernel.h 77549 2019-03-04 10:00:34Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -459,6 +459,11 @@ typedef struct tq_struct    RTR0LNXWORKQUEUEITEM;
 #endif
 DECLHIDDEN(void) rtR0LnxWorkqueuePush(RTR0LNXWORKQUEUEITEM *pWork, void (*pfnWorker)(RTR0LNXWORKQUEUEITEM *));
 DECLHIDDEN(void) rtR0LnxWorkqueueFlush(void);
+
+/*
+ * Memory hacks from memobj-r0drv-linux.c that shared folders need.
+ */
+RTDECL(struct page *) rtR0MemObjLinuxVirtToPage(void *pv);
 
 
 #endif /* !IPRT_INCLUDED_SRC_r0drv_linux_the_linux_kernel_h */
