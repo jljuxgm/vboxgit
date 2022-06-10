@@ -1,4 +1,4 @@
-/* $Id: VDInternal.h 66486 2017-04-10 07:23:59Z vboxsync $ */
+/* $Id: VDInternal.h 75349 2018-11-09 10:36:54Z vboxsync $ */
 /** @file
  * VD - Virtual Disk container implementation, internal header file.
  */
@@ -73,6 +73,8 @@ typedef struct VDIMAGE
     struct VDIMAGE     *pPrev;
     /** Link to child image descriptor, if any. */
     struct VDIMAGE     *pNext;
+    /** Cached image size. */
+    uint64_t           cbImage;
     /** Container base filename. (UTF-8) */
     char               *pszFilename;
     /** Data managed by the backend which keeps the actual info. */
@@ -90,6 +92,9 @@ typedef struct VDIMAGE
     /** I/O related things. */
     VDIO                VDIo;
 } VDIMAGE, *PVDIMAGE;
+
+/** The special uninitialized size value for he image. */
+#define VD_IMAGE_SIZE_UNINITIALIZED UINT64_C(0)
 
 /**
  * Virtual disk cache image descriptor.
