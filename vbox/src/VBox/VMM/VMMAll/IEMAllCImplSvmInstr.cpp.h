@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 75611 2018-11-20 11:20:25Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 75638 2018-11-21 10:49:32Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -16,6 +16,9 @@
  */
 
 
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM
 /**
  * Check the common SVM instruction preconditions.
