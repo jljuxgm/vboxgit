@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 76617 2019-01-02 19:47:37Z vboxsync $ */
+/* $Id: extvfs.cpp 76619 2019-01-02 19:54:18Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -2119,6 +2119,8 @@ static DECLCALLBACK(int) rtFsExtDir_Open(void *pvThis, const char *pszEntry, uin
     PRTFSEXTDIR  pThis = (PRTFSEXTDIR)pvThis;
     PRTFSEXTVOL  pVol  = pThis->pVol;
     int rc = VINF_SUCCESS;
+
+    RT_NOREF(fFlags);
 
     /*
      * We cannot create or replace anything, just open stuff.
