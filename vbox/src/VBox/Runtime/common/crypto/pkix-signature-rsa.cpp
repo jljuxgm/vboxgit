@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-rsa.cpp 73665 2018-08-14 17:49:23Z vboxsync $ */
+/* $Id: pkix-signature-rsa.cpp 73668 2018-08-14 17:52:12Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schema Algorithm, RSA Providers.
  */
@@ -170,6 +170,7 @@ static DECLCALLBACK(void) rtCrPkixSignatureRsa_Delete(PCRTCRPKIXSIGNATUREDESC pD
     PRTCRPKIXSIGNATURERSA pThis = (PRTCRPKIXSIGNATURERSA)pvState;
     RT_NOREF_PV(fSigning); RT_NOREF_PV(pDesc);
     Assert(pThis->fSigning == fSigning);
+    NOREF(pThis);
 }
 
 
