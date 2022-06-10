@@ -1,4 +1,4 @@
-/* $Id: VSCSIVpdPagePool.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VSCSIVpdPagePool.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: VPD page pool
  */
@@ -83,7 +83,7 @@ int vscsiVpdPagePoolAllocNewPage(PVSCSIVPDPOOL pVScsiVpdPool, uint8_t uPage, siz
             return VERR_ALREADY_EXISTS;
     }
 
-    pPage = (PVSCSIVPDPAGE)RTMemAllocZ(RT_OFFSETOF(VSCSIVPDPAGE, abPage[cbPage]));
+    pPage = (PVSCSIVPDPAGE)RTMemAllocZ(RT_UOFFSETOF_DYN(VSCSIVPDPAGE, abPage[cbPage]));
     if (pPage)
     {
         pPage->cbPage    = cbPage;

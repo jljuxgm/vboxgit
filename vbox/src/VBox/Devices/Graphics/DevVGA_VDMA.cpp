@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 71893 2018-04-18 10:55:06Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -2544,7 +2544,7 @@ static int vboxVDMACmdExecBlt(PVBOXVDMAHOST pVdma, const VBOXVDMACMD_DMA_PRESENT
     RT_UNTRUSTED_NONVOLATILE_COPY_FENCE();
 
     AssertReturn(BltSafe.cDstSubRects < _8M, VERR_INVALID_PARAMETER);
-    uint32_t const cbBlt = RT_UOFFSETOF(VBOXVDMACMD_DMA_PRESENT_BLT, aDstSubRects[BltSafe.cDstSubRects]);
+    uint32_t const cbBlt = RT_UOFFSETOF_DYN(VBOXVDMACMD_DMA_PRESENT_BLT, aDstSubRects[BltSafe.cDstSubRects]);
     AssertReturn(cbBuffer >= cbBlt, VERR_INVALID_PARAMETER);
 
     /*

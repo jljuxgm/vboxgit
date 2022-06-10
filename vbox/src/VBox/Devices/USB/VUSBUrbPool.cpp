@@ -1,4 +1,4 @@
-/* $Id: VUSBUrbPool.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VUSBUrbPool.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Virtual USB - URB pool.
  */
@@ -172,7 +172,7 @@ DECLHIDDEN(PVUSBURB) vusbUrbPoolAlloc(PVUSBURBPOOL pUrbPool, VUSBXFERTYPE enmTyp
                                : cbMem <= _32K ? RT_ALIGN_32(cbMem, _4K)
                                                : RT_ALIGN_32(cbMem, 16*_1K);
 
-        pHdr = (PVUSBURBHDR)RTMemAllocZ(RT_OFFSETOF(VUSBURBHDR, Urb.abData[cbDataAllocated]));
+        pHdr = (PVUSBURBHDR)RTMemAllocZ(RT_UOFFSETOF_DYN(VUSBURBHDR, Urb.abData[cbDataAllocated]));
         if (RT_UNLIKELY(!pHdr))
         {
             RTCritSectLeave(&pUrbPool->CritSectPool);

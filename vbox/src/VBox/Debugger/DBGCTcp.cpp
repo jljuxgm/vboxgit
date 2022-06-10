@@ -1,4 +1,4 @@
-/* $Id: DBGCTcp.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DBGCTcp.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, TCP backend.
  */
@@ -50,7 +50,7 @@ typedef struct DBGCTCP
 typedef DBGCTCP *PDBGCTCP;
 
 /** Converts a pointer to DBGCTCP::Back to a pointer to DBGCTCP. */
-#define DBGCTCP_BACK2DBGCTCP(pBack) ( (PDBGCTCP)((char *)pBack - RT_OFFSETOF(DBGCTCP, Back)) )
+#define DBGCTCP_BACK2DBGCTCP(pBack) ( (PDBGCTCP)((char *)(pBack) - RT_UOFFSETOF(DBGCTCP, Back)) )
 
 
 /*********************************************************************************************************************************

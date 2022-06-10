@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 73058 2018-07-11 10:12:55Z vboxsync $ */
+/* $Id: DrvAudio.h 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -144,7 +144,7 @@ typedef struct DRVAUDIO
 
 /** Makes a PDRVAUDIO out of a PPDMIAUDIOCONNECTOR. */
 #define PDMIAUDIOCONNECTOR_2_DRVAUDIO(pInterface) \
-    ( (PDRVAUDIO)((uintptr_t)pInterface - RT_OFFSETOF(DRVAUDIO, IAudioConnector)) )
+    ( (PDRVAUDIO)((uintptr_t)pInterface - RT_UOFFSETOF(DRVAUDIO, IAudioConnector)) )
 
 
 bool DrvAudioHlpAudFmtIsSigned(PDMAUDIOFMT enmFmt);

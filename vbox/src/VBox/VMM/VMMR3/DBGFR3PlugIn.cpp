@@ -1,4 +1,4 @@
-/* $Id: DBGFR3PlugIn.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
+/* $Id: DBGFR3PlugIn.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Plug-In Support.
  */
@@ -312,7 +312,7 @@ static DECLCALLBACK(int) dbgfR3PlugInLoad(PUVM pUVM, const char *pszName, const 
      * Create a module structure and we can pass around via RTPathTraverseList if needed.
      */
     size_t cbName = strlen(pszName) + 1;
-    pPlugIn = (PDBGFPLUGIN)MMR3HeapAllocZU(pUVM, MM_TAG_DBGF, RT_UOFFSETOF(DBGFPLUGIN, szName[cbName]));
+    pPlugIn = (PDBGFPLUGIN)MMR3HeapAllocZU(pUVM, MM_TAG_DBGF, RT_UOFFSETOF_DYN(DBGFPLUGIN, szName[cbName]));
     if (RT_UNLIKELY(!pPlugIn))
     {
         DBGF_PLUG_IN_WRITE_UNLOCK(pUVM);

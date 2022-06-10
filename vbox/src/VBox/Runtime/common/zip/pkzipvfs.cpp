@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: pkzipvfs.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -716,7 +716,7 @@ static int rtZipPkzipFssIosReadEocb(PRTZIPPKZIPFSSTREAM pThis)
                 if (eocd.u32Magic == RTZIPPKZIPENDOFCENTRDIRREC_MAGIC)
                 {
                     /* sanity check */
-                    if (off + RT_OFFSETOF(RTZIPPKZIPENDOFCENTRDIRREC, u8Comment) + eocd.cbComment == cbFile)
+                    if (off + RT_UOFFSETOF(RTZIPPKZIPENDOFCENTRDIRREC, u8Comment) + eocd.cbComment == cbFile)
                     {
                         pThis->offFirstCdh = eocd.offCentrDir;
                         pThis->offNextCdh = eocd.offCentrDir;

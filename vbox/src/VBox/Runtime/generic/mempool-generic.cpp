@@ -1,4 +1,4 @@
-/* $Id: mempool-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: mempool-generic.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation Pool.
  */
@@ -134,7 +134,7 @@ RTDECL(int) RTMemPoolCreate(PRTMEMPOOL phMemPool, const char *pszName)
     Assert(*pszName);
 
     size_t          cchName  = strlen(pszName);
-    PRTMEMPOOLINT   pMemPool = (PRTMEMPOOLINT)RTMemAlloc(RT_OFFSETOF(RTMEMPOOLINT, szName[cchName + 1]));
+    PRTMEMPOOLINT   pMemPool = (PRTMEMPOOLINT)RTMemAlloc(RT_UOFFSETOF_DYN(RTMEMPOOLINT, szName[cchName + 1]));
     if (!pMemPool)
         return VERR_NO_MEMORY;
     int rc = RTSpinlockCreate(&pMemPool->hSpinLock, RTSPINLOCK_FLAGS_INTERRUPT_UNSAFE, "RTMemPoolCreate");

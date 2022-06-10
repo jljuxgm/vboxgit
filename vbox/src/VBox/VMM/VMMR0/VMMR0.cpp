@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 72805 2018-07-03 04:05:43Z vboxsync $ */
+/* $Id: VMMR0.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2290,7 +2290,7 @@ VMMR0DECL(void) vmmR0LoggerFlush(PRTLOGGER pLogger)
      * Convert the pLogger into a VM handle and 'call' back to Ring-3.
      * (This is a bit paranoid code.)
      */
-    PVMMR0LOGGER pR0Logger = (PVMMR0LOGGER)((uintptr_t)pLogger - RT_OFFSETOF(VMMR0LOGGER, Logger));
+    PVMMR0LOGGER pR0Logger = (PVMMR0LOGGER)((uintptr_t)pLogger - RT_UOFFSETOF(VMMR0LOGGER, Logger));
     if (    !VALID_PTR(pR0Logger)
         ||  !VALID_PTR(pR0Logger + 1)
         ||  pLogger->u32Magic != RTLOGGER_MAGIC)

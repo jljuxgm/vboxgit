@@ -1,4 +1,4 @@
-/* $Id: dbgcfg.cpp 72264 2018-05-18 16:14:52Z vboxsync $ */
+/* $Id: dbgcfg.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
@@ -1954,7 +1954,7 @@ static int rtDbgCfgChangeStringList(PRTDBGCFGINT pThis, RTDBGCFGOP enmOp, const 
             /*
              * We're adding a new one.
              */
-            PRTDBGCFGSTR pNew = (PRTDBGCFGSTR)RTMemAlloc(RT_OFFSETOF(RTDBGCFGSTR, sz[cchPath + 1]));
+            PRTDBGCFGSTR pNew = (PRTDBGCFGSTR)RTMemAlloc(RT_UOFFSETOF_DYN(RTDBGCFGSTR, sz[cchPath + 1]));
             if (!pNew)
                 return VERR_NO_MEMORY;
             pNew->cch = (uint16_t)cchPath;

@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 73016 2018-07-10 04:44:16Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5281,7 +5281,7 @@ VMMR0DECL(int) VMXR0Execute64BitsHandler(PVMCPU pVCpu, HM64ON32OP enmOp, uint32_
     STAM_PROFILE_ADV_START(&pVCpu->hm.s.StatWorldSwitch3264, z);
 
     /* Call the switcher. */
-    int rc = pVM->hm.s.pfnHost32ToGuest64R0(pVM, RT_OFFSETOF(VM, aCpus[pVCpu->idCpu].cpum) - RT_OFFSETOF(VM, cpum));
+    int rc = pVM->hm.s.pfnHost32ToGuest64R0(pVM, RT_UOFFSETOF_DYN(VM, aCpus[pVCpu->idCpu].cpum) - RT_UOFFSETOF(VM, cpum));
     STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatWorldSwitch3264, z);
 
     /** @todo replace with hmR0VmxEnterRootMode() and hmR0VmxLeaveRootMode(). */

@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInLinux.cpp 69820 2017-11-24 11:43:38Z vboxsync $ */
+/* $Id: DBGPlugInLinux.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
@@ -2132,7 +2132,8 @@ static int dbgDiggerLinuxCfgParseVal(const char *pszCfg, const char **ppszCfgNex
 
         if (*pszCfgCur == '\"')
         {
-            pCfgItem = (PDBGDIGGERLINUXCFGITEM)RTMemAllocZ(RT_OFFSETOF(DBGDIGGERLINUXCFGITEM, u.aszString[pszCfgCur - pszCfg + 1]));
+            pCfgItem = (PDBGDIGGERLINUXCFGITEM)RTMemAllocZ(RT_UOFFSETOF_DYN(DBGDIGGERLINUXCFGITEM,
+                                                                            u.aszString[pszCfgCur - pszCfg + 1]));
             if (pCfgItem)
             {
                 pCfgItem->enmType = DBGDIGGERLINUXCFGITEMTYPE_STRING;

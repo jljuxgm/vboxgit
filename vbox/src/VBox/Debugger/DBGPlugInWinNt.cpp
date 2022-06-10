@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 70338 2017-12-25 17:38:40Z vboxsync $ */
+/* $Id: DBGPlugInWinNt.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -498,7 +498,7 @@ static int dbgDiggerWinNtCreateLdrMod(PDBGDIGGERWINNT pThis, PUVM pUVM, const ch
      * Allocate and create a reader instance.
      */
     uint32_t const      cShs = WINNT_UNION(pThis, pHdrs, FileHeader.NumberOfSections);
-    PDBGDIGGERWINNTRDR  pRdr = (PDBGDIGGERWINNTRDR)RTMemAlloc(RT_OFFSETOF(DBGDIGGERWINNTRDR, aMappings[cShs + 2]));
+    PDBGDIGGERWINNTRDR  pRdr = (PDBGDIGGERWINNTRDR)RTMemAlloc(RT_UOFFSETOF_DYN(DBGDIGGERWINNTRDR, aMappings[cShs + 2]));
     if (!pRdr)
         return VERR_NO_MEMORY;
 

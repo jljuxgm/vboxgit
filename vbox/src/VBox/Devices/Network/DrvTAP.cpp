@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DrvTAP.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DrvTAP - Universal TAP network transport driver.
  */
@@ -133,7 +133,7 @@ typedef struct DRVTAP
 
 
 /** Converts a pointer to TAP::INetworkUp to a PRDVTAP. */
-#define PDMINETWORKUP_2_DRVTAP(pInterface) ( (PDRVTAP)((uintptr_t)pInterface - RT_OFFSETOF(DRVTAP, INetworkUp)) )
+#define PDMINETWORKUP_2_DRVTAP(pInterface) ( (PDRVTAP)((uintptr_t)pInterface - RT_UOFFSETOF(DRVTAP, INetworkUp)) )
 
 
 /*********************************************************************************************************************************

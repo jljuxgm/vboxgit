@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 71775 2018-04-09 14:54:57Z vboxsync $ */
+/* $Id: DevAHCI.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -843,10 +843,10 @@ static bool ahciCancelActiveTasks(PAHCIPort pAhciPort);
 RT_C_DECLS_END
 
 #define PCIDEV_2_PAHCI(pPciDev)                  ( (PAHCI)(pPciDev) )
-#define PDMIBASE_2_PAHCIPORT(pInterface)         ( (PAHCIPort)((uintptr_t)(pInterface) - RT_OFFSETOF(AHCIPort, IBase)) )
-#define PDMIMEDIAPORT_2_PAHCIPORT(pInterface)    ( (PAHCIPort)((uintptr_t)(pInterface) - RT_OFFSETOF(AHCIPort, IPort)) )
-#define PDMIBASE_2_PAHCI(pInterface)             ( (PAHCI)((uintptr_t)(pInterface) - RT_OFFSETOF(AHCI, IBase)) )
-#define PDMILEDPORTS_2_PAHCI(pInterface)         ( (PAHCI)((uintptr_t)(pInterface) - RT_OFFSETOF(AHCI, ILeds)) )
+#define PDMIBASE_2_PAHCIPORT(pInterface)         ( (PAHCIPort)((uintptr_t)(pInterface) - RT_UOFFSETOF(AHCIPort, IBase)) )
+#define PDMIMEDIAPORT_2_PAHCIPORT(pInterface)    ( (PAHCIPort)((uintptr_t)(pInterface) - RT_UOFFSETOF(AHCIPort, IPort)) )
+#define PDMIBASE_2_PAHCI(pInterface)             ( (PAHCI)((uintptr_t)(pInterface) - RT_UOFFSETOF(AHCI, IBase)) )
+#define PDMILEDPORTS_2_PAHCI(pInterface)         ( (PAHCI)((uintptr_t)(pInterface) - RT_UOFFSETOF(AHCI, ILeds)) )
 
 #define AHCI_RTGCPHYS_FROM_U32(Hi, Lo)             ( (RTGCPHYS)RT_MAKE_U64(Lo, Hi) )
 
@@ -3807,7 +3807,7 @@ static bool ahciTransferComplete(PAHCIPort pAhciPort, PAHCIREQ pAhciReq, int rcR
             else
                 u32PRDBC = (uint32_t)pAhciReq->cbTransfer;
 
-            PDMDevHlpPCIPhysWrite(pAhciPort->CTX_SUFF(pDevIns), pAhciReq->GCPhysCmdHdrAddr + RT_OFFSETOF(CmdHdr, u32PRDBC),
+            PDMDevHlpPCIPhysWrite(pAhciPort->CTX_SUFF(pDevIns), pAhciReq->GCPhysCmdHdrAddr + RT_UOFFSETOF(CmdHdr, u32PRDBC),
                                   &u32PRDBC, sizeof(u32PRDBC));
 
             if (pAhciReq->fFlags & AHCI_REQ_OVERFLOW)

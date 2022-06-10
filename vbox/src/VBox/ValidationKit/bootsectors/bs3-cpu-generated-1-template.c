@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1-template.c 69046 2017-10-11 16:11:23Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1-template.c 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, C code template.
  */
@@ -5066,7 +5066,7 @@ static bool BS3_NEAR_CODE Bs3Cg1RunContextModifier(PBS3CG1STATE pThis, PBS3REGCT
                         PtrField.pu32[1] = 0;
                         PtrField.pu64[1] = 0;
                     }
-                    else if (offField <= RT_OFFSETOF(BS3REGCTX, r15) /* Clear the top dword. */)
+                    else if (offField <= RT_UOFFSETOF(BS3REGCTX, r15) /* Clear the top dword. */)
                         PtrField.pu32[1] = 0;
                     else if ((unsigned)(idxField - BS3CG1DST_MM0_LO_ZX) <= (unsigned)(BS3CG1DST_MM7_LO_ZX - BS3CG1DST_MM0_LO_ZX))
                     {

@@ -1,4 +1,4 @@
-/* $Id: info.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: info.c 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  *
  * VirtualBox Windows Guest Shared Folders
@@ -242,7 +242,7 @@ NTSTATUS VBoxMRxQueryDirectory(IN OUT PRX_CONTEXT RxContext)
 
     while ((*pLengthRemaining) && (cFiles > 0) && (pDirEntry != NULL))
     {
-        int cbEntry = RT_OFFSETOF(SHFLDIRINFO, name.String) + pDirEntry->name.u16Size;
+        int cbEntry = RT_UOFFSETOF(SHFLDIRINFO, name.String) + pDirEntry->name.u16Size;
 
         if (cbEntry > cbHGCMBuffer)
         {

@@ -1,4 +1,4 @@
-/* $Id: DBGFOS.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: DBGFOS.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest OS Diggers.
  */
@@ -164,7 +164,7 @@ static DECLCALLBACK(int) dbgfR3OSRegister(PUVM pUVM, PDBGFOSREG pReg)
     /*
      * Allocate a new structure, call the constructor and link it into the list.
      */
-    pOS = (PDBGFOS)MMR3HeapAllocZU(pUVM, MM_TAG_DBGF_OS, RT_OFFSETOF(DBGFOS, abData[pReg->cbData]));
+    pOS = (PDBGFOS)MMR3HeapAllocZU(pUVM, MM_TAG_DBGF_OS, RT_UOFFSETOF_DYN(DBGFOS, abData[pReg->cbData]));
     AssertReturn(pOS, VERR_NO_MEMORY);
     pOS->pReg = pReg;
 

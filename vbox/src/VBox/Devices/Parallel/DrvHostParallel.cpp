@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -153,7 +153,7 @@ typedef enum DRVHOSTPARALLELR0OP
 } DRVHOSTPARALLELR0OP;
 
 /** Converts a pointer to DRVHOSTPARALLEL::IHostDeviceConnector to a PDRHOSTPARALLEL. */
-#define PDMIHOSTPARALLELCONNECTOR_2_DRVHOSTPARALLEL(pInterface) ( (PDRVHOSTPARALLEL)((uintptr_t)pInterface - RT_OFFSETOF(DRVHOSTPARALLEL, CTX_SUFF(IHostParallelConnector))) )
+#define PDMIHOSTPARALLELCONNECTOR_2_DRVHOSTPARALLEL(pInterface) ( (PDRVHOSTPARALLEL)((uintptr_t)pInterface - RT_UOFFSETOF(DRVHOSTPARALLEL, CTX_SUFF(IHostParallelConnector))) )
 
 
 /*********************************************************************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: NetIf-freebsd.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: NetIf-freebsd.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Main - NetIfList, FreeBSD implementation.
  */
@@ -259,7 +259,7 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
         struct sockaddr_dl *pSdl = (struct sockaddr_dl *)(pIfMsg + 1);
 
         size_t cbNameLen = pSdl->sdl_nlen + 1;
-        PNETIFINFO pNew = (PNETIFINFO)RTMemAllocZ(RT_OFFSETOF(NETIFINFO, szName[cbNameLen]));
+        PNETIFINFO pNew = (PNETIFINFO)RTMemAllocZ(RT_UOFFSETOF_DYN(NETIFINFO, szName[cbNameLen]));
         if (!pNew)
         {
             rc = VERR_NO_MEMORY;

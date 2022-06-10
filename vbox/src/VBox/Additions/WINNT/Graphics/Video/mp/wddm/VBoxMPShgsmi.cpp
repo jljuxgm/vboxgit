@@ -1,4 +1,4 @@
-/* $Id: VBoxMPShgsmi.cpp 71596 2018-03-31 21:23:46Z vboxsync $ */
+/* $Id: VBoxMPShgsmi.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -230,7 +230,7 @@ void VBoxSHGSMICommandFree(PVBOXSHGSMI pHeap, void RT_UNTRUSTED_VOLATILE_HOST *p
 }
 
 #define VBOXSHGSMI_CMD2LISTENTRY(_pCmd) ((PVBOXVTLIST_ENTRY)&(_pCmd)->pvNext)
-#define VBOXSHGSMI_LISTENTRY2CMD(_pEntry) ( (PVBOXSHGSMIHEADER)((uint8_t *)(_pEntry) - RT_OFFSETOF(VBOXSHGSMIHEADER, pvNext)) )
+#define VBOXSHGSMI_LISTENTRY2CMD(_pEntry) ( (PVBOXSHGSMIHEADER)((uint8_t *)(_pEntry) - RT_UOFFSETOF(VBOXSHGSMIHEADER, pvNext)) )
 
 int VBoxSHGSMICommandProcessCompletion(PVBOXSHGSMI pHeap, VBOXSHGSMIHEADER *pCur, bool bIrq, PVBOXVTLIST pPostProcessList)
 {

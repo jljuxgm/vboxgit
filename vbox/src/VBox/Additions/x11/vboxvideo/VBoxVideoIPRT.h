@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIPRT.h 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: VBoxVideoIPRT.h 73097 2018-07-12 21:06:33Z vboxsync $ */
 /*
  * Copyright (C) 2017 Oracle Corporation
  *
@@ -123,6 +123,7 @@ RT_C_DECLS_END
 #define RTIOPORT unsigned short
 #define RT_NOREF(...)       (void)(__VA_ARGS__)
 #define RT_OFFSETOF(type, member) offsetof(type, member)
+#define RT_UOFFSETOF(type, member) offsetof(type, member)
 #define RT_ZERO(Obj)        RT_BZERO(&(Obj), sizeof(Obj))
 #define VALID_PTR(ptr)    (   (uintptr_t)(ptr) + 0x1000U >= 0x2000U )
 #ifndef INT16_C

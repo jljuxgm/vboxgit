@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 72275 2018-05-21 13:10:02Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -1596,7 +1596,7 @@ static PINTNETSG vboxNetLwfWinNBtoSG(PVBOXNETLWF_MODULE pModule, PNET_BUFFER pNe
     UINT cSegs = vboxNetLwfWinCalcSegments(pNetBuf);
     /* Allocate and initialize SG */
     PINTNETSG pSG = (PINTNETSG)NdisAllocateMemoryWithTagPriority(pModule->hFilter,
-                                                                 RT_OFFSETOF(INTNETSG, aSegs[cSegs]),
+                                                                 RT_UOFFSETOF_DYN(INTNETSG, aSegs[cSegs]),
                                                                  VBOXNETLWF_MEM_TAG,
                                                                  NormalPoolPriority);
     AssertReturn(pSG, pSG);

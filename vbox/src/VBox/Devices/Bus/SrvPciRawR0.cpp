@@ -1,4 +1,4 @@
-/* $Id: SrvPciRawR0.cpp 69124 2017-10-17 19:17:23Z vboxsync $ */
+/* $Id: SrvPciRawR0.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * PCI passthrough - The ring 0 service.
  */
@@ -257,7 +257,7 @@ typedef struct DUMMYRAWPCIINS
 typedef struct DUMMYRAWPCIINS *PDUMMYRAWPCIINS;
 
 #define DEVPORT_2_DUMMYRAWPCIINS(pPort) \
-    ( (PDUMMYRAWPCIINS)((uint8_t *)pPort - RT_OFFSETOF(DUMMYRAWPCIINS, DevPort)) )
+    ( (PDUMMYRAWPCIINS)((uint8_t *)pPort - RT_UOFFSETOF(DUMMYRAWPCIINS, DevPort)) )
 
 static uint8_t dummyPciGetByte(PDUMMYRAWPCIINS pThis, uint32_t iRegister)
 {

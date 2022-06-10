@@ -1,4 +1,4 @@
-/* $Id: ext2vfs.cpp 69861 2017-11-28 19:01:35Z vboxsync $ */
+/* $Id: ext2vfs.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -98,7 +98,7 @@ static int rtFsExtLoadBlkGrpDesc(PRTFILESYSTEMEXT pThis, uint32_t iBlkGrp)
     PRTFILESYSTEMEXTBLKGRP pBlkGrpDesc = pThis->pBlkGrpDesc;
     if (!pBlkGrpDesc)
     {
-        size_t cbBlkDesc = RT_OFFSETOF(RTFILESYSTEMEXTBLKGRP, abBlockBitmap[cbBlockBitmap]);
+        size_t cbBlkDesc = RT_UOFFSETOF_DYN(RTFILESYSTEMEXTBLKGRP, abBlockBitmap[cbBlockBitmap]);
         pBlkGrpDesc = (PRTFILESYSTEMEXTBLKGRP)RTMemAllocZ(cbBlkDesc);
         if (!pBlkGrpDesc)
             return VERR_NO_MEMORY;

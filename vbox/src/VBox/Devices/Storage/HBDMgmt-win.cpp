@@ -1,4 +1,4 @@
-/* $Id: HBDMgmt-win.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HBDMgmt-win.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBox storage devices: Host block device management API.
  */
@@ -450,7 +450,7 @@ DECLHIDDEN(int) HBDMgrClaimBlockDevice(HBDMGR hHbdMgr, const char *pszFilename)
                     for (unsigned i = 0; i < cVolumes; i++)
                         LogFlowFunc(("Volume %u: %ls\n", i, papwszVolumes[i]));
 #endif
-                    pDev = (PHBDMGRDEV)RTMemAllocZ(RT_OFFSETOF(HBDMGRDEV, ahVolumes[cVolumes]));
+                    pDev = (PHBDMGRDEV)RTMemAllocZ(RT_UOFFSETOF_DYN(HBDMGRDEV, ahVolumes[cVolumes]));
                     if (pDev)
                     {
                         pDev->cVolumes = 0;

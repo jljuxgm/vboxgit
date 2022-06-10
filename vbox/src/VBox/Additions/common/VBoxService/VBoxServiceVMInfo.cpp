@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 70196 2017-12-18 13:40:49Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -1237,7 +1237,7 @@ static int vgsvcVMInfoWriteNetwork(void)
 #  define SA_LEN(pAddr) (pAddr)->sa_len
 # endif
         /* Figure the size of the current request. */
-        size_t cbCur = RT_OFFSETOF(struct ifreq, ifr_addr)
+        size_t cbCur = RT_UOFFSETOF(struct ifreq, ifr_addr)
                      + SA_LEN(&pCur->ifr_addr);
         cbCur = RT_MAX(cbCur, sizeof(struct ifreq));
 # if defined(RT_OS_SOLARIS) || defined(RT_OS_LINUX)

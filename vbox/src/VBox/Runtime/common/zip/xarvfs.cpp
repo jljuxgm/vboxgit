@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
+/* $Id: xarvfs.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -1162,7 +1162,7 @@ static const RTVFSFILEOPS g_rtZipXarFssFileOps =
     0,
     { /* ObjSet */
         RTVFSOBJSETOPS_VERSION,
-        RT_OFFSETOF(RTVFSFILEOPS, Stream.Obj) - RT_OFFSETOF(RTVFSFILEOPS, ObjSet),
+        RT_UOFFSETOF(RTVFSFILEOPS, ObjSet) - RT_UOFFSETOF(RTVFSFILEOPS, Stream.Obj),
         rtZipXarFssFile_SetMode,
         rtZipXarFssFile_SetTimes,
         rtZipXarFssFile_SetOwner,
@@ -1432,7 +1432,7 @@ static const RTVFSSYMLINKOPS g_rtZipXarFssSymOps =
     0,
     { /* ObjSet */
         RTVFSOBJSETOPS_VERSION,
-        RT_OFFSETOF(RTVFSSYMLINKOPS, Obj) - RT_OFFSETOF(RTVFSSYMLINKOPS, ObjSet),
+        RT_UOFFSETOF(RTVFSSYMLINKOPS, ObjSet) - RT_UOFFSETOF(RTVFSSYMLINKOPS, Obj),
         rtZipXarFssSym_SetMode,
         rtZipXarFssSym_SetTimes,
         rtZipXarFssSym_SetOwner,

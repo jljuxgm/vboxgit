@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 70994 2018-02-13 11:18:31Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -60,7 +60,7 @@ RT_C_DECLS_END
 
 /** Makes DRVHOSTPULSEAUDIO out of PDMIHOSTAUDIO. */
 #define PDMIHOSTAUDIO_2_DRVHOSTPULSEAUDIO(pInterface) \
-    ( (PDRVHOSTPULSEAUDIO)((uintptr_t)pInterface - RT_OFFSETOF(DRVHOSTPULSEAUDIO, IHostAudio)) )
+    ( (PDRVHOSTPULSEAUDIO)((uintptr_t)pInterface - RT_UOFFSETOF(DRVHOSTPULSEAUDIO, IHostAudio)) )
 
 
 /*********************************************************************************************************************************

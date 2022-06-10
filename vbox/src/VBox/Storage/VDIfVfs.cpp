@@ -1,4 +1,4 @@
-/* $Id: VDIfVfs.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
+/* $Id: VDIfVfs.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), I/O interface to IPRT VFS I/O stream glue.
  */
@@ -356,7 +356,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_vdIfVfsFileOps =
     0,
     { /* ObjSet */
         RTVFSOBJSETOPS_VERSION,
-        RT_OFFSETOF(RTVFSFILEOPS, Stream.Obj) - RT_OFFSETOF(RTVFSFILEOPS, ObjSet),
+        RT_UOFFSETOF(RTVFSFILEOPS, ObjSet) - RT_UOFFSETOF(RTVFSFILEOPS, Stream.Obj),
         vdIfVfsFile_SetMode,
         vdIfVfsFile_SetTimes,
         vdIfVfsFile_SetOwner,

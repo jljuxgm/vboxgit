@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 70212 2017-12-19 02:54:28Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -550,7 +550,7 @@ static int rtR0MemObjNtLock(PPRTR0MEMOBJINTERNAL ppMem, void *pv, size_t cb, uin
         cMdls++;
     if (cMdls >= UINT32_MAX)
         return VERR_OUT_OF_RANGE;
-    PRTR0MEMOBJNT pMemNt = (PRTR0MEMOBJNT)rtR0MemObjNew(RT_OFFSETOF(RTR0MEMOBJNT, apMdls[cMdls]),
+    PRTR0MEMOBJNT pMemNt = (PRTR0MEMOBJNT)rtR0MemObjNew(RT_UOFFSETOF_DYN(RTR0MEMOBJNT, apMdls[cMdls]),
                                                         RTR0MEMOBJTYPE_LOCK, pv, cb);
     if (!pMemNt)
         return VERR_NO_MEMORY;

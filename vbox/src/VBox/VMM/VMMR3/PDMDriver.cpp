@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: PDMDriver.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -112,7 +112,7 @@ int pdmR3DrvInit(PVM pVM)
 {
     LogFlow(("pdmR3DrvInit:\n"));
 
-    AssertRelease(!(RT_OFFSETOF(PDMDRVINS, achInstanceData) & 15));
+    AssertRelease(!(RT_UOFFSETOF(PDMDRVINS, achInstanceData) & 15));
     PPDMDRVINS pDrvInsAssert; NOREF(pDrvInsAssert);
     AssertCompile(sizeof(pDrvInsAssert->Internal.s) <= sizeof(pDrvInsAssert->Internal.padding));
     AssertRelease(sizeof(pDrvInsAssert->Internal.s) <= sizeof(pDrvInsAssert->Internal.padding));
@@ -700,7 +700,7 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                 /*
                  * Allocate the driver instance.
                  */
-                size_t cb = RT_OFFSETOF(PDMDRVINS, achInstanceData[pDrv->pReg->cbInstance]);
+                size_t cb = RT_UOFFSETOF_DYN(PDMDRVINS, achInstanceData[pDrv->pReg->cbInstance]);
                 cb = RT_ALIGN_Z(cb, 16);
                 bool const fHyperHeap = !!(pDrv->pReg->fFlags & (PDM_DRVREG_FLAGS_R0 | PDM_DRVREG_FLAGS_RC));
                 PPDMDRVINS pNew;
@@ -993,7 +993,7 @@ void pdmR3DrvDestroyChain(PPDMDRVINS pDrvIns, uint32_t fFlags)
 
         /* Finally, the driver it self. */
         bool fHyperHeap = pCur->Internal.s.fHyperHeap;
-        ASMMemFill32(pCur, RT_OFFSETOF(PDMDRVINS, achInstanceData[pCur->pReg->cbInstance]), 0xdeadd0d0);
+        ASMMemFill32(pCur, RT_UOFFSETOF_DYN(PDMDRVINS, achInstanceData[pCur->pReg->cbInstance]), 0xdeadd0d0);
         if (fHyperHeap)
             MMHyperFree(pVM, pCur);
         else

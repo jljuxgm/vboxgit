@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibModule.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuestR3LibModule.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared modules.
  */
@@ -53,11 +53,12 @@ VBGLR3DECL(int) VbglR3RegisterSharedModule(char *pszModuleName, char *pszVersion
     /* Sanity check. */
     AssertReturn(cRegions < VMMDEVSHAREDREGIONDESC_MAX, VERR_INVALID_PARAMETER);
 
-    pReq = (VMMDevSharedModuleRegistrationRequest *)RTMemAllocZ(RT_OFFSETOF(VMMDevSharedModuleRegistrationRequest, aRegions[cRegions]));
+    pReq = (VMMDevSharedModuleRegistrationRequest *)RTMemAllocZ(RT_UOFFSETOF_DYN(VMMDevSharedModuleRegistrationRequest,
+                                                                                 aRegions[cRegions]));
     AssertReturn(pReq, VERR_NO_MEMORY);
 
     vmmdevInitRequest(&pReq->header, VMMDevReq_RegisterSharedModule);
-    pReq->header.size   = RT_OFFSETOF(VMMDevSharedModuleRegistrationRequest, aRegions[cRegions]);
+    pReq->header.size   = RT_UOFFSETOF_DYN(VMMDevSharedModuleRegistrationRequest, aRegions[cRegions]);
     pReq->GCBaseAddr    = GCBaseAddr;
     pReq->cbModule      = cbModule;
     pReq->cRegions      = cRegions;

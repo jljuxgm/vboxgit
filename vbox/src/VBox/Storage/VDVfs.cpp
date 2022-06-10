@@ -1,4 +1,4 @@
-/* $Id: VDVfs.cpp 73061 2018-07-11 11:20:50Z vboxsync $ */
+/* $Id: VDVfs.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Virtual Disk Container implementation. - VFS glue.
  */
@@ -547,7 +547,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_vdVfsStdFileOps =
     /*RTVFSIOFILEOPS_FEAT_NO_AT_OFFSET*/ 0,
     { /* ObjSet */
         RTVFSOBJSETOPS_VERSION,
-        RT_OFFSETOF(RTVFSFILEOPS, Stream.Obj) - RT_OFFSETOF(RTVFSFILEOPS, ObjSet),
+        RT_UOFFSETOF(RTVFSFILEOPS, ObjSet) - RT_UOFFSETOF(RTVFSFILEOPS, Stream.Obj),
         vdVfsFile_SetMode,
         vdVfsFile_SetTimes,
         vdVfsFile_SetOwner,

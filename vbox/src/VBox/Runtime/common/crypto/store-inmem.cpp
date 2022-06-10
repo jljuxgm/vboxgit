@@ -1,4 +1,4 @@
-/* $Id: store-inmem.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: store-inmem.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - In Memory Cryptographic Certificate Store.
  */
@@ -119,7 +119,7 @@ static int rtCrStoreInMemCreateCertEntry(PRTCRSTOREINMEM pThis, uint32_t fEnc, u
                                          PRTERRINFO pErrInfo, PRTCRSTOREINMEMCERT *ppEntry)
 {
     int                 rc;
-    PRTCRSTOREINMEMCERT pEntry    = (PRTCRSTOREINMEMCERT)RTMemAllocZ(RT_UOFFSETOF(RTCRSTOREINMEMCERT, abEncoded[cbSrc]));
+    PRTCRSTOREINMEMCERT pEntry    = (PRTCRSTOREINMEMCERT)RTMemAllocZ(RT_UOFFSETOF_DYN(RTCRSTOREINMEMCERT, abEncoded[cbSrc]));
     if (pEntry)
     {
         memcpy(pEntry->abEncoded, pbSrc, cbSrc);

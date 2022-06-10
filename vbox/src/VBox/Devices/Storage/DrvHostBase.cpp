@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 71807 2018-04-10 10:08:46Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -505,7 +505,7 @@ static DECLCALLBACK(int) drvHostBaseIoReqAllocSizeSet(PPDMIMEDIAEX pInterface, s
 {
     PDRVHOSTBASE pThis = RT_FROM_MEMBER(pInterface, DRVHOSTBASE, IMediaEx);
 
-    pThis->cbIoReqAlloc = RT_OFFSETOF(DRVHOSTBASEREQ, abAlloc[cbIoReqAlloc]);
+    pThis->cbIoReqAlloc = RT_UOFFSETOF_DYN(DRVHOSTBASEREQ, abAlloc[cbIoReqAlloc]);
     return VINF_SUCCESS;
 }
 

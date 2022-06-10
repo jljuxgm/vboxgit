@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73067 2018-07-11 15:00:21Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1391,7 +1391,7 @@ VMMR0DECL(int) SVMR0Execute64BitsHandler(PVMCPU pVCpu, HM64ON32OP enmOp, uint32_
 
     /* Call the switcher. */
     STAM_PROFILE_ADV_START(&pVCpu->hm.s.StatWorldSwitch3264, z);
-    int rc = pVM->hm.s.pfnHost32ToGuest64R0(pVM, RT_OFFSETOF(VM, aCpus[pVCpu->idCpu].cpum) - RT_OFFSETOF(VM, cpum));
+    int rc = pVM->hm.s.pfnHost32ToGuest64R0(pVM, RT_UOFFSETOF_DYN(VM, aCpus[pVCpu->idCpu].cpum) - RT_UOFFSETOF(VM, cpum));
     STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatWorldSwitch3264, z);
 
     /* Restore interrupts. */

@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 69219 2017-10-24 15:01:30Z vboxsync $ */
+/* $Id: tarvfs.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Reader.
  */
@@ -1190,7 +1190,7 @@ static const RTVFSSYMLINKOPS g_rtZipTarFssSymOps =
     0,
     { /* ObjSet */
         RTVFSOBJSETOPS_VERSION,
-        RT_OFFSETOF(RTVFSSYMLINKOPS, Obj) - RT_OFFSETOF(RTVFSSYMLINKOPS, ObjSet),
+        RT_UOFFSETOF(RTVFSSYMLINKOPS, ObjSet) - RT_UOFFSETOF(RTVFSSYMLINKOPS, Obj),
         rtZipTarFssSym_SetMode,
         rtZipTarFssSym_SetTimes,
         rtZipTarFssSym_SetOwner,

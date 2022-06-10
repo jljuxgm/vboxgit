@@ -1,4 +1,4 @@
-﻿/* $Id: RTNtDbgHelp.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
+﻿/* $Id: RTNtDbgHelp.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - RTNtDbgHelp -  Tool for working/exploring DbgHelp.dll.
  */
@@ -181,7 +181,7 @@ static RTEXITCODE loadModule(const char *pszFile)
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "SymLoadModuleEx failed: %u\n", GetLastError());
 
     size_t cbFullName = strlen(pszFile) + 1;
-    PRTNTDBGHELPMOD pMod = (PRTNTDBGHELPMOD)RTMemAlloc(RT_OFFSETOF(RTNTDBGHELPMOD, szFullName[cbFullName + 1]));
+    PRTNTDBGHELPMOD pMod = (PRTNTDBGHELPMOD)RTMemAlloc(RT_UOFFSETOF_DYN(RTNTDBGHELPMOD, szFullName[cbFullName + 1]));
     memcpy(pMod->szFullName, pszFile, cbFullName);
     pMod->pszName  = RTPathFilename(pMod->szFullName);
     pMod->uModAddr = uModAddrGot;
@@ -361,7 +361,7 @@ int main(int argc, char **argv)
 
 
             case 'V':
-                RTPrintf("$Revision: 69434 $");
+                RTPrintf("$Revision: 73097 $");
                 break;
 
             case 'h':

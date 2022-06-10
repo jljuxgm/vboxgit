@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiBase.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUhgsmiBase.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -197,8 +197,8 @@ DECLCALLBACK(int) vboxUhgsmiBaseEscBufferSubmit(PVBOXUHGSMI pHgsmi, PVBOXUHGSMI_
         }
     }
 
-    int rc = vboxCrHgsmiPrivateEscape(pPrivate, &Buf.SubmitInfo, RT_OFFSETOF(VBOXDISPIFESCAPE_UHGSMI_SUBMIT, aBuffers[cBuffers]),
-                                      FALSE);
+    int rc = vboxCrHgsmiPrivateEscape(pPrivate, &Buf.SubmitInfo,
+                                      RT_UOFFSETOF_DYN(VBOXDISPIFESCAPE_UHGSMI_SUBMIT, aBuffers[cBuffers]), FALSE);
     if (RT_SUCCESS(rc))
     {
         DWORD dwResult = WaitForSingleObject(hSynch, INFINITE);

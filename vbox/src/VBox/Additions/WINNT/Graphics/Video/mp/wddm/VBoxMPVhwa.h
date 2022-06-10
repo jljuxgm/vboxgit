@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVhwa.h 71592 2018-03-31 19:51:41Z vboxsync $ */
+/* $Id: VBoxMPVhwa.h 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -41,7 +41,7 @@ void vboxVhwaCommandSubmitAsynch(PVBOXMP_DEVEXT pDevExt, VBOXVHWACMD RT_UNTRUSTE
 void vboxVhwaCommandSubmitAsynchByEvent(PVBOXMP_DEVEXT pDevExt, VBOXVHWACMD RT_UNTRUSTED_VOLATILE_HOST *pCmd, RTSEMEVENT hEvent);
 
 #define VBOXVHWA_CMD2LISTENTRY(_pCmd)   ((PVBOXVTLIST_ENTRY)&(_pCmd)->u.pNext)
-#define VBOXVHWA_LISTENTRY2CMD(_pEntry) ( (VBOXVHWACMD RT_UNTRUSTED_VOLATILE_HOST *)((uint8_t *)(_pEntry) - RT_OFFSETOF(VBOXVHWACMD, u.pNext)) )
+#define VBOXVHWA_LISTENTRY2CMD(_pEntry) ( (VBOXVHWACMD RT_UNTRUSTED_VOLATILE_HOST *)((uint8_t *)(_pEntry) - RT_UOFFSETOF(VBOXVHWACMD, u.pNext)) )
 
 DECLINLINE(void) vboxVhwaPutList(VBOXVTLIST *pList, VBOXVHWACMD RT_UNTRUSTED_VOLATILE_HOST *pCmd)
 {

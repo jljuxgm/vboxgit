@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DBGCInternal.h 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -235,7 +235,7 @@ typedef struct DBGC
 typedef DBGC *PDBGC;
 
 /** Converts a Command Helper pointer to a pointer to DBGC instance data. */
-#define DBGC_CMDHLP2DBGC(pCmdHlp)   ( (PDBGC)((uintptr_t)(pCmdHlp) - RT_OFFSETOF(DBGC, CmdHlp)) )
+#define DBGC_CMDHLP2DBGC(pCmdHlp)   ( (PDBGC)((uintptr_t)(pCmdHlp) - RT_UOFFSETOF(DBGC, CmdHlp)) )
 
 
 /**

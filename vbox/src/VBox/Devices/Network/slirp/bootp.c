@@ -1,4 +1,4 @@
-/* $Id: bootp.c 70842 2018-01-31 18:10:17Z vboxsync $ */
+/* $Id: bootp.c 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -862,7 +862,7 @@ void bootp_input(PNATState pData, struct mbuf *m)
     u_int mlen = m_length(m, NULL);
     size_t vlen;
 
-    if (mlen < RT_OFFSETOF(struct bootp_t, bp_vend) + sizeof(rfc1533_cookie))
+    if (mlen < RT_UOFFSETOF(struct bootp_t, bp_vend) + sizeof(rfc1533_cookie))
     {
         LogRelMax(50, ("NAT: ignoring invalid BOOTP request (mlen %u too short)\n", mlen));
         return;
@@ -892,7 +892,7 @@ void bootp_input(PNATState pData, struct mbuf *m)
         return;
     }
 
-    vlen = mlen - RT_OFFSETOF(struct bootp_t, bp_vend);
+    vlen = mlen - RT_UOFFSETOF(struct bootp_t, bp_vend);
     dhcp_decode(pData, bp, vlen);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: tstMMHyperHeap.cpp 72612 2018-06-19 12:42:51Z vboxsync $ */
+/* $Id: tstMMHyperHeap.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * MM Hypervisor Heap testcase.
  */
@@ -80,7 +80,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     pVM->pUVM = pUVM;
 
     pVM->cCpus = NUM_CPUS;
-    pVM->cbSelf = RT_UOFFSETOF(VM, aCpus[pVM->cCpus]);
+    pVM->cbSelf = RT_UOFFSETOF_DYN(VM, aCpus[pVM->cCpus]);
 
     rc = STAMR3InitUVM(pUVM);
     if (RT_FAILURE(rc))

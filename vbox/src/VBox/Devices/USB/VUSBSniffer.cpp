@@ -1,4 +1,4 @@
-/* $Id: VUSBSniffer.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VUSBSniffer.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Virtual USB - Sniffer facility.
  */
@@ -149,7 +149,7 @@ DECLHIDDEN(int) VUSBSnifferCreate(PVUSBSNIFFER phSniffer, uint32_t fFlags,
     if (!pFmt)
         return VERR_NOT_FOUND;
 
-    pThis = (PVUSBSNIFFERINT)RTMemAllocZ(RT_OFFSETOF(VUSBSNIFFERINT, abFmt[pFmt->cbFmt]));
+    pThis = (PVUSBSNIFFERINT)RTMemAllocZ(RT_UOFFSETOF_DYN(VUSBSNIFFERINT, abFmt[pFmt->cbFmt]));
     if (pThis)
     {
         pThis->hFile         = NIL_RTFILE;

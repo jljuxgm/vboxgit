@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-core.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: pkix-signature-core.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schema Algorithm, Core API.
  */
@@ -106,7 +106,8 @@ RTDECL(int) RTCrPkixSignatureCreate(PRTCRPKIXSIGNATURE phSignature, PCRTCRPKIXSI
      * Instantiate the algorithm for the given operation.
      */
     int rc = VINF_SUCCESS;
-    PRTCRPKIXSIGNATUREINT pThis = (PRTCRPKIXSIGNATUREINT)RTMemAllocZ(RT_OFFSETOF(RTCRPKIXSIGNATUREINT, abState[pDesc->cbState]));
+    PRTCRPKIXSIGNATUREINT pThis = (PRTCRPKIXSIGNATUREINT)RTMemAllocZ(RT_UOFFSETOF_DYN(RTCRPKIXSIGNATUREINT,
+                                                                                      abState[pDesc->cbState]));
     if (pThis)
     {
         pThis->u32Magic     = RTCRPKIXSIGNATUREINT_MAGIC;
@@ -159,7 +160,7 @@ RTDECL(uint32_t) RTCrPkixSignatureRelease(RTCRPKIXSIGNATURE hSignature)
         if (pThis->pDesc->pfnDelete)
             pThis->pDesc->pfnDelete(pThis->pDesc, pThis->abState, pThis->fSigning);
 
-        size_t cbToWipe = RT_OFFSETOF(RTCRPKIXSIGNATUREINT, abState[pThis->pDesc->cbState]);
+        size_t cbToWipe = RT_UOFFSETOF_DYN(RTCRPKIXSIGNATUREINT, abState[pThis->pDesc->cbState]);
         RTMemWipeThoroughly(pThis, cbToWipe, 6);
 
         RTMemFree(pThis);

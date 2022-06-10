@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestUser.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestUser.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  *                  guest user reporting / utility functions.
@@ -86,7 +86,7 @@ VBGLR3DECL(int) VbglR3GuestUserReportState(const char *pszUser, const char *pszD
          *       Therefore it's vital to *not* change the order of the struct members
          *       without altering this code. Don't try this at home.
          */
-        uint32_t cbOffDynamic = RT_OFFSETOF(VBoxGuestUserStatus, szUser);
+        uint32_t cbOffDynamic = RT_UOFFSETOF(VBoxGuestUserStatus, szUser);
 
         /* pDynamic marks the beginning for the dynamically allocated areas. */
         uint8_t *pDynamic = (uint8_t *)&pReport->status;

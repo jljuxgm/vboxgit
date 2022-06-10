@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 73091 2018-07-12 13:51:05Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -922,8 +922,8 @@ static void lsilogicR3DiagRegDataWrite(PLSILOGICSCSI pThis, uint32_t u32Data)
 
             if (pThis->cbMemRegns + 512 * sizeof(uint32_t) < LSILOGIC_MEMORY_REGIONS_MAX)
             {
-                PLSILOGICMEMREGN pRegionNew = (PLSILOGICMEMREGN)RTMemRealloc(pRegion, RT_OFFSETOF(LSILOGICMEMREGN, au32Data[cRegionSizeNew]));
-
+                PLSILOGICMEMREGN pRegionNew;
+                pRegionNew = (PLSILOGICMEMREGN)RTMemRealloc(pRegion, RT_UOFFSETOF_DYN(LSILOGICMEMREGN, au32Data[cRegionSizeNew]));
                 if (pRegionNew)
                 {
                     pRegion = pRegionNew;
@@ -4867,7 +4867,7 @@ static DECLCALLBACK(int) lsilogicR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM,
                 AssertLogRelReturn(rc, rc);
 
                 uint32_t         cRegion = u32AddrEnd - u32AddrStart + 1;
-                PLSILOGICMEMREGN pRegion = (PLSILOGICMEMREGN)RTMemAllocZ(RT_OFFSETOF(LSILOGICMEMREGN, au32Data[cRegion]));
+                PLSILOGICMEMREGN pRegion = (PLSILOGICMEMREGN)RTMemAllocZ(RT_UOFFSETOF_DYN(LSILOGICMEMREGN, au32Data[cRegion]));
                 if (pRegion)
                 {
                     pRegion->u32AddrStart = u32AddrStart;

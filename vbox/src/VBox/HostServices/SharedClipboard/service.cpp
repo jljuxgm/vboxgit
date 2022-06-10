@@ -1,4 +1,4 @@
-/* $Id: service.cpp 69637 2017-11-10 10:39:02Z vboxsync $ */
+/* $Id: service.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Shared Clipboard: Host service entry points.
  */
@@ -876,7 +876,7 @@ static DECLCALLBACK(int) svcLoadState(void *, uint32_t u32ClientID, void *pvClie
             SSMFIELD_ENTRY_IGN_HCPTR(       CLIPSAVEDSTATEDATA, pPrev),
             SSMFIELD_ENTRY_IGN_HCPTR(       CLIPSAVEDSTATEDATA, pCtx),
             SSMFIELD_ENTRY(                 CLIPSAVEDSTATEDATA, u32ClientID),
-            SSMFIELD_ENTRY_CUSTOM(fMsgQuit+fMsgReadData+fMsgFormats, RT_OFFSETOF(CLIPSAVEDSTATEDATA, u32ClientID) + 4, 4),
+            SSMFIELD_ENTRY_CUSTOM(fMsgQuit + fMsgReadData + fMsgFormats, RT_UOFFSETOF(CLIPSAVEDSTATEDATA, u32ClientID) + 4, 4),
             SSMFIELD_ENTRY_IGN_HCPTR(       CLIPSAVEDSTATEDATA, async.callHandle),
             SSMFIELD_ENTRY_IGN_HCPTR(       CLIPSAVEDSTATEDATA, async.paParms),
             SSMFIELD_ENTRY_IGNORE(          CLIPSAVEDSTATEDATA, data.pv),

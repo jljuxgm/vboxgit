@@ -1,4 +1,4 @@
-/* $Id: tstDeviceVMM.cpp 69305 2017-10-25 13:41:41Z vboxsync $ */
+/* $Id: tstDeviceVMM.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers, VMM callbacks implementation.
  */
@@ -401,7 +401,7 @@ static DECLCALLBACK(RTRCPTR) tstDevVmm_MMHyperR3ToRC(PVM pVM, RTR3PTR R3Ptr)
 
 static DECLCALLBACK(void) tstDevVmm_MMR3HeapFree(void *pv)
 {
-    PTSTDEVMMHEAPALLOC pHeapAlloc = (PTSTDEVMMHEAPALLOC)((uint8_t *)pv - RT_OFFSETOF(TSTDEVMMHEAPALLOC, abAlloc[0]));
+    PTSTDEVMMHEAPALLOC pHeapAlloc = (PTSTDEVMMHEAPALLOC)((uint8_t *)pv - RT_UOFFSETOF(TSTDEVMMHEAPALLOC, abAlloc[0]));
     PTSTDEVDUTINT pThis = pHeapAlloc->pDut;
 
     tstDevDutLockExcl(pThis);

@@ -1,4 +1,4 @@
-/* $Id: memtracker.cpp 69971 2017-12-07 11:16:53Z vboxsync $ */
+/* $Id: memtracker.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Memory Tracker & Leak Detector.
  */
@@ -401,7 +401,7 @@ DECLINLINE(PRTMEMTRACKERTAG) rtMemTrackerGetTag(PRTMEMTRACKERINT pTracker, PRTME
      */
     if (RT_UNLIKELY(!pTag))
     {
-        pTag = (PRTMEMTRACKERTAG)RTMemAllocZVar(RT_OFFSETOF(RTMEMTRACKERTAG, szTag[cchTag + 1]));
+        pTag = (PRTMEMTRACKERTAG)RTMemAllocZVar(RT_UOFFSETOF_DYN(RTMEMTRACKERTAG, szTag[cchTag + 1]));
         if (pTag)
         {
             pTag->Core.Key = uHash;

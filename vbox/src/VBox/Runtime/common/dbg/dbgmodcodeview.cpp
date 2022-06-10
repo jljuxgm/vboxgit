@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: dbgmodcodeview.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -1226,7 +1226,7 @@ rtDbgModCvSs_SrcModule(PRTDBGMODCV pThis, void const *pvSubSect, size_t cbSubSec
                                 ("cbSubSect=%#x (- %#x) aoffSrcFiles[%u]=%#x\n",
                                  cbSubSect, RT_UOFFSETOF(RTCVSRCFILE, aoffSrcLines), i, offSrcFile));
         PCRTCVSRCFILE   pSrcFile    = (PCRTCVSRCFILE)((uint8_t const *)pvSubSect + offSrcFile);
-        size_t         cbSrcFileHdr = RT_UOFFSETOF(RTCVSRCFILE, aoffSrcLines[pSrcFile->cSegs])
+        size_t         cbSrcFileHdr = RT_UOFFSETOF_DYN(RTCVSRCFILE, aoffSrcLines[pSrcFile->cSegs])
                                     + sizeof(RTCVSRCRANGE) * pSrcFile->cSegs
                                     + sizeof(uint8_t);
         RTDBGMODCV_CHECK_RET_BF(cbSubSect >= offSrcFile + cbSrcFileHdr && cbSubSect > cbSrcFileHdr,
@@ -1250,7 +1250,7 @@ rtDbgModCvSs_SrcModule(PRTDBGMODCV pThis, void const *pvSubSect, size_t cbSubSec
                                     ("cbSubSect=%#x (- %#x) aoffSrcFiles[%u]=%#x\n",
                                      cbSubSect, RT_UOFFSETOF(RTCVSRCLINE, aoffLines), iSeg, offSrcLine));
             PCRTCVSRCLINE   pSrcLine    = (PCRTCVSRCLINE)((uint8_t const *)pvSubSect + offSrcLine);
-            size_t          cbSrcLine   = RT_UOFFSETOF(RTCVSRCLINE, aoffLines[pSrcLine->cPairs])
+            size_t          cbSrcLine   = RT_UOFFSETOF_DYN(RTCVSRCLINE, aoffLines[pSrcLine->cPairs])
                                         + pSrcLine->cPairs * sizeof(uint16_t);
             RTDBGMODCV_CHECK_RET_BF(cbSubSect >= offSrcLine + cbSrcLine,
                                     ("cbSubSect=%#x aoffSrcFiles[%u]=%#x cbSrcLine=%#x\n",

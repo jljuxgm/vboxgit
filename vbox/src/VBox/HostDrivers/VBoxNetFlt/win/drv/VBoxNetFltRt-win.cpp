@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Runtime Code.
  */
@@ -137,7 +137,7 @@ VBOXNETFLTGLOBALS_WIN g_VBoxNetFltGlobalsWin = {0};
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
 #define LIST_ENTRY_2_JOB(pListEntry) \
-    ( (PVBOXNETFLT_JOB)((uint8_t *)(pListEntry) - RT_OFFSETOF(VBOXNETFLT_JOB, ListEntry)) )
+    ( (PVBOXNETFLT_JOB)((uint8_t *)(pListEntry) - RT_UOFFSETOF(VBOXNETFLT_JOB, ListEntry)) )
 
 
 /*********************************************************************************************************************************
@@ -387,7 +387,7 @@ static void vboxNetFltWinDeleteSG(PINTNETSG pSG)
 static PINTNETSG vboxNetFltWinCreateSG(uint32_t cSegs)
 {
     PINTNETSG pSG;
-    NTSTATUS Status = vboxNetFltWinMemAlloc((PVOID*)&pSG, RT_OFFSETOF(INTNETSG, aSegs[cSegs]));
+    NTSTATUS Status = vboxNetFltWinMemAlloc((PVOID*)&pSG, RT_UOFFSETOF_DYN(INTNETSG, aSegs[cSegs]));
     if (Status == STATUS_SUCCESS)
     {
         IntNetSgInitTempSegs(pSG, 0 /*cbTotal*/, cSegs, 0 /*cSegsUsed*/);

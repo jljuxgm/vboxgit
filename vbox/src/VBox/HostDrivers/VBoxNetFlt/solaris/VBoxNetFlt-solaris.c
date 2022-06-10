@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -3521,7 +3521,7 @@ static int vboxNetFltSolarisRecv(PVBOXNETFLTINS pThis, vboxnetflt_stream_t *pStr
      * Route all received packets into the internal network.
      */
     unsigned cSegs = vboxNetFltSolarisMBlkCalcSGSegs(pThis, pMsg);
-    PINTNETSG pSG = (PINTNETSG)alloca(RT_OFFSETOF(INTNETSG, aSegs[cSegs]));
+    PINTNETSG pSG = (PINTNETSG)alloca(RT_UOFFSETOF_DYN(INTNETSG, aSegs[cSegs]));
     int rc = vboxNetFltSolarisMBlkToSG(pThis, pMsg, pSG, cSegs, fSrc);
     if (RT_SUCCESS(rc))
         pThis->pSwitchPort->pfnRecv(pThis->pSwitchPort, NULL /* pvIf */, pSG, fSrc);

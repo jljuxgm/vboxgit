@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVhwa.cpp 71592 2018-03-31 19:51:41Z vboxsync $ */
+/* $Id: VBoxMPVhwa.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1145,7 +1145,7 @@ BOOLEAN vboxVhwaHlpOverlayListIsEmpty(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESE
     return !ASMAtomicReadU32(&pSource->cOverlays);
 }
 
-#define VBOXWDDM_OVERLAY_FROM_ENTRY(_pEntry) ((PVBOXWDDM_OVERLAY)(((uint8_t*)(_pEntry)) - RT_OFFSETOF(VBOXWDDM_OVERLAY, ListEntry)))
+#define VBOXWDDM_OVERLAY_FROM_ENTRY(_pEntry) ((PVBOXWDDM_OVERLAY)(((uint8_t*)(_pEntry)) - RT_UOFFSETOF(VBOXWDDM_OVERLAY, ListEntry)))
 
 void vboxVhwaHlpOverlayDstRectUnion(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID VidPnSourceId, RECT *pRect)
 {

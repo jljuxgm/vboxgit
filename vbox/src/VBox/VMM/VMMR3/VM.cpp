@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 72778 2018-06-29 20:02:35Z vboxsync $ */
+/* $Id: VM.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -463,7 +463,7 @@ static int vmR3CreateUVM(uint32_t cCpus, PCVMM2USERMETHODS pVmm2UserMethods, PUV
     /*
      * Create and initialize the UVM.
      */
-    PUVM pUVM = (PUVM)RTMemPageAllocZ(RT_OFFSETOF(UVM, aCpus[cCpus]));
+    PUVM pUVM = (PUVM)RTMemPageAllocZ(RT_UOFFSETOF_DYN(UVM, aCpus[cCpus]));
     AssertReturn(pUVM, VERR_NO_MEMORY);
     pUVM->u32Magic          = UVM_MAGIC;
     pUVM->cCpus             = cCpus;
@@ -563,7 +563,7 @@ static int vmR3CreateUVM(uint32_t cCpus, PCVMM2USERMETHODS pVmm2UserMethods, PUV
         }
         RTTlsFree(pUVM->vm.s.idxTLS);
     }
-    RTMemPageFree(pUVM, RT_OFFSETOF(UVM, aCpus[pUVM->cCpus]));
+    RTMemPageFree(pUVM, RT_UOFFSETOF_DYN(UVM, aCpus[pUVM->cCpus]));
     return rc;
 }
 
@@ -3122,7 +3122,7 @@ static void vmR3DoReleaseUVM(PUVM pUVM)
 
     ASMAtomicUoWriteU32(&pUVM->u32Magic, UINT32_MAX);
     RTTlsFree(pUVM->vm.s.idxTLS);
-    RTMemPageFree(pUVM, RT_OFFSETOF(UVM, aCpus[pUVM->cCpus]));
+    RTMemPageFree(pUVM, RT_UOFFSETOF_DYN(UVM, aCpus[pUVM->cCpus]));
 }
 
 

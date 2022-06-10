@@ -1,4 +1,4 @@
-/* $Id: DrvUDP.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DrvUDP.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * UDP socket stream driver.
  */
@@ -34,7 +34,7 @@
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
 /** Converts a pointer to DRVUDP::IStream to a PDRVUDP. */
-#define PDMISTREAM_2_DRVUDP(pInterface) ( (PDRVUDP)((uintptr_t)pInterface - RT_OFFSETOF(DRVUDP, IStream)) )
+#define PDMISTREAM_2_DRVUDP(pInterface) ( (PDRVUDP)((uintptr_t)pInterface - RT_UOFFSETOF(DRVUDP, IStream)) )
 
 
 /*********************************************************************************************************************************

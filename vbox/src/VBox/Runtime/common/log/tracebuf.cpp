@@ -1,4 +1,4 @@
-/* $Id: tracebuf.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tracebuf.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Tracebuffer common functions.
  */
@@ -264,7 +264,7 @@ typedef RTTRACEBUFINT const *PCRTTRACEBUFINT;
     pEntry->idCpu  = RTTRACEBUF_CUR_CPU(); \
     pszBuf  = &pEntry->szMsg[0]; \
     *pszBuf = '\0'; \
-    cchBuf  = pThis->cbEntry - RT_OFFSETOF(RTTRACEBUFENTRY, szMsg) - 1; \
+    cchBuf  = pThis->cbEntry - RT_UOFFSETOF(RTTRACEBUFENTRY, szMsg) - 1; \
     rc      = VINF_SUCCESS
 
 

@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VUSBInternal.h 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -479,7 +479,7 @@ AssertCompileMemberAlignment(VUSBROOTHUB, Total, 8);
 #endif
 
 /** Converts a pointer to VUSBROOTHUB::IRhConnector to a PVUSBROOTHUB. */
-#define VUSBIROOTHUBCONNECTOR_2_VUSBROOTHUB(pInterface) (PVUSBROOTHUB)( (uintptr_t)(pInterface) - RT_OFFSETOF(VUSBROOTHUB, IRhConnector) )
+#define VUSBIROOTHUBCONNECTOR_2_VUSBROOTHUB(pInterface) (PVUSBROOTHUB)( (uintptr_t)(pInterface) - RT_UOFFSETOF(VUSBROOTHUB, IRhConnector) )
 
 /**
  * URB cancellation modes

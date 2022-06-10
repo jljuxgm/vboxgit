@@ -1,4 +1,4 @@
-/* $Id: dvmvfs.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
+/* $Id: dvmvfs.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - VFS glue.
  */
@@ -471,7 +471,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtDvmVfsStdFileOps =
     /*RTVFSIOFILEOPS_FEAT_NO_AT_OFFSET*/ 0,
     { /* ObjSet */
         RTVFSOBJSETOPS_VERSION,
-        RT_OFFSETOF(RTVFSFILEOPS, Stream.Obj) - RT_OFFSETOF(RTVFSFILEOPS, ObjSet),
+        RT_UOFFSETOF(RTVFSFILEOPS, ObjSet) - RT_UOFFSETOF(RTVFSFILEOPS, Stream.Obj),
         rtDvmVfsFile_SetMode,
         rtDvmVfsFile_SetTimes,
         rtDvmVfsFile_SetOwner,
@@ -920,7 +920,7 @@ static DECLCALLBACK(int) rtDvmVfsDir_ReadDir(void *pvThis, PRTDIRENTRYEX pDirEnt
         }
 
         size_t cchVolName = strlen(pszVolName);
-        size_t cbNeeded   = RT_OFFSETOF(RTDIRENTRYEX,  szName[cchVolName + 1]);
+        size_t cbNeeded   = RT_UOFFSETOF_DYN(RTDIRENTRYEX,  szName[cchVolName + 1]);
         if (cbNeeded <= *pcbDirEntry)
         {
             *pcbDirEntry = cbNeeded;
@@ -981,7 +981,7 @@ static const RTVFSDIROPS g_rtDvmVfsDirOps =
     0,
     { /* ObjSet */
         RTVFSOBJSETOPS_VERSION,
-        RT_OFFSETOF(RTVFSDIROPS, Obj) - RT_OFFSETOF(RTVFSDIROPS, ObjSet),
+        RT_UOFFSETOF(RTVFSDIROPS, ObjSet) - RT_UOFFSETOF(RTVFSDIROPS, Obj),
         rtDvmVfsDir_SetMode,
         rtDvmVfsDir_SetTimes,
         rtDvmVfsDir_SetOwner,

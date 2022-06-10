@@ -1,4 +1,4 @@
-/* $Id: tstDevice.cpp 69305 2017-10-25 13:41:41Z vboxsync $ */
+/* $Id: tstDevice.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * tstDevice - Test framework for PDM devices/drivers
  */
@@ -857,7 +857,7 @@ static int tstDevPdmDevCreate(const char *pszName)
         rc = RTCritSectRwInit(&Dut.CritSectLists);
         AssertRC(rc);
 
-        PPDMDEVINS pDevIns = (PPDMDEVINS)RTMemAllocZ(RT_OFFSETOF(PDMDEVINS, achInstanceData[pPdmDev->pReg->cbInstance]));
+        PPDMDEVINS pDevIns = (PPDMDEVINS)RTMemAllocZ(RT_UOFFSETOF_DYN(PDMDEVINS, achInstanceData[pPdmDev->pReg->cbInstance]));
         pDevIns->u32Version               = PDM_DEVINS_VERSION;
         pDevIns->iInstance                = 0;
         pDevIns->pReg                     = pPdmDev->pReg;

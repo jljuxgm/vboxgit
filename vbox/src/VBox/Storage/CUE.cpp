@@ -1,4 +1,4 @@
-/* $Id: CUE.cpp 72455 2018-06-06 00:23:08Z vboxsync $ */
+/* $Id: CUE.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * CUE - CUE/BIN Disk image, Core Code.
  */
@@ -275,7 +275,7 @@ static int cueEnsureRegionListSize(PCUEIMAGE pThis, uint32_t cTracksMax)
     if (pThis->cTracksMax < cTracksMax)
     {
         PVDREGIONLIST pRegionListNew = (PVDREGIONLIST)RTMemRealloc(pThis->pRegionList,
-                                                                   RT_UOFFSETOF(VDREGIONLIST, aRegions[cTracksMax]));
+                                                                   RT_UOFFSETOF_DYN(VDREGIONLIST, aRegions[cTracksMax]));
         if (pRegionListNew)
         {
             /* Init all the new allocated tracks. */

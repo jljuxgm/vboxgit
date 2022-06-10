@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: PATMInternal.h 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -402,8 +402,8 @@ typedef struct PATMPATCHPAGE
     R3PTRTYPE(PPATCHINFO *)     papPatch;
 } PATMPATCHPAGE, *PPATMPATCHPAGE;
 
-#define PATM_PATCHREC_FROM_COREOFFSET(a)  (PPATMPATCHREC)((uintptr_t)a - RT_OFFSETOF(PATMPATCHREC, CoreOffset))
-#define PATM_PATCHREC_FROM_PATCHINFO(a)   (PPATMPATCHREC)((uintptr_t)a - RT_OFFSETOF(PATMPATCHREC, patch))
+#define PATM_PATCHREC_FROM_COREOFFSET(a)  (PPATMPATCHREC)((uintptr_t)a - RT_UOFFSETOF(PATMPATCHREC, CoreOffset))
+#define PATM_PATCHREC_FROM_PATCHINFO(a)   (PPATMPATCHREC)((uintptr_t)a - RT_UOFFSETOF(PATMPATCHREC, patch))
 
 /**
  * AVL trees used by PATM.

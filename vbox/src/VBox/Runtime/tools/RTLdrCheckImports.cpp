@@ -1,4 +1,4 @@
-/* $Id: RTLdrCheckImports.cpp 70513 2018-01-10 11:52:06Z vboxsync $ */
+/* $Id: RTLdrCheckImports.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Module dependency checker.
  */
@@ -421,7 +421,7 @@ static int rtCheckImportsForImage(PCRTCHECKIMPORTSOPTS pOpts, const char *pszIma
     rc = RTLdrQueryProp(hLdrMod, RTLDRPROP_IMPORT_COUNT, &cImports, sizeof(cImports));
     if (RT_SUCCESS(rc))
     {
-        RTCHECKIMPORTSTATE *pState = (RTCHECKIMPORTSTATE *)RTMemAllocZ(RT_UOFFSETOF(RTCHECKIMPORTSTATE, aImports[cImports + 1]));
+        RTCHECKIMPORTSTATE *pState = (RTCHECKIMPORTSTATE *)RTMemAllocZ(RT_UOFFSETOF_DYN(RTCHECKIMPORTSTATE, aImports[cImports + 1]));
         if (pState)
         {
             pState->pszImage = pszImage;

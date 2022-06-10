@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -687,7 +687,7 @@ LOCAL void vboxNetFltSolarisRecv(void *pvData, mac_resource_handle_t hResource, 
     for (mblk_t *pCurMsg = pMsg; pCurMsg != NULL; pCurMsg = pCurMsg->b_next)
     {
         unsigned cSegs = vboxNetFltSolarisMBlkCalcSGSegs(pThis, pCurMsg);
-        PINTNETSG pSG = (PINTNETSG)alloca(RT_OFFSETOF(INTNETSG, aSegs[cSegs]));
+        PINTNETSG pSG = (PINTNETSG)alloca(RT_UOFFSETOF_DYN(INTNETSG, aSegs[cSegs]));
         int rc = vboxNetFltSolarisMBlkToSG(pThis, pMsg, pSG, cSegs, fSrc);
         if (RT_SUCCESS(rc))
             pThis->pSwitchPort->pfnRecv(pThis->pSwitchPort, NULL, pSG, fSrc);

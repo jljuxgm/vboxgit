@@ -1,4 +1,4 @@
-/* $Id: VirtioRing-solaris.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VirtioRing-solaris.c 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions: Virtio Driver for Solaris, Ring implementation.
  */
@@ -77,7 +77,7 @@ void VirtioRingInit(PVIRTIOQUEUE pQueue, uint_t cDescs, caddr_t virtBuf, ulong_t
     pRing->cDesc          = cDescs;
     pRing->pRingDesc      = (void *)virtBuf;
     pRing->pRingAvail     = (PVIRTIORINGAVAIL)(virtBuf + (cDescs * sizeof(pRing->pRingDesc[0])));
-    pRing->pRingUsedElem  = RT_ALIGN_PT(pRing->pRingAvail + RT_OFFSETOF(VIRTIORINGAVAIL, aRings[pQueue->Ring.cDesc]), Align,
+    pRing->pRingUsedElem  = RT_ALIGN_PT(pRing->pRingAvail + RT_UOFFSETOF_DYN(VIRTIORINGAVAIL, aRings[pQueue->Ring.cDesc]), Align,
                                         PVIRTIORINGUSEDELEM);
 
     for (uint_t i = 0; i < pRing->cDesc - 1; i++)

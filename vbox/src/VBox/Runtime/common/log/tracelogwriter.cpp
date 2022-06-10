@@ -1,4 +1,4 @@
-/* $Id: tracelogwriter.cpp 72309 2018-05-24 07:23:34Z vboxsync $ */
+/* $Id: tracelogwriter.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Trace log writer.
  */
@@ -136,7 +136,7 @@ typedef RTTRACELOGWRTCP *PRTTRACELOGWRTCP;
  */
 static size_t rtTraceLogWrtEvtDescGetSz(PCRTTRACELOGEVTDESC pEvtDesc)
 {
-    size_t cbAlloc = RT_OFFSETOF(RTTRACELOGWREVTDESC, aEvtItemDesc[pEvtDesc->cEvtItems]);
+    size_t cbAlloc = RT_UOFFSETOF_DYN(RTTRACELOGWREVTDESC, aEvtItemDesc[pEvtDesc->cEvtItems]);
 
     cbAlloc += strlen(pEvtDesc->pszId) + 1;
     if (pEvtDesc->pszDesc)

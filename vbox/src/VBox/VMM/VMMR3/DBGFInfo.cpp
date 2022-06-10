@@ -1,4 +1,4 @@
-/* $Id: DBGFInfo.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: DBGFInfo.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Info.
  */
@@ -238,7 +238,7 @@ static int dbgfR3InfoRegister(PUVM pUVM, const char *pszName, const char *pszDes
      */
     int rc;
     size_t cchName = strlen(pszName) + 1;
-    PDBGFINFO pInfo = (PDBGFINFO)MMR3HeapAllocU(pUVM, MM_TAG_DBGF_INFO, RT_OFFSETOF(DBGFINFO, szName[cchName]));
+    PDBGFINFO pInfo = (PDBGFINFO)MMR3HeapAllocU(pUVM, MM_TAG_DBGF_INFO, RT_UOFFSETOF_DYN(DBGFINFO, szName[cchName]));
     if (pInfo)
     {
         pInfo->enmType = DBGFINFOTYPE_INVALID;

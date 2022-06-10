@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 71775 2018-04-09 14:54:57Z vboxsync $ */
+/* $Id: DrvVD.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -95,7 +95,7 @@ extern bool DevINIPConfigured(void);
 
 /** Converts a pointer to VBOXDISK::IMedia to a PVBOXDISK. */
 #define PDMIMEDIA_2_VBOXDISK(pInterface) \
-    ( (PVBOXDISK)((uintptr_t)pInterface - RT_OFFSETOF(VBOXDISK, IMedia)) )
+    ( (PVBOXDISK)((uintptr_t)pInterface - RT_UOFFSETOF(VBOXDISK, IMedia)) )
 
 /** Saved state version of an I/O request .*/
 #define DRVVD_IOREQ_SAVED_STATE_VERSION UINT32_C(1)

@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  *
@@ -942,7 +942,7 @@ struct VBoxDtVMem *VBoxDtVMemCreate(const char *pszName, void *pvBase, size_t cb
     uint32_t cChunks = (uint32_t)cb / VBOXDTVMEMCHUNK_BITS;
     if (cb % VBOXDTVMEMCHUNK_BITS)
         cChunks++;
-    PVBOXDTVMEM pThis = (PVBOXDTVMEM)RTMemAllocZ(RT_OFFSETOF(VBOXDTVMEM, apChunks[cChunks]));
+    PVBOXDTVMEM pThis = (PVBOXDTVMEM)RTMemAllocZ(RT_UOFFSETOF_DYN(VBOXDTVMEM, apChunks[cChunks]));
     if (!pThis)
         return NULL;
     int rc = RTSpinlockCreate(&pThis->hSpinlock, RTSPINLOCK_FLAGS_INTERRUPT_SAFE, "VBoxDtVMem");

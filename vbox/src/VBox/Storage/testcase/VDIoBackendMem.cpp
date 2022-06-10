@@ -1,4 +1,4 @@
-/** $Id: VDIoBackendMem.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/** $Id: VDIoBackendMem.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O memory backend
@@ -155,7 +155,7 @@ int VDIoBackendMemTransfer(PVDIOBACKENDMEM pIoBackend, PVDMEMDISK pMemDisk,
     if (enmTxDir != VDIOTXDIR_FLUSH)
         RTSgBufSegArrayCreate(pSgBuf, NULL, &cSegs, cbTransfer);
 
-    pReq = (PVDIOBACKENDREQ)RTMemAlloc(RT_OFFSETOF(VDIOBACKENDREQ, aSegs[cSegs]));
+    pReq = (PVDIOBACKENDREQ)RTMemAlloc(RT_UOFFSETOF_DYN(VDIOBACKENDREQ, aSegs[cSegs]));
     if (!pReq)
         return VERR_NO_MEMORY;
 

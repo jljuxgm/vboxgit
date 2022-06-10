@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DrvMouseQueue.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -113,7 +113,7 @@ static DECLCALLBACK(void *)  drvMouseQueueQueryInterface(PPDMIBASE pInterface, c
 /* -=-=-=-=- IMousePort -=-=-=-=- */
 
 /** Converts a pointer to DRVMOUSEQUEUE::Port to a DRVMOUSEQUEUE pointer. */
-#define IMOUSEPORT_2_DRVMOUSEQUEUE(pInterface) ( (PDRVMOUSEQUEUE)((char *)(pInterface) - RT_OFFSETOF(DRVMOUSEQUEUE, IPort)) )
+#define IMOUSEPORT_2_DRVMOUSEQUEUE(pInterface) ( (PDRVMOUSEQUEUE)((char *)(pInterface) - RT_UOFFSETOF(DRVMOUSEQUEUE, IPort)) )
 
 
 /**
@@ -184,7 +184,7 @@ static DECLCALLBACK(int) drvMouseQueuePutEventMultiTouch(PPDMIMOUSEPORT pInterfa
 
 /* -=-=-=-=- IConnector -=-=-=-=- */
 
-#define PPDMIMOUSECONNECTOR_2_DRVMOUSEQUEUE(pInterface) ( (PDRVMOUSEQUEUE)((char *)(pInterface) - RT_OFFSETOF(DRVMOUSEQUEUE, IConnector)) )
+#define PPDMIMOUSECONNECTOR_2_DRVMOUSEQUEUE(pInterface) ( (PDRVMOUSEQUEUE)((char *)(pInterface) - RT_UOFFSETOF(DRVMOUSEQUEUE, IConnector)) )
 
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 72249 2018-05-17 17:33:00Z vboxsync $ */
+/* $Id: IOM.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -167,7 +167,7 @@ VMMR3_INT_DECL(int) IOMR3Init(PVM pVM)
     /*
      * Setup any fixed pointers and offsets.
      */
-    pVM->iom.s.offVM = RT_OFFSETOF(VM, iom);
+    pVM->iom.s.offVM = RT_UOFFSETOF(VM, iom);
 
     /*
      * Initialize the REM critical section.

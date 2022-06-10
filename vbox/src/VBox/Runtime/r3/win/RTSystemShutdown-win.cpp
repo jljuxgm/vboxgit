@@ -1,4 +1,4 @@
-/* $Id: RTSystemShutdown-win.cpp 70615 2018-01-17 20:28:16Z vboxsync $ */
+/* $Id: RTSystemShutdown-win.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - RTSystemShutdown, Windows.
  */
@@ -75,7 +75,7 @@ RTDECL(int) RTSystemShutdown(RTMSINTERVAL cMsDelay, uint32_t fFlags, const char 
             if (!AdjustTokenPrivileges(hToken,
                                        FALSE /*DisableAllPrivileges*/,
                                        &u.TokenPriv,
-                                       RT_OFFSETOF(TOKEN_PRIVILEGES, Privileges[1]),
+                                       RT_UOFFSETOF(TOKEN_PRIVILEGES, Privileges[1]),
                                        NULL,
                                        NULL) )
                 dwErr = GetLastError();

@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxStub.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -432,7 +432,7 @@ static bool PackageIsNeeded(PVBOXSTUBPKG pPackage)
 static bool AddCleanupRec(const char *pszPath, bool fFile)
 {
     size_t cchPath = strlen(pszPath); Assert(cchPath > 0);
-    PSTUBCLEANUPREC pRec = (PSTUBCLEANUPREC)RTMemAlloc(RT_OFFSETOF(STUBCLEANUPREC, szPath[cchPath + 1]));
+    PSTUBCLEANUPREC pRec = (PSTUBCLEANUPREC)RTMemAlloc(RT_UOFFSETOF_DYN(STUBCLEANUPREC, szPath[cchPath + 1]));
     if (!pRec)
     {
         ShowError("Out of memory!");

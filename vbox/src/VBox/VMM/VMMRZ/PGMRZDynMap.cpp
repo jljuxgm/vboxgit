@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -948,7 +948,7 @@ static int pgmR0DynMapAddSeg(PPGMRZDYNMAP pThis, uint32_t cPages)
      * Allocate the segment structure and pages of memory, then touch all the pages (paranoia).
      */
     uint32_t cMaxPTs = cPages / (pThis->fLegacyMode ? X86_PG_ENTRIES : X86_PG_PAE_ENTRIES) + 2;
-    PPGMR0DYNMAPSEG pSeg = (PPGMR0DYNMAPSEG)RTMemAllocZ(RT_UOFFSETOF(PGMR0DYNMAPSEG, ahMemObjPTs[cMaxPTs]));
+    PPGMR0DYNMAPSEG pSeg = (PPGMR0DYNMAPSEG)RTMemAllocZ(RT_UOFFSETOF_DYN(PGMR0DYNMAPSEG, ahMemObjPTs[cMaxPTs]));
     if (!pSeg)
         return VERR_NO_MEMORY;
     pSeg->pNext  = NULL;

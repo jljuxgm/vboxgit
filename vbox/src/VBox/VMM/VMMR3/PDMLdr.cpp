@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: PDMLdr.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -293,7 +293,7 @@ int pdmR3LoadR3U(PUVM pUVM, const char *pszFilename, const char *pszName)
      */
     const char *pszSuff = RTLdrGetSuff();
     size_t      cchSuff = RTPathHasSuffix(pszFilename) ? 0 : strlen(pszSuff);
-    PPDMMOD     pModule = (PPDMMOD)RTMemAllocZ(RT_OFFSETOF(PDMMOD, szFilename[cchFilename + cchSuff + 1]));
+    PPDMMOD     pModule = (PPDMMOD)RTMemAllocZ(RT_UOFFSETOF_DYN(PDMMOD, szFilename[cchFilename + cchSuff + 1]));
     if (pModule)
     {
         pModule->eType = PDMMOD_TYPE_R3;

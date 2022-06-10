@@ -1,4 +1,4 @@
-/* $Id: tstRTTraceLog.cpp 71492 2018-03-24 22:23:10Z vboxsync $ */
+/* $Id: tstRTTraceLog.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTTraceLog.
  */
@@ -110,7 +110,7 @@ static RTTRACELOGEVTDESC g_EvtDesc =
  */
 static int tstRTTraceLogBufAlloc(size_t cbBuf, PTSTRTTRACELOGBUF *ppBuf)
 {
-    PTSTRTTRACELOGBUF pBuf = (PTSTRTTRACELOGBUF)RTMemAllocZ(RT_OFFSETOF(TSTRTTRACELOGBUF, abBuf[cbBuf]));
+    PTSTRTTRACELOGBUF pBuf = (PTSTRTTRACELOGBUF)RTMemAllocZ(RT_UOFFSETOF_DYN(TSTRTTRACELOGBUF, abBuf[cbBuf]));
     if (RT_LIKELY(pBuf))
     {
         pBuf->cbBuf  = cbBuf;

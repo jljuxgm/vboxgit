@@ -1,4 +1,4 @@
-/* $Id: DrvVDE.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DrvVDE.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VDE network transport driver.
  */
@@ -106,7 +106,7 @@ typedef struct DRVVDE
 
 
 /** Converts a pointer to VDE::INetworkUp to a PRDVVDE. */
-#define PDMINETWORKUP_2_DRVVDE(pInterface) ( (PDRVVDE)((uintptr_t)pInterface - RT_OFFSETOF(DRVVDE, INetworkUp)) )
+#define PDMINETWORKUP_2_DRVVDE(pInterface) ( (PDRVVDE)((uintptr_t)pInterface - RT_UOFFSETOF(DRVVDE, INetworkUp)) )
 
 
 /*********************************************************************************************************************************

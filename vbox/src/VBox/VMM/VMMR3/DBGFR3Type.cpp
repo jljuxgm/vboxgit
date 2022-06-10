@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Type.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: DBGFR3Type.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Type Management.
  */
@@ -735,7 +735,7 @@ static int dbgfR3TypeParseBufferByType(PUVM pUVM, PDBGFTYPE pType, uint8_t *pbBu
     int rc = VINF_SUCCESS;
     uint32_t cEntries = pType->pReg ? pType->pReg->cMembers : 1;
     PDBGFTYPEVAL pVal = (PDBGFTYPEVAL)MMR3HeapAllocZU(pUVM, MM_TAG_DBGF_TYPE,
-                                                      RT_OFFSETOF(DBGFTYPEVAL, aEntries[cEntries]));
+                                                      RT_UOFFSETOF_DYN(DBGFTYPEVAL, aEntries[cEntries]));
     if (RT_LIKELY(pVal))
     {
         size_t cbParsed = 0;

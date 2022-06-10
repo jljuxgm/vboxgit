@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PDMQueue.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -73,7 +73,7 @@ static int pdmR3QueueCreate(PVM pVM, size_t cbItem, uint32_t cItems, uint32_t cM
      * Align the item size and calculate the structure size.
      */
     cbItem = RT_ALIGN(cbItem, sizeof(RTUINTPTR));
-    size_t cb = cbItem * cItems + RT_ALIGN_Z(RT_OFFSETOF(PDMQUEUE, aFreeItems[cItems + PDMQUEUE_FREE_SLACK]), 16);
+    size_t cb = cbItem * cItems + RT_ALIGN_Z(RT_UOFFSETOF_DYN(PDMQUEUE, aFreeItems[cItems + PDMQUEUE_FREE_SLACK]), 16);
     PPDMQUEUE pQueue;
     int rc;
     if (fRZEnabled)
@@ -99,7 +99,7 @@ static int pdmR3QueueCreate(PVM pVM, size_t cbItem, uint32_t cItems, uint32_t cM
     //pQueue->pPendingRC = NULL;
     pQueue->iFreeHead = cItems;
     //pQueue->iFreeTail = 0;
-    PPDMQUEUEITEMCORE pItem = (PPDMQUEUEITEMCORE)((char *)pQueue + RT_ALIGN_Z(RT_OFFSETOF(PDMQUEUE, aFreeItems[cItems + PDMQUEUE_FREE_SLACK]), 16));
+    PPDMQUEUEITEMCORE pItem = (PPDMQUEUEITEMCORE)((char *)pQueue + RT_ALIGN_Z(RT_UOFFSETOF_DYN(PDMQUEUE, aFreeItems[cItems + PDMQUEUE_FREE_SLACK]), 16));
     for (unsigned i = 0; i < cItems; i++, pItem = (PPDMQUEUEITEMCORE)((char *)pItem + cbItem))
     {
         pQueue->aFreeItems[i].pItemR3 = pItem;

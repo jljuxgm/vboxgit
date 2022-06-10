@@ -1,4 +1,4 @@
-/* $Id: nt3fakes-r0drv-nt.cpp 70387 2017-12-29 14:13:36Z vboxsync $ */
+/* $Id: nt3fakes-r0drv-nt.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - NT 3.x fakes for NT 4.0 KPIs.
  */
@@ -468,7 +468,7 @@ static bool rtR0Nt3InitModuleInfoOne(const char *pszImage, uint8_t const *pbCode
         __try /* pointless */
         {
             uZero     = *(uint32_t const *)pbCode;
-            offNewHdr = *(uint32_t const *)&pbCode[RT_OFFSETOF(IMAGE_DOS_HEADER, e_lfanew)];
+            offNewHdr = *(uint32_t const *)&pbCode[RT_UOFFSETOF(IMAGE_DOS_HEADER, e_lfanew)];
         }
         __except(EXCEPTION_EXECUTE_HANDLER)
         {

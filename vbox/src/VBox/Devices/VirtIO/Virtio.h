@@ -1,4 +1,4 @@
-/* $Id: Virtio.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: Virtio.h 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Virtio.h - Virtio Declarations
  */
@@ -298,7 +298,7 @@ DECLINLINE(uint16_t) vringReadAvailIndex(PVPCISTATE pState, PVRING pVRing)
     uint16_t tmp;
 
     PDMDevHlpPhysRead(pState->CTX_SUFF(pDevIns),
-                      pVRing->addrAvail + RT_OFFSETOF(VRINGAVAIL, uNextFreeIndex),
+                      pVRing->addrAvail + RT_UOFFSETOF(VRINGAVAIL, uNextFreeIndex),
                       &tmp, sizeof(tmp));
     return tmp;
 }

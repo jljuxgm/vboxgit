@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 69221 2017-10-24 15:07:46Z vboxsync $ */
+/* $Id: MM.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -235,14 +235,14 @@ VMMR3DECL(int) MMR3Init(PVM pVM)
     /*
      * Assert alignment, sizes and order.
      */
-    AssertRelease(!(RT_OFFSETOF(VM, mm.s) & 31));
+    AssertRelease(!(RT_UOFFSETOF(VM, mm.s) & 31));
     AssertRelease(sizeof(pVM->mm.s) <= sizeof(pVM->mm.padding));
     AssertMsg(pVM->mm.s.offVM == 0, ("Already initialized!\n"));
 
     /*
      * Init the structure.
      */
-    pVM->mm.s.offVM = RT_OFFSETOF(VM, mm);
+    pVM->mm.s.offVM = RT_UOFFSETOF(VM, mm);
     pVM->mm.s.offLookupHyper = NIL_OFFSET;
 
     /*

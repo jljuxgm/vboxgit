@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 71878 2018-04-17 14:32:06Z vboxsync $ */
+/* $Id: RTSignTool.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -777,7 +777,7 @@ static RTEXITCODE SignToolPkcs7Exe_WriteSignatureToFile(PSIGNTOOLPKCS7EXE pThis,
                             /*
                              * Sector align the signature portion.
                              */
-                            uint32_t const  cbWinCert = RT_OFFSETOF(WIN_CERTIFICATE, bCertificate);
+                            uint32_t const  cbWinCert = RT_UOFFSETOF(WIN_CERTIFICATE, bCertificate);
                             uint64_t        offCur    = 0;
                             rc = RTFileGetSize(hFile, &offCur);
                             if (   RT_SUCCESS(rc)

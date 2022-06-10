@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 70948 2018-02-10 15:38:12Z vboxsync $ */
+/* $Id: PGMMap.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -124,9 +124,9 @@ VMMR3DECL(int) PGMR3MapPT(PVM pVM, RTGCPTR GCPtr, uint32_t cb, uint32_t fFlags, 
     PPGMMAPPING pNew;
     int rc;
     if (fFlags & PGMR3MAPPT_FLAGS_UNMAPPABLE)
-        rc = MMHyperAlloc(           pVM, RT_OFFSETOF(PGMMAPPING, aPTs[cPTs]), 0, MM_TAG_PGM_MAPPINGS, (void **)&pNew);
+        rc = MMHyperAlloc(           pVM, RT_UOFFSETOF_DYN(PGMMAPPING, aPTs[cPTs]), 0, MM_TAG_PGM_MAPPINGS, (void **)&pNew);
     else
-        rc = MMR3HyperAllocOnceNoRel(pVM, RT_OFFSETOF(PGMMAPPING, aPTs[cPTs]), 0, MM_TAG_PGM_MAPPINGS, (void **)&pNew);
+        rc = MMR3HyperAllocOnceNoRel(pVM, RT_UOFFSETOF_DYN(PGMMAPPING, aPTs[cPTs]), 0, MM_TAG_PGM_MAPPINGS, (void **)&pNew);
     if (RT_FAILURE(rc))
         return rc;
     pNew->GCPtr         = GCPtr;

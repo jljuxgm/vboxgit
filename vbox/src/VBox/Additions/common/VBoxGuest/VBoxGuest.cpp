@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 72352 2018-05-26 12:37:50Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -111,7 +111,7 @@ static int      vgdrvDispatchEventsLocked(PVBOXGUESTDEVEXT pDevExt, uint32_t fEv
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-static const uint32_t g_cbChangeMemBalloonReq = RT_OFFSETOF(VMMDevChangeMemBalloon, aPhysPage[VMMDEV_MEMORY_BALLOON_CHUNK_PAGES]);
+static const uint32_t g_cbChangeMemBalloonReq = RT_UOFFSETOF(VMMDevChangeMemBalloon, aPhysPage[VMMDEV_MEMORY_BALLOON_CHUNK_PAGES]);
 
 #if defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS)
 /**

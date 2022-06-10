@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 71862 2018-04-16 12:49:15Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -298,7 +298,7 @@ static VOID vboxWddmBltPipeRectsTranslate(VBOXVDMAPIPE_RECTS *pRects, int x, int
 
 static VBOXVDMAPIPE_RECTS * vboxWddmBltPipeRectsDup(const VBOXVDMAPIPE_RECTS *pRects)
 {
-    const size_t cbDup = RT_OFFSETOF(VBOXVDMAPIPE_RECTS, UpdateRects.aRects[pRects->UpdateRects.cRects]);
+    const size_t cbDup = RT_UOFFSETOF_DYN(VBOXVDMAPIPE_RECTS, UpdateRects.aRects[pRects->UpdateRects.cRects]);
     VBOXVDMAPIPE_RECTS *pDup = (VBOXVDMAPIPE_RECTS*)vboxWddmMemAllocZero(cbDup);
     if (!pDup)
     {

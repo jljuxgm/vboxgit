@@ -1,4 +1,4 @@
-/** $Id: VDScript.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/** $Id: VDScript.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - scripting engine.
@@ -2949,7 +2949,7 @@ DECLHIDDEN(int) VDScriptCtxCallbacksRegister(VDSCRIPTCTX hScriptCtx, PCVDSCRIPTC
             break;
         }
 
-        pFn = (PVDSCRIPTFN)RTMemAllocZ(RT_OFFSETOF(VDSCRIPTFN, aenmArgTypes[paCallbacks->cArgs]));
+        pFn = (PVDSCRIPTFN)RTMemAllocZ(RT_UOFFSETOF_DYN(VDSCRIPTFN, aenmArgTypes[paCallbacks->cArgs]));
         if (!pFn)
         {
             rc = VERR_NO_MEMORY;

@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -449,7 +449,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtVfsStdFileOps =
     0,
     { /* ObjSet */
         RTVFSOBJSETOPS_VERSION,
-        RT_OFFSETOF(RTVFSFILEOPS, Stream.Obj) - RT_OFFSETOF(RTVFSFILEOPS, ObjSet),
+        RT_UOFFSETOF(RTVFSFILEOPS, ObjSet) - RT_UOFFSETOF(RTVFSFILEOPS, Stream.Obj),
         rtVfsStdFile_SetMode,
         rtVfsStdFile_SetTimes,
         rtVfsStdFile_SetOwner,

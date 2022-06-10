@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PATMPatch.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -1228,7 +1228,7 @@ int patmPatchGenMovDebug(PVM pVM, PPATCHINFO pPatch, DISCPUSTATE *pCpu)
     pPB[1] = MAKE_MODRM(mod, reg, rm);
 
     AssertReturn(dbgreg <= DISDREG_DR7, VERR_INVALID_PARAMETER);
-    offset = RT_OFFSETOF(CPUMCTX, dr[dbgreg]);
+    offset = RT_UOFFSETOF_DYN(CPUMCTX, dr[dbgreg]);
 
     *(RTRCPTR *)&pPB[2] = pVM->patm.s.pCPUMCtxGC + offset;
     patmPatchAddReloc32(pVM, pPatch, &pPB[2], FIXUP_ABSOLUTE);

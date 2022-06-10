@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 71808 2018-04-10 11:42:48Z vboxsync $ */
+/* $Id: DevParallel.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -150,9 +150,9 @@ typedef struct PARALLELPORT
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
 
-#define PDMIHOSTPARALLELPORT_2_PARALLELPORT(pInstance) ( (PARALLELPORT *)((uintptr_t)(pInterface) - RT_OFFSETOF(PARALLELPORT, IHostParallelPort)) )
-#define PDMIHOSTDEVICEPORT_2_PARALLELPORT(pInstance)   ( (PARALLELPORT *)((uintptr_t)(pInterface) - RT_OFFSETOF(PARALLELPORT, IHostDevicePort)) )
-#define PDMIBASE_2_PARALLELPORT(pInstance)             ( (PARALLELPORT *)((uintptr_t)(pInterface) - RT_OFFSETOF(PARALLELPORT, IBase)) )
+#define PDMIHOSTPARALLELPORT_2_PARALLELPORT(pInstance) ( (PARALLELPORT *)((uintptr_t)(pInterface) - RT_UOFFSETOF(PARALLELPORT, IHostParallelPort)) )
+#define PDMIHOSTDEVICEPORT_2_PARALLELPORT(pInstance)   ( (PARALLELPORT *)((uintptr_t)(pInterface) - RT_UOFFSETOF(PARALLELPORT, IHostDevicePort)) )
+#define PDMIBASE_2_PARALLELPORT(pInstance)             ( (PARALLELPORT *)((uintptr_t)(pInterface) - RT_UOFFSETOF(PARALLELPORT, IBase)) )
 
 
 /*********************************************************************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: fuzz-observer.cpp 72942 2018-07-07 13:58:16Z vboxsync $ */
+/* $Id: fuzz-observer.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, observer.
  */
@@ -438,7 +438,7 @@ static int rtFuzzObsExecCtxArgvPrepare(PRTFUZZOBSINT pThis, PRTFUZZOBSEXECCTX pE
 static int rtFuzzObsExecCtxCreate(PPRTFUZZOBSEXECCTX ppExecCtx, PRTFUZZOBSINT pThis)
 {
     int rc = VINF_SUCCESS;
-    PRTFUZZOBSEXECCTX pExecCtx = (PRTFUZZOBSEXECCTX)RTMemAllocZ(RT_OFFSETOF(RTFUZZOBSEXECCTX, apszArgs[pThis->cArgs + 1]));
+    PRTFUZZOBSEXECCTX pExecCtx = (PRTFUZZOBSEXECCTX)RTMemAllocZ(RT_UOFFSETOF_DYN(RTFUZZOBSEXECCTX, apszArgs[pThis->cArgs + 1]));
     if (RT_LIKELY(pExecCtx))
     {
         pExecCtx->hPipeStdoutR     = NIL_RTPIPE;

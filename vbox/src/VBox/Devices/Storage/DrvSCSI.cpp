@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 71807 2018-04-10 10:08:46Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -775,7 +775,7 @@ static DECLCALLBACK(int) drvscsiIoReqAllocSizeSet(PPDMIMEDIAEX pInterface, size_
 {
     PDRVSCSI pThis = RT_FROM_MEMBER(pInterface, DRVSCSI, IMediaEx);
 
-    pThis->cbIoReqAlloc = RT_OFFSETOF(DRVSCSIREQ, abAlloc[cbIoReqAlloc]);
+    pThis->cbIoReqAlloc = RT_UOFFSETOF_DYN(DRVSCSIREQ, abAlloc[cbIoReqAlloc]);
     return VINF_SUCCESS;
 }
 

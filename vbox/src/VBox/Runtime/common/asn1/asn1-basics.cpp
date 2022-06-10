@@ -1,4 +1,4 @@
-/* $Id: asn1-basics.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: asn1-basics.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Basic Operations.
  */
@@ -197,7 +197,7 @@ RTDECL(int) RTAsn1ContentAllocZ(PRTASN1CORE pAsn1Core, size_t cb, PCRTASN1ALLOCA
     Allocation.pAllocator  = pAllocator;
 
     /* Make the allocation. */
-    uint32_t            cbAlloc = RT_OFFSETOF(RTASN1MEMCONTENT, au64Content) + (uint32_t)cb;
+    uint32_t            cbAlloc = RT_UOFFSETOF(RTASN1MEMCONTENT, au64Content) + (uint32_t)cb;
     PRTASN1MEMCONTENT   pHdr;
     int rc = pAllocator->pfnAlloc(pAllocator, &Allocation, (void **)&pHdr, cbAlloc);
     if (RT_SUCCESS(rc))
@@ -233,7 +233,7 @@ RTDECL(int) RTAsn1ContentReallocZ(PRTASN1CORE pAsn1Core, size_t cb, PCRTASN1ALLO
         /*
          * Case 1 - Initial allocation.
          */
-        uint32_t cbNeeded  = RT_OFFSETOF(RTASN1MEMCONTENT, au64Content) + (uint32_t)cb;
+        uint32_t cbNeeded  = RT_UOFFSETOF(RTASN1MEMCONTENT, au64Content) + (uint32_t)cb;
         if (!(pAsn1Core->fFlags & RTASN1CORE_F_ALLOCATED_CONTENT))
             return RTAsn1ContentAllocZ(pAsn1Core, cb, pAllocator);
 

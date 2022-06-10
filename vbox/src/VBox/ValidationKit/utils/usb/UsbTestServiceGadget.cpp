@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadget.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: UsbTestServiceGadget.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host API.
  */
@@ -108,7 +108,7 @@ DECLHIDDEN(int) utsGadgetCreate(UTSGADGETHOST hGadgetHost, UTSGADGETCLASS enmCla
 
     if (RT_LIKELY(pClassIf))
     {
-        PUTSGADGETINT pThis = (PUTSGADGETINT)RTMemAllocZ(RT_OFFSETOF(UTSGADGETINT, abClassInst[pClassIf->cbClass]));
+        PUTSGADGETINT pThis = (PUTSGADGETINT)RTMemAllocZ(RT_UOFFSETOF_DYN(UTSGADGETINT, abClassInst[pClassIf->cbClass]));
         if (RT_LIKELY(pThis))
         {
             pThis->cRefs       = 1;

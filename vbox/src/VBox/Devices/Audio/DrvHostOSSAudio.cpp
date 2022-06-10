@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 73069 2018-07-11 15:45:59Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -45,7 +45,7 @@
 
 /** Makes DRVHOSTOSSAUDIO out of PDMIHOSTAUDIO. */
 #define PDMIHOSTAUDIO_2_DRVHOSTOSSAUDIO(pInterface) \
-    ( (PDRVHOSTOSSAUDIO)((uintptr_t)pInterface - RT_OFFSETOF(DRVHOSTOSSAUDIO, IHostAudio)) )
+    ( (PDRVHOSTOSSAUDIO)((uintptr_t)pInterface - RT_UOFFSETOF(DRVHOSTOSSAUDIO, IHostAudio)) )
 
 
 /*********************************************************************************************************************************

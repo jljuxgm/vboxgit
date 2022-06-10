@@ -1,4 +1,4 @@
-/* $Id: tftp.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tftp.c 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -265,7 +265,7 @@ DECLINLINE(int) tftpSessionOptionParse(PTFTPSESSION pTftpSession, PCTFTPIPHDR pc
     LogFlowFunc(("pTftpSession:%p, pcTftpIpHeader:%p\n", pTftpSession, pcTftpIpHeader));
 
     pszTftpRRQRaw = (char *)&pcTftpIpHeader->Core;
-    cbTftpRRQRaw = RT_H2N_U16(pcTftpIpHeader->UdpHdr.uh_ulen) + sizeof(struct ip) - RT_OFFSETOF(TFTPIPHDR, Core);
+    cbTftpRRQRaw = RT_H2N_U16(pcTftpIpHeader->UdpHdr.uh_ulen) + sizeof(struct ip) - RT_UOFFSETOF(TFTPIPHDR, Core);
     while (cbTftpRRQRaw)
     {
         idxTftpRRQRaw = RTStrNLen(pszTftpRRQRaw, 512 - idxTftpRRQRaw) + 1;

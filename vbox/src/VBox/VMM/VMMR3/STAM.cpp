@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 72300 2018-05-23 15:13:06Z vboxsync $ */
+/* $Id: STAM.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -716,7 +716,7 @@ static PSTAMLOOKUP stamR3LookupNewChild(PSTAMLOOKUP pParent, const char *pchName
     /*
      * Allocate a new entry.
      */
-    PSTAMLOOKUP pNew = (PSTAMLOOKUP)RTMemAlloc(RT_OFFSETOF(STAMLOOKUP, szName[cchName + 1]));
+    PSTAMLOOKUP pNew = (PSTAMLOOKUP)RTMemAlloc(RT_UOFFSETOF_DYN(STAMLOOKUP, szName[cchName + 1]));
     if (!pNew)
         return NULL;
     pNew->pParent       = pParent;

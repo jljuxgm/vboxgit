@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PGMPool.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -224,7 +224,7 @@ int pgmR3PoolInit(PVM pVM)
     /*
      * Allocate the data structures.
      */
-    uint32_t cb = RT_OFFSETOF(PGMPOOL, aPages[cMaxPages]);
+    uint32_t cb = RT_UOFFSETOF_DYN(PGMPOOL, aPages[cMaxPages]);
     cb += cMaxUsers * sizeof(PGMPOOLUSER);
     cb += cMaxPhysExts * sizeof(PGMPOOLPHYSEXT);
     PPGMPOOL pPool;

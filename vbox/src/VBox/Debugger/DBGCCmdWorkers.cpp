@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdWorkers.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DBGCCmdWorkers.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Worker Routines.
  */
@@ -62,7 +62,7 @@ int dbgcBpAdd(PDBGC pDbgc, RTUINT iBp, const char *pszCmd)
     if (pszCmd)
         pszCmd = RTStrStripL(pszCmd);
     size_t cchCmd = pszCmd ? strlen(pszCmd) : 0;
-    pBp = (PDBGCBP)RTMemAlloc(RT_OFFSETOF(DBGCBP, szCmd[cchCmd + 1]));
+    pBp = (PDBGCBP)RTMemAlloc(RT_UOFFSETOF_DYN(DBGCBP, szCmd[cchCmd + 1]));
     if (!pBp)
         return VERR_NO_MEMORY;
     if (cchCmd)

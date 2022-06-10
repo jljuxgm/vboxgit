@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 71000 2018-02-13 16:45:53Z vboxsync $ */
+/* $Id: TestExecService.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -210,7 +210,7 @@ uint32_t                    g_cVerbose = 1;
 static int txsSendPkt(PTXSPKTHDR pPkt)
 {
     Assert(pPkt->cb >= sizeof(*pPkt));
-    pPkt->uCrc32 = RTCrc32(pPkt->achOpcode, pPkt->cb - RT_OFFSETOF(TXSPKTHDR, achOpcode));
+    pPkt->uCrc32 = RTCrc32(pPkt->achOpcode, pPkt->cb - RT_UOFFSETOF(TXSPKTHDR, achOpcode));
     if (pPkt->cb != RT_ALIGN_32(pPkt->cb, TXSPKT_ALIGNMENT))
         memset((uint8_t *)pPkt + pPkt->cb, '\0', RT_ALIGN_32(pPkt->cb, TXSPKT_ALIGNMENT) - pPkt->cb);
 
@@ -267,7 +267,7 @@ static int txsRecvPkt(PPTXSPKTHDR ppPktHdr, bool fAutoRetryOnFailure)
                       "%.*Rhxd\n",
                       pPktHdr, pPktHdr->cb, pPktHdr->uCrc32, pPktHdr->achOpcode, RT_MIN(pPktHdr->cb, 256), pPktHdr));
                 uint32_t uCrc32Calc = pPktHdr->uCrc32 != 0
-                                    ? RTCrc32(&pPktHdr->achOpcode[0], pPktHdr->cb - RT_OFFSETOF(TXSPKTHDR, achOpcode))
+                                    ? RTCrc32(&pPktHdr->achOpcode[0], pPktHdr->cb - RT_UOFFSETOF(TXSPKTHDR, achOpcode))
                                     : 0;
                 if (pPktHdr->uCrc32 == uCrc32Calc)
                 {
@@ -3421,7 +3421,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 71000 $\n");
+                RTPrintf("$Revision: 73097 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 

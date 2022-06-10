@@ -1,4 +1,4 @@
-/* $Id: krnlmod-linux.cpp 69754 2017-11-19 14:32:51Z vboxsync $ */
+/* $Id: krnlmod-linux.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Kernel module, Linux.
  */
@@ -102,7 +102,7 @@ static int rtKrnlModLinuxInfoCreate(const char *pszName, PRTKRNLMODINFO phKrnlMo
 {
     int rc = VINF_SUCCESS;
     size_t cchName = strlen(pszName) + 1;
-    PRTKRNLMODINFOINT pThis = (PRTKRNLMODINFOINT)RTMemAllocZ(RT_OFFSETOF(RTKRNLMODINFOINT, achName[cchName]));
+    PRTKRNLMODINFOINT pThis = (PRTKRNLMODINFOINT)RTMemAllocZ(RT_UOFFSETOF_DYN(RTKRNLMODINFOINT, achName[cchName]));
     if (RT_LIKELY(pThis))
     {
         memcpy(&pThis->achName[0], pszName, cchName);

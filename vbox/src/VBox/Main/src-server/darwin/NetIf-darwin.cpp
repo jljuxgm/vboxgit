@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -341,7 +341,7 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
                 cbNameLen = strlen(pNIC->szName) + 1;
                 break;
             }
-        PNETIFINFO pNew = (PNETIFINFO)RTMemAllocZ(RT_OFFSETOF(NETIFINFO, szName[cbNameLen]));
+        PNETIFINFO pNew = (PNETIFINFO)RTMemAllocZ(RT_UOFFSETOF_DYN(NETIFINFO, szName[cbNameLen]));
         if (!pNew)
         {
             rc = VERR_NO_MEMORY;

@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-nt.cpp 70292 2017-12-21 16:25:50Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-nt.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, NT.
  */
@@ -356,12 +356,12 @@ static int rtR0DbgKrnlNtInit(PRTDBGNTKRNLMODINFO pModInfo)
      *       the syscall ourselves, if we cared.
      */
     uint32_t                cModules = pModInfo ? 110 /*32KB*/ : 27 /*8KB*/;
-    ULONG                   cbInfo   = RT_OFFSETOF(RTL_PROCESS_MODULES, Modules[cModules]);
+    ULONG                   cbInfo   = RT_UOFFSETOF_DYN(RTL_PROCESS_MODULES, Modules[cModules]);
     PRTL_PROCESS_MODULES    pInfo    = (PRTL_PROCESS_MODULES)RTMemAllocZ(cbInfo);
     if (!pInfo)
     {
         cModules = cModules / 4;
-        cbInfo   = RT_OFFSETOF(RTL_PROCESS_MODULES, Modules[cModules]);
+        cbInfo   = RT_UOFFSETOF_DYN(RTL_PROCESS_MODULES, Modules[cModules]);
         pInfo    = (PRTL_PROCESS_MODULES)RTMemAllocZ(cbInfo);
         if (!pInfo)
         {

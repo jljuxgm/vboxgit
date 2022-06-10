@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 71826 2018-04-11 15:26:01Z vboxsync $ */
+/* $Id: vfsbase.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -90,7 +90,7 @@
 #define RTVFSDIR_ASSERT_OPS(pDirOps, a_enmType) \
     do { \
         RTVFSOBJ_ASSERT_OPS(&(pDirOps)->Obj, a_enmType); \
-        RTVFSOBJSET_ASSERT_OPS(&(pDirOps)->ObjSet, RT_OFFSETOF(RTVFSDIROPS, Obj) - RT_OFFSETOF(RTVFSDIROPS, ObjSet)); \
+        RTVFSOBJSET_ASSERT_OPS(&(pDirOps)->ObjSet, RT_UOFFSETOF(RTVFSDIROPS, ObjSet) - RT_UOFFSETOF(RTVFSDIROPS, Obj)); \
         Assert((pDirOps)->uVersion == RTVFSDIROPS_VERSION); \
         Assert(!(pDirOps)->fReserved); \
         AssertPtr((pDirOps)->pfnOpen); \
@@ -125,7 +125,7 @@
 #define RTVFSSYMLINK_ASSERT_OPS(pSymlinkOps, a_enmType) \
     do { \
         RTVFSOBJ_ASSERT_OPS(&(pSymlinkOps)->Obj, a_enmType); \
-        RTVFSOBJSET_ASSERT_OPS(&(pSymlinkOps)->ObjSet, RT_OFFSETOF(RTVFSSYMLINKOPS, Obj) - RT_OFFSETOF(RTVFSSYMLINKOPS, ObjSet)); \
+        RTVFSOBJSET_ASSERT_OPS(&(pSymlinkOps)->ObjSet, RT_UOFFSETOF(RTVFSSYMLINKOPS, ObjSet) - RT_UOFFSETOF(RTVFSSYMLINKOPS, Obj)); \
         Assert((pSymlinkOps)->uVersion == RTVFSSYMLINKOPS_VERSION); \
         Assert(!(pSymlinkOps)->fReserved); \
         AssertPtr((pSymlinkOps)->pfnRead); \
@@ -3169,7 +3169,7 @@ RTDECL(int) RTVfsDirReadEx(RTVFSDIR hVfsDir, PRTDIRENTRYEX pDirEntry, size_t *pc
     {
         cbDirEntry = *pcbDirEntry;
         AssertMsgReturn(cbDirEntry >= RT_UOFFSETOF(RTDIRENTRYEX, szName[2]),
-                        ("Invalid *pcbDirEntry=%d (min %d)\n", *pcbDirEntry, RT_OFFSETOF(RTDIRENTRYEX, szName[2])),
+                        ("Invalid *pcbDirEntry=%d (min %zu)\n", *pcbDirEntry, RT_UOFFSETOF(RTDIRENTRYEX, szName[2])),
                         VERR_INVALID_PARAMETER);
     }
 

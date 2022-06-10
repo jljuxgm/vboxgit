@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 70644 2018-01-19 12:20:33Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -272,7 +272,7 @@ typedef struct DRVAUDIOVIDEOREC
 
 /** Makes DRVAUDIOVIDEOREC out of PDMIHOSTAUDIO. */
 #define PDMIHOSTAUDIO_2_DRVAUDIOVIDEOREC(pInterface) \
-    ( (PDRVAUDIOVIDEOREC)((uintptr_t)pInterface - RT_OFFSETOF(DRVAUDIOVIDEOREC, IHostAudio)) )
+    ( (PDRVAUDIOVIDEOREC)((uintptr_t)pInterface - RT_UOFFSETOF(DRVAUDIOVIDEOREC, IHostAudio)) )
 
 /**
  * Initializes a recording sink.

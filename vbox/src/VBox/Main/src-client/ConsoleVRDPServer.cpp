@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 73003 2018-07-09 11:09:32Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -769,7 +769,7 @@ DECLCALLBACK(int) ConsoleVRDPServer::VRDPCallbackQueryProperty(void *pvCallback,
                 break;
             }
 
-            size_t cbInfo = cbBuffer - RT_OFFSETOF(VRDEFEATURE, achInfo);
+            size_t cbInfo = cbBuffer - RT_UOFFSETOF(VRDEFEATURE, achInfo);
 
             VRDEFEATURE *pFeature = (VRDEFEATURE *)pvBuffer;
 

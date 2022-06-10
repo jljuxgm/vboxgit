@@ -1,4 +1,4 @@
-/* $Id: VBoxPeSetVersion.cpp 70802 2018-01-30 04:53:42Z vboxsync $ */
+/* $Id: VBoxPeSetVersion.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Change the OS and SubSystem version to value suitable for NT v3.1.
  *
@@ -190,8 +190,8 @@ static int UpdateFile(FILE *pFile, unsigned uNtVersion, PIMAGE_SECTION_HEADER *p
         *ppaShdr = paShdrs;
 
         unsigned long offShdrs = offNtHdrs
-                               + RT_UOFFSETOF(IMAGE_NT_HEADERS32,
-                                              OptionalHeader.DataDirectory[NtHdrsNew.x32.OptionalHeader.NumberOfRvaAndSizes]);
+                               + RT_UOFFSETOF_DYN(IMAGE_NT_HEADERS32,
+                                                  OptionalHeader.DataDirectory[NtHdrsNew.x32.OptionalHeader.NumberOfRvaAndSizes]);
         if (fseek(pFile, offShdrs, SEEK_SET) != 0)
             return Error("Failed to seek to section headers at %#lx: %s", offShdrs, strerror(errno));
         if (fread(paShdrs, cbShdrs, 1, pFile) != 1)

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPInternal.cpp 71592 2018-03-31 19:51:41Z vboxsync $ */
+/* $Id: VBoxMPInternal.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport internal functions
  */
@@ -423,7 +423,7 @@ static void VBoxMPMemFreeDriver(PVBOXMP_COMMON pCommon, void *pv)
 static int VBoxVbvaCreateChannelContexts(PVBOXMP_COMMON pCommon, VBVA_CHANNELCONTEXTS **ppContext)
 {
     uint32_t cDisplays = (uint32_t)pCommon->cDisplays;
-    const size_t size = RT_OFFSETOF(VBVA_CHANNELCONTEXTS, aContexts[cDisplays]);
+    const size_t size = RT_UOFFSETOF_DYN(VBVA_CHANNELCONTEXTS, aContexts[cDisplays]);
     VBVA_CHANNELCONTEXTS *pContext = (VBVA_CHANNELCONTEXTS*) VBoxMPMemAllocDriver(pCommon, size);
     if (pContext)
     {

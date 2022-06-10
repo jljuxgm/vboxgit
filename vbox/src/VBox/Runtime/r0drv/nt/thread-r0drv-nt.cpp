@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 72639 2018-06-21 13:51:44Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -136,12 +136,12 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
     RTCCUINTREG     fSavedFlags  = ASMIntDisableFlags();
 
 #ifdef RT_ARCH_X86
-    PKPCR       pPcr   = (PKPCR)__readfsdword(RT_OFFSETOF(KPCR,SelfPcr));
+    PKPCR       pPcr   = (PKPCR)__readfsdword(RT_UOFFSETOF(KPCR,SelfPcr));
     uint8_t    *pbPrcb = (uint8_t *)pPcr->Prcb;
 
 #elif defined(RT_ARCH_AMD64)
     /* HACK ALERT! The offset is from windbg/vista64. */
-    PKPCR       pPcr   = (PKPCR)__readgsqword(RT_OFFSETOF(KPCR,Self));
+    PKPCR       pPcr   = (PKPCR)__readgsqword(RT_UOFFSETOF(KPCR,Self));
     uint8_t    *pbPrcb = (uint8_t *)pPcr->CurrentPrcb;
 
 #else

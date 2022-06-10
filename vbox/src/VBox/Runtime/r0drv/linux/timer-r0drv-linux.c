@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 70458 2018-01-04 12:44:33Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -461,7 +461,7 @@ static void rtTimerLnxDestroyIt(PRTTIMER pTimer)
     /*
      * Finally, free the resources.
      */
-    RTMemFreeEx(pTimer, RT_OFFSETOF(RTTIMER, aSubTimers[pTimer->cCpus]));
+    RTMemFreeEx(pTimer, RT_UOFFSETOF_DYN(RTTIMER, aSubTimers[pTimer->cCpus]));
     if (hSpinlock != NIL_RTSPINLOCK)
         RTSpinlockDestroy(hSpinlock);
 }
@@ -1550,7 +1550,7 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_
     }
 #endif
 
-    rc = RTMemAllocEx(RT_OFFSETOF(RTTIMER, aSubTimers[cCpus]), 0,
+    rc = RTMemAllocEx(RT_UOFFSETOF_DYN(RTTIMER, aSubTimers[cCpus]), 0,
                       RTMEMALLOCEX_FLAGS_ZEROED | RTMEMALLOCEX_FLAGS_ANY_CTX_FREE, (void **)&pTimer);
     if (RT_FAILURE(rc))
     {

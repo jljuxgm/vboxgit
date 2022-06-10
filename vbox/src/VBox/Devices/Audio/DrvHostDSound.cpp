@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 71117 2018-02-23 17:56:51Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -78,7 +78,7 @@
 
 /** Makes DRVHOSTDSOUND out of PDMIHOSTAUDIO. */
 #define PDMIHOSTAUDIO_2_DRVHOSTDSOUND(pInterface) \
-    ( (PDRVHOSTDSOUND)((uintptr_t)pInterface - RT_OFFSETOF(DRVHOSTDSOUND, IHostAudio)) )
+    ( (PDRVHOSTDSOUND)((uintptr_t)pInterface - RT_UOFFSETOF(DRVHOSTDSOUND, IHostAudio)) )
 
 
 /*********************************************************************************************************************************

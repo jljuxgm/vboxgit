@@ -1,4 +1,4 @@
-/* $Id: ldrEx.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: ldrEx.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Extended Features.
  */
@@ -94,7 +94,7 @@ RTDECL(int) RTLdrOpenWithReader(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH
     uint32_t offHdr = 0;
     if (uSign.au16[0] == IMAGE_DOS_SIGNATURE)
     {
-        rc = pReader->pfnRead(pReader, &offHdr, sizeof(offHdr), RT_OFFSETOF(IMAGE_DOS_HEADER, e_lfanew));
+        rc = pReader->pfnRead(pReader, &offHdr, sizeof(offHdr), RT_UOFFSETOF(IMAGE_DOS_HEADER, e_lfanew));
         if (RT_FAILURE(rc))
             return rc;
 

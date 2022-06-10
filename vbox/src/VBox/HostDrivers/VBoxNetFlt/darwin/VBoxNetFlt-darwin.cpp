@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -931,7 +931,7 @@ static errno_t vboxNetFltDarwinIffInputOutputWorker(PVBOXNETFLTINS pThis, mbuf_t
     unsigned cSegs = vboxNetFltDarwinMBufCalcSGSegs(pThis, pMBuf, pvFrame);
     if (cSegs < VBOXNETFLT_DARWIN_MAX_SEGS)
     {
-        PINTNETSG pSG = (PINTNETSG)alloca(RT_OFFSETOF(INTNETSG, aSegs[cSegs]));
+        PINTNETSG pSG = (PINTNETSG)alloca(RT_UOFFSETOF_DYN(INTNETSG, aSegs[cSegs]));
         vboxNetFltDarwinMBufToSG(pThis, pMBuf, pvFrame, pSG, cSegs, fSrc);
 
         fDropIt = pThis->pSwitchPort->pfnRecv(pThis->pSwitchPort, NULL /* pvIf */, pSG, fSrc);

@@ -1,4 +1,4 @@
-/* $Id: vfsprogress.cpp 69977 2017-12-07 13:02:36Z vboxsync $ */
+/* $Id: vfsprogress.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, progress filter for files.
  */
@@ -455,7 +455,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_rtVfsProgressFileOps =
     0,
     { /* ObjSet */
         RTVFSOBJSETOPS_VERSION,
-        RT_OFFSETOF(RTVFSFILEOPS, Stream.Obj) - RT_OFFSETOF(RTVFSFILEOPS, ObjSet),
+        RT_UOFFSETOF(RTVFSFILEOPS, ObjSet) - RT_UOFFSETOF(RTVFSFILEOPS, Stream.Obj),
         rtVfsProgressFile_SetMode,
         rtVfsProgressFile_SetTimes,
         rtVfsProgressFile_SetOwner,
