@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78225 2019-04-20 04:45:55Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78226 2019-04-20 04:50:00Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -914,6 +914,7 @@ static void hmR0VmxUpdateErrorRecord(PVMCPU pVCpu, int rc)
 }
 
 
+#ifdef VBOX_STRICT
 /**
  * Reads the VM-entry interruption-information field from the VMCS into the VMX
  * transient structure.
@@ -931,7 +932,6 @@ DECLINLINE(int) hmR0VmxReadEntryIntInfoVmcs(PVMXTRANSIENT pVmxTransient)
 }
 
 
-#ifdef VBOX_STRICT
 /**
  * Reads the VM-entry exception error code field from the VMCS into
  * the VMX transient structure.
