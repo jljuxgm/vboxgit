@@ -1,4 +1,4 @@
-/* $Id: RTCRestArrayBase.cpp 74025 2018-09-02 14:14:43Z vboxsync $ */
+/* $Id: RTCRestArrayBase.cpp 74193 2018-09-11 11:30:05Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestArrayBase implementation.
  */
@@ -286,8 +286,6 @@ bool RTCRestArrayBase::removeAt(size_t a_idx)
         m_cElements--;
         if (a_idx < m_cElements)
             memmove(&m_papElements[a_idx], &m_papElements[a_idx + 1], (m_cElements - a_idx) * sizeof(m_papElements[0]));
-
-        m_cElements--;
     }
     return false;
 }
