@@ -1,4 +1,4 @@
-/* $Id: xfs.h 76616 2019-01-02 19:46:01Z vboxsync $ */
+/* $Id: xfs.h 76618 2019-01-02 19:52:35Z vboxsync $ */
 /** @file
  * IPRT, XFS format.
  */
@@ -24,8 +24,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___iprt_formats_xfs_h
-#define ___iprt_formats_xfs_h
+#ifndef IPRT_INCLUDED_formats_xfs_h
+#define IPRT_INCLUDED_formats_xfs_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/assertcompile.h>
@@ -385,5 +388,5 @@ typedef const XFSAGI *PCXFSAGI;
 
 /** @} */
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_xfs_h */
 
