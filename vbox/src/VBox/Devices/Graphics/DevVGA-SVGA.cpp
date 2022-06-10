@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 73328 2018-07-23 14:55:54Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 75508 2018-11-16 07:16:04Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -1202,9 +1202,9 @@ PDMBOTHCBDECL(int) vmsvgaReadPort(PVGASTATE pThis, uint32_t *pu32)
             rc = VINF_IOM_R3_IOPORT_READ;
 #else
             STAM_REL_COUNTER_INC(&pThis->svga.StatRegUnknownRd);
-# ifndef DEBUG_sunlover
-            AssertMsgFailed(("reg=%#x\n", idxReg));
-# endif
+
+            /* Do not assert. The guest might be reading all registers. */
+            LogFunc(("Unknown reg=%#x\n", idxReg));
 #endif
         }
         break;
