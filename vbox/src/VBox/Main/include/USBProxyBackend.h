@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: USBProxyBackend.h 77101 2019-02-01 10:26:16Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend (base) class.
  */
@@ -373,7 +373,7 @@ protected:
     virtual int interruptWait(void);
     virtual PUSBDEVICE getDevices(void);
     int addDeviceToChain(PUSBDEVICE pDev, PUSBDEVICE *ppFirst, PUSBDEVICE **pppNext, int rc);
-    virtual void deviceAdded(ComObjPtr<HostUSBDevice> &aDevice, SessionMachinesList &llOpenedMachines, PUSBDEVICE aUSBDevice);
+    virtual bool isFakeUpdateRequired();
 
 private:
     RTSEMEVENT mNotifyEventSem;
