@@ -1,4 +1,4 @@
-/* $Id: ldrLX.cpp 74640 2018-10-06 19:14:10Z vboxsync $ */
+/* $Id: ldrLX.cpp 74641 2018-10-06 19:28:12Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the Linear eXecutable (LX) Format.
  */
@@ -2683,7 +2683,7 @@ static DECLCALLBACK(int) rtldrLX_LinkAddressToSegOffset(PRTLDRMODINTERNAL pMod, 
 
 
 /**
- * @interface_method_impl{RTLDROPS,pfnLinkAddressToRva}.
+ * @interface_method_impl{RTLDROPS,pfnLinkAddressToRva}
  */
 static DECLCALLBACK(int) rtldrLX_LinkAddressToRva(PRTLDRMODINTERNAL pMod, RTLDRADDR LinkAddress, PRTLDRADDR pRva)
 {
