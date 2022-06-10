@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73055 2018-07-11 06:11:24Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73056 2018-07-11 06:26:48Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -8031,7 +8031,10 @@ HMSVM_EXIT_DECL hmR0SvmExitInvlpga(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
 HMSVM_EXIT_DECL hmR0SvmExitVmrun(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
 {
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS(pVCpu, pSvmTransient);
-    HMSVM_CPUMCTX_IMPORT_STATE(pVCpu, IEM_CPUMCTX_EXTRN_SVM_VMRUN_MASK);
+    /* We shall import the entire state here, just in case we enter and continue execution of
+       the nested-guest with hardware-assisted SVM in ring-0, we would be switching VMCBs and
+       could lose lose part of CPU state. */
+    HMSVM_CPUMCTX_IMPORT_STATE(pVCpu, HMSVM_CPUMCTX_EXTRN_ALL);
 
     VBOXSTRICTRC rcStrict;
     bool const fSupportsNextRipSave = hmR0SvmSupportsNextRipSave(pVCpu);
