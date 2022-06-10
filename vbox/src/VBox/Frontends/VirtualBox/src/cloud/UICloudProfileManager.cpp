@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 75376 2018-11-09 19:11:40Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 75564 2018-11-19 10:40:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -352,30 +352,6 @@ void UICloudProfileManagerWidget::sltAddCloudProfile()
                     UIDataCloudProfile data;
                     loadCloudProfile(comCloudProfile, *pProviderItem, data);
                     createItemForCloudProfile(pProviderItem, data, true);
-
-                    /* If profile still Ok: */
-                    if (comCloudProfile.isOk())
-                    {
-                        /* Now push known properties back to profile all together.
-                         * That will rewrite empty profile with values gathered above. */
-                        const QVector<QString> updatedKeys = data.m_data.keys().toVector();
-                        QVector<QString> updatedValues;
-                        typedef QPair<QString, QString> QStringPair;
-                        foreach (const QStringPair &valuePair, data.m_data.values())
-                            updatedValues += valuePair.first;
-                        comCloudProfile.SetProperties(updatedKeys, updatedValues);
-                        /* Show error message if necessary: */
-                        if (!comCloudProfile.isOk())
-                            msgCenter().cannotAssignCloudProfileParameter(comCloudProfile, this);
-                        else
-                        {
-                            /* Update profile in the tree: */
-                            UIDataCloudProfile updatedData;
-                            loadCloudProfile(comCloudProfile, *pProviderItem, updatedData);
-                            updateItemForCloudProfile(updatedData, true, static_cast<UIItemCloudProfile*>(m_pTreeWidget->currentItem()));
-                            sltHandleCurrentItemChange();
-                        }
-                    }
 
                     /* Save profile changes: */
                     comCloudProvider.SaveProfiles();
