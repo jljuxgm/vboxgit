@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 77079 2019-01-31 16:05:05Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 77080 2019-01-31 16:15:30Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -418,7 +418,7 @@ const char *GuestProcessStreamBlock::GetString(const char *pszKey) const
 
     try
     {
-        GuestCtrlStreamPairMapIterConst itPairs = mPairs.find(Utf8Str(pszKey)); /** @todo r=bird: this string conversion is excellent performance wise... */
+        GuestCtrlStreamPairMapIterConst itPairs = mPairs.find(pszKey);
         if (itPairs != mPairs.end())
             return itPairs->second.mValue.c_str();
     }
