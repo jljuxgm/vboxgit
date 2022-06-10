@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInit.cpp 75600 2018-11-19 21:15:16Z vboxsync $ */
+/* $Id: VBoxGuestR0LibInit.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Library initialization.
  */
@@ -37,6 +37,7 @@
 #include <iprt/string.h>
 #include <iprt/assert.h>
 #include <iprt/semaphore.h>
+#include <VBox/err.h>
 
 
 /*********************************************************************************************************************************

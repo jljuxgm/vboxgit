@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 75705 2018-11-25 01:44:41Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -53,6 +53,7 @@
 #define LOG_GROUP   LOG_GROUP_DEFAULT
 #include "VBoxGuestInternal.h"
 #include <VBox/VMMDev.h> /* for VMMDEV_RAM_SIZE */
+#include <VBox/err.h>
 #include <VBox/log.h>
 #include <VBox/HostServices/GuestPropertySvc.h>
 #include <iprt/ctype.h>

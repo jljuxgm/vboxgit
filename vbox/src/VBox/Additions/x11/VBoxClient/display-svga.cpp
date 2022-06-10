@@ -1,4 +1,4 @@
-/* $Id: display-svga.cpp 75961 2018-12-05 09:34:44Z vboxsync $ */
+/* $Id: display-svga.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to drm guest
  * driver.
@@ -43,6 +43,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/file.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 
 /** Maximum number of supported screens.  DRM and X11 both limit this to 32. */

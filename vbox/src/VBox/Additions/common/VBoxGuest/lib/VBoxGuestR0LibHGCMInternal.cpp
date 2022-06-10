@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibHGCMInternal.cpp 76196 2018-12-12 19:24:05Z vboxsync $ */
+/* $Id: VBoxGuestR0LibHGCMInternal.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -42,6 +42,7 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include <iprt/time.h>
+#include <VBox/err.h>
 
 #ifndef VBGL_VBOXGUEST
 # error "This file should only be part of the VBoxGuestR0LibBase library that is linked into VBoxGuest."

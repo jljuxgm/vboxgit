@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibHGCM.cpp 75547 2018-11-18 04:50:34Z vboxsync $ */
+/* $Id: VBoxGuestR0LibHGCM.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager, ring-0 client drivers.
  *
@@ -40,6 +40,7 @@
 #include <iprt/assert.h>
 #include <iprt/semaphore.h>
 #include <iprt/string.h>
+#include <VBox/err.h>
 
 #ifdef VBGL_VBOXGUEST
 # error "This file shouldn't be part of the VBoxGuestR0LibBase library that is linked into VBoxGuest.  It's client code."

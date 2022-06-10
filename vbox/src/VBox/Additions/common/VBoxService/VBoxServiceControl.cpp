@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 75853 2018-11-30 19:26:42Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -57,6 +57,7 @@
 #include <iprt/process.h>
 #include <iprt/semaphore.h>
 #include <iprt/thread.h>
+#include <VBox/err.h>
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/HostServices/GuestControlSvc.h>
 #include "VBoxServiceInternal.h"

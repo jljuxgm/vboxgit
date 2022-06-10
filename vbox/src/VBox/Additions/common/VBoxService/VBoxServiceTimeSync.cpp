@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 75559 2018-11-18 19:46:04Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -92,11 +92,12 @@
 # include <sys/time.h>
 #endif
 
-#include <iprt/thread.h>
+#include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/semaphore.h>
 #include <iprt/time.h>
-#include <iprt/assert.h>
+#include <iprt/thread.h>
+#include <VBox/err.h>
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
 #include "VBoxServiceUtils.h"

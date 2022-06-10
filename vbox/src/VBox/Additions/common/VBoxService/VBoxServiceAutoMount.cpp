@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 75947 2018-12-04 13:17:55Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -44,6 +44,7 @@
 #include <iprt/semaphore.h>
 #include <iprt/sort.h>
 #include <iprt/string.h>
+#include <VBox/err.h>
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/shflsvc.h>
 #include "VBoxServiceInternal.h"

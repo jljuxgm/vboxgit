@@ -1,4 +1,4 @@
-/* $Id: main.cpp 70126 2017-12-14 11:14:08Z vboxsync $ */
+/* $Id: main.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -15,6 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stdlib.h>       /* For exit */
@@ -40,10 +44,15 @@
 #include <iprt/string.h>
 #include <iprt/types.h>
 #include <VBox/VBoxGuestLib.h>
+#include <VBox/err.h>
 #include <VBox/log.h>
 
 #include "VBoxClient.h"
 
+
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
 /*static int (*gpfnOldIOErrorHandler)(Display *) = NULL; - unused */
 
 /** Object representing the service we are running.  This has to be global
@@ -62,6 +71,8 @@ static RTFILE g_hPidFile;
 RTCRITSECT g_critSect;
 /** Counter of how often our deamon has been respawned. */
 unsigned cRespawn = 0;
+
+
 
 /**
  * Exit with a fatal error.

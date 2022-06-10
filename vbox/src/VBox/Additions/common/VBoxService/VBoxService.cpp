@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 75726 2018-11-25 20:12:28Z vboxsync $ */
+/* $Id: VBoxService.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -86,6 +86,7 @@
 #include <iprt/system.h>
 #include <iprt/thread.h>
 
+#include <VBox/err.h>
 #include <VBox/log.h>
 
 #include "VBoxServiceInternal.h"

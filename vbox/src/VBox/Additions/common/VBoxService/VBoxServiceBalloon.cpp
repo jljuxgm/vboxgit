@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceBalloon.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxServiceBalloon.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * VBoxService - Memory Ballooning.
  */
@@ -49,6 +49,7 @@
 #include <iprt/system.h>
 #include <iprt/thread.h>
 #include <iprt/time.h>
+#include <VBox/err.h>
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
 #include "VBoxServiceUtils.h"

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibGenericRequest.cpp 72627 2018-06-20 13:53:28Z vboxsync $ */
+/* $Id: VBoxGuestR0LibGenericRequest.cpp 76419 2018-12-23 19:43:43Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Generic VMMDev request management.
  */
@@ -37,6 +37,7 @@
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
+#include <VBox/err.h>
 
 
 DECLR0VBGL(int) VbglGR0Verify(const VMMDevRequestHeader *pReq, size_t cbReq)
