@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 75590 2018-11-19 18:26:59Z vboxsync $ */
+/* $Id: VMMDevState.h 75592 2018-11-19 18:35:07Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -53,7 +53,7 @@ typedef struct DISPLAYCHANGEREQUEST
 typedef struct DISPLAYCHANGEDATA
 {
     /* Which monitor is being reported to the guest. */
-    int iCurrentMonitor;
+    int32_t iCurrentMonitor;
 
     /** true if the guest responded to VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST at least once */
     bool fGuestSentChangeEventAck;
@@ -200,7 +200,9 @@ typedef struct VMMDevState
     R0PTRTYPE(VMMDevMemory *)   pVMMDevRAMR0;
     /** R0 pointer to VMMDev RAM area - first page only, could be NULL! */
     RCPTRTYPE(VMMDevMemory *)   pVMMDevRAMRC;
+#if HC_ARCH_BITS != 32
     RTRCPTR                     RCPtrAlignment3b;
+#endif
 
     /** R3 pointer to VMMDev Heap RAM area. */
     R3PTRTYPE(VMMDevMemory *) pVMMDevHeapR3;
