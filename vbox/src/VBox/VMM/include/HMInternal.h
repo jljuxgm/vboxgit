@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 73389 2018-07-28 07:03:03Z vboxsync $ */
+/* $Id: HMInternal.h 73606 2018-08-10 07:38:56Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -20,7 +20,6 @@
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
-#include <VBox/vmm/em.h>
 #include <VBox/vmm/stam.h>
 #include <VBox/dis.h>
 #include <VBox/vmm/hm.h>
