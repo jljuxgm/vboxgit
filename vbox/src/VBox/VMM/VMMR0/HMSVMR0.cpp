@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72777 2018-06-29 18:04:40Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72783 2018-07-01 16:33:06Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1846,7 +1846,6 @@ static void hmR0SvmExportGuestSegmentRegs(PVMCPU pVCpu, PSVMVMCB pVmcb)
  *
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   pVmcb       Pointer to the VM control block.
- * @param   pCtx        Pointer to the guest-CPU context.
  *
  * @remarks No-long-jump zone!!!
  */
@@ -2432,7 +2431,6 @@ VMMR0DECL(void) SVMR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, PVMCPU pVCpu, 
  * Saves the host state.
  *
  * @returns VBox status code.
- * @param   pVM         The cross context VM structure.
  * @param   pVCpu       The cross context virtual CPU structure.
  *
  * @remarks No-long-jump zone!!!
