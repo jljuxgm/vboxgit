@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 75124 2018-10-28 00:27:53Z vboxsync $ */
+/* $Id: tstRTCRest-1.cpp 75125 2018-10-28 01:39:36Z vboxsync $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -770,7 +770,7 @@ void testDouble(void)
         int rcTmp = RTJsonParseFromString(&hTmpValue, TST_DBL_MIN_STRING1, NULL);
         RTJsonValueRelease(hTmpValue);
         if (rcTmp == VERR_INVALID_PARAMETER)
-            fGorksMinString = false;
+            fGroksMinString = false;
 #endif
 
         /* from json: */
