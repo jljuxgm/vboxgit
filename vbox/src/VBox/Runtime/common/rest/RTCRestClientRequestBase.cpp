@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientRequestBase.cpp 73918 2018-08-27 15:08:55Z vboxsync $ */
+/* $Id: RTCRestClientRequestBase.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientRequestBase implementation.
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP RTLOGGROUP_REST
 #include <iprt/cpp/restbase.h>
 
 #include <iprt/assert.h>
@@ -36,10 +37,21 @@
 
 /**
  * Default constructor.
- *  */
+ */
 RTCRestClientRequestBase::RTCRestClientRequestBase()
+    : m_fIsSet(0)
+    , m_fErrorSet(0)
 {
-    /* nothing to do */
+}
+
+
+/**
+ * Copy constructor.
+ */
+RTCRestClientRequestBase::RTCRestClientRequestBase(RTCRestClientRequestBase const &a_rThat)
+    : m_fIsSet(a_rThat.m_fIsSet)
+    , m_fErrorSet(a_rThat.m_fErrorSet)
+{
 }
 
 
@@ -49,6 +61,17 @@ RTCRestClientRequestBase::RTCRestClientRequestBase()
 RTCRestClientRequestBase::~RTCRestClientRequestBase()
 {
     /* nothing to do */
+}
+
+
+/**
+ * Copy assignment operator.
+ */
+RTCRestClientRequestBase &RTCRestClientRequestBase::operator=(RTCRestClientRequestBase const &a_rThat)
+{
+    m_fIsSet    = a_rThat.m_fIsSet;
+    m_fErrorSet = a_rThat.m_fErrorSet;
+    return *this;
 }
 
 

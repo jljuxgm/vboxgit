@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientResponseBase.cpp 73968 2018-08-29 19:32:50Z vboxsync $ */
+/* $Id: RTCRestClientResponseBase.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientResponseBase implementation.
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP RTLOGGROUP_REST
 #include <iprt/cpp/restbase.h>
 
 #include <iprt/ctype.h>

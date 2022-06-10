@@ -1,4 +1,4 @@
-/* $Id: RTCRestStringMapBase.cpp 73965 2018-08-29 17:19:20Z vboxsync $ */
+/* $Id: RTCRestStringMapBase.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestStringMapBase implementation.
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP RTLOGGROUP_REST
 #include <iprt/cpp/restbase.h>
 
 #include <iprt/err.h>
@@ -71,10 +72,11 @@ RTCRestStringMapBase &RTCRestStringMapBase::operator=(RTCRestStringMapBase const
 *   Overridden base object methods                                                                                               *
 *********************************************************************************************************************************/
 
-void RTCRestStringMapBase::resetToDefault()
+int RTCRestStringMapBase::resetToDefault()
 {
     /* Default is an empty map. */
     clear();
+    return VINF_SUCCESS;
 }
 
 

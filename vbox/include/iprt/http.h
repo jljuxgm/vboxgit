@@ -1,4 +1,4 @@
-/* $Id: http.h 73967 2018-08-29 19:12:41Z vboxsync $ */
+/* $Id: http.h 73977 2018-08-30 12:13:02Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -207,6 +207,13 @@ typedef enum RTHTTPMETHOD
     RTHTTPMETHOD_END,
     RTHTTPMETHOD_32BIT_HACK = 0x7fffffff
 } RTHTTPMETHOD;
+
+/**
+ * Returns the name of the HTTP method.
+ * @returns Read only string.
+ * @param   enmMethod       The HTTP method to name.
+ */
+RTR3DECL(const char *) RTHttpMethodName(RTHTTPMETHOD enmMethod);
 
 /**
  * Performs generic blocking HTTP request, optionally returning the body and headers.

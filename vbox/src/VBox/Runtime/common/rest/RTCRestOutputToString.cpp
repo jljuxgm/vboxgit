@@ -1,4 +1,4 @@
-/* $Id: RTCRestOutputToString.cpp 73956 2018-08-29 15:09:34Z vboxsync $ */
+/* $Id: RTCRestOutputToString.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestOutputToString implementation.
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP RTLOGGROUP_REST
 #include <iprt/cpp/restbase.h>
 
 #include <iprt/err.h>

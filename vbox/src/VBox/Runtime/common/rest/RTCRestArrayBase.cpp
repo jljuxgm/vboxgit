@@ -1,4 +1,4 @@
-/* $Id: RTCRestArrayBase.cpp 73968 2018-08-29 19:32:50Z vboxsync $ */
+/* $Id: RTCRestArrayBase.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestArrayBase implementation.
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP RTLOGGROUP_REST
 #include <iprt/cpp/restbase.h>
 
 #include <iprt/err.h>
@@ -82,10 +83,11 @@ RTCRestArrayBase &RTCRestArrayBase::operator=(RTCRestArrayBase const &a_rThat);
 *   Overridden methods                                                                                                           *
 *********************************************************************************************************************************/
 
-void RTCRestArrayBase::resetToDefault()
+int RTCRestArrayBase::resetToDefault()
 {
     /* The default state of an array is empty. At least for now. */
     clear();
+    return VINF_SUCCESS;
 }
 
 

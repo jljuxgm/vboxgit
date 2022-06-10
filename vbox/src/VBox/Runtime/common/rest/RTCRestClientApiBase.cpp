@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBase.cpp 73967 2018-08-29 19:12:41Z vboxsync $ */
+/* $Id: RTCRestClientApiBase.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation.
  */
@@ -28,10 +28,12 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP RTLOGGROUP_REST
 #include <iprt/cpp/restbase.h>
 
 #include <iprt/err.h>
 #include <iprt/http.h>
+#include <iprt/log.h>
 
 
 /**
@@ -61,8 +63,10 @@ int RTCRestClientApiBase::reinitHttpInstance()
 
 
 void RTCRestClientApiBase::doCall(RTCRestClientRequestBase const &a_rRequest, RTHTTPMETHOD a_enmHttpMethod,
-                                  RTCRestClientResponseBase *a_pResponse)
+                                  RTCRestClientResponseBase *a_pResponse, const char *a_pszMethod)
 {
+    LogFlow(("doCall: %s %s\n", a_pszMethod, RTHttpMethodName(a_enmHttpMethod)));
+
     /*
      * Initialize the HTTP instance.
      */
@@ -154,5 +158,6 @@ void RTCRestClientApiBase::doCall(RTCRestClientRequestBase const &a_rRequest, RT
         }
     }
     a_pResponse->receiveComplete(rc, hHttp);
+    RT_NOREF_PV(a_pszMethod);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: RTCRestJsonPrimaryCursor.cpp 73875 2018-08-24 15:37:06Z vboxsync $ */
+/* $Id: RTCRestJsonPrimaryCursor.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestJsonPrimaryCursor implementation.
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP RTLOGGROUP_REST
 #include <iprt/cpp/restbase.h>
 
 #include <iprt/err.h>
