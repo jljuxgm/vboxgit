@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 73799 2018-08-21 09:22:39Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -325,7 +325,7 @@ void UISelectorWindow::sltHandleChooserPaneIndexChange(bool fUpdateDetails /* = 
 
 void UISelectorWindow::sltHandleMediumEnumerationFinish()
 {
-    /* We try to warn about inaccessible mediums only once
+    /* We try to warn about inaccessible media only once
      * (after media emumeration started from main() at startup),
      * to avoid annoying the user: */
     if (m_fWarningAboutInaccessibleMediaShown)

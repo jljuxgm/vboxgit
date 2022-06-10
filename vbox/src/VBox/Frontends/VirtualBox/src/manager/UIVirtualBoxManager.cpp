@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 73882 2018-08-24 16:56:38Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -275,7 +275,7 @@ void UIVirtualBoxManager::sltHandleHostScreenAvailableAreaChange()
 
 void UIVirtualBoxManager::sltHandleMediumEnumerationFinish()
 {
-    /* To avoid annoying the user, we check for inaccessible mediums just once, after
+    /* To avoid annoying the user, we check for inaccessible media just once, after
      * the first media emumeration [started from main() at startup] is complete. */
     if (m_fFirstMediumEnumerationHandled)
         return;

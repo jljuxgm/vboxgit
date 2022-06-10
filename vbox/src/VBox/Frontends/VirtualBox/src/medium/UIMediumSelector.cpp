@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 73034 2018-07-10 12:24:47Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -623,7 +623,7 @@ void UIMediumSelector::repopulateTreeWidget()
         return;
     /* Cache the currently selected items: */
     QList<QTreeWidgetItem*> selectedItems = m_pTreeWidget->selectedItems();
-    QStringList selectedMediums = selectedMediumIds();
+    QStringList selectedMedia = selectedMediumIds();
     /* uuid list of selected items: */
     /* Reset the related data structure: */
     m_mediumItemList.clear();
@@ -666,7 +666,7 @@ void UIMediumSelector::repopulateTreeWidget()
             menuItemVector.push_back(treeItem);
         }
     }
-    restoreSelection(selectedMediums, menuItemVector);
+    restoreSelection(selectedMedia, menuItemVector);
     saveDefaultForeground();
     updateOkButton();
     if (m_pAttachedSubTreeRoot)

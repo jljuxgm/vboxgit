@@ -1,4 +1,4 @@
-/* $Id: UITakeSnapshotDialog.h 72813 2018-07-03 09:41:00Z vboxsync $ */
+/* $Id: UITakeSnapshotDialog.h 73926 2018-08-28 10:02:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class declaration.
  */
@@ -86,7 +86,7 @@ private:
     QIcon m_icon;
 
     /** Holds the amount of immutable attachments. */
-    int  m_cImmutableMediums;
+    int  m_cImmutableMedia;
 
     /** Holds the icon label instance. */
     QLabel *m_pLabelIcon;

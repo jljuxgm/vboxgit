@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 72433 2018-06-04 16:37:36Z vboxsync $ */
+/* $Id: UIMedium.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -227,7 +227,7 @@ void UIMedium::refresh()
         /* Refresh medium size and logical size: */
         if (!m_fHostDrive)
         {
-            /* Only for created and accessible mediums: */
+            /* Only for created and accessible media: */
             if (m_state != KMediumState_Inaccessible && m_state != KMediumState_NotCreated)
             {
                 m_uSize = m_medium.GetSize();
@@ -274,7 +274,7 @@ void UIMedium::refresh()
             if (!parentMedium.isNull())
                 m_strParentId = normalizedID(parentMedium.GetId());
 
-            /* Only for created and accessible mediums: */
+            /* Only for created and accessible media: */
             if (m_state != KMediumState_Inaccessible && m_state != KMediumState_NotCreated)
             {
                 /* Refresh root hard drive ID: */
@@ -661,4 +661,3 @@ QString UIMedium::mediumTypeToString(const CMedium &comMedium)
     }
     return gpConverter->toString(comMedium.GetType());
 }
-

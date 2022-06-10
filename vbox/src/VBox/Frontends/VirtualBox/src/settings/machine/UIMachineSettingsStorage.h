@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 72815 2018-07-03 09:55:30Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 73926 2018-08-28 10:02:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -703,7 +703,7 @@ private slots:
     void sltChooseExistingMedium();
     /** Mounts existing host-drive. */
     void sltChooseHostDrive();
-    /** Mounts one of recent mediums. */
+    /** Mounts one of recent media. */
     void sltChooseRecentMedium();
 
     /** Updates action states. */

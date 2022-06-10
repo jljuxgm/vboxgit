@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 71644 2018-04-04 06:55:08Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -1571,14 +1571,14 @@ void UIGChooserModel::unregisterMachines(const QStringList &ids)
         if (iResultCode == AlertButton_Choice1)
         {
             /* Unregister machine first: */
-            CMediumVector mediums = machine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
+            CMediumVector media = machine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
             if (!machine.isOk())
             {
                 msgCenter().cannotRemoveMachine(machine);
                 continue;
             }
             /* Prepare cleanup progress: */
-            CProgress progress = machine.DeleteConfig(mediums);
+            CProgress progress = machine.DeleteConfig(media);
             if (!machine.isOk())
             {
                 msgCenter().cannotRemoveMachine(machine);
@@ -1595,14 +1595,14 @@ void UIGChooserModel::unregisterMachines(const QStringList &ids)
         else if (iResultCode == AlertButton_Choice2 || iResultCode == AlertButton_Ok)
         {
             /* Unregister machine first: */
-            CMediumVector mediums = machine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
+            CMediumVector media = machine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
             if (!machine.isOk())
             {
                 msgCenter().cannotRemoveMachine(machine);
                 continue;
             }
             /* Finally close all media, deliberately ignoring errors: */
-            foreach (CMedium medium, mediums)
+            foreach (CMedium medium, media)
             {
                 if (!medium.isNull())
                     medium.Close();
@@ -2239,4 +2239,3 @@ void UIGroupOrderSaveThread::run()
     /* COM cleanup: */
     COMBase::CleanupCOM();
 }
-

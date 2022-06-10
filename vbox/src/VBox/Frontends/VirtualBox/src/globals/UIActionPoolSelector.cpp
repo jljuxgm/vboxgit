@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 73860 2018-08-23 16:35:33Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -2079,7 +2079,7 @@ protected:
     /** Returns shortcut extra-data ID. */
     virtual QString shortcutExtraDataID() const /* override */
     {
-        return QString("RefreshMediums");
+        return QString("RefreshMedia");
     }
 
     /** Returns default shortcut. */

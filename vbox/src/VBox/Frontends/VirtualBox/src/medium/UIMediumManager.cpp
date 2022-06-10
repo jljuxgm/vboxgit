@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 73783 2018-08-20 11:41:59Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -387,11 +387,11 @@ void UIMediumManagerWidget::sltHandleMediumCreated(const QString &strMediumID)
     /* Search for corresponding medium: */
     UIMedium medium = vboxGlobal().medium(strMediumID);
 
-    /* Ignore non-interesting mediums: */
+    /* Ignore non-interesting media: */
     if (medium.isNull() || medium.isHostDrive())
         return;
 
-    /* Ignore mediums (and their children) which are
+    /* Ignore media (and their children) which are
      * marked as hidden or attached to hidden machines only: */
     if (UIMedium::isMediumAttachedToHiddenMachinesOnly(medium))
         return;
@@ -463,11 +463,11 @@ void UIMediumManagerWidget::sltHandleMediumEnumerated(const QString &strMediumID
     /* Search for corresponding medium: */
     UIMedium medium = vboxGlobal().medium(strMediumID);
 
-    /* Ignore non-interesting mediums: */
+    /* Ignore non-interesting media: */
     if (medium.isNull() || medium.isHostDrive())
         return;
 
-    /* Ignore mediums (and their children) which are
+    /* Ignore media (and their children) which are
      * marked as hidden or attached to hidden machines only: */
     if (UIMedium::isMediumAttachedToHiddenMachinesOnly(medium))
         return;
