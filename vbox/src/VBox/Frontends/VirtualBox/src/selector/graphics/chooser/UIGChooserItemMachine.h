@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.h 72704 2018-06-27 15:38:30Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.h 72707 2018-06-27 17:24:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class declaration.
  */
@@ -67,6 +67,11 @@ public:
     static void enumerateMachineItems(const QList<UIGChooserItem*> &il,
                                       QList<UIGChooserItemMachine*> &ol,
                                       int iEnumerationFlags = 0);
+
+public slots:
+
+    /** Handles top-level window remaps. */
+    void sltHandleWindowRemapped();
 
 private:
 

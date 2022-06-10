@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 72705 2018-06-27 15:41:33Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 72707 2018-06-27 17:24:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1307,6 +1307,12 @@ bool UISelectorWindow::event(QEvent *pEvent)
     /* Which event do we have? */
     switch (pEvent->type())
     {
+        /* Handle every ScreenChangeInternal event to notify listeners: */
+        case QEvent::ScreenChangeInternal:
+        {
+            emit sigWindowRemapped();
+            break;
+        }
         /* Handle every Resize and Move we keep track of the geometry. */
         case QEvent::Resize:
         {

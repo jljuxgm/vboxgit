@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 72363 2018-05-28 16:49:10Z vboxsync $ */
+/* $Id: UISelectorWindow.h 72707 2018-06-27 17:24:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -49,6 +49,11 @@ typedef QMap<QString, QIManagerDialog*> VMLogViewerMap;
 class UISelectorWindow : public QIWithRetranslateUI<QIMainWindow>
 {
     Q_OBJECT;
+
+signals:
+
+    /** Notifies listeners about this window remapped onto another screen. */
+    void sigWindowRemapped();
 
 public:
 
