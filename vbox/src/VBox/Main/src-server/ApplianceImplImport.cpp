@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 74804 2018-10-12 15:09:44Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 76215 2018-12-13 18:58:16Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2640,7 +2640,8 @@ void Appliance::i_importOneDiskImage(const ovf::DiskImage &di,
                                                      MediumVariant_Standard,
                                                      hVfsIosReadAhead,
                                                      nullParent,
-                                                     pProgressImportTmp);
+                                                     pProgressImportTmp,
+                                                     true /* aNotify */);
                     RTVfsIoStrmRelease(hVfsIosReadAhead);
                     hVfsIosSrc = NIL_RTVFSIOSTREAM;
                     if (FAILED(rc))
