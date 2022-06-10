@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.cpp 73676 2018-08-14 19:02:08Z vboxsync $ */
+/* $Id: UIToolPaneMachine.cpp 73694 2018-08-15 15:07:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class implementation.
  */
@@ -153,7 +153,7 @@ void UIToolPaneMachine::openTool(ToolTypeMachine enmType)
             case ToolTypeMachine_LogViewer:
             {
                 /* Create the Logviewer pane: */
-                m_pPaneLogViewer = new UIVMLogViewerWidget(EmbedTo_Stack);
+                m_pPaneLogViewer = new UIVMLogViewerWidget(EmbedTo_Stack, m_pActionPool);
                 AssertPtrReturnVoid(m_pPaneLogViewer);
                 {
 #ifndef VBOX_WS_MAC

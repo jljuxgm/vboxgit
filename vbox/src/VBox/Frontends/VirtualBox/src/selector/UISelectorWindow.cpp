@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 73693 2018-08-15 14:33:09Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 73694 2018-08-15 15:07:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1088,7 +1088,7 @@ void UISelectorWindow::sltOpenMachineLogDialog()
         /* Create and Show VM Log Viewer: */
         if (!m_logViewers[pItem->machine().GetHardwareUUID()])
         {
-            UIVMLogViewerDialogFactory dialogFactory(pItem->machine());
+            UIVMLogViewerDialogFactory dialogFactory(actionPool(), pItem->machine());
             dialogFactory.prepare(pLogViewerDialog, this);
             if (pLogViewerDialog)
             {
