@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 73691 2018-08-15 13:20:00Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 73693 2018-08-15 14:33:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1076,7 +1076,7 @@ void UIVirtualBoxManager::sltCloseLogViewerWindow()
      * This should be done before closing the dialog which will incur
      * a second call to this function and result in double delete!!!: */
     m_logViewers.erase(sendersIterator);
-    UIVMLogViewerDialogFactory(CMachine()).cleanup(pDialog);
+    UIVMLogViewerDialogFactory().cleanup(pDialog);
 }
 
 void UIVirtualBoxManager::sltShowMachineInFileManager()

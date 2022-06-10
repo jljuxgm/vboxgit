@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 72813 2018-07-03 09:41:00Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 73693 2018-08-15 14:33:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2412,7 +2412,7 @@ void UIMachineLogic::sltCloseLogViewerWindow()
     /* Set the m_pLogViewerDialog to NULL before closing the dialog. or we will have redundant deletes*/
     m_pLogViewerDialog = 0;
     pDialog->close();
-    UIVMLogViewerDialogFactory(CMachine()).cleanup(pDialog);
+    UIVMLogViewerDialogFactory().cleanup(pDialog);
 }
 
 #endif /* VBOX_WITH_DEBUGGER_GUI */
