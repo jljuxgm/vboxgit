@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 77902 2019-03-27 08:49:11Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 77903 2019-03-27 08:53:04Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3585,10 +3585,9 @@ static void hmR0SvmPendingEventToTrpmTrap(PVMCPU pVCpu)
     Event.u = pVCpu->hm.s.Event.u64IntInfo;
 
     uint8_t   uVector     = Event.n.u8Vector;
-    uint8_t   uVectorType = Event.n.u3Type;
     TRPMEVENT enmTrapType = HMSvmEventToTrpmEventType(&Event, uVector);
 
-    Log4(("HM event->TRPM: uVector=%#x enmTrapType=%d\n", uVector, uVectorType));
+    Log4(("HM event->TRPM: uVector=%#x enmTrapType=%d\n", uVector, Event.n.u3Type));
 
     int rc = TRPMAssertTrap(pVCpu, uVector, enmTrapType);
     AssertRC(rc);
