@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 77933 2019-03-28 12:30:56Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 77934 2019-03-28 12:42:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -441,7 +441,7 @@ void UIChooserItemMachine::processDrop(QGraphicsSceneDragDropEvent *pEvent, UICh
 
                 /* Update model: */
                 pModel->wipeOutEmptyGroups();
-                pModel->updateNavigation();
+                pModel->updateNavigationItemList();
                 pModel->updateLayout();
                 pModel->setSelectedItem(pNewGroupItem);
                 pModel->saveGroupSettings();
@@ -543,10 +543,10 @@ void UIChooserItemMachine::cleanup()
         model()->removeFromSelectedItems(this);
     }
     /* If that item is in navigation list: */
-    if (model()->navigationList().contains(this))
+    if (model()->navigationItems().contains(this))
     {
         /* Remove item from the navigation list: */
-        model()->removeFromNavigationList(this);
+        model()->removeFromNavigationItems(this);
     }
 
     /* Remove item from the parent: */

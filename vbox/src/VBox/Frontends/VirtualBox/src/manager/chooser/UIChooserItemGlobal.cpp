@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 77933 2019-03-28 12:30:56Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 77934 2019-03-28 12:42:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -379,10 +379,10 @@ void UIChooserItemGlobal::cleanup()
         model()->removeFromSelectedItems(this);
     }
     /* If that item is in navigation list: */
-    if (model()->navigationList().contains(this))
+    if (model()->navigationItems().contains(this))
     {
         /* Remove item from the navigation list: */
-        model()->removeFromNavigationList(this);
+        model()->removeFromNavigationItems(this);
     }
 
     /* Remove item from the parent: */
