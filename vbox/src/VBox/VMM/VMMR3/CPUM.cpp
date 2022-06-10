@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 76490 2018-12-27 05:12:59Z vboxsync $ */
+/* $Id: CPUM.cpp 76491 2018-12-27 05:59:04Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3915,7 +3915,7 @@ VMMR3DECL(int) CPUMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
  *
  * @param   pVM                 The cross context VM structure.
  */
-VMMR3DECL(void) CPUMR3LogCpuIds(PVM pVM)
+VMMR3DECL(void) CPUMR3LogCpuIdAndMsrFeatures(PVM pVM)
 {
     /*
      * Log the cpuid.
