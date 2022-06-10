@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 75003 2018-10-23 14:24:24Z vboxsync $ */
+/* $Id: SUPDrv.cpp 75049 2018-10-24 16:06:42Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5552,6 +5552,26 @@ static int supdrvIDC_LdrGetSymbol(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession
         supdrvLdrUnlock(pDevExt);
     }
     return rc;
+}
+
+
+/**
+ * Looks up a symbol in g_aFunctions
+ *
+ * @returns VINF_SUCCESS on success, VERR_SYMBOL_NOT_FOUND on failure.
+ * @param   pszSymbol   The symbol to look up.
+ * @param   puValue     Where to return the value.
+ */
+int VBOXCALL supdrvLdrGetExportedSymbol(const char *pszSymbol, uintptr_t *puValue)
+{
+    uint32_t i;
+    for (i = 0; i < RT_ELEMENTS(g_aFunctions); i++)
+        if (!strcmp(g_aFunctions[i].szName, pszSymbol))
+        {
+            *puValue = (uintptr_t)g_aFunctions[i].pfn;
+            return VINF_SUCCESS;
+        }
+    return VERR_SYMBOL_NOT_FOUND;
 }
 
 

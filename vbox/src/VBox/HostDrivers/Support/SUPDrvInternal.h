@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 75003 2018-10-23 14:24:24Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 75049 2018-10-24 16:06:42Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -367,6 +367,12 @@ typedef struct SUPDRVLDRIMAGE
 #ifdef RT_OS_LINUX
     /** Hack for seeing the module in perf, dtrace and other stack crawlers. */
     struct module                  *pLnxModHack;
+#endif
+#if defined(RT_OS_DARWIN)
+    /** Load module handle. */
+    RTLDRMOD                        hLdrMod;
+    /** Allocate object. */
+    RTR0MEMOBJ                      hMemAlloc;
 #endif
     /** Whether it's loaded by the native loader or not. */
     bool                            fNative;
@@ -1026,6 +1032,7 @@ uint32_t VBOXCALL supdrvSessionRelease(PSUPDRVSESSION pSession);
 void VBOXCALL   supdrvBadContext(PSUPDRVDEVEXT pDevExt, const char *pszFile, uint32_t uLine, const char *pszExtra);
 int VBOXCALL    supdrvQueryVTCapsInternal(uint32_t *pfCaps);
 int VBOXCALL    supdrvLdrLoadError(int rc, PSUPLDRLOAD pReq, const char *pszFormat, ...);
+int VBOXCALL    supdrvLdrGetExportedSymbol(const char *pszSymbol, uintptr_t *puValue);
 
 /* SUPDrvGip.cpp */
 int  VBOXCALL   supdrvGipCreate(PSUPDRVDEVEXT pDevExt);

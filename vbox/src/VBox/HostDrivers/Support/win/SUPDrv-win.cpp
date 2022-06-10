@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 75003 2018-10-23 14:24:24Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 75049 2018-10-24 16:06:42Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -2206,7 +2206,7 @@ int  VBOXCALL   supdrvOSLdrValidatePointer(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAG
                 return VERR_LDR_BAD_FIXUP;
             }
         }
-        SUPR0Printf("SUPDrv: No export named %s (%#x) in  %s!\n", pszSymbol, uRvaToValidate, pImage->szName);
+        SUPR0Printf("SUPDrv: No export named %s (%#x) in %s!\n", pszSymbol, uRvaToValidate, pImage->szName);
         return VERR_SYMBOL_NOT_FOUND;
     }
     return VINF_SUCCESS;

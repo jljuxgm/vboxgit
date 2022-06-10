@@ -1,4 +1,4 @@
-/* $Id: DBGFR3ModInMem.cpp 73491 2018-08-03 14:51:55Z vboxsync $ */
+/* $Id: DBGFR3ModInMem.cpp 75049 2018-10-24 16:06:42Z vboxsync $ */
 /** @file
  * DBGFR3ModInMemPe - In memory PE module 'loader'.
  */
@@ -251,9 +251,10 @@ static DECLCALLBACK(int) dbgfModInMemPeRdr_Read(void *pvBuf, size_t cb, size_t o
 /**
  * @callback_method_impl{PFNRTLDRRDRMEMDTOR}
  */
-static DECLCALLBACK(void) dbgfModInMemPeRdr_Dtor(void *pvUser)
+static DECLCALLBACK(void) dbgfModInMemPeRdr_Dtor(void *pvUser, size_t cbImage)
 {
     PDBGFMODPERDR pThis = (PDBGFMODPERDR)pvUser;
+    RT_NOREF(cbImage);
 
     VMR3ReleaseUVM(pThis->pUVM);
     pThis->pUVM = NULL;
