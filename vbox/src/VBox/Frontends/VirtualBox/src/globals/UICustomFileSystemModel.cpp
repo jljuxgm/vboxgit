@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 76621 2019-01-03 14:40:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -161,17 +161,17 @@ void UICustomFileSystemItem::setIsOpened(bool flag)
     m_bIsOpened = flag;
 }
 
-const QString  &UICustomFileSystemItem::path() const
+QString  UICustomFileSystemItem::path() const
 {
-    return m_strPath;
+    return m_itemData.value(UICustomFileSystemModelColumn_Path, QString()).toString();
 }
 
 void UICustomFileSystemItem::setPath(const QString &path)
 {
-    if (path.isNull() || path.isEmpty())
+    QString strNewPath =     UIPathOperations::removeTrailingDelimiters(path);
+    if (strNewPath.isNull() || strNewPath.isEmpty())
         return;
-    m_strPath = path;
-    UIPathOperations::removeTrailingDelimiters(m_strPath);
+    m_itemData[UICustomFileSystemModelColumn_Path] = strNewPath;
 }
 
 bool UICustomFileSystemItem::isUpDirectory() const

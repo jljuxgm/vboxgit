@@ -1,4 +1,4 @@
-/* $Id: UIPathOperations.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIPathOperations.h 76621 2019-01-03 14:40:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -24,9 +24,11 @@
 /* Qt includes: */
 #include <QString>
 
+/* GUI includes: */
+#include "UILibraryDefs.h"
 
 /** A collection of simple utility functions to manipulate path strings */
-class UIPathOperations
+class SHARED_LIBRARY_STUFF UIPathOperations
 {
 public:
     static QString removeMultipleDelimiters(const QString &path);

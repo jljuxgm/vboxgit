@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 76621 2019-01-03 14:40:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -140,15 +140,10 @@ UIFileManagerHostTable::UIFileManagerHostTable(UIActionPool *pActionPool, QWidge
     parent->setIsOpened(true);
     if (!directory.exists())
         return;
-    QFileInfoList entries = directory.entryInfoList();
+    QFileInfoList entries = directory.entryInfoList(QDir::Hidden|QDir::AllEntries|QDir::NoDotAndDotDot);
     for (int i = 0; i < entries.size(); ++i)
     {
         const QFileInfo &fileInfo = entries.at(i);
-
-        if (fileInfo.fileName() == ".")
-            continue;
-        if (fileInfo.fileName() == "..")
-            continue;
 
         UICustomFileSystemItem *item = new UICustomFileSystemItem(fileInfo.fileName(), parent, fileType(fileInfo));
         if (!item)
