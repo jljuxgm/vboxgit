@@ -1,4 +1,4 @@
-/* $Id: UIStarter.cpp 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIStarter.cpp 73434 2018-08-01 15:24:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class implementation.
  */
@@ -211,7 +211,7 @@ void UIStarter::sltOpenURLs()
     UIVirtualBoxManager::create();
 
     /* Ask the Manager UI to open URLs asynchronously: */
-    QMetaObject::invokeMethod(gpManager, "sltOpenUrls", Qt::QueuedConnection);
+    QMetaObject::invokeMethod(gpManager, "sltHandleOpenUrlCall", Qt::QueuedConnection);
 # else
     /* Create/show selector-window: */
     UISelectorWindow::create();
