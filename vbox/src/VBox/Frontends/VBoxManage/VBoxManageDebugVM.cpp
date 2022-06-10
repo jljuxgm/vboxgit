@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDebugVM.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxManageDebugVM.cpp 73506 2018-08-05 14:01:26Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the debugvm command.
  */
@@ -455,7 +455,7 @@ static RTEXITCODE handleDebugVM_SetRegisters(HandlerArg *pArgs, IMachineDebugger
                         || !aBstrValues.push_back(bstrValue.raw()))
                         throw std::bad_alloc();
                 }
-                catch (std::bad_alloc)
+                catch (std::bad_alloc &)
                 {
                     RTMsgError("Out of memory\n");
                     return RTEXITCODE_FAILURE;
