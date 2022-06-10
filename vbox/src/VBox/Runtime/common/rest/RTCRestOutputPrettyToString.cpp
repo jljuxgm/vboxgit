@@ -1,4 +1,4 @@
-/* $Id: RTCRestOutputPrettyToString.cpp 74414 2018-09-21 18:23:01Z vboxsync $ */
+/* $Id: RTCRestOutputPrettyToString.cpp 74425 2018-09-23 15:41:48Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestOutputPrettyToString implementation.
  */
@@ -35,7 +35,7 @@
 #include <iprt/string.h>
 
 
-RTCRestOutputPrettyToString::RTCRestOutputPrettyToString(RTCString *a_pDst, bool a_fAppend /*= false*/)
+RTCRestOutputPrettyToString::RTCRestOutputPrettyToString(RTCString *a_pDst, bool a_fAppend /*= false*/) RT_NOEXCEPT
     : RTCRestOutputPrettyBase()
     , m_pDst(a_pDst)
     , m_fOutOfMemory(false)
@@ -52,7 +52,7 @@ RTCRestOutputPrettyToString::~RTCRestOutputPrettyToString()
 }
 
 
-size_t RTCRestOutputPrettyToString::output(const char *a_pchString, size_t a_cchToWrite)
+size_t RTCRestOutputPrettyToString::output(const char *a_pchString, size_t a_cchToWrite) RT_NOEXCEPT
 {
     if (a_cchToWrite)
     {
@@ -107,7 +107,7 @@ size_t RTCRestOutputPrettyToString::output(const char *a_pchString, size_t a_cch
 }
 
 
-RTCString *RTCRestOutputPrettyToString::finalize()
+RTCString *RTCRestOutputPrettyToString::finalize() RT_NOEXCEPT
 {
     RTCString *pRet;
     if (!m_fOutOfMemory)
