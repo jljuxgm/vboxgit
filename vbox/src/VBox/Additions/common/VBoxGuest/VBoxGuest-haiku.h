@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku.h 70873 2018-02-05 18:13:55Z vboxsync $ */
+/* $Id: VBoxGuest-haiku.h 76533 2018-12-30 06:14:15Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, header.
  */
@@ -53,9 +53,11 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 #ifndef ___VBoxGuest_haiku_h
 #define ___VBoxGuest_haiku_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <OS.h>
 #include <Drivers.h>

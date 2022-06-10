@@ -1,4 +1,4 @@
-/* $Id: glx_proto.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: glx_proto.h 76533 2018-12-30 06:14:15Z vboxsync $ */
 /** @file
  * VirtualBox guest OpenGL DRI GLX header C prototypes
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___CROPENGL_GLX_PROTO_H
 #define ___CROPENGL_GLX_PROTO_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "chromium.h"
 #include "stub.h"

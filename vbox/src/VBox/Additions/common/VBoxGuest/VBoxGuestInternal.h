@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 75705 2018-11-25 01:44:41Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 76533 2018-12-30 06:14:15Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Internal Header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBoxGuestInternal_h
 #define ___VBoxGuestInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/list.h>

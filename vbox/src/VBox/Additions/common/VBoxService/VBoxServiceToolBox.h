@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.h 70390 2017-12-29 16:54:17Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.h 76533 2018-12-30 06:14:15Z vboxsync $ */
 /** @file
  * VBoxService - Toolbox header for sharing defines between toolbox binary and VBoxService.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxServiceToolBox_h
 #define ___VBoxServiceToolBox_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/GuestHost/GuestControl.h>
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibInternal.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxGuestR3LibInternal.h 76533 2018-12-30 06:14:15Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBoxGuestR3LibInternal_h
 #define ___VBoxGuestR3LibInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/VMMDev.h>
 #include <VBox/VBoxGuest.h>

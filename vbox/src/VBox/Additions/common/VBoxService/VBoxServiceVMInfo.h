@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.h 76533 2018-12-30 06:14:15Z vboxsync $ */
 /** @file
  * VBoxServiceVMInfo.h - Internal VM info definitions.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxServiceVMInfo_h
 #define ___VBoxServiceVMInfo_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 extern int VGSvcUserUpdateF(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const char *pszDomain,

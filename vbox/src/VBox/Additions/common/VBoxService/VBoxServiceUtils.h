@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.h 69991 2017-12-07 16:54:23Z vboxsync $ */
+/* $Id: VBoxServiceUtils.h 76533 2018-12-30 06:14:15Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Guest Additions Services (Utilities).
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxServiceUtils_h
 #define ___VBoxServiceUtils_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxServiceInternal.h"
 

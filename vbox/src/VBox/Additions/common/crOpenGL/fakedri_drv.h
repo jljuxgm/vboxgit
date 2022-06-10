@@ -1,4 +1,4 @@
-/* $Id: fakedri_drv.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: fakedri_drv.h 76533 2018-12-30 06:14:15Z vboxsync $ */
 /** @file
  * VirtualBox guest OpenGL DRI header
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___CROPENGL_FAKEDRIDRV_H
 #define ___CROPENGL_FAKEDRIDRV_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "src/mesa/main/mtypes.h"
 #include "src/mesa/main/dd.h"

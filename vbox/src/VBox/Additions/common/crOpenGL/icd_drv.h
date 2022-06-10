@@ -1,4 +1,4 @@
-/* $Id: icd_drv.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: icd_drv.h 76533 2018-12-30 06:14:15Z vboxsync $ */
 /** @file
  * VirtualBox Windows NT/2000/XP guest OpenGL ICD header
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___ICDDRV_H___
 #define ___ICDDRV_H___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/win/windows.h>
 

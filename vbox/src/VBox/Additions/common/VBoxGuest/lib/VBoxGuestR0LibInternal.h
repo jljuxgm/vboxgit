@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInternal.h 75547 2018-11-18 04:50:34Z vboxsync $ */
+/* $Id: VBoxGuestR0LibInternal.h 76533 2018-12-30 06:14:15Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -30,6 +30,9 @@
 
 #ifndef ___VBoxGuestLib_VBoxGuestR0LibInternal_h
 #define ___VBoxGuestLib_VBoxGuestR0LibInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /*
  * Define the private IDC handle structure before we include the VBoxGuestLib.h header.

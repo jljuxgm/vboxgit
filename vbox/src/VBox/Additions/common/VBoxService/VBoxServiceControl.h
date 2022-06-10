@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 75858 2018-12-01 22:13:05Z vboxsync $ */
+/* $Id: VBoxServiceControl.h 76533 2018-12-30 06:14:15Z vboxsync $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxServiceControl_h
 #define ___VBoxServiceControl_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/critsect.h>
 #include <iprt/list.h>
