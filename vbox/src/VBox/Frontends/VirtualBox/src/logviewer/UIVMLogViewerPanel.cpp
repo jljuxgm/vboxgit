@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerPanel.cpp 71638 2018-04-04 05:11:10Z vboxsync $ */
+/* $Id: UIVMLogViewerPanel.cpp 72720 2018-06-28 13:15:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -83,8 +83,8 @@ void UIVMLogViewerPanel::prepareWidgets()
     if (m_pMainLayout)
     {
 #ifdef VBOX_WS_MAC
-        m_pMainLayout->setContentsMargins(5, 0, 0, 5);
-        m_pMainLayout->setSpacing(5);
+        m_pMainLayout->setContentsMargins(5, 0, 5, 0);
+        m_pMainLayout->setSpacing(10);
 #else
         m_pMainLayout->setContentsMargins(qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 2, 0,
                                              qApp->style()->pixelMetric(QStyle::PM_LayoutRightMargin) / 2, 0);

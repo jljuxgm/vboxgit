@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.cpp 71638 2018-04-04 05:11:10Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.cpp 72720 2018-06-28 13:15:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -243,7 +243,7 @@ void UIVMLogViewerSearchPanel::prepareWidgets()
         QHBoxLayout *pContainerLayout = new QHBoxLayout(m_pNextPreviousButtonContainer);
         /* Configure layout: */
 #ifdef VBOX_WS_MAC
-            pContainerLayout->setContentsMargins(5, 0, 0, 5);
+            pContainerLayout->setContentsMargins(5, 0, 5, 0);
             pContainerLayout->setSpacing(5);
 #else
             pContainerLayout->setContentsMargins(qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 2, 0,
