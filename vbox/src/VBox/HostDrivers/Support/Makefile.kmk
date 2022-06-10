@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 73665 2018-08-14 17:49:23Z vboxsync $
+# $Id: Makefile.kmk 73705 2018-08-16 09:31:18Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -228,7 +228,8 @@ if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) ## @todo some of 
   	IPRT_NO_CRT \
  	RT_WITH_NOCRT_ALIASES \
  	LOG_DISABLED \
- 	IPRT_NO_ERROR_DATA
+ 	IPRT_NO_ERROR_DATA \
+       IPRT_WITHOUT_DIGEST_MD4
  SUPR3HardenedStatic_DEFS.win += LDR_ONLY_PE __STRALIGN_H_
 
  SUPR3HardenedStatic_INCS += $(PATH_ROOT)/include/iprt/nocrt  $(VBOX_PATH_RUNTIME_SRC)/include
