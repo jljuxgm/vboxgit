@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 77277 2019-02-12 14:45:05Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 77278 2019-02-12 14:46:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2844,6 +2844,7 @@ QUuid VBoxGlobal::createHDWithNewHDWizard(QWidget *pParent, const QString &strMa
     if (strDefaultFolder.isEmpty())
         strDefaultFolder = defaultFolderPathForType(UIMediumDeviceType_HardDisk);
 
+    /* In case we dont have a 'guest os type id' default back to 'Other': */
     const CGuestOSType comGuestOSType = virtualBox().GetGuestOSType(!strMachineGuestOSTypeId.isEmpty() ? strMachineGuestOSTypeId : "Other");
     QString strDiskName = findUniqueFileName(strDefaultFolder,
                                              !strMachineName.isEmpty() ? strMachineName : "NewVirtualDisk");
