@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceResolvConf.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HostDnsServiceResolvConf.cpp 77984 2019-04-02 14:06:13Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -54,7 +54,7 @@ struct HostDnsServiceResolvConf::Data
     std::string resolvConfFilename;
 };
 
-const std::string& HostDnsServiceResolvConf::resolvConf() const
+const std::string& HostDnsServiceResolvConf::resolvConf(void) const
 {
     return m->resolvConfFilename;
 }
@@ -69,19 +69,18 @@ HostDnsServiceResolvConf::~HostDnsServiceResolvConf()
     }
 }
 
-HRESULT HostDnsServiceResolvConf::init(HostDnsMonitorProxy *proxy, const char *aResolvConfFileName)
+HRESULT HostDnsServiceResolvConf::init(HostDnsMonitorProxy *pProxy, const char *aResolvConfFileName)
 {
     m = new Data(aResolvConfFileName);
 
-    HostDnsMonitor::init(proxy);
+    HostDnsServiceBase::init(pProxy);
 
     readResolvConf();
 
     return S_OK;
 }
 
-
-HRESULT HostDnsServiceResolvConf::readResolvConf()
+HRESULT HostDnsServiceResolvConf::readResolvConf(void)
 {
     struct rcp_state st;
 
