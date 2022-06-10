@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.h 74110 2018-09-06 10:21:53Z vboxsync $ */
+/* $Id: UIDetailsGroup.h 74690 2018-10-08 16:30:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class declaration.
  */
@@ -125,24 +125,10 @@ protected:
 
 private:
 
-    /** Data field types. */
-    enum GroupItemData
-    {
-        /* Layout hints: */
-        GroupData_Margin,
-        GroupData_Spacing
-    };
-
     /** @name Prepare/cleanup cascade.
       * @{ */
         /** Prepares connections. */
         void prepareConnections();
-    /** @} */
-
-    /** @name Item stuff.
-      * @{ */
-        /** Returns abstractly stored data value for certain @a iKey. */
-        QVariant data(int iKey) const;
     /** @} */
 
     /** @name Painting stuff.
