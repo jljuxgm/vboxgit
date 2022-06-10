@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.h 75148 2018-10-29 13:56:53Z vboxsync $ */
+/* $Id: UIHostFileTable.h 75184 2018-10-30 15:07:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostFileTable class declaration.
  */
@@ -51,6 +51,8 @@ protected:
 private:
 
     QString permissionString(QFileDevice::Permissions permissions);
+    void    prepareActionConnections();
+
 };
 
 #endif /* !___UIHostFileTable_h___ */

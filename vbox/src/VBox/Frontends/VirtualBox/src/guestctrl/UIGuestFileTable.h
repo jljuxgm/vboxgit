@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.h 75148 2018-10-29 13:56:53Z vboxsync $ */
+/* $Id: UIGuestFileTable.h 75184 2018-10-30 15:07:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestFileTable class declaration.
  */
@@ -54,14 +54,13 @@ protected:
     virtual void    determineDriveLetters() /* override */;
     virtual void    prepareToolbar() /* override */;
 
-
 private:
 
     FileObjectType  fileType(const CFsObjInfo &fsInfo);
     FileObjectType  fileType(const CGuestFsObjInfo &fsInfo);
 
-    bool copyGuestToHost(const QString &guestSourcePath, const QString& hostDestinationPath);
-    bool copyHostToGuest(const QString& hostSourcePath, const QString &guestDestinationPath);
+    void prepareActionConnections();
+
     mutable CGuestSession m_comGuestSession;
 
 };
