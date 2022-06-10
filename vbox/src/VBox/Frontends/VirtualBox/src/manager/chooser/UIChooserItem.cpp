@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 74482 2018-09-26 16:10:40Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 74799 2018-10-12 12:42:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -653,11 +653,10 @@ void UIChooserItem::paintFlatButton(QPainter *pPainter, const QRect &rectangle, 
     QRadialGradient grad(rectangle.center(), rectangle.width(), cursorPosition);
     grad.setColorAt(0, color.lighter(150));
     grad.setColorAt(1, color.lighter(110));
-    pPainter->fillRect(rectangle, grad);
+    pPainter->fillRect(rectangle.adjusted(0, 0, -1, -1), grad);
 
     /* Paint frame: */
-    const QRect frameRectangle = rectangle.adjusted(0, 0, -1, -1);
-    pPainter->drawRect(frameRectangle);
+    pPainter->drawRect(rectangle.adjusted(0, 0, -1, -1));
 
     /* Restore painter: */
     pPainter->restore();
