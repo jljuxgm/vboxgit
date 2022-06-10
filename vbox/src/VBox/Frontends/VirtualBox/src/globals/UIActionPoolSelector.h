@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 74950 2018-10-19 16:41:15Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 74957 2018-10-21 11:53:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
@@ -145,9 +145,9 @@ enum UIActionIndexST
     UIActionIndexST_M_CloudWindow,
     UIActionIndexST_M_Cloud,
     UIActionIndexST_M_Cloud_S_Add,
+    UIActionIndexST_M_Cloud_S_Import,
     UIActionIndexST_M_Cloud_S_Remove,
     UIActionIndexST_M_Cloud_T_Details,
-    UIActionIndexST_M_Cloud_S_Import,
 
     /* Maximum index: */
     UIActionIndexST_Max

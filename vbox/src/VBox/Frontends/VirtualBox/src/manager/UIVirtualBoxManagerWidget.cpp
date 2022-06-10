@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74950 2018-10-19 16:41:15Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74957 2018-10-21 11:53:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -643,11 +643,10 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                 case ToolTypeGlobal_Cloud:
                 {
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Add));
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Import));
                     m_pToolBar->addSeparator();
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Remove));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_T_Details));
-                    m_pToolBar->addSeparator();
-                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Cloud_S_Import));
                     break;
                 }
                 default:
