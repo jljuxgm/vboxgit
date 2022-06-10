@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp-gcc.def 74282 2018-09-14 19:09:39Z vboxsync $
+; $Id: VBoxRTImp-gcc.def 74347 2018-09-18 16:10:34Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable C++ Interface Definition file, 64-bit Visual C++.
 
@@ -508,7 +508,6 @@ EXPORTS
     _ZNK16RTCRestArrayBase9typeClassEv
     _ZNK17RTCRestObjectBase8toStringEP9RTCStringj
     _ZNK17RTCRestObjectBase8toStringEv
-    _ZNK17RTCRestObjectBase9typeClassEv
     _ZNK20RTCRestStringMapBase11containsKeyEPKc
     _ZNK20RTCRestStringMapBase11containsKeyERK9RTCString
     _ZNK20RTCRestStringMapBase15serializeAsJsonER17RTCRestOutputBase
