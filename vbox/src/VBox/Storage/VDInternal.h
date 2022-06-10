@@ -1,4 +1,4 @@
-/* $Id: VDInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VDInternal.h 76578 2019-01-01 06:11:47Z vboxsync $ */
 /** @file
  * VD - Virtual Disk container implementation, internal header file.
  */
@@ -19,8 +19,8 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 
-#ifndef ___VDInternal_h
-#define ___VDInternal_h
+#ifndef VBOX_INCLUDED_SRC_Storage_VDInternal_h
+#define VBOX_INCLUDED_SRC_Storage_VDInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -284,5 +284,5 @@ DECLHIDDEN(int)      vdIoIterQueryStartNext(VDIOITER hVdIoIter, uint64_t *pu64St
 DECLHIDDEN(int)      vdIoIterQuerySegSizeByStart(VDIOITER hVdIoIter, uint64_t u64Start, size_t *pcRegSize);
 DECLHIDDEN(int)      vdIoIterAdvance(VDIOITER hVdIoIter, uint64_t cBlocksOrBytes);
 
-#endif /* !___VDInternal_h */
+#endif /* !VBOX_INCLUDED_SRC_Storage_VDInternal_h */
 

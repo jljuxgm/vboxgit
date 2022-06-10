@@ -1,4 +1,4 @@
-/* $Id: VDBackendsInline.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VDBackendsInline.h 76578 2019-01-01 06:11:47Z vboxsync $ */
 /** @file
  * VD - backends inline helpers.
  */
@@ -19,8 +19,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 
-#ifndef ___VDBackendsInline_h
-#define ___VDBackendsInline_h
+#ifndef VBOX_INCLUDED_SRC_Storage_VDBackendsInline_h
+#define VBOX_INCLUDED_SRC_Storage_VDBackendsInline_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -112,4 +112,4 @@ RT_C_DECLS_BEGIN
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Storage_VDBackendsInline_h */

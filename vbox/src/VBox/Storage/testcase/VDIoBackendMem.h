@@ -1,4 +1,4 @@
-/** $Id: VDIoBackendMem.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/** $Id: VDIoBackendMem.h 76578 2019-01-01 06:11:47Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O memory backend
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __VDIoBackendMem_h__
-#define __VDIoBackendMem_h__
+#ifndef VBOX_INCLUDED_SRC_testcase_VDIoBackendMem_h
+#define VBOX_INCLUDED_SRC_testcase_VDIoBackendMem_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -79,4 +79,4 @@ int VDIoBackendMemTransfer(PVDIOBACKENDMEM pIoBackend, PVDMEMDISK pMemDisk,
                            VDIOTXDIR enmTxDir, uint64_t off, size_t cbTransfer,
                            PRTSGBUF pSgBuf, PFNVDIOCOMPLETE pfnComplete, void *pvUser);
 
-#endif /* __VDIoBackendMem_h__ */
+#endif /* !VBOX_INCLUDED_SRC_testcase_VDIoBackendMem_h */

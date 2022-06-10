@@ -1,4 +1,4 @@
-/* $Id: VDBackends.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VDBackends.h 76578 2019-01-01 06:11:47Z vboxsync $ */
 /** @file
  * VD - builtin backends.
  */
@@ -19,8 +19,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 
-#ifndef ___VDBackends_h
-#define ___VDBackends_h
+#ifndef VBOX_INCLUDED_SRC_Storage_VDBackends_h
+#define VBOX_INCLUDED_SRC_Storage_VDBackends_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -48,5 +48,5 @@ extern const VDCACHEBACKEND g_VciCacheBackend;
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Storage_VDBackends_h */
 
