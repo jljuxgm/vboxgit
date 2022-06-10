@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 78178 2019-04-17 18:32:29Z vboxsync $ */
+/* $Id: dir.cpp 78184 2019-04-17 20:26:41Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation, Part 1.
  */
@@ -533,8 +533,6 @@ static int rtDirOpenCommon(RTDIR *phDir, const char *pszPath, const char *pszFil
     bool   fDirSlash = false;
     if (!pszFilter)
     {
-        /* Note! RTPathAbs currently strips trailing slashes, so we have
-           to inspect pszPath to figure it out. */
         if (*pszPath != '\0')
         {
             const char *pszLast = strchr(pszPath, '\0') - 1;
