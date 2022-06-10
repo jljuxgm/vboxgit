@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 76613 2019-01-02 15:54:15Z vboxsync $ */
+/* $Id: UISession.cpp 77724 2019-03-15 13:21:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -627,7 +627,6 @@ void UISession::sltMousePointerShapeChange(bool fVisible, bool fAlpha, QPoint ho
 
     /* Notify listeners about mouse capability changed: */
     emit sigMousePointerShapeChange();
-
 }
 
 void UISession::sltMouseCapabilityChange(bool fSupportsAbsolute, bool fSupportsRelative, bool fSupportsMultiTouch, bool fNeedsHostCursor)
@@ -1830,6 +1829,10 @@ void UISession::setPointerShape(const uchar *pShapeData, bool fHasAlpha,
 # warning "port me"
 
 #endif
+
+    /* Cache cursor pixmap data: */
+    m_cursorPixmap = m_cursor.pixmap();
+    m_cursorSize = m_cursorPixmap.size();
 }
 
 bool UISession::preprocessInitialization()
