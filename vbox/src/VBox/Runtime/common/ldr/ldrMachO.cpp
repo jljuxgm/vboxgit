@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 74733 2018-10-10 11:22:07Z vboxsync $ */
+/* $Id: ldrMachO.cpp 74746 2018-10-10 13:49:11Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -3961,7 +3961,7 @@ static int rtldrMachO_QueryPkcs7SignedData(PRTLDRMODMACHO pThis, void *pvBuf, si
                             && cbData > sizeof(RTCRAPLCSHDR))
                         {
                             /*
-                             * Copy out the requirest data.
+                             * Copy out the requested data.
                              */
                             *pcbRet = cbData;
                             if (cbData <= cbBuf)
@@ -4495,7 +4495,7 @@ static int rtldrMachO_VerifySignatureValidatePkcs7Hashes(PRTLDRMACHOSIGNATURE pS
                                          "Authenticated plist attribute is too short: %#x, min: %#x", cch, cchMin);
                 if (cch > _64K)
                     return RTErrInfoSetF(pErrInfo, VERR_LDRVI_BAD_CERT_FORMAT,
-                                         "Authenticated plist attribute is too long: %#x, max: 64KB", cch, cchMin);
+                                         "Authenticated plist attribute is too long: %#x, max: 64KB", cch);
 
                 /* Copy the plist into a buffer and zero terminate it.  Also allocate room for decoding a hash. */
                 const uint32_t cbMaxHash = 128;
