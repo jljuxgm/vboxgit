@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 75291 2018-11-06 15:03:21Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 75358 2018-11-09 12:38:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -1312,9 +1312,12 @@ void UIMenuBarEditorWidget::prepareMenuView()
         prepareNamedAction(pMenu, tr("Virtual Screen Resize"),
                            UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize,
                            gpConverter->toInternalString(UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize));
-        prepareNamedAction(pMenu, tr("Virtual Screen Mapping"),
-                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_Multiscreen,
-                           gpConverter->toInternalString(UIExtraDataMetaDefs::RuntimeMenuViewActionType_Multiscreen));
+        prepareNamedAction(pMenu, tr("Virtual Screen Remap"),
+                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_Remap,
+                           gpConverter->toInternalString(UIExtraDataMetaDefs::RuntimeMenuViewActionType_Remap));
+        prepareNamedAction(pMenu, tr("Virtual Screen Rescale"),
+                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_Rescale,
+                           gpConverter->toInternalString(UIExtraDataMetaDefs::RuntimeMenuViewActionType_Rescale));
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 75358 2018-11-09 12:38:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
@@ -96,7 +96,7 @@ void UIMachineLogicScale::prepareActionGroups()
     /* Call to base-class: */
     UIMachineLogic::prepareActionGroups();
 
-    /* Restrict 'Adjust Window', 'Guest Autoresize', 'Status Bar' and 'Resize' actions for 'View' menu: */
+    /* Restrict 'Adjust Window', 'Guest Autoresize', 'Status Bar', 'Resize' and 'Rescale' actions for 'View' menu: */
     actionPool()->toRuntime()->setRestrictionForMenuView(UIActionRestrictionLevel_Logic,
                                                          (UIExtraDataMetaDefs::RuntimeMenuViewActionType)
                                                          (UIExtraDataMetaDefs::RuntimeMenuViewActionType_AdjustWindow |
@@ -104,7 +104,7 @@ void UIMachineLogicScale::prepareActionGroups()
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_MenuBar |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_StatusBar |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize |
-                                                          UIExtraDataMetaDefs::RuntimeMenuViewActionType_ScaleFactor));
+                                                          UIExtraDataMetaDefs::RuntimeMenuViewActionType_Rescale));
 
     /* Take care of view-action toggle state: */
     UIAction *pActionScale = actionPool()->action(UIActionIndexRT_M_View_T_Scale);

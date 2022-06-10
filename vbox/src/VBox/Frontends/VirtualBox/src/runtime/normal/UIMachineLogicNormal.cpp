@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 75357 2018-11-09 12:17:37Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 75358 2018-11-09 12:38:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -273,10 +273,10 @@ void UIMachineLogicNormal::prepareActionGroups()
     /* Call to base-class: */
     UIMachineLogic::prepareActionGroups();
 
-    /* Restrict 'Multiscreen' actions for 'View' menu: */
+    /* Restrict 'Remap' actions for 'View' menu: */
     actionPool()->toRuntime()->setRestrictionForMenuView(UIActionRestrictionLevel_Logic,
                                                          (UIExtraDataMetaDefs::RuntimeMenuViewActionType)
-                                                         (UIExtraDataMetaDefs::RuntimeMenuViewActionType_Multiscreen));
+                                                         (UIExtraDataMetaDefs::RuntimeMenuViewActionType_Remap));
 }
 
 void UIMachineLogicNormal::prepareActionConnections()
