@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 76985 2019-01-25 11:42:07Z vboxsync $ */
+/* $Id: DevVGA.cpp 76994 2019-01-25 14:36:02Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6257,7 +6257,6 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     Log(("VMSVGA: VMSVGA3dEnabled = %d\n", pThis->svga.f3DEnabled));
 #endif
 
-    
 #ifdef VBOX_WITH_VMSVGA
     if (pThis->fVMSVGAPciBarLayout)
     {
