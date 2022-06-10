@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 75087 2018-10-26 09:59:37Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 75221 2018-11-02 09:53:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -195,7 +195,6 @@ const char *UIExtraDataDefs::GUI_Scaling_Optimization = "GUI/Scaling/Optimizatio
 const char *UIExtraDataDefs::GUI_InformationWindowGeometry = "GUI/InformationWindowGeometry";
 const char *UIExtraDataDefs::GUI_InformationWindowElements = "GUI/InformationWindowElements";
 const char *UIExtraDataDefs::GUI_GuestControl_ProcessControlSplitterHints = "GUI/GuestControl/ProcessControlSplitterHints";
-const char *UIExtraDataDefs::GUI_GuestControl_FileManagerSplitterHints = "GUI/GuestControl/FileManagerSplitterHints";
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerDialogGeometry = "GUI/GuestControl/FileManagerDialogGeometry";
 const char *UIExtraDataDefs::GUI_GuestControl_ProcessControlDialogGeometry = "GUI/GuestControl/ProcessControlDialogGeometry";
 
