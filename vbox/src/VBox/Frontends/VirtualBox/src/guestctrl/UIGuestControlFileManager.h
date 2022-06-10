@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 75619 2018-11-20 13:05:41Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 75642 2018-11-21 13:55:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -142,11 +142,16 @@ private:
         void postSessionClosed();
     /** @} */
 
+    /** Saves list of panels and file manager options to the extra data. */
     void saveSettings();
+    /** Loads settings from exra data except the file manager options. */
     void loadSettings();
+    /** Loads file manager options. This should be done before widget creation
+     *  since some widgets are initilized with these options */
+    void loadOptions();
     void hidePanel(UIGuestControlFileManagerPanel *panel);
     void showPanel(UIGuestControlFileManagerPanel *panel);
-    /** Make sure escape key is assigned to only a single widget. This is done by checking
+    /** Makes sure escape key is assigned to only a single widget. This is done by checking
         several things in the following order:
         - when there are no more panels visible assign it to the parent dialog
         - grab it from the dialog as soon as a panel becomes visible again

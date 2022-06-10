@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 75619 2018-11-20 13:05:41Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 75642 2018-11-21 13:55:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -146,6 +146,7 @@ UIGuestControlFileManager::UIGuestControlFileManager(EmbedTo enmEmbedding, UIAct
     , m_pSessionPanel(0)
     , m_pOperationsPanel(0)
 {
+    loadOptions();
     prepareGuestListener();
     prepareObjects();
     prepareConnections();
@@ -702,6 +703,15 @@ void UIGuestControlFileManager::saveSettings()
     foreach(UIGuestControlFileManagerPanel* pPanel, m_visiblePanelsList)
         strNameList.append(pPanel->panelName());
     gEDataManager->setGuestControlFileManagerVisiblePanels(strNameList);
+
+    /* Save the options: */
+    UIGuestControlFileManagerSettings *pSettings = UIGuestControlFileManagerSettings::instance();
+    if (pSettings)
+    {
+        gEDataManager->setGuestControlFileManagerOptions(pSettings->bListDirectoriesOnTop,
+                                                         pSettings->bAskDeleteConfirmation,
+                                                         pSettings->bShowHumanReadableSizes);
+    }
 }
 
 void UIGuestControlFileManager::loadSettings()
@@ -718,6 +728,18 @@ void UIGuestControlFileManager::loadSettings()
                 break;
             }
         }
+    }
+}
+
+void UIGuestControlFileManager::loadOptions()
+{
+    /* Load options: */
+    UIGuestControlFileManagerSettings *pSettings = UIGuestControlFileManagerSettings::instance();
+    if (pSettings)
+    {
+        pSettings->bListDirectoriesOnTop = gEDataManager->guestControlFileManagerListDirectoriesFirst();
+        pSettings->bAskDeleteConfirmation = gEDataManager->guestControlFileManagerShowDeleteConfirmation();
+        pSettings->bShowHumanReadableSizes = gEDataManager->guestControlFileManagerShowHumanReadableSizes();
     }
 }
 
