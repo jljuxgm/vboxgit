@@ -1,4 +1,4 @@
-/* $Id: fuzz-observer.cpp 72940 2018-07-07 13:37:19Z vboxsync $ */
+/* $Id: fuzz-observer.cpp 72942 2018-07-07 13:58:16Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, observer.
  */
@@ -713,7 +713,7 @@ static int rtFuzzObsExecCtxClientRunFuzzingAware(PRTFUZZOBSINT pThis, PRTFUZZOBS
                                             cFuzzedInputs++;
                                         else if (achBuf[i] == 'A')
                                         {
-                                            /** @todo: Advance our fuzzer to get the added input. */
+                                            /** @todo Advance our fuzzer to get the added input. */
                                         }
                                     }
                                 }

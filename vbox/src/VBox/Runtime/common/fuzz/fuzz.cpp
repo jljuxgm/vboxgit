@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 72940 2018-07-07 13:37:19Z vboxsync $ */
+/* $Id: fuzz.cpp 72942 2018-07-07 13:58:16Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -200,6 +200,7 @@ static DECLCALLBACK(int) rtFuzzCtxMutatorByteDelete(PRTFUZZCTXINT pThis, const v
                                                     PPRTFUZZINPUTINT ppInputMutated);
 static DECLCALLBACK(int) rtFuzzCtxMutatorByteSequenceDelete(PRTFUZZCTXINT pThis, const void *pvBuf, size_t cbBuf,
                                                             PPRTFUZZINPUTINT ppInputMutated);
+
 
 
 /*********************************************************************************************************************************
