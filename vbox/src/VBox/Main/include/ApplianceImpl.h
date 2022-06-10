@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 72900 2018-07-04 19:42:18Z vboxsync $ */
+/* $Id: ApplianceImpl.h 72902 2018-07-04 19:46:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -138,7 +138,9 @@ private:
 
     Utf8Str i_typeOfVirtualDiskFormatFromURI(Utf8Str type) const;
 
+#if 0 /* unused */
     std::set<Utf8Str> i_URIFromTypeOfVirtualDiskFormat(Utf8Str type);
+#endif
 
     HRESULT i_findMediumFormatFromDiskImage(const ovf::DiskImage &di, ComObjPtr<MediumFormat>& mf);
 
