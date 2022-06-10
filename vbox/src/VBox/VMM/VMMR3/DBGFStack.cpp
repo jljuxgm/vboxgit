@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 73486 2018-08-03 13:59:46Z vboxsync $ */
+/* $Id: DBGFStack.cpp 73490 2018-08-03 14:50:42Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -768,7 +768,7 @@ static int dbgfR3StackWalkCollectRegisterChanges(PUVM pUVM, PDBGFSTACKFRAME pFra
                  */
                 uint32_t iReg = 0;
                 if (pState->u.x86.Loaded.s.fRegs)
-                    for (uint32_t i = 1; i < RT_ELEMENTS(pState->u.x86.auRegs); i++)
+                    for (uint32_t i = 0; i < RT_ELEMENTS(pState->u.x86.auRegs); i++)
                         if (pState->u.x86.Loaded.s.fRegs & RT_BIT(i))
                         {
                             paSureRegs[iReg].Value.u64 = pState->u.x86.auRegs[i];
@@ -778,7 +778,7 @@ static int dbgfR3StackWalkCollectRegisterChanges(PUVM pUVM, PDBGFSTACKFRAME pFra
                         }
 
                 if (pState->u.x86.Loaded.s.fSegs)
-                    for (uint32_t i = 1; i < RT_ELEMENTS(pState->u.x86.auSegs); i++)
+                    for (uint32_t i = 0; i < RT_ELEMENTS(pState->u.x86.auSegs); i++)
                         if (pState->u.x86.Loaded.s.fSegs & RT_BIT(i))
                         {
                             paSureRegs[iReg].Value.u16 = pState->u.x86.auSegs[i];
