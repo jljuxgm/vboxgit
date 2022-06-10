@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 75387 2018-11-12 05:59:11Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 75493 2018-11-15 17:06:55Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -1277,17 +1277,12 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrRd_Ia32X2ApicN(PVMCPU pVCpu, uint32_t i
     if (   CPUMIsGuestInVmxNonRootMode(&pVCpu->cpum.s.Guest)
         && CPUMIsGuestVmxProcCtls2Set(pVCpu, &pVCpu->cpum.s.Guest, VMX_PROC_CTLS2_VIRT_X2APIC_MODE))
     {
-        /** @todo NSTVMX: perhaps IEMExecVmxVirtApicAccessMsr should be moved to
-         *        HMVMXAll.cpp? */
         VBOXSTRICTRC rcStrict = IEMExecVmxVirtApicAccessMsr(pVCpu, idMsr, puValue, false /* fWrite */);
-        Assert(rcStrict == VINF_SUCCESS || rcStrict == VERR_OUT_OF_RANGE || rcStrict == VINF_VMX_INTERCEPT_NOT_ACTIVE);
-        if (rcStrict != VINF_VMX_INTERCEPT_NOT_ACTIVE)
-        {
-            if (rcStrict == VERR_OUT_OF_RANGE)
-                return VERR_CPUM_RAISE_GP_0;
-            Assert(rcStrict == VINF_SUCCESS);
+        if (rcStrict == VINF_VMX_MODIFIES_BEHAVIOR)
             return VINF_SUCCESS;
-        }
+        if (rcStrict == VERR_OUT_OF_RANGE)
+            return VERR_CPUM_RAISE_GP_0;
+        Assert(rcStrict == VINF_VMX_INTERCEPT_NOT_ACTIVE);
     }
 #endif
     return APICReadMsr(pVCpu, idMsr, puValue);
@@ -1302,17 +1297,12 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrWr_Ia32X2ApicN(PVMCPU pVCpu, uint32_t i
     if (   CPUMIsGuestInVmxNonRootMode(&pVCpu->cpum.s.Guest)
         && CPUMIsGuestVmxProcCtls2Set(pVCpu, &pVCpu->cpum.s.Guest, VMX_PROC_CTLS2_VIRT_X2APIC_MODE))
     {
-        /** @todo NSTVMX: perhaps IEMExecVmxVirtApicAccessMsr should be moved to
-         *        HMVMXAll.cpp? */
         VBOXSTRICTRC rcStrict = IEMExecVmxVirtApicAccessMsr(pVCpu, idMsr, &uValue, true /* fWrite */);
-        Assert(rcStrict == VINF_SUCCESS || rcStrict == VERR_OUT_OF_RANGE || rcStrict == VINF_VMX_INTERCEPT_NOT_ACTIVE);
-        if (rcStrict != VINF_VMX_INTERCEPT_NOT_ACTIVE)
-        {
-            if (rcStrict == VERR_OUT_OF_RANGE)
-                return VERR_CPUM_RAISE_GP_0;
-            Assert(rcStrict == VINF_SUCCESS);
+        if (rcStrict == VINF_VMX_MODIFIES_BEHAVIOR)
             return VINF_SUCCESS;
-        }
+        if (rcStrict == VERR_OUT_OF_RANGE)
+            return VERR_CPUM_RAISE_GP_0;
+        Assert(rcStrict == VINF_VMX_INTERCEPT_NOT_ACTIVE);
     }
 #endif
     return APICWriteMsr(pVCpu, idMsr, uValue);

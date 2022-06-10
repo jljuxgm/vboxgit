@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 74874 2018-10-17 08:18:48Z vboxsync $ */
+/* $Id: CPUM.cpp 75493 2018-11-15 17:06:55Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3639,7 +3639,22 @@ VMMR3DECL(int) CPUMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
                     pVCpu->cpum.s.fUseFlags |= CPUM_USE_SUPPORTS_LONGMODE;
             }
 
+            /* Register statistic counters for MSRs. */
             cpumR3MsrRegStats(pVM);
+
+#ifdef VBOX_WITH_NESTED_HWVIRT_VMX
+            /* Register VMX APIC-access page handler type. */
+            if (pVM->cpum.s.GuestFeatures.fVmx)
+            {
+                int rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_ALL, cpumVmxApicAccessPageHandler,
+                                                          NULL /* pszModR0 */,
+                                                          "cpumVmxApicAccessPageHandler", NULL /* pszPfHandlerR0 */,
+                                                          NULL /* pszModRC */,
+                                                          NULL /* pszHandlerRC */, NULL /* pszPfHandlerRC */,
+                                                          "VMX APIC-access page", &pVM->cpum.s.hVmxApicAccessPage);
+                AssertRCReturn(rc, rc);
+            }
+#endif
             break;
         }
 

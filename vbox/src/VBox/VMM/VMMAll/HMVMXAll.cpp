@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 75440 2018-11-14 06:23:13Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 75493 2018-11-15 17:06:55Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -131,6 +131,7 @@ static const char * const g_apszVmxVDiagDesc[] =
     /* VMLAUNCH/VMRESUME. */
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_AddrApicAccess           , "AddrApicAccess"            ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_AddrApicAccessEqVirtApic , "AddrApicAccessEqVirtApic"  ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmentry_AddrApicAccessHandlerReg , "AddrApicAccessHandlerReg"  ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_AddrEntryMsrLoad         , "AddrEntryMsrLoad"          ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_AddrExitMsrLoad          , "AddrExitMsrLoad"           ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmentry_AddrExitMsrStore         , "AddrExitMsrStore"          ),
