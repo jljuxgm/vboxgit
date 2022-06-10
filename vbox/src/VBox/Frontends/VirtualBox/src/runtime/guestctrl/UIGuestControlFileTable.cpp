@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 75001 2018-10-23 14:12:40Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 75002 2018-10-23 14:15:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -1522,7 +1522,7 @@ void UIGuestControlFileTable::retranslateUi()
 bool UIGuestControlFileTable::eventFilter(QObject *pObject, QEvent *pEvent) /* override */
 {
     Q_UNUSED(pObject);
-    IF (pEvent->type() == QEvent::KeyPress)
+    if (pEvent->type() == QEvent::KeyPress)
     {
         QKeyEvent *pKeyEvent = dynamic_cast<QKeyEvent*>(pEvent);
         if (pKeyEvent)
