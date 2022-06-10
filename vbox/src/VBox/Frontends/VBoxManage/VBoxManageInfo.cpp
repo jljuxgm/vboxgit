@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 75382 2018-11-09 22:32:23Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2395,7 +2395,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
         ULONG Fps;
         CHECK_ERROR_RET(saRecordingScreenScreens[0], COMGETTER(VideoFPS)(&Fps), rc);
         Bstr  bstrFile;
-        CHECK_ERROR_RET(saRecordingScreenScreens[0], COMGETTER(FileName)(bstrFile.asOutParam()), rc);
+        CHECK_ERROR_RET(saRecordingScreenScreens[0], COMGETTER(Filename)(bstrFile.asOutParam()), rc);
         Bstr  bstrOptions;
         CHECK_ERROR_RET(saRecordingScreenScreens[0], COMGETTER(Options)(bstrOptions.asOutParam()), rc);
 

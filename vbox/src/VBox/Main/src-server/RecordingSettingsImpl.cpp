@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.cpp 75488 2018-11-15 16:12:07Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -555,7 +555,7 @@ void RecordingSettings::i_applyDefaults(void)
 /**
  * Returns the full path to the default video capture file.
  */
-int RecordingSettings::i_getDefaultFileName(Utf8Str &strFile, bool fWithFileExtension)
+int RecordingSettings::i_getDefaultFilename(Utf8Str &strFile, bool fWithFileExtension)
 {
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 

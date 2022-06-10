@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.h 71782 2018-04-09 15:49:19Z vboxsync $ */
+/* $Id: GuestFileImpl.h 75926 2018-12-03 21:52:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling implementation.
  */
@@ -80,7 +80,7 @@ private:
     HRESULT getInitialSize(LONG64 *aInitialSize);
     HRESULT getOffset(LONG64 *aOffset);
     HRESULT getStatus(FileStatus_T *aStatus);
-    HRESULT getFileName(com::Utf8Str &aFileName);
+    HRESULT getFilename(com::Utf8Str &aFilename);
     HRESULT getAccessMode(FileAccessMode_T *aAccessMode);
     HRESULT getOpenAction(FileOpenAction_T *aOpenAction);
     /** @}  */

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 75390 2018-11-12 08:54:38Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2999,7 +2999,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
                         }
 
                         for (size_t i = 0; i < saRecordingScreenScreens.size(); ++i)
-                            CHECK_ERROR(saRecordingScreenScreens[i], COMSETTER(FileName)(bstr.raw()));
+                            CHECK_ERROR(saRecordingScreenScreens[i], COMSETTER(Filename)(bstr.raw()));
                         break;
                     }
                     case MODIFYVM_RECORDING_VIDEO_WIDTH:

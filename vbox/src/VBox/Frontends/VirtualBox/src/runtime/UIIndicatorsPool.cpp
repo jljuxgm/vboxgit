@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 75645 2018-11-21 15:32:58Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -922,7 +922,7 @@ private:
 
                 strFullData += s_strTableRow2
                     .arg(strToolTip)
-                    .arg(comRecordingScreen0Settings.GetFileName());
+                    .arg(comRecordingScreen0Settings.GetFilename());
                 break;
             }
             default:

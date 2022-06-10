@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 75390 2018-11-12 08:54:38Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1942,7 +1942,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                 }
 
                 for (size_t i = 0; i < saRecordingScreenScreens.size(); ++i)
-                    CHECK_ERROR_BREAK(saRecordingScreenScreens[i], COMSETTER(FileName)(Bstr(a->argv[3]).raw()));
+                    CHECK_ERROR_BREAK(saRecordingScreenScreens[i], COMSETTER(Filename)(Bstr(a->argv[3]).raw()));
             }
             else if (   !strcmp(a->argv[2], "videores")
                      || !strcmp(a->argv[2], "videoresolution"))

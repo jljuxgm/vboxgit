@@ -1,4 +1,4 @@
-/* $Id: GuestFsObjInfoImpl.cpp 71567 2018-03-29 12:11:19Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file system object information handling.
  */
@@ -141,7 +141,7 @@ HRESULT GuestFsObjInfo::getGenerationId(ULONG *aGenerationId)
     return S_OK;
 }
 
-HRESULT GuestFsObjInfo::getGID(ULONG *aGID)
+HRESULT GuestFsObjInfo::getGID(LONG *aGID)
 {
     *aGID = mData.mGID;
 
@@ -204,7 +204,7 @@ HRESULT GuestFsObjInfo::getType(FsObjType_T *aType)
     return S_OK;
 }
 
-HRESULT GuestFsObjInfo::getUID(ULONG *aUID)
+HRESULT GuestFsObjInfo::getUID(LONG *aUID)
 {
     *aUID = mData.mUID;
 

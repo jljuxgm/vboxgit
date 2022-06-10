@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.h 75489 2018-11-15 16:25:42Z vboxsync $ */
+/* $Id: RecordingScreenSettingsImpl.h 75926 2018-12-03 21:52:50Z vboxsync $ */
 
 /** @file
  *
@@ -68,8 +68,8 @@ private:
     HRESULT getDestination(RecordingDestination_T *aDestination);
     HRESULT setDestination(RecordingDestination_T aDestination);
 
-    HRESULT getFileName(com::Utf8Str &aFileName);
-    HRESULT setFileName(const com::Utf8Str &aFileName);
+    HRESULT getFilename(com::Utf8Str &aFilename);
+    HRESULT setFilename(const com::Utf8Str &aFilename);
     HRESULT getMaxTime(ULONG *aMaxTimeS);
     HRESULT setMaxTime(ULONG aMaxTimeS);
     HRESULT getMaxFileSize(ULONG *aMaxFileSizeMB);

@@ -1,4 +1,4 @@
-/* $Id: GuestFsObjInfoImpl.h 71972 2018-04-23 09:35:55Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.h 75926 2018-12-03 21:52:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file system object information implementation.
  */
@@ -21,8 +21,8 @@
 #include "GuestFsObjInfoWrap.h"
 #include "GuestCtrlImplPrivate.h"
 
-class ATL_NO_VTABLE GuestFsObjInfo :
-    public GuestFsObjInfoWrap
+class ATL_NO_VTABLE GuestFsObjInfo
+    : public GuestFsObjInfoWrap
 {
 public:
     /** @name COM and internal init/term/mapping cruft.
@@ -44,25 +44,25 @@ private:
 
     /** Wrapped @name IGuestFsObjInfo properties.
      * @{ */
-    HRESULT getAccessTime(LONG64 *aAccessTime);
+    HRESULT getName(com::Utf8Str &aName);
+    HRESULT getType(FsObjType_T *aType);
+    HRESULT getFileAttributes(com::Utf8Str &aFileAttributes);
+    HRESULT getObjectSize(LONG64 *aObjectSize);
     HRESULT getAllocatedSize(LONG64 *aAllocatedSize);
+    HRESULT getAccessTime(LONG64 *aAccessTime);
     HRESULT getBirthTime(LONG64 *aBirthTime);
     HRESULT getChangeTime(LONG64 *aChangeTime);
-    HRESULT getDeviceNumber(ULONG *aDeviceNumber);
-    HRESULT getFileAttributes(com::Utf8Str &aFileAttributes);
-    HRESULT getGenerationId(ULONG *aGenerationId);
-    HRESULT getGID(ULONG *aGID);
-    HRESULT getGroupName(com::Utf8Str &aGroupName);
-    HRESULT getHardLinks(ULONG *aHardLinks);
     HRESULT getModificationTime(LONG64 *aModificationTime);
-    HRESULT getName(com::Utf8Str &aName);
+    HRESULT getUID(LONG *aUID);
+    HRESULT getUserName(com::Utf8Str &aUserName);
+    HRESULT getGID(LONG *aGID);
+    HRESULT getGroupName(com::Utf8Str &aGroupName);
     HRESULT getNodeId(LONG64 *aNodeId);
     HRESULT getNodeIdDevice(ULONG *aNodeIdDevice);
-    HRESULT getObjectSize(LONG64 *aObjectSize);
-    HRESULT getType(FsObjType_T *aType);
-    HRESULT getUID(ULONG *aUID);
+    HRESULT getHardLinks(ULONG *aHardLinks);
+    HRESULT getDeviceNumber(ULONG *aDeviceNumber);
+    HRESULT getGenerationId(ULONG *aGenerationId);
     HRESULT getUserFlags(ULONG *aUserFlags);
-    HRESULT getUserName(com::Utf8Str &aUserName);
     /** @}  */
 
     GuestFsObjData mData;

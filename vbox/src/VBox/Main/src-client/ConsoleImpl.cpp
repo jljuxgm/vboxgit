@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 75737 2018-11-26 15:44:41Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6942,7 +6942,7 @@ int Console::i_recordingGetSettings(settings::RecordingSettings &Settings)
         hrc = pRecordScreenSettings->COMGETTER(MaxFileSize)((ULONG *)&RecordScreenSettings.File.ulMaxSizeMB);
         AssertComRCReturn(hrc, VERR_INVALID_PARAMETER);
         Bstr bstrTemp;
-        hrc = pRecordScreenSettings->COMGETTER(FileName)(bstrTemp.asOutParam());
+        hrc = pRecordScreenSettings->COMGETTER(Filename)(bstrTemp.asOutParam());
         AssertComRCReturn(hrc, VERR_INVALID_PARAMETER);
         RecordScreenSettings.File.strName = bstrTemp;
         hrc = pRecordScreenSettings->COMGETTER(Options)(bstrTemp.asOutParam());
