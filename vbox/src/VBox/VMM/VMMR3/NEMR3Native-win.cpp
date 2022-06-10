@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 72924 2018-07-05 16:14:26Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 73182 2018-07-17 14:47:55Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1170,6 +1170,7 @@ int nemR3NativeInit(PVM pVM, bool fFallback, bool fForced)
     /*
      * Some state init.
      */
+    pVM->nem.s.fA20Enabled = true;
     for (VMCPUID iCpu = 0; iCpu < pVM->cCpus; iCpu++)
     {
         PNEMCPU pNemCpu = &pVM->aCpus[iCpu].nem.s;
