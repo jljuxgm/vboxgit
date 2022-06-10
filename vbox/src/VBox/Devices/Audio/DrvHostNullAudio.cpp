@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 73572 2018-08-08 16:10:51Z vboxsync $ */
 /** @file
  * NULL audio driver.
  *
@@ -161,8 +161,11 @@ static DECLCALLBACK(int) drvHostNullAudioStreamCapture(PPDMIHOSTAUDIO pInterface
 {
     RT_NOREF(pInterface, pStream);
 
+    PNULLAUDIOSTREAM pStreamNull = (PNULLAUDIOSTREAM)pStream;
+
     /* Return silence. */
-    RT_BZERO(pvBuf, cxBuf);
+    Assert(pStreamNull->pCfg);
+    DrvAudioHlpClearBuf(&pStreamNull->pCfg->Props, pvBuf, cxBuf, PDMAUDIOPCMPROPS_B2F(&pStreamNull->pCfg->Props, cxBuf));
 
     if (pcxRead)
         *pcxRead = cxBuf;
