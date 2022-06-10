@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 77115 2019-02-01 13:25:13Z vboxsync $ */
+/* $Id: VBoxGuestControlSvc.cpp 77314 2019-02-14 15:49:08Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -143,7 +143,6 @@ typedef struct HostMsg
     void Delete(void)
     {
         LogFlowThisFunc(("[Msg %RU32 (%s)] destroying\n", mType, GstCtrlHostMsgtoStr((eHostMsg)mType)));
-        Assert(m_ListEntry.pNext == NULL);
         if (mpParms)
         {
             for (uint32_t i = 0; i < mParmCount; i++)
