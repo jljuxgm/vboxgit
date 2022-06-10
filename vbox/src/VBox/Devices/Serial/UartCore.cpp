@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 73712 2018-08-16 13:32:54Z vboxsync $ */
+/* $Id: UartCore.cpp 73713 2018-08-16 13:37:24Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -339,7 +339,7 @@ static void uartIrqUpdate(PUARTCORE pThis)
 /**
  * Returns the amount of bytes stored in the given FIFO.
  *
- * @retrusn Amount of bytes stored in the FIFO.
+ * @returns Amount of bytes stored in the FIFO.
  * @param   pFifo               The FIFO.
  */
 DECLINLINE(size_t) uartFifoUsedGet(PUARTFIFO pFifo)
