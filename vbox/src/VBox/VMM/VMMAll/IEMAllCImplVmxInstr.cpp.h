@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74710 2018-10-09 09:32:07Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74729 2018-10-10 03:18:09Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2654,6 +2654,9 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitLoadHostState(PVMCPU pVCpu, uint32_t uExitRe
  *
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   uExitReason     The VM-exit reason.
+ *
+ * @remarks Make sure VM-exit qualification is updated before calling this
+ *          function!
  */
 IEM_STATIC VBOXSTRICTRC iemVmxVmexit(PVMCPU pVCpu, uint32_t uExitReason)
 {
@@ -3522,8 +3525,11 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitTprVirtualization(PVMCPU pVCpu, uint8_t cbIn
          * This is a trap-like VM-exit. We pass the instruction length along in the VM-exit
          * instruction length field and let the VM-exit handler update the RIP when appropriate.
          * It will then clear the VM-exit instruction length field before completing the VM-exit.
+         *
+         * The VM-exit qualification must be cleared.
          */
         iemVmxVmcsSetExitInstrLen(pVCpu, cbInstr);
+        iemVmxVmcsSetExitQual(pVCpu, 0);
         return iemVmxVmexit(pVCpu, VMX_EXIT_TPR_BELOW_THRESHOLD);
     }
 
@@ -5606,6 +5612,9 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmlaunchVmresume(PVMCPU pVCpu, uint8_t cbInstr, VM
                 {
                     /* Save the guest force-flags as VM-exits can occur from this point on. */
                     iemVmxVmentrySaveForceFlags(pVCpu);
+
+                    /* Initialize the VM-exit qualification field as it MBZ for VM-exits where it isn't specified. */
+                    iemVmxVmcsSetExitQual(pVCpu, 0);
 
                     rc = iemVmxVmentryCheckGuestState(pVCpu, pszInstr);
                     if (RT_SUCCESS(rc))
