@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 77823 2019-03-21 12:20:13Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -37,9 +37,11 @@ VBoxBs3Linker_SOURCES  = $(VBOX_PATH_BS3KIT_SRC)/VBoxBs3Linker.cpp
 
 # 64-bit relocation conversion tool (used via the parent Config.kmk).
 BLDPROGS += VBoxBs3ObjConverter
-VBoxBs3ObjConverter_TEMPLATE = VBoxAdvBldProg
+VBoxBs3ObjConverter_TEMPLATE = VBoxBldProg
 VBoxBs3ObjConverter_DEFS     =  BS3KIT_BS3CLASS16CODE=$(BS3KIT_BS3CLASS16CODE)
-VBoxBs3ObjConverter_SOURCES  = $(VBOX_PATH_BS3KIT_SRC)/VBoxBs3ObjConverter.cpp
+VBoxBs3ObjConverter_SOURCES  = \
+	$(VBOX_PATH_BS3KIT_SRC)/VBoxBs3ObjConverter.cpp \
+       $(PATH_ROOT)/src/VBox/Runtime/common/sort/shellsort.cpp
 
 
 # The boot sector.

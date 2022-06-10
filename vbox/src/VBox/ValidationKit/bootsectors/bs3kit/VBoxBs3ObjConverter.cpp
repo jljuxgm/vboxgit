@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 77823 2019-03-21 12:20:13Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -73,6 +73,25 @@ static unsigned g_cVerbose = 0;
 /** Indicates that it's output from the 16-bit watcom C or C++ compiler.
  * We will do some massaging for fixup records when this is used.  */
 static bool     g_f16BitWatcomC = false;
+
+
+/*
+ * Minimal assertion support.
+ */
+
+RTDECL(bool) RTAssertShouldPanic(void)
+{
+    return true;
+}
+
+
+RTDECL(void) RTAssertMsg1Weak(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
+{
+    fprintf(stderr,
+            "VBoxBs3ObjConverter: assertion failed in %s (%s:%u)!\n"
+            "VBoxBs3ObjConverter: %s\n",
+            pszFunction, pszFile, uLine, pszExpr);
+}
 
 
 /**
@@ -5472,7 +5491,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 76553 $");
+                        printf("%s\n", "$Revision: 77823 $");
                         return 0;
 
                     case '?':
