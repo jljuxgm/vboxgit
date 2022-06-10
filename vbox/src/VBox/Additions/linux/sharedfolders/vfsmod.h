@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77743 2019-03-17 03:43:09Z vboxsync $ */
+/* $Id: vfsmod.h 77853 2019-03-22 20:54:14Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -109,6 +109,8 @@ DECLINLINE(void) set_nlink(struct inode *pInode, unsigned int cLinks)
 /* global variables */
 extern VBGLSFCLIENT                    g_SfClient;
 extern spinlock_t                      g_SfHandleLock;
+extern uint32_t                        g_uSfLastFunction;
+extern uint64_t                        g_fSfFeatures;
 
 extern struct inode_operations         vbsf_dir_iops;
 extern struct inode_operations         vbsf_lnk_iops;
