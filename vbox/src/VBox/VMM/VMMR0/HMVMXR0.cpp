@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72747 2018-06-29 07:48:28Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72748 2018-06-29 07:49:07Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6864,7 +6864,7 @@ static int hmR0VmxLeaveSession(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
         AssertRCReturnStmt(rc2, HM_RESTORE_PREEMPT(), rc2);
         pVCpu->hm.s.fLeaveDone = true;
     }
-    Assert(!pMixedCtx->fExtrn);
+    Assert(!pMixedCtx->fExtrn); NOREF(pMixedCtx);
 
     /*
      * !!! IMPORTANT !!!
