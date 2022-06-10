@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIChooserView.cpp 77224 2019-02-08 15:38:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -94,7 +94,6 @@ UIChooserView::UIChooserView(UIChooser *pParent)
     : QIWithRetranslateUI<QIGraphicsView>(pParent)
     , m_pChooser(pParent)
     , m_iMinimumWidthHint(0)
-    , m_iMinimumHeightHint(0)
 {
     /* Prepare: */
     prepare();
@@ -131,19 +130,6 @@ void UIChooserView::sltMinimumWidthHintChanged(int iHint)
     updateSceneRect();
 }
 
-void UIChooserView::sltMinimumHeightHintChanged(int iHint)
-{
-    /* Is there something changed? */
-    if (m_iMinimumHeightHint == iHint)
-        return;
-
-    /* Remember new value: */
-    m_iMinimumHeightHint = iHint;
-
-    /* Update scene-rect: */
-    updateSceneRect();
-}
-
 void UIChooserView::retranslateUi()
 {
     /* Translate this: */
@@ -167,6 +153,7 @@ void UIChooserView::prepare()
 
     /* Setup scroll-bars policy: */
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     /* Update scene-rect: */
     updateSceneRect();
@@ -190,9 +177,12 @@ void UIChooserView::resizeEvent(QResizeEvent *pEvent)
     QIWithRetranslateUI<QIGraphicsView>::resizeEvent(pEvent);
     /* Notify listeners: */
     emit sigResized();
+
+    /* Update scene-rect: */
+    updateSceneRect();
 }
 
 void UIChooserView::updateSceneRect()
 {
-    setSceneRect(0, 0, m_iMinimumWidthHint, m_iMinimumHeightHint);
+    setSceneRect(0, 0, m_iMinimumWidthHint, height());
 }

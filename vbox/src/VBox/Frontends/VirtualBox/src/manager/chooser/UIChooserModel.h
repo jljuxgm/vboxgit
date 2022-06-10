@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 77026 2019-01-28 18:14:00Z vboxsync $ */
+/* $Id: UIChooserModel.h 77224 2019-02-08 15:38:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -94,8 +94,6 @@ signals:
       * @{ */
         /** Notifies about root item minimum width @a iHint changed. */
         void sigRootItemMinimumWidthHintChanged(int iHint);
-        /** Notifies about root item minimum height @a iHint changed. */
-        void sigRootItemMinimumHeightHintChanged(int iHint);
     /** @} */
 
     /** @name Group saving stuff.

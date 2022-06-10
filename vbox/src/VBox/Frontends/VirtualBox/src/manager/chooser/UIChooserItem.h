@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 77199 2019-02-07 15:38:32Z vboxsync $ */
+/* $Id: UIChooserItem.h 77224 2019-02-08 15:38:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -97,8 +97,6 @@ signals:
       * @{ */
         /** Notifies listeners about @a iMinimumWidthHint change. */
         void sigMinimumWidthHintChanged(int iMinimumWidthHint);
-        /** Notifies listeners about @a iMinimumHeightHint change. */
-        void sigMinimumHeightHintChanged(int iMinimumHeightHint);
     /** @} */
 
 public:
@@ -158,6 +156,10 @@ public:
         void setHovered(bool fHovered);
         /** Returns whether item is hovered. */
         bool isHovered() const;
+
+        /** Installs event-filter for @a pSource object.
+          * @note  Base-class implementation does nothing. */
+        virtual void installEventFilterHelper(QObject *pSource) { Q_UNUSED(pSource); }
     /** @} */
 
     /** @name Children stuff.
@@ -357,8 +359,6 @@ private:
 
         /** Holds previous minimum width hint. */
         int  m_iPreviousMinimumWidthHint;
-        /** Holds previous minimum height hint. */
-        int  m_iPreviousMinimumHeightHint;
     /** @} */
 
     /** @name Navigation stuff.

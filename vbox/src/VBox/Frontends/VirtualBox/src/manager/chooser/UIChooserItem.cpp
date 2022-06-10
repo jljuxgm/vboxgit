@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 77061 2019-01-30 18:12:57Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 77224 2019-02-08 15:38:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -208,7 +208,6 @@ UIChooserItem::UIChooserItem(UIChooserItem *pParent, bool fTemporary,
     , m_iHoveredValue(iHoveredValue)
     , m_iAnimatedValue(m_iDefaultValue)
     , m_iPreviousMinimumWidthHint(0)
-    , m_iPreviousMinimumHeightHint(0)
     , m_enmDragTokenPlace(DragToken_Off)
     , m_iDragTokenDarkness(110)
 {
@@ -390,14 +389,6 @@ void UIChooserItem::updateGeometry()
             m_iPreviousMinimumWidthHint = iMinimumWidthHint;
             emit sigMinimumWidthHintChanged(m_iPreviousMinimumWidthHint);
         }
-        /* Root-item should notify chooser-view if minimum-height-hint was changed: */
-        const int iMinimumHeightHint = minimumHeightHint();
-        if (m_iPreviousMinimumHeightHint != iMinimumHeightHint)
-        {
-            /* Save new minimum-height-hint, notify listener: */
-            m_iPreviousMinimumHeightHint = iMinimumHeightHint;
-            emit sigMinimumHeightHintChanged(m_iPreviousMinimumHeightHint);
-        }
     }
 }
 
@@ -537,10 +528,7 @@ void UIChooserItem::handleRootStatusChange()
 {
     /* Reset minimum size hints for non-root items: */
     if (!isRoot())
-    {
         m_iPreviousMinimumWidthHint = 0;
-        m_iPreviousMinimumHeightHint = 0;
-    }
 }
 
 /* static */
