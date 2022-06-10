@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 76411 2018-12-23 18:34:55Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 76502 2018-12-28 20:47:38Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -4233,7 +4233,7 @@ static DECL_NO_RETURN(void) supR3HardenedWinDoReSpawn(int iWhich)
     PRTUTF16 pwszCmdLine = supR3HardNtChildConstructCmdLine(NULL, iWhich);
 
     supR3HardenedWinEnableThreadCreation();
-    PROCESS_INFORMATION ProcessInfoW32;
+    PROCESS_INFORMATION ProcessInfoW32 = { NULL, NULL, 0, 0 };
     if (!CreateProcessW(g_wszSupLibHardenedExePath,
                         pwszCmdLine,
                         &ProcessSecAttrs,
