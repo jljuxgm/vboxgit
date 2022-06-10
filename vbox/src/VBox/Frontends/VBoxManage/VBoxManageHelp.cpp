@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 77595 2019-03-07 12:42:31Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 77606 2019-03-08 02:55:07Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -992,6 +992,7 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--format VDI|VMDK|VHD] (default: VDI)\n"
                      "                            [--variant Standard,Fixed,Split2G,Stream,ESX,\n"
                      "                                       Formatted]\n"
+                     "                            [[--property <name>=<value>] --property <name>=<value]...\n"
                      "\n", SEP);
 
     if (enmCommand == USAGE_MODIFYMEDIUM || enmCommand == USAGE_S_ALL)

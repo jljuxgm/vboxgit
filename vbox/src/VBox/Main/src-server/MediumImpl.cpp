@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: MediumImpl.cpp 77606 2019-03-08 02:55:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2438,6 +2438,7 @@ HRESULT Medium::setProperty(const com::Utf8Str &aName,
 
     switch (m->state)
     {
+        case MediumState_NotCreated:
         case MediumState_Created:
         case MediumState_Inaccessible:
             break;
