@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 72779 2018-06-29 20:08:13Z vboxsync $ */
+/* $Id: VMM.cpp 72818 2018-07-03 10:01:07Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -669,7 +669,7 @@ VMMR3_INT_DECL(int) VMMR3InitR0(PVM pVM)
     else
         LogRel(("VMM: Warning! RTThreadPreemptIsPending() cannot be trusted!  Need to update kernel info?\n"));
     if (pVM->vmm.s.fIsPreemptPossible)
-        LogRel(("VMM: Kernel preemption is possible.\n"));
+        LogRel(("VMM: Kernel preemption is possible\n"));
     else
         LogRel(("VMM: Kernel preemption is not possible it seems.\n"));
 
