@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 74439 2018-09-24 12:30:47Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 74492 2018-09-27 11:40:40Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -789,8 +789,9 @@ int GuestDnDTarget::i_sendData(PSENDDATACTX pCtx, RTMSINTERVAL msTimeout)
 {
     AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
 
-    int rc;
-
+    /* Is this context already in sending state? */
+    if (ASMAtomicReadBool(&pCtx->mIsActive))
+        return VERR_WRONG_ORDER;
     ASMAtomicWriteBool(&pCtx->mIsActive, true);
 
     /* Clear all remaining outgoing messages. */
@@ -806,6 +807,7 @@ int GuestDnDTarget::i_sendData(PSENDDATACTX pCtx, RTMSINTERVAL msTimeout)
      *       instead of an URI list (pointing to a file on the guest itself).
      *
      ** @todo Support more than one format; add a format<->function handler concept. Later. */
+    int rc;
     bool fHasURIList = std::find(m_lstFmtOffered.begin(),
                                  m_lstFmtOffered.end(), "text/uri-list") != m_lstFmtOffered.end();
     if (fHasURIList)

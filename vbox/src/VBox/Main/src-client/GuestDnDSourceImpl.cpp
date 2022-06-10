@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 74439 2018-09-24 12:30:47Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 74492 2018-09-27 11:40:40Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -956,11 +956,6 @@ int GuestDnDSource::i_receiveData(PRECVDATACTX pCtx, RTMSINTERVAL msTimeout)
 {
     AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
 
-    /* Is this context already in receiving state? */
-    if (ASMAtomicReadBool(&pCtx->mIsActive))
-        return VERR_WRONG_ORDER;
-    ASMAtomicWriteBool(&pCtx->mIsActive, true);
-
     GuestDnD *pInst = GuestDnDInst();
     if (!pInst)
         return VERR_INVALID_POINTER;
@@ -971,6 +966,11 @@ int GuestDnDSource::i_receiveData(PRECVDATACTX pCtx, RTMSINTERVAL msTimeout)
     int rc = pCtx->mCBEvent.Reset();
     if (RT_FAILURE(rc))
         return rc;
+
+    /* Is this context already in receiving state? */
+    if (ASMAtomicReadBool(&pCtx->mIsActive))
+        return VERR_WRONG_ORDER;
+    ASMAtomicWriteBool(&pCtx->mIsActive, true);
 
     /*
      * Reset any old data.
