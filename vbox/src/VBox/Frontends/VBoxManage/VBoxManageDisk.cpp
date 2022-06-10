@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 72998 2018-07-09 07:49:11Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 73029 2018-07-10 10:14:16Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -2075,7 +2075,8 @@ static RTEXITCODE mediumIOOpenMediumForIO(HandlerArg *pHandler, PCMEDIUMIOCOMMON
         }
     }
 
-    memset(bstrPassword.mutableRaw(), '*', bstrPassword.length() * sizeof(RTUTF16));
+    if (bstrPassword.isNotEmpty())
+        memset(bstrPassword.mutableRaw(), '*', bstrPassword.length() * sizeof(RTUTF16));
     return SUCCEEDED(hrc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 }
 
