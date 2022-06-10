@@ -1,4 +1,4 @@
-/* $Id: Guid.h 72905 2018-07-04 22:20:12Z vboxsync $ */
+/* $Id: Guid.h 72906 2018-07-04 22:22:16Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Guid class declaration.
  */
@@ -426,10 +426,10 @@ private:
         else
         {
             int rc = ::RTUuidFromStr(&mUuid, that);
-            if (RT_FAILURE(rc))
-                makeInvalid();
-            else
+            if (RT_SUCCESS(rc))
                 updateState();
+            else
+                makeInvalid();
         }
         dbg_refresh();
     }
@@ -443,10 +443,10 @@ private:
         else
         {
             int rc = ::RTUuidFromUtf16(&mUuid, that);
-            if (RT_FAILURE(rc))
-                makeInvalid();
-            else
+            if (RT_SUCCESS(rc))
                 updateState();
+            else
+                makeInvalid();
         }
         dbg_refresh();
     }
