@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 73622 2018-08-10 15:28:31Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 73629 2018-08-13 09:40:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2812,6 +2812,9 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             Utf8Str strDebugPathOut;
             GetExtraDataBoth(virtualBox, pMachine, "VBoxInternal2/Audio/Debug/PathOut", &strDebugPathOut);
 
+            /** @todo Implement an audio device class, similar to the audio backend class, to construct the common stuff
+             *        without duplicating (more) code. */
+
             switch (audioController)
             {
                 case AudioControllerType_AC97:
@@ -2864,9 +2867,8 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     InsertConfigInteger(pInst,    "Trusted",               1); /* boolean */
                     hrc = pBusMgr->assignPCIDevice(strAudioDevice.c_str(), pInst);          H();
                     InsertConfigNode   (pInst,    "Config",                &pCfg);
-
-                        InsertConfigInteger(pCfg, "DebugEnabled", fDebugEnabled);
-                        InsertConfigString (pCfg, "DebugPathOut", strDebugPathOut);
+                    InsertConfigInteger(pCfg,     "DebugEnabled",          fDebugEnabled);
+                    InsertConfigString (pCfg,     "DebugPathOut",          strDebugPathOut);
                     break;
                 }
                 default: AssertFailedBreak();
