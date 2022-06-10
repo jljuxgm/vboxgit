@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 76909 2019-01-21 08:51:44Z vboxsync $ */
+/* $Id: UIMediumSelector.h 76979 2019-01-24 15:59:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -26,7 +26,7 @@
 #include "QIWithRetranslateUI.h"
 #include "UIMedium.h"
 #include "UIMediumDefs.h"
-#include "UIMediumDetailsWidget.h"
+
 
 /* Forward declarations: */
 class QAction;
