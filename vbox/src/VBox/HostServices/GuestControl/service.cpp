@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75869 2018-12-02 01:47:07Z vboxsync $ */
+/* $Id: service.cpp 75870 2018-12-02 01:50:37Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -2003,7 +2003,7 @@ GstCtrlService::svcCall(void *pvService, VBOXHGCMCALLHANDLE hCall, uint32_t idCl
 {
     LogFlowFunc(("[Client %RU32] idFunction=%RU32 (%s), cParms=%RU32, paParms=0x%p\n",
                  idClient, idFunction, GstCtrlGuestFnName((eGuestFn)idFunction), cParms, paParms));
-    RT_NOREF(tsArrival);
+    RT_NOREF(tsArrival, idClient);
 
     /*
      * Convert opaque pointers to typed ones.
@@ -2013,6 +2013,7 @@ GstCtrlService::svcCall(void *pvService, VBOXHGCMCALLHANDLE hCall, uint32_t idCl
 #ifdef USE_PVCLIENT
     ClientState *pClient = reinterpret_cast<ClientState *>(pvClient);
     AssertReturnVoidStmt(pClient, pThis->mpHelpers->pfnCallComplete(hCall, VERR_INVALID_CLIENT_ID));
+    Assert(pClient->mID == idClient);
 #else
     ClientStateMapIter ItClientState = pThis->mClientStateMap.find(idClient);
     AssertReturnVoidStmt(ItClientState != pThis->mClientStateMap.end(),
