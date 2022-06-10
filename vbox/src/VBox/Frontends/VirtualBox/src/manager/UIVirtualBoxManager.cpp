@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 74744 2018-10-10 13:10:23Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 74852 2018-10-15 17:57:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -299,12 +299,12 @@ void UIVirtualBoxManager::sltHandleMediumEnumerationFinish()
         }
     }
 
-    /* Warn the user about inaccessible medium, propose to open MM window/tool: */
-    if (fIsThereAnyInaccessibleMedium && msgCenter().warnAboutInaccessibleMedia())
-    {
-        /* Open the MM window: */
-        sltOpenVirtualMediumManagerWindow();
-    }
+//    /* Warn the user about inaccessible medium, propose to open MM window/tool: */
+//    if (fIsThereAnyInaccessibleMedium && msgCenter().warnAboutInaccessibleMedia())
+//    {
+//        /* Open the MM window: */
+//        sltOpenVirtualMediumManagerWindow();
+//    }
 }
 
 void UIVirtualBoxManager::sltHandleOpenUrlCall(QList<QUrl> list /* = QList<QUrl>() */)
