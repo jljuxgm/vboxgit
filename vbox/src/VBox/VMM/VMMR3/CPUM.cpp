@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 76465 2018-12-25 04:39:02Z vboxsync $ */
+/* $Id: CPUM.cpp 76466 2018-12-25 04:39:36Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1755,7 +1755,7 @@ static int cpumR3GetHostHwvirtMsrs(PCPUMMSRS pMsrs)
                 return VINF_SUCCESS;
             }
 
-            LogRel(("CPUM: Query hardware-virtualization MSRs failed. rc=%Rrc\n", rc));
+            LogRel(("CPUM: Querying hardware-virtualization MSRs failed. rc=%Rrc\n", rc));
             return rc;
         }
         else
