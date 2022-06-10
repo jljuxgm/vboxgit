@@ -1,6 +1,6 @@
-/* $Id: RTFileCopyPartEx-linux.cpp 77834 2019-03-21 20:47:07Z vboxsync $ */
+/* $Id: RTFileCopyPartEx-linux.cpp 77836 2019-03-21 20:52:08Z vboxsync $ */
 /** @file
- * IPRT - RTFileCopyPartEx, generic implementation.
+ * IPRT - RTFileCopyPartEx, linux specific implementation.
  */
 
 /*
