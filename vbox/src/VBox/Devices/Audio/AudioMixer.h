@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 73342 2018-07-24 14:46:55Z vboxsync $ */
+/* $Id: AudioMixer.h 73355 2018-07-25 15:48:31Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -69,7 +69,7 @@ typedef struct AUDMIXSTREAM
     PPDMAUDIOSTREAM         pStream;
     /** Last read (recording) / written (playback) timestamp (in ms). */
     uint64_t                tsLastReadWrittenMs;
-    /** The stream's circular buffer for temporarily 
+    /** The stream's circular buffer for temporarily
      *  holding (raw) device audio data. */
     PRTCIRCBUF              pCircBuf;
 } AUDMIXSTREAM, *PAUDMIXSTREAM;
