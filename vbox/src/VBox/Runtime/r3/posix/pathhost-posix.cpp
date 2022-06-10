@@ -1,4 +1,4 @@
-/* $Id: pathhost-posix.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: pathhost-posix.cpp 76417 2018-12-23 18:59:47Z vboxsync $ */
 /** @file
  * IPRT - Path Conversions, POSIX.
  */
@@ -35,6 +35,7 @@
 #include "internal/thread.h"
 
 #include <iprt/env.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/once.h>
 

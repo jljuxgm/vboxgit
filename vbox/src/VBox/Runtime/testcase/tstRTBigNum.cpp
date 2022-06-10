@@ -1,4 +1,4 @@
-/* $Id: tstRTBigNum.cpp 75423 2018-11-13 14:05:27Z vboxsync $ */
+/* $Id: tstRTBigNum.cpp 76417 2018-12-23 18:59:47Z vboxsync $ */
 /** @file
  * IPRT - Testcase for the RTBigNum* functions.
  */
@@ -33,8 +33,9 @@
 #include <iprt/uint64.h>
 #include <iprt/uint32.h>
 
-#include <iprt/string.h>
+#include <iprt/err.h>
 #include <iprt/rand.h>
+#include <iprt/string.h>
 #include <iprt/test.h>
 #include <iprt/thread.h>
 #include <iprt/time.h>
