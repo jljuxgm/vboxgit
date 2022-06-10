@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 74978 2018-10-22 18:17:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -634,13 +634,11 @@ void UIMediumManagerWidget::sltHandleContextMenuRequest(const QPoint &position)
         menu.addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Move));
         menu.addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Remove));
         menu.addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Release));
-        menu.addSeparator();
         menu.addAction(m_pActionPool->action(UIActionIndexST_M_Medium_T_Details));
     }
     else
     {
         menu.addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Add));
-        menu.addSeparator();
         menu.addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Refresh));
     }
     /* And show it: */
@@ -778,11 +776,11 @@ void UIMediumManagerWidget::prepareToolBar()
 
         /* Add toolbar actions: */
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Add));
+        m_pToolBar->addSeparator();
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Copy));
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Move));
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Remove));
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Release));
-        m_pToolBar->addSeparator();
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndexST_M_Medium_T_Details));
         m_pToolBar->addSeparator();
         m_pToolBar->addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Refresh));
