@@ -1,4 +1,4 @@
-/* $Id: blitter.cpp 78116 2019-04-12 10:03:24Z vboxsync $ */
+/* $Id: blitter.cpp 78190 2019-04-18 00:07:07Z vboxsync $ */
 /** @file
  * Blitter API implementation
  */
@@ -33,7 +33,6 @@ DECLINLINE(void) crWarning(const char *format, ... ) {}
 # include "chromium.h"
 # include "cr_error.h"
 # include "cr_net.h"
-# include "cr_rand.h"
 # include "cr_mem.h"
 # include "cr_string.h"
 # include "cr_bmpscale.h"

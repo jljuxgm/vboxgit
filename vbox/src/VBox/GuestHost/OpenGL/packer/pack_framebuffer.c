@@ -1,4 +1,4 @@
-/* $Id: pack_framebuffer.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: pack_framebuffer.c 78190 2019-04-18 00:07:07Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: EXT_framebuffer_object
@@ -54,18 +54,3 @@ crPackDeleteFramebuffersEXT(GLsizei n, const GLuint * framebuffers)
     crPackFree(data_ptr);
 }
 
-void PACK_APIENTRY
-crPackDeleteRenderbuffersEXTSWAP(GLsizei n, const GLuint * renderbuffers)
-{
-    (void) n;
-    (void) renderbuffers;
-    crError ("No swap version");
-}
-
-void PACK_APIENTRY
-crPackDeleteFramebuffersEXTSWAP(GLsizei n, const GLuint * framebuffers)
-{
-    (void) n;
-    (void) framebuffers;
-    crError ("No swap version");
-}

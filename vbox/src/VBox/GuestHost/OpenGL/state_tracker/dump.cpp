@@ -1,4 +1,4 @@
-/* $Id: dump.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: dump.cpp 78190 2019-04-18 00:07:07Z vboxsync $ */
 
 /** @file
  * Blitter API implementation
@@ -19,7 +19,6 @@
 #include "chromium.h"
 #include "cr_error.h"
 #include "cr_net.h"
-#include "cr_rand.h"
 #include "cr_mem.h"
 #include "cr_string.h"
 #include <cr_dump.h>

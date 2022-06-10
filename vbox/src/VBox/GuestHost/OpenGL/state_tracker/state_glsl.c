@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: state_glsl.c 78190 2019-04-18 00:07:07Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -22,6 +22,8 @@
 #include "state_internals.h"
 #include "cr_mem.h"
 #include "cr_string.h"
+
+#include <stdio.h> /*sprintf*/
 
 static CRGLSLShader* crStateGetShaderObj(GLuint id)
 {

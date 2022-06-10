@@ -1,4 +1,4 @@
-/* $Id: icd_drv.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: icd_drv.c 78190 2019-04-18 00:07:07Z vboxsync $ */
 /** @file
  * VBox OpenGL windows ICD driver functions
  */
@@ -27,6 +27,8 @@
 #endif
 
 #include <iprt/win/windows.h>
+
+#include <stdio.h> /*sprintf*/
 
 /// @todo consider
 /* We can modify chronium dispatch table functions order to match the one required by ICD,

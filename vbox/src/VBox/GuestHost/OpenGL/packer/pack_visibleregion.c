@@ -1,4 +1,4 @@
-/* $Id: pack_visibleregion.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: pack_visibleregion.c 78190 2019-04-18 00:07:07Z vboxsync $ */
 /** @file
  * VBox Packing VisibleRegion information
  */
@@ -48,11 +48,5 @@ void PACK_APIENTRY crPackWindowVisibleRegion( CR_PACKER_CONTEXT_ARGDECL GLint wi
     }
     WRITE_OPCODE( pc, CR_EXTEND_OPCODE );
     CR_UNLOCK_PACKER_CONTEXT(pc);
-}
-
-void PACK_APIENTRY crPackWindowVisibleRegionSWAP( CR_PACKER_CONTEXT_ARGDECL  GLint window, GLint cRects, const GLint * pRects )
-{
-    RT_NOREF3(window, cRects, pRects); CR_PACKER_CONTEXT_ARG_NOREF();
-    crError( "crPackWindowVisibleRegionSWAP unimplemented and shouldn't be called" );
 }
 

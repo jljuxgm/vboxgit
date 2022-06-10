@@ -1,4 +1,4 @@
-/* $Id: server_presenter.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: server_presenter.h 78190 2019-04-18 00:07:07Z vboxsync $ */
 
 /** @file
  * Presenter API definitions.
@@ -23,7 +23,6 @@
 #include "chromium.h"
 #include "cr_error.h"
 #include "cr_net.h"
-#include "cr_rand.h"
 #include "server_dispatch.h"
 #include "server.h"
 #include "cr_mem.h"

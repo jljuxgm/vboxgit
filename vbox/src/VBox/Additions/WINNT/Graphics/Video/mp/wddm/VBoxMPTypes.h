@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 78190 2019-04-18 00:07:07Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -35,13 +35,12 @@ typedef struct VBOXWDDM_ALLOCATION *PVBOXWDDM_ALLOCATION;
 #include "VBoxMPShgsmi.h"
 #include "VBoxMPVbva.h"
 #include "VBoxMPCr.h"
+#include "VBoxMPSa.h"
 #include "VBoxMPVModes.h"
 
 #ifdef VBOX_WITH_CROGL
 #include <cr_vreg.h>
 #endif
-
-#include <cr_sortarray.h>
 
 #if 0
 #include <iprt/avl.h>

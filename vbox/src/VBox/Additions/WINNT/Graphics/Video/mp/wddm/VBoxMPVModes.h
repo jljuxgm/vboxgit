@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVModes.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxMPVModes.h 78190 2019-04-18 00:07:07Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -23,8 +23,7 @@
 
 //#include "../../common/VBoxVideoTools.h"
 
-#include <cr_sortarray.h>
-
+#include "VBoxMPSa.h"
 
 #define _CR_TYPECAST(_Type, _pVal) ((_Type*)((void*)(_pVal)))
 

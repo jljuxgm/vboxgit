@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestDarwin.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: OpenGLTestDarwin.cpp 78190 2019-04-18 00:07:07Z vboxsync $ */
 /** @file
  * VBox host opengl support test
  */
@@ -25,9 +25,7 @@
 #include <OpenGL/OpenGL.h>
 #include <ApplicationServices/ApplicationServices.h>
 #include <OpenGL/gl.h>
-#ifdef VBOX_WITH_COCOA_QT
-# include <OpenGL/glu.h>
-#endif
+#include <OpenGL/glu.h>
 
 #include <iprt/env.h>
 #include <iprt/log.h>
@@ -142,7 +140,6 @@ bool RTCALL VBoxOglIs3DAccelerationSupported(void)
         {
             GLboolean isSupported = GL_TRUE;
 
-#ifdef VBOX_WITH_COCOA_QT
             /*
              * In the Cocoa port we depend on the GL_EXT_framebuffer_object &
              * the GL_EXT_texture_rectangle extension. If they are not
@@ -159,7 +156,6 @@ bool RTCALL VBoxOglIs3DAccelerationSupported(void)
             }
             else
                 LogRel(("OpenGL Info: 3D test found that GL_EXT_framebuffer_object extension not supported.\n"));
-#endif /* VBOX_WITH_COCOA_QT */
 
             CGLDestroyContext(pCglContext);
             LogRel(("OpenGL Info: 3D test %spassed\n", isSupported == GL_TRUE ? "" : "not "));

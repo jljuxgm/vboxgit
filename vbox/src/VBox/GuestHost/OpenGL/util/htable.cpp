@@ -1,4 +1,4 @@
-/* $Id: htable.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: htable.cpp 78190 2019-04-18 00:07:07Z vboxsync $ */
 /** @file
  * uint32_t handle to void simple table impl
  *
@@ -27,7 +27,6 @@
 #include "chromium.h"
 #include "cr_error.h"
 #include "cr_net.h"
-#include "cr_rand.h"
 #include "cr_mem.h"
 #include "cr_string.h"
 
