@@ -1,4 +1,4 @@
-/* $Id: VideoRecStream.cpp 75066 2018-10-25 12:58:49Z vboxsync $ */
+/* $Id: VideoRecStream.cpp 75069 2018-10-25 13:21:17Z vboxsync $ */
 /** @file
  * Video recording stream code.
  */
@@ -416,14 +416,17 @@ int VideoRecStreamInit(PVIDEORECSTREAM pStream, PVIDEORECCONTEXT pCtx, uint32_t 
             break;
     }
 
-    if (RT_FAILURE(rc))
+    if (RT_SUCCESS(rc))
+    {
+        pStream->pCtx     = pCtx;
+        pStream->fEnabled = true;
+    }
+    else
     {
         int rc2 = VideoRecStreamClose(pStream);
         AssertRC(rc2);
         return rc;
     }
-
-    pStream->fEnabled = true;
 
     return VINF_SUCCESS;
 }
