@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 78038 2019-04-08 12:15:00Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 78039 2019-04-08 12:16:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3493,8 +3493,6 @@ HRESULT GuestSession::directoryRemove(const com::Utf8Str &aPath)
 HRESULT GuestSession::directoryRemoveRecursive(const com::Utf8Str &aPath, const std::vector<DirectoryRemoveRecFlag_T> &aFlags,
                                                ComPtr<IProgress> &aProgress)
 {
-    RT_NOREF(aFlags);
-
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
@@ -3508,6 +3506,9 @@ HRESULT GuestSession::directoryRemoveRecursive(const com::Utf8Str &aPath, const 
         {
             switch (aFlags[i])
             {
+                case DirectoryRemoveRecFlag_None: /* Skip. */
+                    continue;
+
                 case DirectoryRemoveRecFlag_ContentAndDir:
                     fFlags = DIRREMOVEREC_FLAG_RECURSIVE | DIRREMOVEREC_FLAG_CONTENT_AND_DIR;
                     break;
