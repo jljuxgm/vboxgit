@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 76886 2019-01-18 10:57:02Z vboxsync $ */
+/* $Id: SUPDrv.cpp 77106 2019-02-01 10:31:23Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -480,13 +480,13 @@ PFNRT g_apfnVBoxDrvIPRTDeps[] =
     (PFNRT)RTRandBytes,
     /* VBoxUSB */
     (PFNRT)RTPathStripFilename,
-    (PFNRT)RTHandleTableAlloc,
 #if !defined(RT_OS_FREEBSD)
+    (PFNRT)RTHandleTableAlloc,
     (PFNRT)RTStrPurgeEncoding,
 #endif
     NULL
 };
-#endif  /* RT_OS_DARWIN || RT_OS_SOLARIS || RT_OS_SOLARIS */
+#endif  /* RT_OS_DARWIN || RT_OS_SOLARIS || RT_OS_FREEBSD */
 
 /** Hardware-virtualization MSRs. */
 static SUPHWVIRTMSRS            g_HwvirtMsrs;
