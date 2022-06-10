@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 77701 2019-03-14 11:57:06Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 77723 2019-03-15 12:52:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -462,19 +462,21 @@ void UIChooserItem::updateGeometry()
 
 void UIChooserItem::makeSureItsVisible()
 {
-    /* If item is not visible: */
+    /* Get parrent item: */
+    UIChooserItemGroup *pParentItem = parentItem()->toGroupItem();
+    if (!pParentItem)
+        return;
+    /* If item is not visible. That is all the parent group(s) are opened (expanded): */
     if (!isVisible())
     {
-        /* Get parrent item, assert if can't: */
-        if (UIChooserItemGroup *pParentItem = parentItem()->toGroupItem())
-        {
-            /* We should make parent visible: */
-            pParentItem->makeSureItsVisible();
-            /* And make sure its opened: */
-            if (pParentItem->isClosed())
-                pParentItem->open(false);
-        }
+        /* We should make parent visible: */
+        pParentItem->makeSureItsVisible();
+        /* And make sure its opened: */
+        if (pParentItem->isClosed())
+            pParentItem->open(false);
     }
+    /* Make sure we scroll to the item's rectangle: */
+    pParentItem->makeSureItemIsVisible(this);
 }
 
 UIChooserItemDragToken UIChooserItem::dragTokenPlace() const
