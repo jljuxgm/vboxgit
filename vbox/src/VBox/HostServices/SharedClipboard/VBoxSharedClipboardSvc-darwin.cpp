@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 78179 2019-04-17 19:06:26Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 78318 2019-04-26 09:51:39Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -71,7 +71,7 @@ static int vboxClipboardChanged(VBOXCLIPBOARDCONTEXT *pCtx)
     int rc = queryNewPasteboardFormats(pCtx->pasteboard, &fFormats, &fChanged);
     if (RT_SUCCESS(rc) && fChanged)
     {
-        vboxSvcClipboardReportMsg(pCtx->pClient, VBOX_SHARED_CLIPBOARD_HOST_MSG_FORMATS, fFormats);
+        vboxSvcClipboardReportMsg(pCtx->pClient, VBOX_SHARED_CLIPBOARD_HOST_MSG_REPORT_FORMATS, fFormats);
         Log(("vboxClipboardChanged fFormats %02X\n", fFormats));
     }
 
