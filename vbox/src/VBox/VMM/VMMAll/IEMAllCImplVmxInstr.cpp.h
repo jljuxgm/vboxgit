@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74621 2018-10-05 06:09:04Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74623 2018-10-05 06:32:49Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -5192,7 +5192,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmlaunchVmresume(PVMCPU pVCpu, uint8_t cbInstr, VM
     /*
      * We are allowed to cache VMCS related data structures (such as I/O bitmaps, MSR bitmaps)
      * while entering VMX non-root mode. We do some of this while checking VM-execution
-     * controls. The guest hypervisor should not make assumptions and is cannot expect
+     * controls. The guest hypervisor should not make assumptions and cannot expect
      * predictable behavior if changes to these structures are made in guest memory after
      * executing VMX non-root mode. As far as VirtualBox is concerned, the guest cannot modify
      * them anyway as we cache them in host memory. We are trade memory for speed here.
