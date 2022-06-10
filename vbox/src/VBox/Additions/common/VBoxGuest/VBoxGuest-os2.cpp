@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 75552 2018-11-18 04:55:03Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 75779 2018-11-27 22:37:39Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -363,7 +363,13 @@ DECLASM(int) vgdrvOS2Open(uint16_t sfn)
     /*
      * Create a new session.
      */
-    rc = VGDrvCommonCreateUserSession(&g_DevExt, VMMDEV_REQUESTOR_USERMODE, &pSession);
+    uint32_t fRequestor = VMMDEV_REQUESTOR_USERMODE
+                        | VMMDEV_REQUESTOR_TRUST_NOT_GIVEN
+                        | VMMDEV_REQUESTOR_USR_ROOT  /* everyone is root on OS/2 */
+                        | VMMDEV_REQUESTOR_GRP_WHEEL /* and their admins */
+                        | VMMDEV_REQUESTOR_NO_USER_DEVICE /** @todo implement /dev/vboxuser? */
+                        | VMMDEV_REQUESTOR_CON_DONT_KNOW; /** @todo check screen group/whatever of process to see if console */
+    rc = VGDrvCommonCreateUserSession(&g_DevExt, fRequestor, &pSession);
     if (RT_SUCCESS(rc))
     {
         pSession->sfn = sfn;
