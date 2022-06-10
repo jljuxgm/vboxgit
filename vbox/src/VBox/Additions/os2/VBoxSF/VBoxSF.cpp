@@ -1,4 +1,4 @@
-/** $Id: VBoxSF.cpp 76448 2018-12-25 00:38:06Z vboxsync $ */
+/** $Id: VBoxSF.cpp 76693 2019-01-08 06:07:36Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, the FS and FSD level IFS EPs
  */
@@ -57,6 +57,8 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
+/** VMMDEV_HVF_XXX (set during init). */
+uint32_t            g_fHostFeatures = 0;
 /** The shared mutex protecting folders list, drives and the connection. */
 MutexLock_t         g_MtxFolders;
 /** The shared folder service client structure. */
