@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73811 2018-08-22 08:30:14Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73813 2018-08-22 08:39:00Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1793,7 +1793,7 @@ static int audioMixerSinkWriteToStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pMixStre
     if (!pMixStream->pCircBuf)
         return VINF_SUCCESS;
 
-    return audioMixerSinkWriteToStreamEx(pSink, pMixStream, RTCircBufUsed(pMixStream->pCircBuf), NULL /* pcbWritten */);
+    return audioMixerSinkWriteToStreamEx(pSink, pMixStream, (uint32_t)RTCircBufUsed(pMixStream->pCircBuf), NULL /* pcbWritten */);
 }
 
 /**
