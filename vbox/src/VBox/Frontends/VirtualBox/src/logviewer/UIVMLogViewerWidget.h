@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 73697 2018-08-15 15:58:48Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 73783 2018-08-20 11:41:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -135,10 +135,10 @@ private:
         void prepare();
         /** Prepares actions. */
         void prepareActions();
-        /** Prepares toolbar. */
-        void prepareToolBar();
         /** Prepares widgets. */
         void prepareWidgets();
+        /** Prepares toolbar. */
+        void prepareToolBar();
         /** Loads settings.  */
         void loadSettings();
 

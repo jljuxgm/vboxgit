@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 73676 2018-08-14 19:02:08Z vboxsync $ */
+/* $Id: UISnapshotPane.h 73783 2018-08-20 11:41:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -143,6 +143,10 @@ private:
       * @{ */
         /** Prepares all. */
         void prepare();
+        /** Prepares connections. */
+        void prepareConnections();
+        /** Prepares actions. */
+        void prepareActions();
         /** Prepares widgets. */
         void prepareWidgets();
         /** Prepares toolbar. */

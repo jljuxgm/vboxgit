@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.h 73738 2018-08-17 15:09:50Z vboxsync $ */
+/* $Id: UIHostNetworkManager.h 73783 2018-08-20 11:41:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class declaration.
  */
@@ -124,8 +124,6 @@ private:
       * @{ */
         /** Prepares all. */
         void prepare();
-        /** Prepares this. */
-        void prepareThis();
         /** Prepares actions. */
         void prepareActions();
         /** Prepares widgets. */

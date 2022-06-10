@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 73734 2018-08-17 12:43:50Z vboxsync $ */
+/* $Id: UIMediumManager.h 73783 2018-08-20 11:41:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -202,8 +202,6 @@ private:
       * @{ */
         /** Prepares all. */
         void prepare();
-        /** Prepares this. */
-        void prepareThis();
         /** Prepares connections. */
         void prepareConnections();
         /** Prepares actions. */
