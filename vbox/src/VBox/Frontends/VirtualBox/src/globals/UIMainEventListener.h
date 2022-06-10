@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 77986 2019-04-02 16:53:28Z vboxsync $ */
+/* $Id: UIMainEventListener.h 77987 2019-04-02 17:32:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -32,6 +32,7 @@
 #include "COMEnums.h"
 #include "CGuestProcess.h"
 #include "CGuestSession.h"
+#include "CMedium.h"
 #include "CMediumAttachment.h"
 #include "CNetworkAdapter.h"
 #include "CUSBDevice.h"
@@ -116,7 +117,7 @@ signals:
         /** Notifies about storage medium @a comAttachment state change. */
         void sigMediumChange(CMediumAttachment comAttachment);
         /** Notifies about storage @a comMedium config change. */
-        void sigMediumConfigChange(const CMedium &comMedium);
+        void sigMediumConfigChange(CMedium comMedium);
         /** Notifies about storage medium is (un)registered.
           * @param  uMediumId      Brings corresponding medium ID.
           * @param  enmMediumType  Brings corresponding medium type.
