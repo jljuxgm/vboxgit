@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 75857 2018-12-01 11:37:58Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 75956 2018-12-05 05:54:56Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3629,6 +3629,8 @@ static int hmR0VmxExportGuestRflags(PVMCPU pVCpu)
         if (   !pVCpu->hm.s.fSingleInstruction
             &&  fEFlags.Bits.u1TF)
         {
+            /** @todo r=ramshankar: Warning! We ASSUME EFLAGS.TF will not cleared on
+             *        premature trips to ring-3 esp since IEM does not yet handle it. */
             rc = VMXWriteVmcs32(VMX_VMCS_GUEST_PENDING_DEBUG_XCPTS, VMX_VMCS_GUEST_PENDING_DEBUG_XCPT_BS);
             AssertRCReturn(rc, rc);
         }
