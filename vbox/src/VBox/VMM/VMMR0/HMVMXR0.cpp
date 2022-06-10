@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72881 2018-07-04 15:19:39Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72886 2018-07-04 15:44:01Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7117,6 +7117,7 @@ static DECLCALLBACK(int) hmR0VmxCallRing3Callback(PVMCPU pVCpu, VMMCALLRING3 enm
         RTTHREADPREEMPTSTATE PreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;
         RTThreadPreemptDisable(&PreemptState);
 
+        hmR0VmxImportGuestState(pVCpu, HMVMX_CPUMCTX_EXTRN_ALL);
         CPUMR0FpuStateMaybeSaveGuestAndRestoreHost(pVCpu);
         CPUMR0DebugStateMaybeSaveGuestAndRestoreHost(pVCpu, true /* save DR6 */);
 
