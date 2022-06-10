@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: MouseImpl.cpp 76760 2019-01-10 18:07:47Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -25,12 +25,10 @@
 #include "VMMDev.h"
 #include "MousePointerShapeWrap.h"
 
-#include "AutoCaller.h"
-
 #include <VBox/vmm/pdmdrv.h>
 #include <VBox/VMMDev.h>
+#include <VBox/err.h>
 
-#include <iprt/asm.h>
 
 class ATL_NO_VTABLE MousePointerShape:
     public MousePointerShapeWrap

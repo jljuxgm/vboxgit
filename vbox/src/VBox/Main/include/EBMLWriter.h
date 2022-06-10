@@ -1,4 +1,4 @@
-/* $Id: EBMLWriter.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: EBMLWriter.h 76760 2019-01-10 18:07:47Z vboxsync $ */
 /** @file
  * EBMLWriter.h - EBML writer.
  */
@@ -22,28 +22,12 @@
 #endif
 
 #include <iprt/file.h>
-#include <VBox/com/string.h> /* For Utf8Str. */
+#include <VBox/com/string.h>
 
-using namespace com;
-
-#include <list>
-#include <map>
-#include <queue>
 #include <stack>
 
-#include <math.h> /* For lround.h. */
-
-#include <iprt/asm.h>
-#include <iprt/buildconfig.h>
 #include <iprt/cdefs.h>
-#include <iprt/critsect.h>
-#include <iprt/err.h>
 #include <iprt/file.h>
-#include <iprt/rand.h>
-#include <iprt/string.h>
-
-#include <VBox/log.h>
-#include <VBox/version.h>
 
 /** No flags set. */
 #define VBOX_EBMLWRITER_FLAG_NONE               0
@@ -69,7 +53,7 @@ private:
     /** The file's handle. */
     RTFILE                     m_hFile;
     /** The file's name (path). */
-    Utf8Str                    m_strFile;
+    com::Utf8Str               m_strFile;
     /** Flags. */
     uint32_t                   m_fFlags;
 
@@ -90,7 +74,7 @@ public:
     void close(void);
 
     /** Returns the file name. */
-    const Utf8Str& getFileName(void) { return m_strFile; }
+    const com::Utf8Str& getFileName(void) { return m_strFile; }
 
     /** Returns file size. */
     uint64_t getFileSize(void) { return RTFileTell(m_hFile); }

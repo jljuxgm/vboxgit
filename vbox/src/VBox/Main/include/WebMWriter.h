@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: WebMWriter.h 76760 2019-01-10 18:07:47Z vboxsync $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -22,6 +22,12 @@
 #endif
 
 #include "EBMLWriter.h"
+
+#include <queue>
+#include <map>
+#include <list>
+
+#include <iprt/rand.h>
 
 #ifdef VBOX_WITH_LIBVPX
 # ifdef _MSC_VER
@@ -86,7 +92,6 @@
 # pragma pack(pop)
 #endif /* VBOX_WITH_LIBOPUS */
 
-using namespace com;
 
 class WebMWriter : public EBMLWriter
 {
@@ -539,7 +544,7 @@ public:
 
     int WriteBlock(uint8_t uTrack, const void *pvData, size_t cbData);
 
-    const Utf8Str& GetFileName(void);
+    const com::Utf8Str& GetFileName(void);
 
     uint64_t GetFileSize(void);
 

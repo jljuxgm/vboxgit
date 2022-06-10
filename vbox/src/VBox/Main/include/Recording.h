@@ -1,4 +1,4 @@
-/* $Id: Recording.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: Recording.h 76760 2019-01-10 18:07:47Z vboxsync $ */
 /** @file
  * Recording code header.
  */
@@ -24,7 +24,6 @@
 #include <VBox/com/array.h>
 #include <VBox/com/string.h>
 #include <VBox/com/VirtualBox.h>
-#include <VBox/err.h>
 #include <VBox/settings.h>
 
 using namespace com;
