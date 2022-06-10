@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.cpp 74903 2018-10-18 07:59:50Z vboxsync $ */
+/* $Id: WebMWriter.cpp 74911 2018-10-18 09:44:09Z vboxsync $ */
 /** @file
  * WebMWriter.cpp - WebM container handling.
  */
@@ -430,6 +430,14 @@ int WebMWriter::writeSimpleBlockQueued(WebMTrack *a_pTrack, WebMSimpleBlock *a_p
     try
     {
         const WebMTimecodeAbs tcAbsPTS = a_pBlock->Data.tcAbsPTSMs;
+
+        /* Check if the current segment already has been started.
+         * If not, use the current (absolute) time stamp for it. */
+        if (CurSeg.tcAbsStartMs == 0)
+        {
+            CurSeg.tcAbsStartMs = tcAbsPTS;
+            LogFunc(("Segment started @ %RU64ms\n", CurSeg.tcAbsStartMs));
+        }
 
         /* See if we already have an entry for the specified timecode in our queue. */
         WebMBlockMap::iterator itQueue = CurSeg.queueBlocks.Map.find(tcAbsPTS);
