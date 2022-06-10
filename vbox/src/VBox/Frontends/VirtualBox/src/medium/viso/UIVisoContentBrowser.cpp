@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 77308 2019-02-14 10:39:39Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.cpp 77321 2019-02-14 19:56:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -585,8 +585,6 @@ void UIVisoContentBrowser::setTableRootIndex(QModelIndex index /* = QModelIndex 
         if (pItem)
         {
             QString strPath = pItem->data(UICustomFileSystemModelColumn_Path).toString();
-            if (strPath == QDir::fromNativeSeparators("/"))
-                strPath += m_strVisoName;
             updateLocationSelectorText(strPath);
         }
     }
