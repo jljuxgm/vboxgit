@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.cpp 75441 2018-11-14 09:08:51Z vboxsync $ */
+/* $Id: RecordingScreenSettingsImpl.cpp 75489 2018-11-15 16:25:42Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Recording settings of one virtual screen.
@@ -716,19 +716,19 @@ HRESULT RecordingScreenSettings::setVideoRate(ULONG aVideoRate)
     return S_OK;
 }
 
-HRESULT RecordingScreenSettings::getVideoRateControlMode(RecordVideoRateControlMode_T *aMode)
+HRESULT RecordingScreenSettings::getVideoRateControlMode(RecordingVideoRateControlMode_T *aMode)
 {
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    *aMode = RecordVideoRateControlMode_CBR; /** @todo Implement VBR. */
+    *aMode = RecordingVideoRateControlMode_CBR; /** @todo Implement VBR. */
 
     return S_OK;
 }
 
-HRESULT RecordingScreenSettings::setVideoRateControlMode(RecordVideoRateControlMode_T aMode)
+HRESULT RecordingScreenSettings::setVideoRateControlMode(RecordingVideoRateControlMode_T aMode)
 {
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
