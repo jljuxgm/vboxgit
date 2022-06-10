@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78091 2019-04-10 14:22:43Z vboxsync $
+# $Id: Makefile.kmk 78096 2019-04-10 15:34:29Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1847,7 +1847,6 @@ endif
 RuntimeBldProg_SOURCES.darwin = $(filter-out \
 	generic/cdrom-generic.cpp \
 	generic/RTFileMove-generic.cpp \
-	generic/RTPathGetCurrentOnDrive-generic.cpp \
 	generic/RTProcDaemonize-generic.cpp \
 	generic/RTThreadGetAffinity-stub-generic.cpp \
 	generic/RTThreadSetAffinity-stub-generic.cpp \
