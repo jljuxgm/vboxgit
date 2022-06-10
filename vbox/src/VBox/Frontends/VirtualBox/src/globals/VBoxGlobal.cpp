@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 77217 2019-02-08 13:32:34Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 77238 2019-02-10 13:48:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -430,6 +430,28 @@ QString VBoxGlobal::brandingGetKey(QString strKey)
 {
     QSettings settings(m_strBrandingConfigFilePath, QSettings::IniFormat);
     return settings.value(QString("%1").arg(strKey)).toString();
+}
+
+/*static */
+QString VBoxGlobal::findUniqueFileName(const QString &strFullFolderPath, const QString &strBaseFileName)
+{
+    QDir folder(strFullFolderPath);
+    if (!folder.exists())
+        return strBaseFileName;
+    QFileInfoList folderContent = folder.entryInfoList();
+    QSet<QString> fileNameSet;
+    foreach (const QFileInfo &fileInfo, folderContent)
+    {
+        /* Remove the extension : */
+        fileNameSet.insert(fileInfo.baseName());
+    }
+    int iSuffix = 0;
+    QString strNewName(strBaseFileName);
+    while (fileNameSet.contains(strNewName))
+    {
+        strNewName = strBaseFileName + QString("_") + QString::number(++iSuffix);
+    }
+    return strNewName;
 }
 
 /* static */
@@ -2792,13 +2814,14 @@ int VBoxGlobal::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType  e
 }
 
 QUuid VBoxGlobal::createHDWithNewHDWizard(QWidget *pParent, const QString &strMachineGuestOSTypeId,
+                                          const QString &strMachineName,
                                           const QString &strMachineFolder)
 {
     /* Initialize variables: */
     const CGuestOSType comGuestOSType = virtualBox().GetGuestOSType(strMachineGuestOSTypeId);
-    const QFileInfo fileInfo(strMachineFolder);
+    QString strDiskName = findUniqueFileName(strMachineFolder, strMachineName);
     /* Show New VD wizard: */
-    UISafePointerWizardNewVD pWizard = new UIWizardNewVD(pParent, QString(), fileInfo.absolutePath(), comGuestOSType.GetRecommendedHDD());
+    UISafePointerWizardNewVD pWizard = new UIWizardNewVD(pParent, strDiskName, strMachineFolder, comGuestOSType.GetRecommendedHDD());
 
     if (!pWizard)
         return QUuid();

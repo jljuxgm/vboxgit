@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 77217 2019-02-08 13:32:34Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 77238 2019-02-10 13:48:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3081,7 +3081,8 @@ void UIMachineSettingsStorage::sltPrepareOpenMediumMenu()
 
 void UIMachineSettingsStorage::sltCreateNewHardDisk()
 {
-    const QUuid uMediumId = vboxGlobal().createHDWithNewHDWizard(this, m_strMachineGuestOSTypeId, m_strMachineSettingsFilePath);
+    const QUuid uMediumId = vboxGlobal().createHDWithNewHDWizard(this, m_strMachineGuestOSTypeId,
+                                                                 m_strMachineName, m_strMachineSettingsFilePath);
 
     if (!uMediumId.isNull())
         m_pMediumIdHolder->setId(uMediumId);

@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 77216 2019-02-08 12:25:37Z vboxsync $ */
+/* $Id: UIFDCreationDialog.cpp 77238 2019-02-10 13:48:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -162,7 +162,9 @@ QString UIFDCreationDialog::getDefaultFolder() const
     if (strInitialPath.isEmpty())
         return strInitialPath;
 
-    strInitialPath = QDir(strInitialPath).absoluteFilePath(m_strMachineName + "." + strPreferredExtension);
+    QString strDiskname = VBoxGlobal::findUniqueFileName(m_strMachineFolder, m_strMachineName);
+
+    strInitialPath = QDir(strInitialPath).absoluteFilePath(strDiskname + "." + strPreferredExtension);
     return strInitialPath;
 }
 

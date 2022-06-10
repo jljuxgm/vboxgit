@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 77217 2019-02-08 13:32:34Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 77238 2019-02-10 13:48:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -448,7 +448,7 @@ void UIMediumSelector::sltCreateMedium()
     if (m_enmMediumType == UIMediumDeviceType_Floppy)
         uMediumId = vboxGlobal().showCreateFloppyDiskDialog(this, m_strMachineName, m_strMachineFolder);
     else if (m_enmMediumType == UIMediumDeviceType_HardDisk)
-        uMediumId = vboxGlobal().createHDWithNewHDWizard(this, m_strMachineGuestOSTypeId, m_strMachineFolder);
+        uMediumId = vboxGlobal().createHDWithNewHDWizard(this, m_strMachineGuestOSTypeId, m_strMachineName, m_strMachineFolder);
     else if (m_enmMediumType == UIMediumDeviceType_DVD)
         uMediumId = vboxGlobal().createVisoMediumWithVisoCreator(this, m_strMachineName, m_strMachineFolder);
 
