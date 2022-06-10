@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 77189 2019-02-06 20:47:57Z vboxsync $ */
+/* $Id: UIMediumSelector.h 77216 2019-02-08 12:25:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -119,6 +119,7 @@ private slots:
     void          saveDefaultForeground();
     void          selectMedium(const QUuid &uMediumID);
     void          scrollToItem(UIMediumItem* pItem);
+    void          setTitle();
     QWidget              *m_pCentralWidget;
     QVBoxLayout          *m_pMainLayout;
     QITreeWidget         *m_pTreeWidget;

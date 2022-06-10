@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 76882 2019-01-18 10:30:19Z vboxsync $ */
+/* $Id: UIFDCreationDialog.cpp 77216 2019-02-08 12:25:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -62,7 +62,7 @@ UIFDCreationDialog::UIFDCreationDialog(QWidget *pParent /* = 0 */,
 
 void UIFDCreationDialog::retranslateUi()
 {
-    setWindowTitle(tr("Create a Floppy Disk"));
+    setWindowTitle(QString("%1 - %2").arg(m_strMachineName).arg(tr("Floppy Disk Creator")));
     if (m_pPathLabel)
         m_pPathLabel->setText(tr("File Path:"));
     if (m_pSizeLabel)
