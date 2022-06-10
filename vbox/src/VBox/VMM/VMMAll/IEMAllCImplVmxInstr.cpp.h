@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74469 2018-09-26 06:46:28Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74470 2018-09-26 06:47:57Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3368,6 +3368,9 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexit(PVMCPU pVCpu, uint32_t uExitReason)
 
 /**
  * VMX VM-exit handler for VM-exits due to instruction execution.
+ *
+ * The instructions covered here have a ModR/M byte and update the VM-exit
+ * instruction info. field.
  *
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   uExitReason     The VM-exit reason.
