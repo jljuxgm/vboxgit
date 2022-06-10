@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 72679 2018-06-25 14:51:05Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 72680 2018-06-25 15:17:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1800,8 +1800,6 @@ bool VBoxGlobal::activateWindow(WId wId, bool fSwitchDesktop /* = true */)
     return fResult;
 }
 
-#if defined(VBOX_WS_X11)
-
 /* static */
 void VBoxGlobal::setCursor(QWidget *pWidget, const QCursor &cursor)
 {
@@ -1854,6 +1852,7 @@ void VBoxGlobal::setCursor(QGraphicsWidget *pWidget, const QCursor &cursor)
 #endif
 }
 
+#if defined(VBOX_WS_X11)
 
 /* static */
 bool VBoxGlobal::supportsFullScreenMonitorsProtocolX11()
