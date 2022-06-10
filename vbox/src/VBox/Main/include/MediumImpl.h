@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 74353 2018-09-18 21:51:33Z vboxsync $ */
+/* $Id: MediumImpl.h 75373 2018-11-09 18:12:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -201,6 +201,11 @@ public:
                       bool aWait);
     void i_cancelMergeTo(MediumLockList *aChildrenToReparent,
                        MediumLockList *aMediumLockList);
+
+    HRESULT i_resize(LONG64 aLogicalSize,
+                     MediumLockList *aMediumLockList,
+                     ComObjPtr<Progress> *aProgress,
+                     bool aWait);
 
     HRESULT i_fixParentUuidOfChildren(MediumLockList *pChildrenToReparent);
 
