@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerDialog.cpp 75247 2018-11-05 09:53:07Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerDialog.cpp 75268 2018-11-06 10:10:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManagerDialog class implementation.
  */
@@ -69,6 +69,12 @@ UIGuestControlFileManagerDialog::UIGuestControlFileManagerDialog(QWidget *pCente
     , m_comGuest(comGuest)
     , m_strMachineName(strMachineName)
 {
+}
+
+void UIGuestControlFileManagerDialog::prepare()
+{
+    QIManagerDialog::prepare();
+    manageEscapeShortCut();
 }
 
 void UIGuestControlFileManagerDialog::retranslateUi()
@@ -156,4 +162,12 @@ void UIGuestControlFileManagerDialog::sltSetCloseButtonShortCut(QKeySequence sho
 {
     if (button(ButtonType_Close))
         button(ButtonType_Close)->setShortcut(shortcut);
+}
+
+void UIGuestControlFileManagerDialog::manageEscapeShortCut()
+{
+    UIGuestControlFileManager *pWidget = qobject_cast<UIGuestControlFileManager*>(widget());
+    if (!pWidget)
+        return;
+    pWidget->manageEscapeShortCut();
 }

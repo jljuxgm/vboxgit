@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 75246 2018-11-05 09:36:29Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 75268 2018-11-06 10:10:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -67,6 +67,7 @@ public:
     bool bAskDeleteConfirmation;
 
 private:
+
     UIGuestControlFileManagerSettings();
     ~UIGuestControlFileManagerSettings();
 
@@ -169,6 +170,7 @@ private:
     UIGuestControlFileManagerSessionPanel          *m_pSessionPanel;
     friend class UIGuestControlFileManagerSettingsPanel;
     friend class UIGuestControlFileManagerPanel;
+    friend class UIGuestControlFileManagerDialog;
 };
 
 #endif /* !___UIGuestControlFileManager_h___ */

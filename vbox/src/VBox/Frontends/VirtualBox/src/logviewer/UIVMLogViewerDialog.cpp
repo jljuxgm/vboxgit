@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 75092 2018-10-26 11:50:59Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 75268 2018-11-06 10:10:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -71,6 +71,12 @@ UIVMLogViewerDialog::UIVMLogViewerDialog(QWidget *pCenterWidget, UIActionPool *p
     , m_pActionPool(pActionPool)
     , m_comMachine(comMachine)
 {
+}
+
+void UIVMLogViewerDialog::prepare()
+{
+    QIManagerDialog::prepare();
+    manageEscapeShortCut();
 }
 
 void UIVMLogViewerDialog::retranslateUi()
@@ -172,4 +178,12 @@ void UIVMLogViewerDialog::sltSetCloseButtonShortCut(QKeySequence shortcut)
 {
     if (button(ButtonType_Close))
         button(ButtonType_Close)->setShortcut(shortcut);
+}
+
+void UIVMLogViewerDialog::manageEscapeShortCut()
+{
+    UIVMLogViewerWidget *pWidget = qobject_cast<UIVMLogViewerWidget*>(widget());
+    if (!pWidget)
+        return;
+    pWidget->manageEscapeShortCut();
 }

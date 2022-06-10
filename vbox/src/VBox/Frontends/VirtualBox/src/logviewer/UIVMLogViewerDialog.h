@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.h 73694 2018-08-15 15:07:32Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.h 75268 2018-11-06 10:10:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class declaration.
  */
@@ -77,6 +77,7 @@ public:
 
 protected:
 
+    virtual void prepare() /* override */;
     /** @name Event-handling stuff.
       * @{ */
         /** Handles translation event. */
@@ -111,6 +112,7 @@ private slots:
 
 private:
 
+    void manageEscapeShortCut();
     /** Holds the action-pool reference. */
     UIActionPool *m_pActionPool;
     /** Holds the machine reference. */
