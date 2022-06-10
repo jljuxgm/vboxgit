@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 73752 2018-08-18 04:04:56Z vboxsync $ */
+/* $Id: IEMAll.cpp 73756 2018-08-18 05:13:26Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -15575,6 +15575,32 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedVmptrst(PVMCPU pVCpu, uint8_t cbInstr, 
     iemInitExec(pVCpu, false /*fBypassHandlers*/);
     PCVMXEXITINSTRINFO pExitInstrInfo = (PCVMXEXITINSTRINFO)&uExitInstrInfo;
     VBOXSTRICTRC rcStrict = iemVmxVmptrst(pVCpu, cbInstr, GCPtrVmcs, pExitInstrInfo, GCPtrDisp);
+    if (pVCpu->iem.s.cActiveMappings)
+        iemMemRollback(pVCpu);
+    return iemExecStatusCodeFiddling(pVCpu, rcStrict);
+}
+
+
+/**
+ * Interface for HM and EM to emulate the VMCLEAR instruction.
+ *
+ * @returns Strict VBox status code.
+ * @param   pVCpu           The cross context virtual CPU structure of the calling EMT.
+ * @param   cbInstr         The instruction length in bytes.
+ * @param   GCPtrVmxon      The linear address of the VMCS pointer.
+ * @param   uExitInstrInfo  The VM-exit instruction information field.
+ * @param   GCPtrDisp       The displacement field for @a GCPtrVmcs if any.
+ * @thread  EMT(pVCpu)
+ */
+VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedVmclear(PVMCPU pVCpu, uint8_t cbInstr, RTGCPHYS GCPtrVmcs, uint32_t uExitInstrInfo,
+                                                 RTGCPTR GCPtrDisp)
+{
+    IEMEXEC_ASSERT_INSTR_LEN_RETURN(cbInstr, 3);
+    IEM_CTX_ASSERT(pVCpu, CPUMCTX_EXTRN_HWVIRT);
+
+    iemInitExec(pVCpu, false /*fBypassHandlers*/);
+    PCVMXEXITINSTRINFO pExitInstrInfo = (PCVMXEXITINSTRINFO)&uExitInstrInfo;
+    VBOXSTRICTRC rcStrict = iemVmxVmclear(pVCpu, cbInstr, GCPtrVmcs, pExitInstrInfo, GCPtrDisp);
     if (pVCpu->iem.s.cActiveMappings)
         iemMemRollback(pVCpu);
     return iemExecStatusCodeFiddling(pVCpu, rcStrict);
