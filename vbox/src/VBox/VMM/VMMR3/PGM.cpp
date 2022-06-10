@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: PGM.cpp 76993 2019-01-25 14:34:46Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2180,7 +2180,7 @@ VMMR3_INT_DECL(void) PGMR3Reset(PVM pVM)
             pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_UPDATE_PAGE_BIT_VIRTUAL;
             VMCPU_FF_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3);
             pgmR3RefreshShadowModeAfterA20Change(pVCpu);
-            HMFlushTLB(pVCpu);
+            HMFlushTlb(pVCpu);
 #endif
         }
     }

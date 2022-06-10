@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HMR0.cpp 76993 2019-01-25 14:34:46Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1175,7 +1175,7 @@ VMMR0_INT_DECL(int) HMR0InitVM(PVM pVM)
         pVM->hm.s.vmx.u64HostCr4            = g_HmR0.hwvirt.u.vmx.u64HostCr4;
         pVM->hm.s.vmx.u64HostEfer           = g_HmR0.hwvirt.u.vmx.u64HostEfer;
         pVM->hm.s.vmx.u64HostSmmMonitorCtl  = g_HmR0.hwvirt.u.vmx.u64HostSmmMonitorCtl;
-        HMVmxGetVmxMsrsFromHwvirtMsrs(&g_HmR0.hwvirt.Msrs, &pVM->hm.s.vmx.Msrs);
+        HMGetVmxMsrsFromHwvirtMsrs(&g_HmR0.hwvirt.Msrs, &pVM->hm.s.vmx.Msrs);
     }
     else if (pVM->hm.s.svm.fSupported)
     {
