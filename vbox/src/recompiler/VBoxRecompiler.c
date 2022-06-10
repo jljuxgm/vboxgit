@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 74791 2018-10-12 10:44:17Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 74798 2018-10-12 12:25:41Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1165,8 +1165,8 @@ static int remR3RunLoggingStep(PVM pVM, PVMCPU pVCpu)
                 if (   !VM_FF_IS_ANY_SET(pVM, VM_FF_ALL_REM_MASK)
                     && !VMCPU_FF_IS_ANY_SET(pVCpu, VMCPU_FF_ALL_REM_MASK))
                     continue;
-                RTLogPrintf("remR3RunLoggingStep: rc=VINF_SUCCESS w/ FFs (%#x/%#x)\n",
-                            pVM->fGlobalForcedActions, pVCpu->fLocalForcedActions);
+                RTLogPrintf("remR3RunLoggingStep: rc=VINF_SUCCESS w/ FFs (%#x/%#RX64)\n",
+                            pVM->fGlobalForcedActions, (uint64_t)pVCpu->fLocalForcedActions);
                 rc = VINF_SUCCESS;
                 break;
 
@@ -1199,8 +1199,8 @@ static int remR3RunLoggingStep(PVM pVM, PVMCPU pVCpu)
                         && !VMCPU_FF_IS_ANY_SET(pVCpu, VMCPU_FF_ALL_REM_MASK))
                         continue;
 
-                    RTLogPrintf("remR3RunLoggingStep: rc=VINF_SUCCESS w/ FFs (%#x/%#x)\n",
-                                pVM->fGlobalForcedActions, pVCpu->fLocalForcedActions);
+                    RTLogPrintf("remR3RunLoggingStep: rc=VINF_SUCCESS w/ FFs (%#x/%#RX64)\n",
+                                pVM->fGlobalForcedActions, (uint64_t)pVCpu->fLocalForcedActions);
                     rc = VINF_SUCCESS;
                 }
 #endif

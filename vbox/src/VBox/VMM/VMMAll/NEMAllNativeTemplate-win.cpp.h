@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 74791 2018-10-12 10:44:17Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 74798 2018-10-12 12:25:41Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -4308,8 +4308,8 @@ NEM_TMPL_STATIC VBOXSTRICTRC nemHCWinRunGC(PVM pVM, PVMCPU pVCpu, PGVM pGVM, PGV
 
                 /** @todo Try handle pending flags, not just return to EM loops.  Take care
                  *        not to set important RCs here unless we've handled a message. */
-                LogFlow(("NEM/%u: breaking: pending FF (%#x / %#x)\n",
-                         pVCpu->idCpu, pVM->fGlobalForcedActions, pVCpu->fLocalForcedActions));
+                LogFlow(("NEM/%u: breaking: pending FF (%#x / %#RX64)\n",
+                         pVCpu->idCpu, pVM->fGlobalForcedActions, (uint64_t)pVCpu->fLocalForcedActions));
                 STAM_REL_COUNTER_INC(&pVCpu->nem.s.StatBreakOnFFPost);
             }
             else

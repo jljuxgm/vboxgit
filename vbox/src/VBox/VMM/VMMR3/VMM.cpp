@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 74790 2018-10-12 10:42:58Z vboxsync $ */
+/* $Id: VMM.cpp 74798 2018-10-12 12:25:41Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -3102,8 +3102,8 @@ static DECLCALLBACK(void) vmmR3InfoFF(PVM pVM, PCDBGFINFOHLP pHlp, const char *p
      */
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
-        const uint32_t fLocalForcedActions = pVM->aCpus[i].fLocalForcedActions;
-        pHlp->pfnPrintf(pHlp, "CPU %u FFs: %#RX32", i, fLocalForcedActions);
+        const uint64_t fLocalForcedActions = pVM->aCpus[i].fLocalForcedActions;
+        pHlp->pfnPrintf(pHlp, "CPU %u FFs: %#RX64", i, fLocalForcedActions);
 
         /* show the flag mnemonics */
         c = 0;
@@ -3138,7 +3138,7 @@ static DECLCALLBACK(void) vmmR3InfoFF(PVM pVM, PCDBGFINFOHLP pHlp, const char *p
         PRINT_FLAG(VMCPU_FF_,CPUM);
 #endif
         if (f)
-            pHlp->pfnPrintf(pHlp, "%s\n    Unknown bits: %#RX32\n", c ? "," : "", f);
+            pHlp->pfnPrintf(pHlp, "%s\n    Unknown bits: %#RX64\n", c ? "," : "", f);
         else
             pHlp->pfnPrintf(pHlp, "\n");
 
