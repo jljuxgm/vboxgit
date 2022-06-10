@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 72088 2018-05-03 12:48:34Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 74734 2018-10-10 11:47:54Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1117,6 +1117,7 @@ public:
     /** Signals a wait event without letting public guest events know,
      *  extended director's cut version. */
     int signalWaitEventInternalEx(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, int rc, int guestRc, const GuestWaitEventPayload *pPayload);
+
 public:
 
     int baseInit(void);
@@ -1128,6 +1129,10 @@ public:
     int registerWaitEventEx(uint32_t uSessionID, uint32_t uObjectID, const GuestEventTypes &lstEvents, GuestWaitEvent **ppEvent);
     int unregisterWaitEvent(GuestWaitEvent *pEvent);
     int waitForEvent(GuestWaitEvent *pEvent, uint32_t uTimeoutMS, VBoxEventType_T *pType, IEvent **ppEvent);
+
+public:
+
+    static FsObjType_T fileModeToFsObjType(RTFMODE fMode);
 
 protected:
 
