@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsButton.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIGraphicsButton.h 76983 2019-01-25 10:36:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsButton class declaration.
  */
@@ -50,6 +50,11 @@ public:
     /* API: Parent stuff: */
     void setParentSelected(bool fParentSelected);
 
+    /** Defines icon scale @a dIndex. */
+    void setIconScaleIndex(double dIndex);
+    /** Returns icon scale index. */
+    double iconScaleIndex() const;
+
 protected:
 
     /* Data enumerator: */
@@ -81,6 +86,9 @@ private:
     /* Variables: */
     QIcon m_icon;
     bool m_fParentSelected;
+
+    /** Holds the icon scale index. */
+    double  m_dIconScaleIndex;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_graphics_UIGraphicsButton_h */
