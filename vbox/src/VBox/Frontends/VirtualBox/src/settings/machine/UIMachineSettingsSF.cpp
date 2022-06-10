@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 75744 2018-11-26 17:13:12Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 76175 2018-12-12 12:15:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -186,7 +186,7 @@ protected:
     virtual QString defaultText() const /* override */
     {
         return parentItem()
-             ? tr("%1, %2: %3, %4: %5, %6: %7, %8: %9",
+             ? UIMachineSettingsSF::tr("%1, %2: %3, %4: %5, %6: %7, %8: %9",
                   "col.1 text, col.2 name: col.2 text, col.3 name: col.3 text, col.4 name: col.4 text, col.5 name: col.5 text")
                   .arg(text(0))
                   .arg(parentTree()->headerItem()->text(1)).arg(text(1))
