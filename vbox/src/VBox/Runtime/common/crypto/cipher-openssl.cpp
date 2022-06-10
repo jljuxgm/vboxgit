@@ -1,4 +1,4 @@
-/* $Id: cipher-openssl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: cipher-openssl.cpp 78183 2019-04-17 19:55:14Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Symmetric Cipher using OpenSSL.
  */
@@ -234,7 +234,7 @@ RTDECL(int) RTCrCipherEncrypt(RTCRCIPHER hCipher, void const *pvKey, size_t cbKe
             {
                 Assert(cbEncrypted1 <= (ssize_t)cbNeeded);
                 int cbEncrypted2 = 0;
-                rcOssl = EVP_DecryptFinal(pCipherCtx, (unsigned char *)pvEncrypted + cbEncrypted1, &cbEncrypted2);
+                rcOssl = EVP_EncryptFinal(pCipherCtx, (unsigned char *)pvEncrypted + cbEncrypted1, &cbEncrypted2);
                 if (rcOssl > 0)
                 {
                     Assert(cbEncrypted1 + cbEncrypted2 == (ssize_t)cbNeeded);
