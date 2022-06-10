@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 75235 2018-11-02 21:01:36Z vboxsync $ */
+/* $Id: dbgmod.h 75237 2018-11-02 21:12:17Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -687,6 +687,7 @@ extern DECLHIDDEN(RTSTRCACHE)           g_hDbgModStrCache;
 extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgCodeView;
 extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgDwarf;
 extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgNm;
+extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgMapSym;
 #ifdef RT_OS_WINDOWS
 extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgDbgHelp;
 #endif
