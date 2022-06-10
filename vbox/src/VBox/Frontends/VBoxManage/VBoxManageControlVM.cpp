@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 75365 2018-11-09 13:55:30Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1854,7 +1854,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
             RTFileClose(pngFile);
         }
 #ifdef VBOX_WITH_RECORDING
-        else if (!strcmp(a->argv[1], "record"))
+        else if (!strcmp(a->argv[1], "recording"))
         {
             if (a->argc < 3)
             {
