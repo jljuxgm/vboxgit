@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 77243 2019-02-10 22:44:00Z vboxsync $ */
+/* $Id: vbsf.cpp 77246 2019-02-10 23:48:54Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -1040,7 +1040,7 @@ static int vbsfPagesToSgBuf(VBOXHGCMSVCPARMPAGES const *pPages, uint32_t cbLeft,
             /* Current page. */
             void *pvSeg;
             paSegs[iSeg].pvSeg = pvSeg = pPages->papvPages[iPage];
-            size_t cbSeg = PAGE_SIZE - ((uintptr_t)pvSeg & PAGE_OFFSET_MASK);
+            uint32_t cbSeg = PAGE_SIZE - (uint32_t)((uintptr_t)pvSeg & PAGE_OFFSET_MASK);
             iPage++;
 
             /* Adjacent to the next page? */
