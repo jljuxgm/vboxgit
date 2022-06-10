@@ -1,4 +1,4 @@
-/* $Id: init.cpp 71282 2018-03-09 11:19:39Z vboxsync $ */
+/* $Id: init.cpp 72863 2018-07-04 10:13:40Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -106,16 +106,6 @@ static char **              g_papszrtOrgArgs;
  * Program start nanosecond TS.
  */
 DECLHIDDEN(uint64_t)        g_u64ProgramStartNanoTS;
-
-/**
- * Program start microsecond TS.
- */
-DECLHIDDEN(uint64_t)        g_u64ProgramStartMicroTS;
-
-/**
- * Program start millisecond TS.
- */
-DECLHIDDEN(uint64_t)        g_u64ProgramStartMilliTS;
 
 /**
  * The process identifier of the running process.
@@ -469,12 +459,10 @@ static int rtR3InitBody(uint32_t fFlags, int cArgs, char ***ppapszArgs, const ch
 #endif
 
     /*
-     * Init the program start TSes.
+     * Init the program start timestamp TS.
      * Do that here to be sure that the GIP time was properly updated the 1st time.
      */
     g_u64ProgramStartNanoTS = RTTimeNanoTS();
-    g_u64ProgramStartMicroTS = g_u64ProgramStartNanoTS / 1000;
-    g_u64ProgramStartMilliTS = g_u64ProgramStartNanoTS / 1000000;
 
     /*
      * The remainder cannot easily be undone, so it has to go last.

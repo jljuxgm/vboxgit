@@ -1,4 +1,4 @@
-/* $Id: time.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: time.h 72863 2018-07-04 10:13:40Z vboxsync $ */
 /** @file
  * IPRT - Internal RTTime header
  */
@@ -34,8 +34,6 @@ RT_C_DECLS_BEGIN
 #if defined(IN_RING3) || defined(IN_RC)
 
 extern DECLHIDDEN(uint64_t) g_u64ProgramStartNanoTS;
-extern DECLHIDDEN(uint64_t) g_u64ProgramStartMicroTS;
-extern DECLHIDDEN(uint64_t) g_u64ProgramStartMilliTS;
 
 #endif
 

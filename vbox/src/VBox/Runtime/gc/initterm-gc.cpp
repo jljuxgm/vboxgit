@@ -1,4 +1,4 @@
-/* $Id: initterm-gc.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: initterm-gc.cpp 72863 2018-07-04 10:13:40Z vboxsync $ */
 /** @file
  * IPRT - Init Raw-mode Context.
  */
@@ -47,16 +47,6 @@
  */
 uint64_t    g_u64ProgramStartNanoTS;
 
-/**
- * Program start microsecond TS.
- */
-uint64_t    g_u64ProgramStartMicroTS;
-
-/**
- * Program start millisecond TS.
- */
-uint64_t    g_u64ProgramStartMilliTS;
-
 
 /**
  * Initializes the raw-mode context runtime library.
@@ -71,8 +61,6 @@ RTRCDECL(int) RTRCInit(uint64_t u64ProgramStartNanoTS)
      * Init the program start TSes.
      */
     g_u64ProgramStartNanoTS = u64ProgramStartNanoTS;
-    g_u64ProgramStartMicroTS = u64ProgramStartNanoTS / 1000;
-    g_u64ProgramStartMilliTS = u64ProgramStartNanoTS / 1000000;
 
     LogFlow(("RTGCInit: returns VINF_SUCCESS\n"));
     return VINF_SUCCESS;
