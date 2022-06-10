@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 74569 2018-10-02 06:37:23Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 74571 2018-10-02 06:58:07Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -6769,6 +6769,17 @@ IEM_CIMPL_DEF_1(iemCImpl_monitor, uint8_t, iEffSeg)
     {
         Log2(("monitor: Not in CPUID\n"));
         return iemRaiseUndefinedOpcode(pVCpu);
+    }
+
+    /*
+     * Check VMX guest-intercept.
+     * This should be considered a fault-like VM-exit.
+     * See Intel spec. 25.1.1 "Relative Priority of Faults and VM Exits".
+     */
+    if (IEM_VMX_IS_PROCCTLS_SET(pVCpu, VMX_PROC_CTLS_MONITOR_EXIT))
+    {
+        Log2(("monitor: Guest intercept -> #VMEXIT\n"));
+        IEM_VMX_VMEXIT_INSTR_RET(pVCpu, VMX_EXIT_MONITOR, cbInstr);
     }
 
     /*
