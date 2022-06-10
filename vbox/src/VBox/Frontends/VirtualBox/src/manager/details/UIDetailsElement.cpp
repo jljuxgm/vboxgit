@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 75427 2018-11-13 16:39:09Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 75530 2018-11-16 18:07:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -247,11 +247,6 @@ void UIDetailsElement::paint(QPainter *pPainter, const QStyleOptionGraphicsItem 
 QString UIDetailsElement::description() const
 {
     return tr("%1 details", "like 'General details' or 'Storage details'").arg(m_strName);
-}
-
-QStringList UIDetailsElement::extraDataOptions() const
-{
-    return gEDataManager->vboxManagerDetailsPaneElementOptions(elementType());
 }
 
 const CMachine &UIDetailsElement::machine()

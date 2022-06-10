@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 75427 2018-11-13 16:39:09Z vboxsync $ */
+/* $Id: UIDetailsElement.h 75530 2018-11-16 18:07:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -154,9 +154,6 @@ protected:
 
         /** Returns the description of the item. */
         virtual QString description() const /* override */;
-
-        /** Returns extra-data options. */
-        QStringList extraDataOptions() const;
 
         /** Returns cached machine reference. */
         const CMachine &machine();
