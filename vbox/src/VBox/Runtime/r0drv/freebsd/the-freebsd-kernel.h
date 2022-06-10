@@ -1,4 +1,4 @@
-/* $Id: the-freebsd-kernel.h 77129 2019-02-01 16:33:23Z vboxsync $ */
+/* $Id: the-freebsd-kernel.h 77131 2019-02-01 17:29:01Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The FreeBSD Kernel Headers.
  */
@@ -134,6 +134,12 @@
 #if __FreeBSD_version < 1000030
 # define VM_OBJECT_WLOCK(a_pObject) VM_OBJECT_LOCK((a_pObject))
 # define VM_OBJECT_WUNLOCK(a_pObject) VM_OBJECT_UNLOCK((a_pObject))
+#endif
+
+#if __FreeBSD_version >= 1100077
+# define MY_LIM_MAX_PROC(a_pProc, a_Limit) lim_max_proc((a_pProc), (a_Limit))
+#else
+# define MY_LIM_MAX_PROC(a_pProc, a_Limit) lim_max((a_pProc), (a_Limit))
 #endif
 
 /**
