@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 73941 2018-08-29 08:56:02Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 74411 2018-09-21 15:36:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -479,7 +479,7 @@ HRESULT GuestDnDTarget::drop(ULONG aScreenId, ULONG aX, ULONG aY,
     DnDAction_T resAction    = DnDAction_Ignore;
 
     /* Check & convert the drag & drop actions to HGCM codes. */
-    uint32_t uDefAction      = DND_IGNORE_ACTION;
+    uint32_t uDefAction      = VBOX_DND_ACTION_IGNORE;
     uint32_t uAllowedActions = 0;
     GuestDnD::toHGCMActions(aDefaultAction,  &uDefAction,
                             aAllowedActions, &uAllowedActions);

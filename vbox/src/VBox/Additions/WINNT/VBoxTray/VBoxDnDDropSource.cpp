@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropSource.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDnDDropSource.cpp 74411 2018-09-21 15:36:16Z vboxsync $ */
 /** @file
  * VBoxDnDSource.cpp - IDropSource implementation.
  */
@@ -36,7 +36,7 @@ VBoxDnDDropSource::VBoxDnDDropSource(VBoxDnDWnd *pParent)
     : mRefCount(1),
       mpWndParent(pParent),
       mdwCurEffect(0),
-      muCurAction(DND_IGNORE_ACTION)
+      muCurAction(VBOX_DND_ACTION_IGNORE)
 {
     LogFlowFuncEnter();
 }
@@ -104,7 +104,7 @@ STDMETHODIMP VBoxDnDDropSource::QueryContinueDrag(BOOL fEscapePressed, DWORD dwK
     if (fEscapePressed)
     {
         mdwCurEffect = 0;
-        muCurAction = DND_IGNORE_ACTION;
+        muCurAction = VBOX_DND_ACTION_IGNORE;
 
         LogFlowFunc(("Canceled\n"));
         return DRAGDROP_S_CANCEL;
@@ -129,7 +129,7 @@ STDMETHODIMP VBoxDnDDropSource::QueryContinueDrag(BOOL fEscapePressed, DWORD dwK
  */
 STDMETHODIMP VBoxDnDDropSource::GiveFeedback(DWORD dwEffect)
 {
-    uint32_t uAction = DND_IGNORE_ACTION;
+    uint32_t uAction = VBOX_DND_ACTION_IGNORE;
 
 #if 1
     LogFlowFunc(("dwEffect=0x%x\n", dwEffect));
@@ -137,11 +137,11 @@ STDMETHODIMP VBoxDnDDropSource::GiveFeedback(DWORD dwEffect)
     if (dwEffect)
     {
         if (dwEffect & DROPEFFECT_COPY)
-            uAction |= DND_COPY_ACTION;
+            uAction |= VBOX_DND_ACTION_COPY;
         if (dwEffect & DROPEFFECT_MOVE)
-            uAction |= DND_MOVE_ACTION;
+            uAction |= VBOX_DND_ACTION_MOVE;
         if (dwEffect & DROPEFFECT_LINK)
-            uAction |= DND_LINK_ACTION;
+            uAction |= VBOX_DND_ACTION_LINK;
     }
 
     mdwCurEffect = dwEffect;
