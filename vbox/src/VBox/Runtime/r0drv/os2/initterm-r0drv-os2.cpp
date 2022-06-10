@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-os2.cpp 76452 2018-12-25 01:41:25Z vboxsync $ */
+/* $Id: initterm-r0drv-os2.cpp 76714 2019-01-08 23:03:35Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, Ring-0 Driver, OS/2.
  */
@@ -27,8 +27,6 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-
-#define RT_STRICT
 
 
 /*********************************************************************************************************************************
