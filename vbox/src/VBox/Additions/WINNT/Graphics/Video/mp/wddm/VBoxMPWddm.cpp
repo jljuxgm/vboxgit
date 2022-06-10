@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 74521 2018-09-28 12:24:15Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 74671 2018-10-08 11:38:27Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -39,7 +39,11 @@
 
 #define VBOXWDDM_DUMMY_DMABUFFER_SIZE (sizeof(VBOXCMDVBVA_HDR) / 2)
 
+#ifdef DEBUG
+DWORD g_VBoxLogUm = VBOXWDDM_CFG_LOG_UM_BACKDOOR;
+#else
 DWORD g_VBoxLogUm = 0;
+#endif
 
 /* Whether the driver is display-only (no 3D) for Windows 8 or newer guests. */
 DWORD g_VBoxDisplayOnly = 0;
