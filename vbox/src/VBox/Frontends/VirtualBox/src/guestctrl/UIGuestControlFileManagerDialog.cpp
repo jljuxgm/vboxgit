@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerDialog.cpp 75272 2018-11-06 10:56:59Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerDialog.cpp 75273 2018-11-06 11:06:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManagerDialog class implementation.
  */
@@ -155,7 +155,6 @@ bool UIGuestControlFileManagerDialog::shouldBeMaximized() const
 
 void UIGuestControlFileManagerDialog::sltSetCloseButtonShortCut(QKeySequence shortcut)
 {
-    printf("%s\n", qPrintable(shortcut.toString()));
     if (button(ButtonType_Close))
         button(ButtonType_Close)->setShortcut(shortcut);
 }
