@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74399 2018-09-21 09:10:01Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74400 2018-09-21 09:15:17Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -5066,10 +5066,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexit(PVMCPU pVCpu, uint32_t uExitReason, uint32_
         if (RT_SUCCESS(rc))
         { /* likely */ }
         else
-        {
-            Log(("VM-Exit: Saving guest auto-store MSRs failed (rc=%Rrc) -> VMX-Abort\n", rc));
             return iemVmxAbort(pVCpu, VMXABORT_SAVE_GUEST_MSRS);
-        }
     }
 
     int rc = iemVmxVmexitLoadHostState(pVCpu);
