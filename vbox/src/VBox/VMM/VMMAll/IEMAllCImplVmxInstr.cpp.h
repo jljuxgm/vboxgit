@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74630 2018-10-05 16:54:25Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74632 2018-10-06 03:14:32Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -455,7 +455,6 @@ uint16_t const g_aoffVmcsMap[16][VMX_V_VMCS_MAX_INDEX + 1] =
         (a_pVCpu)->cpum.GstCtx.hwvirt.vmx.enmDiag = (a_VmxDiag); \
         return VERR_VMX_VMEXIT_FAILED; \
     } while (0)
-
 
 
 /**
