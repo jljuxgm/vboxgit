@@ -1,4 +1,4 @@
-/* $Id: fuzzclientcmd.cpp 77482 2019-02-27 13:17:24Z vboxsync $ */
+/* $Id: fuzzclientcmd.cpp 77509 2019-02-28 19:14:03Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, fuzzed client command.
  */
@@ -132,7 +132,7 @@ static RTEXITCODE rtFuzzCmdClientRun(PRTFUZZCMDCLIENT pThis)
                     rc = RTVfsIoStrmRead(pThis->hVfsStdIn, pvFuzzCtxState, cbFuzzCtxState, true /*fBlocking*/, NULL);
                     if (RT_SUCCESS(rc))
                     {
-                        rc = RTFuzzCtxCreateFromState(&pThis->hFuzzCtx, pvFuzzCtxState, cbFuzzCtxState);
+                        rc = RTFuzzCtxCreateFromStateMem(&pThis->hFuzzCtx, pvFuzzCtxState, cbFuzzCtxState);
                         if (RT_SUCCESS(rc))
                             rc = rtFuzzCmdClientMainloop(pThis);
                     }

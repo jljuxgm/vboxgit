@@ -1,4 +1,4 @@
-/* $Id: fuzzmastercmd.cpp 77482 2019-02-27 13:17:24Z vboxsync $ */
+/* $Id: fuzzmastercmd.cpp 77509 2019-02-28 19:14:03Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, master command.
  */
@@ -885,7 +885,7 @@ static int rtFuzzCmdMasterProcessJsonReqSaveState(PRTFUZZCMDMASTER pThis, RTJSON
 
             void *pvState = NULL;
             size_t cbState = 0;
-            rc = RTFuzzCtxStateExport(hFuzzCtx, &pvState, &cbState);
+            rc = RTFuzzCtxStateExportToMem(hFuzzCtx, &pvState, &cbState);
             if (RT_SUCCESS(rc))
             {
                 /* Encode to base64. */
