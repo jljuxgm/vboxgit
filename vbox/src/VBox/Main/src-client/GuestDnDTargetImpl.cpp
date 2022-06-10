@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 73940 2018-08-29 08:11:54Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 73941 2018-08-29 08:56:02Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -431,8 +431,13 @@ HRESULT GuestDnDTarget::leave(ULONG uScreenId)
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     HRESULT hr = S_OK;
-    int rc = GuestDnDInst()->hostCall(HOST_DND_HG_EVT_LEAVE,
-                                      0 /* cParms */, NULL /* paParms */);
+
+    GuestDnDMsg Msg;
+    Msg.setType(HOST_DND_HG_EVT_LEAVE);
+    if (mDataBase.m_uProtocolVersion >= 3)
+        Msg.setNextUInt32(0); /** @todo ContextID not used yet. */
+
+    int rc = GuestDnDInst()->hostCall(Msg.getType(), Msg.getCount(), Msg.getParms());
     if (RT_SUCCESS(rc))
     {
         GuestDnDResponse *pResp = GuestDnDInst()->response();
@@ -692,7 +697,13 @@ int GuestDnDTarget::i_cancelOperation(void)
 #endif
 
     LogFlowFunc(("Cancelling operation, telling guest ...\n"));
-    return GuestDnDInst()->hostCall(HOST_DND_HG_EVT_CANCEL, 0 /* cParms */, NULL /*paParms*/);
+
+    GuestDnDMsg Msg;
+    Msg.setType(HOST_DND_HG_EVT_CANCEL);
+    if (mDataBase.m_uProtocolVersion >= 3)
+        Msg.setNextUInt32(0); /** @todo ContextID not used yet. */
+
+    return GuestDnDInst()->hostCall(Msg.getType(), Msg.getCount(), Msg.getParms());
 }
 
 /* static */
