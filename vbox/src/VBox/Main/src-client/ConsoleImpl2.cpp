@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 76711 2019-01-08 16:14:36Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 76985 2019-01-25 11:42:07Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3822,7 +3822,10 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
         {
             InsertConfigInteger(pCfg, "VMSVGAEnabled", true);
             if (enmGraphicsController == GraphicsControllerType_VMSVGA)
+            {
+                InsertConfigInteger(pCfg, "VMSVGAPciBarLayout", true);
                 InsertConfigInteger(pCfg, "VMSVGAPciId", true);
+            }
 #ifdef VBOX_WITH_VMSVGA3D
             InsertConfigInteger(pCfg, "VMSVGA3dEnabled", f3DEnabled);
 #else

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 76951 2019-01-23 10:59:59Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 76985 2019-01-25 11:42:07Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -5021,7 +5021,7 @@ DECLCALLBACK(int) vmsvgaR3IORegionMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, ui
     Log(("vgasvgaR3IORegionMap: iRegion=%d GCPhysAddress=%RGp cb=%RGp enmType=%d\n", iRegion, GCPhysAddress, cb, enmType));
     if (enmType == PCI_ADDRESS_SPACE_IO)
     {
-        AssertReturn(iRegion == 0, VERR_INTERNAL_ERROR);
+        AssertReturn(iRegion == pThis->pciRegions.iIO, VERR_INTERNAL_ERROR);
         rc = PDMDevHlpIOPortRegister(pDevIns, (RTIOPORT)GCPhysAddress, cb, 0,
                                      vmsvgaIOWrite, vmsvgaIORead, NULL /* OutStr */, NULL /* InStr */, "VMSVGA");
         if (RT_FAILURE(rc))
@@ -5046,7 +5046,7 @@ DECLCALLBACK(int) vmsvgaR3IORegionMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, ui
     }
     else
     {
-        AssertReturn(iRegion == 2 && enmType == PCI_ADDRESS_SPACE_MEM, VERR_INTERNAL_ERROR);
+        AssertReturn(iRegion == pThis->pciRegions.iFIFO && enmType == PCI_ADDRESS_SPACE_MEM, VERR_INTERNAL_ERROR);
         if (GCPhysAddress != NIL_RTGCPHYS)
         {
             /*

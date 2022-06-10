@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: DevVGA.h 76985 2019-01-25 11:42:07Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -349,10 +349,20 @@ typedef struct VGAState {
     /* Whether the SVGA emulation is enabled or not. */
     bool                        fVMSVGAEnabled;
     bool                        fVMSVGAPciId;
-    bool                        Padding4[0+3];
+    bool                        fVMSVGAPciBarLayout;
+    bool                        Padding4[0+2];
 # else
     bool                        Padding4[1+4];
 # endif
+
+    struct {
+        uint32_t                    u32Padding1;
+        uint32_t                    iVRAM;
+# ifdef VBOX_WITH_VMSVGA
+        uint32_t                    iIO;
+        uint32_t                    iFIFO;
+# endif
+    } pciRegions;
 
     /** Physical access type for the linear frame buffer dirty page tracking. */
     PGMPHYSHANDLERTYPE          hLfbAccessHandlerType;
