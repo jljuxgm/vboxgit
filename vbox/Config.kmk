@@ -1,4 +1,4 @@
-# $Id: Config.kmk 75141 2018-10-29 11:41:54Z vboxsync $
+# $Id: Config.kmk 75172 2018-10-30 10:32:29Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -910,6 +910,8 @@ endif
 
 # Continue to support Vista w/o any service pack, at least for now.
 VBOX_WITH_VISTA_NO_SP = 1
+# Enable image verification on darwin @bugref{9232}.
+VBOX_WITH_DARWIN_R0_DARWIN_IMAGE_VERIFICATION = 1
 ## @}
 
 
@@ -7404,7 +7406,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75141 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75172 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
