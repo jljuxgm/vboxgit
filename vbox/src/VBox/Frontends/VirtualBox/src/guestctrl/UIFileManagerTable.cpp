@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 78146 2019-04-16 15:52:58Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 78147 2019-04-16 16:27:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -408,6 +408,10 @@ void UIFileManagerBreadCrumbs::setPath(const QString &strPath)
 
     const QChar separator('/');
     clear();
+
+    if (strPath.isEmpty())
+        return;
+
     QStringList folderList = UIPathOperations::pathTrail(strPath);
     folderList.push_front(separator);
 
