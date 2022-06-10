@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 75102 2018-10-26 14:50:02Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 75197 2018-10-31 02:03:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1577,6 +1577,7 @@ void UIVirtualBoxManager::prepareMenuMachine(QMenu *pMenu)
     /* Populate Machine-menu: */
     pMenu->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_New));
     pMenu->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Add));
+    pMenu->addSeparator();
     pMenu->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Settings));
     pMenu->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Clone));
     pMenu->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Move));
