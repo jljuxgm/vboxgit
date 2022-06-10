@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 75497 2018-11-15 23:30:55Z vboxsync $ */
+/* $Id: HGCM.cpp 75498 2018-11-16 00:03:41Z vboxsync $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -908,7 +908,7 @@ int HGCMService::instanceCreate(const char *pszServiceLibrary, const char *pszSe
     else
         RTStrCopy(szThreadName, sizeof(szThreadName), pszServiceName);
 
-    int rc = hgcmThreadCreate(&m_thread, szThreadName, hgcmServiceThread, this);
+    int rc = hgcmThreadCreate(&m_thread, szThreadName, hgcmServiceThread, this, pszServiceName, pUVM);
 
     if (RT_SUCCESS(rc))
     {
@@ -2680,7 +2680,7 @@ int HGCMHostInit(void)
          * Start main HGCM thread.
          */
 
-        rc = hgcmThreadCreate(&g_hgcmThread, "MainHGCMthread", hgcmThread, NULL);
+        rc = hgcmThreadCreate(&g_hgcmThread, "MainHGCMthread", hgcmThread, NULL /*pvUser*/, NULL /*pszStatsSubDir*/, NULL /*pUVM*/);
 
         if (RT_FAILURE(rc))
         {

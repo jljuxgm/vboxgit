@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 75336 2018-11-09 01:25:29Z vboxsync $ */
+/* $Id: vbsf.cpp 75498 2018-11-16 00:03:41Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -15,6 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_SHARED_FOLDERS
 #ifdef UNITTEST
 # include "testcase/tstSharedFolderService.h"
 #endif
@@ -43,7 +47,12 @@
 # include "teststubs.h"
 #endif
 
+
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
 #define SHFL_RT_LINK(pClient) ((pClient)->fu32Flags & SHFL_CF_SYMLINKS ? RTPATH_F_ON_LINK : RTPATH_F_FOLLOW_LINK)
+
 
 /**
  * @todo find a better solution for supporting the execute bit for non-windows

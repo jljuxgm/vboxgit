@@ -1,4 +1,4 @@
-/* $Id: HGCMThread.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HGCMThread.h 75498 2018-11-16 00:03:41Z vboxsync $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager worker threads header.
  */
@@ -128,10 +128,16 @@ void hgcmThreadUninit (void);
  * @param pszThreadName Name of the thread, needed by runtime.
  * @param pfnThread     The worker thread function.
  * @param pvUser        A pointer passed to worker thread.
+ * @param pszStatSubDir The "sub-directory" under "/HGCM/" where thread
+ *                      statistics should be registered.  The caller,
+ *                      HGCMService, will deregister them.  NULL if no stats.
+ * @param pUVM          The user mode VM handle to register statistics with.
+ *                      NULL if no stats.
  *
  * @return VBox error code
  */
-int hgcmThreadCreate (HGCMTHREADHANDLE *pHandle, const char *pszThreadName, PFNHGCMTHREAD pfnThread, void *pvUser);
+int hgcmThreadCreate (HGCMTHREADHANDLE *pHandle, const char *pszThreadName, PFNHGCMTHREAD pfnThread, void *pvUser,
+                      const char *pszStatsSubDir, PUVM pUVM);
 
 /** Wait for termination of a HGCM worker thread.
  *

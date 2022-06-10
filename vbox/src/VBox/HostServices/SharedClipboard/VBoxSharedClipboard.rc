@@ -1,6 +1,6 @@
-/* $Id: VBoxSharedClipboard.rc 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxSharedClipboard.rc 75498 2018-11-16 00:03:41Z vboxsync $ */
 /** @file
- * VBoxSharedClipboard - Resource file containing version info and icon.
+ * Shared Clipboard Service - Resource file containing version info and icon.
  */
 
 /*
