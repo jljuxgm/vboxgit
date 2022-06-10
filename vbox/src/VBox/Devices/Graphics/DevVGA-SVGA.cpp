@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 75939 2018-12-04 09:12:54Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 76171 2018-12-12 11:36:12Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -1220,7 +1220,7 @@ PDMBOTHCBDECL(int) vmsvgaReadPort(PVGASTATE pThis, uint32_t *pu32)
         /* We must return something sensible here otherwise the Linux driver
          * will take a legacy code path without 3d support.  This number also
          * limits how many screens Linux guests will allow. */
-        *pu32 = 32;
+        *pu32 = pThis->cMonitors;
         break;
 
     default:
