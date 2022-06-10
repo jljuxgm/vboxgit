@@ -1,4 +1,4 @@
-/* $Id: UITakeSnapshotDialog.h 72022 2018-04-25 15:36:39Z vboxsync $ */
+/* $Id: UITakeSnapshotDialog.h 72813 2018-07-03 09:41:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UITakeSnapshotDialog_h___
 #define ___UITakeSnapshotDialog_h___
+
+/* Qt includes: */
+#include <QIcon>
 
 /* GUI includes: */
 #include "QIDialog.h"
@@ -42,8 +45,8 @@ public:
       * @param  comMachine  Brings the machine to take snapshot for. */
     UITakeSnapshotDialog(QWidget *pParent, const CMachine &comMachine);
 
-    /** Defines snapshot @a pixmap. */
-    void setPixmap(const QPixmap &pixmap);
+    /** Defines snapshot @a icon. */
+    void setIcon(const QIcon &icon);
 
     /** Defines snapshot @a strName. */
     void setName(const QString &strName);
@@ -54,6 +57,9 @@ public:
     QString description() const;
 
 protected:
+
+    /** Handles any Qt @a pEvent. */
+    virtual bool event(QEvent *pEvent) /* override */;
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
@@ -70,8 +76,14 @@ private:
     /** Prepares contents. */
     void prepareContents();
 
+    /** Updates pixmap. */
+    void updatePixmap();
+
     /** Holds the wrapper of machine to take snapshot for. */
     const CMachine &m_comMachine;
+
+    /** Holds the snapshot icon. */
+    QIcon m_icon;
 
     /** Holds the amount of immutable attachments. */
     int  m_cImmutableMediums;
