@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.h 70878 2018-02-06 10:48:43Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 73714 2018-08-16 14:35:39Z vboxsync $ */
 /** @file
  * Audio Mixing bufer convert audio samples to/from different rates / formats.
  */
@@ -63,6 +63,7 @@ int AudioMixBufMixToParentEx(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSrcOffset, uint3
 int AudioMixBufPeek(PPDMAUDIOMIXBUF pMixBuf, uint32_t cFramesToRead, PPDMAUDIOFRAME paSampleBuf, uint32_t cSampleBuf, uint32_t *pcFramesRead);
 int AudioMixBufPeekMutable(PPDMAUDIOMIXBUF pMixBuf, uint32_t cFramesToRead, PPDMAUDIOFRAME *ppvSamples, uint32_t *pcFramesRead);
 uint32_t AudioMixBufUsed(PPDMAUDIOMIXBUF pMixBuf);
+uint32_t AudioMixBufUsedBytes(PPDMAUDIOMIXBUF pMixBuf);
 int AudioMixBufReadAt(PPDMAUDIOMIXBUF pMixBuf, uint32_t offSamples, void *pvBuf, uint32_t cbBuf, uint32_t *pcbRead);
 int AudioMixBufReadAtEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt, uint32_t offSamples, void *pvBuf, uint32_t cbBuf, uint32_t *pcbRead);
 int AudioMixBufAcquireReadBlock(PPDMAUDIOMIXBUF pMixBuf, void *pvBuf, uint32_t cbBuf, uint32_t *pcBlock);
