@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vfsbase.cpp 77047 2019-01-30 15:38:53Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -2515,6 +2515,17 @@ RTDECL(int) RTVfsNewDir(PCRTVFSDIROPS pDirOps, size_t cbInstance, uint32_t fFlag
     *phVfsDir    = pThis;
     *ppvInstance = pThis->Base.pvThis;
     return VINF_SUCCESS;
+}
+
+
+RTDECL(void *) RTVfsDirToPrivate(RTVFSDIR hVfsDir, PCRTVFSDIROPS pDirOps)
+{
+    RTVFSDIRINTERNAL *pThis = hVfsDir;
+    AssertPtrReturn(pThis, NULL);
+    AssertReturn(pThis->uMagic == RTVFSDIR_MAGIC, NULL);
+    if (pThis->pOps != pDirOps)
+        return NULL;
+    return pThis->Base.pvThis;
 }
 
 

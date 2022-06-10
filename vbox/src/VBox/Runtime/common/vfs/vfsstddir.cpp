@@ -1,4 +1,4 @@
-/* $Id: vfsstddir.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vfsstddir.cpp 77047 2019-01-30 15:38:53Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard Directory Implementation.
  */
@@ -749,6 +749,12 @@ RTDECL(int) RTVfsDirOpenNormal(const char *pszPath, uint32_t fFlags, PRTVFSDIR p
         RTDirClose(hDir);
     }
     return rc;
+}
+
+
+RTDECL(bool) RTVfsDirIsStdDir(RTVFSDIR hVfsDir)
+{
+    return RTVfsDirToPrivate(hVfsDir, &g_rtVfsStdDirOps) != NULL;
 }
 
 
