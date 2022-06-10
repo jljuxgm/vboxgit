@@ -1,4 +1,4 @@
-/* $Id: http.h 73886 2018-08-25 09:51:12Z vboxsync $ */
+/* $Id: http.h 73888 2018-08-25 13:26:05Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -241,7 +241,7 @@ RTR3DECL(int) RTHttpSetProxy(RTHTTP hHttp, const char *pszProxyUrl, uint32_t uPo
 RTR3DECL(int) RTHttpSetFollowRedirects(RTHTTP hHttp, uint32_t cMaxRedirects);
 
 /**
- * Set custom headers.
+ * Set custom raw headers.
  *
  * @returns iprt status code.
  *
@@ -250,6 +250,26 @@ RTR3DECL(int) RTHttpSetFollowRedirects(RTHTTP hHttp, uint32_t cMaxRedirects);
  * @param   papszHeaders    Array of headers in form "foo: bar".
  */
 RTR3DECL(int) RTHttpSetHeaders(RTHTTP hHttp, size_t cHeaders, const char * const *papszHeaders);
+
+/**
+ * Appends a raw header.
+ *
+ * @returns IPRT status code.
+ * @param   hHttp           The HTTP client instance.
+ * @param   pszHeader       Header string on the form "foo: bar".
+ */
+RTR3DECL(int) RTHttpAppendRawHeader(RTHTTP hHttp, const char *pszHeader);
+
+/**
+ * Appends a header field and value.
+ *
+ * @returns IPRT status code.
+ * @param   hHttp           The HTTP client instance.
+ * @param   pszField        The header field name.
+ * @param   pszValue        The header field value.
+ * @param   fFlags          Flags reserved for controlling encoding, MBZ.
+ */
+RTR3DECL(int) RTHttpAppendHeader(RTHTTP hHttp, const char *pszField, const char *pszValue, uint32_t fFlags);
 
 /**
  * Tells the HTTP client instance to gather system CA certificates into a
