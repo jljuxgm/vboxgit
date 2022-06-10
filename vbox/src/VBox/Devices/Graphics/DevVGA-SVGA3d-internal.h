@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 75811 2018-11-29 12:07:41Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 76181 2018-12-12 15:16:19Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1158,12 +1158,6 @@ int  vmsvga3dBackSurfaceDMACopyBox(PVGASTATE pThis, PVMSVGA3DSTATE pState, PVMSV
 
 int  vmsvga3dBackCreateTexture(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pContext, uint32_t idAssociatedContext,
                                PVMSVGA3DSURFACE pSurface);
-
-void vmsvgaClipCopyBox(const SVGA3dSize *pSizeSrc,
-                       const SVGA3dSize *pSizeDest,
-                       SVGA3dCopyBox *pBox);
-void vmsvgaClipBox(const SVGA3dSize *pSize,
-                   SVGA3dBox *pBox);
 
 DECLINLINE(int) vmsvga3dContextFromCid(PVMSVGA3DSTATE pState, uint32_t cid, PVMSVGA3DCONTEXT *ppContext)
 {

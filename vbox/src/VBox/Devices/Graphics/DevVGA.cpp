@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 75715 2018-11-25 15:59:10Z vboxsync $ */
+/* $Id: DevVGA.cpp 76181 2018-12-12 15:16:19Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -148,7 +148,6 @@
 
 #ifdef VBOX_WITH_VMSVGA
 #include "DevVGA-SVGA.h"
-#include "vmsvga/svga_reg.h"
 #endif
 
 
