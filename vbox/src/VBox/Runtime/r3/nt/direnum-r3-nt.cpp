@@ -1,4 +1,4 @@
-/* $Id: direnum-r3-nt.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: direnum-r3-nt.cpp 78050 2019-04-09 01:30:42Z vboxsync $ */
 /** @file
  * IPRT - Directory Enumeration, Native NT.
  */
@@ -82,7 +82,7 @@ size_t rtDirNativeGetStructSize(const char *pszPath)
 }
 
 
-int rtDirNativeOpen(PRTDIRINTERNAL pDir, char *pszPathBuf, uintptr_t hRelativeDir, void *pvNativeRelative)
+int rtDirNativeOpen(PRTDIRINTERNAL pDir, uintptr_t hRelativeDir, void *pvNativeRelative)
 {
     /*
      * Convert the filter to UTF-16.
@@ -129,7 +129,7 @@ int rtDirNativeOpen(PRTDIRINTERNAL pDir, char *pszPathBuf, uintptr_t hRelativeDi
         for (;;)
         {
             if (pvNativeRelative == NULL)
-                rc = RTNtPathOpenDir(pszPathBuf,
+                rc = RTNtPathOpenDir(pDir->pszPath,
                                      FILE_LIST_DIRECTORY | FILE_READ_ATTRIBUTES | FILE_TRAVERSE | SYNCHRONIZE,
                                      FILE_SHARE_READ | FILE_SHARE_WRITE,
                                      fOptions,

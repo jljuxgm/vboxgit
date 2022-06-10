@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 76895 2019-01-18 15:58:20Z vboxsync $ */
+/* $Id: dir-posix.cpp 78050 2019-04-09 01:30:42Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -241,9 +241,8 @@ size_t rtDirNativeGetStructSize(const char *pszPath)
 }
 
 
-int rtDirNativeOpen(PRTDIRINTERNAL pDir, char *pszPathBuf, uintptr_t hRelativeDir, void *pvNativeRelative)
+int rtDirNativeOpen(PRTDIRINTERNAL pDir, uintptr_t hRelativeDir, void *pvNativeRelative)
 {
-    NOREF(pszPathBuf); /* only used on windows */
     NOREF(hRelativeDir);
     NOREF(pvNativeRelative);
 
