@@ -1,4 +1,4 @@
-/* $Id: mount.vboxsf.c 77953 2019-03-29 17:07:16Z vboxsync $ */
+/* $Id: mount.vboxsf.c 77955 2019-03-29 17:20:01Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions for Linux - mount(8) helper.
  *
@@ -424,12 +424,12 @@ static int usage(char *argv0)
     printf("     cache=MODE         set the caching mode for the mount.  Allowed values:\n"
            "                          default: use the kernel default (strict)\n"
            "                             none: no caching; may experience guest side\n"
-           "                                   coherence issues between mmap and read.\n"
-           "                           strict: no caching, except for writably mapped\n"
+           "                                   coherence issues between mmap and read.\n");
+    printf("                           strict: no caching, except for writably mapped\n"
            "                                   files (for guest side coherence)\n"
            "                             read: read via the page cache; host changes\n"
-           "                                   may be completely ignored\n"
-           "                        readwrite: read and write via the page cache; host\n"
+           "                                   may be completely ignored\n");
+    printf("                        readwrite: read and write via the page cache; host\n"
            "                                   changes may be completely ignored and\n"
            "                                   guest changes takes a while to reach the host\n");
     printf("     dmode=MODE         override the mode of all directories to (octal) MODE\n"
