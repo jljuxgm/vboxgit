@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 75955 2018-12-04 21:08:55Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 76250 2018-12-16 09:37:14Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3816,18 +3816,6 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
             if (enmGraphicsController == GraphicsControllerType_VMSVGA)
                 InsertConfigInteger(pCfg, "VMSVGAPciId", true);
 #ifdef VBOX_WITH_VMSVGA3D
-            IFramebuffer *pFramebuffer = NULL;
-            hrc = i_getDisplay()->QueryFramebuffer(0, &pFramebuffer);
-            if (SUCCEEDED(hrc) && pFramebuffer)
-            {
-                LONG64 winId = 0;
-                /** @todo deal with multimonitor setup */
-                /** @todo The device should not need "HostWindowId". */
-                // Assert(cMonitorCount == 1);
-                hrc = pFramebuffer->COMGETTER(WinId)(&winId);
-                InsertConfigInteger(pCfg, "HostWindowId", winId);
-                pFramebuffer->Release();
-            }
             InsertConfigInteger(pCfg, "VMSVGA3dEnabled", f3DEnabled);
 #else
             LogRel(("VMSVGA3d not available in this build!\n"));
