@@ -1,4 +1,4 @@
-# $Id: Config.kmk 76818 2019-01-14 16:17:07Z vboxsync $
+# $Id: Config.kmk 77034 2019-01-29 16:13:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -596,6 +596,7 @@ endif
 ## @{
 # Build the installer.
 VBOX_WITH_INSTALLER = 1
+VBOX_WITH_GUEST_INSTALLER_UNICODE = 1
 # The kernel driver/module and related runtime libraries.
 # On Linux we build this as a test case instead.
 ifneq ($(KBUILD_TARGET), linux)
@@ -2096,7 +2097,7 @@ VBOX_MAKESELF  ?= $(KBUILD_DEVTOOLS)/common/makeself/v2.1.5/makeself.sh
 VBOX_PATH_HTML_HELP_WORKSHOP ?= $(KBUILD_DEVTOOLS)/win.x86/HTML_Help_Workshop/v1.3/
 
 # Path to the null soft installer.
-VBOX_PATH_NSIS ?= $(KBUILD_DEVTOOLS)/win.x86/nsis/v2.51-log-nsscm-r2
+VBOX_PATH_NSIS ?= $(KBUILD_DEVTOOLS)/win.x86/nsis/v3.04-log
 
 # Path to AutoIt3.
 VBOX_PATH_AUTOIT3 ?= $(KBUILD_DEVTOOLS)/win.x86/autoit/v3.2.10.0
@@ -7678,7 +7679,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 76818 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 77034 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
