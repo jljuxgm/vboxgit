@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72994 2018-07-09 04:31:14Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72995 2018-07-09 04:36:20Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10178,6 +10178,7 @@ DECLINLINE(VBOXSTRICTRC) hmR0VmxHandleExit(PVMCPU pVCpu, PVMXTRANSIENT pVmxTrans
 # define HMVMX_VALIDATE_EXIT_HANDLER_PARAMS(a_pVCpu, a_pVmxTransient) \
     do { \
         HMVMX_STOP_EXIT_DISPATCH_PROF(); \
+        NOREF((a_pVCpu)); NOREF((a_pVmxTransient)); \
     } while (0)
 # define HMVMX_VALIDATE_EXIT_XCPT_HANDLER_PARAMS(a_pVCpu, a_pVmxTransient) do { } while (0)
 #endif
