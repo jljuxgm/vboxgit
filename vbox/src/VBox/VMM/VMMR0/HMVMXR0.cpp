@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 73943 2018-08-29 10:10:48Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 73959 2018-08-29 15:24:49Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -13497,7 +13497,12 @@ HMVMX_EXIT_DECL hmR0VmxExitVmxon(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
         return rcStrict;
     }
 
-    rcStrict = IEMExecDecodedVmxon(pVCpu, pVmxTransient->cbInstr, GCPtrVmxon, pExitInstrInfo->u, GCPtrDisp);
+    VMXVEXITINFO ExitInfo;
+    RT_ZERO(ExitInfo);
+    ExitInfo.ExitInstrInfo.u = pExitInstrInfo->u;
+    ExitInfo.u64ExitQual     = GCPtrDisp;
+    uint8_t const iEffSeg    = pExitInstrInfo->VmreadVmwrite.iSegReg;
+    rcStrict = IEMExecDecodedVmxon(pVCpu, pVmxTransient->cbInstr, iEffSeg, GCPtrVmxon, &ExitInfo);
     if (RT_LIKELY(rcStrict == VINF_SUCCESS))
         ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_GUEST_RIP | HM_CHANGED_GUEST_RFLAGS | HM_CHANGED_GUEST_HWVIRT);
     else if (rcStrict == VINF_IEM_RAISED_XCPT)
