@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72959 2018-07-07 21:30:12Z vboxsync $
+# $Id: Makefile.kmk 73098 2018-07-12 21:13:30Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1789,6 +1789,8 @@ ifeq ($(KBUILD_TARGET),linux)
   ifneq ($(wildcard /usr/bin/chcon),)
 VBoxRT_INSTTYPE = none
 VBoxRT_DEBUG_INSTTYPE = both
+
+VBoxRT-x86_INSTTYPE = $(NO_SUCH_VARIABLE)
 
 DLLS += VBoxRTDummy
 VBoxRTDummy_TEMPLATE = VBoxR3Dll
