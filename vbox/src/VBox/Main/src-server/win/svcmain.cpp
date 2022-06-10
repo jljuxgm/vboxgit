@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: svcmain.cpp 78088 2019-04-10 13:36:19Z vboxsync $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -944,8 +944,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpC
     RTStrPrintf(saBuildID, sizeof(saBuildID), "%s%s%s%s VirtualBox %s r%u %s%s%s%s",
                 "BU", "IL", "DI", "D", RTBldCfgVersion(), RTBldCfgRevision(), "BU", "IL", "DI", "D");
 
-    int nRet = 0;
-    HRESULT hRes = com::Initialize(false /*fGui*/, fRun /*fAutoRegUpdate*/);
+    AssertCompile(VBOX_COM_INIT_F_DEFAULT == VBOX_COM_INIT_F_AUTO_REG_UPDATE);
+    HRESULT hRes = com::Initialize(fRun ? VBOX_COM_INIT_F_AUTO_REG_UPDATE : 0);
     AssertLogRelMsg(SUCCEEDED(hRes), ("SVCMAIN: init failed: %Rhrc\n", hRes));
 
     g_pModule = new CExeModule();
@@ -954,6 +954,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpC
     g_pModule->Init(ObjectMap, hInstance, &LIBID_VirtualBox);
     g_pModule->dwThreadID = GetCurrentThreadId();
 
+    int nRet = 0;
     if (!fRun)
     {
 #ifndef VBOX_WITH_MIDL_PROXY_STUB /* VBoxProxyStub.dll does all the registration work. */

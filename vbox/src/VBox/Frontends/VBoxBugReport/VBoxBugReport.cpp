@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxBugReport.cpp 78088 2019-04-10 13:36:19Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, main file.
  */
@@ -736,7 +736,7 @@ int main(int argc, char *argv[])
         if (!g_pszVBoxManage)
             throw RTCError("Out of memory\n");
 
-        handleComError(com::Initialize(), "Failed to initialize COM");
+        handleComError(com::Initialize(VBOX_COM_INIT_F_DEFAULT | VBOX_COM_INIT_F_NO_COM_PATCHING), "Failed to initialize COM");
 
         MachineInfoList list;
 

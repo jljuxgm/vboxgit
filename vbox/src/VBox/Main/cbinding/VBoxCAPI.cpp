@@ -1,4 +1,4 @@
-/* $Id: VBoxCAPI.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxCAPI.cpp 78088 2019-04-10 13:36:19Z vboxsync $ */
 /** @file VBoxCAPI.cpp
  * Utility functions to use with the C API binding.
  */
@@ -393,7 +393,7 @@ VBoxComInitialize(const char *pszVirtualBoxIID, IVirtualBox **ppVirtualBox,
     else
         sessionIID = IID_ISession;
 
-    HRESULT rc = com::Initialize();
+    HRESULT rc = com::Initialize(VBOX_COM_INIT_F_DEFAULT | VBOX_COM_INIT_F_NO_COM_PATCHING);
     if (FAILED(rc))
     {
         Log(("Cbinding: COM/XPCOM could not be initialized! rc=%Rhrc\n", rc));
@@ -668,7 +668,7 @@ VBoxClientInitialize(const char *pszVirtualBoxClientIID, IVirtualBoxClient **ppV
     else
         virtualBoxClientIID = IID_IVirtualBoxClient;
 
-    HRESULT rc = com::Initialize();
+    HRESULT rc = com::Initialize(VBOX_COM_INIT_F_DEFAULT | VBOX_COM_INIT_F_NO_COM_PATCHING);
     if (FAILED(rc))
     {
         Log(("Cbinding: COM/XPCOM could not be initialized! rc=%Rhrc\n", rc));
@@ -727,7 +727,7 @@ VBoxClientInitialize(const char *pszVirtualBoxClientIID, IVirtualBoxClient **ppV
 static HRESULT
 VBoxClientThreadInitialize(void)
 {
-    return com::Initialize();
+    return com::Initialize(VBOX_COM_INIT_F_DEFAULT | VBOX_COM_INIT_F_NO_COM_PATCHING);
 }
 
 static HRESULT

@@ -1,4 +1,4 @@
-/* $Id: COMDefs.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: COMDefs.cpp 78088 2019-04-10 13:36:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - CInterface implementation.
  */
@@ -89,7 +89,7 @@ HRESULT COMBase::InitializeCOM(bool fGui)
 {
     LogFlowFuncEnter();
 
-    HRESULT rc = com::Initialize(fGui);
+    HRESULT rc = com::Initialize(fGui ? VBOX_COM_INIT_F_DEFAULT | VBOX_COM_INIT_F_GUI : VBOX_COM_INIT_F_DEFAULT);
 
 #if defined (VBOX_WITH_XPCOM)
 
