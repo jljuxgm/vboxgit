@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInFreeBsd.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DBGPlugInFreeBsd.cpp 73460 2018-08-02 21:06:59Z vboxsync $ */
 /** @file
  * DBGPlugInFreeBsd - Debugger and Guest OS Digger Plugin For FreeBSD.
  */
@@ -584,6 +584,18 @@ static DECLCALLBACK(int) dbgDiggerFreeBsdIDmsg_QueryKernelLog(PDBGFOSIDMESG pThi
 
 
 /**
+ * @copydoc DBGFOSREG::pfnStackUnwindAssist
+ */
+static DECLCALLBACK(int) dbgDiggerFreeBsdStackUnwindAssist(PUVM pUVM, void *pvData, VMCPUID idCpu, PDBGFSTACKFRAME pFrame,
+                                                           PRTDBGUNWINDSTATE pState, PCCPUMCTX pInitialCtx, RTDBGAS hAs,
+                                                           uint64_t *puScratch)
+{
+    RT_NOREF(pUVM, pvData, idCpu, pFrame, pState, pInitialCtx, hAs, puScratch);
+    return VINF_SUCCESS;
+}
+
+
+/**
  * @copydoc DBGFOSREG::pfnQueryInterface
  */
 static DECLCALLBACK(void *) dbgDiggerFreeBsdQueryInterface(PUVM pUVM, void *pvData, DBGFOSINTERFACE enmIf)
@@ -798,18 +810,19 @@ static DECLCALLBACK(int)  dbgDiggerFreeBsdConstruct(PUVM pUVM, void *pvData)
 
 const DBGFOSREG g_DBGDiggerFreeBsd =
 {
-    /* .u32Magic = */           DBGFOSREG_MAGIC,
-    /* .fFlags = */             0,
-    /* .cbData = */             sizeof(DBGDIGGERFBSD),
-    /* .szName = */             "FreeBSD",
-    /* .pfnConstruct = */       dbgDiggerFreeBsdConstruct,
-    /* .pfnDestruct = */        dbgDiggerFreeBsdDestruct,
-    /* .pfnProbe = */           dbgDiggerFreeBsdProbe,
-    /* .pfnInit = */            dbgDiggerFreeBsdInit,
-    /* .pfnRefresh = */         dbgDiggerFreeBsdRefresh,
-    /* .pfnTerm = */            dbgDiggerFreeBsdTerm,
-    /* .pfnQueryVersion = */    dbgDiggerFreeBsdQueryVersion,
-    /* .pfnQueryInterface = */  dbgDiggerFreeBsdQueryInterface,
-    /* .u32EndMagic = */        DBGFOSREG_MAGIC
+    /* .u32Magic = */               DBGFOSREG_MAGIC,
+    /* .fFlags = */                 0,
+    /* .cbData = */                 sizeof(DBGDIGGERFBSD),
+    /* .szName = */                 "FreeBSD",
+    /* .pfnConstruct = */           dbgDiggerFreeBsdConstruct,
+    /* .pfnDestruct = */            dbgDiggerFreeBsdDestruct,
+    /* .pfnProbe = */               dbgDiggerFreeBsdProbe,
+    /* .pfnInit = */                dbgDiggerFreeBsdInit,
+    /* .pfnRefresh = */             dbgDiggerFreeBsdRefresh,
+    /* .pfnTerm = */                dbgDiggerFreeBsdTerm,
+    /* .pfnQueryVersion = */        dbgDiggerFreeBsdQueryVersion,
+    /* .pfnQueryInterface = */      dbgDiggerFreeBsdQueryInterface,
+    /* .pfnStackUnwindAssist = */   dbgDiggerFreeBsdStackUnwindAssist,
+    /* .u32EndMagic = */            DBGFOSREG_MAGIC
 };
 

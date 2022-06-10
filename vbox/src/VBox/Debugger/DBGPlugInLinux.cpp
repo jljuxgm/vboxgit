@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInLinux.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: DBGPlugInLinux.cpp 73460 2018-08-02 21:06:59Z vboxsync $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
@@ -1081,6 +1081,18 @@ static DECLCALLBACK(int) dbgDiggerLinuxCfgDbDestroyWorker(PRTSTRSPACECORE pStr, 
 static void dbgDiggerLinuxCfgDbDestroy(PDBGDIGGERLINUX pThis)
 {
     RTStrSpaceDestroy(&pThis->hCfgDb, dbgDiggerLinuxCfgDbDestroyWorker, NULL);
+}
+
+
+/**
+ * @copydoc DBGFOSREG::pfnStackUnwindAssist
+ */
+static DECLCALLBACK(int) dbgDiggerLinuxStackUnwindAssist(PUVM pUVM, void *pvData, VMCPUID idCpu, PDBGFSTACKFRAME pFrame,
+                                                         PRTDBGUNWINDSTATE pState, PCCPUMCTX pInitialCtx, RTDBGAS hAs,
+                                                         uint64_t *puScratch)
+{
+    RT_NOREF(pUVM, pvData, idCpu, pFrame, pState, pInitialCtx, hAs, puScratch);
+    return VINF_SUCCESS;
 }
 
 
@@ -2597,18 +2609,19 @@ static DECLCALLBACK(int)  dbgDiggerLinuxConstruct(PUVM pUVM, void *pvData)
 
 const DBGFOSREG g_DBGDiggerLinux =
 {
-    /* .u32Magic = */           DBGFOSREG_MAGIC,
-    /* .fFlags = */             0,
-    /* .cbData = */             sizeof(DBGDIGGERLINUX),
-    /* .szName = */             "Linux",
-    /* .pfnConstruct = */       dbgDiggerLinuxConstruct,
-    /* .pfnDestruct = */        dbgDiggerLinuxDestruct,
-    /* .pfnProbe = */           dbgDiggerLinuxProbe,
-    /* .pfnInit = */            dbgDiggerLinuxInit,
-    /* .pfnRefresh = */         dbgDiggerLinuxRefresh,
-    /* .pfnTerm = */            dbgDiggerLinuxTerm,
-    /* .pfnQueryVersion = */    dbgDiggerLinuxQueryVersion,
-    /* .pfnQueryInterface = */  dbgDiggerLinuxQueryInterface,
-    /* .u32EndMagic = */        DBGFOSREG_MAGIC
+    /* .u32Magic = */               DBGFOSREG_MAGIC,
+    /* .fFlags = */                 0,
+    /* .cbData = */                 sizeof(DBGDIGGERLINUX),
+    /* .szName = */                 "Linux",
+    /* .pfnConstruct = */           dbgDiggerLinuxConstruct,
+    /* .pfnDestruct = */            dbgDiggerLinuxDestruct,
+    /* .pfnProbe = */               dbgDiggerLinuxProbe,
+    /* .pfnInit = */                dbgDiggerLinuxInit,
+    /* .pfnRefresh = */             dbgDiggerLinuxRefresh,
+    /* .pfnTerm = */                dbgDiggerLinuxTerm,
+    /* .pfnQueryVersion = */        dbgDiggerLinuxQueryVersion,
+    /* .pfnQueryInterface = */      dbgDiggerLinuxQueryInterface,
+    /* .pfnStackUnwindAssist = */   dbgDiggerLinuxStackUnwindAssist,
+    /* .u32EndMagic = */            DBGFOSREG_MAGIC
 };
 

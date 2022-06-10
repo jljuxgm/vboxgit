@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInDarwin.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DBGPlugInDarwin.cpp 73460 2018-08-02 21:06:59Z vboxsync $ */
 /** @file
  * DBGPlugInDarwin - Debugger and Guest OS Digger Plugin For Darwin / OS X.
  */
@@ -128,6 +128,7 @@ typedef DBGDIGGERDARWIN *PDBGDIGGERDARWIN;
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
 static DECLCALLBACK(int)  dbgDiggerDarwinInit(PUVM pUVM, void *pvData);
+
 
 
 /**
@@ -299,6 +300,18 @@ static DECLCALLBACK(int) dbgDiggerDarwinIDmsg_QueryKernelLog(PDBGFOSIDMESG pThis
         Log(("dbgDiggerDarwinIDmsg_QueryKernelLog: Error reading %#x bytes at %RGv: %Rrc\n", MsgBuf.msg_size, MsgBuf.msg_bufc, rc));
     RTMemFree(pchMsgBuf);
     return rc;
+}
+
+
+/**
+ * @copydoc DBGFOSREG::pfnStackUnwindAssist
+ */
+static DECLCALLBACK(int) dbgDiggerDarwinStackUnwindAssist(PUVM pUVM, void *pvData, VMCPUID idCpu, PDBGFSTACKFRAME pFrame,
+                                                          PRTDBGUNWINDSTATE pState, PCCPUMCTX pInitialCtx, RTDBGAS hAs,
+                                                          uint64_t *puScratch)
+{
+    RT_NOREF(pUVM, pvData, idCpu, pFrame, pState, pInitialCtx, hAs, puScratch);
+    return VINF_SUCCESS;
 }
 
 
@@ -971,18 +984,19 @@ static DECLCALLBACK(int)  dbgDiggerDarwinConstruct(PUVM pUVM, void *pvData)
 
 const DBGFOSREG g_DBGDiggerDarwin =
 {
-    /* .u32Magic = */           DBGFOSREG_MAGIC,
-    /* .fFlags = */             0,
-    /* .cbData = */             sizeof(DBGDIGGERDARWIN),
-    /* .szName = */             "Darwin",
-    /* .pfnConstruct = */       dbgDiggerDarwinConstruct,
-    /* .pfnDestruct = */        dbgDiggerDarwinDestruct,
-    /* .pfnProbe = */           dbgDiggerDarwinProbe,
-    /* .pfnInit = */            dbgDiggerDarwinInit,
-    /* .pfnRefresh = */         dbgDiggerDarwinRefresh,
-    /* .pfnTerm = */            dbgDiggerDarwinTerm,
-    /* .pfnQueryVersion = */    dbgDiggerDarwinQueryVersion,
-    /* .pfnQueryInterface = */  dbgDiggerDarwinQueryInterface,
-    /* .u32EndMagic = */        DBGFOSREG_MAGIC
+    /* .u32Magic = */               DBGFOSREG_MAGIC,
+    /* .fFlags = */                 0,
+    /* .cbData = */                 sizeof(DBGDIGGERDARWIN),
+    /* .szName = */                 "Darwin",
+    /* .pfnConstruct = */           dbgDiggerDarwinConstruct,
+    /* .pfnDestruct = */            dbgDiggerDarwinDestruct,
+    /* .pfnProbe = */               dbgDiggerDarwinProbe,
+    /* .pfnInit = */                dbgDiggerDarwinInit,
+    /* .pfnRefresh = */             dbgDiggerDarwinRefresh,
+    /* .pfnTerm = */                dbgDiggerDarwinTerm,
+    /* .pfnQueryVersion = */        dbgDiggerDarwinQueryVersion,
+    /* .pfnQueryInterface = */      dbgDiggerDarwinQueryInterface,
+    /* .pfnStackUnwindAssist = */   dbgDiggerDarwinStackUnwindAssist,
+    /* .u32EndMagic = */            DBGFOSREG_MAGIC
 };
 

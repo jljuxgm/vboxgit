@@ -1,4 +1,4 @@
-/* $Id: DBGFOS.cpp 73414 2018-07-31 17:00:12Z vboxsync $ */
+/* $Id: DBGFOS.cpp 73460 2018-08-02 21:06:59Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest OS Diggers.
  */
@@ -635,5 +635,27 @@ VMMR3DECL(void *) DBGFR3OSQueryInterface(PUVM pUVM, DBGFOSINTERFACE enmIf)
     void *pvIf = NULL;
     VMR3ReqPriorityCallVoidWaitU(pUVM, VMCPUID_ANY, (PFNRT)dbgfR3OSQueryInterface, 3, pUVM, enmIf, &pvIf);
     return pvIf;
+}
+
+
+
+/**
+ * Internal wrapper for calling DBGFOSREG::pfnStackUnwindAssist.
+ */
+int dbgfR3OSStackUnwindAssist(PUVM pUVM, VMCPUID idCpu, PDBGFSTACKFRAME pFrame, PRTDBGUNWINDSTATE pState,
+                              PCCPUMCTX pInitialCtx, RTDBGAS hAs, uint64_t *puScratch)
+{
+    int rc = VINF_SUCCESS;
+    if (pUVM->dbgf.s.pCurOS)
+    {
+        ASMCompilerBarrier();
+        DBGF_OS_READ_LOCK(pUVM);
+        PDBGFOS pOS = pUVM->dbgf.s.pCurOS;
+        if (pOS)
+            rc = pOS->pReg->pfnStackUnwindAssist(pUVM, pUVM->dbgf.s.pCurOS->abData, idCpu, pFrame,
+                                                 pState, pInitialCtx, hAs, puScratch);
+        DBGF_OS_READ_UNLOCK(pUVM);
+    }
+    return rc;
 }
 

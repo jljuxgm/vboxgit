@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInOS2.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DBGPlugInOS2.cpp 73460 2018-08-02 21:06:59Z vboxsync $ */
 /** @file
  * DBGPlugInOS2 - Debugger and Guest OS Digger Plugin For OS/2.
  */
@@ -112,6 +112,18 @@ static void dbgDiggerOS2ProcessImage(PDBGDIGGEROS2 pThis, PUVM pUVM, const char 
     /* To be implemented.*/
 }
 #endif
+
+
+/**
+ * @copydoc DBGFOSREG::pfnStackUnwindAssist
+ */
+static DECLCALLBACK(int) dbgDiggerOS2StackUnwindAssist(PUVM pUVM, void *pvData, VMCPUID idCpu, PDBGFSTACKFRAME pFrame,
+                                                       PRTDBGUNWINDSTATE pState, PCCPUMCTX pInitialCtx, RTDBGAS hAs,
+                                                       uint64_t *puScratch)
+{
+    RT_NOREF(pUVM, pvData, idCpu, pFrame, pState, pInitialCtx, hAs, puScratch);
+    return VINF_SUCCESS;
+}
 
 
 /**
@@ -342,17 +354,18 @@ static DECLCALLBACK(int)  dbgDiggerOS2Construct(PUVM pUVM, void *pvData)
 
 const DBGFOSREG g_DBGDiggerOS2 =
 {
-    /* .u32Magic = */           DBGFOSREG_MAGIC,
-    /* .fFlags = */             0,
-    /* .cbData = */             sizeof(DBGDIGGEROS2),
-    /* .szName = */             "OS/2",
-    /* .pfnConstruct = */       dbgDiggerOS2Construct,
-    /* .pfnDestruct = */        dbgDiggerOS2Destruct,
-    /* .pfnProbe = */           dbgDiggerOS2Probe,
-    /* .pfnInit = */            dbgDiggerOS2Init,
-    /* .pfnRefresh = */         dbgDiggerOS2Refresh,
-    /* .pfnTerm = */            dbgDiggerOS2Term,
-    /* .pfnQueryVersion = */    dbgDiggerOS2QueryVersion,
-    /* .pfnQueryInterface = */  dbgDiggerOS2QueryInterface,
-    /* .u32EndMagic = */        DBGFOSREG_MAGIC
+    /* .u32Magic = */               DBGFOSREG_MAGIC,
+    /* .fFlags = */                 0,
+    /* .cbData = */                 sizeof(DBGDIGGEROS2),
+    /* .szName = */                 "OS/2",
+    /* .pfnConstruct = */           dbgDiggerOS2Construct,
+    /* .pfnDestruct = */            dbgDiggerOS2Destruct,
+    /* .pfnProbe = */               dbgDiggerOS2Probe,
+    /* .pfnInit = */                dbgDiggerOS2Init,
+    /* .pfnRefresh = */             dbgDiggerOS2Refresh,
+    /* .pfnTerm = */                dbgDiggerOS2Term,
+    /* .pfnQueryVersion = */        dbgDiggerOS2QueryVersion,
+    /* .pfnQueryInterface = */      dbgDiggerOS2QueryInterface,
+    /* .pfnStackUnwindAssist = */   dbgDiggerOS2StackUnwindAssist,
+    /* .u32EndMagic = */            DBGFOSREG_MAGIC
 };

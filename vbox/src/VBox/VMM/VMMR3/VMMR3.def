@@ -1,4 +1,4 @@
-; $Id: VMMR3.def 73417 2018-08-01 11:09:23Z vboxsync $
+; $Id: VMMR3.def 73460 2018-08-02 21:06:59Z vboxsync $
 ;; @file
 ; VMM Ring-3 Context DLL - Definition file.
 
@@ -206,6 +206,7 @@ EXPORTS
 
     MMR3HeapFree
     MMR3HeapRealloc
+    MMR3HeapAllocU
 
     MMR3HyperAllocOnceNoRel
 
