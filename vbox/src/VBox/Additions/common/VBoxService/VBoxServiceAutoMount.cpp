@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 75858 2018-12-01 22:13:05Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 75946 2018-12-04 13:10:12Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -87,11 +87,7 @@ RT_C_DECLS_END
  * Default mount directory (unix only).
  */
 #ifndef VBOXSERVICE_AUTOMOUNT_DEFAULT_DIR
-# ifdef RT_OS_SOLARIS
-#  define VBOXSERVICE_AUTOMOUNT_DEFAULT_DIR      "/mnt"
-# else
-#  define VBOXSERVICE_AUTOMOUNT_DEFAULT_DIR      "/media"
-# endif
+# define VBOXSERVICE_AUTOMOUNT_DEFAULT_DIR      "/media"
 #endif
 
 /** @def VBOXSERVICE_AUTOMOUNT_DEFAULT_PREFIX
