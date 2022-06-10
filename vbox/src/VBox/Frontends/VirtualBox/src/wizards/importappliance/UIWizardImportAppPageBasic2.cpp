@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 78110 2019-04-11 13:32:48Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 78128 2019-04-15 18:28:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -67,6 +67,16 @@ UIWizardImportAppPageBasic2::UIWizardImportAppPageBasic2(const QString &strFileN
 
             /* Add into layout: */
             pMainLayout->addWidget(m_pApplianceWidget);
+        }
+
+        /* Create form editor widget: */
+        m_pFormEditor = new UIFormEditorWidget(this);
+        if (m_pFormEditor)
+        {
+            m_pFormEditor->hide();
+
+            /* Add into layout: */
+            pMainLayout->addWidget(m_pFormEditor);
         }
 
         /* Create certificate label: */

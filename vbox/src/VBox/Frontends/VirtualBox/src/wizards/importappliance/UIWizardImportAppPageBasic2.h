@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.h 78110 2019-04-11 13:32:48Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.h 78128 2019-04-15 18:28:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class declaration.
  */
@@ -22,6 +22,7 @@
 #endif
 
 /* GUI includes: */
+#include "UIFormEditorWidget.h"
 #include "UIWizardImportAppDefs.h"
 #include "UIWizardPage.h"
 
@@ -41,7 +42,9 @@ protected:
     ImportAppliancePointer applianceWidget() const { return m_pApplianceWidget; }
 
     /** Holds the appliance widget instance. */
-    ImportAppliancePointer m_pApplianceWidget;
+    ImportAppliancePointer     m_pApplianceWidget;
+    /** Holds the Form Editor widget instance. */
+    UIFormEditorWidgetPointer  m_pFormEditor;
 };
 
 /** UIWizardPage extension for 2nd page of the Import Appliance wizard, extends UIWizardImportAppPage2 as well. */
