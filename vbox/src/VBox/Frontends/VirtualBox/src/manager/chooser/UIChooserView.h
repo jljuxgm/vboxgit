@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.h 74178 2018-09-10 10:36:11Z vboxsync $ */
+/* $Id: UIChooserView.h 74184 2018-09-10 19:08:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class declaration.
  */
@@ -24,7 +24,6 @@
 
 /* Forward declarations: */
 class UIChooser;
-class UIChooserItem;
 
 /** QIGraphicsView extension used as VM chooser pane view. */
 class UIChooserView : public QIWithRetranslateUI<QIGraphicsView>
@@ -53,7 +52,7 @@ public slots:
     /** @name General stuff.
       * @{ */
         /** Handles focus change to @a pFocusItem. */
-        void sltFocusChanged(UIChooserItem *pFocusItem);
+        void sltFocusChanged();
     /** @} */
 
     /** @name Layout stuff.

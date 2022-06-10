@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 74178 2018-09-10 10:36:11Z vboxsync $ */
+/* $Id: UIChooserView.cpp 74184 2018-09-10 19:08:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -106,9 +106,12 @@ UIChooserView::UIChooserView(UIChooser *pParent)
     prepare();
 }
 
-void UIChooserView::sltFocusChanged(UIChooserItem *pFocusItem)
+void UIChooserView::sltFocusChanged()
 {
     /* Make sure focus-item set: */
+    const UIChooserItem *pFocusItem = chooser() && chooser()->model()
+                                    ? chooser()->model()->focusItem()
+                                    : 0;
     if (!pFocusItem)
         return;
 

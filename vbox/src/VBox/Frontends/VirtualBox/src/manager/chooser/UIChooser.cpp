@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 74177 2018-09-10 10:22:54Z vboxsync $ */
+/* $Id: UIChooser.cpp 74184 2018-09-10 19:08:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -56,6 +56,16 @@ UIActionPool *UIChooser::actionPool() const
     return managerWidget()->actionPool();
 }
 
+UIVirtualMachineItem *UIChooser::currentItem() const
+{
+    return m_pChooserModel->currentMachineItem();
+}
+
+QList<UIVirtualMachineItem*> UIChooser::currentItems() const
+{
+    return m_pChooserModel->currentMachineItems();
+}
+
 bool UIChooser::isGroupItemSelected() const
 {
     return m_pChooserModel->isGroupItemSelected();
@@ -69,16 +79,6 @@ bool UIChooser::isGlobalItemSelected() const
 bool UIChooser::isMachineItemSelected() const
 {
     return m_pChooserModel->isMachineItemSelected();
-}
-
-UIVirtualMachineItem *UIChooser::currentItem() const
-{
-    return m_pChooserModel->currentMachineItem();
-}
-
-QList<UIVirtualMachineItem*> UIChooser::currentItems() const
-{
-    return m_pChooserModel->currentMachineItems();
 }
 
 bool UIChooser::isSingleGroupSelected() const
@@ -180,14 +180,14 @@ void UIChooser::prepareConnections()
 
 void UIChooser::loadSettings()
 {
-    /* Prepare model: */
-    m_pChooserModel->prepare();
+    /* Init model: */
+    m_pChooserModel->init();
 }
 
 void UIChooser::saveSettings()
 {
-    /* Cleanup model: */
-    m_pChooserModel->cleanup();
+    /* Deinit model: */
+    m_pChooserModel->deinit();
 }
 
 void UIChooser::cleanup()
