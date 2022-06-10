@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 72680 2018-06-25 15:17:54Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 72681 2018-06-25 15:25:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1837,7 +1837,7 @@ void VBoxGlobal::setCursor(QGraphicsWidget *pWidget, const QCursor &cursor)
      * in X11 QGraphicsWidget::setCursor(..) call uses RENDER
      * extension. Qt (before 5.11) fails to handle the case where the mentioned extension
      * is missing. Please see https://codereview.qt-project.org/#/c/225665/ for Qt patch: */
-     if ((VBoxGlobal::qtRTMajorVersion() < 5) ||
+    if ((VBoxGlobal::qtRTMajorVersion() < 5) ||
         (VBoxGlobal::qtRTMajorVersion() == 5 && VBoxGlobal::qtRTMinorVersion() < 11))
     {
         if (X11CheckExtension("RENDER"))

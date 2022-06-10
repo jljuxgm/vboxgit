@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 72678 2018-06-25 14:25:49Z vboxsync $ */
+/* $Id: VBoxGlobal.h 72681 2018-06-25 15:25:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -390,6 +390,7 @@ public:
 
         /** Activates the specified window with given @a wId. Can @a fSwitchDesktop if requested. */
         static bool activateWindow(WId wId, bool fSwitchDesktop = true);
+
         /** Does some checks on certain platforms before calling QWidget::setCursor(...). */
         static void setCursor(QWidget *pWidget, const QCursor &cursor);
         static void setCursor(QGraphicsWidget *pWidget, const QCursor &cursor);
