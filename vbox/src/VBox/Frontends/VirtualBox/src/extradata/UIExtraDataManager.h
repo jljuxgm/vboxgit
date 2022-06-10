@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 75057 2018-10-25 08:58:53Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 75087 2018-10-26 09:59:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -623,15 +623,18 @@ public:
         void setInformationWindowElements(const QMap<InformationElementType, bool> &elements);
     /** @} */
 
-    /** @name Virtual Machine: Guest Control dialog
+    /** @name Virtual Machine: Guest Control related dialogs
       * @{ */
         void setGuestControlProcessControlSplitterHints(const QList<int> &hints);
         void setGuestControlFileManagerSplitterHints(const QList<int> &hints);
         QList<int> guestControlProcessControlSplitterHints();
         QList<int> guestControlFileManagerSplitterHints();
-        QRect guestControlDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry);
-        bool guestControlDialogShouldBeMaximized();
-        void setGuestControlDialogGeometry(const QRect &geometry, bool fMaximized);
+        QRect guestControlFileManagerDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry);
+        bool guestControlFileManagerDialogShouldBeMaximized();
+        void setGuestControlFileManagerDialogGeometry(const QRect &geometry, bool fMaximized);
+        QRect guestProcessControlDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry);
+        bool guestProcessControlDialogShouldBeMaximized();
+        void setGuestProcessControlDialogGeometry(const QRect &geometry, bool fMaximized);
     /** @} */
 
     /** @name Virtual Machine: Close dialog
@@ -753,6 +756,9 @@ private:
     QString toFeatureAllowed(bool fAllowed);
     /** Translates bool flag into 'restricted' value. */
     QString toFeatureRestricted(bool fRestricted);
+
+    QRect dialogGeometry(const QString &strKey, QWidget *pWidget, const QRect &defaultGeometry);
+    void setDialogGeometry(const QString &strKey, const QRect &geometry, bool fMaximized);
 
     /** Returns string consisting of @a strBase appended with @a uScreenIndex for the *non-primary* screen-index.
       * If @a fSameRuleForPrimary is 'true' same rule will be used for *primary* screen-index. Used for storing per-screen extra-data. */

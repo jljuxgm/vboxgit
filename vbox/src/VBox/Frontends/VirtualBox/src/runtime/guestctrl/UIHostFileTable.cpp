@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 75057 2018-10-25 08:58:53Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 75087 2018-10-26 09:59:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -133,7 +133,7 @@ UIHostFileTable::UIHostFileTable(QWidget *pParent /* = 0 */)
 void UIHostFileTable::retranslateUi()
 {
     if (m_pLocationLabel)
-        m_pLocationLabel->setText(QApplication::translate("UIGuestControlWidget", "Host System"));
+        m_pLocationLabel->setText(QApplication::translate("UIGuestControlFileManager", "Host System"));
     UIGuestControlFileTable::retranslateUi();
 }
 

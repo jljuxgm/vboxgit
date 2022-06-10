@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 75057 2018-10-25 08:58:53Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 75087 2018-10-26 09:59:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -196,7 +196,8 @@ const char *UIExtraDataDefs::GUI_InformationWindowGeometry = "GUI/InformationWin
 const char *UIExtraDataDefs::GUI_InformationWindowElements = "GUI/InformationWindowElements";
 const char *UIExtraDataDefs::GUI_GuestControl_ProcessControlSplitterHints = "GUI/GuestControl/ProcessControlSplitterHints";
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerSplitterHints = "GUI/GuestControl/FileManagerSplitterHints";
-const char *UIExtraDataDefs::GUI_GuestControl_DialogGeometry = "GUI/GuestControl/DialogGeometry";
+const char *UIExtraDataDefs::GUI_GuestControl_FileManagerDialogGeometry = "GUI/GuestControl/FileManagerDialogGeometry";
+const char *UIExtraDataDefs::GUI_GuestControl_ProcessControlDialogGeometry = "GUI/GuestControl/ProcessControlDialogGeometry";
 
 /* Virtual Machine: Close dialog: */
 const char *UIExtraDataDefs::GUI_DefaultCloseAction = "GUI/DefaultCloseAction";

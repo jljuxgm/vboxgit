@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.cpp 75057 2018-10-25 08:58:53Z vboxsync $ */
+/* $Id: UIGuestProcessControlWidget.cpp 75087 2018-10-26 09:59:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class implementation.
  */
@@ -164,14 +164,17 @@ private slots:
 
 };
 
-UIGuestProcessControlWidget::UIGuestProcessControlWidget(QWidget *pParent, const CGuest &comGuest)
-    : QWidget(pParent)
+UIGuestProcessControlWidget::UIGuestProcessControlWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,
+                                                         const CGuest &comGuest, QWidget *pParent)
+    :QIWithRetranslateUI<QWidget>(pParent)
     , m_comGuest(comGuest)
     , m_pMainLayout(0)
     , m_pSplitter(0)
     , m_pTreeWidget(0)
     , m_pConsole(0)
     , m_pControlInterface(0)
+    , m_enmEmbedding(enmEmbedding)
+    , m_pActionPool(pActionPool)
     , m_pQtListener(0)
 {
     prepareListener();
@@ -185,6 +188,11 @@ UIGuestProcessControlWidget::~UIGuestProcessControlWidget()
 {
     saveSettings();
 }
+
+void UIGuestProcessControlWidget::retranslateUi()
+{
+}
+
 
 void UIGuestProcessControlWidget::prepareObjects()
 {
