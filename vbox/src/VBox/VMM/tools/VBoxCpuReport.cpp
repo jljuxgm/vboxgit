@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.cpp 69654 2017-11-10 19:22:45Z vboxsync $ */
+/* $Id: VBoxCpuReport.cpp 73257 2018-07-20 08:33:28Z vboxsync $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
@@ -2104,7 +2104,7 @@ static const char *getMsrFnName(uint32_t uMsr, bool *pfTakesValue)
         case 0x000003fe: return "IntelI7CoreCnResidencyN";
 
         case 0x00000478: return g_enmMicroarch == kCpumMicroarch_Intel_Core2_Penryn ? "IntelCpuId1FeatureMaskEcdx" : NULL;
-        case 0x00000480: *pfTakesValue = true; return "Ia32VmxBase";
+        case 0x00000480: *pfTakesValue = true; return "Ia32VmxBasic";
         case 0x00000481: *pfTakesValue = true; return "Ia32VmxPinbasedCtls";
         case 0x00000482: *pfTakesValue = true; return "Ia32VmxProcbasedCtls";
         case 0x00000483: *pfTakesValue = true; return "Ia32VmxExitCtls";
