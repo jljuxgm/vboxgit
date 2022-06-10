@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 76891 2019-01-18 13:17:20Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 78084 2019-04-10 12:34:03Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -651,7 +651,7 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
         if (!pTask->isOk())
         {
             delete pTask;
-            LogRel2(("DnD: Could not create SendDataTask object\n"));
+            LogRel(("DnD: Could not create SendDataTask object\n"));
             throw hr = E_FAIL;
         }
 
@@ -666,7 +666,7 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
     }
     catch (...)
     {
-        LogRel2(("DnD: Could not create thread for data sending task\n"));
+        LogRel(("DnD: Could not create thread for data sending task\n"));
         hr = E_FAIL;
     }
 
