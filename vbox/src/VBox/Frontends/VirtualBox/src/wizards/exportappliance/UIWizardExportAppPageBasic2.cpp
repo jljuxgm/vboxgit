@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 75227 2018-11-02 14:48:47Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 75371 2018-11-09 17:13:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -254,7 +254,7 @@ void UIWizardExportAppPage2::populateAccountProperties()
                         pItemK->setFlags(pItemK->flags() & ~Qt::ItemIsSelectable);
 
                         /* Use non-translated description as tool-tip: */
-                        const QString strToolTip = m_comCloudProfile.GetPropertyDescription(keys.at(i));
+                        const QString strToolTip = m_comCloudProvider.GetPropertyDescription(keys.at(i));
                         /* Show error message if necessary: */
                         if (!m_comCloudProfile.isOk())
                             msgCenter().cannotAcquireCloudProfileParameter(m_comCloudProfile);
