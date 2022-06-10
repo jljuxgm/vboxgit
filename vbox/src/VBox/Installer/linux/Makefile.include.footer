@@ -1,4 +1,4 @@
-# $Id: Makefile.include.footer 72817 2018-07-03 10:00:24Z vboxsync $
+# $Id: Makefile.include.footer 73012 2018-07-09 15:23:12Z vboxsync $
 ## @file
 # VirtualBox Guest Additions kernel module Makefile, common parts.
 #
@@ -39,7 +39,10 @@ KFLAGS   := -D__KERNEL__ -DMODULE $(MOD_DEFS)
 ifeq ($(BUILD_TYPE),debug)
 # The -Wno-array-bounds is because of a bug in gcc 4.something, see
 # https://sourceware.org/bugzilla/show_bug.cgi?id=10001
- KFLAGS  += -DDEBUG -DDEBUG_$(subst $(subst _, ,_),_,$(USERNAME)) -DDEBUG_USERNAME=$(subst $(subst _, ,_),_,$(USERNAME)) -Werror -Wall -Wno-array-bounds
+ KFLAGS  += -DDEBUG -DDEBUG_$(subst $(subst _, ,_),_,$(USERNAME)) -DDEBUG_USERNAME=$(subst $(subst _, ,_),_,$(USERNAME))
+ ifeq ($(shell expr $(KERN_VER) : '[23]\.'),0)
+  KFLAGS  += -Werror -Wall -Wno-array-bounds
+ endif
 endif
 
 ifeq ($(KERN_VERSION), 24)
