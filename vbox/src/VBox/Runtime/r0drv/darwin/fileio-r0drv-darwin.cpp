@@ -1,4 +1,4 @@
-/* $Id: fileio-r0drv-darwin.cpp 75042 2018-10-24 14:02:37Z vboxsync $ */
+/* $Id: fileio-r0drv-darwin.cpp 75043 2018-10-24 14:02:53Z vboxsync $ */
 /** @file
  * IPRT - File I/O, R0 Driver, Darwin.
  */
@@ -299,7 +299,7 @@ RTDECL(int) RTFileSeek(RTFILE hFile, int64_t offSeek, unsigned uMethod, uint64_t
             return VERR_INVALID_PARAMETER;
     }
 
-    if ((RTFOFF)offNew > 0)
+    if ((RTFOFF)offNew >= 0)
     {
         pThis->offFile = offNew;
         if (poffActual)
