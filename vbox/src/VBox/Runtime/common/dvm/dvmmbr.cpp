@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 69909 2017-12-03 17:06:12Z vboxsync $ */
+/* $Id: dvmmbr.cpp 73156 2018-07-16 12:37:19Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -175,7 +175,7 @@ static const struct RTDVMMBRFS2VOLTYPE
     { 0xa5, RTDVMVOLTYPE_FREEBSD },
     { 0xa9, RTDVMVOLTYPE_NETBSD },
     { 0xa6, RTDVMVOLTYPE_OPENBSD },
-    { 0xaf, RTDVMVOLTYPE_MAC_OSX_HFS },
+    { 0xaf, RTDVMVOLTYPE_DARWIN_HFS },
     { 0xbf, RTDVMVOLTYPE_SOLARIS },
     { 0xfd, RTDVMVOLTYPE_LINUX_SOFTRAID }
 };
