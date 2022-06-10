@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 78220 2019-04-20 04:08:44Z vboxsync $ */
+/* $Id: HMInternal.h 78222 2019-04-20 04:23:29Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -851,7 +851,6 @@ AssertCompileSizeAlignment(VMXVMCSINFO, 8);
 AssertCompileMemberAlignment(VMXVMCSINFO, fVmcsState, 8);
 AssertCompileMemberAlignment(VMXVMCSINFO, u32PinCtls, 8);
 AssertCompileMemberAlignment(VMXVMCSINFO, u64VmcsLinkPtr, 8);
-AssertCompileMemberAlignment(VMXVMCSINFO, pvMsrBitmap, 8);
 
 /**
  * HM VMCPU Instance data.
