@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72766 2018-06-29 10:43:48Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72776 2018-06-29 15:39:46Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6009,7 +6009,7 @@ static int hmR0VmxImportGuestSegmentReg(PVMCPU pVCpu, uint32_t idxSel, uint32_t 
 #ifdef DEBUG_bird
         AssertMsg((u32Attr & ~X86DESCATTR_P) == pSelReg->Attr.u,
                   ("%#x: %#x != %#x (sel=%#x base=%#llx limit=%#x)\n",
-                   idxSel, u32Val, pSelReg->Attr.u, pSelReg->Sel, pSelReg->u64Base, pSelReg->u32Limit));
+                   idxSel, u32Sel, pSelReg->Attr.u, pSelReg->Sel, pSelReg->u64Base, pSelReg->u32Limit));
 #endif
     }
     return VINF_SUCCESS;
