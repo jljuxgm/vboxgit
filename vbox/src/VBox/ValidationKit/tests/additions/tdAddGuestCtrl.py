@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77618 $"
+__version__ = "$Revision: 77623 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -1021,7 +1021,8 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
         reporter.testDone(fSkip);
 
         reporter.testStart('Session w/ Guest Reboot');
-        fSkip = 'session_reboot' not in self.asTests;
+        fSkip =    'session_reboot' not in self.asTests \
+                or self.oTstDrv.fpApiVer <= 6.0; # Not backported yet.
         if fSkip is False:
             fRc, oTxsSession = self.testGuestCtrlSessionReboot(oSession, oTxsSession, oTestVm);
         reporter.testDone(fSkip);
