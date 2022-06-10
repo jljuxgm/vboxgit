@@ -1,4 +1,4 @@
-# $Id: Makefile.include.footer 70702 2018-01-23 11:04:36Z vboxsync $
+# $Id: Makefile.include.footer 72817 2018-07-03 10:00:24Z vboxsync $
 ## @file
 # VirtualBox Guest Additions kernel module Makefile, common parts.
 #
@@ -70,7 +70,7 @@ $(MODULE): $(MODULE).o
 install: $(MODULE)
 	@mkdir -p $(MODULE_DIR); \
 	install -m 0644 -o root -g root $(MODULE).$(MODULE_EXT) $(MODULE_DIR); \
-	PATH="$(PATH):/bin:/sbin" depmod -a;
+	PATH="$(PATH):/bin:/sbin" depmod -a; sync
 
 clean:
 	for f in $(sort $(dir $(OBJS))); do rm -f $$f/*.o $$f/.*.cmd $$f/.*.flags; done
