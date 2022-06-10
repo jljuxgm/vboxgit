@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 78317 2019-04-26 09:44:48Z vboxsync $ */
+/** $Id: clipboard.cpp 78346 2019-04-29 11:07:26Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -234,7 +234,7 @@ int vboxClipboardMain(void)
                      * Save the information so that it is available for
                      * future requests from guest applications.
                      */
-                    LogRelFlowFunc(("VBOX_SHARED_CLIPBOARD_HOST_MSG_FORMATS fFormats=%x\n", fFormats));
+                    LogRelFlowFunc(("VBOX_SHARED_CLIPBOARD_HOST_MSG_REPORT_FORMATS fFormats=%x\n", fFormats));
                     ClipAnnounceFormatToX11(g_ctx.pBackend, fFormats);
                     break;
                 }
