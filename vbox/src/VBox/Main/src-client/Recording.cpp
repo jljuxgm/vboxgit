@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 75354 2018-11-09 11:22:09Z vboxsync $ */
+/* $Id: Recording.cpp 75355 2018-11-09 11:27:45Z vboxsync $ */
 /** @file
  * Recording (with optional audio recording) code.
  *
@@ -171,7 +171,7 @@ int RecordingContext::threadNotify(void)
 }
 
 /**
- * Creates a video recording context.
+ * Creates a recording context.
  *
  * @returns IPRT status code.
  * @param   a_Settings          Capture settings to use for context creation.
@@ -268,7 +268,7 @@ int RecordingContext::stopInternal(void)
 }
 
 /**
- * Destroys a video recording context.
+ * Destroys a recording context.
  */
 int RecordingContext::destroyInternal(void)
 {

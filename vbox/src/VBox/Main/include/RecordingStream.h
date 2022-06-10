@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 75354 2018-11-09 11:22:09Z vboxsync $ */
+/* $Id: RecordingStream.h 75355 2018-11-09 11:27:45Z vboxsync $ */
 /** @file
  * Recording stream code header.
  */
@@ -205,12 +205,12 @@ protected:
     } Video;
 
     settings::RecordScreenSettings ScreenSettings;
-    /** Common set of video recording (data) blocks, needed for
+    /** Common set of recording (data) blocks, needed for
      *  multiplexing to all recording streams. */
     RecordingBlockSet              Blocks;
 };
 
-/** Vector of video recording streams. */
+/** Vector of recording streams. */
 typedef std::vector <RecordingStream *> RecordingStreams;
 
 #endif /* ____H_RECORDING_STREAM */
