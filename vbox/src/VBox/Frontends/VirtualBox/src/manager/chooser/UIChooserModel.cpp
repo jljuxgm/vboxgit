@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77373 2019-02-20 11:44:15Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77374 2019-02-20 12:01:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -160,10 +160,8 @@ void UIChooserModel::handleToolButtonClick(UIChooserItem *pItem)
             break;
         case UIChooserItemType_Group:
         case UIChooserItemType_Machine:
-        {
             emit sigToolMenuRequested(UIToolClass_Machine, pItem->mapToScene(QPointF(pItem->size().width(), 0)).toPoint());
             break;
-        }
         default:
             break;
     }
