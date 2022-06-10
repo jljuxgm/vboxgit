@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 77376 2019-02-20 12:32:25Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 77377 2019-02-20 13:00:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2740,7 +2740,7 @@ QUuid VBoxGlobal::createVisoMediumWithVisoCreator(QWidget *pParent, const QStrin
             return QUuid();
         }
 
-        gEDataManager->setVisoCreatorRecentFolder(pVisoCreator->currentPath());
+        gEDataManager->setVISOCreatorRecentFolder(pVisoCreator->currentPath());
 
         /* Produce the VISO. */
         char szVisoPath[RTPATH_MAX];
