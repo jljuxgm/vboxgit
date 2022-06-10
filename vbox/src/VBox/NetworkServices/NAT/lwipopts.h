@@ -1,4 +1,4 @@
-/* $Id: lwipopts.h 76982 2019-01-25 02:38:02Z vboxsync $ */
+/* $Id: lwipopts.h 77022 2019-01-28 15:02:16Z vboxsync $ */
 /** @file
  * NAT Network - lwIP configuration options.
  */
@@ -170,7 +170,7 @@
 
 /* MEMP_NUM_SYS_TIMEOUT: the number of simultaneously active
    timeouts. */
-#define MEMP_NUM_SYS_TIMEOUT    256
+#define MEMP_NUM_SYS_TIMEOUT    16
 
 
 /* this is required for IPv6 and IGMP needs */

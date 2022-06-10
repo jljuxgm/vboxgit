@@ -1,4 +1,4 @@
-/* $Id: pxdns.c 76981 2019-01-24 17:13:34Z vboxsync $ */
+/* $Id: pxdns.c 77022 2019-01-28 15:02:16Z vboxsync $ */
 /** @file
  * NAT Network - DNS proxy.
  */
@@ -461,6 +461,7 @@ pxdns_timeout_add(struct pxdns *pxdns, struct request *req)
     omask = pxdns->timeout_mask;
     pxdns->timeout_mask |= 1U << req->timeout_slot;
     if (omask == 0) {
+        sys_untimeout(pxdns_timer, pxdns);
         sys_timeout(1 * 1000, pxdns_timer, pxdns);
     }
 }
