@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: EventImpl.cpp 72847 2018-07-04 02:04:32Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -748,9 +748,8 @@ ListenerRecord::ListenerRecord(IEventListener *aListener,
                                com::SafeArray<VBoxEventType_T> &aInterested,
                                BOOL aActive,
                                EventSource *aOwner) :
-    mActive(aActive), mOwner(aOwner), mQEventBusyCnt(0), mRefCnt(0)
+    mListener(aListener), mActive(aActive), mOwner(aOwner), mQEventBusyCnt(0), mRefCnt(0)
 {
-    mListener = aListener;
     EventMap *aEvMap = &aOwner->m->mEvMap;
 
     for (size_t i = 0; i < aInterested.size(); ++i)
