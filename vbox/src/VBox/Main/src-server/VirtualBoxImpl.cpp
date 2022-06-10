@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 73003 2018-07-09 11:09:32Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 73155 2018-07-16 11:12:46Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -78,6 +78,8 @@
 
 #include "AutoCaller.h"
 #include "Logging.h"
+
+# include "CloudUserProfileManagerImpl.h"
 
 #include <QMTranslator.h>
 
@@ -1815,6 +1817,20 @@ HRESULT VirtualBox::createUnattendedInstaller(ComPtr<IUnattended> &aUnattended)
     NOREF(aUnattended);
     return E_NOTIMPL;
 #endif
+}
+
+HRESULT VirtualBox::createCloudUserProfileManager(ComPtr<ICloudUserProfileManager> &aManager)
+{
+    ComObjPtr<CloudUserProfileManager> ptrCloudUserProfileManager;
+    HRESULT hrc = ptrCloudUserProfileManager.createObject();
+    if (SUCCEEDED(hrc))
+    {
+        AutoReadLock wlock(this COMMA_LOCKVAL_SRC_POS);
+        hrc = ptrCloudUserProfileManager->init(this);
+        if (SUCCEEDED(hrc))
+            hrc = ptrCloudUserProfileManager.queryInterfaceTo(aManager.asOutParam());
+    }
+    return hrc;
 }
 
 HRESULT VirtualBox::createMedium(const com::Utf8Str &aFormat,

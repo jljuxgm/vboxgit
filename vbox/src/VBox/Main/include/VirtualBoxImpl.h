@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 73003 2018-07-09 11:09:32Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 73155 2018-07-16 11:12:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -312,6 +312,7 @@ private:
                              std::vector<MachineState_T> &aStates);
     HRESULT createAppliance(ComPtr<IAppliance> &aAppliance);
     HRESULT createUnattendedInstaller(ComPtr<IUnattended> &aUnattended);
+    HRESULT createCloudUserProfileManager(ComPtr<ICloudUserProfileManager> &aManager);
     HRESULT createMedium(const com::Utf8Str &aFormat,
                          const com::Utf8Str &aLocation,
                          AccessMode_T aAccessMode,
