@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 73721 2018-08-16 18:09:07Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 73723 2018-08-16 18:18:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1603,7 +1603,7 @@ void UIMediumManager::configure()
 void UIMediumManager::configureCentralWidget()
 {
     /* Create widget: */
-    UIMediumManagerWidget *pWidget = new UIMediumManagerWidget(EmbedTo_Dialog, m_pActionPool, this);
+    UIMediumManagerWidget *pWidget = new UIMediumManagerWidget(EmbedTo_Dialog, m_pActionPool, true, this);
     AssertPtrReturnVoid(pWidget);
     {
         /* Configure widget: */
