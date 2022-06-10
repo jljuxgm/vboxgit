@@ -1,4 +1,4 @@
-/* $Id: bldprog-strtab-template.cpp.h 76373 2018-12-22 04:43:51Z vboxsync $ */
+/* $Id: bldprog-strtab-template.cpp.h 76374 2018-12-22 04:45:33Z vboxsync $ */
 /** @file
  * IPRT - Build Program - String Table Generator.
  */
@@ -157,7 +157,7 @@ typedef struct BLDPROGSTRTAB
 } BLDPROGSTRTAB;
 typedef BLDPROGSTRTAB *PBLDPROGSTRTAB;
 
-#if RT_CLANG_PREREQ(4, 0) || RT_GCC_PREREQ(4, 6)
+#if RT_CLANG_PREREQ(4, 0) || RT_GNUC_PREREQ(4, 6)
 #  pragma GCC diagnostic push
 #  pragma GCC diagnostic ignored "-Wunused-function"
 #endif
@@ -1038,7 +1038,7 @@ static void BldProgStrTab_WriteStringTable(PBLDPROGSTRTAB pThis, FILE *pOut,
 #endif
 }
 
-#if RT_CLANG_PREREQ(4, 0) || RT_GCC_PREREQ(4, 6)
+#if RT_CLANG_PREREQ(4, 0) || RT_GNUC_PREREQ(4, 6)
 #  pragma GCC diagnostic pop
 #endif
 
