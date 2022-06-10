@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72758 2018-06-29 08:57:48Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72761 2018-06-29 09:53:35Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1364,6 +1364,7 @@ static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu, PCCPUMCTX pCtx, PSVMVMCB pVmcb, 
  */
 DECLASM(int) SVMR0VMSwitcherRun64(RTHCPHYS HCPhysVmcbHost, RTHCPHYS HCPhysVmcb, PCPUMCTX pCtx, PVM pVM, PVMCPU pVCpu)
 {
+    RT_NOREF(pVM);
     uint32_t aParam[8];
     aParam[0] = RT_LO_U32(HCPhysVmcbHost);              /* Param 1: HCPhysVmcbHost - Lo. */
     aParam[1] = RT_HI_U32(HCPhysVmcbHost);              /* Param 1: HCPhysVmcbHost - Hi. */
