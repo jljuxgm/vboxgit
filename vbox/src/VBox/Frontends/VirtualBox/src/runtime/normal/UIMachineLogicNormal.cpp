@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 75339 2018-11-09 07:02:36Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 75357 2018-11-09 12:17:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -268,6 +268,17 @@ void UIMachineLogicNormal::sltHostScreenAvailableAreaChange()
     UIMachineLogic::sltHostScreenAvailableAreaChange();
 }
 
+void UIMachineLogicNormal::prepareActionGroups()
+{
+    /* Call to base-class: */
+    UIMachineLogic::prepareActionGroups();
+
+    /* Restrict 'Multiscreen' actions for 'View' menu: */
+    actionPool()->toRuntime()->setRestrictionForMenuView(UIActionRestrictionLevel_Logic,
+                                                         (UIExtraDataMetaDefs::RuntimeMenuViewActionType)
+                                                         (UIExtraDataMetaDefs::RuntimeMenuViewActionType_Multiscreen));
+}
+
 void UIMachineLogicNormal::prepareActionConnections()
 {
     /* Call to base-class: */
@@ -349,17 +360,6 @@ void UIMachineLogicNormal::cleanupMenu()
     m_pPopupMenu = 0;
 }
 #endif /* !VBOX_WS_MAC */
-
-void UIMachineLogicNormal::prepareActionGroups()
-{
-    /* Call to base-class: */
-    UIMachineLogic::prepareActionGroups();
-
-    /* Restrict 'Adjust Window', 'Guest Autoresize', 'Status Bar' and 'Resize' actions for 'View' menu: */
-    actionPool()->toRuntime()->setRestrictionForMenuView(UIActionRestrictionLevel_Logic,
-                                                         (UIExtraDataMetaDefs::RuntimeMenuViewActionType)
-                                                         (UIExtraDataMetaDefs::RuntimeMenuViewActionType_Multiscreen));
-}
 
 void UIMachineLogicNormal::cleanupMachineWindows()
 {
