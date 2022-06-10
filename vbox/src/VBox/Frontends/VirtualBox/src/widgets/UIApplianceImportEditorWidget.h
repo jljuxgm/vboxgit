@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.h 74610 2018-10-04 12:07:36Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.h 74626 2018-10-05 11:57:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class declaration.
  */
@@ -73,6 +73,7 @@ private:
     QLabel             *m_pMACComboBoxLabel;
     QComboBox          *m_pMACComboBox;
     QGridLayout        *m_pOptionsLayout;
+    QLabel             *m_pAdditionalOptionsLabel;
 };
 
 #endif /* __UIApplianceImportEditorWidget_h__ */
