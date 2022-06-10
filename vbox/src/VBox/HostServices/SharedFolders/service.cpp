@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75500 2018-11-16 01:24:39Z vboxsync $ */
+/* $Id: service.cpp 75506 2018-11-16 02:38:27Z vboxsync $ */
 /** @file
  * Shared Folders - Host service entry points.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

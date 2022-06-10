@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75500 2018-11-16 01:24:39Z vboxsync $ */
+/* $Id: service.cpp 75506 2018-11-16 02:38:27Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -68,6 +68,7 @@
  *
  * This section may be written in the future :)
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
