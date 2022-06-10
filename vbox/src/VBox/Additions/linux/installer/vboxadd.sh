@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 76912 2019-01-21 11:21:43Z vboxsync $
+# $Id: vboxadd.sh 76984 2019-01-25 10:56:40Z vboxsync $
 ## @file
-# Linux Additions kernel module init script ($Revision: 76912 $)
+# Linux Additions kernel module init script ($Revision: 76984 $)
 #
 
 #
@@ -504,7 +504,7 @@ setup()
         fi
         # That is, we mark all but the requested kernel.
         rm -f "$SKIPFILE_BASE"-"$TARGET_VER"
-        test -d /lib/modules/"TARGET_VER"/build || test -n "$QUICKSETUP" ||
+        test -d /lib/modules/"$TARGET_VER"/build || test -n "$QUICKSETUP" ||
             info "Kernel headers not found for target kernel $TARGET_VER. \
 Please install them and execute
   /sbin/rcvboxadd setup"
