@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 73890 2018-08-25 13:28:15Z vboxsync $ */
+/* $Id: http-curl.cpp 73918 2018-08-27 15:08:55Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -2703,6 +2703,14 @@ RTR3DECL(int) RTHttpGetFile(RTHTTP hHttp, const char *pszUrl, const char *pszDst
 
     ASMAtomicWriteBool(&pThis->fBusy, false);
     return rc;
+}
+
+
+RTR3DECL(int) RTHttpPerform(RTHTTP hHttp, const char *pszUrl, RTHTTPMETHOD enmMethod,
+                            uint32_t *puHttpStatus, void **ppvHeaders, size_t *pcbHeaders, void **ppvBody, size_t *pcbBody)
+{
+    RT_NOREF(hHttp, pszUrl, enmMethod, puHttpStatus, ppvHeaders, pcbHeaders, ppvBody, pcbBody);
+    return VERR_NOT_IMPLEMENTED;
 }
 
 

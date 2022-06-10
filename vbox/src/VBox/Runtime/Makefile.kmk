@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 73905 2018-08-27 08:58:29Z vboxsync $
+# $Id: Makefile.kmk 73918 2018-08-27 15:08:55Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1653,6 +1653,7 @@ ifdef VBOX_WITH_LIBCURL
  	generic/http-curl.cpp \
  	common/rest/rest-primary-object-types.cpp \
  	common/rest/RTCRestClientApiBase.cpp \
+ 	common/rest/RTCRestClientRequestBase.cpp \
  	common/rest/RTCRestJsonPrimaryCursor.cpp \
  	common/rest/RTCRestOutputToString.cpp
 endif
