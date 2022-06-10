@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 75014 2018-10-23 18:12:05Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 75027 2018-10-24 11:34:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -638,7 +638,7 @@ void UICloudProfileManagerWidget::prepareToolBar()
     if (m_pToolBar)
     {
         /* Configure toolbar: */
-        const int iIconMetric = (int)(QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) * 1.375);
+        const int iIconMetric = (int)(QApplication::style()->pixelMetric(QStyle::PM_LargeIconSize));
         m_pToolBar->setIconSize(QSize(iIconMetric, iIconMetric));
         m_pToolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 

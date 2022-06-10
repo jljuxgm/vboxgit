@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 73882 2018-08-24 16:56:38Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 75027 2018-10-24 11:34:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -553,7 +553,7 @@ void UIVMLogViewerWidget::prepareToolBar()
     if (m_pToolBar)
     {
         /* Configure toolbar: */
-        const int iIconMetric = (int)(QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) * 1.375);
+        const int iIconMetric = (int)(QApplication::style()->pixelMetric(QStyle::PM_LargeIconSize));
         m_pToolBar->setIconSize(QSize(iIconMetric, iIconMetric));
         m_pToolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
