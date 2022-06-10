@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77742 2019-03-17 03:42:43Z vboxsync $ */
+/* $Id: vfsmod.h 77743 2019-03-17 03:43:09Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -58,7 +58,7 @@
 /*
  * Logging wrappers.
  */
-#if 0
+#if 1
 # define TRACE()                LogFunc(("tracepoint\n"))
 # define SFLOG(aArgs)           Log(aArgs)
 # define SFLOGFLOW(aArgs)       LogFlow(aArgs)
