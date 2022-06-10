@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74652 2018-10-07 12:10:28Z vboxsync $
+# $Id: Makefile.kmk 74653 2018-10-07 12:49:57Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2168,7 +2168,6 @@ VBoxRT_LDFLAGS.darwin          = \
 	-framework SystemConfiguration \
 	-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxRT.dylib
 VBoxRT_LDFLAGS.win             = /MANIFEST \
-	/delayload:gdi32.dll \
 	/delayload:user32.dll \
 	/delayload:shell32.dll \
 	/delayload:ole32.dll \
