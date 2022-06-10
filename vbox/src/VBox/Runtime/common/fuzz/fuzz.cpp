@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 77650 2019-03-11 12:48:14Z vboxsync $ */
+/* $Id: fuzz.cpp 77651 2019-03-11 12:58:14Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -410,6 +410,7 @@ typedef struct RTFUZZMUTATORINTEGER
 typedef RTFUZZMUTATORINTEGER *PRTFUZZMUTATORINTEGER;
 /** Pointer to constant additional integer replacing mutator data. */
 typedef const RTFUZZMUTATORINTEGER *PCRTFUZZMUTATORINTEGER;
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
