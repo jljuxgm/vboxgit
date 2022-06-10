@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic1.h 72916 2018-07-05 12:21:25Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.h 72920 2018-07-05 14:51:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic1 class declaration.
  */
@@ -39,7 +39,6 @@ protected:
 
     /** Returns a list of selected machine names. */
     QStringList machineNames() const;
-
     /** Returns a list of selected machine IDs. */
     QStringList machineIDs() const;
 
@@ -64,18 +63,21 @@ public:
 private:
 
     /** Handles translation event. */
-    void retranslateUi();
+    virtual void retranslateUi() /* override */;
 
     /** Performs page initialization. */
-    void initializePage();
+    virtual void initializePage() /* override */;
 
     /** Returns whether page is complete. */
-    bool isComplete() const;
+    virtual bool isComplete() const /* override */;
+
     /** Performs page validation. */
-    bool validatePage();
+    virtual bool validatePage() /* override */;
 
     /** Returns next page ID. */
-    int nextId() const;
+    virtual int nextId() const /* override */;
+
+private:
 
     /** Holds the label instance. */
     QIRichTextLabel *m_pLabel;
