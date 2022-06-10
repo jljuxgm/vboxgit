@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 73445 2018-08-02 10:54:16Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 73491 2018-08-03 14:51:55Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -197,7 +197,7 @@ VMMR3DECL(int) DBGFR3AsLinkModule(PUVM pUVM, RTDBGAS hDbgAs, RTDBGMOD hMod, PCDB
 {
     return VERR_INTERNAL_ERROR;
 }
-VMMR3DECL(int) DBGFR3ModInMem(PUVM pUVM, PCDBGFADDRESS pImageAddr, uint32_t fFlags, const char *pszName,
+VMMR3DECL(int) DBGFR3ModInMem(PUVM pUVM, PCDBGFADDRESS pImageAddr, uint32_t fFlags, const char *pszName, const char *pszFilename,
                               RTLDRARCH enmArch, uint32_t cbImage, PRTDBGMOD phDbgMod, PRTERRINFO pErrInfo)
 {
     return VERR_INTERNAL_ERROR;
