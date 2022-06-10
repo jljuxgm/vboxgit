@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 75220 2018-11-02 08:07:11Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 75224 2018-11-02 12:45:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -614,10 +614,28 @@ QStringList UIGuestControlFileManager::getFsObjInfoStringList(const T &fsObjectI
 
 void UIGuestControlFileManager::saveSettings()
 {
+    /* Save a list of currently visible panels: */
+    QStringList strNameList;
+    foreach(UIGuestControlFileManagerPanel* pPanel, m_visiblePanelsList)
+        strNameList.append(pPanel->panelName());
+    gEDataManager->setGuestControlFileManagerVisiblePanels(strNameList);
 }
 
 void UIGuestControlFileManager::loadSettings()
 {
+    /* Load the visible panel list and show them: */
+    QStringList strNameList = gEDataManager->guestControlFileManagerVisiblePanels();
+    foreach(const QString strName, strNameList)
+    {
+        foreach(UIGuestControlFileManagerPanel* pPanel, m_panelActionMap.keys())
+        {
+            if (strName == pPanel->panelName())
+            {
+                showPanel(pPanel);
+                break;
+            }
+        }
+    }
 }
 
 void UIGuestControlFileManager::hidePanel(UIGuestControlFileManagerPanel* panel)

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerSessionPanel.h 75220 2018-11-02 08:07:11Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerSessionPanel.h 75224 2018-11-02 12:45:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -36,6 +36,7 @@ public:
     UIGuestControlFileManagerSessionPanel(UIGuestControlFileManager *pManagerWidget, QWidget *pParent);
     void switchSessionCloseMode();
     void switchSessionCreateMode();
+    virtual QString panelName() const /* override */;
 
 signals:
 

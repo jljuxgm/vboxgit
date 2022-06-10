@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 75221 2018-11-02 09:53:25Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 75224 2018-11-02 12:45:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4129,6 +4129,16 @@ bool UIExtraDataManager::guestControlFileManagerDialogShouldBeMaximized()
 void UIExtraDataManager::setGuestControlFileManagerDialogGeometry(const QRect &geometry, bool fMaximized)
 {
     setDialogGeometry(GUI_GuestControl_FileManagerDialogGeometry, geometry, fMaximized);
+}
+
+void UIExtraDataManager::setGuestControlFileManagerVisiblePanels(const QStringList &panelNameList)
+{
+    setExtraDataStringList(GUI_GuestControl_FileManagerVisiblePanels, panelNameList);
+}
+
+QStringList UIExtraDataManager::guestControlFileManagerVisiblePanels()
+{
+    return extraDataStringList(GUI_GuestControl_FileManagerVisiblePanels);
 }
 
 QRect UIExtraDataManager::guestProcessControlDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry)

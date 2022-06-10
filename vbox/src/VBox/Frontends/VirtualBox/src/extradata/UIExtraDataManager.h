@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 75087 2018-10-26 09:59:37Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 75224 2018-11-02 12:45:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -626,15 +626,15 @@ public:
     /** @name Virtual Machine: Guest Control related dialogs
       * @{ */
         void setGuestControlProcessControlSplitterHints(const QList<int> &hints);
-        void setGuestControlFileManagerSplitterHints(const QList<int> &hints);
         QList<int> guestControlProcessControlSplitterHints();
-        QList<int> guestControlFileManagerSplitterHints();
         QRect guestControlFileManagerDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry);
         bool guestControlFileManagerDialogShouldBeMaximized();
         void setGuestControlFileManagerDialogGeometry(const QRect &geometry, bool fMaximized);
         QRect guestProcessControlDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry);
         bool guestProcessControlDialogShouldBeMaximized();
         void setGuestProcessControlDialogGeometry(const QRect &geometry, bool fMaximized);
+        void setGuestControlFileManagerVisiblePanels(const QStringList &panelNameList);
+        QStringList guestControlFileManagerVisiblePanels();
     /** @} */
 
     /** @name Virtual Machine: Close dialog

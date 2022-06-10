@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerLogPanel.h 75220 2018-11-02 08:07:11Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerLogPanel.h 75224 2018-11-02 12:45:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -33,8 +33,8 @@ class UIGuestControlFileManagerLogPanel : public UIGuestControlFileManagerPanel
 public:
 
     UIGuestControlFileManagerLogPanel(UIGuestControlFileManager *pManagerWidget, QWidget *pParent);
-
     void appendLog(const QString &str);
+    virtual QString panelName() const /* override */;
 
 signals:
 

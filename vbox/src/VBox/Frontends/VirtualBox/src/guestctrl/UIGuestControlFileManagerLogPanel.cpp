@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerLogPanel.cpp 75220 2018-11-02 08:07:11Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerLogPanel.cpp 75224 2018-11-02 12:45:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -93,6 +93,18 @@ UIGuestControlFileManagerLogPanel::UIGuestControlFileManagerLogPanel(UIGuestCont
     prepare();
 }
 
+void UIGuestControlFileManagerLogPanel::appendLog(const QString &strLog)
+{
+    if (!m_pLogTextEdit)
+        return;
+    m_pLogTextEdit->append(strLog);
+}
+
+QString UIGuestControlFileManagerLogPanel::panelName() const
+{
+    return "LogPanel";
+}
+
 void UIGuestControlFileManagerLogPanel::prepareWidgets()
 {
     if (!mainLayout())
@@ -115,11 +127,5 @@ void UIGuestControlFileManagerLogPanel::retranslateUi()
 
 }
 
-void UIGuestControlFileManagerLogPanel::appendLog(const QString &strLog)
-{
-    if (!m_pLogTextEdit)
-        return;
-    m_pLogTextEdit->append(strLog);
-}
 
 #include "UIGuestControlFileManagerLogPanel.moc"

@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerSessionPanel.cpp 75220 2018-11-02 08:07:11Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerSessionPanel.cpp 75224 2018-11-02 12:45:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -235,6 +235,11 @@ void UIGuestControlFileManagerSessionPanel::switchSessionCreateMode()
 {
     if (m_pSessionCreateWidget)
         m_pSessionCreateWidget->switchSessionCreateMode();
+}
+
+QString UIGuestControlFileManagerSessionPanel::panelName() const
+{
+    return "SessionPanel";
 }
 
 void UIGuestControlFileManagerSessionPanel::prepareWidgets()
