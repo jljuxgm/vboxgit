@@ -1,4 +1,4 @@
-/* $Id: CloudProviderManagerImpl.cpp 75667 2018-11-22 14:15:34Z vboxsync $ */
+/* $Id: CloudProviderManagerImpl.cpp 75730 2018-11-26 10:57:56Z vboxsync $ */
 /** @file
  * ICloudProviderManager  COM class implementations.
  */
@@ -163,9 +163,20 @@ void CloudProviderManager::i_addExtPack(IExtPack *aExtPack)
     m_mapCloudProviderManagers[strName] = pTmp;
     for (unsigned i = 0; i < apProvidersFromCurrExtPack.size(); i++)
     {
-        Assert(m_astrExtPackNames.size() == m_apCloudProviders.size());
-        m_astrExtPackNames.push_back(strName);
-        m_apCloudProviders.push_back(apProvidersFromCurrExtPack[i]);
+        // Sanity check each cloud provider by forcing a QueryInterface call,
+        // making sure that it implements the right interface.
+        ComPtr<ICloudProvider> pTmpCP1(apProvidersFromCurrExtPack[i]);
+        if (!pTmpCP1.isNull())
+        {
+            ComPtr<ICloudProvider> pTmpCP2;
+            pTmpCP1.queryInterfaceTo(pTmpCP2.asOutParam());
+            if (!pTmpCP2.isNull())
+            {
+                Assert(m_astrExtPackNames.size() == m_apCloudProviders.size());
+                m_astrExtPackNames.push_back(strName);
+                m_apCloudProviders.push_back(apProvidersFromCurrExtPack[i]);
+            }
+        }
     }
 }
 #endif  /* VBOX_WITH_EXTPACK */
