@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 76698 2019-01-08 09:53:32Z vboxsync $ */
+/* $Id: vbox_mode.c 76974 2019-01-24 12:22:48Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -572,7 +572,11 @@ static int vbox_get_modes(struct drm_connector *connector)
 	return num_modes;
 }
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 14, 0) && !defined(RHEL_71)
 static int vbox_mode_valid(struct drm_connector *connector,
+#else
+static enum drm_mode_status vbox_mode_valid(struct drm_connector *connector,
+#endif
 			   struct drm_display_mode *mode)
 {
 	return MODE_OK;
