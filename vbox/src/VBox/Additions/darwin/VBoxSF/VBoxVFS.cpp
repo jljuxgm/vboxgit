@@ -1,4 +1,4 @@
-/* $Id: VBoxVFS.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxVFS.cpp 75292 2018-11-06 15:06:31Z vboxsync $ */
 /** @file
  * VBoxVFS - Guest Additions Shared Folders driver. KEXT entry point.
  */
@@ -303,7 +303,7 @@ IOService * org_virtualbox_VBoxVFS::waitForCoreService(void)
     if (!serviceToMatch)
     {
         PINFO("unable to create matching dictionary");
-        return false;
+        return NULL;
     }
 
     /* Wait 10 seconds for VBoxGuest to be started */
