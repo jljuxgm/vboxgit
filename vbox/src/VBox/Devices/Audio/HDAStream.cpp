@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 76049 2018-12-07 10:51:32Z vboxsync $ */
+/* $Id: HDAStream.cpp 76172 2018-12-12 11:42:21Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -434,7 +434,7 @@ int hdaR3StreamInit(PHDASTREAM pStream, uint8_t uSD)
         LogFunc(("[SD%RU8] cfPosAdjust=%RU32, cFragments=%RU8\n", pStream->u8SD, cfPosAdjust, cFragments));
 
         /*
-         * Set up data transfer transfer stuff.
+         * Set up data transfer stuff.
          */
 
         /* Calculate the fragment size the guest OS expects interrupt delivery at. */
