@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 75033 2018-10-24 11:50:41Z vboxsync $ */
+/* $Id: WebMWriter.h 75041 2018-10-24 13:57:34Z vboxsync $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -362,6 +362,8 @@ public:
         bool            fOpen;
         /** Absolute timecode (in ms) when this cluster starts. */
         WebMTimecodeAbs tcAbsStartMs;
+        /** Absolute timecode (in ms) of when last written to this cluster. */
+        WebMTimecodeAbs tcAbsLastWrittenMs;
         /** Number of (simple) blocks in this cluster. */
         uint64_t        cBlocks;
     };
