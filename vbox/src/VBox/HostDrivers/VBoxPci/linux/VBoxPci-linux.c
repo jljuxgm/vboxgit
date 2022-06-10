@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 72139 2018-05-07 13:54:48Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 72803 2018-07-02 23:42:23Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -433,7 +433,8 @@ static int vboxPciLinuxDevDetachHostDriver(PVBOXRAWPCIINS pIns)
             return VERR_ACCESS_DENIED;
         }
         /** @todo RTStrCopy not exported. */
-        strncpy(pIns->szPrevDriver, currentDriver, sizeof(pIns->szPrevDriver));
+        strncpy(pIns->szPrevDriver, currentDriver, sizeof(pIns->szPrevDriver) - 1);
+        pIns->szPrevDriver[sizeof(pIns->szPrevDriver) - 1] = '\0';
     }
 
     PCI_DEV_PUT(pPciDev);
