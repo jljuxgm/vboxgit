@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 77587 2019-03-06 16:40:18Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 77588 2019-03-06 16:47:50Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1151,7 +1151,7 @@ protected:
  */
 class GuestObject : public GuestBase
 {
-    friend GuestSession;
+    friend class GuestSession;
 
 public:
 
