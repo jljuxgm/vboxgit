@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 74885 2018-10-17 15:13:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -328,6 +328,7 @@ void UISelectorWindow::sltHandleChooserPaneIndexChange(bool fUpdateDetails /* = 
 
 void UISelectorWindow::sltHandleMediumEnumerationFinish()
 {
+    printf("Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
     /* We try to warn about inaccessible media only once
      * (after media emumeration started from main() at startup),
      * to avoid annoying the user: */
@@ -357,6 +358,7 @@ void UISelectorWindow::sltHandleMediumEnumerationFinish()
         /* Open the MM window: */
         sltOpenVirtualMediumManagerWindow();
     }
+
 }
 
 void UISelectorWindow::sltOpenUrls(QList<QUrl> list /* = QList<QUrl>() */)

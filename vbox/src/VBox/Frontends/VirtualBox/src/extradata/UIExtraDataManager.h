@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 74885 2018-10-17 15:13:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -605,11 +605,11 @@ public:
         bool hidLedsSyncState(const QUuid &aID);
 
         /** Returns the scale-factor. */
-        double scaleFactor(const int uScreenIndex, const QUuid &aID = GlobalID);
-        QList<double> scaleFactors(const QUuid &aID = GlobalID);
+        double scaleFactor(const QUuid &aID, const int uScreenIndex);
+        QList<double> scaleFactors(const QUuid &aID);
         /** Defines the @a dScaleFactor. */
-        void setScaleFactor(double dScaleFactor, const int uScreenIndex, const QUuid &aID = GlobalID);
-        void setScaleFactors(const QList<double> &scaleFactors, const QUuid &aID = GlobalID);
+        void setScaleFactor(double dScaleFactor, const QUuid &aID, const int uScreenIndex);
+        void setScaleFactors(const QList<double> &scaleFactors, const QUuid &aID);
 
         /** Returns the scaling optimization type. */
         ScalingOptimizationType scalingOptimizationType(const QUuid &aID);
