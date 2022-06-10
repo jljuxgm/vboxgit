@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 76626 2019-01-03 21:18:50Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 76977 2019-01-24 14:43:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -410,6 +410,7 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_LogViewerWrapLinesEnabled;
         SHARED_LIBRARY_STUFF extern const char *GUI_LogViewerShowLineNumbersDisabled;
         SHARED_LIBRARY_STUFF extern const char *GUI_LogViewerNoFontStyleName;
+        SHARED_LIBRARY_STUFF extern const char *GUI_GuestControl_LogViewerVisiblePanels;
     /** @} */
 
 

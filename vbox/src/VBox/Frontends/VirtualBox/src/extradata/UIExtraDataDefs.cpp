@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 76626 2019-01-03 21:18:50Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 76977 2019-01-24 14:43:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -222,6 +222,7 @@ const char *UIExtraDataDefs::GUI_LogViewerOptions = "GUI/LogViewerOptions";
 const char *UIExtraDataDefs::GUI_LogViewerWrapLinesEnabled = "WrapLines";
 const char *UIExtraDataDefs::GUI_LogViewerShowLineNumbersDisabled = "showLineNumbersDisabled";
 const char *UIExtraDataDefs::GUI_LogViewerNoFontStyleName = "noFontStyleName";
+const char *UIExtraDataDefs::GUI_GuestControl_LogViewerVisiblePanels = "GUI/LogViewerVisiblePanels";
 
 
 /* Obsolete keys: */

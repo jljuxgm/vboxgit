@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 76950 2019-01-23 10:17:54Z vboxsync $ */
+/* $Id: UIFileManager.cpp 76977 2019-01-24 14:43:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -100,7 +100,6 @@ void UIFileManagerOptions::destroy()
 
  UIFileManagerOptions::~UIFileManagerOptions()
 {
-
 }
 
 UIFileManagerOptions::UIFileManagerOptions()

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 76961 2019-01-24 08:28:35Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 76977 2019-01-24 14:43:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
@@ -146,6 +146,8 @@ private:
         void prepareToolBar();
         /** Loads options.  */
         void loadOptions();
+        /** Shows the panels that have been visible the last time logviewer is closed. */
+        void restorePanelVisibility();
 
         /** Saves options.  */
         void saveOptions();

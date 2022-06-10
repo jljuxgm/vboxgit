@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 76626 2019-01-03 21:18:50Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 76977 2019-01-24 14:43:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -722,6 +722,8 @@ public:
         bool logViewerShowLineNumbers();
         /** Tries to find system font by searching by family and style strings within the font database. */
         QFont logViewerFont();
+        void setLogViewerVisiblePanels(const QStringList &panelNameList);
+        QStringList logViewerVisiblePanels();
     /** @} */
 
 private slots:
