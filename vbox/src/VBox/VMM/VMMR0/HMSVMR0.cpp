@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73048 2018-07-11 02:45:02Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73049 2018-07-11 02:46:34Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6353,7 +6353,7 @@ HMSVM_EXIT_DECL hmR0SvmExitInvlpg(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
     if (   fSupportsDecodeAssists
         && fSupportsNextRipSave)
     {
-        HMSVM_CPUMCTX_IMPORT_STATE(pVCpu, IEM_CPUMCTX_EXTRN_MUST_MASK);
+        HMSVM_CPUMCTX_IMPORT_STATE(pVCpu, IEM_CPUMCTX_EXTRN_EXEC_DECODED_MEM_MASK);
         PCSVMVMCB pVmcb = hmR0SvmGetCurrentVmcb(pVCpu);
         uint8_t const cbInstr   = pVmcb->ctrl.u64NextRIP - pVCpu->cpum.GstCtx.rip;
         RTGCPTR const GCPtrPage = pVmcb->ctrl.u64ExitInfo1;
