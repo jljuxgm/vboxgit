@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollArea.cpp 77156 2019-02-04 18:10:00Z vboxsync $ */
+/* $Id: UIGraphicsScrollArea.cpp 77203 2019-02-07 17:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollArea class implementation.
  */
@@ -116,18 +116,18 @@ bool UIGraphicsScrollArea::eventFilter(QObject *pObject, QEvent *pEvent)
             case Qt::Horizontal:
             {
                 if (angleDelta.x() > 0)
-                    m_pScrollBar->setValue(m_pScrollBar->value() - m_pScrollBar->wheelStep());
+                    m_pScrollBar->setValue(m_pScrollBar->value() - m_pScrollBar->step());
                 else
-                    m_pScrollBar->setValue(m_pScrollBar->value() + m_pScrollBar->wheelStep());
+                    m_pScrollBar->setValue(m_pScrollBar->value() + m_pScrollBar->step());
                 break;
             }
             /* Scroll viewport vertically: */
             case Qt::Vertical:
             {
                 if (angleDelta.y() > 0)
-                    m_pScrollBar->setValue(m_pScrollBar->value() - m_pScrollBar->wheelStep());
+                    m_pScrollBar->setValue(m_pScrollBar->value() - m_pScrollBar->step());
                 else
-                    m_pScrollBar->setValue(m_pScrollBar->value() + m_pScrollBar->wheelStep());
+                    m_pScrollBar->setValue(m_pScrollBar->value() + m_pScrollBar->step());
                 break;
             }
         }
@@ -170,6 +170,7 @@ void UIGraphicsScrollArea::prepareWidgets()
     m_pScrollBar = new UIGraphicsScrollBar(m_enmOrientation, this);
     if (m_pScrollBar)
     {
+        m_pScrollBar->setStep(10);
         m_pScrollBar->setZValue(1);
         connect(m_pScrollBar, &UIGraphicsScrollBar::sigValueChanged,
                 this, &UIGraphicsScrollArea::sltHandleScrollBarValueChange);

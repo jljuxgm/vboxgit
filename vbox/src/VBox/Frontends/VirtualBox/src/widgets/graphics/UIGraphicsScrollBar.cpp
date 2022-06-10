@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.cpp 77155 2019-02-04 18:06:53Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.cpp 77203 2019-02-07 17:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class implementation.
  */
@@ -190,11 +190,6 @@ int UIGraphicsScrollBar::step() const
     return m_iStep;
 }
 
-int UIGraphicsScrollBar::wheelStep() const
-{
-    return 10 * step();
-}
-
 void UIGraphicsScrollBar::setMinimum(int iMinimum)
 {
     m_iMinimum = iMinimum;
@@ -268,6 +263,10 @@ void UIGraphicsScrollBar::mousePressEvent(QGraphicsSceneMouseEvent *pEvent)
 {
     /* Call to base-class: */
     QIGraphicsWidget::mousePressEvent(pEvent);
+
+    /* Mark event accepted so that it couldn't
+     * influence underlying widgets: */
+    pEvent->accept();
 
     /* Redirect to token move handler: */
     sltTokenMoved(pEvent->pos());

@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.h 77155 2019-02-04 18:06:53Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.h 77203 2019-02-07 17:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class declaration.
  */
@@ -54,8 +54,6 @@ public:
     void setStep(int iStep);
     /** Returns scrolling step. */
     int step() const;
-    /** Returns scrolling wheel step. */
-    int wheelStep() const;
 
     /** Defines @a iMinimum scroll-bar value. */
     void setMinimum(int iMinimum);
