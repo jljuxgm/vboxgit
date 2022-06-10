@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 73084 2018-07-12 09:36:32Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 75576 2018-11-19 14:42:45Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -557,8 +557,10 @@ static int vboxPciLinuxDevReattachHostDriver(PVBOXRAWPCIINS pIns)
         struct file*       pFile;
         int                iCmdLen;
         const int          cMaxBuf = 128;
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29)
         const struct cred *pOldCreds;
         struct cred       *pNewCreds;
+#endif
         uint8_t            uBus =   (pIns->HostPciAddress) >> 8;
         uint8_t            uDevFn = (pIns->HostPciAddress) & 0xff;
 
