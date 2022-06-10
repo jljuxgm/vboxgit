@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 72460 2018-06-06 11:16:12Z vboxsync $ */
+/* $Id: GIM.cpp 76308 2018-12-20 04:53:37Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -31,7 +31,7 @@
  *
  * The GIM provider configured for the VM needs to be recognized by the guest OS
  * in order to make use of features supported by the interface. Since it
- * requires co-operation from the guest OS, a GIM provider may also referred to
+ * requires co-operation from the guest OS, a GIM provider may also be referred to
  * as a paravirtualization interface.
  *
  * One of the goals of having a paravirtualized interface is for enabling guests
