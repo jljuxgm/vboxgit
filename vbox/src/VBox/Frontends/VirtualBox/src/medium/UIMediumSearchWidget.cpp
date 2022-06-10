@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.cpp 77702 2019-03-14 14:02:18Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.cpp 77721 2019-03-15 10:40:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class implementation.
  */
@@ -72,6 +72,7 @@ private:
     UIMediumSearchWidget::SearchType m_enmSearchType;
     QString m_strSearchTerm;
 };
+
 
 /*********************************************************************************************************************************
 *   UIMediumSearchWidget implementation      .                                                                                   *
