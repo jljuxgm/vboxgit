@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 77377 2019-02-20 13:00:16Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 77395 2019-02-20 17:46:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -33,6 +33,9 @@
 #include "UIVisoCreatorOptionsPanel.h"
 #include "UIVisoContentBrowser.h"
 #include "VBoxGlobal.h"
+#ifdef VBOX_WS_MAC
+# include "VBoxUtils-darwin.h"
+#endif
 
 UIVisoCreator::UIVisoCreator(QWidget *pParent /* =0 */, const QString& strMachineName /* = QString() */)
     : QIWithRetranslateUI<QIMainDialog>(pParent)
