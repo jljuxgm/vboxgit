@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 75861 2018-12-02 00:26:36Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 75862 2018-12-02 00:33:01Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -160,7 +160,6 @@ int Guest::i_dispatchToSession(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
         alock.release();
 
 #ifdef DEBUG
-        bool fDispatch = true;
         /*
          * Pre-check: If we got a status message with an error and VERR_TOO_MUCH_DATA
          *            it means that that guest could not handle the entire message
@@ -168,6 +167,7 @@ int Guest::i_dispatchToSession(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
          *            use but testcases might try this. It then makes no sense to dispatch
          *            this further because we don't have a valid context ID.
          */
+        bool fDispatch = true;
         if (   pCtxCb->uFunction == GUEST_EXEC_STATUS
             && pSvcCb->mParms    >= 5)
         {
@@ -182,9 +182,9 @@ int Guest::i_dispatchToSession(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
                 && (int32_t)dataCb.uFlags == VERR_TOO_MUCH_DATA)
             {
                 LogFlowFunc(("Requested command with too much data, skipping dispatching ...\n"));
-
                 Assert(dataCb.uPID == 0);
                 fDispatch = false;
+                rc = VINF_SUCCESS;
             }
         }
         if (fDispatch)
