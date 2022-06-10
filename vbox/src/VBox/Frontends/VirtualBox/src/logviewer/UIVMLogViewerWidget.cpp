@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 73694 2018-08-15 15:07:32Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 73697 2018-08-15 15:58:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -59,11 +59,13 @@
 
 UIVMLogViewerWidget::UIVMLogViewerWidget(EmbedTo enmEmbedding,
                                          UIActionPool *pActionPool,
+                                         bool fShowToolbar /* = true */,
                                          const CMachine &comMachine /* = CMachine() */,
                                          QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_enmEmbedding(enmEmbedding)
     , m_pActionPool(pActionPool)
+    , m_fShowToolbar(fShowToolbar)
     , m_comMachine(comMachine)
     , m_fIsPolished(false)
     , m_pTabWidget(0)
@@ -420,7 +422,8 @@ void UIVMLogViewerWidget::prepare()
 
     /* Prepare stuff: */
     prepareActions();
-    prepareToolBar();
+    if (m_fShowToolbar)
+        prepareToolBar();
     prepareWidgets();
     /* Load settings: */
     loadSettings();
