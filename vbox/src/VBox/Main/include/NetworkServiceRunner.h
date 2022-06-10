@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.h 75569 2018-11-19 12:04:20Z vboxsync $ */
+/* $Id: NetworkServiceRunner.h 75614 2018-11-20 11:41:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server.
  */
@@ -35,6 +35,7 @@ public:
     virtual ~NetworkServiceRunner();
 
     int setOption(const std::string& key, const std::string& val);
+    void clearOptions();
 
     int  start(bool aKillProcOnStop);
     int  stop();
