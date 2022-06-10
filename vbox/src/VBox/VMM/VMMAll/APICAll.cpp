@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: APICAll.cpp 78206 2019-04-18 14:40:06Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -27,6 +27,13 @@
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/vmm.h>
 #include <VBox/vmm/vmcpuset.h>
+
+
+/*********************************************************************************************************************************
+*   Internal Functions                                                                                                           *
+*********************************************************************************************************************************/
+static void apicSetInterruptFF(PVMCPU pVCpu, PDMAPICIRQ enmType);
+static void apicStopTimer(PVMCPU pVCpu);
 
 
 /*********************************************************************************************************************************
@@ -2969,7 +2976,7 @@ APICBOTHCBDECL(int) apicWriteMmio(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCP
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   enmType         The IRQ type.
  */
-VMM_INT_DECL(void) apicSetInterruptFF(PVMCPU pVCpu, PDMAPICIRQ enmType)
+static void apicSetInterruptFF(PVMCPU pVCpu, PDMAPICIRQ enmType)
 {
     switch (enmType)
     {
@@ -3179,7 +3186,7 @@ VMM_INT_DECL(void) apicStartTimer(PVMCPU pVCpu, uint32_t uInitialCount)
  * @param   pVCpu               The cross context virtual CPU structure.
  * @thread  Any.
  */
-VMM_INT_DECL(void) apicStopTimer(PVMCPU pVCpu)
+static void apicStopTimer(PVMCPU pVCpu)
 {
     Assert(pVCpu);
     PAPICCPU pApicCpu = VMCPU_TO_APICCPU(pVCpu);

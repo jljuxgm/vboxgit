@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: APICInternal.h 78206 2019-04-18 14:40:06Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1457,8 +1457,6 @@ APICBOTHCBDECL(int)           apicBusDeliver(PPDMDEVINS pDevIns, uint8_t uDest, 
 
 VMM_INT_DECL(bool)            apicPostInterrupt(PVMCPU pVCpu, uint8_t uVector, XAPICTRIGGERMODE enmTriggerMode, uint32_t uSrcTag);
 VMM_INT_DECL(void)            apicStartTimer(PVMCPU pVCpu, uint32_t uInitialCount);
-VMM_INT_DECL(void)            apicStopTimer(PVMCPU pVCpu);
-VMM_INT_DECL(void)            apicSetInterruptFF(PVMCPU pVCpu, PDMAPICIRQ enmType);
 VMM_INT_DECL(void)            apicClearInterruptFF(PVMCPU pVCpu, PDMAPICIRQ enmType);
 void                          apicInitIpi(PVMCPU pVCpu);
 void                          apicResetCpu(PVMCPU pVCpu, bool fResetApicBaseMsr);
