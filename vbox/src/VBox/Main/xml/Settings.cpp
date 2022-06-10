@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 75279 2018-11-06 12:37:11Z vboxsync $ */
+/* $Id: Settings.cpp 75283 2018-11-06 12:58:09Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4406,7 +4406,7 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
             pelmHwChild->getAttributeValue("enabled",   hw.captureSettings.fEnabled);
 
             /* Right now I don't want to bump the settings version, so just convert the enabled
-             * screens to the former uint6t_t bit array and vice versa. */
+             * screens to the former uint64t_t bit array and vice versa. */
             uint64_t u64VideoCaptureScreens;
             pelmHwChild->getAttributeValue("screens",   u64VideoCaptureScreens);
 
@@ -5821,7 +5821,7 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
             pelmVideoCapture->setAttribute("enabled", hw.captureSettings.fEnabled);
 
         /* Right now I don't want to bump the settings version, so just convert the enabled
-         * screens to the former uint6t_t bit array and vice versa. */
+         * screens to the former uint64t_t bit array and vice versa. */
         uint64_t u64VideoCaptureScreens = 0;
         CaptureScreenMap::const_iterator itScreen = hw.captureSettings.mapScreens.begin();
         while (itScreen != hw.captureSettings.mapScreens.end())
