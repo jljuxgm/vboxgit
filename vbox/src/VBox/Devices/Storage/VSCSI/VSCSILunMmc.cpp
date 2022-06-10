@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VSCSILunMmc.cpp 77010 2019-01-27 09:45:05Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -59,6 +59,8 @@ typedef enum MMCEVENTSTATUSTYPE
  * @{ */
 /** Unknown media type. */
 #define MMC_MEDIA_TYPE_UNKNOWN          0
+/** Medium is a DVD. */
+#define MMC_MEDIA_TYPE_DVD              2
 /** Door closed, no media. */
 #define MMC_MEDIA_TYPE_NO_DISC       0x70
 /** @} */
@@ -585,6 +587,13 @@ static int vscsiLunMmcReadDvdStructure(PVSCSILUNMMC pVScsiLunMmc, PVSCSIREQINT p
         case 0x11:
         case 0x30:
         case 0x31:
+            /* For a CD, these must fail. */
+#if 0
+            if (pVScsiLunMmc->u32MediaTrackType != MMC_MEDIA_TYPE_DVD)
+                return vscsiLunReqSenseErrorSet(&pVScsiLunMmc->Core, pVScsiReq, SCSI_SENSE_ILLEGAL_REQUEST,
+                                                SCSI_ASC_CANNOT_READ_MEDIUM, SCSI_ASCQ_INCOMPATIBLE_FORMAT);
+#endif
+            RT_FALL_THRU();
         case 0xff:
             if (pVScsiReq->pbCDB[1] == 0)
             {
