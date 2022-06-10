@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-os2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: spinlock-r0drv-os2.cpp 75133 2018-10-28 17:49:49Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, OS/2.
  */
@@ -66,6 +66,7 @@ typedef struct RTSPINLOCKINTERNAL
 RTDECL(int)  RTSpinlockCreate(PRTSPINLOCK pSpinlock, uint32_t fFlags, const char *pszName)
 {
     AssertReturn(fFlags == RTSPINLOCK_FLAGS_INTERRUPT_SAFE || fFlags == RTSPINLOCK_FLAGS_INTERRUPT_UNSAFE, VERR_INVALID_PARAMETER);
+    RT_NOREF(pszName);
 
     /*
      * Allocate.
