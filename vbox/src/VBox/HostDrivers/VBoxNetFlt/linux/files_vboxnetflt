@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxnetflt 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: files_vboxnetflt 77390 2019-02-20 15:51:56Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules.sh.
 #
@@ -84,8 +84,8 @@ VBOX_VBOXNETFLT_SOURCES=" \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPR0IdcClientComponent.c=>SUPR0IdcClientComponent.c \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPR0IdcClientInternal.h=>SUPR0IdcClientInternal.h \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/linux/SUPR0IdcClient-linux.c=>linux/SUPR0IdcClient-linux.c \
-    ${PATH_ROOT}/src/VBox/Installer/linux/Makefile.include.footer=>Makefile.include.footer \
-    ${PATH_ROOT}/src/VBox/Installer/linux/Makefile.include.header=>Makefile.include.header \
+    ${PATH_ROOT}/src/VBox/Installer/linux/Makefile-footer.gmk=>Makefile-footer.gmk \
+    ${PATH_ROOT}/src/VBox/Installer/linux/Makefile-header.gmk=>Makefile-header.gmk \
     ${PATH_ROOT}/src/VBox/Runtime/common/math/gcc/divdi3.c=>math/gcc/divdi3.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/math/gcc/moddi3.c=>math/gcc/moddi3.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/math/gcc/qdivrem.c=>math/gcc/qdivrem.c \

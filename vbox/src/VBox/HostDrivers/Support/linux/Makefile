@@ -1,4 +1,4 @@
-# $Id: Makefile 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile 77390 2019-02-20 15:51:56Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -27,7 +27,7 @@
 # Linux kbuild sets this to our source directory if we are called from
 # there
 obj ?= $(CURDIR)
-include $(obj)/Makefile.include.header
+include $(obj)/Makefile-header.gmk
 
 MOD_NAME = vboxdrv
 MOD_OBJS = \
@@ -162,7 +162,7 @@ endif
 MOD_CFLAGS = -include $(KBUILD_EXTMOD)/include/VBox/SUPDrvMangling.h \
 	-fno-omit-frame-pointer -fno-pie
 
-include $(obj)/Makefile.include.footer
+include $(obj)/Makefile-footer.gmk
 
 check: $(MODULE)
 	@if ! readelf -p __ksymtab_strings vboxdrv.ko | grep -E "\[.*\]  *(RT|g_..*RT.*)"; then \
