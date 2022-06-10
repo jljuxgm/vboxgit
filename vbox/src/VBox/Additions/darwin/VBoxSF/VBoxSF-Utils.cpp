@@ -1,10 +1,10 @@
-/* $Id: VBoxVFS-utils.cpp 75292 2018-11-06 15:06:31Z vboxsync $ */
+/* $Id: VBoxSF-Utils.cpp 75293 2018-11-06 16:15:09Z vboxsync $ */
 /** @file
- * VBoxVFS - helper functions.
+ * VBoxSF - Darwin Shared Folders, Utility Functions.
  */
 
 /*
- * Copyright (C) 2013-2017 Oracle Corporation
+ * Copyright (C) 2013-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -15,19 +15,15 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <mach/kmod.h>
-#include <libkern/libkern.h>
-#include <mach/mach_types.h>
 
-#include <sys/mount.h>
-#include <sys/vnode.h>
-#include <sys/errno.h>
-#include <sys/fcntl.h>
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
+#include "VBoxSFInternal.h"
 
 #include <iprt/assert.h>
 #include <iprt/mem.h>
 
-#include "vboxvfs.h"
 
 /**
  * Helper function to create XNU VFS vnode object.
