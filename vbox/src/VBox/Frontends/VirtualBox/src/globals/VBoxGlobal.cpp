@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 76833 2019-01-16 10:51:50Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 76834 2019-01-16 11:18:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4094,10 +4094,6 @@ void VBoxGlobal::prepare()
             enmOptType = OptType_VMRunner;
             m_enmLaunchRunning = LaunchRunning_Yes;
         }
-#endif
-#ifdef RT_OS_WINDOWS /** @todo add more here, please... */
-        else
-            msgCenter().warnAboutUnknownOptionType(arguments.at(i));
 #endif
         if (enmOptType == OptType_VMRunner && m_enmType != UIType_RuntimeUI)
             msgCenter().warnAboutUnrelatedOptionType(arg);
