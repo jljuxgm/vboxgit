@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 69662 2017-11-12 16:01:20Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 72691 2018-06-26 10:16:49Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
@@ -897,6 +897,13 @@ static int rtR0DbgKrnlDarwinLoadCommands(RTDBGKRNLINFOINT *pThis)
             case LC_MAIN:
             case LC_DATA_IN_CODE:
             case LC_SOURCE_VERSION:
+            case LC_ENCRYPTION_INFO_64:
+            case LC_LINKER_OPTION:
+            case LC_LINKER_OPTIMIZATION_HINT:
+            case LC_VERSION_MIN_TVOS:
+            case LC_VERSION_MIN_WATCHOS:
+            case LC_NOTE:
+            case LC_BUILD_VERSION:
                 break;
 
             /* not observed */
