@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 77069 2019-01-31 11:59:33Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 77070 2019-01-31 12:01:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1703,10 +1703,6 @@ Utf8Str GuestSession::i_guestErrorToString(int rcGuest)
 
         case VERR_CANCELLED:
             strError += Utf8StrFmt(tr("The session operation was canceled"));
-            break;
-
-        case VERR_PERMISSION_DENIED: /** @todo r=bird: This is probably completely and utterly misleading. VERR_AUTHENTICATION_FAILURE could have this message. */
-            strError += Utf8StrFmt(tr("Invalid user/password credentials"));
             break;
 
         case VERR_GSTCTL_MAX_OBJECTS_REACHED:
