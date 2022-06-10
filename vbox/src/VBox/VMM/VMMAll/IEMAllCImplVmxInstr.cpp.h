@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74683 2018-10-08 15:13:52Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74684 2018-10-08 15:15:05Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3390,7 +3390,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitTaskSwitch(PVMCPU pVCpu, IEMTASKSWITCH enmTa
      *
      * See Intel spec. 25.2 "Other Causes Of VM Exits".
      */
-    uint8_t uTaskSwitchSrc;
+    uint32_t uTaskSwitchSrc;
     switch (enmTaskSwitch)
     {
         case IEMTASKSWITCH_CALL:     uTaskSwitchSrc = 0; break;
