@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 72676 2018-06-25 11:29:04Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 72689 2018-06-26 02:37:40Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1570,6 +1570,7 @@ VMMDECL(int) CPUMSetGuestDR3(PVMCPU pVCpu, uint64_t uDr3)
 VMMDECL(int) CPUMSetGuestDR6(PVMCPU pVCpu, uint64_t uDr6)
 {
     pVCpu->cpum.s.Guest.dr[6] = uDr6;
+    pVCpu->cpum.s.Guest.fExtrn &= ~CPUMCTX_EXTRN_DR6;
     return VINF_SUCCESS; /* No need to recalc. */
 }
 
@@ -1577,6 +1578,7 @@ VMMDECL(int) CPUMSetGuestDR6(PVMCPU pVCpu, uint64_t uDr6)
 VMMDECL(int) CPUMSetGuestDR7(PVMCPU pVCpu, uint64_t uDr7)
 {
     pVCpu->cpum.s.Guest.dr[7] = uDr7;
+    pVCpu->cpum.s.Guest.fExtrn &= ~CPUMCTX_EXTRN_DR7;
     return CPUMRecalcHyperDRx(pVCpu, 7, false);
 }
 
