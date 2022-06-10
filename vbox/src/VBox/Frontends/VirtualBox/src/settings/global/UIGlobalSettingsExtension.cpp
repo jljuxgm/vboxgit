@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 73070 2018-07-11 15:52:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 75742 2018-11-26 16:44:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class implementation.
  */
@@ -115,6 +115,8 @@ struct UIDataSettingsGlobalExtension
 /* Extension package item: */
 class UIExtensionPackageItem : public QITreeWidgetItem
 {
+    Q_OBJECT;
+
 public:
 
     /* Extension package item constructor: */

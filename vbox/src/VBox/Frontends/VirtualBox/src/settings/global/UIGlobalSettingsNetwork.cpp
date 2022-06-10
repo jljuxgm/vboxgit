@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 72696 2018-06-26 16:13:10Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 75742 2018-11-26 16:44:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class implementation.
  */
@@ -59,6 +59,8 @@ struct UIDataSettingsGlobalNetwork
 /** Global settings: Network page: NAT network tree-widget item. */
 class UIItemNetworkNAT : public QITreeWidgetItem, public UIDataSettingsGlobalNetworkNAT
 {
+    Q_OBJECT;
+
 public:
 
     /** Constructs item. */

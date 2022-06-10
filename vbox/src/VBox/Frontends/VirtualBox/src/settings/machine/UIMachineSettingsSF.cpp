@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 75380 2018-11-09 22:25:30Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 75742 2018-11-26 16:44:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -98,6 +98,8 @@ struct UIDataSettingsSharedFolders
 /** Machine settings: Shared Folder tree-widget item. */
 class SFTreeViewItem : public QITreeWidgetItem, public UIDataSettingsSharedFolder
 {
+    Q_OBJECT;
+
 public:
 
     /** Format type. */
