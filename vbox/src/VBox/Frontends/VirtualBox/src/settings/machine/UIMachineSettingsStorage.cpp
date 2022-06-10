@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 77341 2019-02-18 08:49:25Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 78293 2019-04-25 10:32:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -2314,8 +2314,8 @@ void UIMachineSettingsStorage::getFromCache()
     if (m_pModelStorage->rowCount(m_pModelStorage->root()) > 0)
         m_pTreeStorage->setCurrentIndex(m_pModelStorage->index(0, 0, m_pModelStorage->root()));
 
-    /* Update action states: */
-    sltUpdateActionStates();
+    /* Fetch recent information: */
+    sltHandleCurrentItemChange();
 
     /* Polish page finally: */
     polishPage();
