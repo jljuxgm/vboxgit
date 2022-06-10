@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 77238 2019-02-10 13:48:07Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 77263 2019-02-11 13:49:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2764,7 +2764,7 @@ QUuid VBoxGlobal::showCreateFloppyDiskDialog(QWidget *pParent, const QString &st
 {
     QWidget *pDialogParent = windowManager().realParentWindow(pParent);
 
-    UIFDCreationDialog *pDialog = new UIFDCreationDialog(pParent, strMachineName, strMachineFolder);
+    UIFDCreationDialog *pDialog = new UIFDCreationDialog(pParent, strMachineFolder, strMachineName);
     if (!pDialog)
         return QUuid();
     windowManager().registerNewParent(pDialog, pDialogParent);

@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIFDCreationDialog.h 77263 2019-02-11 13:49:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
@@ -44,9 +44,10 @@ class SHARED_LIBRARY_STUFF UIFDCreationDialog : public QIWithRetranslateUI<QDial
 
 public:
 
-    UIFDCreationDialog(QWidget *pParent = 0,
-                       const QString &strMachineName = QString(),
-                       const QString &strMachineFolder = QString());
+    UIFDCreationDialog(QWidget *pParent,
+                       const QString &strDefaultFolder,
+                       const QString &strMachineName = QString());
+
 
     virtual void accept() /* override */;
     /* Return the mediumID */
@@ -77,8 +78,8 @@ private:
     QComboBox          *m_pSizeCombo;
     QDialogButtonBox   *m_pButtonBox;
     QCheckBox          *m_pFormatCheckBox;
+    QString             m_strDefaultFolder;
     QString             m_strMachineName;
-    QString             m_strMachineFolder;
     QUuid               m_uMediumID;
 };
 
