@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 75453 2018-11-14 14:46:01Z vboxsync $ */
+/* $Id: MachineImpl.cpp 75455 2018-11-14 15:04:57Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -14101,7 +14101,7 @@ HRESULT SessionMachine::i_onVRDEServerChange(BOOL aRestart)
 /**
  * @note Locks this object for reading.
  */
-HRESULT SessionMachine::i_onRecordChange()
+HRESULT SessionMachine::i_onRecordingChange()
 {
     LogFlowThisFunc(("\n"));
 

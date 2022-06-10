@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 75453 2018-11-14 14:46:01Z vboxsync $ */
+/* $Id: MachineImpl.h 75455 2018-11-14 15:04:57Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -523,7 +523,7 @@ public:
     virtual HRESULT i_onBandwidthGroupChange(IBandwidthGroup * /* aBandwidthGroup */) { return S_OK; }
     virtual HRESULT i_onStorageDeviceChange(IMediumAttachment * /* mediumAttachment */, BOOL /* remove */,
                                             BOOL /* silent */) { return S_OK; }
-    virtual HRESULT i_onRecordChange() { return S_OK; }
+    virtual HRESULT i_onRecordingChange() { return S_OK; }
 
     HRESULT i_saveRegistryEntry(settings::MachineRegistryEntry &data);
 
@@ -1326,7 +1326,7 @@ public:
     HRESULT i_onParallelPortChange(IParallelPort *parallelPort);
     HRESULT i_onCPUChange(ULONG aCPU, BOOL aRemove);
     HRESULT i_onVRDEServerChange(BOOL aRestart);
-    HRESULT i_onRecordChange();
+    HRESULT i_onRecordingChange();
     HRESULT i_onUSBControllerChange();
     HRESULT i_onUSBDeviceAttach(IUSBDevice *aDevice,
                                 IVirtualBoxErrorInfo *aError,

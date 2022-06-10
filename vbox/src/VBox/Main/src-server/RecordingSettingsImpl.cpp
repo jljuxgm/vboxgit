@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.cpp 75453 2018-11-14 14:46:01Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.cpp 75455 2018-11-14 15:04:57Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -218,7 +218,7 @@ HRESULT RecordingSettings::setEnabled(BOOL enable)
         m->bd->fEnabled = fEnabled;
 
         alock.release();
-        rc = m->pMachine->i_onRecordChange();
+        rc = m->pMachine->i_onRecordingChange();
         if (FAILED(rc))
         {
             /*
