@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 76867 2019-01-17 15:53:20Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 76988 2019-01-25 13:09:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -1751,14 +1751,6 @@ void UIChooserItemGroup::paintHeader(QPainter *pPainter, const QRect &rect)
     pPainter->setPen(palette().color(QPalette::Active,
                                      model()->currentItems().contains(this) ?
                                      QPalette::HighlightedText : QPalette::ButtonText));
-
-    /* Update buttons: */
-    if (m_pToggleButton)
-        m_pToggleButton->setParentSelected(model()->currentItems().contains(this));
-    if (m_pEnterButton)
-        m_pEnterButton->setParentSelected(model()->currentItems().contains(this));
-    if (m_pExitButton)
-        m_pExitButton->setParentSelected(model()->currentItems().contains(this));
 
     /* Paint name: */
     int iNameX = iHorizontalMargin + iParentIndent * level();
