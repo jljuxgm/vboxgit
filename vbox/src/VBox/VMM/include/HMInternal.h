@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 74457 2018-09-25 13:12:04Z vboxsync $ */
+/* $Id: HMInternal.h 75821 2018-11-29 16:43:40Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -698,7 +698,9 @@ typedef struct HMCPU
 
     /** Whether \#UD needs to be intercepted (required by certain GIM providers). */
     bool                        fGIMTrapXcptUD;
-    uint8_t                     u8Alignment0[4];
+    /** Whether \#GP needs to be intercept for mesa driver workaround. */
+    bool                        fTrapXcptGpForLovelyMesaDrv;
+    uint8_t                     u8Alignment0[3];
 
     /** World switch exit counter. */
     uint32_t volatile           cWorldSwitchExits;

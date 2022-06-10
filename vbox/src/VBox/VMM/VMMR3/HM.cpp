@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 74648 2018-10-07 06:20:55Z vboxsync $ */
+/* $Id: HM.cpp 75821 2018-11-29 16:43:40Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -493,7 +493,8 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
                               "|SvmPauseFilter"
                               "|SvmPauseFilterThreshold"
                               "|SvmVirtVmsaveVmload"
-                              "|SvmVGif",
+                              "|SvmVGif"
+                              "|LovelyMesaDrvWorkaround",
                               "" /* pszValidNodes */, "HM" /* pszWho */, 0 /* uInstance */);
     if (RT_FAILURE(rc))
         return rc;
@@ -677,6 +678,15 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
      * Another expensive paranoia setting. */
     rc = CFGMR3QueryBoolDef(pCfgHm, "SpecCtrlByHost", &pVM->hm.s.fSpecCtrlByHost, false);
     AssertLogRelRCReturn(rc, rc);
+
+    /** @cfgm{/HM/LovelyMesaDrvWorkaround,bool}
+     * Workaround for mesa vmsvga 3d driver making incorrect assumptions about
+     * the hypervisor it is running under. */
+    bool f;
+    rc = CFGMR3QueryBoolDef(pCfgHm, "LovelyMesaDrvWorkaround", &f, false);
+    AssertLogRelRCReturn(rc, rc);
+    for (VMCPUID i = 0; i < pVM->cCpus; i++)
+        pVM->aCpus[i].hm.s.fTrapXcptGpForLovelyMesaDrv = f;
 
     /*
      * Check if VT-x or AMD-v support according to the users wishes.

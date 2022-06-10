@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 72744 2018-06-29 07:36:19Z vboxsync $
+;$Id: HMInternal.mac 75821 2018-11-29 16:43:40Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -76,6 +76,7 @@ struc HMCPU
     .fClearTrapFlag         resb    1
 
     .fGIMTrapXcptUD         resb    1
+    .fTrapXcptGpForLovelyMesaDrv resb 1
     alignb 8
 
     .cWorldSwitchExits      resd    1
