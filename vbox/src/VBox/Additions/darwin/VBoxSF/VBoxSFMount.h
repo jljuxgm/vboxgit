@@ -1,4 +1,4 @@
-/* $Id: VBoxSFMount.h 75293 2018-11-06 16:15:09Z vboxsync $ */
+/* $Id: VBoxSFMount.h 75678 2018-11-22 21:39:48Z vboxsync $ */
 /** @file
  * VBoxSF - Darwin Shared Folders, mount interface.
  */
@@ -26,9 +26,9 @@
 /**
  * Mount information that gets passed from userland on mount.
  */
-typedef struct vboxvfs_mount_info
+typedef struct VBOXSFDRWNMOUNTINFO
 {
-    /** Magic value (VBOXVFS_MOUNTINFO_MAGIC).   */
+    /** Magic value (VBOXSFDRWNMOUNTINFO_MAGIC).   */
     uint32_t    u32Magic;
     /** The shared folder name.   */
     char        szFolder[260];

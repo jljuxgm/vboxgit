@@ -1,4 +1,4 @@
-/* $Id: VBoxSF-VfsOps.cpp 75677 2018-11-22 21:30:17Z vboxsync $ */
+/* $Id: VBoxSF-VfsOps.cpp 75678 2018-11-22 21:39:48Z vboxsync $ */
 /** @file
  * VBoxFS - Darwin Shared Folders, Virtual File System Operations.
  */
@@ -27,14 +27,6 @@
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <VBox/log.h>
-
-
-/* States of VBoxVFS object used in atomic variables
- * in order to reach sync between several concurrently running threads. */
-#define VBOXVFS_OBJECT_UNINITIALIZED    (0)
-#define VBOXVFS_OBJECT_INITIALIZING     (1)
-#define VBOXVFS_OBJECT_INITIALIZED      (2)
-#define VBOXVFS_OBJECT_INVALID          (3)
 
 
 
@@ -83,7 +75,7 @@ static int vboxSfDwnVfsGetAttr(mount_t pMount, struct vfs_attr *pFsAttr, vfs_con
         pReq->Parms.pInfo.u.Embedded.offData    = RT_UOFFSETOF(struct MyEmbReq, VolInfo) - sizeof(VBGLIOCIDCHGCMFASTCALL);
         pReq->Parms.pInfo.u.Embedded.fFlags     = VBOX_HGCM_F_PARM_DIRECTION_FROM_HOST;
 
-	int vrc = VbglR0HGCMFastCall(g_SfClientDarwin.handle, &pReq->Hdr, sizeof(*pReq));
+        int vrc = VbglR0HGCMFastCall(g_SfClientDarwin.handle, &pReq->Hdr, sizeof(*pReq));
         if (RT_SUCCESS(vrc))
             vrc = pReq->Call.header.result;
         if (RT_SUCCESS(vrc))
