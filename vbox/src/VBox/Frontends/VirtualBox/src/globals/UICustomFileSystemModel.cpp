@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 76495 2018-12-27 12:20:17Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 76497 2018-12-27 12:51:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -537,4 +537,6 @@ void UICustomFileSystemModel::initializeTree()
     m_pRootItem->setData(QApplication::tr("UIFileManager", "Change Time"), UICustomFileSystemModelColumn_ChangeTime);
     m_pRootItem->setData(QApplication::tr("UIFileManager", "Owner"), UICustomFileSystemModelColumn_Owner);
     m_pRootItem->setData(QApplication::tr("UIFileManager", "Permissions"), UICustomFileSystemModelColumn_Permissions);
+    m_pRootItem->setData(QApplication::tr("UIFileManager", "LocalPath"), UICustomFileSystemModelColumn_LocalPath);
+    m_pRootItem->setData(QApplication::tr("UIFileManager", "Path"), UICustomFileSystemModelColumn_Path);
 }
