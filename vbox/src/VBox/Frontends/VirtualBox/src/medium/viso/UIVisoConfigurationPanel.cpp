@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.cpp 76947 2019-01-23 09:26:31Z vboxsync $ */
+/* $Id: UIVisoConfigurationPanel.cpp 77308 2019-02-14 10:39:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class implementation.
  */
@@ -88,7 +88,6 @@ void UIVisoConfigurationPanel::prepareObjects()
 
     addVerticalSeparator();
 
-
     /* Cutom Viso options stuff: */
     m_pCustomOptionsLabel = new QILabel(QApplication::translate("UIVisoCreator", "Custom VISO options:"));
     m_pCustomOptionsComboBox = new QComboBox;
@@ -122,7 +121,7 @@ bool UIVisoConfigurationPanel::eventFilter(QObject *pObject, QEvent *pEvent)
     switch (pEvent->type())
     {
         /* Process key press only: */
-    case QEvent::KeyPress:
+        case QEvent::KeyPress:
         {
             /* Cast to corresponding key press event: */
             QKeyEvent *pKeyEvent = static_cast<QKeyEvent*>(pEvent);
@@ -132,7 +131,7 @@ bool UIVisoConfigurationPanel::eventFilter(QObject *pObject, QEvent *pEvent)
             return true;
             break;
         }
-    default:
+        default:
         break;
     }
     /* Call to base-class: */

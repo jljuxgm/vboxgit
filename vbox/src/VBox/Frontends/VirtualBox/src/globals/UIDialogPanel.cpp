@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.cpp 76950 2019-01-23 10:17:54Z vboxsync $ */
+/* $Id: UIDialogPanel.cpp 77308 2019-02-14 10:39:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -123,6 +123,8 @@ void UIDialogPanel::hideEvent(QHideEvent *pEvent)
 void UIDialogPanel::addVerticalSeparator()
 {
     QFrame *pSeparator = new QFrame();
+    if (!pSeparator)
+        return;
     pSeparator->setFrameShape(QFrame::VLine);
     pSeparator->setFrameShadow(QFrame::Sunken);
     mainLayout()->addWidget(pSeparator);

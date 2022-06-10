@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 76959 2019-01-23 18:45:09Z vboxsync $ */
+/* $Id: UIVisoCreator.h 77308 2019-02-14 10:39:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -113,7 +113,7 @@ private:
     void manageEscapeShortCut();
 
     QVBoxLayout          *m_pMainLayout;
-    QSplitter            *m_pVerticalSplitter;
+    QSplitter            *m_pHorizontalSplitter;
     UIVisoHostBrowser    *m_pHostBrowser;
     UIVisoContentBrowser *m_pVisoBrowser;
     QIDialogButtonBox    *m_pButtonBox;
