@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 72493 2018-06-10 16:08:44Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 74341 2018-09-18 11:20:04Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -631,6 +631,7 @@ static void pgmHandlerPhysicalDeregisterNotifyREMAndNEM(PVM pVM, PPGMPHYSHANDLER
                                          fRestoreAsRAM, fRestoreAsRAM2);
 #else
     RT_NOREF_PV(fRestoreAsRAM); /** @todo this needs more work for REM! */
+    RT_NOREF_PV(fRestoreAsRAM2);
 #endif
 }
 
