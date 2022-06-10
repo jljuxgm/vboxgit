@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 75049 2018-10-24 16:06:42Z vboxsync $ */
+/* $Id: SUPDrv.cpp 75053 2018-10-24 19:08:56Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5571,6 +5571,13 @@ int VBOXCALL supdrvLdrGetExportedSymbol(const char *pszSymbol, uintptr_t *puValu
             *puValue = (uintptr_t)g_aFunctions[i].pfn;
             return VINF_SUCCESS;
         }
+
+    if (!strcmp(pszSymbol, "g_SUPGlobalInfoPage"))
+    {
+        *puValue = (uintptr_t)g_pSUPGlobalInfoPage;
+        return VINF_SUCCESS;
+    }
+
     return VERR_SYMBOL_NOT_FOUND;
 }
 

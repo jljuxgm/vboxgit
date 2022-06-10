@@ -1,5 +1,5 @@
 
-/* $Id: ldrMemory.cpp 75049 2018-10-24 16:06:42Z vboxsync $ */
+/* $Id: ldrMemory.cpp 75053 2018-10-24 19:08:56Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, The Memory/Debugger Oriented Parts.
  */
@@ -277,7 +277,7 @@ RTDECL(int) RTLdrOpenInMemory(const char *pszName, uint32_t fFlags, RTLDRARCH en
     if (!pfnDtor)
         pfnDtor = rtldrRdrMemDefaultDtor;
     else
-        AssertPtrReturn(pfnRead, VERR_INVALID_POINTER);
+        AssertPtrReturn(pfnDtor, VERR_INVALID_POINTER);
 
     /* The rest of the validations will call the destructor. */
     AssertMsgReturnStmt(!(fFlags & ~RTLDR_O_VALID_MASK), ("%#x\n", fFlags),
