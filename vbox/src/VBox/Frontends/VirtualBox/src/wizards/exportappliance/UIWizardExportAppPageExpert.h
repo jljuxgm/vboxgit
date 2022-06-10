@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 73317 2018-07-23 12:15:31Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 73337 2018-07-23 22:05:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -45,7 +45,7 @@ class UIWizardExportAppPageExpert : public UIWizardPage,
     Q_PROPERTY(MACAddressPolicy macAddressPolicy READ macAddressPolicy WRITE setMACAddressPolicy);
     Q_PROPERTY(bool manifestSelected READ isManifestSelected WRITE setManifestSelected);
     Q_PROPERTY(bool includeISOsSelected READ isIncludeISOsSelected WRITE setIncludeISOsSelected);
-    Q_PROPERTY(CCloudUserProfileList profiles READ profiles);
+    Q_PROPERTY(CCloudUserProfiles profiles READ profiles);
     Q_PROPERTY(QString profile READ profile);
     Q_PROPERTY(ExportAppliancePointer applianceWidget READ applianceWidget);
 

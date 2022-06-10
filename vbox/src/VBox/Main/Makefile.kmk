@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 73154 2018-07-16 11:02:35Z vboxsync $
+# $Id: Makefile.kmk 73337 2018-07-23 22:05:26Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -455,7 +455,7 @@ VBoxSVC_SOURCES = \
 	src-server/ClientWatcher.cpp \
 	src-server/ClientToken.cpp \
 	src-server/CloudClientImpl.cpp \
-	src-server/CloudUserProfileListImpl.cpp \
+	src-server/CloudUserProfilesImpl.cpp \
 	src-server/CloudUserProfileManagerImpl.cpp \
 	src-server/DHCPServerImpl.cpp \
 	src-server/NetworkServiceRunner.cpp \

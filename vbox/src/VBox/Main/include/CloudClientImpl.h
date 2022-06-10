@@ -1,4 +1,4 @@
-/* $Id: CloudClientImpl.h 73216 2018-07-18 16:01:16Z vboxsync $ */
+/* $Id: CloudClientImpl.h 73337 2018-07-23 22:05:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -24,7 +24,7 @@
 #include "CloudClientWrap.h"
 
 /* VBox forward declarations */
-class CloudUserProfileList;
+class CloudUserProfiles;
 
 class CloudClient :
     public CloudClientWrap
@@ -37,7 +37,7 @@ public:
     void FinalRelease();
 
     HRESULT init(VirtualBox *aVirtualBox);
-    HRESULT initCloudClient(CloudUserProfileList *aProfiles,
+    HRESULT initCloudClient(CloudUserProfiles *aProfiles,
                             VirtualBox *aParent,
                             CloudProviderId_T aCloudProvider,
                             const com::Utf8Str &aProfileName);
@@ -76,7 +76,7 @@ class CloudClientOCI :
 public:
     DECLARE_EMPTY_CTOR_DTOR(CloudClientOCI)
 
-    HRESULT initCloudClient(CloudUserProfileList *aProfiles,
+    HRESULT initCloudClient(CloudUserProfiles *aProfiles,
                             VirtualBox *aParent,
                             CloudProviderId_T aCloudProvider,
                             const com::Utf8Str &aProfileName);
