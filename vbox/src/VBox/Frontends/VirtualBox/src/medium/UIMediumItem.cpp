@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UIMediumItem.cpp 74003 2018-08-31 14:47:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class implementation.
  */
@@ -87,7 +87,7 @@ bool UIMediumItem::move()
         && strFileName != location())
     {
         /* Prepare move storage progress: */
-        CProgress comProgress = comMedium.SetLocation(strFileName);
+        CProgress comProgress = comMedium.MoveTo(strFileName);
 
         /* Show error message if necessary: */
         if (!comMedium.isOk())

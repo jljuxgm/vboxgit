@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 73171 2018-07-17 09:29:17Z vboxsync $
+# $Id: vbox.py 74003 2018-08-31 14:47:37Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 73171 $"
+__version__ = "$Revision: 74003 $"
 
 
 # Standard Python imports.
@@ -782,6 +782,7 @@ class TestDriver(base.TestDriver):                                              
         base.TestDriver.__init__(self);
         self.fImportedVBoxApi   = False;
         self.fpApiVer           = 3.2;
+        self.uRevision          = 0;
         self.oBuild             = None;
         self.oVBoxMgr           = None;
         self.oVBox              = None;
@@ -1317,6 +1318,13 @@ class TestDriver(base.TestDriver):                                              
                     self.fpApiVer += 0.1;
                 else:
                     self.fpApiVer += 1.1;
+
+            try:
+                self.uRevision = oVBox.revision;
+            except:
+                reporter.logXcpt('Failed to get VirtualBox revision, assuming 0');
+                self.uRevision = 0;
+            reporter.log("IVirtualBox.revision=%u" % (self.uRevision,));
 
             # Patch VBox manage to gloss over portability issues (error constants, etc).
             self._patchVBoxMgr();

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVM1.py 72742 2018-06-29 07:34:14Z vboxsync $"
+# "$Id: tdMoveVM1.py 74003 2018-08-31 14:47:37Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72742 $"
+__version__ = "$Revision: 74003 $"
 
 # Standard Python imports.
 import os
@@ -286,7 +286,7 @@ class SubTstDrvMoveVM1(base.SubTestDriverBase):
         sController = self.dsKeys['StandardImage']
         aoMediumAttachments = oMachine.getMediumAttachmentsOfController(sController)
         oSubTstDrvMoveMedium1Instance = SubTstDrvMoveMedium1(self.oTstDrv)
-        oSubTstDrvMoveMedium1Instance.setLocation(sOldLoc, aoMediumAttachments)
+        oSubTstDrvMoveMedium1Instance.moveTo(sOldLoc, aoMediumAttachments)
 
         del oSubTstDrvMoveMedium1Instance
 

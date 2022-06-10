@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 73768 2018-08-19 19:07:19Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 74003 2018-08-31 14:47:37Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -981,7 +981,8 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--property <name=[value]>]\n"
                      "                            [--compact]\n"
                      "                            [--resize <megabytes>|--resizebyte <bytes>]\n"
-                     "                            [--move <path]\n"
+                     "                            [--move <path>]\n"
+                     "                            [--setlocation <path>]\n"
                      "                            [--description <description string>]"
                      "\n", SEP);
 

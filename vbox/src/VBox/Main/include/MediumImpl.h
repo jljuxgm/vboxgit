@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 72999 2018-07-09 07:59:18Z vboxsync $ */
+/* $Id: MediumImpl.h 74003 2018-08-31 14:47:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -238,6 +238,7 @@ private:
     HRESULT getState(MediumState_T *aState);
     HRESULT getVariant(std::vector<MediumVariant_T> &aVariant);
     HRESULT getLocation(com::Utf8Str &aLocation);
+    HRESULT setLocation(const com::Utf8Str &aLocation);
     HRESULT getName(com::Utf8Str &aName);
     HRESULT getDeviceType(DeviceType_T *aDeviceType);
     HRESULT getHostDrive(BOOL *aHostDrive);
@@ -296,9 +297,9 @@ private:
     HRESULT cloneToBase(const ComPtr<IMedium> &aTarget,
                         const std::vector<MediumVariant_T> &aVariant,
                         ComPtr<IProgress> &aProgress);
-    HRESULT setLocation(AutoCaller &autoCaller,
-                        const com::Utf8Str &aLocation,
-                        ComPtr<IProgress> &aProgress);
+    HRESULT moveTo(AutoCaller &autoCaller,
+                   const com::Utf8Str &aLocation,
+                   ComPtr<IProgress> &aProgress);
     HRESULT compact(ComPtr<IProgress> &aProgress);
     HRESULT resize(LONG64 aLogicalSize,
                    ComPtr<IProgress> &aProgress);
