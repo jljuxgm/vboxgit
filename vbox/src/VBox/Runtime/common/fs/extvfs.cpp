@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 76216 2018-12-13 19:26:25Z vboxsync $ */
+/* $Id: extvfs.cpp 76221 2018-12-13 20:04:33Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -367,7 +367,7 @@ static DECLCALLBACK(int) rtVfsChainExtVol_Instantiate(PCRTVFSCHAINELEMENTREG pPr
     if (hVfsFileIn != NIL_RTVFSFILE)
     {
         RTVFS hVfs;
-        rc = RTFsFatVolOpen(hVfsFileIn, (uint32_t)pElement->uProvider, (uint32_t)(pElement->uProvider >> 32), &hVfs, pErrInfo);
+        rc = RTFsExtVolOpen(hVfsFileIn, (uint32_t)pElement->uProvider, (uint32_t)(pElement->uProvider >> 32), &hVfs, pErrInfo);
         RTVfsFileRelease(hVfsFileIn);
         if (RT_SUCCESS(rc))
         {
