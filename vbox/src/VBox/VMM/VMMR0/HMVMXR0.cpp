@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72877 2018-07-04 14:27:12Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72878 2018-07-04 14:30:02Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -11918,8 +11918,7 @@ HMVMX_EXIT_DECL hmR0VmxExitWrmsr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
         {
             /*
              * We've already saved the APIC related guest-state (TPR) in hmR0VmxPostRunGuest(). When full APIC register
-             * virtualization is implemented we'll have to make sure APIC state is saved from the VMCS before
-             * EMInterpretWrmsr() changes it.
+             * virtualization is implemented we'll have to make sure APIC state is saved from the VMCS before IEM changes it.
              */
             ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_GUEST_APIC_TPR);
         }
