@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77953 2019-03-29 17:07:16Z vboxsync $ */
+/* $Id: vfsmod.h 77959 2019-03-29 21:12:05Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -219,6 +219,14 @@ struct vbsf_inode_info {
     unsigned long           ts_up_to_date;
     /** The birth time. */
     RTTIMESPEC              BirthTime;
+
+    /** @name Host modification detection stats.
+     *  @{  */
+    /** The raw modification time, for mapping invalidation purposes. */
+    RTTIMESPEC              ModificationTime;
+    /** Copy of ModificationTime from the last time we wrote to the the file. */
+    RTTIMESPEC              ModificationTimeAtOurLastWrite;
+    /** @} */
 
     /** handle valid if a file was created with vbsf_create_worker until it will
      * be opened with vbsf_reg_open()
