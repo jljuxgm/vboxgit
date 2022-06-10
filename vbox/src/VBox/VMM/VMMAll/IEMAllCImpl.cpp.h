@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 74705 2018-10-09 08:22:30Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 74706 2018-10-09 08:25:26Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -6326,6 +6326,9 @@ IEM_CIMPL_DEF_0(iemCImpl_invd)
         return iemRaiseGeneralProtectionFault0(pVCpu);
     }
 
+    if (IEM_VMX_IS_NON_ROOT_MODE(pVCpu))
+        IEM_VMX_VMEXIT_INSTR_RET(pVCpu, VMX_EXIT_INVD, cbInstr);
+
     IEM_SVM_CHECK_INSTR_INTERCEPT(pVCpu, SVM_CTRL_INTERCEPT_INVD, SVM_EXIT_INVD, 0, 0);
 
     /* We currently take no action here. */
@@ -6345,10 +6348,10 @@ IEM_CIMPL_DEF_0(iemCImpl_wbinvd)
         return iemRaiseGeneralProtectionFault0(pVCpu);
     }
 
-    IEM_SVM_CHECK_INSTR_INTERCEPT(pVCpu, SVM_CTRL_INTERCEPT_WBINVD, SVM_EXIT_WBINVD, 0, 0);
-
     if (IEM_VMX_IS_NON_ROOT_MODE(pVCpu))
         IEM_VMX_VMEXIT_INSTR_RET(pVCpu, VMX_EXIT_WBINVD, cbInstr);
+
+    IEM_SVM_CHECK_INSTR_INTERCEPT(pVCpu, SVM_CTRL_INTERCEPT_WBINVD, SVM_EXIT_WBINVD, 0, 0);
 
     /* We currently take no action here. */
     iemRegAddToRipAndClearRF(pVCpu, cbInstr);
