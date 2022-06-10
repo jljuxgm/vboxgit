@@ -1,4 +1,4 @@
-/* $Id: RTUtf16PrintHexBytes.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTUtf16PrintHexBytes.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * IPRT - RTUtf16PrintHexBytes.
  */
@@ -28,8 +28,8 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include <iprt/utf16.h>
 #include "internal/iprt.h"
-#include <iprt/string.h>
 
 #include <iprt/assert.h>
 #include <iprt/err.h>

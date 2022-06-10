@@ -1,4 +1,4 @@
-/* $Id: utf-16-latin-1.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
+/* $Id: utf-16-latin-1.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * IPRT - Latin-1 and UTF-16.
  */
@@ -31,10 +31,12 @@
 #include <iprt/latin1.h>
 #include "internal/iprt.h"
 
-#include <iprt/uni.h>
-#include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
+#include <iprt/mem.h>
+#include <iprt/string.h>
+#include <iprt/utf16.h>
+#include <iprt/uni.h>
 #include "internal/string.h"
 
 

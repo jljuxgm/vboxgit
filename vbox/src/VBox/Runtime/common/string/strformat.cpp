@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 74157 2018-09-09 13:17:21Z vboxsync $ */
+/* $Id: strformat.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -37,6 +37,7 @@
 # include <iprt/alloc.h>
 # include <iprt/err.h>
 # include <iprt/uni.h>
+# include <iprt/utf16.h>
 #endif
 #include <iprt/ctype.h>
 #include <iprt/string.h>

@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: env-generic.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * IPRT - Environment, Generic.
  */
@@ -34,9 +34,10 @@
 #include <iprt/assert.h>
 #include <iprt/alloc.h>
 #include <iprt/alloca.h>
-#include <iprt/string.h>
-#include <iprt/sort.h>
 #include <iprt/err.h>
+#include <iprt/sort.h>
+#include <iprt/string.h>
+#include <iprt/utf16.h>
 #include "internal/magics.h"
 
 #include <stdlib.h>

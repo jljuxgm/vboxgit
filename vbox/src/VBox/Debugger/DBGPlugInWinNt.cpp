@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 73493 2018-08-03 16:05:18Z vboxsync $ */
+/* $Id: DBGPlugInWinNt.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -32,6 +32,7 @@
 #include <iprt/path.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 #include <iprt/formats/pecoff.h>
 #include <iprt/formats/mz.h>
 #include <iprt/nt/nt-structures.h>

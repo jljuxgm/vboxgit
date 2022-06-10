@@ -1,4 +1,4 @@
-/* $Id: tstRTUuid.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTUuid.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * IPRT Testcase - UUID.
  */
@@ -34,6 +34,7 @@
 #include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/initterm.h>
+#include <iprt/utf16.h>
 
 
 int main()

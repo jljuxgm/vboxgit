@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: isovfs.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -46,6 +46,7 @@
 #include <iprt/vfs.h>
 #include <iprt/vfslowlevel.h>
 #include <iprt/uni.h>
+#include <iprt/utf16.h>
 #include <iprt/formats/iso9660.h>
 #include <iprt/formats/udf.h>
 

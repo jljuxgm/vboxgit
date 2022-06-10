@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 73142 2018-07-16 09:09:38Z vboxsync $ */
+/* $Id: DevEFI.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -46,6 +46,7 @@
 # include <iprt/stream.h>
 # define DEVEFI_WITH_VBOXDBG_SCRIPT
 #endif
+#include <iprt/utf16.h>
 
 #include "DevEFI.h"
 #include "VBoxDD.h"

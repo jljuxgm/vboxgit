@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
+/* $Id: ldrPE.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -43,6 +43,7 @@
 #include <iprt/path.h>
 #include <iprt/sha.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 #include <iprt/x86.h>
 #ifndef IPRT_WITHOUT_LDR_VERIFY
 #include <iprt/zero.h>

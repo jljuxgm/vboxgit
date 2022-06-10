@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: isomakerimport.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -42,6 +42,7 @@
 #include <iprt/log.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 #include <iprt/vfs.h>
 #include <iprt/formats/iso9660.h>
 

@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 76154 2018-12-11 09:01:30Z vboxsync $ */
+/* $Id: VHD.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -31,6 +31,7 @@
 #include <iprt/uuid.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 
 #include "VDBackends.h"
 

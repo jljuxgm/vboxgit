@@ -1,4 +1,4 @@
-/* $Id: utf16locale-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: utf16locale-generic.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * IPRT - UTF-16 Locale Specific Manipulation, Generic.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_UTF16
-#include <iprt/string.h>
+#include <iprt/utf16.h>
 #include "internal/iprt.h"
 
 

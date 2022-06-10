@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 75627 2018-11-20 17:08:26Z vboxsync $ */
+/* $Id: fatvfs.cpp 76408 2018-12-23 16:38:11Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -46,6 +46,7 @@
 #include <iprt/sg.h>
 #include <iprt/thread.h>
 #include <iprt/uni.h>
+#include <iprt/utf16.h>
 #include <iprt/vfs.h>
 #include <iprt/vfslowlevel.h>
 #include <iprt/zero.h>
