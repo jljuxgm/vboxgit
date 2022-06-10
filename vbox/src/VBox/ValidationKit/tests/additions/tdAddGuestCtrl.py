@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77383 $"
+__version__ = "$Revision: 77384 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -43,7 +43,6 @@ __version__ = "$Revision: 77383 $"
 # pylint: disable=R0903
 
 # Standard Python imports.
-from array import array
 import errno
 import os
 import random
@@ -3088,8 +3087,8 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                         if    fRc \
                           and curRes.aBuf is not None \
                           and curRes.aBuf != aBufRead:
-                            reporter.error('Test #%d failed: Read back buffer (%d bytes) does not match written content (%d bytes)' \
-                                           % (i, len(curRes.aBuf), len(aBufRead)));
+                            reporter.error('Test #%d failed: Read back buffer (%d bytes) does not match ' \
+                                           'written content (%d bytes)' % (i, len(curRes.aBuf), len(aBufRead)));
                             reporter.error('Test #%d failed: Got:\n%s' % (i, aBufRead.encode('hex')));
                             reporter.error('Test #%d failed: Expected:\n%s' % (i, curRes.aBuf.encode('hex')));
                             fRc = False;
