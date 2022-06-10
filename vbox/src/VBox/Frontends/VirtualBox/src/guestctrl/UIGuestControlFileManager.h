@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 75184 2018-10-30 15:07:55Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 75196 2018-10-30 18:35:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -127,8 +127,8 @@ private:
     QSplitter                  *m_pVerticalSplitter;
     QTextEdit                  *m_pLogOutput;
     UIToolBar                  *m_pToolBar;
-    QAction                    *m_pCopyGuestToHost;
-    QAction                    *m_pCopyHostToGuest;
+    // QAction                    *m_pCopyGuestToHost;
+    // QAction                    *m_pCopyHostToGuest;
     QWidget                    *m_pFileTableContainerWidget;
     QHBoxLayout                *m_pFileTableContainerLayout;
     QITabWidget                *m_pTabWidget;
