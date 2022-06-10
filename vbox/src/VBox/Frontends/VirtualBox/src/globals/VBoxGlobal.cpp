@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 77189 2019-02-06 20:47:57Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 77212 2019-02-08 09:10:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2795,7 +2795,7 @@ QUuid VBoxGlobal::createHDWithNewHDWizard(QWidget *pParent, const QString &strMa
                                           const QString &strMachineFolder)
 {
     /* Initialize variables: */
-    const CGuestOSType comGuestOSType = vboxGlobal().virtualBox().GetGuestOSType(strMachineGuestOSTypeId);
+    const CGuestOSType comGuestOSType = virtualBox().GetGuestOSType(strMachineGuestOSTypeId);
     const QFileInfo fileInfo(strMachineFolder);
     /* Show New VD wizard: */
     UISafePointerWizardNewVD pWizard = new UIWizardNewVD(pParent, QString(), fileInfo.absolutePath(), comGuestOSType.GetRecommendedHDD());

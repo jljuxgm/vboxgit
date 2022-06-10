@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 77186 2019-02-06 19:52:33Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 77212 2019-02-08 09:10:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -68,7 +68,7 @@ void UIWizardNewVMPage3::getWithFileOpenDialog()
                                                            uMediumId,
                                                            fieldImp("machineBaseName").toString(),
                                                            fieldImp("machineFolder").toString(),
-                                                           fieldImp("type").value<CGuestOSType>().GetFamilyId());
+                                                           fieldImp("type").value<CGuestOSType>().GetId());
 
     if (returnCode == static_cast<int>(UIMediumSelector::ReturnCode_Accepted) && !uMediumId.isNull())
     {
