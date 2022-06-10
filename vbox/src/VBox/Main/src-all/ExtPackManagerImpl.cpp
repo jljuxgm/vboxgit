@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 77624 2019-03-08 17:33:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2089,14 +2089,19 @@ HRESULT ExtPack::queryObject(const com::Utf8Str &aObjUuid, ComPtr<IUnknown> &aRe
     com::Guid ObjectId;
     CheckComArgGuid(aObjUuid, ObjectId);
 
-    HRESULT hrc  S_OK;
+    HRESULT hrc = S_OK;
 
     if (   m->pReg
         && m->pReg->pfnQueryObject)
     {
         void *pvUnknown = m->pReg->pfnQueryObject(m->pReg, ObjectId.raw());
         if (pvUnknown)
-             aReturnInterface = (IUnknown *)pvUnknown;
+        {
+            aReturnInterface = (IUnknown *)pvUnknown;
+            /* The above assignment increased the refcount. Since pvUnknown
+             * is a dumb pointer we have to do the release ourselves. */
+            ((IUnknown *)pvUnknown)->Release();
+        }
         else
             hrc = E_NOINTERFACE;
     }
