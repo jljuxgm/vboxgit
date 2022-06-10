@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 73175 2018-07-17 11:52:22Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 73176 2018-07-17 11:58:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -26,6 +26,7 @@
 
 /* COM includes: */
 #include "COMEnums.h"
+#include "CCloudUserProfileManager.h"
 
 /* Forward declarations: */
 class QCheckBox;
@@ -126,6 +127,9 @@ protected:
     QString profile() const;
     /** Defines @a strProfile. */
     void setProfile(const QString &strProfile);
+
+    /** Holds the Cloud User-profile Manager reference. */
+    CCloudUserProfileManager  m_comCloudUserProfileManager;
 
     /** Holds the default appliance name. */
     QString  m_strDefaultApplianceName;
