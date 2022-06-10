@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.cpp 77005 2019-01-26 18:12:43Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.cpp 77006 2019-01-26 18:27:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class implementation.
  */
@@ -52,7 +52,7 @@ public:
         if (pItem->type() != QITreeWidgetItem::ItemType)
             return false;
 
-        UIMediumItem *pMediumItem = static_cast<UIMediumItem*>(pItem);
+        UIMediumItem *pMediumItem = dynamic_cast<UIMediumItem*>(pItem);
         if (!pMediumItem)
             return false;
         if (m_enmSearchType == UIMediumSearchWidget::SearchByUUID && !pMediumItem->id().toString().contains(m_strSearchTerm))
@@ -113,18 +113,14 @@ void UIMediumSearchWidget::prepareWidgets()
     if (m_pShowPreviousMatchButton)
     {
         m_pShowPreviousMatchButton->setIcon(UIIconPool::iconSet(":/log_viewer_search_backward_16px.png", ":/log_viewer_search_backward_disabled_16px.png"));
-        connect(m_pShowPreviousMatchButton, &QIToolButton::clicked, this, &UIMediumSearchWidget::sigShowPreviousMatchingItem);
         connect(m_pShowPreviousMatchButton, &QIToolButton::clicked, this, &UIMediumSearchWidget::sltShowPreviousMatchingItem);
-
         pLayout->addWidget(m_pShowPreviousMatchButton);
     }
     m_pShowNextMatchButton = new QIToolButton;
     if (m_pShowNextMatchButton)
     {
         m_pShowNextMatchButton->setIcon(UIIconPool::iconSet(":/log_viewer_search_forward_16px.png", ":/log_viewer_search_forward_disabled_16px.png"));
-        connect(m_pShowNextMatchButton, &QIToolButton::clicked, this, &UIMediumSearchWidget:: sigShowNextMatchingItem);
         connect(m_pShowNextMatchButton, &QIToolButton::clicked, this, &UIMediumSearchWidget:: sltShowNextMatchingItem);
-
         pLayout->addWidget(m_pShowNextMatchButton);
     }
 

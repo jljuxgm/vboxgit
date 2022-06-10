@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.h 77005 2019-01-26 18:12:43Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.h 77006 2019-01-26 18:27:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class declaration.
  */
@@ -44,8 +44,6 @@ class  SHARED_LIBRARY_STUFF UIMediumSearchWidget : public QIWithRetranslateUI<QW
 signals:
 
     void sigPerformSearch();
-    void sigShowNextMatchingItem();
-    void sigShowPreviousMatchingItem();
 
 public:
 
