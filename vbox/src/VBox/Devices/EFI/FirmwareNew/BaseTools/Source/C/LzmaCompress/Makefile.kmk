@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 77662 2019-03-12 12:40:12Z vboxsync $
 ## @file
 # Sub-makefile for the EFI LzmaCompress build tool.
 #
@@ -33,8 +33,10 @@ LzmaCompress_SOURCES = \
 	LzmaCompress.c \
 	Sdk/C/Alloc.c \
 	Sdk/C/LzFind.c \
+	Sdk/C/LzFindMt.c \
 	Sdk/C/LzmaDec.c \
 	Sdk/C/LzmaEnc.c \
+	Sdk/C/Threads.c \
 	Sdk/C/7zFile.c \
 	Sdk/C/7zStream.c \
 	Sdk/C/Bra86.c
