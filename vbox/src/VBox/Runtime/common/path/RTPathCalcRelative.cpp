@@ -1,4 +1,4 @@
-/* $Id: RTPathCalcRelative.cpp 76589 2019-01-01 08:56:07Z vboxsync $ */
+/* $Id: RTPathCalcRelative.cpp 76595 2019-01-01 22:25:16Z vboxsync $ */
 /** @file
  * IPRT - RTPathCreateRelative.
  */
@@ -35,7 +35,7 @@
 #if RTPATH_STYLE == RTPATH_STR_F_STYLE_DOS
 # include <iprt/ctype.h>
 #endif
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 #include "internal/path.h"
 
