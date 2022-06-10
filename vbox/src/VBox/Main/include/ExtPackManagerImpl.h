@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 68828 2017-09-22 14:15:57Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 73548 2018-08-07 15:18:17Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -208,6 +208,7 @@ public:
     HRESULT     i_doInstall(ExtPackFile *a_pExtPackFile, bool a_fReplace, Utf8Str const *a_pstrDisplayInfo);
     HRESULT     i_doUninstall(const Utf8Str *a_pstrName, bool a_fForcedRemoval, const Utf8Str *a_pstrDisplayInfo);
     void        i_callAllVirtualBoxReadyHooks(void);
+    HRESULT     i_queryObjects(const com::Utf8Str &aObjUuid, std::vector<ComPtr<IUnknown> > &aObjects);
 #endif
 #ifdef VBOX_COM_INPROC
     void        i_callAllConsoleReadyHooks(IConsole *a_pConsole);
