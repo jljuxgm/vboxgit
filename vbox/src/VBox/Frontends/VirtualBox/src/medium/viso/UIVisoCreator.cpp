@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 76948 2019-01-23 09:29:29Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 76959 2019-01-23 18:45:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -76,6 +76,20 @@ const QString &UIVisoCreator::visoName() const
 const QStringList &UIVisoCreator::customOptions() const
 {
     return m_visoOptions.m_customOptions;
+}
+
+QString UIVisoCreator::currentPath() const
+{
+    if (!m_pHostBrowser)
+        return QString();
+    return m_pHostBrowser->currentPath();
+}
+
+void UIVisoCreator::setCurrentPath(const QString &strPath)
+{
+    if (!m_pHostBrowser)
+        return;
+    m_pHostBrowser->setCurrentPath(strPath);
 }
 
 void UIVisoCreator::retranslateUi()

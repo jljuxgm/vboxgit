@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 76883 2019-01-18 10:31:08Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 76959 2019-01-23 18:45:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2641,6 +2641,7 @@ QUuid VBoxGlobal::createVisoMediumWithVisoCreator(QWidget *pParent, const QStrin
     if (!pVisoCreator)
         return QString();
     windowManager().registerNewParent(pVisoCreator, pDialogParent);
+    pVisoCreator->setCurrentPath(gEDataManager->recentFolderForVISOContent());
 
     if (pVisoCreator->exec(false /* not application modal */))
     {
@@ -2649,6 +2650,8 @@ QUuid VBoxGlobal::createVisoMediumWithVisoCreator(QWidget *pParent, const QStrin
 
         if (files.empty() || files[0].isEmpty())
             return QUuid();
+
+        gEDataManager->setRecentFolderForVISOContent(pVisoCreator->currentPath());
 
         /* Produce the VISO. */
         char szVisoPath[RTPATH_MAX];
