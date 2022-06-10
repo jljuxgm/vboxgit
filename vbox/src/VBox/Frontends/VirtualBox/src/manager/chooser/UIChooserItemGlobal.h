@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 77042 2019-01-30 12:51:31Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 77346 2019-02-18 13:07:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -105,8 +105,8 @@ protected:
 
     /** @name Children stuff.
       * @{ */
-        /** Adds child @a pItem to certain @a iPosition. */
-        virtual void addItem(UIChooserItem *pItem, int iPosition) /* override */;
+        /** Adds possible @a fFavorite child @a pItem to certain @a iPosition. */
+        virtual void addItem(UIChooserItem *pItem, bool fFavorite, int iPosition) /* override */;
         /** Removes child @a pItem. */
         virtual void removeItem(UIChooserItem *pItem) /* override */;
 

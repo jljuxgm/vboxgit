@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 77061 2019-01-30 18:12:57Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 77346 2019-02-18 13:07:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -44,7 +44,7 @@
 UIChooserItemMachine::UIChooserItemMachine(UIChooserItem *pParent,
                                            const CMachine &machine,
                                            int iPosition /* = -1 */)
-    : UIChooserItem(pParent, pParent->isTemporary(), 0, 100)
+    : UIChooserItem(pParent, false /* favorite? */, pParent->isTemporary(), 0, 100)
     , UIVirtualMachineItem(machine)
     , m_iPosition(iPosition)
     , m_iDefaultLightnessMin(0)
@@ -65,7 +65,7 @@ UIChooserItemMachine::UIChooserItemMachine(UIChooserItem *pParent,
 UIChooserItemMachine::UIChooserItemMachine(UIChooserItem *pParent,
                                            UIChooserItemMachine *pCopyFrom,
                                            int iPosition /* = -1 */)
-    : UIChooserItem(pParent, pParent->isTemporary(), 0, 100)
+    : UIChooserItem(pParent, false /* favorite? */, pParent->isTemporary(), 0, 100)
     , UIVirtualMachineItem(pCopyFrom->machine())
     , m_iPosition(iPosition)
     , m_iDefaultLightnessMin(0)
@@ -254,7 +254,7 @@ QString UIChooserItemMachine::definition() const
     return QString("m=%1").arg(name());
 }
 
-void UIChooserItemMachine::addItem(UIChooserItem*, int)
+void UIChooserItemMachine::addItem(UIChooserItem*, bool, int)
 {
     AssertMsgFailed(("Machine graphics item do NOT support children!"));
 }
@@ -590,7 +590,7 @@ void UIChooserItemMachine::prepare()
 
     /* Add item to the parent: */
     AssertPtrReturnVoid(parentItem());
-    parentItem()->addItem(this, m_iPosition);
+    parentItem()->addItem(this, false, m_iPosition);
 
     /* Configure connections: */
     connect(gpManager, &UIVirtualBoxManager::sigWindowRemapped,

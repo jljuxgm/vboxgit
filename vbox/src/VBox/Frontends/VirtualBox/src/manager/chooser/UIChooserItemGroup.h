@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 77228 2019-02-08 18:05:46Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 77346 2019-02-18 13:07:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -151,8 +151,8 @@ protected:
 
     /** @name Children stuff.
       * @{ */
-        /** Adds child @a pItem to certain @a iPosition. */
-        virtual void addItem(UIChooserItem *pItem, int iPosition) /* override */;
+        /** Adds possible @a fFavorite child @a pItem to certain @a iPosition. */
+        virtual void addItem(UIChooserItem *pItem, bool fFavorite, int iPosition) /* override */;
         /** Removes child @a pItem. */
         virtual void removeItem(UIChooserItem *pItem) /* override */;
 
@@ -361,6 +361,11 @@ private:
 
     /** @name Children stuff.
       * @{ */
+        /** Holds the favorite children container instance. */
+        QIGraphicsWidget      *m_pContainerFavorite;
+        /** Holds the favorite children layout instance. */
+        QGraphicsLinearLayout *m_pLayoutFavorite;
+
         /** Holds the children scroll-area instance. */
         UIGraphicsScrollArea  *m_pScrollArea;
         /** Holds the children container instance. */
