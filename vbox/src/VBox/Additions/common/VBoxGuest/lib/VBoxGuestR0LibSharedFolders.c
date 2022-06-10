@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.c 77862 2019-03-24 02:48:08Z vboxsync $ */
+/* $Id: VBoxGuestR0LibSharedFolders.c 77939 2019-03-28 15:56:44Z vboxsync $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -308,8 +308,6 @@ DECLVBGL(int) VbglR0SfRename(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, PSHFLSTRING
     return rc;
 }
 
-#endif /* !RT_OS_LINUX */
-
 DECLVBGL(int) VbglR0SfRead(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE hFile,
                            uint64_t offset, uint32_t *pcbBuffer, uint8_t *pBuffer, bool fLocked)
 {
@@ -340,8 +338,6 @@ DECLVBGL(int) VbglR0SfRead(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE hF
     }
     return rc;
 }
-
-#if !defined(RT_OS_LINUX)
 
 DECLVBGL(int) VbglR0SfReadPageList(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE hFile, uint64_t offset, uint32_t *pcbBuffer,
                                    uint16_t offFirstPage, uint16_t cPages, RTGCPHYS64 *paPages)
