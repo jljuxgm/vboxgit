@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 77610 2019-03-08 10:31:35Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 77717 2019-03-15 09:21:42Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3909,6 +3909,24 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitExtInt(PVMCPU pVCpu, uint8_t uVector, bool f
     }
 
     return VINF_VMX_INTERCEPT_NOT_ACTIVE;
+}
+
+
+/**
+ * VMX VM-exit handler for VM-exits due to NMIs.
+ *
+ * @returns VBox strict status code.
+ * @param   pVCpu           The cross context virtual CPU structure.
+ *
+ * @remarks This function might import externally kept DR6 if necessary.
+ */
+IEM_STATIC VBOXSTRICTRC iemVmxVmexitNmi(PVMCPU pVCpu)
+{
+    PCVMXVVMCS pVmcs = pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pVmcs);
+    Assert(pVmcs);
+    Assert(pVmcs->u32PinCtls & VMX_PIN_CTLS_NMI_EXIT);
+    Assert(pVCpu->cpum.GstCtx.hwvirt.vmx.fInterceptEvents);
+    return iemVmxVmexitEvent(pVCpu, X86_XCPT_NMI, IEM_XCPT_FLAGS_T_CPU_XCPT, 0 /* uErrCode */, 0 /* uCr2 */, 0 /* cbInstr */);
 }
 
 

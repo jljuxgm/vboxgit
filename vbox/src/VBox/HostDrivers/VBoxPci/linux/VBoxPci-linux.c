@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 77718 2019-03-15 10:01:04Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -372,7 +372,7 @@ static int vboxPciFileWrite(struct file* file, unsigned long long offset, unsign
     mm_segment_t fs_save;
 
     fs_save = get_fs();
-    set_fs(get_ds());
+    set_fs(KERNEL_DS);
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0)
     ret = kernel_write(file, data, size, &offset);
 #else
