@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.cpp 77638 2019-03-10 19:21:30Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.cpp 77752 2019-03-18 12:20:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class implementation.
  */
@@ -301,6 +301,12 @@ bool UIChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
             /* Pass event to other items: */
             return false;
         }
+        case Qt::Key_Escape:
+        {
+            /* Make sure that vm search widget is hidden: */
+            model()->setSearchWidgetVisible(false);
+            break;
+        }
         default:
         {
             /* Start lookup: */
@@ -378,4 +384,3 @@ void UIChooserHandlerKeyboard::shift(UIItemShiftDirection direction, UIItemShift
     model()->updateLayout();
 #endif
 }
-

@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77750 2019-03-18 11:51:29Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77752 2019-03-18 12:20:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -535,11 +535,15 @@ void UIChooserModel::scrollToSearchResult(bool fIsNext)
         }
     }
 
-
     /* Update the search widget's match count(s): */
     if (view())
         view()->setSearchResultsCount(m_searchResults.size(), m_iCurrentScrolledIndex);
+}
 
+void UIChooserModel::setSearchWidgetVisible(bool fVisible)
+{
+    if (view())
+        view()->setSearchWidgetVisible(fVisible);
 }
 
 UIChooserNode *UIChooserModel::invisibleRoot() const
