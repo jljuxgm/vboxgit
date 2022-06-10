@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 75165 2018-10-29 21:00:52Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 75241 2018-11-03 02:57:28Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -203,6 +203,7 @@ int dbgfR3AsInit(PUVM pUVM)
             if (RT_FAILURE(rc))
                 return VMR3SetError(pUVM, rc, RT_SRC_POS,
                                     "DBGF Config Error: /DBGF/%s=%s -> %Rrc", s_aProps[i].pszCfgName, pszCfgValue, rc);
+            MMR3HeapFree(pszCfgValue);
         }
     }
 
