@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 73517 2018-08-05 20:13:03Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 73602 2018-08-09 18:13:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1870,7 +1870,7 @@ void UIVirtualBoxManager::performStartOrShowVirtualMachines(const QList<UIVirtua
 void UIVirtualBoxManager::updateActionsVisibility()
 {
     /* Determine whether Machine or Group menu should be shown at all: */
-    const bool fMachineOrGroupMenuShown = actionPool()->action(UIActionIndexST_M_Tools_T_Machine)->isChecked();
+    const bool fMachineOrGroupMenuShown = m_pWidget->isMachineItemSelected();
     const bool fMachineMenuShown = !isSingleGroupSelected();
     m_pMachineMenuAction->setVisible(fMachineOrGroupMenuShown && fMachineMenuShown);
     m_pGroupMenuAction->setVisible(fMachineOrGroupMenuShown && !fMachineMenuShown);
