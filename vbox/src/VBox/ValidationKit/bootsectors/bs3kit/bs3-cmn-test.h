@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-test.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: bs3-cmn-test.h 76579 2019-01-01 06:14:44Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3Test internal header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___bs3_cmn_test_h
-#define ___bs3_cmn_test_h
+#ifndef BS3KIT_INCLUDED_bs3_cmn_test_h
+#define BS3KIT_INCLUDED_bs3_cmn_test_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -165,5 +165,5 @@ typedef struct BS3TESTFAILEDBUF
 /** Pointer to a bs3TestFailedStrOutput buffer.  */
 typedef BS3TESTFAILEDBUF BS3_FAR *PBS3TESTFAILEDBUF;
 
-#endif
+#endif /* !BS3KIT_INCLUDED_bs3_cmn_test_h */
 

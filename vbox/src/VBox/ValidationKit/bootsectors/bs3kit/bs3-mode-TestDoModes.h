@@ -1,4 +1,4 @@
-/* $Id: bs3-mode-TestDoModes.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: bs3-mode-TestDoModes.h 76579 2019-01-01 06:14:44Z vboxsync $ */
 /** @file
  * BS3Kit - Common header for the Bs3TestDoModes family.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___bs3_mode_TestDoModes_h
-#define ___bs3_mode_TestDoModes_h
+#ifndef BS3KIT_INCLUDED_bs3_mode_TestDoModes_h
+#define BS3KIT_INCLUDED_bs3_mode_TestDoModes_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -85,5 +85,5 @@ BS3_DECL_NEAR(uint8_t) TMPL_NM(Bs3TestCallDoerInLM16)(uint32_t uCallbackFarPtr);
 BS3_DECL_NEAR(uint8_t) TMPL_NM(Bs3TestCallDoerInLM32)(uint32_t uFlatAddrCallback);
 BS3_DECL_NEAR(uint8_t) TMPL_NM(Bs3TestCallDoerInLM64)(uint32_t uFlatAddrCallback, uint8_t bMode);
 
-#endif
+#endif /* !BS3KIT_INCLUDED_bs3_mode_TestDoModes_h */
 

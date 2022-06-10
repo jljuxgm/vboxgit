@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 76579 2019-01-01 06:14:44Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___bs3_cpu_generated_1_h___
-#define ___bs3_cpu_generated_1_h___
+#ifndef VBOX_INCLUDED_SRC_bootsectors_bs3_cpu_generated_1_h
+#define VBOX_INCLUDED_SRC_bootsectors_bs3_cpu_generated_1_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -800,5 +800,5 @@ extern const uint8_t BS3_FAR_DATA       g_abBs3Cg1Operands[];
 extern const uint8_t BS3_FAR_DATA       g_abBs3Cg1Tests[];
 
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_bootsectors_bs3_cpu_generated_1_h */
 

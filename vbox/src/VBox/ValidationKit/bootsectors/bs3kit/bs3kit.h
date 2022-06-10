@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: bs3kit.h 76579 2019-01-01 06:14:44Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___bs3kit_h
-#define ___bs3kit_h
+#ifndef BS3KIT_INCLUDED_bs3kit_h
+#define BS3KIT_INCLUDED_bs3kit_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -3952,5 +3952,5 @@ RT_C_DECLS_END
 # endif
 #endif
 
-#endif
+#endif /* !BS3KIT_INCLUDED_bs3kit_h */
 

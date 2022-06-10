@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-memory.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: bs3-cmn-memory.h 76579 2019-01-01 06:14:44Z vboxsync $ */
 /** @file
  * BS3Kit - Internal Memory Structures, Variables and Functions.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___bs3_cmn_memory_h
-#define ___bs3_cmn_memory_h
+#ifndef BS3KIT_INCLUDED_bs3_cmn_memory_h
+#define BS3KIT_INCLUDED_bs3_cmn_memory_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -95,5 +95,5 @@ DECLINLINE(uint8_t) bs3MemSizeToSlabListIndex(size_t cbRequest)
 
 RT_C_DECLS_END;
 
-#endif
+#endif /* !BS3KIT_INCLUDED_bs3_cmn_memory_h */
 

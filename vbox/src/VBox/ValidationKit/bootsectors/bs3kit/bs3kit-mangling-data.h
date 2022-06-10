@@ -1,4 +1,4 @@
-/* $Id: bs3kit-mangling-data.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: bs3kit-mangling-data.h 76579 2019-01-01 06:14:44Z vboxsync $ */
 /** @file
  * BS3Kit - Symbol mangling.
  */
@@ -29,8 +29,8 @@
  * First part is only applied once.  It concerns itself with data symbols.
  */
 
-#ifndef ___bs3kit_mangling_data_h
-#define ___bs3kit_mangling_data_h
+#ifndef BS3KIT_INCLUDED_bs3kit_mangling_data_h
+#define BS3KIT_INCLUDED_bs3kit_mangling_data_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -281,5 +281,5 @@
 #endif /* ARCH_BITS == 64 */
 #endif /* not needed */
 
-#endif /* !___bs3kit_mangling_data_h */
+#endif /* !BS3KIT_INCLUDED_bs3kit_mangling_data_h */
 

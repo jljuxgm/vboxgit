@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetHostInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetHostInternal.h 76579 2019-01-01 06:14:44Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Gadget API.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___UsbTestServiceGadgetHostInternal_h___
-#define ___UsbTestServiceGadgetHostInternal_h___
+#ifndef VBOX_INCLUDED_SRC_usb_UsbTestServiceGadgetHostInternal_h
+#define VBOX_INCLUDED_SRC_usb_UsbTestServiceGadgetHostInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -119,5 +119,5 @@ extern UTSGADGETHOSTIF const g_UtsGadgetHostIfUsbIp;
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_usb_UsbTestServiceGadgetHostInternal_h */
 

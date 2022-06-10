@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceProtocol.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UsbTestServiceProtocol.h 76579 2019-01-01 06:14:44Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Protocol Header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___UsbTestServiceProtocol_h___
-#define ___UsbTestServiceProtocol_h___
+#ifndef VBOX_INCLUDED_SRC_usb_UsbTestServiceProtocol_h
+#define VBOX_INCLUDED_SRC_usb_UsbTestServiceProtocol_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -364,4 +364,4 @@ DECLHIDDEN(void) utsProtocolRepN2H(PUTSPKTHDR pPktHdr);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_usb_UsbTestServiceProtocol_h */

@@ -1,4 +1,4 @@
-/* $Id: cidet.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: cidet.h 76579 2019-01-01 06:14:44Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - C/C++ Header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___cidet_h___
-#define ___cidet_h___
+#ifndef VBOX_INCLUDED_SRC_cpu_cidet_h
+#define VBOX_INCLUDED_SRC_cpu_cidet_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -1078,5 +1078,5 @@ bool    CidetCoreTestInstruction(PCIDETCORE pThis, PCCIDETINSTR pInstr);
 extern const CIDETINSTR g_aCidetInstructions1[];
 extern const uint32_t   g_cCidetInstructions1;
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_cpu_cidet_h */
 

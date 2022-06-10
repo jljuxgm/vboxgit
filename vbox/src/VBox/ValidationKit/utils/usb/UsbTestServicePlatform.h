@@ -1,4 +1,4 @@
-/* $Id: UsbTestServicePlatform.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UsbTestServicePlatform.h 76579 2019-01-01 06:14:44Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Platform specific helpers.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___UsbTestServicePlatform_h___
-#define ___UsbTestServicePlatform_h___
+#ifndef VBOX_INCLUDED_SRC_usb_UsbTestServicePlatform_h
+#define VBOX_INCLUDED_SRC_usb_UsbTestServicePlatform_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -91,5 +91,5 @@ DECLHIDDEN(int) utsPlatformLnxReleaseUDC(const char *pszUdc);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_usb_UsbTestServicePlatform_h */
 

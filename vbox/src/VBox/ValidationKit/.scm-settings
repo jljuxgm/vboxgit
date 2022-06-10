@@ -1,4 +1,4 @@
-# $Id: .scm-settings 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: .scm-settings 76579 2019-01-01 06:14:44Z vboxsync $
 ## @file
 # Source code massager settings for the Validation Kit.
 #
@@ -65,4 +65,5 @@
 /bootsectors/bs3kit/bs3kit-template-header.h:      --no-fix-header-guards
 /bootsectors/bs3kit/bs3kit-template-footer.h:      --no-fix-header-guards
 /bootsectors/bs3kit/bs3-cmn-instantiate-common.h:  --no-fix-header-guards
+/bootsectors/bs3kit/*.h: --guard-relative-to-dir bootsectors/bs3kit/ --guard-prefix BS3KIT_INCLUDED_
 
