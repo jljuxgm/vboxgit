@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 75202 2018-10-31 09:30:01Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 75203 2018-10-31 09:30:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -325,6 +325,7 @@ void UIGuestControlFileView::selectionChanged(const QItemSelection & selected, c
     QTableView::selectionChanged(selected, deselected);
 }
 
+
 /*********************************************************************************************************************************
 *   UIFileStringInputDialog implementation.                                                                                      *
 *********************************************************************************************************************************/
@@ -424,6 +425,7 @@ UIDirectoryStatistics::UIDirectoryStatistics()
     , m_uSymlinkCount(0)
 {
 }
+
 
 /*********************************************************************************************************************************
 *   UIFileTableItem implementation.                                                                                              *
