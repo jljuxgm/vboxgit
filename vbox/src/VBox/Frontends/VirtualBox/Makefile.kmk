@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 73118 2018-07-13 12:07:42Z vboxsync $
+# $Id: Makefile.kmk 73349 2018-07-25 10:14:30Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -729,7 +729,6 @@ VirtualBox_QT_MOCHDRS = \
 	src/wizards/exportappliance/UIWizardExportAppPageBasic1.h \
 	src/wizards/exportappliance/UIWizardExportAppPageBasic2.h \
 	src/wizards/exportappliance/UIWizardExportAppPageBasic3.h \
-	src/wizards/exportappliance/UIWizardExportAppPageBasic4.h \
 	src/wizards/exportappliance/UIWizardExportAppPageExpert.h \
 	src/wizards/importappliance/UIWizardImportApp.h \
 	src/wizards/importappliance/UIWizardImportAppPageBasic1.h \
@@ -1374,7 +1373,6 @@ VirtualBox_SOURCES = \
 	src/wizards/exportappliance/UIWizardExportAppPageBasic1.cpp \
 	src/wizards/exportappliance/UIWizardExportAppPageBasic2.cpp \
 	src/wizards/exportappliance/UIWizardExportAppPageBasic3.cpp \
-	src/wizards/exportappliance/UIWizardExportAppPageBasic4.cpp \
 	src/wizards/exportappliance/UIWizardExportAppPageExpert.cpp \
 	src/wizards/importappliance/UIWizardImportApp.cpp \
 	src/wizards/importappliance/UIWizardImportAppPageBasic1.cpp \

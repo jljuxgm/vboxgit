@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.h 72920 2018-07-05 14:51:50Z vboxsync $ */
+/* $Id: UIWizardExportApp.h 73349 2018-07-25 10:14:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class declaration.
  */
@@ -36,8 +36,7 @@ public:
     {
         Page1,
         Page2,
-        Page3,
-        Page4
+        Page3
     };
 
     /** Expert page IDs. */

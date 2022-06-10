@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppDefs.h 72930 2018-07-06 11:10:59Z vboxsync $ */
+/* $Id: UIWizardExportAppDefs.h 73349 2018-07-25 10:14:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppDefs class declaration.
  */
@@ -25,10 +25,6 @@
 
 /* GUI includes: */
 #include "UIApplianceExportEditorWidget.h"
-
-/** Storage types. */
-enum StorageType { LocalFilesystem, CloudProvider };
-Q_DECLARE_METATYPE(StorageType);
 
 /* Typedefs: */
 typedef QPointer<UIApplianceExportEditorWidget> ExportAppliancePointer;

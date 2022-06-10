@@ -1,4 +1,4 @@
-/* $Id: precomp.h 73118 2018-07-13 12:07:42Z vboxsync $*/
+/* $Id: precomp.h 73349 2018-07-25 10:14:30Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -606,7 +606,6 @@
 #include "UIWizardExportAppPageBasic1.h"
 #include "UIWizardExportAppPageBasic2.h"
 #include "UIWizardExportAppPageBasic3.h"
-#include "UIWizardExportAppPageBasic4.h"
 #include "UIWizardExportAppPageExpert.h"
 #include "UIWizardFirstRun.h"
 #include "UIWizardFirstRunPageBasic.h"
