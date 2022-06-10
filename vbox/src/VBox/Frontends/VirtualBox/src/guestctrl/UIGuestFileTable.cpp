@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 75897 2018-12-03 12:29:15Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 75903 2018-12-03 13:03:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestFileTable class implementation.
  */
@@ -329,7 +329,7 @@ bool UIGuestFileTable::createDirectory(const QString &path, const QString &direc
     return true;
 }
 
-void UIGuestFileTable::copyHostToGuest(const QStringList &hostSourcePathList, bool fDeleteAfterSuccessfulCopy /* = false */,
+void UIGuestFileTable::copyHostToGuest(const QStringList &hostSourcePathList,
                                         const QString &strDestination /* = QString() */)
 {
     if (!checkGuestSession())
@@ -356,13 +356,9 @@ void UIGuestFileTable::copyHostToGuest(const QStringList &hostSourcePathList, bo
     if (!checkGuestSession())
         return;
     emit sigNewFileOperation(progress);
-    /* Cache the progress id and host source file objects' path in case of move operation. we will delete
-     * these when/if we receieve progress completed notification: */
-    if (fDeleteAfterSuccessfulCopy)
-        emit sigCacheHostFileObjectsForDeletion(progress.GetId(), sourcePaths.toList());
 }
 
-void UIGuestFileTable::copyGuestToHost(const QString& hostDestinationPath, bool fDeleteAfterSuccessfulCopy /* = false */)
+void UIGuestFileTable::copyGuestToHost(const QString& hostDestinationPath)
 {
     if (!checkGuestSession())
         return;
@@ -385,10 +381,6 @@ void UIGuestFileTable::copyGuestToHost(const QString& hostDestinationPath, bool 
     if (!checkGuestSession())
         return;
     emit sigNewFileOperation(progress);
-    /* Cache the progress id and source file objects' path in case of move operation. we will delete
-     * these when/if we receieve progress completed notification: */
-    if (fDeleteAfterSuccessfulCopy)
-        m_deleteAfterCopyCache[progress.GetId()] = sourcePaths.toList();
 }
 
 FileObjectType UIGuestFileTable::fileType(const CFsObjInfo &fsInfo)
