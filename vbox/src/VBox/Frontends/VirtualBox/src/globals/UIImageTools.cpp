@@ -1,4 +1,4 @@
-/* $Id: UIImageTools.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIImageTools.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Implementation of utility classes and functions for image manipulation.
  */
@@ -15,17 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QPainter>
+#include <QPainter>
 
 /* GUI include */
-# include "UIImageTools.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "UIImageTools.h"
 
 /* External includes: */
 #include <math.h>

@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHotKeyEditor class implementation.
  */
@@ -15,24 +15,18 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QApplication>
-# include <QHBoxLayout>
-# include <QLineEdit>
-# include <QKeyEvent>
-# include <QStyle>
+#include <QApplication>
+#include <QHBoxLayout>
+#include <QLineEdit>
+#include <QKeyEvent>
+#include <QStyle>
 
 /* GUI includes; */
-# include "UIHostComboEditor.h"
-# include "UIHotKeyEditor.h"
-# include "UIIconPool.h"
-# include "QIToolButton.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "UIHostComboEditor.h"
+#include "UIHotKeyEditor.h"
+#include "UIIconPool.h"
+#include "QIToolButton.h"
 
 
 /** QLineEdit extension representing hot-key editor. */

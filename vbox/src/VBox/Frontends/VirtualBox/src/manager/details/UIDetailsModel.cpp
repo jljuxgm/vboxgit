@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDetailsModel.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class implementation.
  */
@@ -15,29 +15,23 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QAction>
-# include <QGraphicsScene>
-# include <QGraphicsSceneContextMenuEvent>
-# include <QGraphicsView>
-# include <QMenu>
-# include <QMetaEnum>
+#include <QAction>
+#include <QGraphicsScene>
+#include <QGraphicsSceneContextMenuEvent>
+#include <QGraphicsView>
+#include <QMenu>
+#include <QMetaEnum>
 
 /* GUI includes: */
-# include "UIConverter.h"
-# include "UIDetails.h"
-# include "UIDetailsContextMenu.h"
-# include "UIDetailsModel.h"
-# include "UIDetailsGroup.h"
-# include "UIDetailsElement.h"
-# include "UIExtraDataManager.h"
-# include "VBoxGlobal.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "UIConverter.h"
+#include "UIDetails.h"
+#include "UIDetailsContextMenu.h"
+#include "UIDetailsModel.h"
+#include "UIDetailsGroup.h"
+#include "UIDetailsElement.h"
+#include "UIExtraDataManager.h"
+#include "VBoxGlobal.h"
 
 
 /*********************************************************************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 76603 2019-01-02 04:35:58Z vboxsync $ */
+/* $Id: UIDefs.h 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -24,7 +24,9 @@
 /* Define GUI log group: */
 // WORKAROUND:
 // This define should go *before* VBox/log.h include!
-#define LOG_GROUP LOG_GROUP_GUI
+#ifndef LOG_GROUP
+# define LOG_GROUP LOG_GROUP_GUI
+#endif
 
 /* Qt includes: */
 #include <QEvent>

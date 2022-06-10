@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRunPageBasic.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRunPageBasic class implementation.
  */
@@ -15,26 +15,20 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QHBoxLayout>
-# include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 /* GUI includes: */
-# include "QIRichTextLabel.h"
-# include "QIToolButton.h"
-# include "VBoxGlobal.h"
-# include "UIIconPool.h"
-# include "UIMediaComboBox.h"
-# include "UIMedium.h"
-# include "UIMessageCenter.h"
-# include "UIWizardFirstRun.h"
-# include "UIWizardFirstRunPageBasic.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "QIRichTextLabel.h"
+#include "QIToolButton.h"
+#include "VBoxGlobal.h"
+#include "UIIconPool.h"
+#include "UIMediaComboBox.h"
+#include "UIMedium.h"
+#include "UIMessageCenter.h"
+#include "UIWizardFirstRun.h"
+#include "UIWizardFirstRunPageBasic.h"
 
 
 UIWizardFirstRunPage::UIWizardFirstRunPage(bool fBootHardDiskWasSet)

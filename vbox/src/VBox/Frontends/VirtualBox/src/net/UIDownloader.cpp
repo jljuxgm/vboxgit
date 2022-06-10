@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDownloader.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloader class implementation.
  */
@@ -15,18 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* GUI includes: */
-# include "VBoxGlobal.h"
-# include "VBoxUtils.h"
-# include "UIDownloader.h"
-# include "UIMessageCenter.h"
-# include "UINetworkReply.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "VBoxGlobal.h"
+#include "VBoxUtils.h"
+#include "UIDownloader.h"
+#include "UIMessageCenter.h"
+#include "UINetworkReply.h"
 
 
 void UIDownloader::start()

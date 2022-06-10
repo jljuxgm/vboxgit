@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 76600 2019-01-02 02:05:40Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -15,38 +15,32 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QHeaderView>
-# include <QHelpEvent>
-# include <QMenu>
-# include <QToolTip>
+#include <QHeaderView>
+#include <QHelpEvent>
+#include <QMenu>
+#include <QToolTip>
 
 /* GUI includes: */
-# include "QIWidgetValidator.h"
-# include "UIConverter.h"
-# include "UIIconPool.h"
-# include "UIMachineSettingsUSB.h"
-# include "UIMachineSettingsUSBFilterDetails.h"
-# include "UIErrorString.h"
-# include "UIToolBar.h"
-# include "VBoxGlobal.h"
+#include "QIWidgetValidator.h"
+#include "UIConverter.h"
+#include "UIIconPool.h"
+#include "UIMachineSettingsUSB.h"
+#include "UIMachineSettingsUSBFilterDetails.h"
+#include "UIErrorString.h"
+#include "UIToolBar.h"
+#include "VBoxGlobal.h"
 
 /* COM includes: */
-# include "CConsole.h"
-# include "CExtPack.h"
-# include "CExtPackManager.h"
-# include "CHostUSBDevice.h"
-# include "CHostUSBDeviceFilter.h"
-# include "CUSBController.h"
-# include "CUSBDevice.h"
-# include "CUSBDeviceFilter.h"
-# include "CUSBDeviceFilters.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "CConsole.h"
+#include "CExtPack.h"
+#include "CExtPackManager.h"
+#include "CHostUSBDevice.h"
+#include "CHostUSBDeviceFilter.h"
+#include "CUSBController.h"
+#include "CUSBDevice.h"
+#include "CUSBDeviceFilter.h"
+#include "CUSBDeviceFilters.h"
 
 /* VirtualBox interface declarations: */
 #include <VBox/com/VirtualBox.h>

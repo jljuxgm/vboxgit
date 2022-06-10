@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -15,28 +15,22 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QGraphicsScene>
-# include <QGraphicsSceneMouseEvent>
-# include <QGraphicsView>
-# include <QPainter>
-# include <QStyleOptionGraphicsItem>
+#include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
+#include <QGraphicsView>
+#include <QPainter>
+#include <QStyleOptionGraphicsItem>
 
 /* GUI includes: */
-# include "VBoxGlobal.h"
-# include "UIChooserItemGlobal.h"
-# include "UIChooserModel.h"
-# include "UIIconPool.h"
-# include "UIVirtualBoxManager.h"
+#include "VBoxGlobal.h"
+#include "UIChooserItemGlobal.h"
+#include "UIChooserModel.h"
+#include "UIIconPool.h"
+#include "UIVirtualBoxManager.h"
 
 /* Other VBox includes: */
 #include "iprt/cpp/utils.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
 UIChooserItemGlobal::UIChooserItemGlobal(UIChooserItem *pParent,

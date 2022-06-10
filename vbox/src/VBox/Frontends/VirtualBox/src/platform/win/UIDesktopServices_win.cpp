@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_win.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDesktopServices_win.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to Windows..
  */
@@ -15,22 +15,16 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* VBox includes */
-# include "UIDesktopServices.h"
+#include "UIDesktopServices.h"
 
 /* Qt includes */
-# include <QDir>
-# include <QCoreApplication>
-# include <QUuid>
+#include <QDir>
+#include <QCoreApplication>
+#include <QUuid>
 
 /* System includes */
-# include <iprt/win/shlobj.h>
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include <iprt/win/shlobj.h>
 
 
 bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, const QString &strDstPath, const QString &strName, const QUuid &uUuid)

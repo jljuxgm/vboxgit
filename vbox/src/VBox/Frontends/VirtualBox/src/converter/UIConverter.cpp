@@ -1,4 +1,4 @@
-/* $Id: UIConverter.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIConverter.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverter implementation.
  */
@@ -15,12 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else
 /* GUI includes: */
-# include "UIConverter.h"
-#endif
+#include "UIConverter.h"
 
 
 /* static */

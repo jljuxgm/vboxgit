@@ -1,4 +1,4 @@
-/* $Id: UIErrorPane.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIErrorPane.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIErrorPane class implementation.
  */
@@ -15,27 +15,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QAction>
-# include <QHBoxLayout>
-# include <QLabel>
-# include <QStyle>
-# include <QTextBrowser>
-# include <QToolButton>
-# include <QVBoxLayout>
+#include <QAction>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QStyle>
+#include <QTextBrowser>
+#include <QToolButton>
+#include <QVBoxLayout>
 
 /* GUI includes */
-# include "QIWithRetranslateUI.h"
-# include "UIErrorPane.h"
+#include "QIWithRetranslateUI.h"
+#include "UIErrorPane.h"
 
 /* Other VBox includes: */
-# include <iprt/assert.h>
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include <iprt/assert.h>
 
 
 UIErrorPane::UIErrorPane(QAction *pRefreshAction /* = 0 */, QWidget *pParent /* = 0 */)

@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class implementation.
  */
@@ -15,41 +15,29 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QApplication>
-# include <QHBoxLayout>
-# include <QKeyEvent>
-# include <QStyleOption>
-# include <QStylePainter>
-# include <QTimer>
-# ifdef VBOX_WS_X11
-#  include <QX11Info>
-# endif
-
-/* GUI includes: */
-# include "QIToolButton.h"
-# include "VBoxGlobal.h"
-# include "UIExtraDataManager.h"
-# include "UIHostComboEditor.h"
-# include "UIIconPool.h"
-# ifdef VBOX_WS_MAC
-#  include "UICocoaApplication.h"
-#  include "VBoxUtils-darwin.h"
-# endif
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
-/* Qt includes: */
+#include <QApplication>
+#include <QHBoxLayout>
+#include <QKeyEvent>
+#include <QStyleOption>
+#include <QStylePainter>
+#include <QTimer>
+#ifdef VBOX_WS_X11
+# include <QX11Info>
+#endif
 #if defined(VBOX_WS_MAC) || defined(VBOX_WS_WIN)
 # include <QAbstractNativeEventFilter>
 #endif
 
 /* GUI includes: */
-#if defined(VBOX_WS_MAC)
+#include "QIToolButton.h"
+#include "VBoxGlobal.h"
+#include "UIExtraDataManager.h"
+#include "UIHostComboEditor.h"
+#include "UIIconPool.h"
+#ifdef VBOX_WS_MAC
+# include "UICocoaApplication.h"
+# include "VBoxUtils-darwin.h"
 # include "DarwinKeyboard.h"
 #elif defined(VBOX_WS_WIN)
 # include "WinKeyboard.h"

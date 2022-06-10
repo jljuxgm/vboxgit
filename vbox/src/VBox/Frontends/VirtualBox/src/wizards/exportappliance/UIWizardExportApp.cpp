@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -15,28 +15,22 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QFileInfo>
-# include <QVariant>
+#include <QFileInfo>
+#include <QVariant>
 
 /* GUI includes: */
-# include "UIAddDiskEncryptionPasswordDialog.h"
-# include "UIMessageCenter.h"
-# include "UIWizardExportApp.h"
-# include "UIWizardExportAppDefs.h"
-# include "UIWizardExportAppPageBasic1.h"
-# include "UIWizardExportAppPageBasic2.h"
-# include "UIWizardExportAppPageBasic3.h"
-# include "UIWizardExportAppPageExpert.h"
+#include "UIAddDiskEncryptionPasswordDialog.h"
+#include "UIMessageCenter.h"
+#include "UIWizardExportApp.h"
+#include "UIWizardExportAppDefs.h"
+#include "UIWizardExportAppPageBasic1.h"
+#include "UIWizardExportAppPageBasic2.h"
+#include "UIWizardExportAppPageBasic3.h"
+#include "UIWizardExportAppPageExpert.h"
 
 /* COM includes: */
-# include "CAppliance.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "CAppliance.h"
 
 /* COM includes: */
 #include "CVFSExplorer.h"

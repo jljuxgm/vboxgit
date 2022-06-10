@@ -1,4 +1,4 @@
-/* $Id: QIGraphicsView.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIGraphicsView.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIGraphicsView class implementation.
  */
@@ -15,21 +15,15 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QScrollBar>
-# include <QTouchEvent>
+#include <QScrollBar>
+#include <QTouchEvent>
 
 /* GUI includes: */
-# include "QIGraphicsView.h"
+#include "QIGraphicsView.h"
 
 /* Other VBox includes: */
-# include "iprt/assert.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "iprt/assert.h"
 
 
 QIGraphicsView::QIGraphicsView(QWidget *pParent /* = 0 */)

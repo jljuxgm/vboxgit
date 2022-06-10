@@ -1,4 +1,4 @@
-/* $Id: UIDetailsItem.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDetailsItem.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsItem class definition.
  */
@@ -15,27 +15,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QAccessibleObject>
-# include <QApplication>
-# include <QGraphicsScene>
-# include <QPainter>
-# include <QStyleOptionGraphicsItem>
+#include <QAccessibleObject>
+#include <QApplication>
+#include <QGraphicsScene>
+#include <QPainter>
+#include <QStyleOptionGraphicsItem>
 
 /* GUI includes: */
-# include "UIGraphicsTextPane.h"
-# include "UIDetails.h"
-# include "UIDetailsElement.h"
-# include "UIDetailsGroup.h"
-# include "UIDetailsModel.h"
-# include "UIDetailsSet.h"
-# include "UIDetailsView.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "UIGraphicsTextPane.h"
+#include "UIDetails.h"
+#include "UIDetailsElement.h"
+#include "UIDetailsGroup.h"
+#include "UIDetailsModel.h"
+#include "UIDetailsSet.h"
+#include "UIDetailsView.h"
 
 
 /** QAccessibleObject extension used as an accessibility interface for Details-view items. */

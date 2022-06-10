@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIGuestControlInterface.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class implementation.
  */
@@ -15,27 +15,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* GUI includes: */
-# include "UIErrorString.h"
-# include "UIGuestControlInterface.h"
-# include "VBoxGlobal.h"
+#include "UIErrorString.h"
+#include "UIGuestControlInterface.h"
+#include "VBoxGlobal.h"
 
 /* COM includes: */
-# include "CFsObjInfo.h"
-# include "CGuestDirectory.h"
-# include "CGuestProcess.h"
-# include "CGuestSession.h"
-# include "CGuestFsObjInfo.h"
+#include "CFsObjInfo.h"
+#include "CGuestDirectory.h"
+#include "CGuestProcess.h"
+#include "CGuestSession.h"
+#include "CGuestFsObjInfo.h"
 
 /* Misc. includes: */
-# include <iprt/err.h>
-# include <iprt/getopt.h>
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include <iprt/err.h>
+#include <iprt/getopt.h>
 
 
 #define GCTLCMD_COMMON_OPT_USER             999 /**< The --username option number. */

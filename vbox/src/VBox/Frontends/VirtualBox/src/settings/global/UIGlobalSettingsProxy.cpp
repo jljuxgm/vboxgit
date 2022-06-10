@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -15,26 +15,20 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QButtonGroup>
-# include <QRegExpValidator>
+#include <QButtonGroup>
+#include <QRegExpValidator>
 
 /* GUI includes: */
-# include "QIWidgetValidator.h"
-# include "UIGlobalSettingsProxy.h"
-# include "UIExtraDataManager.h"
-# include "UIMessageCenter.h"
-# include "VBoxGlobal.h"
-# include "VBoxUtils.h"
+#include "QIWidgetValidator.h"
+#include "UIGlobalSettingsProxy.h"
+#include "UIExtraDataManager.h"
+#include "UIMessageCenter.h"
+#include "VBoxGlobal.h"
+#include "VBoxUtils.h"
 
 /* COM includes: */
-# include "CSystemProperties.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "CSystemProperties.h"
 
 
 /** Global settings: Proxy page data structure. */

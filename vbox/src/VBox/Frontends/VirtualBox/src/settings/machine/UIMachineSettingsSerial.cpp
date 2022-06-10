@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
@@ -15,25 +15,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QDir>
+#include <QDir>
 
 /* GUI includes: */
-# include "QITabWidget.h"
-# include "QIWidgetValidator.h"
-# include "UIConverter.h"
-# include "UIMachineSettingsSerial.h"
-# include "UIErrorString.h"
-# include "VBoxGlobal.h"
+#include "QITabWidget.h"
+#include "QIWidgetValidator.h"
+#include "UIConverter.h"
+#include "UIMachineSettingsSerial.h"
+#include "UIErrorString.h"
+#include "VBoxGlobal.h"
 
 /* COM includes: */
-# include "CSerialPort.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "CSerialPort.h"
 
 
 /** Machine settings: Serial Port tab data structure. */

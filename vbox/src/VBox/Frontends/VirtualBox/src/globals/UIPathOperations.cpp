@@ -1,4 +1,4 @@
-/* $Id: UIPathOperations.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIPathOperations.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPathOperations class implementation.
  */
@@ -15,17 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QList>
+#include <QList>
 
 /* GUI includes: */
-# include "UIPathOperations.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "UIPathOperations.h"
 
 const QChar UIPathOperations::delimiter = QChar('/');
 const QChar UIPathOperations::dosDelimiter = QChar('\\');

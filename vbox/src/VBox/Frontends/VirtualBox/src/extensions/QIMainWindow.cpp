@@ -1,4 +1,4 @@
-/* $Id: QIMainWindow.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIMainWindow.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMainWindow class implementation.
  */
@@ -15,17 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* GUI includes: */
-# include "QIMainWindow.h"
-# ifdef VBOX_WS_X11
-#  include "VBoxGlobal.h"
-# endif
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "QIMainWindow.h"
+#ifdef VBOX_WS_X11
+# include "VBoxGlobal.h"
+#endif
 
 
 QIMainWindow::QIMainWindow(QWidget *pParent /* = 0 */, Qt::WindowFlags enmFlags /* = 0 */)

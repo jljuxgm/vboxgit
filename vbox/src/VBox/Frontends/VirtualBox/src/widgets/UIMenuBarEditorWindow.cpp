@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -15,35 +15,29 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QAccessibleWidget>
-# include <QHBoxLayout>
-# include <QMenu>
-# include <QMenuBar>
-# include <QMetaEnum>
-# include <QPainter>
-# include <QPaintEvent>
-# include <QStyleOptionToolButton>
-# ifndef VBOX_WS_MAC
-#  include <QCheckBox>
-# endif
+#include <QAccessibleWidget>
+#include <QHBoxLayout>
+#include <QMenu>
+#include <QMenuBar>
+#include <QMetaEnum>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QStyleOptionToolButton>
+#ifndef VBOX_WS_MAC
+# include <QCheckBox>
+#endif
 
 /* GUI includes: */
-# include "QIToolButton.h"
-# include "VBoxGlobal.h"
-# include "UIActionPoolRuntime.h"
-# include "UIConverter.h"
-# include "UIExtraDataManager.h"
-# include "UIIconPool.h"
-# include "UIMachineWindow.h"
-# include "UIMenuBarEditorWindow.h"
-# include "UIToolBar.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "QIToolButton.h"
+#include "VBoxGlobal.h"
+#include "UIActionPoolRuntime.h"
+#include "UIConverter.h"
+#include "UIExtraDataManager.h"
+#include "UIIconPool.h"
+#include "UIMachineWindow.h"
+#include "UIMenuBarEditorWindow.h"
+#include "UIToolBar.h"
 
 /* Forward declarations: */
 class QAccessibleInterface;

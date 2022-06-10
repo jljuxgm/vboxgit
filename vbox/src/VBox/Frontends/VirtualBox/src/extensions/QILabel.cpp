@@ -1,4 +1,4 @@
-/* $Id: QILabel.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QILabel.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILabel class implementation.
  */
@@ -19,26 +19,20 @@
  * This class is based on the original QLabel implementation.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QApplication>
-# include <QClipboard>
-# include <QContextMenuEvent>
-# include <QDrag>
-# include <QFocusEvent>
-# include <QMenu>
-# include <QMimeData>
-# include <QMouseEvent>
-# include <QPainter>
-# include <QStyleOptionFocusRect>
+#include <QApplication>
+#include <QClipboard>
+#include <QContextMenuEvent>
+#include <QDrag>
+#include <QFocusEvent>
+#include <QMenu>
+#include <QMimeData>
+#include <QMouseEvent>
+#include <QPainter>
+#include <QStyleOptionFocusRect>
 
 /* GUI includes: */
-# include "QILabel.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "QILabel.h"
 
 /* Type definitions: */
 #define HOR_PADDING 1

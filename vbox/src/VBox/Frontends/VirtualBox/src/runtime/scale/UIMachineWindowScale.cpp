@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -15,31 +15,25 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QMenu>
-# include <QTimer>
-# include <QSpacerItem>
-# include <QResizeEvent>
+#include <QMenu>
+#include <QTimer>
+#include <QSpacerItem>
+#include <QResizeEvent>
 
 /* GUI includes: */
-# include "VBoxGlobal.h"
-# include "UIDesktopWidgetWatchdog.h"
-# include "UIExtraDataManager.h"
-# include "UISession.h"
-# include "UIMachineLogic.h"
-# include "UIMachineWindowScale.h"
-# include "UIMachineView.h"
-# ifdef VBOX_WS_MAC
-#  include "VBoxUtils.h"
-#  include "UIImageTools.h"
-#  include "UICocoaApplication.h"
-# endif /* VBOX_WS_MAC */
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "VBoxGlobal.h"
+#include "UIDesktopWidgetWatchdog.h"
+#include "UIExtraDataManager.h"
+#include "UISession.h"
+#include "UIMachineLogic.h"
+#include "UIMachineWindowScale.h"
+#include "UIMachineView.h"
+#ifdef VBOX_WS_MAC
+# include "VBoxUtils.h"
+# include "UIImageTools.h"
+# include "UICocoaApplication.h"
+#endif
 
 
 UIMachineWindowScale::UIMachineWindowScale(UIMachineLogic *pMachineLogic, ulong uScreenId)

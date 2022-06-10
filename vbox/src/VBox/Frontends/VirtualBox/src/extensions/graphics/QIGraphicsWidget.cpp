@@ -1,4 +1,4 @@
-/* $Id: QIGraphicsWidget.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIGraphicsWidget.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIGraphicsWidget class definition.
  */
@@ -15,14 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* GUI includes: */
-# include "QIGraphicsWidget.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "QIGraphicsWidget.h"
 
 
 QIGraphicsWidget::QIGraphicsWidget(QGraphicsWidget *pParent)

@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIScaleFactorEditor.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */
@@ -15,27 +15,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QComboBox>
-# include <QGridLayout>
-# include <QLabel>
-# include <QSpacerItem>
-# include <QSpinBox>
-# include <QWidget>
+#include <QComboBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QSpacerItem>
+#include <QSpinBox>
+#include <QWidget>
 
 /* GUI includes: */
-# include "QIAdvancedSlider.h"
-# include "UIDesktopWidgetWatchdog.h"
-# include "UIScaleFactorEditor.h"
+#include "QIAdvancedSlider.h"
+#include "UIDesktopWidgetWatchdog.h"
+#include "UIScaleFactorEditor.h"
 
 /* External includes: */
-# include <math.h>
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include <math.h>
 
 
 UIScaleFactorEditor::UIScaleFactorEditor(QWidget *pParent)

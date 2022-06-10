@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -15,25 +15,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QAction>
-# include <QDateTime>
-# include <QDir>
+#include <QAction>
+#include <QDateTime>
+#include <QDir>
 
 /* GUI includes: */
-# include "QILabel.h"
-# include "UIActionPool.h"
-# include "UIFileManager.h"
-# include "UICustomFileSystemModel.h"
-# include "UIFileManagerHostTable.h"
-# include "UIPathOperations.h"
-# include "UIToolBar.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "QILabel.h"
+#include "UIActionPool.h"
+#include "UIFileManager.h"
+#include "UICustomFileSystemModel.h"
+#include "UIFileManagerHostTable.h"
+#include "UIPathOperations.h"
+#include "UIToolBar.h"
 
 
 /*********************************************************************************************************************************

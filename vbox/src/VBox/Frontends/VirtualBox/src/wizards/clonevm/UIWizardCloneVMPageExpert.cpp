@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class implementation.
  */
@@ -15,25 +15,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Global includes: */
-# include <QButtonGroup>
-# include <QCheckBox>
-# include <QGridLayout>
-# include <QGroupBox>
-# include <QLabel>
-# include <QRadioButton>
+#include <QButtonGroup>
+#include <QCheckBox>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QLabel>
+#include <QRadioButton>
 
 /* Local includes: */
-# include "QILineEdit.h"
-# include "UIFilePathSelector.h"
-# include "UIWizardCloneVMPageExpert.h"
-# include "UIWizardCloneVM.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "QILineEdit.h"
+#include "UIFilePathSelector.h"
+#include "UIWizardCloneVMPageExpert.h"
+#include "UIWizardCloneVM.h"
 
 
 UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalName, const QString &strDefaultPath,

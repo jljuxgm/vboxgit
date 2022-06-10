@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -15,44 +15,38 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QAccessibleWidget>
-# include <QApplication>
-# include <QDateTime>
-# include <QHeaderView>
-# include <QIcon>
-# include <QMenu>
-# include <QPointer>
-# include <QReadWriteLock>
-# include <QScrollBar>
-# include <QTimer>
-# include <QVBoxLayout>
-# include <QWriteLocker>
+#include <QAccessibleWidget>
+#include <QApplication>
+#include <QDateTime>
+#include <QHeaderView>
+#include <QIcon>
+#include <QMenu>
+#include <QPointer>
+#include <QReadWriteLock>
+#include <QScrollBar>
+#include <QTimer>
+#include <QVBoxLayout>
+#include <QWriteLocker>
 
 /* GUI includes: */
-# include "QIMessageBox.h"
-# include "QITreeWidget.h"
-# include "UIActionPoolManager.h"
-# include "UIConverter.h"
-# include "UIExtraDataManager.h"
-# include "UIIconPool.h"
-# include "UIMessageCenter.h"
-# include "UIModalWindowManager.h"
-# include "UISnapshotDetailsWidget.h"
-# include "UISnapshotPane.h"
-# include "UITakeSnapshotDialog.h"
-# include "UIToolBar.h"
-# include "UIVirtualBoxEventHandler.h"
-# include "UIWizardCloneVM.h"
+#include "QIMessageBox.h"
+#include "QITreeWidget.h"
+#include "UIActionPoolManager.h"
+#include "UIConverter.h"
+#include "UIExtraDataManager.h"
+#include "UIIconPool.h"
+#include "UIMessageCenter.h"
+#include "UIModalWindowManager.h"
+#include "UISnapshotDetailsWidget.h"
+#include "UISnapshotPane.h"
+#include "UITakeSnapshotDialog.h"
+#include "UIToolBar.h"
+#include "UIVirtualBoxEventHandler.h"
+#include "UIWizardCloneVM.h"
 
 /* COM includes: */
-# include "CConsole.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "CConsole.h"
 
 
 /** Snapshot tree column tags. */

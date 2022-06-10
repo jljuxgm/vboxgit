@@ -1,4 +1,4 @@
-/* $Id: QILabelSeparator.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QILabelSeparator.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILabelSeparator class implementation.
  */
@@ -15,18 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QHBoxLayout>
-# include <QLabel>
+#include <QHBoxLayout>
+#include <QLabel>
 
 /* GUI includes: */
-# include "QILabelSeparator.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "QILabelSeparator.h"
 
 
 QILabelSeparator::QILabelSeparator(QWidget *pParent /* = 0 */, Qt::WindowFlags fFlags /* = 0 */)

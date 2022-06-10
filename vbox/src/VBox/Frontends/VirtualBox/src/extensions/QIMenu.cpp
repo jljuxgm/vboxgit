@@ -1,4 +1,4 @@
-/* $Id: QIMenu.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIMenu.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMenu class implementation.
  */
@@ -15,14 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else
-
 /* GUI includes: */
-# include "QIMenu.h"
-
-#endif
+#include "QIMenu.h"
 
 
 QIMenu::QIMenu(QWidget *pParent /* = 0 */)

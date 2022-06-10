@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -15,35 +15,29 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QApplication>
-# include <QMainWindow>
-# include <QTimer>
-# ifdef VBOX_WS_MAC
-#  include <QMenuBar>
-# endif /* VBOX_WS_MAC */
+#include <QApplication>
+#include <QMainWindow>
+#include <QTimer>
+#ifdef VBOX_WS_MAC
+# include <QMenuBar>
+#endif /* VBOX_WS_MAC */
 
 /* GUI includes: */
-# include "UISession.h"
-# include "UIMachineLogicSeamless.h"
-# include "UIMachineWindow.h"
-# include "UIMachineViewSeamless.h"
-# include "UIFrameBuffer.h"
-# include "UIExtraDataManager.h"
-# include "UIDesktopWidgetWatchdog.h"
+#include "UISession.h"
+#include "UIMachineLogicSeamless.h"
+#include "UIMachineWindow.h"
+#include "UIMachineViewSeamless.h"
+#include "UIFrameBuffer.h"
+#include "UIExtraDataManager.h"
+#include "UIDesktopWidgetWatchdog.h"
 
 /* COM includes: */
-# include "CConsole.h"
-# include "CDisplay.h"
+#include "CConsole.h"
+#include "CDisplay.h"
 
 /* Other VBox includes: */
-# include "VBox/log.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "VBox/log.h"
 
 /* External includes: */
 #ifdef VBOX_WS_X11

@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIIconPool.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -15,29 +15,23 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QApplication>
-# include <QFile>
-# include <QStyle>
-# include <QWidget>
+#include <QApplication>
+#include <QFile>
+#include <QStyle>
+#include <QWidget>
 
 /* GUI includes: */
-# include "UIIconPool.h"
-# include "UIExtraDataManager.h"
-# include "UIModalWindowManager.h"
+#include "UIIconPool.h"
+#include "UIExtraDataManager.h"
+#include "UIModalWindowManager.h"
 
 /* COM includes: */
-# include "COMEnums.h"
-# include "CMachine.h"
+#include "COMEnums.h"
+#include "CMachine.h"
 
 /* Other VBox includes: */
-# include <iprt/assert.h>
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include <iprt/assert.h>
 
 
 /*********************************************************************************************************************************

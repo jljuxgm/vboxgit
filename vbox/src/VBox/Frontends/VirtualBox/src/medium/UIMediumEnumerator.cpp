@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -15,26 +15,20 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QSet>
+#include <QSet>
 
 /* GUI includes: */
-# include "UIMediumEnumerator.h"
-# include "UIThreadPool.h"
-# include "UIVirtualBoxEventHandler.h"
-# include "VBoxGlobal.h"
+#include "UIMediumEnumerator.h"
+#include "UIThreadPool.h"
+#include "UIVirtualBoxEventHandler.h"
+#include "VBoxGlobal.h"
 
 /* COM includes: */
-# include "COMEnums.h"
-# include "CMachine.h"
-# include "CSnapshot.h"
-# include "CMediumAttachment.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "COMEnums.h"
+#include "CMachine.h"
+#include "CSnapshot.h"
+#include "CMediumAttachment.h"
 
 
 template<class T>

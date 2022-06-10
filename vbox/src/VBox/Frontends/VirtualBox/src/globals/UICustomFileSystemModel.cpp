@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -15,24 +15,18 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QApplication>
-# include <QDateTime>
-# include <QHeaderView>
+#include <QApplication>
+#include <QDateTime>
+#include <QHeaderView>
 
 /* GUI includes: */
-# include "UIErrorString.h"
-# include "UICustomFileSystemModel.h"
-# include "UIPathOperations.h"
-# include "VBoxGlobal.h"
+#include "UIErrorString.h"
+#include "UICustomFileSystemModel.h"
+#include "UIPathOperations.h"
+#include "VBoxGlobal.h"
 
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
-const char* UICustomFileSystemModel::strUpDirectoryString = "..";
+const char *UICustomFileSystemModel::strUpDirectoryString = "..";
 
 
 /*********************************************************************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -15,33 +15,27 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QAccessibleObject>
-# include <QApplication>
-# include <QStyle>
-# include <QPainter>
-# include <QGraphicsScene>
-# include <QStyleOptionFocusRect>
-# include <QGraphicsSceneMouseEvent>
-# include <QStateMachine>
-# include <QPropertyAnimation>
-# include <QSignalTransition>
-# include <QDrag>
+#include <QAccessibleObject>
+#include <QApplication>
+#include <QStyle>
+#include <QPainter>
+#include <QGraphicsScene>
+#include <QStyleOptionFocusRect>
+#include <QGraphicsSceneMouseEvent>
+#include <QStateMachine>
+#include <QPropertyAnimation>
+#include <QSignalTransition>
+#include <QDrag>
 
 /* GUI includes: */
-# include "UIChooser.h"
-# include "UIChooserItem.h"
-# include "UIChooserView.h"
-# include "UIChooserModel.h"
-# include "UIChooserItemGroup.h"
-# include "UIChooserItemGlobal.h"
-# include "UIChooserItemMachine.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "UIChooser.h"
+#include "UIChooserItem.h"
+#include "UIChooserView.h"
+#include "UIChooserModel.h"
+#include "UIChooserItemGroup.h"
+#include "UIChooserItemGlobal.h"
+#include "UIChooserItemMachine.h"
 
 
 /** QAccessibleObject extension used as an accessibility interface for Chooser-view items. */

@@ -1,4 +1,4 @@
-/* $Id: COMDefs.cpp 76600 2019-01-02 02:05:40Z vboxsync $ */
+/* $Id: COMDefs.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - CInterface implementation.
  */
@@ -15,20 +15,14 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QSocketNotifier>
+#include <QSocketNotifier>
 
 /* GUI includes: */
-# include "COMDefs.h"
+#include "COMDefs.h"
 
 /* COM includes: */
-# include "CVirtualBoxErrorInfo.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "CVirtualBoxErrorInfo.h"
 
 /* VirtualBox interface declarations: */
 #include <VBox/com/VirtualBox.h>

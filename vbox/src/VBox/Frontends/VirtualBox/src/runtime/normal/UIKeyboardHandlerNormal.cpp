@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerNormal.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIKeyboardHandlerNormal.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandlerNormal class implementation.
  */
@@ -15,27 +15,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# ifndef VBOX_WS_MAC
-#  include <QMainWindow>
-#  include <QMenuBar>
-#  include <QKeyEvent>
-#  include <QTimer>
-# endif /* !VBOX_WS_MAC */
+#ifndef VBOX_WS_MAC
+# include <QMainWindow>
+# include <QMenuBar>
+# include <QKeyEvent>
+# include <QTimer>
+#endif /* !VBOX_WS_MAC */
 
 /* GUI includes: */
-# include "UIKeyboardHandlerNormal.h"
-# ifndef VBOX_WS_MAC
-#  include "UIMachineLogic.h"
-#  include "UIMachineWindow.h"
-#  include "UIShortcutPool.h"
-# endif /* !VBOX_WS_MAC */
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "UIKeyboardHandlerNormal.h"
+#ifndef VBOX_WS_MAC
+# include "UIMachineLogic.h"
+# include "UIMachineWindow.h"
+# include "UIShortcutPool.h"
+#endif /* !VBOX_WS_MAC */
 
 
 /* Namespaces: */

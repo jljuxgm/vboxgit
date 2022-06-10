@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -15,27 +15,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QAccessibleObject>
-# include <QPainter>
-# include <QTextLayout>
-# include <QApplication>
-# include <QFontMetrics>
-# include <QGraphicsSceneHoverEvent>
+#include <QAccessibleObject>
+#include <QPainter>
+#include <QTextLayout>
+#include <QApplication>
+#include <QFontMetrics>
+#include <QGraphicsSceneHoverEvent>
 
 /* GUI includes: */
-# include "UIGraphicsTextPane.h"
-# include "UIRichTextString.h"
-# include "VBoxGlobal.h"
+#include "UIGraphicsTextPane.h"
+#include "UIRichTextString.h"
+#include "VBoxGlobal.h"
 
 /* Other VBox includes: */
-# include <iprt/assert.h>
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include <iprt/assert.h>
 
 
 /** QAccessibleObject extension used as an accessibility interface for UITextTableLine. */

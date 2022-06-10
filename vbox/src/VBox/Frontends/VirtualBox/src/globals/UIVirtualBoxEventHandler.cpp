@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class implementation.
  */
@@ -15,23 +15,17 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* GUI includes: */
-# include "VBoxGlobal.h"
-# include "UIExtraDataManager.h"
-# include "UIMainEventListener.h"
-# include "UIVirtualBoxEventHandler.h"
+#include "VBoxGlobal.h"
+#include "UIExtraDataManager.h"
+#include "UIMainEventListener.h"
+#include "UIVirtualBoxEventHandler.h"
 
 /* COM includes: */
-# include "CEventListener.h"
-# include "CEventSource.h"
-# include "CVirtualBox.h"
-# include "CVirtualBoxClient.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "CEventListener.h"
+#include "CEventSource.h"
+#include "CVirtualBox.h"
+#include "CVirtualBoxClient.h"
 
 
 /** Private QObject extension

@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMessageBox class implementation.
  */
@@ -15,31 +15,25 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QCheckBox>
-# include <QClipboard>
-# include <QHBoxLayout>
-# include <QLabel>
-# include <QMimeData>
-# include <QPushButton>
-# include <QStyle>
-# include <QVBoxLayout>
+#include <QCheckBox>
+#include <QClipboard>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QMimeData>
+#include <QPushButton>
+#include <QStyle>
+#include <QVBoxLayout>
 
 /* GUI includes: */
-# include "QIArrowSplitter.h"
-# include "QIDialogButtonBox.h"
-# include "QILabel.h"
-# include "QIMessageBox.h"
-# include "UIIconPool.h"
+#include "QIArrowSplitter.h"
+#include "QIDialogButtonBox.h"
+#include "QILabel.h"
+#include "QIMessageBox.h"
+#include "UIIconPool.h"
 
 /* Other VBox includes: */
-# include <iprt/assert.h>
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include <iprt/assert.h>
 
 
 QIMessageBox::QIMessageBox(const QString &strTitle, const QString &strMessage, AlertIconType iconType,

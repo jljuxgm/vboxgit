@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic2 class implementation.
  */
@@ -15,26 +15,20 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QVBoxLayout>
-# include <QButtonGroup>
-# include <QRadioButton>
+#include <QVBoxLayout>
+#include <QButtonGroup>
+#include <QRadioButton>
 
 /* GUI includes: */
-# include "UIConverter.h"
-# include "UIWizardCloneVDPageBasic2.h"
-# include "UIWizardCloneVD.h"
-# include "VBoxGlobal.h"
-# include "QIRichTextLabel.h"
+#include "UIConverter.h"
+#include "UIWizardCloneVDPageBasic2.h"
+#include "UIWizardCloneVD.h"
+#include "VBoxGlobal.h"
+#include "QIRichTextLabel.h"
 
 /* COM includes: */
-# include "CSystemProperties.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "CSystemProperties.h"
 
 
 UIWizardCloneVDPage2::UIWizardCloneVDPage2()

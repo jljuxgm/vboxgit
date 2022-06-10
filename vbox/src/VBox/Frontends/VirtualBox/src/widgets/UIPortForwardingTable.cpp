@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -15,34 +15,28 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QAction>
-# include <QComboBox>
-# include <QHBoxLayout>
-# include <QHeaderView>
-# include <QItemEditorFactory>
-# include <QLineEdit>
-# include <QMenu>
-# include <QSpinBox>
-# include <QStyledItemDelegate>
+#include <QAction>
+#include <QComboBox>
+#include <QHBoxLayout>
+#include <QHeaderView>
+#include <QItemEditorFactory>
+#include <QLineEdit>
+#include <QMenu>
+#include <QSpinBox>
+#include <QStyledItemDelegate>
 
 /* GUI includes: */
-# include "QITableView.h"
-# include "UIDesktopWidgetWatchdog.h"
-# include "UIConverter.h"
-# include "UIIconPool.h"
-# include "UIMessageCenter.h"
-# include "UIPortForwardingTable.h"
-# include "UIToolBar.h"
+#include "QITableView.h"
+#include "UIDesktopWidgetWatchdog.h"
+#include "UIConverter.h"
+#include "UIIconPool.h"
+#include "UIMessageCenter.h"
+#include "UIPortForwardingTable.h"
+#include "UIToolBar.h"
 
 /* Other VBox includes: */
-# include <iprt/cidr.h>
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include <iprt/cidr.h>
 
 /* External includes: */
 #include <math.h>

@@ -1,4 +1,4 @@
-/* $Id: UIMenuBar.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMenuBar.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBar class implementation.
  */
@@ -15,21 +15,15 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QPainter>
-# include <QPaintEvent>
-# include <QPixmapCache>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QPixmapCache>
 
 /* GUI includes: */
-# include "VBoxGlobal.h"
-# include "UIImageTools.h"
-# include "UIMenuBar.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "VBoxGlobal.h"
+#include "UIImageTools.h"
+#include "UIMenuBar.h"
 
 
 UIMenuBar::UIMenuBar(QWidget *pParent /* = 0 */)

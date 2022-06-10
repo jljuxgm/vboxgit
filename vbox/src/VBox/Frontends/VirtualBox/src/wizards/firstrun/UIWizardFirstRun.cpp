@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardFirstRun.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRun class implementation.
  */
@@ -15,22 +15,16 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* GUI includes: */
-# include "UIWizardFirstRun.h"
-# include "UIWizardFirstRunPageBasic.h"
-# include "VBoxGlobal.h"
-# include "UIMessageCenter.h"
-# include "UIMedium.h"
+#include "UIWizardFirstRun.h"
+#include "UIWizardFirstRunPageBasic.h"
+#include "VBoxGlobal.h"
+#include "UIMessageCenter.h"
+#include "UIMedium.h"
 
 /* COM includes: */
-# include "CStorageController.h"
-# include "CMediumAttachment.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "CStorageController.h"
+#include "CMediumAttachment.h"
 
 
 UIWizardFirstRun::UIWizardFirstRun(QWidget *pParent, const CMachine &machine)

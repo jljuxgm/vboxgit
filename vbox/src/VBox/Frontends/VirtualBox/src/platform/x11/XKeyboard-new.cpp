@@ -1,4 +1,4 @@
-/* $Id: XKeyboard-new.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: XKeyboard-new.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Implementation of Linux-specific keyboard functions.
  */
@@ -15,22 +15,16 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Define GUI log group.
  * This define should go *before* VBox/log.h include: */
 #define LOG_GROUP LOG_GROUP_GUI
 
 /* Qt includes: */
-# include <QString>
-# include <QStringList>
+#include <QString>
+#include <QStringList>
 
 /* Other VBox includes: */
-# include <VBox/log.h>
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include <VBox/log.h>
 
 /* GUI includes: */
 #include "XKeyboard.h"

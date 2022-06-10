@@ -1,4 +1,4 @@
-/* $Id: UIPopupStackViewport.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIPopupStackViewport.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStackViewport class implementation.
  */
@@ -15,18 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* GUI includes: */
-# include "UIPopupPane.h"
-# include "UIPopupStackViewport.h"
+#include "UIPopupPane.h"
+#include "UIPopupStackViewport.h"
 
 /* Other VBox includes: */
-# include <VBox/sup.h>
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include <iprt/assert.h>
 
 
 UIPopupStackViewport::UIPopupStackViewport()

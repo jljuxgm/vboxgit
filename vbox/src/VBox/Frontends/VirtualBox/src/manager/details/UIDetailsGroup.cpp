@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDetailsGroup.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class implementation.
  */
@@ -15,25 +15,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt include: */
-# include <QGraphicsScene>
-# include <QPainter>
-# include <QStyle>
-# include <QStyleOptionGraphicsItem>
+#include <QGraphicsScene>
+#include <QPainter>
+#include <QStyle>
+#include <QStyleOptionGraphicsItem>
 
 /* GUI includes: */
-# include "UIDetailsGroup.h"
-# include "UIDetailsModel.h"
-# include "UIDetailsSet.h"
-# include "UIExtraDataManager.h"
-# include "UIVirtualMachineItem.h"
-# include "VBoxGlobal.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "UIDetailsGroup.h"
+#include "UIDetailsModel.h"
+#include "UIDetailsSet.h"
+#include "UIExtraDataManager.h"
+#include "UIVirtualMachineItem.h"
+#include "VBoxGlobal.h"
 
 
 UIDetailsGroup::UIDetailsGroup(QGraphicsScene *pParent)

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic1 class implementation.
  */
@@ -15,29 +15,23 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QCheckBox>
-# include <QComboBox>
-# include <QGridLayout>
-# include <QLabel>
-# include <QVBoxLayout>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QVBoxLayout>
 
 /* GUI includes: */
-# include "QIRichTextLabel.h"
-# include "QILineEdit.h"
-# include "UIFilePathSelector.h"
-# include "UIWizardCloneVM.h"
-# include "UIWizardCloneVMPageBasic1.h"
-# include "VBoxGlobal.h"
+#include "QIRichTextLabel.h"
+#include "QILineEdit.h"
+#include "UIFilePathSelector.h"
+#include "UIWizardCloneVM.h"
+#include "UIWizardCloneVMPageBasic1.h"
+#include "VBoxGlobal.h"
 
 /* COM includes: */
-# include "CVirtualBox.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "CVirtualBox.h"
 
 
 UIWizardCloneVMPage1::UIWizardCloneVMPage1(const QString &strOriginalName, const QString &strDefaultPath, const QString &strGroup)

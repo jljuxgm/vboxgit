@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -15,33 +15,28 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QAbstractItemDelegate>
-# include <QHeaderView>
-# include <QItemEditorFactory>
-# include <QTabWidget>
+#include <QAbstractItemDelegate>
+#include <QHeaderView>
+#include <QItemEditorFactory>
+#include <QTabWidget>
 
 /* GUI includes: */
-# include "QIStyledItemDelegate.h"
-# include "QITableView.h"
-# include "QIWidgetValidator.h"
-# include "VBoxGlobal.h"
-# include "UIActionPool.h"
-# include "UIGlobalSettingsInput.h"
-# include "UIHostComboEditor.h"
-# include "UIHotKeyEditor.h"
-# include "UIShortcutPool.h"
-# include "UIExtraDataManager.h"
-# include "UIMessageCenter.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "QIStyledItemDelegate.h"
+#include "QITableView.h"
+#include "QIWidgetValidator.h"
+#include "VBoxGlobal.h"
+#include "UIActionPool.h"
+#include "UIGlobalSettingsInput.h"
+#include "UIHostComboEditor.h"
+#include "UIHotKeyEditor.h"
+#include "UIShortcutPool.h"
+#include "UIExtraDataManager.h"
+#include "UIMessageCenter.h"
 
 /* Qt includes: */
 #include <QShortcut>
+
 
 /* Namespaces: */
 using namespace UIExtraDataDefs;

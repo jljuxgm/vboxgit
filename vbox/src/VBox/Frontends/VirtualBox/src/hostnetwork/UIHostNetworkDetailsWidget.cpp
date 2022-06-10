@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkDetailsWidget.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIHostNetworkDetailsWidget.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkDetailsWidget class implementation.
  */
@@ -15,32 +15,26 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QCheckBox>
-# include <QLabel>
-# include <QPushButton>
-# include <QRadioButton>
-# include <QRegExpValidator>
-# include <QStyleOption>
-# include <QVBoxLayout>
+#include <QCheckBox>
+#include <QLabel>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QRegExpValidator>
+#include <QStyleOption>
+#include <QVBoxLayout>
 
 /* GUI includes: */
-# include "QIDialogButtonBox.h"
-# include "QILineEdit.h"
-# include "QITabWidget.h"
-# include "UIHostNetworkDetailsWidget.h"
-# include "UIHostNetworkUtils.h"
-# include "UIIconPool.h"
+#include "QIDialogButtonBox.h"
+#include "QILineEdit.h"
+#include "QITabWidget.h"
+#include "UIHostNetworkDetailsWidget.h"
+#include "UIHostNetworkUtils.h"
+#include "UIIconPool.h"
 
 /* Other VBox includes: */
-# include "iprt/assert.h"
-# include "iprt/cidr.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "iprt/assert.h"
+#include "iprt/cidr.h"
 
 
 UIHostNetworkDetailsWidget::UIHostNetworkDetailsWidget(EmbedTo enmEmbedding, QWidget *pParent /* = 0 */)

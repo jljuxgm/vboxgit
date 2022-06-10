@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic2 class implementation.
  */
@@ -15,26 +15,20 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QIntValidator>
-# include <QVBoxLayout>
-# include <QGridLayout>
-# include <QSpacerItem>
-# include <QLabel>
-# include <QSpinBox>
+#include <QIntValidator>
+#include <QVBoxLayout>
+#include <QGridLayout>
+#include <QSpacerItem>
+#include <QLabel>
+#include <QSpinBox>
 
 /* GUI includes: */
-# include "UIWizardNewVMPageBasic2.h"
-# include "UIWizardNewVM.h"
-# include "VBoxGlobal.h"
-# include "UIGuestRAMSlider.h"
-# include "QIRichTextLabel.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "UIWizardNewVMPageBasic2.h"
+#include "UIWizardNewVM.h"
+#include "VBoxGlobal.h"
+#include "UIGuestRAMSlider.h"
+#include "QIRichTextLabel.h"
 
 
 UIWizardNewVMPage2::UIWizardNewVMPage2()

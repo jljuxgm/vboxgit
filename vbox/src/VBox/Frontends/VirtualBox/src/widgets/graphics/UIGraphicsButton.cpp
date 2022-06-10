@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsButton.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIGraphicsButton.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsButton class definition.
  */
@@ -15,22 +15,16 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QApplication>
-# include <QGraphicsScene>
-# include <QGraphicsView>
-# include <QPainter>
-# include <QStyle>
-# include <QGraphicsSceneMouseEvent>
+#include <QApplication>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QPainter>
+#include <QStyle>
+#include <QGraphicsSceneMouseEvent>
 
 /* GUI includes: */
-# include "UIGraphicsButton.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "UIGraphicsButton.h"
 
 
 UIGraphicsButton::UIGraphicsButton(QIGraphicsWidget *pParent, const QIcon &icon)

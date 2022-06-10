@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -15,34 +15,28 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QApplication>
-# include <QMenu>
+#include <QApplication>
+#include <QMenu>
 
 /* GUI includes: */
-# include "UIDefs.h"
-# include "UIMultiScreenLayout.h"
-# include "UIActionPoolRuntime.h"
-# include "UIMachineLogic.h"
-# include "UIFrameBuffer.h"
-# include "UISession.h"
-# include "UIMessageCenter.h"
-# include "UIExtraDataManager.h"
-# include "UIDesktopWidgetWatchdog.h"
-# include "VBoxGlobal.h"
+#include "UIDefs.h"
+#include "UIMultiScreenLayout.h"
+#include "UIActionPoolRuntime.h"
+#include "UIMachineLogic.h"
+#include "UIFrameBuffer.h"
+#include "UISession.h"
+#include "UIMessageCenter.h"
+#include "UIExtraDataManager.h"
+#include "UIDesktopWidgetWatchdog.h"
+#include "VBoxGlobal.h"
 
 /* COM includes: */
-# include "COMEnums.h"
-# include "CSession.h"
-# include "CConsole.h"
-# include "CMachine.h"
-# include "CDisplay.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "COMEnums.h"
+#include "CSession.h"
+#include "CConsole.h"
+#include "CMachine.h"
+#include "CDisplay.h"
 
 
 UIMultiScreenLayout::UIMultiScreenLayout(UIMachineLogic *pMachineLogic)

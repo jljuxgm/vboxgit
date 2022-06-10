@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeSelectionButton.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIGuestOSTypeSelectionButton.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeSelectionButton class implementation.
  */
@@ -15,20 +15,14 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes */
-# include <QMenu>
-# include <QSignalMapper>
-# include <QStyle>
+#include <QMenu>
+#include <QSignalMapper>
+#include <QStyle>
 
 /* GUI includes */
-# include "VBoxGlobal.h"
-# include "UIGuestOSTypeSelectionButton.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "VBoxGlobal.h"
+#include "UIGuestOSTypeSelectionButton.h"
 
 
 UIGuestOSTypeSelectionButton::UIGuestOSTypeSelectionButton(QWidget *pParent)

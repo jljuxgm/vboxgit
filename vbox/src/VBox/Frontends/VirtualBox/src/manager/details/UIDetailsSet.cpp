@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDetailsSet.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class implementation.
  */
@@ -15,28 +15,22 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QPainter>
-# include <QStyle>
-# include <QStyleOptionGraphicsItem>
+#include <QPainter>
+#include <QStyle>
+#include <QStyleOptionGraphicsItem>
 
 /* GUI includes: */
-# include "UIDetailsElements.h"
-# include "UIDetailsModel.h"
-# include "UIDetailsSet.h"
-# include "UIVirtualBoxEventHandler.h"
-# include "UIVirtualMachineItem.h"
-# include "VBoxGlobal.h"
+#include "UIDetailsElements.h"
+#include "UIDetailsModel.h"
+#include "UIDetailsSet.h"
+#include "UIVirtualBoxEventHandler.h"
+#include "UIVirtualMachineItem.h"
+#include "VBoxGlobal.h"
 
 /* COM includes: */
-# include "CUSBController.h"
-# include "CUSBDeviceFilters.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "CUSBController.h"
+#include "CUSBDeviceFilters.h"
 
 
 UIDetailsSet::UIDetailsSet(UIDetailsItem *pParent)

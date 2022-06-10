@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -15,36 +15,30 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QCheckBox>
-# include <QGridLayout>
-# include <QGroupBox>
-# include <QHeaderView>
-# include <QLabel>
-# include <QLineEdit>
-# include <QListWidget>
-# include <QRadioButton>
-# include <QStackedWidget>
-# include <QTableWidget>
-# include <QVBoxLayout>
+#include <QCheckBox>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QHeaderView>
+#include <QLabel>
+#include <QLineEdit>
+#include <QListWidget>
+#include <QRadioButton>
+#include <QStackedWidget>
+#include <QTableWidget>
+#include <QVBoxLayout>
 
 /* GUI includes: */
-# include "QIToolButton.h"
-# include "VBoxGlobal.h"
-# include "UIApplianceExportEditorWidget.h"
-# include "UIConverter.h"
-# include "UIEmptyFilePathSelector.h"
-# include "UIIconPool.h"
-# include "UIVirtualBoxManager.h"
-# include "UIWizardExportApp.h"
-# include "UIWizardExportAppDefs.h"
-# include "UIWizardExportAppPageExpert.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "QIToolButton.h"
+#include "VBoxGlobal.h"
+#include "UIApplianceExportEditorWidget.h"
+#include "UIConverter.h"
+#include "UIEmptyFilePathSelector.h"
+#include "UIIconPool.h"
+#include "UIVirtualBoxManager.h"
+#include "UIWizardExportApp.h"
+#include "UIWizardExportAppDefs.h"
+#include "UIWizardExportAppPageExpert.h"
 
 
 /*********************************************************************************************************************************

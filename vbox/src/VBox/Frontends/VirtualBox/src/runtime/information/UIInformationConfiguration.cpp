@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIInformationConfiguration.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -15,23 +15,17 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QVBoxLayout>
-# include <QApplication>
+#include <QVBoxLayout>
+#include <QApplication>
 
 /* GUI includes: */
-# include "UIInformationConfiguration.h"
-# include "UIInformationDataItem.h"
-# include "UIInformationItem.h"
-# include "UIInformationView.h"
-# include "UIExtraDataManager.h"
-# include "UIInformationModel.h"
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include "UIInformationConfiguration.h"
+#include "UIInformationDataItem.h"
+#include "UIInformationItem.h"
+#include "UIInformationView.h"
+#include "UIExtraDataManager.h"
+#include "UIInformationModel.h"
 
 
 UIInformationConfiguration::UIInformationConfiguration(QWidget *pParent, const CMachine &machine, const CConsole &console)

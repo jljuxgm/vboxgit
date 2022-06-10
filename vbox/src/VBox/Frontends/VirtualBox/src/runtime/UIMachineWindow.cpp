@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -15,47 +15,41 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include <precomp.h>
-#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 /* Qt includes: */
-# include <QCloseEvent>
-# include <QGridLayout>
-# include <QProcess>
-# include <QStyle>
-# include <QTimer>
+#include <QCloseEvent>
+#include <QGridLayout>
+#include <QProcess>
+#include <QStyle>
+#include <QTimer>
 
 /* GUI includes: */
-# include "VBoxGlobal.h"
-# include "UIConverter.h"
-# include "UIModalWindowManager.h"
-# include "UIExtraDataManager.h"
-# include "UIMessageCenter.h"
-# include "UISession.h"
-# include "UIMachineLogic.h"
-# include "UIMachineWindow.h"
-# include "UIMachineWindowNormal.h"
-# include "UIMachineWindowFullscreen.h"
-# include "UIMachineWindowSeamless.h"
-# include "UIMachineWindowScale.h"
-# include "UIMachineView.h"
-# include "UIKeyboardHandler.h"
-# include "UIMouseHandler.h"
-# include "UIVMCloseDialog.h"
-# include "VBox2DHelpers.h"
+#include "VBoxGlobal.h"
+#include "UIConverter.h"
+#include "UIModalWindowManager.h"
+#include "UIExtraDataManager.h"
+#include "UIMessageCenter.h"
+#include "UISession.h"
+#include "UIMachineLogic.h"
+#include "UIMachineWindow.h"
+#include "UIMachineWindowNormal.h"
+#include "UIMachineWindowFullscreen.h"
+#include "UIMachineWindowSeamless.h"
+#include "UIMachineWindowScale.h"
+#include "UIMachineView.h"
+#include "UIKeyboardHandler.h"
+#include "UIMouseHandler.h"
+#include "UIVMCloseDialog.h"
+#include "VBox2DHelpers.h"
 
 /* COM includes: */
-# include "CConsole.h"
-# include "CSnapshot.h"
+#include "CConsole.h"
+#include "CSnapshot.h"
 
 /* Other VBox includes: */
-# include <VBox/version.h>
-# ifdef VBOX_BLEEDING_EDGE
-#  include <iprt/buildconfig.h>
-# endif /* VBOX_BLEEDING_EDGE */
-
-#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+#include <VBox/version.h>
+#ifdef VBOX_BLEEDING_EDGE
+# include <iprt/buildconfig.h>
+#endif /* VBOX_BLEEDING_EDGE */
 
 
 /* static */
