@@ -1,4 +1,4 @@
-/* $Id: VBoxSDS.cpp 76082 2018-12-09 19:25:00Z vboxsync $ */
+/* $Id: VBoxSDS.cpp 76092 2018-12-09 23:19:16Z vboxsync $ */
 /** @file
  * VBoxSDS - COM global service main entry (System Directory Service)
  */
@@ -751,15 +751,6 @@ void VBoxSDSNotifyClientCount(uint32_t cClients)
     }
 }
 #endif
-
-
-/** Special export that make VBoxProxyStub not register this process as one that
- * VBoxSDS should be watching.
- */
-extern "C" DECLEXPORT(void) VBOXCALL Is_VirtualBox_service_process_like_VBoxSDS_And_VBoxSDS(void)
-{
-    /* never called, just need to be here */
-}
 
 
 /**
