@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 73408 2018-07-31 11:32:55Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 73409 2018-07-31 11:38:21Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1126,7 +1126,7 @@ uint64_t DrvAudioHlpBytesToMilli(uint32_t cbBytes, const PPDMAUDIOPCMPROPS pProp
     if (!cbBytes)
         return 0;
 
-    const float dbBytesPerMs = ((pProps->cBits / 8) * pProps->cChannels * pProps->uHz) / 1000;
+    const float dbBytesPerMs = ((pProps->cBits / 8) * pProps->cChannels * pProps->uHz) / RT_MS_1SEC;
     Assert(dbBytesPerMs >= 0.0f);
     if (!dbBytesPerMs) /* Prevent division by zero. */
         return 0;
@@ -1190,7 +1190,7 @@ uint64_t DrvAudioHlpFramesToMilli(uint32_t cFrames, const PPDMAUDIOPCMPROPS pPro
     if (!pProps->uHz) /* Prevent division by zero. */
         return 0;
 
-    return cFrames / (pProps->uHz / 1000 /* ms */);
+    return cFrames / (pProps->uHz / RT_MS_1SEC);
 }
 
 /**
@@ -1227,7 +1227,7 @@ uint32_t DrvAudioHlpMilliToBytes(uint32_t uMs, const PPDMAUDIOPCMPROPS pProps)
     if (!uMs)
         return 0;
 
-    return float(((pProps->cBits / 8) * pProps->cChannels * pProps->uHz) / 1000) * uMs;
+    return float(((pProps->cBits / 8) * pProps->cChannels * pProps->uHz) / RT_MS_1SEC) * uMs;
 }
 
 /**
