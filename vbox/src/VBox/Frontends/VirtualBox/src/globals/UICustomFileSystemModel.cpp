@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 76333 2018-12-21 12:56:44Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 76344 2018-12-21 19:12:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -47,6 +47,9 @@ UICustomFileSystemItem::UICustomFileSystemItem(const QVector<QVariant> &data,
     , m_type(type)
     , m_isDriveItem(false)
 {
+    if (parent)
+        parent->appendChild(this);
+
 }
 
 UICustomFileSystemItem::~UICustomFileSystemItem()
@@ -57,6 +60,8 @@ UICustomFileSystemItem::~UICustomFileSystemItem()
 void UICustomFileSystemItem::appendChild(UICustomFileSystemItem *item)
 {
     if (!item)
+        return;
+    if (m_childItems.contains(item))
         return;
     m_childItems.append(item);
     m_childMap.insert(item->name(), item);
