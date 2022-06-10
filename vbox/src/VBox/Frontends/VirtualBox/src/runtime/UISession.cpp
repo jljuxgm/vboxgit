@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UISession.cpp 75211 2018-10-31 18:27:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1073,8 +1073,8 @@ void UISession::prepareActions()
         AssertPtrReturnVoid(m_pMenuBar);
         {
             /* Configure Mac OS X menu-bar: */
-            connect(gEDataManager, SIGNAL(sigMenuBarConfigurationChange(const QString&)),
-                    this, SLOT(sltHandleMenuBarConfigurationChange(const QString&)));
+            connect(gEDataManager, SIGNAL(sigMenuBarConfigurationChange(const QUuid &)),
+                    this, SLOT(sltHandleMenuBarConfigurationChange(const QUuid &)));
             /* Update Mac OS X menu-bar: */
             updateMenu();
         }
