@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 72479 2018-06-07 16:04:39Z vboxsync $ */
+/* $Id: ApplianceImpl.h 72899 2018-07-04 18:49:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -38,8 +38,6 @@ struct LocationInfo;
 typedef struct VDINTERFACE   *PVDINTERFACE;
 typedef struct VDINTERFACEIO *PVDINTERFACEIO;
 typedef struct SHASTORAGE    *PSHASTORAGE;
-
-typedef enum applianceIOName { applianceIOTar, applianceIOFile, applianceIOSha } APPLIANCEIONAME;
 
 namespace ovf
 {
@@ -141,10 +139,6 @@ private:
     Utf8Str i_typeOfVirtualDiskFormatFromURI(Utf8Str type) const;
 
     std::set<Utf8Str> i_URIFromTypeOfVirtualDiskFormat(Utf8Str type);
-
-    HRESULT i_initApplianceIONameMap();
-
-    Utf8Str i_applianceIOName(APPLIANCEIONAME type) const;
 
     HRESULT i_findMediumFormatFromDiskImage(const ovf::DiskImage &di, ComObjPtr<MediumFormat>& mf);
 
