@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74551 2018-10-01 14:19:25Z vboxsync $
+# $Id: Makefile.kmk 74557 2018-10-01 16:02:42Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -753,6 +753,7 @@ ifndef VBOX_GUI_WITH_NEW_MANAGER
 	src/selector/graphics/details/UIGMachinePreview.h
 else
  VirtualBox_QT_MOCHDRS += \
+	src/manager/UIErrorPane.h \
 	src/manager/UIToolbarTools.h \
 	src/manager/UIToolPaneGlobal.h \
 	src/manager/UIToolPaneMachine.h \
@@ -1442,6 +1443,7 @@ ifndef VBOX_GUI_WITH_NEW_MANAGER
 	src/selector/graphics/details/UIGMachinePreview.cpp
 else
  VirtualBox_SOURCES += \
+	src/manager/UIErrorPane.cpp \
 	src/manager/UIToolbarTools.cpp \
 	src/manager/UIToolPaneGlobal.cpp \
 	src/manager/UIToolPaneMachine.cpp \

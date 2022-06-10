@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 74556 2018-10-01 15:30:56Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 74557 2018-10-01 16:02:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -180,13 +180,6 @@ void UIToolPaneGlobal::closeTool(ToolTypeGlobal enmType)
         m_pLayout->removeWidget(pWidget);
         delete pWidget;
     }
-}
-
-void UIToolPaneGlobal::setDetailsError(const QString &strError)
-{
-    /* Update desktop pane: */
-    if (m_pPaneDesktop)
-        m_pPaneDesktop->updateDetailsError(strError);
 }
 
 void UIToolPaneGlobal::retranslateUi()
