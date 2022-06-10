@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 75406 2018-11-12 19:49:08Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 75420 2018-11-13 12:39:13Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -1223,7 +1223,7 @@ DECLCALLBACK(void) hgcmCompleted(PPDMIHGCMPORT pInterface, int32_t result, PVBOX
 }
 
 /**
- * @interface_method_impl{PDMIHGCMPORT, pfnIsCmdRestored}
+ * @interface_method_impl{PDMIHGCMPORT,pfnIsCmdRestored}
  */
 DECLCALLBACK(bool) hgcmIsCmdRestored(PPDMIHGCMPORT pInterface, PVBOXHGCMCMD pCmd)
 {
