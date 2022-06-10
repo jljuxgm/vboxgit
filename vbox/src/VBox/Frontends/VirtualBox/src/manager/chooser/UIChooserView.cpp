@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 77813 2019-03-20 17:06:12Z vboxsync $ */
+/* $Id: UIChooserView.cpp 77948 2019-03-29 10:46:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -176,7 +176,7 @@ void UIChooserView::sltHandleScrollToSearchResult(bool fIsNext)
     UIChooserModel *pModel =  m_pChooser->model();
     if (!pModel)
         return;
-    pModel->scrollToSearchResult(fIsNext);
+    pModel->selectSearchResult(fIsNext);
 }
 
 void UIChooserView::sltHandleSearchWidgetVisibilityToggle(bool fIsVisible)

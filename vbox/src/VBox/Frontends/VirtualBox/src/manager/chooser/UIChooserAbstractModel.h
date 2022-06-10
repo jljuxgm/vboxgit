@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 77909 2019-03-27 11:09:44Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 77948 2019-03-29 10:46:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -77,6 +77,17 @@ public:
 
         /** Generates unique group name traversing recursively starting from @a pRoot. */
         static QString uniqueGroupName(UIChooserNode *pRoot);
+    /** @} */
+
+    /** @name Search stuff.
+      * @{ */
+        /** Performs a search starting from the m_pInvisibleRootNode. */
+        virtual void performSearch(const QString &strSearchTerm, int iItemSearchFlags);
+        /** Cleans the search result data members and disables item's visual effects.
+          * Also returns a list of all nodes which may be utilized by the calling code. */
+        virtual QList<UIChooserNode*> resetSearch();
+        /** Returns search result. */
+        QList<UIChooserNode*> searchResult() const;
     /** @} */
 
     /** @name Group saving stuff.
@@ -192,6 +203,12 @@ private:
       * @{ */
         /** Holds the invisible root node instance. */
         UIChooserNode *m_pInvisibleRootNode;
+    /** @} */
+
+    /** @name Search stuff.
+      * @{ */
+        /** Stores the results of the current search. */
+        QList<UIChooserNode*>  m_searchResults;
     /** @} */
 
     /** @name Group saving stuff.
