@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 76825 2019-01-15 12:42:06Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 77190 2019-02-06 20:50:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1099,38 +1099,6 @@ bool UIMessageCenter::confirmSettingsReloading(QWidget *pParent /* = 0*/) const
                              "<p>Would you like to reload the changed settings or to keep your own changes?</p>"),
                           0 /* auto-confirm id */,
                           tr("Reload settings"), tr("Keep changes"));
-}
-
-int UIMessageCenter::confirmHardDiskAttachmentCreation(const QString &strControllerName, QWidget *pParent /* = 0*/) const
-{
-    return questionTrinary(pParent, MessageType_Question,
-                           tr("<p>You are about to add a virtual hard disk to controller <b>%1</b>.</p>"
-                              "<p>Would you like to create a new, empty file to hold the disk contents or select an existing one?</p>")
-                              .arg(strControllerName),
-                           0 /* auto-confirm id */,
-                           tr("Create &new disk"), tr("&Choose existing disk"));
-}
-
-int UIMessageCenter::confirmOpticalAttachmentCreation(const QString &strControllerName, QWidget *pParent /* = 0*/) const
-{
-    return questionTrinary(pParent, MessageType_Question,
-                           tr("<p>You are about to add a new optical drive to controller <b>%1</b>.</p>"
-                              "<p>Would you like to choose a virtual optical disk to put in the drive "
-                              "or to leave it empty for now?</p>")
-                              .arg(strControllerName),
-                           0 /* auto-confirm id */,
-                           tr("Leave &empty"), tr("&Choose disk"));
-}
-
-int UIMessageCenter::confirmFloppyAttachmentCreation(const QString &strControllerName, QWidget *pParent /* = 0*/) const
-{
-    return questionTrinary(pParent, MessageType_Question,
-                           tr("<p>You are about to add a new floppy drive to controller <b>%1</b>.</p>"
-                              "<p>Would you like to choose a virtual floppy disk to put in the drive "
-                              "or to leave it empty for now?</p>")
-                              .arg(strControllerName),
-                           0 /* auto-confirm id */,
-                           tr("Leave &empty"), tr("&Choose disk"));
 }
 
 int UIMessageCenter::confirmRemovingOfLastDVDDevice(QWidget *pParent /* = 0*/) const

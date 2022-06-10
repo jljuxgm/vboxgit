@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIMessageCenter.h 77190 2019-02-06 20:50:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -317,9 +317,6 @@ public:
     void warnAboutUnaccessibleUSB(const COMBaseWithEI &object, QWidget *pParent = 0) const;
     void warnAboutStateChange(QWidget *pParent = 0) const;
     bool confirmSettingsReloading(QWidget *pParent = 0) const;
-    int confirmHardDiskAttachmentCreation(const QString &strControllerName, QWidget *pParent = 0) const;
-    int confirmOpticalAttachmentCreation(const QString &strControllerName, QWidget *pParent = 0) const;
-    int confirmFloppyAttachmentCreation(const QString &strControllerName, QWidget *pParent = 0) const;
     int confirmRemovingOfLastDVDDevice(QWidget *pParent = 0) const;
     void cannotAttachDevice(const CMachine &machine, UIMediumDeviceType type, const QString &strLocation, const StorageSlot &storageSlot, QWidget *pParent = 0);
     bool warnAboutIncorrectPort(QWidget *pParent = 0) const;
