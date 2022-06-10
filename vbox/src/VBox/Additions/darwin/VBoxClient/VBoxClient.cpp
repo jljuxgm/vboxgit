@@ -1,4 +1,4 @@
-/** $Id: VBoxClient.cpp 77565 2019-03-05 12:51:42Z vboxsync $ */
+/** $Id: VBoxClient.cpp 78162 2019-04-17 14:04:17Z vboxsync $ */
 /** @file
  * VBoxClient - User specific services, Darwin.
  */
@@ -44,7 +44,9 @@ static PRTLOGGER            g_pLogger = NULL;
 
 static VBOXCLIENTSERVICE    g_aServices[] =
 {
+#ifdef VBOX_WITH_SHARED_CLIPBOARD
     g_ClipboardService
+#endif
 };
 
 
