@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 75803 2018-11-29 02:22:10Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 75804 2018-11-29 02:22:25Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -194,7 +194,7 @@ DECL_NO_INLINE(static, bool) vbglR3GuestCtrlDetectPeekGetCancelSupport(uint32_t 
         rc = VbglR3HGCMCall(&PeekCall.Hdr, sizeof(PeekCall));
     } while (rc == VERR_INTERRUPTED);
 
-    LogRel(("vbglR3GuestCtrlDetectPeekGetCancelSupport: rc=%Rrc %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x\n",
+    LogRel2(("vbglR3GuestCtrlDetectPeekGetCancelSupport: rc=%Rrc %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x %#x\n",
              rc, PeekCall.idMsg.u.value32,     PeekCall.cParams.u.value32,
              PeekCall.acbParams[ 0].u.value32, PeekCall.acbParams[ 1].u.value32,
              PeekCall.acbParams[ 2].u.value32, PeekCall.acbParams[ 3].u.value32,
