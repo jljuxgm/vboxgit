@@ -1,4 +1,4 @@
-/* $Id: RTCRestOutputBase.cpp 74414 2018-09-21 18:23:01Z vboxsync $ */
+/* $Id: RTCRestOutputBase.cpp 74417 2018-09-21 18:47:21Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestOutputBase implementation.
  */
@@ -46,7 +46,7 @@ RTCRestOutputBase::~RTCRestOutputBase()
 }
 
 
-size_t RTCRestOutputBase::vprintf(const char *pszFormat, va_list va) RT_IPRT_FORMAT_ATTR(2, 0)
+size_t RTCRestOutputBase::vprintf(const char *pszFormat, va_list va)
 {
     return RTStrFormatV(printfOutputCallback, this, NULL, NULL, pszFormat, va);
 }
