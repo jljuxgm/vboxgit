@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.h 76464 2018-12-25 04:36:48Z vboxsync $ */
+/* $Id: HMVMXR0.h 76482 2018-12-26 03:49:56Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Internal header file.
  */
@@ -28,11 +28,11 @@ RT_C_DECLS_BEGIN
 
 #ifdef IN_RING0
 
-VMMR0DECL(int)          VMXR0Enter(PVMCPU pVCpu, PHMGLOBALCPUINFO pHostCpu);
+VMMR0DECL(int)          VMXR0Enter(PVMCPU pVCpu);
 VMMR0DECL(void)         VMXR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, PVMCPU pVCpu, bool fGlobalInit);
-VMMR0DECL(int)          VMXR0EnableCpu(PHMGLOBALCPUINFO pHostCpu, PVM pVM, void *pvPageCpu, RTHCPHYS pPageCpuPhys,
+VMMR0DECL(int)          VMXR0EnableCpu(PHMPHYSCPU pHostCpu, PVM pVM, void *pvPageCpu, RTHCPHYS pPageCpuPhys,
                                        bool fEnabledBySystem, PCSUPHWVIRTMSRS pHwvirtMsrs);
-VMMR0DECL(int)          VMXR0DisableCpu(PHMGLOBALCPUINFO pHostCpu, void *pvPageCpu, RTHCPHYS pPageCpuPhys);
+VMMR0DECL(int)          VMXR0DisableCpu(void *pvPageCpu, RTHCPHYS pPageCpuPhys);
 VMMR0DECL(int)          VMXR0GlobalInit(void);
 VMMR0DECL(void)         VMXR0GlobalTerm(void);
 VMMR0DECL(int)          VMXR0InitVM(PVM pVM);
