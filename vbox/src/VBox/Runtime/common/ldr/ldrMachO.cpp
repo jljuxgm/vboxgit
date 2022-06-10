@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ldrMachO.cpp 77121 2019-02-01 15:14:32Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -22,9 +22,10 @@
  *
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
+ *
  * --------------------------------------------------------------------
  *
- * This code is based on:
+ * This code is based on: kLdr/kLdrModMachO.c from kStuff r113.
  *
  * Copyright (c) 2006-2013 Knut St. Osmundsen <bird-kStuff-spamix@anduin.net>
  *
