@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 73432 2018-08-01 15:03:03Z vboxsync $ */
+/* $Id: DevSB16.cpp 73441 2018-08-02 10:39:42Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1739,25 +1739,15 @@ static DECLCALLBACK(void) sb16TimerIO(PPDMDEVINS pDevIns, PTMTIMER pTimer, void 
         int rc2 = pConn->pfnStreamIterate(pConn, pStream);
         if (RT_SUCCESS(rc2))
         {
-            if (pStream->enmDir == PDMAUDIODIR_IN)
+            rc2 = pConn->pfnStreamPlay(pConn, pStream, NULL /* cPlayed */);
+            if (RT_FAILURE(rc2))
             {
-                /** @todo Implement recording! */
-            }
-            else
-            {
-                rc2 = pConn->pfnStreamPlay(pConn, pStream, NULL /* cPlayed */);
-                if (RT_FAILURE(rc2))
-                {
-                    LogFlowFunc(("%s: Failed playing stream, rc=%Rrc\n", pStream->szName, rc2));
-                    continue;
-                }
+                LogFlowFunc(("%s: Failed playing stream, rc=%Rrc\n", pStream->szName, rc2));
+                continue;
             }
 
-            if (pDrv->fFlags & PDMAUDIODRVFLAGS_PRIMARY)
-            {
-                /* Only do the next DMA transfer if we're able to write the remaining data block. */
-                fDoTransfer = pConn->pfnStreamGetWritable(pConn, pStream) > (unsigned)pThis->left_till_irq;
-            }
+            /* Only do the next DMA transfer if we're able to write the remaining data block. */
+            fDoTransfer = pConn->pfnStreamGetWritable(pConn, pStream) > (unsigned)pThis->left_till_irq;
         }
 
         PDMAUDIOSTREAMSTS strmSts = pConn->pfnStreamGetStatus(pConn, pStream);
