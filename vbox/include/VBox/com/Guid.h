@@ -1,4 +1,4 @@
-/* $Id: Guid.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: Guid.h 72894 2018-07-04 17:01:01Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Guid class declaration.
  */
@@ -195,47 +195,13 @@ public:
 
     Guid& operator=(const char *str)
     {
-        if (!str || !*str)
-        {
-            ::RTUuidClear(&mUuid);
-            mGuidState = GUID_ZERO;
-        }
-        else
-        {
-            mGuidState = GUID_NORMAL;
-            int rc = ::RTUuidFromStr(&mUuid, str);
-            if (RT_FAILURE(rc))
-            {
-                ::RTUuidClear(&mUuid);
-                mGuidState = GUID_INVALID;
-            }
-            else if (isZero())
-                mGuidState = GUID_ZERO;
-        }
-        dbg_refresh();
+        initString(str);
         return *this;
     }
 
     Guid& operator=(CBSTR str)
     {
-        if (!str || !*str)
-        {
-            ::RTUuidClear(&mUuid);
-            mGuidState = GUID_ZERO;
-        }
-        else
-        {
-            mGuidState = GUID_NORMAL;
-            int rc = ::RTUuidFromUtf16(&mUuid, str);
-            if (RT_FAILURE(rc))
-            {
-                ::RTUuidClear(&mUuid);
-                mGuidState = GUID_INVALID;
-            }
-            else if (isZero())
-                mGuidState = GUID_ZERO;
-        }
-        dbg_refresh();
+        initBSTR(str);
         return *this;
     }
 
