@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 74923 2018-10-18 15:14:57Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 74933 2018-10-18 19:12:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -1772,10 +1772,11 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionMenuSelectorSnapshotToggleProperties(UIActionPool *pParent)
-        : UIActionToggle(pParent,
-                         ":/snapshot_show_details_16px.png", ":/snapshot_show_details_16px.png",
-                         ":/snapshot_show_details_disabled_16px.png", ":/snapshot_show_details_disabled_16px.png")
-    {}
+        : UIActionToggle(pParent)
+    {
+        setIcon(UIIconPool::iconSetFull(":/snapshot_show_details_16px.png", ":/snapshot_show_details_16px.png",
+                                        ":/snapshot_show_details_disabled_16px.png", ":/snapshot_show_details_disabled_16px.png"));
+    }
 
 protected:
 
@@ -2278,10 +2279,11 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionMenuSelectorNetworkToggleProperties(UIActionPool *pParent)
-        : UIActionToggle(pParent,
-                         ":/host_iface_edit_32px.png",          ":/host_iface_edit_16px.png",
-                         ":/host_iface_edit_disabled_32px.png", ":/host_iface_edit_disabled_16px.png")
-    {}
+        : UIActionToggle(pParent)
+    {
+        setIcon(UIIconPool::iconSetFull(":/host_iface_edit_32px.png",          ":/host_iface_edit_16px.png",
+                                        ":/host_iface_edit_disabled_32px.png", ":/host_iface_edit_disabled_16px.png"));
+    }
 
 protected:
 
@@ -2461,10 +2463,11 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionMenuSelectorCloudToggleProperties(UIActionPool *pParent)
-        : UIActionToggle(pParent,
-                         ":/cloud_profile_edit_32px.png",          ":/cloud_profile_edit_16px.png",
-                         ":/cloud_profile_edit_disabled_32px.png", ":/cloud_profile_edit_disabled_16px.png")
-    {}
+        : UIActionToggle(pParent)
+    {
+        setIcon(UIIconPool::iconSetFull(":/cloud_profile_edit_32px.png",          ":/cloud_profile_edit_16px.png",
+                                        ":/cloud_profile_edit_disabled_32px.png", ":/cloud_profile_edit_disabled_16px.png"));
+    }
 
 protected:
 
