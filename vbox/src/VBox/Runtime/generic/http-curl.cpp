@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 74112 2018-09-06 11:42:42Z vboxsync $ */
+/* $Id: http-curl.cpp 74119 2018-09-06 14:42:38Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -2295,8 +2295,8 @@ RTR3DECL(int) RTHttpSignHeaders(RTHTTP hHttp, RTHTTPMETHOD enmMethod, const char
 
     /* Estimate required string length first. */
     static const char s_szSuffixFmt[]    = "Authorization: Signature version=\"1\",keyId=\"%s\",algorithm=\"rsa-sha256\",headers=\"";
-    static const char s_szInfix[]        = "\",signature=\"Base64(RSA-SHA256(";
-    static const char s_szPostfix[]      = "))\"";
+    static const char s_szInfix[]        = "\",signature=\"";
+    static const char s_szPostfix[]      = "\"";
     static const char s_szRequestField[] = "(request-target)";
     size_t const      cchKeyId           = strlen(pszKeyId);
     size_t const      cbSigRaw           = (RTCrKeyGetBitCount(hKey) + 7) / 8;
