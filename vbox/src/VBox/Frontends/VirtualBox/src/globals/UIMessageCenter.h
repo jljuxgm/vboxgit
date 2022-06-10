@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 74922 2018-10-18 14:36:50Z vboxsync $ */
+/* $Id: UIMessageCenter.h 74923 2018-10-18 15:14:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -366,9 +366,11 @@ public:
     void cannotFindCloudProfile(const CCloudProvider &comProvider, const QString &strName, QWidget *pParent = 0) const;
     void cannotCreateCloudProfle(const CCloudProvider &comProvider, QWidget *pParent = 0) const;
     void cannotSaveCloudProfiles(const CCloudProvider &comProvider, QWidget *pParent = 0) const;
+    void cannotImportCloudProfiles(const CCloudProvider &comProvider, QWidget *pParent = 0) const;
     void cannotAcquireCloudProfileParameter(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
     void cannotAssignCloudProfileParameter(const CCloudProfile &comProfile, QWidget *pParent = 0) const;
     bool confirmCloudProfileRemoval(const QString &strName, QWidget *pParent = 0) const;
+    bool confirmCloudProfilesImport(QWidget *pParent = 0) const;
 
     /* API: Wizards warnings: */
     bool confirmHardDisklessMachine(QWidget *pParent = 0) const;
