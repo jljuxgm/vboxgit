@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 74249 2018-09-13 16:24:26Z vboxsync $ */
+/* $Id: UIToolsItem.cpp 74256 2018-09-13 18:42:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -174,7 +174,7 @@ private:
 
 
 /*********************************************************************************************************************************
-*   Class UIToolsItem implementation.                                                                                          *
+*   Class UIToolsItem implementation.                                                                                            *
 *********************************************************************************************************************************/
 
 UIToolsItem::UIToolsItem(QGraphicsScene *pScene,
