@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 72838 2018-07-03 17:17:20Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 72839 2018-07-03 17:18:26Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -682,7 +682,7 @@ RTDECL(void) RTAssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFi
     snprintf(g_szRTAssertMsg1, sizeof(g_szRTAssertMsg1),
              "\n!!Assertion Failed!!\n"
              "Expression: %s\n"
-             "Location  : %s(%d) %s\n",
+             "Location  : %s(%u) %s\n",
              pszExpr, pszFile, uLine, pszFunction);
 }
 
