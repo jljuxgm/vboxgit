@@ -1,4 +1,4 @@
-/** $Id: VBoxSF.cpp 75461 2018-11-14 19:51:23Z vboxsync $ */
+/** $Id: VBoxSF.cpp 75471 2018-11-14 21:38:08Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, the FS and FSD level IFS EPs
  */
@@ -373,6 +373,7 @@ static int vboxSfOs2MapFolder(PSHFLSTRING pName, const char *pszTag, PVBOXSFFOLD
         pNew->u32Magic      = VBOXSFFOLDER_MAGIC;
         pNew->cRefs         = 2; /* (List reference + the returned reference.) */
         pNew->cOpenFiles    = 0;
+        pNew->cOpenSearches = 0;
         pNew->cDrives       = 0;
         RT_ZERO(pNew->hHostFolder);
         pNew->hVpb          = 0;
@@ -942,7 +943,7 @@ static APIRET vboxSfOs2QueryAttachInfo(PCSZ pszDev, PVBOXSFVP pVpFsd, PVBOXSFCD 
             *pcbParam = (uint16_t)sizeof(USHORT) + pFolder->cbNameAndTag;
             cbParam = pFolder->cchName + 1;
             rc = KernCopyOut(pbData, &cbParam, sizeof(cbParam));
-            if (rc != NO_ERROR)
+            if (rc == NO_ERROR)
                 rc = KernCopyOut(pbData + sizeof(USHORT), pFolder->szName, pFolder->cbNameAndTag);
         }
         else
