@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 73492 2018-08-03 15:30:44Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 73534 2018-08-06 18:28:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -189,10 +189,6 @@ private:
     UITabBar *m_pTabBarMachine;
     /** Holds the Global tab-bar instance. */
     UITabBar *m_pTabBarGlobal;
-    /** Holds the Machine tab-bar action reference. */
-    QAction *m_pActionTabBarMachine;
-    /** Holds the Global tab-bar action reference. */
-    QAction *m_pActionTabBarGlobal;
 
     /** Holds the Tools-toolbar instance. */
     UIToolbarTools *m_pToolbarTools;
