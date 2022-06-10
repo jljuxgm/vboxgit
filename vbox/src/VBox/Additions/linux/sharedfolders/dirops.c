@@ -1,4 +1,4 @@
-/* $Id: dirops.c 77549 2019-03-04 10:00:34Z vboxsync $ */
+/* $Id: dirops.c 77559 2019-03-04 16:19:23Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
@@ -1114,11 +1114,13 @@ struct inode_operations vbsf_dir_iops = {
     .rmdir = vbsf_inode_rmdir,
     .unlink = vbsf_inode_unlink,
     .rename = vbsf_inode_rename,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 0)
-    .revalidate = vbsf_inode_revalidate
-#else
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 18)
     .getattr = vbsf_inode_getattr,
     .setattr = vbsf_inode_setattr,
+#else
+    .revalidate = vbsf_inode_revalidate
+#endif
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0)
     .symlink = vbsf_ino_symlink
 #endif
 };
