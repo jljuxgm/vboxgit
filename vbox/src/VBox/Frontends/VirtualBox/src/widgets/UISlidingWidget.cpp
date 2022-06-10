@@ -1,4 +1,4 @@
-/* $Id: UISlidingWidget.cpp 73799 2018-08-21 09:22:39Z vboxsync $ */
+/* $Id: UISlidingWidget.cpp 73800 2018-08-21 09:24:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingWidget class implementation.
  */
@@ -152,10 +152,10 @@ void UISlidingWidget::updateAnimation()
         }
         case Qt::Vertical:
         {
-            m_startWidgetGeometry = QRect(0,       0,
-                                          width(), 2 * height());
-            m_finalWidgetGeometry = QRect(0,       -height(),
-                                          width(), 2 * height());
+            m_startWidgetGeometry = QRect(0,         0,
+                                          width(),   2 * height());
+            m_finalWidgetGeometry = QRect(0,       - height(),
+                                          width(),   2 * height());
             break;
         }
     }
