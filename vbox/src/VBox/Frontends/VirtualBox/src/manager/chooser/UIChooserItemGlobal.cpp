@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 74482 2018-09-26 16:10:40Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 74548 2018-10-01 11:34:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -152,7 +152,7 @@ void UIChooserItemGlobal::setHeightHint(int iHint)
 void UIChooserItemGlobal::retranslateUi()
 {
     /* Update description: */
-    m_strName = tr("Global Tools");
+    m_strName = tr("Tools");
     m_strDescription = m_strName;
 
     /* Update linked values: */
