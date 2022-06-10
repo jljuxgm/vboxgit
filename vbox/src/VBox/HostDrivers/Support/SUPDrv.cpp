@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 72778 2018-06-29 20:02:35Z vboxsync $ */
+/* $Id: SUPDrv.cpp 73293 2018-07-21 15:11:53Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4325,7 +4325,7 @@ int VBOXCALL supdrvQueryVTCapsInternal(uint32_t *pfCaps)
                 rc = SUPR0GetVmxUsability(&fIsSmxModeAmbiguous);
                 if (rc == VINF_SUCCESS)
                 {
-                    VMXCAPABILITY vtCaps;
+                    VMXCTLSMSR vtCaps;
 
                     *pfCaps |= SUPVTCAPS_VT_X;
 
