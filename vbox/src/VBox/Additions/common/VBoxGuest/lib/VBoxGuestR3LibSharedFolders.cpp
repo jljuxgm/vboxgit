@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSharedFolders.cpp 75407 2018-11-12 20:06:57Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSharedFolders.cpp 75408 2018-11-12 20:09:16Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, shared folders.
  */
@@ -259,7 +259,7 @@ VBGLR3DECL(int) VbglR3SharedFolderQueryFolderInfo(HGCMCLIENTID idClient, uint32_
                                                   char **ppszName, char **ppszMountPoint,
                                                   uint64_t *pfFlags, uint32_t *puRootIdVersion)
 {
-    AssertReturn(!(fQueryFlags & ~(SHFL_MIQF_DRIVE_LETTER | SHFL_MIQF_PATH), VERR_INVALID_FLAGS);
+    AssertReturn(!(fQueryFlags & ~(SHFL_MIQF_DRIVE_LETTER | SHFL_MIQF_PATH)), VERR_INVALID_FLAGS);
 
     /*
      * Allocate string buffers first.
