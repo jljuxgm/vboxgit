@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glLdr.cpp 76253 2018-12-16 15:01:28Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glLdr.cpp 76254 2018-12-16 15:05:45Z vboxsync $ */
 /** @file
  * DevVGA - VMWare SVGA device - 3D part, dynamic loading of GL function.
  */
@@ -26,7 +26,7 @@
 
 #ifdef RT_OS_WINDOWS
 # define OGLGETPROCADDRESS MyWinGetProcAddress
-DECLINLINE(PROC) MyWinGetProcAddress(const char *pszSymbol)
+DECLINLINE(PFNRT) MyWinGetProcAddress(const char *pszSymbol)
 {
     int rc;
 
@@ -53,7 +53,7 @@ DECLINLINE(PROC) MyWinGetProcAddress(const char *pszSymbol)
     if (s_wglGetProcAddress)
     {
         /* Khronos: [on failure] "some implementations will return other values. 1, 2, and 3 are used, as well as -1". */
-        PROC p = s_wglGetProcAddress(pszSymbol);
+        PFNRT p = (PFNRT)s_wglGetProcAddress(pszSymbol);
         if (RT_VALID_PTR(p))
             return p;
 
