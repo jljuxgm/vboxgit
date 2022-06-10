@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 72098 2018-05-03 16:20:44Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 75719 2018-11-25 17:38:19Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1172,16 +1172,13 @@ static DECLCALLBACK(int) vgsvcGstCtrlSessionThread(RTTHREAD hThreadSelf, void *p
     for (;;)
     {
         rcWait = RTProcWaitNoResume(pThread->hProcess, RTPROCWAIT_FLAGS_NOBLOCK, &ProcessStatus);
-        if (RT_UNLIKELY(rcWait == VERR_INTERRUPTED))
-            continue;
-
         if (   rcWait == VINF_SUCCESS
             || rcWait == VERR_PROCESS_NOT_FOUND)
         {
             fProcessAlive = false;
             break;
         }
-        AssertMsgBreak(rcWait == VERR_PROCESS_RUNNING,
+        AssertMsgBreak(rcWait == VERR_PROCESS_RUNNING || rcWait == VERR_INTERRUPTED,
                        ("Got unexpected rc=%Rrc while waiting for session process termination\n", rcWait));
 
         if (ASMAtomicReadBool(&pThread->fShutdown))
