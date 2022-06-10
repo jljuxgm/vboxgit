@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 76747 2019-01-09 16:42:42Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 76768 2019-01-11 10:54:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -63,6 +63,11 @@ QStringList UIVisoCreator::entryList() const
 const QString &UIVisoCreator::visoName() const
 {
     return m_visoOptions.m_strVisoName;
+}
+
+const QStringList &UIVisoCreator::customOptions() const
+{
+    return m_visoOptions.m_customOptions;
 }
 
 void UIVisoCreator::retranslateUi()
@@ -227,5 +232,4 @@ void UIVisoCreator::checkVisoOptions(const VisoOptions &visoOptions)
             m_pVisoBrowser->setVisoName(visoOptions.m_strVisoName);
     }
     m_visoOptions = visoOptions;
-
 }

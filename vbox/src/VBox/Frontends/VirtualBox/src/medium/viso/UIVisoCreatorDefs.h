@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorDefs.h 76675 2019-01-07 12:43:50Z vboxsync $ */
+/* $Id: UIVisoCreatorDefs.h 76768 2019-01-11 10:54:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorDefs class declaration.
  */
@@ -28,9 +28,12 @@ struct VisoOptions
         :m_strVisoName("ad-hoc-viso"){}
     bool operator==(const VisoOptions &otherOptions) const
     {
-        return m_strVisoName == otherOptions.m_strVisoName;
+        return (m_strVisoName == otherOptions.m_strVisoName) &&
+            (m_customOptions == otherOptions.m_customOptions);
     }
     QString m_strVisoName;
+    /** Additions viso options to be inserted to the viso file as separate lines. */
+    QStringList m_customOptions;
 };
 
 struct BrowserOptions

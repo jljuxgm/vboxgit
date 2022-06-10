@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.h 76762 2019-01-10 20:57:13Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.h 76768 2019-01-11 10:54:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class declaration.
  */
@@ -75,7 +75,10 @@ protected:
 private slots:
 
     void sltHandleCreateNewDirectory();
+    /** Handles the signal we get from the model during setData call. Restores the old name of the file object
+     *  to @p strOldName if need be. */
     void sltHandleItemRenameAttempt(UICustomFileSystemItem *pItem, QString strOldName, QString strNewName);
+    void sltHandleItemRenameAction();
     void sltHandleRemoveItems();
     void sltHandleTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
     void sltHandleResetAction();

@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 76747 2019-01-09 16:42:42Z vboxsync $ */
+/* $Id: UIVisoCreator.h 76768 2019-01-11 10:54:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -54,6 +54,7 @@ public:
     ~UIVisoCreator();
     QStringList entryList() const;
     const QString &visoName() const;
+    const QStringList &customOptions() const;
 
 #ifdef VBOX_WS_MAC
     /** Returns the toolbar. */
