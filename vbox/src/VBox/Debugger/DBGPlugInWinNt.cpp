@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 73418 2018-08-01 11:10:29Z vboxsync $ */
+/* $Id: DBGPlugInWinNt.cpp 73419 2018-08-01 11:18:54Z vboxsync $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -299,9 +299,6 @@ static const RTUTF16 g_wszKernelNames[][WINNT_KERNEL_BASE_NAME_LEN + 1] =
  * @param   pszName         The image name.
  * @param   pImageAddr      The image address.
  * @param   cbImage         The size of the image.
- * @param   pbBuf           Scratch buffer containing the first
- *                          RT_MIN(cbBuf, cbImage) bytes of the image.
- * @param   cbBuf           The scratch buffer size.
  */
 static void dbgDiggerWinNtProcessImage(PDBGDIGGERWINNT pThis, PUVM pUVM, const char *pszName,
                                        PCDBGFADDRESS pImageAddr, uint32_t cbImage)
