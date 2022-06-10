@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72783 2018-07-01 16:33:06Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72786 2018-07-02 08:54:12Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2453,9 +2453,7 @@ VMMR0DECL(int) SVMR0ExportHostState(PVMCPU pVCpu)
  * the guest CPU mode.
  *
  * @returns VBox status code.
- * @param   pVM         The cross context VM structure.
  * @param   pVCpu       The cross context virtual CPU structure.
- * @param   pCtx        Pointer to the guest-CPU context.
  *
  * @remarks No-long-jump zone!!!
  */
@@ -2801,7 +2799,6 @@ static void hmR0SvmExportSharedState(PVMCPU pVCpu, PSVMVMCB pVmcb)
  * Worker for SVMR0ImportStateOnDemand.
  *
  * @param   pVCpu   The cross context virtual CPU structure.
- * @param   pCtx    Pointer to the guest-CPU or nested-guest-CPU context.
  * @param   fWhat   What to import, CPUMCTX_EXTRN_XXX.
  */
 static void hmR0SvmImportGuestState(PVMCPU pVCpu, uint64_t fWhat)
