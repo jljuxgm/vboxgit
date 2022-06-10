@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.cpp 75491 2018-11-15 16:33:50Z vboxsync $ */
+/* $Id: RecordingStream.cpp 75492 2018-11-15 16:40:01Z vboxsync $ */
 /** @file
  * Recording stream code.
  */
@@ -428,6 +428,9 @@ int RecordingStream::Process(RecordingBlockMap &mapBlocksCommon)
             pBlocks->List.pop_front();
             delete pBlock;
         }
+
+        Assert(pBlocks->List.empty());
+        delete pBlocks;
 
         Blocks.Map.erase(itStreamBlocks);
         itStreamBlocks = Blocks.Map.begin();
