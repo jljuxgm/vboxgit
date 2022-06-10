@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72891 2018-07-04 16:34:18Z vboxsync $ */
+/* $Id: IEMAll.cpp 72895 2018-07-04 17:03:57Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -14911,6 +14911,9 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedXsetbv(PVMCPU pVCpu, uint8_t cbInstr)
 
 /**
  * Interface for HM and EM to emulate the INVLPG instruction.
+ *
+ * @returns Strict VBox status code.
+ * @retval  VINF_PGM_SYNC_CR3
  *
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   cbInstr     The instruction length in bytes.
