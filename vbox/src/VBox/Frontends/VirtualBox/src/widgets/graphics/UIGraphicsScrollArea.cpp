@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollArea.cpp 77923 2019-03-27 14:43:18Z vboxsync $ */
+/* $Id: UIGraphicsScrollArea.cpp 78008 2019-04-03 17:58:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollArea class implementation.
  */
@@ -17,6 +17,7 @@
 
 /* Qt includes: */
 #include <QGraphicsScene>
+#include <QGraphicsView>
 
 /* GUI includes: */
 #include "UIGraphicsScrollArea.h"
@@ -148,8 +149,11 @@ bool UIGraphicsScrollArea::eventFilter(QObject *pObject, QEvent *pEvent)
         && pEvent->type() == QEvent::LayoutRequest)
         layoutWidgets();
 
-    /* Handle redirected wheel events: */
-    if (pEvent->type() == QEvent::Wheel)
+    /* Handle wheel events for first scene view if set: */
+    if (   scene()
+        && !scene()->views().isEmpty()
+        && pObject == scene()->views().first()
+        && pEvent->type() == QEvent::Wheel)
     {
         QWheelEvent *pWheelEvent = static_cast<QWheelEvent*>(pEvent);
         const QPoint angleDelta = pWheelEvent->angleDelta();
