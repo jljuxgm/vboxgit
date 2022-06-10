@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 76993 2019-01-25 14:34:46Z vboxsync $ */
+/* $Id: HMAll.cpp 77589 2019-03-06 20:51:53Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -344,7 +344,9 @@ VMMDECL(bool) HMCanExecuteGuest(PVMCPU pVCpu, PCCPUMCTX pCtx)
         return true;
     }
 
-    return HMCanExecuteVmxGuest(pVCpu, pCtx);
+    bool rc = HMCanExecuteVmxGuest(pVCpu, pCtx);
+    LogFlowFunc(("returning %RTbool\n", rc));
+    return rc;
 }
 
 
