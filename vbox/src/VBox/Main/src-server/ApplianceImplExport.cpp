@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 75921 2018-12-03 18:25:11Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 75922 2018-12-03 18:34:35Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -893,7 +893,7 @@ HRESULT Appliance::i_writeCloudImpl(const LocationInfo &aLocInfo, ComObjPtr<Prog
     else
         return setErrorVrc(VBOX_E_NOT_SUPPORTED,
                            tr("Only \"OCI\" cloud provider is supported for now. \"%s\" isn't supported."),
-                           aLocInfo.strProvider);
+                           aLocInfo.strProvider.c_str());
     // Initialize our worker task
     TaskCloud* task = NULL;
     try
