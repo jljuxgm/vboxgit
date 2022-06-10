@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 73584 2018-08-09 12:29:48Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 73638 2018-08-13 14:25:23Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -615,7 +615,8 @@ void AudioVRDE::onVRDEClientConnect(uint32_t uClientID)
     RT_NOREF(uClientID);
 
     LogRel2(("Audio: VRDE client connected\n"));
-    mpDrv->cClients++;
+    if (mpDrv)
+        mpDrv->cClients++;
 }
 
 
@@ -625,7 +626,8 @@ void AudioVRDE::onVRDEClientDisconnect(uint32_t uClientID)
 
     LogRel2(("Audio: VRDE client disconnected\n"));
     Assert(mpDrv->cClients);
-    mpDrv->cClients--;
+    if (mpDrv)
+        mpDrv->cClients--;
 }
 
 
