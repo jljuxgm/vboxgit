@@ -1,4 +1,4 @@
-/* $Id: x11-stub.cpp 76553 2019-01-01 01:45:53Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 78160 2019-04-17 13:43:22Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */

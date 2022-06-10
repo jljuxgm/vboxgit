@@ -1,4 +1,4 @@
-/* $Id: darwin.cpp 78158 2019-04-17 13:28:04Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 78160 2019-04-17 13:43:22Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
