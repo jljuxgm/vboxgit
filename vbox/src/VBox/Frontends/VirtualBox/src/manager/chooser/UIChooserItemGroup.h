@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 73954 2018-08-29 14:53:36Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 73992 2018-08-31 10:15:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -243,7 +243,6 @@ private:
         GroupItemData_VerticalMargin,
         GroupItemData_MajorSpacing,
         GroupItemData_MinorSpacing,
-        GroupItemData_RootIndent,
     };
 
     /** @name Prepare/cleanup cascade.
