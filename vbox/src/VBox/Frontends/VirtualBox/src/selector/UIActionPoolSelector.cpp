@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 72696 2018-06-26 16:13:10Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 72864 2018-07-04 10:17:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -664,7 +664,7 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionSimpleSelectorMachinePerformMove(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/vm_clone_16px.png", ":/vm_clone_disabled_16px.png")
+        : UIActionSimple(pParent, ":/vm_move_16px.png", ":/vm_move_disabled_16px.png")
     {}
 
 protected:
