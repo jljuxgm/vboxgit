@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 77607 2019-03-08 03:26:23Z vboxsync $ */
+/* $Id: VDI.cpp 77622 2019-03-08 15:37:25Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -41,8 +41,10 @@
 
 static const char *vdiAllocationBlockSize = "1048576";
 
-static const VDCONFIGINFO vdiConfigInfo[] = {
-    { "AllocationBlockSize",            vdiAllocationBlockSize,           VDCFGVALUETYPE_INTEGER,      0 }
+static const VDCONFIGINFO vdiConfigInfo[] =
+{
+    { "AllocationBlockSize",            vdiAllocationBlockSize,           VDCFGVALUETYPE_INTEGER,      0 },
+    { NULL,                             NULL,                             VDCFGVALUETYPE_INTEGER,      0 }
 };
 
 
@@ -718,7 +720,8 @@ static int vdiCreateImage(PVDIIMAGEDESC pImage, uint64_t cbSize,
                        N_("VDI: comment is too long for '%s'"), pImage->pszFilename);
 
     PVDINTERFACECONFIG pImgCfg = VDIfConfigGet(pImage->pVDIfsImage);
-    if (pImgCfg) {
+    if (pImgCfg)
+    {
         rc = VDCFGQueryU32Def(pImgCfg, "AllocationBlockSize", &cbAllocationBlock, VDI_IMAGE_DEFAULT_BLOCK_SIZE);
         if (RT_FAILURE(rc))
             rc = vdIfError(pImage->pIfError, rc, RT_SRC_POS,
