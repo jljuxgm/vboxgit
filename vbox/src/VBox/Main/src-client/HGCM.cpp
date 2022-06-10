@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 75991 2018-12-05 20:14:57Z vboxsync $ */
+/* $Id: HGCM.cpp 76013 2018-12-06 12:40:15Z vboxsync $ */
 /** @file
  * HGCM (Host-Guest Communication Manager)
  */
@@ -1845,7 +1845,7 @@ int HGCMService::GuestCall(PPDMIHGCMPORT pHGCMPort, PVBOXHGCMCMD pCmd, uint32_t 
  *
  * @param   pHGCMPort      The port to be used for completion confirmation.
  * @param   pCmd           The VBox HGCM context.
- * @param   u32ClientId    The client handle to be disconnected and deleted.
+ * @param   idClient       The client handle to be disconnected and deleted.
  * @return  VBox rc.
  */
 void HGCMService::GuestCancelled(PPDMIHGCMPORT pHGCMPort, PVBOXHGCMCMD pCmd, uint32_t idClient)
