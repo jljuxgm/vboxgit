@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 77170 2019-02-06 09:18:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -63,7 +63,8 @@ void UIWizardNewVMPage3::getWithFileOpenDialog()
     /* Get opened medium id: */
     QUuid uMediumId = vboxGlobal().openMediumSelectorDialog(thisImp(), UIMediumDeviceType_HardDisk,
                                                             fieldImp("machineBaseName").toString(),
-                                                            fieldImp("machineFolder").toString());
+                                                            fieldImp("machineFolder").toString(),
+                                                            fieldImp("type").value<CGuestOSType>().GetFamilyId());
     if (!uMediumId.isNull())
     {
         /* Update medium-combo if necessary: */

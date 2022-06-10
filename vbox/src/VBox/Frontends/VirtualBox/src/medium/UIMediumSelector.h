@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 77009 2019-01-26 20:23:10Z vboxsync $ */
+/* $Id: UIMediumSelector.h 77170 2019-02-06 09:18:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -51,7 +51,9 @@ signals:
 public:
 
     UIMediumSelector(UIMediumDeviceType enmMediumType, const QString &machineName = QString(),
-                     const QString &machineSettigFilePath = QString(), QWidget *pParent = 0);
+                     const QString &machineSettingsFilePath = QString(), const QString &strMachineGuestOSTypeId = QString(),
+                     QWidget *pParent = 0);
+
     QList<QUuid> selectedMediumIds() const;
 
 protected:
@@ -130,6 +132,7 @@ private slots:
     QBrush                m_defaultItemForeground;
     QString               m_strMachineSettingsFilePath;
     QString               m_strMachineName;
+    QString               m_strMachineGuestOSTypeId;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_medium_UIMediumSelector_h */

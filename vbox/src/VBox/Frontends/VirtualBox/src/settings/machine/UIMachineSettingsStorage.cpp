@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 77167 2019-02-05 14:44:28Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 77170 2019-02-06 09:18:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3809,7 +3809,8 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType enmDevice)
                 uMediumId = vboxGlobal().createHDWithNewHDWizard(this, m_strMachineGuestOSTypeId, m_strMachineSettingsFilePath);
             else if (iAnswer == AlertButton_Choice2)
                 uMediumId = vboxGlobal().openMediumSelectorDialog(this, UIMediumDeviceType_HardDisk,
-                                                                  m_strMachineName, m_strMachineSettingsFilePath);
+                                                                  m_strMachineName, m_strMachineSettingsFilePath,
+                                                                  m_strMachineGuestOSTypeId);
             else if (iAnswer == AlertButton_Cancel)
                 fCancelled = true;
             break;
@@ -3833,6 +3834,7 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType enmDevice)
             if (iAnswer == AlertButton_Choice2)
                 uMediumId = vboxGlobal().openMediumSelectorDialog(this, UIMediumDeviceType_Floppy,
                                                                   m_strMachineName, m_strMachineSettingsFilePath);
+
             /* We allow creating an empty floppy drive: */
             else if (iAnswer == AlertButton_Choice1)
                 fCreateEmpty = true;
