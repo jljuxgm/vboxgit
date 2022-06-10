@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 73011 2018-07-09 13:48:34Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 73025 2018-07-10 10:00:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -42,11 +42,10 @@ protected:
     /** Constructs 3rd page base. */
     UIWizardExportAppPage3();
 
+    /** Populates formats. */
+    void populateFormats();
     /** Populates providers. */
     void populateProviders();
-
-    /** Chooses default settings. */
-    void chooseDefaultSettings();
 
     /** Updates page appearance. */
     virtual void updatePageAppearance();
