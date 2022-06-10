@@ -1,4 +1,4 @@
-/** $Id: VBoxSFFind.cpp 76108 2018-12-10 12:01:34Z vboxsync $ */
+/** $Id: VBoxSFFind.cpp 76109 2018-12-10 12:02:29Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, Find File IFS EPs.
  */
@@ -473,7 +473,6 @@ FS32_FINDFIRST(PCDFSI pCdFsi, PVBOXSFCD pCdFsd, PCSZ pszPath, LONG offCurDirEnd,
     LogFlow(("FS32_FINDFIRST: vboxSfOs2ResolvePath: -> %u pFolder=%p\n", rc, pFolder));
     if (rc == NO_ERROR)
     {
-LogRel(("pStrFolderPath: %#x %#x '%ls'\n", pStrFolderPath->u16Size, pStrFolderPath->u16Length, pStrFolderPath->String.ucs2));
         /*
          * Look for a wildcard filter at the end of the path, saving it all for
          * later in NT filter speak if present.
