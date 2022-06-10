@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.h 77519 2019-03-01 10:19:54Z vboxsync $ */
+/* $Id: UIVisoConfigurationPanel.h 78005 2019-04-03 16:43:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class declaration.
  */
@@ -29,6 +29,7 @@ class QComboBox;
 class QILabel;
 class QILineEdit;
 class QIToolButton;
+class UIVisoCreator;
 
 class UIVisoConfigurationPanel : public UIDialogPanel
 {
@@ -40,7 +41,7 @@ signals:
     void sigCustomVisoOptionsChanged(const QStringList &customVisoOptions);
 
 public:
-    UIVisoConfigurationPanel(QWidget *pParent = 0);
+    UIVisoConfigurationPanel(UIVisoCreator *pCreator, QWidget *pParent = 0);
     ~UIVisoConfigurationPanel();
     virtual QString panelName() const /* override */;
     void setVisoName(const QString& strVisoName);
@@ -62,6 +63,9 @@ private:
     void prepareConnections();
     void addCustomVisoOption();
     void emitCustomVisoOptions();
+
+    /** Holds the parent creator reference. */
+    UIVisoCreator *m_pCreator;
 
     QILabel      *m_pVisoNameLabel;
     QILabel      *m_pCustomOptionsLabel;
