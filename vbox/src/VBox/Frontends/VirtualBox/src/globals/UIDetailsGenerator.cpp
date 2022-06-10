@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 77456 2019-02-25 13:57:39Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 77457 2019-02-25 14:20:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
