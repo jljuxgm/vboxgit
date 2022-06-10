@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 77855 2019-03-23 17:40:02Z vboxsync $
 ## @file
 # Sub-Makefile for the Storage library.
 #
@@ -40,6 +40,7 @@ if !defined(VBOX_ONLY_EXTPACKS)
  	VDVfs.cpp \
  	VDIfVfs.cpp \
  	VDIfVfs2.cpp \
+ 	VDIfTcpNet.cpp \
  	VDI.cpp \
  	VMDK.cpp \
  	VHD.cpp \
