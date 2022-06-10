@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 74753 2018-10-11 09:01:28Z vboxsync $ */
+/* $Id: CPUM.cpp 74874 2018-10-17 08:18:48Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1795,7 +1795,7 @@ VMMR3DECL(int) CPUMR3Term(PVM pVM)
     }
 #endif
 
-    if (pVM->cpum.ro.GuestFeatures.fSvm)
+    if (pVM->cpum.ro.GuestFeatures.fVmx)
         cpumR3FreeVmxHwVirtState(pVM);
     else if (pVM->cpum.ro.GuestFeatures.fSvm)
         cpumR3FreeSvmHwVirtState(pVM);
