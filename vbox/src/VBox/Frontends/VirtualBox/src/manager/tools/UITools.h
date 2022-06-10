@@ -1,4 +1,4 @@
-/* $Id: UITools.h 74319 2018-09-17 17:35:06Z vboxsync $ */
+/* $Id: UITools.h 74464 2018-09-25 18:13:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -21,6 +21,9 @@
 /* Qt includes: */
 #include <QWidget>
 
+/* GUI icludes: */
+#include "UIExtraDataDefs.h"
+
 /* Forward declarations: */
 class QVBoxLayout;
 class UIActionPool;
@@ -28,29 +31,6 @@ class UIToolsItem;
 class UIToolsModel;
 class UIToolsView;
 class UIVirtualBoxManagerWidget;
-
-
-/** Item classes. */
-enum UIToolsClass
-{
-    UIToolsClass_Global,
-    UIToolsClass_Machine
-};
-
-
-/** Item types. */
-enum UIToolsType
-{
-    UIToolsType_Invalid,
-    /* Global class: */
-    UIToolsType_Media,
-    UIToolsType_Network,
-    /* Machine class: */
-    UIToolsType_Details,
-    UIToolsType_Snapshots,
-    UIToolsType_Logs,
-};
-
 
 /** QWidget extension used as VM Tools-pane. */
 class UITools : public QWidget
@@ -147,6 +127,5 @@ private:
         UIToolsView  *m_pToolsView;
     /** @} */
 };
-
 
 #endif /* !___UITools_h___ */

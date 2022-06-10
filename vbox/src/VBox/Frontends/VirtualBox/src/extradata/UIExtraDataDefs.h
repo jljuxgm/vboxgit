@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 74265 2018-09-14 13:42:41Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 74464 2018-09-25 18:13:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -828,6 +828,31 @@ enum MaxGuestResolutionPolicy
     /** Anything up to host-screen available space. */
     MaxGuestResolutionPolicy_Automatic
 };
+
+
+#ifdef VBOX_GUI_WITH_NEW_MANAGER
+/** Tool item classes. */
+enum UIToolsClass
+{
+    UIToolsClass_Invalid,
+    UIToolsClass_Global,
+    UIToolsClass_Machine
+};
+
+
+/** Tool item types. */
+enum UIToolsType
+{
+    UIToolsType_Invalid,
+    /* Global types: */
+    UIToolsType_Media,
+    UIToolsType_Network,
+    /* Machine types: */
+    UIToolsType_Details,
+    UIToolsType_Snapshots,
+    UIToolsType_Logs,
+};
+#endif /* VBOX_GUI_WITH_NEW_MANAGER */
 
 
 #endif /* !___UIExtraDataDefs_h___ */
