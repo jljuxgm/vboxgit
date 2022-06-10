@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerSessionPanel.h 77528 2019-03-01 13:07:07Z vboxsync $ */
+/* $Id: UIFileManagerSessionPanel.h 78092 2019-04-10 14:27:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -46,12 +46,14 @@ public:
         void switchSessionCreateMode();
     /** @} */
     virtual QString panelName() const /* override */;
+    void markForError(bool fMarkForError);
 
 protected:
 
     virtual void prepareWidgets() /* override */;
     virtual void prepareConnections() /* override */;
     void retranslateUi();
+    void showEvent(QShowEvent *pEvent) /* override */;
 
 private:
 

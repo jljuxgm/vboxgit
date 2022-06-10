@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerOperationsPanel.cpp 77528 2019-03-01 13:07:07Z vboxsync $ */
+/* $Id: UIFileManagerOperationsPanel.cpp 78092 2019-04-10 14:27:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -337,6 +337,9 @@ void UIFileManagerOperationsPanel::prepareWidgets()
     if (!mainLayout())
         return;
 
+    QPalette mPalette = palette();
+    mPalette.setColor(QPalette::Window, qApp->palette().color(QPalette::Light));
+    setPalette(mPalette);
 
     m_pScrollArea = new QScrollArea;
     m_pContainerWidget = new QWidget;
