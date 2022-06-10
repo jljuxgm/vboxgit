@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 77715 2019-03-15 08:18:52Z vboxsync $ */
+/* $Id: HMInternal.h 77716 2019-03-15 08:29:06Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -799,7 +799,6 @@ typedef VMXVMCSINFO *PVMXVMCSINFO;
 /** Pointer to a VMXVMCSINFO struct. */
 typedef const VMXVMCSINFO *PCVMXVMCSINFO;
 AssertCompileSizeAlignment(VMXVMCSINFO, 8);
-AssertCompileSize(VMXVMCSINFO, 208);
 
 /**
  * HM VMCPU Instance data.
