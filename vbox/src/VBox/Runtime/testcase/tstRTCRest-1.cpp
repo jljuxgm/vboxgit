@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 74425 2018-09-23 15:41:48Z vboxsync $ */
+/* $Id: tstRTCRest-1.cpp 74997 2018-10-23 13:13:15Z vboxsync $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -1484,10 +1484,11 @@ class MyRestInt16 : public RTCRestInt16
 {
 public:
     static size_t s_cInstances;
-    MyRestInt16() : RTCRestInt16() { s_cInstances++; }
-    MyRestInt16(MyRestInt16 const &a_rThat) : RTCRestInt16(a_rThat) { s_cInstances++; }
-    MyRestInt16(int16_t a_iValue) : RTCRestInt16(a_iValue) { s_cInstances++; }
-    ~MyRestInt16() { s_cInstances--; }
+    MyRestInt16() : RTCRestInt16() { s_cInstances++; /*printf("%p: default %02u; cInstances %zu\n", this, m_iValue, s_cInstances);*/  }
+    MyRestInt16(MyRestInt16 const &a_rThat) : RTCRestInt16(a_rThat) { s_cInstances++; /*printf("%p: copy    %02u; cInstances %zu\n", this, m_iValue, s_cInstances);*/ }
+    MyRestInt16(int16_t a_iValue) : RTCRestInt16(a_iValue) { s_cInstances++; /*printf("%p: value   %02u; cInstances %zu\n", this, m_iValue, s_cInstances);*/ }
+    ~MyRestInt16() { s_cInstances--; /*printf("%p: delete  %02u; cInstances %zu\n", this, m_iValue, s_cInstances);*/ }
+    virtual RTCRestObjectBase *baseClone() const RT_NOEXCEPT RT_OVERRIDE { /*printf("clone\n");*/ return new MyRestInt16(*this); }
 };
 
 size_t MyRestInt16::s_cInstances = 0;
