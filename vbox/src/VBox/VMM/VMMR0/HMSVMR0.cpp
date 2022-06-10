@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72969 2018-07-08 10:45:34Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72970 2018-07-08 11:02:29Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3678,6 +3678,7 @@ static void hmR0SvmSetIntWindowExiting(PVMCPU pVCpu, PSVMVMCB pVmcb)
     }
 #else
     bool const fEnableIntWindow = true;
+    RT_NOREF(pVCpu);
 #endif
     if (fEnableIntWindow)
     {
