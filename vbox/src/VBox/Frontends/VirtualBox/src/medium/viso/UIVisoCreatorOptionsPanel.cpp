@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorOptionsPanel.cpp 76944 2019-01-23 07:39:42Z vboxsync $ */
+/* $Id: UIVisoCreatorOptionsPanel.cpp 76947 2019-01-23 09:26:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorOptionsPanel class implementation.
  */
@@ -31,7 +31,7 @@
 #include "UIVisoCreatorOptionsPanel.h"
 
 UIVisoCreatorOptionsPanel::UIVisoCreatorOptionsPanel(QWidget *pParent /* =0 */)
-    : UIVisoCreatorPanel(pParent)
+    : UIDialogPanel(pParent)
     , m_pShowHiddenObjectsCheckBox(0)
     , m_pShowHiddenObjectsLabel(0)
 {

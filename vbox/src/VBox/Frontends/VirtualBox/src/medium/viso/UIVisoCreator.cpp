@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 76946 2019-01-23 07:52:15Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 76947 2019-01-23 09:26:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -112,9 +112,9 @@ void UIVisoCreator::sltPanelActionToggled(bool fChecked)
     QAction *pSenderAction = qobject_cast<QAction*>(sender());
     if (!pSenderAction)
         return;
-    UIVisoCreatorPanel* pPanel = 0;
+    UIDialogPanel* pPanel = 0;
     /* Look for the sender() within the m_panelActionMap's values: */
-    for (QMap<UIVisoCreatorPanel*, QAction*>::const_iterator iterator = m_panelActionMap.begin();
+    for (QMap<UIDialogPanel*, QAction*>::const_iterator iterator = m_panelActionMap.begin();
         iterator != m_panelActionMap.end(); ++iterator)
     {
         if (iterator.value() == pSenderAction)
@@ -152,7 +152,7 @@ void UIVisoCreator::sltHandleShowHiddenObjectsChange(bool fShow)
     m_pHostBrowser->showHideHiddenObjects(fShow);
 }
 
-void UIVisoCreator::sltHandleHidePanel(UIVisoCreatorPanel *pPanel)
+void UIVisoCreator::sltHandleHidePanel(UIDialogPanel *pPanel)
 {
     hidePanel(pPanel);
 }
@@ -311,11 +311,11 @@ void UIVisoCreator::prepareActions()
 }
 
 
-void UIVisoCreator::hidePanel(UIVisoCreatorPanel* panel)
+void UIVisoCreator::hidePanel(UIDialogPanel* panel)
 {
     if (panel && panel->isVisible())
         panel->setVisible(false);
-    QMap<UIVisoCreatorPanel*, QAction*>::iterator iterator = m_panelActionMap.find(panel);
+    QMap<UIDialogPanel*, QAction*>::iterator iterator = m_panelActionMap.find(panel);
     if (iterator != m_panelActionMap.end())
     {
         if (iterator.value() && iterator.value()->isChecked())
@@ -325,11 +325,11 @@ void UIVisoCreator::hidePanel(UIVisoCreatorPanel* panel)
     manageEscapeShortCut();
 }
 
-void UIVisoCreator::showPanel(UIVisoCreatorPanel* panel)
+void UIVisoCreator::showPanel(UIDialogPanel* panel)
 {
     if (panel && panel->isHidden())
         panel->setVisible(true);
-    QMap<UIVisoCreatorPanel*, QAction*>::iterator iterator = m_panelActionMap.find(panel);
+    QMap<UIDialogPanel*, QAction*>::iterator iterator = m_panelActionMap.find(panel);
     if (iterator != m_panelActionMap.end())
     {
         if (!iterator.value()->isChecked())

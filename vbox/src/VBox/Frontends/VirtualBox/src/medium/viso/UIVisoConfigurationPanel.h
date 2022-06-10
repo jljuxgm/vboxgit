@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.h 76945 2019-01-23 07:50:10Z vboxsync $ */
+/* $Id: UIVisoConfigurationPanel.h 76947 2019-01-23 09:26:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class declaration.
  */
@@ -22,7 +22,7 @@
 #endif
 
 /* GUI includes: */
-#include "UIVisoCreatorPanel.h"
+#include "UIDialogPanel.h"
 
 /* Forward declarations: */
 class QGridLayout;
@@ -34,7 +34,7 @@ class QITabWidget;
 class QIToolButton;
 class UIVisoCreator;
 
-class UIVisoConfigurationPanel : public UIVisoCreatorPanel
+class UIVisoConfigurationPanel : public UIDialogPanel
 {
     Q_OBJECT;
 

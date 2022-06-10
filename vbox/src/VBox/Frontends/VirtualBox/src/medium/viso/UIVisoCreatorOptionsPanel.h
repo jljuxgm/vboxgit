@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorOptionsPanel.h 76945 2019-01-23 07:50:10Z vboxsync $ */
+/* $Id: UIVisoCreatorOptionsPanel.h 76947 2019-01-23 09:26:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorOptionsPanel class declaration.
  */
@@ -26,10 +26,10 @@ class QCheckBox;
 class QILabel;
 
 /* GUI includes: */
-#include "UIVisoCreatorPanel.h"
+#include "UIDialogPanel.h"
 #include "QIWithRetranslateUI.h"
 
-class UIVisoCreatorOptionsPanel : public UIVisoCreatorPanel
+class UIVisoCreatorOptionsPanel : public UIDialogPanel
 {
     Q_OBJECT;
 
