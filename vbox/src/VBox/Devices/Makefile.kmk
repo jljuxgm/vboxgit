@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76251 2018-12-16 10:32:52Z vboxsync $
+# $Id: Makefile.kmk 76260 2018-12-17 13:35:31Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -310,7 +310,7 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
 	$(QUIET)$(RM) -f -- "$@"
 	$(VBOX_DEF_2_LAZY_LOAD) --explicit-load-function --library VBoxSVGA3DObjC --output "$@" $(filter %.def, $^)
 
-   VBoxDD_LIBS.linux    += X11
+   # VBoxDD_LIBS.linux    += X11
    ifdef VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD
    VBoxDD_DEFS          += VMSVGA3D_DYNAMIC_LOAD
    VBoxDD_SOURCES       += \
