@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.cpp 78068 2019-04-10 09:38:27Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.cpp 78069 2019-04-10 09:51:28Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -377,7 +377,7 @@ int RecordingSettings::i_destroyAllScreenObj(RecordScreenSettingsMap &screenSett
     LogFlowThisFuncEnter();
 
     RecordScreenSettingsMap::iterator itScreen = screenSettingsMap.begin();
-    if (itScreen != screenSettingsMap.end())
+    while (itScreen != screenSettingsMap.end())
     {
         /* Make sure to consume the pointer before the one of the
          * iterator gets released. */
@@ -390,6 +390,7 @@ int RecordingSettings::i_destroyAllScreenObj(RecordScreenSettingsMap &screenSett
         itScreen = screenSettingsMap.begin();
     }
 
+    Assert(screenSettingsMap.size() == 0);
     return VINF_SUCCESS;
 }
 
