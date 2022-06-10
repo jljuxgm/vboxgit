@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 74879 2018-10-17 13:49:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -137,7 +137,7 @@ void UIMachineWindow::prepare()
     QString strWindowName = strWindowClass;
     /* Check if we want Window Manager to distinguish Virtual Machine windows: */
     if (gEDataManager->distinguishMachineWindowGroups(vboxGlobal().managedVMUuid()))
-        strWindowName = QString("VirtualBox Machine UUID: %1").arg(vboxGlobal().managedVMUuid());
+        strWindowName = QString("VirtualBox Machine UUID: %1").arg(vboxGlobal().managedVMUuid().toString());
     /* Assign WM_CLASS property: */
     VBoxGlobal::setWMClass(this, strWindowName, strWindowClass);
 #endif
