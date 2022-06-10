@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73043 2018-07-11 02:30:57Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73044 2018-07-11 02:37:49Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -849,6 +849,7 @@ DECLINLINE(bool) hmR0SvmSupportsDecodeAssists(PVMCPU pVCpu)
  */
 DECLINLINE(bool) hmR0SvmSupportsNextRipSave(PVMCPU pVCpu)
 {
+#if 0
     PVM pVM = pVCpu->CTX_SUFF(pVM);
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM
     if (CPUMIsGuestInSvmNestedHwVirtMode(&pVCpu->cpum.GstCtx))
@@ -858,6 +859,11 @@ DECLINLINE(bool) hmR0SvmSupportsNextRipSave(PVMCPU pVCpu)
     }
 #endif
     return RT_BOOL(pVM->hm.s.svm.u32Features & X86_CPUID_SVM_FEATURE_EDX_NRIP_SAVE);
+#endif
+
+    /** @todo Temporarily disabled NRIP_SAVE for testing. re-enable once its working. */
+    NOREF(pVCpu);
+    return false;
 }
 
 
