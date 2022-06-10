@@ -1,4 +1,4 @@
-/* $Id: rest-primary-object-types.cpp 74040 2018-09-03 12:25:52Z vboxsync $ */
+/* $Id: rest-primary-object-types.cpp 74093 2018-09-05 19:30:01Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestObjectBase implementation.
  */
@@ -1255,7 +1255,7 @@ int RTCRestStringEnumBase::toString(RTCString *a_pDst, uint32_t a_fFlags /*= kCo
         {
             size_t              cEntries  = 0;
             ENUMMAPENTRY const *paEntries = getMappingTable(&cEntries);
-            AssertReturn((unsigned)(m_iEnumValue - 1) < cEntries, VERR_REST_INTERAL_ERROR_3);
+            AssertReturn((unsigned)(m_iEnumValue - 1) < cEntries, VERR_REST_INTERNAL_ERROR_3);
             Assert(paEntries[m_iEnumValue - 1].iValue == m_iEnumValue);
 
             if (a_fFlags & kToString_Append)

@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientRequestBase.cpp 74070 2018-09-04 15:17:01Z vboxsync $ */
+/* $Id: RTCRestClientRequestBase.cpp 74093 2018-09-05 19:30:01Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientRequestBase implementation.
  */
@@ -151,7 +151,7 @@ int RTCRestClientRequestBase::doQueryParameters(RTCString *a_pStrQuery, QUERYPAR
                  * Enumerate array and add 'name=element' for each element in it.
                  */
                 AssertReturn(a_papQueryParamObjs[i]->typeClass() == RTCRestObjectBase::kTypeClass_Array,
-                             VERR_REST_INTERAL_ERROR_2);
+                             VERR_REST_INTERNAL_ERROR_2);
                 RTCRestArrayBase const *pArray = (RTCRestArrayBase const *)a_papQueryParamObjs[i];
                 for (size_t j = 0; j < pArray->size(); j++)
                 {
@@ -203,7 +203,7 @@ int RTCRestClientRequestBase::doHeaderParameters(RTHTTP a_hHttp, HEADERPARAMDESC
                  *      (a_paHeaderParams[i].pszName + key): value.toString()
                  */
                 AssertReturn(a_papHeaderParamObjs[i]->typeClass() == RTCRestObjectBase::kTypeClass_StringMap,
-                             VERR_REST_INTERAL_ERROR_1);
+                             VERR_REST_INTERNAL_ERROR_1);
                 RTCRestStringMapBase const *pMap    = (RTCRestStringMapBase const *)a_papHeaderParamObjs[i];
                 const size_t                cchName = strlen(a_paHeaderParams[i].pszName);
                 RTCString                   strTmpName;
