@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 75830 2018-11-30 09:30:58Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 75996 2018-12-06 04:32:57Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3796,6 +3796,11 @@ static VBOXSTRICTRC hmR0SvmEvaluatePendingEventNested(PVMCPU pVCpu)
      *
      * Physical interrupts always take priority over virtual interrupts,
      * see AMD spec. 15.21.4 "Injecting Virtual (INTR) Interrupts".
+     *
+     * We don't need to inject nested-guest virtual interrupts here, we can let the hardware
+     * do that work when we execute nested guest code esp. since all the required information
+     * is in the VMCB, unlike physical interrupts where we need to fetch the interrupt from
+     * the virtual interrupt controller.
      */
     else if (   VMCPU_FF_IS_ANY_SET(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)
              && !pVCpu->hm.s.fSingleInstruction)
