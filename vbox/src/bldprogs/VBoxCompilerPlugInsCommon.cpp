@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugInsCommon.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxCompilerPlugInsCommon.cpp 72835 2018-07-03 16:52:23Z vboxsync $ */
 /** @file
  * VBoxCompilerPlugInsCommon - Code common to the compiler plug-ins.
  */
@@ -332,6 +332,7 @@ void MyCheckFormatCString(PVFMTCHKSTATE pState, const char *pszFmt)
             case 'j':
                 fFmtSize = RTSTR_Z_INTMAX;
                 ch = *pszFmt++;
+                break;
             case 't':
                 fFmtSize = RTSTR_Z_PTRDIFF;
                 ch = *pszFmt++;
