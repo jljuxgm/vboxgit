@@ -1,6 +1,5 @@
-/* $Id: HostVideoInputDeviceImpl.cpp 73003 2018-07-09 11:09:32Z vboxsync $ */
+/* $Id: HostVideoInputDeviceImpl.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
- *
  * Host video capture device implementation.
  */
 
@@ -16,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+
 #include "HostVideoInputDeviceImpl.h"
 #include "Logging.h"
 #include "VirtualBoxImpl.h"
@@ -23,6 +23,7 @@
 # include "ExtPackManagerImpl.h"
 #endif
 
+#include <iprt/err.h>
 #include <iprt/ldr.h>
 #include <iprt/path.h>
 

@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75969 2018-12-05 12:08:09Z vboxsync $ */
+/* $Id: service.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -81,6 +81,7 @@
 #include <iprt/string.h>
 #include <iprt/assert.h>
 #include <iprt/critsect.h>
+#include <VBox/err.h>
 #include <VBox/vmm/ssm.h>
 
 #include "VBoxClipboard.h"

@@ -1,4 +1,4 @@
-/* $Id: x11-clipboard.cpp 75498 2018-11-16 00:03:41Z vboxsync $ */
+/* $Id: x11-clipboard.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -29,9 +29,14 @@
 
 #include <VBox/GuestHost/SharedClipboard.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
+#include <VBox/err.h>
 
 #include "VBoxClipboard.h"
 
+
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
 struct _VBOXCLIPBOARDREQFROMVBOX;
 typedef struct _VBOXCLIPBOARDREQFROMVBOX VBOXCLIPBOARDREQFROMVBOX;
 
@@ -59,6 +64,8 @@ struct _VBOXCLIPBOARDCONTEXT
      * requests. */
     bool fShuttingDown;
 };
+
+
 
 /**
  * Report formats available in the X11 clipboard to VBox.

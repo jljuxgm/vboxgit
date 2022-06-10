@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInFreeBsd.cpp 73460 2018-08-02 21:06:59Z vboxsync $ */
+/* $Id: DBGPlugInFreeBsd.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * DBGPlugInFreeBsd - Debugger and Guest OS Digger Plugin For FreeBSD.
  */
@@ -25,6 +25,7 @@
 #include <VBox/vmm/dbgf.h>
 #include <iprt/asm.h>
 #include <iprt/ctype.h>
+#include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>

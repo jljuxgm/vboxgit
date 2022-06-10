@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75969 2018-12-05 12:08:09Z vboxsync $ */
+/* $Id: service.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -24,19 +24,17 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#ifdef LOG_GROUP
- #undef LOG_GROUP
-#endif
 #define LOG_GROUP LOG_GROUP_GUEST_DND
-
-#include <algorithm>
-#include <list>
-#include <map>
-
 #include <VBox/GuestHost/DragAndDrop.h>
 #include <VBox/GuestHost/DragAndDropDefs.h>
 #include <VBox/HostServices/Service.h>
 #include <VBox/HostServices/DragAndDropSvc.h>
+
+#include <VBox/err.h>
+
+#include <algorithm>
+#include <list>
+#include <map>
 
 #include "dndmanager.h"
 

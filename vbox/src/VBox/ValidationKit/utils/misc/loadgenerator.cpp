@@ -1,4 +1,4 @@
-/* $Id: loadgenerator.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: loadgenerator.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * Load Generator.
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include <iprt/err.h>
 #include <iprt/thread.h>
 #include <iprt/time.h>
 #include <iprt/initterm.h>
@@ -305,7 +306,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 69111 $\n");
+                RTPrintf("$Revision: 76389 $\n");
                 return 0;
 
             case VINF_GETOPT_NOT_OPTION:

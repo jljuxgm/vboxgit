@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELF.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DBGPlugInCommonELF.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Common code for dealing with ELF images.
  */
@@ -27,6 +27,7 @@
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/dbg.h>
+#include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 

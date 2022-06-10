@@ -1,4 +1,4 @@
-/* $Id: SUPLibAll.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SUPLibAll.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - All Contexts Code.
  */
@@ -39,6 +39,7 @@
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 # include <iprt/asm-amd64-x86.h>
 #endif
+#include <iprt/errcore.h>
 
 
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)

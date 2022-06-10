@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInLinux.cpp 73460 2018-08-02 21:06:59Z vboxsync $ */
+/* $Id: DBGPlugInLinux.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
@@ -24,11 +24,12 @@
 #include "DBGPlugInCommonELF.h"
 #include <VBox/vmm/dbgf.h>
 #include <VBox/dis.h>
+#include <iprt/ctype.h>
 #include <iprt/file.h>
-#include <iprt/string.h>
+#include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/stream.h>
-#include <iprt/ctype.h>
+#include <iprt/string.h>
 #include <iprt/vfs.h>
 #include <iprt/zip.h>
 

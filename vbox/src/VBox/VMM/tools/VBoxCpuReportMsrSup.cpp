@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReportMsrSup.cpp 69654 2017-11-10 19:22:45Z vboxsync $ */
+/* $Id: VBoxCpuReportMsrSup.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * MsrSup - SupDrv-specific MSR access.
  */
@@ -20,6 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "VBoxCpuReport.h"
+#include <iprt/err.h>
 #include <iprt/x86.h>
 
 

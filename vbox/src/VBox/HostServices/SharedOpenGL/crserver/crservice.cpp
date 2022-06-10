@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 75969 2018-12-05 12:08:09Z vboxsync $ */
+/* $Id: crservice.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * VBox crOpenGL - Host service entry points.
  */
@@ -15,9 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#define __STDC_CONSTANT_MACROS  /* needed for a definition in iprt/string.h */
-
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_SHARED_CROPENGL
+
+#define __STDC_CONSTANT_MACROS  /* needed for a definition in iprt/string.h */
 
 #include <iprt/assert.h>
 #include <iprt/asm.h>
@@ -28,6 +31,7 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 
+#include <VBox/err.h>
 #include <VBox/hgcmsvc.h>
 #include <VBox/log.h>
 #include <VBox/com/array.h>
@@ -41,18 +45,22 @@
 #include "cr_mem.h"
 #include "cr_server.h"
 
+#ifndef RT_OS_WINDOWS
+# define DWORD int
+# define WINAPI
+#endif
+
+
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
 PVBOXHGCMSVCHELPERS g_pHelpers;
 static IConsole* g_pConsole = NULL;
 static uint32_t g_u32ScreenCount = 0;
 static PVM g_pVM = NULL;
 static uint32_t g_u32fCrHgcmDisabled = 0;
 
-#ifndef RT_OS_WINDOWS
-# define DWORD int
-# define WINAPI
-#endif
-
-static const char* gszVBoxOGLSSMMagic = "***OpenGL state data***";
+static const char *gszVBoxOGLSSMMagic = "***OpenGL state data***";
 
 /* Used to process guest calls exceeding maximum allowed HGCM call size in a sequence of smaller calls */
 typedef struct _CRVBOXSVCBUFFER_t {

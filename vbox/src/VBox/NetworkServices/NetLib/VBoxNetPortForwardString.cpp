@@ -1,4 +1,4 @@
-/* $Id: VBoxNetPortForwardString.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetPortForwardString.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
@@ -28,20 +28,23 @@
 
 #include <iprt/cdefs.h>
 #include <iprt/cidr.h>
+#include <iprt/ctype.h>
+#include <iprt/err.h>
+#include <iprt/getopt.h>
+#include <iprt/net.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
-#include <iprt/net.h>
-#include <iprt/getopt.h>
-#include <iprt/ctype.h>
-
 
 #include <VBox/log.h>
 
 #include "VBoxPortForwardString.h"
 
 
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
 #define PF_FIELD_SEPARATOR ':'
 #define PF_ADDRESS_FIELD_STARTS '['
 #define PF_ADDRESS_FIELD_ENDS ']'

@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReportMsrLinux.cpp 69661 2017-11-12 15:39:02Z vboxsync $ */
+/* $Id: VBoxCpuReportMsrLinux.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
 /** @file
  * MsrLinux - Linux-specific MSR access.
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #include "VBoxCpuReport.h"
 
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/thread.h>
 
