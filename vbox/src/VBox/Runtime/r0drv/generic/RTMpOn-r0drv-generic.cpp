@@ -1,4 +1,4 @@
-/* $Id: RTMpOn-r0drv-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTMpOn-r0drv-generic.cpp 75462 2018-11-14 19:51:50Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Generic Stubs.
  */
@@ -72,10 +72,11 @@ RTDECL(int) RTMpOnSpecific(RTCPUID idCpu, PFNRTMPWORKER pfnWorker, void *pvUser1
 RT_EXPORT_SYMBOL(RTMpOnSpecific);
 
 
-RTDECL(int) RTMpOnPair(RTCPUID idCpu1, RTCPUID idCpu2, PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)
+RTDECL(int) RTMpOnPair(RTCPUID idCpu1, RTCPUID idCpu2, uint32_t fFlags, PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)
 {
     NOREF(idCpu1);
     NOREF(idCpu2);
+    NOREF(fFlags);
     NOREF(pfnWorker);
     NOREF(pvUser1);
     NOREF(pvUser2);
