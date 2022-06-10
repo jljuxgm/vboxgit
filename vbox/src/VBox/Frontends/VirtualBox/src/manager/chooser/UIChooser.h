@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 74483 2018-09-26 16:27:10Z vboxsync $ */
+/* $Id: UIChooser.h 74827 2018-10-13 02:55:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -115,6 +115,14 @@ public slots:
       * @{ */
         /** Handles toolbar resize to @a newSize. */
         void sltHandleToolbarResize(const QSize &newSize);
+    /** @} */
+
+private slots:
+
+    /** @name General stuff.
+      * @{ */
+        /** Handles signal about tool popup-menu request for certain tool @a enmClass and in specified @a position. */
+        void sltToolMenuRequested(UIToolsClass enmClass, const QPoint &position);
     /** @} */
 
 private:
