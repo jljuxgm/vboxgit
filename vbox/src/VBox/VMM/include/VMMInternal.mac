@@ -1,4 +1,4 @@
-; $Id: VMMInternal.mac 73471 2018-08-03 12:11:07Z vboxsync $
+; $Id: VMMInternal.mac 73477 2018-08-03 12:28:17Z vboxsync $
 ;; @file
 ; VMM - Internal header file.
 ;
@@ -95,6 +95,7 @@ struc VMMR0JMPBUF
 %endif
 
     ; Statistics
+    alignb 8
     .cbUsedMax      resd 1
     .cbUsedAvg      resd 1
     .cbUsedTotal    resq 1

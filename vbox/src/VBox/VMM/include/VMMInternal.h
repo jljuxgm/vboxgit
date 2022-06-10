@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 73471 2018-08-03 12:11:07Z vboxsync $ */
+/* $Id: VMMInternal.h 73477 2018-08-03 12:28:17Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -188,6 +188,10 @@ typedef struct VMMR0JMPBUF
     RTHCUINTREG                 UnwindRetPcValue;
     /** Unwind: The vmmR0CallRing3SetJmp return address stack location. */
     RTHCUINTREG                 UnwindRetPcLocation;
+#if HC_ARCH_BITS == 32
+    /** Alignment padding. */
+    uint32_t                    uPadding;
+#endif
 
     /** Stats: Max amount of stack used. */
     uint32_t                    cbUsedMax;
