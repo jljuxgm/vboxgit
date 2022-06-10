@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 72920 2018-07-05 14:51:50Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 73198 2018-07-18 11:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -382,6 +382,20 @@ bool UIMessageCenter::showModalProgressDialog(CProgress &progress,
         delete pPixmap;
 
     return fRc;
+}
+
+void UIMessageCenter::warnAboutUnknownOptionType(const QString &strOption)
+{
+    alert(0, MessageType_Error,
+          tr("Unknown option <b>%1</b>.")
+             .arg(strOption));
+}
+
+void UIMessageCenter::warnAboutUnrelatedOptionType(const QString &strOption)
+{
+    alert(0, MessageType_Error,
+          tr("<b>%1</b> is an option for the VirtualBox VM runner (VirtualBoxVM) application, not the VirtualBox Manager.")
+             .arg(strOption));
 }
 
 #ifdef RT_OS_LINUX

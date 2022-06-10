@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 73196 2018-07-18 10:45:52Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 73198 2018-07-18 11:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4051,13 +4051,11 @@ void VBoxGlobal::prepare()
 #endif
 #ifdef RT_OS_WINDOWS /** @todo add more here, please... */
         else
-            msgCenter().error(0, MessageType_Error, tr("Unknown option <b>%1</b>.").arg(arguments.at(i)), "");
+            msgCenter().warnAboutUnknownOptionType(arguments.at(i));
 #endif
 #ifdef VBOX_GUI_WITH_SHARED_LIBRARY
         if (enmOptType == OptType_VMRunner && m_enmType != UIType_RuntimeUI)
-            msgCenter().error(0, MessageType_Error,
-                              tr("<b>%1</b> is an option for the VirtualBox VM runner (VirtualBoxVM) application, not the selector")
-                              .arg(arg), "");
+            msgCenter().warnAboutUnrelatedOptionType(arg);
 #endif
 
         i++;

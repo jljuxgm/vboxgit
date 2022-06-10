@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 72920 2018-07-05 14:51:50Z vboxsync $ */
+/* $Id: UIMessageCenter.h 73198 2018-07-18 11:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -230,6 +230,8 @@ public:
                                  int cMinDuration = 2000);
 
     /* API: Main (startup) warnings: */
+    void warnAboutUnknownOptionType(const QString &strOption);
+    void warnAboutUnrelatedOptionType(const QString &strOption);
 #ifdef RT_OS_LINUX
     void warnAboutWrongUSBMounted() const;
 #endif /* RT_OS_LINUX */
