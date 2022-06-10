@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 72744 2018-06-29 07:36:19Z vboxsync $ */
+/* $Id: HM.cpp 72749 2018-06-29 07:57:05Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -3089,29 +3089,6 @@ VMMR3_INT_DECL(void) HMR3NotifyDebugEventChanged(PVM pVM)
 VMMR3_INT_DECL(void) HMR3NotifyDebugEventChangedPerCpu(PVM pVM, PVMCPU pVCpu)
 {
     pVCpu->hm.s.fUseDebugLoop = pVCpu->hm.s.fSingleInstruction | pVM->hm.s.fUseDebugLoop;
-}
-
-
-/**
- * Notification from EM about a rescheduling into hardware assisted execution
- * mode.
- *
- * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
- */
-VMMR3_INT_DECL(void) HMR3NotifyScheduled(PVMCPU pVCpu)
-{
-    pVCpu->hm.s.fCtxChanged |= HM_CHANGED_ALL_GUEST;
-}
-
-
-/**
- * Notification from EM about returning from instruction emulation (REM / EM).
- *
- * @param   pVCpu       The cross context virtual CPU structure.
- */
-VMMR3_INT_DECL(void) HMR3NotifyEmulated(PVMCPU pVCpu)
-{
-    pVCpu->hm.s.fCtxChanged |= HM_CHANGED_ALL_GUEST;
 }
 
 

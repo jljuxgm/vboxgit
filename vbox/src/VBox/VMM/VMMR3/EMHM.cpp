@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 72634 2018-06-20 16:08:42Z vboxsync $ */
+/* $Id: EMHM.cpp 72749 2018-06-29 07:57:05Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -50,14 +50,6 @@
 #include "VMMTracing.h"
 
 #include <iprt/asm.h>
-
-
-/*********************************************************************************************************************************
-*   Defined Constants And Macros                                                                                                 *
-*********************************************************************************************************************************/
-#if 0 /* Disabled till after 2.1.0 when we've time to test it. */
-#define EM_NOTIFY_HM
-#endif
 
 
 /*********************************************************************************************************************************
@@ -227,10 +219,6 @@ static int emR3HmExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcRC)
 #endif /* !VBOX_WITH_REM */
     }
 
-#ifdef EM_NOTIFY_HM
-    if (pVCpu->em.s.enmState == EMSTATE_DEBUG_GUEST_HM)
-        HMR3NotifyEmulated(pVCpu);
-#endif
     return VBOXSTRICTRC_TODO(rcStrict);
 }
 
@@ -406,10 +394,6 @@ int emR3HmExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
     *pfFFDone = false;
 
     STAM_COUNTER_INC(&pVCpu->em.s.StatHMExecuteCalled);
-
-#ifdef EM_NOTIFY_HM
-    HMR3NotifyScheduled(pVCpu);
-#endif
 
     /*
      * Spin till we get a forced action which returns anything but VINF_SUCCESS.
