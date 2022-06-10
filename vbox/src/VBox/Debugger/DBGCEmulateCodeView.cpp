@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 73460 2018-08-02 21:06:59Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 73484 2018-08-03 12:50:51Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -2922,6 +2922,18 @@ static DECLCALLBACK(int) dbgcCmdStack(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM 
 }
 
 
+/**
+ * Worker function that displays one descriptor entry (GDT, LDT, IDT).
+ *
+ * @returns pfnPrintf status code.
+ * @param   pCmdHlp     The DBGC command helpers.
+ * @param   pDesc       The descriptor to display.
+ * @param   iEntry      The descriptor entry number.
+ * @param   fHyper      Whether the selector belongs to the hypervisor or not.
+ * @param   hAs         Address space to use when resolving symbols.
+ * @param   pfDbgEntry  Where to indicate whether the entry is two entries wide.
+ *                      Optional.
+ */
 static int dbgcCmdDumpDTWorker64(PDBGCCMDHLP pCmdHlp, PCX86DESC64 pDesc, unsigned iEntry, bool fHyper, RTDBGAS hAs,
                                  bool *pfDblEntry)
 {
@@ -3074,6 +3086,7 @@ static int dbgcCmdDumpDTWorker64(PDBGCCMDHLP pCmdHlp, PCX86DESC64 pDesc, unsigne
  * @param   pDesc       The descriptor to display.
  * @param   iEntry      The descriptor entry number.
  * @param   fHyper      Whether the selector belongs to the hypervisor or not.
+ * @param   hAs         Address space to use when resolving symbols.
  */
 static int dbgcCmdDumpDTWorker32(PDBGCCMDHLP pCmdHlp, PCX86DESC pDesc, unsigned iEntry, bool fHyper, RTDBGAS hAs)
 {
