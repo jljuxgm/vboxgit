@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 76671 2019-01-07 12:15:00Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.h 76690 2019-01-07 19:58:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -49,11 +49,11 @@ class SHARED_LIBRARY_STUFF UICustomFileSystemItem
 public:
 
     /** @p strName contains file object name which is assumed to be unique among a parent object's children. */
-    explicit UICustomFileSystemItem(const QString &strName, UICustomFileSystemItem *parentItem, KFsObjType type);
-    ~UICustomFileSystemItem();
+    UICustomFileSystemItem(const QString &strName, UICustomFileSystemItem *parentItem, KFsObjType type);
+    virtual ~UICustomFileSystemItem();
 
     void reset();
-    UICustomFileSystemItem *child(int row) const;
+    virtual UICustomFileSystemItem *child(int row) const;
     /** Searches for the child by path and returns it if found. */
     UICustomFileSystemItem *child(const QString &path) const;
     int childCount() const;

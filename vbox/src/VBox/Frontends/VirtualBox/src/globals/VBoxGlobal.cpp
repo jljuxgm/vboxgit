@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 76671 2019-01-07 12:15:00Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 76690 2019-01-07 19:58:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2723,7 +2723,7 @@ QUuid VBoxGlobal::createVisoMediumWithVisoCreator(QWidget *pParent, const QStrin
 
     if (pVisoCreator->execute(true, false))
     {
-        QStringList files = pVisoCreator->pathList();
+        QStringList files = pVisoCreator->entryList();
         if (files.empty() || files[0].isEmpty())
             return QUuid();
 

@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 76671 2019-01-07 12:15:00Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 76690 2019-01-07 19:58:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -539,6 +539,8 @@ void UICustomFileSystemModel::signalUpdate()
 QModelIndex UICustomFileSystemModel::rootIndex() const
 {
     if (!rootItem())
+        return QModelIndex();
+    if (!rootItem()->child(0))
         return QModelIndex();
     return createIndex(rootItem()->child(0)->row(), 0,
                        rootItem()->child(0));

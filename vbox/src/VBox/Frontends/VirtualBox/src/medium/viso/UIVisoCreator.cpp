@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 76671 2019-01-07 12:15:00Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 76690 2019-01-07 19:58:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -51,11 +51,11 @@ UIVisoCreator::~UIVisoCreator()
 {
 }
 
-QStringList UIVisoCreator::pathList()
+QStringList UIVisoCreator::entryList()
 {
     if (!m_pVisoBrowser)
         return QStringList();
-    return m_pVisoBrowser->pathList();
+    return m_pVisoBrowser->entryList();
 }
 
 void UIVisoCreator::retranslateUi()
