@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 73176 2018-07-17 11:58:01Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 73189 2018-07-17 16:38:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -89,6 +89,8 @@ protected:
     void updateMACAddressPolicyComboToolTip();
     /** Updates provider combo tool-tips. */
     void updateProviderComboToolTip();
+    /** Updates profile property tool-tips. */
+    void updateProfilePropertyTableToolTips();
 
     /** Adjusts profile settings table. */
     void adjustProfileSettingsTable();
