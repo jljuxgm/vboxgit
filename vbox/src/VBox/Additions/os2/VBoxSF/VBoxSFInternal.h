@@ -1,4 +1,4 @@
-/** $Id: VBoxSFInternal.h 76716 2019-01-08 23:36:02Z vboxsync $ */
+/** $Id: VBoxSFInternal.h 77640 2019-03-10 21:13:03Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folder IFS, Internal Header.
  */
@@ -247,7 +247,9 @@ APIRET      vboxSfOs2SetInfoCommonWorker(PVBOXSFFOLDER pFolder, SHFLHANDLE hHost
 APIRET      vboxSfOs2MakeEmptyEaList(PEAOP pEaOp, ULONG uLevel);
 APIRET      vboxSfOs2MakeEmptyEaListEx(PEAOP pEaOp, ULONG uLevel, uint32_t *pcbWritten, ULONG *poffError);
 
-DECLASM(PVBOXSFVP) Fsh32GetVolParams(USHORT hVbp, PVPFSI *ppVpFsi /*optional*/);
+DECLASM(PVBOXSFVP)  Fsh32GetVolParams(USHORT hVbp, PVPFSI *ppVpFsi /*optional*/);
+DECLASM(APIRET)     SafeKernStrToUcs(PUconvObj, UniChar *, char *, LONG, LONG);
+DECLASM(APIRET)     SafeKernStrFromUcs(PUconvObj, char *, UniChar *, LONG, LONG);
 
 
 #endif /* !GA_INCLUDED_SRC_os2_VBoxSF_VBoxSFInternal_h */
