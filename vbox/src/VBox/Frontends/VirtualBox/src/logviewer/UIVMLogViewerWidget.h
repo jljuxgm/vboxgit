@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.h 72039 2018-04-26 13:18:21Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 72701 2018-06-27 14:03:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -74,8 +74,8 @@ public:
 
     /** Sets the machine whose logs to show. */
     void setMachine(const CMachine &machine);
-
     QFont currentFont() const;
+    void setBeingClosed(bool flag);
 
 protected:
 
@@ -228,7 +228,7 @@ private:
         bool  m_bWrapLines;
         QFont m_font;
     /** @} */
-
+    bool m_fBeingClosed;
     friend class UIVMLogViewerBookmarksPanel;
     friend class UIVMLogViewerFilterPanel;
     friend class UIVMLogViewerSearchPanel;

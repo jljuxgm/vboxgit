@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 71638 2018-04-04 05:11:10Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 72701 2018-06-27 14:03:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -57,7 +57,14 @@ void UIVMLogViewerDialogFactory::create(QIManagerDialog *&pDialog, QWidget *pCen
 UIVMLogViewerDialog::UIVMLogViewerDialog(QWidget *pCenterWidget, const CMachine &machine)
     : QIWithRetranslateUI<QIManagerDialog>(pCenterWidget)
     , m_comMachine(machine)
+    , pWidget(0)
 {
+}
+
+UIVMLogViewerDialog::~UIVMLogViewerDialog()
+{
+    if (pWidget)
+        pWidget->setBeingClosed(true);
 }
 
 void UIVMLogViewerDialog::retranslateUi()
@@ -73,7 +80,7 @@ void UIVMLogViewerDialog::retranslateUi()
 void UIVMLogViewerDialog::configureCentralWidget()
 {
     /* Create widget: */
-    UIVMLogViewerWidget *pWidget = new UIVMLogViewerWidget(EmbedTo_Dialog, this, m_comMachine);
+    pWidget = new UIVMLogViewerWidget(EmbedTo_Dialog, this, m_comMachine);
     if (pWidget)
     {
         /* Configure widget: */
