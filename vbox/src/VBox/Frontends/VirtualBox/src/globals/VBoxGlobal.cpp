@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 78154 2019-04-17 12:53:27Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 78159 2019-04-17 13:28:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2984,8 +2984,8 @@ void VBoxGlobal::prepareStorageMenu(QMenu &menu,
     pActionFileSelector->setData(QVariant::fromValue(UIMediumTarget(strControllerName, comCurrentAttachment.GetPort(),
                                                                     comCurrentAttachment.GetDevice(), enmMediumType,
                                                                     UIMediumTarget::UIMediumTargetType_WithFileDialog)));
-    pActionFileSelector->setText(QApplication::translate("UIMachineSettingsStorage", "Choose a medium file...",
-                                                         "This is used for selecting an existing medium file"));
+    pActionFileSelector->setText(QApplication::translate("UIMachineSettingsStorage", "Choose a disk file...",
+                                                         "This is used for selecting an existing disk file"));
 
 
     /* Insert separator: */
