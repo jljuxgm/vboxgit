@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 74528 2018-09-28 15:12:46Z vboxsync $ */
+/* $Id: VBoxTray.cpp 75407 2018-11-12 20:06:57Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -30,7 +30,9 @@
 #include "VBoxDisplay.h"
 #include "VBoxVRDP.h"
 #include "VBoxHostVersion.h"
-#include "VBoxSharedFolders.h"
+#ifdef VBOX_WITH_SHARED_FOLDERS
+# include "VBoxSharedFolders.h"
+#endif
 #ifdef VBOX_WITH_DRAG_AND_DROP
 # include "VBoxDnD.h"
 #endif
@@ -824,8 +826,10 @@ static int vboxTrayServiceMain(void)
 
             if (RT_SUCCESS(rc))
             {
+#ifdef VBOX_WITH_SHARED_FOLDERS
                 /* Do the Shared Folders auto-mounting stuff. */
                 rc = VBoxSharedFoldersAutoMount();
+#endif
                 if (RT_SUCCESS(rc))
                 {
                     /* Report the host that we're up and running! */

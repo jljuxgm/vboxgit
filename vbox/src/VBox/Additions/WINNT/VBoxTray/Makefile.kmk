@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70378 2017-12-28 20:48:34Z vboxsync $
+# $Id: Makefile.kmk 75407 2018-11-12 20:06:57Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -64,13 +64,14 @@ ifdef VBOX_WITH_GUEST_PROPS
 	VBoxHostVersion.cpp \
 	VBoxLA.cpp
 endif
-ifdef VBOX_WITH_SHARED_FOLDERS
- VBoxTray_DEFS     += VBOX_WITH_SHARED_FOLDERS
- VBoxTray_SOURCES  += \
-	VBoxSharedFolders.cpp
- VBoxTray_LIBS.win += \
-	mpr.lib
-endif
+## Now handled by VBoxService.
+#ifdef VBOX_WITH_SHARED_FOLDERS
+# VBoxTray_DEFS     += VBOX_WITH_SHARED_FOLDERS
+# VBoxTray_SOURCES  += \
+#	VBoxSharedFolders.cpp
+# VBoxTray_LIBS.win += \
+#	mpr.lib
+#endif
 ifdef VBOX_WITH_WDDM
  VBoxTray_DEFS   += VBOX_WITH_WDDM
  # VBoxTray_DEFS   += LOG_ENABLED
