@@ -1,4 +1,4 @@
-/* $Id: json.cpp 74027 2018-09-02 14:49:45Z vboxsync $ */
+/* $Id: json.cpp 74170 2018-09-10 07:26:17Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -557,6 +557,7 @@ static int rtJsonTokenizerGetNumber(PRTJSONTOKENIZER pTokenizer, PRTJSONTOKEN pT
             && cchNum < sizeof(szTmp) - 2)
         {
             szTmp[cchNum++] = 'e';
+            rtJsonTokenizerSkipCh(pTokenizer);
             ch = rtJsonTokenizerGetCh(pTokenizer);
             if (ch == '+' || ch == '-')
             {
