@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 74615 2018-10-04 15:44:01Z vboxsync $ */
+/* $Id: vbox_main.c 74738 2018-10-10 12:40:12Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -271,6 +271,8 @@ static int vbox_accel_init(struct vbox_private *vbox)
 					   vbox->available_vram_size +
 					   i * VBVA_MIN_BUFFER_SIZE,
 					   VBVA_MIN_BUFFER_SIZE);
+
+	vbox_enable_accel(vbox);
 
 	return 0;
 }
