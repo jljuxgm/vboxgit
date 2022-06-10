@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73046 2018-07-11 02:41:48Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73047 2018-07-11 02:42:55Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6280,17 +6280,21 @@ HMSVM_EXIT_DECL hmR0SvmExitRdtsc(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
 HMSVM_EXIT_DECL hmR0SvmExitRdtscp(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
 {
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS(pVCpu, pSvmTransient);
-    HMSVM_CPUMCTX_IMPORT_STATE(pVCpu, IEM_CPUMCTX_EXTRN_MUST_MASK);
 
     VBOXSTRICTRC rcStrict;
     bool const fSupportsNextRipSave = hmR0SvmSupportsNextRipSave(pVCpu);
     if (fSupportsNextRipSave)
     {
+        HMSVM_CPUMCTX_IMPORT_STATE(pVCpu, IEM_CPUMCTX_EXTRN_EXEC_DECODED_NO_MEM_MASK | CPUMCTX_EXTRN_CR4
+                                        | CPUMCTX_EXTRN_TSC_AUX);
         uint8_t const cbInstr = hmR0SvmGetInstrLength(pVCpu);
         rcStrict = IEMExecDecodedRdtscp(pVCpu, cbInstr);
     }
     else
+    {
+        HMSVM_CPUMCTX_IMPORT_STATE(pVCpu, IEM_CPUMCTX_EXTRN_MUST_MASK);
         rcStrict = IEMExecOne(pVCpu);
+    }
 
     if (rcStrict == VINF_SUCCESS)
         pSvmTransient->fUpdateTscOffsetting = true;
