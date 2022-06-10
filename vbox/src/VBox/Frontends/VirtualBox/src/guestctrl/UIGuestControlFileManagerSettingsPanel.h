@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerSettingsPanel.h 75643 2018-11-21 14:27:42Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerSettingsPanel.h 75644 2018-11-21 14:31:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -38,8 +38,8 @@ public:
     UIGuestControlFileManagerSettingsPanel(UIGuestControlFileManager *pManagerWidget,
                                            QWidget *pParent, UIGuestControlFileManagerSettings *pFileManagerSettings);
     virtual QString panelName() const /* override */;
-    /** Reads the file manager options and updates te widget accordingly. This functions is typically called
-     *  when file manager options have been change by other means and this panel needs to adapt. */
+    /** Reads the file manager options and updates the widget accordingly. This functions is typically called
+     *  when file manager options have been changed by other means and this panel needs to adapt. */
     void update();
 
 signals:
