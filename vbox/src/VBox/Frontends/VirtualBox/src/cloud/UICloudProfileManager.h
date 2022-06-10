@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 74958 2018-10-21 12:26:57Z vboxsync $ */
+/* $Id: UICloudProfileManager.h 75054 2018-10-25 07:22:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -43,6 +43,9 @@ class UICloudProfileManagerWidget : public QIWithRetranslateUI<QWidget>
     Q_OBJECT;
 
 signals:
+
+    /** Notifies listeners about dialog change. */
+    void sigChange();
 
     /** Notifies listeners about cloud profile details-widget @a fVisible. */
     void sigCloudProfileDetailsVisibilityChanged(bool fVisible);

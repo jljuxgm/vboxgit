@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 75016 2018-10-23 19:42:38Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 75054 2018-10-25 07:22:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -473,6 +473,8 @@ void UIVirtualBoxManager::sltOpenCloudProfileManagerWindow()
         UICloudProfileManagerFactory(m_pActionPool).prepare(m_pManagerCloudProfile, this);
         connect(m_pManagerCloudProfile, &QIManagerDialog::sigClose,
                 this, &UIVirtualBoxManager::sltCloseCloudProfileManagerWindow);
+        connect(m_pManagerCloudProfile, &QIManagerDialog::sigChange,
+                this, &UIVirtualBoxManager::sigCloudProfileManagerChange);
     }
 
     /* Show instance: */
@@ -1840,6 +1842,8 @@ void UIVirtualBoxManager::prepareWidgets()
     if (m_pWidget)
     {
         /* Configure central-widget: */
+        connect(m_pWidget, &UIVirtualBoxManagerWidget::sigCloudProfileManagerChange,
+                this, &UIVirtualBoxManager::sigCloudProfileManagerChange);
         setCentralWidget(m_pWidget);
     }
 }

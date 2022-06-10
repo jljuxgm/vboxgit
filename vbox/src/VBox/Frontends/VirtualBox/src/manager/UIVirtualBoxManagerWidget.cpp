@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 75029 2018-10-24 11:41:40Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 75054 2018-10-25 07:22:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -455,6 +455,9 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                         m_pPaneToolsGlobal = new UIToolPaneGlobal(actionPool());
                         if (m_pPaneToolsGlobal)
                         {
+                            connect(m_pPaneToolsGlobal, &UIToolPaneGlobal::sigCloudProfileManagerChange,
+                                    this, &UIVirtualBoxManagerWidget::sigCloudProfileManagerChange);
+
                             /* Add into stack: */
                             m_pStackedWidget->addWidget(m_pPaneToolsGlobal);
                         }

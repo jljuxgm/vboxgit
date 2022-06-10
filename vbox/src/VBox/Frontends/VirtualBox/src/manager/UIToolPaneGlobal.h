@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 75016 2018-10-23 19:42:38Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.h 75054 2018-10-25 07:22:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -41,6 +41,11 @@ class CMachine;
 class UIToolPaneGlobal : public QWidget
 {
     Q_OBJECT;
+
+signals:
+
+    /** Notifies listeners about Cloud Profile Manager change. */
+    void sigCloudProfileManagerChange();
 
 public:
 

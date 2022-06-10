@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 72357 2018-05-28 14:37:10Z vboxsync $ */
+/* $Id: QIManagerDialog.h 75054 2018-10-25 07:22:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -87,7 +87,10 @@ class SHARED_LIBRARY_STUFF QIManagerDialog : public QMainWindow
 
 signals:
 
-    /** Notifies listener about dialog should be closed. */
+    /** Notifies listeners about dialog change. */
+    void sigChange();
+
+    /** Notifies listeners about dialog should be closed. */
     void sigClose();
 
 protected:

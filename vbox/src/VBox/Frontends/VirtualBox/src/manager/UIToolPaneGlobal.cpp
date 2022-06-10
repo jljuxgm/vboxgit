@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 75016 2018-10-23 19:42:38Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 75054 2018-10-25 07:22:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -161,6 +161,8 @@ void UIToolPaneGlobal::openTool(UIToolType enmType)
 
                     /* Configure pane: */
                     m_pPaneCloud->setProperty("ToolType", QVariant::fromValue(UIToolType_Cloud));
+                    connect(m_pPaneCloud, &UICloudProfileManagerWidget::sigChange,
+                            this, &UIToolPaneGlobal::sigCloudProfileManagerChange);
 
                     /* Add into layout: */
                     m_pLayout->addWidget(m_pPaneCloud);
