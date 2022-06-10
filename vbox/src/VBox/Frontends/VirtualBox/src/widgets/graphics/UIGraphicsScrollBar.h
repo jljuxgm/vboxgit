@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.h 77205 2019-02-07 19:04:50Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.h 77214 2019-02-08 10:42:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class declaration.
  */
@@ -165,6 +165,8 @@ private:
 
     /** Holds whether item is hovered. */
     bool  m_fHovered;
+    /** Holds the hover-on timer id. */
+    int   m_iHoverOnTimerId;
     /** Holds the hover-off timer id. */
     int   m_iHoverOffTimerId;
     /** Holds the animated value. */
