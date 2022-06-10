@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 73638 2018-08-13 14:25:23Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 73685 2018-08-15 09:14:08Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -137,9 +137,9 @@ static int vrdeCreateStreamOut(PVRDESTREAM pStreamVRDE, PPDMAUDIOSTREAMCFG pCfgR
         pCfgAcq->Props.cShift    = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(pCfgAcq->Props.cBytes, pCfgAcq->Props.cChannels);
 
         /* According to the VRDP docs, the VRDP server stores audio in 200ms chunks. */
-        pCfgAcq->Backend.cfPeriod     = DrvAudioHlpMilliToFrames(10  /* ms */, &pCfgAcq->Props);
-        pCfgAcq->Backend.cfBufferSize = DrvAudioHlpMilliToFrames(200  /* ms */, &pCfgAcq->Props);
-        pCfgAcq->Backend.cfPreBuf     = pCfgAcq->Backend.cfBufferSize;
+        pCfgAcq->Backend.cfPeriod     = DrvAudioHlpMilliToFrames(20  /* ms */, &pCfgAcq->Props);
+        pCfgAcq->Backend.cfBufferSize = DrvAudioHlpMilliToFrames(100 /* ms */, &pCfgAcq->Props);
+        pCfgAcq->Backend.cfPreBuf     = pCfgAcq->Backend.cfPeriod * 2;
     }
 
     return VINF_SUCCESS;
