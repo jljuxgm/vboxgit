@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 77989 2019-04-03 12:01:02Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 78324 2019-04-26 13:20:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -306,7 +306,8 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T, IEvent *pEvent)
         case KVBoxEventType_OnStorageControllerChanged:
         {
             CStorageControllerChangedEvent comEventSpecific(pEvent);
-            emit sigStorageControllerChange();
+            emit sigStorageControllerChange(comEventSpecific.GetMachinId(),
+                                            comEventSpecific.GetControllerName());
             break;
         }
         case KVBoxEventType_OnStorageDeviceChanged:

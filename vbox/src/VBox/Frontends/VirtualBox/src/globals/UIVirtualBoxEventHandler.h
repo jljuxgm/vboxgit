@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.h 77990 2019-04-03 12:01:58Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.h 78324 2019-04-26 13:20:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
@@ -63,8 +63,10 @@ signals:
     /** Notifies about snapshot with @a uSnapshotId was restored for the machine with @a uId. */
     void sigSnapshotRestore(const QUuid &uId, const QUuid &uSnapshotId);
 
-    /** Notifies about storage controller change. */
-    void sigStorageControllerChange();
+    /** Notifies about storage controller change.
+      * @param  uMachineId         Brings the ID of machine corresponding controller belongs to.
+      * @param  strControllerName  Brings the name of controller this event is related to. */
+    void sigStorageControllerChange(const QUuid &uMachineId, const QString &strControllerName);
     /** Notifies about storage device change.
       * @param  comAttachment  Brings corresponding attachment.
       * @param  fRemoved       Brings whether medium is removed or added.
