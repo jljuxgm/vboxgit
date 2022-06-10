@@ -1,4 +1,4 @@
-# $Id: .scm-settings 74638 2018-10-06 18:31:59Z vboxsync $
+# $Id: .scm-settings 74720 2018-10-09 14:09:40Z vboxsync $
 ## @file
 # Source code massager settings for Runtime.
 #
@@ -97,7 +97,6 @@
 /r3/win/VBoxRT-msvcr100-win32.def              : --external-copyright
 
 /common/ldr/ldrLX.cpp                          : --external-copyright
-/common/ldr/ldrMachO.cpp                       : --external-copyright
 
 /common/math/x86/fenv-x86.c                    : --external-copyright --no-convert-tabs
 
