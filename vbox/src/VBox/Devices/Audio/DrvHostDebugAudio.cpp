@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 73344 2018-07-25 08:12:10Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 73350 2018-07-25 11:50:50Z vboxsync $ */
 /** @file
  * Debug audio driver.
  *
@@ -158,7 +158,7 @@ static int debugCreateStreamOut(PDRVHOSTDEBUGAUDIO pDrv, PDEBUGAUDIOSTREAM pStre
     if (RT_SUCCESS(rc))
     {
         if (pCfgAcq)
-            pCfgAcq->cFrameBufferHint = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamDbg->Out.cbPlayBuffer);
+            pCfgAcq->cFrameBufferHint = _1K;
     }
 
     return rc;
