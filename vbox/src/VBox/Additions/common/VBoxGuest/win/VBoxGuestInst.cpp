@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInst.cpp 70367 2017-12-27 17:53:36Z vboxsync $ */
+/* $Id: VBoxGuestInst.cpp 72829 2018-07-03 16:10:21Z vboxsync $ */
 /** @file
  * Small tool to (un)install the VBoxGuest device driver.
  */
@@ -95,7 +95,7 @@ static int installDriver(bool fStartIt)
             if (StartService(hService, 0, NULL))
                 printf("successfully started driver '%s'\n", szDriver);
             else
-                printf("StartService failed: %d\n", GetLastError(), szDriver);
+                printf("StartService failed: %d\n", GetLastError());
         }
         CloseServiceHandle(hService);
     }
