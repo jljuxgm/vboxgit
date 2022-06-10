@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 77549 2019-03-04 10:00:34Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 77727 2019-03-15 14:14:18Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -139,7 +139,7 @@ static pgprot_t rtR0MemObjLinuxConvertProt(unsigned fProt, bool fKernel)
     switch (fProt)
     {
         default:
-            AssertMsgFailed(("%#x %d\n", fProt, fKernel));
+            AssertMsgFailed(("%#x %d\n", fProt, fKernel)); RT_FALL_THRU();
         case RTMEM_PROT_NONE:
             return PAGE_NONE;
 

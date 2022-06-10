@@ -1,4 +1,4 @@
-/* $Id: VBoxPci.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxPci.c 77727 2019-03-15 14:14:18Z vboxsync $ */
 /** @file
  * VBoxPci - PCI card passthrough support (Host), Common Code.
  */
@@ -159,6 +159,7 @@ static void vboxPciUnlinkInstanceLocked(PVBOXRAWPCIGLOBALS pGlobals, PVBOXRAWPCI
 }
 
 
+#if 0 /** @todo r=bird: Who the heck is supposed to call this?!?   */
 DECLHIDDEN(void) vboxPciDevCleanup(PVBOXRAWPCIINS pThis)
 {
     pThis->DevPort.pfnDeinit(&pThis->DevPort, 0);
@@ -179,6 +180,7 @@ DECLHIDDEN(void) vboxPciDevCleanup(PVBOXRAWPCIINS pThis)
     vboxPciUnlinkInstanceLocked(pThis->pGlobals, pThis);
     vboxPciGlobalsUnlock(pThis->pGlobals);
 }
+#endif
 
 
 /**
@@ -673,6 +675,7 @@ static int vboxPciInitIdc(PVBOXRAWPCIGLOBALS pGlobals)
     return rc;
 }
 
+
 /**
  * Try to close the IDC connection to SUPDRV if established.
  *
@@ -682,7 +685,7 @@ static int vboxPciInitIdc(PVBOXRAWPCIGLOBALS pGlobals)
  *
  * @param   pGlobals        Pointer to the globals.
  */
-DECLHIDDEN(int) vboxPciDeleteIdc(PVBOXRAWPCIGLOBALS pGlobals)
+static int vboxPciDeleteIdc(PVBOXRAWPCIGLOBALS pGlobals)
 {
     int rc;
 
@@ -717,7 +720,7 @@ DECLHIDDEN(int) vboxPciDeleteIdc(PVBOXRAWPCIGLOBALS pGlobals)
  * @returns VBox status code.
  * @param   pGlobals        Pointer to the globals.
  */
-DECLHIDDEN(int) vboxPciInitGlobals(PVBOXRAWPCIGLOBALS pGlobals)
+static int vboxPciInitGlobals(PVBOXRAWPCIGLOBALS pGlobals)
 {
     /*
      * Initialize the common portions of the structure.
@@ -741,10 +744,9 @@ DECLHIDDEN(int) vboxPciInitGlobals(PVBOXRAWPCIGLOBALS pGlobals)
 /**
  * Deletes the globals.
  *
- *
  * @param   pGlobals        Pointer to the globals.
  */
-DECLHIDDEN(void) vboxPciDeleteGlobals(PVBOXRAWPCIGLOBALS pGlobals)
+static void vboxPciDeleteGlobals(PVBOXRAWPCIGLOBALS pGlobals)
 {
     Assert(!pGlobals->fIDCOpen);
 
@@ -782,7 +784,6 @@ int  vboxPciInit(PVBOXRAWPCIGLOBALS pGlobals)
 void vboxPciShutdown(PVBOXRAWPCIGLOBALS pGlobals)
 {
     int rc = vboxPciDeleteIdc(pGlobals);
-
     if (RT_SUCCESS(rc))
         vboxPciDeleteGlobals(pGlobals);
 }

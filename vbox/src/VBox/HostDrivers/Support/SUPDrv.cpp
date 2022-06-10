@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 77423 2019-02-22 04:38:58Z vboxsync $ */
+/* $Id: SUPDrv.cpp 77727 2019-03-15 14:14:18Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4486,7 +4486,7 @@ SUPR0DECL(int) SUPR0QueryVTCaps(PSUPDRVSESSION pSession, uint32_t *pfCaps)
  *
  * @param   puRevision      Where to store the microcode revision.
  */
-int VBOXCALL supdrvQueryUcodeRev(uint32_t *puRevision)
+static int VBOXCALL supdrvQueryUcodeRev(uint32_t *puRevision)
 {
     int  rc = VERR_UNSUPPORTED_CPU;
     RTTHREADPREEMPTSTATE PreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;

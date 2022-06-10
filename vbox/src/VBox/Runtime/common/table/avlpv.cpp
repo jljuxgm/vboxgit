@@ -1,4 +1,4 @@
-/* $Id: avlpv.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: avlpv.cpp 77727 2019-03-15 14:14:18Z vboxsync $ */
 /** @file
  * IPRT - AVL tree, void *, unique keys.
  */
@@ -25,7 +25,7 @@
  */
 
 #ifndef NOFILEID
-static const char szFileId[] = "Id: kAVLPVInt.c,v 1.5 2003/02/13 02:02:35 bird Exp $";
+/*static const char szFileId[] = "Id: kAVLPVInt.c,v 1.5 2003/02/13 02:02:35 bird Exp $";*/
 #endif
 
 

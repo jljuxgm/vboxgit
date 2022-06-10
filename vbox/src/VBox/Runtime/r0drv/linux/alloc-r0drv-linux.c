@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 77727 2019-03-15 14:14:18Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -61,6 +61,8 @@
 # include <iprt/spinlock.h>
 # include <iprt/errcore.h>
 #endif
+
+#include "internal/initterm.h"
 
 
 /*********************************************************************************************************************************

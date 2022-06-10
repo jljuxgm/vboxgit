@@ -1,4 +1,4 @@
-/* $Id: initterm.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: initterm.h 77727 2019-03-15 14:14:18Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination.
  */
@@ -47,6 +47,11 @@ DECLHIDDEN(int)  rtR0InitNative(void);
  * Platform specific termination.
  */
 DECLHIDDEN(void) rtR0TermNative(void);
+
+# ifdef RT_OS_LINUX
+/* in alloc-r0drv0-linux.c */
+DECLHIDDEN(void) rtR0MemExecCleanup(void);
+# endif
 
 #endif /* IN_RING0 */
 

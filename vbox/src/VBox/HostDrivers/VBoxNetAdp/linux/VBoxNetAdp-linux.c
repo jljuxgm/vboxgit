@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 77722 2019-03-15 11:37:18Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 77727 2019-03-15 14:14:18Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -182,7 +182,7 @@ static int vboxNetAdpLinuxXmit(struct sk_buff *pSkb, struct net_device *pNetDev)
     return 0;
 }
 
-struct net_device_stats *vboxNetAdpLinuxGetStats(struct net_device *pNetDev)
+static struct net_device_stats *vboxNetAdpLinuxGetStats(struct net_device *pNetDev)
 {
     PVBOXNETADPPRIV pPriv = netdev_priv(pNetDev);
     return &pPriv->Stats;

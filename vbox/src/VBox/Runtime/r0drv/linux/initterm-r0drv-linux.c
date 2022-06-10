@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-linux.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: initterm-r0drv-linux.c 77727 2019-03-15 14:14:18Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Linux.
  */
@@ -44,13 +44,6 @@ static struct workqueue_struct *g_prtR0LnxWorkQueue;
 #else
 static DECLARE_TASK_QUEUE(g_rtR0LnxWorkQueue);
 #endif
-
-
-/*********************************************************************************************************************************
-*   Internal Functions                                                                                                           *
-*********************************************************************************************************************************/
-/* in alloc-r0drv0-linux.c */
-DECLHIDDEN(void) rtR0MemExecCleanup(void);
 
 
 /**
