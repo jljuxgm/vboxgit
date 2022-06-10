@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 71061 2018-02-19 17:03:41Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 73142 2018-07-16 09:09:38Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -1168,16 +1168,17 @@ void FwCommonPlantMpsTable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, 
  *
  * Only applicable if IOAPIC is active!
  *
- * @param   pDevIns    The device instance data.
+ * @param   pDevIns         The device instance data.
+ * @param   u32MpTableAddr  The MP table physical address.
  */
-void FwCommonPlantMpsFloatPtr(PPDMDEVINS pDevIns)
+void FwCommonPlantMpsFloatPtr(PPDMDEVINS pDevIns, uint32_t u32MpTableAddr)
 {
     MPSFLOATPTR floatPtr;
     floatPtr.au8Signature[0]       = '_';
     floatPtr.au8Signature[1]       = 'M';
     floatPtr.au8Signature[2]       = 'P';
     floatPtr.au8Signature[3]       = '_';
-    floatPtr.u32MPSAddr            = VBOX_MPS_TABLE_BASE;
+    floatPtr.u32MPSAddr            = u32MpTableAddr;
     floatPtr.u8Length              = 1; /* structure size in paragraphs */
     floatPtr.u8SpecRev             = 4; /* MPS revision 1.4 */
     floatPtr.u8Checksum            = 0;

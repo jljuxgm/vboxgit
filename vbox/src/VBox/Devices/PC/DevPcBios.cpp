@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 71820 2018-04-11 11:59:14Z vboxsync $ */
+/* $Id: DevPcBios.cpp 73142 2018-07-16 09:09:38Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -1037,9 +1037,6 @@ static DECLCALLBACK(void) pcbiosMemSetup(PPDMDEVINS pDevIns, PDMDEVMEMSETUPCTX e
     PDEVPCBIOS pThis = PDMINS_2_DATA(pDevIns, PDEVPCBIOS);
     LogFlow(("pcbiosMemSetup:\n"));
 
-    if (pThis->u8IOAPIC)
-        FwCommonPlantMpsFloatPtr(pDevIns);
-
     /*
      * Re-shadow the LAN ROM image and make it RAM/RAM.
      *
@@ -1607,8 +1604,9 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
 
     if (pThis->u8IOAPIC)
     {
-        FwCommonPlantMpsTable(pDevIns, pThis->au8DMIPage + VBOX_DMI_TABLE_SIZE,
+        FwCommonPlantMpsTable(pDevIns, pThis->au8DMIPage /* aka VBOX_DMI_TABLE_BASE */ + VBOX_DMI_TABLE_SIZE,
                               _4K - VBOX_DMI_TABLE_SIZE, pThis->cCpus);
+        FwCommonPlantMpsFloatPtr(pDevIns, VBOX_DMI_TABLE_BASE + VBOX_DMI_TABLE_SIZE);
         LogRel(("PcBios: MPS table at %08x\n", VBOX_DMI_TABLE_BASE + VBOX_DMI_TABLE_SIZE));
     }
 

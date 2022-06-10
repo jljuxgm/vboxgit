@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.h 71061 2018-02-19 17:03:41Z vboxsync $ */
+/* $Id: DevFwCommon.h 73142 2018-07-16 09:09:38Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code, header.
  */
@@ -20,18 +20,12 @@
 
 #include "DevPcBios.h"
 
-/** @def VBOX_MPS_TABLE_BASE
- *
- * Must be located in the same page as the DMI table.
- */
-#define VBOX_MPS_TABLE_BASE          (VBOX_DMI_TABLE_BASE+VBOX_DMI_TABLE_SIZE)
-
 /* Plant DMI table */
 int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, PCRTUUID pUuid, PCFGMNODE pCfg, uint16_t cCpus, uint16_t *pcbDmiTables, uint16_t *pcNumDmiTables);
 void FwCommonPlantSmbiosAndDmiHdrs(PPDMDEVINS pDevIns, uint8_t *pHdr, uint16_t cbDmiTables, uint16_t cNumDmiTables);
 
 /* Plant MPS table */
 void FwCommonPlantMpsTable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, uint16_t cCpus);
-void FwCommonPlantMpsFloatPtr(PPDMDEVINS pDevIns);
+void FwCommonPlantMpsFloatPtr(PPDMDEVINS pDevIns, uint32_t u32MpTableAddr);
 
 #endif
