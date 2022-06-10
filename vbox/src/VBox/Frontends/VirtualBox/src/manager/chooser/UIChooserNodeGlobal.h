@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGlobal.h 77683 2019-03-13 16:22:23Z vboxsync $ */
+/* $Id: UIChooserNodeGlobal.h 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGlobal class declaration.
  */
@@ -81,6 +81,9 @@ public:
 
     /** Updates the @a matchedItems wrt. @strSearchTerm and @a iItemSearchFlags. */
     virtual void searchForNodes(const QString &strSearchTerm, int iItemSearchFlags, QList<UIChooserNode*> &matchedItems) /* override */;
+
+    /** Performs sorting of children nodes. */
+    virtual void sortNodes() /* override */;
 
 protected:
 

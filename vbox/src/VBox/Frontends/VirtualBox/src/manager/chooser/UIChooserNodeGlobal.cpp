@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGlobal.cpp 77701 2019-03-14 11:57:06Z vboxsync $ */
+/* $Id: UIChooserNodeGlobal.cpp 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGlobal class implementation.
  */
@@ -135,6 +135,11 @@ void UIChooserNodeGlobal::searchForNodes(const QString &strSearchTerm, int iItem
         if (name().contains(strSearchTerm, Qt::CaseInsensitive))
             matchedItems << this;
     }
+}
+
+void UIChooserNodeGlobal::sortNodes()
+{
+    AssertFailedReturnVoid();
 }
 
 void UIChooserNodeGlobal::retranslateUi()

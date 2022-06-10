@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77845 2019-03-22 12:35:31Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -821,8 +821,8 @@ void UIChooserModel::sltSortGroup()
     if (!isSingleGroupSelected())
         return;
 
-    /* Sorting group: */
-    currentItem()->sortItems();
+    /* Sort group-node: */
+    sortNodes(currentItem()->node());
 }
 
 void UIChooserModel::sltShowHideSearchWidget()
@@ -1076,8 +1076,8 @@ void UIChooserModel::sltSortParentGroup()
     if (!currentItem())
         return;
 
-    /* Sorting parent group: */
-    currentItem()->parentItem()->sortItems();
+    /* Sort parent group-node: */
+    sortNodes(currentItem()->parentItem()->node());
 }
 
 void UIChooserModel::sltPerformRefreshAction()
@@ -2087,6 +2087,17 @@ bool UIChooserModel::processDragLeaveEvent(QGraphicsSceneDragDropEvent *pEvent)
 
     /* Pass event: */
     return false;
+}
+
+void UIChooserModel::sortNodes(UIChooserNode *pNode)
+{
+    /* Sort nodes: */
+    pNode->sortNodes();
+
+    /* Rebuild tree for main root: */
+    buildTreeForMainRoot();
+    updateNavigation();
+    updateLayout();
 }
 
 void UIChooserModel::saveGroupDefinitions()

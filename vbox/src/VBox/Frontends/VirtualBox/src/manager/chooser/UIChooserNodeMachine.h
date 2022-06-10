@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.h 77686 2019-03-13 18:00:56Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.h 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class declaration.
  */
@@ -82,6 +82,9 @@ public:
 
     /** Checks if this instance matches to search  wrt. @a strSearchTerm and @a iItemSearchFlags and updates @a matchedItems. */
     virtual void searchForNodes(const QString &strSearchTerm, int iItemSearchFlags, QList<UIChooserNode*> &matchedItems) /* override */;
+
+    /** Performs sorting of children nodes. */
+    virtual void sortNodes() /* override */;
 
 protected:
 

@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.cpp 77846 2019-03-22 13:17:28Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.cpp 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class implementation.
  */
@@ -217,6 +217,24 @@ void UIChooserNodeGroup::searchForNodes(const QString &strSearchTerm, int iItemS
 
     foreach (UIChooserNode *pNode, m_nodesMachine)
         pNode->searchForNodes(strSearchTerm, iItemSearchFlags, matchedItems);
+}
+
+void UIChooserNodeGroup::sortNodes()
+{
+    QMap<QString, UIChooserNode*> mapGroup;
+    foreach (UIChooserNode *pNode, m_nodesGroup)
+        mapGroup[pNode->name()] = pNode;
+    m_nodesGroup = mapGroup.values();
+
+    QMap<QString, UIChooserNode*> mapGlobal;
+    foreach (UIChooserNode *pNode, m_nodesGlobal)
+        mapGlobal[pNode->name()] = pNode;
+    m_nodesGlobal = mapGlobal.values();
+
+    QMap<QString, UIChooserNode*> mapMachine;
+    foreach (UIChooserNode *pNode, m_nodesMachine)
+        mapMachine[pNode->name()] = pNode;
+    m_nodesMachine = mapMachine.values();
 }
 
 void UIChooserNodeGroup::retranslateUi()

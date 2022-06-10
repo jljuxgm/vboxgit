@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 77805 2019-03-20 11:09:52Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -217,11 +217,6 @@ UIChooserItem *UIChooserItemGlobal::searchForItem(const QString &, int iItemSear
 UIChooserItem *UIChooserItemGlobal::firstMachineItem()
 {
     return 0;
-}
-
-void UIChooserItemGlobal::sortItems()
-{
-    AssertMsgFailed(("Global graphics item do NOT support children!"));
 }
 
 void UIChooserItemGlobal::updateLayout()

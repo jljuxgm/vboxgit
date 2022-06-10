@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 77829 2019-03-21 15:55:55Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -536,29 +536,6 @@ UIChooserItem *UIChooserItemGroup::firstMachineItem()
         return items(UIChooserItemType_Group).first()->firstMachineItem();
     /* Found nothing? */
     return 0;
-}
-
-void UIChooserItemGroup::sortItems()
-{
-    /// @todo implement manual sorting
-
-#if 0
-    /* Sort group-items: */
-    QMap<QString, UIChooserItem*> sorter;
-    foreach (UIChooserItem *pItem, items(UIChooserItemType_Group))
-        sorter.insert(pItem->name().toLower(), pItem);
-    setItems(sorter.values(), UIChooserItemType_Group);
-
-    /* Sort machine-items: */
-    sorter.clear();
-    foreach (UIChooserItem *pItem, items(UIChooserItemType_Machine))
-        sorter.insert(pItem->name().toLower(), pItem);
-    setItems(sorter.values(), UIChooserItemType_Machine);
-#endif
-
-    /* Update model: */
-    model()->updateNavigation();
-    model()->updateLayout();
 }
 
 void UIChooserItemGroup::updateGeometry()

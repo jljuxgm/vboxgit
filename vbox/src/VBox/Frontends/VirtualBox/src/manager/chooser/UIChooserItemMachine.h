@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 77827 2019-03-21 14:37:07Z vboxsync $ */
+/* $Id: UIChooserItemMachine.h 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -119,9 +119,6 @@ protected:
 
         /** Searches for a first machine child item. */
         virtual UIChooserItem *firstMachineItem() /* override */;
-
-        /** Sorts children items. */
-        virtual void sortItems() /* override */;
     /** @} */
 
     /** @name Layout stuff.

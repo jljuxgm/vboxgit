@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 77846 2019-03-22 13:17:28Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -150,6 +150,11 @@ void UIChooserNodeMachine::searchForNodes(const QString &strSearchTerm, int iIte
     QRegExp searchRegEx(strSearchTerm, Qt::CaseInsensitive, QRegExp::WildcardUnix);
     if (name().contains(searchRegEx))
         matchedItems << this;
+}
+
+void UIChooserNodeMachine::sortNodes()
+{
+    AssertFailedReturnVoid();
 }
 
 void UIChooserNodeMachine::retranslateUi()

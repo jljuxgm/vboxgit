@@ -1,4 +1,4 @@
-/* $Id: UIChooserNode.h 77701 2019-03-14 11:57:06Z vboxsync $ */
+/* $Id: UIChooserNode.h 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNode class declaration.
  */
@@ -109,6 +109,9 @@ public:
     /** Performs search wrt. @a strSearchTerm and @a iItemSearchFlags and updates @a matchedItems. For an empty
       * @a strSearchTerm all items are added wrt. node type from @a iItemSearchFlags. */
     virtual void searchForNodes(const QString &strSearchTerm, int iItemSearchFlags, QList<UIChooserNode*> &matchedItems) = 0;
+
+    /** Performs sorting of children nodes. */
+    virtual void sortNodes() = 0;
 
     /** Returns if node is disabled. */
     bool isDisabled() const;

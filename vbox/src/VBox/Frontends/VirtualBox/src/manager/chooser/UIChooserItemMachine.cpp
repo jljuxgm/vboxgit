@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 77827 2019-03-21 14:37:07Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -265,11 +265,6 @@ UIChooserItem* UIChooserItemMachine::searchForItem(const QString &strSearchTag, 
 UIChooserItem *UIChooserItemMachine::firstMachineItem()
 {
     return this;
-}
-
-void UIChooserItemMachine::sortItems()
-{
-    AssertMsgFailed(("Machine graphics item do NOT support children!"));
 }
 
 void UIChooserItemMachine::updateLayout()

@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 77752 2019-03-18 12:20:49Z vboxsync $ */
+/* $Id: UIChooserModel.h 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -422,6 +422,9 @@ private:
         bool processDragMoveEvent(QGraphicsSceneDragDropEvent *pEvent);
         /** Processes drag leave @a pEvent. */
         bool processDragLeaveEvent(QGraphicsSceneDragDropEvent *pEvent);
+
+        /** Performs sorting for @a pNode. */
+        void sortNodes(UIChooserNode *pNode);
     /** @} */
 
     /** @name Group saving stuff.

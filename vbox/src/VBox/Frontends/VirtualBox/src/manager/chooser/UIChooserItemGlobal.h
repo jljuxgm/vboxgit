@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 77805 2019-03-20 11:09:52Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 77847 2019-03-22 13:22:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -111,9 +111,6 @@ protected:
 
         /** Searches for a first machine child item. */
         virtual UIChooserItem *firstMachineItem() /* override */;
-
-        /** Sorts children items. */
-        virtual void sortItems() /* override */;
     /** @} */
 
     /** @name Layout stuff.
