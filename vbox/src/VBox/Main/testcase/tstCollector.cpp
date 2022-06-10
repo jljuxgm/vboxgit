@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstCollector.cpp 77102 2019-02-01 10:26:51Z vboxsync $ */
 
 /** @file
  *
@@ -144,7 +144,7 @@ void measurePerformance(pm::CollectorHAL *collector, const char *pszName, int cV
         /* Process RAM usage */
         N_CALLS(cVMs, getProcessMemoryUsage(processes[call], &tmp));
     }
-    printf("\n%d VMs -- %.2f%% of CPU time\n", cVMs, (RTTimeNanoTS() - start) / 10000000. / times);
+    RTPrintf("\n%d VMs -- %.2f%% of CPU time\n", cVMs, (RTTimeNanoTS() - start) / 10000000. / times);
 
     /* Shut down fake VMs */
     shutdownProcessList(processes);
@@ -573,7 +573,7 @@ int main(int argc, char *argv[])
 
     delete collector;
 
-    printf ("\ntstCollector FINISHED.\n");
+    RTPrintf("\ntstCollector FINISHED.\n");
 
     return RTEXITCODE_SUCCESS;
 }
