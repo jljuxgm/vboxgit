@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 74113 2018-09-06 11:49:14Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 74163 2018-09-09 15:51:39Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -1704,11 +1704,20 @@ int cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCPUM
 
         PCCPUMCPUIDLEAF const pExtLeaf8 = cpumR3CpuIdFindLeaf(paLeaves, cLeaves, 0x80000008);
         if (pExtLeaf8)
-            pFeatures->cMaxPhysAddrWidth = pExtLeaf8->uEax & 0xff;
+        {
+            pFeatures->cMaxPhysAddrWidth   = pExtLeaf8->uEax & 0xff;
+            pFeatures->cMaxLinearAddrWidth = (pExtLeaf8->uEax >> 8) & 0xff;
+        }
         else if (pStd1Leaf->uEdx & X86_CPUID_FEATURE_EDX_PSE36)
-            pFeatures->cMaxPhysAddrWidth = 36;
+        {
+            pFeatures->cMaxPhysAddrWidth   = 36;
+            pFeatures->cMaxLinearAddrWidth = 36;
+        }
         else
-            pFeatures->cMaxPhysAddrWidth = 32;
+        {
+            pFeatures->cMaxPhysAddrWidth   = 32;
+            pFeatures->cMaxLinearAddrWidth = 32;
+        }
 
         /* Standard features. */
         pFeatures->fMsr                 = RT_BOOL(pStd1Leaf->uEdx & X86_CPUID_FEATURE_EDX_MSR);
