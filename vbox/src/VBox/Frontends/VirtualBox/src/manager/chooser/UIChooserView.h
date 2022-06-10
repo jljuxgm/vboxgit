@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.h 77812 2019-03-20 16:33:59Z vboxsync $ */
+/* $Id: UIChooserView.h 77980 2019-04-01 17:31:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class declaration.
  */
@@ -51,7 +51,7 @@ public:
         UIChooser *chooser() const { return m_pChooser; }
     /** @} */
 
-    /** @name Virtual Machine search stuff.
+    /** @name Search stuff.
       * @{ */
         /** Returns if the search widget is visible or not. */
         bool isSearchWidgetVisible() const;
@@ -106,7 +106,7 @@ private:
         void updateSceneRect();
     /** @} */
 
-    /** @name Virtual Machine search stuff.
+    /** @name Search stuff.
       * @{ */
         /** Updates search widget's geometry. */
         void updateSearchWidgetGeometry();
