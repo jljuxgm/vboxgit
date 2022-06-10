@@ -1,4 +1,4 @@
-/* $Id: main.cpp 73198 2018-07-18 11:24:33Z vboxsync $ */
+/* $Id: main.cpp 76391 2018-12-23 01:44:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -35,6 +35,7 @@
 /* Other VBox includes: */
 # include <iprt/buildconfig.h>
 # include <iprt/stream.h>
+# include <VBox/err.h>
 # include <VBox/version.h>
 # ifdef VBOX_WITH_HARDENING
 #  include <VBox/sup.h>
