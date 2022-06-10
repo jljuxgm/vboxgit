@@ -1,4 +1,4 @@
-/* $Id: dvm.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: dvm.h 77256 2019-02-11 12:19:52Z vboxsync $ */
 /** @file
  * IPRT - Disk Volume Management Internals.
  */
@@ -213,6 +213,16 @@ typedef struct RTDVMFMTOPS
      * @param   hVolFmt         The format specific volume handle.
      */
     DECLCALLBACKMEMBER(uint64_t, pfnVolumeGetFlags)(RTDVMVOLUMEFMT hVolFmt);
+
+    /**
+     * Queries the range of the given volume on the underyling medium.
+     *
+     * @returns IPRT status code.
+     * @param   hVolFmt         The format specific volume handle.
+     * @param   poffStart       Where to store the start offset in bytes on the underlying medium.
+     * @param   poffEnd         Where to store the end offset in bytes on the underlying medium (inclusive).
+     */
+    DECLCALLBACKMEMBER(int, pfnVolumeQueryRange)(RTDVMVOLUMEFMT hVolFmt, uint64_t *poffStart, uint64_t *poffEnd);
 
     /**
      * Returns whether the supplied range is at least partially intersecting
