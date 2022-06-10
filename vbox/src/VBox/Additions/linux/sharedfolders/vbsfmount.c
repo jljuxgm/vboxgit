@@ -1,4 +1,4 @@
-/* $Id: vbsfmount.c 77139 2019-02-01 19:35:23Z vboxsync $ */
+/* $Id: vbsfmount.c 77953 2019-03-29 17:07:16Z vboxsync $ */
 /** @file
  * vbsfmount - Commonly used code to mount shared folders on Linux-based
  *             systems.  Currently used by mount.vboxsf and VBoxService.
@@ -44,12 +44,30 @@ int vbsfmount_complete(const char *host_name, const char *mount_point,
     if (!m)
         return 1; /* Could not update mount table (failed to create memstream). */
 
+    if (opts->ttl != -1)
+        fprintf(m, "ttl=%d,", opts->ttl);
+    if (opts->msDirCacheTTL >= 0)
+        fprintf(m, "dcachettl=%d,", opts->msDirCacheTTL);
+    if (opts->msInodeTTL >= 0)
+        fprintf(m, "inodettl=%d,", opts->msInodeTTL);
+    if (opts->cMaxIoPages)
+        fprintf(m, "maxiopages=%u,", opts->cMaxIoPages);
+    if (opts->cbDirBuf)
+        fprintf(m, "dirbuf=%u,", opts->cbDirBuf);
+    switch (opts->enmCacheMode)
+    {
+        default:
+        case kVbsfCacheMode_Default:
+            break;
+        case kVbsfCacheMode_None:       fprintf(m, "cache=none,"); break;
+        case kVbsfCacheMode_Strict:     fprintf(m, "cache=strict,"); break;
+        case kVbsfCacheMode_Read:       fprintf(m, "cache=read,"); break;
+        case kVbsfCacheMode_ReadWrite:  fprintf(m, "cache=readwrite,"); break;
+    }
     if (opts->uid)
         fprintf(m, "uid=%d,", opts->uid);
     if (opts->gid)
         fprintf(m, "gid=%d,", opts->gid);
-    if (opts->ttl)
-        fprintf(m, "ttl=%d,", opts->ttl);
     if (*opts->nls_name)
         fprintf(m, "iocharset=%s,", opts->nls_name);
     if (flags & MS_NOSUID)
@@ -58,8 +76,6 @@ int vbsfmount_complete(const char *host_name, const char *mount_point,
         fprintf(m, "%s,", MNTOPT_RO);
     else
         fprintf(m, "%s,", MNTOPT_RW);
-    if (opts->cMaxIoPages)
-        fprintf(m, "maxiopages=%u,", opts->cMaxIoPages);
 
     fclose(m);
 
