@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 73408 2018-07-31 11:32:55Z vboxsync $ */
+/* $Id: HDAStream.cpp 73523 2018-08-06 12:25:14Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -1324,6 +1324,8 @@ void hdaR3StreamUpdate(PHDASTREAM pStream, bool fInTimer)
         {
 #endif
             const uint32_t cbSinkWritable = AudioMixerSinkGetWritable(pSink);
+
+            Log3Func(("[SD%RU8] cbWritable=%RU32, cbUsed=%RU32\n", pStream->u8SD, cbSinkWritable, cbUsed));
 
             /* Do not write more than the sink can hold at the moment.
              * The host sets the overall pace. */
