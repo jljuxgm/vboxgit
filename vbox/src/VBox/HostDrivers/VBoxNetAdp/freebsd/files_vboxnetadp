@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxnetadp 69500 2017-10-28 15:14:05Z vboxsync $
+# $Id: files_vboxnetadp 76326 2018-12-20 19:33:08Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules.sh.
 #
@@ -39,6 +39,7 @@ VBOX_VBOXNETADP_SOURCES=" \
     ${PATH_ROOT}/include/iprt/cpuset.h=>include/iprt/cpuset.h \
     ${PATH_ROOT}/include/iprt/ctype.h=>include/iprt/ctype.h \
     ${PATH_ROOT}/include/iprt/err.h=>include/iprt/err.h \
+    ${PATH_ROOT}/include/iprt/errcore.h=>include/iprt/errcore.h \
     ${PATH_ROOT}/include/iprt/heap.h=>include/iprt/heap.h \
     ${PATH_ROOT}/include/iprt/initterm.h=>include/iprt/initterm.h \
     ${PATH_ROOT}/include/iprt/latin1.h=>include/iprt/latin1.h \
