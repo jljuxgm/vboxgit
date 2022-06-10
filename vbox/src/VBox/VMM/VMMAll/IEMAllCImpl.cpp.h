@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 74336 2018-09-18 09:50:48Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 74385 2018-09-20 13:32:26Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4937,9 +4937,9 @@ IEM_CIMPL_DEF_2(iemCImpl_sldt_mem, uint8_t, iEffSeg, RTGCPTR, GCPtrEffDst)
 
 
 /**
- * Implements lldt.
+ * Implements ltr.
  *
- * @param   uNewLdt     The new LDT selector value.
+ * @param   uNewTr      The new TSS selector value.
  */
 IEM_CIMPL_DEF_1(iemCImpl_ltr, uint16_t, uNewTr)
 {
