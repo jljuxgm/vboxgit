@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 76225 2018-12-14 08:23:41Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -40,8 +40,10 @@ LIBRARIES += \
 	VBoxGuestR3LibShared
 ifndef VBOX_ONLY_VALIDATIONKIT
  if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd)
+ ifndef VBOX_USE_SYSTEM_XORG_HEADERS
   LIBRARIES += \
   	VBoxGuestR3LibXFree86
+ endif
  endif
  if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris)
   LIBRARIES += \
