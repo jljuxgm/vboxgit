@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 76995 2019-01-25 21:29:25Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 76996 2019-01-25 21:36:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -190,8 +190,6 @@ namespace UIExtraDataDefs
       * @{ */
         /** Holds whether Virtual Media Manager details expanded. */
         SHARED_LIBRARY_STUFF extern const char *GUI_VirtualMediaManager_Details_Expanded;
-        /** Holds whether Virtual Media Manager search widget expanded. */
-        SHARED_LIBRARY_STUFF extern const char *GUI_VirtualMediaManager_Search_Widget_Expanded;
     /** @} */
 
     /** @name Host Network Manager

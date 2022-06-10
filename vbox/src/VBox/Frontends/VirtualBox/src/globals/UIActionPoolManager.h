@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 76995 2019-01-25 21:29:25Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 76996 2019-01-25 21:36:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -137,7 +137,6 @@ enum UIActionIndexST
     UIActionIndexST_M_Medium_S_Remove,
     UIActionIndexST_M_Medium_S_Release,
     UIActionIndexST_M_Medium_T_Details,
-    UIActionIndexST_M_Medium_T_Search,
     UIActionIndexST_M_Medium_S_Refresh,
 
     /* Host Network Manager actions: */
@@ -247,3 +246,4 @@ private:
 
 
 #endif /* !FEQT_INCLUDED_SRC_globals_UIActionPoolManager_h */
+
