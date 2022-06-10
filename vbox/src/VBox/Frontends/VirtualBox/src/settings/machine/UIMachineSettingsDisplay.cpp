@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 73117 2018-07-13 11:32:28Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 73130 2018-07-13 16:29:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -302,12 +302,12 @@ void UIMachineSettingsDisplay::setGuestOSType(CGuestOSType comGuestOSType)
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
     /* Check if 2D video acceleration supported by the guest OS type: */
-    const QString strGuestOSTypeFamily = m_comGuestOSType.GetFamilyId();
+    const QString strGuestOSTypeFamily = m_comGuestOSType.isNotNull() ? m_comGuestOSType.GetFamilyId() : QString();
     m_f2DVideoAccelerationSupported = strGuestOSTypeFamily == "Windows";
 #endif
 #ifdef VBOX_WITH_CRHGSMI
     /* Check if WDDM mode supported by the guest OS type: */
-    const QString strGuestOSTypeId = m_comGuestOSType.GetId();
+    const QString strGuestOSTypeId = m_comGuestOSType.isNotNull() ? m_comGuestOSType.GetId() : QString();
     m_fWddmModeSupported = VBoxGlobal::isWddmCompatibleOsType(strGuestOSTypeId);
 #endif
 
@@ -1258,7 +1258,7 @@ bool UIMachineSettingsDisplay::shouldWeWarnAboutLowVRAM()
 
     QStringList excludingOSList = QStringList()
         << "Other" << "DOS" << "Netware" << "L4" << "QNX" << "JRockitVE";
-    if (excludingOSList.contains(m_comGuestOSType.GetId()))
+    if (m_comGuestOSType.isNull() || excludingOSList.contains(m_comGuestOSType.GetId()))
         fResult = false;
 
     return fResult;

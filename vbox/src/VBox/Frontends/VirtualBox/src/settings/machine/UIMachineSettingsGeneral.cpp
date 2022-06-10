@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 72177 2018-05-09 15:57:09Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 73130 2018-07-13 16:29:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -142,14 +142,16 @@ CGuestOSType UIMachineSettingsGeneral::guestOSType() const
 bool UIMachineSettingsGeneral::is64BitOSTypeSelected() const
 {
     AssertPtrReturn(m_pNameAndSystemEditor, false);
-    return m_pNameAndSystemEditor->type().GetIs64Bit();
+    return   m_pNameAndSystemEditor->type().isNotNull()
+           ? m_pNameAndSystemEditor->type().GetIs64Bit()
+           : false;
 }
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
 bool UIMachineSettingsGeneral::isWindowsOSTypeSelected() const
 {
     AssertPtrReturn(m_pNameAndSystemEditor, false);
-    return m_pNameAndSystemEditor->type().GetFamilyId() == "Windows";
+    return m_pNameAndSystemEditor->familyId() == "Windows";
 }
 #endif /* VBOX_WITH_VIDEOHWACCEL */
 
@@ -247,7 +249,7 @@ void UIMachineSettingsGeneral::getFromCache()
     /* Load old 'Basic' data from the cache: */
     AssertPtrReturnVoid(m_pNameAndSystemEditor);
     m_pNameAndSystemEditor->setName(oldGeneralData.m_strName);
-    m_pNameAndSystemEditor->setType(vboxGlobal().vmGuestOSType(oldGeneralData.m_strGuestOsTypeId));
+    m_pNameAndSystemEditor->setTypeId(oldGeneralData.m_strGuestOsTypeId);
 
     /* Load old 'Advanced' data from the cache: */
     AssertPtrReturnVoid(mPsSnapshot);
@@ -285,7 +287,7 @@ void UIMachineSettingsGeneral::putToCache()
     /* Gather new 'Basic' data: */
     AssertPtrReturnVoid(m_pNameAndSystemEditor);
     newGeneralData.m_strName = m_pNameAndSystemEditor->name();
-    newGeneralData.m_strGuestOsTypeId = m_pNameAndSystemEditor->type().GetId();
+    newGeneralData.m_strGuestOsTypeId = m_pNameAndSystemEditor->typeId();
 
     /* Gather new 'Advanced' data: */
     AssertPtrReturnVoid(mPsSnapshot);
