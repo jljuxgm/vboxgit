@@ -1,4 +1,4 @@
-/* $Id: unpack_shaders.c 76787 2019-01-11 20:00:15Z vboxsync $ */
+/* $Id: unpack_shaders.c 78105 2019-04-10 20:01:12Z vboxsync $ */
 /** @file
  * VBox OpenGL DRI driver functions
  */
@@ -42,7 +42,7 @@ void crUnpackExtendShaderSource(void)
     GLsizei i, j, jUpTo;
     int pos, pos_check;
 
-    if (count <= 0 || count >= INT32_MAX / sizeof(char *) / 4)
+    if (count <= 0 || count >= INT32_MAX / sizeof(GLint) / 8)
     {
         crError("crUnpackExtendShaderSource: count %u is out of range", count);
         return;
@@ -50,29 +50,41 @@ void crUnpackExtendShaderSource(void)
 
     pos = 20 + count * sizeof(*pLocalLength);
 
+    if (!DATA_POINTER_CHECK(pos))
+    {
+        crError("crUnpackExtendShaderSource: pos %d is out of range", pos);
+        return;
+    }
+
     if (hasNonLocalLen > 0)
     {
         length = DATA_POINTER(pos, GLint);
         pos += count * sizeof(*length);
     }
 
-    pos_check = pos;
-
-    if (!DATA_POINTER_CHECK(pos_check))
+    if (!DATA_POINTER_CHECK(pos))
     {
-        crError("crUnpackExtendShaderSource: pos %d is out of range", pos_check);
+        crError("crUnpackExtendShaderSource: pos %d is out of range", pos);
         return;
     }
 
+    pos_check = pos;
+
     for (i = 0; i < count; ++i)
     {
-        if (pLocalLength[i] <= 0 || pos_check >= INT32_MAX - pLocalLength[i] || !DATA_POINTER_CHECK(pos_check))
+        if (pLocalLength[i] <= 0 || pos_check >= INT32_MAX - pLocalLength[i])
         {
             crError("crUnpackExtendShaderSource: pos %d is out of range", pos_check);
             return;
         }
 
         pos_check += pLocalLength[i];
+
+        if (!DATA_POINTER_CHECK(pos_check))
+        {
+            crError("crUnpackExtendShaderSource: pos %d is out of range", pos_check);
+            return;
+        }
     }
 
     ppStrings = crAlloc(count * sizeof(char*));
