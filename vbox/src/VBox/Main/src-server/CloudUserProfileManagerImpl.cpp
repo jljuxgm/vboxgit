@@ -1,4 +1,4 @@
-/* $Id: CloudUserProfileManagerImpl.cpp 73164 2018-07-16 17:54:23Z vboxsync $ */
+/* $Id: CloudUserProfileManagerImpl.cpp 73167 2018-07-17 07:41:21Z vboxsync $ */
 /** @file
  * ICloudUserProfileManager  COM class implementations.
  */
@@ -103,7 +103,7 @@ HRESULT CloudUserProfileManager::getAllProfiles(std::vector<ComPtr<ICloudUserPro
     return hrc;
 }
 
-HRESULT CloudUserProfileManager::getProfilesByProvider(CloudProviderId_T aProviderType, 
+HRESULT CloudUserProfileManager::getProfilesByProvider(CloudProviderId_T aProviderType,
                                                        ComPtr<ICloudUserProfileList> &aProfiles)
 {
     ComObjPtr<CloudUserProfileList> ptrCloudUserProfileList;
