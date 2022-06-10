@@ -1,4 +1,4 @@
-/* $Id: rest-primary-object-types.cpp 74347 2018-09-18 16:10:34Z vboxsync $ */
+/* $Id: rest-primary-object-types.cpp 74356 2018-09-19 00:50:27Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestObjectBase implementation.
  */
@@ -2011,7 +2011,7 @@ bool RTCRestStringEnumBase::setWorker(int a_iEnumValue)
 
 
 /*********************************************************************************************************************************
-*   RTCRestDataObject                                                                                                                *
+*   RTCRestDataObject                                                                                                            *
 *********************************************************************************************************************************/
 
 RTCRestDataObject::RTCRestDataObject()
