@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 75054 2018-10-25 07:22:29Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 75086 2018-10-25 18:11:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -135,10 +135,10 @@ private slots:
         /** Handles signal about Chooser-pane index change.
           * @param  fUpdateDetails    Brings whether details should be updated.
           * @param  fUpdateSnapshots  Brings whether snapshots should be updated.
-          * @param  fUpdateLogViewer  Brings whether log-viewer should be updated. */
+          * @param  fUpdateLogs       Brings whether log-viewer should be updated. */
         void sltHandleChooserPaneIndexChange(bool fUpdateDetails = true,
                                              bool fUpdateSnapshots = true,
-                                             bool fUpdateLogViewer = true);
+                                             bool fUpdateLogs = true);
         /** Handles signal about Chooser-pane index change the default way. */
         void sltHandleChooserPaneIndexChangeDefault() { sltHandleChooserPaneIndexChange(); }
 
