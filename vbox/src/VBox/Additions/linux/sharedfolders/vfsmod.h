@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77536 2019-03-02 05:04:45Z vboxsync $ */
+/* $Id: vfsmod.h 77537 2019-03-02 15:27:42Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -38,7 +38,6 @@
 # define RT_STRICT
 # define VBOX_STRICT
 #endif
-#define VBSF_BUFFER_DIRS /* till I've fully tested the other code */
 
 #define LOG_GROUP LOG_GROUP_SHARED_FOLDERS
 #include "the-linux-kernel.h"
@@ -54,7 +53,6 @@
 #include <VBox/VBoxGuestLibSharedFoldersInline.h>
 #include <iprt/asm.h>
 #include "vbsfmount.h"
-
 
 /*
  * inode compatibility glue.
@@ -292,6 +290,8 @@ struct vbsf_dir_info {
     loff_t              offPos;
     /** The next entry. */
     PSHFLDIRINFO        pEntry;
+    /** Set if there are no more files.  */
+    bool                fNoMoreFiles;
 #else
     /** List of vbsf_dir_buf. */
     struct list_head info_list;

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFoldersInline.h 77243 2019-02-10 22:44:00Z vboxsync $ */
+/* $Id: VBoxGuestLibSharedFoldersInline.h 77537 2019-03-02 15:27:42Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Shared Folders Host Request Helpers (ring-0).
  */
@@ -1060,8 +1060,8 @@ DECLINLINE(int) VbglR0SfHostReqListDirContig2x(SHFLROOT idRoot, VBOXSFLISTDIRREQ
         pReq->Parms.pBuffer.u.LinAddr.uAddr         = (uintptr_t)pBuffer;
     }
 
-    pReq->Parms.f32Done.type                        = VMMDevHGCMParmType_32bit;
-    pReq->Parms.f32Done.u.value32                   = 0;
+    pReq->Parms.f32More.type                        = VMMDevHGCMParmType_32bit;
+    pReq->Parms.f32More.u.value32                   = 0;
 
     pReq->Parms.c32Entries.type                     = VMMDevHGCMParmType_32bit;
     pReq->Parms.c32Entries.u.value32                = 0;
