@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 77318 2019-02-14 17:36:28Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1511,6 +1511,7 @@ bool remR3CanExecuteRaw(CPUX86State *env, RTGCPTR eip, unsigned fFlags, int *piE
         pCtx->ss.Attr.u      = (env->segs[R_SS].flags >> SEL_FLAGS_SHIFT) & SEL_FLAGS_SMASK;
 
         pCtx->msrEFER        = env->efer;
+        pCtx->hwvirt.enmHwvirt = CPUMHWVIRT_NONE;
 
         /*
          * Hardware accelerated mode:
