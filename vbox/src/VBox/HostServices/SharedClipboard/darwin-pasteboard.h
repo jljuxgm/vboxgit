@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: darwin-pasteboard.h 76570 2019-01-01 04:36:36Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___DARWIN_PASTEBOARD_H
-#define ___DARWIN_PASTEBOARD_H
+#ifndef VBOX_INCLUDED_SRC_SharedClipboard_darwin_pasteboard_h
+#define VBOX_INCLUDED_SRC_SharedClipboard_darwin_pasteboard_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -30,5 +30,5 @@ int queryNewPasteboardFormats(PasteboardRef pPasteboard, uint32_t *pfFormats, bo
 int readFromPasteboard(PasteboardRef pPasteboard, uint32_t fFormat, void *pv, uint32_t cb, uint32_t *pcbActual);
 int writeToPasteboard(PasteboardRef pPasteboard, void *pv, uint32_t cb, uint32_t fFormat);
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_SharedClipboard_darwin_pasteboard_h */
 

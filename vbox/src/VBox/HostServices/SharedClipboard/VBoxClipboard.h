@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxClipboard.h 76570 2019-01-01 04:36:36Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal Header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBOXCLIPBOARD_H
-#define ___VBOXCLIPBOARD_H
+#ifndef VBOX_INCLUDED_SRC_SharedClipboard_VBoxClipboard_h
+#define VBOX_INCLUDED_SRC_SharedClipboard_VBoxClipboard_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -99,5 +99,5 @@ int vboxClipboardSync (VBOXCLIPBOARDCLIENTDATA *pClient);
 uint32_t TestClipSvcGetMode(void);
 #endif
 
-#endif /* !___VBOXCLIPBOARD_H */
+#endif /* !VBOX_INCLUDED_SRC_SharedClipboard_VBoxClipboard_h */
 

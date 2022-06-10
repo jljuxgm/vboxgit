@@ -1,4 +1,4 @@
-/* $Id: shflhandle.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: shflhandle.h 76570 2019-01-01 04:36:36Z vboxsync $ */
 /** @file
  * Shared Folders Host Service - Handles helper functions header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___SHFLHANDLE_H
-#define ___SHFLHANDLE_H
+#ifndef VBOX_INCLUDED_SRC_SharedFolders_shflhandle_h
+#define VBOX_INCLUDED_SRC_SharedFolders_shflhandle_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -77,4 +77,4 @@ SHFLFILEHANDLE *vbsfQueryDirHandle(PSHFLCLIENTDATA pClient, SHFLHANDLE handle);
 uint32_t        vbsfQueryHandleType(PSHFLCLIENTDATA pClient,
                                     SHFLHANDLE handle);
 
-#endif /* !___SHFLHANDLE_H */
+#endif /* !VBOX_INCLUDED_SRC_SharedFolders_shflhandle_h */

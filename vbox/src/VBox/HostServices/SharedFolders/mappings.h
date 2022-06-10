@@ -1,4 +1,4 @@
-/* $Id: mappings.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: mappings.h 76570 2019-01-01 04:36:36Z vboxsync $ */
 /** @file
  * Shared folders service - Mappings header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___MAPPINGS_H
-#define ___MAPPINGS_H
+#ifndef VBOX_INCLUDED_SRC_SharedFolders_mappings_h
+#define VBOX_INCLUDED_SRC_SharedFolders_mappings_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -76,5 +76,5 @@ bool vbsfIsHostMappingCaseSensitive(SHFLROOT root);
 int vbsfMappingLoaded(MAPPING const *pLoadedMapping, SHFLROOT root);
 PMAPPING vbsfMappingGetByRoot(SHFLROOT root);
 
-#endif /* !___MAPPINGS_H */
+#endif /* !VBOX_INCLUDED_SRC_SharedFolders_mappings_h */
 
