@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 76886 2019-01-18 10:57:02Z vboxsync $ */
+/* $Id: CPUM.cpp 76952 2019-01-23 11:00:57Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1727,6 +1727,11 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
         Assert(!pGuestFeat->fVmxEptXcptVe);
         Assert(!pGuestFeat->fVmxXsavesXrstors);
         Assert(!pGuestFeat->fVmxUseTscScaling);
+    }
+    if (pGuestFeat->fVmxUnrestrictedGuest)
+    {
+        /* See footnote in Intel spec. 27.2 "Recording VM-Exit Information And Updating VM-entry Control Fields". */
+        Assert(pGuestFeat->fVmxExitSaveEferLma);
     }
 
     /*
