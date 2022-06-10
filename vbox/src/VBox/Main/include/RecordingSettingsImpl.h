@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.h 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.h 75418 2018-11-13 12:09:09Z vboxsync $ */
 
 /** @file
  *
@@ -55,7 +55,7 @@ public:
     void i_copyFrom(RecordingSettings *aThat);
     void i_applyDefaults(void);
 
-    int i_getDefaultFileName(Utf8Str &strFile);
+    int i_getDefaultFileName(Utf8Str &strFile, bool fWithFileExtension);
     bool i_canChangeSettings(void);
     void i_onSettingsChanged(void);
 

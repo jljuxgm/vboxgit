@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.cpp 75367 2018-11-09 16:09:09Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.cpp 75418 2018-11-13 12:09:09Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -565,13 +565,14 @@ void RecordingSettings::i_applyDefaults(void)
 /**
  * Returns the full path to the default video capture file.
  */
-int RecordingSettings::i_getDefaultFileName(Utf8Str &strFile)
+int RecordingSettings::i_getDefaultFileName(Utf8Str &strFile, bool fWithFileExtension)
 {
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     strFile = m->pMachine->i_getSettingsFileFull(); // path/to/machinesfolder/vmname/vmname.vbox
     strFile.stripSuffix();                          // path/to/machinesfolder/vmname/vmname
-    strFile.append(".webm");                        // path/to/machinesfolder/vmname/vmname.webm
+    if (fWithFileExtension)
+        strFile.append(".webm");                    // path/to/machinesfolder/vmname/vmname.webm
 
     return VINF_SUCCESS;
 }
