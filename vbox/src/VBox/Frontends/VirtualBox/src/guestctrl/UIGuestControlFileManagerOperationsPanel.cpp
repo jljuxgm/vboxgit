@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerOperationsPanel.cpp 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerOperationsPanel.cpp 75480 2018-11-15 12:26:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -168,7 +168,10 @@ void UIGuestControlFileManagerOperationsPanel::prepareWidgets()
 
     if (m_pTableWidget)
     {
-        m_pTableWidget->setColumnCount(1);
+        m_pTableWidget->setColumnCount(TableColumn_Max);
+        QStringList headers;
+        headers << "Progress" << "Information";
+        m_pTableWidget->setHorizontalHeaderLabels(headers);
         mainLayout()->addWidget(m_pTableWidget);
     }
 }

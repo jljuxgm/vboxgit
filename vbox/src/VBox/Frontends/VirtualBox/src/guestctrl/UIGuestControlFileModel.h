@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileModel.h 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIGuestControlFileModel.h 75480 2018-11-15 12:26:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileModel class declaration.
  */
@@ -28,6 +28,16 @@
 /* Forward declarations: */
 class UIFileTableItem;
 class UIGuestControlFileTable;
+
+enum UIGuestControlFileModelColumn
+{
+    UIGuestControlFileModelColumn_Name = 0,
+    UIGuestControlFileModelColumn_Size,
+    UIGuestControlFileModelColumn_ChangeTime,
+    UIGuestControlFileModelColumn_Owner,
+    UIGuestControlFileModelColumn_Permissions,
+    UIGuestControlFileModelColumn_Max
+};
 
 /** A QSortFilterProxyModel extension used in file tables. Modifies some
   * of the base class behavior like lessThan(..) */
@@ -76,7 +86,6 @@ public:
     QModelIndex    rootIndex() const;
     void           beginReset();
     void           endReset();
-    bool           insertRows(int position, int rows, const QModelIndex &parent);
     static const char* strUpDirectoryString;
 
 private:

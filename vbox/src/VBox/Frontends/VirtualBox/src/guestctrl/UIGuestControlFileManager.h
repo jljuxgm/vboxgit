@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 75480 2018-11-15 12:26:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -68,6 +68,7 @@ public:
 
     bool bListDirectoriesOnTop;
     bool bAskDeleteConfirmation;
+    bool bShowHumanReadableSizes;
 
 private:
 

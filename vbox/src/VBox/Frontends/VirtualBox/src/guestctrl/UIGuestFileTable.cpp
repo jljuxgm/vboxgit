@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 75480 2018-11-15 12:26:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestFileTable class implementation.
  */
@@ -196,7 +196,7 @@ void UIGuestFileTable::readDirectory(const QString& strPath,
 
         while (fsInfo.isOk())
         {
-            QList<QVariant> data;
+            QVector<QVariant> data;
             QDateTime changeTime = QDateTime::fromMSecsSinceEpoch(fsInfo.GetChangeTime()/1000000);
 
             data << fsInfo.GetName() << static_cast<qulonglong>(fsInfo.GetObjectSize())

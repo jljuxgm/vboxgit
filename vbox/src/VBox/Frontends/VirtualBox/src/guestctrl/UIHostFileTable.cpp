@@ -1,4 +1,4 @@
-/* $Id: UIHostFileTable.cpp 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIHostFileTable.cpp 75480 2018-11-15 12:26:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -220,11 +220,10 @@ void UIHostFileTable::readDirectory(const QString& strPath, UIFileTableItem *par
     {
 
         const QFileInfo &fileInfo = entries.at(i);
-        QList<QVariant> data;
-        data << fileInfo.fileName() << fileInfo.size()
-             << fileInfo.lastModified() << fileInfo.owner() <<
-            permissionString(fileInfo.permissions());
-        UIFileTableItem *item = new UIFileTableItem(data, parent, fileType(fileInfo));
+        UIFileTableItem *item = new UIFileTableItem(createTreeItemData(fileInfo.fileName(), fileInfo.size(),
+                                                                       fileInfo.lastModified(), fileInfo.owner(),
+                                                                       permissionString(fileInfo.permissions())),
+                                                    parent, fileType(fileInfo));
         if (!item)
             continue;
         item->setPath(fileInfo.absoluteFilePath());

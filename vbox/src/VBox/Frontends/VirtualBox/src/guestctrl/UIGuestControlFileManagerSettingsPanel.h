@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerSettingsPanel.h 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerSettingsPanel.h 75480 2018-11-15 12:26:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -41,7 +41,7 @@ public:
 
 signals:
 
-    void sigListDirectoriesFirstChanged();
+    void sigSettingsChanged();
 
 protected:
 
@@ -53,12 +53,16 @@ protected:
 
 private slots:
 
-    void sltListDirectoryCheckBoxToogled(bool fChecked);
+    void sltListDirectoryCheckBoxToogled(bool bChecked);
+    void sltDeleteConfirmationCheckBoxToogled(bool bChecked);
+    void sltHumanReabableSizesCheckBoxToogled(bool bChecked);
 
 private:
 
     QCheckBox                         *m_pListDirectoriesOnTopCheckBox;
     QCheckBox                         *m_pDeleteConfirmationCheckBox;
+    QCheckBox                         *m_pHumanReabableSizesCheckBox;
+
     UIGuestControlFileManagerSettings *m_pFileManagerSettings;
 };
 

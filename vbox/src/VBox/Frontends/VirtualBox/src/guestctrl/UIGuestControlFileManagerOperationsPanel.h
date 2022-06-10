@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerOperationsPanel.h 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerOperationsPanel.h 75480 2018-11-15 12:26:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -56,6 +56,13 @@ private slots:
 
 
 private:
+
+    enum TableColumn
+    {
+        TableColumn_Progress,
+        TableColumn_Info,
+        TableColumn_Max
+    };
 
     /** @name Member variables.
       * @{ */
