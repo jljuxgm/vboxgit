@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 75049 2018-10-24 16:06:42Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 75050 2018-10-24 16:09:06Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -1469,7 +1469,7 @@ int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
 
 void VBOXCALL   supdrvOSLdrUnload(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
 {
-#ifdef
+#ifdef SUPDRV_WITH_DARWIN_IMAGE_VERIFICATION
     if (pImage->hLdrMod != NIL_RTLDRMOD)
     {
         int rc = RTLdrClose(pImage->hLdrMod);
