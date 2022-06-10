@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 77693 2019-03-13 21:24:29Z vboxsync $ */
+/* $Id: fuzz.cpp 77758 2019-03-18 13:17:30Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -559,6 +559,7 @@ static void *rtFuzzCtxMemoryAlloc(PRTFUZZCTXINT pThis, size_t cb)
  */
 static void rtFuzzCtxMemoryFree(PRTFUZZCTXINT pThis, void *pv)
 {
+    AssertReturnVoid(pv != NULL);
     PRTFUZZMEMHDR pMemHdr = ((PRTFUZZMEMHDR)pv) - 1;
 
     size_t cbIgn = ASMAtomicSubZ(&pThis->cbMemTotal, pMemHdr->cb + sizeof(RTFUZZMEMHDR)); RT_NOREF(cbIgn);
@@ -707,10 +708,10 @@ static uint32_t rtFuzzMutationRelease(PRTFUZZMUTATION pMutation)
 
     if (cRefs == 0)
     {
-        rtFuzzCtxMutationMaybeEnterCache(pMutation->pFuzzer, pMutation);
-
         if (!pMutation->fInTree)
             rtFuzzMutationDestroy(pMutation);
+        else
+            rtFuzzCtxMutationMaybeEnterCache(pMutation->pFuzzer, pMutation);
     }
 
     return cRefs;
