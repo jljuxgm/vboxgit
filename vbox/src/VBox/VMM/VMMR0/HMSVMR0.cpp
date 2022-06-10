@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72772 2018-06-29 11:28:28Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72777 2018-06-29 18:04:40Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2824,7 +2824,7 @@ static void hmR0SvmImportGuestState(PVMCPU pVCpu, uint64_t fWhat)
     RTCCUINTREG const fEFlags = ASMIntDisableFlags();
 
     fWhat &= pCtx->fExtrn;
-    if (fWhat & pCtx->fExtrn)
+    if (fWhat)
     {
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM
         if (fWhat & CPUMCTX_EXTRN_HWVIRT)

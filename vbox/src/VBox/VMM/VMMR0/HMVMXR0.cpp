@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72776 2018-06-29 15:39:46Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72777 2018-06-29 18:04:40Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6169,7 +6169,7 @@ static int hmR0VmxImportGuestState(PVMCPU pVCpu, uint64_t fWhat)
     RTCCUINTREG const fEFlags = ASMIntDisableFlags();
 
     fWhat &= pCtx->fExtrn;
-    if (fWhat & pCtx->fExtrn)
+    if (fWhat)
     {
         do
         {
