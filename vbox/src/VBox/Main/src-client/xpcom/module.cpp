@@ -1,4 +1,4 @@
-/* $Id: module.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: module.cpp 72975 2018-07-08 13:46:07Z vboxsync $ */
 /** @file
  *
  * XPCOM module implementation functions
@@ -27,7 +27,7 @@
 #include <nsIGenericFactory.h>
 
 // generated file
-#include "VirtualBox_XPCOM.h"
+#include <VBox/com/VirtualBox.h>
 
 #include "SessionImpl.h"
 #include "VirtualBoxClientImpl.h"

@@ -1,4 +1,4 @@
-/* $Id: server.cpp 69749 2017-11-19 12:49:36Z vboxsync $ */
+/* $Id: server.cpp 72975 2018-07-08 13:46:07Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -55,7 +55,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #include <nsIGenericFactory.h>
-#include <VirtualBox_XPCOM.h>
+#include <VBox/com/VirtualBox.h>
 
 #include "VBox/com/NativeEventQueue.h"
 
