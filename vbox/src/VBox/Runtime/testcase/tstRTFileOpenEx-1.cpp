@@ -1,4 +1,4 @@
-/* $Id: tstRTFileOpenEx-1.cpp 77689 2019-03-13 19:47:02Z vboxsync $ */
+/* $Id: tstRTFileOpenEx-1.cpp 77691 2019-03-13 20:05:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - File Opening, extended API.
  */
@@ -69,8 +69,8 @@ static void tstOpenExTest(unsigned uLine, int cbExist, int cbNext, const char *p
             {
                 while (cbExist > 0)
                 {
-                    size_t cbToWrite = strlen(pszFilename);
-                    if ((ssize_t)cbToWrite > cbExist)
+                    int cbToWrite = (int)strlen(pszFilename);
+                    if (cbToWrite > cbExist)
                         cbToWrite = cbExist;
                     rc = RTFileWrite(hFile, pszFilename, cbToWrite, NULL);
                     if (RT_FAILURE(rc))
@@ -119,8 +119,8 @@ static void tstOpenExTest(unsigned uLine, int cbExist, int cbNext, const char *p
 
         while (cbNext > 0)
         {
-            size_t cbToWrite = strlen(pszFilename);
-            if ((ssize_t)cbToWrite > cbNext)
+            int cbToWrite = (int)strlen(pszFilename);
+            if (cbToWrite > cbNext)
                 cbToWrite = cbNext;
             rc = RTFileWrite(hFile, pszFilename, cbToWrite, NULL);
             if (RT_FAILURE(rc))
