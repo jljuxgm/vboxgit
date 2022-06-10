@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageSnapshotMerging1.py 75377 2018-11-09 21:24:50Z vboxsync $
+# $Id: tdStorageSnapshotMerging1.py 75378 2018-11-09 21:42:42Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage snapshotting and merging testcase.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 75377 $"
+__version__ = "$Revision: 75378 $"
 
 # Standard Python imports.
 import os;
@@ -205,7 +205,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
 
             except:
                 reporter.errorXcpt('failed to open hd "%s"' % (sFullName));
-                return False;
+                return None;
 
         try:
             if fImmutable:
