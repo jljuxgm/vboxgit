@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: virtual_test_sheriff.py 76625 2019-01-03 17:24:36Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 76625 $"
 
 
 # Standard python imports
@@ -310,7 +310,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 76553 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 76625 $ \n');
 
 
     def eprint(self, sText):
@@ -366,8 +366,10 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                 rcExit = self.eprint(u'Cannot find my user account "%s"!' % (VirtualTestSheriff.ksLoginName,));
         return rcExit;
 
-    def emailAlert(self, uidAuthor, sBodyText):
-        asEmailList = [];
+    def sendEmailAlert(self, uidAuthor, sBodyText):
+        """
+        Sends email alert.
+        """
 
         # Get author email
         self.oDb.execute('SELECT sEmail FROM Users WHERE uid=%s', (uidAuthor,));
@@ -377,29 +379,32 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         else:
             sFrom = g_ksAlertFrom;
 
+        # Gather recipient list.
+        asEmailList = [];
         for sUser in g_asAlertList:
             self.oDb.execute('SELECT sEmail FROM Users WHERE sUsername=%s', (sUser,));
             sEmail = self.oDb.fetchOne();
-            if sEmail is None:
-                # No address to send an alert.
-                return;
-            asEmailList.append(sEmail[0]);
+            if sEmail:
+                asEmailList.append(sEmail[0]);
+        if not asEmailList:
+            return self.eprint('No email addresses to send alter to!');
 
+        # Compose the message.
         oMsg = MIMEMultipart();
         oMsg['From'] = sFrom;
         oMsg['To'] = COMMASPACE.join(asEmailList);
         oMsg['Subject'] = g_ksAlertSubject;
         oMsg.attach(MIMEText(sBodyText, 'plain'))
 
+        # Try send it.
         try:
             oSMTP = smtplib.SMTP(g_ksSmtpHost, g_kcSmtpPort);
             oSMTP.sendmail(sFrom, asEmailList, oMsg.as_string())
             oSMTP.quit()
         except smtplib.SMTPException as oXcpt:
-            rcExit = self.eprint('Failed to send mail: %s' % (oXcpt,));
+            return self.eprint('Failed to send mail: %s' % (oXcpt,));
 
-        return rcExit;
-
+        return 0;
 
     def badTestBoxManagement(self):
         """
@@ -528,7 +533,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
                 sComment = u'Reset testbox #%u (%s) - iRC=%u sStduot=%s' % ( idTestBox, oTestBox.sName, iRC, sStdout);
                 self.vprint(sComment);
-                self.emailAlert(self.uidSelf, sComment);
+                self.sendEmailAlert(self.uidSelf, sComment);
 
             except Exception as oXcpt:
                 rcExit = self.eprint(u'Error reseting testbox #%u (%s): %s\n' % (idTestBox, oTestBox.sName, oXcpt,));
@@ -652,7 +657,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 76553 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 76625 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
