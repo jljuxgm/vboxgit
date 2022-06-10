@@ -1,4 +1,4 @@
-/* $Id: mount.vboxsf.c 77492 2019-02-28 01:55:50Z vboxsync $ */
+/* $Id: mount.vboxsf.c 77534 2019-03-01 15:12:26Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions for Linux - mount(8) helper.
  *
@@ -205,7 +205,7 @@ process_mount_opts(const char *s, struct vbsf_mount_opts *opts)
                     }
                 }
 
-                switch(handler->opt)
+                switch (handler->opt)
                 {
                     case HO_RW:
                         opts->ronly = 0;
