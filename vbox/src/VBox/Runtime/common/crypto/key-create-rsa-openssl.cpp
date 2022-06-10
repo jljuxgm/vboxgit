@@ -1,4 +1,4 @@
-/* $Id: key-create-rsa-openssl.cpp 74295 2018-09-16 15:36:08Z vboxsync $ */
+/* $Id: key-create-rsa-openssl.cpp 74343 2018-09-18 14:16:53Z vboxsync $ */
 /** @file
  * IPRT - Crypto - RSA Key Creation using OpenSSL.
  */
@@ -60,7 +60,7 @@ RTDECL(int) RTCrKeyCreateNewRsa(PRTCRKEY phKey, uint32_t cBits, uint32_t uPubExp
     if (pRsa)
     {
         BIGNUM *pPubExp = BN_new();
-        if (!pPubExp)
+        if (pPubExp)
         {
             if (BN_set_word(pPubExp, uPubExp) != 0)
             {
