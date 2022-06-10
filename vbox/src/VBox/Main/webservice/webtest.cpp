@@ -1,4 +1,4 @@
-/* $Id: webtest.cpp 75793 2018-11-28 17:26:57Z vboxsync $ */
+/* $Id: webtest.cpp 75796 2018-11-28 20:08:12Z vboxsync $ */
 /** @file
  * webtest.cpp:
  *      demo webservice client in C++. This mimics some of the
@@ -28,6 +28,7 @@
 
 #include <iprt/initterm.h>
 #include <iprt/message.h>
+#include <iprt/err.h>
 
 
 static void usage(int exitcode)
