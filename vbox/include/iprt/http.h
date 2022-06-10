@@ -1,4 +1,4 @@
-/* $Id: http.h 73334 2018-07-23 16:52:04Z vboxsync $ */
+/* $Id: http.h 73699 2018-08-15 20:26:03Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -57,6 +57,15 @@ typedef RTHTTPDOWNLDPROGRCALLBACK *PRTHTTPDOWNLDPROGRCALLBACK;
  * @param   phHttp      Where to store the HTTP handle.
  */
 RTR3DECL(int) RTHttpCreate(PRTHTTP phHttp);
+
+/**
+ * Resets a HTTP client instance.
+ *
+ * @returns iprt status code.
+ *
+ * @param   hHttp      Handle to the HTTP interface.
+ */
+RTR3DECL(int) RTHttpReset(RTHTTP hHttp);
 
 /**
  * Destroys a HTTP client instance.
@@ -309,6 +318,42 @@ RTR3DECL(int) RTHttpGatherCaCertsInFile(const char *pszCaFile, uint32_t fFlags, 
  */
 RTR3DECL(int) RTHttpSetDownloadProgressCallback(RTHTTP hHttp, PRTHTTPDOWNLDPROGRCALLBACK pfnDownloadProgress, void *pvUser);
 
+// ----8<--------8<---- XXX: uwe: quick and dirty curl wrappers for OCI
+
+typedef DECLCALLBACK(size_t) RTHTTPREADCALLBACK(void *pbDst, size_t cbItem, size_t cItems, void *pvUser);
+typedef RTHTTPREADCALLBACK *PRTHTTPREADCALLBACK;
+
+#define RT_HTTP_READCALLBACK_ABORT 0x10000000 /* CURL_READFUNC_ABORT */
+
+RTR3DECL(int) RTHttpSetReadCallback(RTHTTP hHttp, PRTHTTPREADCALLBACK pfnRead, void *pvUser);
+
+
+typedef DECLCALLBACK(size_t) RTHTTPWRITECALLBACK(char *pbSrc, size_t cbItem, size_t cItems, void *pvUser);
+typedef RTHTTPWRITECALLBACK *PRTHTTPWRITECALLBACK;
+
+RTR3DECL(int) RTHttpSetWriteCallback(RTHTTP hHttp, PRTHTTPWRITECALLBACK pfnWrite, void *pvUser);
+RTR3DECL(int) RTHttpSetWriteHeaderCallback(RTHTTP hHttp, PRTHTTPWRITECALLBACK pfnWrite, void *pvUser);
+
+
+/* these are thin wrappers for setting one or a few related curl options */
+RTR3DECL(int) RTHttpRawSetUrl(RTHTTP hHttp, const char *pszUrl);
+
+RTR3DECL(int) RTHttpRawSetGet(RTHTTP hHttp);
+RTR3DECL(int) RTHttpRawSetHead(RTHTTP hHttp);
+RTR3DECL(int) RTHttpRawSetPost(RTHTTP hHttp);
+RTR3DECL(int) RTHttpRawSetPut(RTHTTP hHttp);
+RTR3DECL(int) RTHttpRawSetDelete(RTHTTP hHttp);
+RTR3DECL(int) RTHttpRawSetCustomRequest(RTHTTP hHttp, const char *pszVerb);
+
+RTR3DECL(int) RTHttpRawSetPostFields(RTHTTP hHttp, const void *pv, size_t cb);
+RTR3DECL(int) RTHttpRawSetInfileSize(RTHTTP hHttp, RTFOFF cb);
+
+RTR3DECL(int) RTHttpRawSetVerbose(RTHTTP hHttp, bool fValue);
+RTR3DECL(int) RTHttpRawSetTimeout(RTHTTP hHttp, long sec);
+
+RTR3DECL(int) RTHttpRawPerform(RTHTTP hHttp);
+
+RTR3DECL(int) RTHttpRawGetResponseCode(RTHTTP hHttp, long *plCode);
 
 /** @} */
 
