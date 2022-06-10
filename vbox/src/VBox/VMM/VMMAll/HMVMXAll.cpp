@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 76722 2019-01-09 08:15:04Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 76798 2019-01-14 06:07:05Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -652,7 +652,6 @@ VMM_INT_DECL(bool) HMVmxCanExecuteGuest(PVMCPU pVCpu, PCCPUMCTX pCtx)
 {
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     Assert(HMIsEnabled(pVM));
-    Assert(!CPUMIsGuestVmxEnabled(pCtx));
     Assert(   ( pVM->hm.s.vmx.fUnrestrictedGuest && !pVM->hm.s.vmx.pRealModeTSS)
            || (!pVM->hm.s.vmx.fUnrestrictedGuest && pVM->hm.s.vmx.pRealModeTSS));
 
