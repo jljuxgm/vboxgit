@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 78157 2019-04-17 13:19:39Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 78164 2019-04-17 14:16:01Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -245,6 +245,8 @@ static bool vboxSvcClipboardReturnMsg (VBOXCLIPBOARDCLIENTDATA *pClient, VBOXHGC
 
 void vboxSvcClipboardReportMsg (VBOXCLIPBOARDCLIENTDATA *pClient, uint32_t u32Msg, uint32_t u32Formats)
 {
+    AssertPtrReturnVoid(pClient);
+
     if (VBoxSvcClipboardLock())
     {
         switch (u32Msg)

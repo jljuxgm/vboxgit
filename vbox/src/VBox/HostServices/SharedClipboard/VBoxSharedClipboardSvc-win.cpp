@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 78160 2019-04-17 13:43:22Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 78164 2019-04-17 14:16:01Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -559,6 +559,11 @@ DECLCALLBACK(int) VBoxClipboardThread (RTTHREAD hThreadSelf, void *pvUser)
  */
 static int vboxClipboardSyncInternal(PVBOXCLIPBOARDCONTEXT pCtx)
 {
+    AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
+
+    if (pCtx->pClient == NULL) /* If we don't have any client data (yet), bail out. */
+        return VINF_SUCCESS;
+
     uint32_t uFormats;
     int rc = VBoxClipboardWinGetFormats(&pCtx->Win, &uFormats);
     if (RT_SUCCESS(rc))
