@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 74885 2018-10-17 15:13:30Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 74914 2018-10-18 12:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -607,8 +607,11 @@ public:
         /** Returns the scale-factor. */
         double scaleFactor(const QUuid &aID, const int uScreenIndex);
         QList<double> scaleFactors(const QUuid &aID);
-        /** Defines the @a dScaleFactor. */
+        /** Saves the @a dScaleFactor for the monitor with @a uScreenIndex. If the existing scale factor
+          * list (from extra data) does not have scale factors for the screens with ids in [0, uScreenIndex)
+          * the this function appends a default scale factor for said screens.*/
         void setScaleFactor(double dScaleFactor, const QUuid &aID, const int uScreenIndex);
+        /** Replaces the scale factor list of the machine with @a aID with @a scaleFactors. */
         void setScaleFactors(const QList<double> &scaleFactors, const QUuid &aID);
 
         /** Returns the scaling optimization type. */

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 74885 2018-10-17 15:13:30Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 74914 2018-10-18 12:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4042,7 +4042,6 @@ void UIExtraDataManager::setScaleFactor(double dScaleFactor, const QUuid &aID, c
     }
 
     data[uScreenIndex] = QString::number(dScaleFactor);
-
     setExtraDataStringList(GUI_ScaleFactor, data, aID);
 }
 

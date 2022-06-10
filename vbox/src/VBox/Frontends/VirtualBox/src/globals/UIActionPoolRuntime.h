@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 74914 2018-10-18 12:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -76,7 +76,6 @@ enum UIActionIndexRT
     UIActionIndexRT_M_View_M_StatusBar,
     UIActionIndexRT_M_View_M_StatusBar_S_Settings,
     UIActionIndexRT_M_View_M_StatusBar_T_Visibility,
-    UIActionIndexRT_M_View_M_ScaleFactor,
 
     /* 'Input' menu actions: */
     UIActionIndexRT_M_Input,
@@ -250,7 +249,7 @@ protected:
     /** Updates 'View' : 'Status Bar' menu. */
     void updateMenuViewStatusBar();
     /** Updates 'View' : 'Scale Factor' menu. */
-    void updateMenuViewScaleFactor();
+    void updateMenuViewScaleFactor(QMenu *pMenu);
     /** Updates 'View' : 'Virtual Screen #' @a pMenu (Normal, Scale). */
     void updateMenuViewScreen(QMenu *pMenu);
     /** Updates 'View' : 'Virtual Screen #' @a pMenu (Fullscreen, Seamless). */

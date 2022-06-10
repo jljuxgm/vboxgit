@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 74914 2018-10-18 12:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -1309,7 +1309,6 @@ void UIMenuBarEditorWidget::prepareMenuView()
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_M_MenuBar));
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_M_StatusBar));
         pMenu->addSeparator();
-        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_M_ScaleFactor));
         prepareNamedAction(pMenu, tr("Virtual Screen Resize"),
                            UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize,
                            gpConverter->toInternalString(UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize));

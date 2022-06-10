@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 74805 2018-10-12 15:23:38Z vboxsync $ */
+/* $Id: UIActionPool.cpp 74914 2018-10-18 12:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -2050,4 +2050,3 @@ bool UIActionPool::addMenu(QList<QMenu*> &menuList, UIAction *pAction, bool fRea
 
 
 #include "UIActionPool.moc"
-
