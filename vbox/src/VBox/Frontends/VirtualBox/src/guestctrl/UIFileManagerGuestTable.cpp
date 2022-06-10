@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 76300 2018-12-19 19:17:55Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 76301 2018-12-19 19:24:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -28,6 +28,7 @@
 # include "QILabel.h"
 # include "UIActionPool.h"
 # include "UIErrorString.h"
+# include "UICustomFileSystemModel.h"
 # include "UIFileManager.h"
 # include "UIFileManagerGuestTable.h"
 # include "UIMessageCenter.h"
