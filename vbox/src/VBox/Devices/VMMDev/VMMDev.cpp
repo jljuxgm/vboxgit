@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 75769 2018-11-27 12:30:00Z vboxsync $ */
+/* $Id: VMMDev.cpp 75808 2018-11-29 07:10:38Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1846,7 +1846,7 @@ static int vmmdevReqHandler_HGCMCancel2(PVMMDEV pThis, VMMDevRequestHeader *pReq
         return vmmdevHGCMCancel2(pThis, pReq->physReqToCancel);
     }
 
-    Log(("VMMDevReq_HGCMConnect2: HGCM Connector is NULL!\n"));
+    Log(("VMMDevReq_HGCMCancel2: HGCM Connector is NULL!\n"));
     return VERR_NOT_SUPPORTED;
 }
 

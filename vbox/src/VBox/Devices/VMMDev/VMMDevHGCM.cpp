@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 75771 2018-11-27 12:53:36Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 75808 2018-11-29 07:10:38Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -286,6 +286,7 @@ static PVBOXHGCMCMD vmmdevHGCMCmdAlloc(PVMMDEV pThis, VBOXHGCMCMDTYPE enmCmdType
         pCmd->enmCmdType = enmCmdType;
         pCmd->GCPhys     = GCPhys;
         pCmd->cbRequest  = cbRequest;
+        pCmd->fRequestor = fRequestor;
 
         if (enmCmdType == VBOXHGCMCMDTYPE_CALL)
         {
