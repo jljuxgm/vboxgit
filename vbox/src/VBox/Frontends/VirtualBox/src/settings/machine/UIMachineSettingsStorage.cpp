@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 77326 2019-02-15 09:46:05Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 77341 2019-02-18 08:49:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3100,7 +3100,8 @@ void UIMachineSettingsStorage::sltChooseExistingMedium()
     QUuid uMediumId;
     int iResult = vboxGlobal().openMediumSelectorDialog(this, m_pMediumIdHolder->type(), uMediumId,
                                                         strMachineFolder, m_strMachineName,
-                                                        m_strMachineGuestOSTypeId, true /* enable create action: */);
+                                                        m_strMachineGuestOSTypeId,
+                                                        true /* enable create action: */);
 
     if (iResult == UIMediumSelector::ReturnCode_Rejected ||
         (iResult == UIMediumSelector::ReturnCode_Accepted && uMediumId.isNull()))
@@ -3812,7 +3813,8 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType enmDeviceType)
     QUuid uMediumId;
     int iResult = vboxGlobal().openMediumSelectorDialog(this, UIMediumDefs::mediumTypeToLocal(enmDeviceType), uMediumId,
                                                         strMachineFolder, m_strMachineName,
-                                                        m_strMachineGuestOSTypeId, true /* enable cr1eate action: */);
+                                                        m_strMachineGuestOSTypeId,
+                                                        true /* enable cr1eate action: */);
 
     /* Continue only if iResult is either UIMediumSelector::ReturnCode_Accepted or UIMediumSelector::ReturnCode_LeftEmpty: */
     /* If iResult is UIMediumSelector::ReturnCode_Accepted then we have to have a valid uMediumId: */
