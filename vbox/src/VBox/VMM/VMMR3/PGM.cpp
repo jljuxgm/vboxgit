@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 73266 2018-07-20 14:27:20Z vboxsync $ */
+/* $Id: PGM.cpp 73268 2018-07-20 14:49:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2598,13 +2598,6 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
         if (   idxGst < RT_ELEMENTS(g_aPgmGuestModeData)
             && g_aPgmGuestModeData[idxGst].pfnRelocate)
             g_aPgmGuestModeData[idxGst].pfnRelocate(pVCpu, offDelta);
-        else
-            AssertFailed();
-
-        uintptr_t idxBth = pVCpu->pgm.s.idxBothModeData;
-        if (    idxBth < RT_ELEMENTS(g_aPgmBothModeData)
-            && g_aPgmBothModeData[idxBth].pfnRelocate)
-            g_aPgmBothModeData[idxBth].pfnRelocate(pVCpu, offDelta);
         else
             AssertFailed();
     }
