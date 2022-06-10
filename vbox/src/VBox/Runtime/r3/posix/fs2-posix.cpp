@@ -1,4 +1,4 @@
-/* $Id: fs2-posix.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: fs2-posix.cpp 77754 2019-03-18 12:23:18Z vboxsync $ */
 /** @file
  * IPRT - File System Helpers, POSIX, Part 2.
  */
@@ -64,9 +64,9 @@ void rtFsConvertStatToObjInfo(PRTFSOBJINFO pObjInfo, const struct stat *pStat, c
     RTTimeSpecAddNano(RTTimeSpecSetSeconds(&pObjInfo->AccessTime,       pStat->st_atime),     pStat->st_atimensec);
     RTTimeSpecAddNano(RTTimeSpecSetSeconds(&pObjInfo->ModificationTime, pStat->st_mtime),     pStat->st_mtimensec);
     RTTimeSpecAddNano(RTTimeSpecSetSeconds(&pObjInfo->ChangeTime,       pStat->st_ctime),     pStat->st_ctimensec);
-#ifdef HAVE_STAT_BIRTHTIME
+# ifdef HAVE_STAT_BIRTHTIME
     RTTimeSpecAddNano(RTTimeSpecSetSeconds(&pObjInfo->BirthTime,        pStat->st_birthtime), pStat->st_birthtimensec);
-#endif
+# endif
 
 #elif defined(HAVE_STAT_TIMESPEC_BRIEF)
     RTTimeSpecSetTimespec(&pObjInfo->AccessTime,       &pStat->st_atim);
@@ -95,7 +95,6 @@ void rtFsConvertStatToObjInfo(PRTFSOBJINFO pObjInfo, const struct stat *pStat, c
 #ifndef HAVE_STAT_BIRTHTIME
     pObjInfo->BirthTime = pObjInfo->ChangeTime;
 #endif
-
 
     /* the file mode */
     RTFMODE fMode = pStat->st_mode & RTFS_UNIX_MASK;

@@ -1,4 +1,4 @@
-/* $Id: fs.h 77231 2019-02-08 23:18:13Z vboxsync $ */
+/* $Id: fs.h 77754 2019-03-18 12:23:18Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFs header.
  */
@@ -34,6 +34,9 @@
 #ifndef RT_OS_WINDOWS
 # include <sys/stat.h>
 #endif
+#ifdef RT_OS_FREEBSD
+# include <osreldate.h>
+#endif
 
 RT_C_DECLS_BEGIN
 
@@ -61,6 +64,20 @@ int     rtNtQueryFsType(HANDLE hHandle, PRTFSTYPE penmType);
 #  define HAVE_STAT_TIMESPEC_BRIEF
 # else
 #  define HAVE_STAT_NSEC
+# endif
+#endif
+
+#ifdef RT_OS_FREEBSD
+# if __FreeBSD_version >= 500000 /* 5.0 */
+#  define HAVE_STAT_BIRTHTIME
+# endif
+# if __FreeBSD_version >= 900000 /* 9.0 */
+#  define HAVE_STAT_TIMESPEC_BRIEF
+# else
+#  ifndef __BSD_VISIBLE
+#   define __BSD_VISIBLE
+#  endif
+#  define HAVE_STAT_TIMESPEC
 # endif
 #endif
 
