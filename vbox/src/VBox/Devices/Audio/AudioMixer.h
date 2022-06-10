@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 73403 2018-07-31 08:59:13Z vboxsync $ */
+/* $Id: AudioMixer.h 73421 2018-08-01 12:46:06Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -71,8 +71,8 @@ typedef struct AUDMIXSTREAM
     PPDMIAUDIOCONNECTOR     pConn;
     /** Pointer to PDM audio stream this mixer stream handles. */
     PPDMAUDIOSTREAM         pStream;
-    /** Last read (recording) / written (playback) timestamp (in ms). */
-    uint64_t                tsLastReadWrittenMs;
+    /** Last read (recording) / written (playback) timestamp (in ns). */
+    uint64_t                tsLastReadWrittenNs;
     /** The stream's circular buffer for temporarily
      *  holding (raw) device audio data. */
     PRTCIRCBUF              pCircBuf;
@@ -202,8 +202,8 @@ typedef struct AUDMIXSINK
     PDMAUDIOVOLUME          VolumeCombined;
     /** Timestamp since last update (in ms). */
     uint64_t                tsLastUpdatedMs;
-    /** Last read (recording) / written (playback) timestamp (in ms). */
-    uint64_t                tsLastReadWrittenMs;
+    /** Last read (recording) / written (playback) timestamp (in ns). */
+    uint64_t                tsLastReadWrittenNs;
 #ifdef VBOX_AUDIO_MIXER_DEBUG
     struct
     {
