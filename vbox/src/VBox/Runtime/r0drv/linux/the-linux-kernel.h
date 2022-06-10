@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: the-linux-kernel.h 77198 2019-02-07 15:15:22Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -127,6 +127,9 @@
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 71)
 # include <linux/cpu.h>
 # include <linux/notifier.h>
+#endif
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 1, 0)
+# include <uapi/linux/mman.h>
 #endif
 /* For the basic additions module */
 #include <linux/pci.h>
