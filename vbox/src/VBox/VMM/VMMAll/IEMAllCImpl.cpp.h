@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 74571 2018-10-02 06:58:07Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 74573 2018-10-02 09:34:42Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4511,7 +4511,7 @@ IEM_CIMPL_DEF_3(iemCImpl_LarLsl_u64, uint64_t *, pu64Dst, uint16_t, uSel, bool, 
 
     bool         fDescOk = true;
     IEMSELDESC   Desc;
-    VBOXSTRICTRC rcStrict = iemCImpl_LoadDescHelper(pVCpu, uSel, false /*fAllowSysDesc*/, &Desc);
+    VBOXSTRICTRC rcStrict = iemCImpl_LoadDescHelper(pVCpu, uSel, true /*fAllowSysDesc*/, &Desc);
     if (rcStrict == VINF_SUCCESS)
     {
         /*
