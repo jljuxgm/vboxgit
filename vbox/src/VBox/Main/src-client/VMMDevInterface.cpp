@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 75990 2018-12-05 19:51:01Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 75991 2018-12-05 20:14:57Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -826,7 +826,7 @@ DECLCALLBACK(void) VMMDev::drvReset(PPDMDRVINS pDrvIns)
     RT_NOREF(pDrvIns);
     LogFlow(("VMMDev::drvReset: iInstance=%d\n", pDrvIns->iInstance));
 #ifdef VBOX_WITH_HGCM
-    HGCMHostReset();
+    HGCMHostReset(false /*fForShutdown*/);
 #endif
 }
 

@@ -1,4 +1,4 @@
-/* $Id: HGCM.h 75990 2018-12-05 19:51:01Z vboxsync $ */
+/* $Id: HGCM.h 75991 2018-12-05 20:14:57Z vboxsync $ */
 /** @file
  * HGCM - Host-Guest Communication Manager.
  */
@@ -33,7 +33,7 @@ RT_C_DECLS_BEGIN
 int HGCMHostInit(void);
 int HGCMHostShutdown(bool fUvmIsInvalid = false);
 
-int HGCMHostReset(void);
+int HGCMHostReset(bool fForShutdown);
 
 int HGCMHostLoad(const char *pszServiceLibrary, const char *pszServiceName, PUVM pUVM, PPDMIHGCMPORT pHgcmPort);
 
