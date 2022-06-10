@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 72930 2018-07-06 11:10:59Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 72932 2018-07-06 11:30:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -44,8 +44,6 @@ protected:
     /** Defines current @a enmStorageType. */
     void setStorageType(StorageType enmStorageType);
 
-    /** Holds the storage type container instance. */
-    QGroupBox    *m_pTypeCnt;
     /** Holds the Local Filesystem radio-button. */
     QRadioButton *m_pTypeLocalFilesystem;
     /** Holds the Cloud Service Provider radio-button. */

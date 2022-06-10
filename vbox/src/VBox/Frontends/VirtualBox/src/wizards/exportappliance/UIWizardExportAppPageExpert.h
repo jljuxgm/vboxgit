@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 72920 2018-07-05 14:51:50Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 72932 2018-07-06 11:30:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -93,6 +93,8 @@ private:
     QGroupBox *m_pSelectorCnt;
     /** Holds the appliance widget container reference. */
     QGroupBox *m_pApplianceCnt;
+    /** Holds the storage type container instance. */
+    QGroupBox *m_pTypeCnt;
     /** Holds the settings widget container reference. */
     QGroupBox *m_pSettingsCnt;
 };
