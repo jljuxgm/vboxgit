@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 72927 2018-07-06 07:29:16Z vboxsync $ */
+/* $Id: UIFDCreationDialog.cpp 73018 2018-07-10 08:49:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -180,12 +180,13 @@ void UIFDCreationDialog::accept()
         return;
 
     CVirtualBox vbox = vboxGlobal().virtualBox();
+    QString strMediumLocation = m_pFilePathselector->path();
 
-    CMedium newMedium = vbox.CreateMedium(mediumFormats[0].GetName(), m_pFilePathselector->path(),
+    CMedium newMedium = vbox.CreateMedium(mediumFormats[0].GetName(), strMediumLocation,
                                           KAccessMode_ReadWrite, KDeviceType_Floppy);
     if (!vbox.isOk())
     {
-        msgCenter().cannotCreateMediumStorage(vbox, m_pFilePathselector->path(), this);
+        msgCenter().cannotCreateMediumStorage(vbox, strMediumLocation, this);
         return;
     }
 
@@ -197,7 +198,7 @@ void UIFDCreationDialog::accept()
 
     if (!newMedium.isOk())
     {
-        msgCenter().cannotCreateMediumStorage(newMedium, m_pFilePathselector->path(), this);
+        msgCenter().cannotCreateMediumStorage(newMedium, strMediumLocation, this);
         return;
     }
     /* Show creation progress: */
@@ -207,7 +208,7 @@ void UIFDCreationDialog::accept()
 
     if (!progress.isOk() || progress.GetResultCode() != 0)
     {
-        msgCenter().cannotCreateHardDiskStorage(progress, m_pFilePathselector->path(), this);
+        msgCenter().cannotCreateHardDiskStorage(progress, strMediumLocation, this);
         return;
     }
     /* Store the id of the newly create medium: */
@@ -215,7 +216,8 @@ void UIFDCreationDialog::accept()
 
     /* Notify VBoxGlobal about the new medium: */
     vboxGlobal().createMedium(UIMedium(newMedium, UIMediumType_Floppy, KMediumState_Created));
-
+    /* Notify VBoxGlobal about the new medium: */
+    vboxGlobal().updateRecentlyUsedMediumListAndFolder(UIMediumType_Floppy, strMediumLocation);
 
     /* After a successful creation and initilization of the floppy disk we call base class accept
        effectively closing this dialog: */
