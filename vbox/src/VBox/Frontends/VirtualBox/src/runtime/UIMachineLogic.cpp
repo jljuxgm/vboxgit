@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 73976 2018-08-30 12:03:58Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 73980 2018-08-30 14:39:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -654,6 +654,11 @@ void UIMachineLogic::sltMachineStateChanged()
                 return;
             }
             break;
+        }
+        case KMachineState_Saving:
+        {
+            /* Insert a host combo release if press has been inserted: */
+            typeHostKeyComboPressRelease(false);
         }
 #ifdef VBOX_WS_X11
         case KMachineState_Starting:
