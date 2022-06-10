@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStart.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
+/* $Id: VBoxAutostartStart.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, start machines during system boot.
  */
@@ -22,7 +22,7 @@
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/errorprint.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/log.h>
 #include <iprt/message.h>
 #include <iprt/stream.h>

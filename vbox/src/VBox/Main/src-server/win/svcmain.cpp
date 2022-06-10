@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 76092 2018-12-09 23:19:16Z vboxsync $ */
+/* $Id: svcmain.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * SVCMAIN - COM out-of-proc server main entry
  */
@@ -33,7 +33,7 @@
 
 #include "svchlp.h"
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/buildconfig.h>
 #include <iprt/initterm.h>
 #include <iprt/string.h>

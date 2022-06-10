@@ -1,4 +1,4 @@
-/* $Id: server_module.cpp 72975 2018-07-08 13:46:07Z vboxsync $ */
+/* $Id: server_module.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  *
  * XPCOM server process helper module implementation functions
@@ -47,7 +47,7 @@
 #include "server.h"
 #include "Logging.h"
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <iprt/assert.h>
 #include <iprt/param.h>

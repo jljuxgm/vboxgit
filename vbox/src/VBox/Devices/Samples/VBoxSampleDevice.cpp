@@ -1,4 +1,4 @@
-/* $Id: VBoxSampleDevice.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxSampleDevice.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox Sample Device.
  */
@@ -22,7 +22,7 @@
 #define LOG_GROUP LOG_GROUP_MISC
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/version.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 
 #include <iprt/assert.h>

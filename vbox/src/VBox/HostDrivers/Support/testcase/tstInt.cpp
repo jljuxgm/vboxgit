@@ -1,4 +1,4 @@
-/* $Id: tstInt.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tstInt.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * SUP Testcase - Test the interrupt gate feature of the support library.
  */
@@ -32,7 +32,7 @@
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/vmm.h>
 #include <VBox/vmm/gvmm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/param.h>
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/initterm.h>

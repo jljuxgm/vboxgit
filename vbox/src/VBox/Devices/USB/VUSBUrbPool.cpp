@@ -1,4 +1,4 @@
-/* $Id: VUSBUrbPool.cpp 73925 2018-08-28 09:33:32Z vboxsync $ */
+/* $Id: VUSBUrbPool.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Virtual USB - URB pool.
  */
@@ -21,7 +21,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_VUSB
 #include <VBox/log.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/critsect.h>
 

@@ -1,4 +1,4 @@
-/* $Id: HostPowerWin.cpp 76380 2018-12-22 22:52:41Z vboxsync $ */
+/* $Id: HostPowerWin.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  *
  * VirtualBox interface to host's power notification service
@@ -28,7 +28,7 @@ extern "C" {
 }
 
 #include <VBox/com/ptr.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include "HostPower.h"
 #include "Logging.h"
 

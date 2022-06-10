@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -25,7 +25,7 @@
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
 #include <iprt/env.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
@@ -437,7 +437,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 73097 2018-07-12 21:06:33Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 76474 2018-12-25 07:21:57Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -961,7 +961,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1166,7 +1166,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2374,7 +2374,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 73097 $";
+                static const char s_szRev[] = "$Revision: 76474 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 70294 2017-12-21 16:42:22Z vboxsync $ */
+/* $Id: VBoxUsbMon.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include "VBoxUsbMon.h"
 #include "../cmn/VBoxUsbIdc.h"
-#include <vbox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/usblib.h>
 #include <excpt.h>
 

@@ -1,4 +1,4 @@
-/* $Id: DBGCDumpImage.cpp 73148 2018-07-16 09:57:37Z vboxsync $ */
+/* $Id: DBGCDumpImage.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -23,7 +23,7 @@
 #include <VBox/dbg.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/param.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 
 #include <iprt/assert.h>

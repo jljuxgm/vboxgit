@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 76409 2018-12-23 18:27:21Z vboxsync $ */
+/* $Id: slirp_dns.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -20,7 +20,7 @@
 # include <paths.h>
 #endif
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/vmm/pdmdrv.h>
 #include <iprt/assert.h>
 #include <iprt/file.h>

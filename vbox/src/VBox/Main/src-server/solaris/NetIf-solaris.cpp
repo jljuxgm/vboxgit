@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -22,7 +22,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_MAIN
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/ctype.h>
 #include <iprt/mem.h>
 #include <iprt/path.h>

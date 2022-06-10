@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.cpp 75076 2018-10-25 14:42:55Z vboxsync $ */
+/* $Id: WebMWriter.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * WebMWriter.cpp - WebM container handling.
  */
@@ -35,7 +35,7 @@
 #include <iprt/buildconfig.h>
 #include <iprt/cdefs.h>
 #include <iprt/critsect.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/rand.h>
 #include <iprt/string.h>

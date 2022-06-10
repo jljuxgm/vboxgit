@@ -1,4 +1,4 @@
-/* $Id: tstVD.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tstVD.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Simple VBox HDD container test utility.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <VBox/vd.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/dir.h>

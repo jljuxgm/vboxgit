@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 76190 2018-12-12 16:58:55Z vboxsync $ */
+/* $Id: VBoxNetDhcpd.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -28,7 +28,7 @@
 
 
 #include <iprt/param.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 #include <iprt/initterm.h>
 #include <iprt/message.h>

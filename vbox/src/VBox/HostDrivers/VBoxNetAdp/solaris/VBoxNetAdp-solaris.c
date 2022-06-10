@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-solaris.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetAdp-solaris.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxNetAdapter - Network Adapter Driver (Host), Solaris Specific Code.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_NET_ADP_DRV
 #include <VBox/log.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/version.h>
 #include <iprt/assert.h>
 #include <iprt/semaphore.h>

@@ -1,4 +1,4 @@
-/* $Id: loadgeneratorR0.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: loadgeneratorR0.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Load Generator, Ring-0 Service.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/mp.h>
 #include <VBox/sup.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 
 

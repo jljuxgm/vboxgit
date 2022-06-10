@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceMain.cpp 69281 2017-10-25 10:59:57Z vboxsync $ */
+/* $Id: VBoxDTraceMain.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxDTrace main module.
  */
@@ -34,7 +34,7 @@
 *********************************************************************************************************************************/
 #include <VBox/ExtPack/ExtPack.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/version.h>
 #include <iprt/string.h>
 #include <iprt/param.h>

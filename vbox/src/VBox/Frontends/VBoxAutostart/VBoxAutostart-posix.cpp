@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-posix.cpp 69751 2017-11-19 13:38:19Z vboxsync $ */
+/* $Id: VBoxAutostart-posix.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service.
  */
@@ -30,7 +30,7 @@
 #include <VBox/com/listeners.h>
 #include <VBox/com/VirtualBox.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <VBox/version.h>
 

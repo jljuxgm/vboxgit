@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 76298 2018-12-19 18:17:50Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -41,7 +41,7 @@
 #include <iprt/cpp/utils.h>
 
 #include <VBox/param.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <VBox/settings.h>
 

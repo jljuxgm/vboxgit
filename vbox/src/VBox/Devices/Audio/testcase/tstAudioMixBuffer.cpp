@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 73544 2018-08-07 12:28:16Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>
 #include <iprt/rand.h>

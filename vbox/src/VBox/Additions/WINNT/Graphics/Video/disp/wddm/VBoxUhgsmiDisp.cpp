@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiDisp.cpp 76379 2018-12-22 22:48:10Z vboxsync $ */
+/* $Id: VBoxUhgsmiDisp.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -21,7 +21,7 @@
 #define VBOXUHGSMID3D_GET(_p) VBOXUHGSMID3D_GET_PRIVATE(_p, VBOXUHGSMI_PRIVATE_D3D)
 
 #include <iprt/mem.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 DECLCALLBACK(int) vboxUhgsmiD3DBufferDestroy(PVBOXUHGSMI_BUFFER pBuf)
 {

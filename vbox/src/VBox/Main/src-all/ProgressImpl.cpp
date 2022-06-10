@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 74804 2018-10-12 15:09:44Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -38,7 +38,7 @@
 #include <iprt/semaphore.h>
 #include <iprt/cpp/utils.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include "AutoCaller.h"
 
 #include "VBoxEvents.h"

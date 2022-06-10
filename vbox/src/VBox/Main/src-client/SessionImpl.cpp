@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 75496 2018-11-15 23:28:28Z vboxsync $ */
+/* $Id: SessionImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -25,7 +25,7 @@
 
 #include "AutoCaller.h"
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/process.h>
 
 

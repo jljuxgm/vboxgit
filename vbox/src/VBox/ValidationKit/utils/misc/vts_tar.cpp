@@ -1,4 +1,4 @@
-/* $Id: vts_tar.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: vts_tar.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - tar like utility.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/zip.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/message.h>
 

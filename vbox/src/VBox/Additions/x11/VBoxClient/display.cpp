@@ -1,4 +1,4 @@
-/* $Id: display.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: display.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -17,7 +17,7 @@
 
 #include "VBoxClient.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>

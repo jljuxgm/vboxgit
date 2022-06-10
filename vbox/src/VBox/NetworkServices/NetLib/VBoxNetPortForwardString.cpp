@@ -1,4 +1,4 @@
-/* $Id: VBoxNetPortForwardString.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
+/* $Id: VBoxNetPortForwardString.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
@@ -29,7 +29,7 @@
 #include <iprt/cdefs.h>
 #include <iprt/cidr.h>
 #include <iprt/ctype.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/getopt.h>
 #include <iprt/net.h>
 #include <iprt/param.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxPS2NT.cpp 71887 2018-04-17 20:53:38Z vboxsync $ */
+/* $Id: VBoxPS2NT.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox NT4 Mouse Driver
  */
@@ -18,7 +18,7 @@
 #define LOG_GROUP LOG_GROUP_DRV_MOUSE
 #include <iprt/asm.h>
 #include <iprt/initterm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 
 #include <stdarg.h>

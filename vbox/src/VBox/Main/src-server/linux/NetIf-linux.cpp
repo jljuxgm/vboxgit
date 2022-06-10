@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 74530 2018-09-28 17:45:20Z vboxsync $ */
+/* $Id: NetIf-linux.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -22,7 +22,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_MAIN
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <list>
 #include <sys/ioctl.h>
 #include <sys/socket.h>

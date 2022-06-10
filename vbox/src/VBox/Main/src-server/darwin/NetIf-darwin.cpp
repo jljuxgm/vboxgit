@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -31,7 +31,7 @@
 
 #define LOG_GROUP LOG_GROUP_MAIN
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/alloc.h>
 
 #include <string.h>

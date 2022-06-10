@@ -1,4 +1,4 @@
-/* $Id: vbox-libhal.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vbox-libhal.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  *
  * Module to dynamically load libhal and libdbus and load all symbols
@@ -19,7 +19,7 @@
 
 #include "vbox-libhal.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/ldr.h>
 
 /**

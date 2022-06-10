@@ -1,4 +1,4 @@
-/* $Id: cidet-core.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: cidet-core.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - Simple Instructions.
  */
@@ -67,7 +67,7 @@
 #include <iprt/rand.h>
 #include <iprt/param.h>
 #include <iprt/string.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #if defined(CIDET_DPRINTF_ENABLED) || defined(CIDET_DEBUG_DISAS)
 # include <VBox/dis.h>
 # include <iprt/stream.h>

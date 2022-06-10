@@ -1,4 +1,4 @@
-/* $Id: tstLow.cpp 69500 2017-10-28 15:14:05Z vboxsync $  */
+/* $Id: tstLow.cpp 76474 2018-12-25 07:21:57Z vboxsync $  */
 /** @file
  * SUP Testcase - Low (<4GB) Memory Allocate interface (ring 3).
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <VBox/sup.h>
 #include <VBox/param.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>

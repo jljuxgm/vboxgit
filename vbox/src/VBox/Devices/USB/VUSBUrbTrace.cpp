@@ -1,4 +1,4 @@
-/* $Id: VUSBUrbTrace.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VUSBUrbTrace.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -22,7 +22,7 @@
 #define LOG_GROUP LOG_GROUP_DRV_VUSB
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/vmapi.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/alloc.h>
 #include <VBox/log.h>
 #include <iprt/time.h>

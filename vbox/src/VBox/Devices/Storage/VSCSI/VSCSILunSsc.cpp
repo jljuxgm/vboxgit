@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSsc.cpp 69304 2017-10-25 13:41:16Z vboxsync $ */
+/* $Id: VSCSILunSsc.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SSC LUN implementation (Streaming tape)
  */
@@ -21,7 +21,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_VSCSI
 #include <VBox/log.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/types.h>
 #include <VBox/vscsi.h>
 #include <iprt/assert.h>

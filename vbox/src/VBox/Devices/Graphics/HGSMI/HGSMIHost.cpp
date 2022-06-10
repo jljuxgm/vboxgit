@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.cpp 71904 2018-04-18 16:43:38Z vboxsync $ */
+/* $Id: HGSMIHost.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), host part.
  *
@@ -66,7 +66,7 @@
 #include <iprt/string.h>
 
 #include <VBox/AssertGuest.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #define LOG_GROUP LOG_GROUP_HGSMI
 #include <VBox/log.h>
 #include <VBox/vmm/ssm.h>

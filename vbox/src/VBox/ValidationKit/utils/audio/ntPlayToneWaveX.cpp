@@ -1,4 +1,4 @@
-/* $Id: ntPlayToneWaveX.cpp 69227 2017-10-24 15:19:58Z vboxsync $ */
+/* $Id: ntPlayToneWaveX.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * ????
  */
@@ -34,7 +34,7 @@
 #include <iprt/initterm.h>
 #include <iprt/message.h>
 #include <iprt/stream.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 #define _USE_MATH_DEFINES
 #include <math.h>

@@ -1,4 +1,4 @@
-/* $Id: alsa_stubs.c 73642 2018-08-14 08:48:55Z vboxsync $ */
+/* $Id: alsa_stubs.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
@@ -18,7 +18,7 @@
 #include <iprt/assert.h>
 #include <iprt/ldr.h>
 #include <VBox/log.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <alsa/asoundlib.h>
 

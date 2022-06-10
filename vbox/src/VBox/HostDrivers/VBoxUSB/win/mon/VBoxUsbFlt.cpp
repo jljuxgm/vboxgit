@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 70294 2017-12-21 16:42:22Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -34,7 +34,7 @@
 #include <VBox/types.h>
 #include <iprt/process.h>
 #include <iprt/assert.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <iprt/assert.h>
 

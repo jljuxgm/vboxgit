@@ -1,4 +1,4 @@
-/* $Id: vboximgMedia.cpp 76272 2018-12-18 05:49:18Z vboxsync $ $Revision: 76272 $ */
+/* $Id: vboximgMedia.cpp 76474 2018-12-25 07:21:57Z vboxsync $ $Revision: 76474 $ */
 /** @file
  * vboximgMedia.cpp - Disk Image Flattening FUSE Program.
  */
@@ -20,7 +20,7 @@
 #include <VBox/vd.h>
 #include <VBox/vd-ifs.h>
 #include <VBox/log.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/NativeEventQueue.h>
 #include <VBox/com/com.h>

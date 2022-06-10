@@ -1,4 +1,4 @@
-/* $Id: VBoxCertUtil.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
+/* $Id: VBoxCertUtil.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxCertUtil - VBox Certificate Utility - Windows Only.
  */
@@ -23,7 +23,7 @@
 #include <Wincrypt.h>
 
 #include <iprt/buildconfig.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>

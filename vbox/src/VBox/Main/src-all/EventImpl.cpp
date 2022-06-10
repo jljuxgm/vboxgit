@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
+/* $Id: EventImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -59,7 +59,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/critsect.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/semaphore.h>
 #include <iprt/time.h>
 

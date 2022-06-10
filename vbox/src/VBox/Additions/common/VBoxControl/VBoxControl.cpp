@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 75954 2018-12-04 20:53:48Z vboxsync $ */
+/* $Id: VBoxControl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -23,7 +23,7 @@
 #include <iprt/cpp/autores.h>
 #include <iprt/buildconfig.h>
 #include <iprt/ctype.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>

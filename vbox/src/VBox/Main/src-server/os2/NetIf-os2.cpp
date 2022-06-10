@@ -1,4 +1,4 @@
-/* $Id: NetIf-os2.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: NetIf-os2.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Main - NetIfList, OS/2 implementation.
  */
@@ -22,7 +22,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_MAIN
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <list>
 
 #include "HostNetworkInterfaceImpl.h"

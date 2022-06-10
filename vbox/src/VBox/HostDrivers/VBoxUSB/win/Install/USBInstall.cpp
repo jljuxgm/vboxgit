@@ -1,4 +1,4 @@
-/* $Id: USBInstall.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: USBInstall.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox host drivers - USB drivers - Filter & driver installation, Installation code.
  */
@@ -32,13 +32,13 @@
 #include <iprt/win/setupapi.h>
 #include <newdev.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <stdio.h>
 
 #include <VBox/VBoxDrvCfg-win.h>

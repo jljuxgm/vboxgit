@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 72197 2018-05-11 22:11:22Z vboxsync $ */
+/* $Id: VBoxDbgConsole.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -33,7 +33,7 @@
 
 #include <VBox/dbg.h>
 #include <VBox/vmm/cfgm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <iprt/thread.h>
 #include <iprt/tcp.h>

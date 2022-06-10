@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: IOBufMgmt.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -16,7 +16,7 @@
  */
 #define LOG_GROUP LOG_GROUP_IOBUFMGMT
 #include <VBox/cdefs.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/critsect.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.cpp 67814 2017-07-06 08:37:31Z vboxsync $ */
+/* $Id: VBoxCredProvProvider.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -24,7 +24,7 @@
 #include <iprt/win/windows.h>
 #include <credentialprovider.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <VBox/VBoxGuestLib.h>
 
 #include "VBoxCredentialProvider.h"

@@ -1,4 +1,4 @@
-/* $Id: HGCMObjects.cpp 75541 2018-11-17 03:50:40Z vboxsync $ */
+/* $Id: HGCMObjects.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * HGCMObjects - Host-Guest Communication Manager objects
  */
@@ -21,7 +21,7 @@
 #include "HGCMObjects.h"
 
 #include <iprt/string.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 
 static RTCRITSECT g_critsect;

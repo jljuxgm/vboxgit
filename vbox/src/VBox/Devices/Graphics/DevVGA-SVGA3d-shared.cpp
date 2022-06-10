@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-shared.cpp 76181 2018-12-12 15:16:19Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-shared.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -22,7 +22,7 @@
 #define LOG_GROUP LOG_GROUP_DEV_VMSVGA
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/version.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <VBox/vmm/pgm.h>
 

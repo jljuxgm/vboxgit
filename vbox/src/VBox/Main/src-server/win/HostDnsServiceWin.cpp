@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceWin.cpp 72442 2018-06-05 06:26:42Z vboxsync $ */
+/* $Id: HostDnsServiceWin.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Host DNS listener for Windows.
  */
@@ -28,7 +28,7 @@
 #include <VBox/com/ptr.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 
 #include <iprt/win/windows.h>

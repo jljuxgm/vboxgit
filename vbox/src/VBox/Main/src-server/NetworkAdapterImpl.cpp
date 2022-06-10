@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 75674 2018-11-22 18:08:42Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -29,7 +29,7 @@
 #include <iprt/string.h>
 #include <iprt/cpp/utils.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/settings.h>
 
 #include "AutoStateDep.h"

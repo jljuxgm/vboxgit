@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 72443 2018-06-05 06:40:15Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -19,7 +19,7 @@
 #include <VBox/com/ptr.h>
 
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/thread.h>
 #include <iprt/semaphore.h>
 

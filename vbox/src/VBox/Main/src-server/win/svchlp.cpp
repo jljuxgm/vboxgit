@@ -1,4 +1,4 @@
-/* $Id: svchlp.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: svchlp.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Definition of SVC Helper Process control routines.
  */
@@ -20,7 +20,7 @@
 //#include "HostImpl.h"
 #include "Logging.h"
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 int netIfNetworkInterfaceHelperServer (SVCHlpClient *aClient,
                                         SVCHlpMsg::Code aMsgCode);

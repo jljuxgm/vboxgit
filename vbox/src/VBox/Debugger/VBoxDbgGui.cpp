@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDbgGui.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -23,7 +23,7 @@
 #define VBOX_COM_NO_ATL
 #include <VBox/com/defs.h>
 #include <VBox/vmm/vm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include "VBoxDbgGui.h"
 #include <QDesktopWidget>

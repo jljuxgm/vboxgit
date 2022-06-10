@@ -1,4 +1,4 @@
-/* $Id: pulse_stubs.c 73462 2018-08-03 08:15:08Z vboxsync $ */
+/* $Id: pulse_stubs.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Stubs for libpulse.
  */
@@ -19,7 +19,7 @@
 #include <iprt/assert.h>
 #include <iprt/ldr.h>
 #include <VBox/log.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <pulse/pulseaudio.h>
 

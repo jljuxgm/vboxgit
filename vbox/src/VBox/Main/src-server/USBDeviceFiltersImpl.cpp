@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFiltersImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: USBDeviceFiltersImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Implementation of IUSBDeviceFilters.
  */
@@ -31,7 +31,7 @@
 #include <iprt/string.h>
 #include <iprt/cpp/utils.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/settings.h>
 #include <VBox/com/array.h>
 

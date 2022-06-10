@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 72919 2018-07-05 14:44:31Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -23,7 +23,7 @@
 #include <iprt/string.h>
 #include <iprt/cpp/utils.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/settings.h>
 #include <VBox/com/array.h>
 

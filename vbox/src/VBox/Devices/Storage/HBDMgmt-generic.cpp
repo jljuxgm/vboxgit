@@ -1,4 +1,4 @@
-/* $Id: HBDMgmt-generic.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HBDMgmt-generic.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox storage devices: Host block device management API.
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 #include <VBox/cdefs.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 
 #include "HBDMgmt.h"

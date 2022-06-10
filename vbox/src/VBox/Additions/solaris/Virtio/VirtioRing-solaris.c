@@ -1,4 +1,4 @@
-/* $Id: VirtioRing-solaris.c 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VirtioRing-solaris.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions: Virtio Driver for Solaris, Ring implementation.
  */
@@ -33,7 +33,7 @@
 #include <iprt/asm.h>
 #include <iprt/cdefs.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/log.h>
 
 #include <sys/cmn_err.h>

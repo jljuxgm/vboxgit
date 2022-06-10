@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMpLogger.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxDispMpLogger.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox WDDM Display backdoor logger implementation
  */
@@ -32,7 +32,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 
 #include <stdio.h>

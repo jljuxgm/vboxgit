@@ -1,4 +1,4 @@
-/* $Id: vdkeystoremgr.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vdkeystoremgr.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Keystore utility for debugging.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <VBox/vd.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/version.h>
 #include <iprt/initterm.h>
 #include <iprt/base64.h>

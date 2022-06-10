@@ -1,4 +1,4 @@
-/* $Id: VBoxVNCMain.cpp 68828 2017-09-22 14:15:57Z vboxsync $ */
+/* $Id: VBoxVNCMain.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VNC main module.
  */
@@ -21,7 +21,7 @@
 *********************************************************************************************************************************/
 #include <VBox/ExtPack/ExtPack.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/version.h>
 #include <iprt/string.h>
 #include <iprt/param.h>

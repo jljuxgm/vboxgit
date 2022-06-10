@@ -1,4 +1,4 @@
-/* $Id: SUPR0IdcClient-darwin.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SUPR0IdcClient-darwin.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IDC Client Lib, Darwin Specific Code.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "../SUPR0IdcClientInternal.h"
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 
 int VBOXCALL supR0IdcNativeOpen(PSUPDRVIDCHANDLE pHandle, PSUPDRVIDCREQCONNECT pReq)

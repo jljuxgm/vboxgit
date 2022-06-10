@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.cpp 72980 2018-07-08 14:32:09Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation for remote (VRDP) USB devices.
  */
@@ -24,7 +24,7 @@
 
 #include <iprt/cpp/utils.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <VBox/RemoteDesktop/VRDE.h>
 #include <VBox/vrdpusb.h>

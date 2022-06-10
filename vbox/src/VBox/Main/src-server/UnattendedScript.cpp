@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 76168 2018-12-11 18:45:09Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -28,7 +28,7 @@
 #include "UnattendedScript.h"
 #include "UnattendedImpl.h"
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <iprt/ctype.h>
 #include <iprt/file.h>

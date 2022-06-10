@@ -1,4 +1,4 @@
-/* $Id: VBoxDD2.cpp 71829 2018-04-11 17:17:06Z vboxsync $ */
+/* $Id: VBoxDD2.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxDD2 - Built-in drivers & devices part 2.
  *
@@ -24,7 +24,7 @@
 #define LOG_GROUP LOG_GROUP_DEV
 #include <VBox/vmm/pdm.h>
 #include <VBox/version.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <VBox/log.h>
 #include <iprt/assert.h>

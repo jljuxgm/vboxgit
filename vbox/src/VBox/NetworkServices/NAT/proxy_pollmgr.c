@@ -1,4 +1,4 @@
-/* $Id: proxy_pollmgr.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: proxy_pollmgr.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * NAT Network - poll manager.
  */
@@ -35,14 +35,14 @@
 #include <time.h>
 #include <unistd.h>
 #else
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <stdlib.h>
 #include <string.h>
 #include "winpoll.h"
 #endif
 
 #include <iprt/req.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 #define POLLMGR_GARBAGE (-1)

@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInDiggers.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DBGPlugInDiggers.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * DbfPlugInDiggers - Debugger and Guest OS Digger Plug-in.
  */
@@ -24,7 +24,7 @@
 #include <VBox/vmm/dbgf.h>
 #include "DBGPlugIns.h"
 #include <VBox/version.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 
 DECLEXPORT(int) DbgPlugInEntry(DBGFPLUGINOP enmOperation, PUVM pUVM, uintptr_t uArg)

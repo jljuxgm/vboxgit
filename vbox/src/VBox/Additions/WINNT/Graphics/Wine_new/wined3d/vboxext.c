@@ -1,4 +1,4 @@
-/* $Id: vboxext.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vboxext.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox extension to Wine D3D
  */
@@ -21,7 +21,7 @@
 #include "vboxext.h"
 #ifdef VBOX_WITH_WDDM
 #include <VBoxCrHgsmi.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #endif
 
 WINE_DEFAULT_DEBUG_CHANNEL(d3d_vbox);

@@ -1,4 +1,4 @@
-/* $Id: htable.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: htable.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * uint32_t handle to void simple table impl
  *
@@ -34,7 +34,7 @@
 #include <iprt/cdefs.h>
 #include <iprt/types.h>
 #include <iprt/mem.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 VBOXHTABLEDECL(int) CrHTableCreate(PCRHTABLE pTbl, uint32_t cSize)
 {

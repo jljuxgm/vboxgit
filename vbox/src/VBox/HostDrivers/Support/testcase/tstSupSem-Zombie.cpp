@@ -1,4 +1,4 @@
-/* $Id: tstSupSem-Zombie.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tstSupSem-Zombie.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Support Library Testcase - Ring-3 Semaphore interface - Zombie bugs.
  */
@@ -32,7 +32,7 @@
 
 #include <VBox/param.h>
 #include <iprt/env.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/process.h>
 #include <iprt/stream.h>

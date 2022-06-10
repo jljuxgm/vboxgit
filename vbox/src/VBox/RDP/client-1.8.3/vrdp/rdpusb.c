@@ -1,4 +1,4 @@
-/* $Id: rdpusb.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: rdpusb.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Remote Desktop Protocol client - USB Channel Process Functions
  */
@@ -31,7 +31,7 @@
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/log.h>
 
 #include <unistd.h>

@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
+/* $Id: darwin-pasteboard.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */
@@ -26,7 +26,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/mem.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/utf16.h>
 
 #include "VBox/log.h"

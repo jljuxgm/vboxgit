@@ -1,4 +1,4 @@
-/* $Id: DataStreamImpl.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
+/* $Id: DataStreamImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation: DataStream
@@ -24,7 +24,7 @@
 
 #include "AutoCaller.h"
 #include "Logging.h"
-#include "iprt/err.h"
+#include <iprt/errcore.h>
 
 
 /*********************************************************************************************************************************

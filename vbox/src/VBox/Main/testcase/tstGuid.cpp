@@ -1,4 +1,4 @@
-/* $Id: tstGuid.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tstGuid.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * API Glue Testcase - Guid.
  */
@@ -21,7 +21,7 @@
 *********************************************************************************************************************************/
 #include <VBox/com/Guid.h>
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/test.h>

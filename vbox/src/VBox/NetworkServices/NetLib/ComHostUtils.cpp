@@ -1,4 +1,4 @@
-/* $Id: ComHostUtils.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: ComHostUtils.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -34,7 +34,7 @@
 
 #include <iprt/alloca.h>
 #include <iprt/buildconfig.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/net.h>                   /* must come before getopt */
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>

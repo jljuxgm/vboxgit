@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: ProgressProxyImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
@@ -27,7 +27,7 @@
 #include <iprt/time.h>
 #include <iprt/semaphore.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 // ProgressProxy class

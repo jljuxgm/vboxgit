@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 75684 2018-11-23 11:17:22Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -39,7 +39,7 @@
 
 #define LOG_GROUP LOG_GROUP_NET_ADP_DRV
 #include <VBox/log.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/process.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>

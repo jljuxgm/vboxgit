@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 72973 2018-07-08 13:23:58Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 
 /** @file
  *
@@ -25,7 +25,7 @@
 #include <iprt/string.h>
 #include <iprt/cpp/utils.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/settings.h>
 
 #include <algorithm>

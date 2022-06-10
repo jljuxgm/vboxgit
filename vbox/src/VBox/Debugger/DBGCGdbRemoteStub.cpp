@@ -1,4 +1,4 @@
-/* $Id: DBGCGdbRemoteStub.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DBGCGdbRemoteStub.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, GDB Remote Stub.
  */
@@ -21,5 +21,5 @@
 *********************************************************************************************************************************/
 #include <VBox/dbg.h>
 #include <VBox/vmm/dbgf.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 

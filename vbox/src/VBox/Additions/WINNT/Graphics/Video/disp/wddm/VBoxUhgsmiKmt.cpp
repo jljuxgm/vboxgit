@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiKmt.cpp 76376 2018-12-22 22:32:24Z vboxsync $ */
+/* $Id: VBoxUhgsmiKmt.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -18,7 +18,7 @@
 #include "VBoxDispD3DCmn.h"
 
 #include <iprt/mem.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 #include <cr_protocol.h>
 

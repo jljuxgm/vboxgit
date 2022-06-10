@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: USBProxyBackend.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -26,7 +26,7 @@
 #include "Logging.h"
 
 #include <VBox/com/array.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/asm.h>
 #include <iprt/semaphore.h>
 #include <iprt/thread.h>

@@ -1,4 +1,4 @@
-/* $Id: hostversion.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: hostversion.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * X11 guest client - host version check.
  */
@@ -16,7 +16,7 @@
  */
 #include <stdio.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/ldr.h>
 #include <iprt/string.h>

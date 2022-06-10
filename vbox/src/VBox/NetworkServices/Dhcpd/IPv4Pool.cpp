@@ -1,4 +1,4 @@
-/* $Id: IPv4Pool.cpp 70836 2018-01-31 14:55:44Z vboxsync $ */
+/* $Id: IPv4Pool.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * DHCP server - a pool of IPv4 addresses
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/stream.h>
 
 #include "IPv4Pool.h"

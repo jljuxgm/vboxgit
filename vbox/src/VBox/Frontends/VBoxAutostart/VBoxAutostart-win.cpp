@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 76381 2018-12-22 23:00:41Z vboxsync $ */
+/* $Id: VBoxAutostart-win.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -35,7 +35,7 @@
 
 #include <VBox/log.h>
 #include <VBox/version.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>
 #include <iprt/getopt.h>

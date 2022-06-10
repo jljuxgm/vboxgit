@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/** $Id: DevE1000Phy.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation.
  *
@@ -30,7 +30,7 @@
 // #undef  RT_STRICT
 // #endif
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <VBox/vmm/ssm.h>
 #include "DevE1000Phy.h"

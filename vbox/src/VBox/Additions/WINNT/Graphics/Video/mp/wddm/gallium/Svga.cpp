@@ -1,4 +1,4 @@
-/* $Id: Svga.cpp 75697 2018-11-23 22:45:22Z vboxsync $ */
+/* $Id: Svga.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA.
  */
@@ -20,7 +20,7 @@
 #include "SvgaHw.h"
 #include "SvgaCmd.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/memobj.h>
 

@@ -1,4 +1,4 @@
-/* $Id: QMTranslatorImpl.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
+/* $Id: QMTranslatorImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox API translation handling class
  */
@@ -19,7 +19,7 @@
 #include <set>
 #include <algorithm>
 #include <iterator>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/asm.h>
 #include <VBox/com/string.h>

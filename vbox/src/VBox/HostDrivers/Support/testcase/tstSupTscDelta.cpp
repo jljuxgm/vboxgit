@@ -1,4 +1,4 @@
-/* $Id: tstSupTscDelta.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tstSupTscDelta.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page TSC Delta Measurement Utility.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <VBox/sup.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>

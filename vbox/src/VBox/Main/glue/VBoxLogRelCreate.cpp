@@ -1,4 +1,4 @@
-/* $Id: VBoxLogRelCreate.cpp 69749 2017-11-19 12:49:36Z vboxsync $ */
+/* $Id: VBoxLogRelCreate.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - VBoxLogRelCreate.
  */
@@ -28,7 +28,7 @@
 #include <iprt/process.h>
 #include <iprt/time.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <VBox/version.h>
 #include "package-generated.h"

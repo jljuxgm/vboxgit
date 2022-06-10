@@ -1,4 +1,4 @@
-/* $Id: tstVBoxDbg.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tstVBoxDbg.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox Debugger GUI, dummy testcase.
  */
@@ -22,7 +22,7 @@
 #include <qapplication.h>
 #include <VBox/dbggui.h>
 #include <VBox/vmm/vm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>

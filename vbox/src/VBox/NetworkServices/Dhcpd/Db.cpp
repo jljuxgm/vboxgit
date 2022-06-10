@@ -1,4 +1,4 @@
-/* $Id: Db.cpp 75648 2018-11-21 18:02:38Z vboxsync $ */
+/* $Id: Db.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/stream.h>
 
 #include "Db.h"

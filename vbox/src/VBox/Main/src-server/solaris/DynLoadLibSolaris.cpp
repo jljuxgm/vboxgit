@@ -1,4 +1,4 @@
-/* $Id: DynLoadLibSolaris.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DynLoadLibSolaris.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Dynamically load libraries for Solaris hosts.
  */
@@ -17,7 +17,7 @@
 
 #include "DynLoadLibSolaris.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/ldr.h>
 
 

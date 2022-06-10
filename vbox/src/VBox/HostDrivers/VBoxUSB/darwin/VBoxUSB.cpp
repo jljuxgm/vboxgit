@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUSB.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox USB driver for Darwin.
  *
@@ -50,7 +50,7 @@
 #include <iprt/semaphore.h>
 #include <iprt/process.h>
 #include <iprt/alloc.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/asm.h>
 
 #include <mach/kmod.h>

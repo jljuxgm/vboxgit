@@ -1,4 +1,4 @@
-/* $Id: SUPLibSem.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SUPLibSem.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Semaphores, ring-3 implementation.
  */
@@ -31,7 +31,7 @@
 #define LOG_GROUP LOG_GROUP_SUP
 #include <VBox/sup.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/param.h>
 #include <iprt/assert.h>
 

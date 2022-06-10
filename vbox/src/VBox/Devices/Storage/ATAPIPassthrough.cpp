@@ -1,4 +1,4 @@
-/* $Id: ATAPIPassthrough.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: ATAPIPassthrough.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox storage devices: ATAPI emulation (common code for DevATA and DevAHCI).
  */
@@ -21,7 +21,7 @@
 #include <iprt/string.h>
 
 #include <VBox/log.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/cdefs.h>
 #include <VBox/scsi.h>
 #include <VBox/scsiinline.h>

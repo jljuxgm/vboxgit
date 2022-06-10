@@ -1,4 +1,4 @@
-/* $Id: scmparser.cpp 69460 2017-10-27 17:28:22Z vboxsync $ */
+/* $Id: scmparser.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Code Parsers.
  */
@@ -24,7 +24,7 @@
 #include <iprt/dir.h>
 #include <iprt/env.h>
 #include <iprt/file.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>

@@ -1,4 +1,4 @@
-/* $Id: EBMLWriter.cpp 69683 2017-11-14 11:09:16Z vboxsync $ */
+/* $Id: EBMLWriter.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * EBMLWriter.cpp - EBML writer implementation.
  */
@@ -38,7 +38,7 @@
 #include <iprt/buildconfig.h>
 #include <iprt/cdefs.h>
 #include <iprt/critsect.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/rand.h>
 #include <iprt/string.h>

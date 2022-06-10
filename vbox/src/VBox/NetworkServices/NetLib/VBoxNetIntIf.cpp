@@ -1,4 +1,4 @@
-/* $Id: VBoxNetIntIf.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetIntIf.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxNetIntIf - IntNet Interface Client Routines.
  */
@@ -25,7 +25,7 @@
 #include <VBox/intnetinline.h>
 #include <VBox/sup.h>
 #include <VBox/vmm/vmm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 
 #include <iprt/string.h>

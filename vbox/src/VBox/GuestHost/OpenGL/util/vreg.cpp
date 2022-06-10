@@ -1,4 +1,4 @@
-/* $Id: vreg.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vreg.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Visible Regions processing API implementation
  */
@@ -27,7 +27,7 @@
 # include <cr_error.h>
 #endif
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 

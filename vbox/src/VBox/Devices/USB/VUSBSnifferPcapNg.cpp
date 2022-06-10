@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferPcapNg.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
+/* $Id: VUSBSnifferPcapNg.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Virtual USB Sniffer facility - PCAP-NG format writer.
  */
@@ -22,7 +22,7 @@
 #define LOG_GROUP LOG_GROUP_DRV_VUSB
 #include <VBox/log.h>
 #include <iprt/buildconfig.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/system.h>

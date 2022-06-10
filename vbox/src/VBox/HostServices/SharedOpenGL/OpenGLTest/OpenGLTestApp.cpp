@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 69749 2017-11-19 12:49:36Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -17,7 +17,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/buildconfig.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
 #include <iprt/stream.h>
@@ -302,7 +302,7 @@ int main(int argc, char **argv)
                     break;
 
                 case 'V':
-                    RTPrintf("$Revision: 69749 $\n");
+                    RTPrintf("$Revision: 76474 $\n");
                     return 0;
 
                 case VERR_GETOPT_UNKNOWN_OPTION:

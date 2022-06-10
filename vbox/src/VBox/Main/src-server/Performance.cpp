@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: Performance.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -34,7 +34,7 @@
 #include <VBox/com/array.h>
 #include <VBox/com/ptr.h>
 #include <VBox/com/string.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 #include <iprt/mem.h>
 #include <iprt/cpuset.h>

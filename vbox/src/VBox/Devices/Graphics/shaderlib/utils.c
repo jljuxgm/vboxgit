@@ -1,4 +1,4 @@
-/* $Id: utils.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: utils.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * DevVMWare/Shaderlib - Utility/Stub Functions & Data.
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/assert.h>
 #ifdef _MSC_VER

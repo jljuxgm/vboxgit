@@ -1,4 +1,4 @@
-/* $Id: ntsetfreq.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: ntsetfreq.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Set the NT timer frequency.
  */
@@ -36,7 +36,7 @@
 #include <iprt/stream.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 int main(int argc, char **argv)

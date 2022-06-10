@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 74530 2018-09-28 17:45:20Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -24,7 +24,7 @@
 #include <VBox/vmm/pdmnetinline.h>
 #include <VBox/sup.h>
 #include <VBox/vmm/vmm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 #include <iprt/alloc.h>
 #include <iprt/path.h>
@@ -808,7 +808,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 74530 $\n");
+                RTPrintf("$Revision: 76474 $\n");
                 return 0;
 
             default:

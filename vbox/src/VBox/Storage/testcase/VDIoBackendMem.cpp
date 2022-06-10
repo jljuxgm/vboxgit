@@ -1,4 +1,4 @@
-/** $Id: VDIoBackendMem.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/** $Id: VDIoBackendMem.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O memory backend
@@ -16,7 +16,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 #define LOGGROUP LOGGROUP_DEFAULT /** @todo Log group */
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/log.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>

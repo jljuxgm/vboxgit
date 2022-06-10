@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 71151 2018-02-28 11:41:35Z vboxsync $ */
+/* $Id: NetIf-win.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -24,7 +24,7 @@
 
 #define NETIF_WITHOUT_NETCFG
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <list>
 
 #define _WIN32_DCOM

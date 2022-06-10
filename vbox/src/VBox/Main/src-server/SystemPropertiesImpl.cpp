@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 74431 2018-09-24 09:16:17Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -36,7 +36,7 @@
 #include <iprt/uri.h>
 #include <iprt/cpp/utils.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/param.h>
 #include <VBox/settings.h>
 #include <VBox/vd.h>

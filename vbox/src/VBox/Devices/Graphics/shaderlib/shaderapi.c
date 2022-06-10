@@ -1,4 +1,4 @@
-/* $Id: shaderapi.c 73518 2018-08-06 10:51:44Z vboxsync $ */
+/* $Id: shaderapi.c 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * shaderlib -- interface to WINE's Direct3D shader functions
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/mem.h>
 #include <iprt/assert.h>
 #include <iprt/log.h>

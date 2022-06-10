@@ -1,4 +1,4 @@
-/* $Id: VBoxSDS.cpp 76092 2018-12-09 23:19:16Z vboxsync $ */
+/* $Id: VBoxSDS.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBoxSDS - COM global service main entry (System Directory Service)
  */
@@ -88,7 +88,7 @@
 #include "VirtualBoxSDSImpl.h"
 #include "Logging.h"
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/asm.h>
 #include <iprt/buildconfig.h>
 #include <iprt/dir.h>

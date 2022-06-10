@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.cpp 76219 2018-12-13 19:32:57Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -35,7 +35,7 @@
 #include <QContextMenuEvent>
 #include <QHeaderView>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <iprt/string.h>
 #include <iprt/mem.h>

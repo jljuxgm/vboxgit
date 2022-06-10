@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceResolvConf.cpp 72439 2018-06-04 22:05:25Z vboxsync $ */
+/* $Id: HostDnsServiceResolvConf.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -32,7 +32,7 @@ typedef int socklen_t;
 
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/critsect.h>
 

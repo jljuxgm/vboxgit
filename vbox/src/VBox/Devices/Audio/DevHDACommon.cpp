@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 76019 2018-12-06 15:24:32Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 #define LOG_GROUP LOG_GROUP_DEV_HDA
 #include <VBox/log.h>

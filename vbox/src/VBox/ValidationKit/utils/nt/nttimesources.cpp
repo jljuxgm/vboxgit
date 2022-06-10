@@ -1,4 +1,4 @@
-/* $Id: nttimesources.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: nttimesources.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Check the various time sources on Windows NT.
  */
@@ -32,7 +32,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/asm-amd64-x86.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
 

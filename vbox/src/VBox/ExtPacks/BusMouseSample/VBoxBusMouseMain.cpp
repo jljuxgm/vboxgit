@@ -1,4 +1,4 @@
-/* $Id: VBoxBusMouseMain.cpp 69275 2017-10-25 10:34:24Z vboxsync $ */
+/* $Id: VBoxBusMouseMain.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * Bus Mouse main module.
  */
@@ -34,7 +34,7 @@
 *********************************************************************************************************************************/
 #include <VBox/ExtPack/ExtPack.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/version.h>
 #include <iprt/string.h>
 #include <iprt/param.h>

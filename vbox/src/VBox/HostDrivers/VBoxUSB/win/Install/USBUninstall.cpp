@@ -1,4 +1,4 @@
-/* $Id: USBUninstall.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: USBUninstall.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox host drivers - USB drivers - Filter & driver uninstallation.
  */
@@ -33,11 +33,11 @@
 #include <newdev.h>
 
 #include <iprt/assert.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/VBoxDrvCfg-win.h>
 #include <stdio.h>
 

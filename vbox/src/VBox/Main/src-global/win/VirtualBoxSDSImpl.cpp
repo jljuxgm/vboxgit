@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.cpp 76111 2018-12-10 12:11:26Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * VBox Global COM Class implementation.
  */
@@ -25,7 +25,7 @@
 #include "AutoCaller.h"
 #include "Logging.h"
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/asm.h>
 #include <iprt/critsect.h>
 #include <iprt/mem.h>

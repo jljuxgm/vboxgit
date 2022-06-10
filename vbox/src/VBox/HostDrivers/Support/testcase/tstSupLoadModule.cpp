@@ -1,4 +1,4 @@
-/* $Id: tstSupLoadModule.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tstSupLoadModule.cpp 76474 2018-12-25 07:21:57Z vboxsync $ */
 /** @file
  * SUP Testcase - Test SUPR3LoadModule.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <VBox/sup.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
@@ -105,7 +105,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 69500 $\n");
+                RTPrintf("$Revision: 76474 $\n");
                 return 0;
 
             default:
