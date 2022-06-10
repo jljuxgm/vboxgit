@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 75548 2018-11-18 04:52:14Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 75551 2018-11-18 04:54:33Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -1049,7 +1049,7 @@ int vmmdevHGCMCall(PVMMDEV pThis, const VMMDevHGCMCall *pHGCMCall, uint32_t cbHG
                  */
                 vmmdevHGCMAddCommand(pThis, pCmd);
 
-#if 1
+#if 0 /* DONT ENABLE - for performance hacking. */
                 if (    pCmd->u.call.u32Function == 9
                     &&  pCmd->u.call.cParms      == 5)
                 {
