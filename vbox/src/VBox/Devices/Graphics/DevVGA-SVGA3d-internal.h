@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 75752 2018-11-26 20:05:57Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 75811 2018-11-29 12:07:41Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -781,8 +781,6 @@ typedef struct VMSVGA3DCONTEXT
     GLXContext              glxContext;
     /** Device context window handle */
     Window                  window;
-    /** flag whether the window is mapped (=visible) */
-    bool                    fMapped;
 #endif
 
 #ifdef VMSVGA3D_OPENGL
@@ -873,7 +871,6 @@ static SSMFIELD const g_aVMSVGA3DCONTEXTFields[] =
 # else
     SSMFIELD_ENTRY_IGNORE(          VMSVGA3DCONTEXT, glxContext),
     SSMFIELD_ENTRY_IGNORE(          VMSVGA3DCONTEXT, window),
-    SSMFIELD_ENTRY_IGNORE(          VMSVGA3DCONTEXT, fMapped),
 # endif
 
 #ifdef VMSVGA3D_OPENGL

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 70938 2018-02-09 17:32:07Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 75811 2018-11-29 12:07:41Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -1546,7 +1546,6 @@ static void vmsvga3dInfoContextWorkerOne(PCDBGFINFOHLP pHlp, PVMSVGA3DCONTEXT pC
 
 #else
     pHlp->pfnPrintf(pHlp, "window:                  %p\n", pContext->window);
-    pHlp->pfnPrintf(pHlp, "fMapped:                 %RTbool\n", pContext->fMapped);
     if (pContext->window)
         vmsvga3dInfoHostWindow(pHlp, (uintptr_t)pContext->window);
     pHlp->pfnPrintf(pHlp, "glxContext:              %p\n", pContext->glxContext);
