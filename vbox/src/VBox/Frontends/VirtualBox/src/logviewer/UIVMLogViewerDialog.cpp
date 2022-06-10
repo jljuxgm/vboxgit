@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerDialog.cpp 73697 2018-08-15 15:58:48Z vboxsync $ */
+/* $Id: UIVMLogViewerDialog.cpp 75092 2018-10-26 11:50:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerDialog class implementation.
  */
@@ -115,9 +115,6 @@ void UIVMLogViewerDialog::finalize()
 {
     /* Apply language settings: */
     retranslateUi();
-
-    // WTF? Why here?
-    button(ButtonType_Close)->setShortcut(Qt::Key_Escape);
 }
 
 void UIVMLogViewerDialog::loadSettings()
