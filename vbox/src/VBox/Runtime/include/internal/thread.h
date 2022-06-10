@@ -1,4 +1,4 @@
-/* $Id: thread.h 77910 2019-03-27 11:33:01Z vboxsync $ */
+/* $Id: thread.h 77982 2019-04-02 10:23:09Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -135,6 +135,9 @@ typedef RTTHREADINT *PRTTHREADINT;
 /** Set if it's the main thread. */
 #define RTTHREADINT_FLAGS_MAIN       RT_BIT(3)
 /** @} */
+
+/** Counters for each thread type. */
+extern DECLHIDDEN(uint32_t volatile)   g_acRTThreadTypeStats[RTTHREADTYPE_END];
 
 
 /**
