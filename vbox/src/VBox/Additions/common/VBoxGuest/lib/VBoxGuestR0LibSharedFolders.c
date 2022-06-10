@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.c 77854 2019-03-22 22:23:36Z vboxsync $ */
+/* $Id: VBoxGuestR0LibSharedFolders.c 77858 2019-03-24 00:10:24Z vboxsync $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -609,7 +609,6 @@ DECLVBGL(int) VbglR0SfFsInfo(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE 
     return rc;
 }
 
-
 DECLVBGL(int) VbglR0SfLock(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE hFile,
                            uint64_t offset, uint64_t cbSize, uint32_t fLock)
 {
@@ -636,8 +635,6 @@ DECLVBGL(int) VbglR0SfLock(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE hF
     return rc;
 }
 
-#endif /* !RT_OS_LINUX */
-
 DECLVBGL(int) VbglR0SfReadLink(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, PSHFLSTRING pParsedPath, uint32_t cbBuffer, uint8_t *pBuffer)
 {
     int rc;
@@ -660,6 +657,8 @@ DECLVBGL(int) VbglR0SfReadLink(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, PSHFLSTRI
 /*    Log(("VBOXSF: VbglR0SfReadLink: VbglR0HGCMCall rc = %#x, result = %#x\n", rc, data.callInfo.Hdr.rc)); */
     return rc;
 }
+
+#endif /* !RT_OS_LINUX */
 
 DECLVBGL(int) VbglR0SfSymlink(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, PSHFLSTRING pNewPath, PSHFLSTRING pOldPath,
                               PSHFLFSOBJINFO pBuffer)
