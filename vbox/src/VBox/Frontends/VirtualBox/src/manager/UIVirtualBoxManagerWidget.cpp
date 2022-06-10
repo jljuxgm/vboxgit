@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 75424 2018-11-13 16:05:13Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 76183 2018-12-12 15:23:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -177,7 +177,7 @@ void UIVirtualBoxManagerWidget::sltHandleContextMenuRequest(const QPoint &positi
     /* Populate toolbar actions: */
     QList<QAction*> actions;
     /* Add 'Show Toolbar Text' action: */
-    QAction *pShowToolBarText = new QAction(tr("Show Toolbar Text"), 0);
+    QAction *pShowToolBarText = new QAction(UIVirtualBoxManager::tr("Show Toolbar Text"), 0);
     AssertPtrReturnVoid(pShowToolBarText);
     {
         /* Configure action: */

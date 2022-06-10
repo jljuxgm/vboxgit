@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 75564 2018-11-19 10:40:30Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 76183 2018-12-12 15:23:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -299,7 +299,7 @@ void UICloudProfileManagerWidget::sltAddCloudProfile()
         if (pDialog)
         {
             pDialog->setWindowIcon(UIIconPool::iconSet(":/cloud_profile_add_16px.png"));
-            pDialog->setWindowTitle(tr("Add Profile"));
+            pDialog->setWindowTitle(UICloudProfileManager::tr("Add Profile"));
             if (pDialog->exec() == QDialog::Accepted)
             {
                 strProfileName = pDialog->textValue();
