@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 73838 2018-08-22 16:15:08Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 74572 2018-10-02 08:23:22Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1062,8 +1062,6 @@ static void dsoundStreamReset(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStreamDS)
         pStreamDS->Out.offPlayCursorLastPending = 0;
         pStreamDS->Out.offPlayCursorLastPlayed = 0;
     }
-    else
-        AssertFailed();
 
 #ifdef LOG_ENABLED
     pStreamDS->Dbg.tsLastTransferredMs = 0;
