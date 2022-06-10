@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 74864 2018-10-16 11:48:44Z vboxsync $ */
+/* $Id: vbox_fb.c 74882 2018-10-17 14:47:16Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -393,7 +393,7 @@ void vbox_fbdev_fini(struct drm_device *dev)
 				vbox_bo_unpin(bo);
 			vbox_bo_unreserve(bo);
 		}
-		drm_gem_object_unreference_unlocked(afb->obj);
+		drm_gem_object_put_unlocked(afb->obj);
 		afb->obj = NULL;
 	}
 	drm_fb_helper_fini(&fbdev->helper);

@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 74773 2018-10-11 15:19:06Z vboxsync $ */
+/* $Id: vbox_drv.h 74882 2018-10-17 14:47:16Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -101,6 +101,13 @@
 #include "hgsmi_ch_setup.h"
 
 #include "product-generated.h"
+
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 12, 0) && !defined(RHEL_75)
+static inline void drm_gem_object_put_unlocked(struct drm_gem_object *obj)
+{
+	drm_gem_object_unreference_unlocked(obj);
+}
+#endif
 
 #define DRIVER_AUTHOR       VBOX_VENDOR
 

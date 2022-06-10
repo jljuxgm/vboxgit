@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 74808 2018-10-12 16:10:55Z vboxsync $ */
+/* $Id: vbox_mode.c 74882 2018-10-17 14:47:16Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -827,7 +827,7 @@ out_unmap_bo:
 out_unreserve_bo:
 	vbox_bo_unreserve(bo);
 out_unref_obj:
-	drm_gem_object_unreference_unlocked(obj);
+	drm_gem_object_put_unlocked(obj);
 
 	return ret;
 }
