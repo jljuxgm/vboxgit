@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 73984 2018-08-31 08:30:50Z vboxsync $ */
+/* $Id: HM.cpp 74043 2018-09-03 13:01:30Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -3087,7 +3087,7 @@ VMMR3_INT_DECL(void) HMR3CheckError(PVM pVM, int iStatusCode)
                     LogRel(("HM: CPU[%u] Entered Host Cpu     %u\n",  i, pVCpu->hm.s.vmx.LastError.idEnteredCpu));
                     LogRel(("HM: CPU[%u] Current Host Cpu     %u\n",  i, pVCpu->hm.s.vmx.LastError.idCurrentCpu));
                 }
-                else if (pVM->aCpus[i].hm.s.vmx.LastError.u32InstrError == VMXINSTRERR_VMENTRY_INVALID_CTL)
+                else if (pVM->aCpus[i].hm.s.vmx.LastError.u32InstrError == VMXINSTRERR_VMENTRY_INVALID_CTLS)
                 {
                     LogRel(("HM: CPU[%u] PinCtls          %#RX32\n", i, pVCpu->hm.s.vmx.u32PinCtls));
                     {
