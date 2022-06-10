@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientResponseBase.cpp 73995 2018-08-31 10:39:08Z vboxsync $ */
+/* $Id: RTCRestClientResponseBase.cpp 74009 2018-08-31 19:28:56Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientResponseBase implementation.
  */
@@ -83,6 +83,17 @@ RTCRestClientResponseBase &RTCRestClientResponseBase::operator=(RTCRestClientRes
         deleteErrInfo();
 
     return *this;
+}
+
+
+void RTCRestClientResponseBase::reset()
+{
+    /* Return to default constructor state. */
+    m_rcStatus = VERR_WRONG_ORDER;
+    m_rcHttp   = VERR_NOT_AVAILABLE;
+    if (m_pErrInfo)
+        deleteErrInfo();
+    m_strContentType.setNull();
 }
 
 
