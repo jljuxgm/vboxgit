@@ -1,4 +1,4 @@
-/* $Id: tstRTCRest-1.cpp 74181 2018-09-10 12:43:30Z vboxsync $ */
+/* $Id: tstRTCRest-1.cpp 74182 2018-09-10 12:48:40Z vboxsync $ */
 /** @file
  * IPRT Testcase - REST C++ classes.
  */
@@ -1453,6 +1453,14 @@ void testDate()
 
         RTTESTI_CHECK_RC(fromString(&obj4, "fa;se", &ErrInfo, RT_XSTR(__LINE__)), VERR_REST_UNABLE_TO_DECODE_DATE);
         CHECK_DATE_FMT(obj4, false, false, 0, "fa;se", false, RTCRestDate::kFormat_Rfc2822);
+
+        RTTESTI_CHECK_RC(fromString(&obj4, "10 Sep 18 11:58:07", &ErrInfo, RT_XSTR(__LINE__)), VINF_SUCCESS);
+        CHECK_DATE_FMT(obj4, false, true, iRecentSec, "10 Sep 18 11:58:07", false, RTCRestDate::kFormat_Rfc2822);
+
+        obj4.setNull();
+        RTTESTI_CHECK_RC(fromString(&obj4, "10 Sep 118 11:58:07", &ErrInfo, RT_XSTR(__LINE__)), VINF_SUCCESS);
+        CHECK_DATE_FMT(obj4, false, true, iRecentSec, "10 Sep 118 11:58:07", false, RTCRestDate::kFormat_Rfc2822);
+
     }
 }
 
