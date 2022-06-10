@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 77441 2019-02-22 20:53:01Z vboxsync $ */
+/* $Id: PGMPhys.cpp 78043 2019-04-08 14:47:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2944,10 +2944,12 @@ static int pgmR3PhysMMIOExCreate(PVM pVM, PPDMDEVINS pDevIns, uint32_t iSubDev, 
                 if (RT_FAILURE(rc))
                 {
                     SUPR3PageFreeEx(pvChunk, cChunkPages);
+                    RTMemTmpFree(paChunkPages);
                     break;
                 }
                 pNew->RamRange.pSelfRC  = GCPtrChunk + RT_UOFFSETOF(PGMREGMMIORANGE, RamRange);
             }
+            RTMemTmpFree(paChunkPages);
         }
         /*
          * Not so big, do a one time hyper allocation.
