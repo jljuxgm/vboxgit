@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.cpp 77019 2019-01-28 13:47:37Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.cpp 77020 2019-01-28 13:56:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class implementation.
  */
@@ -27,9 +27,6 @@
 #include "UIGraphicsButton.h"
 #include "UIGraphicsScrollBar.h"
 #include "UIIconPool.h"
-
-/* External includes: */
-#include <math.h>
 
 
 /** QIGraphicsWidget subclass providing GUI with graphics scroll-bar taken. */
@@ -380,12 +377,12 @@ void UIGraphicsScrollBar::layoutButtons()
 
     int iDelta1 = 0;
     if (m_iExtent > m_pButton1->minimumSizeHint().width())
-        iDelta1 = ceil(((double)m_iExtent - m_pButton1->minimumSizeHint().width()) / 2);
+        iDelta1 = (m_iExtent - m_pButton1->minimumSizeHint().width() + 1) / 2;
     m_pButton1->setPos(iDelta1, iDelta1);
 
     int iDelta2 = 0;
     if (m_iExtent > m_pButton2->minimumSizeHint().width())
-        iDelta2 = ceil(((double)m_iExtent - m_pButton2->minimumSizeHint().width()) / 2);
+        iDelta2 = (m_iExtent - m_pButton2->minimumSizeHint().width() + 1) / 2;
     m_pButton2->setPos(size().width() - m_iExtent + iDelta2, size().height() - m_iExtent + iDelta2);
 }
 
