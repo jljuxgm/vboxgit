@@ -1,4 +1,4 @@
-# $Id: Config.kmk 76024 2018-12-06 19:31:59Z vboxsync $
+# $Id: Config.kmk 76122 2018-12-10 13:38:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1217,14 +1217,17 @@ ifdef VBOX_OSE
  ifn1of ($(KBUILD_TARGET), darwin linux solaris win)
   VBOX_WITH_INSTALLER=
  endif
-  if1of ($(KBUILD_TARGET), win)
+ if1of ($(KBUILD_TARGET), win)
   # Undefine codec libraries which are not needed.
   VBOX_WITH_LIBVPX=
   VBOX_WITH_LIBOPUS=
   # Disable recording (with audio support).
   VBOX_WITH_RECORDING=
   VBOX_WITH_AUDIO_RECORDING=
-  endif
+ endif
+ # Disable building and packing vboximg-mount.
+ VBOX_WITH_VBOXIMGMOUNT=
+ VBOX_WITH_FUSE_PACKING=
  # branding
  VBOX_BRAND_LICENSE_HTML             := $(PATH_ROOT)/doc/License-gpl-2.0.html
  VBOX_BRAND_LICENSE_RTF              := $(PATH_ROOT)/doc/License-gpl-2.0.rtf
@@ -7503,7 +7506,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 76024 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 76122 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
