@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 72920 2018-07-05 14:51:50Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 72931 2018-07-06 11:26:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -117,6 +117,8 @@ protected:
     /** Holds the format combo-box instance. */
     QComboBox *m_pFormatComboBox;
 
+    /** Holds the additional label instance. */
+    QLabel    *m_pAdditionalLabel;
     /** Holds the manifest check-box instance. */
     QCheckBox *m_pManifestCheckbox;
 };
