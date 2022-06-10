@@ -1,4 +1,4 @@
-/* $Id: pkcs7-asn1-decoder.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: pkcs7-asn1-decoder.cpp 74672 2018-10-08 12:08:51Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Decoder for ASN.1.
  */
@@ -89,9 +89,10 @@ static int rtCrPkcs7ContentInfo_DecodeExtra(PRTASN1CURSOR pCursor, uint32_t fFla
     if (enmChoice != RTCRPKCS7CONTENTINFOCHOICE_UNKNOWN)
     {
         /*
-         * Detect CMS octet string and open the content cursor.
-         * Current we don't have work with any contet which is octet string,
-         * they're all sequences, which make detection so much simpler.
+         * Detect CMS octet string format and open the content cursor.
+         *
+         * Current we don't have any octent string content which, they're all
+         * sequences, which make detection so much simpler.
          */
         PRTASN1OCTETSTRING  pOctetString = &pThis->Content;
         RTASN1CURSOR        ContentCursor;

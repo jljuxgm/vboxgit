@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 74654 2018-10-07 13:00:04Z vboxsync $
+; $Id: VBoxRTImp.def 74672 2018-10-08 12:08:51Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -116,6 +116,8 @@ EXPORTS
     RTAsn1Core_ResetImplict
     RTAsn1Core_SetTagAndFlags
     RTAsn1CursorCheckEnd
+    RTAsn1CursorCheckSeqEnd
+    RTAsn1CursorCheckSetEnd
     RTAsn1CursorGetBitString
     RTAsn1CursorGetBitStringEx
     RTAsn1CursorGetBmpString

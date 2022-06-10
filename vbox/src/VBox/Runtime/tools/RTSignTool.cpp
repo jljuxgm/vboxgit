@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: RTSignTool.cpp 74672 2018-10-08 12:08:51Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -628,6 +628,8 @@ static RTEXITCODE SignToolPkcs7Exe_InitFromFile(PSIGNTOOLPKCS7EXE pThis, const c
             {
                 if (cVerbosity > 2)
                     RTPrintf("PKCS#7 signature: %u bytes\n", cbActual);
+                if (cVerbosity > 3)
+                    RTPrintf("%.*Rhxd\n", cbActual, pvBuf);
 
                 /*
                  * Decode it.
