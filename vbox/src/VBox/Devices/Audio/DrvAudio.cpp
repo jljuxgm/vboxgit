@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 73381 2018-07-27 09:16:19Z vboxsync $ */
+/* $Id: DrvAudio.cpp 73394 2018-07-30 14:47:37Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -3636,9 +3636,9 @@ static DECLCALLBACK(int) drvAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, u
                                   STAMUNIT_COUNT, "Total input frames lost.");
         PDMDrvHlpSTAMRegCounterEx(pDrvIns, &pThis->Stats.TotalFramesLostOut,   "TotalFramesLostOut",
                                   STAMUNIT_COUNT, "Total output frames lost.");
-        PDMDrvHlpSTAMRegCounterEx(pDrvIns, &pThis->Stats.TotalFramesOut,       "TotalFramesPlayed",
+        PDMDrvHlpSTAMRegCounterEx(pDrvIns, &pThis->Stats.TotalFramesOut,       "TotalFramesOut",
                                   STAMUNIT_COUNT, "Total frames played by backend.");
-        PDMDrvHlpSTAMRegCounterEx(pDrvIns, &pThis->Stats.TotalFramesIn,        "TotalFramesCaptured",
+        PDMDrvHlpSTAMRegCounterEx(pDrvIns, &pThis->Stats.TotalFramesIn,        "TotalFramesIn",
                                   STAMUNIT_COUNT, "Total frames captured by backend.");
         PDMDrvHlpSTAMRegCounterEx(pDrvIns, &pThis->Stats.TotalBytesRead,       "TotalBytesRead",
                                   STAMUNIT_BYTES, "Total bytes read.");
