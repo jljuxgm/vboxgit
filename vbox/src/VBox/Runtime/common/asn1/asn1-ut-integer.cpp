@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-integer.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: asn1-ut-integer.cpp 77760 2019-03-18 13:28:13Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, INTEGER Type.
  */
@@ -221,6 +221,8 @@ RTDECL(int) RTAsn1Integer_UnsignedCompare(PCRTASN1INTEGER pLeft, PCRTASN1INTEGER
                 uint32_t iRight = RTAsn1Integer_UnsignedLastBit(pRight);
                 if (iLeft != iRight)
                     return iLeft < iRight ? -1 : 1;
+                if ((int32_t)iLeft < 0)
+                    return 0; /* Both are all zeros. */
 
                 uint32_t i = iLeft / 8;
                 if (i > 8)
