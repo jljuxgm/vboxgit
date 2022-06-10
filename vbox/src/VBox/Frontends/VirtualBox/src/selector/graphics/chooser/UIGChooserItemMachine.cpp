@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 72707 2018-06-27 17:24:41Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 72708 2018-06-27 17:51:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -25,15 +25,15 @@
 # include <QGraphicsSceneMouseEvent>
 
 /* GUI includes: */
+# include "VBoxGlobal.h"
 # include "UIGChooser.h"
-# include "UIGChooserItemMachine.h"
 # include "UIGChooserItemGroup.h"
+# include "UIGChooserItemMachine.h"
 # include "UIGChooserModel.h"
 # include "UIGraphicsToolBar.h"
-# include "UIGraphicsZoomButton.h"
-# include "VBoxGlobal.h"
-# include "UIIconPool.h"
 # include "UIActionPoolSelector.h"
+# include "UIGraphicsZoomButton.h"
+# include "UIIconPool.h"
 # include "UIImageTools.h"
 # include "UISelectorWindow.h"
 
