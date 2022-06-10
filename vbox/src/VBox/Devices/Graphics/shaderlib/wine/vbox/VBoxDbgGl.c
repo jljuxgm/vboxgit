@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGl.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDbgGl.c 72836 2018-07-03 17:07:53Z vboxsync $ */
 /** @file
  * VBox wine & ogl debugging stuff
  */
@@ -316,7 +316,7 @@ void dbglCheckTexUnits(const struct wined3d_gl_info *gl_info, const struct IWine
             Assert(pTexture->target == pSurf->texture_target);
             Assert(DBGL_OP(IsEnabled(pSurf->texture_target)));
             Assert(pSurf->Flags & SFLAG_INTEXTURE);
-            if (pSurf->Flags & SFLAG_INSYSMEM && !pSurf->Flags & SFLAG_PBO)
+            if ((pSurf->Flags & SFLAG_INSYSMEM) && !(pSurf->Flags & SFLAG_PBO))
             {
                 Assert(pSurf->resource.allocatedMemory);
                 /* we can match GPU & our state */
