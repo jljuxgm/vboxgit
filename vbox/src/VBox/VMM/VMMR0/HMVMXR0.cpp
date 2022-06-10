@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78287 2019-04-25 08:16:53Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78295 2019-04-25 12:51:33Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7312,6 +7312,18 @@ static int hmR0VmxImportGuestState(PVMCPU pVCpu, PCVMXVMCSINFO pVmcsInfo, uint64
     PCPUMCTX pCtx = &pVCpu->cpum.GstCtx;
     uint64_t u64Val;
     uint32_t u32Val;
+
+    /*
+     * Note! This is hack to workaround a mysterious BSOD observed with release builds
+     *       on Windows 10 64-bit hosts. Profile and debug builds are not affected and
+     *       neither are other host platforms.
+     *
+     *       Committing this temporarily as it prevents BSOD.
+     */
+#ifdef RT_OS_WINDOWS
+    if (pVM == 0 || pVM == (void *)(uintptr_t)-1)
+        return VERR_HM_IPE_1;
+#endif
 
     STAM_PROFILE_ADV_START(&pVCpu->hm.s.StatImportGuestState, x);
 
