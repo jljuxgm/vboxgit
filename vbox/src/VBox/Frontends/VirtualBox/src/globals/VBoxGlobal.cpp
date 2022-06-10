@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 76826 2019-01-15 18:19:10Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 76829 2019-01-16 08:59:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2729,7 +2729,7 @@ QUuid VBoxGlobal::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType 
     if (!pSelector)
         return QString();
     windowManager().registerNewParent(pSelector, pDialogParent);
-    if (pSelector->execute(true, false))
+    if (pSelector->exec(false))
     {
         QList<QUuid> selectedMediumIds = pSelector->selectedMediumIds();
         delete pSelector;
