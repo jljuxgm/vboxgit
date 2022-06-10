@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 75424 2018-11-13 16:05:13Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 75427 2018-11-13 16:39:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -70,6 +70,9 @@ signals:
     void sigRuntimeUIShortcutChange();
     /** Notifies about Runtime UI host-key combination change. */
     void sigRuntimeUIHostKeyCombinationChange();
+
+    /** Notifies about VirtualBox Manager / Details pane options change. */
+    void sigDetailsOptionsChange(DetailsElementType enmType);
 
     /** Notifies about menu-bar configuration change. */
     void sigMenuBarConfigurationChange(const QUuid &uMachineID);
@@ -340,6 +343,9 @@ public:
         PreviewUpdateIntervalType selectorWindowPreviewUpdateInterval();
         /** Defines selector-window details-pane' preview update @a interval. */
         void setSelectorWindowPreviewUpdateInterval(PreviewUpdateIntervalType interval);
+
+        /** Returns VirtualBox Manager / Details pane options for certain @a enmElementType. */
+        QStringList vboxManagerDetailsPaneElementOptions(DetailsElementType enmElementType);
     /** @} */
 
     /** @name Snapshot Manager

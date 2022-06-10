@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIDetailsSet.h 75427 2018-11-13 16:39:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class declaration.
  */
@@ -70,8 +70,8 @@ protected slots:
         /** Handles request about starting step build.
           * @param  uStepId    Brings the step ID.
           * @param  iStepNumber  Brings the step number. */
+        virtual void sltBuildStep(const QUuid &uStepId, int iStepNumber) /* override */;
     /** @} */
-    virtual void sltBuildStep(const QUuid &uStepId, int iStepNumber) /* override */;
 
 protected:
 
