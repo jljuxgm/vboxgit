@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73042 2018-07-11 02:28:44Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73043 2018-07-11 02:30:57Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6127,10 +6127,27 @@ HMSVM_EXIT_DECL hmR0SvmExitWbinvd(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
 {
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS(pVCpu, pSvmTransient);
 
-    hmR0SvmAdvanceRipHwAssist(pVCpu, 2);
-    int rc = VINF_SUCCESS;
-    HMSVM_CHECK_SINGLE_STEP(pVCpu, rc);
-    return rc;
+    VBOXSTRICTRC rcStrict;
+    bool const fSupportsNextRipSave = hmR0SvmSupportsNextRipSave(pVCpu);
+    if (fSupportsNextRipSave)
+    {
+        HMSVM_CPUMCTX_IMPORT_STATE(pVCpu, IEM_CPUMCTX_EXTRN_EXEC_DECODED_NO_MEM_MASK);
+        uint8_t const cbInstr = hmR0SvmGetInstrLength(pVCpu);
+        rcStrict = IEMExecDecodedWbinvd(pVCpu, cbInstr);
+    }
+    else
+    {
+        HMSVM_CPUMCTX_IMPORT_STATE(pVCpu, IEM_CPUMCTX_EXTRN_MUST_MASK);
+        rcStrict = IEMExecOne(pVCpu);
+    }
+
+    if (rcStrict == VINF_IEM_RAISED_XCPT)
+    {
+        rcStrict = VINF_SUCCESS;
+        ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_RAISED_XCPT_MASK);
+    }
+    HMSVM_CHECK_SINGLE_STEP(pVCpu, rcStrict);
+    return VBOXSTRICTRC_TODO(rcStrict);
 }
 
 
