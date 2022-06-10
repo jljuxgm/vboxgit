@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73529 2018-08-06 16:26:43Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73556 2018-08-08 11:26:03Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1111,8 +1111,6 @@ int AudioMixerSinkRead(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, uint32_t 
             int rc2 = DrvAudioHlpFileWrite(pSink->Dbg.pFile, pvBuf, cbRead, 0 /* fFlags */);
             AssertRC(rc2);
 #endif
-            if (pcbRead)
-                *pcbRead = cbRead;
         }
     }
 
@@ -1121,6 +1119,9 @@ int AudioMixerSinkRead(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, uint32_t 
     Log2Func(("[%s] cbRead=%RU32, fClean=%RTbool, fStatus=%s, rc=%Rrc\n", pSink->pszName, cbRead, fClean, pszStatus, rc));
     RTStrFree(pszStatus);
 #endif
+
+    if (pcbRead)
+        *pcbRead = cbRead;
 
     int rc2 = RTCritSectLeave(&pSink->CritSect);
     AssertRC(rc2);
