@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 77217 2019-02-08 13:32:34Z vboxsync $ */
+/* $Id: UIMediumSelector.h 77291 2019-02-13 09:13:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -103,6 +103,7 @@ private slots:
             void configure();
             void prepareWidgets();
             void prepareActions();
+            void prepareMenuAndToolBar();
             void prepareConnections();
         /** Perform final preparations. */
         void finalize();

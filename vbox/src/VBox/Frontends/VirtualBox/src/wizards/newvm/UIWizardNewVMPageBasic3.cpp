@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 77217 2019-02-08 13:32:34Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 77291 2019-02-13 09:13:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -66,8 +66,8 @@ void UIWizardNewVMPage3::getWithFileOpenDialog()
 
     int returnCode = vboxGlobal().openMediumSelectorDialog(thisImp(), UIMediumDeviceType_HardDisk,
                                                            uMediumId,
-                                                           fieldImp("machineBaseName").toString(),
                                                            fieldImp("machineFolder").toString(),
+                                                           fieldImp("machineBaseName").toString(),
                                                            fieldImp("type").value<CGuestOSType>().GetId(),
                                                            false /* don't show/enable the create action: */);
 
