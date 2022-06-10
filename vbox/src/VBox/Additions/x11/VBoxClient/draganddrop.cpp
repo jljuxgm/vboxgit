@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 74380 2018-09-20 10:02:42Z vboxsync $ */
+/* $Id: draganddrop.cpp 74382 2018-09-20 11:00:40Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -1905,8 +1905,7 @@ int DragInstance::hgDrop(uint32_t u32xPos, uint32_t u32yPos, uint32_t uDefaultAc
  *                data to the guest for further processing.
  *
  * @returns IPRT status code.
- * @param   pvData                  Pointer to (MIME) data from host.
- * @param   cbData                  Size (in bytes) of data from host.
+ * @param   pMetaData               Pointer to meta data from host.
  */
 int DragInstance::hgDataReceive(PVBGLR3GUESTDNDMETADATA pMetaData)
 {
