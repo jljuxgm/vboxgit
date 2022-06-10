@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 75087 2018-10-26 09:59:37Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 75091 2018-10-26 11:41:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -964,12 +964,6 @@ void UIMachineLogic::updateDockOverlay()
 
 void UIMachineLogic::prepareRequiredFeatures()
 {
-#ifdef VBOX_WS_MAC
-# ifdef VBOX_WITH_ICHAT_THEATER
-    /* Init shared AV manager: */
-    initSharedAVManager();
-# endif /* VBOX_WITH_ICHAT_THEATER */
-#endif /* VBOX_WS_MAC */
 }
 
 void UIMachineLogic::prepareSessionConnections()
