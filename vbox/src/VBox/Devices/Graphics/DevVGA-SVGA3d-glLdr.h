@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glLdr.h 76247 2018-12-15 22:53:09Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glLdr.h 76253 2018-12-16 15:01:28Z vboxsync $ */
 /** @file
  * DevVGA - VMWare SVGA device - 3D part, dynamic loading of GL function.
  */
@@ -21,6 +21,8 @@
 #ifndef VMSVGA3D_OPENGL
 # error "This include file is for VMSVGA3D_OPENGL."
 #endif
+
+#include <iprt/types.h>
 
 /** @todo VBOX_VMSVGA3D_GL_HACK_LEVEL is not necessary when dynamic loading is used. */
 
@@ -78,7 +80,7 @@ typedef void (APIENTRYP PFNGLGETPROGRAMIVARBPROC) (GLenum target, GLenum pname, 
 /* Load OpenGL library and initialize function pointers. */
 int glLdrInit(void);
 /* Resolve an OpenGL function name. */
-void *glLdrGetProcAddress(const char *pszSymbol);
+PFNRT glLdrGetProcAddress(const char *pszSymbol);
 /* Get pointers to extension function. They are available on Windows only when OpenGL context is set. */
 int glLdrGetExtFunctions(void);
 

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 76252 2018-12-16 11:12:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 76253 2018-12-16 15:01:28Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -64,7 +64,7 @@
 #endif
 
 #ifdef VMSVGA3D_DYNAMIC_LOAD
-# define OGLGETPROCADDRESS(x)   glLdrGetProcAddress(x)
+# define OGLGETPROCADDRESS glLdrGetProcAddress
 #else
 #ifdef RT_OS_WINDOWS
 # define OGLGETPROCADDRESS      MyWinGetProcAddress
