@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.cpp 75343 2018-11-09 09:00:18Z vboxsync $ */
+/* $Id: UIScaleFactorEditor.cpp 75370 2018-11-09 16:41:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class implementation.
  */
@@ -99,7 +99,7 @@ void UIScaleFactorEditor::setScaleFactors(const QList<double> &scaleFactors)
         return;
     }
 
-    // Insert 0th element as the global scalar value
+    /* Insert 0th element as the global scalar value: */
     m_scaleFactors.append(m_dDefaultScaleFactor);
     m_scaleFactors.append(scaleFactors);
     setIsGlobalScaleFactor(false);
