@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 77988 2019-04-02 17:46:54Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 77989 2019-04-03 12:01:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -179,6 +179,7 @@ void UIMainEventListeningThread::setShutdown(bool fShutdown)
 UIMainEventListener::UIMainEventListener()
 {
     /* Register meta-types for required enums. */
+    qRegisterMetaType<KDeviceType>("KDeviceType");
     qRegisterMetaType<KMachineState>("KMachineState");
     qRegisterMetaType<KSessionState>("KSessionState");
     qRegisterMetaType< QVector<uint8_t> >("QVector<uint8_t>");
