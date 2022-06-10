@@ -1,4 +1,4 @@
-/* $Id: SecretKeyStore.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SecretKeyStore.cpp 72939 2018-07-06 21:16:26Z vboxsync $ */
 /** @file
  * Main - Secret key interface.
  */
@@ -135,15 +135,22 @@ int SecretKeyStore::addSecretKey(const com::Utf8Str &strKeyId, const uint8_t *pb
     if (it != m_mapSecretKeys.end())
         return VERR_ALREADY_EXISTS;
 
+    SecretKey *pKey = NULL;
     try
     {
-        SecretKey *pKey = new SecretKey(pbKey, cbKey, m_fKeyBufNonPageable);
+        pKey = new SecretKey(pbKey, cbKey, m_fKeyBufNonPageable);
 
         m_mapSecretKeys.insert(std::make_pair(strKeyId, pKey));
     }
     catch (int rc)
     {
         return rc;
+    }
+    catch (std::bad_alloc)
+    {
+        if (pKey)
+            delete pKey;
+        return VERR_NO_MEMORY;
     }
 
     return VINF_SUCCESS;
