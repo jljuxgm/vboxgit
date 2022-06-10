@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: vfsbase.cpp 73108 2018-07-13 06:06:12Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -119,6 +119,19 @@
         AssertPtrNull((pIoStreamOps)->pfnSkip); \
         AssertPtrNull((pIoStreamOps)->pfnZeroFill); \
         Assert((pIoStreamOps)->uEndMarker == RTVFSIOSTREAMOPS_VERSION); \
+    } while (0)
+
+/** Asserts that the VFS I/O stream vtable is valid. */
+#define RTVFSFILE_ASSERT_OPS(pFileOps, a_enmType) \
+    do { \
+        RTVFSIOSTREAM_ASSERT_OPS(&(pFileOps)->Stream, a_enmType); \
+        Assert((pFileOps)->uVersion == RTVFSFILEOPS_VERSION); \
+        Assert((pFileOps)->fReserved == 0); \
+        AssertPtr((pFileOps)->pfnSeek); \
+        AssertPtrNull((pFileOps)->pfnQuerySize); \
+        AssertPtrNull((pFileOps)->pfnSetSize); \
+        AssertPtrNull((pFileOps)->pfnQueryMaxSize); \
+        Assert((pFileOps)->uEndMarker == RTVFSFILEOPS_VERSION); \
     } while (0)
 
 /** Asserts that the VFS symlink vtable is valid. */
@@ -3847,11 +3860,7 @@ RTDECL(int) RTVfsNewFile(PCRTVFSFILEOPS pFileOps, size_t cbInstance, uint32_t fO
     /*
      * Validate the input, be extra strict in strict builds.
      */
-    AssertPtr(pFileOps);
-    AssertReturn(pFileOps->uVersion   == RTVFSFILEOPS_VERSION, VERR_VERSION_MISMATCH);
-    AssertReturn(pFileOps->uEndMarker == RTVFSFILEOPS_VERSION, VERR_VERSION_MISMATCH);
-    Assert(!pFileOps->fReserved);
-    RTVFSIOSTREAM_ASSERT_OPS(&pFileOps->Stream, RTVFSOBJTYPE_FILE);
+    RTVFSFILE_ASSERT_OPS(pFileOps, RTVFSOBJTYPE_FILE);
     Assert(cbInstance > 0);
     Assert(fOpen & (RTFILE_O_ACCESS_MASK | RTFILE_O_ACCESS_ATTR_MASK));
     AssertPtr(ppvInstance);
