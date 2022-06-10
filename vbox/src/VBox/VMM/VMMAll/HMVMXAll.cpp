@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 74073 2018-09-04 18:05:14Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 74103 2018-09-06 04:57:57Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -141,6 +141,13 @@ static const char * const g_apszVmxInstrDiagDesc[kVmxVInstrDiag_Last] =
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_Cr3TargetCount           , "Cr3TargetCount"          ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryCtlsAllowed1        , "EntryCtlsAllowed1"       ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryCtlsDisallowed0     , "EntryCtlsDisallowed0"    ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryHostCr0Fixed0       , "EntryHostCr0Fixed0"      ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryHostCr0Fixed1       , "EntryHostCr0Fixed1"      ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryHostCr3             , "EntryHostCr3"            ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryHostCr4Fixed0       , "EntryHostCr4Fixed0"      ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryHostCr4Fixed1       , "EntryHostCr4Fixed1"      ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryHostSysenterEspEip  , "EntryHostSysenterEspEip" ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryHostPatMsr          , "EntryHostPatMsr"         ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryInstrLen            , "EntryInstrLen"           ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryInstrLenZero        , "EntryInstrLenZero"       ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryIntInfoErrCodePe    , "EntryIntInfoErrCodePe"   ),
