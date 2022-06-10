@@ -1,4 +1,4 @@
-/* $Id: http.h 74126 2018-09-06 18:29:40Z vboxsync $ */
+/* $Id: http.h 74202 2018-09-11 22:48:41Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -329,6 +329,27 @@ RTR3DECL(int) RTHttpAddHeader(RTHTTP hHttp, const char *pszField, const char *ps
  * @param   cchField        The length of the field name or RTSTR_MAX.
  */
 RTR3DECL(const char *) RTHttpGetHeader(RTHTTP hHttp, const char *pszField, size_t cchField);
+
+/**
+ * Gets the number of headers specified by RTHttpAddHeader, RTHttpAddRawHeader or RTHttpSetHeaders.
+ *
+ * @returns Number of headers.
+ * @param   hHttp           The HTTP client handle.
+ * @note    This can be slow and is only really intended for test cases and debugging!
+ */
+RTR3DECL(size_t)    RTHttpGetHeaderCount(RTHTTP hHttp);
+
+/**
+ * Gets a header by ordinal.
+ *
+ * Can be used together with RTHttpGetHeaderCount by test case and debug code to
+ * iterate headers specified by RTHttpAddHeader, RTHttpAddRawHeader or RTHttpSetHeaders.
+ *
+ * @returns Number of headers.
+ * @param   hHttp           The HTTP client handle.
+ * @note    This can be slow and is only really intended for test cases and debugging!
+ */
+RTR3DECL(const char *) RTHttpGetByOrdinal(RTHTTP hHttp, size_t iOrdinal);
 
 /**
  * Sign all headers present according to pending "Signing HTTP Messages" RFC.
