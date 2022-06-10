@@ -1,4 +1,4 @@
-/* $Id: dbg.h 73494 2018-08-04 19:41:30Z vboxsync $ */
+/* $Id: dbg.h 73761 2018-08-19 13:42:25Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -268,7 +268,7 @@ typedef struct RTDBGUNWINDSTATE
      * @param   pvDst       Where to put the bytes we read.
      */
     DECLCALLBACKMEMBER(int, pfnReadStack)(struct RTDBGUNWINDSTATE *pThis, RTUINTPTR uSp, size_t cbToRead, void *pvDst);
-    /** User argument (usefule for pfnReadStack). */
+    /** User argument (useful for pfnReadStack). */
     void               *pvUser;
 
 } RTDBGUNWINDSTATE;
@@ -422,6 +422,21 @@ RTDECL(PRTDBGLINE)      RTDbgLineDup(PCRTDBGLINE pLine);
  * @param   pLine           The line number to free. NULL is ignored.
  */
 RTDECL(void)            RTDbgLineFree(PRTDBGLINE pLine);
+
+
+/**
+ * Dump the stack of the current thread into @a pszStack.
+ *
+ * This could be a little slow as it reads image and debug info again for each call.
+ *
+ * @returns Length of string returned in @a pszStack.
+ * @param   pszStack        The output buffer.
+ * @param   cbStack         The size of the output buffer.
+ * @param   fFlags          Future flags, MBZ.
+ *
+ * @remarks Not present on all systems and contexts.
+ */
+RTDECL(size_t)          RTDbgStackDumpSelf(char *pszStack, size_t cbStack, uint32_t fFlags);
 
 
 # ifdef IN_RING3
