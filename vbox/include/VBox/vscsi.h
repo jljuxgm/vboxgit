@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vscsi.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /** @file
  * VBox storage drivers - Virtual SCSI driver
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBox_vscsi_h
-#define ___VBox_vscsi_h
+#ifndef VBOX_INCLUDED_vscsi_h
+#define VBOX_INCLUDED_vscsi_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

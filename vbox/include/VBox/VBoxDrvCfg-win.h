@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg-win.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDrvCfg-win.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /** @file
  * Windows Driver Manipulation API.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBox_VBoxDrvCfg_win_h
-#define ___VBox_VBoxDrvCfg_win_h
+#ifndef VBOX_INCLUDED_VBoxDrvCfg_win_h
+#define VBOX_INCLUDED_VBoxDrvCfg_win_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

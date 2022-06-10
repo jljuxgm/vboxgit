@@ -1,4 +1,4 @@
-# $Id: .scm-settings 76557 2019-01-01 02:37:24Z vboxsync $
+# $Id: .scm-settings 76558 2019-01-01 02:51:45Z vboxsync $
 ## @file
 # Source code massager settings for the includes.
 #
@@ -75,4 +75,5 @@
 /iprt/asm*watcom*.h:                    --no-pragma-once
 
 /iprt/*.h: --guard-relative-to-dir iprt --guard-prefix IPRT_INCLUDED_
+/VBox/*.h: --guard-relative-to-dir VBox --guard-prefix VBOX_INCLUDED_
 

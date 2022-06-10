@@ -1,4 +1,4 @@
-/* $Id: HGSMIChannels.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HGSMIChannels.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /** @file
  *
  * VBox Host Guest Shared Memory Interface (HGSMI).
@@ -31,8 +31,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef __HGSMIChannels_h__
-#define __HGSMIChannels_h__
+#ifndef VBOX_INCLUDED_Graphics_HGSMIChannels_h
+#define VBOX_INCLUDED_Graphics_HGSMIChannels_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIPRT.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxVideoIPRT.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /*
  * Copyright (C) 2017-2019 Oracle Corporation
  *
@@ -28,8 +28,8 @@
  * VBoxVideoIPRT.h using -include, therefore this define must match the one
  * there. */
 
-#ifndef ___VBox_Graphics_VBoxVideoIPRT_h
-#define ___VBox_Graphics_VBoxVideoIPRT_h
+#ifndef VBOX_INCLUDED_Graphics_VBoxVideoIPRT_h
+#define VBOX_INCLUDED_Graphics_VBoxVideoIPRT_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

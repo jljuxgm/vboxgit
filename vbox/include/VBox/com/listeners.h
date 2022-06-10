@@ -1,4 +1,4 @@
-/* $Id: listeners.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: listeners.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Listener helpers.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBox_com_listeners_h
-#define ___VBox_com_listeners_h
+#ifndef VBOX_INCLUDED_com_listeners_h
+#define VBOX_INCLUDED_com_listeners_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

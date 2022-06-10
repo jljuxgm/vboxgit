@@ -1,4 +1,4 @@
-/* $Id: VBoxCrHgsmi.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxCrHgsmi.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /** @file
  * Document me, pretty please.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBox_VBoxCrHgsmi_h
-#define ___VBox_VBoxCrHgsmi_h
+#ifndef VBOX_INCLUDED_Graphics_VBoxCrHgsmi_h
+#define VBOX_INCLUDED_Graphics_VBoxCrHgsmi_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoVBE.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxVideoVBE.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /** @file
  * VirtualBox graphics card port I/O definitions
  */
@@ -28,8 +28,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef ___VBox_Graphics_VBoxVideoVBE_h
-#define ___VBox_Graphics_VBoxVideoVBE_h
+#ifndef VBOX_INCLUDED_Graphics_VBoxVideoVBE_h
+#define VBOX_INCLUDED_Graphics_VBoxVideoVBE_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

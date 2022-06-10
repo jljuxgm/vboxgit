@@ -1,4 +1,4 @@
-/* $Id: pdmcardreaderinfs.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: pdmcardreaderinfs.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /** @file
  * cardreaderinfs - interface between USB Card Reader device and its driver.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBox_vmm_pdmcardreaderinfs_h
-#define ___VBox_vmm_pdmcardreaderinfs_h
+#ifndef VBOX_INCLUDED_vmm_pdmcardreaderinfs_h
+#define VBOX_INCLUDED_vmm_pdmcardreaderinfs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

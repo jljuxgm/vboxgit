@@ -1,4 +1,4 @@
-/* $Id: bioslogo.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: bioslogo.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /** @file
  * BiosLogo - The Private BIOS Logo Interface. (DEV)
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBox_BiosLogo_h
-#define ___VBox_BiosLogo_h
+#ifndef VBOX_INCLUDED_bioslogo_h
+#define VBOX_INCLUDED_bioslogo_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

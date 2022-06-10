@@ -1,4 +1,4 @@
-/* $Id: intnetinline.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: intnetinline.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /** @file
  * INTNET - Internal Networking, Inlined Code. (DEV,++)
  *
@@ -28,8 +28,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBox_intnetinline_h
-#define ___VBox_intnetinline_h
+#ifndef VBOX_INCLUDED_intnetinline_h
+#define VBOX_INCLUDED_intnetinline_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

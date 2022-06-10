@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: gvmm.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBox_vmm_gvmm_h
-#define ___VBox_vmm_gvmm_h
+#ifndef VBOX_INCLUDED_vmm_gvmm_h
+#define VBOX_INCLUDED_vmm_gvmm_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

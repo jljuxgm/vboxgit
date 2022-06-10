@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GuestControl.h 76558 2019-01-01 02:51:45Z vboxsync $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -26,8 +26,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBox_GuestHost_GuestControl_h
-#define ___VBox_GuestHost_GuestControl_h
+#ifndef VBOX_INCLUDED_GuestHost_GuestControl_h
+#define VBOX_INCLUDED_GuestHost_GuestControl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
