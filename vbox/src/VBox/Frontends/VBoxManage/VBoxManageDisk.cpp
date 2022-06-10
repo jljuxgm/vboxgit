@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 72951 2018-07-07 16:43:10Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 72952 2018-07-07 16:46:43Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -2050,7 +2050,7 @@ static RTEXITCODE mediumIOOpenMediumForIO(HandlerArg *pHandler, PCMEDIUMIOCOMMON
      */
     ComPtr<IMedium> ptrMedium;
     HRESULT hrc = openMedium(pHandler, pCommonOpts->pszFilenameOrUuid, pCommonOpts->enmDeviceType,
-                             (AccessMode_T)(fWritable ? AccessMode_ReadWrite : AccessMode_ReadOnly),
+                             fWritable ? (AccessMode_T)AccessMode_ReadWrite : (AccessMode_T)AccessMode_ReadOnly,
                              ptrMedium, false /* fForceNewUuidOnOpen */, false /* fSilent */);
     if (SUCCEEDED(hrc))
     {
