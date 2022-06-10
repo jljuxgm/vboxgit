@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 75388 2018-11-12 07:47:59Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 75397 2018-11-12 14:11:00Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -4423,6 +4423,34 @@ IEM_STATIC VBOXSTRICTRC iemVmxVirtApicAccessMsrWrite(PVMCPU pVCpu, uint32_t idMs
     }
 
     return VINF_VMX_INTERCEPT_NOT_ACTIVE;
+}
+
+
+/**
+ * VMX VM-exit handler for PPR virtualization.
+ *
+ * @returns VBox strict status code.
+ * @param   pVCpu       The cross context virtual CPU structure.
+ */
+IEM_STATIC VBOXSTRICTRC iemVmxVmexitPprVirtualization(PVMCPU pVCpu)
+{
+    PCVMXVVMCS pVmcs = pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pVmcs);
+    Assert(pVmcs);
+
+    Assert(pVmcs->u32ProcCtls & VMX_PROC_CTLS_USE_TPR_SHADOW);
+    Assert(pVmcs->u32ProcCtls2 & VMX_PROC_CTLS2_VIRT_INT_DELIVERY);
+
+    uint32_t const uVTpr = iemVmxVirtApicReadRaw32(pVCpu, XAPIC_OFF_TPR);
+    uint32_t const uSvi  = pVmcs->u16GuestIntStatus >> 8;
+
+    uint32_t uVPpr;
+    if (((uVTpr >> 4) & 0xf) >= (uSvi >> 4) & 0xf)
+        uVPpr = uVTpr & 0xff;
+    else
+        uVPpr = uSvi & 0xf0;
+
+    iemVmxVirtApicWriteRaw32(pVCpu, XAPIC_OFF_PPR, uVPpr);
+    Log2(("ppr_virt: uVTpr=%u uSvi=%u -> VM-exit\n", uVTpr, uSvi));
 }
 
 
