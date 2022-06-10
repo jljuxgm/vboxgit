@@ -1,4 +1,4 @@
-/* $Id: fsw_efi.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: fsw_efi.c 77672 2019-03-13 08:25:50Z vboxsync $ */
 /** @file
  * fsw_efi.c - EFI host environment code.
  */
@@ -230,7 +230,6 @@ EFI_STATUS EFIAPI fsw_efi_DriverBinding_Supported(IN EFI_DRIVER_BINDING_PROTOCOL
 
     // first, open DiskIO
     VBoxLogFlowFuncEnter();
-    VBoxLogFlowFuncMarkDP(RemainingDevicePath);
 
     Status = BS->OpenProtocol(ControllerHandle,
                               &PROTO_NAME(DiskIoProtocol),
