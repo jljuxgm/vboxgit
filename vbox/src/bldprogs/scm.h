@@ -1,4 +1,4 @@
-/* $Id: scm.h 76506 2018-12-30 03:41:21Z vboxsync $ */
+/* $Id: scm.h 76512 2018-12-30 05:14:08Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -333,6 +333,8 @@ typedef struct SCMSETTINGSBASE
 
     /** Whether to fix C/C++ header guards and \#pragma once directives. */
     bool            fFixHeaderGuards;
+    /** Whether to include a pragma once statement with the header guard. */
+    bool            fPragmaOnce;
 
     /** Whether to fix C/C++ todos. */
     bool            fFixTodos;
