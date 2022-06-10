@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 73348 2018-07-25 09:25:45Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 73445 2018-08-02 10:54:16Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -184,6 +184,11 @@ VMMR3DECL(int) DBGFR3AsSymbolByAddr(PUVM pUVM, RTDBGAS hDbgAs, PCDBGFADDRESS pAd
 {
     return VERR_INTERNAL_ERROR;
 }
+VMMR3DECL(PRTDBGSYMBOL) DBGFR3AsSymbolByAddrA(PUVM pUVM, RTDBGAS hDbgAs, PCDBGFADDRESS pAddress, uint32_t fFlags,
+                                              PRTGCINTPTR poffDisp, PRTDBGMOD phMod)
+{
+    return NULL;
+}
 VMMR3DECL(int) DBGFR3AsSymbolByName(PUVM pUVM, RTDBGAS hDbgAs, const char *pszSymbol, PRTDBGSYMBOL pSymbol, PRTDBGMOD phMod)
 {
     return VERR_INTERNAL_ERROR;
@@ -227,6 +232,10 @@ VMMR3DECL(int) DBGFR3RegNmValidate(PUVM pUVM, VMCPUID idDefCpu, const char *pszR
         return VINF_SUCCESS;
     return VERR_DBGF_REGISTER_NOT_FOUND;
 }
+VMMR3DECL(const char *) DBGFR3RegCpuName(PUVM pUVM, DBGFREG enmReg, DBGFREGVALTYPE enmType)
+{
+    return NULL;
+}
 VMMR3DECL(int) DBGFR3RegCpuQueryU8(  PUVM pUVM, VMCPUID idCpu, DBGFREG enmReg, uint8_t     *pu8)
 {
     return VERR_INTERNAL_ERROR;
@@ -240,6 +249,10 @@ VMMR3DECL(int) DBGFR3RegCpuQueryU32( PUVM pUVM, VMCPUID idCpu, DBGFREG enmReg, u
     return VERR_INTERNAL_ERROR;
 }
 VMMR3DECL(int) DBGFR3RegCpuQueryU64( PUVM pUVM, VMCPUID idCpu, DBGFREG enmReg, uint64_t    *pu64)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3RegCpuQueryXdtr(PUVM pUVM, VMCPUID idCpu, DBGFREG enmReg, uint64_t *pu64Base, uint16_t *pu16Limit)
 {
     return VERR_INTERNAL_ERROR;
 }
