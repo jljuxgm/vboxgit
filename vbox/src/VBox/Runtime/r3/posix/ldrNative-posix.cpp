@@ -1,4 +1,4 @@
-/* $Id: ldrNative-posix.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: ldrNative-posix.cpp 74253 2018-09-13 17:22:06Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, POSIX native.
  */
@@ -46,7 +46,7 @@ int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, uint32_t fFlag
     /*
      * Do we need to add an extension?
      */
-    if (!RTPathHasSuffix(pszFilename))
+    if (!RTPathHasSuffix(pszFilename) && !(fFlags & RTLDRLOAD_FLAGS_NO_SUFFIX))
     {
 #if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS)
         static const char s_szSuff[] = ".DLL";
