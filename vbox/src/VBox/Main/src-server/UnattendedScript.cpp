@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 76167 2018-12-11 17:03:05Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 76168 2018-12-11 18:45:09Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -38,8 +38,8 @@
 
 using namespace std;
 
-
 #ifdef VBOX_WITH_UNATTENDED
+
 
 /*********************************************************************************************************************************
 *   UnattendedScriptTemplate Implementation                                                                                      *
@@ -476,10 +476,9 @@ HRESULT UnattendedScriptTemplate::getConditional(const char *pachPlaceholder, si
 }
 
 #endif /* VBOX_WITH_UNATTENDED */
-
-
-
 #if 0 /* Keeping this a reference */
+
+
 /*********************************************************************************************************************************
 *   UnattendedSUSEXMLScript Implementation                                                                                       *
 *********************************************************************************************************************************/
