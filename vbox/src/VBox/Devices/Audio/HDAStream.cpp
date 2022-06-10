@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 76018 2018-12-06 15:14:02Z vboxsync $ */
+/* $Id: HDAStream.cpp 76045 2018-12-07 10:03:39Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -250,6 +250,7 @@ int hdaR3StreamInit(PHDASTREAM pStream, uint8_t uSD)
         LogRel2(("HDA: More than stereo (2) channels are not supported (%RU8 requested), "
                  "falling back to stereo channels for stream #%RU8\n", Props.cChannels, uSD));
         Props.cChannels = 2;
+        Props.cShift    = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(Props.cBytes, Props.cChannels);
     }
 #endif
 
