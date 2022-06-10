@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 74726 2018-10-09 21:06:46Z vboxsync $ */
+/* $Id: ldrMachO.cpp 74727 2018-10-09 21:12:39Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -4275,7 +4275,7 @@ static int rtldrMachO_VerifySignatureDecode(PRTLDRMODMACHO pThis, PRTLDRMACHOSIG
             if (   cbSelf >= RT_UOFFSET_AFTER(RTCRAPLCSCODEDIRECTORY, fExecSeg)
                 && (   pThis->offSeg0ForCodeSign != RT_BE2H_U64(pCodeDir->offExecSeg)
                     || pThis->cbSeg0ForCodeSign != RT_BE2H_U64(pCodeDir->cbExecSeg)
-                    || pThis->fSeg0ForCodeSign != RT_BE2H_U64(pCodeDir->fFlags)) )
+                    || pThis->fSeg0ForCodeSign != RT_BE2H_U64(pCodeDir->fExecSeg)) )
                 return RTErrInfoSetF(pErrInfo, VERR_LDRVI_BAD_CERT_FORMAT,
                                      "Slot #%u: Segment #0 info mismatch: @%#RX64 LB %#RX64 flags=%#RX64; expected @%#RX64 LB %#RX64 flags=%#RX64",
                                      iSlot, RT_BE2H_U64(pCodeDir->offExecSeg), RT_BE2H_U64(pCodeDir->cbExecSeg),
