@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 75861 2018-12-02 00:26:36Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 75868 2018-12-02 01:34:54Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2102,7 +2102,7 @@ int GuestSession::i_objectUnregister(uint32_t idObject)
     int rc = VINF_SUCCESS;
     AssertMsgStmt(ASMBitTestAndClear(&mData.bmObjectIds, idObject), ("idObject=%#x\n", idObject), rc = VERR_NOT_FOUND);
 
-    SessionObjects::const_iterator ItObj = mData.mObjects.find(idObject);
+    SessionObjects::iterator ItObj = mData.mObjects.find(idObject);
     AssertMsgReturn(ItObj != mData.mObjects.end(), ("idObject=%#x\n", idObject), VERR_NOT_FOUND);
     mData.mObjects.erase(ItObj);
 
