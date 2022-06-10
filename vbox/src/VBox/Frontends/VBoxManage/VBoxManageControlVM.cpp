@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 72355 2018-05-26 13:28:34Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 72826 2018-07-03 14:45:26Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -293,7 +293,7 @@ static HRESULT keyboardPutString(IKeyboard *pKeyboard, int argc, char **argv)
     int i;
     for (i = 1 + 1; i < argc; ++i)
     {
-        if (llScancodes.size() > 0)
+        if (!llScancodes.empty())
         {
             /* Insert a SPACE before the next string. */
             llScancodes.push_back(0x39);

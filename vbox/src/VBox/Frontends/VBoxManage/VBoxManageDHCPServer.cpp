@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 72826 2018-07-03 14:45:26Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -318,8 +318,8 @@ static RTEXITCODE handleOp(HandlerArg *a, OPCODE enmCode, int iStart)
         return errorSyntax(USAGE_DHCPSERVER, "You need to specify either --netname or --ifname to identify the DHCP server");
 
     if(   enmCode != OP_REMOVE
-       && GlobalDhcpOptions.size() == 0
-       && VmSlot2Options.size() == 0)
+       && GlobalDhcpOptions.empty()
+       && VmSlot2Options.empty())
     {
         if(enable < 0 || pIp || pNetmask || pLowerIp || pUpperIp)
         {
