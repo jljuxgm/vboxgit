@@ -1,10 +1,10 @@
-/* $Id: VBoxTray.cpp 75407 2018-11-12 20:06:57Z vboxsync $ */
+/* $Id: VBoxTray.cpp 76098 2018-12-10 09:07:39Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -584,7 +584,7 @@ static int vboxTrayLogCreate(const char *pszLogFile)
         RTLogFlush(g_pLoggerRelease);
     }
     else
-        MessageBoxA(GetDesktopWindow(), ErrInfo.szMsg, "VBoxTray - Logging Error", MB_OK | MB_ICONERROR);
+        VBoxTrayShowError(ErrInfo.szMsg);
 
     return rc;
 }
@@ -592,6 +592,31 @@ static int vboxTrayLogCreate(const char *pszLogFile)
 static void vboxTrayLogDestroy(void)
 {
     RTLogDestroy(RTLogRelSetDefaultInstance(NULL));
+}
+
+/**
+ * Displays an error message.
+ *
+ * @returns RTEXITCODE_FAILURE.
+ * @param   pszFormat   The message text.
+ * @param   ...         Format arguments.
+ */
+RTEXITCODE VBoxTrayShowError(const char *pszFormat, ...)
+{
+    va_list args;
+    va_start(args, pszFormat);
+    char *psz = NULL;
+    RTStrAPrintfV(&psz, pszFormat, args);
+    va_end(args);
+
+    AssertPtr(psz);
+    LogRel(("Error: %s", psz));
+
+    MessageBox(GetDesktopWindow(), psz, "VBoxTray - Error", MB_OK | MB_ICONERROR);
+
+    RTStrFree(psz);
+
+    return RTEXITCODE_FAILURE;
 }
 
 static void vboxTrayDestroyToolWindow(void)

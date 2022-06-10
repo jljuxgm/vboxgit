@@ -1,10 +1,10 @@
-/* $Id: VBoxTray.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxTray.h 76098 2018-12-10 09:07:39Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
 
 /*
- * Copyright (C) 2006-2017 Oracle Corporation
+ * Copyright (C) 2006-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -186,6 +186,8 @@ typedef struct _VBOXGLOBALMESSAGE
 extern HWND         g_hwndToolWindow;
 extern HINSTANCE    g_hInstance;
 extern uint32_t     g_fGuestDisplaysChanged;
+
+RTEXITCODE VBoxTrayShowError(const char *pszFormat, ...);
 
 #endif /* !___VBOXTRAY_H */
 
