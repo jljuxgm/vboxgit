@@ -1,4 +1,4 @@
-/* $Id: unpack_shaders.cpp 78264 2019-04-23 18:53:43Z vboxsync $ */
+/* $Id: unpack_shaders.cpp 78265 2019-04-23 18:56:56Z vboxsync $ */
 /** @file
  * VBox OpenGL DRI driver functions
  */
@@ -447,7 +447,7 @@ void crUnpackExtendGetAttribLocation(PCrUnpackerState pState)
 {
     CHECK_BUFFER_SIZE_STATIC_LAST(pState, 8, GLuint);
 
-    int packet_length = READ_DATA(pState, 0, int);
+    unsigned packet_length = (unsigned)READ_DATA(pState, 0, int);
     GLuint program = READ_DATA(pState, 8, GLuint);
     const char *name = DATA_POINTER(pState, 12, const char);
 
@@ -468,7 +468,7 @@ void crUnpackExtendGetUniformLocation(PCrUnpackerState pState)
 {
     CHECK_BUFFER_SIZE_STATIC_LAST(pState, 8, GLuint);
 
-    int packet_length = READ_DATA(pState, 0, int);
+    unsigned packet_length = (unsigned)READ_DATA(pState, 0, int);
     GLuint program = READ_DATA(pState, 8, GLuint);
     const char *name = DATA_POINTER(pState, 12, const char);
 
