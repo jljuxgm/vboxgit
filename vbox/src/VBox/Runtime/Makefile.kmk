@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74313 2018-09-17 15:50:55Z vboxsync $
+# $Id: Makefile.kmk 74323 2018-09-17 21:05:03Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1526,7 +1526,7 @@ RuntimeBldProg_EXTENDS         := RuntimeR3
 RuntimeBldProg_BLD_TRG         := $(KBUILD_HOST)
 RuntimeBldProg_BLD_TRG_ARCH    := $(KBUILD_HOST_ARCH)
 RuntimeBldProg_BLD_TRG_CPU     := $(KBUILD_HOST_CPU)
-RuntimeBldProg_DEFS            := $(filter-out IN_SUP_R3 IN_SUP, $(RuntimeR3_DEFS)) IPRT_WITHOUT_LDR_VERIFY RT_NO_GIP
+RuntimeBldProg_DEFS            := $(filter-out IN_SUP_R3 IN_SUP IPRT_WITH_OPENSSL, $(RuntimeR3_DEFS)) IPRT_WITHOUT_LDR_VERIFY RT_NO_GIP
 RuntimeBldProg_SOURCES         = \
 	common/alloc/alloc.cpp \
 	common/alloc/memcache.cpp \
