@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: DragAndDrop.h 78036 2019-04-08 11:06:11Z vboxsync $ */
 /** @file
  * DnD - Shared functions between host and guest.
  */
@@ -221,8 +221,6 @@ protected:
     RTCString m_strSrcPathAbs;
     /** Absolute path (base) for the target. */
     RTCString m_strTgtPathAbs;
-    /** Whether the object is in "opened" state. */
-    bool      m_fIsOpen;
 
     /** Union containing data depending on the object's type. */
     union
