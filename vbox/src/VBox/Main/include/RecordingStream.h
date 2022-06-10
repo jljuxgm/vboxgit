@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 75344 2018-11-09 09:17:06Z vboxsync $ */
+/* $Id: RecordingStream.h 75346 2018-11-09 10:05:06Z vboxsync $ */
 /** @file
  * Recording stream code header.
  */
@@ -179,7 +179,7 @@ protected:
         WebMWriter         *pWEBM;
     } File;
     bool                fEnabled;
-#ifdef VBOX_WITH_AUDIO_VIDEOREC
+#ifdef VBOX_WITH_AUDIO_RECORDING
     /** Track number of audio stream. */
     uint8_t             uTrackAudio;
 #endif

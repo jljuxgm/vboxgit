@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 75344 2018-11-09 09:17:06Z vboxsync $ */
+/* $Id: Recording.cpp 75346 2018-11-09 10:05:06Z vboxsync $ */
 /** @file
  * Recording (with optional audio recording) code.
  *
@@ -465,7 +465,7 @@ bool CaptureContext::IsLimitReached(uint32_t uScreen, uint64_t tsNowMs) const
  */
 int CaptureContext::SendAudioFrame(const void *pvData, size_t cbData, uint64_t uTimeStampMs)
 {
-#ifdef VBOX_WITH_AUDIO_VIDEOREC
+#ifdef VBOX_WITH_AUDIO_RECORDING
     AssertPtrReturn(pvData, VERR_INVALID_POINTER);
     AssertReturn(cbData, VERR_INVALID_PARAMETER);
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxDriversRegister.cpp 75344 2018-11-09 09:17:06Z vboxsync $ */
+/* $Id: VBoxDriversRegister.cpp 75346 2018-11-09 10:05:06Z vboxsync $ */
 /** @file
  *
  * Main driver registration.
@@ -30,7 +30,7 @@
 #ifdef VBOX_WITH_AUDIO_VRDE
 # include "DrvAudioVRDE.h"
 #endif
-#ifdef VBOX_WITH_AUDIO_VIDEOREC
+#ifdef VBOX_WITH_AUDIO_RECORDING
 # include "DrvAudioRec.h"
 #endif
 #include "Nvram.h"
@@ -79,7 +79,7 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (RT_FAILURE(rc))
         return rc;
 #endif
-#ifdef VBOX_WITH_AUDIO_VIDEOREC
+#ifdef VBOX_WITH_AUDIO_RECORDING
     rc = pCallbacks->pfnRegister(pCallbacks, &AudioVideoRec::DrvReg);
     if (RT_FAILURE(rc))
         return rc;
