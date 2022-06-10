@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 75352 2018-11-09 10:56:10Z vboxsync $ */
+/* $Id: ConsoleImpl.h 75354 2018-11-09 11:22:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -148,7 +148,7 @@ public:
     int i_recordingStart(void);
     int i_recordingStop(void);
     AudioVideoRec *i_recordingGetAudioDrv(void) const { return Recording.mAudioRec; }
-    CaptureContext *i_recordingGetContext(void) const { return Recording.mpRecordCtx; }
+    RecordingContext *i_recordingGetContext(void) const { return Recording.mpCtx; }
     HRESULT i_recordingSendAudio(const void *pvData, size_t cbData, uint64_t uDurationMs);
 #endif
 
@@ -1033,11 +1033,11 @@ private:
     struct Recording
     {
         Recording()
-            : mpRecordCtx(NULL)
+            : mpCtx(NULL)
             , mAudioRec(NULL) { }
 
         /** The recording context. */
-        CaptureContext       *mpRecordCtx;
+        RecordingContext       *mpCtx;
 # ifdef VBOX_WITH_AUDIO_RECORDING
         /** Pointer to capturing audio backend. */
         AudioVideoRec * const mAudioRec;

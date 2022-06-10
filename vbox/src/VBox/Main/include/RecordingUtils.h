@@ -1,4 +1,4 @@
-/* $Id: RecordingUtils.h 75344 2018-11-09 09:17:06Z vboxsync $ */
+/* $Id: RecordingUtils.h 75354 2018-11-09 11:22:09Z vboxsync $ */
 /** @file
  * Recording utility header.
  */
@@ -14,6 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+#ifndef ____H_RECORDING_UTILS
+#define ____H_RECORDING_UTILS
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
@@ -194,6 +197,9 @@ private:
     uint8_t *mBuf;
 };
 
-int videoRecRGBToYUV(uint32_t uPixelFormat,
-                     uint8_t *paDst, uint32_t uDstWidth, uint32_t uDstHeight,
-                     uint8_t *paSrc, uint32_t uSrcWidth, uint32_t uSrcHeight);
+int recordingRGBToYUV(uint32_t uPixelFormat,
+                      uint8_t *paDst, uint32_t uDstWidth, uint32_t uDstHeight,
+                      uint8_t *paSrc, uint32_t uSrcWidth, uint32_t uSrcHeight);
+
+#endif /* ____H_RECORDING_UTILS */
+
