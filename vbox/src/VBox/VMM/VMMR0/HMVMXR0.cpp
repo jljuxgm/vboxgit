@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 73753 2018-08-18 04:41:54Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 73754 2018-08-18 04:48:52Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2757,7 +2757,7 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
 #endif
 
     /* At least verify VMX is enabled, since we can't check if we're in VMX root mode without #GP'ing. */
-    RTCCUINTREG uHostCR4 = ASMGetCR4();
+    RTCCUINTREG const uHostCR4 = ASMGetCR4();
     if (RT_UNLIKELY(!(uHostCR4 & X86_CR4_VMXE)))
         return VERR_VMX_NOT_IN_VMX_ROOT_MODE;
 
