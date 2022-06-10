@@ -1,4 +1,4 @@
-/* $Id: ZHAOXIN_KaiXian_KX_U5581_1_8GHz.h 76887 2019-01-18 10:58:34Z vboxsync $ */
+/* $Id: ZHAOXIN_KaiXian_KX_U5581_1_8GHz.h 76898 2019-01-19 10:01:34Z vboxsync $ */
 /** @file
  * CPU database entry "ZHAOXIN KaiXian KX-U5581 1.8GHz"
  * Generated at 2019-01-15T08:37:25Z by VBoxCpuReport v5.2.22r126460 on linux.amd64.
@@ -19,6 +19,9 @@
 
 #ifndef VBOX_CPUDB_ZHAOXIN_KaiXian_KX_U5581_1_8GHz_h
 #define VBOX_CPUDB_ZHAOXIN_KaiXian_KX_U5581_1_8GHz_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #ifndef CPUM_DB_STANDALONE
