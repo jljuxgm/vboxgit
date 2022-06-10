@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 75585 2018-11-19 18:03:23Z vboxsync $ */
+/* $Id: VMMDev.cpp 75589 2018-11-19 18:09:28Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1669,8 +1669,6 @@ static int vmmdevReqHandler_GetHeightReduction(PVMMDEV pThis, VMMDevRequestHeade
     return pThis->pDrv->pfnGetHeightReduction(pThis->pDrv, &pReq->heightReduction);
 }
 
-#endif /* IN_RING3 */
-
 
 /**
  * Handles VMMDevReq_AcknowledgeEvents.
@@ -1708,8 +1706,6 @@ static int vmmdevReqHandler_AcknowledgeEvents(PVMMDEV pThis, VMMDevRequestHeader
     return VINF_SUCCESS;
 }
 
-
-#ifdef IN_RING3
 
 /**
  * Handles VMMDevReq_CtlGuestFilterMask.
