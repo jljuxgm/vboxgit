@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 75010 2018-10-23 16:51:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -67,7 +67,9 @@ void UIWizardNewVMPage3::updateVirtualDiskSource()
 void UIWizardNewVMPage3::getWithFileOpenDialog()
 {
     /* Get opened medium id: */
-    QUuid uMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumDeviceType_HardDisk, thisImp());
+    QUuid uMediumId = vboxGlobal().openMediumSelectorDialog(thisImp(), UIMediumDeviceType_HardDisk,
+                                                            fieldImp("machineBaseName").toString(),
+                                                            fieldImp("machineFolder").toString());
     if (!uMediumId.isNull())
     {
         /* Update medium-combo if necessary: */
@@ -295,4 +297,3 @@ bool UIWizardNewVMPageBasic3::validatePage()
     /* Return result: */
     return fResult;
 }
-
