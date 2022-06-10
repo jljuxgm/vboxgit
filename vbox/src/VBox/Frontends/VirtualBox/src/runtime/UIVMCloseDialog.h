@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.h 72887 2018-07-04 15:50:30Z vboxsync $ */
+/* $Id: UIVMCloseDialog.h 75672 2018-11-22 15:15:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class declaration.
  */
@@ -62,6 +62,9 @@ protected:
 
     /** Handles any Qt @a pEvent. */
     virtual bool event(QEvent *pEvent) /* override */;
+
+    /** Handles show @a pEvent. */
+    virtual void showEvent(QShowEvent *pEvent) /* override */;
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
