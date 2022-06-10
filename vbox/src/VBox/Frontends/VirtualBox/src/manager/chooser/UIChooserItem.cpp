@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 73927 2018-08-28 11:40:48Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 74002 2018-08-31 11:19:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -293,6 +293,18 @@ UIChooserModel *UIChooserItem::model() const
 UIActionPool *UIChooserItem::actionPool() const
 {
     return model()->actionPool();
+}
+
+int UIChooserItem::level() const
+{
+    int iLevel = 0;
+    UIChooserItem *pParentItem = parentItem();
+    while (pParentItem && !pParentItem->isRoot())
+    {
+        pParentItem = pParentItem->parentItem();
+        ++iLevel;
+    }
+    return iLevel;
 }
 
 void UIChooserItem::show()

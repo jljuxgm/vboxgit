@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 73948 2018-08-29 12:31:13Z vboxsync $ */
+/* $Id: UIChooserItem.h 74002 2018-08-31 11:19:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -121,6 +121,9 @@ public:
         UIChooserModel *model() const;
         /** Returns action-pool reference. */
         UIActionPool *actionPool() const;
+
+        /** Returns a level of item. */
+        int level() const;
 
         /** Shows item. */
         virtual void show();
