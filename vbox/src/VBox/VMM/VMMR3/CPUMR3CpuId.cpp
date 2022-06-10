@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 73110 2018-07-13 06:53:21Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 73116 2018-07-13 09:31:58Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -6268,6 +6268,8 @@ static DBGFREGSUBFIELD const g_aExtLeafAEdxSubFields[] =
     DBGFREGSUBFIELD_RO("PauseFilter\0"    "Pause intercept filter",                     10, 1, 0),
     DBGFREGSUBFIELD_RO("PauseFilterThreshold\0" "Pause filter threshold",               12, 1, 0),
     DBGFREGSUBFIELD_RO("AVIC\0"           "Advanced Virtual Interrupt Controller",      13, 1, 0),
+    DBGFREGSUBFIELD_RO("VMSAVEVirt\0"     "VMSAVE and VMLOAD Virtualization",           15, 1, 0),
+    DBGFREGSUBFIELD_RO("VGIF\0"           "Virtual Global-Interrupt Flag",              16, 1, 0),
     DBGFREGSUBFIELD_TERMINATOR()
 };
 
