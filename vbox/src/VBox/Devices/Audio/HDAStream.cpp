@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 71736 2018-04-07 21:29:18Z vboxsync $ */
+/* $Id: HDAStream.cpp 73212 2018-07-18 15:23:11Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -62,9 +62,6 @@ int hdaR3StreamCreate(PHDASTREAM pStream, PHDASTATE pThis, uint8_t u8SD)
 #endif
 
     int rc = RTCritSectInit(&pStream->CritSect);
-    AssertRCReturn(rc, rc);
-
-    rc = RTCircBufCreate(&pStream->State.pCircBuf, _64K); /** @todo Make this configurable. */
     AssertRCReturn(rc, rc);
 
     rc = hdaR3StreamPeriodCreate(&pStream->State.Period);
@@ -196,6 +193,17 @@ int hdaR3StreamInit(PHDASTREAM pStream, uint8_t uSD)
         LogRel(("HDA: Warning: Format 0x%x for stream #%RU8 not supported\n", HDA_STREAM_REG(pThis, FMT, uSD), uSD));
         return rc;
     }
+
+    /* (Re-)Allocate the stream's internal DMA buffer, based on the PCM  properties we just got above. */
+    if (pStream->State.pCircBuf)
+    {
+        RTCircBufDestroy(pStream->State.pCircBuf);
+        pStream->State.pCircBuf = NULL;
+    }
+
+    /* By default we allocate an internal buffer of 100ms. */
+    rc = RTCircBufCreate(&pStream->State.pCircBuf, DrvAudioHlpMsToBytes(&pCfg->Props, 100 /* ms */)); /** @todo Make this configurable. */
+    AssertRCReturn(rc, rc);
 
     /* Set the stream's direction. */
     pCfg->enmDir = hdaGetDirFromSD(pStream->u8SD);
