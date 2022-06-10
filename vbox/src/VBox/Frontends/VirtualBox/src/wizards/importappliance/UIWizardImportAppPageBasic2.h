@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.h 78128 2019-04-15 18:28:48Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.h 78217 2019-04-19 15:07:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class declaration.
  */
@@ -68,6 +68,9 @@ private:
     virtual void initializePage() /* override */;
     /** Performs page cleanup. */
     virtual void cleanupPage() /* override */;
+
+    /** Returns whether page is complete. */
+    virtual bool isComplete() const /* override */;
 
     /** Performs page validation. */
     virtual bool validatePage() /* override */;
