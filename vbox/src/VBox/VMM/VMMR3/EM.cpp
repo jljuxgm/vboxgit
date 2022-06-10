@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 76832 2019-01-16 10:01:01Z vboxsync $ */
+/* $Id: EM.cpp 76840 2019-01-16 15:49:18Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -605,7 +605,7 @@ static DECLCALLBACK(VBOXSTRICTRC) emR3SetExecutionPolicy(PVM pVM, PVMCPU pVCpu, 
             default:
                 AssertFailedReturn(VERR_INVALID_PARAMETER);
         }
-        LogRel(("EM: Execution policy set (fRecompileUser=%RTbool fRecompileSupervisor=%RTbool fIemExecutesAll=%RTbool)\n",
+        LogRel(("EM: Set execution policy (fRecompileUser=%RTbool fRecompileSupervisor=%RTbool fIemExecutesAll=%RTbool)\n",
                 pVM->fRecompileUser, pVM->fRecompileSupervisor, pVM->em.s.fIemExecutesAll));
     }
 
