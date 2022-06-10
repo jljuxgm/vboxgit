@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UIMessageCenter.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -250,7 +250,7 @@ public:
     void cannotFindLanguage(const QString &strLangId, const QString &strNlsPath) const;
     void cannotLoadLanguage(const QString &strLangFile) const;
     void cannotFindMachineByName(const CVirtualBox &vbox, const QString &strName) const;
-    void cannotFindMachineById(const CVirtualBox &vbox, const QString &strId) const;
+    void cannotFindMachineById(const CVirtualBox &vbox, const QUuid &aId) const;
     void cannotOpenSession(const CSession &session) const;
     void cannotOpenSession(const CMachine &machine) const;
     void cannotOpenSession(const CProgress &progress, const QString &strMachineName) const;
@@ -300,7 +300,7 @@ public:
     void cannotRemoveSnapshot(const CProgress &progress, const QString &strSnapshotName, const QString &strMachineName) const;
     void cannotChangeSnapshot(const CSnapshot &comSnapshot, const QString &strSnapshotName, const QString &strMachineName) const;
     void cannotFindSnapshotByName(const CMachine &comMachine, const QString &strName, QWidget *pParent = 0) const;
-    void cannotFindSnapshotById(const CMachine &comMachine, const QString &strId, QWidget *pParent = 0) const;
+    void cannotFindSnapshotById(const CMachine &comMachine, const QUuid &aId, QWidget *pParent = 0) const;
     void cannotAcquireSnapshotAttributes(const CSnapshot &comSnapshot, QWidget *pParent = 0);
 
     /* API: Common settings warnings: */

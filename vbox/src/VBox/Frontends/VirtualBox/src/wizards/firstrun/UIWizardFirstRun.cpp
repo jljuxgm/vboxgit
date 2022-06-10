@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 72696 2018-06-26 16:13:10Z vboxsync $ */
+/* $Id: UIWizardFirstRun.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRun class implementation.
  */
@@ -84,8 +84,8 @@ bool UIWizardFirstRun::insertMedium()
     // already opened for the VM which being cached in this wizard.
 
     /* Get chosen 'dvd' medium to mount: */
-    const QString strMediumId = field("id").toString();
-    const UIMedium guiMedium = vboxGlobal().medium(strMediumId);
+    const QUuid uMediumId = field("id").toUuid();
+    const UIMedium guiMedium = vboxGlobal().medium(uMediumId);
     const CMedium comMedium = guiMedium.medium();
 
     /* Mount medium to the predefined port/device: */

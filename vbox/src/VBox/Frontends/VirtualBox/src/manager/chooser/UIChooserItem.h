@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 74482 2018-09-26 16:10:40Z vboxsync $ */
+/* $Id: UIChooserItem.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -22,6 +22,7 @@
 #include <QMimeData>
 #include <QRectF>
 #include <QString>
+#include <QUuid>
 
 /* GUI includes: */
 #include "QIGraphicsWidget.h"
@@ -173,9 +174,9 @@ public:
         virtual void clearItems(UIChooserItemType enmType = UIChooserItemType_Any) = 0;
 
         /** Updates all children items with specified @a strId. */
-        virtual void updateAllItems(const QString &strId) = 0;
+        virtual void updateAllItems(const QUuid &aId) = 0;
         /** Removes all children items with specified @a strId. */
-        virtual void removeAllItems(const QString &strId) = 0;
+        virtual void removeAllItems(const QUuid &aId) = 0;
 
         /** Searches for a first child item answering to specified @a strSearchTag and @a iItemSearchFlags. */
         virtual UIChooserItem *searchForItem(const QString &strSearchTag, int iItemSearchFlags) = 0;

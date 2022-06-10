@@ -1,4 +1,4 @@
-/* $Id: UIToolsPaneMachine.h 70185 2017-12-18 10:32:04Z vboxsync $ */
+/* $Id: UIToolsPaneMachine.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsPaneMachine class declaration.
  */
@@ -52,7 +52,7 @@ signals:
     /** Redirects signal from UISelectorWindow to UIGDetails. */
     void sigToggleFinished();
     /** Redirects signal from UIGDetails to UISelectorWindow. */
-    void sigLinkClicked(const QString &strCategory, const QString &strControl, const QString &strId);
+    void sigLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &aId);
 
 public:
 

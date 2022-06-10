@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.h 74690 2018-10-08 16:30:31Z vboxsync $ */
+/* $Id: UIDetailsGroup.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class declaration.
  */
@@ -85,7 +85,7 @@ protected slots:
           * @param  strStepId    Brings the step ID.
           * @param  iStepNumber  Brings the step number. */
     /** @} */
-    virtual void sltBuildStep(QString strStepId, int iStepNumber) /* override */;
+    virtual void sltBuildStep(const QUuid &aStepId, int iStepNumber) /* override */;
 
 protected:
 
@@ -142,7 +142,7 @@ private:
         /** Holds the build step instance. */
         UIPrepareStep *m_pBuildStep;
         /** Holds the generated group ID. */
-        QString        m_strGroupId;
+        QUuid          m_uGroupId;
     /** @} */
 
     /** @name Children stuff.

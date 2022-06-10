@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -53,7 +53,7 @@ public:
     void prepare();
 
     /** Returns the Id of newly created VM. */
-    QString createdMachineId() const { return m_machine.GetId(); }
+    QUuid createdMachineId() const { return m_machine.GetId(); }
 
 protected:
 

@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 74805 2018-10-12 15:23:38Z vboxsync $ */
+/* $Id: UIFDCreationDialog.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -212,7 +212,7 @@ void UIFDCreationDialog::accept()
         return;
     }
     /* Store the id of the newly create medium: */
-    m_strMediumID = newMedium.GetId();
+    m_uMediumID = newMedium.GetId();
 
     /* Notify VBoxGlobal about the new medium: */
     vboxGlobal().createMedium(UIMedium(newMedium, UIMediumDeviceType_Floppy, KMediumState_Created));
@@ -224,7 +224,7 @@ void UIFDCreationDialog::accept()
     QDialog::accept();
 }
 
-QString UIFDCreationDialog::mediumID() const
+QUuid UIFDCreationDialog::mediumID() const
 {
-    return m_strMediumID;
+    return m_uMediumID;
 }

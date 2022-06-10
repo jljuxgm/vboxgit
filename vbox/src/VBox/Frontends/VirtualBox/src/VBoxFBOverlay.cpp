@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 72057 2018-04-27 11:55:52Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -5799,19 +5799,19 @@ VBoxVHWASettings::VBoxVHWASettings ()
 
 void VBoxVHWASettings::init(CSession &session)
 {
-    const QString strMachineID = session.GetMachine().GetId();
+    const QUuid uMachineID = session.GetMachine().GetId();
 
-    mStretchLinearEnabled = gEDataManager->useLinearStretch(strMachineID);
+    mStretchLinearEnabled = gEDataManager->useLinearStretch(uMachineID);
 
     uint32_t aFourccs[VBOXVHWA_NUMFOURCC];
     int num = 0;
-    if (gEDataManager->usePixelFormatAYUV(strMachineID))
+    if (gEDataManager->usePixelFormatAYUV(uMachineID))
         aFourccs[num++] = FOURCC_AYUV;
-    if (gEDataManager->usePixelFormatUYVY(strMachineID))
+    if (gEDataManager->usePixelFormatUYVY(uMachineID))
         aFourccs[num++] = FOURCC_UYVY;
-    if (gEDataManager->usePixelFormatYUY2(strMachineID))
+    if (gEDataManager->usePixelFormatYUY2(uMachineID))
         aFourccs[num++] = FOURCC_YUY2;
-    if (gEDataManager->usePixelFormatYV12(strMachineID))
+    if (gEDataManager->usePixelFormatYV12(uMachineID))
         aFourccs[num++] = FOURCC_YV12;
 
     mFourccEnabledCount = num;

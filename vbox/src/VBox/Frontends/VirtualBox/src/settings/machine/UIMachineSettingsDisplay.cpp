@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 74862 2018-10-16 08:23:47Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -1390,10 +1390,10 @@ bool UIMachineSettingsDisplay::saveScreenData()
 #endif
 
         /* Get machine ID for further activities: */
-        QString strMachineId;
+        QUuid uMachineId;
         if (fSuccess)
         {
-            strMachineId = m_machine.GetId();
+            uMachineId = m_machine.GetId();
             fSuccess = m_machine.isOk();
         }
 
@@ -1404,7 +1404,7 @@ bool UIMachineSettingsDisplay::saveScreenData()
         /* Save guest-screen scale-factor: */
         if (fSuccess && newDisplayData.m_scaleFactors != oldDisplayData.m_scaleFactors)
         {
-            gEDataManager->setScaleFactors(newDisplayData.m_scaleFactors, strMachineId);
+            gEDataManager->setScaleFactors(newDisplayData.m_scaleFactors, uMachineId);
         }
     }
     /* Return result: */

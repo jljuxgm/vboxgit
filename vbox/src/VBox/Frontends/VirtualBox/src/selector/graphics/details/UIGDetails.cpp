@@ -1,4 +1,4 @@
-/* $Id: UIGDetails.cpp 69726 2017-11-17 15:48:58Z vboxsync $ */
+/* $Id: UIGDetails.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetails class implementation.
  */
@@ -101,8 +101,8 @@ void UIGDetails::prepareConnections()
             m_pDetailsView, SLOT(sltMinimumWidthHintChanged(int)));
     connect(m_pDetailsModel, SIGNAL(sigRootItemMinimumHeightHintChanged(int)),
             m_pDetailsView, SLOT(sltMinimumHeightHintChanged(int)));
-    connect(m_pDetailsModel, SIGNAL(sigLinkClicked(const QString&, const QString&, const QString&)),
-            this, SIGNAL(sigLinkClicked(const QString&, const QString&, const QString&)));
+    connect(m_pDetailsModel, SIGNAL(sigLinkClicked(const QString&, const QString&, const QUuid&)),
+            this, SIGNAL(sigLinkClicked(const QString&, const QString&, const QUuid&)));
     connect(this, SIGNAL(sigSlidingStarted()),
             m_pDetailsModel, SLOT(sltHandleSlidingStarted()));
     connect(this, SIGNAL(sigToggleStarted()),

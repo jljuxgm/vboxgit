@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class declarations.
  */
@@ -46,7 +46,7 @@ public:
     QString name() const { return m_strName; }
     QPixmap osPixmap(QSize *pLogicalSize = 0) const;
     QString osTypeId() const { return m_strOSTypeId; }
-    QString id() const { return m_strId; }
+    QUuid id() const { return m_uId; }
 
     QString machineStateName() const;
     QIcon machineStateIcon() const;
@@ -92,7 +92,7 @@ private:
     CMachine m_machine;
 
     /* Cached machine data (to minimize server requests) */
-    QString m_strId;
+    QUuid   m_uId;
     QString m_strSettingsFile;
 
     bool m_fAccessible;

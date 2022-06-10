@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic1.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic1.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic1 class implementation.
  */
@@ -44,11 +44,11 @@ void UIWizardCloneVDPage1::onHandleOpenSourceDiskClick()
     /* Get current virtual-disk medium type: */
     const UIMediumDeviceType enmMediumType = UIMediumDefs::mediumTypeToLocal(sourceVirtualDisk().GetDeviceType());
     /* Get source virtual-disk using file-open dialog: */
-    QString strMediumId = vboxGlobal().openMediumWithFileOpenDialog(enmMediumType, thisImp());
-    if (!strMediumId.isNull())
+    QUuid uMediumId = vboxGlobal().openMediumWithFileOpenDialog(enmMediumType, thisImp());
+    if (!uMediumId.isNull())
     {
         /* Update medium-combo if necessary: */
-        m_pSourceDiskSelector->setCurrentItem(strMediumId);
+        m_pSourceDiskSelector->setCurrentItem(uMediumId);
         /* Focus on virtual-disk combo: */
         m_pSourceDiskSelector->setFocus();
     }

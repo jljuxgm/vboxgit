@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGDetailsItem.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsItem class definition.
  */
@@ -270,7 +270,7 @@ QSizeF UIGDetailsItem::sizeHint(Qt::SizeHint which, const QSizeF &constraint /* 
     return QIGraphicsWidget::sizeHint(which, constraint);
 }
 
-void UIGDetailsItem::sltBuildStep(QString, int)
+void UIGDetailsItem::sltBuildStep(const QUuid &, const int)
 {
     AssertMsgFailed(("This item doesn't support building!"));
 }
@@ -328,18 +328,18 @@ void UIGDetailsItem::paintText(QPainter *pPainter, QPoint point,
     pPainter->restore();
 }
 
-UIBuildStep::UIBuildStep(QObject *pParent, QObject *pBuildObject, const QString &strStepId, int iStepNumber)
+UIBuildStep::UIBuildStep(QObject *pParent, QObject *pBuildObject, const QUuid &aStepId, int iStepNumber)
     : QObject(pParent)
-    , m_strStepId(strStepId)
+    , m_uStepId(aStepId)
     , m_iStepNumber(iStepNumber)
 {
     /* Prepare connections: */
     connect(pBuildObject, SIGNAL(sigBuildDone()), this, SLOT(sltStepDone()), Qt::QueuedConnection);
-    connect(this, SIGNAL(sigStepDone(QString, int)), pParent, SLOT(sltBuildStep(QString, int)), Qt::QueuedConnection);
+    connect(this, SIGNAL(sigStepDone(QUuid, int)), pParent, SLOT(sltBuildStep(QUuid, int)), Qt::QueuedConnection);
 }
 
 void UIBuildStep::sltStepDone()
 {
-    emit sigStepDone(m_strStepId, m_iStepNumber);
+    emit sigStepDone(m_uStepId, m_iStepNumber);
 }
 

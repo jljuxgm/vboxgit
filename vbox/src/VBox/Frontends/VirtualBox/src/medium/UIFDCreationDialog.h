@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.h 72913 2018-07-05 09:30:09Z vboxsync $ */
+/* $Id: UIFDCreationDialog.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
@@ -20,7 +20,7 @@
 
 /* Qt includes: */
 #include <QDialog>
-
+#include <QUuid>
 
 /* GUI Includes */
 #include "QIWithRetranslateUI.h"
@@ -47,7 +47,7 @@ public:
 
     virtual void accept() /* override */;
     /* Return the mediumID */
-    QString mediumID() const;
+    QUuid mediumID() const;
 
 protected:
 
@@ -76,7 +76,7 @@ private:
     QCheckBox          *m_pFormatCheckBox;
     QString             m_strMachineName;
     QString             m_strMachineFolder;
-    QString             m_strMediumID;
+    QUuid               m_uMediumID;
 };
 
 #endif // __UIFDCreationDialog_h__

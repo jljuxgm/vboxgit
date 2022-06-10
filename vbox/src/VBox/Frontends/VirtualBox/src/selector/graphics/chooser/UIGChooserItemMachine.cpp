@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 72709 2018-06-27 18:29:02Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -543,10 +543,10 @@ void UIGChooserItemMachine::clearItems(UIGChooserItemType)
     AssertMsgFailed(("Machine graphics item do NOT support children!"));
 }
 
-void UIGChooserItemMachine::updateAll(const QString &strId)
+void UIGChooserItemMachine::updateAll(const QUuid &aId)
 {
     /* Skip other ids: */
-    if (id() != strId)
+    if (id() != aId)
         return;
 
     /* Update this machine-item: */
@@ -562,10 +562,10 @@ void UIGChooserItemMachine::updateAll(const QString &strId)
     parentItem()->update();
 }
 
-void UIGChooserItemMachine::removeAll(const QString &strId)
+void UIGChooserItemMachine::removeAll(const QUuid &aId)
 {
     /* Skip wrong id: */
-    if (id() != strId)
+    if (id() != aId)
         return;
 
     /* Exclude itself from the current items: */

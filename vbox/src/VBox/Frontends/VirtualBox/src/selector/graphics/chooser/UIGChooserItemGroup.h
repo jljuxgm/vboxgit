@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.h 72708 2018-06-27 17:51:55Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemGroup class declaration.
  */
@@ -78,7 +78,7 @@ public:
     void open(bool fAnimated = true);
 
     /* API: Children stuff: */
-    bool isContainsMachine(const QString &strId) const;
+    bool isContainsMachine(const QUuid &aId) const;
     bool isContainsLockedMachine();
 
 private slots:
@@ -142,8 +142,8 @@ private:
     QList<UIGChooserItem*> items(UIGChooserItemType type = UIGChooserItemType_Any) const;
     bool hasItems(UIGChooserItemType type = UIGChooserItemType_Any) const;
     void clearItems(UIGChooserItemType type = UIGChooserItemType_Any);
-    void updateAll(const QString &strId);
-    void removeAll(const QString &strId);
+    void updateAll(const QUuid &aId);
+    void removeAll(const QUuid &aId);
     UIGChooserItem* searchForItem(const QString &strSearchTag, int iItemSearchFlags);
     UIGChooserItemMachine* firstMachineItem();
     void sortItems();

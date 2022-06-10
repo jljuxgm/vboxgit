@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -265,17 +265,17 @@ bool UIWizardNewVM::createVM()
     /* Attach default devices: */
     {
         bool success = false;
-        QString strMachineId = m_machine.GetId();
-        CSession session = vboxGlobal().openSession(strMachineId);
+        QUuid uMachineId = m_machine.GetId();
+        CSession session = vboxGlobal().openSession(uMachineId);
         if (!session.isNull())
         {
             CMachine machine = session.GetMachine();
 
-            QString strId = field("virtualDiskId").toString();
+            QUuid uId = field("virtualDiskId").toUuid();
             /* Boot virtual hard drive: */
-            if (!strId.isNull())
+            if (!uId.isNull())
             {
-                UIMedium vmedium = vboxGlobal().medium(strId);
+                UIMedium vmedium = vboxGlobal().medium(uId);
                 CMedium medium = vmedium.medium();              /// @todo r=dj can this be cached somewhere?
                 machine.AttachDevice(strHDName, 0, 0, KDeviceType_HardDisk, medium);
                 if (!machine.isOk())

@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRunPageBasic.h 71948 2018-04-20 15:34:35Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRunPageBasic class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIWizardFirstRunPageBasic_h__
 #define __UIWizardFirstRunPageBasic_h__
+
+/* Qt includes: */
+#include <QUuid>
 
 /* GUI includes: */
 #include "UIWizardPage.h"
@@ -39,8 +42,8 @@ protected:
     void onOpenMediumWithFileOpenDialog();
 
     /* Stuff for 'id' field: */
-    QString id() const;
-    void setId(const QString &strId);
+    QUuid id() const;
+    void setId(const QUuid &aId);
 
     /* Variables: */
     bool m_fBootHardDiskWasSet;
@@ -55,12 +58,12 @@ class UIWizardFirstRunPageBasic : public UIWizardPage, public UIWizardFirstRunPa
 {
     Q_OBJECT;
     Q_PROPERTY(QString source READ source);
-    Q_PROPERTY(QString id READ id WRITE setId);
+    Q_PROPERTY(QUuid id READ id WRITE setId);
 
 public:
 
     /* Constructor: */
-    UIWizardFirstRunPageBasic(const QString &strMachineId, bool fBootHardDiskWasSet);
+    UIWizardFirstRunPageBasic(const QUuid &aMachineId, bool fBootHardDiskWasSet);
 
 protected:
 

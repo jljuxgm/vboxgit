@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 73841 2018-08-22 17:13:17Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -200,7 +200,7 @@ public:
 protected slots:
 
     /** Handles configuration-change. */
-    void sltHandleConfigurationChange(const QString &strMachineID);
+    void sltHandleConfigurationChange(const QUuid &aMachineID);
 
     /** Handles 'View' : 'Scale Factor' menu : @a pAction trigger. */
     void sltHandleActionTriggerViewScaleFactor(QAction *pAction);

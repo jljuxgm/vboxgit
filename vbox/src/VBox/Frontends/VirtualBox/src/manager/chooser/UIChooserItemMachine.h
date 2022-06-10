@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 74598 2018-10-03 14:36:40Z vboxsync $ */
+/* $Id: UIChooserItemMachine.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIChooserItemMachine_h___
 #define ___UIChooserItemMachine_h___
+
+/* Qt includes */
+#include <QUuid>
 
 /* GUI includes: */
 #include "UIVirtualMachineItem.h"
@@ -128,9 +131,9 @@ protected:
         virtual void clearItems(UIChooserItemType enmType = UIChooserItemType_Any) /* override */;
 
         /** Updates all children items with specified @a strId. */
-        virtual void updateAllItems(const QString &strId) /* override */;
+        virtual void updateAllItems(const QUuid &aId) /* override */;
         /** Removes all children items with specified @a strId. */
-        virtual void removeAllItems(const QString &strId) /* override */;
+        virtual void removeAllItems(const QUuid &aId) /* override */;
 
         /** Searches for a first child item answering to specified @a strSearchTag and @a iItemSearchFlags. */
         virtual UIChooserItem *searchForItem(const QString &strSearchTag, int iItemSearchFlags) /* override */;

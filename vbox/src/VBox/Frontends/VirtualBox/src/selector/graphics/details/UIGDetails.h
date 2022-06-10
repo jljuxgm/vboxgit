@@ -1,4 +1,4 @@
-/* $Id: UIGDetails.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIGDetails.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetails class declaration.
  */
@@ -35,7 +35,7 @@ class UIGDetails : public QWidget
 signals:
 
     /* Notifier: Link processing stuff: */
-    void sigLinkClicked(const QString &strCategory, const QString &strControl, const QString &strId);
+    void sigLinkClicked(const QString &strCategory, const QString &strControl, const QUuid &aId);
 
     /* Notifier: Sliding stuff: */
     void sigSlidingStarted();

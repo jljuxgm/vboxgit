@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 71104 2018-02-22 14:14:16Z vboxsync $ */
+/* $Id: UIMachineView.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -126,10 +126,10 @@ protected slots:
     void sltDesktopResized();
 
     /** Handles the scale-factor change. */
-    void sltHandleScaleFactorChange(const QString &strMachineID);
+    void sltHandleScaleFactorChange(const QUuid &aMachineID);
 
     /** Handles the scaling-optimization change. */
-    void sltHandleScalingOptimizationChange(const QString &strMachineID);
+    void sltHandleScalingOptimizationChange(const QUuid &aMachineID);
 
     /* Console callback handlers: */
     virtual void sltMachineStateChanged();

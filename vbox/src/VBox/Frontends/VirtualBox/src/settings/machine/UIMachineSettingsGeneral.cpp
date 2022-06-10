@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -870,10 +870,10 @@ bool UIMachineSettingsGeneral::saveEncryptionData()
                         continue;
 
                     /* Get medium id for further activities: */
-                    QString strMediumId;
+                    QUuid aMediumId;
                     if (fSuccess)
                     {
-                        strMediumId = comMedium.GetId();
+                        aMediumId = comMedium.GetId();
                         fSuccess = comMedium.isOk();
                     }
 
@@ -905,7 +905,7 @@ bool UIMachineSettingsGeneral::saveEncryptionData()
                         const EncryptionPasswordMap &encryptionPasswords = newGeneralData.m_encryptionPasswords;
 
                         /* Check if old password exists/provided: */
-                        const QString strOldPasswordId = encryptedMedium.key(strMediumId);
+                        const QString strOldPasswordId = encryptedMedium.key(aMediumId);
                         const QString strOldPassword = encryptionPasswords.value(strOldPasswordId);
 
                         /* Create encryption progress: */

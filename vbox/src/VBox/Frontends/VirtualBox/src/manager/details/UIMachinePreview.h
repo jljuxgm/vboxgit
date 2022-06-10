@@ -1,4 +1,4 @@
-/* $Id: UIMachinePreview.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIMachinePreview.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachinePreview class declaration.
  */
@@ -65,7 +65,7 @@ public:
 private slots:
 
     /* Handler: Global-event listener stuff: */
-    void sltMachineStateChange(QString strId);
+    void sltMachineStateChange(const QUuid &aId);
 
     /* Handler: Preview recreator: */
     void sltRecreatePreview();

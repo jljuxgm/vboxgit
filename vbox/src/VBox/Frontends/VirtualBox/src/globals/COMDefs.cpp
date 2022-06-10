@@ -1,4 +1,4 @@
-/* $Id: COMDefs.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: COMDefs.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - CInterface implementation.
  */
@@ -235,6 +235,25 @@ void COMBase::FromSafeArray (const com::SafeGUIDArray &aArr,
         aVec[i] = *(QUuid *)&Tmp;
 #endif
     }
+}
+
+/* static */
+void COMBase::ToSafeArray (const QVector <QUuid> &aVec,
+                           com::SafeArray <BSTR> &aArr)
+{
+    aArr.reset (aVec.size());
+    for (int i = 0; i < aVec.size(); ++ i)
+        aArr [i] = SysAllocString ((const OLECHAR *)
+            (aVec.at (i).isNull() ? 0 : aVec.at(i).toString().utf16()));
+}
+
+/* static */
+void COMBase::FromSafeArray (const com::SafeArray <BSTR> &aArr,
+                             QVector <QUuid> &aVec)
+{
+    aVec.resize (static_cast <int> (aArr.size()));
+    for (int i = 0; i < aVec.size(); ++ i)
+        aVec [i] = QUuid(QString::fromUtf16 (aArr [i]));
 }
 
 ////////////////////////////////////////////////////////////////////////////////

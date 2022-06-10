@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 74769 2018-10-11 12:27:00Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -34,7 +34,7 @@ class UIWizardExportAppPageExpert : public UIWizardPage,
 {
     Q_OBJECT;
     Q_PROPERTY(QStringList machineNames READ machineNames);
-    Q_PROPERTY(QStringList machineIDs READ machineIDs);
+    Q_PROPERTY(QList<QUuid> machineIDs READ machineIDs);
     Q_PROPERTY(QString format READ format WRITE setFormat);
     Q_PROPERTY(bool isFormatCloudOne READ isFormatCloudOne);
     Q_PROPERTY(QString path READ path WRITE setPath);

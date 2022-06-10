@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 72710 2018-06-27 18:30:08Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class implementation.
  */
@@ -469,8 +469,8 @@ void UIGDetailsElement::prepareElement()
             this, &UIGDetailsElement::sltHandleWindowRemapped);
     connect(this, SIGNAL(sigToggleElement(DetailsElementType, bool)),
             model(), SLOT(sltToggleElements(DetailsElementType, bool)));
-    connect(this, SIGNAL(sigLinkClicked(const QString&, const QString&, const QString&)),
-            model(), SIGNAL(sigLinkClicked(const QString&, const QString&, const QString&)));
+    connect(this, SIGNAL(sigLinkClicked(const QString&, const QString&, const QUuid&)),
+            model(), SIGNAL(sigLinkClicked(const QString&, const QString&, const QUuid&)));
 }
 
 void UIGDetailsElement::prepareButton()

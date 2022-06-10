@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.h 74687 2018-10-08 15:34:38Z vboxsync $ */
+/* $Id: UIDetailsSet.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class declaration.
  */
@@ -71,7 +71,7 @@ protected slots:
           * @param  strStepId    Brings the step ID.
           * @param  iStepNumber  Brings the step number. */
     /** @} */
-    virtual void sltBuildStep(QString strStepId, int iStepNumber) /* override */;
+    virtual void sltBuildStep(const QUuid &aStepId, int iStepNumber) /* override */;
 
 protected:
 
@@ -124,9 +124,9 @@ private slots:
     /** @name Event-handling stuff.
       * @{ */
         /** Handles machine-state change for item with @a strId. */
-        void sltMachineStateChange(QString strId);
+        void sltMachineStateChange(const QUuid &aId);
         /** Handles machine-attribute change for item with @a strId. */
-        void sltMachineAttributesChange(QString strId);
+        void sltMachineAttributesChange(const QUuid &aId);
     /** @} */
 
     /** @name Item stuff.
@@ -205,7 +205,7 @@ private:
         /** Holds the last step number. */
         int            m_iLastStepNumber;
         /** Holds the generated set ID. */
-        QString        m_strSetId;
+        QUuid          m_uSetId;
     /** @} */
 
     /** @name Children stuff.

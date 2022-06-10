@@ -1,4 +1,4 @@
-/* $Id: UISession.h 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UISession.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -346,7 +346,7 @@ private slots:
 
 #ifdef RT_OS_DARWIN
     /** Mac OS X: Handles menu-bar configuration-change. */
-    void sltHandleMenuBarConfigurationChange(const QString &strMachineID);
+    void sltHandleMenuBarConfigurationChange(const QUuid &aMachineID);
 #endif /* RT_OS_DARWIN */
 
     /* Console events slots */

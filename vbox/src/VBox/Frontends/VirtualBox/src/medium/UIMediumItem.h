@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UIMediumItem.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -67,7 +67,7 @@ public:
     KMediumState state() const { return m_guiMedium.state(); }
 
     /** Returns QString <i>ID</i> of the wrapped UIMedium. */
-    QString id() const { return m_guiMedium.id(); }
+    QUuid id() const { return m_guiMedium.id(); }
     /** Returns QString <i>location</i> of the wrapped UIMedium. */
     QString location() const { return m_guiMedium.location(); }
 
@@ -85,7 +85,7 @@ public:
     QString toolTip() const { return m_guiMedium.toolTip(); }
 
     /** Returns a vector of IDs of all machines wrapped UIMedium is attached to. */
-    const QList<QString> &machineIds() const { return m_guiMedium.machineIds(); }
+    const QList<QUuid> &machineIds() const { return m_guiMedium.machineIds(); }
     /** Returns QString <i>usage</i> of the wrapped UIMedium. */
     QString usage() const { return m_guiMedium.usage(); }
     /** Returns whether wrapped UIMedium is used. */
@@ -110,7 +110,7 @@ private:
     void refresh();
 
     /** Releases UIMedium wrapped by <i>this</i> item from virtual machine with @a strMachineId. */
-    bool releaseFrom(const QString &strMachineId);
+    bool releaseFrom(const QUuid &aMachineId);
 
     /** Formats field text. */
     static QString formatFieldText(const QString &strText, bool fCompact = true, const QString &strElipsis = "middle");

@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 72704 2018-06-27 15:38:30Z vboxsync $ */
+/* $Id: UIVMItem.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMItem class implementation.
  */
@@ -223,7 +223,7 @@ bool UIVMItem::recache()
 {
     bool needsResort = true;
 
-    m_strId = m_machine.GetId();
+    m_uId = m_machine.GetId();
     m_strSettingsFile = m_machine.GetSettingsFilePath();
 
     m_fAccessible = m_machine.GetAccessible();
@@ -269,11 +269,11 @@ bool UIVMItem::recache()
         m_configurationAccessLevel = ::configurationAccessLevel(m_sessionState, m_machineState);
         /* Also take restrictions into account: */
         if (   m_configurationAccessLevel != ConfigurationAccessLevel_Null
-            && !gEDataManager->machineReconfigurationEnabled(m_strId))
+            && !gEDataManager->machineReconfigurationEnabled(m_uId))
             m_configurationAccessLevel = ConfigurationAccessLevel_Null;
 
         /* Should we show details for this item? */
-        m_fHasDetails = gEDataManager->showMachineInSelectorDetails(m_strId);
+        m_fHasDetails = gEDataManager->showMachineInSelectorDetails(m_uId);
     }
     else
     {

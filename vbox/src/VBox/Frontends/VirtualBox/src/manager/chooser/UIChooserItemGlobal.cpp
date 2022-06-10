@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 74775 2018-10-11 17:10:40Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -275,7 +275,7 @@ void UIChooserItemGlobal::clearItems(UIChooserItemType)
     AssertMsgFailed(("Global graphics item do NOT support children!"));
 }
 
-void UIChooserItemGlobal::updateAllItems(const QString &)
+void UIChooserItemGlobal::updateAllItems(const QUuid &)
 {
     /* Update this global-item: */
     updatePixmaps();
@@ -286,7 +286,7 @@ void UIChooserItemGlobal::updateAllItems(const QString &)
     parentItem()->update();
 }
 
-void UIChooserItemGlobal::removeAllItems(const QString &)
+void UIChooserItemGlobal::removeAllItems(const QUuid &)
 {
     // Just do nothing ..
 }

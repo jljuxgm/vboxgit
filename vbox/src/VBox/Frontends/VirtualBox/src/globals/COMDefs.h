@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 71791 2018-04-09 16:52:12Z vboxsync $ */
+/* $Id: COMDefs.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -290,6 +290,13 @@ public:
     static void FromSafeArray(const com::SafeGUIDArray &aArr,
                               QVector<QUuid> &aVec);
 
+    /* Arrays of GUID as BSTR */
+
+    static void ToSafeArray(const QVector<QUuid> &aVec,
+                            com::SafeArray<BSTR> &aArr);
+    static void FromSafeArray(const com::SafeArray<BSTR> &aArr,
+                              QVector<QUuid> &aVec);
+
     /* Arrays of enums. Does a cast similar to what ENUMOut does. */
 
     template <typename QE, typename CE>
@@ -391,6 +398,50 @@ protected:
     private:
 
         QString &str;
+        BSTR bstr;
+    };
+
+    /** Adapter to pass QUuid as input BSTR params */
+    class GuidAsBStrIn
+    {
+    public:
+
+        GuidAsBStrIn(const QUuid &s) : bstr(SysAllocString((const OLECHAR *)
+            (s.isNull() ? 0 : s.toString().utf16()))) {}
+
+        ~GuidAsBStrIn()
+        {
+            if (bstr)
+                SysFreeString(bstr);
+        }
+
+        operator BSTR() const { return bstr; }
+
+    private:
+
+        BSTR bstr;
+    };
+
+    /** Adapter to pass QUuid as output BSTR params */
+    class GuidAsBStrOut
+    {
+    public:
+
+        GuidAsBStrOut(QUuid &s) : uuid(s), bstr(0) {}
+
+        ~GuidAsBStrOut()
+        {
+            if (bstr) {
+                uuid = QUuid(QString::fromUtf16(bstr));
+                SysFreeString(bstr);
+            }
+        }
+
+        operator BSTR *() { return &bstr; }
+
+    private:
+
+        QUuid &uuid;
         BSTR bstr;
     };
 

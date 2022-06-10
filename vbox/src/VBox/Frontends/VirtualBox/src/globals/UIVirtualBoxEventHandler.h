@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.h 73385 2018-07-27 10:11:21Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
@@ -42,21 +42,21 @@ signals:
     void sigVBoxSVCAvailabilityChange(bool fAvailable);
 
     /** Notifies about @a state change event for the machine with @a strId. */
-    void sigMachineStateChange(QString strId, KMachineState state);
+    void sigMachineStateChange(const QUuid &aId, const KMachineState state);
     /** Notifies about data change event for the machine with @a strId. */
-    void sigMachineDataChange(QString strId);
+    void sigMachineDataChange(const QUuid &aId);
     /** Notifies about machine with @a strId was @a fRegistered. */
-    void sigMachineRegistered(QString strId, bool fRegistered);
+    void sigMachineRegistered(const QUuid &aId, const bool fRegistered);
     /** Notifies about @a state change event for the session of the machine with @a strId. */
-    void sigSessionStateChange(QString strId, KSessionState state);
+    void sigSessionStateChange(const QUuid &aId, const KSessionState state);
     /** Notifies about snapshot with @a strSnapshotId was taken for the machine with @a strId. */
-    void sigSnapshotTake(QString strId, QString strSnapshotId);
+    void sigSnapshotTake(const QUuid &sId, const QUuid &aSnapshotId);
     /** Notifies about snapshot with @a strSnapshotId was deleted for the machine with @a strId. */
-    void sigSnapshotDelete(QString strId, QString strSnapshotId);
+    void sigSnapshotDelete(const QUuid &aId, const QUuid &aSnapshotId);
     /** Notifies about snapshot with @a strSnapshotId was changed for the machine with @a strId. */
-    void sigSnapshotChange(QString strId, QString strSnapshotId);
+    void sigSnapshotChange(const QUuid &aId, const QUuid &aSnapshotId);
     /** Notifies about snapshot with @a strSnapshotId was restored for the machine with @a strId. */
-    void sigSnapshotRestore(QString strId, QString strSnapshotId);
+    void sigSnapshotRestore(const QUuid &aId, const QUuid &aSnapshotId);
 
 public:
 

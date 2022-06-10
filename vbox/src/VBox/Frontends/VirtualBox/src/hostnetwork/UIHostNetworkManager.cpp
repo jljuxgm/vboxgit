@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 73783 2018-08-20 11:41:59Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -460,9 +460,9 @@ void UIHostNetworkManagerWidget::sltRemoveHostNetwork()
         if (comInterface.isOk())
             strNetworkName = comInterface.GetNetworkName();
         /* Get interface id for further activities: */
-        QString strInterfaceId;
+        QUuid uInterfaceId;
         if (comInterface.isOk())
-            strInterfaceId = comInterface.GetId();
+            uInterfaceId = comInterface.GetId();
 
         /* Show error message if necessary: */
         if (!comInterface.isOk())
@@ -485,7 +485,7 @@ void UIHostNetworkManagerWidget::sltRemoveHostNetwork()
             }
 
             /* Remove interface finally: */
-            CProgress progress = comHost.RemoveHostOnlyNetworkInterface(strInterfaceId);
+            CProgress progress = comHost.RemoveHostOnlyNetworkInterface(uInterfaceId);
 
             /* Show error message if necessary: */
             if (!comHost.isOk() || progress.isNull())

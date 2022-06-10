@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 74769 2018-10-11 12:27:00Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -250,11 +250,11 @@ void UIWizardExportAppPage3::refreshApplianceSettingsWidget()
     if (pAppliance->isOk())
     {
         /* Iterate over all the selected machine ids: */
-        QStringList uuids = fieldImp("machineIDs").toStringList();
-        foreach (const QString &uuid, uuids)
+        QList<QUuid> uuids = fieldImp("machineIDs").value<QList<QUuid> >();
+        foreach (const QUuid &uuid, uuids)
         {
             /* Get the machine with the uuid: */
-            CMachine comMachine = comVBox.FindMachine(uuid);
+            CMachine comMachine = comVBox.FindMachine(uuid.toString());
             if (comVBox.isOk() && comMachine.isNotNull())
             {
                 /* Add the export description to our appliance object: */

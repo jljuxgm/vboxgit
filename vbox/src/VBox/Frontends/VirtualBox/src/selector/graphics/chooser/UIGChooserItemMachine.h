@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.h 72708 2018-06-27 17:51:55Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class declaration.
  */
@@ -124,8 +124,8 @@ private:
     QList<UIGChooserItem*> items(UIGChooserItemType type) const;
     bool hasItems(UIGChooserItemType type) const;
     void clearItems(UIGChooserItemType type);
-    void updateAll(const QString &strId);
-    void removeAll(const QString &strId);
+    void updateAll(const QUuid &aId);
+    void removeAll(const QUuid &aId);
     UIGChooserItem* searchForItem(const QString &strSearchTag, int iItemSearchFlags);
     UIGChooserItemMachine* firstMachineItem();
     void sortItems();

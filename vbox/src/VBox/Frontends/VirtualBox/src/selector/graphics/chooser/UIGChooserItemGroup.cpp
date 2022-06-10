@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 72709 2018-06-27 18:29:02Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemGroup class implementation.
  */
@@ -258,11 +258,11 @@ void UIGChooserItemGroup::open(bool fAnimated /* = true */)
     m_pToggleButton->setToggled(true, fAnimated);
 }
 
-bool UIGChooserItemGroup::isContainsMachine(const QString &strId) const
+bool UIGChooserItemGroup::isContainsMachine(const QUuid &aId) const
 {
     /* Check each machine-item: */
     foreach (UIGChooserItem *pItem, m_machineItems)
-        if (pItem->toMachineItem()->id() == strId)
+        if (pItem->toMachineItem()->id() == aId)
             return true;
     /* Found nothing? */
     return false;
@@ -933,18 +933,18 @@ void UIGChooserItemGroup::clearItems(UIGChooserItemType type /* = UIGChooserItem
     updateGeometry();
 }
 
-void UIGChooserItemGroup::updateAll(const QString &strId)
+void UIGChooserItemGroup::updateAll(const QUuid &aId)
 {
     /* Update all the required items recursively: */
     foreach (UIGChooserItem *pItem, items())
-        pItem->updateAll(strId);
+        pItem->updateAll(aId);
 }
 
-void UIGChooserItemGroup::removeAll(const QString &strId)
+void UIGChooserItemGroup::removeAll(const QUuid &aId)
 {
     /* Remove all the required items recursively: */
     foreach (UIGChooserItem *pItem, items())
-        pItem->removeAll(strId);
+        pItem->removeAll(aId);
 }
 
 UIGChooserItem* UIGChooserItemGroup::searchForItem(const QString &strSearchTag, int iItemSearchFlags)

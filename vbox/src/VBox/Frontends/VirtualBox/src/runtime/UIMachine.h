@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 72363 2018-05-28 16:49:10Z vboxsync $ */
+/* $Id: UIMachine.h 74878 2018-10-17 13:34:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -48,7 +48,7 @@ public:
 
     /** Static factory to start machine with passed @a strID.
       * @return true if machine was started, false otherwise. */
-    static bool startMachine(const QString &strID);
+    static bool startMachine(const QUuid &aID);
     /** Static constructor. */
     static bool create();
     /** Static destructor. */
