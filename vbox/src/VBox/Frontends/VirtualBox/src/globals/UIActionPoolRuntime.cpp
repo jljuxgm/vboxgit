@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 76177 2018-12-12 13:38:57Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 76336 2018-12-21 13:34:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -238,7 +238,7 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionSimpleRuntimeShowFileManagerDialog(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/session_info_16px.png", ":/session_info_disabled_16px.png", true)
+        : UIActionSimple(pParent, ":/file_manager_16px.png", ":/file_manager_disabled_16px.png", true)
     {}
 
 protected:
