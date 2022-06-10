@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 76018 2018-12-06 15:14:02Z vboxsync $ */
+/* $Id: HDAStream.h 76049 2018-12-07 10:51:32Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -149,7 +149,12 @@ typedef struct HDASTREAMSTATE
     /** How many interrupts are pending due to
      *  BDLE interrupt-on-completion (IOC) bits set. */
     uint8_t                 cTransferPendingInterrupts;
-    uint8_t                 Padding2[4];
+    uint8_t                 Padding2[2];
+    /** The stream's timer Hz rate.
+     *  This value can can be different from the device's default Hz rate,
+     *  depending on the rate the stream expects (e.g. for 5.1 speaker setups).
+     *  Set in hdaR3StreamInit(). */
+    uint16_t                uTimerHz;
     /** Number of audio data frames for the position adjustment.
      *  0 if no position adjustment is needed. */
     uint16_t                cfPosAdjustDefault;

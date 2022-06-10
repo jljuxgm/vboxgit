@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 76019 2018-12-06 15:24:32Z vboxsync $ */
+/* $Id: DevHDACommon.h 76049 2018-12-07 10:51:32Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -95,7 +95,7 @@ AssertCompile(HDA_MAX_SDI <= HDA_MAX_SDO);
  * Note: For handling surround setups (e.g. 5.1 speaker setups) we need
  *       a higher Hz rate, as the device emulation otherwise will come into
  *       timing trouble, making the output (DMA reads) crackling. */
-#define HDA_TIMER_HZ_DEFAULT        200
+#define HDA_TIMER_HZ_DEFAULT        100
 
 /** Default position adjustment (in audio samples).
  *
