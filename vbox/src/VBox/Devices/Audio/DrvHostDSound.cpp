@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 77029 2019-01-29 12:59:47Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 77031 2019-01-29 13:11:37Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -509,8 +509,8 @@ static void directSoundPlayInterfaceDestroy(LPDIRECTSOUND8 pDS)
  * Creates a DirectSound playback interface.
  *
  * @return  HRESULT
- * @param   pThis               GUID of device to create the playback interface for.
- * @param   ppDSC               Where to store the created interface. Optional.
+ * @param   pGUID               GUID of device to create the playback interface for.
+ * @param   ppDS                Where to store the created interface. Optional.
  */
 static HRESULT directSoundPlayInterfaceCreate(LPCGUID pGUID, LPDIRECTSOUND8 *ppDS)
 {
