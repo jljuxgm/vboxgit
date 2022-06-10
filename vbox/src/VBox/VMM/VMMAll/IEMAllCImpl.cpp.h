@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 75510 2018-11-16 08:36:57Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 75565 2018-11-19 11:08:58Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5908,7 +5908,7 @@ IEM_CIMPL_DEF_4(iemCImpl_load_CrX, uint8_t, iCrReg, uint64_t, uNewCrX, IEMACCESS
                  */
                 uint32_t const uVTpr = (uNewCrX & 0xf) << 4;
                 iemVmxVirtApicWriteRaw32(pVCpu, XAPIC_OFF_TPR, uVTpr);
-                iemVmxVirtApicSignalAction(pVCpu, XAPIC_OFF_TPR);
+                iemVmxVirtApicSetPostAction(pVCpu, XAPIC_OFF_TPR);
                 break;
             }
 #endif

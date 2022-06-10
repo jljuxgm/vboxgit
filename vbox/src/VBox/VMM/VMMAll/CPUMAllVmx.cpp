@@ -1,4 +1,4 @@
-/* $Id: CPUMAllVmx.cpp 75511 2018-11-16 11:25:07Z vboxsync $ */
+/* $Id: CPUMAllVmx.cpp 75565 2018-11-19 11:08:58Z vboxsync $ */
 /** @file
  * CPUM - SVM.
  */
@@ -150,7 +150,7 @@ PGM_ALL_CB2_DECL(VBOXSTRICTRC) cpumVmxApicAccessPageHandler(PVM pVM, PVMCPU pVCp
     RT_NOREF4(pVM, pvPhys, enmOrigin, pvUser);
 
     Assert(CPUMIsGuestInVmxNonRootMode(&pVCpu->cpum.s.Guest));
-    Assert(CPUMIsGuestVmxProcCtls2Set(pVCpu, VMX_PROC_CTLS2_VIRT_APIC_ACCESS));
+    Assert(CPUMIsGuestVmxProcCtls2Set(pVCpu, &pVCpu->cpum.s.Guest, VMX_PROC_CTLS2_VIRT_APIC_ACCESS));
 
 #ifdef VBOX_STRICT
     RTGCPHYS const GCPhysApicBase   = CPUMGetGuestVmxApicAccessPageAddr(pVCpu, &pVCpu->cpum.s.Guest);
