@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.h 74880 2018-10-17 14:28:35Z vboxsync $ */
+/* $Id: UICloudProfileDetailsWidget.h 74892 2018-10-17 18:39:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class declaration.
  */
@@ -148,8 +148,10 @@ private:
       * @{ */
         /** Revalidates changes for passed @a pWidget. */
         void revalidate(QWidget *pWidget = 0);
+
         /** Retranslates validation for passed @a pWidget. */
         void retranslateValidation(QWidget *pWidget = 0);
+
         /** Updates button states. */
         void updateButtonStates();
     /** @} */
