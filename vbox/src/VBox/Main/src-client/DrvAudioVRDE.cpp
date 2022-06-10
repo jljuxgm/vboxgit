@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 73529 2018-08-06 16:26:43Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 73564 2018-08-08 14:03:05Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -176,7 +176,7 @@ static int vrdeControlStreamIn(PDRVAUDIOVRDE pDrv, PVRDESTREAM pStreamVRDE, PDMA
                                                                pStreamVRDE->pCfg->Props.cBytes * 8 /* Bit */);
             if (rc == VERR_NOT_SUPPORTED)
             {
-                LogFunc(("No RDP client connected, so no input recording supported\n"));
+                LogRel2(("Audio: No VRDE client connected, so no input recording available\n"));
                 rc = VINF_SUCCESS;
             }
 
