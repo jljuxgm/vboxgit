@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 77564 2019-03-05 10:30:33Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -196,6 +196,11 @@ if !defined(VBOX_ONLY_BUILD)
  PROGRAMS += RTFuzzMaster
  RTFuzzMaster_TEMPLATE = VBoxR3Tool
  RTFuzzMaster_SOURCES = RTFuzzMaster.cpp
+
+ # RTFuzzClient - Fuzzing client tool.
+ PROGRAMS += RTFuzzClient
+ RTFuzzClient_TEMPLATE = VBoxR3Tool
+ RTFuzzClient_SOURCES = RTFuzzClient.cpp
 
  if1of ($(KBUILD_TARGET), darwin linux solaris win)
   # RTKrnlModInfo - our lsmod/kextstat clone (for testing the RTKrnlMod code).
