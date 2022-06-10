@@ -1,4 +1,4 @@
-/* $Id: vboxfs_vfs.c 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vboxfs_vfs.c 75444 2018-11-14 10:25:43Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, VFS implementation.
  */
@@ -80,7 +80,8 @@ static mntopt_t sffs_options[] = {
 	{"dmask",	NULL,		NULL,	MO_HASVALUE,	NULL},
 	{"fmask",	NULL,		NULL,	MO_HASVALUE,	NULL},
 	{"stat_ttl",	NULL,		NULL,	MO_HASVALUE,	NULL},
-	{"fsync",	NULL,		NULL,	0,	        NULL}
+	{"fsync",	NULL,		NULL,	0,	        NULL},
+	{"tag", 	NULL,		NULL,	MO_HASVALUE,	NULL}
 };
 
 static mntopts_t sffs_options_table = {
