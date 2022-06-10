@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 78307 2019-04-26 06:41:46Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 78317 2019-04-26 09:44:48Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -590,7 +590,7 @@ static int vboxClipboardSyncInternal(PVBOXCLIPBOARDCONTEXT pCtx)
     uint32_t uFormats;
     int rc = VBoxClipboardWinGetFormats(&pCtx->Win, &uFormats);
     if (RT_SUCCESS(rc))
-        vboxSvcClipboardReportMsg(pCtx->pClient, VBOX_SHARED_CLIPBOARD_HOST_MSG_FORMATS, uFormats);
+        vboxSvcClipboardReportMsg(pCtx->pClient, VBOX_SHARED_CLIPBOARD_HOST_MSG_REPORT_FORMATS, uFormats);
 
     return rc;
 }
