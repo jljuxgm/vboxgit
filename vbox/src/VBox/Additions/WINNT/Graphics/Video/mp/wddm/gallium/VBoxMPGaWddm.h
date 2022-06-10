@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.h 75655 2018-11-21 23:30:22Z vboxsync $ */
+/* $Id: VBoxMPGaWddm.h 75697 2018-11-23 22:45:22Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -34,6 +34,8 @@ NTSTATUS GaScreenDefine(PVBOXWDDM_EXT_GA pGaDevExt,
                         int32_t yOrigin,
                         uint32_t u32Width,
                         uint32_t u32Height);
+NTSTATUS GaScreenDestroy(PVBOXWDDM_EXT_GA pGaDevExt,
+                         uint32_t u32ScreenId);
 
 NTSTATUS GaDeviceCreate(PVBOXWDDM_EXT_GA pGaDevExt,
                         PVBOXWDDM_DEVICE pDevice);

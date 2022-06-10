@@ -1,4 +1,4 @@
-/* $Id: Svga.h 75655 2018-11-21 23:30:22Z vboxsync $ */
+/* $Id: Svga.h 75697 2018-11-23 22:45:22Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -132,6 +132,8 @@ NTSTATUS SvgaScreenDefine(PVBOXWDDM_EXT_VMSVGA pSvga,
                           int32_t yOrigin,
                           uint32_t u32Width,
                           uint32_t u32Height);
+NTSTATUS SvgaScreenDestroy(PVBOXWDDM_EXT_VMSVGA pSvga,
+                           uint32_t u32ScreenId);
 
 NTSTATUS SvgaContextCreate(PVBOXWDDM_EXT_VMSVGA pSvga,
                            uint32_t u32Cid);
