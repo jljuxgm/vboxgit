@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 76555 2019-01-01 02:08:55Z vboxsync $ */
+/* $Id: scm.cpp 76572 2019-01-01 04:55:08Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1090,6 +1090,9 @@ static int scmSettingsBaseHandleOpt(PSCMSETTINGSBASE pSettings, int rc, PRTGETOP
             pSettings->pszGuardRelativeToDir = NULL;
             if (*pValueUnion->psz != '\0')
             {
+                if (   strcmp(pValueUnion->psz, "{dir}") == 0
+                    || strcmp(pValueUnion->psz, "{parent}") == 0)
+                    return RTStrDupEx(&pSettings->pszGuardRelativeToDir, pValueUnion->psz);
                 if (cchDir == 1 && *pchDir == '/')
                 {
                     pSettings->pszGuardRelativeToDir = RTPathAbsDup(pValueUnion->psz);
@@ -2794,6 +2797,8 @@ static int scmHelp(PCRTGETOPTDEF paOpts, size_t cOpts)
                 break;
             case SCMOPT_GUARD_RELATIVE_TO_DIR:
                 RTPrintf("      Header guard should be normalized relative to given dir.\n"
+                         "      When relative to settings files, no preceeding slash.\n"
+                         "      Header relative directory specification: {dir} and {parent}\n"
                          "      If empty no normalization takes place.  Default: '%s'\n", g_Defaults.pszGuardRelativeToDir);
                 break;
             case SCMOPT_GUARD_PREFIX:
@@ -2954,7 +2959,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 76555 $";
+                static const char s_szRev[] = "$Revision: 76572 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
