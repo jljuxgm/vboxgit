@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRunPageBasic.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic.cpp 77345 2019-02-18 12:49:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRunPageBasic class implementation.
  */
@@ -39,7 +39,8 @@ UIWizardFirstRunPage::UIWizardFirstRunPage(bool fBootHardDiskWasSet)
 void UIWizardFirstRunPage::onOpenMediumWithFileOpenDialog()
 {
     /* Get opened vboxMedium id: */
-    QUuid uMediumId = vboxGlobal().openMediumWithFileOpenDialog(m_pMediaSelector->type(), thisImp());
+    QUuid uMediumId;
+    vboxGlobal().openMediumSelectorDialog(thisImp(), UIMediumDeviceType_DVD, uMediumId, "", "", "", true);
     /* Update medium-combo if necessary: */
     if (!uMediumId.isNull())
         m_pMediaSelector->setCurrentItem(uMediumId);
@@ -158,4 +159,3 @@ QString UIWizardFirstRunPageBasic::source() const
 {
     return m_pMediaSelector->currentText();
 }
-
