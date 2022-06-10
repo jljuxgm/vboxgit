@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 73430 2018-08-01 14:55:02Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 73464 2018-08-03 09:34:01Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -84,10 +84,12 @@ static int vrdeCreateStreamIn(PVRDESTREAM pStreamVRDE, PPDMAUDIOSTREAMCFG pCfgRe
     RT_NOREF(pCfgReq);
     AssertPtrReturn(pCfgAcq, VERR_INVALID_POINTER);
 
-    pCfgAcq->Props.uHz       = 22050; /* The VRDP server's internal frequency. */
-    pCfgAcq->Props.cChannels = 2;
-    pCfgAcq->Props.cBits     = 16;
-    pCfgAcq->Props.fSigned   = true;
+    pCfgAcq->Props.uHz         = 22050; /* The VRDP server's internal frequency. */
+    pCfgAcq->Props.cChannels   = 2;
+    pCfgAcq->Props.cBits       = 16;
+    pCfgAcq->Props.fSigned     = true;
+    pCfgAcq->Props.fSwapEndian = false;
+    pCfgAcq->Props.cShift      = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(pCfgAcq->Props.cBits, pCfgAcq->Props.cChannels);
 
     /* According to the VRDP docs, the VRDP server stores audio in 200ms chunks. */
     const uint32_t cfVRDPServer = DrvAudioHlpMilliToFrames(200  /* ms */, &pCfgAcq->Props);
