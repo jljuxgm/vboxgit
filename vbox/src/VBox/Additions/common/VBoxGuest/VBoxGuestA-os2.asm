@@ -1,4 +1,4 @@
-; $Id: VBoxGuestA-os2.asm 69500 2017-10-28 15:14:05Z vboxsync $
+; $Id: VBoxGuestA-os2.asm 75552 2018-11-18 04:55:03Z vboxsync $
 ;; @file
 ; VBoxGuest - OS/2 assembly file, the first file in the link.
 ;
@@ -185,7 +185,7 @@ endstruc
 ; Some dhcalls.h stuff.
 %define DevHlp_VirtToLin        05bh
 %define DevHlp_SAVE_MESSAGE     03dh
-%define DevHlp_EIO              031h
+%define DevHlp_EOI              031h
 %define DevHlp_SetIRQ           01bh
 %define DevHlp_PhysToVirt       015h
 
@@ -1061,7 +1061,7 @@ GLOBALNAME vgdrvOS2ISR16_16
     ;
 .our:
     mov     al, [NAME(g_bInterruptLine)]
-    mov     dl, DevHlp_EIO
+    mov     dl, DevHlp_EOI
     call far [NAME(g_fpfnDevHlp)]
 
     pop     ebx

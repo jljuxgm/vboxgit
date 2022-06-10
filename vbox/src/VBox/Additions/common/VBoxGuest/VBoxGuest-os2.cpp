@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 70873 2018-02-05 18:13:55Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 75552 2018-11-18 04:55:03Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -133,8 +133,8 @@ DECLASM(int) vgdrvOS2DevHlpSetIRQ(uint8_t bIRQ);
  */
 DECLASM(int) vgdrvOS2Init(const char *pszArgs)
 {
-    Log(("vgdrvOS2Init: pszArgs='%s' MMIO=0x%RX32 IOPort=0x%RX16 Int=%#x Bus=%#x Dev=%#x Fun=%d\n",
-         pszArgs, g_PhysMMIOBase, g_IOPortBase, g_bInterruptLine, g_bPciBusNo, g_bPciDevFunNo >> 3, g_bPciDevFunNo & 7));
+    //Log(("vgdrvOS2Init: pszArgs='%s' MMIO=0x%RX32 IOPort=0x%RX16 Int=%#x Bus=%#x Dev=%#x Fun=%d\n",
+    //     pszArgs, g_PhysMMIOBase, g_IOPortBase, g_bInterruptLine, g_bPciBusNo, g_bPciDevFunNo >> 3, g_bPciDevFunNo & 7));
 
     /*
      * Initialize the runtime.
