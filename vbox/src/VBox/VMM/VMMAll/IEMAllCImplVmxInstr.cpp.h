@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 77453 2019-02-25 09:38:45Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 77454 2019-02-25 09:42:36Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -8627,7 +8627,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmxon(PVMCPU pVCpu, uint8_t cbInstr, uint8_t iEffS
         }
 
         /* Verify the VMCS revision specified by the guest matches what we reported to the guest. */
-        if (RT_UNLIKELY(VmcsRevId.u == VMX_V_VMCS_REVISION_ID))
+        if (RT_LIKELY(VmcsRevId.u == VMX_V_VMCS_REVISION_ID))
         { /* likely */ }
         else
         {
