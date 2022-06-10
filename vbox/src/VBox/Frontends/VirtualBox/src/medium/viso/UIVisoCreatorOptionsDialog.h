@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorOptionsDialog.h 76671 2019-01-07 12:15:00Z vboxsync $ */
+/* $Id: UIVisoCreatorOptionsDialog.h 76676 2019-01-07 12:56:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorOptionsDialog class declaration.
  */
@@ -27,12 +27,9 @@
 #include "UIVisoCreatorDefs.h"
 
 /* Forward declarations: */
-// class QILabel;
-// class QILineEdit;
 class QITabWidget;
 class QVBoxLayout;
 class QIDialogButtonBox;
-class VisoOptions;
 class BrowserOptions;
 
 
