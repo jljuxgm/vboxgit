@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 76745 2019-01-09 16:30:17Z vboxsync $ */
+/* $Id: vfsmod.h 77054 2019-01-30 17:40:43Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -34,6 +34,9 @@
 # pragma once
 #endif
 
+/* VBOXSF_USE_DEPRECATED_VBGL_INTERFACE is also settable in make env. */
+/*#define VBOXSF_USE_DEPRECATED_VBGL_INTERFACE*/
+
 #define LOG_GROUP LOG_GROUP_SHARED_FOLDERS
 #include "the-linux-kernel.h"
 #include <VBox/log.h>
@@ -43,6 +46,7 @@
 #endif
 
 #include <VBox/VBoxGuestLibSharedFolders.h>
+#include <VBox/VBoxGuestLibSharedFoldersInline.h>
 #include "vbsfmount.h"
 
 #define DIR_BUFFER_SIZE (16*_1K)
