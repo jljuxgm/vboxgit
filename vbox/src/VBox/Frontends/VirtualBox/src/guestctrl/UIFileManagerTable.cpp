@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 77870 2019-03-25 12:16:39Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 77904 2019-03-27 08:54:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -525,7 +525,9 @@ void UIFileManagerTable::changeLocation(const QModelIndex &index)
     if (!index.isValid() || !m_pView)
         return;
     m_pView->setRootIndex(m_pProxyModel->mapFromSource(index));
-    m_pView->clearSelection();
+
+    if (m_pView->selectionModel())
+        m_pView->selectionModel()->reset();
 
     UICustomFileSystemItem *item = static_cast<UICustomFileSystemItem*>(index.internalPointer());
     if (item)
