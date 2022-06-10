@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 72778 2018-06-29 20:02:35Z vboxsync $ */
+/* $Id: VMM.cpp 72779 2018-06-29 20:08:13Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -457,7 +457,7 @@ static int vmmR3InitLoggers(PVM pVM)
         rc = PDMR3LdrGetSymbolR0(pVM, VMMR0_MAIN_MODULE_NAME, "vmmR0LoggerFlush", &pfnLoggerFlush);
         AssertReleaseMsgRCReturn(rc, ("vmmR0LoggerFlush not found! rc=%Rra\n", rc), rc);
 
-        size_t const cbLogger = RTLogCalcSizeForR0(pLogger->cGroups, 0);
+        size_t const cbLogger = RTLogCalcSizeForR0(pRelLogger->cGroups, 0);
 
         for (VMCPUID i = 0; i < pVM->cCpus; i++)
         {
