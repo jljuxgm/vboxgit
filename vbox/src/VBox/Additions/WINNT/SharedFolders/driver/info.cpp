@@ -1,4 +1,4 @@
-/* $Id: info.cpp 78365 2019-05-02 21:49:04Z vboxsync $ */
+/* $Id: info.cpp 78366 2019-05-02 21:56:23Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders FSD - Information Querying & Setting Routines.
  */
@@ -1099,11 +1099,6 @@ static void vbsfNtCopyInfo(PMRX_VBOX_FOBX pVBoxFobX, PSHFLFSOBJINFO pObjInfo, PV
             pObjInfo->ChangeTime        = pVBoxFobX->Info.ChangeTime;
     }
     pVBoxFobX->Info = *pObjInfo;
-
-    /*
-     * Try eliminate this one.
-     */
-    vbsfNtBasicInfoFromVBoxObjInfo(&pVBoxFobX->FileBasicInfo, pObjInfo);
 }
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 78365 2019-05-02 21:49:04Z vboxsync $ */
+/* $Id: vbsf.h 78366 2019-05-02 21:56:23Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
@@ -147,9 +147,6 @@ typedef struct MRX_VBOX_FOBX
     /** Cached object info.
      * @todo Consider moving it to VBSFNTFCBEXT.  Better fit than on "handle". */
     SHFLFSOBJINFO               Info;
-    /** NT version of Info.
-     * @todo try eliminate  */
-    FILE_BASIC_INFORMATION      FileBasicInfo;
 
     /** VBOX_FOBX_F_INFO_XXX of timestamps which may need setting on close. */
     uint8_t                     fTimestampsSetByUser;
