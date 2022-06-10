@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 74882 2018-10-17 14:47:16Z vboxsync $ */
+/* $Id: vbox_fb.c 75664 2018-11-22 14:01:50Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -325,8 +325,7 @@ static int vboxfb_create(struct drm_fb_helper *helper,
 	 * The last flag forces a mode set on VT switches even if the kernel
 	 * does not think it is needed.
 	 */
-	info->flags = FBINFO_DEFAULT | FBINFO_CAN_FORCE_OUTPUT |
-		      FBINFO_MISC_ALWAYS_SETPAR;
+	info->flags = FBINFO_DEFAULT | FBINFO_MISC_ALWAYS_SETPAR;
 	info->fbops = &vboxfb_ops;
 
 	/*
