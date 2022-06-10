@@ -1,4 +1,4 @@
-/* $Id: RTCRestBinaryString.cpp 74127 2018-09-06 18:32:37Z vboxsync $ */
+/* $Id: RTCRestBinaryString.cpp 74129 2018-09-06 20:20:26Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestBinaryString implementation.
  */
@@ -303,7 +303,7 @@ void RTCRestBinaryString::setConsumerCallback(PFNCONSUMER a_pfnConsumer, void *a
 {
     freeData();
 
-    a_pfnConsumer    = a_pfnConsumer;
+    m_pfnConsumer    = a_pfnConsumer;
     m_pvCallbackData = a_pvCallbackData;
 }
 
