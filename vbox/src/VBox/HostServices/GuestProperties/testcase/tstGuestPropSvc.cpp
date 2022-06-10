@@ -1,4 +1,4 @@
-/* $Id: tstGuestPropSvc.cpp 75737 2018-11-26 15:44:41Z vboxsync $ */
+/* $Id: tstGuestPropSvc.cpp 75749 2018-11-26 18:57:00Z vboxsync $ */
 /** @file
  *
  * Testcase for the guest property service.
@@ -45,9 +45,10 @@ struct VBOXHGCMCALLHANDLE_TYPEDEF
 };
 
 /** Call completion callback for guest calls. */
-static DECLCALLBACK(void) callComplete(VBOXHGCMCALLHANDLE callHandle, int32_t rc)
+static DECLCALLBACK(int) callComplete(VBOXHGCMCALLHANDLE callHandle, int32_t rc)
 {
     callHandle->rc = rc;
+    return VINF_SUCCESS;
 }
 
 /**
