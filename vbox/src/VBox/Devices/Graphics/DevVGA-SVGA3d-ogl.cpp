@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 76253 2018-12-16 15:01:28Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 76255 2018-12-16 18:47:05Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -591,7 +591,7 @@ int vmsvga3dInit(PVGASTATE pThis)
     AssertCompile(GL_FALSE == 0);
 
 #ifdef VMSVGA3D_DYNAMIC_LOAD
-    rc = glLdrInit();
+    rc = glLdrInit(pThis->pDevInsR3);
     if (RT_FAILURE(rc))
     {
         LogRel(("VMSVGA3d: Error loading OpenGL library and resolving necessary functions: %Rrc\n", rc));
@@ -811,7 +811,7 @@ int vmsvga3dPowerOn(PVGASTATE pThis)
 
 #ifdef VMSVGA3D_DYNAMIC_LOAD
     /* Context is set and it is possible now to resolve extension functions. */
-    rc = glLdrGetExtFunctions();
+    rc = glLdrGetExtFunctions(pThis->pDevInsR3);
     if (RT_FAILURE(rc))
     {
         LogRel(("VMSVGA3d: Error resolving extension functions: %Rrc\n", rc));
