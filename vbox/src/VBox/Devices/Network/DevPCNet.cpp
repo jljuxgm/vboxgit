@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 76764 2019-01-11 07:46:37Z vboxsync $ */
+/* $Id: DevPCNet.cpp 76765 2019-01-11 08:50:37Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -5058,8 +5058,7 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
          */
         if (memcmp(&pThis->MacConfigured, "\x02\x07\x01", 3))
             return PDMDevHlpVMSetError(pDevIns, VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES, RT_SRC_POS,
-                                       N_("Configuration error: MAC address OUI for EtherBlaster must be 02 07 01"),
-                                       szChipType);
+                                       N_("Configuration error: MAC address OUI for EtherBlaster must be 02 07 01"));
     }
     else
     {
