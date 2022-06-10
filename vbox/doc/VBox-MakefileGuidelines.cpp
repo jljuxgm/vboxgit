@@ -1,4 +1,4 @@
-/* $Id: VBox-MakefileGuidelines.cpp 75159 2018-10-29 17:10:01Z vboxsync $ */
+/* $Id: VBox-MakefileGuidelines.cpp 75168 2018-10-29 21:09:44Z vboxsync $ */
 /** @file
  * VBox - Makefile Guidelines.
  */
@@ -187,6 +187,13 @@
  *      - Even install targets: kmk nobin
  *
  *      - You can compile individual source files: kmk ConsoleImpl.o
+ *
+ *      - You can tell kmk to continue on failure: kmk -k
+ *
+ *      - You can tell kmk to run at low priority: kmk --nice
+ *
+ *      - The --pretty-command-printing option is useful for seeing exactly
+ *        what's passed to the tools.
  *
  *      - You can invoke recipes in the root makefile more efficiently via the
  *        Maintenance.kmk file: kmk -f Maintenance.kmk incs
