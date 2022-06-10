@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 73529 2018-08-06 16:26:43Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 73654 2018-08-14 12:58:43Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -415,7 +415,7 @@ static void paStreamCbUnderflow(pa_stream *pStream, void *pvContext)
 
     pStrm->cUnderflows++;
 
-    Log2Func(("Warning: Hit underflow #%RU32\n", pStrm->cUnderflows));
+    LogRel2(("PulseAudio: Warning: Hit underflow #%RU32\n", pStrm->cUnderflows));
 
     if (   pStrm->cUnderflows  >= 6                /** @todo Make this check configurable. */
         && pStrm->curLatencyUs < 2000000 /* 2s */)
@@ -779,7 +779,7 @@ static int paCreateStreamOut(PDRVHOSTPULSEAUDIO pThis, PPULSEAUDIOSTREAM pStream
     if (cbBuf)
     {
         pCfgAcq->Backend.cfPeriod     = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.minreq);
-        pCfgAcq->Backend.cfBufferSize = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.tlength);
+        pCfgAcq->Backend.cfBufferSize = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.tlength * 2); /* Use "double buffering". */
         pCfgAcq->Backend.cfPreBuf     = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.prebuf);
 
         pStreamPA->pDrv = pThis;
