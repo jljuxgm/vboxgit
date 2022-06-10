@@ -1,4 +1,4 @@
-/* $Id: VideoRecStream.cpp 74995 2018-10-23 12:15:27Z vboxsync $ */
+/* $Id: VideoRecStream.cpp 74996 2018-10-23 12:44:34Z vboxsync $ */
 /** @file
  * Video recording stream code.
  */
@@ -494,6 +494,8 @@ int videoRecStreamInitVideoVPX(PVIDEORECSTREAM pStream, PVIDEORECCFG pCfg)
     PVIDEORECVIDEOCODEC pVC = &pStream->Video.Codec;
 
     pStream->Video.uDelayMs = RT_MS_1SEC / pCfg->Video.uFPS;
+
+    pVC->enmType = VIDEORECVIDEOCODECTYPE_VP8; /** @todo Make this configurable. */
 
 # ifdef VBOX_WITH_LIBVPX_VP9
     vpx_codec_iface_t *pCodecIface = vpx_codec_vp9_cx();
