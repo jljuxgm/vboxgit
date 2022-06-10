@@ -1,4 +1,4 @@
-/** $Id: VBoxClientClipboard.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/** $Id: VBoxClientClipboard.cpp 78188 2019-04-17 22:35:51Z vboxsync $ */
 /** @file
  * VBoxClient - Shared Slipboard Dispatcher, Darwin.
  */
@@ -26,6 +26,7 @@
 #include <iprt/thread.h>
 #include <iprt/critsect.h>
 #include <VBox/VBoxGuestLib.h>
+#include <VBox/GuestHost/SharedClipboard.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include <VBox/GuestHost/clipboard-helper.h>
 #include "VBoxClientInternal.h"
