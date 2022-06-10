@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: PGMPool.cpp 73246 2018-07-19 15:51:20Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -490,7 +490,7 @@ VMMR3DECL(int) PGMR3PoolGrow(PVM pVM)
     /** @todo change the pool to handle ROOT page allocations specially when
      *        required. */
     bool fCanUseHighMemory = HMIsNestedPagingActive(pVM)
-                          && HMGetShwPagingMode(pVM) == PGMMODE_EPT;
+                          && HMIsVmxActive(pVM);
 
     pgmLock(pVM);
 
