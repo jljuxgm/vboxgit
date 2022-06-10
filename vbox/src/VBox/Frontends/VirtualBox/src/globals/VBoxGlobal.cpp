@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 77188 2019-02-06 20:03:07Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 77189 2019-02-06 20:47:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2749,6 +2749,7 @@ QUuid VBoxGlobal::showCreateFloppyDiskDialog(QWidget *pParent, const QString &st
 
     if (pDialog->exec())
     {
+        delete pDialog;
         return pDialog->mediumID();
     }
     delete pDialog;

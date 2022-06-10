@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.h 77186 2019-02-06 19:52:33Z vboxsync $ */
+/* $Id: UIMediumSelector.h 77189 2019-02-06 20:47:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class declaration.
  */
@@ -145,7 +145,7 @@ private slots:
     /** Index of the currently shown (scrolled) item in the m_mathingItemList. */
     int                   m_iCurrentShownIndex;
     QBrush                m_defaultItemForeground;
-    QString               m_strMachineSettingsFilePath;
+    QString               m_strMachineFolder;
     QString               m_strMachineName;
     QString               m_strMachineGuestOSTypeId;
 };
