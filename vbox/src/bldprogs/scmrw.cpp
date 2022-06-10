@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 71023 2018-02-15 14:05:32Z vboxsync $ */
+/* $Id: scmrw.cpp 73075 2018-07-11 16:24:32Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2212,7 +2212,7 @@ static size_t findTodoCommentStart(char const *pchLine, size_t cchLineBeforeTodo
     /* Skip one '@' or  '\\'. */
     char ch;
     if (   cchLineBeforeTodo > 2
-        && (   (ch = pchLine[cchLineBeforeTodo - 1] == '@')
+        && (   ((ch = pchLine[cchLineBeforeTodo - 1]) == '@')
             || ch == '\\' ) )
         cchLineBeforeTodo--;
 
