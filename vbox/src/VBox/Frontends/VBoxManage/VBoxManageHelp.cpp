@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 77801 2019-03-19 17:44:40Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 77887 2019-03-26 16:41:15Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -732,20 +732,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--defaultfrontend default|<name>]\n"
                      "\n");
     }
-
-    if (enmCommand == USAGE_CLONEVM || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s clonevm %s         <uuid|vmname>\n"
-                     "                            [--snapshot <uuid>|<name>]\n"
-                     "                            [--mode machine|machineandchildren|all]\n"
-                     "                            [--options link|keepallmacs|keepnatmacs|\n"
-                     "                                       keepdisknames|keephwuuids]\n"
-                     "                            [--name <name>]\n"
-                     "                            [--groups <group>, ...]\n"
-                     "                            [--basefolder <basefolder>]\n"
-                     "                            [--uuid <uuid>]\n"
-                     "                            [--register]\n"
-                     "\n", SEP);
 
     if (enmCommand == USAGE_MOVEVM || enmCommand == USAGE_S_ALL)
         RTStrmPrintf(pStrm,

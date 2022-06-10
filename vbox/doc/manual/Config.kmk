@@ -1,4 +1,4 @@
-# $Id: Config.kmk 77883 2019-03-26 16:01:42Z vboxsync $
+# $Id: Config.kmk 77887 2019-03-26 16:41:15Z vboxsync $
 ## @file
 # kBuild Configuration file for the manual.
 #
@@ -36,6 +36,7 @@ VBOX_PATH_MANUAL_OUTBASE := $(PATH_OBJ)/manual
 ## List of refentry files (manpages).
 VBOX_MANUAL_XML_REFENTRY_FILES := \
 	man_VBoxManage-snapshot.xml \
+	man_VBoxManage-clonevm.xml \
 	man_VBoxManage-mediumio.xml \
 	man_VBoxManage-debugvm.xml \
 	man_VBoxManage-extpack.xml \

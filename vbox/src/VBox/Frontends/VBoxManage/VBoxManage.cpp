@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 77883 2019-03-26 16:01:42Z vboxsync $ */
+/* $Id: VBoxManage.cpp 77887 2019-03-26 16:41:15Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -102,7 +102,7 @@ static const VBMGCMD g_aCommands[] =
     { "showvminfo",         USAGE_SHOWVMINFO,       VBMG_CMD_TODO, handleShowVMInfo,           0 },
     { "registervm",         USAGE_REGISTERVM,       VBMG_CMD_TODO, handleRegisterVM,           0 },
     { "unregistervm",       USAGE_UNREGISTERVM,     VBMG_CMD_TODO, handleUnregisterVM,         0 },
-    { "clonevm",            USAGE_CLONEVM,          VBMG_CMD_TODO, handleCloneVM,              0 },
+    { "clonevm",            USAGE_S_NEWCMD,      HELP_CMD_CLONEVM, handleCloneVM,              0 },
     { "movevm",             USAGE_MOVEVM,           VBMG_CMD_TODO, handleMoveVM,               0 },
     { "mediumproperty",     USAGE_MEDIUMPROPERTY,   VBMG_CMD_TODO, handleMediumProperty,       0 },
     { "hdproperty",         USAGE_MEDIUMPROPERTY,   VBMG_CMD_TODO, handleMediumProperty,       0 }, /* backward compatibility */
