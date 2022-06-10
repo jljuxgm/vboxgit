@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 75027 2018-10-24 11:34:04Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 75161 2018-10-29 17:57:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -719,6 +719,15 @@ void UIMediumManagerWidget::prepareConnections()
 
 void UIMediumManagerWidget::prepareActions()
 {
+    /* First of all, add actions which has smaller shortcut scope: */
+    addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Add));
+    addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Copy));
+    addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Move));
+    addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Remove));
+    addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Release));
+    addAction(m_pActionPool->action(UIActionIndexST_M_Medium_T_Details));
+    addAction(m_pActionPool->action(UIActionIndexST_M_Medium_S_Refresh));
+
     /* Connect actions: */
     connect(m_pActionPool->action(UIActionIndexST_M_Medium_S_Add), &QAction::triggered,
             this, &UIMediumManagerWidget::sltAddMedium);

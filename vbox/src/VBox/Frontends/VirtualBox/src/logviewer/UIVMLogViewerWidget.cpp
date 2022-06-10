@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 75027 2018-10-24 11:34:04Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 75161 2018-10-29 17:57:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -435,6 +435,14 @@ void UIVMLogViewerWidget::prepare()
 
 void UIVMLogViewerWidget::prepareActions()
 {
+    /* First of all, add actions which has smaller shortcut scope: */
+    addAction(m_pActionPool->action(UIActionIndex_M_Log_T_Find));
+    addAction(m_pActionPool->action(UIActionIndex_M_Log_T_Filter));
+    addAction(m_pActionPool->action(UIActionIndex_M_Log_T_Bookmark));
+    addAction(m_pActionPool->action(UIActionIndex_M_Log_T_Settings));
+    addAction(m_pActionPool->action(UIActionIndex_M_Log_S_Refresh));
+    addAction(m_pActionPool->action(UIActionIndex_M_Log_S_Save));
+
     /* Connect actions: */
     connect(m_pActionPool->action(UIActionIndex_M_Log_T_Find), &QAction::toggled,
             this, &UIVMLogViewerWidget::sltPanelActionToggled);
