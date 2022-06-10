@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 76944 2019-01-23 07:39:42Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 76946 2019-01-23 07:52:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -106,34 +106,6 @@ void UIVisoCreator::sltHandleAddObjectsToViso(QStringList pathList)
     if (m_pVisoBrowser)
         m_pVisoBrowser->addObjectsToViso(pathList);
 }
-
-// void UIVisoCreator::sltHandleOptionsAction()
-// {
-//     // UIVisoCreatorOptionsDialog *pDialog = new UIVisoCreatorOptionsDialog(this, m_browserOptions, this);
-
-//     // if(!pDialog)
-//     //     return;
-//     // if (pDialog->execute(true, false))
-//     // {
-//     //     /** Check if any of the options has been modified: */
-//     //     checkBrowserOptions(pDialog->browserOptions());
-//     // }
-//     // delete pDialog;
-// }
-
-// void UIVisoCreator::sltHandleConfigurationAction()
-// {
-//     // UIVisoConfigurationDialog *pDialog = new UIVisoConfigurationDialog(m_visoOptions, this);
-
-//     // if(!pDialog)
-//     //     return;
-//     // if (pDialog->execute(true, false))
-//     // {
-//     //     /** Check if any of the options has been modified: */
-//     //     checkVisoOptions(pDialog->visoOptions());
-//     // }
-//     // delete pDialog;
-// }
 
 void UIVisoCreator::sltPanelActionToggled(bool fChecked)
 {
