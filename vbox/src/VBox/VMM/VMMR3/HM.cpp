@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 72991 2018-07-09 03:54:58Z vboxsync $ */
+/* $Id: HM.cpp 73107 2018-07-13 05:59:14Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -3248,7 +3248,8 @@ VMMR3DECL(bool) HMR3IsUXActive(PUVM pUVM)
     UVM_ASSERT_VALID_EXT_RETURN(pUVM, false);
     PVM pVM = pUVM->pVM;
     VM_ASSERT_VALID_EXT_RETURN(pVM, false);
-    return pVM->hm.s.vmx.fUnrestrictedGuest;
+    return pVM->hm.s.vmx.fUnrestrictedGuest
+        || pVM->hm.s.svm.fSupported;
 }
 
 
