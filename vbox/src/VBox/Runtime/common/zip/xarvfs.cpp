@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 73502 2018-08-05 12:40:50Z vboxsync $ */
+/* $Id: xarvfs.cpp 73516 2018-08-05 15:00:30Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -1940,7 +1940,7 @@ static int rtZipXarReadAndValidateToc(RTVFSIOSTREAM hVfsIosIn, PCXARHEADER pXarH
                 {
                     Parser.read(pszOutput, cchToc, RTCString("xar-toc.xml"), *pDoc);
                 }
-                catch (xml::XmlError &Err)
+                catch (xml::XmlError &)
                 {
                     rc = VERR_XAR_TOC_XML_PARSE_ERROR;
                 }
