@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73056 2018-07-11 06:26:48Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73057 2018-07-11 07:58:35Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -8056,7 +8056,6 @@ HMSVM_EXIT_DECL hmR0SvmExitVmrun(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
         rcStrict = VINF_SUCCESS;
         ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_RAISED_XCPT_MASK);
     }
-
     HMSVM_CHECK_SINGLE_STEP(pVCpu, rcStrict);
     return VBOXSTRICTRC_TODO(rcStrict);
 }
