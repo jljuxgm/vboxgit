@@ -1,4 +1,4 @@
-/* $Id: HGCMThread.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HGCMThread.cpp 77191 2019-02-06 21:14:23Z vboxsync $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager Threads
  */
@@ -201,8 +201,6 @@ static DECLCALLBACK(int) hgcmWorkerThreadFunc(RTTHREAD hThreadSelf, void *pvUser
 
     pThread->m_fu32ThreadFlags |= HGCMMSG_TF_TERMINATED;
 
-    pThread->m_hThread = NIL_RTTHREAD;
-
     LogFlow(("MAIN::hgcmWorkerThreadFunc: completed HGCM thread %p\n", pThread));
 
     return rc;
@@ -258,7 +256,10 @@ int HGCMThread::WaitForTermination(void)
     LogFlowFunc(("\n"));
 
     if (m_hThread != NIL_RTTHREAD)
+    {
         rc = RTThreadWait(m_hThread, 5000, NULL);
+        m_hThread = NIL_RTTHREAD;
+    }
 
     LogFlowFunc(("rc = %Rrc\n", rc));
     return rc;
