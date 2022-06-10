@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 74476 2018-09-26 12:06:58Z vboxsync $ */
+/* $Id: VBoxDnD.h 74478 2018-09-26 13:43:47Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -348,12 +348,12 @@ public:
     void PostMessage(UINT uMsg, WPARAM wParam, LPARAM lParam);
     int ProcessEvent(PVBOXDNDEVENT pEvent);
 
+    int Hide(void);
     void Reset(void);
 
 protected:
 
     int checkForSessionChange(void);
-    int hide(void);
     int makeFullscreen(void);
     int mouseMove(int x, int y, DWORD dwMouseInputFlags);
     int mouseRelease(void);

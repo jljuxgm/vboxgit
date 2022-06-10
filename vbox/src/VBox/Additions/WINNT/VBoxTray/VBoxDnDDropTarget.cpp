@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropTarget.cpp 74473 2018-09-26 11:55:28Z vboxsync $ */
+/* $Id: VBoxDnDDropTarget.cpp 74478 2018-09-26 13:43:47Z vboxsync $ */
 /** @file
  * VBoxDnDTarget.cpp - IDropTarget implementation.
  */
@@ -261,7 +261,7 @@ STDMETHODIMP VBoxDnDDropTarget::DragLeave(void)
 #endif
 
     if (mpWndParent)
-        mpWndParent->Reset();
+        mpWndParent->Hide();
 
     return S_OK;
 }
@@ -548,7 +548,7 @@ STDMETHODIMP VBoxDnDDropTarget::Drop(IDataObject *pDataObject, DWORD grfKeyState
         *pdwEffect = DROPEFFECT_NONE;
 
     if (mpWndParent)
-        mpWndParent->Reset();
+        mpWndParent->Hide();
 
     LogFlowFunc(("Returning with hr=%Rhrc (%Rrc), mFormatEtc.cfFormat=%RI16 (%s), *pdwEffect=%RI32\n",
                  hr, rc, mFormatEtc.cfFormat, VBoxDnDDataObject::ClipboardFormatToString(mFormatEtc.cfFormat),
