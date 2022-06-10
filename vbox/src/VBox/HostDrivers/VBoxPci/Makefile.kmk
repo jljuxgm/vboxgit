@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76322 2018-12-20 18:02:27Z vboxsync $
+# $Id: Makefile.kmk 76324 2018-12-20 18:09:12Z vboxsync $
 ## @file
 # Sub-Makefile for the PCI passthru driver (VBoxPci).
 #
@@ -72,6 +72,11 @@ $$(VBoxPci-src_0_OUTDIR)/Makefile: \
 	$(QUIET)$(CP) -f $< $@
  endif
 	%$(QUIET2)$(APPEND) -t '$(PATH_TARGET)/VBoxPci-src-1.dep' 'VBoxPci/linux/Makefile_VBOX_HARDENED=$(VBOX_WITH_HARDENING)'
+
+ #
+ # Build test for the linux host kernel modules.
+ #
+ $(evalcall2 VBOX_LINUX_KMOD_TEST_BUILD_RULE_FN,VBoxPci-src,vboxdrv-src,)
 
 endif # Supported platform.
 include $(FILE_KBUILD_SUB_FOOTER)
