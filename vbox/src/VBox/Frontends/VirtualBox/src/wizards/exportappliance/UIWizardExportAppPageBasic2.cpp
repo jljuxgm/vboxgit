@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 77388 2019-02-20 14:26:10Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 78061 2019-04-09 13:42:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -499,7 +499,7 @@ QIStringPairList UIWizardExportAppPage2::parseJsonFieldArray(const QString &strF
 
 void UIWizardExportAppPage2::updatePageAppearance()
 {
-    /* Update page appearance according to chosen storage-type: */
+    /* Update page appearance according to chosen format: */
     m_pSettingsWidget->setCurrentIndex((int)isFormatCloudOne());
 }
 
