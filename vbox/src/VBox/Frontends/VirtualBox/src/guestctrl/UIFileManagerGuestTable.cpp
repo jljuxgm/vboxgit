@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 76177 2018-12-12 13:38:57Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 76210 2018-12-13 14:21:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -462,16 +462,16 @@ QString UIFileManagerGuestTable::fsObjectPropertyString()
         KFsObjType const enmType = fileInfo.GetType();
         switch (enmType)
         {
-            case KFsObjType_Directory:  str = tr("directory"); break;
-            case KFsObjType_File:       str = tr("file"); break;
-            case KFsObjType_Symlink:    str = tr("symbolic link"); break;
-            case KFsObjType_DevChar:    str = tr("character device"); break;
-            case KFsObjType_DevBlock:   str = tr("block device"); break;
-            case KFsObjType_Fifo:       str = tr("fifo"); break;
-            case KFsObjType_Socket:     str = tr("socket"); break;
-            case KFsObjType_WhiteOut:   str = tr("whiteout"); break;
-            case KFsObjType_Unknown:    str = tr("unknown"); break;
-            default:                    str = tr("illegal-value"); break;
+            case KFsObjType_Directory:  str = UIFileManager::tr("directory"); break;
+            case KFsObjType_File:       str = UIFileManager::tr("file"); break;
+            case KFsObjType_Symlink:    str = UIFileManager::tr("symbolic link"); break;
+            case KFsObjType_DevChar:    str = UIFileManager::tr("character device"); break;
+            case KFsObjType_DevBlock:   str = UIFileManager::tr("block device"); break;
+            case KFsObjType_Fifo:       str = UIFileManager::tr("fifo"); break;
+            case KFsObjType_Socket:     str = UIFileManager::tr("socket"); break;
+            case KFsObjType_WhiteOut:   str = UIFileManager::tr("whiteout"); break;
+            case KFsObjType_Unknown:    str = UIFileManager::tr("unknown"); break;
+            default:                    str = UIFileManager::tr("illegal-value"); break;
         }
         propertyStringList <<  UIFileManager::tr("<b>Type:</b> %1<br/>").arg(str);
 
