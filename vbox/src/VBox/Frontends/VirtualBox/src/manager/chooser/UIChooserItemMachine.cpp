@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 75154 2018-10-29 14:51:56Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 75156 2018-10-29 15:55:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -21,10 +21,11 @@
 
 /* Qt includes: */
 # include <QGraphicsScene>
+# include <QGraphicsSceneMouseEvent>
 # include <QGraphicsView>
 # include <QPainter>
 # include <QStyleOptionGraphicsItem>
-# include <QGraphicsSceneMouseEvent>
+# include <QWindow>
 
 /* GUI includes: */
 # include "VBoxGlobal.h"
@@ -497,8 +498,10 @@ QSizeF UIChooserItemMachine::sizeHint(Qt::SizeHint enmWhich, const QSizeF &const
 QPixmap UIChooserItemMachine::toPixmap()
 {
     /* Ask item to paint itself into pixmap: */
-    const QSize actualSize = size().toSize();
-    QPixmap pixmap(actualSize);
+    qreal dDpr = gpManager->windowHandle()->devicePixelRatio();
+    QSize actualSize = size().toSize();
+    QPixmap pixmap(actualSize * dDpr);
+    pixmap.setDevicePixelRatio(dDpr);
     QPainter painter(&pixmap);
     QStyleOptionGraphicsItem options;
     options.rect = QRect(QPoint(0, 0), actualSize);
