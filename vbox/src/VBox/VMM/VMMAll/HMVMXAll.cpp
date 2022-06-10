@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 74455 2018-09-25 11:18:05Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 74457 2018-09-25 13:12:04Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -720,21 +720,6 @@ VMM_INT_DECL(bool) HMVmxCanExecuteGuest(PVMCPU pVCpu, PCCPUMCTX pCtx)
                         return false;
                     }
                 }
-                /* VT-x also chokes on invalid TR or LDTR selectors (minix). */
-                if (pCtx->gdtr.cbGdt)
-                {
-                    if ((pCtx->tr.Sel | X86_SEL_RPL_LDT) > pCtx->gdtr.cbGdt)
-                    {
-                        STAM_COUNTER_INC(&pVCpu->hm.s.StatVmxCheckBadTr);
-                        return false;
-                    }
-                    else if ((pCtx->ldtr.Sel | X86_SEL_RPL_LDT) > pCtx->gdtr.cbGdt)
-                    {
-                        STAM_COUNTER_INC(&pVCpu->hm.s.StatVmxCheckBadLdt);
-                        return false;
-                    }
-                }
-                STAM_COUNTER_INC(&pVCpu->hm.s.StatVmxCheckPmOk);
             }
         }
         else

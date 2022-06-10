@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 74455 2018-09-25 11:18:05Z vboxsync $ */
+/* $Id: HMInternal.h 74457 2018-09-25 13:12:04Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1042,8 +1042,6 @@ typedef struct HMCPU
     STAMCOUNTER             StatVmxCheckRmOk;
     STAMCOUNTER             StatVmxCheckBadSel;
     STAMCOUNTER             StatVmxCheckBadRpl;
-    STAMCOUNTER             StatVmxCheckBadLdt;
-    STAMCOUNTER             StatVmxCheckBadTr;
     STAMCOUNTER             StatVmxCheckPmOk;
 
 #if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS)
