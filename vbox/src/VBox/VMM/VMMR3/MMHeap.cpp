@@ -1,4 +1,4 @@
-/* $Id: MMHeap.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: MMHeap.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Heap.
  */
@@ -26,7 +26,7 @@
 #include "MMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/uvm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/param.h>
 #include <VBox/log.h>
 

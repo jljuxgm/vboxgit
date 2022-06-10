@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: REMAll.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -27,7 +27,7 @@
 #include <VBox/vmm/vmm.h>
 #include "REMInternal.h"
 #include <VBox/vmm/vm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 
 #include <iprt/asm.h>

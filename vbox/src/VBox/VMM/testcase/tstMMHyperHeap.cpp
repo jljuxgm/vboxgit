@@ -1,4 +1,4 @@
-/* $Id: tstMMHyperHeap.cpp 73579 2018-08-09 08:51:16Z vboxsync $ */
+/* $Id: tstMMHyperHeap.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * MM Hypervisor Heap testcase.
  */
@@ -25,7 +25,7 @@
 #include <VBox/vmm/uvm.h>
 #include <VBox/sup.h>
 #include <VBox/param.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <VBox/log.h>
 #include <iprt/initterm.h>

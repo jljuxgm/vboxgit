@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletion.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletion.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Testcase.
  *
@@ -32,7 +32,7 @@
 #include <VBox/vmm/pdmasynccompletion.h>
 #include <VBox/vmm/vmm.h>
 #include <VBox/vmm/cpum.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <VBox/vmm/pdmapi.h>
 #include <iprt/alloc.h>

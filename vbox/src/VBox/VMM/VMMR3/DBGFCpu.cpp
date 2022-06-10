@@ -1,4 +1,4 @@
-/* $Id: DBGFCpu.cpp 72875 2018-07-04 14:08:27Z vboxsync $ */
+/* $Id: DBGFCpu.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, CPU State Accessors.
  */
@@ -26,7 +26,7 @@
 #include "DBGFInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/uvm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <VBox/param.h>
 #include <iprt/assert.h>

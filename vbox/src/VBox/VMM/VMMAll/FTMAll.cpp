@@ -1,4 +1,4 @@
-/* $Id: FTMAll.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: FTMAll.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager - All contexts
  */
@@ -23,7 +23,7 @@
 #include "FTMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/vmm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/param.h>
 #include <VBox/log.h>
 

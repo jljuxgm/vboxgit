@@ -1,4 +1,4 @@
-/* $Id: EMR0.cpp 72642 2018-06-21 15:41:14Z vboxsync $ */
+/* $Id: EMR0.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * EM - Host Context Ring 0.
  */
@@ -24,7 +24,7 @@
 #include "EMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/gvm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/thread.h>

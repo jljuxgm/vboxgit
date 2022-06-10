@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstVMM.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -24,7 +24,7 @@
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/tm.h>
 #include <VBox/vmm/pdmapi.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
@@ -261,7 +261,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 69111 $\n");
+                RTPrintf("$Revision: 76454 $\n");
                 return 0;
 
             default:

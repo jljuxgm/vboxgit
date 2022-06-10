@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 73617 2018-08-10 14:09:55Z vboxsync $ */
+/* $Id: HMAll.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -27,7 +27,7 @@
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/hm_vmx.h>
 #include <VBox/vmm/hm_svm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <iprt/param.h>
 #include <iprt/assert.h>

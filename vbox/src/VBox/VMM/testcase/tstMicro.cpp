@@ -1,4 +1,4 @@
-/* $Id: tstMicro.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstMicro.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -26,7 +26,7 @@
 #include <VBox/vmm/pdmapi.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/pgm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/param.h>
 
 #include <VBox/log.h>

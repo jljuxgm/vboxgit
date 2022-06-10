@@ -1,4 +1,4 @@
-/* $Id: TRPMR0.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: TRPMR0.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor - HC Ring 0
  */
@@ -24,7 +24,7 @@
 #include "TRPMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/vmm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/asm-amd64-x86.h>

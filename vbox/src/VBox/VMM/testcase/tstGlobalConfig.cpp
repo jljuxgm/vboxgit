@@ -1,4 +1,4 @@
-/* $Id: tstGlobalConfig.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstGlobalConfig.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * Ring-3 Management program for the GCFGM mock-up.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <VBox/vmm/vmm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/assert.h>
 #include <iprt/initterm.h>
 #include <iprt/stream.h>

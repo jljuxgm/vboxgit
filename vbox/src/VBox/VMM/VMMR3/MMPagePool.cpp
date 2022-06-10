@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: MMPagePool.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -26,7 +26,7 @@
 #include "MMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/param.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <iprt/alloc.h>
 #include <iprt/assert.h>

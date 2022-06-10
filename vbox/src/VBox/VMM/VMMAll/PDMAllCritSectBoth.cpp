@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectBoth.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PDMAllCritSectBoth.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * PDM - Code Common to Both Critical Section Types, All Contexts.
  */
@@ -24,7 +24,7 @@
 #include <VBox/vmm/pdmcritsect.h>
 #include <VBox/vmm/pdmcritsectrw.h>
 #include <VBox/vmm/vm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <VBox/log.h>
 #include <iprt/assert.h>

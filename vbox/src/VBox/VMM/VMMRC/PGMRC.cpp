@@ -1,4 +1,4 @@
-/* $Id: PGMRC.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PGMRC.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * PGM - Page Monitor, Guest Context.
  */
@@ -38,7 +38,7 @@
 #include <iprt/assert.h>
 #include <VBox/log.h>
 #include <VBox/param.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
 

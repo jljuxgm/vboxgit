@@ -1,4 +1,4 @@
-/* $Id: PATMR3Dbg.cpp 73360 2018-07-25 18:51:12Z vboxsync $ */
+/* $Id: PATMR3Dbg.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager, Debugger Related Parts.
  */
@@ -26,7 +26,7 @@
 #include "PATMInternal.h"
 #include "PATMA.h"
 #include <VBox/vmm/vm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 
 #include <iprt/assert.h>

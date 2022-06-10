@@ -1,4 +1,4 @@
-/* $Id: tstMicroRC.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstMicroRC.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations - GC Code (hacks).
  */
@@ -24,7 +24,7 @@
 #include <VBox/vmm/selm.h>
 #include "tstMicro.h"
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <iprt/asm-amd64-x86.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>

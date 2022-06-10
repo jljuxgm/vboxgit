@@ -1,4 +1,4 @@
-/* $Id: tstSSM-2.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstSSM-2.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase: Extract the content of a saved state.
  */
@@ -23,7 +23,7 @@
 
 #include <VBox/log.h>
 #include <iprt/getopt.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/path.h>
 #include <iprt/stream.h>

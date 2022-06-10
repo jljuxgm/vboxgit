@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 74790 2018-10-12 10:42:58Z vboxsync $ */
+/* $Id: PDMQueue.cpp 76454 2018-12-25 01:48:48Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -28,7 +28,7 @@
 #endif
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/uvm.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <VBox/log.h>
 #include <iprt/asm.h>
