@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 75716 2018-11-25 16:01:52Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 75717 2018-11-25 16:04:33Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -2839,10 +2839,10 @@ static void vmsvgaR3FifoHandleExtCmd(PVGASTATE pThis)
         case VMSVGA_FIFO_EXTCMD_SAVESTATE:
         {
             Log(("vmsvgaFIFOLoop: VMSVGA_FIFO_EXTCMD_SAVESTATE.\n"));
-# ifdef VBOX_WITH_VMSVGA3D
             PSSMHANDLE pSSM = (PSSMHANDLE)pThis->svga.pvFIFOExtCmdParam;
             AssertLogRelMsgBreak(RT_VALID_PTR(pSSM), ("pSSM=%p\n", pSSM));
             vmsvgaSaveExecFifo(pThis, pSSM);
+# ifdef VBOX_WITH_VMSVGA3D
             vmsvga3dSaveExec(pThis, pSSM);
 # endif
             break;
@@ -2851,10 +2851,10 @@ static void vmsvgaR3FifoHandleExtCmd(PVGASTATE pThis)
         case VMSVGA_FIFO_EXTCMD_LOADSTATE:
         {
             Log(("vmsvgaFIFOLoop: VMSVGA_FIFO_EXTCMD_LOADSTATE.\n"));
-# ifdef VBOX_WITH_VMSVGA3D
             PVMSVGA_STATE_LOAD pLoadState = (PVMSVGA_STATE_LOAD)pThis->svga.pvFIFOExtCmdParam;
             AssertLogRelMsgBreak(RT_VALID_PTR(pLoadState), ("pLoadState=%p\n", pLoadState));
             vmsvgaLoadExecFifo(pThis, pLoadState->pSSM, pLoadState->uVersion, pLoadState->uPass);
+# ifdef VBOX_WITH_VMSVGA3D
             vmsvga3dLoadExec(pThis, pLoadState->pSSM, pLoadState->uVersion, pLoadState->uPass);
 # endif
             break;
