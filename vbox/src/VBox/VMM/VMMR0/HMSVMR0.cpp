@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73166 2018-07-17 05:20:32Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73253 2018-07-19 20:01:45Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -7199,6 +7199,7 @@ HMSVM_EXIT_DECL hmR0SvmExitNestedPF(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
     /*
      * Determine the nested paging mode.
      */
+/** @todo r=bird: Gotta love this nested paging hacking we're still carrying with us... (Split PGM_TYPE_NESTED.) */
     PGMMODE enmNestedPagingMode;
 #if HC_ARCH_BITS == 32
     if (CPUMIsGuestInLongModeEx(pCtx))

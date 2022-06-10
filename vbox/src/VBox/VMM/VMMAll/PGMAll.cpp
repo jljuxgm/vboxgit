@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 73250 2018-07-19 17:57:31Z vboxsync $ */
+/* $Id: PGMAll.cpp 73253 2018-07-19 20:01:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1821,6 +1821,7 @@ int pgmShwSyncNestedPageLocked(PVMCPU pVCpu, RTGCPHYS GCPhys, uint32_t cPages, P
 {
     PGM_LOCK_ASSERT_OWNER(pVCpu->CTX_SUFF(pVM));
 
+/** @todo r=bird: Gotta love this nested paging hacking we're still carrying with us... (Split PGM_TYPE_NESTED.) */
     int rc;
     switch (enmShwPagingMode)
     {
