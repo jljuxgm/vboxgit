@@ -1,4 +1,4 @@
-/* $Id: Intel_Pentium_4_3_00GHz.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: Intel_Pentium_4_3_00GHz.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Pentium 4 3.00GHz".
  * Generated at 2013-12-18T06:37:54Z by VBoxCpuReport v4.3.53r91376 on win.amd64.
@@ -273,5 +273,5 @@ static CPUMDBENTRY const g_Entry_Intel_Pentium_4_3_00GHz =
     /*.paMsrRanges      = */ NULL_ALONE(g_aMsrRanges_Intel_Pentium_4_3_00GHz),
 };
 
-#endif /* !VBOX_DB_Intel_Pentium_4_3_00GHz */
+#endif /* !VBOX_CPUDB_Intel_Pentium_4_3_00GHz_h */
 

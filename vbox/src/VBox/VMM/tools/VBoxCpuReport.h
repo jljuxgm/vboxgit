@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: VBoxCpuReport.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VBoxCpuReport internal header file.
  */
@@ -49,5 +49,5 @@ extern int  VbCpuRepMsrProberInitPlatform(PVBCPUREPMSRACCESSORS pMsrAccessors);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_tools_VBoxCpuReport_h */
 

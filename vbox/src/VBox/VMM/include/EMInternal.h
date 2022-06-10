@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: EMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -404,5 +404,5 @@ VBOXSTRICTRC    emR3ExecutePendingIoPortRead(PVM pVM, PVMCPU pVCpu);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_EMInternal_h */
 

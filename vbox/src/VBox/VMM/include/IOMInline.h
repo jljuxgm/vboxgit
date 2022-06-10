@@ -1,4 +1,4 @@
-/* $Id: IOMInline.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: IOMInline.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IOM - Inlined functions.
  */
@@ -212,5 +212,5 @@ DECLINLINE(PIOMMMIOSTATS) iomMmioGetStats(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys
 
 /** @}  */
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_IOMInline_h */
 

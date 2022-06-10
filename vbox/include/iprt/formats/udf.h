@@ -1,4 +1,4 @@
-/* $Id: udf.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: udf.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT, Universal Disk Format (UDF).
  */
@@ -2210,5 +2210,5 @@ typedef UDFEXTVOLDESCBOOT const *PCUDFEXTVOLDESCBOOT;
 
 /** @} */
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_udf_h */
 

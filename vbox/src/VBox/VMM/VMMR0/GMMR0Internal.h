@@ -1,4 +1,4 @@
-/* $Id: GMMR0Internal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: GMMR0Internal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * GMM - The Global Memory Manager, Internal Header.
  */
@@ -88,5 +88,5 @@ typedef struct GMMPERVM
 /** Pointer to the per-VM GMM data. */
 typedef GMMPERVM *PGMMPERVM;
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_VMMR0_GMMR0Internal_h */
 

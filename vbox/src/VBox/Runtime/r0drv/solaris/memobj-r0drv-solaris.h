@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects - Segment driver, Solaris.
  */
@@ -320,5 +320,5 @@ static struct seg_ops s_SegVBoxOps =
     rtR0SegVBoxSolCapable
 };
 
-#endif /* !___r0drv_solaris_memobj_r0drv_solaris_h */
+#endif /* !IPRT_INCLUDED_SRC_r0drv_solaris_memobj_r0drv_solaris_h */
 

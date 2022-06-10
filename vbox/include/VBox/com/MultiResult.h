@@ -1,4 +1,4 @@
-/* $Id: MultiResult.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: MultiResult.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - MultiResult class declarations.
  */
@@ -264,5 +264,5 @@ private:
 
 /** @} */
 
-#endif /* !___VBox_com_MultiResult_h */
+#endif /* !VBOX_INCLUDED_com_MultiResult_h */
 

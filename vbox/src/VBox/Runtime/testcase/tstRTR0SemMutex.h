@@ -1,4 +1,4 @@
-/* $Id: tstRTR0SemMutex.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: tstRTR0SemMutex.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Mutex Semaphores, common header.
  */
@@ -53,5 +53,5 @@ typedef enum TSTRTR0SEMMUTEX
     TSTRTR0SEMMUTEX_TEST4_CLEANUP
 } TSTRTR0SEMMUTEX;
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_testcase_tstRTR0SemMutex_h */
 

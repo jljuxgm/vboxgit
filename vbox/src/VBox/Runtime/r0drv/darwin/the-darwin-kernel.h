@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -236,5 +236,5 @@ DECLINLINE(int) RTErrConvertFromMachKernReturn(kern_return_t rc)
     }
 }
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r0drv_darwin_the_darwin_kernel_h */
 

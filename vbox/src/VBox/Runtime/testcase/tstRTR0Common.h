@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Common.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: tstRTR0Common.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Common header.
  */
@@ -303,5 +303,5 @@ bool RTR0TestR0HaveErrors(void)
     return ASMAtomicUoReadU32(&g_cErrors) > 0;
 }
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_testcase_tstRTR0Common_h */
 

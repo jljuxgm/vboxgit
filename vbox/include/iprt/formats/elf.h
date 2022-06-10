@@ -1,4 +1,4 @@
-/* $Id: elf.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: elf.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * ELF types, current architecture.
  */
@@ -84,5 +84,5 @@ typedef Elf32_Sym           Elf_Sym;
 # error Unknown arch!
 #endif
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_elf_h */
 

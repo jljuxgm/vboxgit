@@ -1,4 +1,4 @@
-/* $Id: string.h 76559 2019-01-01 02:55:59Z vboxsync $ */
+/* $Id: string.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Internal RTStr header.
  */
@@ -101,5 +101,5 @@ DECLHIDDEN(int) rtStrToIpAddr6Str(const char *psz, char *pszAddrOut, size_t addr
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_string_h */
 

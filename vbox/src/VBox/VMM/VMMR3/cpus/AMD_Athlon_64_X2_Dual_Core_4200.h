@@ -1,4 +1,4 @@
-/* $Id: AMD_Athlon_64_X2_Dual_Core_4200.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: AMD_Athlon_64_X2_Dual_Core_4200.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CPU database entry "AMD Athlon 64 X2 Dual Core 4200+".
  * Generated at 2014-02-28T15:19:16Z by VBoxCpuReport v4.3.53r92578 on linux.amd64                                                        .
@@ -228,5 +228,5 @@ static CPUMDBENTRY const g_Entry_AMD_Athlon_64_X2_Dual_Core_4200 =
     /*.paMsrRanges      = */ NULL_ALONE(g_aMsrRanges_AMD_Athlon_64_X2_Dual_Core_4200),
 };
 
-#endif /* !VBOX_DB_AMD_Athlon_64_X2_Dual_Core_4200 */
+#endif /* !VBOX_CPUDB_AMD_Athlon_64_X2_Dual_Core_4200_h */
 

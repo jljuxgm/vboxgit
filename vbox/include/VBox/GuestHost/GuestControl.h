@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: GuestControl.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -198,5 +198,5 @@ enum eInputStatus
 
 } /* namespace guestControl */
 
-#endif /* !___VBox_GuestHost_GuestControl_h */
+#endif /* !VBOX_INCLUDED_GuestHost_GuestControl_h */
 

@@ -1,4 +1,4 @@
-/* $Id: Intel_Pentium_M_processor_2_00GHz.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: Intel_Pentium_M_processor_2_00GHz.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Pentium M processor 2.00GHz".
  * Generated at 2013-12-09T14:18:00Z by VBoxCpuReport v4.3.51r91027 on win.x86.
@@ -212,5 +212,5 @@ static CPUMDBENTRY const g_Entry_Intel_Pentium_M_processor_2_00GHz =
     /*.paMsrRanges      = */ NULL_ALONE(g_aMsrRanges_Intel_Pentium_M_processor_2_00GHz),
 };
 
-#endif /* !VBOX_DB_Intel_Pentium_M_processor_2_00GHz */
+#endif /* !VBOX_CPUDB_Intel_Pentium_M_processor_2_00GHz_h */
 

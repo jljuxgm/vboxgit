@@ -1,4 +1,4 @@
-/* $Id: nt-structures.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: nt-structures.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Header for NT structures.
  */
@@ -132,5 +132,5 @@ typedef KTRAP_FRAME_AMD64 const *PCKTRAP_FRAME_AMD64;
 /** @} */
 
 
-#endif
+#endif /* !IPRT_INCLUDED_nt_nt_structures_h */
 

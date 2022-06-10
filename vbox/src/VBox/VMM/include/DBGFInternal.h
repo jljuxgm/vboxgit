@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: DBGFInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -549,4 +549,4 @@ DECLHIDDEN(int) dbgfR3DisasInstrStateEx(PUVM pUVM, VMCPUID idCpu, PDBGFADDRESS p
 
 /** @} */
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_DBGFInternal_h */

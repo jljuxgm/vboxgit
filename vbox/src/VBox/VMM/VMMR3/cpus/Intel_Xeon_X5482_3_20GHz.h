@@ -1,4 +1,4 @@
-/* $Id: Intel_Xeon_X5482_3_20GHz.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: Intel_Xeon_X5482_3_20GHz.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Xeon X5482 3.20GHz".
  * Generated at 2013-12-16T12:10:52Z by VBoxCpuReport v4.3.53r91299 on darwin.amd64.
@@ -244,5 +244,5 @@ static CPUMDBENTRY const g_Entry_Intel_Xeon_X5482_3_20GHz =
     /*.paMsrRanges      = */ NULL_ALONE(g_aMsrRanges_Intel_Xeon_X5482_3_20GHz),
 };
 
-#endif /* !VBOX_DB_Intel_Xeon_X5482_3_20GHz */
+#endif /* !VBOX_CPUDB_Intel_Xeon_X5482_3_20GHz_h */
 

@@ -1,4 +1,4 @@
-/* $Id: path.h 76559 2019-01-01 02:55:59Z vboxsync $ */
+/* $Id: path.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - RTPath Internal header.
  */
@@ -144,5 +144,5 @@ DECLHIDDEN(int) rtPathNtQueryInfoFromHandle(HANDLE hFile, void *pvBuf, size_t cb
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_path_h */
 

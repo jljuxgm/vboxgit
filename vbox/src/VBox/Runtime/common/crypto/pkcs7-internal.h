@@ -1,4 +1,4 @@
-/* $Id: pkcs7-internal.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: pkcs7-internal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Internal Header.
  */
@@ -33,5 +33,5 @@
 #define RTASN1TMPL_TEMPLATE_FILE "../common/crypto/pkcs7-template.h"
 #include <iprt/asn1-generator-internal-header.h>
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_common_crypto_pkcs7_internal_h */
 

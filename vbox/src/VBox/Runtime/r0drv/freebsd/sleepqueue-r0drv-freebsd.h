@@ -1,4 +1,4 @@
-/* $Id: sleepqueue-r0drv-freebsd.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: sleepqueue-r0drv-freebsd.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - FreeBSD Ring-0 Driver Helpers for Abstracting Sleep Queues,
  */
@@ -330,5 +330,5 @@ DECLINLINE(uint32_t) rtR0SemBsdWaitGetResolution(void)
     return 1000000000 / hz; /* ns */
 }
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r0drv_freebsd_sleepqueue_r0drv_freebsd_h */
 

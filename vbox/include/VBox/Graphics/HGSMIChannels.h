@@ -1,4 +1,4 @@
-/* $Id: HGSMIChannels.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: HGSMIChannels.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  *
  * VBox Host Guest Shared Memory Interface (HGSMI).
@@ -74,4 +74,4 @@
 #define HGSMI_IS_DYNAMIC_CHANNEL(_channel) (((uint8_t)(_channel) & 0xE0) != 0)
 
 
-#endif /* !__HGSMIChannels_h__*/
+#endif /* !VBOX_INCLUDED_Graphics_HGSMIChannels_h */

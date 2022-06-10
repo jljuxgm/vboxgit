@@ -1,4 +1,4 @@
-/* $Id: iso9660.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: iso9660.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT, ISO 9660 File System
  */
@@ -1500,5 +1500,5 @@ typedef ISO9660SUSPUNION *PCISO9660SUSPUNION;
 
 /** @} */
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_iso9660_h */
 

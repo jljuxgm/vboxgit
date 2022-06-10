@@ -1,4 +1,4 @@
-/* $Id: VBoxVideo3D.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: VBoxVideo3D.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VirtualBox 3D common tooling
  */
@@ -147,4 +147,4 @@ struct VBOXTLSREFDATA_DUMMY
 #define VBOX3D_NOTIFY_EVENT_TYPE_3DDATA_HIDDEN   5
 
 
-#endif /* #ifndef ___VBox_Graphics_VBoxVideo3D_h */
+#endif /* !VBOX_INCLUDED_Graphics_VBoxVideo3D_h */

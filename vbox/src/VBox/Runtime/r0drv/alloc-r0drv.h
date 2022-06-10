@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: alloc-r0drv.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver.
  */
@@ -100,5 +100,5 @@ DECLHIDDEN(int)     rtR0MemAllocEx(size_t cb, uint32_t fFlags, PRTMEMHDR *ppHdr)
 DECLHIDDEN(void)    rtR0MemFree(PRTMEMHDR pHdr);
 
 RT_C_DECLS_END
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r0drv_alloc_r0drv_h */
 

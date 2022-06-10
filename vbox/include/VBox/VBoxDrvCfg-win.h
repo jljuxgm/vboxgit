@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg-win.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: VBoxDrvCfg-win.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * Windows Driver Manipulation API.
  */
@@ -76,5 +76,5 @@ HRESULT VBoxDrvCfgDrvUpdate(LPCWSTR pcszwHwId, LPCWSTR pcsxwInf, BOOL *pbRebootR
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_VBoxDrvCfg_win_h */
 

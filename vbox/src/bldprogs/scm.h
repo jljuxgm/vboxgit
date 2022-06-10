@@ -1,4 +1,4 @@
-/* $Id: scm.h 76584 2019-01-01 06:29:03Z vboxsync $ */
+/* $Id: scm.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -458,5 +458,5 @@ extern uint32_t g_uYear;
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_bldprogs_scm_h */
 

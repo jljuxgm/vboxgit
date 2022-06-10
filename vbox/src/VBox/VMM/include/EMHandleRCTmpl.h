@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm|Nem]HandleRC template.
  */
@@ -412,5 +412,5 @@ int emR3NemHandleRC(PVM pVM, PVMCPU pVCpu, int rc)
     return rc;
 }
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_EMHandleRCTmpl_h */
 

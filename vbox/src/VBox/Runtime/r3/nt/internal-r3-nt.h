@@ -1,4 +1,4 @@
-/* $Id: internal-r3-nt.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: internal-r3-nt.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the Native NT code.
  */
@@ -69,7 +69,7 @@ DECLINLINE(bool) rtNtCompWideStrAndAscii(WCHAR const *pwsz1, size_t cch1, const 
     return true;
 }
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r3_nt_internal_r3_nt_h */
 
 /**
  * Common worker for RTFileSetMode, RTPathSetMode and RTDirRelPathSetMode.

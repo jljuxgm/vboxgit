@@ -1,4 +1,4 @@
-/* $Id: pdmcardreaderinfs.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: pdmcardreaderinfs.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * cardreaderinfs - interface between USB Card Reader device and its driver.
  */
@@ -122,5 +122,5 @@ struct PDMICARDREADERUP
 
 /** @} */
 
-#endif
+#endif /* !VBOX_INCLUDED_vmm_pdmcardreaderinfs_h */
 

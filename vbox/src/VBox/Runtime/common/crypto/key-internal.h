@@ -1,4 +1,4 @@
-/* $Id: key-internal.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: key-internal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Cryptographic Keys, Internal Header.
  */
@@ -107,4 +107,4 @@ DECLHIDDEN(int) rtCrKeyCreateRsaPublic(PRTCRKEY phKey, const void *pvKeyBits, ui
 DECLHIDDEN(int) rtCrKeyCreateRsaPrivate(PRTCRKEY phKey, const void *pvKeyBits, uint32_t cbKeyBits,
                                         PRTERRINFO pErrInfo, const char *pszErrorTag);
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_common_crypto_key_internal_h */

@@ -1,4 +1,4 @@
-/* $Id: intnetinline.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: intnetinline.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * INTNET - Internal Networking, Inlined Code. (DEV,++)
  *
@@ -823,5 +823,5 @@ DECLINLINE(void) IntNetBufInit(PINTNETBUF pIntBuf, uint32_t cbBuf, uint32_t cbRe
 
 #endif /* __cplusplus */
 
-#endif
+#endif /* !VBOX_INCLUDED_intnetinline_h */
 

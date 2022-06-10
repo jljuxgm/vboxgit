@@ -1,4 +1,4 @@
-/* $Id: lx.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: lx.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * LX structures, types and defines.
  */
@@ -502,5 +502,5 @@ typedef struct e32_entry
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_lx_h */
 

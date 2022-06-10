@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoVBE.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: VBoxVideoVBE.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VirtualBox graphics card port I/O definitions
  */
@@ -102,5 +102,5 @@
 #define VGA_PORT_HGSMI_HOST             0x3b0
 #define VGA_PORT_HGSMI_GUEST            0x3d0
 
-#endif /* !___VBox_Graphics_VBoxVideoVBE_h */
+#endif /* !VBOX_INCLUDED_Graphics_VBoxVideoVBE_h */
 

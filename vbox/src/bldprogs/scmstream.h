@@ -1,4 +1,4 @@
-/* $Id: scmstream.h 76584 2019-01-01 06:29:03Z vboxsync $ */
+/* $Id: scmstream.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -136,5 +136,5 @@ const char *ScmStreamCGetWordM1(PSCMSTREAM pStream, size_t *pcchWord);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_bldprogs_scmstream_h */
 

@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: CPUMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -572,5 +572,5 @@ RT_C_DECLS_END
 
 /** @} */
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_CPUMInternal_h */
 

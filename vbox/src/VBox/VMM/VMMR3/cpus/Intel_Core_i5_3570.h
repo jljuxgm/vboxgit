@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i5_3570.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: Intel_Core_i5_3570.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i5-3570".
  * Generated at 2013-12-13T16:13:56Z by VBoxCpuReport v4.3.53r91216 on linux.amd64.
@@ -335,5 +335,5 @@ static CPUMDBENTRY const g_Entry_Intel_Core_i5_3570 =
     /*.paMsrRanges      = */ NULL_ALONE(g_aMsrRanges_Intel_Core_i5_3570),
 };
 
-#endif /* !VBOX_DB_Intel_Core_i5_3570 */
+#endif /* !VBOX_CPUDB_Intel_Core_i5_3570_h */
 

@@ -1,4 +1,4 @@
-/* $Id: Intel_Core2_T7600_2_33GHz.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: Intel_Core2_T7600_2_33GHz.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core2 T7600 2.33GHz".
  * Generated at 2017-10-12T18:17:56Z by VBoxCpuReport v5.2.0_RC1r118339 on linux.x86.
@@ -191,5 +191,5 @@ static CPUMDBENTRY const g_Entry_Intel_Core2_T7600_2_33GHz =
     /*.paMsrRanges      = */ NULL_ALONE(g_aMsrRanges_Intel_Core2_T7600_2_33GHz),
 };
 
-#endif /* !VBOX_DB_Intel_Core2_T7600_2_33GHz */
+#endif /* !VBOX_CPUDB_Intel_Core2_T7600_2_33GHz_h */
 

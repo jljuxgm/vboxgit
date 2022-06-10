@@ -1,4 +1,4 @@
-/* $Id: strhash.h 76559 2019-01-01 02:55:59Z vboxsync $ */
+/* $Id: strhash.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Internal header containing inline string hashing functions.
  */
@@ -108,5 +108,5 @@ DECLINLINE(uint32_t) sdbmIncN(const char *psz, size_t cchMax, uint32_t uHash)
 }
 
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_strhash_h */
 

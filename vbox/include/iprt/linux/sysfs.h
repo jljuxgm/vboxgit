@@ -1,4 +1,4 @@
-/* $Id: sysfs.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: sysfs.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -449,5 +449,5 @@ RTDECL(int) RTLinuxCheckDevicePath(dev_t DevNum, RTFMODE fMode, char *pszBuf, si
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_linux_sysfs_h */
 

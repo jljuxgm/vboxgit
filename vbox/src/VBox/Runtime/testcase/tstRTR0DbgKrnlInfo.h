@@ -1,4 +1,4 @@
-/* $Id: tstRTR0DbgKrnlInfo.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: tstRTR0DbgKrnlInfo.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Debug kernel information, common header.
  */
@@ -44,5 +44,5 @@ typedef enum TSTR0DBGKRNLINFO
     TSTRTR0DBGKRNLINFO_BASIC
 } TSTR0DBGKRNLINFO;
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_testcase_tstRTR0DbgKrnlInfo_h */
 

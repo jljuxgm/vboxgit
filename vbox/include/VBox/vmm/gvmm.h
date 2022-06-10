@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: gvmm.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -273,5 +273,5 @@ GVMMR0DECL(int)     GVMMR0ResetStatisticsReq(PGVM pGVM, PVM pVM, PGVMMRESETSTATI
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_vmm_gvmm_h */
 

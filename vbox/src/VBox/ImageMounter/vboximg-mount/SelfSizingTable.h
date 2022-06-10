@@ -1,4 +1,4 @@
-/* $Id: SelfSizingTable.h 76574 2019-01-01 05:59:26Z vboxsync $ $Revision: 76574 $ */
+/* $Id: SelfSizingTable.h 76585 2019-01-01 06:31:29Z vboxsync $ $Revision: 76585 $ */
 /** @file
  * vboxraw header file
  */
@@ -310,4 +310,4 @@ void SELFSIZINGTABLE::displayTable()
         pRow = pRow->next;
     }
 }
-#endif
+#endif /* !VBOX_INCLUDED_SRC_vboximg_mount_SelfSizingTable_h */

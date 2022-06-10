@@ -1,4 +1,4 @@
-/* $Id: allocex.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: allocex.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc and Free Functions for Ring-3.
  */
@@ -82,5 +82,5 @@ DECLHIDDEN(int) rtMemAllocEx32BitReach(size_t cbAlloc, uint32_t fFlags, void **p
  */
 DECLHIDDEN(void) rtMemFreeExYyBitReach(void *pv, size_t cb, uint32_t fFlags);
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r3_allocex_h */
 

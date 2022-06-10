@@ -1,4 +1,4 @@
-/* $Id: initterm.h 76559 2019-01-01 02:55:59Z vboxsync $ */
+/* $Id: initterm.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination.
  */
@@ -52,5 +52,5 @@ DECLHIDDEN(void) rtR0TermNative(void);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_initterm_h */
 

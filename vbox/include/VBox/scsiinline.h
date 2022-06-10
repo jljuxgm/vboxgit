@@ -1,4 +1,4 @@
-/* $Id: scsiinline.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: scsiinline.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VirtualBox: SCSI inline helpers used by devices, drivers, etc.
  */
@@ -232,5 +232,5 @@ DECLINLINE(void) scsiPadStrS(int8_t *pbDst, const char *pbSrc, uint32_t cbSize)
 
 /** @} */
 
-#endif
+#endif /* !VBOX_INCLUDED_scsiinline_h */
 

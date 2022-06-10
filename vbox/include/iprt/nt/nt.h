@@ -1,4 +1,4 @@
-/* $Id: nt.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: nt.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2933,5 +2933,5 @@ RT_C_DECLS_END
 /** @} */
 #endif /* IN_RING3 */
 
-#endif
+#endif /* !IPRT_INCLUDED_nt_nt_h */
 

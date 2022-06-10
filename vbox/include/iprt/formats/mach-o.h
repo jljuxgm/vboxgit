@@ -1,4 +1,4 @@
-/* $Id: mach-o.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: mach-o.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Mach-O Structures and Constants.
  */
@@ -769,5 +769,5 @@ typedef enum reloc_type_x86_64
     X86_64_RELOC_SIGNED_4
 } reloc_type_x86_64_t;
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_mach_o_h */
 

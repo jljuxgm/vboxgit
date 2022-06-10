@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: IOMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -505,5 +505,5 @@ RT_C_DECLS_END
 
 /** @} */
 
-#endif /* !___IOMInternal_h */
+#endif /* !VMM_INCLUDED_SRC_include_IOMInternal_h */
 

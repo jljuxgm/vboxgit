@@ -1,4 +1,4 @@
-/* $Id: the-netbsd-kernel.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: the-netbsd-kernel.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The NetBSD Kernel Headers.
  */
@@ -72,4 +72,4 @@
 # define USE_KMEM_ALLOC_PROT
 #endif
 
-#endif /* ___the_netbsd_kernel_h */
+#endif /* !IPRT_INCLUDED_SRC_r0drv_netbsd_the_netbsd_kernel_h */

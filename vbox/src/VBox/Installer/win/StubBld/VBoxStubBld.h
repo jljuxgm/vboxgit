@@ -1,4 +1,4 @@
-/* $Id: VBoxStubBld.h 76575 2019-01-01 06:01:16Z vboxsync $ */
+/* $Id: VBoxStubBld.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VBoxStubBld - VirtualBox's Windows installer stub builder.
  */
@@ -66,4 +66,4 @@ typedef struct VBOXSTUBBUILDPKG
 } VBOXSTUBBUILDPKG;
 typedef VBOXSTUBBUILDPKG *PVBOXSTUBBUILDPKG;
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_StubBld_VBoxStubBld_h */

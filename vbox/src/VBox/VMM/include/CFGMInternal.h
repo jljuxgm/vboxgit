@@ -1,4 +1,4 @@
-/* $Id: CFGMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: CFGMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CFGM - Internal header file.
  */
@@ -131,4 +131,4 @@ typedef struct CFGM
 
 /** @} */
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_CFGMInternal_h */

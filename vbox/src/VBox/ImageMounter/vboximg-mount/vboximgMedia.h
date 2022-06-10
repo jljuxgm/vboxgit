@@ -1,4 +1,4 @@
-/* $Id: vboximgMedia.h 76574 2019-01-01 05:59:26Z vboxsync $ $Revision: 76574 $ $Date: 2019-01-01 13:59:26 +0800 (Tue, 01 Jan 2019) $ $Author: vboxsync $ */
+/* $Id: vboximgMedia.h 76585 2019-01-01 06:31:29Z vboxsync $ $Revision: 76585 $ $Date: 2019-01-01 14:31:29 +0800 (Tue, 01 Jan 2019) $ $Author: vboxsync $ */
 
 /** @file
  * vboximgMedia.h
@@ -37,4 +37,4 @@ typedef struct MEDIUMINFO
 int vboximgListVMs(IVirtualBox *pVirtualBox);
 char *vboximgScaledSize(size_t size);
 
-#endif /* ____H_VBOXIMGMEDIA */
+#endif /* !VBOX_INCLUDED_SRC_vboximg_mount_vboximgMedia_h */

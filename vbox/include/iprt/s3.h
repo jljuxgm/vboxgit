@@ -1,4 +1,4 @@
-/* $Id: s3.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: s3.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Simple Storage Service (S3) Communication API.
  */
@@ -269,5 +269,5 @@ RTR3DECL(int) RTS3PutKey(RTS3 hS3, const char *pszBucketName, const char *pszKey
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_s3_h */
 

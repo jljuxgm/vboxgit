@@ -1,4 +1,4 @@
-/* $Id: pecoff.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: pecoff.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Windows NT PE & COFF Structures and Constants.
  */
@@ -2167,5 +2167,5 @@ typedef IMAGE_RELOCATION const *PCIMAGE_RELOCATION;
 
 /** @} */
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_pecoff_h */
 

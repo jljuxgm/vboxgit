@@ -1,4 +1,4 @@
-/* $Id: PDMNetShaperInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: PDMNetShaperInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Internal data structures and functions common for both R0 and R3 parts.
  */
@@ -50,5 +50,5 @@ typedef struct PDMNSBWGROUP
 /** Pointer to a bandwidth group. */
 typedef PDMNSBWGROUP *PPDMNSBWGROUP;
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_PDMNetShaperInternal_h */
 

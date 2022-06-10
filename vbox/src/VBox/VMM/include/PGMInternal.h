@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: PGMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -4341,5 +4341,5 @@ RT_C_DECLS_END
 
 /** @} */
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_PGMInternal_h */
 

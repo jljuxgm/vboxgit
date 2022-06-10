@@ -1,4 +1,4 @@
-/* $Id: dir.h 76559 2019-01-01 02:55:59Z vboxsync $ */
+/* $Id: dir.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDir.
  */
@@ -196,4 +196,4 @@ size_t rtDirNativeGetStructSize(const char *pszPath);
 DECLHIDDEN(int) rtDirOpenRelativeOrHandle(RTDIR *phDir, const char *pszRelativeAndFilter, RTDIRFILTER enmFilter,
                                           uint32_t fFlags, uintptr_t hRelativeDir, void *pvNativeRelative);
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_dir_h */

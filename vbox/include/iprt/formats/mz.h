@@ -1,4 +1,4 @@
-/* $Id: mz.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: mz.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT, MZ Executable Header.
  */
@@ -63,5 +63,5 @@ typedef IMAGE_DOS_HEADER *PIMAGE_DOS_HEADER;
 #endif
 
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_mz_h */
 

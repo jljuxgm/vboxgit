@@ -1,4 +1,4 @@
-/* $Id: dbg.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: dbg.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -2002,5 +2002,5 @@ RTR0DECL(int)       RTR0DbgKrnlInfoQuerySize(RTDBGKRNLINFO hKrnlInfo, const char
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_dbg_h */
 

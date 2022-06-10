@@ -1,4 +1,4 @@
-/* $Id: clipboard-helper.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: clipboard-helper.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * Shared Clipboard - Some helper function for converting between the various EOLs.
  */
@@ -170,5 +170,5 @@ int vboxClipboardDibToBmp(const void *pvSrc, size_t cbSrc, void **ppvDst, size_t
 int vboxClipboardBmpGetDib(const void *pvSrc, size_t cbSrc, const void **ppvDst, size_t *pcbDst);
 
 
-#endif
+#endif /* !VBOX_INCLUDED_GuestHost_clipboard_helper_h */
 

@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_6700K.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: Intel_Core_i7_6700K.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-6700K".
  * Generated at 2015-11-04T14:22:26Z by VBoxCpuReport v5.0.51r103906 on win.amd64.
@@ -506,5 +506,5 @@ static CPUMDBENTRY const g_Entry_Intel_Core_i7_6700K =
     /*.paMsrRanges      = */ NULL_ALONE(g_aMsrRanges_Intel_Core_i7_6700K),
 };
 
-#endif /* !VBOX_DB_Intel_Core_i7_6700K */
+#endif /* !VBOX_CPUDB_Intel_Core_i7_6700K_h */
 

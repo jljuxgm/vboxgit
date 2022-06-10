@@ -1,4 +1,4 @@
-/* $Id: string.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: string.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - wrapper for the linux kernel asm/string.h.
  */
@@ -56,5 +56,5 @@ char *strpbrk(const char *pszStr, const char *pszChars)
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r0drv_linux_string_h */
 

@@ -1,4 +1,4 @@
-/* $Id: tstMicro.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: tstMicro.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -143,4 +143,4 @@ DECLASM(void) tstInterrupt42(void);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_testcase_tstMicro_h */

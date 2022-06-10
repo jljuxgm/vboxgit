@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: GuestControlSvc.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -1365,5 +1365,5 @@ typedef struct CALLBACKDATA_FILE_NOTIFY
 
 } /* namespace guestControl */
 
-#endif  /* !___VBox_HostService_GuestControlService_h */
+#endif /* !VBOX_INCLUDED_HostServices_GuestControlSvc_h */
 

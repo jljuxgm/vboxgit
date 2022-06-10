@@ -1,4 +1,4 @@
-/* $Id: PATMA.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: PATMA.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * PATM macros & definitions (identical to PATMA.mac!).
  */
@@ -232,4 +232,4 @@ extern const uint32_t g_fPatmInterruptFlag;
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_PATMA_h */

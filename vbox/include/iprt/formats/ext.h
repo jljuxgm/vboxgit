@@ -1,4 +1,4 @@
-/* $Id: ext.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: ext.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT, Ext2/3/4 format.
  */
@@ -984,5 +984,5 @@ typedef const EXTDIRENTRYCHKSUM *PCEXTDIRENTRYCHKSUM;
 
 /** @} */
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_ext_h */
 

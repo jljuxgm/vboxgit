@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: NEMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -445,5 +445,5 @@ void    nemHCNativeNotifyPhysPageChanged(PVM pVM, RTGCPHYS GCPhys, RTHCPHYS HCPh
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_NEMInternal_h */
 

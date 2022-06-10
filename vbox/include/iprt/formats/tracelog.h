@@ -1,4 +1,4 @@
-/* $Id: tracelog.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: tracelog.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT, Binary trace log format.
  */
@@ -225,5 +225,5 @@ typedef const TRACELOGEVT *PCTRACELOGEVT;
 
 /** @} */
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_tracelog_h */
 

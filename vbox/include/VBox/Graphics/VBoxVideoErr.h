@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoErr.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: VBoxVideoErr.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - iprt and VirtualBox macros and
  * definitions.
@@ -73,4 +73,4 @@ extern int vbox_assert_var[1];
 
 /** @}  */
 
-#endif
+#endif /* !VBOX_INCLUDED_Graphics_VBoxVideoErr_h */

@@ -1,4 +1,4 @@
-/* $Id: HGSMIChSetup.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: HGSMIChSetup.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), Host/Guest shared part.
  */
@@ -87,4 +87,4 @@ typedef struct HGSMIHOSTFLAGS
 } HGSMIHOSTFLAGS;
 AssertCompileSize(HGSMIHOSTFLAGS, 16);
 
-#endif
+#endif /* !VBOX_INCLUDED_Graphics_HGSMIChSetup_h */

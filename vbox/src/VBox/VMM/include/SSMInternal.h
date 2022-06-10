@@ -1,4 +1,4 @@
-/* $Id: SSMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: SSMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * SSM - Internal header file.
  */
@@ -327,5 +327,5 @@ typedef SSM *PSSM;
 
 RT_C_DECLS_END
 
-#endif /* !___SSMInternal_h */
+#endif /* !VMM_INCLUDED_SRC_include_SSMInternal_h */
 

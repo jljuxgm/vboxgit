@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: PGMInline.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1533,5 +1533,5 @@ DECL_FORCE_INLINE(bool) pgmMapAreMappingsFloating(PVM pVM)
 
 /** @} */
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_PGMInline_h */
 

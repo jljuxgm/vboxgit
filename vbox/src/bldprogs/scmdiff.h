@@ -1,4 +1,4 @@
-/* $Id: scmdiff.h 76584 2019-01-01 06:29:03Z vboxsync $ */
+/* $Id: scmdiff.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Diff Code.
  */
@@ -60,5 +60,5 @@ size_t ScmDiffStreams(const char *pszFilename, PSCMSTREAM pLeft, PSCMSTREAM pRig
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_bldprogs_scmdiff_h */
 

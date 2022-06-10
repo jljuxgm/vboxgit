@@ -1,4 +1,4 @@
-/* $Id: the-os2-kernel.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: the-os2-kernel.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The OS/2 Kernel Headers.
  */
@@ -56,4 +56,4 @@ DECLASM(int) RTR0Os2DHVMGlobalToProcess(ULONG fFlags, PVOID pvR0, ULONG cb, PPVO
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r0drv_os2_the_os2_kernel_h */

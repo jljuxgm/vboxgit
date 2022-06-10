@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: GIMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -119,5 +119,5 @@ VMMR3_INT_DECL(int)           gimR3DebugWrite(PVM pVM, void *pvWrite, size_t *pc
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_GIMInternal_h */
 

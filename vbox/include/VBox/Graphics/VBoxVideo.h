@@ -1,4 +1,4 @@
-/* $Id: VBoxVideo.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: VBoxVideo.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VirtualBox Video interface.
  */
@@ -2125,5 +2125,5 @@ typedef struct VBOXVDMAVBVACMD
 #pragma pack()
 #endif
 
-#endif
+#endif /* !VBOX_INCLUDED_Graphics_VBoxVideo_h */
 

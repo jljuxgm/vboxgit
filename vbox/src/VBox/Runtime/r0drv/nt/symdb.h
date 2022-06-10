@@ -1,4 +1,4 @@
-/* $Id: symdb.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: symdb.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Symbol DB.
  */
@@ -84,5 +84,5 @@ DECLINLINE(int) rtNtOsVerInfoCompare(PCRTNTSDBOSVER pInfo1, PCRTNTSDBOSVER pInfo
     return 0;
 }
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r0drv_nt_symdb_h */
 

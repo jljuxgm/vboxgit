@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: VMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -481,5 +481,5 @@ RT_C_DECLS_END
 
 /** @} */
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_VMInternal_h */
 

@@ -1,4 +1,4 @@
-/* $Id: internal-r3-win.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: internal-r3-win.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - some Windows OS type constants.
  */
@@ -208,5 +208,5 @@ extern DECLHIDDEN(PFNWINSOCKGETHOSTBYNAME)         g_pfngethostbyname;
 #endif
 
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r3_win_internal_r3_win_h */
 

@@ -1,4 +1,4 @@
-/* $Id: GVMMR0Internal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: GVMMR0Internal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager, Internal header.
  */
@@ -65,5 +65,5 @@ typedef struct GVMMPERVM
 typedef GVMMPERVM *PGVMMPERVM;
 
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_VMMR0_GVMMR0Internal_h */
 

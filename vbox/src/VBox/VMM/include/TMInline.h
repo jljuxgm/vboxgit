@@ -1,4 +1,4 @@
-/* $Id: TMInline.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: TMInline.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * TM - Common Inlined functions.
  */
@@ -55,5 +55,5 @@ DECL_FORCE_INLINE(void) tmTimerQueueUnlinkActive(PTMTIMERQUEUE pQueue, PTMTIMER 
     pTimer->offPrev = 0;
 }
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_TMInline_h */
 

@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Thread.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: tstRTR0Thread.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Kernel thread, common header.
  */
@@ -46,4 +46,4 @@ typedef enum TSTR0THREAD
     TSTRTR0THREAD_BASIC
 } TSTR0THREAD;
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_testcase_tstRTR0Thread_h */

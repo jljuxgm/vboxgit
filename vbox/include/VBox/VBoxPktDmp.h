@@ -1,4 +1,4 @@
-/* $Id: VBoxPktDmp.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: VBoxPktDmp.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VBoxPktDmp.h - Dump Ethernet frame into debug log.
  */
@@ -173,4 +173,4 @@ DECLHIDDEN(void) vboxEthPacketDump(const char *pcszInstance, const char *pcszTex
 #endif
 }
 
-#endif
+#endif /* !VBOX_INCLUDED_VBoxPktDmp_h */

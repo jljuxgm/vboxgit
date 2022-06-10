@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: PATMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -689,4 +689,4 @@ void patmR3DbgAddPatch(PVM pVM, PPATMPATCHREC pPatchRec);
 
 PGM_ALL_CB2_PROTO(FNPGMVIRTHANDLER) patmVirtPageHandler;
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_PATMInternal_h */

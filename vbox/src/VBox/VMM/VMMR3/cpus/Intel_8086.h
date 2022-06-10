@@ -1,4 +1,4 @@
-/* $Id: Intel_8086.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: Intel_8086.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CPU database entry "Intel 8086".
  * Handcrafted.
@@ -71,5 +71,5 @@ static CPUMDBENTRY const g_Entry_Intel_8086 =
     /*.paMsrRanges      = */ NULL,
 };
 
-#endif /* !VBOX_CPUDB_Intel_8086 */
+#endif /* !VBOX_CPUDB_Intel_8086_h */
 

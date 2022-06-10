@@ -1,4 +1,4 @@
-/* $Id: resource.h 76575 2019-01-01 06:01:16Z vboxsync $ */
+/* $Id: resource.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VBoxStub - resource header file.
  */
@@ -28,5 +28,5 @@
 #endif
 #define APP_MANIFEST 1
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Stub_resource_h */
 

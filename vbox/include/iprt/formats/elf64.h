@@ -1,4 +1,4 @@
-/* $Id: elf64.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: elf64.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - ELF 64-bit header.
  */
@@ -185,5 +185,5 @@ typedef struct
 #define ELF64_R_INFO(sym, type)     (((sym) << 32) + (unsigned char)(type))
 
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_elf64_h */
 

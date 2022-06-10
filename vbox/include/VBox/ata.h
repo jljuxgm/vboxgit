@@ -1,4 +1,4 @@
-/* $Id: ata.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: ata.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI declarations
  */
@@ -208,5 +208,5 @@ typedef enum ATACMD
 const char * ATACmdText(uint8_t uCmd);
 #endif
 
-#endif /* !___VBox_ata_h */
+#endif /* !VBOX_INCLUDED_ata_h */
 

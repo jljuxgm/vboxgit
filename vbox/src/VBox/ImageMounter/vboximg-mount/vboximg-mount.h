@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.h 76574 2019-01-01 05:59:26Z vboxsync $ $Revision: 76574 $ */
+/* $Id: vboximg-mount.h 76585 2019-01-01 06:31:29Z vboxsync $ $Revision: 76585 $ */
 /** @file
  * vboximg-mount header file
  */
@@ -294,4 +294,4 @@ GPTPARTITIONTYPE g_gptPartitionTypes[] =
     { "734E5AFE-F61A-11E6-BC64-92361F002671", "Atari TOS", "Basic data (GEM, BGM, F32)" },
 };
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_vboximg_mount_vboximg_mount_h */

@@ -1,4 +1,4 @@
-/* $Id: VIA_QuadCore_L4700_1_2_GHz.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: VIA_QuadCore_L4700_1_2_GHz.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CPU database entry "VIA QuadCore L4700 1.2+ GHz".
  * Generated at 2013-12-20T14:40:07Z by VBoxCpuReport v4.3.53r91411 on linux.amd64.
@@ -400,5 +400,5 @@ static CPUMDBENTRY const g_Entry_VIA_QuadCore_L4700_1_2_GHz =
     /*.paMsrRanges      = */ NULL_ALONE(g_aMsrRanges_VIA_QuadCore_L4700_1_2_GHz),
 };
 
-#endif /* !VBOX_DB_VIA_QuadCore_L4700_1_2_GHz */
+#endif /* !VBOX_CPUDB_VIA_QuadCore_L4700_1_2_GHz_h */
 

@@ -1,4 +1,4 @@
-/* $Id: file.h 76559 2019-01-01 02:55:59Z vboxsync $ */
+/* $Id: file.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFile header.
  */
@@ -79,5 +79,5 @@ DECLHIDDEN(int) rtFileNtValidateAndConvertFlags(uint64_t fOpen, uint32_t *pfDesi
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_file_h */
 

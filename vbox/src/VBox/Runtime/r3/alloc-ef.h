@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: alloc-ef.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -216,5 +216,5 @@ extern void   (*g_pfnOrgFree)(void *);
 RT_C_DECLS_END
 #endif
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r3_alloc_ef_h */
 

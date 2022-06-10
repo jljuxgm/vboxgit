@@ -1,4 +1,4 @@
-/* $Id: tstRTR0CommonDriver.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: tstRTR0CommonDriver.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Common header for the testcase drivers.
  */
@@ -278,5 +278,5 @@ bool RTR3TestR0SimpleTest(uint32_t uOperation, const char *pszTestFmt, ...)
     return rtR3TestR0ProcessMessages(&Req);
 }
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_testcase_tstRTR0CommonDriver_h */
 

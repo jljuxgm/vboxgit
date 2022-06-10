@@ -1,4 +1,4 @@
-/* $Id: strcache.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: strcache.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - String Cache, stub implementation.
  */
@@ -187,5 +187,5 @@ RTDECL(bool) RTStrCacheIsRealImpl(void);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_strcache_h */
 

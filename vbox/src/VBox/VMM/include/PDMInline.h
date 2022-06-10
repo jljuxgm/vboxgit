@@ -1,4 +1,4 @@
-/* $Id: PDMInline.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: PDMInline.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * PDM - Internal header file containing the inlined functions.
  */
@@ -38,5 +38,5 @@ DECLINLINE(uint32_t) pdmCalcIrqTag(PVM pVM, uint32_t idTracer)
     return uTag;
 }
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_include_PDMInline_h */
 

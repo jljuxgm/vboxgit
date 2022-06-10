@@ -1,4 +1,4 @@
-/* $Id: tar.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: tar.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
@@ -381,5 +381,5 @@ DECLINLINE(bool) rtZipTarCalcChkSum(PCRTZIPTARHDR pHdr, int32_t *pi32Unsigned, i
 }
 
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_common_zip_tar_h */
 

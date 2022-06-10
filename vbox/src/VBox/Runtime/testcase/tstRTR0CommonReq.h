@@ -1,4 +1,4 @@
-/* $Id: tstRTR0CommonReq.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: tstRTR0CommonReq.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Common header defining the request packet.
  */
@@ -55,5 +55,5 @@ typedef RTTSTR0REQ *PRTTSTR0REQ;
 #define RTTSTR0REQ_FIRST_USER       10
 /** @}  */
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_testcase_tstRTR0CommonReq_h */
 

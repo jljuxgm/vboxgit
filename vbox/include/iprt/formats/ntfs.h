@@ -1,4 +1,4 @@
-/* $Id: ntfs.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: ntfs.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT, NT File System (NTFS).
  */
@@ -766,5 +766,5 @@ typedef NTFSIDXENTRYHDR const *PCNTFSIDXENTRYHDR;
 
 /** @} */
 
-#endif
+#endif /* !IPRT_INCLUDED_formats_ntfs_h */
 

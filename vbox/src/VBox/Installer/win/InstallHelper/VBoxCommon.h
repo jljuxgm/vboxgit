@@ -1,4 +1,4 @@
-/* $Id: VBoxCommon.h 76575 2019-01-01 06:01:16Z vboxsync $ */
+/* $Id: VBoxCommon.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VBoxCommon - Misc helper routines for install helper.
  */
@@ -28,5 +28,5 @@ int swprintf_s(WCHAR *buffer, size_t cbBuffer, const WCHAR *format, ...);
 UINT VBoxGetProperty(MSIHANDLE a_hModule, WCHAR *a_pwszName, WCHAR *a_pwszValue, DWORD a_dwSize);
 UINT VBoxSetProperty(MSIHANDLE a_hModule, WCHAR *a_pwszName, WCHAR *a_pwszValue);
 
-#endif /* !___VBoxInstallHelper_Common_h */
+#endif /* !VBOX_INCLUDED_SRC_InstallHelper_VBoxCommon_h */
 

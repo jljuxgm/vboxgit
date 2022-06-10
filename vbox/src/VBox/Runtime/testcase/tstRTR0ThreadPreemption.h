@@ -1,4 +1,4 @@
-/* $Id: tstRTR0ThreadPreemption.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: tstRTR0ThreadPreemption.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, common header.
  */
@@ -48,5 +48,5 @@ typedef enum TSTRTR0THREADPREEMPTION
     TSTRTR0THREADPREEMPTION_CTXHOOKS
 } TSTRTR0THREADPREEMPTION;
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_testcase_tstRTR0ThreadPreemption_h */
 

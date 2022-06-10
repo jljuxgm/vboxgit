@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: PATMPatch.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * PATMPatch - Internal header file.
  */
@@ -153,4 +153,4 @@ int patmPatchGenCheckIF(PVM pVM, PPATCHINFO pPatch, RTRCPTR pCurInstrGC);
  */
 int patmPatchGenGlobalFunctions(PVM pVM, PPATCHINFO pPatch);
 
-#endif
+#endif /* !VMM_INCLUDED_SRC_VMMR3_PATMPatch_h */

@@ -1,4 +1,4 @@
-/* $Id: ldr.h 76559 2019-01-01 02:55:59Z vboxsync $ */
+/* $Id: ldr.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -635,5 +635,5 @@ DECLHIDDEN(int) rtLdrReadAt(RTLDRMOD hLdrMod, void *pvBuf, uint32_t iDbgInfo, RT
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_ldr_h */
 

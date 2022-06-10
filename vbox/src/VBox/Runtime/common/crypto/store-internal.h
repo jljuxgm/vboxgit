@@ -1,4 +1,4 @@
-/* $Id: store-internal.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: store-internal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic Store, Internal Header.
  */
@@ -162,5 +162,5 @@ typedef RTCRSTOREPROVIDER const *PCRTCRSTOREPROVIDER;
 
 DECLHIDDEN(int) rtCrStoreCreate(PCRTCRSTOREPROVIDER pProvider, void *pvProvider, PRTCRSTORE phStore);
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_common_crypto_store_internal_h */
 

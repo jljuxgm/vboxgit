@@ -1,4 +1,4 @@
-/* $Id: omf.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: omf.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Relocatable Object Module Format (OMF).
  *
@@ -246,5 +246,5 @@ typedef OMFRECHDR *PCOMFRECHDR;
 
 
 /** @} */
-#endif
+#endif /* !IPRT_INCLUDED_formats_omf_h */
 

@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: HMSVMR0.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Internal header file.
  */
@@ -95,5 +95,5 @@ DECLASM(void) SVMR0InvlpgA(RTGCPTR pPageGC, uint32_t u32ASID);
 
 RT_C_DECLS_END
 
-#endif /* !___HMSVMR0_h */
+#endif /* !VMM_INCLUDED_SRC_VMMR0_HMSVMR0_h */
 

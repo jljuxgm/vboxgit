@@ -1,4 +1,4 @@
-/* $Id: http.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: http.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -662,5 +662,5 @@ RTR3DECL(int) RTHttpRawGetResponseCode(RTHTTP hHttp, long *plCode);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_http_h */
 

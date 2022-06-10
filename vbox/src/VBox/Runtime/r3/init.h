@@ -1,4 +1,4 @@
-/* $Id: init.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: init.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Ring-3 initialization.
  */
@@ -36,5 +36,5 @@ DECLHIDDEN(int)  rtR3InitNativeFirst(uint32_t fFlags);
 DECLHIDDEN(int)  rtR3InitNativeFinal(uint32_t fFlags);
 DECLHIDDEN(void) rtR3InitNativeObtrusive(uint32_t fFlags);
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r3_init_h */
 

@@ -1,4 +1,4 @@
-/* $Id: assert.h 76559 2019-01-01 02:55:59Z vboxsync $ */
+/* $Id: assert.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Internal RTAssert header
  */
@@ -62,5 +62,5 @@ DECLHIDDEN(void) rtR0AssertNativeMsg2V(bool fInitial, const char *pszFormat, va_
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_assert_h */
 

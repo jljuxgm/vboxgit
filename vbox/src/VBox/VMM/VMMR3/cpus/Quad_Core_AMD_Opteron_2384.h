@@ -1,4 +1,4 @@
-/* $Id: Quad_Core_AMD_Opteron_2384.h 76561 2019-01-01 03:13:40Z vboxsync $ */
+/* $Id: Quad_Core_AMD_Opteron_2384.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * CPU database entry "Quad-Core AMD Opteron 2384".
  * Generated at 2013-12-09T21:56:56Z by VBoxCpuReport v4.3.51r91133 on win.amd64.
@@ -266,5 +266,5 @@ static CPUMDBENTRY const g_Entry_Quad_Core_AMD_Opteron_2384 =
     /*.paMsrRanges      = */ NULL_ALONE(g_aMsrRanges_Quad_Core_AMD_Opteron_2384),
 };
 
-#endif /* !VBOX_DB_Quad_Core_AMD_Opteron_2384 */
+#endif /* !VBOX_CPUDB_Quad_Core_AMD_Opteron_2384_h */
 

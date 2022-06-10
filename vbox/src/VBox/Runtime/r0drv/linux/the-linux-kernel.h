@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: the-linux-kernel.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -458,4 +458,4 @@ DECLHIDDEN(void) rtR0LnxWorkqueuePush(RTR0LNXWORKQUEUEITEM *pWork, void (*pfnWor
 DECLHIDDEN(void) rtR0LnxWorkqueueFlush(void);
 
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r0drv_linux_the_linux_kernel_h */

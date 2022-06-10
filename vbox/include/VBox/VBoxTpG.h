@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: VBoxTpG.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VBox Tracepoint Generator Structures.
  */
@@ -441,5 +441,5 @@ extern VTGOBJHDR            g_VTGObjHeader;
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_VBoxTpG_h */
 

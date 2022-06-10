@@ -1,4 +1,4 @@
-/* $Id: waitqueue-r0drv-linux.h 76560 2019-01-01 03:01:10Z vboxsync $ */
+/* $Id: waitqueue-r0drv-linux.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Linux Ring-0 Driver Helpers for Abstracting Wait Queues,
  */
@@ -288,5 +288,5 @@ DECLINLINE(uint32_t) rtR0SemLnxWaitGetResolution(void)
 #endif
 }
 
-#endif
+#endif /* !IPRT_INCLUDED_SRC_r0drv_linux_waitqueue_r0drv_linux_h */
 

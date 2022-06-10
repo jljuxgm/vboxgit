@@ -1,4 +1,4 @@
-/* $Id: resource.h 76575 2019-01-01 06:01:16Z vboxsync $ */
+/* $Id: resource.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * resource.h - resource header file.
  */
@@ -33,4 +33,4 @@
 #define IDI_FILETYPE_VBOX_VHD       305
 #define IDI_FILETYPE_VBOX_HDD       306
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_Resources_resource_h */

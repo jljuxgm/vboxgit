@@ -1,4 +1,4 @@
-/* $Id: iprt.h 76559 2019-01-01 02:55:59Z vboxsync $ */
+/* $Id: iprt.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * IPRT - Internal header for miscellaneous global defs and types.
  */
@@ -203,5 +203,5 @@ uint32_t rtR0SemWaitOs2ConvertTimeout(uint32_t fFlags, uint64_t uTimeout);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !IPRT_INCLUDED_INTERNAL_iprt_h */
 

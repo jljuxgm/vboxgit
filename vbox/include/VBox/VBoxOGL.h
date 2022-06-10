@@ -1,4 +1,4 @@
-/* $Id: VBoxOGL.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: VBoxOGL.h 76585 2019-01-01 06:31:29Z vboxsync $ */
 /** @file
  * VBox 3D Support API
  */
@@ -57,4 +57,4 @@ DECLEXPORT(int) VBoxOglSetScaleFactor(uint32_t idScreen, double dScaleFactorW, d
 
 RT_C_DECLS_END
 
-#endif /* !___VBoxOGL_h */
+#endif /* !VBOX_INCLUDED_VBoxOGL_h */
