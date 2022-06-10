@@ -1,4 +1,4 @@
-/* $Id: RTKrnlModInfo.cpp 69434 2017-10-27 15:48:25Z vboxsync $ */
+/* $Id: RTKrnlModInfo.cpp 74252 2018-09-13 17:22:06Z vboxsync $ */
 /** @file
  * IPRT - Utility for getting information about loaded kernel modules.
  */
@@ -47,6 +47,13 @@ int main(int argc, char **argv)
     int rc = RTR3InitExe(argc, &argv, 0);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
+
+    /** @todo proper argument parsing, please. */
+    if (argc != 1)
+    {
+        RTMsgError("Syntax error: This tool takes no parameters.  It just lists the modules\n");
+        return RTEXITCODE_SYNTAX;
+    }
 
     RTEXITCODE rcExit = RTEXITCODE_SUCCESS;
     uint32_t cKrnlMods = RTKrnlModLoadedGetCount();
