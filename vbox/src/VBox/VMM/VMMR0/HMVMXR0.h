@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.h 72805 2018-07-03 04:05:43Z vboxsync $ */
+/* $Id: HMVMXR0.h 72967 2018-07-08 10:38:08Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Internal header file.
  */
@@ -41,7 +41,7 @@ VMMR0DECL(int)          VMXR0SetupVM(PVM pVM);
 VMMR0DECL(int)          VMXR0ExportHostState(PVMCPU pVCpu);
 VMMR0DECL(int)          VMXR0InvalidatePage(PVMCPU pVCpu, RTGCPTR GCVirt);
 VMMR0DECL(int)          VMXR0ImportStateOnDemand(PVMCPU pVCpu, uint64_t fWhat);
-VMMR0DECL(VBOXSTRICTRC) VMXR0RunGuestCode(PVMCPU pVCpu, PCPUMCTX pCtx);
+VMMR0DECL(VBOXSTRICTRC) VMXR0RunGuestCode(PVMCPU pVCpu);
 DECLASM(int)            VMXR0StartVM32(RTHCUINT fResume, PCPUMCTX pCtx, PVMCSCACHE pCache, PVM pVM, PVMCPU pVCpu);
 DECLASM(int)            VMXR0StartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVMCSCACHE pCache, PVM pVM, PVMCPU pVCpu);
 

@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 72966 2018-07-08 06:22:48Z vboxsync $ */
+/* $Id: HMInternal.h 72967 2018-07-08 10:38:08Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1126,7 +1126,7 @@ DECLASM(int) hmR0SVMRunWrapXMM(RTHCPHYS pVmcbHostPhys, RTHCPHYS pVmcbPhys, PCPUM
 # endif
 #endif /* IN_RING0 */
 
-int hmSvmEmulateMovTpr(PVMCPU pVCpu, PCPUMCTX pCtx);
+int hmSvmEmulateMovTpr(PVMCPU pVCpu);
 
 /** @} */
 

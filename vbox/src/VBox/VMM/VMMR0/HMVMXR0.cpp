@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72966 2018-07-08 06:22:48Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72967 2018-07-08 10:38:08Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10161,10 +10161,10 @@ static bool hmR0VmxAnyExpensiveProbesEnabled(void)
  *
  * @returns Strict VBox status code (i.e. informational status codes too).
  * @param   pVCpu       The cross context virtual CPU structure.
- * @param   pCtx        Pointer to the guest-CPU context.
  */
-VMMR0DECL(VBOXSTRICTRC) VMXR0RunGuestCode(PVMCPU pVCpu, PCPUMCTX pCtx)
+VMMR0DECL(VBOXSTRICTRC) VMXR0RunGuestCode(PVMCPU pVCpu)
 {
+    PCPUMCTX pCtx = &pVCpu->cpum.GstCtx;
     Assert(VMMRZCallRing3IsEnabled(pVCpu));
     Assert(!ASMAtomicUoReadU64(&pCtx->fExtrn));
     HMVMX_ASSERT_PREEMPT_SAFE();
