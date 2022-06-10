@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 76177 2018-12-12 13:38:57Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 76297 2018-12-19 16:32:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -28,7 +28,7 @@
 # include "QILabel.h"
 # include "UIActionPool.h"
 # include "UIFileManager.h"
-# include "UIFileManagerModel.h"
+# include "UICustomFileSystemModel.h"
 # include "UIFileManagerHostTable.h"
 # include "UIToolBar.h"
 
@@ -104,7 +104,7 @@ void UIHostDirectoryDiskUsageComputer::directoryStatisticsRecursive(const QStrin
     {
         const QFileInfo &entryInfo = entryList.at(i);
         if (entryInfo.baseName().isEmpty() || entryInfo.baseName() == "." ||
-            entryInfo.baseName() == UIFileManagerModel::strUpDirectoryString)
+            entryInfo.baseName() == UICustomFileSystemModel::strUpDirectoryString)
             continue;
         statistics.m_totalSize += entryInfo.size();
         if (entryInfo.isSymLink())

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.h 76177 2018-12-12 13:38:57Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.h 76297 2018-12-19 16:32:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class declaration.
  */
@@ -25,7 +25,7 @@
 class UIActionPool;
 
 /** This class scans the host file system by using the Qt API
-    and connects to the UIFileManagerModel*/
+    and connects to the UICustomFileSystemModel*/
 class UIFileManagerHostTable : public UIFileManagerTable
 {
     Q_OBJECT;
