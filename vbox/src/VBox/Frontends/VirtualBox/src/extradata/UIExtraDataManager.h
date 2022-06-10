@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 75525 2018-11-16 16:36:22Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 75607 2018-11-20 10:33:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -348,6 +348,8 @@ public:
 
         /** Returns VirtualBox Manager / Details pane options for certain @a enmElementType. */
         QStringList vboxManagerDetailsPaneElementOptions(DetailsElementType enmElementType);
+        /** Defines VirtualBox Manager / Details pane @a options for certain @a enmElementType. */
+        void setVBoxManagerDetailsPaneElementOptions(DetailsElementType enmElementType, const QStringList &options);
     /** @} */
 
     /** @name Snapshot Manager
