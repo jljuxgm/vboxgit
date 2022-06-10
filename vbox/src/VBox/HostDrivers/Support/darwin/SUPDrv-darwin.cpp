@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 75711 2018-11-25 02:30:56Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 75718 2018-11-25 16:30:03Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -1017,7 +1017,7 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
 /**
  * Callback for blah blah blah.
  */
-IOReturn VBoxDrvDarwinSleepHandler(void * /* pvTarget */, void *pvRefCon, UInt32 uMessageType, 
+IOReturn VBoxDrvDarwinSleepHandler(void * /* pvTarget */, void *pvRefCon, UInt32 uMessageType,
                                    IOService *pProvider, void *pvMsgArg, vm_size_t cbMsgArg)
 {
     RT_NOREF(pProvider, pvMsgArg, cbMsgArg);
@@ -2001,14 +2001,14 @@ SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
 }
 
 
-/* 
- * 
+/*
+ *
  * org_virtualbox_SupDrv
  *
  * - IOService diff resync -
  * - IOService diff resync -
  * - IOService diff resync -
- * 
+ *
  */
 
 
