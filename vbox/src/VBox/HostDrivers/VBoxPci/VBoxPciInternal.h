@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBoxPciInternal_h___
 #define ___VBoxPciInternal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/sup.h>
 #include <VBox/rawpci.h>

@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 72326 2018-05-24 18:56:44Z vboxsync $ */
+/* $Id: SUPLibInternal.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___SUPLibInternal_h___
 #define ___SUPLibInternal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

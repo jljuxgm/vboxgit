@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.h 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.h - Bridged Networking Driver, Windows Specific Code.
  * NetFlt Runtime API
@@ -23,8 +23,12 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 #ifndef ___VBoxNetFltRt_win_h___
 #define ___VBoxNetFltRt_win_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 DECLHIDDEN(VOID) vboxNetFltWinUnload(IN PDRIVER_OBJECT DriverObject);
 
 #ifndef VBOXNETADP

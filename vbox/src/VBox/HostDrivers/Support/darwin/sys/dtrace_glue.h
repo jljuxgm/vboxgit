@@ -1,4 +1,4 @@
-/* $Id: dtrace_glue.h 69249 2017-10-24 19:05:34Z vboxsync $ */
+/* $Id: dtrace_glue.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin, mock-up of missing sys/dtrace-glue.h.
  */
@@ -24,9 +24,16 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
+#ifndef VBOX_INCLUDED_darwin_sys_dtrace_glue_h
+#define VBOX_INCLUDED_darwin_sys_dtrace_glue_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
+
 #define _KERNEL
 typedef struct solaris_cred cred_t;
 typedef struct solaris_kthread kthread_t;
 typedef struct solaris_x86_saved_state x86_saved_state_t;
 typedef unsigned int model_t;
 
+#endif

@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgLog.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDbgLog.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * Logging helper
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBoxDbgLog_h___
 #define ___VBoxDbgLog_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef VBOX_DBG_LOG_NAME
 # error VBOX_DBG_LOG_NAME should be defined!

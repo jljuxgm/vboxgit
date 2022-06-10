@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltNobj.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetFltNobj.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VBoxNetFltNobj.h - Notify Object for Bridged Networking Driver.
  * Used to filter Bridged Networking Driver bindings
@@ -23,8 +23,12 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 #ifndef ___VBoxNetFltNobj_h___
 #define ___VBoxNetFltNobj_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/win/windows.h>
 

@@ -1,4 +1,4 @@
-/* $Id: SUPSvcInternal.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SUPSvcInternal.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Service - Internal header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___SUPSvcInternal_h___
 #define ___SUPSvcInternal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

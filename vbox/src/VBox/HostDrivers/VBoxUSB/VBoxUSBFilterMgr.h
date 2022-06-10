@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBFilterMgr.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUSBFilterMgr.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VirtualBox Ring-0 USB Filter Manager.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBoxUSBFilterMgr_h
 #define ___VBoxUSBFilterMgr_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/usbfilter.h>
 

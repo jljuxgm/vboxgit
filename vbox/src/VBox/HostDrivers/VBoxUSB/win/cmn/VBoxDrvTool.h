@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvTool.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDrvTool.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * Windows Driver R0 Tooling.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBoxDrvTool_win_h___
 #define ___VBoxDrvTool_win_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <iprt/stdint.h>

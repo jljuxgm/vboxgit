@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 76461 2018-12-25 04:28:45Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___SUPDrvIOC_h___
 #define ___SUPDrvIOC_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <VBox/sup.h>

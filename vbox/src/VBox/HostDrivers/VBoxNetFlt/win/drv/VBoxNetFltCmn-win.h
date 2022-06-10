@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltCmn-win.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetFltCmn-win.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VBoxNetFltCmn-win.h - Bridged Networking Driver, Windows Specific Code.
  * Common header with configuration defines and global defs
@@ -27,6 +27,9 @@
 
 #ifndef ___VBoxNetFltCmn_win_h___
 #define ___VBoxNetFltCmn_win_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define LOG_GROUP LOG_GROUP_NET_FLT_DRV
 

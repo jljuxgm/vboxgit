@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltM-win.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetFltM-win.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VBoxNetFltM-win.h - Bridged Networking Driver, Windows Specific Code - Miniport edge API
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBoxNetFltM_win_h___
 #define ___VBoxNetFltM_win_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 DECLHIDDEN(NDIS_STATUS) vboxNetFltWinMpRegister(PVBOXNETFLTGLOBALS_MP pGlobalsMp, PDRIVER_OBJECT pDriverObject, PUNICODE_STRING pRegistryPathStr);
 DECLHIDDEN(VOID) vboxNetFltWinMpDeregister(PVBOXNETFLTGLOBALS_MP pGlobalsMp);

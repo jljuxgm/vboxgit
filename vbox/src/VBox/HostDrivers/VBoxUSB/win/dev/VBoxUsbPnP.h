@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbPnP.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUsbPnP.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * USB PnP Handling
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBoxUsbPnP_h___
 #define ___VBoxUsbPnP_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 #include "VBoxUsbCmn.h"
 
 DECLHIDDEN(NTSTATUS) vboxUsbDispatchPnP(IN PDEVICE_OBJECT pDeviceObject, IN PIRP pIrp);

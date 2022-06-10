@@ -1,4 +1,4 @@
-/* $Id: SUPR0IdcClientInternal.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SUPR0IdcClientInternal.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header for the IDC client library.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___SUPR0IdcClientInternal_h__
 #define ___SUPR0IdcClientInternal_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 #include <iprt/assert.h>

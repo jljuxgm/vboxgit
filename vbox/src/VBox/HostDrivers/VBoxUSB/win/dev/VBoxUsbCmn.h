@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbCmn.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUsbCmn.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VBoxUsmCmn.h - USB device. Common defs
  */
@@ -22,8 +22,12 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 #ifndef ___VBoxUsbCmn_h___
 #define ___VBoxUsbCmn_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "../cmn/VBoxDrvTool.h"
 #include "../cmn/VBoxUsbTool.h"

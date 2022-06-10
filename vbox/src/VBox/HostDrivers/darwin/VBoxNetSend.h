@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSend.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxNetSend.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * A place to share code and definitions between VBoxNetAdp and VBoxNetFlt host drivers.
  */
@@ -25,8 +25,12 @@
  */
 
 /** @todo move this to src/VBox/HostDrivers/darwin as a .cpp file. */
+
 #ifndef ___VBox_VBoxNetSend_h
 #define ___VBox_VBoxNetSend_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #if defined(RT_OS_DARWIN)
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbIdc.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUsbIdc.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * Windows USB Proxy - Monitor Driver communication interface.
  */
@@ -23,8 +23,12 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 #ifndef ___VBoxUsbIdc_h___
 #define ___VBoxUsbIdc_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define VBOXUSBIDC_VERSION_MAJOR 1
 #define VBOXUSBIDC_VERSION_MINOR 0

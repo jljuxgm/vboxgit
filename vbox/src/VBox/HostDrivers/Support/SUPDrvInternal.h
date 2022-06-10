@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 75282 2018-11-06 12:57:54Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___SUPDrvInternal_h
 #define ___SUPDrvInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 /*******************************************************************************

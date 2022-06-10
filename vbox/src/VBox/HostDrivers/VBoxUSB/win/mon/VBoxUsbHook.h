@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbHook.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUsbHook.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * Driver Dispatch Table Hooking API impl
  */
@@ -25,6 +25,9 @@
 
 #ifndef ___VBoxUsbHook_h___
 #define ___VBoxUsbHook_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxUsbMon.h"
 

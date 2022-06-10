@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 75690 2018-11-23 14:50:38Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBoxNetFltInternal_h___
 #define ___VBoxNetFltInternal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/sup.h>
 #include <VBox/intnet.h>

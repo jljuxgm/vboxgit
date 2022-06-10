@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIDC.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: SUPDrvIDC.h 76527 2018-12-30 05:55:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Inter-Driver Communication (IDC) definitions.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___SUPDrvIDC_h___
 #define ___SUPDrvIDC_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 
