@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 77291 2019-02-13 09:13:50Z vboxsync $ */
+/* $Id: VBoxGlobal.h 77556 2019-03-04 13:33:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -319,6 +319,10 @@ public:
         static QString sizeRegexp();
         /** Parses the given size strText and returns the size value in bytes. */
         static quint64 parseSize(const QString &strText);
+        /** Parses the given size strText and returns the size suffix. */
+        static SizeSuffix parseSizeSuffix(const QString &strText);
+        /** Parses the given string @a strText and returns true if it includes a size suffix. */
+        static bool hasSizeSuffix(const QString &strText);
         /** Formats the given @a uSize value in bytes to a human readable string.
           * @param  uSize     Brings the size value in bytes.
           * @param  enmMode   Brings the conversion mode.
