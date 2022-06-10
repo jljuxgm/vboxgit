@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 73736 2018-08-17 13:51:09Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 73737 2018-08-17 13:54:02Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -936,10 +936,7 @@ int vmsvga3dCommandPresent(PVGASTATE pThis, uint32_t sid, uint32_t cRects, SVGA3
         srcRect.bottom = pRect[i].srcy + pRect[i].h;
 
         /* Entire rect. */
-        uint32_t cRects = 0;
-        SVGASignedRect *pRect = NULL;
-
-        rc = vmsvga3dSurfaceBlitToScreen(pThis, idDstScreen, destRect, src, srcRect, cRects, pRect);
+        rc = vmsvga3dSurfaceBlitToScreen(pThis, idDstScreen, destRect, src, srcRect, 0, NULL);
         AssertRCReturn(rc, rc);
     }
 
