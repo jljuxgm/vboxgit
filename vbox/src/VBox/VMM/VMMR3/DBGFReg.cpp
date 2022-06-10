@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: DBGFReg.cpp 72867 2018-07-04 11:25:50Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -294,7 +294,7 @@ static int dbgfR3RegRegisterCommon(PUVM pUVM, PCDBGFREGDESC paRegisters, DBGFREG
         AssertMsgReturn(dbgfR3RegIsNameValid(paRegisters[iDesc].pszName, 0), ("%s (#%u)\n", paRegisters[iDesc].pszName, iDesc), VERR_INVALID_NAME);
 
         if (enmType == DBGFREGSETTYPE_CPU)
-            AssertMsgReturn((unsigned)paRegisters[iDesc].enmReg == iDesc && iDesc < (unsigned)DBGFREG_END,
+            AssertMsgReturn(iDesc < (unsigned)DBGFREG_END && (unsigned)paRegisters[iDesc].enmReg == iDesc,
                             ("%d iDesc=%d\n", paRegisters[iDesc].enmReg, iDesc),
                             VERR_INVALID_PARAMETER);
         else
