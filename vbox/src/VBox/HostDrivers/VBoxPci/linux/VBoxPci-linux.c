@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 72803 2018-07-02 23:42:23Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 73084 2018-07-12 09:36:32Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -41,7 +41,7 @@
 #include <iprt/string.h>
 #include <iprt/mem.h>
 
-#include "VBoxPciInternal.h"
+#include "../VBoxPciInternal.h"
 
 #ifdef VBOX_WITH_IOMMU
 # include <linux/dmar.h>
