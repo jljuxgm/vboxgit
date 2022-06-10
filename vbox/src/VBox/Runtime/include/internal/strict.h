@@ -1,4 +1,4 @@
-/* $Id: strict.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: strict.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal Header Defining Strictness Indicators.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_strict_h
 #define ___internal_strict_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** @name Strictness Indicators
  * @{ */

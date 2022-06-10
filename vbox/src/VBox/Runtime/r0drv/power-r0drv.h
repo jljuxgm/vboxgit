@@ -1,4 +1,4 @@
-/* $Id: power-r0drv.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: power-r0drv.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Power Management, Ring-0 Driver, Internal Header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___r0drv_powermgt_r0drv_h
 #define ___r0drv_powermgt_r0drv_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/power.h>
 

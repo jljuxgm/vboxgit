@@ -1,4 +1,4 @@
-/* $Id: file.h 69795 2017-11-21 16:29:49Z vboxsync $ */
+/* $Id: file.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFile header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_file_h
 #define ___internal_file_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/file.h>
 

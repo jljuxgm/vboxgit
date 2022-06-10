@@ -1,4 +1,4 @@
-/* $Id: tstRTR0MemUserKernel.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTR0MemUserKernel.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - User & Kernel Memory, common header.
  */
@@ -24,6 +24,12 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
+#ifndef RT_INCLUDED_testcase_tstRTR0MemUserKernel_h
+#define RT_INCLUDED_testcase_tstRTR0MemUserKernel_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
+
 #ifdef IN_RING0
 RT_C_DECLS_BEGIN
 DECLEXPORT(int) TSTRTR0MemUserKernelSrvReqHandler(PSUPDRVSESSION pSession, uint32_t uOperation,
@@ -40,4 +46,6 @@ typedef enum TSTRTR0MEMUSERKERNEL
     TSTRTR0MEMUSERKERNEL_BAD,
     TSTRTR0MEMUSERKERNEL_INVALID_ADDRESS
 } TSTRTR0MEMUSERKERNEL;
+
+#endif
 

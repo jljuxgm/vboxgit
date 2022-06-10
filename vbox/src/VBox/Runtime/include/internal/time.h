@@ -1,4 +1,4 @@
-/* $Id: time.h 72863 2018-07-04 10:13:40Z vboxsync $ */
+/* $Id: time.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal RTTime header
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_time_h
 #define ___internal_time_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 

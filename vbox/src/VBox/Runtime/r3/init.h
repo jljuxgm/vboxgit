@@ -1,4 +1,4 @@
-/* $Id: init.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: init.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Ring-3 initialization.
  */
@@ -24,9 +24,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 #ifndef ___r3_init_h
 #define ___r3_init_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 

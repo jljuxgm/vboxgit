@@ -1,4 +1,4 @@
-/* $Id: ldr.h 74638 2018-10-06 18:31:59Z vboxsync $ */
+/* $Id: ldr.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_ldr_h
 #define ___internal_ldr_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include "internal/magics.h"

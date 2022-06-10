@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 70460 2018-01-04 16:56:53Z vboxsync $ */
+/* $Id: the-linux-kernel.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___the_linux_kernel_h
 #define ___the_linux_kernel_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /*
  * Include iprt/types.h to install the bool wrappers.

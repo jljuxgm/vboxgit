@@ -1,4 +1,4 @@
-/* $Id: path.h 69705 2017-11-15 16:42:59Z vboxsync $ */
+/* $Id: path.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - RTPath Internal header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_path_h
 #define ___internal_path_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/param.h>

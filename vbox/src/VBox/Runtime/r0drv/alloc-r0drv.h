@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: alloc-r0drv.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___r0drv_alloc_r0drv_h
 #define ___r0drv_alloc_r0drv_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>

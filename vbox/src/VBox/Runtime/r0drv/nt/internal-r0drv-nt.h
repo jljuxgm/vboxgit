@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 72639 2018-06-21 13:51:44Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_r0drv_h
 #define ___internal_r0drv_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cpuset.h>
 #include <iprt/nt/nt.h>

@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 75237 2018-11-02 21:12:17Z vboxsync $ */
+/* $Id: dbgmod.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_dbgmod_h
 #define ___internal_dbgmod_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/critsect.h>

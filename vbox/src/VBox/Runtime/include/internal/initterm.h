@@ -1,4 +1,4 @@
-/* $Id: initterm.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: initterm.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_initterm_h
 #define ___internal_initterm_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 

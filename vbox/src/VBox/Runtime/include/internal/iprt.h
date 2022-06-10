@@ -1,4 +1,4 @@
-/* $Id: iprt.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: iprt.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal header for miscellaneous global defs and types.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_iprt_h
 #define ___internal_iprt_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>

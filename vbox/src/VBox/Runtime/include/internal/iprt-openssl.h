@@ -1,4 +1,4 @@
-/* $Id: iprt-openssl.h 73672 2018-08-14 18:40:01Z vboxsync $ */
+/* $Id: iprt-openssl.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal header for the OpenSSL helpers.
  */
@@ -24,9 +24,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 #ifndef ___internal_iprt_openssl_h
 #define ___internal_iprt_openssl_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/crypto/x509.h>
 

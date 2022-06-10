@@ -1,4 +1,4 @@
-/* $Id: the-netbsd-kernel.h 63191 2016-08-09 03:01:52Z vboxsync $ */
+/* $Id: the-netbsd-kernel.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The NetBSD Kernel Headers.
  */
@@ -30,6 +30,9 @@
 
 #ifndef ___the_netbsd_kernel_h
 #define ___the_netbsd_kernel_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 

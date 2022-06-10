@@ -1,4 +1,4 @@
-/* $Id: dvm.h 69616 2017-11-08 13:58:58Z vboxsync $ */
+/* $Id: dvm.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Disk Volume Management Internals.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_dvm_h
 #define ___internal_dvm_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/err.h>

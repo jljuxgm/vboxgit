@@ -1,4 +1,4 @@
-/* $Id: string.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: string.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - wrapper for the linux kernel asm/string.h.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___string_h
 #define ___string_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 

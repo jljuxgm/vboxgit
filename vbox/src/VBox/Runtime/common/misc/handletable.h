@@ -1,4 +1,4 @@
-/* $Id: handletable.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: handletable.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Handle Tables, internal header.
  */
@@ -23,6 +23,12 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
+#ifndef RT_INCLUDED_common_misc_handletable_h
+#define RT_INCLUDED_common_misc_handletable_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 /*******************************************************************************
@@ -236,4 +242,6 @@ DECLINLINE(void) rtHandleTableUnlock(PRTHANDLETABLEINT pThis)
     if (pThis->hSpinlock != NIL_RTSPINLOCK)
         RTSpinlockRelease(pThis->hSpinlock);
 }
+
+#endif
 

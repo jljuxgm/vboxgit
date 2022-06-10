@@ -1,4 +1,4 @@
-/* $Id: dir.h 75652 2018-11-21 21:00:31Z vboxsync $ */
+/* $Id: dir.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDir.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_dir_h
 #define ___internal_dir_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>

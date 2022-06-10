@@ -1,4 +1,4 @@
-/* $Id: the-nt-kernel.h 73347 2018-07-25 09:25:02Z vboxsync $ */
+/* $Id: the-nt-kernel.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the NT kernel.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___the_nt_kernel_h
 #define ___the_nt_kernel_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 

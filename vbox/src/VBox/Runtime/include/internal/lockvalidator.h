@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: lockvalidator.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal RTLockValidator header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_internal_lockvalidator_h
 #define ___iprt_internal_lockvalidator_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/lockvalidator.h>

@@ -1,4 +1,4 @@
-/* $Id: memobj.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: memobj.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_memobj_h
 #define ___internal_memobj_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/memobj.h>
 #include <iprt/assert.h>

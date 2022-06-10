@@ -1,4 +1,4 @@
-/* $Id: rsa-internal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: rsa-internal.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Crypto - RSA, Internal Header.
  */
@@ -24,9 +24,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 #ifndef ___common_crypto_rsa_internal_h
 #define ___common_crypto_rsa_internal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** The max number of bits we support in the modulus. */
 #define RTCRRSA_MAX_MODULUS_BITS        16384

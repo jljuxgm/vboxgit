@@ -1,4 +1,4 @@
-/* $Id: mp.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: mp.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal RTMp header
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_mp_h
 #define ___internal_mp_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/assert.h>
 #include <iprt/mp.h>

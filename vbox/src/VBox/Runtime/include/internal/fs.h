@@ -1,4 +1,4 @@
-/* $Id: fs.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: fs.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFs header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_fs_h
 #define ___internal_fs_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #ifndef RT_OS_WINDOWS

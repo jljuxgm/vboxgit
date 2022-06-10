@@ -1,4 +1,4 @@
-/* $Id: vcc100-fakes.h 70394 2017-12-30 19:27:35Z vboxsync $ */
+/* $Id: vcc100-fakes.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Common macros for the Visual C++ 2010+ CRT import fakes.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___vcc100_fakes_h___
 #define ___vcc100_fakes_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifdef RT_STRICT
 # include <stdio.h> /* _snprintf */

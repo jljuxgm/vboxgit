@@ -1,4 +1,4 @@
-/* $Id: waitqueue-r0drv-linux.h 72889 2018-07-04 16:09:15Z vboxsync $ */
+/* $Id: waitqueue-r0drv-linux.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Linux Ring-0 Driver Helpers for Abstracting Wait Queues,
  */
@@ -24,9 +24,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 #ifndef ___r0drv_linux_waitqueue_r0drv_linux_h
 #define ___r0drv_linux_waitqueue_r0drv_linux_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "the-linux-kernel.h"
 

@@ -1,4 +1,4 @@
-/* $Id: internal-r3-nt.h 70428 2018-01-02 15:01:20Z vboxsync $ */
+/* $Id: internal-r3-nt.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the Native NT code.
  */
@@ -24,9 +24,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 #ifndef ___internal_r3_nt_h___
 #define ___internal_r3_nt_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifdef IN_SUP_HARDENED_R3
 # include <iprt/nt/nt-and-windows.h>

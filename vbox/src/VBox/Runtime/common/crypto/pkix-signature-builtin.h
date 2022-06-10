@@ -1,4 +1,4 @@
-/* $Id: pkix-signature-builtin.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: pkix-signature-builtin.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schemas, Built-in providers.
  */
@@ -24,9 +24,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 #ifndef ___common_crypto_pkix_signature_builtin_h
 #define ___common_crypto_pkix_signature_builtin_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/crypto/pkix.h>
 

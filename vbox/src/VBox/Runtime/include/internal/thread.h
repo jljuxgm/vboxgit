@@ -1,4 +1,4 @@
-/* $Id: thread.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: thread.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___thread_h
 #define ___thread_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/thread.h>

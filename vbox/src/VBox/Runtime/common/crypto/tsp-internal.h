@@ -1,4 +1,4 @@
-/* $Id: tsp-internal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tsp-internal.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Crypto - TSP, Internal Header.
  */
@@ -24,9 +24,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 #ifndef ___common_crypto_tsp_internal_h
 #define ___common_crypto_tsp_internal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define RTASN1TMPL_TEMPLATE_FILE "../common/crypto/tsp-template.h"
 #include <iprt/asn1-generator-internal-header.h>

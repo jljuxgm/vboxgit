@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: coredumper-solaris.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Custom Core Dumper, Solaris.
  */
@@ -23,6 +23,12 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
+#ifndef RT_INCLUDED_r3_solaris_coredumper_solaris_h
+#define RT_INCLUDED_r3_solaris_coredumper_solaris_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 
@@ -156,4 +162,6 @@ typedef RTSOLCORE *PRTSOLCORE;
 
 typedef int (*PFNRTSOLCOREACCUMULATOR)(PRTSOLCORE pSolCore);
 typedef int (*PFNRTSOLCORETHREADWORKER)(PRTSOLCORE pSolCore, void *pvThreadInfo);
+
+#endif
 

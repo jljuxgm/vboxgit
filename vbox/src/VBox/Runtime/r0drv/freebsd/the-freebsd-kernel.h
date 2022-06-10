@@ -1,4 +1,4 @@
-/* $Id: the-freebsd-kernel.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: the-freebsd-kernel.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The FreeBSD Kernel Headers.
  */
@@ -30,6 +30,9 @@
 
 #ifndef ___the_freebsd_kernel_h
 #define ___the_freebsd_kernel_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 

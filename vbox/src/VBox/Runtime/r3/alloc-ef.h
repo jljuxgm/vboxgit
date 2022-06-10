@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: alloc-ef.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___alloc_ef_h
 #define ___alloc_ef_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *

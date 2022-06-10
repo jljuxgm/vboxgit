@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___the_solaris_kernel_h
 #define ___the_solaris_kernel_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <sys/kmem.h>
 #include <sys/types.h>

@@ -1,4 +1,4 @@
-/* $Id: mem.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: mem.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Memory Management.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_mem_h
 #define ___internal_mem_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 

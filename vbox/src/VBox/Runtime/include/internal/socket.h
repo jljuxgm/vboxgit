@@ -1,4 +1,4 @@
-/* $Id: socket.h 70481 2018-01-07 18:46:08Z vboxsync $ */
+/* $Id: socket.h 76513 2018-12-30 05:16:00Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTSocket.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_socket_h
 #define ___internal_socket_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>
