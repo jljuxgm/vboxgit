@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.cpp 77292 2019-02-13 10:13:56Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 77294 2019-02-13 10:28:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
@@ -240,6 +240,10 @@ QVariant UIInformationDataDisplay::data(const QModelIndex &index, int role) cons
                                  tr("Disabled", "details report (2D Video Acceleration)");
             p_text << UITextTableLine(tr("2D Video Acceleration", "details report"), acc2dVideo);
 #endif
+
+            /* Graphics Controller: */
+            p_text << UITextTableLine(QApplication::translate("UIDetails", "Graphics Controller", "details (display)"),
+                                      gpConverter->toString(m_machine.GetGraphicsControllerType()));
 
             /* VRDP tab: */
             CVRDEServer srv = m_machine.GetVRDEServer();
