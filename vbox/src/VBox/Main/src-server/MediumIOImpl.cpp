@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.cpp 74824 2018-10-12 18:47:50Z vboxsync $ */
+/* $Id: MediumIOImpl.cpp 74825 2018-10-12 18:48:59Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation: MediumIO
@@ -503,7 +503,7 @@ void MediumIO::FinalRelease()
  * Initializes the medium I/O object.
  *
  * @param   pMedium         Pointer to the medium to access.
- * @param   pMedium         Pointer to the VirtualBox object the medium is part of.
+ * @param   pVirtualBox     Pointer to the VirtualBox object the medium is part of.
  * @param   fWritable       Read-write (true) or readonly (false) access.
  * @param   rStrKeyId       The key ID for an encrypted medium.  Empty if not
  *                          encrypted.
