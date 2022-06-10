@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 74955 2018-10-19 18:14:51Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 75011 2018-10-23 17:15:40Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -1080,7 +1080,7 @@ int AudioVideoRec::configureDriver(PCFGMNODE pLunCfg)
     rc = CFGMR3InsertInteger(pLunCfg, "CodecBitrate", 0); /* Let Opus decide for now. */
     AssertRCReturn(rc, rc);
 
-    return rc;
+    return AudioDriver::configureDriver(pLunCfg);
 }
 
 

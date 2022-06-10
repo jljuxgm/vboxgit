@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 73838 2018-08-22 16:15:08Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 75011 2018-10-23 17:15:40Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -605,10 +605,12 @@ AudioVRDE::~AudioVRDE(void)
  */
 int AudioVRDE::configureDriver(PCFGMNODE pLunCfg)
 {
-    CFGMR3InsertInteger(pLunCfg, "Object", (uintptr_t)this);
+    int rc = CFGMR3InsertInteger(pLunCfg, "Object", (uintptr_t)this);
+    AssertRCReturn(rc, rc);
     CFGMR3InsertInteger(pLunCfg, "ObjectVRDPServer", (uintptr_t)mpConsole->i_consoleVRDPServer());
+    AssertRCReturn(rc, rc);
 
-    return VINF_SUCCESS;
+    return AudioDriver::configureDriver(pLunCfg);
 }
 
 
