@@ -1,10 +1,10 @@
-/* $Id: UISlidingWidget.cpp 68287 2017-08-03 14:23:53Z vboxsync $ */
+/* $Id: UISlidingWidget.cpp 73598 2018-08-09 17:45:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingWidget class implementation.
  */
 
 /*
- * Copyright (C) 2017 Oracle Corporation
+ * Copyright (C) 2017-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -26,7 +26,7 @@
 
 UISlidingWidget::UISlidingWidget(QWidget *pParent /* = 0 */)
     : QWidget(pParent)
-    , m_fStateIsFinal(false)
+    , m_enmState(State_Start)
     , m_pAnimation(0)
     , m_pWidget(0)
     , m_pLayout(0)
@@ -72,7 +72,7 @@ void UISlidingWidget::setWidgets(QWidget *pWidget1, QWidget *pWidget2)
     /* Update animation: */
     updateAnimation();
     /* Update widget geometry: */
-    m_pWidget->setGeometry(m_fStateIsFinal ? m_finalWidgetGeometry : m_startWidgetGeometry);
+    m_pWidget->setGeometry(m_enmState == State_Final ? m_finalWidgetGeometry : m_startWidgetGeometry);
 }
 
 bool UISlidingWidget::event(QEvent *pEvent)
@@ -106,7 +106,7 @@ void UISlidingWidget::resizeEvent(QResizeEvent *pEvent)
     /* Update animation: */
     updateAnimation();
     /* Update widget geometry: */
-    m_pWidget->setGeometry(m_fStateIsFinal ? m_finalWidgetGeometry : m_startWidgetGeometry);
+    m_pWidget->setGeometry(m_enmState == State_Final ? m_finalWidgetGeometry : m_startWidgetGeometry);
 }
 
 void UISlidingWidget::prepare()
@@ -128,7 +128,7 @@ void UISlidingWidget::prepare()
     /* Update animation: */
     updateAnimation();
     /* Update widget geometry: */
-    m_pWidget->setGeometry(m_fStateIsFinal ? m_finalWidgetGeometry : m_startWidgetGeometry);
+    m_pWidget->setGeometry(m_enmState == State_Final ? m_finalWidgetGeometry : m_startWidgetGeometry);
 }
 
 void UISlidingWidget::updateAnimation()
@@ -155,4 +155,3 @@ QRect UISlidingWidget::widgetGeometry() const
     /* Return widget geometry: */
     return m_pWidget->geometry();
 }
-
