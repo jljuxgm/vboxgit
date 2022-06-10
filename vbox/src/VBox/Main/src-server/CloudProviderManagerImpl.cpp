@@ -1,4 +1,4 @@
-/* $Id: CloudProviderManagerImpl.cpp 74207 2018-09-12 09:36:36Z vboxsync $ */
+/* $Id: CloudProviderManagerImpl.cpp 74212 2018-09-12 10:01:34Z vboxsync $ */
 /** @file
  * ICloudProviderManager  COM class implementations.
  */
@@ -88,7 +88,7 @@ void CloudProviderManager::uninit()
         return;
 }
 
-#ifdef VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK
+#if defined(VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK) && defined(VBOX_WITH_EXTPACK)
 void CloudProviderManager::i_refreshProviders()
 {
     uint64_t cExtPackMgrUpdate;
