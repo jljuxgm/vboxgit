@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 73295 2018-07-21 18:47:11Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 73330 2018-07-23 15:19:00Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1016,6 +1016,11 @@ typedef struct VMSVGA3DSTATE
         PFNGLENDQUERYPROC                               glEndQuery;
         PFNGLGETQUERYOBJECTUIVPROC                      glGetQueryObjectuiv;
         PFNGLTEXIMAGE3DPROC                             glTexImage3D;
+        PFNGLVERTEXATTRIBDIVISORPROC                    glVertexAttribDivisor;
+        PFNGLDRAWARRAYSINSTANCEDPROC                    glDrawArraysInstanced;
+        PFNGLDRAWELEMENTSINSTANCEDPROC                  glDrawElementsInstanced;
+        PFNGLCOMPRESSEDTEXIMAGE2DPROC                   glCompressedTexImage2D;
+        PFNGLCOMPRESSEDTEXIMAGE3DPROC                   glCompressedTexImage3D;
     } ext;
 
     struct
