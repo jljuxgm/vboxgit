@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 75053 2018-10-24 19:08:56Z vboxsync $ */
+/* $Id: ldrMachO.cpp 75703 2018-11-25 01:43:02Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -1245,7 +1245,7 @@ static int kldrModMachOPreParseLoadCommands(uint8_t *pbLoadCommands, const mach_
     {
         case MH_OBJECT:
         case MH_EXECUTE:
-            RTLDRMODMACHO_CHECK_RETURN(!fDySymbolTabWithRelocs,
+            RTLDRMODMACHO_CHECK_RETURN(!fDySymbolTabWithRelocs || (fOpenFlags & (RTLDR_O_FOR_DEBUG | RTLDR_O_FOR_VALIDATION)),
                                        RTErrInfoSetF(pErrInfo, VERR_LDRMACHO_BAD_LOAD_COMMAND,
                                                      "Did not expect relocations in LC_DYSYMTAB (file type %u)", uEffFileType));
             break;
