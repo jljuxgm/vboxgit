@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 76177 2018-12-12 13:38:57Z vboxsync $ */
+/* $Id: UIFileManager.h 76296 2018-12-19 16:17:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -115,7 +115,6 @@ private slots:
     void sltCopyGuestToHost();
     void sltCopyHostToGuest();
     void sltPanelActionToggled(bool fChecked);
-    void sltListDirectoriesBeforeChanged();
     void sltReceieveNewFileOperation(const CProgress &comProgress);
     void sltFileOperationComplete(QUuid progressId);
     /** Performs whatever necessary when some signal about option change has been receieved. */

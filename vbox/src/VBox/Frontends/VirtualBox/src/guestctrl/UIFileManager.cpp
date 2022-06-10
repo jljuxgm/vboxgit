@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.cpp 76177 2018-12-12 13:38:57Z vboxsync $ */
+/* $Id: UIFileManager.cpp 76296 2018-12-19 16:17:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class implementation.
  */
@@ -280,7 +280,7 @@ void UIFileManager::prepareObjects()
         m_pOptionsPanel->hide();
         m_panelActionMap.insert(m_pOptionsPanel, m_pActionPool->action(UIActionIndex_M_FileManager_T_Options));
         connect(m_pOptionsPanel, &UIFileManagerOptionsPanel::sigOptionsChanged,
-                this, &UIFileManager::sltListDirectoriesBeforeChanged);
+                this, &UIFileManager::sltHandleOptionsUpdated);
         pTopLayout->addWidget(m_pOptionsPanel);
     }
 
@@ -518,14 +518,6 @@ void UIFileManager::sltPanelActionToggled(bool fChecked)
         hidePanel(pPanel);
 }
 
-void UIFileManager::sltListDirectoriesBeforeChanged()
-{
-    if (m_pGuestFileTable)
-        m_pGuestFileTable->relist();
-    if (m_pHostFileTable)
-        m_pHostFileTable->relist();
-}
-
 void UIFileManager::sltReceieveNewFileOperation(const CProgress &comProgress)
 {
     if (m_pOperationsPanel)
@@ -548,6 +540,11 @@ void UIFileManager::sltHandleOptionsUpdated()
     {
         m_pOptionsPanel->update();
     }
+
+    if (m_pGuestFileTable)
+        m_pGuestFileTable->optionsUpdated();
+    if (m_pHostFileTable)
+        m_pHostFileTable->optionsUpdated();
 }
 
 void UIFileManager::copyToHost()

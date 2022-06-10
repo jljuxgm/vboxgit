@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 76177 2018-12-12 13:38:57Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 76296 2018-12-19 16:17:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -821,6 +821,7 @@ void UIFileManagerTable::prepareObjects()
         connect(m_pSearchLineEdit, &QLineEdit::textChanged,
                 this, &UIFileManagerTable::sltSearchTextChanged);
     }
+    optionsUpdated();
 }
 
 void UIFileManagerTable::updateCurrentLocationEdit(const QString& strLocation)
@@ -1479,6 +1480,20 @@ QString UIFileManagerTable::fileTypeString(FileObjectType type)
 {
     return vboxGlobal().formatSize(size);
 }
+
+void UIFileManagerTable::optionsUpdated()
+{
+    UIFileManagerOptions *pOptions = UIFileManagerOptions::instance();
+    if (pOptions)
+    {
+        if (m_pProxyModel)
+            m_pProxyModel->setListDirectoriesOnTop(pOptions->bListDirectoriesOnTop);
+        if (m_pModel)
+            m_pModel->setShowHumanReadableSizes(pOptions->bShowHumanReadableSizes);
+    }
+    relist();
+}
+
 
 void UIFileManagerTable::sltReceiveDirectoryStatistics(UIDirectoryStatistics statistics)
 {
