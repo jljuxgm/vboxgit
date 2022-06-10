@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 74770 2018-10-11 12:59:30Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -385,8 +385,6 @@ SOLARIS_STRIP_OBJS.MODE    := 0644
 SOLARIS_STRIP_OBJS.SRC     := $(PATH_STAGE_BIN)
 SOLARIS_STRIP_OBJS.DST     := $(VBOX_PATH_SI_SCRATCH_PKG)/opt/VirtualBox/$(VBOX_SI_ARCH)
 SOLARIS_STRIP_OBJS = \
-	VBoxDD2RC.rc \
-	VBoxDD2R0.r0 \
 	VBoxDDRC.rc \
 	VBoxDDR0.r0 \
 	VMMRC.rc \
