@@ -1,4 +1,4 @@
-/* $Id: CloudUserProfileManagerImpl.cpp 73173 2018-07-17 11:47:51Z vboxsync $ */
+/* $Id: CloudUserProfileManagerImpl.cpp 73174 2018-07-17 11:52:00Z vboxsync $ */
 /** @file
  * ICloudUserProfileManager  COM class implementations.
  */
@@ -128,7 +128,7 @@ HRESULT CloudUserProfileManager::getProfilesByProvider(CloudProviderId_T aProvid
                 if (SUCCEEDED(hrc))
                 {
                     char szHomeDir[RTPATH_MAX];
-                    int vrc = RTPathUserHome(szHomeDir, sizeof(szHomeDir));
+                    RTPathUserHome(szHomeDir, sizeof(szHomeDir));
                     Utf8Str strConfigPath(szHomeDir);
                     strConfigPath.append(RTPATH_SLASH_STR)
                                  .append(".oci")
