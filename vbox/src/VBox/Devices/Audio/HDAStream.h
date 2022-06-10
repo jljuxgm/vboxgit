@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 71754 2018-04-09 01:27:04Z vboxsync $ */
+/* $Id: HDAStream.h 73241 2018-07-19 14:56:24Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -164,6 +164,7 @@ typedef struct HDASTREAMSTATE
     /** The stream's current configuration.
      *  Should match SDFMT. */
     PDMAUDIOSTREAMCFG       Cfg;
+    uint32_t                aPadding3;
 #ifdef HDA_USE_DMA_ACCESS_HANDLER
     /** List of DMA handlers. */
     RTLISTANCHORR3          lstDMAHandlers;
@@ -174,7 +175,7 @@ typedef struct HDASTREAMSTATE
      *  stuff like interleaved surround streams. */
     uint16_t                cbDMALeft;
     /** Unused, padding. */
-    uint8_t                 abPadding3[2+4];
+    uint8_t                 abPadding4[2+4];
 } HDASTREAMSTATE;
 AssertCompileSizeAlignment(HDASTREAMSTATE, 8);
 typedef HDASTREAMSTATE *PHDASTREAMSTATE;

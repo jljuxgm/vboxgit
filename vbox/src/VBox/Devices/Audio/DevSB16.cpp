@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 73205 2018-07-18 14:44:55Z vboxsync $ */
+/* $Id: DevSB16.cpp 73241 2018-07-19 14:56:24Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2143,6 +2143,10 @@ static int sb16OpenOut(PSB16STATE pThis, PPDMAUDIOSTREAMCFG pCfg)
     int rc = DrvAudioHlpStreamCfgCopy(&pThis->Out.Cfg, pCfg);
     if (RT_FAILURE(rc))
         return rc;
+
+    /* Set scheduling hint (if available). */
+    if (pThis->cTimerTicksIO)
+        pThis->Out.Cfg.Device.uSchedulingHintMs = 1000 /* ms */ / (TMTimerGetFreq(pThis->pTimerIO) / pThis->cTimerTicksIO);
 
     PSB16DRIVER pDrv;
     RTListForEach(&pThis->lstDrv, pDrv, SB16DRIVER, Node)

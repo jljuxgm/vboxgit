@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 73213 2018-07-18 15:27:05Z vboxsync $ */
+/* $Id: HDAStream.cpp 73241 2018-07-19 14:56:24Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -193,6 +193,10 @@ int hdaR3StreamInit(PHDASTREAM pStream, uint8_t uSD)
         LogRel(("HDA: Warning: Format 0x%x for stream #%RU8 not supported\n", HDA_STREAM_REG(pThis, FMT, uSD), uSD));
         return rc;
     }
+
+    /* Set scheduling hint (if available). */
+    if (pThis->u16TimerHz)
+        pCfg->Device.uSchedulingHintMs = 1000 /*ms */ / pThis->u16TimerHz;
 
     /* (Re-)Allocate the stream's internal DMA buffer, based on the PCM  properties we just got above. */
     if (pStream->State.pCircBuf)
