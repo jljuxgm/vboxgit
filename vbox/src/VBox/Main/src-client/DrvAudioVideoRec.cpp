@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 75011 2018-10-23 17:15:40Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 75077 2018-10-25 14:44:05Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -775,10 +775,10 @@ static DECLCALLBACK(int) drvAudioVideoRecStreamPlay(PPDMIHOSTAUDIO pInterface, P
             Assert(cEncFrames == 1); /* At the moment we encode exactly *one* frame per frame. */
 
             if (pStreamAV->uLastPTSMs == 0)
-                pStreamAV->uLastPTSMs = RTTimeMilliTS() - pSink->tsStartMs;
+                pStreamAV->uLastPTSMs = RTTimeProgramMilliTS(); /* We want the absolute time (in ms) since program start. */
 
             const uint64_t uDurationMs = pSink->Codec.Opus.msFrame * cEncFrames;
-            const uint64_t uPTSMs      = pStreamAV->uLastPTSMs + uDurationMs;
+            const uint64_t uPTSMs      = pStreamAV->uLastPTSMs;
 
             pStreamAV->uLastPTSMs += uDurationMs;
 
