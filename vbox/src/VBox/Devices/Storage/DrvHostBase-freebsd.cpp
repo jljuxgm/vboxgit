@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-freebsd.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvHostBase-freebsd.cpp 77105 2019-02-01 10:29:27Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, FreeBSD specifics.
  */
@@ -31,7 +31,9 @@
 #include <VBox/err.h>
 
 #include <VBox/scsi.h>
+#include <iprt/file.h>
 #include <iprt/log.h>
+#include <iprt/string.h>
 
 
 /*********************************************************************************************************************************
@@ -164,6 +166,8 @@ DECLHIDDEN(int) drvHostBaseScsiCmdOs(PDRVHOSTBASE pThis, const uint8_t *pbCmd, s
         else
             rc = RTErrConvertFromErrno(errno);
     }
+
+    return rc;
 }
 
 
