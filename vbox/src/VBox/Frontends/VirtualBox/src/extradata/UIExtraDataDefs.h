@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 75306 2018-11-07 13:27:24Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 75360 2018-11-09 12:41:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -527,9 +527,9 @@ public:
         RuntimeMenuViewActionType_StatusBar            = RT_BIT(14),
         RuntimeMenuViewActionType_StatusBarSettings    = RT_BIT(15),
         RuntimeMenuViewActionType_ToggleStatusBar      = RT_BIT(16),
-        RuntimeMenuViewActionType_ScaleFactor          = RT_BIT(17),
-        RuntimeMenuViewActionType_Resize               = RT_BIT(18),
-        RuntimeMenuViewActionType_Multiscreen          = RT_BIT(19),
+        RuntimeMenuViewActionType_Resize               = RT_BIT(17),
+        RuntimeMenuViewActionType_Remap                = RT_BIT(18),
+        RuntimeMenuViewActionType_Rescale              = RT_BIT(19),
         RuntimeMenuViewActionType_All                  = 0xFFFF
     };
 
