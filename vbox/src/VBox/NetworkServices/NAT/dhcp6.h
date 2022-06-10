@@ -1,4 +1,4 @@
-/* $Id: dhcp6.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: dhcp6.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * NAT Network - DHCPv6 protocol definitions.
  */
@@ -17,6 +17,9 @@
 
 #ifndef _DHCP6_H_
 #define _DHCP6_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* UDP ports */
 #define DHCP6_CLIENT_PORT       546

@@ -1,4 +1,4 @@
-/* $Id: DhcpMessage.h 70836 2018-01-31 14:55:44Z vboxsync $ */
+/* $Id: DhcpMessage.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * DHCP Message and its de/serialization.
  */
@@ -14,8 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef _DHCP_MESSAGE_H_
 #define _DHCP_MESSAGE_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "Defs.h"
 #include <iprt/net.h>

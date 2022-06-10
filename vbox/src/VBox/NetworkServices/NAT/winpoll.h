@@ -1,4 +1,4 @@
-/* $Id: winpoll.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: winpoll.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * NAT Network - poll(2) for winsock, definitions and declarations.
  */
@@ -17,6 +17,9 @@
 
 #ifndef _WINPOLL_H_
 #define _WINPOLL_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 # include <iprt/cdefs.h>
 /**
  * WinSock2 has definition for POLL* and pollfd, but it defined for _WIN32_WINNT > 0x0600

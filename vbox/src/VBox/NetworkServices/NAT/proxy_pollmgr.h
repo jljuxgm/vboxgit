@@ -1,4 +1,4 @@
-/* $Id: proxy_pollmgr.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: proxy_pollmgr.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * NAT Network - poll manager, definitions and declarations.
  */
@@ -17,6 +17,9 @@
 
 #ifndef _PROXY_POLLMGR_H_
 #define _PROXY_POLLMGR_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef RT_OS_WINDOWS
 # include <unistd.h>             /* for ssize_t */

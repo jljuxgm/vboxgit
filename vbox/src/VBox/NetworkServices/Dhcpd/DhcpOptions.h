@@ -1,4 +1,4 @@
-/* $Id: DhcpOptions.h 75648 2018-11-21 18:02:38Z vboxsync $ */
+/* $Id: DhcpOptions.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * DHCP server - DHCP options
  */
@@ -17,6 +17,9 @@
 
 #ifndef _DHCP_OPTIONS_H_
 #define _DHCP_OPTIONS_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "Defs.h"
 

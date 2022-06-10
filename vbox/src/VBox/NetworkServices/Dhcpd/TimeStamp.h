@@ -1,4 +1,4 @@
-/* $Id: TimeStamp.h 70836 2018-01-31 14:55:44Z vboxsync $ */
+/* $Id: TimeStamp.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * DHCP server - timestamps
  */
@@ -17,6 +17,9 @@
 
 #ifndef _DHCPD_TIMESTAMP_H_
 #define _DHCPD_TIMESTAMP_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/string.h>
 #include <iprt/time.h>

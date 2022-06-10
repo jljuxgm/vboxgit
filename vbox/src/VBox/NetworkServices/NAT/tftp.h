@@ -1,4 +1,4 @@
-/* $Id: tftp.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: tftp.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * NAT Network - Definitions for TFTP protocol.
  */
@@ -17,6 +17,9 @@
 
 #ifndef _TFTP_H_
 #define _TFTP_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define TFTP_SERVER_PORT 69
 

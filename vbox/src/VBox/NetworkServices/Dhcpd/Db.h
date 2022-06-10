@@ -1,4 +1,4 @@
-/* $Id: Db.h 75648 2018-11-21 18:02:38Z vboxsync $ */
+/* $Id: Db.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -17,6 +17,9 @@
 
 #ifndef _DHCPD_DB_H_
 #define _DHCPD_DB_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/net.h>
 

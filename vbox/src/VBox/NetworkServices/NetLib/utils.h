@@ -1,4 +1,4 @@
-/* $Id: utils.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: utils.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -18,8 +18,12 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+
 #ifndef _NETLIB_UTILS_H_
 #define _NETLIB_UTILS_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "cpp/utils.h"
 

@@ -1,4 +1,4 @@
-/* $Id: portfwd.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: portfwd.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * NAT Network - port-forwarding rules, definitions and declarations.
  */
@@ -17,6 +17,9 @@
 
 #ifndef _portfwd_h_
 #define _portfwd_h_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef RT_OS_WINDOWS
 #include <sys/types.h>

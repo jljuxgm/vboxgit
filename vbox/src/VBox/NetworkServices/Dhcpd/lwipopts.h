@@ -1,4 +1,4 @@
-/* $Id: lwipopts.h 70836 2018-01-31 14:55:44Z vboxsync $ */
+/* $Id: lwipopts.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * DHCP server - lwIP configuration options.
  */
@@ -17,6 +17,9 @@
 
 #ifndef _VBOX_DHCPD_LWIP_OPTS_H_
 #define _VBOX_DHCPD_LWIP_OPTS_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>     /* For VBOX_STRICT. */
 #include <iprt/mem.h>

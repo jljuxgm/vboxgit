@@ -1,4 +1,4 @@
-/* $Id: ClientDataInt.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: ClientDataInt.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -17,6 +17,9 @@
 
 #ifndef __CLIENT_DATA_INT_H__
 #define __CLIENT_DATA_INT_H__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 class ClientData
 {

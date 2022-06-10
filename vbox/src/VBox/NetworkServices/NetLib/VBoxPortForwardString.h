@@ -1,4 +1,4 @@
-/* $Id: VBoxPortForwardString.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxPortForwardString.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * VBoxPortForwardString
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxPortForwardString_h___
 #define ___VBoxPortForwardString_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/net.h>
 #include <VBox/intnet.h>

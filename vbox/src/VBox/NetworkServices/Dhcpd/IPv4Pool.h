@@ -1,4 +1,4 @@
-/* $Id: IPv4Pool.h 70836 2018-01-31 14:55:44Z vboxsync $ */
+/* $Id: IPv4Pool.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * DHCP server - a pool of IPv4 addresses
  */
@@ -17,6 +17,9 @@
 
 #ifndef _DHCPD_IPV4_POOL_H_
 #define _DHCPD_IPV4_POOL_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/asm.h>
 #include <iprt/stdint.h>

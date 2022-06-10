@@ -1,4 +1,4 @@
-/* $Id: Config.h 71689 2018-04-05 15:20:32Z vboxsync $ */
+/* $Id: Config.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -17,6 +17,9 @@
 
 #ifndef _DHCPD_CONFIG_H_
 #define _DHCPD_CONFIG_H_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/net.h>

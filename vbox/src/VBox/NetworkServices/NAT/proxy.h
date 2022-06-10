@@ -1,4 +1,4 @@
-/* $Id: proxy.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: proxy.h 76525 2018-12-30 05:51:31Z vboxsync $ */
 /** @file
  * NAT Network - common definitions and declarations.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___nat_proxy_h___
 #define ___nat_proxy_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #if !defined(VBOX)
 #include "vbox-compat.h"
