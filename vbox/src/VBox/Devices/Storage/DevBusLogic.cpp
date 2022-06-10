@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 76077 2018-12-08 22:11:43Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 76128 2018-12-10 14:18:30Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -2527,7 +2527,7 @@ static int buslogicRegisterWrite(PBUSLOGIC pBusLogic, unsigned iRegister, uint8_
                             pBusLogic->cbCommandParametersLeft = 0;
                             break;
                         }
-                        /* Fall through. */
+                        RT_FALL_THRU();
                     case BUSLOGICCOMMAND_INQUIRE_SETUP_INFORMATION:
                     case BUSLOGICCOMMAND_ENABLE_STRICT_ROUND_ROBIN_MODE:
                     case BUSLOGICCOMMAND_SET_CCB_FORMAT:
