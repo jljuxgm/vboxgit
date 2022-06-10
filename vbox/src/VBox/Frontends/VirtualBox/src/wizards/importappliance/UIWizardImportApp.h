@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.h 78037 2019-04-08 11:47:34Z vboxsync $ */
+/* $Id: UIWizardImportApp.h 78042 2019-04-08 14:45:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class declaration.
  */
@@ -21,7 +21,7 @@
 # pragma once
 #endif
 
-/* GUI includes */
+/* GUI includes: */
 #include "UIWizard.h"
 
 /** Import Appliance wizard. */
