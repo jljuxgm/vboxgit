@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp-vcc64.def 74221 2018-09-12 12:28:35Z vboxsync $
+; $Id: VBoxRTImp-vcc64.def 74262 2018-09-14 12:49:31Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable C++ Interface Definition file, 64-bit Visual C++.
 
@@ -90,6 +90,8 @@ EXPORTS
     ?equalsIgnoreCase@RTCString@@QEBA_NAEBV1@@Z
     ?equalsIgnoreCase@RTCString@@QEBA_NPEBD@Z
     ?erase@RTCString@@QEAAAEAV1@_K0@Z
+    ?find@RTCString@@QEBA_KAEBV1@_K@Z
+    ?find@RTCString@@QEBA_KD_K@Z
     ?find@RTCString@@QEBA_KPEBD_K@Z
     ?find@RTCString@@QEBA_KPEBV1@_K@Z
     ?findReplace@RTCString@@QEAAXDD@Z
