@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-nt.cpp 77473 2019-02-26 16:24:35Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-nt.cpp 77816 2019-03-21 00:01:49Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, NT.
  */
@@ -34,7 +34,9 @@
 #define PIMAGE_NT_HEADERS   NT_PIMAGE_NT_HEADERS
 #define PIMAGE_NT_HEADERS32 NT_PIMAGE_NT_HEADERS32
 #define PIMAGE_NT_HEADERS64 NT_PIMAGE_NT_HEADERS64
-#define IPRT_NT_MAP_TO_ZW
+#ifndef IPRT_NT_MAP_TO_ZW
+# define IPRT_NT_MAP_TO_ZW
+#endif
 #include "the-nt-kernel.h"
 #include <iprt/dbg.h>
 

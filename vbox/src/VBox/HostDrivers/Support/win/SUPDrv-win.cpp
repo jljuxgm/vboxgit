@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 76785 2019-01-11 17:35:01Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 77816 2019-03-21 00:01:49Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -28,7 +28,9 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define IPRT_NT_MAP_TO_ZW
+#ifndef IPRT_NT_MAP_TO_ZW
+# define IPRT_NT_MAP_TO_ZW
+#endif
 #define LOG_GROUP LOG_GROUP_SUP_DRV
 #include "../SUPDrvInternal.h"
 #include <excpt.h>

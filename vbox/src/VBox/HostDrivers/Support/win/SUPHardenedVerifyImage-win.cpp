@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 77816 2019-03-21 00:01:49Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -29,7 +29,9 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #ifdef IN_RING0
-# define IPRT_NT_MAP_TO_ZW
+# ifndef IPRT_NT_MAP_TO_ZW
+#  define IPRT_NT_MAP_TO_ZW
+# endif
 # include <iprt/nt/nt.h>
 # include <ntimage.h>
 #else

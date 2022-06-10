@@ -1,4 +1,4 @@
-/* $Id: RTNtPathExpand8dot3Path.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTNtPathExpand8dot3Path.cpp 77816 2019-03-21 00:01:49Z vboxsync $ */
 /** @file
  * IPRT - Native NT, RTNtPathExpand8dot3Path.
  */
@@ -29,6 +29,9 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_FS
+#if !defined(IPRT_NT_MAP_TO_ZW) && defined(IN_RING0)
+# define IPRT_NT_MAP_TO_ZW
+#endif
 #ifdef IN_SUP_HARDENED_R3
 # include <iprt/nt/nt-and-windows.h>
 #else
