@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 73754 2018-08-18 04:48:52Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 73770 2018-08-20 06:44:55Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2773,6 +2773,11 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
         /* Set revision dword at the beginning of the VMCS structure. */
         *(uint32_t *)pVCpu->hm.s.vmx.pvVmcs = RT_BF_GET(pVM->hm.s.vmx.Msrs.u64Basic, VMX_BF_BASIC_VMCS_ID);
 
+        /* Set the VMCS launch state to "clear", see Intel spec. 31.6 "Preparation and launch a virtual machine". */
+        rc  = VMXClearVmcs(pVCpu->hm.s.vmx.HCPhysVmcs);
+        AssertLogRelMsgRCReturnStmt(rc, ("VMXR0SetupVM: VMXClearVmcs failed! rc=%Rrc\n", rc),
+                                    hmR0VmxUpdateErrorRecord(pVCpu, rc), rc);
+
         /* Load this VMCS as the current VMCS. */
         rc = VMXActivateVmcs(pVCpu->hm.s.vmx.HCPhysVmcs);
         AssertLogRelMsgRCReturnStmt(rc, ("VMXR0SetupVM: VMXActivateVmcs failed! rc=%Rrc\n", rc),
@@ -2800,7 +2805,7 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
                                     hmR0VmxUpdateErrorRecord(pVCpu, rc), rc);
 #endif
 
-        /* Sync the CPU's internal data into our VMCS memory region & set the launch state to "clear". */
+        /* Sync any CPU internal VMCS data back into our VMCS in memory. */
         rc = VMXClearVmcs(pVCpu->hm.s.vmx.HCPhysVmcs);
         AssertLogRelMsgRCReturnStmt(rc, ("VMXR0SetupVM: VMXClearVmcs(2) failed! rc=%Rrc\n", rc),
                                     hmR0VmxUpdateErrorRecord(pVCpu, rc), rc);
