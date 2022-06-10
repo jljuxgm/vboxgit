@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 75737 2018-11-26 15:44:41Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 75861 2018-12-02 00:26:36Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -294,6 +294,10 @@ HRESULT GuestFile::getOffset(LONG64 *aOffset)
 {
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
+/** @todo r=bird: Why do you have both a offset and a tell() function?
+ * After a ReadAt or WriteAt with a non-current offset, the tell() result will
+ * differ from this value, because mOffCurrent is only ever incremented with
+ * data read or written.  */
     *aOffset = mData.mOffCurrent;
 
     return S_OK;

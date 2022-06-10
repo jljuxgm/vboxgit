@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 75854 2018-11-30 19:36:54Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 75861 2018-12-02 00:26:36Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -159,8 +159,8 @@ int Guest::i_dispatchToSession(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
 
         alock.release();
 
-        bool fDispatch = true;
 #ifdef DEBUG
+        bool fDispatch = true;
         /*
          * Pre-check: If we got a status message with an error and VERR_TOO_MUCH_DATA
          *            it means that that guest could not handle the entire message
@@ -187,8 +187,8 @@ int Guest::i_dispatchToSession(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
                 fDispatch = false;
             }
         }
-#endif
         if (fDispatch)
+#endif
         {
             switch (pCtxCb->uFunction)
             {

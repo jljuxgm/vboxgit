@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 74734 2018-10-10 11:47:54Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 75861 2018-12-02 00:26:36Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1077,7 +1077,7 @@ public:
     bool                             HasGuestError(void) const { return mRc == VERR_GSTCTL_GUEST_ERROR; }
     int                              GetGuestError(void) const { return mGuestRc; }
     int                              SignalExternal(IEvent *pEvent);
-    const GuestEventTypes            Types(void) { return mEventTypes; }
+    const GuestEventTypes           &Types(void) { return mEventTypes; }
     size_t                           TypeCount(void) { return mEventTypes.size(); }
 
 protected:
@@ -1139,7 +1139,7 @@ protected:
     /** Pointer to the console object. Needed
      *  for HGCM (VMMDev) communication. */
     Console                 *mConsole;
-    /** The next upcoming context ID for this object. */
+    /**  The next context ID counter component for this object. */
     uint32_t                 mNextContextID;
     /** Local listener for handling the waiting events
      *  internally. */
