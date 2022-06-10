@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 76301 2018-12-19 19:24:16Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 76309 2018-12-20 08:59:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -285,9 +285,9 @@ void UIFileManagerGuestTable::goToHomeDirectory()
 {
     if (m_comGuestSession.isNull())
         return;
-    if (!m_pRootItem || m_pRootItem->childCount() <= 0)
+    if (!rootItem() || rootItem()->childCount() <= 0)
         return;
-    UIFileTableItem *startDirItem = m_pRootItem->child(0);
+    UIFileTableItem *startDirItem = rootItem()->child(0);
     if (!startDirItem)
         return;
 

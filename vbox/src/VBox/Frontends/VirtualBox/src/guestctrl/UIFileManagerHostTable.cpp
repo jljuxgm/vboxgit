@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 76300 2018-12-19 19:17:55Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 76309 2018-12-20 08:59:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -293,9 +293,9 @@ void UIFileManagerHostTable::deleteByPath(const QStringList &pathList)
 
 void UIFileManagerHostTable::goToHomeDirectory()
 {
-    if (!m_pRootItem || m_pRootItem->childCount() <= 0)
+    if (!rootItem() || rootItem()->childCount() <= 0)
         return;
-    UIFileTableItem *startDirItem = m_pRootItem->child(0);
+    UIFileTableItem *startDirItem = rootItem()->child(0);
     if (!startDirItem)
         return;
 

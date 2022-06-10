@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 76301 2018-12-19 19:24:16Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 76309 2018-12-20 08:59:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -255,8 +255,9 @@ protected:
     /** Creates a QList out of the parameters wrt. UICustomFileSystemModelColumn enum */
     QVector<QVariant>  createTreeItemData(const QString &strName, ULONG64 size, const QDateTime &changeTime,
                                         const QString &strOwner, const QString &strPermissions);
+    UIFileTableItem*   rootItem();
 
-    UIFileTableItem         *m_pRootItem;
+
     QILabel                 *m_pLocationLabel;
     UIPropertiesDialog      *m_pPropertiesDialog;
     UIActionPool            *m_pActionPool;
