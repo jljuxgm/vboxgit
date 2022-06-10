@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 77595 2019-03-07 12:42:31Z vboxsync $ */
+/* $Id: VBoxManage.cpp 77777 2019-03-19 10:00:28Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -158,7 +158,8 @@ static const VBMGCMD g_aCommands[] =
     { "debugvm",            USAGE_S_NEWCMD,      HELP_CMD_DEBUGVM, handleDebugVM,              0 },
     { "convertfromraw",     USAGE_CONVERTFROMRAW,   VBMG_CMD_TODO, handleConvertFromRaw,       VBMG_CMD_F_NO_COM },
     { "convertdd",          USAGE_CONVERTFROMRAW,   VBMG_CMD_TODO, handleConvertFromRaw,       VBMG_CMD_F_NO_COM },
-    { "usbdevsource",       USAGE_USBDEVSOURCE,     VBMG_CMD_TODO, handleUSBDevSource,         0 }
+    { "usbdevsource",       USAGE_USBDEVSOURCE,     VBMG_CMD_TODO, handleUSBDevSource,         0 },
+    { "cloudprofile",       USAGE_S_NEWCMD,      HELP_CMD_CLOUDPROFILE, handleCloudProfile,         0 }
 };
 
 

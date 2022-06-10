@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdApi1.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: tdApi1.py 77777 2019-03-19 10:00:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - API Test wrapper #1 combining all API sub-tests
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 77777 $"
 
 
 # Standard Python imports.
@@ -78,11 +78,12 @@ class tdApi1(vbox.TestDriver):
 
 if __name__ == '__main__':
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-    from tdPython1     import SubTstDrvPython1;     # pylint: disable=relative-import
-    from tdAppliance1  import SubTstDrvAppliance1;  # pylint: disable=relative-import
-    from tdMoveMedium1 import SubTstDrvMoveMedium1; # pylint: disable=relative-import
-    from tdTreeDepth1  import SubTstDrvTreeDepth1;  # pylint: disable=relative-import
-    from tdMoveVM1     import SubTstDrvMoveVM1;     # pylint: disable=relative-import
+    from tdPython1       import SubTstDrvPython1;     # pylint: disable=relative-import
+    from tdAppliance1    import SubTstDrvAppliance1;  # pylint: disable=relative-import
+    from tdMoveMedium1   import SubTstDrvMoveMedium1; # pylint: disable=relative-import
+    from tdTreeDepth1    import SubTstDrvTreeDepth1;  # pylint: disable=relative-import
+    from tdMoveVM1       import SubTstDrvMoveVM1;     # pylint: disable=relative-import
+    from tdOCIExport1    import SubTstOCIExportVM1;   # pylint: disable=relative-import
     sys.exit(tdApi1([SubTstDrvPython1, SubTstDrvAppliance1, SubTstDrvMoveMedium1,
-                     SubTstDrvTreeDepth1, SubTstDrvMoveVM1]).main(sys.argv))
+                     SubTstDrvTreeDepth1, SubTstDrvMoveVM1, SubTstOCIExportVM1]).main(sys.argv))
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 77595 2019-03-07 12:42:31Z vboxsync $ */
+/* $Id: VBoxManage.h 77777 2019-03-19 10:00:28Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -111,6 +111,7 @@ typedef enum
     USAGE_ENCRYPTMEDIUM,
     USAGE_MEDIUMENCCHKPWD,
     USAGE_USBDEVSOURCE,
+    USAGE_CLOUDPROFILE,
     /* Insert new entries before this line, but only if it is not an option
      * to go for the new style command and help handling (see e.g. extpack,
      * unattend or mediumio. */
@@ -145,7 +146,6 @@ typedef enum
 # define HELP_SCOPE_GSTCTRL_UPDATEGA        RT_BIT(13)
 # define HELP_SCOPE_GSTCTRL_WATCH           RT_BIT(14)
 #endif
-
 
 /** command handler argument */
 struct HandlerArg
@@ -289,6 +289,7 @@ RTEXITCODE handleSharedFolder(HandlerArg *a);
 RTEXITCODE handleExtPack(HandlerArg *a);
 RTEXITCODE handleUnattended(HandlerArg *a);
 RTEXITCODE handleMoveVM(HandlerArg *a);
+RTEXITCODE handleCloudProfile(HandlerArg *a);
 
 /* VBoxManageDisk.cpp */
 HRESULT openMedium(HandlerArg *a, const char *pszFilenameOrUuid,
