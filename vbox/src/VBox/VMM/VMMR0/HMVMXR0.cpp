@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78229 2019-04-20 05:20:41Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78230 2019-04-20 05:50:24Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7069,11 +7069,9 @@ static void hmR0VmxFixUnusableSegRegAttr(PVMCPU pVCpu, PCPUMSELREG pSelReg, uint
               ("%#x: %#x != %#x (sel=%#x base=%#llx limit=%#x)\n",
                idxSel, uAttr, pSelReg->Attr.u, pSelReg->Sel, pSelReg->u64Base, pSelReg->u32Limit));
 # endif
-    NOREF(uAttr);
     VMMRZCallRing3Enable(pVCpu);
-#else
-    RT_NOREF2(pVCpu, idxSel);
 #endif
+    RT_NOREF2(pVCpu, idxSel);
 }
 
 
