@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 74939 2018-10-19 10:30:13Z vboxsync $ */
+/* $Id: DevACPI.cpp 74941 2018-10-19 12:13:15Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -3106,7 +3106,7 @@ static uint32_t apicR3FindRsdpSpace(void)
  * @param   ppu8CustBin     Address to receive the address of the table
  * @param   pcbCustBin      Address to receive the size of the the table.
  * @param   pszCustBinFile
- * @param   pBufAvail       Maximum space in bytes available for the custom
+ * @param   cbBufAvail      Maximum space in bytes available for the custom
  *                          table (including header).
  */
 static int acpiR3ReadCustomTable(PPDMDEVINS pDevIns, uint8_t **ppu8CustBin, uint64_t *pcbCustBin,
