@@ -1,5 +1,5 @@
 
-/* $Id: ldrMemory.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ldrMemory.cpp 77971 2019-04-01 09:35:17Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, The Memory/Debugger Oriented Parts.
  */
@@ -129,7 +129,7 @@ static DECLCALLBACK(RTFOFF) rtldrRdrMem_Tell(PRTLDRREADER pReader)
 
 
 /** @interface_method_impl{RTLDRREADER,pfnSize} */
-static DECLCALLBACK(RTFOFF) rtldrRdrMem_Size(PRTLDRREADER pReader)
+static DECLCALLBACK(uint64_t) rtldrRdrMem_Size(PRTLDRREADER pReader)
 {
     PRTLDRRDRMEM pThis = (PRTLDRRDRMEM)pReader;
     return pThis->cbImage;

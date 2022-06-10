@@ -1,4 +1,4 @@
-/* $Id: ldrLX.cpp 77121 2019-02-01 15:14:32Z vboxsync $ */
+/* $Id: ldrLX.cpp 77971 2019-04-01 09:35:17Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the Linear eXecutable (LX) Format.
  */
@@ -226,7 +226,7 @@ static int kldrModLXDoCreate(PRTLDRREADER pRdr, RTFOFF offNewHdr, uint32_t fFlag
         return VERR_LDRLX_BAD_HEADER;
 
     /* Some rough sanity checks. */
-    offEnd = pRdr->pfnSize(pRdr) >= (RTFOFF)~(uint32_t)16 ? ~(uint32_t)16 : (uint32_t)pRdr->pfnSize(pRdr);
+    offEnd = pRdr->pfnSize(pRdr) >= (uint64_t)~(uint32_t)16 ? ~(uint32_t)16 : (uint32_t)pRdr->pfnSize(pRdr);
     if (    Hdr.e32_itermap > offEnd
         ||  Hdr.e32_datapage > offEnd
         ||  Hdr.e32_nrestab > offEnd
