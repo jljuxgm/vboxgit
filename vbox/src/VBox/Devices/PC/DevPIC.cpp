@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DevPIC.cpp 73101 2018-07-12 21:23:36Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -580,7 +580,7 @@ static int pic_ioport_write(PDEVPIC pThis, PPICSTATE pPic, uint32_t addr, uint32
 
 static uint32_t pic_poll_read(PPICSTATE pPic, uint32_t addr1)
 {
-    PDEVPIC pThis = RT_FROM_MEMBER(pPic, DEVPIC, aPics[pPic->idxPic]);
+    PDEVPIC pThis = RT_FROM_MEMBER_DYN(pPic, DEVPIC, aPics[pPic->idxPic]);
 
     int ret = pic_get_irq(pPic);
     if (ret >= 0)
