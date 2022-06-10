@@ -1,4 +1,4 @@
-/* $Id: NEMAllNativeTemplate-win.cpp.h 73327 2018-07-23 14:25:42Z vboxsync $ */
+/* $Id: NEMAllNativeTemplate-win.cpp.h 73376 2018-07-27 08:00:39Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, Windows code template ring-0/3.
  */
@@ -1778,7 +1778,14 @@ nemHCWinHandleMemoryAccessPageCheckerCallback(PVM pVM, PVMCPU pVCpu, RTGCPHYS GC
         case NEM_WIN_PAGE_STATE_WRITABLE:
             if (pInfo->fNemProt & NEM_PAGE_PROT_WRITE)
             {
-                Log4(("nemHCWinHandleMemoryAccessPageCheckerCallback: %RGp - #3\n", GCPhys));
+                if (pInfo->u2OldNemState == NEM_WIN_PAGE_STATE_WRITABLE)
+                    Log4(("nemHCWinHandleMemoryAccessPageCheckerCallback: %RGp - #3a\n", GCPhys));
+                else
+                {
+                    pState->fCanResume = true;
+                    Log4(("nemHCWinHandleMemoryAccessPageCheckerCallback: %RGp - #3b (%s -> %s)\n",
+                          GCPhys, g_apszPageStates[pInfo->u2OldNemState], g_apszPageStates[u2State]));
+                }
                 return VINF_SUCCESS;
             }
 #ifdef NEM_WIN_USE_HYPERCALLS_FOR_PAGES

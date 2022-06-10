@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 73203 2018-07-18 13:00:43Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 73376 2018-07-27 08:00:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4767,6 +4767,7 @@ VMM_INT_DECL(int) PGMPhysNemPageInfoChecker(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPh
     if (RT_SUCCESS(rc))
     {
         /* Try make it writable if requested. */
+        pInfo->u2OldNemState = PGM_PAGE_GET_NEM_STATE(pPage);
         if (fMakeWritable)
             switch (PGM_PAGE_GET_STATE(pPage))
             {
