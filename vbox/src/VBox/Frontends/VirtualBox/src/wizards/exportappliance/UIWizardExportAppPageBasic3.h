@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 72935 2018-07-06 12:23:52Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 73006 2018-07-09 11:57:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -46,6 +46,7 @@ protected:
 
     /** Refreshes current settings. */
     virtual void refreshCurrentSettings();
+
     /** Updates format combo tool-tips. */
     virtual void updateFormatComboToolTip();
 
