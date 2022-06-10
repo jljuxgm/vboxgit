@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.cpp 77006 2019-01-26 18:27:09Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.cpp 77009 2019-01-26 20:23:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class implementation.
  */
@@ -44,7 +44,7 @@ public:
     FilterByNameUUID(UIMediumSearchWidget::SearchType enmSearchType, const QString &strSearchTerm)
         : m_enmSearchType(enmSearchType)
         , m_strSearchTerm(strSearchTerm){}
-
+    virtual ~FilterByNameUUID(){}
     virtual bool operator()(QTreeWidgetItem *pItem) const
     {
         if (!pItem || m_strSearchTerm.isEmpty())
