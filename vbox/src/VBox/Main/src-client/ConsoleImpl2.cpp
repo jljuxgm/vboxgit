@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 72919 2018-07-05 14:44:31Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 72973 2018-07-08 13:23:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2578,7 +2578,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     break;
                 case NetworkAdapterType_Virtio:
                     break;
-                case NetworkAdapterType_Null: AssertFailedBreak(); /* Shut up MSC */
+                case NetworkAdapterType_Null:      AssertFailedBreak(); /* (compiler warnings) */
+#ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK
+                case NetworkAdapterType_32BitHack: AssertFailedBreak(); /* (compiler warnings) */
+#endif
             }
 
             /*
@@ -2866,6 +2869,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                         InsertConfigInteger(pCfg, "DebugEnabled", fDebugEnabled);
                         InsertConfigString (pCfg, "DebugPathOut", strDebugPathOut);
                 }
+                default: AssertFailedBreak();
             }
 
             PCFGMNODE pCfgAudioSettings = NULL;

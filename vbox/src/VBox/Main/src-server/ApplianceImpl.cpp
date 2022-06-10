@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 72902 2018-07-04 19:46:14Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 72973 2018-07-08 13:23:58Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -322,6 +322,9 @@ Utf8Str convertNetworkAttachmentTypeToString(NetworkAttachmentType_T type)
         case NetworkAttachmentType_Generic: strType = "Generic"; break;
         case NetworkAttachmentType_NATNetwork: strType = "NATNetwork"; break;
         case NetworkAttachmentType_Null: strType = "Null"; break;
+#ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK
+        case NetworkAttachmentType_32BitHack: AssertFailedBreak(); /* (compiler warnings) */
+#endif
     }
     return strType;
 }
@@ -1484,6 +1487,9 @@ HRESULT VirtualSystemDescription::getValuesByType(VirtualSystemDescriptionType_T
             case VirtualSystemDescriptionValueType_Original: aValues[i]  = vsde->strOvf; break;
             case VirtualSystemDescriptionValueType_Auto: aValues[i]  = vsde->strVBoxCurrent; break;
             case VirtualSystemDescriptionValueType_ExtraConfig: aValues[i] = vsde->strExtraConfigCurrent; break;
+#ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK
+            case VirtualSystemDescriptionValueType_32BitHack: AssertFailedBreak(); /* (compiler warnings) */
+#endif
         }
     }
 

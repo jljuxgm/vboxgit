@@ -1,4 +1,4 @@
-/* $Id: SerialPortImpl.cpp 70766 2018-01-28 20:53:14Z vboxsync $ */
+/* $Id: SerialPortImpl.cpp 72973 2018-07-08 13:23:58Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -288,6 +288,10 @@ HRESULT SerialPort::setHostMode(PortMode_T aHostMode)
                 break;
             case PortMode_Disconnected:
                 break;
+#ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK
+            case PortMode_32BitHack: /* (compiler warnings) */
+                AssertFailedBreak();
+#endif
         }
 
         m->bd.backup();

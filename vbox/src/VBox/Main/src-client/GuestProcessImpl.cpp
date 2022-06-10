@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 71825 2018-04-11 13:09:21Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 72973 2018-07-08 13:23:58Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1331,6 +1331,9 @@ ProcessWaitResult_T GuestProcess::i_waitFlagsToResultEx(uint32_t fWaitFlags,
             /* No result available yet, leave wait
              * flags untouched. */
             break;
+#ifdef VBOX_WITH_XPCOM_CPP_ENUM_HACK
+        case ProcessStatus_32BitHack: AssertFailedBreak(); /* (compiler warnings) */
+#endif
     }
 
     if (newStatus == ProcessStatus_Started)
