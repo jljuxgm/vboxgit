@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 73577 2018-08-08 20:14:37Z vboxsync $ */
+/* $Id: DrvAudio.cpp 73583 2018-08-09 09:56:55Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2583,7 +2583,7 @@ static DECLCALLBACK(int) drvAudioEnable(PPDMIAUDIOCONNECTOR pInterface, PDMAUDIO
     if (fEnable != *pfEnabled)
     {
         LogRel(("Audio: %s %s\n",
-                fEnable ? "Enabling " : "Disabling ", enmDir == PDMAUDIODIR_IN ? "input" : "output"));
+                fEnable ? "Enabling" : "Disabling", enmDir == PDMAUDIODIR_IN ? "input" : "output"));
 
         PPDMAUDIOSTREAM pStream;
         RTListForEach(&pThis->lstStreams, pStream, PDMAUDIOSTREAM, Node)
