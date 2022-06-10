@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 74575 2018-10-02 09:40:00Z vboxsync $ */
+/* $Id: DragAndDrop.h 74577 2018-10-02 10:07:12Z vboxsync $ */
 /** @file
  * DnD: Shared functions between host and guest.
  */
@@ -210,7 +210,7 @@ public:
      * Note: Only applies if the object is of type DnDURIObject::Type_File.
      *
      * @return  IPRT return code.
-     * @param   uSize           Size (in bytes) to process.
+     * @param   cbSize          Size (in bytes) to process.
      */
     int SetSize(uint64_t cbSize) { AssertReturn(m_Type == Type_File, 0); u.File.cbSize = cbSize; return VINF_SUCCESS; }
 
