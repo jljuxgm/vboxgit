@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 73444 2018-08-02 10:53:28Z vboxsync $ */
+/* $Id: DBGFStack.cpp 73446 2018-08-02 10:59:46Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -1235,8 +1235,8 @@ DECL_NO_INLINE(static, int) dbgfR3StackWalk(PDBGFUNWINDCTX pUnwindCtx, PDBGFSTAC
         if (dbgfR3UnwindCtxDoOneFrame(pUnwindCtx))
         {
             DBGFADDRESS AddrReturnFrame = pFrame->AddrReturnFrame;
-            int rc = DBGFR3AddrFromSelOff(pUnwindCtx->m_pUVM, pUnwindCtx->m_idCpu, &AddrReturnFrame,
-                                          pUnwindCtx->m_State.u.x86.FrameAddr.sel, pUnwindCtx->m_State.u.x86.FrameAddr.off);
+            rc = DBGFR3AddrFromSelOff(pUnwindCtx->m_pUVM, pUnwindCtx->m_idCpu, &AddrReturnFrame,
+                                      pUnwindCtx->m_State.u.x86.FrameAddr.sel, pUnwindCtx->m_State.u.x86.FrameAddr.off);
             if (RT_SUCCESS(rc))
                 pFrame->AddrReturnFrame      = AddrReturnFrame;
             pFrame->enmReturnFrameReturnType = pUnwindCtx->m_State.enmRetType;
