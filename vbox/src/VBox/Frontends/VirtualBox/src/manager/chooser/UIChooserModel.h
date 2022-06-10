@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIChooserModel.h 74915 2018-10-18 12:24:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -455,6 +455,10 @@ private:
         void makeSureGroupDefinitionsSaveIsFinished();
         /** Makes sure group orders saving is finished. */
         void makeSureGroupOrdersSaveIsFinished();
+
+        /** Returns QString representation for passed @a uId, wiping out {} symbols.
+          * @note  Required for backward compatibility after QString=>QUuid change. */
+        static QString toOldStyleUuid(const QUuid &uId);
     /** @} */
 
     /** @name General stuff.
