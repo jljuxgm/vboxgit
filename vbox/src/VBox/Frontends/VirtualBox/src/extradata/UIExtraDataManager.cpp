@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 76996 2019-01-25 21:36:44Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 77014 2019-01-28 08:24:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2972,6 +2972,18 @@ void UIExtraDataManager::setVirtualMediaManagerDetailsExpanded(bool fExpanded)
 {
     /* 'True' if feature allowed, null-string otherwise: */
     return setExtraDataString(GUI_VirtualMediaManager_Details_Expanded, toFeatureAllowed(fExpanded));
+}
+
+bool UIExtraDataManager::virtualMediaManagerSearchWidgetExpanded()
+{
+    /* 'False' unless feature allowed: */
+    return isFeatureAllowed(GUI_VirtualMediaManager_Search_Widget_Expanded);
+}
+
+void UIExtraDataManager::setVirtualMediaManagerSearchWidgetExpanded(bool fExpanded)
+{
+    /* 'True' if feature allowed, null-string otherwise: */
+    return setExtraDataString(GUI_VirtualMediaManager_Search_Widget_Expanded, toFeatureAllowed(fExpanded));
 }
 
 bool UIExtraDataManager::hostNetworkManagerDetailsExpanded()
