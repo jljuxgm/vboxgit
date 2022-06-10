@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72927 2018-07-06 07:29:16Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 72933 2018-07-06 11:41:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -476,7 +476,6 @@ void UIMediumSelector::sltAddMedium()
     vboxGlobal().openMediumWithFileOpenDialog(m_enmMediumType, this, strDefaultMachineFolder);
 }
 
-
 void UIMediumSelector::sltCreateMedium()
 {
     QString strMachineFolder = QFileInfo(m_strMachineSettingsFilePath).absolutePath();
@@ -484,6 +483,12 @@ void UIMediumSelector::sltCreateMedium()
     if (pDialog->exec())
     {
         repopulateTreeWidget();
+        UIMediumItem *pMediumItem = searchItem(0, pDialog->mediumID());
+        if (pMediumItem)
+        {
+            m_pTreeWidget->setCurrentItem(pMediumItem);
+
+        }
     }
     delete pDialog;
 }
@@ -689,9 +694,13 @@ UIMediumItem* UIMediumSelector::searchItem(const QTreeWidgetItem *pParent, const
         if (mediumItem)
         {
             if (mediumItem->id() == mediumId)
+            {
                 return mediumItem;
+            }
         }
-        searchItem(pChild, mediumId);
+        UIMediumItem *result = searchItem(pChild, mediumId);
+        if (result)
+            return result;
     }
     return 0;
 }
