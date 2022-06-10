@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 78179 2019-04-17 19:06:26Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 78182 2019-04-17 19:53:51Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */
@@ -132,5 +132,4 @@ void vboxClipboardWriteData(VBOXCLIPBOARDCLIENTDATA *pClient, void *pv, uint32_t
     RT_NOREF(pClient, pv, cb, u32Format);
     LogFlowFunc(("called, returning.\n"));
 }
-
 
