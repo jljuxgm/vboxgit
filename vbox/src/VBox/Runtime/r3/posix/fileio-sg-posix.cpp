@@ -1,4 +1,4 @@
-/* $Id: fileio-sg-posix.cpp 77239 2019-02-10 14:59:28Z vboxsync $ */
+/* $Id: fileio-sg-posix.cpp 77244 2019-02-10 23:37:22Z vboxsync $ */
 /** @file
  * IPRT - File I/O, RTFileSgReadAt & RTFileSgWriteAt, posixy.
  */
@@ -25,6 +25,9 @@
  */
 
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 /*
  * Determin whether we've got preadv and pwritev.
  */
@@ -51,12 +54,11 @@
 #endif
 
 #ifndef HAVE_PREADV_AND_PWRITEV
-# include "../../generic/fileio-sg-generic.cpp"
-#else /* HAVE_PREADV_AND_PWRITEV */
 
-/*********************************************************************************************************************************
-*   Header Files                                                                                                                 *
-*********************************************************************************************************************************/
+# include "../../generic/fileio-sg-generic.cpp"
+
+#else /* HAVE_PREADV_AND_PWRITEV - rest of the file */
+
 # include <errno.h>
 # include <sys/types.h>
 # include <sys/uio.h>
