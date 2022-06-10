@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75737 2018-11-26 15:44:41Z vboxsync $ */
+/* $Id: service.cpp 75953 2018-12-04 18:43:09Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -341,9 +341,7 @@ void DragAndDropService::guestCall(VBOXHGCMCALLHANDLE callHandle, uint32_t u32Cl
             break;
         }
         case GUEST_DND_HG_ACK_OP:
-            /* Fall through is intentional. */
         case GUEST_DND_HG_REQ_DATA:
-            /* Fall through is intentional. */
         case GUEST_DND_HG_EVT_PROGRESS:
         {
             if (   modeGet() == VBOX_DRAG_AND_DROP_MODE_BIDIRECTIONAL
