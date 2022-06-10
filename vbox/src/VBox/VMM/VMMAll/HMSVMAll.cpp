@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 75611 2018-11-20 11:20:25Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 75759 2018-11-27 07:10:10Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -185,8 +185,7 @@ VMM_INT_DECL(bool) HMSvmIsVGifActive(PVM pVM)
 {
     bool const fVGif    = RT_BOOL(pVM->hm.s.svm.u32Features & X86_CPUID_SVM_FEATURE_EDX_VGIF);
     bool const fUseVGif = fVGif && pVM->hm.s.svm.fVGif;
-
-    return HMIsEnabled(pVM) && fVGif && fUseVGif;
+    return fVGif && fUseVGif;
 }
 
 
