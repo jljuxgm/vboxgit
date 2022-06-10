@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 73716 2018-08-16 15:58:57Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 73825 2018-08-22 12:51:23Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -102,7 +102,7 @@ public:
 
     HRESULT     FinalConstruct();
     void        FinalRelease();
-    HRESULT     initWithDir(VBOXEXTPACKCTX a_enmContext, const char *a_pszName, const char *a_pszDir);
+    HRESULT     initWithDir(VirtualBox *a_pVirtualBox, VBOXEXTPACKCTX a_enmContext, const char *a_pszName, const char *a_pszDir);
     void        uninit();
     RTMEMEF_NEW_AND_DELETE_OPERATORS();
     /** @}  */
@@ -150,6 +150,19 @@ protected:
     static DECLCALLBACK(int)    i_hlpLoadHGCMService(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IConsole) *pConsole, const char *pszServiceLibrary, const char *pszServiceName);
     static DECLCALLBACK(int)    i_hlpLoadVDPlugin(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IVirtualBox) *pVirtualBox, const char *pszPluginLibrary);
     static DECLCALLBACK(int)    i_hlpUnloadVDPlugin(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IVirtualBox) *pVirtualBox, const char *pszPluginLibrary);
+    static DECLCALLBACK(uint32_t) i_hlpCreateProgress(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IUnknown) *pInitiator,
+                                                      const char *pcszDescription, uint32_t cOperations,
+                                                      uint32_t uTotalOperationsWeight, const char *pcszFirstOperationDescription,
+                                                      uint32_t uFirstOperationWeight, VBOXEXTPACK_IF_CS(IProgress) **ppProgressOut);
+    static DECLCALLBACK(uint32_t) i_hlpGetCanceledProgress(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IProgress) *pProgress,
+                                                           bool *pfCanceled);
+    static DECLCALLBACK(uint32_t) i_hlpUpdateProgress(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IProgress) *pProgress,
+                                                      uint32_t uPercent);
+    static DECLCALLBACK(uint32_t) i_hlpNextOperationProgress(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IProgress) *pProgress,
+                                                             const char *pcszNextOperationDescription,
+                                                             uint32_t uNextOperationWeight);
+    static DECLCALLBACK(uint32_t) i_hlpCompleteProgress(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IProgress) *pProgress,
+                                                        uint32_t uResultCode);
     static DECLCALLBACK(int)    i_hlpReservedN(PCVBOXEXTPACKHLP pHlp);
     /** @}  */
 
