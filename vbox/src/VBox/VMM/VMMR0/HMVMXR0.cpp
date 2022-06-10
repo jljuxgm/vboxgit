@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 76678 2019-01-07 13:48:16Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 76742 2019-01-09 16:26:35Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1720,8 +1720,8 @@ static void hmR0VmxCheckAutoLoadStoreMsrs(PVMCPU pVCpu)
     rc = VMXReadVmcs32(VMX_VMCS32_CTRL_EXIT_MSR_LOAD_COUNT, &cMsrs);       AssertRC(rc);
     Assert(cMsrs == pVCpu->hm.s.vmx.cMsrs);
 
-    PCVMXAUTOMSR pHostMsr  = (PVMXAUTOMSR)pVCpu->hm.s.vmx.pvHostMsr;
-    PCVMXAUTOMSR pGuestMsr = (PVMXAUTOMSR)pVCpu->hm.s.vmx.pvGuestMsr;
+    PCVMXAUTOMSR pHostMsr  = (PCVMXAUTOMSR)pVCpu->hm.s.vmx.pvHostMsr;
+    PCVMXAUTOMSR pGuestMsr = (PCVMXAUTOMSR)pVCpu->hm.s.vmx.pvGuestMsr;
     for (uint32_t i = 0; i < cMsrs; i++, pHostMsr++, pGuestMsr++)
     {
         /* Verify that the MSRs are paired properly and that the host MSR has the correct value. */
