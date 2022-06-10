@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 74697 2018-10-09 06:32:17Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 74698 2018-10-09 06:34:06Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5300,7 +5300,7 @@ IEM_CIMPL_DEF_2(iemCImpl_smsw_reg, uint8_t, iGReg, uint8_t, enmEffOpSize)
             break;
 
         case IEMMODE_32BIT:
-            *(uint64_t *)iemGRegRef(pVCpu, iGReg) = (uint32_t)u64GuestCr0;
+            *(uint32_t *)iemGRegRef(pVCpu, iGReg) = (uint32_t)u64GuestCr0;
             break;
 
         case IEMMODE_64BIT:
