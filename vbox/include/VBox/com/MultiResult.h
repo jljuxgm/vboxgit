@@ -1,4 +1,4 @@
-/* $Id: MultiResult.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: MultiResult.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - MultiResult class declarations.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_com_MultiResult_h
 #define ___VBox_com_MultiResult_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBox/com/defs.h"
 #include "VBox/com/string.h"

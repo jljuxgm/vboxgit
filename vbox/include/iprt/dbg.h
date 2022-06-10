@@ -1,4 +1,4 @@
-/* $Id: dbg.h 75239 2018-11-03 02:54:26Z vboxsync $ */
+/* $Id: dbg.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_dbg_h
 #define ___iprt_dbg_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/stdarg.h>

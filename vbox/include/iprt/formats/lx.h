@@ -1,4 +1,4 @@
-/* $Id: lx.h 74644 2018-10-06 19:58:37Z vboxsync $ */
+/* $Id: lx.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * LX structures, types and defines.
  */
@@ -30,6 +30,9 @@
 
 #ifndef ___iprt_formats_lx_h___
 #define ___iprt_formats_lx_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/assertcompile.h>

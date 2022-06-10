@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.h 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: HGSMIBase.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - buffer management.
  */
@@ -28,9 +28,11 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 #ifndef ___VBox_Graphics_HGSMIBase_h___
 #define ___VBox_Graphics_HGSMIBase_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "HGSMI.h"
 #include "HGSMIContext.h"

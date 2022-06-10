@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg-win.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: VBoxDrvCfg-win.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * Windows Driver Manipulation API.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_VBoxDrvCfg_win_h
 #define ___VBox_VBoxDrvCfg_win_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/win/windows.h>
 #include <VBox/cdefs.h>

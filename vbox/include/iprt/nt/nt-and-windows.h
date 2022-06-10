@@ -1,4 +1,4 @@
-/* $Id: nt-and-windows.h 69105 2017-10-17 10:20:49Z vboxsync $ */
+/* $Id: nt-and-windows.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - Header for code using both NT native and Windows APIs.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_nt_nt_and_windows_h
 #define ___iprt_nt_nt_and_windows_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define _PEB    IncompleteWindows__PEB
 #define PEB     IncompleteWindows_PEB

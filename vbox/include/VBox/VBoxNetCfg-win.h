@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg-win.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: VBoxNetCfg-win.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * Network Configuration API for Windows platforms.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_VBoxNetCfg_win_h
 #define ___VBox_VBoxNetCfg_win_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /*
  * Defining VBOXNETCFG_DELAYEDRENAME postpones renaming of host-only adapter

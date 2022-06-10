@@ -1,4 +1,4 @@
-/* $Id: ext.h 76316 2018-12-20 15:33:24Z vboxsync $ */
+/* $Id: ext.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT, Ext2/3/4 format.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_formats_ext_h
 #define ___iprt_formats_ext_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/assertcompile.h>

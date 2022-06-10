@@ -1,4 +1,4 @@
-/* $Id: ntfs.h 76442 2018-12-24 15:41:05Z vboxsync $ */
+/* $Id: ntfs.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT, NT File System (NTFS).
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_formats_ntfs_h
 #define ___iprt_formats_ntfs_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/formats/fat.h>
 

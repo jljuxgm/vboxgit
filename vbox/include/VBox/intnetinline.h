@@ -1,4 +1,4 @@
-/* $Id: intnetinline.h 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: intnetinline.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * INTNET - Internal Networking, Inlined Code. (DEV,++)
  *
@@ -30,6 +30,9 @@
 
 #ifndef ___VBox_intnetinline_h
 #define ___VBox_intnetinline_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/intnet.h>
 #include <iprt/string.h>

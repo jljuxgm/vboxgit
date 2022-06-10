@@ -1,4 +1,4 @@
-/* $Id: iso9660.h 68687 2017-09-06 18:11:39Z vboxsync $ */
+/* $Id: iso9660.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT, ISO 9660 File System
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_formats_iso9660_h
 #define ___iprt_formats_iso9660_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/assertcompile.h>

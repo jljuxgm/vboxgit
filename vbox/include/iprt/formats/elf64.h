@@ -1,4 +1,4 @@
-/* $Id: elf64.h 69105 2017-10-17 10:20:49Z vboxsync $ */
+/* $Id: elf64.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - ELF 64-bit header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_formats_elf64_h
 #define ___iprt_formats_elf64_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/assertcompile.h>
 #include "elf-common.h"

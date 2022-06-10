@@ -1,4 +1,4 @@
-/* $Id: listeners.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: listeners.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Listener helpers.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_com_listeners_h
 #define ___VBox_com_listeners_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/com/com.h>
 #include <VBox/com/VirtualBox.h>

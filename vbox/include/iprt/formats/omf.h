@@ -1,4 +1,4 @@
-/* $Id: omf.h 69105 2017-10-17 10:20:49Z vboxsync $ */
+/* $Id: omf.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - Relocatable Object Module Format (OMF).
  *
@@ -30,6 +30,9 @@
 
 #ifndef ___iprt_formats_omf_h
 #define ___iprt_formats_omf_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/stdint.h>
 #include <iprt/assertcompile.h>

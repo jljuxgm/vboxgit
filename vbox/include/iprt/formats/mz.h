@@ -1,4 +1,4 @@
-/* $Id: mz.h 69475 2017-10-28 13:12:42Z vboxsync $ */
+/* $Id: mz.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT, MZ Executable Header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_formats_mz_h
 #define ___iprt_formats_mz_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/assertcompile.h>

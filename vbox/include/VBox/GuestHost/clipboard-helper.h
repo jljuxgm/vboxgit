@@ -1,4 +1,4 @@
-/* $Id: clipboard-helper.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: clipboard-helper.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * Shared Clipboard - Some helper function for converting between the various EOLs.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_GuestHost_clipboard_helper_h
 #define ___VBox_GuestHost_clipboard_helper_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/string.h>
 

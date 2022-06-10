@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 70688 2018-01-22 19:38:45Z vboxsync $ */
+/* $Id: vscsi.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VBox storage drivers - Virtual SCSI driver
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_vscsi_h
 #define ___VBox_vscsi_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

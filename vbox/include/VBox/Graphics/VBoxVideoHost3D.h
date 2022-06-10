@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHost3D.h 71619 2018-04-02 17:11:37Z vboxsync $ */
+/* $Id: VBoxVideoHost3D.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VirtualBox 3D host inter-components interfaces
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_Graphics_VBoxVideoHost3D_h
 #define ___VBox_Graphics_VBoxVideoHost3D_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include "VBoxVideo.h"

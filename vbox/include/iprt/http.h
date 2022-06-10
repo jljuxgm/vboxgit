@@ -1,4 +1,4 @@
-/* $Id: http.h 75108 2018-10-26 15:44:26Z vboxsync $ */
+/* $Id: http.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_http_h
 #define ___iprt_http_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 

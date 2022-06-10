@@ -1,4 +1,4 @@
-/* $Id: HGSMIMemAlloc.h 71590 2018-03-31 18:34:28Z vboxsync $ */
+/* $Id: HGSMIMemAlloc.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Memory allocator.
  */
@@ -24,9 +24,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 #ifndef ___VBox_Graphics_HGSMIMemAlloc_h
 #define ___VBox_Graphics_HGSMIMemAlloc_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "HGSMIDefs.h"
 #include "VBoxVideoIPRT.h"

@@ -1,4 +1,4 @@
-/* $Id: HGSMIContext.h 69307 2017-10-25 13:46:45Z vboxsync $ */
+/* $Id: HGSMIContext.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - command contexts.
  */
@@ -28,9 +28,11 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 #ifndef ___VBox_Graphics_HGSMIContext_h___
 #define ___VBox_Graphics_HGSMIContext_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "HGSMI.h"
 #include "HGSMIChSetup.h"

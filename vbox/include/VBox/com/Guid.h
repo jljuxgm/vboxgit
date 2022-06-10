@@ -1,4 +1,4 @@
-/* $Id: Guid.h 76366 2018-12-22 02:16:26Z vboxsync $ */
+/* $Id: Guid.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Guid class declaration.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_com_Guid_h
 #define ___VBox_com_Guid_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Make sure all the stdint.h macros are included - must come first! */
 #ifndef __STDC_LIMIT_MACROS

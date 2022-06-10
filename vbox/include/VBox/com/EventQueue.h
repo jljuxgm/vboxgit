@@ -1,4 +1,4 @@
-/* $Id: EventQueue.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: EventQueue.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Event queue class declaration.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_com_EventQueue_h
 #define ___VBox_com_EventQueue_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <list>
 

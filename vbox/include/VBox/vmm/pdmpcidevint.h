@@ -1,4 +1,4 @@
-/* $Id: pdmpcidevint.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: pdmpcidevint.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * DevPCI - PDM PCI Internal header - Only for hiding bits of PDMPCIDEV.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_vmm_pdmpcidevint_h
 #define ___VBox_vmm_pdmpcidevint_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vmm/pdmdev.h>
 

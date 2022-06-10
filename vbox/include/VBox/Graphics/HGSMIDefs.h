@@ -1,4 +1,4 @@
-/* $Id: HGSMIDefs.h 70604 2018-01-16 18:03:18Z vboxsync $ */
+/* $Id: HGSMIDefs.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - shared part - types and defines.
  */
@@ -28,9 +28,11 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 #ifndef ___VBox_Graphics_HGSMIDefs_h
 #define ___VBox_Graphics_HGSMIDefs_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxVideoIPRT.h"
 

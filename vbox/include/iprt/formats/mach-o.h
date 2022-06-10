@@ -1,4 +1,4 @@
-/* $Id: mach-o.h 74844 2018-10-15 12:51:52Z vboxsync $ */
+/* $Id: mach-o.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - Mach-O Structures and Constants.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___internal_ldrMach_O_h
 #define ___internal_ldrMach_O_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/assertcompile.h>

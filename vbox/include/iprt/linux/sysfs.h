@@ -1,4 +1,4 @@
-/* $Id: sysfs.h 69105 2017-10-17 10:20:49Z vboxsync $ */
+/* $Id: sysfs.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_linux_sysfs_h
 #define ___iprt_linux_sysfs_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>

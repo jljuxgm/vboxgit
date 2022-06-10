@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIPRT.h 69177 2017-10-23 18:07:55Z vboxsync $ */
+/* $Id: VBoxVideoIPRT.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - iprt and VirtualBox macros and definitions.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_Graphics_VBoxVideoIPRT_h
 #define ___VBox_Graphics_VBoxVideoIPRT_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef RT_OS_OS2
 # include <iprt/asm.h>

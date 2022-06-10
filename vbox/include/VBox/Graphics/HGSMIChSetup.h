@@ -1,4 +1,4 @@
-/* $Id: HGSMIChSetup.h 69307 2017-10-25 13:46:45Z vboxsync $ */
+/* $Id: HGSMIChSetup.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI), Host/Guest shared part.
  */
@@ -30,6 +30,9 @@
 
 #ifndef ___VBox_Graphics_HGSMIChSetup_h
 #define ___VBox_Graphics_HGSMIChSetup_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "HGSMIDefs.h"
 

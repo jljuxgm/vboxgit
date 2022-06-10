@@ -1,4 +1,4 @@
-/* $Id: inifile.h 69062 2017-10-12 15:05:52Z vboxsync $ */
+/* $Id: inifile.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - INI-file parser.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_inifile_h
 #define ___iprt_inifile_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #include <iprt/types.h>

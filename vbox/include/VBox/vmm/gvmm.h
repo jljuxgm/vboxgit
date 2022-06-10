@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 75661 2018-11-22 12:33:18Z vboxsync $ */
+/* $Id: gvmm.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_vmm_gvmm_h
 #define ___VBox_vmm_gvmm_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 #include <VBox/sup.h>

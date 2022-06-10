@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoGuest.h 71651 2018-04-04 12:20:08Z vboxsync $ */
+/* $Id: VBoxVideoGuest.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - OS-independent guest structures.
  */
@@ -28,9 +28,11 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 #ifndef ___VBox_Graphics_VBoxVideoGuest_h___
 #define ___VBox_Graphics_VBoxVideoGuest_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxVideoIPRT.h"
 #include "HGSMIBase.h"

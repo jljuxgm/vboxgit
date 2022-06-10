@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoErr.h 71599 2018-04-01 12:52:12Z vboxsync $ */
+/* $Id: VBoxVideoErr.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - iprt and VirtualBox macros and
  * definitions.
@@ -31,6 +31,9 @@
 
 #ifndef __VBOX_ERR_H__
 #define __VBOX_ERR_H__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** @name VirtualBox error macros
  * @{ */

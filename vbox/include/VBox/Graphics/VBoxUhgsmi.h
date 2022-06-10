@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmi.h 76376 2018-12-22 22:32:24Z vboxsync $ */
+/* $Id: VBoxUhgsmi.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * Document me, pretty please.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_VBoxUhgsmi_h
 #define ___VBox_VBoxUhgsmi_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>

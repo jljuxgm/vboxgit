@@ -1,4 +1,4 @@
-/* $Id: strcache.h 69105 2017-10-17 10:20:49Z vboxsync $ */
+/* $Id: strcache.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - String Cache, stub implementation.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_strcache_h
 #define ___iprt_strcache_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 

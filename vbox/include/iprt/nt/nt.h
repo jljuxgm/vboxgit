@@ -1,4 +1,4 @@
-/* $Id: nt.h 76385 2018-12-23 01:01:58Z vboxsync $ */
+/* $Id: nt.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_nt_nt_h___
 #define ___iprt_nt_nt_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** @def IPRT_NT_MAP_TO_ZW
  * Map Nt calls to Zw calls.  In ring-0 the Zw calls let you pass kernel memory

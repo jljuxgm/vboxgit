@@ -1,4 +1,4 @@
-/* $Id: VBoxPktDmp.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: VBoxPktDmp.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VBoxPktDmp.h - Dump Ethernet frame into debug log.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_vboxpktdmp_h
 #define ___VBox_vboxpktdmp_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/net.h>
 #include <iprt/log.h>

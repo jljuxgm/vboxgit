@@ -1,4 +1,4 @@
-/* $Id: bioslogo.h 69475 2017-10-28 13:12:42Z vboxsync $ */
+/* $Id: bioslogo.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * BiosLogo - The Private BIOS Logo Interface. (DEV)
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_BiosLogo_h
 #define ___VBox_BiosLogo_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef VBOX_PC_BIOS
 # include <iprt/types.h>

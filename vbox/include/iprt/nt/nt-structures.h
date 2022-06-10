@@ -1,4 +1,4 @@
-/* $Id: nt-structures.h 73458 2018-08-02 21:03:36Z vboxsync $ */
+/* $Id: nt-structures.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - Header for NT structures.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_nt_nt_structures_h___
 #define ___iprt_nt_nt_structures_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #include <iprt/types.h>

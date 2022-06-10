@@ -1,4 +1,4 @@
-/* $Id: s3.h 69105 2017-10-17 10:20:49Z vboxsync $ */
+/* $Id: s3.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * IPRT - Simple Storage Service (S3) Communication API.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___iprt_s3_h
 #define ___iprt_s3_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 

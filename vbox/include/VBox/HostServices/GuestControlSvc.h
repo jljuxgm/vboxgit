@@ -1,4 +1,4 @@
-/* $Id: GuestControlSvc.h 75853 2018-11-30 19:26:42Z vboxsync $ */
+/* $Id: GuestControlSvc.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * Guest control service - Common header for host service and guest clients.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_HostService_GuestControlService_h
 #define ___VBox_HostService_GuestControlService_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/VMMDevCoreTypes.h>
 #include <VBox/VBoxGuestCoreTypes.h>

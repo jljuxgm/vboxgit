@@ -1,4 +1,4 @@
-/* $Id: string.h 76408 2018-12-23 16:38:11Z vboxsync $ */
+/* $Id: string.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_com_string_h
 #define ___VBox_com_string_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Make sure all the stdint.h macros are included - must come first! */
 #ifndef __STDC_LIMIT_MACROS

@@ -1,4 +1,4 @@
-# $Id: .scm-settings 74655 2018-10-07 13:13:05Z vboxsync $
+# $Id: .scm-settings 76507 2018-12-30 03:43:09Z vboxsync $
 ## @file
 # Source code massager settings for the includes.
 #
@@ -60,4 +60,15 @@
 /VBox/HostServices/glext.h:             --external-copyright --no-convert-tabs --no-strip-trailing-blanks
 /VBox/HostServices/glxext.h:            --external-copyright --no-convert-tabs --no-strip-trailing-blanks
 /VBox/HostServices/wglext.h:            --external-copyright --no-convert-tabs --no-strip-trailing-blanks
+
+# Some headers actually shouldn't have include guards:
+/VBox/dbus-calls.h:                     --no-fix-header-guards
+/VBox/VDEPlugSymDefs.h:                 --no-fix-header-guards
+/iprt/asn1-generator-core.h:            --no-fix-header-guards
+/iprt/asn1-generator-sanity.h:          --no-fix-header-guards
+/iprt/asn1-generator-internal-header.h: --no-fix-header-guards
+/iprt/asn1-generator-asn1-decoder.h:    --no-fix-header-guards
+/iprt/asn1-generator-init.h:            --no-fix-header-guards
+/iprt/runtime-loader.h:                 --no-fix-header-guards
+/iprt/bldprog-strtab-template.cpp.h:    --no-fix-header-guards
 

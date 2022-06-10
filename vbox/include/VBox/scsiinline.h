@@ -1,4 +1,4 @@
-/* $Id: scsiinline.h 69181 2017-10-23 18:13:56Z vboxsync $ */
+/* $Id: scsiinline.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VirtualBox: SCSI inline helpers used by devices, drivers, etc.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_scsiinline_h
 #define ___VBox_scsiinline_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/stdint.h>
 

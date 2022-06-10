@@ -1,4 +1,4 @@
-/* $Id: ata.h 69181 2017-10-23 18:13:56Z vboxsync $ */
+/* $Id: ata.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI declarations
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBox_ata_h
 #define ___VBox_ata_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 /* Bits of HD_STATUS */

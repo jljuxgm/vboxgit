@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestLibSharedFolders.h 72627 2018-06-20 13:53:28Z vboxsync $ */
+/* $Id: VBoxGuestLibSharedFolders.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Central calls header.
  */
@@ -30,6 +30,9 @@
 
 #ifndef ___VBox_VBoxGuestLibSharedFolders_h_
 #define ___VBox_VBoxGuestLibSharedFolders_h_
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/shflsvc.h>

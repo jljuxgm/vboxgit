@@ -1,4 +1,4 @@
-/* $Id: VBoxCrHgsmi.h 69107 2017-10-17 10:53:48Z vboxsync $ */
+/* $Id: VBoxCrHgsmi.h 76507 2018-12-30 03:43:09Z vboxsync $ */
 /** @file
  * Document me, pretty please.
  */
@@ -23,8 +23,12 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 #ifndef ___VBox_VBoxCrHgsmi_h
 #define ___VBox_VBoxCrHgsmi_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include "VBoxUhgsmi.h"
