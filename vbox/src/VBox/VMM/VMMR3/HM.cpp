@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 76464 2018-12-25 04:36:48Z vboxsync $ */
+/* $Id: HM.cpp 76477 2018-12-25 08:01:34Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -3079,9 +3079,9 @@ VMMR3_INT_DECL(void) HMR3CheckError(PVM pVM, int iStatusCode)
 
             case VERR_VMX_INVALID_VMCS_PTR:
                 LogRel(("HM: VERR_VMX_INVALID_VMCS_PTR:\n"));
-                LogRel(("HM: CPU[%u] Current pointer      %#RGp vs %#RGp\n", i, pVCpu->hm.s.vmx.LastError.u64VMCSPhys,
+                LogRel(("HM: CPU[%u] Current pointer      %#RGp vs %#RGp\n", i, pVCpu->hm.s.vmx.LastError.u64VmcsPhys,
                                                                                 pVCpu->hm.s.vmx.HCPhysVmcs));
-                LogRel(("HM: CPU[%u] Current VMCS version %#x\n", i, pVCpu->hm.s.vmx.LastError.u32VMCSRevision));
+                LogRel(("HM: CPU[%u] Current VMCS version %#x\n", i, pVCpu->hm.s.vmx.LastError.u32VmcsRev));
                 LogRel(("HM: CPU[%u] Entered Host Cpu     %u\n",  i, pVCpu->hm.s.vmx.LastError.idEnteredCpu));
                 LogRel(("HM: CPU[%u] Current Host Cpu     %u\n",  i, pVCpu->hm.s.vmx.LastError.idCurrentCpu));
                 break;

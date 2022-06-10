@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 76468 2018-12-25 05:00:01Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 76477 2018-12-25 08:01:34Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7303,9 +7303,9 @@ static int hmR0VmxExitToRing3(PVMCPU pVCpu, VBOXSTRICTRC rcExit)
 
     if (RT_UNLIKELY(rcExit == VERR_VMX_INVALID_VMCS_PTR))
     {
-        VMXGetActivatedVmcs(&pVCpu->hm.s.vmx.LastError.u64VMCSPhys);
-        pVCpu->hm.s.vmx.LastError.u32VMCSRevision = *(uint32_t *)pVCpu->hm.s.vmx.pvVmcs;
-        pVCpu->hm.s.vmx.LastError.idEnteredCpu    = pVCpu->hm.s.idEnteredCpu;
+        VMXGetActivatedVmcs(&pVCpu->hm.s.vmx.LastError.u64VmcsPhys);
+        pVCpu->hm.s.vmx.LastError.u32VmcsRev   = *(uint32_t *)pVCpu->hm.s.vmx.pvVmcs;
+        pVCpu->hm.s.vmx.LastError.idEnteredCpu = pVCpu->hm.s.idEnteredCpu;
         /* LastError.idCurrentCpu was updated in hmR0VmxPreRunGuestCommitted(). */
     }
 
