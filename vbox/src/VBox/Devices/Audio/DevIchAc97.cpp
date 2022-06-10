@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 76179 2018-12-12 14:51:09Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 76186 2018-12-12 15:34:40Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -396,13 +396,16 @@ typedef struct AC97STREAM
 {
     /** Stream number (SDn). */
     uint8_t               u8SD;
-    uint8_t               abPadding[7];
+    uint8_t               abPadding0[7];
     /** Bus master registers of this stream. */
     AC97BMREGS            Regs;
     /** Internal state of this stream. */
     AC97STREAMSTATE       State;
     /** Pointer to parent (AC'97 state). */
     R3PTRTYPE(PAC97STATE) pAC97State;
+#if HC_ARCH_BITS == 32
+    uint32_t              Padding1;
+#endif
     /** Debug information. */
     AC97STREAMDBGINFO     Dbg;
 } AC97STREAM, *PAC97STREAM;
