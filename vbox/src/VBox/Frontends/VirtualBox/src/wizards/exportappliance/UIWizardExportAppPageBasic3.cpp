@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 74186 2018-09-11 06:13:54Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 74769 2018-10-11 12:27:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -261,7 +261,7 @@ void UIWizardExportAppPage3::refreshApplianceSettingsWidget()
                 CVirtualSystemDescription comVsd = comMachine.ExportTo(*pAppliance, qobject_cast<UIWizardExportApp*>(wizardImp())->uri());
                 if (comMachine.isOk() && comVsd.isNotNull())
                 {
-                    if (fieldImp("format").toString() == "csp-1.0")
+                    if (fieldImp("isFormatCloudOne").toBool())
                     {
                         /* Populate Cloud Client parameters: */
                         populateCloudClientParameters();
