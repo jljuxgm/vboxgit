@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 75018 2018-10-24 08:15:35Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 75019 2018-10-24 08:20:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1800,8 +1800,8 @@ void UIMachineLogic::sltShowGuestControlDialog()
         pGuestControlDialog->show();
         pGuestControlDialog->setWindowState(pGuestControlDialog->windowState() & ~Qt::WindowMinimized);
         pGuestControlDialog->activateWindow();
-        connect(pGuestControlDialog, &QIManagerDialog::sigClose,
-                this, &UIMachineLogic::sltCloseGuestControlWindow);
+        // connect(pGuestControlDialog, &QIManagerDialog::sigClose,
+        //         this, &UIMachineLogic::sltCloseGuestControlWindow);
     }
 
 }
