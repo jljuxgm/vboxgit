@@ -1,4 +1,4 @@
-/* $Id: the-freebsd-kernel.h 77120 2019-02-01 15:08:46Z vboxsync $ */
+/* $Id: the-freebsd-kernel.h 77129 2019-02-01 16:33:23Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The FreeBSD Kernel Headers.
  */
@@ -126,6 +126,14 @@
 #else
 # define MY_PMAP_ENTER(pPhysMap, AddrR3, pPage, fProt, fWired) \
     pmap_enter(pPhysMap, AddrR3, pPage, fProt, fWired)
+#endif
+
+/**
+ * The VM object lock/unlock wrappers for older kernels.
+ */
+#if __FreeBSD_version < 1000030
+# define VM_OBJECT_WLOCK(a_pObject) VM_OBJECT_LOCK((a_pObject))
+# define VM_OBJECT_WUNLOCK(a_pObject) VM_OBJECT_UNLOCK((a_pObject))
 #endif
 
 /**
