@@ -1,4 +1,4 @@
-# $Id: Makefile.module 77057 2019-01-30 18:05:59Z vboxsync $
+# $Id: Makefile.module 77303 2019-02-13 14:49:11Z vboxsync $
 ## @file
 # VBox Linux Shared Folders VFS Module Makefile.
 #
@@ -63,9 +63,6 @@ ifeq ($(BUILD_TARGET_ARCH),amd64)
  MOD_DEFS += -DRT_ARCH_AMD64 -DVBOX_WITH_64_BITS_GUESTS
 else
  MOD_DEFS += -DRT_ARCH_X86
-endif
-ifdef VBOXSF_USE_DEPRECATED_VBGL_INTERFACE
- MOD_DEFS += -DVBOXSF_USE_DEPRECATED_VBGL_INTERFACE
 endif
 
 ifeq ($(KERN_VERSION), 24)

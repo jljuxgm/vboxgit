@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77138 2019-02-01 19:00:23Z vboxsync $ */
+/* $Id: vfsmod.h 77303 2019-02-13 14:49:11Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -33,9 +33,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-/* VBOXSF_USE_DEPRECATED_VBGL_INTERFACE is also settable in make env. */
-/*#define VBOXSF_USE_DEPRECATED_VBGL_INTERFACE*/
 
 #define LOG_GROUP LOG_GROUP_SHARED_FOLDERS
 #include "the-linux-kernel.h"
