@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 77699 2019-03-13 23:22:08Z vboxsync $ */
+/* $Id: VHD.cpp 77780 2019-03-19 10:48:13Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -891,6 +891,7 @@ static int vhdOpenImage(PVHDIMAGE pImage, unsigned uOpenFlags)
             pImage->uImageFlags &= ~VD_IMAGE_FLAGS_FIXED;
             break;
         default:
+            vhdFreeImage(pImage, false);
             return VERR_NOT_IMPLEMENTED;
     }
 
