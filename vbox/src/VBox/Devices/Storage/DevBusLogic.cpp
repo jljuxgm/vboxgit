@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 76074 2018-12-08 21:46:20Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 76075 2018-12-08 21:56:53Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -403,18 +403,15 @@ typedef struct BUSLOGIC
     RTIOPORT                        IOISABase;
     /** Default ISA I/O port base in FW-compatible format. */
     uint8_t                         uDefaultISABaseCode;
-
     /** Emulated device type. */
     uint8_t                         uDevType;
+
     /** Signature index for Adaptec models. */
     uint8_t                         uAhaSigIdx;
+    uint8_t                         Alignment0[3];
 
     /** Number of mailboxes the guest set up. */
     uint32_t                        cMailbox;
-
-#if HC_ARCH_BITS == 64
-    uint32_t                        Alignment0;
-#endif
 
     /** Time when HBA reset was last initiated. */  /**< @todo does this need to be saved? */
     uint64_t                        u64ResetTime;
