@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 77238 2019-02-10 13:48:07Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 77255 2019-02-11 11:11:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -445,13 +445,20 @@ void UIMediumSelector::sltCreateMedium()
 {
     QUuid uMediumId;
 
-    if (m_enmMediumType == UIMediumDeviceType_Floppy)
-        uMediumId = vboxGlobal().showCreateFloppyDiskDialog(this, m_strMachineName, m_strMachineFolder);
-    else if (m_enmMediumType == UIMediumDeviceType_HardDisk)
-        uMediumId = vboxGlobal().createHDWithNewHDWizard(this, m_strMachineGuestOSTypeId, m_strMachineName, m_strMachineFolder);
-    else if (m_enmMediumType == UIMediumDeviceType_DVD)
-        uMediumId = vboxGlobal().createVisoMediumWithVisoCreator(this, m_strMachineName, m_strMachineFolder);
-
+    switch (m_enmMediumType)
+    {
+        case UIMediumDeviceType_Floppy:
+            uMediumId = vboxGlobal().showCreateFloppyDiskDialog(this, m_strMachineName, m_strMachineFolder);
+            break;
+        case UIMediumDeviceType_HardDisk:
+            uMediumId = vboxGlobal().createHDWithNewHDWizard(this, m_strMachineGuestOSTypeId, m_strMachineName, m_strMachineFolder);
+            break;
+        case UIMediumDeviceType_DVD:
+            uMediumId = vboxGlobal().createVisoMediumWithVisoCreator(this, m_strMachineName, m_strMachineFolder);
+            break;
+        default:
+            break;
+    }
     if (!uMediumId.isNull())
     {
         /* Update the tree widget making sure we show the new item: */

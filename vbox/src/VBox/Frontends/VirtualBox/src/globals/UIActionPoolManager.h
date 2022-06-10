@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 77014 2019-01-28 08:24:50Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 77255 2019-02-11 11:11:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -132,6 +132,7 @@ enum UIActionIndexST
     UIActionIndexST_M_MediumWindow,
     UIActionIndexST_M_Medium,
     UIActionIndexST_M_Medium_S_Add,
+    UIActionIndexST_M_Medium_S_Create,
     UIActionIndexST_M_Medium_S_Copy,
     UIActionIndexST_M_Medium_S_Move,
     UIActionIndexST_M_Medium_S_Remove,
