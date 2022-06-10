@@ -1,4 +1,4 @@
-; $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $ 
+; $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $ 
 ;; @file
 ; Auto Generated source file. Do not edit.
 ;
@@ -6,7 +6,7 @@
 ;
 ; Source file: post.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  BIOS POST routines. Used only during initialization.
 ;  
 ;  
@@ -24,7 +24,7 @@
 ;
 ; Source file: bios.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -70,7 +70,7 @@
 ;
 ; Source file: print.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -116,7 +116,7 @@
 ;
 ; Source file: ata.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -162,7 +162,7 @@
 ;
 ; Source file: floppy.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -208,7 +208,7 @@
 ;
 ; Source file: floppyt.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  Floppy drive tables.
 ;  
 ;  
@@ -226,7 +226,7 @@
 ;
 ; Source file: eltorito.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -272,7 +272,7 @@
 ;
 ; Source file: boot.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -318,7 +318,7 @@
 ;
 ; Source file: keyboard.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -364,7 +364,7 @@
 ;
 ; Source file: disk.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -410,7 +410,7 @@
 ;
 ; Source file: serial.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -456,7 +456,7 @@
 ;
 ; Source file: system.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -502,7 +502,7 @@
 ;
 ; Source file: invop.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  Real mode invalid opcode handler.
 ;  
 ;  
@@ -562,7 +562,7 @@
 ;
 ; Source file: ps2mouse.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -608,7 +608,7 @@
 ;
 ; Source file: parallel.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PC BIOS - ???
 ;  
 ;  
@@ -654,7 +654,7 @@
 ;
 ; Source file: logo.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  Stuff for drawing the BIOS logo.
 ;  
 ;  
@@ -672,7 +672,7 @@
 ;
 ; Source file: scsi.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  SCSI host adapter driver to boot from SCSI disks
 ;  
 ;  
@@ -690,7 +690,7 @@
 ;
 ; Source file: ahci.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  AHCI host adapter driver to boot from SATA disks.
 ;  
 ;  
@@ -708,7 +708,7 @@
 ;
 ; Source file: apm.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  APM BIOS support. Implements APM version 1.2.
 ;  
 ;  
@@ -726,7 +726,7 @@
 ;
 ; Source file: pcibios.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  PCI BIOS support.
 ;  
 ;  
@@ -744,7 +744,7 @@
 ;
 ; Source file: pciutil.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  Utility routines for calling the PCI BIOS.
 ;  
 ;  
@@ -762,7 +762,7 @@
 ;
 ; Source file: vds.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  Utility routines for calling the Virtual DMA Services.
 ;  
 ;  
@@ -780,7 +780,7 @@
 ;
 ; Source file: __U4M.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -799,7 +799,7 @@
 ;
 ; Source file: __U4D.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -818,7 +818,7 @@
 ;
 ; Source file: __U8RS.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -837,7 +837,7 @@
 ;
 ; Source file: __U8LS.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -856,7 +856,7 @@
 ;
 ; Source file: fmemset.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -875,7 +875,7 @@
 ;
 ; Source file: fmemcpy.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -894,7 +894,7 @@
 ;
 ; Source file: pcibio32.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  BIOS32 service directory and 32-bit PCI BIOS entry point
 ;  
 ;  
@@ -932,7 +932,7 @@
 ;
 ; Source file: orgs.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  ???
 ;  
 ;  
@@ -978,7 +978,7 @@
 ;
 ; Source file: DoUInt32Div.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  AHCI host adapter driver to boot from SATA disks.
 ;  
 ;  
@@ -996,7 +996,7 @@
 ;
 ; Source file: ASMBitLastSetU16.asm
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  BiosCommonCode - ASMBitLastSetU16() - borrowed from IPRT.
 ;  
 ;  
@@ -1015,7 +1015,7 @@
 ;
 ; Source file: pci32.c
 ;
-;  $Id: VBoxBiosAlternative8086.asm 75485 2018-11-15 15:08:24Z vboxsync $
+;  $Id: VBoxBiosAlternative8086.asm 75851 2018-11-30 13:55:20Z vboxsync $
 ;  32-bit PCI BIOS wrapper.
 ;  
 ;  
@@ -1179,7 +1179,7 @@ section CONST progbits vstart=0xb0 align=1 ; size=0xcde class=DATA group=DGROUP
 section CONST2 progbits vstart=0xd8e align=1 ; size=0x400 class=DATA group=DGROUP
   ; disGetNextSymbol 0xf0d8e LB 0x400 -> off=0x0 cb=0000000000000018 uValue=00000000000f0d8e 'bios_cvs_version_string'
 bios_cvs_version_string:                     ; 0xf0d8e LB 0x18
-    db  'VirtualBox 6.0.0_BETA2', 000h, 000h
+    db  'VirtualBox 6.0.0_BETA3', 000h, 000h
   ; disGetNextSymbol 0xf0da6 LB 0x3e8 -> off=0x0 cb=0000000000000008 uValue=00000000000f0da6 '_bios_prefix_string'
 _bios_prefix_string:                         ; 0xf0da6 LB 0x8
     db  'BIOS: ', 000h, 000h
@@ -17841,4 +17841,4 @@ biosorg_check_before_or_at_0FFEEh:           ; 0xfff80 LB 0x70
 cpu_reset:                                   ; 0xffff0 LB 0x10
     jmp far 0f000h:0e05bh                     ; ea 5b e0 00 f0              ; 0xffff0 orgs.asm:2055
   ; disGetNextSymbol 0xffff5 LB 0xb -> off=0xb cb=0000000000000000 uValue=0000000000100000 '_dummy_addr_0x100000'
-    db  030h, 036h, 02fh, 032h, 033h, 02fh, 039h, 039h, 000h, 0fbh, 08ah
+    db  030h, 036h, 02fh, 032h, 033h, 02fh, 039h, 039h, 000h, 0fbh, 089h
