@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 77388 2019-02-20 14:26:10Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 78074 2019-04-10 10:43:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -218,8 +218,8 @@ protected:
     /** Holds the include ISOs check-box instance. */
     QCheckBox *m_pIncludeISOsCheckbox;
 
-    /** Holds the account combo-box label instance. */
-    QLabel       *m_pAccountComboBoxLabel;
+    /** Holds the account label instance. */
+    QLabel       *m_pAccountLabel;
     /** Holds the account combo-box instance. */
     QComboBox    *m_pAccountComboBox;
     /** Holds the account management tool-button instance. */
