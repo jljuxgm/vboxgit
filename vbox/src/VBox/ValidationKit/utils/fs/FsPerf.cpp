@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 77007 2019-01-26 18:46:50Z vboxsync $ */
+/* $Id: FsPerf.cpp 77052 2019-01-30 17:38:58Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -1253,6 +1253,9 @@ void fsPerfStatVfs(void)
     RTFSTYPE enmType;
     RTTESTI_CHECK_RC(RTFsQueryType(g_szEmptyDir, &enmType), VINF_SUCCESS);
 
+    g_szDeepDir[g_cchDeepDir] = '\0';
+    PROFILE_FN(RTFsQuerySizes(g_szEmptyDir, &cbTotal, &cbFree, &cbBlock, &cbSector), g_nsTestRun, "RTFsQuerySize/empty");
+    PROFILE_FN(RTFsQuerySizes(g_szDeepDir, &cbTotal, &cbFree, &cbBlock, &cbSector), g_nsTestRun, "RTFsQuerySize/deep");
 }
 
 
@@ -2788,7 +2791,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 77007 $";
+                char szRev[] = "$Revision: 77052 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
