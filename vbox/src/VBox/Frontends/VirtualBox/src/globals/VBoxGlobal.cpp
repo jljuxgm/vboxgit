@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 77166 2019-02-05 14:09:31Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 77167 2019-02-05 14:44:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -78,6 +78,7 @@
 #include "UIVirtualBoxEventHandler.h"
 #include "UIDesktopWidgetWatchdog.h"
 #include "UIVisoCreator.h"
+#include "UIWizardNewVD.h"
 #ifdef VBOX_WS_X11
 # include "UIHostComboEditor.h"
 # include "VBoxX11Helper.h"
@@ -2750,6 +2751,21 @@ QUuid VBoxGlobal::openMediumSelectorDialog(QWidget *pParent, UIMediumDeviceType 
     }
     delete pSelector;
     return QUuid();
+}
+
+QUuid VBoxGlobal::createHDWithNewHDWizard(QWidget *pParent, const QString &strMachineGuestOSTypeId,
+                                          const QString &strMachineFolder)
+{
+    /* Initialize variables: */
+    const CGuestOSType comGuestOSType = vboxGlobal().virtualBox().GetGuestOSType(strMachineGuestOSTypeId);
+    const QFileInfo fileInfo(strMachineFolder);
+    /* Show New VD wizard: */
+    UISafePointerWizardNewVD pWizard = new UIWizardNewVD(pParent, QString(), fileInfo.absolutePath(), comGuestOSType.GetRecommendedHDD());
+    pWizard->prepare();
+    const QUuid uResult = pWizard->exec() == QDialog::Accepted ? pWizard->virtualDisk().GetId() : QUuid();
+    if (pWizard)
+        delete pWizard;
+    return uResult;
 }
 
 void VBoxGlobal::prepareStorageMenu(QMenu &menu,

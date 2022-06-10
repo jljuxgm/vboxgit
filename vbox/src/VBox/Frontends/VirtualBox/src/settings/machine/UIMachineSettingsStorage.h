@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 77167 2019-02-05 14:44:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -753,9 +753,6 @@ private:
     void addControllerWrapper(const QString &strName, KStorageBus enmBus, KStorageControllerType enmType);
     /** Adds attachment with @a enmDevice. */
     void addAttachmentWrapper(KDeviceType enmDevice);
-
-    /** Creates new hard-drive. */
-    QUuid getWithNewHDWizard();
 
     /** Updates additions details according to passed @a enmType. */
     void updateAdditionalDetails(KDeviceType enmType);

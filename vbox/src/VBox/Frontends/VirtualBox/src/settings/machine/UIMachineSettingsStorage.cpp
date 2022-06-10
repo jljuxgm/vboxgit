@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 77167 2019-02-05 14:44:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3081,7 +3081,8 @@ void UIMachineSettingsStorage::sltPrepareOpenMediumMenu()
 
 void UIMachineSettingsStorage::sltCreateNewHardDisk()
 {
-    const QUuid uMediumId = getWithNewHDWizard();
+    const QUuid uMediumId = vboxGlobal().createHDWithNewHDWizard(this, m_strMachineGuestOSTypeId, m_strMachineSettingsFilePath);
+
     if (!uMediumId.isNull())
         m_pMediumIdHolder->setId(uMediumId);
 }
@@ -3805,7 +3806,7 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType enmDevice)
         {
             const int iAnswer = msgCenter().confirmHardDiskAttachmentCreation(strControllerName, this);
             if (iAnswer == AlertButton_Choice1)
-                uMediumId = getWithNewHDWizard();
+                uMediumId = vboxGlobal().createHDWithNewHDWizard(this, m_strMachineGuestOSTypeId, m_strMachineSettingsFilePath);
             else if (iAnswer == AlertButton_Choice2)
                 uMediumId = vboxGlobal().openMediumSelectorDialog(this, UIMediumDeviceType_HardDisk,
                                                                   m_strMachineName, m_strMachineSettingsFilePath);
@@ -3851,20 +3852,6 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType enmDevice)
         /* Revalidate: */
         revalidate();
     }
-}
-
-QUuid UIMachineSettingsStorage::getWithNewHDWizard()
-{
-    /* Initialize variables: */
-    const CGuestOSType comGuestOSType = vboxGlobal().virtualBox().GetGuestOSType(m_strMachineGuestOSTypeId);
-    const QFileInfo fileInfo(m_strMachineSettingsFilePath);
-    /* Show New VD wizard: */
-    UISafePointerWizardNewVD pWizard = new UIWizardNewVD(this, QString(), fileInfo.absolutePath(), comGuestOSType.GetRecommendedHDD());
-    pWizard->prepare();
-    const QUuid uResult = pWizard->exec() == QDialog::Accepted ? pWizard->virtualDisk().GetId() : QUuid();
-    if (pWizard)
-        delete pWizard;
-    return uResult;
 }
 
 void UIMachineSettingsStorage::updateAdditionalDetails(KDeviceType enmType)
