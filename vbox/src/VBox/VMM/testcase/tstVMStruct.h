@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 75671 2018-11-22 15:08:24Z vboxsync $ */
+/* $Id: tstVMStruct.h 76148 2018-12-11 07:02:18Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -174,6 +174,25 @@
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uPrevPauseTick);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uVmentryTick);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.offVirtApicWrite);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrFeatCtrl);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrBasic);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrPinCtls);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrProcCtls);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrProcCtls2);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrExitCtls);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrEntryCtls);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrTruePinCtls);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrTrueProcCtls);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrTrueEntryCtls);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrTrueExitCtls);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrMisc);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrCr0Fixed0);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrCr0Fixed1);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrCr4Fixed0);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrCr4Fixed1);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrVmcsEnum);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrVmFunc);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uMsrEptVpidCaps);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.enmHwvirt);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.fGif);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.fLocalForcedActions);

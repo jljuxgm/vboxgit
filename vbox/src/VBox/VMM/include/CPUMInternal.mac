@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 74798 2018-10-12 12:25:41Z vboxsync $
+; $Id: CPUMInternal.mac 76148 2018-12-11 07:02:18Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -252,6 +252,7 @@ struc CPUMCPU
     .Guest.hwvirt.svm.pvIoBitmapR3           RTR3PTR_RES  1
     alignb 8
     .Guest.hwvirt.svm.HCPhysVmcb             RTHCPHYS_RES 1
+    .Guest.hwvirt.svm.u64Padding0            resb         120
     .Guest.hwvirt.enmHwvirt                  resd         1
     .Guest.hwvirt.fGif                       resb         1
     alignb 8
@@ -541,6 +542,7 @@ struc CPUMCPU
     .Hyper.hwvirt.svm.pvIoBitmapR3           RTR3PTR_RES  1
     alignb 8
     .Hyper.hwvirt.svm.HCPhysVmcb             RTHCPHYS_RES 1
+    .Hyper.hwvirt.svm.u64Padding0            resb         120
     .Hyper.hwvirt.enmHwvirt                  resd         1
     .Hyper.hwvirt.fGif                       resb         1
     alignb 8
