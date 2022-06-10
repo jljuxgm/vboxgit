@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-darwin.cpp 76384 2018-12-23 00:54:07Z vboxsync $ */
+/* $Id: DrvHostBase-darwin.cpp 76396 2018-12-23 04:28:07Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, OS X specifics.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
