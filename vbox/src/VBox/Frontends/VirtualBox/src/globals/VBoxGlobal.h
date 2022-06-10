@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 72821 2018-07-03 11:57:53Z vboxsync $ */
+/* $Id: VBoxGlobal.h 72822 2018-07-03 13:43:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -474,15 +474,6 @@ public:
 
     /** @name COM: Virtual Media stuff.
      * @{ */
-        /** Returns medium formats which are currently supported by VirtualBox for the given @a enmDeviceType. */
-        QList<QPair<QString, QString> > MediumBackends(KDeviceType enmDeviceType) const;
-        /** Returns which hard disk formats are currently supported by VirtualBox. */
-        QList<QPair<QString, QString> > HDDBackends() const;
-        /** Returns which optical disk formats are currently supported by VirtualBox. */
-        QList<QPair<QString, QString> > DVDBackends() const;
-        /** Returns which floppy disk formats are currently supported by VirtualBox. */
-        QList<QPair<QString, QString> > FloppyBackends() const;
-
         /** Starts medium enumeration. */
         void startMediumEnumeration();
         /** Returns whether medium enumeration is in progress. */
