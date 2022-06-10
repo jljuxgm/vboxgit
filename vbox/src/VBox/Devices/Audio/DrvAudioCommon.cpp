@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 73208 2018-07-18 15:00:47Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 73211 2018-07-18 15:12:57Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1024,6 +1024,8 @@ const char *DrvAudioHlpStreamCmdToStr(PDMAUDIOSTREAMCMD enmCmd)
         case PDMAUDIOSTREAMCMD_DISABLE: return "Disable";
         case PDMAUDIOSTREAMCMD_PAUSE:   return "Pause";
         case PDMAUDIOSTREAMCMD_RESUME:  return "Resume";
+        case PDMAUDIOSTREAMCMD_DRAIN:   return "Drain";
+        case PDMAUDIOSTREAMCMD_DROP:    return "Drop";
         default:                        break;
     }
 
