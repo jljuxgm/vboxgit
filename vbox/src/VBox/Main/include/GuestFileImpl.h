@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: GuestFileImpl.h 77387 2019-02-20 14:20:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling implementation.
  */
@@ -69,8 +69,8 @@ public:
     int             i_waitForRead(GuestWaitEvent *pEvent, uint32_t uTimeoutMS, void *pvData, size_t cbData, uint32_t *pcbRead);
     int             i_waitForStatusChange(GuestWaitEvent *pEvent, uint32_t uTimeoutMS, FileStatus_T *pFileStatus, int *pGuestRc);
     int             i_waitForWrite(GuestWaitEvent *pEvent, uint32_t uTimeoutMS, uint32_t *pcbWritten);
-    int             i_writeData(uint32_t uTimeoutMS, void *pvData, uint32_t cbData, uint32_t *pcbWritten);
-    int             i_writeDataAt(uint64_t uOffset, uint32_t uTimeoutMS, void *pvData, uint32_t cbData, uint32_t *pcbWritten);
+    int             i_writeData(uint32_t uTimeoutMS, const void *pvData, uint32_t cbData, uint32_t *pcbWritten);
+    int             i_writeDataAt(uint64_t uOffset, uint32_t uTimeoutMS, const void *pvData, uint32_t cbData, uint32_t *pcbWritten);
     /** @}  */
 
 private:
