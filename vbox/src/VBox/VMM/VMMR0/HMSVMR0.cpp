@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 77903 2019-03-27 08:53:04Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 77906 2019-03-27 09:40:46Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3538,6 +3538,11 @@ static void hmR0SvmTrpmTrapToPendingEvent(PVMCPU pVCpu)
                 Event.n.u3Type = SVM_EVENT_NMI;
                 break;
             }
+
+            case X86_XCPT_BP:
+            case X86_XCPT_OF:
+                AssertMsgFailed(("Invalid TRPM vector %d for event type %d\n", uVector, enmTrpmEvent));
+                RT_FALL_THRU();
 
             case X86_XCPT_PF:
             case X86_XCPT_DF:
