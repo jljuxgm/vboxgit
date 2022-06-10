@@ -1,4 +1,4 @@
-/** $Id: VBoxSFFile.cpp 76146 2018-12-11 05:22:18Z vboxsync $ */
+/** $Id: VBoxSFFile.cpp 76448 2018-12-25 00:38:06Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, the file level IFS EPs.
  */
@@ -38,6 +38,7 @@
 #include <VBox/log.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/mem.h>
 
 

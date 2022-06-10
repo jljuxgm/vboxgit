@@ -1,4 +1,4 @@
-/* $Id: VBoxSFInit.cpp 76146 2018-12-11 05:22:18Z vboxsync $ */
+/* $Id: VBoxSFInit.cpp 76448 2018-12-25 00:38:06Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, Initialization.
  */
@@ -39,6 +39,7 @@
 #include <VBox/VBoxGuest.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
+#include <iprt/errcore.h>
 #include <iprt/initterm.h>
 
 
