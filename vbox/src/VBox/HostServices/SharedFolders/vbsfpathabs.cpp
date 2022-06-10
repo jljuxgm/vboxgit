@@ -1,4 +1,4 @@
-/* $Id: vbsfpathabs.cpp 75506 2018-11-16 02:38:27Z vboxsync $ */
+/* $Id: vbsfpathabs.cpp 76365 2018-12-22 02:15:30Z vboxsync $ */
 /** @file
  * Shared Folders Service - guest/host path convertion and verification.
  */
@@ -20,6 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_SHARED_FOLDERS
+#include <iprt/err.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
 
