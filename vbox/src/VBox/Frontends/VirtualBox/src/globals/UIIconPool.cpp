@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 72711 2018-06-27 18:33:40Z vboxsync $ */
+/* $Id: UIIconPool.cpp 73127 2018-07-13 15:50:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -468,6 +468,9 @@ QIcon UIIconPoolGeneral::guestOSTypeIcon(const QString &strOSTypeID) const
         /* Compose proper icon if we have that 'guest OS type' known: */
         if (m_guestOSTypeIconNames.contains(strOSTypeID))
             m_guestOSTypeIcons[strOSTypeID] = iconSet(m_guestOSTypeIconNames[strOSTypeID]);
+        /* Assign fallback icon if we do NOT have that 'guest OS type' registered: */
+        else if (!strOSTypeID.isNull())
+            m_guestOSTypeIcons[strOSTypeID] = iconSet(m_guestOSTypeIconNames["Other"]);
         /* Assign fallback icon if we do NOT have that 'guest OS type' known: */
         else
             m_guestOSTypeIcons[strOSTypeID] = iconSet(nullIcon);
