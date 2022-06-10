@@ -1,4 +1,4 @@
-/* $Id: fuzz.cpp 77513 2019-02-28 19:31:45Z vboxsync $ */
+/* $Id: fuzz.cpp 77514 2019-02-28 20:18:39Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
@@ -389,6 +389,7 @@ static DECLCALLBACK(int) rtFuzzCtxMutatorExportDefault(PRTFUZZCTXINT pThis, PCRT
                                                        PFNRTFUZZCTXEXPORT pfnExport, void *pvUser);
 static DECLCALLBACK(int) rtFuzzCtxMutatorImportDefault(PRTFUZZCTXINT pThis, PCRTFUZZMUTATION pMutation, void *pvMutation,
                                                       PFNRTFUZZCTXIMPORT pfnImport, void *pvUser);
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
