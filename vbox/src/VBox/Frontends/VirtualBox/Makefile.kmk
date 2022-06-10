@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75220 2018-11-02 08:07:11Z vboxsync $
+# $Id: Makefile.kmk 75222 2018-11-02 12:37:05Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -763,6 +763,7 @@ ifndef VBOX_GUI_WITH_SHARED_LIBRARY
 	src/extensions/QIDialogButtonBox.h \
 	src/extensions/QIFileDialog.h \
 	src/extensions/QIFlowLayout.h \
+	src/extensions/QIInputDialog.h \
 	src/extensions/QILabel.h \
 	src/extensions/QILabelSeparator.h \
 	src/extensions/QILineEdit.h \
@@ -1050,6 +1051,7 @@ ifdef VBOX_GUI_WITH_SHARED_LIBRARY
 	src/extensions/QIDialogButtonBox.h \
 	src/extensions/QIFileDialog.h \
 	src/extensions/QIFlowLayout.h \
+	src/extensions/QIInputDialog.h \
 	src/extensions/QILabel.h \
 	src/extensions/QILabelSeparator.h \
 	src/extensions/QILineEdit.h \
@@ -1463,6 +1465,7 @@ ifndef VBOX_GUI_WITH_SHARED_LIBRARY
 	src/extensions/QIDialogButtonBox.cpp \
 	src/extensions/QIFileDialog.cpp \
 	src/extensions/QIFlowLayout.cpp \
+	src/extensions/QIInputDialog.cpp \
 	src/extensions/QILabel.cpp \
 	src/extensions/QILabelSeparator.cpp \
 	src/extensions/QILineEdit.cpp \
@@ -1802,6 +1805,7 @@ ifdef VBOX_GUI_WITH_SHARED_LIBRARY
 	src/extensions/QIDialogButtonBox.cpp \
 	src/extensions/QIFileDialog.cpp \
 	src/extensions/QIFlowLayout.cpp \
+	src/extensions/QIInputDialog.cpp \
 	src/extensions/QILabel.cpp \
 	src/extensions/QILabelSeparator.cpp \
 	src/extensions/QILineEdit.cpp \
