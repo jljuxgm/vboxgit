@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 73420 2018-08-01 12:35:28Z vboxsync $ */
+/* $Id: DrvAudio.h 73423 2018-08-01 13:53:18Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -215,6 +215,11 @@ int DrvAudioHlpStreamCfgCopy(PPDMAUDIOSTREAMCFG pDstCfg, const PPDMAUDIOSTREAMCF
 PPDMAUDIOSTREAMCFG DrvAudioHlpStreamCfgDup(const PPDMAUDIOSTREAMCFG pCfg);
 void DrvAudioHlpStreamCfgFree(PPDMAUDIOSTREAMCFG pCfg);
 const char *DrvAudioHlpStreamCmdToStr(PDMAUDIOSTREAMCMD enmCmd);
+/** @}  */
+
+/** @name Audio stream helper methods.
+ * @{ */
+bool DrvAudioHlpStreamStatusIsReady(PDMAUDIOSTREAMSTS enmStatus);
 /** @}  */
 
 /** @name Audio file (name) helper methods.

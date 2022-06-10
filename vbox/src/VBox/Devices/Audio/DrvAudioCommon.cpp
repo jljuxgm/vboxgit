@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 73420 2018-08-01 12:35:28Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 73423 2018-08-01 13:53:18Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1029,6 +1029,24 @@ const char *DrvAudioHlpStreamCmdToStr(PDMAUDIOSTREAMCMD enmCmd)
 
     AssertMsgFailed(("Invalid stream command %ld\n", enmCmd));
     return "Unknown";
+}
+
+/**
+ * Returns @c true if the given stream status indicates a ready-to-operate stream,
+ * @c false if not.
+ *
+ * @returns @c true if ready to operate, @c if not.
+ * @param   enmStatus           Stream status to evaluate.
+ */
+bool DrvAudioHlpStreamStatusIsReady(PDMAUDIOSTREAMSTS enmStatus)
+{
+    AssertReturn(enmStatus & PDMAUDIOSTREAMSTS_VALID_MASK, false);
+
+    return      enmStatus & PDMAUDIOSTREAMSTS_FLAG_INITIALIZED
+           &&   enmStatus & PDMAUDIOSTREAMSTS_FLAG_ENABLED
+           && !(enmStatus & PDMAUDIOSTREAMSTS_FLAG_PAUSED)
+           && !(enmStatus & PDMAUDIOSTREAMSTS_FLAG_PENDING_DISABLE)
+           && !(enmStatus & PDMAUDIOSTREAMSTS_FLAG_PENDING_REINIT);
 }
 
 /**
