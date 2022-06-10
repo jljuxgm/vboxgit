@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 74949 2018-10-19 15:43:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -1043,7 +1043,7 @@ void UISnapshotPane::sltHandleCurrentItemChange()
     updateActionStates();
 
     /* Update details-widget if it's visible: */
-    if (pSnapshotItem && m_pDetailsWidget->isVisible())
+    if (pSnapshotItem && !m_pDetailsWidget->isHidden())
     {
         if (pSnapshotItem->isCurrentStateItem())
             m_pDetailsWidget->setData(m_comMachine);
