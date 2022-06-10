@@ -1,4 +1,4 @@
-/* $Id: path.cpp 78355 2019-04-30 03:48:46Z vboxsync $ */
+/* $Id: path.cpp 78365 2019-05-02 21:49:04Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Path related routines.
  */
@@ -569,6 +569,14 @@ NTSTATUS VBoxMRxCreate(IN OUT PRX_CONTEXT RxContext)
             RxFinishFcbInitialization(capFcb, (RX_FILE_TYPE)RDBSS_NTC_STORAGE_TYPE_DIRECTORY, &InitPacket);
         else
             RxFinishFcbInitialization(capFcb, (RX_FILE_TYPE)RDBSS_NTC_STORAGE_TYPE_FILE, &InitPacket);
+    }
+    /*
+     * See if the size has changed and update the FCB if it has.
+     */
+    else
+    {
+        /** @todo Need to check RDBSS stack for locking semantics before updating
+         *        anything. */
     }
 
     SrvOpen->BufferingFlags = 0;
