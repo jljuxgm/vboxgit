@@ -1,4 +1,4 @@
-/* $Id: tstSharedFolderService.cpp 77276 2019-02-12 13:44:35Z vboxsync $ */
+/* $Id: tstSharedFolderService.cpp 77685 2019-03-13 17:00:36Z vboxsync $ */
 /** @file
  * Testcase for the shared folder service vbsf API.
  *
@@ -368,7 +368,7 @@ static char testRTFileOpenName[256];
 static uint64_t testRTFileOpenFlags;
 static RTFILE testRTFileOpenpFile;
 
-extern int  testRTFileOpen(PRTFILE pFile, const char *pszFilename, uint64_t fOpen)
+extern int  testRTFileOpenEx(const char *pszFilename, uint64_t fOpen, PRTFILE phFile, PRTFILEACTION penmActionTaken)
 {
  /* RTPrintf("%s, pszFilename=%s, fOpen=0x%llx\n", __PRETTY_FUNCTION__,
              pszFilename, LLUIFY(fOpen)); */
@@ -376,7 +376,8 @@ extern int  testRTFileOpen(PRTFILE pFile, const char *pszFilename, uint64_t fOpe
     testRTFileOpenFlags = fOpen;
     if (g_fFailIfNotLowercase && !RTStrIsLowerCased(strpbrk(pszFilename, "/\\")))
         return VERR_FILE_NOT_FOUND;
-    *pFile = testRTFileOpenpFile;
+    *phFile = testRTFileOpenpFile;
+    *penmActionTaken = RTFILEACTION_CREATED;
     testRTFileOpenpFile = 0;
     return VINF_SUCCESS;
 }
