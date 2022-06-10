@@ -1,4 +1,4 @@
-/* $Id: VBoxSDS.cpp 71716 2018-04-06 18:16:30Z vboxsync $ */
+/* $Id: VBoxSDS.cpp 73358 2018-07-25 18:47:23Z vboxsync $ */
 /** @file
  * VBoxSDS - COM global service main entry (System Directory Service)
  */
@@ -140,12 +140,6 @@ public:
     virtual ~CWindowsServiceModule()
     {
         s_pInstance = NULL;
-    }
-
-    /** @todo Nobody calls this method and it doesn't do anythin...   */
-    virtual HRESULT InitializeSecurity() throw()
-    {
-        return S_OK;
     }
 
     HRESULT startService(int /*nShowCmd*/) throw()
