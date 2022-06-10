@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 73777 2018-08-20 10:36:51Z vboxsync $ */
+/* $Id: UartCore.cpp 74446 2018-09-24 16:05:11Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -578,6 +578,7 @@ static void uartR3ParamsUpdate(PUARTCORE pThis)
                            pThis->pDevInsR3->iInstance, uBps, s_aszParity[enmParity], cDataBits, s_aszStopBits[enmStopBits], rc));
 
         /* Changed parameters will flush all receive queues, so there won't be any data to read even if indicated. */
+        pThis->pDrvSerial->pfnQueuesFlush(pThis->pDrvSerial, true /*fQueueRecv*/, false /*fQueueXmit*/);
         ASMAtomicWriteU32(&pThis->cbAvailRdr, 0);
         UART_REG_CLR(pThis->uRegLsr, UART_REG_LSR_DR);
     }
@@ -1389,9 +1390,9 @@ static DECLCALLBACK(int) uartR3DataAvailRdrNotify(PPDMISERIALPORT pInterface, si
 
     AssertMsg((uint32_t)cbAvail == cbAvail, ("Too much data available\n"));
 
+    PDMCritSectEnter(&pThis->CritSect, VERR_IGNORED);
     uint32_t cbAvailOld = ASMAtomicAddU32(&pThis->cbAvailRdr, (uint32_t)cbAvail);
     LogFlow(("    cbAvailRdr=%u -> cbAvailRdr=%u\n", cbAvailOld, cbAvail + cbAvailOld));
-    PDMCritSectEnter(&pThis->CritSect, VERR_IGNORED);
     if (pThis->uRegFcr & UART_REG_FCR_FIFO_EN)
         uartR3RecvFifoFill(pThis);
     else if (!cbAvailOld)
