@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 72030 2018-04-26 08:34:29Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 73841 2018-08-22 17:13:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -512,6 +512,7 @@ public:
         RuntimeMenuInputActionType_TypeAltPrintScreen = RT_BIT(7),
         RuntimeMenuInputActionType_Mouse              = RT_BIT(8),
         RuntimeMenuInputActionType_MouseIntegration   = RT_BIT(9),
+        RuntimeMenuInputActionType_TypeHostKeyCombo   = RT_BIT(10),
         RuntimeMenuInputActionType_All                = 0xFFFF
     };
 

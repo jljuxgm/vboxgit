@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 70831 2018-01-31 13:23:58Z vboxsync $ */
+/* $Id: UIMachineLogic.h 73841 2018-08-22 17:13:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -268,6 +268,7 @@ private slots:
     void sltTypeInsert();
     void sltTypePrintScreen();
     void sltTypeAltPrintScreen();
+    void sltTypeHostKeyComboPressRelease(bool);
     void sltTakeSnapshot();
     void sltShowInformationDialog();
     void sltReset();
