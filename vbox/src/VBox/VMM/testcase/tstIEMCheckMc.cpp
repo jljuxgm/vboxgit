@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 73937 2018-08-29 06:12:35Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 74015 2018-09-01 04:20:29Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -128,8 +128,8 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEMOP_HLP_DONE_DECODING_NO_LOCK_REPZ_OR_REPNZ_PREFIXES()                                    do { } while (0)
 #define IEMOP_HLP_DONE_DECODING_NO_SIZE_OP_REPZ_OR_REPNZ_PREFIXES()                                 do { } while (0)
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
-# define IEMOP_HLP_VMX_INSTR()                              do { } while (0)
-# define IEMOP_HLP_IN_VMX_OPERATION()                       do { } while (0)
+# define IEMOP_HLP_VMX_INSTR(a_szInstr, a_InsDiagPrefix)                                            do { } while (0)
+# define IEMOP_HLP_IN_VMX_OPERATION(a_szInstr, a_InsDiagPrefix)                                     do { } while (0)
 #endif
 
 
