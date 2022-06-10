@@ -1,4 +1,4 @@
-/* $Id: VideoRecStream.cpp 74994 2018-10-23 12:04:40Z vboxsync $ */
+/* $Id: VideoRecStream.cpp 74995 2018-10-23 12:15:27Z vboxsync $ */
 /** @file
  * Video recording stream code.
  */
@@ -37,6 +37,7 @@
 
 #include "VideoRec.h"
 #include "VideoRecStream.h"
+#include "WebMWriter.h"
 
 
 /**

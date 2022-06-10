@@ -1,4 +1,4 @@
-/* $Id: VideoRec.h 74992 2018-10-23 11:09:22Z vboxsync $ */
+/* $Id: VideoRec.h 74995 2018-10-23 12:15:27Z vboxsync $ */
 /** @file
  * Video recording code header.
  */
@@ -19,6 +19,7 @@
 #define ____H_VIDEOREC
 
 #include <VBox/com/array.h>
+#include <VBox/com/string.h>
 #include <VBox/com/VirtualBox.h>
 #include <VBox/err.h>
 
