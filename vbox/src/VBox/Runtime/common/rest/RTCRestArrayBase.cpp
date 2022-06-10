@@ -1,4 +1,4 @@
-/* $Id: RTCRestArrayBase.cpp 74193 2018-09-11 11:30:05Z vboxsync $ */
+/* $Id: RTCRestArrayBase.cpp 74244 2018-09-13 14:21:37Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestArrayBase implementation.
  */
@@ -102,7 +102,7 @@ RTCRestOutputBase &RTCRestArrayBase::serializeAsJson(RTCRestOutputBase &a_rDst) 
         for (size_t i = 0; i < m_cElements; i++)
         {
             m_papElements[i]->serializeAsJson(a_rDst);
-            if (i < m_cElements)
+            if (i < m_cElements - 1)
                 a_rDst.printf(",\n");
             else
                 a_rDst.printf("\n");
