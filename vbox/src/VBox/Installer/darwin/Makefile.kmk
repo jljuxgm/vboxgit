@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75398 2018-11-12 14:48:52Z vboxsync $
+# $Id: Makefile.kmk 75400 2018-11-12 15:21:57Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -74,7 +74,6 @@ darwin-docs_SOURCES = \
 #
 # The packing.
 #
-$(VBOX_VERSION_STRING)-r$(VBOX_SVN_REV)
 PACKING += $(VBOX_PATH_DIST)/VirtualBox-$(VBOX_VERSION_STRING)-r$(VBOX_SVN_REV).dmg
 #OTHER_CLEAN = TODO
 
