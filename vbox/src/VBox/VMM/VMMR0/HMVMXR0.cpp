@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78242 2019-04-22 09:05:27Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78243 2019-04-22 10:14:27Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3137,7 +3137,8 @@ static int hmR0VmxSetupVmcsProcCtls(PVMCPU pVCpu, PVMXVMCSINFO pVmcsInfo)
     pVmcsInfo->u32ProcCtls = fVal;
 
     /* Set up MSR permissions that don't change through the lifetime of the VM. */
-    hmR0VmxSetupVmcsMsrPermissions(pVCpu, pVmcsInfo, false /* fIsNstGstVmcs */);
+    if (pVmcsInfo->u32ProcCtls & VMX_PROC_CTLS_USE_MSR_BITMAPS)
+        hmR0VmxSetupVmcsMsrPermissions(pVCpu, pVmcsInfo, false /* fIsNstGstVmcs */);
 
     /* Set up secondary processor-based VM-execution controls if the CPU supports it. */
     if (pVmcsInfo->u32ProcCtls & VMX_PROC_CTLS_USE_SECONDARY_CTLS)
