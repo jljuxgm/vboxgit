@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 73650 2018-08-14 11:46:40Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 73651 2018-08-14 11:51:32Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1439,8 +1439,9 @@ static void ichac97R3StreamUpdate(PAC97STATE pThis, PAC97STREAM pStream, bool fI
 
     if (pStream->u8SD == AC97SOUNDSOURCE_PO_INDEX) /* Output (SDO). */
     {
+#ifdef LOG_ENABLED
         const uint64_t deltaLastUpdateNs = RTTimeNanoTS() - pStream->State.tsLastUpdateNs;
-
+#endif
         pStream->State.tsLastUpdateNs = RTTimeNanoTS();
 
         PPDMAUDIOPCMPROPS pProps = &pStream->State.Cfg.Props;
