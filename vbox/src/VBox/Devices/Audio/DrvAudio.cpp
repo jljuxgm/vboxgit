@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 73640 2018-08-13 16:54:40Z vboxsync $ */
+/* $Id: DrvAudio.cpp 73652 2018-08-14 12:46:49Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -616,17 +616,13 @@ static int drvAudioStreamInitInternal(PDRVAUDIO pThis,
     LogRel2(("Audio: Period size of stream '%s' is %RU64ms (%RU32 frames)\n",
              pStream->szName, msPeriod, CfgHostAcq.Backend.cfPeriod));
 
-    /* Set set host buffer size multiplicator. */
-    const unsigned cHstBufferFactor = 2; /** @todo Make this configurable. */
-
     /* Destroy any former mixing buffer. */
     AudioMixBufDestroy(&pStream->Host.MixBuf);
 
     /* Make sure to (re-)set the host buffer's shift size. */
     CfgHostAcq.Props.cShift = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(CfgHostAcq.Props.cBytes, CfgHostAcq.Props.cChannels);
 
-    rc = AudioMixBufInit(&pStream->Host.MixBuf, pStream->szName, &CfgHostAcq.Props,
-                        CfgHostAcq.Backend.cfBufferSize * cHstBufferFactor);
+    rc = AudioMixBufInit(&pStream->Host.MixBuf, pStream->szName, &CfgHostAcq.Props, CfgHostAcq.Backend.cfBufferSize);
     AssertRC(rc);
 
     /* Make a copy of the acquired host stream configuration. */
@@ -651,11 +647,7 @@ static int drvAudioStreamInitInternal(PDRVAUDIO pThis,
     /* Make sure to (re-)set the guest buffer's shift size. */
     pCfgGuest->Props.cShift = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(pCfgGuest->Props.cBytes, pCfgGuest->Props.cChannels);
 
-    /* Set set guest buffer size multiplicator. */
-    const unsigned cGstBufferFactor = 4; /** @todo Make this configurable. */
-
-    rc = AudioMixBufInit(&pStream->Guest.MixBuf, pStream->szName, &pCfgGuest->Props,
-                         CfgHostAcq.Backend.cfBufferSize * cGstBufferFactor);
+    rc = AudioMixBufInit(&pStream->Guest.MixBuf, pStream->szName, &pCfgGuest->Props, CfgHostAcq.Backend.cfBufferSize);
     AssertRC(rc);
 
     /* Make a copy of the guest stream configuration. */
