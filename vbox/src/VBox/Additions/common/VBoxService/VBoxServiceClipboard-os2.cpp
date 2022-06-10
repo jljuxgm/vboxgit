@@ -1,4 +1,4 @@
-/** $Id: VBoxServiceClipboard-os2.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/** $Id: VBoxServiceClipboard-os2.cpp 76441 2018-12-24 15:16:48Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Clipboard Service, OS/2.
  */
@@ -42,14 +42,15 @@
 #define INCL_ERRORS
 #include <os2.h>
 
-#include <iprt/thread.h>
-#include <iprt/string.h>
-#include <iprt/semaphore.h>
-#include <iprt/time.h>
+#include <iprt/asm.h>
+#include <iprt/assert.h>
 #include <iprt/mem.h>
 #include <iprt/param.h>
-#include <iprt/assert.h>
-#include <iprt/asm.h>
+#include <iprt/semaphore.h>
+#include <iprt/string.h>
+#include <iprt/thread.h>
+#include <iprt/time.h>
+#include <iprt/utf16.h>
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include "VBoxServiceInternal.h"
