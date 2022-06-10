@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromNtStatus.cpp 75951 2018-12-04 17:09:47Z vboxsync $ */
+/* $Id: RTErrConvertFromNtStatus.cpp 76119 2018-12-10 13:24:12Z vboxsync $ */
 /** @file
  * IPRT - Convert NT status codes to iprt status codes.
  */
@@ -85,6 +85,8 @@ RTDECL(int)  RTErrConvertFromNtStatus(long lNativeCode)
         case STATUS_SHARING_VIOLATION:      return VERR_SHARING_VIOLATION;
         case STATUS_NO_MEDIA_IN_DEVICE:     return VERR_DRIVE_IS_EMPTY;
 
+        case STATUS_REPARSE_POINT_NOT_RESOLVED:
+                                            return VERR_TOO_MANY_SYMLINKS;
         case STATUS_UNEXPECTED_NETWORK_ERROR:
                                             return VERR_NET_IO_ERROR;
         case STATUS_INVALID_IMAGE_HASH:     return VERR_LDR_IMAGE_HASH;
