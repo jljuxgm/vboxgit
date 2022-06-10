@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glLdr.h 76267 2018-12-17 15:47:31Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glLdr.h 76270 2018-12-17 18:20:07Z vboxsync $ */
 /** @file
  * DevVGA - VMWare SVGA device - 3D part, dynamic loading of GL function.
  */
@@ -348,6 +348,9 @@ GLPFN Window (* pfn_XDefaultRootWindow)(Display *display);
 
 GLPFN int (* pfn_XDestroyWindow)(Display *display, Window w);
 #define XDestroyWindow pfn_XDestroyWindow
+
+GLPFN Status (* pfn_XInitThreads)(void);
+#define XInitThreads pfn_XInitThreads
 
 GLPFN int (* pfn_XNextEvent)(Display *display, XEvent *event_return);
 #define XNextEvent pfn_XNextEvent
