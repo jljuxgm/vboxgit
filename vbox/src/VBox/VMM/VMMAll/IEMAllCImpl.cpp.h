@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 74522 2018-09-28 12:30:00Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 74532 2018-09-29 02:37:16Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -6847,6 +6847,12 @@ IEM_CIMPL_DEF_0(iemCImpl_cpuid)
         Log2(("cpuid: Guest intercept -> #VMEXIT\n"));
         IEM_SVM_UPDATE_NRIP(pVCpu);
         IEM_SVM_VMEXIT_RET(pVCpu, SVM_EXIT_CPUID, 0 /* uExitInfo1 */, 0 /* uExitInfo2 */);
+    }
+
+    if (IEM_VMX_IS_NON_ROOT_MODE(pVCpu))
+    {
+        Log2(("cpuid: Guest intercept -> VM-exit\n"));
+        IEM_VMX_VMEXIT_INSTR_RET(pVCpu, VMX_EXIT_CPUID, cbInstr);
     }
 
     CPUMGetGuestCpuId(pVCpu, pVCpu->cpum.GstCtx.eax, pVCpu->cpum.GstCtx.ecx,

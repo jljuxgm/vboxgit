@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74523 2018-09-28 12:43:19Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74532 2018-09-29 02:37:16Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -28,7 +28,6 @@
  *  VMX_EXIT_INT_WINDOW
  *  VMX_EXIT_NMI_WINDOW
  *  VMX_EXIT_TASK_SWITCH
- *  VMX_EXIT_CPUID
  *  VMX_EXIT_GETSEC
  *  VMX_EXIT_HLT
  *  VMX_EXIT_INVD
