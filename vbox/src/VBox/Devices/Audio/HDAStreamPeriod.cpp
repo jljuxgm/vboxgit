@@ -1,4 +1,4 @@
-/* $Id: HDAStreamPeriod.cpp 71736 2018-04-07 21:29:18Z vboxsync $ */
+/* $Id: HDAStreamPeriod.cpp 76048 2018-12-07 10:30:38Z vboxsync $ */
 /** @file
  * HDAStreamPeriod.cpp - Stream period functions for HD Audio.
  *
@@ -88,7 +88,7 @@ int hdaR3StreamPeriodInit(PHDASTREAMPERIOD pPeriod,
 {
     if (   !u16LVI
         || !u32CBL
-        || !DrvAudioHlpStreamCfgIsValid(pStreamCfg))
+        || !DrvAudioHlpPCMPropsAreValid(&pStreamCfg->Props))
     {
         return VERR_INVALID_PARAMETER;
     }
