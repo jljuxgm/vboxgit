@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73404 2018-07-31 09:04:55Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73408 2018-07-31 11:32:55Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -656,7 +656,7 @@ int AudioMixerSinkCreateStream(PAUDMIXSINK pSink,
 
     if (RT_SUCCESS(rc))
     {
-        rc = RTCircBufCreate(&pMixStream->pCircBuf, DrvAudioHlpMsToBytes(100 /* ms */, &pSink->PCMProps)); /** @todo Make this configurable. */
+        rc = RTCircBufCreate(&pMixStream->pCircBuf, DrvAudioHlpMilliToBytes(100 /* ms */, &pSink->PCMProps)); /** @todo Make this configurable. */
         AssertRC(rc);
     }
 
@@ -930,7 +930,7 @@ uint32_t AudioMixerSinkGetWritable(PAUDMIXSINK pSink)
 # error "Implement me!"
 #else
         /* Return how much data we expect since the last write. */
-        cbWritable = DrvAudioHlpMsToBytes(RTTimeMilliTS() - pSink->tsLastReadWrittenMs, &pSink->PCMProps);
+        cbWritable = DrvAudioHlpMilliToBytes(RTTimeMilliTS() - pSink->tsLastReadWrittenMs, &pSink->PCMProps);
 #endif
     }
 

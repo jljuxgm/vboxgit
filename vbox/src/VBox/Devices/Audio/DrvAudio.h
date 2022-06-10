@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 73407 2018-07-31 11:25:00Z vboxsync $ */
+/* $Id: DrvAudio.h 73408 2018-07-31 11:32:55Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -186,14 +186,14 @@ uint32_t DrvAudioHlpCalcBitrate(const PPDMAUDIOPCMPROPS pProps);
 uint32_t DrvAudioHlpBytesAlign(uint32_t cbSize, const PPDMAUDIOPCMPROPS pProps);
 bool     DrvAudioHlpBytesIsAligned(uint32_t cbSize, const PPDMAUDIOPCMPROPS pProps);
 uint32_t DrvAudioHlpBytesToFrames(uint32_t cbBytes, const PPDMAUDIOPCMPROPS pProps);
-uint64_t DrvAudioHlpBytesToMs(uint32_t cbBytes, const PPDMAUDIOPCMPROPS pProps);
+uint64_t DrvAudioHlpBytesToMilli(uint32_t cbBytes, const PPDMAUDIOPCMPROPS pProps);
 uint64_t DrvAudioHlpBytesToNano(uint32_t cbBytes, const PPDMAUDIOPCMPROPS pProps);
 uint32_t DrvAudioHlpFramesToBytes(uint32_t cFrames, const PPDMAUDIOPCMPROPS pProps);
-uint64_t DrvAudioHlpFramesToMs(uint32_t cFrames, const PPDMAUDIOPCMPROPS pProps);
+uint64_t DrvAudioHlpFramesToMilli(uint32_t cFrames, const PPDMAUDIOPCMPROPS pProps);
 uint64_t DrvAudioHlpFramesToNano(uint32_t cFrames, const PPDMAUDIOPCMPROPS pProps);
-uint32_t DrvAudioHlpMsToBytes(uint32_t uMs, const PPDMAUDIOPCMPROPS pProps);
+uint32_t DrvAudioHlpMilliToBytes(uint32_t uMs, const PPDMAUDIOPCMPROPS pProps);
 uint32_t DrvAudioHlpNanoToBytes(uint32_t uNs, const PPDMAUDIOPCMPROPS pProps);
-uint32_t DrvAudioHlpMsToFrames(uint32_t uMs, const PPDMAUDIOPCMPROPS pProps);
+uint32_t DrvAudioHlpMilliToFrames(uint32_t uMs, const PPDMAUDIOPCMPROPS pProps);
 uint32_t DrvAudioHlpNanoToFrames(uint32_t uNs, const PPDMAUDIOPCMPROPS pProps);
 /** @}  */
 
