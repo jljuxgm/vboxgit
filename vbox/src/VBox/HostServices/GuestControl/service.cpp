@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75860 2018-12-01 22:55:08Z vboxsync $ */
+/* $Id: service.cpp 75869 2018-12-02 01:47:07Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -59,7 +59,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-//#define USE_PVCLIENT
+#define USE_PVCLIENT
 #define LOG_GROUP LOG_GROUP_GUEST_CONTROL
 #include <VBox/HostServices/GuestControlSvc.h>
 #include <VBox/GuestHost/GuestControl.h> /** @todo r=bird: Why two headers??? */
