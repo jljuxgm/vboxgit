@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: RecordingStream.h 75417 2018-11-13 12:07:20Z vboxsync $ */
 /** @file
  * Recording stream code header.
  */
@@ -173,8 +173,6 @@ protected:
     {
         /** File handle to use for writing. */
         RTFILE              hFile;
-        /** File name being used for this stream. */
-        Utf8Str             strName;
         /** Pointer to WebM writer instance being used. */
         WebMWriter         *pWEBM;
     } File;
