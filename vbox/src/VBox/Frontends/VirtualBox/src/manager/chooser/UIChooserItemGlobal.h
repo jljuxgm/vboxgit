@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 74481 2018-09-26 15:43:18Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 74482 2018-09-26 16:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -44,6 +44,12 @@ public:
     UIChooserItemGlobal(UIChooserItem *pParent, UIChooserItemGlobal *pCopyFrom, int iPosition = -1);
     /** Destructs global item. */
     virtual ~UIChooserItemGlobal() /* override */;
+
+    /** @name Item stuff.
+      * @{ */
+        /** Returns whether passed @a position belongs to tools button area. */
+        bool isToolsButtonArea(const QPoint &position) const;
+    /** @} */
 
     /** @name Layout stuff.
       * @{ */
@@ -176,6 +182,7 @@ private:
         /* Layout hints: */
         GlobalItemData_Margin,
         GlobalItemData_Spacing,
+        GlobalItemData_ButtonMargin,
     };
 
     /** @name Prepare/cleanup cascade.
@@ -192,8 +199,12 @@ private:
 
     /** @name Layout stuff.
       * @{ */
+        /** Updates pixmaps. */
+        void updatePixmaps();
         /** Updates pixmap. */
         void updatePixmap();
+        /** Updates tools pixmap. */
+        void updateToolsPixmap();
         /** Updates minimum name width. */
         void updateMinimumNameWidth();
         /** Updates maximum name width. */
@@ -223,6 +234,8 @@ private:
 
         /** Holds item pixmap. */
         QPixmap  m_pixmap;
+        /** Holds item tools pixmap. */
+        QPixmap  m_toolsPixmap;
 
         /** Holds item name. */
         QString  m_strName;
@@ -239,6 +252,8 @@ private:
       * @{ */
         /** Holds pixmap size. */
         QSize  m_pixmapSize;
+        /** Holds tools pixmap size. */
+        QSize  m_toolsPixmapSize;
         /** Holds visible name size. */
         QSize  m_visibleNameSize;
 

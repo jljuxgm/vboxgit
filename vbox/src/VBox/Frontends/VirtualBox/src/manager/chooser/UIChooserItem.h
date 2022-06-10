@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 74084 2018-09-05 13:08:32Z vboxsync $ */
+/* $Id: UIChooserItem.h 74482 2018-09-26 16:10:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -310,6 +310,8 @@ protected:
         static void paintText(QPainter *pPainter, QPoint point,
                               const QFont &font, QPaintDevice *pPaintDevice,
                               const QString &strText);
+        /** Paints flat button @a rectangle using passed @a pPainter moving light focus according to passed @a cursorPosition. */
+        static void paintFlatButton(QPainter *pPainter, const QRect &rectangle, const QPoint &cursorPosition);
     /** @} */
 
 private:
