@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 71871 2018-04-17 11:58:18Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 72714 2018-06-28 09:52:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -168,7 +168,7 @@ void QIManagerDialog::prepareButtonBox()
         /* Disable 'Reset' and 'Apply' initially: */
         button(ButtonType_Reset)->setEnabled(false);
         button(ButtonType_Apply)->setEnabled(false);
-        connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &QIManagerDialog::sigClose);
+        connect(m_pButtonBox, &QIDialogButtonBox::rejected, this, &QIManagerDialog::close);
 
         /* Configure button-box: */
         configureButtonBox();
