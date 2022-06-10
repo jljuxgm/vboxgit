@@ -1,6 +1,6 @@
+/* $Id: vbsfpath.h 75709 2018-11-25 01:47:10Z vboxsync $ */
 /** @file
- * VBox Shared Folders header.
- * Guest/host path convertion and verification.
+ * Shared Folders Service - Guest/host path convertion and verification.
  */
 
 /*
@@ -64,4 +64,4 @@ void vbsfFreeHostPath(char *pszHostPath);
  */
 int vbsfPathAbs(const char *pszRoot, const char *pszPath, char *pszAbsPath, size_t cbAbsPath);
 
-#endif /* __VBSFPATH__H */
+#endif /* !__VBSFPATH__H */
