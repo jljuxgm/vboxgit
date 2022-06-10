@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 73728 2018-08-17 08:14:49Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 74558 2018-10-01 16:39:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -382,7 +382,7 @@ void UIWizardExportAppPageExpert::retranslateUi()
     /* Translate group-boxes: */
     m_pSelectorCnt->setTitle(UIWizardExportApp::tr("Virtual &machines to export"));
     m_pApplianceCnt->setTitle(UIWizardExportApp::tr("Virtual &system settings"));
-    m_pSettingsCnt->setTitle(UIWizardExportApp::tr("&Appliance settings"));
+    m_pSettingsCnt->setTitle(UIWizardExportApp::tr("Appliance settings"));
 
     /* Translate File selector: */
     m_pFileSelectorLabel->setText(UIWizardExportApp::tr("&File:"));
