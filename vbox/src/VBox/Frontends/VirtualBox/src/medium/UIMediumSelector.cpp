@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 77216 2019-02-08 12:25:37Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 77217 2019-02-08 13:32:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -81,6 +81,14 @@ UIMediumSelector::UIMediumSelector(UIMediumDeviceType enmMediumType, const QStri
 {
     configure();
     finalize();
+}
+
+void UIMediumSelector::setEnableCreateAction(bool fEnable)
+{
+    if (!m_pActionCreate)
+        return;
+    m_pActionCreate->setEnabled(fEnable);
+    m_pActionCreate->setVisible(fEnable);
 }
 
 QList<QUuid> UIMediumSelector::selectedMediumIds() const
