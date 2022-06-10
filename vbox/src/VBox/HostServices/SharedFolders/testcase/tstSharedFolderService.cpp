@@ -1,4 +1,4 @@
-/* $Id: tstSharedFolderService.cpp 75737 2018-11-26 15:44:41Z vboxsync $ */
+/* $Id: tstSharedFolderService.cpp 75748 2018-11-26 18:55:37Z vboxsync $ */
 /** @file
  * Testcase for the shared folder service vbsf API.
  *
@@ -66,9 +66,10 @@ struct VBOXHGCMCALLHANDLE_TYPEDEF
 };
 
 /** Call completion callback for guest calls. */
-static DECLCALLBACK(void) callComplete(VBOXHGCMCALLHANDLE callHandle, int32_t rc)
+static DECLCALLBACK(int) callComplete(VBOXHGCMCALLHANDLE callHandle, int32_t rc)
 {
     callHandle->rc = rc;
+    return VINF_SUCCESS;
 }
 
 static DECLCALLBACK(int) stamRegisterV(void *pvInstance, void *pvSample, STAMTYPE enmType, STAMVISIBILITY enmVisibility,
