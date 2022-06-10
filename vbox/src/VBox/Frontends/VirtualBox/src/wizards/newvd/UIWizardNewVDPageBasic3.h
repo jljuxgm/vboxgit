@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.h 78121 2019-04-15 08:35:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class declaration.
  */
@@ -45,7 +45,10 @@ protected:
 
     /* Location-editors stuff: */
     static QString toFileName(const QString &strName, const QString &strExtension);
-    static QString absoluteFilePath(const QString &strFileName, const QString &strDefaultPath);
+    /* Returns the full image file path except the extension. */
+    static QString absoluteFilePath(const QString &strFileName, const QString &strPath);
+    /* Returns the full image file path including the extension. */
+    static QString absoluteFilePath(const QString &strFileName, const QString &strPath, const QString &strExtension);
     static QString defaultExtension(const CMediumFormat &mediumFormatRef);
 
     /* Checks if the medium file is bigger than what is allowed in FAT file systems. */
