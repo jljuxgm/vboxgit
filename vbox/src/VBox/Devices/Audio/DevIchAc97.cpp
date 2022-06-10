@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 76862 2019-01-17 13:58:54Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 76863 2019-01-17 14:10:17Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1988,7 +1988,6 @@ static uint64_t ichac97R3StreamTransferCalcNext(PAC97STATE pThis, PAC97STREAM pS
 /**
  * Updates the next transfer based on a specific amount of bytes.
  *
- * @returns IPRT status code.
  * @param   pThis               AC'97 device state.
  * @param   pStream             AC'97 stream to update.
  * @param   cbBytes             Bytes to update next transfer for.
