@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 77014 2019-01-28 08:24:50Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 77362 2019-02-19 14:40:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -628,7 +628,7 @@ public:
         DetailsElementOptionTypeGeneral_OS       = RT_BIT(1),
         DetailsElementOptionTypeGeneral_Location = RT_BIT(2),
         DetailsElementOptionTypeGeneral_Groups   = RT_BIT(3),
-        DetailsElementOptionTypeGeneral_Default  = 0xFFFF
+        DetailsElementOptionTypeGeneral_Default  = 0xFFFB
     };
     Q_ENUM(DetailsElementOptionTypeGeneral);
 
