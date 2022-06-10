@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 75737 2018-11-26 15:44:41Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 75798 2018-11-28 23:47:11Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1178,8 +1178,7 @@ int GuestObject::registerWaitEvent(const GuestEventTypes &lstEvents,
     return GuestBase::registerWaitEventEx(mSession->i_getId(), mObjectID, lstEvents, ppEvent);
 }
 
-int GuestObject::sendCommand(uint32_t uFunction,
-                             uint32_t cParms, PVBOXHGCMSVCPARM paParms)
+int GuestObject::sendCommand(uint32_t uFunction, uint32_t cParms, PVBOXHGCMSVCPARM paParms)
 {
 #ifndef VBOX_GUESTCTRL_TEST_CASE
     ComObjPtr<Console> pConsole = mConsole;
@@ -1191,6 +1190,13 @@ int GuestObject::sendCommand(uint32_t uFunction,
     VMMDev *pVMMDev = pConsole->i_getVMMDev();
     if (pVMMDev)
     {
+        /* HACK ALERT! We extend the first parameter to 64-bit and use the
+                       two topmost bits for call destination information. */
+        Assert(paParms[0].type == VBOX_HGCM_SVC_PARM_32BIT);
+        paParms[0].type = VBOX_HGCM_SVC_PARM_64BIT;
+        paParms[0].u.uint64 = (uint64_t)paParms[0].u.uint32 | VBOX_GUESTCTRL_DST_SESSION;
+
+        /* Make the call. */
         LogFlowThisFunc(("uFunction=%RU32, cParms=%RU32\n", uFunction, cParms));
         vrc = pVMMDev->hgcmHostCall(HGCMSERVICE_NAME, uFunction, cParms, paParms);
         if (RT_FAILURE(vrc))

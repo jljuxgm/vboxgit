@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 75758 2018-11-27 06:00:54Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 75798 2018-11-28 23:47:11Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -360,7 +360,7 @@ static DECLCALLBACK(int) vgsvcGstCtrlWorker(bool volatile *pfShutdown)
                          * up to the guest session fork of VBoxService, so just
                          * skip all not wanted messages here.
                          */
-                        rc = VbglR3GuestCtrlMsgSkip(g_uControlSvcClientID);
+                        rc = VbglR3GuestCtrlMsgSkipOld(g_uControlSvcClientID);
                         VGSvcVerbose(3, "Skipping uMsg=%RU32, cParms=%RU32, rc=%Rrc\n", uMsg, cParms, rc);
                     }
                     break;
