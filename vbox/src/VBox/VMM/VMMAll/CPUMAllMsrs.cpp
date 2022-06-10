@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 73406 2018-07-31 10:29:21Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 73431 2018-08-01 14:56:26Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -1294,11 +1294,13 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrRd_Ia32VmxBasic(PVMCPU pVCpu, uint32_t 
     PCCPUMFEATURES pGuestFeatures = &pVCpu->CTX_SUFF(pVM)->cpum.s.GuestFeatures;
     if (pGuestFeatures->fVmx)
     {
-        *puValue = RT_BF_MAKE(VMX_BF_BASIC_VMCS_ID,       VMX_V_VMCS_REVISION_ID        )
-                 | RT_BF_MAKE(VMX_BF_BASIC_DUAL_MON,      0                             )
-                 | RT_BF_MAKE(VMX_BF_BASIC_VMCS_MEM_TYPE, VMX_BASIC_MEM_TYPE_WB         )
-                 | RT_BF_MAKE(VMX_BF_BASIC_VMCS_INS_OUTS, pGuestFeatures->fVmxInsOutInfo)
-                 | RT_BF_MAKE(VMX_BF_BASIC_TRUE_CTLS,     0                             );
+        *puValue = RT_BF_MAKE(VMX_BF_BASIC_VMCS_ID,         VMX_V_VMCS_REVISION_ID        )
+                 | RT_BF_MAKE(VMX_BF_BASIC_VMCS_SIZE,       VMX_V_VMCS_SIZE               )
+                 | RT_BF_MAKE(VMX_BF_BASIC_PHYSADDR_WIDTH,  VMX_V_VMCS_PHYSADDR_4G_LIMIT  )
+                 | RT_BF_MAKE(VMX_BF_BASIC_DUAL_MON,        0                             )
+                 | RT_BF_MAKE(VMX_BF_BASIC_VMCS_MEM_TYPE,   VMX_BASIC_MEM_TYPE_WB         )
+                 | RT_BF_MAKE(VMX_BF_BASIC_VMCS_INS_OUTS,   pGuestFeatures->fVmxInsOutInfo)
+                 | RT_BF_MAKE(VMX_BF_BASIC_TRUE_CTLS,       0                             );
     }
     else
         *puValue = 0;
