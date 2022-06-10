@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.cpp 74937 2018-10-19 09:50:40Z vboxsync $ */
+/* $Id: MediumIOImpl.cpp 74938 2018-10-19 09:54:12Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation: MediumIO
@@ -96,7 +96,6 @@ public:
     StreamTask(MediumIO *pMediumIO, DataStream *pDataStream, Progress *pProgress, const char *pszFormat,
                MediumVariant_T fMediumVariant)
         : ThreadTask("StreamTask"),
-          mVDOperationIfaces(NULL),
           mMediumIO(pMediumIO),
           mMediumCaller(pMediumIO->m->ptrMedium),
           m_pDataStream(pDataStream),
@@ -421,13 +420,13 @@ HRESULT MediumIO::StreamTask::executeTask()
 
     if (mProgress)
     {
-        IfsProgress.pfnProgress = pProgress->i_vdProgressCallback;
-        int vrc = VDInterfaceAdd(&IfsProgress.Core,
-                                 "Medium::StreamTask::vdInterfaceProgress",
-                                 VDINTERFACETYPE_PROGRESS,
-                                 mProgress,
-                                 sizeof(IfsProgress),
-                                 &pIfsOp);
+        IfsProgress.pfnProgress = mProgress->i_vdProgressCallback;
+        VDInterfaceAdd(&IfsProgress.Core,
+                       "Medium::StreamTask::vdInterfaceProgress",
+                       VDINTERFACETYPE_PROGRESS,
+                       mProgress,
+                       sizeof(IfsProgress),
+                       &pIfsOp);
     }
 
     IfsOutputIO.pfnOpen                   = i_vdStreamOpen;
