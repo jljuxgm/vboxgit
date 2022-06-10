@@ -1,4 +1,4 @@
-/* $Id: HGCM.h 75853 2018-11-30 19:26:42Z vboxsync $ */
+/* $Id: HGCM.h 75969 2018-12-05 12:08:09Z vboxsync $ */
 /** @file
  * HGCM - Host-Guest Communication Manager.
  */
@@ -46,6 +46,7 @@ int HGCMGuestCall(PPDMIHGCMPORT pHGCMPort, PVBOXHGCMCMD pCmdPtr, uint32_t client
                   VBOXHGCMSVCPARM *paParms, uint64_t tsArrival);
 
 int HGCMHostCall(const char *pszServiceName, uint32_t function, uint32_t cParms, VBOXHGCMSVCPARM aParms[]);
+int HGCMBroadcastEvent(HGCMNOTIFYEVENT enmEvent);
 
 #ifdef VBOX_WITH_CRHGSMI
 int HGCMHostSvcHandleCreate(const char *pszServiceName, HGCMCVSHANDLE * phSvc);

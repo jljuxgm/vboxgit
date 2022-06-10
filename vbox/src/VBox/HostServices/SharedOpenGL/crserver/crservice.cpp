@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 75853 2018-11-30 19:26:42Z vboxsync $ */
+/* $Id: crservice.cpp 75969 2018-12-05 12:08:09Z vboxsync $ */
 /** @file
  * VBox crOpenGL - Host service entry points.
  */
@@ -1546,6 +1546,7 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad (VBOXHGCMSVCFNTABLE *pt
             ptable->pfnHostCall   = svcHostCall;
             ptable->pfnSaveState  = svcSaveState;
             ptable->pfnLoadState  = svcLoadState;
+            ptable->pfnNotify     = NULL;
             ptable->pvService     = NULL;
 
             if (!crVBoxServerInit())

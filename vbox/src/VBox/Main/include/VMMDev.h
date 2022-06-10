@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 75955 2018-12-04 21:08:55Z vboxsync $ */
+/* $Id: VMMDev.h 75969 2018-12-05 12:08:09Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to VMM device
  */
@@ -77,11 +77,14 @@ private:
     int  i_guestPropLoadAndConfigure();
 # endif
 #endif
-
     static DECLCALLBACK(void *) drvQueryInterface(PPDMIBASE pInterface, const char *pszIID);
     static DECLCALLBACK(int)    drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(void)   drvDestruct(PPDMDRVINS pDrvIns);
     static DECLCALLBACK(void)   drvReset(PPDMDRVINS pDrvIns);
+    static DECLCALLBACK(void)   drvPowerOn(PPDMDRVINS pDrvIns);
+    static DECLCALLBACK(void)   drvPowerOff(PPDMDRVINS pDrvIns);
+    static DECLCALLBACK(void)   drvSuspend(PPDMDRVINS pDrvIns);
+    static DECLCALLBACK(void)   drvResume(PPDMDRVINS pDrvIns);
 
     Console * const         mParent;
 

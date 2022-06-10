@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75953 2018-12-04 18:43:09Z vboxsync $ */
+/* $Id: service.cpp 75969 2018-12-05 12:08:09Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -163,6 +163,7 @@ int DragAndDropService::init(VBOXHGCMSVCFNTABLE *pTable)
     pTable->pfnSaveState         = NULL;  /* The service is stateless, so the normal */
     pTable->pfnLoadState         = NULL;  /* construction done before restoring suffices */
     pTable->pfnRegisterExtension = svcRegisterExtension;
+    pTable->pfnNotify            = NULL;
 
     /* Drag'n drop mode is disabled by default. */
     modeSet(VBOX_DRAG_AND_DROP_MODE_OFF);

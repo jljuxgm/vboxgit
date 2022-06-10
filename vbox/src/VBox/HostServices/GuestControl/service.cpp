@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75894 2018-12-03 12:07:43Z vboxsync $ */
+/* $Id: service.cpp 75969 2018-12-05 12:08:09Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -2439,6 +2439,7 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *pTa
                 pTable->pfnSaveState            = GstCtrlService::svcSaveState;
                 pTable->pfnLoadState            = GstCtrlService::svcLoadState;
                 pTable->pfnRegisterExtension    = GstCtrlService::svcRegisterExtension;
+                pTable->pfnNotify               = NULL;
 
                 /* Service specific initialization. */
                 pTable->pvService = pService;

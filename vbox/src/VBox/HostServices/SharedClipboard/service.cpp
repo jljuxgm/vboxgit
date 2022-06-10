@@ -1,4 +1,4 @@
-/* $Id: service.cpp 75853 2018-11-30 19:26:42Z vboxsync $ */
+/* $Id: service.cpp 75969 2018-12-05 12:08:09Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1034,6 +1034,7 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad (VBOXHGCMSVCFNTABLE *pt
             ptable->pfnSaveState  = svcSaveState;
             ptable->pfnLoadState  = svcLoadState;
             ptable->pfnRegisterExtension  = svcRegisterExtension;
+            ptable->pfnNotify     = NULL;
             ptable->pvService     = NULL;
 
             /* Service specific initialization. */
