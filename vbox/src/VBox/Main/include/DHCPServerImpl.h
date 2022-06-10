@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 75512 2018-11-16 11:33:38Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 75513 2018-11-16 11:57:04Z vboxsync $ */
 
 /** @file
  *
@@ -49,7 +49,6 @@ public:
     static const std::string kDsrKeyGateway;
     static const std::string kDsrKeyLowerIp;
     static const std::string kDsrKeyUpperIp;
-    static const std::string kDsrKeyConfig;
 };
 
 /**
@@ -125,7 +124,6 @@ private:
                   const com::Utf8Str &aTrunkName,
                   const com::Utf8Str &aTrunkType);
     HRESULT stop();
-    HRESULT restart();
 
     struct Data;
     Data *m;
