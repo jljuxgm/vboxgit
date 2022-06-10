@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 75380 2018-11-09 22:25:30Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 75382 2018-11-09 22:32:23Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -401,7 +401,7 @@ static HRESULT showSharedFolder(ComPtr<ISharedFolder> &sf, VMINFO_DETAILS detail
     }
     else
     {
-        RTPrintf("Name: '%ls', Host path: '%ls' (%s), %s%s%",
+        RTPrintf("Name: '%ls', Host path: '%ls' (%s), %s%s",
                  name.raw(), hostPath.raw(), pszDesc, writable ? "writable" : "readonly", fAutoMount ? ", auto-mount" : "");
         if (bstrAutoMountPoint.isNotEmpty())
             RTPrintf(", mount-point: '%ls'\n", bstrAutoMountPoint.raw());
