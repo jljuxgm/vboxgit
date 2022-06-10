@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 78057 2019-04-09 11:27:35Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 78146 2019-04-16 15:52:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -157,6 +157,8 @@ void UIFileManagerGuestTable::initGuestFileTable(const CGuestSession &session)
     if (session.GetStatus() != KGuestSessionStatus_Started)
         return;
     m_comGuestSession = session;
+    /* To determine the path separator we need to have a valid guest session: */
+    determinePathSeparator();
     initializeFileTree();
 }
 
@@ -603,6 +605,15 @@ void UIFileManagerGuestTable::determineDriveLetters()
         if (exists)
             m_driveLetterList.push_back(path);
     }
+}
+
+void UIFileManagerGuestTable::determinePathSeparator()
+{
+    if (m_comGuestSession.isNull())
+        return;
+    KPathStyle pathStyle = m_comGuestSession.GetPathStyle();
+    if (pathStyle == KPathStyle_DOS)
+        setPathSeparator(UIPathOperations::dosDelimiter);
 }
 
 void UIFileManagerGuestTable::prepareToolbar()

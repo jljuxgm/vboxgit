@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 77932 2019-03-28 10:17:11Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 78146 2019-04-16 15:52:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -126,6 +126,7 @@ UIFileManagerHostTable::UIFileManagerHostTable(UIActionPool *pActionPool, QWidge
     initializeFileTree();
     prepareToolbar();
     prepareActionConnections();
+    determinePathSeparator();
     retranslateUi();
 }
 
@@ -447,8 +448,12 @@ void UIFileManagerHostTable::determineDriveLetters()
     {
         if (UIPathOperations::doesPathStartWithDriveLetter(drive[i].filePath()))
             m_driveLetterList.push_back(drive[i].filePath());
-
     }
+}
+
+void UIFileManagerHostTable::determinePathSeparator()
+{
+    setPathSeparator(QDir::separator());
 }
 
 /* static */QString UIFileManagerHostTable::permissionString(QFileDevice::Permissions permissions)
