@@ -1,4 +1,4 @@
-# $Id: .scm-settings 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: .scm-settings 78340 2019-04-28 15:23:27Z vboxsync $
 ## @file
 # Source code massager settings for common/crOpenGL.
 #
@@ -17,8 +17,6 @@
 
 # Much of this is externally licensed, but not all, sigh.
 --external-copyright --no-convert-tabs
-
-/array/arrayspu.rc:             --no-external-copyright --convert-tabs
 
 /feedback/feedbackspu.rc:       --no-external-copyright --convert-tabs
 /feedback/feedback_context.c:   --no-external-copyright --convert-tabs

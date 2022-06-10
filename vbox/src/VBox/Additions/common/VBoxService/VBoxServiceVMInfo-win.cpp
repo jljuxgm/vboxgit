@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 78340 2019-04-28 15:23:27Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -1346,7 +1346,6 @@ int VGSvcVMInfoWinGetComponentVersions(uint32_t uClientID)
  /* On 64-bit we don't yet have the OpenGL DLLs in native format.
     So just enumerate the 32-bit files in the SYSWOW directory. */
 #ifdef RT_ARCH_AMD64
-        { szSysWowDir,  "VBoxOGLarrayspu.dll" },
         { szSysWowDir,  "VBoxOGLcrutil.dll" },
         { szSysWowDir,  "VBoxOGLerrorspu.dll" },
         { szSysWowDir,  "VBoxOGLpackspu.dll" },
@@ -1354,7 +1353,6 @@ int VGSvcVMInfoWinGetComponentVersions(uint32_t uClientID)
         { szSysWowDir,  "VBoxOGLfeedbackspu.dll" },
         { szSysWowDir,  "VBoxOGL.dll" },
 #else  /* !RT_ARCH_AMD64 */
-        { szSysDir,     "VBoxOGLarrayspu.dll" },
         { szSysDir,     "VBoxOGLcrutil.dll" },
         { szSysDir,     "VBoxOGLerrorspu.dll" },
         { szSysDir,     "VBoxOGLpackspu.dll" },

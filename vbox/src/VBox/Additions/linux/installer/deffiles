@@ -1,4 +1,4 @@
-# $Id: deffiles 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: deffiles 78340 2019-04-28 15:23:27Z vboxsync $
 ## @file
 # VirtualBox linux Guest Additions default files list
 #
@@ -31,8 +31,6 @@ DEFAULT_FILE_NAMES=" \
     /usr/sbin/vboxadd-service \
     /usr/sbin/VBoxService \
     /sbin/mount.vboxsf \
-    /usr/lib/VBoxOGLarrayspu.so \
-    /usr/lib64/VBoxOGLarrayspu.so \
     /usr/lib/VBoxOGLcrutil.so \
     /usr/lib64/VBoxOGLcrutil.so \
     /usr/lib/VBoxOGLerrorspu.so \
