@@ -1,4 +1,4 @@
-/* $Id: server_glsl.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: server_glsl.c 76787 2019-01-11 20:00:15Z vboxsync $ */
 /** @file
  * VBox OpenGL - GLSL related functions
  */
@@ -181,7 +181,7 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchDeleteProgramsARB(GLsizei n, const
     GLuint *pLocalProgs;
     GLint i;
 
-    if (n >= INT32_MAX / sizeof(GLuint))
+    if (n <= 0 || n >= INT32_MAX / sizeof(GLuint))
     {
         crError("crServerDispatchDeleteProgramsARB: parameter 'n' is out of range");
         return;
@@ -222,7 +222,7 @@ crServerDispatchAreProgramsResidentNV(GLsizei n, const GLuint *programs,
     GLsizei i;
     (void) residences;
 
-    if (n >= INT32_MAX / sizeof(GLuint))
+    if (n <= 0 || n >= INT32_MAX / sizeof(GLuint))
     {
         crError("crServerDispatchAreProgramsResidentNV: parameter 'n' is out of range");
         return GL_FALSE;

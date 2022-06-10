@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: crservice.cpp 76787 2019-01-11 20:00:15Z vboxsync $ */
 /** @file
  * VBox crOpenGL - Host service entry points.
  */
@@ -366,7 +366,8 @@ static CRVBOXSVCBUFFER_t* svcGetBuffer(uint32_t iBuffer, uint32_t cbBufferSize)
         pBuffer = (CRVBOXSVCBUFFER_t*) RTMemAlloc(sizeof(CRVBOXSVCBUFFER_t));
         if (pBuffer)
         {
-            pBuffer->pData = RTMemAlloc(cbBufferSize);
+            /* Filling host buffer with zeroes to prevent possible host->guest memory disclosure */
+            pBuffer->pData = RTMemAllocZ(cbBufferSize);
             if (!pBuffer->pData)
             {
                 LogRel(("OpenGL: svcGetBuffer: Not enough memory (%d)\n", cbBufferSize));

@@ -1,4 +1,4 @@
-/* $Id: server_framebuffer.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: server_framebuffer.c 76787 2019-01-11 20:00:15Z vboxsync $ */
 /** @file
  * VBox OpenGL: EXT_framebuffer_object
  */
@@ -28,7 +28,7 @@ crServerDispatchGenFramebuffersEXT(GLsizei n, GLuint *framebuffers)
     GLuint *local_buffers;
     (void) framebuffers;
 
-    if (n >= INT32_MAX / sizeof(GLuint))
+    if (n <= 0 || n >= INT32_MAX / sizeof(GLuint))
     {
         crError("crServerDispatchGenFramebuffersEXT: parameter 'n' is out of range");
         return;
@@ -48,7 +48,7 @@ crServerDispatchGenRenderbuffersEXT(GLsizei n, GLuint *renderbuffers)
     GLuint *local_buffers;
     (void) renderbuffers;
 
-    if (n >= INT32_MAX / sizeof(GLuint))
+    if (n <= 0 || n >= INT32_MAX / sizeof(GLuint))
     {
         crError("crServerDispatchGenRenderbuffersEXT: parameter 'n' is out of range");
         return;

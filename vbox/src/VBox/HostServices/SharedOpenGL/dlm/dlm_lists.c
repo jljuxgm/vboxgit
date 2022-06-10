@@ -1,4 +1,4 @@
-/* $Id: dlm_lists.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: dlm_lists.c 76787 2019-01-11 20:00:15Z vboxsync $ */
 /** @file
  * Implementation of all the Display Lists related routines:
  *
@@ -353,7 +353,7 @@ void DLM_APIENTRY crDLMCallLists(GLsizei n, GLenum type, const GLvoid *lists, SP
 
     crDebug("DLM: CallLists(%d, %u, %p).", n, type, lists);
 
-    if (n >= INT32_MAX / sizeof(GLuint))
+    if (n <= 0 || n >= INT32_MAX / sizeof(GLuint))
     {
         crError("crDLMCallLists: parameter 'n' is out of range");
         return;

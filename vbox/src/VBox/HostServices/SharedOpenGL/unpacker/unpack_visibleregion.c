@@ -1,4 +1,4 @@
-/* $Id: unpack_visibleregion.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: unpack_visibleregion.c 76787 2019-01-11 20:00:15Z vboxsync $ */
 /** @file
  * VBox Packing VisibleRegion information
  */
@@ -25,6 +25,13 @@ void crUnpackExtendWindowVisibleRegion( void )
 {
     GLint window = READ_DATA( 8, GLint );
     GLint cRects = READ_DATA( 12, GLint );
-    GLvoid *pRects = DATA_POINTER( 16, GLvoid );;
+    GLvoid *pRects = DATA_POINTER( 16, GLvoid );
+
+    if (cRects <= 0 || cRects >= INT32_MAX / sizeof(GLint) / 8 || !DATA_POINTER_CHECK(16 + 4 * cRects * sizeof(GLint)))
+    {
+        crError("crUnpackExtendWindowVisibleRegion: parameter 'cRects' is out of range");
+        return;
+    }
+
     cr_unpackDispatch.WindowVisibleRegion( window, cRects, pRects );
 }
