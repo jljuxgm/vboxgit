@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 76164 2018-12-11 16:14:25Z vboxsync $ */
+/* $Id: UISession.cpp 76169 2018-12-11 19:19:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -2062,6 +2062,7 @@ void UISession::setScreenVisibleHostDesires(ulong uScreenId, bool fIsMonitorVisi
     m_monitorVisibilityVectorHostDesires[(int)uScreenId] = fIsMonitorVisible;
 
     /* And remember the request in extra data for guests with VMSVGA: */
+    /* This should be done before the actual hint is sent in case the guest overrides it. */
     gEDataManager->setLastGuestScreenVisibilityStatus(uScreenId, fIsMonitorVisible, vboxGlobal().managedVMUuid());
 }
 

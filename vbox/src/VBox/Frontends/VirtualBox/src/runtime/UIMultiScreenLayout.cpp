@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 71615 2018-04-02 13:18:40Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 76169 2018-12-11 19:19:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -133,8 +133,8 @@ void UIMultiScreenLayout::update()
         {
             /* Then we have to disable excessive guest-screen: */
             LogRel(("GUI: UIMultiScreenLayout::update: Disabling excessive guest-screen %d\n", iGuestScreen));
-            m_pMachineLogic->display().SetVideoModeHint(iGuestScreen, false, false, 0, 0, 0, 0, 0);
             m_pMachineLogic->uisession()->setScreenVisibleHostDesires(iGuestScreen, false);
+            m_pMachineLogic->display().SetVideoModeHint(iGuestScreen, false, false, 0, 0, 0, 0, 0);
         }
     }
 
@@ -167,8 +167,8 @@ void UIMultiScreenLayout::update()
             /* Re-enable guest-screen with proper resolution: */
             LogRel(("GUI: UIMultiScreenLayout::update: Enabling guest-screen %d with following resolution: %dx%d\n",
                     iGuestScreen, uWidth, uHeight));
-            m_pMachineLogic->display().SetVideoModeHint(iGuestScreen, true, false, 0, 0, uWidth, uHeight, 32);
             m_pMachineLogic->uisession()->setScreenVisibleHostDesires(iGuestScreen, true);
+            m_pMachineLogic->display().SetVideoModeHint(iGuestScreen, true, false, 0, 0, uWidth, uHeight, 32);
         }
     }
 

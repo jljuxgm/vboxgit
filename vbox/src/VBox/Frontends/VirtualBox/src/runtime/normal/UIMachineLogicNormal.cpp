@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 75358 2018-11-09 12:38:17Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 76169 2018-12-11 19:19:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -229,8 +229,8 @@ void UIMachineLogicNormal::sltHandleActionTriggerViewScreenToggle(int iIndex, bo
     display().GetScreenResolution(iIndex, uWidth, uHeight, uBitsPerPixel, uOriginX, uOriginY, monitorStatus);
     if (!fEnabled)
     {
-        display().SetVideoModeHint(iIndex, false, false, 0, 0, 0, 0, 0);
         uisession()->setScreenVisibleHostDesires(iIndex, false);
+        display().SetVideoModeHint(iIndex, false, false, 0, 0, 0, 0, 0);
     }
     else
     {
@@ -239,8 +239,8 @@ void UIMachineLogicNormal::sltHandleActionTriggerViewScreenToggle(int iIndex, bo
             uWidth = 800;
         if (!uHeight)
             uHeight = 600;
-        display().SetVideoModeHint(iIndex, true, false, 0, 0, uWidth, uHeight, 32);
         uisession()->setScreenVisibleHostDesires(iIndex, true);
+        display().SetVideoModeHint(iIndex, true, false, 0, 0, uWidth, uHeight, 32);
     }
 }
 
