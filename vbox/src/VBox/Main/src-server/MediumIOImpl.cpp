@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.cpp 74822 2018-10-12 18:40:09Z vboxsync $ */
+/* $Id: MediumIOImpl.cpp 74824 2018-10-12 18:47:50Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation: MediumIO
@@ -267,8 +267,11 @@ DECLCALLBACK(int) MediumIO::StreamTask::i_vdStreamClose(void *pvUser, void *pSto
     {
         do
         {
-            size_t cbThisWrite = RT_MIN(pStreamFile->cbFile - pStreamFile->uOffsetLast, sizeof(g_abRTZero64K));
+            size_t cbThisWrite = sizeof(g_abRTZero64K);
             size_t cbWritten = 0;
+
+            if (pStreamFile->cbFile - pStreamFile->uOffsetLast < sizeof(g_abRTZero64K))
+                cbThisWrite = (size_t)(pStreamFile->cbFile - pStreamFile->uOffsetLast);
 
             rc = pStreamFile->pDataStream->i_write(&g_abRTZero64K[0], cbThisWrite, &cbWritten);
             if (RT_SUCCESS(rc))
@@ -368,8 +371,11 @@ DECLCALLBACK(int) MediumIO::StreamTask::i_vdStreamWrite(void *pvUser, void *pSto
     {
         do
         {
-            size_t cbThisWrite = RT_MIN(uOffset - pStreamFile->uOffsetLast, sizeof(g_abRTZero64K));
+            size_t cbThisWrite = sizeof(g_abRTZero64K);
             size_t cbWritten = 0;
+
+            if (uOffset - pStreamFile->uOffsetLast < sizeof(g_abRTZero64K))
+                cbThisWrite = (size_t)(uOffset - pStreamFile->uOffsetLast);
 
             rc = pStreamFile->pDataStream->i_write(&g_abRTZero64K[0], cbThisWrite, &cbWritten);
             if (RT_SUCCESS(rc))
