@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 77910 2019-03-27 11:33:01Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 77912 2019-03-27 12:01:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1982,7 +1982,7 @@ static void supR3GrabOptions(void)
          * Default: enabled.
          * Can be disabled with 'export VBOX_HARD_CAP_SYS_NICE=0'.
          */
-        const char *pszOpt = getenv("VBOX_HARD_CAP_SYS_NICE");
+        pszOpt = getenv("VBOX_HARD_CAP_SYS_NICE");
         if (   !pszOpt
             || memcmp(pszOpt, "0", sizeof("0")) != 0)
             g_uCaps |= CAP_TO_MASK(CAP_SYS_NICE);
