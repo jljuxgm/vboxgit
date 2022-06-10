@@ -1,4 +1,4 @@
-/* $Id: RTFileCopyPartEx-linux.cpp 77832 2019-03-21 20:41:23Z vboxsync $ */
+/* $Id: RTFileCopyPartEx-linux.cpp 77833 2019-03-21 20:44:38Z vboxsync $ */
 /** @file
  * IPRT - RTFileCopyPartEx, generic implementation.
  */
@@ -38,6 +38,10 @@
 #include <errno.h>
 #include <unistd.h>
 #include <sys/syscall.h>
+
+#ifndef __NR_copy_file_range
+# define __NR_copy_file_range       285
+#endif
 
 /* Include the generic code as a fallback since copy_file_range is rather new . */
 #define IPRT_FALLBACK_VERSION
