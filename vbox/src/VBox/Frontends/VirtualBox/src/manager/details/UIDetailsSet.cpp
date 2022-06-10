@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIDetailsSet.cpp 75616 2018-11-20 11:55:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class implementation.
  */
@@ -396,7 +396,7 @@ void UIDetailsSet::updateLayout()
 
                 break;
             }
-            case DetailsElementType_Invalid: AssertFailed(); break; /* Shut up, MSC! */
+            default: AssertFailed(); break; /* Shut up, MSC! */
         }
     }
 }
@@ -447,7 +447,7 @@ int UIDetailsSet::minimumWidthHint() const
                 iMinimumWidthHint = qMax(iMinimumWidthHint, iFirstColumnWidth + iSpacing + pItem->minimumWidthHint());
                 break;
             }
-            case DetailsElementType_Invalid: AssertFailed(); break; /* Shut up, MSC! */
+            default: AssertFailed(); break; /* Shut up, MSC! */
         }
     }
 
@@ -514,7 +514,7 @@ int UIDetailsSet::minimumHeightHint() const
                 iMinimumHeightHintPreview = pItem->minimumHeightHint() + iAdditionalPreviewHeight;
                 break;
             }
-            case DetailsElementType_Invalid: AssertFailed(); break; /* Shut up, MSC! */
+            default: AssertFailed(); break; /* Shut up, MSC! */
         }
     }
 
@@ -639,7 +639,7 @@ UIDetailsElement *UIDetailsSet::createElement(DetailsElementType enmElementType,
         case DetailsElementType_SF:          return new UIDetailsElementSF(this, fOpen);
         case DetailsElementType_UI:          return new UIDetailsElementUI(this, fOpen);
         case DetailsElementType_Description: return new UIDetailsElementDescription(this, fOpen);
-        case DetailsElementType_Invalid:     AssertFailed(); break; /* Shut up, MSC! */
+        default:                             AssertFailed(); break; /* Shut up, MSC! */
     }
     return 0;
 }

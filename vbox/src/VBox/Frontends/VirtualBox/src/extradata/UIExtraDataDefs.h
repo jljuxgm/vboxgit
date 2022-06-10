@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 75615 2018-11-20 11:51:33Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 75616 2018-11-20 11:55:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -867,7 +867,8 @@ enum DetailsElementType
     DetailsElementType_USB,
     DetailsElementType_SF,
     DetailsElementType_UI,
-    DetailsElementType_Description
+    DetailsElementType_Description,
+    DetailsElementType_Max
 };
 Q_DECLARE_METATYPE(DetailsElementType);
 
