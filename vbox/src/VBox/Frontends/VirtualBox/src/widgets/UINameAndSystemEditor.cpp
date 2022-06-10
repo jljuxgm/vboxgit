@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 73251 2018-07-19 19:30:16Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 75090 2018-10-26 11:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -204,7 +204,7 @@ void UINameAndSystemEditor::retranslateUi()
     m_pLabelType->setText(tr("&Version:"));
     m_pNameLabel->setText(tr("Name:"));
     if (m_pPathLabel)
-        m_pPathLabel->setText(tr("Path:"));
+        m_pPathLabel->setText(tr("Machine Folder:"));
 
     m_pComboFamily->setWhatsThis(tr("Selects the operating system family that "
                                     "you plan to install into this virtual machine."));
