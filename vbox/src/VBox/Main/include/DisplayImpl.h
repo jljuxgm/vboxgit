@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 74955 2018-10-19 18:14:51Z vboxsync $ */
+/* $Id: DisplayImpl.h 75072 2018-10-25 14:08:05Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -212,7 +212,7 @@ public:
     VIDEORECFEATURES         i_videoRecGetFeatures(void);
     bool                     i_videoRecStarted(void);
     void                     i_videoRecInvalidate();
-    int                      i_videoRecSendAudio(const void *pvData, size_t cbData, uint64_t uDurationMs);
+    int                      i_videoRecSendAudio(const void *pvData, size_t cbData, uint64_t uTimestampMs);
     int                      i_videoRecStart(void);
     void                     i_videoRecStop(void);
     void                     i_videoRecScreenChanged(unsigned uScreenId);
