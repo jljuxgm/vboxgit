@@ -1,4 +1,4 @@
-/* $Id: ObjectState.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: ObjectState.h 75660 2018-11-22 12:20:52Z vboxsync $ */
 /** @file
  *
  * VirtualBox object state handling definitions
@@ -98,7 +98,7 @@ public:
 
     bool autoInitSpanConstructor(State aExpectedState);
     void autoInitSpanDestructor(State aNewState, HRESULT aFailedRC, com::ErrorInfo *aFailedEI);
-    State autoUninitSpanConstructor();
+    State autoUninitSpanConstructor(bool fTry);
     void autoUninitSpanDestructor();
 
 private:

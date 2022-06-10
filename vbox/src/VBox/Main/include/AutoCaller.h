@@ -1,4 +1,4 @@
-/* $Id: AutoCaller.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: AutoCaller.h 75660 2018-11-22 12:20:52Z vboxsync $ */
 /** @file
  *
  * VirtualBox object caller handling definitions
@@ -475,7 +475,7 @@ class AutoUninitSpan
 {
 public:
 
-    AutoUninitSpan(VirtualBoxBase *aObj);
+    AutoUninitSpan(VirtualBoxBase *aObj, bool fTry = false);
     ~AutoUninitSpan();
 
     /** |true| when uninit() is called as a result of init() failure */
@@ -483,6 +483,9 @@ public:
 
     /** |true| when uninit() has already been called (so the object is NotReady) */
     bool uninitDone() { return mUninitDone; }
+
+    /** |true| when uninit() has failed, relevant only if it was a "try uninit" */
+    bool uninitFailed() { return mUninitFailed; }
 
     void setSucceeded();
 
@@ -494,6 +497,7 @@ private:
     VirtualBoxBase *mObj;
     bool mInitFailed : 1;
     bool mUninitDone : 1;
+    bool mUninitFailed : 1;
 };
 
 #endif // !____H_AUTOCALLER
