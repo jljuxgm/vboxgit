@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadget.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: UsbTestServiceGadget.h 76531 2018-12-30 06:03:11Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Gadget API.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___UsbTestServiceGadget_h___
 #define ___UsbTestServiceGadget_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>

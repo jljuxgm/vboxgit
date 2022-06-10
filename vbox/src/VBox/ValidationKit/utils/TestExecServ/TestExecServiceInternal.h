@@ -1,4 +1,4 @@
-/* $Id: TestExecServiceInternal.h 70488 2018-01-08 20:40:45Z vboxsync $ */
+/* $Id: TestExecServiceInternal.h 76531 2018-12-30 06:03:11Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service, Internal Header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___TestExecServiceInternal_h___
 #define ___TestExecServiceInternal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/getopt.h>
 #include <iprt/stream.h>

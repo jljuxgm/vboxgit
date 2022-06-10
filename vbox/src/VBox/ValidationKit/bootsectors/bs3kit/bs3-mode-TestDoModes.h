@@ -1,4 +1,4 @@
-/* $Id: bs3-mode-TestDoModes.h 66175 2017-03-21 11:05:19Z vboxsync $ */
+/* $Id: bs3-mode-TestDoModes.h 76531 2018-12-30 06:03:11Z vboxsync $ */
 /** @file
  * BS3Kit - Common header for the Bs3TestDoModes family.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___bs3_mode_TestDoModes_h
 #define ___bs3_mode_TestDoModes_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "bs3kit.h"
 

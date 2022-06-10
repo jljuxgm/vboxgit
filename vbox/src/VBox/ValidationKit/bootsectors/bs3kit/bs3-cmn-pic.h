@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-pic.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: bs3-cmn-pic.h 76531 2018-12-30 06:03:11Z vboxsync $ */
 /** @file
  * BS3Kit - Internal PIC Defines, Variables and Functions.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___bs3_cmn_pic_h
 #define ___bs3_cmn_pic_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "bs3kit.h"
 

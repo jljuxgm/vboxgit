@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 76531 2018-12-30 06:03:11Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -24,9 +24,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
 #ifndef ___bs3_cpu_generated_1_h___
 #define ___bs3_cpu_generated_1_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <bs3kit.h>
 #include <iprt/assert.h>

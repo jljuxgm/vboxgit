@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 72146 2018-05-07 15:22:35Z vboxsync $ */
+/* $Id: bs3kit.h 76531 2018-12-30 06:03:11Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___bs3kit_h
 #define ___bs3kit_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef DOXYGEN_RUNNING
 # undef  IN_RING0
