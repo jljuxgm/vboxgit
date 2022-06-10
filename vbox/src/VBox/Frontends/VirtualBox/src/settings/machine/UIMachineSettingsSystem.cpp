@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 73158 2018-07-16 12:57:41Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 73159 2018-07-16 15:20:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -477,21 +477,19 @@ bool UIMachineSettingsSystem::validate(QList<UIValidationMessage> &messages)
             message.second << tr("The processor execution cap is set to a low value. This may make the machine feel slow to respond.");
         }
 
-        /* Warn user about possible performance degradation and suggest lowering # of CPU assigned to the VM instead : */
+        /* Warn user about possible performance degradation and suggest lowering # of CPUs assigned to the VM instead: */
         if (m_pSliderCPUExecCap->value() < 100)
         {
-            if(m_uMaxGuestCPU > 1 && m_pSliderCPUCount->value() > 1)
+            if (m_uMaxGuestCPU > 1 && m_pSliderCPUCount->value() > 1)
             {
-                message.second << tr("Please consider lowering the number of CPUs assigned to the virtual machine rather"
-                                     " than setting the processor execution cap.");
+                message.second << tr("Please consider lowering the number of CPUs assigned to the virtual machine rather "
+                                     "than setting the processor execution cap.");
             }
             else if (m_uMaxGuestCPU > 1)
             {
                 message.second << tr("Lowering the processor execution cap may result in a decline in performance.");
-
             }
         }
-    }
 
         /* Serialize message: */
         if (!message.second.isEmpty())
