@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 76825 2019-01-15 12:42:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -1140,7 +1140,7 @@ void UIGlobalSettingsInput::prepareTabMachine()
         m_pTabWidget->insertTab(UIHotKeyTableIndex_Machine, pMachineTab, QString());
 
         /* In the VM process we start by displaying the Runtime UI tab: */
-        if (VBoxGlobal::instance()->isVMConsoleProcess())
+        if (vboxGlobal().uiType() == VBoxGlobal::UIType_RuntimeUI)
             m_pTabWidget->setCurrentWidget(pMachineTab);
     }
 }

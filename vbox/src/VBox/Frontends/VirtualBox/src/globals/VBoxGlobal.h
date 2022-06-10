@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 76818 2019-01-14 16:17:07Z vboxsync $ */
+/* $Id: VBoxGlobal.h 76825 2019-01-15 12:42:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -205,8 +205,6 @@ public:
 
         /** Returns the --startvm option value (managed VM id). */
         QUuid managedVMUuid() const { return m_strManagedVMId; }
-        /** Returns whether this is VM console process. */
-        bool isVMConsoleProcess() const { return !m_strManagedVMId.isNull(); }
         /** Returns the --separate option value (whether GUI process is separate from VM process). */
         bool isSeparateProcess() const { return m_fSeparateProcess; }
         /** Returns the --no-startvm-errormsgbox option value (whether startup VM errors are disabled). */

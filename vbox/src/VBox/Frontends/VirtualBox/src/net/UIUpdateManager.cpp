@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 76825 2019-01-15 12:42:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -527,8 +527,8 @@ UIUpdateManager::UIUpdateManager()
     connect(m_pQueue, &UIUpdateQueue::sigQueueFinished, this, &UIUpdateManager::sltHandleUpdateFinishing);
 
 #ifdef VBOX_WITH_UPDATE_REQUEST
-    /* Ask updater to check for the first time: */
-    if (gEDataManager->applicationUpdateEnabled() && !vboxGlobal().isVMConsoleProcess())
+    /* Ask updater to check for the first time, for Selector UI only: */
+    if (gEDataManager->applicationUpdateEnabled() && vboxGlobal().uiType() == VBoxGlobal::UIType_SelectorUI)
         QTimer::singleShot(0, this, SLOT(sltCheckIfUpdateIsNecessary()));
 #endif /* VBOX_WITH_UPDATE_REQUEST */
 }

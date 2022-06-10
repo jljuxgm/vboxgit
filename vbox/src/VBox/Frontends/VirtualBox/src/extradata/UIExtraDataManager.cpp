@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 76626 2019-01-03 21:18:50Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 76825 2019-01-15 12:42:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4698,7 +4698,7 @@ void UIExtraDataManager::sltExtraDataChange(const QUuid &uMachineID, const QStri
     else
     {
         /* Current VM only: */
-        if (   vboxGlobal().isVMConsoleProcess()
+        if (   vboxGlobal().uiType() == VBoxGlobal::UIType_RuntimeUI
             && uMachineID == vboxGlobal().managedVMUuid())
         {
             /* HID LEDs sync state changed (allowed if not restricted)? */
