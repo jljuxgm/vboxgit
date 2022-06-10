@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: SSM.cpp 77360 2019-02-19 13:24:40Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -1964,7 +1964,7 @@ static int ssmR3StrmInit(PSSMSTRM pStrm, PCSSMSTRMOPS pStreamOps, void *pvUser, 
  */
 static DECLCALLBACK(int) ssmR3FileWrite(void *pvUser, uint64_t offStream, const void *pvBuf, size_t cbToWrite)
 {
-    Assert(RTFileTell((RTFILE)(uintptr_t)pvUser) == offStream); NOREF(offStream);
+    NOREF(offStream);
     return RTFileWriteAt((RTFILE)(uintptr_t)pvUser, offStream, pvBuf, cbToWrite, NULL); /** @todo use RTFileWrite */
 }
 
