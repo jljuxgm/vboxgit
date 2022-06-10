@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.cpp 77649 2019-03-11 10:46:03Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.cpp 77784 2019-03-19 13:39:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestSessionTreeItem class implementation.
  */
@@ -300,6 +300,14 @@ QString UIGuestProcessTreeItem::propertyString() const
     strProperty += QString("<b>%1: </b>%2<br/>").arg(tr("Process Id")).arg(m_comGuestProcess.GetPID());
     strProperty += QString("<b>%1: </b>%2<br/>").arg(tr("Process Status")).arg(gpConverter->toInternalString(m_comGuestProcess.GetStatus()));
     strProperty += QString("<b>%1: </b>%2<br/>").arg(tr("Executable Path")).arg(m_comGuestProcess.GetExecutablePath());
+
+    strProperty += QString("<b>%1: </b>").arg(tr("Arguments"));
+    QVector<QString> processArguments = m_comGuestProcess.GetArguments();
+    for (int i = 0; i < processArguments.size() - 1; ++i)
+        strProperty += QString("%1, ").arg(processArguments.at(i));
+    if (processArguments.size() > 0)
+        strProperty += QString("%1<br/> ").arg(processArguments.last());
+
     return strProperty;
 }
 
