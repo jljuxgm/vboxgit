@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 74318 2018-09-17 16:19:38Z vboxsync $ */
+/* $Id: UIToolsItem.cpp 74463 2018-09-25 18:12:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -584,7 +584,7 @@ QVariant UIToolsItem::data(int iKey) const
 void UIToolsItem::updatePixmap()
 {
     /* Prepare variables: */
-    const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
+    const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) * 1.375;
 
     /* Prepare new pixmap size: */
     const QSize pixmapSize = QSize(iIconMetric, iIconMetric);
