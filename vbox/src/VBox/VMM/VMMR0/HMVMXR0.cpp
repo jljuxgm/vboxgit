@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72788 2018-07-02 09:12:47Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72789 2018-07-02 09:13:58Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -102,7 +102,7 @@
                                                   | CPUMCTX_EXTRN_RSP             \
                                                   | CPUMCTX_EXTRN_SREG_MASK       \
                                                   | CPUMCTX_EXTRN_TABLE_MASK      \
-                                                  |  CPUMCTX_EXTRN_KERNEL_GS_BASE \
+                                                  | CPUMCTX_EXTRN_KERNEL_GS_BASE  \
                                                   | CPUMCTX_EXTRN_SYSCALL_MSRS    \
                                                   | CPUMCTX_EXTRN_SYSENTER_MSRS   \
                                                   | CPUMCTX_EXTRN_TSC_AUX         \
