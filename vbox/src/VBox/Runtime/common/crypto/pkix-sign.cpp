@@ -1,4 +1,4 @@
-/* $Id: pkix-sign.cpp 73665 2018-08-14 17:49:23Z vboxsync $ */
+/* $Id: pkix-sign.cpp 73670 2018-08-14 17:59:29Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Infrastructure API, Verification.
  */
@@ -31,6 +31,7 @@
 #include "internal/iprt.h"
 #include <iprt/crypto/pkix.h>
 
+#include <iprt/alloca.h>
 #include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
