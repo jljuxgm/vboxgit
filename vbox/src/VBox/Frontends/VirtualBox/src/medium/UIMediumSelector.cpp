@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 77356 2019-02-19 10:33:05Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 77363 2019-02-19 15:25:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -79,6 +79,7 @@ UIMediumSelector::UIMediumSelector(UIMediumDeviceType enmMediumType, const QStri
     , m_strMachineName(machineName)
     , m_strMachineGuestOSTypeId(strMachineGuestOSTypeId)
 {
+    vboxGlobal().startMediumEnumeration();
     configure();
     finalize();
 }
@@ -634,7 +635,6 @@ void UIMediumSelector::repopulateTreeWidget()
     foreach (const QUuid &uMediumID, vboxGlobal().mediumIDs())
     {
         UIMedium medium = vboxGlobal().medium(uMediumID);
-        //printf("name %s\n", qPrintable(medium.name()));
         if (medium.type() == m_enmMediumType)
         {
             bool isMediumAttached = !(medium.medium().GetMachineIds().isEmpty());
