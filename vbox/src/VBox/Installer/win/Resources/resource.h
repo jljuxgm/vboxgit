@@ -1,4 +1,4 @@
-/* $Id: resource.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: resource.h 76529 2018-12-30 05:59:16Z vboxsync $ */
 /** @file
  * resource.h - resource header file.
  */
@@ -15,6 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifndef VBOX_INCLUDED_win_Resources_resource_h
+#define VBOX_INCLUDED_win_Resources_resource_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
+
 #define IDI_VIRTUALBOX              101
 
 #define IDI_FILETYPE_VBOX           201
@@ -26,3 +32,5 @@
 #define IDI_FILETYPE_VBOX_VMDK      304
 #define IDI_FILETYPE_VBOX_VHD       305
 #define IDI_FILETYPE_VBOX_HDD       306
+
+#endif

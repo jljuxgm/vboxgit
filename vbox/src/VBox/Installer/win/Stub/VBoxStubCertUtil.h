@@ -1,4 +1,4 @@
-/* $Id: VBoxStubCertUtil.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxStubCertUtil.h 76529 2018-12-30 05:59:16Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub (certificate manipulations).
  */
@@ -15,6 +15,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#pragma once
+#ifndef VBOX_INCLUDED_win_Stub_VBoxStubCertUtil_h
+#define VBOX_INCLUDED_win_Stub_VBoxStubCertUtil_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 extern bool addCertToStore(DWORD dwDst, const char *pszStoreNm, const unsigned char kpCertBuf[], DWORD cbCertBuf);
+
+#endif
+

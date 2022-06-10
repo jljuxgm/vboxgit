@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxStub.h 76529 2018-12-30 05:59:16Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -15,10 +15,16 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#pragma once
+#ifndef VBOX_INCLUDED_win_Stub_VBoxStub_h
+#define VBOX_INCLUDED_win_Stub_VBoxStub_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define VBOX_STUB_TITLE "VirtualBox Installer"
 
 typedef BOOL (WINAPI *LPFN_ISWOW64PROCESS) (HANDLE, PBOOL);
 LPFN_ISWOW64PROCESS fnIsWow64Process;
+
+#endif
 

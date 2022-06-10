@@ -1,4 +1,4 @@
-/* $Id: VBoxStubBld.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxStubBld.h 76529 2018-12-30 05:59:16Z vboxsync $ */
 /** @file
  * VBoxStubBld - VirtualBox's Windows installer stub builder.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxStubBld_h___
 #define ___VBoxStubBld_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define VBOXSTUB_MAX_PACKAGES 128
 
