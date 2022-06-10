@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 73007 2018-07-09 12:02:55Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 73009 2018-07-09 12:39:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -47,13 +47,16 @@ protected:
     /** Chooses default settings. */
     void chooseDefaultSettings();
 
+    /** Updates page appearance. */
+    virtual void updatePageAppearance();
+
     /** Refreshes current settings. */
-    virtual void refreshCurrentSettings();
+    void refreshCurrentSettings();
 
     /** Updates format combo tool-tips. */
-    virtual void updateFormatComboToolTip();
+    void updateFormatComboToolTip();
     /** Updates provider combo tool-tips. */
-    virtual void updateProviderComboToolTip();
+    void updateProviderComboToolTip();
 
     /** Returns path. */
     QString path() const;
@@ -128,8 +131,8 @@ protected:
     /** Returns whether page is complete. */
     virtual bool isComplete() const /* override */;
 
-    /** Refreshes current settings. */
-    virtual void refreshCurrentSettings() /* override */;
+    /** Updates page appearance. */
+    virtual void updatePageAppearance() /* override */;
 
 private slots:
 
