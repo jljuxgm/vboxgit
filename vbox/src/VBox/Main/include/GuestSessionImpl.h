@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 75863 2018-12-02 00:43:41Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 75891 2018-12-03 11:27:32Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -183,6 +183,14 @@ private:
                       const com::Utf8Str &aDestination,
                       const std::vector<FsObjMoveFlag_T> &aFlags,
                       ComPtr<IProgress> &aProgress);
+    HRESULT fsObjMoveArray(const std::vector<com::Utf8Str> &aSource,
+                           const com::Utf8Str &aDestination,
+                           const std::vector<FsObjMoveFlag_T> &aFlags,
+                           ComPtr<IProgress> &aProgress);
+    HRESULT fsObjCopyArray(const std::vector<com::Utf8Str> &aSource,
+                           const com::Utf8Str &aDestination,
+                           const std::vector<FileCopyFlag_T> &aFlags,
+                           ComPtr<IProgress> &aProgress);
     HRESULT fsObjSetACL(const com::Utf8Str &aPath,
                         BOOL aFollowSymlinks,
                         const com::Utf8Str &aAcl,

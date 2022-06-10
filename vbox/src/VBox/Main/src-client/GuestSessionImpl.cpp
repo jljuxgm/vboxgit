@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 75868 2018-12-02 01:34:54Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 75891 2018-12-03 11:27:32Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3924,6 +3924,24 @@ HRESULT GuestSession::fsObjRename(const com::Utf8Str &aSource,
 
 HRESULT GuestSession::fsObjMove(const com::Utf8Str &aSource, const com::Utf8Str &aDestination,
                                 const std::vector<FsObjMoveFlag_T> &aFlags, ComPtr<IProgress> &aProgress)
+{
+    RT_NOREF(aSource, aDestination, aFlags, aProgress);
+    ReturnComNotImplemented();
+}
+
+HRESULT GuestSession::fsObjMoveArray(const std::vector<com::Utf8Str> &aSource,
+                                     const com::Utf8Str &aDestination,
+                                     const std::vector<FsObjMoveFlag_T> &aFlags,
+                                     ComPtr<IProgress> &aProgress)
+{
+    RT_NOREF(aSource, aDestination, aFlags, aProgress);
+    ReturnComNotImplemented();
+}
+
+HRESULT GuestSession::fsObjCopyArray(const std::vector<com::Utf8Str> &aSource,
+                                     const com::Utf8Str &aDestination,
+                                     const std::vector<FileCopyFlag_T> &aFlags,
+                                     ComPtr<IProgress> &aProgress)
 {
     RT_NOREF(aSource, aDestination, aFlags, aProgress);
     ReturnComNotImplemented();
