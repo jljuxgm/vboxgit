@@ -1,4 +1,4 @@
-/* $Id: isomaker.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: isomaker.cpp 73603 2018-08-09 19:26:53Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker.
  */
@@ -6735,7 +6735,6 @@ static uint32_t rtFsIsoMakerOutFile_GenerateDirRecDirect(PRTFSISOMAKERNAME pName
             pCurDirRec->offExtent.le = RT_H2LE_U32(offExtent);
 
             cbReturn += cbOne;
-            iDirRec++;
         }
         Assert(cbReturn <= pName->cbDirRecTotal);
 
