@@ -1,4 +1,4 @@
-/* $Id: unpack_shaders.cpp 78193 2019-04-18 00:34:04Z vboxsync $ */
+/* $Id: unpack_shaders.cpp 78264 2019-04-23 18:53:43Z vboxsync $ */
 /** @file
  * VBox OpenGL DRI driver functions
  */
@@ -452,7 +452,7 @@ void crUnpackExtendGetAttribLocation(PCrUnpackerState pState)
     const char *name = DATA_POINTER(pState, 12, const char);
 
     size_t cchStr = CHECK_STRING_FROM_PTR_UPDATE_NO_RETURN(pState, name);
-    if (RT_UNLIKELY(cchStr == ~(size_t)0 || packet_length != cchStr + 2 * sizeof(CRNetworkPointer)))
+    if (RT_UNLIKELY(cchStr == ~(size_t)0U || packet_length != cchStr + 2 * sizeof(CRNetworkPointer)))
     {
         crError("crUnpackExtendGetAttribLocation: packet_length is corrupt");
         return;
@@ -473,7 +473,7 @@ void crUnpackExtendGetUniformLocation(PCrUnpackerState pState)
     const char *name = DATA_POINTER(pState, 12, const char);
 
     size_t cchStr = CHECK_STRING_FROM_PTR_UPDATE_NO_RETURN(pState, name);
-    if (RT_UNLIKELY(cchStr == ~(size_t)0 || packet_length != cchStr + 2 * sizeof(CRNetworkPointer)))
+    if (RT_UNLIKELY(cchStr == ~(size_t)0U || packet_length != cchStr + 2 * sizeof(CRNetworkPointer)))
     {
         crError("crUnpackExtendGetUniformLocation: packet_length is corrupt");
         return;

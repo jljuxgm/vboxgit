@@ -1,4 +1,4 @@
-# $Id: Config.kmk 78263 2019-04-23 18:41:06Z vboxsync $
+# $Id: Config.kmk 78264 2019-04-23 18:53:43Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -7348,7 +7348,6 @@ ifeq ($(KBUILD_TARGET),darwin)
  TEMPLATE_VBOXCROGLR3HOSTDLL_CXXFLAGS        = $(TEMPLATE_VBOXR3NP_CXXFLAGS) -Wno-deprecated-declarations
  TEMPLATE_VBOXCROGLR3HOSTDLL_OBJCFLAGS       = $(TEMPLATE_VBOXR3NP_OBJCFLAGS) -Wno-deprecated-declarations
 else ifeq ($(KBUILD_TARGET),win)
- #   -wd4054: renderspu_wgl.c(281) : warning C4054: 'type cast' : from function pointer 'HWND (__cdecl *)()' to data pointer 'void *'
  #   -wd4055: renderspu.c(1553) : warning C4055: 'type cast' : from data pointer 'const GLvoid *' to function pointer 'PFNVCRSERVER_CLIENT_CALLOUT'
  TEMPLATE_VBOXCROGLR3HOSTDLL_CFLAGS          = $(TEMPLATE_$(TEMPLATE_VBOXCROGLR3HOSTDLL_EXTENDS)_CFLAGS) \
   -wd4055
@@ -7670,7 +7669,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 78263 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 78264 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

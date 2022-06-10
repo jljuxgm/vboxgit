@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 78263 2019-04-23 18:41:06Z vboxsync $ */
+/* $Id: server_presenter.cpp 78264 2019-04-23 18:53:43Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -224,7 +224,7 @@ static int crFbBltGetContentsScaledDirect(HCR_FRAMEBUFFER hFb, const RTRECTSIZE 
     float strX = ((float)dstWidth) / srcWidth;
     float strY = ((float)dstHeight) / srcHeight;
     bool fScale = (dstWidth != srcWidth || dstHeight != srcHeight);
-    Assert(fScale);
+    Assert(fScale); RT_NOREF(fScale);
 
     /* 'List' contains the destination rectangles to be updated (in pDst coords). */
     VBoxVrListInit(&List);
