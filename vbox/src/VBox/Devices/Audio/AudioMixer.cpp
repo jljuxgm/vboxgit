@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73403 2018-07-31 08:59:13Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73404 2018-07-31 09:04:55Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1592,15 +1592,6 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
             else
             {
                 AssertFailedStmt(rc = VERR_NOT_IMPLEMENTED);
-                continue;
-            }
-
-            rc2 = pConn->pfnStreamIterate(pConn, pStream);
-            if (RT_FAILURE(rc2))
-            {
-                LogFunc(("%s: Failed re-iterating stream '%s', rc=%Rrc\n", pSink->pszName, pStream->szName, rc2));
-                if (RT_SUCCESS(rc))
-                    rc = rc2;
                 continue;
             }
 
