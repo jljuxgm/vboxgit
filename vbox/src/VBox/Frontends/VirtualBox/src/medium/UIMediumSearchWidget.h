@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.h 77006 2019-01-26 18:27:09Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.h 77013 2019-01-28 08:24:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class declaration.
  */
@@ -75,7 +75,10 @@ private:
 
     void    prepareWidgets();
     void    markUnmarkItems(QList<QTreeWidgetItem*> &itemList, bool fMark);
-
+    void    setUnderlineItemText(QTreeWidgetItem* pItem, bool fUnderline);
+    /** Increases (or decreases if @p fNext is false) the m_iScrollToIndex and
+     *  takes care of the necessary decoration changes to mark the current item. */
+    void    goToNextPrevious(bool fNext);
     QIComboBox       *m_pSearchComboxBox;
     QLineEdit        *m_pSearchTermLineEdit;
     QIToolButton     *m_pShowNextMatchButton;
