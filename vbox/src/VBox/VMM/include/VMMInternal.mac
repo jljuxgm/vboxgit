@@ -1,4 +1,4 @@
-; $Id: VMMInternal.mac 69221 2017-10-24 15:07:46Z vboxsync $
+; $Id: VMMInternal.mac 72778 2018-06-29 20:02:35Z vboxsync $
 ;; @file
 ; VMM - Internal header file.
 ;
@@ -106,6 +106,8 @@ struc VMMCPU
 
         .pR0LoggerR3            RTR3PTR_RES 1
         .pR0LoggerR0            RTR0PTR_RES 1
+        .pR0RelLoggerR3         RTR3PTR_RES 1
+        .pR0RelLoggerR0         RTR0PTR_RES 1
 
         .hCtxHook               RTR0PTR_RES 1
 
