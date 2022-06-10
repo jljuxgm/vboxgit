@@ -1,4 +1,4 @@
-/* $Id: UITextTable.h 77432 2019-02-22 14:52:39Z vboxsync $ */
+/* $Id: UITextTable.h 77433 2019-02-22 14:57:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITextTable class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_widgets_graphics_UITextTable_h
-#define FEQT_INCLUDED_SRC_widgets_graphics_UITextTable_h
+#ifndef FEQT_INCLUDED_SRC_globals_UITextTable_h
+#define FEQT_INCLUDED_SRC_globals_UITextTable_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -91,4 +91,4 @@ typedef QList<UITextTableLine> UITextTable;
 Q_DECLARE_METATYPE(UITextTable);
 
 
-#endif /* !FEQT_INCLUDED_SRC_widgets_graphics_UITextTable_h */
+#endif /* !FEQT_INCLUDED_SRC_globals_UITextTable_h */
