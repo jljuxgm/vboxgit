@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 78124 2019-04-15 14:29:49Z vboxsync $ */
+/* $Id: MachineImpl.cpp 78202 2019-04-18 09:51:02Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9909,6 +9909,10 @@ HRESULT Machine::i_saveSettings(bool *pfNeedsGlobalSaveSettings,
 
     AssertReturn(!i_isSnapshotMachine(),
                  E_FAIL);
+
+    if (!mData->mAccessible)
+        return setError(VBOX_E_INVALID_VM_STATE,
+                        tr("The machine is not accessible, so cannot save settings"));
 
     HRESULT rc = S_OK;
     bool fNeedsWrite = false;
