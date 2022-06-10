@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 78151 2019-04-17 12:03:42Z vboxsync $ */
+/* $Id: clipboard-win.cpp 78171 2019-04-17 16:03:40Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -133,10 +133,10 @@ int VBoxClipboardWinCheckAndInitNewAPI(PVBOXCLIPBOARDWINAPINEW pAPI)
     int rc = RTLdrLoadSystem("User32.dll", /* fNoUnload = */ true, &hUser32);
     if (RT_SUCCESS(rc))
     {
-        rc = RTLdrGetSymbol(hUser32, "AddClipboardFormatListener", (void**)&pAPI->pfnAddClipboardFormatListener);
+        rc = RTLdrGetSymbol(hUser32, "AddClipboardFormatListener", (void **)&pAPI->pfnAddClipboardFormatListener);
         if (RT_SUCCESS(rc))
         {
-            rc = RTLdrGetSymbol(hUser32, "RemoveClipboardFormatListener", (void**)&pAPI->pfnRemoveClipboardFormatListener);
+            rc = RTLdrGetSymbol(hUser32, "RemoveClipboardFormatListener", (void **)&pAPI->pfnRemoveClipboardFormatListener);
         }
 
         RTLdrClose(hUser32);
