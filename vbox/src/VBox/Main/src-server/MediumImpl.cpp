@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 76238 2018-12-14 16:30:53Z vboxsync $ */
+/* $Id: MediumImpl.cpp 76239 2018-12-14 18:54:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -9086,11 +9086,13 @@ HRESULT Medium::i_taskMergeHandler(Medium::MergeTask &task)
             /* then, reparent it and disconnect the deleted branch at both ends
              * (chain->parent() is source's parent). Depth check above. */
             pTarget->i_deparent();
-            if (task.NotifyAboutChanges())
-                pMediumsForNotify.insert(task.mParentForTarget);
             pTarget->i_setParent(task.mParentForTarget);
             if (task.mParentForTarget)
+            {
                 i_deparent();
+                if (task.NotifyAboutChanges())
+                    pMediumsForNotify.insert(task.mParentForTarget);
+            }
 
             /* then, register again */
             ComObjPtr<Medium> pMedium;
