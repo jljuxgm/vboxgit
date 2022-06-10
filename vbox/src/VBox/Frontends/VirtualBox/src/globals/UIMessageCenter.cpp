@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 74921 2018-10-18 14:15:19Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 74922 2018-10-18 14:36:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1644,6 +1644,13 @@ void UIMessageCenter::cannotCreateCloudProfle(const CCloudProvider &comProvider,
 {
     error(pParent, MessageType_Error,
           tr("Failed to create cloud profile."),
+          UIErrorString::formatErrorInfo(comProvider));
+}
+
+void UIMessageCenter::cannotSaveCloudProfiles(const CCloudProvider &comProvider, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to save cloud profiles."),
           UIErrorString::formatErrorInfo(comProvider));
 }
 
