@@ -1,6 +1,6 @@
-/* $Id: DBGFR3BugCheck.cpp 73353 2018-07-25 15:20:40Z vboxsync $ */
+/* $Id: DBGFR3BugCheck.cpp 73357 2018-07-25 16:05:24Z vboxsync $ */
 /** @file
- * DBGF - Debugger Facility, Misc.
+ * DBGF - Debugger Facility, NT Bug Checks.
  */
 
 /*
