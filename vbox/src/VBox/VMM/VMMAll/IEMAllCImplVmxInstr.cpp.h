@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 73726 2018-08-17 06:00:28Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 73732 2018-08-17 11:41:47Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -622,7 +622,7 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmxon(PVMCPU pVCpu, uint8_t cbInstr, RTGCPHYS GCPt
          */
         pVCpu->cpum.GstCtx.hwvirt.vmx.GCPhysVmxon    = GCPhysVmxon;
         pVCpu->cpum.GstCtx.hwvirt.vmx.fInVmxRootMode = true;
-        /** @todo NSTVMX: init. current VMCS pointer with ~0. */
+        pVCpu->cpum.GstCtx.hwvirt.vmx.GCPhysVmcs     = NIL_RTGCPHYS;
         /** @todo NSTVMX: clear address-range monitoring. */
         /** @todo NSTVMX: Intel PT. */
         pVCpu->cpum.GstCtx.hwvirt.vmx.enmInstrDiag = kVmxVInstrDiag_Vmxon_Success;
