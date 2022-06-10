@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 76625 2019-01-03 17:24:36Z vboxsync $
+# $Id: virtual_test_sheriff.py 77644 2019-03-11 09:26:00Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76625 $"
+__version__ = "$Revision: 77644 $"
 
 
 # Standard python imports
@@ -310,7 +310,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 76625 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 77644 $ \n');
 
 
     def eprint(self, sText):
@@ -657,7 +657,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 76625 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 77644 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -776,6 +776,15 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
               'vboxdrv.sh: failed: Look at /var/log/vbox-install.log to find out what went wrong.' ),
             ( True, ktReason_Host_DriverNotUnloading,
               'Cannot unload module vboxdrv'),
+        ],
+        'solaris': [
+            # ( Whether to stop on hit, reason tuple, needle text. )
+            ( True, ktReason_Host_InstallationFailed,
+              'svcadm: Couldn\'t bind to svc.configd.' ),
+            ( True, ktReason_Host_InstallationFailed,
+              'pkgadd: ERROR: postinstall script did not complete successfully' ),
+            ( True, ktReason_Host_DriverNotUnloading,
+              'can\'t unload the module: Device busy' ),
         ],
     };
 
