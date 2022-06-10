@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 74482 2018-09-26 16:10:40Z vboxsync $ */
+/* $Id: UIChooserItemMachine.h 74598 2018-10-03 14:36:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -269,6 +269,10 @@ private:
 
     /** @name Item stuff.
       * @{ */
+        /** Holds item minimum default lightness. */
+        int  m_iDefaultLightnessMin;
+        /** Holds item maximum default lightness. */
+        int  m_iDefaultLightnessMax;
         /** Holds item minimum hover lightness. */
         int  m_iHoverLightnessMin;
         /** Holds item maximum hover lightness. */
