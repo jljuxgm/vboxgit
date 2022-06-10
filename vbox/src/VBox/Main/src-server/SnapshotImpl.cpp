@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 76215 2018-12-13 18:58:16Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 76238 2018-12-14 16:30:53Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1914,7 +1914,6 @@ void SessionMachine::i_takeSnapshotHandler(TakeSnapshotTask &task)
 
     if (SUCCEEDED(rc))
         mParent->i_onSnapshotTaken(mData->mUuid, task.m_uuidSnapshot);
-    LogFlowThisFuncLeave();
 
     if (SUCCEEDED(rc))
     {
@@ -1933,6 +1932,7 @@ void SessionMachine::i_takeSnapshotHandler(TakeSnapshotTask &task)
                 mParent->i_onMediumConfigChanged(*it);
         }
     }
+    LogFlowThisFuncLeave();
 }
 
 

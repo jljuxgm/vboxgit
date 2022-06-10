@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 76220 2018-12-13 20:03:15Z vboxsync $ */
+/* $Id: MediumImpl.cpp 76238 2018-12-14 16:30:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2401,7 +2401,7 @@ HRESULT Medium::close(AutoCaller &aAutoCaller)
     pVirtualBox->i_saveModifiedRegistries();
 
     if (SUCCEEDED(mrc) && wasCreated)
-        m->pVirtualBox->i_onMediumRegistered(uId, devType, FALSE);
+        pVirtualBox->i_onMediumRegistered(uId, devType, FALSE);
 
     return mrc;
 }
