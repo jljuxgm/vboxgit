@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 77885 2019-03-26 16:21:44Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 77886 2019-03-26 16:37:38Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -15,9 +15,6 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*********************************************************************************************************************************
-*   Header Files                                                                                                                 *
-*********************************************************************************************************************************/
 #include <VBox/com/com.h>
 #include <VBox/com/string.h>
 #include <VBox/com/Guid.h>
