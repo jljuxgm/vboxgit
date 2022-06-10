@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 77080 2019-01-31 16:15:30Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 77081 2019-01-31 16:18:25Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1511,7 +1511,7 @@ int GuestWaitEvent::Init(uint32_t uCID)
  *
  * @returns IPRT status code.
  * @param   uCID                Context ID to initialize wait event with.
- * @param   lstEvent            List of event types to wait for this wait event to get signalled.
+ * @param   lstEvents           List of event types to wait for this wait event to get signalled.
  */
 int GuestWaitEvent::Init(uint32_t uCID, const GuestEventTypes &lstEvents)
 {
