@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 76066 2018-12-07 22:17:39Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.h 76067 2018-12-08 00:54:36Z vboxsync $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -74,7 +74,6 @@ private:
      * @{ */
     STDMETHOD(RegisterVBoxSVC)(IVBoxSVCRegistration *aVBoxSVC, LONG aPid, IUnknown **aExistingVirtualBox);
     STDMETHOD(DeregisterVBoxSVC)(IVBoxSVCRegistration *aVBoxSVC, LONG aPid);
-    STDMETHOD(NotifyClientsFinished)(); /**< @todo r=bird: Internal within SDS! Make private. */
     /** @} */
 
 

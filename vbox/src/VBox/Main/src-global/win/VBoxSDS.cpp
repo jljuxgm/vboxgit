@@ -1,4 +1,4 @@
-/* $Id: VBoxSDS.cpp 76065 2018-12-07 21:27:24Z vboxsync $ */
+/* $Id: VBoxSDS.cpp 76067 2018-12-08 00:54:36Z vboxsync $ */
 /** @file
  * VBoxSDS - COM global service main entry (System Directory Service)
  */
@@ -86,7 +86,6 @@
 #include "VBox/com/VirtualBox.h"
 
 #include "VirtualBoxSDSImpl.h"
-#include "VirtualBoxClientListImpl.h"
 #include "Logging.h"
 
 #include <VBox/err.h>
@@ -925,7 +924,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         {
             BEGIN_OBJECT_MAP(s_aObjectMap)
                 OBJECT_ENTRY(CLSID_VirtualBoxSDS, VirtualBoxSDS)
-                OBJECT_ENTRY(CLSID_VirtualBoxClientList, VirtualBoxClientList)
             END_OBJECT_MAP()
             hrcExit = pServiceModule->init(s_aObjectMap, hInstance, &LIBID_VirtualBox,
                                            L"VBoxSDS",
