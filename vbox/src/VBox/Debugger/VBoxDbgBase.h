@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.h 76564 2019-01-01 03:57:14Z vboxsync $ */
+/* $Id: VBoxDbgBase.h 77412 2019-02-21 18:25:37Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -133,8 +133,9 @@ public:
      *
      * @param   a_pDbgGui   Pointer to the debugger gui object.
      * @param   a_pParent   Pointer to the parent object.
+     * @param   a_pszTitle  The window title string (persistent, not copied).
      */
-    VBoxDbgBaseWindow(VBoxDbgGui *a_pDbgGui, QWidget *a_pParent);
+    VBoxDbgBaseWindow(VBoxDbgGui *a_pDbgGui, QWidget *a_pParent, const char *a_pszTitle);
 
     /**
      * Destructor.
@@ -167,6 +168,14 @@ protected:
     virtual bool event(QEvent *a_pEvt);
 
     /**
+     * Event filter for various purposes (mainly title bar).
+     *
+     * @param  pWatched         The object event came to.
+     * @param  pEvent           The event being handled.
+     */
+    virtual bool eventFilter(QObject *pWatched, QEvent *pEvent);
+
+    /**
      * Internal worker for polishing the size and position (X11 hacks).
      */
     void vPolishSizeAndPos();
@@ -176,8 +185,9 @@ protected:
      */
     QSize vGuessBorderSizes();
 
-
 private:
+    /** The Window title string (inflexible, read only). */
+    const char *m_pszTitle;
     /** Whether we've done the size polishing in showEvent or not. */
     bool m_fPolished;
     /** The desired x coordinate. */

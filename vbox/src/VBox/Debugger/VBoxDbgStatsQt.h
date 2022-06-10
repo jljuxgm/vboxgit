@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt.h 76564 2019-01-01 03:57:14Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt.h 77412 2019-02-21 18:25:37Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -202,14 +202,6 @@ protected:
      * @param  a_pCloseEvt      The close event.
      */
     virtual void closeEvent(QCloseEvent *a_pCloseEvt);
-
-    /**
-     * Event filter for various purposes.
-     *
-     * @param  pWatched         The object event came to.
-     * @param  pEvent           The event being handled.
-     */
-    virtual bool eventFilter(QObject *pWatched, QEvent *pEvent);
 
 protected slots:
     /** Apply the activated combobox pattern. */

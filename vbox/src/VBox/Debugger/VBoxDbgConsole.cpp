@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 77409 2019-02-21 11:47:48Z vboxsync $ */
+/* $Id: VBoxDbgConsole.cpp 77412 2019-02-21 18:25:37Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -483,20 +483,12 @@ VBoxDbgConsoleInput::returnPressed()
 
 
 VBoxDbgConsole::VBoxDbgConsole(VBoxDbgGui *a_pDbgGui, QWidget *a_pParent/* = NULL*/, IVirtualBox *a_pVirtualBox/* = NULL */)
-    : VBoxDbgBaseWindow(a_pDbgGui, a_pParent), m_pOutput(NULL), m_pInput(NULL), m_fInputRestoreFocus(false),
+    : VBoxDbgBaseWindow(a_pDbgGui, a_pParent, "Console"), m_pOutput(NULL), m_pInput(NULL), m_fInputRestoreFocus(false),
     m_pszInputBuf(NULL), m_cbInputBuf(0), m_cbInputBufAlloc(0),
     m_pszOutputBuf(NULL), m_cbOutputBuf(0), m_cbOutputBufAlloc(0),
     m_pTimer(NULL), m_fUpdatePending(false), m_Thread(NIL_RTTHREAD), m_EventSem(NIL_RTSEMEVENT),
     m_fTerminate(false), m_fThreadTerminated(false)
 {
-    QString strMachineName;
-    if (a_pDbgGui)
-        strMachineName = a_pDbgGui->getMachineName();
-
-    if (strMachineName.isEmpty())
-        setWindowTitle("VBoxDbg - Console");
-    else
-        setWindowTitle(QString("%1 - VBoxDbg - Console").arg(strMachineName));
     /*
      * Create the output text box.
      */
