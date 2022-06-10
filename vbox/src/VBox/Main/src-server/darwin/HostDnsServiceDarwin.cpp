@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 78004 2019-04-03 16:08:42Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 78013 2019-04-04 11:37:13Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -100,6 +100,8 @@ HRESULT HostDnsServiceDarwin::init(HostDnsMonitorProxy *pProxy)
 
 void HostDnsServiceDarwin::uninit(void)
 {
+    HostDnsServiceBase::uninit();
+
     CFRunLoopRemoveSource(m->m_RunLoopRef, m->m_SourceStop, kCFRunLoopCommonModes);
     CFRelease(m->m_SourceStop);
 
@@ -110,8 +112,6 @@ void HostDnsServiceDarwin::uninit(void)
     CFRelease(m->m_store);
 
     RTSemEventDestroy(m->m_evtStop);
-
-    HostDnsServiceBase::uninit();
 }
 
 int HostDnsServiceDarwin::monitorThreadShutdown(RTMSINTERVAL uTimeoutMs)
@@ -156,8 +156,6 @@ int HostDnsServiceDarwin::monitorThreadProc(void)
     {
         CFRunLoopRun();
     }
-
-    CFRelease(m->m_RunLoopRef);
 
     /* We're notifying stopper thread. */
     RTSemEventSignal(m->m_evtStop);
