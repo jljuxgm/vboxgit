@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxBugReport.h 76582 2019-01-01 06:25:48Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, internal header file.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___H_VBOXBUGREPORT
-#define ___H_VBOXBUGREPORT
+#ifndef VBOX_INCLUDED_SRC_VBoxBugReport_VBoxBugReport_h
+#define VBOX_INCLUDED_SRC_VBoxBugReport_VBoxBugReport_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -273,4 +273,4 @@ private:
 
 void createBugReportOsSpecific(BugReport* report, const char *pszHome);
 
-#endif /* !___H_VBOXBUGREPORT */
+#endif /* !VBOX_INCLUDED_SRC_VBoxBugReport_VBoxBugReport_h */

@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxAutostart.h 76582 2019-01-01 06:25:48Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __VBoxAutostart_h__
-#define __VBoxAutostart_h__
+#ifndef VBOX_INCLUDED_SRC_VBoxAutostart_VBoxAutostart_h
+#define VBOX_INCLUDED_SRC_VBoxAutostart_VBoxAutostart_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -334,5 +334,5 @@ DECLHIDDEN(int) autostartSetup();
 
 DECLHIDDEN(void) autostartShutdown();
 
-#endif /* __VBoxAutostart_h__ */
+#endif /* !VBOX_INCLUDED_SRC_VBoxAutostart_VBoxAutostart_h */
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxSDL.h 76582 2019-01-01 06:25:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __H_VBOXSDL
-#define __H_VBOXSDL
+#ifndef VBOX_INCLUDED_SRC_VBoxSDL_VBoxSDL_h
+#define VBOX_INCLUDED_SRC_VBoxSDL_VBoxSDL_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -91,4 +91,4 @@ void *VBoxSDLGetDarwinWindowId(void);
 RT_C_DECLS_END
 #endif
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_VBoxSDL_VBoxSDL_h */

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxManage.h 76582 2019-01-01 06:25:48Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___H_VBOXMANAGE
-#define ___H_VBOXMANAGE
+#ifndef VBOX_INCLUDED_SRC_VBoxManage_VBoxManage_h
+#define VBOX_INCLUDED_SRC_VBoxManage_VBoxManage_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -335,4 +335,4 @@ RTEXITCODE handleBandwidthControl(HandlerArg *a);
 
 #endif /* !VBOX_ONLY_DOCS */
 
-#endif /* !___H_VBOXMANAGE */
+#endif /* !VBOX_INCLUDED_SRC_VBoxManage_VBoxManage_h */
