@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 75087 2018-10-26 09:59:37Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 75191 2018-10-30 16:54:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -3505,13 +3505,16 @@ void UIActionPoolRuntime::updateConfiguration()
 
 void UIActionPoolRuntime::updateMenu(int iIndex)
 {
-    /* Call to base-class: */
+    /* If index belongs to base-class => delegate to base-class: */
     if (iIndex < UIActionIndex_Max)
         UIActionPool::updateMenu(iIndex);
-
-    /* If menu with such index is invalidated and there is update-handler: */
-    if (m_invalidations.contains(iIndex) && m_menuUpdateHandlers.contains(iIndex))
-        (this->*(m_menuUpdateHandlers.value(iIndex).ptfr))();
+    /* Otherwise,
+     * if menu with such index is invalidated
+     * and there is update-handler => handle it here: */
+    else if (   iIndex > UIActionIndex_Max
+             && m_invalidations.contains(iIndex)
+             && m_menuUpdateHandlers.contains(iIndex))
+             (this->*(m_menuUpdateHandlers.value(iIndex).ptfr))();
 }
 
 void UIActionPoolRuntime::updateMenus()

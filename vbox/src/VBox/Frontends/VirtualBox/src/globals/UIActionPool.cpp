@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 75185 2018-10-30 15:30:00Z vboxsync $ */
+/* $Id: UIActionPool.cpp 75191 2018-10-30 16:54:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -2353,8 +2353,13 @@ void UIActionPool::updateConfiguration()
 
 void UIActionPool::updateMenu(int iIndex)
 {
-    /* Update if menu with such index is invalidated and there is update-handler: */
-    if (m_invalidations.contains(iIndex) && m_menuUpdateHandlers.contains(iIndex))
+    /* Make sure index belongs to this class: */
+    AssertReturnVoid(iIndex < UIActionIndex_Max);
+
+    /* If menu with such index is invalidated
+     * and there is update-handler => handle it here: */
+    if (   m_invalidations.contains(iIndex)
+        && m_menuUpdateHandlers.contains(iIndex))
         (this->*(m_menuUpdateHandlers.value(iIndex).ptf))();
 }
 
