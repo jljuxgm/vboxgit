@@ -1,4 +1,4 @@
-/* $Id: key.cpp 73665 2018-08-14 17:49:23Z vboxsync $ */
+/* $Id: key.cpp 74052 2018-09-03 20:09:45Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Cryptographic Keys.
  */
@@ -246,6 +246,7 @@ DECLHIDDEN(int) rtCrKeyCreateRsaPrivate(PRTCRKEY phKey, const void *pvKeyBits, u
 RTDECL(uint32_t) RTCrKeyRetain(RTCRKEY hKey)
 {
     PRTCRKEYINT pThis = hKey;
+    AssertPtrReturn(pThis, UINT32_MAX);
     AssertReturn(pThis->u32Magic == RTCRKEYINT_MAGIC, UINT32_MAX);
 
     uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
