@@ -1,4 +1,4 @@
-/* $Id: utils.c 77419 2019-02-21 23:53:28Z vboxsync $ */
+/* $Id: utils.c 77424 2019-02-22 08:08:39Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, utility functions.
  *
@@ -949,8 +949,10 @@ int sf_init_backing_dev(struct super_block *sb, struct sf_glob_info *sf_g)
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0) //&& LINUX_VERSION_CODE <= KERNEL_VERSION(3, 19, 0)
 	/* Each new shared folder map gets a new uint64_t identifier,
 	 * allocated in sequence.  We ASSUME the sequence will not wrap. */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 26)
 	static uint64_t s_u64Sequence = 0;
 	uint64_t u64CurrentSequence = ASMAtomicIncU64(&s_u64Sequence);
+#endif
 	struct backing_dev_info *bdi;
 
 #  if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
