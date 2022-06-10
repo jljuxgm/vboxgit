@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 74789 2018-10-12 10:34:32Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 76200 2018-12-13 09:23:47Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -2114,8 +2114,8 @@ NEM_TMPL_STATIC int nemR0WinImportState(PGVM pGVM, PGVMCPU pGVCpu, PCPUMCTX pCtx
         if (enmCpuVendor != CPUMCPUVENDOR_AMD)
         {
             Assert(pInput->Names[iReg] == HvX64RegisterIa32FeatureControl);
-            if (paValues[iReg].Reg64 != CPUMGetGuestIa32FeatureControl(pVCpu))
-                Log7(("NEM/%u: MSR FEATURE_CONTROL changed %RX64 -> %RX64 (!!)\n", pVCpu->idCpu, CPUMGetGuestIa32FeatureControl(pVCpu), paValues[iReg].Reg64));
+            if (paValues[iReg].Reg64 != pCtx->hwvirt.vmx.Msrs.u64FeatCtrl)
+                Log7(("NEM/%u: MSR FEATURE_CONTROL changed %RX64 -> %RX64 (!!)\n", pVCpu->idCpu, pCtx->hwvirt.vmx.Msrs.u64FeatCtrl, paValues[iReg].Reg64));
             iReg++;
         }
 # endif
