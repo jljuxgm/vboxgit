@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 75424 2018-11-13 16:05:13Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 75639 2018-11-21 10:52:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -417,12 +417,13 @@ void UIVMLogViewerWidget::sltResetOptionsToDefault()
 
 void UIVMLogViewerWidget::prepare()
 {
+    /* Load options: */
+    loadOptions();
+
     /* Prepare stuff: */
     prepareActions();
     /* Prepare widgets: */
     prepareWidgets();
-    /* Load options: */
-    loadOptions();
 
     /* Apply language settings: */
     retranslateUi();
