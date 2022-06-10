@@ -1,4 +1,4 @@
-# $Id: Config.kmk 73313 2018-07-23 11:02:07Z vboxsync $
+# $Id: Config.kmk 73315 2018-07-23 11:28:20Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2710,7 +2710,7 @@ else # !darwin
  	$(VBOX_JAVA_HOME)/include \
  	$(VBOX_JAVA_HOME)/include/$(VBOX_MD_OS)
 endif # !darwin
-VBOX_JAVA_FIGURE_VERSION = $(shell $(1) -version 2>&1 > /dev/null \
+VBOX_JAVA_FIGURE_VERSION = $(shell $(1) -version 2>&1 \
 	| $(SED_EXT) -n -e 's|^[^ ]* *\([0-9][0-9]*\)\.\([0-9][0-9]*\)\.\([0-9][0-9]*\).*$(DOLLAR)|$$(expr \1 * 10000 + \2 * 100 + \3)|p' )
 
 # Test C and C++ files.
@@ -7312,7 +7312,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 73313 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 73315 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -7380,7 +7380,11 @@ endif
 if defined(VBOX_JAVA_VERSION) && $(VBOX_JAVA_VERSION) >= 10900
  VBOX_JAVA_WS_OPTS ?= --add-modules java.xml.ws
 endif
-VBOX_JAVAC_OPTS   = -encoding UTF-8 -source 1.5 -target 1.5 -Xlint:unchecked
+if defined(VBOX_JAVA_VERSION) && $(VBOX_JAVA_VERSION) >= 100000
+ VBOX_JAVAC_OPTS   = -encoding UTF-8 -source 6 -target 6 -Xlint:unchecked
+else
+ VBOX_JAVAC_OPTS   = -encoding UTF-8 -source 1.5 -target 1.5 -Xlint:unchecked
+endif
 VBOX_JAVADOC_OPTS = -encoding UTF-8
 
 
