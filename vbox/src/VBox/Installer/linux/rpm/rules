@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 74326 2018-09-17 21:15:13Z vboxsync $
+# $Id: rules 74979 2018-10-22 18:20:20Z vboxsync $
 ## @file
 # VirtualBox rules.
 #
@@ -48,7 +48,7 @@ ifeq ($(wildcard rpm/rules),)
 $(error call rpm/rules from src/VBox/Installer/linux)
 endif
 
-verpkg   := VirtualBox-5.2
+verpkg   := VirtualBox-6.0
 current  := $(shell pwd)
 vboxroot := $(shell while ! test -r configure && ! test "$PWD" = "/"; do cd ..; done; pwd)
 pkgdir   := $(if $(PKGDIR),$(PKGDIR),$(shell cd $(vboxroot)/..; pwd))

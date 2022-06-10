@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 69500 2017-10-28 15:14:05Z vboxsync $
+# $Id: VirtualBox.tmpl.spec 74979 2018-10-22 18:20:20Z vboxsync $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -185,8 +185,13 @@ if [ -d $RPM_BUILD_ROOT/usr/lib/virtualbox/legacy ]; then
   rmdir $RPM_BUILD_ROOT/usr/lib/virtualbox/legacy
 fi
 ln -s ../VBoxVMM.so $RPM_BUILD_ROOT/usr/lib/virtualbox/components/VBoxVMM.so
-for i in VirtualBox VBoxHeadless VBoxNetDHCP VBoxNetNAT VBoxNetAdpCtl; do
+for i in VBoxHeadless VBoxNetDHCP VBoxNetNAT VBoxNetAdpCtl; do
   chmod 4511 $RPM_BUILD_ROOT/usr/lib/virtualbox/$i; done
+if test -e $RPM_BUILD_ROOT/usr/lib/virtualbox/VirtualBoxVM; then
+  chmod 4511 $RPM_BUILD_ROOT/usr/lib/virtualbox/VirtualBoxVM
+else
+  chmod 4511 $RPM_BUILD_ROOT/usr/lib/virtualbox/VirtualBox
+fi
 if [ -f $RPM_BUILD_ROOT/usr/lib/virtualbox/VBoxVolInfo ]; then
   chmod 4511 $RPM_BUILD_ROOT/usr/lib/virtualbox/VBoxVolInfo
 fi
