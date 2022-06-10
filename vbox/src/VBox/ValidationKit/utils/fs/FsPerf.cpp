@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 77088 2019-01-31 20:44:45Z vboxsync $ */
+/* $Id: FsPerf.cpp 77418 2019-02-21 23:51:35Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -2352,11 +2352,11 @@ void fsPerfMMap(RTFILE hFile1, RTFILE hFileNoCache, uint64_t cbFile)
                     if (!g_fIgnoreNoCache || hFileNoCache != NIL_RTFILE)
                     {
                         size_t   cbBuf = _2M;
-                        uint8_t *pbBuf = (uint8_t *)RTMemPageAlloc(_2M);
+                        uint8_t *pbBuf = (uint8_t *)RTMemPageAlloc(cbBuf);
                         if (!pbBuf)
                         {
                             cbBuf = _4K;
-                            pbBuf = (uint8_t *)RTMemPageAlloc(_2M);
+                            pbBuf = (uint8_t *)RTMemPageAlloc(cbBuf);
                         }
                         if (pbBuf)
                         {
@@ -2371,8 +2371,9 @@ void fsPerfMMap(RTFILE hFile1, RTFILE hFileNoCache, uint64_t cbFile)
                                 for (size_t offFlush = 0; offFlush < cbToRead; offFlush += PAGE_SIZE)
                                     if (*(size_t volatile *)&pbBuf[offFlush + 8] != cbFlush)
                                     {
-                                        RTTestIFailed("Flush issue at offset #%zx: %#zx, expected %#zx (cbFlush=%#zx)",
-                                                      offBuf, *(size_t volatile *)&pbBuf[offFlush + 8], cbFlush, cbFlush);
+                                        RTTestIFailed("Flush issue at offset #%zx: %#zx, expected %#zx (cbFlush=%#zx, %#RX64)",
+                                                      offBuf + offFlush + 8, *(size_t volatile *)&pbBuf[offFlush + 8],
+                                                      cbFlush, cbFlush, *(uint64_t volatile *)&pbBuf[offFlush]);
                                         if (++cErrors > 32)
                                             break;
                                     }
@@ -2799,7 +2800,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 77088 $";
+                char szRev[] = "$Revision: 77418 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
