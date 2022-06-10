@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 77645 2019-03-11 10:03:19Z vboxsync $
+# $Id: virtual_test_sheriff.py 77653 2019-03-11 14:03:37Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77645 $"
+__version__ = "$Revision: 77653 $"
 
 
 # Standard python imports
@@ -310,7 +310,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 77645 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 77653 $ \n');
 
 
     def eprint(self, sText):
@@ -426,6 +426,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         # Generate a list of failures reasons we consider bad-testbox behavior.
         #
         aidFailureReasons = [
+            self.getFailureReason(self.ktReason_Host_DriverNotLoaded).idFailureReason,
             self.getFailureReason(self.ktReason_Host_DriverNotUnloading).idFailureReason,
             self.getFailureReason(self.ktReason_Host_DriverNotCompilable).idFailureReason,
             self.getFailureReason(self.ktReason_Host_InstallationFailed).idFailureReason,
@@ -512,7 +513,12 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         #
         cStatusTimeoutMins = 10;
 
-        self.oDb.execute('SELECT idTestBox FROM TestBoxStatuses WHERE tsUpdated < (CURRENT_TIMESTAMP - interval \'%s minutes\')', (cStatusTimeoutMins,));
+        self.oDb.execute('SELECT TestBoxStatuses.idTestBox\n'
+                         '  FROM TestBoxStatuses, TestBoxes\n'
+                         ' WHERE TestBoxStatuses.tsUpdated >= (CURRENT_TIMESTAMP - interval \'%s hours\')\n'
+                         '   AND TestBoxStatuses.tsUpdated < (CURRENT_TIMESTAMP - interval \'%s minutes\')\n'
+                         '   AND TestBoxStatuses.idTestBox = TestBoxes.idTestBox\n'
+                         '   AND Testboxes.tsExpire = \'infinity\'::timestamp', (cHoursBack,cStatusTimeoutMins));
         for idTestBox in self.oDb.fetchAll():
             idTestBox = idTestBox[0];
             try:
@@ -540,7 +546,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                 self.sendEmailAlert(self.uidSelf, sComment);
 
             except Exception as oXcpt:
-                rcExit = self.eprint(u'Error reseting testbox #%u (%s): %s\n' % (idTestBox, oTestBox.sName, oXcpt,));
+                rcExit = self.eprint(u'Error resetting testbox #%u (%s): %s\n' % (idTestBox, oTestBox.sName, oXcpt,));
 
         return rcExit;
 
@@ -661,7 +667,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 77645 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 77653 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
