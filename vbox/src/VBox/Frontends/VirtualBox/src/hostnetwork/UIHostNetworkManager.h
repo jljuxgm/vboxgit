@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.h 73735 2018-08-17 12:57:53Z vboxsync $ */
+/* $Id: UIHostNetworkManager.h 73738 2018-08-17 15:09:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class declaration.
  */
@@ -52,8 +52,12 @@ signals:
 
 public:
 
-    /** Constructs Host Network Manager widget. */
-    UIHostNetworkManagerWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool, QWidget *pParent = 0);
+    /** Constructs Host Network Manager widget.
+      * @param  enmEmbedding  Brings the type of widget embedding.
+      * @param  pActionPool   Brings the action-pool reference.
+      * @param  fShowToolbar  Brings whether we should create/show toolbar. */
+    UIHostNetworkManagerWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,
+                               bool fShowToolbar = true, QWidget *pParent = 0);
 
     /** Returns the menu. */
     QMenu *menu() const;
@@ -158,6 +162,8 @@ private:
         const EmbedTo m_enmEmbedding;
         /** Holds the action-pool reference. */
         UIActionPool *m_pActionPool;
+        /** Holds whether we should create/show toolbar. */
+        const bool    m_fShowToolbar;
     /** @} */
 
     /** @name Toolbar and menu variables.

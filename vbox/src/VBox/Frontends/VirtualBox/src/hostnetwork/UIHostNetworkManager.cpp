@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 73735 2018-08-17 12:57:53Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 73738 2018-08-17 15:09:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -192,10 +192,12 @@ int UIItemHostNetwork::maskToCidr(const QString &strMask)
 *   Class UIHostNetworkManagerWidget implementation.                                                                             *
 *********************************************************************************************************************************/
 
-UIHostNetworkManagerWidget::UIHostNetworkManagerWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool, QWidget *pParent /* = 0 */)
+UIHostNetworkManagerWidget::UIHostNetworkManagerWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,
+                                                       bool fShowToolbar /* = true */, QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_enmEmbedding(enmEmbedding)
     , m_pActionPool(pActionPool)
+    , m_fShowToolbar(fShowToolbar)
     , m_pToolBar(0)
     , m_pTreeWidget(0)
     , m_pDetailsWidget(0)
@@ -724,7 +726,8 @@ void UIHostNetworkManagerWidget::prepareWidgets()
 #endif
 
         /* Prepare toolbar: */
-        prepareToolBar();
+        if (m_fShowToolbar)
+            prepareToolBar();
         /* Prepare tree-widget: */
         prepareTreeWidget();
         /* Prepare details-widget: */
@@ -1011,7 +1014,7 @@ void UIHostNetworkManager::configure()
 void UIHostNetworkManager::configureCentralWidget()
 {
     /* Create widget: */
-    UIHostNetworkManagerWidget *pWidget = new UIHostNetworkManagerWidget(EmbedTo_Dialog, m_pActionPool, this);
+    UIHostNetworkManagerWidget *pWidget = new UIHostNetworkManagerWidget(EmbedTo_Dialog, m_pActionPool, true, this);
     AssertPtrReturnVoid(pWidget);
     {
         /* Configure widget: */
