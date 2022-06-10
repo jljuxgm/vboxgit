@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 77116 2019-02-01 14:20:52Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 77157 2019-02-04 19:12:28Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1019,7 +1019,7 @@ int GuestBase::registerWaitEventEx(uint32_t uSessionID, uint32_t uObjectID, cons
             }
             if (RT_SUCCESS(rc))
             {
-                Assert(cInserts > 0);
+                Assert(cInserts > 0 || lstEvents.size() == 0);
                 RT_NOREF(cInserts);
 
                 /*
