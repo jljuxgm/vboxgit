@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 72708 2018-06-27 17:51:55Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 72709 2018-06-27 18:29:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -26,7 +26,6 @@
 
 /* GUI includes: */
 # include "VBoxGlobal.h"
-# include "UIGChooser.h"
 # include "UIGChooserItemGroup.h"
 # include "UIGChooserItemMachine.h"
 # include "UIGChooserModel.h"
@@ -62,7 +61,7 @@ UIGChooserItemMachine::UIGChooserItemMachine(UIGChooserItem *pParent,
     setZValue(parentItem()->zValue() + 1);
 
     /* Configure connections: */
-    connect(model()->chooser()->selector(), &UISelectorWindow::sigWindowRemapped,
+    connect(gpSelectorWindow, &UISelectorWindow::sigWindowRemapped,
             this, &UIGChooserItemMachine::sltHandleWindowRemapped);
 
     /* Init: */
@@ -89,7 +88,7 @@ UIGChooserItemMachine::UIGChooserItemMachine(UIGChooserItem *pParent,
     setZValue(parentItem()->zValue() + 1);
 
     /* Configure connections: */
-    connect(model()->chooser()->selector(), &UISelectorWindow::sigWindowRemapped,
+    connect(gpSelectorWindow, &UISelectorWindow::sigWindowRemapped,
             this, &UIGChooserItemMachine::sltHandleWindowRemapped);
 
     /* Init: */
@@ -270,7 +269,7 @@ void UIGChooserItemMachine::updateStatePixmap()
     const QIcon stateIcon = machineStateIcon();
     AssertReturnVoid(!stateIcon.isNull());
     const QSize statePixmapSize = QSize(iIconMetric, iIconMetric);
-    const QPixmap statePixmap = stateIcon.pixmap(model()->chooser()->window()->windowHandle(), statePixmapSize);
+    const QPixmap statePixmap = stateIcon.pixmap(gpSelectorWindow->windowHandle(), statePixmapSize);
     /* Update linked values: */
     if (m_statePixmapSize != statePixmapSize)
     {
