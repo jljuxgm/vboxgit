@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 75962 2018-12-05 09:34:58Z vboxsync $ */
+/* $Id: DevHDACommon.h 76019 2018-12-06 15:24:32Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -626,7 +626,7 @@ int           hdaR3DMAWrite(PHDASTATE pThis, PHDASTREAM pStream, const void *pvB
  */
 uint32_t      hdaGetINTSTS(PHDASTATE pThis);
 #ifdef IN_RING3
-int           hdaR3SDFMTToPCMProps(uint32_t u32SDFMT, PPDMAUDIOPCMPROPS pProps);
+int           hdaR3SDFMTToPCMProps(uint16_t u16SDFMT, PPDMAUDIOPCMPROPS pProps);
 #endif /* IN_RING3 */
 /** @} */
 
