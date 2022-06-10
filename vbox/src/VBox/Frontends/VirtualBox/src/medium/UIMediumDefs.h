@@ -1,4 +1,4 @@
-/* $Id: UIMediumDefs.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIMediumDefs.h 72821 2018-07-03 11:57:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium related declarations.
  */
@@ -30,6 +30,17 @@
 /* Other VBox includes: */
 #include <VBox/com/defs.h>
 
+
+/** Medium formats. */
+enum UIMediumFormat
+{
+    UIMediumFormat_VDI,
+    UIMediumFormat_VMDK,
+    UIMediumFormat_VHD,
+    UIMediumFormat_Parallels,
+    UIMediumFormat_QED,
+    UIMediumFormat_QCOW,
+};
 
 /** UIMediumDefs namespace. */
 namespace UIMediumDefs

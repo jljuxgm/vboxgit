@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 72692 2018-06-26 11:26:11Z vboxsync $ */
+/* $Id: VBoxGlobal.h 72821 2018-07-03 11:57:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -327,9 +327,6 @@ public:
           * @param  enmMode   Brings the conversion mode.
           * @param  cDecimal  Brings the number of decimal digits in result. */
         static QString formatSize(quint64 uSize, uint cDecimal = 2, FormatSize enmMode = FormatSize_Round);
-
-        /** Returns full medium-format name for the given @a strBaseMediumFormatName. */
-        static QString fullMediumFormatName(const QString &strBaseMediumFormatName);
 
         /** Returns the list of the standard COM port names (i.e. "COMx"). */
         static QStringList COMPortNames();

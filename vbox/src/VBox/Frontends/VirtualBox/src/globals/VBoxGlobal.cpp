@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 72692 2018-06-26 11:26:11Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 72821 2018-07-03 11:57:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1061,24 +1061,6 @@ QString VBoxGlobal::formatSize(quint64 uSize, uint cDecimal /* = 2 */,
     }
 
     return QString("%1 %2").arg(strNumber).arg(gpConverter->toString(static_cast<SizeSuffix>(iSuffix)));
-}
-
-/* static */
-QString VBoxGlobal::fullMediumFormatName(const QString &strBaseMediumFormatName)
-{
-    if (strBaseMediumFormatName == "VDI")
-        return tr("VDI (VirtualBox Disk Image)");
-    else if (strBaseMediumFormatName == "VMDK")
-        return tr("VMDK (Virtual Machine Disk)");
-    else if (strBaseMediumFormatName == "VHD")
-        return tr("VHD (Virtual Hard Disk)");
-    else if (strBaseMediumFormatName == "Parallels")
-        return tr("HDD (Parallels Hard Disk)");
-    else if (strBaseMediumFormatName == "QED")
-        return tr("QED (QEMU enhanced disk)");
-    else if (strBaseMediumFormatName == "QCOW")
-        return tr("QCOW (QEMU Copy-On-Write)");
-    return strBaseMediumFormatName;
 }
 
 /* static */

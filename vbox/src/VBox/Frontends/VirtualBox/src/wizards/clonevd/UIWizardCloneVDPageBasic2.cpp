@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.cpp 72821 2018-07-03 11:57:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic2 class implementation.
  */
@@ -25,6 +25,7 @@
 # include <QRadioButton>
 
 /* GUI includes: */
+# include "UIConverter.h"
 # include "UIWizardCloneVDPageBasic2.h"
 # include "UIWizardCloneVD.h"
 # include "VBoxGlobal.h"
@@ -168,7 +169,8 @@ void UIWizardCloneVDPageBasic2::retranslateUi()
     for (int i = 0; i < buttons.size(); ++i)
     {
         QAbstractButton *pButton = buttons[i];
-        pButton->setText(VBoxGlobal::fullMediumFormatName(m_formatNames[m_pFormatButtonGroup->id(pButton)]));
+        UIMediumFormat enmFormat = gpConverter->fromInternalString<UIMediumFormat>(m_formatNames[m_pFormatButtonGroup->id(pButton)]);
+        pButton->setText(gpConverter->toString(enmFormat));
     }
 }
 
