@@ -1,4 +1,4 @@
-/* $Id: UIScaleFactorEditor.h 75372 2018-11-09 17:52:53Z vboxsync $ */
+/* $Id: UIScaleFactorEditor.h 76159 2018-12-11 11:03:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIScaleFactorEditor class declaration.
  */
@@ -86,7 +86,8 @@ private:
 
     /** Sets the spinbox and slider to scale factor of currently selected monitor. */
     void updateValuesAfterMonitorChange();
-
+    /** Sets the min/max values of related widgets wrt. device pixel ratio(s) */
+    void configureScaleFactorMinMaxValues();
     /** @name Member widgets.
       * @{ */
         QSpinBox         *m_pScaleSpinBox;
