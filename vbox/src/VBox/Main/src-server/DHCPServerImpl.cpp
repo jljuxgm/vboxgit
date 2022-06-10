@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 76132 2018-12-10 15:08:10Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 76190 2018-12-12 16:58:55Z vboxsync $ */
 
 /** @file
  *
@@ -41,6 +41,7 @@ const std::string DHCPServerRunner::kDsrKeyGateway = "--gateway";
 const std::string DHCPServerRunner::kDsrKeyLowerIp = "--lower-ip";
 const std::string DHCPServerRunner::kDsrKeyUpperIp = "--upper-ip";
 const std::string DHCPServerRunner::kDsrKeyConfig  = "--config";
+const std::string DHCPServerRunner::kDsrKeyComment = "--comment";
 
 
 struct DHCPServer::Data
@@ -785,6 +786,7 @@ HRESULT DHCPServer::start(const com::Utf8Str &aNetworkName,
     writer.write(m->tempConfigFileName, true);
 
     m->dhcp.setOption(DHCPServerRunner::kDsrKeyConfig, m->tempConfigFileName);
+    m->dhcp.setOption(DHCPServerRunner::kDsrKeyComment, m->networkName.c_str());
 #else /* !VBOX_WITH_DHCPD */
     /* Main is needed for NATNetwork */
     if (m->router)

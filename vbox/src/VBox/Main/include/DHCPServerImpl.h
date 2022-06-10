@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 75819 2018-11-29 16:16:40Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 76190 2018-12-12 16:58:55Z vboxsync $ */
 
 /** @file
  *
@@ -50,6 +50,7 @@ public:
     static const std::string kDsrKeyLowerIp;
     static const std::string kDsrKeyUpperIp;
     static const std::string kDsrKeyConfig;
+    static const std::string kDsrKeyComment;
 };
 
 /**
