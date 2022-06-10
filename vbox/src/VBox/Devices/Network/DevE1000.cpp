@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 73867 2018-08-24 08:50:37Z vboxsync $ */
+/* $Id: DevE1000.cpp 75330 2018-11-08 17:45:51Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4909,6 +4909,11 @@ static int e1kXmitDesc(PE1KSTATE pThis, E1KTXDESC *pDesc, RTGCPHYS addr,
             if (pDesc->data.cmd.u20DTALEN == 0 || pDesc->data.u64BufAddr == 0)
             {
                 E1kLog2(("% Empty data descriptor, skipped.\n", pThis->szPrf));
+                if (pDesc->data.cmd.fEOP)
+                {
+                    e1kTransmitFrame(pThis, fOnWorkerThread);
+                    pThis->u16TxPktLen = 0;
+                }
             }
             else
             {
