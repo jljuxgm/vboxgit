@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 74061 2018-09-04 09:43:57Z vboxsync $ */
+/* $Id: HM.cpp 74455 2018-09-25 11:18:05Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1048,6 +1048,7 @@ static int hmR3InitCPU(PVM pVM)
 
         HM_REG_COUNTER(&pVCpu->hm.s.StatVmxCheckBadRmSelBase,   "/HM/CPU%d/VMXCheck/RMSelBase", "Could not use VMX due to unsuitable real-mode selector base.");
         HM_REG_COUNTER(&pVCpu->hm.s.StatVmxCheckBadRmSelLimit,  "/HM/CPU%d/VMXCheck/RMSelLimit", "Could not use VMX due to unsuitable real-mode selector limit.");
+        HM_REG_COUNTER(&pVCpu->hm.s.StatVmxCheckBadRmSelAttr,   "/HM/CPU%d/VMXCheck/RMSelAttrs", "Could not use VMX due to unsuitable real-mode selector limit.");
         HM_REG_COUNTER(&pVCpu->hm.s.StatVmxCheckRmOk,           "/HM/CPU%d/VMXCheck/VMX_RM", "VMX execution in real (V86) mode OK.");
         HM_REG_COUNTER(&pVCpu->hm.s.StatVmxCheckBadSel,         "/HM/CPU%d/VMXCheck/Selector", "Could not use VMX due to unsuitable selector.");
         HM_REG_COUNTER(&pVCpu->hm.s.StatVmxCheckBadRpl,         "/HM/CPU%d/VMXCheck/RPL", "Could not use VMX due to unsuitable RPL.");

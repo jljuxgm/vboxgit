@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 73606 2018-08-10 07:38:56Z vboxsync $ */
+/* $Id: HMInternal.h 74455 2018-09-25 11:18:05Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1038,6 +1038,7 @@ typedef struct HMCPU
 
     STAMCOUNTER             StatVmxCheckBadRmSelBase;
     STAMCOUNTER             StatVmxCheckBadRmSelLimit;
+    STAMCOUNTER             StatVmxCheckBadRmSelAttr;
     STAMCOUNTER             StatVmxCheckRmOk;
     STAMCOUNTER             StatVmxCheckBadSel;
     STAMCOUNTER             StatVmxCheckBadRpl;
