@@ -1,4 +1,4 @@
-/* $Id: regops.c 76744 2019-01-09 16:29:03Z vboxsync $ */
+/* $Id: regops.c 76746 2019-01-09 16:35:53Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -839,10 +839,10 @@ int sf_write_end(struct file *file, struct address_space *mapping, loff_t pos,
 	    sf_reg_write_aux(__func__, sf_g, sf_r, buf + from, &nwritten, pos);
 	kunmap(page);
 
-	if (!PageUptodate(page) && err == PAGE_SIZE)
-		SetPageUptodate(page);
-
 	if (err >= 0) {
+		if (!PageUptodate(page) && nwritten == PAGE_SIZE)
+			SetPageUptodate(page);
+
 		pos += nwritten;
 		if (pos > inode->i_size)
 			inode->i_size = pos;
