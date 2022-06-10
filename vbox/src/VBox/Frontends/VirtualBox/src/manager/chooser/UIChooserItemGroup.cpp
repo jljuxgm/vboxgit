@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 77847 2019-03-22 13:22:06Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 77922 2019-03-27 14:38:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -139,12 +139,6 @@ void UIChooserItemGroup::updateFavorites()
     model()->updateLayout();
 }
 
-/* static */
-QString UIChooserItemGroup::className()
-{
-    return "UIChooserItemGroup";
-}
-
 void UIChooserItemGroup::makeSureItemIsVisible(UIChooserItem *pItem)
 {
     /* Make sure item exists: */
@@ -156,6 +150,12 @@ void UIChooserItemGroup::makeSureItemIsVisible(UIChooserItem *pItem)
     const QPointF positionInGroup = mapFromScene(positionInScene);
     const QRectF itemRectInGroup = QRectF(positionInGroup, pItem->size());
     m_pScrollArea->makeSureRectIsVisible(itemRectInGroup);
+}
+
+/* static */
+QString UIChooserItemGroup::className()
+{
+    return "UIChooserItemGroup";
 }
 
 void UIChooserItemGroup::retranslateUi()
@@ -261,7 +261,7 @@ void UIChooserItemGroup::startEditing()
 
     /* Make sure item visible: */
     if (model()->root())
-        model()->root()->makeSureItemIsVisible(this);
+        model()->root()->toGroupItem() ->makeSureItemIsVisible(this);
 
     /* Assign name-editor text: */
     m_pNameEditorWidget->setText(name());

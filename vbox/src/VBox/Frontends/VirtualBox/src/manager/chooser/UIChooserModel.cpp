@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77919 2019-03-27 13:27:07Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77922 2019-03-27 14:38:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -413,7 +413,7 @@ void UIChooserModel::setFocusItem(UIChooserItem *pItem)
     /* If dialog is visible and item exists => make it visible as well: */
     if (view() && view()->window() && root())
         if (view()->window()->isVisible() && pItem)
-            root()->makeSureItemIsVisible(pItem);
+            root()->toGroupItem()->makeSureItemIsVisible(pItem);
 }
 
 UIChooserItem *UIChooserModel::focusItem() const
