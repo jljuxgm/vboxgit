@@ -1,4 +1,4 @@
-/* $Id: UIChooserSearchWidget.cpp 77750 2019-03-18 11:51:29Z vboxsync $ */
+/* $Id: UIChooserSearchWidget.cpp 77757 2019-03-18 13:16:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserSearchWidget class implementation.
  */
@@ -33,6 +33,8 @@ UIChooserSearchWidget::UIChooserSearchWidget(QWidget *pParent)
     , m_pScrollToNextMatchButton(0)
     , m_pScrollToPreviousMatchButton(0)
 {
+    /** Have a background. In some cases having no background causes strange artefacts in Cinnamon themes. */
+    setAutoFillBackground(true);
     prepareWidgets();
     prepareConnections();
 }
