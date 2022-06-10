@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 77137 2019-02-01 17:59:22Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -145,7 +145,12 @@ if defined(VBOX_WITH_TESTCASES) || defined(VBOX_WITH_VBOX_IMG)
   ifdef SDK_VBOX_LIBXML2_LIBS
    vbox-img_LIBS += xml2
   endif
- else if1of ($(KBUILD_TARGET),darwin freebsd)
+ else ifeq ($(KBUILD_TARGET),freebsd)
+  vbox-img_LIBS += iconv
+  ifdef SDK_VBOX_LIBXML2_LIBS
+   vbox-img_LIBS += xml2 lzma
+  endif
+ else ifeq ($(KBUILD_TARGET),darwin)
   vbox-img_LIBS += iconv
  else ifeq ($(KBUILD_TARGET),win)
   vbox-img_SDKS.win = VBOX_NTDLL
