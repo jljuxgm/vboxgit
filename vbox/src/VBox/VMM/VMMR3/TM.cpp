@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 76886 2019-01-18 10:57:02Z vboxsync $ */
+/* $Id: TM.cpp 77284 2019-02-12 15:41:39Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -657,7 +657,7 @@ VMM_INT_DECL(int) TMR3Init(PVM pVM)
     uint32_t u32Millies;
     rc = CFGMR3QueryU32(pCfgHandle, "TimerMillies", &u32Millies);
     if (rc == VERR_CFGM_VALUE_NOT_FOUND)
-        u32Millies = 10;
+        u32Millies = VM_IS_HM_ENABLED(pVM) ? 1000 : 10;
     else if (RT_FAILURE(rc))
         return VMSetError(pVM, rc, RT_SRC_POS,
                           N_("Configuration error: Failed to query uint32_t value \"TimerMillies\""));
