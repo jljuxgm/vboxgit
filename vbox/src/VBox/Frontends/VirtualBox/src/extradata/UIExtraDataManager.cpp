@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 74757 2018-10-11 10:16:30Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 74865 2018-10-16 15:38:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1976,6 +1976,9 @@ QStringList UIExtraDataManagerWindow::knownExtraDataKeys()
            << GUI_Statusbar
            << GUI_GroupDefinitions << GUI_LastItemSelected
            << GUI_DetailsPageBoxes << GUI_PreviewUpdate
+           << GUI_SnapshotManager_Details_Expanded
+           << GUI_VirtualMediaManager_Details_Expanded
+           << GUI_HostNetworkManager_Details_Expanded
            << GUI_HideDescriptionForWizards
            << GUI_HideFromManager << GUI_HideDetails
            << GUI_PreventReconfiguration << GUI_PreventSnapshotOperations
