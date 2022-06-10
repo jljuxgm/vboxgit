@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 74079 2018-09-05 11:40:11Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 74393 2018-09-20 17:05:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -241,7 +241,8 @@ private:
         /* Layout hints: */
         GroupItemData_HorizonalMargin,
         GroupItemData_VerticalMargin,
-        GroupItemData_Spacing,
+        GroupItemData_HeaderSpacing,
+        GroupItemData_ChildrenSpacing,
         GroupItemData_ParentIndent,
     };
 
