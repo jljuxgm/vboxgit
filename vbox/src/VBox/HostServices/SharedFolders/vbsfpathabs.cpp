@@ -1,4 +1,4 @@
-/* $Id: vbsfpathabs.cpp 78098 2019-04-10 15:51:59Z vboxsync $ */
+/* $Id: vbsfpathabs.cpp 78114 2019-04-12 00:47:33Z vboxsync $ */
 /** @file
  * Shared Folders Service - guest/host path convertion and verification.
  */
@@ -184,5 +184,7 @@ int vbsfPathAbs(const char *pszRoot, const char *pszPath, char *pszAbsPath, size
 
     /* Fallback for the common paths. */
 
-    return RTPathAbsEx(pszRoot, pszPath, RTPATH_STR_F_STYLE_HOST, pszAbsPath, &cbAbsPath);
+    if (*pszPath != '\0')
+        return RTPathAbsEx(pszRoot, pszPath, RTPATH_STR_F_STYLE_HOST, pszAbsPath, &cbAbsPath);
+    return RTPathAbsEx(NULL, pszRoot, RTPATH_STR_F_STYLE_HOST, pszAbsPath, &cbAbsPath);
 }
