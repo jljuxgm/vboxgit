@@ -1,4 +1,4 @@
-# $Id: Config.kmk 77066 2019-01-31 10:53:31Z vboxsync $
+# $Id: Config.kmk 77067 2019-01-31 11:21:35Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2770,7 +2770,7 @@ else # !darwin
  VBOX_JAR       = "$(VBOX_JAVA_HOME)/bin/jar$(HOSTSUFF_EXE)"
  VBOX_JAVADOC   = "$(VBOX_JAVA_HOME)/bin/javadoc$(HOSTSUFF_EXE)"
  # With Java 11 wsimport was removed, usually part of a separate install now.
- VBOX_WSIMPORT  = $(firstword $(wildcard "$(VBOX_JAVA_HOME)/bin/wsimport$(HOSTSUFF_EXE)") wsimport$(HOSTSUFF_EXE))
+ VBOX_WSIMPORT  = $(firstword $(wildcard $(VBOX_JAVA_HOME)/bin/wsimport$(HOSTSUFF_EXE)) wsimport$(HOSTSUFF_EXE))
  # correct for targets we care about
  VBOX_MD_OS     = $(KBUILD_TARGET)
  VBOX_JAVA_INC  = \
@@ -7681,7 +7681,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 77066 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 77067 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
