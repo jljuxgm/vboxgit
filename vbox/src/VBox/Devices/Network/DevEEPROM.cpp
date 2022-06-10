@@ -1,6 +1,6 @@
-/* $Id: DevEEPROM.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DevEEPROM.cpp 76767 2019-01-11 10:13:14Z vboxsync $ */
 /** @file
- * DevEEPROM - Microware-compatible 64x16-bit 93C46 EEPROM Emulation.
+ * DevEEPROM - Microwire-compatible 64x16-bit 93C46 EEPROM Emulation.
  */
 
 /*
