@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 75020 2018-10-24 08:53:09Z vboxsync $ */
+/* $Id: UIMachineLogic.h 75057 2018-10-25 08:58:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -273,7 +273,10 @@ private slots:
     void sltTypeHostKeyComboPressRelease(bool fToggleSequence);
     void sltTakeSnapshot();
     void sltShowInformationDialog();
+#ifdef VBOX_GUI_WITH_GUEST_CONTROL_UI
     void sltShowGuestControlDialog();
+    void sltCloseGuestControlWindow();
+#endif
     void sltReset();
     void sltPause(bool fOn);
     void sltDetach();
