@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 74460 2018-09-25 15:42:33Z vboxsync $ */
+/* $Id: ldrNative-win.cpp 74638 2018-10-06 18:31:59Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -55,7 +55,7 @@
 #endif
 
 
-int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, uint32_t fFlags, PRTERRINFO pErrInfo)
+DECLHIDDEN(int) rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, uint32_t fFlags, PRTERRINFO pErrInfo)
 {
     Assert(sizeof(*phHandle) >= sizeof(HMODULE));
     AssertReturn(!(fFlags & RTLDRLOAD_FLAGS_GLOBAL), VERR_INVALID_FLAGS);
@@ -175,7 +175,7 @@ DECLCALLBACK(int) rtldrNativeClose(PRTLDRMODINTERNAL pMod)
 }
 
 
-int rtldrNativeLoadSystem(const char *pszFilename, const char *pszExt, uint32_t fFlags, PRTLDRMOD phLdrMod)
+DECLHIDDEN(int) rtldrNativeLoadSystem(const char *pszFilename, const char *pszExt, uint32_t fFlags, PRTLDRMOD phLdrMod)
 {
     AssertReleaseMsg(g_hModKernel32,
                      ("rtldrNativeLoadSystem(%s,,) is called before IPRT has configured the windows loader!\n", pszFilename));

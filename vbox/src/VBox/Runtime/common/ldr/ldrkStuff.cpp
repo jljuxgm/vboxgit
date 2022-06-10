@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 73494 2018-08-04 19:41:30Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 74638 2018-10-06 18:31:59Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -920,7 +920,7 @@ static const RTLDROPS g_rtkldrOps =
  * @param   phLdrMod    Where to store the handle.
  * @param   pErrInfo    Where to return extended error information. Optional.
  */
-int rtldrkLdrOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTLDRMOD phLdrMod, PRTERRINFO pErrInfo)
+DECLHIDDEN(int) rtldrkLdrOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTLDRMOD phLdrMod, PRTERRINFO pErrInfo)
 {
     RT_NOREF_PV(pErrInfo);
 

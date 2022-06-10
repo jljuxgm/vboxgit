@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 74452 2018-09-25 10:16:07Z vboxsync $ */
+/* $Id: ldrPE.cpp 74638 2018-10-06 18:31:59Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -4478,8 +4478,8 @@ static int rtldrPEValidateDirectoriesAndRememberStuff(PRTLDRMODPE pModPe, const 
  * @param   phLdrMod    Where to store the handle.
  * @param   pErrInfo    Where to return extended error information. Optional.
  */
-int rtldrPEOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, RTFOFF offNtHdrs,
-                PRTLDRMOD phLdrMod, PRTERRINFO pErrInfo)
+DECLHIDDEN(int) rtldrPEOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, RTFOFF offNtHdrs,
+                            PRTLDRMOD phLdrMod, PRTERRINFO pErrInfo)
 {
     /*
      * Read and validate the file header.
