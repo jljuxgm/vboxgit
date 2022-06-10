@@ -1,4 +1,4 @@
-/* $Id: proxy.c 73746 2018-08-17 18:17:59Z vboxsync $ */
+/* $Id: proxy.c 73747 2018-08-17 18:27:04Z vboxsync $ */
 /** @file
  * NAT Network - proxy setup and utilities.
  */
@@ -32,6 +32,7 @@
 #include <sys/poll.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <netinet/tcp.h>
 #include <arpa/inet.h>
 #include <fcntl.h>
 #include <stdio.h>
