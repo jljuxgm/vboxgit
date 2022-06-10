@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: ISCSI.cpp 74107 2018-09-06 09:45:31Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -1611,7 +1611,7 @@ static int iscsiLogin(PISCSIIMAGE pImage)
                                     substate = 0;
                                     break;
                                 }
-                                else if (targetCSG == 1 && targetNSG == 1 && !targetTransit)
+                                else if (targetCSG == 1 && (targetNSG == 1 || !targetTransit))
                                 {
                                     /* Target wants to negotiate certain parameters and
                                      * stay in login operational negotiation. */
