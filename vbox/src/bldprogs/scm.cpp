@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 76587 2019-01-01 06:34:42Z vboxsync $ */
+/* $Id: scm.cpp 78104 2019-04-10 17:33:18Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1104,7 +1104,7 @@ static int scmSettingsBaseHandleOpt(PSCMSETTINGSBASE pSettings, int rc, PRTGETOP
                     char *pszDir = RTStrDupN(pchDir, cchDir);
                     if (pszDir)
                     {
-                        pSettings->pszGuardRelativeToDir = RTPathAbsExDup(pszDir, pValueUnion->psz);
+                        pSettings->pszGuardRelativeToDir = RTPathAbsExDup(pszDir, pValueUnion->psz, RTPATH_STR_F_STYLE_HOST);
                         RTStrFree(pszDir);
                         if (pSettings->pszGuardRelativeToDir)
                             return VINF_SUCCESS;
@@ -2959,7 +2959,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 76587 $";
+                static const char s_szRev[] = "$Revision: 78104 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;

@@ -1,4 +1,4 @@
-/* $Id: tftp.c 76783 2019-01-11 16:47:35Z vboxsync $ */
+/* $Id: tftp.c 78104 2019-04-10 17:33:18Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -141,7 +141,7 @@ DECLINLINE(int) tftpSecurityFilenameCheck(PNATState pData, PCTFTPSESSION pcTftpS
         rc = VERR_INTERNAL_ERROR;
     else
     {
-        char *pszFullPathAbs = RTPathAbsExDup(tftp_prefix, (const char*)pcTftpSession->pszFilename);
+        char *pszFullPathAbs = RTPathAbsExDup(tftp_prefix, (const char *)pcTftpSession->pszFilename, RTPATH_STR_F_STYLE_HOST);
 
         if (   !pszFullPathAbs
             || !RTPathStartsWith(pszFullPathAbs, tftp_prefix))
