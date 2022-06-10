@@ -1,4 +1,4 @@
-/* $Id: CaptureScreenSettingsImpl.h 75269 2018-11-06 10:20:06Z vboxsync $ */
+/* $Id: CaptureScreenSettingsImpl.h 75279 2018-11-06 12:37:11Z vboxsync $ */
 
 /** @file
  *
@@ -38,7 +38,7 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init(Machine *aParent, unsigned long uScreenId, const settings::CaptureScreenSettings& data);
+    HRESULT init(Machine *aParent, uint32_t uScreenId, const settings::CaptureScreenSettings& data);
     HRESULT init(Machine *aParent, CaptureScreenSettings *that);
     HRESULT initCopy(Machine *aParent, CaptureScreenSettings *that);
     void uninit();

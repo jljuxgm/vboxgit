@@ -1,4 +1,4 @@
-/* $Id: CaptureSettingsImpl.cpp 75264 2018-11-05 22:54:41Z vboxsync $ */
+/* $Id: CaptureSettingsImpl.cpp 75279 2018-11-06 12:37:11Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -291,6 +291,8 @@ HRESULT CaptureSettings::i_loadSettings(const settings::CaptureSettings &data)
 
     HRESULT rc = S_OK;
 
+    m->mapScreenSettings.clear();
+
     settings::CaptureScreenMap::const_iterator itScreen = data.mapScreens.begin();
     while (itScreen != data.mapScreens.end())
     {
@@ -302,6 +304,8 @@ HRESULT CaptureSettings::i_loadSettings(const settings::CaptureSettings &data)
         rc = captureScreenSettings->init(m->pMachine, itScreen->first /* uScreenId */, itScreen->second /* Settings */);
         if (FAILED(rc))
             break;
+
+        m->mapScreenSettings[itScreen->first] = captureScreenSettings;
 
         ++itScreen;
     }

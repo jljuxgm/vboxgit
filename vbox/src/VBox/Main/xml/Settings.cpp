@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 75261 2018-11-05 19:42:13Z vboxsync $ */
+/* $Id: Settings.cpp 75279 2018-11-06 12:37:11Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2478,7 +2478,7 @@ void CaptureSettings::applyDefaults(void)
     mapScreens.clear();
 
     CaptureScreenSettings screenSettings; /* Apply default settings. */
-    for (unsigned long l = 0; l < SchemaDefs::MaxGuestMonitors; l++)
+    for (uint32_t l = 0; l < SchemaDefs::MaxGuestMonitors; l++)
     {
         mapScreens[l] = screenSettings;
     }
@@ -2516,7 +2516,7 @@ bool CaptureSettings::operator==(const CaptureSettings &d) const
         return false;
 
     CaptureScreenMap::const_iterator itScreen = mapScreens.begin();
-    unsigned long i = 0;
+    uint32_t i = 0;
     while (itScreen != mapScreens.end())
     {
         CaptureScreenMap::const_iterator itScreenThat = d.mapScreens.find(i);

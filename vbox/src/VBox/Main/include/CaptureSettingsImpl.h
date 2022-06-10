@@ -1,4 +1,4 @@
-/* $Id: CaptureSettingsImpl.h 75260 2018-11-05 19:23:09Z vboxsync $ */
+/* $Id: CaptureSettingsImpl.h 75279 2018-11-06 12:37:11Z vboxsync $ */
 
 /** @file
  *
@@ -67,7 +67,7 @@ private:
 private:
 
     /** Map of screen settings objects. The key specifies the screen ID. */
-    typedef std::map <ULONG, ComObjPtr<CaptureScreenSettings> > CaptureScreenSettingsMap;
+    typedef std::map <uint32_t, ComObjPtr<CaptureScreenSettings> > CaptureScreenSettingsMap;
 
     struct Data;
     Data *m;
