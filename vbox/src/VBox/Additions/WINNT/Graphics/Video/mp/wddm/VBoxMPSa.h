@@ -1,4 +1,4 @@
-/* $Id: VBoxMPSa.h 78190 2019-04-18 00:07:07Z vboxsync $ */
+/* $Id: VBoxMPSa.h 78195 2019-04-18 00:38:02Z vboxsync $ */
 
 /** @file
  * Sorted array API
@@ -15,8 +15,11 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#ifndef ___cr_sortarray_h_
-#define ___cr_sortarray_h_
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPSa_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPSa_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 #include <iprt/assert.h>
@@ -99,4 +102,4 @@ VBOXSADECL(int) CrSaCmp(const CR_SORTARRAY *pArray1, const CR_SORTARRAY *pArray2
 
 VBOXSADECL(bool) CrSaCovers(const CR_SORTARRAY *pArray1, const CR_SORTARRAY *pArray2);
 
-#endif /* ___cr_sortarray_h_ */
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPSa_h */
