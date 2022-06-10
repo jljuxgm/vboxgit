@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 73689 2018-08-15 09:55:52Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 73692 2018-08-15 13:27:59Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -764,9 +764,13 @@ static HRESULT directSoundPlayOpen(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStreamDS
 
         pThis->pDSStrmOut = pStreamDS;
 
-        pCfgAcq->Backend.cfBufferSize = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamDS->cbBufSize);
-        pCfgAcq->Backend.cfPeriod     = pCfgAcq->Backend.cfBufferSize / 2;
-        pCfgAcq->Backend.cfPreBuf     = pCfgAcq->Backend.cfBufferSize;
+        const uint32_t cfBufSize = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamDS->cbBufSize);
+        if (cfBufSize != pCfgAcq->Backend.cfBufferSize)
+        {
+            pCfgAcq->Backend.cfBufferSize = cfBufSize;
+            pCfgAcq->Backend.cfPeriod     = cfBufSize / 4;
+            pCfgAcq->Backend.cfPreBuf     = pCfgAcq->Backend.cfPeriod * 2;
+        }
 
     } while (0);
 
