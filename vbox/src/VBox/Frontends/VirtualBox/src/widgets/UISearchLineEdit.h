@@ -1,4 +1,4 @@
-/* $Id: UISearchLineEdit.h 77723 2019-03-15 12:52:07Z vboxsync $ */
+/* $Id: UISearchLineEdit.h 78060 2019-04-09 13:42:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISearchLineEdit class declaration.
  */
@@ -48,11 +48,17 @@ protected:
 
 private:
 
+    void colorBackground(bool fWarning);
+
     /** Stores the total number of matched items. */
-    int m_iMatchCount;
+    int  m_iMatchCount;
     /** Stores the index of the currently scrolled/made-visible item withing the list of search results.
       * Must be smaller that or equal to m_iMatchCount. */
-    int m_iScrollToIndex;
+    int  m_iScrollToIndex;
+    /** When true we color line edit background with a more reddish color. */
+    bool m_fMark;
+    QColor m_unmarkColor;
+    QColor m_markColor;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_widgets_UISearchLineEdit_h */
