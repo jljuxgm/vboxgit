@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.h 75498 2018-11-16 00:03:41Z vboxsync $ */
+/* $Id: darwin-pasteboard.h 76526 2018-12-30 05:52:33Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___DARWIN_PASTEBOARD_H
 #define ___DARWIN_PASTEBOARD_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 typedef struct OpaquePasteboardRef *PasteboardRef;
 

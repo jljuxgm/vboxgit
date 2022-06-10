@@ -1,4 +1,4 @@
-/* $Id: mappings.h 75407 2018-11-12 20:06:57Z vboxsync $ */
+/* $Id: mappings.h 76526 2018-12-30 05:52:33Z vboxsync $ */
 /** @file
  * Shared folders service - Mappings header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___MAPPINGS_H
 #define ___MAPPINGS_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "shfl.h"
 #include <VBox/shflsvc.h>

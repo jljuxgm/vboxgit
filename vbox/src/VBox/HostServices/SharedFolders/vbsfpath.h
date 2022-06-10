@@ -1,4 +1,4 @@
-/* $Id: vbsfpath.h 75709 2018-11-25 01:47:10Z vboxsync $ */
+/* $Id: vbsfpath.h 76526 2018-12-30 05:52:33Z vboxsync $ */
 /** @file
  * Shared Folders Service - Guest/host path convertion and verification.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __VBSFPATH__H
 #define __VBSFPATH__H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "shfl.h"
 #include <VBox/shflsvc.h>

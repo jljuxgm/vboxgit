@@ -1,4 +1,4 @@
-/* $Id: shflhandle.h 75336 2018-11-09 01:25:29Z vboxsync $ */
+/* $Id: shflhandle.h 76526 2018-12-30 05:52:33Z vboxsync $ */
 /** @file
  * Shared Folders Host Service - Handles helper functions header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___SHFLHANDLE_H
 #define ___SHFLHANDLE_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "shfl.h"
 #include <VBox/shflsvc.h>

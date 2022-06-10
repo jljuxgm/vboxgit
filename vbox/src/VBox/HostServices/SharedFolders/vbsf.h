@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 76143 2018-12-10 21:24:46Z vboxsync $ */
+/* $Id: vbsf.h 76526 2018-12-30 05:52:33Z vboxsync $ */
 /** @file
  * VBox Shared Folders header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___vbsf_h___
 #define ___vbsf_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "shfl.h"
 #include <VBox/shflsvc.h>
