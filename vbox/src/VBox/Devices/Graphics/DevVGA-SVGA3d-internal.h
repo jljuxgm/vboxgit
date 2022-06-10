@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 73330 2018-07-23 15:19:00Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 73373 2018-07-26 18:59:02Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1009,7 +1009,6 @@ typedef struct VMSVGA3DSTATE
 #endif
         PFNGLGETPROGRAMIVARBPROC                        glGetProgramivARB;
         PFNGLPROVOKINGVERTEXPROC                        glProvokingVertex;
-        bool                                            fEXT_stencil_two_side;
         PFNGLGENQUERIESPROC                             glGenQueries;
         PFNGLDELETEQUERIESPROC                          glDeleteQueries;
         PFNGLBEGINQUERYPROC                             glBeginQuery;
