@@ -1,4 +1,4 @@
-/* $Id: pxtcp.c 76957 2019-01-23 17:18:20Z vboxsync $ */
+/* $Id: pxtcp.c 76980 2019-01-24 16:34:23Z vboxsync $ */
 /** @file
  * NAT Network - TCP proxy.
  */
@@ -2434,7 +2434,7 @@ pxtcp_pcb_pull_inbound(void *ctx)
     }
 
     pxtcp->inbound_pull = 1;
-    if (pxtcp->outbound_close_done) {
+    if (pxtcp->pmhdl.slot < 0) {
         DPRINTF(("%s: pxtcp %p: pcb %p (deferred delete)\n",
                  __func__, (void *)pxtcp, (void *)pxtcp->pcb));
         pxtcp->deferred_delete = 1;
