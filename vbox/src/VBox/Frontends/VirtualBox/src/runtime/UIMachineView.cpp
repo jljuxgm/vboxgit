@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIMachineView.cpp 77164 2019-02-05 13:18:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -296,7 +296,9 @@ void UIMachineView::sltPerformGuestResize(const QSize &toSize)
 
     /* Record the hint to extra data, needed for guests using VMSVGA: */
     /* This should be done before the actual hint is sent in case the guest overrides it. */
-    storeGuestSizeHint(size);
+    if (   !isFullscreenOrSeamless()
+        && uisession()->isGuestSupportsGraphics())
+        storeGuestSizeHint(size);
 
     /* If auto-mount of guest-screens (auto-pilot) enabled: */
     if (gEDataManager->autoMountGuestScreensEnabled(vboxGlobal().managedVMUuid()))
