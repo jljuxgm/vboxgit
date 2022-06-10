@@ -1,4 +1,4 @@
-/* $Id: QIStatusBarIndicator.cpp 71900 2018-04-18 14:40:43Z vboxsync $ */
+/* $Id: QIStatusBarIndicator.cpp 72888 2018-07-04 16:05:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIStatusBarIndicator interface implementation.
  */
@@ -118,7 +118,12 @@ void QIStateStatusBarIndicator::paintEvent(QPaintEvent *)
 void QIStateStatusBarIndicator::drawContents(QPainter *pPainter)
 {
     if (m_icons.contains(m_iState))
-        pPainter->drawPixmap(contentsRect().topLeft(), m_icons.value(m_iState).pixmap(m_size));
+    {
+        if (window())
+            pPainter->drawPixmap(contentsRect().topLeft(), m_icons.value(m_iState).pixmap(window()->windowHandle(), m_size));
+        else
+            pPainter->drawPixmap(contentsRect().topLeft(), m_icons.value(m_iState).pixmap(m_size));
+    }
 }
 
 
