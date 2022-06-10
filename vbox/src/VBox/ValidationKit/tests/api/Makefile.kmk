@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 77991 2019-04-03 12:56:12Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - API Tests.
 #
@@ -37,7 +37,8 @@ ValidationKitTestsApi_EXEC_SOURCES := \
 	$(PATH_SUB_CURRENT)/tdMoveMedium1.py \
 	$(PATH_SUB_CURRENT)/tdPython1.py \
 	$(PATH_SUB_CURRENT)/tdTreeDepth1.py \
-	$(PATH_SUB_CURRENT)/tdMoveVM1.py
+	$(PATH_SUB_CURRENT)/tdMoveVM1.py \
+	$(PATH_SUB_CURRENT)/tdOCIExport1.py
 ValidationKitTestsApi_SOURCES := \
 	$(wildcard \
 		$(PATH_SUB_CURRENT)/*.ova \
