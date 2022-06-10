@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 73227 2018-07-19 08:19:54Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 73229 2018-07-19 09:16:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -136,7 +136,8 @@ void UIWizardExportAppPage3::populateAccounts()
     }
 
     /* Set default: */
-    setProvider(KCloudProviderId_OCI);
+    if (m_pAccountComboBox->count() != 0)
+        setProvider(KCloudProviderId_OCI);
 }
 
 void UIWizardExportAppPage3::populateAccountProperties()
