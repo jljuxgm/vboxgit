@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 73211 2018-07-18 15:12:57Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 73345 2018-07-25 08:36:42Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -1114,7 +1114,7 @@ uint32_t DrvAudioHlpFramesToBytes(const PPDMAUDIOPCMPROPS pProps, uint32_t cFram
     if (!cFrames)
         return 0;
 
-    return cFrames * ((pProps->cBits / 2) * pProps->cChannels);
+    return cFrames * ((pProps->cBits / 8) * pProps->cChannels);
 }
 
 /**
