@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 74017 2018-09-01 05:29:02Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 74022 2018-09-02 06:52:19Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -251,8 +251,8 @@ FNIEMOP_DEF(iemOp_Grp7_vmcall)
 FNIEMOP_DEF(iemOp_Grp7_vmlaunch)
 {
     IEMOP_MNEMONIC(vmlaunch, "vmlaunch");
-    IEMOP_HLP_IN_VMX_OPERATION("vmlaunch", kVmxVInstrDiag_Vmlaunch);
-    IEMOP_HLP_VMX_INSTR("vmalunch", kVmxVInstrDiag_Vmlaunch);
+    IEMOP_HLP_IN_VMX_OPERATION("vmlaunch", kVmxVInstrDiag_VmlaunchVmresume);
+    IEMOP_HLP_VMX_INSTR("vmlaunch", kVmxVInstrDiag_VmlaunchVmresume);
     IEMOP_HLP_DONE_DECODING();
     return IEM_MC_DEFER_TO_CIMPL_0(iemCImpl_vmlaunch);
 }
@@ -266,11 +266,22 @@ FNIEMOP_DEF(iemOp_Grp7_vmlaunch)
 
 
 /** Opcode 0x0f 0x01 /0. */
+#ifdef VBOX_WITH_NESTED_HWVIRT_VMX
+FNIEMOP_DEF(iemOp_Grp7_vmresume)
+{
+    IEMOP_MNEMONIC(vmresume, "vmresume");
+    IEMOP_HLP_IN_VMX_OPERATION("vmresume", kVmxVInstrDiag_VmlaunchVmresume);
+    IEMOP_HLP_VMX_INSTR("vmresume", kVmxVInstrDiag_VmlaunchVmresume);
+    IEMOP_HLP_DONE_DECODING();
+    return IEM_MC_DEFER_TO_CIMPL_0(iemCImpl_vmresume);
+}
+#else
 FNIEMOP_DEF(iemOp_Grp7_vmresume)
 {
     IEMOP_BITCH_ABOUT_STUB();
     return IEMOP_RAISE_INVALID_OPCODE();
 }
+#endif
 
 
 /** Opcode 0x0f 0x01 /0. */
