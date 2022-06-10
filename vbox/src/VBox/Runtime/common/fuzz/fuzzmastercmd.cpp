@@ -1,4 +1,4 @@
-/* $Id: fuzzmastercmd.cpp 77658 2019-03-11 20:15:55Z vboxsync $ */
+/* $Id: fuzzmastercmd.cpp 77659 2019-03-11 20:23:55Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, master command.
  */
@@ -981,6 +981,7 @@ static int rtFuzzCmdMasterProcessQueryRunStats(PRTFUZZCMDMASTER pThis, PRTFUZZRU
     RTFUZZOBSSTATS ObsStats;
     RTFUZZCTXSTATS CtxStats;
     RTFUZZCTX hFuzzCtx;
+    RT_ZERO(ObsStats); RT_ZERO(CtxStats);
 
     int rc = RTFuzzObsQueryCtx(pFuzzRun->hFuzzObs, &hFuzzCtx);
     if (RT_SUCCESS(rc))
