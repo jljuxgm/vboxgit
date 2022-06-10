@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 76054 2018-12-07 11:47:53Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 76415 2018-12-23 18:44:49Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -45,6 +45,7 @@
 #include <iprt/semaphore.h>
 #include <iprt/spinlock.h>
 #include <iprt/string.h>
+#include <iprt/utf16.h>
 #include <iprt/x86.h>
 #include <VBox/log.h>
 #include <VBox/err.h>
