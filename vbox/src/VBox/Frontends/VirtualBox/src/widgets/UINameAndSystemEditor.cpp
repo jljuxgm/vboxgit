@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 72603 2018-06-18 15:43:38Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 73119 2018-07-13 12:44:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -337,12 +337,12 @@ void UINameAndSystemEditor::prepareWidgets()
 void UINameAndSystemEditor::prepareFamilyCombo()
 {
     /* Populate VM OS family combo: */
-    const QList<CGuestOSType> families = vboxGlobal().vmGuestOSFamilyList();
-    for (int i = 0; i < families.size(); ++i)
+    const QList<QString> &familyIDs = vboxGlobal().vmGuestOSFamilyIDs();
+    for (int i = 0; i < familyIDs.size(); ++i)
     {
-        const QString strFamilyName = families.at(i).GetFamilyDescription();
-        m_pComboFamily->insertItem(i, strFamilyName);
-        m_pComboFamily->setItemData(i, families.at(i).GetFamilyId(), TypeID);
+        const QString &strFamilyId = familyIDs.at(i);
+        m_pComboFamily->insertItem(i, vboxGlobal().vmGuestOSFamilyDescription(strFamilyId));
+        m_pComboFamily->setItemData(i, strFamilyId, TypeID);
     }
 
     /* Choose the 1st item to be the current: */

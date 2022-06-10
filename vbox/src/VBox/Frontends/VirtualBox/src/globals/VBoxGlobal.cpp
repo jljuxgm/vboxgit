@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 73017 2018-07-10 08:35:25Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 73119 2018-07-13 12:44:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2142,17 +2142,17 @@ void VBoxGlobal::setMinimumWidthAccordingSymbolCount(QSpinBox *pSpinBox, int cCo
     pSpinBox->setMinimumWidth(iTextWidth + iSpinBoxDelta);
 }
 
-QList<CGuestOSType> VBoxGlobal::vmGuestOSFamilyList() const
+QString VBoxGlobal::vmGuestOSFamilyDescription(const QString &strFamilyId) const
 {
-    QList<CGuestOSType> result;
-    for (int i = 0; i < m_guestOSFamilyIDs.size(); ++i)
-        result << m_guestOSTypes[i][0];
-    return result;
+    AssertMsg(m_guestOSFamilyDescriptions.contains(strFamilyId),
+              ("Family ID incorrect: '%s'.", strFamilyId.toLatin1().constData()));
+    return m_guestOSFamilyDescriptions.value(strFamilyId);
 }
 
 QList<CGuestOSType> VBoxGlobal::vmGuestOSTypeList(const QString &strFamilyId) const
 {
-    AssertMsg(m_guestOSFamilyIDs.contains(strFamilyId), ("Family ID incorrect: '%s'.", strFamilyId.toLatin1().constData()));
+    AssertMsg(m_guestOSFamilyIDs.contains(strFamilyId),
+              ("Family ID incorrect: '%s'.", strFamilyId.toLatin1().constData()));
     return m_guestOSFamilyIDs.contains(strFamilyId) ?
            m_guestOSTypes[m_guestOSFamilyIDs.indexOf(strFamilyId)] : QList<CGuestOSType>();
 }
@@ -4384,9 +4384,11 @@ void VBoxGlobal::comWrappersReinit()
             {
                 const CGuestOSType os = guestOSTypes.at(i);
                 const QString strFamilyID = os.GetFamilyId();
+                const QString strFamilyDescription = os.GetFamilyDescription();
                 if (!m_guestOSFamilyIDs.contains(strFamilyID))
                 {
                     m_guestOSFamilyIDs << strFamilyID;
+                    m_guestOSFamilyDescriptions[strFamilyID] = strFamilyDescription;
                     m_guestOSTypes << QList<CGuestOSType>();
                 }
                 m_guestOSTypes[m_guestOSFamilyIDs.indexOf(strFamilyID)].append(os);
