@@ -1,4 +1,4 @@
-# $Id: Config.kmk 73123 2018-07-13 13:40:59Z vboxsync $
+# $Id: Config.kmk 73298 2018-07-22 13:54:31Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -580,6 +580,8 @@ VBOX_WITH_NVME_IMPL = 1
 VBOX_WITH_DRV_DISK_INTEGRITY = 1
 # Enables new LPC device implementation.
 VBOX_WITH_NEW_LPC_DEVICE = 1
+# Enables the new serial port implementation
+VBOX_WITH_NEW_SERIAL = 1
 ## @}
 
 # legacy
@@ -7310,7 +7312,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 73123 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 73298 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
