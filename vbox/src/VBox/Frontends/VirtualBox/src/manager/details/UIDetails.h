@@ -1,4 +1,4 @@
-/* $Id: UIDetails.h 74677 2018-10-08 12:51:19Z vboxsync $ */
+/* $Id: UIDetails.h 74679 2018-10-08 12:57:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetails class declaration.
  */
@@ -22,8 +22,7 @@
 #include <QWidget>
 
 /* Forward declartions: */
-class QVBoxLayout;
-class QWidget;
+class QString;
 class UIDetailsModel;
 class UIDetailsView;
 class UIVirtualMachineItem;
