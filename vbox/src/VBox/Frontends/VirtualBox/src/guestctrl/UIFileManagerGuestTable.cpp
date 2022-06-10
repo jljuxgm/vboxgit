@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.cpp 77932 2019-03-28 10:17:11Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.cpp 78054 2019-04-09 10:48:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class implementation.
  */
@@ -231,11 +231,13 @@ void UIFileManagerGuestTable::deleteByItem(UICustomFileSystemItem *item)
         return;
     if (item->isUpDirectory())
         return;
-    QVector<KDirectoryRemoveRecFlag> flags(KDirectoryRemoveRecFlag_ContentAndDir);
 
     if (item->isDirectory())
     {
-        m_comGuestSession.DirectoryRemoveRecursive(item->path(), flags);
+        QVector<KDirectoryRemoveRecFlag> aFlags;
+        aFlags.push_back(KDirectoryRemoveRecFlag_ContentAndDir);
+
+        m_comGuestSession.DirectoryRemoveRecursive(item->path(), aFlags);
     }
     else
         m_comGuestSession.FsObjRemove(item->path());
@@ -258,8 +260,10 @@ void UIFileManagerGuestTable::deleteByPath(const QStringList &pathList)
         }
         else if (eType == KFsObjType_Directory)
         {
-            QVector<KDirectoryRemoveRecFlag> flags(KDirectoryRemoveRecFlag_ContentAndDir);
-            m_comGuestSession.DirectoryRemoveRecursive(strPath, flags);
+            QVector<KDirectoryRemoveRecFlag> aFlags;
+            aFlags.push_back(KDirectoryRemoveRecFlag_ContentAndDir);
+
+            m_comGuestSession.DirectoryRemoveRecursive(strPath, aFlags);
         }
 
     }
