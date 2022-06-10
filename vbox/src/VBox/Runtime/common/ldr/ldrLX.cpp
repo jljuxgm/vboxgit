@@ -1,4 +1,4 @@
-/* $Id: ldrLX.cpp 74642 2018-10-06 19:29:15Z vboxsync $ */
+/* $Id: ldrLX.cpp 74643 2018-10-06 19:39:41Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the Linear eXecutable (LX) Format.
  */
@@ -545,7 +545,6 @@ static void kldrModLXResolveBaseAddress(PKLDRMODLX pModLX, PRTLDRADDR pBaseAddre
 }
 
 
-/** @copydoc kLdrModQuerySymbol */
 static int kldrModLXQuerySymbol(PRTLDRMODINTERNAL pMod, const void *pvBits, RTLDRADDR BaseAddress, uint32_t iSymbol,
                                 const char *pchSymbol, size_t cchSymbol, const char *pszVersion,
                                 PFNRTLDRIMPORT pfnGetForwarder, void *pvUser, PRTLDRADDR puValue, uint32_t *pfKind)
@@ -1148,7 +1147,6 @@ static const uint8_t *kldrModLXDoNameTableLookupByOrdinal(const uint8_t *pbNameT
 }
 
 
-/** @copydoc kLdrModGetImport */
 static int kldrModLXGetImport(PKLDRMODLX pModLX, const void *pvBits, uint32_t iImport, char *pszName, size_t cchName,
                               size_t *pcbNeeded)
 {
@@ -1291,7 +1289,6 @@ static DECLCALLBACK(int) rtldrLX_EnumDbgInfo(PRTLDRMODINTERNAL pMod, const void 
 }
 
 
-/** @copydoc kLdrModHasDbgInfo */
 static int kldrModLXHasDbgInfo(PRTLDRMODINTERNAL pMod, const void *pvBits)
 {
     PKLDRMODLX pModLX = RT_FROM_MEMBER(pMod, KLDRMODLX, Core);
@@ -2253,7 +2250,6 @@ static DECLCALLBACK(int) rtldrLX_RelocateBits(PRTLDRMODINTERNAL pMod, void *pvBi
             {
                 union
                 {
-
                     const uint8_t          *pb;
                     const struct r32_rlc   *prlc;
                 } u;
@@ -2539,6 +2535,9 @@ static DECLCALLBACK(int) rtldrLX_RelocateBits(PRTLDRMODINTERNAL pMod, void *pvBi
  * @returns IPRT status code.
  * @param   pbPage      The page in which to apply the fixup.
  * @param   off         Page relative offset of where to apply the offset.
+ * @param   PageAddress The page address.
+ * @param   prlc        The relocation record.
+ * @param   iSelector   Selector value, -1 if flat.
  * @param   uValue      The target value.
  * @param   fKind       The target kind.
  */
