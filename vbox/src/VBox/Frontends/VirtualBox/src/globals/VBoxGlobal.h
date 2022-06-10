@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 72903 2018-07-04 19:59:39Z vboxsync $ */
+/* $Id: VBoxGlobal.h 73017 2018-07-10 08:35:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -531,6 +531,11 @@ public:
           * @param  fPredictDiff  Brings whether medium will be marked differencing on attaching.
           * @param  fUseHtml      Brings whether HTML subsets should be used in the generated output. */
         QString details(const CMedium &comMedium, bool fPredictDiff, bool fUseHtml = true);
+
+        /** Update extra data related to recently used/referred media.
+          * @param  enmMediumType       Passes the medium type.
+          * @param  strMediumLocation   Passes the medium location. */
+        void updateRecentlyUsedMediumListAndFolder(UIMediumType enmMediumType, QString strMediumLocation);
     /** @} */
 
     /** @name COM: USB stuff.
