@@ -1,4 +1,4 @@
-/* $Id: service.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
+/* $Id: service.cpp 76395 2018-12-23 03:31:31Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -49,6 +49,7 @@
 #include <iprt/cpp/utils.h>
 #include <iprt/cpp/ministring.h>
 #include <VBox/err.h>
+#include <VBox/hgcmsvc.h>
 #include <iprt/mem.h>
 #include <iprt/req.h>
 #include <iprt/string.h>

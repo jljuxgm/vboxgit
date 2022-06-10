@@ -1,4 +1,4 @@
-/* $Id: tstGuestPropSvc.cpp 76389 2018-12-23 01:39:48Z vboxsync $ */
+/* $Id: tstGuestPropSvc.cpp 76395 2018-12-23 03:31:31Z vboxsync $ */
 /** @file
  *
  * Testcase for the guest property service.
@@ -22,6 +22,7 @@
 *********************************************************************************************************************************/
 #include <VBox/HostServices/GuestPropertySvc.h>
 #include <VBox/err.h>
+#include <VBox/hgcmsvc.h>
 #include <iprt/test.h>
 #include <iprt/time.h>
 
