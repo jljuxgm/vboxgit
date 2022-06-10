@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 76568 2019-01-01 04:34:11Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 77972 2019-04-01 09:40:16Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -102,7 +102,7 @@ typedef struct SUPHNTVIRDR
     /** Current file offset. */
     RTFOFF      off;
     /** The file size. */
-    RTFOFF      cbFile;
+    uint64_t    cbFile;
     /** Flags for the verification callback, SUPHNTVI_F_XXX. */
     uint32_t    fFlags;
     /** The executable timstamp in second since unix epoch. */
