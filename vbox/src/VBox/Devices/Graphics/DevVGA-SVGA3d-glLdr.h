@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glLdr.h 76270 2018-12-17 18:20:07Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glLdr.h 76315 2018-12-20 14:22:40Z vboxsync $ */
 /** @file
  * DevVGA - VMWare SVGA device - 3D part, dynamic loading of GL function.
  */
@@ -60,6 +60,12 @@ typedef void (APIENTRYP PFNGLGETPROGRAMIVARBPROC) (GLenum target, GLenum pname, 
 # define VBOX_VMSVGA3D_GL_HACK_LEVEL 0x103
 #endif
 
+#ifndef __glext_h__
+# undef GL_GLEXT_VERSION    /** @todo r=bird: We include GL/glext.h above which also defines this and we'll end up with
+                             * a clash if the system one does not use the same header guard as ours.  So, I'm wondering
+                             * whether this include is really needed, and if it is, whether we should use a unique header
+                             * guard macro on it, so we'll have the same problems everywhere... */
+#endif
 #include "vmsvga_glext/glext.h"
 
 
