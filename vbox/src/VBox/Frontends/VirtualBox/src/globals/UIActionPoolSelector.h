@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 71632 2018-04-03 16:58:07Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 73384 2018-07-27 09:40:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
