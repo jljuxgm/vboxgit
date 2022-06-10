@@ -1,4 +1,4 @@
-/* $Id: service.cpp 74211 2018-09-12 09:52:38Z vboxsync $ */
+/* $Id: service.cpp 74213 2018-09-12 10:04:12Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -149,6 +149,7 @@ void DragAndDropClient::disconnect(void)
         /* Not fatal. */
     }
 }
+
 
 /*********************************************************************************************************************************
 *   Service class implementation                                                                                                 *
