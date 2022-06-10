@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 75687 2018-11-23 13:19:11Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 75689 2018-11-23 14:27:04Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -998,7 +998,7 @@ static int vboxNetFltNewInstance(PVBOXNETFLTGLOBALS pGlobals, const char *pszNam
      */
     int             rc;
     size_t const    cchName = strlen(pszName);
-    PVBOXNETFLTINS  pNew = (PVBOXNETFLTINS)RTMemAllocZ(RT_UOFFSETOF_DYN(VBOXNETFLTINS, szName[cchName + 1]));
+    PVBOXNETFLTINS  pNew = (PVBOXNETFLTINS)RTMemAllocZVar(RT_UOFFSETOF_DYN(VBOXNETFLTINS, szName[cchName + 1]));
     if (!pNew)
         return VERR_INTNET_FLT_IF_FAILED;
     AssertMsg(((uintptr_t)pNew & 7) == 0, ("%p LB %#x\n", pNew, RT_UOFFSETOF_DYN(VBOXNETFLTINS, szName[cchName + 1])));
