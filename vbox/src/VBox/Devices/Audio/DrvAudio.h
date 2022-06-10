@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 73381 2018-07-27 09:16:19Z vboxsync $ */
+/* $Id: DrvAudio.h 73407 2018-07-31 11:25:00Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -187,10 +187,14 @@ uint32_t DrvAudioHlpBytesAlign(uint32_t cbSize, const PPDMAUDIOPCMPROPS pProps);
 bool     DrvAudioHlpBytesIsAligned(uint32_t cbSize, const PPDMAUDIOPCMPROPS pProps);
 uint32_t DrvAudioHlpBytesToFrames(uint32_t cbBytes, const PPDMAUDIOPCMPROPS pProps);
 uint64_t DrvAudioHlpBytesToMs(uint32_t cbBytes, const PPDMAUDIOPCMPROPS pProps);
+uint64_t DrvAudioHlpBytesToNano(uint32_t cbBytes, const PPDMAUDIOPCMPROPS pProps);
 uint32_t DrvAudioHlpFramesToBytes(uint32_t cFrames, const PPDMAUDIOPCMPROPS pProps);
 uint64_t DrvAudioHlpFramesToMs(uint32_t cFrames, const PPDMAUDIOPCMPROPS pProps);
+uint64_t DrvAudioHlpFramesToNano(uint32_t cFrames, const PPDMAUDIOPCMPROPS pProps);
 uint32_t DrvAudioHlpMsToBytes(uint32_t uMs, const PPDMAUDIOPCMPROPS pProps);
+uint32_t DrvAudioHlpNanoToBytes(uint32_t uNs, const PPDMAUDIOPCMPROPS pProps);
 uint32_t DrvAudioHlpMsToFrames(uint32_t uMs, const PPDMAUDIOPCMPROPS pProps);
+uint32_t DrvAudioHlpNanoToFrames(uint32_t uNs, const PPDMAUDIOPCMPROPS pProps);
 /** @}  */
 
 /** @name Audio PCM properties helper methods.
