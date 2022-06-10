@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 74453 2018-09-25 11:15:13Z vboxsync $ */
+/* $Id: DrvChar.cpp 74454 2018-09-25 11:16:46Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMISERIALCONNECTOR / PDMISERIALPORT.
  */
@@ -209,7 +209,7 @@ static DECLCALLBACK(int) drvCharQueuesFlush(PPDMISERIALCONNECTOR pInterface, boo
     PDRVCHAR pThis = RT_FROM_MEMBER(pInterface, DRVCHAR, ISerialConnector);
 
     if (fQueueRecv)
-    {        
+    {
         size_t cbOld = 0;
         cbOld = ASMAtomicXchgZ(&pThis->cbRemaining, 0);
         if (cbOld) /* Kick the I/O thread to fetch new data. */
