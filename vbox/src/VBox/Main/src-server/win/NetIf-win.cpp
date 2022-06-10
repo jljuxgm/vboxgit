@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 77437 2019-02-22 18:27:43Z vboxsync $ */
+/* $Id: NetIf-win.cpp 77438 2019-02-22 18:32:56Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1326,7 +1326,7 @@ int NetIfEnableStaticIpConfigV6(VirtualBox *vBox, HostNetworkInterface * pIf, co
                     d->msgCode = SVCHlpMsg::EnableStaticIpConfigV6;
                     d->guid = guid;
                     d->iface = pIf;
-                    d->u.StaticIPV6.IPV6Address = RTStrDup(aIPV6Address);
+                    d->u.StaticIPV6.IPV6Address = RTStrDup(aIPV6Address.c_str());
                     d->u.StaticIPV6.IPV6NetMaskLength = aIPV6MaskPrefixLength;
 
                     rc = vBox->i_startSVCHelperClient(IsUACEnabled() == TRUE /* aPrivileged */,
