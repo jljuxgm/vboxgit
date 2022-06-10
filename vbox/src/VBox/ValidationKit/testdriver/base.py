@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 72742 2018-06-29 07:34:14Z vboxsync $
+# $Id: base.py 72745 2018-06-29 07:36:21Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72742 $"
+__version__ = "$Revision: 72745 $"
 
 
 # Standard Python imports.
@@ -737,14 +737,13 @@ class SubTestDriverBase(object):
 
     The test drivers invokes the sub-test drivers in a private manner during
     test execution, but some of the generic bits are done automagically by the
-    base class: options, help, various other actions.
+    base class: options, help, resources, various other actions.
     """
 
     def __init__(self, sName, oTstDrv):
         self.sName              = sName;
         self.oTstDrv            = oTstDrv;
         self.asRsrcs            = [];
-
 
     def showUsage(self):
         """
