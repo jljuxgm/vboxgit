@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 77536 2019-03-02 05:04:45Z vboxsync $ */
+/* $Id: vfsmod.c 77538 2019-03-02 18:31:22Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -389,9 +389,6 @@ static int vbsf_read_super_aux(struct super_block *sb, void *data, int flags)
     sf_i->path->String.utf8[0] = '/';
     sf_i->path->String.utf8[1] = 0;
     sf_i->force_restat = false;
-#ifdef VBSF_BUFFER_DIRS
-    sf_i->force_reread = false;
-#endif
     RTListInit(&sf_i->HandleList);
 #ifdef VBOX_STRICT
     sf_i->u32Magic = SF_INODE_INFO_MAGIC;
