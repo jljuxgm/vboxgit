@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 71754 2018-04-09 01:27:04Z vboxsync $ */
+/* $Id: DevHDACommon.h 75866 2018-12-02 01:30:48Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -549,7 +549,7 @@ typedef struct HDABDLESTATE
 typedef struct HDABDLEDESC
 {
     /** Starting address of the actual buffer. Must be 128-bit aligned. */
-    uint64_t     u64BufAdr;
+    uint64_t     u64BufAddr;
     /** Size of the actual buffer (in bytes). */
     uint32_t     u32BufSize;
     /** Bit 0: Interrupt on completion; the controller will generate
