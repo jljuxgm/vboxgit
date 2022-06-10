@@ -1,4 +1,4 @@
-/* $Id: nt.h 77821 2019-03-21 02:18:42Z vboxsync $ */
+/* $Id: nt.h 78303 2019-04-26 00:44:32Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -1718,6 +1718,7 @@ typedef enum _FILE_INFORMATION_CLASS
     FileNumaNodeInformation,
     FileStandardLinkInformation,
     FileRemoteProtocolInformation,
+    /* Defined with Windows 10: */
     FileRenameInformationBypassAccessCheck,
     FileLinkInformationBypassAccessCheck,
     FileVolumeNameInformation,
@@ -1725,6 +1726,19 @@ typedef enum _FILE_INFORMATION_CLASS
     FileIdExtdDirectoryInformation,
     FileReplaceCompletionInformation,
     FileHardLinkFullIdInformation,
+    FileIdExtdBothDirectoryInformation,
+    FileDispositionInformationEx,
+    FileRenameInformationEx,
+    FileRenameInformationExBypassAccessCheck,
+    FileDesiredStorageClassInformation,
+    FileStatInformation,
+    FileMemoryPartitionInformation,
+    FileStatLxInformation,
+    FileCaseSensitiveInformation,
+    FileLinkInformationEx,
+    FileLinkInformationExBypassAccessCheck,
+    FileStorageReserveIdInformation,
+    FileCaseSensitiveInformationForceAccessCheck,
     FileMaximumInformation
 } FILE_INFORMATION_CLASS;
 typedef FILE_INFORMATION_CLASS *PFILE_INFORMATION_CLASS;
