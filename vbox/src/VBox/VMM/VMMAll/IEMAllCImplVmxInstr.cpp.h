@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 73745 2018-08-17 18:12:20Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 73752 2018-08-18 04:04:56Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -476,6 +476,54 @@ DECLINLINE(void) iemVmxVmFail(PVMCPU pVCpu, VMXINSTRERR enmInsErr)
     }
     else
         iemVmxVmFailInvalid(pVCpu);
+}
+
+
+/**
+ * VMPTRST instruction execution worker.
+ *
+ * @param   pVCpu           The cross context virtual CPU structure.
+ * @param   cbInstr         The instruction length.
+ * @param   GCPtrVmcs       The linear address of where to store the current VMCS
+ *                          pointer.
+ * @param   pExitInstrInfo  Pointer to the VM-exit instruction information field.
+ * @param   GCPtrDisp       The displacement field for @a GCPtrVmcs if any.
+ *
+ * @remarks Common VMX instruction checks are already expected to by the caller,
+ *          i.e. VMX operation, CR4.VMXE, Real/V86 mode, EFER/CS.L checks.
+ */
+IEM_STATIC VBOXSTRICTRC iemVmxVmptrst(PVMCPU pVCpu, uint8_t cbInstr, RTGCPHYS GCPtrVmcs, PCVMXEXITINSTRINFO pExitInstrInfo,
+                                      RTGCPTR GCPtrDisp)
+{
+    if (IEM_IS_VMX_NON_ROOT_MODE(pVCpu))
+    {
+        RT_NOREF(GCPtrDisp);
+        /** @todo NSTVMX: intercept. */
+    }
+    Assert(IEM_IS_VMX_ROOT_MODE(pVCpu));
+
+    /* CPL. */
+    if (CPUMGetGuestCPL(pVCpu) > 0)
+    {
+        Log(("vmptrst: CPL %u -> #GP(0)\n", pVCpu->iem.s.uCpl));
+        pVCpu->cpum.GstCtx.hwvirt.vmx.enmInstrDiag = kVmxVInstrDiag_Vmptrst_Cpl;
+        return iemRaiseGeneralProtectionFault0(pVCpu);
+    }
+
+    /* Set the VMCS pointer to the location specified by the destination memory operand. */
+    Assert(NIL_RTGCPHYS == ~(RTGCPHYS)0U);
+    VBOXSTRICTRC rcStrict = iemMemStoreDataU64(pVCpu, pExitInstrInfo->VmxXsave.iSegReg, GCPtrVmcs,
+                                               pVCpu->cpum.GstCtx.hwvirt.vmx.GCPhysVmcs);
+    if (RT_LIKELY(rcStrict == VINF_SUCCESS))
+    {
+        iemVmxVmSucceed(pVCpu);
+        iemRegAddToRipAndClearRF(pVCpu, cbInstr);
+        return rcStrict;
+    }
+
+    Log(("vmptrld: Failed to store VMCS pointer to memory at destination operand %#Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
+    pVCpu->cpum.GstCtx.hwvirt.vmx.enmInstrDiag = kVmxVInstrDiag_Vmptrst_PtrMap;
+    return rcStrict;
 }
 
 

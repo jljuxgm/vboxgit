@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 73745 2018-08-17 18:12:20Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 73752 2018-08-18 04:04:56Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -81,6 +81,9 @@ static const char * const g_apszVmxInstrDiagDesc[kVmxVInstrDiag_Last] =
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmptrld_ShadowVmcs  , "ShadowVmcs"   ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmptrld_Success     , "Success"      ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmptrld_VmcsRevId   , "VmcsRevId"    )
+    /* VMPTRST. */
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmptrst_Cpl         , "Cpl"          ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmptrst_PtrMap      , "PtrMap"       )
     /* kVmxVInstrDiag_Last */
 };
 #undef VMX_INSTR_DIAG_DESC
