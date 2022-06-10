@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 77254 2019-02-11 11:04:54Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -996,6 +996,10 @@ void FwCommonPlantSmbiosAndDmiHdrs(PPDMDEVINS pDevIns, uint8_t *pHdr, uint16_t c
 
     aBiosHeaders.dmi.u16TablesLength = cbDmiTables;
     aBiosHeaders.dmi.u16TableEntries = cNumDmiTables;
+    /* NB: The _SM_ table checksum technically covers both the _SM_ part (16 bytes) and the _DMI_ part
+     * (further 15 bytes). However, because the _DMI_ checksum must be zero, the _SM_ checksum can
+     * be calculated independently.
+     */
     aBiosHeaders.smbios.u8Checksum   = fwCommonChecksum((uint8_t*)&aBiosHeaders.smbios, sizeof(aBiosHeaders.smbios));
     aBiosHeaders.dmi.u8Checksum      = fwCommonChecksum((uint8_t*)&aBiosHeaders.dmi,    sizeof(aBiosHeaders.dmi));
 
