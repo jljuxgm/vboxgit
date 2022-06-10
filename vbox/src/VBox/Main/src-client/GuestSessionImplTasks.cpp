@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 77495 2019-02-28 08:44:11Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 77499 2019-02-28 11:04:45Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1594,7 +1594,7 @@ int GuestSessionTaskCopyFrom::Run(void)
                     LogFlowFunc(("Directory '%s': %s -> %s\n", pEntry->strPath.c_str(), strSrcAbs.c_str(), strDstAbs.c_str()));
                     if (!pList->mSourceSpec.fDryRun)
                     {
-                        rc = directoryCreateOnHost(pList->mDstRootAbs.c_str(), fDirMode, fDirCreate, fCopyIntoExisting);
+                        rc = directoryCreateOnHost(strDstAbs.c_str(), fDirMode, fDirCreate, fCopyIntoExisting);
                         if (RT_FAILURE(rc))
                             break;
                     }
