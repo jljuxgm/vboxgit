@@ -1,4 +1,4 @@
-/* $Id: VBoxSFInit.cpp 75597 2018-11-19 19:51:02Z vboxsync $ */
+/* $Id: VBoxSFInit.cpp 76146 2018-12-11 05:22:18Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, Initialization.
  */
@@ -102,6 +102,11 @@ DECLASM(void) VBoxSFR0Init(void)
                     RTLogBackdoorPrintf("VBoxSFR0Init: Missing VBoxGuest.sys IDC connection!  Check order in Config.kmk!\n");
                 else if (!(fFeatures & VMMDEV_HVF_HGCM_EMBEDDED_BUFFERS))
                     RTLogBackdoorPrintf("VBoxSFR0Init: Embedded buffers feature is missing.  Upgrade to latest VirtualBox!\n");
+
+                /*
+                 * Allocate some big buffers for reading and writing.
+                 */
+                vboxSfOs2InitFileBuffers();
 
 #ifndef DONT_LOCK_SEGMENTS
                 /*
