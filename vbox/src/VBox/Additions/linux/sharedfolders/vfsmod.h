@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77628 2019-03-09 18:12:49Z vboxsync $ */
+/* $Id: vfsmod.h 77631 2019-03-10 04:14:09Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -53,6 +53,26 @@
 #include <VBox/VBoxGuestLibSharedFoldersInline.h>
 #include <iprt/asm.h>
 #include "vbsfmount.h"
+
+
+/*
+ * Logging wrappers.
+ */
+#if 1
+# define TRACE()          LogFunc(("tracepoint\n"))
+# define SFLOGFLOW(aArgs) Log(aArgs)
+# define SFLOG2(aArgs)    Log2(aArgs)
+# define SFLOG3(aArgs)    Log3(aArgs)
+# ifdef LOG_ENABLED
+#  define SFLOG_ENABLED   1
+# endif
+#else
+# define TRACE()          RTLogBackdoorPrintf("%s: tracepoint\n", __FUNCTION__)
+# define SFLOGFLOW(aArgs) RTLogBackdoorPrintf aArgs
+# define SFLOG2(aArgs)    RTLogBackdoorPrintf aArgs
+# define SFLOG3(aArgs)    RTLogBackdoorPrintf aArgs
+# define SFLOG_ENABLED    1
+#endif
 
 
 /*
@@ -312,6 +332,7 @@ struct vbsf_dir_info {
  */
 DECLINLINE(void) vbsf_dentry_set_update_jiffies(struct dentry *pDirEntry, unsigned long uToSet)
 {
+    /*SFLOG3(("vbsf_dentry_set_update_jiffies: %p: %lx -> %#lx\n", pDirEntry, (unsigned long)pDirEntry->d_fsdata, uToSet));*/
     pDirEntry->d_fsdata = (void *)uToSet;
 }
 
@@ -391,21 +412,5 @@ DECLINLINE(uint32_t) sf_access_permissions_to_vbox(int fAttr)
 
     return fAttr & RTFS_UNIX_ALL_ACCESS_PERMS;
 }
-
-#if 1
-# define TRACE()          LogFunc(("tracepoint\n"))
-# define SFLOGFLOW(aArgs) Log(aArgs)
-# define SFLOG2(aArgs)    Log2(aArgs)
-# define SFLOG3(aArgs)    Log3(aArgs)
-# ifdef LOG_ENABLED
-#  define SFLOG_ENABLED   1
-# endif
-#else
-# define TRACE()          RTLogBackdoorPrintf("%s: tracepoint\n", __FUNCTION__)
-# define SFLOGFLOW(aArgs) RTLogBackdoorPrintf aArgs
-# define SFLOG2(aArgs)    RTLogBackdoorPrintf aArgs
-# define SFLOG3(aArgs)    RTLogBackdoorPrintf aArgs
-# define SFLOG_ENABLED    1
-#endif
 
 #endif /* !GA_INCLUDED_SRC_linux_sharedfolders_vfsmod_h */
