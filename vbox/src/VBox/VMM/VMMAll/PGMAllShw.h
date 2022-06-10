@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 73261 2018-07-20 11:00:53Z vboxsync $ */
+/* $Id: PGMAllShw.h 73267 2018-07-20 14:42:58Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -213,7 +213,7 @@ PGM_SHW_DECL(int, Enter)(PVMCPU pVCpu, bool fIs64BitsPagingMode)
     int rc = pgmPoolAlloc(pVM, GCPhysCR3, PGMPOOLKIND_ROOT_NESTED, PGMPOOLACCESS_DONTCARE, PGM_A20_IS_ENABLED(pVCpu),
                           NIL_PGMPOOL_IDX, UINT32_MAX, true /*fLockPage*/,
                           &pNewShwPageCR3);
-    AssertFatalRC(rc);
+    AssertLogRelRCReturnStmt(rc, pgmUnlock(pVM), rc);
 
     pVCpu->pgm.s.pShwPageCR3R3 = (R3PTRTYPE(PPGMPOOLPAGE))MMHyperCCToR3(pVM, pNewShwPageCR3);
     pVCpu->pgm.s.pShwPageCR3RC = (RCPTRTYPE(PPGMPOOLPAGE))MMHyperCCToRC(pVM, pNewShwPageCR3);
