@@ -1,4 +1,4 @@
-/* $Id: RTCp.cpp 75117 2018-10-26 19:46:27Z vboxsync $ */
+/* $Id: RTCp.cpp 75118 2018-10-26 19:51:55Z vboxsync $ */
 /** @file
  * IPRT - cp like utility.
  */
@@ -103,7 +103,7 @@ static RTEXITCODE rtCmdCpDoIt(PCRTCMDCPOPTS pOpts)
     else
         RT_ZERO(DstObjInfo);
 /* gcc 8.2 produces a tautological compare warning here. */
-#if __GNUC__ != 8 || __GNUC_MINOR__ != 2
+#if !defined __GNUC__ || __GNUC__ != 8 || __GNUC_MINOR__ != 2
     AssertCompile(!RTFS_IS_DIRECTORY(0));
 #endif
 
