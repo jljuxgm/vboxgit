@@ -1,4 +1,4 @@
-/* $Id: DnDURIObject.cpp 74526 2018-09-28 15:08:24Z vboxsync $ */
+/* $Id: DnDURIObject.cpp 74527 2018-09-28 15:11:42Z vboxsync $ */
 /** @file
  * DnD: URI object class. For handling creation/reading/writing to files and directories
  *      on host or guest side.
@@ -155,7 +155,7 @@ int DnDURIObject::OpenEx(const RTCString &strPath, Type enmType, View enmView,
         && fOpen) /* Opening mode specified? */
     {
         LogFlowThisFunc(("strPath=%s, enmType=%RU32, enmView=%RU32, fOpen=0x%x, fMode=0x%x, fFlags=0x%x\n",
-                         strPath.c_str(), enmType, enmView, fOpen, fFlags));
+                         strPath.c_str(), enmType, enmView, fOpen, fMode, fFlags));
         switch (enmType)
         {
             case Type_File:
