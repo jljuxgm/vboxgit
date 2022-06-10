@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 74016 2018-09-01 05:25:49Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 74047 2018-09-03 16:10:27Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3411,7 +3411,7 @@ static int hmR0VmxExportGuestExitCtls(PVMCPU pVCpu)
  */
 DECLINLINE(int) hmR0VmxApicSetTprThreshold(PVMCPU pVCpu, uint32_t u32TprThreshold)
 {
-    Assert(!(u32TprThreshold & 0xfffffff0));         /* Bits 31:4 MBZ. */
+    Assert(!(u32TprThreshold & ~VMX_TPR_THRESHOLD_MASK));         /* Bits 31:4 MBZ. */
     Assert(pVCpu->hm.s.vmx.u32ProcCtls & VMX_PROC_CTLS_USE_TPR_SHADOW); RT_NOREF_PV(pVCpu);
     return VMXWriteVmcs32(VMX_VMCS32_CTRL_TPR_THRESHOLD, u32TprThreshold);
 }
