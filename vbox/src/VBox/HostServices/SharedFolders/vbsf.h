@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 77243 2019-02-10 22:44:00Z vboxsync $ */
+/* $Id: vbsf.h 77837 2019-03-21 21:32:32Z vboxsync $ */
 /** @file
  * VBox Shared Folders header.
  */
@@ -34,6 +34,8 @@ int vbsfReadPages(SHFLCLIENTDATA *pClient, SHFLROOT idRoot, SHFLHANDLE hFile, ui
 int vbsfWrite(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLHANDLE Handle, uint64_t *poffFile, uint32_t *pcbBuffer, uint8_t *pBuffer);
 int vbsfWritePages(SHFLCLIENTDATA *pClient, SHFLROOT idRoot, SHFLHANDLE hFile, uint64_t *poffFile,
                    uint32_t *pcbBuffer, PVBOXHGCMSVCPARMPAGES pPages);
+int vbsfCopyFilePart(SHFLCLIENTDATA *pClient, SHFLROOT idRootSrc, SHFLHANDLE hFileSrc, uint64_t offSrc,
+                     SHFLROOT idRootDst, SHFLHANDLE hFileDst, uint64_t offDst, uint64_t *pcbToCopy, uint32_t fFlags);
 
 int vbsfLock(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLHANDLE Handle, uint64_t offset, uint64_t length, uint32_t flags);
 int vbsfUnlock(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLHANDLE Handle, uint64_t offset, uint64_t length, uint32_t flags);
