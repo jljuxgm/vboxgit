@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 72324 2018-05-24 17:46:52Z vboxsync $
+# $Id: Makefile.kmk 72948 2018-07-07 16:20:42Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -471,6 +471,7 @@ VBoxSVC_SOURCES = \
 	src-server/MediumFormatImpl.cpp \
 	src-server/MediumImpl.cpp \
 	src-server/MediumLock.cpp \
+	src-server/MediumIOImpl.cpp \
 	src-server/NATEngineImpl.cpp \
 	src-server/NetworkAdapterImpl.cpp \
 	src-server/ParallelPortImpl.cpp \
