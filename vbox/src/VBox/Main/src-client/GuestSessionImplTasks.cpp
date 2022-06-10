@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 72958 2018-07-07 21:27:53Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 72960 2018-07-07 21:31:08Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1900,7 +1900,7 @@ int GuestSessionTaskUpdateAdditions::copyFileToGuest(GuestSession *pSession, RTV
     int rc = RTVfsFileOpen(hVfsIso, strFileSource.c_str(), RTFILE_O_OPEN | RTFILE_O_READ, &hVfsFile);
     if (RT_SUCCESS(rc))
     {
-        size_t cbSrcSize = 0;
+        uint64_t cbSrcSize = 0;
         rc = RTVfsFileGetSize(hVfsFile, &cbSrcSize);
         if (RT_SUCCESS(rc))
         {
