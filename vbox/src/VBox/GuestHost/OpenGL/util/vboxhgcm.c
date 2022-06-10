@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 78190 2019-04-18 00:07:07Z vboxsync $ */
+/* $Id: vboxhgcm.c 78263 2019-04-23 18:41:06Z vboxsync $ */
 /** @file
  * VBox HGCM connection
  */
@@ -1353,6 +1353,7 @@ static int crVBoxHGCMDoConnect( CRConnection *conn )
     return FALSE;
 
 #else  /* !IN_GUEST */
+    RT_NOREF(conn);
     crError("crVBoxHGCMDoConnect called on host side!");
     CRASSERT(FALSE);
     return FALSE;

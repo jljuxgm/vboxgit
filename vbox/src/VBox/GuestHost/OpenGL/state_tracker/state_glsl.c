@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 78190 2019-04-18 00:07:07Z vboxsync $ */
+/* $Id: state_glsl.c 78263 2019-04-23 18:41:06Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -1280,6 +1280,7 @@ DECLEXPORT(GLint) STATE_APIENTRY crStateGetUniformLocation(GLuint program, const
 
     return result;
 #else
+    RT_NOREF(program, name);
     crWarning("crStateGetUniformLocation called on host side!!");
     return -1;
 #endif
@@ -1315,6 +1316,7 @@ DECLEXPORT(GLint) STATE_APIENTRY crStateGetAttribLocation(GLuint program, const 
 
     return result;
 #else
+    RT_NOREF(program, name);
     crWarning("crStateGetAttribLocation called on host side!!");
     return -1;
 #endif

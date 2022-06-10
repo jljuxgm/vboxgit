@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 78117 2019-04-12 10:04:58Z vboxsync $ */
+/* $Id: state_snapshot.c 78263 2019-04-23 18:41:06Z vboxsync $ */
 /** @file
  * VBox Context state saving/loading used by VM snapshot
  */
@@ -1105,6 +1105,8 @@ static void crStateSaveGLSLShaderKeyCB(unsigned long key, void *data1, void *dat
     PSSMHANDLE pSSM = (PSSMHANDLE) data2;
     int32_t rc;
 
+    RT_NOREF(data1);
+
     rc = SSMR3PutMem(pSSM, &key, sizeof(key));
     CRASSERT(rc == VINF_SUCCESS);
 }
@@ -1808,6 +1810,8 @@ int32_t crStateSaveGlobals(PSSMHANDLE pSSM)
         AssertRCReturn(rc, rc);
 #include "state_bits_globalop.h"
 #undef CRSTATE_BITS_OP
+#else
+    RT_NOREF(pSSM);
 #endif
     return VINF_SUCCESS;
 }

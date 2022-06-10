@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 76787 2019-01-11 20:00:15Z vboxsync $ */
+/* $Id: crservice.cpp 78263 2019-04-23 18:41:06Z vboxsync $ */
 /** @file
  * VBox crOpenGL - Host service entry points.
  */
@@ -1574,6 +1574,7 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad (VBOXHGCMSVCFNTABLE *pt
 #include <iprt/win/windows.h>
 BOOL WINAPI DllMain(HINSTANCE hDLLInst, DWORD fdwReason, LPVOID lpvReserved)
 {
+    RT_NOREF(hDLLInst);
     (void) lpvReserved;
 
     switch (fdwReason)
