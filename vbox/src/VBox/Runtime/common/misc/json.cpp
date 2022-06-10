@@ -1,4 +1,4 @@
-/* $Id: json.cpp 74173 2018-09-10 09:39:10Z vboxsync $ */
+/* $Id: json.cpp 74175 2018-09-10 09:40:58Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -752,7 +752,7 @@ static int rtJsonTokenizerGetString(PRTJSONTOKENIZER pTokenizer, PRTJSONTOKEN pT
                     }
                     RTStrFree(pszDecoded);
                     if (rc == VERR_JSON_INVALID_UTF16_ESCAPE_SEQUENCE)
-                        rc = RTErrInfoSetF(pTokenizer->pErrInfo, rc, "Invalid \u escape sequence (line %zu col %zu)",
+                        rc = RTErrInfoSetF(pTokenizer->pErrInfo, rc, "Invalid \\u escape sequence (line %zu col %zu)",
                                            pTokenizer->Pos.iLine, pTokenizer->Pos.iChStart);
                     else if (rc == VERR_JSON_MISSING_SURROGATE_PAIR)
                         rc = RTErrInfoSetF(pTokenizer->pErrInfo, rc, "Missing UTF-16 surrogate pair (line %zu col %zu)",
