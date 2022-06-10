@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 76600 2019-01-02 02:05:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -29,11 +29,7 @@
 #include <QWidget>
 
 /* VirtualBox interface declarations: */
-#ifndef VBOX_WITH_XPCOM
-# include "VirtualBox.h"
-#else
-# include "VirtualBox_XPCOM.h"
-#endif
+#include <VBox/com/VirtualBox.h>
 
 /* GUI includes: */
 # include "UIDnDHandler.h"

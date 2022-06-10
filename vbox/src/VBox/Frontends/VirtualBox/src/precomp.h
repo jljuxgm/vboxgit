@@ -1,4 +1,4 @@
-/* $Id: precomp.h 76553 2019-01-01 01:45:53Z vboxsync $*/
+/* $Id: precomp.h 76600 2019-01-02 02:05:40Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -259,11 +259,7 @@
 /*
  * VirtualBox COM API
  */
-#ifdef VBOX_WITH_XPCOM
-# include <VirtualBox_XPCOM.h>
-#else
-# include <VirtualBox.h>
-#endif
+#include <VBox/com/VirtualBox.h>
 
 /*
  * VBox headers.

@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxX11Helper.cpp 76600 2019-01-02 02:05:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -30,6 +30,7 @@
 RT_C_DECLS_BEGIN
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
+#undef BOOL /* VBox/com/defs.h conflict */
 #include <X11/extensions/dpms.h>
 RT_C_DECLS_END
 

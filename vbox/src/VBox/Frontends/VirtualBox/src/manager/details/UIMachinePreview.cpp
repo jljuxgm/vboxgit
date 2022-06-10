@@ -1,4 +1,4 @@
-/* $Id: UIMachinePreview.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UIMachinePreview.cpp 76600 2019-01-02 02:05:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachinePreview class implementation.
  */
@@ -42,11 +42,8 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* VirtualBox interface declarations: */
-#ifndef VBOX_WITH_XPCOM
-# include "VirtualBox.h"
-#else /* !VBOX_WITH_XPCOM */
-# include "VirtualBox_XPCOM.h"
-#endif /* VBOX_WITH_XPCOM */
+#include <VBox/com/VirtualBox.h>
+
 
 UIMachinePreview::UIMachinePreview(QIGraphicsWidget *pParent)
     : QIWithRetranslateUI4<QIGraphicsWidget>(pParent)
