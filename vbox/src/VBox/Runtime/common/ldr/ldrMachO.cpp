@@ -1,4 +1,4 @@
-/* $Id: ldrMachO.cpp 74647 2018-10-06 21:29:40Z vboxsync $ */
+/* $Id: ldrMachO.cpp 74650 2018-10-07 11:37:57Z vboxsync $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -3758,7 +3758,7 @@ static DECLCALLBACK(int) rtldrMachO_ReadDbgInfo(PRTLDRMODINTERNAL pMod, uint32_t
 
 /** @interface_method_impl{RTLDROPS,pfnQueryProp} */
 static DECLCALLBACK(int) rtldrMachO_QueryProp(PRTLDRMODINTERNAL pMod, RTLDRPROP enmProp, void const *pvBits,
-                                          void *pvBuf, size_t cbBuf, size_t *pcbRet)
+                                              void *pvBuf, size_t cbBuf, size_t *pcbRet)
 {
     PRTLDRMODMACHO pThis = RT_FROM_MEMBER(pMod, RTLDRMODMACHO, Core);
     int           rc;
@@ -3784,6 +3784,7 @@ static DECLCALLBACK(int) rtldrMachO_QueryProp(PRTLDRMODINTERNAL pMod, RTLDRPROP 
             rc = VERR_NOT_FOUND;
             break;
     }
+    NOREF(cbBuf);
     RT_NOREF_PV(pvBits);
     return rc;
 }
