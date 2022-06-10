@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 75966 2018-12-05 10:57:38Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 76177 2018-12-12 13:38:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -364,7 +364,7 @@ namespace UIExtraDataDefs
         extern const char *GUI_GuestControl_ProcessControlDialogGeometry;
     /** @} */
 
-    /** @name Guest Control file manager options
+    /** @name File Manager options
       * @{ */
         extern const char *GUI_GuestControl_FileManagerOptions;
         extern const char *GUI_GuestControl_FileManagerListDirectoriesFirst;
@@ -500,7 +500,7 @@ public:
         RuntimeMenuMachineActionType_SettingsDialog                = RT_BIT(0),
         RuntimeMenuMachineActionType_TakeSnapshot                  = RT_BIT(1),
         RuntimeMenuMachineActionType_InformationDialog             = RT_BIT(2),
-        RuntimeMenuMachineActionType_GuestControlFileManagerDialog = RT_BIT(3),
+        RuntimeMenuMachineActionType_FileManagerDialog             = RT_BIT(3),
         RuntimeMenuMachineActionType_GuestProcessControlDialog     = RT_BIT(4),
         RuntimeMenuMachineActionType_Pause                         = RT_BIT(5),
         RuntimeMenuMachineActionType_Reset                         = RT_BIT(6),

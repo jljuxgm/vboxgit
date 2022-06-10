@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 75642 2018-11-21 13:55:19Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 76177 2018-12-12 13:38:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -637,23 +637,23 @@ public:
       * @{ */
         void setGuestControlProcessControlSplitterHints(const QList<int> &hints);
         QList<int> guestControlProcessControlSplitterHints();
-        QRect guestControlFileManagerDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry);
-        bool guestControlFileManagerDialogShouldBeMaximized();
-        void setGuestControlFileManagerDialogGeometry(const QRect &geometry, bool fMaximized);
+        QRect fileManagerDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry);
+        bool fileManagerDialogShouldBeMaximized();
+        void setFileManagerDialogGeometry(const QRect &geometry, bool fMaximized);
         QRect guestProcessControlDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry);
         bool guestProcessControlDialogShouldBeMaximized();
         void setGuestProcessControlDialogGeometry(const QRect &geometry, bool fMaximized);
-        void setGuestControlFileManagerVisiblePanels(const QStringList &panelNameList);
-        QStringList guestControlFileManagerVisiblePanels();
+        void setFileManagerVisiblePanels(const QStringList &panelNameList);
+        QStringList fileManagerVisiblePanels();
     /** @} */
 
-    /** @name Guest Control file manager options
+    /** @name File Manager options
       * @{ */
-        void setGuestControlFileManagerOptions(bool fListDirectoriesFirst,
-                                               bool fShowDeleteConfirmation, bool fshowHumanReadableSizes);
-        bool guestControlFileManagerListDirectoriesFirst();
-        bool guestControlFileManagerShowDeleteConfirmation();
-        bool guestControlFileManagerShowHumanReadableSizes();
+        void setFileManagerOptions(bool fListDirectoriesFirst,
+                                   bool fShowDeleteConfirmation, bool fshowHumanReadableSizes);
+        bool fileManagerListDirectoriesFirst();
+        bool fileManagerShowDeleteConfirmation();
+        bool fileManagerShowHumanReadableSizes();
     /** @} */
 
     /** @name Virtual Machine: Close dialog

@@ -1,6 +1,6 @@
-/* $Id: UIHostFileTable.h 75903 2018-12-03 13:03:37Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.h 76177 2018-12-12 13:38:57Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIHostFileTable class declaration.
+ * VBox Qt GUI - UIFileManagerHostTable class declaration.
  */
 
 /*
@@ -15,24 +15,24 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UIHostFileTable_h___
-#define ___UIHostFileTable_h___
+#ifndef ___UIFileManagerHostTable_h___
+#define ___UIFileManagerHostTable_h___
 
 /* GUI includes: */
-#include "UIGuestControlFileTable.h"
+#include "UIFileManagerTable.h"
 
 /* Forward declarations: */
 class UIActionPool;
 
 /** This class scans the host file system by using the Qt API
-    and connects to the UIGuestControlFileModel*/
-class UIHostFileTable : public UIGuestControlFileTable
+    and connects to the UIFileManagerModel*/
+class UIFileManagerHostTable : public UIFileManagerTable
 {
     Q_OBJECT;
 
 public:
 
-    UIHostFileTable(UIActionPool *pActionPool, QWidget *pParent = 0);
+    UIFileManagerHostTable(UIActionPool *pActionPool, QWidget *pParent = 0);
 
 protected:
 
@@ -63,4 +63,4 @@ private:
 
 };
 
-#endif /* !___UIHostFileTable_h___ */
+#endif /* !___UIFileManagerHostTable_h___ */

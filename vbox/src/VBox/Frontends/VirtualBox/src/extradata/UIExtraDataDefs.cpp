@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 75642 2018-11-21 13:55:19Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 76177 2018-12-12 13:38:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -203,7 +203,7 @@ const char *UIExtraDataDefs::GUI_GuestControl_FileManagerVisiblePanels = "GUI/Gu
 const char *UIExtraDataDefs::GUI_GuestControl_ProcessControlSplitterHints = "GUI/GuestControl/ProcessControlSplitterHints";
 const char *UIExtraDataDefs::GUI_GuestControl_ProcessControlDialogGeometry = "GUI/GuestControl/ProcessControlDialogGeometry";
 
-/* Guest Control file manager options: */
+/* File Manager options: */
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerOptions = "GUI/GuestControl/FileManagerOptions";
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerListDirectoriesFirst = "ListDirectoriesFirst";
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerShowDeleteConfirmation = "ShowDeleteConfimation";
