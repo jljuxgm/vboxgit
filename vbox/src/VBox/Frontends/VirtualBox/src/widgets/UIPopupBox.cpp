@@ -1,4 +1,4 @@
-/* $Id: UIPopupBox.cpp 71484 2018-03-23 12:07:29Z vboxsync $ */
+/* $Id: UIPopupBox.cpp 72814 2018-07-03 09:49:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupBox/UIPopupBoxGroup classes implementation.
  */
@@ -240,6 +240,27 @@ bool UIPopupBox::isOpen() const
     return m_fOpened;
 }
 
+bool UIPopupBox::event(QEvent *pEvent)
+{
+    /* Handle know event types: */
+    switch (pEvent->type())
+    {
+        case QEvent::Show:
+        case QEvent::ScreenChangeInternal:
+        {
+            /* Update pixmaps: */
+            updateTitleIcon();
+            updateWarningIcon();
+            break;
+        }
+        default:
+            break;
+    }
+
+    /* Call to base-class: */
+    return QWidget::event(pEvent);
+}
+
 bool UIPopupBox::eventFilter(QObject *pObject, QEvent *pEvent)
 {
     /* Handle all mouse-event to update hover: */
@@ -315,19 +336,18 @@ void UIPopupBox::mouseDoubleClickEvent(QMouseEvent *)
 void UIPopupBox::updateTitleIcon()
 {
     /* Assign title-icon: */
-    const QStyle *pStyle = QApplication::style();
-    const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize);
-    m_pTitleIcon->setPixmap(m_titleIcon.pixmap(iIconMetric, iIconMetric));
+    const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
+    m_pTitleIcon->setPixmap(m_titleIcon.pixmap(window()->windowHandle(), QSize(iIconMetric, iIconMetric)));
 }
 
 void UIPopupBox::updateWarningIcon()
 {
     /* Hide warning-icon if its null: */
     m_pWarningIcon->setHidden(m_warningIcon.isNull());
+
     /* Assign warning-icon: */
-    const QStyle *pStyle = QApplication::style();
-    const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize);
-    m_pWarningIcon->setPixmap(m_warningIcon.pixmap(iIconMetric, iIconMetric));
+    const int iIconMetric = QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
+    m_pWarningIcon->setPixmap(m_warningIcon.pixmap(window()->windowHandle(), QSize(iIconMetric, iIconMetric)));
 }
 
 void UIPopupBox::updateTitle()

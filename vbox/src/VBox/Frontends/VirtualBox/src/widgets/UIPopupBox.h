@@ -1,4 +1,4 @@
-/* $Id: UIPopupBox.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIPopupBox.h 72814 2018-07-03 09:49:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupBox/UIPopupBoxGroup classes declaration.
  */
@@ -105,6 +105,9 @@ public:
     void callForUpdateContentWidget() { emit sigUpdateContentWidget(); }
 
 protected:
+
+    /** Handles any Qt @a pEvent. */
+    virtual bool event(QEvent *pEvent) /* override */;
 
     /** Pre-handles standard Qt @a pEvent for passed @a pObject. */
     virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
