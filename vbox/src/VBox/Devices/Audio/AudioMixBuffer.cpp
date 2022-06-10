@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 70878 2018-02-06 10:48:43Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 73529 2018-08-06 16:26:43Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -843,7 +843,7 @@ int AudioMixBufInit(PPDMAUDIOMIXBUF pMixBuf, const char *pszName, PPDMAUDIOPCMPR
 
     pMixBuf->AudioFmt = AUDMIXBUF_AUDIO_FMT_MAKE(pProps->uHz,
                                                  pProps->cChannels,
-                                                 pProps->cBits,
+                                                 pProps->cBytes * 8 /* Bit */,
                                                  pProps->fSigned);
 
     pMixBuf->pfnConvFrom = audioMixBufConvFromLookup(pMixBuf->AudioFmt);

@@ -1,4 +1,4 @@
-/* $Id: HDAStreamMap.cpp 71736 2018-04-07 21:29:18Z vboxsync $ */
+/* $Id: HDAStreamMap.cpp 73529 2018-08-06 16:26:43Z vboxsync $ */
 /** @file
  * HDAStreamMap.cpp - Stream mapping functions for HD Audio.
  */
@@ -57,14 +57,14 @@ int hdaR3StreamMapInit(PHDASTREAMMAPPING pMapping, PPDMAUDIOPCMPROPS pProps)
 
     int rc = VINF_SUCCESS;
 
-    Assert(RT_IS_POWER_OF_TWO(pProps->cBits));
+    Assert(RT_IS_POWER_OF_TWO(pProps->cBytes * 8));
 
     /** @todo We assume all channels in a stream have the same format. */
     PPDMAUDIOSTREAMCHANNEL pChan = pMapping->paChannels;
     for (uint8_t i = 0; i < pProps->cChannels; i++)
     {
         pChan->uChannel = i;
-        pChan->cbStep   = (pProps->cBits / 8);
+        pChan->cbStep   = pProps->cBytes;
         pChan->cbFrame  = pChan->cbStep * pProps->cChannels;
         pChan->cbFirst  = i * pChan->cbStep;
         pChan->cbOff    = pChan->cbFirst;
