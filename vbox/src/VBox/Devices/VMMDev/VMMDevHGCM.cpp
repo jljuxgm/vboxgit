@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 76664 2019-01-07 04:17:13Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -1281,7 +1281,8 @@ static int vmmdevHGCMCompleteCallRequest(PVMMDEV pThis, PVBOXHGCMCMD pCmd, VMMDe
                     const void *pvSrc    = pHostParm->u.pointer.addr;
                     uint32_t    cbSrc    = pHostParm->u.pointer.size;
                     uint32_t    cbToCopy = RT_MIN(cbSrc, pPtr->cbData);
-                    int rc = PDMDevHlpPhysWrite(pThis->pDevInsR3, pGuestParm->u.ptr.paPages[0], pvSrc, cbToCopy);
+                    int rc = PDMDevHlpPhysWrite(pThis->pDevInsR3, pGuestParm->u.ptr.paPages[0] | pGuestParm->u.ptr.offFirstPage,
+                                                pvSrc, cbToCopy);
                     if (RT_FAILURE(rc))
                         break;
                 }
