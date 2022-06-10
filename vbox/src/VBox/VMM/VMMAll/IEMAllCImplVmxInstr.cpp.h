@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74836 2018-10-15 08:50:46Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74861 2018-10-16 04:40:12Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3729,6 +3729,19 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitExtInt(PVMCPU pVCpu, uint8_t uVector, bool f
     }
 
     return VINF_VMX_INTERCEPT_NOT_ACTIVE;
+}
+
+
+/**
+ * VMX VM-exit handler for interrupt-window VM-exits.
+ *
+ * @returns VBox strict status code.
+ * @param   pVCpu           The cross context virtual CPU structure.
+ */
+IEM_STATIC VBOXSTRICTRC iemVmxVmexitIntWindow(PVMCPU pVCpu)
+{
+    iemVmxVmcsSetExitQual(pVCpu, 0);
+    return iemVmxVmexit(pVCpu, VMX_EXIT_INT_WINDOW);
 }
 
 
