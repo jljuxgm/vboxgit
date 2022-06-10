@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 73434 2018-08-01 15:24:34Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 73450 2018-08-02 11:58:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -109,11 +109,6 @@ private slots:
 
         /** Handles signal about group saving progress change. */
         void sltHandleGroupSavingProgressChange();
-
-#ifdef VBOX_WS_MAC
-        /** Handles signal about some @a pAction hovered. */
-        void sltActionHovered(UIAction *pAction);
-#endif
     /** @} */
 
     /** @name CVirtualBox event handling stuff.
