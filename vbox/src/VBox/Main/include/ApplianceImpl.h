@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: ApplianceImpl.h 78255 2019-04-23 07:27:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -101,6 +101,7 @@ private:
                            ComPtr<IProgress> &aProgress);
     HRESULT createVFSExplorer(const com::Utf8Str &aURI,
                               ComPtr<IVFSExplorer> &aExplorer);
+    HRESULT createVirtualSystemDescriptions(ULONG aRequested, ULONG *aCreated);
     HRESULT write(const com::Utf8Str &aFormat,
                   const std::vector<ExportOptions_T> &aOptions,
                   const com::Utf8Str &aPath,
