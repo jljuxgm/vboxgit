@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77615 $"
+__version__ = "$Revision: 77618 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -2220,7 +2220,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             if fRc:
                 reporter.log('Creating reboot thread ...');
                 oThreadReboot = threading.Thread(target = self.threadForTestGuestCtrlSessionReboot,
-                                                 args=(oGuestProcess),
+                                                 args=(oGuestProcess,),
                                                  name=('threadForTestGuestCtrlSessionReboot'));
                 oThreadReboot.setDaemon(True);
                 oThreadReboot.start();
