@@ -1,4 +1,4 @@
-/* $Id: netif.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: netif.h 72979 2018-07-08 14:22:30Z vboxsync $ */
 /** @file
  * Main - Network Interfaces.
  */
@@ -38,6 +38,8 @@
 #if 1
 /**
  * Encapsulation type.
+ * @note Must match HostNetworkInterfaceMediumType_T exactly.
+ * @todo r=bird: Why are we duplicating HostNetworkInterfaceMediumType_T here?!?
  */
 typedef enum NETIFTYPE
 {
@@ -49,6 +51,8 @@ typedef enum NETIFTYPE
 
 /**
  * Current state of the interface.
+ * @note Must match HostNetworkInterfaceStatus_T exactly.
+ * @todo r=bird: Why are we duplicating HostNetworkInterfaceStatus_T here?!?
  */
 typedef enum NETIFSTATUS
 {
