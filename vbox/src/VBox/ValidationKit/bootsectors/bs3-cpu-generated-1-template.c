@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1-template.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1-template.c 76886 2019-01-18 10:57:02Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, C code template.
  */
@@ -4746,6 +4746,7 @@ static bool BS3_NEAR_CODE Bs3Cg1RunSelector(PBS3CG1STATE pThis, PCBS3CG1TESTHDR 
             CASE_PRED(BS3CG1PRED_VENDOR_AMD,   pThis->bCpuVendor == BS3CPUVENDOR_AMD);
             CASE_PRED(BS3CG1PRED_VENDOR_INTEL, pThis->bCpuVendor == BS3CPUVENDOR_INTEL);
             CASE_PRED(BS3CG1PRED_VENDOR_VIA,   pThis->bCpuVendor == BS3CPUVENDOR_VIA);
+            CASE_PRED(BS3CG1PRED_VENDOR_SHANGHAI, pThis->bCpuVendor == BS3CPUVENDOR_SHANGHAI);
 
 #undef CASE_PRED
             default:

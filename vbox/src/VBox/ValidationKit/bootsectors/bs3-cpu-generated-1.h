@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 76579 2019-01-01 06:14:44Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 76886 2019-01-18 10:57:02Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -774,6 +774,7 @@ typedef enum BS3CG1PRED
     BS3CG1PRED_VENDOR_AMD,
     BS3CG1PRED_VENDOR_INTEL,
     BS3CG1PRED_VENDOR_VIA,
+    BS3CG1PRED_VENDOR_SHANGHAI,
 
     BS3CG1PRED_END
 } BS3CG1PRED;

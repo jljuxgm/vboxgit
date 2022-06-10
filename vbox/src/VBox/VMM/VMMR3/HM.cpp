@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 76678 2019-01-07 13:48:16Z vboxsync $ */
+/* $Id: HM.cpp 76886 2019-01-18 10:57:02Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1089,8 +1089,10 @@ static int hmR3InitFinalizeR3(PVM pVM)
 
 #undef HM_REG_COUNTER
 
-        const char *const *papszDesc = ASMIsIntelCpu() || ASMIsViaCentaurCpu() ? &g_apszVmxExitReasons[0]
-                                                                               : &g_apszSvmExitReasons[0];
+        const char *const *papszDesc =
+            ASMIsIntelCpu() || ASMIsViaCentaurCpu() || ASMIsShanghaiCpu()
+            ? &g_apszVmxExitReasons[0]
+            : &g_apszSvmExitReasons[0];
 
         /*
          * Guest Exit reason stats.

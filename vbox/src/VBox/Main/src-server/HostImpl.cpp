@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: HostImpl.cpp 76886 2019-01-18 10:57:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -333,7 +333,8 @@ HRESULT Host::init(VirtualBox *aParent)
 
             /* VT-x? */
             if (   ASMIsIntelCpuEx(uVendorEBX, uVendorECX, uVendorEDX)
-                || ASMIsViaCentaurCpuEx(uVendorEBX, uVendorECX, uVendorEDX))
+                || ASMIsViaCentaurCpuEx(uVendorEBX, uVendorECX, uVendorEDX)
+                || ASMIsShanghaiCpuEx(uVendorEBX, uVendorECX, uVendorEDX))
             {
                 if (    (fFeaturesEcx & X86_CPUID_FEATURE_ECX_VMX)
                      && (fFeaturesEdx & X86_CPUID_FEATURE_EDX_MSR)

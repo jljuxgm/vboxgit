@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: vboxtestvms.py 76886 2019-01-18 10:57:02Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 76886 $"
 
 # Standard Python imports.
 import copy;
@@ -442,6 +442,8 @@ class TestVm(object):
                     fRc = None; # Skip the test.
                 elif self.isViaIncompatible() and oTestDrv.isHostCpuVia():
                     fRc = None; # Skip the test.
+                elif self.isShanghaiIncompatible() and oTestDrv.isHostCpuShanghai():
+                    fRc = None; # Skip the test.
                 elif self.isP4Incompatible() and oTestDrv.isHostCpuP4():
                     fRc = None; # Skip the test.
                 else:
@@ -560,6 +562,15 @@ class TestVm(object):
         if self.aInfo[g_iKind] in ['Solaris11_64']:
             return True;
         return False;
+
+    def isShanghaiIncompatible(self):
+        """
+        Identifies VMs that doesn't work on Shanghai.
+
+        Returns True if NOT supported on Shanghai, False if it IS supported.
+        """
+        # For now treat it just like VIA, to be adjusted later
+        return self.isViaIncompatible()
 
     def isP4Incompatible(self):
         """

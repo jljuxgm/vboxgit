@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-GetCpuVendor.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: bs3-cmn-GetCpuVendor.c 76886 2019-01-18 10:57:02Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3GetCpuVendor
  */
@@ -42,6 +42,8 @@ BS3_CMN_DEF(BS3CPUVENDOR, Bs3GetCpuVendor,(void))
             return BS3CPUVENDOR_AMD;
         if (ASMIsViaCentaurCpuEx(uEbx, uEcx, uEdx))
             return BS3CPUVENDOR_VIA;
+        if (ASMIsShanghaiCpuEx(uEbx, uEcx, uEdx))
+            return BS3CPUVENDOR_SHANGHAI;
         return BS3CPUVENDOR_UNKNOWN;
     }
     return BS3CPUVENDOR_INTEL;

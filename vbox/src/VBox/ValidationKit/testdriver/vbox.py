@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: vbox.py 76886 2019-01-18 10:57:02Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 76886 $"
 
 
 # Standard Python imports.
@@ -3095,6 +3095,15 @@ class TestDriver(base.TestDriver):                                              
         """
         sCpuDesc = self._getHostCpuDesc(fQuiet);
         return sCpuDesc.startswith("VIA") or sCpuDesc == 'CentaurHauls';
+
+    def isHostCpuShanghai(self, fQuiet = False):
+        """
+        Checks if the host CPU vendor is Shanghai (or Zhaoxin).
+
+        Returns True / False.
+        """
+        sCpuDesc = self._getHostCpuDesc(fQuiet);
+        return sCpuDesc.startswith("ZHAOXIN") or sCpuDesc.strip(' ') == 'Shanghai';
 
     def isHostCpuP4(self, fQuiet = False):
         """

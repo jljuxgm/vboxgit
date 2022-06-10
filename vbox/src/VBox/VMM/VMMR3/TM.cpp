@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: TM.cpp 76886 2019-01-18 10:57:02Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -955,6 +955,20 @@ static bool tmR3HasFixedTSC(PVM pVM)
                 && uStepping >= 0x0c
                 && uStepping <= 0x0f)
                 return true;
+        }
+        else if (CPUMGetHostCpuVendor(pVM) == CPUMCPUVENDOR_SHANGHAI)
+        {
+            /*
+             * Shanghai - Check the model, family and stepping.
+             */
+            /** @todo use ASMGetCpuFamily() and ASMGetCpuModel() here. */
+            ASMCpuId(1, &uEAX, &uEBX, &uECX, &uEDX);
+            unsigned uFamily   = (uEAX >> 8) & 0x0f;
+            if (   uFamily == 0x06
+                || uFamily == 0x07)
+            {
+                return true;
+            }
         }
     }
     return false;

@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 76678 2019-01-07 13:48:16Z vboxsync $ */
+/* $Id: CPUMR0.cpp 76886 2019-01-18 10:57:02Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -783,7 +783,8 @@ static DECLCALLBACK(void) cpumR0MapLocalApicCpuProber(RTCPUID idCpu, void *pvUse
     ASMCpuId(0, &uMaxLeaf, &u32EBX, &u32ECX, &u32EDX);
     if (   (   ASMIsIntelCpuEx(u32EBX, u32ECX, u32EDX)
             || ASMIsAmdCpuEx(u32EBX, u32ECX, u32EDX)
-            || ASMIsViaCentaurCpuEx(u32EBX, u32ECX, u32EDX))
+            || ASMIsViaCentaurCpuEx(u32EBX, u32ECX, u32EDX)
+            || ASMIsShanghaiCpuEx(u32EBX, u32ECX, u32EDX))
         && ASMIsValidStdRange(uMaxLeaf))
     {
         uint32_t uDummy;
