@@ -1,4 +1,4 @@
-/* $Id: NetIf-freebsd.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: NetIf-freebsd.cpp 77104 2019-02-01 10:28:51Z vboxsync $ */
 /** @file
  * Main - NetIfList, FreeBSD implementation.
  */
@@ -32,6 +32,7 @@
 #include <sys/sockio.h>
 #include <net/if.h>
 #include <net/if_types.h>
+#include <net80211/ieee80211_ioctl.h>
 
 #include <net/route.h>
 /*
@@ -311,7 +312,7 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
             else
                 enmType = HostNetworkInterfaceType_HostOnly;
 
-            pNew->wireless = isWireless(pNew->szName);
+            pNew->fWireless = isWireless(pNew->szName);
 
             ComObjPtr<HostNetworkInterface> IfObj;
             IfObj.createObject();
