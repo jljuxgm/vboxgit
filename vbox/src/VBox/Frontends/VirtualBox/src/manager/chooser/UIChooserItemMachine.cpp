@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 77567 2019-03-05 17:18:31Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 77596 2019-03-07 13:24:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -86,11 +86,6 @@ UIChooserItemMachine::UIChooserItemMachine(UIChooserItem *pParent,
 UIChooserItemMachine::~UIChooserItemMachine()
 {
     cleanup();
-}
-
-QString UIChooserItemMachine::name() const
-{
-    return UIVirtualMachineItem::name();
 }
 
 bool UIChooserItemMachine::isLockedMachine() const
@@ -223,19 +218,9 @@ void UIChooserItemMachine::paint(QPainter *pPainter, const QStyleOptionGraphicsI
     paintMachineInfo(pPainter, rectangle);
 }
 
-void UIChooserItemMachine::startEditing()
+QString UIChooserItemMachine::name() const
 {
-    AssertMsgFailed(("Machine graphics item do NOT support editing yet!"));
-}
-
-void UIChooserItemMachine::updateToolTip()
-{
-    setToolTip(toolTipText());
-}
-
-QString UIChooserItemMachine::description() const
-{
-    return m_strDescription;
+    return UIVirtualMachineItem::name();
 }
 
 QString UIChooserItemMachine::fullName() const
@@ -249,30 +234,24 @@ QString UIChooserItemMachine::fullName() const
     return strFullParentName + name();
 }
 
+QString UIChooserItemMachine::description() const
+{
+    return m_strDescription;
+}
+
 QString UIChooserItemMachine::definition() const
 {
     return QString("m=%1").arg(name());
 }
 
-void UIChooserItemMachine::addItem(UIChooserItem*, bool, int)
+void UIChooserItemMachine::startEditing()
 {
-    AssertMsgFailed(("Machine graphics item do NOT support children!"));
+    AssertMsgFailed(("Machine graphics item do NOT support editing yet!"));
 }
 
-void UIChooserItemMachine::removeItem(UIChooserItem*)
+void UIChooserItemMachine::updateToolTip()
 {
-    AssertMsgFailed(("Machine graphics item do NOT support children!"));
-}
-
-void UIChooserItemMachine::setItems(const QList<UIChooserItem*>&, UIChooserItemType)
-{
-    AssertMsgFailed(("Machine graphics item do NOT support children!"));
-}
-
-QList<UIChooserItem*> UIChooserItemMachine::items(UIChooserItemType) const
-{
-    AssertMsgFailed(("Machine graphics item do NOT support children!"));
-    return QList<UIChooserItem*>();
+    setToolTip(toolTipText());
 }
 
 bool UIChooserItemMachine::hasItems(UIChooserItemType) const
@@ -281,7 +260,28 @@ bool UIChooserItemMachine::hasItems(UIChooserItemType) const
     return false;
 }
 
+QList<UIChooserItem*> UIChooserItemMachine::items(UIChooserItemType) const
+{
+    AssertMsgFailed(("Machine graphics item do NOT support children!"));
+    return QList<UIChooserItem*>();
+}
+
+void UIChooserItemMachine::setItems(const QList<UIChooserItem*>&, UIChooserItemType)
+{
+    AssertMsgFailed(("Machine graphics item do NOT support children!"));
+}
+
 void UIChooserItemMachine::clearItems(UIChooserItemType)
+{
+    AssertMsgFailed(("Machine graphics item do NOT support children!"));
+}
+
+void UIChooserItemMachine::addItem(UIChooserItem*, bool, int)
+{
+    AssertMsgFailed(("Machine graphics item do NOT support children!"));
+}
+
+void UIChooserItemMachine::removeItem(UIChooserItem*)
 {
     AssertMsgFailed(("Machine graphics item do NOT support children!"));
 }

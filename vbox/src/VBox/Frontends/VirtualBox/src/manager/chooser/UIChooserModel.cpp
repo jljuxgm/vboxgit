@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77430 2019-02-22 13:24:07Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77596 2019-03-07 13:24:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1016,7 +1016,7 @@ void UIChooserModel::sltPerformRefreshAction()
         if (pItem->accessible())
         {
             /* Machine name: */
-            QString strMachineName = pItem->name();
+            QString strMachineName = ((UIChooserItem*)pItem)->name();
             /* We should reload this machine: */
             sltReloadMachine(pItem->id());
             /* Select first of reloaded items: */
