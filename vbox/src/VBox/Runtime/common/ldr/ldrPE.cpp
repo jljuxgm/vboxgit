@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 73758 2018-08-19 13:40:03Z vboxsync $ */
+/* $Id: ldrPE.cpp 74452 2018-09-25 10:16:07Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -4190,7 +4190,7 @@ static int rtldrPEValidateDirectoriesAndRememberStuff(PRTLDRMODPE pModPe, const 
     union /* combine stuff we're reading to help reduce stack usage. */
     {
         IMAGE_LOAD_CONFIG_DIRECTORY64   Cfg64;
-        uint8_t                         abZeros[sizeof(IMAGE_LOAD_CONFIG_DIRECTORY64_V7) * 4];
+        uint8_t                         abZeros[sizeof(IMAGE_LOAD_CONFIG_DIRECTORY64) * 4];
     } u;
 
     /*
@@ -4256,10 +4256,10 @@ static int rtldrPEValidateDirectoriesAndRememberStuff(PRTLDRMODPE pModPe, const 
         /*
          * Read, check new stuff and convert to 64-bit.
          *
-         * If we accepted a newer structure, we check whether the new bits are
-         * all zero.  This PRAYING/ASSUMING that the nothing new weird stuff is
-         * activated by a zero value and that it'll mostly be unused in areas
-         * we care about (which has been the case till now).
+         * If we accepted a newer structures when loading for debug or validation,
+         * otherwise we require the new bits to be all zero and hope that they are
+         * insignificant where image loading is concerned (that's mostly been the
+         * case even for non-zero bits, only hard exception is LockPrefixTable).
          */
         RT_ZERO(u.Cfg64);
         int rc = rtldrPEReadRVA(pModPe, &u.Cfg64, Dir.Size, Dir.VirtualAddress);
@@ -4267,6 +4267,7 @@ static int rtldrPEValidateDirectoriesAndRememberStuff(PRTLDRMODPE pModPe, const 
             return rc;
         if (   fNewerStructureHack
             && Dir.Size > cbMaxKnown
+            && !(fFlags & (RTLDR_O_FOR_DEBUG | RTLDR_O_FOR_VALIDATION))
             && !ASMMemIsZero(&u.abZeros[cbMaxKnown], Dir.Size - cbMaxKnown))
         {
             Log(("rtldrPEOpen: %s: load cfg dir: Unexpected bytes are non-zero (%u bytes of which %u expected to be zero): %.*Rhxs\n",
