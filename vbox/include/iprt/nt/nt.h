@@ -1,4 +1,4 @@
-/* $Id: nt.h 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: nt.h 75878 2018-12-02 18:32:02Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2065,6 +2065,15 @@ NTSYSAPI NTSTATUS NTAPI NtResumeProcess(HANDLE);
 /** @} */
 NTSYSAPI NTSTATUS NTAPI NtSetInformationProcess(HANDLE, PROCESSINFOCLASS, PVOID, ULONG);
 NTSYSAPI NTSTATUS NTAPI NtTerminateProcess(HANDLE, LONG);
+
+/** Returned by NtQUerySection with SectionBasicInformation. */
+typedef struct _SECTION_BASIC_INFORMATION
+{
+    PVOID            BaseAddress;
+    ULONG            AllocationAttributes;
+    LARGE_INTEGER    MaximumSize;
+} SECTION_BASIC_INFORMATION;
+typedef SECTION_BASIC_INFORMATION *PSECTION_BASIC_INFORMATION;
 
 /** Retured by ProcessImageInformation as well as NtQuerySection. */
 typedef struct _SECTION_IMAGE_INFORMATION
