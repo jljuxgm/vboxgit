@@ -1,4 +1,4 @@
-/* $Id: VBoxVideo.h 73103 2018-07-12 23:41:41Z vboxsync $ */
+/* $Id: VBoxVideo.h 74622 2018-10-05 06:25:19Z vboxsync $ */
 /** @file
  * VirtualBox Video interface.
  */
@@ -909,6 +909,8 @@ typedef struct VBVABUFFER
 #define VBVA_INFO_HEAP    4
 #define VBVA_FLUSH        5
 #define VBVA_INFO_SCREEN  6
+/** Enables or disables VBVA.  Enabling VBVA without disabling it before
+ * causes a complete screen update. */
 #define VBVA_ENABLE       7
 #define VBVA_MOUSE_POINTER_SHAPE 8
 #ifdef VBOX_WITH_VIDEOHWACCEL
