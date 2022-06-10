@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 76451 2018-12-25 01:40:08Z vboxsync $ */
+/* $Id: scmstream.cpp 76506 2018-12-30 03:41:21Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -240,6 +240,16 @@ void ScmStreamRewindForWriting(PSCMSTREAM pStream)
     pStream->fWriteOrRead   = true;
     pStream->fFullyLineated = true;
     pStream->rc             = VINF_SUCCESS;
+
+    /* Initialize the first line with a zero length so ScmStreamWrite won't misbehave. */
+    if (pStream->cLinesAllocated == 0)
+        scmStreamGrowLines(pStream, 1);
+    if (pStream->cLinesAllocated > 0)
+    {
+        pStream->paLines[0].off    = 0;
+        pStream->paLines[0].cch    = 0;
+        pStream->paLines[0].enmEol = SCMEOL_NONE;
+    }
 }
 
 /**
