@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 72930 2018-07-06 11:10:59Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 72935 2018-07-06 12:23:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -165,15 +165,8 @@ QString UIWizardExportApp::uri(bool fWithFile) const
         }
         case CloudProvider:
         {
-            QString strUri("OCI://");
-            if (!field("username").toString().isEmpty())
-                strUri = QString("%1%2").arg(strUri).arg(field("username").toString());
-            if (!field("password").toString().isEmpty())
-                strUri = QString("%1:%2").arg(strUri).arg(field("password").toString());
-            if (!field("username").toString().isEmpty() || !field("password").toString().isEmpty())
-                strUri = QString("%1@").arg(strUri);
-            strUri = QString("%1%2/%3/%4").arg(strUri).arg(field("hostname").toString()).arg(field("bucket").toString()).arg(strPath);
-            return strUri;
+            const QString strUri("OCI://");
+            return QString("%1%2").arg(strUri).arg(strPath);
         }
     }
 
