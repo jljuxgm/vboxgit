@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 73756 2018-08-18 05:13:26Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 73885 2018-08-25 04:00:00Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -84,8 +84,16 @@ static const char * const g_apszVmxInstrDiagDesc[kVmxVInstrDiag_Last] =
     /* VMPTRST. */
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmptrst_Cpl         , "Cpl"          ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmptrst_PtrMap      , "PtrMap"       ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmptrst_Success     , "Success"      ),
     /* VMCLEAR. */
-    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmclear_Cpl         , "Cpl"          )
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmclear_Cpl         , "Cpl"          ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmclear_PtrAbnormal , "PtrAbnormal"  ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmclear_PtrAlign    , "PtrAlign"     ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmclear_PtrMap      , "PtrMap"       ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmclear_PtrReadPhys , "PtrReadPhys"  ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmclear_PtrVmxon    , "PtrVmxon"     ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmclear_PtrWidth    , "PtrWidth"     ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmclear_Success     , "Success"      )
     /* kVmxVInstrDiag_Last */
 };
 #undef VMX_INSTR_DIAG_DESC
