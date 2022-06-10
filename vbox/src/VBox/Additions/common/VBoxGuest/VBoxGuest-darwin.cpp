@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-darwin.cpp 75777 2018-11-27 22:19:04Z vboxsync $ */
+/* $Id: VBoxGuest-darwin.cpp 75780 2018-11-27 22:52:01Z vboxsync $ */
 /** @file
  * VBoxGuest - Darwin Specifics.
  */
@@ -442,7 +442,7 @@ static int vgdrvDarwinOpen(dev_t Dev, int fFlags, int fDevType, struct proc *pPr
                     pSession->fRequestor |= VMMDEV_REQUESTOR_GRP_WHEEL;
                 if (!fUnrestricted)
                     pSession->fRequestor |= VMMDEV_REQUESTOR_USER_DEVICE;
-                fRequestor |= VMMDEV_REQUESTOR_CON_DONT_KNOW; /** @todo see if we can figure out console relationship of pProc. */
+                pSession->fRequestor |= VMMDEV_REQUESTOR_CON_DONT_KNOW; /** @todo see if we can figure out console relationship of pProc. */
             }
             else
                 rc = VERR_ALREADY_LOADED;
