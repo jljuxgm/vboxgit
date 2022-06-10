@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientResponseBase.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
+/* $Id: RTCRestClientResponseBase.cpp 73995 2018-08-31 10:39:08Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientResponseBase implementation.
  */
@@ -64,8 +64,8 @@ RTCRestClientResponseBase::RTCRestClientResponseBase(RTCRestClientResponseBase c
     , m_pErrInfo(NULL)
     , m_strContentType(a_rThat.m_strContentType)
 {
-    if (m_pErrInfo)
-        copyErrInfo(m_pErrInfo);
+    if (a_rThat.m_pErrInfo)
+        copyErrInfo(a_rThat.m_pErrInfo);
 }
 
 
