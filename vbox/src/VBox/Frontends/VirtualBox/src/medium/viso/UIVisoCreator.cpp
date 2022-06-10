@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 77395 2019-02-20 17:46:15Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 77396 2019-02-20 17:50:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -570,7 +570,7 @@ void UIVisoCreator::saveSettings() const
 #ifdef VBOX_WS_MAC
     /* darwinIsWindowMaximized expects a non-const QWidget*. thus const_cast: */
     QWidget *pw = const_cast<QWidget*>(qobject_cast<const QWidget*>(this));
-    gEDataManager->setVisoCreatorDialogGeometry(saveGeometry, ::darwinIsWindowMaximized(pw));
+    gEDataManager->setVISOCreatorDialogGeometry(saveGeometry, ::darwinIsWindowMaximized(pw));
 #else /* !VBOX_WS_MAC */
     gEDataManager->setVISOCreatorDialogGeometry(saveGeometry, isMaximized());
 #endif /* !VBOX_WS_MAC */
