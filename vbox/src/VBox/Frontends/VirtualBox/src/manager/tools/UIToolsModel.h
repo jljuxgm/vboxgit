@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 74830 2018-10-13 03:03:31Z vboxsync $ */
+/* $Id: UIToolsModel.h 74975 2018-10-22 16:56:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -100,6 +100,9 @@ public:
         void setToolsClass(UIToolsClass enmClass);
         /** Returns current tools class. */
         UIToolsClass toolsClass() const;
+
+        /** Defines current tools @a enmType. */
+        void setToolsType(UIToolsType enmType);
         /** Returns current tools type. */
         UIToolsType toolsType() const;
 

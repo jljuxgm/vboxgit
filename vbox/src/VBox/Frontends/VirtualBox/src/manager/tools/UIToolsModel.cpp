@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 74925 2018-10-18 15:29:40Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 74975 2018-10-22 16:56:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -133,6 +133,20 @@ void UIToolsModel::setToolsClass(UIToolsClass enmClass)
 UIToolsClass UIToolsModel::toolsClass() const
 {
     return m_enmCurrentClass;
+}
+
+void UIToolsModel::setToolsType(UIToolsType enmType)
+{
+    /* Update linked values: */
+    if (currentItem()->itemType() != enmType)
+    {
+        foreach (UIToolsItem *pItem, items())
+            if (pItem->itemType() == enmType)
+            {
+                setCurrentItem(pItem);
+                break;
+            }
+    }
 }
 
 UIToolsType UIToolsModel::toolsType() const

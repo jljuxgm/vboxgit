@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74958 2018-10-21 12:26:57Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74975 2018-10-22 16:56:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -103,6 +103,16 @@ bool UIVirtualBoxManagerWidget::isSingleGroupSelected() const
     return m_pPaneChooser->isSingleGroupSelected();
 }
 
+void UIVirtualBoxManagerWidget::setToolsType(UIToolsType enmType)
+{
+    m_pPaneTools->setToolsType(enmType);
+}
+
+UIToolsType UIVirtualBoxManagerWidget::toolsType() const
+{
+    return m_pPaneTools->toolsType();
+}
+
 ToolTypeMachine UIVirtualBoxManagerWidget::currentMachineTool() const
 {
     return m_pPaneToolsMachine->currentTool();
@@ -156,6 +166,16 @@ void UIVirtualBoxManagerWidget::switchToTool(ToolTypeGlobal enmType)
 
     /* Update toolbar: */
     updateToolbar();
+}
+
+void UIVirtualBoxManagerWidget::closeTool(ToolTypeMachine enmType)
+{
+    m_pPaneToolsMachine->closeTool(enmType);
+}
+
+void UIVirtualBoxManagerWidget::closeTool(ToolTypeGlobal enmType)
+{
+    m_pPaneToolsGlobal->closeTool(enmType);
 }
 
 void UIVirtualBoxManagerWidget::sltHandleContextMenuRequest(const QPoint &position)

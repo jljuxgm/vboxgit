@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 74950 2018-10-19 16:41:15Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 74975 2018-10-22 16:56:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -139,9 +139,6 @@ private slots:
         /** Handles call to close Cloud Profile Manager window. */
         void sltCloseCloudProfileManagerWindow();
 
-        /** Handles call to close a Machine LogViewer window. */
-        void sltCloseLogViewerWindow();
-
         /** Handles call to open Import Appliance wizard.
           * @param strFileName can bring the name of file to import appliance from. */
         void sltOpenImportApplianceWizard(const QString &strFileName = QString());
@@ -213,8 +210,10 @@ private slots:
         /** Handles call to power machine off. */
         void sltPerformPowerOffMachine();
 
-        /** Handles call to open machine Log dialog. */
-        void sltOpenMachineLogDialog();
+        /** Handles call to open machine Log Viewer window. */
+        void sltOpenLogViewerWindow();
+        /** Handles call to close machine Log Viewer window. */
+        void sltCloseLogViewerWindow();
 
         /** Handles call to show machine in File Manager. */
         void sltShowMachineInFileManager();
