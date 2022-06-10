@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.h 71922 2018-04-19 13:14:59Z vboxsync $ */
+/* $Id: UIMediumSizeEditor.h 76199 2018-12-13 09:08:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class declaration.
  */
@@ -63,6 +63,7 @@ private slots:
     void sltSizeSliderChanged(int iValue);
     /** Handles size editor change. */
     void sltSizeEditorChanged(const QString &strValue);
+    void sltSizeEditorEditingFinished();
 
 private:
 
@@ -79,7 +80,11 @@ private:
     static qulonglong sliderToSizeMB(int uValue, int iSliderScale);
     /** Updates slider/editor tool-tips. */
     void updateSizeToolTips(qulonglong uSize);
+    /** Checks if the uSize is divisible by m_uSectorSize */
+    qulonglong checkSectorSizeAlignment(qulonglong uSize);
 
+    /* Holds the block size. We force m_uSize to be multiple of this number. */
+    static const qulonglong m_uSectorSize;
     /** Holds the minimum medium size. */
     const qulonglong  m_uSizeMin;
     /** Holds the maximum medium size. */
