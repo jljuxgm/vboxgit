@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 76221 2018-12-13 20:04:33Z vboxsync $ */
+/* $Id: extvfs.cpp 76256 2018-12-16 20:36:28Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -125,14 +125,14 @@ static int rtFsExtLoadBlkGrpDesc(PRTFSEXTVOL pThis, uint32_t iBlkGrp)
             return VERR_NO_MEMORY;
     }
 
-    uint64_t           offRead = (pThis->iSbBlock + 1) * pThis->cbBlock;
-    EXTBLOCKGROUPDESC  BlkDesc;
+    uint64_t            offRead = (pThis->iSbBlock + 1) * pThis->cbBlock;
+    EXTBLOCKGROUPDESC32 BlkDesc;
     int rc = RTVfsFileReadAt(pThis->hVfsBacking, offRead, &BlkDesc, sizeof(BlkDesc), NULL);
     if (RT_SUCCESS(rc))
     {
         pBlkGrpDesc->offStart = pThis->iSbBlock + (uint64_t)iBlkGrp * pThis->cBlocksPerGroup * pThis->cbBlock;
         pBlkGrpDesc->offLast  = pBlkGrpDesc->offStart + pThis->cBlocksPerGroup * pThis->cbBlock;
-        rc = RTVfsFileReadAt(pThis->hVfsBacking, BlkDesc.offBlockBitmap * pThis->cbBlock,
+        rc = RTVfsFileReadAt(pThis->hVfsBacking, BlkDesc.offBlockBitmapLow * pThis->cbBlock,
                              &pBlkGrpDesc->abBlockBitmap[0], cbBlockBitmap, NULL);
     }
 
@@ -278,14 +278,14 @@ RTDECL(int) RTFsExtVolOpen(RTVFSFILE hVfsFileIn, uint32_t fMntFlags, uint32_t fE
 #if defined(RT_BIGENDIAN)
             /** @todo Convert to host endianess. */
 #endif
-            if (SuperBlock.u16FilesystemState == EXT_STATE_ERRORS)
+            if (SuperBlock.u16FilesystemState == EXT_SB_STATE_ERRORS)
                 rc = RTERRINFO_LOG_SET(pErrInfo, VERR_FILESYSTEM_CORRUPT, "EXT_STATE_ERRORS");
             else
             {
                 pThis->iSbBlock = SuperBlock.iBlockOfSuperblock;
-                pThis->cbBlock = 1024 << SuperBlock.cBitsShiftLeftBlockSize;
+                pThis->cbBlock = 1024 << SuperBlock.cLogBlockSize;
                 pThis->cBlocksPerGroup = SuperBlock.cBlocksPerGroup;
-                pThis->cBlockGroups = SuperBlock.cBlocksTotal / pThis->cBlocksPerGroup;
+                pThis->cBlockGroups = SuperBlock.cBlocksTotalLow / pThis->cBlocksPerGroup;
 
                 /* Load first block group descriptor. */
                 rc = rtFsExtLoadBlkGrpDesc(pThis, 0);
