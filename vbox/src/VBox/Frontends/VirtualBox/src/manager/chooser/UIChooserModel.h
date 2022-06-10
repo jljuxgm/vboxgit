@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 77604 2019-03-07 15:50:55Z vboxsync $ */
+/* $Id: UIChooserModel.h 77605 2019-03-07 16:47:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -472,9 +472,6 @@ private:
         QTimer  *m_pLookupTimer;
         /** Holds the item lookup string. */
         QString  m_strLookupString;
-
-        /** Holds the Id of last VM created from the GUI side. */
-        QUuid  m_uLastCreatedMachineId;
     /** @} */
 
     /** @name Group saving stuff.
