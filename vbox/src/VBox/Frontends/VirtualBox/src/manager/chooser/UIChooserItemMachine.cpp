@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 76932 2019-01-22 11:23:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -1287,7 +1287,8 @@ void UIChooserItemMachine::paintMachineInfo(QPainter *pPainter, const QRect &rec
     int iRightColumnIndent = iFullWidth - iMargin - 1 - m_toolsPixmap.width() / m_toolsPixmap.devicePixelRatio();
 
     /* Paint right column: */
-    if (model()->currentItem() == this)
+    if (   model()->currentItem() == this
+        || isHovered())
     {
         /* Prepare variables: */
         int iToolsPixmapX = iRightColumnIndent;

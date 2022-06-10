@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 76867 2019-01-17 15:53:20Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 76932 2019-01-22 11:23:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -776,7 +776,8 @@ void UIChooserItemGlobal::paintGlobalInfo(QPainter *pPainter, const QRect &recta
     int iRightColumnIndent = iFullWidth - iMargin - 1 - m_toolsPixmap.width() / m_toolsPixmap.devicePixelRatio();
 
     /* Paint right column: */
-    if (model()->currentItem() == this)
+    if (   model()->currentItem() == this
+        || isHovered())
     {
         /* Prepare variables: */
         int iToolsPixmapX = iRightColumnIndent;

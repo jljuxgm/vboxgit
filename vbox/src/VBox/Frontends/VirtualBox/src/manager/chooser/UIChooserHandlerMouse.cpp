@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerMouse.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIChooserHandlerMouse.cpp 76932 2019-01-22 11:23:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerMouse class implementation.
  */
@@ -71,8 +71,14 @@ bool UIChooserHandlerMouse::handleMousePress(QGraphicsSceneMouseEvent *pEvent) c
                 else if (UIChooserItemGlobal *pGlobalItem = qgraphicsitem_cast<UIChooserItemGlobal*>(pItemUnderMouse))
                 {
                     const QPoint itemCursorPos = pGlobalItem->mapFromScene(scenePos).toPoint();
-                    if (model()->currentItem() == pGlobalItem && pGlobalItem->isToolsButtonArea(itemCursorPos))
+                    if (   pGlobalItem->isToolsButtonArea(itemCursorPos)
+                        && (   model()->currentItem() == pGlobalItem
+                            || pGlobalItem->isHovered()))
+                    {
                         model()->handleToolButtonClick(pGlobalItem);
+                        if (model()->currentItem() != pGlobalItem)
+                            pClickedItem = pGlobalItem;
+                    }
                     else
                         pClickedItem = pGlobalItem;
                 }
@@ -80,8 +86,14 @@ bool UIChooserHandlerMouse::handleMousePress(QGraphicsSceneMouseEvent *pEvent) c
                 else if (UIChooserItemMachine *pMachineItem = qgraphicsitem_cast<UIChooserItemMachine*>(pItemUnderMouse))
                 {
                     const QPoint itemCursorPos = pMachineItem->mapFromScene(scenePos).toPoint();
-                    if (model()->currentItem() == pMachineItem && pMachineItem->isToolsButtonArea(itemCursorPos))
+                    if (   pMachineItem->isToolsButtonArea(itemCursorPos)
+                        && (   model()->currentItem() == pMachineItem
+                            || pMachineItem->isHovered()))
+                    {
                         model()->handleToolButtonClick(pMachineItem);
+                        if (model()->currentItem() != pMachineItem)
+                            pClickedItem = pMachineItem;
+                    }
                     else
                         pClickedItem = pMachineItem;
                 }
