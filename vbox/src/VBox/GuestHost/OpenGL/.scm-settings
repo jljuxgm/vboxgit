@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69393 2017-10-26 17:25:32Z vboxsync $
+# $Id: .scm-settings 76541 2018-12-30 06:28:48Z vboxsync $
 ## @file
 # Source code massager settings for the OpenGL guest/host code.
 #
@@ -16,7 +16,7 @@
 #
 
 # The basic config here is external copyright, however there are lots of exceptions
-/*.h:                                      --external-copyright --no-convert-tabs --no-strip-trailing-blanks
+/*.h:                                      --external-copyright --no-convert-tabs --no-strip-trailing-blanks --no-fix-header-guards
 /include/cr_blitter.h:                     --no-external-copyright --convert-tabs --strip-trailing-blanks
 /include/cr_compositor.h:                  --no-external-copyright --convert-tabs --strip-trailing-blanks
 /include/cr_dump.h:                        --no-external-copyright --convert-tabs --strip-trailing-blanks
