@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDebugVM.cpp 73506 2018-08-05 14:01:26Z vboxsync $ */
+/* $Id: VBoxManageDebugVM.cpp 76433 2018-12-23 22:55:39Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the debugvm command.
  */
@@ -29,7 +29,6 @@
 
 #include <VBox/types.h>
 #include <iprt/ctype.h>
-#include <VBox/err.h>
 #include <iprt/getopt.h>
 #include <iprt/path.h>
 #include <iprt/param.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 76433 2018-12-23 22:55:39Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -29,7 +29,6 @@
 
 #include <iprt/cidr.h>
 #include <iprt/ctype.h>
-#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/param.h>
 #include <iprt/path.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 69706 2017-11-16 00:33:28Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 76433 2018-12-23 22:55:39Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -34,7 +34,6 @@
 
 #include <VBox/vd.h>
 #include <VBox/sup.h>
-#include <VBox/err.h>
 #include <VBox/log.h>
 
 #include <iprt/ctype.h>

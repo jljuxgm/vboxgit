@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 76433 2018-12-23 22:55:39Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -28,7 +28,6 @@
 #include <VBox/com/VirtualBox.h>
 
 #include <iprt/ctype.h>
-#include <VBox/err.h>
 #include <iprt/getopt.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 76366 2018-12-22 02:16:26Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 76433 2018-12-23 22:55:39Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -31,7 +31,6 @@
 #include <VBox/com/VirtualBox.h>
 
 #include <VBox/log.h>
-#include <iprt/err.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
 #include <iprt/time.h>
