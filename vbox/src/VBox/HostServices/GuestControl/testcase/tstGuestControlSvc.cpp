@@ -1,4 +1,4 @@
-/* $Id: tstGuestControlSvc.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstGuestControlSvc.cpp 76958 2019-01-23 18:23:04Z vboxsync $ */
 /** @file
  * Testcase for the guest control service.
  */
@@ -178,15 +178,15 @@ static int testHost(const VBOXHGCMSVCFNTABLE *pTable)
 #endif
 
         /** Client connected, invalid parameters given. */
-        { HOST_EXEC_CMD, 1024, 0, true, VERR_INVALID_POINTER },
-        { HOST_EXEC_CMD, 1, 0, true, VERR_INVALID_POINTER },
-        { HOST_EXEC_CMD, -1, 0, true, VERR_INVALID_POINTER },
+        { HOST_MSG_EXEC_CMD, 1024, 0, true, VERR_INVALID_POINTER },
+        { HOST_MSG_EXEC_CMD, 1, 0, true, VERR_INVALID_POINTER },
+        { HOST_MSG_EXEC_CMD, -1, 0, true, VERR_INVALID_POINTER },
 
         /** Client connected, parameters given. */
-        { HOST_CANCEL_PENDING_WAITS, 1, &aParms[0], true, VINF_SUCCESS },
-        { HOST_EXEC_CMD, 1, &aParms[0], true, VINF_SUCCESS },
-        { HOST_EXEC_SET_INPUT, 1, &aParms[0], true, VINF_SUCCESS },
-        { HOST_EXEC_GET_OUTPUT, 1, &aParms[0], true, VINF_SUCCESS },
+        { HOST_MSG_CANCEL_PENDING_WAITS, 1, &aParms[0], true, VINF_SUCCESS },
+        { HOST_MSG_EXEC_CMD, 1, &aParms[0], true, VINF_SUCCESS },
+        { HOST_MSG_EXEC_SET_INPUT, 1, &aParms[0], true, VINF_SUCCESS },
+        { HOST_MSG_EXEC_GET_OUTPUT, 1, &aParms[0], true, VINF_SUCCESS },
 
         /** Client connected, unknown command + valid parameters given. */
         { -1, 1, &aParms[0], true, VINF_SUCCESS }
@@ -220,7 +220,7 @@ static int testClient(const VBOXHGCMSVCFNTABLE *pTable)
         HGCMSvcSetStr(&aParmsHost[1], "foo.bar");
         HGCMSvcSetStr(&aParmsHost[2], "baz");
 
-        rc = pTable->pfnHostCall(pTable->pvService, HOST_EXEC_CMD, 3, &aParmsHost[0]);
+        rc = pTable->pfnHostCall(pTable->pvService, HOST_MSG_EXEC_CMD, 3, &aParmsHost[0]);
         RTTEST_CHECK_RC_RET(g_hTest, rc, VINF_SUCCESS, rc);
 
         /* Client: Disconnect again. */

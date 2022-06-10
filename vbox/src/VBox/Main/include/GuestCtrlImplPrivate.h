@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 76958 2019-01-23 18:23:04Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1178,7 +1178,7 @@ protected:
 
     int bindToSession(Console *pConsole, GuestSession *pSession, uint32_t uObjectID);
     int registerWaitEvent(const GuestEventTypes &lstEvents, GuestWaitEvent **ppEvent);
-    int sendCommand(uint32_t uFunction, uint32_t cParms, PVBOXHGCMSVCPARM paParms);
+    int sendMessage(uint32_t uFunction, uint32_t cParms, PVBOXHGCMSVCPARM paParms);
 
 protected:
 
