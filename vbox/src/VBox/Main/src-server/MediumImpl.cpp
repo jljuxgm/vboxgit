@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 72948 2018-07-07 16:20:42Z vboxsync $ */
+/* $Id: MediumImpl.cpp 72957 2018-07-07 19:12:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -6548,6 +6548,7 @@ const Utf8Str& Medium::i_getKeyId()
  *          acquire the medium lock for writing and others (VirtualBox).
  *
  * @returns COM status code.
+ * @param   fWriteable              Flag whether the medium should be opened for writing.
  * @param   pKeyStore               Keystore containing the KeyId+password for
  *                                  an encrypted medium.
  * @param   ppHdd                   Where to return the pointer to the VDISK on

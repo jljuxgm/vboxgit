@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 72948 2018-07-07 16:20:42Z vboxsync $ */
+/* $Id: MediumImpl.h 72957 2018-07-07 19:12:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -227,7 +227,7 @@ public:
     const Utf8Str& i_getKeyId();
 
     HRESULT i_openHddForIO(bool fWritable, SecretKeyStore *pKeyStore, PVDISK *ppHdd, MediumLockList *pMediumLockList,
-                           struct MediumCryptoFilterSettings *pCryptoSettingsRead);
+                           struct MediumCryptoFilterSettings *pCryptoSettings);
 
 private:
 
