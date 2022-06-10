@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 76841 2019-01-16 16:22:17Z vboxsync $ */
+/* $Id: DevSB16.cpp 76847 2019-01-17 11:08:49Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1967,6 +1967,9 @@ static int sb16CreateDrvStream(PSB16STATE pThis, PPDMAUDIOSTREAMCFG pCfg, PSB16D
     LogFunc(("[LUN#%RU8] %s\n", pDrv->uLUN, pCfgHost->szName));
 
     AssertMsg(pDrv->Out.pStream == NULL, ("[LUN#%RU8] Driver stream already present when it must not\n", pDrv->uLUN));
+
+    /* Disable pre-buffering for SB16; not needed for that bit of data. */
+    pCfgHost->Backend.cfPreBuf = 0;
 
     int rc = pDrv->pConnector->pfnStreamCreate(pDrv->pConnector, pCfgHost, pCfg /* pCfgGuest */, &pDrv->Out.pStream);
     if (RT_SUCCESS(rc))
