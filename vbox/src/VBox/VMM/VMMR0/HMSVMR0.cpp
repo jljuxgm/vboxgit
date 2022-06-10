@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72964 2018-07-08 05:57:32Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72965 2018-07-08 05:59:20Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -35,9 +35,6 @@
 #include <VBox/vmm/vm.h>
 #include "HMSVMR0.h"
 #include "dtrace/VBoxVMM.h"
-
-/* Temporarily enable full guest state sync for diagnosing nested SVM breakage. */
-#define HMSVM_SYNC_FULL_GUEST_STATE
 
 #ifdef DEBUG_ramshankar
 # define HMSVM_SYNC_FULL_GUEST_STATE
