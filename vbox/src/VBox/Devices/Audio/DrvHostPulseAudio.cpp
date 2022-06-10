@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 73654 2018-08-14 12:58:43Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 73656 2018-08-14 13:04:14Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -770,22 +770,14 @@ static int paCreateStreamOut(PDRVHOSTPULSEAUDIO pThis, PPULSEAUDIOSTREAM pStream
     pCfgAcq->Props.cChannels = pStreamPA->SampleSpec.channels;
     pCfgAcq->Props.cShift    = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(pCfgAcq->Props.cBytes, pCfgAcq->Props.cChannels);
 
-    uint32_t cbBuf = RT_MIN(pStreamPA->BufAttr.tlength * 2,
-                            pStreamPA->BufAttr.maxlength); /** @todo Make this configurable! */
-
     LogFunc(("Acquired: BufAttr tlength=%RU32, maxLength=%RU32, minReq=%RU32\n",
              pStreamPA->BufAttr.tlength, pStreamPA->BufAttr.maxlength, pStreamPA->BufAttr.minreq));
 
-    if (cbBuf)
-    {
-        pCfgAcq->Backend.cfPeriod     = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.minreq);
-        pCfgAcq->Backend.cfBufferSize = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.tlength * 2); /* Use "double buffering". */
-        pCfgAcq->Backend.cfPreBuf     = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.prebuf);
+    pCfgAcq->Backend.cfPeriod     = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.minreq);
+    pCfgAcq->Backend.cfBufferSize = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.tlength);
+    pCfgAcq->Backend.cfPreBuf     = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.prebuf);
 
-        pStreamPA->pDrv = pThis;
-    }
-    else
-        rc = VERR_INVALID_PARAMETER;
+    pStreamPA->pDrv = pThis;
 
     return rc;
 }
