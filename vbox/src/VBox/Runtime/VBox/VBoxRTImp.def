@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 74295 2018-09-16 15:36:08Z vboxsync $
+; $Id: VBoxRTImp.def 74313 2018-09-17 15:50:55Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -775,6 +775,14 @@ EXPORTS
     RTCritSectSetSubClass
     RTCritSectTryEnter
     RTCritSectTryEnterDebug
+    RTCrCipherDecrypt
+    RTCrCipherEncrypt
+    RTCrCipherGetBlockSize
+    RTCrCipherGetInitializationVectorLength
+    RTCrCipherGetKeyVectorLength
+    RTCrCipherOpenByType
+    RTCrCipherRetain
+    RTCrCipherRelease
     RTCrDigestClone
     RTCrDigestCreate
     RTCrDigestCreateByObjId
@@ -813,8 +821,7 @@ EXPORTS
     RTCrKeyRetain
     RTCrKeyQueryRsaModulus
     RTCrKeyQueryRsaPrivateExponent
-    RTCrRc4
-    RTCrRc4SetKey
+    RTCrPkcs5Pbkdf2Hmac
     RTCrPkixGetCiperOidFromSignatureAlgorithm
     RTCrPkixPubKeySignDigest
     RTCrPkixPubKeyVerifySignature
@@ -829,6 +836,9 @@ EXPORTS
     RTCrPkixSignatureVerify
     RTCrPkixSignatureVerifyBitString
     RTCrPkixSignatureVerifyOctetString
+    RTCrRandBytes
+    RTCrRc4
+    RTCrRc4SetKey
     RTCrSslCreate
     RTCrSslCreateSessionForNativeSocket
     RTCrSslLoadTrustedRootCerts
