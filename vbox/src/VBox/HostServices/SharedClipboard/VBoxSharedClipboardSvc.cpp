@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 76970 2019-01-24 08:54:53Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 78151 2019-04-17 12:03:42Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -108,6 +108,10 @@ static uint32_t g_u32DelayedFormats = 0;
 /** Is the clipboard running in headless mode? */
 static bool g_fHeadless = false;
 
+static bool vboxSvcClipboardGetHeadless(void);
+static bool vboxSvcClipboardLock(void);
+static void vboxSvcClipboardUnlock(void);
+
 
 static void VBoxHGCMParmUInt32Set (VBOXHGCMSVCPARM *pParm, uint32_t u32)
 {
@@ -162,7 +166,7 @@ uint32_t TestClipSvcGetMode(void)
 #endif
 
 /** Getter for headless setting */
-bool vboxSvcClipboardGetHeadless(void)
+static bool vboxSvcClipboardGetHeadless(void)
 {
     return g_fHeadless;
 }
@@ -183,12 +187,12 @@ static void vboxSvcClipboardModeSet (uint32_t u32Mode)
     }
 }
 
-bool vboxSvcClipboardLock (void)
+static bool vboxSvcClipboardLock (void)
 {
     return RT_SUCCESS(RTCritSectEnter (&critsect));
 }
 
-void vboxSvcClipboardUnlock (void)
+static void vboxSvcClipboardUnlock(void)
 {
     RTCritSectLeave (&critsect);
 }

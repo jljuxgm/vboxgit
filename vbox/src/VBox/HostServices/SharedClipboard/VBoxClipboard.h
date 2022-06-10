@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.h 76570 2019-01-01 04:36:36Z vboxsync $ */
+/* $Id: VBoxClipboard.h 78151 2019-04-17 12:03:42Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal Header.
  */
@@ -24,9 +24,7 @@
 #include <VBox/hgcmsvc.h>
 #include <VBox/log.h>
 
-struct _VBOXCLIPBOARDCONTEXT;
-typedef struct _VBOXCLIPBOARDCONTEXT VBOXCLIPBOARDCONTEXT;
-
+#include <VBox/GuestHost/SharedClipboard.h>
 
 typedef struct _VBOXCLIPBOARDCLIENTDATA
 {
@@ -63,19 +61,13 @@ typedef struct _VBOXCLIPBOARDCLIENTDATA
     uint32_t u32AvailableFormats;
     uint32_t u32RequestedFormat;
 
-} VBOXCLIPBOARDCLIENTDATA;
+} VBOXCLIPBOARDCLIENTDATA, *PVBOXCLIPBOARDCLIENTDATA;
 
 /*
  * The service functions. Locking is between the service thread and the platform dependent windows thread.
  */
-bool vboxSvcClipboardLock (void);
-void vboxSvcClipboardUnlock (void);
-
 void vboxSvcClipboardReportMsg (VBOXCLIPBOARDCLIENTDATA *pClient, uint32_t u32Msg, uint32_t u32Formats);
-
 void vboxSvcClipboardCompleteReadData(VBOXCLIPBOARDCLIENTDATA *pClient, int rc, uint32_t cbActual);
-
-bool vboxSvcClipboardGetHeadless(void);
 
 /*
  * Platform dependent functions.
@@ -85,11 +77,8 @@ void vboxClipboardDestroy (void);
 
 int vboxClipboardConnect (VBOXCLIPBOARDCLIENTDATA *pClient, bool fHeadless);
 void vboxClipboardDisconnect (VBOXCLIPBOARDCLIENTDATA *pClient);
-
 void vboxClipboardFormatAnnounce (VBOXCLIPBOARDCLIENTDATA *pClient, uint32_t u32Formats);
-
 int vboxClipboardReadData (VBOXCLIPBOARDCLIENTDATA *pClient, uint32_t u32Format, void *pv, uint32_t cb, uint32_t *pcbActual);
-
 void vboxClipboardWriteData (VBOXCLIPBOARDCLIENTDATA *pClient, void *pv, uint32_t cb, uint32_t u32Format);
 
 int vboxClipboardSync (VBOXCLIPBOARDCLIENTDATA *pClient);
