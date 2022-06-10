@@ -1,4 +1,4 @@
-/* $Id: pemfile.cpp 69521 2017-10-30 10:59:20Z vboxsync $ */
+/* $Id: pemfile.cpp 73644 2018-08-14 09:57:03Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PEM file reader / writer.
  */
@@ -182,6 +182,7 @@ static bool rtCrPemFindMarker(uint8_t const *pbContent, size_t cbContent, size_t
                             }
                             break;
                         }
+                        pWord++;
                     } /* for each word in marker. */
                 } /* for each marker. */
             }
