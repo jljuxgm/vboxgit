@@ -1,4 +1,4 @@
-/* $Id: VBoxSF-VfsOps.cpp 75675 2018-11-22 21:16:48Z vboxsync $ */
+/* $Id: VBoxSF-VfsOps.cpp 75677 2018-11-22 21:30:17Z vboxsync $ */
 /** @file
  * VBoxFS - Darwin Shared Folders, Virtual File System Operations.
  */
@@ -48,7 +48,7 @@
  */
 static int vboxSfDwnVfsGetAttr(mount_t pMount, struct vfs_attr *pFsAttr, vfs_context_t pContext)
 {
-    PVBOXSFMNT pThis = (PVBOXSFMNT)vfs_fsprivate(pMount);
+    PVBOXSFMNTDATA pThis = (PVBOXSFMNTDATA)vfs_fsprivate(pMount);
     AssertReturn(pThis, EBADMSG);
     LogFlow(("vboxSfDwnVfsGetAttr: %s\n", pThis->MntInfo.szFolder));
     RT_NOREF(pContext);
@@ -370,9 +370,10 @@ static int vboxSfDwnVfsGetAttr(mount_t pMount, struct vfs_attr *pFsAttr, vfs_con
  */
 static int vboxSfDwnVfsRoot(mount_t pMount, vnode_t *ppVnode, vfs_context_t pContext)
 {
-    PVBOXSFMNT pThis = (PVBOXSFMNT)vfs_fsprivate(pMount);
+    PVBOXSFMNTDATA pThis = (PVBOXSFMNTDATA)vfs_fsprivate(pMount);
     AssertReturn(pThis, EBADMSG);
     LogFlow(("vboxSfDwnVfsRoot: pThis=%p:{%s}\n", pThis, pThis->MntInfo.szFolder));
+    RT_NOREF(pContext);
 
     /*
      * We shouldn't be callable during unmount, should we?
@@ -411,9 +412,10 @@ static int vboxSfDwnVfsRoot(mount_t pMount, vnode_t *ppVnode, vfs_context_t pCon
  */
 static int vboxSfDwnVfsUnmount(mount_t pMount, int fFlags, vfs_context_t pContext)
 {
-    PVBOXSFMNT pThis = (PVBOXSFMNT)vfs_fsprivate(pMount);
+    PVBOXSFMNTDATA pThis = (PVBOXSFMNTDATA)vfs_fsprivate(pMount);
     AssertReturn(pThis, 0);
     LogFlowFunc(("pThis=%p:{%s} fFlags=%#x\n", pThis, pThis->MntInfo.szFolder, fFlags));
+    RT_NOREF(pContext);
 
     /*
      * Flush vnodes.
@@ -489,7 +491,7 @@ static int vboxSfDwnVfsStart(mount_t pMount, int fFlags, vfs_context_t pContext)
  */
 static int vboxSfDwnVfsMount(mount_t pMount, vnode_t pDevVp, user_addr_t pUserData, vfs_context_t pContext)
 {
-    RT_NOREF(pDevVp)
+    RT_NOREF(pDevVp, pContext);
 
     /*
      * We don't support mount updating.
@@ -510,7 +512,7 @@ static int vboxSfDwnVfsMount(mount_t pMount, vnode_t pDevVp, user_addr_t pUserDa
     /*
      * Get the mount information from userland.
      */
-    PVBOXSFMNT pThis = (PVBOXSFMNT)RTMemAllocZ(sizeof(*pThis));
+    PVBOXSFMNTDATA pThis = (PVBOXSFMNTDATA)RTMemAllocZ(sizeof(*pThis));
     if (!pThis)
         return ENOMEM;
     pThis->uidMounter = pFsStats->f_owner;

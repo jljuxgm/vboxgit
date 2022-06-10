@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75666 2018-11-22 14:13:32Z vboxsync $
+# $Id: Makefile.kmk 75677 2018-11-22 21:30:17Z vboxsync $
 ## @file
 # sub-makefile for Darwin Shared Folders.
 #
@@ -25,7 +25,6 @@ SYSMODS        += VBoxSF
 VBoxSF_TEMPLATE = VBOXGUESTR0
 VBoxSF_INST     = $(INST_ADDITIONS)VBoxSF.kext/Contents/MacOS/
 VBoxSF_DEFS     = VBOX_WITH_HGCM
-VBoxSF_CXXFLAGS = -Wno-unused -Wno-unused-parameter
 VBoxSF_LIBS     = $(VBOX_LIB_VBGL_R0)
 VBoxSF_SOURCES  = \
 	VBoxSF.cpp \

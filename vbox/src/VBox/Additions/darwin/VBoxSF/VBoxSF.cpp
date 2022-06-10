@@ -1,4 +1,4 @@
-/* $Id: VBoxSF.cpp 75675 2018-11-22 21:16:48Z vboxsync $ */
+/* $Id: VBoxSF.cpp 75677 2018-11-22 21:30:17Z vboxsync $ */
 /** @file
  * VBoxSF - Darwin Shared Folders, KEXT entry points.
  */
@@ -203,10 +203,12 @@ static kern_return_t vboxSfDwnModuleLoad(struct kmod_info *pKModInfo, void *pvDa
  */
 static kern_return_t vboxSfDwnModuleUnload(struct kmod_info *pKModInfo, void *pvData)
 {
+    RT_NOREF(pKModInfo, pvData);
 #ifdef DEBUG
     printf("vboxSfDwnModuleUnload\n");
     RTLogBackdoorPrintf("vboxSfDwnModuleUnload\n");
 #endif
+
 
     /*
      * Are we busy?  If so fail.
