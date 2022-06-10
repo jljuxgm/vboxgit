@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76167 2018-12-11 17:03:05Z vboxsync $
+# $Id: Makefile.kmk 76514 2018-12-30 05:16:36Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -213,6 +213,9 @@ ifndef VBOX_ONLY_SDK
  ifeq ($(KBUILD_TARGET),win)
   VBoxAPIWrap_USES           = vccprecomp
   VBoxAPIWrap_PCH_HDR       := $(PATH_SUB_CURRENT)/src-all/win/VBoxAPIWrap-precomp_vcc.h
+ else if "$(USERNAME)" == "bird" && "$(KBUILD_TARGET)" == "linux" && !defined(KBUILD_USE_KOBJCACHE)
+  VBoxAPIWrap_USES           = gccprecomp
+  VBoxAPIWrap_PCH_HDR       := $(PATH_SUB_CURRENT)/src-all/win/VBoxAPIWrap-precomp_gcc.h
  endif
  VBoxAPIWrap_SOURCES         = \
  	$(VBoxAPIWrap_0_OUTDIR)/VBoxAPI.d \
