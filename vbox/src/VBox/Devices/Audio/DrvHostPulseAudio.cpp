@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 73689 2018-08-15 09:55:52Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 73821 2018-08-22 09:09:02Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -575,9 +575,6 @@ static int paStreamOpen(PDRVHOSTPULSEAUDIO pThis, PPULSEAUDIOSTREAM pStreamPA, b
 #ifdef LOG_ENABLED
         pStreamPA->tsStartUs = pa_rtclock_now();
 #endif
-        if (RT_FAILURE(rc))
-            break;
-
         const pa_buffer_attr *pBufAttrObtained = pa_stream_get_buffer_attr(pStream);
         AssertPtr(pBufAttrObtained);
         memcpy(pBufAttr, pBufAttrObtained, sizeof(pa_buffer_attr));
