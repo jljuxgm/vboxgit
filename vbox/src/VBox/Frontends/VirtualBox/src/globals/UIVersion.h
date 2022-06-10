@@ -1,4 +1,4 @@
-/* $Id: UIVersion.h 70830 2018-01-31 13:22:39Z vboxsync $ */
+/* $Id: UIVersion.h 73843 2018-08-22 17:16:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVersion class declaration/implementation.
  */
@@ -94,7 +94,7 @@ public:
 
     /** Returns effective released version guessed or hardcoded for this one version.
       * This can be even the version itself. */
-    UIVersion effectiveRelasedVersion() const
+    UIVersion effectiveReleasedVersion() const
     {
         /* First, we just copy the current one: */
         UIVersion version = *this;

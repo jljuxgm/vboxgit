@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderAdditions.cpp 71434 2018-03-21 14:12:10Z vboxsync $ */
+/* $Id: UIDownloaderAdditions.cpp 73843 2018-08-22 17:16:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderAdditions class implementation.
  */
@@ -57,7 +57,7 @@ UIDownloaderAdditions::UIDownloaderAdditions()
         s_pInstance = this;
 
     /* Get version number and adjust it for test and trunk builds. The server only has official releases. */
-    const QString strVersion = UIVersion(vboxGlobal().vboxVersionStringNormalized()).effectiveRelasedVersion().toString();
+    const QString strVersion = UIVersion(vboxGlobal().vboxVersionStringNormalized()).effectiveReleasedVersion().toString();
 
     /* Prepare source/target: */
     const QString strSourceName = QString("%1_%2.iso").arg(GUI_GuestAdditionsName, strVersion);

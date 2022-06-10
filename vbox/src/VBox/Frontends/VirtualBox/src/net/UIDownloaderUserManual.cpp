@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 71434 2018-03-21 14:12:10Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.cpp 73843 2018-08-22 17:16:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class implementation.
  */
@@ -54,7 +54,7 @@ UIDownloaderUserManual::UIDownloaderUserManual()
         s_pInstance = this;
 
     /* Get version number and adjust it for test and trunk builds. The server only has official releases. */
-    const QString strVersion = UIVersion(vboxGlobal().vboxVersionStringNormalized()).effectiveRelasedVersion().toString();
+    const QString strVersion = UIVersion(vboxGlobal().vboxVersionStringNormalized()).effectiveReleasedVersion().toString();
 
     /* Compose User Manual filename: */
     QString strUserManualFullFileName = vboxGlobal().helpFile();
