@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 74554 2018-10-01 14:47:03Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 74601 2018-10-03 16:01:13Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2494,7 +2494,7 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
                          Bstr("Do something").raw(), // aFirstOperationDescription
                          25); // ULONG ulFirstOperationWeight,
 
-            cloudClient->ExportVM(m->virtualSystemDescriptions.front(), pTask->pProgress);
+            hrc = cloudClient->ExportVM(m->virtualSystemDescriptions.front(), pTask->pProgress);
         } else {
             /// @todo Fail here with user notification. We do export 1 VM only
         }
