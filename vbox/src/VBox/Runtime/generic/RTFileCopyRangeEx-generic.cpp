@@ -1,4 +1,4 @@
-/* $Id: RTFileCopyRangeEx-generic.cpp 77797 2019-03-19 17:14:25Z vboxsync $ */
+/* $Id: RTFileCopyRangeEx-generic.cpp 77798 2019-03-19 17:17:37Z vboxsync $ */
 /** @file
  * IPRT - RTFileCopyPartEx, generic implementation.
  */
@@ -84,7 +84,7 @@ RTDECL(void) RTFileCopyPartCleanup(PRTFILECOPYPARTBUFSTATE pBufState)
 
 
 RTDECL(int) RTFileCopyPartEx(RTFILE hFileSrc, RTFOFF offSrc, RTFILE hFileDst, RTFOFF offDst, uint64_t cbToCopy,
-                             uint32_t fFlags, uint64_t *pcbCopied, PRTFILECOPYPARTBUFSTATE pBufState)
+                             uint32_t fFlags, PRTFILECOPYPARTBUFSTATE pBufState, uint64_t *pcbCopied)
 {
     /*
      * Validate input.
