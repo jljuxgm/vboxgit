@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 77366 2019-02-19 16:00:39Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 77434 2019-02-22 15:06:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -66,8 +66,6 @@ public:
 
     /** Constructs main-root item, passing pScene to the base-class. */
     UIChooserItemGroup(QGraphicsScene *pScene);
-    /** Constructs temporary @a fMainRoot item as a @a pCopyFrom, passing pScene to the base-class. */
-    UIChooserItemGroup(QGraphicsScene *pScene, UIChooserItemGroup *pCopyFrom, bool fMainRoot);
     /** Constructs non-root item with specified @a strName and @a iPosition, @a fOpened if requested, passing pParent to the base-class. */
     UIChooserItemGroup(UIChooserItem *pParent, const QString &strName, bool fOpened = false, int iPosition  = -1);
     /** Constructs temporary non-root item with specified @a iPosition as a @a pCopyFrom, passing pParent to the base-class. */
@@ -150,9 +148,6 @@ protected:
         virtual QString fullName() const /* override */;
         /** Returns item definition. */
         virtual QString definition() const /* override */;
-
-        /** Handles root status change. */
-        virtual void handleRootStatusChange() /* override */;
     /** @} */
 
     /** @name Children stuff.
@@ -274,9 +269,6 @@ private:
         /** Returns abstractly stored data value for certain @a iKey. */
         QVariant data(int iKey) const;
 
-        /** Returns whether group is main-root. */
-        bool isMainRoot() const { return m_fMainRoot; }
-
         /** Returns item's header darkness. */
         int headerDarkness() const { return m_iHeaderDarkness; }
 
@@ -333,9 +325,6 @@ private:
 
     /** @name Item stuff.
       * @{ */
-        /** Holds whether group is main-root. */
-        const bool  m_fMainRoot;
-
         /** Holds whether group is closed. */
         bool  m_fClosed;
 
