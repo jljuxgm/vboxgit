@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 73621 2018-08-10 15:25:09Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 73625 2018-08-12 15:53:17Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -842,7 +842,8 @@ static int ichac97R3StreamEnable(PAC97STATE pThis, PAC97STREAM pStream, bool fEn
             RTCircBufReset(pStream->State.pCircBuf);
 
         rc = ichac97R3StreamOpen(pThis, pStream);
-        if (RT_SUCCESS(rc))
+
+        if (pStream->Dbg.Runtime.fEnabled)
         {
             if (!DrvAudioHlpFileIsOpen(pStream->Dbg.Runtime.pFileStream))
             {
