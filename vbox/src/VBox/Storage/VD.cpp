@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 75373 2018-11-09 18:12:30Z vboxsync $ */
+/* $Id: VD.cpp 75374 2018-11-09 18:19:48Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
@@ -362,9 +362,6 @@ typedef struct VDMETAXFER
     /** Data stored - variable size. */
     uint8_t          abData[1];
 } VDMETAXFER;
-
-/* vector for temporary storing image sizes */
-RTVEC_DECL(VDImgSzVec, uint64_t)
 
 /**
  * The transfer direction for the metadata.
