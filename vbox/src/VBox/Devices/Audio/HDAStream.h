@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 73370 2018-07-26 13:52:12Z vboxsync $ */
+/* $Id: HDAStream.h 73833 2018-08-22 15:40:27Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -176,6 +176,8 @@ typedef struct HDASTREAMSTATE
     uint16_t                cbDMALeft;
     /** Unused, padding. */
     uint8_t                 abPadding4[2+4];
+   /** Timestamp (in ns) of last stream update. */
+    uint64_t                tsLastUpdateNs;
 } HDASTREAMSTATE;
 AssertCompileSizeAlignment(HDASTREAMSTATE, 8);
 typedef HDASTREAMSTATE *PHDASTREAMSTATE;
