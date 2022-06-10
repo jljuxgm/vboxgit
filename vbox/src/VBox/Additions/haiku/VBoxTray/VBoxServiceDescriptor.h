@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceDescriptor.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxServiceDescriptor.h 76538 2018-12-30 06:19:55Z vboxsync $ */
 /** @file
  * VBoxGuestServiceDescriptor, Haiku Guest Additions, header.
  */
@@ -43,8 +43,12 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
+
 #ifndef __VBOXSERVICESHAREDCLIPLBOARD__H
 #define __VBOXSERVICESHAREDCLIPLBOARD__H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <Handler.h>
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxMouse.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMouse.h 76538 2018-12-30 06:19:55Z vboxsync $ */
 /** @file
  * VBoxMouse; input_server add-on - Haiku Guest Additions, header.
  */
@@ -46,6 +46,9 @@
 
 #ifndef __VBOXMOUSE__H
 #define __VBOXMOUSE__H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <InputServerDevice.h>
 

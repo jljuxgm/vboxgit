@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69339 2017-10-26 11:22:26Z vboxsync $
+# $Id: .scm-settings 76538 2018-12-30 06:19:55Z vboxsync $
 ## @file
 # Source code massager settings for the OS/2 guest additions.
 #
@@ -24,18 +24,18 @@
 /VBoxGradd/*.c:   --external-copyright
 /VBoxGradd/*.asm: --external-copyright --no-convert-tabs
 /VBoxGradd/*.inc: --external-copyright --no-convert-tabs
-/VBoxGradd/*.h:   --external-copyright
+/VBoxGradd/*.h:   --external-copyright --no-fix-header-guards
 /VBoxGradd/vboxioctl.c: --no-external-copyright
 /VBoxGradd/vboxioctl.h: --no-external-copyright
 
 /VBoxGrext/*.c:   --external-copyright
-/VBoxGrext/*.h:   --external-copyright
+/VBoxGrext/*.h:   --external-copyright --no-fix-header-guards
 /VBoxGrext/*.def: --external-copyright
 
 /VBoxMouse/*.c:   --external-copyright --no-convert-tabs
 /VBoxMouse/*.asm: --external-copyright --no-convert-tabs
 /VBoxMouse/*.inc: --external-copyright --no-convert-tabs
-/VBoxMouse/*.h:   --external-copyright --no-convert-tabs
+/VBoxMouse/*.h:   --external-copyright --no-convert-tabs --no-fix-header-guards
 /VBoxMouse/crtstuff.c:       --no-external-copyright --convert-tabs
 /VBoxMouse/VBoxMouse.c:      --no-external-copyright --convert-tabs
 /VBoxMouse/VBoxMouse.h:      --no-external-copyright --convert-tabs

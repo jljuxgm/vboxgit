@@ -1,4 +1,4 @@
-/* $Id: VBoxMouseFilter.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxMouseFilter.h 76538 2018-12-30 06:19:55Z vboxsync $ */
 /** @file
  * VBoxMouse; input_server filter - Haiku Guest Additions, header.
  */
@@ -46,6 +46,9 @@
 
 #ifndef __VBOXMOUSE_FILTER__H
 #define __VBOXMOUSE_FILTER__H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <InputServerFilter.h>
 

@@ -1,4 +1,4 @@
-/* $Id: accelerant.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: accelerant.h 76538 2018-12-30 06:19:55Z vboxsync $ */
 /** @file
  * VBoxVideo Accelerant; Haiku Guest Additions, header.
  */
@@ -46,6 +46,9 @@
 
 #ifndef ___VBOX_ACCELERANT_H
 #define ___VBOX_ACCELERANT_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <Accelerant.h>
 #include "../common/VBoxVideo_common.h"

@@ -1,4 +1,4 @@
-/** $Id: VBoxSFInternal.h 76449 2018-12-25 00:58:28Z vboxsync $ */
+/** $Id: VBoxSFInternal.h 76538 2018-12-30 06:19:55Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folder IFS, Internal Header.
  */
@@ -30,6 +30,9 @@
 
 #ifndef ___VBoxSFInternal_h___
 #define ___VBoxSFInternal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #define INCL_BASE

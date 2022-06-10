@@ -1,4 +1,4 @@
-/* $Id: kernel_cpp.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: kernel_cpp.h 76538 2018-12-30 06:19:55Z vboxsync $ */
 /** @file
  * Kernel C++, Haiku private.
  */
@@ -26,6 +26,9 @@
 
 #ifndef KERNEL_CPP_H
 #define KERNEL_CPP_H
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifdef __cplusplus
 

@@ -1,4 +1,4 @@
-/* $Id: vboxvfs.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vboxvfs.h 76538 2018-12-30 06:19:55Z vboxsync $ */
 /** @file
  * Description.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBOXVFS_H___
 #define ___VBOXVFS_H___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #define VBOXVFS_VFSNAME "vboxvfs"
 #define VBOXVFS_VERSION 1
