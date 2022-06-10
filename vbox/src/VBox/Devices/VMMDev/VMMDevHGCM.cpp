@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 75770 2018-11-27 12:35:40Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 75771 2018-11-27 12:53:36Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -1540,10 +1540,10 @@ DECLCALLBACK(bool) hgcmIsCmdRestored(PPDMIHGCMPORT pInterface, PVBOXHGCMCMD pCmd
 DECLCALLBACK(uint32_t) hgcmGetRequestor(PPDMIHGCMPORT pInterface, PVBOXHGCMCMD pCmd)
 {
     PVMMDEV pThis = RT_FROM_MEMBER(pInterface, VMMDevState, IHGCMPort);
+    AssertPtrReturn(pCmd, VMMDEV_REQUESTOR_LOWEST);
     if (pThis->guestInfo2.fFeatures & VBOXGSTINFO2_F_REQUESTOR_INFO)
-        if (pCmd)
-            return pCmd->fRequestor;
-   return 0;
+        return pCmd->fRequestor;
+   return VMMDEV_REQUESTOR_LEGACY;
 }
 
 /** Save information about pending HGCM requests from pThis->listHGCMCmd.
