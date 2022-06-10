@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 75499 2018-11-16 01:23:14Z vboxsync $ */
+/* $Id: Recording.cpp 75527 2018-11-16 17:14:58Z vboxsync $ */
 /** @file
  * Recording context code.
  *
@@ -654,7 +654,7 @@ int RecordingContext::SendAudioFrame(const void *pvData, size_t cbData, uint64_t
 
     return rc;
 #else
-    RT_NOREF(pCtx, pvData, cbData, msTimestamp);
+    RT_NOREF(pvData, cbData, msTimestamp);
     return VINF_SUCCESS;
 #endif
 }

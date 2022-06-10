@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 75495 2018-11-15 20:53:00Z vboxsync $ */
+/* $Id: ConsoleImpl.h 75527 2018-11-16 17:14:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -147,9 +147,13 @@ public:
     int i_recordingGetSettings(settings::RecordingSettings &Settings);
     int i_recordingStart(util::AutoWriteLock *pAutoLock = NULL);
     int i_recordingStop(util::AutoWriteLock *pAutoLock = NULL);
+# ifdef VBOX_WITH_AUDIO_RECORDING
     AudioVideoRec *i_recordingGetAudioDrv(void) const { return Recording.mAudioRec; }
+# endif
     RecordingContext *i_recordingGetContext(void) const { return Recording.mpCtx; }
+# ifdef VBOX_WITH_AUDIO_RECORDING
     HRESULT i_recordingSendAudio(const void *pvData, size_t cbData, uint64_t uDurationMs);
+# endif
 #endif
 
     const ComPtr<IMachine> &i_machine() const { return mMachine; }
@@ -1038,7 +1042,10 @@ private:
     {
         Recording()
             : mpCtx(NULL)
-            , mAudioRec(NULL) { }
+# ifdef VBOX_WITH_AUDIO_RECORDING
+            , mAudioRec(NULL)
+# endif
+        { }
 
         /** The recording context. */
         RecordingContext     *mpCtx;
