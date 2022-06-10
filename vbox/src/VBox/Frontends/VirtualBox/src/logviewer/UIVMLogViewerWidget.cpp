@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 72666 2018-06-22 16:14:04Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 72699 2018-06-27 13:03:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -859,7 +859,7 @@ void UIVMLogViewerWidget::manageEscapeShortCut()
         return;
     }
     /* Take the escape shortcut from the dialog: */
-    sigSetCloseButtonShortCut(QKeySequence());
+    emit sigSetCloseButtonShortCut(QKeySequence());
     /* Just loop thru the visible panel list and set the esc key to the
        panel which made visible latest */
     for (int i = 0; i < m_visiblePanelsList.size() - 1; ++i)
