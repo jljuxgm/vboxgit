@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: MediumFormatImpl.h 72900 2018-07-04 19:42:18Z vboxsync $ */
 
 /** @file
  *
@@ -65,6 +65,8 @@ public:
 
     /** Const, no need to lock */
     const Utf8Str &i_getId() const { return m.strId; }
+    /** Const, no need to lock */
+    const Utf8Str &i_getName() const { return m.strName; }
     /** Const, no need to lock */
     const StrArray &i_getFileExtensions() const { return m.maFileExtensions; }
     /** Const, no need to lock */

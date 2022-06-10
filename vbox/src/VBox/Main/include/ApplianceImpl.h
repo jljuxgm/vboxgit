@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 72899 2018-07-04 18:49:59Z vboxsync $ */
+/* $Id: ApplianceImpl.h 72900 2018-07-04 19:42:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -134,7 +134,7 @@ private:
 
     static void i_importOrExportThreadTask(TaskOVF *pTask);
 
-    HRESULT i_initSetOfSupportedStandardsURI();
+    HRESULT i_initBackendNames();
 
     Utf8Str i_typeOfVirtualDiskFormatFromURI(Utf8Str type) const;
 
