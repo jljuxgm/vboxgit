@@ -1,4 +1,4 @@
-/* $Id: service.cpp 70828 2018-01-31 12:59:34Z vboxsync $ */
+/* $Id: service.cpp 73100 2018-07-12 21:21:03Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1628,7 +1628,7 @@ int Service::initialize()
 static DECLCALLBACK(int) destroyProperty(PRTSTRSPACECORE pStr, void *pvUser)
 {
     RT_NOREF(pvUser);
-    Property *pProp = RT_FROM_MEMBER(pStr, struct Property, mStrCore);
+    Property *pProp = RT_FROM_CPP_MEMBER(pStr, struct Property, mStrCore); /* clang objects to offsetof on non-POD.*/
     delete pProp;
     return 0;
 }
