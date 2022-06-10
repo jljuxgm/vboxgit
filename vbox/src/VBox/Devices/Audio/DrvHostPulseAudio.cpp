@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 73838 2018-08-22 16:15:08Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 73840 2018-08-22 16:48:52Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -809,9 +809,9 @@ static int paCreateStreamIn(PDRVHOSTPULSEAUDIO pThis, PPULSEAUDIOSTREAM  pStream
     pCfgAcq->Props.uHz         = pStreamPA->SampleSpec.rate;
     pCfgAcq->Props.cChannels   = pStreamPA->SampleSpec.channels;
 
-    pCfgAcq->Backend.cfPeriod     = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.minreq);
-    pCfgAcq->Backend.cfBufferSize = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.tlength);
-    pCfgAcq->Backend.cfPreBuf     = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.prebuf);
+    pCfgAcq->Backend.cfPeriod     = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamPA->BufAttr.fragsize);
+    pCfgAcq->Backend.cfBufferSize = pCfgAcq->Backend.cfBufferSize;
+    pCfgAcq->Backend.cfPreBuf     = pCfgAcq->Backend.cfPeriod;
 
     LogFlowFuncLeaveRC(rc);
     return rc;
