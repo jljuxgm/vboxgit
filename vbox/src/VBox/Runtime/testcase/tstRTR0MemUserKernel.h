@@ -1,4 +1,4 @@
-/* $Id: tstRTR0MemUserKernel.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstRTR0MemUserKernel.h 76560 2019-01-01 03:01:10Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - User & Kernel Memory, common header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef RT_INCLUDED_testcase_tstRTR0MemUserKernel_h
-#define RT_INCLUDED_testcase_tstRTR0MemUserKernel_h
+#ifndef IPRT_INCLUDED_SRC_testcase_tstRTR0MemUserKernel_h
+#define IPRT_INCLUDED_SRC_testcase_tstRTR0MemUserKernel_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

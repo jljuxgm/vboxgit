@@ -1,4 +1,4 @@
-/* $Id: allocex.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: allocex.h 76560 2019-01-01 03:01:10Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc and Free Functions for Ring-3.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___r3_allocex_h
-#define ___r3_allocex_h
+#ifndef IPRT_INCLUDED_SRC_r3_allocex_h
+#define IPRT_INCLUDED_SRC_r3_allocex_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

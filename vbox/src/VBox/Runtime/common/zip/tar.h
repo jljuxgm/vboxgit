@@ -1,4 +1,4 @@
-/* $Id: tar.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tar.h 76560 2019-01-01 03:01:10Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef __common_zip_tar_h
-#define __common_zip_tar_h
+#ifndef IPRT_INCLUDED_SRC_common_zip_tar_h
+#define IPRT_INCLUDED_SRC_common_zip_tar_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

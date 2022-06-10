@@ -1,4 +1,4 @@
-/* $Id: the-haiku-kernel.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: the-haiku-kernel.h 76560 2019-01-01 03:01:10Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Haiku kernel.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___the_haiku_kernel_h
-#define ___the_haiku_kernel_h
+#ifndef IPRT_INCLUDED_SRC_r0drv_haiku_the_haiku_kernel_h
+#define IPRT_INCLUDED_SRC_r0drv_haiku_the_haiku_kernel_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

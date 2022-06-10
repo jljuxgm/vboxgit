@@ -1,4 +1,4 @@
-# $Id: .scm-settings 76559 2019-01-01 02:55:59Z vboxsync $
+# $Id: .scm-settings 76560 2019-01-01 03:01:10Z vboxsync $
 ## @file
 # Source code massager settings for Runtime.
 #
@@ -114,5 +114,6 @@
 /common/math/gcc/quad.h                        : --no-fix-header-guards
 /common/misc/sanity.h                          : --no-fix-header-guards
 /r3/win/vcc100-kernel32-fakes.h                : --no-fix-header-guards
+/*.h: --guard-relative-to-dir . --guard-prefix IPRT_INCLUDED_SRC_
 /include/internal/*.h: --guard-relative-to-dir include/internal --guard-prefix IPRT_INCLUDED_INTERNAL_
 

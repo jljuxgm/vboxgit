@@ -1,4 +1,4 @@
-/* $Id: the-os2-kernel.h 76513 2018-12-30 05:16:00Z vboxsync $ */
+/* $Id: the-os2-kernel.h 76560 2019-01-01 03:01:10Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The OS/2 Kernel Headers.
  */
@@ -28,8 +28,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef ___the_os2_kernel_h
-#define ___the_os2_kernel_h
+#ifndef IPRT_INCLUDED_SRC_r0drv_os2_the_os2_kernel_h
+#define IPRT_INCLUDED_SRC_r0drv_os2_the_os2_kernel_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

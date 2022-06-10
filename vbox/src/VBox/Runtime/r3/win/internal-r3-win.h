@@ -1,4 +1,4 @@
-/* $Id: internal-r3-win.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: internal-r3-win.h 76560 2019-01-01 03:01:10Z vboxsync $ */
 /** @file
  * IPRT - some Windows OS type constants.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___internal_r3_win_h
-#define ___internal_r3_win_h
+#ifndef IPRT_INCLUDED_SRC_r3_win_internal_r3_win_h
+#define IPRT_INCLUDED_SRC_r3_win_internal_r3_win_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

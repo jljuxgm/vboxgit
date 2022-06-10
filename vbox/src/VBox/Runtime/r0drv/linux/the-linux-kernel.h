@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: the-linux-kernel.h 76560 2019-01-01 03:01:10Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___the_linux_kernel_h
-#define ___the_linux_kernel_h
+#ifndef IPRT_INCLUDED_SRC_r0drv_linux_the_linux_kernel_h
+#define IPRT_INCLUDED_SRC_r0drv_linux_the_linux_kernel_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
