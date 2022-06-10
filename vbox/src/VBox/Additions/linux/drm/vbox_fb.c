@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vbox_fb.c 76936 2019-01-22 15:40:01Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -375,6 +375,11 @@ void vbox_fbdev_fini(struct drm_device *dev)
 	struct vbox_private *vbox = dev->dev_private;
 	struct vbox_fbdev *fbdev = vbox->fbdev;
 	struct vbox_framebuffer *afb = &fbdev->afb;
+
+#ifdef CONFIG_FB_DEFERRED_IO
+	if (fbdev->helper.fbdev && fbdev->helper.fbdev->fbdefio)
+		fb_deferred_io_cleanup(fbdev->helper.fbdev);
+#endif
 
 	drm_fb_helper_unregister_fbi(&fbdev->helper);
 
