@@ -1,4 +1,4 @@
-/* $Id: http.h 73857 2018-08-23 10:47:19Z vboxsync $ */
+/* $Id: http.h 73886 2018-08-25 09:51:12Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -52,8 +52,7 @@ typedef FNRTHTTPDOWNLDPROGRCALLBACK *PFNRTHTTPDOWNLDPROGRCALLBACK;
 /**
  * Creates a HTTP client instance.
  *
- * @returns iprt status code.
- *
+ * @returns IPRT status code.
  * @param   phHttp      Where to store the HTTP handle.
  */
 RTR3DECL(int) RTHttpCreate(PRTHTTP phHttp);
@@ -61,8 +60,7 @@ RTR3DECL(int) RTHttpCreate(PRTHTTP phHttp);
 /**
  * Resets a HTTP client instance.
  *
- * @returns iprt status code.
- *
+ * @returns IPRT status code.
  * @param   hHttp      Handle to the HTTP interface.
  */
 RTR3DECL(int) RTHttpReset(RTHTTP hHttp);
@@ -70,9 +68,10 @@ RTR3DECL(int) RTHttpReset(RTHTTP hHttp);
 /**
  * Destroys a HTTP client instance.
  *
+ * @returns IPRT status code.
  * @param   hHttp       Handle to the HTTP interface.
  */
-RTR3DECL(void) RTHttpDestroy(RTHTTP hHttp);
+RTR3DECL(int) RTHttpDestroy(RTHTTP hHttp);
 
 
 /**
