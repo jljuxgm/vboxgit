@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDbgConsole.cpp 77409 2019-02-21 11:47:48Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DBGG
 #include "VBoxDbgConsole.h"
+#include "VBoxDbgGui.h"
 
 #include <QLabel>
 #include <QApplication>
@@ -488,8 +489,14 @@ VBoxDbgConsole::VBoxDbgConsole(VBoxDbgGui *a_pDbgGui, QWidget *a_pParent/* = NUL
     m_pTimer(NULL), m_fUpdatePending(false), m_Thread(NIL_RTTHREAD), m_EventSem(NIL_RTSEMEVENT),
     m_fTerminate(false), m_fThreadTerminated(false)
 {
-    setWindowTitle("VBoxDbg - Console");
+    QString strMachineName;
+    if (a_pDbgGui)
+        strMachineName = a_pDbgGui->getMachineName();
 
+    if (strMachineName.isEmpty())
+        setWindowTitle("VBoxDbg - Console");
+    else
+        setWindowTitle(QString("%1 - VBoxDbg - Console").arg(strMachineName));
     /*
      * Create the output text box.
      */

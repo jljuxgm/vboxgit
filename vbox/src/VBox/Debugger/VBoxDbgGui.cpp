@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDbgGui.cpp 77409 2019-02-21 11:47:48Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -256,6 +256,20 @@ VBoxDbgGui::adjustRelativePos(int x, int y, unsigned cx, unsigned cy)
     repositionStatistics(fResize);
 }
 
+QString
+VBoxDbgGui::getMachineName() const
+{
+    QString strName;
+    AssertReturn(m_pMachine, strName);
+    BSTR bstr;
+    HRESULT hrc = m_pMachine->COMGETTER(Name)(&bstr);
+    if (SUCCEEDED(hrc))
+    {
+        strName = QString::fromUtf16(bstr);
+    }
+    SysFreeString(bstr);
+    return strName;
+}
 
 void
 VBoxDbgGui::notifyChildDestroyed(QObject *pObj)

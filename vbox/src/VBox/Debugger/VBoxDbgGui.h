@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.h 76564 2019-01-01 03:57:14Z vboxsync $ */
+/* $Id: VBoxDbgGui.h 77409 2019-02-21 11:47:48Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -140,6 +140,10 @@ public:
         return m_pUVM;
     }
 
+    /**
+     * @returns The name of the machine.
+     */
+    QString getMachineName() const;
 
 protected slots:
     /**
