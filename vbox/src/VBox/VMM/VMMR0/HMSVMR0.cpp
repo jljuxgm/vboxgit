@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72893 2018-07-04 16:55:53Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72909 2018-07-05 08:43:05Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4472,13 +4472,6 @@ static int hmR0SvmPreRunGuest(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTra
 
 #ifdef HMSVM_SYNC_FULL_GUEST_STATE
     if (!CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
-    {
-        Assert(!(pCtx->fExtrn & HMSVM_CPUMCTX_EXTRN_ALL));
-        ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_ALL_GUEST);
-    }
-#endif
-#ifdef HMSVM_SYNC_FULL_NESTED_GUEST_STATE
-    if (CPUMIsGuestInSvmNestedHwVirtMode(pCtx))
     {
         Assert(!(pCtx->fExtrn & HMSVM_CPUMCTX_EXTRN_ALL));
         ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_ALL_GUEST);
