@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 72778 2018-06-29 20:02:35Z vboxsync $ */
+/* $Id: VMMR0.cpp 72805 2018-07-03 04:05:43Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1236,7 +1236,7 @@ VMMR0DECL(void) VMMR0EntryFast(PGVM pGVM, PVM pVM, VMCPUID idCpu, VMMR0OPERATION
                     /*
                      * Enter HM context.
                      */
-                    rc = HMR0Enter(pVM, pVCpu);
+                    rc = HMR0Enter(pVCpu);
                     if (RT_SUCCESS(rc))
                     {
                         VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_HM);
