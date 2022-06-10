@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 72920 2018-07-05 14:51:50Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 72930 2018-07-06 11:10:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -48,10 +48,8 @@ protected:
     QGroupBox    *m_pTypeCnt;
     /** Holds the Local Filesystem radio-button. */
     QRadioButton *m_pTypeLocalFilesystem;
-    /** Holds the Sun Cloud radio-button. */
-    QRadioButton *m_pTypeSunCloud;
-    /** Holds the Simple Storage System radio-button. */
-    QRadioButton *m_pTypeSimpleStorageSystem;
+    /** Holds the Cloud Service Provider radio-button. */
+    QRadioButton *m_pTypeCloudServiceProvider;
 };
 
 
