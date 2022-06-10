@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 74699 2018-10-09 06:48:48Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 74702 2018-10-09 08:06:48Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -7991,6 +7991,13 @@ IEM_CIMPL_DEF_3(iemCImpl_xsave, uint8_t, iEffSeg, RTGCPTR, GCPtrEff, IEMMODE, en
     /*
      * Raise exceptions.
      */
+    /* When in VMX non-root mode and XSAVE/XRSTOR is not enabled, it results in #UD. */
+    if (    IEM_VMX_IS_NON_ROOT_MODE(pVCpu)
+        && !IEM_VMX_IS_PROCCTLS2_SET(pVCpu, VMX_PROC_CTLS2_XSAVES_XRSTORS))
+    {
+        Log(("xrstor: Not enabled for nested-guest execution -> #UD\n"));
+        return iemRaiseUndefinedOpcode(pVCpu);
+    }
     if (!(pVCpu->cpum.GstCtx.cr4 & X86_CR4_OSXSAVE))
         return iemRaiseUndefinedOpcode(pVCpu);
     if (pVCpu->cpum.GstCtx.cr0 & X86_CR0_TS)
@@ -8007,7 +8014,7 @@ IEM_CIMPL_DEF_3(iemCImpl_xsave, uint8_t, iEffSeg, RTGCPTR, GCPtrEff, IEMMODE, en
     }
 
     /*
-     * Calc the requested mask
+     * Calc the requested mask.
      */
     uint64_t const fReqComponents = RT_MAKE_U64(pVCpu->cpum.GstCtx.eax, pVCpu->cpum.GstCtx.edx) & pVCpu->cpum.GstCtx.aXcr[0];
     AssertLogRelReturn(!(fReqComponents & ~(XSAVE_C_X87 | XSAVE_C_SSE | XSAVE_C_YMM)), VERR_IEM_ASPECT_NOT_IMPLEMENTED);
@@ -8147,6 +8154,13 @@ IEM_CIMPL_DEF_3(iemCImpl_xrstor, uint8_t, iEffSeg, RTGCPTR, GCPtrEff, IEMMODE, e
     /*
      * Raise exceptions.
      */
+    /* When in VMX non-root mode and XSAVE/XRSTOR is not enabled, it results in #UD. */
+    if (    IEM_VMX_IS_NON_ROOT_MODE(pVCpu)
+        && !IEM_VMX_IS_PROCCTLS2_SET(pVCpu, VMX_PROC_CTLS2_XSAVES_XRSTORS))
+    {
+        Log(("xrstor: Not enabled for nested-guest execution -> #UD\n"));
+        return iemRaiseUndefinedOpcode(pVCpu);
+    }
     if (!(pVCpu->cpum.GstCtx.cr4 & X86_CR4_OSXSAVE))
         return iemRaiseUndefinedOpcode(pVCpu);
     if (pVCpu->cpum.GstCtx.cr0 & X86_CR0_TS)
