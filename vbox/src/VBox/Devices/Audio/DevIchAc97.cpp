@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 76186 2018-12-12 15:34:40Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 76188 2018-12-12 16:08:40Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -3733,7 +3733,18 @@ static DECLCALLBACK(int) ichac97R3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, 
     /** @todo r=andy Stream IDs are hardcoded to certain streams. */
     for (unsigned i = 0; i < AC97_MAX_STREAMS; i++)
     {
-        rc2 = ichac97R3StreamEnable(pThis, &pThis->aStreams[i], RT_BOOL(uaStrmsActive[i]));
+        const bool        fEnable = RT_BOOL(uaStrmsActive[i]);
+        const PAC97STREAM pStream = &pThis->aStreams[i];
+
+        rc2 = ichac97R3StreamEnable(pThis, pStream, fEnable);
+        if (RT_SUCCESS(rc2))
+        {
+            /* Re-arm the timer for this stream. */
+            rc2 = ichac97R3TimerSet(pThis, pStream,
+                                    TMTimerGet((pThis)->DEVAC97_CTX_SUFF_SD(pTimer, pStream->u8SD)) + pStream->State.cTransferTicks,
+                                    false /* fForce */);
+        }
+
         AssertRC(rc2);
         /* Keep going. */
     }
