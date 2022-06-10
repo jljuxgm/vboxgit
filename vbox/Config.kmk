@@ -1,4 +1,4 @@
-# $Id: Config.kmk 74926 2018-10-18 15:32:37Z vboxsync $
+# $Id: Config.kmk 74927 2018-10-18 16:16:23Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -782,6 +782,8 @@ VBOX_WITH_EXTPACK = 1
 VBOX_WITH_EXTPACK_PUEL = 1
 # Enables building+packing the Oracle VM VirtualBox Extension Pack, includes VBOX_WITH_EXTPACK_PUEL
 VBOX_WITH_EXTPACK_PUEL_BUILD = 1
+# Build ExportVM functionality based on generated REST API
+VBOX_WITH_CLOUD_PROVIDERS_NO_COMMANDS = 1
 # Enable the BusMouse sample extension pack.
 #VBOX_WITH_EXTPACK_BUSMOUSESAMPLE = 1
 # Enable the VNC server extension pack (GPL only).
@@ -7399,7 +7401,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 74926 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 74927 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
