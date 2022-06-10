@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73815 2018-08-22 08:43:28Z vboxsync $ */
+/* $Id: AudioMixer.cpp 74041 2018-09-03 12:46:20Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -991,6 +991,18 @@ AUDMIXSINKDIR AudioMixerSinkGetDir(PAUDMIXSINK pSink)
     AssertRC(rc2);
 
     return enmDir;
+}
+
+/**
+ * Returns the sink's (friendly) name.
+ *
+ * @returns The sink's (friendly) name.
+ */
+const char *AudioMixerSinkGetName(const PAUDMIXSINK pSink)
+{
+    AssertPtrReturn(pSink, "<Unknown>");
+
+    return pSink->pszName;
 }
 
 /**

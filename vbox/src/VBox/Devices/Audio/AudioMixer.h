@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 73730 2018-08-17 09:39:17Z vboxsync $ */
+/* $Id: AudioMixer.h 74041 2018-09-03 12:46:20Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -239,6 +239,7 @@ void AudioMixerSinkDestroy(PAUDMIXSINK pSink);
 uint32_t AudioMixerSinkGetReadable(PAUDMIXSINK pSink);
 uint32_t AudioMixerSinkGetWritable(PAUDMIXSINK pSink);
 AUDMIXSINKDIR AudioMixerSinkGetDir(PAUDMIXSINK pSink);
+const char *AudioMixerSinkGetName(const PAUDMIXSINK pSink);
 PAUDMIXSTREAM AudioMixerSinkGetRecordingSource(PAUDMIXSINK pSink);
 PAUDMIXSTREAM AudioMixerSinkGetStream(PAUDMIXSINK pSink, uint8_t uIndex);
 AUDMIXSINKSTS AudioMixerSinkGetStatus(PAUDMIXSINK pSink);
