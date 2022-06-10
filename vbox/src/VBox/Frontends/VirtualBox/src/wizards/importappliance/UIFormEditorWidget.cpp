@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 78211 2019-04-18 16:16:24Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 78219 2019-04-19 17:18:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -506,7 +506,7 @@ void UIFormEditorModel::setFormValues(const CFormValueVector &values)
     endRemoveRows();
 
     /* Add new lines: */
-    beginInsertRows(QModelIndex(), 0, values.size());
+    beginInsertRows(QModelIndex(), 0, values.size() - 1);
     foreach (const CFormValue &comValue, values)
         m_dataList << new UIFormEditorRow(parentTable(), comValue);
     endInsertRows();
