@@ -1,4 +1,4 @@
-/* $Id: json.cpp 73979 2018-08-30 13:58:20Z vboxsync $ */
+/* $Id: json.cpp 73981 2018-08-30 22:42:53Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -498,6 +498,13 @@ static int rtJsonTokenizerGetNumber(PRTJSONTOKENIZER pTokenizer, PRTJSONTOKEN pT
     pToken->enmClass = RTJSONTOKENCLASS_NUMBER;
 
     char ch = rtJsonTokenizerGetCh(pTokenizer);
+    if (ch == '-')
+    {
+        szTmp[cchNum++] = '-';
+        rtJsonTokenizerSkipCh(pTokenizer);
+        ch = rtJsonTokenizerGetCh(pTokenizer);
+    }
+
     while (   RT_C_IS_DIGIT(ch)
            && cchNum < sizeof(szTmp) - 1)
     {
@@ -668,7 +675,7 @@ static int rtJsonTokenizerReadNextToken(PRTJSONTOKENIZER pTokenizer, PRTJSONTOKE
     char ch = rtJsonTokenizerGetCh(pTokenizer);
     if (RT_C_IS_ALPHA(ch))
         rc = rtJsonTokenizerGetLiteral(pTokenizer, pToken);
-    else if (RT_C_IS_DIGIT(ch))
+    else if (RT_C_IS_DIGIT(ch) || ch == '-')
         rc = rtJsonTokenizerGetNumber(pTokenizer, pToken);
     else if (ch == '\"')
         rc = rtJsonTokenizerGetString(pTokenizer, pToken);
