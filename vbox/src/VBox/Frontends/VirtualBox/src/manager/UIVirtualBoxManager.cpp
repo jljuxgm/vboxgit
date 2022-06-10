@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 76776 2019-01-11 13:21:59Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 76815 2019-01-14 13:36:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1488,6 +1488,13 @@ void UIVirtualBoxManager::saveSettings()
     }
 }
 
+void UIVirtualBoxManager::cleanupConnections()
+{
+    /* Honestly we should disconnect everything here,
+     * but for now it's enough to disconnect the most critical. */
+    m_pWidget->disconnect(this);
+}
+
 void UIVirtualBoxManager::cleanupWidgets()
 {
     /* Deconfigure central-widget: */
@@ -1519,6 +1526,7 @@ void UIVirtualBoxManager::cleanup()
     saveSettings();
 
     /* Cleanup: */
+    cleanupConnections();
     cleanupWidgets();
     cleanupMenuBar();
 }
