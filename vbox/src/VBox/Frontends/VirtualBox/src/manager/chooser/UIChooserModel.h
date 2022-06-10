@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIChooserModel.h 76915 2019-01-21 12:24:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -522,6 +522,9 @@ private:
 
         /** Holds the Id of last VM created from the GUI side. */
         QUuid  m_uLastCreatedMachineId;
+
+        /** Holds the global item height hint. */
+        int  m_iGlobalItemHeightHint;
     /** @} */
 
     /** @name Group saving stuff.
