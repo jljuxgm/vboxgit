@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.h 74880 2018-10-17 14:28:35Z vboxsync $ */
+/* $Id: UICloudProfileManager.h 74881 2018-10-17 14:38:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class declaration.
  */
@@ -72,12 +72,6 @@ protected:
       * @{ */
         /** Handles translation event. */
         virtual void retranslateUi() /* override */;
-
-        /** Handles resize @a pEvent. */
-        virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
-
-        /** Handles show @a pEvent. */
-        virtual void showEvent(QShowEvent *pEvent) /* override */;
     /** @} */
 
 public slots:
@@ -106,9 +100,6 @@ private slots:
 
     /** @name Tree-widget stuff.
       * @{ */
-        /** Handles command to adjust tree-widget. */
-        void sltAdjustTreeWidget();
-
         /** Handles tree-widget @a pItem change. */
         void sltHandleItemChange(QTreeWidgetItem *pItem);
         /** Handles tree-widget current item change. */
