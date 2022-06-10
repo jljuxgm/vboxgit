@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerMouse.cpp 77269 2019-02-11 17:10:02Z vboxsync $ */
+/* $Id: UIChooserHandlerMouse.cpp 77364 2019-02-19 15:43:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerMouse class implementation.
  */
@@ -71,7 +71,7 @@ bool UIChooserHandlerMouse::handleMousePress(QGraphicsSceneMouseEvent *pEvent) c
                 else if (UIChooserItemGlobal *pGlobalItem = qgraphicsitem_cast<UIChooserItemGlobal*>(pItemUnderMouse))
                 {
                     const QPoint itemCursorPos = pGlobalItem->mapFromScene(scenePos).toPoint();
-                    if (   pGlobalItem->isToolsButtonArea(itemCursorPos)
+                    if (   pGlobalItem->isToolButtonArea(itemCursorPos)
                         && (   model()->currentItem() == pGlobalItem
                             || pGlobalItem->isHovered()))
                     {
@@ -86,7 +86,7 @@ bool UIChooserHandlerMouse::handleMousePress(QGraphicsSceneMouseEvent *pEvent) c
                 else if (UIChooserItemMachine *pMachineItem = qgraphicsitem_cast<UIChooserItemMachine*>(pItemUnderMouse))
                 {
                     const QPoint itemCursorPos = pMachineItem->mapFromScene(scenePos).toPoint();
-                    if (   pMachineItem->isToolsButtonArea(itemCursorPos)
+                    if (   pMachineItem->isToolButtonArea(itemCursorPos)
                         && (   model()->currentItem() == pMachineItem
                             || pMachineItem->isHovered()))
                     {
