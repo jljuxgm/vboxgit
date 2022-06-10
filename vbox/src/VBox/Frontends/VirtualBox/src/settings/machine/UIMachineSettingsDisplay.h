@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 72109 2018-05-04 11:40:15Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 73092 2018-07-12 18:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -113,6 +113,7 @@ private slots:
     void sltHandleVideoCaptureQualitySliderChange();
     /** Handles Video Capture bit-rate editor change. */
     void sltHandleVideoCaptureBitRateEditorChange();
+    void sltHandleCaptureComboBoxChange();
 
 private:
 
@@ -124,6 +125,8 @@ private:
     void prepareTabRemoteDisplay();
     /** Prepares 'Video Capture' tab. */
     void prepareTabVideoCapture();
+    /** Populates Capture Mode combobox with related items. */
+    void prepareModeCombo();
     /** Prepares connections. */
     void prepareConnections();
     /** Cleanups all. */
@@ -157,6 +160,8 @@ private:
     bool saveRemoteDisplayData();
     /** Saves existing 'Video Capture' data from the cache. */
     bool saveVideoCaptureData();
+    /** Decide which of the capture related widgets are to be disabled/enabled. */
+    void enableDisableCaptureWidgets();
 
     /** Holds the guest OS type ID. */
     CGuestOSType  m_comGuestOSType;
