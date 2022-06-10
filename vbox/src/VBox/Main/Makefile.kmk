@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74290 2018-09-15 17:09:58Z vboxsync $
+# $Id: Makefile.kmk 74776 2018-10-11 17:30:59Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -461,6 +461,7 @@ VBoxSVC_SOURCES = \
 	src-server/ClientWatcher.cpp \
 	src-server/ClientToken.cpp \
 	src-server/CloudProviderManagerImpl.cpp \
+	src-server/DataStreamImpl.cpp \
 	src-server/DHCPServerImpl.cpp \
 	src-server/NetworkServiceRunner.cpp \
 	src-server/NATNetworkImpl.cpp \
