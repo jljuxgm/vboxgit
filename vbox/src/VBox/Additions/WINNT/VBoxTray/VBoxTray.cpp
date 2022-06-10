@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 74526 2018-09-28 15:08:24Z vboxsync $ */
+/* $Id: VBoxTray.cpp 74528 2018-09-28 15:12:46Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -561,13 +561,13 @@ static int vboxTrayLogCreate(const char *pszLogFile)
     RTERRINFOSTATIC ErrInfo;
     int rc = RTLogCreateEx(&g_pLoggerRelease, fFlags,
 #ifdef DEBUG
-                           "all.e.l.l2.l3.f",
+                           "all.e.l.f",
                            "VBOXTRAY_LOG",
 #else
                            "all",
                            "VBOXTRAY_RELEASE_LOG",
 #endif
-                           RT_ELEMENTS(s_apszGroups), s_apszGroups, RTLOGDEST_STDOUT | RTLOGDEST_USER,
+                           RT_ELEMENTS(s_apszGroups), s_apszGroups, RTLOGDEST_STDOUT,
                            vboxTrayLogHeaderFooter, g_cHistory, g_uHistoryFileSize, g_uHistoryFileTime,
                            RTErrInfoInitStatic(&ErrInfo), pszLogFile);
     if (RT_SUCCESS(rc))
