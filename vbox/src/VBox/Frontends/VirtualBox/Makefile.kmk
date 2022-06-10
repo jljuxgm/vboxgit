@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76605 2019-01-02 04:41:26Z vboxsync $
+# $Id: Makefile.kmk 76620 2019-01-02 22:18:02Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -2287,7 +2287,7 @@ ifdef VBOX_WITH_PRECOMPILED_HEADERS
   VBoxGlobal_USES      += vccprecomp
   VBoxGlobal_PCH_HDR   := $(PATH_SUB_CURRENT)/src/precomp_vcc.h
 
- else if $(KMK_REVISION) >= 3250 && "$(KBUILD_TARGET)" != "darwin" && !defined(VBOX_WITHOUT_PRECOMPILED_HEADERS) && !defined(KBUILD_USE_KOBJCACHE)
+ else if $(KMK_REVISION) >= 3256 && "$(KBUILD_TARGET)" != "darwin" && !defined(VBOX_WITHOUT_PRECOMPILED_HEADERS)
   VBoxGlobal_USES      += gccprecomp
   VBoxGlobal_PCH_HDR   := $(PATH_SUB_CURRENT)/src/precomp_gcc.h
   #VBoxGlobal_CXXFLAGS.linux += -H
