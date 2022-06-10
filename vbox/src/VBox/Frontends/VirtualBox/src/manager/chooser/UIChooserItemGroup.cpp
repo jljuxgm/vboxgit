@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 77723 2019-03-15 12:52:07Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 77756 2019-03-18 12:47:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -258,8 +258,8 @@ void UIChooserItemGroup::startEditing()
         return;
 
     /* Make sure item visible: */
-    AssertPtrReturnVoid(parentItem());
-    parentItem()->toGroupItem()->makeSureItemIsVisible(this);
+    if (model()->root())
+        model()->root()->makeSureItemIsVisible(this);
 
     /* Assign name-editor text: */
     m_pNameEditorWidget->setText(name());

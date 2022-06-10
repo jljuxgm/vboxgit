@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 77723 2019-03-15 12:52:07Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 77756 2019-03-18 12:47:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -475,8 +475,6 @@ void UIChooserItem::makeSureItsVisible()
         if (pParentItem->isClosed())
             pParentItem->open(false);
     }
-    /* Make sure we scroll to the item's rectangle: */
-    pParentItem->makeSureItemIsVisible(this);
 }
 
 UIChooserItemDragToken UIChooserItem::dragTokenPlace() const
