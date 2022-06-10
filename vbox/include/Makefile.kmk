@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 70062 2017-12-11 15:27:48Z vboxsync $
+# $Id: Makefile.kmk 76372 2018-12-22 04:43:34Z vboxsync $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -77,7 +77,8 @@ VBOX_HDRS_R3_ONLY := \
 	iprt/localipc.h \
 	iprt/linux/sysfs.h \
 	iprt/socket.h \
-	iprt/udp.h
+	iprt/udp.h \
+       iprt/linux/symvers.h
 
 # Ring-0 only headers.
 VBOX_HDRS_R0_ONLY := \
