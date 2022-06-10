@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 73364 2018-07-26 08:37:41Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 73367 2018-07-26 10:00:33Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -685,7 +685,10 @@ static int vmsvga3dLoadGLFunctions(PVMSVGA3DSTATE pState)
     GLGETPROC_(PFNGLDISABLEVERTEXATTRIBARRAYPROC         , glDisableVertexAttribArray, "");
     GLGETPROC_(PFNGLVERTEXATTRIBPOINTERPROC              , glVertexAttribPointer, "");
     GLGETPROC_(PFNGLACTIVETEXTUREPROC                    , glActiveTexture, "");
-    /** @todo Why ARB? Seems to be RT_OS_DARWIN related, see DevVGA-SVGA3d-internal.h */
+    /* glGetProgramivARB determines implementation limits for the program
+     * target (GL_FRAGMENT_PROGRAM_ARB, GL_VERTEX_PROGRAM_ARB).
+     * It differs from glGetProgramiv, which returns a parameter from a program object.
+     */
     GLGETPROC_(PFNGLGETPROGRAMIVARBPROC                  , glGetProgramivARB, "");
     GLGETPROC_(PFNGLFOGCOORDPOINTERPROC                  , glFogCoordPointer, "");
 #if VBOX_VMSVGA3D_GL_HACK_LEVEL < 0x102
