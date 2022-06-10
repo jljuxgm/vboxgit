@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 74209 2018-09-12 09:48:13Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 74225 2018-09-12 15:35:39Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3205,8 +3205,9 @@ static int hmR0VmxExportHostMsrs(PVMCPU pVCpu)
 static bool hmR0VmxShouldSwapEferMsr(PVMCPU pVCpu)
 {
 #ifdef HMVMX_ALWAYS_SWAP_EFER
+    RT_NOREF(pVCpu);
     return true;
-#endif
+#else
 
     PCPUMCTX pCtx = &pVCpu->cpum.GstCtx;
 #if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS)
@@ -3244,6 +3245,7 @@ static bool hmR0VmxShouldSwapEferMsr(PVMCPU pVCpu)
     }
 
     return false;
+#endif
 }
 
 
