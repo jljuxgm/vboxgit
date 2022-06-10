@@ -1,4 +1,4 @@
-/* $Id: vboximgMedia.cpp 76271 2018-12-18 05:29:30Z vboxsync $ $Revision: 76271 $ */
+/* $Id: vboximgMedia.cpp 76272 2018-12-18 05:49:18Z vboxsync $ $Revision: 76272 $ */
 /** @file
  * vboximgMedia.cpp - Disk Image Flattening FUSE Program.
  */
@@ -202,11 +202,7 @@ getMediumInfo(IMachine *pMachine, IMedium *pMedium, MEDIUMINFO **ppMediumInfo)
 
 static void displayMediumInfo(MEDIUMINFO *pInfo, int nestLevel, bool fLast)
 {
-    if (nestLevel > 20)
-    {
-        RTPrintf("Media nested too deeply\n");
-        return;
-    }
+
     char *cbScaled = vboximgScaledSize(pInfo->cbSize);
     int cPad = nestLevel * 2;
     if (g_vboximgOpts.fWide && !g_vboximgOpts.fVerbose)
@@ -352,7 +348,7 @@ vboximgListVMs(IVirtualBox *pVirtualBox)
                 {
                     if (g_vboximgOpts.fVerbose)
                     {
-                        RTPrintf("----------------------------------------------------------------\n");
+                        RTPrintf("-----------------------------------------------------------------\n");
                         RTPrintf("VM Name:   \"%s\"\n", CSTR(machineName));
                         RTPrintf("UUID:      %s\n",     CSTR(machineUuid));
                         if (*description.raw() != '\0')
@@ -363,13 +359,13 @@ vboximgListVMs(IVirtualBox *pVirtualBox)
                     {
                         if (g_vboximgOpts.fWide & !g_vboximgOpts.fVerbose)
                         {
-                            RTPrintf("----------------------------------------------------------------  "
+                            RTPrintf("-----------------------------------------------------------------  "
                                  "------------------------------------\n");
-                            RTPrintf("%-*s %*s %s\n", VM_MAX_NAME, CSTR(machineName), 32, "",  CSTR(machineUuid));
+                            RTPrintf("%-*s %*s %s\n", VM_MAX_NAME, CSTR(machineName), 33, "",  CSTR(machineUuid));
                         }
                         else
                         {
-                            RTPrintf("----------------------------------------------------------------\n");
+                            RTPrintf("-----------------------------------------------------------------\n");
                             RTPrintf("VM:   %s\n", CSTR(machineName));
                             RTPrintf("UUID: %s\n", CSTR(machineUuid));
                         }
