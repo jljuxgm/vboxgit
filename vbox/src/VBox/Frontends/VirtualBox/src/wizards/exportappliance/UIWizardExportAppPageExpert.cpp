@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 74842 2018-10-15 11:02:31Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 74954 2018-10-19 18:07:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -494,13 +494,10 @@ bool UIWizardExportAppPageExpert::isComplete() const
         const bool fOVF =    field("format").toString() == "ovf-0.9"
                           || field("format").toString() == "ovf-1.0"
                           || field("format").toString() == "ovf-2.0";
-        const bool fOPC =    field("format").toString() == "opc-1.0";
         const bool fCSP =    isFormatCloudOne();
 
         fResult =    (   fOVF
                       && VBoxGlobal::hasAllowedExtension(strFile, OVFFileExts))
-                  || (   fOPC
-                      && VBoxGlobal::hasAllowedExtension(strFile, OPCFileExts))
                   || fCSP;
     }
 

@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIDefs.h 74954 2018-10-19 18:07:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -89,8 +89,6 @@ namespace UIDefs
     SHARED_LIBRARY_STUFF extern QStringList VBoxExtPackFileExts;
     /** Allowed OVF file extensions. */
     SHARED_LIBRARY_STUFF extern QStringList OVFFileExts;
-    /** Allowed OPC file extensions. */
-    SHARED_LIBRARY_STUFF extern QStringList OPCFileExts;
 }
 using namespace UIDefs /* if header included */;
 
@@ -158,4 +156,3 @@ struct ExactStorageSlot : public StorageSlot
 
 
 #endif /* !___UIDefs_h___ */
-
