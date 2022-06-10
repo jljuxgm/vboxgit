@@ -1,4 +1,4 @@
-/* $Id: rest-primary-object-types.cpp 73902 2018-08-27 00:50:23Z vboxsync $ */
+/* $Id: rest-primary-object-types.cpp 73914 2018-08-27 12:40:34Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestObjectBase implementation.
  */
@@ -34,7 +34,6 @@
 #include <iprt/string.h>
 
 #include <stdio.h>
-
 
 
 
@@ -620,7 +619,7 @@ void RTCRestString::resetToDefault()
 
 RTCRestOutputBase &RTCRestString::serializeAsJson(RTCRestOutputBase &a_rDst) const
 {
-    a_rDst.printf("%RJs", m_psz);
+    a_rDst.printf("%RMjs", m_psz);
     return a_rDst;
 }
 
