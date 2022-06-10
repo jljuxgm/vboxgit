@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBFilterMgr.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxUSBFilterMgr.cpp 76358 2018-12-22 01:33:23Z vboxsync $ */
 /** @file
  * VirtualBox Ring-0 USB Filter Manager.
  */
@@ -31,6 +31,7 @@
 #include <VBox/usbfilter.h>
 #include "VBoxUSBFilterMgr.h"
 
+#include <iprt/err.h>
 #include <iprt/handletable.h>
 #include <iprt/mem.h>
 #ifdef VBOXUSBFILTERMGR_USB_SPINLOCK
