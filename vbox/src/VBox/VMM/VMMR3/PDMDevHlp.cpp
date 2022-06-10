@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 77249 2019-02-11 01:34:51Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 77299 2019-02-13 13:57:14Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -662,6 +662,26 @@ static DECLCALLBACK(int) pdmR3DevHlp_MMIO2MapKernel(PPDMDEVINS pDevIns, PPDMPCID
     int rc = PGMR3PhysMMIO2MapKernel(pVM, pDevIns, pPciDev ? pPciDev->Int.s.idxDevCfg : 254, iRegion, off, cb, pszDesc, pR0Ptr);
 
     LogFlow(("pdmR3DevHlp_MMIO2MapKernel: caller='%s'/%d: returns %Rrc *pR0Ptr=%RHv\n", pDevIns->pReg->szName, pDevIns->iInstance, rc, *pR0Ptr));
+    return rc;
+}
+
+
+/**
+ * @copydoc PDMDEVHLPR3::pfnMMIOExChangeRegionNo
+ */
+static DECLCALLBACK(int) pdmR3DevHlp_MMIOExChangeRegionNo(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
+                                                          uint32_t iNewRegion)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    PVM pVM = pDevIns->Internal.s.pVMR3;
+    VM_ASSERT_EMT(pVM);
+    LogFlow(("pdmR3DevHlp_MMIOExChangeRegionNo: caller='%s'/%d: pPciDev=%p:{%#x} iRegion=%#x iNewRegion=%#x\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, pPciDev, pPciDev ? pPciDev->uDevFn : UINT32_MAX, iRegion, iNewRegion));
+    AssertReturn(!pPciDev || pPciDev->Int.s.pDevInsR3 == pDevIns, VERR_INVALID_PARAMETER);
+
+    int rc = PGMR3PhysMMIOExChangeRegionNo(pVM, pDevIns, pPciDev ? pPciDev->Int.s.idxDevCfg : 254, iRegion, iNewRegion);
+
+    LogFlow(("pdmR3DevHlp_MMIOExChangeRegionNo: caller='%s'/%d: returns %Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
     return rc;
 }
 
@@ -3797,7 +3817,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_PhysBulkGCPhys2CCPtr,
     pdmR3DevHlp_PhysBulkGCPhys2CCPtrReadOnly,
     pdmR3DevHlp_PhysBulkReleasePageMappingLocks,
-    0,
+    pdmR3DevHlp_MMIOExChangeRegionNo,
     0,
     0,
     0,
@@ -4067,7 +4087,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_PhysBulkGCPhys2CCPtr,
     pdmR3DevHlp_PhysBulkGCPhys2CCPtrReadOnly,
     pdmR3DevHlp_PhysBulkReleasePageMappingLocks,
-    0,
+    pdmR3DevHlp_MMIOExChangeRegionNo,
     0,
     0,
     0,
