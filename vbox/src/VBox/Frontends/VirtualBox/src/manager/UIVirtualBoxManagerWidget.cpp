@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74320 2018-09-17 17:45:41Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74322 2018-09-17 17:53:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -253,19 +253,9 @@ void UIVirtualBoxManagerWidget::sltHandleChooserPaneIndexChange(bool fUpdateDeta
         /* If current item exists & accessible: */
         if (pItem && pItem->accessible())
         {
-            /* If Desktop pane is chosen currently: */
+            /* If Desktop pane is chosen currently => open tool currently chosen in Tools-pane: */
             if (m_pPaneToolsMachine->currentTool() == ToolTypeMachine_Desktop)
-            {
-                /* Make sure Details or Snapshot pane is chosen if opened: */
-                if (m_pPaneToolsMachine->isToolOpened(ToolTypeMachine_Details))
-                    switchToTool(ToolTypeMachine_Details);
-                else
-                if (m_pPaneToolsMachine->isToolOpened(ToolTypeMachine_Snapshots))
-                    switchToTool(ToolTypeMachine_Snapshots);
-                else
-                if (m_pPaneToolsMachine->isToolOpened(ToolTypeMachine_LogViewer))
-                    switchToTool(ToolTypeMachine_LogViewer);
-            }
+                sltHandleToolsPaneIndexChange();
 
             /* Update Details-pane (if requested): */
             if (   fUpdateDetails
