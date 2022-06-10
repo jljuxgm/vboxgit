@@ -1,4 +1,4 @@
-/* $Id: file.c 78280 2019-04-24 16:29:00Z vboxsync $ */
+/* $Id: file.c 78302 2019-04-26 00:44:17Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver file routines.
  */
@@ -327,17 +327,29 @@ static VOID vbsfReadWorker(VOID *pv)
     RxLowIoCompletion(RxContext);
 }
 
-
 NTSTATUS VBoxMRxRead(IN PRX_CONTEXT RxContext)
 {
-    NTSTATUS Status = RxDispatchToWorkerThread(VBoxMRxDeviceObject, DelayedWorkQueue,
-                                               vbsfReadWorker,
-                                               RxContext);
+    NTSTATUS Status;
 
-    Log(("VBOXSF: MRxRead: RxDispatchToWorkerThread: Status 0x%08X\n", Status));
+#if 0
+    if (   IoIsOperationSynchronous(RxContext->CurrentIrp)
+        /*&& IoGetRemainingStackSize() >= 1024 - not necessary, checked by RxFsdCommonDispatch already */)
+    {
+        RxContext->IoStatusBlock.Status = Status = vbsfReadInternal(RxContext);
+        Assert(Status != STATUS_PENDING);
 
-    if (Status == STATUS_SUCCESS)
-        Status = STATUS_PENDING;
+        Log(("VBOXSF: MRxRead: vbsfReadInternal: Status %#08X\n", Status));
+    }
+    else
+#endif
+    {
+        Status = RxDispatchToWorkerThread(VBoxMRxDeviceObject, DelayedWorkQueue, vbsfReadWorker, RxContext);
+
+        Log(("VBOXSF: MRxRead: RxDispatchToWorkerThread: Status 0x%08X\n", Status));
+
+        if (Status == STATUS_SUCCESS)
+            Status = STATUS_PENDING;
+    }
 
     return Status;
 }
