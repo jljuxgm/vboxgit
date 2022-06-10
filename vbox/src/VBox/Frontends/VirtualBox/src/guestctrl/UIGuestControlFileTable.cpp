@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 75905 2018-12-03 13:18:33Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 75910 2018-12-03 14:14:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -991,11 +991,12 @@ void UIGuestControlFileTable::goIntoDirectory(const QModelIndex &itemIndex)
         return;
     }
 
-    if (!item->isDirectory())
-        return;
-    if (!item->isOpened())
-       readDirectory(item->path(),item);
-    changeLocation(index);
+    if (item->isDirectory() || (item->isSymLink() && item->isTargetADirectory()))
+    {
+        if (!item->isOpened())
+            readDirectory(item->path(),item);
+        changeLocation(index);
+    }
 }
 
 void UIGuestControlFileTable::goIntoDirectory(const QStringList &pathTrail)
