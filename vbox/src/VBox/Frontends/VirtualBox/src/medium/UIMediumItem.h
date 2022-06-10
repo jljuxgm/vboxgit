@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIMediumItem.h 76211 2018-12-13 15:07:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -26,6 +26,8 @@
 /** QITreeWidgetItem extension representing Media Manager item. */
 class SHARED_LIBRARY_STUFF UIMediumItem : public QITreeWidgetItem, public UIDataMedium
 {
+    Q_OBJECT;
+
 public:
 
     /** Constructs top-level item.

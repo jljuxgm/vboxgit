@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 76183 2018-12-12 15:23:12Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 76211 2018-12-13 15:07:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -66,6 +66,8 @@ enum
 /** Host Network Manager: Tree-widget item. */
 class UIItemHostNetwork : public QITreeWidgetItem, public UIDataHostNetwork
 {
+    Q_OBJECT;
+
 public:
 
     /** Updates item fields from data. */
@@ -1065,3 +1067,5 @@ UIHostNetworkManagerWidget *UIHostNetworkManager::widget()
     return qobject_cast<UIHostNetworkManagerWidget*>(QIManagerDialog::widget());
 }
 
+
+#include "UIHostNetworkManager.moc"

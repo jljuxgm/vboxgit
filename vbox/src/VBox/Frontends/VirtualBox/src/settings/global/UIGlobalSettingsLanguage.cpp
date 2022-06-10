@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.cpp 71367 2018-03-16 13:51:58Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.cpp 76211 2018-12-13 15:07:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class implementation.
  */
@@ -71,6 +71,8 @@ struct UIDataSettingsGlobalLanguage
 /* Language item: */
 class UILanguageItem : public QITreeWidgetItem
 {
+    Q_OBJECT;
+
 public:
 
     /* Language item constructor: */
@@ -459,3 +461,5 @@ bool UIGlobalSettingsLanguage::saveLanguageData()
     return fSuccess;
 }
 
+
+#include "UIGlobalSettingsLanguage.moc"
