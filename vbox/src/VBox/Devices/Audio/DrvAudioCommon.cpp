@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 76679 2019-01-07 13:50:26Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 76857 2019-01-17 13:51:22Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -935,8 +935,22 @@ int DrvAudioHlpPCMPropsToStreamCfg(const PPDMAUDIOPCMPROPS pProps, PPDMAUDIOSTRE
     AssertPtrReturn(pProps, VERR_INVALID_POINTER);
     AssertPtrReturn(pCfg,   VERR_INVALID_POINTER);
 
+    DrvAudioHlpStreamCfgInit(pCfg);
+
     memcpy(&pCfg->Props, pProps, sizeof(PDMAUDIOPCMPROPS));
     return VINF_SUCCESS;
+}
+
+/**
+ * Initializes a stream configuration with its default values.
+ *
+ * @param   pCfg                Pointer to stream to initialize.
+ */
+void DrvAudioHlpStreamCfgInit(PPDMAUDIOSTREAMCFG pCfg)
+{
+    RT_BZERO(pCfg, sizeof(PDMAUDIOSTREAMCFG));
+
+    pCfg->Backend.cfPreBuf = UINT32_MAX; /* Explicitly set to "undefined". */
 }
 
 /**
