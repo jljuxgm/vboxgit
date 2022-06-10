@@ -1,4 +1,4 @@
-/* $Id: QIWithRetranslateUI.h 76818 2019-01-14 16:17:07Z vboxsync $ */
+/* $Id: QIWithRetranslateUI.h 77568 2019-03-05 17:26:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIWithRetranslateUI class declaration.
  */
@@ -145,6 +145,15 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() = 0;
 };
+
+/** Explicit QIWithRetranslateUI3 instantiation for QObject class.
+  * @note  On Windows it's important that all template cases are instantiated just once across
+  *        the linking space. In case we have particular template case instantiated from both
+  *        library and executable sides, - we have multiple definition case and need to strictly
+  *        ask compiler to do it just once and link such cases against library only.
+  *        I would also note that it would be incorrect to just make whole the template exported
+  *        to library because latter can have lack of required instantiations (current case). */
+template class SHARED_LIBRARY_STUFF QIWithRetranslateUI3<QObject>;
 
 
 /** Template for automatic language translations of underlying QGraphicsWidget. */
