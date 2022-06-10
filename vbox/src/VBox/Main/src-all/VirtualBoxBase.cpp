@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 72938 2018-07-06 21:12:49Z vboxsync $ */
 
 /** @file
  *
@@ -335,6 +335,7 @@ HRESULT VirtualBoxBase::setErrorInternal(HRESULT aResultCode,
             case VBOX_E_XML_ERROR:             aText = "Invalid XML found"; break;
             case VBOX_E_INVALID_SESSION_STATE: aText = "Current session state prohibits operation"; break;
             case VBOX_E_OBJECT_IN_USE:         aText = "Object being in use prohibits operation"; break;
+            case VBOX_E_PASSWORD_INCORRECT:    aText = "Incorrect password provided"; break;
             default:                           aText = "Unknown error"; break;
         }
     }
