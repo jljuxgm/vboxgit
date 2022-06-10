@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: MachineImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_MACHINEIMPL
-#define ____H_MACHINEIMPL
+#ifndef MAIN_INCLUDED_MachineImpl_h
+#define MAIN_INCLUDED_MachineImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -1589,5 +1589,5 @@ inline const Guid &Machine::i_getSnapshotId() const
 }
 
 
-#endif // ____H_MACHINEIMPL
+#endif /* !MAIN_INCLUDED_MachineImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VFSExplorerImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_VFSEXPLORERIMPL
-#define ____H_VFSEXPLORERIMPL
+#ifndef MAIN_INCLUDED_VFSExplorerImpl_h
+#define MAIN_INCLUDED_VFSExplorerImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -84,5 +84,5 @@ private:
 
 };
 
-#endif /* !____H_VFSEXPLORERIMPL */
+#endif /* !MAIN_INCLUDED_VFSExplorerImpl_h */
 

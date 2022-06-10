@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_GUESTPROCESSIMPL
-#define ____H_GUESTPROCESSIMPL
+#ifndef MAIN_INCLUDED_GuestProcessImpl_h
+#define MAIN_INCLUDED_GuestProcessImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -276,5 +276,5 @@ protected:
     GuestProcessStream          mStdErr;
 };
 
-#endif /* !____H_GUESTPROCESSIMPL */
+#endif /* !MAIN_INCLUDED_GuestProcessImpl_h */
 

@@ -1,4 +1,4 @@
-/* $Id: USBIdDatabase.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: USBIdDatabase.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * USB device vendor and product ID database.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___USBIdDatabase_h
-#define ___USBIdDatabase_h
+#ifndef MAIN_INCLUDED_USBIdDatabase_h
+#define MAIN_INCLUDED_USBIdDatabase_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -212,5 +212,5 @@ public:
 };
 
 
-#endif
+#endif /* !MAIN_INCLUDED_USBIdDatabase_h */
 

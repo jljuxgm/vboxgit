@@ -1,4 +1,4 @@
-/* $Id: vbox-libhal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vbox-libhal.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  *
  * Module to dynamically load libhal and libdbus and load all symbols
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_VBOX_LIBHAL
-#define ____H_VBOX_LIBHAL
+#ifndef MAIN_INCLUDED_vbox_libhal_h
+#define MAIN_INCLUDED_vbox_libhal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -66,5 +66,5 @@ extern dbus_bool_t (*gLibHalCtxFree)(LibHalContext *);
 
 extern bool gLibHalCheckPresence(void);
 
-#endif /* ____H_VBOX_LIBHAL not defined */
+#endif /* !MAIN_INCLUDED_vbox_libhal_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

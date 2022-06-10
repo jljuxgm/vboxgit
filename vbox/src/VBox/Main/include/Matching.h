@@ -1,4 +1,4 @@
-/* $Id: Matching.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Matching.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Declaration of template classes that provide simple API to
  * do matching between values and value filters constructed from strings.
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_MATCHING
-#define ____H_MATCHING
+#ifndef MAIN_INCLUDED_Matching_h
+#define MAIN_INCLUDED_Matching_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -526,5 +526,5 @@ private:
 
 } /* namespace matching */
 
-#endif // !____H_MATCHING
+#endif /* !MAIN_INCLUDED_Matching_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

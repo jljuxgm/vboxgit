@@ -1,4 +1,4 @@
-/* $Id: vector.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vector.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * STL-inspired vector implementation in C
  * @note  functions in this file are inline to prevent warnings about
@@ -24,8 +24,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef MAIN_VECTOR_H
-#define MAIN_VECTOR_H
+#ifndef MAIN_INCLUDED_vector_h
+#define MAIN_INCLUDED_vector_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -351,4 +351,4 @@ DECLINLINE(int) vecPushBackPtr(VECTOR_PTR *pvec, unsigned uTypeHash,
          && pIterator < (type *) (pvec)->mpvaElements + (pvec)->mcElements; \
          ++pIterator)
 
-#endif /* !MAIN_VECTOR_H */
+#endif /* !MAIN_INCLUDED_vector_h */

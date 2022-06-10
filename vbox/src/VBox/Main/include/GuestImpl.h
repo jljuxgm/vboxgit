@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GuestImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_GUESTIMPL
-#define ____H_GUESTIMPL
+#ifndef MAIN_INCLUDED_GuestImpl_h
+#define MAIN_INCLUDED_GuestImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -247,5 +247,5 @@ private:
 };
 #define GUEST_MAGIC 0xCEED2006u /** @todo r=andy Not very well defined!? */
 
-#endif // ____H_GUESTIMPL
+#endif /* !MAIN_INCLUDED_GuestImpl_h */
 

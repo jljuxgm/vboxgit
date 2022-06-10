@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RecordingScreenSettingsImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 
 /** @file
  *
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_RecordingScreenSettings
-#define ____H_RecordingScreenSettings
+#ifndef MAIN_INCLUDED_RecordingScreenSettingsImpl_h
+#define MAIN_INCLUDED_RecordingScreenSettingsImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -119,5 +119,5 @@ private:
     Data *m;
 };
 
-#endif // ____H_RecordingScreenSettings
+#endif /* !MAIN_INCLUDED_RecordingScreenSettingsImpl_h */
 

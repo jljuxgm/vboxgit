@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_GUESTSESSIONIMPLTASKS
-#define ____H_GUESTSESSIONIMPLTASKS
+#ifndef MAIN_INCLUDED_GuestSessionImplTasks_h
+#define MAIN_INCLUDED_GuestSessionImplTasks_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -377,4 +377,4 @@ protected:
     /** Update flags. */
     uint32_t                    mFlags;
 };
-#endif /* !____H_GUESTSESSIONIMPLTASKS */
+#endif /* !MAIN_INCLUDED_GuestSessionImplTasks_h */

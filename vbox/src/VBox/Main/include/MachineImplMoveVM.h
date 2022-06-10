@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: MachineImplMoveVM.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Definition of MachineMoveVM
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_MACHINEIMPLMOVEVM
-#define ____H_MACHINEIMPLMOVEVM
+#ifndef MAIN_INCLUDED_MachineImplMoveVM_h
+#define MAIN_INCLUDED_MachineImplMoveVM_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -140,6 +140,6 @@ public:
     bool isMediumTypeSupportedForMoving(const ComPtr<IMedium> &pMedium);
 };
 
-#endif // ____H_MACHINEIMPLMOVEVM
+#endif /* !MAIN_INCLUDED_MachineImplMoveVM_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
 

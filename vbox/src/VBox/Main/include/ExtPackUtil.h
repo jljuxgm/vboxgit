@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ExtPackUtil.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_EXTPACKUTIL
-#define ____H_EXTPACKUTIL
+#ifndef MAIN_INCLUDED_ExtPackUtil_h
+#define MAIN_INCLUDED_ExtPackUtil_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -142,5 +142,5 @@ int                 VBoxExtPackValidateTarball(RTFILE hTarballFile, const char *
                                                PRTMANIFEST phValidManifest, PRTVFSFILE phXmlFile, RTCString *pStrDigest);
 #endif /* __cplusplus */
 
-#endif
+#endif /* !MAIN_INCLUDED_ExtPackUtil_h */
 

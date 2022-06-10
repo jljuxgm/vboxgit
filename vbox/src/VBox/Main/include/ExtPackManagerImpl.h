@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_EXTPACKMANAGERIMPL
-#define ____H_EXTPACKMANAGERIMPL
+#ifndef MAIN_INCLUDED_ExtPackManagerImpl_h
+#define MAIN_INCLUDED_ExtPackManagerImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -286,5 +286,5 @@ private:
     friend class ExtPackUninstallTask;
 };
 
-#endif
+#endif /* !MAIN_INCLUDED_ExtPackManagerImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

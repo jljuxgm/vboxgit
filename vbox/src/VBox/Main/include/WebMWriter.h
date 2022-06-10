@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: WebMWriter.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____WEBMWRITER
-#define ____WEBMWRITER
+#ifndef MAIN_INCLUDED_WebMWriter_h
+#define MAIN_INCLUDED_WebMWriter_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -576,4 +576,4 @@ protected:
     typedef std::map <uint8_t, WebMTrack *> WebMTracks;
 };
 
-#endif /* !____WEBMWRITER */
+#endif /* !MAIN_INCLUDED_WebMWriter_h */

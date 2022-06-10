@@ -1,4 +1,4 @@
-/* $Id: CertificateImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: CertificateImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox COM ICertificate implementation.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_CERTIFICATEIMPL
-#define ____H_CERTIFICATEIMPL
+#ifndef MAIN_INCLUDED_CertificateImpl_h
+#define MAIN_INCLUDED_CertificateImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -98,5 +98,5 @@ private:
     Data *m;
 };
 
-#endif // !____H_CERTIFICATEIMPL
+#endif /* !MAIN_INCLUDED_CertificateImpl_h */
 

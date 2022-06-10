@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: MediumIOImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - MediumIO.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_MEDIUMIOIMPL
-#define ____H_MEDIUMIOIMPL
+#ifndef MAIN_INCLUDED_MediumIOImpl_h
+#define MAIN_INCLUDED_MediumIOImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -77,6 +77,6 @@ private:
     friend class StreamTask;
 };
 
-#endif
+#endif /* !MAIN_INCLUDED_MediumIOImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
 

@@ -1,4 +1,4 @@
-/* $Id: TextScript.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: TextScript.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving text scripts (unattended installation, ++).
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_TEXTSCRIPT
-#define ____H_TEXTSCRIPT
+#ifndef MAIN_INCLUDED_TextScript_h
+#define MAIN_INCLUDED_TextScript_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -227,5 +227,5 @@ public:
 };
 
 
-#endif // !____H_TEXTSCRIPT
+#endif /* !MAIN_INCLUDED_TextScript_h */
 

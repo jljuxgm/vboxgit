@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: MachineImplCloneVM.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Definition of MachineCloneVM
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_MACHINEIMPLCLONEVM
-#define ____H_MACHINEIMPLCLONEVM
+#ifndef MAIN_INCLUDED_MachineImplCloneVM_h
+#define MAIN_INCLUDED_MachineImplCloneVM_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -46,6 +46,6 @@ protected:
     friend struct MachineCloneVMPrivate;
 };
 
-#endif // ____H_MACHINEIMPLCLONEVM
+#endif /* !MAIN_INCLUDED_MachineImplCloneVM_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
 

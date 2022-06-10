@@ -1,4 +1,4 @@
-/* $Id: BandwidthGroupImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: BandwidthGroupImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_BANDWIDTHGROUPIMPL
-#define ____H_BANDWIDTHGROUPIMPL
+#ifndef MAIN_INCLUDED_BandwidthGroupImpl_h
+#define MAIN_INCLUDED_BandwidthGroupImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -101,5 +101,5 @@ private:
     Data *m;
 };
 
-#endif // ____H_BANDWIDTHGROUPIMPL
+#endif /* !MAIN_INCLUDED_BandwidthGroupImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

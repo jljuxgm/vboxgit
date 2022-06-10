@@ -1,4 +1,4 @@
-/* $Id: HostVideoInputDeviceImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HostVideoInputDeviceImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * A host video capture device description.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_HOSTVIDEOINPUTDEVICEIMPL
-#define ____H_HOSTVIDEOINPUTDEVICEIMPL
+#ifndef MAIN_INCLUDED_HostVideoInputDeviceImpl_h
+#define MAIN_INCLUDED_HostVideoInputDeviceImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -67,6 +67,6 @@ private:
     Data m;
 };
 
-#endif
+#endif /* !MAIN_INCLUDED_HostVideoInputDeviceImpl_h */
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: MediumAttachmentImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: MediumAttachmentImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_MEDIUMATTACHMENTIMPL
-#define ____H_MEDIUMATTACHMENTIMPL
+#ifndef MAIN_INCLUDED_MediumAttachmentImpl_h
+#define MAIN_INCLUDED_MediumAttachmentImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -131,5 +131,5 @@ private:
     Utf8Str mLogName;                   /**< For logging purposes */
 };
 
-#endif // !____H_MEDIUMATTACHMENTIMPL
+#endif /* !MAIN_INCLUDED_MediumAttachmentImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

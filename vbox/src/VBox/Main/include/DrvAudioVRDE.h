@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvAudioVRDE.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox driver interface to VRDE backend.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_DRVAUDIOVRDE
-#define ____H_DRVAUDIOVRDE
+#ifndef MAIN_INCLUDED_DrvAudioVRDE_h
+#define MAIN_INCLUDED_DrvAudioVRDE_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -72,5 +72,5 @@ private:
     struct DRVAUDIOVRDE *mpDrv;
 };
 
-#endif /* !____H_DRVAUDIOVRDE */
+#endif /* !MAIN_INCLUDED_DrvAudioVRDE_h */
 

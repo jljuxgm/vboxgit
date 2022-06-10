@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_CONSOLEVRDPSERVER
-#define ____H_CONSOLEVRDPSERVER
+#ifndef MAIN_INCLUDED_ConsoleVRDPServer_h
+#define MAIN_INCLUDED_ConsoleVRDPServer_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -410,5 +410,5 @@ private:
     Console * const         mParent;
 };
 
-#endif // ____H_CONSOLEVRDPSERVER
+#endif /* !MAIN_INCLUDED_ConsoleVRDPServer_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Declaration of USBDeviceFilter and HostUSBDeviceFilter.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_USBDEVICEFILTERIMPL
-#define ____H_USBDEVICEFILTERIMPL
+#ifndef MAIN_INCLUDED_USBDeviceFilterImpl_h
+#define MAIN_INCLUDED_USBDeviceFilterImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -226,5 +226,5 @@ private:
     friend class Host;
 };
 
-#endif // ____H_USBDEVICEFILTERIMPL
+#endif /* !MAIN_INCLUDED_USBDeviceFilterImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

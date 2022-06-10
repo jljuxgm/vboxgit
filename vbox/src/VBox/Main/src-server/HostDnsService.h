@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HostDnsService.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___H_DNSHOSTSERVICE
-#define ___H_DNSHOSTSERVICE
+#ifndef MAIN_INCLUDED_SRC_src_server_HostDnsService_h
+#define MAIN_INCLUDED_SRC_src_server_HostDnsService_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -231,4 +231,4 @@ class HostDnsServiceOs2 : public HostDnsServiceResolvConf
 #  endif
 # endif
 
-#endif /* !___H_DNSHOSTSERVICE */
+#endif /* !MAIN_INCLUDED_SRC_src_server_HostDnsService_h */

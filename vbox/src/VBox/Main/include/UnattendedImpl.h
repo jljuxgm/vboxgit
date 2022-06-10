@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UnattendedImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Unattended class header
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_UNATTENDED
-#define ____H_UNATTENDED
+#ifndef MAIN_INCLUDED_UnattendedImpl_h
+#define MAIN_INCLUDED_UnattendedImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -262,5 +262,5 @@ private:
     bool i_isGuestOSArchX64(Utf8Str const &rStrGuestOsTypeId);
 };
 
-#endif // !____H_UNATTENDED
+#endif /* !MAIN_INCLUDED_UnattendedImpl_h */
 

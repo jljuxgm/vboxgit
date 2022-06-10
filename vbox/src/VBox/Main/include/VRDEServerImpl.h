@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VRDEServerImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 
 /** @file
  *
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_VRDPSERVER
-#define ____H_VRDPSERVER
+#ifndef MAIN_INCLUDED_VRDEServerImpl_h
+#define MAIN_INCLUDED_VRDEServerImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -84,5 +84,5 @@ private:
     Backupable<settings::VRDESettings> mData;
 };
 
-#endif // ____H_VRDPSERVER
+#endif /* !MAIN_INCLUDED_VRDEServerImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

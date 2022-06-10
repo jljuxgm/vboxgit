@@ -1,4 +1,4 @@
-/* $Id: iokit.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: iokit.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___darwin_iokit_h___
-#define ___darwin_iokit_h___
+#ifndef MAIN_INCLUDED_SRC_src_server_darwin_iokit_h
+#define MAIN_INCLUDED_SRC_src_server_darwin_iokit_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -87,4 +87,4 @@ PDARWINDVD      DarwinGetDVDDrives(void);
 PDARWINETHERNIC DarwinGetEthernetControllers(void);
 RT_C_DECLS_END
 
-#endif
+#endif /* !MAIN_INCLUDED_SRC_src_server_darwin_iokit_h */

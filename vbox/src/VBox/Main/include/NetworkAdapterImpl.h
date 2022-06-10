@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_NETWORKADAPTER
-#define ____H_NETWORKADAPTER
+#ifndef MAIN_INCLUDED_NetworkAdapterImpl_h
+#define MAIN_INCLUDED_NetworkAdapterImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -123,5 +123,5 @@ private:
     Backupable<settings::NetworkAdapter> mData;
 };
 
-#endif // ____H_NETWORKADAPTER
+#endif /* !MAIN_INCLUDED_NetworkAdapterImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

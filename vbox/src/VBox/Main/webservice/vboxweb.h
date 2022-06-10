@@ -1,4 +1,4 @@
-/* $Id: vboxweb.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vboxweb.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * vboxweb.h - header file for "real" web server code.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_webservice_vboxweb_h
-#define VBOX_INCLUDED_webservice_vboxweb_h
+#ifndef MAIN_INCLUDED_SRC_webservice_vboxweb_h
+#define MAIN_INCLUDED_SRC_webservice_vboxweb_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -362,5 +362,5 @@ const WSDLT_ID& createOrFindRefFromComPtr(const WSDLT_ID &idParent,
     return g_EmptyWSDLID;
 }
 
-#endif
+#endif /* !MAIN_INCLUDED_SRC_webservice_vboxweb_h */
 

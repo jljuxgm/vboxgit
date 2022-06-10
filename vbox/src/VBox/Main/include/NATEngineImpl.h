@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: NATEngineImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 
 /** @file
  *
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_NATENGINE
-#define ____H_NATENGINE
+#ifndef MAIN_INCLUDED_NATEngineImpl_h
+#define MAIN_INCLUDED_NATEngineImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -109,4 +109,4 @@ private:
     Machine * const mParent;
     INetworkAdapter * const mAdapter;
 };
-#endif
+#endif /* !MAIN_INCLUDED_NATEngineImpl_h */

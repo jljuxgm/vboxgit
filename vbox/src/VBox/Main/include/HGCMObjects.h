@@ -1,4 +1,4 @@
-/* $Id: HGCMObjects.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HGCMObjects.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * HGCMObjects - Host-Guest Communication Manager objects header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_HGCMOBJECTS
-#define ____H_HGCMOBJECTS
+#ifndef MAIN_INCLUDED_HGCMObjects_h
+#define MAIN_INCLUDED_HGCMObjects_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -125,4 +125,4 @@ uint32_t    hgcmObjQueryHandleCount();
 void        hgcmObjSetHandleCount(uint32_t u32HandleCount);
 
 
-#endif
+#endif /* !MAIN_INCLUDED_HGCMObjects_h */

@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: USBProxyBackend.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend (base) class.
  */
@@ -15,9 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-
-#ifndef ____H_USBPROXYBACKEND
-#define ____H_USBPROXYBACKEND
+#ifndef MAIN_INCLUDED_USBProxyBackend_h
+#define MAIN_INCLUDED_USBProxyBackend_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -442,5 +441,5 @@ private:
     Data *m;
 };
 
-#endif /* !____H_USBPROXYBACKEND */
+#endif /* !MAIN_INCLUDED_USBProxyBackend_h */
 

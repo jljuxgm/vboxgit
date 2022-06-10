@@ -1,4 +1,4 @@
-/* $Id: svchlp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: svchlp.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Declaration of SVC Helper Process control routines.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBox_svchlp_h___
-#define ___VBox_svchlp_h___
+#ifndef MAIN_INCLUDED_SRC_src_server_win_svchlp_h
+#define MAIN_INCLUDED_SRC_src_server_win_svchlp_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -93,5 +93,5 @@ public:
     int run();
 };
 
-#endif /* !___VBox_svchlp_h___ */
+#endif /* !MAIN_INCLUDED_SRC_src_server_win_svchlp_h */
 

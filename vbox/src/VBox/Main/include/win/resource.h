@@ -1,4 +1,4 @@
-/* $Id: resource.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: resource.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  *
  * Resource definitions
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __H_RESOURCEVBOXCOM
-#define __H_RESOURCEVBOXCOM
+#ifndef MAIN_INCLUDED_win_resource_h
+#define MAIN_INCLUDED_win_resource_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -30,4 +30,4 @@
 #define IDS_SERVICENAME 102
 
 
-#endif // __H_RESOURCEVBOXCOM
+#endif /* !MAIN_INCLUDED_win_resource_h */

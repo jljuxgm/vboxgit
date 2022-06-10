@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VMMDev.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to VMM device
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_VMMDEV
-#define ____H_VMMDEV
+#ifndef MAIN_INCLUDED_VMMDev_h
+#define MAIN_INCLUDED_VMMDev_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -100,5 +100,5 @@ private:
 #endif /* VBOX_WITH_HGCM */
 };
 
-#endif // !____H_VMMDEV
+#endif /* !MAIN_INCLUDED_VMMDev_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

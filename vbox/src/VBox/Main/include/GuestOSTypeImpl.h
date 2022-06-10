@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_GUESTOSTYPEIMPL
-#define ____H_GUESTOSTYPEIMPL
+#ifndef MAIN_INCLUDED_GuestOSTypeImpl_h
+#define MAIN_INCLUDED_GuestOSTypeImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -109,5 +109,5 @@ private:
     const AudioCodecType_T mAudioCodecType;
 };
 
-#endif // ____H_GUESTOSTYPEIMPL
+#endif /* !MAIN_INCLUDED_GuestOSTypeImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

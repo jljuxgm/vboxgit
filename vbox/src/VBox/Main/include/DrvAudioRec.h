@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DrvAudioRec.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox driver interface video recording audio backend.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_DRVAUDIORECORDING
-#define ____H_DRVAUDIORECORDING
+#ifndef MAIN_INCLUDED_DrvAudioRec_h
+#define MAIN_INCLUDED_DrvAudioRec_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -66,5 +66,5 @@ private:
     struct settings::RecordingSettings mVideoRecCfg;
 };
 
-#endif /* !____H_DRVAUDIORECORDING */
+#endif /* !MAIN_INCLUDED_DrvAudioRec_h */
 

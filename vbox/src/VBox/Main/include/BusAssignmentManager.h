@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: BusAssignmentManager.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox bus slots assignment manager
  */
@@ -14,8 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#ifndef ___H_BUSASSIGNMENTMANAGER
-#define ___H_BUSASSIGNMENTMANAGER
+
+#ifndef MAIN_INCLUDED_BusAssignmentManager_h
+#define MAIN_INCLUDED_BusAssignmentManager_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -76,4 +77,4 @@ public:
     virtual void listAttachedPCIDevices(std::vector<PCIDeviceInfo> &aAttached);
 };
 
-#endif //  __BusAssignmentManager_h
+#endif /* !MAIN_INCLUDED_BusAssignmentManager_h */

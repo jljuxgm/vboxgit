@@ -1,4 +1,4 @@
-/* $Id: EBML_MKV.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: EBML_MKV.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * EbmlMkvIDs.h - Matroska EBML Class IDs.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_EBMLMKV
-#define ____H_EBMLMKV
+#ifndef MAIN_INCLUDED_EBML_MKV_h
+#define MAIN_INCLUDED_EBML_MKV_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -92,5 +92,5 @@ enum MkvElem
     MkvElem_CueClusterPosition      = 0xF1
 };
 
-#endif
+#endif /* !MAIN_INCLUDED_EBML_MKV_h */
 

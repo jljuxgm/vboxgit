@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: USBDeviceImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_USBDEVICEIMPL
-#define ____H_USBDEVICEIMPL
+#ifndef MAIN_INCLUDED_USBDeviceImpl_h
+#define MAIN_INCLUDED_USBDeviceImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -104,5 +104,5 @@ private:
     Data mData;
 };
 
-#endif // ____H_USBDEVICEIMPL
+#endif /* !MAIN_INCLUDED_USBDeviceImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

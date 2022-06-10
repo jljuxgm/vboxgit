@@ -1,4 +1,4 @@
-/* $Id: CloudProviderManagerImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: CloudProviderManagerImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,9 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-
-#ifndef ____H_CLOUDPROVIDERMANAGERIMPL
-#define ____H_CLOUDPROVIDERMANAGERIMPL
+#ifndef MAIN_INCLUDED_CloudProviderManagerImpl_h
+#define MAIN_INCLUDED_CloudProviderManagerImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -65,6 +64,6 @@ private:
     CloudProviderVec m_apCloudProviders;
 };
 
-#endif // !____H_CLOUDPROVIDERMANAGERIMPL
+#endif /* !MAIN_INCLUDED_CloudProviderManagerImpl_h */
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

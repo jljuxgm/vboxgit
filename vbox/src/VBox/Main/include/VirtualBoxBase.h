@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VirtualBoxBase.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_VIRTUALBOXBASEIMPL
-#define ____H_VIRTUALBOXBASEIMPL
+#ifndef MAIN_INCLUDED_VirtualBoxBase_h
+#define MAIN_INCLUDED_VirtualBoxBase_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -1117,5 +1117,5 @@ protected:
     D *mBackupData;
 };
 
-#endif // !____H_VIRTUALBOXBASEIMPL
+#endif /* !MAIN_INCLUDED_VirtualBoxBase_h */
 

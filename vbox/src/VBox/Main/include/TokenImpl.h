@@ -1,4 +1,4 @@
-/* $Id: TokenImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: TokenImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Token COM class implementations - MachineToken and MediumLockToken
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_TOKENIMPL
-#define ____H_TOKENIMPL
+#ifndef MAIN_INCLUDED_TokenImpl_h
+#define MAIN_INCLUDED_TokenImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -103,6 +103,6 @@ private:
 };
 
 
-#endif
+#endif /* !MAIN_INCLUDED_TokenImpl_h */
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

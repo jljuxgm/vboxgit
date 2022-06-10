@@ -1,4 +1,4 @@
-/* $Id: RecordingUtils.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RecordingUtils.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Recording utility header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_RECORDINGUTILS
-#define ____H_RECORDINGUTILS
+#ifndef MAIN_INCLUDED_RecordingUtils_h
+#define MAIN_INCLUDED_RecordingUtils_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -204,5 +204,5 @@ int RecordingUtilsRGBToYUV(uint32_t uPixelFormat,
                            uint8_t *paDst, uint32_t uDstWidth, uint32_t uDstHeight,
                            uint8_t *paSrc, uint32_t uSrcWidth, uint32_t uSrcHeight);
 
-#endif
+#endif /* !MAIN_INCLUDED_RecordingUtils_h */
 

@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_GUESTIMPLPRIVATE
-#define ____H_GUESTIMPLPRIVATE
+#ifndef MAIN_INCLUDED_GuestCtrlImplPrivate_h
+#define MAIN_INCLUDED_GuestCtrlImplPrivate_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -1211,5 +1211,5 @@ protected:
     uint32_t                 mObjectID;
     /** @} */
 };
-#endif // !____H_GUESTIMPLPRIVATE
+#endif /* !MAIN_INCLUDED_GuestCtrlImplPrivate_h */
 

@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: EmulatedUSBImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Emulated USB devices manager.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_EMULATEDUSBIMPL
-#define ____H_EMULATEDUSBIMPL
+#ifndef MAIN_INCLUDED_EmulatedUSBImpl_h
+#define MAIN_INCLUDED_EmulatedUSBImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -81,6 +81,6 @@ private:
     Data m;
 };
 
-#endif
+#endif /* !MAIN_INCLUDED_EmulatedUSBImpl_h */
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

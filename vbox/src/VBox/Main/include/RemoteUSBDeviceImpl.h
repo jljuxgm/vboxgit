@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 
 /** @file
  *
@@ -18,8 +18,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_REMOTEUSBDEVICEIMPL
-#define ____H_REMOTEUSBDEVICEIMPL
+#ifndef MAIN_INCLUDED_RemoteUSBDeviceImpl_h
+#define MAIN_INCLUDED_RemoteUSBDeviceImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -122,5 +122,5 @@ private:
     Data mData;
 };
 
-#endif // ____H_REMOTEUSBDEVICEIMPL
+#endif /* !MAIN_INCLUDED_RemoteUSBDeviceImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

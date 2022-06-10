@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - Machine recording screen settings.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_RecordSettings
-#define ____H_RecordSettings
+#ifndef MAIN_INCLUDED_RecordingSettingsImpl_h
+#define MAIN_INCLUDED_RecordingSettingsImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -87,5 +87,5 @@ private:
     Data *m;
 };
 
-#endif // !____H_RecordSettings
+#endif /* !MAIN_INCLUDED_RecordingSettingsImpl_h */
 

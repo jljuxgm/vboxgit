@@ -1,4 +1,4 @@
-/* $Id: AdditionsFacilityImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: AdditionsFacilityImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_ADDITIONSFACILITYIMPL
-#define ____H_ADDITIONSFACILITYIMPL
+#ifndef MAIN_INCLUDED_AdditionsFacilityImpl_h
+#define MAIN_INCLUDED_AdditionsFacilityImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -96,5 +96,5 @@ private:
     } mData;
 };
 
-#endif // ____H_ADDITIONSFACILITYIMPL
+#endif /* !MAIN_INCLUDED_AdditionsFacilityImpl_h */
 

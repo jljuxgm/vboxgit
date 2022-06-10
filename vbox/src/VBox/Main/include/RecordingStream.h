@@ -1,4 +1,4 @@
-/* $Id: RecordingStream.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RecordingStream.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Recording stream code header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_RECORDINGSTREAM
-#define ____H_RECORDINGSTREAM
+#ifndef MAIN_INCLUDED_RecordingStream_h
+#define MAIN_INCLUDED_RecordingStream_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -218,5 +218,5 @@ protected:
 /** Vector of recording streams. */
 typedef std::vector <RecordingStream *> RecordingStreams;
 
-#endif
+#endif /* !MAIN_INCLUDED_RecordingStream_h */
 

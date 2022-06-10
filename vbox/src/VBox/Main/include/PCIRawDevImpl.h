@@ -1,4 +1,4 @@
-/* $Id: PCIRawDevImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: PCIRawDevImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to raw PCI device
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_PCIRAWDEV
-#define ____H_PCIRAWDEV
+#ifndef MAIN_INCLUDED_PCIRawDevImpl_h
+#define MAIN_INCLUDED_PCIRawDevImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -53,4 +53,4 @@ class PCIRawDev
     Console * const mParent;
 };
 
-#endif // !____H_PCIRAWDEV
+#endif /* !MAIN_INCLUDED_PCIRawDevImpl_h */

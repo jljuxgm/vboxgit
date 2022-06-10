@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBBackend.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RemoteUSBBackend.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  *
  * VirtualBox Remote USB backend
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_REMOTEUSBBACKEND
-#define ____H_REMOTEUSBBACKEND
+#ifndef MAIN_INCLUDED_RemoteUSBBackend_h
+#define MAIN_INCLUDED_RemoteUSBBackend_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -139,5 +139,5 @@ class RemoteUSBBackend: public RemoteUSBBackendListable
         bool mfDescExt;
 };
 
-#endif /* ____H_REMOTEUSBBACKEND */
+#endif /* !MAIN_INCLUDED_RemoteUSBBackend_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

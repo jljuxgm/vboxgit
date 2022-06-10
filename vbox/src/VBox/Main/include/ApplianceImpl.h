@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ApplianceImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_APPLIANCEIMPL
-#define ____H_APPLIANCEIMPL
+#ifndef MAIN_INCLUDED_ApplianceImpl_h
+#define MAIN_INCLUDED_ApplianceImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -331,5 +331,5 @@ private:
     friend class Machine;
 };
 
-#endif // !____H_APPLIANCEIMPL
+#endif /* !MAIN_INCLUDED_ApplianceImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

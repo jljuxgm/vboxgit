@@ -1,4 +1,4 @@
-/* $Id: EventImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: EventImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox COM IEvent implementation
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_EVENTIMPL
-#define ____H_EVENTIMPL
+#ifndef MAIN_INCLUDED_EventImpl_h
+#define MAIN_INCLUDED_EventImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -179,4 +179,4 @@ private:
 };
 
 
-#endif // ____H_EVENTIMPL
+#endif /* !MAIN_INCLUDED_EventImpl_h */

@@ -1,4 +1,4 @@
-/* $Id: Performance.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Performance.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -14,8 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#ifndef ___performance_h
-#define ___performance_h
+
+#ifndef MAIN_INCLUDED_Performance_h
+#define MAIN_INCLUDED_Performance_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -900,5 +901,5 @@ namespace pm
         void processMetricList(const com::Utf8Str &name, const ComPtr<IUnknown> object);
     };
 }
-#endif /* ___performance_h */
+#endif /* !MAIN_INCLUDED_Performance_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

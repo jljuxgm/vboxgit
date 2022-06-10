@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_GUESTSESSIONIMPL
-#define ____H_GUESTSESSIONIMPL
+#ifndef MAIN_INCLUDED_GuestSessionImpl_h
+#define MAIN_INCLUDED_GuestSessionImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -428,5 +428,5 @@ private:
     } mData;
 };
 
-#endif /* !____H_GUESTSESSIONIMPL */
+#endif /* !MAIN_INCLUDED_GuestSessionImpl_h */
 

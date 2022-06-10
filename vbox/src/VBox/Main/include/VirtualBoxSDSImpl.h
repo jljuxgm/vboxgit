@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_VIRTUALBOXSDSIMPL
-#define ____H_VIRTUALBOXSDSIMPL
+#ifndef MAIN_INCLUDED_VirtualBoxSDSImpl_h
+#define MAIN_INCLUDED_VirtualBoxSDSImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -136,5 +136,5 @@ private:
 void VBoxSDSNotifyClientCount(uint32_t cClients);
 #endif
 
-#endif // !____H_VIRTUALBOXSDSIMPL
+#endif /* !MAIN_INCLUDED_VirtualBoxSDSImpl_h */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

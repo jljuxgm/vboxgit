@@ -1,4 +1,4 @@
-/* $Id: EBMLWriter.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: EBMLWriter.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * EBMLWriter.h - EBML writer.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_EBMLWRITER
-#define ____H_EBMLWRITER
+#ifndef MAIN_INCLUDED_EBMLWriter_h
+#define MAIN_INCLUDED_EBMLWriter_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -137,5 +137,5 @@ private:
     void operator=(const EBMLWriter &);
 };
 
-#endif
+#endif /* !MAIN_INCLUDED_EBMLWriter_h */
 

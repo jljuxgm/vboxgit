@@ -1,4 +1,4 @@
-/* $Id: AuthLibrary.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: AuthLibrary.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Main - external authentication library interface.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_AUTHLIBRARY
-#define ____H_AUTHLIBRARY
+#ifndef MAIN_INCLUDED_AuthLibrary_h
+#define MAIN_INCLUDED_AuthLibrary_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -41,4 +41,4 @@ AuthResult AuthLibAuthenticate(const AUTHLIBRARYCONTEXT *pAuthLibCtx,
                                uint32_t u32ClientId);
 void AuthLibDisconnect(const AUTHLIBRARYCONTEXT *pAuthLibCtx, PCRTUUID pUuid, uint32_t u32ClientId);
 
-#endif  /* !____H_AUTHLIBRARY */
+#endif /* !MAIN_INCLUDED_AuthLibrary_h */

@@ -1,4 +1,4 @@
-/* $Id: AudioDriver.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: AudioDriver.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox audio base class for Main audio drivers.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_AUDIODRIVER
-#define ____H_AUDIODRIVER
+#ifndef MAIN_INCLUDED_AudioDriver_h
+#define MAIN_INCLUDED_AudioDriver_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -111,5 +111,5 @@ protected:
     bool                 mfAttached;
 };
 
-#endif /* !____H_AUDIODRIVER */
+#endif /* !MAIN_INCLUDED_AudioDriver_h */
 

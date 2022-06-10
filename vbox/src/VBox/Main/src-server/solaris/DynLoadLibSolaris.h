@@ -1,4 +1,4 @@
-/* $Id: DynLoadLibSolaris.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DynLoadLibSolaris.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * Dynamically loaded libraries for Solaris hosts, Internal header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_DYN_LOAD_LIB_SOLARIS
-#define ____H_DYN_LOAD_LIB_SOLARIS
+#ifndef MAIN_INCLUDED_SRC_src_server_solaris_DynLoadLibSolaris_h
+#define MAIN_INCLUDED_SRC_src_server_solaris_DynLoadLibSolaris_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -36,5 +36,5 @@ extern void (*g_pfnLibDlpiClose)(dlpi_handle_t);
 
 extern bool VBoxSolarisLibDlpiFound(void);
 
-#endif /*  ____H_DYN_LOAD_LIB_SOLARIS */
+#endif /* !MAIN_INCLUDED_SRC_src_server_solaris_DynLoadLibSolaris_h */
 

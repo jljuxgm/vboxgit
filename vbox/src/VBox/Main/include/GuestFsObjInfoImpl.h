@@ -1,4 +1,4 @@
-/* $Id: GuestFsObjInfoImpl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file system object information implementation.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_GUESTFSOBJINFOIMPL
-#define ____H_GUESTFSOBJINFOIMPL
+#ifndef MAIN_INCLUDED_GuestFsObjInfoImpl_h
+#define MAIN_INCLUDED_GuestFsObjInfoImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -71,5 +71,5 @@ private:
     GuestFsObjData mData;
 };
 
-#endif /* !____H_GUESTFSOBJINFOIMPL */
+#endif /* !MAIN_INCLUDED_GuestFsObjInfoImpl_h */
 
