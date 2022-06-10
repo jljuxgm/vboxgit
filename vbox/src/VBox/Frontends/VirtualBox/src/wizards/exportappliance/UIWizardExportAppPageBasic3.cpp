@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 74115 2018-09-06 12:38:34Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 74139 2018-09-07 11:19:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -74,7 +74,8 @@ void UIWizardExportAppPage3::populateCloudClientParameters()
 #endif
 
     /* Create JSON document on the basis of it, make sure it isn't empty: */
-    const QJsonDocument document = QJsonDocument::fromJson(strJSON.toUtf8());    AssertMsgReturnVoid(!document.isEmpty(), ("JSON document is empty!"));
+    const QJsonDocument document = QJsonDocument::fromJson(strJSON.toUtf8());
+    AssertMsgReturnVoid(!document.isEmpty(), ("JSON document is empty!"));
 
     /* Parse JSON document: */
     m_listCloudClientParameters = parseJsonDocument(document);
