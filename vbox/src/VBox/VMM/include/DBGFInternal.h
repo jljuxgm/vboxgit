@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 73351 2018-07-25 13:02:11Z vboxsync $ */
+/* $Id: DBGFInternal.h 73414 2018-07-31 17:00:12Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -503,7 +503,8 @@ int  dbgfR3BpInit(PVM pVM);
 int  dbgfR3InfoInit(PUVM pUVM);
 int  dbgfR3InfoTerm(PUVM pUVM);
 int  dbgfR3OSInit(PUVM pUVM);
-void dbgfR3OSTerm(PUVM pUVM);
+void dbgfR3OSTermPart1(PUVM pUVM);
+void dbgfR3OSTermPart2(PUVM pUVM);
 int  dbgfR3RegInit(PUVM pUVM);
 void dbgfR3RegTerm(PUVM pUVM);
 int  dbgfR3TraceInit(PVM pVM);

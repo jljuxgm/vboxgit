@@ -1,4 +1,4 @@
-/* $Id: DBGFOS.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: DBGFOS.cpp 73414 2018-07-31 17:00:12Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest OS Diggers.
  */
@@ -98,11 +98,11 @@ int dbgfR3OSInit(PUVM pUVM)
 
 
 /**
- * Internal cleanup routine called by DBGFR3Term().
+ * Internal cleanup routine called by DBGFR3Term(), part 1.
  *
  * @param   pUVM    The user mode VM handle.
  */
-void dbgfR3OSTerm(PUVM pUVM)
+void dbgfR3OSTermPart1(PUVM pUVM)
 {
     DBGF_OS_WRITE_LOCK(pUVM);
 
@@ -114,6 +114,22 @@ void dbgfR3OSTerm(PUVM pUVM)
         pUVM->dbgf.s.pCurOS->pReg->pfnTerm(pUVM, pUVM->dbgf.s.pCurOS->abData);
         pUVM->dbgf.s.pCurOS = NULL;
     }
+
+    DBGF_OS_WRITE_UNLOCK(pUVM);
+}
+
+
+/**
+ * Internal cleanup routine called by DBGFR3Term(), part 2.
+ *
+ * @param   pUVM    The user mode VM handle.
+ */
+void dbgfR3OSTermPart2(PUVM pUVM)
+{
+    DBGF_OS_WRITE_LOCK(pUVM);
+
+    /* This shouldn't happen. */
+    AssertStmt(!pUVM->dbgf.s.pCurOS, dbgfR3OSTermPart1(pUVM));
 
     /*
      * Destroy all the instances.
