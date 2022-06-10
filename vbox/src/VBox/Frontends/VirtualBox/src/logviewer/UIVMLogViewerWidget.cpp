@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 73697 2018-08-15 15:58:48Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 73780 2018-08-20 11:15:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -111,7 +111,7 @@ int UIVMLogViewerWidget::defaultLogPageWidth() const
 
 QMenu *UIVMLogViewerWidget::menu() const
 {
-    return m_pActionPool->action(UIActionIndex_M_LogViewer)->menu();
+    return m_pActionPool->action(UIActionIndex_M_LogViewerWindow)->menu();
 }
 
 void UIVMLogViewerWidget::setMachine(const CMachine &comMachine)

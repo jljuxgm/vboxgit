@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 73676 2018-08-14 19:02:08Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 73780 2018-08-20 11:15:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -165,6 +165,9 @@ private:
         void prepareConnections();
         /** Loads settings. */
         void loadSettings();
+
+        /** Update toolbar. */
+        void updateToolbar();
 
         /** Saves settings. */
         void saveSettings();

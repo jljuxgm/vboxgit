@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 73694 2018-08-15 15:07:32Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 73780 2018-08-20 11:15:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -3426,7 +3426,7 @@ void UIActionPoolRuntime::updateMenus()
     updateMenuHelp();
 
     /* 'Log Viewer' menu: */
-    updateMenuLogViewer();
+    updateMenuLogViewerWindow();
 }
 
 void UIActionPoolRuntime::updateMenuMachine()

@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 73734 2018-08-17 12:43:50Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 73780 2018-08-20 11:15:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -173,7 +173,7 @@ UIMediumManagerWidget::UIMediumManagerWidget(EmbedTo enmEmbedding, UIActionPool 
 
 QMenu *UIMediumManagerWidget::menu() const
 {
-    return m_pActionPool->action(UIActionIndexST_M_Medium)->menu();
+    return m_pActionPool->action(UIActionIndexST_M_MediumWindow)->menu();
 }
 
 void UIMediumManagerWidget::setProgressBar(UIEnumerationProgressBar *pProgressBar)

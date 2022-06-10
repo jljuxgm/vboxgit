@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 73738 2018-08-17 15:09:50Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 73780 2018-08-20 11:15:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -208,7 +208,7 @@ UIHostNetworkManagerWidget::UIHostNetworkManagerWidget(EmbedTo enmEmbedding, UIA
 
 QMenu *UIHostNetworkManagerWidget::menu() const
 {
-    return m_pActionPool->action(UIActionIndexST_M_Network)->menu();
+    return m_pActionPool->action(UIActionIndexST_M_NetworkWindow)->menu();
 }
 
 void UIHostNetworkManagerWidget::retranslateUi()
