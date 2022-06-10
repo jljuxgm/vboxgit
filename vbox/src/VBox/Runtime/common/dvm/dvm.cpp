@@ -1,4 +1,4 @@
-/* $Id: dvm.cpp 77256 2019-02-11 12:19:52Z vboxsync $ */
+/* $Id: dvm.cpp 77970 2019-04-01 01:35:07Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - generic code.
  */
@@ -662,15 +662,15 @@ RTDECL(uint64_t) RTDvmVolumeGetFlags(RTDVMVOLUME hVol)
     return pThis->pVolMgr->pDvmFmtOps->pfnVolumeGetFlags(pThis->hVolFmt);
 }
 
-RTDECL(int) RTDvmVolumeQueryRange(RTDVMVOLUME hVol, uint64_t *poffStart, uint64_t *poffEnd)
+RTDECL(int) RTDvmVolumeQueryRange(RTDVMVOLUME hVol, uint64_t *poffStart, uint64_t *poffLast)
 {
     PRTDVMVOLUMEINTERNAL pThis = hVol;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
     AssertReturn(pThis->u32Magic == RTDVMVOLUME_MAGIC, VERR_INVALID_HANDLE);
     AssertPtrReturn(poffStart, VERR_INVALID_POINTER);
-    AssertPtrReturn(poffEnd, VERR_INVALID_POINTER);
+    AssertPtrReturn(poffLast, VERR_INVALID_POINTER);
 
-    return pThis->pVolMgr->pDvmFmtOps->pfnVolumeQueryRange(pThis->hVolFmt, poffStart, poffEnd);
+    return pThis->pVolMgr->pDvmFmtOps->pfnVolumeQueryRange(pThis->hVolFmt, poffStart, poffLast);
 }
 
 RTDECL(int) RTDvmVolumeRead(RTDVMVOLUME hVol, uint64_t off, void *pvBuf, size_t cbRead)

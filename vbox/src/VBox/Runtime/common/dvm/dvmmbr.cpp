@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 77256 2019-02-11 12:19:52Z vboxsync $ */
+/* $Id: dvmmbr.cpp 77970 2019-04-01 01:35:07Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -647,11 +647,11 @@ static DECLCALLBACK(uint64_t) rtDvmFmtMbrVolumeGetFlags(RTDVMVOLUMEFMT hVolFmt)
     return fFlags;
 }
 
-static DECLCALLBACK(int) rtDvmFmtMbrVolumeQueryRange(RTDVMVOLUMEFMT hVolFmt, uint64_t *poffStart, uint64_t *poffEnd)
+static DECLCALLBACK(int) rtDvmFmtMbrVolumeQueryRange(RTDVMVOLUMEFMT hVolFmt, uint64_t *poffStart, uint64_t *poffLast)
 {
     PRTDVMVOLUMEFMTINTERNAL pVol = hVolFmt;
     *poffStart = pVol->pEntry->offPart;
-    *poffEnd   = pVol->pEntry->offPart + pVol->pEntry->cbPart - 1;
+    *poffLast  = pVol->pEntry->offPart + pVol->pEntry->cbPart - 1;
     return VINF_SUCCESS;
 }
 
