@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 73541 2018-08-07 11:45:00Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 73543 2018-08-07 11:51:52Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -583,7 +583,6 @@ static int avRecControlStreamOut(PDRVAUDIOVIDEOREC pThis,
         default:
             rc = VERR_NOT_SUPPORTED;
             break;
-        }
     }
 
     return rc;
