@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 74807 2018-10-12 16:06:14Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 74830 2018-10-13 03:03:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -152,6 +152,11 @@ void UIToolsModel::setToolsEnabled(UIToolsClass enmClass, bool fEnabled)
 bool UIToolsModel::areToolsEnabled(UIToolsClass enmClass) const
 {
     return m_statesToolsEnabled.value(enmClass);
+}
+
+void UIToolsModel::closeParent()
+{
+    m_pTools->close();
 }
 
 void UIToolsModel::setCurrentItem(UIToolsItem *pItem)

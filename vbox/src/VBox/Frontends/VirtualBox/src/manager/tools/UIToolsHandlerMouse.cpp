@@ -1,4 +1,4 @@
-/* $Id: UIToolsHandlerMouse.cpp 74249 2018-09-13 16:24:26Z vboxsync $ */
+/* $Id: UIToolsHandlerMouse.cpp 74830 2018-10-13 03:03:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsHandlerMouse class implementation.
  */
@@ -66,10 +66,13 @@ bool UIToolsHandlerMouse::handleMousePress(QGraphicsSceneMouseEvent *pEvent) con
             case Qt::RightButton:
             {
                 /* Which item we just clicked? */
-                UIToolsItem *pClickedItem =  qgraphicsitem_cast<UIToolsItem*>(pItemUnderMouse);
+                UIToolsItem *pClickedItem = qgraphicsitem_cast<UIToolsItem*>(pItemUnderMouse);
                 /* Make clicked item the current one: */
                 if (pClickedItem)
+                {
                     model()->setCurrentItem(pClickedItem);
+                    model()->closeParent();
+                }
                 break;
             }
             default:

@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 74599 2018-10-03 14:48:14Z vboxsync $ */
+/* $Id: UIToolsModel.h 74830 2018-10-13 03:03:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -107,6 +107,9 @@ public:
         void setToolsEnabled(UIToolsClass enmClass, bool fEnabled);
         /** Returns whether certain class of tools is enabled.*/
         bool areToolsEnabled(UIToolsClass enmClass) const;
+
+        /** Closes parent. */
+        void closeParent();
     /** @} */
 
     /** @name Children stuff.
