@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-nt.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: alloc-r0drv-nt.cpp 77172 2019-02-06 11:38:04Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NT.
  */
@@ -54,7 +54,10 @@ DECLHIDDEN(int) rtR0MemAllocEx(size_t cb, uint32_t fFlags, PRTMEMHDR *ppHdr)
                 pHdr = (PRTMEMHDR)g_pfnrtExAllocatePoolWithTag(NonPagedPool, cb + sizeof(*pHdr), IPRT_NT_POOL_TAG);
         }
         else
+        {
+            fFlags |= RTMEMHDR_FLAG_UNTAGGED;
             pHdr = (PRTMEMHDR)ExAllocatePool(NonPagedPool, cb + sizeof(*pHdr));
+        }
         if (pHdr)
         {
             pHdr->u32Magic  = RTMEMHDR_MAGIC;
@@ -75,8 +78,8 @@ DECLHIDDEN(int) rtR0MemAllocEx(size_t cb, uint32_t fFlags, PRTMEMHDR *ppHdr)
  */
 DECLHIDDEN(void) rtR0MemFree(PRTMEMHDR pHdr)
 {
-    pHdr->u32Magic += 1;
-    if (g_pfnrtExFreePoolWithTag)
+    pHdr->u32Magic = RTMEMHDR_MAGIC_DEAD;
+    if (g_pfnrtExFreePoolWithTag && !(pHdr->fFlags & RTMEMHDR_FLAG_UNTAGGED))
         g_pfnrtExFreePoolWithTag(pHdr, IPRT_NT_POOL_TAG);
     else
         ExFreePool(pHdr);
