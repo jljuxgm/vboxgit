@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 76111 2018-12-10 12:11:26Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 76112 2018-12-10 12:12:20Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7550,7 +7550,7 @@ HRESULT Console::i_consoleInitReleaseLog(const ComPtr<IMachine> aMachine)
 
     RTERRINFOSTATIC ErrInfo;
     int vrc = com::VBoxLogRelCreate("VM", logFile.c_str(),
-                                    RTLOGFLAGS_PREFIX_TIME_PROG /*| RTLOGFLAGS_RESTRICT_GROUPS*/,
+                                    RTLOGFLAGS_PREFIX_TIME_PROG | RTLOGFLAGS_RESTRICT_GROUPS,
                                     "all all.restrict -default.restrict",
                                     "VBOX_RELEASE_LOG", RTLOGDEST_FILE,
                                     32768 /* cMaxEntriesPerGroup */,
