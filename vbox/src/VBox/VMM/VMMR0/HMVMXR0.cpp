@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 73280 2018-07-20 19:50:17Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 73287 2018-07-21 04:50:51Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8333,7 +8333,7 @@ static VBOXSTRICTRC hmR0VmxPreRunGuest(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient
             return VINF_SUCCESS;
         }
 
-        STAM_COUNTER_INC(&pVCpu->hm.s.StatPendingHostIrq);
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchPendingHostIrq);
         rcStrict = VINF_EM_RAW_INTERRUPT;
     }
     else

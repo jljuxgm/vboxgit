@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 73280 2018-07-20 19:50:17Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 73287 2018-07-21 04:50:51Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4379,7 +4379,7 @@ static int hmR0SvmPreRunGuestNested(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
     {
         ASMSetFlags(pSvmTransient->fEFlags);
         VMMRZCallRing3Enable(pVCpu);
-        STAM_COUNTER_INC(&pVCpu->hm.s.StatPendingHostIrq);
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchPendingHostIrq);
         return VINF_EM_RAW_INTERRUPT;
     }
     return VINF_SUCCESS;
@@ -4492,7 +4492,7 @@ static int hmR0SvmPreRunGuest(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
     {
         ASMSetFlags(pSvmTransient->fEFlags);
         VMMRZCallRing3Enable(pVCpu);
-        STAM_COUNTER_INC(&pVCpu->hm.s.StatPendingHostIrq);
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchPendingHostIrq);
         return VINF_EM_RAW_INTERRUPT;
     }
 
