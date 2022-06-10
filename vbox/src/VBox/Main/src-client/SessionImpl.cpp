@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 75488 2018-11-15 16:12:07Z vboxsync $ */
+/* $Id: SessionImpl.cpp 75496 2018-11-15 23:28:28Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -736,6 +736,7 @@ HRESULT Session::onRecordingChange(BOOL aEnable)
 
     return mConsole->i_onRecordingChange(aEnable);
 #else
+    RT_NOREF(aEnable);
     return S_OK;
 #endif
 }
