@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VDI.cpp 76154 2018-12-11 09:01:30Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -2526,9 +2526,10 @@ static DECLCALLBACK(int) vdiResize(void *pBackendData, uint64_t cbSize,
      */
     /** @todo implement making the image smaller, it is the responsibility of
      * the user to know what he's doing. */
-    if (   cbSize < getImageDiskSize(&pImage->Header)
-        || GET_MAJOR_HEADER_VERSION(&pImage->Header) == 0
-        || pImage->uImageFlags & VD_IMAGE_FLAGS_FIXED)
+    if (cbSize < getImageDiskSize(&pImage->Header))
+        rc = VERR_VD_SHRINK_NOT_SUPPORTED;
+    else if (   GET_MAJOR_HEADER_VERSION(&pImage->Header) == 0
+             || pImage->uImageFlags & VD_IMAGE_FLAGS_FIXED)
         rc = VERR_NOT_SUPPORTED;
     else if (cbSize > getImageDiskSize(&pImage->Header))
     {

@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VHD.cpp 76154 2018-12-11 09:01:30Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -2545,8 +2545,9 @@ static DECLCALLBACK(int) vhdResize(void *pBackendData, uint64_t cbSize,
     int rc = VINF_SUCCESS;
 
     /* Making the image smaller is not supported at the moment. */
-    if (   cbSize < pImage->cbSize
-        || pImage->uImageFlags & VD_IMAGE_FLAGS_FIXED)
+    if (cbSize < pImage->cbSize)
+        rc = VERR_VD_SHRINK_NOT_SUPPORTED;
+    else if (pImage->uImageFlags & VD_IMAGE_FLAGS_FIXED)
         rc = VERR_NOT_SUPPORTED;
     else if (cbSize > pImage->cbSize)
     {

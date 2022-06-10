@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 74829 2018-10-13 03:02:51Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 76154 2018-12-11 09:01:30Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -764,12 +764,12 @@ RTEXITCODE handleModifyMedium(HandlerArg *a)
             rc = showProgress(pProgress);
         if (FAILED(rc))
         {
-            if (rc == E_NOTIMPL)
+            if (!pProgress.isNull())
+                CHECK_PROGRESS_ERROR(pProgress, ("Failed to resize medium"));
+            else if (rc == E_NOTIMPL)
                 RTMsgError("Resize medium operation is not implemented!");
             else if (rc == VBOX_E_NOT_SUPPORTED)
                 RTMsgError("Resize medium operation for this format is not implemented yet!");
-            else if (!pProgress.isNull())
-                CHECK_PROGRESS_ERROR(pProgress, ("Failed to resize medium"));
             else
                 RTMsgError("Failed to resize medium!");
         }

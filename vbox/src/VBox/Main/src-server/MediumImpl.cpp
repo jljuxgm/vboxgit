@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 75373 2018-11-09 18:12:30Z vboxsync $ */
+/* $Id: MediumImpl.cpp 76154 2018-12-11 09:01:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -10011,6 +10011,10 @@ HRESULT Medium::i_taskResizeHandler(Medium::ResizeTask &task)
             vrc = VDResize(hdd, task.mSize, &geo, &geo, task.mVDOperationIfaces);
             if (RT_FAILURE(vrc))
             {
+                if (vrc == VERR_VD_SHRINK_NOT_SUPPORTED)
+                    throw setErrorBoth(VBOX_E_NOT_SUPPORTED, vrc,
+                                       tr("Shrinking is not yet supported for medium '%s'"),
+                                       location.c_str());
                 if (vrc == VERR_NOT_SUPPORTED)
                     throw setErrorBoth(VBOX_E_NOT_SUPPORTED, vrc,
                                        tr("Resizing to new size %llu is not yet supported for medium '%s'"),
