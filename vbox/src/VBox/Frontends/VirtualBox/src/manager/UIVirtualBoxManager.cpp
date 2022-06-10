@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 73602 2018-08-09 18:13:11Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 73673 2018-08-14 18:43:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -368,6 +368,12 @@ void UIVirtualBoxManager::sltHandleChooserPaneIndexChange()
 
 void UIVirtualBoxManager::sltHandleGroupSavingProgressChange()
 {
+    updateActionsAppearance();
+}
+
+void UIVirtualBoxManager::sltHandleToolTypeChange()
+{
+    updateActionsVisibility();
     updateActionsAppearance();
 }
 
@@ -1152,6 +1158,10 @@ void UIVirtualBoxManager::prepare()
     prepareWidgets();
     prepareConnections();
 
+    /* Update actions initially: */
+    updateActionsVisibility();
+    updateActionsAppearance();
+
     /* Load settings: */
     loadSettings();
 
@@ -1624,6 +1634,8 @@ void UIVirtualBoxManager::prepareConnections()
             this, &UIVirtualBoxManager::sltHandleGroupSavingProgressChange);
     connect(m_pWidget, &UIVirtualBoxManagerWidget::sigMachineSettingsLinkClicked,
             this, &UIVirtualBoxManager::sltOpenMachineSettingsDialogDefault);
+    connect(m_pWidget, &UIVirtualBoxManagerWidget::sigToolTypeChange,
+            this, &UIVirtualBoxManager::sltHandleToolTypeChange);
     connect(menuBar(), &QMenuBar::customContextMenuRequested,
             m_pWidget, &UIVirtualBoxManagerWidget::sltHandleContextMenuRequest);
 
