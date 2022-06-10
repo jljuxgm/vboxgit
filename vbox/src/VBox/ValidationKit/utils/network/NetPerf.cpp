@@ -1,4 +1,4 @@
-/* $Id: NetPerf.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: NetPerf.cpp 76870 2019-01-17 18:50:28Z vboxsync $ */
 /** @file
  * NetPerf - Network Performance Benchmark.
  */
@@ -226,7 +226,7 @@ static const RTGETOPTDEF g_aCmdOptions[] =
     { "--len",              'l', RTGETOPT_REQ_UINT32  },
     { "--nodelay",          'N', RTGETOPT_REQ_NOTHING },
     { "--mode",             'm', RTGETOPT_REQ_STRING  },
-    { "--warmpup",          'w', RTGETOPT_REQ_UINT32  },
+    { "--warmup",           'w', RTGETOPT_REQ_UINT32  },
     { "--cool-down",        'W', RTGETOPT_REQ_UINT32  },
     { "--server-stats",     'S', RTGETOPT_REQ_NOTHING },
     { "--single-client",    '1', RTGETOPT_REQ_NOTHING },
@@ -295,7 +295,7 @@ static void Usage(PRTSTREAM pStrm)
             case 'D':
                 continue; /* internal */
             case 'w':
-                pszHelp = "Warmup time, in milliseconds (default " RT_XSTR(NETPERF_DEFAULT_WARMPUP) " ms)";
+                pszHelp = "Warmup time, in milliseconds (default " RT_XSTR(NETPERF_DEFAULT_WARMUP) " ms)";
                 break;
             case 'W':
                 pszHelp = "Cool down time, in milliseconds (default " RT_XSTR(NETPERF_DEFAULT_COOL_DOWN) " ms)";
@@ -1892,7 +1892,7 @@ int main(int argc, char *argv[])
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 76553 $\n");
+                RTPrintf("$Revision: 76870 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'w':
