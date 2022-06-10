@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72643 2018-06-21 16:02:03Z vboxsync $ */
+/* $Id: IEMAll.cpp 72712 2018-06-28 08:47:47Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -14752,9 +14752,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecStringIoRead(PVMCPU pVCpu, uint8_t cbValue, IE
         }
     }
 
-    if (pVCpu->iem.s.cActiveMappings)
-        iemMemRollback(pVCpu);
-
+    Assert(pVCpu->iem.s.cActiveMappings == 0 || VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_IEM));
     return iemUninitExecAndFiddleStatusAndMaybeReenter(pVCpu, rcStrict);
 }
 
