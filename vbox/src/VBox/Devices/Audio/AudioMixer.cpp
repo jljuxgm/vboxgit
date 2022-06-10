@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73380 2018-07-27 09:12:35Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -652,7 +652,7 @@ int AudioMixerSinkCreateStream(PAUDMIXSINK pSink,
 
     if (RT_SUCCESS(rc))
     {
-        rc = RTCircBufCreate(&pMixStream->pCircBuf, DrvAudioHlpMsToBytes(&pSink->PCMProps, 100 /* ms */)); /** @todo Make this configurable. */
+        rc = RTCircBufCreate(&pMixStream->pCircBuf, DrvAudioHlpMsToBytes(100 /* ms */, &pSink->PCMProps)); /** @todo Make this configurable. */
         AssertRC(rc);
     }
 
@@ -858,7 +858,7 @@ uint32_t AudioMixerSinkGetReadable(PAUDMIXSINK pSink)
 # error "Implement me!"
 #else
         /* Return how much data we can deliver since the last read. */
-        cbReadable = DrvAudioHlpMsToBytes(&pSink->PCMProps, RTTimeMilliTS() - pSink->tsLastReadWrittenMs);
+        cbReadable = DrvAudioHlpMsToBytes(RTTimeMilliTS() - pSink->tsLastReadWrittenMs, &pSink->PCMProps);
 #endif
     }
 
@@ -896,7 +896,7 @@ uint32_t AudioMixerSinkGetWritable(PAUDMIXSINK pSink)
 # error "Implement me!"
 #else
         /* Return how much data we expect since the last write. */
-        cbWritable = DrvAudioHlpMsToBytes(&pSink->PCMProps, RTTimeMilliTS() - pSink->tsLastReadWrittenMs);
+        cbWritable = DrvAudioHlpMsToBytes(RTTimeMilliTS() - pSink->tsLastReadWrittenMs, &pSink->PCMProps);
 #endif
     }
 
