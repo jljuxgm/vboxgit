@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 76200 2018-12-13 09:23:47Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 76274 2018-12-18 06:27:45Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -7126,12 +7126,10 @@ IEM_STATIC int iemVmxVmentryInjectEvent(PVMCPU pVCpu, const char *pszInstr)
     if (fPendingDbgXcpt)
     {
         pVCpu->cpum.GstCtx.hwvirt.vmx.fInterceptEvents = true;
-
-        uint32_t const uEntryIntInfo = RT_BF_MAKE(VMX_BF_ENTRY_INT_INFO_VECTOR, X86_XCPT_DB)
-                                     | RT_BF_MAKE(VMX_BF_ENTRY_INT_INFO_TYPE, VMX_ENTRY_INT_INFO_TYPE_HW_XCPT)
-                                     | RT_BF_MAKE(VMX_BF_ENTRY_INT_INFO_VALID, 1);
-
-        return HMVmxEntryIntInfoInjectTrpmEvent(pVCpu, uEntryIntInfo, 0 /* uErrCode */, pVmcs->u32EntryInstrLen,
+        uint32_t const uDbgXcptInfo = RT_BF_MAKE(VMX_BF_ENTRY_INT_INFO_VECTOR, X86_XCPT_DB)
+                                    | RT_BF_MAKE(VMX_BF_ENTRY_INT_INFO_TYPE, VMX_ENTRY_INT_INFO_TYPE_HW_XCPT)
+                                    | RT_BF_MAKE(VMX_BF_ENTRY_INT_INFO_VALID, 1);
+        return HMVmxEntryIntInfoInjectTrpmEvent(pVCpu, uDbgXcptInfo, 0 /* uErrCode */, pVmcs->u32EntryInstrLen,
                                                   0 /* GCPtrFaultAddress */);
     }
 
