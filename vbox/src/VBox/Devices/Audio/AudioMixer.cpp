@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73810 2018-08-22 08:28:34Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73811 2018-08-22 08:30:14Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -960,11 +960,9 @@ uint32_t AudioMixerSinkGetWritable(PAUDMIXSINK pSink)
         /* Return how much data we expect since the last write. */
         cbWritable = DrvAudioHlpMilliToBytes(10 /* ms */, &pSink->PCMProps); /** @todo Make this configurable! */
 #endif
-        /* Make sure to align the writable size to the stream's frame size. */
-        cbWritable = DrvAudioHlpBytesAlign(cbWritable, &pSink->PCMProps);
     }
 
-    Log3Func(("Mixer: [%s] cbWritable=%RU32 (%RU64ms)\n",
+    Log3Func(("[%s] cbWritable=%RU32 (%RU64ms)\n",
               pSink->pszName, cbWritable, DrvAudioHlpBytesToMilli(cbWritable, &pSink->PCMProps)));
 
     int rc2 = RTCritSectLeave(&pSink->CritSect);
