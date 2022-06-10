@@ -1,4 +1,4 @@
-/* $Id: isomakerimport.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: isomakerimport.cpp 77734 2019-03-16 03:53:06Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker, Import Existing Image.
  */
@@ -399,7 +399,7 @@ static int rtFsIsoImportProcessIso9660AddAndNameSymlink(PRTFSISOMKIMPORTER pThis
         /*
          * Enter the object into the namespace.
          */
-        rc = RTFsIsoMakerObjSetNameAndParent(pThis->hIsoMaker, idxObj, idxParent, fNamespace, pszName);
+        rc = RTFsIsoMakerObjSetNameAndParent(pThis->hIsoMaker, idxObj, idxParent, fNamespace, pszName, true /*fNoNormalize*/);
         if (RT_SUCCESS(rc))
         {
             pThis->pResults->cAddedNames++;
@@ -453,7 +453,7 @@ static int rtFsIsoImportProcessIso9660AddAndNameDirectory(PRTFSISOMKIMPORTER pTh
         /*
          * Enter the object into the namespace.
          */
-        rc = RTFsIsoMakerObjSetNameAndParent(pThis->hIsoMaker, idxObj, idxParent, fNamespace, pszName);
+        rc = RTFsIsoMakerObjSetNameAndParent(pThis->hIsoMaker, idxObj, idxParent, fNamespace, pszName, true /*fNoNormalize*/);
         if (RT_SUCCESS(rc))
         {
             pThis->pResults->cAddedNames++;
@@ -602,7 +602,7 @@ static int rtFsIsoImportProcessIso9660AddAndNameFile(PRTFSISOMKIMPORTER pThis, P
     /*
      * Enter the object into the namespace.
      */
-    rc = RTFsIsoMakerObjSetNameAndParent(pThis->hIsoMaker, idxObj, idxParent, fNamespace, pszName);
+    rc = RTFsIsoMakerObjSetNameAndParent(pThis->hIsoMaker, idxObj, idxParent, fNamespace, pszName, true /*fNoNormalize*/);
     if (RT_SUCCESS(rc))
     {
         pThis->pResults->cAddedNames++;

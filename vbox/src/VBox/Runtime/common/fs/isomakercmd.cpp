@@ -1,4 +1,4 @@
-/* $Id: isomakercmd.cpp 77732 2019-03-16 02:45:30Z vboxsync $ */
+/* $Id: isomakercmd.cpp 77734 2019-03-16 03:53:06Z vboxsync $ */
 /** @file
  * IPRT - ISO Image Maker Command.
  */
@@ -1810,7 +1810,7 @@ static int rtFsIsoMakerCmdAddVfsDirRecursive(PRTFSISOMAKERCMDOPTS pOpts, RTVFSDI
                     {
                         pOpts->cItemsAdded++;
                         rc = RTFsIsoMakerObjSetNameAndParent(pOpts->hIsoMaker, idxObj, idxDirObj, fNamespaces,
-                                                             pDirEntry->szName);
+                                                             pDirEntry->szName, false /*fNoNormalize*/);
                         if (RT_FAILURE(rc))
                             rc = rtFsIsoMakerCmdErrorRc(pOpts, rc, "Error setting parent & name on file '%s' to '%s': %Rrc",
                                                         pszSrc, pDirEntry->szName, rc);
@@ -1830,7 +1830,7 @@ static int rtFsIsoMakerCmdAddVfsDirRecursive(PRTFSISOMAKERCMDOPTS pOpts, RTVFSDI
                         {
                             pOpts->cItemsAdded++;
                             rc = RTFsIsoMakerObjSetNameAndParent(pOpts->hIsoMaker, idxObj, idxDirObj, fNamespaces,
-                                                                 pDirEntry->szName);
+                                                                 pDirEntry->szName, false /*fNoNormalize*/);
                             if (RT_SUCCESS(rc))
                                 /* Recurse into the sub-directory. */
                                 rc = rtFsIsoMakerCmdAddVfsDirRecursive(pOpts, hVfsSubDirSrc, idxObj, pszSrc,
