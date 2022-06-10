@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.cpp 72980 2018-07-08 14:32:09Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation for remote (VRDP) USB devices.
  */
@@ -107,10 +107,9 @@ HRESULT RemoteUSBDevice::init(uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevDesc,
     else
     {
         unconst(mData.portVersion)  = mData.version;
-        unconst(mData.speed) = mData.version == 3
-                             ? (USBConnectionSpeed_T)USBConnectionSpeed_Super
-                             : mData.version == 2 ? (USBConnectionSpeed_T)USBConnectionSpeed_High
-                                                  : (USBConnectionSpeed_T)USBConnectionSpeed_Full;
+        unconst(mData.speed) = mData.version == 3 ? USBConnectionSpeed_Super
+                             : mData.version == 2 ? USBConnectionSpeed_High
+                             :                      USBConnectionSpeed_Full;
     }
 
     mData.state                  = USBDeviceState_Available;

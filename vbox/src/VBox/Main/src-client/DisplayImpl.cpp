@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 72352 2018-05-26 12:37:50Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 72980 2018-07-08 14:32:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -698,7 +698,7 @@ HRESULT Display::init(Console *aParent)
     /* Cache the 3D settings. */
     BOOL fIs3DEnabled = FALSE;
     mParent->i_machine()->COMGETTER(Accelerate3DEnabled)(&fIs3DEnabled);
-    GraphicsControllerType_T enmGpuType = (GraphicsControllerType_T)GraphicsControllerType_VBoxVGA;
+    GraphicsControllerType_T enmGpuType = GraphicsControllerType_VBoxVGA;
     mParent->i_machine()->COMGETTER(GraphicsControllerType)(&enmGpuType);
     mfIsCr3DEnabled = fIs3DEnabled && enmGpuType == GraphicsControllerType_VBoxVGA;
 

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 72828 2018-07-03 16:04:41Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 72980 2018-07-08 14:32:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5734,7 +5734,7 @@ HRESULT Console::i_onSharedFolderChange(BOOL aGlobal)
     if (SUCCEEDED(rc))
     {
         alock.release();
-        fireSharedFolderChangedEvent(mEventSource, aGlobal ? (Scope_T)Scope_Global : (Scope_T)Scope_Machine);
+        fireSharedFolderChangedEvent(mEventSource, aGlobal ? Scope_Global : Scope_Machine);
     }
 
     return rc;

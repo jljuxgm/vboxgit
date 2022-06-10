@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 72980 2018-07-08 14:32:09Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget + GuestDnDSource.
  */
@@ -734,9 +734,9 @@ DnDAction_T GuestDnD::toMainAction(uint32_t uAction)
 {
     /* For now it doesn't seems useful to allow a
      * link action between host & guest. Maybe later! */
-    return (isDnDCopyAction(uAction) ? (DnDAction_T)DnDAction_Copy :
-            isDnDMoveAction(uAction) ? (DnDAction_T)DnDAction_Move :
-            (DnDAction_T)DnDAction_Ignore);
+    return isDnDCopyAction(uAction) ? DnDAction_Copy
+         : isDnDMoveAction(uAction) ? DnDAction_Move
+         :                            DnDAction_Ignore;
 }
 
 /* static */
