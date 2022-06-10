@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 75371 2018-11-09 17:13:31Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 75434 2018-11-13 23:56:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -309,7 +309,7 @@ void UIWizardExportAppPage2::populateCloudClientParameters()
     else
     {
         /* Read Cloud Client parameters for Export VM operation: */
-        const QString strJSON = comCloudClient.GetExportParameters();
+        const QString strJSON = comCloudClient.GetExportLaunchParameters();
         /* Show error message if necessary: */
         if (!comCloudClient.isOk())
             msgCenter().cannotAcquireCloudClientParameter(comCloudClient);
