@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 77385 2019-02-20 14:14:58Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 77386 2019-02-20 14:17:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -1479,6 +1479,9 @@ HRESULT GuestFile::write(const std::vector<BYTE> &aData, ULONG aTimeoutMS, ULONG
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
+    if (aData.size() == 0)
+        return setError(E_INVALIDARG, tr("No data to write specified"));
+
     LogFlowThisFuncEnter();
 
     HRESULT hr = S_OK;
@@ -1498,6 +1501,9 @@ HRESULT GuestFile::writeAt(LONG64 aOffset, const std::vector<BYTE> &aData, ULONG
 {
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    if (aData.size() == 0)
+        return setError(E_INVALIDARG, tr("No data to write at specified"));
 
     LogFlowThisFuncEnter();
 
