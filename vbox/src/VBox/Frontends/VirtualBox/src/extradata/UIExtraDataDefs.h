@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 75224 2018-11-02 12:45:59Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 75251 2018-11-05 17:55:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -764,7 +764,7 @@ enum IndicatorType
     IndicatorType_USB,
     IndicatorType_SharedFolders,
     IndicatorType_Display,
-    IndicatorType_VideoCapture,
+    IndicatorType_Capture,
     IndicatorType_Features,
     IndicatorType_Mouse,
     IndicatorType_Keyboard,

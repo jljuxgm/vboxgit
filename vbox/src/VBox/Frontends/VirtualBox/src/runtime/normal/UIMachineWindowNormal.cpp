@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 75211 2018-10-31 18:27:59Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 75251 2018-11-05 17:55:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -218,7 +218,7 @@ void UIMachineWindowNormal::sltHandleIndicatorContextMenuRequest(IndicatorType i
         case IndicatorType_USB:           pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_USBDevices);     break;
         case IndicatorType_SharedFolders: pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_SharedFolders);  break;
         case IndicatorType_Display:       pAction = actionPool()->action(UIActionIndexRT_M_ViewPopup);                break;
-        case IndicatorType_VideoCapture:  pAction = actionPool()->action(UIActionIndexRT_M_View_M_VideoCapture);      break;
+        case IndicatorType_Capture:  pAction = actionPool()->action(UIActionIndexRT_M_View_M_VideoCapture);      break;
         case IndicatorType_Mouse:         pAction = actionPool()->action(UIActionIndexRT_M_Input_M_Mouse);            break;
         case IndicatorType_Keyboard:      pAction = actionPool()->action(UIActionIndexRT_M_Input_M_Keyboard);         break;
         default: break;
@@ -639,7 +639,7 @@ void UIMachineWindowNormal::updateAppearanceOf(int iElement)
         if (uisession()->isRunning() || uisession()->isPaused())
         {
             if (iElement & UIVisualElement_VideoCapture)
-                m_pIndicatorsPool->updateAppearance(IndicatorType_VideoCapture);
+                m_pIndicatorsPool->updateAppearance(IndicatorType_Capture);
         }
     }
 }

@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 75251 2018-11-05 17:55:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -569,7 +569,7 @@ void UIPopupCenter::cannotDetachWebCam(QWidget *pParent, const CEmulatedUSB &com
                      UIErrorString::formatErrorInfo(comDispatcher));
 }
 
-void UIPopupCenter::cannotToggleVideoCapture(QWidget *pParent, const CMachine &comMachine, bool fEnable)
+void UIPopupCenter::cannotToggleCapture(QWidget *pParent, const CMachine &comMachine, bool fEnable)
 {
     /* Get machine-name preserving error-info: */
     QString strMachineName(CMachine(comMachine).GetName());

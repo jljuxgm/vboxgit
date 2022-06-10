@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.h 68986 2017-10-04 14:37:38Z vboxsync $ */
+/* $Id: SessionImpl.h 75251 2018-11-05 17:55:29Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class definition
  */
@@ -101,7 +101,7 @@ private:
                         BOOL aAdd);
     HRESULT onCPUExecutionCapChange(ULONG aExecutionCap);
     HRESULT onVRDEServerChange(BOOL aRestart);
-    HRESULT onVideoCaptureChange();
+    HRESULT onCaptureChange();
     HRESULT onUSBControllerChange();
     HRESULT onSharedFolderChange(BOOL aGlobal);
     HRESULT onUSBDeviceAttach(const ComPtr<IUSBDevice> &aDevice,

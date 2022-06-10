@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIMainEventListener.h 75251 2018-11-05 17:55:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -123,8 +123,8 @@ signals:
         void sigMediumChange(CMediumAttachment comAttachment);
         /** Notifies about VRDE device state change. */
         void sigVRDEChange();
-        /** Notifies about Video Capture device state change. */
-        void sigVideoCaptureChange();
+        /** Notifies about capture state change. */
+        void sigCaptureChange();
         /** Notifies about USB controller state change. */
         void sigUSBControllerChange();
         /** Notifies about USB @a device state change to @a fAttached, holding additional @a error information. */

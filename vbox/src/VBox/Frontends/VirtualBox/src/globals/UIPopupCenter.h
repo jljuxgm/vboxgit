@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.h 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UIPopupCenter.h 75251 2018-11-05 17:55:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class declaration.
  */
@@ -161,7 +161,7 @@ public:
                             const QString &strWebCamName, const QString &strMachineName);
     void cannotDetachWebCam(QWidget *pParent, const CEmulatedUSB &comDispatcher,
                             const QString &strWebCamName, const QString &strMachineName);
-    void cannotToggleVideoCapture(QWidget *pParent, const CMachine &comMachine, bool fEnable);
+    void cannotToggleCapture(QWidget *pParent, const CMachine &comMachine, bool fEnable);
     void cannotToggleVRDEServer(QWidget *pParent,  const CVRDEServer &comServer,
                                 const QString &strMachineName, bool fEnable);
     void cannotToggleNetworkAdapterCable(QWidget *pParent, const CNetworkAdapter &comAdapter,

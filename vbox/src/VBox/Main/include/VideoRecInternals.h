@@ -1,4 +1,4 @@
-/* $Id: VideoRecInternals.h 75005 2018-10-23 15:17:30Z vboxsync $ */
+/* $Id: VideoRecInternals.h 75251 2018-11-05 17:55:29Z vboxsync $ */
 /** @file
  * Video recording internals header.
  */
@@ -29,38 +29,10 @@
 #endif /* VBOX_WITH_LIBVPX */
 
 /**
- * Enumeration for video recording destinations.
- */
-typedef enum VIDEORECDEST
-{
-    /** Invalid destination, do not use. */
-    VIDEORECDEST_INVALID = 0,
-    /** Write to a file. */
-    VIDEORECDEST_FILE    = 1
-} VIDEORECDEST;
-
-/**
- * Enumeration for the video recording video codec type.
- */
-typedef enum VIDEORECVIDEOCODECTYPE
-{
-    /** Unknown codec type, do not use. */
-    VIDEORECVIDEOCODECTYPE_UNKNOWN,
-    /** Codec is VP8. */
-    VIDEORECVIDEOCODECTYPE_VP8,
-# ifdef VBOX_WITH_LIBVPX_VP9
-    /** Codec is VP9. */
-    VIDEORECVIDEOCODECTYPE_VP9
-#endif
-} VIDEORECVIDEOCODECTYPE;
-
-/**
  * Structure for keeping specific video recording codec data.
  */
 typedef struct VIDEORECVIDEOCODEC
 {
-    /** Used codec type. */
-    VIDEORECVIDEOCODECTYPE enmType;
 #ifdef VBOX_WITH_LIBVPX
     union
     {
@@ -74,6 +46,7 @@ typedef struct VIDEORECVIDEOCODEC
             vpx_image_t         RawImage;
             /** Pointer to the codec's internal YUV buffer. */
             uint8_t            *pu8YuvBuf;
+            unsigned int        uEncoderDeadline;
         } VPX;
     };
 #endif /* VBOX_WITH_LIBVPX */

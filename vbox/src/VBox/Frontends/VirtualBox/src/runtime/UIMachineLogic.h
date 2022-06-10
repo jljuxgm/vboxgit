@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 75158 2018-10-29 16:37:53Z vboxsync $ */
+/* $Id: UIMachineLogic.h 75251 2018-11-05 17:55:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -290,8 +290,8 @@ private slots:
     void sltAdjustMachineWindows();
     void sltToggleGuestAutoresize(bool fEnabled);
     void sltTakeScreenshot();
-    void sltOpenVideoCaptureOptions();
-    void sltToggleVideoCapture(bool fEnabled);
+    void sltOpenCaptureOptions();
+    void sltToggleCapture(bool fEnabled);
     void sltToggleVRDE(bool fEnabled);
 
     /* "Device" menu functionality: */
