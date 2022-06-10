@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 77170 2019-02-06 09:18:49Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 77181 2019-02-06 16:58:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -475,6 +475,11 @@ void UIMediumSelector::sltHandleTreeContextMenuRequest(const QPoint &point)
     QMenu menu;
     QAction *pExpandAll = menu.addAction(tr("Expand All"));
     QAction *pCollapseAll = menu.addAction(tr("Collapse All"));
+    if (!pExpandAll || !pCollapseAll)
+        return;
+
+    pExpandAll->setIcon(UIIconPool::iconSet(":/expand_all_16px.png"));
+    pCollapseAll->setIcon(UIIconPool::iconSet(":/collapse_all_16px.png"));
 
     connect(pExpandAll, &QAction::triggered, this, &UIMediumSelector::sltHandleTreeExpandAllSignal);
     connect(pCollapseAll, &QAction::triggered, this, &UIMediumSelector::sltHandleTreeCollapseAllSignal);
