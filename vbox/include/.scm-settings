@@ -1,4 +1,4 @@
-# $Id: .scm-settings 76558 2019-01-01 02:51:45Z vboxsync $
+# $Id: .scm-settings 76721 2019-01-09 03:02:01Z vboxsync $
 ## @file
 # Source code massager settings for the includes.
 #
@@ -54,6 +54,7 @@
 /VBox/VBoxGuestCoreTypes.h:             --license-mit
 /VBox/VBoxGuestLib.h:                   --license-mit
 /VBox/VBoxGuestLibSharedFolders.h:      --license-mit
+/VBox/VBoxGuestLibSharedFoldersInline.h: --license-mit
 /VBox/VMMDev.h:                         --license-mit
 /VBox/VMMDevCoreTypes.h:                --license-mit
 
