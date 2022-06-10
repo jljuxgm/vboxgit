@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72933 2018-07-06 11:41:04Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 72934 2018-07-06 11:51:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -707,13 +707,16 @@ UIMediumItem* UIMediumSelector::searchItem(const QTreeWidgetItem *pParent, const
 
 void UIMediumSelector::performMediumSearch()
 {
-    if (!m_pSearchWidget)
+    if (!m_pSearchWidget || !m_pTreeWidget)
         return;
     /* Unmark all tree items to remove the highltights: */
     for (int i = 0; i < m_mediumItemList.size(); ++i)
     {
         for (int j = 0; j < m_pTreeWidget->columnCount(); ++j)
-            m_mediumItemList[i]->setData(j, Qt::ForegroundRole, m_defaultItemForeground);
+        {
+            if (m_mediumItemList[i])
+                m_mediumItemList[i]->setData(j, Qt::ForegroundRole, m_defaultItemForeground);
+        }
     }
 
 
