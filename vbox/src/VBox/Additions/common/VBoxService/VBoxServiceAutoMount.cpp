@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 75411 2018-11-12 20:31:05Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 75415 2018-11-13 10:10:29Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -1903,7 +1903,7 @@ static uint32_t vbsvcAutomounterUnmountEntry(PVBSVCAUTOMOUNTERTABLE pTable, uint
 
 
 /**
- * @callback_method_impl{FNRTSORTCMP,  For sorting the mappings by ID,}
+ * @callback_method_impl{FNRTSORTCMP, For sorting the mappings by ID. }
  */
 static DECLCALLBACK(int) vbsvcSharedFolderMappingCompare(void const *pvElement1, void const *pvElement2, void *pvUser)
 {
