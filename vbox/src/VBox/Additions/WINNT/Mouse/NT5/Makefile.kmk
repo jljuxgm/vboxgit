@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 69111 2017-10-17 14:26:02Z vboxsync $
+# $Id: Makefile.kmk 76194 2018-12-12 19:14:24Z vboxsync $
 ## @file
 # Makefile for the Windows NT5+ Guest Additions Mouse Filter Driver
 #
@@ -55,7 +55,7 @@ VBoxMouse-inf_SOURCES = VBoxMouse.inf
 else
 VBoxMouse-inf_SOURCES = \
 	$(PATH_TARGET)/VBoxMouseCat.dir/VBoxMouse.inf \
-	$(PATH_TARGET)/VBoxMouseCat.dir/VBoxMouse.cat
+	$(if-expr defined(VBOX_SIGN_ADDITIONS),$(PATH_TARGET)/VBoxMouseCat.dir/VBoxMouse.cat,)
 VBoxMouse-inf_CLEAN += \
 	$(PATH_TARGET)/VBoxMouseCat.dir/VBoxMouse.cat \
 	$(PATH_TARGET)/VBoxMouseCat.dir/VBoxMouse.sys \
