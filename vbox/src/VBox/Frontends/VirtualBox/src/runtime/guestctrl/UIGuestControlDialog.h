@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlDialog.h 75020 2018-10-24 08:53:09Z vboxsync $ */
+/* $Id: UIGuestControlDialog.h 75021 2018-10-24 08:58:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlDialog class declaration.
  */
@@ -63,7 +63,7 @@ protected:
 
 
 /** QIManagerDialog extension providing GUI with the dialog displaying machine logs. */
-class SHARED_LIBRARY_STUFF UIGuestControlDialog : public QIWithRetranslateUI<QIManagerDialog>
+class UIGuestControlDialog : public QIWithRetranslateUI<QIManagerDialog>
 {
     Q_OBJECT;
 
