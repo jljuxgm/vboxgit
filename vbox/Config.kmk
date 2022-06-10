@@ -1,4 +1,4 @@
-# $Id: Config.kmk 74235 2018-09-13 12:24:33Z vboxsync $
+# $Id: Config.kmk 74239 2018-09-13 13:36:13Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -774,9 +774,8 @@ endif
 ## @name Extension pack
 ## @{
 # Enables the extension pack feature.
-VBOX_WITH_EXTPACK = 1A
+VBOX_WITH_EXTPACK = 1
 # Enables implementing cloud providers as part of an extension pack.
-# (temp hack, disabled but enabled for OSE below, but will be for all soon)
 VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK = 1
 # Enables separating code into the Oracle VM VirtualBox Extension Pack, dubbed PUEL.
 VBOX_WITH_EXTPACK_PUEL = 1
@@ -1167,8 +1166,6 @@ ifdef VBOX_OSE
  VBOX_WITH_XHCI_IMPL=
  VBOX_WITH_USB_VIDEO_IMPL=
  VBOX_WITH_NVME_IMPL=
- ## @todo hack, see above, remove me as soon as possible
- VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK=1
  VBOX_WITH_EXTPACK_PUEL=
  VBOX_WITH_EXTPACK_PUEL_BUILD=
  VBOX_WITH_PCI_PASSTHROUGH_IMPL=
@@ -7368,7 +7365,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 74235 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 74239 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
