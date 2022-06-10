@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 75821 2018-11-29 16:43:40Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 75822 2018-11-29 17:37:35Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -13167,6 +13167,8 @@ static int hmR0VmxExitXcptDB(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
 
 /**
  * Hacks its way around the lovely mesa driver's backdoor accesses.
+ *
+ * @sa hmR0SvmHandleMesaDrvGp
  */
 static int hmR0VmxHandleMesaDrvGp(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient, PCPUMCTX pCtx)
 {
@@ -13186,6 +13188,7 @@ static int hmR0VmxHandleMesaDrvGp(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient, PCP
  * backdoor port and magic numbers loaded in registers.
  *
  * @returns true if it is, false if it isn't.
+ * @sa      hmR0SvmIsMesaDrvGp
  */
 DECLINLINE(bool) hmR0VmxIsMesaDrvGp(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient, PCPUMCTX pCtx)
 {
