@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 75319 2018-11-08 10:56:06Z vboxsync $ */
+/* $Id: UIMainEventListener.h 76012 2018-12-06 12:08:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -35,7 +35,7 @@
 #include "CVirtualBoxErrorInfo.h"
 
 /* Other VBox includes: */
-#include <VBox/com/listeners.h>
+#include <VBox/com/listeners.h> /** @todo This drags in VirtualBox.h! It may be possible avoid it for XPCOM, but not COM due to VBoxEventType_T. */
 
 /* Forward declarations: */
 class QPoint;
