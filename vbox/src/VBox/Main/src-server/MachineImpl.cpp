@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 73744 2018-08-17 18:12:14Z vboxsync $ */
+/* $Id: MachineImpl.cpp 73804 2018-08-21 16:21:23Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -68,6 +68,7 @@
 #include <iprt/cpp/xml.h>               /* xml::XmlFileWriter::s_psz*Suff. */
 #include <iprt/sha.h>
 #include <iprt/string.h>
+#include <iprt/ctype.h>
 
 #include <VBox/com/array.h>
 #include <VBox/com/list.h>
@@ -5071,6 +5072,18 @@ HRESULT Machine::getExtraData(const com::Utf8Str &aKey,
    */
 HRESULT Machine::setExtraData(const com::Utf8Str &aKey, const com::Utf8Str &aValue)
 {
+    /* Because non-ASCII characters in aKey have caused problems in the settings
+     * they are rejected unless the key should be deleted. */
+    if (!aValue.isEmpty())
+    {
+        for (int i = 0; i < aKey.length(); ++i)
+        {
+            char ch = aKey[i];
+            if (!RTLocCIsPrint(ch))
+                return E_INVALIDARG;
+        }
+    }
+
     Utf8Str strOldValue;            // empty
 
     // locking note: we only hold the read lock briefly to look up the old value,
