@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 76301 2018-12-19 19:24:16Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.h 76303 2018-12-19 19:53:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -25,11 +25,7 @@
 /* COM includes: */
 #include "COMEnums.h"
 
-/* GUI includes: */
-#include "QITableView.h"
-
 /* Forward declarations: */
-class UIFileTableItem;
 class UIFileManagerTable;
 
 enum UICustomFileSystemModelColumn
