@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 77436 2019-02-22 17:40:00Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 77804 2019-03-20 08:05:37Z vboxsync $ */
 
 /** @file
  *
@@ -49,6 +49,9 @@ public:
 #endif
 
     HRESULT i_setVirtualBox(VirtualBox *pVirtualBox);
+#ifdef RT_OS_WINDOWS
+    HRESULT i_updatePersistentConfig();
+#endif /* RT_OS_WINDOWS */
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
     void i_registerMetrics(PerformanceCollector *aCollector, ComPtr<IUnknown> objptr);
@@ -83,6 +86,16 @@ private:
     HRESULT dHCPRediscover();
 
     Utf8Str i_composeNetworkName(const Utf8Str szShortName);
+
+#if defined(RT_OS_WINDOWS)
+    HRESULT eraseAdapterConfigParameter(const char *szParamName);
+    HRESULT saveAdapterConfigParameter(const char *szParamName, const Utf8Str& strValue);
+    HRESULT saveAdapterConfigIPv4Dhcp();
+    HRESULT saveAdapterConfigIPv4(ULONG addr, ULONG mask);
+    HRESULT saveAdapterConfigIPv6(const Utf8Str& addr, ULONG prefix);
+    HRESULT saveAdapterConfig();
+    bool    isInConfigFile();
+#endif /* defined(RT_OS_WINDOWS) */
 
     const Utf8Str mInterfaceName;
     const Guid mGuid;

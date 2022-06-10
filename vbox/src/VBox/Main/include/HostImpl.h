@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: HostImpl.h 77804 2019-03-20 08:05:37Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -84,6 +84,12 @@ public:
 #endif /* !VBOX_WITH_USB */
 
     static void i_generateMACAddress(Utf8Str &mac);
+
+#ifdef RT_OS_WINDOWS
+    HRESULT i_updatePersistentConfigForHostOnlyAdapters(void);
+    HRESULT i_removePersistentConfig(const Bstr &bstrGuid);
+#endif /* RT_OS_WINDOWS */
+
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 77804 2019-03-20 08:05:37Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -1071,9 +1071,9 @@ static UINT _createHostOnlyInterface(MSIHANDLE hModule, LPCWSTR pwszId, LPCWSTR 
             logStringW(hModule, L"CreateHostOnlyInterface: calling VBoxNetCfgWinCreateHostOnlyNetworkInterface");
 #ifdef VBOXNETCFG_DELAYEDRENAME
             BSTR devId;
-            hr = VBoxNetCfgWinCreateHostOnlyNetworkInterface(pwszInfPath, fIsFile, &guid, &devId, NULL);
+            hr = VBoxNetCfgWinCreateHostOnlyNetworkInterface(pwszInfPath, fIsFile, NULL, &guid, &devId, NULL);
 #else /* !VBOXNETCFG_DELAYEDRENAME */
-            hr = VBoxNetCfgWinCreateHostOnlyNetworkInterface(pwszInfPath, fIsFile, &guid, NULL, NULL);
+            hr = VBoxNetCfgWinCreateHostOnlyNetworkInterface(pwszInfPath, fIsFile, NULL, &guid, NULL, NULL);
 #endif /* !VBOXNETCFG_DELAYEDRENAME */
             logStringW(hModule, L"CreateHostOnlyInterface: VBoxNetCfgWinCreateHostOnlyNetworkInterface returns 0x%x", hr);
             if (SUCCEEDED(hr))
