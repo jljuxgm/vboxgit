@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromNtStatus.cpp 69720 2017-11-16 16:18:19Z vboxsync $ */
+/* $Id: RTErrConvertFromNtStatus.cpp 75651 2018-11-21 19:28:03Z vboxsync $ */
 /** @file
  * IPRT - Convert NT status codes to iprt status codes.
  */
@@ -49,6 +49,7 @@ RTDECL(int)  RTErrConvertFromNtStatus(long lNativeCode)
         case STATUS_ALERTED:                return VERR_INTERRUPTED;
         case STATUS_USER_APC:               return VERR_INTERRUPTED;
 
+        case STATUS_INVALID_INFO_CLASS:     return VERR_INVALID_FUNCTION;
         case STATUS_DATATYPE_MISALIGNMENT:  return VERR_INVALID_POINTER;
         case STATUS_NO_MORE_FILES:          return VERR_NO_MORE_FILES;
         case STATUS_NO_MORE_ENTRIES:        return VERR_NO_MORE_FILES;
