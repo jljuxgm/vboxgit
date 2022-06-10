@@ -1,4 +1,4 @@
-/* $Id: VDVfs.cpp 70307 2017-12-22 08:37:01Z vboxsync $ */
+/* $Id: VDVfs.cpp 72997 2018-07-09 07:43:53Z vboxsync $ */
 /** @file
  * Virtual Disk Container implementation. - VFS glue.
  */
@@ -361,7 +361,7 @@ static DECLCALLBACK(int) vdVfsFile_Write(void *pvThis, RTFOFF off, PCRTSGBUF pSg
     }
 
     size_t cbLeftToWrite;
-    if (offUnsigned + pSgBuf->paSegs[0].cbSeg < cbImage)
+    if (offUnsigned + pSgBuf->paSegs[0].cbSeg <= cbImage)
     {
         cbLeftToWrite = pSgBuf->paSegs[0].cbSeg;
         if (pcbWritten)
