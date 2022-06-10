@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 73301 2018-07-22 14:33:50Z vboxsync $ */
+/* $Id: UartCore.cpp 73302 2018-07-22 14:46:03Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -709,7 +709,7 @@ DECLINLINE(int) uartRegThrDllWrite(PUARTCORE pThis, uint8_t uVal)
             {
                 int rc2 = pThis->pDrvSerial->pfnDataAvailWrNotify(pThis->pDrvSerial, 1);
                 if (RT_FAILURE(rc2))
-                    LogRelMax(10, ("Serial#%d: Failed to send data with %Rrc\n", pThis->pDevInsR3->iDevIns, rc2));
+                    LogRelMax(10, ("Serial#%d: Failed to send data with %Rrc\n", pThis->pDevInsR3->iInstance, rc2));
             }
 #endif
         }
@@ -728,7 +728,7 @@ DECLINLINE(int) uartRegThrDllWrite(PUARTCORE pThis, uint8_t uVal)
                 {
                     int rc2 = pThis->pDrvSerial->pfnDataAvailWrNotify(pThis->pDrvSerial, 1);
                     if (RT_FAILURE(rc2))
-                        LogRelMax(10, ("Serial#%d: Failed to send data with %Rrc\n", pThis->pDevInsR3->iDevIns, rc2));
+                        LogRelMax(10, ("Serial#%d: Failed to send data with %Rrc\n", pThis->pDevInsR3->iInstance, rc2));
                 }
 #endif
             }
