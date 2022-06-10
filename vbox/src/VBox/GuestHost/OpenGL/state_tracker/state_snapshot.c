@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: state_snapshot.c 78116 2019-04-12 10:03:24Z vboxsync $ */
 /** @file
  * VBox Context state saving/loading used by VM snapshot
  */
@@ -1258,8 +1258,16 @@ static int32_t crStateSaveClientPointer(CRVertexArrays *pArrays, int32_t index, 
     if (cp->locked)
     {
         CRASSERT(cp->p);
-        rc = SSMR3PutMem(pSSM, cp->p, cp->stride*(pArrays->lockFirst+pArrays->lockCount));
-        AssertRCReturn(rc, rc);
+        if (cp->fRealPtr)
+        {
+            rc = SSMR3PutMem(pSSM, cp->p, cp->stride*(pArrays->lockFirst+pArrays->lockCount));
+            AssertRCReturn(rc, rc);
+        }
+        else
+        {
+            crError("crStateSaveClientPointer: cp=%#p doesn't point to host memory!\n", cp);
+            return VERR_INVALID_STATE;
+        }
     }
 #endif
 
