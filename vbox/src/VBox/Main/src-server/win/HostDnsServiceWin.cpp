@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceWin.cpp 77993 2019-04-03 15:11:36Z vboxsync $ */
+/* $Id: HostDnsServiceWin.cpp 78065 2019-04-09 14:25:04Z vboxsync $ */
 /** @file
  * Host DNS listener for Windows.
  */
@@ -183,7 +183,7 @@ int HostDnsServiceWin::monitorThreadProc(void)
                 delay.QuadPart = -2 * 1000 * 1000 * 10LL; /* relative: 2s */
 
                 BOOL ok = SetWaitableTimer(m->haDataEvent[DATA_TIMER], &delay,
-                                           0, NULL, NULL, TRUE);
+                                           0, NULL, NULL, FALSE);
                 if (ok)
                 {
                     m->fTimerArmed = true;
