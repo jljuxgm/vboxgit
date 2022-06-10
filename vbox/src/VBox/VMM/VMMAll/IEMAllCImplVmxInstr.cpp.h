@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74693 2018-10-09 05:15:41Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74694 2018-10-09 05:16:25Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -30,7 +30,6 @@
  *  VMX_EXIT_GETSEC
  *  VMX_EXIT_INVD
  *  VMX_EXIT_RSM
- *  VMX_EXIT_MOV_DRX
  *  VMX_EXIT_MWAIT
  *  VMX_EXIT_MTF
  *  VMX_EXIT_MONITOR (APIC access VM-exit caused by MONITOR pending)
