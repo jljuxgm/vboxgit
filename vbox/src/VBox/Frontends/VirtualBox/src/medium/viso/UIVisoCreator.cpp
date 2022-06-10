@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 76829 2019-01-16 08:59:55Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 76830 2019-01-16 09:01:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -141,7 +141,7 @@ void UIVisoCreator::prepareObjects()
 
     m_pMainLayout = new QVBoxLayout;
     m_pCentralWidget->setLayout(m_pMainLayout);
-    if (!m_pMainLayout || menuBar())
+    if (!m_pMainLayout || !menuBar())
         return;
 
     m_pMainMenu = menuBar()->addMenu(tr("Main Menu"));
