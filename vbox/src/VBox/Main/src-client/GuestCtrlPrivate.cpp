@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 75798 2018-11-28 23:47:11Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 75801 2018-11-29 01:54:46Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -729,7 +729,7 @@ int GuestBase::dispatchGeneric(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
     AssertPtrReturn(pCtxCb, VERR_INVALID_POINTER);
     AssertPtrReturn(pSvcCb, VERR_INVALID_POINTER);
 
-    int vrc = VINF_SUCCESS;
+    int vrc;
 
     try
     {
@@ -738,6 +738,7 @@ int GuestBase::dispatchGeneric(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
         switch (pCtxCb->uFunction)
         {
             case GUEST_MSG_PROGRESS_UPDATE:
+                vrc = VINF_SUCCESS;
                 break;
 
             case GUEST_MSG_REPLY:
@@ -751,11 +752,10 @@ int GuestBase::dispatchGeneric(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOS
                     AssertRCReturn(vrc, vrc);
                     vrc = HGCMSvcGetU32(&pSvcCb->mpaParms[idx++], &dataCb.rc);
                     AssertRCReturn(vrc, vrc);
-                    vrc = HGCMSvcGetPv(&pSvcCb->mpaParms[idx++], &dataCb.pvPayload,
-                                       &dataCb.cbPayload);
+                    vrc = HGCMSvcGetPv(&pSvcCb->mpaParms[idx++], &dataCb.pvPayload, &dataCb.cbPayload);
                     AssertRCReturn(vrc, vrc);
 
-                    GuestWaitEventPayload evPayload(dataCb.uType, dataCb.pvPayload, dataCb.cbPayload);
+                    GuestWaitEventPayload evPayload(dataCb.uType, dataCb.pvPayload, dataCb.cbPayload); /* This bugger throws int. */
                     vrc = signalWaitEventInternal(pCtxCb, dataCb.rc, &evPayload);
                 }
                 else
