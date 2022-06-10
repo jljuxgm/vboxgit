@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 78216 2019-04-19 14:52:01Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.h 78273 2019-04-24 14:34:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -74,6 +74,8 @@ protected:
     void populateAccountProperties();
     /** Populates account instances. */
     void populateAccountInstances();
+    /** Populates form properties. */
+    void populateFormProperties();
 
     /** Updates page appearance. */
     virtual void updatePageAppearance();

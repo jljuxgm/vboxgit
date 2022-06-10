@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 78218 2019-04-19 15:07:57Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 78273 2019-04-24 14:34:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -321,6 +321,38 @@ void UIWizardImportAppPage1::populateAccountInstances()
                         m_pAccountInstanceList->setCurrentRow(0);
                 }
             }
+        }
+    }
+}
+
+void UIWizardImportAppPage1::populateFormProperties()
+{
+    /* Clear form properties: */
+    m_comVSDForm = CVirtualSystemDescriptionForm();
+
+    /* If client created: */
+    if (!m_comCloudClient.isNull())
+    {
+        /* Read Cloud Client description form: */
+        CVirtualSystemDescriptionForm comForm;
+        CProgress comProgress = m_comCloudClient.GetExportLaunchDescriptionForm(comForm);
+
+        /* Show error message if necessary: */
+        if (!m_comCloudClient.isOk())
+            msgCenter().cannotAcquireCloudClientParameter(m_comCloudClient);
+        else
+        {
+            /* Show "Acquire export form" progress: */
+            msgCenter().showModalProgressDialog(comProgress,
+                                                UIWizardImportApp::tr("Acquire export form..."),
+                                                ":/progress_reading_appliance_90px.png",
+                                                0, 0);
+
+            /* Show error message if necessary: */
+            if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
+                msgCenter().cannotAcquireCloudClientParameter(comProgress);
+            else
+                m_comVSDForm = comForm;
         }
     }
 }
@@ -773,34 +805,10 @@ bool UIWizardImportAppPageBasic1::validatePage()
 {
     if (isSourceCloudOne())
     {
-        /* Read Cloud Client description form: */
-        CVirtualSystemDescriptionForm comForm;
-        CProgress comProgress = m_comCloudClient.GetExportLaunchDescriptionForm(comForm);
-
-        /* Show error message if necessary: */
-        if (!m_comCloudClient.isOk())
-        {
-            msgCenter().cannotAcquireCloudClientParameter(m_comCloudClient);
-            return false;
-        }
-        else
-        {
-            /* Show "Acquire export form" progress: */
-            msgCenter().showModalProgressDialog(comProgress,
-                                                UIWizardImportApp::tr("Acquire export form..."),
-                                                ":/progress_reading_appliance_90px.png",
-                                                0, 0);
-
-            /* Show error message if necessary: */
-            if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-            {
-                msgCenter().cannotAcquireCloudClientParameter(m_comCloudClient);
-                return false;
-            }
-            else
-                m_comVSDForm = comForm;
-        }
-        return true;
+        /* Populate form properties: */
+        populateFormProperties();
+        /* And make sure they are not null: */
+        return m_comVSDForm.isNotNull();
     }
     else
     {
