@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.cpp 73505 2018-08-05 13:58:10Z vboxsync $ */
+/* $Id: MediumIOImpl.cpp 74761 2018-10-11 11:26:32Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation: MediumIO
@@ -391,6 +391,15 @@ HRESULT MediumIO::initializePartitionTable(PartitionTableType_T a_enmFormat, BOO
         hrc = setErrorBoth(VBOX_E_FILE_ERROR, vrc, tr("RTDvmCreate failed: %Rrc"), vrc);
 
     return hrc;
+}
+
+HRESULT MediumIO::convertToStream(const com::Utf8Str &aFormat,
+                                  const std::vector<MediumVariant_T> &aVariant,
+                                  ULONG aBufferSize,
+                                  ComPtr<IDataStream> &aStream,
+                                  ComPtr<IProgress> &aProgress)
+{
+    return E_NOTIMPL;
 }
 
 HRESULT MediumIO::close()
