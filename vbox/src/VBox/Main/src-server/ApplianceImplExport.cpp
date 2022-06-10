@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 73974 2018-08-30 10:26:08Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 73975 2018-08-30 10:34:16Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2372,6 +2372,7 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
 {
     RT_NOREF(pTask); // XXX
     LogFlowFuncEnter();
+    int vrc = VINF_SUCCESS;
     HRESULT hrc = S_OK;
     ComPtr<ICloudProviderManager> cpm;
     hrc = mVirtualBox->COMGETTER(CloudProviderManager)(cpm.asOutParam());
@@ -2451,6 +2452,8 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
                     vrc = cloudClient->RunSeveralCommands(ComSafeArrayAsInParam(commandIdList),
                                                           ComSafeArrayAsInParam(paramNames),
                                                           ComSafeArrayAsInParam(paramValues));
+                if (RT_FAILURE(vrc))
+                    hrc = E_FAIL;
             }
         }
         catch (HRESULT arc)
