@@ -1,4 +1,4 @@
-/* $Id: tstGuestCtrlParseBuffer.cpp 76403 2018-12-23 15:19:41Z vboxsync $ */
+/* $Id: tstGuestCtrlParseBuffer.cpp 76439 2018-12-24 15:10:04Z vboxsync $ */
 /** @file
  * Output stream parsing test cases.
  */
@@ -34,6 +34,7 @@ using namespace com;
 #ifndef BYTE
 # define BYTE uint8_t
 #endif
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
