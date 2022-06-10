@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 72936 2018-07-06 12:27:34Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 73007 2018-07-09 12:02:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -270,6 +270,7 @@ void UIWizardExportAppPageExpert::retranslateUi()
     /* Refresh current settings: */
     refreshCurrentSettings();
     updateFormatComboToolTip();
+    updateProviderComboToolTip();
 }
 
 void UIWizardExportAppPageExpert::initializePage()

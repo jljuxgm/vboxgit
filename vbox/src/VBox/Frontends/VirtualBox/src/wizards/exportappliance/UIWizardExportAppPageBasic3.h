@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 73006 2018-07-09 11:57:59Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 73007 2018-07-09 12:02:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -41,6 +41,9 @@ protected:
     /** Constructs 3rd page base. */
     UIWizardExportAppPage3();
 
+    /** Populates providers. */
+    void populateProviders();
+
     /** Chooses default settings. */
     void chooseDefaultSettings();
 
@@ -49,6 +52,8 @@ protected:
 
     /** Updates format combo tool-tips. */
     virtual void updateFormatComboToolTip();
+    /** Updates provider combo tool-tips. */
+    virtual void updateProviderComboToolTip();
 
     /** Returns path. */
     QString path() const;
@@ -64,6 +69,11 @@ protected:
     bool isManifestSelected() const;
     /** Defines whether manifest @a fSelected. */
     void setManifestSelected(bool fChecked);
+
+    /** Returns provider. */
+    QString provider() const;
+    /** Defines @a strProvider. */
+    void setProvider(const QString &strProvider);
 
     /** Holds the default appliance name. */
     QString  m_strDefaultApplianceName;
@@ -82,6 +92,11 @@ protected:
     QLabel    *m_pAdditionalLabel;
     /** Holds the manifest check-box instance. */
     QCheckBox *m_pManifestCheckbox;
+
+    /** Holds the provider combo-box label instance. */
+    QLabel    *m_pProviderComboBoxLabel;
+    /** Holds the provider combo-box instance. */
+    QComboBox *m_pProviderComboBox;
 };
 
 
@@ -92,6 +107,7 @@ class UIWizardExportAppPageBasic3 : public UIWizardPage, public UIWizardExportAp
     Q_PROPERTY(QString path READ path WRITE setPath);
     Q_PROPERTY(QString format READ format WRITE setFormat);
     Q_PROPERTY(bool manifestSelected READ isManifestSelected WRITE setManifestSelected);
+    Q_PROPERTY(QString provider READ provider WRITE setProvider);
 
 public:
 
@@ -119,6 +135,9 @@ private slots:
 
     /** Handles change in format combo-box. */
     void sltHandleFormatComboChange();
+
+    /** Handles change in provider combo-box. */
+    void sltHandleProviderComboChange();
 
 private:
 

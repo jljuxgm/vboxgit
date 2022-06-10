@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 72932 2018-07-06 11:30:18Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 73007 2018-07-09 12:02:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -134,7 +134,7 @@ void UIWizardExportAppPageBasic2::retranslateUi()
                                             "You can create it on your own computer "
                                             "or on one of cloud servers you have registered."));
     m_pTypeLocalFilesystem->setText(UIWizardExportApp::tr("&This computer"));
-    m_pTypeCloudServiceProvider->setText(UIWizardExportApp::tr("&Cloud Service Provider"));
+    m_pTypeCloudServiceProvider->setText(UIWizardExportApp::tr("&Cloud service provider"));
 }
 
 void UIWizardExportAppPageBasic2::initializePage()
