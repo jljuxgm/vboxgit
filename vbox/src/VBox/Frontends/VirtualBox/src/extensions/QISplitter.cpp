@@ -1,4 +1,4 @@
-/* $Id: QISplitter.cpp 72678 2018-06-25 14:25:49Z vboxsync $ */
+/* $Id: QISplitter.cpp 72679 2018-06-25 14:51:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QISplitter class implementation.
  */
@@ -27,6 +27,7 @@
 
 /* GUI includes: */
 # include "QISplitter.h"
+# include "VBoxGlobal.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
