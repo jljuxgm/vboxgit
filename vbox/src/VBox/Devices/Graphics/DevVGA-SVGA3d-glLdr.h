@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glLdr.h 76241 2018-12-15 00:53:34Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glLdr.h 76245 2018-12-15 18:18:19Z vboxsync $ */
 /** @file
  * DevVGA - VMWare SVGA device - 3D part, dynamic loading of GL function.
  */
@@ -21,6 +21,8 @@
 #ifndef VMSVGA3D_OPENGL
 # error "This include file is for VMSVGA3D_OPENGL."
 #endif
+
+/** @todo VBOX_VMSVGA3D_GL_HACK_LEVEL is not necessary when dynamic loading is used. */
 
 #ifdef RT_OS_WINDOWS
 # include <iprt/win/windows.h>
@@ -61,9 +63,8 @@ typedef void (APIENTRYP PFNGLGETPROGRAMIVARBPROC) (GLenum target, GLenum pname, 
 
 #ifdef RT_OS_WINDOWS
 # define GLAPIENTRY APIENTRY
-
 #else
-...
+# define GLAPIENTRY
 #endif
 
 #define GLAPIENTRYP GLAPIENTRY *
@@ -76,12 +77,18 @@ typedef void (APIENTRYP PFNGLGETPROGRAMIVARBPROC) (GLenum target, GLenum pname, 
 
 /* Load OpenGL library and initialize function pointers. */
 int glLdrInit(void);
+/* Resolve an OpenGL function name. */
 void *glLdrGetProcAddress(const char *pszSymbol);
+/* Get pointers to extension function. They are available on Windows only when OpenGL context is set. */
+int glLdrGetExtFunctions(void);
 
 /*
  * All OpenGL function used by VMSVGA backend.
  */
 
+/*
+ * GL 1.1 functions (exported from OpenGL32 on Windows).
+ */
 GLPFN void (GLAPIENTRYP pfn_glAlphaFunc)(GLenum func, GLclampf ref);
 #define glAlphaFunc pfn_glAlphaFunc
 
@@ -271,7 +278,22 @@ GLPFN void (GLAPIENTRYP pfn_glVertexPointer)(GLint size, GLenum type, GLsizei st
 GLPFN void (GLAPIENTRYP pfn_glViewport)(GLint x, GLint y, GLsizei width, GLsizei height);
 #define glViewport pfn_glViewport
 
+/*
+ * Extension functions (not exported from OpenGL32 on Windows).
+ */
+GLPFN void (GLAPIENTRYP pfn_glBlendColor)(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+#define glBlendColor pfn_glBlendColor
+
+GLPFN void (GLAPIENTRYP pfn_glBlendEquation)(GLenum mode);
+#define glBlendEquation pfn_glBlendEquation
+
+GLPFN void (GLAPIENTRYP pfn_glClientActiveTexture)(GLenum texture);
+#define glClientActiveTexture pfn_glClientActiveTexture
+
 #ifdef RT_OS_WINDOWS
+/*
+ * WGL.
+ */
 GLPFN HGLRC (WINAPI *pfn_wglCreateContext)(HDC);
 #define wglCreateContext pfn_wglCreateContext
 
