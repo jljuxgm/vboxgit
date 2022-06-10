@@ -1,4 +1,4 @@
-/* $Id: dirops.c 77864 2019-03-24 14:50:02Z vboxsync $ */
+/* $Id: dirops.c 77866 2019-03-24 15:23:44Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
@@ -1257,7 +1257,7 @@ static int vbsf_inode_rename(struct inode *old_parent, struct dentry *old_dentry
                        sf_g->map.root, VBSF_GET_SUPER_INFO(new_parent->i_sb)->map.root));
             rc = -EXDEV;
         }
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 15, 0)
     } else {
         SFLOGFLOW(("vbsf_inode_rename: Unsupported flags: %#x\n", flags));
         rc = -EINVAL;
