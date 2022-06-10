@@ -1,4 +1,4 @@
-/* $Id: solaris.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: solaris.h 76537 2018-12-30 06:17:53Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver for Solaris - testcase stubs.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBoxGuestTestCaseSolaris_h
 #define ___VBoxGuestTestCaseSolaris_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/assert.h>
 #include <iprt/string.h>  /* RT_ZERO */

@@ -1,4 +1,4 @@
-/* $Id: vboxfs.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vboxfs.h 76537 2018-12-30 06:17:53Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Internal Header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VBoxVFS_Solaris_h
 #define ___VBoxVFS_Solaris_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifdef __cplusplus
 extern "C" {

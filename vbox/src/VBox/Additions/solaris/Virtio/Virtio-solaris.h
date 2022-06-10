@@ -1,4 +1,4 @@
-/* $Id: Virtio-solaris.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: Virtio-solaris.h 76537 2018-12-30 06:17:53Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions: Virtio Driver for Solaris, header.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___Virtio_solaris_h
 #define ___Virtio_solaris_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <sys/sunddi.h>
 

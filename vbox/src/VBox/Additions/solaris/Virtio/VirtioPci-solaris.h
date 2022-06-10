@@ -1,4 +1,4 @@
-/* $Id: VirtioPci-solaris.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VirtioPci-solaris.h 76537 2018-12-30 06:17:53Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions: Virtio Driver for Solaris, PCI Hypervisor Interface.
  */
@@ -26,6 +26,9 @@
 
 #ifndef ___VirtioPCI_solaris_h
 #define ___VirtioPCI_solaris_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "Virtio-solaris.h"
 

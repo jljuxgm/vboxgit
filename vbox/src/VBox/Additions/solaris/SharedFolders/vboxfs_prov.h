@@ -1,4 +1,4 @@
-/* $Id: vboxfs_prov.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vboxfs_prov.h 76537 2018-12-30 06:17:53Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider header.
  * Portions contributed by: Ronald.
@@ -25,8 +25,11 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef	___VBoxFS_prov_Solaris_h
-#define	___VBoxFS_prov_Solaris_h
+#ifndef ___VBoxFS_prov_Solaris_h
+#define ___VBoxFS_prov_Solaris_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/VBoxGuestLibSharedFolders.h>
 

@@ -1,4 +1,4 @@
-/* $Id: vboxfs_vnode.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: vboxfs_vnode.h 76537 2018-12-30 06:17:53Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, VNode header.
  */
@@ -25,7 +25,10 @@
  */
 
 #ifndef ___VBoxFS_node_Solaris_h
-#define	___VBoxFS_node_Solaris_h
+#define ___VBoxFS_node_Solaris_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <sys/t_lock.h>
 #include <sys/avl.h>
