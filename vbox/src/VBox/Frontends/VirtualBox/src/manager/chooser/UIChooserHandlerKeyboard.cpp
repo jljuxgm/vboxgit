@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.cpp 73600 2018-08-09 18:02:16Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.cpp 76001 2018-12-06 08:02:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class implementation.
  */
@@ -315,10 +315,17 @@ bool UIChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
         case Qt::Key_Return:
         case Qt::Key_Enter:
         {
-            /* Activate item: */
-            model()->activateMachineItem();
-            /* And filter out that event: */
-            return true;
+            /* If this item is of group or machine type: */
+            if (   model()->focusItem()->type() == UIChooserItemType_Group
+                || model()->focusItem()->type() == UIChooserItemType_Machine)
+            {
+                /* Activate item: */
+                model()->activateMachineItem();
+                /* And filter out that event: */
+                return true;
+            }
+            /* Pass event to other items: */
+            return false;
         }
         case Qt::Key_Space:
         {
