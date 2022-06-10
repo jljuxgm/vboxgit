@@ -1,4 +1,4 @@
-/* $Id: CaptureScreenSettingsImpl.h 75279 2018-11-06 12:37:11Z vboxsync $ */
+/* $Id: CaptureScreenSettingsImpl.h 75307 2018-11-07 13:56:14Z vboxsync $ */
 
 /** @file
  *
@@ -102,7 +102,8 @@ private:
 
     // internal methods
     bool i_canChangeSettings();
-    int  i_getDefaultCaptureFile(Utf8Str &strFile);
+    int  i_getDefaultFileName(Utf8Str &strFile);
+    int  i_initInternal();
 
 private:
 

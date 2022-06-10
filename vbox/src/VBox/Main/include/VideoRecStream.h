@@ -1,4 +1,4 @@
-/* $Id: VideoRecStream.h 75254 2018-11-05 18:35:21Z vboxsync $ */
+/* $Id: VideoRecStream.h 75307 2018-11-07 13:56:14Z vboxsync $ */
 /** @file
  * Video recording stream code header.
  */
@@ -129,7 +129,7 @@ public:
 
 protected:
 
-    int open(void);
+    int open(const settings::CaptureScreenSettings &Settings);
     int close(void);
 
     int initInternal(uint32_t uScreen, const settings::CaptureScreenSettings &Settings);

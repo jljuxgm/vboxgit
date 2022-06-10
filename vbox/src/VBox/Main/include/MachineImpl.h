@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 75251 2018-11-05 17:55:29Z vboxsync $ */
+/* $Id: MachineImpl.h 75307 2018-11-07 13:56:14Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -493,6 +493,8 @@ public:
 
     void i_setModified(uint32_t fl, bool fAllowStateModification = true);
     void i_setModifiedLock(uint32_t fl, bool fAllowStateModification = true);
+
+    MachineState_T i_getMachineState() const { return mData->mMachineState; }
 
     bool i_isStateModificationAllowed() const { return mData->m_fAllowStateModification; }
     void i_allowStateModification()           { mData->m_fAllowStateModification = true; }
