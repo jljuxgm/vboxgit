@@ -1,4 +1,4 @@
-# $Id: Makefile 77397 2019-02-20 18:17:14Z vboxsync $
+# $Id: Makefile 77398 2019-02-20 18:17:37Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Network Filter Driver.
 #
@@ -61,11 +61,6 @@ MOD_DEFS = \
 	RT_WITH_VBOX \
 	VBOX_WITH_HARDENING \
 	VBOX_WITH_64_BITS_GUESTS # <-- must be consistent with Config.kmk!
-ifeq ($(BUILD_TARGET_ARCH),amd64)
-MOD_DEFS += RT_ARCH_AMD64
-else
-MOD_DEFS += RT_ARCH_X86
-endif
 MOD_CFLAGS = -include $(VBOXNETFLT_DIR)include/VBox/SUPDrvMangling.h -fno-pie -Wno-declaration-after-statement
 
 include $(obj)/Makefile-footer.gmk

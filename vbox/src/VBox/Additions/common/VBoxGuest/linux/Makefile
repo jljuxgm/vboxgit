@@ -1,4 +1,4 @@
-# $Id: Makefile 77397 2019-02-20 18:17:14Z vboxsync $
+# $Id: Makefile 77398 2019-02-20 18:17:37Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -140,11 +140,6 @@ MOD_DEFS = \
 	RT_WITH_VBOX \
 	VBGL_VBOXGUEST \
 	VBOX_WITH_HGCM
-ifeq ($(BUILD_TARGET_ARCH),amd64)
-MOD_DEFS += RT_ARCH_AMD64
-else
-MOD_DEFS += RT_ARCH_X86
-endif
 ifeq ($(BUILD_TARGET_ARCH),amd64)
 MOD_DEFS += VBOX_WITH_64_BITS_GUESTS
 endif
