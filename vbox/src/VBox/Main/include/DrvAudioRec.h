@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.h 75354 2018-11-09 11:22:09Z vboxsync $ */
+/* $Id: DrvAudioRec.h 75361 2018-11-09 12:56:40Z vboxsync $ */
 /** @file
  * VirtualBox driver interface video recording audio backend.
  */
@@ -44,7 +44,7 @@ public:
 
 public:
 
-    int applyConfiguration(const settings::RecordSettings &Settings);
+    int applyConfiguration(const settings::RecordingSettings &Settings);
 
 public:
 
@@ -60,7 +60,7 @@ private:
     /** Pointer to the associated video recording audio driver. */
     struct DRVAUDIORECORDING         *mpDrv;
     /** Capturing configuration used for configuring the driver. */
-    struct settings::RecordSettings mVideoRecCfg;
+    struct settings::RecordingSettings mVideoRecCfg;
 };
 
 #endif /* !____H_DRVAUDIORECORDING */

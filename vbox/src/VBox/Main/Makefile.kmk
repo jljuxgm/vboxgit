@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75345 2018-11-09 10:03:36Z vboxsync $
+# $Id: Makefile.kmk 75361 2018-11-09 12:56:40Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -456,8 +456,8 @@ VBoxSVC_SOURCES = \
 	src-server/BandwidthControlImpl.cpp \
 	src-server/BandwidthGroupImpl.cpp \
 	src-server/BIOSSettingsImpl.cpp \
-	src-server/RecordSettingsImpl.cpp \
-	src-server/RecordScreenSettingsImpl.cpp \
+	src-server/RecordingSettingsImpl.cpp \
+	src-server/RecordingScreenSettingsImpl.cpp \
 	src-server/ClientWatcher.cpp \
 	src-server/ClientToken.cpp \
 	src-server/CloudProviderManagerImpl.cpp \

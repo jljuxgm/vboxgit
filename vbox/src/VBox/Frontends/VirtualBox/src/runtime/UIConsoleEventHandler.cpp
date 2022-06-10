@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 75341 2018-11-09 08:37:28Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 75361 2018-11-09 12:56:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -187,7 +187,7 @@ void UIConsoleEventHandlerProxy::prepareListener()
         << KVBoxEventType_OnMediumChanged
         << KVBoxEventType_OnVRDEServerChanged
         << KVBoxEventType_OnVRDEServerInfoChanged
-        << KVBoxEventType_OnRecordChanged
+        << KVBoxEventType_OnRecordingChanged
         << KVBoxEventType_OnUSBControllerChanged
         << KVBoxEventType_OnUSBDeviceStateChanged
         << KVBoxEventType_OnSharedFolderChanged

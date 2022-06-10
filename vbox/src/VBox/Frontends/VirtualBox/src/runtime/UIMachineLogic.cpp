@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 75341 2018-11-09 08:37:28Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 75361 2018-11-09 12:56:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -76,7 +76,7 @@
 
 /* COM includes: */
 # include "CAudioAdapter.h"
-# include "CRecordSettings.h"
+# include "CRecordingSettings.h"
 # include "CVirtualBoxErrorInfo.h"
 # include "CMachineDebugger.h"
 # include "CSnapshot.h"
@@ -2103,7 +2103,7 @@ void UIMachineLogic::sltToggleRecording(bool fEnabled)
         return;
 
     /* Make sure something had changed: */
-    CRecordSettings comRecordingSettings = machine().GetRecordSettings();
+    CRecordingSettings comRecordingSettings = machine().GetRecordingSettings();
     if (comRecordingSettings.GetEnabled() == static_cast<BOOL>(fEnabled))
         return;
 
