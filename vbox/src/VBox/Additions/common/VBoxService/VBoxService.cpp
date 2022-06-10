@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 70351 2017-12-27 04:26:13Z vboxsync $ */
+/* $Id: VBoxService.cpp 75713 2018-11-25 11:46:26Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -531,7 +531,7 @@ int VGSvcArgUInt32(int argc, char **argv, const char *psz, int *pi, uint32_t *pu
 static int vgsvcArgString(int argc, char **argv, const char *psz, int *pi, char *pszBuf, size_t cbBuf)
 {
     AssertPtrReturn(pszBuf, VERR_INVALID_POINTER);
-    AssertPtrReturn(cbBuf, VERR_INVALID_PARAMETER);
+    AssertReturn(cbBuf, VERR_INVALID_PARAMETER);
 
     if (*psz == ':' || *psz == '=')
         psz++;
@@ -1078,7 +1078,7 @@ int main(int argc, char **argv)
                 case 'l':
                 {
                     rc = vgsvcArgString(argc, argv, psz + 1, &i,
-                                              g_szLogFile, sizeof(g_szLogFile));
+                                        g_szLogFile, sizeof(g_szLogFile));
                     if (rc)
                         return rc;
                     psz = NULL;
@@ -1088,7 +1088,7 @@ int main(int argc, char **argv)
                 case 'p':
                 {
                     rc = vgsvcArgString(argc, argv, psz + 1, &i,
-                                              g_szPidFile, sizeof(g_szPidFile));
+                                        g_szPidFile, sizeof(g_szPidFile));
                     if (rc)
                         return rc;
                     psz = NULL;
