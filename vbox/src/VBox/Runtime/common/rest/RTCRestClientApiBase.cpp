@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBase.cpp 74425 2018-09-23 15:41:48Z vboxsync $ */
+/* $Id: RTCRestClientApiBase.cpp 75108 2018-10-26 15:44:26Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation.
  */
@@ -177,7 +177,7 @@ int RTCRestClientApiBase::reinitHttpInstance() RT_NOEXCEPT
     if (m_hHttp != NIL_RTHTTP)
     {
 #if 0   /** @todo XXX: disable for now as it causes the RTHTTP handle state and curl state to get out of sync. */
-        return RTHttpReset(m_hHttp);
+        return RTHttpDestroy(m_hHttp, 0 /*fFlags*/);
 #else
         RTHttpDestroy(m_hHttp);
         m_hHttp = NIL_RTHTTP;
