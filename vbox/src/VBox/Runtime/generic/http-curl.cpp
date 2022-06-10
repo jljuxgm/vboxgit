@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 78066 2019-04-09 16:02:32Z vboxsync $ */
+/* $Id: http-curl.cpp 78252 2019-04-22 23:25:02Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -3076,7 +3076,7 @@ static size_t rtHttpWriteBodyData(char *pchBuf, size_t cbUnit, size_t cUnits, vo
             || (pThis->fDownloadCallback & RTHTTPDOWNLOAD_F_ONLY_STATUS_MASK) == pThis->uDownloadHttpStatus)
         {
             int rc = pThis->pfnDownloadCallback(pThis, pchBuf, cbToAppend, pThis->uDownloadHttpStatus, pThis->offDownloadContent,
-                                                pThis->cbDownloadContent, pThis->pvUploadCallbackUser);
+                                                pThis->cbDownloadContent, pThis->pvDownloadCallbackUser);
             if (RT_SUCCESS(rc))
             {
                 pThis->offDownloadContent += cbToAppend;
