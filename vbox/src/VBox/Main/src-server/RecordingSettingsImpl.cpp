@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.cpp 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.cpp 75367 2018-11-09 16:09:09Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -589,8 +589,14 @@ bool RecordingSettings::i_canChangeSettings(void)
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    /* Only allow settings to be changed when recording is disabled. */
-    return m->bd->fEnabled == false;
+    /* Only allow settings to be changed when recording is disabled when the machine is running. */
+    if (   Global::IsOnline(adep.machineState())
+        && m->bd->fEnabled)
+    {
+        return false;
+    }
+
+    return true;
 }
 
 /**
