@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 73715 2018-08-16 15:35:27Z vboxsync $ */
+/* $Id: UIActionPool.h 73717 2018-08-16 16:00:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -408,12 +408,15 @@ class SHARED_LIBRARY_STUFF UIActionPool : public QIWithRetranslateUI3<QObject>
 
     /** Pointer to menu update-handler for this class. */
     typedef void (UIActionPool::*PTFActionPool)();
+    /** Pointer to menu update-handler for Selector sub-class. */
+    typedef void (UIActionPoolSelector::*PTFActionPoolSelector)();
     /** Pointer to menu update-handler for Runtime sub-class. */
     typedef void (UIActionPoolRuntime::*PTFActionPoolRuntime)();
     /** Union for two defines above. */
     union PointerToFunction
     {
         PTFActionPool ptf;
+        PTFActionPoolSelector ptfs;
         PTFActionPoolRuntime ptfr;
     };
 

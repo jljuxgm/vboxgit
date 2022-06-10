@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 73697 2018-08-15 15:58:48Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 73717 2018-08-16 16:00:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -396,7 +396,7 @@ void UIVirtualBoxManager::sltOpenVirtualMediumManagerWindow()
     /* Create instance if not yet created: */
     if (!m_pManagerVirtualMedia)
     {
-        UIMediumManagerFactory().prepare(m_pManagerVirtualMedia, this);
+        UIMediumManagerFactory(m_pActionPool).prepare(m_pManagerVirtualMedia, this);
         connect(m_pManagerVirtualMedia, &QIManagerDialog::sigClose,
                 this, &UIVirtualBoxManager::sltCloseVirtualMediumManagerWindow);
     }

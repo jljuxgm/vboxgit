@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 73671 2018-08-14 18:21:31Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 73717 2018-08-16 16:00:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
@@ -115,6 +115,16 @@ enum UIActionIndexST
     UIActionIndexST_M_Snapshot_T_Properties,
     UIActionIndexST_M_Snapshot_S_Clone,
 
+    /* Virtual Media Manager actions: */
+    UIActionIndexST_M_Medium,
+    UIActionIndexST_M_Medium_S_Add,
+    UIActionIndexST_M_Medium_S_Copy,
+    UIActionIndexST_M_Medium_S_Move,
+    UIActionIndexST_M_Medium_S_Remove,
+    UIActionIndexST_M_Medium_S_Release,
+    UIActionIndexST_M_Medium_T_Details,
+    UIActionIndexST_M_Medium_S_Refresh,
+
     /* Maximum index: */
     UIActionIndexST_Max
 };
@@ -140,6 +150,9 @@ protected:
 
     /** Updates menus. */
     virtual void updateMenus() /* override */;
+
+    /** Updates 'Medium' menu. */
+    void updateMenuMedium();
 
     /** Updates shortcuts. */
     virtual void updateShortcuts() /* override */;

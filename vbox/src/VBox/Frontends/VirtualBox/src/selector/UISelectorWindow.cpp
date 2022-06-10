@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 73694 2018-08-15 15:07:32Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 73717 2018-08-16 16:00:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -453,7 +453,7 @@ void UISelectorWindow::sltOpenVirtualMediumManagerWindow()
     /* Create instance if not yet created: */
     if (!m_pManagerVirtualMedia)
     {
-        UIMediumManagerFactory().prepare(m_pManagerVirtualMedia, this);
+        UIMediumManagerFactory(m_pActionPool).prepare(m_pManagerVirtualMedia, this);
         connect(m_pManagerVirtualMedia, &QIManagerDialog::sigClose,
                 this, &UISelectorWindow::sltCloseVirtualMediumManagerWindow);
     }
