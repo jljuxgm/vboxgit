@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 75759 2018-11-27 07:10:10Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 75765 2018-11-27 10:59:17Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2784,7 +2784,9 @@ VMM_INT_DECL(bool) CPUMCanVmxNstGstTakeVirtIntr(PVMCPU pVCpu, PCCPUMCTX pCtx)
     Assert(CPUMIsGuestInVmxNonRootMode(pCtx));
     Assert(pCtx->hwvirt.fGif);  /* Always true on Intel. */
 
-    /** @todo NSTVMX: Implement virtual-interrupt delivery feature. */
+    if (   (pCtx->eflags.u & X86_EFL_IF)
+        && !CPUMIsGuestVmxProcCtlsSet(pVCpu, pCtx, VMX_PROC_CTLS_INT_WINDOW_EXIT))
+        return true;
     return false;
 #endif
 }
