@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 73300 2018-07-22 14:16:51Z vboxsync $ */
+/* $Id: UartCore.cpp 73301 2018-07-22 14:33:50Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -442,6 +442,7 @@ DECLINLINE(size_t) uartFifoCopyTo(PUARTFIFO pFifo, void *pvDst, size_t cbCopy)
 }
 
 
+#if 0 /* unused */
 /**
  * Tries to copy the requested amount of data from the provided buffer into the given FIFO.
  *
@@ -470,6 +471,7 @@ DECLINLINE(size_t) uartFifoCopyFrom(PUARTFIFO pFifo, void *pvSrc, size_t cbCopy)
 
     return cbCopied;
 }
+#endif
 
 
 #ifdef IN_RING3
@@ -707,7 +709,7 @@ DECLINLINE(int) uartRegThrDllWrite(PUARTCORE pThis, uint8_t uVal)
             {
                 int rc2 = pThis->pDrvSerial->pfnDataAvailWrNotify(pThis->pDrvSerial, 1);
                 if (RT_FAILURE(rc2))
-                    LogRelMax(10, ("Serial#%d: Failed to send data with %Rrc\n", rc2));
+                    LogRelMax(10, ("Serial#%d: Failed to send data with %Rrc\n", pThis->pDevInsR3->iDevIns, rc2));
             }
 #endif
         }
@@ -726,7 +728,7 @@ DECLINLINE(int) uartRegThrDllWrite(PUARTCORE pThis, uint8_t uVal)
                 {
                     int rc2 = pThis->pDrvSerial->pfnDataAvailWrNotify(pThis->pDrvSerial, 1);
                     if (RT_FAILURE(rc2))
-                        LogRelMax(10, ("Serial#%d: Failed to send data with %Rrc\n", rc2));
+                        LogRelMax(10, ("Serial#%d: Failed to send data with %Rrc\n", pThis->pDevInsR3->iDevIns, rc2));
                 }
 #endif
             }
