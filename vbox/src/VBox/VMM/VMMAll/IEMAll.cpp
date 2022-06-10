@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 74155 2018-09-09 12:37:26Z vboxsync $ */
+/* $Id: IEMAll.cpp 74201 2018-09-11 19:44:45Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -8730,7 +8730,7 @@ iemMemMap(PVMCPU pVCpu, void **ppvMem, size_t cbMem, uint8_t iSegReg, RTGCPTR GC
     /*
      * Check the input and figure out which mapping entry to use.
      */
-    Assert(cbMem <= 64 || cbMem == 512 || cbMem == 256 || cbMem == 108 || cbMem == 104 || cbMem == 94); /* 512 is the max! */
+    Assert(cbMem <= 64 || cbMem == 512 || cbMem == 256 || cbMem == 108 || cbMem == 104 || cbMem == 102 || cbMem == 94); /* 512 is the max! */
     Assert(~(fAccess & ~(IEM_ACCESS_TYPE_MASK | IEM_ACCESS_WHAT_MASK)));
     Assert(pVCpu->iem.s.cActiveMappings < RT_ELEMENTS(pVCpu->iem.s.aMemMappings));
 
