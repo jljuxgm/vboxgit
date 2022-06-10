@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 69083 2017-10-13 16:03:36Z vboxsync $ */
+/* $Id: vbox_irq.c 74615 2018-10-04 15:44:01Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -199,7 +199,7 @@ int vbox_irq_init(struct vbox_private *vbox)
 	int ret;
 
 	vbox_update_mode_hints(vbox);
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 16, 0) || defined(RHEL_73)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 16, 0) || defined(RHEL_71)
 	ret = drm_irq_install(vbox->dev, vbox->dev->pdev->irq);
 #else
 	ret = drm_irq_install(vbox->dev);

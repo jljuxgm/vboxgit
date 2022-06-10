@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 74581 2018-10-02 14:01:09Z vboxsync $ */
+/* $Id: vbox_main.c 74615 2018-10-04 15:44:01Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -473,7 +473,7 @@ void vbox_driver_lastclose(struct drm_device *dev)
 {
 	struct vbox_private *vbox = dev->dev_private;
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 16, 0) || defined(RHEL_73)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 16, 0) || defined(RHEL_71)
 	if (vbox->fbdev)
 		drm_fb_helper_restore_fbdev_mode_unlocked(&vbox->fbdev->helper);
 #else
@@ -562,7 +562,7 @@ void vbox_gem_free_object(struct drm_gem_object *obj)
 
 static inline u64 vbox_bo_mmap_offset(struct vbox_bo *bo)
 {
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 12, 0) && !defined(RHEL_73)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 12, 0) && !defined(RHEL_70)
 	return bo->bo.addr_space_offset;
 #else
 	return drm_vma_node_offset_addr(&bo->bo.vma_node);
