@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 76966 2019-01-24 08:45:41Z vboxsync $
 ## @file
 # Sub-Makefile for the Host Channel Service.
 #
@@ -28,11 +28,11 @@ VBoxHostChannel_INCS.win  = \
 	$(VBOX_PATH_SDK)
 
 VBoxHostChannel_SOURCES = \
-	service.cpp \
+	VBoxHostChannelSvc.cpp \
 	HostChannel.cpp
 
 VBoxHostChannel_SOURCES.win = \
-	VBoxHostChannel.rc
+	VBoxHostChannelSvc.rc
 
 VBoxHostChannel_LIBS = \
 	$(LIB_VMM) \
