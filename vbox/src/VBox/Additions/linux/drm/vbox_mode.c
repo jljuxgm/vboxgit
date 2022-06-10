@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 77850 2019-03-22 14:49:18Z vboxsync $ */
+/* $Id: vbox_mode.c 78067 2019-04-10 06:47:16Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -177,6 +177,8 @@ static bool vbox_set_up_input_mapping(struct vbox_private *vbox)
 			if (to_vbox_crtc(crtci)->crtc_id != 0)
 				continue;
 
+			if (!CRTC_FB(crtci))
+				break;
 			vbox->single_framebuffer = true;
 			vbox->input_mapping_width = CRTC_FB(crtci)->width;
 			vbox->input_mapping_height = CRTC_FB(crtci)->height;
