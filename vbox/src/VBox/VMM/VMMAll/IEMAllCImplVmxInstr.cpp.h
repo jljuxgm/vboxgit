@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 75301 2018-11-07 10:28:57Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 75316 2018-11-08 04:29:02Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -18,8 +18,6 @@
 
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
 /** @todo NSTVMX: The following VM-exit intercepts are pending:
- *  VMX_EXIT_INIT_SIGNAL
- *  VMX_EXIT_SIPI
  *  VMX_EXIT_IO_SMI
  *  VMX_EXIT_SMI
  *  VMX_EXIT_INT_WINDOW
