@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 75999 2018-12-06 07:54:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -429,14 +429,14 @@ private:
         {
             const bool fEnabledOutput = comAdapter.GetEnabledOut();
             const bool fEnabledInput = comAdapter.GetEnabledIn();
-            strFullData = QString(s_strTableRow2).arg(QApplication::translate("UIGDetails", "Audio Output", "details (audio)"),
+            strFullData = QString(s_strTableRow2).arg(QApplication::translate("UIDetails", "Audio Output", "details (audio)"),
                                                       fEnabledOutput ?
-                                                      QApplication::translate("UIGDetails", "Enabled", "details (audio/output)") :
-                                                      QApplication::translate("UIGDetails", "Disabled", "details (audio/output)"))
-                        + QString(s_strTableRow2).arg(QApplication::translate("UIGDetails", "Audio Input", "details (audio)"),
+                                                      QApplication::translate("UIDetails", "Enabled", "details (audio/output)") :
+                                                      QApplication::translate("UIDetails", "Disabled", "details (audio/output)"))
+                        + QString(s_strTableRow2).arg(QApplication::translate("UIDetails", "Audio Input", "details (audio)"),
                                                       fEnabledInput ?
-                                                      QApplication::translate("UIGDetails", "Enabled", "details (audio/input)") :
-                                                      QApplication::translate("UIGDetails", "Disabled", "details (audio/input)"));
+                                                      QApplication::translate("UIDetails", "Enabled", "details (audio/input)") :
+                                                      QApplication::translate("UIDetails", "Disabled", "details (audio/input)"));
             AudioState enmState = AudioState_AllOff;
             if (fEnabledOutput)
                 enmState = (AudioState)(enmState | AudioState_OutputOn);
