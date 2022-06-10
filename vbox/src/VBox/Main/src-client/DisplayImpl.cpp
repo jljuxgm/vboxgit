@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 75488 2018-11-15 16:12:07Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 76394 2018-12-23 02:14:05Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -41,6 +41,7 @@
 #if defined(DEBUG) || defined(VBOX_STRICT) /* for VM_ASSERT_EMT(). */
 # include <VBox/vmm/vm.h>
 #endif
+#include <VBox/VMMDev.h>
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
 # include <VBoxVideo.h>

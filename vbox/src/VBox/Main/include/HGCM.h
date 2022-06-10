@@ -1,4 +1,4 @@
-/* $Id: HGCM.h 75991 2018-12-05 20:14:57Z vboxsync $ */
+/* $Id: HGCM.h 76394 2018-12-23 02:14:05Z vboxsync $ */
 /** @file
  * HGCM - Host-Guest Communication Manager.
  */
@@ -18,11 +18,8 @@
 #ifndef ___HGCM_h_
 #define ___HGCM_h_
 
-#include <VBox/cdefs.h>
-#include <VBox/types.h>
 #include <VBox/vmm/pdmifs.h>
 
-#include <VBox/VMMDev.h>
 #include <VBox/hgcmsvc.h>
 
 /* Handle of a HGCM service extension. */

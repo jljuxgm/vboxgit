@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 71634 2018-04-03 17:45:44Z vboxsync $ */
+/* $Id: GuestImpl.h 76394 2018-12-23 02:14:05Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -23,6 +23,7 @@
 #include <iprt/list.h>
 #include <iprt/time.h>
 #include <VBox/ostypes.h>
+#include <VBox/param.h>
 #include <VBox/vmm/stam.h>
 
 #include "AdditionsFacilityImpl.h"

@@ -1,4 +1,4 @@
-/* $Id: DisplayImplLegacy.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DisplayImplLegacy.cpp 76394 2018-12-23 02:14:05Z vboxsync $ */
 /** @file
  * VirtualBox IDisplay implementation, helpers for legacy GAs.
  *
@@ -25,6 +25,7 @@
 #include "ConsoleImpl.h"
 #include "ConsoleVRDPServer.h"
 #include "VMMDev.h"
+#include <VBox/VMMDev.h>
 
 /* generated header */
 #include "VBoxEvents.h"
