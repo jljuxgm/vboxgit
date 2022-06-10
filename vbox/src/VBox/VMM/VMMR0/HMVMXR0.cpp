@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72991 2018-07-09 03:54:58Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72992 2018-07-09 03:56:00Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6845,6 +6845,7 @@ static int hmR0VmxLeave(PVMCPU pVCpu, bool fImportState)
     pVCpu->hm.s.vmx.fUpdatedHostMsrs = false;
 
     STAM_PROFILE_ADV_SET_STOPPED(&pVCpu->hm.s.StatEntry);
+    STAM_PROFILE_ADV_SET_STOPPED(&pVCpu->hm.s.StatImportGuestState);
     STAM_PROFILE_ADV_SET_STOPPED(&pVCpu->hm.s.StatExportGuestState);
     STAM_PROFILE_ADV_SET_STOPPED(&pVCpu->hm.s.StatPreExit);
     STAM_PROFILE_ADV_SET_STOPPED(&pVCpu->hm.s.StatExitHandling);
