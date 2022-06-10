@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.cpp 75633 2018-11-21 10:03:40Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.cpp 75643 2018-11-21 14:27:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class implementation.
  */
@@ -651,10 +651,14 @@ UIFileDeleteConfirmationDialog::UIFileDeleteConfirmationDialog(QWidget *pParent 
         connect(pButtonBox, &QIDialogButtonBox::rejected, this, &UIStringInputDialog::reject);
     }
 
-    QCheckBox *m_pAskNextTimeCheckBox = new QCheckBox;
+    m_pAskNextTimeCheckBox = new QCheckBox;
 
     if (m_pAskNextTimeCheckBox)
     {
+        UIGuestControlFileManagerSettings *pFileManagerSettings = UIGuestControlFileManagerSettings::instance();
+        if (pFileManagerSettings)
+            m_pAskNextTimeCheckBox->setChecked(pFileManagerSettings->bAskDeleteConfirmation);
+
         pLayout->addWidget(m_pAskNextTimeCheckBox);
         m_pAskNextTimeCheckBox->setText(UIGuestControlFileManager::tr("Ask for this confirmation next time"));
     }
@@ -1512,7 +1516,7 @@ bool UIGuestControlFileTable::checkIfDeleteOK()
     {
         pFileManagerSettings->bAskDeleteConfirmation = bAskNextTime;
         /* Notify file manager settings panel so that the check box there is updated: */
-        emit sigDeleteConfirmationSettingChanged();
+        emit sigDeleteConfirmationOptionChanged();
     }
 
     delete pDialog;
