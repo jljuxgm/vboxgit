@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.h 76950 2019-01-23 10:17:54Z vboxsync $ */
+/* $Id: UIVisoConfigurationPanel.h 77518 2019-03-01 10:05:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class declaration.
  */
@@ -25,14 +25,10 @@
 #include "UIDialogPanel.h"
 
 /* Forward declarations: */
-class QGridLayout;
-class QTextEdit;
 class QComboBox;
 class QILabel;
 class QILineEdit;
-class QITabWidget;
 class QIToolButton;
-class UIVisoCreator;
 
 class UIVisoConfigurationPanel : public UIDialogPanel
 {
@@ -72,8 +68,6 @@ private:
     QILineEdit   *m_pVisoNameLineEdit;
     QComboBox    *m_pCustomOptionsComboBox;
     QIToolButton *m_pDeleteButton;
-
-    friend class UIVisoCreator;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_medium_viso_UIVisoConfigurationPanel_h */

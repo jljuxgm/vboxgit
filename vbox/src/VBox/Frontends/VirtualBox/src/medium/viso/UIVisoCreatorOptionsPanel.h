@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorOptionsPanel.h 76947 2019-01-23 09:26:31Z vboxsync $ */
+/* $Id: UIVisoCreatorOptionsPanel.h 77518 2019-03-01 10:05:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorOptionsPanel class declaration.
  */
@@ -27,7 +27,6 @@ class QILabel;
 
 /* GUI includes: */
 #include "UIDialogPanel.h"
-#include "QIWithRetranslateUI.h"
 
 class UIVisoCreatorOptionsPanel : public UIDialogPanel
 {

@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 77405 2019-02-20 20:39:07Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.cpp 77518 2019-03-01 10:05:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -17,24 +17,16 @@
 
 
 /* Qt includes: */
-#include <QAction>
-#include <QAbstractItemModel>
-#include <QDateTime>
 #include <QDir>
-#include <QFileSystemModel>
-#include <QHBoxLayout>
+#include <QFileInfo>
+#include <QGridLayout>
 #include <QHeaderView>
-#include <QLabel>
-#include <QListView>
-#include <QMenu>
 #include <QMimeData>
-#include <QSplitter>
 #include <QTableView>
 #include <QTreeView>
 
 /* GUI includes: */
 #include "UICustomFileSystemModel.h"
-#include "UIIconPool.h"
 #include "UIPathOperations.h"
 #include "UIVisoContentBrowser.h"
 

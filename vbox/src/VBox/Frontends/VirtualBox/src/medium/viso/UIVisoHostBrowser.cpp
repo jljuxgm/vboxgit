@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 77405 2019-02-20 20:39:07Z vboxsync $ */
+/* $Id: UIVisoHostBrowser.cpp 77518 2019-03-01 10:05:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -15,7 +15,6 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 /* Qt includes: */
-#include <QAbstractItemModel>
 #include <QFileSystemModel>
 #include <QGridLayout>
 #include <QHeaderView>

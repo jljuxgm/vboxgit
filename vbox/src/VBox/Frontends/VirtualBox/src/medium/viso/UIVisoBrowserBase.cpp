@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.cpp 77405 2019-02-20 20:39:07Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.cpp 77518 2019-03-01 10:05:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class implementation.
  */
@@ -18,18 +18,13 @@
 /* Qt includes: */
 #include <QHeaderView>
 #include <QGridLayout>
-#include <QLabel>
 #include <QLineEdit>
-#include <QSplitter>
-#include <QTableView>
 #include <QTreeView>
-#include <QVBoxLayout>
 
 /* GUI includes: */
 #include "QIToolButton.h"
 #include "UIIconPool.h"
 #include "UIVisoBrowserBase.h"
-
 
 /*********************************************************************************************************************************
 *   UILocationSelector definition.                                                                                   *

@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 77407 2019-02-21 09:29:08Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.h 77518 2019-03-01 10:05:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -31,10 +31,6 @@
 /* Forward declarations: */
 class QItemSelection;
 class QGridLayout;
-class QLabel;
-class QSplitter;
-class QVBoxLayout;
-class QTableView;
 class QTreeView;
 class UILocationSelector;
 

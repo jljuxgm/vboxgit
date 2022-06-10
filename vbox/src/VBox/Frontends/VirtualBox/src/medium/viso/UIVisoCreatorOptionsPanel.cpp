@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorOptionsPanel.cpp 76947 2019-01-23 09:26:31Z vboxsync $ */
+/* $Id: UIVisoCreatorOptionsPanel.cpp 77518 2019-03-01 10:05:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorOptionsPanel class implementation.
  */
@@ -17,17 +17,10 @@
 
 /* Qt includes: */
 #include <QCheckBox>
-#include <QGridLayout>
-#include <QVBoxLayout>
-#include <QPushButton>
-#include <QSplitter>
-#include <QStyle>
+#include <QHBoxLayout>
 
 /* GUI includes: */
 #include "QILabel.h"
-#include "QILineEdit.h"
-#include "QITabWidget.h"
-#include "UIVisoCreator.h"
 #include "UIVisoCreatorOptionsPanel.h"
 
 UIVisoCreatorOptionsPanel::UIVisoCreatorOptionsPanel(QWidget *pParent /* =0 */)
@@ -57,7 +50,7 @@ void UIVisoCreatorOptionsPanel::setShowHiddenbjects(bool fShow)
 void UIVisoCreatorOptionsPanel::retranslateUi()
 {
     if (m_pShowHiddenObjectsLabel)
-        m_pShowHiddenObjectsLabel->setText(UIVisoCreator::tr("Show Hidden Objects"));
+        m_pShowHiddenObjectsLabel->setText(QApplication::translate("UIVisoCreator", "Show Hidden Objects"));
 }
 
 void UIVisoCreatorOptionsPanel::sltHandlShowHiddenObjectsChange(int iState)
@@ -74,7 +67,7 @@ void UIVisoCreatorOptionsPanel::prepareObjects()
         return;
 
     m_pShowHiddenObjectsCheckBox = new QCheckBox;
-    m_pShowHiddenObjectsLabel = new QILabel(UIVisoCreator::tr("Show Hidden Objects"));
+    m_pShowHiddenObjectsLabel = new QILabel(QApplication::translate("UIVisoCreator", "Show Hidden Objects"));
     m_pShowHiddenObjectsLabel->setBuddy(m_pShowHiddenObjectsCheckBox);
     mainLayout()->addWidget(m_pShowHiddenObjectsCheckBox, 0, Qt::AlignLeft);
     mainLayout()->addWidget(m_pShowHiddenObjectsLabel, 0, Qt::AlignLeft);

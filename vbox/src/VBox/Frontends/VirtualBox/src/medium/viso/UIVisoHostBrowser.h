@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.h 77407 2019-02-21 09:29:08Z vboxsync $ */
+/* $Id: UIVisoHostBrowser.h 77518 2019-03-01 10:05:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class declaration.
  */
@@ -21,16 +21,12 @@
 # pragma once
 #endif
 
-
-/* Qt includes: */
-# include <QModelIndex>
-
 /* GUI includes: */
 #include "UIVisoBrowserBase.h"
 
 /* Forward declarations: */
 class QItemSelection;
-class UIFileTreeContainer;
+class QTableView;
 class UIVisoHostBrowserModel;
 
 /** A UIVisoBrowserBase extension to view host file system. Uses QFileSystemModel. */
