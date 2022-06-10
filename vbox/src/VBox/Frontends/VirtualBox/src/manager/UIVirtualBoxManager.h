@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 73450 2018-08-02 11:58:14Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 73451 2018-08-02 12:31:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -75,6 +75,26 @@ protected:
 
     /** Returns whether the window should be maximized when geometry being restored. */
     virtual bool shouldBeMaximized() const /* override */;
+
+    /** @name Event handling stuff.
+      * @{ */
+#ifdef VBOX_WS_MAC
+        /** Mac OS X: Preprocesses any @a pEvent for passed @a pObject. */
+        virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
+#endif
+
+        /** Handles translation event. */
+        virtual void retranslateUi() /* override */;
+
+        /** Handles any Qt @a pEvent. */
+        virtual bool event(QEvent *pEvent) /* override */;
+        /** Handles show @a pEvent. */
+        virtual void showEvent(QShowEvent *pEvent) /* override */;
+        /** Handles first show @a pEvent. */
+        virtual void polishEvent(QShowEvent *pEvent) /* override */;
+        /** Handles close @a pEvent. */
+        virtual void closeEvent(QCloseEvent *pEvent) /* override */;
+    /** @} */
 
 private slots:
 
@@ -239,25 +259,6 @@ private:
     UIVirtualMachineItem *currentItem() const;
     /** Returns a list of current-items. */
     QList<UIVirtualMachineItem*> currentItems() const;
-
-    /** @name Event handling stuff.
-      * @{ */
-        /** Handles translation event. */
-        virtual void retranslateUi() /* override */;
-
-        /** Handles any Qt @a pEvent. */
-        virtual bool event(QEvent *pEvent) /* override */;
-        /** Handles show @a pEvent. */
-        virtual void showEvent(QShowEvent *pEvent) /* override */;
-        /** Handles first show @a pEvent. */
-        virtual void polishEvent(QShowEvent *pEvent) /* override */;
-#ifdef VBOX_WS_MAC
-        /** Mac OS X: Preprocesses any @a pEvent for passed @a pObject. */
-        virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
-#endif
-        /** Handles close @a pEvent. */
-        virtual void closeEvent(QCloseEvent *pEvent) /* override */;
-    /** @} */
 
     /** @name Prepare/Cleanup cascade.
       * @{ */
