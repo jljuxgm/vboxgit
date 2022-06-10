@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74210 2018-09-12 09:51:09Z vboxsync $
+# $Id: Makefile.kmk 74926 2018-10-18 15:32:37Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -37,9 +37,7 @@ else ifdef VBOX_ONLY_EXTPACKS
  include $(PATH_SUB_CURRENT)/Runtime/Makefile.kmk
  include $(PATH_SUB_CURRENT)/Devices/Makefile.kmk
  include $(PATH_SUB_CURRENT)/HostDrivers/Makefile.kmk
- ifdef VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK
-  include $(PATH_SUB_CURRENT)/Main/Makefile.kmk
- endif
+ include $(PATH_SUB_CURRENT)/Main/Makefile.kmk
  include $(PATH_SUB_CURRENT)/Storage/Makefile.kmk
  include $(PATH_SUB_CURRENT)/ExtPacks/Makefile.kmk
  ifdef VBOX_WITH_VRDP

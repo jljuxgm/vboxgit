@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74776 2018-10-11 17:30:59Z vboxsync $
+# $Id: Makefile.kmk 74926 2018-10-18 15:32:37Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -78,7 +78,6 @@ VBOX_MAIN_DEFS += \
 	$(if $(VBOX_WITH_HOSTNETIF_API),VBOX_WITH_HOSTNETIF_API,) \
 	$(if $(VBOX_WITH_MIDL_PROXY_STUB),VBOX_WITH_MIDL_PROXY_STUB,) \
 	$(if $(VBOX_WITH_SDS),VBOX_WITH_SDS,) \
-	$(if $(VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK),VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK,) \
 	$(if $(VBOX_WITH_CLOUD_PROVIDERS_NO_COMMANDS),VBOX_WITH_CLOUD_PROVIDERS_NO_COMMANDS,)
 
 # Unconditionally enable the new semaphore key generation code
