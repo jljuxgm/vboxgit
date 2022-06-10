@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 78216 2019-04-19 14:52:01Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 78218 2019-04-19 15:07:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -437,8 +437,6 @@ UIWizardImportAppPageBasic1::UIWizardImportAppPageBasic1(bool fImportFromOCIByDe
         m_pLabelMain = new QIRichTextLabel(this);
         if (m_pLabelMain)
         {
-            m_pLabelMain->hide();
-
             /* Add into layout: */
             pMainLayout->addWidget(m_pLabelMain);
         }
@@ -454,8 +452,6 @@ UIWizardImportAppPageBasic1::UIWizardImportAppPageBasic1(bool fImportFromOCIByDe
             m_pSourceLabel = new QLabel(this);
             if (m_pSourceLabel)
             {
-                m_pSourceLabel->hide();
-
                 /* Add into layout: */
                 m_pSourceLayout->addWidget(m_pSourceLabel, 0, 0, Qt::AlignRight);
             }
@@ -464,7 +460,6 @@ UIWizardImportAppPageBasic1::UIWizardImportAppPageBasic1(bool fImportFromOCIByDe
             if (m_pSourceComboBox)
             {
                 m_pSourceLabel->setBuddy(m_pSourceComboBox);
-                m_pSourceComboBox->hide();
 
                 /* Add into layout: */
                 m_pSourceLayout->addWidget(m_pSourceComboBox, 0, 1);
