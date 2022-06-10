@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 77317 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -3267,17 +3267,16 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                                                                  "gctrlDirCopyTo");
                         try:
                             oProgress.wait();
-                            if not oProgress.isSuccess():
+                            if oProgress.isSuccess():
+                                fRc2 = True;
+                            else:
                                 oProgress.logResult(fIgnoreErrors = True);
-                                fRc = False;
                         except:
                             reporter.logXcpt('Waiting exception for sSrc="%s", sDst="%s":' % (curTest.sSrc, curTest.sDst));
-                            fRc2 = False;
                     else:
                         reporter.error('No progress object returned');
-                        fRc2 = False;
                 except:
-                    fRc2 = False;
+                    reporter.logXcpt('directoryCopyToGuest exception for sSrc="%s", sDst="%s":' % (curTest.sSrc, curTest.sDst));
             else:
                 fRc2 = self.gctrlCopyFileTo(curGuestSession, curTest.sSrc, curTest.sDst, curTest.aFlags);
 
