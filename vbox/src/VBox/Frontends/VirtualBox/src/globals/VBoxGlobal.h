@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 77238 2019-02-10 13:48:07Z vboxsync $ */
+/* $Id: VBoxGlobal.h 77264 2019-02-11 14:29:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -503,9 +503,9 @@ public:
 
         /** Creates a VISO by using the VISO creator dialog.
           * @param  pParent    Brings the dialog parent.
-          * @param  strMachineName    Passes the name of the machine,
-          * @param  strFolder  Brings the folder to save the VISO file. */
-        QUuid createVisoMediumWithVisoCreator(QWidget *pParent, const QString &strMachineName, const QString &strFolder);
+          * @param  strFolder  Brings the folder to save the VISO file.
+          * @param  strMachineName    Passes the name of the machine, */
+        QUuid createVisoMediumWithVisoCreator(QWidget *pParent, const QString &strFolder, const QString &strMachineName = QString());
 
         /** Creates and shows a dialog thru which user can create a new floppy disk a VISO using the file-open dialog.
           * @param  parent            Passes the parent of the dialog,

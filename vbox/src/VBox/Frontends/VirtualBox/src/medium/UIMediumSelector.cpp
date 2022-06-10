@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 77255 2019-02-11 11:11:06Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 77264 2019-02-11 14:29:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -454,7 +454,7 @@ void UIMediumSelector::sltCreateMedium()
             uMediumId = vboxGlobal().createHDWithNewHDWizard(this, m_strMachineGuestOSTypeId, m_strMachineName, m_strMachineFolder);
             break;
         case UIMediumDeviceType_DVD:
-            uMediumId = vboxGlobal().createVisoMediumWithVisoCreator(this, m_strMachineName, m_strMachineFolder);
+            uMediumId = vboxGlobal().createVisoMediumWithVisoCreator(this, m_strMachineFolder, m_strMachineName);
             break;
         default:
             break;
