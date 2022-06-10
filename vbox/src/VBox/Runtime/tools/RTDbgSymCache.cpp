@@ -1,4 +1,4 @@
-/* $Id: RTDbgSymCache.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTDbgSymCache.cpp 76589 2019-01-01 08:56:07Z vboxsync $ */
 /** @file
  * IPRT - Debug Symbol Cache Utility.
  */
@@ -239,7 +239,7 @@ static int rtDbgSymCacheAddCreateUuidMapping(const char *pszCacheFile, PRTUUID p
      */
     char szLinkTarget[RTPATH_MAX];
     //szMapPath[cch] = '\0';
-    rc = RTPathCalcRelative(szLinkTarget, sizeof(szLinkTarget), szMapPath, pszCacheFile);
+    rc = RTPathCalcRelative(szLinkTarget, sizeof(szLinkTarget), szMapPath, false /*fFromFile*/, pszCacheFile);
     //szMapPath[cch] = RTPATH_SLASH;
     if (RT_FAILURE(rc))
         return RTMsgErrorRc(rc, "Failed to calculate relative path from '%s' to '%s': %Rrc", szMapPath, pszCacheFile, rc);

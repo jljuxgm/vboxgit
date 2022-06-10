@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VHD.cpp 76589 2019-01-01 08:56:07Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -330,8 +330,7 @@ static int vhdLocatorUpdate(PVHDIMAGE pImage, PVHDPLE pLocator, const char *pszF
             {
                 /* Convert to relative path. */
                 char szPath[RTPATH_MAX];
-                rc = RTPathCalcRelative(szPath, sizeof(szPath), pImage->pszFilename,
-                                        pszFilename);
+                rc = RTPathCalcRelative(szPath, sizeof(szPath), pImage->pszFilename, true /*fFromFile*/, pszFilename);
                 if (RT_SUCCESS(rc))
                 {
                     /* Update plain relative name. */
@@ -373,8 +372,7 @@ static int vhdLocatorUpdate(PVHDIMAGE pImage, PVHDPLE pLocator, const char *pszF
             {
                 /* Convert to relative path. */
                 char szPath[RTPATH_MAX];
-                rc = RTPathCalcRelative(szPath, sizeof(szPath), pImage->pszFilename,
-                                        pszFilename);
+                rc = RTPathCalcRelative(szPath, sizeof(szPath), pImage->pszFilename, true /*fFromFile*/, pszFilename);
                 if (RT_SUCCESS(rc))
                     rc = vhdFilenameToUtf16(szPath, (uint16_t *)pvBuf, cbMaxLen, &cb, false);
             }
