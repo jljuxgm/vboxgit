@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 75135 2018-10-29 04:27:39Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 75150 2018-10-29 14:28:43Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3774,6 +3774,39 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitExtInt(PVMCPU pVCpu, uint8_t uVector, bool f
     }
 
     return VINF_VMX_INTERCEPT_NOT_ACTIVE;
+}
+
+
+/**
+ * VMX VM-exit handler for VM-exits due to startup-IPIs (SIPI).
+ *
+ * @returns VBox strict status code.
+ * @param   pVCpu       The cross context virtual CPU structure.
+ * @param   uVector     The SIPI vector.
+ */
+IEM_STATIC VBOXSTRICTRC iemVmxVmexitStartupIpi(PVMCPU pVCpu, uint8_t uVector)
+{
+    PCVMXVVMCS pVmcs = pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pVmcs);
+    Assert(pVmcs);
+
+    iemVmxVmcsSetExitQual(pVCpu, uVector);
+    return iemVmxVmexit(pVCpu, VMX_EXIT_SIPI);
+}
+
+
+/**
+ * VMX VM-exit handler for VM-exits due to init-IPIs (INIT).
+ *
+ * @returns VBox strict status code.
+ * @param   pVCpu       The cross context virtual CPU structure.
+ */
+IEM_STATIC VBOXSTRICTRC iemVmxVmexitInitIpi(PVMCPU pVCpu)
+{
+    PCVMXVVMCS pVmcs = pVCpu->cpum.GstCtx.hwvirt.vmx.CTX_SUFF(pVmcs);
+    Assert(pVmcs);
+
+    iemVmxVmcsSetExitQual(pVCpu, 0);
+    return iemVmxVmexit(pVCpu, VMX_EXIT_INIT_SIGNAL);
 }
 
 
