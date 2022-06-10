@@ -1,4 +1,4 @@
-# $Id: .scm-settings 74257 2018-09-13 23:42:37Z vboxsync $
+# $Id: .scm-settings 76521 2018-12-30 05:44:53Z vboxsync $
 ## @file
 # Source code massager settings for the Main API.
 #
@@ -30,6 +30,7 @@
 --filter-out-files /src-client/README.testing
 --filter-out-files /src-server/custom.ids
 --filter-out-files /src-server/usb.ids
+/src-all/win/VBoxAPIWrap-precomp_gcc.h: --no-pragma-once
 
 # IDL and XML
 /idl/VirtualBox.xidl:                   --treat-as .xml
