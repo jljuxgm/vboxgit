@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 75648 2018-11-21 18:02:38Z vboxsync $ */
+/* $Id: Config.cpp 75923 2018-12-03 19:10:10Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -635,6 +635,25 @@ void Config::parseServer(const xml::ElementNode *server)
         throw ConfigFileError("DHCPServer/@networkName missing");
 
     setNetwork(strNetworkName.c_str());
+
+    RTCString strTrunk;
+    if (!server->getAttributeValue("trunkName", &strTrunk))
+        throw ConfigFileError("DHCPServer/@trunkName missing");
+    m_strTrunk = strTrunk.c_str();
+
+    RTCString strTrunkType;
+    if (!server->getAttributeValue("trunkType", &strTrunkType))
+        throw ConfigFileError("DHCPServer/@trunkType missing");
+    if (strTrunkType == "none")
+        m_enmTrunkType = kIntNetTrunkType_None;
+    else if (strTrunkType == "whatever")
+        m_enmTrunkType = kIntNetTrunkType_WhateverNone;
+    else if (strTrunkType == "netflt")
+        m_enmTrunkType = kIntNetTrunkType_NetFlt;
+    else if (strTrunkType == "netadp")
+        m_enmTrunkType = kIntNetTrunkType_NetAdp;
+    else
+        throw ConfigFileError(RTCStringFmt("Invalid DHCPServer/@trunkType value: %s", strTrunkType.c_str()));
 
     getIPv4AddrAttribute(server, "IPAddress", &m_IPv4Address);
     getIPv4AddrAttribute(server, "networkMask", &m_IPv4Netmask);
