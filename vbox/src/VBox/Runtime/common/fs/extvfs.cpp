@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 76316 2018-12-20 15:33:24Z vboxsync $ */
+/* $Id: extvfs.cpp 76318 2018-12-20 15:56:20Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -61,7 +61,8 @@
 #endif
 
 /** All supported incompatible features. */
-#define RTFSEXT_INCOMPAT_FEATURES_SUPP      (EXT_SB_FEAT_INCOMPAT_DIR_FILETYPE | EXT_SB_FEAT_INCOMPAT_EXTENTS | EXT_SB_FEAT_INCOMPAT_64BIT)
+#define RTFSEXT_INCOMPAT_FEATURES_SUPP      (  EXT_SB_FEAT_INCOMPAT_DIR_FILETYPE | EXT_SB_FEAT_INCOMPAT_EXTENTS | EXT_SB_FEAT_INCOMPAT_64BIT \
+                                             | EXT_SB_FEAT_INCOMPAT_FLEX_BG)
 
 
 /*********************************************************************************************************************************
