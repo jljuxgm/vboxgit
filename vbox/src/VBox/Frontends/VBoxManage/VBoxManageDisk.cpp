@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 74822 2018-10-12 18:40:09Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 74829 2018-10-13 03:02:51Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -2485,7 +2485,7 @@ static RTEXITCODE handleMediumIOStream(HandlerArg *a, int iFirst, PMEDIUMIOCOMMO
                         }
                     }
 
-                    /** @todo: Check progress. */
+                    /** @todo Check progress. */
                 }
             }
             else

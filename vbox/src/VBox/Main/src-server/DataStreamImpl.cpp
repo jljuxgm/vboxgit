@@ -1,4 +1,4 @@
-/* $Id: DataStreamImpl.cpp 74823 2018-10-12 18:42:01Z vboxsync $ */
+/* $Id: DataStreamImpl.cpp 74829 2018-10-13 03:02:51Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation: DataStream
@@ -127,7 +127,7 @@ void DataStream::uninit()
 
 
 /*********************************************************************************************************************************
-*   IDataStream attributes                                                                                                         *
+*   IDataStream attributes                                                                                                       *
 *********************************************************************************************************************************/
 
 HRESULT DataStream::getReadSize(ULONG *aReadSize)
@@ -139,7 +139,7 @@ HRESULT DataStream::getReadSize(ULONG *aReadSize)
 
 
 /*********************************************************************************************************************************
-*   IDataStream methods                                                                                                            *
+*   IDataStream methods                                                                                                          *
 *********************************************************************************************************************************/
 
 HRESULT DataStream::read(ULONG aSize, ULONG aTimeoutMS, std::vector<BYTE> &aData)
@@ -221,7 +221,7 @@ HRESULT DataStream::read(ULONG aSize, ULONG aTimeoutMS, std::vector<BYTE> &aData
 
 
 /*********************************************************************************************************************************
-*   DataStream internal methods                                                                                                   *
+*   DataStream internal methods                                                                                                  *
 *********************************************************************************************************************************/
 
 /**
