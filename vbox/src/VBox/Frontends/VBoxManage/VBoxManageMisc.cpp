@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 77887 2019-03-26 16:41:15Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 78296 2019-04-25 15:52:38Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -280,16 +280,17 @@ RTEXITCODE handleCreateVM(HandlerArg *a)
                                         machine.asOutParam()));
 
         CHECK_ERROR_BREAK(machine, SaveSettings());
-        if (fRegister)
-        {
-            CHECK_ERROR_BREAK(a->virtualBox, RegisterMachine(machine));
-        }
         if (fDefault)
         {
             /* ApplyDefaults assumes the machine is already registered */
             CHECK_ERROR_BREAK(machine, ApplyDefaults(bstrDefaultFlags.raw()));
             CHECK_ERROR_BREAK(machine, SaveSettings());
         }
+        if (fRegister)
+        {
+            CHECK_ERROR_BREAK(a->virtualBox, RegisterMachine(machine));
+        }
+
         Bstr uuid;
         CHECK_ERROR_BREAK(machine, COMGETTER(Id)(uuid.asOutParam()));
         Bstr settingsFile;

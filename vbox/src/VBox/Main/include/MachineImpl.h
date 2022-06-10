@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 78261 2019-04-23 16:49:28Z vboxsync $ */
+/* $Id: MachineImpl.h 78296 2019-04-25 15:52:38Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -720,6 +720,8 @@ protected:
     bool i_isControllerHotplugCapable(StorageControllerType_T enmCtrlType);
 
     Utf8Str i_getExtraData(const Utf8Str &strKey);
+
+    com::Utf8Str i_controllerNameFromBusType(StorageBus_T aBusType);
 
 #ifdef VBOX_WITH_GUEST_PROPS
     HRESULT i_getGuestPropertyFromService(const com::Utf8Str &aName, com::Utf8Str &aValue,
