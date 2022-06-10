@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75012 2018-10-23 17:53:59Z vboxsync $
+# $Id: Makefile.kmk 75015 2018-10-23 18:24:01Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -724,7 +724,6 @@ VirtualBox_QT_MOCHDRS = \
 
 VirtualBox_QT_MOCHDRS += \
 	src/manager/UIErrorPane.h \
-	src/manager/UIToolbarTools.h \
 	src/manager/UIToolPaneGlobal.h \
 	src/manager/UIToolPaneMachine.h \
 	src/manager/UIVirtualBoxManager.h \
@@ -1386,7 +1385,6 @@ VirtualBox_SOURCES = \
 
 VirtualBox_SOURCES += \
 	src/manager/UIErrorPane.cpp \
-	src/manager/UIToolbarTools.cpp \
 	src/manager/UIToolPaneGlobal.cpp \
 	src/manager/UIToolPaneMachine.cpp \
 	src/manager/UIVirtualBoxManager.cpp \
