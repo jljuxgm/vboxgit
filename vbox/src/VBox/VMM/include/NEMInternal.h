@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 73282 2018-07-20 20:04:26Z vboxsync $ */
+/* $Id: NEMInternal.h 74517 2018-09-28 11:24:47Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -382,6 +382,8 @@ typedef struct NEMR0PERVM
     NEMWINIOCTL                 IoCtlStopVirtualProcessor;
     /** Info about the VidStopVirtualProcessor I/O control interface. */
     NEMWINIOCTL                 IoCtlMessageSlotHandleAndGetNext;
+    /** Whether we may use the ring-0 runloop or not. */
+    bool                        fMayUseRing0Runloop;
 
     /** Hypercall input/ouput page for non-EMT. */
     NEMR0HYPERCALLDATA          HypercallData;
