@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 75101 2018-10-26 14:45:23Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 75111 2018-10-26 15:49:10Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1939,7 +1939,7 @@ static int buslogicProcessCommand(PBUSLOGIC pBusLogic)
             memset(pReply, 0, sizeof(ReplyInquireConfiguration));
 
             pReply->uHostAdapterId = 7; /* The controller has always 7 as ID. */
-            pReply->fDmaChannel5  = 1;  /* DMA channel 6 is a good default. */
+            pReply->fDmaChannel6  = 1;  /* DMA channel 6 is a good default. */
 
             /* The PCI IRQ is not necessarily representable in this structure.
              * If that is the case, the guest likely won't function correctly,
