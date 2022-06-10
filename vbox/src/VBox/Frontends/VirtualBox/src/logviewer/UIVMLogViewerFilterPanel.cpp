@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 72724 2018-06-28 14:55:41Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 72731 2018-06-29 06:49:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -79,6 +79,8 @@ protected:
     virtual void        mouseReleaseEvent(QMouseEvent *){}
     virtual void        paintEvent(QPaintEvent *event) /* override */;
     virtual void        resizeEvent(QResizeEvent *event) /* override */;
+    /* Override the contextMenuEvent to disable it: */
+    virtual void        contextMenuEvent(QContextMenuEvent *event) /* override */{}
 
 private slots:
 
