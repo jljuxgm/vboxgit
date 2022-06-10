@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 77556 2019-03-04 13:33:06Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 77560 2019-03-04 16:29:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -444,7 +444,7 @@ QString VBoxGlobal::findUniqueFileName(const QString &strFullFolderPath, const Q
     foreach (const QFileInfo &fileInfo, folderContent)
     {
         /* Remove the extension : */
-        fileNameSet.insert(fileInfo.baseName());
+        fileNameSet.insert(fileInfo.completeBaseName());
     }
     int iSuffix = 0;
     QString strNewName(strBaseFileName);
