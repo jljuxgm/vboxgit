@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 75100 2018-10-26 14:41:41Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 75101 2018-10-26 14:45:23Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1054,10 +1054,12 @@ static void buslogicSetInterrupt(PBUSLOGIC pBusLogic, bool fSuppressIrq, uint8_t
 
     pBusLogic->regInterrupt |= BL_INTR_INTV;
     if (pBusLogic->fIRQEnabled && !fSuppressIrq)
+    {
         if (!pBusLogic->uIsaIrq)
             PDMDevHlpPCISetIrq(pBusLogic->CTX_SUFF(pDevIns), 0, 1);
         else
             PDMDevHlpISASetIrq(pBusLogic->CTX_SUFF(pDevIns), pBusLogic->uIsaIrq, 1);
+    }
 }
 
 /**
