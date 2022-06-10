@@ -1,10 +1,10 @@
-/* $Id: VBoxDnD.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDnD.h 73947 2018-08-29 12:28:34Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
 
 /*
- * Copyright (C) 2013-2017 Oracle Corporation
+ * Copyright (C) 2013-2018 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -228,6 +228,8 @@ typedef struct VBOXDNDCONTEXT
 {
     /** Pointer to the service environment. */
     const VBOXSERVICEENV      *pEnv;
+    /** Started indicator. */
+    bool                       fStarted;
     /** Shutdown indicator. */
     bool                       fShutdown;
     /** The registered window class. */
