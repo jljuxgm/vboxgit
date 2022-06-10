@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77620 2019-03-08 15:03:08Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77636 2019-03-10 15:37:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -34,6 +34,9 @@
 #include "UIChooserItemGlobal.h"
 #include "UIChooserItemMachine.h"
 #include "UIChooserModel.h"
+#include "UIChooserNode.h"
+#include "UIChooserNodeGroup.h"
+#include "UIChooserNodeMachine.h"
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
@@ -283,8 +286,8 @@ const QList<UIChooserItem*> &UIChooserModel::currentItems() const
 UIVirtualMachineItem *UIChooserModel::currentMachineItem() const
 {
     /* Return first machine-item of the current-item: */
-    return   currentItem() && currentItem()->firstMachineItem()
-           ? currentItem()->firstMachineItem()->toMachineItem()
+    return   currentItem() && currentItem()->firstMachineItem() && currentItem()->firstMachineItem()->node()
+           ? currentItem()->firstMachineItem()->toMachineItem()->node()->toMachineNode()
            : 0;
 }
 
@@ -298,7 +301,7 @@ QList<UIVirtualMachineItem*> UIChooserModel::currentMachineItems() const
     /* Reintegrate machine-items into valid format: */
     QList<UIVirtualMachineItem*> currentMachineList;
     foreach (UIChooserItemMachine *pItem, currentMachineItemList)
-        currentMachineList << pItem;
+        currentMachineList << pItem->node()->toMachineNode();
     return currentMachineList;
 }
 
@@ -815,7 +818,7 @@ void UIChooserModel::sltUngroupSelectedGroup()
             {
                 UIChooserItemGroup *pGroupItem = new UIChooserItemGroup(pParentItem, pItem->toGroupItem());
                 if (toBeRenamed.contains(pItem))
-                    pGroupItem->setName(uniqueGroupName(pParentItem));
+                    pGroupItem->node()->toGroupNode() ->setName(uniqueGroupName(pParentItem));
                 copiedItems << pGroupItem;
                 break;
             }
