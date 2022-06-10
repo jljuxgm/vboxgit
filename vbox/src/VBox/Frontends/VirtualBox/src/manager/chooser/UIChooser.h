@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 73492 2018-08-03 15:30:44Z vboxsync $ */
+/* $Id: UIChooser.h 73600 2018-08-09 18:02:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -70,7 +70,9 @@ public:
     UIChooserView *view() const { return m_pChooserView; }
 
     /* API: Current-item stuff: */
-    UIVirtualMachineItem* currentItem() const;
+    bool isGlobalItemSelected() const;
+    bool isMachineItemSelected() const;
+    UIVirtualMachineItem *currentItem() const;
     QList<UIVirtualMachineItem*> currentItems() const;
     bool isSingleGroupSelected() const;
     bool isAllItemsOfOneGroupSelected() const;

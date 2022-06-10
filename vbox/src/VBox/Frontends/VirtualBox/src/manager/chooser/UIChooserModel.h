@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIChooserModel.h 73600 2018-08-09 18:02:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -109,7 +109,9 @@ public:
     void updateNavigation();
 
     /* API: Current-item stuff: */
-    UIVirtualMachineItem* currentMachineItem() const;
+    bool isGlobalItemSelected() const;
+    bool isMachineItemSelected() const;
+    UIVirtualMachineItem *currentMachineItem() const;
     QList<UIVirtualMachineItem*> currentMachineItems() const;
     UIChooserItem* currentItem() const;
     const QList<UIChooserItem*>& currentItems() const;
@@ -264,6 +266,7 @@ private:
     int getDesiredPosition(UIChooserItem *pParentItem, UIChooserItemType type, const QString &strName);
     int positionFromDefinitions(UIChooserItem *pParentItem, UIChooserItemType type, const QString &strName);
     void createMachineItem(const CMachine &machine, UIChooserItem *pParentItem);
+    void createGlobalItem(UIChooserItem *pParentItem);
 
     /* Helpers: Saving stuff: */
     void saveGroupDefinitions();

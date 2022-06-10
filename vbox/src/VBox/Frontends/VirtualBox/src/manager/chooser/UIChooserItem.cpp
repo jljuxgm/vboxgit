@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 73600 2018-08-09 18:02:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -38,6 +38,7 @@
 # include "UIChooserView.h"
 # include "UIChooserModel.h"
 # include "UIChooserItemGroup.h"
+# include "UIChooserItemGlobal.h"
 # include "UIChooserItemMachine.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -261,6 +262,13 @@ UIChooserItemGroup* UIChooserItem::toGroupItem()
 {
     UIChooserItemGroup *pItem = qgraphicsitem_cast<UIChooserItemGroup*>(this);
     AssertMsg(pItem, ("Trying to cast invalid item type to UIChooserItemGroup!"));
+    return pItem;
+}
+
+UIChooserItemGlobal* UIChooserItem::toGlobalItem()
+{
+    UIChooserItemGlobal *pItem = qgraphicsitem_cast<UIChooserItemGlobal*>(this);
+    AssertMsg(pItem, ("Trying to cast invalid item type to UIChooserItemGlobal!"));
     return pItem;
 }
 

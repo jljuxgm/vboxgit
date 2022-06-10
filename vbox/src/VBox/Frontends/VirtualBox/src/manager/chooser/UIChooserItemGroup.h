@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 73600 2018-08-09 18:02:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -144,8 +144,8 @@ private:
     void clearItems(UIChooserItemType type = UIChooserItemType_Any);
     void updateAll(const QString &strId);
     void removeAll(const QString &strId);
-    UIChooserItem* searchForItem(const QString &strSearchTag, int iItemSearchFlags);
-    UIChooserItemMachine* firstMachineItem();
+    UIChooserItem *searchForItem(const QString &strSearchTag, int iItemSearchFlags);
+    UIChooserItem *firstMachineItem();
     void sortItems();
 
     /* Helpers: Layout stuff: */
@@ -202,6 +202,7 @@ private:
     UIEditorGroupRename *m_pNameEditorWidget;
     QGraphicsProxyWidget *m_pNameEditor;
     QList<UIChooserItem*> m_groupItems;
+    QList<UIChooserItem*> m_globalItems;
     QList<UIChooserItem*> m_machineItems;
     int m_iAdditionalHeight;
     int m_iCornerRadius;

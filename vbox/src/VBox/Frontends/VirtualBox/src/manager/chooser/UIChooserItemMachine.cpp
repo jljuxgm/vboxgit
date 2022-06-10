@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.cpp 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIChooserItemMachine.cpp 73600 2018-08-09 18:02:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class implementation.
  */
@@ -604,7 +604,7 @@ UIChooserItem* UIChooserItemMachine::searchForItem(const QString &strSearchTag, 
     return this;
 }
 
-UIChooserItemMachine* UIChooserItemMachine::firstMachineItem()
+UIChooserItem *UIChooserItemMachine::firstMachineItem()
 {
     return this;
 }

@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 73492 2018-08-03 15:30:44Z vboxsync $ */
+/* $Id: UIChooser.cpp 73600 2018-08-09 18:02:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -71,7 +71,17 @@ UIActionPool* UIChooser::actionPool() const
     return managerWidget()->actionPool();
 }
 
-UIVirtualMachineItem* UIChooser::currentItem() const
+bool UIChooser::isGlobalItemSelected() const
+{
+    return m_pChooserModel->isGlobalItemSelected();
+}
+
+bool UIChooser::isMachineItemSelected() const
+{
+    return m_pChooserModel->isMachineItemSelected();
+}
+
+UIVirtualMachineItem *UIChooser::currentItem() const
 {
     return m_pChooserModel->currentMachineItem();
 }

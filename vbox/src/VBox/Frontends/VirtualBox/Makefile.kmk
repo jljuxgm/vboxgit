@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 73492 2018-08-03 15:30:44Z vboxsync $
+# $Id: Makefile.kmk 73600 2018-08-09 18:02:16Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -760,6 +760,7 @@ ifdef VBOX_GUI_WITH_NEW_MANAGER
 	src/manager/chooser/UIChooserHandlerKeyboard.h \
 	src/manager/chooser/UIChooserItem.h \
 	src/manager/chooser/UIChooserItemGroup.h \
+	src/manager/chooser/UIChooserItemGlobal.h \
 	src/manager/chooser/UIChooserItemMachine.h \
 	src/manager/details/UIDetails.h \
 	src/manager/details/UIDetailsModel.h \
@@ -1437,6 +1438,7 @@ ifdef VBOX_GUI_WITH_NEW_MANAGER
 	src/manager/chooser/UIChooserHandlerKeyboard.cpp \
 	src/manager/chooser/UIChooserItem.cpp \
 	src/manager/chooser/UIChooserItemGroup.cpp \
+	src/manager/chooser/UIChooserItemGlobal.cpp \
 	src/manager/chooser/UIChooserItemMachine.cpp \
 	src/manager/details/UIDetails.cpp \
 	src/manager/details/UIDetailsModel.cpp \

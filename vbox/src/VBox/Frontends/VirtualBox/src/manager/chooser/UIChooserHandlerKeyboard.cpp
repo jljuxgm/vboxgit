@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.cpp 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.cpp 73600 2018-08-09 18:02:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class implementation.
  */
@@ -267,6 +267,7 @@ bool UIChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
                 switch (pFocusItem->type())
                 {
                     case UIChooserItemType_Group:
+                    case UIChooserItemType_Global:
                     case UIChooserItemType_Machine:
                     {
                         /* Unindent root if its NOT main: */

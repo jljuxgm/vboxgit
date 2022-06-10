@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerMouse.cpp 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIChooserHandlerMouse.cpp 73600 2018-08-09 18:02:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerMouse class implementation.
  */
@@ -26,6 +26,7 @@
 # include "UIChooserHandlerMouse.h"
 # include "UIChooserModel.h"
 # include "UIChooserItemGroup.h"
+# include "UIChooserItemGlobal.h"
 # include "UIChooserItemMachine.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -72,6 +73,9 @@ bool UIChooserHandlerMouse::handleMousePress(QGraphicsSceneMouseEvent *pEvent) c
                 /* Was that a group item? */
                 if (UIChooserItemGroup *pGroupItem = qgraphicsitem_cast<UIChooserItemGroup*>(pItemUnderMouse))
                     pClickedItem = pGroupItem;
+                /* Or a global one? */
+                else if (UIChooserItemGlobal *pGlobalItem = qgraphicsitem_cast<UIChooserItemGlobal*>(pItemUnderMouse))
+                    pClickedItem = pGlobalItem;
                 /* Or a machine one? */
                 else if (UIChooserItemMachine *pMachineItem = qgraphicsitem_cast<UIChooserItemMachine*>(pItemUnderMouse))
                     pClickedItem = pMachineItem;
@@ -127,6 +131,9 @@ bool UIChooserHandlerMouse::handleMousePress(QGraphicsSceneMouseEvent *pEvent) c
                 /* Was that a group item? */
                 if (UIChooserItemGroup *pGroupItem = qgraphicsitem_cast<UIChooserItemGroup*>(pItemUnderMouse))
                     pClickedItem = pGroupItem;
+                /* Or a global one? */
+                else if (UIChooserItemGlobal *pGlobalItem = qgraphicsitem_cast<UIChooserItemGlobal*>(pItemUnderMouse))
+                    pClickedItem = pGlobalItem;
                 /* Or a machine one? */
                 else if (UIChooserItemMachine *pMachineItem = qgraphicsitem_cast<UIChooserItemMachine*>(pItemUnderMouse))
                     pClickedItem = pMachineItem;
@@ -210,7 +217,7 @@ bool UIChooserHandlerMouse::handleMouseDoubleClick(QGraphicsSceneMouseEvent *pEv
                 /* Or a machine one? */
                 else if (pItemUnderMouse->type() == UIChooserItemType_Machine)
                 {
-                    /* Activate machine item: */
+                    /* Activate machine-item: */
                     model()->activateMachineItem();
                 }
                 break;
