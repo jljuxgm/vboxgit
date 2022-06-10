@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplPrivate.h 73929 2018-08-28 18:00:59Z vboxsync $ */
+/* $Id: ApplianceImplPrivate.h 75312 2018-11-07 15:44:58Z vboxsync $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
@@ -238,7 +238,7 @@ struct Appliance::Data
         Utf8Str strDomainName;
         Utf8Str strBootDiskSize;
         Utf8Str strBucketId;
-        Utf8Str strVCN;
+        Utf8Str strSubnet;
         bool    fPublicIP;
         Utf8Str strUserId;
         Utf8Str strBootImageName;
