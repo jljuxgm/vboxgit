@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 72476 2018-06-07 13:49:48Z vboxsync $ */
+/* $Id: MachineImpl.cpp 72700 2018-06-27 13:48:05Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -324,7 +324,8 @@ HRESULT Machine::init(VirtualBox *aParent,
 
         mUserData->s.strName = strName;
 
-        mUserData->s.llGroups = llGroups;
+        if (llGroups.size())
+            mUserData->s.llGroups = llGroups;
 
         mUserData->s.fDirectoryIncludesUUID = fDirectoryIncludesUUID;
         // the "name sync" flag determines whether the machine directory gets renamed along
