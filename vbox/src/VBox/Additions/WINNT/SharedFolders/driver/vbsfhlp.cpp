@@ -1,4 +1,4 @@
-/* $Id: vbsfhlp.c 78301 2019-04-25 23:57:05Z vboxsync $ */
+/* $Id: vbsfhlp.cpp 78304 2019-04-26 01:19:49Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver system helpers
  */
