@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 73926 2018-08-28 10:02:14Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 73931 2018-08-28 18:59:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -87,8 +87,7 @@ private:
     /* Helpers: Medium-enumeration stuff: */
     void createMediumEnumerationTask(const UIMedium &medium);
     void addNullMediumToMap(UIMediumMap &media);
-    void addMediaToMap(const CMediumVector &inputMedia, UIMediumMap &outputMedia, UIMediumType mediumType);
-    void addHardDisksToMap(const CMediumVector &inputMedia, UIMediumMap &outputMedia);
+    void addMediaToMap(const CMediumVector &inputMedia, UIMediumMap &outputMedia);
 
     /* Helpers: Medium re-caching stuff: */
     void calculateCachedUsage(const QString &strMachineID, QStringList &previousUIMediumIDs, bool fTakeIntoAccountCurrentStateOnly) const;
