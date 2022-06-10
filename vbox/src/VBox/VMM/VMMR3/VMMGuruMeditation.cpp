@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 73471 2018-08-03 12:11:07Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 73483 2018-08-03 12:47:32Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -506,6 +506,18 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
                             if (pFrame->pLinePC)
                                 pHlp->pfnPrintf(pHlp, " [%s @ 0i%d]", pFrame->pLinePC->szFilename, pFrame->pLinePC->uLineNo);
                             pHlp->pfnPrintf(pHlp, "\n");
+                            for (uint32_t iReg = 0; iReg < pFrame->cSureRegs; iReg++)
+                            {
+                                const char *pszName = pFrame->paSureRegs[iReg].pszName;
+                                if (!pszName)
+                                    pszName = DBGFR3RegCpuName(pVM->pUVM, pFrame->paSureRegs[iReg].enmReg,
+                                                               pFrame->paSureRegs[iReg].enmType);
+                                char szValue[1024];
+                                szValue[0] = '\0';
+                                DBGFR3RegFormatValue(szValue, sizeof(szValue), &pFrame->paSureRegs[iReg].Value,
+                                                     pFrame->paSureRegs[iReg].enmType, false);
+                                pHlp->pfnPrintf(pHlp, "     %-3s=%s\n", pszName, szValue);
+                            }
                         }
                         DBGFR3StackWalkEnd(pFirstFrame);
                     }
