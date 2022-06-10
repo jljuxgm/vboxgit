@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 77093 2019-02-01 08:53:18Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 77095 2019-02-01 09:09:57Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -1013,9 +1013,14 @@ int GuestBase::registerWaitEventEx(uint32_t uSessionID, uint32_t uObjectID, cons
         RTCritSectLeave(&mWaitEventCritSect);
     }
     if (RT_SUCCESS(rc))
+    {
+        *ppEvent = pEvent;
         return rc;
+    }
 
-    delete pEvent;
+    if (pEvent)
+        delete pEvent;
+
     return rc;
 }
 
