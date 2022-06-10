@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 77036 2019-01-29 16:32:11Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1472,8 +1472,7 @@ HRESULT GuestSessionTaskCopyFrom::Init(const Utf8Str &strTaskDesc)
 
         Utf8Str strFirstOp = mDest + mVecLists[0]->mVecEntries[0]->strPath;
         hr = pProgress->init(static_cast<IGuestSession*>(mSession), Bstr(mDesc).raw(),
-                             TRUE /* aCancelable */, cOperations + 1 /* Number of operations */,
-                             Bstr(strFirstOp).raw());
+                             TRUE /* aCancelable */, cOperations /* Number of operations */, Bstr(strFirstOp).raw());
     }
     else /* If no operations have been defined, go with an "empty" progress object when will be used for error handling. */
         hr = pProgress->init(static_cast<IGuestSession*>(mSession), Bstr(mDesc).raw(),
@@ -1728,7 +1727,7 @@ HRESULT GuestSessionTaskCopyTo::Init(const Utf8Str &strTaskDesc)
         Utf8Str strFirstOp = mDest + mVecLists[0]->mVecEntries[0]->strPath;
 
         hr = pProgress->init(static_cast<IGuestSession*>(mSession), Bstr(mDesc).raw(),
-                             TRUE /* aCancelable */, cOperations + 1 /* Number of operations */,
+                             TRUE /* aCancelable */, cOperations /* Number of operations */,
                              Bstr(strFirstOp).raw());
     }
     else /* If no operations have been defined, go with an "empty" progress object when will be used for error handling. */
