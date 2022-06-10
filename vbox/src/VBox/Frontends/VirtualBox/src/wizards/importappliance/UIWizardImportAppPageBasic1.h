@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 72174 2018-05-09 13:45:33Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIWizardImportAppPageBasic1_h__
 #define __UIWizardImportAppPageBasic1_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Local includes: */
 #include "UIWizardPage.h"

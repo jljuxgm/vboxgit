@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 75934 2018-12-04 07:13:15Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIDesktopWidgetWatchdog_h___
 #define ___UIDesktopWidgetWatchdog_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QObject>

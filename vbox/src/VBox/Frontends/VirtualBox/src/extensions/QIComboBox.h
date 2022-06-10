@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 71865 2018-04-16 14:11:11Z vboxsync $ */
+/* $Id: QIComboBox.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QIComboBox_h___
 #define ___QIComboBox_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QComboBox>

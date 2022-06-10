@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.h 75427 2018-11-13 16:39:09Z vboxsync $ */
+/* $Id: UIDetailsSet.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIDetailsSet_h___
 #define ___UIDetailsSet_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIDetailsItem.h"

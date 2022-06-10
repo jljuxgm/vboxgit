@@ -1,4 +1,4 @@
-/* $Id: UIWelcomePane.h 74561 2018-10-01 16:52:13Z vboxsync $ */
+/* $Id: UIWelcomePane.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIWelcomePane_h___
 #define ___UIWelcomePane_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QIcon>

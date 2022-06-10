@@ -1,4 +1,4 @@
-/* $Id: QIAdvancedSlider.h 71863 2018-04-16 13:56:29Z vboxsync $ */
+/* $Id: QIAdvancedSlider.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIAdvancedSlider class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QIAdvancedSlider_h___
 #define ___QIAdvancedSlider_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

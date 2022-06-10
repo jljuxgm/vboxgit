@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 75106 2018-10-26 15:34:50Z vboxsync $ */
+/* $Id: UIChooserItemMachine.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIChooserItemMachine_h___
 #define ___UIChooserItemMachine_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes */
 #include <QUuid>

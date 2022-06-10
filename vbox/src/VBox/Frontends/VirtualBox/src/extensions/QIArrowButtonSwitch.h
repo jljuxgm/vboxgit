@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonSwitch.h 71900 2018-04-18 14:40:43Z vboxsync $ */
+/* $Id: QIArrowButtonSwitch.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIArrowButtonSwitch class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QIArrowButtonSwitch_h___
 #define ___QIArrowButtonSwitch_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QIcon>

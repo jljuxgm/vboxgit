@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.h 75212 2018-10-31 19:42:48Z vboxsync $ */
+/* $Id: UIVMLogPage.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIVMLogPage_h___
 #define ___UIVMLogPage_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

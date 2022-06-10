@@ -1,4 +1,4 @@
-/* $Id: UIMediumSizeEditor.h 76199 2018-12-13 09:08:47Z vboxsync $ */
+/* $Id: UIMediumSizeEditor.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSizeEditor class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMediumSizeEditor_h___
 #define ___UIMediumSizeEditor_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

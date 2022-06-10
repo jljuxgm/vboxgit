@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.h 72102 2018-05-04 08:27:54Z vboxsync $ */
+/* $Id: UISettingsSelector.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UISettingsSelector_h___
 #define ___UISettingsSelector_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QObject>

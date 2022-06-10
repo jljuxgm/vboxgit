@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 75291 2018-11-06 15:03:21Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIConsoleEventHandler_h___
 #define ___UIConsoleEventHandler_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QObject>

@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdogInternal.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxWatchdogInternal.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBoxWatchdog - VirtualBox Watchdog Service.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___H_VBOXWATCHDOG
 #define ___H_VBOXWATCHDOG
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef VBOX_ONLY_DOCS
 # include <iprt/getopt.h>

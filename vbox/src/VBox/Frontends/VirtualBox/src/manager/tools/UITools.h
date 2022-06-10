@@ -1,4 +1,4 @@
-/* $Id: UITools.h 75081 2018-10-25 15:47:25Z vboxsync $ */
+/* $Id: UITools.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UITools_h___
 #define ___UITools_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

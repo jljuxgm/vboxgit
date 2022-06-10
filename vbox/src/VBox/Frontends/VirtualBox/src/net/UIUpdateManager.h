@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.h 72435 2018-06-04 16:56:42Z vboxsync $ */
+/* $Id: UIUpdateManager.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIUpdateManager_h___
 #define ___UIUpdateManager_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QObject>

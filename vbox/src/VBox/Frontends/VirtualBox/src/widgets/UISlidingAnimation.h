@@ -1,4 +1,4 @@
-/* $Id: UISlidingAnimation.h 73845 2018-08-22 18:18:34Z vboxsync $ */
+/* $Id: UISlidingAnimation.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingAnimation class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UISlidingAnimation_h___
 #define ___UISlidingAnimation_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

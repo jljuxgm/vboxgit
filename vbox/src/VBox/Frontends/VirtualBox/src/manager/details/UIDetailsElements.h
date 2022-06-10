@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.h 75530 2018-11-16 18:07:22Z vboxsync $ */
+/* $Id: UIDetailsElements.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIDetailsElements_h___
 #define ___UIDetailsElements_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIThreadPool.h"

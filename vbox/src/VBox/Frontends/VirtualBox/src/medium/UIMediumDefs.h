@@ -1,4 +1,4 @@
-/* $Id: UIMediumDefs.h 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UIMediumDefs.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium related declarations.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMediumDefs_h___
 #define ___UIMediumDefs_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QString>

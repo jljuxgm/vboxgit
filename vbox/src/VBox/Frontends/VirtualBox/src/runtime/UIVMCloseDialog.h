@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.h 75672 2018-11-22 15:15:29Z vboxsync $ */
+/* $Id: UIVMCloseDialog.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIVMCloseDialog_h___
 #define ___UIVMCloseDialog_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QIcon>

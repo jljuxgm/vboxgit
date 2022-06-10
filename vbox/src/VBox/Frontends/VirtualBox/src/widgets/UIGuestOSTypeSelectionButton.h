@@ -1,4 +1,4 @@
-/* $Id: UIGuestOSTypeSelectionButton.h 73118 2018-07-13 12:07:42Z vboxsync $ */
+/* $Id: UIGuestOSTypeSelectionButton.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestOSTypeSelectionButton class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIGuestOSTypeSelectionButton_h___
 #define ___UIGuestOSTypeSelectionButton_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QPushButton>

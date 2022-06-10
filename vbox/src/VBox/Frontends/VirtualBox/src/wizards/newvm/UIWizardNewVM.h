@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIWizardNewVM_h__
 #define __UIWizardNewVM_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIWizard.h"

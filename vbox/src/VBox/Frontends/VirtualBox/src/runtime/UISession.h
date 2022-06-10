@@ -1,4 +1,4 @@
-/* $Id: UISession.h 75319 2018-11-08 10:56:06Z vboxsync $ */
+/* $Id: UISession.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UISession_h___
 #define ___UISession_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QObject>

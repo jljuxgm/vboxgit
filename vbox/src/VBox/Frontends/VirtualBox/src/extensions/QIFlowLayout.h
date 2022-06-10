@@ -1,4 +1,4 @@
-/* $Id: QIFlowLayout.h 71894 2018-04-18 13:02:05Z vboxsync $ */
+/* $Id: QIFlowLayout.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIFlowLayout class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QIFlowLayout_h___
 #define ___QIFlowLayout_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QLayout>

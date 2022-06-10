@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.h 72215 2018-05-15 14:20:58Z vboxsync $ */
+/* $Id: UIWizardCloneVM.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIWizardCloneVM_h__
 #define __UIWizardCloneVM_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIWizard.h"

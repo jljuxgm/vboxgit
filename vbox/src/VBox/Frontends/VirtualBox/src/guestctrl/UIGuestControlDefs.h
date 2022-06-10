@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlDefs.h 75284 2018-11-06 13:28:12Z vboxsync $ */
+/* $Id: UIGuestControlDefs.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIGuestControlDefs_h___
 #define ___UIGuestControlDefs_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 enum FileManagerLogType
 {

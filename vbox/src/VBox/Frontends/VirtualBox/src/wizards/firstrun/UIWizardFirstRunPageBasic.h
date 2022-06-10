@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRunPageBasic.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRunPageBasic class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIWizardFirstRunPageBasic_h__
 #define __UIWizardFirstRunPageBasic_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QUuid>

@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 76211 2018-12-13 15:07:49Z vboxsync $ */
+/* $Id: UIMediumItem.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMediumItem_h___
 #define ___UIMediumItem_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIMedium.h"

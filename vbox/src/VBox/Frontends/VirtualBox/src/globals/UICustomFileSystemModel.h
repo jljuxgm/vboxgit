@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 76497 2018-12-27 12:51:58Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UICustomFileSystemModel_h___
 #define ___UICustomFileSystemModel_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QAbstractItemModel>

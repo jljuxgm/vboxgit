@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.h 74184 2018-09-10 19:08:23Z vboxsync $ */
+/* $Id: UIChooserView.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIChooserView_h___
 #define ___UIChooserView_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "QIGraphicsView.h"

@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxSDL.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -19,6 +19,9 @@
 
 #ifndef __H_VBOXSDL
 #define __H_VBOXSDL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #ifdef RT_OS_WINDOWS /** @todo check why we need to do this on windows. */

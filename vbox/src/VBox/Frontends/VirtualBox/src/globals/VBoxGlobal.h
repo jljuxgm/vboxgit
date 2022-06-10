@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 75006 2018-10-23 15:48:45Z vboxsync $ */
+/* $Id: VBoxGlobal.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxGlobal_h___
 #define ___VBoxGlobal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QFileIconProvider>

@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 75213 2018-10-31 19:47:14Z vboxsync $ */
+/* $Id: UIMediumManager.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMediumManager_h___
 #define ___UIMediumManager_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "QIManagerDialog.h"

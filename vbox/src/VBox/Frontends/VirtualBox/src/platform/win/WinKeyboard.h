@@ -1,4 +1,4 @@
-/* $Id: WinKeyboard.h 71784 2018-04-09 15:56:21Z vboxsync $ */
+/* $Id: WinKeyboard.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Windows Keyboard specific tasks.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___WinKeyboard_h___
 #define ___WinKeyboard_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UILibraryDefs.h"

@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 72678 2018-06-25 14:25:49Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxX11Helpers_h___
 #define ___VBoxX11Helpers_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UILibraryDefs.h"

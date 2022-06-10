@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.h 74682 2018-10-08 13:40:59Z vboxsync $ */
+/* $Id: UIDetailsView.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIDetailsView_h__
 #define __UIDetailsView_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "QIGraphicsView.h"

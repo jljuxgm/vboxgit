@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 75227 2018-11-02 14:48:47Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIWizardExportAppPageBasic2_h___
 #define ___UIWizardExportAppPageBasic2_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QVariant>

@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.h 71665 2018-04-04 15:46:55Z vboxsync $ */
+/* $Id: DarwinKeyboard.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Darwin Keyboard specific tasks.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___DarwinKeyboard_h___
 #define ___DarwinKeyboard_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UILibraryDefs.h"

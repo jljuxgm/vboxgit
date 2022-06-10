@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlWidget.h 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIGuestProcessControlWidget.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlWidget class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIGuestProcessControlWidget_h___
 #define ___UIGuestProcessControlWidget_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

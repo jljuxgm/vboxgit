@@ -1,4 +1,4 @@
-/* $Id: UIBootTable.h 71899 2018-04-18 14:16:02Z vboxsync $ */
+/* $Id: UIBootTable.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootTable class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIBootTable_h___
 #define ___UIBootTable_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QListWidget>

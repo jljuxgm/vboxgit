@@ -1,4 +1,4 @@
-/* $Id: QIMainWindow.h 73426 2018-08-01 14:22:59Z vboxsync $ */
+/* $Id: QIMainWindow.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMainWindow class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QIMainWindow_h___
 #define ___QIMainWindow_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMainWindow>

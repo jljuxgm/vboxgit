@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 75217 2018-11-01 16:51:14Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIApplianceEditorWidget_h___
 #define ___UIApplianceEditorWidget_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QAbstractItemModel>

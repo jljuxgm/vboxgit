@@ -1,4 +1,4 @@
-/* $Id: QITableView.h 71882 2018-04-17 17:21:54Z vboxsync $ */
+/* $Id: QITableView.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITableView class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QITableView_h___
 #define ___QITableView_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QTableView>

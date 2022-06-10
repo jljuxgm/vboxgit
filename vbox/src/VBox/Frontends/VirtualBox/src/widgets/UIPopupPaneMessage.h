@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneMessage.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIPopupPaneMessage.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneMessage class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIPopupPaneMessage_h___
 #define ___UIPopupPaneMessage_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

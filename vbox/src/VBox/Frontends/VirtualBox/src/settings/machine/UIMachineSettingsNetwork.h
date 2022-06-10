@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 72109 2018-05-04 11:40:15Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineSettingsNetwork_h___
 #define ___UIMachineSettingsNetwork_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UISettingsPage.h"

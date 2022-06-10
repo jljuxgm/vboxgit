@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBoxManageGuestCtrl.h - Definitions for guest control.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___H_VBOXMANAGE_GUESTCTRL
 #define ___H_VBOXMANAGE_GUESTCTRL
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef VBOX_ONLY_DOCS
 

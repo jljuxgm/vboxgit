@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 72279 2018-05-22 09:22:09Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIFilePathSelector_h___
 #define ___UIFilePathSelector_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "QIComboBox.h"

@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlayCommon.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: VBoxFBOverlayCommon.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFrameBuffer Overlay classes declarations.
  */
@@ -14,8 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef __VBoxFBOverlayCommon_h__
 #define __VBoxFBOverlayCommon_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #if 0 //defined(DEBUG_misha)
 DECLINLINE(VOID) vboxDbgPrintF(LPCSTR szString, ...)

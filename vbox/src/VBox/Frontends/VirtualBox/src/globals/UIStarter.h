@@ -1,4 +1,4 @@
-/* $Id: UIStarter.h 72361 2018-05-28 16:39:19Z vboxsync $ */
+/* $Id: UIStarter.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIStarter_h___
 #define ___UIStarter_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QObject>

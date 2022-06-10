@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerOptionsPanel.h 75424 2018-11-13 16:05:13Z vboxsync $ */
+/* $Id: UIVMLogViewerOptionsPanel.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIVMLogViewerOptionsPanel_h___
 #define ___UIVMLogViewerOptionsPanel_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIVMLogViewerPanel.h"

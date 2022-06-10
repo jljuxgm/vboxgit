@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerMouse.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIChooserHandlerMouse.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerMouse class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIChooserHandlerMouse_h__
 #define __UIChooserHandlerMouse_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QObject>

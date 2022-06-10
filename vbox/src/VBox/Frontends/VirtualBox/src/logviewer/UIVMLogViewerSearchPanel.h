@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerSearchPanel.h 72775 2018-06-29 14:50:07Z vboxsync $ */
+/* $Id: UIVMLogViewerSearchPanel.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIVMLogViewerSearchPanel_h___
 #define ___UIVMLogViewerSearchPanel_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QTextDocument>

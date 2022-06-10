@@ -1,4 +1,4 @@
-/* $Id: QISplitter.h 74088 2018-09-05 16:34:53Z vboxsync $ */
+/* $Id: QISplitter.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QISplitter class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QISplitter_h___
 #define ___QISplitter_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QSplitter>

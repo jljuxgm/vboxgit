@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.h 73783 2018-08-20 11:41:59Z vboxsync $ */
+/* $Id: UIHostNetworkManager.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIHostNetworkManager_h___
 #define ___UIHostNetworkManager_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMainWindow>

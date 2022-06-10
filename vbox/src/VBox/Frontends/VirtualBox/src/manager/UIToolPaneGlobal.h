@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 75054 2018-10-25 07:22:29Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIToolPaneGlobal_h___
 #define ___UIToolPaneGlobal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

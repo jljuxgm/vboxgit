@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.h 72545 2018-06-13 14:24:53Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIWizardImportAppPageBasic2_h___
 #define ___UIWizardImportAppPageBasic2_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "QIDialog.h"

@@ -1,4 +1,4 @@
-/* $Id: UIDnDEnumFormat_win.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIDnDEnumFormat_win.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDEnumFormat class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIDnDEnumFormat_win_h___
 #define ___UIDnDEnumFormat_win_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 class UIDnDEnumFormatEtc : public IEnumFORMATETC

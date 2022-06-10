@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIDnDHandler.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class declaration..
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIDnDHandler_h___
 #define ___UIDnDHandler_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMimeData>

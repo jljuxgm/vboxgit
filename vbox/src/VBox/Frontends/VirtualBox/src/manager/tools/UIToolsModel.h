@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 75099 2018-10-26 14:34:21Z vboxsync $ */
+/* $Id: UIToolsModel.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIToolsModel_h___
 #define ___UIToolsModel_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMap>

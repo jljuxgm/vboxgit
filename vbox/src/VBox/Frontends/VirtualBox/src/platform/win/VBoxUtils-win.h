@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-win.h 71784 2018-04-09 15:56:21Z vboxsync $ */
+/* $Id: VBoxUtils-win.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Windows specific tasks.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxUtils_win_h___
 #define ___VBoxUtils_win_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QRegion>

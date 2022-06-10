@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlInterface.h 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIGuestControlInterface.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlInterface class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIGuestControlInterface_h___
 #define ___UIGuestControlInterface_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 /* Qt includes: */

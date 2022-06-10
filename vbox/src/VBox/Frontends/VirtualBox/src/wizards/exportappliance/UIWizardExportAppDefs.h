@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppDefs.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardExportAppDefs.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppDefs class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIWizardExportAppDefs_h___
 #define ___UIWizardExportAppDefs_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMetaType>

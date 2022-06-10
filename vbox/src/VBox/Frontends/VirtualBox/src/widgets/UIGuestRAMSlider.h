@@ -1,4 +1,4 @@
-/* $Id: UIGuestRAMSlider.h 71943 2018-04-20 13:55:21Z vboxsync $ */
+/* $Id: UIGuestRAMSlider.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestRAMSlider class declaration.
  */
@@ -15,9 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-
 #ifndef ___UIGuestRAMSlider_h___
 #define ___UIGuestRAMSlider_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "QIAdvancedSlider.h"

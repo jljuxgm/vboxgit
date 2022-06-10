@@ -1,4 +1,4 @@
-/* $Id: UILibraryDefs.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UILibraryDefs.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global library definitions.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UILibraryDefs_h___
 #define ___UILibraryDefs_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Other VBox includes: */
 #include <iprt/cdefs.h>

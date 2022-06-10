@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 75006 2018-10-23 15:48:45Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineSettingsStorage_h___
 #define ___UIMachineSettingsStorage_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #ifdef VBOX_WS_MAC

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 72949 2018-07-07 16:22:45Z vboxsync $ */
+/* $Id: VBoxManage.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___H_VBOXMANAGE
 #define ___H_VBOXMANAGE
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef VBOX_ONLY_DOCS
 #include <VBox/com/com.h>

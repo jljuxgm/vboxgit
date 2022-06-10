@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 76429 2018-12-23 21:25:44Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIFileManagerTable_h___
 #define ___UIFileManagerTable_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QItemSelectionModel>

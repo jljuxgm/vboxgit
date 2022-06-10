@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIChooserHandlerKeyboard_h__
 #define __UIChooserHandlerKeyboard_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QObject>

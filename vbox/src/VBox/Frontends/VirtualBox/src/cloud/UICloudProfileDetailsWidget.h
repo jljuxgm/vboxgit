@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.h 75376 2018-11-09 19:11:40Z vboxsync $ */
+/* $Id: UICloudProfileDetailsWidget.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UICloudProfileDetailsWidget_h___
 #define ___UICloudProfileDetailsWidget_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMap>

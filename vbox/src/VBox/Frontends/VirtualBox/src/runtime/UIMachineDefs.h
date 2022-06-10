@@ -1,4 +1,4 @@
-/* $Id: UIMachineDefs.h 75291 2018-11-06 15:03:21Z vboxsync $ */
+/* $Id: UIMachineDefs.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Defines for Virtual Machine classes.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineDefs_h___
 #define ___UIMachineDefs_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Other VBox includes: */
 #include <iprt/cdefs.h>

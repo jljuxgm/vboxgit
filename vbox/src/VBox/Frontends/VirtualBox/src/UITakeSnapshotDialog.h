@@ -1,4 +1,4 @@
-/* $Id: UITakeSnapshotDialog.h 73926 2018-08-28 10:02:14Z vboxsync $ */
+/* $Id: UITakeSnapshotDialog.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITakeSnapshotDialog class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UITakeSnapshotDialog_h___
 #define ___UITakeSnapshotDialog_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QIcon>

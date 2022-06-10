@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic1.h 71948 2018-04-20 15:34:35Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic1.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic1 class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIWizardCloneVDPageBasic1_h___
 #define ___UIWizardCloneVDPageBasic1_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIWizardPage.h"

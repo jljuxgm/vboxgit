@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.h 75938 2018-12-04 08:42:19Z vboxsync $ */
+/* $Id: UIMouseHandler.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMouseHandler_h___
 #define ___UIMouseHandler_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMap>

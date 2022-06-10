@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.h 72109 2018-05-04 11:40:15Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineSettingsGeneral_h___
 #define ___UIMachineSettingsGeneral_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIAddDiskEncryptionPasswordDialog.h"

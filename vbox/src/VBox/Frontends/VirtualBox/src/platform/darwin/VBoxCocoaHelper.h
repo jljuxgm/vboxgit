@@ -1,4 +1,4 @@
-/* $Id: VBoxCocoaHelper.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxCocoaHelper.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxCocoa Helper.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___darwin_VBoxCocoaHelper_h
 #define ___darwin_VBoxCocoaHelper_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Global includes */
 #include <VBox/VBoxCocoa.h>

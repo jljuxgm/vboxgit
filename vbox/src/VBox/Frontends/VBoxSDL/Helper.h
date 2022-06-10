@@ -1,4 +1,4 @@
-/* $Id: Helper.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: Helper.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -19,6 +19,9 @@
 
 #ifndef __H_HELPER
 #define __H_HELPER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #if defined(VBOX_WITH_XPCOM) && !defined(RT_OS_DARWIN) && !defined(RT_OS_OS2)
 

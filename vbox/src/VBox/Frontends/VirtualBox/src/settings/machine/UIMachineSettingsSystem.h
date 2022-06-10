@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 75959 2018-12-05 09:12:37Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineSettingsSystem_h___
 #define ___UIMachineSettingsSystem_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UISettingsPage.h"

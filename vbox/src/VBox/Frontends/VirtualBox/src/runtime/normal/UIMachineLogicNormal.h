@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.h 75339 2018-11-09 07:02:36Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineLogicNormal_h___
 #define ___UIMachineLogicNormal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Local includes: */
 #include "UIMachineLogic.h"

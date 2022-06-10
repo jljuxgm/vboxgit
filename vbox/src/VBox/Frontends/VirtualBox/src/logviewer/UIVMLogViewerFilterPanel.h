@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.h 71638 2018-04-04 05:11:10Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIVMLogViewerFilterPanel_h___
 #define ___UIVMLogViewerFilterPanel_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 # include <QSet>

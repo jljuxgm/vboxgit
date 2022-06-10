@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.h 75183 2018-10-30 14:59:35Z vboxsync $ */
+/* $Id: UIChooserItemGroup.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIChooserItemGroup_h___
 #define ___UIChooserItemGroup_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QPixmap>

@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.h 76044 2018-12-07 09:50:51Z vboxsync $ */
+/* $Id: UISettingsDefs.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UISettingsDefs_h___
 #define ___UISettingsDefs_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMap>

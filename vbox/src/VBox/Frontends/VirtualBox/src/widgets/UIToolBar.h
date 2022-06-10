@@ -1,4 +1,4 @@
-/* $Id: UIToolBar.h 74593 2018-10-03 12:19:06Z vboxsync $ */
+/* $Id: UIToolBar.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBar class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIToolBar_h___
 #define ___UIToolBar_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QToolBar>

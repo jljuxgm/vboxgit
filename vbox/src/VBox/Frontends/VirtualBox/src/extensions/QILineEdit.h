@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.h 71869 2018-04-17 10:34:38Z vboxsync $ */
+/* $Id: QILineEdit.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QILineEdit_h___
 #define ___QILineEdit_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes */
 #include <QLineEdit>

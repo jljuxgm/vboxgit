@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 75640 2018-11-21 11:00:23Z vboxsync $ */
+/* $Id: UIDetailsModel.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIDetailsModel_h___
 #define ___UIDetailsModel_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMap>

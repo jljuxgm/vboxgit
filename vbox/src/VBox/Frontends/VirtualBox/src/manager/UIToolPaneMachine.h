@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 75144 2018-10-29 13:10:42Z vboxsync $ */
+/* $Id: UIToolPaneMachine.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIToolPaneMachine_h___
 #define ___UIToolPaneMachine_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

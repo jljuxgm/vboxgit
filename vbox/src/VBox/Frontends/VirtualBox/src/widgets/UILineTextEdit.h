@@ -1,4 +1,4 @@
-/* $Id: UILineTextEdit.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UILineTextEdit.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UILineTextEdit class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UILineTextEdit_h__
 #define __UILineTextEdit_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* VBox includes */
 #include "QIDialog.h"

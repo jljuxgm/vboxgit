@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.h 72107 2018-05-04 10:45:18Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIGlobalSettingsGeneral_h___
 #define ___UIGlobalSettingsGeneral_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UISettingsPage.h"

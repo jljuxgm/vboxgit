@@ -1,4 +1,4 @@
-/* $Id: QILabelSeparator.h 71866 2018-04-16 14:23:01Z vboxsync $ */
+/* $Id: QILabelSeparator.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILabelSeparator class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QILabelSeparator_h___
 #define ___QILabelSeparator_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

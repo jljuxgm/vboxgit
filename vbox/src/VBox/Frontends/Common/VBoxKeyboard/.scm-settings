@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69254 2017-10-24 19:38:48Z vboxsync $
+# $Id: .scm-settings 76532 2018-12-30 06:08:06Z vboxsync $
 ## @file
 # Source code massager settings for VBoxKeyboard.
 #
@@ -17,5 +17,5 @@
 
 
 # These are LGPL and generally external.
-/keyboard*|/xkbtoscan.h: --external-copyright
+/keyboard*|/xkbtoscan.h: --external-copyright --no-fix-header-guards
 

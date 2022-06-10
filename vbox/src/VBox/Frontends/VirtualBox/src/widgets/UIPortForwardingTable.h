@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.h 71937 2018-04-20 12:08:03Z vboxsync $ */
+/* $Id: UIPortForwardingTable.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIPortForwardingTable_h___
 #define ___UIPortForwardingTable_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QString>

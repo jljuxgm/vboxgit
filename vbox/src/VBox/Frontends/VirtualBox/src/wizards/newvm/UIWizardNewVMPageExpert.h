@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageExpert class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIWizardNewVMPageExpert_h__
 #define __UIWizardNewVMPageExpert_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Local includes: */
 #include "UIWizardNewVMPageBasic1.h"

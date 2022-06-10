@@ -1,4 +1,4 @@
-/* $Id: UIPathOperations.h 76332 2018-12-21 10:27:23Z vboxsync $ */
+/* $Id: UIPathOperations.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIPathOperations_h___
 #define ___UIPathOperations_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QString>

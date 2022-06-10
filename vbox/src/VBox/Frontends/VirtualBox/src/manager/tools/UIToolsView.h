@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.h 74249 2018-09-13 16:24:26Z vboxsync $ */
+/* $Id: UIToolsView.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsView class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIToolsView_h___
 #define ___UIToolsView_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "QIGraphicsView.h"

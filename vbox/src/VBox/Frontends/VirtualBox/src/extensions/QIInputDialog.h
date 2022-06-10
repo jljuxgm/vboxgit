@@ -1,4 +1,4 @@
-/* $Id: QIInputDialog.h 75222 2018-11-02 12:37:05Z vboxsync $ */
+/* $Id: QIInputDialog.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIInputDialog class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QIInputDialog_h___
 #define ___QIInputDialog_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QDialog>

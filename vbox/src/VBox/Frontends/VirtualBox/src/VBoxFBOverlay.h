@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.h 76423 2018-12-23 20:30:52Z vboxsync $ */
+/* $Id: VBoxFBOverlay.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFrameBuffer Overly classes declarations.
  */
@@ -14,8 +14,12 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef __VBoxFBOverlay_h__
 #define __VBoxFBOverlay_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #if defined(VBOX_GUI_USE_QGL) || defined(VBOX_WITH_VIDEOHWACCEL)
 

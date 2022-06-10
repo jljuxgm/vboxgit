@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.h 74626 2018-10-05 11:57:03Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIApplianceImportEditorWidget_h__
 #define __UIApplianceImportEditorWidget_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIApplianceEditorWidget.h"

@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.h 71920 2018-04-19 12:42:46Z vboxsync $ */
+/* $Id: UIHostComboEditor.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIHostComboEditor_h___
 #define ___UIHostComboEditor_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QLineEdit>

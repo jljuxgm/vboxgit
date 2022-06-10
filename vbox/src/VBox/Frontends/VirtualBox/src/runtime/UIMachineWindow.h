@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 71375 2018-03-19 15:29:54Z vboxsync $ */
+/* $Id: UIMachineWindow.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIMachineWindow_h__
 #define __UIMachineWindow_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMainWindow>

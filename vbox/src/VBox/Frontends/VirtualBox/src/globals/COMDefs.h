@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 76012 2018-12-06 12:08:52Z vboxsync $ */
+/* $Id: COMDefs.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -21,6 +21,9 @@
 
 #ifndef __COMDefs_h__
 #define __COMDefs_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /** @defgroup   grp_QT_COM  Qt-COM Support Layer
  * @{

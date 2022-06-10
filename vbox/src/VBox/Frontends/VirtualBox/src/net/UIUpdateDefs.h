@@ -1,4 +1,4 @@
-/* $Id: UIUpdateDefs.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIUpdateDefs.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Update routine related declarations.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIUpdateDefs_h___
 #define ___UIUpdateDefs_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QDate>

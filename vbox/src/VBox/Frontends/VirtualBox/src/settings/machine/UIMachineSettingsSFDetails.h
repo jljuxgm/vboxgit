@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSFDetails.h 75380 2018-11-09 22:25:30Z vboxsync $ */
+/* $Id: UIMachineSettingsSFDetails.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSFDetails class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineSettingsSFDetails_h___
 #define ___UIMachineSettingsSFDetails_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Includes */
 #include "UIMachineSettingsSFDetails.gen.h"

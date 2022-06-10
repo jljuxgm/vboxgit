@@ -1,4 +1,4 @@
-/* $Id: UIMenuBar.h 71923 2018-04-19 13:22:46Z vboxsync $ */
+/* $Id: UIMenuBar.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBar class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMenuBar_h___
 #define ___UIMenuBar_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMenuBar>

@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 76059 2018-12-07 14:03:35Z vboxsync $ */
+/* $Id: UIConverterBackend.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIConverterBackend_h___
 #define ___UIConverterBackend_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QColor>

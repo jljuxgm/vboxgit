@@ -1,4 +1,4 @@
-/* $Id: UITabBar.h 73533 2018-08-06 18:26:58Z vboxsync $ */
+/* $Id: UITabBar.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITabBar class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UITabBar_h___
 #define ___UITabBar_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QIcon>

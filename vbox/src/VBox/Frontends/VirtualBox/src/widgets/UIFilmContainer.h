@@ -1,4 +1,4 @@
-/* $Id: UIFilmContainer.h 71905 2018-04-18 17:02:14Z vboxsync $ */
+/* $Id: UIFilmContainer.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilmContainer class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIFilmContainer_h___
 #define ___UIFilmContainer_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

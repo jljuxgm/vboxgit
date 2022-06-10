@@ -1,4 +1,4 @@
-/* $Id: UIDetailsContextMenu.h 75640 2018-11-21 11:00:23Z vboxsync $ */
+/* $Id: UIDetailsContextMenu.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsContextMenu class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIDetailsContextMenu_h___
 #define ___UIDetailsContextMenu_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"

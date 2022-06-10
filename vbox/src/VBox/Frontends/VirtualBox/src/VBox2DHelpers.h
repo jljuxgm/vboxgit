@@ -1,4 +1,4 @@
-/* $Id: VBox2DHelpers.h 72057 2018-04-27 11:55:52Z vboxsync $ */
+/* $Id: VBox2DHelpers.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - 2D Video Acceleration helpers declarations.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBox2DHelpers_h___
 #define ___VBox2DHelpers_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #if defined(VBOX_GUI_USE_QGL) || defined(VBOX_WITH_VIDEOHWACCEL)
 

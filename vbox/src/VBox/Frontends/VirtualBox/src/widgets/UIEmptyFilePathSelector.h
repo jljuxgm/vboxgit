@@ -1,4 +1,4 @@
-/* $Id: UIEmptyFilePathSelector.h 73231 2018-07-19 10:18:09Z vboxsync $ */
+/* $Id: UIEmptyFilePathSelector.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIEmptyFilePathSelector class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIEmptyFilePathSelector_h__
 #define __UIEmptyFilePathSelector_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* VBox includes */
 #include "QIWithRetranslateUI.h"

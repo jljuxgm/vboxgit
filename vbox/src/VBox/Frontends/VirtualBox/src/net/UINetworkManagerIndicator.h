@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerIndicator.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UINetworkManagerIndicator.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerIndicator stuff declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UINetworkManagerIndicator_h___
 #define ___UINetworkManagerIndicator_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QVector>

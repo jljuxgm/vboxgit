@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 75668 2018-11-22 14:17:43Z vboxsync $ */
+/* $Id: UIMessageCenter.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMessageCenter_h___
 #define ___UIMessageCenter_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QObject>

@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.h 71921 2018-04-19 13:09:04Z vboxsync $ */
+/* $Id: UIHotKeyEditor.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHotKeyEditor class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIHotKeyEditor_h___
 #define ___UIHotKeyEditor_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMetaType>

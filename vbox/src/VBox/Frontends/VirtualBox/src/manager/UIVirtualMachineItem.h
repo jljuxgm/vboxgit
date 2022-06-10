@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class declarations.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIVirtualMachineItem_h__
 #define __UIVirtualMachineItem_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QDateTime>

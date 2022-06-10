@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.h 72099 2018-05-03 17:00:18Z vboxsync $ */
+/* $Id: UISettingsPage.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UISettingsPage_h___
 #define ___UISettingsPage_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QVariant>

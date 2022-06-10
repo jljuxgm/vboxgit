@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.h 73953 2018-08-29 14:36:45Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMediumDetailsWidget_h___
 #define ___UIMediumDetailsWidget_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

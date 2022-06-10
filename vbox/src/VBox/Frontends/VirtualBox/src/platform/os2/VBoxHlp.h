@@ -1,4 +1,4 @@
-/* $Id: VBoxHlp.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: VBoxHlp.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declaration of OS/2-specific helpers that require to reside in a DLL.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxHlp_h
 #define ___VBoxHlp_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 

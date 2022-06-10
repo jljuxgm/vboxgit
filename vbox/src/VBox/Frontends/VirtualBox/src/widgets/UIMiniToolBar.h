@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 66951 2017-05-18 14:32:20Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMiniToolBar_h___
 #define ___UIMiniToolBar_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIToolBar.h"

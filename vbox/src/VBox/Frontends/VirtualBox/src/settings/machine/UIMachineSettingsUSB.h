@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 72109 2018-05-04 11:40:15Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineSettingsUSB_h___
 #define ___UIMachineSettingsUSB_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UISettingsPage.h"

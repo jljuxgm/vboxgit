@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.h 71615 2018-04-02 13:18:40Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIMultiScreenLayout_h__
 #define __UIMultiScreenLayout_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QObject>

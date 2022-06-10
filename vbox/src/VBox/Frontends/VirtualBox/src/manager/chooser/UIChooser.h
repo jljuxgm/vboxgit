@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 75016 2018-10-23 19:42:38Z vboxsync $ */
+/* $Id: UIChooser.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIChooser_h___
 #define ___UIChooser_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

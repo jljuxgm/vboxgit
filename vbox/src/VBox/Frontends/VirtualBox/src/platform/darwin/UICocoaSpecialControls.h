@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.h 71665 2018-04-04 15:46:55Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaSpecialControls class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UICocoaSpecialControls_h___
 #define ___UICocoaSpecialControls_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMacCocoaViewContainer>

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerGuestTable.h 76333 2018-12-21 12:56:44Z vboxsync $ */
+/* $Id: UIFileManagerGuestTable.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerGuestTable class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIGuestTable_h___
 #define ___UIGuestTable_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 # include <QUuid>

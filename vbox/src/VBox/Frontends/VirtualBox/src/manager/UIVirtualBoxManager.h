@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 75207 2018-10-31 16:12:27Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIVirtualBoxManager_h___
 #define ___UIVirtualBoxManager_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QUrl>

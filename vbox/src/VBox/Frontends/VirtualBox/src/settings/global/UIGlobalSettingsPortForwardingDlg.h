@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsPortForwardingDlg.h 72107 2018-05-04 10:45:18Z vboxsync $ */
+/* $Id: UIGlobalSettingsPortForwardingDlg.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIGlobalSettingsPortForwardingDlg_h__
 #define __UIGlobalSettingsPortForwardingDlg_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"

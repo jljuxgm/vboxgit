@@ -1,4 +1,4 @@
-/* $Id: UIErrorPane.h 74557 2018-10-01 16:02:42Z vboxsync $ */
+/* $Id: UIErrorPane.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIErrorPane class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIErrorPane_h___
 #define ___UIErrorPane_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

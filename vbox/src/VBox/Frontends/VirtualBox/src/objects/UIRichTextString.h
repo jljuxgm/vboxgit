@@ -1,4 +1,4 @@
-/* $Id: UIRichTextString.h 72167 2018-05-08 16:24:47Z vboxsync $ */
+/* $Id: UIRichTextString.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIRichTextString class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIRichTextString_h___
 #define ___UIRichTextString_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QTextLayout>

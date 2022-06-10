@@ -1,4 +1,4 @@
-/* $Id: QITabWidget.h 71883 2018-04-17 17:31:30Z vboxsync $ */
+/* $Id: QITabWidget.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITabWidget class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QITabWidget_h___
 #define ___QITabWidget_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QTabWidget>

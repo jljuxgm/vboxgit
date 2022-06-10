@@ -1,4 +1,4 @@
-/* $Id: QIGraphicsWidget.h 71898 2018-04-18 13:35:46Z vboxsync $ */
+/* $Id: QIGraphicsWidget.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIGraphicsWidget class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QIGraphicsWidget_h___
 #define ___QIGraphicsWidget_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QGraphicsWidget>

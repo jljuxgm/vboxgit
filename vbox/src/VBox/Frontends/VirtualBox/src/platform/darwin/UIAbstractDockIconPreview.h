@@ -1,4 +1,4 @@
-/* $Id: UIAbstractDockIconPreview.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIAbstractDockIconPreview.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Abstract class for the dock icon preview.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIAbstractDockIconPreview_h___
 #define ___UIAbstractDockIconPreview_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* System includes */
 #include <ApplicationServices/ApplicationServices.h>

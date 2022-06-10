@@ -1,4 +1,4 @@
-/* $Id: UIImageTools.h 74961 2018-10-21 13:35:55Z vboxsync $ */
+/* $Id: UIImageTools.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for image manipulation.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIImageTools_h___
 #define ___UIImageTools_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QImage>

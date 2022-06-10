@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIMachineView.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineView_h___
 #define ___UIMachineView_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QAbstractScrollArea>

@@ -1,4 +1,4 @@
-/* $Id: UIFileManager.h 76296 2018-12-19 16:17:39Z vboxsync $ */
+/* $Id: UIFileManager.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManager class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIFileManager_h___
 #define ___UIFileManager_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QWidget>

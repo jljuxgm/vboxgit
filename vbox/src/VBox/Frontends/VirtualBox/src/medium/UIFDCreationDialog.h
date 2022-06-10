@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.h 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: UIFDCreationDialog.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIFDCreationDialog_h__
 #define __UIFDCreationDialog_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QDialog>

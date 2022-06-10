@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.h 71885 2018-04-17 17:58:54Z vboxsync $ */
+/* $Id: QITreeWidget.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QITreeWidget_h___
 #define ___QITreeWidget_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QTreeWidget>

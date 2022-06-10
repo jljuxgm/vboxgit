@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlDialog.h 75087 2018-10-26 09:59:37Z vboxsync $ */
+/* $Id: UIGuestProcessControlDialog.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlDialog class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIGuestProcessControlDialog_h___
 #define ___UIGuestProcessControlDialog_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QString>

@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderAdditions.h 71630 2018-04-03 16:37:08Z vboxsync $ */
+/* $Id: UIDownloaderAdditions.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderAdditions class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIDownloaderAdditions_h___
 #define ___UIDownloaderAdditions_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIDownloader.h"

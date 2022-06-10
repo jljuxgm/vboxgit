@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.h 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardFirstRun.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRun class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIWizardFirstRun_h__
 #define __UIWizardFirstRun_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIWizard.h"

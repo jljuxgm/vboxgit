@@ -1,4 +1,4 @@
-/* $Id: UIInformationItem.h 74553 2018-10-01 14:43:54Z vboxsync $ */
+/* $Id: UIInformationItem.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationItem class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIInformationItem_h___
 #define ___UIInformationItem_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QStyledItemDelegate>

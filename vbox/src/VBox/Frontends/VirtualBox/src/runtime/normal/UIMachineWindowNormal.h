@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 75645 2018-11-21 15:32:58Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIMachineWindowNormal_h___
 #define ___UIMachineWindowNormal_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIMachineWindow.h"

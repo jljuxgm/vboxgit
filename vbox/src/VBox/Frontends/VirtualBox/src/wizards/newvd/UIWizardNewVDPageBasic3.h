@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.h 73599 2018-08-09 17:46:10Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIWizardNewVDPageBasic3_h__
 #define __UIWizardNewVDPageBasic3_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIWizardPage.h"

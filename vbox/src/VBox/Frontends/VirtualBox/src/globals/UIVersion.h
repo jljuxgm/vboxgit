@@ -1,4 +1,4 @@
-/* $Id: UIVersion.h 75571 2018-11-19 12:24:49Z vboxsync $ */
+/* $Id: UIVersion.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVersion class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIVersion_h___
 #define ___UIVersion_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QString>

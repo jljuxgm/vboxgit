@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.h 71074 2018-02-20 17:43:24Z vboxsync $ */
+/* $Id: UIFrameBuffer.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIFrameBuffer_h___
 #define ___UIFrameBuffer_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QSize>

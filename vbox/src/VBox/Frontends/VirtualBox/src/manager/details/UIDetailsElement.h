@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 75530 2018-11-16 18:07:22Z vboxsync $ */
+/* $Id: UIDetailsElement.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIDetailsElement_h___
 #define ___UIDetailsElement_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QIcon>

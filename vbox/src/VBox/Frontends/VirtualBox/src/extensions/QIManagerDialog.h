@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 75272 2018-11-06 10:56:59Z vboxsync $ */
+/* $Id: QIManagerDialog.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___QIManagerDialog_h___
 #define ___QIManagerDialog_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QMainWindow>

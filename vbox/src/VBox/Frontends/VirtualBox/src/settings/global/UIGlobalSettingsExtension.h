@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.h 72107 2018-05-04 10:45:18Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIGlobalSettingsExtension_h___
 #define ___UIGlobalSettingsExtension_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UISettingsPage.h"

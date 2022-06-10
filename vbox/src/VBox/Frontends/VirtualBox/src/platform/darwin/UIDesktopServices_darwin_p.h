@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_darwin_p.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIDesktopServices_darwin_p.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to darwin..
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIDesktopServices_p_h___
 #define ___UIDesktopServices_p_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/VBoxCocoa.h>
 #include <iprt/cdefs.h> /* for RT_C_DECLS_BEGIN/RT_C_DECLS_END & stuff */

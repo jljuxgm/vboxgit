@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsButton.h 69641 2017-11-10 12:31:15Z vboxsync $ */
+/* $Id: UIGraphicsButton.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsButton class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef __UIGraphicsButton_h__
 #define __UIGraphicsButton_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QIcon>

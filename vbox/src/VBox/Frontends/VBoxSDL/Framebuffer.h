@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.h 71651 2018-04-04 12:20:08Z vboxsync $ */
+/* $Id: Framebuffer.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -19,6 +19,9 @@
 
 #ifndef __H_FRAMEBUFFER
 #define __H_FRAMEBUFFER
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxSDL.h"
 #include <iprt/thread.h>

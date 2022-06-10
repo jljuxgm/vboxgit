@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerSessionPanel.h 76177 2018-12-12 13:38:57Z vboxsync $ */
+/* $Id: UIFileManagerSessionPanel.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIFileManagerSessionPanel_h___
 #define ___UIFileManagerSessionPanel_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* GUI includes: */
 #include "UIFileManagerPanel.h"

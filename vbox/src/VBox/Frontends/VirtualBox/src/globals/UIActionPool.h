@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 76177 2018-12-12 13:38:57Z vboxsync $ */
+/* $Id: UIActionPool.h 76532 2018-12-30 06:08:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UIActionPool_h___
 #define ___UIActionPool_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /* Qt includes: */
 #include <QAction>
