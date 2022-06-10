@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 72743 2018-06-29 07:35:49Z vboxsync $ */
+/* $Id: IEMAll.cpp 72876 2018-07-04 14:09:18Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -5443,6 +5443,7 @@ iemRaiseXcptOrInt(PVMCPU      pVCpu,
 #if defined(LOG_ENABLED) && defined(IN_RING3)
     if (LogIs3Enabled())
     {
+        IEM_CTX_IMPORT_RET(pVCpu, CPUMCTX_EXTRN_DR_MASK);
         PVM     pVM = pVCpu->CTX_SUFF(pVM);
         char    szRegs[4096];
         DBGFR3RegPrintf(pVM->pUVM, pVCpu->idCpu, &szRegs[0], sizeof(szRegs),
