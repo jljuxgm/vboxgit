@@ -16,7 +16,7 @@
 <refentry id="vboxmanage-mediumio" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2019-02-06 22:34:18 +0800 (Wed, 06 Feb 2019) $</pubdate>
+    <pubdate>$Date: 2019-02-19 21:41:26 +0800 (Tue, 19 Feb 2019) $</pubdate>
     <title>VBoxManage mediumio</title>
   </refentryinfo>
 
@@ -35,9 +35,9 @@
     <cmdsynopsis id="synopsis-vboxmanage-mediumio-formatfat"> <!-- The 'id' is mandatory and must start with 'synopsis-'. -->
       <command>VBoxManage mediumio</command>
       <group choice="req">
-        <arg choice="req">--disk=<replaceable>uuid|filename</replaceable></arg>
-        <arg choice="req">--dvd=<replaceable>uuid|filename</replaceable></arg>
-        <arg choice="req">--floppy=<replaceable>uuid|filename</replaceable></arg>
+        <arg choice="plain">--disk=<replaceable>uuid|filename</replaceable></arg>
+        <arg choice="plain">--dvd=<replaceable>uuid|filename</replaceable></arg>
+        <arg choice="plain">--floppy=<replaceable>uuid|filename</replaceable></arg>
       </group>
       <arg>--password-file=<replaceable>-|filename</replaceable></arg>
       <arg choice="plain">formatfat</arg>
@@ -46,9 +46,9 @@
     <cmdsynopsis id="synopsis-vboxmanage-mediumio-cat">
       <command>VBoxManage mediumio</command>
       <group choice="req">
-        <arg choice="req">--disk=<replaceable>uuid|filename</replaceable></arg>
-        <arg choice="req">--dvd=<replaceable>uuid|filename</replaceable></arg>
-        <arg choice="req">--floppy=<replaceable>uuid|filename</replaceable></arg>
+        <arg choice="plain">--disk=<replaceable>uuid|filename</replaceable></arg>
+        <arg choice="plain">--dvd=<replaceable>uuid|filename</replaceable></arg>
+        <arg choice="plain">--floppy=<replaceable>uuid|filename</replaceable></arg>
       </group>
       <arg>--password-file=<replaceable>-|filename</replaceable></arg>
       <arg choice="plain">cat</arg>
@@ -60,9 +60,9 @@
     <cmdsynopsis id="synopsis-vboxmanage-mediumio-stream">
       <command>VBoxManage mediumio</command>
       <group choice="req">
-        <arg choice="req">--disk=<replaceable>uuid|filename</replaceable></arg>
-        <arg choice="req">--dvd=<replaceable>uuid|filename</replaceable></arg>
-        <arg choice="req">--floppy=<replaceable>uuid|filename</replaceable></arg>
+        <arg choice="plain">--disk=<replaceable>uuid|filename</replaceable></arg>
+        <arg choice="plain">--dvd=<replaceable>uuid|filename</replaceable></arg>
+        <arg choice="plain">--floppy=<replaceable>uuid|filename</replaceable></arg>
       </group>
       <arg>--password-file=<replaceable>-|filename</replaceable></arg>
       <arg choice="plain">stream</arg>
