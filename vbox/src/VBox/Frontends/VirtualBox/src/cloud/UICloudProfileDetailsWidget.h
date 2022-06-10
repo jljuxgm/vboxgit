@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.h 74892 2018-10-17 18:39:52Z vboxsync $ */
+/* $Id: UICloudProfileDetailsWidget.h 74893 2018-10-17 18:48:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class declaration.
  */
@@ -83,6 +83,9 @@ struct UIDataCloudProfile
 
     /** Holds the profile name. */
     QString  m_strName;
+
+    /** Holds the profile data. */
+    QMap<QString, QPair<QString, QString> >  m_data;
 };
 
 
@@ -151,6 +154,11 @@ private:
 
         /** Retranslates validation for passed @a pWidget. */
         void retranslateValidation(QWidget *pWidget = 0);
+
+        /** Updates table tooltips. */
+        void updateTableToolTips();
+        /** Adjusts table contents. */
+        void adjustTableContents();
 
         /** Updates button states. */
         void updateButtonStates();
