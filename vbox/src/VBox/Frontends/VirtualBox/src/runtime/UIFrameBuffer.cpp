@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 77763 2019-03-18 14:46:17Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 77764 2019-03-18 15:01:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1313,14 +1313,12 @@ void UIFrameBufferPrivate::sltCursorPositionChange(bool fContainsData, unsigned 
         /* Acquire cursor hotspot: */
         QPoint cursorHotspot = m_pMachineView->uisession()->cursorHotspot();
 
-#ifdef VBOX_WS_MAC
         /* Apply the scale-factor if necessary: */
         cursorHotspot /= scaleFactor();
 
         /* Take the device-pixel-ratio into account: */
         if (!useUnscaledHiDPIOutput())
             cursorHotspot /= devicePixelRatioActual();
-#endif
 
         /* Acquire cursor position and size: */
         QPoint cursorPosition = QPoint(uX, uY) - cursorHotspot;
