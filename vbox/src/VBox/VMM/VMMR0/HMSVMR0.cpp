@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 76993 2019-01-25 14:34:46Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 77017 2019-01-28 10:55:20Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3962,7 +3962,7 @@ static void hmR0SvmInjectPendingEvent(PVMCPU pVCpu, PSVMVMCB pVmcb)
     bool const fIntShadow = hmR0SvmIsIntrShadowActive(pVCpu);
 #ifdef VBOX_STRICT
     PCCPUMCTX  pCtx       = &pVCpu->cpum.GstCtx;
-    bool const fGif       = pCtx->hwvirt.fGif;
+    bool const fGif       = CPUMGetGuestGif(pCtx);
     bool       fAllowInt  = fGif;
     if (fGif)
     {
