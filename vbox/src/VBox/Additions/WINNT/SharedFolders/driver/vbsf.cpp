@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 78326 2019-04-26 14:45:38Z vboxsync $ */
+/* $Id: vbsf.cpp 78355 2019-04-30 03:48:46Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver initialization and generic routines
  */
@@ -154,12 +154,12 @@ static void vbsfInitMRxDispatch(void)
 
     ZeroAndInitializeNodeType(&VBoxMRxDispatch, RDBSS_NTC_MINIRDR_DISPATCH, sizeof(MINIRDR_DISPATCH));
 
-    VBoxMRxDispatch.MRxFlags = (RDBSS_MANAGE_NET_ROOT_EXTENSION | RDBSS_MANAGE_FOBX_EXTENSION);
+    VBoxMRxDispatch.MRxFlags = RDBSS_MANAGE_NET_ROOT_EXTENSION | RDBSS_MANAGE_FCB_EXTENSION | RDBSS_MANAGE_FOBX_EXTENSION;
 
     VBoxMRxDispatch.MRxSrvCallSize = 0;
     VBoxMRxDispatch.MRxNetRootSize = sizeof(MRX_VBOX_NETROOT_EXTENSION);
     VBoxMRxDispatch.MRxVNetRootSize = 0;
-    VBoxMRxDispatch.MRxFcbSize = 0;
+    VBoxMRxDispatch.MRxFcbSize = sizeof(VBSFNTFCBEXT);
     VBoxMRxDispatch.MRxSrvOpenSize = 0;
     VBoxMRxDispatch.MRxFobxSize = sizeof(MRX_VBOX_FOBX);
 

@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: isovfs.cpp 78356 2019-04-30 09:02:35Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -5704,9 +5704,12 @@ static int rtFsIsoVolTryInit(PRTFSISOVOL pThis, RTVFS hVfsSelf, RTVFSFILE hVfsBa
 #ifdef LOG_ENABLED
                 rtFsIsoVolLogPrimarySupplementaryVolDesc(&Buf.SupVolDesc);
 #endif
-                if (cPrimaryVolDescs > 1)
+                if (cPrimaryVolDescs == 1)
+                    rc = rtFsIsoVolHandlePrimaryVolDesc(pThis, &Buf.PrimaryVolDesc, offVolDesc, &RootDir, &offRootDirRec, pErrInfo);
+                else if (cPrimaryVolDescs == 2)
+                    Log(("ISO9660: ignoring 2nd primary descriptor\n")); /* so we can read the w2k3 ifs kit */
+                else
                     return RTERRINFO_LOG_SET(pErrInfo, VERR_VFS_UNSUPPORTED_FORMAT, "More than one primary volume descriptor");
-                rc = rtFsIsoVolHandlePrimaryVolDesc(pThis, &Buf.PrimaryVolDesc, offVolDesc, &RootDir, &offRootDirRec, pErrInfo);
             }
             else if (Buf.VolDescHdr.bDescType == ISO9660VOLDESC_TYPE_SUPPLEMENTARY)
             {
