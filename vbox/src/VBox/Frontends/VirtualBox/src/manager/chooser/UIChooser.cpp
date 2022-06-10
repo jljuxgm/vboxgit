@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 73600 2018-08-09 18:02:16Z vboxsync $ */
+/* $Id: UIChooser.cpp 73631 2018-08-13 11:05:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -69,6 +69,11 @@ UIChooser::~UIChooser()
 UIActionPool* UIChooser::actionPool() const
 {
     return managerWidget()->actionPool();
+}
+
+bool UIChooser::isGroupItemSelected() const
+{
+    return m_pChooserModel->isGroupItemSelected();
 }
 
 bool UIChooser::isGlobalItemSelected() const

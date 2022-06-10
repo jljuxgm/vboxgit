@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 73602 2018-08-09 18:13:11Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 73631 2018-08-13 11:05:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -67,6 +67,8 @@ public:
         /** Returns the action-pool instance. */
         UIActionPool *actionPool() const { return m_pActionPool; }
 
+        /** Returns whether group current-item is selected. */
+        bool isGroupItemSelected() const;
         /** Returns whether global current-item is selected. */
         bool isGlobalItemSelected() const;
         /** Returns whether machine current-item is selected. */

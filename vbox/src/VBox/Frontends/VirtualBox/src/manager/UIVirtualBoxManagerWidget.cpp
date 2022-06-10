@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 73602 2018-08-09 18:13:11Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 73631 2018-08-13 11:05:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -61,6 +61,11 @@ UIVirtualBoxManagerWidget::UIVirtualBoxManagerWidget(UIVirtualBoxManager *pParen
 UIVirtualBoxManagerWidget::~UIVirtualBoxManagerWidget()
 {
     cleanup();
+}
+
+bool UIVirtualBoxManagerWidget::isGroupItemSelected() const
+{
+    return m_pPaneChooser->isGroupItemSelected();
 }
 
 bool UIVirtualBoxManagerWidget::isGlobalItemSelected() const
@@ -236,7 +241,8 @@ void UIVirtualBoxManagerWidget::sltHandleChooserPaneIndexChange(bool fUpdateDeta
     }
 
     /* If that was machine item selected: */
-    if (isMachineItemSelected())
+    if (   isMachineItemSelected()
+        || isGroupItemSelected())
     {
         /* Get current item: */
         UIVirtualMachineItem *pItem = currentItem();

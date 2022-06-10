@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 73600 2018-08-09 18:02:16Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 73631 2018-08-13 11:05:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -205,6 +205,11 @@ void UIChooserModel::updateNavigation()
 {
     m_navigationList.clear();
     m_navigationList = createNavigationList(root());
+}
+
+bool UIChooserModel::isGroupItemSelected() const
+{
+    return currentItem() && currentItem()->type() == UIChooserItemType_Group;
 }
 
 bool UIChooserModel::isGlobalItemSelected() const
