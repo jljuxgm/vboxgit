@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 75480 2018-11-15 12:26:08Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 75515 2018-11-16 12:34:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestFileTable class implementation.
  */
@@ -330,10 +330,9 @@ void UIGuestFileTable::copyHostToGuest(const QStringList &hostSourcePathList)
     if (!m_comGuestSession.isOk())
     {
         emit sigLogOutput(UIErrorString::formatErrorInfo(m_comGuestSession), FileManagerLogType_Error);
-        //msgCenter().cannotRemoveMachine(machine);
         return;
     }
-    //emit sigNewFileOperation(progress);
+    emit sigNewFileOperation(progress);
     // msgCenter().showModalProgressDialog(progress, "copying", ":/progress_delete_90px.png");
     // if (!progress.isOk() || progress.GetResultCode() != 0)
     // {

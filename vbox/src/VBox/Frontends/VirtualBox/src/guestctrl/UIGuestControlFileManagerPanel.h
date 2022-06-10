@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerPanel.h 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerPanel.h 75515 2018-11-16 12:34:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -52,7 +52,7 @@ protected:
     QHBoxLayout*               mainLayout();
 
     /** Handles the translation event. */
-    void retranslateUi();
+    void retranslateUi() /* override */;
 
     /** Handles Qt @a pEvent, used for keyboard processing. */
     bool eventFilter(QObject *pObject, QEvent *pEvent);
