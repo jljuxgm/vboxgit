@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 77579 2019-03-06 10:21:16Z vboxsync $ */
+/* $Id: DevATA.cpp 77580 2019-03-06 10:23:31Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1504,15 +1504,10 @@ static void ataR3SetSignature(ATADevState *s)
         s->uATARegLCyl = 0x14;
         s->uATARegHCyl = 0xeb;
     }
-    else if (s->pDrvMedia)
+    else
     {
         s->uATARegLCyl = 0;
         s->uATARegHCyl = 0;
-    }
-    else
-    {
-        s->uATARegLCyl = 0xff;
-        s->uATARegHCyl = 0xff;
     }
 }
 
