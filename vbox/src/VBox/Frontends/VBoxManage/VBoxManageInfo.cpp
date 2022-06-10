@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 77162 2019-02-05 13:13:55Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2155,7 +2155,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                     const char *pszPfx = "USBAttach";
                     for (size_t i = 0; i < coll.size(); ++i)
                     {
-                        ComPtr<IHostUSBDevice> dev = coll[i];
+                        ComPtr<IUSBDevice> dev = coll[i];
 
                         SHOW_STRING_PROP(dev, Id, FmtNm(szNm, "%sActive%zu", pszPfx, i + 1), "UUID:");
                         SHOW_USHORT_PROP_EX2(dev, VendorId,  FmtNm(szNm, "%sVendorId%zu", pszPfx, i + 1),  "VendorId:",  "", "%#06x", "%#06x (%04X)");
