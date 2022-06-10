@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 72958 2018-07-07 21:27:53Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.h 73037 2018-07-10 15:58:05Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -43,15 +43,13 @@ struct GuestSessionFsSourceSpec
     GuestSessionFsSourceSpec()
         : enmType(FsObjType_Unknown)
         , enmPathStyle(PathStyle_Unknown)
-        , fDryRun(false)
-        , fFollowSymlinks(false) { }
+        , fDryRun(false) { }
 
     Utf8Str     strSource;
     Utf8Str     strFilter;
     FsObjType_T enmType;
     PathStyle_T enmPathStyle;
     bool        fDryRun;
-    bool        fFollowSymlinks;
     union
     {
         /** Directory-specific data. */
@@ -59,6 +57,7 @@ struct GuestSessionFsSourceSpec
         {
             /** Directory copy flags. */
             DirectoryCopyFlag_T fCopyFlags;
+            bool                fFollowSymlinks; /** @todo Remove once we have that parameter in DirectoryCopyFlag_T. */
             bool                fRecursive;
         } Dir;
         /** File-specific data. */
