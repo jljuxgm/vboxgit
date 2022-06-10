@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.h 74947 2018-10-19 15:03:34Z vboxsync $ */
+/* $Id: UIGuestFileTable.h 75136 2018-10-29 08:47:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestFileTable class declaration.
  */
@@ -25,6 +25,9 @@
 /* GUI includes: */
 #include "UIGuestControlFileTable.h"
 
+/* Forward declarations: */
+class UIActionPool;
+
 /** This class scans the guest file system by using the VBox Guest Control API
  *  and populates the UIGuestControlFileModel*/
 class UIGuestFileTable : public UIGuestControlFileTable
@@ -33,7 +36,7 @@ class UIGuestFileTable : public UIGuestControlFileTable
 
 public:
 
-    UIGuestFileTable(QWidget *pParent = 0);
+    UIGuestFileTable(UIActionPool *pActionPool, QWidget *pParent = 0);
     void initGuestFileTable(const CGuestSession &session);
     void copyGuestToHost(const QString& hostDestinationPath);
     void copyHostToGuest(const QStringList &hostSourcePathList);
@@ -49,6 +52,7 @@ protected:
     virtual QString fsObjectPropertyString() /* override */;
     virtual void    showProperties() /* override */;
     virtual void    determineDriveLetters() /* override */;
+    virtual void    prepareActions() /* override */;
 
 private:
 

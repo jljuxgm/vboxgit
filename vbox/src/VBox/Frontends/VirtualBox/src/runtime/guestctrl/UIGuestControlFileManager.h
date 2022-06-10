@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.h 75087 2018-10-26 09:59:37Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.h 75136 2018-10-29 08:47:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class declaration.
  */
@@ -77,6 +77,7 @@ public:
     UIGuestControlFileManager(EmbedTo enmEmbedding, UIActionPool *pActionPool,
                               const CGuest &comGuest, QWidget *pParent);
     ~UIGuestControlFileManager();
+    QMenu *menu() const;
     //const UIGuestControlFileManagerSettings& settings() const;
 
 protected:
