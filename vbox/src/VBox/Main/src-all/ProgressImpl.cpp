@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 73824 2018-08-22 12:31:25Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 73853 2018-08-23 08:52:29Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -207,7 +207,7 @@ HRESULT Progress::init(
 
     unconst(mId).create();
 
-#if !defined(VBOX_COM_INPROC) && !defined(VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK)
+#if !defined(VBOX_COM_INPROC)
     /* add to the global collection of progress operations (note: after
      * creating mId) */
     mParent->i_addProgress(this);
@@ -326,7 +326,7 @@ void Progress::uninit()
     /* release initiator (effective only if mInitiator has been assigned in init()) */
     unconst(mInitiator).setNull();
 
-#if !defined(VBOX_COM_INPROC) && !defined(VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK)
+#if !defined(VBOX_COM_INPROC)
     if (mParent)
     {
         /* remove the added progress on failure to complete the initialization */
@@ -470,7 +470,7 @@ HRESULT Progress::i_notifyCompleteEI(HRESULT aResultCode, const ComPtr<IVirtualB
     }
     mErrorInfo = aErrorInfo;
 
-#if !defined(VBOX_COM_INPROC) && !defined(VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK)
+#if !defined(VBOX_COM_INPROC)
     /* remove from the global collection of pending progress operations */
     if (mParent)
         mParent->i_removeProgress(mId.ref());
