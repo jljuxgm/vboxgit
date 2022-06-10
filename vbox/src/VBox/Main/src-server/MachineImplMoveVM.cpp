@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 73743 2018-08-17 17:56:34Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 73757 2018-08-18 05:27:26Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -1119,7 +1119,7 @@ HRESULT MachineMoveVM::moveAllDisks(const std::map<Utf8Str, MEDIUMTASKMOVE>& lis
             /*acquire the lock back*/
             machineLock.acquire();
 
-            /* @todo r=klaus get rid of custom error handling logic everywhere in this file */
+            /** @todo r=klaus get rid of custom error handling logic everywhere in this file */
             if (FAILED(rc))
             {
                 com::ErrorInfoKeeper eik;
