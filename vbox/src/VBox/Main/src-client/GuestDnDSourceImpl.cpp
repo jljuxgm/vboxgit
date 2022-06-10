@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 74495 2018-09-27 12:08:01Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 74499 2018-09-27 13:47:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -1303,8 +1303,8 @@ int GuestDnDSource::i_receiveURIData(PRECVDATACTX pCtx, RTMSINTERVAL msTimeout)
         }
         else if (rc != VERR_GSTDND_GUEST_ERROR) /* Guest-side error are already handled in the callback. */
         {
-            int rc2 = pCtx->mpResp->setProgress(100, DND_PROGRESS_ERROR,
-                                                rc, GuestDnDSource::i_hostErrorToString(rc));
+            rc2 = pCtx->mpResp->setProgress(100, DND_PROGRESS_ERROR,
+                                            rc, GuestDnDSource::i_hostErrorToString(rc));
             AssertRC(rc2);
         }
 
