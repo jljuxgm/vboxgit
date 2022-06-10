@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 73090 2018-07-12 11:55:48Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 73146 2018-07-16 09:54:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -287,6 +287,17 @@ bool UIWizardExportApp::exportVMs(CAppliance &comAppliance)
 
     /* Write the appliance: */
     QVector<KExportOptions> options;
+    switch (field("macAddressPolicy").value<MACAddressPolicy>())
+    {
+        case MACAddressPolicy_StripAllNonNATMACs:
+            options.append(KExportOptions_StripAllNonNATMACs);
+            break;
+        case MACAddressPolicy_StripAllMACs:
+            options.append(KExportOptions_StripAllMACs);
+            break;
+        default:
+            break;
+    }
     if (field("manifestSelected").toBool())
         options.append(KExportOptions_CreateManifest);
     if (field("includeISOsSelected").toBool())
