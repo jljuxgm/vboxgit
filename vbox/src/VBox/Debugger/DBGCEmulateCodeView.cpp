@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 73447 2018-08-02 11:10:05Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 73449 2018-08-02 11:28:32Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3408,7 +3408,7 @@ static DECLCALLBACK(int) dbgcCmdDumpIDT(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUV
                 AddrVar.enmType = DBGCVAR_TYPE_GC_FLAT;
                 AddrVar.u.GCFlat = GCFlat + iInt * cbEntry;
                 AddrVar.enmRangeType = DBGCVAR_RANGE_NONE;
-                int rc = pCmdHlp->pfnMemRead(pCmdHlp, &u, cbEntry, &AddrVar, NULL);
+                rc = pCmdHlp->pfnMemRead(pCmdHlp, &u, cbEntry, &AddrVar, NULL);
                 if (RT_FAILURE(rc))
                     return pCmdHlp->pfnVBoxError(pCmdHlp, rc, "Reading IDT entry %#04x.\n", (unsigned)iInt);
 
