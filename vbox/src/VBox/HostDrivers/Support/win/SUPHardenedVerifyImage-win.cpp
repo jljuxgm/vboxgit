@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 74760 2018-10-11 11:25:24Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 74768 2018-10-11 12:18:33Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -1055,7 +1055,7 @@ static DECLCALLBACK(int) supHardNtViCallback(RTLDRMOD hLdrMod, RTLDRSIGNATURETYP
                                              void const *pvExternalData, size_t cbExternalData,
                                              PRTERRINFO pErrInfo, void *pvUser)
 {
-    RT_NOREF2(hLdrMod, enmSignature);
+    RT_NOREF(hLdrMod, enmSignature, pvExternalData, cbExternalData);
 
     /*
      * Check out the input.
