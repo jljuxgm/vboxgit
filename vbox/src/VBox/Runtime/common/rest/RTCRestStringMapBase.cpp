@@ -1,4 +1,4 @@
-/* $Id: RTCRestStringMapBase.cpp 74525 2018-09-28 14:46:09Z vboxsync $ */
+/* $Id: RTCRestStringMapBase.cpp 75933 2018-12-04 02:43:00Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestStringMapBase implementation.
  */
@@ -108,7 +108,7 @@ RTCRestOutputBase &RTCRestStringMapBase::serializeAsJson(RTCRestOutputBase &a_rD
             a_rDst.valueSeparatorAndName(pCur->strKey.c_str(), pCur->strKey.length());
             pCur->pValue->serializeAsJson(a_rDst);
         }
-        a_rDst.endArray(uOldState);
+        a_rDst.endObject(uOldState);
     }
     else
         a_rDst.nullValue();
