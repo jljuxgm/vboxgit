@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77704 2019-03-14 17:00:37Z vboxsync $ */
+/* $Id: vfsmod.h 77739 2019-03-17 01:46:38Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -59,19 +59,21 @@
  * Logging wrappers.
  */
 #if 1
-# define TRACE()          LogFunc(("tracepoint\n"))
-# define SFLOGFLOW(aArgs) Log(aArgs)
-# define SFLOG2(aArgs)    Log2(aArgs)
-# define SFLOG3(aArgs)    Log3(aArgs)
+# define TRACE()                LogFunc(("tracepoint\n"))
+# define SFLOGFLOW(aArgs)       Log(aArgs)
+# define SFLOG2(aArgs)          Log2(aArgs)
+# define SFLOG3(aArgs)          Log3(aArgs)
+# define SFLOGRELBOTH(aArgs)    LogRel(aArgs)
 # ifdef LOG_ENABLED
 #  define SFLOG_ENABLED   1
 # endif
 #else
-# define TRACE()          RTLogBackdoorPrintf("%s: tracepoint\n", __FUNCTION__)
-# define SFLOGFLOW(aArgs) RTLogBackdoorPrintf aArgs
-# define SFLOG2(aArgs)    RTLogBackdoorPrintf aArgs
-# define SFLOG3(aArgs)    RTLogBackdoorPrintf aArgs
-# define SFLOG_ENABLED    1
+# define TRACE()                RTLogBackdoorPrintf("%s: tracepoint\n", __FUNCTION__)
+# define SFLOGFLOW(aArgs)       RTLogBackdoorPrintf aArgs
+# define SFLOG2(aArgs)          RTLogBackdoorPrintf aArgs
+# define SFLOG3(aArgs)          RTLogBackdoorPrintf aArgs
+# define SFLOG_ENABLED          1
+# define SFLOGRELBOTH(aArgs)    do { RTLogBackdoorPrintf aArgs; printk aArgs; } while (0)
 #endif
 
 
