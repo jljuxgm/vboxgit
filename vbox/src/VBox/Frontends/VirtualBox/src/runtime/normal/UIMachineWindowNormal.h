@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 75291 2018-11-06 15:03:21Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.h 75645 2018-11-21 15:32:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -77,7 +77,7 @@ private slots:
     /** Handles status-bar context-menu-request. */
     void sltHandleStatusBarContextMenuRequest(const QPoint &position);
     /** Handles status-bar indicator context-menu-request. */
-    void sltHandleIndicatorContextMenuRequest(IndicatorType indicatorType, const QPoint &position);
+    void sltHandleIndicatorContextMenuRequest(IndicatorType enmIndicatorType, const QPoint &indicatorPosition);
 
 #ifdef VBOX_WS_MAC
     /** Handles signal about some @a pAction hovered. */

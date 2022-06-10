@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIIndicatorsPool.h 75645 2018-11-21 15:32:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class declaration.
  */
@@ -62,6 +62,9 @@ public:
 
     /** Defines whether indicator-states auto-update is @a fEnabled. */
     void setAutoUpdateIndicatorStates(bool fEnabled);
+
+    /** Returns global screen position corresponding to @a indicatorPosition inside indicator of @a enmIndicatorType. */
+    QPoint mapIndicatorPositionToGlobal(IndicatorType enmIndicatorType, const QPoint &indicatorPosition);
 
 private slots:
 

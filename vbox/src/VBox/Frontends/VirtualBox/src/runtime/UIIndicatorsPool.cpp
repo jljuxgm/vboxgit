@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 75645 2018-11-21 15:32:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -1272,6 +1272,13 @@ void UIIndicatorsPool::setAutoUpdateIndicatorStates(bool fEnabled)
         m_pTimerAutoUpdate->stop();
 }
 
+QPoint UIIndicatorsPool::mapIndicatorPositionToGlobal(IndicatorType enmIndicatorType, const QPoint &indicatorPosition)
+{
+    if (m_pool.contains(enmIndicatorType))
+        return m_pool.value(enmIndicatorType)->mapToGlobal(indicatorPosition);
+    return QPoint(0, 0);
+}
+
 void UIIndicatorsPool::sltHandleConfigurationChange(const QUuid &uMachineID)
 {
     /* Skip unrelated machine IDs: */
@@ -1335,7 +1342,7 @@ void UIIndicatorsPool::sltContextMenuRequest(QIStatusBarIndicator *pIndicator, Q
         if (m_pool[indicatorType] == pIndicator)
         {
             /* Notify listener: */
-            emit sigContextMenuRequest(indicatorType, pEvent->globalPos());
+            emit sigContextMenuRequest(indicatorType, pEvent->pos());
             return;
         }
 }
