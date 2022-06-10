@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 77286 2019-02-12 15:51:01Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 77868 2019-03-25 09:27:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -89,9 +89,9 @@ int UICustomFileSystemItem::childCount() const
     return m_childItems.count();
 }
 
-QList<const UICustomFileSystemItem*> UICustomFileSystemItem::children() const
+QList<UICustomFileSystemItem*> UICustomFileSystemItem::children() const
 {
-    QList<const UICustomFileSystemItem*> childList;
+    QList<UICustomFileSystemItem*> childList;
     foreach (UICustomFileSystemItem *child, m_childItems)
         childList << child;
     return childList;

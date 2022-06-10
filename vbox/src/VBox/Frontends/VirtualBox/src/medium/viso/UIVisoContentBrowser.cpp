@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 77528 2019-03-01 13:07:07Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.cpp 77868 2019-03-25 09:27:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -283,7 +283,7 @@ void UIVisoContentBrowser::sltHandleCreateNewDirectory()
         return;
 
     /*  Check to see if we already have a directory named strNewDirectoryName: */
-    const QList<const UICustomFileSystemItem*> children = pParentItem->children();
+    const QList<UICustomFileSystemItem*> children = pParentItem->children();
     foreach (const UICustomFileSystemItem *item, children)
     {
         if (item->name() == strNewDirectoryName)
@@ -677,7 +677,7 @@ void UIVisoContentBrowser::sltHandleItemRenameAttempt(UICustomFileSystemItem *pI
 {
     if (!pItem || !pItem->parentItem())
         return;
-    QList<const UICustomFileSystemItem*> children = pItem->parentItem()->children();
+    QList<UICustomFileSystemItem*> children = pItem->parentItem()->children();
     bool bDuplicate = false;
     foreach (const UICustomFileSystemItem *item, children)
     {

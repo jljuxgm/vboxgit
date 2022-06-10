@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.h 77286 2019-02-12 15:51:01Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.h 77868 2019-03-25 09:27:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class declaration.
  */
@@ -57,7 +57,7 @@ public:
     /** Searches for the child by path and returns it if found. */
     UICustomFileSystemItem *child(const QString &path) const;
     int childCount() const;
-    QList<const UICustomFileSystemItem*> children() const;
+    QList<UICustomFileSystemItem*> children() const;
     /** Removes the item from the list of children and !!DELETES!! the item. */
     void removeChild(UICustomFileSystemItem *pItem);
     void removeChildren();

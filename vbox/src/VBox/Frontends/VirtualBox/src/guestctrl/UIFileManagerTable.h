@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 77528 2019-03-01 13:07:07Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 77868 2019-03-25 09:27:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -266,8 +266,6 @@ private:
     void             deleteByIndex(const QModelIndex &itemIndex);
     /** Returns the UICustomFileSystemItem for path / which is a direct (and single) child of m_pRootItem */
     UICustomFileSystemItem *getStartDirectoryItem();
-    /** Shows a modal dialog with a line edit for user to enter a new directory name and return the entered string*/
-    QString         getNewDirectoryName();
     void            deSelectUpDirectoryItem();
     void            setSelectionForAll(QItemSelectionModel::SelectionFlags flags);
     void            setSelection(const QModelIndex &indexInProxyModel);
