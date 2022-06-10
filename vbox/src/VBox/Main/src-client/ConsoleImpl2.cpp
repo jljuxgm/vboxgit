@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 73612 2018-08-10 10:16:36Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 73621 2018-08-10 15:25:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2834,6 +2834,8 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                             break;
                         default: AssertFailedBreak();
                     }
+                    InsertConfigInteger(pCfg, "DebugEnabled", fDebugEnabled);
+                    InsertConfigString (pCfg, "DebugPathOut", strDebugPathOut);
                     break;
                 }
                 case AudioControllerType_SB16:
