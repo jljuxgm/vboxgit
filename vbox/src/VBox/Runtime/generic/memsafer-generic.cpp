@@ -1,4 +1,4 @@
-/* $Id: memsafer-generic.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: memsafer-generic.cpp 78337 2019-04-26 20:30:19Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocate for Sensitive Data, generic heap-based implementation.
  */
@@ -149,7 +149,7 @@ RTDECL(void) RTMemSaferFree(void *pv, size_t cb) RT_NO_THROW_DEF
 {
     if (pv)
     {
-        Assert(cb);
+        Assert(cb); /* does not support openssl. */
         void *pvStart = (char *)pv - RTMEMSAFER_PAD_BEFORE;
         AssertMsg(*(size_t *)pvStart == cb, ("*pvStart=%#zx cb=%#zx\n", *(size_t *)pvStart, cb));
         RTMemWipeThoroughly(pv, RT_ALIGN_Z(cb, RTMEMSAFER_ALIGN), 3);

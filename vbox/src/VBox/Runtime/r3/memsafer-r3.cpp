@@ -1,4 +1,4 @@
-/* $Id: memsafer-r3.cpp 78335 2019-04-26 19:54:48Z vboxsync $ */
+/* $Id: memsafer-r3.cpp 78337 2019-04-26 20:30:19Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocate for Sensitive Data, generic heap-based implementation.
  */
@@ -441,7 +441,10 @@ RTDECL(void) RTMemSaferFree(void *pv, size_t cb) RT_NO_THROW_DEF
     {
         PRTMEMSAFERNODE pThis = rtMemSaferNodeRemove(pv);
         AssertReturnVoid(pThis);
-        AssertMsg(cb == pThis->cbUser, ("cb=%#zx != %#zx\n", cb, pThis->cbUser));
+        if (cb == 0) /* for openssl use */
+            cb = pThis->cbUser;
+        else
+            AssertMsg(cb == pThis->cbUser, ("cb=%#zx != %#zx\n", cb, pThis->cbUser));
 
         /*
          * Wipe the user memory first.
@@ -484,6 +487,23 @@ RTDECL(void) RTMemSaferFree(void *pv, size_t cb) RT_NO_THROW_DEF
         Assert(cb == 0);
 }
 RT_EXPORT_SYMBOL(RTMemSaferFree);
+
+
+RTDECL(size_t) RTMemSaferGetSize(void *pv) RT_NO_THROW_DEF
+{
+    size_t cbRet = 0;
+    if (pv)
+    {
+        void *pvKey = rtMemSaferScramblePointer(pv);
+        RTCritSectRwEnterShared(&g_MemSaferCritSect);
+        PRTMEMSAFERNODE pThis = (PRTMEMSAFERNODE)RTAvlPVGet(&g_pMemSaferTree, pvKey);
+        if (pThis)
+            cbRet = pThis->cbUser;
+        RTCritSectRwLeaveShared(&g_MemSaferCritSect);
+    }
+    return cbRet;
+}
+RT_EXPORT_SYMBOL(RTMemSaferGetSize);
 
 
 /**
