@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 73606 2018-08-10 07:38:56Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 73610 2018-08-10 08:06:57Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -160,7 +160,7 @@ VMM_INT_DECL(int) HMVmxGetHostMsr(PVM pVM, uint32_t idMsr, uint64_t *puValue)
  */
 VMM_INT_DECL(const char *) HMVmxGetInstrDiagDesc(VMXVINSTRDIAG enmInstrDiag)
 {
-    if (RT_LIKELY(enmInstrDiag < RT_ELEMENTS(g_apszVmxInstrDiagDesc)))
+    if (RT_LIKELY((unsigned)enmInstrDiag < RT_ELEMENTS(g_apszVmxInstrDiagDesc)))
         return g_apszVmxInstrDiagDesc[enmInstrDiag];
     return "Unknown/invalid";
 }
