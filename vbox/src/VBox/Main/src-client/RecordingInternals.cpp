@@ -1,6 +1,6 @@
-/* $Id: VideoRecInternals.cpp 74999 2018-10-23 13:50:28Z vboxsync $ */
+/* $Id: RecordingInternals.cpp 75344 2018-11-09 09:17:06Z vboxsync $ */
 /** @file
- * Video recording internals code.
+ * Recording internals code.
  */
 
 /*
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include "VideoRecInternals.h"
+#include "RecordingInternals.h"
 
 #include <iprt/assert.h>
 #include <iprt/mem.h>

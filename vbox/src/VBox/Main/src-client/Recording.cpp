@@ -1,6 +1,6 @@
-/* $Id: VideoRec.cpp 75341 2018-11-09 08:37:28Z vboxsync $ */
+/* $Id: Recording.cpp 75344 2018-11-09 09:17:06Z vboxsync $ */
 /** @file
- * Video recording (with optional audio recording) code.
+ * Recording (with optional audio recording) code.
  *
  * This code employs a separate encoding thread per recording context
  * to keep time spent in EMT as short as possible. Each configured VM display
@@ -43,10 +43,10 @@
 #include <VBox/com/VirtualBox.h>
 
 #include "ConsoleImpl.h"
-#include "VideoRec.h"
-#include "VideoRecInternals.h"
-#include "VideoRecStream.h"
-#include "VideoRecUtils.h"
+#include "Recording.h"
+#include "RecordingInternals.h"
+#include "RecordingStream.h"
+#include "RecordingUtils.h"
 #include "WebMWriter.h"
 
 using namespace com;
@@ -144,7 +144,7 @@ DECLCALLBACK(int) CaptureContext::threadMain(RTTHREAD hThreadSelf, void *pvUser)
         }
 
         if (RT_FAILURE(rc))
-            LogRel(("VideoRec: Encoding thread failed with rc=%Rrc\n", rc));
+            LogRel(("Recording: Encoding thread failed with rc=%Rrc\n", rc));
 
         /* Keep going in case of errors. */
 

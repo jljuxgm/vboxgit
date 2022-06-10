@@ -1,6 +1,6 @@
-/* $Id: VideoRec.h 75341 2018-11-09 08:37:28Z vboxsync $ */
+/* $Id: Recording.h 75344 2018-11-09 09:17:06Z vboxsync $ */
 /** @file
- * Video recording code header.
+ * Recording code header.
  */
 
 /*
@@ -26,8 +26,8 @@
 
 using namespace com;
 
-#include "VideoRecInternals.h"
-#include "VideoRecStream.h"
+#include "RecordingInternals.h"
+#include "RecordingStream.h"
 
 class Console;
 

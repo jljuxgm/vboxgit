@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 75341 2018-11-09 08:37:28Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 75344 2018-11-09 09:17:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -54,7 +54,7 @@
 
 #ifdef VBOX_WITH_VIDEOREC
 # include <iprt/path.h>
-# include "VideoRec.h"
+# include "Recording.h"
 
 # ifdef VBOX_WITH_LIBVPX
 #  ifdef _MSC_VER

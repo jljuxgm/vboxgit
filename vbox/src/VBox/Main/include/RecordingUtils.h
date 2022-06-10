@@ -1,6 +1,6 @@
-/* $Id: VideoRecUtils.h 74999 2018-10-23 13:50:28Z vboxsync $ */
+/* $Id: RecordingUtils.h 75344 2018-11-09 09:17:06Z vboxsync $ */
 /** @file
- * Video recording utility header.
+ * Recording utility header.
  */
 
 /*

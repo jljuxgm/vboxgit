@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 75331 2018-11-08 18:57:15Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 75344 2018-11-09 09:17:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -125,7 +125,7 @@
 # include "DrvAudioVRDE.h"
 #endif
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
-# include "DrvAudioVideoRec.h"
+# include "DrvAudioRec.h"
 #endif
 #include "NetworkServiceRunner.h"
 #include "BusAssignmentManager.h"

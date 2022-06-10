@@ -1,6 +1,6 @@
-/* $Id: VideoRecStream.h 75341 2018-11-09 08:37:28Z vboxsync $ */
+/* $Id: RecordingStream.h 75344 2018-11-09 09:17:06Z vboxsync $ */
 /** @file
- * Video recording stream code header.
+ * Recording stream code header.
  */
 
 /*
@@ -28,7 +28,7 @@
 #include <VBox/err.h>
 #include <VBox/settings.h>
 
-#include "VideoRecInternals.h"
+#include "RecordingInternals.h"
 
 class WebMWriter;
 class CaptureContext;

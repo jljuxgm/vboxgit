@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.h 75341 2018-11-09 08:37:28Z vboxsync $ */
+/* $Id: DrvAudioRec.h 75344 2018-11-09 09:17:06Z vboxsync $ */
 /** @file
  * VirtualBox driver interface video recording audio backend.
  */
@@ -24,7 +24,7 @@
 #include <VBox/vmm/pdmifs.h>
 
 #include "AudioDriver.h"
-#include "VideoRec.h"
+#include "Recording.h"
 
 using namespace com;
 
