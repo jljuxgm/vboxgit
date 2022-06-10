@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 73350 2018-07-25 11:50:50Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
 /** @file
  * Debug audio driver.
  *
@@ -119,7 +119,10 @@ static int debugCreateStreamIn(PDRVHOSTDEBUGAUDIO pDrv, PDEBUGAUDIOSTREAM pStrea
     RT_NOREF(pDrv, pStreamDbg, pCfgReq);
 
     if (pCfgAcq)
-        pCfgAcq->cFrameBufferHint = _1K;
+    {
+        pCfgAcq->Backend.cfPeriod     = DrvAudioHlpMsToFrames(&pCfgReq->Props, 1000 /* ms */);
+        pCfgAcq->Backend.cfBufferSize = pCfgAcq->Backend.cfPeriod * 2; /* Use "double buffering". */
+    }
 
     return VINF_SUCCESS;
 }
@@ -158,7 +161,10 @@ static int debugCreateStreamOut(PDRVHOSTDEBUGAUDIO pDrv, PDEBUGAUDIOSTREAM pStre
     if (RT_SUCCESS(rc))
     {
         if (pCfgAcq)
-            pCfgAcq->cFrameBufferHint = _1K;
+        {
+            pCfgAcq->Backend.cfPeriod     = DrvAudioHlpBytesToFrames(&pCfgReq->Props, 50 /* ms */);
+            pCfgAcq->Backend.cfBufferSize = pCfgAcq->Backend.cfPeriod * 2; /* Use "double buffering". */
+        }
     }
 
     return rc;

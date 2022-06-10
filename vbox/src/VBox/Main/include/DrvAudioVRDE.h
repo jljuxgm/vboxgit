@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.h 70644 2018-01-19 12:20:33Z vboxsync $ */
+/* $Id: DrvAudioVRDE.h 73370 2018-07-26 13:52:12Z vboxsync $ */
 /** @file
  * VirtualBox driver interface to VRDE backend.
  */
@@ -46,6 +46,8 @@ public:
 
 public:
 
+    void onVRDEClientConnect(uint32_t uClientID);
+    void onVRDEClientDisconnect(uint32_t uClientID);
     int onVRDEControl(bool fEnable, uint32_t uFlags);
     int onVRDEInputBegin(void *pvContext, PVRDEAUDIOINBEGIN pVRDEAudioBegin);
     int onVRDEInputData(void *pvContext, const void *pvData, uint32_t cbData);

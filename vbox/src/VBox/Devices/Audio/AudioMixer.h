@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 73356 2018-07-25 15:52:35Z vboxsync $ */
+/* $Id: AudioMixer.h 73370 2018-07-26 13:52:12Z vboxsync $ */
 /** @file
  * VBox audio - Mixing routines.
  *
@@ -195,8 +195,10 @@ typedef struct AUDMIXSINK
     PDMAUDIOVOLUME          Volume;
     /** The volume of this sink, combined with the last set  master volume. */
     PDMAUDIOVOLUME          VolumeCombined;
-    /** Timestamp (in ms) since last update. */
-    uint64_t                tsLastUpdatedMS;
+    /** Timestamp since last update (in ms). */
+    uint64_t                tsLastUpdatedMs;
+    /** Last read (recording) / written (playback) timestamp (in ms). */
+    uint64_t                tsLastReadWrittenMs;
 #ifdef VBOX_AUDIO_MIXER_DEBUG
     struct
     {

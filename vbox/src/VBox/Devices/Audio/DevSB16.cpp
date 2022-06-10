@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 73241 2018-07-19 14:56:24Z vboxsync $ */
+/* $Id: DevSB16.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1604,31 +1604,7 @@ static DECLCALLBACK(uint32_t) sb16DMARead(PPDMDEVINS pDevIns, void *opaque, unsi
     if (pThis->left_till_irq < 0)
         pThis->left_till_irq = pThis->block_size;
 
-    uint32_t cbOutMin = UINT32_MAX;
-
-    PSB16DRIVER pDrv;
-    RTListForEach(&pThis->lstDrv, pDrv, SB16DRIVER, Node)
-    {
-        if (!pDrv->Out.pStream)
-            continue;
-
-        uint32_t cbOut = pDrv->pConnector->pfnStreamGetWritable(pDrv->pConnector, pDrv->Out.pStream);
-
-        if (cbOut < cbOutMin)
-            cbOutMin = cbOut;
-    }
-
-    LogFlowFunc(("cbOutMin=%RU32\n", cbOutMin));
-    if (cbOutMin == UINT32_MAX)
-    {
-        free = dma_len;
-    }
-    else
-    {
-        free = cbOutMin & ~pThis->align; /** @todo int vs. uint32. */
-        if ((free <= 0) || !dma_len)
-            return dma_pos;
-    }
+    free = dma_len;
 
     copy = free;
     till = pThis->left_till_irq;

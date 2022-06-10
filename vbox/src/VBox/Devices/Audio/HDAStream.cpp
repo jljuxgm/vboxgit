@@ -1,4 +1,4 @@
-/* $Id: HDAStream.cpp 73241 2018-07-19 14:56:24Z vboxsync $ */
+/* $Id: HDAStream.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
 /** @file
  * HDAStream.cpp - Stream functions for HD Audio.
  */
@@ -196,7 +196,7 @@ int hdaR3StreamInit(PHDASTREAM pStream, uint8_t uSD)
 
     /* Set scheduling hint (if available). */
     if (pThis->u16TimerHz)
-        pCfg->Device.uSchedulingHintMs = 1000 /*ms */ / pThis->u16TimerHz;
+        pCfg->Device.uSchedulingHintMs = 1000 /* ms */ / pThis->u16TimerHz;
 
     /* (Re-)Allocate the stream's internal DMA buffer, based on the PCM  properties we just got above. */
     if (pStream->State.pCircBuf)

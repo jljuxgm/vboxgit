@@ -1,4 +1,4 @@
-/* $Id: DrvHostValidationKit.cpp 70493 2018-01-09 12:24:31Z vboxsync $ */
+/* $Id: DrvHostValidationKit.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
 /** @file
  * ValidationKit audio driver - host backend for dumping and injecting audio data
  *                              from/to the device emulation.
@@ -131,7 +131,7 @@ static int debugCreateStreamIn(PDRVHOSTVAKITAUDIO pDrv, PVAKITAUDIOSTREAM pStrea
     RT_NOREF(pDrv, pStreamDbg, pCfgReq);
 
     if (pCfgAcq)
-        pCfgAcq->cFrameBufferHint = _1K;
+        pCfgAcq->cfPeriod = _1K;
 
     return VINF_SUCCESS;
 }
@@ -193,7 +193,7 @@ static int debugCreateStreamOut(PDRVHOSTVAKITAUDIO pDrv, PVAKITAUDIOSTREAM pStre
     if (RT_SUCCESS(rc))
     {
         if (pCfgAcq)
-            pCfgAcq->cFrameBufferHint = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamDbg->Out.cbPlayBuffer);
+            pCfgAcq->cfPeriod = PDMAUDIOSTREAMCFG_B2F(pCfgAcq, pStreamDbg->Out.cbPlayBuffer);
     }
 
     return rc;

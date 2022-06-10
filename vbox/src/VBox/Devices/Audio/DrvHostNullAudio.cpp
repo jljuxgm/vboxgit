@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 69119 2017-10-17 19:08:38Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 73370 2018-07-26 13:52:12Z vboxsync $ */
 /** @file
  * NULL audio driver.
  *
@@ -173,10 +173,7 @@ static DECLCALLBACK(int) drvHostNullAudioStreamCapture(PPDMIHOSTAUDIO pInterface
 
 static int nullCreateStreamIn(PNULLAUDIOSTREAM pStreamNull, PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
-    RT_NOREF(pStreamNull, pCfgReq);
-
-    if (pCfgAcq)
-        pCfgAcq->cFrameBufferHint = _1K;
+    RT_NOREF(pStreamNull, pCfgReq, pCfgAcq);
 
     return VINF_SUCCESS;
 }
@@ -184,10 +181,7 @@ static int nullCreateStreamIn(PNULLAUDIOSTREAM pStreamNull, PPDMAUDIOSTREAMCFG p
 
 static int nullCreateStreamOut(PNULLAUDIOSTREAM pStreamNull, PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
-    RT_NOREF(pStreamNull, pCfgReq);
-
-    if (pCfgAcq)
-        pCfgAcq->cFrameBufferHint = _1K; /** @todo Make this configurable. */
+    RT_NOREF(pStreamNull, pCfgReq, pCfgAcq);
 
     return VINF_SUCCESS;
 }
