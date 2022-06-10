@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72989 2018-07-09 02:31:46Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72990 2018-07-09 02:36:37Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4535,10 +4535,6 @@ static int hmR0VmxExportGuestSegmentRegs(PVMCPU pVCpu)
 #ifdef VBOX_STRICT
         hmR0VmxValidateSegmentRegs(pVCpu);
 #endif
-
-        /* Update the exit history entry with the correct CS.BASE + RIP. */
-        if (ASMAtomicUoReadU64(&pVCpu->hm.s.fCtxChanged) & HM_CHANGED_GUEST_RIP)
-            EMR0HistoryUpdatePC(pVCpu, pCtx->cs.u64Base + pCtx->rip, true);
 
         Log4Func(("CS=%#RX16 Base=%#RX64 Limit=%#RX32 Attr=%#RX32\n", pCtx->cs.Sel, pCtx->cs.u64Base,
                   pCtx->cs.u32Limit, pCtx->cs.Attr.u));
