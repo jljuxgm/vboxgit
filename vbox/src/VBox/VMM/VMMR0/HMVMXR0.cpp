@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72789 2018-07-02 09:13:58Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72790 2018-07-02 09:15:09Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8158,7 +8158,7 @@ static VBOXSTRICTRC hmR0VmxExportGuestStateOptimal(PVM pVM, PVMCPU pVCpu, PCCPUM
     Assert(VMMR0IsLogFlushDisabled(pVCpu));
 
 #ifdef HMVMX_ALWAYS_SYNC_FULL_GUEST_STATE
-    pVCpu->hm.s.fCtxChanged |= HM_CHANGED_ALL_GUEST;
+    ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_ALL_GUEST);
 #endif
 
     /*
