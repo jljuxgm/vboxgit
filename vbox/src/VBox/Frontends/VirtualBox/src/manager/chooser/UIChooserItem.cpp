@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 74078 2018-09-05 11:37:59Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 74084 2018-09-05 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -588,19 +588,6 @@ QString UIChooserItem::compressText(const QFont &font, QPaintDevice *pPaintDevic
     while (!strText.isEmpty() && fm.width(strText) + iEllipsisWidth > iWidth)
         strText.truncate(strText.size() - 1);
     return strText + strEllipsis;
-}
-
-/* static */
-void UIChooserItem::configurePainterShape(QPainter *pPainter, const QStyleOptionGraphicsItem *pOption, int iRadius)
-{
-    /* Rounded corners? */
-    if (iRadius)
-    {
-        /* Setup clipping: */
-        QPainterPath roundedPath;
-        roundedPath.addRoundedRect(pOption->rect, iRadius, iRadius);
-        pPainter->setClipPath(roundedPath);
-    }
 }
 
 /* static */

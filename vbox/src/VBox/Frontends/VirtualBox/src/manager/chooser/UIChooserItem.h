@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 74078 2018-09-05 11:37:59Z vboxsync $ */
+/* $Id: UIChooserItem.h 74084 2018-09-05 13:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -296,9 +296,6 @@ protected:
 
     /** @name Painting stuff.
       * @{ */
-        /** Configures @a pPainter shape with certain @a pOptions and specified @a iRadius. */
-        static void configurePainterShape(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions, int iRadius);
-
         /** Paints frame @a rectangle using passed @a pPainter.
           * @param  fIsSelected  Brings whether this rectangle should be filled.
           * @param  iRadius      Brings the radius of rounded corners. */
