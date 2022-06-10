@@ -1,4 +1,4 @@
-/* $Id: utils.c 77961 2019-03-30 01:46:38Z vboxsync $ */
+/* $Id: utils.c 77962 2019-03-30 01:51:18Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, utility functions.
  *
@@ -888,6 +888,8 @@ int vbsf_inode_setattr(struct dentry *dentry, struct iattr *iattr)
                 if (fAttrs & (ATTR_MODE | ATTR_ATIME | ATTR_MTIME | ATTR_CTIME)) {
                     /* Fill in the attributes.  Start by setting all to zero
                        since the host will ignore zeroed fields. */
+                    RT_ZERO(pReq->Info.ObjInfo);
+
                     if (fAttrs & ATTR_MODE) {
                         pReq->Info.ObjInfo.Attr.fMode = sf_access_permissions_to_vbox(iattr->ia_mode);
                         if (iattr->ia_mode & S_IFDIR)
