@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 74478 2018-09-26 13:43:47Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 76102 2018-12-10 10:59:36Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -1368,6 +1368,8 @@ int VBoxDnDWnd::ProcessEvent(PVBOXDNDEVENT pEvent)
             LogRel(("DnD: Processing event %p failed with %ld (%Rrc), skipping\n",
                     pEvent, dwErr, RTErrConvertFromWin32(dwErr)));
         }
+
+        VbglR3DnDEventFree(pEvent->pVbglR3Event);
 
         RTMemFree(pEvent);
         pEvent = NULL;
