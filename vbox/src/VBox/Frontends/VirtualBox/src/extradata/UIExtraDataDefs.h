@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 75521 2018-11-16 16:17:47Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 75615 2018-11-20 11:51:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -709,7 +709,6 @@ public:
     enum DetailsElementOptionTypeSharedFolders
     {
         DetailsElementOptionTypeSharedFolders_Invalid = 0,
-        DetailsElementOptionTypeSharedFolders_Summary = RT_BIT(0),
         DetailsElementOptionTypeSharedFolders_Default = 0xFFFF
     };
     Q_ENUM(DetailsElementOptionTypeSharedFolders);
@@ -729,7 +728,6 @@ public:
     enum DetailsElementOptionTypeDescription
     {
         DetailsElementOptionTypeDescription_Invalid = 0,
-        DetailsElementOptionTypeDescription_Summary = RT_BIT(0),
         DetailsElementOptionTypeDescription_Default = 0xFFFF
     };
     Q_ENUM(DetailsElementOptionTypeDescription);
