@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 73243 2018-07-19 15:08:34Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 73636 2018-08-13 13:07:26Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1349,6 +1349,7 @@ int main()
     GEN_CHECK_OFF(UARTCORE, uRegMsr);
     GEN_CHECK_OFF(UARTCORE, uRegScr);
     GEN_CHECK_OFF(UARTCORE, fIrqCtiPending);
+    GEN_CHECK_OFF(UARTCORE, fThreEmptyPending);
     GEN_CHECK_OFF(UARTCORE, FifoXmit);
     GEN_CHECK_OFF(UARTCORE, FifoRecv);
     GEN_CHECK_OFF(UARTCORE, cSymbolXferTicks);
