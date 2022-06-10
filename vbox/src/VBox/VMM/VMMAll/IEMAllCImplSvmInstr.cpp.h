@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 74339 2018-09-18 10:03:21Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 74357 2018-09-19 03:43:10Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -147,7 +147,8 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmexit(PVMCPU pVCpu, uint64_t uExitCode, uint64_t 
         PSVMVMCB       pVmcbMem;
         PGMPAGEMAPLOCK PgLockMem;
         PSVMVMCBCTRL   pVmcbCtrl = &pVCpu->cpum.GstCtx.hwvirt.svm.CTX_SUFF(pVmcb)->ctrl;
-        rcStrict = iemMemPageMap(pVCpu, pVCpu->cpum.GstCtx.hwvirt.svm.GCPhysVmcb, IEM_ACCESS_DATA_RW, (void **)&pVmcbMem, &PgLockMem);
+        rcStrict = iemMemPageMap(pVCpu, pVCpu->cpum.GstCtx.hwvirt.svm.GCPhysVmcb, IEM_ACCESS_DATA_RW, (void **)&pVmcbMem,
+                                 &PgLockMem);
         if (rcStrict == VINF_SUCCESS)
         {
             /*
