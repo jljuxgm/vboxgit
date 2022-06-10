@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74770 2018-10-11 12:59:30Z vboxsync $
+# $Id: Makefile.kmk 75587 2018-11-19 18:06:03Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -909,6 +909,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   	Serial/DevOxPcie958.cpp \
   	Serial/UartCore.cpp \
   	Parallel/DevParallel.cpp \
+  	VMMDev/VMMDev.cpp \
   	VMMDev/VMMDevTesting.cpp
 
   VBoxDDRC_DEFS         += $(VBOX_AUDIO_DEFS)
@@ -1082,6 +1083,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   	Serial/DevOxPcie958.cpp \
   	Serial/UartCore.cpp \
  	Parallel/DevParallel.cpp \
+  	VMMDev/VMMDev.cpp \
  	VMMDev/VMMDevTesting.cpp \
  	Network/DrvIntNet.cpp \
  	Network/DrvDedicatedNic.cpp
