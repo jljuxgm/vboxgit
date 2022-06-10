@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.h 69639 2017-11-10 12:25:43Z vboxsync $ */
+/* $Id: UIGDetailsElement.h 72710 2018-06-27 18:30:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class declaration.
  */
@@ -92,6 +92,9 @@ public:
 
 protected slots:
 
+    /** Handles top-level window remaps. */
+    void sltHandleWindowRemapped();
+
     /* Handlers: Toggle stuff: */
     void sltToggleButtonClicked();
     void sltElementToggleStart();
@@ -116,6 +119,9 @@ protected:
         ElementData_Spacing
     };
 
+    /** Handles show @a pEvent. */
+    virtual void showEvent(QShowEvent *pEvent) /* override */;
+
     /** This event handler is delivered after the widget has been resized. */
     void resizeEvent(QGraphicsSceneResizeEvent *pEvent);
 
@@ -130,7 +136,7 @@ protected:
     void updateMinimumHeaderHeight();
 
     /* API: Icon stuff: */
-    void setIcon(const QIcon &icon);
+    void updateIcon();
 
     /* API: Name stuff: */
     void setName(const QString &strName);
