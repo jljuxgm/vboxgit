@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 74853 2018-10-15 18:36:00Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 74855 2018-10-15 19:10:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -408,7 +408,7 @@ void UICloudProfileManagerWidget::updateItemForCloudProfile(const UIDataCloudPro
 
 
 /*********************************************************************************************************************************
-*   Class UICloudProfileManagerFactory implementation.                                                                            *
+*   Class UICloudProfileManagerFactory implementation.                                                                           *
 *********************************************************************************************************************************/
 
 UICloudProfileManagerFactory::UICloudProfileManagerFactory(UIActionPool *pActionPool /* = 0 */)
@@ -423,7 +423,7 @@ void UICloudProfileManagerFactory::create(QIManagerDialog *&pDialog, QWidget *pC
 
 
 /*********************************************************************************************************************************
-*   Class UICloudProfileManager implementation.                                                                                   *
+*   Class UICloudProfileManager implementation.                                                                                  *
 *********************************************************************************************************************************/
 
 UICloudProfileManager::UICloudProfileManager(QWidget *pCenterWidget, UIActionPool *pActionPool)
