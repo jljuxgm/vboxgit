@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 73561 2018-08-08 12:59:57Z vboxsync $ */
+/* $Id: AudioMixer.cpp 73566 2018-08-08 14:58:40Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1389,17 +1389,39 @@ static int audioMixerSinkSetRecSourceInternal(PAUDMIXSINK pSink, PAUDMIXSTREAM p
 {
     AssertMsg(pSink->enmDir == AUDMIXSINKDIR_INPUT, ("Specified sink is not an input sink\n"));
 
-    if (pStream) /* Can be NULL if un-setting. */
+    int rc;
+
+    if (pSink->In.pStreamRecSource) /* Disable old recording source, if any set. */
     {
-        AssertPtr(pStream->pStream);
-        AssertMsg(pStream->pStream->enmDir == PDMAUDIODIR_IN, ("Specified stream is not an input stream\n"));
+        const PPDMIAUDIOCONNECTOR pConn = pSink->In.pStreamRecSource->pConn;
+        AssertPtr(pConn);
+        rc = pConn->pfnEnable(pConn, PDMAUDIODIR_IN, false /* Disable */);
+    }
+    else
+        rc = VINF_SUCCESS;
+
+    if (RT_SUCCESS(rc))
+    {
+        if (pStream) /* Can be NULL if un-setting. */
+        {
+            AssertPtr(pStream->pStream);
+            AssertMsg(pStream->pStream->enmDir == PDMAUDIODIR_IN, ("Specified stream is not an input stream\n"));
+        }
+
+        pSink->In.pStreamRecSource = pStream;
+
+        if (pSink->In.pStreamRecSource)
+        {
+            const PPDMIAUDIOCONNECTOR pConn = pSink->In.pStreamRecSource->pConn;
+            AssertPtr(pConn);
+            rc = pConn->pfnEnable(pConn, PDMAUDIODIR_IN, true /* Enable */);
+        }
     }
 
-    pSink->In.pStreamRecSource = pStream;
+    LogFunc(("[%s] Recording source is now '%s', rc=%Rrc\n",
+             pSink->pszName, pSink->In.pStreamRecSource ? pSink->In.pStreamRecSource->pszName : "<None>", rc));
 
-    LogFunc(("[%s] Recording source is now '%s'\n",
-             pSink->pszName, pSink->In.pStreamRecSource ? pSink->In.pStreamRecSource->pszName : "<None>"));
-    return VINF_SUCCESS;
+    return rc;
 }
 
 /**
