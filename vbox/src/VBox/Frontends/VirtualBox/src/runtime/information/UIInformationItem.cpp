@@ -1,4 +1,4 @@
-/* $Id: UIInformationItem.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIInformationItem.cpp 77432 2019-02-22 14:52:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationItem class definition.
  */
@@ -69,8 +69,8 @@ void UIInformationItem::setText(const UITextTable &text) const
     foreach (const UITextTableLine &line, text)
     {
         /* Lines: */
-        const QString strLeftLine = line.first;
-        const QString strRightLine = line.second;
+        const QString strLeftLine = line.string1();
+        const QString strRightLine = line.string2();
 
         /* If 2nd line is NOT empty: */
         if (!strRightLine.isEmpty())
@@ -165,7 +165,7 @@ void UIInformationItem::updateTextLayout() const
         QString item;
         /* Parse lines from text and add it to text: */
         foreach (const UITextTableLine &line, m_text)
-            item = item + QString(sSectionItemTpl2).arg(line.first, line.second);
+            item = item + QString(sSectionItemTpl2).arg(line.string1(), line.string2());
 
         /* Format the entire item: */
         report = sectionTpl.arg(1.375 * iIconMetric)
@@ -187,4 +187,3 @@ void UIInformationItem::updateTextLayout() const
     /* Set html-data: */
     m_pTextDocument->setHtml(report);
 }
-

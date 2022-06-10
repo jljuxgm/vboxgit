@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 77432 2019-02-22 14:52:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -30,7 +30,6 @@
 
 /* Other VBox includes: */
 #include <iprt/assert.h>
-
 
 /** QAccessibleObject extension used as an accessibility interface for UITextTableLine. */
 class UIAccessibilityInterfaceForUITextTableLine : public QAccessibleObject
@@ -105,7 +104,6 @@ private:
     /** Returns corresponding text-table line. */
     UITextTableLine *line() const { return qobject_cast<UITextTableLine*>(object()); }
 };
-
 
 UIGraphicsTextPane::UIGraphicsTextPane(QIGraphicsWidget *pParent, QPaintDevice *pPaintDevice)
     : QIGraphicsWidget(pParent)

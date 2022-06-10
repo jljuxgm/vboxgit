@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIDetailsElement.h 77432 2019-02-22 14:52:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class declaration.
  */
@@ -27,6 +27,7 @@
 /* GUI includes: */
 #include "UIDetailsItem.h"
 #include "UIExtraDataDefs.h"
+#include "UITextTable.h"
 
 /* Forward declarations: */
 class QPropertyAnimation;
@@ -35,11 +36,8 @@ class QTextLayout;
 class UIDetailsSet;
 class UIGraphicsRotatorButton;
 class UIGraphicsTextPane;
-class UITextTableLine;
 class CMachine;
 
-/* Typedefs: */
-typedef QList<UITextTableLine> UITextTable;
 
 /** UIDetailsItem extension implementing element item. */
 class UIDetailsElement : public UIDetailsItem
