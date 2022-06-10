@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 75307 2018-11-07 13:56:14Z vboxsync $ */
+/* $Id: MachineImpl.h 75324 2018-11-08 15:39:50Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -488,6 +488,7 @@ public:
      */
     Utf8Str i_getOSTypeId() const { return mUserData->s.strOsType; }
     ChipsetType_T i_getChipsetType() const { return mHWData->mChipsetType; }
+    ULONG i_getMonitorCount() const { return mHWData->mMonitorCount; }
     ParavirtProvider_T i_getParavirtProvider() const { return mHWData->mParavirtProvider; }
     Utf8Str i_getParavirtDebug() const { return mHWData->mParavirtDebug; }
 

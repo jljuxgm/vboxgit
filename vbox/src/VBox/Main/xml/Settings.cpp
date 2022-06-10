@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 75313 2018-11-07 17:13:56Z vboxsync $ */
+/* $Id: Settings.cpp 75324 2018-11-08 15:39:50Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4431,11 +4431,11 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
 
             for (unsigned i = 0; i < hw.cMonitors; i++) /* Don't add more settings than we have monitors configured. */
             {
+                /* Add screen i to config in any case. */
+                hw.captureSettings.mapScreens[i] = screen0Settings;
+
                 if (u64VideoCaptureScreens & RT_BIT_64(i)) /* Screen i enabled? */
-                {
-                    hw.captureSettings.mapScreens[i] = screen0Settings;
                     hw.captureSettings.mapScreens[i].fEnabled = true;
-                }
             }
         }
         else if (pelmHwChild->nameEquals("RemoteDisplay"))

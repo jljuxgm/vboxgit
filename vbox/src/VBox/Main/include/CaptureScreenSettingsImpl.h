@@ -1,4 +1,4 @@
-/* $Id: CaptureScreenSettingsImpl.h 75322 2018-11-08 14:24:05Z vboxsync $ */
+/* $Id: CaptureScreenSettingsImpl.h 75324 2018-11-08 15:39:50Z vboxsync $ */
 
 /** @file
  *
@@ -22,6 +22,8 @@
 
 #include "CaptureScreenSettingsWrap.h"
 
+class CaptureSettings;
+
 namespace settings
 {
     struct CaptureScreenSettings;
@@ -38,9 +40,9 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init(Machine *aParent, uint32_t uScreenId, const settings::CaptureScreenSettings& data);
-    HRESULT init(Machine *aParent, CaptureScreenSettings *that);
-    HRESULT initCopy(Machine *aParent, CaptureScreenSettings *that);
+    HRESULT init(CaptureSettings *aParent, uint32_t uScreenId, const settings::CaptureScreenSettings& data);
+    HRESULT init(CaptureSettings *aParent, CaptureScreenSettings *that);
+    HRESULT initCopy(CaptureSettings *aParent, CaptureScreenSettings *that);
     void uninit();
 
     // public methods only for internal purposes
@@ -101,7 +103,6 @@ private:
 private:
 
     // internal methods
-    int  i_getDefaultFileName(Utf8Str &strFile);
     int  i_initInternal();
 
 private:
