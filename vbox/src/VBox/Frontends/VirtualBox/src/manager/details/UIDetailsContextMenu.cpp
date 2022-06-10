@@ -1,4 +1,4 @@
-/* $Id: UIDetailsContextMenu.cpp 75641 2018-11-21 11:04:54Z vboxsync $ */
+/* $Id: UIDetailsContextMenu.cpp 76155 2018-12-11 09:11:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsContextMenu class implementation.
  */
@@ -981,8 +981,8 @@ void UIDetailsContextMenu::adjustListWidgets()
     iH += m_pListWidgetCategories->sizeHintForRow(0) * m_pListWidgetCategories->count();
 
     /* Category list size is constant, options list size is vague: */
-    m_pListWidgetCategories->setFixedSize(QSize(iW, iH));
-    m_pListWidgetOptions->setFixedSize(QSize(iW * 1.5, iH));
+    m_pListWidgetCategories->setFixedSize(QSize(iW * 1.3, iH));
+    m_pListWidgetOptions->setFixedSize(QSize(iW * 1.3, iH));
 }
 
 QListWidgetItem *UIDetailsContextMenu::createCategoryItem(const QIcon &icon)
