@@ -1,4 +1,4 @@
-/* $Id: vbsfpathabs.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vbsfpathabs.cpp 78090 2019-04-10 14:19:04Z vboxsync $ */
 /** @file
  * Shared Folders Service - guest/host path convertion and verification.
  */
@@ -96,6 +96,8 @@ static void vbsfPathResolveRelative(char *pszPathBegin)
 int vbsfPathAbs(const char *pszRoot, const char *pszPath, char *pszAbsPath, size_t cbAbsPath)
 {
 #if defined(RT_OS_WINDOWS)
+    /** @todo This code is not needed in 6.0 and later as IPRT translates paths
+     *        to \\.\ format if they're too long.  */
     const char *pszPathStart = pszRoot? pszRoot: pszPath;
 
     /* Windows extended-length paths. */
@@ -181,5 +183,6 @@ int vbsfPathAbs(const char *pszRoot, const char *pszPath, char *pszAbsPath, size
 #endif /* RT_OS_WINDOWS */
 
     /* Fallback for the common paths. */
-    return RTPathAbsEx(pszRoot, pszPath, pszAbsPath, cbAbsPath);
+
+    return RTPathAbsExEx(pszRoot, pszPath, RTPATH_STR_F_STYLE_HOST, pszAbsPath, &cbAbsPath);
 }

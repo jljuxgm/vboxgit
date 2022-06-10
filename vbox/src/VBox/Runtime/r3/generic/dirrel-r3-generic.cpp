@@ -1,4 +1,4 @@
-/* $Id: dirrel-r3-generic.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: dirrel-r3-generic.cpp 78090 2019-04-10 14:19:04Z vboxsync $ */
 /** @file
  * IPRT - Directory relative base APIs, generic implementation.
  */
@@ -83,7 +83,7 @@ static int rtDirRelBuildFullPath(PRTDIRINTERNAL pThis, char *pszPathDst, size_t 
      *
      * This ASSUMES that pThis->pszPath is an absolute path.
      */
-    int rc = RTPathAbsEx(pThis->pszPath, pszRelPath, pszPathDst, cbPathDst);
+    int rc = RTPathAbsExEx(pThis->pszPath, pszRelPath, RTPATH_STR_F_STYLE_HOST, pszPathDst, &cbPathDst);
     if (RT_SUCCESS(rc))
     {
         if (RTPathStartsWith(pszPathDst, pThis->pszPath))

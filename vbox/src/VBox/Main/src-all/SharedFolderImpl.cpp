@@ -1,4 +1,4 @@
-/* $Id: SharedFolderImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: SharedFolderImpl.cpp 78090 2019-04-10 14:19:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -282,10 +282,9 @@ HRESULT SharedFolder::i_protectedInit(VirtualBoxBase *aParent,
     {
         /* Check whether the path is full (absolute) */
         char hostPathFull[RTPATH_MAX];
-        int vrc = RTPathAbsEx(NULL,
-                              hostPath.c_str(),
-                              hostPathFull,
-                              sizeof (hostPathFull));
+        int vrc = RTPathAbs(hostPath.c_str(),
+                            hostPathFull,
+                            sizeof(hostPathFull));
         if (RT_FAILURE(vrc))
             return setErrorBoth(E_INVALIDARG, vrc, tr("Invalid shared folder path: '%s' (%Rrc)"), hostPath.c_str(), vrc);
 

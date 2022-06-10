@@ -1,4 +1,4 @@
-/* $Id: RTPathAbsExDup.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTPathAbsExDup.cpp 78090 2019-04-10 14:19:04Z vboxsync $ */
 /** @file
  * IPRT - RTPathAbsExDup
  */
@@ -49,9 +49,31 @@
 RTDECL(char *) RTPathAbsExDup(const char *pszBase, const char *pszPath)
 {
     char szPath[RTPATH_MAX];
-    int rc = RTPathAbsEx(pszBase, pszPath, szPath, sizeof(szPath));
+    size_t cbPath = sizeof(szPath);
+    int rc = RTPathAbsExEx(pszBase, pszPath, RTPATH_STR_F_STYLE_HOST, szPath, &cbPath);
     if (RT_SUCCESS(rc))
         return RTStrDup(szPath);
+
+    if (rc == VERR_BUFFER_OVERFLOW)
+    {
+        size_t   cbPrevPath = sizeof(szPath);
+        uint32_t cTries = 6;
+        while (cTries-- > 0)
+        {
+            cbPath     = RT_MAX(RT_ALIGN_Z(cbPath + 16, 64), cbPrevPath + 256);
+            cbPrevPath = cbPath;
+            char *pszAbsPath = (char *)RTStrAlloc(cbPath);
+            if (pszAbsPath)
+            {
+                rc = RTPathAbsExEx(pszBase, pszPath, RTPATH_STR_F_STYLE_HOST, pszAbsPath, &cbPath);
+                if (RT_SUCCESS(rc))
+                    return pszAbsPath;
+                RTStrFree(pszAbsPath);
+            }
+            else
+                break;
+        }
+    }
     return NULL;
 }
 

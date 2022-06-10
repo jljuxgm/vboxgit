@@ -1,4 +1,4 @@
-/* $Id: RTPathAbs-generic.cpp 78048 2019-04-09 01:21:09Z vboxsync $ */
+/* $Id: RTPathAbs-generic.cpp 78090 2019-04-10 14:19:04Z vboxsync $ */
 /** @file
  * IPRT - RTPathAbs, generic implementation.
  */
@@ -39,7 +39,7 @@
 #include "internal/path.h"
 #include "internal/fs.h"
 
-#if 1
+#if 0
 
 static char *rtPathSkipRootSpec(char *pszCur)
 {

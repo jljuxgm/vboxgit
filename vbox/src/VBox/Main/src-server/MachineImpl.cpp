@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 78072 2019-04-10 10:04:06Z vboxsync $ */
+/* $Id: MachineImpl.cpp 78090 2019-04-10 14:19:04Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7257,10 +7257,11 @@ int Machine::i_calculateFullPath(const Utf8Str &strPath, Utf8Str &aResult)
     Utf8Str strSettingsDir = mData->m_strConfigFileFull;
 
     strSettingsDir.stripFilename();
-    char folder[RTPATH_MAX];
-    int vrc = RTPathAbsEx(strSettingsDir.c_str(), strPath.c_str(), folder, sizeof(folder));
+    char szFolder[RTPATH_MAX];
+    size_t cbFolder = sizeof(szFolder);
+    int vrc = RTPathAbsExEx(strSettingsDir.c_str(), strPath.c_str(), RTPATH_STR_F_STYLE_HOST, szFolder, &cbFolder);
     if (RT_SUCCESS(vrc))
-        aResult = folder;
+        aResult = szFolder;
 
     return vrc;
 }
