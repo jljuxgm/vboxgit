@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 70977 2018-02-12 20:45:31Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 73266 2018-07-20 14:27:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -3226,7 +3226,7 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, 
             {
                 PVMCPU pVCpu = &pVM->aCpus[i];
 
-                rc = PGMR3ChangeMode(pVM, pVCpu, pVCpu->pgm.s.enmGuestMode);
+                rc = PGMHCChangeMode(pVM, pVCpu, pVCpu->pgm.s.enmGuestMode);
                 AssertLogRelRCReturn(rc, rc);
 
                 /* Update the PSE, NX flags and validity masks. */
