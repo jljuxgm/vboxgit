@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 76815 2019-01-14 13:36:28Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 76941 2019-01-22 18:26:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -90,6 +90,10 @@ protected:
 
         /** Handles any Qt @a pEvent. */
         virtual bool event(QEvent *pEvent) /* override */;
+        /** Handles move @a pEvent. */
+        virtual void moveEvent(QMoveEvent *pEvent) /* override */;
+        /** Handles resize @a pEvent. */
+        virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
         /** Handles show @a pEvent. */
         virtual void showEvent(QShowEvent *pEvent) /* override */;
         /** Handles first show @a pEvent. */
