@@ -1,4 +1,4 @@
-/* $Id: Defs.h 75614 2018-11-20 11:41:35Z vboxsync $ */
+/* $Id: Defs.h 75617 2018-11-20 11:59:31Z vboxsync $ */
 /** @file
  * DHCP server - common definitions
  */
@@ -23,26 +23,15 @@
 #include <VBox/log.h>
 
 #include <map>
-#include <vector>
-
-#if __cplusplus >= 199711
 #include <memory>
-using std::shared_ptr;
-#else
-#include <tr1/memory>
-using std::tr1::shared_ptr;
-#endif
-
-#ifdef _MSC_VER
-# define __func__ __FUNCTION__
-#endif
+#include <vector>
 
 typedef std::vector<uint8_t> octets_t;
 
 typedef std::map<uint8_t, octets_t> rawopts_t;
 
 class DhcpOption;
-typedef std::map<uint8_t, std::shared_ptr<DhcpOption> > optmap_t;
+typedef std::map<uint8_t, std::shared_ptr<DhcpOption>> optmap_t;
 
 inline bool operator==(const RTMAC &l, const RTMAC &r)
 {

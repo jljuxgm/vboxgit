@@ -1,4 +1,4 @@
-/* $Id: DhcpOptions.cpp 75614 2018-11-20 11:41:35Z vboxsync $ */
+/* $Id: DhcpOptions.cpp 75617 2018-11-20 11:59:31Z vboxsync $ */
 /** @file
  * DHCP server - DHCP options
  */
@@ -35,7 +35,7 @@ optmap_t &operator<<(optmap_t &optmap, DhcpOption *option)
 
 optmap_t &operator<<(optmap_t &optmap, const std::shared_ptr<DhcpOption> &option)
 {
-    if (!option)
+    if (option == NULL)
         return optmap;
 
     if (option->present())

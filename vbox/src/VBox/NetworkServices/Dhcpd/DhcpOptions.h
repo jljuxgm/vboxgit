@@ -1,4 +1,4 @@
-/* $Id: DhcpOptions.h 75614 2018-11-20 11:41:35Z vboxsync $ */
+/* $Id: DhcpOptions.h 75617 2018-11-20 11:59:31Z vboxsync $ */
 /** @file
  * DHCP server - DHCP options
  */
@@ -341,7 +341,7 @@ class OptValue
 
     static OptValue *parse(const char *pcszValue)
     {
-        typename OptValueBase<T>::value_t v;
+        value_t v;
         int rc = DhcpOption::parse1(v, pcszValue);
         if (RT_FAILURE(rc))
             return NULL;
@@ -543,7 +543,7 @@ class OptList
 
     static OptList *parse(const char *pcszValue)
     {
-        typename OptListBase<T>::value_t v;
+        value_t v;
         int rc = DhcpOption::parseList(v, pcszValue);
         if (RT_FAILURE(rc) || v.empty())
             return NULL;

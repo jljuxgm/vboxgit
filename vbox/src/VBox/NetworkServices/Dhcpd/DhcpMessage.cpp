@@ -1,4 +1,4 @@
-/* $Id: DhcpMessage.cpp 75614 2018-11-20 11:41:35Z vboxsync $ */
+/* $Id: DhcpMessage.cpp 75617 2018-11-20 11:59:31Z vboxsync $ */
 /** @file
  * DHCP Message and its de/serialization.
  */
@@ -322,13 +322,13 @@ void DhcpClientMessage::dump() const
 
 
 DhcpServerMessage::DhcpServerMessage(const DhcpClientMessage &req,
-                                     uint8_t messageTypeParam, RTNETADDRIPV4 serverAddr)
+                                     uint8_t messageType, RTNETADDRIPV4 serverAddr)
   : DhcpMessage(),
     m_optServerId(serverAddr)
 {
     m_dst.u = 0xffffffff;       /* broadcast */
 
-    m_optMessageType = OptMessageType(messageTypeParam);
+    m_optMessageType = OptMessageType(messageType);
 
     /* copy values from the request (cf. RFC2131 Table 3) */
     m_xid = req.xid();
