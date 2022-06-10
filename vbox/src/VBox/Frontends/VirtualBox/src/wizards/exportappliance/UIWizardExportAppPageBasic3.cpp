@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 73316 2018-07-23 12:14:42Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 73329 2018-07-23 15:03:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -39,9 +39,6 @@
 # include "UIWizardExportApp.h"
 # include "UIWizardExportAppDefs.h"
 # include "UIWizardExportAppPageBasic3.h"
-
-/* COM includes: */
-# include "CCloudUserProfileList.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
