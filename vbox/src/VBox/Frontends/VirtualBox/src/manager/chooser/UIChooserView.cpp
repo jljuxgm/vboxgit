@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.cpp 77683 2019-03-13 16:22:23Z vboxsync $ */
+/* $Id: UIChooserView.cpp 77686 2019-03-13 18:00:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class implementation.
  */
@@ -136,7 +136,6 @@ void UIChooserView::sltRedoSearch(const QString &strSearchTerm, int iItemSearchF
         return;
 
     pModel->performSearch(strSearchTerm, iItemSearchFlags);
-
 }
 
 void UIChooserView::retranslateUi()
@@ -150,7 +149,7 @@ void UIChooserView::retranslateUi()
 void UIChooserView::prepare()
 {
     /* Install Chooser-view accessibility interface factory: */
-     QAccessible::installFactory(UIAccessibilityInterfaceForUIChooserView::pFactory);
+    QAccessible::installFactory(UIAccessibilityInterfaceForUIChooserView::pFactory);
 
     /* Prepare palette: */
     preparePalette();

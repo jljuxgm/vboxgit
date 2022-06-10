@@ -1,4 +1,4 @@
-/* $Id: UIChooserNode.h 77683 2019-03-13 16:22:23Z vboxsync $ */
+/* $Id: UIChooserNode.h 77686 2019-03-13 18:00:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNode class declaration.
  */
@@ -106,7 +106,7 @@ public:
     /** Returns linked item. */
     UIChooserItem *item() const { return m_pItem.data(); }
 
-    /** Performs search wrt.  @a strSearchTerm and @a iItemSearchFlags and updates @a matchedItems. */
+    /** Performs search wrt. @a strSearchTerm and @a iItemSearchFlags and updates @a matchedItems. */
     virtual void searchForNodes(const QString &strSearchTerm, int iItemSearchFlags, QList<UIChooserNode*> &matchedItems) = 0;
 
 protected:

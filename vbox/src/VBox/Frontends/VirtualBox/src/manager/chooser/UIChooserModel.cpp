@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77683 2019-03-13 16:22:23Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77686 2019-03-13 18:00:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -457,7 +457,7 @@ void UIChooserModel::performSearch(const QString &strSearchTerm, int iItemSearch
         return;
 
     QList<UIChooserNode*> matchedItems;
-    m_pInvisibleRootNode->searchForNodes(strSearchTerm,  iItemSearchFlags, matchedItems);
+    m_pInvisibleRootNode->searchForNodes(strSearchTerm, iItemSearchFlags, matchedItems);
 }
 
 UIChooserNode *UIChooserModel::invisibleRoot() const
