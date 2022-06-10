@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 76678 2019-01-07 13:48:16Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 76711 2019-01-08 16:14:36Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2567,10 +2567,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             switch (adapterType)
             {
                 case NetworkAdapterType_Am79C970A:
-                    InsertConfigInteger(pCfg, "Am79C973", 0);
+                    InsertConfigString(pCfg, "ChipType", "Am79C970A");
                     break;
                 case NetworkAdapterType_Am79C973:
-                    InsertConfigInteger(pCfg, "Am79C973", 1);
+                    InsertConfigString(pCfg, "ChipType", "Am79C973");
                     break;
                 case NetworkAdapterType_I82540EM:
                     InsertConfigInteger(pCfg, "AdapterType", 0);
