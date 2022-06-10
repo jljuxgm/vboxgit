@@ -1,4 +1,4 @@
-/* $Id: VBoxSFMount.h 75678 2018-11-22 21:39:48Z vboxsync $ */
+/* $Id: VBoxSFMount.h 76536 2018-12-30 06:17:37Z vboxsync $ */
 /** @file
  * VBoxSF - Darwin Shared Folders, mount interface.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxSFMount_h___
 #define ___VBoxSFMount_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 
