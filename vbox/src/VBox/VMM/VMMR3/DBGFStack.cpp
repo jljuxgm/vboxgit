@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 73397 2018-07-30 15:25:28Z vboxsync $ */
+/* $Id: DBGFStack.cpp 73398 2018-07-30 15:48:05Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -781,7 +781,7 @@ DECL_NO_INLINE(static, int) dbgfR3StackWalk(PDBGFUNWINDCTX pUnwindCtx, PDBGFSTAC
     if (pFrame->fFlags & DBGFSTACKFRAME_FLAGS_USED_UNWIND_INFO)
     {
         if (   pFrame->enmReturnType == DBGFRETURNTYPE_IRET32_PRIV
-            && pFrame->enmReturnType == DBGFRETURNTYPE_IRET64)
+            || pFrame->enmReturnType == DBGFRETURNTYPE_IRET64)
             DBGFR3AddrFromSelOff(pUnwindCtx->m_pUVM, pUnwindCtx->m_idCpu, &pFrame->AddrReturnFrame,
                                  pUnwindCtx->m_uSs, pUnwindCtx->m_auRegs[X86_GREG_xBP]);
         else if (pFrame->enmReturnType == DBGFRETURNTYPE_IRET32_V86)
