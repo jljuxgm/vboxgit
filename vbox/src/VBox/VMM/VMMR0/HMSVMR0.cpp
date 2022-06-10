@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72967 2018-07-08 10:38:08Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72968 2018-07-08 10:43:02Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4408,9 +4408,8 @@ static int hmR0SvmPreRunGuestNested(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
  */
 static int hmR0SvmPreRunGuest(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
 {
-    PCPUMCTX pCtx = &pVCpu->cpum.GstCtx;
     HMSVM_ASSERT_PREEMPT_SAFE(pVCpu);
-    HMSVM_ASSERT_NOT_IN_NESTED_GUEST(pCtx);
+    HMSVM_ASSERT_NOT_IN_NESTED_GUEST(&pVCpu->cpum.GstCtx);
 
     /* Check force flag actions that might require us to go back to ring-3. */
     int rc = hmR0SvmCheckForceFlags(pVCpu);
@@ -4433,7 +4432,7 @@ static int hmR0SvmPreRunGuest(PVMCPU pVCpu, PSVMTRANSIENT pSvmTransient)
             return VINF_EM_RAW_INJECT_TRPM_EVENT;
 
 #ifdef HMSVM_SYNC_FULL_GUEST_STATE
-    Assert(!(pCtx->fExtrn & HMSVM_CPUMCTX_EXTRN_ALL));
+    Assert(!(pVCpu->cpum.GstCtx->fExtrn & HMSVM_CPUMCTX_EXTRN_ALL));
     ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_ALL_GUEST);
 #endif
 
