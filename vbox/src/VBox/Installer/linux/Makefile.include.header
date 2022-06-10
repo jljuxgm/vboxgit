@@ -1,4 +1,4 @@
-# $Id: Makefile.include.header 69565 2017-11-03 14:42:20Z vboxsync $
+# $Id: Makefile.include.header 73013 2018-07-09 15:46:16Z vboxsync $
 ## @file
 # VirtualBox Guest Additions kernel module Makefile, common parts.
 #
@@ -136,7 +136,9 @@ else # neq($(KERNELRELEASE),)
 endif # neq($(KERNELRELEASE),)
 
 # Kernel build folder
-KERN_DIR := /lib/modules/$(KERN_VER)/build
+ifeq ($(KERN_DIR),)
+ KERN_DIR := /lib/modules/$(KERN_VER)/build
+endif
 ifneq ($(shell if test -d $(KERN_DIR); then echo yes; fi),yes)
  $(error Error: unable to find the headers of the Linux kernel to build against. \
           Specify KERN_VER=<version> (currently $(KERN_VER)) and run Make again)
