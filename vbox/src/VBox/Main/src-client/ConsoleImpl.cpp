@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 73003 2018-07-09 11:09:32Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 73005 2018-07-09 11:20:34Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -9337,7 +9337,7 @@ HRESULT Console::i_attachToTapInterface(INetworkAdapter *networkAdapter)
     if (RT_FAILURE(vrc) && SUCCEEDED(rc))
     {
         LogRel(("General failure attaching to host interface\n"));
-        rc = setError(E_FAIL, vrc, tr("General failure attaching to host interface"));
+        rc = setErrorBoth(E_FAIL, vrc, tr("General failure attaching to host interface"));
     }
     LogFlowThisFunc(("rc=%Rhrc\n", rc));
     return rc;
