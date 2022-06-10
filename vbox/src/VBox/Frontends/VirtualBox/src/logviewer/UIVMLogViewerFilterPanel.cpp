@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 72702 2018-06-27 14:12:45Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 72706 2018-06-27 15:43:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -220,7 +220,7 @@ void UIVMFilterLineEdit::createButtons()
     else if (!m_pRemoveTermButton)
         setMinimumHeight(m_pRemoveTermButton->minimumHeight());
     else if (!m_pClearAllButton)
-        setMinimumHeight(m_pClearAllButton->minimumHeight());        
+        setMinimumHeight(m_pClearAllButton->minimumHeight());
 }
 
 
