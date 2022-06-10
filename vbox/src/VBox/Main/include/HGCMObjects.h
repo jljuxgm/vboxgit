@@ -1,4 +1,4 @@
-/* $Id: HGCMObjects.h 75539 2018-11-17 02:35:23Z vboxsync $ */
+/* $Id: HGCMObjects.h 75541 2018-11-17 03:50:40Z vboxsync $ */
 /** @file
  * HGCMObjects - Host-Guest Communication Manager objects header.
  */
@@ -55,7 +55,7 @@ class HGCMReferencedObject
 
     public:
         HGCMReferencedObject(HGCMOBJ_TYPE enmObjType)
-            : m_cRefs(0)
+            : m_cRefs(0)   /** @todo change to 1! */
             , m_enmObjType(enmObjType)
         {}
 
@@ -63,13 +63,13 @@ class HGCMReferencedObject
         {
             int32_t cRefs = ASMAtomicIncS32(&m_cRefs);
             NOREF(cRefs);
-            Log(("Reference: cRefs = %d\n", cRefs));
+            Log(("Reference(%p/%d): cRefs = %d\n", this, m_enmObjType, cRefs));
         }
 
         void Dereference()
         {
             int32_t cRefs = ASMAtomicDecS32(&m_cRefs);
-            Log(("Dereference: cRefs = %d\n", cRefs));
+            Log(("Dereference(%p/%d): cRefs = %d \n", this, m_enmObjType, cRefs));
             AssertRelease(cRefs >= 0);
 
             if (cRefs)
@@ -116,7 +116,7 @@ uint32_t    hgcmObjAssignHandle(HGCMObject *pObject, uint32_t u32Handle);
 void        hgcmObjDeleteHandle(uint32_t handle);
 
 HGCMObject *hgcmObjReference(uint32_t handle, HGCMOBJ_TYPE enmObjType);
-void        hgcmObjDereference(HGCMReferencedObject *pObject);
+void        hgcmObjDereference(HGCMObject *pObject);
 
 uint32_t    hgcmObjQueryHandleCount();
 void        hgcmObjSetHandleCount(uint32_t u32HandleCount);
