@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.cpp 72554 2018-06-14 16:32:15Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.cpp 74519 2018-09-28 12:03:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class implementation.
  */
@@ -120,6 +120,7 @@ UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalN
             }
         }
         m_pReinitMACsCheckBox = new QCheckBox(this);
+        m_pReinitMACsCheckBox->setChecked(true);
         pMainLayout->addWidget(m_pNameCnt, 0, 0, 1, 2);
         pMainLayout->addWidget(m_pCloneTypeCnt, 1, 0, Qt::AlignTop);
         pMainLayout->addWidget(m_pCloneModeCnt, 1, 1, Qt::AlignTop);

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.cpp 72288 2018-05-22 14:29:53Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.cpp 74519 2018-09-28 12:03:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic1 class implementation.
  */
@@ -165,6 +165,7 @@ UIWizardCloneVMPageBasic1::UIWizardCloneVMPageBasic1(const QString &strOriginalN
          if (m_pReinitMACsCheckBox)
          {
              pContainerLayout->addWidget(m_pReinitMACsCheckBox, 2, 0, 1, 2);
+             m_pReinitMACsCheckBox->setChecked(true);
          }
     }
     pMainLayout->addStretch();
