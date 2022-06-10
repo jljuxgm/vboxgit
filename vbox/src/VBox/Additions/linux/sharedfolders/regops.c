@@ -1,4 +1,4 @@
-/* $Id: regops.c 76733 2019-01-09 12:58:33Z vboxsync $ */
+/* $Id: regops.c 76736 2019-01-09 13:35:15Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, Regular file inode and file operations.
  */
@@ -284,7 +284,7 @@ static ssize_t sf_reg_read(struct file *file, char *buf, size_t size,
 		return -EINVAL;
 	}
 
-    /** XXX Check read permission according to inode->i_mode! */
+	/** @todo XXX Check read permission according to inode->i_mode! */
 
 	if (!size)
 		return 0;
@@ -370,7 +370,7 @@ static ssize_t sf_reg_write(struct file *file, const char *buf, size_t size,
 		*off = pos;
 	}
 
-    /** XXX Check write permission according to inode->i_mode! */
+	/** @todo XXX Check write permission according to inode->i_mode! */
 
 	if (!size)
 		return 0;
