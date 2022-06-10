@@ -1,4 +1,4 @@
-/* $Id: UIDetailsItem.cpp 74042 2018-09-03 12:54:45Z vboxsync $ */
+/* $Id: UIDetailsItem.cpp 74082 2018-09-05 12:51:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsItem class definition.
  */
@@ -273,59 +273,6 @@ QSizeF UIDetailsItem::sizeHint(Qt::SizeHint enmWhich, const QSizeF &constraint /
 void UIDetailsItem::sltBuildStep(QString, int)
 {
     AssertMsgFailed(("This item doesn't support building!"));
-}
-
-/* static */
-void UIDetailsItem::configurePainterShape(QPainter *pPainter,
-                                          const QStyleOptionGraphicsItem *pOptions,
-                                          int iRadius)
-{
-    /* Rounded corners? */
-    if (iRadius)
-    {
-        /* Setup clipping: */
-        QPainterPath roundedPath;
-        roundedPath.addRoundedRect(pOptions->rect, iRadius, iRadius);
-        pPainter->setRenderHint(QPainter::Antialiasing);
-        pPainter->setClipPath(roundedPath);
-    }
-}
-
-/* static */
-void UIDetailsItem::paintFrameRect(QPainter *pPainter, const QRect &rect, int iRadius)
-{
-    pPainter->save();
-    QPalette pal = QApplication::palette();
-    QColor base = pal.color(QPalette::Active, QPalette::Window);
-    pPainter->setPen(base.darker(160));
-    if (iRadius)
-        pPainter->drawRoundedRect(rect, iRadius, iRadius);
-    else
-        pPainter->drawRect(rect);
-    pPainter->restore();
-}
-
-/* static */
-void UIDetailsItem::paintPixmap(QPainter *pPainter, const QRect &rect, const QPixmap &pixmap)
-{
-    pPainter->drawPixmap(rect, pixmap);
-}
-
-/* static */
-void UIDetailsItem::paintText(QPainter *pPainter, QPoint point,
-                              const QFont &font, QPaintDevice *pPaintDevice,
-                              const QString &strText, const QColor &color)
-{
-    /* Prepare variables: */
-    QFontMetrics fm(font, pPaintDevice);
-    point += QPoint(0, fm.ascent());
-
-    /* Draw text: */
-    pPainter->save();
-    pPainter->setFont(font);
-    pPainter->setPen(color);
-    pPainter->drawText(point, strText);
-    pPainter->restore();
 }
 
 
