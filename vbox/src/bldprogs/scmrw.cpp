@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 76555 2019-01-01 02:08:55Z vboxsync $ */
+/* $Id: scmrw.cpp 76556 2019-01-01 02:35:28Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -2956,7 +2956,14 @@ bool rewrite_FixHeaderGuards(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTREAM pOut
 
                 if (szNormalized[0] != '\0')
                 {
-                    fRet = Guard.cch != cchNormalized || memcmp(Guard.psz, szNormalized, cchNormalized) != 0;
+                    if (   Guard.cch != cchNormalized
+                        || memcmp(Guard.psz, szNormalized, cchNormalized) != 0)
+                    {
+                        ScmVerbose(pState, 2, "guard changed from %.*s to %s\n", Guard.cch, Guard.psz, szNormalized);
+                        ScmVerbose(pState, 2, "grep -rw %.*s ${WCROOT} | grep -Fv %s\n",
+                                   Guard.cch, Guard.psz, pState->pszFilename);
+                        fRet = true;
+                    }
                     Guard.psz = szNormalized;
                     Guard.cch = cchNormalized;
                 }
@@ -3063,7 +3070,7 @@ bool rewrite_FixHeaderGuards(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTREAM pOut
         rc = ScmStreamSeekByLine(pIn, iPragmaOnce);
         if (RT_FAILURE(rc))
             return ScmError(pState, rc, "seek error\n");
-        fRet = pSettings->fPragmaOnce;
+        fRet |= pSettings->fPragmaOnce;
         ScmVerbose(pState, 2, "Missing #pragma once\n");
     }
 
