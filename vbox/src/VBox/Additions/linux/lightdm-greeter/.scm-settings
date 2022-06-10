@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69506 2017-10-28 17:30:09Z vboxsync $
+# $Id: .scm-settings 76534 2018-12-30 06:15:44Z vboxsync $
 ## @file
 # Source code massager settings for light-dm greeter.
 #
@@ -16,5 +16,5 @@
 #
 
 
-/liblightdm-gobject-*/*.c|/liblightdm-gobject-*/*.h: --external-copyright --no-strip-trailing-blanks --no-convert-tabs --lgpl-disclaimer
+/liblightdm-gobject-*/*.c|/liblightdm-gobject-*/*.h: --external-copyright --no-strip-trailing-blanks --no-convert-tabs --lgpl-disclaimer --no-fix-header-guards
 

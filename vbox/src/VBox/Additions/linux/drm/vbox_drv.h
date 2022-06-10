@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 75402 2018-11-12 16:50:53Z vboxsync $ */
+/* $Id: vbox_drv.h 76534 2018-12-30 06:15:44Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -32,8 +32,12 @@
  *          Michael Thayer <michael.thayer@oracle.com,
  *          Hans de Goede <hdegoede@redhat.com>
  */
+
 #ifndef __VBOX_DRV_H__
 #define __VBOX_DRV_H__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <linux/version.h>
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 5, 0)
