@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 73172 2018-07-17 10:05:47Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 76347 2018-12-22 00:58:45Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -35,6 +35,7 @@
 #include <iprt/avl.h>
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/log.h>
 #include <iprt/mem.h>

@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 76328 2018-12-20 19:43:52Z vboxsync $ */
+/* $Id: extvfs.cpp 76347 2018-12-22 00:58:45Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -35,6 +35,7 @@
 #include <iprt/assert.h>
 #include <iprt/avl.h>
 #include <iprt/file.h>
+#include <iprt/err.h>
 #include <iprt/list.h>
 #include <iprt/log.h>
 #include <iprt/mem.h>

@@ -1,4 +1,4 @@
-/* $Id: pkzip.cpp 69522 2017-10-30 11:04:53Z vboxsync $ */
+/* $Id: pkzip.cpp 76347 2018-12-22 00:58:45Z vboxsync $ */
 /** @file
  * IPRT - PKZIP archive I/O.
  */
@@ -29,7 +29,9 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/zip.h>
+
 #include <iprt/file.h>
+#include <iprt/err.h>
 #include <iprt/fs.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
