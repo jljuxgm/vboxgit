@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 76971 2019-01-24 08:57:03Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service.
 #
@@ -36,14 +36,14 @@ VBoxSharedFolders_LDFLAGS.darwin = \
 	-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxSharedFolders.dylib
 
 VBoxSharedFolders_SOURCES = \
-	service.cpp \
+	VBoxSharedFoldersSvc.cpp \
 	shflhandle.cpp \
 	vbsf.cpp \
 	vbsfpath.cpp \
 	vbsfpathabs.cpp \
 	mappings.cpp
 VBoxSharedFolders_SOURCES.win = \
-	VBoxSharedFolders.rc
+	VBoxSharedFoldersSvc.rc
 
 VBoxSharedFolders_LIBS = \
 	$(LIB_VMM) \

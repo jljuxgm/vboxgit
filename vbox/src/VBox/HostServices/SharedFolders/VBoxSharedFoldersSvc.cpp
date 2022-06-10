@@ -1,4 +1,4 @@
-/* $Id: service.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxSharedFoldersSvc.cpp 76971 2019-01-24 08:57:03Z vboxsync $ */
 /** @file
  * Shared Folders - Host service entry points.
  */

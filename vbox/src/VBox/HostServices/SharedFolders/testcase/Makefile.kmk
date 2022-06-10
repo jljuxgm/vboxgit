@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 76971 2019-01-24 08:57:03Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service testcases.
 #
@@ -61,7 +61,7 @@ tstSharedFolderService_INCS     = ..
 tstSharedFolderService_SOURCES  = \
     tstSharedFolderService.cpp \
     ../mappings.cpp \
-    ../service.cpp \
+    ../VBoxSharedFoldersSvc.cpp \
     ../shflhandle.cpp \
     ../vbsfpathabs.cpp \
     ../vbsfpath.cpp \
