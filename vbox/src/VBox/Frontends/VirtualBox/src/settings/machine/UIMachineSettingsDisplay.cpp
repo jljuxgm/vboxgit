@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 75361 2018-11-09 12:56:40Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 75368 2018-11-09 16:12:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -1550,9 +1550,6 @@ bool UIMachineSettingsDisplay::saveRecordingData()
                 CRecordingScreenSettingsVector recordingScreenSettingsVector = recordingSettings.GetScreens();
                 for (int iScreenIndex = 0; fSuccess && iScreenIndex < recordingScreenSettingsVector.size(); ++iScreenIndex)
                 {
-                    if (newDisplayData.m_vecRecordingScreens[iScreenIndex] == oldDisplayData.m_vecRecordingScreens[iScreenIndex])
-                        continue;
-
                     CRecordingScreenSettings recordingScreenSettings = recordingScreenSettingsVector.at(iScreenIndex);
 
                     // We should save all the options *before* 'Recording' activation.
@@ -1625,9 +1622,6 @@ bool UIMachineSettingsDisplay::saveRecordingData()
             CRecordingScreenSettingsVector recordingScreenSettingsVector = recordingSettings.GetScreens();
             for (int iScreenIndex = 0; fSuccess && iScreenIndex < recordingScreenSettingsVector.size(); ++iScreenIndex)
             {
-                if (newDisplayData.m_vecRecordingScreens[iScreenIndex] == oldDisplayData.m_vecRecordingScreens[iScreenIndex])
-                    continue;
-
                 CRecordingScreenSettings recordingScreenSettings = recordingScreenSettingsVector.at(iScreenIndex);
 
                 /* Save recording file path: */
