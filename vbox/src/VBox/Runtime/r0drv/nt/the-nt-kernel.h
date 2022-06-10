@@ -1,4 +1,4 @@
-/* $Id: the-nt-kernel.h 70157 2017-12-15 16:18:28Z vboxsync $ */
+/* $Id: the-nt-kernel.h 73347 2018-07-25 09:25:02Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the NT kernel.
  */
@@ -77,7 +77,7 @@ RT_C_DECLS_END
 
 /** @def IPRT_NT_POOL_TAG
  * Tag to use with the NT Pool APIs.
- * In memory and in the various windbg tool it appears in the reverse order of
+ * In memory and in the various windbg tools it appears in the reverse order of
  * what it is given as here, so it'll read "IPRT".
  */
 #define IPRT_NT_POOL_TAG    'TRPI'
