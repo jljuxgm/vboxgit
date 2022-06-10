@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 77347 2019-02-18 13:26:44Z vboxsync $ */
+/* $Id: UIChooserModel.h 77366 2019-02-19 16:00:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -132,6 +132,8 @@ public:
 
         /** Handles tool button click for certain @a pItem. */
         void handleToolButtonClick(UIChooserItem *pItem);
+        /** Handles pin button click for certain @a pItem. */
+        void handlePinButtonClick(UIChooserItem *pItem);
     /** @} */
 
     /** @name Selection stuff.

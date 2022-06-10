@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.cpp 77346 2019-02-18 13:07:09Z vboxsync $ */
+/* $Id: UIChooserItem.cpp 77366 2019-02-19 16:00:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class definition.
  */
@@ -288,6 +288,13 @@ UIChooserItem::UIChooserItem(UIChooserItem *pParent, bool fFavorite, bool fTempo
             m_pHoveringMachine->start();
         }
     }
+}
+
+void UIChooserItem::setFavorite(bool fFavorite)
+{
+    m_fFavorite = fFavorite;
+    if (m_pParent)
+        m_pParent->toGroupItem()->updateFavorites();
 }
 
 UIChooserItemGroup *UIChooserItem::toGroupItem()

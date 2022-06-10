@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 77346 2019-02-18 13:07:09Z vboxsync $ */
+/* $Id: UIChooserItem.h 77366 2019-02-19 16:00:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -117,6 +117,9 @@ public:
         bool isFavorite() const { return m_fFavorite; }
         /** Returns whether item is temporary. */
         bool isTemporary() const { return m_fTemporary; }
+
+        /** Defines whether item is @a fFavorite. */
+        virtual void setFavorite(bool fFavorite);
 
         /** Casts item to group one. */
         UIChooserItemGroup *toGroupItem();
