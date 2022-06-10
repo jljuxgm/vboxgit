@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 73977 2018-08-30 12:13:02Z vboxsync $ */
+/* $Id: http-curl.cpp 74019 2018-09-01 20:54:29Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -2939,8 +2939,11 @@ RTR3DECL(int) RTHttpPerform(RTHTTP hHttp, const char *pszUrl, RTHTTPMETHOD enmMe
                 AssertFailed();
         }
 
-        /* Request body. */
-        if (pvReqBody && cbReqBody > 0 && CURL_SUCCESS(rcCurl))
+        /* Request body.  POST requests should always have a body. */
+        if (   pvReqBody
+            && CURL_SUCCESS(rcCurl)
+            && (   cbReqBody > 0
+                || enmMethod == RTHTTPMETHOD_POST) )
         {
             if (enmMethod == RTHTTPMETHOD_POST)
             {
