@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.cpp 77466 2019-02-26 09:25:29Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 77474 2019-02-26 18:05:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
@@ -35,6 +35,7 @@
 #include "CSystemProperties.h"
 #include "CStorageController.h"
 #include "CVRDEServerInfo.h"
+
 
 /*********************************************************************************************************************************
 *   Class UIInformationDataItem implementation.                                                                                  *
