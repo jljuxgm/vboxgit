@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 76157 2018-12-11 10:27:25Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 76158 2018-12-11 11:02:50Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1664,7 +1664,7 @@ static int ichac97R3MixerAddDrvStream(PAC97STATE pThis, PAUDMIXSINK pMixSink, PP
 
     if (!RTStrPrintf(pStreamCfg->szName, sizeof(pStreamCfg->szName), "%s", pCfg->szName))
     {
-        RTMemFree(pStreamCfg);
+        DrvAudioHlpStreamCfgFree(pStreamCfg);
         return VERR_BUFFER_OVERFLOW;
     }
 
@@ -1721,11 +1721,7 @@ static int ichac97R3MixerAddDrvStream(PAC97STATE pThis, PAUDMIXSINK pMixSink, PP
     else
         rc = VERR_INVALID_PARAMETER;
 
-    if (pStreamCfg)
-    {
-        RTMemFree(pStreamCfg);
-        pStreamCfg = NULL;
-    }
+    DrvAudioHlpStreamCfgFree(pStreamCfg);
 
     LogFlowFuncLeaveRC(rc);
     return rc;

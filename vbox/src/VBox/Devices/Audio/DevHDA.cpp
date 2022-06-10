@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 76057 2018-12-07 13:30:19Z vboxsync $ */
+/* $Id: DevHDA.cpp 76158 2018-12-11 11:02:50Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -2544,11 +2544,7 @@ static int hdaR3MixerAddDrvStream(PHDASTATE pThis, PAUDMIXSINK pMixSink, PPDMAUD
             pDrvStream->pMixStrm = pMixStrm;
     }
 
-    if (pStreamCfg)
-    {
-        RTMemFree(pStreamCfg);
-        pStreamCfg = NULL;
-    }
+    DrvAudioHlpStreamCfgFree(pStreamCfg);
 
     LogFlowFuncLeaveRC(rc);
     return rc;
