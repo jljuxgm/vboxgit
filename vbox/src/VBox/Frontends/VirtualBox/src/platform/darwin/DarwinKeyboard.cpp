@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 71659 2018-04-04 14:40:21Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 76423 2018-12-23 20:30:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility functions for handling Darwin Keyboard specific tasks.
  */
@@ -36,7 +36,7 @@
 # include <iprt/stream.h>
 #endif
 #ifdef VBOX_WITH_KBD_LEDS_SYNC
-# include <iprt/err.h>
+# include <iprt/errcore.h>
 # include <iprt/semaphore.h>
 # include <VBox/sup.h>
 #endif

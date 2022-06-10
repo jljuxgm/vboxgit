@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 75668 2018-11-22 14:17:43Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 76423 2018-12-23 20:30:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -90,7 +90,7 @@
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 
 
 /* static */

@@ -1,4 +1,4 @@
-/* $Id: COMDefs.cpp 74878 2018-10-17 13:34:24Z vboxsync $ */
+/* $Id: COMDefs.cpp 76423 2018-12-23 20:30:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - CInterface implementation.
  */
@@ -43,10 +43,6 @@
 #ifdef VBOX_WITH_XPCOM
 
 /* Other VBox includes: */
-# include <iprt/env.h>
-# include <iprt/err.h>
-# include <iprt/path.h>
-# include <iprt/param.h>
 # include <nsEventQueueUtils.h>
 # include <nsIEventQueue.h>
 # include <nsIExceptionService.h>

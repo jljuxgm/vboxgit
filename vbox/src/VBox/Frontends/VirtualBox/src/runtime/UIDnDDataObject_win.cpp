@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.cpp 76381 2018-12-22 23:00:41Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.cpp 76423 2018-12-23 20:30:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDrag class implementation (implements IDataObject).
  */
@@ -15,9 +15,6 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifdef LOG_GROUP
-# undef LOG_GROUP
-#endif
 #define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <VBox/log.h>
 
@@ -26,7 +23,7 @@
 #include <iprt/win/shlobj.h>
 
 #include <iprt/mem.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/path.h>
 #include <iprt/semaphore.h>
 #include <iprt/string.h>
