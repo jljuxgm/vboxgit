@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 75610 2018-11-20 11:14:35Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.h 75633 2018-11-21 10:03:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -245,6 +245,7 @@ class UIGuestControlFileTable : public QIWithRetranslateUI<QWidget>
 signals:
 
     void sigLogOutput(QString strLog, FileManagerLogType eLogType);
+    void sigDeleteConfirmationSettingChanged();
 
 public:
 
@@ -362,6 +363,10 @@ private:
     void            performSelectionSearch(const QString &strSearchText);
     /** Clears the m_pSearchLineEdit and hides it. */
     void            disableSelectionSearch();
+    /** Checks if delete confirmation dialog is shown and users choice. Returns true
+     *  if deletion can continue */
+    bool            checkIfDeleteOK();
+
     UIGuestControlFileModel      *m_pModel;
     UIGuestControlFileView       *m_pView;
     UIGuestControlFileProxyModel *m_pProxyModel;
