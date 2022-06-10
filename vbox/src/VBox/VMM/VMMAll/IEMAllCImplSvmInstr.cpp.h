@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 74785 2018-10-12 10:14:19Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 74792 2018-10-12 10:53:00Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -293,7 +293,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmexit(PVMCPU pVCpu, uint64_t uExitCode, uint64_t 
          */
         if (pVCpu->cpum.GstCtx.hwvirt.fLocalForcedActions)
         {
-            VMCPU_FF_SET(pVCpu, pVCpu->cpum.GstCtx.hwvirt.fLocalForcedActions);
+            VMCPU_FF_SET_MASK(pVCpu, pVCpu->cpum.GstCtx.hwvirt.fLocalForcedActions);
             pVCpu->cpum.GstCtx.hwvirt.fLocalForcedActions = 0;
         }
 
