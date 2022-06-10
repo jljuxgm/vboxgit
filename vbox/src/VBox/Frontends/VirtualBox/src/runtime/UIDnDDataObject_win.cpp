@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.cpp 76423 2018-12-23 20:30:52Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.cpp 76434 2018-12-24 04:00:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDrag class implementation (implements IDataObject).
  */
@@ -28,6 +28,7 @@
 #include <iprt/semaphore.h>
 #include <iprt/string.h>
 #include <iprt/uri.h>
+#include <iprt/utf16.h>
 
 #include <QStringList>
 
