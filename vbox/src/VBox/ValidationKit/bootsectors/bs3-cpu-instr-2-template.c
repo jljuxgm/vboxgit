@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-2-template.c 70697 2018-01-23 04:47:29Z vboxsync $ */
+/* $Id: bs3-cpu-instr-2-template.c 72717 2018-06-28 12:02:25Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, C code template.
  */
@@ -1002,7 +1002,7 @@ BS3_DECL_FAR(uint8_t) BS3_CMN_NM(bs3CpuInstr2_wrfsbase)(uint8_t bMode)
 
 BS3_DECL_FAR(uint8_t) BS3_CMN_NM(bs3CpuInstr2_wrgsbase)(uint8_t bMode)
 {
-    bs3CpuInstr2_wrfsbase_wrgsbase_Common(bMode, s_aWrGsBaseWorkers, RT_ELEMENTS(s_aWrGsBaseWorkers), MSR_K8_FS_BASE);
+    bs3CpuInstr2_wrfsbase_wrgsbase_Common(bMode, s_aWrGsBaseWorkers, RT_ELEMENTS(s_aWrGsBaseWorkers), MSR_K8_GS_BASE);
     return 0;
 }
 
