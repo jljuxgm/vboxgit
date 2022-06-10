@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 77722 2019-03-15 11:37:18Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -70,8 +70,8 @@
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
-static int  VBoxNetAdpLinuxInit(void);
-static void VBoxNetAdpLinuxUnload(void);
+static int  __init VBoxNetAdpLinuxInit(void);
+static void __exit VBoxNetAdpLinuxUnload(void);
 
 static int VBoxNetAdpLinuxOpen(struct inode *pInode, struct file *pFilp);
 static int VBoxNetAdpLinuxClose(struct inode *pInode, struct file *pFilp);

@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 77718 2019-03-15 10:01:04Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 77722 2019-03-15 11:37:18Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -66,8 +66,8 @@
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
-static int  VBoxPciLinuxInit(void);
-static void VBoxPciLinuxUnload(void);
+static int  __init VBoxPciLinuxInit(void);
+static void __exit VBoxPciLinuxUnload(void);
 
 
 /*********************************************************************************************************************************

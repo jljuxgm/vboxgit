@@ -1,4 +1,4 @@
-/* $Rev: 76553 $ */
+/* $Rev: 77722 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -97,8 +97,8 @@
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
-static int  VBoxDrvLinuxInit(void);
-static void VBoxDrvLinuxUnload(void);
+static int  __init VBoxDrvLinuxInit(void);
+static void __exit VBoxDrvLinuxUnload(void);
 static int  VBoxDrvLinuxCreateSys(struct inode *pInode, struct file *pFilp);
 static int  VBoxDrvLinuxCreateUsr(struct inode *pInode, struct file *pFilp);
 static int  VBoxDrvLinuxClose(struct inode *pInode, struct file *pFilp);
