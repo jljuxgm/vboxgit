@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 73119 2018-07-13 12:44:55Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 73128 2018-07-13 15:51:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2173,7 +2173,6 @@ CGuestOSType VBoxGlobal::vmGuestOSType(const QString &strTypeId,
     for (int j = 0; j < list.size(); ++j)
         if (!list.at(j).GetId().compare(strTypeId))
             return list.at(j);
-    AssertMsgFailed(("Type ID incorrect: '%s'.", strTypeId.toLatin1().constData()));
     return CGuestOSType();
 }
 
