@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.h 74761 2018-10-11 11:26:32Z vboxsync $ */
+/* $Id: MediumIOImpl.h 74822 2018-10-12 18:40:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - MediumIO.
  */
@@ -19,6 +19,8 @@
 #define ____H_MEDIUMIOIMPL
 
 #include "MediumIOWrap.h"
+#include "VirtualBoxBase.h"
+#include "AutoCaller.h"
 
 class ATL_NO_VTABLE MediumIO :
     public MediumIOWrap
@@ -33,7 +35,8 @@ public:
 
     /** @name Initializer & uninitializer.
      * @{ */
-    HRESULT initForMedium(Medium *pMedium, bool fWritable, com::Utf8Str const &rStrKeyId, com::Utf8Str const &rStrPassword);
+    HRESULT initForMedium(Medium *pMedium, VirtualBox *pVirtualBox, bool fWritable,
+                          com::Utf8Str const &rStrKeyId, com::Utf8Str const &rStrPassword);
     void    uninit();
     /** @} */
 
@@ -66,6 +69,9 @@ private:
 
     struct Data;
     Data *m;
+
+    class StreamTask;
+    friend class StreamTask;
 };
 
 #endif

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 74353 2018-09-18 21:51:33Z vboxsync $ */
+/* $Id: MediumImpl.cpp 74822 2018-10-12 18:40:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3839,7 +3839,7 @@ HRESULT Medium::openForIO(BOOL aWritable, com::Utf8Str const &aPassword, ComPtr<
     HRESULT hrc = ptrIO.createObject();
     if (SUCCEEDED(hrc))
     {
-        hrc = ptrIO->initForMedium(this, aWritable != FALSE, strKeyId, aPassword);
+        hrc = ptrIO->initForMedium(this, m->pVirtualBox, aWritable != FALSE, strKeyId, aPassword);
         if (SUCCEEDED(hrc))
             ptrIO.queryInterfaceTo(aMediumIO.asOutParam());
     }
