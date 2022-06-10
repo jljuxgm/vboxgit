@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 78255 2019-04-23 07:27:17Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 78256 2019-04-23 07:31:40Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -628,7 +628,6 @@ HRESULT Appliance::createVirtualSystemDescriptions(ULONG aRequested, ULONG *aCre
 
     HRESULT rc = S_OK;
     uint32_t lQuantity = aRequested;
-    uint32_t oldSize = m->virtualSystemDescriptions.size();
     uint32_t i=0;
 
     if (lQuantity < 1)
