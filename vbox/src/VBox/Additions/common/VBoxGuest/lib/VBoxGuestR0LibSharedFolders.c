@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.c 76144 2018-12-10 21:25:00Z vboxsync $ */
+/* $Id: VBoxGuestR0LibSharedFolders.c 76422 2018-12-23 20:13:58Z vboxsync $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -36,6 +36,7 @@
 #include "VBoxGuestR0LibInternal.h"
 #include <VBox/VBoxGuestLibSharedFolders.h>
 #include <VBox/log.h>
+#include <iprt/err.h>
 #include <iprt/time.h>
 #include <iprt/mem.h>
 #include <iprt/path.h>

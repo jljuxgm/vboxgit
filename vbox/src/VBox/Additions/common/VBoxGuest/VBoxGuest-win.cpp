@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 76409 2018-12-23 18:27:21Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 76422 2018-12-23 20:13:58Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -39,6 +39,7 @@
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/critsect.h>
 #include <iprt/dbg.h>
+#include <iprt/err.h>
 #include <iprt/initterm.h>
 #include <iprt/memobj.h>
 #include <iprt/mem.h>

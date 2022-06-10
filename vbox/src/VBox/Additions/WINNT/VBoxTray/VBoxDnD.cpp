@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 76105 2018-12-10 11:21:07Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 76422 2018-12-23 20:13:58Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -32,7 +32,6 @@ using namespace DragAndDropSvc;
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
 #include <iprt/ldr.h>
 #include <iprt/list.h>
 #include <iprt/mem.h>
@@ -42,6 +41,7 @@ using namespace DragAndDropSvc;
 
 #include <iprt/cpp/mtlist.h>
 
+#include <VBox/err.h>
 #include <VBox/log.h>
 
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 70173 2017-12-15 23:35:27Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 76422 2018-12-23 20:13:58Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -59,6 +59,7 @@
 #include <iprt/system.h>
 #include <iprt/thread.h>
 #include <iprt/time.h>
+#include <VBox/err.h>
 #include <VBox/VMMDev.h>
 #include <VBox/VBoxGuestLib.h>
 
