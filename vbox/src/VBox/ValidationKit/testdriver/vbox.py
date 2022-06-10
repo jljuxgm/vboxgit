@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 74003 2018-08-31 14:47:37Z vboxsync $
+# $Id: vbox.py 74438 2018-09-24 11:09:00Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 74003 $"
+__version__ = "$Revision: 74438 $"
 
 
 # Standard Python imports.
@@ -1097,7 +1097,7 @@ class TestDriver(base.TestDriver):                                              
                 if sResponse is None  or  sResponse.strip() != 'READY':
                     reporter.error('VBoxSVC failed starting up... (sResponse=%s)' % (sResponse,));
                     if not self.oVBoxSvcProcess.wait(5000):
-                        self.oVBoxSvcProcess.terminate(2500);
+                        self.oVBoxSvcProcess.terminate();
                     self.oVBoxSvcProcess.wait(5000);
                     self.oVBoxSvcProcess = None;
 
