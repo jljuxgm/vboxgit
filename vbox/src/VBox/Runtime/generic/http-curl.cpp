@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 74063 2018-09-04 12:07:43Z vboxsync $ */
+/* $Id: http-curl.cpp 74064 2018-09-04 12:37:35Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -2207,8 +2207,8 @@ RTR3DECL(const char *) RTHttpGetHeader(RTHTTP hHttp, const char *pszField, size_
 }
 
 
-RTR3DECL(int) RTHttpSignHeaders(RTHTTP hHttp, RTHTTPMETHOD enmMethod, const char *pszUrl, uint32_t fFlags,
-                                RTCRKEY hKey, const char *pszKeyId)
+RTR3DECL(int) RTHttpSignHeaders(RTHTTP hHttp, RTHTTPMETHOD enmMethod, const char *pszUrl,
+                                RTCRKEY hKey, const char *pszKeyId, uint32_t fFlags)
 {
     PRTHTTPINTERNAL pThis = hHttp;
     RTHTTP_VALID_RETURN(pThis);
@@ -2347,6 +2347,7 @@ RTR3DECL(int) RTHttpSignHeaders(RTHTTP hHttp, RTHTTPMETHOD enmMethod, const char
                 AssertRC(rc);
                 if (RT_SUCCESS(rc))
                 {
+                    Assert(cbActual == cbSigRaw);
                     RTCrPkixSignatureRelease(hSigner);
                     hSigner = NIL_RTCRPKIXSIGNATURE;
                     RTCrDigestRelease(hDigest);

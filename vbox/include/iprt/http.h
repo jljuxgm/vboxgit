@@ -1,4 +1,4 @@
-/* $Id: http.h 74060 2018-09-04 09:28:28Z vboxsync $ */
+/* $Id: http.h 74064 2018-09-04 12:37:35Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -332,6 +332,28 @@ RTR3DECL(int) RTHttpAddHeader(RTHTTP hHttp, const char *pszField, const char *ps
  * @param   cchField        The length of the field name or RTSTR_MAX.
  */
 RTR3DECL(const char *) RTHttpGetHeader(RTHTTP hHttp, const char *pszField, size_t cchField);
+
+/**
+ * Sign all headers present according to pending "Signing HTTP Messages" RFC.
+ *
+ * Currently hardcoded RSA-SHA-256 algorithm choice.
+ *
+ * @returns IPRT status code.
+ * @param   hHttp           The HTTP client handle.
+ * @param   enmMethod       The HTTP method that will be used for the request.
+ * @param   pszUrl          The target URL for the request.
+ * @param   hKey            The RSA key to use when signing.
+ * @param   pszKeyId        The key ID string corresponding to @a hKey.
+ * @param   fFlags          Reserved for future, MBZ.
+ *
+ * @note    Caller is responsible for making all desired fields are present before
+ *          making the call.
+ *
+ * @remarks Latest RFC draft at the time of writing:
+ *          https://tools.ietf.org/html/draft-cavage-http-signatures-10
+ */
+RTR3DECL(int) RTHttpSignHeaders(RTHTTP hHttp, RTHTTPMETHOD enmMethod, const char *pszUrl,
+                                RTCRKEY hKey, const char *pszKeyId, uint32_t fFlags);
 
 /**
  * Tells the HTTP client instance to gather system CA certificates into a
