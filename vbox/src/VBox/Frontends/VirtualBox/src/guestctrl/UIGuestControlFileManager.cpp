@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManager.cpp 75643 2018-11-21 14:27:42Z vboxsync $ */
+/* $Id: UIGuestControlFileManager.cpp 75732 2018-11-26 12:38:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileManager class implementation.
  */
@@ -291,6 +291,8 @@ void UIGuestControlFileManager::prepareObjects()
         m_pOperationsPanel->hide();
         connect(m_pOperationsPanel, &UIGuestControlFileManagerOperationsPanel::sigFileOperationComplete,
                 this, &UIGuestControlFileManager::sltFileOperationComplete);
+        connect(m_pOperationsPanel, &UIGuestControlFileManagerOperationsPanel::sigFileOperationFail,
+                this, &UIGuestControlFileManager::sltReceieveLogOutput);
         m_panelActionMap.insert(m_pOperationsPanel, m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_T_FileOperations));
     }
 

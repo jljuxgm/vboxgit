@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerOperationsPanel.h 75728 2018-11-26 08:49:55Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerOperationsPanel.h 75732 2018-11-26 12:38:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -41,6 +41,7 @@ class UIGuestControlFileManagerOperationsPanel : public UIGuestControlFileManage
 signals:
 
     void sigFileOperationComplete(QUuid progressId);
+    void sigFileOperationFail(QString strErrorString, FileManagerLogType eLogType);
 
 public:
 
