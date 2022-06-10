@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 77596 2019-03-07 13:24:43Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 77597 2019-03-07 13:30:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -81,10 +81,10 @@ UIChooserItemGroup::UIChooserItemGroup(UIChooserItem *pParent,
                                        bool fOpened /* = false */,
                                        int iPosition /* = -1 */)
     : UIChooserItem(pParent, pParent->isFavorite())
+    , m_strName(strName)
     , m_fClosed(!fOpened)
     , m_iAdditionalHeight(0)
     , m_iHeaderDarkness(110)
-    , m_strName(strName)
     , m_pToggleButton(0)
     , m_pEnterButton(0)
     , m_pExitButton(0)
@@ -130,10 +130,10 @@ UIChooserItemGroup::UIChooserItemGroup(UIChooserItem *pParent,
                                        UIChooserItemGroup *pCopiedItem,
                                        int iPosition /* = -1 */)
     : UIChooserItem(pParent, pParent->isFavorite())
+    , m_strName(pCopiedItem->name())
     , m_fClosed(pCopiedItem->isClosed())
     , m_iAdditionalHeight(0)
     , m_iHeaderDarkness(110)
-    , m_strName(pCopiedItem->name())
     , m_pToggleButton(0)
     , m_pEnterButton(0)
     , m_pExitButton(0)
