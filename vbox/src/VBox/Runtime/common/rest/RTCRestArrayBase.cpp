@@ -1,4 +1,4 @@
-/* $Id: RTCRestArrayBase.cpp 73956 2018-08-29 15:09:34Z vboxsync $ */
+/* $Id: RTCRestArrayBase.cpp 73958 2018-08-29 15:21:46Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestArrayBase implementation.
  */
@@ -360,6 +360,5 @@ int RTCRestArrayBase::insertCopyWorker(size_t a_idx, RTCRestObjectBase const &a_
     else
         rc = VERR_NO_MEMORY;
     return rc;
-
 }
 
