@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 75744 2018-11-26 17:13:12Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 76208 2018-12-13 14:04:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class implementation.
  */
@@ -115,6 +115,8 @@ struct UIDataSettingsGlobalExtension
 /* Extension package item: */
 class UIExtensionPackageItem : public QITreeWidgetItem
 {
+    Q_OBJECT;
+
 public:
 
     /* Extension package item constructor: */
@@ -477,3 +479,5 @@ void UIGlobalSettingsExtension::loadData(const CExtPack &package, UIDataSettings
         item.m_strWhyUnusable = package.GetWhyUnusable();
 }
 
+
+#include "UIGlobalSettingsExtension.moc"

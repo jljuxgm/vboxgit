@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 76193 2018-12-12 19:10:12Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 76208 2018-12-13 14:04:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -51,6 +51,8 @@
   * Represented as a tree structure with a parent & multiple children. */
 class UIApplianceModelItem : public QITreeViewItem
 {
+    Q_OBJECT;
+
 public:
 
     /** Constructs root item with specified @a iNumber, @a enmType and @a pParent. */
@@ -1891,3 +1893,6 @@ void UIApplianceEditorWidget::setVirtualSystemBaseFolder(const QString& path)
         return;
     m_pModel->setVirtualSystemBaseFolder(path);
 }
+
+
+#include "UIApplianceEditorWidget.moc"
