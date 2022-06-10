@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.cpp 75966 2018-12-05 10:57:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class implementation.
  */
@@ -1343,6 +1343,13 @@ QString UISnapshotDetailsWidget::detailsReport(DetailsElementType enmType,
                                                          empReport(QString::number(uScaleFactor, 'f', 2),
                                                                    QString::number(uScaleFactorOld, 'f', 2)));
             }
+
+            /* Graphics Controller: */
+            ++iRowCount;
+            const QString strGc = gpConverter->toString(comMachine.GetGraphicsControllerType());
+            const QString strGcOld = gpConverter->toString(comMachineOld.GetGraphicsControllerType());
+            strItem += QString(sSectionItemTpl2).arg(QApplication::translate("UIGDetails", "Graphics Controller", "details (display)"),
+                                                     empReport(strGc, strGcOld));
 
             /* Acceleration? */
             const QString strAcceleration = displayAccelerationReport(comMachine);

@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.cpp 75926 2018-12-03 21:52:50Z vboxsync $ */
+/* $Id: UIDetailsElements.cpp 75966 2018-12-05 10:57:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes implementation.
  */
@@ -462,6 +462,11 @@ void UIDetailsUpdateTaskDisplay::run()
                                              QString::number(dValue, 'f', 2));
             }
         }
+
+        /* Graphics Controller: */
+        if (m_fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeDisplay_GraphicsController)
+            table << UITextTableLine(QApplication::translate("UIDetails", "Graphics Controller", "details (display)"),
+                                     gpConverter->toString(comMachine.GetGraphicsControllerType()));
 
         /* Acceleration: */
         if (m_fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeDisplay_Acceleration)
