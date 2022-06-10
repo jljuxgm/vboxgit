@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 72784 2018-07-02 06:40:19Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 72788 2018-07-02 09:12:47Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4112,7 +4112,7 @@ static int hmR0VmxExportSharedDebugState(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
          * If the guest has enabled debug registers, we need to load them prior to
          * executing guest code so they'll trigger at the right time.
          */
-        if (pMixedCtx->dr[7] & X86_DR7_ENABLED_MASK)
+        if (pMixedCtx->dr[7] & (X86_DR7_ENABLED_MASK | X86_DR7_GD))
         {
 #if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
             if (    CPUMIsGuestInLongModeEx(pMixedCtx)
