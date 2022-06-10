@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 75213 2018-10-31 19:47:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -250,16 +250,6 @@ void UIMediumManagerWidget::retranslateUi()
         || (pTreeWidgetCD && pTreeWidgetCD->topLevelItemCount())
         || (pTreeWidgetFD && pTreeWidgetFD->topLevelItemCount()))
         sltRefreshAll();
-}
-
-void UIMediumManagerWidget::showEvent(QShowEvent *pEvent)
-{
-    /* Call to base-class: */
-    QIWithRetranslateUI<QWidget>::showEvent(pEvent);
-
-    /* Focus current tree-widget: */
-    if (currentTreeWidget())
-        currentTreeWidget()->setFocus();
 }
 
 void UIMediumManagerWidget::sltResetMediumDetailsChanges()

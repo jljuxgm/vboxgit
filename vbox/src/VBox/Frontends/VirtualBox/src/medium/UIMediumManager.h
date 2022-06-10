@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.h 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIMediumManager.h 75213 2018-10-31 19:47:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class declaration.
  */
@@ -127,9 +127,6 @@ protected:
       * @{ */
         /** Handles translation event. */
         virtual void retranslateUi() /* override */;
-
-        /** Handles @a pShow event. */
-        virtual void showEvent(QShowEvent *pEvent) /* override */;
     /** @} */
 
 public slots:
