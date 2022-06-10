@@ -1,4 +1,4 @@
-/* $Id: tftp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tftp.h 76576 2019-01-01 06:05:25Z vboxsync $ */
 /** @file
  * NAT Network - Definitions for TFTP protocol.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef _TFTP_H_
-#define _TFTP_H_
+#ifndef VBOX_INCLUDED_SRC_NAT_tftp_h
+#define VBOX_INCLUDED_SRC_NAT_tftp_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -46,4 +46,4 @@
 #define TFTP_EONAK      8 /* Option refused. */
 
 
-#endif  /* _TFTP_H_ */
+#endif /* !VBOX_INCLUDED_SRC_NAT_tftp_h */

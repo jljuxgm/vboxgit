@@ -1,4 +1,4 @@
-/* $Id: ClientDataInt.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ClientDataInt.h 76576 2019-01-01 06:05:25Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __CLIENT_DATA_INT_H__
-#define __CLIENT_DATA_INT_H__
+#ifndef VBOX_INCLUDED_SRC_DHCP_ClientDataInt_h
+#define VBOX_INCLUDED_SRC_DHCP_ClientDataInt_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -67,4 +67,4 @@ public:
     NetworkConfigEntity *pCfg;
 };
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_DHCP_ClientDataInt_h */

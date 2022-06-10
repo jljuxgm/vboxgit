@@ -1,4 +1,4 @@
-/* $Id: proxy_pollmgr.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: proxy_pollmgr.h 76576 2019-01-01 06:05:25Z vboxsync $ */
 /** @file
  * NAT Network - poll manager, definitions and declarations.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef _PROXY_POLLMGR_H_
-#define _PROXY_POLLMGR_H_
+#ifndef VBOX_INCLUDED_SRC_NAT_proxy_pollmgr_h
+#define VBOX_INCLUDED_SRC_NAT_proxy_pollmgr_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -82,4 +82,4 @@ void pollmgr_thread(void *);
 /* buffer for callbacks to receive udp without worrying about truncation */
 extern u8_t pollmgr_udpbuf[64 * 1024];
 
-#endif /* _PROXY_POLLMGR_H_ */
+#endif /* !VBOX_INCLUDED_SRC_NAT_proxy_pollmgr_h */

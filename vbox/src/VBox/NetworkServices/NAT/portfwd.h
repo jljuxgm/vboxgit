@@ -1,4 +1,4 @@
-/* $Id: portfwd.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: portfwd.h 76576 2019-01-01 06:05:25Z vboxsync $ */
 /** @file
  * NAT Network - port-forwarding rules, definitions and declarations.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef _portfwd_h_
-#define _portfwd_h_
+#ifndef VBOX_INCLUDED_SRC_NAT_portfwd_h
+#define VBOX_INCLUDED_SRC_NAT_portfwd_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -71,4 +71,4 @@ void fwudp_del(struct fwspec *);
 
 int fwany_ipX_addr_set_src(ipX_addr_t *, const struct sockaddr *);
 
-#endif /* _portfwd_h_ */
+#endif /* !VBOX_INCLUDED_SRC_NAT_portfwd_h */

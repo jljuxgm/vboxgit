@@ -1,4 +1,4 @@
-/* $Id: shared_ptr.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: shared_ptr.h 76576 2019-01-01 06:05:25Z vboxsync $ */
 /** @file
  * Simplified shared pointer.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __SHARED_PTR_H__
-#define __SHARED_PTR_H__
+#ifndef VBOX_INCLUDED_SRC_NetLib_shared_ptr_h
+#define VBOX_INCLUDED_SRC_NetLib_shared_ptr_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -99,4 +99,4 @@ class SharedPtr
 };
 #endif
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_NetLib_shared_ptr_h */

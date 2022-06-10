@@ -1,4 +1,4 @@
-/* $Id: pxtcp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: pxtcp.h 76576 2019-01-01 06:05:25Z vboxsync $ */
 /** @file
  * NAT Network - TCP proxy, internal interface declarations.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef _pxtcp_h_
-#define _pxtcp_h_
+#ifndef VBOX_INCLUDED_SRC_NAT_pxtcp_h
+#define VBOX_INCLUDED_SRC_NAT_pxtcp_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -39,4 +39,4 @@ void pxtcp_pcb_connect(struct pxtcp *, const struct fwspec *);
 int pxtcp_pmgr_add(struct pxtcp *);
 void pxtcp_pmgr_del(struct pxtcp *);
 
-#endif  /* _pxtcp_h_ */
+#endif /* !VBOX_INCLUDED_SRC_NAT_pxtcp_h */

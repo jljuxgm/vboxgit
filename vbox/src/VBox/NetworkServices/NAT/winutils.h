@@ -1,4 +1,4 @@
-/* $Id: winutils.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: winutils.h 76576 2019-01-01 06:05:25Z vboxsync $ */
 /** @file
  * NAT Network - winsock compatibility shim.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __WINUTILS_H_
-#define __WINUTILS_H_
+#ifndef VBOX_INCLUDED_SRC_NAT_winutils_h
+#define VBOX_INCLUDED_SRC_NAT_winutils_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -207,4 +207,4 @@ proxy_error_is_transient(int error)
 # endif
 }
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_NAT_winutils_h */

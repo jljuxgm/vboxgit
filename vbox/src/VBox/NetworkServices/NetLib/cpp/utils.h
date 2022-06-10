@@ -1,4 +1,4 @@
-/* $Id: utils.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: utils.h 76576 2019-01-01 06:05:25Z vboxsync $ */
 /** @file
  * NetLib/cpp/utils.h
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___NETLIB_CPP_UTILS_H___
-#define ___NETLIB_CPP_UTILS_H___
+#ifndef VBOX_INCLUDED_SRC_NetLib_cpp_utils_h
+#define VBOX_INCLUDED_SRC_NetLib_cpp_utils_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -43,5 +43,5 @@ DECLINLINE(bool) operator== (const RTMAC &lhs, const RTMAC &rhs)
         && lhs.au16[2] == rhs.au16[2];
 }
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_NetLib_cpp_utils_h */
 

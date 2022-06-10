@@ -1,4 +1,4 @@
-/* $Id: IPv4Pool.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: IPv4Pool.h 76576 2019-01-01 06:05:25Z vboxsync $ */
 /** @file
  * DHCP server - a pool of IPv4 addresses
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef _DHCPD_IPV4_POOL_H_
-#define _DHCPD_IPV4_POOL_H_
+#ifndef VBOX_INCLUDED_SRC_Dhcpd_IPv4Pool_h
+#define VBOX_INCLUDED_SRC_Dhcpd_IPv4Pool_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -123,4 +123,4 @@ public:
     bool allocate(RTNETADDRIPV4);
 };
 
-#endif  /* _DHCPD_IPV4_POOL_H_ */
+#endif /* !VBOX_INCLUDED_SRC_Dhcpd_IPv4Pool_h */

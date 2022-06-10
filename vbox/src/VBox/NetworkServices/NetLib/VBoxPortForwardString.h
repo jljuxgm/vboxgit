@@ -1,4 +1,4 @@
-/* $Id: VBoxPortForwardString.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxPortForwardString.h 76576 2019-01-01 06:05:25Z vboxsync $ */
 /** @file
  * VBoxPortForwardString
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxPortForwardString_h___
-#define ___VBoxPortForwardString_h___
+#ifndef VBOX_INCLUDED_SRC_NetLib_VBoxPortForwardString_h
+#define VBOX_INCLUDED_SRC_NetLib_VBoxPortForwardString_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -55,5 +55,5 @@ int netPfStrToPf(const char *pszStrPortForward, bool fIPv6, PPORTFORWARDRULE pPf
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !VBOX_INCLUDED_SRC_NetLib_VBoxPortForwardString_h */
 
