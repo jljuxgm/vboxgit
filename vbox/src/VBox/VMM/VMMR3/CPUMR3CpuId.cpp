@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 73228 2018-07-19 08:20:52Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 73235 2018-07-19 10:52:25Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3947,6 +3947,14 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
         && !fNestedPagingAndFullGuestExec)
         return VMSetError(pVM, VERR_CPUM_INVALID_HWVIRT_CONFIG, RT_SRC_POS,
                           "Cannot enable nested VT-x/AMD-V without nested-paging and unresricted guest execution!\n");
+
+    /** @todo Think about enabling this later with NEM/KVM. */
+    if (   pConfig->fNestedHWVirt
+        && VM_IS_NEM_ENABLED(pVM))
+    {
+        LogRel(("CPUM: WARNING! Can't turn on nested VT-x/AMD-V when NEM is used!\n"));
+        pConfig->fNestedHWVirt = false;
+    }
 #endif
 
     /*
