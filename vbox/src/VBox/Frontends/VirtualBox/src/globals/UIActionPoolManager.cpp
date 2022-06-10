@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 77297 2019-02-13 12:58:29Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 77298 2019-02-13 13:28:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -714,7 +714,7 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
-        setName(QApplication::translate("UIActionPool", "&Export..."));
+        setName(QApplication::translate("UIActionPool", "E&xport..."));
         setStatusTip(QApplication::translate("UIActionPool", "Export selected virtual machine"));
     }
 };
