@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 75016 2018-10-23 19:42:38Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 75102 2018-10-26 14:50:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -50,6 +50,8 @@
 # include "UIWizardNewVM.h"
 
 /* COM includes: */
+# include "CExtPack.h"
+# include "CExtPackManager.h"
 # include "CMachine.h"
 # include "CMedium.h"
 # include "CVirtualBox.h"
@@ -1329,6 +1331,10 @@ void UIChooserModel::prepareContextMenu()
     m_pContextMenuGlobal = new QMenu;
     if (m_pContextMenuGlobal)
     {
+        /* Check if Ext Pack is ready, some of actions my depend on it: */
+        CExtPack extPack = vboxGlobal().virtualBox().GetExtensionPackManager().Find(GUI_ExtPackName);
+        const bool fExtPackAccessible = !extPack.isNull() && extPack.GetUsable();
+
 #ifdef VBOX_WS_MAC
         m_pContextMenuGlobal->addAction(actionPool()->action(UIActionIndex_M_Application_S_About));
 # ifdef VBOX_GUI_WITH_NETWORK_MANAGER
@@ -1346,7 +1352,8 @@ void UIChooserModel::prepareContextMenu()
 # endif
         m_pContextMenuGlobal->addAction(actionPool()->action(UIActionIndexST_M_File_S_ShowVirtualMediumManager));
         m_pContextMenuGlobal->addAction(actionPool()->action(UIActionIndexST_M_File_S_ShowHostNetworkManager));
-        m_pContextMenuGlobal->addAction(actionPool()->action(UIActionIndexST_M_File_S_ShowCloudProfileManager));
+        if (fExtPackAccessible)
+            m_pContextMenuGlobal->addAction(actionPool()->action(UIActionIndexST_M_File_S_ShowCloudProfileManager));
 
 #else /* !VBOX_WS_MAC */
 
@@ -1360,7 +1367,8 @@ void UIChooserModel::prepareContextMenu()
 # endif
         m_pContextMenuGlobal->addAction(actionPool()->action(UIActionIndexST_M_File_S_ShowVirtualMediumManager));
         m_pContextMenuGlobal->addAction(actionPool()->action(UIActionIndexST_M_File_S_ShowHostNetworkManager));
-        m_pContextMenuGlobal->addAction(actionPool()->action(UIActionIndexST_M_File_S_ShowCloudProfileManager));
+        if (fExtPackAccessible)
+            m_pContextMenuGlobal->addAction(actionPool()->action(UIActionIndexST_M_File_S_ShowCloudProfileManager));
 # ifdef VBOX_GUI_WITH_NETWORK_MANAGER
         m_pContextMenuGlobal->addAction(actionPool()->action(UIActionIndex_M_Application_S_NetworkAccessManager));
         if (gEDataManager->applicationUpdateEnabled())
