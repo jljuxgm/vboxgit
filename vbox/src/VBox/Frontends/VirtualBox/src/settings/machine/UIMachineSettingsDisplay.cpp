@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 75291 2018-11-06 15:03:21Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 75296 2018-11-06 19:25:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -399,6 +399,7 @@ void UIMachineSettingsDisplay::loadToCacheFrom(QVariant &data)
     }
 
     CCaptureScreenSettingsVector recordingScreenSettingsVector = recordingSettings.GetScreens();
+    oldDisplayData.m_vecRecordingScreens.resize(recordingScreenSettingsVector.size());
     for (int iScreenIndex = 0; iScreenIndex < recordingScreenSettingsVector.size(); ++iScreenIndex)
     {
         CCaptureScreenSettings captureScreenSettings = recordingScreenSettingsVector.at(iScreenIndex);
