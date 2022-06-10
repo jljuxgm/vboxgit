@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 74073 2018-09-04 18:05:14Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 74121 2018-09-06 14:57:41Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8863,8 +8863,8 @@ static void hmR0VmxPostRunGuest(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient, int r
     int rc  = VMXReadVmcs32(VMX_VMCS32_RO_EXIT_REASON, &uExitReason);
     rc     |= hmR0VmxReadEntryIntInfoVmcs(pVmxTransient);
     AssertRC(rc);
-    pVmxTransient->uExitReason    = (uint16_t)VMX_EXIT_REASON_BASIC(uExitReason);
-    pVmxTransient->fVMEntryFailed = VMX_ENTRY_INT_INFO_IS_VALID(pVmxTransient->uEntryIntInfo);
+    pVmxTransient->uExitReason    = VMX_EXIT_REASON_BASIC(uExitReason);
+    pVmxTransient->fVMEntryFailed = VMX_EXIT_REASON_HAS_ENTRY_FAILED(uExitReason);
 
     if (rcVMRun == VINF_SUCCESS)
     {
@@ -8922,6 +8922,7 @@ static void hmR0VmxPostRunGuest(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient, int r
                 ASMAtomicOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_GUEST_APIC_TPR);
             }
 
+            Assert(VMMRZCallRing3IsEnabled(pVCpu));
             return;
         }
     }
