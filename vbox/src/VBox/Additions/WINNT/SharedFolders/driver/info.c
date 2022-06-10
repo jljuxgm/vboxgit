@@ -1,4 +1,4 @@
-/* $Id: info.c 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: info.c 75654 2018-11-21 21:02:14Z vboxsync $ */
 /** @file
  *
  * VirtualBox Windows Guest Shared Folders
@@ -109,6 +109,12 @@ NTSTATUS VBoxMRxQueryDirectory(IN OUT PRX_CONTEXT RxContext)
     {
         Log(("VBOXSF: MrxQueryDirectory: Query single entry\n"));
         fSFFlags |= SHFL_LIST_RETURN_ONE;
+    }
+    if (   RxContext->QueryDirectory.RestartScan == TRUE
+        && RxContext->QueryDirectory.InitialQuery == FALSE)
+    {
+        Log(("VBOXSF: MrxQueryDirectory: Restart scan\n"));
+        fSFFlags |= SHFL_LIST_RESTART;
     }
 
     if (Template->Length)
