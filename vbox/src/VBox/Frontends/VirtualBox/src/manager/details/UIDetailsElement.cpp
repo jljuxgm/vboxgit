@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 74685 2018-10-08 15:31:17Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 74689 2018-10-08 16:25:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -237,8 +237,8 @@ void UIDetailsElement::paint(QPainter *pPainter, const QStyleOptionGraphicsItem 
 
     /* Paint background: */
     paintBackground(pPainter, pOptions);
-    /* Paint frame rectangle: */
-    paintFrameRect(pPainter, pOptions);
+    /* Paint frame: */
+    paintFrame(pPainter, pOptions);
     /* Paint element info: */
     paintElementInfo(pPainter, pOptions);
 }
@@ -699,7 +699,7 @@ void UIDetailsElement::paintBackground(QPainter *pPainter, const QStyleOptionGra
     pPainter->restore();
 }
 
-void UIDetailsElement::paintFrameRect(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions) const
+void UIDetailsElement::paintFrame(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions) const
 {
     /* Save painter: */
     pPainter->save();
@@ -708,16 +708,19 @@ void UIDetailsElement::paintFrameRect(QPainter *pPainter, const QStyleOptionGrap
     const int iMargin = data(ElementData_Margin).toInt();
     const int iHeadHeight = 2 * iMargin + m_iMinimumHeaderHeight;
     const QRect optionRect = pOptions->rect;
-    const QRect fullRect = m_fAnimationRunning
-                         ? QRect(optionRect.topLeft(), QSize(optionRect.width(), iHeadHeight + m_iAdditionalHeight))
-                         : optionRect;
+    const QRect rectangle = m_fAnimationRunning
+                          ? QRect(optionRect.topLeft(), QSize(optionRect.width(), iHeadHeight + m_iAdditionalHeight))
+                          : optionRect;
 
     /* Paint frame: */
     const QColor strokeColor = palette().color(QPalette::Active, QPalette::Mid).lighter(m_iDefaultToneStart);
     QPen pen(strokeColor);
     pen.setWidth(0);
     pPainter->setPen(pen);
-    pPainter->drawRect(fullRect);
+    pPainter->drawLine(rectangle.topLeft(),    rectangle.topRight());
+    pPainter->drawLine(rectangle.bottomLeft(), rectangle.bottomRight());
+    pPainter->drawLine(rectangle.topLeft(),    rectangle.bottomLeft());
+    pPainter->drawLine(rectangle.topRight(),   rectangle.bottomRight());
 
     /* Restore painter: */
     pPainter->restore();
