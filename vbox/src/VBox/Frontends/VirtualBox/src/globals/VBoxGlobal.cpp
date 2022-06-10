@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 72903 2018-07-04 19:59:39Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 72927 2018-07-06 07:29:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2721,14 +2721,13 @@ QString VBoxGlobal::createVisoMediumWithFileOpenDialog(QWidget *pParent, const Q
 
 QString VBoxGlobal::showCreateFloppyDiskDialog(QWidget *pParent, const QString &strMachineName, const QString &strMachineFolder)
 {
-    QString strMediumID;
     UIFDCreationDialog *pDialog = new UIFDCreationDialog(pParent, strMachineName, strMachineFolder);
     if (pDialog->exec())
     {
-        strMediumID = pDialog->mediumID();
+        return pDialog->mediumID();
     }
     delete pDialog;
-    return strMediumID;
+    return QString();
 }
 
 void VBoxGlobal::prepareStorageMenu(QMenu &menu,

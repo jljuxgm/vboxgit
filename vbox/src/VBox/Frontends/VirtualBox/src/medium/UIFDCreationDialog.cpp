@@ -1,4 +1,4 @@
-/* $Id: UIFDCreationDialog.cpp 72913 2018-07-05 09:30:09Z vboxsync $ */
+/* $Id: UIFDCreationDialog.cpp 72927 2018-07-06 07:29:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFDCreationDialog class implementation.
  */
@@ -30,6 +30,7 @@
 /* GUI includes */
 # include "UIFDCreationDialog.h"
 # include "UIFilePathSelector.h"
+# include "UIMedium.h"
 # include "UIMessageCenter.h"
 # include "VBoxGlobal.h"
 
@@ -211,6 +212,10 @@ void UIFDCreationDialog::accept()
     }
     /* Store the id of the newly create medium: */
     m_strMediumID = newMedium.GetId();
+
+    /* Notify VBoxGlobal about the new medium: */
+    vboxGlobal().createMedium(UIMedium(newMedium, UIMediumType_Floppy, KMediumState_Created));
+
 
     /* After a successful creation and initilization of the floppy disk we call base class accept
        effectively closing this dialog: */
