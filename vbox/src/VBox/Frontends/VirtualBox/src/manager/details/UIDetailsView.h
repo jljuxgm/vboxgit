@@ -1,4 +1,4 @@
-/* $Id: UIDetailsView.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIDetailsView.h 74677 2018-10-08 12:51:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsView class declaration.
  */
@@ -44,7 +44,7 @@ public:
     /** Returns the details reference. */
     UIDetails *details() const { return m_pDetails; }
 
-private slots:
+public slots:
 
     /* Handlers: Size-hint stuff: */
     void sltMinimumWidthHintChanged(int iMinimumWidthHint);

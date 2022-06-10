@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIDetailsModel.h 74677 2018-10-08 12:51:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -83,20 +83,22 @@ public:
     /** Returns the details settings. */
     const QMap<DetailsElementType, bool>& settings() const { return m_settings; }
 
-private slots:
+public slots:
 
     /* Handler: Details-view stuff: */
     void sltHandleViewResize();
-
-    /* Handlers: Element-items stuff: */
-    void sltToggleElements(DetailsElementType type, bool fToggled);
-    void sltToggleAnimationFinished(DetailsElementType type, bool fToggled);
-    void sltElementTypeToggled();
 
     /* Handlers: Chooser stuff: */
     void sltHandleSlidingStarted();
     void sltHandleToggleStarted();
     void sltHandleToggleFinished();
+
+private slots:
+
+    /* Handlers: Element-items stuff: */
+    void sltToggleElements(DetailsElementType type, bool fToggled);
+    void sltToggleAnimationFinished(DetailsElementType type, bool fToggled);
+    void sltElementTypeToggled();
 
 private:
 
