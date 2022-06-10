@@ -1,4 +1,4 @@
-/* $Id: dbgmodmapsym.cpp 75237 2018-11-02 21:12:17Z vboxsync $ */
+/* $Id: dbgmodmapsym.cpp 75481 2018-11-15 12:39:41Z vboxsync $ */
 /** @file
  * IPRT - Debug Map Reader for MAPSYM files (used by SYMDBG from old MASM).
  *
@@ -563,6 +563,8 @@ static DECLCALLBACK(int) rtDbgModMapSym_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enm
                         RTFileReadAllFree(pvFile, cbFile2);
                     }
                 }
+                else
+                    rc = VERR_DBG_NO_MATCHING_INTERPRETER;
             }
         }
         RTFileClose(hFile);
