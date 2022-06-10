@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 77887 2019-03-26 16:41:15Z vboxsync $ */
+/* $Id: VBoxManage.cpp 78126 2019-04-15 16:46:46Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -202,6 +202,8 @@ static void showProgressSignalHandler(int iSignal)
 HRESULT showProgress(ComPtr<IProgress> progress)
 {
     using namespace com;
+
+    AssertReturn(progress.isNotNull(), E_FAIL);
 
     BOOL fCompleted = FALSE;
     ULONG ulCurrentPercent = 0;
