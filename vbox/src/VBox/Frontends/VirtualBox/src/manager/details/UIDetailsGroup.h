@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.h 74042 2018-09-03 12:54:45Z vboxsync $ */
+/* $Id: UIDetailsGroup.h 74044 2018-09-03 13:32:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class declaration.
  */
@@ -48,7 +48,7 @@ public:
     /** Constructs group item, passing pScene to the base-class. */
     UIDetailsGroup(QGraphicsScene *pScene);
     /** Destructs group item. */
-    ~UIDetailsGroup();
+    virtual ~UIDetailsGroup() /* override */;
 
     /** @name Item stuff.
       * @{ */
