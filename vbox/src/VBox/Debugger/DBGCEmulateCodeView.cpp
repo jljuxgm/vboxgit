@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 73074 2018-07-11 16:20:21Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 73077 2018-07-11 16:43:18Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3483,7 +3483,7 @@ static DECLCALLBACK(int) dbgcCmdDumpMem(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUV
                 {
                     /* Try lookup symbol for the above address. */
                     DBGFADDRESS Addr;
-                    int         rc = VINF_SUCCESS;
+                    rc = VINF_SUCCESS;
                     if (cbElement == 8)
                         DBGFR3AddrFromFlat(pDbgc->pUVM, &Addr, *(uint64_t *)&achBuffer[i]);
                     else if (!fFar)
