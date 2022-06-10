@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 73814 2018-08-22 08:40:54Z vboxsync $ */
+/* $Id: DrvAudio.cpp 73816 2018-08-22 08:45:20Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1404,9 +1404,9 @@ static DECLCALLBACK(int) drvAudioStreamPlay(PPDMIAUDIOCONNECTOR pInterface,
         const uint8_t  uLivePercent = (100 * cfLive) / AudioMixBufSize(&pStream->Host.MixBuf);
 
         const uint64_t tsDeltaPlayedCapturedNs = RTTimeNanoTS() - pStream->tsLastPlayedCapturedNs;
-
-              uint32_t cfPassedReal = DrvAudioHlpNanoToFrames(tsDeltaPlayedCapturedNs, &pStream->Host.Cfg.Props);
 #endif
+        uint32_t cfPassedReal = DrvAudioHlpNanoToFrames(tsDeltaPlayedCapturedNs, &pStream->Host.Cfg.Props);
+
         const uint32_t cfPeriod     = pStream->Host.Cfg.Backend.cfPeriod;
 
         Log3Func(("[%s] Last played %RU64ns (%RU64ms), filled with %RU64ms (%RU8%%) total (fThresholdReached=%RTbool)\n",
