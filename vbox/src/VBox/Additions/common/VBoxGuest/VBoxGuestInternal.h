@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 70873 2018-02-05 18:13:55Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 75588 2018-11-19 18:07:03Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Internal Header.
  */
@@ -150,6 +150,8 @@ typedef struct VBOXGUESTDEVEXT
     /** Spinlock protecting the signaling and resetting of the wait-for-event
      * semaphores as well as the event acking in the ISR. */
     RTSPINLOCK                  EventSpinlock;
+    /** Host feature flags (VMMDEV_HVF_XXX).   */
+    uint32_t                    fHostFeatures;
     /** Preallocated VMMDevEvents for the IRQ handler. */
     VMMDevEvents               *pIrqAckEvents;
     /** The physical address of pIrqAckEvents. */
