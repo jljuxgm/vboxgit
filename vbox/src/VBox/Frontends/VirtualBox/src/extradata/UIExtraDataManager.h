@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 74722 2018-10-09 17:08:55Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 74757 2018-10-11 10:16:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -597,8 +597,10 @@ public:
 
         /** Returns the scale-factor. */
         double scaleFactor(const QString &strID, const int uScreenIndex);
+        QList<double> scaleFactors(const QString &strID);
         /** Defines the @a dScaleFactor. */
         void setScaleFactor(double dScaleFactor, const QString &strID, const int uScreenIndex);
+        void setScaleFactors(const QList<double> &scaleFactors, const QString &strID);
 
         /** Returns the scaling optimization type. */
         ScalingOptimizationType scalingOptimizationType(const QString &strID);
