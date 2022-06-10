@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.cpp 76071 2018-12-08 19:11:20Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.cpp 76072 2018-12-08 19:28:04Z vboxsync $ */
 /** @file
  * VBox Global COM Class implementation.
  */
