@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 74870 2018-10-16 16:59:07Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 74871 2018-10-16 17:12:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -181,6 +181,12 @@ namespace UIExtraDataDefs
       * @{ */
         /** Holds whether Host Network Manager details expanded. */
         SHARED_LIBRARY_STUFF extern const char *GUI_HostNetworkManager_Details_Expanded;
+    /** @} */
+
+    /** @name Cloud Profile Manager
+      * @{ */
+        /** Holds whether Cloud Profile Manager details expanded. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_CloudProfileManager_Details_Expanded;
     /** @} */
 
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI

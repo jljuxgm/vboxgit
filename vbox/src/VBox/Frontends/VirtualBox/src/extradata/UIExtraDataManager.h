@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 74757 2018-10-11 10:16:30Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 74871 2018-10-16 17:12:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -373,6 +373,14 @@ public:
         bool hostNetworkManagerDetailsExpanded();
         /** Defines whether Host Network Manager details @a fExpanded. */
         void setHostNetworkManagerDetailsExpanded(bool fExpanded);
+    /** @} */
+
+    /** @name Cloud Profile Manager
+      * @{ */
+        /** Returns whether Cloud Profile Manager details expanded. */
+        bool cloudProfileManagerDetailsExpanded();
+        /** Defines whether Cloud Profile Manager details @a fExpanded. */
+        void setCloudProfileManagerDetailsExpanded(bool fExpanded);
     /** @} */
 
     /** @name Wizards
