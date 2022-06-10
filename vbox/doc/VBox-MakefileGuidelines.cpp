@@ -1,4 +1,4 @@
-/* $Id: VBox-MakefileGuidelines.cpp 75168 2018-10-29 21:09:44Z vboxsync $ */
+/* $Id: VBox-MakefileGuidelines.cpp 75386 2018-11-11 23:30:51Z vboxsync $ */
 /** @file
  * VBox - Makefile Guidelines.
  */
@@ -126,7 +126,11 @@
  *        src/VBox/Debugger/Makefile.kmk. I.e. exactly one tab, the file name /
  *        list item, another space, the slash and then the newline.
  *
- *      - The last element of an broken list should not have a slash-newline,
+ *      - Line continuation slashes shall never ever be aligned vertically (that
+ *        always goes crooked sooner or later), but have exactly one space
+ *        before them.
+ *
+ *      - The last element of an broken list shall not have a slash-newline,
  *        otherwise we risk getting the next variable into the list.
  *
  *      - When if'ed blocks come into play, we will only indent the conditional
