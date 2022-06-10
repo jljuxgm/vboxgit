@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77026 2019-01-28 18:14:00Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77051 2019-01-30 17:38:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -462,7 +462,7 @@ void UIChooserModel::indentRoot(UIChooserItem *pNewRootItem)
     m_fSliding = true;
     emit sigSlidingStarted();
 
-    /* Hiding root: */
+    /* Hiding old root: */
     root()->hide();
 
     /* Create left root: */
@@ -497,9 +497,8 @@ void UIChooserModel::unindentRoot()
     m_fSliding = true;
     emit sigSlidingStarted();
 
-    /* Hiding root: */
+    /* Hiding old root: */
     root()->hide();
-    root()->setRoot(false);
 
     /* Create left root: */
     bool fLeftRootIsMain = m_rootStack.at(m_rootStack.size() - 2) == mainRoot();
@@ -515,6 +514,7 @@ void UIChooserModel::unindentRoot()
 
     /* Unindent root: */
     m_pAfterSlidingFocus = root();
+    root()->setRoot(false);
     m_rootStack.removeLast();
     root()->setRoot(true);
 
