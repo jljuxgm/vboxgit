@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 77305 2019-02-13 17:34:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -45,8 +45,9 @@
 *   Class UIWizardExportAppPageExpert implementation.                                                                            *
 *********************************************************************************************************************************/
 
-UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &selectedVMNames)
-    : m_pSelectorCnt(0)
+UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &selectedVMNames, bool fExportToOCIByDefault)
+    : UIWizardExportAppPage2(fExportToOCIByDefault)
+    , m_pSelectorCnt(0)
     , m_pApplianceCnt(0)
     , m_pSettingsCnt(0)
 {

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.h 77305 2019-02-13 17:34:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class declaration.
  */
@@ -79,7 +79,7 @@ class UIWizardExportAppPage2 : public UIWizardPageBase
 protected:
 
     /** Constructs 2nd page base. */
-    UIWizardExportAppPage2();
+    UIWizardExportAppPage2(bool fExportToOCIByDefault);
 
     /** Populates formats. */
     void populateFormats();
@@ -166,6 +166,9 @@ protected:
     /** Returns Cloud Client parameters. */
     AbstractVSDParameterList cloudClientParameters() const;
 
+    /** Holds whether default format should be Export to OCI. */
+    bool  m_fExportToOCIByDefault;
+
     /** Holds the Cloud Provider Manager reference. */
     CCloudProviderManager     m_comCloudProviderManager;
     /** Holds the Cloud Provider object reference. */
@@ -244,7 +247,7 @@ class UIWizardExportAppPageBasic2 : public UIWizardPage, public UIWizardExportAp
 public:
 
     /** Constructs 2nd basic page. */
-    UIWizardExportAppPageBasic2();
+    UIWizardExportAppPageBasic2(bool fExportToOCIByDefault);
 
 protected:
 

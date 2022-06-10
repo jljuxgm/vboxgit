@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 77297 2019-02-13 12:58:29Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 77305 2019-02-13 17:34:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -89,8 +89,8 @@ enum UIActionIndexST
     UIActionIndexST_M_Machine_S_Add,
     UIActionIndexST_M_Machine_S_Settings,
     UIActionIndexST_M_Machine_S_Clone,
-    UIActionIndexST_M_Machine_S_Export,
     UIActionIndexST_M_Machine_S_Move,
+    UIActionIndexST_M_Machine_S_ExportToOCI,
     UIActionIndexST_M_Machine_S_Remove,
     UIActionIndexST_M_Machine_S_AddGroup,
     UIActionIndexST_M_Machine_M_StartOrShow,
