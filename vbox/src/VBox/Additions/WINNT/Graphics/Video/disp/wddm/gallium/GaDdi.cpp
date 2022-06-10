@@ -1,4 +1,4 @@
-/* $Id: GaDdi.cpp 77046 2019-01-30 14:31:40Z vboxsync $ */
+/* $Id: GaDdi.cpp 77125 2019-02-01 16:02:37Z vboxsync $ */
 /** @file
  * WDDM D3DDDI callbacks implemented for the Gallium based driver.
  */
@@ -3047,9 +3047,6 @@ HRESULT APIENTRY GaDdiSetPriority(HANDLE hDevice, const D3DDDIARG_SETPRIORITY *p
 
     PVBOXWDDMDISP_DEVICE pDevice = (PVBOXWDDMDISP_DEVICE)hDevice;
     RT_NOREF(pDevice);
-
-    /// @todo Not implemented.
-    AssertFailed();
 
     vboxVDbgPrintF(("==> "__FUNCTION__", hDevice(0x%p)\n", hDevice));
 
