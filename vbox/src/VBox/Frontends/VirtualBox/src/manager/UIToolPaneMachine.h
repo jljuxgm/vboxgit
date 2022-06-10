@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneMachine.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIToolPaneMachine.h 74505 2018-09-27 15:39:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneMachine class declaration.
  */
@@ -95,6 +95,9 @@ private:
     void prepareStackedLayout();
     /** Cleanups all. */
     void cleanup();
+
+    /** Handles translation for Desktop pane. */
+    void retranslateDesktopPane();
 
     /** Holds the action pool reference. */
     UIActionPool *m_pActionPool;

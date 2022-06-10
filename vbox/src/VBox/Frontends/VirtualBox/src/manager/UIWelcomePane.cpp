@@ -1,4 +1,4 @@
-/* $Id: UIWelcomePane.cpp 73456 2018-08-02 12:56:10Z vboxsync $ */
+/* $Id: UIWelcomePane.cpp 74505 2018-09-27 15:39:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class implementation.
  */
@@ -795,7 +795,8 @@ void UIWelcomePanePrivate::updatePixmap()
     const QList<QSize> aSizes = m_icon.availableSizes();
     const QSize firstOne = aSizes.isEmpty() ? QSize(200, 200) : aSizes.first();
     const double dRatio = QApplication::style()->pixelMetric(QStyle::PM_LargeIconSize) / 32;
-    m_pLabelToolsPaneIcon->setPixmap(m_icon.pixmap(window()->windowHandle(), QSize(firstOne.width() * dRatio, firstOne.height() * dRatio)));
+    if (!m_icon.isNull())
+        m_pLabelToolsPaneIcon->setPixmap(m_icon.pixmap(window()->windowHandle(), QSize(firstOne.width() * dRatio, firstOne.height() * dRatio)));
 }
 
 
