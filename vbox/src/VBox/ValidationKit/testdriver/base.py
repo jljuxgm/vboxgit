@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 76938 2019-01-22 16:50:18Z vboxsync $
+# $Id: base.py 76939 2019-01-22 16:51:28Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76938 $"
+__version__ = "$Revision: 76939 $"
 
 
 # Standard Python imports.
@@ -830,15 +830,11 @@ class TestDriverBase(object): # pylint: disable=R0902
         if self.sResourcePath is None:
             if self.sHost == 'darwin':      self.sResourcePath = "/Volumes/testrsrc/";
             elif self.sHost == 'freebsd':   self.sResourcePath = "/mnt/testrsrc/";
-            elif self.sHost == 'linux':
-                self.sResourcePath = "/mnt/testrsrc/";
-                if not os.path.isdir(self.sResourcePath) and utils.isRunningFromCheckout():
-                    self.sResourcePath = os.path.join(g_ksValidationKitDir, os.pardir, os.pardir, os.pardir, "testrsrc");
+            elif self.sHost == 'linux':     self.sResourcePath = "/mnt/testrsrc/";
             elif self.sHost == 'os2':       self.sResourcePath = "T:/";
             elif self.sHost == 'solaris':   self.sResourcePath = "/mnt/testrsrc/";
             elif self.sHost == 'win':       self.sResourcePath = "T:/";
             else: raise GenError('unknown host OS "%s"' % (self.sHost));
-        assert os.path.isdir(self.sResourcePath), 'Resource path not found: self.sResourcePath="%s"' % (self.sResourcePath);
 
         # PID file for the testdriver.
         self.sPidFile = os.path.join(self.sScratchPath, 'testdriver.pid');

@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 76938 2019-01-22 16:50:18Z vboxsync $ */
+/* $Id: vbox_main.c 76939 2019-01-22 16:51:28Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -67,7 +67,7 @@ void vbox_enable_accel(struct vbox_private *vbox)
 		if (vbox->vbva_info[i].pVBVA)
 			continue;
 
-		vbva = (void __force *)vbox->vbva_buffers + i * VBVA_MIN_BUFFER_SIZE;
+		vbva = (void *)vbox->vbva_buffers + i * VBVA_MIN_BUFFER_SIZE;
 		if (!VBoxVBVAEnable(&vbox->vbva_info[i],
 				 vbox->guest_pool, vbva, i)) {
 			/* very old host or driver error. */
