@@ -1,4 +1,4 @@
-/* $Id: regops.c 77731 2019-03-15 22:32:02Z vboxsync $ */
+/* $Id: regops.c 77735 2019-03-16 03:58:19Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -2390,7 +2390,7 @@ static void vbsf_vmlog_map_pages(struct vm_fault *vmf, pgoff_t start, pgoff_t en
 # elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0)
 static void vbsf_vmlog_map_pages(struct fault_env *fenv, pgoff_t start, pgoff_t end)
 {
-    SFLOGFLOW(("vbsf_vmlog_map_pages: fenv=%p (flags=%#x addr=%p) start=%p end=%p\n", fenv, vmf->flags, vmf->address, start, end));
+    SFLOGFLOW(("vbsf_vmlog_map_pages: fenv=%p (flags=%#x addr=%p) start=%p end=%p\n", fenv, fenv->flags, fenv->address, start, end));
     g_pGenericFileVmOps->map_pages(fenv, start, end);
     SFLOGFLOW(("vbsf_vmlog_map_pages: returns\n"));
 }
