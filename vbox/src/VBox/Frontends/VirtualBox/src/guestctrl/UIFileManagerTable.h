@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.h 76333 2018-12-21 12:56:44Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 76429 2018-12-23 21:25:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
@@ -192,8 +192,8 @@ protected:
     /* @p index is for model not for 'proxy' model */
     void changeLocation(const QModelIndex &index);
     void initializeFileTree();
-    void insertItemsToTree(QMap<QString,UICustomFileSystemItem*> &map, UICustomFileSystemItem *parent,
-                           bool isDirectoryMap, bool isStartDir);
+    void checkDotDot(QMap<QString,UICustomFileSystemItem*> &map, UICustomFileSystemItem *parent, bool isStartDir);
+
     virtual void     readDirectory(const QString& strPath, UICustomFileSystemItem *parent, bool isStartDir = false) = 0;
     virtual void     deleteByItem(UICustomFileSystemItem *item) = 0;
     virtual void     deleteByPath(const QStringList &pathList) = 0;
