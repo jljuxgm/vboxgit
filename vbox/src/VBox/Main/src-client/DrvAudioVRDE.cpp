@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 73685 2018-08-15 09:14:08Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 73838 2018-08-22 16:15:08Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -372,6 +372,8 @@ static DECLCALLBACK(int) drvAudioVRDEGetConfig(PPDMIHOSTAUDIO pInterface, PPDMAU
 {
     RT_NOREF(pInterface);
     AssertPtrReturn(pBackendCfg, VERR_INVALID_POINTER);
+
+    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "VRDE audio driver");
 
     pBackendCfg->cbStreamOut    = sizeof(VRDESTREAM);
     pBackendCfg->cbStreamIn     = sizeof(VRDESTREAM);
