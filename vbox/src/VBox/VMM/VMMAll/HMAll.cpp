@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 72643 2018-06-21 16:02:03Z vboxsync $ */
+/* $Id: HMAll.cpp 72744 2018-06-29 07:36:19Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -496,7 +496,10 @@ VMM_INT_DECL(bool) HMSetSingleInstruction(PVM pVM, PVMCPU pVCpu, bool fEnable)
 VMM_INT_DECL(void) HMTrapXcptUDForGIMEnable(PVMCPU pVCpu)
 {
     pVCpu->hm.s.fGIMTrapXcptUD = true;
-    HMCPU_CF_SET(pVCpu, HM_CHANGED_VMM_GUEST_XCPT_INTERCEPTS);
+    if (pVCpu->CTX_SUFF(pVM)->hm.s.vmx.fSupported)
+        ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_VMX_GUEST_XCPT_INTERCEPTS);
+    else
+        ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_SVM_GUEST_XCPT_INTERCEPTS);
 }
 
 
@@ -508,7 +511,10 @@ VMM_INT_DECL(void) HMTrapXcptUDForGIMEnable(PVMCPU pVCpu)
 VMM_INT_DECL(void) HMTrapXcptUDForGIMDisable(PVMCPU pVCpu)
 {
     pVCpu->hm.s.fGIMTrapXcptUD = false;
-    HMCPU_CF_SET(pVCpu, HM_CHANGED_VMM_GUEST_XCPT_INTERCEPTS);
+    if (pVCpu->CTX_SUFF(pVM)->hm.s.vmx.fSupported)
+        ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_VMX_GUEST_XCPT_INTERCEPTS);
+    else
+        ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_SVM_GUEST_XCPT_INTERCEPTS);
 }
 
 
