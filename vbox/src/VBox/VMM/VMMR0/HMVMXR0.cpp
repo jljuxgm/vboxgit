@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 74168 2018-09-10 06:15:17Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 74209 2018-09-12 09:48:13Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12652,8 +12652,11 @@ HMVMX_EXIT_DECL hmR0VmxExitTaskSwitch(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
             else
                 GCPtrFaultAddress = 0;
 
+            rc = hmR0VmxReadExitInstrLenVmcs(pVmxTransient);
+            AssertRCReturn(rc, rc);
+
             hmR0VmxSetPendingEvent(pVCpu, VMX_ENTRY_INT_INFO_FROM_EXIT_IDT_INFO(pVmxTransient->uIdtVectoringInfo),
-                                   0 /* cbInstr */, uErrCode, GCPtrFaultAddress);
+                                   pVmxTransient->cbInstr, uErrCode, GCPtrFaultAddress);
 
             Log4Func(("Pending event. uIntType=%#x uVector=%#x\n", uIntType, uVector));
             STAM_COUNTER_INC(&pVCpu->hm.s.StatExitTaskSwitch);
