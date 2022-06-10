@@ -1,4 +1,4 @@
-/* $Id: messagerefentry.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: messagerefentry.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Program usage and help formatting.
  */
@@ -31,9 +31,10 @@
 #include "internal/iprt.h"
 #include <iprt/message.h>
 
+#include <iprt/env.h>
+#include <iprt/err.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
-#include <iprt/env.h>
 #include <iprt/stream.h>
 #include "internal/process.h"
 

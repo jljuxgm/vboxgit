@@ -1,4 +1,4 @@
-/* $Id: RTCrRandBytes-openssl.cpp 74312 2018-09-17 14:47:59Z vboxsync $ */
+/* $Id: RTCrRandBytes-openssl.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Crypto - RTCrRandBytes implementation using OpenSSL.
  */
@@ -34,6 +34,7 @@
 
 # include <iprt/rand.h>
 # include <iprt/assert.h>
+# include <iprt/err.h>
 
 # include "internal/iprt-openssl.h"
 # include "openssl/rand.h"

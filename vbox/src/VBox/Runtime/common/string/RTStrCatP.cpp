@@ -1,4 +1,4 @@
-/* $Id: RTStrCatP.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTStrCatP.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - RTStrCat.
  */
@@ -30,6 +30,8 @@
 *********************************************************************************************************************************/
 #include <iprt/string.h>
 #include "internal/iprt.h"
+
+#include <iprt/err.h>
 
 
 RTDECL(int) RTStrCatP(char **ppszDst, size_t *pcbDst, const char *pszSrc)

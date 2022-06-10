@@ -1,4 +1,4 @@
-/* $Id: UsbTestServicePlatform-linux.cpp 69753 2017-11-19 14:27:58Z vboxsync $ */
+/* $Id: UsbTestServicePlatform-linux.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Platform
  *               specific helpers - Linux version.
@@ -29,17 +29,15 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-
 #include <iprt/asm.h>
-#include <iprt/cdefs.h>
 #include <iprt/ctype.h>
+#include <iprt/err.h>
 #include <iprt/dir.h>
 #include <iprt/env.h>
 #include <iprt/mem.h>
 #include <iprt/path.h>
 #include <iprt/process.h>
 #include <iprt/string.h>
-#include <iprt/types.h>
 
 #include <iprt/linux/sysfs.h>
 

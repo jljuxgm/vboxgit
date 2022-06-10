@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartCfg.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxAutostartCfg.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, configuration parser.
  */
@@ -19,13 +19,13 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-
-#include <iprt/stream.h>
-#include <iprt/process.h>
-#include <iprt/string.h>
-#include <iprt/mem.h>
 #include <iprt/ctype.h>
+#include <iprt/err.h>
+#include <iprt/mem.h>
 #include <iprt/message.h>
+#include <iprt/process.h>
+#include <iprt/stream.h>
+#include <iprt/string.h>
 
 #include "VBoxAutostart.h"
 

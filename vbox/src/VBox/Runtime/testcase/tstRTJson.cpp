@@ -1,4 +1,4 @@
-/* $Id: tstRTJson.cpp 76322 2018-12-20 18:02:27Z vboxsync $ */
+/* $Id: tstRTJson.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - JSON API.
  */
@@ -29,6 +29,8 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/json.h>
+
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
 

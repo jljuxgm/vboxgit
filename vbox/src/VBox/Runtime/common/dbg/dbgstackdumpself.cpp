@@ -1,4 +1,4 @@
-/* $Id: dbgstackdumpself.cpp 75235 2018-11-02 21:01:36Z vboxsync $ */
+/* $Id: dbgstackdumpself.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Dump current thread stack to buffer.
  */
@@ -31,6 +31,8 @@
 #include "internal/iprt.h"
 #include <iprt/dbg.h>
 
+#include <iprt/err.h>
+#include <iprt/string.h>
 #include <iprt/ldr.h>
 #include <iprt/list.h>
 #include <iprt/mem.h>

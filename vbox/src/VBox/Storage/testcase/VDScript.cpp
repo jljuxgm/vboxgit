@@ -1,6 +1,5 @@
-/** $Id: VDScript.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/** $Id: VDScript.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
- *
  * VBox HDD container test utility - scripting engine.
  */
 
@@ -44,11 +43,12 @@
  */
 
 #define LOGGROUP LOGGROUP_DEFAULT
-#include <iprt/string.h>
+#include <iprt/ctype.h>
+#include <iprt/err.h>
 #include <iprt/list.h>
 #include <iprt/mem.h>
-#include <iprt/ctype.h>
 #include <iprt/stream.h>
+#include <iprt/string.h>
 
 #include <VBox/log.h>
 

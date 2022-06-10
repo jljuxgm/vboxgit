@@ -1,4 +1,4 @@
-/* $Id: RTMpGetDescription-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTMpGetDescription-generic.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetDescription.
  */
@@ -33,6 +33,7 @@
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
 # include <iprt/asm-amd64-x86.h>
 #endif
+#include <iprt/err.h>
 #include <iprt/string.h>
 
 

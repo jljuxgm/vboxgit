@@ -1,4 +1,4 @@
-/* $Id: unzipcmd.cpp 72034 2018-04-26 11:32:13Z vboxsync $ */
+/* $Id: unzipcmd.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - A mini UNZIP Command.
  */
@@ -32,17 +32,13 @@
 #include <iprt/asm.h>
 #include <iprt/getopt.h>
 #include <iprt/file.h>
+#include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/message.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
 #include <iprt/vfs.h>
 #include <iprt/stream.h>
-
-
-/*********************************************************************************************************************************
-*   Defined Constants And Macros                                                                                                 *
-*********************************************************************************************************************************/
 
 
 /*********************************************************************************************************************************

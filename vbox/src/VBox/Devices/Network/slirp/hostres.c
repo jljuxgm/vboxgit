@@ -1,4 +1,4 @@
-/* $Id: hostres.c 76031 2018-12-06 20:24:40Z vboxsync $ */
+/* $Id: hostres.c 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * Host resolver
  */
@@ -18,8 +18,9 @@
 #ifndef RT_OS_WINDOWS
 # include <netdb.h>
 #endif
-#include <iprt/ctype.h>
 #include <iprt/assert.h>
+#include <iprt/ctype.h>
+#include <iprt/err.h>
 #include <slirp.h>
 
 #define isdigit(ch)    RT_C_IS_DIGIT(ch)

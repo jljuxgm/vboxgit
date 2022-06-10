@@ -1,4 +1,4 @@
-/* $Id: uri.cpp 74424 2018-09-22 20:00:36Z vboxsync $ */
+/* $Id: uri.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Uniform Resource Identifier handling.
  */
@@ -32,6 +32,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
+#include <iprt/err.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
 

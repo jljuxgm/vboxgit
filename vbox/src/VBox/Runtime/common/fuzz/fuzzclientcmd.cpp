@@ -1,4 +1,4 @@
-/* $Id: fuzzclientcmd.cpp 72940 2018-07-07 13:37:19Z vboxsync $ */
+/* $Id: fuzzclientcmd.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, fuzzed client command.
  */
@@ -33,6 +33,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/buildconfig.h>
+#include <iprt/err.h>
 #include <iprt/getopt.h>
 #include <iprt/mem.h>
 #include <iprt/message.h>

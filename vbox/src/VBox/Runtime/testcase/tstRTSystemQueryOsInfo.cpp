@@ -1,4 +1,4 @@
-/* $Id: tstRTSystemQueryOsInfo.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTSystemQueryOsInfo.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSystemQueryOSInfo.
  */
@@ -31,6 +31,7 @@
 #include <iprt/system.h>
 
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
 

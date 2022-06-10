@@ -1,4 +1,4 @@
-/* $Id: tstRTSemEventMulti.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTSemEventMulti.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - Multiple Release Event Semaphores.
  */
@@ -32,6 +32,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/rand.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>

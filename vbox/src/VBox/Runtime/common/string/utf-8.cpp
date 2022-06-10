@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 70156 2017-12-15 15:52:10Z vboxsync $ */
+/* $Id: utf-8.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -29,6 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/string.h>
+#include <iprt/latin1.h>
 #include "internal/iprt.h"
 
 #include <iprt/uni.h>

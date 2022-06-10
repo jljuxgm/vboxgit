@@ -1,4 +1,4 @@
-/* $Id: reqpool.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: reqpool.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Request Pool.
  */
@@ -34,6 +34,7 @@
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #include <iprt/critsect.h>
+#include <iprt/err.h>
 #include <iprt/list.h>
 #include <iprt/log.h>
 #include <iprt/mem.h>

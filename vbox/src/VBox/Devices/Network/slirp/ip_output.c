@@ -1,4 +1,4 @@
-/* $Id: ip_output.c 72830 2018-07-03 16:15:04Z vboxsync $ */
+/* $Id: ip_output.c 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * NAT - IP output.
  */
@@ -62,6 +62,7 @@
  */
 
 #include <slirp.h>
+#include <iprt/err.h>
 #include "alias.h"
 
 static const uint8_t broadcast_ethaddr[6] =

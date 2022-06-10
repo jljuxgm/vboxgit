@@ -1,4 +1,4 @@
-/* $Id: RTStrNLenEx.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTStrNLenEx.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - RTStrNLenEx.
  */
@@ -30,6 +30,8 @@
 *********************************************************************************************************************************/
 #include <iprt/string.h>
 #include "internal/iprt.h"
+
+#include <iprt/err.h>
 
 
 RTDECL(int) RTStrNLenEx(const char *pszString, size_t cchMax, size_t *pcch)

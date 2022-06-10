@@ -1,4 +1,4 @@
-/* $Id: RTCat.cpp 69593 2017-11-06 12:44:18Z vboxsync $ */
+/* $Id: RTCat.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - cat like utility.
  */
@@ -31,6 +31,7 @@
 #include <iprt/vfs.h>
 
 #include <iprt/buildconfig.h>
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>

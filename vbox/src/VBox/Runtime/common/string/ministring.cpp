@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 74262 2018-09-14 12:49:31Z vboxsync $ */
+/* $Id: ministring.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -32,8 +32,12 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/cpp/ministring.h>
+#include "internal/iprt.h"
+
 #include <iprt/ctype.h>
 #include <iprt/uni.h>
+#include <iprt/err.h>
+
 
 
 /*********************************************************************************************************************************

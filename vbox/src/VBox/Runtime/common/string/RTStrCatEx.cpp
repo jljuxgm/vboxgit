@@ -1,4 +1,4 @@
-/* $Id: RTStrCatEx.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTStrCatEx.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - RTStrCatEx
  */
@@ -30,6 +30,8 @@
 *********************************************************************************************************************************/
 #include <iprt/string.h>
 #include "internal/iprt.h"
+
+#include <iprt/err.h>
 
 
 RTDECL(int) RTStrCatEx(char *pszDst, size_t cbDst, const char *pszSrc, size_t cchMaxSrc)

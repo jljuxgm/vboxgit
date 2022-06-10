@@ -1,4 +1,4 @@
-/* $Id: tstRand.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRand.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Testcase for the RTRand API.
  */
@@ -29,6 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/rand.h>
+#include <iprt/err.h>
 #include <iprt/stream.h>
 #include <iprt/initterm.h>
 #include <iprt/string.h>

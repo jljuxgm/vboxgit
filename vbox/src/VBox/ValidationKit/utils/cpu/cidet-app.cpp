@@ -1,4 +1,4 @@
-/* $Id: cidet-app.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: cidet-app.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - Ring-3 Driver Application.
  */
@@ -32,6 +32,7 @@
 
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/buildconfig.h>
+#include <iprt/err.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>

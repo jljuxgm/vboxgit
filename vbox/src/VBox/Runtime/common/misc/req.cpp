@@ -1,4 +1,4 @@
-/* $Id: req.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: req.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Request packets
  */
@@ -33,6 +33,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/asm.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/time.h>
 #include <iprt/semaphore.h>

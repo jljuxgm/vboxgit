@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -31,9 +31,10 @@
 #include "the-linux-kernel.h"
 
 #include <iprt/memobj.h>
-#include <iprt/alloc.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/log.h>
+#include <iprt/mem.h>
 #include <iprt/process.h>
 #include <iprt/string.h>
 #include "internal/memobj.h"

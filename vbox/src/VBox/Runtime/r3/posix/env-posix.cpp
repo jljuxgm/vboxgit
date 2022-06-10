@@ -1,4 +1,4 @@
-/* $Id: env-posix.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: env-posix.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Environment, Posix.
  */
@@ -33,12 +33,14 @@
 # define _POSIX_C_SOURCE 1
 #endif
 #include <iprt/env.h>
-#include <iprt/string.h>
+
 #include <iprt/alloca.h>
 #include <iprt/assert.h>
 #if defined(DEBUG) && defined(RT_OS_LINUX)
 # include <iprt/asm.h>
 #endif
+#include <iprt/err.h>
+#include <iprt/string.h>
 
 #include <stdlib.h>
 #include <errno.h>

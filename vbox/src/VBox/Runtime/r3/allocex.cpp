@@ -1,4 +1,4 @@
-/* $Id: allocex.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: allocex.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc and Free Functions for Ring-3, posix.
  */
@@ -33,6 +33,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include "internal/magics.h"
 #include "allocex.h"

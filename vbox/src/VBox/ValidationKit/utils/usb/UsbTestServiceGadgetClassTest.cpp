@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetClassTest.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetClassTest.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget class
  *               for the test device.
@@ -29,11 +29,10 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-
 #include <iprt/asm.h>
-#include <iprt/cdefs.h>
 #include <iprt/ctype.h>
 #include <iprt/dir.h>
+#include <iprt/err.h>
 #include <iprt/env.h>
 #include <iprt/mem.h>
 #include <iprt/path.h>
@@ -41,7 +40,6 @@
 #include <iprt/string.h>
 #include <iprt/symlink.h>
 #include <iprt/thread.h>
-#include <iprt/types.h>
 
 #include <iprt/linux/sysfs.h>
 

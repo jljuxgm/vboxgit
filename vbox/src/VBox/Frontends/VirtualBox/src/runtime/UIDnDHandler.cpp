@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 71430 2018-03-21 13:19:58Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -62,6 +62,7 @@
 #endif
 #define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <VBox/log.h>
+#include <iprt/err.h>
 
 #if 0
 # ifdef DEBUG

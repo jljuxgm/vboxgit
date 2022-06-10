@@ -1,4 +1,4 @@
-/* $Id: time.cpp 74150 2018-09-07 19:59:14Z vboxsync $ */
+/* $Id: time.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Time.
  */
@@ -32,9 +32,10 @@
 #include <iprt/time.h>
 #include "internal/iprt.h"
 
-#include <iprt/ctype.h>
-#include <iprt/string.h>
 #include <iprt/assert.h>
+#include <iprt/ctype.h>
+#include <iprt/err.h>
+#include <iprt/string.h>
 #include "internal/time.h"
 
 

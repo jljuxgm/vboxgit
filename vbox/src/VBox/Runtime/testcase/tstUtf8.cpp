@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstUtf8.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -29,6 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/string.h>
+#include <iprt/latin1.h>
 
 #include <iprt/alloc.h>
 #include <iprt/assert.h>

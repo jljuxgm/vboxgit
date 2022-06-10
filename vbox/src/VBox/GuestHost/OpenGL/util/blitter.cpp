@@ -1,4 +1,4 @@
-/* $Id: blitter.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: blitter.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * Blitter API implementation
  */
@@ -39,8 +39,7 @@ DECLINLINE(void) crWarning(const char *format, ... ) {}
 # include "cr_bmpscale.h"
 #endif
 
-#include <iprt/cdefs.h>
-#include <iprt/types.h>
+#include <iprt/err.h>
 #include <iprt/mem.h>
 
 

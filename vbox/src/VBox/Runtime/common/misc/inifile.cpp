@@ -1,4 +1,4 @@
-/* $Id: inifile.cpp 69062 2017-10-12 15:05:52Z vboxsync $ */
+/* $Id: inifile.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - INI-file parser.
  */
@@ -35,6 +35,7 @@
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
 #include <iprt/err.h>
+#include <iprt/latin1.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/vfs.h>

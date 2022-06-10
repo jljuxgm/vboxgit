@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 73505 2018-08-05 13:58:10Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -23,6 +23,7 @@
 
 #include <iprt/ctype.h>
 #include <iprt/dir.h>
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/manifest.h>
 #include <iprt/param.h>

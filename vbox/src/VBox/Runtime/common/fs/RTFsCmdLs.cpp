@@ -1,4 +1,4 @@
-/* $Id: RTFsCmdLs.cpp 73502 2018-08-05 12:40:50Z vboxsync $ */
+/* $Id: RTFsCmdLs.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - /bin/ls like utility for testing the VFS code.
  */
@@ -31,6 +31,7 @@
 #include <iprt/vfs.h>
 
 #include <iprt/buildconfig.h>
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>

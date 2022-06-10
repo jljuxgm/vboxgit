@@ -1,4 +1,4 @@
-/* $Id: RTCp.cpp 75119 2018-10-26 20:20:04Z vboxsync $ */
+/* $Id: RTCp.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - cp like utility.
  */
@@ -33,6 +33,7 @@
 #include <iprt/buildconfig.h>
 #include <iprt/file.h>
 #include <iprt/fs.h>
+#include <iprt/err.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
 #include <iprt/message.h>

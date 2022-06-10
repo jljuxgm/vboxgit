@@ -1,4 +1,4 @@
-/* $Id: VBoxCAPI.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxCAPI.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file VBoxCAPI.cpp
  * Utility functions to use with the C API binding.
  */
@@ -27,11 +27,12 @@
 # include <stdlib.h>
 #endif /* VBOX_WITH_XPCOM */
 
+#include <iprt/env.h>
+#include <iprt/err.h>
 #include <iprt/initterm.h>
+#include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/uuid.h>
-#include <iprt/env.h>
-#include <iprt/mem.h>
 #include <VBox/log.h>
 #include <VBox/version.h>
 

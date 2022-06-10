@@ -1,4 +1,4 @@
-/* $Id: TestBoxHelper.cpp 69794 2017-11-21 14:48:12Z vboxsync $ */
+/* $Id: TestBoxHelper.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Testbox C Helper Utility.
  */
@@ -30,6 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/buildconfig.h>
 #include <iprt/env.h>
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/path.h>
 #include <iprt/getopt.h>

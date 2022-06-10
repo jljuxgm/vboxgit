@@ -1,4 +1,4 @@
-/* $Id: cidr.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: cidr.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - IPv4 address parsing.
  */
@@ -33,6 +33,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>
 

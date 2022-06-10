@@ -1,4 +1,4 @@
-/* $Id: tstRTLocalIpc.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTLocalIpc.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTLocalIpc API.
  */
@@ -32,6 +32,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/env.h>
+#include <iprt/err.h>
 #include <iprt/initterm.h>
 #include <iprt/mem.h>
 #include <iprt/message.h>

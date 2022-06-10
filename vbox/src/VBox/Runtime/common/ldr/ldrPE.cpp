@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 75085 2018-10-25 17:59:43Z vboxsync $ */
+/* $Id: ldrPE.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -36,6 +36,7 @@
 #include <iprt/asm.h>
 #include <iprt/dbg.h>
 #include <iprt/err.h>
+#include <iprt/latin1.h>
 #include <iprt/log.h>
 #include <iprt/md5.h>
 #include <iprt/mem.h>

@@ -1,4 +1,4 @@
-/* $Id: AuthLibrary.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: AuthLibrary.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * Main - External authentication library interface.
  */
@@ -18,6 +18,7 @@
 #include "AuthLibrary.h"
 #include "Logging.h"
 
+#include <iprt/err.h>
 #include <iprt/ldr.h>
 #include <iprt/path.h>
 #include <iprt/string.h>

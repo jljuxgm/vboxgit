@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 74982 2018-10-22 19:53:20Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -23,6 +23,7 @@
 #include <iprt/buildconfig.h>
 #include <iprt/ctype.h>
 #include <iprt/dbg.h>
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
@@ -196,7 +197,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 74982 2018-10-22 19:53:20Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 76346 2018-12-22 00:51:28Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -2146,7 +2147,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                char szRev[] = "$Revision: 74982 $";
+                char szRev[] = "$Revision: 76346 $";
                 char *psz = szRev;
                 while (*psz && !RT_C_IS_DIGIT(*psz))
                     psz++;

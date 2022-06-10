@@ -1,4 +1,4 @@
-/* $Id: cr_blitter.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: cr_blitter.h 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * Blitter API.
  */
@@ -18,8 +18,8 @@
 #ifndef ___cr_blitter_h
 #define ___cr_blitter_h
 
-#include <iprt/cdefs.h>
 #include <iprt/asm.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include "cr_vreg.h"
 #ifdef IN_VMSVGA3D

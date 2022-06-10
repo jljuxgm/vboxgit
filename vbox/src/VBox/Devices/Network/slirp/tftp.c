@@ -1,4 +1,4 @@
-/* $Id: tftp.c 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: tftp.c 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -42,8 +42,9 @@
  */
 
 #include <slirp.h>
-#include <iprt/file.h>
 #include <iprt/asm-math.h>
+#include <iprt/file.h>
+#include <iprt/err.h>
 
 typedef enum ENMTFTPSESSIONFMT
 {

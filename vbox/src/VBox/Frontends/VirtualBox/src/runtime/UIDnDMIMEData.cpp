@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: UIDnDMIMEData.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class implementation.
  */
@@ -33,6 +33,7 @@
 #undef LOG_GROUP
 #define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <VBox/log.h>
+#include <iprt/err.h>
 
 
 UIDnDMIMEData::UIDnDMIMEData(UIDnDHandler *pDnDHandler,

@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 75244 2018-11-03 03:05:11Z vboxsync $ */
+/* $Id: dbgmodcodeview.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -52,6 +52,7 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/file.h>
+#include <iprt/latin1.h>
 #include <iprt/log.h>
 #include <iprt/mem.h>
 #include <iprt/param.h>

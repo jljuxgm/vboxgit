@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 70688 2018-01-22 19:38:45Z vboxsync $ */
+/* $Id: VSCSIInternal.h 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -20,6 +20,7 @@
 #include <VBox/vscsi.h>
 #include <VBox/scsi.h>
 #include <VBox/scsiinline.h>
+#include <iprt/err.h>
 #include <iprt/memcache.h>
 #include <iprt/sg.h>
 #include <iprt/list.h>

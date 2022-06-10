@@ -1,4 +1,4 @@
-/* $Id: RTPathRmCmd.cpp 71217 2018-03-05 21:06:41Z vboxsync $ */
+/* $Id: RTPathRmCmd.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - RM Command.
  */
@@ -32,6 +32,7 @@
 
 #include <iprt/buildconfig.h>
 #include <iprt/ctype.h>
+#include <iprt/err.h>
 #include <iprt/file.h>
 #include <iprt/dir.h>
 #include <iprt/getopt.h>

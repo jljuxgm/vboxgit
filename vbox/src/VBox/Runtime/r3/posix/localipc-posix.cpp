@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: localipc-posix.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -36,6 +36,7 @@
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
 #include <iprt/critsect.h>
+#include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/log.h>
 #include <iprt/poll.h>

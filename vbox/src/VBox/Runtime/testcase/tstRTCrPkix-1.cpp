@@ -1,4 +1,4 @@
-/* $Id: tstRTCrPkix-1.cpp 73807 2018-08-22 08:02:29Z vboxsync $ */
+/* $Id: tstRTCrPkix-1.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT testcase - Crypto - Public-Key Infrastructure \#1.
  */
@@ -30,6 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/crypto/pkix.h>
 
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
 #include <iprt/crypto/key.h>

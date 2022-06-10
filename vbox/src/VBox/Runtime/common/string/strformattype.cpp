@@ -1,4 +1,4 @@
-/* $Id: strformattype.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: strformattype.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions, Dynamic Types.
  */
@@ -32,9 +32,10 @@
 #include <iprt/string.h>
 #include "internal/iprt.h"
 
-#include <iprt/assert.h>
-#include <iprt/stdarg.h>
 #include <iprt/asm.h>
+#include <iprt/assert.h>
+#include <iprt/err.h>
+#include <iprt/stdarg.h>
 #include "internal/string.h"
 
 

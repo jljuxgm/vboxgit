@@ -1,4 +1,4 @@
-/* $Id: tstRTLdrVerifyPeImage.cpp 74760 2018-10-11 11:25:24Z vboxsync $ */
+/* $Id: tstRTLdrVerifyPeImage.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * SUP Testcase - Testing the Authenticode signature verification code.
  */
@@ -28,12 +28,14 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <iprt/test.h>
-#include <iprt/mem.h>
 #include <iprt/ldr.h>
+
+#include <iprt/err.h>
+#include <iprt/mem.h>
 #include <iprt/path.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
+#include <iprt/test.h>
 
 
 /*********************************************************************************************************************************

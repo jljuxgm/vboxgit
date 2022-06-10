@@ -1,4 +1,4 @@
-/* $Id: strformatnum.cpp 75129 2018-10-28 17:00:27Z vboxsync $ */
+/* $Id: strformatnum.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - String Formatter, Single Numbers.
  */
@@ -33,6 +33,7 @@
 #include "internal/iprt.h"
 
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include "internal/string.h"
 
 

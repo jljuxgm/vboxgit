@@ -1,4 +1,4 @@
-/* $Id: tstRTDirCreateUniqueNumbered.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: tstRTDirCreateUniqueNumbered.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - Unique directory creation.
  */
@@ -30,6 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/dir.h>
 
+#include <iprt/err.h>
 #include <iprt/path.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>

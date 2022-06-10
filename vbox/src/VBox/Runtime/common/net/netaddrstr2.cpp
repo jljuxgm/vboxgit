@@ -1,4 +1,4 @@
-/* $Id: netaddrstr2.cpp 76061 2018-12-07 15:13:22Z vboxsync $ */
+/* $Id: netaddrstr2.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Network Address String Handling.
  */
@@ -32,6 +32,7 @@
 #include <iprt/net.h>
 
 #include <iprt/asm.h>
+#include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>

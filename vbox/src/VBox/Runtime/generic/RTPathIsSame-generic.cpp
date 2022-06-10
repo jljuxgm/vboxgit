@@ -1,4 +1,4 @@
-/* $Id: RTPathIsSame-generic.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: RTPathIsSame-generic.cpp 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * IPRT - Assertions, generic RTPathIsSame.
  */
@@ -31,6 +31,7 @@
 #include <iprt/path.h>
 #include "internal/iprt.h"
 
+#include <iprt/err.h>
 #include <iprt/string.h>
 
 

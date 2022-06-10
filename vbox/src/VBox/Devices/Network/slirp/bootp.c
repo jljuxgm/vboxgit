@@ -1,4 +1,4 @@
-/* $Id: bootp.c 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: bootp.c 76346 2018-12-22 00:51:28Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -40,8 +40,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 #include <slirp.h>
 #include <libslirp.h>
+#include <iprt/err.h>
 
 /** Entry in the table of known DHCP clients. */
 typedef struct
