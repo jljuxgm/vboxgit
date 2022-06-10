@@ -1,4 +1,4 @@
-/* $Id: fileio-sg-at-posix.cpp 77632 2019-03-10 13:33:52Z vboxsync $ */
+/* $Id: fileio-sg-at-posix.cpp 77633 2019-03-10 14:46:32Z vboxsync $ */
 /** @file
  * IPRT - File I/O, RTFileSgReadAt & RTFileSgWriteAt, posixy.
  */
@@ -63,6 +63,10 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
+# include <limits.h>
+# if defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD) || defined(RT_OS_NETBSD) || defined(RT_OS_OPENBSD)
+#  include <sys/syslimits.h>
+# endif
 
 # include "internal/iprt.h"
 # include <iprt/file.h>
@@ -72,7 +76,11 @@
 # include <iprt/log.h>
 
 # ifndef UIO_MAXIOV
-#  error "UIO_MAXIOV is undefined"
+#  ifdef IOV_MAX
+#   define UIO_MAXIOV IOV_MAX
+#  else
+#   error "UIO_MAXIOV and IOV_MAX are undefined"
+#  endif
 # endif
 
 
