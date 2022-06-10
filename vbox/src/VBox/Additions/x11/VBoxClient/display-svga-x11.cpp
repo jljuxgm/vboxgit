@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 77265 2019-02-11 15:47:23Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 77938 2019-03-28 13:57:54Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -196,7 +196,7 @@ static void x11SendHints(struct X11CONTEXT *pContext, struct X11VMWRECT *pRects,
      * simpler code to negligeably improved efficiency, so we just always try
      * both requests instead of doing version checks or caching. */
     x11GetRequest(pContext, pContext->hVMWMajor, X11_VMW_RESOLUTION_REQUEST,
-                  sizeof(struct X11VMWTOPOLOGYREQ),
+                  sizeof(struct X11VMWRESOLUTIONREQ),
                   (struct X11REQHEADER **)&pReqResolution);
     pReqResolution->idX11Screen = DefaultScreen(pContext->pDisplay);
     pReqResolution->w = pRects[0].w;
