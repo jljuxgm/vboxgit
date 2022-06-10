@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 76188 2018-12-12 16:08:40Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 76189 2018-12-12 16:10:02Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -3737,7 +3737,8 @@ static DECLCALLBACK(int) ichac97R3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, 
         const PAC97STREAM pStream = &pThis->aStreams[i];
 
         rc2 = ichac97R3StreamEnable(pThis, pStream, fEnable);
-        if (RT_SUCCESS(rc2))
+        if (   fEnable
+            && RT_SUCCESS(rc2))
         {
             /* Re-arm the timer for this stream. */
             rc2 = ichac97R3TimerSet(pThis, pStream,
