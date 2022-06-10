@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 77370 2019-02-20 08:04:38Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 77371 2019-02-20 08:11:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1670,6 +1670,7 @@ void Display::i_VideoAccelVRDP(bool fEnable, int c)
     VIDEOACCEL *pVideoAccel = &mVideoAccelLegacy;
 
     Assert (c >= 0);
+    RT_NOREF(fEnable);
 
     /* This can run concurrently with Display videoaccel state change. */
     RTCritSectEnter(&mVideoAccelLock);
