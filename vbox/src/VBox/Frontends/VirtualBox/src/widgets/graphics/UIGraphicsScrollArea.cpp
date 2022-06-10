@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollArea.cpp 77310 2019-02-14 13:22:39Z vboxsync $ */
+/* $Id: UIGraphicsScrollArea.cpp 77923 2019-03-27 14:43:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollArea class implementation.
  */
@@ -95,6 +95,11 @@ void UIGraphicsScrollArea::setViewport(QIGraphicsWidget *pViewport)
 QIGraphicsWidget *UIGraphicsScrollArea::viewport() const
 {
     return m_pViewport;
+}
+
+void UIGraphicsScrollArea::scrollBy(int iDelta)
+{
+    m_pScrollBar->setValue(m_pScrollBar->value() + iDelta);
 }
 
 void UIGraphicsScrollArea::makeSureRectIsVisible(const QRectF &rect)

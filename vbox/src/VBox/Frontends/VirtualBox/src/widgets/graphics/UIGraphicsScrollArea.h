@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollArea.h 77228 2019-02-08 18:05:46Z vboxsync $ */
+/* $Id: UIGraphicsScrollArea.h 77923 2019-03-27 14:43:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollArea class declaration.
  */
@@ -48,6 +48,9 @@ public:
     void setViewport(QIGraphicsWidget *pViewport);
     /** Returns scroll-area viewport. */
     QIGraphicsWidget *viewport() const;
+
+    /** Performs scrolling by @a iDelta pixels. */
+    void scrollBy(int iDelta);
 
     /** Makes sure passed @a rect is visible. */
     void makeSureRectIsVisible(const QRectF &rect);
