@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 73973 2018-08-30 10:21:55Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 73974 2018-08-30 10:26:08Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2373,7 +2373,6 @@ HRESULT Appliance::i_writeFSOCI(TaskOCI *pTask)
     RT_NOREF(pTask); // XXX
     LogFlowFuncEnter();
     HRESULT hrc = S_OK;
-    int vrc = VINF_SUCCESS;
     ComPtr<ICloudProviderManager> cpm;
     hrc = mVirtualBox->COMGETTER(CloudProviderManager)(cpm.asOutParam());
 
