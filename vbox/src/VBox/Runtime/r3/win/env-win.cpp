@@ -1,4 +1,4 @@
-/* $Id: env-win.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: env-win.cpp 76359 2018-12-22 01:33:33Z vboxsync $ */
 /** @file
  * IPRT - Environment, Posix.
  */
@@ -32,6 +32,7 @@
 
 #include <iprt/alloca.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/string.h>
 #include <iprt/mem.h>
 
