@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 77208 2019-02-07 23:45:26Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 77367 2019-02-19 17:11:53Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1030,6 +1030,10 @@ DECLHIDDEN(int) rtR0MemObjNativeEnterPhys(PPRTR0MEMOBJINTERNAL ppMem, RTHCPHYS P
 #if    LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 0) \
     && LINUX_VERSION_CODE <  KERNEL_VERSION(4, 6, 0) \
     && defined(FAULT_FLAG_REMOTE)
+# define GET_USER_PAGES_API     KERNEL_VERSION(4, 10, 0) /* no typo! */
+/* The get_user_pages API change was back-ported to 4.4.168. */
+#elif    LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 168) \
+      && LINUX_VERSION_CODE <  KERNEL_VERSION(4, 5, 0)
 # define GET_USER_PAGES_API     KERNEL_VERSION(4, 10, 0) /* no typo! */
 #else
 # define GET_USER_PAGES_API     LINUX_VERSION_CODE
