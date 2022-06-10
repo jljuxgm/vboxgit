@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 77986 2019-04-02 16:53:28Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 77988 2019-04-02 17:46:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -183,6 +183,7 @@ UIMainEventListener::UIMainEventListener()
     qRegisterMetaType<KSessionState>("KSessionState");
     qRegisterMetaType< QVector<uint8_t> >("QVector<uint8_t>");
     qRegisterMetaType<CNetworkAdapter>("CNetworkAdapter");
+    qRegisterMetaType<CMedium>("CMedium");
     qRegisterMetaType<CMediumAttachment>("CMediumAttachment");
     qRegisterMetaType<CUSBDevice>("CUSBDevice");
     qRegisterMetaType<CVirtualBoxErrorInfo>("CVirtualBoxErrorInfo");
