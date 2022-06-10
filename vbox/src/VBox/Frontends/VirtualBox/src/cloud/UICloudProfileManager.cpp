@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 75209 2018-10-31 16:41:46Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 75223 2018-11-02 12:40:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -21,12 +21,12 @@
 
 /* Qt includes: */
 # include <QHeaderView>
-# include <QInputDialog>
 # include <QPushButton>
 # include <QVBoxLayout>
 
 /* GUI includes: */
 # include "QIDialogButtonBox.h"
+# include "QIInputDialog.h"
 # include "QITreeWidget.h"
 # include "VBoxGlobal.h"
 # include "UIActionPoolManager.h"
@@ -294,17 +294,19 @@ void UICloudProfileManagerWidget::sltAddCloudProfile()
     QString strProfileName = m_pDetailsWidget->data().m_strName;
     if (strProfileName.isEmpty())
     {
-        QPointer<QInputDialog> pDialog = new QInputDialog(this);
-        pDialog->setInputMode(QInputDialog::TextInput);
-        pDialog->setWindowIcon(UIIconPool::iconSet(":/cloud_profile_add_16px.png"));
-        pDialog->setWindowTitle(tr("Add Profile"));
-        pDialog->setLabelText(tr("Name:"));
-        bool fCancelled = false;
-        if (pDialog->exec() == QDialog::Accepted)
-            strProfileName = pDialog->textValue();
-        else
-            fCancelled = true;
-        delete pDialog;
+        bool fCancelled = true;
+        QISafePointerInputDialog pDialog = new QIInputDialog(this);
+        if (pDialog)
+        {
+            pDialog->setWindowIcon(UIIconPool::iconSet(":/cloud_profile_add_16px.png"));
+            pDialog->setWindowTitle(tr("Add Profile"));
+            if (pDialog->exec() == QDialog::Accepted)
+            {
+                strProfileName = pDialog->textValue();
+                fCancelled = false;
+            }
+            delete pDialog;
+        }
         if (fCancelled)
             return;
     }
