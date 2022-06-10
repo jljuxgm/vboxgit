@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 73729 2018-08-17 09:04:00Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 73730 2018-08-17 09:39:17Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1841,6 +1841,14 @@ static int dsoundControlStreamOut(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStreamDS,
                 if (FAILED(hr))
                     rc = VERR_ACCESS_DENIED; /** @todo Find a better rc. */
             }
+            break;
+        }
+
+        case PDMAUDIOSTREAMCMD_DROP:
+        {
+            pStreamDS->Out.cbLastTransferred   = 0;
+            pStreamDS->Out.tsLastTransferredMs = 0;
+            RTCircBufReset(pStreamDS->pCircBuf);
             break;
         }
 
