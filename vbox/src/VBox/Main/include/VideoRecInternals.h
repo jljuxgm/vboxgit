@@ -1,4 +1,4 @@
-/* $Id: VideoRecInternals.h 74999 2018-10-23 13:50:28Z vboxsync $ */
+/* $Id: VideoRecInternals.h 75005 2018-10-23 15:17:30Z vboxsync $ */
 /** @file
  * Video recording internals header.
  */
@@ -18,6 +18,7 @@
 #ifndef ____H_VIDEOREC_INTERNALS
 #define ____H_VIDEOREC_INTERNALS
 
+#include <iprt/types.h> /* drag in stdint.h before vpx does it. */
 #include <list>
 
 #ifdef VBOX_WITH_LIBVPX
