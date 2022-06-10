@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 77592 2019-03-07 08:46:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -42,8 +42,9 @@ protected:
 
     bool createMachineFolder();
     /** Removes a previously created folder (if exists) before creating a new one.
-     *  used during page cleanup and new folder creation. */
-    bool cleanupMachineFolder();
+     *  used during page cleanup and new folder creation. Called upon page Next/Back and
+     *  wizard cancel */
+    bool cleanupMachineFolder(bool fWizardCancel = false);
 
     QString machineFilePath() const;
     void setMachineFilePath(const QString &strMachineFilePath);
@@ -76,6 +77,7 @@ private:
     QString m_strGroup;
     bool m_fSupportsHWVirtEx;
     bool m_fSupportsLongMode;
+    friend class UIWizardNewVM;
 };
 
 /* 1st page of the New Virtual Machine wizard (basic extension): */

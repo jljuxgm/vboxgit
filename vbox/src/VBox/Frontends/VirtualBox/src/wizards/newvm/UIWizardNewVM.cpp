@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 77592 2019-03-07 08:46:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -55,6 +55,8 @@ UIWizardNewVM::UIWizardNewVM(QWidget *pParent, const QString &strGroup /* = QStr
 #endif /* VBOX_WS_MAC */
     /* Register classes: */
     qRegisterMetaType<CGuestOSType>();
+
+    connect(this, &UIWizardNewVM::rejected, this, &UIWizardNewVM::sltHandleWizardCancel);
 }
 
 void UIWizardNewVM::prepare()
@@ -323,6 +325,29 @@ bool UIWizardNewVM::createVM()
         field("virtualDisk").value<CMedium>().detach();
 
     return true;
+}
+
+void UIWizardNewVM::sltHandleWizardCancel()
+{
+    switch (mode())
+    {
+        case WizardMode_Basic:
+        {
+            UIWizardNewVMPageBasic1 *pPage1 = qobject_cast<UIWizardNewVMPageBasic1*> (page(Page1));
+            if (pPage1)
+                pPage1->cleanupMachineFolder(true);
+            break;
+        }
+        case WizardMode_Expert:
+        {
+            UIWizardNewVMPageExpert *pPage = qobject_cast<UIWizardNewVMPageExpert*> (page(PageExpert));
+            if (pPage)
+                pPage->cleanupMachineFolder(true);
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 void UIWizardNewVM::retranslateUi()

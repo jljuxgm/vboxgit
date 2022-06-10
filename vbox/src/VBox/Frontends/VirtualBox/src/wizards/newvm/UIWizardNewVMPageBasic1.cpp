@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 77592 2019-03-07 08:46:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -244,7 +244,6 @@ bool UIWizardNewVMPage1::createMachineFolder()
 
     composeMachineFilePath();
 
-
     /* Check if the folder already exists and check if it has been created by this wizard */
     if (QDir(m_strMachineFolder).exists())
     {
@@ -270,10 +269,13 @@ bool UIWizardNewVMPage1::createMachineFolder()
     return true;
 }
 
-bool UIWizardNewVMPage1::cleanupMachineFolder()
+bool UIWizardNewVMPage1::cleanupMachineFolder(bool fWizardCancel /* = false */)
 {
     /* Make sure folder was previosly created: */
-    if (!m_strCreatedFolder.isEmpty() && m_strCreatedFolder != m_strMachineFolder)
+    if (m_strCreatedFolder.isEmpty())
+        return true;
+    /* Clean this folder if the machine folder has been changed by the user or we are cancelling the wizard: */
+    if (m_strCreatedFolder != m_strMachineFolder || fWizardCancel)
     {
         /* Try to cleanup folder (and it's predecessors): */
         bool fMachineFolderRemoved = QDir().rmpath(m_strCreatedFolder);

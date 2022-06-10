@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 77592 2019-03-07 08:46:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -67,6 +67,10 @@ protected:
     friend class UIWizardNewVMPageBasic3;
     friend class UIWizardNewVMPageExpert;
 
+private slots:
+
+    void sltHandleWizardCancel();
+
 private:
 
     /* Translation stuff: */
@@ -89,4 +93,3 @@ private:
 typedef QPointer<UIWizardNewVM> UISafePointerWizardNewVM;
 
 #endif /* !FEQT_INCLUDED_SRC_wizards_newvm_UIWizardNewVM_h */
-
