@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientRequestBase.cpp 74425 2018-09-23 15:41:48Z vboxsync $ */
+/* $Id: RTCRestClientRequestBase.cpp 74728 2018-10-09 22:52:12Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientRequestBase implementation.
  */
@@ -93,7 +93,6 @@ int RTCRestClientRequestBase::doPathParameters(RTCString *a_pStrPath, const char
     }
 
     /* Replace with actual values: */
-    RTCString strTmpVal;
     for (size_t i = 0; i < a_cPathParams; i++)
     {
         AssertReturn(   (a_paPathParams[i].fFlags & RTCRestObjectBase::kCollectionFormat_Mask)
@@ -106,7 +105,12 @@ int RTCRestClientRequestBase::doPathParameters(RTCString *a_pStrPath, const char
                         ("Path parameter '%s' is not set!\n", a_paPathParams[i].pszName),
                         VERR_REST_PATH_PARAMETER_NOT_SET);
 
-        rc = a_paPathParamStates[i].pObj->toString(&strTmpVal, a_paPathParams[i].fFlags);
+        RTCString strPathParam;
+        rc = a_paPathParamStates[i].pObj->toString(&strPathParam, a_paPathParams[i].fFlags);
+        AssertRCReturn(rc, rc);
+
+        RTCString strTmpVal;
+        rc = strTmpVal.printfNoThrow("%RMpa", strPathParam.c_str()); /* urlencode */
         AssertRCReturn(rc, rc);
 
         /* Replace. */
