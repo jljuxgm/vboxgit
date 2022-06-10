@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 77472 2019-02-26 15:55:06Z vboxsync $
+# $Id: vbox.py 77516 2019-03-01 09:12:30Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77472 $"
+__version__ = "$Revision: 77516 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1835,10 +1835,8 @@ class TestDriver(base.TestDriver):                                              
             # Testbox debugging - START - TEMPORARY, REMOVE ASAP.
             if self.sHost in ('darwin', 'freebsd', 'linux', 'solaris', ):
                 try:
-                    reporter.log('> ls -la %s' % (os.path.join(self.sScratchPath, 'VBoxUserHome'),));
-                    utils.processCall(['ls', '-la', os.path.join(self.sScratchPath, 'VBoxUserHome')]);
-                    reporter.log('> ls -la %s' % (self.sScratchPath,));
-                    utils.processCall(['ls', '-la', self.sScratchPath]);
+                    reporter.log('> ls -R -la %s' % (self.sScratchPath,));
+                    utils.processCall(['ls', '-R -la', self.sScratchPath]);
                 except: pass;
             # Testbox debugging - END   - TEMPORARY, REMOVE ASAP.
 
