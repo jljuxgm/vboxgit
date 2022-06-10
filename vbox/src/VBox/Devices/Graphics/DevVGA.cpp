@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 77965 2019-03-30 12:35:49Z vboxsync $ */
+/* $Id: DevVGA.cpp 78015 2019-04-04 13:23:07Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5965,6 +5965,7 @@ static DECLCALLBACK(void)  vgaR3Reset(PPDMDEVINS pDevIns)
     {
         PDMCritSectLeave(&pThis->CritSect); /* hack around lock order issue. */
         pThis->pDrv->pfnReset(pThis->pDrv);
+        pThis->pDrv->pfnVBVAMousePointerShape(pThis->pDrv, false, false, 0, 0, 0, 0, NULL);
         PDMCritSectEnter(&pThis->CritSect, VERR_IGNORED);
     }
 
