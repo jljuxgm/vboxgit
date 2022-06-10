@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 76881 2019-01-18 10:23:21Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 77664 2019-03-12 13:59:49Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -4473,6 +4473,12 @@ static DECLCALLBACK(int) ichac97R3Construct(PPDMDEVINS pDevIns, int iInstance, P
 
     if (RT_SUCCESS(rc))
     {
+        static const char * const s_apszNames[] =
+        {
+            "AC97 PI", "AC97 PO", "AC97 MC"
+        };
+        AssertCompile(RT_ELEMENTS(s_apszNames) == AC97_MAX_STREAMS);
+
         for (unsigned i = 0; i < AC97_MAX_STREAMS; i++)
         {
             /* Create the emulation timer (per stream).
@@ -4481,11 +4487,8 @@ static DECLCALLBACK(int) ichac97R3Construct(PPDMDEVINS pDevIns, int iInstance, P
              *        relies on exact (virtual) DMA timing and uses DMA Position Buffers
              *        instead of the LPIB registers.
              */
-            char szTimer[16];
-            RTStrPrintf2(szTimer, sizeof(szTimer), "AC97SD%i", i);
-
             rc = PDMDevHlpTMTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, ichac97R3Timer, &pThis->aStreams[i],
-                                        TMTIMER_FLAGS_NO_CRIT_SECT, szTimer, &pThis->pTimerR3[i]);
+                                        TMTIMER_FLAGS_NO_CRIT_SECT, s_apszNames[i], &pThis->pTimerR3[i]);
             AssertRCReturn(rc, rc);
             pThis->pTimerR0[i] = TMTimerR0Ptr(pThis->pTimerR3[i]);
             pThis->pTimerRC[i] = TMTimerRCPtr(pThis->pTimerR3[i]);
