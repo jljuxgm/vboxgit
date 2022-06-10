@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 75346 2018-11-09 10:05:06Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 75352 2018-11-09 10:56:10Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2997,7 +2997,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             CFGMR3InsertNodeF(pInst, &pLunL0, "LUN#%RU8", uAudioLUN);
                 InsertConfigString(pLunL0, "Driver", "AUDIO");
             AudioDriverCfg DrvCfgVideoRec(strAudioDevice, 0 /* Instance */, uAudioLUN, "AudioVideoRec");
-            rc = Capture.mAudioVideoRec->InitializeConfig(&DrvCfgVideoRec);
+            rc = Recording.mAudioRec->InitializeConfig(&DrvCfgVideoRec);
             if (RT_SUCCESS(rc))
                 uAudioLUN++;
 #endif /* VBOX_WITH_AUDIO_RECORDING */
