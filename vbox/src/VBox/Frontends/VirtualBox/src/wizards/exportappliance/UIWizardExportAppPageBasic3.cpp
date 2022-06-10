@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 73080 2018-07-12 08:55:36Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 73081 2018-07-12 08:57:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -146,8 +146,10 @@ void UIWizardExportAppPage3::populateProfileSettings()
     {
         QTableWidgetItem *pItem1 = new QTableWidgetItem(keys.at(i));
         pItem1->setFlags(pItem1->flags() & ~Qt::ItemIsEditable);
+        pItem1->setFlags(pItem1->flags() & ~Qt::ItemIsSelectable);
         QTableWidgetItem *pItem2 = new QTableWidgetItem(values.at(i));
         pItem2->setFlags(pItem2->flags() & ~Qt::ItemIsEditable);
+        pItem2->setFlags(pItem2->flags() & ~Qt::ItemIsSelectable);
         m_pProfileSettingsTable->setItem(i, 0, pItem1);
         m_pProfileSettingsTable->setItem(i, 1, pItem2);
     }
@@ -684,7 +686,7 @@ void UIWizardExportAppPageBasic3::updatePageAppearance()
                                  "<p>Make sure profile settings reflected in the underlying table are valid. "
                                  "They will be used to establish network connection required to upload your virtual machine "
                                  "files to remote cloud facility."));
-            m_pProviderComboBox->setFocus();
+            m_pProfileComboBox->setFocus();
             break;
         }
     }
