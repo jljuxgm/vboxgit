@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 73735 2018-08-17 12:57:53Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 73799 2018-08-21 09:22:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -2046,7 +2046,7 @@ void UISelectorWindow::prepareWidgets()
 #endif
 
             /* Create sliding-widget: */
-            m_pSlidingWidget = new UISlidingWidget;
+            m_pSlidingWidget = new UISlidingWidget(Qt::Horizontal);
             AssertPtrReturnVoid(m_pSlidingWidget);
             {
                 /* Create splitter: */

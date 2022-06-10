@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 73780 2018-08-20 11:15:24Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 73799 2018-08-21 09:22:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -467,7 +467,7 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                     }
 
                     /* Create sliding-widget: */
-                    m_pSlidingWidget = new UISlidingWidget;
+                    m_pSlidingWidget = new UISlidingWidget(Qt::Vertical);
                     if (m_pSlidingWidget)
                     {
                         /* Create Machine Tools-pane: */
