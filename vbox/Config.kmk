@@ -1,4 +1,4 @@
-# $Id: Config.kmk 75280 2018-11-06 12:51:50Z vboxsync $
+# $Id: Config.kmk 75281 2018-11-06 12:55:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3697,7 +3697,7 @@ ifdef VBOX_SIGNING_MODE
   # @param 2  Identifier, optional.
   ifdef VBOX_WITH_CORP_CODE_SIGNING
    ## @todo cannot handle $(2), the identifier.
-   VBOX_SIGN_PKG_FN = $(call MSG_TOOL,SIGNTOOL,,$(1),$(2))$(NLTAB)$(call VBOX_CCS_SIGN_CMD,mac_pkg,$(1)) \
+   VBOX_SIGN_PKG_FN = $(call MSG_TOOL,SIGNTOOL,,$(1),$(2))$(NLTAB)$(call VBOX_CCS_SIGN_CMD,mac_pkg,$(1))
   endif
 
   ## @def VBOX_TEST_SIGN_KEXT
@@ -7451,7 +7451,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75280 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75281 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
