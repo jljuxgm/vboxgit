@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlDialog.h 75018 2018-10-24 08:15:35Z vboxsync $ */
+/* $Id: UIGuestControlDialog.h 75020 2018-10-24 08:53:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlDialog class declaration.
  */
@@ -40,7 +40,7 @@ class CMachine;
 
 
 /** QIManagerDialogFactory extension used as a factory for Log Viewer dialog. */
-class SHARED_LIBRARY_STUFF UIGuestControlDialogFactory : public QIManagerDialogFactory
+class UIGuestControlDialogFactory : public QIManagerDialogFactory
 {
 public:
 

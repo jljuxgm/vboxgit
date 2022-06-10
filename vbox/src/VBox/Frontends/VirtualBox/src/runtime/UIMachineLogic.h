@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 75018 2018-10-24 08:15:35Z vboxsync $ */
+/* $Id: UIMachineLogic.h 75020 2018-10-24 08:53:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -316,7 +316,7 @@ private slots:
     /** Handles close signal from the log viewer dialog. */
     void sltCloseLogViewerWindow();
 #endif /* VBOX_WITH_DEBUGGER_GUI */
-
+    void sltCloseGuestControlWindow();
 #ifdef RT_OS_DARWIN /* Something is *really* broken in regards of the moc here */
     /* "Window" menu functionality: */
     void sltSwitchToMachineWindow();
