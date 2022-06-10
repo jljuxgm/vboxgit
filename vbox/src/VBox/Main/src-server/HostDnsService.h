@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 77993 2019-04-03 15:11:36Z vboxsync $ */
+/* $Id: HostDnsService.h 77995 2019-04-03 15:29:37Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -138,6 +138,7 @@ private:
 class HostDnsServiceDarwin : public HostDnsServiceBase
 {
 public:
+
     HostDnsServiceDarwin();
     virtual ~HostDnsServiceDarwin();
 
@@ -242,6 +243,7 @@ public:
 
     HRESULT init(HostDnsMonitorProxy *pProxy);
     void uninit(void);
+
 protected:
 
     int monitorThreadShutdown(RTMSINTERVAL uTimeoutMs);
