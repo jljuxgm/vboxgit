@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 78267 2019-04-23 19:17:45Z vboxsync $ */
+/* $Id: crservice.cpp 78375 2019-05-03 21:51:02Z vboxsync $ */
 /** @file
  * VBox crOpenGL - Host service entry points.
  */
@@ -1581,7 +1581,7 @@ BOOL WINAPI DllMain(HINSTANCE hDLLInst, DWORD fdwReason, LPVOID lpvReserved)
     {
         case DLL_THREAD_ATTACH:
         {
-            crStateVBoxAttachThread();
+            crVBoxServerAttachThread();
             break;
         }
 
@@ -1590,7 +1590,7 @@ BOOL WINAPI DllMain(HINSTANCE hDLLInst, DWORD fdwReason, LPVOID lpvReserved)
          * DLL_THREAD_DETACH is not called for the thread doing DLL_PROCESS_DETACH according to msdn docs */
         case DLL_THREAD_DETACH:
         {
-            crStateVBoxDetachThread();
+            crVBoxServerDetachThread();
             break;
         }
 
