@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 76402 2018-12-23 15:13:04Z vboxsync $ */
+/* $Id: APICInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___APICInternal_h
 #define ___APICInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/sup.h>
 #include <VBox/types.h>

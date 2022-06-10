@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCacheInternal.h 70778 2018-01-28 22:09:24Z vboxsync $ */
+/* $Id: PDMBlkCacheInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___PDMBlkCacheInternal_h
 #define ___PDMBlkCacheInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vmm/cfgm.h>
 #include <VBox/vmm/stam.h>

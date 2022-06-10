@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_2635QM.h 73257 2018-07-20 08:33:28Z vboxsync $ */
+/* $Id: Intel_Core_i7_2635QM.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-2635QM".
  * Generated at 2014-02-28T18:53:09Z by VBoxCpuReport v4.3.53r92586 on darwin.amd64.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_Intel_Core_i7_2635QM
 #define VBOX_CPUDB_Intel_Core_i7_2635QM
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #ifndef CPUM_DB_STANDALONE

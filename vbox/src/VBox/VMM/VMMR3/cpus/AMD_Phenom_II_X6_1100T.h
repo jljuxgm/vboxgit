@@ -1,4 +1,4 @@
-/* $Id: AMD_Phenom_II_X6_1100T.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: AMD_Phenom_II_X6_1100T.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CPU database entry "AMD Phenom II X6 1100T".
  * Generated at 2013-12-17T13:39:08Z by VBoxCpuReport v4.3.53r91360 on linux.amd64.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_AMD_Phenom_II_X6_1100T
 #define VBOX_CPUDB_AMD_Phenom_II_X6_1100T
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #ifndef CPUM_DB_STANDALONE

@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: TRPMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___TRPMInternal_h
 #define ___TRPMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

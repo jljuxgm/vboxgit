@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.h 76482 2018-12-26 03:49:56Z vboxsync $ */
+/* $Id: HMSVMR0.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___HMSVMR0_h
 #define ___HMSVMR0_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

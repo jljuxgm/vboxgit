@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 73460 2018-08-02 21:06:59Z vboxsync $ */
+/* $Id: DBGFInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___DBGFInternal_h
 #define ___DBGFInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #ifdef IN_RING3

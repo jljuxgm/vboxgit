@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69459 2017-10-27 17:21:37Z vboxsync $
+# $Id: .scm-settings 76543 2018-12-30 06:38:55Z vboxsync $
 ## @file
 # Source code massager settings for the VMM.
 #
@@ -19,4 +19,16 @@
 /VMMAll/IEMAllInstructionsPython.py: --license-ose-dual
 
 --filter-out-files /testcase/dev.tar.gz
+
+/include/PGMGstDefs.h: --no-fix-header-guards
+/VMMR0/PGMR0Bth.h: --no-fix-header-guards
+/VMMR3/PGMPhysRWTmpl.h: --no-fix-header-guards
+/VMMRC/PGMRCBth.h: --no-fix-header-guards
+/VMMRC/PGMRCShw.h: --no-fix-header-guards
+/VMMRC/PGMRCGst.h: --no-fix-header-guards
+/VMMAll/PGMAllBth.h: --no-fix-header-guards
+/VMMAll/PGMAllGst.h: --no-fix-header-guards
+/VMMAll/PGMAllShw.h: --no-fix-header-guards
+
+/testcase/tstVMStruct.h: --no-fix-header-guards
 

@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_Duo_T2600_2_16GHz.h 73257 2018-07-20 08:33:28Z vboxsync $ */
+/* $Id: Intel_Core_Duo_T2600_2_16GHz.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core Duo T2600 2.16GHz".
  * Generated at 2017-11-02T10:39:16Z by VBoxCpuReport v5.2.0_RC1r118339 on linux.x86.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_Intel_Core_Duo_T2600_2_16GHz
 #define VBOX_CPUDB_Intel_Core_Duo_T2600_2_16GHz
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #ifndef CPUM_DB_STANDALONE

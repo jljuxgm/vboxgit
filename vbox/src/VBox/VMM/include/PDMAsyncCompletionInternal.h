@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___PDMAsyncCompletionInternal_h
 #define ___PDMAsyncCompletionInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/critsect.h>
 #include <iprt/memcache.h>

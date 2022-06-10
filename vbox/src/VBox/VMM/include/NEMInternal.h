@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 74517 2018-09-28 11:24:47Z vboxsync $ */
+/* $Id: NEMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___NEMInternal_h
 #define ___NEMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

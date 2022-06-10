@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 73022 2018-07-10 09:24:10Z vboxsync $ */
+/* $Id: EMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___EMInternal_h
 #define ___EMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

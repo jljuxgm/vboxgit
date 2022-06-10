@@ -1,4 +1,4 @@
-/* $Id: tstMicro.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: tstMicro.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___tstMicro_h
 #define ___tstMicro_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 /**
  * The testcase identifier.

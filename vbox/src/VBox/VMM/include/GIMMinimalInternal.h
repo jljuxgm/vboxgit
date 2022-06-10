@@ -1,4 +1,4 @@
-/* $Id: GIMMinimalInternal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: GIMMinimalInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * GIM - Minimal, Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___GIMMinimalInternal_h
 #define ___GIMMinimalInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/cdefs.h>
 #include <VBox/types.h>

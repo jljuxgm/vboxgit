@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 73324 2018-07-23 14:06:55Z vboxsync $ */
+/* $Id: PGMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___PGMInternal_h
 #define ___PGMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

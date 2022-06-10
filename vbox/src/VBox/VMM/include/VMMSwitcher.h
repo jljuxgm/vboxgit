@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: VMMSwitcher.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * VMM - World Switchers.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VMMSwitcher_h
 #define ___VMMSwitcher_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vmm/vmm.h>
 

@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 76489 2018-12-27 05:12:31Z vboxsync $ */
+/* $Id: HMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___HMInternal_h
 #define ___HMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

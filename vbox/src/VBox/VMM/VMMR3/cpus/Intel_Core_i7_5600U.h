@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_5600U.h 73257 2018-07-20 08:33:28Z vboxsync $ */
+/* $Id: Intel_Core_i7_5600U.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-5600U".
  * Generated at 2015-11-04T14:14:27Z by VBoxCpuReport v5.0.51r103906 on win.amd64.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_Intel_Core_i7_5600U
 #define VBOX_CPUDB_Intel_Core_i7_5600U
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #ifndef CPUM_DB_STANDALONE

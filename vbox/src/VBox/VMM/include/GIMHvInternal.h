@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 73340 2018-07-24 03:12:17Z vboxsync $ */
+/* $Id: GIMHvInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___GIMHvInternal_h
 #define ___GIMHvInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/cpum.h>

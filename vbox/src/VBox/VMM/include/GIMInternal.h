@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: GIMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___GIMInternal_h
 #define ___GIMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/pgm.h>

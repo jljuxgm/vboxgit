@@ -1,4 +1,4 @@
-/* $Id: SELMInline.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: SELMInline.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___SELMInline_h
 #define ___SELMInline_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifdef VBOX_WITH_RAW_MODE_NOT_R0
 

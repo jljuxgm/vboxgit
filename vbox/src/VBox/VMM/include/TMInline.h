@@ -1,4 +1,4 @@
-/* $Id: TMInline.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: TMInline.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * TM - Common Inlined functions.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___TMInline_h
 #define ___TMInline_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.h 76482 2018-12-26 03:49:56Z vboxsync $ */
+/* $Id: HMVMXR0.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___HMVMXR0_h
 #define ___HMVMXR0_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 RT_C_DECLS_BEGIN
 

@@ -1,4 +1,4 @@
-/* $Id: Intel_Core2_X6800_2_93GHz.h 73257 2018-07-20 08:33:28Z vboxsync $ */
+/* $Id: Intel_Core2_X6800_2_93GHz.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core2 X6800 2.93GHz".
  * Generated at 2017-11-04T22:32:41Z by VBoxCpuReport v5.2.1r118907 on linux.amd64.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_Intel_Core2_X6800_2_93GHz
 #define VBOX_CPUDB_Intel_Core2_X6800_2_93GHz
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #ifndef CPUM_DB_STANDALONE

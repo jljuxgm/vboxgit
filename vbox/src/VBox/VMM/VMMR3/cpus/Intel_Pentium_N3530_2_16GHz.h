@@ -1,4 +1,4 @@
-/* $Id: Intel_Pentium_N3530_2_16GHz.h 73257 2018-07-20 08:33:28Z vboxsync $ */
+/* $Id: Intel_Pentium_N3530_2_16GHz.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Pentium N3530 2.16GHz".
  * Generated at 2016-04-29T13:34:27Z by VBoxCpuReport v5.0.51r106929 on win.amd64.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_Intel_Pentium_N3530_2_16GHz
 #define VBOX_CPUDB_Intel_Pentium_N3530_2_16GHz
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #ifndef CPUM_DB_STANDALONE

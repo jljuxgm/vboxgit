@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 70977 2018-02-12 20:45:31Z vboxsync $ */
+/* $Id: PGMInline.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___PGMInline_h
 #define ___PGMInline_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

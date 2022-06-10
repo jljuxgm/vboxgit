@@ -1,4 +1,4 @@
-/* $Id: AMD_FX_8150_Eight_Core.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: AMD_FX_8150_Eight_Core.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CPU database entry "AMD FX-8150 Eight-Core".
  * Generated at 2013-12-09T11:27:04Z by VBoxCpuReport v4.3.51r91084 on win.amd64.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_AMD_FX_8150_Eight_Core
 #define VBOX_CPUDB_AMD_FX_8150_Eight_Core
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #ifndef CPUM_DB_STANDALONE

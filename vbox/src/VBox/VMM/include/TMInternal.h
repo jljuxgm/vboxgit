@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 72522 2018-06-12 08:45:27Z vboxsync $ */
+/* $Id: TMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___TMInternal_h
 #define ___TMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

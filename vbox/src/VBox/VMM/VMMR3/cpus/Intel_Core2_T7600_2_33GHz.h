@@ -1,4 +1,4 @@
-/* $Id: Intel_Core2_T7600_2_33GHz.h 69900 2017-12-01 15:32:11Z vboxsync $ */
+/* $Id: Intel_Core2_T7600_2_33GHz.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core2 T7600 2.33GHz".
  * Generated at 2017-10-12T18:17:56Z by VBoxCpuReport v5.2.0_RC1r118339 on linux.x86.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_Intel_Core2_T7600_2_33GHz
 #define VBOX_CPUDB_Intel_Core2_T7600_2_33GHz
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #ifndef CPUM_DB_STANDALONE

@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 72493 2018-06-10 16:08:44Z vboxsync $ */
+/* $Id: PDMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___PDMInternal_h
 #define ___PDMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/types.h>
 #include <VBox/param.h>

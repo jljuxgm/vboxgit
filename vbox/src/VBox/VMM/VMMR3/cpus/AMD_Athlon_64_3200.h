@@ -1,4 +1,4 @@
-/* $Id: AMD_Athlon_64_3200.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: AMD_Athlon_64_3200.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CPU database entry "AMD Athlon 64 3200+".
  * Generated at 2013-07-12T02:09:05Z by VBoxCpuReport v4.3.53r91376 on win.x86.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_AMD_Athlon_64_3200
 #define VBOX_CPUDB_AMD_Athlon_64_3200
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #ifndef CPUM_DB_STANDALONE

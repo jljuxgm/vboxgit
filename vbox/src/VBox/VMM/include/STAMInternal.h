@@ -1,4 +1,4 @@
-/* $Id: STAMInternal.h 72300 2018-05-23 15:13:06Z vboxsync $ */
+/* $Id: STAMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * STAM Internal Header.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___STAMInternal_h
 #define ___STAMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

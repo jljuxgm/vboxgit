@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_3820QM.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: Intel_Core_i7_3820QM.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-3820QM".
  * Generated at 2013-12-04T12:54:32Z by VBoxCpuReport v4.3.51r91071 on darwin.amd64.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_Intel_Core_i7_3820QM
 #define VBOX_CPUDB_Intel_Core_i7_3820QM
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 
 #ifndef CPUM_DB_STANDALONE

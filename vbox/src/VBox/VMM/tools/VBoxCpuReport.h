@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.h 69654 2017-11-10 19:22:45Z vboxsync $ */
+/* $Id: VBoxCpuReport.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * VBoxCpuReport internal header file.
  */
@@ -15,9 +15,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-
 #ifndef ___VBoxCpuReport_h___
 #define ___VBoxCpuReport_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/sup.h>
 

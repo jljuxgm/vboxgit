@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 75646 2018-11-21 15:38:10Z vboxsync $ */
+/* $Id: VMMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VMMInternal_h
 #define ___VMMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/sup.h>

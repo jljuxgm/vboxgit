@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 69474 2017-10-28 13:12:06Z vboxsync $ */
+/* $Id: CSAMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___CSAMInternal_h
 #define ___CSAMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>

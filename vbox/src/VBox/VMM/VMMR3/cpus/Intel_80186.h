@@ -1,4 +1,4 @@
-/* $Id: Intel_80186.h 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: Intel_80186.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * CPU database entry "Intel 80186".
  * Handcrafted.
@@ -18,6 +18,9 @@
 
 #ifndef VBOX_CPUDB_Intel_80186
 #define VBOX_CPUDB_Intel_80186
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #ifndef CPUM_DB_STANDALONE
 /**

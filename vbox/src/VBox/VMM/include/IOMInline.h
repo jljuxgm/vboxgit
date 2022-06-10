@@ -1,4 +1,4 @@
-/* $Id: IOMInline.h 76397 2018-12-23 14:32:01Z vboxsync $ */
+/* $Id: IOMInline.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * IOM - Inlined functions.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___IOMInline_h
 #define ___IOMInline_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/errcore.h>
 

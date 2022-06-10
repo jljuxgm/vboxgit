@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: PATMInternal.h 76543 2018-12-30 06:38:55Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___PATMInternal_h
 #define ___PATMInternal_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
