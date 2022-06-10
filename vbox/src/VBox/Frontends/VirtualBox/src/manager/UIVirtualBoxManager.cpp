@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 77682 2019-03-13 16:12:58Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 78063 2019-04-09 13:59:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -501,7 +501,7 @@ void UIVirtualBoxManager::sltOpenImportApplianceWizard(const QString &strFileNam
 
     /* Use the "safe way" to open stack of Mac OS X Sheets: */
     QWidget *pWizardParent = windowManager().realParentWindow(this);
-    UISafePointerWizardImportApp pWizard = new UIWizardImportApp(pWizardParent, strTmpFile);
+    UISafePointerWizardImportApp pWizard = new UIWizardImportApp(pWizardParent, false /* OCI by default? */, strTmpFile);
     windowManager().registerNewParent(pWizard, pWizardParent);
     pWizard->prepare();
     if (strFileName.isEmpty() || pWizard->isValid())

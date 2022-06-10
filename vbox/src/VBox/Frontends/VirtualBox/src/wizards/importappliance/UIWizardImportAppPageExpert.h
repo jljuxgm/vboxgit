@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.h 78037 2019-04-08 11:47:34Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.h 78063 2019-04-09 13:59:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class declaration.
  */
@@ -40,7 +40,7 @@ public:
 
     /** Constructs expert page.
       * @param  strFileName  Brings appliance file name. */
-    UIWizardImportAppPageExpert(const QString &strFileName);
+    UIWizardImportAppPageExpert(bool fImportFromOCIByDefault, const QString &strFileName);
 
 private slots:
 

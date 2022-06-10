@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.h 78062 2019-04-09 13:52:22Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.h 78063 2019-04-09 13:59:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class declaration.
  */
@@ -53,7 +53,7 @@ class UIWizardImportAppPage1 : public UIWizardPageBase
 protected:
 
     /** Constructs 1st page base. */
-    UIWizardImportAppPage1();
+    UIWizardImportAppPage1(bool fImportFromOCIByDefault);
 
     /** Populates sources. */
     void populateSources();
@@ -103,7 +103,7 @@ class UIWizardImportAppPageBasic1 : public UIWizardPage, public UIWizardImportAp
 public:
 
     /** Constructs 1st basic page. */
-    UIWizardImportAppPageBasic1();
+    UIWizardImportAppPageBasic1(bool fImportFromOCIByDefault);
 
 protected:
 

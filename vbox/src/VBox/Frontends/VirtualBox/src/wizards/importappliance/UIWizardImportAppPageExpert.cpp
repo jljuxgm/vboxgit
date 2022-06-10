@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 78044 2019-04-08 15:34:44Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 78063 2019-04-09 13:59:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -28,8 +28,9 @@
 #include "UIWizardImportAppPageExpert.h"
 
 
-UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(const QString &strFileName)
-    : m_pApplianceCnt(0)
+UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(bool fImportFromOCIByDefault, const QString &strFileName)
+    : UIWizardImportAppPage1(fImportFromOCIByDefault)
+    , m_pApplianceCnt(0)
     , m_pSettingsCnt(0)
 {
     /* Create main layout: */

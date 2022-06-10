@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.h 78042 2019-04-08 14:45:43Z vboxsync $ */
+/* $Id: UIWizardImportApp.h 78063 2019-04-09 13:59:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class declaration.
  */
@@ -46,7 +46,7 @@ public:
 
     /** Constructs export appliance wizard passing @a pParent to the base-class.
       * @param  strFileName  Brings appliance file name. */
-    UIWizardImportApp(QWidget *pParent, const QString &strFileName);
+    UIWizardImportApp(QWidget *pParent, bool fImportFromOCIByDefault, const QString &strFileName);
 
     /** Prepares all. */
     virtual void prepare() /* override */;
@@ -71,6 +71,8 @@ protected slots:
 
 private:
 
+    /** Holds whether default source should be Import from OCI. */
+    bool     m_fImportFromOCIByDefault;
     /** Handles the appliance file name. */
     QString  m_strFileName;
 };
