@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 77681 2019-03-13 15:26:52Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -159,7 +159,8 @@ PROGRAMS.win += \
 	tstFileAppendWin-1 \
 	tstRTNtPath-1 \
 	ntGetTimerResolution \
-	tstRTDarwinMachKernel
+	tstRTDarwinMachKernel \
+	tstRTFileOpenEx-1
 
 PROGRAMS.linux += \
 	tstRTProcWait \
@@ -362,6 +363,9 @@ tstRTFileGetSize-1_SOURCES = tstRTFileGetSize-1.cpp
 
 tstRTFileModeStringToFlags_TEMPLATE = VBOXR3TSTEXE
 tstRTFileModeStringToFlags_SOURCES = tstRTFileModeStringToFlags.cpp
+
+tstRTFileOpenEx-1_TEMPLATE = VBOXR3TSTEXE
+tstRTFileOpenEx-1_SOURCES = tstRTFileOpenEx-1.cpp
 
 tstFileAppendWin-1_TEMPLATE = VBOXR3TSTEXE
 tstFileAppendWin-1_SOURCES = tstFileAppendWin-1.cpp
