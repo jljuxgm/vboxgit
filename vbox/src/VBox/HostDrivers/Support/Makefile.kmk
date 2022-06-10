@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76321 2018-12-20 18:01:22Z vboxsync $
+# $Id: Makefile.kmk 76322 2018-12-20 18:02:27Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -770,11 +770,6 @@ if1of ($(KBUILD_TARGET), linux freebsd)
 		--output $@ $<
 	%$(QUIET2)$(APPEND) -t '$(PATH_TARGET)/vboxdrv-src-1.dep' \
 		'Support/$(KBUILD_TARGET)/Makefile_VBOX_HARDENED=$(VBOX_WITH_HARDENING)'
-
- #
- # Build test for the linux host kernel modules.
- #
- $(evalcall2 VBOX_LINUX_KMOD_TEST_BUILD_RULE_FN,vboxdrv-src,,save_symvers)
 endif # linux freebsd
 
 
