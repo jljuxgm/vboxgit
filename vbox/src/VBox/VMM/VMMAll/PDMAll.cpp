@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 69111 2017-10-17 14:26:02Z vboxsync $ */
+/* $Id: PDMAll.cpp 73285 2018-07-21 01:49:30Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -189,7 +189,10 @@ VMM_INT_DECL(int) PDMIoApicSetIrq(PVM pVM, uint8_t u8Irq, uint8_t u8Level, uint3
 /**
  * Broadcasts an EOI to the I/O APICs.
  *
- * @return VBox status code (incl. scheduling status codes).
+ * @returns Strict VBox status code - only the following informational status codes:
+ * @retval  VINF_IOM_R3_MMIO_WRITE if the I/O APIC lock is contenteded and we're in R0 or RC.
+ * @retval  VINF_SUCCESS
+ *
  * @param   pVM             The cross context VM structure.
  * @param   uVector         The interrupt vector corresponding to the EOI.
  */
