@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 77265 2019-02-11 15:47:23Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -61,7 +61,7 @@ static bool checkRecentLinuxKernel(void)
 {
     struct utsname name;
 
-    if (uname(&name))
+    if (uname(&name) == -1)
         VBClFatalError(("Failed to get kernel name.\n"));
     if (strcmp(name.sysname, "Linux"))
         return false;
