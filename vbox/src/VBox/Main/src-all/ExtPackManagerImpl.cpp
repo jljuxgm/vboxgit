@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 73825 2018-08-22 12:51:23Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 73827 2018-08-22 13:13:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -1790,7 +1790,7 @@ ExtPack::i_hlpGetCanceledProgress(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IProg
     AssertReturn(pHlp->u32Version == VBOXEXTPACKHLP_VERSION, VERR_INVALID_POINTER);
 
     BOOL fCanceled = FALSE;
-    HRESULT hrc = pProgress->GetCanceled(&fCanceled);
+    HRESULT hrc = pProgress->COMGETTER(Canceled)(&fCanceled);
     *pfCanceled  = !!fCanceled;
     return hrc;
 }
