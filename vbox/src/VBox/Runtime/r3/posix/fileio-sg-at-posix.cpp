@@ -1,4 +1,4 @@
-/* $Id: fileio-sg-at-posix.cpp 77633 2019-03-10 14:46:32Z vboxsync $ */
+/* $Id: fileio-sg-at-posix.cpp 77635 2019-03-10 14:51:26Z vboxsync $ */
 /** @file
  * IPRT - File I/O, RTFileSgReadAt & RTFileSgWriteAt, posixy.
  */
@@ -55,7 +55,7 @@
 
 #ifndef HAVE_PREADV_AND_PWRITEV
 
-# include "../../generic/fileio-sg-generic.cpp"
+# include "../../generic/fileio-sg-at-generic.cpp"
 
 #else /* HAVE_PREADV_AND_PWRITEV - rest of the file */
 
