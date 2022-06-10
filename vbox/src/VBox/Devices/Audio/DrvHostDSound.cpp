@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 73530 2018-08-06 16:48:31Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 73546 2018-08-07 13:01:59Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -676,7 +676,7 @@ static HRESULT directSoundPlayOpen(PDRVHOSTDSOUND pThis, PDSOUNDSTREAM pStreamDS
         bd.dwBufferBytes = DrvAudioHlpFramesToBytes(pCfgReq->Backend.cfBufferSize, &pCfgReq->Props);
 
         DSLOG(("DSound: Requested playback buffer is %RU64ms (%ld bytes)\n",
-               pCfgReq->Backend.cfBufferSize, DrvAudioHlpBytesToMilli(bd.dwBufferBytes, &pCfgReq->Props), bd.dwBufferBytes));
+               DrvAudioHlpBytesToMilli(bd.dwBufferBytes, &pCfgReq->Props), bd.dwBufferBytes));
 
         hr = IDirectSound8_CreateSoundBuffer(pThis->pDS, &bd, &pDSB, NULL);
         if (FAILED(hr))
