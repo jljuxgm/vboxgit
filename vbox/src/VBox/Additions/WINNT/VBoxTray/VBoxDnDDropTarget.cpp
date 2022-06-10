@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropTarget.cpp 74364 2018-09-19 10:06:16Z vboxsync $ */
+/* $Id: VBoxDnDDropTarget.cpp 74365 2018-09-19 10:12:04Z vboxsync $ */
 /** @file
  * VBoxDnDTarget.cpp - IDropTarget implementation.
  */
@@ -391,7 +391,7 @@ STDMETHODIMP VBoxDnDDropTarget::Drop(IDataObject *pDataObject, DWORD grfKeyState
                         uint32_t cchFiles = 0;
                         UINT cFiles = DragQueryFile(hDrop, UINT32_MAX /* iFile */, NULL /* lpszFile */, 0 /* cchFile */);
 
-                        LogRel2(("DnD: CF_HDROP got %RU16 file(s), fUnicode=%RTbool\n", cFiles, fUnicode));
+                        LogRel(("DnD: Got %RU16 file(s), fUnicode=%RTbool\n", cFiles, fUnicode));
 
                         for (UINT i = 0; i < cFiles; i++)
                         {
