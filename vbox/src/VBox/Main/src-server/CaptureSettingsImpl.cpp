@@ -1,4 +1,4 @@
-/* $Id: CaptureSettingsImpl.cpp 75324 2018-11-08 15:39:50Z vboxsync $ */
+/* $Id: CaptureSettingsImpl.cpp 75325 2018-11-08 15:49:11Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Machine capture settings.
@@ -386,7 +386,7 @@ int CaptureSettings::i_destroyAllScreenObj(CaptureScreenSettingsMap &screenSetti
 {
     LogFlowThisFuncEnter();
 
-    CaptureScreenSettingsMap::const_iterator itScreen = screenSettingsMap.begin();
+    CaptureScreenSettingsMap::iterator itScreen = screenSettingsMap.begin();
     if (itScreen != screenSettingsMap.end())
     {
         /* Make sure to consume the pointer before the one of the
