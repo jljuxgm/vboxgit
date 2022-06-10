@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 73589 2018-08-09 13:56:15Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 73590 2018-08-09 13:59:26Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -1228,6 +1228,7 @@ static DECLCALLBACK(void) drvscsiDetach(PPDMDRVINS pDrvIns, uint32_t fFlags)
 {
     PDRVSCSI pThis = PDMINS_2_DATA(pDrvIns, PDRVSCSI);
 
+    RT_NOREF(fFlags);
     LogFlowFunc(("pDrvIns=%#p fFlags=%#x\n", pDrvIns, fFlags));
 
     /*
