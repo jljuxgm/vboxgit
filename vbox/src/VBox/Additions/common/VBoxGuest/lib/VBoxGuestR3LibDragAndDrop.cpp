@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 74439 2018-09-24 12:30:47Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 74472 2018-09-26 08:16:36Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1185,15 +1185,7 @@ VBGLR3DECL(int) VbglR3DnDEventGetNext(PVBGLR3GUESTDNDCMDCTX pCtx, PVBGLR3DNDEVEN
         if (   RT_SUCCESS(rc2)
             && (uSessionID != pCtx->uSessionID))
         {
-            LogFlowFunc(("VM session ID changed to %RU64, doing reconnect\n", uSessionID));
-
-            /* Try a reconnect to the DnD service. */
-            rc2 = VbglR3DnDDisconnect(pCtx);
-            AssertRC(rc2);
-            rc2 = VbglR3DnDConnect(pCtx);
-            AssertRC(rc2);
-
-            /* At this point we continue processing the messsages with the new client ID. */
+            LogFlowFunc(("VM session ID changed to %RU64\n", uSessionID));
         }
     }
 
