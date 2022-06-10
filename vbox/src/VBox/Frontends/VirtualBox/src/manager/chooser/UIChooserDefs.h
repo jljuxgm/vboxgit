@@ -1,4 +1,4 @@
-/* $Id: UIChooserDefs.h 77567 2019-03-05 17:18:31Z vboxsync $ */
+/* $Id: UIChooserDefs.h 77593 2019-03-07 10:47:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserDefs class declaration.
  */
@@ -54,6 +54,13 @@ enum UIChooserItemDragToken
     UIChooserItemDragToken_Off,
     UIChooserItemDragToken_Up,
     UIChooserItemDragToken_Down
+};
+
+/** UIChooserItemMachine enumeration flags. */
+enum UIChooserItemMachineEnumerationFlag
+{
+    UIChooserItemMachineEnumerationFlag_Unique       = RT_BIT(0),
+    UIChooserItemMachineEnumerationFlag_Inaccessible = RT_BIT(1)
 };
 
 

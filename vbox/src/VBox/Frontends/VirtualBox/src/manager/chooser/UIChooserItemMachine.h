@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 77567 2019-03-05 17:18:31Z vboxsync $ */
+/* $Id: UIChooserItemMachine.h 77593 2019-03-07 10:47:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -30,13 +30,6 @@
 
 /* Forward declarations: */
 class CMachine;
-
-/** Machine-item enumeration flags. */
-enum UIChooserItemMachineEnumerationFlag
-{
-    UIChooserItemMachineEnumerationFlag_Unique       = RT_BIT(0),
-    UIChooserItemMachineEnumerationFlag_Inaccessible = RT_BIT(1)
-};
 
 /** UIChooserItem extension implementing machine item. */
 class UIChooserItemMachine : public UIChooserItem, public UIVirtualMachineItem
