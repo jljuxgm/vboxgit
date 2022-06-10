@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 75646 2018-11-21 15:38:10Z vboxsync $ */
+/* $Id: VMEmt.cpp 75731 2018-11-26 11:05:34Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -282,6 +282,11 @@ int vmR3EmulationThreadWithId(RTTHREAD hThreadSelf, PUVMCPU pUVCpu, VMCPUID idCp
         vmR3SetTerminated(pVM);
 
         pUVM->pVM = NULL;
+        for (VMCPUID iCpu = 0; iCpu < pUVM->cCpus; iCpu++)
+        {
+            pUVM->aCpus[iCpu].pVM   = NULL;
+            pUVM->aCpus[iCpu].pVCpu = NULL;
+        }
 
         int rc2 = SUPR3CallVMMR0Ex(pVM->pVMR0, 0 /*idCpu*/, VMMR0_DO_GVMM_DESTROY_VM, 0, NULL);
         AssertLogRelRC(rc2);
