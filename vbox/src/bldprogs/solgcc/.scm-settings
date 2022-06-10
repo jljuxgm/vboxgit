@@ -1,4 +1,4 @@
-# $Id: .scm-settings 69471 2017-10-28 12:35:04Z vboxsync $
+# $Id: .scm-settings 76546 2018-12-30 06:43:22Z vboxsync $
 ## @file
 # Source code massager settings for solgcc
 #
@@ -15,5 +15,5 @@
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 #
 
-/config/*: --external-copyright
+/config/*: --external-copyright --no-fix-header-guards
 
