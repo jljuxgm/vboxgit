@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 73445 2018-08-02 10:54:16Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 73447 2018-08-02 11:10:05Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -2870,13 +2870,13 @@ static DECLCALLBACK(int) dbgcCmdStack(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM 
             }
             size_t cchLine = DBGCCmdHlpPrintfLen(pCmdHlp, "   %s", pszRetType);
             if (pFrame->fFlags & DBGFSTACKFRAME_FLAGS_USED_UNWIND_INFO)
-                cchLine += DBGCCmdHlpPrintfLen(pCmdHlp, " used-unwind-info", pszRetType);
+                cchLine += DBGCCmdHlpPrintfLen(pCmdHlp, " used-unwind-info");
             if (pFrame->fFlags & DBGFSTACKFRAME_FLAGS_USED_ODD_EVEN)
-                cchLine += DBGCCmdHlpPrintfLen(pCmdHlp, " used-odd-even", pszRetType);
+                cchLine += DBGCCmdHlpPrintfLen(pCmdHlp, " used-odd-even");
             if (pFrame->fFlags & DBGFSTACKFRAME_FLAGS_REAL_V86)
-                cchLine += DBGCCmdHlpPrintfLen(pCmdHlp, " real-v86", pszRetType);
+                cchLine += DBGCCmdHlpPrintfLen(pCmdHlp, " real-v86");
             if (pFrame->fFlags & DBGFSTACKFRAME_FLAGS_MAX_DEPTH)
-                cchLine += DBGCCmdHlpPrintfLen(pCmdHlp, " max-depth", pszRetType);
+                cchLine += DBGCCmdHlpPrintfLen(pCmdHlp, " max-depth");
 
             if (pFrame->cSureRegs > 0)
             {
