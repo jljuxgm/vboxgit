@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 77026 2019-01-28 18:14:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -58,6 +58,8 @@ public:
       * @{ */
         /** Defines height @a iHint. */
         void setHeightHint(int iHint);
+        /** Returns height hint. */
+        int heightHint() const;
     /** @} */
 
 protected:
