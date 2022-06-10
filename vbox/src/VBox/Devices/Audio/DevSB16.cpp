@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 73441 2018-08-02 10:39:42Z vboxsync $ */
+/* $Id: DevSB16.cpp 73453 2018-08-02 12:39:24Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1706,32 +1706,6 @@ static DECLCALLBACK(void) sb16TimerIO(PPDMDEVINS pDevIns, PTMTIMER pTimer, void 
         if (!pStream)
             continue;
 
-# ifdef VBOX_STRICT
-        /*
-         * Sanity. Make sure that all streams have the same configuration
-         * to get SB16's DMA transfers right.
-         *
-         * SB16 only allows one output configuration per serial data out,
-         * so check if all streams have the same configuration.
-         */
-        PSB16DRIVER pDrvPrev = RTListNodeGetPrev(&pDrv->Node, SB16DRIVER, Node);
-        if (   pDrvPrev
-            && !RTListNodeIsDummy(&pThis->lstDrv, pDrvPrev, SB16DRIVER, Node))
-        {
-            PPDMAUDIOSTREAM pStreamPrev = pDrvPrev->Out.pStream;
-            if (pStreamPrev)
-            {
-                AssertMsg(pStream->Cfg.Props.uHz       == pStreamPrev->Cfg.Props.uHz,
-                          ("%RU32Hz vs. %RU32Hz\n", pStream->Cfg.Props.uHz, pStreamPrev->Cfg.Props.uHz));
-                AssertMsg(pStream->Cfg.Props.cChannels == pStreamPrev->Cfg.Props.cChannels,
-                          ("%RU8 vs. %RU8 channels\n", pStream->Cfg.Props.cChannels, pStreamPrev->Cfg.Props.cChannels));
-                AssertMsg(pStream->Cfg.Props.cBits     == pStreamPrev->Cfg.Props.cBits,
-                          ("%d vs. %d bits\n", pStream->Cfg.Props.cBits, pStreamPrev->Cfg.Props.cBits));
-                AssertMsg(pStream->Cfg.Props.fSigned   == pStreamPrev->Cfg.Props.fSigned,
-                          ("%RTbool vs. %RTbool signed\n", pStream->Cfg.Props.fSigned, pStreamPrev->Cfg.Props.fSigned));
-            }
-        }
-# endif
         PPDMIAUDIOCONNECTOR pConn = pDrv->pConnector;
         if (!pConn)
             continue;
