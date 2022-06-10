@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 77185 2019-02-06 19:46:49Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -676,7 +676,11 @@ static DECLCALLBACK(int) RTLDRELF_NAME(Close)(PRTLDRMODINTERNAL pMod)
         pModElf->paShdrs = NULL;
     }
 
-    pModElf->pvBits = NULL;
+    if (pModElf->pvBits)
+    {
+        pModElf->Core.pReader->pfnUnmap(pModElf->Core.pReader, pModElf->pvBits);
+        pModElf->pvBits = NULL;
+    }
 
     return VINF_SUCCESS;
 }

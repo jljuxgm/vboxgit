@@ -1,4 +1,4 @@
-/* $Id: ldrFile.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ldrFile.cpp 77185 2019-02-06 19:46:49Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, The File Oriented Parts.
  */
@@ -185,12 +185,22 @@ static DECLCALLBACK(int) rtldrFileDestroy(PRTLDRREADER pReader)
 {
     int rc = VINF_SUCCESS;
     PRTLDRREADERFILE pFileReader = (PRTLDRREADERFILE)pReader;
+
+    Assert(!pFileReader->cMappings);
+
     if (pFileReader->hFile != NIL_RTFILE)
     {
         rc = RTFileClose(pFileReader->hFile);
         AssertRC(rc);
         pFileReader->hFile = NIL_RTFILE;
     }
+
+    if (pFileReader->pvMapping)
+    {
+        RTMemFree(pFileReader->pvMapping);
+        pFileReader->pvMapping = NULL;
+    }
+
     RTMemFree(pFileReader);
     return rc;
 }
