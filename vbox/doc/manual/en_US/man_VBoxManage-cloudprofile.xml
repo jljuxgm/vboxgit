@@ -16,7 +16,7 @@
 <refentry id="vboxmanage-cloudprofile" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2019-03-19 18:00:28 +0800 (Tue, 19 Mar 2019) $</pubdate>
+    <pubdate>$Date: 2019-03-19 18:08:37 +0800 (Tue, 19 Mar 2019) $</pubdate>
     <title>VBoxManage cloudprofile</title>
   </refentryinfo>
 
@@ -78,7 +78,7 @@
     <refsect2 id="vboxmanage-cloudprofile-common-options">
       <title>Common options</title>
       <remark role="help-scope" condition="GLOBAL"/>
-      <para>The subcommands of <command>cloudprofile</command> realize the standard CRUD operations for a cloud profile. 
+      <para>The subcommands of <command>cloudprofile</command> realize the standard CRUD operations for a cloud profile.
         The following common options can be placed before the sub-command:</para>
       <variablelist>
         <varlistentry>
