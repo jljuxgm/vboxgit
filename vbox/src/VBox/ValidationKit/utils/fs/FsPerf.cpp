@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 77442 2019-02-22 21:46:38Z vboxsync $ */
+/* $Id: FsPerf.cpp 77445 2019-02-23 01:59:26Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -2423,7 +2423,7 @@ void fsPerfMMap(RTFILE hFile1, RTFILE hFileNoCache, uint64_t cbFile)
                 {
                     /* Generate a randomly sized write at a random location, making
                        sure it differs from whatever is there already before writing. */
-                    uint32_t const cbToWrite  = RTRandU32Ex(1, cbBuf);
+                    uint32_t const cbToWrite  = RTRandU32Ex(1, (uint32_t)cbBuf);
                     uint64_t const offToWrite = RTRandU64Ex(0, cbMapping - cbToWrite);
 
                     fsPerfFillWriteBuf(offToWrite, pbBuf, cbToWrite, 0xf8);
@@ -2862,7 +2862,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 77442 $";
+                char szRev[] = "$Revision: 77445 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
