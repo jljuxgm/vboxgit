@@ -1,4 +1,4 @@
-/* $Id: UIVisoBrowserBase.h 77405 2019-02-20 20:39:07Z vboxsync $ */
+/* $Id: UIVisoBrowserBase.h 77407 2019-02-21 09:29:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoBrowserBase class declaration.
  */
@@ -38,6 +38,7 @@ class QTableView;
 class QTreeView;
 class UILocationSelector;
 
+/** An abstract QWidget extension hosting a tree and table view. */
 class UIVisoBrowserBase : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
