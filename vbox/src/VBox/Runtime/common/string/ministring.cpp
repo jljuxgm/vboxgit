@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 73908 2018-08-27 10:15:30Z vboxsync $ */
+/* $Id: ministring.cpp 73963 2018-08-29 16:39:29Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -339,14 +339,14 @@ int RTCString::printfVNoThrow(const char *pszFormat, va_list va) RT_NOEXCEPT
 {
     cleanup();
     RTCSTRINGOTHROW Args = { this, VINF_SUCCESS };
-    RTStrFormatV(printfOutputCallback, &Args, NULL, NULL, pszFormat, va);
+    RTStrFormatV(printfOutputCallbackNoThrow, &Args, NULL, NULL, pszFormat, va);
     return Args.rc;
 }
 
 int RTCString::appendPrintfVNoThrow(const char *pszFormat, va_list va) RT_NOEXCEPT
 {
     RTCSTRINGOTHROW Args = { this, VINF_SUCCESS };
-    RTStrFormatV(printfOutputCallback, &Args, NULL, NULL, pszFormat, va);
+    RTStrFormatV(printfOutputCallbackNoThrow, &Args, NULL, NULL, pszFormat, va);
     return Args.rc;
 }
 
