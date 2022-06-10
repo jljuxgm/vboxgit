@@ -1,4 +1,4 @@
-/* $Id: VBoxSFInternal.h 75293 2018-11-06 16:15:09Z vboxsync $ */
+/* $Id: VBoxSFInternal.h 75666 2018-11-22 14:13:32Z vboxsync $ */
 /** @file
  * VBoxSF - Darwin Shared Folders, internal header.
  */
@@ -81,15 +81,10 @@ typedef struct vboxvfs_vnode_data
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-/** Global refernce to host service connection */
-extern VBGLSFCLIENT g_vboxSFClient;
-
-/* VFS options */
-extern struct vfsops g_oVBoxVFSOpts;
-
-extern int (**g_VBoxVFSVnodeDirOpsVector)(void *);
-extern int g_cVBoxVFSVnodeOpvDescListSize;
-extern struct vnodeopv_desc *g_VBoxVFSVnodeOpvDescList[];
+extern VBGLSFCLIENT         g_SfClient;
+extern struct vfsops        g_VBoxSfVfsOps;
+extern struct vnodeopv_desc g_VBoxSfVnodeOpvDesc;
+extern int (**g_papfnVBoxVFSVnodeDirOpsVector)(void *);
 
 
 /*********************************************************************************************************************************
