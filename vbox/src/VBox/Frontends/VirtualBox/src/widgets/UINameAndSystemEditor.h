@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 73130 2018-07-13 16:29:34Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 73251 2018-07-19 19:30:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -75,7 +75,7 @@ public:
     void setName(const QString &strName);
 
     /** Defines the VM OS @a strTypeId and @a strFamilyId if passed. */
-    void setTypeId(const QString &strTypeId, const QString &strFamilyId = QString());
+    void setTypeId(QString strTypeId, QString strFamilyId = QString());
     /** Returns the VM OS type ID. */
     QString typeId() const;
     /** Returns the VM OS family ID. */
