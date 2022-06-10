@@ -1,4 +1,4 @@
-# $Id: Config.kmk 75914 2018-12-03 14:58:17Z vboxsync $
+# $Id: Config.kmk 75949 2018-12-04 16:07:18Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4020,7 +4020,7 @@ SDK_VBOX_LIBXML2_DEFS.win ?= WIN32 _WINDOWS _MBCS HAVE_WIN32_THREADS HAVE_COMPIL
 #       libxml against VBoxRT
 
 SDK_VBOX_LIBPNG       = .
-SDK_VBOX_LIBPNG_INCS ?= $(PATH_ROOT)/src/libs/libpng-1.2.54
+SDK_VBOX_LIBPNG_INCS ?= $(PATH_ROOT)/src/libs/libpng-1.6.36
 SDK_VBOX_LIBPNG_LIBS ?= $(PATH_STAGE_LIB)/VBox-libpng$(VBOX_SUFF_LIB)
 
 SDK_VBOX_ZLIB         = .
@@ -7481,7 +7481,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75914 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75949 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
