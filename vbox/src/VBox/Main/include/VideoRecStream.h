@@ -1,4 +1,4 @@
-/* $Id: VideoRecStream.h 74995 2018-10-23 12:15:27Z vboxsync $ */
+/* $Id: VideoRecStream.h 74999 2018-10-23 13:50:28Z vboxsync $ */
 /** @file
  * Video recording stream code header.
  */

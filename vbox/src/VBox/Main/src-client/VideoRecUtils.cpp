@@ -1,4 +1,4 @@
-/* $Id: VideoRecUtils.cpp 74992 2018-10-23 11:09:22Z vboxsync $ */
+/* $Id: VideoRecUtils.cpp 74999 2018-10-23 13:50:28Z vboxsync $ */
 /** @file
  * Video recording utility code.
  */
