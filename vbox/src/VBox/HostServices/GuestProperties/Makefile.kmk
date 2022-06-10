@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 76965 2019-01-24 08:43:31Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Info Services Host Service.
 #
@@ -33,7 +33,7 @@ VBoxGuestPropSvc_INCS.win  = \
 	$(VBOX_PATH_SDK)
 
 VBoxGuestPropSvc_SOURCES = \
-	service.cpp
+	VBoxGuestPropSvc.cpp
 
 VBoxGuestPropSvc_SOURCES.win = \
 	VBoxGuestPropSvc.rc
