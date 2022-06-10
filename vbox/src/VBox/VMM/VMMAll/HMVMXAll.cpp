@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 74061 2018-09-04 09:43:57Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 74065 2018-09-04 12:38:25Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -126,6 +126,9 @@ static const char * const g_apszVmxInstrDiagDesc[kVmxVInstrDiag_Last] =
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmread_VmxRoot                   , "VmxRoot"                 ),
     /* VMLAUNCH/VMRESUME. */
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_AddrApicAccess           , "AddrApicAccess"          ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_AddrEntryMsrLoad         , "AddrEntryMsrLoad"        ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_AddrExitMsrLoad          , "AddrExitMsrLoad"         ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_AddrExitMsrStore         , "AddrExitMsrStore"        ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_AddrIoBitmapA            , "AddrIoBitmapA"           ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_AddrIoBitmapB            , "AddrIoBitmapB"           ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_AddrMsrBitmap            , "AddrMsrBitmap"           ),
@@ -136,6 +139,8 @@ static const char * const g_apszVmxInstrDiagDesc[kVmxVInstrDiag_Last] =
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_BlocKMovSS               , "BlockMovSS"              ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_Cpl                      , "Cpl"                     ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_Cr3TargetCount           , "Cr3TargetCount"          ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryCtlsAllowed1        , "EntryCtlsAllowed1"       ),
+    VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_EntryCtlsDisallowed0     , "EntryCtlsDisallowed0"    ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_ExitCtlsAllowed1         , "ExitCtlsAllowed1"        ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_ExitCtlsDisallowed0      , "ExitCtlsDisallowed0"     ),
     VMX_INSTR_DIAG_DESC(kVmxVInstrDiag_Vmentry_LongModeCS               , "LongModeCS"              ),
