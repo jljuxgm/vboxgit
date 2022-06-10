@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: fileio-posix.cpp 76902 2019-01-19 14:25:38Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
@@ -457,7 +457,11 @@ RTR3DECL(int)  RTFileSeek(RTFILE hFile, int64_t offSeek, unsigned uMethod, uint6
 RTR3DECL(int)  RTFileRead(RTFILE hFile, void *pvBuf, size_t cbToRead, size_t *pcbRead)
 {
     if (cbToRead <= 0)
+    {
+        if (pcbRead)
+            *pcbRead = 0;
         return VINF_SUCCESS;
+    }
 
     /*
      * Attempt read.
