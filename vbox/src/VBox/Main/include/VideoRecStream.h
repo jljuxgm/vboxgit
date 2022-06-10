@@ -1,4 +1,4 @@
-/* $Id: VideoRecStream.h 75066 2018-10-25 12:58:49Z vboxsync $ */
+/* $Id: VideoRecStream.h 75067 2018-10-25 13:10:22Z vboxsync $ */
 /** @file
  * Video recording stream code header.
  */
@@ -168,6 +168,7 @@ typedef std::vector <PVIDEORECSTREAM> VideoRecStreams;
 int VideoRecStreamClose(PVIDEORECSTREAM pStream);
 int VideoRecStreamOpen(PVIDEORECSTREAM pStream, PVIDEORECCFG pCfg);
 int VideoRecStreamProcess(PVIDEORECSTREAM pStream);
+int VideoRecStreamInit(PVIDEORECSTREAM pStream, PVIDEORECCONTEXT pCtx, uint32_t uScreen);
 int VideoRecStreamUninit(PVIDEORECSTREAM pStream);
 int VideoRecStreamUnitVideo(PVIDEORECSTREAM pStream);
 int VideoRecStreamInitVideo(PVIDEORECSTREAM pStream, PVIDEORECCFG pCfg);

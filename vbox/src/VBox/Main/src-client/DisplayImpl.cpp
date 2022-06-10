@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 74905 2018-10-18 08:06:37Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 75067 2018-10-25 13:10:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2611,7 +2611,7 @@ int Display::i_videoRecStart(void)
     {
         for (unsigned uScreen = 0; uScreen < mcMonitors; uScreen++)
         {
-            int rc2 = VideoRecStreamInit(mpVideoRecCtx, uScreen);
+            int rc2 = VideoRecStreamInit(VideoRecGetStream(mpVideoRecCtx, uScreen), mpVideoRecCtx, uScreen);
             if (RT_SUCCESS(rc2))
             {
                 i_videoRecScreenChanged(uScreen);

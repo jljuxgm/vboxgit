@@ -1,4 +1,4 @@
-/* $Id: VideoRec.h 74995 2018-10-23 12:15:27Z vboxsync $ */
+/* $Id: VideoRec.h 75067 2018-10-25 13:10:22Z vboxsync $ */
 /** @file
  * Video recording code header.
  */
@@ -195,10 +195,8 @@ typedef struct VIDEORECCONTEXT
 int VideoRecContextCreate(uint32_t cScreens, PVIDEORECCFG pVideoRecCfg, PVIDEORECCONTEXT *ppCtx);
 int VideoRecContextDestroy(PVIDEORECCONTEXT pCtx);
 
-int VideoRecStreamInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen);
-int VideoRecStreamUninit(PVIDEORECCONTEXT pCtx, uint32_t uScreen);
-
 VIDEORECFEATURES VideoRecGetFeatures(PVIDEORECCFG pCfg);
+PVIDEORECSTREAM VideoRecGetStream(PVIDEORECCONTEXT pCtx, uint32_t uScreen);
 
 int VideoRecSendAudioFrame(PVIDEORECCONTEXT pCtx, const void *pvData, size_t cbData, uint64_t uTimestampMs);
 int VideoRecSendVideoFrame(PVIDEORECCONTEXT pCtx, uint32_t uScreen,
