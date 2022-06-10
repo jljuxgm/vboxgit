@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.cpp 75041 2018-10-24 13:57:34Z vboxsync $ */
+/* $Id: WebMWriter.cpp 75048 2018-10-24 15:31:30Z vboxsync $ */
 /** @file
  * WebMWriter.cpp - WebM container handling.
  */
@@ -347,7 +347,7 @@ int WebMWriter::init(void)
  */
 void WebMWriter::destroy(void)
 {
-    CurSeg.destroy();
+    CurSeg.uninit();
 }
 
 /**
