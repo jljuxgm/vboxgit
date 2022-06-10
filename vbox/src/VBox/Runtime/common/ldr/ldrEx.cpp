@@ -1,4 +1,4 @@
-/* $Id: ldrEx.cpp 73387 2018-07-27 15:20:00Z vboxsync $ */
+/* $Id: ldrEx.cpp 73442 2018-08-02 10:50:25Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Extended Features.
  */
@@ -752,6 +752,7 @@ RTDECL(const char *) RTLdrArchName(RTLDRARCH enmArch)
         case RTLDRARCH_WHATEVER:    return "WHATEVER";
         case RTLDRARCH_HOST:        return "HOST";
         case RTLDRARCH_AMD64:       return "AMD64";
+        case RTLDRARCH_X86_16:      return "X86_16";
         case RTLDRARCH_X86_32:      return "X86_32";
         case RTLDRARCH_ARM32:       return "ARM32";
         case RTLDRARCH_ARM64:       return "ARM64";
