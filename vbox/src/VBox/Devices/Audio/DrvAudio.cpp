@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 73682 2018-08-15 07:14:52Z vboxsync $ */
+/* $Id: DrvAudio.cpp 73684 2018-08-15 09:12:56Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -3052,6 +3052,14 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis,
         LogRel2(("Audio: Custom pre-buffering size overwritten by backend for stream '%s' (now %RU64ms, %RU32 frames)\n",
                  pStream->szName, DrvAudioHlpFramesToMilli(pCfgAcq->Backend.cfPreBuf, &pCfgAcq->Props), pCfgAcq->Backend.cfPreBuf));
     }
+
+    /* Sanity for detecting buggy backends. */
+    AssertMsgReturn(pCfgAcq->Backend.cfPeriod < pCfgAcq->Backend.cfBufferSize,
+                    ("Acquired period size must be smaller than buffer size\n"),
+                    VERR_INVALID_PARAMETER);
+    AssertMsgReturn(pCfgAcq->Backend.cfPreBuf < pCfgAcq->Backend.cfBufferSize,
+                    ("Acquired pre-buffering size must be smaller than buffer size -- this otherwise will lead to buffer overruns\n"),
+                    VERR_INVALID_PARAMETER);
 
     pStream->fStatus |= PDMAUDIOSTREAMSTS_FLAG_INITIALIZED;
 
