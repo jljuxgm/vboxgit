@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 72978 2018-07-08 14:12:46Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 72998 2018-07-09 07:49:11Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -2256,7 +2256,7 @@ static RTEXITCODE handleMediumIOCat(HandlerArg *a, int iFirst, PMEDIUMIOCOMMONOP
                     {
                         /* hexdump -C */
                         uint64_t        offHex    = off;
-                        uint64_t const  offHexEnd = off + cb;
+                        uint64_t const  offHexEnd = off + cbReturned;
                         while (offHex < offHexEnd)
                         {
                             if (   offHex >= offEndDupCheck
