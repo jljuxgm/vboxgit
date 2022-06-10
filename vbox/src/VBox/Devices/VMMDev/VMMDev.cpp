@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 75808 2018-11-29 07:10:38Z vboxsync $ */
+/* $Id: VMMDev.cpp 75853 2018-11-30 19:26:42Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -4420,6 +4420,7 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     pThis->IHGCMPort.pfnCompleted           = hgcmCompleted;
     pThis->IHGCMPort.pfnIsCmdRestored       = hgcmIsCmdRestored;
     pThis->IHGCMPort.pfnGetRequestor        = hgcmGetRequestor;
+    pThis->IHGCMPort.pfnGetVMMDevSessionId  = hgcmGetVMMDevSessionId;
 #endif
 
     pThis->pCredentials = (VMMDEVCREDS *)RTMemAllocZ(sizeof(*pThis->pCredentials));

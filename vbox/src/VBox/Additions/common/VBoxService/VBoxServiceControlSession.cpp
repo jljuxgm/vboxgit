@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 75824 2018-11-29 22:12:53Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 75853 2018-11-30 19:26:42Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1578,7 +1578,7 @@ static RTEXITCODE vgsvcGstCtrlSessionSpawnWorker(PVBOXSERVICECTRLSESSION pSessio
                 {
                     VGSvcVerbose(3, "Waiting for host msg ...\n");
                     uint32_t uMsg = 0;
-                    rc = VbglR3GuestCtrlMsgPeekWait(idClient, &uMsg, &CtxHost.uNumParms);
+                    rc = VbglR3GuestCtrlMsgPeekWait(idClient, &uMsg, &CtxHost.uNumParms, NULL);
                     if (RT_SUCCESS(rc))
                     {
                         VGSvcVerbose(4, "Msg=%RU32 (%RU32 parms) retrieved (%Rrc)\n", uMsg, CtxHost.uNumParms, rc);

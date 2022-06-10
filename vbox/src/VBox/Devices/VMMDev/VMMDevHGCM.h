@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.h 75769 2018-11-27 12:30:00Z vboxsync $ */
+/* $Id: VMMDevHGCM.h 75853 2018-11-30 19:26:42Z vboxsync $ */
 /** @file
  * VBoxDev - HGCM - Host-Guest Communication Manager, internal header.
  */
@@ -31,6 +31,7 @@ int vmmdevHGCMCancel2(VMMDevState *pVMMDevState, RTGCPHYS GCPtr);
 DECLCALLBACK(int)  hgcmCompleted(PPDMIHGCMPORT pInterface, int32_t result, PVBOXHGCMCMD pCmdPtr);
 DECLCALLBACK(bool) hgcmIsCmdRestored(PPDMIHGCMPORT pInterface, PVBOXHGCMCMD pCmd);
 DECLCALLBACK(uint32_t) hgcmGetRequestor(PPDMIHGCMPORT pInterface, PVBOXHGCMCMD pCmd);
+DECLCALLBACK(uint64_t) hgcmGetVMMDevSessionId(PPDMIHGCMPORT pInterface);
 
 int vmmdevHGCMSaveState(VMMDevState *pVMMDevState, PSSMHANDLE pSSM);
 int vmmdevHGCMLoadState(VMMDevState *pVMMDevState, PSSMHANDLE pSSM, uint32_t u32Version);
