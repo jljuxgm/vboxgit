@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileManager.cpp 74930 2018-10-18 17:31:57Z vboxsync $ */
+/* $Id: UICloudProfileManager.cpp 74945 2018-10-19 14:33:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileManager class implementation.
  */
@@ -111,7 +111,7 @@ UIItemCloudProvider::UIItemCloudProvider()
     /* Assign icon: */
     setIcon(Column_Name, UIIconPool::iconSet(":/provider_oracle_16px.png"));
     /* Assign item type: */
-    setData(Column_Name, Data_ItemType, CloudItemType_Provider);
+    setData(Column_Name, Data_ItemType, QVariant::fromValue(CloudItemType_Provider));
 }
 
 void UIItemCloudProvider::updateFields()
@@ -131,7 +131,7 @@ UIItemCloudProfile::UIItemCloudProfile()
     /* Assign icon: */
     setIcon(Column_Name, UIIconPool::iconSet(":/profile_16px.png"));
     /* Assign item type: */
-    setData(Column_Name, Data_ItemType, CloudItemType_Profile);
+    setData(Column_Name, Data_ItemType, QVariant::fromValue(CloudItemType_Profile));
 }
 
 void UIItemCloudProfile::updateFields()
