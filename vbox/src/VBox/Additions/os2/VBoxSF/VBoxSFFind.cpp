@@ -1,4 +1,4 @@
-/** $Id: VBoxSFFind.cpp 75337 2018-11-09 01:39:01Z vboxsync $ */
+/** $Id: VBoxSFFind.cpp 75338 2018-11-09 02:08:49Z vboxsync $ */
 /** @file
  * VBoxSF - OS/2 Shared Folders, Find File IFS EPs.
  */
@@ -48,7 +48,10 @@
  * Checks if the given name is 8-dot-3 compatible.
  *
  * @returns true if compatible, false if not.
- * @param   pszName             The name to inspect (UTF-8).
+ * @param   pszName     The name to inspect (UTF-8).
+ * @param   cchName     The length of the name.
+ * @param   pwszTmp     Buffer for test conversions.
+ * @param   cwcTmp      The size of the buffer.
  */
 static bool vboxSfOs2IsUtf8Name8dot3(const char *pszName, size_t cchName, PRTUTF16 pwszTmp, size_t cwcTmp)
 {
@@ -702,6 +705,8 @@ FS32_FINDFIRST(PCDFSI pCdFsi, PVBOXSFCD pCdFsd, PCSZ pszPath, LONG offCurDirEnd,
             vboxSfOs2StrFree(pFilter);
         vboxSfOs2ReleasePathAndFolder(pStrFolderPath, pFolder);
     }
+
+    RT_NOREF_PV(pFsFsi);
     LogFlow(("FS32_FINDFIRST: returns %u\n", rc));
     return rc;
 }
