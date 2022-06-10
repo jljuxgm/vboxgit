@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 72917 2018-07-05 13:50:01Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 72918 2018-07-05 13:53:14Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -1285,7 +1285,7 @@ VMMR0_INT_DECL(int)  NEMR0ExportState(PGVM pGVM, PVM pVM, VMCPUID idCpu)
         /*
          * Call worker.
          */
-        rc = nemR0WinExportState(pGVM, pGVCpu, CPUMQueryGuestCtxPtr(pVCpu));
+        rc = nemR0WinExportState(pGVM, pGVCpu, &pVCpu->cpum.GstCtx);
     }
     return rc;
 }
@@ -2206,7 +2206,7 @@ VMMR0_INT_DECL(int) NEMR0ImportState(PGVM pGVM, PVM pVM, VMCPUID idCpu, uint64_t
         /*
          * Call worker.
          */
-        rc = nemR0WinImportState(pGVM, pGVCpu, CPUMQueryGuestCtxPtr(pVCpu), fWhat);
+        rc = nemR0WinImportState(pGVM, pGVCpu, &pVCpu->cpum.GstCtx, fWhat);
     }
     return rc;
 }
