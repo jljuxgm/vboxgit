@@ -1,4 +1,4 @@
-/* $Id: s3.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: s3.h 76557 2019-01-01 02:37:24Z vboxsync $ */
 /** @file
  * IPRT - Simple Storage Service (S3) Communication API.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___iprt_s3_h
-#define ___iprt_s3_h
+#ifndef IPRT_INCLUDED_s3_h
+#define IPRT_INCLUDED_s3_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

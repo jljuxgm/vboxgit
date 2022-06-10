@@ -1,4 +1,4 @@
-/* $Id: dbg.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: dbg.h 76557 2019-01-01 02:37:24Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___iprt_dbg_h
-#define ___iprt_dbg_h
+#ifndef IPRT_INCLUDED_dbg_h
+#define IPRT_INCLUDED_dbg_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

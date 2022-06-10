@@ -1,4 +1,4 @@
-/* $Id: lx.h 76507 2018-12-30 03:43:09Z vboxsync $ */
+/* $Id: lx.h 76557 2019-01-01 02:37:24Z vboxsync $ */
 /** @file
  * LX structures, types and defines.
  */
@@ -28,8 +28,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef ___iprt_formats_lx_h___
-#define ___iprt_formats_lx_h___
+#ifndef IPRT_INCLUDED_formats_lx_h
+#define IPRT_INCLUDED_formats_lx_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

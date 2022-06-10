@@ -1,4 +1,4 @@
-/* $Id: thread.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: thread.h 76557 2019-01-01 02:37:24Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -261,7 +261,7 @@ DECLHIDDEN(void)         rtThreadClearTlsEntry(RTTLS iTls);
 DECLHIDDEN(void)         rtThreadTlsDestruction(PRTTHREADINT pThread); /* in tls-generic.cpp */
 #endif
 
-#ifdef ___iprt_asm_h
+#ifdef IPRT_INCLUDED_asm_h
 
 /**
  * Gets the thread state.

@@ -1,4 +1,4 @@
-/* $Id: ext.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ext.h 76557 2019-01-01 02:37:24Z vboxsync $ */
 /** @file
  * IPRT, Ext2/3/4 format.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___iprt_formats_ext_h
-#define ___iprt_formats_ext_h
+#ifndef IPRT_INCLUDED_formats_ext_h
+#define IPRT_INCLUDED_formats_ext_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

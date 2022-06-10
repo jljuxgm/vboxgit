@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxGuestR3LibInternal.h 76557 2019-01-01 02:37:24Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -98,7 +98,7 @@ DECLINLINE(void) VbglHGCMParmPtrSet(HGCMFunctionParameter *pParm, void *pv, uint
 }
 
 
-#ifdef ___iprt_string_h
+#ifdef IPRT_INCLUDED_string_h
 
 DECLINLINE(void) VbglHGCMParmPtrSetString(HGCMFunctionParameter *pParm, const char *psz)
 {
@@ -107,7 +107,7 @@ DECLINLINE(void) VbglHGCMParmPtrSetString(HGCMFunctionParameter *pParm, const ch
     pParm->u.Pointer.u.linearAddr  = (uintptr_t)psz;
 }
 
-#endif /* ___iprt_string_h */
+#endif /* IPRT_INCLUDED_string_h */
 
 #ifdef VBOX_VBGLR3_XFREE86
 # undef strlen

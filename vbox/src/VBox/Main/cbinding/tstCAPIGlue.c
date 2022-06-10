@@ -1,4 +1,4 @@
-/* $Id: tstCAPIGlue.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstCAPIGlue.c 76557 2019-01-01 02:37:24Z vboxsync $ */
 /** @file tstCAPIGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -39,7 +39,7 @@
 # include <unistd.h>
 # include <sys/poll.h>
 #endif
-#ifdef ___iprt_cdefs_h
+#ifdef IPRT_INCLUDED_cdefs_h
 # error "not supposed to involve any IPRT or VBox headers here."
 #endif
 

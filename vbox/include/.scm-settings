@@ -1,4 +1,4 @@
-# $Id: .scm-settings 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: .scm-settings 76557 2019-01-01 02:37:24Z vboxsync $
 ## @file
 # Source code massager settings for the includes.
 #
@@ -73,4 +73,6 @@
 /iprt/runtime-loader.h:                 --no-fix-header-guards
 /iprt/bldprog-strtab-template.cpp.h:    --no-fix-header-guards
 /iprt/asm*watcom*.h:                    --no-pragma-once
+
+/iprt/*.h: --guard-relative-to-dir iprt --guard-prefix IPRT_INCLUDED_
 

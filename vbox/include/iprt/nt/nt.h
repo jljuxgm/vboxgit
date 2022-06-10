@@ -1,4 +1,4 @@
-/* $Id: nt.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: nt.h 76557 2019-01-01 02:37:24Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___iprt_nt_nt_h___
-#define ___iprt_nt_nt_h___
+#ifndef IPRT_INCLUDED_nt_nt_h
+#define IPRT_INCLUDED_nt_nt_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
