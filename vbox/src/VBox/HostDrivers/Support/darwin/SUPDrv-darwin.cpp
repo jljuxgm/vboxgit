@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 75189 2018-10-30 16:46:43Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 75282 2018-11-06 12:57:54Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -1532,6 +1532,30 @@ int  VBOXCALL   supdrvOSLdrValidatePointer(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAG
 #else
     NOREF(pDevExt); NOREF(pImage); NOREF(pv); NOREF(pbImageBits); NOREF(pszSymbol);
     return VERR_NOT_SUPPORTED;
+#endif
+}
+
+
+int  VBOXCALL   supdrvOSLdrQuerySymbol(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage,
+                                       const char *pszSymbol, size_t cchSymbol, void **ppvSymbol)
+{
+#ifdef VBOX_WITH_DARWIN_R0_DARWIN_IMAGE_VERIFICATION
+    /*
+     * Just hand the problem to RTLdrGetSymbolEx.
+     */
+    RTLDRADDR uValueFound;
+    int rc = RTLdrGetSymbolEx(pImage->hLdrMod, pImage->pvImage, (uintptr_t)pImage->pvImage, UINT32_MAX, pszSymbol, &uValueFound);
+    if (RT_SUCCESS(rc))
+    {
+        *ppvSymbol = (void *)(uintptr_t)uValueFound;
+        return VINF_SUCCESS;
+    }
+    RT_NOREF(pDevExt, cchSymbol);
+    return rc;
+
+#else
+    RT_NOREF(pDevExt, pImage, pszSymbol, cchSymbol, ppvSymbol);
+    return VERR_WRONG_ORDER;
 #endif
 }
 
