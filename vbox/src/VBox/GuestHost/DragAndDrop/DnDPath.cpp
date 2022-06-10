@@ -1,4 +1,4 @@
-/* $Id: DnDPath.cpp 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: DnDPath.cpp 76379 2018-12-22 22:48:10Z vboxsync $ */
 /** @file
  * DnD - Path handling.
  */
@@ -19,11 +19,13 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_GUEST_DND
+#include <VBox/GuestHost/DragAndDrop.h>
 
+#include <iprt/err.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
 
-#include <VBox/GuestHost/DragAndDrop.h>
 
 /**
  * Sanitizes the file name component so that unsupported characters

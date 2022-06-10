@@ -1,6 +1,6 @@
-/* $Id: DnDDroppedFiles.cpp 74526 2018-09-28 15:08:24Z vboxsync $ */
+/* $Id: DnDDroppedFiles.cpp 76379 2018-12-22 22:48:10Z vboxsync $ */
 /** @file
- * DnD: Directory handling.
+ * DnD - Directory handling.
  */
 
 /*
@@ -19,18 +19,17 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP LOG_GROUP_GUEST_DND
+#include <VBox/GuestHost/DragAndDrop.h>
 
 #include <iprt/assert.h>
 #include <iprt/dir.h>
+#include <iprt/err.h>
+#include <iprt/file.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
 
-#include <VBox/GuestHost/DragAndDrop.h>
 
-#ifdef LOG_GROUP
- #undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <VBox/log.h>
 
 DnDDroppedFiles::DnDDroppedFiles(void)

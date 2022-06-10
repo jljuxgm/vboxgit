@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiDisp.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: VBoxUhgsmiDisp.cpp 76379 2018-12-22 22:48:10Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -46,7 +46,8 @@ DECLCALLBACK(int) vboxUhgsmiD3DBufferDestroy(PVBOXUHGSMI_BUFFER pBuf)
 }
 
 /* typedef DECLCALLBACK(int) FNVBOXUHGSMI_BUFFER_LOCK(PVBOXUHGSMI_BUFFER pBuf, uint32_t offLock, uint32_t cbLock, VBOXUHGSMI_BUFFER_LOCK_FLAGS fFlags, void**pvLock); */
-DECLCALLBACK(int) vboxUhgsmiD3DBufferLock(PVBOXUHGSMI_BUFFER pBuf, uint32_t offLock, uint32_t cbLock, VBOXUHGSMI_BUFFER_LOCK_FLAGS fFlags, void**pvLock)
+DECLCALLBACK(int) vboxUhgsmiD3DBufferLock(PVBOXUHGSMI_BUFFER pBuf, uint32_t offLock, uint32_t cbLock,
+                                          VBOXUHGSMI_BUFFER_LOCK_FLAGS fFlags, void**pvLock)
 {
     PVBOXUHGSMI_BUFFER_PRIVATE_DX_ALLOC_BASE pBuffer = VBOXUHGSMDXALLOCBASE_GET_BUFFER(pBuf);
     struct VBOXWDDMDISP_DEVICE *pDevice = VBOXUHGSMID3D_GET(pBuffer->BasePrivate.pHgsmi)->pDevice;
