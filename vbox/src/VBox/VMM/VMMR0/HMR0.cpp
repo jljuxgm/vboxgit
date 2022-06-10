@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 73389 2018-07-28 07:03:03Z vboxsync $ */
+/* $Id: HMR0.cpp 74789 2018-10-12 10:34:32Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1553,7 +1553,7 @@ VMMR0_INT_DECL(int) HMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
     if (!RTThreadPreemptIsEnabled(NIL_RTTHREAD))
     {
         PHMGLOBALCPUINFO pHostCpu = &g_HmR0.aCpuInfo[RTMpCpuId()];
-        Assert(!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_PGM_SYNC_CR3 | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL));
+        Assert(!VMCPU_FF_IS_ANY_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3 | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL));
         Assert(pHostCpu->fConfigured);
         AssertReturn(!ASMAtomicReadBool(&g_HmR0.fSuspended), VERR_HM_SUSPEND_PENDING);
     }

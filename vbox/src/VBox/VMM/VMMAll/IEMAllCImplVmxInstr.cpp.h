@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74785 2018-10-12 10:14:19Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74789 2018-10-12 10:34:32Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -1951,7 +1951,7 @@ IEM_STATIC void iemVmxVmentrySaveForceFlags(PVMCPU pVCpu)
      */
     pVCpu->cpum.GstCtx.hwvirt.fLocalForcedActions = pVCpu->fLocalForcedActions & VMCPU_FF_BLOCK_NMIS;
 
-    if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS | VMCPU_FF_BLOCK_NMIS))
+    if (VMCPU_FF_IS_ANY_SET(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS | VMCPU_FF_BLOCK_NMIS))
         VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS | VMCPU_FF_BLOCK_NMIS);
 }
 

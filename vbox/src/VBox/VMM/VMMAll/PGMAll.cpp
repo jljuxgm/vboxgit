@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 73327 2018-07-23 14:25:42Z vboxsync $ */
+/* $Id: PGMAll.cpp 74789 2018-10-12 10:34:32Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2664,7 +2664,7 @@ VMMDECL(int) PGMFlushTLB(PVMCPU pVCpu, uint64_t cr3, bool fGlobal)
         else
         {
             AssertMsg(rc == VINF_PGM_SYNC_CR3, ("%Rrc\n", rc));
-            Assert(VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL | VMCPU_FF_PGM_SYNC_CR3));
+            Assert(VMCPU_FF_IS_ANY_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL | VMCPU_FF_PGM_SYNC_CR3));
             pVCpu->pgm.s.GCPhysCR3 = GCPhysOldCR3;
             pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_MAP_CR3;
             if (pgmMapAreMappingsFloating(pVM))
