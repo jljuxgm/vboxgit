@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 74706 2018-10-09 08:25:26Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 74709 2018-10-09 09:31:14Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -3471,6 +3471,25 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitTaskSwitch(PVMCPU pVCpu, IEMTASKSWITCH enmTa
                              | RT_BF_MAKE(VMX_BF_EXIT_QUAL_TASK_SWITCH_SOURCE,  uTaskSwitchSrc);
     iemVmxVmcsSetExitQual(pVCpu, uExitQual);
     return iemVmxVmexit(pVCpu, VMX_EXIT_TASK_SWITCH);
+}
+
+
+/**
+ * VMX VM-exit handler for VM-exits due to MWAIT instruction.
+ *
+ * @returns VBox strict status code.
+ * @param   pVCpu               The cross context virtual CPU structure.
+ * @param   fMonitorHwArmed     Whether the address-range monitor hardware is armed.
+ * @param   cbInstr             The instruction length in bytes.
+ */
+IEM_STATIC VBOXSTRICTRC iemVmxVmexitInstrMwait(PVMCPU pVCpu, bool fMonitorHwArmed, uint8_t cbInstr)
+{
+    VMXVEXITINFO ExitInfo;
+    RT_ZERO(ExitInfo);
+    ExitInfo.uReason = VMX_EXIT_MWAIT;
+    ExitInfo.cbInstr = cbInstr;
+    ExitInfo.u64Qual = fMonitorHwArmed;
+    return iemVmxVmexitInstrWithInfo(pVCpu, &ExitInfo);
 }
 
 
