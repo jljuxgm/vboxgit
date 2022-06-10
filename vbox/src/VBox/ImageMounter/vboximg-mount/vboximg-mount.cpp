@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.cpp 76069 2018-12-08 14:52:36Z vboxsync $ */
+/* $Id: vboximg-mount.cpp 76130 2018-12-10 14:49:23Z vboxsync $ */
 /** @file
  * vboximg-mount - Disk Image Flattening FUSE Program.
  */
@@ -270,6 +270,9 @@ vboximgOptHandler(void *data, const char *arg, int optKey, struct fuse_args *out
      * and arguments that don't result in variable assignment such as "USAGE"
      * In this impl. that's always deemed a parsing error.
      */
+    if (*arg != '-') /* could be user's mount point */
+        return 1;
+
     return -1;
 }
 
