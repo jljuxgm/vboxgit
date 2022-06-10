@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 77154 2019-02-04 17:52:47Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 77160 2019-02-05 09:12:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* GUI includes: */
+#include "UIMedium.h"
 #include "UIWizardCloneVD.h"
 #include "UIWizardCloneVDPageBasic1.h"
 #include "UIWizardCloneVDPageBasic2.h"
@@ -95,8 +96,8 @@ bool UIWizardCloneVD::copyVirtualDisk()
     /* Save created image as target one: */
     m_comTargetVirtualDisk = comVirtualDisk;
 
-    /* Just close the created image, it is not required anymore: */
-    m_comTargetVirtualDisk.Close();
+    /* Make sure we register the medium to VBox: */
+    vboxGlobal().createMedium(UIMedium(m_comTargetVirtualDisk, UIMediumDeviceType_HardDisk, KMediumState_Created));
 
     return true;
 }
