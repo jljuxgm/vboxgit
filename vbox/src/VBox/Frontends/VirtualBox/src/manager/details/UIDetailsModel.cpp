@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.cpp 75607 2018-11-20 10:33:09Z vboxsync $ */
+/* $Id: UIDetailsModel.cpp 75608 2018-11-20 10:57:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class implementation.
  */
@@ -293,9 +293,6 @@ void UIDetailsModel::sltElementTypeToggled()
 
 void UIDetailsModel::prepare()
 {
-    /* Register meta-types: */
-    qRegisterMetaType<DetailsElementType>();
-
     /* Prepare things: */
     prepareScene();
     prepareRoot();
