@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 74811 2018-10-12 16:34:26Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 74866 2018-10-16 15:53:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -2493,7 +2493,7 @@ void UIActionPoolSelector::updateMenuMediumWrapper(UIMenu *pMenu)
 void UIActionPoolSelector::updateMenuNetworkWindow()
 {
     /* Update corresponding menu: */
-    updateMenuMediumWrapper(action(UIActionIndexST_M_NetworkWindow)->menu());
+    updateMenuNetworkWrapper(action(UIActionIndexST_M_NetworkWindow)->menu());
 
     /* Mark menu as valid: */
     m_invalidations.remove(UIActionIndexST_M_NetworkWindow);
@@ -2502,7 +2502,7 @@ void UIActionPoolSelector::updateMenuNetworkWindow()
 void UIActionPoolSelector::updateMenuNetwork()
 {
     /* Update corresponding menu: */
-    updateMenuMediumWrapper(action(UIActionIndexST_M_Network)->menu());
+    updateMenuNetworkWrapper(action(UIActionIndexST_M_Network)->menu());
 
     /* Mark menu as valid: */
     m_invalidations.remove(UIActionIndexST_M_Network);

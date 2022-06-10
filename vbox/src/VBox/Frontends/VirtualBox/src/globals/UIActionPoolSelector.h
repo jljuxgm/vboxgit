@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 73780 2018-08-20 11:15:24Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 74866 2018-10-16 15:53:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
@@ -171,7 +171,7 @@ protected:
     void updateMenuNetworkWindow();
     /** Updates 'Network' menu. */
     void updateMenuNetwork();
-    /** Updates 'Medium' @a pMenu. */
+    /** Updates 'Network' @a pMenu. */
     void updateMenuNetworkWrapper(UIMenu *pMenu);
 
     /** Updates shortcuts. */
