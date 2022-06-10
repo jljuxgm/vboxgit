@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 75305 2018-11-07 12:55:58Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 75306 2018-11-07 13:27:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -166,9 +166,15 @@ namespace UIExtraDataDefs
         /** Holds last item chosen in selector-window chooser-pane. */
         SHARED_LIBRARY_STUFF extern const char *GUI_LastItemSelected;
         /** Holds selector-window details-pane' elements. */
+        /// @todo remove GUI_DetailsPageBoxes in 6.2
         SHARED_LIBRARY_STUFF extern const char *GUI_DetailsPageBoxes;
+        /// @todo remove GUI_PreviewUpdate in 6.2
         /** Holds selector-window details-pane' preview update interval. */
         SHARED_LIBRARY_STUFF extern const char *GUI_PreviewUpdate;
+        /** Holds VirtualBox Manager Details-pane elements. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_Details_Elements;
+        /** Holds VirtualBox Manager Details-pane / Preview element update interval. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_Details_Elements_Preview_UpdateInterval;
     /** @} */
 
     /** @name Snapshot Manager
