@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerMouse.cpp 76932 2019-01-22 11:23:09Z vboxsync $ */
+/* $Id: UIChooserHandlerMouse.cpp 77269 2019-02-11 17:10:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerMouse class implementation.
  */
@@ -199,6 +199,7 @@ bool UIChooserHandlerMouse::handleMouseDoubleClick(QGraphicsSceneMouseEvent *pEv
                     /* If it was a root: */
                     if (pGroupItem->isRoot())
                     {
+#if 0
                         /* Do not allow for unhovered root: */
                         if (!pGroupItem->isHovered())
                             return false;
@@ -208,6 +209,7 @@ bool UIChooserHandlerMouse::handleMouseDoubleClick(QGraphicsSceneMouseEvent *pEv
                             pGroupItem->setHovered(false);
                             model()->unindentRoot();
                         }
+#endif
                     }
                     /* If it was a simple group item: */
                     else
@@ -221,6 +223,7 @@ bool UIChooserHandlerMouse::handleMouseDoubleClick(QGraphicsSceneMouseEvent *pEv
                             else if (pGroupItem->isOpened())
                                 pGroupItem->close();
                         }
+#if 0
                         /* If click was at right part: */
                         else
                         {
@@ -228,6 +231,7 @@ bool UIChooserHandlerMouse::handleMouseDoubleClick(QGraphicsSceneMouseEvent *pEv
                             pGroupItem->setHovered(false);
                             model()->indentRoot(pGroupItem);
                         }
+#endif
                     }
                     /* Filter that event out: */
                     return true;

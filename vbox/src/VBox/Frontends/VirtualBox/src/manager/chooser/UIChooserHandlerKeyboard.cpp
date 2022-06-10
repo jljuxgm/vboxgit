@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerKeyboard.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIChooserHandlerKeyboard.cpp 77269 2019-02-11 17:10:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerKeyboard class implementation.
  */
@@ -254,6 +254,7 @@ bool UIChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
         /* Key LEFT? */
         case Qt::Key_Left:
         {
+#if 0
             /* If there is a focus item: */
             if (UIChooserItem *pFocusItem = model()->focusItem())
             {
@@ -273,12 +274,14 @@ bool UIChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
                         break;
                 }
             }
+#endif
             /* Pass that event: */
             return false;
         }
         /* Key RIGHT? */
         case Qt::Key_Right:
         {
+#if 0
             /* If there is focus item: */
             if (UIChooserItem *pFocusItem = model()->focusItem())
             {
@@ -289,6 +292,7 @@ bool UIChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
                     model()->indentRoot(pFocusItem);
                 }
             }
+#endif
             /* Pass that event: */
             return false;
         }
