@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 74413 2018-09-21 18:03:58Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 74905 2018-10-18 08:06:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2480,8 +2480,8 @@ void Display::i_videoRecInvalidate(void)
 
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
     mVideoRecCfg.Audio.fEnabled  = false; /* Disabled by default, unless set otherwise below. */
-    /* By default we use 48kHz, 16-bit, stereo for the audio track. */
-    mVideoRecCfg.Audio.uHz       = 48000;
+    /* By default we use 22,5kHz, 16-bit, stereo for the audio track. */
+    mVideoRecCfg.Audio.uHz       = 22050;
     mVideoRecCfg.Audio.cBits     = 16;
     mVideoRecCfg.Audio.cChannels = 2;
 #endif
@@ -2543,13 +2543,13 @@ void Display::i_videoRecInvalidate(void)
             }
             else if (value.startsWith("med" /* "med[ium]" */, Utf8Str::CaseInsensitive) == 0)
             {
-                mVideoRecCfg.Audio.uHz       = 22050;
-                mVideoRecCfg.Audio.cBits     = 16;
-                mVideoRecCfg.Audio.cChannels = 2;
+                /* Stay with the default set above. */
             }
             else if (value.compare("high", Utf8Str::CaseInsensitive) == 0)
             {
-                /* Stay with the default set above. */
+                mVideoRecCfg.Audio.uHz       = 48000;
+                mVideoRecCfg.Audio.cBits     = 16;
+                mVideoRecCfg.Audio.cChannels = 2;
             }
 #endif
         }
