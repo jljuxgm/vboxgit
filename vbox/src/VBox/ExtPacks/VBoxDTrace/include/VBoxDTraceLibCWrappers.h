@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceLibCWrappers.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VBoxDTraceLibCWrappers.h 76523 2018-12-30 05:48:39Z vboxsync $ */
 /** @file
  * VBoxDTraceTLibCWrappers.h - IPRT wrappers/fake for lib C stuff.
  *
@@ -19,6 +19,9 @@
 
 #ifndef ___VBoxDTraceLibCWrappers_h___
 #define ___VBoxDTraceLibCWrappers_h___
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <assert.h>
 #include <stdlib.h>
