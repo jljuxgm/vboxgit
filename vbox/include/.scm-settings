@@ -1,4 +1,4 @@
-# $Id: .scm-settings 76507 2018-12-30 03:43:09Z vboxsync $
+# $Id: .scm-settings 76508 2018-12-30 04:52:04Z vboxsync $
 ## @file
 # Source code massager settings for the includes.
 #
@@ -65,6 +65,7 @@
 /VBox/dbus-calls.h:                     --no-fix-header-guards
 /VBox/VDEPlugSymDefs.h:                 --no-fix-header-guards
 /iprt/asn1-generator-core.h:            --no-fix-header-guards
+/iprt/asn1-generator-pass.h:            --no-fix-header-guards
 /iprt/asn1-generator-sanity.h:          --no-fix-header-guards
 /iprt/asn1-generator-internal-header.h: --no-fix-header-guards
 /iprt/asn1-generator-asn1-decoder.h:    --no-fix-header-guards
