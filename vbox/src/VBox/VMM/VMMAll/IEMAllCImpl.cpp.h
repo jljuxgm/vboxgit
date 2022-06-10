@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 75249 2018-11-05 10:43:15Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 75301 2018-11-07 10:28:57Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5907,7 +5907,7 @@ IEM_CIMPL_DEF_4(iemCImpl_load_CrX, uint8_t, iCrReg, uint64_t, uNewCrX, IEMACCESS
                  * See Intel Spec. 29.3 "Virtualizing CR8-based TPR Accesses"
                  */
                 uint32_t const uVTpr = (uNewCrX & 0xf) << 4;
-                iemVmxVirtApicWriteRaw32(pVCpu, uVTpr, XAPIC_OFF_TPR);
+                iemVmxVirtApicWriteRaw32(pVCpu, XAPIC_OFF_TPR, uVTpr);
                 rcStrict = iemVmxVmexitTprVirtualization(pVCpu, cbInstr);
                 if (rcStrict != VINF_VMX_INTERCEPT_NOT_ACTIVE)
                     return rcStrict;
@@ -6801,7 +6801,7 @@ IEM_CIMPL_DEF_0(iemCImpl_wrmsr)
                         && !(uValue.s.Lo & UINT32_C(0xffffff00)))
                     {
                         uint32_t const uVTpr = uValue.s.Lo;
-                        iemVmxVirtApicWriteRaw32(pVCpu, uVTpr, XAPIC_OFF_TPR);
+                        iemVmxVirtApicWriteRaw32(pVCpu, XAPIC_OFF_TPR, uVTpr);
                         VBOXSTRICTRC rcStrict = iemVmxVmexitTprVirtualization(pVCpu, cbInstr);
                         if (rcStrict != VINF_VMX_INTERCEPT_NOT_ACTIVE)
                             return rcStrict;
