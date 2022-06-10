@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 77666 2019-03-12 15:41:14Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -33,6 +33,9 @@
 
 struct HostDnsServiceDarwin::Data
 {
+    Data()
+        : m_fStop(false) { }
+
     SCDynamicStoreRef m_store;
     CFRunLoopSourceRef m_DnsWatcher;
     CFRunLoopRef m_RunLoopRef;
@@ -251,5 +254,6 @@ HRESULT HostDnsServiceDarwin::updateInfo()
 void HostDnsServiceDarwin::Data::performShutdownCallback(void *info)
 {
     HostDnsServiceDarwin::Data *pThis = static_cast<HostDnsServiceDarwin::Data *>(info);
+    AssertPtrReturnVoid(pThis);
     pThis->m_fStop = true;
 }

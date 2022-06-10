@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 77506 2019-02-28 16:25:19Z vboxsync $ */
+/* $Id: HostDnsService.cpp 77666 2019-03-12 15:41:14Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -278,9 +278,12 @@ void HostDnsMonitorProxy::init(VirtualBox* aParent)
 
 void HostDnsMonitorProxy::uninit()
 {
-    m->monitor->shutdown();
-    delete m;
-    m = NULL;
+    if (m)
+    {
+        m->monitor->shutdown();
+        delete m;
+        m = NULL;
+    }
 }
 
 void HostDnsMonitorProxy::notify(const HostDnsInformation &info)
