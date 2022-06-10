@@ -1,4 +1,4 @@
-/* $Id: GlobalStatusConversion.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GlobalStatusConversion.cpp 77093 2019-02-01 08:53:18Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions - status code conversion.
  *
@@ -109,8 +109,8 @@ Global::vboxStatusCodeToCOM(int aVBoxStatus)
         case VERR_FILE_NOT_FOUND:               return VBOX_E_OBJECT_NOT_FOUND;
 
         /* Guest Control errors. */
-        case VERR_GSTCTL_MAX_OBJECTS_REACHED:   return VBOX_E_MAXIMUM_REACHED;
-        case VERR_GSTCTL_GUEST_ERROR:           return VBOX_E_GSTCTL_GUEST_ERROR;
+        case VERR_GSTCTL_MAX_CID_OBJECTS_REACHED: return VBOX_E_MAXIMUM_REACHED;
+        case VERR_GSTCTL_GUEST_ERROR:             return VBOX_E_GSTCTL_GUEST_ERROR;
 
         default:
             AssertMsgFailed(("%Rrc\n", aVBoxStatus));

@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 77074 2019-01-31 13:04:40Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 77093 2019-02-01 08:53:18Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -534,7 +534,7 @@ Utf8Str GuestProcess::i_guestErrorToString(int rcGuest)
             strError += Utf8StrFmt(tr("The execution operation was canceled"));
             break;
 
-        case VERR_GSTCTL_MAX_OBJECTS_REACHED:
+        case VERR_GSTCTL_MAX_CID_OBJECTS_REACHED:
             strError += Utf8StrFmt(tr("Maximum number of concurrent guest processes has been reached"));
             break;
 
