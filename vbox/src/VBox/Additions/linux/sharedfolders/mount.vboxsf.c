@@ -1,4 +1,4 @@
-/* $Id: mount.vboxsf.c 77139 2019-02-01 19:35:23Z vboxsync $ */
+/* $Id: mount.vboxsf.c 77492 2019-02-28 01:55:50Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions for Linux - mount(8) helper.
  *
@@ -386,7 +386,7 @@ main(int argc, char **argv)
     {
         0,     /* uid */
         0,     /* gid */
-        0,     /* ttl */
+        -1,    /* ttl */
        ~0U,    /* dmode */
        ~0U,    /* fmode*/
         0,     /* dmask */
