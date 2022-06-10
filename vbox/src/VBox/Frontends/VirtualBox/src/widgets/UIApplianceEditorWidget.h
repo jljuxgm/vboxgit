@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 73001 2018-07-09 09:09:18Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 73062 2018-07-11 12:40:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -225,10 +225,6 @@ protected:
     QWidget   *m_pPaneInformation;
     /** Holds the settings tree-view instance. */
     QITreeView *m_pTreeViewSettings;
-    /** Holds the 'reinit MACs' check-box instance. */
-    QCheckBox *m_pCheckBoxReinitMACs;
-    /** Holds the checkbox that controls 'imprt HDs as VDI' behaviour. */
-    QCheckBox *m_pImportHDsAsVDI;
 
     /** Holds the warning pane instance. */
     QWidget   *m_pPaneWarning;
