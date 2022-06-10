@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 73787 2018-08-20 14:27:59Z vboxsync $ */
+/* $Id: IEMAll.cpp 73937 2018-08-29 06:12:35Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -12767,6 +12767,19 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PVMCPU pVCpu, uint16_t uSel)
     do \
     { \
         if (RT_LIKELY(!(pVCpu->iem.s.fPrefixes & (IEM_OP_PRF_LOCK | IEM_OP_PRF_REPNZ | IEM_OP_PRF_REPZ)))) \
+        { /* likely */ } \
+        else \
+            return IEMOP_RAISE_INVALID_OPCODE(); \
+    } while (0)
+
+/**
+ * Done decoding, raise \#UD exception if any operand-size override, repz or repnz
+ * prefixes are present.
+ */
+#define IEMOP_HLP_DONE_DECODING_NO_SIZE_OP_REPZ_OR_REPNZ_PREFIXES() \
+    do \
+    { \
+        if (RT_LIKELY(!(pVCpu->iem.s.fPrefixes & (IEM_OP_PRF_SIZE_OP | IEM_OP_PRF_REPNZ | IEM_OP_PRF_REPZ)))) \
         { /* likely */ } \
         else \
             return IEMOP_RAISE_INVALID_OPCODE(); \
