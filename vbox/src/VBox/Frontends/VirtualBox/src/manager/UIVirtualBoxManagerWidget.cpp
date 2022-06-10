@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74596 2018-10-03 14:25:09Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74685 2018-10-08 15:31:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -375,7 +375,11 @@ void UIVirtualBoxManagerWidget::prepare()
     /* Configure palette: */
     setAutoFillBackground(true);
     QPalette pal = palette();
-    QColor color = pal.color(QPalette::Active, QPalette::Mid).lighter(155);
+#ifdef VBOX_WS_MAC
+    const QColor color = pal.color(QPalette::Active, QPalette::Mid).lighter(145);
+#else
+    const QColor color = pal.color(QPalette::Active, QPalette::Mid).lighter(155);
+#endif
     pal.setColor(QPalette::Window, color);
     setPalette(pal);
 
