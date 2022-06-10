@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 76638 2019-01-04 18:46:51Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -90,6 +90,7 @@ static const char * const g_apszVmxVDiagDesc[] =
     VMXV_DIAG_DESC(kVmxVDiag_Vmptrld_PtrVmxon                 , "PtrVmxon"                  ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmptrld_PtrWidth                 , "PtrWidth"                  ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmptrld_RealOrV86Mode            , "RealOrV86Mode"             ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmptrld_RevPtrReadPhys           , "RevPtrReadPhys"            ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmptrld_ShadowVmcs               , "ShadowVmcs"                ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmptrld_VmcsRevId                , "VmcsRevId"                 ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmptrld_VmxRoot                  , "VmxRoot"                   ),
