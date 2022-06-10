@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 75087 2018-10-26 09:59:37Z vboxsync $ */
+/* $Id: UIMachineLogic.h 75158 2018-10-29 16:37:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -430,7 +430,8 @@ private:
 
     /** Holds the log viewer dialog instance. */
     QIManagerDialog *m_pLogViewerDialog;
-    QIManagerDialog *m_pGuestControlDialog;
+    QIManagerDialog *m_pFileManagerDialog;
+    QIManagerDialog *m_pProcessControlDialog;
 
     /* Friend classes: */
     friend class UIMachineWindow;
