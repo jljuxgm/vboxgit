@@ -1,4 +1,4 @@
-/* $Id: DrvCharNew.cpp 73713 2018-08-16 13:37:24Z vboxsync $ */
+/* $Id: DrvCharNew.cpp 73722 2018-08-16 18:09:40Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMISERIALCONNECTOR / PDMISERIALPORT.
  */
@@ -249,24 +249,27 @@ static DECLCALLBACK(int) drvCharIoLoop(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
                     }
                 }
 
-                size_t cbProcessed = pThis->cbTxUsed;
-                rc = pThis->pDrvStream->pfnWrite(pThis->pDrvStream, &pThis->abTxBuf[0], &cbProcessed);
-                if (RT_SUCCESS(rc))
+                if (pThis->cbTxUsed)
                 {
-                    pThis->cbTxUsed -= cbProcessed;
-                    if (pThis->cbTxUsed)
+                    size_t cbProcessed = pThis->cbTxUsed;
+                    rc = pThis->pDrvStream->pfnWrite(pThis->pDrvStream, &pThis->abTxBuf[0], &cbProcessed);
+                    if (RT_SUCCESS(rc))
                     {
-                        /* Move the data in the TX buffer to the front to fill the end again. */
-                        memmove(&pThis->abTxBuf[0], &pThis->abTxBuf[cbProcessed], pThis->cbTxUsed);
+                        pThis->cbTxUsed -= cbProcessed;
+                        if (pThis->cbTxUsed)
+                        {
+                            /* Move the data in the TX buffer to the front to fill the end again. */
+                            memmove(&pThis->abTxBuf[0], &pThis->abTxBuf[cbProcessed], pThis->cbTxUsed);
+                        }
+                        else
+                            pThis->pDrvSerialPort->pfnDataSentNotify(pThis->pDrvSerialPort);
+                        STAM_COUNTER_ADD(&pThis->StatBytesWritten, cbProcessed);
                     }
-                    else
-                        pThis->pDrvSerialPort->pfnDataSentNotify(pThis->pDrvSerialPort);
-                    STAM_COUNTER_ADD(&pThis->StatBytesWritten, cbProcessed);
-                }
-                else if (rc != VERR_TIMEOUT)
-                {
-                    LogRel(("Char#%d: Write failed with %Rrc; skipping\n", pDrvIns->iInstance, rc));
-                    break;
+                    else if (rc != VERR_TIMEOUT)
+                    {
+                        LogRel(("Char#%d: Write failed with %Rrc; skipping\n", pDrvIns->iInstance, rc));
+                        break;
+                    }
                 }
             }
 
