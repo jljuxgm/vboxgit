@@ -1,4 +1,4 @@
-/* $Id: precomp.h 75209 2018-10-31 16:41:46Z vboxsync $*/
+/* $Id: precomp.h 76000 2018-12-06 07:55:05Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -458,23 +458,6 @@
 #include "UIExtraDataManager.h"
 #include "UIFilmContainer.h"
 #include "UIFrameBuffer.h"
-#include "UIGChooser.h"
-#include "UIGChooserHandlerKeyboard.h"
-#include "UIGChooserHandlerMouse.h"
-#include "UIGChooserItem.h"
-#include "UIGChooserItemGroup.h"
-#include "UIGChooserItemMachine.h"
-#include "UIGChooserModel.h"
-#include "UIGChooserView.h"
-#include "UIGDetails.h"
-#include "UIGDetailsElement.h"
-#include "UIGDetailsElements.h"
-#include "UIGDetailsGroup.h"
-#include "UIGDetailsItem.h"
-#include "UIGDetailsModel.h"
-#include "UIGDetailsSet.h"
-#include "UIGDetailsView.h"
-#include "UIGMachinePreview.h"
 #include "UIGlobalSettingsDisplay.h"
 #include "UIGlobalSettingsExtension.h"
 #include "UIGlobalSettingsGeneral.h"
