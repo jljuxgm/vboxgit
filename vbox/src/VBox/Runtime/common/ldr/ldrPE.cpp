@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 73496 2018-08-04 19:58:03Z vboxsync $ */
+/* $Id: ldrPE.cpp 73758 2018-08-19 13:40:03Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -1771,7 +1771,7 @@ static DECLCALLBACK(int) rtldrPE_SegOffsetToRva(PRTLDRMODINTERNAL pMod, uint32_t
     else if (pModPe->paSections[iSeg].Characteristics & IMAGE_SCN_TYPE_NOLOAD)
         return VERR_LDR_INVALID_SEG_OFFSET;
     else
-        *pRva = offSeg + pModPe->paSections[iSeg].VirtualAddress;
+        *pRva = offSeg + pModPe->paSections[iSeg - 1].VirtualAddress;
     return VINF_SUCCESS;
 }
 
