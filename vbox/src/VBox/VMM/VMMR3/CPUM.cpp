@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 76492 2018-12-27 06:44:07Z vboxsync $ */
+/* $Id: CPUM.cpp 76493 2018-12-27 07:27:25Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3920,9 +3920,13 @@ VMMR3DECL(int) CPUMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
 VMMR3DECL(void) CPUMR3LogCpuIdAndMsrFeatures(PVM pVM)
 {
     /*
+     * Enable log buffering as we're going to log a lot of lines.
+     */
+    bool const fOldBuffered = RTLogRelSetBuffering(true /*fBuffered*/);
+
+    /*
      * Log the cpuid.
      */
-    bool fOldBuffered = RTLogRelSetBuffering(true /*fBuffered*/);
     RTCPUSET OnlineSet;
     LogRel(("CPUM: Logical host processors: %u present, %u max, %u online, online mask: %016RX64\n",
                 (unsigned)RTMpGetPresentCount(), (unsigned)RTMpGetCount(), (unsigned)RTMpGetOnlineCount(),
@@ -3934,7 +3938,6 @@ VMMR3DECL(void) CPUMR3LogCpuIdAndMsrFeatures(PVM pVM)
     DBGFR3Info(pVM->pUVM, "cpuid", "verbose", DBGFR3InfoLogRelHlp());
     LogRel(("\n"));
     DBGFR3_INFO_LOG_SAFE(pVM, "cpuid", "verbose"); /* macro */
-    RTLogRelSetBuffering(fOldBuffered);
     LogRel(("******************** End of CPUID dump **********************\n"));
 
     /*
@@ -3950,5 +3953,10 @@ VMMR3DECL(void) CPUMR3LogCpuIdAndMsrFeatures(PVM pVM)
         LogRel(("\n"));
         LogRel(("******************* End of VT-x features ********************\n"));
     }
+
+    /*
+     * Restore the log buffering state to what it was previously.
+     */
+    RTLogRelSetBuffering(fOldBuffered);
 }
 
