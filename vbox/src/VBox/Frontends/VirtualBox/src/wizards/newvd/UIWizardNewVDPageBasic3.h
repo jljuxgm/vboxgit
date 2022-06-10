@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.h 72021 2018-04-25 15:18:49Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.h 73586 2018-08-09 13:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic3 class declaration.
  */
@@ -44,6 +44,9 @@ protected:
     static QString toFileName(const QString &strName, const QString &strExtension);
     static QString absoluteFilePath(const QString &strFileName, const QString &strDefaultPath);
     static QString defaultExtension(const CMediumFormat &mediumFormatRef);
+
+    /* Checks if the medium file is bigger than what is allowed in FAT file systems. */
+    bool checkFATSizeLimitation();
 
     /* Stuff for 'mediumPath' field: */
     QString mediumPath() const;

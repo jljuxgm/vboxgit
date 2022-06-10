@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 72696 2018-06-26 16:13:10Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 73586 2018-08-09 13:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -150,4 +150,3 @@ void UIWizardNewVD::prepare()
     /* Call to base-class: */
     UIWizard::prepare();
 }
-
