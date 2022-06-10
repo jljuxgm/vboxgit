@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBase.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTCRestClientApiBase.cpp 78281 2019-04-24 17:20:10Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation.
  */
@@ -280,11 +280,9 @@ int RTCRestClientApiBase::doCall(RTCRestClientRequestBase const &a_rRequest, RTH
                                  * Do response processing.
                                  */
                                 a_pResponse->receiveComplete(uHttpStatus, hHttp);
+                                a_pResponse->consumeBody((const char *)pvBody, cbBody);
                                 if (pvBody)
-                                {
-                                    a_pResponse->consumeBody((const char *)pvBody, cbBody);
                                     RTHttpFreeResponse(pvBody);
-                                }
                                 a_pResponse->receiveFinal();
 
                                 return a_pResponse->getStatus();
