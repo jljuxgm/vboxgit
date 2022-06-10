@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 76135 2018-12-10 16:44:13Z vboxsync $ */
+/* $Id: HM.cpp 76137 2018-12-10 17:18:37Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -411,7 +411,7 @@ static int                hmR3TermCPU(PVM pVM);
  * Initializes the HM.
  *
  * This is the very first component to really do init after CFGM so that we can
- * establish the predominat execution engine for the VM prior to initializing
+ * establish the predominant execution engine for the VM prior to initializing
  * other modules.  It takes care of NEM initialization if needed (HM disabled or
  * not available in HW).
  *
