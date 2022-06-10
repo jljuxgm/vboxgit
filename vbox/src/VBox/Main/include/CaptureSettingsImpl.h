@@ -1,4 +1,4 @@
-/* $Id: CaptureSettingsImpl.h 75257 2018-11-05 19:05:28Z vboxsync $ */
+/* $Id: CaptureSettingsImpl.h 75259 2018-11-05 19:15:24Z vboxsync $ */
 
 /** @file
  *
@@ -24,7 +24,7 @@
 
 namespace settings
 {
-    struct CaptureSettings;
+    class CaptureSettings;
 }
 
 class CaptureScreenSettings;

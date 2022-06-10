@@ -1,4 +1,4 @@
-/* $Id: CaptureScreenSettingsImpl.cpp 75251 2018-11-05 17:55:29Z vboxsync $ */
+/* $Id: CaptureScreenSettingsImpl.cpp 75259 2018-11-05 19:15:24Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation - Capture settings of one virtual screen.
@@ -222,7 +222,7 @@ HRESULT CaptureScreenSettings::setEnabled(BOOL enabled)
         m->pMachine->i_setModified(Machine::IsModified_Capture);
 
         alock.acquire();
-        m->bd->fEnabled = enabled;
+        m->bd->fEnabled = RT_BOOL(enabled);
         alock.release();
 
         /** Save settings if online - @todo why is this required? -- @bugref{6818} */
@@ -507,7 +507,7 @@ HRESULT CaptureScreenSettings::setVideoFPS(ULONG aVideoFPS)
 bool CaptureScreenSettings::i_canChangeSettings(void)
 {
     AutoAnyStateDependency adep(m->pMachine);
-    AssertComRCReturn(adep.rc(), E_UNEXPECTED);
+    AssertComRCReturn(adep.rc(), false);
 
     if (   Global::IsOnline(adep.machineState())
         && m->bd->fEnabled)
