@@ -1,4 +1,4 @@
-/* $Id: sched-win.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: sched-win.cpp 76634 2019-01-04 13:55:24Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, Win32.
  */
@@ -275,7 +275,22 @@ DECLHIDDEN(int) rtSchedNativeCalcDefaultPriority(RTTHREADTYPE enmType)
 DECLHIDDEN(int) rtProcNativeSetPriority(RTPROCPRIORITY enmPriority)
 {
     Assert(enmPriority > RTPROCPRIORITY_INVALID && enmPriority < RTPROCPRIORITY_LAST); RT_NOREF_PV(enmPriority);
-    return VINF_SUCCESS;
+
+    if (enmPriority == RTPROCPRIORITY_DEFAULT)
+    {
+        g_pProcessPriority = &g_aDefaultPriority;
+        return VINF_SUCCESS;
+    }
+
+    for (size_t i = 0; i < RT_ELEMENTS(g_aPriorities); i++)
+        if (   g_aPriorities[i].enmPriority == enmPriority
+            && g_aPriorities[i].dwProcessPriorityClass == ANY_PROCESS_PRIORITY_CLASS)
+        {
+            g_pProcessPriority = &g_aPriorities[i];
+            return VINF_SUCCESS;
+        }
+
+    AssertFailedReturn(VERR_INTERNAL_ERROR);
 }
 
 
