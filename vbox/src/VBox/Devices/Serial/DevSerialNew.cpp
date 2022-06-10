@@ -1,4 +1,4 @@
-/* $Id: DevSerialNew.cpp 73299 2018-07-22 14:07:59Z vboxsync $ */
+/* $Id: DevSerialNew.cpp 73307 2018-07-22 17:31:30Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  *
@@ -132,9 +132,9 @@ PDMBOTHCBDECL(int) serialIoPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT u
  */
 static UARTTYPE serialR3GetUartTypeFromString(const char *pszUartType)
 {
-    if (!RTStrCmp(pszUartType, "15450"))
+    if (!RTStrCmp(pszUartType, "16450"))
         return UARTTYPE_16450;
-    else if (!RTStrCmp(pszUartType, "15550A"))
+    else if (!RTStrCmp(pszUartType, "16550A"))
         return UARTTYPE_16550A;
     else if (!RTStrCmp(pszUartType, "16750"))
         return UARTTYPE_16750;
