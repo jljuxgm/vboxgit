@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGroup.cpp 77756 2019-03-18 12:47:30Z vboxsync $ */
+/* $Id: UIChooserItemGroup.cpp 77805 2019-03-20 11:09:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGroup class implementation.
  */
@@ -1233,7 +1233,7 @@ QVariant UIChooserItemGroup::data(int iKey) const
         case GroupItemData_VerticalMargin:  return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 2;
         case GroupItemData_HeaderSpacing:   return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 2;
         case GroupItemData_ChildrenSpacing: return 1;
-        case GroupItemData_ParentIndent:    return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize) / 3;
+        case GroupItemData_ParentIndent:    return QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
 
         /* Default: */
         default: break;

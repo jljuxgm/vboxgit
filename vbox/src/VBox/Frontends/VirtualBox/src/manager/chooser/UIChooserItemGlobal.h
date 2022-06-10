@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 77638 2019-03-10 19:21:30Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 77805 2019-03-20 11:09:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -167,7 +167,9 @@ private:
     enum GlobalItemData
     {
         /* Layout hints: */
-        GlobalItemData_Margin,
+        GlobalItemData_MarginHL,
+        GlobalItemData_MarginHR,
+        GlobalItemData_MarginV,
         GlobalItemData_Spacing,
         GlobalItemData_ButtonMargin,
     };

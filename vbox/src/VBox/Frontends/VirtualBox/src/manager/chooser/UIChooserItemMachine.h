@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemMachine.h 77638 2019-03-10 19:21:30Z vboxsync $ */
+/* $Id: UIChooserItemMachine.h 77805 2019-03-20 11:09:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemMachine class declaration.
  */
@@ -178,7 +178,9 @@ private:
     enum MachineItemData
     {
         /* Layout hints: */
-        MachineItemData_Margin,
+        MachineItemData_MarginHL,
+        MachineItemData_MarginHR,
+        MachineItemData_MarginV,
         MachineItemData_MajorSpacing,
         MachineItemData_MinorSpacing,
         MachineItemData_TextSpacing,
