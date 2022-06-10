@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 77028 2019-01-29 12:26:30Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 77029 2019-01-29 12:59:47Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -229,6 +229,7 @@ typedef struct DRVHOSTDSOUND
     /** Pointer to the output stream. */
     PDSOUNDSTREAM               pDSStrmOut;
 } DRVHOSTDSOUND, *PDRVHOSTDSOUND;
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
