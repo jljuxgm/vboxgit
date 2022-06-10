@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 72883 2018-07-04 15:22:02Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 73664 2018-08-14 16:40:00Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -729,7 +729,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--snapshot <uuid>|<name>]\n"
                      "                            [--mode machine|machineandchildren|all]\n"
                      "                            [--options link|keepallmacs|keepnatmacs|\n"
-                     "                                       keepdisknames]\n"
+                     "                                       keepdisknames|keephwuuids]\n"
                      "                            [--name <name>]\n"
                      "                            [--groups <group>, ...]\n"
                      "                            [--basefolder <basefolder>]\n"
