@@ -1,4 +1,4 @@
-/* $Id: http.h 73832 2018-08-22 15:24:59Z vboxsync $ */
+/* $Id: http.h 73836 2018-08-22 15:58:36Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -318,7 +318,6 @@ RTR3DECL(int) RTHttpGatherCaCertsInFile(const char *pszCaFile, uint32_t fFlags, 
  */
 RTR3DECL(int) RTHttpSetDownloadProgressCallback(RTHTTP hHttp, PFNRTHTTPDOWNLDPROGRCALLBACK pfnDownloadProgress, void *pvUser);
 
-// ----8<--------8<---- XXX: uwe: quick and dirty curl wrappers for OCI
 
 typedef DECLCALLBACK(size_t) FNRTHTTPREADCALLBACK(void *pbDst, size_t cbItem, size_t cItems, void *pvUser);
 typedef FNRTHTTPREADCALLBACK *PFNRTHTTPREADCALLBACK;
