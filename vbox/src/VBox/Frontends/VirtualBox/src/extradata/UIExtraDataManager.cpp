@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 75427 2018-11-13 16:39:09Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 75524 2018-11-16 16:25:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2884,6 +2884,22 @@ QMap<DetailsElementType, bool> UIExtraDataManager::selectorWindowDetailsElements
         const DetailsElementType enmType = gpConverter->fromInternalString<DetailsElementType>(strItem);
         if (enmType != DetailsElementType_Invalid)
             elements[enmType] = fOpened;
+    }
+
+    /* If settings are empty: */
+    if (elements.isEmpty())
+    {
+        /* Propose the defaults: */
+        elements[DetailsElementType_General] = true;
+        elements[DetailsElementType_Preview] = true;
+        elements[DetailsElementType_System] = true;
+        elements[DetailsElementType_Display] = true;
+        elements[DetailsElementType_Storage] = true;
+        elements[DetailsElementType_Audio] = true;
+        elements[DetailsElementType_Network] = true;
+        elements[DetailsElementType_USB] = true;
+        elements[DetailsElementType_SF] = true;
+        elements[DetailsElementType_Description] = true;
     }
 
     /* Return elements: */
