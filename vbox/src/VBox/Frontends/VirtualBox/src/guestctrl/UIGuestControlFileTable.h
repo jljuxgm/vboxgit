@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileTable.h 75184 2018-10-30 15:07:55Z vboxsync $ */
+/* $Id: UIGuestControlFileTable.h 75202 2018-10-31 09:30:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlFileTable class declaration.
  */
@@ -282,6 +282,7 @@ protected:
      *  drive letters */
     virtual void     determineDriveLetters() = 0;
     virtual void     prepareToolbar() = 0;
+    virtual void     createFileViewContextMenu(const QWidget *pWidget, const QPoint &point) = 0;
     QString          fileTypeString(FileObjectType type);
     /* @p item index is item location in model not in 'proxy' model */
     void             goIntoDirectory(const QModelIndex &itemIndex);
@@ -322,10 +323,14 @@ public slots:
     void sltCut();
     void sltPaste();
     void sltShowProperties();
-    void sltSelectionChanged(const QItemSelection & selected, const QItemSelection & deselected);
-    void sltLocationComboCurrentChange(const QString &strLocation);
     void sltSelectAll();
     void sltInvertSelection();
+
+private slots:
+
+    void sltCreateFileViewContextMenu(const QPoint &point);
+    void sltSelectionChanged(const QItemSelection & selected, const QItemSelection & deselected);
+    void sltLocationComboCurrentChange(const QString &strLocation);
     void sltSearchTextChanged(const QString &strText);
 
 private:

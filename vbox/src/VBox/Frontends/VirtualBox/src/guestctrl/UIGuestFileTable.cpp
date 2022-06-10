@@ -1,4 +1,4 @@
-/* $Id: UIGuestFileTable.cpp 75193 2018-10-30 17:51:47Z vboxsync $ */
+/* $Id: UIGuestFileTable.cpp 75202 2018-10-31 09:30:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestFileTable class implementation.
  */
@@ -560,6 +560,15 @@ void UIGuestFileTable::prepareToolbar()
         m_selectionDependentActions.insert(m_pActionPool->action(UIActionIndex_M_GuestControlFileManager_S_Guest_ShowProperties));
     }
     setSelectionDependentActionsEnabled(false);
+}
+
+void UIGuestFileTable::createFileViewContextMenu(const QWidget *pWidget, const QPoint &/*point*/)
+{
+    if (!pWidget)
+        return;
+
+    // QMenu menu;
+    // menu.exec(mapToGlobal(position));
 }
 
 void UIGuestFileTable::prepareActionConnections()
