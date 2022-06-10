@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardFirstRun.cpp 72696 2018-06-26 16:13:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRun class implementation.
  */
@@ -40,10 +40,10 @@ UIWizardFirstRun::UIWizardFirstRun(QWidget *pParent, const CMachine &machine)
 {
 #ifndef VBOX_WS_MAC
     /* Assign watermark: */
-    assignWatermark(":/vmw_first_run.png");
+    assignWatermark(":/wizard_first_run.png");
 #else /* VBOX_WS_MAC */
     /* Assign background image: */
-    assignBackground(":/vmw_first_run_bg.png");
+    assignBackground(":/wizard_first_run_bg.png");
 #endif /* VBOX_WS_MAC */
 }
 

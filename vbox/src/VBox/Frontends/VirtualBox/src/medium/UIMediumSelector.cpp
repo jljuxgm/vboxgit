@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 72447 2018-06-05 10:09:26Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 72696 2018-06-26 16:13:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -289,7 +289,7 @@ void UIMediumSelector::retranslateUi()
 void UIMediumSelector::configure()
 {
     /* Apply window icons: */
-    setWindowIcon(UIIconPool::iconSetFull(":/diskimage_32px.png", ":/diskimage_16px.png"));
+    setWindowIcon(UIIconPool::iconSetFull(":/media_manager_32px.png", ":/media_manager_16px.png"));
     prepareActions();
     prepareWidgets();
     prepareConnections();

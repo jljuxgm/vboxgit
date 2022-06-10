@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 72032 2018-04-26 08:46:21Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 72696 2018-06-26 16:13:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -428,7 +428,7 @@ void UIChooserPaneDelegate::fetchPixmapInfo(const QModelIndex &index, QPixmap &p
     else
     {
         /* For global ID we return static pixmap/size: */
-        const QIcon icon = UIIconPool::iconSet(":/edataglobal_32px.png");
+        const QIcon icon = UIIconPool::iconSet(":/edata_global_32px.png");
         pixmapSize = icon.availableSizes().value(0, QSize(32, 32));
         pixmap = icon.pixmap(pixmapSize);
     }
@@ -1370,8 +1370,8 @@ void UIExtraDataManagerWindow::prepareThis()
 {
 #ifndef VBOX_WS_MAC
     /* Apply window icons: */
-    setWindowIcon(UIIconPool::iconSetFull(":/edataman_32px.png",
-                                          ":/edataman_16px.png"));
+    setWindowIcon(UIIconPool::iconSetFull(":/edata_manager_32px.png",
+                                          ":/edata_manager_16px.png"));
 #endif /* !VBOX_WS_MAC */
 
     /* Apply window title: */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 71027 2018-02-15 14:33:48Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 72696 2018-06-26 16:13:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -49,10 +49,10 @@ UIWizardNewVD::UIWizardNewVD(QWidget *pParent,
 {
 #ifndef VBOX_WS_MAC
     /* Assign watermark: */
-    assignWatermark(":/vmw_new_harddisk.png");
+    assignWatermark(":/wizard_new_harddisk.png");
 #else /* VBOX_WS_MAC */
     /* Assign background image: */
-    assignBackground(":/vmw_new_harddisk_bg.png");
+    assignBackground(":/wizard_new_harddisk_bg.png");
 #endif /* VBOX_WS_MAC */
 }
 

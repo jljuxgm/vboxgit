@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 72662 2018-06-22 11:58:16Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 72696 2018-06-26 16:13:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1783,7 +1783,7 @@ void UIMediumManager::retranslateUi()
 void UIMediumManager::configure()
 {
     /* Apply window icons: */
-    setWindowIcon(UIIconPool::iconSetFull(":/diskimage_32px.png", ":/diskimage_16px.png"));
+    setWindowIcon(UIIconPool::iconSetFull(":/media_manager_32px.png", ":/media_manager_16px.png"));
 }
 
 void UIMediumManager::configureCentralWidget()
