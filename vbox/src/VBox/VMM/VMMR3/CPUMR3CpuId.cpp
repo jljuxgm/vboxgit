@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 74097 2018-09-06 02:43:53Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 74113 2018-09-06 11:49:14Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -1780,6 +1780,9 @@ int cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCPUM
                                        || (pExtLeaf->uEdx & (  X86_CPUID_EXT_FEATURE_EDX_LONG_MODE
                                                              | X86_CPUID_AMD_FEATURE_EDX_3DNOW));
         }
+
+        /* VMX (VMXON, VMCS region and related data structures') physical address width (depends on long-mode). */
+        pFeatures->cVmxMaxPhysAddrWidth = pFeatures->fLongMode ? pFeatures->cMaxPhysAddrWidth : 32;
 
         if (   pExtLeaf
             && pFeatures->enmCpuVendor == CPUMCPUVENDOR_AMD)
