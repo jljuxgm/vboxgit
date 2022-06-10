@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 73038 2018-07-10 16:06:18Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 73040 2018-07-10 16:08:51Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1760,9 +1760,9 @@ int GuestSessionTaskCopyTo::Run(void)
         FsList *pList = *itList;
         AssertPtr(pList);
 
-        bool     fCopyIntoExisting;
-        bool     fFollowSymlinks;
-        uint32_t fDirMode = 0700; /** @todo Play safe by default; implement ACLs. */
+        bool     fCopyIntoExisting = false;
+        bool     fFollowSymlinks   = false;
+        uint32_t fDirMode          = 0700; /** @todo Play safe by default; implement ACLs. */
 
         LogFlowFunc(("List: srcRootAbs=%s, dstRootAbs=%s\n", pList->mSrcRootAbs.c_str(), pList->mDstRootAbs.c_str()));
 
