@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 73607 2018-08-10 07:44:56Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 73609 2018-08-10 07:54:29Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5843,7 +5843,6 @@ DECLINLINE(void) hmR0VmxSetPendingXcptGP(PVMCPU pVCpu, uint32_t u32ErrCode)
                               | RT_BF_MAKE(VMX_BF_ENTRY_INT_INFO_VALID,          1);
     hmR0VmxSetPendingEvent(pVCpu, u32IntInfo, 0 /* cbInstr */, u32ErrCode, 0 /* GCPtrFaultAddress */);
 }
-#endif
 
 
 /**
@@ -5861,8 +5860,6 @@ DECLINLINE(void) hmR0VmxSetPendingXcptSS(PVMCPU pVCpu, uint32_t u32ErrCode)
     hmR0VmxSetPendingEvent(pVCpu, u32IntInfo, 0 /* cbInstr */, u32ErrCode, 0 /* GCPtrFaultAddress */);
 }
 
-
-#ifdef VBOX_WITH_NESTED_HWVIRT_VMX
 
 /**
  * Decodes the memory operand of a VM-exit due to instruction execution.
