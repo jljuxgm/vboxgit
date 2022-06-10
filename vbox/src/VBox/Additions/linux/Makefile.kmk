@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 77003 2019-01-26 14:10:11Z vboxsync $
+# $Id: Makefile.kmk 77306 2019-02-14 10:10:46Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -445,5 +445,5 @@ $(PATH_STAGE_BIN)/additions/VBoxLinuxAdditions.run: \
 		$(CP) -f $(file) $(VBOX_LNX_ADD_INST_STAGE_DIR)$(subst -r$(VBOX_SVN_REV),,$(notdir $(file)))$(NLTAB) )
 	$(QUIET)$(VBOX_MAKESELF) --nocomp $(VBOX_LNX_ADD_INST_STAGE_DIR) $@ \
 		"VirtualBox $(VBOX_VERSION_STRING) Guest Additions for Linux" \
-		/bin/sh ./install.sh "\$$0 1> /dev/null"
+		/bin/sh ./install.sh "\$$0"
 
