@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 75593 2018-11-19 18:42:26Z vboxsync $ */
+/* $Id: VMMDev.cpp 75596 2018-11-19 19:00:08Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3135,9 +3135,9 @@ PDMBOTHCBDECL(int) vmmdevFastRequestHandler(PPDMDEVINS pDevIns, void *pvUser, RT
 
 
 /**
- * @callback_method_impl{FNIOMIOPORTIN, Port I/O read handler for IRQ
- * acknowledging and getting pending events (same as
- * VMMDevReq_AcknowledgeEvents, just faster).}
+ * @callback_method_impl{FNIOMIOPORTIN,
+ * Port I/O read handler for IRQ acknowledging and getting pending events (same
+ * as VMMDevReq_AcknowledgeEvents - just faster).}
  */
 PDMBOTHCBDECL(int) vmmdevFastRequestIrqAck(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t *pu32, unsigned cb)
 {
