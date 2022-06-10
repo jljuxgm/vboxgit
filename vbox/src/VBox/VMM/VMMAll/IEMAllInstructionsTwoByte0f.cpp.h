@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 74155 2018-09-09 12:37:26Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 74603 2018-10-04 06:07:20Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -546,21 +546,22 @@ FNIEMOP_DEF_1(iemOp_Grp7_lmsw, uint8_t, bRm)
     if ((bRm & X86_MODRM_MOD_MASK) == (3 << X86_MODRM_MOD_SHIFT))
     {
         IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
-        IEM_MC_BEGIN(1, 0);
-        IEM_MC_ARG(uint16_t, u16Tmp, 0);
+        IEM_MC_BEGIN(2, 0);
+        IEM_MC_ARG(uint16_t, u16Tmp,                         0);
+        IEM_MC_ARG_CONST(RTGCPTR,  GCPtrEffDst, NIL_RTGCPTR, 1);
         IEM_MC_FETCH_GREG_U16(u16Tmp, (bRm & X86_MODRM_RM_MASK) | pVCpu->iem.s.uRexB);
-        IEM_MC_CALL_CIMPL_1(iemCImpl_lmsw, u16Tmp);
+        IEM_MC_CALL_CIMPL_2(iemCImpl_lmsw, u16Tmp, GCPtrEffDst);
         IEM_MC_END();
     }
     else
     {
-        IEM_MC_BEGIN(1, 1);
-        IEM_MC_ARG(uint16_t, u16Tmp, 0);
-        IEM_MC_LOCAL(RTGCPTR,  GCPtrEffDst);
+        IEM_MC_BEGIN(2, 0);
+        IEM_MC_ARG(uint16_t, u16Tmp,      0);
+        IEM_MC_ARG(RTGCPTR,  GCPtrEffDst, 1);
         IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffDst, bRm, 0);
         IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
         IEM_MC_FETCH_MEM_U16(u16Tmp, pVCpu->iem.s.iEffSeg, GCPtrEffDst);
-        IEM_MC_CALL_CIMPL_1(iemCImpl_lmsw, u16Tmp);
+        IEM_MC_CALL_CIMPL_2(iemCImpl_lmsw, u16Tmp, GCPtrEffDst);
         IEM_MC_END();
     }
     return VINF_SUCCESS;
