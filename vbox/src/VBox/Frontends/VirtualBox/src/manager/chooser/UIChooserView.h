@@ -1,4 +1,4 @@
-/* $Id: UIChooserView.h 73424 2018-08-01 14:07:18Z vboxsync $ */
+/* $Id: UIChooserView.h 74085 2018-09-05 13:30:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserView class declaration.
  */
@@ -58,6 +58,9 @@ private:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
+
+    /* Helper: Prepare stuff: */
+    void preparePalette();
 
     /* Handler: Resize-event stuff: */
     void resizeEvent(QResizeEvent *pEvent);

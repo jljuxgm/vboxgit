@@ -1,4 +1,4 @@
-/* $Id: UIChooser.cpp 73631 2018-08-13 11:05:01Z vboxsync $ */
+/* $Id: UIChooser.cpp 74085 2018-09-05 13:30:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class implementation.
  */
@@ -116,7 +116,8 @@ void UIChooser::preparePalette()
     /* Setup palette: */
     setAutoFillBackground(true);
     QPalette pal = palette();
-    pal.setColor(QPalette::Window, pal.color(QPalette::Active, QPalette::Base));
+    QColor bodyColor = pal.color(QPalette::Active, QPalette::Midlight).darker(110);
+    pal.setColor(QPalette::Window, bodyColor);
     setPalette(pal);
 }
 
