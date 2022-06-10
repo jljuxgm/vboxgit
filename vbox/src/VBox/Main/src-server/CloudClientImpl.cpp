@@ -1,4 +1,4 @@
-/* $Id: CloudClientImpl.cpp 73240 2018-07-19 14:44:17Z vboxsync $*/
+/* $Id: CloudClientImpl.cpp 73314 2018-07-23 11:11:54Z vboxsync $*/
 /** @file
  * ICloudClient  COM class implementations.
  */
@@ -386,7 +386,6 @@ static Utf8Str strExportParametersToOCI = "{\n"
 "\t""\t""\"type\": 29,\n"
 "\t""\t""\"min\": 10,\n"
 "\t""\t""\"max\": 50,\n"
-"\t""\t""\"size\": 10,\n"
 "\t""\t""\"unit\": \"Gb\"\n"
 "\t""},\n"
 "\t""\"Bucket\": {\n"
@@ -408,7 +407,7 @@ static Utf8Str strExportParametersToOCI = "{\n"
 "\t""},\n"
 "\t""\"Public IP address\": {\n"
 "\t""\t""\"type\": 32,\n"
-"\t""\t""\"set\": \"yes\"\n"
+"\t""\t""\"bool\": true\n"
 "\t""}\n"
 "}";
 
