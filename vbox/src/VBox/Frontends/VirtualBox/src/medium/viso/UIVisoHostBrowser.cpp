@@ -1,4 +1,4 @@
-/* $Id: UIVisoHostBrowser.cpp 76671 2019-01-07 12:15:00Z vboxsync $ */
+/* $Id: UIVisoHostBrowser.cpp 76707 2019-01-08 15:24:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoHostBrowser class implementation.
  */
@@ -159,8 +159,8 @@ void UIVisoHostBrowser::prepareConnections()
 void UIVisoHostBrowser::sltHandleTableSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
 {
     Q_UNUSED(deselected);
-    Q_UNUSED(selected);
-    m_pAddRemoveButton->setEnabled(!selected.isEmpty());
+    if (m_pAddRemoveButton)
+        m_pAddRemoveButton->setEnabled(!selected.isEmpty());
 }
 
 void UIVisoHostBrowser::tableViewItemDoubleClick(const QModelIndex &index)

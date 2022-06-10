@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 76690 2019-01-07 19:58:10Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 76707 2019-01-08 15:24:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -95,6 +95,17 @@ QList<const UICustomFileSystemItem*> UICustomFileSystemItem::children() const
     foreach (UICustomFileSystemItem *child, m_childItems)
         childList << child;
     return childList;
+}
+
+void UICustomFileSystemItem::removeChild(UICustomFileSystemItem *pItem)
+{
+    int iIndex = m_childItems.indexOf(pItem);
+    if (iIndex == -1 || iIndex > m_childItems.size())
+        return;
+    m_childItems.removeAt(iIndex);
+    m_childMap.remove(pItem->name());
+    delete pItem;
+    pItem = 0;
 }
 
 int UICustomFileSystemItem::columnCount() const
@@ -571,6 +582,15 @@ void UICustomFileSystemModel::setShowHumanReadableSizes(bool fShowHumanReadableS
 bool UICustomFileSystemModel::showHumanReadableSizes() const
 {
     return m_fShowHumanReadableSizes;
+}
+
+void UICustomFileSystemModel::deleteItem(UICustomFileSystemItem* pItem)
+{
+    if (!pItem)
+        return;
+    UICustomFileSystemItem *pParent = pItem->parentItem();
+    if (pParent)
+        pParent->removeChild(pItem);
 }
 
 void UICustomFileSystemModel::initializeTree()
