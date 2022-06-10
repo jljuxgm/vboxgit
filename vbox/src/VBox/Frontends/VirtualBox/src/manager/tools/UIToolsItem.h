@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.h 75016 2018-10-23 19:42:38Z vboxsync $ */
+/* $Id: UIToolsItem.h 75070 2018-10-25 13:42:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class declaration.
  */
@@ -99,6 +99,9 @@ public:
         const QIcon &icon() const;
         /** Returns item name. */
         const QString &name() const;
+
+        /** Defines whether item is @a fEnabled. */
+        void setEnabled(bool fEnabled);
 
         /** Defines whether item is @a fHovered. */
         void setHovered(bool fHovered);

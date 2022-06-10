@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 75055 2018-10-25 08:03:31Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 75070 2018-10-25 13:42:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -675,7 +675,8 @@ UIWizardExportAppPageBasic2::UIWizardExportAppPageBasic2()
                         m_pAccountToolButton = new QIToolButton;
                         if (m_pAccountToolButton)
                         {
-                            m_pAccountToolButton->setIcon(UIIconPool::iconSet(":/cloud_profile_manager_16px.png"));
+                            m_pAccountToolButton->setIcon(UIIconPool::iconSet(":/cloud_profile_manager_16px.png",
+                                                                              ":/cloud_profile_manager_disabled_16px.png"));
 
                             /* Add into layout: */
                             pSubLayout->addWidget(m_pAccountToolButton);
