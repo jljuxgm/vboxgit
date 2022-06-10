@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 74046 2018-09-03 15:32:22Z vboxsync $ */
+/* $Id: http-curl.cpp 74050 2018-09-03 16:51:29Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -3161,6 +3161,10 @@ RTR3DECL(int) RTHttpRawSetUrl(RTHTTP hHttp, const char *pszUrl)
 
     PRTHTTPINTERNAL pThis = hHttp;
     RTHTTP_VALID_RETURN(pThis);
+
+    int rc = rtHttpConfigureProxyForUrl(pThis, pszUrl);
+    if (RT_FAILURE(rc))
+        return rc;
 
     rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_URL, pszUrl);
     if (CURL_FAILURE(rcCurl))
