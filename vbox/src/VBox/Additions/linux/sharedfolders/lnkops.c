@@ -1,4 +1,4 @@
-/* $Id: lnkops.c 77858 2019-03-24 00:10:24Z vboxsync $ */
+/* $Id: lnkops.c 77859 2019-03-24 02:36:08Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, operations for symbolic links.
  */
@@ -296,5 +296,4 @@ struct inode_operations vbsf_lnk_iops = {
 # endif
 #endif
 };
-
 
