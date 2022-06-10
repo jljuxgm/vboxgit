@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 75218 2018-11-01 18:36:01Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 75668 2018-11-22 14:17:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2409,7 +2409,7 @@ void UIMessageCenter::warnAboutUserManualDownloaded(const QString &strURL, const
              .arg(strURL, strTarget));
 }
 
-bool UIMessageCenter::warAboutOutdatedExtensionPack(const QString &strExtPackName, const QString &strExtPackVersion) const
+bool UIMessageCenter::warnAboutOutdatedExtensionPack(const QString &strExtPackName, const QString &strExtPackVersion) const
 {
     return questionBinary(windowManager().networkManagerOrMainWindowShown(), MessageType_Question,
                           tr("<p>You have an old version (%1) of the <b><nobr>%2</nobr></b> installed.</p>"

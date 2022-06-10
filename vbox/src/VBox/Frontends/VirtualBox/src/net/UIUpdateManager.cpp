@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 75572 2018-11-19 12:27:02Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 75668 2018-11-22 14:17:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -462,7 +462,7 @@ void UIUpdateStepVirtualBoxExtensionPack::sltStartStep()
     }
 
     /* Ask the user about extension pack downloading: */
-    if (!msgCenter().warAboutOutdatedExtensionPack(GUI_ExtPackName, strExtPackVersion))
+    if (!msgCenter().warnAboutOutdatedExtensionPack(GUI_ExtPackName, strExtPackVersion))
     {
         emit sigStepComplete();
         return;

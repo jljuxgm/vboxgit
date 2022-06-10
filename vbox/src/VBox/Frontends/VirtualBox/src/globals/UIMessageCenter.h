@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 75218 2018-11-01 18:36:01Z vboxsync $ */
+/* $Id: UIMessageCenter.h 75668 2018-11-22 14:17:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -442,7 +442,7 @@ public:
     bool confirmDownloadUserManual(const QString &strURL, qulonglong uSize) const;
     void cannotSaveUserManual(const QString &strURL, const QString &strTarget) const;
     void warnAboutUserManualDownloaded(const QString &strURL, const QString &strTarget) const;
-    bool warAboutOutdatedExtensionPack(const QString &strExtPackName, const QString &strExtPackVersion) const;
+    bool warnAboutOutdatedExtensionPack(const QString &strExtPackName, const QString &strExtPackVersion) const;
     bool confirmDownloadExtensionPack(const QString &strExtPackName, const QString &strURL, qulonglong uSize) const;
     void cannotSaveExtensionPack(const QString &strExtPackName, const QString &strFrom, const QString &strTo) const;
     bool proposeInstallExtentionPack(const QString &strExtPackName, const QString &strFrom, const QString &strTo) const;
