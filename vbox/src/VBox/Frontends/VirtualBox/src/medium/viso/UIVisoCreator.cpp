@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.cpp 76830 2019-01-16 09:01:51Z vboxsync $ */
+/* $Id: UIVisoCreator.cpp 76844 2019-01-16 19:37:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class implementation.
  */
@@ -91,7 +91,7 @@ void UIVisoCreator::retranslateUi()
         m_pActionOptions->setStatusTip(tr("Manage Dialog Options"));
     }
     if (m_pMainMenu)
-        m_pMainMenu->setTitle(tr("Main Menu"));
+        m_pMainMenu->setTitle(tr("VISO"));
     if (m_pHostBrowserMenu)
         m_pHostBrowserMenu->setTitle(tr("Host Browser"));
     if (m_pVisoContentBrowserMenu)
@@ -144,7 +144,7 @@ void UIVisoCreator::prepareObjects()
     if (!m_pMainLayout || !menuBar())
         return;
 
-    m_pMainMenu = menuBar()->addMenu(tr("Main Menu"));
+    m_pMainMenu = menuBar()->addMenu(tr("VISO"));
     if (m_pActionConfiguration)
         m_pMainMenu->addAction(m_pActionConfiguration);
     if (m_pActionOptions)
