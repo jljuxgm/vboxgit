@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 74090 2018-09-05 17:41:03Z vboxsync $ */
+/* $Id: http-curl.cpp 74091 2018-09-05 17:58:31Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -2858,16 +2858,28 @@ static void rtHttpResetState(PRTHTTPINTERNAL pThis)
 }
 
 
+/**
+ * Tries to determin uDownloadHttpStatus and cbDownloadContent.
+ *
+ * @param   pThis        HTTP client instance.
+ */
 static void rtHttpGetDownloadStatusAndLength(PRTHTTPINTERNAL pThis)
 {
     long lHttpStatus = 0;
     curl_easy_getinfo(pThis->pCurl, CURLINFO_RESPONSE_CODE, &lHttpStatus);
     pThis->uDownloadHttpStatus = (uint32_t)lHttpStatus;
 
+#ifdef CURLINFO_CONTENT_LENGTH_DOWNLOAD_T
     curl_off_t cbContent = -1;
     curl_easy_getinfo(pThis->pCurl, CURLINFO_CONTENT_LENGTH_DOWNLOAD_T, &cbContent);
     if (cbContent >= 0)
         pThis->cbDownloadContent = (uint64_t)cbContent;
+#else
+    double rdContent = -1.0;
+    curl_easy_getinfo(pThis->pCurl, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &rdContent);
+    if (rdContent >= 0.0)
+        pThis->cbDownloadContent = (uint64_t)rdContent;
+#endif
 }
 
 
