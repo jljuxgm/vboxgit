@@ -1,4 +1,4 @@
-/* $Id: CloudClientImpl.h 73173 2018-07-17 11:47:51Z vboxsync $ */
+/* $Id: CloudClientImpl.h 73216 2018-07-18 16:01:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -47,6 +47,39 @@ protected:
     ComPtr<VirtualBox> const mParent;       /**< Strong reference to the parent object (VirtualBox/IMachine). */
     CloudProviderId_T mCloudProvider;
     std::map <Utf8Str, Utf8Str> userProfile;
+
+private:
+    HRESULT getOperationParameters(CloudOperation_T aCloudOperation, com::Utf8Str &aJsonString);
+
+    HRESULT createOperation(const com::Utf8Str &aProfileName,
+                            CloudOperation_T aCloudOperation,
+                            com::Guid &aOpId);
+    HRESULT runOperation(const com::Guid &aOpId,
+                         LONG64 aTimeout);
+    HRESULT checkOperationResult(const com::Guid &aOpId,
+                                 LONG64 *aStartOpTime,
+                                 LONG64 *aLastTime,
+                                 CloudOperationResult_T *aResult);
+    HRESULT getOperationParameterNames(CloudOperation_T aCloudOperation,
+                                       std::vector<com::Utf8Str> &aParameterNames);
+    HRESULT getOperationParameterProperties(const com::Utf8Str &aOpParameterName,
+                                            com::Utf8Str &aOpParameterType,
+                                            com::Utf8Str &aOpParameterDesc,
+                                            std::vector<com::Utf8Str> &aOpParameterValues);
+    HRESULT setParametersForOperation(const com::Guid &aOpId,
+                                      const std::vector<com::Utf8Str> &aValues);
+};
+
+class CloudClientOCI :
+    public CloudClient
+{
+public:
+    DECLARE_EMPTY_CTOR_DTOR(CloudClientOCI)
+
+    HRESULT initCloudClient(CloudUserProfileList *aProfiles,
+                            VirtualBox *aParent,
+                            CloudProviderId_T aCloudProvider,
+                            const com::Utf8Str &aProfileName);
 
 private:
     HRESULT getOperationParameters(CloudOperation_T aCloudOperation, com::Utf8Str &aJsonString);

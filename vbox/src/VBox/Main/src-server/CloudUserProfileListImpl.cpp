@@ -1,4 +1,4 @@
-/* $Id: CloudUserProfileListImpl.cpp 73188 2018-07-17 15:24:13Z vboxsync $ */
+/* $Id: CloudUserProfileListImpl.cpp 73216 2018-07-18 16:01:16Z vboxsync $ */
 /** @file
  * ICloudUserProfileList COM class implementations.
  */
@@ -379,10 +379,13 @@ HRESULT OCIUserProfileList::createCloudClient(const com::Utf8Str &aProfileName,
     hrc = ptrCloudClient.createObject();
     if (SUCCEEDED(hrc))
     {
+        ComObjPtr<CloudClientOCI> ptrCloudClientOCI;
+        hrc = ptrCloudClientOCI.createObject();
         AutoReadLock wlock(this COMMA_LOCKVAL_SRC_POS);
-        hrc = ptrCloudClient->initCloudClient(this, mParent, providerId, aProfileName);
+        hrc = ptrCloudClientOCI->initCloudClient(this, mParent, providerId, aProfileName);
         if (SUCCEEDED(hrc))
         {
+            ptrCloudClient = ptrCloudClientOCI;
             hrc = ptrCloudClient.queryInterfaceTo(aCloudClient.asOutParam());
         }
     }
