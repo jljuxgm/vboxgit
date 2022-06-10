@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 76329 2018-12-21 07:43:48Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 76332 2018-12-21 10:27:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */

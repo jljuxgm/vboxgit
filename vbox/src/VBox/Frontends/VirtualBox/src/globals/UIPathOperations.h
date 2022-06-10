@@ -1,4 +1,4 @@
-/* $Id: UIPathOperations.h 76329 2018-12-21 07:43:48Z vboxsync $ */
+/* $Id: UIPathOperations.h 76332 2018-12-21 10:27:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
