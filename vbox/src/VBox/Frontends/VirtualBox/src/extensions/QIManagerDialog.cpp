@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 72714 2018-06-28 09:52:54Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 75988 2018-12-05 17:44:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -187,9 +187,11 @@ void QIManagerDialog::prepareMenuBar()
 
 #ifdef VBOX_WS_MAC
     /* Prepare 'Window' menu: */
-    AssertPtrReturnVoid(gpWindowMenuManager);
-    menuBar()->addMenu(gpWindowMenuManager->createMenu(this));
-    gpWindowMenuManager->addWindow(this);
+    if (gpWindowMenuManager)
+    {
+        menuBar()->addMenu(gpWindowMenuManager->createMenu(this));
+        gpWindowMenuManager->addWindow(this);
+    }
 #endif
 }
 
@@ -208,9 +210,11 @@ void QIManagerDialog::cleanupMenuBar()
 {
 #ifdef VBOX_WS_MAC
     /* Cleanup 'Window' menu: */
-    AssertPtrReturnVoid(gpWindowMenuManager);
-    gpWindowMenuManager->removeWindow(this);
-    gpWindowMenuManager->destroyMenu(this);
+    if (gpWindowMenuManager)
+    {
+        gpWindowMenuManager->removeWindow(this);
+        gpWindowMenuManager->destroyMenu(this);
+    }
 #endif
 }
 
