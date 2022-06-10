@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 73203 2018-07-18 13:00:43Z vboxsync $ */
+/* $Id: IEMAll.cpp 73438 2018-08-02 06:48:28Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -384,17 +384,17 @@ typedef enum IEMXCPTCLASS
         if (!IEM_IS_SVM_ENABLED(a_pVCpu)) \
         { \
             Log((RT_STR(a_Instr) ": EFER.SVME not enabled -> #UD\n")); \
-            return iemRaiseUndefinedOpcode(pVCpu); \
+            return iemRaiseUndefinedOpcode(a_pVCpu); \
         } \
-        if (IEM_IS_REAL_OR_V86_MODE(pVCpu)) \
+        if (IEM_IS_REAL_OR_V86_MODE(a_pVCpu)) \
         { \
             Log((RT_STR(a_Instr) ": Real or v8086 mode -> #UD\n")); \
-            return iemRaiseUndefinedOpcode(pVCpu); \
+            return iemRaiseUndefinedOpcode(a_pVCpu); \
         } \
-        if (pVCpu->iem.s.uCpl != 0) \
+        if ((a_pVCpu)->iem.s.uCpl != 0) \
         { \
             Log((RT_STR(a_Instr) ": CPL != 0 -> #GP(0)\n")); \
-            return iemRaiseGeneralProtectionFault0(pVCpu); \
+            return iemRaiseGeneralProtectionFault0(a_pVCpu); \
         } \
     } while (0)
 
