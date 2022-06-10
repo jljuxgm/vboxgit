@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 78260 2019-04-23 15:24:42Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 78274 2019-04-24 14:38:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -39,6 +39,13 @@
 
 UIWizardImportAppPage2::UIWizardImportAppPage2()
 {
+}
+
+void UIWizardImportAppPage2::populateFormPropertiesTable()
+{
+    CVirtualSystemDescriptionForm comForm = fieldImp("vsdForm").value<CVirtualSystemDescriptionForm>();
+    if (comForm.isNotNull())
+        m_pFormEditor->setVirtualSystemDescriptionForm(comForm);
 }
 
 
@@ -156,7 +163,7 @@ void UIWizardImportAppPageBasic2::initializePage()
     m_pCertLabel->setVisible(!fIsSourceCloudOne);
 
     if (fIsSourceCloudOne)
-        m_pFormEditor->setVirtualSystemDescriptionForm(field("vsdForm").value<CVirtualSystemDescriptionForm>());
+        populateFormPropertiesTable();
     else
     {
         /* Acquire appliance: */
