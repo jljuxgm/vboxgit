@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 75710 2018-11-25 01:47:39Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 75711 2018-11-25 02:30:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -270,7 +270,6 @@ static int             (*g_pfnWrMsr64Carefully)(uint32_t uMsr, uint64_t uValue) 
 static kern_return_t    VBoxDrvDarwinStart(struct kmod_info *pKModInfo, void *pvData)
 {
     RT_NOREF(pKModInfo, pvData);
-    int rc;
 #ifdef DEBUG
     printf("VBoxDrvDarwinStart\n");
 #endif
