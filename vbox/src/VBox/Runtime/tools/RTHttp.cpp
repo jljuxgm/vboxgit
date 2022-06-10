@@ -1,4 +1,4 @@
-/* $Id: RTHttp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTHttp.cpp 78009 2019-04-03 19:27:37Z vboxsync $ */
 /** @file
  * IPRT - Utility for retriving URLs.
  */
@@ -110,7 +110,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 76553 $\n");
+                RTPrintf("$Revision: 78009 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 's':
@@ -172,6 +172,7 @@ int main(int argc, char **argv)
         }
     }
 
+    RTHttpDestroy(hHttp);
     return rcExit;
 }
 
