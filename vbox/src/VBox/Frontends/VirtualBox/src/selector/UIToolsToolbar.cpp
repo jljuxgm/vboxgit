@@ -1,4 +1,4 @@
-/* $Id: UIToolsToolbar.cpp 70543 2018-01-11 15:48:54Z vboxsync $ */
+/* $Id: UIToolsToolbar.cpp 74868 2018-10-16 16:32:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsToolbar class implementation.
  */
@@ -250,6 +250,11 @@ void UIToolsToolbar::prepareMenu()
                 this, &UIToolsToolbar::sltHandleOpenToolGlobal);
         m_pActionPool->action(UIActionIndexST_M_Tools_M_Global_S_HostNetworkManager)
             ->setProperty("ToolTypeGlobal", QVariant::fromValue(ToolTypeGlobal_HostNetwork));
+
+        /* Add 'Cloud Profile Manager' action: */
+        pMenuGlobal->addAction(m_pActionPool->action(UIActionIndexST_M_Tools_M_Global_S_CloudProfileManager));
+        connect(m_pActionPool->action(UIActionIndexST_M_Tools_M_Global_S_CloudProfileManager), &UIAction::triggered,
+                this, &UIToolsToolbar::sltHandleOpenToolGlobal);
     }
 
     /* Configure 'Global' toggle action: */
