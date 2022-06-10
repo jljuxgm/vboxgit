@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 77299 2019-02-13 13:57:14Z vboxsync $ */
+/* $Id: PGMPhys.cpp 77441 2019-02-22 20:53:01Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -710,7 +710,7 @@ VMMR3DECL(int) PGMR3PhysBulkGCPhys2CCPtrExternal(PVM pVM, uint32_t cPages, PCRTG
             /* We could do this delegation in bulk, but considered too much work vs gain. */
             pgmUnlock(pVM);
             rc = VMR3ReqPriorityCallWait(pVM, VMCPUID_ANY, (PFNRT)pgmR3PhysGCPhys2CCPtrDelegated, 4,
-                                         pVM, paGCPhysPages[iPage], &papvPages[iPage], &paLocks[iPage]);
+                                         pVM, &paGCPhysPages[iPage], &papvPages[iPage], &paLocks[iPage]);
             pgmLock(pVM);
             if (RT_FAILURE(rc))
                 break;
