@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 73714 2018-08-16 14:35:39Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 73786 2018-08-20 13:24:10Z vboxsync $ */
 /** @file
  * Audio mixing buffer for converting reading/writing audio data.
  */
@@ -276,6 +276,8 @@ void AudioMixBufFinish(PPDMAUDIOMIXBUF pMixBuf, uint32_t cFramesToClear)
     AUDMIXBUF_LOG(("%s: offRead=%RU32, cUsed=%RU32\n",
                    pMixBuf->pszName, pMixBuf->offRead, pMixBuf->cUsed));
 
+    AssertStmt(cFramesToClear <= pMixBuf->cFrames, cFramesToClear = pMixBuf->cFrames);
+
     PPDMAUDIOMIXBUF pIter;
     RTListForEach(&pMixBuf->lstChildren, pIter, PDMAUDIOMIXBUF, Node)
     {
@@ -285,8 +287,6 @@ void AudioMixBufFinish(PPDMAUDIOMIXBUF pMixBuf, uint32_t cFramesToClear)
         pIter->cMixed -= RT_MIN(pIter->cMixed, cFramesToClear);
         /* Note: Do not increment pIter->cUsed here, as this gets done when reading from that buffer using AudioMixBufReadXXX. */
     }
-
-    Assert(cFramesToClear <= pMixBuf->cFrames);
 
     uint32_t cClearOff;
     uint32_t cClearLen;
