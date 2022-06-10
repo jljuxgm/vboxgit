@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 77362 2019-02-19 14:40:44Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 77376 2019-02-20 12:32:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -135,14 +135,20 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_RecentFolderCD;
         /** Holds recent folder for floppy-disks. */
         SHARED_LIBRARY_STUFF extern const char *GUI_RecentFolderFD;
-        /** Holds recent folder for VISO creation content. */
-        SHARED_LIBRARY_STUFF extern const char *GUI_RecentFolderVISOContent;
         /** Holds the list of recently used hard-drives. */
         SHARED_LIBRARY_STUFF extern const char *GUI_RecentListHD;
         /** Holds the list of recently used optical-disks. */
         SHARED_LIBRARY_STUFF extern const char *GUI_RecentListCD;
         /** Holds the list of recently used floppy-disks. */
         SHARED_LIBRARY_STUFF extern const char *GUI_RecentListFD;
+    /** @} */
+
+    /** @name Settings: Viso Creator
+      * @{ */
+        /** Holds recent folder for Viso creation content. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_VisoCreator_RecentFolder;
+        /** Holds dialog geometry for Viso creation dialog. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_VisoCreator_DialogGeometry;
     /** @} */
 
     /** @name VirtualBox Manager

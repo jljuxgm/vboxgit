@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 77014 2019-01-28 08:24:50Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 77376 2019-02-20 12:32:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -268,16 +268,12 @@ public:
         QString recentFolderForOpticalDisks();
         /** Returns recent folder for floppy-disks. */
         QString recentFolderForFloppyDisks();
-        /** Returns recent folder for VISO creation content. */
-        QString recentFolderForVISOContent();
         /** Defines recent folder for hard-drives as @a strValue. */
         void setRecentFolderForHardDrives(const QString &strValue);
         /** Defines recent folder for optical-disk as @a strValue. */
         void setRecentFolderForOpticalDisks(const QString &strValue);
         /** Defines recent folder for floppy-disk as @a strValue. */
         void setRecentFolderForFloppyDisks(const QString &strValue);
-        /** Defines recent folder for VISO creation content as @a strValue. */
-        void setRecentFolderForVISOContent(const QString &strValue);
 
         /** Returns the list of recently used hard-drives. */
         QStringList recentListOfHardDrives();
@@ -291,6 +287,20 @@ public:
         void setRecentListOfOpticalDisks(const QStringList &value);
         /** Defines the list of recently used floppy-disks as @a value. */
         void setRecentListOfFloppyDisks(const QStringList &value);
+    /** @} */
+
+    /** @name Viso Creator
+      * @{ */
+        /** Returns recent folder for Viso creation content. */
+        QString visoCreatorRecentFolder();
+        /** Defines recent folder for Viso creation content as @a strValue. */
+        void setVisoCreatorRecentFolder(const QString &strValue);
+        /** Returns the Viso creation dialog geometry. */
+        QRect visoCreatorDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry);
+        /** Defines the Viso creation dialog geometry. */
+        void setVisoCreatorDialogGeometry(const QRect &geometry, bool fMaximized);
+        /** Returns whether the Viso creation dialog should be maximized. */
+        bool visoCreatorDialogShouldBeMaximized();
     /** @} */
 
     /** @name VirtualBox Manager

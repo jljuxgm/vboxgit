@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreator.h 77330 2019-02-15 11:04:00Z vboxsync $ */
+/* $Id: UIVisoCreator.h 77376 2019-02-20 12:32:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreator class declaration.
  */
@@ -120,6 +120,9 @@ private:
       *  - grab it from the dialog as soon as a panel becomes visible again
       *  - assign it to the most recently "unhidden" panel */
     void manageEscapeShortCut();
+    void loadSettings();
+    void saveSettings() const;
+    void setDialogGeometry(const QRect &geometry);
 
     QAction              *m_pActionConfiguration;
     QAction              *m_pActionOptions;
