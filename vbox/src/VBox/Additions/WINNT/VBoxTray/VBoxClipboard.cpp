@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 78171 2019-04-17 16:03:40Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 78172 2019-04-17 16:10:24Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -46,6 +46,7 @@ struct _VBOXCLIPBOARDCONTEXT
     /** Windows-specific context data. */
     VBOXCLIPBOARDWINCTX      Win;
 };
+
 
 /*********************************************************************************************************************************
 *   Static variables                                                                                                             *
