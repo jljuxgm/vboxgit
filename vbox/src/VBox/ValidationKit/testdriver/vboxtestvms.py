@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 72373 2018-05-29 09:10:49Z vboxsync $
+# $Id: vboxtestvms.py 72727 2018-06-28 16:21:54Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 72373 $"
+__version__ = "$Revision: 72727 $"
 
 # Standard Python imports.
 import copy;
@@ -1185,9 +1185,9 @@ class TestVmManager(object):
         """
         return self.selectSet(self.kfGrpStandard, sTxsTransport)
 
-    def getSmokeVmSet(self):
+    def getSmokeVmSet(self, sTxsTransport = None):
         """Gets a representative set of VMs for smoke testing. """
-        return self.selectSet(self.kfGrpSmoke);
+        return self.selectSet(self.kfGrpSmoke, sTxsTransport);
 
     def shutUpPyLint(self):
         """ Shut up already! """
