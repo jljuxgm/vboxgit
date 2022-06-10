@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 73097 2018-07-12 21:06:33Z vboxsync $ */
+/* $Id: PDMQueue.cpp 74790 2018-10-12 10:42:58Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -662,7 +662,7 @@ VMMR3_INT_DECL(void) PDMR3QueueFlushAll(PVM pVM)
 
         /* We're done if there were no inserts while we were busy. */
         if (   !ASMBitTest(&pVM->pdm.s.fQueueFlushing, PDM_QUEUE_FLUSH_FLAG_PENDING_BIT)
-            && !VM_FF_IS_PENDING(pVM, VM_FF_PDM_QUEUES))
+            && !VM_FF_IS_SET(pVM, VM_FF_PDM_QUEUES))
             break;
         VM_FF_CLEAR(pVM, VM_FF_PDM_QUEUES);
     }

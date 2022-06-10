@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 74789 2018-10-12 10:34:32Z vboxsync $ */
+/* $Id: EMRaw.cpp 74790 2018-10-12 10:42:58Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -1254,7 +1254,7 @@ static int emR3RawForcedActions(PVM pVM, PVMCPU pVCpu)
      * since we ran FFs. The allocate handy pages must for instance always be followed by
      * this check.
      */
-    if (VM_FF_IS_PENDING(pVM, VM_FF_PGM_NO_MEMORY))
+    if (VM_FF_IS_SET(pVM, VM_FF_PGM_NO_MEMORY))
         return VINF_EM_NO_MEMORY;
 
     return VINF_SUCCESS;
