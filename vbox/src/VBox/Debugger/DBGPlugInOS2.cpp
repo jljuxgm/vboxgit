@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInOS2.cpp 76691 2019-01-08 05:54:14Z vboxsync $ */
+/* $Id: DBGPlugInOS2.cpp 76692 2019-01-08 05:56:30Z vboxsync $ */
 /** @file
  * DBGPlugInOS2 - Debugger and Guest OS Digger Plugin For OS/2.
  */
@@ -873,7 +873,7 @@ static void dbgdiggerOS2ProcessModule(PUVM pUVM, PDBGDIGGEROS2 pThis, DBGDIGGERO
      */
     if ((Mte.mte_flags1 & MTE1_CLASS_MASK) == MTE1_CLASS_PROGRAM)
     {
-        LogRel(("DbgDiggerOs2: Program module, skipping.\n", Mte.mte_flags1));
+        LogRel(("DbgDiggerOs2: Program module, skipping.\n"));
         return;
     }
 
