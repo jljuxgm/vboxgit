@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 76958 2019-01-23 18:23:04Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 77068 2019-01-31 11:53:09Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -35,7 +35,7 @@
                        *        that is moved into the class implementation file as it should be. */
 #include <deque>
 
-class GuestSessionTaskInternalOpen; /* Needed for i_startSessionThreadTask(). */
+class GuestSessionTaskInternalStart; /* Needed for i_startSessionThreadTask(). */
 
 /**
  * Guest session implementation.
@@ -312,7 +312,7 @@ public:
     PathStyle_T             i_getPathStyle(void);
     int                     i_startSession(int *pGuestRc);
     int                     i_startSessionAsync(void);
-    static void             i_startSessionThreadTask(GuestSessionTaskInternalOpen *pTask);
+    static int              i_startSessionThreadTask(GuestSessionTaskInternalStart *pTask);
     Guest                  *i_getParent(void) { return mParent; }
     uint32_t                i_getProtocolVersion(void) { return mData.mProtocolVersion; }
     int                     i_objectRegister(SESSIONOBJECTTYPE enmType, uint32_t *pidObject);
