@@ -1,4 +1,4 @@
-/* $Id: vfsmod.h 77959 2019-03-29 21:12:05Z vboxsync $ */
+/* $Id: vfsmod.h 77961 2019-03-30 01:46:38Z vboxsync $ */
 /** @file
  * vboxsf - Linux Shared Folders VFS, internal header.
  */
@@ -255,7 +255,7 @@ struct vbsf_inode_info {
 extern void vbsf_init_inode(struct inode *inode, struct vbsf_inode_info *sf_i, PSHFLFSOBJINFO info,
                             struct vbsf_super_info *pSuperInfo);
 extern void vbsf_update_inode(struct inode *pInode, struct vbsf_inode_info *pInodeInfo, PSHFLFSOBJINFO pObjInfo,
-                              struct vbsf_super_info *pSuperInfo, bool fInodeLocked);
+                              struct vbsf_super_info *pSuperInfo, bool fInodeLocked, unsigned fSetAttrs);
 extern int  vbsf_inode_revalidate_worker(struct dentry *dentry, bool fForced, bool fInodeLocked);
 extern int  vbsf_inode_revalidate_with_handle(struct dentry *dentry, SHFLHANDLE hHostFile, bool fForced, bool fInodeLocked);
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 18)
