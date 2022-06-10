@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-os2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: initterm-r0drv-os2.cpp 75553 2018-11-18 04:56:15Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, Ring-0 Driver, OS/2.
  */
@@ -95,6 +95,6 @@ DECLHIDDEN(void) rtR0TermNative(void)
  */
 RTR0DECL(void *) RTR0Os2Virt2Flat(RTFAR16 fp)
 {
-    return (void *)KernSelToFlat((fp.sel << 16) | fp.off);
+    return (void *)KernSelToFlat(((uint32_t)fp.sel << 16) | fp.off);
 }
 
