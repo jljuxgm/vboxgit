@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 74942 2018-10-19 12:51:20Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 74943 2018-10-19 12:59:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -1122,7 +1122,7 @@ void UIGChooserModel::sltRemoveSelectedMachine()
          * we will propose ro unregister machine fully else
          * we will just propose to remove selected items: */
         bool fVerdict = iSelectedCopyCount == iExistingCopyCount;
-        verdicts.insert(aId, fVerdict);
+        verdicts.insert(uId, fVerdict);
         if (fVerdict)
             machinesToUnregister.append(uId);
         else
