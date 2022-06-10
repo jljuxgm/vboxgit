@@ -1,4 +1,4 @@
-# $Id: Version.kmk 75851 2018-11-30 13:55:20Z vboxsync $
+# $Id: Version.kmk 75852 2018-11-30 18:48:31Z vboxsync $
 ## @file
 #
 # The VirtualBox version.
@@ -33,4 +33,4 @@ VBOX_BUILD_PUBLISHER =
 VBOX_VERSION_PRERELEASE = BETA3
 # Force a release-type build with exactly matching Additions etc, even if
 # our numbering does not say this is a release build, by setting this non-empty.
-VBOX_RELEASE_EXACT_MATCH = 1
+VBOX_RELEASE_EXACT_MATCH = 0
