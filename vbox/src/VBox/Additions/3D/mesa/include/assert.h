@@ -1,4 +1,4 @@
-/* $Id: assert.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: assert.h 76539 2018-12-30 06:22:29Z vboxsync $ */
 /** @file
  * Replaces C runtime assert with a simplified version which just hits breakpoint.
  *
@@ -21,6 +21,9 @@
 
 #ifndef ___VBox_Mesa_Assert_h__
 #define ___VBox_Mesa_Assert_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/asm.h>
 

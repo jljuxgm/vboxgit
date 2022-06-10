@@ -1,4 +1,4 @@
-/* $Id: VBoxGaNine.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: VBoxGaNine.h 76539 2018-12-30 06:22:29Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM user mode driver.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxGaNine_h__
 #define ___VBoxGaNine_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/win/d3d9.h>
 

@@ -1,4 +1,4 @@
-/* $Id: GaDrvEnvKMT.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: GaDrvEnvKMT.h 76539 2018-12-30 06:22:29Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___GaDrvEnvKMT_h__
 #define ___GaDrvEnvKMT_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <VBoxGaDriver.h>
 #include <VBoxWddmUmHlp.h>

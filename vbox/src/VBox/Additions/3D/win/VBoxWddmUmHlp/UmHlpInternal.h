@@ -1,4 +1,4 @@
-/* $Id: UmHlpInternal.h 75531 2018-11-16 20:09:45Z vboxsync $ */
+/* $Id: UmHlpInternal.h 76539 2018-12-30 06:22:29Z vboxsync $ */
 /** @file
  * VBox WDDM User Mode Driver Helpers
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___UmHlpInternal_h__
 #define ___UmHlpInternal_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include "VBoxWddmUmHlp.h"
 

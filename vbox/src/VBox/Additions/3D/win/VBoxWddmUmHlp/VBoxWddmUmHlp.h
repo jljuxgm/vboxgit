@@ -1,4 +1,4 @@
-/* $Id: VBoxWddmUmHlp.h 75630 2018-11-20 19:10:04Z vboxsync $ */
+/* $Id: VBoxWddmUmHlp.h 76539 2018-12-30 06:22:29Z vboxsync $ */
 /** @file
  * VBox WDDM User Mode Driver Helpers
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxWddmUmHlp_h__
 #define ___VBoxWddmUmHlp_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/win/d3d9.h>
 #include <d3dumddi.h>

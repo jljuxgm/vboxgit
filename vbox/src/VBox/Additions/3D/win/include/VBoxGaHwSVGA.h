@@ -1,4 +1,4 @@
-/* $Id: VBoxGaHwSVGA.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: VBoxGaHwSVGA.h 76539 2018-12-30 06:22:29Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface.
  */
@@ -17,6 +17,9 @@
 
 #ifndef ___VBoxGaHwSVGA_h__
 #define ___VBoxGaHwSVGA_h__
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
 
 #include <iprt/types.h>
 

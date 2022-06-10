@@ -1,4 +1,4 @@
-/* $Id: wddm_screen.h 75443 2018-11-14 10:17:08Z vboxsync $ */
+/* $Id: wddm_screen.h 76539 2018-12-30 06:22:29Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA hardware driver.
  */
@@ -15,6 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifndef VBOX_INCLUDED_VBoxSVGA_wddm_screen_h
+#define VBOX_INCLUDED_VBoxSVGA_wddm_screen_h
+#ifndef RT_WITHOUT_PRAGMA_ONCE
+# pragma once
+#endif
+
 #include <VBoxGaDriver.h>
 
 #include "vmw_screen.h"
@@ -26,3 +32,6 @@ struct vmw_winsys_screen_wddm
     const WDDMGalliumDriverEnv *pEnv;
     VBOXGAHWINFOSVGA HwInfo;
 };
+
+#endif
+
