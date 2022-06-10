@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 75769 2018-11-27 12:30:00Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 75770 2018-11-27 12:35:40Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -235,7 +235,7 @@ static void vmmdevHGCMCmdListUnlock(PVMMDEV pThis)
  * @param   GCPhys          The guest physical address of the HGCM request.
  * @param   cbRequest       The size of the HGCM request.
  * @param   cParms          Number of HGCM parameters for VBOXHGCMCMDTYPE_CALL command.
- * @param   fRequstor       The VMMDevRequestHeader::fRequestor value.
+ * @param   fRequestor      The VMMDevRequestHeader::fRequestor value.
  */
 static PVBOXHGCMCMD vmmdevHGCMCmdAlloc(PVMMDEV pThis, VBOXHGCMCMDTYPE enmCmdType, RTGCPHYS GCPhys,
                                        uint32_t cbRequest, uint32_t cParms, uint32_t fRequestor)
