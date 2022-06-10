@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 77594 2019-03-07 12:03:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -106,8 +106,7 @@ void UIInformationRuntime::prepareView()
             m_pView->setItemDelegate(pItem);
         }
         /* Connect data changed signal: */
-        connect(m_pModel, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)),
-                m_pView, SLOT(updateData(const QModelIndex &, const QModelIndex &)));
+        connect(m_pModel, &UIInformationModel::dataChanged, m_pView, &UIInformationView::updateData);
 
         /* Set model for view: */
         m_pView->setModel(m_pModel);
@@ -115,4 +114,3 @@ void UIInformationRuntime::prepareView()
         m_pMainLayout->addWidget(m_pView);
     }
 }
-

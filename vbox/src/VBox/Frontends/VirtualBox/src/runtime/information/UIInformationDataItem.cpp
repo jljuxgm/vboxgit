@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.cpp 77474 2019-02-26 18:05:22Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 77594 2019-03-07 12:03:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
@@ -361,7 +361,7 @@ QVariant UIInformationDataUSB::data(const QModelIndex &index, int role) const
 UIInformationDataSharedFolders::UIInformationDataSharedFolders(const CMachine &machine, const CConsole &console, UIInformationModel *pModel)
     : UIInformationDataItem(InformationElementType_SharedFolders, machine, console, pModel)
 {
-    connect(gpMachine->uisession(), SIGNAL(sigSharedFolderChange()), this, SLOT(updateData()));
+    connect(gpMachine->uisession(), &UISession::sigSharedFolderChange, this, &UIInformationDataSharedFolders::updateData);
 }
 
 QVariant UIInformationDataSharedFolders::data(const QModelIndex &index, int role) const
@@ -607,7 +607,7 @@ UIInformationDataNetworkStatistics::UIInformationDataNetworkStatistics(const CMa
 
     m_pTimer = new QTimer(this);
 
-    connect(m_pTimer, SIGNAL(timeout()), this, SLOT(sltProcessStatistics()));
+    connect(m_pTimer, &QTimer::timeout, this, &UIInformationDataNetworkStatistics::sltProcessStatistics);
 
     /* Statistics page update: */
     sltProcessStatistics();
@@ -803,7 +803,7 @@ UIInformationDataStorageStatistics::UIInformationDataStorageStatistics(const CMa
     }
 
     m_pTimer = new QTimer(this);
-    connect(m_pTimer, SIGNAL(timeout()), this, SLOT(sltProcessStatistics()));
+    connect(m_pTimer, &QTimer::timeout, this, &UIInformationDataStorageStatistics::sltProcessStatistics);
     /* Statistics page update: */
     sltProcessStatistics();
     m_pTimer->start(5000);
