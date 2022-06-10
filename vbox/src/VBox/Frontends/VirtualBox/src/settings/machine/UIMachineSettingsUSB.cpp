@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 75742 2018-11-26 16:44:04Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 75744 2018-11-26 17:13:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -255,8 +255,6 @@ private:
 /** Machine settings: USB Filter tree-widget item. */
 class UIUSBFilterItem : public QITreeWidgetItem, public UIDataSettingsMachineUSBFilter
 {
-    Q_OBJECT;
-
 public:
 
     /** Constructs USB filter (root) item.
