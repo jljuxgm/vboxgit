@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.h 68162 2017-07-28 15:28:33Z vboxsync $ */
+/* $Id: UnattendedScript.h 73826 2018-08-22 12:54:55Z vboxsync $ */
 /** @file
  * Implementeation of algorithms which read/parse/save scripts for unattended installation.
  */
@@ -20,6 +20,7 @@
 
 #include "VirtualBoxBase.h"
 #include <iprt/cpp/utils.h>
+#include <vector>
 
 using namespace xml;
 
