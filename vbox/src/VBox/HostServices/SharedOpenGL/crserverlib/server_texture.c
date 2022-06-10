@@ -1,4 +1,4 @@
-/* $Id: server_texture.c 76787 2019-01-11 20:00:15Z vboxsync $ */
+/* $Id: server_texture.c 78076 2019-04-10 11:20:02Z vboxsync $ */
 /** @file
  * VBox crOpenGL - teximage functions.
  */
@@ -175,7 +175,8 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchGetTexEnvfv( GLenum target, GLenum
     else
         crStateGetTexEnvfv( target, pname, local_params );
 
-    crServerReturnValue( &(local_params[0]), crStateHlpComponentsCount(pname)*sizeof (GLfloat) );
+    size_t cComponents = RT_MIN(crStateHlpComponentsCount(pname), RT_ELEMENTS(local_params));
+    crServerReturnValue( &(local_params[0]), cComponents*sizeof (GLfloat) );
 }
 
 void SERVER_DISPATCH_APIENTRY crServerDispatchGetTexEnviv( GLenum target, GLenum pname, GLint * params )
@@ -187,7 +188,8 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchGetTexEnviv( GLenum target, GLenum
     else
         crStateGetTexEnviv( target, pname, local_params );
 
-    crServerReturnValue( &(local_params[0]), crStateHlpComponentsCount(pname)*sizeof (GLint) );
+    size_t cComponents = RT_MIN(crStateHlpComponentsCount(pname), RT_ELEMENTS(local_params));
+    crServerReturnValue( &(local_params[0]), cComponents*sizeof (GLint) );
 }
 
 void SERVER_DISPATCH_APIENTRY crServerDispatchBindTexture( GLenum target, GLuint texture )
