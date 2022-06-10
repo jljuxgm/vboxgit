@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 77208 2019-02-07 23:45:26Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1071,6 +1071,7 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser(PPRTR0MEMOBJINTERNAL ppMem, RTR3PTR R3P
         /*
          * Get user pages.
          */
+/** @todo r=bird: Should we not force read access too? */
 #if GET_USER_PAGES_API >= KERNEL_VERSION(4, 6, 0)
         if (R0Process == RTR0ProcHandleSelf())
             rc = get_user_pages(R3Ptr,                  /* Where from. */
@@ -1146,7 +1147,7 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser(PPRTR0MEMOBJINTERNAL ppMem, RTR3PTR R3P
             while (rc-- > 0)
             {
                 flush_dcache_page(pMemLnx->apPages[rc]);
-                papVMAs[rc]->vm_flags |= (VM_DONTCOPY | VM_LOCKED);
+                papVMAs[rc]->vm_flags |= VM_DONTCOPY | VM_LOCKED;
             }
 
             up_read(&pTask->mm->mmap_sem);
