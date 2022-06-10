@@ -1,4 +1,4 @@
-/* $Id: EMR3Nem.cpp 72917 2018-07-05 13:50:01Z vboxsync $ */
+/* $Id: EMR3Nem.cpp 74786 2018-10-12 10:20:59Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - NEM interface.
  */
@@ -309,7 +309,7 @@ static int emR3NemForcedActions(PVM pVM, PVMCPU pVCpu)
     if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_PGM_SYNC_CR3 | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL))
     {
         Log(("NEM: TODO: Make VMCPU_FF_PGM_SYNC_CR3 / VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL quiet! (%#x)\n", pVCpu->fLocalForcedActions));
-        VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_PGM_SYNC_CR3 | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL);
+        VMCPU_FF_CLEAR_MASK(pVCpu, VMCPU_FF_PGM_SYNC_CR3 | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL);
     }
 
     /*

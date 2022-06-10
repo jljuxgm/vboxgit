@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 73351 2018-07-25 13:02:11Z vboxsync $ */
+/* $Id: VM.cpp 74786 2018-10-12 10:20:59Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2872,7 +2872,7 @@ static DECLCALLBACK(VBOXSTRICTRC) vmR3HardReset(PVM pVM, PVMCPU pVCpu, void *pvU
     VMCPU_ASSERT_STATE(pVCpu, VMCPUSTATE_STARTED);
 
     /* Clear all pending forced actions. */
-    VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_ALL_MASK & ~VMCPU_FF_REQUEST);
+    VMCPU_FF_CLEAR_MASK(pVCpu, VMCPU_FF_ALL_MASK & ~VMCPU_FF_REQUEST);
 
     /*
      * Reset the VM components.
