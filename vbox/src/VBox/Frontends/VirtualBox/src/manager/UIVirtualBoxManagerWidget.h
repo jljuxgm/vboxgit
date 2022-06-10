@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 77313 2019-02-14 15:45:36Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 77315 2019-02-14 15:53:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -147,6 +147,9 @@ private slots:
         /** Handles signal about Chooser-pane index change. */
         void sltHandleChooserPaneIndexChange();
 
+        /** Handles signal about Chooser-pane selection invalidated. */
+        void sltHandleChooserPaneSelectionInvalidated() { recacheCurrentItemInformation(true /* fDontRaiseErrorPane */); }
+
         /** Handles sliding animation complete signal.
           * @param  enmDirection  Brings which direction was animation finished for. */
         void sltHandleSlidingAnimationComplete(SlidingDirection enmDirection);
@@ -181,6 +184,13 @@ private:
         void saveSettings();
         /** Cleanups window. */
         void cleanup();
+    /** @} */
+
+    /** @name Common stuff.
+      * @{ */
+        /** Recaches current item information.
+          * @param  fDontRaiseErrorPane  Brings whether we should not raise error-pane. */
+        void recacheCurrentItemInformation(bool fDontRaiseErrorPane = false);
     /** @} */
 
     /** Holds the action-pool instance. */

@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 77305 2019-02-13 17:34:03Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 77315 2019-02-14 15:53:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -976,6 +976,9 @@ void UIChooserModel::sltUngroupSelectedGroup()
     /* Delete focus group: */
     delete focusItem();
 
+    /* Notify about selection invalidated: */
+    emit sigSelectionInvalidated();
+
     /* And update model: */
     updateNavigation();
     updateLayout();
@@ -1445,6 +1448,8 @@ void UIChooserModel::prepareConnections()
     /* Setup parent connections: */
     connect(this, SIGNAL(sigSelectionChanged()),
             parent(), SIGNAL(sigSelectionChanged()));
+    connect(this, SIGNAL(sigSelectionInvalidated()),
+            parent(), SIGNAL(sigSelectionInvalidated()));
     connect(this, SIGNAL(sigSlidingStarted()),
             parent(), SIGNAL(sigSlidingStarted()));
     connect(this, SIGNAL(sigToggleStarted()),
