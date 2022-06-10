@@ -1,4 +1,4 @@
-/* $Id: scsiinline.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: scsiinline.h 77021 2019-01-28 14:56:08Z vboxsync $ */
 /** @file
  * VirtualBox: SCSI inline helpers used by devices, drivers, etc.
  */
@@ -183,7 +183,7 @@ DECLINLINE(void) scsiLBA2MSF(uint8_t *pbBuf, uint32_t iLBA)
  */
 DECLINLINE(uint32_t) scsiMSF2LBA(const uint8_t *pbBuf)
 {
-    return (pbBuf[0] * 60 + pbBuf[1]) * 75 + pbBuf[2];
+    return (pbBuf[0] * 60 + pbBuf[1]) * 75 + pbBuf[2] - 150;
 }
 
 
