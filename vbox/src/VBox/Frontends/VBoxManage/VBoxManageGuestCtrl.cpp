@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 75848 2018-11-30 12:23:17Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 75849 2018-11-30 12:30:02Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1778,8 +1778,8 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
  *
  * The handling of the wildcard filtering expressions in sources was also just
  * skipped.   I've corrected this, but you still need to make up your mind wrt
- * wildcards or not. 
- * 
+ * wildcards or not.
+ *
  * Update: I've kicked out the whole SourceFileEntry/vecSources stuff as we can
  *         use argv directly without any unnecessary copying.  You just have to
  *         look for the wildcards inside this loop instead.
@@ -1835,7 +1835,7 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
                     rcExit = RTMsgErrorExitFailure("RTPathQueryInfo failed on '%s': %Rrc", szAbsSrc, vrc);
             }
             else
-                rcExit = RTMsgErrorExitFailure("RTPathAbs failed on '%s': %Rrc", pszSource);
+                rcExit = RTMsgErrorExitFailure("RTPathAbs failed on '%s': %Rrc", pszSource, vrc);
         }
         else
         {
