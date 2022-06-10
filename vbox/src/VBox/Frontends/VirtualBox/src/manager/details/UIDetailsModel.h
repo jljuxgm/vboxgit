@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 74677 2018-10-08 12:51:19Z vboxsync $ */
+/* $Id: UIDetailsModel.h 74680 2018-10-08 13:01:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -101,16 +101,6 @@ private slots:
     void sltElementTypeToggled();
 
 private:
-
-    /* Data enumerator: */
-    enum DetailsModelData
-    {
-        /* Layout hints: */
-        DetailsModelData_Margin
-    };
-
-    /* Data provider: */
-    QVariant data(int iKey) const;
 
     /* Helpers: Prepare stuff: */
     void prepareScene();
