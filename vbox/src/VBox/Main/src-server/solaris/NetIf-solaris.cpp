@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 77436 2019-02-22 17:40:00Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -297,7 +297,7 @@ static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNe
     queryIfaceSpeed(&Info);
     ComObjPtr<HostNetworkInterface> IfObj;
     IfObj.createObject();
-    if (SUCCEEDED(IfObj->init(Bstr(szNICDesc), enmType, &Info)))
+    if (SUCCEEDED(IfObj->init(szNICDesc, enmType, &Info)))
         pList->push_back(IfObj);
 }
 

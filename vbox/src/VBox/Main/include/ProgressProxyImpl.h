@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: ProgressProxyImpl.h 77436 2019-02-22 17:40:00Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::LaunchVMProcess in VBoxSVC.
  */
@@ -52,17 +52,17 @@ public:
                  VirtualBox *pParent,
 #endif
                  IUnknown *pInitiator,
-                 CBSTR bstrDescription,
+                 Utf8Str strDescription,
                  BOOL fCancelable);
     HRESULT init(
 #ifndef VBOX_COM_INPROC
                  VirtualBox *pParent,
 #endif
                  IUnknown *pInitiator,
-                 CBSTR bstrDescription,
+                 Utf8Str strDescription,
                  BOOL fCancelable,
                  ULONG uTotalOperationsWeight,
-                 CBSTR bstrFirstOperationDescription,
+                 Utf8Str strFirstOperationDescription,
                  ULONG uFirstOperationWeight,
                  ULONG cOtherProgressObjectOperations);
     void    uninit();

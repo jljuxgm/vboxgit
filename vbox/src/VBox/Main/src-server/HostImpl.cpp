@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 76886 2019-01-18 10:57:02Z vboxsync $ */
+/* $Id: HostImpl.cpp 77436 2019-02-22 17:40:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1364,7 +1364,7 @@ HRESULT Host::removeHostOnlyNetworkInterface(const com::Guid &aId,
         ComAssertComRCRet(rc, rc);
     }
 
-    int r = NetIfRemoveHostOnlyNetworkInterface(m->pParent, Guid(aId).ref(), aProgress.asOutParam());
+    int r = NetIfRemoveHostOnlyNetworkInterface(m->pParent, aId, aProgress.asOutParam());
     if (RT_SUCCESS(r))
     {
         /* Drop configuration parameters for removed interface */

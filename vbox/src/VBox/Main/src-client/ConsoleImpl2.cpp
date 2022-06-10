@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 77100 2019-02-01 10:25:44Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 77436 2019-02-22 17:40:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5168,8 +5168,7 @@ int Console::i_configNetwork(const char *pszDevice,
                     PCFGMNODE pPF = NULL; /* /Devices/Dev/.../Config/PortForwarding/$n/ */
 
                     uint16_t port = 0;
-                    BSTR r = pfs[i];
-                    Utf8Str utf = Utf8Str(r);
+                    Utf8Str utf = pfs[i];
                     Utf8Str strName;
                     Utf8Str strProto;
                     Utf8Str strHostPort;

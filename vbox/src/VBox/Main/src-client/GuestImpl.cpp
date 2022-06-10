@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GuestImpl.cpp 77436 2019-02-22 17:40:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -375,8 +375,8 @@ HRESULT Guest::getOSTypeId(com::Utf8Str &aOSTypeId)
         /* Redirect the call to IMachine if no additions are installed. */
         ComPtr<IMachine> ptrMachine(mParent->i_machine());
         alock.release();
-        BSTR bstr;
-        hrc = ptrMachine->COMGETTER(OSTypeId)(&bstr);
+        Bstr bstr;
+        hrc = ptrMachine->COMGETTER(OSTypeId)(bstr.asOutParam());
         aOSTypeId = bstr;
     }
     return hrc;
