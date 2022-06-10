@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 72762 2018-06-29 10:14:33Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 72771 2018-06-29 11:25:05Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1184,7 +1184,7 @@ VMMR0DECL(int) SVMR0InvalidatePage(PVM pVM, PVMCPU pVCpu, RTGCPTR GCVirt)
     {
         Log4Func(("%#RGv\n", GCVirt));
 
-        PCPUMCTX pCtx  = CPUMQueryGuestCtxPtr(pVCpu);
+        PCPUMCTX pCtx  = &pVCpu->cpum.GstCtx;
         PSVMVMCB pVmcb = hmR0SvmGetCurrentVmcb(pVCpu, pCtx);
         AssertMsgReturn(pVmcb, ("Invalid pVmcb!\n"), VERR_SVM_INVALID_PVMCB);
 
