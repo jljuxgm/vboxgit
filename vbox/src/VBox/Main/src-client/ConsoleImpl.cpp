@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 78090 2019-04-10 14:19:04Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 78261 2019-04-23 16:49:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5245,14 +5245,14 @@ HRESULT Console::i_onParallelPortChange(IParallelPort *aParallelPort)
 /**
  * Called by IInternalSessionControl::OnStorageControllerChange().
  */
-HRESULT Console::i_onStorageControllerChange()
+HRESULT Console::i_onStorageControllerChange(const Guid &aMachineId, const Utf8Str &aControllerName)
 {
     LogFlowThisFunc(("\n"));
 
     AutoCaller autoCaller(this);
     AssertComRCReturnRC(autoCaller.rc());
 
-    fireStorageControllerChangedEvent(mEventSource);
+    fireStorageControllerChangedEvent(mEventSource, Bstr(aMachineId.toString()).raw(), Bstr(aControllerName).raw());
 
     LogFlowThisFunc(("Leaving rc=%#x\n", S_OK));
     return S_OK;

@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.h 77910 2019-03-27 11:33:01Z vboxsync $ */
+/* $Id: SessionImpl.h 78261 2019-04-23 16:49:28Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class definition
  */
@@ -92,7 +92,7 @@ private:
     HRESULT onAudioAdapterChange(const ComPtr<IAudioAdapter> &aAudioAdapter);
     HRESULT onSerialPortChange(const ComPtr<ISerialPort> &aSerialPort);
     HRESULT onParallelPortChange(const ComPtr<IParallelPort> &aParallelPort);
-    HRESULT onStorageControllerChange();
+    HRESULT onStorageControllerChange(const Guid &aMachineId, const com::Utf8Str& aControllerName);
     HRESULT onMediumChange(const ComPtr<IMediumAttachment> &aMediumAttachment,
                            BOOL aForce);
     HRESULT onStorageDeviceChange(const ComPtr<IMediumAttachment> &aMediumAttachment,

@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 77910 2019-03-27 11:33:01Z vboxsync $ */
+/* $Id: SessionImpl.cpp 78261 2019-04-23 16:49:28Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -639,7 +639,7 @@ HRESULT Session::onParallelPortChange(const ComPtr<IParallelPort> &aParallelPort
 #endif
 }
 
-HRESULT Session::onStorageControllerChange()
+HRESULT Session::onStorageControllerChange(const Guid &aMachineId, const Utf8Str &aControllerName)
 {
     LogFlowThisFunc(("\n"));
 
@@ -649,8 +649,10 @@ HRESULT Session::onStorageControllerChange()
 #ifndef VBOX_COM_INPROC_API_CLIENT
     AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
 
-    return mConsole->i_onStorageControllerChange();
+    return mConsole->i_onStorageControllerChange(aMachineId, aControllerName);
 #else
+    NOREF(aMachineId);
+    NOREF(aControllerName);
     return S_OK;
 #endif
 }

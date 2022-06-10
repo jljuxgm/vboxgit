@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 77910 2019-03-27 11:33:01Z vboxsync $ */
+/* $Id: ConsoleImpl.h 78261 2019-04-23 16:49:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -178,7 +178,7 @@ public:
     HRESULT i_onAudioAdapterChange(IAudioAdapter *aAudioAdapter);
     HRESULT i_onSerialPortChange(ISerialPort *aSerialPort);
     HRESULT i_onParallelPortChange(IParallelPort *aParallelPort);
-    HRESULT i_onStorageControllerChange();
+    HRESULT i_onStorageControllerChange(const com::Guid& aMachineId, const com::Utf8Str& aControllerName);
     HRESULT i_onMediumChange(IMediumAttachment *aMediumAttachment, BOOL aForce);
     HRESULT i_onCPUChange(ULONG aCPU, BOOL aRemove);
     HRESULT i_onCPUExecutionCapChange(ULONG aExecutionCap);

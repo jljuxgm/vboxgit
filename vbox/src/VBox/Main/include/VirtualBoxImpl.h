@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 78261 2019-04-23 16:49:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -155,6 +155,7 @@ public:
     void i_onMediumRegistered(const Guid &aMediumId, const DeviceType_T aDevType, const BOOL aRegistered);
     void i_onMediumConfigChanged(IMedium *aMedium);
     void i_onMediumChanged(IMediumAttachment* aMediumAttachment);
+    void i_onStorageControllerChanged(const Guid &aMachineId, const com::Utf8Str &aControllerName);
     void i_onStorageDeviceChanged(IMediumAttachment* aStorageDevice, const BOOL fRemoved, const BOOL fSilent);
     void i_onMachineStateChange(const Guid &aId, MachineState_T aState);
     void i_onMachineDataChange(const Guid &aId, BOOL aTemporary = FALSE);

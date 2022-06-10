@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 77910 2019-03-27 11:33:01Z vboxsync $ */
+/* $Id: MachineImpl.h 78261 2019-04-23 16:49:28Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -518,7 +518,7 @@ public:
     virtual HRESULT i_onParallelPortChange(IParallelPort * /* parallelPort */) { return S_OK; }
     virtual HRESULT i_onVRDEServerChange(BOOL /* aRestart */) { return S_OK; }
     virtual HRESULT i_onUSBControllerChange() { return S_OK; }
-    virtual HRESULT i_onStorageControllerChange() { return S_OK; }
+    virtual HRESULT i_onStorageControllerChange(const com::Guid & /* aMachineId */, const com::Utf8Str & /* aControllerName */) { return S_OK; }
     virtual HRESULT i_onCPUChange(ULONG /* aCPU */, BOOL /* aRemove */) { return S_OK; }
     virtual HRESULT i_onCPUExecutionCapChange(ULONG /* aExecutionCap */) { return S_OK; }
     virtual HRESULT i_onMediumChange(IMediumAttachment * /* mediumAttachment */, BOOL /* force */) { return S_OK; }
@@ -1325,7 +1325,7 @@ public:
     HRESULT i_onNATRedirectRuleChange(ULONG ulSlot, BOOL aNatRuleRemove, IN_BSTR aRuleName,
                                       NATProtocol_T aProto, IN_BSTR aHostIp, LONG aHostPort,
                                       IN_BSTR aGuestIp, LONG aGuestPort);
-    HRESULT i_onStorageControllerChange();
+    HRESULT i_onStorageControllerChange(const com::Guid &aMachineId, const com::Utf8Str &aControllerName);
     HRESULT i_onMediumChange(IMediumAttachment *aMediumAttachment, BOOL aForce);
     HRESULT i_onVMProcessPriorityChange(VMProcPriority_T aPriority);
     HRESULT i_onAudioAdapterChange(IAudioAdapter *audioAdapter);
