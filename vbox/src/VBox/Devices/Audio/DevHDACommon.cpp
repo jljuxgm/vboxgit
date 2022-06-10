@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 75866 2018-12-02 01:30:48Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 75962 2018-12-05 09:34:58Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  */
@@ -339,7 +339,7 @@ int hdaR3DMARead(PHDASTATE pThis, PHDASTREAM pStream, void *pvBuf, uint32_t cbBu
         }
 # endif
         if (pStream->Dbg.Runtime.fEnabled)
-            DrvAudioHlpFileWrite(pStream->Dbg.Runtime.pFileDMA, (uint8_t *)pvBuf + cbReadTotal, cbChunk, 0 /* fFlags */);
+            DrvAudioHlpFileWrite(pStream->Dbg.Runtime.pFileDMARaw, (uint8_t *)pvBuf + cbReadTotal, cbChunk, 0 /* fFlags */);
 
         STAM_COUNTER_ADD(&pThis->StatBytesRead, cbChunk);
         addrChunk         = (addrChunk + cbChunk) % pBDLE->Desc.u32BufSize;
@@ -405,7 +405,7 @@ int hdaR3DMAWrite(PHDASTATE pThis, PHDASTREAM pStream, const void *pvBuf, uint32
         Assert(cbChunk <= pBDLE->Desc.u32BufSize - pBDLE->State.u32BufOff);
 
         if (pStream->Dbg.Runtime.fEnabled)
-            DrvAudioHlpFileWrite(pStream->Dbg.Runtime.pFileDMA, (uint8_t *)pvBuf + cbWrittenTotal, cbChunk, 0 /* fFlags */);
+            DrvAudioHlpFileWrite(pStream->Dbg.Runtime.pFileDMARaw, (uint8_t *)pvBuf + cbWrittenTotal, cbChunk, 0 /* fFlags */);
 
         rc = PDMDevHlpPCIPhysWrite(pThis->CTX_SUFF(pDevIns),
                                    addrChunk, (uint8_t *)pvBuf + cbWrittenTotal, cbChunk);
