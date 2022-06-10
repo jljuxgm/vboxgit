@@ -1,4 +1,4 @@
-/* $Id: UITools.cpp 74249 2018-09-13 16:24:26Z vboxsync $ */
+/* $Id: UITools.cpp 74319 2018-09-17 17:35:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITools class implementation.
  */
@@ -67,6 +67,16 @@ UIToolsClass UITools::toolsClass() const
 UIToolsType UITools::toolsType() const
 {
     return m_pToolsModel->toolsType();
+}
+
+void UITools::setToolsEnabled(UIToolsClass enmClass, bool fEnabled)
+{
+    m_pToolsModel->setToolsEnabled(enmClass, fEnabled);
+}
+
+bool UITools::areToolsEnabled(UIToolsClass enmClass) const
+{
+    return m_pToolsModel->areToolsEnabled(enmClass);
 }
 
 UIToolsItem *UITools::currentItem() const
