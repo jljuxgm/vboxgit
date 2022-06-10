@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 77606 2019-03-08 02:55:07Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 77801 2019-03-19 17:44:40Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -895,21 +895,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
     if (enmCommand == USAGE_ADOPTSTATE || enmCommand == USAGE_S_ALL)
         RTStrmPrintf(pStrm,
                            "%s adoptstate %s      <uuid|vmname> <state_file>\n"
-                     "\n", SEP);
-
-    if (enmCommand == USAGE_SNAPSHOT || enmCommand == USAGE_S_ALL)
-        RTStrmPrintf(pStrm,
-                           "%s snapshot %s        <uuid|vmname>\n"
-                     "                            take <name> [--description <desc>] [--live]\n"
-                     "                                 [--uniquename Number,Timestamp,Space,Force] |\n"
-                     "                            delete <uuid|snapname> |\n"
-                     "                            restore <uuid|snapname> |\n"
-                     "                            restorecurrent |\n"
-                     "                            edit <uuid|snapname>|--current\n"
-                     "                                 [--name <name>]\n"
-                     "                                 [--description <desc>] |\n"
-                     "                            list [--details|--machinereadable] |\n"
-                     "                            showvminfo <uuid|snapname>\n"
                      "\n", SEP);
 
     if (enmCommand == USAGE_CLOSEMEDIUM || enmCommand == USAGE_S_ALL)

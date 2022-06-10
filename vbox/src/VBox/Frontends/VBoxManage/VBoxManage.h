@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 77777 2019-03-19 10:00:28Z vboxsync $ */
+/* $Id: VBoxManage.h 77801 2019-03-19 17:44:40Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -60,7 +60,6 @@ typedef enum
     USAGE_STARTVM,
     USAGE_CONTROLVM,
     USAGE_DISCARDSTATE,
-    USAGE_SNAPSHOT,
     USAGE_CLOSEMEDIUM,
     USAGE_SHOWMEDIUMINFO,
     USAGE_CREATEMEDIUM,
