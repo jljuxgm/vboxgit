@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 77958 2019-03-29 20:57:32Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 78011 2019-04-04 07:49:21Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -1418,23 +1418,16 @@ static int vmsvgaChangeMode(PVGASTATE pThis)
 
 int vmsvgaUpdateScreen(PVGASTATE pThis, VMSVGASCREENOBJECT *pScreen, int x, int y, int w, int h)
 {
-    if (pThis->svga.fGFBRegisters)
-    {
-        vgaR3UpdateDisplay(pThis, x, y, w, h);
-    }
-    else
-    {
-        VBVACMDHDR cmd;
-        cmd.x = (int16_t)(pScreen->xOrigin + x);
-        cmd.y = (int16_t)(pScreen->yOrigin + y);
-        cmd.w = (uint16_t)w;
-        cmd.h = (uint16_t)h;
+    VBVACMDHDR cmd;
+    cmd.x = (int16_t)(pScreen->xOrigin + x);
+    cmd.y = (int16_t)(pScreen->yOrigin + y);
+    cmd.w = (uint16_t)w;
+    cmd.h = (uint16_t)h;
 
-        pThis->pDrv->pfnVBVAUpdateBegin(pThis->pDrv, pScreen->idScreen);
-        pThis->pDrv->pfnVBVAUpdateProcess(pThis->pDrv, pScreen->idScreen, &cmd, sizeof(cmd));
-        pThis->pDrv->pfnVBVAUpdateEnd(pThis->pDrv, pScreen->idScreen,
-                                      pScreen->xOrigin + x, pScreen->yOrigin + y, w, h);
-    }
+    pThis->pDrv->pfnVBVAUpdateBegin(pThis->pDrv, pScreen->idScreen);
+    pThis->pDrv->pfnVBVAUpdateProcess(pThis->pDrv, pScreen->idScreen, &cmd, sizeof(cmd));
+    pThis->pDrv->pfnVBVAUpdateEnd(pThis->pDrv, pScreen->idScreen,
+                                  pScreen->xOrigin + x, pScreen->yOrigin + y, w, h);
 
     return VINF_SUCCESS;
 }
