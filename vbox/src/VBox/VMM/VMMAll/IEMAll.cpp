@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 76003 2018-12-06 08:48:17Z vboxsync $ */
+/* $Id: IEMAll.cpp 76004 2018-12-06 09:06:02Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -14005,7 +14005,8 @@ DECLINLINE(VBOXSTRICTRC) iemExecOneInner(PVMCPU pVCpu, bool fExecuteInhibit, con
      * If any of these causes a VM-exit, we must skip executing the next
      * instruction (so we set fExecuteInhibit to false).
      */
-    if (CPUMIsGuestInVmxNonRootMode(IEM_GET_CTX(pVCpu)))
+    if (   rcStrict == VINF_SUCCESS
+        && CPUMIsGuestInVmxNonRootMode(IEM_GET_CTX(pVCpu)))
     {
         /* TPR-below threshold/APIC write has the highest priority. */
         if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_VMX_APIC_WRITE))
