@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 75779 2018-11-27 22:37:39Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 76437 2018-12-24 13:21:46Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -60,6 +60,7 @@
 #include "VBoxGuestInternal.h"
 #include <VBox/version.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/initterm.h>
 #include <iprt/log.h>
 #include <iprt/memobj.h>
