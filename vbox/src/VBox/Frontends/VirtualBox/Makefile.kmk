@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 74740 2018-10-10 12:50:25Z vboxsync $
+# $Id: Makefile.kmk 74853 2018-10-15 18:36:00Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -338,6 +338,7 @@ endif
 #
 VBOX_GUI_INC_DIRS = \
 	./src \
+	./src/cloud \
 	./src/converter \
 	./src/extensions \
 	./src/extensions/graphics \
@@ -679,6 +680,8 @@ endif
 # Headers containing definitions of classes that use the Q_OBJECT macro.
 #
 VirtualBox_QT_MOCHDRS = \
+	src/cloud/UICloudProfileDetailsWidget.h \
+	src/cloud/UICloudProfileManager.h \
 	src/globals/UIStarter.h \
 	src/hostnetwork/UIHostNetworkDetailsWidget.h \
 	src/hostnetwork/UIHostNetworkManager.h \
@@ -1370,6 +1373,8 @@ endif
 #
 VirtualBox_SOURCES = \
 	src/main.cpp \
+	src/cloud/UICloudProfileDetailsWidget.cpp \
+	src/cloud/UICloudProfileManager.cpp \
 	src/globals/UIStarter.cpp \
 	src/hostnetwork/UIHostNetworkDetailsWidget.cpp \
 	src/hostnetwork/UIHostNetworkManager.cpp \
