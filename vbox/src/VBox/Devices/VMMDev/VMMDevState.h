@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 75500 2018-11-16 01:24:39Z vboxsync $ */
+/* $Id: VMMDevState.h 75520 2018-11-16 16:06:57Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -30,6 +30,15 @@
 #include <iprt/list.h>
 
 #define VMMDEV_WITH_ALT_TIMESYNC
+
+/** Request locking structure (HGCM optimization). */
+typedef struct VMMDEVREQLOCK
+{
+    void          *pvReq;
+    PGMPAGEMAPLOCK Lock;
+} VMMDEVREQLOCK;
+/** Pointer to a request lock structure. */
+typedef VMMDEVREQLOCK *PVMMDEVREQLOCK;
 
 typedef struct DISPLAYCHANGEREQUEST
 {
