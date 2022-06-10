@@ -1,4 +1,4 @@
-# $Id: Config.kmk 75617 2018-11-20 11:59:31Z vboxsync $
+# $Id: Config.kmk 75624 2018-11-20 16:38:51Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2276,8 +2276,14 @@ ifeq ($(KBUILD_TARGET),darwin)
   endif
  endif
  ifdef VBOX_WITH_NEW_XCODE
-   override TOOL_StandardDTrace_DTRACE := $(TOOL_$(VBOX_GCC_TOOL)_ENV_SETUP) dtrace "-xcpppath=$(VBOX_PATH_MACOSX_DEVEL_ROOT)/usr/bin/gcc"
-   export PATH:=$(VBOX_PATH_MACOSX_SDK)/usr/bin:$(PATH)
+  # For MacOS Mojave (and probably newer) we need a more recent XCode from the system.
+  # So just drop the tool environment and use the system's XCode instead.
+  TOOL_StandardDTrace_DTRACE_ENV_SETUP:=
+  if $(KBUILD_HOST_VERSION_MAJOR) < 18 # (OS X 10.14 Mojave)
+   TOOL_StandardDTrace_DTRACE_ENV_SETUP=$(TOOL_$(VBOX_GCC_TOOL)_ENV_SETUP)
+  endif
+  override TOOL_StandardDTrace_DTRACE := dtrace $(TOOL_StandardDTrace_DTRACE_ENV_SETUP) "-xcpppath=$(VBOX_PATH_MACOSX_DEVEL_ROOT)/usr/bin/gcc"
+  export PATH:=$(VBOX_PATH_MACOSX_SDK)/usr/bin:$(PATH)
  else
   if  $(VBOX_XCODE_VERSION_MAJOR) > 4 || ($(VBOX_XCODE_VERSION_MAJOR) == 4 && $(VBOX_XCODE_VERSION_MINOR) >= 2)
    TOOL_GXX4MACHO_PREFIX ?= llvm-
@@ -7476,7 +7482,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75617 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 75624 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
