@@ -1,5 +1,5 @@
 #include <signal.h>
-/* $Id: VBoxManageDisk.cpp 77606 2019-03-08 02:55:07Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 77608 2019-03-08 04:01:48Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -324,7 +324,7 @@ RTEXITCODE handleCreateMedium(HandlerArg *a)
                 PMEDIUMPROPERTY pNewProp = (PMEDIUMPROPERTY)RTMemAlloc(sizeof(MEDIUMPROPERTY));
                 if (!pNewProp)
                     return errorArgument("Can't allocate memory for property '%s'", ValueUnion.psz);
-                int cbKvp = RTStrNLen(ValueUnion.psz, PROP_MAXLEN);
+                size_t cbKvp = RTStrNLen(ValueUnion.psz, PROP_MAXLEN);
                 char *cp;
                 for (cp = (char *)ValueUnion.psz; *cp != '=' && cp < ValueUnion.psz + cbKvp; cp++)
                     continue;
