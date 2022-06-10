@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-usbip.cpp 75582 2018-11-19 17:02:46Z vboxsync $ */
+/* $Id: USBProxyDevice-usbip.cpp 75583 2018-11-19 17:17:45Z vboxsync $ */
 /** @file
  * USB device proxy - USB/IP backend.
  */
@@ -571,31 +571,6 @@ DECLINLINE(void) usbProxyUsbIpExportedDeviceN2H(PUsbIpExportedDevice pDevice)
     pDevice->u16VendorId  = RT_N2H_U16(pDevice->u16VendorId);
     pDevice->u16ProductId = RT_N2H_U16(pDevice->u16ProductId);
     pDevice->u16BcdDevice = RT_N2H_U16(pDevice->u16BcdDevice);
-}
-
-/**
- * Converts a USB/IP status code to a VBox status code.
- *
- * @returns VUSB status code.
- * @param   i32Status    The USB/IP status code from the reply.
- */
-DECLINLINE(int) usbProxyUsbIpStatusConvertFromStatus(int32_t i32Status)
-{
-    if (RT_LIKELY(   i32Status == USBIP_STATUS_SUCCESS
-                  || i32Status == USBIP_STATUS_SHORT_READ))
-        return VINF_SUCCESS;
-
-    switch (i32Status)
-    {
-        case USBIP_STATUS_PIPE_STALLED:
-            return VINF_SUCCESS;
-        case USBIP_STATUS_URB_UNLINKED:
-            return VERR_TRY_AGAIN;
-        default:
-            LogFlowFunc(("i32Status=%d\n", i32Status));
-            return VERR_INVALID_STATE;
-    }
-    /* not reached */
 }
 
 /**
