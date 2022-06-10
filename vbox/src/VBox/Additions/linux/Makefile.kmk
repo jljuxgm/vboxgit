@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 75892 2018-12-03 11:30:59Z vboxsync $
+# $Id: Makefile.kmk 76317 2018-12-20 15:44:06Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -366,12 +366,8 @@ if   defined(VBOX_WITH_TESTCASES) \
  && "$(KBUILD_TARGET)" == "linux" \
  && "$(KBUILD_HOST_ARCH)" == "$(KBUILD_TARGET_ARCH)"
  ifneq ($(KERN_DIR),)
-  use_symvers = vboxguest-src
-  module      = vboxsf-src
-  $(evalcall2 VBOX_LINUX_GENERATE_KMOD_TEST)
-  use_symvers =
-  module      = vboxvideo-src
-  $(evalcall2 VBOX_LINUX_GENERATE_KMOD_TEST)
+  $(evalcall2 VBOX_LINUX_KMOD_TEST_BUILD_RULE_FN,vboxsf-src,vboxguest-src,)
+  $(evalcall2 VBOX_LINUX_KMOD_TEST_BUILD_RULE_FN,vboxvideo-src,,)
  endif
 endif
 
