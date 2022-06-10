@@ -1,4 +1,4 @@
-/* $Id: UITools.h 74249 2018-09-13 16:24:26Z vboxsync $ */
+/* $Id: UITools.h 74265 2018-09-14 13:42:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITools class declaration.
  */
@@ -41,6 +41,7 @@ enum UIToolsClass
 /** Item types. */
 enum UIToolsType
 {
+    UIToolsType_Invalid,
     /* Global class: */
     UIToolsType_Media,
     UIToolsType_Network,
@@ -48,8 +49,6 @@ enum UIToolsType
     UIToolsType_Details,
     UIToolsType_Snapshots,
     UIToolsType_Logs,
-    /* Max */
-    UIToolsType_Max
 };
 
 

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 72030 2018-04-26 08:34:29Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 74265 2018-09-14 13:42:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -317,6 +317,11 @@ public:
         QList<ToolTypeGlobal> selectorWindowToolsOrderGlobal();
         /** Defines selector-window global tools @a aOrder. */
         void setSelectorWindowToolsOrderGlobal(const QList<ToolTypeGlobal> &aOrder);
+
+        /** Returns last selected tool set of VirtualBox Manager. */
+        QString toolsPaneLastItemsChosen();
+        /** Defines last selected tool @a strSet of VirtualBox Manager. */
+        void setToolsPaneLastItemsChosen(const QString &strSet);
 
         /** Returns whether selector-window status-bar visible. */
         bool selectorWindowStatusBarVisible();

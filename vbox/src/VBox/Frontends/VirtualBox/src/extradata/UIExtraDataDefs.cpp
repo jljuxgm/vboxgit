@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 72030 2018-04-26 08:34:29Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 74265 2018-09-14 13:42:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -91,6 +91,7 @@ const char *UIExtraDataDefs::GUI_Toolbar = "GUI/Toolbar";
 const char *UIExtraDataDefs::GUI_Toolbar_Text = "GUI/Toolbar/Text";
 const char *UIExtraDataDefs::GUI_Toolbar_MachineTools_Order = "GUI/Toolbar/MachineTools/Order";
 const char *UIExtraDataDefs::GUI_Toolbar_GlobalTools_Order = "GUI/Toolbar/GlobalTools/Order";
+const char *UIExtraDataDefs::GUI_Tools_LastItemsSelected = "GUI/Tools/LastItemsSelected";
 const char *UIExtraDataDefs::GUI_Statusbar = "GUI/Statusbar";
 const char *UIExtraDataDefs::GUI_GroupDefinitions = "GUI/GroupDefinitions";
 const char *UIExtraDataDefs::GUI_LastItemSelected = "GUI/LastItemSelected";

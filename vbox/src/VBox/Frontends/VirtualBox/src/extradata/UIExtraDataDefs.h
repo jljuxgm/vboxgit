@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 73841 2018-08-22 17:13:17Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 74265 2018-09-14 13:42:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -150,6 +150,8 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_Toolbar_MachineTools_Order;
         /** Holds the selector-window global tools order. */
         SHARED_LIBRARY_STUFF extern const char *GUI_Toolbar_GlobalTools_Order;
+        /** Holds the last selected tool set of VirtualBox Manager. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_Tools_LastItemsSelected;
         /** Holds whether selector-window status-bar visible. */
         SHARED_LIBRARY_STUFF extern const char *GUI_Statusbar;
         /** Prefix used by composite extra-data keys,
