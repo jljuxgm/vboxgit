@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.cpp 77020 2019-01-28 13:56:44Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.cpp 77076 2019-01-31 13:50:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class implementation.
  */
@@ -192,6 +192,7 @@ void UIGraphicsScrollBar::setMinimum(int iMinimum)
         m_iMaximum = m_iMinimum;
     if (m_iValue < m_iMinimum)
         m_iValue = m_iMinimum;
+    layoutToken();
 }
 
 void UIGraphicsScrollBar::setMaximum(int iMaximum)
@@ -201,6 +202,7 @@ void UIGraphicsScrollBar::setMaximum(int iMaximum)
         m_iMinimum = m_iMaximum;
     if (m_iValue > m_iMaximum)
         m_iValue = m_iMaximum;
+    layoutToken();
 }
 
 void UIGraphicsScrollBar::setValue(int iValue)
@@ -389,7 +391,7 @@ void UIGraphicsScrollBar::layoutButtons()
 void UIGraphicsScrollBar::layoutToken()
 {
     /* We calculating ratio on the basis of current/minimum/maximum values: */
-    const double dRatio = (double)(m_iValue - m_iMinimum) / (m_iMaximum - m_iMinimum);
+    const double dRatio = m_iMaximum > m_iMinimum ? (double)(m_iValue - m_iMinimum) / (m_iMaximum - m_iMinimum) : 0;
 
     /* Depending on orientation: */
     switch (m_enmOrientation)
