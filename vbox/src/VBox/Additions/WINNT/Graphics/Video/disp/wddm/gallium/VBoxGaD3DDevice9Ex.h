@@ -1,4 +1,4 @@
-/* $Id: VBoxGaD3DDevice9Ex.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxGaD3DDevice9Ex.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface.
  *
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxGaD3DDevice9Ex_h__
-#define ___VBoxGaD3DDevice9Ex_h__
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_gallium_VBoxGaD3DDevice9Ex_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_gallium_VBoxGaD3DDevice9Ex_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -200,4 +200,4 @@ class GaDirect3DDevice9Ex: public IGaDirect3DDevice9Ex
         IDirect3DDevice9Ex *mpDevice;
 };
 
-#endif
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_gallium_VBoxGaD3DDevice9Ex_h */

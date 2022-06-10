@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DBase.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDispD3DBase.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D Base Include
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxDispD3DBase_h
-#define ___VBoxDispD3DBase_h
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxDispD3DBase_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxDispD3DBase_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -32,5 +32,5 @@
 #include <D3dumddi.h>
 #include <d3dhal.h>
 
-#endif
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxDispD3DBase_h */
 

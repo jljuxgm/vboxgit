@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxVRDP.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxVRDP - VRDP notification
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __VBOXSERVICEVRDP__H
-#define __VBOXSERVICEVRDP__H
+#ifndef GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxVRDP_h
+#define GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxVRDP_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -26,4 +26,4 @@ int                VBoxVRDPInit    (const VBOXSERVICEENV *pEnv, void **ppInstanc
 unsigned __stdcall VBoxVRDPThread  (void *pInstance);
 void               VBoxVRDPDestroy (const VBOXSERVICEENV *pEnv, void *pInstance);
 
-#endif /* !__VBOXSERVICEVRDP__H */
+#endif /* !GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxVRDP_h */

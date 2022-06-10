@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDDraw.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDispDDraw.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver, direct draw callbacks
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOXDISPDDRAW_H
-#define VBOXDISPDDRAW_H
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_xpdm_VBoxDispDDraw_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_xpdm_VBoxDispDDraw_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -44,4 +44,4 @@ DWORD APIENTRY VBoxDispDDSetOverlayPosition(PDD_SETOVERLAYPOSITIONDATA lpSetOver
 DWORD APIENTRY VBoxDispDDUpdateOverlay(PDD_UPDATEOVERLAYDATA lpUpdateOverlay);
 #endif
 
-#endif /*!VBOXDISPDDRAW_H*/
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_xpdm_VBoxDispDDraw_h */

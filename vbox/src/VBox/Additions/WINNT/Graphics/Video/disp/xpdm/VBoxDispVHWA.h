@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVHWA.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDispVHWA.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver, helper functions which interacts with our miniport driver
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOXDISPVHWA_H
-#define VBOXDISPVHWA_H
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_xpdm_VBoxDispVHWA_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_xpdm_VBoxDispVHWA_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -131,5 +131,5 @@ uint32_t VBoxDispVHWASupportedDDSCAPS(uint32_t caps);
 uint32_t VBoxDispVHWASupportedDDPFS(uint32_t caps);
 uint32_t VBoxDispVHWASupportedDDCEYCAPS(uint32_t caps);
 
-#endif /* !VBOXDISPVHWA_H */
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_xpdm_VBoxDispVHWA_h */
 

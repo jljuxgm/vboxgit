@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCm.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMPCm.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxMPCm_h___
-#define ___VBoxMPCm_h___
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPCm_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPCm_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -60,4 +60,4 @@ NTSTATUS vboxVideoCmCmdVisit(PVBOXVIDEOCM_CTX pContext, BOOLEAN bEntireSession, 
 
 NTSTATUS vboxVideoCmEscape(PVBOXVIDEOCM_CTX pContext, PVBOXDISPIFESCAPE_GETVBOXVIDEOCMCMD pCmd, uint32_t cbCmd);
 
-#endif /* #ifndef ___VBoxMPCm_h___ */
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPCm_h */

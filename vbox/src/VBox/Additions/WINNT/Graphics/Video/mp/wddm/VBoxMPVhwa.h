@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVhwa.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMPVhwa.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxMPVhwa_h___
-#define ___VBoxMPVhwa_h___
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPVhwa_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPVhwa_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -74,4 +74,4 @@ BOOLEAN vboxVhwaHlpOverlayListIsEmpty(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESE
 void vboxVhwaHlpOverlayDstRectUnion(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID VidPnSourceId, RECT *pRect);
 void vboxVhwaHlpOverlayDstRectGet(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_OVERLAY pOverlay, RECT *pRect);
 
-#endif /* #ifndef ___VBoxMPVhwa_h___ */
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPVhwa_h */

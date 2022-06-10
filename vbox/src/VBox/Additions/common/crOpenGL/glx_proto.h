@@ -1,4 +1,4 @@
-/* $Id: glx_proto.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: glx_proto.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox guest OpenGL DRI GLX header C prototypes
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___CROPENGL_GLX_PROTO_H
-#define ___CROPENGL_GLX_PROTO_H
+#ifndef GA_INCLUDED_SRC_common_crOpenGL_glx_proto_h
+#define GA_INCLUDED_SRC_common_crOpenGL_glx_proto_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -146,4 +146,4 @@ typedef void (*PGLXFUNC_ReleaseTexImageEXT)(Display *dpy, GLXDrawable draw, int 
 
 #endif /* GLX_EXTRAS */
 
-#endif //___CROPENGL_GLX_PROTO_H
+#endif /* !GA_INCLUDED_SRC_common_crOpenGL_glx_proto_h */

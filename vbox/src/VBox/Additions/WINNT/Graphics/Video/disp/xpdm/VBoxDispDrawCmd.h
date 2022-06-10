@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDrawCmd.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDispDrawCmd.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOXDISPDRAWCMD_H
-#define VBOXDISPDRAWCMD_H
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_xpdm_VBoxDispDrawCmd_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_xpdm_VBoxDispDrawCmd_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -138,4 +138,4 @@ VBVA_DECL_OP(SaveScreenBits, (         \
 
 #undef VBVA_DECL_OP
 
-#endif /*VBOXDISPDRAWCMD_H*/
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_xpdm_VBoxDispDrawCmd_h */

@@ -1,4 +1,4 @@
-/* $Id: VirtioPci-solaris.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VirtioPci-solaris.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions: Virtio Driver for Solaris, PCI Hypervisor Interface.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VirtioPCI_solaris_h
-#define ___VirtioPCI_solaris_h
+#ifndef GA_INCLUDED_SRC_solaris_Virtio_VirtioPci_solaris_h
+#define GA_INCLUDED_SRC_solaris_Virtio_VirtioPci_solaris_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -34,5 +34,5 @@
 
 extern VIRTIOHYPEROPS g_VirtioHyperOpsPci;
 
-#endif
+#endif /* !GA_INCLUDED_SRC_solaris_Virtio_VirtioPci_solaris_h */
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxServiceControl.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxServiceControl_h
-#define ___VBoxServiceControl_h
+#ifndef GA_INCLUDED_SRC_common_VBoxService_VBoxServiceControl_h
+#define GA_INCLUDED_SRC_common_VBoxService_VBoxServiceControl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -330,5 +330,5 @@ extern int                      VGSvcGstCtrlProcessWait(const PVBOXSERVICECTRLPR
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !GA_INCLUDED_SRC_common_VBoxService_VBoxServiceControl_h */
 

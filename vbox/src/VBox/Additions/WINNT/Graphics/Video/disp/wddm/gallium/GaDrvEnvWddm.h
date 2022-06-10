@@ -1,4 +1,4 @@
-/* $Id: GaDrvEnvWddm.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GaDrvEnvWddm.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___GaDrvEnvWddm_h__
-#define ___GaDrvEnvWddm_h__
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_gallium_GaDrvEnvWddm_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_gallium_GaDrvEnvWddm_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -96,4 +96,4 @@ class GaDrvEnvWddm
                                                          void *pvMap);
 };
 
-#endif
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_gallium_GaDrvEnvWddm_h */

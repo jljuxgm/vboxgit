@@ -1,4 +1,4 @@
-/* $Id: VBoxMouse.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMouse.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxMouse; input_server add-on - Haiku Guest Additions, header.
  */
@@ -44,8 +44,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef __VBOXMOUSE__H
-#define __VBOXMOUSE__H
+#ifndef GA_INCLUDED_SRC_haiku_VBoxMouse_VBoxMouse_h
+#define GA_INCLUDED_SRC_haiku_VBoxMouse_VBoxMouse_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -77,5 +77,5 @@ class VBoxMouse : public BInputServerDevice
         bool                    fExiting;
 };
 
-#endif /* __VBOXMOUSE__H */
+#endif /* !GA_INCLUDED_SRC_haiku_VBoxMouse_VBoxMouse_h */
 

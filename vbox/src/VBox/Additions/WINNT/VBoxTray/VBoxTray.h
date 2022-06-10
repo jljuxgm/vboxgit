@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxTray.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBOXTRAY_H
-#define ___VBOXTRAY_H
+#ifndef GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxTray_h
+#define GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxTray_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -192,5 +192,5 @@ extern uint32_t     g_fGuestDisplaysChanged;
 
 RTEXITCODE VBoxTrayShowError(const char *pszFormat, ...);
 
-#endif /* !___VBOXTRAY_H */
+#endif /* !GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxTray_h */
 

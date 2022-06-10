@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMPVidPn.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxMPVidPn_h___
-#define ___VBoxMPVidPn_h___
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPVidPn_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPVidPn_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -373,4 +373,4 @@ NTSTATUS VBoxVidPnIsSupported(PVBOXMP_DEVEXT pDevExt, D3DKMDT_HVIDPN hVidPn, BOO
 
 NTSTATUS VBoxVidPnUpdateModes(PVBOXMP_DEVEXT pDevExt, uint32_t u32TargetId, const RTRECTSIZE *pSize);
 
-#endif /* #ifndef ___VBoxMPVidPn_h___ */
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPVidPn_h */

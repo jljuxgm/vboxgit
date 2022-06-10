@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaUtils.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMPGaUtils.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver miscellaneous helpers and common includes.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxMPGaUtils_h__
-#define ___VBoxMPGaUtils_h__
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_VBoxMPGaUtils_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_VBoxMPGaUtils_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -54,4 +54,4 @@ NTSTATUS GaIdFree(uint32_t *pu32Bits,
                   uint32_t u32Limit,
                   uint32_t u32Id);
 
-#endif
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_VBoxMPGaUtils_h */

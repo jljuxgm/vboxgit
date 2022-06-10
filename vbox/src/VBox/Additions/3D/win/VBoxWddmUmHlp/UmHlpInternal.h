@@ -1,4 +1,4 @@
-/* $Id: UmHlpInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: UmHlpInternal.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox WDDM User Mode Driver Helpers
  */
@@ -15,12 +15,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___UmHlpInternal_h__
-#define ___UmHlpInternal_h__
+#ifndef GA_INCLUDED_SRC_3D_win_VBoxWddmUmHlp_UmHlpInternal_h
+#define GA_INCLUDED_SRC_3D_win_VBoxWddmUmHlp_UmHlpInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
 
 #include "VBoxWddmUmHlp.h"
 
-#endif
+#endif /* !GA_INCLUDED_SRC_3D_win_VBoxWddmUmHlp_UmHlpInternal_h */

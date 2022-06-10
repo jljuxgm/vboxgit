@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMPGaWddm.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxMPGaWddm_h__
-#define ___VBoxMPGaWddm_h__
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_VBoxMPGaWddm_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_VBoxMPGaWddm_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -86,4 +86,4 @@ DECLINLINE(bool) GaContextHwTypeIs(PVBOXWDDM_CONTEXT pContext, VBOXVIDEO_HWTYPE 
     return (pContext && pContext->pDevice->pAdapter->enmHwType == enmHwType);
 }
 
-#endif
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_VBoxMPGaWddm_h */

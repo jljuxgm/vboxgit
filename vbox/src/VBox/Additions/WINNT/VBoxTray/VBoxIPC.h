@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxIPC.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __VBOXTRAYIPCSERVER__H
-#define __VBOXTRAYIPCSERVER__H
+#ifndef GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxIPC_h
+#define GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxIPC_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -28,4 +28,4 @@ unsigned __stdcall VBoxIPCWorker  (void *pInstance);
 void               VBoxIPCStop    (const VBOXSERVICEENV *pEnv, void *pInstance);
 void               VBoxIPCDestroy (const VBOXSERVICEENV *pEnv, void *pInstance);
 
-#endif /* !__VBOXTRAYIPCSERVER__H */
+#endif /* !GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxIPC_h */

@@ -1,4 +1,4 @@
-/* $Id: vbsfhlp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vbsfhlp.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver helpers
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __VBSFHLP__H
-#define __VBSFHLP__H
+#ifndef GA_INCLUDED_SRC_WINNT_SharedFolders_driver_vbsfhlp_h
+#define GA_INCLUDED_SRC_WINNT_SharedFolders_driver_vbsfhlp_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -68,5 +68,5 @@ PCHAR MajorFunctionString(UCHAR MajorFunction, LONG MinorFunction);
 
 NTSTATUS vbsfShflStringFromUnicodeAlloc(PSHFLSTRING *ppShflString, const WCHAR *pwc, uint16_t cb);
 
-#endif /* !__VBSFHLP__H */
+#endif /* !GA_INCLUDED_SRC_WINNT_SharedFolders_driver_vbsfhlp_h */
 

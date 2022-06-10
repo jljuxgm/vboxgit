@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxMPTypes_h___
-#define ___VBoxMPTypes_h___
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPTypes_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPTypes_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -370,4 +370,4 @@ typedef struct VBOXWDDM_VMODES
     uint64_t aPendingRemoveCurResolutions[VBOX_VIDEO_MAX_SCREENS];
 } VBOXWDDM_VMODES;
 
-#endif /* #ifndef ___VBoxMPTypes_h___ */
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPTypes_h */

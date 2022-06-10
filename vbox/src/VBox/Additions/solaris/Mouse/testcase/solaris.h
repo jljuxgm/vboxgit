@@ -1,4 +1,4 @@
-/* $Id: solaris.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: solaris.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver for Solaris - testcase stubs.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxGuestTestCaseSolaris_h
-#define ___VBoxGuestTestCaseSolaris_h
+#ifndef GA_INCLUDED_SRC_solaris_Mouse_testcase_solaris_h
+#define GA_INCLUDED_SRC_solaris_Mouse_testcase_solaris_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -441,4 +441,4 @@ static inline unsigned getmajor(dev_t device)
 
 /* API stubs with controllable logic */
 
-#endif  /* ___VBoxGuestTestCaseSolaris_h */
+#endif /* !GA_INCLUDED_SRC_solaris_Mouse_testcase_solaris_h */

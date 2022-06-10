@@ -1,4 +1,4 @@
-/* $Id: kernel_cpp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: kernel_cpp.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * Kernel C++, Haiku private.
  */
@@ -24,8 +24,8 @@
  * Distributed under the terms of the MIT License.
  */
 
-#ifndef KERNEL_CPP_H
-#define KERNEL_CPP_H
+#ifndef GA_INCLUDED_SRC_haiku_SharedFolders_kernel_cpp_h
+#define GA_INCLUDED_SRC_haiku_SharedFolders_kernel_cpp_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -109,4 +109,4 @@ operator delete[](void *ptr) throw ()
 
 #endif  // __cplusplus
 
-#endif  /* KERNEL_CPP_H */
+#endif /* !GA_INCLUDED_SRC_haiku_SharedFolders_kernel_cpp_h */

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxServiceInternal_h
-#define ___VBoxServiceInternal_h
+#ifndef GA_INCLUDED_SRC_common_VBoxService_VBoxServiceInternal_h
+#define GA_INCLUDED_SRC_common_VBoxService_VBoxServiceInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -248,5 +248,5 @@ extern int                      VGSvcVMInfoSignal(void);
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !GA_INCLUDED_SRC_common_VBoxService_VBoxServiceInternal_h */
 

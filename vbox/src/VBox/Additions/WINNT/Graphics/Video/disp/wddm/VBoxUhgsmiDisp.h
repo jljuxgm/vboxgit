@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiDisp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxUhgsmiDisp.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxUhgsmiDisp_h__
-#define ___VBoxUhgsmiDisp_h__
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxUhgsmiDisp_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxUhgsmiDisp_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -34,4 +34,4 @@ void vboxUhgsmiD3DInit(PVBOXUHGSMI_PRIVATE_D3D pHgsmi, struct VBOXWDDMDISP_DEVIC
 
 void vboxUhgsmiD3DEscInit(PVBOXUHGSMI_PRIVATE_D3D pHgsmi, struct VBOXWDDMDISP_DEVICE *pDevice);
 
-#endif /* #ifndef ___VBoxUhgsmiDisp_h__ */
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxUhgsmiDisp_h */

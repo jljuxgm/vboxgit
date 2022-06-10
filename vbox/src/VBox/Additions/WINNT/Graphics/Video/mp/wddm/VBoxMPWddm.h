@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxMPWddm_h___
-#define ___VBoxMPWddm_h___
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPWddm_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPWddm_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -218,5 +218,5 @@ BOOLEAN DxgkDdiInterruptRoutineNew(
         KeReleaseSpinLock(&(_p)->ContextLock, _ctxLockOldIrql); \
     } while (0)
 
-#endif /* #ifndef ___VBoxMPWddm_h___ */
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPWddm_h */
 

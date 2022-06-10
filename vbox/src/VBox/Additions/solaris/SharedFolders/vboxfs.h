@@ -1,4 +1,4 @@
-/* $Id: vboxfs.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vboxfs.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Internal Header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxVFS_Solaris_h
-#define ___VBoxVFS_Solaris_h
+#ifndef GA_INCLUDED_SRC_solaris_SharedFolders_vboxfs_h
+#define GA_INCLUDED_SRC_solaris_SharedFolders_vboxfs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -92,5 +92,5 @@ extern void vboxvfs_InitVNode(vboxvfs_globinfo_t *pVBoxVFSGlobalInfo, vboxvfs_vn
 }
 #endif
 
-#endif /* !___VBoxVFS_Solaris_h */
+#endif /* !GA_INCLUDED_SRC_solaris_SharedFolders_vboxfs_h */
 

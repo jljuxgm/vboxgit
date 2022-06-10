@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxClient.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___vboxclient_vboxclient_h
-#define ___vboxclient_vboxclient_h
+#ifndef GA_INCLUDED_SRC_x11_VBoxClient_VBoxClient_h
+#define GA_INCLUDED_SRC_x11_VBoxClient_VBoxClient_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -85,4 +85,4 @@ extern struct VBCLSERVICE **VBClCheck3DService();
 extern struct VBCLSERVICE **VBClDisplaySVGAService();
 extern struct VBCLSERVICE **VBClDisplaySVGAX11Service();
 
-#endif /* !___vboxclient_vboxclient_h */
+#endif /* !GA_INCLUDED_SRC_x11_VBoxClient_VBoxClient_h */

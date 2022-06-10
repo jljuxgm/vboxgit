@@ -1,4 +1,4 @@
-/* $Id: vboxfs_prov.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vboxfs_prov.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider header.
  * Portions contributed by: Ronald.
@@ -25,8 +25,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxFS_prov_Solaris_h
-#define ___VBoxFS_prov_Solaris_h
+#ifndef GA_INCLUDED_SRC_solaris_SharedFolders_vboxfs_prov_h
+#define GA_INCLUDED_SRC_solaris_SharedFolders_vboxfs_prov_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -186,5 +186,5 @@ extern int sfprov_readdir(sfp_mount_t *mnt, char *path,
 }
 #endif
 
-#endif	/* !___VBoxFS_prov_Solaris_h */
+#endif /* !GA_INCLUDED_SRC_solaris_SharedFolders_vboxfs_prov_h */
 

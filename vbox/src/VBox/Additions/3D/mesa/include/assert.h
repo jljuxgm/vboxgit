@@ -1,4 +1,4 @@
-/* $Id: assert.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: assert.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * Replaces C runtime assert with a simplified version which just hits breakpoint.
  *
@@ -19,8 +19,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBox_Mesa_Assert_h__
-#define ___VBox_Mesa_Assert_h__
+#ifndef GA_INCLUDED_3D_MESA_assert_h
+#define GA_INCLUDED_3D_MESA_assert_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -30,4 +30,4 @@
 #undef assert
 #define assert(_e) (void)( (!!(_e)) || (ASMBreakpoint(), 0) )
 
-#endif
+#endif /* !GA_INCLUDED_3D_MESA_assert_h */

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibInternal.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: VBoxGuestR0LibInternal.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -28,8 +28,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef ___VBoxGuestLib_VBoxGuestR0LibInternal_h
-#define ___VBoxGuestLib_VBoxGuestR0LibInternal_h
+#ifndef GA_INCLUDED_SRC_common_VBoxGuest_lib_VBoxGuestR0LibInternal_h
+#define GA_INCLUDED_SRC_common_VBoxGuest_lib_VBoxGuestR0LibInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -198,5 +198,5 @@ int VBOXCALL vbglR0QueryIdcHandle(PVBGLIDCHANDLE *ppIdcHandle);
 
 RT_C_DECLS_END
 
-#endif /* !___VBoxGuestLib_VBoxGuestR0LibInternal_h */
+#endif /* !GA_INCLUDED_SRC_common_VBoxGuest_lib_VBoxGuestR0LibInternal_h */
 

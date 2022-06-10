@@ -1,4 +1,4 @@
-/* $Id: git_sha1.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: git_sha1.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * Provides this include file for Mesa.
  *
@@ -17,12 +17,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBox_Mesa_git_sha1_h__
-#define ___VBox_Mesa_git_sha1_h__
+#ifndef GA_INCLUDED_3D_MESA_git_sha1_h
+#define GA_INCLUDED_3D_MESA_git_sha1_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
 
 /* Nothing. */
 
-#endif
+#endif /* !GA_INCLUDED_3D_MESA_git_sha1_h */

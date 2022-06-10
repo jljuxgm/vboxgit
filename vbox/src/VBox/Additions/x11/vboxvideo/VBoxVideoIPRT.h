@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoIPRT.h 76558 2019-01-01 02:51:45Z vboxsync $ */
+/* $Id: VBoxVideoIPRT.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /*
  * Copyright (C) 2017-2019 Oracle Corporation
  *
@@ -234,4 +234,4 @@ typedef struct RTRECTSIZE
 
 /** @}  */
 
-#endif
+#endif /* !VBOX_INCLUDED_Graphics_VBoxVideoIPRT_h */

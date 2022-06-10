@@ -1,4 +1,4 @@
-/* $Id: SvgaCmd.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: SvgaCmd.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA command encoders.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___SvgaCmd_h__
-#define ___SvgaCmd_h__
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_SvgaCmd_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_SvgaCmd_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -61,4 +61,4 @@ void Svga3dCmdBlitSurfaceToScreen(void *pvCmd, uint32_t sid,
                                   uint32_t cDstClipRects,
                                   RECT const *paDstClipRects);
 
-#endif
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_SvgaCmd_h */

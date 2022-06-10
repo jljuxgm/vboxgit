@@ -1,4 +1,4 @@
-/* $Id: dri_glx.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: dri_glx.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 
 /** @file
  *
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___CROPENGL_DRI_GLX_H
-#define ___CROPENGL_DRI_GLX_H
+#ifndef GA_INCLUDED_SRC_common_crOpenGL_dri_glx_h
+#define GA_INCLUDED_SRC_common_crOpenGL_dri_glx_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -162,4 +162,4 @@ extern DECLEXPORT(void) VBOXGLXTAG(glXReleaseTexImageEXT)(Display *dpy, GLXDrawa
 
 #endif /* GLX_EXTRAS */
 
-#endif //___CROPENGL_DRI_GLX_H
+#endif /* !GA_INCLUDED_SRC_common_crOpenGL_dri_glx_h */

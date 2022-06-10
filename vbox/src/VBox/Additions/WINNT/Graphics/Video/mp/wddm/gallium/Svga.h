@@ -1,4 +1,4 @@
-/* $Id: Svga.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Svga.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver VMSVGA.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___Svga_h__
-#define ___Svga_h__
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_Svga_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_Svga_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -290,4 +290,4 @@ NTSTATUS SvgaRegionDestroy(VBOXWDDM_EXT_VMSVGA *pSvga,
 void SvgaRegionsDestroy(VBOXWDDM_EXT_VMSVGA *pSvga,
                         void *pvOwner);
 
-#endif
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_gallium_Svga_h */

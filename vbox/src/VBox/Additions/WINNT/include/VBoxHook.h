@@ -1,4 +1,4 @@
-/* $Id: VBoxHook.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxHook.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxHook -- Global windows hook dll.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___winnt_include_VBoxHook_h
-#define ___winnt_include_VBoxHook_h
+#ifndef GA_INCLUDED_WINNT_VBoxHook_h
+#define GA_INCLUDED_WINNT_VBoxHook_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -40,5 +40,5 @@ BOOL VBoxHookRemoveActiveDesktopTracker();
 BOOL VBoxHookInstallWindowTracker(HMODULE hDll);
 BOOL VBoxHookRemoveWindowTracker();
 
-#endif
+#endif /* !GA_INCLUDED_WINNT_VBoxHook_h */
 

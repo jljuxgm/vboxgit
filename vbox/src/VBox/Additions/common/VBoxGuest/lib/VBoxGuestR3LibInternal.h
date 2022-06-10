@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibInternal.h 76557 2019-01-01 02:37:24Z vboxsync $ */
+/* $Id: VBoxGuestR3LibInternal.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxGuestR3LibInternal_h
-#define ___VBoxGuestR3LibInternal_h
+#ifndef GA_INCLUDED_SRC_common_VBoxGuest_lib_VBoxGuestR3LibInternal_h
+#define GA_INCLUDED_SRC_common_VBoxGuest_lib_VBoxGuestR3LibInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -115,5 +115,5 @@ DECLINLINE(void) VbglHGCMParmPtrSetString(HGCMFunctionParameter *pParm, const ch
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !GA_INCLUDED_SRC_common_VBoxGuest_lib_VBoxGuestR3LibInternal_h */
 

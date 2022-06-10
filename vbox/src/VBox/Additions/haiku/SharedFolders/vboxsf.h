@@ -1,4 +1,4 @@
-/* $Id: vboxsf.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vboxsf.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * Shared folders - Haiku Guest Additions, header.
  */
@@ -43,8 +43,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef ___vboxsf_h
-#define ___vboxsf_h
+#ifndef GA_INCLUDED_SRC_haiku_SharedFolders_vboxsf_h
+#define GA_INCLUDED_SRC_haiku_SharedFolders_vboxsf_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -106,5 +106,5 @@ extern mutex g_vnodeCacheLock;
 }
 #endif
 
-#endif /* ___vboxsf_h */
+#endif /* !GA_INCLUDED_SRC_haiku_SharedFolders_vboxsf_h */
 

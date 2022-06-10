@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedFolders.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxSharedFolders.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxSharedFolders - Handling for shared folders
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxSharedFolders_h
-#define ___VBoxSharedFolders_h
+#ifndef GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxSharedFolders_h
+#define GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxSharedFolders_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -24,4 +24,4 @@
 int VBoxSharedFoldersAutoUnmount(void);
 int VBoxSharedFoldersAutoMount(void);
 
-#endif /* !___VBoxSharedFolders_h */
+#endif /* !GA_INCLUDED_SRC_WINNT_VBoxTray_VBoxSharedFolders_h */

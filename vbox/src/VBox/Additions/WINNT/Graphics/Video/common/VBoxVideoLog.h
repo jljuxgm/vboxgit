@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoLog.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxVideoLog.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox Video drivers, logging helper
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOXVIDEOLOG_H
-#define VBOXVIDEOLOG_H
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_common_VBoxVideoLog_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_common_VBoxVideoLog_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -156,4 +156,4 @@
     } while (0)
 
 
-#endif /*VBOXVIDEOLOG_H*/
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_common_VBoxVideoLog_h */

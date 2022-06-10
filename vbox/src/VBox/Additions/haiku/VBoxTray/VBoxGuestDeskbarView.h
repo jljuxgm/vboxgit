@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestDeskbarView.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxGuestDeskbarView.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxGuestDeskbarView, Haiku Guest Additions, header.
  */
@@ -44,8 +44,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef ___VBOXGUESTTRAYVIEW__H
-#define ___VBOXGUESTTRAYVIEW__H
+#ifndef GA_INCLUDED_SRC_haiku_VBoxTray_VBoxGuestDeskbarView_h
+#define GA_INCLUDED_SRC_haiku_VBoxTray_VBoxGuestDeskbarView_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -95,5 +95,5 @@ class VBoxGuestDeskbarView : public BView
         VBoxDisplayService *fDisplayService;
 };
 
-#endif /* !___VBOXGUESTTRAYVIEW__H */
+#endif /* !GA_INCLUDED_SRC_haiku_VBoxTray_VBoxGuestDeskbarView_h */
 

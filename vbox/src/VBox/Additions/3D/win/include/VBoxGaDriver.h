@@ -1,4 +1,4 @@
-/* $Id: VBoxGaDriver.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxGaDriver.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxGaDriver_h__
-#define ___VBoxGaDriver_h__
+#ifndef GA_INCLUDED_3D_WIN_VBoxGaDriver_h
+#define GA_INCLUDED_3D_WIN_VBoxGaDriver_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -94,5 +94,5 @@ typedef FNGaDrvContextFlush *PFNGaDrvContextFlush;
 }
 #endif
 
-#endif
+#endif /* !GA_INCLUDED_3D_WIN_VBoxGaDriver_h */
 

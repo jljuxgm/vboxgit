@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCommon.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMPCommon.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox Miniport common functions used by XPDM/WDDM drivers
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOXMPCOMMON_H
-#define VBOXMPCOMMON_H
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_common_VBoxMPCommon_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_common_VBoxMPCommon_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -58,4 +58,4 @@ bool VBoxMPCmnUpdatePointerShape(PVBOXMP_COMMON pCommon, PVIDEO_POINTER_ATTRIBUT
 
 RT_C_DECLS_END
 
-#endif /*VBOXMPCOMMON_H*/
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_common_VBoxMPCommon_h */

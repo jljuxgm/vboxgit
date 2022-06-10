@@ -1,4 +1,4 @@
-/* $Id: vboxvfs.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vboxvfs.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * Description.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBOXVFS_H___
-#define ___VBOXVFS_H___
+#ifndef GA_INCLUDED_SRC_freebsd_vboxvfs_vboxvfs_h
+#define GA_INCLUDED_SRC_freebsd_vboxvfs_vboxvfs_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -91,5 +91,5 @@ struct sf_reg_info {
 
 #endif  /* KERNEL */
 
-#endif /* !___VBOXVFS_H___ */
+#endif /* !GA_INCLUDED_SRC_freebsd_vboxvfs_vboxvfs_h */
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMPInternal.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport internal header
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOXMPINTERNAL_H
-#define VBOXMPINTERNAL_H
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_xpdm_VBoxMPInternal_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_xpdm_VBoxMPInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -66,4 +66,4 @@ BOOLEAN VBoxMPHgsmiHandlerEnable(PVBOXMP_DEVEXT pExt, HGSMIHANDLERENABLE *pChann
 BOOLEAN VBoxMPVhwaQueryInfo(PVBOXMP_DEVEXT pExt, VHWAQUERYINFO *pInfo, PSTATUS_BLOCK pStatus);
 BOOLEAN VBoxMPQueryRegistryFlags(PVBOXMP_DEVEXT pExt, ULONG *pulFlags, PSTATUS_BLOCK pStatus);
 
-#endif /*VBOXMPINTERNAL_H*/
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_xpdm_VBoxMPInternal_h */

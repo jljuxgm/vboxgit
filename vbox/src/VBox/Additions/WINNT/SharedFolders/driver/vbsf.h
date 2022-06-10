@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vbsf.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBSF_H
-#define VBSF_H
+#ifndef GA_INCLUDED_SRC_WINNT_SharedFolders_driver_vbsf_h
+#define GA_INCLUDED_SRC_WINNT_SharedFolders_driver_vbsf_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -208,4 +208,4 @@ NTSTATUS vbsfCloseFileHandle(PMRX_VBOX_DEVICE_EXTENSION pDeviceExtension,
                              PMRX_VBOX_NETROOT_EXTENSION pNetRootExtension,
                              PMRX_VBOX_FOBX pVBoxFobx);
 
-#endif /* VBSF_H */
+#endif /* !GA_INCLUDED_SRC_WINNT_SharedFolders_driver_vbsf_h */

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPHGSMI.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMPHGSMI.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox Miniport HGSMI related header
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOXMPHGSMI_H
-#define VBOXMPHGSMI_H
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_common_VBoxMPHGSMI_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_common_VBoxMPHGSMI_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -28,4 +28,4 @@ void VBoxSetupDisplaysHGSMI(PVBOXMP_COMMON pCommon, PHYSICAL_ADDRESS phVRAM, uin
 void VBoxFreeDisplaysHGSMI(PVBOXMP_COMMON pCommon);
 RT_C_DECLS_END
 
-#endif /*!VBOXMPHGSMI_H*/
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_common_VBoxMPHGSMI_h */

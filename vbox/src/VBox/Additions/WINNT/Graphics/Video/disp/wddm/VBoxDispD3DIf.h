@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxDispD3DIf_h___
-#define ___VBoxDispD3DIf_h___
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxDispD3DIf_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxDispD3DIf_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -120,4 +120,4 @@ void VBoxDispD3DGlobal2DFormatsTerm(struct VBOXWDDMDISP_ADAPTER *pAdapter);
 void vboxDispCheckCapsLevel(const D3DCAPS9 *pCaps);
 #endif
 
-#endif /* ifndef ___VBoxDispD3DIf_h___ */
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxDispD3DIf_h */

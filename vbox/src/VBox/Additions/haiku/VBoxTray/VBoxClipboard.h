@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxClipboard.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxClipboard, Haiku Guest Additions, header.
  */
@@ -44,8 +44,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef __VBOXSERVICESHAREDCLIPLBOARD__H
-#define __VBOXSERVICESHAREDCLIPLBOARD__H
+#ifndef GA_INCLUDED_SRC_haiku_VBoxTray_VBoxClipboard_h
+#define GA_INCLUDED_SRC_haiku_VBoxTray_VBoxClipboard_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -74,5 +74,5 @@ class VBoxClipboardService : public BHandler
         bool                fExiting;
 };
 
-#endif /* __VBOXSERVICESHAREDCLIPLBOARD__H */
+#endif /* !GA_INCLUDED_SRC_haiku_VBoxTray_VBoxClipboard_h */
 

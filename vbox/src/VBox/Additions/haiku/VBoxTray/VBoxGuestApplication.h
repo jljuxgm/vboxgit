@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestApplication.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxGuestApplication.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxGuestApplication, Haiku Guest Additions, header.
  */
@@ -44,8 +44,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef ___VBOXGUESTAPPLICATION__H
-#define ___VBOXGUESTAPPLICATION__H
+#ifndef GA_INCLUDED_SRC_haiku_VBoxTray_VBoxGuestApplication_h
+#define GA_INCLUDED_SRC_haiku_VBoxTray_VBoxGuestApplication_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -75,5 +75,5 @@ class VBoxGuestApplication : public BApplication
         virtual void ReadyToRun();
 };
 
-#endif /* !___VBOXGUESTAPPLICATION__H */
+#endif /* !GA_INCLUDED_SRC_haiku_VBoxTray_VBoxGuestApplication_h */
 

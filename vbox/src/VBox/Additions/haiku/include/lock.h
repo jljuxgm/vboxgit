@@ -1,4 +1,4 @@
-/* $Id: lock.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: lock.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * Lock.h - Haiku, private locking internals.
  */
@@ -29,8 +29,8 @@
 /** @todo r=ramshankar: Eventually this file should be shipped by Haiku and
  *        should be removed from the VBox tree. */
 
-#ifndef _KERNEL_LOCK_H
-#define _KERNEL_LOCK_H
+#ifndef GA_INCLUDED_HAIKU_lock_h
+#define GA_INCLUDED_HAIKU_lock_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -305,4 +305,4 @@ extern void lock_debug_init();
 }
 #endif
 
-#endif  /* _KERNEL_LOCK_H */
+#endif /* !GA_INCLUDED_HAIKU_lock_h */

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Internal Header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxGuestInternal_h
-#define ___VBoxGuestInternal_h
+#ifndef GA_INCLUDED_SRC_common_VBoxGuest_VBoxGuestInternal_h
+#define GA_INCLUDED_SRC_common_VBoxGuest_VBoxGuestInternal_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -401,5 +401,5 @@ int VGDrvNativeSetMouseNotifyCallback(PVBOXGUESTDEVEXT pDevExt, PVBGLIOCSETMOUSE
 
 RT_C_DECLS_END
 
-#endif
+#endif /* !GA_INCLUDED_SRC_common_VBoxGuest_VBoxGuestInternal_h */
 

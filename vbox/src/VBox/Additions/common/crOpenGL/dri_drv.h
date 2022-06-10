@@ -1,4 +1,4 @@
-/* $Id: dri_drv.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: dri_drv.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 
 /** @file
  *
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___CROPENGL_DRIDRV_H
-#define ___CROPENGL_DRIDRV_H
+#ifndef GA_INCLUDED_SRC_common_crOpenGL_dri_drv_h
+#define GA_INCLUDED_SRC_common_crOpenGL_dri_drv_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -28,5 +28,5 @@
 #include "src/mesa/glapi/dispatch.h"
 #include "src/mesa/main/dd.h"
 
-#endif /* ___CROPENGL_DRIDRV_H */
+#endif /* !GA_INCLUDED_SRC_common_crOpenGL_dri_drv_h */
 

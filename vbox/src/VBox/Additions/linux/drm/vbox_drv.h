@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vbox_drv.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -33,8 +33,8 @@
  *          Hans de Goede <hdegoede@redhat.com>
  */
 
-#ifndef __VBOX_DRV_H__
-#define __VBOX_DRV_H__
+#ifndef GA_INCLUDED_SRC_linux_drm_vbox_drv_h
+#define GA_INCLUDED_SRC_linux_drm_vbox_drv_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -422,4 +422,4 @@ static inline void vbox_write_ioport(u16 index, u16 data)
 	outw(data, VBE_DISPI_IOPORT_DATA);
 }
 
-#endif
+#endif /* !GA_INCLUDED_SRC_linux_drm_vbox_drv_h */

@@ -1,4 +1,4 @@
-/* $Id: vboxfs_vnode.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vboxfs_vnode.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, VNode header.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxFS_node_Solaris_h
-#define ___VBoxFS_node_Solaris_h
+#ifndef GA_INCLUDED_SRC_solaris_SharedFolders_vboxfs_vnode_h
+#define GA_INCLUDED_SRC_solaris_SharedFolders_vboxfs_vnode_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -86,4 +86,4 @@ extern kmutex_t sffs_lock;
 }
 #endif
 
-#endif	/* !___VBoxFS_node_Solaris_h */
+#endif /* !GA_INCLUDED_SRC_solaris_SharedFolders_vboxfs_vnode_h */

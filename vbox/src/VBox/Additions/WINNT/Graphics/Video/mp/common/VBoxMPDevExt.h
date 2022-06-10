@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBox Miniport device extension header
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOXMPDEVEXT_H
-#define VBOXMPDEVEXT_H
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_common_VBoxMPDevExt_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_common_VBoxMPDevExt_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -304,4 +304,4 @@ DECLINLINE(bool) vboxWddmCmpSurfDescsBase(VBOXWDDM_SURFACE_DESC *pDesc1, VBOXWDD
 #endif
 #endif /*VBOX_WDDM_MINIPORT*/
 
-#endif /*VBOXMPDEVEXT_H*/
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_common_VBoxMPDevExt_h */

@@ -1,4 +1,4 @@
-/* $Id: seamless.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: seamless.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * X11 Guest client - seamless mode, missing proper description while using the
  * potentially confusing word 'host'.
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __Additions_client_seamless_host_h
-#define __Additions_client_seamless_host_h
+#ifndef GA_INCLUDED_SRC_x11_VBoxClient_seamless_h
+#define GA_INCLUDED_SRC_x11_VBoxClient_seamless_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -110,4 +110,4 @@ public:
     int selfTest();
 };
 
-#endif /* __Additions_xclient_seamless_h not defined */
+#endif /* !GA_INCLUDED_SRC_x11_VBoxClient_seamless_h */

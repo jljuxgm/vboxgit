@@ -1,4 +1,4 @@
-/* $Id: d3dhlp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: d3dhlp.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * Gallium D3D testcase. Various D3D helpers.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __D3DHLP__H
-#define __D3DHLP__H
+#ifndef GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_gallium_test_d3dhlp_h
+#define GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_gallium_test_d3dhlp_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -108,4 +108,4 @@ class D3DCamera
 HRESULT d3dCreateCubeTexture(IDirect3DDevice9 *pDevice, IDirect3DCubeTexture9 **ppCubeTexture);
 HRESULT d3dCreateCubeVertexBuffer(IDirect3DDevice9 *pDevice, float EdgeLength, IDirect3DVertexBuffer9 **ppVertexBuffer);
 
-#endif
+#endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_gallium_test_d3dhlp_h */

@@ -1,4 +1,4 @@
-/* $Id: VBoxVideo_common.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxVideo_common.h 76563 2019-01-01 03:53:56Z vboxsync $ */
 /** @file
  * VBoxVideo, Haiku Guest Additions, common header.
  */
@@ -44,8 +44,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef ___VBOXVIDEO_COMMON_H
-#define ___VBOXVIDEO_COMMON_H
+#ifndef GA_INCLUDED_SRC_haiku_VBoxVideo_common_VBoxVideo_common_h
+#define GA_INCLUDED_SRC_haiku_VBoxVideo_common_VBoxVideo_common_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -100,5 +100,5 @@ static inline uint32 get_depth_for_color_space(uint32 depth)
     return 0;
 }
 
-#endif /* ___VBOXVIDEO_COMMON_H */
+#endif /* !GA_INCLUDED_SRC_haiku_VBoxVideo_common_VBoxVideo_common_h */
 
