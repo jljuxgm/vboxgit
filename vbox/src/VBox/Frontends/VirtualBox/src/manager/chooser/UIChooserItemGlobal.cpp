@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.cpp 74138 2018-09-07 11:16:21Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.cpp 74246 2018-09-13 15:42:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class implementation.
  */
@@ -59,7 +59,7 @@ UIChooserItemGlobal::UIChooserItemGlobal(UIChooserItem *pParent,
     /* Init: */
     updatePixmap();
 
-    /* Translate finally: */
+    /* Apply language settings: */
     retranslateUi();
 }
 
@@ -88,7 +88,7 @@ UIChooserItemGlobal::UIChooserItemGlobal(UIChooserItem *pParent,
     /* Init: */
     updatePixmap();
 
-    /* Translate finally: */
+    /* Apply language settings: */
     retranslateUi();
 }
 
@@ -214,7 +214,7 @@ QString UIChooserItemGlobal::fullName() const
 
 QString UIChooserItemGlobal::definition() const
 {
-    return QString("n=%1").arg(name());
+    return QString("n=%1").arg("GLOBAL");
 }
 
 void UIChooserItemGlobal::addItem(UIChooserItem *, int)
