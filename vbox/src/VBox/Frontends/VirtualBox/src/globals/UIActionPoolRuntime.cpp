@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 75358 2018-11-09 12:38:17Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 75479 2018-11-15 12:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -3623,8 +3623,8 @@ void UIActionPoolRuntime::updateMenuMachine()
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_TakeSnapshot)) || fSeparator;
     /* 'Information Dialog' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_ShowInformation)) || fSeparator;
-#ifdef VBOX_GUI_WITH_GUEST_CONTROL_UI
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_ShowGuestControlFileManager)) || fSeparator;
+#ifdef VBOX_GUI_WITH_GUEST_CONTROL_UI
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_ShowGuestProcessControl)) || fSeparator;
 #endif
     /* Separator: */
