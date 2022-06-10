@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 73739 2018-08-17 16:34:25Z vboxsync $ */
+/* $Id: CPUM.cpp 73741 2018-08-17 16:54:52Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1437,12 +1437,12 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
     /*
      * Allocate memory required by the guest hardware virtualization state.
      */
-    if (pVM->cpum.ro.GuestFeatures.fSvm)
-    {
+    if (pVM->cpum.ro.GuestFeatures.fVmx)
+        rc = cpumR3AllocVmxHwVirtState(pVM);
+    else if (pVM->cpum.ro.GuestFeatures.fSvm)
         rc = cpumR3AllocSvmHwVirtState(pVM);
-        if (RT_FAILURE(rc))
-            return rc;
-    }
+    if (RT_FAILURE(rc))
+        return rc;
 
     /*
      * Workaround for missing cpuid(0) patches when leaf 4 returns GuestInfo.DefCpuId:
@@ -1520,6 +1520,8 @@ VMMR3DECL(int) CPUMR3Term(PVM pVM)
 #endif
 
     if (pVM->cpum.ro.GuestFeatures.fSvm)
+        cpumR3FreeVmxHwVirtState(pVM);
+    else if (pVM->cpum.ro.GuestFeatures.fSvm)
         cpumR3FreeSvmHwVirtState(pVM);
     return VINF_SUCCESS;
 }
