@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 75339 2018-11-09 07:02:36Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 76005 2018-12-06 09:11:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -245,12 +245,12 @@ protected:
     void updateMenuViewMenuBar();
     /** Updates 'View' : 'Status Bar' menu. */
     void updateMenuViewStatusBar();
-    /** Updates 'View' : 'Scale Factor' menu. */
-    void updateMenuViewScaleFactor(QMenu *pMenu);
-    /** Updates 'View' : 'Virtual Screen #' @a pMenu (Normal, Scale). */
-    void updateMenuViewScreen(QMenu *pMenu);
-    /** Updates 'View' : 'Virtual Screen #' @a pMenu (Fullscreen, Seamless). */
-    void updateMenuViewMultiscreen(QMenu *pMenu);
+    /** Updates 'View' : 'Virtual Screen #' @a pMenu with "Resize to <Width> x <Height>" actions. */
+    void updateMenuViewResize(QMenu *pMenu);
+    /** Updates 'View' : 'Virtual Screen #' @a pMenu with "Use Host Screen <Number>" actions. */
+    void updateMenuViewRemap(QMenu *pMenu);
+    /** Updates 'View' : 'Virtual Screen #' @a pMenu with "Scale to <Scale>" actions. */
+    void updateMenuViewRescale(QMenu *pMenu);
     /** Updates 'Input' menu. */
     void updateMenuInput();
     /** Updates 'Input' : 'Keyboard' menu. */
