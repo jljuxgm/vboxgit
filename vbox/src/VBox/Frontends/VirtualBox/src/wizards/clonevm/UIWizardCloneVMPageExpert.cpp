@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.cpp 74576 2018-10-02 10:05:14Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.cpp 74627 2018-10-05 12:21:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageExpert class implementation.
  */
@@ -243,16 +243,6 @@ void UIWizardCloneVMPageExpert::retranslateUi()
     m_pKeepDiskNamesCheckBox->setText(UIWizardCloneVM::tr("Keep &Disk Names"));
     m_pKeepHWUUIDsCheckBox->setToolTip(UIWizardCloneVM::tr("Don't change hardware UUIDs during cloning."));
     m_pKeepHWUUIDsCheckBox->setText(UIWizardCloneVM::tr("Keep &Hardware UUIDs"));
-
-    /* Adjust label widths: */
-    QList<QWidget*> labels;
-    labels << m_pMACComboBoxLabel;
-    labels << m_pAdditionalOptionsLabel;
-
-    int iMaxWidth = 0;
-    foreach (QWidget *pLabel, labels)
-        iMaxWidth = qMax(iMaxWidth, pLabel->minimumSizeHint().width());
-    m_pCloneOptionsLayout->setColumnMinimumWidth(0, iMaxWidth);
 }
 
 void UIWizardCloneVMPageExpert::initializePage()
