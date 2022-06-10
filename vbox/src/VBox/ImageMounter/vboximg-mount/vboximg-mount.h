@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.h 76553 2019-01-01 01:45:53Z vboxsync $ $Revision: 76553 $ */
+/* $Id: vboximg-mount.h 76574 2019-01-01 05:59:26Z vboxsync $ $Revision: 76574 $ */
 /** @file
  * vboximg-mount header file
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___vboximg_mount_h
-#define ___vboximg_mount_h
+#ifndef VBOX_INCLUDED_SRC_vboximg_mount_vboximg_mount_h
+#define VBOX_INCLUDED_SRC_vboximg_mount_vboximg_mount_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

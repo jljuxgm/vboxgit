@@ -1,4 +1,4 @@
-/* $Id: vboximgCrypto.h 76553 2019-01-01 01:45:53Z vboxsync $ $Revision: 76553 $ $Date: 2019-01-01 09:45:53 +0800 (Tue, 01 Jan 2019) $ $Author: vboxsync $ */
+/* $Id: vboximgCrypto.h 76574 2019-01-01 05:59:26Z vboxsync $ $Revision: 76574 $ $Date: 2019-01-01 13:59:26 +0800 (Tue, 01 Jan 2019) $ $Author: vboxsync $ */
 
 /** @file
  * vboximgCrypto.h
@@ -16,8 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ____H_VBOXIMGCRYPTO
-#define ____H_VBOXIMGCRYPTO
+#ifndef VBOX_INCLUDED_SRC_vboximg_mount_vboximgCrypto_h
+#define VBOX_INCLUDED_SRC_vboximg_mount_vboximgCrypto_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

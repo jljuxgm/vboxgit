@@ -1,5 +1,5 @@
 
-/* $Id: vboximgOpts.h 76553 2019-01-01 01:45:53Z vboxsync $ $Revision: 76553 $ $Date: 2019-01-01 09:45:53 +0800 (Tue, 01 Jan 2019) $ $Author: vboxsync $ */
+/* $Id: vboximgOpts.h 76574 2019-01-01 05:59:26Z vboxsync $ $Revision: 76574 $ $Date: 2019-01-01 13:59:26 +0800 (Tue, 01 Jan 2019) $ $Author: vboxsync $ */
 
 /** @file
  * vboximgOpts.h
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___vboximgopts_h
-#define ___vboximgopts_h
+#ifndef VBOX_INCLUDED_SRC_vboximg_mount_vboximgOpts_h
+#define VBOX_INCLUDED_SRC_vboximg_mount_vboximgOpts_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif

@@ -1,4 +1,4 @@
-/* $Id: SelfSizingTable.h 76553 2019-01-01 01:45:53Z vboxsync $ $Revision: 76553 $ */
+/* $Id: SelfSizingTable.h 76574 2019-01-01 05:59:26Z vboxsync $ $Revision: 76574 $ */
 /** @file
  * vboxraw header file
  */
@@ -65,8 +65,8 @@
  *
  */
 
-#ifndef ___SELFSIZINGTABLE_H
-#define ___SELFSIZINGTABLE_H
+#ifndef VBOX_INCLUDED_SRC_vboximg_mount_SelfSizingTable_h
+#define VBOX_INCLUDED_SRC_vboximg_mount_SelfSizingTable_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
