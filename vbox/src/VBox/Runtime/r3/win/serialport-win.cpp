@@ -1,4 +1,4 @@
-/* $Id: serialport-win.cpp 71028 2018-02-15 15:28:14Z vboxsync $ */
+/* $Id: serialport-win.cpp 73630 2018-08-13 10:39:39Z vboxsync $ */
 /** @file
  * IPRT - Serial Port API, Windows Implementation.
  */
@@ -266,11 +266,18 @@ RTDECL(int)  RTSerialPortOpen(PRTSERIALPORT phSerialPort, const char *pszPortAdd
                                          FILE_FLAG_OVERLAPPED, /* Overlapped I/O. */
                                          NULL);
                 if (pThis->hDev)
+                {
                     rc = rtSerialPortSetDefaultCfg(pThis);
+                    if (RT_SUCCESS(rc))
+                    {
+                        *phSerialPort = pThis;
+                        return rc;
+                    }
+                }
                 else
                     rc = RTErrConvertFromWin32(GetLastError());
 
-                CloseHandle(pThis->hEvtDev);
+                CloseHandle(pThis->hEvtIntr);
             }
             else
                 rc = RTErrConvertFromWin32(GetLastError());
