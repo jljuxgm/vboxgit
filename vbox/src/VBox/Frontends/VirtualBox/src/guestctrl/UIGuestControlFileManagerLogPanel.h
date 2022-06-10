@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlFileManagerLogPanel.h 75425 2018-11-13 16:16:17Z vboxsync $ */
+/* $Id: UIGuestControlFileManagerLogPanel.h 75762 2018-11-27 10:10:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -26,7 +26,7 @@
 class QTextEdit;
 class UIGuestControlFileManager;
 
-/** UIVMLogViewerPanel extension providing GUI to manage logviewer settings. */
+/** UIGuestControlFileManagerPanel extension to display file manager logs. */
 class UIGuestControlFileManagerLogPanel : public UIGuestControlFileManagerPanel
 {
     Q_OBJECT;
