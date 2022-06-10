@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 73926 2018-08-28 10:02:14Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 73976 2018-08-30 12:03:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2610,6 +2610,17 @@ void UIMachineLogic::sltShowGlobalPreferences()
 
     /* Just show Global Preferences: */
     showGlobalPreferences();
+}
+
+void UIMachineLogic::typeHostKeyComboPressRelease(bool fToggleSequence)
+{
+    QAction *pHostKeyAction = actionPool()->action(UIActionIndexRT_M_Input_M_Keyboard_T_TypeHostKeyCombo);
+    if (!pHostKeyAction)
+        return;
+    /* Do nothing if we try to insert host key combo press (release) and it is already in pressed (released) state: */
+    if (fToggleSequence == pHostKeyAction->isChecked())
+        return;
+    pHostKeyAction->toggle();
 }
 
 void UIMachineLogic::updateMenuDevicesStorage(QMenu *pMenu)

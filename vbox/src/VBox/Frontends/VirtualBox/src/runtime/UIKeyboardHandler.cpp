@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 73924 2018-08-28 07:49:26Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 73976 2018-08-30 12:03:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1171,6 +1171,10 @@ bool UIKeyboardHandler::eventFilter(QObject *pWatchedObject, QEvent *pEvent)
             }
             case QEvent::FocusOut:
             {
+                /* If host key combo press has been inserted (with no release yet) insert a release now: */
+                if (m_fHostKeyComboPressInserted)
+                    machineLogic()->typeHostKeyComboPressRelease(false);
+
 #if defined(VBOX_WS_MAC)
 
                 /* If keyboard-hook is installed: */

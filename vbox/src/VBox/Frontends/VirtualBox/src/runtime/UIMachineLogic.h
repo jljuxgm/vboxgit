@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 73847 2018-08-22 19:03:19Z vboxsync $ */
+/* $Id: UIMachineLogic.h 73976 2018-08-30 12:03:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -157,6 +157,8 @@ public:
 
     /** Returns whether VM should perform HID LEDs synchronization. */
     bool isHidLedsSyncEnabled() const { return m_fIsHidLedsSyncEnabled; }
+    /** An public interface to sltTypeHostKeyComboPressRelease. */
+    void typeHostKeyComboPressRelease(bool fToggleSequence);
 
 protected slots:
 
