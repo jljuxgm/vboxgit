@@ -1,4 +1,4 @@
-/* $Id: sched-linux.cpp 77910 2019-03-27 11:33:01Z vboxsync $ */
+/* $Id: sched-linux.cpp 77911 2019-03-27 11:51:44Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, POSIX.
  */
@@ -625,7 +625,7 @@ DECLHIDDEN(int) rtProcNativeSetPriority(RTPROCPRIORITY enmPriority)
          * If we've lowered priority since the process started, it may be impossible
          * to raise it again for existing thread (new threads will work fine).
          */
-        rc = SchedNativeCheckThreadTypes(&g_aDefaultPriority);
+        rc = rtSchedNativeCheckThreadTypes(&g_aDefaultPriority, fHavePriorityProxy);
         if (RT_SUCCESS(rc))
             g_pProcessPriority = &g_aDefaultPriority;
     }
