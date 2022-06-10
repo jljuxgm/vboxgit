@@ -1,4 +1,4 @@
-/* $Id: dirops.c 77706 2019-03-14 20:10:40Z vboxsync $ */
+/* $Id: dirops.c 77707 2019-03-14 20:42:26Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
@@ -768,10 +768,17 @@ static int vbsf_inode_instantiate(struct inode *parent, struct dentry *dentry, P
 /**
  * Create a new regular file / directory.
  *
- * @param parent        inode of the directory
- * @param dentry        directory cache entry
- * @param mode          file mode
- * @param fCreateFlags  SHFL_CF_XXX.
+ * @param   parent          inode of the directory
+ * @param   dentry          directory cache entry
+ * @param   mode            file mode
+ * @param   fCreateFlags    SHFL_CF_XXX.
+ * @param   fStashHandle    Whether the resulting handle should be stashed in
+ *                          the inode for a subsequent open call.
+ * @param   fDoLookup       Whether we're doing a lookup and need to d_add the
+ *                          inode we create to dentry.
+ * @param   phHostFile      Where to return the handle to the create file/dir.
+ * @param   pfCreated       Where to indicate whether the file/dir was created
+ *                          or not.  Optional.
  * @returns 0 on success, Linux error code otherwise
  */
 static int vbsf_create_worker(struct inode *parent, struct dentry *dentry, umode_t mode, uint32_t fCreateFlags,
