@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 75663 2018-11-22 14:00:59Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 76091 2018-12-09 23:02:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -25,6 +25,10 @@
 #ifdef RT_OS_WINDOWS
 # include "win/resource.h"
 #endif
+
+//#ifdef DEBUG_bird
+//# define VBOXSVC_WITH_CLIENT_WATCHER
+//#endif
 
 namespace com
 {
@@ -403,6 +407,15 @@ private:
     static void i_SVCHelperClientThreadTask(StartSVCHelperClientData *pTask);
 #endif
 
+#if defined(RT_OS_WINDOWS) && defined(VBOXSVC_WITH_CLIENT_WATCHER)
+protected:
+    void i_callHook(const char *a_pszFunction) RT_OVERRIDE;
+    bool i_watchClientProcess(RTPROCESS a_pidClient, const char *a_pszFunction);
+public:
+    static void i_logCaller(const char *a_pszFormat, ...);
+private:
+
+#endif
 };
 
 ////////////////////////////////////////////////////////////////////////////////
