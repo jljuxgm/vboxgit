@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 75049 2018-10-24 16:06:42Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 75052 2018-10-24 16:40:28Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -794,6 +794,11 @@ typedef struct SUPDRVDEVEXT
     PCALLBACK_OBJECT                pObjPowerCallback;
     /** Callback handle returned by ExRegisterCallback. */
     PVOID                           hPowerCallback;
+# elif defined(RT_OS_DARWIN)
+    /** Trusted root certificates for code signing validation. */
+    RTCRSTORE                       hRootStore;
+    /** Intermedite certificates for code signing validation. */
+    RTCRSTORE                       hAdditionalStore;
 # endif
 #endif
 } SUPDRVDEVEXT;
