@@ -1,4 +1,4 @@
-/* $Id: UISession.h 77724 2019-03-15 13:21:41Z vboxsync $ */
+/* $Id: UISession.h 77726 2019-03-15 14:13:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -137,6 +137,8 @@ public:
     QCursor cursor() const { return m_cursor; }
     /** Returns currently cached mouse cursor pixmap. */
     QPixmap cursorPixmap() const { return m_cursorPixmap; }
+    /** Returns currently cached mouse cursor hotspot. */
+    QPoint cursorHotspot() const { return m_cursorHotspot; }
     /** Returns currently cached mouse cursor size. */
     QSize cursorSize() const { return m_cursorSize; }
 
@@ -487,6 +489,8 @@ private:
     QCursor  m_cursor;
     /** Holds cached mouse cursor pixmap. */
     QPixmap  m_cursorPixmap;
+    /** Holds cached mouse cursor hotspot. */
+    QPoint   m_cursorHotspot;
     /** Holds cached mouse cursor size. */
     QSize    m_cursorSize;
 

@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 77724 2019-03-15 13:21:41Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 77726 2019-03-15 14:13:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1311,7 +1311,7 @@ void UIFrameBufferPrivate::sltCursorPositionChange(bool fContainsData, unsigned 
     if (m_pMachineView && m_fCursorPositionValid)
     {
         /* Acquire cursor position and size: */
-        QPoint cursorPosition = QPoint(uX, uY);
+        QPoint cursorPosition = QPoint(uX, uY) - m_pMachineView->uisession()->cursorHotspot();
         QSize cursorSize = m_pMachineView->uisession()->cursorSize();
 
         /* Apply the scale-factor if necessary: */
