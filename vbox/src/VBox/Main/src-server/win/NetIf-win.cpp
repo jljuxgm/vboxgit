@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 77438 2019-02-22 18:32:56Z vboxsync $ */
+/* $Id: NetIf-win.cpp 77440 2019-02-22 18:55:18Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1193,7 +1193,7 @@ int NetIfCreateHostOnlyNetworkInterface(VirtualBox *pVirtualBox,
 #endif
 }
 
-int NetIfRemoveHostOnlyNetworkInterface(VirtualBox *pVirtualBox, IN_GUID aId,
+int NetIfRemoveHostOnlyNetworkInterface(VirtualBox *pVirtualBox, const Guid &aId,
                                         IProgress **aProgress)
 {
 #ifndef VBOX_WITH_NETFLT
