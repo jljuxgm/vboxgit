@@ -1,4 +1,4 @@
-# $Id: .scm-settings 74720 2018-10-09 14:09:40Z vboxsync $
+# $Id: .scm-settings 75298 2018-11-07 09:45:24Z vboxsync $
 ## @file
 # Source code massager settings for Runtime.
 #
@@ -91,6 +91,7 @@
 /r0drv/os2/timerA-r0drv-os2.asm                : --external-copyright
 
 /r3/os2/time-os2.cpp                           : --external-copyright
+/r3/os2/RTTimeSet-os2.cpp                      : --external-copyright
 /r0drv/os2/os2imports.imp                      : --external-copyright --treat-as .def
 
 /r3/win/VBoxRT-msvcp100-win32.def              : --external-copyright
