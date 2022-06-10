@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 77100 2019-02-01 10:25:44Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 77370 2019-02-20 08:04:38Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1404,7 +1404,7 @@ void Console::i_VRDPClientConnect(uint32_t u32ClientId)
     }
 
     NOREF(u32ClientId);
-    mDisplay->i_VideoAccelVRDP(true);
+    mDisplay->i_VRDPConnectionEvent(true);
 
 #ifdef VBOX_WITH_GUEST_PROPS
     i_guestPropertiesVRDPUpdateActiveClient(u32ClientId);
@@ -1438,7 +1438,7 @@ void Console::i_VRDPClientDisconnect(uint32_t u32ClientId,
                              0);
     }
 
-    mDisplay->i_VideoAccelVRDP(false);
+    mDisplay->i_VRDPConnectionEvent(false);
 
     if (fu32Intercepted & VRDE_CLIENT_INTERCEPT_USB)
     {

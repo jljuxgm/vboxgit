@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 76985 2019-01-25 11:42:07Z vboxsync $ */
+/* $Id: DevVGA.h 77370 2019-02-20 08:04:38Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -584,8 +584,7 @@ DECLCALLBACK(int) vbvaPortSendModeHint(PPDMIDISPLAYPORT pInterface, uint32_t cx,
                                        uint32_t cDisplay, uint32_t dx,
                                        uint32_t dy, uint32_t fEnabled,
                                        uint32_t fNotifyGuest);
-DECLCALLBACK(void) vbvaPortReportHostCursorCapabilities(PPDMIDISPLAYPORT pInterface, uint32_t fCapabilitiesAdded,
-                                                        uint32_t fCapabilitiesRemoved);
+DECLCALLBACK(void) vbvaPortReportHostCursorCapabilities(PPDMIDISPLAYPORT pInterface, bool fSupportsRenderCursor, bool fSupportsMoveCursor);
 DECLCALLBACK(void) vbvaPortReportHostCursorPosition(PPDMIDISPLAYPORT pInterface, uint32_t x, uint32_t y);
 
 # ifdef VBOX_WITH_VDMA

@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: Framebuffer.cpp 77370 2019-02-20 08:04:38Z vboxsync $ */
 /** @file
  * VBoxSDL - Implementation of VBoxSDLFB (SDL framebuffer) class
  */
@@ -411,12 +411,14 @@ STDMETHODIMP VBoxSDLFB::COMGETTER(Capabilities)(ComSafeArrayOut(FramebufferCapab
 
     if (mfUpdateImage)
     {
-        caps.resize(1);
+        caps.resize(2);
         caps[0] = FramebufferCapabilities_UpdateImage;
+        caps[1] = FramebufferCapabilities_RenderCursor;
     }
     else
     {
-        /* No caps to return. */
+        caps.resize(1);
+        caps[0] = FramebufferCapabilities_RenderCursor;
     }
 
     caps.detachTo(ComSafeArrayOutArg(aCapabilities));

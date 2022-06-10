@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 77370 2019-02-20 08:04:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -710,14 +710,16 @@ STDMETHODIMP UIFrameBufferPrivate::COMGETTER(Capabilities)(ComSafeArrayOut(Frame
     com::SafeArray<FramebufferCapabilities_T> caps;
     if (vboxGlobal().isSeparateProcess())
     {
-       caps.resize(1);
+       caps.resize(2);
        caps[0] = FramebufferCapabilities_UpdateImage;
+       caps[1] = FramebufferCapabilities_RenderCursor;
     }
     else
     {
-       caps.resize(2);
+       caps.resize(3);
        caps[0] = FramebufferCapabilities_VHWA;
        caps[1] = FramebufferCapabilities_VisibleRegion;
+       caps[2] = FramebufferCapabilities_RenderCursor;
     }
 
     caps.detachTo(ComSafeArrayOutArg(enmCapabilities));
