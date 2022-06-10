@@ -1,4 +1,4 @@
-/* $Id: CloudUserProfileManagerImpl.h 73549 2018-08-07 15:19:57Z vboxsync $ */
+/* $Id: CloudUserProfileManagerImpl.h 73551 2018-08-07 16:41:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -25,8 +25,8 @@
 
 /* VBox forward declarations */
 
-class ATL_NO_VTABLE CloudUserProfileManager :
-    public CloudUserProfileManagerWrap
+class ATL_NO_VTABLE CloudUserProfileManager
+    : public CloudUserProfileManagerWrap
 {
 public:
 
@@ -40,7 +40,7 @@ public:
 
 private:
     ComPtr<VirtualBox> const mParent;       /**< Strong reference to the parent object (VirtualBox/IMachine). */
-#ifdef CLOUD_PROVIDERS_IN_EXTPACK
+#ifdef VBOX_WITH_CLOUD_PROVIDERS_IN_EXTPACK
     std::vector<ComPtr<ICloudUserProfileManager>> mUserProfileManagers;
 #else
     std::vector<CloudProviderId_T> mSupportedProviders;
