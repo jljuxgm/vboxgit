@@ -1,4 +1,4 @@
-/* $Id: HGCM.h 75500 2018-11-16 01:24:39Z vboxsync $ */
+/* $Id: HGCM.h 75574 2018-11-19 14:31:44Z vboxsync $ */
 /** @file
  * HGCM - Host-Guest Communication Manager.
  */
@@ -34,7 +34,7 @@ typedef struct _HGCMSVCEXTHANDLEDATA *HGCMSVCEXTHANDLE;
 
 RT_C_DECLS_BEGIN
 int HGCMHostInit(void);
-int HGCMHostShutdown(void);
+int HGCMHostShutdown(bool fUvmIsInvalid = false);
 
 int HGCMHostReset(void);
 

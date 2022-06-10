@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: HostImpl.h 75574 2018-11-19 14:31:44Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -184,5 +184,5 @@ private:
     Data *m;
 };
 
-#endif // ____H_HOSTIMPL
+#endif // !____H_HOSTIMPL
 

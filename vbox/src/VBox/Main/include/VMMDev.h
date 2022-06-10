@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 69500 2017-10-28 15:14:05Z vboxsync $ */
+/* $Id: VMMDev.h 75574 2018-11-19 14:31:44Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to VMM device
  */
@@ -63,7 +63,7 @@ public:
     int hgcmHostSvcHandleDestroy (HGCMCVSHANDLE hSvc);
     int hgcmHostFastCallAsync (HGCMCVSHANDLE hSvc, uint32_t function, PVBOXHGCMSVCPARM pParm, PHGCMHOSTFASTCALLCB pfnCompletion, void *pvCompletion);
 #endif
-    void hgcmShutdown (void);
+    void hgcmShutdown(bool fUvmIsInvalid = false);
 
     bool hgcmIsActive (void) { return ASMAtomicReadBool(&m_fHGCMActive); }
 #endif /* VBOX_WITH_HGCM */
