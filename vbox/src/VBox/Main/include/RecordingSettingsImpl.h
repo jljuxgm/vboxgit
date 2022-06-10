@@ -1,4 +1,4 @@
-/* $Id: RecordingSettingsImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: RecordingSettingsImpl.h 78068 2019-04-10 09:38:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - Machine recording screen settings.
  */
@@ -43,8 +43,8 @@ public:
 
     // public initializer/uninitializer for internal purposes only
     HRESULT init(Machine *parent);
-    HRESULT init(Machine *parent, RecordingSettings *that);
-    HRESULT initCopy(Machine *parent, RecordingSettings *that);
+    HRESULT init(Machine *parent, RecordingSettings *aThat);
+    HRESULT initCopy(Machine *parent, RecordingSettings *aThat);
     void uninit();
 
     // public methods only for internal purposes
