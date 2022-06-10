@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 75122 2018-10-27 17:53:48Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 75169 2018-10-30 06:29:31Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -1632,9 +1632,7 @@ static PINTNETSG vboxNetLwfWinNBtoSG(PVBOXNETLWF_MODULE pModule, PNET_BUFFER pNe
             return NULL;
         }
 
-        if (cbSrc > cbPacket)
-            cbSrc = cbPacket;
-
+        /* Handle the offset in the current (which is the first for us) MDL */
         if (uOffset)
         {
             if (uOffset < cbSrc)
@@ -1645,10 +1643,15 @@ static PINTNETSG vboxNetLwfWinNBtoSG(PVBOXNETLWF_MODULE pModule, PNET_BUFFER pNe
             }
             else
             {
-                uOffset -= cbSrc;
-                continue;
+                /* This is an invalid MDL chain */
+                vboxNetLwfWinDestroySG(pSG);
+                return NULL;
             }
         }
+
+        /* Do not read the last MDL beyond packet's end */
+        if (cbSrc > cbPacket)
+            cbSrc = cbPacket;
 
         Assert(cSegs < pSG->cSegsAlloc);
         pSG->aSegs[cSegs].pv = pSrc;
