@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 74272 2018-09-14 15:46:37Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 74483 2018-09-26 16:27:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -149,6 +149,22 @@ QPaintDevice *UIChooserModel::paintDevice() const
 QGraphicsItem *UIChooserModel::itemAt(const QPointF &position, const QTransform &deviceTransform /* = QTransform() */) const
 {
     return scene()->itemAt(position, deviceTransform);
+}
+
+void UIChooserModel::handleToolButtonClick(UIChooserItem *pItem)
+{
+    switch (pItem->type())
+    {
+        case UIChooserItemType_Global:
+            emit sigToolMenuRequested(UIToolsClass_Global, pItem->geometry().topRight().toPoint());
+            break;
+        case UIChooserItemType_Group:
+        case UIChooserItemType_Machine:
+            emit sigToolMenuRequested(UIToolsClass_Machine, pItem->geometry().topRight().toPoint());
+            break;
+        default:
+            break;
+    }
 }
 
 void UIChooserModel::setCurrentItems(const QList<UIChooserItem*> &items)

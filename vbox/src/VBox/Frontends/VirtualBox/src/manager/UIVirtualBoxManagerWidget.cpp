@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 74464 2018-09-25 18:13:54Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 74483 2018-09-26 16:27:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -309,6 +309,15 @@ void UIVirtualBoxManagerWidget::sltHandleSlidingAnimationComplete(SlidingDirecti
     sltHandleChooserPaneIndexChangeDefault();
 }
 
+void UIVirtualBoxManagerWidget::sltHandleToolMenuRequested(UIToolsClass enmClass, const QPoint &position)
+{
+    m_pPaneTools->setToolsClass(enmClass);
+    if (m_pPaneTools->minimumSize().isValid())
+        m_pPaneTools->resize(m_pPaneTools->minimumSize());
+    m_pPaneTools->move(m_pPaneChooser->mapToGlobal(position));
+    m_pPaneTools->show();
+}
+
 void UIVirtualBoxManagerWidget::sltHandleToolsPaneIndexChange()
 {
     switch (m_pPaneTools->toolsClass())
@@ -506,9 +515,6 @@ void UIVirtualBoxManagerWidget::prepareWidgets()
                 m_pPaneTools->setToolsClass(UIToolsClass_Global);
             else
                 m_pPaneTools->setToolsClass(UIToolsClass_Machine);
-
-            /* Add into layout: */
-            pLayoutMain->addWidget(m_pPaneTools);
         }
     }
 
@@ -535,6 +541,8 @@ void UIVirtualBoxManagerWidget::prepareConnections()
             m_pPaneToolsMachine, &UIToolPaneMachine::sigToggleFinished);
     connect(m_pPaneChooser, &UIChooser::sigGroupSavingStateChanged,
             this, &UIVirtualBoxManagerWidget::sigGroupSavingStateChanged);
+    connect(m_pPaneChooser, &UIChooser::sigToolMenuRequested,
+            this, &UIVirtualBoxManagerWidget::sltHandleToolMenuRequested);
 
     /* Details-pane connections: */
     connect(m_pPaneToolsMachine, &UIToolPaneMachine::sigLinkClicked,

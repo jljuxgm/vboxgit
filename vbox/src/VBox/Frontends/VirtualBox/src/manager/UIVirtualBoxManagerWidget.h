@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 74260 2018-09-14 11:11:00Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 74483 2018-09-26 16:27:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -137,6 +137,9 @@ private slots:
 
     /** @name Tools stuff.
       * @{ */
+        /** Handles tool menu request. */
+        void sltHandleToolMenuRequested(UIToolsClass enmClass, const QPoint &position);
+
         /** Handles signal abour Tools-pane index change. */
         void sltHandleToolsPaneIndexChange();
     /** @} */

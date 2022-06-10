@@ -1,4 +1,4 @@
-/* $Id: UIToolsItem.cpp 74467 2018-09-25 18:25:36Z vboxsync $ */
+/* $Id: UIToolsItem.cpp 74483 2018-09-26 16:27:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsItem class definition.
  */
@@ -763,8 +763,7 @@ void UIToolsItem::paintFrame(QPainter *pPainter, const QRect &rectangle) const
     pPainter->setPen(pen);
 
     /* Draw frame: */
-    pPainter->drawLine(rectangle.topLeft(), rectangle.topRight() + QPoint(1, 0));
-    pPainter->drawLine(rectangle.bottomLeft() + QPoint(0, 1), rectangle.bottomRight() + QPoint(1, 1));
+    pPainter->drawRect(rectangle);
 
     /* Restore painter: */
     pPainter->restore();

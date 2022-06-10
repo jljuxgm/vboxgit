@@ -1,4 +1,4 @@
-/* $Id: UIToolsView.cpp 74369 2018-09-19 11:53:50Z vboxsync $ */
+/* $Id: UIToolsView.cpp 74483 2018-09-26 16:27:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsView class implementation.
  */
@@ -145,6 +145,9 @@ void UIToolsView::sltMinimumHeightHintChanged(int iHint)
 
     /* Remember new value: */
     m_iMinimumHeightHint = iHint;
+
+    /* Set minimum view height according passed height-hint: */
+    setMinimumHeight(2 * frameWidth() + m_iMinimumHeightHint);
 
     /* Update scene-rect: */
     updateSceneRect();
