@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 75715 2018-11-25 15:59:10Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 75716 2018-11-25 16:01:52Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -1300,7 +1300,7 @@ static int vmsvgaChangeMode(PVGASTATE pThis)
         pScreen->cHeight   = pThis->svga.uHeight;
         pScreen->cBpp      = pThis->svga.uBpp;
 
-        for (int iScreen = 1; iScreen < RT_ELEMENTS(pSVGAState->aScreens); ++iScreen)
+        for (unsigned iScreen = 1; iScreen < RT_ELEMENTS(pSVGAState->aScreens); ++iScreen)
         {
             /* Delete screen. */
             pScreen = &pSVGAState->aScreens[iScreen];
@@ -1322,7 +1322,7 @@ static int vmsvgaChangeMode(PVGASTATE pThis)
         pThis->svga.uBpp    = VMSVGA_VAL_UNINITIALIZED;
     }
 
-    for (int iScreen = 0; iScreen < RT_ELEMENTS(pSVGAState->aScreens); ++iScreen)
+    for (unsigned iScreen = 0; iScreen < RT_ELEMENTS(pSVGAState->aScreens); ++iScreen)
     {
         VMSVGASCREENOBJECT *pScreen = &pSVGAState->aScreens[iScreen];
         if (!pScreen->fModified)
