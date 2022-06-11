@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestfileset.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: vboxtestfileset.py 83308 2020-03-17 13:50:19Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83308 $"
 
 
 # Standard Python imports.
@@ -63,6 +63,7 @@ class TestFileSet(testfileset.TestFileSet):
                  oRngTreeDirs  = xrange(2, 16),
                  cchMaxPath    = 230,
                  cchMaxName    = 230,
+                 asCompatibleWith = None,
                  uSeed         = None):
 
         asCompOses = [oTestVm.getGuestOs(), ];
