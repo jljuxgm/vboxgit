@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 83321 2020-03-19 09:24:58Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -280,6 +280,7 @@ public:
                                           ComPtr<IProgress> &pProgress);
     int                     i_closeSession(uint32_t uFlags, uint32_t uTimeoutMS, int *pGuestRc);
     HRESULT                 i_directoryCopyFlagFromStr(const com::Utf8Str &strFlags, DirectoryCopyFlag_T *pfFlags);
+    bool                    i_directoryExists(const Utf8Str &strPath);
     inline bool             i_directoryExists(uint32_t uDirID, ComObjPtr<GuestDirectory> *pDir);
     int                     i_directoryUnregister(GuestDirectory *pDirectory);
     int                     i_directoryRemove(const Utf8Str &strPath, uint32_t fFlags, int *pGuestRc);

@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 83320 2020-03-19 09:18:05Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 83321 2020-03-19 09:24:58Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -936,6 +936,21 @@ int GuestSession::i_directoryCreate(const Utf8Str &strPath, uint32_t uMode,
 
     LogFlowFuncLeaveRC(vrc);
     return vrc;
+}
+
+/**
+ * Checks if a directory on the guest exists.
+ *
+ * @returns \c true if directory exists on the guest, \c false if not.
+ * @param   strPath             Path of directory to check.
+ */
+bool GuestSession::i_directoryExists(const Utf8Str &strPath)
+{
+    GuestFsObjData objDataIgnored;
+    int rcGuestIgnored;
+    int rc = i_directoryQueryInfo(strPath, true /* fFollowSymlinks */, objDataIgnored, &rcGuestIgnored);
+
+    return RT_SUCCESS(rc);
 }
 
 inline bool GuestSession::i_directoryExists(uint32_t uDirID, ComObjPtr<GuestDirectory> *pDir)
