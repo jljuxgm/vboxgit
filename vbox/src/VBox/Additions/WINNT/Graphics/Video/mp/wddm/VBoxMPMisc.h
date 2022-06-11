@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 80478 2019-08-28 13:32:17Z vboxsync $ */
+/* $Id: VBoxMPMisc.h 82412 2019-12-05 12:14:22Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -161,5 +161,7 @@ NTSTATUS VBoxWddmSlTerm(PVBOXMP_DEVEXT pDevExt);
 void vboxWddmDiInitDefault(DXGK_DISPLAY_INFORMATION *pInfo, PHYSICAL_ADDRESS PhAddr, D3DDDI_VIDEO_PRESENT_SOURCE_ID VidPnSourceId);
 void vboxWddmDiToAllocData(PVBOXMP_DEVEXT pDevExt, const DXGK_DISPLAY_INFORMATION *pInfo, struct VBOXWDDM_ALLOC_DATA *pAllocData);
 void vboxWddmDmSetupDefaultVramLocation(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID ModifiedVidPnSourceId, struct VBOXWDDM_SOURCE *paSources);
+
+char const *vboxWddmAllocTypeString(PVBOXWDDM_ALLOCATION pAlloc);
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_mp_wddm_VBoxMPMisc_h */
