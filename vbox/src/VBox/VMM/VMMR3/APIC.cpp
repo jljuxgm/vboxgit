@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 82035 2019-11-20 16:42:30Z vboxsync $ */
+/* $Id: APIC.cpp 82036 2019-11-20 16:51:01Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -818,7 +818,7 @@ static int apicR3LoadVMData(PPDMDEVINS pDevIns, PVM pVM, PSSMHANDLE pSSM)
     AssertRCReturn(rc, rc);
     if (fIoApicPresent != pApic->fIoApicPresent)
         return pHlp->pfnSSMSetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - fIoApicPresent: saved=%RTbool config=%RTbool"),
-                                fIoApicPresent, pApic->fIoApicPresent);
+                                       fIoApicPresent, pApic->fIoApicPresent);
 
     /* Load and verify configured max APIC mode. */
     uint32_t uSavedMaxApicMode;
@@ -826,7 +826,7 @@ static int apicR3LoadVMData(PPDMDEVINS pDevIns, PVM pVM, PSSMHANDLE pSSM)
     AssertRCReturn(rc, rc);
     if (uSavedMaxApicMode != (uint32_t)pApic->enmMaxMode)
         return pHlp->pfnSSMSetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - uApicMode: saved=%u config=%u"),
-                                uSavedMaxApicMode, pApic->enmMaxMode);
+                                       uSavedMaxApicMode, pApic->enmMaxMode);
     return VINF_SUCCESS;
 }
 
@@ -1406,8 +1406,6 @@ DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE p
      * Init the data.
      */
     pApic->pDevInsR3    = pDevIns;
-    pApic->pApicDevR3   = pApicDev;
-    pApic->pApicDevR0   = PDMINS_2_DATA_R0PTR(pDevIns);
     pApic->fR0Enabled   = pDevIns->fR0Enabled;
     pApic->fRCEnabled   = pDevIns->fRCEnabled;
 
