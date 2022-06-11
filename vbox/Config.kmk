@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83723 2020-04-16 22:17:22Z vboxsync $
+# $Id: Config.kmk 83759 2020-04-17 14:56:02Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1658,6 +1658,13 @@ ifndef VBOX_NEWER_VCC_TOOL
 endif
 
 #
+# Temporary measure while kBuild / tools updates their define quoting.
+#
+if1of ($(VBOX_VCC_TOOL_STEM), VCC140 VCC141 VCC142)
+ VBOX_WITH_AUTOMATIC_DEFS_QUOTING = 1
+endif
+
+#
 # Default too nonsense.
 #
 ## @todo Remove the default tool crap here!
@@ -3143,7 +3150,8 @@ if1of ($(VBOX_VCC_TOOL_STEM), VCC141 VCC142)
  #    -wd4626: 'SUPDRVTRACERDATA': assignment operator was implicitly defined as deleted
  #    -wd5026: 'SUPDRVTRACERDATA': move constructor was implicitly defined as deleted
  #    -wd5027: 'SUPDRVTRACERDATA': move assignment operator was implicitly defined as deleted
- VBOX_VCC_WARN_ALL += -wd5045 -wd5039 -wd4464 -wd4623 -wd4625 -wd4626 -wd5026 -wd5027
+ #    -wd4435: 'xml::Input': Object layout under /vd2 will change due to virtual base 'xml::Stream'
+ VBOX_VCC_WARN_ALL += -wd5045 -wd5039 -wd4464 -wd4623 -wd4625 -wd4626 -wd5026 -wd5027 -wd4435
 endif
 VBOX_VCC_WARN_ALL += -wd4242 -wd4244
 ifndef VBOX_NEWER_VCC_WARN_ALL
@@ -7942,7 +7950,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83723 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83759 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
