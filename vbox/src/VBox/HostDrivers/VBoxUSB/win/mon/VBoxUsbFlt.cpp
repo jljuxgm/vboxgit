@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 80891 2019-09-18 14:06:30Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 80941 2019-09-23 09:25:12Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -1221,7 +1221,8 @@ static USBDEVICESTATE vboxUsbDevGetUserState(PVBOXUSBFLTCTX pContext, PVBOXUSBFL
 
 NTSTATUS VBoxUsbFltGetDevice(PVBOXUSBFLTCTX pContext, HVBOXUSBDEVUSR hDevice, PUSBSUP_GETDEV_MON pInfo)
 {
-    Assert(hDevice);
+    if (!hDevice)
+       return STATUS_INVALID_PARAMETER;
 
     memset (pInfo, 0, sizeof (*pInfo));
     VBOXUSBFLT_LOCK_ACQUIRE();
@@ -1244,9 +1245,7 @@ NTSTATUS VBoxUsbFltGetDevice(PVBOXUSBFLTCTX pContext, HVBOXUSBDEVUSR hDevice, PU
 
     VBOXUSBFLT_LOCK_RELEASE();
 
-    /* this should not occur */
-    AssertFailed();
-
+    /* We should not get this far with valid input. */
     return STATUS_INVALID_PARAMETER;
 }
 
