@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDriverDDraw.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDispDriverDDraw.cpp 80748 2019-09-12 09:44:16Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver interface functions related to DirectDraw
  */
@@ -85,6 +85,8 @@ VBoxDispDrvGetDirectDrawInfo(DHPDEV dhpdev, DD_HALINFO *pHalInfo, DWORD *pdwNumH
 
         pDev->vhwa.bEnabled = RT_SUCCESS(rc);
     }
+#else
+    RT_NOREF(pdwFourCC);
 #endif
 
     /* we could only have 1 heap, so it's not really a list */
@@ -180,6 +182,8 @@ VBoxDispDrvEnableDirectDraw(DHPDEV dhpdev, DD_CALLBACKS *pCallBacks, DD_SURFACEC
             pSurfaceCallBacks->dwFlags |= DDHAL_SURFCB32_UPDATEOVERLAY|DDHAL_SURFCB32_SETOVERLAYPOSITION;
         }
     }
+#else
+    RT_NOREF(dhpdev);
 #endif
 
     LOGF_LEAVE();

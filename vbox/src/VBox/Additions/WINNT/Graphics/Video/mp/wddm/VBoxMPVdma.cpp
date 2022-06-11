@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 80486 2019-08-28 20:24:03Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 80748 2019-09-12 09:44:16Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -18,7 +18,9 @@
 #include "VBoxMPWddm.h"
 #include "common/VBoxMPCommon.h"
 #include "VBoxMPVdma.h"
+#ifdef VBOX_WITH_VIDEOHWACCEL
 #include "VBoxMPVhwa.h"
+#endif
 #include <iprt/asm.h>
 #include <iprt/mem.h>
 
