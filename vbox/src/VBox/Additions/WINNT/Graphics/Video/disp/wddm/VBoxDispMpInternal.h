@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMpInternal.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxDispMpInternal.h 80488 2019-08-28 21:00:02Z vboxsync $ */
 /** @file
  * VBoxVideo Display external interface config
  */
@@ -22,11 +22,5 @@
 #endif
 
 #include <iprt/win/windows.h>
-
-#if 0
-HRESULT vboxDispMpInternalInit();
-HRESULT vboxDispMpInternalTerm();
-HRESULT vboxDispMpInternalCancel(struct VBOXWDDMDISP_CONTEXT *pContext, struct VBOXWDDMDISP_SWAPCHAIN *pSwapchain);
-#endif
 
 #endif /* !GA_INCLUDED_SRC_WINNT_Graphics_Video_disp_wddm_VBoxDispMpInternal_h */

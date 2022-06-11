@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 80487 2019-08-28 20:34:19Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 80488 2019-08-28 21:00:02Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -108,7 +108,6 @@ typedef struct VBOXWDDM_ALLOC_DATA
     VBOXWDDM_ADDR Addr;
     uint32_t hostID;
     uint32_t cHostIDRefs;
-    struct VBOXWDDM_SWAPCHAIN *pSwapchain;
 } VBOXWDDM_ALLOC_DATA, *PVBOXWDDM_ALLOC_DATA;
 
 #define VBOXWDDM_HGSYNC_F_SYNCED_DIMENSIONS 0x01
@@ -164,7 +163,6 @@ typedef struct VBOXWDDM_TARGET
 //#define VBOXWDDM_ALLOCATIONINDEX_VOID (~0U)
 typedef struct VBOXWDDM_ALLOCATION
 {
-    LIST_ENTRY SwapchainEntry;
     VBOXWDDM_ALLOC_TYPE enmType;
     D3DDDI_RESOURCEFLAGS fRcFlags;
 #ifdef VBOX_WITH_VIDEOHWACCEL
