@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 82527 2019-12-10 01:46:40Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 82530 2019-12-10 02:43:23Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -427,6 +427,7 @@ void shClSvcMsgFree(PSHCLCLIENT pClient, PSHCLCLIENTMSG pMsg)
 
         uint32_t cAllocated = ASMAtomicDecU32(&pClient->cAllocatedMessages);
         Assert(cAllocated < UINT32_MAX / 2);
+        RT_NOREF(cAllocated);
     }
 }
 
