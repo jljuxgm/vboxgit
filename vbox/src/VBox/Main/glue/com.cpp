@@ -1,4 +1,4 @@
-/* $Id: com.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: com.cpp 80373 2019-08-21 14:51:02Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -57,13 +57,7 @@ namespace com
 /* static */
 const Guid Guid::Empty; /* default ctor is OK */
 
-#if defined (VBOX_WITH_XPCOM)
-
-/* static */
-const nsID *SafeGUIDArray::nsIDRef::Empty = (const nsID *)Guid::Empty.raw();
-
-#endif /* (VBOX_WITH_XPCOM) */
-
+const char Zeroes[16] = {0, };
 
 
 void GetInterfaceNameByIID(const GUID &aIID, BSTR *aName)
