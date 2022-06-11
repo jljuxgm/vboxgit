@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-posix.cpp 78345 2019-04-29 10:15:06Z vboxsync $ */
+/* $Id: rtmempage-exec-mmap-posix.cpp 82660 2020-01-07 12:33:03Z vboxsync $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with mmap only.
  */
@@ -58,7 +58,9 @@ DECLINLINE(void) rtMemPagePosixApplyFlags(void *pv, size_t cb, uint32_t fFlags)
     if (fFlags & RTMEMPAGEALLOC_F_ADVISE_LOCKED)
     {
         int rc = mlock(pv, cb);
+# ifndef RT_OS_SOLARIS /* mlock(3C) on Solaris requires the priv_lock_memory privilege */
         AssertMsg(rc == 0, ("mlock %p LB %#zx -> %d errno=%d\n", pv, cb, rc, errno));
+# endif
         NOREF(rc);
     }
 
