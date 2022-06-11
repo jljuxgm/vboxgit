@@ -1,4 +1,4 @@
-/* $Id: Performance.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: Performance.h 80668 2019-09-09 11:43:43Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -581,7 +581,7 @@ namespace pm
         void init(ULONG period, ULONG length);
         void preCollect(CollectorHints& hints, uint64_t iTick);
         void collect();
-        const char *getUnit() { return "mB"; };
+        const char *getUnit() { return "MB"; };
         ULONG getMinValue() { return 0; };
         ULONG getMaxValue() { return INT32_MAX; };
         ULONG getScale() { return 1; }
@@ -602,7 +602,7 @@ namespace pm
         void init(ULONG period, ULONG length);
         void preCollect(CollectorHints& hints, uint64_t iTick);
         void collect();
-        const char *getUnit() { return "mB"; };
+        const char *getUnit() { return "MB"; };
         ULONG getMinValue() { return 0; };
         ULONG getMaxValue() { return INT32_MAX; };
         ULONG getScale() { return 1; }
@@ -733,7 +733,7 @@ namespace pm
         void init(ULONG period, ULONG length);
         void preCollect(CollectorHints& hints, uint64_t iTick);
         void collect();
-        const char *getUnit() { return "mB"; };
+        const char *getUnit() { return "MB"; };
         ULONG getMinValue() { return 0; };
         ULONG getMaxValue() { return INT32_MAX; };
         ULONG getScale() { return 1; }

@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 77102 2019-02-01 10:26:51Z vboxsync $ */
+/* $Id: tstCollector.cpp 80668 2019-09-09 11:43:43Z vboxsync $ */
 
 /** @file
  *
@@ -229,9 +229,9 @@ int testFsUsage(pm::CollectorHAL *collector)
             RTPrintf("tstCollector: getHostFilesystemUsage() -> %Rrc\n", rc);
             return 1;
         }
-        RTPrintf("tstCollector: host root fs total     = %lu mB\n", total);
-        RTPrintf("tstCollector: host root fs used      = %lu mB\n", used);
-        RTPrintf("tstCollector: host root fs available = %lu mB\n\n", available);
+        RTPrintf("tstCollector: host root fs total     = %lu MB\n", total);
+        RTPrintf("tstCollector: host root fs used      = %lu MB\n", used);
+        RTPrintf("tstCollector: host root fs available = %lu MB\n\n", available);
     }
     return 0;
 }
