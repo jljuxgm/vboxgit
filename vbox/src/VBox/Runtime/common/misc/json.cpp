@@ -1,4 +1,4 @@
-/* $Id: json.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: json.cpp 83425 2020-03-25 19:37:25Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -39,6 +39,7 @@
 #include <iprt/stream.h>
 #include <iprt/string.h>
 #include <iprt/utf16.h>
+#include <iprt/vfs.h>
 
 #include <stdlib.h> /* strtod() */
 #include <errno.h>  /* errno */
@@ -259,6 +260,7 @@ typedef struct RTJSONREADERARGS
     {
         PRTSTREAM           hStream;
         const uint8_t       *pbBuf;
+        RTVFSFILE           hVfsFile;
     } u;
 } RTJSONREADERARGS;
 /** Pointer to a readers argument. */
@@ -1428,6 +1430,25 @@ static DECLCALLBACK(int) rtJsonTokenizerParseFromFile(void *pvUser, size_t offIn
     return rc;
 }
 
+/**
+ * Read callback for RTJsonParseFromVfsFile().
+ */
+static DECLCALLBACK(int) rtJsonTokenizerParseFromVfsFile(void *pvUser, size_t offInput,
+                                                         void *pvBuf, size_t cbBuf,
+                                                         size_t *pcbRead)
+{
+    PRTJSONREADERARGS pArgs = (PRTJSONREADERARGS)pvUser;
+
+    RT_NOREF_PV(offInput);
+
+    size_t cbRead = 0;
+    int rc = RTVfsFileRead(pArgs->u.hVfsFile, pvBuf, cbBuf, &cbRead);
+    if (RT_SUCCESS(rc))
+        *pcbRead = cbRead;
+
+    return rc;
+}
+
 RTDECL(int) RTJsonParseFromBuf(PRTJSONVAL phJsonVal, const uint8_t *pbBuf, size_t cbBuf, PRTERRINFO pErrInfo)
 {
     AssertPtrReturn(phJsonVal, VERR_INVALID_POINTER);
@@ -1490,6 +1511,27 @@ RTDECL(int) RTJsonParseFromFile(PRTJSONVAL phJsonVal, const char *pszFilename, P
             rtJsonTokenizerDestroy(&Tokenizer);
         }
         RTStrmClose(Args.u.hStream);
+    }
+
+    return rc;
+}
+
+RTDECL(int) RTJsonParseFromVfsFile(PRTJSONVAL phJsonVal, RTVFSFILE hVfsFile, PRTERRINFO pErrInfo)
+{
+    AssertPtrReturn(phJsonVal, VERR_INVALID_POINTER);
+    AssertReturn(hVfsFile != NIL_RTVFSFILE, VERR_INVALID_POINTER);
+
+    int rc = VINF_SUCCESS;
+    RTJSONREADERARGS Args;
+    RTJSONTOKENIZER Tokenizer;
+
+    Args.cbData   = 0;
+    Args.u.hVfsFile = hVfsFile;
+    rc = rtJsonTokenizerInit(&Tokenizer, rtJsonTokenizerParseFromVfsFile, &Args, pErrInfo);
+    if (RT_SUCCESS(rc))
+    {
+        rc = rtJsonParse(&Tokenizer, phJsonVal);
+        rtJsonTokenizerDestroy(&Tokenizer);
     }
 
     return rc;
