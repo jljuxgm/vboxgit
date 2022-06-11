@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
+/* $Id: DevVGA.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -7279,7 +7279,7 @@ const PDMDEVREG g_DeviceVga =
     /* .cbInstanceShared = */       sizeof(VGASTATE),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         1,
     /* .pszDescription = */         "VGA Adaptor with VESA extensions.",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

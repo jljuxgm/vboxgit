@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -3604,7 +3604,7 @@ const PDMDEVREG g_DevicePciIch9 =
     /* .cbInstanceShared = */       sizeof(DEVPCIROOT),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         1,
     /* .pszDescription = */         "ICH9 PCI bridge",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

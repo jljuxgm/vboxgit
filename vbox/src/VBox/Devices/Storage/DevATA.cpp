@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevATA.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -8068,7 +8068,7 @@ const PDMDEVREG g_DevicePIIX3IDE =
     /* .cbInstanceShared = */       sizeof(PCIATAState),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         1,
     /* .pszDescription = */         "Intel PIIX3 ATA controller.\n"
                                     "  LUN #0 is primary master.\n"
                                     "  LUN #1 is primary slave.\n"

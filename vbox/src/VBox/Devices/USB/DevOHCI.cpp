@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevOHCI.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -6158,7 +6158,7 @@ const PDMDEVREG g_DeviceOHCI =
     /* .cbInstanceShared = */       sizeof(OHCI),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         1,
     /* .pszDescription = */         "OHCI USB controller.\n",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

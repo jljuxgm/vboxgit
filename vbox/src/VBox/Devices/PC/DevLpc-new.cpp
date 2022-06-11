@@ -1,4 +1,4 @@
-/* $Id: DevLpc-new.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevLpc-new.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
 /** @file
  * DevLPC - Minimal ICH9 LPC device emulation.
  */
@@ -398,7 +398,7 @@ const PDMDEVREG g_DeviceLPC =
     /* .cbInstanceShared = */       sizeof(LPCSTATE),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         1,
     /* .pszDescription = */         "Low Pin Count (LPC) Bus",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "",

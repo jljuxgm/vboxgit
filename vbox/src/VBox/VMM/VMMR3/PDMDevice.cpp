@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 80542 2019-09-02 07:56:13Z vboxsync $ */
+/* $Id: PDMDevice.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -759,6 +759,8 @@ static DECLCALLBACK(int) pdmR3DevReg_Register(PPDMDEVREGCB pCallbacks, PCPDMDEVR
     AssertLogRelMsg(pReg->u32VersionEnd == PDM_DEVREG_VERSION,
                     ("u32VersionEnd=%#x, expected %#x. (szName=%s)\n",
                      pReg->u32VersionEnd, PDM_DEVREG_VERSION, pReg->szName));
+    AssertLogRelMsgReturn(pReg->cMaxPciDevices <= 8, ("%#x (szName=%s)\n", pReg->cMaxPciDevices, pReg->szName),
+                          VERR_PDM_INVALID_DEVICE_REGISTRATION);
 
     /*
      * Check for duplicate and find FIFO entry at the same time.

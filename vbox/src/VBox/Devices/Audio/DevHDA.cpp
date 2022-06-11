@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 80692 2019-09-10 10:17:36Z vboxsync $ */
+/* $Id: DevHDA.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -5324,7 +5324,7 @@ const PDMDEVREG g_DeviceHDA =
     /* .cbInstanceShared = */       sizeof(HDASTATE),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         1,
     /* .pszDescription = */         "Intel HD Audio Controller",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",

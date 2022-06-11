@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevE1000.cpp 80701 2019-09-10 14:42:31Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -8102,14 +8102,14 @@ const PDMDEVREG g_DeviceE1000 =
     /* .u32version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "e1000",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RC | PDM_DEVREG_FLAGS_R0 | PDM_DEVREG_FLAGS_MSI_X,
     /* .fClass = */                 PDM_DEVREG_CLASS_NETWORK,
     /* .cMaxInstances = */          ~0U,
     /* .uSharedVersion = */         42,
     /* .cbInstanceShared = */       sizeof(E1KSTATE),
     /* .cbInstanceCC = */           0,
     /* .cbInstanceRC = */           0,
-    /* .uReserved1 = */             0,
+    /* .cMaxPciDevices = */         1,
     /* .pszDescription = */         "Intel PRO/1000 MT Desktop Ethernet.",
 #if defined(IN_RING3)
     /* .pszRCMod = */               "VBoxDDRC.rc",
