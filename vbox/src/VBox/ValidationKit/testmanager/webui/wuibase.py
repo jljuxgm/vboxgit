@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: wuibase.py 82636 2019-12-22 18:53:49Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 82636 $"
 
 
 # Standard python imports.
@@ -133,7 +133,7 @@ class WuiDispatcherBase(object):
         self._fDbgSqlTrace      = False;
         self._fDbgSqlExplain    = False;
         self._dDbgParams        = dict();
-        for sKey, sValue in oSrvGlue.getParameters().iteritems():
+        for sKey, sValue in oSrvGlue.getParameters().items():
             if sKey in self.kasDbgParams:
                 self._dDbgParams[sKey] = sValue;
         if self._dDbgParams:
@@ -305,7 +305,7 @@ class WuiDispatcherBase(object):
                 self._sDebug += self._debugRenderPanel();
         if self._sDebug != '':
             dReplacements['@@DEBUG@@'] = u'<div id="debug"><br><br><hr/>' \
-                                       + (unicode(self._sDebug, errors='ignore') if isinstance(self._sDebug, str)
+                                       + (utils.toUnicode(self._sDebug, errors='ignore') if isinstance(self._sDebug, str)
                                           else self._sDebug) \
                                        + u'</div>\n';
 
@@ -772,7 +772,7 @@ class WuiDispatcherBase(object):
         sHtml  = '<div id="debug-panel">\n' \
                  ' <form id="debug-panel-form" type="get" action="#">\n';
 
-        for sKey, oValue in self._dParams.iteritems():
+        for sKey, oValue in self._dParams.items():
             if sKey not in self.kasDbgParams:
                 if hasattr(oValue, 'startswith'):
                     sHtml += '  <input type="hidden" name="%s" value="%s"/>\n' \
@@ -1174,7 +1174,7 @@ class WuiDispatcherBase(object):
 
             # Take care about strings which may contain unicode characters: convert percent-encoded symbols back to unicode.
             for idxItem, _ in enumerate(dParams[sKey]):
-                dParams[sKey][idxItem] = dParams[sKey][idxItem].decode('utf-8')
+                dParams[sKey][idxItem] = utils.toUnicode(dParams[sKey][idxItem], 'utf-8');
 
             if not len(dParams[sKey]) > 1:
                 dParams[sKey] = dParams[sKey][0];
