@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 79248 2019-06-19 16:05:53Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 79249 2019-06-19 17:58:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -1675,7 +1675,9 @@ void UISoftKeyboardWidget::deleteCurrentLayout()
 
     QDir fileToDelete;
     QString strFilePath(m_pCurrentKeyboardLayout->sourceFilePath());
-    bool fFileExists = fileToDelete.exists(strFilePath);
+    bool fFileExists = false;
+    if (!strFilePath.isEmpty())
+        fFileExists = fileToDelete.exists(strFilePath);
 
     if (fFileExists)
     {
