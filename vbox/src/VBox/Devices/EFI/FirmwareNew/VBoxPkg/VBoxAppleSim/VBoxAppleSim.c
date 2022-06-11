@@ -1,4 +1,4 @@
-/* $Id: VBoxAppleSim.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxAppleSim.c 80902 2019-09-18 21:02:07Z vboxsync $ */
 /** @file
  * VBoxAppleSim.c - VirtualBox Apple Firmware simulation support
  */
@@ -44,6 +44,7 @@
 #include <Guid/Acpi.h>
 #include <Guid/Mps.h>
 
+#include "DataHub.h"
 #include "VBoxPkg.h"
 #include "DevEFI.h"
 #include "iprt/asm.h"
@@ -309,6 +310,9 @@ VBoxInitAppleSim(IN EFI_HANDLE ImageHandle, IN EFI_SYSTEM_TABLE *SystemTable)
     ASSERT_EFI_ERROR(rc);
 
     rc = gBS->InstallMultipleProtocolInterfaces(&ImageHandle, &gEfiAppleVarGuid, &gPrivateVarHandler, NULL);
+    ASSERT_EFI_ERROR(rc);
+
+    rc = InitializeDataHub(ImageHandle, SystemTable);
     ASSERT_EFI_ERROR(rc);
 
     GetVmVariable(EFI_INFO_INDEX_FSB_FREQUENCY, (CHAR8 *)&FSBFrequency, sizeof(FSBFrequency));
