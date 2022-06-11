@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 82060 2019-11-20 22:06:28Z vboxsync $ */
+/* $Id: DevVGA.h 82061 2019-11-20 22:17:32Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -214,7 +214,8 @@ typedef struct _VBOX_VHWA_PENDINGCMD
 #endif
 
 
-typedef struct VGAState {
+typedef struct VGAState
+{
 #ifndef VBOX
     VGA_STATE_COMMON
 #else /* VBOX */
@@ -490,6 +491,11 @@ typedef struct VGAState {
             } dummy;
         };
     } pendingVhwaCommands;
+
+    /** The VBE extra data I/O port. */
+    IOMIOPORTHANDLE             hIoPortVbeExtra;
+    /** The logo command I/O port. */
+    IOMIOPORTHANDLE             hIoPortCmdLogo;
 #endif /* VBOX */
 } VGAState;
 #ifdef VBOX
