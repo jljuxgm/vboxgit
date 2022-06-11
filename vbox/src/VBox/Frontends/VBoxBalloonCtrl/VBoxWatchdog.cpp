@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 83798 2020-04-18 14:13:58Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 83800 2020-04-18 14:17:26Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -52,6 +52,7 @@
 #include <iprt/system.h>
 #include <iprt/time.h>
 
+#include <algorithm>
 #include <signal.h>
 
 #include "VBoxWatchdogInternal.h"
@@ -848,7 +849,7 @@ static void displayHelp(const char *pszImage)
 
     for (unsigned i = 0; i < RT_ELEMENTS(g_aOptions); i++)
     {
-        const char *pcszDescr = "";
+        const char *pcszDescr;
         switch (g_aOptions[i].iShort)
         {
             case GETOPTDEF_WATCHDOG_DISABLE_MODULE:
@@ -887,6 +888,8 @@ static void displayHelp(const char *pszImage)
             case 'I':
                 pcszDescr = "Maximum time interval to trigger log rotation (seconds).";
                 break;
+            default:
+                AssertFailedBreakStmt(pcszDescr = "");
         }
 
         if (g_aOptions[i].iShort < 1000)
