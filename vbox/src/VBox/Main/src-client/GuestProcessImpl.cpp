@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 81552 2019-10-25 16:13:17Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 81553 2019-10-25 16:30:51Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2015,7 +2015,7 @@ int GuestProcessTool::init(GuestSession *pGuestSession, const GuestProcessStartu
         {
             vrc = VERR_GSTCTL_GUEST_ERROR;
         }
-        
+
         if (prcGuest)
             *prcGuest = vrcGuest;
     }
