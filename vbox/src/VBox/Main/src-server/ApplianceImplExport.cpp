@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 80012 2019-07-26 15:43:23Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 80210 2019-08-09 12:36:04Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -323,14 +323,29 @@ HRESULT Machine::exportTo(const ComPtr<IAppliance> &aAppliance, const com::Utf8S
             rc = pHDA->COMGETTER(Type)(&deviceType);
             if (FAILED(rc)) throw rc;
 
-            rc = pHDA->COMGETTER(Medium)(pMedium.asOutParam());
-            if (FAILED(rc)) throw rc;
-
             rc = pHDA->COMGETTER(Port)(&lChannel);
             if (FAILED(rc)) throw rc;
 
             rc = pHDA->COMGETTER(Device)(&lDevice);
             if (FAILED(rc)) throw rc;
+
+            rc = pHDA->COMGETTER(Medium)(pMedium.asOutParam());
+            if (FAILED(rc)) throw rc;
+            if (pMedium.isNull())
+            {
+                Utf8Str strStBus;
+                if ( storageBus == StorageBus_IDE)
+                strStBus = "IDE";
+                else if ( storageBus == StorageBus_SATA)
+                strStBus = "SATA";
+                else if ( storageBus == StorageBus_SCSI)
+                strStBus = "SCSI";
+                else if ( storageBus == StorageBus_SAS)
+                strStBus = "SAS";
+                LogRel(("Warning: skip the medium (bus: %s, slot: %d, port: %d). No storage device attached.\n",
+                strStBus.c_str(), lDevice, lChannel));
+                continue;
+            }
 
             Utf8Str strTargetImageName;
             Utf8Str strLocation;
