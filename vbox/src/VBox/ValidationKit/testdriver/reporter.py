@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 79138 2019-06-14 01:00:00Z vboxsync $
+# $Id: reporter.py 79318 2019-06-25 08:50:23Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79138 $"
+__version__ = "$Revision: 79318 $"
 
 
 # Standard Python imports.
@@ -502,6 +502,8 @@ class LocalReporter(ReporterBase):
                 sLogText = '%s %30s: %s' % (sTsPrf, sCaller, sText);
             else:
                 sLogText = '%s %s' % (sTsPrf, sText);
+            if self.iDebug > 1:
+                sLogText = 'err=%u %s' % (self.cErrors, sLogText,);
 
             # output it.
             if sys.version_info[0] >= 3:
