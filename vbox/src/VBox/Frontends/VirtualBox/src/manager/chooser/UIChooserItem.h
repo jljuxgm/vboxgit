@@ -1,4 +1,4 @@
-/* $Id: UIChooserItem.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserItem.h 83672 2020-04-10 16:27:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItem class declaration.
  */
@@ -153,7 +153,7 @@ public:
     /** @name Children stuff.
       * @{ */
         /** Returns children items of certain @a enmType. */
-        virtual QList<UIChooserItem*> items(UIChooserItemType enmType = UIChooserItemType_Any) const = 0;
+        virtual QList<UIChooserItem*> items(UIChooserNodeType enmType = UIChooserNodeType_Any) const = 0;
 
         /** Adds possible @a fFavorite child @a pItem to certain @a iPosition. */
         virtual void addItem(UIChooserItem *pItem, bool fFavorite, int iPosition) = 0;

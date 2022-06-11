@@ -1,4 +1,4 @@
-/* $Id: UIChooserItemGlobal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserItemGlobal.h 83672 2020-04-10 16:27:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserItemGlobal class declaration.
  */
@@ -36,7 +36,7 @@ class UIChooserItemGlobal : public UIChooserItem
 public:
 
     /** RTTI required for qgraphicsitem_cast. */
-    enum { Type = UIChooserItemType_Global };
+    enum { Type = UIChooserNodeType_Global };
 
     /** Build item for certain @a pNode, passing @a pParent to the base-class. */
     UIChooserItemGlobal(UIChooserItem *pParent, UIChooserNodeGlobal *pNode);
@@ -99,7 +99,7 @@ protected:
     /** @name Children stuff.
       * @{ */
         /** Returns children items of certain @a enmType. */
-        virtual QList<UIChooserItem*> items(UIChooserItemType enmType = UIChooserItemType_Any) const /* override */;
+        virtual QList<UIChooserItem*> items(UIChooserNodeType enmType = UIChooserNodeType_Any) const /* override */;
 
         /** Adds possible @a fFavorite child @a pItem to certain @a iPosition. */
         virtual void addItem(UIChooserItem *pItem, bool fFavorite, int iPosition) /* override */;

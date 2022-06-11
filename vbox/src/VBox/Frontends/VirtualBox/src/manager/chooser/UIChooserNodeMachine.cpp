@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 83654 2020-04-09 16:48:37Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 83672 2020-04-10 16:27:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -137,13 +137,13 @@ QString UIChooserNodeMachine::definition() const
     return QString("m=%1").arg(name());
 }
 
-bool UIChooserNodeMachine::hasNodes(UIChooserItemType enmType /* = UIChooserItemType_Any */) const
+bool UIChooserNodeMachine::hasNodes(UIChooserNodeType enmType /* = UIChooserNodeType_Any */) const
 {
     Q_UNUSED(enmType);
     AssertFailedReturn(false);
 }
 
-QList<UIChooserNode*> UIChooserNodeMachine::nodes(UIChooserItemType enmType /* = UIChooserItemType_Any */) const
+QList<UIChooserNode*> UIChooserNodeMachine::nodes(UIChooserNodeType enmType /* = UIChooserNodeType_Any */) const
 {
     Q_UNUSED(enmType);
     AssertFailedReturn(QList<UIChooserNode*>());

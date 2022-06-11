@@ -1,4 +1,4 @@
-/* $Id: UIChooserDefs.h 83317 2020-03-18 12:55:34Z vboxsync $ */
+/* $Id: UIChooserDefs.h 83672 2020-04-10 16:27:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserDefs class declaration.
  */
@@ -28,13 +28,13 @@
 #include <iprt/cdefs.h>
 
 
-/** UIChooserItem types. */
-enum UIChooserItemType
+/** UIChooserNode types. */
+enum UIChooserNodeType
 {
-    UIChooserItemType_Any     = QGraphicsItem::UserType,
-    UIChooserItemType_Group,
-    UIChooserItemType_Global,
-    UIChooserItemType_Machine
+    UIChooserNodeType_Any     = QGraphicsItem::UserType,
+    UIChooserNodeType_Group,
+    UIChooserNodeType_Global,
+    UIChooserNodeType_Machine
 };
 
 
@@ -56,6 +56,7 @@ enum UIChooserItemDragToken
     UIChooserItemDragToken_Up,
     UIChooserItemDragToken_Down
 };
+
 
 /** UIChooserItemMachine enumeration flags. */
 enum UIChooserItemMachineEnumerationFlag

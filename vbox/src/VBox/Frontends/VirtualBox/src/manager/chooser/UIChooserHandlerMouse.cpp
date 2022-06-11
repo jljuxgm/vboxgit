@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerMouse.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIChooserHandlerMouse.cpp 83672 2020-04-10 16:27:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerMouse class implementation.
  */
@@ -211,7 +211,7 @@ bool UIChooserHandlerMouse::handleMouseDoubleClick(QGraphicsSceneMouseEvent *pEv
                     return true;
                 }
                 /* Or a machine one? */
-                else if (pItemUnderMouse->type() == UIChooserItemType_Machine)
+                else if (pItemUnderMouse->type() == UIChooserNodeType_Machine)
                 {
                     /* Activate machine-item: */
                     model()->activateMachineItem();

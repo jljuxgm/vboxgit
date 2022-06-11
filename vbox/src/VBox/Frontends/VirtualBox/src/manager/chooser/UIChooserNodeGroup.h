@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeGroup.h 83040 2020-02-10 17:08:22Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.h 83672 2020-04-10 16:27:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class declaration.
  */
@@ -52,7 +52,7 @@ public:
     virtual ~UIChooserNodeGroup() /* override */;
 
     /** Returns RTTI node type. */
-    virtual UIChooserItemType type() const /* override */ { return UIChooserItemType_Group; }
+    virtual UIChooserNodeType type() const /* override */ { return UIChooserNodeType_Group; }
 
     /** Returns item name. */
     virtual QString name() const /* override */;
@@ -64,9 +64,9 @@ public:
     virtual QString definition() const /* override */;
 
     /** Returns whether there are children of certain @a enmType. */
-    virtual bool hasNodes(UIChooserItemType enmType = UIChooserItemType_Any) const /* override */;
+    virtual bool hasNodes(UIChooserNodeType enmType = UIChooserNodeType_Any) const /* override */;
     /** Returns a list of nodes of certain @a enmType. */
-    virtual QList<UIChooserNode*> nodes(UIChooserItemType enmType = UIChooserItemType_Any) const /* override */;
+    virtual QList<UIChooserNode*> nodes(UIChooserNodeType enmType = UIChooserNodeType_Any) const /* override */;
 
     /** Adds passed @a pNode to specified @a iPosition. */
     virtual void addNode(UIChooserNode *pNode, int iPosition) /* override */;
