@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 81624 2019-11-01 20:46:49Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 81704 2019-11-06 11:53:51Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1040,7 +1040,7 @@ static DECLCALLBACK(int) ich9pciRegisterMsi(PPDMDEVINS pDevIns, PPDMPCIDEV pPciD
  */
 DECLCALLBACK(int) devpciR3CommonIORegionRegister(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                                  RTGCPHYS cbRegion, PCIADDRESSSPACE enmType, uint32_t fFlags,
-                                                 uint64_t hHandle, PFNPCIIOREGIONMAP pfnCallback)
+                                                 uint64_t hHandle, PFNPCIIOREGIONMAP pfnMapUnmap)
 {
     LogFunc(("%s: region #%u size %RGp type %x fFlags=%#x hHandle=%#RX64\n",
              pPciDev->pszNameR3, iRegion, cbRegion, enmType, fFlags, hHandle));
@@ -1088,7 +1088,7 @@ DECLCALLBACK(int) devpciR3CommonIORegionRegister(PPDMDEVINS pDevIns, PPDMPCIDEV 
     pRegion->fFlags      = fFlags;
     pRegion->hHandle     = hHandle;
     pRegion->type        = enmType;
-    pRegion->pfnMap      = pfnCallback;
+    pRegion->pfnMap      = pfnMapUnmap;
 
     if ((enmType & PCI_ADDRESS_SPACE_BAR64) != 0)
     {
