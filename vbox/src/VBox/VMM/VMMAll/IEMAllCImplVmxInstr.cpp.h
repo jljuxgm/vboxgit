@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 81639 2019-11-04 09:34:42Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 81640 2019-11-04 09:36:19Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -1328,11 +1328,11 @@ IEM_STATIC uint32_t iemVmxCalcPreemptTimer(PVMCPUCC pVCpu)
     uint32_t const uVmcsPreemptVal = pVmcs->u32PreemptTimer;
     if (uVmcsPreemptVal > 0)
     {
-        uint64_t const uCurTick        = TMCpuTickGetNoCheck(pVCpu);
-        uint64_t const uEntryTick      = pVCpu->cpum.GstCtx.hwvirt.vmx.uEntryTick;
-        uint64_t const uDelta          = uCurTick - uEntryTick;
-        uint32_t const uPreemptTimer   = uVmcsPreemptVal
-                                       - ASMDivU64ByU32RetU32(uDelta, uVmcsPreemptVal * RT_BIT(VMX_V_PREEMPT_TIMER_SHIFT));
+        uint64_t const uCurTick      = TMCpuTickGetNoCheck(pVCpu);
+        uint64_t const uEntryTick    = pVCpu->cpum.GstCtx.hwvirt.vmx.uEntryTick;
+        uint64_t const uDelta        = uCurTick - uEntryTick;
+        uint32_t const uPreemptTimer = uVmcsPreemptVal
+                                     - ASMDivU64ByU32RetU32(uDelta, uVmcsPreemptVal * RT_BIT(VMX_V_PREEMPT_TIMER_SHIFT));
         return uPreemptTimer;
     }
     return 0;
