@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 84275 2020-05-12 17:04:10Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 84288 2020-05-13 14:36:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -100,8 +100,7 @@ bool UIWizardNewCloudVM::createVSDForm()
         }
 
         /* Show "Acquire launch form" progress: */
-        msgCenter().showModalProgressDialog(comProgress, tr("Acquire launch form ..."),
-                                            ":/progress_refresh_90px.png", this, 0);
+        msgCenter().showModalProgressDialog(comProgress, QString(), ":/progress_refresh_90px.png", this, 0);
         if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
         {
             msgCenter().cannotAcquireCloudClientParameter(comProgress);
@@ -150,8 +149,7 @@ bool UIWizardNewCloudVM::createCloudVM()
         }
 
         /* Show "Create Cloud Machine" progress: */
-        msgCenter().showModalProgressDialog(comProgress, tr("Create Cloud Machine ..."),
-                                            ":/progress_new_cloud_vm_90px.png", this, 0);
+        msgCenter().showModalProgressDialog(comProgress, QString(), ":/progress_new_cloud_vm_90px.png", this, 0);
         if (comProgress.GetCanceled())
             break;
         if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
