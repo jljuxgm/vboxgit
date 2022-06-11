@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83783 2020-04-17 23:29:27Z vboxsync $
+# $Id: Config.kmk 83792 2020-04-18 00:40:07Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1741,19 +1741,39 @@ endif
 # Quoted strings should not be passed to the assemblers since they might not
 # subscribe to C preprocessing semantics.
 ifdef VBOX_PATH_APP_PRIVATE
- CDEFS += RTPATH_APP_PRIVATE=\"$(VBOX_PATH_APP_PRIVATE)\"
+ ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
+  CDEFS += RTPATH_APP_PRIVATE="$(VBOX_PATH_APP_PRIVATE)"
+ else
+  CDEFS += RTPATH_APP_PRIVATE=\"$(VBOX_PATH_APP_PRIVATE)\"
+ endif
 endif
 ifdef VBOX_PATH_APP_PRIVATE_ARCH
- CDEFS += RTPATH_APP_PRIVATE_ARCH=\"$(VBOX_PATH_APP_PRIVATE_ARCH)\"
+ ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
+  CDEFS += RTPATH_APP_PRIVATE_ARCH="$(VBOX_PATH_APP_PRIVATE_ARCH)"
+ else
+  CDEFS += RTPATH_APP_PRIVATE_ARCH=\"$(VBOX_PATH_APP_PRIVATE_ARCH)\"
+ endif
 endif
 ifdef VBOX_PATH_APP_PRIVATE_ARCH_TOP
- CDEFS += RTPATH_APP_PRIVATE_ARCH_TOP=\"$(VBOX_PATH_APP_PRIVATE_ARCH_TOP)\"
+ ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
+  CDEFS += RTPATH_APP_PRIVATE_ARCH_TOP="$(VBOX_PATH_APP_PRIVATE_ARCH_TOP)"
+ else
+  CDEFS += RTPATH_APP_PRIVATE_ARCH_TOP=\"$(VBOX_PATH_APP_PRIVATE_ARCH_TOP)\"
+ endif
 endif
 ifdef VBOX_PATH_SHARED_LIBS
- CDEFS += RTPATH_SHARED_LIBS=\"$(VBOX_PATH_SHARED_LIBS)\"
+ ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
+  CDEFS += RTPATH_SHARED_LIBS="$(VBOX_PATH_SHARED_LIBS)"
+ else
+  CDEFS += RTPATH_SHARED_LIBS=\"$(VBOX_PATH_SHARED_LIBS)\"
+ endif
 endif
 ifdef VBOX_PATH_APP_DOCS
+ ifdef VBOX_WITH_AUTOMATIC_DEFS_QUOTING
+ CDEFS += RTPATH_APP_DOCS="$(VBOX_PATH_APP_DOCS)"
+ else
  CDEFS += RTPATH_APP_DOCS=\"$(VBOX_PATH_APP_DOCS)\"
+ endif
 endif
 CXXDEFS  += $(CDEFS)
 PCHDEFS  += $(CDEFS)
@@ -7954,7 +7974,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83783 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83792 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
