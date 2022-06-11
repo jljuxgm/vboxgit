@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 81519 2019-10-24 13:25:31Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 81548 2019-10-25 14:49:24Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -1916,6 +1916,7 @@ VMMR0_INT_DECL(int) PDMR0DeviceCreateReqHandler(PGVM pGVM, PPDMDEVICECREATEREQ p
  * @returns VBox status code.
  * @param   pGVM    The global (ring-0) VM structure.
  * @param   pReq    Pointer to the request buffer.
+ * @param   idCpu   The ID of the calling EMT.
  * @thread  EMT(0), except for PDMDEVICEGENCALL_REQUEST which can be any EMT.
  */
 VMMR0_INT_DECL(int) PDMR0DeviceGenCallReqHandler(PGVM pGVM, PPDMDEVICEGENCALLREQ pReq, VMCPUID idCpu)
