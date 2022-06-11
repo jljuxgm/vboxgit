@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 79036 2019-06-07 14:56:19Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 79088 2019-06-11 12:16:49Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -582,6 +582,8 @@ DECLCALLBACK(int) vboxClipboardWinThread(RTTHREAD hThreadSelf, void *pvUser)
 static int vboxClipboardWinSyncInternal(PVBOXCLIPBOARDCONTEXT pCtx)
 {
     AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
+
+    LogFlowFuncEnter();
 
     int rc;
 

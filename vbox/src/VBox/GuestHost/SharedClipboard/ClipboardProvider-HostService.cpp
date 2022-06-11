@@ -1,4 +1,4 @@
-/* $Id: ClipboardProvider-HostService.cpp 79036 2019-06-07 14:56:19Z vboxsync $ */
+/* $Id: ClipboardProvider-HostService.cpp 79088 2019-06-11 12:16:49Z vboxsync $ */
 /** @file
  * Shared Clipboard - Provider implementation for host service (host side).
  */
@@ -54,8 +54,8 @@ int SharedClipboardProviderHostService::WriteDataHdr(const PVBOXCLIPBOARDDATAHDR
     return VERR_NOT_IMPLEMENTED;
 }
 
-int SharedClipboardProviderHostService::ReadMetaData(const PVBOXCLIPBOARDDATAHDR pDataHdr, void *pvMeta, uint32_t cbMeta, uint32_t *pcbRead,
-                                                     uint32_t fFlags /* = 0 */)
+int SharedClipboardProviderHostService::ReadMetaData(const PVBOXCLIPBOARDDATAHDR pDataHdr, void *pvMeta, uint32_t cbMeta,
+                                                     uint32_t *pcbRead, uint32_t fFlags /* = 0 */)
 {
     RT_NOREF(pDataHdr, pvMeta, cbMeta, pcbRead, fFlags);
     return VERR_NOT_IMPLEMENTED;
