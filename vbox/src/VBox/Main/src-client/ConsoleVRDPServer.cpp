@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 80375 2019-08-21 17:48:30Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 80377 2019-08-21 17:50:43Z vboxsync $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -2183,6 +2183,8 @@ void ConsoleVRDPServer::remote3DRedirect(bool fEnable)
            /* The stream has not been created. */
         }
     }
+#else
+    RT_NOREF(pvUser, u32Id, pvData, cbData);
 #endif
 
     return VINF_SUCCESS;
