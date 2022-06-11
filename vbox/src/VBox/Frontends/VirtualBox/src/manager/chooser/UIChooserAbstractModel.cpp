@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 83290 2020-03-13 16:43:36Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 83351 2020-03-20 15:29:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -455,7 +455,7 @@ void UIChooserAbstractModel::loadTree()
                                                                           UIChooserItemType_Group,
                                                                           strProviderName),
                                                    strProviderName,
-                                                   true /* opened */);
+                                                   false /* opened */);
 
                         /* Iterate through existing profile names: */
                         foreach (const QString &strProfileName, profileNames)
