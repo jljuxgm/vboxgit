@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 77412 2019-02-21 18:25:37Z vboxsync $ */
+/* $Id: VBoxDbgConsole.cpp 82227 2019-11-26 18:35:15Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -489,6 +489,9 @@ VBoxDbgConsole::VBoxDbgConsole(VBoxDbgGui *a_pDbgGui, QWidget *a_pParent/* = NUL
     m_pTimer(NULL), m_fUpdatePending(false), m_Thread(NIL_RTTHREAD), m_EventSem(NIL_RTSEMEVENT),
     m_fTerminate(false), m_fThreadTerminated(false)
 {
+    /* Delete dialog on close: */
+    setAttribute(Qt::WA_DeleteOnClose);
+
     /*
      * Create the output text box.
      */
@@ -993,10 +996,7 @@ void
 VBoxDbgConsole::closeEvent(QCloseEvent *a_pCloseEvt)
 {
     if (m_fThreadTerminated)
-    {
         a_pCloseEvt->accept();
-        delete this;
-    }
 }
 
 
