@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.cpp 79882 2019-07-19 11:33:40Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 79887 2019-07-19 13:02:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
@@ -982,6 +982,8 @@ void UIInformationDataStorageStatistics::sltProcessStatistics()
     {
         strInfo = dbg.GetStats(it.key(), true);
         m_values[it.key()] = parseStatistics(strInfo);
+        if (m_values[it.key()].isEmpty())
+            m_values[it.key()] = "0";
     }
     QModelIndex index = m_pModel->index(1,0);
     m_pModel->updateData(index);
