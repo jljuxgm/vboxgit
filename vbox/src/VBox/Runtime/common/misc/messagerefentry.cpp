@@ -1,4 +1,4 @@
-/* $Id: messagerefentry.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: messagerefentry.cpp 79807 2019-07-16 14:01:56Z vboxsync $ */
 /** @file
  * IPRT - Program usage and help formatting.
  */
@@ -244,7 +244,7 @@ RTDECL(int) RTMsgRefEntryPrintStringTable(PRTSTREAM pStrm, PCRTMSGREFENTRYSTRTAB
 {
     uint32_t cPendingBlankLines = pcPendingBlankLines ? *pcPendingBlankLines : 0;
     uint32_t cLinesWritten      = 0;
-    uint32_t cchWidth           = getScreenWidth(pStrm);
+    uint32_t cchWidth           = getScreenWidth(pStrm) - 1; /* (Seems a -1 here is prudent, at least on windows.) */
     uint64_t fPrevScope         = fScope;
     int      rc                 = VINF_SUCCESS;
     for (uint32_t i = 0; i < pStrTab->cStrings; i++)
