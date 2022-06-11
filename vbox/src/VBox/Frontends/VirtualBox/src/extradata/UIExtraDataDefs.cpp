@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 81228 2019-10-11 14:13:21Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 81263 2019-10-14 16:51:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -208,6 +208,7 @@ const char *UIExtraDataDefs::GUI_SoftKeyboard_SelectedLayout  = "GUI/SoftKeyboar
 const char *UIExtraDataDefs::GUI_SoftKeyboard_Options  = "GUI/SoftKeyboardOptions";
 const char *UIExtraDataDefs::GUI_SoftKeyboard_HideNumPad = "GUI/SoftKeyboardHideNumPad";
 const char *UIExtraDataDefs::GUI_SoftKeyboard_HideOSMenuKeys = "GUI/SoftKeyboardHideOSMenuKeys";
+const char *UIExtraDataDefs::GUI_SoftKeyboard_HideMultimediaKeys = "GUI/SoftKeyboardHideMultimediaKeys";
 
 /* File Manager options: */
 const char *UIExtraDataDefs::GUI_GuestControl_FileManagerOptions = "GUI/GuestControl/FileManagerOptions";

@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 81110 2019-10-04 09:57:56Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 81263 2019-10-14 16:51:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -84,6 +84,7 @@ private slots:
     void sltStatusBarMessage(const QString &strMessage);
     void sltShowHideOSMenuKeys(bool fShow);
     void sltShowHideNumPad(bool fShow);
+    void sltShowHideMultimediaKeys(bool fHide);
     void sltHandleColorCellClick(int iColorRow);
     void sltResetKeyboard();
 

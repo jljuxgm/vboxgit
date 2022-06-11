@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 81230 2019-10-11 14:50:50Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 81263 2019-10-14 16:51:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -664,8 +664,8 @@ public:
         QRect softKeyboardDialogGeometry(QWidget *pWidget, const QRect &defaultGeometry);
         void setSoftKeyboardDialogGeometry(const QRect &geometry, bool fMaximized);
         bool softKeyboardDialogShouldBeMaximized();
-        void setSoftKeyboardOptions(bool fShowNumPad, bool fHideOSMenuKeys);
-        void softKeyboardOptions(bool &fOutShowNumPad, bool &fOutHideOSMenuKeys);
+        void setSoftKeyboardOptions(bool fShowNumPad, bool fHideOSMenuKeys, bool fMultimediaKeys);
+        void softKeyboardOptions(bool &fOutShowNumPad, bool &fOutHideOSMenuKeys, bool &fOutHideMultimediaKeys);
         void setSoftKeyboardColorTheme(const QStringList &colorStringList);
         QStringList softKeyboardColorTheme();
         void setSoftKeyboardSelectedLayout(const QUuid &uLayoutUid);
