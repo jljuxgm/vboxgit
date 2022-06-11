@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83969 2020-04-24 15:06:47Z vboxsync $
+# $Id: Config.kmk 83991 2020-04-27 10:08:37Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5652,6 +5652,47 @@ else # gcc:
  	$(VBOX_GCC_NON_PEDANTIC_CXX)
 endif
 
+#
+# VBoxR3Static w/o any CRT (windows only atm, experimental).
+# Implies no fancy C++, no exceptions, no static constructors or destructors, ++.
+#
+TEMPLATE_VBoxR3StaticNoCrt               = Static
+TEMPLATE_VBoxR3StaticNoCrt_EXTENDS       = VBoxR3Static
+TEMPLATE_VBoxR3StaticNoCrt_SDKS          = $(subst WINSDK10-UCRT-STATIC,WINSDK10-UCRT-INCS, $(filter-out VBOX_OPENSSL,$(TEMPLATE_VBoxR3Static_SDKS)))
+TEMPLATE_VBoxR3StaticNoCrt_DEFS          = $(TEMPLATE_VBoxR3Static_DEFS) \
+	RT_NO_CRT \
+	IN_RT_STATIC
+TEMPLATE_VBoxR3StaticNoCrt_DEFS.win      = $(TEMPLATE_VBoxR3Static_DEFS.win) \
+	RT_WITHOUT_NOCRT_WRAPPERS
+TEMPLATE_VBoxR3StaticNoCrt_LIBS          = \
+	$(PATH_STAGE_LIB)/RuntimeR3NoCrt$(VBOX_SUFF_LIB)
+ifeq ($(KBUILD_TARGET),win)
+TEMPLATE_VBoxR3StaticNoCrt_LIBS.x86        = $(NO_SUCH_VARIABLE)
+TEMPLATE_VBoxR3StaticNoCrt_LIBS.amd64      = $(NO_SUCH_VARIABLE)
+TEMPLATE_VBoxR3StaticNoCrt_LIBS.win        = $(NO_SUCH_VARIABLE)
+TEMPLATE_VBoxR3StaticNoCrt_LIBS.win.x86    = \
+	$(PATH_SDK_$(VBOX_WINDDK)_LIB.x86)/int64.lib \
+	$(PATH_TOOL_$(TEMPLATE_VBoxR3StaticNoCrt_TOOL.win.x86)_LIB)/chkstk.obj
+TEMPLATE_VBoxR3StaticNoCrt_LDFLAGS.win.x86 = $(filter-out -Include%, $(TEMPLATE_VBoxR3Static_LDFLAGS.win.x86))
+TEMPLATE_VBoxR3StaticNoCrt_CFLAGS          = $(filter-out -EH%,$(TEMPLATE_VBoxR3Static_CFLAGS)) /GS- -EHs-
+TEMPLATE_VBoxR3StaticNoCrt_CXXFLAGS        = $(filter-out -EH%,$(TEMPLATE_VBoxR3Static_CXXFLAGS)) /GS- -EHs-
+TEMPLATE_VBoxR3StaticNoCrt_PCHFLAGS        = $(filter-out -EH%,$(TEMPLATE_VBoxR3Static_PCHFLAGS)) /GS- -EHs-
+TEMPLATE_VBoxR3StaticNoCrt_CXXFLAGS.debug  = $(filter-out /RTC% -RTC%, $(TEMPLATE_VBoxR3Static_CXXFLAGS.debug))
+else
+TEMPLATE_VBoxR3StaticNoCrt_CXXFLAGS        = $(TEMPLATE_VBoxR3Static_CXXFLAGS) -fno-exceptions
+TEMPLATE_VBoxR3StaticNoCrt_PCHFLAGS        = $(TEMPLATE_VBoxR3Static_PCHFLAGS) -fno-exceptions
+endif
+
+
+#
+# Executable w/o CRT (windows only atm, experimental).
+# Implies no fancy C++, no exceptions, no static constructors or destructors, ++.
+#
+TEMPLATE_VBoxR3StaticNoCrtExe            := VBoxR3StaticNoCrt with EXE startup code calling a main() function
+TEMPLATE_VBoxR3StaticNoCrtExe_EXTENDS    := VBoxR3StaticNoCrt
+TEMPLATE_VBoxR3StaticNoCrtExe_EXTENDS_BY := appending
+TEMPLATE_VBoxR3StaticNoCrtExe_LDFLAGS.win := /entry:CustomMainEntrypoint /subsystem:console
+
 
 #
 # Same as VBOXR3EXE but without C++ exceptions.
@@ -7555,6 +7596,39 @@ else
  TEMPLATE_VBoxGuestR3Lib_CXXFLAGS    += $(VBOX_GCC_WERR)
 endif
 
+
+#
+# Guest version of VBoxR3StaticNoCrtExe.
+#
+TEMPLATE_VBoxGuestR3NoCrtExe                := ...
+TEMPLATE_VBoxGuestR3NoCrtExe_EXTENDS        := VBoxGuestR3Exe
+TEMPLATE_VBoxGuestR3NoCrtExe_SDKS            = $(subst WINSDK10-UCRT-STATIC,WINSDK10-UCRT-INCS, $(filter-out VBOX_OPENSSL,$(TEMPLATE_VBoxGuestR3Exe_SDKS)))
+TEMPLATE_VBoxGuestR3NoCrtExe_DEFS            = $(TEMPLATE_VBoxGuestR3Exe_DEFS) \
+	RT_NO_CRT \
+	IN_RT_STATIC
+TEMPLATE_VBoxGuestR3NoCrtExe_DEFS.win        = $(TEMPLATE_VBoxGuestR3Exe_DEFS.win) \
+	RT_WITHOUT_NOCRT_WRAPPERS
+TEMPLATE_VBoxGuestR3NoCrtExe_LIBS            = \
+	$(PATH_STAGE_LIB)/RuntimeR3NoCrt$(VBOX_SUFF_LIB)
+ifeq ($(KBUILD_TARGET),win)
+TEMPLATE_VBoxGuestR3NoCrtExe_LIBS.x86        = $(NO_SUCH_VARIABLE)
+TEMPLATE_VBoxGuestR3NoCrtExe_LIBS.amd64      = $(NO_SUCH_VARIABLE)
+TEMPLATE_VBoxGuestR3NoCrtExe_LIBS.win        = $(NO_SUCH_VARIABLE)
+TEMPLATE_VBoxGuestR3NoCrtExe_LIBS.win.x86    = \
+	$(PATH_SDK_$(VBOX_WINDDK)_LIB.x86)/int64.lib \
+	$(PATH_TOOL_$(TEMPLATE_VBoxGuestR3NoCrtExe_TOOL.win.x86)_LIB)/chkstk.obj
+TEMPLATE_VBoxGuestR3NoCrtExe_LDFLAGS.win.x86 = $(filter-out -Include%, $(TEMPLATE_VBoxGuestR3Exe_LDFLAGS.win.x86))
+TEMPLATE_VBoxGuestR3NoCrtExe_LDFLAGS.win     = $(TEMPLATE_VBoxGuestR3Exe_LDFLAGS.win) /entry:CustomMainEntrypoint /subsystem:console
+TEMPLATE_VBoxGuestR3NoCrtExe_CFLAGS          = $(filter-out -EH%,$(TEMPLATE_VBoxGuestR3Exe_CFLAGS)) /GS- -EHs-
+TEMPLATE_VBoxGuestR3NoCrtExe_CXXFLAGS        = $(filter-out -EH%,$(TEMPLATE_VBoxGuestR3Exe_CXXFLAGS)) /GS- -EHs-
+TEMPLATE_VBoxGuestR3NoCrtExe_PCHFLAGS        = $(filter-out -EH%,$(TEMPLATE_VBoxGuestR3Exe_PCHFLAGS)) /GS- -EHs-
+TEMPLATE_VBoxGuestR3NoCrtExe_CXXFLAGS.debug  = $(filter-out /RTC% -RTC%, $(TEMPLATE_VBoxGuestR3Exe_CXXFLAGS.debug))
+else
+TEMPLATE_VBoxGuestR3NoCrtExe_CXXFLAGS        = $(TEMPLATE_VBoxGuestR3Exe_CXXFLAGS) -fno-exceptions
+TEMPLATE_VBoxGuestR3NoCrtExe_PCHFLAGS        = $(TEMPLATE_VBoxGuestR3Exe_PCHFLAGS) -fno-exceptions
+endif
+
+
 #
 # Template for building R3 programs for the guest additions (no -pedantic)
 #
@@ -8040,7 +8114,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83969 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83991 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
