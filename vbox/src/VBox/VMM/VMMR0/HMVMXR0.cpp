@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79431 2019-07-01 06:30:03Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79432 2019-07-01 06:37:59Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -16839,6 +16839,7 @@ HMVMX_EXIT_DECL hmR0VmxExitXcptOrNmiNested(PVMCPU pVCpu, PVMXTRANSIENT pVmxTrans
         case VMX_EXIT_INT_INFO_TYPE_PRIV_SW_XCPT:
         {
             rc = hmR0VmxReadExitInstrLenVmcs(pVmxTransient);
+            AssertRCReturn(rc, rc);
             RT_FALL_THRU();
         }
         case VMX_EXIT_INT_INFO_TYPE_HW_XCPT:
