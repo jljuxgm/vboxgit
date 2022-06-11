@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 80243 2019-08-13 06:39:03Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 80249 2019-08-13 11:43:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -109,6 +109,7 @@ private:
     void updateCPUGraphsAndMetric(ULONG iLoadPercentage, ULONG iOtherPercentage);
     void updateRAMGraphsAndMetric(quint64 iTotalRAM, quint64 iFreeRAM);
     void updateNewGraphsAndMetric(ULONG iReceiveRate, ULONG iTransmitRate);
+    QString dataColorString(const QString &strChartName, int iDataIndex);
 
     bool m_fGuestAdditionsAvailable;
     /** Holds the machine instance. */
