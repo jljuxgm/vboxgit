@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 78545 2019-05-16 12:47:28Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 78596 2019-05-20 11:54:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -226,6 +226,8 @@ Q_DECLARE_METATYPE (AbstractItem::ItemType);
 /* Root Item */
 class SHARED_LIBRARY_STUFF RootItem : public AbstractItem
 {
+    Q_OBJECT;
+
 public:
 
     RootItem(QITreeView *pParent);
@@ -252,6 +254,8 @@ private:
 /* Controller Item */
 class SHARED_LIBRARY_STUFF ControllerItem : public AbstractItem
 {
+    Q_OBJECT;
+
 public:
 
     ControllerItem (AbstractItem *aParent, const QString &aName, KStorageBus aBusType,
@@ -307,6 +311,8 @@ private:
 /* Attachment Item */
 class SHARED_LIBRARY_STUFF AttachmentItem : public AbstractItem
 {
+    Q_OBJECT;
+
 public:
 
     AttachmentItem (AbstractItem *aParent, KDeviceType aDeviceType);
