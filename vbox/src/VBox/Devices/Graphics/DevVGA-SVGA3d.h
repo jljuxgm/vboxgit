@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.h 82048 2019-11-20 20:30:15Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.h 82053 2019-11-20 20:49:19Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -51,7 +51,7 @@
 
 
 /* DevVGA-SVGA.cpp: */
-void vmsvga3dSurfaceUpdateHeapBuffersOnFifoThread(PVGASTATE pThis, uint32_t sid);
+void vmsvga3dSurfaceUpdateHeapBuffersOnFifoThread(PPDMDEVINS pDevIns, PVGASTATE pThis, uint32_t sid);
 
 
 /* DevVGA-SVGA3d-ogl.cpp & DevVGA-SVGA3d-win.cpp: */
@@ -119,7 +119,8 @@ int vmsvga3dContextWindowCreate(HINSTANCE hInstance, RTTHREAD pWindowThread, RTS
 
 void vmsvga3dUpdateHeapBuffersForSurfaces(PVGASTATE pThis, uint32_t sid);
 void vmsvga3dInfoContextWorker(PVGASTATE pThis, PCDBGFINFOHLP pHlp, uint32_t cid, bool fVerbose);
-void vmsvga3dInfoSurfaceWorker(PVGASTATE pThis, PCDBGFINFOHLP pHlp, uint32_t sid, bool fVerbose, uint32_t cxAscii, bool fInvY, const char *pszBitmapPath);
+void vmsvga3dInfoSurfaceWorker(PPDMDEVINS pDevIns, PVGASTATE pThis, PCDBGFINFOHLP pHlp, uint32_t sid, bool fVerbose,
+                               uint32_t cxAscii, bool fInvY, const char *pszBitmapPath);
 
 /* DevVGA-SVGA3d-shared.cpp: */
 
