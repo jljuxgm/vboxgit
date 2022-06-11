@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 79056 2019-06-09 20:55:56Z vboxsync $
+# $Id: vboxwrappers.py 79068 2019-06-10 23:10:46Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79056 $"
+__version__ = "$Revision: 79068 $"
 
 
 # Standard Python imports.
@@ -377,12 +377,15 @@ class ProgressWrapper(TdTaskBase):
         return sRet;
 
     def logResult(self, fIgnoreErrors = False):
-        """ Logs the result. """
+        """
+        Logs the result, failure logged as error unless fIgnoreErrors is True.
+        Return True on success, False on failure (and fIgnoreErrors is false).
+        """
         sText = self.stringifyResult();
-        if      self.isCompleted() and self.getResult() < 0 \
-            and fIgnoreErrors is False:
+        if self.isCompleted() and self.getResult() < 0 and fIgnoreErrors is False:
             return reporter.error(sText);
-        return reporter.log(sText);
+        reporter.log(sText);
+        return True;
 
     def waitOnProgress(self, cMsInterval = 1000):
         """
