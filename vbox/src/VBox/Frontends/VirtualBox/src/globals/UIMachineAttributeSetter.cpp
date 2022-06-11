@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.cpp 79982 2019-07-25 16:09:39Z vboxsync $ */
+/* $Id: UIMachineAttributeSetter.cpp 80046 2019-07-29 16:06:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
@@ -103,6 +103,17 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
             {
                 /* Change machine boot order: */
                 saveBootItems(guiAttribute.value<UIBootItemDataList>(), comMachine);
+                if (!comMachine.isOk())
+                {
+                    msgCenter().cannotChangeMachineAttribute(comMachine);
+                    fErrorHappened = true;
+                }
+                break;
+            }
+            case MachineAttribute_VideoMemory:
+            {
+                /* Change machine video memory (VRAM): */
+                comMachine.SetVRAMSize(guiAttribute.toInt());
                 if (!comMachine.isOk())
                 {
                     msgCenter().cannotChangeMachineAttribute(comMachine);
