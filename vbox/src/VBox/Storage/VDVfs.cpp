@@ -1,4 +1,4 @@
-/* $Id: VDVfs.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VDVfs.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
 /** @file
  * Virtual Disk Container implementation. - VFS glue.
  */
@@ -713,7 +713,7 @@ static DECLCALLBACK(int) vdVfsChain_Instantiate(PCRTVFSCHAINELEMENTREG pProvider
     /* Determin the format. */
     char  *pszFormat = NULL;
     VDTYPE enmType   = VDTYPE_INVALID;
-    int rc = VDGetFormat(NULL, NULL, pElement->paArgs[0].psz, &pszFormat, &enmType);
+    int rc = VDGetFormat(NULL, NULL, pElement->paArgs[0].psz, VDTYPE_INVALID, &pszFormat, &enmType);
     if (RT_SUCCESS(rc))
     {
         PVDISK pDisk = NULL;

@@ -1,4 +1,4 @@
-/* $Id: CUE.cpp 78169 2019-04-17 15:18:00Z vboxsync $ */
+/* $Id: CUE.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
 /** @file
  * CUE - CUE/BIN Disk image, Core Code.
  */
@@ -1431,9 +1431,9 @@ static PCVDREGIONDESC cueRegionQueryByOffset(PCUEIMAGE pThis, uint64_t uOffset)
 
 /** @copydoc VDIMAGEBACKEND::pfnProbe */
 static DECLCALLBACK(int) cueProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                  PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+                                  PVDINTERFACE pVDIfsImage, VDTYPE enmDesiredType, VDTYPE *penmType)
 {
-    RT_NOREF1(pVDIfsDisk);
+    RT_NOREF(pVDIfsDisk, enmDesiredType);
     LogFlowFunc(("pszFilename=\"%s\" pVDIfsDisk=%#p pVDIfsImage=%#p\n", pszFilename, pVDIfsDisk, pVDIfsImage));
     int rc = VINF_SUCCESS;
 

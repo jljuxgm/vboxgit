@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 77232 2019-02-09 01:55:37Z vboxsync $ */
+/* $Id: QED.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -1502,9 +1502,9 @@ static DECLCALLBACK(int) qedAsyncClusterAllocUpdate(void *pBackendData, PVDIOCTX
 
 /** @copydoc VDIMAGEBACKEND::pfnProbe */
 static DECLCALLBACK(int) qedProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                  PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+                                  PVDINTERFACE pVDIfsImage, VDTYPE enmDesiredType, VDTYPE *penmType)
 {
-    RT_NOREF1(pVDIfsDisk);
+    RT_NOREF(pVDIfsDisk, enmDesiredType);
     LogFlowFunc(("pszFilename=\"%s\" pVDIfsDisk=%#p pVDIfsImage=%#p\n", pszFilename, pVDIfsDisk, pVDIfsImage));
     PVDIOSTORAGE pStorage = NULL;
     int rc = VINF_SUCCESS;

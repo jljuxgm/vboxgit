@@ -1,4 +1,4 @@
-/* $Id: VBoxFUSE.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxFUSE.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
 /** @file
  * VBoxFUSE - Disk Image Flattening FUSE Program.
  */
@@ -520,7 +520,7 @@ static int vboxfuseFlatImageCreate(const char *pszPath, const char *pszImage, PV
      */
     char *pszFormat;
     VDTYPE enmType;
-    rc = VDGetFormat(NULL /* pVDIIfsDisk */, NULL /* pVDIIfsImage*/, pszImage, &pszFormat, &enmType);
+    rc = VDGetFormat(NULL /* pVDIIfsDisk */, NULL /* pVDIIfsImage*/, pszImage,  VDTYPE_INVALID,&pszFormat, &enmType);
     if (RT_FAILURE(rc))
     {
         LogRel(("VDGetFormat(%s,) failed, rc=%Rrc\n", pszImage, rc));

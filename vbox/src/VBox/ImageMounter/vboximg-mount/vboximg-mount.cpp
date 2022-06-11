@@ -1,4 +1,4 @@
-/* $Id: vboximg-mount.cpp 77143 2019-02-02 00:22:10Z vboxsync $ */
+/* $Id: vboximg-mount.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
 /** @file
  * vboximg-mount - Disk Image Flattening FUSE Program.
  */
@@ -1371,7 +1371,7 @@ main(int argc, char **argv)
    /*
      * Create HDD container to open base image and differencing images into
      */
-    rc = VDGetFormat(NULL /* pVDIIfsDisk */, NULL /* pVDIIfsImage*/,
+    rc = VDGetFormat(NULL /* pVDIIfsDisk */, NULL /* pVDIIfsImage*/, VDTYPE_INVALID,
             CSTR(pVDiskBaseImagePath), &pszFormat, &enmType);
 
     if (RT_FAILURE(rc))

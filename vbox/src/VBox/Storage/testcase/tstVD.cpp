@@ -1,4 +1,4 @@
-/* $Id: tstVD.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstVD.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
 /** @file
  * Simple VBox HDD container test utility.
  */
@@ -543,7 +543,7 @@ static int tstVDOpenCreateWriteMerge(const char *pszBackend,
     {
         RTFileClose(File);
         rc = VDGetFormat(NULL /* pVDIfsDisk */, NULL /* pVDIfsImage */,
-                         pszBaseFilename, &pszFormat, &enmType);
+                         pszBaseFilename, VDTYPE_INVALID, &pszFormat, &enmType);
         RTPrintf("VDGetFormat() pszFormat=%s rc=%Rrc\n", pszFormat, rc);
         if (RT_SUCCESS(rc) && strcmp(pszFormat, pszBackend))
         {

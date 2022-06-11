@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VHDX.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -1769,9 +1769,9 @@ static int vhdxOpenImage(PVHDXIMAGE pImage, unsigned uOpenFlags)
 
 /** @copydoc VDIMAGEBACKEND::pfnProbe */
 static DECLCALLBACK(int) vhdxProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                   PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+                                   PVDINTERFACE pVDIfsImage, VDTYPE enmDesiredType, VDTYPE *penmType)
 {
-    RT_NOREF1(pVDIfsDisk);
+    RT_NOREF(pVDIfsDisk, enmDesiredType);
     LogFlowFunc(("pszFilename=\"%s\" pVDIfsDisk=%#p pVDIfsImage=%#p\n", pszFilename, pVDIfsDisk, pVDIfsImage));
     PVDIOSTORAGE pStorage = NULL;
     uint64_t cbFile;

@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 78399 2019-05-06 18:09:47Z vboxsync $ */
+/* $Id: VMDK.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5232,8 +5232,9 @@ static char *vmdkStrReplace(const char *pszWhere, const char *pszWhat,
 
 /** @copydoc VDIMAGEBACKEND::pfnProbe */
 static DECLCALLBACK(int) vmdkProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                   PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+                                   PVDINTERFACE pVDIfsImage, VDTYPE enmDesiredType, VDTYPE *penmType)
 {
+    RT_NOREF(enmDesiredType);
     LogFlowFunc(("pszFilename=\"%s\" pVDIfsDisk=%#p pVDIfsImage=%#p penmType=%#p\n",
                  pszFilename, pVDIfsDisk, pVDIfsImage, penmType));
 

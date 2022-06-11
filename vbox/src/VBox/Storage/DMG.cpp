@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DMG.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -1741,9 +1741,9 @@ static DECLCALLBACK(int) dmgOpenImage(PDMGIMAGE pThis, unsigned uOpenFlags)
 
 /** @interface_method_impl{VDIMAGEBACKEND,pfnProbe} */
 static DECLCALLBACK(int) dmgProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                  PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+                                  PVDINTERFACE pVDIfsImage, VDTYPE enmDesiredType, VDTYPE *penmType)
 {
-    RT_NOREF1(pVDIfsDisk);
+    RT_NOREF(pVDIfsDisk, enmDesiredType);
     LogFlowFunc(("pszFilename=\"%s\" pVDIfsDisk=%#p pVDIfsImage=%#p penmType=%#p\n",
                  pszFilename, pVDIfsDisk, pVDIfsImage, penmType));
 

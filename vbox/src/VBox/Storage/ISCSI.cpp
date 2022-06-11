@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ISCSI.cpp 79965 2019-07-24 20:32:32Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -4766,9 +4766,9 @@ static int iscsiOpenImage(PISCSIIMAGE pImage, unsigned uOpenFlags)
 
 /** @copydoc VDIMAGEBACKEND::pfnProbe */
 static DECLCALLBACK(int) iscsiProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                    PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+                                    PVDINTERFACE pVDIfsImage, VDTYPE enmDesiredType, VDTYPE *penmType)
 {
-    RT_NOREF4(pszFilename, pVDIfsDisk, pVDIfsImage, penmType);
+    RT_NOREF(pszFilename, pVDIfsDisk, pVDIfsImage, enmDesiredType, penmType);
     LogFlowFunc(("pszFilename=\"%s\"\n", pszFilename));
 
     /* iSCSI images can't be checked for validity this way, as the filename
