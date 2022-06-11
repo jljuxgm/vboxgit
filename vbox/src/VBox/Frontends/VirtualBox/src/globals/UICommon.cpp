@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 80987 2019-09-24 16:24:26Z vboxsync $ */
+/* $Id: UICommon.cpp 81274 2019-10-14 19:48:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -53,6 +53,7 @@
 #endif
 
 /* GUI includes: */
+#include "QIWithRestorableGeometry.h"
 #include "UICommon.h"
 #include "VBoxLicenseViewer.h"
 #include "UIMessageCenter.h"
