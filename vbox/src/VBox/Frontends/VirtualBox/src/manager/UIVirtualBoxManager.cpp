@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 80926 2019-09-20 13:24:33Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 80932 2019-09-22 10:54:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1269,7 +1269,7 @@ void UIVirtualBoxManager::prepare()
     qApp->installEventFilter(this);
 #endif
 
-    /* Cache medium data early if necessary: */
+    /* Cache media data early if necessary: */
     if (uiCommon().agressiveCaching())
         uiCommon().enumerateMedia();
 

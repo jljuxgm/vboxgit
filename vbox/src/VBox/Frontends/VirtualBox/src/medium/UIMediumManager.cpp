@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 80926 2019-09-20 13:24:33Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 80932 2019-09-22 10:54:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -578,7 +578,7 @@ void UIMediumManagerWidget::sltToggleMediumSearchVisibility(bool fVisible)
 
 void UIMediumManagerWidget::sltRefreshAll()
 {
-    /* Start medium-enumeration: */
+    /* Restart full medium-enumeration: */
     uiCommon().enumerateMedia();
 }
 
@@ -693,16 +693,16 @@ void UIMediumManagerWidget::prepare()
     /* Apply language settings: */
     retranslateUi();
 
-    /* Start medium-enumeration (if necessary): */
+    /* Start full medium-enumeration (if necessary): */
     if (!uiCommon().isFullMediumEnumerationRequested())
         uiCommon().enumerateMedia();
     /* Emulate medium-enumeration otherwise: */
     else
     {
-        /* Start medium-enumeration: */
+        /* Emulate medium-enumeration start: */
         sltHandleMediumEnumerationStart();
 
-        /* Finish medium-enumeration (if necessary): */
+        /* Emulate medium-enumeration finish (if necessary): */
         if (!uiCommon().isMediumEnumerationInProgress())
             sltHandleMediumEnumerationFinish();
     }

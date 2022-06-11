@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 80926 2019-09-20 13:24:33Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 80932 2019-09-22 10:54:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3707,7 +3707,7 @@ void UIMachineSettingsStorage::prepare()
     /* Create icon-pool: */
     UIIconPoolStorageSettings::create();
 
-    /* Start medium-enumeration (only if necessary): */
+    /* Start full medium-enumeration (if necessary): */
     if (!uiCommon().isFullMediumEnumerationRequested())
         uiCommon().enumerateMedia();
 

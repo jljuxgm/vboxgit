@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 80926 2019-09-20 13:24:33Z vboxsync $ */
+/* $Id: UIMachine.cpp 80932 2019-09-22 10:54:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -205,7 +205,7 @@ bool UIMachine::prepare()
     if (!prepareSession())
         return false;
 
-    /* Cache medium data early if necessary: */
+    /* Cache media data early if necessary: */
     if (uiCommon().agressiveCaching())
     {
         AssertReturn(m_pSession, false);
