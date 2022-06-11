@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestfileset.py 79159 2019-06-16 03:27:39Z vboxsync $
+# $Id: vboxtestfileset.py 79180 2019-06-17 12:19:45Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79159 $"
+__version__ = "$Revision: 79180 $"
 
 
 # Standard Python imports.
@@ -76,6 +76,8 @@ class GstFile(GstFsObj):
         abRet = self.abContent[self.off:(self.off + cbToRead)];
         assert len(abRet) == cbToRead;
         self.off += cbToRead;
+        if sys.version_info[0] < 3:
+            return bytes(abRet);
         return abRet;
 
 class GstDir(GstFsObj):
@@ -419,4 +421,38 @@ class TestFileSet(object):
                 return False;
         reporter.log('Successfully placed test files and directories in the VM.');
         return True;
+
+    def chooseRandomFileFromTree(self):
+        """
+        Returns a random file from the tree (self.oTreeDir).
+        """
+        while True:
+            oFile = self.aoFiles[self.oRandom.choice(xrange(len(self.aoFiles)))];
+            oParent = oFile.oParent;
+            while oParent is not None:
+                if oParent is self.oTreeDir:
+                    return oFile;
+                oParent = oParent.oParent;
+
+    def chooseRandomDirFromTree(self, fLeaf = False, fNonEmpty = False):
+        """
+        Returns a random directoryr from the tree (self.oTreeDir).
+        """
+        while True:
+            oDir = self.aoDirs[self.oRandom.choice(xrange(len(self.aoDirs)))];
+            # Check fNonEmpty requirement:
+            if not fNonEmpty or oDir.aoChildren:
+                # Check leaf requirement:
+                if not fLeaf:
+                    for oChild in oDir.aoChildren:
+                        if isinstance(oChild, GstDir):
+                            continue; # skip it.
+
+                # Return if in the tree:
+                oParent = oDir.oParent;
+                while oParent is not None:
+                    if oParent is self.oTreeDir:
+                        return oDir;
+                    oParent = oParent.oParent;
+
 
