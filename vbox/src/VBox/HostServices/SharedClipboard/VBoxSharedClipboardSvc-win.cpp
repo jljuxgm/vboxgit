@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 78625 2019-05-21 09:47:03Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 78725 2019-05-24 13:15:59Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -782,7 +782,7 @@ int VBoxClipboardSvcImplReadData(PVBOXCLIPBOARDCLIENTDATA pClientData, uint32_t 
                 {
                     void *pvTemp;
                     size_t cbTemp;
-                    rc = VBoxClipboardWinDropFilesToStringList((DROPFILES *)lp, &pvTemp, &cbTemp);
+                    rc = VBoxClipboardWinDropFilesToStringList((DROPFILES *)lp, (char **)&pvTemp, &cbTemp);
                     if (RT_SUCCESS(rc))
                     {
                         if (cbTemp > cb) /** @todo Add overflow handling! */

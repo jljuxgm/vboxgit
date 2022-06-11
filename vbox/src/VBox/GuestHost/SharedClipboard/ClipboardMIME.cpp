@@ -1,4 +1,4 @@
-/* $Id: ClipboardMIME.cpp 78390 2019-05-06 13:49:30Z vboxsync $ */
+/* $Id: ClipboardMIME.cpp 78725 2019-05-24 13:15:59Z vboxsync $ */
 /** @file
  * Shared Clipboard - Path list class.
  */
@@ -32,7 +32,7 @@ bool SharedClipboardMIMEHasFileURLs(const char *pcszFormat, size_t cchFormatMax)
             || RTStrNICmp(pcszFormat, "x-special/gnome-icon-list", cchFormatMax) == 0);
 }
 
-bool SharedClipboardMIMENeedsDropDir(const char *pcszFormat, size_t cchFormatMax)
+bool SharedClipboardMIMENeedsCache(const char *pcszFormat, size_t cchFormatMax)
 {
     bool fNeedsDropDir = false;
     if (!RTStrNICmp(pcszFormat, "text/uri-list", cchFormatMax)) /** @todo Add "x-special/gnome-icon-list"? */

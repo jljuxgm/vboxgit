@@ -1,4 +1,4 @@
-/* $Id: ClipboardCache.cpp 78683 2019-05-23 10:07:21Z vboxsync $ */
+/* $Id: ClipboardCache.cpp 78725 2019-05-24 13:15:59Z vboxsync $ */
 /** @file
  * Shared Clipboard - Cache handling.
  */
@@ -75,7 +75,7 @@ SharedClipboardCache::~SharedClipboardCache(void)
  *
  * @returns New reference count.
  */
-uint16_t SharedClipboardCache::AddRef(void)
+uint32_t SharedClipboardCache::AddRef(void)
 {
     return ASMAtomicIncU32(&m_cRefs);
 }
@@ -85,7 +85,7 @@ uint16_t SharedClipboardCache::AddRef(void)
  *
  * @returns New reference count.
  */
-uint16_t SharedClipboardCache::Release(void)
+uint32_t SharedClipboardCache::Release(void)
 {
     Assert(m_cRefs);
     return ASMAtomicDecU32(&m_cRefs);

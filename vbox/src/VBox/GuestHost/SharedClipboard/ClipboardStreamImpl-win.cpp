@@ -1,4 +1,4 @@
-/* $Id: ClipboardStreamImpl-win.cpp 78474 2019-05-13 07:44:15Z vboxsync $ */
+/* $Id: ClipboardStreamImpl-win.cpp 78725 2019-05-24 13:15:59Z vboxsync $ */
 /** @file
  * ClipboardStreamImpl-win.cpp - Shared Clipboard IStream object implementation (for CF_HDROP).
  */
@@ -45,14 +45,16 @@
 
 
 
-VBoxClipboardWinStreamImpl::VBoxClipboardWinStreamImpl(void)
+VBoxClipboardWinStreamImpl::VBoxClipboardWinStreamImpl(SharedClipboardProvider *pProvider)
     : m_lRefCount(1)
+    , m_pProvider(pProvider)
 {
-
+    m_pProvider->AddRef();
 }
 
 VBoxClipboardWinStreamImpl::~VBoxClipboardWinStreamImpl(void)
 {
+    m_pProvider->Release();
 }
 
 /*
@@ -211,10 +213,17 @@ STDMETHODIMP VBoxClipboardWinStreamImpl::Write(const void* pvBuffer, ULONG nByte
  * Own stuff.
  */
 
+/**
+ * Factory to create our own IStream implementation.
+ *
+ * @returns HRESULT
+ * @param   pProvider           Pointer to Shared Clipboard provider to use.
+ * @param   ppStream            Where to return the created stream object on success.
+ */
 /* static */
-HRESULT VBoxClipboardWinStreamImpl::Create(IStream **ppStream)
+HRESULT VBoxClipboardWinStreamImpl::Create(SharedClipboardProvider *pProvider, IStream **ppStream)
 {
-    VBoxClipboardWinStreamImpl *pStream = new VBoxClipboardWinStreamImpl();
+    VBoxClipboardWinStreamImpl *pStream = new VBoxClipboardWinStreamImpl(pProvider);
     if (pStream)
     {
         pStream->AddRef();

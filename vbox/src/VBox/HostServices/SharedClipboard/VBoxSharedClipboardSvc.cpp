@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 78683 2019-05-23 10:07:21Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 78725 2019-05-24 13:15:59Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -98,8 +98,8 @@ static PVBOXHGCMSVCHELPERS g_pHelpers;
 static RTCRITSECT g_CritSect;
 static uint32_t g_uMode;
 
-static PFNHGCMSVCEXT g_pfnExtension;
-static void *g_pvExtension;
+PFNHGCMSVCEXT g_pfnExtension;
+void *g_pvExtension;
 
 static PVBOXCLIPBOARDCLIENTDATA g_pClientData;
 
@@ -536,7 +536,7 @@ static DECLCALLBACK(void) svcCall(void *,
                     if (g_pfnExtension)
                     {
                         VBOXCLIPBOARDEXTPARMS parms;
-
+                        RT_ZERO(parms);
                         parms.u32Format = u32Formats;
 
                         g_pfnExtension(g_pvExtension, VBOX_CLIPBOARD_EXT_FN_FORMAT_ANNOUNCE, &parms, sizeof (parms));
@@ -591,10 +591,11 @@ static DECLCALLBACK(void) svcCall(void *,
                         if (g_pfnExtension)
                         {
                             VBOXCLIPBOARDEXTPARMS parms;
+                            RT_ZERO(parms);
 
                             parms.u32Format = u32Format;
-                            parms.u.pvData = pv;
-                            parms.cbData = cb;
+                            parms.u.pvData  = pv;
+                            parms.cbData    = cb;
 
                             g_fReadingData = true;
                             rc = g_pfnExtension (g_pvExtension, VBOX_CLIPBOARD_EXT_FN_DATA_READ, &parms, sizeof (parms));
@@ -684,10 +685,11 @@ static DECLCALLBACK(void) svcCall(void *,
                         if (g_pfnExtension)
                         {
                             VBOXCLIPBOARDEXTPARMS parms;
+                            RT_ZERO(parms);
 
                             parms.u32Format = u32Format;
-                            parms.u.pvData = pv;
-                            parms.cbData = cb;
+                            parms.u.pvData  = pv;
+                            parms.cbData    = cb;
 
                             g_pfnExtension(g_pvExtension, VBOX_CLIPBOARD_EXT_FN_DATA_WRITE, &parms, sizeof (parms));
                         }

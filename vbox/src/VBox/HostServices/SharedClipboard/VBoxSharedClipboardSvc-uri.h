@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-uri.h 78648 2019-05-22 09:30:34Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-uri.h 78725 2019-05-24 13:15:59Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header for URI (list) handling.
  */
@@ -21,7 +21,7 @@
 # pragma once
 #endif
 
-int vboxClipboardSvcURITransferCreate(PVBOXCLIPBOARDCLIENTURITRANSFER pTransfer);
+int vboxClipboardSvcURITransferCreate(PVBOXCLIPBOARDCLIENTURITRANSFER pTransfer, PVBOXCLIPBOARDCLIENTSTATE pState);
 void vboxClipboardSvcURITransferDestroy(PVBOXCLIPBOARDCLIENTURITRANSFER pTransfer);
 void vboxClipboardSvcURITransferReset(PVBOXCLIPBOARDCLIENTURITRANSFER pTransfer);
 
