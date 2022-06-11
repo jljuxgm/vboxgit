@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 81123 2019-10-07 09:17:09Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 81126 2019-10-07 11:13:47Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -22,6 +22,7 @@
 #define LOG_GROUP LOG_GROUP_DEV_VIRTIO
 
 #include <VBox/log.h>
+#include <VBox/msi.h>
 #include <iprt/param.h>
 #include <iprt/assert.h>
 #include <iprt/uuid.h>
@@ -1031,8 +1032,6 @@ int   virtioConstruct(PPDMDEVINS             pDevIns,
                       void                  *pDevSpecificCfg)
 {
 
-    extern PDMDEVREG g_DeviceVirtioSCSI;
-
     PVIRTIOSTATE pVirtio = (PVIRTIOSTATE)RTMemAllocZ(sizeof(VIRTIOSTATE));
     if (!pVirtio)
     {
@@ -1218,7 +1217,7 @@ int   virtioConstruct(PPDMDEVINS             pDevIns,
         aMsiReg.iMsixCapOffset  = pCfg->uCapNext;
         aMsiReg.iMsixNextOffset = 0;
         aMsiReg.iMsixBar        = VIRTIO_REGION_MSIX_CAP;
-        aMsiReg.cMsixVectors    = g_DeviceVirtioSCSI.cMaxMsixVectors;
+        aMsiReg.cMsixVectors    = VBOX_MSIX_MAX_ENTRIES;
         rc = PDMDevHlpPCIRegisterMsi(pDevIns, &aMsiReg); /* see MsixR3init() */
         if (RT_FAILURE(rc))
         {
