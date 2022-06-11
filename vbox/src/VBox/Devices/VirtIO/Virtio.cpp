@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 81720 2019-11-06 20:23:17Z vboxsync $ */
+/* $Id: Virtio.cpp 81721 2019-11-06 20:37:59Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -104,6 +104,7 @@ bool vqueueSkip(PPDMDEVINS pDevIns, PVPCISTATE pThis, PVQUEUE pQueue)
         return false;
 
     Log2(("%s vqueueSkip: %s avail_idx=%u\n", INSTANCE(pThis), pQueue->szName, pQueue->uNextAvailIndex));
+    RT_NOREF(pThis);
     pQueue->uNextAvailIndex++;
     return true;
 }
@@ -206,6 +207,7 @@ static void vringWriteUsedElem(PPDMDEVINS pDevIns, PVRING pVRing, uint32_t uInde
 void vqueuePut(PPDMDEVINS pDevIns, PVPCISTATE pThis, PVQUEUE pQueue, PVQUEUEELEM pElem, uint32_t uTotalLen, uint32_t uReserved)
 {
     Log2(("%s vqueuePut: %s desc_idx=%u acb=%u (%u)\n", INSTANCE(pThis), pQueue->szName, pElem->uIndex, uTotalLen, uReserved));
+    RT_NOREF(pThis);
 
     Assert(uReserved < uTotalLen);
 
