@@ -1,4 +1,4 @@
-/* $Id: tstGIP-2.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstGIP-2.cpp 81096 2019-10-01 19:29:03Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
@@ -130,12 +130,13 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv)
                 && g_pSUPGlobalInfoPage->u32Mode == SUPGIPMODE_INVARIANT_TSC)
                 SUPR3GipSetFlags(SUPGIP_FLAGS_TESTING_ENABLE, UINT32_MAX);
 
-            RTPrintf("tstGIP-2: u32Mode=%d (%s)  fTestMode=%RTbool  u32Version=%#x  fGetGipCpu=%#RX32\n",
+            RTPrintf("tstGIP-2: u32Mode=%d (%s)  fTestMode=%RTbool  u32Version=%#x  fGetGipCpu=%#RX32  cPages=%#RX32\n",
                      g_pSUPGlobalInfoPage->u32Mode,
                      SUPGetGIPModeName(g_pSUPGlobalInfoPage),
                      fTestMode,
                      g_pSUPGlobalInfoPage->u32Version,
-                     g_pSUPGlobalInfoPage->fGetGipCpu);
+                     g_pSUPGlobalInfoPage->fGetGipCpu,
+                     g_pSUPGlobalInfoPage->cPages);
             RTPrintf("tstGIP-2: cCpus=%d  cPossibleCpus=%d cPossibleCpuGroups=%d cPresentCpus=%d cOnlineCpus=%d idCpuMax=%#x\n",
                      g_pSUPGlobalInfoPage->cCpus,
                      g_pSUPGlobalInfoPage->cPossibleCpus,
