@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 79603 2019-07-08 17:02:31Z vboxsync $
+# $Id: storagecfg.py 79663 2019-07-10 08:41:29Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79603 $"
+__version__ = "$Revision: 79663 $"
 
 # Standard Python imports.
 import os;
@@ -487,11 +487,11 @@ class StorageCfg(object):
 
         if not self.oDiskCfg.isCfgStaticDir():
             # Destroy all volumes first.
-            for sMountPoint in self.dVols.keys(): # pylint: disable=consider-iterating-dictionary
+            for sMountPoint in list(self.dVols.keys()): # pylint: disable=consider-iterating-dictionary
                 self.destroyVolume(sMountPoint);
 
             # Destroy all pools.
-            for sPool in self.dPools.keys(): # pylint: disable=consider-iterating-dictionary
+            for sPool in list(self.dPools.keys()): # pylint: disable=consider-iterating-dictionary
                 self.destroyStoragePool(sPool);
 
         self.dVols.clear();
