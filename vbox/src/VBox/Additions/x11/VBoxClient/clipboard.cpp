@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 82480 2019-12-07 00:32:57Z vboxsync $ */
+/** $Id: clipboard.cpp 82513 2019-12-09 13:21:55Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -174,21 +174,16 @@ struct CLIPREADCBREQ
 /**
  * Tell the host that new clipboard formats are available.
  *
- * @param pCtx                  Our context information.
- * @param Formats               The formats to report.
+ * @param   pCtx            Our context information.
+ * @param   fFormats        The formats to report.
  */
-DECLCALLBACK(void) ShClX11ReportFormatsCallback(PSHCLCONTEXT pCtx, SHCLFORMATS Formats)
+DECLCALLBACK(void) ShClX11ReportFormatsCallback(PSHCLCONTEXT pCtx, SHCLFORMATS fFormats)
 {
     RT_NOREF(pCtx);
 
-    LogFlowFunc(("Formats=0x%x\n", Formats));
+    LogFlowFunc(("Formats=0x%x\n", fFormats));
 
-    SHCLFORMATDATA formatData;
-    RT_ZERO(formatData);
-
-    formatData.Formats = Formats;
-
-    int rc2 = VbglR3ClipboardFormatsReportEx(&pCtx->CmdCtx, &formatData);
+    int rc2 = VbglR3ClipboardReportFormats(pCtx->CmdCtx.uClientID, fFormats);
     RT_NOREF(rc2);
     LogFlowFuncLeaveRC(rc2);
 }

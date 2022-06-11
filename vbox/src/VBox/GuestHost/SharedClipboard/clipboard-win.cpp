@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 82510 2019-12-09 12:15:16Z vboxsync $ */
+/* $Id: clipboard-win.cpp 82513 2019-12-09 13:21:55Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -125,24 +125,15 @@ int SharedClipboardWinClose(void)
  */
 int SharedClipboardWinClear(void)
 {
-    int rc;
-
     LogFlowFuncEnter();
+    if (EmptyClipboard())
+        return VINF_SUCCESS;
 
-    const BOOL fRc = EmptyClipboard();
-    if (RT_UNLIKELY(!fRc))
-    {
-        const DWORD dwLastErr = GetLastError();
-        if (dwLastErr == ERROR_CLIPBOARD_NOT_OPEN)
-            rc = VERR_INVALID_STATE;
-        else
-            rc = RTErrConvertFromWin32(dwLastErr);
+    const DWORD dwLastErr = GetLastError();
+    AssertReturn(dwLastErr != ERROR_CLIPBOARD_NOT_OPEN, VERR_INVALID_STATE);
 
-        LogFunc(("Failed with %Rrc (0x%x)\n", rc, dwLastErr));
-    }
-    else
-        rc = VINF_SUCCESS;
-
+    int rc = RTErrConvertFromWin32(dwLastErr);
+    LogFunc(("Failed with %Rrc (0x%x)\n", rc, dwLastErr));
     return rc;
 }
 
