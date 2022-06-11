@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 81674 2019-11-05 14:44:22Z vboxsync $ */
+/* $Id: ConsoleImpl.h 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -682,6 +682,7 @@ private:
                                    const GraphicsControllerType_T graphicsController,
                                    BusAssignmentManager *pBusMgr,
                                    const ComPtr<IMachine> &ptrMachine,
+                                   const ComPtr<IGraphicsAdapter> &ptrGraphicsAdapter,
                                    const ComPtr<IBIOSSettings> &ptrBiosSettings,
                                    bool fHMEnabled);
     int i_checkMediumLocation(IMedium *pMedium, bool *pfUseHostIOCache);

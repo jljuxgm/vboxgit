@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -37,11 +37,12 @@
 #include "CConsole.h"
 #include "CMachine.h"
 #include "CDisplay.h"
+#include "CGraphicsAdapter.h"
 
 
 UIMultiScreenLayout::UIMultiScreenLayout(UIMachineLogic *pMachineLogic)
     : m_pMachineLogic(pMachineLogic)
-    , m_cGuestScreens(m_pMachineLogic->machine().GetMonitorCount())
+    , m_cGuestScreens(m_pMachineLogic->machine().GetGraphicsAdapter().GetMonitorCount())
     , m_cHostScreens(0)
 {
     /* Calculate host/guest screen count: */
@@ -226,7 +227,7 @@ void UIMultiScreenLayout::sltHandleScreenLayoutChange(int iRequestedGuestScreen,
     bool fSuccess = true;
     if (m_pMachineLogic->uisession()->isGuestSupportsGraphics())
     {
-        quint64 availBits = m_pMachineLogic->machine().GetVRAMSize() * _1M * 8;
+        quint64 availBits = m_pMachineLogic->machine().GetGraphicsAdapter().GetVRAMSize() * _1M * 8;
         quint64 usedBits = memoryRequirements(tmpMap);
         fSuccess = availBits >= usedBits;
         if (!fSuccess)

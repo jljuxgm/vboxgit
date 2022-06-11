@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 81328 2019-10-17 17:31:24Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -71,6 +71,7 @@
 
 /* COM includes: */
 #include "CAudioAdapter.h"
+#include "CGraphicsAdapter.h"
 #include "CRecordingSettings.h"
 #include "CVirtualBoxErrorInfo.h"
 #include "CMachineDebugger.h"
@@ -1839,7 +1840,7 @@ void UIMachineLogic::sltReset()
 
     /* TODO_NEW_CORE: On reset the additional screens didn't get a display
        update. Emulate this for now until it get fixed. */
-    ulong uMonitorCount = machine().GetMonitorCount();
+    ulong uMonitorCount = machine().GetGraphicsAdapter().GetMonitorCount();
     for (ulong uScreenId = 1; uScreenId < uMonitorCount; ++uScreenId)
         machineWindows().at(uScreenId)->update();
 }
@@ -3120,7 +3121,7 @@ int UIMachineLogic::searchMaxSnapshotIndex(const CMachine &machine,
 void UIMachineLogic::takeScreenshot(const QString &strFile, const QString &strFormat /* = "png" */) const
 {
     /* Get console: */
-    const int cGuestScreens = machine().GetMonitorCount();
+    const int cGuestScreens = machine().GetGraphicsAdapter().GetMonitorCount();
     QList<QImage> images;
     ULONG uMaxWidth  = 0;
     ULONG uMaxHeight = 0;

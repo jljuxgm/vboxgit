@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 80872 2019-09-17 20:54:03Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -483,8 +483,13 @@ HRESULT Display::init(Console *aParent)
     mfSourceBitmapEnabled = true;
     fVGAResizing = false;
 
+    ComPtr<IGraphicsAdapter> pGraphicsAdapter;
+    HRESULT hrc = mParent->i_machine()->COMGETTER(GraphicsAdapter)(pGraphicsAdapter.asOutParam());
+    AssertComRCReturnRC(hrc);
+    AssertReturn(!pGraphicsAdapter.isNull(), E_FAIL);
+
     ULONG ul;
-    mParent->i_machine()->COMGETTER(MonitorCount)(&ul);
+    pGraphicsAdapter->COMGETTER(MonitorCount)(&ul);
     mcMonitors = ul;
     xInputMappingOrigin = 0;
     yInputMappingOrigin = 0;

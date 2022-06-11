@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 80617 2019-09-06 08:32:17Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -43,6 +43,7 @@
 
 /* COM includes: */
 #include "CConsole.h"
+#include "CGraphicsAdapter.h"
 #include "CSnapshot.h"
 
 /* Other VBox includes: */
@@ -494,7 +495,7 @@ void UIMachineWindow::prepareMachineView()
 {
 #ifdef VBOX_WITH_VIDEOHWACCEL
     /* Need to force the QGL framebuffer in case 2D Video Acceleration is supported & enabled: */
-    bool bAccelerate2DVideo = machine().GetAccelerate2DVideoEnabled() && VBox2DHelpers::isAcceleration2DVideoAvailable();
+    bool bAccelerate2DVideo = machine().GetGraphicsAdapter().GetAccelerate2DVideoEnabled() && VBox2DHelpers::isAcceleration2DVideoAvailable();
 #endif /* VBOX_WITH_VIDEOHWACCEL */
 
     /* Get visual-state type: */
@@ -572,7 +573,7 @@ void UIMachineWindow::updateAppearanceOf(int iElement)
         const QString strUserProductName = uisession()->machineWindowNamePostfix();
         strMachineName += " - " + (strUserProductName.isEmpty() ? defaultWindowTitle() : strUserProductName);
 #endif /* !VBOX_WS_MAC */
-        if (machine().GetMonitorCount() > 1)
+        if (machine().GetGraphicsAdapter().GetMonitorCount() > 1)
             strMachineName += QString(" : %1").arg(m_uScreenId + 1);
         setWindowTitle(strMachineName);
     }

@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 80652 2019-09-08 18:19:53Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -67,6 +67,7 @@
 
 /* COM includes: */
 #include "CKeyboard.h"
+#include "CGraphicsAdapter.h"
 
 /* Other VBox includes: */
 #ifdef VBOX_WS_MAC
@@ -1013,7 +1014,7 @@ void UIKeyboardHandler::prepareCommon()
     /* Pressed keys: */
     ::memset(m_pressedKeys, 0, sizeof(m_pressedKeys));
 
-    m_cMonitors = uisession()->machine().GetMonitorCount();
+    m_cMonitors = uisession()->machine().GetGraphicsAdapter().GetMonitorCount();
 }
 
 void UIKeyboardHandler::loadSettings()

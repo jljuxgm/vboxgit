@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 80881 2019-09-18 11:13:38Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -41,6 +41,7 @@
 /* COM includes: */
 #include "CConsole.h"
 #include "CDisplay.h"
+#include "CGraphicsAdapter.h"
 
 
 UIMachineLogicNormal::UIMachineLogicNormal(QObject *pParent, UISession *pSession)
@@ -318,7 +319,7 @@ void UIMachineLogicNormal::prepareMachineWindows()
 #endif /* VBOX_WS_MAC */
 
     /* Get monitors count: */
-    ulong uMonitorCount = machine().GetMonitorCount();
+    ulong uMonitorCount = machine().GetGraphicsAdapter().GetMonitorCount();
     /* Create machine window(s): */
     for (ulong uScreenId = 0; uScreenId < uMonitorCount; ++ uScreenId)
         addMachineWindow(UIMachineWindow::create(this, uScreenId));

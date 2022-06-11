@@ -1,4 +1,4 @@
-/* $Id: UISnapshotDetailsWidget.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UISnapshotDetailsWidget.h 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotDetailsWidget class declaration.
  */
@@ -30,6 +30,7 @@
 
 /* COM includes: */
 #include "COMEnums.h"
+#include "CGraphicsAdapter.h"
 #include "CMachine.h"
 #include "CSnapshot.h"
 
@@ -161,7 +162,7 @@ private:
     /** Acquires @a comMachine scale-factor report. */
     static double scaleFactorReport(CMachine comMachine);
     /** Acquires @a comMachine display acceleration report. */
-    static QString displayAccelerationReport(CMachine comMachine);
+    static QString displayAccelerationReport(CGraphicsAdapter comGraphics);
     /** Acquires @a comMachine VRDE server report. */
     static QStringList vrdeServerReport(CMachine comMachine);
     /** Acquires @a comMachine recording report. */

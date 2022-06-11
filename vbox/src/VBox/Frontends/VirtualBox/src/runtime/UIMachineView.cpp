@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 80652 2019-09-08 18:19:53Z vboxsync $ */
+/* $Id: UIMachineView.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -54,6 +54,7 @@
 /* COM includes: */
 #include "CConsole.h"
 #include "CDisplay.h"
+#include "CGraphicsAdapter.h"
 #include "CSession.h"
 #include "CFramebuffer.h"
 #ifdef VBOX_WITH_DRAG_AND_DROP
@@ -242,7 +243,7 @@ void UIMachineView::applyMachineViewScaleFactor()
     frameBuffer()->setUseUnscaledHiDPIOutput(fUseUnscaledHiDPIOutput);
 
     /* Propagate the scale-factor related attributes to 3D service if necessary: */
-    if (machine().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
+    if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
     {
         double dScaleFactorFor3D = dScaleFactor;
 #if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
@@ -425,7 +426,7 @@ void UIMachineView::sltHandleNotifyChange(int iWidth, int iHeight)
      * ourselves.  Windows guests should use VBoxVGA controllers, not VMSVGA. */
     if (   !isFullscreenOrSeamless()
         && uisession()->isGuestSupportsGraphics()
-        && (machine().GetGraphicsControllerType() != KGraphicsControllerType_VMSVGA))
+        && (machine().GetGraphicsAdapter().GetGraphicsControllerType() != KGraphicsControllerType_VMSVGA))
         storeGuestSizeHint(QSize(iWidth, iHeight));
 
     LogRelFlow(("GUI: UIMachineView::sltHandleNotifyChange: Complete for Screen=%d, Size=%dx%d\n",
@@ -518,7 +519,7 @@ void UIMachineView::sltHandleScaleFactorChange(const QUuid &uMachineID)
     frameBuffer()->setUseUnscaledHiDPIOutput(fUseUnscaledHiDPIOutput);
 
     /* Propagate the scale-factor related attributes to 3D service if necessary: */
-    if (machine().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
+    if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
     {
         double dScaleFactorFor3D = dScaleFactor;
 #if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
@@ -714,7 +715,7 @@ void UIMachineView::prepareFrameBuffer()
         m_pFrameBuffer->setUseUnscaledHiDPIOutput(fUseUnscaledHiDPIOutput);
 
         /* Propagate the scale-factor related attributes to 3D service if necessary: */
-        if (machine().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
+        if (machine().GetGraphicsAdapter().GetAccelerate3DEnabled() && uiCommon().is3DAvailable())
         {
             double dScaleFactorFor3D = dScaleFactor;
 #if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 80652 2019-09-08 18:19:53Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
@@ -34,6 +34,9 @@
 #else
 # include "VBoxUtils.h"
 #endif
+
+/* GUI includes: */
+#include "CGraphicsAdapter.h"
 
 
 UIMachineLogicScale::UIMachineLogicScale(QObject *pParent, UISession *pSession)
@@ -137,7 +140,7 @@ void UIMachineLogicScale::prepareMachineWindows()
 #endif /* VBOX_WS_MAC */
 
     /* Get monitors count: */
-    ulong uMonitorCount = machine().GetMonitorCount();
+    ulong uMonitorCount = machine().GetGraphicsAdapter().GetMonitorCount();
     /* Create machine window(s): */
     for (ulong uScreenId = 0; uScreenId < uMonitorCount; ++ uScreenId)
         addMachineWindow(UIMachineWindow::create(this, uScreenId));

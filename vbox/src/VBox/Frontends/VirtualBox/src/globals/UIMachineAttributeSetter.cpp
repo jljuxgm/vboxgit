@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.cpp 81422 2019-10-21 18:04:10Z vboxsync $ */
+/* $Id: UIMachineAttributeSetter.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
@@ -26,6 +26,7 @@
 
 /* COM includes: */
 #include "CAudioAdapter.h"
+#include "CGraphicsAdapter.h"
 #include "CNetworkAdapter.h"
 #include "CUSBController.h"
 
@@ -158,7 +159,7 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
             case MachineAttribute_VideoMemory:
             {
                 /* Change machine video memory (VRAM): */
-                comMachine.SetVRAMSize(guiAttribute.toInt());
+                comMachine.GetGraphicsAdapter().SetVRAMSize(guiAttribute.toInt());
                 if (!comMachine.isOk())
                 {
                     msgCenter().cannotChangeMachineAttribute(comMachine);
@@ -169,7 +170,7 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
             case MachineAttribute_GraphicsControllerType:
             {
                 /* Change machine graphics controller type: */
-                comMachine.SetGraphicsControllerType(guiAttribute.value<KGraphicsControllerType>());
+                comMachine.GetGraphicsAdapter().SetGraphicsControllerType(guiAttribute.value<KGraphicsControllerType>());
                 if (!comMachine.isOk())
                 {
                     msgCenter().cannotChangeMachineAttribute(comMachine);

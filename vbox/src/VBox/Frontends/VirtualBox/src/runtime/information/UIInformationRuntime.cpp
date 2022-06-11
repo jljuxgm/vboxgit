@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 81510 2019-10-24 09:08:53Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -30,6 +30,7 @@
 #include "UISession.h"
 
 /* COM includes: */
+#include "CGraphicsAdapter.h"
 #include "CGuest.h"
 #include "CVRDEServerInfo.h"
 
@@ -250,7 +251,7 @@ void UIRuntimeInfoWidget::sltTimeout()
 
 void UIRuntimeInfoWidget::updateScreenInfo(int iScreenID /* = -1 */)
 {
-    ULONG uGuestScreens = m_machine.GetMonitorCount();
+    ULONG uGuestScreens = m_machine.GetGraphicsAdapter().GetMonitorCount();
     m_screenResolutions.resize(uGuestScreens);
     if (iScreenID != -1 && iScreenID >= (int)uGuestScreens)
         return;

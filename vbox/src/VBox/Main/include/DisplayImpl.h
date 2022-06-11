@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 80872 2019-09-17 20:54:03Z vboxsync $ */
+/* $Id: DisplayImpl.h 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -147,6 +147,7 @@ public:
     int  i_registerSSM(PUVM pUVM);
 
     // public methods only for internal purposes
+    unsigned i_getMonitorCount() { return mcMonitors; }
     int i_handleDisplayResize(unsigned uScreenId, uint32_t bpp, void *pvVRAM,
                               uint32_t cbLine, uint32_t w, uint32_t h, uint16_t flags,
                               int32_t xOrigin, int32_t yOrigin, bool fVGAResize);

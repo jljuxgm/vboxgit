@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 80831 2019-09-16 18:00:37Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -38,6 +38,7 @@
 
 /* COM includes: */
 #include "CAudioAdapter.h"
+#include "CGraphicsAdapter.h"
 #include "CRecordingSettings.h"
 #include "CRecordingScreenSettings.h"
 #include "CConsole.h"
@@ -741,14 +742,15 @@ private:
         /* Prepare tool-tip: */
         QString strFullData;
 
+        CGraphicsAdapter comGraphics = machine.GetGraphicsAdapter();
         /* Video Memory: */
-        const ULONG uVRAMSize = machine.GetVRAMSize();
+        const ULONG uVRAMSize = comGraphics.GetVRAMSize();
         const QString strVRAMSize = UICommon::tr("<nobr>%1 MB</nobr>", "details report").arg(uVRAMSize);
         strFullData += s_strTableRow2
             .arg(QApplication::translate("UIIndicatorsPool", "Video memory", "Display tooltip"), strVRAMSize);
 
         /* Monitor Count: */
-        const ULONG uMonitorCount = machine.GetMonitorCount();
+        const ULONG uMonitorCount = comGraphics.GetMonitorCount();
         if (uMonitorCount > 1)
         {
             const QString strMonitorCount = QString::number(uMonitorCount);
@@ -757,7 +759,7 @@ private:
         }
 
         /* 3D acceleration: */
-        const bool fAcceleration3D = machine.GetAccelerate3DEnabled() && uiCommon().is3DAvailable();
+        const bool fAcceleration3D = comGraphics.GetAccelerate3DEnabled() && uiCommon().is3DAvailable();
         if (fAcceleration3D)
         {
             const QString strAcceleration3D = fAcceleration3D ?

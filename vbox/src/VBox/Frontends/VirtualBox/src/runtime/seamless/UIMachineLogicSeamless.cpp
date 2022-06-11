@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 80652 2019-09-08 18:19:53Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -36,6 +36,9 @@
 # include "VBoxUtils.h"
 #endif /* VBOX_WS_MAC */
 
+/* GUI includes: */
+#include "CGraphicsAdapter.h"
+
 
 UIMachineLogicSeamless::UIMachineLogicSeamless(QObject *pParent, UISession *pSession)
     : UIMachineLogic(pParent, pSession, UIVisualStateType_Seamless)
@@ -58,7 +61,7 @@ bool UIMachineLogicSeamless::checkAvailability()
     /* Check if there is enough physical memory to enter seamless: */
     if (uisession()->isGuestSupportsSeamless())
     {
-        quint64 availBits = machine().GetVRAMSize() /* VRAM */ * _1M /* MiB to bytes */ * 8 /* to bits */;
+        quint64 availBits = machine().GetGraphicsAdapter().GetVRAMSize() /* VRAM */ * _1M /* MiB to bytes */ * 8 /* to bits */;
         quint64 usedBits = m_pScreenLayout->memoryRequirements();
         if (availBits < usedBits)
         {
@@ -267,7 +270,7 @@ void UIMachineLogicSeamless::prepareMachineWindows()
     m_pScreenLayout->update();
 
     /* Create machine-window(s): */
-    for (uint cScreenId = 0; cScreenId < machine().GetMonitorCount(); ++cScreenId)
+    for (uint cScreenId = 0; cScreenId < machine().GetGraphicsAdapter().GetMonitorCount(); ++cScreenId)
         addMachineWindow(UIMachineWindow::create(this, cScreenId));
 
     /* Listen for frame-buffer resize: */
