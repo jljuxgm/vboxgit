@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81838 2019-11-13 18:29:47Z vboxsync $ $Revision: 81838 $ $Date: 2019-11-14 02:29:47 +0800 (Thu, 14 Nov 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 81935 2019-11-18 10:47:09Z vboxsync $ $Revision: 81935 $ $Date: 2019-11-18 18:47:09 +0800 (Mon, 18 Nov 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -6,7 +6,7 @@
  *    - Level 1:   The most important (but usually rare) things to note
  *    - Level 2:   SCSI command logging
  *    - Level 3:   Vector and I/O transfer summary (shows what client sent an expects and fulfillment)
- *    - Level 6:   Device ⟷ Guest Driver negotation, traffic, notifications and state handling
+ *    - Level 6:   Device <-> Guest Driver negotation, traffic, notifications and state handling
  *    - Level 12:  Brief formatted hex dumps of I/O data
  */
 
