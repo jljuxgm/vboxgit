@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 81652 2019-11-04 13:35:57Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 81899 2019-11-16 20:08:50Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -5362,6 +5362,16 @@ int vmsvga3dDrawPrimitives(PVGASTATE pThis, uint32_t cid, uint32_t numVertexDecl
         int rc2 = vmsvga3dSurfaceFromSid(pState, pContext->state.aRenderTargets[SVGA3D_RT_COLOR0], &pSurface);
         if (RT_SUCCESS(rc2))
             vmsvga3dInfoSurfaceToBitmap(NULL, pSurface, "bmpd3d", "rt", "-post");
+# if 0
+        /* Stage 0 texture. */
+        if (pContext->aSidActiveTextures[0] != SVGA3D_INVALID_ID)
+        {
+            vmsvga3dUpdateHeapBuffersForSurfaces(pThis, pContext->aSidActiveTextures[0]);
+            rc2 = vmsvga3dSurfaceFromSid(pState, pContext->aSidActiveTextures[0], &pSurface);
+            if (RT_SUCCESS(rc2))
+                vmsvga3dInfoSurfaceToBitmap(NULL, pSurface, "bmpd3d", "rt", "-post-tx");
+        }
+# endif
     }
 #endif
 
