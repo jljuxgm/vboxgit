@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 80301 2019-08-15 16:37:40Z vboxsync $
 ## @file
 # Sub-Makefile for the common addition code.
 #
@@ -23,9 +23,6 @@ ifndef VBOX_ONLY_VALIDATIONKIT
  include $(PATH_SUB_CURRENT)/VBoxControl/Makefile.kmk
  include $(PATH_SUB_CURRENT)/VBoxGuest/Makefile.kmk
  include $(PATH_SUB_CURRENT)/VBoxService/Makefile.kmk
- ifdef VBOX_WITH_CROGL
-   include $(PATH_SUB_CURRENT)/crOpenGL/Makefile.kmk
- endif
  ifdef VBOX_WITH_PAM
   include $(PATH_SUB_CURRENT)/pam/Makefile.kmk
  endif
