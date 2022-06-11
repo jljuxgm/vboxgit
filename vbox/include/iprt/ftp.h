@@ -1,4 +1,4 @@
-/* $Id: ftp.h 82687 2020-01-09 10:45:36Z vboxsync $ */
+/* $Id: ftp.h 82688 2020-01-09 10:48:37Z vboxsync $ */
 /** @file
  * Header file for FTP client / server implementations.
  */
@@ -174,7 +174,7 @@ typedef struct RTFTPSERVERCALLBACKS
     DECLCALLBACKMEMBER(int,  pfnOnPathSetCurrent)(PRTFTPCALLBACKDATA pData, const char *pcszCWD);
     DECLCALLBACKMEMBER(int,  pfnOnPathGetCurrent)(PRTFTPCALLBACKDATA pData, char *pszPWD, size_t cbPWD);
     DECLCALLBACKMEMBER(int,  pfnOnList)(PRTFTPCALLBACKDATA pData, void **ppvData, size_t *pcbData);
-} RTFTPSERVERCALLBACKS, *PRTFTPSERVERCALLBACKS;
+} RTFTPSERVERCALLBACKS;
 /** Pointer to a FTP server callback data table. */
 typedef RTFTPSERVERCALLBACKS *PRTFTPSERVERCALLBACKS;
 
