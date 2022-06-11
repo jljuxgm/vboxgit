@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 78261 2019-04-23 16:49:28Z vboxsync $ */
+/* $Id: SessionImpl.cpp 81286 2019-10-15 16:37:37Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -806,6 +806,23 @@ HRESULT Session::onClipboardModeChange(ClipboardMode_T aClipboardMode)
     return mConsole->i_onClipboardModeChange(aClipboardMode);
 #else
     RT_NOREF(aClipboardMode);
+    return S_OK;
+#endif
+}
+
+HRESULT Session::onClipboardFileTransferModeChange(BOOL aEnabled)
+{
+    LogFlowThisFunc(("\n"));
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(mState == SessionState_Locked, VBOX_E_INVALID_VM_STATE);
+    AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
+#ifndef VBOX_COM_INPROC_API_CLIENT
+    AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
+
+    return mConsole->i_onClipboardFileTransferModeChange(RT_BOOL(aEnabled));
+#else
+    RT_NOREF(aEnabled);
     return S_OK;
 #endif
 }

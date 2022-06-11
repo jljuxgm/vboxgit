@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 81223 2019-10-11 12:06:49Z vboxsync $ */
+/* $Id: clipboard-common.cpp 81286 2019-10-15 16:37:37Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -824,6 +824,7 @@ const char *ShClHostFunctionToStr(uint32_t uFn)
     switch (uFn)
     {
         RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_SET_MODE);
+        RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_SET_TRANSFER_MODE);
         RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_SET_HEADLESS);
         RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_CANCEL);
         RT_CASE_RET_STR(VBOX_SHCL_HOST_FN_ERROR);

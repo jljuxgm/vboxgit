@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 81229 2019-10-11 14:33:25Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 81286 2019-10-15 16:37:37Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -196,6 +196,7 @@ int shclSvcMsgGet(PSHCLCLIENT pClient, VBOXHGCMCALLHANDLE hCall, uint32_t cParms
 int shclSvcClientWakeup(PSHCLCLIENT pClient);
 
 # ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
+int shclSvcTransferModeSet(uint32_t fMode);
 int shclSvcTransferStart(PSHCLCLIENT pClient, SHCLTRANSFERDIR enmDir, SHCLSOURCE enmSource, PSHCLTRANSFER *ppTransfer);
 int shclSvcTransferStop(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer);
 bool shclSvcTransferMsgIsAllowed(uint32_t uMode, uint32_t uMsg);

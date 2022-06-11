@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.h 78261 2019-04-23 16:49:28Z vboxsync $ */
+/* $Id: SessionImpl.h 81286 2019-10-15 16:37:37Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class definition
  */
@@ -100,6 +100,7 @@ private:
                                   BOOL aSilent);
     HRESULT onVMProcessPriorityChange(VMProcPriority_T priority);
     HRESULT onClipboardModeChange(ClipboardMode_T aClipboardMode);
+    HRESULT onClipboardFileTransferModeChange(BOOL aEnabled);
     HRESULT onDnDModeChange(DnDMode_T aDndMode);
     HRESULT onCPUChange(ULONG aCpu,
                         BOOL aAdd);
