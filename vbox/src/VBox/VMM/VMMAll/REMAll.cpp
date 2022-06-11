@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: REMAll.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -197,42 +197,6 @@ VMMDECL(void) REMNotifyHandlerPhysicalModify(PVM pVM, PGMPHYSHANDLERKIND enmKind
 }
 
 #endif /* !IN_RING3 */
-
-#ifdef IN_RC
-/**
- * Flushes the physical handler notifications if the queue is almost full.
- *
- * This is for avoiding trouble in RC when changing CR3.
- *
- * @param   pVM         The cross context VM structure.
- * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
- */
-VMMDECL(void) REMNotifyHandlerPhysicalFlushIfAlmostFull(PVM pVM, PVMCPU pVCpu)
-{
-    Assert(pVM->cCpus == 1); NOREF(pVCpu);
-
-    /*
-     * Less than 48 items means we should flush.
-     */
-    uint32_t cFree = 0;
-    for (uint32_t idx = pVM->rem.s.idxFreeList;
-         idx != UINT32_MAX;
-         idx = pVM->rem.s.aHandlerNotifications[idx].idxNext)
-    {
-        Assert(idx < RT_ELEMENTS(pVM->rem.s.aHandlerNotifications));
-        if (++cFree >= 48)
-            return;
-    }
-    AssertRelease(VM_FF_IS_SET(pVM, VM_FF_REM_HANDLER_NOTIFY));
-    AssertRelease(pVM->rem.s.idxPendingList != UINT32_MAX);
-
-    /* Ok, we gotta flush them. */
-    VMMRZCallRing3NoCpu(pVM, VMMCALLRING3_REM_REPLAY_HANDLER_NOTIFICATIONS, 0);
-
-    AssertRelease(pVM->rem.s.idxPendingList == UINT32_MAX);
-    AssertRelease(pVM->rem.s.idxFreeList != UINT32_MAX);
-}
-#endif /* IN_RC */
 
 
 /**

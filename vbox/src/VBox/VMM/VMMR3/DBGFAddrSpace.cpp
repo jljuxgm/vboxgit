@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 80007 2019-07-26 13:57:38Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -639,9 +639,6 @@ static void dbgfR3AsLazyPopulate(PUVM pUVM, RTDBGAS hAlias)
         {
             LogRel(("DBGF: Lazy init of RC address space\n"));
             PDMR3LdrEnumModules(pUVM->pVM, dbgfR3AsLazyPopulateRCCallback, hDbgAs);
-#ifdef VBOX_WITH_RAW_MODE
-            PATMR3DbgPopulateAddrSpace(pUVM->pVM, hDbgAs);
-#endif
         }
         else if (hAlias == DBGF_AS_PHYS && pUVM->pVM)
         {

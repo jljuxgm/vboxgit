@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -141,13 +141,9 @@ int tmCpuTickResumeLocked(PVM pVM, PVMCPU pVCpu)
                     break;
                 case TMTSCMODE_NATIVE_API:
                 {
-#ifndef IN_RC
                     int rc = NEMHCResumeCpuTickOnAll(pVM, pVCpu, pVM->tm.s.u64LastPausedTSC);
                     AssertRCReturn(rc, rc);
                     pVCpu->tm.s.offTSCRawSrc = offTSCRawSrcOld = 0;
-#else
-                    AssertFailedReturn(VERR_INTERNAL_ERROR_2);
-#endif
                     break;
                 }
                 default:
@@ -453,7 +449,6 @@ DECLINLINE(uint64_t) tmCpuTickGetInternal(PVMCPU pVCpu, bool fCheckTimers)
             case TMTSCMODE_DYNAMIC:
                 u64 = tmCpuTickGetRawVirtual(pVM, fCheckTimers);
                 break;
-#ifndef IN_RC
             case TMTSCMODE_NATIVE_API:
             {
                 u64 = 0;
@@ -461,7 +456,6 @@ DECLINLINE(uint64_t) tmCpuTickGetInternal(PVMCPU pVCpu, bool fCheckTimers)
                 AssertLogRelRCReturn(rcNem, SUPReadTsc());
                 break;
             }
-#endif
             default:
                 AssertFailedBreakStmt(u64 = SUPReadTsc());
         }

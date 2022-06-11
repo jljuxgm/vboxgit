@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 80118 2019-08-04 02:39:54Z vboxsync $ */
+/* $Id: VM.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -4218,11 +4218,7 @@ VMMR3_INT_DECL(bool) VMR3IsLongModeAllowed(PVM pVM)
             return HMIsLongModeAllowed(pVM);
 
         case VM_EXEC_ENGINE_NATIVE_API:
-#ifndef IN_RC
             return NEMHCIsLongModeAllowed(pVM);
-#else
-            return false;
-#endif
 
         case VM_EXEC_ENGINE_NOT_SET:
             AssertFailed();

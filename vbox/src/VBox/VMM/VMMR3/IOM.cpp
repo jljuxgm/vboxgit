@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 80091 2019-07-31 23:34:22Z vboxsync $ */
+/* $Id: IOM.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -687,11 +687,7 @@ VMMR3_INT_DECL(int) IOMR3IOPortRegisterRC(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT 
             return VERR_IOM_NO_R3_IOPORT_RANGE;
         }
 #ifndef IOM_NO_PDMINS_CHECKS
-# ifndef IN_RC
         if (pRange->pDevIns != pDevIns)
-# else
-        if (pRange->pDevIns != MMHyperRCToCC(pVM, pDevIns))
-# endif
         {
             AssertMsgFailed(("Not owner! Port=%#x %#x-%#x! (%s)\n", Port, PortStart, (unsigned)PortStart + cPorts - 1, pszDesc));
             IOM_UNLOCK_EXCL(pVM);
@@ -803,11 +799,7 @@ VMMR3_INT_DECL(int) IOMR3IOPortRegisterR0(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT 
             return VERR_IOM_NO_R3_IOPORT_RANGE;
         }
 #ifndef IOM_NO_PDMINS_CHECKS
-# ifndef IN_RC
         if (pRange->pDevIns != pDevIns)
-# else
-        if (pRange->pDevIns != MMHyperRCToCC(pVM, pDevIns))
-# endif
         {
             AssertMsgFailed(("Not owner! Port=%#x %#x-%#x! (%s)\n", Port, PortStart, (unsigned)PortStart + cPorts - 1, pszDesc));
             IOM_UNLOCK_EXCL(pVM);

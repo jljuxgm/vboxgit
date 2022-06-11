@@ -1,4 +1,4 @@
-/* $Id: VMAll.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VMAll.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
 /** @file
  * VM - Virtual Machine All Contexts.
  */
@@ -29,9 +29,7 @@
 
 #include <iprt/assert.h>
 #include <iprt/string.h>
-#ifndef IN_RC
-# include <iprt/thread.h>
-#endif
+#include <iprt/thread.h>
 
 
 /**

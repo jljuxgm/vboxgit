@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 80003 2019-07-26 13:37:47Z vboxsync $ */
+/* $Id: VMMAll.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -162,7 +162,6 @@ int vmmInitFormatTypes(void)
 }
 
 
-#ifndef IN_RC
 /**
  * Counterpart to vmmInitFormatTypes, called by VMMR3Term and VMMR0Term.
  */
@@ -171,7 +170,6 @@ void vmmTermFormatTypes(void)
     if (ASMAtomicDecU32(&g_cFormatTypeUsers) == 0)
         RTStrFormatTypeDeregister("vmcpuset");
 }
-#endif
 
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: REMInternal.h 80161 2019-08-06 18:10:51Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -237,9 +237,6 @@ typedef REM *PREM;
 #ifdef REM_INCLUDE_CPU_H
 bool    remR3CanExecuteRaw(CPUState *env, RTGCPTR eip, unsigned fFlags, int *piException);
 void    remR3CSAMCheckEIP(CPUState *env, RTGCPTR GCPtrCode);
-# ifdef VBOX_WITH_RAW_MODE
-bool    remR3GetOpcode(CPUState *env, RTGCPTR GCPtrInstr, uint8_t *pu8Byte);
-# endif
 bool    remR3DisasInstr(CPUState *env, int f32BitCode, char *pszPrefix);
 void    remR3FlushPage(CPUState *env, RTGCPTR GCPtr);
 void    remR3FlushTLB(CPUState *env, bool fGlobal);
