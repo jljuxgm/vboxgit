@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 81781 2019-11-11 21:57:39Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 81783 2019-11-11 22:10:09Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3280,8 +3280,8 @@ static void lsilogicR3InitializeConfigurationPagesSpi(PLSILOGICSCSI pThis, PLSIL
     PMptConfigurationPagesSpi pPages = &pThisCC->pConfigurationPages->u.SpiPages;
 
     AssertMsg(pThis->enmCtrlType == LSILOGICCTRLTYPE_SCSI_SPI, ("Controller is not the SPI SCSI one\n"));
-
     LogFlowFunc(("pThis=%#p\n", pThis));
+    RT_NOREF(pThis);
 
     /* Clear everything first. */
     memset(pPages, 0, sizeof(MptConfigurationPagesSpi));
