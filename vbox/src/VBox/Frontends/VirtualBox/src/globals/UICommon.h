@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 79922 2019-07-22 12:12:11Z vboxsync $ */
+/* $Id: UICommon.h 80394 2019-08-23 13:02:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -611,7 +611,7 @@ public:
         /** Returns whether 3D is available, runs worker above if necessary. */
         bool is3DAvailable() const;
 
-#ifdef VBOX_WITH_CRHGSMI
+#ifdef VBOX_WITH_3D_ACCELERATION
         /** Returns whether guest OS type with passed @a strGuestOSTypeId is WDDM compatible. */
         static bool isWddmCompatibleOsType(const QString &strGuestOSTypeId);
 #endif

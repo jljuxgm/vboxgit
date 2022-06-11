@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 80043 2019-07-29 12:16:59Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 80394 2019-08-23 13:02:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -93,7 +93,7 @@ private slots:
     void sltHandleGuestScreenCountEditorChange();
     /** Handles Graphics Controller combo change. */
     void sltHandleGraphicsControllerComboChange();
-#ifdef VBOX_WITH_CRHGSMI
+#ifdef VBOX_WITH_3D_ACCELERATION
     /** Handles 3D Acceleration check-box change. */
     void sltHandle3DAccelerationCheckboxChange();
 #endif
@@ -163,7 +163,7 @@ private:
 
     /** Holds the guest OS type ID. */
     CGuestOSType  m_comGuestOSType;
-#ifdef VBOX_WITH_CRHGSMI
+#ifdef VBOX_WITH_3D_ACCELERATION
     /** Holds whether the guest OS supports WDDM. */
     bool          m_fWddmModeSupported;
 #endif
