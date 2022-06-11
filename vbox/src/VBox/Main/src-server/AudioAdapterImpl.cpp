@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: AudioAdapterImpl.cpp 81956 2019-11-18 18:04:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -130,7 +130,7 @@ HRESULT AudioAdapter::init(Machine *aParent, AudioAdapter *aThat)
 }
 
 /**
- *  Initializes the guest object given another guest object
+ *  Initializes the audio adapter object given another audio adapter object
  *  (a kind of copy constructor). This object makes a private copy of data
  *  of the original object passed as an argument.
  *
