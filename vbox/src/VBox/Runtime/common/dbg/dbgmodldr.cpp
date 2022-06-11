@@ -1,4 +1,4 @@
-/* $Id: dbgmodldr.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dbgmodldr.cpp 83084 2020-02-15 15:16:11Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Image Interpretation by RTLdr.
  */
@@ -215,10 +215,10 @@ static DECLCALLBACK(int) rtDbgModLdr_Close(PRTDBGMODINT pMod)
 
 
 /** @interface_method_impl{RTDBGMODVTIMG,pfnTryOpen} */
-static DECLCALLBACK(int) rtDbgModLdr_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch)
+static DECLCALLBACK(int) rtDbgModLdr_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch, uint32_t fLdrFlags)
 {
     RTLDRMOD hLdrMod;
-    int rc = RTLdrOpen(pMod->pszImgFile, RTLDR_O_FOR_DEBUG, enmArch, &hLdrMod);
+    int rc = RTLdrOpen(pMod->pszImgFile, RTLDR_O_FOR_DEBUG | fLdrFlags, enmArch, &hLdrMod);
     if (RT_SUCCESS(rc))
     {
         rc = rtDbgModLdrOpenFromHandle(pMod, hLdrMod);

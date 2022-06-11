@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dbgmod.h 83084 2020-02-15 15:16:11Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -78,8 +78,9 @@ typedef struct RTDBGMODVTIMG
      *                      Upon successful return the method is expected to
      *                      initialize pImgOps and pvImgPriv.
      * @param   enmArch     The desired architecture.
+     * @param   fLdrFlags   Extra loader flags (RTLDR_O_XXX).
      */
-    DECLCALLBACKMEMBER(int, pfnTryOpen)(PRTDBGMODINT pMod, RTLDRARCH enmArch);
+    DECLCALLBACKMEMBER(int, pfnTryOpen)(PRTDBGMODINT pMod, RTLDRARCH enmArch, uint32_t fLdrFlags);
 
     /**
      * Close the interpreter, freeing all associated resources.
@@ -585,6 +586,8 @@ typedef struct RTDBGMODDEFERRED
     uint32_t            u32Magic;
     /** Reference counter. */
     uint32_t volatile   cRefs;
+    /** RTDBGMOD_F_XXX */
+    uint32_t            fFlags;
     /** The image size.
      * Deferred loading is almost pointless without knowing the module size, as
      * it cannot be mapped (correctly) without it. */
@@ -707,7 +710,7 @@ DECLHIDDEN(int) rtDbgModContainer_RemoveAll(PRTDBGMODINT pMod);
 
 DECLHIDDEN(int) rtDbgModCreateForExports(PRTDBGMODINT pDbgMod);
 DECLHIDDEN(int) rtDbgModDeferredCreate(PRTDBGMODINT pDbgMod, PFNRTDBGMODDEFERRED pfnDeferred, RTUINTPTR cbImage,
-                                       RTDBGCFG hDbgCfg, size_t cbDeferred, PRTDBGMODDEFERRED *ppDeferred);
+                                       RTDBGCFG hDbgCfg, size_t cbDeferred, uint32_t fFlags, PRTDBGMODDEFERRED *ppDeferred);
 
 DECLHIDDEN(int) rtDbgModLdrOpenFromHandle(PRTDBGMODINT pDbgMod, RTLDRMOD hLdrMod);
 

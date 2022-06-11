@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 83084 2020-02-15 15:16:11Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -6076,7 +6076,7 @@ static int rtDbgModDwarfTryOpenDbgFile(PRTDBGMODINT pDbgMod, PRTDBGMODDWARF pThi
         {
             pDbgInfoMod->pszName = pDbgMod->pszName;
             pDbgInfoMod->pImgVt  = &g_rtDbgModVtImgLdr;
-            rc = pDbgInfoMod->pImgVt->pfnTryOpen(pDbgInfoMod, enmArch);
+            rc = pDbgInfoMod->pImgVt->pfnTryOpen(pDbgInfoMod, enmArch, 0 /*fLdrFlags*/);
             if (RT_SUCCESS(rc))
             {
                 pThis->pDbgInfoMod = pDbgInfoMod;
