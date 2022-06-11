@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: EM.cpp 80363 2019-08-21 09:58:59Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2080,6 +2080,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                     && !CPUMIsGuestVmxVirtNmiBlocking(pVCpu, &pVCpu->cpum.GstCtx))
                 {
                     Assert(CPUMIsGuestVmxProcCtlsSet(pVCpu, &pVCpu->cpum.GstCtx, VMX_PROC_CTLS_NMI_WINDOW_EXIT));
+                    Assert(pVCpu->cpum.GstCtx.hwvirt.vmx.fInterceptEvents);
                     rc2 = VBOXSTRICTRC_VAL(IEMExecVmxVmexit(pVCpu, VMX_EXIT_NMI_WINDOW, 0 /* uExitQual */));
                     AssertMsg(   rc2 != VINF_VMX_INTERCEPT_NOT_ACTIVE
                               && rc2 != VINF_PGM_CHANGE_MODE
@@ -2144,6 +2145,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                          && CPUMIsGuestVmxVirtIntrEnabled(pVCpu, &pVCpu->cpum.GstCtx))
                 {
                     Assert(CPUMIsGuestVmxProcCtlsSet(pVCpu, &pVCpu->cpum.GstCtx, VMX_PROC_CTLS_INT_WINDOW_EXIT));
+                    Assert(pVCpu->cpum.GstCtx.hwvirt.vmx.fInterceptEvents);
                     rc2 = VBOXSTRICTRC_VAL(IEMExecVmxVmexit(pVCpu, VMX_EXIT_INT_WINDOW, 0 /* uExitQual */));
                     AssertMsg(   rc2 != VINF_VMX_INTERCEPT_NOT_ACTIVE
                               && rc2 != VINF_PGM_CHANGE_MODE
