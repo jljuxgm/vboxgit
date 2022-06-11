@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 83323 2020-03-19 09:40:22Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 83336 2020-03-19 16:44:56Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3036,11 +3036,6 @@ HRESULT GuestSession::fileCopyToGuest(const com::Utf8Str &aSource, const com::Ut
 
     GuestSessionFsSourceSet SourceSet;
 
-    /** @todo r=bird: The GuestSessionFsSourceSpec constructor does not zero the
-     *        members you aren't setting here and there are no hints about "input"
-     *        vs "task" members, so you have me worrying about using random stack by
-     *        accident somewhere...  For instance Type.File.phFile sure sounds like
-     *        an input field and thus a disaster waiting to happen. */
     GuestSessionFsSourceSpec source;
     source.strSource            = aSource;
     source.enmType              = FsObjType_File;
