@@ -1,4 +1,4 @@
-/* $Id: VBoxCredentialProvider.cpp 83824 2020-04-19 01:20:58Z vboxsync $ */
+/* $Id: VBoxCredentialProvider.cpp 84366 2020-05-19 11:22:40Z vboxsync $ */
 /** @file
  * VBoxCredentialProvider - Main file of the VirtualBox Credential Provider.
  */
@@ -82,9 +82,14 @@ interface VBoxCredProvSensLogon : public ISensLogon
 {
 public:
 
-    VBoxCredProvSensLogon(void) :
-        m_cRefs(1)
+    VBoxCredProvSensLogon(void)
+        : m_cRefs(1)
     {
+    }
+
+    virtual ~VBoxCredProvSensLogon()
+    {
+        /* Make VC++ 19.2 happy. */
     }
 
     STDMETHODIMP QueryInterface(REFIID interfaceID, void **ppvInterface)
