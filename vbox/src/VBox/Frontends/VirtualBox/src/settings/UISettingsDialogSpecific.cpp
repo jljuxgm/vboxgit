@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 83939 2020-04-23 10:15:07Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 83940 2020-04-23 10:21:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -664,7 +664,6 @@ void UISettingsDialogMachine::sltMachineDataChanged(const QUuid &uMachineId)
 
 void UISettingsDialogMachine::sltResetFirstRunFlag()
 {
-    if (m_fAllowResetFirstRunFlag)
     m_fResetFirstRunFlag = true;
 }
 
