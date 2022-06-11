@@ -1,5 +1,6 @@
+; $Id: ASMGetFlags.asm 78425 2019-05-07 10:15:39Z vboxsync $
 ;; @file
-; IPRT - ASMSetFlags().
+; IPRT - ASMGetFlags().
 ;
 
 ;
@@ -23,7 +24,6 @@
 ; terms and conditions of either the GPL or the CDDL or both.
 ;
 
-
 ;*******************************************************************************
 ;* Header Files                                                                *
 ;*******************************************************************************
@@ -31,11 +31,13 @@
 
 BEGINCODE
 
-;;
-; @param rcx  eflags
-BEGINPROC_EXPORTED ASMSetFlags
-        push    rcx
-        popfq
+BEGINPROC_EXPORTED ASMGetFlags
+%if    ARCH_BITS == 32
+        pushfd
+%else
+        pushf
+%endif
+        pop     xAX
         ret
-ENDPROC ASMSetFlags
+ENDPROC ASMGetFlags
 
