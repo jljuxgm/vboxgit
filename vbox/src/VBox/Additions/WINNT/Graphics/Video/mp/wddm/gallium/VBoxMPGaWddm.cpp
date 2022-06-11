@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.cpp 83578 2020-04-06 00:04:45Z vboxsync $ */
+/* $Id: VBoxMPGaWddm.cpp 83694 2020-04-14 18:25:47Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -1732,6 +1732,19 @@ NTSTATUS APIENTRY GaDxgkDdiEscape(const HANDLE hAdapter,
 
             VBOXDISPIFESCAPE_GASURFACEDEFINE *pGaSurfaceDefine = (VBOXDISPIFESCAPE_GASURFACEDEFINE *)pEscapeHdr;
             if (pEscape->PrivateDriverDataSize - sizeof(VBOXDISPIFESCAPE_GASURFACEDEFINE) < pGaSurfaceDefine->cbReq)
+            {
+                Status = STATUS_INVALID_PARAMETER;
+                break;
+            }
+
+            if (pGaSurfaceDefine->cbReq < sizeof(GASURFCREATE))
+            {
+                Status = STATUS_INVALID_PARAMETER;
+                break;
+            }
+
+            uint32_t const cSizes = (pGaSurfaceDefine->cbReq - sizeof(GASURFCREATE)) / sizeof(GASURFSIZE);
+            if (cSizes != pGaSurfaceDefine->cSizes)
             {
                 Status = STATUS_INVALID_PARAMETER;
                 break;
