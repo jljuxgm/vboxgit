@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 78829 2019-05-28 16:11:05Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 79154 2019-06-14 15:38:34Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -2414,6 +2414,8 @@ void SessionMachine::i_restoreSnapshotHandler(RestoreSnapshotTask &task)
             LogFlowThisFunc(("Deleting old current state in differencing image '%s'\n", pMedium->i_getName().c_str()));
 
             ComObjPtr<Medium> pParent = pMedium->i_getParent();
+            // store the id here because it becomes NULL after deleting storage.
+            com::Guid id = pMedium->i_getId();
             HRESULT rc2 = pMedium->i_deleteStorage(NULL /* aProgress */,
                                                    true /* aWait */,
                                                    false /* aNotify */);
@@ -2421,7 +2423,7 @@ void SessionMachine::i_restoreSnapshotHandler(RestoreSnapshotTask &task)
             if (SUCCEEDED(rc2))
             {
                 pMediumsForNotify.insert(pParent);
-                uIdsForNotify[pMedium->i_getId()] = std::pair<DeviceType_T, BOOL>(pMedium->i_getDeviceType(), FALSE);
+                uIdsForNotify[id] = std::pair<DeviceType_T, BOOL>(pMedium->i_getDeviceType(), FALSE);
                 pMedium->uninit();
             }
         }
