@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 82039 2019-11-20 17:22:21Z vboxsync $ */
+/* $Id: APIC.cpp 82792 2020-01-20 05:41:36Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1546,6 +1546,7 @@ DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE p
         APIC_REG_COUNTER(&pApicCpu->StatIcrLoWrite,    "%u/IcrLoWrite",     "Number of times the ICR Lo (send IPI) is written.");
         APIC_REG_COUNTER(&pApicCpu->StatIcrHiWrite,    "%u/IcrHiWrite",     "Number of times the ICR Hi is written.");
         APIC_REG_COUNTER(&pApicCpu->StatIcrFullWrite,  "%u/IcrFullWrite",   "Number of times the ICR full (send IPI, x2APIC) is written.");
+        APIC_REG_COUNTER(&pApicCpu->StatIdMsrRead,     "%u/IdMsrRead",      "Number of times the APIC-ID MSR is read.");
 
         APIC_PROF_COUNTER(&pApicCpu->StatUpdatePendingIntrs,
                                                        "/PROF/CPU%u/APIC/UpdatePendingInterrupts", "Profiling of APICUpdatePendingInterrupts");

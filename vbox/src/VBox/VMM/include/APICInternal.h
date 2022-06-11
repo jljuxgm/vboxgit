@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 82038 2019-11-20 17:02:11Z vboxsync $ */
+/* $Id: APICInternal.h 82792 2020-01-20 05:41:36Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1356,6 +1356,8 @@ typedef struct APICCPU
     STAMCOUNTER                 StatIcrHiWrite;
     /** Number of times the full ICR (x2APIC send IPI) is written. */
     STAMCOUNTER                 StatIcrFullWrite;
+    /** Number of times the APIC-ID MSR is read. */
+    STAMCOUNTER                 StatIdMsrRead;
     /** @} */
 #endif
 } APICCPU;
