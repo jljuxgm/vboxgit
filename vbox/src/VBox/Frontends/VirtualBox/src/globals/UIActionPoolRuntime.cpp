@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 80048 2019-07-29 19:23:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -1552,7 +1552,7 @@ public:
 
     /** Constructs action passing @a pParent to the base-class. */
     UIActionSimpleRuntimeShowSoftKeyboard(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/keyboard_settings_16px.png", ":/keyboard_settings_disabled_16px.png", true)
+        : UIActionSimple(pParent, UIIconPool::iconSet(":/soft_keyboard_16px.png"), true)
     {}
 
 protected:
