@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: tdAddBasic1.py 82951 2020-02-01 14:00:04Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 82951 $"
 
 # Standard Python imports.
 import os;
@@ -321,8 +321,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         return (fRc, oTxsSession);
 
     def testLinuxInstallAdditions(self, oSession, oTxsSession, oTestVm):
-        oSession = oSession;
-        oTestVm = oTestVm;
+        _ = oSession;
+        _ = oTestVm;
 
         fRc = False;
 

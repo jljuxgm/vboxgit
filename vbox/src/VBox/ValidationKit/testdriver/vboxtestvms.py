@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 81435 2019-10-22 07:24:10Z vboxsync $
+# $Id: vboxtestvms.py 82951 2020-02-01 14:00:04Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 81435 $"
+__version__ = "$Revision: 82951 $"
 
 # Standard Python imports.
 import copy;
@@ -330,7 +330,7 @@ class BaseTestVm(object):
             if _intersects(asSplit, ['uni']):
                 self.acCpusSup = [1];
             elif self.aInfo is not None:
-                self.acCpusSup = [i for i in range(self.aInfo[g_iMinCpu], self.aInfo[g_iMaxCpu]) ];
+                self.acCpusSup = list(range(self.aInfo[g_iMinCpu], self.aInfo[g_iMaxCpu]));
             else:
                 self.acCpusSup = [1];
 
@@ -1075,7 +1075,7 @@ class TestVm(object):
             if _intersects(asSplit, ['uni']):
                 self.acCpusSup = [1];
             elif self.aInfo is not None:
-                self.acCpusSup = [i for i in range(self.aInfo[g_iMinCpu], self.aInfo[g_iMaxCpu]) ];
+                self.acCpusSup = list(range(self.aInfo[g_iMinCpu], self.aInfo[g_iMaxCpu]));
             else:
                 self.acCpusSup = [1];
 
