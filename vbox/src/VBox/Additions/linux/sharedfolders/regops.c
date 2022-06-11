@@ -1,4 +1,4 @@
-/* $Id: regops.c 80712 2019-09-10 19:25:36Z vboxsync $ */
+/* $Id: regops.c 80713 2019-09-10 21:29:57Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
@@ -79,11 +79,6 @@
 # define PageUptodate(a_pPage) Page_Uptodate(a_pPage)
 #endif
 
-#ifdef RHEL_RELEASE_CODE
-# if RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(8, 1)
-#  define RHEL_81
-# endif
-#endif
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *

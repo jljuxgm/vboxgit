@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-linux.c 80712 2019-09-10 19:25:36Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-linux.c 80713 2019-09-10 21:29:57Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Linux.
  */
@@ -34,11 +34,6 @@
 #include <iprt/mem.h>
 #include <iprt/errcore.h>
 
-#ifdef RHEL_RELEASE_CODE
-# if RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(8, 1)
-#  define RHEL_81
-# endif
-#endif
 
 RTR0DECL(int) RTR0MemUserCopyFrom(void *pvDst, RTR3PTR R3PtrSrc, size_t cb)
 {
