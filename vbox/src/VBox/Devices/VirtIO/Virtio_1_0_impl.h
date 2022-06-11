@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 80168 2019-08-07 00:48:58Z vboxsync $ $Revision: 80168 $ $Date: 2019-08-07 08:48:58 +0800 (Wed, 07 Aug 2019) $ $Author: vboxsync $ */
+/* $Id: Virtio_1_0_impl.h 80169 2019-08-07 03:58:55Z vboxsync $ $Revision: 80169 $ $Date: 2019-08-07 11:58:55 +0800 (Wed, 07 Aug 2019) $ $Author: vboxsync $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -42,19 +42,22 @@
                 fMatched = true;
 
 /**
- * This macro resolves to boolean true if uOffset is within the specified member offset and length.
+ * This macro resolves to boolean true if uOffset matches a field offset and size exactly,
+ * (or if it is a 64-bit field, if it accesses either 32-bit part as a 32-bit access)
+ * This is mandated by section 4.1.3.1 of the VirtIO 1.0 specification)
  *
  * @param   member   - Member of VIRTIO_PCI_COMMON_CFG_T
- * @param   uOffset     - Implied parameter: Offset into VIRTIO_PCI_COMMON_CFG_T
+ * @param   uOffset  - Implied parameter: Offset into VIRTIO_PCI_COMMON_CFG_T
  * @param   cb       - Implied parameter: Number of bytes to access
  * @result           - true or false
  */
 #define COMMON_CFG(member) \
-           (uOffset >= RT_OFFSETOF(VIRTIO_PCI_COMMON_CFG_T, member) \
-        &&  uOffset < (uint32_t)(RT_OFFSETOF(VIRTIO_PCI_COMMON_CFG_T, member) \
-                               + RT_SIZEOFMEMB(VIRTIO_PCI_COMMON_CFG_T, member)) \
-        &&   cb <= RT_SIZEOFMEMB(VIRTIO_PCI_COMMON_CFG_T, member) \
-                  - (uOffset - RT_OFFSETOF(VIRTIO_PCI_COMMON_CFG_T, member)))
+        (RT_SIZEOFMEMB(VIRTIO_PCI_COMMON_CFG_T, member) == 64 \
+         && (   uOffset == RT_OFFSETOF(VIRTIO_PCI_COMMON_CFG_T, member) \
+             || uOffset == RT_OFFSETOF(VIRTIO_PCI_COMMON_CFG_T, member) + sizeof(uint32_t)) \
+         && cb == sizeof(uint32_t)) \
+     || (uOffset == RT_OFFSETOF(VIRTIO_PCI_COMMON_CFG_T, member) \
+           && cb == RT_SIZEOFMEMB(VIRTIO_PCI_COMMON_CFG_T, member))
 
 #define LOG_ACCESSOR(member) \
         virtioLogMappedIoValue(__FUNCTION__, #member, pv, cb, uIntraOff, fWrite, false, 0);

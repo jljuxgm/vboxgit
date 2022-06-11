@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.h 80168 2019-08-07 00:48:58Z vboxsync $ */
+/* $Id: Virtio_1_0.h 80169 2019-08-07 03:58:55Z vboxsync $ */
 /** @file
  * Virtio_1_0p .h - Virtio Declarations
  */
@@ -489,7 +489,10 @@ DECLINLINE(void) virtioLogMappedIoValue(const char *pszFunc, const char *pszMemb
         uint64_t val = 0;
         memcpy((char *)&val, pv, cb);
         FMTHEX(pszFormattedVal, val, cb * 2);
-        RTStrPrintf(pszDepiction, sizeof(pszDepiction), "%s%s[%d:%d]", pszMember, pszIdx, uOffset, uOffset + cb);
+        if (uOffset != 0) /* display bounds if partial member access */
+            RTStrPrintf(pszDepiction, sizeof(pszDepiction), "%s%s[%d:%d]", pszMember, pszIdx, uOffset, uOffset + cb - 1);
+        else
+            RTStrPrintf(pszDepiction, sizeof(pszDepiction), "%s%s", pszMember, pszIdx);
         RTStrPrintf(pszDepiction, sizeof(pszDepiction), "%-30s", pszDepiction);
         int first = 0;
         for (uint8_t i = 0; i < sizeof(pszDepiction); i++)
