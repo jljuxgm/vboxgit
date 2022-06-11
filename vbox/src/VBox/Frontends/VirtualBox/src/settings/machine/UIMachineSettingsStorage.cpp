@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 81676 2019-11-05 16:23:38Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 82247 2019-11-27 15:54:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -1459,29 +1459,24 @@ void ControllerItem::delChild(AbstractItem *pItem)
 
 void ControllerItem::updateBusInfo()
 {
+    /* Clear the buses initially: */
     m_buses.clear();
 
-    switch (m_enmBus)
+    /* Load currently supported storage buses: */
+    CSystemProperties comProperties = uiCommon().virtualBox().GetSystemProperties();
+    const QVector<KStorageBus> supportedBuses = comProperties.GetSupportedStorageBuses();
+
+    /* If current bus is NOT KStorageBus_Floppy: */
+    if (m_enmBus != KStorageBus_Floppy)
     {
-        case KStorageBus_IDE:
-        case KStorageBus_SATA:
-        case KStorageBus_SCSI:
-        case KStorageBus_SAS:
-        case KStorageBus_USB:
-        case KStorageBus_PCIe:
-        case KStorageBus_VirtioSCSI:
-        {
-            m_buses << KStorageBus_IDE << KStorageBus_SATA << KStorageBus_SCSI << KStorageBus_SAS
-                    << KStorageBus_USB << KStorageBus_PCIe << KStorageBus_VirtioSCSI;
-            m_buses.removeAll(m_enmBus);
-        }
-        RT_FALL_THRU();
-        default:
-        {
-            m_buses.prepend(m_enmBus);
-            break;
-        }
+        /* We update the list with all supported buses
+         * and remove the current one from that list. */
+        m_buses << supportedBuses.toList();
+        m_buses.removeAll(m_enmBus);
     }
+
+    /* And prepend current bus finally: */
+    m_buses.prepend(m_enmBus);
 }
 
 void ControllerItem::updatePixmaps()
