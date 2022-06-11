@@ -1,4 +1,4 @@
-/* $Id: gvm.h 80311 2019-08-15 20:53:11Z vboxsync $ */
+/* $Id: gvm.h 80313 2019-08-15 23:11:50Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -243,6 +243,7 @@ typedef struct GVM
 # if RT_GNUC_PREREQ(4, 3) && defined(__cplusplus)
 #  pragma GCC diagnostic ignored "-Winvalid-offsetof"
 # endif
+AssertCompileMemberAlignment(GVM, u32Magic, 64);
 AssertCompileMemberAlignment(GVM, gvmm,     64);
 AssertCompileMemberAlignment(GVM, gmm,      64);
 # ifdef VBOX_WITH_NEM_R0
