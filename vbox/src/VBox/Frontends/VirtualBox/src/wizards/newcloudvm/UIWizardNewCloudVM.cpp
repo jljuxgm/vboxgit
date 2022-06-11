@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 84162 2020-05-06 14:09:02Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 84275 2020-05-12 17:04:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -162,7 +162,7 @@ bool UIWizardNewCloudVM::createCloudVM()
 
         /* Check whether VM really added: */
         if (comMachine.isNotNull())
-            uiCommon().notifyCloudMachineRegistered(field("destination").toString(),
+            uiCommon().notifyCloudMachineRegistered(field("location").toString(),
                                                     field("profileName").toString(),
                                                     comMachine.GetId(),
                                                     true /* registered */);
