@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 82062 2019-11-21 02:39:22Z vboxsync $ */
+/* $Id: DevVGA.h 82064 2019-11-21 08:15:31Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -513,6 +513,12 @@ typedef struct VGAState
      * @{ */
     IOMIOPORTHANDLE             hIoPortCgaCrt;
     IOMIOPORTHANDLE             hIoPortCgaFcrSt;
+    /** @} */
+
+    /** @name I/O ports for Boch VBE 0x1ce-0x1cf
+     *  @{ */
+    IOMIOPORTHANDLE             hIoPortVbeIndex;
+    IOMIOPORTHANDLE             hIoPortVbeData;
     /** @} */
 
     /** The VBE extra data I/O port. */
