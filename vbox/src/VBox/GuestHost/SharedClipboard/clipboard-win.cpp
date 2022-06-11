@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 78307 2019-04-26 06:41:46Z vboxsync $ */
+/* $Id: clipboard-win.cpp 78393 2019-05-06 15:02:08Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -85,7 +85,7 @@ int VBoxClipboardWinClose(void)
     int rc;
 
     const BOOL fRc = CloseClipboard();
-    if (RT_UNLIKELY(fRc))
+    if (RT_UNLIKELY(!fRc))
     {
         const DWORD dwLastErr = GetLastError();
         rc = RTErrConvertFromWin32(dwLastErr);
@@ -107,7 +107,7 @@ int VBoxClipboardWinClear(void)
     int rc;
 
     const BOOL fRc = EmptyClipboard();
-    if (RT_UNLIKELY(fRc))
+    if (RT_UNLIKELY(!fRc))
     {
         const DWORD dwLastErr = GetLastError();
         rc = RTErrConvertFromWin32(dwLastErr);
