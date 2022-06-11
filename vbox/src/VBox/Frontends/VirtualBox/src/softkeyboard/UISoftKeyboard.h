@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 79295 2019-06-24 07:44:49Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 79356 2019-06-26 11:37:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -42,6 +42,7 @@ class UILayoutSelector;
 class UISession;
 class UISoftKeyboardKey;
 class UISoftKeyboardLayout;
+class UISoftKeyboardSettingsWidget;
 class UISoftKeyboardStatusBarWidget;
 class UISoftKeyboardWidget;
 class QSplitter;
@@ -78,10 +79,13 @@ private slots:
     /** Make th necessary changes to data structures when th key captions updated. */
     void sltKeyCaptionsEdited(UISoftKeyboardKey* pKey);
     void sltShowHideSidePanel();
+    void sltShowHideSettingsWidget();
     void sltCopyLayout();
     void sltSaveLayout();
     void sltDeleteLayout();
     void sltStatusBarMessage(const QString &strMessage);
+    void sltShowHideOSMenuKeys(bool fShow);
+    void sltShowHideNumPad(bool fShow);
 
 private:
 
@@ -97,12 +101,15 @@ private:
     UISession     *m_pSession;
     QHBoxLayout   *m_pMainLayout;
     UISoftKeyboardWidget       *m_pKeyboardWidget;
-    QString       m_strMachineName;
-    QSplitter      *m_pSplitter;
-    QStackedWidget *m_pSidePanelWidget;
-    UILayoutEditor *m_pLayoutEditor;
+    QString           m_strMachineName;
+    QSplitter        *m_pSplitter;
+    QStackedWidget   *m_pSidePanelWidget;
+    UILayoutEditor   *m_pLayoutEditor;
     UILayoutSelector *m_pLayoutSelector;
+
+    UISoftKeyboardSettingsWidget  *m_pSettingsWidget;
     UISoftKeyboardStatusBarWidget *m_pStatusBarWidget;
+
 };
 
 #endif /* !FEQT_INCLUDED_SRC_softkeyboard_UISoftKeyboard_h */
