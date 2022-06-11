@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 78489 2019-05-14 04:46:15Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 78494 2019-05-14 06:10:33Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -6405,12 +6405,9 @@ IEM_CIMPL_DEF_3(iemCImpl_invpcid, uint8_t, iEffSeg, RTGCPTR, GCPtrInvpcidDesc, u
      * INVPCID causes a VM-exit if "enable INVPCID" and "INVLPG exiting" are
      * both set. We have already checked the former earlier in this function.
      *
-     * CPL checks take priority over VM-exit.
+     * CPL and virtual-8086 mode checks take priority over this VM-exit.
      * See Intel spec. "25.1.1 Relative Priority of Faults and VM Exits".
      */
-    /** @todo r=ramshankar: NSTVMX: I'm not entirely certain if V86 mode check has
-     *        higher or lower priority than a VM-exit, we assume higher for the time
-     *        being. */
     if (   IEM_VMX_IS_NON_ROOT_MODE(pVCpu)
         && IEM_VMX_IS_PROCCTLS_SET(pVCpu, VMX_PROC_CTLS_INVLPG_EXIT))
     {
