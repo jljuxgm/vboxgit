@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 83410 2020-03-25 13:52:48Z vboxsync $
+# $Id: wuihlpform.py 83411 2020-03-25 13:55:17Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83410 $"
+__version__ = "$Revision: 83411 $"
 
 # Standard python imports.
 import copy;
@@ -908,7 +908,7 @@ class WuiHlpForm(object):
                           u'  <input name="%s[%s]" type="hidden" value="%s">\n' # tsEffective
                           u'  <input name="%s[%s]" type="hidden" value="%s">\n' # uidAuthor
                           u'  <input name="%s" type="checkbox"%s%s value="%d" class="tmform-checkbox" title="#%d - %s">\n' #(list)
-                          % ( iTestBox & 8,
+                          % ( iTestBox & 7,
                               sPrf, TestBoxDataForSchedGroup.ksParam_idTestBox,    oTestBox.idTestBox,
                               sPrf, TestBoxDataForSchedGroup.ksParam_idSchedGroup, idSchedGroup,
                               sPrf, TestBoxDataForSchedGroup.ksParam_tsExpire,     '' if oMember is None else oMember.tsExpire,
