@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 83877 2020-04-21 07:43:06Z vboxsync $
+# $Id: tdAddBasic1.py 83879 2020-04-21 09:09:47Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83877 $"
+__version__ = "$Revision: 83879 $"
 
 # Standard Python imports.
 import os;
@@ -62,10 +62,12 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
     def __init__(self):
         vbox.TestDriver.__init__(self);
-        self.oTestVmSet = self.oTestVmManager.getSmokeVmSet('nat');
-        self.asTestsDef = ['install', 'guestprops', 'stdguestprops', 'guestcontrol', 'sharedfolders'];
-        self.asTests    = self.asTestsDef;
-        self.asRsrcs    = None
+        self.oTestVmSet  = self.oTestVmManager.getSmokeVmSet('nat');
+        self.asTestsDef  = ['install', 'guestprops', 'stdguestprops', 'guestcontrol', 'sharedfolders'];
+        self.asTests     = self.asTestsDef;
+        self.asRsrcs     = None
+        # The file we're going to use as a beacon to wait if the Guest Additions CD-ROM is ready.
+        self.sFileCdWait = '';
 
         self.addSubTestDriver(SubTstDrvAddGuestCtrl(self));
         self.addSubTestDriver(SubTstDrvAddSharedFolders1(self));
@@ -154,12 +156,13 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         fRc = False;
 
         if oTestVm.isWindows():
-            sFileCdWait = 'VBoxWindowsAdditions.exe';
+            self.sFileCdWait = 'VBoxWindowsAdditions.exe';
         elif oTestVm.isLinux():
-            sFileCdWait = 'VBoxLinuxAdditions.run';
+            self.sFileCdWait = 'VBoxLinuxAdditions.run';
 
         self.logVmInfo(oVM);
-        oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True, sFileCdWait = sFileCdWait);
+        oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True,
+                                                                  sFileCdWait = self.sFileCdWait);
         if oSession is not None:
             self.addTask(oTxsSession);
             # Do the testing.
@@ -417,12 +420,13 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             return (False, oTxsSession);
 
         if fRc:
-
             # Make sure the new, updated kernel is in charge, which eventually got installed by the updating stuff above.
             # Otherwise building the Guest Additions module might not work correctly.
-            reporter.log('Rebooting guest in order to get the latest kernel active ...');
-            (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, cMsTimeout);
+            reporter.testStart('Rebooting guest in order to get the latest kernel active ...');
+            (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, cMsTimeout,
+                                                                  sFileCdWait = self.sFileCdWait);
             if fRc is True:
+                reporter.testDone();
 
                 #
                 # The actual install.
@@ -447,7 +451,17 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
                 # Do the final reboot to get the just installed Guest Additions up and running.
                 if fRc:
-                    (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, cMsTimeout);
+                    reporter.testStart('Rebooting guest in order to get the updated Guest Additions active ...');
+                    (fRc, oTxsSession) = self.txsRebootAndReconnectViaTcp(oSession, oTxsSession, cMsTimeout,
+                                                                          sFileCdWait = self.sFileCdWait);
+                    if fRc:
+                        pass
+                    else:
+                        reporter.testFailure('Rebooting and reconnecting to TXS service failed');
+                    reporter.testDone();
+            else:
+                reporter.testFailure('Rebooting and reconnecting to TXS service failed');
+                reporter.testDone();
 
         return (fRc, oTxsSession);
 
