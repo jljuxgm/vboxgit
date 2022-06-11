@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 83942 2020-04-23 10:32:43Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 83945 2020-04-23 11:05:24Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -2817,7 +2817,7 @@ static int iommuAmdDeviceMemRead(PPDMDEVINS pDevIns, uint16_t uDeviceId, uint64_
  * @param   pDevIns     The IOMMU device instance.
  * @param   uDeviceId   The device identifier (bus, device, function).
  * @param   uDva        The device virtual address being written.
- * @param   cbRead      The number of bytes being written.
+ * @param   cbWrite     The number of bytes being written.
  * @param   pGCPhysOut  Where to store the translated physical address.
  *
  * @thread  Any.
