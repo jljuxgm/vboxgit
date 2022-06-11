@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 78021 2019-04-05 08:25:19Z vboxsync $ */
+/* $Id: DnDURIList.cpp 78783 2019-05-27 11:32:49Z vboxsync $ */
 /** @file
  * DnD - URI list class.
  */
@@ -440,7 +440,7 @@ void DnDURIList::Clear(void)
     {
         DnDURIObject *pCurObj = m_lstTree.at(i);
         AssertPtr(pCurObj);
-        RTMemFree(pCurObj);
+        delete pCurObj;
     }
     m_lstTree.clear();
 
@@ -461,7 +461,7 @@ void DnDURIList::RemoveFirst(void)
     m_cbTotal -= cbSize; /* Adjust total size. */
 
     pCurObj->Close();
-    RTMemFree(pCurObj);
+    delete pCurObj;
 
     m_lstTree.removeFirst();
 }
