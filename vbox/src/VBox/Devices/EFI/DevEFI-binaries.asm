@@ -1,4 +1,4 @@
-; $Id: DevEFI-binaries.asm 81450 2019-10-22 13:03:57Z vboxsync $
+; $Id: DevEFI-binaries.asm 81779 2019-11-11 20:44:57Z vboxsync $
 ;; @file
 ; DevEFI - firmware binaries.
 ;
@@ -38,3 +38,14 @@ end_64_firmware:
 EXPORTEDNAME g_cbEfiFirmware64
         dd  end_64_firmware - NAME(g_abEfiFirmware64)
 
+%ifdef ASM_FORMAT_ELF
+size g_abEfiFirmware32 end_32_firmware - NAME(g_abEfiFirmware32)
+type g_abEfiFirmware32 object
+size g_cbEfiFirmware32 4
+type g_cbEfiFirmware32 object
+
+size g_abEfiFirmware64 end_32_firmware - NAME(g_abEfiFirmware64)
+type g_abEfiFirmware64 object
+size g_cbEfiFirmware64 4
+type g_cbEfiFirmware64 object
+%endif
