@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 79399 2019-06-27 17:16:51Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 80431 2019-08-26 16:31:22Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -303,35 +303,6 @@ static PVBOXUSBFLT_DEVICE vboxUsbFltDevGetLocked(PDEVICE_OBJECT pPdo)
             return pDevice;
     }
     return NULL;
-}
-
-PVBOXUSBFLT_DEVICE vboxUsbFltDevGet(PDEVICE_OBJECT pPdo)
-{
-    PVBOXUSBFLT_DEVICE pDevice;
-
-    VBOXUSBFLT_LOCK_ACQUIRE();
-    pDevice = vboxUsbFltDevGetLocked(pPdo);
-    /*
-     * Prevent a host crash when vboxUsbFltDevGetLocked fails to locate the matching PDO
-     * in g_VBoxUsbFltGlobals.DeviceList (see @bugref{6509}).
-     */
-    if (pDevice == NULL)
-    {
-        WARN(("failed to get device for PDO(0x%p)", pPdo));
-    }
-    else if (pDevice->enmState > VBOXUSBFLT_DEVSTATE_ADDED)
-    {
-        vboxUsbFltDevRetain(pDevice);
-        LOG(("found device (0x%p), state(%d) for PDO(0x%p)", pDevice, pDevice->enmState, pPdo));
-    }
-    else
-    {
-        LOG(("found replugging device (0x%p), state(%d) for PDO(0x%p)", pDevice, pDevice->enmState, pPdo));
-        pDevice = NULL;
-    }
-    VBOXUSBFLT_LOCK_RELEASE();
-
-    return pDevice;
 }
 
 static NTSTATUS vboxUsbFltPdoReplug(PDEVICE_OBJECT pDo)
