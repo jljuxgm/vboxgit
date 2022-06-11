@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplStrInstr.cpp.h 77450 2019-02-25 06:01:34Z vboxsync $ */
+/* $Id: IEMAllCImplStrInstr.cpp.h 80089 2019-07-31 20:50:22Z vboxsync $ */
 /** @file
  * IEM - String Instruction Implementation Code Template.
  */
@@ -70,31 +70,7 @@
  * interrupts to let the host interrupt us.  We cannot let big string operations
  * hog the CPU, especially not in raw-mode.
  */
-#ifdef IN_RC
-# define IEM_CHECK_FF_YIELD_REPSTR_MAYBE_RETURN(a_pVM, a_pVCpu, a_fEflags) \
-    do { \
-        if (RT_LIKELY(   !VMCPU_FF_IS_ANY_SET(a_pVCpu, (a_fEflags) & X86_EFL_IF ? VMCPU_FF_YIELD_REPSTR_MASK \
-                                                                                : VMCPU_FF_YIELD_REPSTR_NOINT_MASK) \
-                      && !VM_FF_IS_ANY_SET(a_pVM, VM_FF_YIELD_REPSTR_MASK) \
-                      )) \
-        { \
-            RTCCUINTREG fSavedFlags = ASMGetFlags(); \
-            if (!(fSavedFlags & X86_EFL_IF)) \
-            { \
-                ASMSetFlags(fSavedFlags | X86_EFL_IF); \
-                ASMNopPause(); \
-                ASMSetFlags(fSavedFlags); \
-            } \
-        } \
-        else \
-        { \
-            LogFlow(("%s: Leaving early (outer)! ffcpu=%#RX64 ffvm=%#x\n", \
-                     __FUNCTION__, (uint64_t)(a_pVCpu)->fLocalForcedActions, (a_pVM)->fGlobalForcedActions)); \
-            return VINF_SUCCESS; \
-        } \
-    } while (0)
-#else
-# define IEM_CHECK_FF_YIELD_REPSTR_MAYBE_RETURN(a_pVM, a_pVCpu, a_fEflags) \
+#define IEM_CHECK_FF_YIELD_REPSTR_MAYBE_RETURN(a_pVM, a_pVCpu, a_fEflags) \
     do { \
         if (RT_LIKELY(   !VMCPU_FF_IS_ANY_SET(a_pVCpu, (a_fEflags) & X86_EFL_IF ? VMCPU_FF_YIELD_REPSTR_MASK \
                                                                                 : VMCPU_FF_YIELD_REPSTR_NOINT_MASK) \
@@ -108,7 +84,6 @@
             return VINF_SUCCESS; \
         } \
     } while (0)
-#endif
 
 /** @def IEM_CHECK_FF_HIGH_PRIORITY_POST_REPSTR_MAYBE_RETURN
  * This is used in some of the inner loops to make sure we respond immediately

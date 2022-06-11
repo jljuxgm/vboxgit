@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 78483 2019-05-13 10:52:16Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 80089 2019-07-31 20:50:22Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -1411,7 +1411,6 @@ IEM_CIMPL_DEF_0(iemCImpl_vmmcall)
         IEM_SVM_VMEXIT_RET(pVCpu, SVM_EXIT_VMMCALL, 0 /* uExitInfo1 */, 0 /* uExitInfo2 */);
     }
 
-#ifndef IN_RC
     /* This is a little bit more complicated than the VT-x version because HM/SVM may
        patch MOV CR8 instructions to speed up APIC.TPR access for 32-bit windows guests. */
     if (VM_IS_HM_ENABLED(pVCpu->CTX_SUFF(pVM)))
@@ -1423,7 +1422,6 @@ IEM_CIMPL_DEF_0(iemCImpl_vmmcall)
             return VINF_SUCCESS;
         }
     }
-#endif
 
     /* Join forces with vmcall. */
     return IEM_CIMPL_CALL_1(iemCImpl_Hypercall, OP_VMMCALL);
