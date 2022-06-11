@@ -1,4 +1,4 @@
-/* $Id: ClipboardProvider.cpp 79027 2019-06-06 14:47:16Z vboxsync $ */
+/* $Id: ClipboardProvider.cpp 79036 2019-06-07 14:56:19Z vboxsync $ */
 /** @file
  * Shared Clipboard - Provider implementation.
  */
@@ -70,7 +70,7 @@ SharedClipboardProvider *SharedClipboardProvider::Create(PSHAREDCLIPBOARDPROVIDE
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_HOST
         case SHAREDCLIPBOARDPROVIDERSOURCE_HOSTSERVICE:
-            pProvider = new SharedClipboardProvider();
+            pProvider = new SharedClipboardProviderHostService();
             break;
 #endif
         default:
@@ -104,6 +104,10 @@ uint32_t SharedClipboardProvider::Release(void)
     return ASMAtomicDecU32(&m_cRefs);
 }
 
+/*
+ * Stubs.
+ */
+
 int SharedClipboardProvider::ReadDataHdr(PVBOXCLIPBOARDDATAHDR pDataHdr)
 {
     RT_NOREF(pDataHdr);
@@ -129,10 +133,6 @@ int SharedClipboardProvider::WriteMetaData(const PVBOXCLIPBOARDDATAHDR pDataHdr,
     RT_NOREF(pDataHdr, pvMeta, cbMeta, pcbWritten, fFlags);
     return VERR_NOT_IMPLEMENTED;
 }
-
-/*
- * Stubs.
- */
 
 int SharedClipboardProvider::ReadDirectory(PVBOXCLIPBOARDDIRDATA pDirData)
 {

@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 78619 2019-05-21 08:42:35Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 79036 2019-06-07 14:56:19Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -274,13 +274,15 @@ int main(int argc, char *argv[])
 
 int VBoxClipboardSvcImplInit() { return VINF_SUCCESS; }
 void VBoxClipboardSvcImplDestroy() { }
-void VBoxClipboardSvcImplDisconnect(PVBOXCLIPBOARDCLIENTDATA) { AssertFailed(); }
+int VBoxClipboardSvcImplDisconnect(PVBOXCLIPBOARDCLIENTDATA) { AssertFailed(); return VINF_SUCCESS; }
 int VBoxClipboardSvcImplConnect(PVBOXCLIPBOARDCLIENTDATA, bool)
 { AssertFailed(); return VERR_WRONG_ORDER; }
-void VBoxClipboardSvcImplFormatAnnounce(PVBOXCLIPBOARDCLIENTDATA, unsigned int)
-{ AssertFailed(); }
+int VBoxClipboardSvcImplFormatAnnounce(PVBOXCLIPBOARDCLIENTDATA, unsigned int)
+{ AssertFailed(); return VINF_SUCCESS; }
 int VBoxClipboardSvcImplReadData(PVBOXCLIPBOARDCLIENTDATA, unsigned int, void *, unsigned int, unsigned int *)
 { AssertFailed(); return VERR_WRONG_ORDER; }
-void VBoxClipboardSvcImplWriteData(PVBOXCLIPBOARDCLIENTDATA, void *, unsigned int, unsigned int) { AssertFailed(); }
+int VBoxClipboardSvcImplWriteData(PVBOXCLIPBOARDCLIENTDATA, void *, unsigned int, unsigned int)
+{ AssertFailed(); return VINF_SUCCESS; }
 int VBoxClipboardSvcImplSync(PVBOXCLIPBOARDCLIENTDATA)
 { AssertFailed(); return VERR_WRONG_ORDER; }
+

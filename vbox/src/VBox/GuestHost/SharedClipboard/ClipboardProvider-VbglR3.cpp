@@ -1,4 +1,4 @@
-/* $Id: ClipboardProvider-VbglR3.cpp 79027 2019-06-06 14:47:16Z vboxsync $ */
+/* $Id: ClipboardProvider-VbglR3.cpp 79036 2019-06-07 14:56:19Z vboxsync $ */
 /** @file
  * Shared Clipboard - Provider implementation for VbglR3 (guest side).
  */
@@ -113,7 +113,7 @@ int SharedClipboardProviderVbglR3::WriteMetaData(const PVBOXCLIPBOARDDATAHDR pDa
     while (cbToWrite)
     {
         uint32_t cbWritten;
-        rc = VbglR3ClipboardWriteMetaData(m_uClientID, (uint8_t *)pvMeta + cbWrittenTotal, cbToWrite, &cbWritten);
+        rc = VbglR3ClipboardWriteMetaData(m_uClientID, pDataHdr, (uint8_t *)pvMeta + cbWrittenTotal, cbToWrite, &cbWritten);
         if (RT_FAILURE(rc))
             break;
 
