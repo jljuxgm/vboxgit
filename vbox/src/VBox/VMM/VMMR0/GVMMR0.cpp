@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 82555 2019-12-11 23:56:54Z vboxsync $ */
+/* $Id: GVMMR0.cpp 82556 2019-12-12 00:00:20Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -55,6 +55,7 @@
 #include "GVMMR0Internal.h"
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/pdm.h>
+#include <VBox/vmm/pgm.h>
 #include <VBox/vmm/vmm.h>
 #ifdef VBOX_WITH_NEM_R0
 # include <VBox/vmm/nem.h>
