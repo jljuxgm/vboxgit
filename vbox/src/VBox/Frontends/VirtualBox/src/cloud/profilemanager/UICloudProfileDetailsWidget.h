@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UICloudProfileDetailsWidget.h 83950 2020-04-23 14:40:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class declaration.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef FEQT_INCLUDED_SRC_cloud_UICloudProfileDetailsWidget_h
-#define FEQT_INCLUDED_SRC_cloud_UICloudProfileDetailsWidget_h
+#ifndef FEQT_INCLUDED_SRC_cloud_profilemanager_UICloudProfileDetailsWidget_h
+#define FEQT_INCLUDED_SRC_cloud_profilemanager_UICloudProfileDetailsWidget_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -210,4 +210,4 @@ private:
 };
 
 
-#endif /* !FEQT_INCLUDED_SRC_cloud_UICloudProfileDetailsWidget_h */
+#endif /* !FEQT_INCLUDED_SRC_cloud_profilemanager_UICloudProfileDetailsWidget_h */

@@ -1,4 +1,4 @@
-/* $Id: UICloudProfileDetailsWidget.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UICloudProfileDetailsWidget.cpp 83950 2020-04-23 14:40:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudProfileDetailsWidget class implementation.
  */
