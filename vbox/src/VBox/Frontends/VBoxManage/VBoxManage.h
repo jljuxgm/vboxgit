@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 79611 2019-07-08 23:33:59Z vboxsync $ */
+/* $Id: VBoxManage.h 79796 2019-07-15 15:32:29Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -193,7 +193,7 @@ RTEXITCODE errorSyntax(USAGECATEGORY enmCommand, const char *pszFormat, ...);
 RTEXITCODE errorSyntaxEx(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, const char *pszFormat, ...);
 RTEXITCODE errorGetOpt(USAGECATEGORY enmCommand, int rc, union RTGETOPTUNION const *pValueUnion);
 RTEXITCODE errorGetOptEx(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, int rc, union RTGETOPTUNION const *pValueUnion);
-RTEXITCODE errorArgument(const char *pszFormat, ...);
+RTEXITCODE errorArgument(const char *pszFormat, ...) RT_IPRT_FORMAT_ATTR(1, 2);
 
 void printUsageInternal(USAGECATEGORY enmCommand, PRTSTREAM pStrm);
 
