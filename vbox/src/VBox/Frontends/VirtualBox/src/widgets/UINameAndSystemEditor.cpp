@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 79885 2019-07-19 12:32:51Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 79890 2019-07-19 15:46:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -333,6 +333,8 @@ void UINameAndSystemEditor::prepareWidgets()
     if (pMainLayout)
     {
         pMainLayout->setContentsMargins(0, 0, 0, 0);
+        pMainLayout->setColumnStretch(0, 0);
+        pMainLayout->setColumnStretch(1, 1);
 
         int iRow = 0;
 
