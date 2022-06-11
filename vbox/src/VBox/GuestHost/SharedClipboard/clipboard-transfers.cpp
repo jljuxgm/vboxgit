@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 81829 2019-11-13 15:59:22Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 82460 2019-12-06 13:59:10Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -1455,7 +1455,7 @@ static int shClTransferResolvePathAbs(PSHCLTRANSFER pTransfer, const char *pszPa
         char *pszPathAbs = RTPathJoinA(pTransfer->pszPathRootAbs, pszPath);
         if (pszPathAbs)
         {
-            char   szResolved[RTPATH_MAX + 1];
+            char   szResolved[RTPATH_MAX];
             size_t cbResolved = sizeof(szResolved);
             rc = RTPathAbsEx(pTransfer->pszPathRootAbs, pszPathAbs, RTPATH_STR_F_STYLE_HOST, szResolved, &cbResolved);
 
