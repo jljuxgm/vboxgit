@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.cpp 83494 2020-03-31 09:41:58Z vboxsync $ */
+/* $Id: UIResourceMonitor.cpp 83496 2020-03-31 12:02:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class implementation.
  */
@@ -58,6 +58,23 @@ struct ResourceColumn
 {
     QString m_strName;
     bool    m_fEnabled;
+};
+
+
+/*********************************************************************************************************************************
+*   Class UIVMResourceMonitorHostStatsWidget definition.                                                                         *
+*********************************************************************************************************************************/
+
+class UIVMResourceMonitorHostStatsWidget : public QWidget
+{
+
+    Q_OBJECT;
+
+
+public:
+
+    UIVMResourceMonitorHostStatsWidget(QWidget *pParent = 0);
+
 };
 
 /*********************************************************************************************************************************
@@ -166,8 +183,9 @@ private:
     QVariant m_data;
 };
 
+
 /*********************************************************************************************************************************
-*   Class UIVMResourceMonitorProxyModel definition.                                                                           *
+*   Class UIVMResourceMonitorProxyModel definition.                                                                              *
 *********************************************************************************************************************************/
 class UIResourceMonitorProxyModel : public QSortFilterProxyModel
 {
@@ -249,7 +267,7 @@ private:
 
 
 /*********************************************************************************************************************************
-*   UIVMResourceMonitorDelegate definition.                                                                                       *
+*   UIVMResourceMonitorDelegate definition.                                                                                      *
 *********************************************************************************************************************************/
 /** A QItemDelegate child class to disable dashed lines drawn around selected cells in QTableViews */
 class UIVMResourceMonitorDelegate : public QItemDelegate
@@ -263,9 +281,18 @@ protected:
 };
 
 
+/*********************************************************************************************************************************
+*   Class UIVMResourceMonitorHostStatsWidget implementation.                                                                     *
+*********************************************************************************************************************************/
+
+UIVMResourceMonitorHostStatsWidget::UIVMResourceMonitorHostStatsWidget(QWidget *pParent /* = 0 */)
+    :QWidget(pParent)
+{
+}
+
 
 /*********************************************************************************************************************************
-*   Class UIVMResourceMonitorTableView implementation.                                                                            *
+*   Class UIVMResourceMonitorTableView implementation.                                                                           *
 *********************************************************************************************************************************/
 
 UIVMResourceMonitorTableView::UIVMResourceMonitorTableView(QWidget *pParent /* = 0 */)
@@ -413,7 +440,7 @@ bool UIResourceMonitorItem::isWithGuestAdditions() const
 
 
 /*********************************************************************************************************************************
-*   Class UIVMResourceMonitorHostStats implementation.                                                                            *
+*   Class UIVMResourceMonitorHostStats implementation.                                                                           *
 *********************************************************************************************************************************/
 
 UIVMResourceMonitorHostStats::UIVMResourceMonitorHostStats()
@@ -426,7 +453,7 @@ UIVMResourceMonitorHostStats::UIVMResourceMonitorHostStats()
 
 
 /*********************************************************************************************************************************
-*   Class UIVMResourceMonitorCheckBox implementation.                                                                             *
+*   Class UIVMResourceMonitorCheckBox implementation.                                                                            *
 *********************************************************************************************************************************/
 
 UIVMResourceMonitorCheckBox::UIVMResourceMonitorCheckBox(QWidget *parent /* = 0 */)
@@ -445,7 +472,7 @@ const QVariant UIVMResourceMonitorCheckBox::data() const
 
 
 /*********************************************************************************************************************************
-*   Class UIVMResourceMonitorProxyModel implementation.                                                                           *
+*   Class UIVMResourceMonitorProxyModel implementation.                                                                          *
 *********************************************************************************************************************************/
 UIResourceMonitorProxyModel::UIResourceMonitorProxyModel(QObject *parent /* = 0 */)
     :QSortFilterProxyModel(parent)

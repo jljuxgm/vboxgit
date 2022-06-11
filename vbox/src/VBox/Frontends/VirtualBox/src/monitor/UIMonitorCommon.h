@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.h 83380 2020-03-24 14:10:43Z vboxsync $ */
+/* $Id: UIMonitorCommon.h 83496 2020-03-31 12:02:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
@@ -47,6 +47,15 @@ public:
     /** @} */
         static void getRAMLoad(CPerformanceCollector &comPerformanceCollector, QVector<QString> &nameList,
                                QVector<CUnknown>& objectList, quint64 &iOutTotalRAM, quint64 &iOutFreeRAM);
+
+
+        static QPainterPath doughnutSlice(const QRectF &outerRectangle, const QRectF &innerRectangle, float fStartAngle, float fSweepAngle);
+        static QPainterPath wholeArc(const QRectF &rectangle);
+        static void drawCombinedDoughnutChart(quint64 data1, const QColor &data1Color,
+                                              quint64 data2, const QColor &data2Color,
+                                              QPainter &painter, quint64  iMaximum,
+                                              const QRectF &chartRect, const QRectF &innerRect, int iOverlayAlpha);
+
 
 private:
 
