@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 82867 2020-01-27 10:23:13Z vboxsync $ */
+/* $Id: DrvChar.cpp 82869 2020-01-27 10:27:21Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMISERIALCONNECTOR / PDMISERIALPORT.
  */
@@ -218,6 +218,7 @@ static DECLCALLBACK(int) drvCharQueuesFlush(PPDMISERIALCONNECTOR pInterface, boo
 
     LogFlowFunc(("-> %Rrc\n", rc));
     return rc;
+}
 
 
 /* -=-=-=-=- I/O thread -=-=-=-=- */
