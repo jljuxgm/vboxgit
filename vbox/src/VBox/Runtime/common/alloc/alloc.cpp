@@ -1,4 +1,4 @@
-/* $Id: alloc.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: alloc.cpp 83368 2020-03-23 13:52:14Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation.
  */
@@ -60,4 +60,14 @@ RTDECL(void *) RTMemDupExTag(const void *pvSrc, size_t cbSrc, size_t cbExtra, co
     return pvDst;
 }
 RT_EXPORT_SYMBOL(RTMemDupExTag);
+
+
+RTDECL(void *)  RTMemReallocZTag(void *pvOld, size_t cbOld, size_t cbNew, const char *pszTag) RT_NO_THROW_DEF
+{
+    void *pvDst = RTMemReallocTag(pvOld, cbNew, pszTag);
+    if (pvDst && cbNew > cbOld)
+        memset((uint8_t *)pvDst + cbOld, 0, cbNew - cbOld);
+    return pvDst;
+}
+RT_EXPORT_SYMBOL(RTMemReallocZTag);
 
