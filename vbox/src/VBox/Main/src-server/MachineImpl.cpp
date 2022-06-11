@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 83171 2020-02-27 10:28:09Z vboxsync $ */
+/* $Id: MachineImpl.cpp 83180 2020-02-28 18:07:28Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7462,7 +7462,7 @@ HRESULT Machine::i_disconnectFromCloudNetwork()
     alock.release();
 
     HRESULT hrc = stopGateways(mParent, gateways);
-    // @todo Restore original MAC address. I'd hate to wait here for Machine to power off though.
+    /// @todo Restore original MAC address. I'd hate to wait here for Machine to power off though.
     // i_setMacAddress(gateways.mAdapterSlot, gateways.getLocalMacAddressWithoutColons());
     return hrc;
 }
