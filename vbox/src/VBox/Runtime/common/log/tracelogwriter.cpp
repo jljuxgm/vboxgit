@@ -1,4 +1,4 @@
-/* $Id: tracelogwriter.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tracelogwriter.cpp 82788 2020-01-19 12:04:31Z vboxsync $ */
 /** @file
  * IPRT - Trace log writer.
  */
@@ -96,8 +96,6 @@ typedef struct RTTRACELOGWRINT
     RTSEMMUTEX                  hMtx;
     /** Next sequence number to use. */
     volatile uint64_t           u64SeqNoNext;
-    /** Pointer to the description if set. */
-    char                        *pszDesc;
     /** AVL tree root for event descriptor lookups. */
     AVLPVTREE                   pTreeEvtDescs;
     /** Number of event descriptors known. */
@@ -503,7 +501,7 @@ static int rtTraceLogWrInit(PRTTRACELOGWRINT pThis, const char *pszDesc)
     Hdr.u64TsStart   = RTTimeNanoTS();
     int rc = rtTraceLogWrStream(pThis, &Hdr, sizeof(Hdr));
     if (   RT_SUCCESS(rc)
-        && pThis->pszDesc)
+        && pszDesc)
         rc = rtTraceLogWrStream(pThis, pszDesc, Hdr.cbStrDesc);
 
     return rc;
