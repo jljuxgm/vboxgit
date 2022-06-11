@@ -1,4 +1,4 @@
-/* $Id: UIMediaComboBox.cpp 80444 2019-08-27 17:47:44Z vboxsync $ */
+/* $Id: UIMediaComboBox.cpp 80445 2019-08-27 17:51:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediaComboBox class implementation.
  */
@@ -48,7 +48,7 @@ void UIMediaComboBox::refresh()
     if (count() > 1 && m_enmMediaType == UIMediumDeviceType_HardDisk)
     {
         removeItem(0);
-        //m_media.erase(m_media.begin());
+        m_media.erase(m_media.begin());
     }
 
     /* Notify listeners about active item changed. */
@@ -164,7 +164,7 @@ void UIMediaComboBox::sltHandleMediumDeleted(const QUuid &uMediumId)
 
     /* Replace medium from combo-box: */
     removeItem(iIndex);
-    //m_media.erase(m_media.begin() + iIndex);
+    m_media.erase(m_media.begin() + iIndex);
 
     /* If no real medium left, add the NULL medium: */
     if (count() == 0)
