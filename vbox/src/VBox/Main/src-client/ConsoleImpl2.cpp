@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 80847 2019-09-17 09:38:16Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 81087 2019-09-30 18:55:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1830,6 +1830,21 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 #ifdef DEBUG_vvl
             InsertConfigInteger(pCfg,  "PermanentSave", 1);
 #endif
+
+            BOOL fNVRAM = FALSE;
+            hrc = biosSettings->COMGETTER(NonVolatileStorageEnabled)(&fNVRAM);              H();
+            if (fNVRAM)
+            {
+                hrc = biosSettings->COMGETTER(NonVolatileStorageFile)(bstr.asOutParam());   H();
+
+                /*
+                 * NVRAM device subtree.
+                 */
+                InsertConfigNode(pDevices, "flash", &pDev);
+                InsertConfigNode(pDev,     "0", &pInst);
+                InsertConfigNode(pInst,    "Config", &pCfg);
+                InsertConfigString(pCfg,   "FlashFile", bstr);
+            }
         }
 
         /*
