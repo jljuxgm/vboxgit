@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78482 2019-05-13 09:58:10Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78490 2019-05-14 05:00:36Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12556,8 +12556,36 @@ DECLINLINE(VBOXSTRICTRC) hmR0VmxHandleExitNested(PVMCPU pVCpu, PVMXTRANSIENT pVm
         }
 
         case VMX_EXIT_CPUID:
+        {
+            int rc = hmR0VmxReadExitInstrLenVmcs(pVmxTransient);
+            AssertRCReturn(rc, rc);
+            rcStrict = IEMExecVmxVmexitInstr(pVCpu, VMX_EXIT_CPUID, pVmxTransient->cbInstr);
+            break;
+        }
+
         case VMX_EXIT_RDTSC:
+        {
+            int rc = hmR0VmxReadExitInstrLenVmcs(pVmxTransient);
+            AssertRCReturn(rc, rc);
+            if (CPUMIsGuestVmxProcCtlsSet(pVCpu, &pVCpu->cpum.GstCtx, VMX_PROC_CTLS_RDTSC_EXIT))
+                rcStrict = IEMExecVmxVmexitInstr(pVCpu, VMX_EXIT_RDTSC, pVmxTransient->cbInstr);
+            else
+                rcStrict = hmR0VmxExitRdtsc(pVCpu, pVmxTransient);
+            break;
+        }
+
+
         case VMX_EXIT_RDTSCP:
+        {
+            int rc = hmR0VmxReadExitInstrLenVmcs(pVmxTransient);
+            AssertRCReturn(rc, rc);
+            if (CPUMIsGuestVmxProcCtlsSet(pVCpu, &pVCpu->cpum.GstCtx, VMX_PROC_CTLS_RDTSC_EXIT))
+                rcStrict = IEMExecVmxVmexitInstr(pVCpu, VMX_EXIT_RDTSC, pVmxTransient->cbInstr);
+            else
+                rcStrict = hmR0VmxExitRdtsc(pVCpu, pVmxTransient);
+            break;
+        }
+
         case VMX_EXIT_APIC_ACCESS:
         case VMX_EXIT_XCPT_OR_NMI:
         case VMX_EXIT_MOV_CRX:
