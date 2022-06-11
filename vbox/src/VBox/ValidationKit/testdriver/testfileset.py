@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testfileset.py 79185 2019-06-17 14:19:41Z vboxsync $
+# $Id: testfileset.py 79193 2019-06-17 17:41:18Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79185 $"
+__version__ = "$Revision: 79193 $"
 
 
 # Standard Python imports.
@@ -82,6 +82,42 @@ class TestFile(TestFsObj):
         if sys.version_info[0] < 3:
             return bytes(abRet);
         return abRet;
+
+    def equalFile(self, oFile):
+        """ Compares the content of oFile with self.abContent. """
+
+        # Check the size first.
+        try:
+            cbFile = os.fstat(oFile.fileno()).st_size;
+        except:
+            return reporter.errorXcpt();
+        if cbFile != self.cbContent:
+            return reporter.error('file size differs: %s, cbContent=%s' % (cbFile, self.cbContent));
+
+        # Compare the bytes next.
+        offFile = 0;
+        try:
+            oFile.seek(offFile);
+        except:
+            return reporter.error('seek error');
+        while offFile < self.cbContent:
+            cbToRead = self.cbContent - offFile;
+            if cbToRead > 256*1024:
+                cbToRead = 256*1024;
+            try:
+                abRead = oFile.read(cbToRead);
+            except:
+                return reporter.error('read error at offset %s' % (offFile,));
+            cbRead = len(abRead);
+            if cbRead == 0:
+                return reporter.error('premature end of file at offset %s' % (offFile,));
+            if not utils.areBytesEqual(abRead, self.abContent[offFile:(offFile + cbRead)]):
+                return reporter.error('%s byte block at offset %s differs' % (cbRead, offFile,));
+            # Advance:
+            offFile += cbRead;
+
+        return True;
+
 
 class TestDir(TestFsObj):
     """ A file object in the guest. """
@@ -439,6 +475,7 @@ class TestFileSet(object):
                     if oParent is self.oTreeDir:
                         return oDir;
                     oParent = oParent.oParent;
+        return None; # make pylint happy
 
 #
 # Unit testing.
