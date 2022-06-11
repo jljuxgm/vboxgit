@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 80544 2019-09-02 10:34:24Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 80548 2019-09-02 11:40:17Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -1598,8 +1598,8 @@ VMMR0_INT_DECL(int) PDMR0DeviceCompatSetCritSectReqHandler(PGVM pGVM, PPDMDEVICE
     else
     {
         size_t offCritSect = pReq->pCritSectR3 - pDevIns->pDevInsForR3R0->pvInstanceDataR3;
-        AssertLogRelMsgReturn(   offCritSect                     <  pDevIns->pReg->cbInstanceShared
-                              /*&& offCritSect + sizeof(PDMPCIDEV) <= pDevIns->pReg->cbInstanceShared*/,
+        AssertLogRelMsgReturn(   offCritSect                       <  pDevIns->pReg->cbInstanceShared
+                              && offCritSect + sizeof(PDMCRITSECT) <= pDevIns->pReg->cbInstanceShared,
                               ("offCritSect=%p pCritSectR3=%p cbInstanceShared=%#x (%s)\n",
                                offCritSect, pReq->pCritSectR3, pDevIns->pReg->cbInstanceShared, pDevIns->pReg->szName),
                               VERR_INVALID_POINTER);
