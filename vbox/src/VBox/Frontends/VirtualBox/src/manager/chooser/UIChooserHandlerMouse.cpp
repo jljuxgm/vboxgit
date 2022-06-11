@@ -1,4 +1,4 @@
-/* $Id: UIChooserHandlerMouse.cpp 83672 2020-04-10 16:27:16Z vboxsync $ */
+/* $Id: UIChooserHandlerMouse.cpp 83896 2020-04-21 15:16:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserHandlerMouse class implementation.
  */
@@ -135,7 +135,6 @@ bool UIChooserHandlerMouse::handleMousePress(QGraphicsSceneMouseEvent *pEvent) c
                             model()->addToSelectedItems(pClickedItem);
                         /* Make clicked item current one: */
                         model()->setCurrentItem(pClickedItem);
-                        model()->makeSureSomeItemIsSelected();
                     }
                     /* Was no modifiers pressed? */
                     else if (pEvent->modifiers() == Qt::NoModifier)

@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 83709 2020-04-15 16:53:18Z vboxsync $ */
+/* $Id: UIChooserModel.h 83896 2020-04-21 15:16:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -166,9 +166,6 @@ public:
 
         /** Finds closest non-selected-item. */
         UIChooserItem *findClosestUnselectedItem() const;
-
-        /** Makes sure some item is selected. */
-        void makeSureSomeItemIsSelected();
 
         /** Defines current @a pItem. */
         void setCurrentItem(UIChooserItem *pItem);
