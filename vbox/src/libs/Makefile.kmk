@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 79498 2019-07-03 13:33:46Z vboxsync $
+# $Id: Makefile.kmk 79891 2019-07-19 16:16:19Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -67,7 +67,8 @@ endif
 # Main related things - XPCOM and XSLT.
 if defined(VBOX_WITH_MAIN) \
  && !defined(VBOX_ONLY_ADDITIONS) \
- && !defined(VBOX_ONLY_VALIDATIONKIT)
+ && !defined(VBOX_ONLY_VALIDATIONKIT) \
+ && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
 
  if defined(VBOX_WITH_XPCOM) && !defined(VBOX_ONLY_DOCS)
   include $(PATH_SUB_CURRENT)/xpcom18a4/Makefile.kmk

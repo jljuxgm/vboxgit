@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 79891 2019-07-19 16:16:19Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -32,7 +32,8 @@ include $(PATH_SUB_CURRENT)/Support/Makefile.kmk
 
 if  !defined(VBOX_ONLY_DOCS) \
  && !defined(VBOX_ONLY_EXTPACKS) \
- && !defined(VBOX_ONLY_VALIDATIONKIT)
+ && !defined(VBOX_ONLY_VALIDATIONKIT) \
+ && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
  if1of ($(KBUILD_TARGET),win)
   include $(PATH_SUB_CURRENT)/win/Makefile.kmk
  endif
