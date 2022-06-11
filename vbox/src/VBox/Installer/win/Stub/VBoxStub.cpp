@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxStub.cpp 83808 2020-04-18 23:30:59Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -168,7 +168,7 @@ static void ShowInfo(const char *pszFmt, ...)
         else
         {
             PRTUTF16 pwszMsg;
-            int rc = RTStrToUtf16(pszMsg, &pwszMsg);
+            rc = RTStrToUtf16(pszMsg, &pwszMsg);
             if (RT_SUCCESS(rc))
             {
                 MessageBoxW(GetDesktopWindow(), pwszMsg, MY_UNICODE(VBOX_STUB_TITLE), MB_ICONINFORMATION);
