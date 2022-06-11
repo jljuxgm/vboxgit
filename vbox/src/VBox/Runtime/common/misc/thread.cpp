@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 83124 2020-02-20 17:23:23Z vboxsync $ */
+/* $Id: thread.cpp 83125 2020-02-20 17:36:08Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -668,7 +668,7 @@ DECLHIDDEN(void) rtThreadTerminate(PRTTHREADINT pThread, int rc)
      */
 #ifdef IPRT_WITH_GENERIC_TLS
     rtThreadTlsDestruction(pThread);
-#elif defined(RT_OS_WINDOWS)
+#elif defined(RT_OS_WINDOWS) && defined(IN_RING3)
     rtThreadWinTlsDestruction();
 #endif
 
