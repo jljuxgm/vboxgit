@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 81621 2019-11-01 14:39:35Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 81641 2019-11-04 10:15:25Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1403,7 +1403,6 @@ DECLHIDDEN(int) rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ
     IPRT_LINUX_SAVE_EFL_AC();
 
     /* Fail if requested to do something we can't. */
-    AssertMsgReturn(!offSub && !cbSub, ("%#x %#x\n", offSub, cbSub), VERR_NOT_SUPPORTED);
     AssertMsgReturn(pvFixed == (void *)-1, ("%p\n", pvFixed), VERR_NOT_SUPPORTED);
     if (uAlignment > PAGE_SIZE)
         return VERR_NOT_SUPPORTED;
