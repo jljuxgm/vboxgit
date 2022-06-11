@@ -1,4 +1,4 @@
-    /* $Id: DevVirtioSCSI.cpp 82042 2019-11-20 19:04:20Z vboxsync $ $Revision: 82042 $ $Date: 2019-11-21 03:04:20 +0800 (Thu, 21 Nov 2019) $ $Author: vboxsync $ */
+    /* $Id: DevVirtioSCSI.cpp 82046 2019-11-20 19:55:31Z vboxsync $ $Revision: 82046 $ $Date: 2019-11-21 03:55:31 +0800 (Thu, 21 Nov 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1995,7 +1995,7 @@ static DECLCALLBACK(int) virtioScsiR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSS
     pHlp->pfnSSMGetU32(pSSM,  &pThis->fHasLunChange);
     pHlp->pfnSSMGetU32(pSSM,  &pThis->fResetting);
 
-    /* TODO: Ask aeichner about BIOS-related changes */
+    /** @todo Ask aeichner about BIOS-related changes */
     pHlp->pfnSSMGetU32(pSSM, &pThis->cTargets);
 
 
