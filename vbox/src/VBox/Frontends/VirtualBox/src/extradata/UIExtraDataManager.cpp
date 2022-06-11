@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 79434 2019-07-01 11:31:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4305,6 +4305,16 @@ bool UIExtraDataManager::softKeyboardDialogShouldBeMaximized()
 
     /* Make sure 5th item has required value: */
     return data.size() == 5 && data[4] == GUI_Geometry_State_Max;
+}
+
+void UIExtraDataManager::setSoftKeyboardColorTheme(const QStringList &colorStringList)
+{
+    setExtraDataStringList(GUI_SoftKeyboard_ColorTheme, colorStringList);
+}
+
+QStringList UIExtraDataManager::softKeyboardColorTheme()
+{
+    return extraDataStringList(GUI_SoftKeyboard_ColorTheme);
 }
 
 void UIExtraDataManager::setFileManagerOptions(bool fListDirectoriesFirst,

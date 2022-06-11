@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 79250 2019-06-19 18:07:40Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 79434 2019-07-01 11:31:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -384,6 +384,7 @@ namespace UIExtraDataDefs
     /** @name Soft Keyboard related data
       * @{ */
         extern const char *GUI_SoftKeyboard_DialogGeometry;
+        extern const char *GUI_SoftKeyboard_ColorTheme;
     /** @} */
 
     /** @name File Manager options
