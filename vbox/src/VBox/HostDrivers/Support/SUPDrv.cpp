@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: SUPDrv.cpp 81004 2019-09-25 10:12:43Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4603,6 +4603,8 @@ SUPR0DECL(int) SUPR0GetHwvirtMsrs(PSUPHWVIRTMSRS pMsrs, uint32_t fCaps, bool fFo
      */
     RTThreadPreemptDisable(&PreemptState);
 
+    /** @todo Disabled caching for now until proper locking is implemented. */
+#if 0
     /*
      * Querying MSRs from hardware can be expensive (exponentially more so
      * in a nested-virtualization scenario if they happen to cause VM-exits).
@@ -4617,6 +4619,9 @@ SUPR0DECL(int) SUPR0GetHwvirtMsrs(PSUPHWVIRTMSRS pMsrs, uint32_t fCaps, bool fFo
         RTThreadPreemptRestore(&PreemptState);
         return VINF_SUCCESS;
     }
+#else
+    RT_NOREF(fForce);
+#endif
 
     /*
      * Query the MSRs from hardware, since it's either the first call since
