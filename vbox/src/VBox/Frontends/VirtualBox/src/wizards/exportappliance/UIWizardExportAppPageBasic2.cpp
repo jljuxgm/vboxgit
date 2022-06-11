@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 78077 2019-04-10 11:24:12Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 78987 2019-06-05 10:54:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -1159,22 +1159,16 @@ void UIWizardExportAppPageBasic2::initializePage()
 
 bool UIWizardExportAppPageBasic2::isComplete() const
 {
+    /* Initial result: */
     bool fResult = true;
 
-    /* Check appliance settings: */
-    if (fResult)
-    {
-        const bool fOVF =    field("format").toString() == "ovf-0.9"
-                          || field("format").toString() == "ovf-1.0"
-                          || field("format").toString() == "ovf-2.0";
-        const bool fCSP =    field("isFormatCloudOne").toBool();
+    /* Check whether there was cloud target selected: */
+    if (isFormatCloudOne())
+        fResult = m_comCloudProfile.isNotNull();
+    else
+        fResult = VBoxGlobal::hasAllowedExtension(path().toLower(), OVFFileExts);
 
-        fResult =    (   fOVF
-                      && VBoxGlobal::hasAllowedExtension(path().toLower(), OVFFileExts))
-                  || (   fCSP
-                      && !m_comCloudProfile.isNull());
-    }
-
+    /* Return result: */
     return fResult;
 }
 
@@ -1183,8 +1177,8 @@ bool UIWizardExportAppPageBasic2::validatePage()
     /* Initial result: */
     bool fResult = true;
 
-    /* For cloud formats we need to: */
-    if (field("isFormatCloudOne").toBool())
+    /* Check whether there was cloud target selected: */
+    if (isFormatCloudOne())
     {
         /* Populate cloud client parameters: */
         populateCloudClientParameters();
