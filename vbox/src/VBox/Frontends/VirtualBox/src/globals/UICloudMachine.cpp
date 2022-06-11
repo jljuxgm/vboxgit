@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.cpp 83255 2020-03-11 10:34:49Z vboxsync $ */
+/* $Id: UICloudMachine.cpp 83267 2020-03-11 20:28:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class implementation.
  */
@@ -68,6 +68,9 @@ UICloudMachineData::~UICloudMachineData()
 
 void UICloudMachineData::refresh()
 {
+    /* Reset access error: */
+    m_strAccessError.clear();
+
     /* Acquire instance info sync way, be aware, this is blocking stuff, it takes some time: */
     const QMap<KVirtualSystemDescriptionType, QString> instanceInfoMap = getInstanceInfo(m_comCloudClient, m_strId, m_strAccessError);
     /* Update accessibility state: */
