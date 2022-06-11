@@ -1,4 +1,4 @@
-/* $Id: nocrt-startup-exe-win.cpp 83991 2020-04-27 10:08:37Z vboxsync $ */
+/* $Id: nocrt-startup-exe-win.cpp 83997 2020-04-27 11:25:19Z vboxsync $ */
 /** @file
  * IPRT - No-CRT windows EXE startup code.
  *
@@ -25,9 +25,6 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
-
-
-
 
 
 /*********************************************************************************************************************************
