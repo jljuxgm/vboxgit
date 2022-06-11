@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 80752 2019-09-12 11:03:41Z vboxsync $ */
+/* $Id: MachineImpl.cpp 80787 2019-09-13 19:27:07Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -3277,7 +3277,7 @@ HRESULT Machine::lockMachine(const ComPtr<ISession> &aSession,
         // finalize spawning anyway (this is why we don't return on errors above)
         if (fLaunchingVMProcess)
         {
-            Assert(mData->mSession.mName == strSessionName);
+            Assert(mData->mSession.mName == strSessionName || FAILED(rc));
             /* Note that the progress object is finalized later */
             /** @todo Consider checking mData->mSession.mProgress for cancellation
              *        around here.  */
