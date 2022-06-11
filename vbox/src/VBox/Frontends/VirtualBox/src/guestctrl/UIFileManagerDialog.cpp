@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerDialog.cpp 81284 2019-10-15 11:06:09Z vboxsync $ */
+/* $Id: UIFileManagerDialog.cpp 81358 2019-10-18 14:50:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerDialog class implementation.
  */
@@ -110,18 +110,8 @@ void UIFileManagerDialog::finalize()
 
 void UIFileManagerDialog::loadSettings()
 {
-    /* Invent default window geometry: */
-    const QRect availableGeo = gpDesktop->availableGeometry(this);
-    const int iDefaultWidth = availableGeo.width() / 2;
-    const int iDefaultHeight = availableGeo.height() * 3 / 4;
-    QRect defaultGeo(0, 0, iDefaultWidth, iDefaultHeight);
-    if (centerWidget())
-        defaultGeo.moveCenter(centerWidget()->geometry().center());
-    else
-        defaultGeo.moveCenter(availableGeo.center());
-
     /* Load geometry from extradata: */
-    const QRect geo = gEDataManager->fileManagerDialogGeometry(this, defaultGeo);
+    const QRect geo = gEDataManager->fileManagerDialogGeometry(this, centerWidget());
     LogRel2(("GUI: UIFileManagerDialog: Restoring geometry to: Origin=%dx%d, Size=%dx%d\n",
              geo.x(), geo.y(), geo.width(), geo.height()));
     restoreGeometry(geo);

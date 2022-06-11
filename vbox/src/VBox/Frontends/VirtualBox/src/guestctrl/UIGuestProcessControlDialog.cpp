@@ -1,4 +1,4 @@
-/* $Id: UIGuestProcessControlDialog.cpp 81284 2019-10-15 11:06:09Z vboxsync $ */
+/* $Id: UIGuestProcessControlDialog.cpp 81358 2019-10-18 14:50:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestProcessControlDialog class implementation.
  */
@@ -110,13 +110,9 @@ void UIGuestProcessControlDialog::loadSettings()
     const int iDefaultWidth = availableGeo.width() / 2;
     const int iDefaultHeight = availableGeo.height() * 3 / 4;
     QRect defaultGeo(0, 0, iDefaultWidth, iDefaultHeight);
-    if (centerWidget())
-        defaultGeo.moveCenter(centerWidget()->geometry().center());
-    else
-        defaultGeo.moveCenter(availableGeo.center());
 
     /* Load geometry from extradata: */
-    QRect geo = gEDataManager->guestProcessControlDialogGeometry(this, defaultGeo);
+    QRect geo = gEDataManager->guestProcessControlDialogGeometry(this, centerWidget(), defaultGeo);
     LogRel2(("GUI: UIGuestProcessControlDialog: Restoring geometry to: Origin=%dx%d, Size=%dx%d\n",
              geo.x(), geo.y(), geo.width(), geo.height()));
     restoreGeometry(geo);

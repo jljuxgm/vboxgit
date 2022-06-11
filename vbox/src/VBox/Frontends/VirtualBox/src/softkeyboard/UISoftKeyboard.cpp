@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 81339 2019-10-18 06:57:53Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 81358 2019-10-18 14:50:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -4128,13 +4128,9 @@ void UISoftKeyboard::loadSettings()
     const int iDefaultWidth = availableGeo.width() / 2;
     const int iDefaultHeight = iDefaultWidth * fKeyboardAspectRatio;
     QRect defaultGeo(0, 0, iDefaultWidth, iDefaultHeight);
-    if (m_pCenterWidget)
-        defaultGeo.moveCenter(m_pCenterWidget->geometry().center());
-    else
-        defaultGeo.moveCenter(availableGeo.center());
 
     /* Load geometry from extradata: */
-    const QRect geo = gEDataManager->softKeyboardDialogGeometry(this, defaultGeo);
+    const QRect geo = gEDataManager->softKeyboardDialogGeometry(this, m_pCenterWidget, defaultGeo);
     LogRel2(("GUI: UISoftKeyboard: Restoring geometry to: Origin=%dx%d, Size=%dx%d\n",
              geo.x(), geo.y(), geo.width(), geo.height()));
     restoreGeometry(geo);
