@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 80963 2019-09-23 23:17:02Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 80982 2019-09-24 15:39:10Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -102,9 +102,11 @@ static bool ich9pciBiosInitAllDevicesPrefetchableOnBus(PPDMDEVINS pDevIns, PDEVP
 #endif
 
 
-// See 7.2.2. PCI Express Enhanced Configuration Mechanism for details of address
-// mapping, we take n=6 approach
-DECLINLINE(void) ich9pciPhysToPciAddr(PDEVPCIROOT pPciRoot, RTGCPHYS GCPhysAddr, PciAddress* pPciAddr)
+/**
+ * See 7.2.2. PCI Express Enhanced Configuration Mechanism for details of address
+ * mapping, we take n=6 approach
+ */
+DECLINLINE(void) ich9pciPhysToPciAddr(PDEVPCIROOT pPciRoot, RTGCPHYS GCPhysAddr, PciAddress *pPciAddr)
 {
     NOREF(pPciRoot);
     pPciAddr->iBus          = (GCPhysAddr >> 20) & ((1<<6)       - 1);
@@ -113,7 +115,7 @@ DECLINLINE(void) ich9pciPhysToPciAddr(PDEVPCIROOT pPciRoot, RTGCPHYS GCPhysAddr,
     RT_UNTRUSTED_VALIDATED_FENCE(); /* paranoia */
 }
 
-DECLINLINE(void) ich9pciStateToPciAddr(PDEVPCIROOT pPciRoot, RTGCPHYS addr, PciAddress* pPciAddr)
+DECLINLINE(void) ich9pciStateToPciAddr(PDEVPCIROOT pPciRoot, RTGCPHYS addr, PciAddress *pPciAddr)
 {
     pPciAddr->iBus         = (pPciRoot->uConfigReg >> 16) & 0xff;
     pPciAddr->iDeviceFunc  = (pPciRoot->uConfigReg >> 8) & 0xff;
