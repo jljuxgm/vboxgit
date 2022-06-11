@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 81435 2019-10-22 07:24:10Z vboxsync $
+# $Id: vbox.py 81474 2019-10-23 07:34:15Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 81435 $"
+__version__ = "$Revision: 81474 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -3172,14 +3172,14 @@ class TestDriver(base.TestDriver):                                              
            and self.hasHostHwVirt(fQuiet);
 
     def hasHostNestedHwVirt(self, fQuiet = False):
-       """
-       Checks if nested hardware-assisted virtualization is supported by the host.
+        """
+        Checks if nested hardware-assisted virtualization is supported by the host.
 
-       Returns True / False.
-       Raises exception on environment / host mismatch.
-       """
-       return self._hasHostCpuFeature('TESTBOX_HAS_NESTED_HWVIRT', 'ProcessorFeature_NestedHWVirt', 6.0, fQuiet) \
-          and self.hasHostHwVirt(fQuiet);
+        Returns True / False.
+        Raises exception on environment / host mismatch.
+        """
+        return self._hasHostCpuFeature('TESTBOX_HAS_NESTED_HWVIRT', 'ProcessorFeature_NestedHWVirt', 6.0, fQuiet) \
+           and self.hasHostHwVirt(fQuiet);
 
     def hasHostLongMode(self, fQuiet = False):
         """
