@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 82597 2019-12-16 18:42:38Z vboxsync $ */
+/* $Id: AudioMixer.cpp 82598 2019-12-16 18:48:48Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -217,7 +217,7 @@ int AudioMixerCreateSink(PAUDIOMIXER pMixer, const char *pszName, AUDMIXSINKDIR 
  * Creates an audio mixer.
  *
  * @returns IPRT status code.
- * @param   pszName             Name of the audio mixer.
+ * @param   pcszName            Name of the audio mixer.
  * @param   fFlags              Creation flags. Not used at the moment and must be 0.
  * @param   ppMixer             Pointer which returns the created mixer object.
  */
