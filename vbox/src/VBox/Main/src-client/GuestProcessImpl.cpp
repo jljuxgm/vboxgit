@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 84243 2020-05-11 09:59:59Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 84254 2020-05-11 12:49:02Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1112,7 +1112,7 @@ int GuestProcess::i_startProcessInner(uint32_t cMsTimeout, AutoWriteLock &rLock,
     }
 
     /* Prepare environment.  The guest service dislikes the empty string at the end, so drop it. */
-    size_t  cbEnvBlock;
+    size_t  cbEnvBlock = 0; /* Shut up MSVC. */
     char   *pszzEnvBlock;
     if (RT_SUCCESS(vrc))
         vrc = mData.mProcess.mEnvironmentChanges.queryUtf8Block(&pszzEnvBlock, &cbEnvBlock);
