@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 81396 2019-10-21 09:29:55Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 81397 2019-10-21 10:21:39Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -416,7 +416,7 @@ HRESULT MachineMoveVM::init()
                 neededFreeSpace += totalLogSize;
                 if (cbFree - neededFreeSpace <= _1M)
                     return m_pMachine->setError(E_FAIL,
-                                                m_pMachine->tr("Insufficient disk space availble (%RTfoff needed, %RTfoff free)"),
+                                                m_pMachine->tr("Insufficient disk space available (%RTfoff needed, %RTfoff free)"),
                                                 neededFreeSpace, cbFree);
 
                 fileList_t filesList;
@@ -460,7 +460,7 @@ HRESULT MachineMoveVM::init()
     {
         LogRel(("but free space on destination is %RTfoff\n", cbFree));
         return m_pMachine->setError(VBOX_E_IPRT_ERROR,
-                                    m_pMachine->tr("Insufficient disk space availble (%RTfoff needed, %RTfoff free)"),
+                                    m_pMachine->tr("Insufficient disk space available (%RTfoff needed, %RTfoff free)"),
                                     neededFreeSpace, cbFree);
     }
 
