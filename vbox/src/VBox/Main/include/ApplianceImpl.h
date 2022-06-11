@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 84031 2020-04-28 09:55:27Z vboxsync $ */
+/* $Id: ApplianceImpl.h 84153 2020-05-05 20:00:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -92,8 +92,6 @@ private:
     HRESULT getCertificate(ComPtr<ICertificate> &aCertificateInfo);
     HRESULT getVirtualSystemDescriptions(std::vector<ComPtr<IVirtualSystemDescription> > &aVirtualSystemDescriptions);
     HRESULT getMachines(std::vector<com::Utf8Str> &aMachines);
-
-    HRESULT getManifest(com::Utf8Str &aManifest, com::Utf8Str &aManifestName);
 
     // wrapped IAppliance methods
     HRESULT read(const com::Utf8Str &aFile,
