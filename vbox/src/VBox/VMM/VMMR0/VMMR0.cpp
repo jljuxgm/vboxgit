@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 80346 2019-08-19 19:36:29Z vboxsync $ */
+/* $Id: VMMR0.cpp 80348 2019-08-19 19:46:36Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1062,7 +1062,7 @@ VMMR0_INT_DECL(bool) VMMR0ThreadCtxHookIsEnabled(PVMCPUCC pVCpu)
 #ifdef VBOX_WITH_STATISTICS
 /**
  * Record return code statistics
- * @param   pGVM        The cross context VM structure.
+ * @param   pVM         The cross context VM structure.
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   rc          The status code.
  */
