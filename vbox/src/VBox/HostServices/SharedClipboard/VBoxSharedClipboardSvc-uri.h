@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-uri.h 79347 2019-06-26 09:15:29Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-uri.h 79497 2019-07-03 13:28:33Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header for URI (list) handling.
  */
@@ -21,9 +21,7 @@
 # pragma once
 #endif
 
-//int vboxSvcClipboardURIAnnounce(uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[]);
-
-int vboxSvcClipboardURIHandler(uint32_t u32ClientID, void *pvClient, uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[], uint64_t tsArrival, bool *pfAsync);
+int vboxSvcClipboardURIHandler(PVBOXCLIPBOARDCLIENT pClient, VBOXHGCMCALLHANDLE callHandle, uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[], uint64_t tsArrival);
 int vboxSvcClipboardURIHostHandler(uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[]);
 
 int vboxSvcClipboardURIAreaRegister(PVBOXCLIPBOARDCLIENTSTATE pClientState, PSHAREDCLIPBOARDURITRANSFER pTransfer);

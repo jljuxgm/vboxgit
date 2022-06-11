@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 78346 2019-04-29 11:07:26Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 79497 2019-07-03 13:28:33Z vboxsync $ */
 /** @file
  * VBoxClipboard; Haiku Guest Additions, implementation.
  */
@@ -374,7 +374,7 @@ status_t VBoxClipboardService::_ServiceThread()
     {
         uint32_t u32Msg;
         uint32_t u32Formats;
-        int rc = VbglR3ClipboardGetHostMsg(fClientId, &u32Msg, &u32Formats);
+        int rc = VbglR3ClipboardGetHostMsgOld(fClientId, &u32Msg, &u32Formats);
         if (RT_SUCCESS(rc))
         {
             switch (u32Msg)

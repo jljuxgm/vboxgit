@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 78581 2019-05-18 15:48:41Z vboxsync $ */
+/** $Id: clipboard.cpp 79497 2019-07-03 13:28:33Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -223,7 +223,7 @@ int vboxClipboardMain(void)
     {
         uint32_t Msg;
         uint32_t fFormats;
-        rc = VbglR3ClipboardGetHostMsg(g_ctx.client, &Msg, &fFormats);
+        rc = VbglR3ClipboardGetHostMsgOld(g_ctx.client, &Msg, &fFormats);
         if (RT_SUCCESS(rc))
         {
             switch (Msg)
