@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 82065 2019-11-21 08:32:15Z vboxsync $ */
+/* $Id: DevVGA.h 82069 2019-11-21 09:14:50Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -532,6 +532,8 @@ typedef struct VGAState
     IOMIOPORTHANDLE             hIoPortVbeData;
     /** @} */
 
+    /** The BIOS printf I/O port. */
+    IOMIOPORTHANDLE             hIoPortBios;
     /** The VBE extra data I/O port. */
     IOMIOPORTHANDLE             hIoPortVbeExtra;
     /** The logo command I/O port. */
