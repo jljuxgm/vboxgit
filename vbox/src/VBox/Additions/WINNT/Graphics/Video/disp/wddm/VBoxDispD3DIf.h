@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.h 79792 2019-07-15 13:05:45Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -76,8 +76,8 @@ typedef struct VBOXDISPD3D
 
 typedef struct VBOXWDDMDISP_FORMATS
 {
-    uint32_t cFormstOps;
-    const struct _FORMATOP* paFormstOps;
+    uint32_t cFormatOps;
+    const struct _FORMATOP* paFormatOps;
     uint32_t cSurfDescs;
     struct _DDSURFACEDESC *paSurfDescs;
 } VBOXWDDMDISP_FORMATS, *PVBOXWDDMDISP_FORMATS;

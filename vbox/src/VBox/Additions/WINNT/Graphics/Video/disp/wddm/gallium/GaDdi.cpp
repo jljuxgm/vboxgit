@@ -1,4 +1,4 @@
-/* $Id: GaDdi.cpp 79770 2019-07-14 17:23:32Z vboxsync $ */
+/* $Id: GaDdi.cpp 79792 2019-07-15 13:05:45Z vboxsync $ */
 /** @file
  * WDDM D3DDDI callbacks implemented for the Gallium based driver.
  */
@@ -4845,12 +4845,12 @@ HRESULT APIENTRY GaDdiAdapterGetCaps(HANDLE hAdapter, const D3DDDIARG_GETCAPS *p
         }
 
         case D3DDDICAPS_GETFORMATCOUNT:
-            *((uint32_t*)pData->pData) = pAdapter->Formats.cFormstOps;
+            *((uint32_t*)pData->pData) = pAdapter->Formats.cFormatOps;
             break;
 
         case D3DDDICAPS_GETFORMATDATA:
-            Assert(pData->DataSize == pAdapter->Formats.cFormstOps * sizeof(FORMATOP));
-            memcpy(pData->pData, pAdapter->Formats.paFormstOps, pAdapter->Formats.cFormstOps * sizeof(FORMATOP));
+            Assert(pData->DataSize == pAdapter->Formats.cFormatOps * sizeof(FORMATOP));
+            memcpy(pData->pData, pAdapter->Formats.paFormatOps, pAdapter->Formats.cFormatOps * sizeof(FORMATOP));
             break;
 
         case D3DDDICAPS_GETD3DQUERYCOUNT:
