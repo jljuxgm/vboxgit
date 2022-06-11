@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 82552 2019-12-11 14:36:06Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 82769 2020-01-15 13:14:04Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -231,9 +231,9 @@ static int CommonDirRenameWrapper(const char *pszSrc, const char *pszDst, uint32
     for (;;)
     {
         int rc = RTDirRename(pszSrc, pszDst, fFlags);
-        if (   (   rc == VERR_ACCESS_DENIED
-                || rc == VERR_SHARING_VIOLATION)
-            && RTTimeNanoTS() - nsNow < RT_NS_15SEC)
+        if (   (   rc != VERR_ACCESS_DENIED
+                && rc != VERR_SHARING_VIOLATION)
+            || RTTimeNanoTS() - nsNow > RT_NS_15SEC)
             return rc;
         RTThreadSleep(128);
     }
