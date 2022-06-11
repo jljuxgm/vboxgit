@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 81336 2019-10-18 01:03:10Z vboxsync $ */
+/* $Id: IOMInternal.h 81341 2019-10-18 08:08:12Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -744,7 +744,7 @@ typedef struct IOM
 
     /** @name MMIO statistics.
      * @{ */
-    STAMCOUNTER                     StatRZMMIOStaleMappings;
+    STAMCOUNTER                     StatMMIOStaleMappings;
     STAMPROFILE                     StatRZMMIOHandler;
     STAMCOUNTER                     StatRZMMIOReadsToR3;
     STAMCOUNTER                     StatRZMMIOWritesToR3;
