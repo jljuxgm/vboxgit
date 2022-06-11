@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 79864 2019-07-18 19:47:15Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 79934 2019-07-23 16:43:14Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -23,6 +23,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/param.h>
+#include <iprt/initterm.h>
 
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/VMMDev.h> /* for VMMDevVideoSetVisibleRegion */
@@ -7881,6 +7882,13 @@ DriverEntry(
     PAGED_CODE();
 
     vboxVDbgBreakFv();
+
+    int irc = RTR0Init(0);
+    if (RT_FAILURE(irc))
+    {
+        RTLogBackdoorPrintf("VBoxGuest: RTR0Init failed: %Rrc!\n", irc);
+        return STATUS_UNSUCCESSFUL;
+    }
 
 #if 0//def DEBUG_misha
     RTLogGroupSettings(0, "+default.e.l.f.l2.l3");
