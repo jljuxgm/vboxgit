@@ -1,4 +1,4 @@
-/* $Id: errmsg.cpp 83745 2020-04-17 12:33:33Z vboxsync $ */
+/* $Id: errmsg.cpp 83984 2020-04-27 00:17:19Z vboxsync $ */
 /** @file
  * IPRT - Status code messages.
  */
@@ -34,6 +34,21 @@
 #include <iprt/asm.h>
 #include <iprt/string.h>
 #include <VBox/err.h>
+
+
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
+#ifdef IPRT_ERRMSG_DEFINES_ONLY
+# define ENTRY(a_pszMsgShort, a_pszMsgFull, a_pszDefine, a_iCode) \
+    { a_pszDefine, a_pszDefine, a_pszDefine, a_iCode }
+#elif defined(IN_RT_STATIC) /* Skip the full message in static builds to save space. */
+# define ENTRY(a_pszMsgShort, a_pszMsgFull, a_pszDefine, a_iCode) \
+    { a_pszMsgShort, a_pszMsgShort, a_pszDefine, a_iCode }
+#else
+# define ENTRY(a_pszMsgShort, a_pszMsgFull, a_pszDefine, a_iCode) \
+    { a_pszMsgShort, a_pszMsgFull, a_pszDefine, a_iCode }
+#endif
 
 
 /*********************************************************************************************************************************

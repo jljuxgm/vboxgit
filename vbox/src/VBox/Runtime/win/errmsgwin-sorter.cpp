@@ -1,4 +1,4 @@
-/* $Id: errmsgwin-sorter.cpp 83746 2020-04-17 12:36:20Z vboxsync $ */
+/* $Id: errmsgwin-sorter.cpp 83984 2020-04-27 00:17:19Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, Windows, sorter build program.
  */
@@ -184,7 +184,7 @@ int main(int argc, char **argv)
             iPrev = pMsg->iCode;
 
             /* Produce the output: */
-            fprintf(pOut, "/*%#010lx:*/ { \"%s\", \"%s\", %ld },\n", (unsigned long)pMsg->iCode,
+            fprintf(pOut, "/*%#010lx:*/ ENTRY(\"%s\", \"%s\", %ld),\n", (unsigned long)pMsg->iCode,
                     EscapeString(pMsg->pszMsgFull, s_szMsgTmp, sizeof(s_szMsgTmp)), pMsg->pszDefine, pMsg->iCode);
         }
 
