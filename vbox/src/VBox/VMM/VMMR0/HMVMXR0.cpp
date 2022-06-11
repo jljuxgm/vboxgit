@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79783 2019-07-15 10:45:01Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79784 2019-07-15 10:50:54Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -14740,7 +14740,7 @@ HMVMX_EXIT_DECL hmR0VmxExitXcptOrNmi(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
     AssertRCReturn(rc, rc);
 
     uint32_t const uExitIntType = VMX_EXIT_INT_INFO_TYPE(pVmxTransient->uExitIntInfo);
-    uint32_t const uVector      =  VMX_EXIT_INT_INFO_VECTOR(pVmxTransient->uExitIntInfo);
+    uint8_t const  uVector      = VMX_EXIT_INT_INFO_VECTOR(pVmxTransient->uExitIntInfo);
     Assert(VMX_EXIT_INT_INFO_IS_VALID(pVmxTransient->uExitIntInfo));
 
     PCVMXVMCSINFO pVmcsInfo = pVmxTransient->pVmcsInfo;
@@ -14780,6 +14780,7 @@ HMVMX_EXIT_DECL hmR0VmxExitXcptOrNmi(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
             RT_FALL_THRU();
         case VMX_EXIT_INT_INFO_TYPE_HW_XCPT:
         {
+            NOREF(uVector);
             rc  = hmR0VmxReadExitIntErrorCodeVmcs(pVmxTransient);
             rc |= hmR0VmxReadExitInstrLenVmcs(pVmxTransient);
             rc |= hmR0VmxReadIdtVectoringInfoVmcs(pVmxTransient);
