@@ -1,4 +1,4 @@
-# $Id: Config.kmk 80717 2019-09-11 03:51:03Z vboxsync $
+# $Id: Config.kmk 80724 2019-09-11 10:25:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -649,6 +649,12 @@ VBOX_WITH_QTGUI = 1
 ifeq ($(KBUILD_TARGET),darwin)
  VBOX_WITH_COCOA_QT = 1
 endif
+# VBox Ballooning Control frontend.
+VBOX_WITH_FE_BALLOONCTRL = 1
+# VBox Autostart Service.
+VBOX_WITH_FE_AUTOSTART = 1
+# VBox Bug Report tool.
+VBOX_WITH_FE_BUGREPORT = 1
 # The SDL based GUI.
 VBOX_WITH_VBOXSDL = 1
 # Build VBoxSDL with secure label support.
@@ -7730,7 +7736,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 80717 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 80724 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
