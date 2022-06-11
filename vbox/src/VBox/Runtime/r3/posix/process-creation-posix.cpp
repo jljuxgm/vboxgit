@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 79014 2019-06-05 22:44:34Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 79559 2019-07-05 15:42:51Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -203,9 +203,9 @@ static char *rtProcDynamicCryptR(const char *pszKey, const char *pszSalt, struct
     if (pfnCryptR)
         return pfnCryptR(pszKey, pszSalt, pData);
 
-    pfnCryptR = (PFNCRYPTR)(uintptr_t)RTLdrGetSystemSymbol("libcrypt.so", "crypt_r");
+    pfnCryptR = (PFNCRYPTR)(uintptr_t)RTLdrGetSystemSymbolEx("libcrypt.so", "crypt_r", RTLDRLOAD_FLAGS_SO_VER_RANGE(1, 6));
     if (!pfnCryptR)
-        pfnCryptR = (PFNCRYPTR)(uintptr_t)RTLdrGetSystemSymbol("libxcrypt.so", "crypt_r");
+        pfnCryptR = (PFNCRYPTR)(uintptr_t)RTLdrGetSystemSymbolEx("libxcrypt.so", "crypt_r", RTLDRLOAD_FLAGS_SO_VER_RANGE(1, 32));
     if (pfnCryptR)
     {
         s_pfnCryptR = pfnCryptR;
