@@ -1,4 +1,4 @@
-/* $Id: virtio.c 82174 2019-11-25 13:13:14Z vboxsync $ */
+/* $Id: virtio.c 82176 2019-11-25 13:41:20Z vboxsync $ */
 /** @file
  * VirtIO-SCSI host adapter driver to boot from disks.
  */
@@ -466,9 +466,8 @@ int virtio_scsi_cmd_data_out(virtio_t __far *virtio, uint8_t idTgt, uint8_t __fa
     virtio->Queue.aDescTbl[2].idxNext       = 0;
 
     /* Put it into the queue. */
-    virtio->Queue.AvailRing.au16Ring[virtio->Queue.AvailRing.idxNextFree] = 0;
+    virtio->Queue.AvailRing.au16Ring[virtio->Queue.AvailRing.idxNextFree % VIRTIO_SCSI_RING_ELEM] = 0;
     virtio->Queue.AvailRing.idxNextFree++;
-    virtio->Queue.AvailRing.idxNextFree %= VIRTIO_SCSI_RING_ELEM;
 
     /* Notify the device about the new command. */
     DBG_VIRTIO("VirtIO: Submitting new request, Queue.offNotify=0x%x\n", virtio->Queue.offNotify);
@@ -522,10 +521,10 @@ int virtio_scsi_cmd_data_in(virtio_t __far *virtio, uint8_t idTgt, uint8_t __far
     virtio->Queue.aDescTbl[2].fFlags        = VIRTIO_Q_DESC_F_WRITE; /* End of chain. */
     virtio->Queue.aDescTbl[2].idxNext       = 0;
 
-    /* Put it into the queue. */
-    virtio->Queue.AvailRing.au16Ring[virtio->Queue.AvailRing.idxNextFree] = 0;
+    /* Put it into the queue, the index is supposed to be free-running and clipped to the ring size
+     * internally. The free running index is what the driver sees. */
+    virtio->Queue.AvailRing.au16Ring[virtio->Queue.AvailRing.idxNextFree % VIRTIO_SCSI_RING_ELEM] = 0;
     virtio->Queue.AvailRing.idxNextFree++;
-    virtio->Queue.AvailRing.idxNextFree %= VIRTIO_SCSI_RING_ELEM;
 
     /* Notify the device about the new command. */
     DBG_VIRTIO("VirtIO: Submitting new request, Queue.offNotify=0x%x\n", virtio->Queue.offNotify);
