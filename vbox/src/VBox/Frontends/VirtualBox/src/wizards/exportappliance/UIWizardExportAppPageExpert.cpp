@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 79565 2019-07-06 11:25:16Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 79566 2019-07-06 11:41:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -422,6 +422,7 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
     registerField("includeISOsSelected", this, "includeISOsSelected");
     registerField("providerShortName", this, "providerShortName");
     registerField("appliance", this, "appliance");
+    registerField("client", this, "client");
     registerField("vsd", this, "vsd");
     registerField("vsdExportForm", this, "vsdExportForm");
     registerField("applianceWidget", this, "applianceWidget");
@@ -564,10 +565,10 @@ bool UIWizardExportAppPageExpert::isComplete() const
         fResult =    (   fOVF
                       && UICommon::hasAllowedExtension(path().toLower(), OVFFileExts))
                   || (   fCSP
-                      && m_comCloudProfile.isNotNull()
-                      && m_comAppliance.isNotNull()
-                      && m_comVSD.isNotNull()
-                      && m_comVSDExportForm.isNotNull());
+                      && field("appliance").value<CAppliance>().isNotNull()
+                      && field("client").value<CCloudClient>().isNotNull()
+                      && field("vsd").value<CVirtualSystemDescription>().isNotNull()
+                      && field("vsdExportForm").value<CVirtualSystemDescriptionForm>().isNotNull());
     }
 
     return fResult;
