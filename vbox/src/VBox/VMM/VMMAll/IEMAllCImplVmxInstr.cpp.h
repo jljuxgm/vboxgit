@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 80839 2019-09-17 04:52:54Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 80841 2019-09-17 06:26:34Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -7133,7 +7133,7 @@ IEM_STATIC void iemVmxVmentryInjectEvent(PVMCPUCC pVCpu, const char *pszInstr)
          *
          * However, we do it here on VM-entry as well because while it isn't visible to guest
          * software until VM-exit, when and if HM looks at the VMCS to continue nested-guest
-         * execution using hardware-assisted VT-x, it will not be try to inject the event again.
+         * execution using hardware-assisted VMX, it will not be try to inject the event again.
          *
          * See Intel spec. 24.8.3 "VM-Entry Controls for Event Injection".
          */
