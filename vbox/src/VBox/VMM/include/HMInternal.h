@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 79477 2019-07-02 17:07:56Z vboxsync $ */
+/* $Id: HMInternal.h 79485 2019-07-03 05:10:33Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1201,7 +1201,6 @@ typedef struct HMCPU
     STAMCOUNTER             StatSwitchHltToR3;
     STAMCOUNTER             StatSwitchApicAccessToR3;
     STAMCOUNTER             StatSwitchPreempt;
-    STAMCOUNTER             StatSwitchExportHostState;
     STAMCOUNTER             StatSwitchNstGstVmexit;
 
     STAMCOUNTER             StatTscParavirt;
@@ -1215,6 +1214,7 @@ typedef struct HMCPU
     STAMCOUNTER             StatExportMinimal;
     STAMCOUNTER             StatExportFull;
     STAMCOUNTER             StatLoadGuestFpu;
+    STAMCOUNTER             StatExportHostState;
 
     STAMCOUNTER             StatVmxCheckBadRmSelBase;
     STAMCOUNTER             StatVmxCheckBadRmSelLimit;
