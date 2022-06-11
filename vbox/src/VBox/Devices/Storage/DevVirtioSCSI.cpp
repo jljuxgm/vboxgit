@@ -1,4 +1,4 @@
-    /* $Id: DevVirtioSCSI.cpp 82681 2020-01-09 04:31:04Z vboxsync $ $Revision: 82681 $ $Date: 2020-01-09 12:31:04 +0800 (Thu, 09 Jan 2020) $ $Author: vboxsync $ */
+    /* $Id: DevVirtioSCSI.cpp 82863 2020-01-27 05:11:30Z vboxsync $ $Revision: 82863 $ $Date: 2020-01-27 13:11:30 +0800 (Mon, 27 Jan 2020) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1029,11 +1029,11 @@ static DECLCALLBACK(int) virtioScsiR3IoReqCopyFromBuf(PPDMIMEDIAEXPORT pInterfac
     while (cbRemain)
     {
         PVIRTIOSGSEG paSeg = &pSgPhysReturn->paSegs[pSgPhysReturn->idxSeg];
-        uint64_t dstSgStart = (uint64_t)paSeg->pGcSeg;
+        uint64_t dstSgStart = (uint64_t)paSeg->gcPhys;
         uint64_t dstSgLen   = (uint64_t)paSeg->cbSeg;
-        uint64_t dstSgCur   = (uint64_t)pSgPhysReturn->pGcSegCur;
+        uint64_t dstSgCur   = (uint64_t)pSgPhysReturn->gcPhysCur;
         cbCopied = RT_MIN((uint64_t)pSgBuf->cbSegLeft, dstSgLen - (dstSgCur - dstSgStart));
-        PDMDevHlpPhysWrite(pDevIns, (RTGCPHYS)pSgPhysReturn->pGcSegCur, pSgBuf->pvSegCur, cbCopied);
+        PDMDevHlpPCIPhysWrite(pDevIns, (RTGCPHYS)pSgPhysReturn->gcPhysCur, pSgBuf->pvSegCur, cbCopied);
         RTSgBufAdvance(pSgBuf, cbCopied);
         virtioCoreSgBufAdvance(pSgPhysReturn, cbCopied);
         cbRemain -= cbCopied;
@@ -1070,12 +1070,12 @@ static DECLCALLBACK(int) virtioScsiR3IoReqCopyToBuf(PPDMIMEDIAEXPORT pInterface,
     while (cbRemain)
     {
         PVIRTIOSGSEG paSeg  = &pSgPhysSend->paSegs[pSgPhysSend->idxSeg];
-        uint64_t srcSgStart = (uint64_t)paSeg->pGcSeg;
+        uint64_t srcSgStart = (uint64_t)paSeg->gcPhys;
         uint64_t srcSgLen   = (uint64_t)paSeg->cbSeg;
-        uint64_t srcSgCur   = (uint64_t)pSgPhysSend->pGcSegCur;
+        uint64_t srcSgCur   = (uint64_t)pSgPhysSend->gcPhysCur;
         cbCopied = RT_MIN((uint64_t)pSgBuf->cbSegLeft, srcSgLen - (srcSgCur - srcSgStart));
         PDMDevHlpPCIPhysRead(pDevIns,
-                          (RTGCPHYS)pSgPhysSend->pGcSegCur, pSgBuf->pvSegCur, cbCopied);
+                          (RTGCPHYS)pSgPhysSend->gcPhysCur, pSgBuf->pvSegCur, cbCopied);
         RTSgBufAdvance(pSgBuf, cbCopied);
         virtioCoreSgBufAdvance(pSgPhysSend, cbCopied);
         cbRemain -= cbCopied;
@@ -2412,6 +2412,17 @@ static DECLCALLBACK(int) virtioScsiR3Destruct(PPDMDEVINS pDevIns)
         {
             PDMDevHlpSUPSemEventClose(pDevIns, pWorker->hEvtProcess);
             pWorker->hEvtProcess = NIL_SUPSEMEVENT;
+        }
+
+        if (pThisCC->aWorkers[qIdx].pThread)
+        {
+            /* Destroy the thread. */
+            int rcThread;
+            int rc = PDMDevHlpThreadDestroy(pDevIns, pThisCC->aWorkers[qIdx].pThread, &rcThread);
+            if (RT_FAILURE(rc) || RT_FAILURE(rcThread))
+                AssertMsgFailed(("%s Failed to destroythread rc=%Rrc rcThread=%Rrc\n",
+                                 __FUNCTION__, rc, rcThread));
+           pThisCC->aWorkers[qIdx].pThread = NULL;
         }
     }
 
