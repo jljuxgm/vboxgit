@@ -1,4 +1,4 @@
-﻿/* $Id: ntBldSymDb.cpp 82972 2020-02-04 11:13:09Z vboxsync $ */
+﻿/* $Id: ntBldSymDb.cpp 83738 2020-04-17 08:50:54Z vboxsync $ */
 /** @file
  * IPRT - RTDirCreateUniqueNumbered, generic implementation.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/win/windows.h>
-#include <Dbghelp.h>
+#include <iprt/win/dbghelp.h>
 
 #include <iprt/alloca.h>
 #include <iprt/dir.h>
@@ -1155,7 +1155,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 82972 $");
+                RTPrintf("$Revision: 83738 $");
                 break;
 
             case 'h':

@@ -1,4 +1,4 @@
-/* $Id: dbgmoddbghelp.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: dbgmoddbghelp.cpp 83738 2020-04-17 08:50:54Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader Using DbgHelp.dll if Present.
  */
@@ -44,7 +44,7 @@
 #include "internal/dbgmod.h"
 
 #include <iprt/win/windows.h>
-#include <Dbghelp.h>
+#include <iprt/win/dbghelp.h>
 #include <iprt/win/lazy-dbghelp.h>
 
 
