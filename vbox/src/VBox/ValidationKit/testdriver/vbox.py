@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 83500 2020-04-01 11:13:00Z vboxsync $
+# $Id: vbox.py 83501 2020-04-01 11:14:01Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83500 $"
+__version__ = "$Revision: 83501 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -1765,7 +1765,6 @@ class TestDriver(base.TestDriver):                                              
             if iArg >= len(asArgs):
                 raise base.InvalidOption('The "--vbox-self-log-flags" takes an argument');
             self.sLogSelfFlags = asArgs[iArg];
-            print('self.sLogSelfFlags="%s"' % (self.sLogSelfFlags,))
         elif asArgs[iArg] == '--vbox-self-log-dest':
             iArg += 1;
             if iArg >= len(asArgs):
