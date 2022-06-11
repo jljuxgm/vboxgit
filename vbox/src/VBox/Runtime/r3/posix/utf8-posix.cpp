@@ -1,4 +1,4 @@
-/* $Id: utf8-posix.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: utf8-posix.cpp 80764 2019-09-13 06:52:50Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 helpers, POSIX.
  */
@@ -486,6 +486,28 @@ RTR3DECL(int)  RTStrUtf8ToCurrentCPTag(char **ppszString, const char *pszString,
         return VERR_NO_TMP_MEMORY;
     }
     return rtStrConvertWrapper(pszString, cch, "UTF-8", ppszString, 0, "", 1, RTSTRICONV_UTF8_TO_LOCALE);
+}
+
+
+RTR3DECL(int)  RTStrUtf8ToCurrentCPExTag(char **ppszString, const char *pszString, size_t cchString, const char *pszTag)
+{
+    Assert(ppszString);
+    Assert(pszString);
+    *ppszString = NULL;
+
+    /*
+     * Assume result string length is not longer than UTF-8 string.
+     */
+    cchString = RTStrNLen(pszString, cchString);
+    if (cchString < 1)
+    {
+        /* zero length string passed. */
+        *ppszString = (char *)RTMemTmpAllocZTag(sizeof(char), pszTag);
+        if (*ppszString)
+            return VINF_SUCCESS;
+        return VERR_NO_TMP_MEMORY;
+    }
+    return rtStrConvertWrapper(pszString, cchString, "UTF-8", ppszString, 0, "", 1, RTSTRICONV_UTF8_TO_LOCALE);
 }
 
 
