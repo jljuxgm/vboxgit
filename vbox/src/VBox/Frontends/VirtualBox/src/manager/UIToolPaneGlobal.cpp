@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 83482 2020-03-30 13:35:12Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 83483 2020-03-30 13:45:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -264,4 +264,8 @@ void UIToolPaneGlobal::cleanup()
 void UIToolPaneGlobal::handleTokenChange()
 {
     // printf("UIToolPaneGlobal::handleTokenChange: Active = %d, current tool = %d\n", m_fActive, currentTool());
+
+    /* Determine whether resource monitor is currently active tool: */
+    if (m_pPaneResourceMonitor)
+        m_pPaneResourceMonitor ->setIsCurrentTool(m_fActive && currentTool() == UIToolType_VMResourceMonitor);
 }
