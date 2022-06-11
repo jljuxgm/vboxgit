@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78607 2019-05-20 20:59:49Z vboxsync $
+# $Id: Makefile.kmk 78702 2019-05-24 00:11:00Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -528,6 +528,7 @@ RuntimeR3_SOURCES       = \
 	common/path/RTPathJoin.cpp \
 	common/path/RTPathJoinA.cpp \
 	common/path/RTPathJoinEx.cpp \
+	common/path/RTPathParentLength.cpp \
 	common/path/RTPathParse.cpp \
 	common/path/RTPathParsedReassemble.cpp \
 	common/path/RTPathParseSimple.cpp \

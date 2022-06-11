@@ -1,4 +1,4 @@
-/* $Id: tstRTPath.cpp 78153 2019-04-17 12:30:08Z vboxsync $ */
+/* $Id: tstRTPath.cpp 78702 2019-05-24 00:11:00Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -188,6 +188,67 @@ static void testParserAndSplitter(RTTEST hTest)
             }
             else
                 RTTestIFailed("RTPathSplitReassemble -> %Rrc", rc);
+        }
+    }
+}
+
+
+static void testParentLength(RTTEST hTest)
+{
+    static struct
+    {
+        const char *pszPath;
+        uint32_t    cchNonParent;
+        uint32_t    fFlags;
+    } const s_aTests[] =
+    {
+        { "/usr/bin", 3,                 RTPATH_STR_F_STYLE_UNIX },
+        { "/usr/bin", 3,                 RTPATH_STR_F_STYLE_DOS },
+        { "\\usr\\bin", 3,               RTPATH_STR_F_STYLE_DOS },
+        { "/usr/bin/", 4,                RTPATH_STR_F_STYLE_UNIX },
+        { "/usr/bin/", 4,                RTPATH_STR_F_STYLE_DOS },
+        { "\\usr\\bin\\", 4,             RTPATH_STR_F_STYLE_DOS },
+        { "A:\\usr\\bin\\", 4,           RTPATH_STR_F_STYLE_DOS },
+        { "/bin",  3,                    RTPATH_STR_F_STYLE_UNIX },
+        { "/bin",  3,                    RTPATH_STR_F_STYLE_DOS },
+        { "\\bin",  3,                   RTPATH_STR_F_STYLE_DOS },
+        { "A:\\bin",  3,                 RTPATH_STR_F_STYLE_DOS },
+        { "A:/bin",  3,                  RTPATH_STR_F_STYLE_DOS },
+        { "A:bin",  3,                   RTPATH_STR_F_STYLE_DOS },
+        { "/bin/", 4,                    RTPATH_STR_F_STYLE_UNIX },
+        { "/bin/", 4,                    RTPATH_STR_F_STYLE_DOS },
+        { "A:\\bin\\", 4,                RTPATH_STR_F_STYLE_DOS },
+        { "A:/bin\\", 4,                 RTPATH_STR_F_STYLE_DOS },
+        { "A:bin\\", 4,                  RTPATH_STR_F_STYLE_DOS },
+        { "/", 0,                        RTPATH_STR_F_STYLE_UNIX },
+        { "/", 0,                        RTPATH_STR_F_STYLE_DOS },
+        { "\\", 0,                       RTPATH_STR_F_STYLE_DOS },
+        { "A:\\", 0,                     RTPATH_STR_F_STYLE_DOS },
+        { "A:", 0,                       RTPATH_STR_F_STYLE_DOS },
+        { "bin", 3,                      RTPATH_STR_F_STYLE_UNIX },
+        { "bin", 3,                      RTPATH_STR_F_STYLE_DOS },
+        { "//unc/bin/bin", 3,            RTPATH_STR_F_STYLE_DOS },
+        { "//unc/bin/bin/", 4,           RTPATH_STR_F_STYLE_DOS },
+        { "//unc/bin", 3,                RTPATH_STR_F_STYLE_DOS },
+        { "//unc/bin/", 4,               RTPATH_STR_F_STYLE_DOS },
+        { "//unc/", 0,                   RTPATH_STR_F_STYLE_DOS },
+        { "//unc", 0,                    RTPATH_STR_F_STYLE_DOS },
+    };
+
+    RTTestSub(hTest, "RTPathParentLength");
+    for (uint32_t i = 0; i < RT_ELEMENTS(s_aTests); i++)
+    {
+        size_t const cchParent = RTPathParentLengthEx(s_aTests[i].pszPath, s_aTests[i].fFlags);
+        size_t const cchExpected = strlen(s_aTests[i].pszPath) - s_aTests[i].cchNonParent;
+        if (cchParent != cchExpected)
+            RTTestFailed(hTest, "sub-test #%u: got %u, expected %u (%s)",
+                         i, cchParent, cchExpected, s_aTests[i].pszPath);
+        if (s_aTests[i].fFlags == RTPATH_STYLE)
+        {
+            size_t const cchParent2 = RTPathParentLength(s_aTests[i].pszPath);
+            if (cchParent2 != cchExpected)
+                RTTestFailed(hTest, "sub-test #%u: RTPathParentLength returned %u, expected %u (%s)",
+                             i, cchParent2, cchExpected, s_aTests[i].pszPath);
         }
     }
 }
@@ -920,6 +981,7 @@ int main()
     }
 
     testParserAndSplitter(hTest);
+    testParentLength(hTest);
 
     /*
      * Summary.
