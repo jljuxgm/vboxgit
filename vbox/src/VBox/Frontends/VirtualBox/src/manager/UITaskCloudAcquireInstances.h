@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudAcquireInstances.h 83097 2020-02-17 16:56:39Z vboxsync $ */
+/* $Id: UITaskCloudAcquireInstances.h 83099 2020-02-17 17:33:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudAcquireInstances class declaration.
  */
@@ -54,8 +54,8 @@ public:
     /** Returns error info. */
     CVirtualBoxErrorInfo errorInfo();
 
-    /** Returns the instance object list. */
-    QList<UICloudMachine> instances() const;
+    /** Returns the task result. */
+    QList<UICloudMachine> result() const;
 
 protected:
 
@@ -64,7 +64,7 @@ protected:
 
 private:
 
-    /** Holds the mutex to access m_guiMedium member. */
+    /** Holds the mutex to access result. */
     mutable QMutex  m_mutex;
 
     /** Holds the cloud client object. */
@@ -75,8 +75,8 @@ private:
     /** Holds the error info object. */
     CVirtualBoxErrorInfo  m_comErrorInfo;
 
-    /** Holds the instance object list. */
-    QList<UICloudMachine>  m_instances;
+    /** Holds the task result. */
+    QList<UICloudMachine>  m_result;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_UITaskCloudAcquireInstances_h */
