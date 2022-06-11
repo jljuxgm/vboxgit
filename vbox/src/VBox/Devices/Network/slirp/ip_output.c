@@ -1,4 +1,4 @@
-/* $Id: ip_output.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ip_output.c 81199 2019-10-09 22:14:56Z vboxsync $ */
 /** @file
  * NAT - IP output.
  */
@@ -232,7 +232,7 @@ ip_output0(PNATState pData, struct socket *so, struct mbuf *m0, int urg)
             {
                 error = -1;
                 ipstat.ips_odropped++;
-                goto send_or_free;
+                goto exit_drop_package;
             }
             m->m_data += if_maxlinkhdr;
             mhip = mtod(m, struct ip *);
@@ -291,7 +291,6 @@ ip_output0(PNATState pData, struct socket *so, struct mbuf *m0, int urg)
         ip->ip_sum = 0;
         ip->ip_sum = cksum(m, mhlen);
 
-send_or_free:
         if (!(m->m_flags & M_SKIP_FIREWALL)){
             /** @todo We can't alias all fragments because the way libalias processing
              * the fragments brake the sequence. libalias put alias_address to the source
