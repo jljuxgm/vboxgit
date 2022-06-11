@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78463 $"
+__version__ = "$Revision: 78470 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -3007,9 +3007,10 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                     if fRc2:
                         if  curRes.aBuf is not None \
                         and not utils.areBytesEqual(curRes.aBuf, aBufRead):
-                            reporter.error('Test #%d failed: Got buffer:\n"%s" (%d bytes)\nExpected buffer:\n"%s" (%d bytes)'
-                                           % (i, map(hex, map(ord, aBufRead)), len(aBufRead),
-                                              map(hex, map(ord, curRes.aBuf)), len(curRes.aBuf)));
+                            reporter.error('Test #%d failed: Got buffer:\n"%s" (%d bytes, type %s)\n'
+                                           'Expected buffer:\n"%s" (%d bytes, type %s)'
+                                           % (i, map(hex, map(ord, aBufRead)), len(aBufRead), type(aBufRead),
+                                              map(hex, map(ord, curRes.aBuf)), len(curRes.aBuf), type(curRes.aBuf),));
                             reporter.error('Test #%d failed: Got buffer:\n"%s"\nExpected buffer:\n"%s"'
                                            % (i, aBufRead, curRes.aBuf));
                             fRc2 = False;
