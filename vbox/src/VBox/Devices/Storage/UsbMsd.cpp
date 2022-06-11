@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 80589 2019-09-04 18:20:28Z vboxsync $ */
+/* $Id: UsbMsd.cpp 81585 2019-10-30 11:19:27Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -2196,7 +2196,7 @@ static DECLCALLBACK(bool) usbMsdIsAsyncResetDone(PPDMUSBINS pUsbIns)
 }
 
 /**
- * @interface_method_impl{PDMDEVREG,pfnReset}
+ * @interface_method_impl{PDMUSBREG,pfnVMReset}
  */
 static DECLCALLBACK(void) usbMsdVMReset(PPDMUSBINS pUsbIns)
 {

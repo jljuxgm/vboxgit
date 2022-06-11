@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 77324 2019-02-14 21:23:14Z vboxsync $ */
+/* $Id: DrvChar.cpp 81585 2019-10-30 11:19:27Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMISERIALCONNECTOR / PDMISERIALPORT.
  */
@@ -351,7 +351,7 @@ static DECLCALLBACK(int) drvCharIoLoopWakeup(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
 /* -=-=-=-=- driver interface -=-=-=-=- */
 
 /**
- * @interface_method_impl{PDMDEVREG,pfnReset}
+ * @interface_method_impl{PDMDRVREG,pfnReset}
  */
 static DECLCALLBACK(void) drvCharReset(PPDMDRVINS pDrvIns)
 {

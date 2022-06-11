@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
+/* $Id: DrvNAT.cpp 81585 2019-10-30 11:19:27Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1213,7 +1213,7 @@ static DECLCALLBACK(void) drvNATPowerOn(PPDMDRVINS pDrvIns)
 
 
 /**
- * @interface_method_impl{PDMDEVREG,pfnResume}
+ * @interface_method_impl{PDMDRVREG,pfnResume}
  */
 static DECLCALLBACK(void) drvNATResume(PPDMDRVINS pDrvIns)
 {
