@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 81431 2019-10-21 19:54:52Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 81754 2019-11-10 19:14:26Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -247,6 +247,8 @@ int vmsvga3dSurfaceDefine(PVGASTATE pThis, uint32_t sid, uint32_t surfaceFlags, 
     /* pSurface->bounce.pTexture = NULL; */
     /* pSurface->emulated.pTexture = NULL; */
 #else
+    /* pSurface->fEmulated = false; */
+    pSurface->idEmulated = OPENGL_INVALID_ID;
     vmsvga3dSurfaceFormat2OGL(pSurface, format);
 #endif
 
