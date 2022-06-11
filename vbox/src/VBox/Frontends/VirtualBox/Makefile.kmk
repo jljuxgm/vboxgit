@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83346 2020-03-20 11:10:38Z vboxsync $
+# $Id: Makefile.kmk 83350 2020-03-20 15:27:37Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -834,7 +834,6 @@ UICommon_QT_MOCHDRS = \
 	src/globals/UIMainEventListener.h \
 	src/globals/UIMessageCenter.h \
 	src/globals/UIModalWindowManager.h \
-	src/globals/UIPathOperations.h \
 	src/globals/UIPopupCenter.h \
 	src/globals/UIProgressEventHandler.h \
 	src/globals/UIShortcutPool.h \
