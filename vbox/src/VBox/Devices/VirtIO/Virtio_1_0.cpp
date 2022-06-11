@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 80306 2019-08-15 18:45:06Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 80307 2019-08-15 19:01:57Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common Functions (VirtQ, VQueue, Virtio PCI)
  */
@@ -1092,7 +1092,7 @@ int   virtioConstruct(PPDMDEVINS             pDevIns,
 
     /**
      * Notify capability (VirtIO 1.0 spec, section 4.1.4.4). Note: uLength is based the choice
-     * of this implementation that each queue's uQueueNotifyOff is set equal to (https://youtu.be/2O-iLk1G_nguQueueSelect) ordinal
+     * of this implementation that each queue's uQueueNotifyOff is set equal to (QueueSelect) ordinal
      * value of the queue */
     pCfg = (PVIRTIO_PCI_CAP_T)&pVirtio->dev.abConfig[pCfg->uCapNext];
     pCfg->uCfgType = VIRTIO_PCI_CAP_NOTIFY_CFG;
