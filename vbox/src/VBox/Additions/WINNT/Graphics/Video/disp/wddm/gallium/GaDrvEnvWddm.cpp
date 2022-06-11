@@ -1,4 +1,4 @@
-/* $Id: GaDrvEnvWddm.cpp 82411 2019-12-05 12:11:24Z vboxsync $ */
+/* $Id: GaDrvEnvWddm.cpp 82424 2019-12-05 16:19:47Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver.
  */
@@ -250,6 +250,7 @@ GaDrvEnvWddm::gaEnvWddmSurfaceDestroy(void *pvEnv,
     // data.EscapeHdr.cmdSpecific = 0;
     data.u32Sid                = u32Sid;
 
+    RT_ZERO(ddiEscape);
     // ddiEscape.hDevice               = 0; // pThis->mWddmCallbacks.hDevice;
     // ddiEscape.Flags.Value           = 0;
     ddiEscape.pPrivateDriverData    = &data;
