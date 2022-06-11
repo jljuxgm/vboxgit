@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 82735 2020-01-14 12:59:53Z vboxsync $ */
+/* $Id: ftp-server.cpp 82736 2020-01-14 13:02:16Z vboxsync $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  * Partly also implements RFC 3659 (Extensions to FTP, for "SIZE", ++).
@@ -1280,7 +1280,7 @@ static int rtFtpServerProcessCommands(PRTFTPSERVERCLIENT pClient, char *pcszCmd,
             if (RT_SUCCESS(rc))
                 rc = rc2;
 
-            LogFlowFunc(("Command not implemented\n", papszArgs[0]));
+            LogFlowFunc(("Command not implemented\n"));
             return rc;
         }
 
