@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 80896 2019-09-18 17:38:32Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 80898 2019-09-18 17:42:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class implementation.
  */
@@ -18,6 +18,7 @@
 /* Qt includes: */
 #include <QButtonGroup>
 #include <QCheckBox>
+#include <QFileInfo>
 #include <QGridLayout>
 #include <QGroupBox>
 #include <QHBoxLayout>
@@ -27,6 +28,7 @@
 
 /* GUI includes: */
 #include "QIToolButton.h"
+#include "UICommon.h"
 #include "UIConverter.h"
 #include "UIIconPool.h"
 #include "UIMessageCenter.h"
