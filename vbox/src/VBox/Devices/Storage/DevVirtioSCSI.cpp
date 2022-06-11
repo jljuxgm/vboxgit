@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81662 2019-11-05 00:09:57Z vboxsync $ $Revision: 81662 $ $Date: 2019-11-05 08:09:57 +0800 (Tue, 05 Nov 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 81663 2019-11-05 01:19:31Z vboxsync $ $Revision: 81663 $ $Date: 2019-11-05 09:19:31 +0800 (Tue, 05 Nov 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1783,9 +1783,13 @@ static int virtioScsiR3CfgAccessed(PVIRTIOSCSI pThis, uint32_t offConfig, void *
          || (   offConfig == RT_UOFFSETOF(VIRTIOSCSI_CONFIG_T, member) \
              && cb == RT_SIZEOFMEMB(VIRTIOSCSI_CONFIG_T, member)) )
 
-#define LOG_SCSI_CONFIG_ACCESSOR(member) \
+#ifdef LOG_ENABLED
+# define LOG_SCSI_CONFIG_ACCESSOR(member) \
         virtioLogMappedIoValue(__FUNCTION__, #member, RT_SIZEOFMEMB(VIRTIOSCSI_CONFIG_T, member), \
                                pv, cb, offIntra, fWrite, false, 0);
+#else
+# define LOG_SCSI_CONFIG_ACCESSOR(member) do { } while (0)
+#endif
 
 #define SCSI_CONFIG_ACCESSOR(member) \
     do \
