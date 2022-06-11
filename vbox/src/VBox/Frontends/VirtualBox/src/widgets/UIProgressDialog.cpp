@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 78969 2019-06-04 14:59:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class implementation.
  */
@@ -68,6 +68,7 @@ UIProgressDialog::UIProgressDialog(CProgress &comProgress,
     , m_pLabelEta(0)
     , m_cOperations(m_comProgress.GetOperationCount())
     , m_uCurrentOperation(m_comProgress.GetOperation() + 1)
+    , m_uCurrentOperationWeight(m_comProgress.GetOperationWeight())
     , m_fCancelEnabled(false)
     , m_fEnded(false)
     , m_pEventHandler(0)
@@ -315,7 +316,14 @@ void UIProgressDialog::prepareWidgets()
                 AssertPtrReturnVoid(m_pProgressBar);
                 {
                     /* Configure progress-bar: */
-                    m_pProgressBar->setMaximum(100);
+                    // WORKAROUND:
+                    // Based on agreement implemented in r131088 and r131090,
+                    // if progress has just one operation with weight equal to 1,
+                    // we should make it "infinite" by setting maximum to minimum.
+                    if (m_uCurrentOperation == 1 && m_uCurrentOperationWeight == 1)
+                        m_pProgressBar->setMaximum(0);
+                    else
+                        m_pProgressBar->setMaximum(100);
                     m_pProgressBar->setValue(0);
 
                     /* Add into layout: */
@@ -457,6 +465,7 @@ void UIProgressDialog::updateProgressState()
         if (uNewOp != m_uCurrentOperation)
         {
             m_uCurrentOperation = uNewOp;
+            m_uCurrentOperationWeight = m_comProgress.GetOperationWeight();
             m_pLabelDescription->setText(QString(m_spcszOpDescTpl)
                                        .arg(m_comProgress.GetOperationDescription())
                                        .arg(m_uCurrentOperation).arg(m_cOperations));
