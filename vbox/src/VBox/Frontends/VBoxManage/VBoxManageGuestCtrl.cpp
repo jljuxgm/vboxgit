@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 77595 2019-03-07 12:42:31Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 78739 2019-05-24 23:58:32Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1822,7 +1822,7 @@ static RTEXITCODE gctlHandleCopy(PGCTLCMDCTX pCtx, int argc, char **argv, bool f
         else if (fHostToGuest)
         {
             /*
-             * Source is host, destiation guest.
+             * Source is host, destination guest.
              */
             char szAbsSrc[RTPATH_MAX];
             vrc = RTPathAbs(pszSource, szAbsSrc, sizeof(szAbsSrc));
