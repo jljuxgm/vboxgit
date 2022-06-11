@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tarvfs.cpp 82593 2019-12-16 17:57:43Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem, Reader.
  */
@@ -1003,7 +1003,7 @@ static DECLCALLBACK(int) rtZipTarFssIos_Read(void *pvThis, RTFOFF off, PCRTSGBUF
 
 
     Assert(pThis->cbFile >= pThis->offFile);
-    uint64_t cbLeft   = (uint64_t)(pThis->cbFile - pThis->offFile);
+    uint64_t cbLeft   = (uint64_t)(pThis->cbFile - off);
     size_t   cbToRead = pSgBuf->paSegs[0].cbSeg;
     if (cbToRead > cbLeft)
     {
