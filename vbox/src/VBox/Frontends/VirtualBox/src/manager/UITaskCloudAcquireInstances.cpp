@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudAcquireInstances.cpp 83111 2020-02-18 16:09:49Z vboxsync $ */
+/* $Id: UITaskCloudAcquireInstances.cpp 83212 2020-03-05 17:53:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudAcquireInstances class implementation.
  */
@@ -35,17 +35,17 @@ QList<UICloudMachine> UITaskCloudAcquireInstances::result() const
     return resultList;
 }
 
-CVirtualBoxErrorInfo UITaskCloudAcquireInstances::errorInfo()
+QString UITaskCloudAcquireInstances::errorInfo()
 {
     m_mutex.lock();
-    CVirtualBoxErrorInfo comErrorInfo = m_comErrorInfo;
+    QString strErrorInfo = m_strErrorInfo;
     m_mutex.unlock();
-    return comErrorInfo;
+    return strErrorInfo;
 }
 
 void UITaskCloudAcquireInstances::run()
 {
     m_mutex.lock();
-    m_result = listInstances(m_comCloudClient);
+    m_result = listInstances(m_comCloudClient, m_strErrorInfo);
     m_mutex.unlock();
 }

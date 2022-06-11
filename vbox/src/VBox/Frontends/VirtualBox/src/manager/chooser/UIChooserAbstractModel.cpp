@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 83198 2020-03-04 10:58:40Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 83212 2020-03-05 17:53:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -274,6 +274,10 @@ void UIChooserAbstractModel::sltHandleCloudAcquireInstancesTaskComplete(UITask *
 
     /* Cast task to corresponding sub-class: */
     UITaskCloudAcquireInstances *pAcquiringTask = static_cast<UITaskCloudAcquireInstances*>(pTask);
+
+    /* Check whether there was an error: */
+    if (!pAcquiringTask->errorInfo().isNull())
+        return msgCenter().cannotAcquireCloudInstanceList(pAcquiringTask->errorInfo());
 
     /* Acquire parent node we referencing: */
     UIChooserNode *pParentNode = pAcquiringTask->parentNode();

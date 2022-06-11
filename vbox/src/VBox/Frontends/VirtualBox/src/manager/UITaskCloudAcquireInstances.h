@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudAcquireInstances.h 83111 2020-02-18 16:09:49Z vboxsync $ */
+/* $Id: UITaskCloudAcquireInstances.h 83212 2020-03-05 17:53:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudAcquireInstances class declaration.
  */
@@ -31,7 +31,6 @@
 /* COM includes: */
 #include "COMEnums.h"
 #include "CCloudClient.h"
-#include "CVirtualBoxErrorInfo.h"
 
 /* Forward declaratiuons: */
 class UIChooserNode;
@@ -54,7 +53,7 @@ public:
     UIChooserNode *parentNode() const { return m_pParentNode; }
 
     /** Returns error info. */
-    CVirtualBoxErrorInfo errorInfo();
+    QString errorInfo();
 
     /** Returns the task result. */
     QList<UICloudMachine> result() const;
@@ -74,8 +73,8 @@ private:
     /** Holds the parent node reference. */
     UIChooserNode *m_pParentNode;
 
-    /** Holds the error info object. */
-    CVirtualBoxErrorInfo  m_comErrorInfo;
+    /** Holds the error info. */
+    QString  m_strErrorInfo;
 
     /** Holds the task result. */
     QList<UICloudMachine>  m_result;

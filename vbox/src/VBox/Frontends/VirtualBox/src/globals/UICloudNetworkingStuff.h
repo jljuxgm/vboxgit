@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 83190 2020-03-03 12:25:47Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 83212 2020-03-05 17:53:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -37,6 +37,7 @@ namespace UICloudNetworkingStuff
       * @param  pWidget         Brings parent widget to show messages according to,
       *                         if no parent set, progress will be executed in blocking way. */
     SHARED_LIBRARY_STUFF QList<UICloudMachine> listInstances(const CCloudClient &comCloudClient,
+                                                             QString &strErrorMessage,
                                                              QWidget *pParent = 0);
 
     /** Acquires instance info as a map.

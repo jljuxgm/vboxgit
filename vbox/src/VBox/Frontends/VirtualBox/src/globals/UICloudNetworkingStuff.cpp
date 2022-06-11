@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 83203 2020-03-04 16:37:11Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 83212 2020-03-05 17:53:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -18,6 +18,7 @@
 /* GUI includes: */
 #include "UICloudNetworkingStuff.h"
 #include "UICommon.h"
+#include "UIErrorString.h"
 #include "UIMessageCenter.h"
 
 /* COM includes: */
@@ -29,6 +30,7 @@
 
 
 QList<UICloudMachine> UICloudNetworkingStuff::listInstances(const CCloudClient &comCloudClient,
+                                                            QString &strErrorMessage,
                                                             QWidget *pParent /* = 0 */)
 {
     /* Prepare VM names, ids and states.
@@ -46,9 +48,7 @@ QList<UICloudMachine> UICloudNetworkingStuff::listInstances(const CCloudClient &
         if (pParent)
             msgCenter().cannotAcquireCloudClientParameter(comCloudClient, pParent);
         else
-        {
-            /// @todo fetch error info
-        }
+            strErrorMessage = UIErrorString::formatErrorInfo(comCloudClient);
     }
     else
     {
@@ -64,9 +64,7 @@ QList<UICloudMachine> UICloudNetworkingStuff::listInstances(const CCloudClient &
             if (pParent)
                 msgCenter().cannotAcquireCloudClientParameter(comProgress, pParent);
             else
-            {
-                /// @todo fetch error info
-            }
+                strErrorMessage = UIErrorString::formatErrorInfo(comProgress);
         }
         else
         {

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 83212 2020-03-05 17:53:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -600,6 +600,12 @@ void UIMessageCenter::cannotAcquireMachineParameter(const CMachine &comMachine, 
     /* Show the error: */
     error(pParent, MessageType_Error,
           tr("Failed to acquire machine parameter."), UIErrorString::formatErrorInfo(comMachine));
+}
+
+void UIMessageCenter::cannotAcquireCloudInstanceList(const QString &strErrorDetails, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to acquire cloud intance list."), strErrorDetails);
 }
 
 void UIMessageCenter::cannotOpenMachine(const CVirtualBox &vbox, const QString &strMachinePath) const

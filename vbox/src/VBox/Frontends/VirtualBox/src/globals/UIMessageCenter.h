@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMessageCenter.h 83212 2020-03-05 17:53:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -263,6 +263,9 @@ public:
     void cannotSetExtraData(const CMachine &machine, const QString &strKey, const QString &strValue);
     void warnAboutInvalidEncryptionPassword(const QString &strPasswordId, QWidget *pParent = 0);
     void cannotAcquireMachineParameter(const CMachine &comMachine, QWidget *pParent = 0) const;
+
+    /* API: Global cloud warnings: */
+    void cannotAcquireCloudInstanceList(const QString &strErrorDetails, QWidget *pParent = 0) const;
 
     /* API: Selector warnings: */
     void cannotOpenMachine(const CVirtualBox &vbox, const QString &strMachinePath) const;
