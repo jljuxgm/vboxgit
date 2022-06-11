@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 81277 2019-10-15 05:11:00Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 81278 2019-10-15 05:13:26Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10786,7 +10786,7 @@ static void hmR0VmxPostRunGuest(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient, int
                 {
                     rc = APICSetTpr(pVCpu, pVmcsInfo->pbVirtApic[XAPIC_OFF_TPR]);
                     AssertRC(rc);
-                    ASMAtomicOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_GUEST_APIC_TPR);
+                    ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_GUEST_APIC_TPR);
                 }
             }
 
