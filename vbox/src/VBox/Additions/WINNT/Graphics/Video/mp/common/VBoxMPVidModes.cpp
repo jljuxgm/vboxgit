@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidModes.cpp 83830 2020-04-19 13:58:24Z vboxsync $ */
+/* $Id: VBoxMPVidModes.cpp 83834 2020-04-19 14:15:20Z vboxsync $ */
 /** @file
  * VBox Miniport video modes related functions
  */
@@ -18,7 +18,7 @@
 #include "VBoxMPCommon.h"
 
 #ifndef DOXYGEN_RUNNING
-#if RT_MSC_PREREQ(RT_MSC_VER_VS2005) && RT_MSC_PREREQ(RT_MSC_VER_VS2017) /* bird: MS fixed swprintf to be standard-conforming... */
+#if RT_MSC_PREREQ(RT_MSC_VER_VS2005) && !RT_MSC_PREREQ(RT_MSC_VER_VS2017) /* bird: MS fixed swprintf to be standard-conforming... */
 #  define _INC_SWPRINTF_INL_
 extern "C" int __cdecl swprintf(wchar_t *, const wchar_t *, ...);
 # endif
