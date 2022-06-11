@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 81164 2019-10-08 17:57:50Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 81524 2019-10-25 07:50:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -149,8 +149,6 @@ private slots:
 
     /** Prepares 'Open Medium' menu. */
     void sltPrepareOpenMediumMenu();
-    /** Mounts newly created hard-drive. */
-    void sltCreateNewHardDisk();
     /** Unmounts current device. */
     void sltUnmountDevice();
     /** Mounts existing medium. */
