@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: testresults.py 79917 2019-07-22 10:09:00Z vboxsync $
 # pylint: disable=too-many-lines
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 79917 $"
 
 
 # Standard python imports.
@@ -707,6 +707,7 @@ class TestResultFilter(ModelFilterBase):
         (  6, 'hw', ),
         (  7, 'np', ),
         (  8, 'Install', ),
+        ( 19, 'UInstall', ), # NB. out of order.
         (  9, 'Benchmark', ),
         ( 18, 'smoke', ),   # NB. out of order.
         ( 19, 'unit', ),    # NB. out of order.
