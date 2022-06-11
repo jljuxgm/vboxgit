@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 79009 2019-06-05 18:09:26Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 79010 2019-06-05 18:16:36Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -41,8 +41,10 @@
 #include <signal.h>
 #include <grp.h>
 #include <pwd.h>
-#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS)
+#if defined(RT_OS_LINUX) || defined(RT_OS_OS2) || defined(RT_OS_SOLARIS)
 # include <crypt.h>
+#endif
+#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS)
 # include <shadow.h>
 #endif
 
