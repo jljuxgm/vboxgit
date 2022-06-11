@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.cpp 79922 2019-07-22 12:12:11Z vboxsync $ */
+/* $Id: UIMachineAttributeSetter.cpp 79923 2019-07-22 12:19:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
@@ -39,6 +39,7 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
         switch (enmType)
         {
             case MachineAttribute_Name: comMachine.SetName(guiAttribute.toString()); break;
+            case MachineAttribute_OSType: comMachine.SetOSTypeId(guiAttribute.toString()); break;
             default: break;
         }
         /* Change machine name: */

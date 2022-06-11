@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 79901 2019-07-19 18:43:09Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 79923 2019-07-22 12:19:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -68,8 +68,15 @@ UITextTable UIDetailsGenerator::generateMachineInformationGeneral(CMachine &comM
 
     /* Operating system: */
     if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeGeneral_OS)
+    {
+        /* Configure hovering anchor: */
+        const QString strAnchorType = QString("os_type");
+        const QString strOsTypeId = comMachine.GetOSTypeId();
         table << UITextTableLine(QApplication::translate("UIDetails", "Operating System", "details (general)"),
-                                 uiCommon().vmGuestOSTypeDescription(comMachine.GetOSTypeId()));
+                                 QString("<a href=#%1,%2>%3</a>").arg(strAnchorType,
+                                                                      strOsTypeId,
+                                                                      uiCommon().vmGuestOSTypeDescription(strOsTypeId)));
+    }
 
     /* Settings file location: */
     if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeGeneral_Location)
