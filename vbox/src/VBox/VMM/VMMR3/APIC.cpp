@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
+/* $Id: APIC.cpp 81766 2019-11-11 16:10:19Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1040,7 +1040,7 @@ static DECLCALLBACK(int) apicR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
         if (uVersion > APIC_SAVED_STATE_VERSION_VBOX_50)
         {
             /* Load the auxiliary data. */
-            SSMR3GetU64(pSSM, (uint64_t *)&pApicCpu->uApicBaseMsr);
+            SSMR3GetU64V(pSSM, &pApicCpu->uApicBaseMsr);
             SSMR3GetU32(pSSM, &pApicCpu->uEsrInternal);
 
             /* Load the APIC page. */
@@ -1065,8 +1065,8 @@ static DECLCALLBACK(int) apicR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
             /* Load the LINT0, LINT1 interrupt line states. */
             if (uVersion > APIC_SAVED_STATE_VERSION_VBOX_51_BETA2)
             {
-                SSMR3GetBool(pSSM, (bool *)&pApicCpu->fActiveLint0);
-                SSMR3GetBool(pSSM, (bool *)&pApicCpu->fActiveLint1);
+                SSMR3GetBoolV(pSSM, &pApicCpu->fActiveLint0);
+                SSMR3GetBoolV(pSSM, &pApicCpu->fActiveLint1);
             }
         }
         else

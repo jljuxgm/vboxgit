@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: GIMHv.cpp 81766 2019-11-11 16:10:19Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -979,7 +979,7 @@ VMMR3_INT_DECL(int) gimR3HvLoad(PVM pVM, PSSMHANDLE pSSM)
         SSMR3GetU64(pSSM, &pHv->uDbgSendBufferMsr);
         SSMR3GetU64(pSSM, &pHv->uDbgRecvBufferMsr);
         SSMR3GetU64(pSSM, &pHv->uDbgStatusMsr);
-        SSMR3GetU32(pSSM, (uint32_t *)&pHv->enmDbgReply);
+        SSM_GET_ENUM32_RET(pSSM, pHv->enmDbgReply, GIMHVDEBUGREPLY);
         SSMR3GetU32(pSSM, &pHv->uDbgBootpXId);
         rc = SSMR3GetU32(pSSM, &pHv->DbgGuestIp4Addr.u);
         AssertRCReturn(rc, rc);
