@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 80784 2019-09-13 17:21:05Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 80802 2019-09-15 20:58:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -496,7 +496,7 @@ void UIToolsModel::prepareConnections()
 {
     /* Setup parent connections: */
     connect(this, &UIToolsModel::sigSelectionChanged,
-        qobject_cast<UITools*>(parent()), &UITools::sigSelectionChanged);
+            qobject_cast<UITools*>(parent()), &UITools::sigSelectionChanged);
     connect(this, &UIToolsModel::sigExpandingStarted,
             qobject_cast<UITools*>(parent()), &UITools::sigExpandingStarted);
     connect(this, &UIToolsModel::sigExpandingFinished,
@@ -538,6 +538,15 @@ void UIToolsModel::saveLastSelectedItems()
     gEDataManager->setToolsPaneLastItemsChosen(set);
 }
 
+void UIToolsModel::cleanupConnections()
+{
+    /* Disconnect selection-changed signal prematurelly.
+     * Keep in mind, we are using static_cast instead of qobject_cast here to be
+     * sure connection is disconnected even if parent is self-destroyed. */
+    disconnect(this, &UIToolsModel::sigSelectionChanged,
+               static_cast<UITools*>(parent()), &UITools::sigSelectionChanged);
+}
+
 void UIToolsModel::cleanupHandlers()
 {
     delete m_pKeyboardHandler;
@@ -561,6 +570,8 @@ void UIToolsModel::cleanupScene()
 
 void UIToolsModel::cleanup()
 {
+    /* Cleanup connections: */
+    cleanupConnections();
     /* Cleanup handlers: */
     cleanupHandlers();
     /* Cleanup items: */

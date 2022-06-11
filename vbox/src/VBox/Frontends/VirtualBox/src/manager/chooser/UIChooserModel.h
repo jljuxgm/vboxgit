@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.h 80443 2019-08-27 16:48:40Z vboxsync $ */
+/* $Id: UIChooserModel.h 80802 2019-09-15 20:58:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class declaration.
  */
@@ -308,6 +308,8 @@ private:
         /** Saves last selected-items. */
         void saveLastSelectedItem();
         /** Cleanups connections. */
+        void cleanupConnections();
+        /** Cleanups handlers. */
         void cleanupHandlers();
         /** Cleanups context-menu. */
         void cleanupContextMenu();
