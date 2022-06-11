@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 79133 2019-06-13 15:27:38Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 79134 2019-06-13 15:32:32Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1169,10 +1169,10 @@ int GuestSession::i_directoryOpen(const GuestDirectoryOpenInfo &openInfo,
     }
     catch (std::bad_alloc &)
     {
-        rc = VERR_NO_MEMORY;
+        vrc = VERR_NO_MEMORY;
     }
 
-    if (RT_SUCCESS(rc))
+    if (RT_SUCCESS(vrc))
     {
         /* Nothing further to do here yet. */
         if (prcGuest)
