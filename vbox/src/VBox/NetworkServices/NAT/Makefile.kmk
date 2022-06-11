@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 81672 2019-11-05 14:00:07Z vboxsync $
 ## @file
 # Sub-makefile for NAT Networking
 #
@@ -110,6 +110,7 @@ VBOX_PATH_NAT_SRC := $(PATH_SUB_CURRENT)
   VBoxNetLwipNAT_SOURCES += pxping_win.c # unprivileged Icmp API
  else
   VBoxNetLwipNAT_SOURCES += pxping.c     # raw sockets
+  VBoxNetLwipNAT_CFLAGS  += -Wno-address-of-packed-member # Needed for GCC 9.
  endif
 
  VBoxNetLwipNAT_SOURCES.darwin  += rtmon_bsd.c
