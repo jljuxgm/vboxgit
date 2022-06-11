@@ -1,4 +1,4 @@
-/* $Id: ClientTokenHolder.cpp 80569 2019-09-03 14:34:21Z vboxsync $ */
+/* $Id: ClientTokenHolder.cpp 80788 2019-09-13 20:08:53Z vboxsync $ */
 /** @file
  *
  * VirtualBox API client session token holder (in the client process)
@@ -253,7 +253,7 @@ DECLCALLBACK(int) ClientTokenHolderThread(RTTHREAD hThreadSelf, void *pvUser)
     HANDLE mutex = ::OpenMutex(MUTEX_ALL_ACCESS, FALSE, bstrSessionId.raw());
 
     //AssertMsg(mutex, ("cannot open token, err=%u\n", ::GetLastError()));
-    AssertMsg(mutex, ("cannot open token %ls, err=%u\n", bstrSessionId.raw(), ::GetLastError()));
+    AssertLogRelMsg(mutex, ("cannot open token %ls, err=%u\n", bstrSessionId.raw(), ::GetLastError()));
     if (mutex)
     {
         /* grab the token */
