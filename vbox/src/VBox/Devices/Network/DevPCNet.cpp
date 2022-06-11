@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 78477 2019-05-13 08:58:51Z vboxsync $ */
+/* $Id: DevPCNet.cpp 78478 2019-05-13 09:06:54Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -1622,6 +1622,11 @@ static void pcnetInit(PPCNETSTATE pThis)
 static void pcnetStart(PPCNETSTATE pThis)
 {
     Log(("#%d pcnetStart:\n", PCNET_INST_NR));
+
+    /* Reset any cached RX/TX descriptor state. */
+    CSR_CRDA(pThis) = CSR_CRBA(pThis) = CSR_NRDA(pThis) = CSR_NRBA(pThis) = 0;
+    CSR_CRBC(pThis) = CSR_NRBC(pThis) = CSR_CRST(pThis) = 0;
+
     if (!CSR_DTX(pThis))
         pThis->aCSR[0] |= 0x0010;    /* set TXON */
     if (!CSR_DRX(pThis))
