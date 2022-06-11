@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxManage.h 84032 2020-04-28 09:56:41Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -313,9 +313,10 @@ int parseBool(const char *psz, bool *pb);
 RTEXITCODE handleStorageAttach(HandlerArg *a);
 RTEXITCODE handleStorageController(HandlerArg *a);
 
-// VBoxManageImport.cpp
+// VBoxManageAppliance.cpp
 RTEXITCODE handleImportAppliance(HandlerArg *a);
 RTEXITCODE handleExportAppliance(HandlerArg *a);
+RTEXITCODE handleSignAppliance(HandlerArg *a);
 
 // VBoxManageSnapshot.cpp
 RTEXITCODE handleSnapshot(HandlerArg *a);

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxManage.cpp 84032 2020-04-28 09:56:41Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -146,6 +146,7 @@ static const VBMGCMD g_aCommands[] =
     { "metrics",            USAGE_METRICS,          VBMG_CMD_TODO, handleMetrics,              0 },
     { "import",             USAGE_IMPORTAPPLIANCE,  VBMG_CMD_TODO, handleImportAppliance,      0 },
     { "export",             USAGE_EXPORTAPPLIANCE,  VBMG_CMD_TODO, handleExportAppliance,      0 },
+    { "signova",            USAGE_S_NEWCMD,         VBMG_CMD_TODO, handleSignAppliance,        0 },
 #ifdef VBOX_WITH_NETFLT
     { "hostonlyif",         USAGE_HOSTONLYIFS,      VBMG_CMD_TODO, handleHostonlyIf,           0 },
 #endif
