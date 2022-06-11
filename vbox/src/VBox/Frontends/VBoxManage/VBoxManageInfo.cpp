@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 80074 2019-07-31 14:18:34Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 80930 2019-09-22 08:24:24Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2506,7 +2506,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                 if (FAILED(rc))
                     uRevision = 0;
                 RTStrPrintf(szValue, sizeof(szValue), "%ls r%u", guestString.raw(), uRevision);
-                SHOW_UTF8_STRING("GuestAdditionsVersion", "Additions version", szValue);
+                SHOW_UTF8_STRING("GuestAdditionsVersion", "Additions version:", szValue);
             }
 
             if (details != VMINFO_MACHINEREADABLE)
