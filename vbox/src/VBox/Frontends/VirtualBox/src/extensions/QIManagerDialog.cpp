@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.cpp 81227 2019-10-11 13:19:56Z vboxsync $ */
+/* $Id: QIManagerDialog.cpp 81284 2019-10-15 11:06:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class implementation.
  */
@@ -229,20 +229,4 @@ void QIManagerDialog::closeEvent(QCloseEvent *pEvent)
         m_fCloseEmitted = true;
         emit sigClose();
     }
-}
-
-void QIManagerDialog::setDialogGeometry(const QRect &geometry)
-{
-#if defined(VBOX_WS_MAC) || defined(VBOX_WS_WIN)
-    /* Use the old approach for OSX/Win: */
-    move(geometry.topLeft());
-    resize(geometry.size());
-#else /* !VBOX_WS_MAC && !VBOX_WS_WIN */
-    /* Use the new approach otherwise: */
-    UICommon::setTopLevelGeometry(this, geometry);
-#endif /* !VBOX_WS_MAC && !VBOX_WS_WIN */
-
-    /* Maximize (if necessary): */
-    if (shouldBeMaximized())
-        showMaximized();
 }

@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: QIManagerDialog.h 81284 2019-10-15 11:06:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -26,6 +26,7 @@
 #include <QMap>
 
 /* GUI includes: */
+#include "QIWithRestorableGeometry.h"
 #include "UILibraryDefs.h"
 
 /* Other VBox includes: */
@@ -84,7 +85,7 @@ protected:
 
 
 /** QMainWindow sub-class used as various manager dialogs. */
-class SHARED_LIBRARY_STUFF QIManagerDialog : public QMainWindow
+class SHARED_LIBRARY_STUFF QIManagerDialog : public QIWithRestorableGeometry<QMainWindow>
 {
     Q_OBJECT;
 
@@ -171,14 +172,6 @@ protected:
       * @{ */
         /** Handles close @a pEvent. */
         void closeEvent(QCloseEvent *pEvent);
-    /** @} */
-
-    /** @name Functions related to geometry restoration.
-     * @{ */
-        /** Sets the position and size of the dialog. */
-        void setDialogGeometry(const QRect &geometry);
-        /** Returns whether the window should be maximized when geometry being restored. */
-        virtual bool shouldBeMaximized() const { return false; }
     /** @} */
 
 private:
