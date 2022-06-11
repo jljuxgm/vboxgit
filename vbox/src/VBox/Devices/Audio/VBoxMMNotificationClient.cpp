@@ -1,4 +1,4 @@
-/* $Id: VBoxMMNotificationClient.cpp 83238 2020-03-10 09:57:28Z vboxsync $ */
+/* $Id: VBoxMMNotificationClient.cpp 83239 2020-03-10 10:13:59Z vboxsync $ */
 /** @file
  * VBoxMMNotificationClient.cpp - Implementation of the IMMNotificationClient interface
  *                                to detect audio endpoint changes.
@@ -43,9 +43,25 @@ VBoxMMNotificationClient::~VBoxMMNotificationClient(void)
 }
 
 /**
- * Uninitializes the mulitmedia notification client implementation.
+ * Registers the mulitmedia notification client implementation.
  */
-void VBoxMMNotificationClient::Dispose(void)
+HRESULT VBoxMMNotificationClient::Register(void)
+{
+    HRESULT hr = m_pEnum->RegisterEndpointNotificationCallback(this);
+    if (SUCCEEDED(hr))
+    {
+        m_fRegisteredClient = true;
+
+        hr = AttachToDefaultEndpoint();
+    }
+
+    return hr;
+}
+
+/**
+ * Unregisters the mulitmedia notification client implementation.
+ */
+void VBoxMMNotificationClient::Unregister(void)
 {
     DetachFromEndpoint();
 
@@ -66,16 +82,6 @@ HRESULT VBoxMMNotificationClient::Initialize(void)
 {
     HRESULT hr = CoCreateInstance(__uuidof(MMDeviceEnumerator), 0, CLSCTX_ALL, __uuidof(IMMDeviceEnumerator),
                                   (void **)&m_pEnum);
-    if (SUCCEEDED(hr))
-    {
-        hr = m_pEnum->RegisterEndpointNotificationCallback(this);
-        if (SUCCEEDED(hr))
-        {
-            m_fRegisteredClient = true;
-
-            hr = AttachToDefaultEndpoint();
-        }
-    }
 
     LogFunc(("Returning %Rhrc\n",  hr));
     return hr;

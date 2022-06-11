@@ -1,4 +1,4 @@
-/* $Id: VBoxMMNotificationClient.h 83238 2020-03-10 09:57:28Z vboxsync $ */
+/* $Id: VBoxMMNotificationClient.h 83239 2020-03-10 10:13:59Z vboxsync $ */
 /** @file
  * VBoxMMNotificationClient.h - Implementation of the IMMNotificationClient interface
  *                              to detect audio endpoint changes.
@@ -46,9 +46,12 @@ public:
     virtual ~VBoxMMNotificationClient();
 
     HRESULT Initialize();
+
+    HRESULT Register(void);
+    void    Unregister(void);
+
     int     RegisterCallback(PPDMDRVINS pDrvIns, PFNPDMHOSTAUDIOCALLBACK pfnCallback);
     void    UnregisterCallback(void);
-    void    Dispose();
 
     /** @name IUnknown interface
      * @{ */
