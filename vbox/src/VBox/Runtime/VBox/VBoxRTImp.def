@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 76553 2019-01-01 01:45:53Z vboxsync $
+; $Id: VBoxRTImp.def 78456 2019-05-09 09:07:10Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -1375,6 +1375,7 @@ EXPORTS
     RTMemSaferAllocZExTag
     RTMemSaferAllocZTag
     RTMemSaferFree
+    RTMemSaferGetSize
     RTMemSaferReallocZExTag
     RTMemSaferReallocZTag
     RTMemSaferScramble
