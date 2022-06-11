@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 80462 2019-08-28 08:56:13Z vboxsync $ */
+/* $Id: IEMAll.cpp 80463 2019-08-28 09:02:05Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -13773,8 +13773,8 @@ IEM_STATIC void iemLogCurInstr(PVMCPUCC pVCpu, bool fSameCtx, const char *pszFun
 
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
 /**
- * Deals with VMCPU_FF_VMX_APIC_WRITE, VMCPU_FF_VMX_MTF, VMCPU_FF_VMX_NMI_WINDOW
- * and VMCPU_FF_VMX_INT_WINDOW.
+ * Deals with VMCPU_FF_VMX_APIC_WRITE, VMCPU_FF_VMX_MTF, VMCPU_FF_VMX_NMI_WINDOW,
+ * VMCPU_FF_VMX_PREEMPT_TIMER and VMCPU_FF_VMX_INT_WINDOW.
  *
  * @returns Modified rcStrict.
  * @param   pVCpu       The cross context virtual CPU structure of the calling thread.
