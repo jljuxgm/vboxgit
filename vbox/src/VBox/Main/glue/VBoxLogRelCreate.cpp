@@ -1,4 +1,4 @@
-/* $Id: VBoxLogRelCreate.cpp 81137 2019-10-08 08:28:31Z vboxsync $ */
+/* $Id: VBoxLogRelCreate.cpp 81141 2019-10-08 09:56:51Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - VBoxLogRelCreate.
  */
@@ -92,7 +92,7 @@ static DECLCALLBACK(void) vboxHeaderFooter(PRTLOGGER pReleaseLogger, RTLOGPHASE 
                 if (enmType == RTSYSFWTYPE_UEFI)
                 {
                      bool fValue;
-                     vrc = RTSystemQueryFirmwareBoolean(RTSYSFWPROP_SECURE_BOOT, &fValue);
+                     vrc = RTSystemQueryFirmwareBoolean(RTSYSFWBOOL_SECURE_BOOT, &fValue);
                      if (RT_SUCCESS(vrc))
                          pfnLog(pReleaseLogger, "Secure Boot: %s\n", fValue ? "Enabled" : "Disabled");
                      else
