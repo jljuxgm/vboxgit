@@ -1,4 +1,4 @@
-/* $Id: info.cpp 78550 2019-05-16 19:03:38Z vboxsync $ */
+/* $Id: info.cpp 78551 2019-05-16 19:23:28Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders FSD - Information Querying & Setting Routines.
  */
@@ -2178,9 +2178,9 @@ NTSTATUS VBoxMRxSetFileInfo(IN PRX_CONTEXT RxContext)
          *       must use our own cached file size value.  (Cause of broken test
          *       of opening w/ truncation.)
          *
-         * P.S.  When opening a file with the trunction flag set, it seems to be
-         *       the NT I/O manager doing the truncation after opening the file
-         *       as a separate setting FileAllocationInformation operation (no
+         * P.S.  When opening a file with the TRUNCATE_EXISTING disposition,
+         *       kernel32.dll translate it to FILE_OPEN and do the truncating
+         *       separately with a set FileAllocationInformation operation (no
          *       EOF or VDL setting).
          */
         case FileAllocationInformation:
