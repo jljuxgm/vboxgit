@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 79474 2019-07-02 16:47:30Z vboxsync $
+# $Id: txsclient.py 79662 2019-07-10 08:40:51Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79474 $"
+__version__ = "$Revision: 79662 $"
 
 # Standard Python imports.
 import array;
@@ -769,11 +769,11 @@ class Session(TdTaskBase):
                         rc = None;
                         break;
                     if sInput:
-                        oStdIn.uTxsClientCrc32 = zlib.crc32(sInput, oStdIn.uTxsClientCrc32);
                         # Convert to a byte array before handing it of to sendMsg or the string
                         # will get some zero termination added breaking the CRC (and injecting
                         # unwanted bytes).
-                        abInput = array.array('B', sInput);
+                        abInput = array.array('B', sInput.encode('utf-8'));
+                        oStdIn.uTxsClientCrc32 = zlib.crc32(abInput, oStdIn.uTxsClientCrc32);
                         rc = self.sendMsg('STDIN', (long(oStdIn.uTxsClientCrc32 & 0xffffffff), abInput));
                         if rc is not True:
                             sFailure = 'sendMsg failure';
