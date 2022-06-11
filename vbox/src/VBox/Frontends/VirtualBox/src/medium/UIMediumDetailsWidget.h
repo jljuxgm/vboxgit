@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.h 78353 2019-04-29 17:19:02Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.h 78437 2019-05-07 14:40:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class declaration.
  */
@@ -205,7 +205,6 @@ public:
     void setData(const UIDataMedium &data);
     /** Enables/disables some of the medium editing widgets of the details tab. */
     void enableDisableMediumModificationWidgets(bool fMediumIsModifiable);
-
 
 public slots:
 

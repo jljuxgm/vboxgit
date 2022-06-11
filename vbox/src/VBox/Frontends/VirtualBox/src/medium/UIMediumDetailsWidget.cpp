@@ -1,4 +1,4 @@
-/* $Id: UIMediumDetailsWidget.cpp 78353 2019-04-29 17:19:02Z vboxsync $ */
+/* $Id: UIMediumDetailsWidget.cpp 78437 2019-05-07 14:40:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumDetailsWidget class implementation.
  */
@@ -90,6 +90,8 @@ void UIMediumDetailsWidget::enableDisableMediumModificationWidgets(bool fMediumI
         m_pEditorLocation->setEnabled(fMediumIsModifiable);
     if (m_pEditorSize)
         m_pEditorSize->setEnabled(fMediumIsModifiable);
+    if (m_pEditorDescription)
+        m_pEditorDescription->setEnabled(fMediumIsModifiable);
 }
 
 void UIMediumDetailsWidget::setOptionsEnabled(bool fEnabled)
