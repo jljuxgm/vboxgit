@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79100 2019-06-12 08:17:21Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79101 2019-06-12 08:35:25Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10546,8 +10546,6 @@ static VBOXSTRICTRC hmR0VmxPreRunGuest(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient
      * Virtualize memory-mapped accesses to the physical APIC (may take locks).
      */
     PVM pVM = pVCpu->CTX_SUFF(pVM);
-    PCVMXVMCSINFO pVmcsInfo = pVmxTransient->pVmcsInfo;
-    Assert(pVmcsInfo);
     if (   !pVCpu->hm.s.vmx.u64GstMsrApicBase
         && hmR0VmxIsProcCtls2Set(pVCpu, pVmxTransient, VMX_PROC_CTLS2_VIRT_APIC_ACCESS)
         && PDMHasApic(pVM))
