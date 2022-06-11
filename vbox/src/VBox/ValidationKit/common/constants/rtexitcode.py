@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: rtexitcode.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: rtexitcode.py 80237 2019-08-12 21:16:08Z vboxsync $
 
 """
 RTEXITCODE from iprt/types.h.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 80237 $"
 
 
 ## Success.
@@ -44,4 +44,8 @@ INIT    = RTEXITCODE_INIT;
 ## Test skipped.
 RTEXITCODE_SKIPPED = 4;
 SKIPPED = RTEXITCODE_SKIPPED;
+## Bad-testbox.
+RTEXITCODE_BAD_TESTBOX = 32;
+## Bad-testbox.
+BAD_TESTBOX = RTEXITCODE_BAD_TESTBOX;
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxtasks.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: testboxtasks.py 80237 2019-08-12 21:16:08Z vboxsync $
 
 """
 TestBox Script - Async Tasks.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 80237 $"
 
 
 # Standard python imports.
@@ -475,11 +475,13 @@ class TestBoxTestDriverTask(TestBoxBaseTask):
                 if oChild is self._oChild:
                     self._oChild = None;
 
+                if iRc == constants.rtexitcode.SUCCESS:
+                    return (True, constants.result.PASSED);
                 if iRc == constants.rtexitcode.SKIPPED:
                     return (True, constants.result.SKIPPED);
-                if iRc != constants.rtexitcode.SUCCESS:
-                    return (False, constants.result.FAILED);
-                return (True, constants.result.PASSED);
+                if iRc == constants.rtexitcode.BAD_TESTBOX:
+                    return (False, constants.result.BAD_TESTBOX);
+                return (False, constants.result.FAILED);
 
             # Check for abort first, since that has less of a stigma.
             if self._shouldTerminate() is True:

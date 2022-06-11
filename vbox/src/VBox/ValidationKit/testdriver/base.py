@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 79446 2019-07-01 15:46:18Z vboxsync $
+# $Id: base.py 80237 2019-08-12 21:16:08Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79446 $"
+__version__ = "$Revision: 80237 $"
 
 
 # Standard Python imports.
@@ -853,6 +853,9 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
         # Host info.
         self.sHost              = utils.getHostOs();
         self.sHostArch          = utils.getHostArch();
+
+        # Skipped status modifier (see end of innerMain()).
+        self.fBadTestbox        = False;
 
         #
         # Get our bearings and adjust the environment.
@@ -1753,6 +1756,11 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
 
         # Done
         if fRc is None:
+            if self.fBadTestbox:
+                reporter.log('****************************************************************');
+                reporter.log('*** The test driver SKIPPED the test because of BAD_TESTBOX. ***');
+                reporter.log('****************************************************************');
+                return rtexitcode.RTEXITCODE_BAD_TESTBOX;
             reporter.log('*****************************************');
             reporter.log('*** The test driver SKIPPED the test. ***');
             reporter.log('*****************************************');
