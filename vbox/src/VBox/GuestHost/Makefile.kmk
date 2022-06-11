@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 80427 2019-08-26 15:44:07Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host part
 #
@@ -19,10 +19,6 @@ SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefile(s).
-ifdef VBOX_WITH_CROGL
- include $(PATH_SUB_CURRENT)/OpenGL/Makefile.kmk
-endif
-
 ifdef VBOX_WITH_HGSMI
  include $(PATH_SUB_CURRENT)/HGSMI/Makefile.kmk
 endif
