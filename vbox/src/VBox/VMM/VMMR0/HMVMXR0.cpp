@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79648 2019-07-10 04:54:24Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79650 2019-07-10 05:01:04Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -974,11 +974,13 @@ static void hmR0VmxRemoveProcCtlsVmcs(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient,
 /**
  * Sets the TSC offset for the current VMCS.
  *
+ * @param   pVCpu       The cross context virtual CPU structure.
  * @param   uTscOffset  The TSC offset to set.
  * @param   pVmcsInfo   The VMCS info. object.
  */
-static void hmR0VmxSetTscOffsetVmcs(PVMXVMCSINFO pVmcsInfo, uint64_t uTscOffset)
+static void hmR0VmxSetTscOffsetVmcs(PVMCPU pVCpu, PVMXVMCSINFO pVmcsInfo, uint64_t uTscOffset)
 {
+    NOREF(pVCpu); /* Used implicitly by VMXWriteVmcs64 on 32-bit hosts. */
     if (pVmcsInfo->u64TscOffset != uTscOffset)
     {
         int rc = VMXWriteVmcs64(VMX_VMCS64_CTRL_TSC_OFFSET_FULL, uTscOffset);
@@ -7501,7 +7503,7 @@ static void hmR0VmxUpdateTscOffsettingAndPreemptTimer(PVMCPU pVCpu, PVMXTRANSIEN
     {
         if (pVmxTransient->fIsNestedGuest)
             uTscOffset = CPUMApplyNestedGuestTscOffset(pVCpu, uTscOffset);
-        hmR0VmxSetTscOffsetVmcs(pVmcsInfo, uTscOffset);
+        hmR0VmxSetTscOffsetVmcs(pVCpu, pVmcsInfo, uTscOffset);
         hmR0VmxRemoveProcCtlsVmcs(pVCpu, pVmxTransient, VMX_PROC_CTLS_RDTSC_EXIT);
     }
     else
