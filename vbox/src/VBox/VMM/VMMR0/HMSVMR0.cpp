@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 81180 2019-10-09 10:59:53Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 81277 2019-10-15 05:11:00Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2385,7 +2385,6 @@ static int hmR0SvmExportGuestState(PVMCPUCC pVCpu, PCSVMTRANSIENT pSvmTransient)
      * except for the host-context and/or shared host-guest context bits.
      */
     uint64_t const fCtxChanged = ASMAtomicUoReadU64(&pVCpu->hm.s.fCtxChanged);
-    RT_UNTRUSTED_NONVOLATILE_COPY_FENCE();
     AssertMsg(!(fCtxChanged & (HM_CHANGED_ALL_GUEST & ~HM_CHANGED_SVM_HOST_GUEST_SHARED_STATE)),
               ("fCtxChanged=%#RX64\n", fCtxChanged));
 
