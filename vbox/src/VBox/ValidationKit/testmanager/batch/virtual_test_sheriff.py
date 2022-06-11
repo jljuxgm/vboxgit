@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 77657 2019-03-11 18:37:53Z vboxsync $
+# $Id: virtual_test_sheriff.py 78697 2019-05-23 14:23:32Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77657 $"
+__version__ = "$Revision: 78697 $"
 
 
 # Standard python imports
@@ -310,7 +310,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 77657 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 78697 $ \n');
 
 
     def eprint(self, sText):
@@ -674,7 +674,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 77657 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 78697 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -994,7 +994,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         ( True,  ktReason_Host_Modprobe_Failed,                     'Kernel driver not installed' ),
         ( True,  ktReason_OSInstall_Sata_no_BM,                     'PCHS=14128/14134/8224' ),
         ( True,  ktReason_Host_DoubleFreeHeap,                      'double free or corruption' ),
-        ( False, ktReason_Unknown_VM_Start_Error,                   'VMSetError: ' ),
+        ( True,  ktReason_Unknown_VM_Start_Error,                   'VMSetError: ' ),
+        ( True,  ktReason_Unknown_VM_Start_Error,                   'error: failed to open session for' ),
         ( False, ktReason_Unknown_VM_Runtime_Error,                 'Console: VM runtime error: fatal=true' ),
     ];
 
