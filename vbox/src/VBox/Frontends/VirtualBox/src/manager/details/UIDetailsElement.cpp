@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 80129 2019-08-05 11:35:21Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 80130 2019-08-05 12:01:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -769,12 +769,12 @@ void UIDetailsElement::sltHandleAnchorClicked(const QString &strAnchor)
 
             /* Fill menu with actions, use menu-bar NLS for both cases for simplicity: */
             UIMenu menu;
-            QAction *pActionEnable = menu.addAction(QApplication::translate("UIDetails", "Enabled", "details (user interface/menu-bar)"));
-            pActionEnable->setCheckable(true);
-            pActionEnable->setChecked(fEnabled);
             QAction *pActionDisable = menu.addAction(QApplication::translate("UIDetails", "Disabled", "details (user interface/menu-bar)"));
             pActionDisable->setCheckable(true);
             pActionDisable->setChecked(!fEnabled);
+            QAction *pActionEnable = menu.addAction(QApplication::translate("UIDetails", "Enabled", "details (user interface/menu-bar)"));
+            pActionEnable->setCheckable(true);
+            pActionEnable->setChecked(fEnabled);
 
             /* Execute menu, look for result: */
             QAction *pTriggeredAction = menu.exec(QCursor::pos());
