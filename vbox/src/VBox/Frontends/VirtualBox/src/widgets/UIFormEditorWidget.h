@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.h 78955 2019-06-04 08:36:59Z vboxsync $ */
+/* $Id: UIFormEditorWidget.h 79242 2019-06-19 12:01:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class declaration.
  */
@@ -22,6 +22,7 @@
 #endif
 
 /* Qt includes: */
+#include <QPointer>
 #include <QWidget>
 
 /* Forward declarations: */
