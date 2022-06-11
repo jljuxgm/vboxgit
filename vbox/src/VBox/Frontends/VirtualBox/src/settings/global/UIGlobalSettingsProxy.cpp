@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 80666 2019-09-09 10:47:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -232,7 +232,8 @@ void UIGlobalSettingsProxy::prepare()
             pButtonGroup->addButton(m_pRadioProxyAuto);
             pButtonGroup->addButton(m_pRadioProxyDisabled);
             pButtonGroup->addButton(m_pRadioProxyEnabled);
-            connect(pButtonGroup, SIGNAL(buttonClicked(QAbstractButton *)), this, SLOT(sltHandleProxyToggle()));
+            connect(pButtonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked),
+                    this, &UIGlobalSettingsProxy::sltHandleProxyToggle);
         }
 
         /* Host editor created in the .ui file. */
@@ -240,7 +241,7 @@ void UIGlobalSettingsProxy::prepare()
         {
             /* Configure editor: */
             m_pHostEditor->setValidator(new QRegExpValidator(QRegExp("\\S+"), m_pHostEditor));
-            connect(m_pHostEditor, SIGNAL(textEdited(const QString &)), this, SLOT(revalidate()));
+            connect(m_pHostEditor, &QILineEdit::textEdited, this, &UIGlobalSettingsProxy::revalidate);
         }
     }
 
@@ -280,4 +281,3 @@ bool UIGlobalSettingsProxy::saveProxyData()
     /* Return result: */
     return fSuccess;
 }
-
