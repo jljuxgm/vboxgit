@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 79344 2019-06-26 09:06:36Z vboxsync $ */
+/* $Id: CPUM.cpp 79353 2019-06-26 09:44:40Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1892,7 +1892,7 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
     EmuFeat.fVmxSavePreemptTimer      = 0;
     EmuFeat.fVmxExitSaveEferLma       = 1;
     EmuFeat.fVmxIntelPt               = 0;
-    EmuFeat.fVmxVmwriteAll            = 0;  /** @todo NSTVMX: enable this. */
+    EmuFeat.fVmxVmwriteAll            = 0;  /** @todo NSTVMX: enable this when nested VMCS shadowing is enabled. */
     EmuFeat.fVmxEntryInjectSoftInt    = 0;
 
     /*
