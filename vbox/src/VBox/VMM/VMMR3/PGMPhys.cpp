@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 81705 2019-11-06 11:58:44Z vboxsync $ */
+/* $Id: PGMPhys.cpp 82091 2019-11-21 23:56:21Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2887,8 +2887,8 @@ static void pgmR3PhysMMIOExLink(PVM pVM, PPGMREGMMIO2RANGE pNew)
     /*
      * Link it into the list (order doesn't matter, so insert it at the head).
      *
-     * Note! The range we're link may consist of multiple chunks, so we have to
-     *       find the last one.
+     * Note! The range we're linking may consist of multiple chunks, so we
+     *       have to find the last one.
      */
     PPGMREGMMIO2RANGE pLast = pNew;
     for (pLast = pNew; ; pLast = pLast->pNextR3)
@@ -2900,7 +2900,7 @@ static void pgmR3PhysMMIOExLink(PVM pVM, PPGMREGMMIO2RANGE pNew)
         Assert(pLast->pNextR3->iSubDev   == pNew->iSubDev);
         Assert(pLast->pNextR3->iRegion   == pNew->iRegion);
         Assert((pLast->pNextR3->fFlags & PGMREGMMIO2RANGE_F_MMIO2) == (pNew->fFlags & PGMREGMMIO2RANGE_F_MMIO2));
-        Assert(pLast->pNextR3->idMmio2   == (pLast->fFlags & PGMREGMMIO2RANGE_F_MMIO2 ? pNew->idMmio2 + 1 : UINT8_MAX));
+        Assert(pLast->pNextR3->idMmio2   == (pLast->fFlags & PGMREGMMIO2RANGE_F_MMIO2 ? pLast->idMmio2 + 1 : UINT8_MAX));
     }
 
     pgmLock(pVM);
@@ -2923,6 +2923,7 @@ static void pgmR3PhysMMIOExLink(PVM pVM, PPGMREGMMIO2RANGE pNew)
             if (pNew->fFlags & PGMREGMMIO2RANGE_F_LAST_CHUNK)
                 break;
             pNew = pNew->pNextR3;
+            idMmio2++;
         }
     }
     else
