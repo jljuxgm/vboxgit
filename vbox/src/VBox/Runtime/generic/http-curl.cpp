@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: http-curl.cpp 83355 2020-03-20 21:22:33Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  *
@@ -222,7 +222,7 @@ typedef struct RTHTTPINTERNAL
 
     /** @name Upload callback
      * @{ */
-    /** Pointer to the download callback function, if any. */
+    /** Pointer to the upload callback function, if any. */
     PFNRTHTTPUPLOADCALLBACK         pfnUploadCallback;
     /** The user argument for the upload callback function. */
     void                           *pvUploadCallbackUser;
@@ -3213,7 +3213,7 @@ static size_t rtHttpWriteDataToDownloadCallback(char *pchBuf, size_t cbUnit, siz
         || (pThis->fDownloadCallback & RTHTTPDOWNLOAD_F_ONLY_STATUS_MASK) == pThis->uDownloadHttpStatus)
     {
         int rc = pThis->pfnDownloadCallback(pThis, pchBuf, cbBuf, pThis->uDownloadHttpStatus, pThis->offDownloadContent,
-                                            pThis->cbDownloadContent, pThis->pvUploadCallbackUser);
+                                            pThis->cbDownloadContent, pThis->pvDownloadCallbackUser);
         if (RT_SUCCESS(rc))
         {   /* likely */ }
         else
