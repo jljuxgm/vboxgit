@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 83360 2020-03-21 13:43:17Z vboxsync $
+# $Id: wuibase.py 83391 2020-03-24 16:59:31Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83360 $"
+__version__ = "$Revision: 83391 $"
 
 
 # Standard python imports.
@@ -354,6 +354,19 @@ class WuiDispatcherBase(object):
     #
     # Interface for WuiContentBase classes.
     #
+
+    def getUrlNoParams(self):
+        """
+        Returns the base URL without any parameters (no trailing '?' or &).
+        """
+        return self._sUrlBase[:self._sUrlBase.rindex('?')];
+
+    def getUrlBase(self):
+        """
+        Returns the base URL, ending with '?' or '&'.
+        This may already include some debug parameters.
+        """
+        return self._sUrlBase;
 
     def getParameters(self):
         """
