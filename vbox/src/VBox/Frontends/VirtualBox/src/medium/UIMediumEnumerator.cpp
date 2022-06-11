@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 79150 2019-06-14 13:12:21Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 79151 2019-06-14 13:15:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -885,8 +885,8 @@ void UIMediumEnumerator::enumerateAllMediaOfMachineWithId(const QUuid &uMachineI
             && !result.contains(uMediumId))
         {
             /* Enumerate corresponding UIMedium: */
-            printf(" Medium to recache: %s\n",
-                   uMediumId.toString().toUtf8().constData());
+            //printf(" Medium to recache: %s\n",
+            //       uMediumId.toString().toUtf8().constData());
             LogRel2(("GUI: UIMediumEnumerator:  Medium {%s} of machine {%s} will be enumerated..\n",
                      uMediumId.toString().toUtf8().constData(),
                      uMachineId.toString().toUtf8().constData()));
