@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 84162 2020-05-06 14:09:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -184,6 +184,10 @@ UIWizardNewCloudVMPageExpert::UIWizardNewCloudVMPageExpert(bool fFullWizard)
             this, &UIWizardNewCloudVMPageExpert::sltHandleAccountButtonClick);
     connect(m_pAccountImageList, &QListWidget::currentRowChanged,
             this, &UIWizardNewCloudVMPageExpert::sltHandleInstanceListChange);
+
+    /* Register fields: */
+    registerField("destination", this, "destination");
+    registerField("profileName", this, "profileName");
 }
 
 bool UIWizardNewCloudVMPageExpert::event(QEvent *pEvent)
