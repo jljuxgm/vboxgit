@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 82031 2019-11-20 16:11:16Z vboxsync $ */
+/* $Id: APICAll.cpp 82033 2019-11-20 16:34:13Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -3511,7 +3511,10 @@ static DECLCALLBACK(int) apicRZConstruct(PPDMDEVINS pDevIns)
 
     pVM->apicr0.s.pDevInsR0 = pDevIns;
 
-    int rc = PDMDevHlpMmioSetUpContext(pDevIns, pThis->hMmio, apicWriteMmio, apicReadMmio, NULL /*pvUser*/);
+    int rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
+    AssertRCReturn(rc, rc);
+
+    rc = PDMDevHlpMmioSetUpContext(pDevIns, pThis->hMmio, apicWriteMmio, apicReadMmio, NULL /*pvUser*/);
     AssertRCReturn(rc, rc);
 
     return VINF_SUCCESS;
@@ -3526,7 +3529,7 @@ const PDMDEVREG g_DeviceAPIC =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "apic",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ | PDM_DEVREG_FLAGS_NEW_STYLE,
     /* .fClass = */                 PDM_DEVREG_CLASS_PIC,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
