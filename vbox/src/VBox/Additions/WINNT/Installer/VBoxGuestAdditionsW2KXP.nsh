@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditionsW2KXP.nsh 80278 2019-08-14 15:33:16Z vboxsync $
+; $Id: VBoxGuestAdditionsW2KXP.nsh 82652 2019-12-28 11:52:09Z vboxsync $
 ;; @file
 ; VBoxGuestAdditionsW2KXP.nsh - Guest Additions installation for Windows 2000/XP.
 ;
@@ -344,7 +344,7 @@ Function W2K_InstallFiles
     ; The mouse filter does not contain any device IDs but a "DefaultInstall" section;
     ; so this .INF file needs to be installed using "InstallHinfSection" which is implemented
     ; with VBoxDrvInst's "driver executeinf" routine
-    ${CmdExecute} "$\"$INSTDIR\VBoxDrvInst.exe$\" driver executeinf $\"$INSTDIR\VBoxMouse.inf$\"" "false"
+    ${CmdExecute} "$\"$INSTDIR\VBoxDrvInst.exe$\" driver install $\"$INSTDIR\VBoxMouse.inf$\"" "false"
   ${Else}
     ${LogVerbose} "Mouse driver installation skipped!"
   ${EndIf}
