@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevHDA.cpp 83298 2020-03-16 13:10:10Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -3883,6 +3883,11 @@ static DECLCALLBACK(int) hdaR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
         uint8_t idStream;
         rc = pHlp->pfnSSMGetU8(pSSM, &idStream);
         AssertRCReturn(rc, rc);
+
+        /* Paranoia. */
+        AssertLogRelMsgReturn(idStream < HDA_MAX_STREAMS,
+                              ("HDA: Saved state contains bogus stream ID %RU8 for stream #%RU8", idStream, i),
+                              VERR_SSM_INVALID_STATE);
 
         HDASTREAM    StreamDummyShared;
         HDASTREAMR3  StreamDummyR3;
