@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 78662 2019-05-22 13:28:07Z vboxsync $ */
+/* $Id: UartCore.cpp 78670 2019-05-22 17:03:08Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -1767,6 +1767,7 @@ DECLHIDDEN(void) uartR3Relocate(PUARTCORE pThis, RTGCINTPTR offDelta)
     pThis->pDevInsRC              = PDMDEVINS_2_RCPTR(pThis->pDevInsR3);
     pThis->pTimerRcvFifoTimeoutRC = TMTimerRCPtr(pThis->pTimerRcvFifoTimeoutR3);
     pThis->pTimerTxUnconnectedRC  = TMTimerRCPtr(pThis->pTimerTxUnconnectedR3);
+    pThis->pfnUartIrqReqRC       += offDelta;
 }
 
 
