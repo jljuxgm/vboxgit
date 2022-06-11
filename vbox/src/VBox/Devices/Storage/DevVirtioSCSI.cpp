@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 84355 2020-05-19 06:20:44Z vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 84356 2020-05-19 06:43:31Z vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -569,7 +569,8 @@ typedef VIRTIOSCSIREQ *PVIRTIOSCSIREQ;
 
 
 /**
- * @callback_method_impl{VIRTIOCORER0,pfnQueueNotified}
+ * callback_method_impl{VIRTIOCORER0,pfnQueueNotified}
+ * @todo this causes burn if I prefix with at-sign. This callback is in VIRTIOCORER0 and VIRTIOCORER3
  */
 static DECLCALLBACK(void) virtioScsiNotified(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16_t qIdx)
 {
