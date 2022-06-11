@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 83993 2020-04-27 10:42:16Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 84004 2020-04-27 12:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -236,6 +236,37 @@ bool UICloudNetworkingStuff::cloudMachineSettingsForm(CCloudMachine &comCloudMac
 
     /* Return result: */
     comResult = comForm;
+    return true;
+}
+
+bool UICloudNetworkingStuff::applyCloudMachineSettingsForm(CCloudMachine &comCloudMachine,
+                                                           CForm &comForm,
+                                                           QWidget *pParent /* = 0 */)
+{
+    /* Acquire machine name first: */
+    QString strMachineName;
+    if (!cloudMachineName(comCloudMachine, strMachineName))
+        return false;
+
+    /* Now execute Apply async method: */
+    CProgress comProgress = comForm.Apply();
+    if (!comForm.isOk())
+    {
+        msgCenter().cannotApplyCloudMachineFormSettings(comForm, strMachineName, pParent);
+        return false;
+    }
+
+    /* Show "Apply" progress: */
+    msgCenter().showModalProgressDialog(comProgress,
+                                        strMachineName,
+                                        ":/progress_settings_90px.png", pParent, 0);
+    if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
+    {
+        msgCenter().cannotApplyCloudMachineFormSettings(comProgress, strMachineName, pParent);
+        return false;
+    }
+
+    /* Return result: */
     return true;
 }
 

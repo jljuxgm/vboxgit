@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialog.cpp 83993 2020-04-27 10:42:16Z vboxsync $ */
+/* $Id: UICloudMachineSettingsDialog.cpp 84004 2020-04-27 12:08:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialog class implementation.
  */
@@ -56,20 +56,8 @@ void UICloudMachineSettingsDialog::accept()
 
     /* Apply form: */
     AssertReturnVoid(m_comForm.isNotNull());
-    CProgress comProgress = m_comForm.Apply();
-    if (!m_comForm.isOk())
-    {
-        msgCenter().cannotApplyCloudMachineFormSettings(m_comForm, m_strName, this);
+    if (!applyCloudMachineSettingsForm(m_comCloudMachine, m_comForm, this))
         return;
-    }
-    msgCenter().showModalProgressDialog(comProgress,
-                                        m_strName,
-                                        ":/progress_settings_90px.png", this, 0);
-    if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-    {
-        msgCenter().cannotApplyCloudMachineFormSettings(comProgress, m_strName, this);
-        return;
-    }
 
     /* Call to base-class: */
     QIWithRetranslateUI<QDialog>::accept();
