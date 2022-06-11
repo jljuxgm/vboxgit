@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 81556 2019-10-25 22:47:42Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 81566 2019-10-29 10:39:10Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -351,12 +351,12 @@ int main()
     CHECK_MEMBER_ALIGNMENT(EHCI, RootHub, 8);
 # endif
 # ifdef VBOX_WITH_XHCI_IMPL
-    CHECK_MEMBER_ALIGNMENT(XHCI, pWorkerThread, 8);
-    CHECK_MEMBER_ALIGNMENT(XHCI, IBase, 8);
-    CHECK_MEMBER_ALIGNMENT(XHCI, MMIOBase, 8);
-    CHECK_MEMBER_ALIGNMENT(XHCI, RootHub2, 8);
-    CHECK_MEMBER_ALIGNMENT(XHCI, RootHub3, 8);
+    CHECK_MEMBER_ALIGNMENT(XHCI, aPorts, 8);
+    CHECK_MEMBER_ALIGNMENT(XHCI, aInterrupters, 8);
+    CHECK_MEMBER_ALIGNMENT(XHCI, aInterrupters[0].lock, 8);
+    CHECK_MEMBER_ALIGNMENT(XHCI, aInterrupters[1].lock, 8);
     CHECK_MEMBER_ALIGNMENT(XHCI, cmdr_dqp, 8);
+    CHECK_MEMBER_ALIGNMENT(XHCI, hMmio, 8);
 #  ifdef VBOX_WITH_STATISTICS
     CHECK_MEMBER_ALIGNMENT(XHCI, StatErrorIsocUrbs, 8);
     CHECK_MEMBER_ALIGNMENT(XHCI, StatIntrsCleared, 8);
