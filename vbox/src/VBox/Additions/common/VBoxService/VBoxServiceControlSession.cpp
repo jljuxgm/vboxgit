@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 79321 2019-06-25 12:00:40Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 79322 2019-06-25 12:09:04Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -130,7 +130,6 @@ static PVBOXSERVICECTRLFILE vgsvcGstCtrlSessionFileGetLocked(const PVBOXSERVICEC
  * @param   cchDir              The length of the directory we're recursing into,
  *                              including the trailing slash.
  * @param   pDirEntry           The dir entry buffer.  (Shared to save stack.)
- * @param   pObjInfo            The object info buffer.  (ditto)
  */
 static int vgsvcGstCtrlSessionHandleDirRemoveSub(char *pszDir, size_t cchDir, PRTDIRENTRY pDirEntry)
 {
