@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11Smoke.cpp 82906 2020-01-29 12:45:51Z vboxsync $ */
+/* $Id: tstClipboardGH-X11Smoke.cpp 82907 2020-01-29 13:06:32Z vboxsync $ */
 /** @file
  * Shared Clipboard guest/host X11 code smoke tests.
  */
@@ -51,7 +51,7 @@ int main()
      * Init the runtime, test and say hello.
      */
     RTTEST hTest;
-    int rc = RTTestInitAndCreate("tstClipboardX11Smoke", &hTest);
+    int rc = RTTestInitAndCreate("tstClipboardX11GH-Smoke", &hTest);
     if (rc)
         return rc;
     RTTestBanner(hTest);

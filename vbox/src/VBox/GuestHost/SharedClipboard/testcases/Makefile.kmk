@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82906 2020-01-29 12:45:51Z vboxsync $
+# $Id: Makefile.kmk 82907 2020-01-29 13:06:32Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Clipboard Guest/Host testcases.
 #
@@ -50,7 +50,7 @@ if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBO
 	export VBOX_LOG_DEST=nofile; $(tstClipboardGH-X11_1_STAGE_TARGET) quiet
 	$(QUIET)$(APPEND) -t "$@" "done"
 
-  $$(tstClipboardGH-X11Smoke_0_OUTDIR)/tstClipboardGH-X11Smoke.run:	$$(tstClipboardGH-X11_1_STAGE_TARGET)
+  $$(tstClipboardGH-X11Smoke_0_OUTDIR)/tstClipboardGH-X11Smoke.run:	$$(tstClipboardGH-X11Smoke_1_STAGE_TARGET)
 	export VBOX_LOG_DEST=nofile; $(tstClipboardGH-X11Smoke_1_STAGE_TARGET) quiet
 	$(QUIET)$(APPEND) -t "$@" "done"
 
