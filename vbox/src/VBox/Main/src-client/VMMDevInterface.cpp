@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 80396 2019-08-23 13:27:22Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 80398 2019-08-23 13:34:04Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -32,9 +32,6 @@
 #ifdef VBOX_WITH_HGCM
 # include "HGCM.h"
 # include "HGCMObjects.h"
-# if defined(RT_OS_DARWIN) && defined(VBOX_WITH_CROGL)
-#  include <VBox/HostServices/VBoxCrOpenGLSvc.h>
-# endif
 #endif
 
 //
