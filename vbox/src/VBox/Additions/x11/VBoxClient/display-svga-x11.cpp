@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 84258 2020-05-11 16:00:35Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 84262 2020-05-11 17:17:36Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -653,8 +653,29 @@ static bool callVMWCTRL(struct RANDROUTPUT *paOutputs)
     free(extents);
 }
 
+/**
+ * Tries to determine if the session parenting this process is of X11.
+ */
+static bool isX11()
+{
+    char* pSessionType;
+    pSessionType = getenv("XDG_SESSION_TYPE");
+    if (pSessionType != NULL)
+    {
+        if (RTStrIStartsWith(pSessionType, "x11"))
+            return true;
+    }
+    return false;
+}
+
 static bool init()
 {
+    if (!isX11())
+    {
+        VBClLogFatalError("The parent session seems to be non-X11. Exiting...\n");
+        VBClLogInfo("This service needs X display server for resizing and multi monitor handling to work\n");
+        return false;
+    }
     x11Connect();
     if (x11Context.pDisplay == NULL)
         return false;
