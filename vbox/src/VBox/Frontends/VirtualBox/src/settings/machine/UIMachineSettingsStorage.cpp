@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 81099 2019-10-02 13:20:26Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 81100 2019-10-02 13:25:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -1226,10 +1226,10 @@ void RootItem::delChild (AbstractItem *pItem)
 ControllerItem::ControllerItem (AbstractItem *pParentItem, const QString &strName,
                                 KStorageBus enmBus, KStorageControllerType enmType)
     : AbstractItem (pParentItem)
+    , m_strName (strName)
+    , m_strOldName (strName)
     , m_enmBus (enmBus)
     , m_enmType (enmType)
-    , m_strOldName (strName)
-    , m_strName (strName)
     , m_uPortCount (0)
     , m_fUseIoCache (false)
 {
