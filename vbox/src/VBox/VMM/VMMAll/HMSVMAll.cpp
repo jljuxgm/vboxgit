@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 80184 2019-08-07 11:24:32Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -47,7 +47,6 @@
  * @retval VERR_SVM_UNEXPECTED_PATCH_TYPE if the found patch type is invalid.
  *
  * @param   pVCpu               The cross context virtual CPU structure.
- * @param   pCtx                Pointer to the guest-CPU context.
  */
 VMM_INT_DECL(int) hmEmulateSvmMovTpr(PVMCPU pVCpu)
 {
