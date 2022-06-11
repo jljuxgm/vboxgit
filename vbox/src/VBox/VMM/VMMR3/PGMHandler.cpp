@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 80182 2019-08-07 11:17:11Z vboxsync $ */
+/* $Id: PGMHandler.cpp 80183 2019-08-07 11:24:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -72,8 +72,6 @@ static DECLCALLBACK(int) pgmR3InfoHandlersPhysicalOne(PAVLROGCPHYSNODECORE pNode
  * @param   pfnHandlerR3    Pointer to the ring-3 handler callback.
  * @param   pfnHandlerR0    Pointer to the ring-0 handler callback.
  * @param   pfnPfHandlerR0  Pointer to the ring-0 \#PF handler callback.
- * @param   pfnHandlerRC    Pointer to the raw-mode context handler callback.
- * @param   pfnPfHandlerRC  Pointer to the raw-mode context \#PF handler
  *                          callback.
  * @param   pszDesc         The type description.
  * @param   phType          Where to return the type handle (cross context

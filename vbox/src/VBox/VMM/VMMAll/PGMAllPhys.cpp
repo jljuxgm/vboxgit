@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 80181 2019-08-07 10:49:52Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 80183 2019-08-07 11:24:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1434,7 +1434,7 @@ int pgmPhysPageMapReadOnly(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void const 
  * @returns VBox status code.
  * @retval  VINF_SUCCESS on success
  * @retval  VERR_PGM_INVALID_GC_PHYSICAL_ADDRESS if it's not a valid physical address.
- * @param   pPGM        The PGM instance pointer.
+ * @param   pVM         The cross context VM structure.
  * @param   GCPhys      The guest physical address in question.
  */
 int pgmPhysPageLoadIntoTlb(PVM pVM, RTGCPHYS GCPhys)

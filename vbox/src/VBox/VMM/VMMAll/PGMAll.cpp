@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 80181 2019-08-07 10:49:52Z vboxsync $ */
+/* $Id: PGMAll.cpp 80183 2019-08-07 11:24:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1679,8 +1679,9 @@ static int pgmShwSyncLongModePDPtr(PVMCPU pVCpu, RTGCPTR64 GCPtr, X86PGPAEUINT u
  * @returns VBox status code.
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   GCPtr       The address.
- * @param   ppPdpt      Receives address of pdpt
- * @param   ppPD        Receives address of page directory
+ * @param   ppPml4e     Receives the address of the page map level 4 entry.
+ * @param   ppPdpt      Receives the address of the page directory pointer table.
+ * @param   ppPD        Receives the address of the page directory.
  */
 DECLINLINE(int) pgmShwGetLongModePDPtr(PVMCPU pVCpu, RTGCPTR64 GCPtr, PX86PML4E *ppPml4e, PX86PDPT *ppPdpt, PX86PDPAE *ppPD)
 {
