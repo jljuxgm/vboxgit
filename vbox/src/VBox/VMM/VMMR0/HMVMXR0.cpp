@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79759 2019-07-13 16:46:21Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79760 2019-07-13 16:48:39Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -99,7 +99,7 @@
             Assert((fVmcsFieldRead & (a_fReadFields)) == (a_fReadFields)); \
         } while (0)
 #else
-# define HMVMX_ASSERT_READ(a_pVmxTransient, a_fReadFields)          do { } while (0)
+# define HMVMX_ASSERT_READ(a_pVmxTransient, a_fReadFields) do { } while (0)
 #endif
 
 /**
