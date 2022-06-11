@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 77314 2019-02-14 15:49:08Z vboxsync $ */
+/* $Id: VBoxGuestControlSvc.cpp 79288 2019-06-22 00:05:59Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -1491,6 +1491,12 @@ int GstCtrlService::clientMsgSkip(ClientState *pClient, VBOXHGCMCALLHANDLE hCall
                         HGCMSvcSetU32(&aReplyParams[1], GUEST_FILE_NOTIFYTYPE_TELL);  /* type */
                         HGCMSvcSetU32(&aReplyParams[2], rcSkip);                      /* rc */
                         HGCMSvcSetU64(&aReplyParams[3], 0);                           /* actual */
+                        hostCallback(GUEST_MSG_FILE_NOTIFY, 4, aReplyParams);
+                        break;
+                    case HOST_MSG_FILE_SET_SIZE:
+                        HGCMSvcSetU32(&aReplyParams[1], GUEST_FILE_NOTIFYTYPE_SET_SIZE); /* type */
+                        HGCMSvcSetU32(&aReplyParams[2], rcSkip);                         /* rc */
+                        HGCMSvcSetU64(&aReplyParams[3], 0);                              /* actual */
                         hostCallback(GUEST_MSG_FILE_NOTIFY, 4, aReplyParams);
                         break;
 
