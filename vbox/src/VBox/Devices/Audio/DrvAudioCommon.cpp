@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 82252 2019-11-27 21:31:53Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 82254 2019-11-27 22:09:17Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines.
  *
@@ -952,7 +952,7 @@ void DrvAudioHlpStreamCfgInit(PPDMAUDIOSTREAMCFG pCfg)
 
     RT_BZERO(pCfg, sizeof(PDMAUDIOSTREAMCFG));
 
-    pCfg->Backend.cfPreBuf = UINT32_MAX; /* Explicitly set to "undefined". */
+    pCfg->Backend.cFramesPreBuffering = UINT32_MAX; /* Explicitly set to "undefined". */
 }
 
 /**
