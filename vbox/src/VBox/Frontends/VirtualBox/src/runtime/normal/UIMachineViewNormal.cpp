@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 79403 2019-06-28 09:46:46Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 80617 2019-09-06 08:32:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -131,7 +131,7 @@ void UIMachineViewNormal::prepareConsoleConnections()
     UIMachineView::prepareConsoleConnections();
 
     /* Guest additions state-change updater: */
-    connect(uisession(), SIGNAL(sigAdditionsStateActualChange()), this, SLOT(sltAdditionsStateChanged()));
+    connect(uisession(), &UISession::sigAdditionsStateActualChange, this, &UIMachineViewNormal::sltAdditionsStateChanged);
 }
 
 void UIMachineViewNormal::setGuestAutoresizeEnabled(bool fEnabled)
@@ -257,4 +257,3 @@ QSize UIMachineViewNormal::calculateMaxGuestSize() const
      * sanity (or insanity) reasons. */
     return maximumSize - (windowSize - centralWidgetSize.boundedTo(windowSize));
 }
-
