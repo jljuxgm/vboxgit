@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.cpp 78762 2019-05-26 04:37:50Z vboxsync $ */
+/* $Id: MediumIOImpl.cpp 80006 2019-07-26 13:54:38Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: MediumIO
  */
@@ -159,7 +159,7 @@ public:
 protected:
     HRESULT         mRC;
 
-    DataStream      *m_pDataStream;
+    ComObjPtr<DataStream> m_pDataStream;
     MediumVariant_T m_fMediumVariant;
     Utf8Str         m_strFormat;
 
