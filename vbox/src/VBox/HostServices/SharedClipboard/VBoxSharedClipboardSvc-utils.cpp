@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-utils.cpp 81025 2019-09-26 16:13:25Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-utils.cpp 81026 2019-09-26 16:16:33Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service utility functions.
  */
@@ -29,5 +29,4 @@
 #include <iprt/path.h>
 
 #include "VBoxSharedClipboardSvc-internal.h"
-
 
