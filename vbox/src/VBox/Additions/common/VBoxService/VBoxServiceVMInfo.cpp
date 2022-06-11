@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 83235 2020-03-09 08:49:17Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -606,7 +606,7 @@ static int vgsvcVMInfoWriteUsers(void)
         {
             bool fFound = false;
             for (uint32_t i = 0; i < cUsersInList && !fFound; i++)
-                fFound = strcmp(papszUsers[i], ut_user->ut_user) == 0;
+                fFound = strncmp(papszUsers[i], ut_user->ut_user, sizeof(ut_user->ut_user)) == 0;
 
             if (!fFound)
             {
