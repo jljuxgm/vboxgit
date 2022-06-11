@@ -1,4 +1,4 @@
-/* $Id: AdditionsFacilityImpl.h 79052 2019-06-08 23:18:17Z vboxsync $ */
+/* $Id: AdditionsFacilityImpl.h 79054 2019-06-08 23:20:47Z vboxsync $ */
 /** @file
  * VirtualBox Main - Additions facility class.
  */
@@ -49,7 +49,7 @@ public:
     /** @name public internal methods
      * @{ */
     LONG64 i_getLastUpdated() const;
-#if 1 /* unused */
+#if 0 /* unused */
     AdditionsFacilityType_T i_getType() const;
     AdditionsFacilityClass_T i_getClass() const;
     const char *i_getName() const;
