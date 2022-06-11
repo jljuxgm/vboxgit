@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 83065 2020-02-12 19:38:07Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 83268 2020-03-11 20:31:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1990,8 +1990,7 @@ bool UIVirtualBoxManager::isActionEnabled(int iActionIndex, const QList<UIVirtua
         case UIActionIndexST_M_Group_S_Refresh:
         case UIActionIndexST_M_Machine_S_Refresh:
         {
-            return isItemsLocal(items) &&
-                   isAtLeastOneItemInaccessible(items);
+            return isAtLeastOneItemInaccessible(items);
         }
         case UIActionIndexST_M_Group_S_ShowInFileManager:
         case UIActionIndexST_M_Machine_S_ShowInFileManager:

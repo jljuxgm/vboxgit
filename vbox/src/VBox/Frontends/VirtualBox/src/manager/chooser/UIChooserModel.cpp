@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83199 2020-03-04 11:59:35Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83268 2020-03-11 20:31:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -44,7 +44,7 @@
 #include "UIModalWindowManager.h"
 #include "UITask.h"
 #include "UIVirtualBoxManagerWidget.h"
-#include "UIVirtualMachineItem.h"
+#include "UIVirtualMachineItemCloud.h"
 #include "UIWizardNewCloudVM.h"
 #include "UIWizardNewVM.h"
 
@@ -1018,20 +1018,38 @@ void UIChooserModel::sltPerformRefreshAction()
     UIChooserItem *pSelectedItem = 0;
     foreach (UIChooserItemMachine *pItem, inaccessibleMachineItemList)
     {
-        /* Recache: */
-        pItem->recache();
-        /* Become accessible? */
-        if (pItem->accessible())
+        switch (pItem->node()->toMachineNode()->cache()->itemType())
         {
-            /* Machine name: */
-            const QString strMachineName = ((UIChooserItem*)pItem)->name();
-            /* We should reload this machine: */
-            sltReloadMachine(pItem->id());
-            /* Select first of reloaded items: */
-            if (!pSelectedItem)
-                pSelectedItem = root()->searchForItem(strMachineName,
-                                                      UIChooserItemSearchFlag_Machine |
-                                                      UIChooserItemSearchFlag_ExactName);
+            case UIVirtualMachineItem::ItemType_Local:
+            {
+                /* Recache: */
+                pItem->recache();
+
+                /* Become accessible? */
+                if (pItem->accessible())
+                {
+                    /* Machine name: */
+                    const QString strMachineName = ((UIChooserItem*)pItem)->name();
+                    /* We should reload this machine: */
+                    sltReloadMachine(pItem->id());
+                    /* Select first of reloaded items: */
+                    if (!pSelectedItem)
+                        pSelectedItem = root()->searchForItem(strMachineName,
+                                                              UIChooserItemSearchFlag_Machine |
+                                                              UIChooserItemSearchFlag_ExactName);
+                }
+
+                break;
+            }
+            case UIVirtualMachineItem::ItemType_CloudReal:
+            {
+                /* Much more simple than for local items, we are not reloading them, just refreshing: */
+                pItem->node()->toMachineNode()->cache()->toCloud()->updateInfoAsync(false /* delayed */);
+
+                break;
+            }
+            default:
+                break;
         }
     }
 
