@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 81276 2019-10-14 20:45:48Z vboxsync $
+# $Id: Makefile.kmk 81280 2019-10-15 07:27:55Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3133,12 +3133,12 @@ RuntimeR0Drv_SOURCES.darwin = \
 	r0drv/alloc-ef-r0drv.cpp \
 	r0drv/memobj-r0drv.cpp \
 	r0drv/powernotification-r0drv.c
-# - The xnu memcpy implementation in osfmk/x86_64/bcopy.s returns 'void' rather than 'void *', so use our own.
+# - The xnu memcpy implementation in osfmk/x86_64/bcopy.s returned 'void' rather than 'void *' for a long time, so use our own.
 # - The memcmp and strlen implementations are still C implementations living in osfmk/x86_64/loose_ends.c, so use our asm code.
 RuntimeR0Drv_SOURCES.darwin.amd64 = \
-	common/string/memcpy.asm \
-	common/string/strlen.asm \
-	common/string/memcmp.asm
+	common/string/memcpy.asm
+#	common/string/strlen.asm - try again later \
+#	common/string/memcmp.asm
 
 RuntimeR0Drv_SOURCES.os2 = \
 	common/path/RTPathFilenameUtf16.cpp \
