@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 81179 2019-10-09 10:58:00Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 81180 2019-10-09 10:59:53Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4040,11 +4040,13 @@ static int hmR0SvmPreRunGuest(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
     ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_ALL_GUEST);
 #endif
 
+#ifdef VBOX_WITH_NESTED_HWVIRT_SVM
     /*
      * Set up the nested-guest VMCB for execution using hardware-assisted SVM.
      */
     if (pSvmTransient->fIsNestedGuest)
         hmR0SvmSetupVmcbNested(pVCpu);
+#endif
 
     /*
      * Export the guest state bits that are not shared with the host in any way as we can
