@@ -1,4 +1,4 @@
-/* $Id: UIMonitorCommon.h 83346 2020-03-20 11:10:38Z vboxsync $ */
+/* $Id: UIMonitorCommon.h 83347 2020-03-20 11:46:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMonitorCommon class declaration.
  */
@@ -20,20 +20,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-/* Qt includes: */
-#include <QWidget>
-#include <QMap>
-#include <QQueue>
-
-/* COM includes: */
-#include "COMEnums.h"
-#include "CConsole.h"
-#include "CGuest.h"
-#include "CMachine.h"
-#include "CMachineDebugger.h"
-#include "CPerformanceCollector.h"
-
 
 /** UIDebuggerMetricData is used as data storage while parsing the xml stream received from IMachineDebugger. */
 struct UIDebuggerMetricData
