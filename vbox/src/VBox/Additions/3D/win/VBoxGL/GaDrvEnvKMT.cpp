@@ -1,4 +1,4 @@
-/* $Id: GaDrvEnvKMT.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GaDrvEnvKMT.cpp 78601 2019-05-20 15:01:25Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface to the WDDM miniport driver using Kernel Mode Thunks.
  */
@@ -1052,7 +1052,8 @@ GaDrvEnvKmt::gaEnvRegionDestroy(void *pvEnv,
 
 GaDrvEnvKmt::GaDrvEnvKmt()
     :
-    mContextTree(0)
+    mContextTree(0),
+    mSurfaceTree(0)
 {
     RT_ZERO(mKmtCallbacks);
     RT_ZERO(mHWInfo);
