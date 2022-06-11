@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 84216 2020-05-08 14:38:27Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 84219 2020-05-08 16:23:37Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -1133,7 +1133,7 @@ static void setXrandrTopology(struct RANDROUTPUT *paOutputs)
     if (x11Context.pXRRGetScreenResources)
         x11Context.pScreenResources = x11Context.pXRRGetScreenResources(x11Context.pDisplay, x11Context.rootWindow);
 #endif
-    x11Context.hOutputCount = determineOutputCount();
+    x11Context.hOutputCount = x11Context.fWmwareCtrlExtention ? determineOutputCount() : 1;
 
     if (!x11Context.pScreenResources)
     {
