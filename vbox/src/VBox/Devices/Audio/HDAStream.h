@@ -1,4 +1,4 @@
-/* $Id: HDAStream.h 82331 2019-12-02 23:50:22Z vboxsync $ */
+/* $Id: HDAStream.h 82332 2019-12-03 00:30:11Z vboxsync $ */
 /** @file
  * HDAStream.h - Stream functions for HD Audio.
  */
@@ -271,9 +271,8 @@ uint32_t          hdaR3StreamGetPosition(PHDASTATE pThis, PHDASTREAM pStream);
 void              hdaR3StreamSetPosition(PHDASTREAM pStream, uint32_t u32LPIB);
 uint32_t          hdaR3StreamGetFree(PHDASTREAM pStream);
 uint32_t          hdaR3StreamGetUsed(PHDASTREAM pStream);
-bool              hdaR3StreamTransferIsScheduled(PPDMDEVINS pDevIns, PHDASTREAM pStream);
+bool              hdaR3StreamTransferIsScheduled(PHDASTREAM pStream, uint64_t tsNow);
 uint64_t          hdaR3StreamTransferGetNext(PHDASTREAM pStream);
-int               hdaR3StreamTransfer(PPDMDEVINS pDevIns, PHDASTREAM pStream, uint32_t cbToProcessMax);
 void              hdaR3StreamLock(PHDASTREAM pStream);
 void              hdaR3StreamUnlock(PHDASTREAM pStream);
 int               hdaR3StreamRead(PHDASTREAM pStream, uint32_t cbToRead, uint32_t *pcbRead);

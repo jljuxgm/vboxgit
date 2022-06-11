@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 82331 2019-12-02 23:50:22Z vboxsync $ */
+/* $Id: DevHDACommon.h 82332 2019-12-03 00:30:11Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -652,7 +652,7 @@ bool          hdaR3BDLENeedsInterrupt(PHDABDLE pBDLE);
  * @{
  */
 #ifdef IN_RING3
-bool          hdaR3TimerSet(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREAM pStream, uint64_t u64Expire, bool fForce);
+bool          hdaR3TimerSet(PPDMDEVINS pDevIns, PHDASTREAM pStream, uint64_t u64Expire, bool fForce, uint64_t tsNow);
 #endif
 /** @} */
 
