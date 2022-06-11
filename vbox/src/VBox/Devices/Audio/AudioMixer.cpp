@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 78507 2019-05-14 14:34:34Z vboxsync $ */
+/* $Id: AudioMixer.cpp 78510 2019-05-14 15:25:22Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -110,9 +110,9 @@ static int audioMixerStreamUpdateStatus(PAUDMIXSTREAM pMixStream);
 /**
  * Converts a mixer sink status to a string.
  *
- * @returns Stringified mixer sink flags. Must be free'd with RTStrFree().
+ * @returns Stringified mixer sink status flags. Must be free'd with RTStrFree().
  *          "NONE" if no flags set.
- * @param   fFlags              Mixer sink flags to convert.
+ * @param   fStatus             Mixer sink status to convert.
  */
 static char *dbgAudioMixerSinkStatusToStr(AUDMIXSINKSTS fStatus)
 {
