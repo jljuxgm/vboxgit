@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 81159 2019-10-08 15:04:14Z vboxsync $
+# $Id: Makefile.kmk 81386 2019-10-20 08:51:32Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -329,6 +329,12 @@ endif
 if defined(VBOX_WITH_TESTCASES) || defined(VBOX_WITH_VBOX_IMG)
   VBOX_LNX_STRIP_BIN += \
 	vbox-img
+endif
+
+# vboximg-mount
+if defined(VBOX_WITH_VBOXIMGMOUNT)
+  VBOX_LNX_STRIP_BIN += \
+	vboximg-mount
 endif
 
 # EFI firmware
