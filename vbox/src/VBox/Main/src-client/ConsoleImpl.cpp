@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 78261 2019-04-23 16:49:28Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 78509 2019-05-14 15:16:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3309,6 +3309,8 @@ const char *Console::i_storageControllerTypeToStr(StorageControllerType_T enmCtr
             return "Msd";
         case StorageControllerType_NVMe:
             return "nvme";
+        case StorageControllerType_VirtioSCSI:
+            return "virtio-scsi";
         default:
             return NULL;
     }
@@ -3330,6 +3332,7 @@ HRESULT Console::i_storageBusPortDeviceToLun(StorageBus_T enmBus, LONG port, LON
         case StorageBus_SCSI:
         case StorageBus_SAS:
         case StorageBus_PCIe:
+        case StorageBus_VirtioSCSI:
         {
             uLun = port;
             return S_OK;
