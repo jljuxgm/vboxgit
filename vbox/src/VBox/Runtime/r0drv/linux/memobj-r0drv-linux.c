@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 80321 2019-08-16 09:20:57Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 80327 2019-08-16 12:06:58Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1567,6 +1567,7 @@ DECLHIDDEN(int) rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ p
     /*
      * Create the IPRT memory object.
      */
+    Assert(!offSub || cbSub);
     if (cbSub == 0)
         cbSub = pMemLnxToMap->Core.cb;
     pMemLnx = (PRTR0MEMOBJLNX)rtR0MemObjNew(sizeof(*pMemLnx), RTR0MEMOBJTYPE_MAPPING, NULL, cbSub);
