@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: virtual_test_sheriff.py 79918 2019-07-22 10:11:05Z vboxsync $
 # pylint: disable=line-too-long
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 79918 $"
 
 
 # Standard python imports
@@ -157,6 +157,11 @@ class VirtualTestSheriffCaseFile(object):
         """ Test case classification: VirtualBox Guest installation test. """
         return self.isVBoxTest() \
            and self.oTestCase.sName.lower().startswith('install:');
+
+    def isVBoxUnattendedInstallTest(self):
+        """ Test case classification: VirtualBox Guest installation test. """
+        return self.isVBoxTest() \
+           and self.oTestCase.sName.lower().startswith('uinstall:');
 
     def isVBoxUSBTest(self):
         """ Test case classification: VirtualBox USB test. """
@@ -318,7 +323,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 79092 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 79918 $ \n');
 
 
     def eprint(self, sText):
@@ -688,7 +693,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 79092 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 79918 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1487,7 +1492,7 @@ class VirtualTestSheriff(object): # pylint: disable=too-few-public-methods
                 self.dprint(u'investigateVBoxUnitTest is taking over %s.' % (oCaseFile.sLongName,));
                 fRc = self.investigateVBoxUnitTest(oCaseFile);
 
-            elif oCaseFile.isVBoxInstallTest():
+            elif oCaseFile.isVBoxInstallTest() or oCaseFile.isVBoxUnattendedInstallTest():
                 self.dprint(u'investigateVBoxVMTest is taking over %s.' % (oCaseFile.sLongName,));
                 fRc = self.investigateVBoxVMTest(oCaseFile, fSingleVM = True);
 
