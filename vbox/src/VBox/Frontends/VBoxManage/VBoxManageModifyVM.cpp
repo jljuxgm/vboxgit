@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 81287 2019-10-15 16:38:43Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 81289 2019-10-15 16:48:53Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2474,7 +2474,7 @@ RTEXITCODE handleModifyVM(HandlerArg *a)
 # ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
             case MODIFYVM_CLIPBOARD_FILE_TRANSFERS:
             {
-                BOOL fEnabled;
+                BOOL fEnabled = false; /* Shut up MSC */
                 if (!RTStrICmp(ValueUnion.psz, "enabled"))
                     fEnabled = true;
                 else if (!RTStrICmp(ValueUnion.psz, "disabled"))
