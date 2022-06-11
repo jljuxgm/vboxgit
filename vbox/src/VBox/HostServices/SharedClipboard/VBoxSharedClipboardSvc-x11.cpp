@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 82848 2020-01-24 10:32:37Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 82875 2020-01-27 13:31:54Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -193,7 +193,7 @@ int ShClSvcImplReadData(PSHCLCLIENT pClient,
         pReq->pcbActual = pcbActual;
         const SHCLEVENTID idEvent = ShClEventIdGenerateAndRegister(&pClient->EventSrc);
         pReq->idEvent    = idEvent;
-        if (idEvent)
+        if (idEvent != NIL_SHCLEVENTID)
         {
             rc = ShClX11ReadDataFromX11(&pClient->State.pCtx->X11, pData->uFormat, pReq);
             if (RT_SUCCESS(rc))
@@ -391,7 +391,7 @@ int ShClSvcImplTransferGetRoots(PSHCLCLIENT pClient, PSHCLTRANSFER pTransfer)
     int rc;
 
     SHCLEVENTID idEvent = ShClEventIdGenerateAndRegister(&pClient->EventSrc);
-    if (idEvent)
+    if (idEvent != NIL_SHCLEVENTID)
     {
         CLIPREADCBREQ *pReq = (CLIPREADCBREQ *)RTMemAllocZ(sizeof(CLIPREADCBREQ));
         if (pReq)

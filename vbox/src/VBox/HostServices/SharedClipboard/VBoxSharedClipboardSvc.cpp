@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 82873 2020-01-27 12:50:50Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 82875 2020-01-27 13:31:54Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1215,7 +1215,7 @@ int ShClSvcDataReadRequest(PSHCLCLIENT pClient, SHCLFORMAT fFormat, PSHCLEVENTID
         RTCritSectEnter(&pClient->CritSect);
 
         const SHCLEVENTID idEvent = ShClEventIdGenerateAndRegister(&pClient->EventSrc);
-        if (idEvent != 0)
+        if (idEvent != NIL_SHCLEVENTID)
         {
             LogFlowFunc(("fFormat=%#x idEvent=%#x\n", fFormat, idEvent));
 
