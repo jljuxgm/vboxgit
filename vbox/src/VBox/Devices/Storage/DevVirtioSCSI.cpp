@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 80531 2019-09-01 23:03:34Z vboxsync $ $Revision: 80531 $ $Date: 2019-09-02 07:03:34 +0800 (Mon, 02 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 80538 2019-09-02 00:27:20Z vboxsync $ $Revision: 80538 $ $Date: 2019-09-02 08:27:20 +0800 (Mon, 02 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -494,36 +494,21 @@ typedef struct VIRTIOSCSIREQ
  * @param   pszTitle Header line/title for the dump
  *
  */
-void virtioScsiHexDump(uint8_t *pv, size_t cb, uint32_t uBase, const char *pszTitle) {
+void virtioScsiHexDump(uint8_t *pv, size_t cb, uint32_t uBase, const char *pszTitle)
+{
     if (pszTitle)
         Log2(("%s [%d bytes]:\n", pszTitle, cb));
-    for (uint32_t i = 0; i < RT_MAX(1, (cb / 16)); i++)
+    char pszAsciiRow[16 + 1] = { 0 };
+    for (uint8_t *pbLine = pv; pbLine <= pv + cb; pbLine += 16)
     {
-        uint32_t uAddr = i * 16 + uBase;
-        Log2(("%x%x%x%x: ", (uAddr >> 12) & 0xf, (uAddr >> 8) & 0xf, (uAddr >> 4) & 0xf, uAddr & 0xf));
-        for (int j = 0; j < 16; j++)
-        {
-            if (i * 16 + j >= cb)
-                Log2(("-- %s", (j + 1) % 8 ? "" : "  "));
-            else
-            {
-                uint8_t u8 = pv[i * 16 + j];
-                Log2(("%x%x %s", u8 >> 4 & 0xf, u8 & 0xf, (j + 1) % 8 ? "" : "  "));
-            }
-        }
-        for (int j = 0; j < 16; j++ ) {
-            if (i * 16 + j >= cb)
-                Log2((" "));
-            else
-            {
-                uint8_t u8 = pv[i * 16 + j];
-                Log2(("%c", u8 >= 0x20 && u8 <= 0x7e ? u8 : '.'));
-            }
-        }
-        Log2(("\n"));
+        for (uint8_t i = 0; i < 16; i++)
+            pszAsciiRow[i] = pbLine[i] > 0x20 && pbLine[i] <= 0x7e ? pbLine[i] : '.';
+        Log2(("%04x %.*Rhxs  %.*Rhxs %s\n",
+            uBase + (pbLine - pv), 8, pbLine, 8, pbLine + 8, pszAsciiRow));
     }
     Log2(("\n"));
 }
+
 DECLINLINE(const char *) virtioGetTMFTypeText(uint32_t uSubType)
 {
     switch (uSubType)
