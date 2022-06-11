@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 83306 2020-03-17 12:57:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1510,7 +1510,8 @@ void UIFrameBufferPrivate::paintDefault(QPaintEvent *pEvent)
     /* Paint cursor if it has valid shape and position.
      * Also, please take into account, we are not currently painting
      * framebuffer cursor if mouse integration is supported and enabled. */
-    if (   !m_pMachineView->uisession()->isHidingHostPointer()
+    if (   !m_cursorRectangle.isNull()
+        && !m_pMachineView->uisession()->isHidingHostPointer()
         && m_pMachineView->uisession()->isValidPointerShapePresent()
         && m_pMachineView->uisession()->isValidCursorPositionPresent()
         && (   !m_pMachineView->uisession()->isMouseIntegrated()
@@ -1619,7 +1620,8 @@ void UIFrameBufferPrivate::paintSeamless(QPaintEvent *pEvent)
     /* Paint cursor if it has valid shape and position.
      * Also, please take into account, we are not currently painting
      * framebuffer cursor if mouse integration is supported and enabled. */
-    if (   !m_pMachineView->uisession()->isHidingHostPointer()
+    if (   !m_cursorRectangle.isNull()
+        && !m_pMachineView->uisession()->isHidingHostPointer()
         && m_pMachineView->uisession()->isValidPointerShapePresent()
         && m_pMachineView->uisession()->isValidCursorPositionPresent()
         && (   !m_pMachineView->uisession()->isMouseIntegrated()
