@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 78456 2019-05-09 09:07:10Z vboxsync $
+; $Id: VBoxRTImp.def 80438 2019-08-27 09:09:36Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 ;
@@ -1428,6 +1428,7 @@ EXPORTS
     RTNetIPv6PseudoChecksum
     RTNetIPv6PseudoChecksumBits
     RTNetIPv6PseudoChecksumEx
+    RTNetIsIPv4AddrStr
     RTNetTCPChecksum
     RTNetUDPChecksum
     RTOnceReset
