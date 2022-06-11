@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 83975 2020-04-24 16:09:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -390,7 +390,11 @@ void UIGraphicsTextPane::updateHoverStuff()
     updateTextLayout();
 
     /* Update tool-tip: */
-    setToolTip(m_strHoveredAnchor.section(',', -1));
+    const QString strType = m_strHoveredAnchor.section(',', 0, 0);
+    if (strType == "#attach")
+        setToolTip(m_strHoveredAnchor.section(',', -1));
+    else
+        setToolTip(QString());
 
     /* Update text-pane: */
     update();
