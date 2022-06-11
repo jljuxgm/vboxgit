@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 78893 2019-05-31 11:49:26Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 78970 2019-06-04 15:02:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -43,19 +43,21 @@ UIWizardImportAppPage2::UIWizardImportAppPage2()
 {
 }
 
-void UIWizardImportAppPage2::populateFormPropertiesTable()
-{
-    CVirtualSystemDescriptionForm comForm = fieldImp("vsdForm").value<CVirtualSystemDescriptionForm>();
-    if (comForm.isNotNull())
-        m_pFormEditor->setVirtualSystemDescriptionForm(comForm);
-}
-
 void UIWizardImportAppPage2::updatePageAppearance()
 {
     /* Check whether there was cloud source selected: */
     const bool fIsSourceCloudOne = fieldImp("isSourceCloudOne").toBool();
     /* Update page appearance according to chosen source: */
     m_pSettingsCntLayout->setCurrentIndex((int)fIsSourceCloudOne);
+}
+
+void UIWizardImportAppPage2::refreshFormPropertiesTable()
+{
+    /* Acquire VSD form: */
+    CVirtualSystemDescriptionForm comForm = fieldImp("vsdForm").value<CVirtualSystemDescriptionForm>();
+    /* Make sure the properties table get the new description form: */
+    if (comForm.isNotNull())
+        m_pFormEditor->setVirtualSystemDescriptionForm(comForm);
 }
 
 
@@ -199,7 +201,7 @@ void UIWizardImportAppPageBasic2::initializePage()
     /* Check whether there was cloud source selected: */
     const bool fIsSourceCloudOne = field("isSourceCloudOne").toBool();
     if (fIsSourceCloudOne)
-        populateFormPropertiesTable();
+        refreshFormPropertiesTable();
     else
     {
         /* Acquire appliance: */

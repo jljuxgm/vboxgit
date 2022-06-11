@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.h 78853 2019-05-29 14:16:42Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.h 78970 2019-06-04 15:02:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class declaration.
  */
@@ -39,11 +39,11 @@ protected:
     /** Constructs 2nd page base. */
     UIWizardImportAppPage2();
 
-    /** Populates form properties table. */
-    void populateFormPropertiesTable();
-
     /** Updates page appearance. */
     virtual void updatePageAppearance();
+
+    /** Refreshes form properties table. */
+    void refreshFormPropertiesTable();
 
     /** Returns appliance widget instance. */
     ImportAppliancePointer applianceWidget() const { return m_pApplianceWidget; }
