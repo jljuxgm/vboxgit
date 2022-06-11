@@ -1,4 +1,4 @@
-/* $Id: d3d9main.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: d3d9main.cpp 84321 2020-05-15 16:53:45Z vboxsync $ */
 /** @file
  * Gallium D3D testcase. Win32 application to run Gallium D3D9 tests.
  */
@@ -233,7 +233,10 @@ void D3D9Test::parseCmdLine(LPSTR lpCmdLine)
     /* First number is the render id. */
     miRenderId = atoi(p);
 
-    while (*p == ' ' || ('0' <= *p && *p <= '9'))
+    while ('0' <= *p && *p <= '9')
+        ++p;
+
+    while (*p == ' ')
         ++p;
 
     if (!*p)
@@ -307,7 +310,6 @@ int D3D9Test::Run()
                 if (msg.wParam == ' ')
                 {
                     fDoRender = TRUE;
-                    dt = fFirst ? 0.0f : 0.1f; /* 0.1 second increment per step. */
                 }
             }
         }
@@ -318,6 +320,7 @@ int D3D9Test::Run()
 
         if (fDoRender)
         {
+            dt = fFirst ? 0.0f : 0.1f; /* 0.1 second increment per step. */
             if (mpRender)
             {
                 mpRender->TimeAdvance(dt);
