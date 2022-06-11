@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84187 2020-05-07 14:22:31Z vboxsync $
+# $Id: tdAddBasic1.py 84190 2020-05-07 18:28:27Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84187 $"
+__version__ = "$Revision: 84190 $"
 
 # Standard Python imports.
 import os;
@@ -260,12 +260,9 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                                                                  {'oTstDrv':self, 'oGuest':oGuest, });
         fRc = False;
         if oConsoleCallbacks is not None:
-            # Wait for 5 minutes max.
             tsStart = base.timestampMilli();
             while base.timestampMilli() - tsStart < cMsTimeout:
-                oTask = self.waitForTasks(1000);
-                if oTask is not None:
-                    break;
+                self.sleep(1); # Do some busy waiting.
                 if self.fGAStatusCallbackFired:
                     reporter.log('Reached new run level %s after %dms' %
                                  (self.eGAStatusCallbackRunlevel, base.timestampMilli() - tsStart));
@@ -299,7 +296,6 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             reporter.error('Guest Additions installation not implemented for %s yet! (%s)' %
                            (oTestVm.sKind, oTestVm.sVmName,));
             fRc = False;
-        fRc = True;
 
         #
         # Verify installation of Guest Additions using commmon bits.
