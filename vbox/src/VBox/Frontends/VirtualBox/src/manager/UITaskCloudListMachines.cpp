@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudListMachines.cpp 83659 2020-04-09 17:20:05Z vboxsync $ */
+/* $Id: UITaskCloudListMachines.cpp 83691 2020-04-14 14:18:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudListMachines class implementation.
  */
@@ -21,7 +21,7 @@
 
 
 UITaskCloudListMachines::UITaskCloudListMachines(const CCloudClient &comCloudClient, UIChooserNode *pParentNode)
-    : UITask(Type_CloudAcquireInstances)
+    : UITask(Type_CloudListMachines)
     , m_comCloudClient(comCloudClient)
     , m_pParentNode(pParentNode)
 {

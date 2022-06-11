@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudRefreshMachineInfo.cpp 83658 2020-04-09 17:13:38Z vboxsync $ */
+/* $Id: UITaskCloudRefreshMachineInfo.cpp 83691 2020-04-14 14:18:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudRefreshMachineInfo class implementation.
  */
@@ -21,7 +21,7 @@
 
 
 UITaskCloudRefreshMachineInfo::UITaskCloudRefreshMachineInfo(const CCloudMachine &comCloudMachine)
-    : UITask(Type_CloudGetInstanceState)
+    : UITask(Type_CloudRefreshMachineInfo)
     , m_comCloudMachine(comCloudMachine)
 {
 }

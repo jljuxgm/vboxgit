@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83683 2020-04-13 18:34:08Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83691 2020-04-14 14:18:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -733,7 +733,7 @@ void UIChooserModel::sltReloadMachine(const QUuid &uId)
 void UIChooserModel::sltHandleCloudListMachinesTaskComplete(UITask *pTask)
 {
     /* Skip unrelated tasks: */
-    if (!pTask || pTask->type() != UITask::Type_CloudAcquireInstances)
+    if (!pTask || pTask->type() != UITask::Type_CloudListMachines)
         return;
 
     /* Call to base-class: */

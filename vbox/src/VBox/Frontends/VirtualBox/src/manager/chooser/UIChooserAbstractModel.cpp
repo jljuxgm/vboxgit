@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 83690 2020-04-14 14:08:19Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 83691 2020-04-14 14:18:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -435,7 +435,7 @@ void UIChooserAbstractModel::sltStartGroupSaving()
 void UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(UITask *pTask)
 {
     /* Skip unrelated tasks: */
-    if (!pTask || pTask->type() != UITask::Type_CloudAcquireInstances)
+    if (!pTask || pTask->type() != UITask::Type_CloudListMachines)
         return;
 
     /* Cast task to corresponding sub-class: */
