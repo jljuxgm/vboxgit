@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 78545 2019-05-16 12:47:28Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 78546 2019-05-16 13:07:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -1708,7 +1708,7 @@ bool StorageModel::setData (const QModelIndex &aIndex, const QVariant &aValue, i
                         const QList<QUuid> opticalIds = pItemController->attachmentIDs(KDeviceType_DVD);
                         if (!opticalIds.isEmpty())
                         {
-                            if (!msgCenter().confirmStorageBusChangeWithOpticalRemoval())
+                            if (!msgCenter().confirmStorageBusChangeWithOpticalRemoval(qobject_cast<QWidget*>(QObject::parent())))
                                 return false;
                             foreach (const QUuid &uId, opticalIds)
                                 delAttachment(pItemController->id(), uId);
@@ -1723,14 +1723,15 @@ bool StorageModel::setData (const QModelIndex &aIndex, const QVariant &aValue, i
                     const QList<QUuid> ids = pItemController->attachmentIDs();
                     if (uMaxPortCount * uMaxDevicePerPortCount < (uint)ids.size())
                     {
-                        if (!msgCenter().confirmStorageBusChangeWithExcessiveRemoval())
+                        if (!msgCenter().confirmStorageBusChangeWithExcessiveRemoval(qobject_cast<QWidget*>(QObject::parent())))
                             return false;
                         for (int i = uMaxPortCount * uMaxDevicePerPortCount; i < ids.size(); ++i)
                             delAttachment(pItemController->id(), ids.at(i));
                     }
 
-                    /* Push new controller type: */
+                    /* Push new bus/controller type: */
                     pItemController->setCtrBusType(enmNewCtrBusType);
+                    pItemController->setCtrType(pItemController->ctrTypes().first());
                     emit dataChanged(aIndex, aIndex);
 
                     /* Make sure each of remaining attachments has valid slot: */
