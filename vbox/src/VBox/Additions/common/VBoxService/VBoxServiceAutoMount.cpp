@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 77953 2019-03-29 17:07:16Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 78956 2019-06-04 08:45:36Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -1476,7 +1476,7 @@ static int vbsvcAutomounterMountIt(PVBSVCAUTOMOUNTERENTRY pEntry)
     MntInfo.signature[1] = VBSF_MOUNT_SIGNATURE_BYTE_1;
     MntInfo.signature[2] = VBSF_MOUNT_SIGNATURE_BYTE_2;
     MntInfo.length       = sizeof(MntInfo);
-    MntInfo.ttl          = MntOpts.uid              = -1 /*default*/;
+    MntInfo.ttl          = MntOpts.ttl              = -1 /*default*/;
     MntInfo.msDirCacheTTL= MntOpts.msDirCacheTTL    = -1 /*default*/;
     MntInfo.msInodeTTL   = MntOpts.msInodeTTL       = -1 /*default*/;
     MntInfo.cMaxIoPages  = MntOpts.cMaxIoPages      = 0 /*default*/;
