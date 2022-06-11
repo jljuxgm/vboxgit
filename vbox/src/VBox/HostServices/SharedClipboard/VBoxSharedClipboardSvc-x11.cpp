@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 79038 2019-06-07 15:14:35Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 79107 2019-06-12 13:57:04Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -245,7 +245,7 @@ struct _CLIPREADCBREQ
  *
  */
 int VBoxClipboardSvcImplReadData(PVBOXCLIPBOARDCLIENTDATA pClientData,
-                          uint32_t u32Format, void *pv, uint32_t cb, uint32_t *pcbActual)
+                                 uint32_t u32Format, void *pv, uint32_t cb, uint32_t *pcbActual)
 {
     LogFlowFunc(("pClientData=%p, u32Format=%02X, pv=%p, cb=%u, pcbActual=%p\n",
                  pClientData, u32Format, pv, cb, pcbActual));

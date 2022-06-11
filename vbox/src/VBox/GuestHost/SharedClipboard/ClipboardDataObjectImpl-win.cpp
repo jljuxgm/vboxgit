@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 79027 2019-06-06 14:47:16Z vboxsync $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 79107 2019-06-12 13:57:04Z vboxsync $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -47,7 +47,7 @@
 VBoxClipboardWinDataObject::VBoxClipboardWinDataObject(PSHAREDCLIPBOARDURITRANSFER pTransfer,
                                                        LPFORMATETC pFormatEtc, LPSTGMEDIUM pStgMed, ULONG cFormats)
     : m_enmStatus(Uninitialized)
-    , m_lRefCount(0)
+    , m_lRefCount(1)
     , m_cFormats(0)
     , m_pTransfer(pTransfer)
     , m_pStream(NULL)

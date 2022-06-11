@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 79088 2019-06-11 12:16:49Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 79107 2019-06-12 13:57:04Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -426,7 +426,7 @@ static LRESULT CALLBACK vboxClipboardWinWndProc(HWND hwnd, UINT msg, WPARAM wPar
 
                     rc = VBoxClipboardWinURIHandleWMSetFormats(pWinCtx, &pCtx->URI, &providerCtx, fFormats);
                     if (RT_SUCCESS(rc))
-                        rc = vboxSvcClipboardReportMsg(pCtx->pClientData, VBOX_SHARED_CLIPBOARD_HOST_MSG_READ_DATA,
+                        rc = vboxSvcClipboardReportMsg(pCtx->pClientData, VBOX_SHARED_CLIPBOARD_HOST_MSG_URI_READ_DATA_HDR,
                                                        VBOX_SHARED_CLIPBOARD_FMT_URI_LIST);
 #endif
                     if (rc == VERR_NOT_SUPPORTED)
