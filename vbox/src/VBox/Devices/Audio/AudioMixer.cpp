@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 82598 2019-12-16 18:48:48Z vboxsync $ */
+/* $Id: AudioMixer.cpp 82602 2019-12-17 05:06:29Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1549,10 +1549,8 @@ static int audioMixerSinkSetRecSourceInternal(PAUDMIXSINK pSink, PAUDMIXSTREAM p
             AssertPtr(pStream->pConn);
             rc = pStream->pConn->pfnEnable(pStream->pConn, PDMAUDIODIR_IN, true /* Enable */);
             if (RT_SUCCESS(rc))
-            {
                 pSink->In.pStreamRecSource = pStream;
-            }
-            else if (pSink->In.pStreamRecSource->pConn) /* Stay with the current recording source (if any) and re-enable it. */
+            else if (pSink->In.pStreamRecSource) /* Stay with the current recording source (if any) and re-enable it. */
             {
                 const PPDMIAUDIOCONNECTOR pConn = pSink->In.pStreamRecSource->pConn;
                 AssertPtr(pConn);
