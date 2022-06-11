@@ -1,4 +1,4 @@
-/* $Id: utils.c 78860 2019-05-29 20:21:42Z vboxsync $ */
+/* $Id: utils.c 79594 2019-07-08 13:40:15Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, utility functions.
  *
@@ -806,7 +806,7 @@ int vbsf_inode_setattr(struct dentry *dentry, struct iattr *iattr)
      * from futimes() when asked to preserve times, see ticketref:18569.
      */
     iattr->ia_valid |= ATTR_FORCE;
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 16, 39) && LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0)) || LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
     rc = setattr_prepare(dentry, iattr);
 #else
     rc = inode_change_ok(pInode, iattr);
