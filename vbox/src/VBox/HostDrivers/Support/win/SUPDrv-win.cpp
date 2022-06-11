@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 83802 2020-04-18 18:07:12Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -1794,7 +1794,7 @@ void VBOXCALL supdrvOSGipInitGroupBitsForCpu(PSUPDRVDEVEXT pDevExt, PSUPGLOBALIN
     /*
      * Translate the CPU index into a group and member.
      */
-    PROCESSOR_NUMBER ProcNum = { 0, pGipCpu->iCpuSet, 0 };
+    PROCESSOR_NUMBER ProcNum = { 0, (UCHAR)pGipCpu->iCpuSet, 0 };
     if (g_pfnKeGetProcessorNumberFromIndex)
     {
         NTSTATUS rcNt = g_pfnKeGetProcessorNumberFromIndex(pGipCpu->iCpuSet, &ProcNum);
