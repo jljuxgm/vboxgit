@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-utils.cpp 79174 2019-06-17 10:30:49Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-utils.cpp 79175 2019-06-17 10:36:51Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service utility functions.
  */
@@ -22,10 +22,10 @@
 #define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
 #include <VBox/log.h>
 
-#include <VBox/err.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #include <VBox/HostServices/VBoxClipboardExt.h>
 
+#include <iprt/errcore.h>
 #include <iprt/path.h>
 
 #include "VBoxSharedClipboardSvc-internal.h"
