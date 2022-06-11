@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 83180 2020-02-28 18:07:28Z vboxsync $ */
+/* $Id: MachineImpl.cpp 83901 2020-04-21 16:12:01Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1015,7 +1015,7 @@ HRESULT Machine::setName(const com::Utf8Str &aName)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    HRESULT rc = i_checkStateDependency(MutableStateDep);
+    HRESULT rc = i_checkStateDependency(MutableOrSavedStateDep);
     if (FAILED(rc)) return rc;
 
     i_setModified(IsModified_MachineData);
