@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 77259 2019-02-11 13:27:05Z vboxsync $ */
+/* $Id: DevPcBios.cpp 80038 2019-07-29 09:30:52Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -195,6 +195,8 @@ typedef struct DEVPCBIOS
     uint8_t         u8APICMode;
     /** PXE debug logging enabled? */
     uint8_t         u8PXEDebug;
+    /** Physical address of the MP table. */
+    uint32_t        u32MPTableAddr;
     /** PXE boot PCI bus/dev/fn list. */
     uint16_t        au16NetBootDev[NET_BOOT_DEVS];
     /** Number of logical CPUs in guest */
@@ -1037,6 +1039,9 @@ static DECLCALLBACK(void) pcbiosMemSetup(PPDMDEVINS pDevIns, PDMDEVMEMSETUPCTX e
     PDEVPCBIOS pThis = PDMINS_2_DATA(pDevIns, PDEVPCBIOS);
     LogFlow(("pcbiosMemSetup:\n"));
 
+    if (pThis->u8IOAPIC)
+        FwCommonPlantMpsFloatPtr(pDevIns, pThis->u32MPTableAddr);
+
     /*
      * Re-shadow the LAN ROM image and make it RAM/RAM.
      *
@@ -1601,10 +1606,10 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
 
     if (pThis->u8IOAPIC)
     {
+        pThis->u32MPTableAddr = VBOX_DMI_TABLE_BASE + VBOX_DMI_TABLE_SIZE;
         FwCommonPlantMpsTable(pDevIns, pThis->au8DMIPage /* aka VBOX_DMI_TABLE_BASE */ + VBOX_DMI_TABLE_SIZE,
                               _4K - VBOX_DMI_TABLE_SIZE, pThis->cCpus);
-        FwCommonPlantMpsFloatPtr(pDevIns, VBOX_DMI_TABLE_BASE + VBOX_DMI_TABLE_SIZE);
-        LogRel(("PcBios: MPS table at %08x\n", VBOX_DMI_TABLE_BASE + VBOX_DMI_TABLE_SIZE));
+        LogRel(("PcBios: MPS table at %08x\n", pThis->u32MPTableAddr));
     }
 
     rc = PDMDevHlpROMRegister(pDevIns, VBOX_DMI_TABLE_BASE, _4K, pThis->au8DMIPage, _4K,
