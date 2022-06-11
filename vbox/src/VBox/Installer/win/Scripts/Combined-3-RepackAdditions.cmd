@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Combined-3-RepackAdditions.cmd 82469 2019-12-06 17:21:50Z vboxsync $
+rem $Id: Combined-3-RepackAdditions.cmd 82542 2019-12-10 16:24:04Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 and x86 drivers.
 rem
@@ -218,7 +218,7 @@ rem TBD: that has to be converted to invoke auto-generated .cmd
         -E "PATH_TARGET=%_MY_REPACK_DIR_AMD64%" ^
         -E "PATH_TARGET_X86=%_MY_REPACK_DIR_X86%\resources" ^
         -E "VBOX_PATH_ADDITIONS_WIN_X86=%_MY_REPACK_DIR_AMD64%\..\bin\additions" ^
-        -E "VBOX_PATH_DIFX=%KBUILD_DEVTOOLS%\win.x86\DIFx\v2.1-r3" ^
+        -E "VBOX_PATH_DIFX=%KBUILD_DEVTOOLS%\win.amd64\DIFx\v2.1-r3" ^
         -E "VBOX_VENDOR=Oracle Corporation" -E "VBOX_VENDOR_SHORT=Oracle" -E "VBOX_PRODUCT=Oracle VM VirtualBox" ^
         -E "VBOX_C_YEAR=@VBOX_C_YEAR@" -E "VBOX_VERSION_STRING=@VBOX_VERSION_STRING@" -E "VBOX_VERSION_STRING_RAW=@VBOX_VERSION_STRING_RAW@" ^
         -E "VBOX_VERSION_MAJOR=@VBOX_VERSION_MAJOR@" -E "VBOX_VERSION_MINOR=@VBOX_VERSION_MINOR@" -E "VBOX_VERSION_BUILD=0" -E "VBOX_SVN_REV=@VBOX_SVN_REV@" ^
