@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 78565 2019-05-17 12:06:36Z vboxsync $ */
+/* $Id: MediumImpl.cpp 78658 2019-05-22 12:05:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -9662,7 +9662,7 @@ HRESULT Medium::i_taskDeleteHandler(Medium::DeleteTask &task)
     {
         if (m->pParent.isNotNull())
             m->pVirtualBox->i_onMediumConfigChanged(m->pParent);
-        m->pVirtualBox->i_onMediumRegistered(uOldId, m->devType, TRUE);
+        m->pVirtualBox->i_onMediumRegistered(uOldId, m->devType, FALSE);
     }
 
     return rc;
