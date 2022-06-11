@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.h 80343 2019-08-19 14:11:04Z vboxsync $ */
+/* $Id: UIInformationConfiguration.h 80345 2019-08-19 14:33:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class declaration.
  */
@@ -86,15 +86,9 @@ private:
     QList<QTableWidgetItem*> m_tableItems;
    /** @name Cached translated string.
       * @{ */
-        QString m_strError;
-
-        /** General section. */
         QString m_strGeneralTitle;
-        QString m_strGeneralName;
-        QString m_strGeneralOSType;
-        /** System section. */
         QString m_strSystemTitle;
-
+        QString m_strDisplayTitle;
     /** @} */
 
 };
