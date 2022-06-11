@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79833 2019-07-17 11:37:19Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79834 2019-07-17 11:46:25Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -178,7 +178,7 @@
 #define HMVMX_LOG_EXIT(a_pVCpu, a_uExitReason) \
     do { \
         Log4(("VM-exit: vcpu[%RU32] %85s -v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-\n", (a_pVCpu)->idCpu, \
-             HMGetVmxExitName((a_uExitReason))); \
+             HMGetVmxExitName(a_uExitReason))); \
     } while (0) \
 
 
