@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 78512 2019-05-14 15:26:58Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -1109,6 +1109,12 @@ RTEXITCODE handleStorageController(HandlerArg *a)
                                                           StorageBus_PCIe,
                                                           ctl.asOutParam()));
             }
+            else if (!RTStrICmp(pszBusType, "virtio-scsi") || !RTStrICmp(pszBusType, "virtio"))
+            {
+                CHECK_ERROR(machine, AddStorageController(Bstr(pszCtl).raw(),
+                                                          StorageBus_VirtioSCSI,
+                                                          ctl.asOutParam()));
+            }
             else
             {
                 errorArgument("Invalid --add argument '%s'", pszBusType);
@@ -1165,6 +1171,10 @@ RTEXITCODE handleStorageController(HandlerArg *a)
                 else if (!RTStrICmp(pszCtlType, "nvme"))
                 {
                     CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_NVMe));
+                }
+                else if (!RTStrICmp(pszCtlType, "virtio-scsi") || !RTStrICmp(pszCtlType, "virtio"))
+                {
+                    CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_VirtioSCSI));
                 }
                 else
                 {
