@@ -1,4 +1,4 @@
-$Id: readme.txt 82803 2020-01-20 18:07:44Z vboxsync $
+$Id: readme.txt 82811 2020-01-21 11:07:55Z vboxsync $
 
 Directory descriptions:
     ./                  The Test Manager.
@@ -22,6 +22,11 @@ I.  Running a Test Manager instance with Docker:
   - Type "kmk" to get the containers built, "kmk start|stop" to start/stop them
     respectively. To start over, use "kmk clean". For having a peek into the container
     logs, use "kmk logs".
+
+    To administrate / develop the database, an Adminer instance is running at
+    http://localhost:8080
+
+    To access the actual Test Manager instance, go to http://localhost:8080/testmanager/
 
   - There are two ways of doing development with this setup:
 
