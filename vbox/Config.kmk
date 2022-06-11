@@ -1,4 +1,4 @@
-# $Id: Config.kmk 82927 2020-01-30 13:39:58Z vboxsync $
+# $Id: Config.kmk 82950 2020-02-01 10:20:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3756,17 +3756,18 @@ ifdef VBOX_SIGNING_MODE
 	--verbose=9 \
 	--force \
 	$(if-expr $(KBUILD_HOST_VERSION_MAJOR) <= 14,--digest-algorithm sha256,) \
-	--file-list - \
+	--file-list=- \
 	$(if-expr defined(VBOX_TSA_URL),--timestamp="$(VBOX_TSA_URL)") \
+	$(if $(2),--identifier "$(2)",) \
 	$(VBOX_CERTIFICATE_SUBJECT_NAME_ARGS) \
-	$(1) \
-	$(if $(2),--identifier "$(2)",)
+	$(1)
   endif
 
   ## Sign a DMG image.
   # @param 1  The file to sign.
   # @param 2  Identifier, optional.
-  VBOX_SIGN_DMG_FN = $(VBOX_SIGN_FILE_FN)
+  # @note Will segfault if --file-list is used on 10.15.2 (kSecCodeInfoChangedFiles -> NULL, outputter doesn't check for NULL).
+  VBOX_SIGN_DMG_FN = $(filter-out --file-list=-,$(VBOX_SIGN_FILE_FN))
 
   ## Sign a PKG file. Used with corp code signing only.
   # @param 1  The file to sign.
@@ -7737,7 +7738,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 82927 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 82950 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
