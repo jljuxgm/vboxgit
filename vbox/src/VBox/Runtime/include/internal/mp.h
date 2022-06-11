@@ -1,10 +1,10 @@
-/* $Id: mp.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: mp.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Internal RTMp header
  */
 
 /*
- * Copyright (C) 2016-2019 Oracle Corporation
+ * Copyright (C) 2016-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

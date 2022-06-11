@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 82685 2020-01-09 10:05:26Z vboxsync $ */
+/* $Id: DevE1000.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -14,7 +14,7 @@
  */
 
 /*
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

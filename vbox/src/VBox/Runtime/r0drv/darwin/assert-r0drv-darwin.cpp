@@ -1,10 +1,10 @@
-/* $Id: assert-r0drv-darwin.cpp 82856 2020-01-25 13:16:15Z vboxsync $ */
+/* $Id: assert-r0drv-darwin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT -  Assertion Workers, Ring-0 Drivers, Darwin.
  */
 
 /*
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DragAndDropSvc.h 80453 2019-08-27 19:16:03Z vboxsync $ */
+/* $Id: DragAndDropSvc.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * Drag and Drop service - Common header for host service and guest clients.
  */
 
 /*
- * Copyright (C) 2011-2019 Oracle Corporation
+ * Copyright (C) 2011-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

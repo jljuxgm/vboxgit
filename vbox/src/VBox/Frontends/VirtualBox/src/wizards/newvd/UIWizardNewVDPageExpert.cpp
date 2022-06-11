@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 82621 2019-12-18 17:36:55Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

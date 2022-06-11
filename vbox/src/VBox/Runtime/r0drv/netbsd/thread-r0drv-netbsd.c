@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-netbsd.c 77120 2019-02-01 15:08:46Z vboxsync $ */
+/* $Id: thread-r0drv-netbsd.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 1), Ring-0 Driver, NetBSD.
  */
@@ -6,7 +6,7 @@
 /*
  * Contributed by knut st. osmundsen.
  *
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -24,7 +24,6 @@
  *
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
- *
  * --------------------------------------------------------------------
  *
  * Copyright (C) 2007-2019 Oracle Corporation

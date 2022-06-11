@@ -1,11 +1,11 @@
-/* $Id: vboximgCrypto.h 76585 2019-01-01 06:31:29Z vboxsync $ $Revision: 76585 $ $Date: 2019-01-01 14:31:29 +0800 (Tue, 01 Jan 2019) $ $Author: vboxsync $ */
+/* $Id: vboximgCrypto.h 82968 2020-02-04 10:35:17Z vboxsync $ $Revision: 82968 $ $Date: 2020-02-04 18:35:17 +0800 (Tue, 04 Feb 2020) $ $Author: vboxsync $ */
 
 /** @file
  * vboximgCrypto.h
  */
 
 /*
- * Copyright (C) 2008-2019 Oracle Corporation
+ * Copyright (C) 2008-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

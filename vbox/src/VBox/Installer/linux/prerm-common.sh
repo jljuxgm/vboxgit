@@ -1,12 +1,12 @@
 #!/bin/sh
-# $Id: prerm-common.sh 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: prerm-common.sh 82968 2020-02-04 10:35:17Z vboxsync $
 ## @file
 # Oracle VM VirtualBox
 # VirtualBox Linux pre-uninstaller common portions
 #
 
 #
-# Copyright (C) 2015-2019 Oracle Corporation
+# Copyright (C) 2015-2020 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

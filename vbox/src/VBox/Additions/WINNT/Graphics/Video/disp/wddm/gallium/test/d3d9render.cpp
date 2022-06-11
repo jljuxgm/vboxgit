@@ -1,10 +1,10 @@
-/* $Id: d3d9render.cpp 81977 2019-11-19 07:39:54Z vboxsync $ */
+/* $Id: d3d9render.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * Gallium D3D testcase. Simple D3D9 tests.
  */
 
 /*
- * Copyright (C) 2017-2019 Oracle Corporation
+ * Copyright (C) 2017-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

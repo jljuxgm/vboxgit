@@ -1,11 +1,11 @@
 #!/bin/ksh93
-# $Id: vbox_vendor_select 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: vbox_vendor_select 82968 2020-02-04 10:35:17Z vboxsync $
 ## @file
 # ???
 #
 
 #
-# Copyright (C) 2013-2019 Oracle Corporation
+# Copyright (C) 2013-2020 Oracle Corporation
 # This file is based on mesa_vendor_select from Solaris 11.3 with the following copyright:
 #
 # Copyright (c) 2006, 2011, Oracle and/or its affiliates. All rights reserved.

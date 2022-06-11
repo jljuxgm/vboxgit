@@ -1,10 +1,10 @@
-/* $Id: QIWithRestorableGeometry.h 81272 2019-10-14 19:04:06Z vboxsync $ */
+/* $Id: QIWithRestorableGeometry.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIWithRestorableGeometry class declaration.
  */
 
 /*
- * Copyright (C) 2016-2019 Oracle Corporation
+ * Copyright (C) 2016-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

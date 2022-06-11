@@ -1,10 +1,10 @@
-/* $Id: vbox_mode.c 80712 2019-09-10 19:25:36Z vboxsync $ */
+/* $Id: vbox_mode.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
 
 /*
- * Copyright (C) 2013-2019 Oracle Corporation
+ * Copyright (C) 2013-2020 Oracle Corporation
  * This file is based on ast_mode.c
  * Copyright 2012 Red Hat Inc.
  * Parts based on xf86-video-ast

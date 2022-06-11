@@ -1,10 +1,10 @@
-/* $Id: UIWelcomePane.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWelcomePane.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWelcomePane class declaration.
  */
 
 /*
- * Copyright (C) 2010-2019 Oracle Corporation
+ * Copyright (C) 2010-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

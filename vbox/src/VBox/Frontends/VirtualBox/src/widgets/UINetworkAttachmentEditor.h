@@ -1,10 +1,10 @@
-/* $Id: UINetworkAttachmentEditor.h 82563 2019-12-12 08:36:15Z vboxsync $ */
+/* $Id: UINetworkAttachmentEditor.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class declaration.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

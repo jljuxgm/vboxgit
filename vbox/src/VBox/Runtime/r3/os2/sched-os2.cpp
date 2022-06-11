@@ -1,10 +1,10 @@
-/* $Id: sched-os2.cpp 76634 2019-01-04 13:55:24Z vboxsync $ */
+/* $Id: sched-os2.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, OS/2
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

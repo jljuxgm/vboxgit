@@ -1,10 +1,10 @@
-/* $Id: UIVisoContentBrowser.cpp 77868 2019-03-25 09:27:48Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

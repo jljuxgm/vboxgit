@@ -1,10 +1,10 @@
-/* $Id: UIBootOrderEditor.cpp 79999 2019-07-26 11:28:40Z vboxsync $ */
+/* $Id: UIBootOrderEditor.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
 
 /*
- * Copyright (C) 2009-2019 Oracle Corporation
+ * Copyright (C) 2009-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

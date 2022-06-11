@@ -1,10 +1,10 @@
-/* $Id: VDInternal.h 76578 2019-01-01 06:11:47Z vboxsync $ */
+/* $Id: VDInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VD - Virtual Disk container implementation, internal header file.
  */
 
 /*
- * Copyright (C) 2017-2019 Oracle Corporation
+ * Copyright (C) 2017-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

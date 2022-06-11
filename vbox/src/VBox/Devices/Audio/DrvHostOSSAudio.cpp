@@ -1,10 +1,10 @@
-/* $Id: DrvHostOSSAudio.cpp 82580 2019-12-13 14:00:40Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
 
 /*
- * Copyright (C) 2014-2019 Oracle Corporation
+ * Copyright (C) 2014-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: STAMInternal.h 80651 2019-09-08 14:36:45Z vboxsync $ */
+/* $Id: STAMInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * STAM Internal Header.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

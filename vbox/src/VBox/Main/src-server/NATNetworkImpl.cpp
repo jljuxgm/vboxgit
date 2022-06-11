@@ -1,10 +1,10 @@
-/* $Id: NATNetworkImpl.cpp 81883 2019-11-15 16:31:00Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
 
 /*
- * Copyright (C) 2013-2019 Oracle Corporation
+ * Copyright (C) 2013-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

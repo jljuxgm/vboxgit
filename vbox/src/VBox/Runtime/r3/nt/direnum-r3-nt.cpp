@@ -1,10 +1,10 @@
-/* $Id: direnum-r3-nt.cpp 79370 2019-06-27 02:43:23Z vboxsync $ */
+/* $Id: direnum-r3-nt.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Directory Enumeration, Native NT.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

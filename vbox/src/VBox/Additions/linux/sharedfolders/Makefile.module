@@ -1,4 +1,4 @@
-# $Id: Makefile.module 78135 2019-04-16 01:18:25Z vboxsync $
+# $Id: Makefile.module 82968 2020-02-04 10:35:17Z vboxsync $
 ## @file
 # VBox Linux Shared Folders VFS Module Makefile.
 #
@@ -6,7 +6,7 @@
 #
 
 #
-# Copyright (C) 2006-2019 Oracle Corporation
+# Copyright (C) 2006-2020 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

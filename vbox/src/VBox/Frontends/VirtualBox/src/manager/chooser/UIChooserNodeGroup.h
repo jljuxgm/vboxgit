@@ -1,10 +1,10 @@
-/* $Id: UIChooserNodeGroup.h 77847 2019-03-22 13:22:06Z vboxsync $ */
+/* $Id: UIChooserNodeGroup.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeGroup class declaration.
  */
 
 /*
- * Copyright (C) 2012-2019 Oracle Corporation
+ * Copyright (C) 2012-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

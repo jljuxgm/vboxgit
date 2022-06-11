@@ -1,10 +1,10 @@
-/* $Id: UIDetailsGenerator.cpp 81964 2019-11-18 20:42:02Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
 
 /*
- * Copyright (C) 2012-2019 Oracle Corporation
+ * Copyright (C) 2012-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

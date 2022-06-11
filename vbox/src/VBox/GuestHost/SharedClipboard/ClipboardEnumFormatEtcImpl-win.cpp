@@ -1,10 +1,10 @@
-/* $Id: ClipboardEnumFormatEtcImpl-win.cpp 81269 2019-10-14 18:28:34Z vboxsync $ */
+/* $Id: ClipboardEnumFormatEtcImpl-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * ClipboardEnumFormatEtcImpl-win.cpp - Shared Clipboard IEnumFORMATETC ("Format et cetera") implementation.
  */
 
 /*
- * Copyright (C) 2013-2019 Oracle Corporation
+ * Copyright (C) 2013-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

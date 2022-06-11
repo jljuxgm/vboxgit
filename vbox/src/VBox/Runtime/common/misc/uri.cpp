@@ -1,10 +1,10 @@
-/* $Id: uri.cpp 78053 2019-04-09 10:16:54Z vboxsync $ */
+/* $Id: uri.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Uniform Resource Identifier handling.
  */
 
 /*
- * Copyright (C) 2011-2019 Oracle Corporation
+ * Copyright (C) 2011-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

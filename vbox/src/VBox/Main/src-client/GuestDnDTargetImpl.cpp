@@ -1,10 +1,10 @@
-/* $Id: GuestDnDTargetImpl.cpp 78745 2019-05-25 14:22:39Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
 
 /*
- * Copyright (C) 2014-2019 Oracle Corporation
+ * Copyright (C) 2014-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

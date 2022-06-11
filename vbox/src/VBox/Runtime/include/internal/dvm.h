@@ -1,10 +1,10 @@
-/* $Id: dvm.h 77970 2019-04-01 01:35:07Z vboxsync $ */
+/* $Id: dvm.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Disk Volume Management Internals.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

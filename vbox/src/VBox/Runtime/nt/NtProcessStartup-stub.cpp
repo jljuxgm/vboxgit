@@ -1,10 +1,10 @@
-/* $Id: NtProcessStartup-stub.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: NtProcessStartup-stub.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - NtProcessStartup stub to make the link happy.
  */
 
 /*
- * Copyright (C) 2009-2019 Oracle Corporation
+ * Copyright (C) 2009-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

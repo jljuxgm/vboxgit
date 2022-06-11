@@ -1,10 +1,10 @@
-/* $Id: AdditionsFacilityImpl.h 79054 2019-06-08 23:20:47Z vboxsync $ */
+/* $Id: AdditionsFacilityImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox Main - Additions facility class.
  */
 
 /*
- * Copyright (C) 2014-2019 Oracle Corporation
+ * Copyright (C) 2014-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

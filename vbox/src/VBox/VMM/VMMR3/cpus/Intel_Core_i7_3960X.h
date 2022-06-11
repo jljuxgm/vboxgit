@@ -1,11 +1,11 @@
-/* $Id: Intel_Core_i7_3960X.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: Intel_Core_i7_3960X.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-3960X".
  * Generated at 2013-12-12T15:29:11Z by VBoxCpuReport v4.3.53r91237 on win.amd64.
  */
 
 /*
- * Copyright (C) 2013-2019 Oracle Corporation
+ * Copyright (C) 2013-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
 @echo off
-rem $Id: gen-slickedit-workspace.cmd 76553 2019-01-01 01:45:53Z vboxsync $
+rem $Id: gen-slickedit-workspace.cmd 82968 2020-02-04 10:35:17Z vboxsync $
 rem rem @file
 rem Windows NT batch script for launching gen-slickedit-workspace.sh
 rem
 
 rem
-rem Copyright (C) 2009-2019 Oracle Corporation
+rem Copyright (C) 2009-2020 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

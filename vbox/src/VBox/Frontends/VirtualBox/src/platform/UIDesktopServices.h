@@ -1,10 +1,10 @@
-/* $Id: UIDesktopServices.h 76818 2019-01-14 16:17:07Z vboxsync $ */
+/* $Id: UIDesktopServices.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Desktop Services..
  */
 
 /*
- * Copyright (C) 2010-2019 Oracle Corporation
+ * Copyright (C) 2010-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

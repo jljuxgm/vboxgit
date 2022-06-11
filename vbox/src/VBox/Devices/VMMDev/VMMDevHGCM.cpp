@@ -1,10 +1,10 @@
-/* $Id: VMMDevHGCM.cpp 81707 2019-11-06 12:09:12Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

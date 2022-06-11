@@ -1,10 +1,10 @@
-/* $Id: UIFormEditorWidget.cpp 82471 2019-12-06 18:34:00Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: PDMCritSect.cpp 80673 2019-09-09 14:02:22Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

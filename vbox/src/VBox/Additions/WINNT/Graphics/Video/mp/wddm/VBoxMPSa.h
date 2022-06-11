@@ -1,11 +1,11 @@
-/* $Id: VBoxMPSa.h 78195 2019-04-18 00:38:02Z vboxsync $ */
+/* $Id: VBoxMPSa.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 
 /** @file
  * Sorted array API
  */
 
 /*
- * Copyright (C) 2014-2019 Oracle Corporation
+ * Copyright (C) 2014-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VirtualBoxImpl.cpp 81883 2019-11-15 16:31:00Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

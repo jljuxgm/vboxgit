@@ -1,10 +1,10 @@
-/* $Id: UsbMsd.cpp 81765 2019-11-11 16:00:31Z vboxsync $ */
+/* $Id: UsbMsd.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
 
 /*
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstAPI.cpp 80824 2019-09-16 13:18:44Z vboxsync $ */
+/* $Id: tstAPI.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * tstAPI - test program for our COM/XPCOM interface
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

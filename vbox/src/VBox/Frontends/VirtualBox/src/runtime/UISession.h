@@ -1,10 +1,10 @@
-/* $Id: UISession.h 82032 2019-11-20 16:21:59Z vboxsync $ */
+/* $Id: UISession.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
 
 /*
- * Copyright (C) 2010-2019 Oracle Corporation
+ * Copyright (C) 2010-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstWinAdditionsInstallHelper.cpp 82625 2019-12-19 16:15:07Z vboxsync $ */
+/* $Id: tstWinAdditionsInstallHelper.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * tstWinAdditionsInstallHelper - Testcases for the Windows Guest Additions Installer Helper DLL.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: GaDdi.h 77046 2019-01-30 14:31:40Z vboxsync $ */
+/* $Id: GaDdi.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium WDDM user mode driver functions.
  */
 
 /*
- * Copyright (C) 2017-2019 Oracle Corporation
+ * Copyright (C) 2017-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

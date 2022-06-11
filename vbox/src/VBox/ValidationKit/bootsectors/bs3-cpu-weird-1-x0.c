@@ -1,10 +1,10 @@
-/* $Id: bs3-cpu-weird-1-x0.c 81605 2019-10-31 14:29:46Z vboxsync $ */
+/* $Id: bs3-cpu-weird-1-x0.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-weird-2, C test driver code (16-bit).
  */
 
 /*
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: regops.c 80713 2019-09-10 21:29:57Z vboxsync $ */
+/* $Id: regops.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

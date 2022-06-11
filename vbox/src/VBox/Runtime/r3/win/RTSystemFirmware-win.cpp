@@ -1,10 +1,10 @@
-/* $Id: RTSystemFirmware-win.cpp 81500 2019-10-23 21:08:03Z vboxsync $ */
+/* $Id: RTSystemFirmware-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - System firmware information, Win32.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

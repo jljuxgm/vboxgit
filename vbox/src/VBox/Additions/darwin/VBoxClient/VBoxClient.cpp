@@ -1,10 +1,10 @@
-/** $Id: VBoxClient.cpp 80061 2019-07-30 15:37:59Z vboxsync $ */
+/** $Id: VBoxClient.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBoxClient - User specific services, Darwin.
  */
 
 /*
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

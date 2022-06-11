@@ -1,10 +1,10 @@
-/* $Id: RTEfiFatExtract.cpp 81775 2019-11-11 18:14:36Z vboxsync $ */
+/* $Id: RTEfiFatExtract.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Utility for extracting single files from a fat EFI binary.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -218,7 +218,7 @@ int main(int argc, char **argv)
                          , RTPathFilename(argv[0]));
                 return RTEXITCODE_SUCCESS;
             case 'V':
-                RTPrintf("$Revision: 81775 $\n");
+                RTPrintf("$Revision: 82968 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'i':

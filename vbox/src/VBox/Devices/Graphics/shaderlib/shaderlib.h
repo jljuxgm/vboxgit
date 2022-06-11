@@ -1,10 +1,10 @@
-/* $Id: shaderlib.h 82718 2020-01-10 16:25:50Z vboxsync $ */
+/* $Id: shaderlib.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * shaderlib -- interface to WINE's Direct3D shader functions
  */
 
 /*
- * Copyright (C) 2014-2019 Oracle Corporation
+ * Copyright (C) 2014-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

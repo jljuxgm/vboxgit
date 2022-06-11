@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: InstructionTestGen.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: InstructionTestGen.py 82968 2020-02-04 10:35:17Z vboxsync $
 
 """
 Instruction Test Generator.
@@ -10,7 +10,7 @@ from __future__ import print_function;
 
 __copyright__ = \
 """
-Copyright (C) 2012-2019 Oracle Corporation
+Copyright (C) 2012-2020 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -20,7 +20,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 76553 $";
+__version__ = "$Revision: 82968 $";
 
 
 # pylint: disable=C0103,R0913
@@ -1713,7 +1713,7 @@ class InstructionTestGen(object): # pylint: disable=R0902
         Writes the file header.
         Raises exception on trouble.
         """
-        self.write('; $Id: InstructionTestGen.py 76553 2019-01-01 01:45:53Z vboxsync $\n'
+        self.write('; $Id: InstructionTestGen.py 82968 2020-02-04 10:35:17Z vboxsync $\n'
                    ';; @file %s\n'
                    '; Autogenerate by %s %s. DO NOT EDIT\n'
                    ';\n'

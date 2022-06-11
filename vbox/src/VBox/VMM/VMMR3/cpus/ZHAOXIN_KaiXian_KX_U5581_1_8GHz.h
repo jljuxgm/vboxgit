@@ -1,11 +1,11 @@
-/* $Id: ZHAOXIN_KaiXian_KX_U5581_1_8GHz.h 76898 2019-01-19 10:01:34Z vboxsync $ */
+/* $Id: ZHAOXIN_KaiXian_KX_U5581_1_8GHz.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * CPU database entry "ZHAOXIN KaiXian KX-U5581 1.8GHz"
  * Generated at 2019-01-15T08:37:25Z by VBoxCpuReport v5.2.22r126460 on linux.amd64.
  */
 
 /*
- * Copyright (C) 2013-2019 Oracle Corporation
+ * Copyright (C) 2013-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

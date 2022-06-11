@@ -1,10 +1,10 @@
-/* $Id: MediumIOImpl.cpp 80006 2019-07-26 13:54:38Z vboxsync $ */
+/* $Id: MediumIOImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: MediumIO
  */
 
 /*
- * Copyright (C) 2018-2019 Oracle Corporation
+ * Copyright (C) 2018-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

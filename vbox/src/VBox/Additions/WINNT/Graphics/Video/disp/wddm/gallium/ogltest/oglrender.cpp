@@ -1,10 +1,10 @@
-/* $Id: oglrender.cpp 81081 2019-09-30 13:39:49Z vboxsync $ */
+/* $Id: oglrender.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * OpenGL testcase. Simple OpenGL tests.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VDScriptChecker.cpp 77232 2019-02-09 01:55:37Z vboxsync $ */
+/* $Id: VDScriptChecker.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox HDD container test utility - scripting engine, type and context checker.
  */
 
 /*
- * Copyright (C) 2013-2019 Oracle Corporation
+ * Copyright (C) 2013-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

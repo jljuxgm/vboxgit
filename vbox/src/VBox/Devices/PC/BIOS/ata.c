@@ -1,10 +1,10 @@
-/* $Id: ata.c 78729 2019-05-24 13:27:36Z vboxsync $ */
+/* $Id: ata.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * PC BIOS - ATA disk support.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

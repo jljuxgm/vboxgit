@@ -1,10 +1,10 @@
-/* $Id: GetVBoxUserHomeDirectory.cpp 79904 2019-07-19 19:34:57Z vboxsync $ */
+/* $Id: GetVBoxUserHomeDirectory.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - GetVBoxUserHomeDirectory.
  */
 
 /*
- * Copyright (C) 2005-2019 Oracle Corporation
+ * Copyright (C) 2005-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

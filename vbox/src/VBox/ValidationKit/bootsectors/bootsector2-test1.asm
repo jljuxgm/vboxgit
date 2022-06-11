@@ -1,4 +1,4 @@
-; $Id: bootsector2-test1.asm 76553 2019-01-01 01:45:53Z vboxsync $
+; $Id: bootsector2-test1.asm 82968 2020-02-04 10:35:17Z vboxsync $
 ;; @file
 ; Bootsector that benchmarks I/O and MMIO roundtrip time.
 ;   VBoxManage setextradata bs-test1 VBoxInternal/Devices/VMMDev/0/Config/TestingEnabled  1
@@ -6,7 +6,7 @@
 ;
 
 ;
-; Copyright (C) 2007-2019 Oracle Corporation
+; Copyright (C) 2007-2020 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

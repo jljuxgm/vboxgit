@@ -1,10 +1,10 @@
-/* $Id: VBox2DHelpers.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: VBox2DHelpers.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - 2D Video Acceleration helpers implementation.
  */
 
 /*
- * Copyright (C) 2009-2019 Oracle Corporation
+ * Copyright (C) 2009-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

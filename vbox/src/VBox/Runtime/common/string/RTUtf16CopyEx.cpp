@@ -1,10 +1,10 @@
-/* $Id: RTUtf16CopyEx.cpp 78732 2019-05-24 15:28:44Z vboxsync $ */
+/* $Id: RTUtf16CopyEx.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - RTUtf16CopyEx.
  */
 
 /*
- * Copyright (C) 2010-2019 Oracle Corporation
+ * Copyright (C) 2010-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

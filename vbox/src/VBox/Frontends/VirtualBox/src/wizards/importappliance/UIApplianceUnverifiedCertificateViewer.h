@@ -1,10 +1,10 @@
-/* $Id: UIApplianceUnverifiedCertificateViewer.h 78110 2019-04-11 13:32:48Z vboxsync $ */
+/* $Id: UIApplianceUnverifiedCertificateViewer.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceUnverifiedCertificateViewer class declaration.
  */
 
 /*
- * Copyright (C) 2009-2019 Oracle Corporation
+ * Copyright (C) 2009-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

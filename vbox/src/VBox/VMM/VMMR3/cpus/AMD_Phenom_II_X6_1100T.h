@@ -1,11 +1,11 @@
-/* $Id: AMD_Phenom_II_X6_1100T.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: AMD_Phenom_II_X6_1100T.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * CPU database entry "AMD Phenom II X6 1100T".
  * Generated at 2013-12-17T13:39:08Z by VBoxCpuReport v4.3.53r91360 on linux.amd64.
  */
 
 /*
- * Copyright (C) 2013-2019 Oracle Corporation
+ * Copyright (C) 2013-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

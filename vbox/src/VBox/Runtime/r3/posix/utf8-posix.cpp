@@ -1,10 +1,10 @@
-/* $Id: utf8-posix.cpp 82631 2019-12-21 15:27:30Z vboxsync $ */
+/* $Id: utf8-posix.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 helpers, POSIX.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

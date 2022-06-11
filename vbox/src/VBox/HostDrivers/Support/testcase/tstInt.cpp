@@ -1,10 +1,10 @@
-/* $Id: tstInt.cpp 80332 2019-08-16 20:07:11Z vboxsync $ */
+/* $Id: tstInt.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * SUP Testcase - Test the interrupt gate feature of the support library.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

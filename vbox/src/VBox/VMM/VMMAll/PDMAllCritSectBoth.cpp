@@ -1,10 +1,10 @@
-/* $Id: PDMAllCritSectBoth.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: PDMAllCritSectBoth.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * PDM - Code Common to Both Critical Section Types, All Contexts.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

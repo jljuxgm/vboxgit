@@ -1,10 +1,10 @@
-/* $Id: RTPathAbsExDup.cpp 78153 2019-04-17 12:30:08Z vboxsync $ */
+/* $Id: RTPathAbsExDup.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - RTPathAbsExDup
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

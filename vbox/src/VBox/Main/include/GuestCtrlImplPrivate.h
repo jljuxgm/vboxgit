@@ -1,10 +1,10 @@
-/* $Id: GuestCtrlImplPrivate.h 81674 2019-11-05 14:44:22Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
 
 /*
- * Copyright (C) 2011-2019 Oracle Corporation
+ * Copyright (C) 2011-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxCAPI.cpp 78088 2019-04-10 13:36:19Z vboxsync $ */
+/* $Id: VBoxCAPI.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file VBoxCAPI.cpp
  * Utility functions to use with the C API binding.
  */
 
 /*
- * Copyright (C) 2009-2019 Oracle Corporation
+ * Copyright (C) 2009-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

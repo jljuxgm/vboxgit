@@ -1,10 +1,10 @@
-/* $Id: GuestProcessImpl.cpp 81553 2019-10-25 16:30:51Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
 
 /*
- * Copyright (C) 2012-2019 Oracle Corporation
+ * Copyright (C) 2012-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: bs3kit.h 81605 2019-10-31 14:29:46Z vboxsync $ */
+/* $Id: bs3kit.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
 
 /*
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

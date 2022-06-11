@@ -1,10 +1,10 @@
-/* $Id: disk.c 82163 2019-11-25 10:31:53Z vboxsync $ */
+/* $Id: disk.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * PC BIOS - ???
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

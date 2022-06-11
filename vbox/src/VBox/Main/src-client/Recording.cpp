@@ -1,4 +1,4 @@
-/* $Id: Recording.cpp 82423 2019-12-05 16:09:59Z vboxsync $ */
+/* $Id: Recording.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * Recording context code.
  *
@@ -11,7 +11,7 @@
  */
 
 /*
- * Copyright (C) 2012-2019 Oracle Corporation
+ * Copyright (C) 2012-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

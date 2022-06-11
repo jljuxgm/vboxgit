@@ -1,10 +1,10 @@
-/* $Id: VBoxMPCommon.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxMPCommon.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Miniport common functions used by XPDM/WDDM drivers
  */
 
 /*
- * Copyright (C) 2011-2019 Oracle Corporation
+ * Copyright (C) 2011-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

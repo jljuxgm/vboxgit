@@ -1,10 +1,10 @@
-/* $Id: VBoxVga.c 76901 2019-01-19 12:49:02Z vboxsync $ */
+/* $Id: VBoxVga.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBoxVga.c
  */
 
 /*
- * Copyright (C) 2009-2019 Oracle Corporation
+ * Copyright (C) 2009-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

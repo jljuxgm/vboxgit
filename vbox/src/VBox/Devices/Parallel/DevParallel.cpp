@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 82126 2019-11-23 08:23:46Z vboxsync $ */
+/* $Id: DevParallel.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIVideoMemoryEditor.cpp 80394 2019-08-23 13:02:30Z vboxsync $ */
+/* $Id: UIVideoMemoryEditor.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVideoMemoryEditor class implementation.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

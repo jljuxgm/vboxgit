@@ -1,10 +1,10 @@
-/* $Id: client.cpp 78235 2019-04-20 23:49:50Z vboxsync $ */
+/* $Id: client.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * Base class for a host-guest service.
  */
 
 /*
- * Copyright (C) 2011-2019 Oracle Corporation
+ * Copyright (C) 2011-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

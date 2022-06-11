@@ -1,10 +1,10 @@
-/* $Id: shmem-win.cpp 78561 2019-05-17 11:15:02Z vboxsync $ */
+/* $Id: shmem-win.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Named shared memory object, Windows Implementation.
  */
 
 /*
- * Copyright (C) 2018-2019 Oracle Corporation
+ * Copyright (C) 2018-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 82880 2020-01-27 17:52:41Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 82968 2020-02-04 10:35:17Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DnDURIObject.cpp 78083 2019-04-10 11:59:32Z vboxsync $ */
+/* $Id: DnDURIObject.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * DnD - URI object class. For handling creation/reading/writing to files and directories on host or guest side.
  */
 
 /*
- * Copyright (C) 2014-2019 Oracle Corporation
+ * Copyright (C) 2014-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

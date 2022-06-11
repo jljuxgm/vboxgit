@@ -1,10 +1,10 @@
-/* $Id: darwin-pasteboard.h 76570 2019-01-01 04:36:36Z vboxsync $ */
+/* $Id: darwin-pasteboard.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host implementation.
  */
 
 /*
- * Copyright (C) 2008-2019 Oracle Corporation
+ * Copyright (C) 2008-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

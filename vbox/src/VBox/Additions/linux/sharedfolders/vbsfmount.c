@@ -1,11 +1,11 @@
-/* $Id: vbsfmount.c 77953 2019-03-29 17:07:16Z vboxsync $ */
+/* $Id: vbsfmount.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * vbsfmount - Commonly used code to mount shared folders on Linux-based
  *             systems.  Currently used by mount.vboxsf and VBoxService.
  */
 
 /*
- * Copyright (C) 2010-2019 Oracle Corporation
+ * Copyright (C) 2010-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

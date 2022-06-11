@@ -1,10 +1,10 @@
-/* $Id: vboximgMedia.cpp 81749 2019-11-08 10:10:23Z vboxsync $ $Revision: 81749 $ */
+/* $Id: vboximgMedia.cpp 82968 2020-02-04 10:35:17Z vboxsync $ $Revision: 82968 $ */
 /** @file
  * vboximgMedia.cpp - Disk Image Flattening FUSE Program.
  */
 
 /*
- * Copyright (C) 2009-2019 Oracle Corporation
+ * Copyright (C) 2009-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

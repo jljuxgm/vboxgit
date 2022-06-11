@@ -1,10 +1,10 @@
-/* $Id: VUSBSniffer.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: VUSBSniffer.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * Virtual USB - Sniffer facility.
  */
 
 /*
- * Copyright (C) 2014-2019 Oracle Corporation
+ * Copyright (C) 2014-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

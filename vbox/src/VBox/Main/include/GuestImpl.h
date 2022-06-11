@@ -1,10 +1,10 @@
-/* $Id: GuestImpl.h 80828 2019-09-16 14:05:09Z vboxsync $ */
+/* $Id: GuestImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

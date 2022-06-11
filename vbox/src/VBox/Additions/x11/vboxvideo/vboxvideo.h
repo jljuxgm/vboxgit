@@ -1,10 +1,10 @@
-/* $Id: vboxvideo.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: vboxvideo.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  * This file is based on the X11 VESA driver:
  *
  * Copyright (c) 2000 by Conectiva S.A. (http://www.conectiva.com)

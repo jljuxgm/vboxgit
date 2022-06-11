@@ -1,10 +1,10 @@
-/* $Id: info.cpp 78585 2019-05-19 00:35:21Z vboxsync $ */
+/* $Id: info.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders FSD - Information Querying & Setting Routines.
  */
 
 /*
- * Copyright (C) 2012-2019 Oracle Corporation
+ * Copyright (C) 2012-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

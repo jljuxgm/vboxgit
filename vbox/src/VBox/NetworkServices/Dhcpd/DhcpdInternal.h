@@ -1,10 +1,10 @@
-/* $Id: DhcpdInternal.h 79772 2019-07-14 21:11:30Z vboxsync $ */
+/* $Id: DhcpdInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * DHCP server - Internal header.
  */
 
 /*
- * Copyright (C) 2017-2019 Oracle Corporation
+ * Copyright (C) 2017-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

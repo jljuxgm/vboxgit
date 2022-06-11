@@ -1,10 +1,10 @@
-/* $Id: fuzz.cpp 82768 2020-01-15 09:58:56Z vboxsync $ */
+/* $Id: fuzz.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Fuzzing framework API, core.
  */
 
 /*
- * Copyright (C) 2018-2019 Oracle Corporation
+ * Copyright (C) 2018-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

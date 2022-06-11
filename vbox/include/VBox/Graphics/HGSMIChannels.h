@@ -1,4 +1,4 @@
-/* $Id: HGSMIChannels.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: HGSMIChannels.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  *
  * VBox Host Guest Shared Memory Interface (HGSMI).
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

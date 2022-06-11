@@ -1,10 +1,10 @@
-/* $Id: LoggingNew.h 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: LoggingNew.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox COM - logging macros and function definitions, for new code.
  */
 
 /*
- * Copyright (C) 2017-2019 Oracle Corporation
+ * Copyright (C) 2017-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

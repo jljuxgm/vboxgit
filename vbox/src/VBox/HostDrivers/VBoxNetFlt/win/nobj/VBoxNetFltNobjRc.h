@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFltNobjRc.h 76568 2019-01-01 04:34:11Z vboxsync $ */
+/* $Id: VBoxNetFltNobjRc.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBoxNetFltNobjRc.h - Notify Object for Bridged Networking Driver.
  * Resource definitions
  */
 /*
- * Copyright (C) 2011-2019 Oracle Corporation
+ * Copyright (C) 2011-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

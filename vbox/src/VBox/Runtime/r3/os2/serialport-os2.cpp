@@ -1,10 +1,10 @@
-/* $Id: serialport-os2.cpp 78607 2019-05-20 20:59:49Z vboxsync $ */
+/* $Id: serialport-os2.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Serial Port API, OS/2 Implementation.
  */
 
 /*
- * Copyright (C) 2017-2019 Oracle Corporation
+ * Copyright (C) 2017-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

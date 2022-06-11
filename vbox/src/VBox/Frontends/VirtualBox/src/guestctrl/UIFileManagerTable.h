@@ -1,10 +1,10 @@
-/* $Id: UIFileManagerTable.h 78146 2019-04-16 15:52:58Z vboxsync $ */
+/* $Id: UIFileManagerTable.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class declaration.
  */
 
 /*
- * Copyright (C) 2016-2019 Oracle Corporation
+ * Copyright (C) 2016-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

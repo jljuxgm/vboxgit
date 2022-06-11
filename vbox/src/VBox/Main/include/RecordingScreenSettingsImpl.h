@@ -1,4 +1,4 @@
-/* $Id: RecordingScreenSettingsImpl.h 78068 2019-04-10 09:38:27Z vboxsync $ */
+/* $Id: RecordingScreenSettingsImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2018-2019 Oracle Corporation
+ * Copyright (C) 2018-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

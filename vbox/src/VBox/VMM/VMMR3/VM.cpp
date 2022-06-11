@@ -1,10 +1,10 @@
-/* $Id: VM.cpp 81983 2019-11-19 10:35:26Z vboxsync $ */
+/* $Id: VM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DevEEPROM.h 81465 2019-10-23 01:10:43Z vboxsync $ */
+/* $Id: DevEEPROM.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * DevEEPROM - Microwire-compatible 64x16-bit 93C46 EEPROM Emulation, Header.
  */
 
 /*
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

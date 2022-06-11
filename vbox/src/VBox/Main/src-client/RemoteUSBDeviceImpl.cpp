@@ -1,10 +1,10 @@
-/* $Id: RemoteUSBDeviceImpl.cpp 81667 2019-11-05 11:08:21Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation for remote (VRDP) USB devices.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

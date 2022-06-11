@@ -1,10 +1,10 @@
-/* $Id: UIPopupStack.cpp 80914 2019-09-20 06:16:55Z vboxsync $ */
+/* $Id: UIPopupStack.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class implementation.
  */
 
 /*
- * Copyright (C) 2013-2019 Oracle Corporation
+ * Copyright (C) 2013-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

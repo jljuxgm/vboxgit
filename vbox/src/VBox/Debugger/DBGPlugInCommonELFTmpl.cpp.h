@@ -1,10 +1,10 @@
-/* $Id: DBGPlugInCommonELFTmpl.cpp.h 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DBGPlugInCommonELFTmpl.cpp.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Code Template for dealing with one kind of ELF.
  */
 
 /*
- * Copyright (C) 2008-2019 Oracle Corporation
+ * Copyright (C) 2008-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

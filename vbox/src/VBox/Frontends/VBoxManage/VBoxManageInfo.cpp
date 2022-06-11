@@ -1,10 +1,10 @@
-/* $Id: VBoxManageInfo.cpp 82681 2020-01-09 04:31:04Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

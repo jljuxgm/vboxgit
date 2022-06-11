@@ -1,10 +1,10 @@
-; $Id: vcc100-shell32-fakesA.asm 76553 2019-01-01 01:45:53Z vboxsync $
+; $Id: vcc100-shell32-fakesA.asm 82968 2020-02-04 10:35:17Z vboxsync $
 ;; @file
 ; IPRT - Wrappers for shell32 APIs missing in NT 4 and earlier.
 ;
 
 ;
-; Copyright (C) 2006-2019 Oracle Corporation
+; Copyright (C) 2006-2020 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

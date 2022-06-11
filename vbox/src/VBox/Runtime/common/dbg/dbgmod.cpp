@@ -1,10 +1,10 @@
-/* $Id: dbgmod.cpp 77981 2019-04-01 18:49:03Z vboxsync $ */
+/* $Id: dbgmod.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
 
 /*
- * Copyright (C) 2009-2019 Oracle Corporation
+ * Copyright (C) 2009-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: ApplianceImplExport.cpp 81682 2019-11-05 19:08:21Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
 
 /*
- * Copyright (C) 2008-2019 Oracle Corporation
+ * Copyright (C) 2008-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

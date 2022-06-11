@@ -1,10 +1,10 @@
-/* $Id: VBoxApfsJmpStartDxe.c 81647 2019-11-04 11:38:14Z vboxsync $ */
+/* $Id: VBoxApfsJmpStartDxe.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBoxApfsJmpStartDxe.c - VirtualBox APFS jumpstart driver.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

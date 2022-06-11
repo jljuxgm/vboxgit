@@ -1,10 +1,10 @@
-/* $Id: AudioAdapterImpl.cpp 81956 2019-11-18 18:04:18Z vboxsync $ */
+/* $Id: AudioAdapterImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

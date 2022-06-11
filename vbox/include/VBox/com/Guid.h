@@ -1,10 +1,10 @@
-/* $Id: Guid.h 79731 2019-07-12 12:37:06Z vboxsync $ */
+/* $Id: Guid.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Guid class declaration.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

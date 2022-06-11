@@ -1,10 +1,10 @@
-/* $Id: DrvChar.cpp 82869 2020-01-27 10:27:21Z vboxsync $ */
+/* $Id: DrvChar.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMISERIALCONNECTOR / PDMISERIALPORT.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

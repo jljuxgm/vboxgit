@@ -1,10 +1,10 @@
-/* $Id: UIVMLogViewerWidget.h 77078 2019-01-31 15:34:30Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class declaration.
  */
 
 /*
- * Copyright (C) 2010-2019 Oracle Corporation
+ * Copyright (C) 2010-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

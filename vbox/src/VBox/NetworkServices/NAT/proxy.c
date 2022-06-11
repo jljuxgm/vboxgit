@@ -1,10 +1,10 @@
-/* $Id: proxy.c 81784 2019-11-11 22:23:37Z vboxsync $ */
+/* $Id: proxy.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * NAT Network - proxy setup and utilities.
  */
 
 /*
- * Copyright (C) 2013-2019 Oracle Corporation
+ * Copyright (C) 2013-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCpuPae1.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: tdCpuPae1.py 82968 2020-02-04 10:35:17Z vboxsync $
 
 """
 VirtualBox Validation Kit - Catch PAE not enabled.
@@ -11,7 +11,7 @@ the right runtime error.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2019 Oracle Corporation
+Copyright (C) 2010-2020 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 82968 $"
 
 
 # Standard Python imports.

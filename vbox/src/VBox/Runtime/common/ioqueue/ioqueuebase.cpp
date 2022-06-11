@@ -1,10 +1,10 @@
-/* $Id: ioqueuebase.cpp 80035 2019-07-29 07:32:39Z vboxsync $ */
+/* $Id: ioqueuebase.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - I/O queue, Base/Public API.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: Intel_Core_i7_6700K.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: Intel_Core_i7_6700K.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-6700K".
  * Generated at 2015-11-04T14:22:26Z by VBoxCpuReport v5.0.51r103906 on win.amd64.
  */
 
 /*
- * Copyright (C) 2013-2019 Oracle Corporation
+ * Copyright (C) 2013-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

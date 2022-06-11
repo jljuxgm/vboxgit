@@ -1,10 +1,10 @@
-/* $Id: DrvNAT.cpp 81724 2019-11-06 20:59:57Z vboxsync $ */
+/* $Id: DrvNAT.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

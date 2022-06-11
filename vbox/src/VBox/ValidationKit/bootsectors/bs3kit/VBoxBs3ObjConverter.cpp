@@ -1,10 +1,10 @@
-/* $Id: VBoxBs3ObjConverter.cpp 77823 2019-03-21 12:20:13Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -5491,7 +5491,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 77823 $");
+                        printf("%s\n", "$Revision: 82968 $");
                         return 0;
 
                     case '?':

@@ -1,10 +1,10 @@
-/* $Id: SerialTest.cpp 78667 2019-05-22 15:42:14Z vboxsync $ */
+/* $Id: SerialTest.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * SerialTest - Serial port testing utility.
  */
 
 /*
- * Copyright (C) 2017-2019 Oracle Corporation
+ * Copyright (C) 2017-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

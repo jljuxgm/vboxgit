@@ -1,10 +1,10 @@
-/* $Id: apfs.h 81595 2019-10-30 20:25:18Z vboxsync $ */
+/* $Id: apfs.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT, APFS (Apple File System) format.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

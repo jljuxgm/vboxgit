@@ -1,11 +1,11 @@
 @echo off
-rem $Id: Combined-3-RepackAdditions.cmd 82935 2020-01-30 19:16:39Z vboxsync $
+rem $Id: Combined-3-RepackAdditions.cmd 82968 2020-02-04 10:35:17Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 and x86 drivers.
 rem
 
 rem
-rem Copyright (C) 2018-2019 Oracle Corporation
+rem Copyright (C) 2018-2020 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

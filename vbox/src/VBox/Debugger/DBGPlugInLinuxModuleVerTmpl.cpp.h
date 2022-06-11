@@ -1,10 +1,10 @@
-/* $Id: DBGPlugInLinuxModuleVerTmpl.cpp.h 77874 2019-03-26 01:37:19Z vboxsync $ */
+/* $Id: DBGPlugInLinuxModuleVerTmpl.cpp.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * DBGPlugInLinux - Instantiate LNX_TEMPLATE_HEADER for all different struct module versions.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

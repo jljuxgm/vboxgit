@@ -1,10 +1,10 @@
-/* $Id: DBGFInternal.h 80153 2019-08-06 10:47:09Z vboxsync $ */
+/* $Id: DBGFInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

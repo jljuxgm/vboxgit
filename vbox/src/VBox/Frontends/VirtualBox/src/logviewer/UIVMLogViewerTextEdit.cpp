@@ -1,10 +1,10 @@
-/* $Id: UIVMLogViewerTextEdit.cpp 80339 2019-08-18 10:38:58Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
 
 /*
- * Copyright (C) 2010-2019 Oracle Corporation
+ * Copyright (C) 2010-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

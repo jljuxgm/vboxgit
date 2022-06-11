@@ -1,10 +1,10 @@
-/* $Id: HBDMgmt.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: HBDMgmt.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox storage devices: Host block device management API.
  */
 
 /*
- * Copyright (C) 2015-2019 Oracle Corporation
+ * Copyright (C) 2015-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

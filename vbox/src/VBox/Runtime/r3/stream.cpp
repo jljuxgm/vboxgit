@@ -1,10 +1,10 @@
-/* $Id: stream.cpp 81521 2019-10-24 15:44:53Z vboxsync $ */
+/* $Id: stream.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

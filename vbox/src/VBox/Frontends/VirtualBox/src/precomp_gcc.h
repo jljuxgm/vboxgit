@@ -1,10 +1,10 @@
-/* $Id: precomp_gcc.h 81273 2019-10-14 19:33:48Z vboxsync $*/
+/* $Id: precomp_gcc.h 82968 2020-02-04 10:35:17Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Precompiled header for Visual C++.
  */
 
 /*
- * Copyright (C) 2016-2019 Oracle Corporation
+ * Copyright (C) 2016-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

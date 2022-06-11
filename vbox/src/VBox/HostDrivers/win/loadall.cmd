@@ -1,11 +1,11 @@
 @echo off
-rem $Id: loadall.cmd 79410 2019-06-28 11:46:36Z vboxsync $
+rem $Id: loadall.cmd 82968 2020-02-04 10:35:17Z vboxsync $
 rem rem @file
 rem Windows NT batch script for loading the host drivers.
 rem
 
 rem
-rem Copyright (C) 2009-2019 Oracle Corporation
+rem Copyright (C) 2009-2020 Oracle Corporation
 rem
 rem This file is part of VirtualBox Open Source Edition (OSE), as
 rem available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: vboxweb.cpp 76761 2019-01-10 19:49:43Z vboxsync $ */
+/* $Id: vboxweb.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * vboxweb.cpp:
  *      hand-coded parts of the webservice server. This is linked with the
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

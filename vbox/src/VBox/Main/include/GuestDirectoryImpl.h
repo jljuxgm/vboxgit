@@ -1,10 +1,10 @@
-/* $Id: GuestDirectoryImpl.h 77587 2019-03-06 16:40:18Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling implementation.
  */
 
 /*
- * Copyright (C) 2012-2019 Oracle Corporation
+ * Copyright (C) 2012-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

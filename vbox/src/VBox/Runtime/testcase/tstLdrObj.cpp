@@ -1,4 +1,4 @@
-/* $Id: tstLdrObj.cpp 80024 2019-07-28 13:30:53Z vboxsync $ */
+/* $Id: tstLdrObj.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

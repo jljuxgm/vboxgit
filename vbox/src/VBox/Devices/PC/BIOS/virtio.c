@@ -1,10 +1,10 @@
-/* $Id: virtio.c 82182 2019-11-25 15:09:28Z vboxsync $ */
+/* $Id: virtio.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtIO-SCSI host adapter driver to boot from disks.
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

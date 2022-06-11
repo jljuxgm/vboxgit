@@ -1,10 +1,10 @@
-/* $Id: tstStrToNum.cpp 79562 2019-07-05 20:37:19Z vboxsync $ */
+/* $Id: tstStrToNum.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT Testcase - String To Number Conversion.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

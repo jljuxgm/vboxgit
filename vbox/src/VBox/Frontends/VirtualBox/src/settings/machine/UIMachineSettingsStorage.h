@@ -1,10 +1,10 @@
-/* $Id: UIMachineSettingsStorage.h 82248 2019-11-27 16:48:29Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

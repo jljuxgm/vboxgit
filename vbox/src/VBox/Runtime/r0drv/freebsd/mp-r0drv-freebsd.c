@@ -1,10 +1,10 @@
-/* $Id: mp-r0drv-freebsd.c 77128 2019-02-01 16:32:30Z vboxsync $ */
+/* $Id: mp-r0drv-freebsd.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, FreeBSD.
  */
 
 /*
- * Copyright (C) 2008-2019 Oracle Corporation
+ * Copyright (C) 2008-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

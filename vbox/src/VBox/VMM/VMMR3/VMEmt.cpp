@@ -1,10 +1,10 @@
-/* $Id: VMEmt.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
+/* $Id: VMEmt.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

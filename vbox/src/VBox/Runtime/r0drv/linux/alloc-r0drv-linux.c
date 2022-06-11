@@ -1,10 +1,10 @@
-/* $Id: alloc-r0drv-linux.c 81586 2019-10-30 12:50:42Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest-os2.cpp 76732 2019-01-09 11:32:40Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
 
 /*
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

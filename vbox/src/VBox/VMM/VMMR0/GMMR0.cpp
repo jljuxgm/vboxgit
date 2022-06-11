@@ -1,10 +1,10 @@
-/* $Id: GMMR0.cpp 82916 2020-01-29 17:41:12Z vboxsync $ */
+/* $Id: GMMR0.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
 
 /*
- * Copyright (C) 2007-2019 Oracle Corporation
+ * Copyright (C) 2007-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

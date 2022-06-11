@@ -1,10 +1,10 @@
-/* $Id: rest-binary.cpp 78272 2019-04-24 14:10:29Z vboxsync $ */
+/* $Id: rest-binary.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestBinary and Descendants.
  */
 
 /*
- * Copyright (C) 2018-2019 Oracle Corporation
+ * Copyright (C) 2018-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

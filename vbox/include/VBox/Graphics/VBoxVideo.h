@@ -1,10 +1,10 @@
-/* $Id: VBoxVideo.h 80876 2019-09-18 06:09:19Z vboxsync $ */
+/* $Id: VBoxVideo.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VirtualBox Video interface.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

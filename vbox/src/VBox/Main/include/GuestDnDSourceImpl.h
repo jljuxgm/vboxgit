@@ -1,10 +1,10 @@
-/* $Id: GuestDnDSourceImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
 
 /*
- * Copyright (C) 2014-2019 Oracle Corporation
+ * Copyright (C) 2014-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

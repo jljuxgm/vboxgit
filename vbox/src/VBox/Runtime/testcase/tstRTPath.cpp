@@ -1,10 +1,10 @@
-/* $Id: tstRTPath.cpp 81203 2019-10-10 10:23:32Z vboxsync $ */
+/* $Id: tstRTPath.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

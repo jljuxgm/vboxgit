@@ -1,11 +1,11 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 82787 2020-01-19 00:29:05Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 82968 2020-02-04 10:35:17Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
 
 #
-# Copyright (C) 2009-2019 Oracle Corporation
+# Copyright (C) 2009-2020 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: UIWizardImportAppDefs.h 78062 2019-04-09 13:52:22Z vboxsync $ */
+/* $Id: UIWizardImportAppDefs.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppDefs class declaration.
  */
 
 /*
- * Copyright (C) 2009-2019 Oracle Corporation
+ * Copyright (C) 2009-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

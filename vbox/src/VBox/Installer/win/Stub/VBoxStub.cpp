@@ -1,10 +1,10 @@
-/* $Id: VBoxStub.cpp 80231 2019-08-12 18:49:55Z vboxsync $ */
+/* $Id: VBoxStub.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
 
 /*
- * Copyright (C) 2010-2019 Oracle Corporation
+ * Copyright (C) 2010-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 82681 2020-01-09 04:31:04Z vboxsync $
+# $Id: vboxshell.py 82968 2020-02-04 10:35:17Z vboxsync $
 
 """
 VirtualBox Python Shell.
@@ -23,7 +23,7 @@ from __future__ import print_function
 
 __copyright__ = \
 """
-Copyright (C) 2009-2019 Oracle Corporation
+Copyright (C) 2009-2020 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -33,7 +33,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 82681 $"
+__version__ = "$Revision: 82968 $"
 
 
 import gc

@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 82947 2020-01-31 19:10:39Z vboxsync $
+# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
 
 #
-# Copyright (C) 2006-2019 Oracle Corporation
+# Copyright (C) 2006-2020 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

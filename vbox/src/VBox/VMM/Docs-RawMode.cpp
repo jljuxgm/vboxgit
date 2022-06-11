@@ -1,10 +1,10 @@
-/* $Id: Docs-RawMode.cpp 80045 2019-07-29 14:38:19Z vboxsync $ */
+/* $Id: Docs-RawMode.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * This file contains the documentation of the raw-mode execution.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

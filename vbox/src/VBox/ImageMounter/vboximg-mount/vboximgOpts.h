@@ -1,12 +1,12 @@
 
-/* $Id: vboximgOpts.h 80517 2019-08-30 17:04:46Z vboxsync $ $Revision: 80517 $ $Date: 2019-08-31 01:04:46 +0800 (Sat, 31 Aug 2019) $ $Author: vboxsync $ */
+/* $Id: vboximgOpts.h 82968 2020-02-04 10:35:17Z vboxsync $ $Revision: 82968 $ $Date: 2020-02-04 18:35:17 +0800 (Tue, 04 Feb 2020) $ $Author: vboxsync $ */
 
 /** @file
  * vboximgOpts.h
  */
 
 /*
- * Copyright (C) 2008-2019 Oracle Corporation
+ * Copyright (C) 2008-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

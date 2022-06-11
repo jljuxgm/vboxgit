@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 82547 2019-12-11 13:24:35Z vboxsync $ */
+/* $Id: VBoxMPIf.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver.
  *
@@ -11,7 +11,7 @@
  */
 
 /*
- * Copyright (C) 2011-2019 Oracle Corporation
+ * Copyright (C) 2011-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: dirops.c 80408 2019-08-23 21:39:43Z vboxsync $ */
+/* $Id: dirops.c 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
 
 /*
- * Copyright (C) 2006-2019 Oracle Corporation
+ * Copyright (C) 2006-2020 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

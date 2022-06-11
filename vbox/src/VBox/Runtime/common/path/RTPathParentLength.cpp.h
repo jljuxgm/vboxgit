@@ -1,4 +1,4 @@
-/* $Id: RTPathParentLength.cpp.h 78705 2019-05-24 01:42:36Z vboxsync $ */
+/* $Id: RTPathParentLength.cpp.h 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * IPRT - RTPathParentLength - Code Template.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2019 Oracle Corporation
+ * Copyright (C) 2019-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

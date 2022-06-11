@@ -1,10 +1,10 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.cpp 80610 2019-09-05 18:40:55Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class implementation.
  */
 
 /*
- * Copyright (C) 2009-2019 Oracle Corporation
+ * Copyright (C) 2009-2020 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
