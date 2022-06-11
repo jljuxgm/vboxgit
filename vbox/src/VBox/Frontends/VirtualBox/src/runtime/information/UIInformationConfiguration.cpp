@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 80913 2019-09-20 06:03:25Z vboxsync $ */
+/* $Id: UIInformationConfiguration.cpp 80989 2019-09-24 16:28:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -47,6 +47,8 @@ UIInformationConfiguration::UIInformationConfiguration(QWidget *pParent, const C
     prepareObjects();
     retranslateUi();
     connect(gVBoxEvents, &UIVirtualBoxEventHandler::sigMachineDataChange,
+            this, &UIInformationConfiguration::sltMachineDataChanged);
+    connect(&uiCommon(), &UICommon::sigMediumEnumerationFinished,
             this, &UIInformationConfiguration::sltMachineDataChanged);
 }
 
