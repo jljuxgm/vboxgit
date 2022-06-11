@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HMInternal.h 83025 2020-02-07 18:00:45Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1182,6 +1182,8 @@ typedef struct HMCPU
     R0PTRTYPE(PSTAMCOUNTER) paStatExitReasonR0;
     R3PTRTYPE(PSTAMCOUNTER) paStatInjectedIrqs;
     R0PTRTYPE(PSTAMCOUNTER) paStatInjectedIrqsR0;
+    R3PTRTYPE(PSTAMCOUNTER) paStatInjectedXcpts;
+    R0PTRTYPE(PSTAMCOUNTER) paStatInjectedXcptsR0;
     R3PTRTYPE(PSTAMCOUNTER) paStatNestedExitReason;
     R0PTRTYPE(PSTAMCOUNTER) paStatNestedExitReasonR0;
 #endif

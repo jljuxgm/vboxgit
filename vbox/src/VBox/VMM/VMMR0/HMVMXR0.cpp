@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 83025 2020-02-07 18:00:45Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8651,7 +8651,18 @@ static VBOXSTRICTRC hmR0VmxInjectEventVmcs(PVMCPUCC pVCpu, PCVMXTRANSIENT pVmxTr
            || !(*pfIntrState & VMX_VMCS_GUEST_INT_STATE_BLOCK_MOVSS));
 #endif
 
-    STAM_COUNTER_INC(&pVCpu->hm.s.paStatInjectedIrqsR0[uVector & MASK_INJECT_IRQ_STAT]);
+    if (   uIntType == VMX_EXIT_INT_INFO_TYPE_HW_XCPT
+        || uIntType == VMX_EXIT_INT_INFO_TYPE_NMI
+        || uIntType == VMX_EXIT_INT_INFO_TYPE_PRIV_SW_XCPT
+        || uIntType == VMX_EXIT_INT_INFO_TYPE_SW_XCPT)
+    {
+        Assert(uVector <= X86_XCPT_LAST);
+        Assert(uIntType != VMX_EXIT_INT_INFO_TYPE_NMI          || uVector == X86_XCPT_NMI);
+        Assert(uIntType != VMX_EXIT_INT_INFO_TYPE_PRIV_SW_XCPT || uVector == X86_XCPT_DB);
+        STAM_COUNTER_INC(&pVCpu->hm.s.paStatInjectedXcptsR0[uVector]);
+    }
+    else
+        STAM_COUNTER_INC(&pVCpu->hm.s.paStatInjectedIrqsR0[uVector & MASK_INJECT_IRQ_STAT]);
 
     /*
      * Hardware interrupts & exceptions cannot be delivered through the software interrupt
