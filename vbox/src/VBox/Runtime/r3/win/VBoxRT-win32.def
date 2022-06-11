@@ -1,4 +1,4 @@
-; $Id: VBoxRT-win32.def 76553 2019-01-01 01:45:53Z vboxsync $
+; $Id: VBoxRT-win32.def 81927 2019-11-18 00:30:04Z vboxsync $
 ;; @file
 ; IPRT - Win32 ASM exports.
 ;
@@ -41,4 +41,6 @@ EXPORTS
     RTTimeNanoTSLFenceSyncInvarWithDeltaUseApicId
     RTTimeNanoTSLFenceSyncInvarWithDeltaUseRdtscp
     RTTimeNanoTSLFenceSyncInvarWithDeltaUseIdtrLim
+
+    RTStrMemFind32
 
