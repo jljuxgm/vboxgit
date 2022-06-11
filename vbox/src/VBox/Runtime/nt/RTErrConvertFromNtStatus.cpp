@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromNtStatus.cpp 78373 2019-05-03 11:30:04Z vboxsync $ */
+/* $Id: RTErrConvertFromNtStatus.cpp 82554 2019-12-11 21:59:06Z vboxsync $ */
 /** @file
  * IPRT - Convert NT status codes to iprt status codes.
  */
@@ -92,6 +92,7 @@ RTDECL(int)  RTErrConvertFromNtStatus(long lNativeCode)
         case STATUS_UNEXPECTED_NETWORK_ERROR:
                                             return VERR_NET_IO_ERROR;
         case STATUS_INVALID_IMAGE_HASH:     return VERR_LDR_IMAGE_HASH;
+        case STATUS_LOGON_FAILURE:          return VERR_AUTHENTICATION_FAILURE;
 #ifdef VBOX
         case STATUS_TRUST_FAILURE:          return VERR_SUPLIB_NT_PROCESS_UNTRUSTED_5;
 #endif
