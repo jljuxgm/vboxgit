@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83050 2020-02-11 15:41:55Z vboxsync $
+# $Id: Makefile.kmk 83052 2020-02-11 16:31:09Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -614,7 +614,6 @@ VirtualBox_QT_MOCHDRS = \
 	src/globals/UIStarter.h \
 	src/hostnetwork/UIHostNetworkDetailsWidget.h \
 	src/hostnetwork/UIHostNetworkManager.h \
-	src/manager/UICloudMachine.h \
 	src/manager/UIErrorPane.h \
 	src/manager/UIToolPaneGlobal.h \
 	src/manager/UIToolPaneMachine.h \

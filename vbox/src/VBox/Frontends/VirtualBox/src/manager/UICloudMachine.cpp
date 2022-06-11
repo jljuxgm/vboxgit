@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.cpp 83050 2020-02-11 15:41:55Z vboxsync $ */
+/* $Id: UICloudMachine.cpp 83052 2020-02-11 16:31:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class implementation.
  */
@@ -17,13 +17,6 @@
 
 /* GUI includes: */
 #include "UICloudMachine.h"
-#include "UICommon.h"
-#include "UIMessageCenter.h"
-
-/* COM includes: */
-#include "CAppliance.h"
-#include "CVirtualBox.h"
-#include "CVirtualSystemDescription.h"
 
 
 /*********************************************************************************************************************************
