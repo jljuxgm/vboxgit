@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientRequestBase.cpp 79837 2019-07-17 15:12:00Z vboxsync $ */
+/* $Id: RTCRestClientRequestBase.cpp 79888 2019-07-19 13:22:20Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientRequestBase implementation.
  */
@@ -152,7 +152,7 @@ int RTCRestClientRequestBase::doQueryParameters(RTCString *a_pStrQuery, QUERYPAR
                 int rc = a_papQueryParamObjs[i]->toString(&strTmpVal, a_paQueryParams[i].fFlags);
                 AssertRCReturn(rc, rc);
 
-                rc = a_pStrQuery->appendPrintfNoThrow("%c%RMpf=%RMpf", chSep, a_paQueryParams[i].pszName, strTmpVal.c_str());
+                rc = a_pStrQuery->appendPrintfNoThrow("%c%RMpa=%RMpa", chSep, a_paQueryParams[i].pszName, strTmpVal.c_str());
                 AssertRCReturn(rc, rc);
 
                 chSep = '&';
@@ -171,7 +171,7 @@ int RTCRestClientRequestBase::doQueryParameters(RTCString *a_pStrQuery, QUERYPAR
                     int rc = pObj->toString(&strTmpVal, a_paQueryParams[i].fFlags & ~RTCRestObjectBase::kCollectionFormat_Mask);
                     AssertRCReturn(rc, rc);
 
-                    rc = a_pStrQuery->appendPrintfNoThrow("%c%RMpf=%RMpf", chSep, a_paQueryParams[i].pszName, strTmpVal.c_str());
+                    rc = a_pStrQuery->appendPrintfNoThrow("%c%RMpa=%RMpa", chSep, a_paQueryParams[i].pszName, strTmpVal.c_str());
                     AssertRCReturn(rc, rc);
 
                     chSep = '&';
