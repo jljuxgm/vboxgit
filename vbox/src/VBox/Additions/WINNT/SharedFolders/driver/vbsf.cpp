@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 78368 2019-05-03 03:02:54Z vboxsync $ */
+/* $Id: vbsf.cpp 78382 2019-05-05 05:23:17Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver initialization and generic routines
  */
@@ -446,9 +446,9 @@ static NTSTATUS VBoxHookMjCreate(PDEVICE_OBJECT pDevObj, PIRP pIrp)
     PFILE_OBJECT                pFileObj = pStack->FileObject;
     NTSTATUS                    rcNt;
 
-    Log(("VBOXSF: VBoxHookMjCreate: pDevObj %p, pDevExt %p, pFileObj %p, options %#x, attr %#x, share %#x, ealength %#x, secctx %p\n",
+    Log(("VBOXSF: VBoxHookMjCreate: pDevObj %p, pDevExt %p, pFileObj %p, options %#x, attr %#x, share %#x, ealength %#x, secctx %p, IrpFlags %#x\n",
          pDevObj, pDevObj->DeviceExtension, pFileObj, pStack->Parameters.Create.Options, pStack->Parameters.Create.FileAttributes,
-         pStack->Parameters.Create.ShareAccess, pStack->Parameters.Create.EaLength, pStack->Parameters.Create.SecurityContext));
+         pStack->Parameters.Create.ShareAccess, pStack->Parameters.Create.EaLength, pStack->Parameters.Create.SecurityContext, pIrp->Flags));
     if (pFileObj)
         Log(("VBOXSF: VBoxHookMjCreate: FileName=%.*ls\n", pFileObj->FileName.Length / sizeof(WCHAR), pFileObj->FileName.Buffer));
 
