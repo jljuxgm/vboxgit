@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 83651 2020-04-09 15:06:32Z vboxsync $ */
+/* $Id: GuestControl.h 84147 2020-05-05 15:34:38Z vboxsync $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  *
@@ -134,7 +134,7 @@ enum eProcessStatus
 #define PATHRENAME_FLAG_VALID_MASK          UINT32_C(0x00000003)
 /** @} */
 
-/** @name Defines for guest process array lengths.
+/** @name Defines for maximum guest process buffer lengths.
  * @{
  */
 #define GUESTPROCESS_MAX_CMD_LEN            _1K
