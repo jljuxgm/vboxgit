@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 81944 2019-11-18 15:38:57Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 82474 2019-12-06 19:55:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -2447,6 +2447,10 @@ void UISoftKeyboardWidget::saveCurentLayoutToFile()
     dialog.setWindowModality(Qt::WindowModal);
     dialog.setWindowTitle(UISoftKeyboard::tr("Provide a file name"));
     dialog.setTextValue(currentLayout.name());
+    /// @todo Using \n breaks between words of the same sentence isn't allowed. This isn't easily translateable to other
+    ///       languages.  Moreover, using of \n isn't allowed at all.  This isn't exactly a cross-platform identifier.
+    ///       You can use only <br> between sentenses of the same paragraph. Most of Qt text is HTML by definition, so
+    ///       it does support <br> tags.
     dialog.setLabelText(QString("%1 %2").arg(UISoftKeyboard::tr("The file will be saved under:\n")).arg(strHomeFolder));
     if (dialog.exec() == QDialog::Rejected)
         return;

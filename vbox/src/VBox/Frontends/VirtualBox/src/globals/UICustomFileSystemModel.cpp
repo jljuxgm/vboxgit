@@ -1,4 +1,4 @@
-/* $Id: UICustomFileSystemModel.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UICustomFileSystemModel.cpp 82474 2019-12-06 19:55:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICustomFileSystemModel class implementation.
  */
@@ -610,6 +610,8 @@ void UICustomFileSystemModel::initializeTree()
     m_pRootItem->setData(UICustomFileSystemModel::tr("Change Time"), UICustomFileSystemModelColumn_ChangeTime);
     m_pRootItem->setData(UICustomFileSystemModel::tr("Owner"), UICustomFileSystemModelColumn_Owner);
     m_pRootItem->setData(UICustomFileSystemModel::tr("Permissions"), UICustomFileSystemModelColumn_Permissions);
+    /// @todo Is this guy really user-readable. If that is so then each word should
+    ///       be translated separately (i.e. "LocalPath" should be "Local Path").
     m_pRootItem->setData(UICustomFileSystemModel::tr("LocalPath"), UICustomFileSystemModelColumn_LocalPath);
     m_pRootItem->setData(UICustomFileSystemModel::tr("Path"), UICustomFileSystemModelColumn_Path);
 }

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 81340 2019-10-18 07:45:47Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 82474 2019-12-06 19:55:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -1108,6 +1108,8 @@ void UIFileManagerTable::sltCreateNewDirectory()
     if (!parentFolderItem)
         return;
 
+    /// @todo Is this guy really user-readable. If that is so then each word should
+    ///       be translated separately (i.e. "NewDirectory" should be "New Directory").
     QString newDirectoryName(UICustomFileSystemModel::tr("NewDirectory"));
 
     if (!createDirectory(parentFolderItem->path(), newDirectoryName))
@@ -1295,6 +1297,10 @@ void UIFileManagerTable::retranslateUi()
         pRootItem->setData(UICustomFileSystemModel::tr("Owner"), UICustomFileSystemModelColumn_Owner);
         pRootItem->setData(UICustomFileSystemModel::tr("Permissions"), UICustomFileSystemModelColumn_Permissions);
     }
+    /// @todo Using \n breaks between words of the same sentence isn't allowed. This isn't easily translateable to other
+    ///       languages.  Moreover, using of \n isn't allowed at all.  This isn't exactly a cross-platform identifier.
+    ///       You can use only <br> between sentenses of the same paragraph. Most of Qt text is HTML by definition, so
+    ///       it does support <br> tags.
     if (m_pWarningLabel)
         m_pWarningLabel->setText(UIFileManager::tr("No Guest Session\nPlease use the Session Panel to start \na guest session"));
 }
