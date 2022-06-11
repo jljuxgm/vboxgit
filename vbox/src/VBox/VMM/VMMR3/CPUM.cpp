@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 79519 2019-07-04 09:05:48Z vboxsync $ */
+/* $Id: CPUM.cpp 79528 2019-07-04 14:07:03Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1859,7 +1859,7 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
     EmuFeat.fVmxPauseExit             = 1;
     EmuFeat.fVmxSecondaryExecCtls     = 1;
     EmuFeat.fVmxVirtApicAccess        = 0;
-    EmuFeat.fVmxEpt                   = 0;
+    EmuFeat.fVmxEpt                   = 0;  /* Cannot be disabled if unrestricted guest is enabled. */
     EmuFeat.fVmxDescTableExit         = 1;
     EmuFeat.fVmxRdtscp                = 1;
     EmuFeat.fVmxVirtX2ApicMode        = 0;
@@ -1890,7 +1890,7 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
     EmuFeat.fVmxExitSaveEferMsr       = 1;
     EmuFeat.fVmxExitLoadEferMsr       = 1;
     EmuFeat.fVmxSavePreemptTimer      = 0;
-    EmuFeat.fVmxExitSaveEferLma       = 1;
+    EmuFeat.fVmxExitSaveEferLma       = 1;  /* Cannot be disabled if unrestricted guest is enabled. */
     EmuFeat.fVmxIntelPt               = 0;
     EmuFeat.fVmxVmwriteAll            = 0;  /** @todo NSTVMX: enable this when nested VMCS shadowing is enabled. */
     EmuFeat.fVmxEntryInjectSoftInt    = 0;
