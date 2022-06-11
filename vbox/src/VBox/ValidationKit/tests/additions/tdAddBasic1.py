@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 83863 2020-04-20 15:28:51Z vboxsync $
+# $Id: tdAddBasic1.py 83866 2020-04-20 17:15:49Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83863 $"
+__version__ = "$Revision: 83866 $"
 
 # Standard Python imports.
 import os;
@@ -357,7 +357,7 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         or oTestVm.sKind.startswith('Ubuntu'):
 
             if fNeedsProxy:
-                fRc = oTxsSession.syncMkDir("/etc/apt/apt.conf.d/", 0o755, fIgnoreErrors = True);
+                fRc = oTxsSession.asyncMkDirPath("/etc/apt/apt.conf.d/", 0o755);
                 if fRc:
                     fRc = oTxsSession.syncUploadString('Acquire::http::Proxy \"' + sHttpProxy + '\"\r\n'
                                                        'Acquire::https::Proxy \"' + sHttpsProxy + '\"',
