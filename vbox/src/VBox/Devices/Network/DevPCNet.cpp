@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 81667 2019-11-05 11:08:21Z vboxsync $ */
+/* $Id: DevPCNet.cpp 81697 2019-11-06 08:22:16Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -9,7 +9,7 @@
  *      AMD Am79C973/Am79C975 PCnet-FAST III Single-Chip 10/100 Mbps PCI Ethernet Controller datasheet
  *      AMD publication# 20510  Rev:E  Amendment/0  Issue Date: August 2000
  * and
- *      AMD Am79C960 PCnet-ISA III Single-Chip ISA Single-Chip Ethernet Controller datasheet
+ *      AMD Am79C960 PCnet-ISA Single-Chip Ethernet Controller datasheet
  *      AMD publication# 16907  Rev:B  Amendment/0  Issue Date: May 1994
  */
 
