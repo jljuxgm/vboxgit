@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 81225 2019-10-11 12:44:16Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 81240 2019-10-14 08:22:59Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -1959,6 +1959,7 @@ int cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCCPU
                 pFeatures->fSvmAvic                 = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_AVIC);
                 pFeatures->fSvmVirtVmsaveVmload     = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_VIRT_VMSAVE_VMLOAD);
                 pFeatures->fSvmVGif                 = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_VGIF);
+                pFeatures->fSvmGmet                 = RT_BOOL(pSvmLeaf->uEdx & X86_CPUID_SVM_FEATURE_EDX_GMET);
                 pFeatures->uSvmMaxAsid              = pSvmLeaf->uEbx;
             }
         }
@@ -6313,6 +6314,7 @@ static DBGFREGSUBFIELD const g_aExtLeafAEdxSubFields[] =
     DBGFREGSUBFIELD_RO("AVIC\0"           "Advanced Virtual Interrupt Controller",      13, 1, 0),
     DBGFREGSUBFIELD_RO("VMSAVEVirt\0"     "VMSAVE and VMLOAD Virtualization",           15, 1, 0),
     DBGFREGSUBFIELD_RO("VGIF\0"           "Virtual Global-Interrupt Flag",              16, 1, 0),
+    DBGFREGSUBFIELD_RO("GMET\0"           "Guest Mode Execute Trap Extension",          17, 1, 0),
     DBGFREGSUBFIELD_TERMINATOR()
 };
 

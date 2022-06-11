@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
+/* $Id: HM.cpp 81240 2019-10-14 08:22:59Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1730,6 +1730,7 @@ static int hmR3InitFinalizeR0Amd(PVM pVM)
         HMSVM_REPORT_FEATURE("AVIC",                   X86_CPUID_SVM_FEATURE_EDX_AVIC),
         HMSVM_REPORT_FEATURE("VIRT_VMSAVE_VMLOAD",     X86_CPUID_SVM_FEATURE_EDX_VIRT_VMSAVE_VMLOAD),
         HMSVM_REPORT_FEATURE("VGIF",                   X86_CPUID_SVM_FEATURE_EDX_VGIF),
+        HMSVM_REPORT_FEATURE("GMET",                   X86_CPUID_SVM_FEATURE_EDX_GMET),
 #undef HMSVM_REPORT_FEATURE
     };
 
