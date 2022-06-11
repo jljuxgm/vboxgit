@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 79874 2019-07-19 09:15:09Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 79971 2019-07-25 06:41:20Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -1331,6 +1331,12 @@ VMM_INT_DECL(void) HMNotifyVmxNstGstVmexit(PVMCPU pVCpu)
      * the future).
      */
     pVCpu->hm.s.vmx.fSwitchedNstGstFlushTlb = true;
+
+    if (pVCpu->hm.s.vmx.fVirtApicPageLocked)
+    {
+        PGMPhysReleasePageMappingLock(pVCpu->CTX_SUFF(pVM), &pVCpu->hm.s.vmx.PgMapLockVirtApic);
+        pVCpu->hm.s.vmx.fVirtApicPageLocked = false;
+    }
 }
 
 
