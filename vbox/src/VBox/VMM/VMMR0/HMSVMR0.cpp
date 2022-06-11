@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 83066 2020-02-13 04:15:25Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 83209 2020-03-05 13:43:54Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -6879,7 +6879,18 @@ HMSVM_EXIT_DECL hmR0SvmExitNestedPF(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransient)
      * re-inject the original event.
      */
     if (pVCpu->hm.s.Event.fPending)
+    {
         STAM_COUNTER_INC(&pVCpu->hm.s.StatInjectReflectNPF);
+
+        /*
+         * If the #NPF handler requested emulation of the instruction, ignore it.
+         * We need to re-inject the original event so as to not lose it.
+         * Reproducible when booting ReactOS 0.4.12 with BTRFS (installed using BootCD,
+         * LiveCD is broken for other reasons).
+         */
+        if (rc == VINF_EM_RAW_EMULATE_INSTR)
+            rc = VINF_EM_RAW_INJECT_TRPM_EVENT;
+    }
 
     return rc;
 }
