@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 83009 2020-02-06 15:12:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -2044,6 +2044,7 @@ bool UIVirtualBoxManager::isAtLeastOneItemSupportsShortcuts(const QList<UIVirtua
         if (   pItem->accessible()
 #ifdef VBOX_WS_MAC
             /* On Mac OS X this are real alias files, which don't work with the old legacy xml files. */
+            && pItem->toLocal()
             && pItem->toLocal()->settingsFile().endsWith(".vbox", Qt::CaseInsensitive)
 #endif
             )
