@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 80862 2019-09-17 14:45:21Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 80864 2019-09-17 15:00:40Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -24,8 +24,8 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef VBOX_INCLUDED_GuestHost_SharedClipboard_uri_h
-#define VBOX_INCLUDED_GuestHost_SharedClipboard_uri_h
+#ifndef VBOX_INCLUDED_GuestHost_SharedClipboard_transfers_h
+#define VBOX_INCLUDED_GuestHost_SharedClipboard_transfers_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -1134,5 +1134,5 @@ bool SharedClipboardMIMENeedsCache(const char *pcszFormat, size_t cchFormatMax);
 
 const char *VBoxShClTransferStatusToStr(uint32_t uStatus);
 
-#endif /* !VBOX_INCLUDED_GuestHost_SharedClipboard_uri_h */
+#endif /* !VBOX_INCLUDED_GuestHost_SharedClipboard_transfers_h */
 
