@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 78869 2019-05-30 08:32:28Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 79124 2019-06-13 10:44:12Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -796,7 +796,7 @@ VMMR0DECL(int) SVMR0TermVM(PVM pVM)
 /**
  * Returns whether the VMCB Clean Bits feature is supported.
  *
- * @return @c true if supported, @c false otherwise.
+ * @returns @c true if supported, @c false otherwise.
  * @param   pVCpu       The cross context virtual CPU structure.
  */
 DECLINLINE(bool) hmR0SvmSupportsVmcbCleanBits(PVMCPU pVCpu)
@@ -816,7 +816,7 @@ DECLINLINE(bool) hmR0SvmSupportsVmcbCleanBits(PVMCPU pVCpu)
 /**
  * Returns whether the decode assists feature is supported.
  *
- * @return @c true if supported, @c false otherwise.
+ * @returns @c true if supported, @c false otherwise.
  * @param   pVCpu       The cross context virtual CPU structure.
  */
 DECLINLINE(bool) hmR0SvmSupportsDecodeAssists(PVMCPU pVCpu)
@@ -836,7 +836,7 @@ DECLINLINE(bool) hmR0SvmSupportsDecodeAssists(PVMCPU pVCpu)
 /**
  * Returns whether the NRIP_SAVE feature is supported.
  *
- * @return @c true if supported, @c false otherwise.
+ * @returns @c true if supported, @c false otherwise.
  * @param   pVCpu       The cross context virtual CPU structure.
  */
 DECLINLINE(bool) hmR0SvmSupportsNextRipSave(PVMCPU pVCpu)
