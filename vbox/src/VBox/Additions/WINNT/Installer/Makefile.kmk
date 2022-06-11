@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82765 2020-01-15 01:45:54Z vboxsync $
+# $Id: Makefile.kmk 82767 2020-01-15 02:17:43Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -275,6 +275,7 @@ INSTALLS += RePackScriptsAddResources
 RePackScriptsAddResources_TEMPLATE = DUMMY
 RePackScriptsAddResources_INST = repack/add/resources/
 RePackScriptsAddResources_INSTTYPE = stage
+RePackScriptsAddResources_DIRS = Languages
 RePackScriptsAddResources_SOURCES = \
 	welcome.bmp \
 	$(VBOX_WINDOWS_ADDITIONS_ICON_FILE)=>VirtualBoxGA-vista.ico \
