@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 79241 2019-06-19 12:00:14Z vboxsync $ */
+/* $Id: QIComboBox.cpp 80067 2019-07-31 11:13:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class implementation.
  */
@@ -333,6 +333,7 @@ void QIComboBox::prepare()
         AssertPtrReturnVoid(m_pComboBox);
         {
             /* Configure combo-box: */
+            setFocusProxy(m_pComboBox);
             connect(m_pComboBox, static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
                     this, static_cast<void(QIComboBox::*)(int)>(&QIComboBox::activated));
             connect(m_pComboBox, static_cast<void(QComboBox::*)(const QString &)>(&QComboBox::activated),
