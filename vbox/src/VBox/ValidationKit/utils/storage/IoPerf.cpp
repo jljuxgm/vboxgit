@@ -1,4 +1,4 @@
-/* $Id: IoPerf.cpp 80030 2019-07-28 21:39:41Z vboxsync $ */
+/* $Id: IoPerf.cpp 80032 2019-07-28 22:10:14Z vboxsync $ */
 /** @file
  * IoPerf - Storage I/O Performance Benchmark.
  */
@@ -236,7 +236,7 @@ static uint64_t     g_cbTestSet    = _2G;
 /** Block size for each request. */
 static size_t       g_cbIoBlock    = _4K;
 /** Maximum number of concurrent requests for each job. */
-static size_t       g_cReqsMax     = 16;
+static uint32_t     g_cReqsMax     = 16;
 
 
 /** @name Configured tests, this must match the IOPERFTEST order.
@@ -633,7 +633,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 80030 $";
+                char szRev[] = "$Revision: 80032 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
