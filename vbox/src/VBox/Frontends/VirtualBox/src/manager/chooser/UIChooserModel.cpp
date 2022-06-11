@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 84059 2020-04-28 16:54:35Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 84087 2020-04-29 15:24:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -42,7 +42,8 @@
 #include "UIExtraDataManager.h"
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
-#include "UITask.h"
+#include "UITaskCloudListMachines.h"
+#include "UIThreadPool.h"
 #include "UIVirtualBoxManagerWidget.h"
 #include "UIVirtualMachineItemCloud.h"
 #include "UIVirtualMachineItemLocal.h"
@@ -1076,6 +1077,20 @@ void UIChooserModel::sltPerformRefreshAction()
                                                               UIChooserItemSearchFlag_Machine |
                                                               UIChooserItemSearchFlag_ExactId);
                 }
+
+                break;
+            }
+            case UIVirtualMachineItemType_CloudFake:
+            {
+                /* Create list cloud machines task: */
+                UIChooserItem *pParent = pItem->parentItem();
+                AssertPtrReturnVoid(pParent);
+                UIChooserItem *pParentOfParent = pParent->parentItem();
+                AssertPtrReturnVoid(pParentOfParent);
+                UITaskCloudListMachines *pTask = new UITaskCloudListMachines(pParentOfParent->name(),
+                                                                             pParent->name());
+                AssertPtrReturnVoid(pTask);
+                uiCommon().threadPoolCloud()->enqueueTask(pTask);
 
                 break;
             }

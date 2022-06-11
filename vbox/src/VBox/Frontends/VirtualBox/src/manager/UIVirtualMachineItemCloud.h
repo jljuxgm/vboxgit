@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 84085 2020-04-29 14:50:14Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 84087 2020-04-29 15:24:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -63,6 +63,11 @@ public:
         /** Returns fake cloud item state. */
         UIFakeCloudVirtualMachineItemState fakeCloudItemState() const { return m_enmFakeCloudItemState; }
 
+        /** Defines fake cloud item @a strErrorMessage. */
+        void setFakeCloudItemErrorMessage(const QString &strErrorMessage);
+        /** Returns fake cloud item error message. */
+        QString fakeCloudItemErrorMessage() const { return m_strFakeCloudItemErrorMessage; }
+
         /** Updates cloud VM info async way, @a fDelayed if requested or instant otherwise. */
         void updateInfoAsync(bool fDelayed);
     /** @} */
@@ -124,6 +129,8 @@ private:
       * @{ */
         /** Holds fake cloud item state. */
         UIFakeCloudVirtualMachineItemState  m_enmFakeCloudItemState;
+        /** Holds fake cloud item error message. */
+        QString                             m_strFakeCloudItemErrorMessage;
 
         /** Holds the info acquire task instance. */
         UITask *m_pTask;

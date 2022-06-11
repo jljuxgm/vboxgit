@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 84085 2020-04-29 14:50:14Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 84087 2020-04-29 15:24:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -444,10 +444,6 @@ void UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(UITask *pTas
     /* Cast task to corresponding sub-class: */
     UITaskCloudListMachines *pAcquiringTask = static_cast<UITaskCloudListMachines*>(pTask);
 
-    /* Make sure there were no errors: */
-    if (!pAcquiringTask->errorInfo().isNull())
-        return msgCenter().cannotAcquireCloudInstanceList(pAcquiringTask->errorInfo());
-
     /* Search for profile node: */
     const QString strProfileNodeName = QString("/%1/%2").arg(pAcquiringTask->providerShortName(), pAcquiringTask->profileName());
     QList<UIChooserNode*> profileNodes;
@@ -481,6 +477,7 @@ void UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(UITask *pTas
         UIVirtualMachineItemCloud *pFakeCloudMachineItem = pFakeMachineNode->cache()->toCloud();
         AssertPtrReturnVoid(pFakeCloudMachineItem);
         pFakeCloudMachineItem->setFakeCloudItemState(UIFakeCloudVirtualMachineItemState_Done);
+        pFakeCloudMachineItem->setFakeCloudItemErrorMessage(pAcquiringTask->errorInfo());
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 84085 2020-04-29 14:50:14Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 84087 2020-04-29 15:24:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -61,6 +61,12 @@ void UIVirtualMachineItemCloud::setFakeCloudItemState(UIFakeCloudVirtualMachineI
     recache();
 }
 
+void UIVirtualMachineItemCloud::setFakeCloudItemErrorMessage(const QString &strErrorMessage)
+{
+    m_strFakeCloudItemErrorMessage = strErrorMessage;
+    recache();
+}
+
 void UIVirtualMachineItemCloud::updateInfoAsync(bool fDelayed)
 {
     QTimer::singleShot(fDelayed ? 10000 : 0, this, SLOT(sltCreateGetCloudInstanceInfoTask()));
@@ -80,8 +86,8 @@ void UIVirtualMachineItemCloud::recache()
             m_strName = QString();
 
             /* Determine whether VM is accessible: */
-            m_fAccessible = true;
-            m_strAccessError = QString();
+            m_fAccessible = m_strFakeCloudItemErrorMessage.isNull();
+            m_strAccessError = m_strFakeCloudItemErrorMessage;
 
             /* Determine VM OS type: */
             m_strOSTypeId = "Other";
