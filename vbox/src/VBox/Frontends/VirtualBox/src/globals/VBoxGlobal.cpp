@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 78723 2019-05-24 12:26:23Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 78917 2019-06-01 17:57:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4495,6 +4495,16 @@ void VBoxGlobal::cleanup()
     /* Remember that the cleanup is in progress preventing any unwanted
      * stuff which could be called from the other threads: */
     s_fCleaningUp = true;
+
+#ifdef VBOX_WITH_DEBUGGER_GUI
+    /* For Runtime UI: */
+    if (   uiType() == UIType_RuntimeUI
+        && m_hVBoxDbg != NIL_RTLDRMOD)
+    {
+        RTLdrClose(m_hVBoxDbg);
+        m_hVBoxDbg = NIL_RTLDRMOD;
+    }
+#endif
 
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
     /* Shutdown update manager: */
