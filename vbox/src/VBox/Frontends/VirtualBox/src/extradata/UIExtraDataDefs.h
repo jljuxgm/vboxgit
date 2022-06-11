@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 78010 2019-04-04 07:27:13Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 78499 2019-05-14 10:33:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -701,6 +701,7 @@ public:
         DetailsElementOptionTypeNetwork_InternalNetwork = RT_BIT(3),
         DetailsElementOptionTypeNetwork_HostOnlyAdapter = RT_BIT(4),
         DetailsElementOptionTypeNetwork_GenericDriver   = RT_BIT(5),
+        DetailsElementOptionTypeNetwork_NATNetwork      = RT_BIT(6),
         DetailsElementOptionTypeNetwork_Default         = 0xFFFF
     };
     Q_ENUM(DetailsElementOptionTypeNetwork);

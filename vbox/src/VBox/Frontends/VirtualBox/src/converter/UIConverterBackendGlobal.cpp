@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 77822 2019-03-21 08:23:11Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 78499 2019-05-14 10:33:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -1176,6 +1176,7 @@ template<> QString toString(const UIExtraDataMetaDefs::DetailsElementOptionTypeN
         case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_InternalNetwork: strResult = QApplication::translate("VBoxGlobal", "Internal Network"); break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_HostOnlyAdapter: strResult = QApplication::translate("VBoxGlobal", "Host Only Adapter"); break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_GenericDriver:   strResult = QApplication::translate("VBoxGlobal", "Generic Driver"); break;
+        case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_NATNetwork:      strResult = QApplication::translate("VBoxGlobal", "NAT Network"); break;
         default:
         {
             AssertMsgFailed(("No text for details element option type=%d", enmDetailsElementOptionTypeNetwork));
@@ -1197,6 +1198,7 @@ template<> QString toInternalString(const UIExtraDataMetaDefs::DetailsElementOpt
         case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_InternalNetwork: strResult = "InternalNetwork"; break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_HostOnlyAdapter: strResult = "HostOnlyAdapter"; break;
         case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_GenericDriver:   strResult = "GenericDriver"; break;
+        case UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_NATNetwork:      strResult = "NATNetwork"; break;
         default:
         {
             AssertMsgFailed(("No text for details element option type=%d", enmDetailsElementOptionTypeNetwork));
@@ -1218,6 +1220,7 @@ template<> UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork fromInternalStri
     keys << "InternalNetwork"; values << UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_InternalNetwork;
     keys << "HostOnlyAdapter"; values << UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_HostOnlyAdapter;
     keys << "GenericDriver";   values << UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_GenericDriver;
+    keys << "NATNetwork";      values << UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_NATNetwork;
     /* Invalid type for unknown words: */
     if (!keys.contains(strDetailsElementOptionTypeNetwork, Qt::CaseInsensitive))
         return UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_Invalid;

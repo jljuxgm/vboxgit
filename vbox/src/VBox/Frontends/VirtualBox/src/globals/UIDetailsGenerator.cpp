@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 78498 2019-05-14 10:29:05Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 78499 2019-05-14 10:33:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -516,6 +516,12 @@ UITextTable UIDetailsGenerator::generateMachineInformationNetwork(CMachine &comM
         QString strAttachmentType;
         switch (enmType)
         {
+            case KNetworkAttachmentType_NAT:
+            {
+                if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_NAT)
+                    strAttachmentType = strAttachmentTemplate.arg(gpConverter->toString(enmType));
+                break;
+            }
             case KNetworkAttachmentType_Bridged:
             {
                 if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_BridgetAdapter)
@@ -552,7 +558,7 @@ UITextTable UIDetailsGenerator::generateMachineInformationNetwork(CMachine &comM
             }
             case KNetworkAttachmentType_NATNetwork:
             {
-                if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_NAT)
+                if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork_NATNetwork)
                     strAttachmentType = strAttachmentTemplate.arg(QApplication::translate("UIDetails", "NAT Network, '%1'", "details (network)")
                                                                   .arg(comAdapter.GetNATNetwork()));
                 break;
