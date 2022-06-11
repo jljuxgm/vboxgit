@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 79347 2019-06-26 09:15:29Z vboxsync $ */
+/* $Id: clipboard-win.cpp 79351 2019-06-26 09:39:46Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -38,9 +38,6 @@
 #endif
 #include <VBox/GuestHost/SharedClipboard-win.h>
 #include <VBox/GuestHost/clipboard-helper.h>
-
-
-DECLCALLBACK(void) vboxClipboardWinURIMetaDataCompleteCallback(PSHAREDCLIPBOARDURITRANSFERCALLBACKDATA pData);
 
 
 /**
