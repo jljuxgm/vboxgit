@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 83107 2020-02-18 15:00:50Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 83111 2020-02-18 16:09:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -21,21 +21,28 @@
 # pragma once
 #endif
 
+/* GUI includes: */
+#include "UICloudMachine.h"
+
 /* COM includes: */
 #include "COMEnums.h"
 #include "CCloudClient.h"
 
-/* Forward declarations: */
-class QString;
-class QWidget;
-
 /** Cloud networking stuff namespace. */
 namespace UICloudNetworkingStuff
 {
+    /** Acquires instance list.
+      * @param  comCloudClient  Brings cloud client object.
+      * @param  pWidget         Brings parent widget to show messages according to,
+      *                         if no parent set, progress will be executed in blocking way. */
+    QList<UICloudMachine> listInstances(const CCloudClient &comCloudClient,
+                                        QWidget *pParent = 0);
+
     /** Acquires instance info of certain @a enmType.
       * @param  comCloudClient  Brings cloud client object.
       * @param  strId           Brings cloud VM id.
-      * @param  pWidget         Brings parent widget to show messages according to. */
+      * @param  pWidget         Brings parent widget to show messages according to,
+      *                         if no parent set, progress will be executed in blocking way. */
     QString getInstanceInfo(KVirtualSystemDescriptionType enmType,
                             const CCloudClient &comCloudClient,
                             const QString &strId,

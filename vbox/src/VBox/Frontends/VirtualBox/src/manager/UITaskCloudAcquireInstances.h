@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudAcquireInstances.h 83099 2020-02-17 17:33:37Z vboxsync $ */
+/* $Id: UITaskCloudAcquireInstances.h 83111 2020-02-18 16:09:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudAcquireInstances class declaration.
  */
@@ -43,7 +43,9 @@ class UITaskCloudAcquireInstances : public UITask
 
 public:
 
-    /** Constructs update task taking @a comCloudClient and @a pParentNode as data. */
+    /** Constructs update task taking @a comCloudClient and @a pParentNode as data.
+      * @param  comCloudClient  Brings the cloud client object.
+      * @param  m_pParentNode   Brings the parent node reference. */
     UITaskCloudAcquireInstances(const CCloudClient &comCloudClient, UIChooserNode *pParentNode);
 
     /** Returns cloud client object. */
