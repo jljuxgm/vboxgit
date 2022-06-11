@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 79080 2019-06-11 06:44:23Z vboxsync $ */
+/* $Id: GIMHv.cpp 80077 2019-07-31 14:30:19Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -509,7 +509,6 @@ VMMR3_INT_DECL(int) gimR3HvInit(PVM pVM, PCFGMNODE pGimCfg)
                                              pHvStimer->szTimerDesc, &pHvStimer->pTimerR3);
                 AssertLogRelRCReturn(rc, rc);
                 pHvStimer->pTimerR0 = TMTimerR0Ptr(pHvStimer->pTimerR3);
-                pHvStimer->pTimerRC = TMTimerRCPtr(pHvStimer->pTimerR3);
             }
         }
     }
@@ -621,22 +620,7 @@ VMMR3_INT_DECL(int) gimR3HvTerm(PVM pVM)
  */
 VMMR3_INT_DECL(void) gimR3HvRelocate(PVM pVM, RTGCINTPTR offDelta)
 {
-    RT_NOREF1(offDelta);
-
-    PCGIMHV pHv = &pVM->gim.s.u.Hv;
-    if (   (pHv->uBaseFeat & GIM_HV_BASE_FEAT_STIMER_MSRS)
-        || (pHv->uBaseFeat & GIM_HV_BASE_FEAT_BASIC_SYNIC_MSRS))
-    {
-        for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
-        {
-            PGIMHVCPU pHvCpu = &pVM->aCpus[idCpu].gim.s.u.HvCpu;
-            for (uint8_t idxStimer = 0; idxStimer < RT_ELEMENTS(pHvCpu->aStimers); idxStimer++)
-            {
-                PGIMHVSTIMER pHvStimer = &pHvCpu->aStimers[idxStimer];
-                pHvStimer->pTimerRC = TMTimerRCPtr(pHvStimer->pTimerR3);
-            }
-        }
-    }
+    RT_NOREF(pVM, offDelta);
 }
 
 

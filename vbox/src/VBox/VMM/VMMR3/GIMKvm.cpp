@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GIMKvm.cpp 80077 2019-07-31 14:30:19Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -166,7 +166,7 @@ VMMR3_INT_DECL(int) gimR3KvmInit(PVM pVM)
     rc = GIMQueryHypercallOpcodeBytes(pVM, pKvm->abOpcodeNative, sizeof(pKvm->abOpcodeNative), &cbHypercall, &pKvm->uOpcodeNative);
     AssertLogRelRCReturn(rc, rc);
     AssertLogRelReturn(cbHypercall == sizeof(pKvm->abOpcodeNative), VERR_GIM_IPE_1);
-    pKvm->fTrapXcptUD = pKvm->uOpcodeNative != OP_VMCALL || VM_IS_RAW_MODE_ENABLED(pVM);
+    pKvm->fTrapXcptUD = pKvm->uOpcodeNative != OP_VMCALL;
 
     return VINF_SUCCESS;
 }

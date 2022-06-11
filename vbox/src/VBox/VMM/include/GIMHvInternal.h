@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: GIMHvInternal.h 80077 2019-07-31 14:30:19Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -1197,9 +1197,6 @@ typedef struct GIMHV
      * @{ */
     /** Per-VM R0 Spinlock for protecting EMT writes to the TSC page. */
     RTSPINLOCK                  hSpinlockR0;
-#if HC_ARCH_BITS == 32
-    uint32_t                    u32Alignment1;
-#endif
     /** The TSC frequency (in HZ) reported to the guest. */
     uint64_t                    cTscTicksPerSecond;
     /** @} */
@@ -1269,10 +1266,6 @@ typedef struct GIMHVSTIMER
     PTMTIMERR0                  pTimerR0;
     /** Synthetic timer object - R3 ptr. */
     PTMTIMERR3                  pTimerR3;
-    /** Synthetic timer object - RC ptr. */
-    PTMTIMERRC                  pTimerRC;
-    /** RC alignment padding. */
-    RTRCPTR                     uAlignment0;
     /** Virtual CPU ID this timer belongs to (for reverse mapping). */
     VMCPUID                     idCpu;
     /** The index of this timer in the auStimers array (for reverse mapping). */
