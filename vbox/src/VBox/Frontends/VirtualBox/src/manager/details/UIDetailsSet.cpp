@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.cpp 83179 2020-02-28 15:29:09Z vboxsync $ */
+/* $Id: UIDetailsSet.cpp 83191 2020-03-03 12:32:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class implementation.
  */
@@ -107,7 +107,7 @@ void UIDetailsSet::buildSet(UIVirtualMachineItem *pMachineItem, bool fFullSet, c
                 m_cloudMachine = m_pMachineItem->toCloud()->machine();
 
                 /* Compose a list of types to build: */
-                types << DetailsElementType_General << DetailsElementType_System;
+                types << DetailsElementType_General << DetailsElementType_System << DetailsElementType_Storage;
 
                 break;
             }

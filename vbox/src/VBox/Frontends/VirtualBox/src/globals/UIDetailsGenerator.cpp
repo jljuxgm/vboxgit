@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 83175 2020-02-27 18:10:52Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 83191 2020-03-03 12:32:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -533,6 +533,34 @@ UITextTable UIDetailsGenerator::generateMachineInformationStorage(CMachine &comM
     }
     if (table.isEmpty())
         table << UITextTableLine(QApplication::translate("UIDetails", "Not Attached", "details (storage)"), QString());
+
+    return table;
+}
+
+UITextTable UIDetailsGenerator::generateMachineInformationStorage(UICloudMachine &guiCloudMachine,
+                                                                  const UIExtraDataMetaDefs::DetailsElementOptionTypeStorage &fOptions)
+{
+    UITextTable table;
+
+    if (guiCloudMachine.isNull())
+        return table;
+
+    if (!guiCloudMachine.isAccessible())
+    {
+        table << UITextTableLine(QApplication::translate("UIDetails", "Information Inaccessible", "details"), QString());
+        return table;
+    }
+
+    /* Image: */
+    if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeStorage_HardDisks)
+    {
+        const QString strImageName = guiCloudMachine.imageName();
+        const QString strImageSize = guiCloudMachine.imageSize();
+        const QString strResult = !strImageName.isEmpty() && !strImageSize.isEmpty()
+                                ? QString("%1 (%2)").arg(strImageName, strImageSize)
+                                : QString();
+        table << UITextTableLine(QApplication::translate("UIDetails", "Image", "details (storage)"), strResult);
+    }
 
     return table;
 }

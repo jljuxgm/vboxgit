@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.h 83151 2020-02-25 13:06:21Z vboxsync $ */
+/* $Id: UIDetailsElements.h 83191 2020-03-03 12:32:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes declaration.
  */
@@ -284,6 +284,26 @@ public:
     /** Constructs update task passing @a comMachine to the base-class. */
     UIDetailsUpdateTaskStorage(const CMachine &comMachine, UIExtraDataMetaDefs::DetailsElementOptionTypeStorage fOptions)
         : UIDetailsUpdateTask(comMachine), m_fOptions(fOptions) {}
+
+private:
+
+    /** Contains update task body. */
+    void run();
+
+    /** Holds the options. */
+    UIExtraDataMetaDefs::DetailsElementOptionTypeStorage m_fOptions;
+};
+
+/** UITask extension used as update task for the details-element type 'Storage' of cloud VM. */
+class UIDetailsUpdateTaskStorageCloud : public UIDetailsUpdateTask
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs update task passing @a guiCloudMachine to the base-class. */
+    UIDetailsUpdateTaskStorageCloud(const UICloudMachine &guiCloudMachine, UIExtraDataMetaDefs::DetailsElementOptionTypeStorage fOptions)
+        : UIDetailsUpdateTask(guiCloudMachine), m_fOptions(fOptions) {}
 
 private:
 

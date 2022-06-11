@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.h 83151 2020-02-25 13:06:21Z vboxsync $ */
+/* $Id: UIDetailsGenerator.h 83191 2020-03-03 12:32:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator declaration.
  */
@@ -50,6 +50,9 @@ namespace UIDetailsGenerator
     SHARED_LIBRARY_STUFF UITextTable generateMachineInformationStorage(CMachine &comMachine,
                                                                        const UIExtraDataMetaDefs::DetailsElementOptionTypeStorage &fOptions,
                                                                        bool fLink = true);
+
+    SHARED_LIBRARY_STUFF UITextTable generateMachineInformationStorage(UICloudMachine &guiCloudMachine,
+                                                                       const UIExtraDataMetaDefs::DetailsElementOptionTypeStorage &fOptions);
 
     SHARED_LIBRARY_STUFF UITextTable generateMachineInformationAudio(CMachine &comMachine,
                                                                      const UIExtraDataMetaDefs::DetailsElementOptionTypeAudio &fOptions);

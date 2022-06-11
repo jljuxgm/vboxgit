@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.cpp 83151 2020-02-25 13:06:21Z vboxsync $ */
+/* $Id: UIDetailsElements.cpp 83191 2020-03-03 12:32:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes implementation.
  */
@@ -324,9 +324,23 @@ void UIDetailsUpdateTaskStorage::run()
     setProperty("table", QVariant::fromValue(table));
 }
 
+void UIDetailsUpdateTaskStorageCloud::run()
+{
+    /* Acquire corresponding machine: */
+    UICloudMachine guiCloudMachine = property("cloudMachine").value<UICloudMachine>();
+    if (guiCloudMachine.isNull())
+        return;
+
+    /* Generate details table: */
+    UITextTable table = UIDetailsGenerator::generateMachineInformationStorage(guiCloudMachine, m_fOptions);
+    setProperty("table", QVariant::fromValue(table));
+}
+
 UITask *UIDetailsElementStorage::createUpdateTask()
 {
-    return new UIDetailsUpdateTaskStorage(machine(), model()->optionsStorage());
+    return   isLocal()
+           ? static_cast<UITask*>(new UIDetailsUpdateTaskStorage(machine(), model()->optionsStorage()))
+           : static_cast<UITask*>(new UIDetailsUpdateTaskStorageCloud(cloudMachine(), model()->optionsStorage()));
 }
 
 
