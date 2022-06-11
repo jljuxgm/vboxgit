@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 83989 2020-04-27 08:53:56Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 83999 2020-04-27 11:38:29Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -419,6 +419,7 @@ RT_BF_ASSERT_COMPILE_CHECKS(IOMMU_BF_MSI_MAP_CAPHDR_, UINT32_C(0), UINT32_MAX,
  * Gets the device table size given the size field.
  */
 #define IOMMU_GET_DEV_TAB_SIZE(a_uSize)     (((a_uSize) + 1) << X86_PAGE_4K_SHIFT)
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
@@ -2942,7 +2943,10 @@ static int iommuAmdReadDevTabEntry(PPDMDEVINS pDevIns, uint16_t uDevId, DEV_TAB_
     Assert(!(GCPhysDevTab & X86_PAGE_4K_OFFSET_MASK));
     int rc = PDMDevHlpPCIPhysRead(pDevIns, GCPhysDevTabEntry, pDevTabEntry, sizeof(*pDevTabEntry));
     if (RT_FAILURE(rc))
+    {
         Log((IOMMU_LOG_PFX ": Failed to read device table entry at %#RGp. rc=%Rrc\n", GCPhysDevTabEntry, rc));
+        /** @todo IOMMU: Log this failure to the IOMMU Event log here. */
+    }
 
     return rc;
 }
