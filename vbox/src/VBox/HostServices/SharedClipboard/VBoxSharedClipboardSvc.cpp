@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 80996 2019-09-25 07:13:06Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 80997 2019-09-25 07:42:22Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -300,12 +300,12 @@ static int shclSvcModeSet(uint32_t uMode)
     return rc;
 }
 
-bool VBoxSvcClipboardLock(void)
+bool ShClSvcLock(void)
 {
     return RT_SUCCESS(RTCritSectEnter(&g_CritSect));
 }
 
-void VBoxSvcClipboardUnlock(void)
+void ShClSvcUnlock(void)
 {
     int rc2 = RTCritSectLeave(&g_CritSect);
     AssertRC(rc2);
@@ -1062,13 +1062,13 @@ int shclSvcSetSource(PSHCLCLIENT pClient, SHCLSOURCE enmSource)
 
     int rc = VINF_SUCCESS;
 
-    if (VBoxSvcClipboardLock())
+    if (ShClSvcLock())
     {
         pClient->State.enmSource = enmSource;
 
         LogFlowFunc(("Source of client %RU32 is now %RU32\n", pClient->State.uClientID, pClient->State.enmSource));
 
-        VBoxSvcClipboardUnlock();
+        ShClSvcUnlock();
     }
 
     LogFlowFuncLeaveRC(rc);
