@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 83133 2020-02-21 13:41:09Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 83134 2020-02-21 13:43:11Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -873,7 +873,7 @@ int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, P
         int32_t u32ExtRamSizeM = 0;
         if (cbRamSize / _1M > INT16_MAX)
         {
-            /* The highest bit of u16Size must be 0 to specify 'GB' units / 1 would be 'KB'.
+            /* The highest bit of u16Size must be 0 to specify 'MB' units / 1 would be 'KB'.
              * SMBIOS 2.7 intruduced a 32-bit extended size. If module size is 32GB or greater,
              * the old u16Size is set to 7FFFh; old parsers will see 32GB-1MB, new parsers will
              * look at new u32ExtendedSize which can represent at least 128TB. OS X 10.14+ looks
