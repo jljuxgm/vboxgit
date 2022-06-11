@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
+/* $Id: TM.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -2105,9 +2105,6 @@ static DECLCALLBACK(void) tmR3TimerCallback(PRTTIMER pTimer, void *pvUser, uint6
     {
         Log5(("TM(%u): FF: 0 -> 1\n", __LINE__));
         VMCPU_FF_SET(pVCpuDst, VMCPU_FF_TIMER);
-#ifdef VBOX_WITH_REM
-        REMR3NotifyTimerPending(pVM, pVCpuDst);
-#endif
         VMR3NotifyCpuFFU(pVCpuDst->pUVCpu, VMNOTIFYFF_FLAGS_DONE_REM | VMNOTIFYFF_FLAGS_POKE);
         STAM_COUNTER_INC(&pVM->tm.s.StatTimerCallbackSetFF);
     }

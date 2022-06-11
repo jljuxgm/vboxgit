@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
+/* $Id: PGMAll.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1217,12 +1217,6 @@ VMMDECL(int) PGMInvalidatePage(PVMCPUCC pVCpu, RTGCPTR GCPtrPage)
     int rc;
     Log3(("PGMInvalidatePage: GCPtrPage=%RGv\n", GCPtrPage));
 
-#if !defined(IN_RING3) && defined(VBOX_WITH_REM)
-    /*
-     * Notify the recompiler so it can record this instruction.
-     */
-    REMNotifyInvalidatePage(pVM, GCPtrPage);
-#endif
     IEMTlbInvalidatePage(pVCpu, GCPtrPage);
 
     /*

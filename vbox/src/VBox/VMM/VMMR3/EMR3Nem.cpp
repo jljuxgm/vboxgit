@@ -1,4 +1,4 @@
-/* $Id: EMR3Nem.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
+/* $Id: EMR3Nem.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - NEM interface.
  */
@@ -201,25 +201,7 @@ static int emR3NemExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcRC)
 
     STAM_PROFILE_STOP(&pVCpu->em.s.StatIEMEmu, a);
 
-    if (   rcStrict == VERR_IEM_ASPECT_NOT_IMPLEMENTED
-        || rcStrict == VERR_IEM_INSTR_NOT_IMPLEMENTED)
-    {
-#ifdef VBOX_WITH_REM
-        STAM_PROFILE_START(&pVCpu->em.s.StatREMEmu, b);
-        CPUM_IMPORT_EXTRN_RET(pVCpu, ~CPUMCTX_EXTRN_KEEPER_MASK);
-        EMRemLock(pVM);
-        /* Flush the recompiler TLB if the VCPU has changed. */
-        if (pVM->em.s.idLastRemCpu != pVCpu->idCpu)
-            CPUMSetChangedFlags(pVCpu, CPUM_CHANGED_ALL);
-        pVM->em.s.idLastRemCpu = pVCpu->idCpu;
-
-        rcStrict = REMR3EmulateInstruction(pVM, pVCpu);
-        EMRemUnlock(pVM);
-        STAM_PROFILE_STOP(&pVCpu->em.s.StatREMEmu, b);
-#else  /* !VBOX_WITH_REM */
-        NOREF(pVM);
-#endif /* !VBOX_WITH_REM */
-    }
+    NOREF(pVM);
     return VBOXSTRICTRC_TODO(rcStrict);
 }
 

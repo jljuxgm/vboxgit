@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80938 2019-09-23 08:19:38Z vboxsync $
+# $Id: Makefile.kmk 81153 2019-10-08 13:59:03Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -223,10 +223,6 @@ ifdef VBOX_WITH_NETSHAPER
 VBoxVMM_SOURCES += \
 	VMMR3/PDMNetShaper.cpp \
 	VMMAll/PDMAllNetShaper.cpp
-endif
-ifdef VBOX_WITH_REM
-VBoxVMM_SOURCES += \
-	VMMAll/REMAll.cpp
 endif
 
 ifdef VBOX_WITH_NATIVE_NEM
@@ -543,10 +539,6 @@ VMMR0_SOURCES += \
  ifdef VBOX_WITH_NETSHAPER
 VMMR0_SOURCES += \
 	VMMAll/PDMAllNetShaper.cpp
- endif
- ifdef VBOX_WITH_REM
-VMMR0_SOURCES += \
-	VMMAll/REMAll.cpp
  endif
 VMMR0_SOURCES.amd64 = \
 	VMMR0/VMMR0JmpA-amd64.asm

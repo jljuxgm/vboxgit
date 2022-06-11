@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
+/* $Id: DBGF.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -549,13 +549,9 @@ static int dbgfR3EventPrologue(PVM pVM, DBGFEVENTTYPE enmEvent)
     }
 
     /*
-     * Sync back the state from the REM.
+     * Set flag.
      */
     dbgfR3EventSetStoppedInHyperFlag(pVM, enmEvent);
-#ifdef VBOX_WITH_REM
-    if (!pVM->dbgf.s.fStoppedInHyper)
-        REMR3StateUpdate(pVM, pVCpu);
-#endif
 
     /*
      * Look thru pending commands and finish those which make sense now.

@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -669,11 +669,7 @@ static int pgmPhysEnsureHandyPage(PVMCC pVM)
                 }
                 Assert(VM_FF_IS_SET(pVM, VM_FF_PGM_NEED_HANDY_PAGES));
                 Assert(VM_FF_IS_SET(pVM, VM_FF_PGM_NO_MEMORY));
-#ifdef IN_RING3
-# ifdef VBOX_WITH_REM
-                 REMR3NotifyFF(pVM);
-# endif
-#else
+#ifndef IN_RING3
                 VMCPU_FF_SET(VMMGetCpu(pVM), VMCPU_FF_TO_R3); /* paranoia */
 #endif
             }

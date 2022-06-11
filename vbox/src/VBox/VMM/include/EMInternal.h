@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 80018 2019-07-26 18:21:50Z vboxsync $ */
+/* $Id: EMInternal.h 81153 2019-10-08 13:59:03Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -159,13 +159,6 @@ typedef struct EM
 
     /** Id of the VCPU that last executed code in the recompiler. */
     VMCPUID                 idLastRemCpu;
-
-#ifdef VBOX_WITH_REM
-    /** REM critical section.
-     * This protects recompiler usage
-     */
-    PDMCRITSECT             CritSectREM;
-#endif
 } EM;
 /** Pointer to EM VM instance data. */
 typedef EM *PEM;

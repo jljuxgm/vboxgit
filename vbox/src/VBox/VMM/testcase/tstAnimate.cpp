@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
+/* $Id: tstAnimate.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -869,11 +869,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                      */
                     RTPrintf("info: powering on the VM...\n");
                     RTLogGroupSettings(NULL, "+REM_DISAS.e.l.f");
-#ifdef VBOX_WITH_REM
-                    rc = REMR3DisasEnableStepping(pVM, true);
-#else
-                    rc = VERR_NOT_IMPLEMENTED; /** @todo need some EM single-step indicator */
-#endif
+                    rc = VERR_NOT_IMPLEMENTED; /** @todo need some EM single-step indicator (was REMR3DisasEnableStepping) */
                     if (RT_SUCCESS(rc))
                     {
                         rc = EMR3SetExecutionPolicy(pUVM, EMEXECPOLICY_RECOMPILE_RING0, true); AssertReleaseRC(rc);

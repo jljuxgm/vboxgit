@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
+/* $Id: VMEmt.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -867,13 +867,6 @@ static DECLCALLBACK(void) vmR3HaltGlobal1NotifyCpuFF(PUVMCPU pUVCpu, uint32_t fF
             else if (   enmState == VMCPUSTATE_STARTED_EXEC_NEM
                      || enmState == VMCPUSTATE_STARTED_EXEC_NEM_WAIT)
                 NEMR3NotifyFF(pUVCpu->pVM, pVCpu, fFlags);
-#ifdef VBOX_WITH_REM
-            else if (enmState == VMCPUSTATE_STARTED_EXEC_REM)
-            {
-                if (!(fFlags & VMNOTIFYFF_FLAGS_DONE_REM))
-                    REMR3NotifyFF(pUVCpu->pVM);
-            }
-#endif
         }
     }
     /* This probably makes little sense: */
@@ -1016,11 +1009,6 @@ static DECLCALLBACK(void) vmR3DefaultNotifyCpuFF(PUVMCPU pUVCpu, uint32_t fFlags
             if (   enmState == VMCPUSTATE_STARTED_EXEC_NEM
                 || enmState == VMCPUSTATE_STARTED_EXEC_NEM_WAIT)
                 NEMR3NotifyFF(pUVCpu->pVM, pVCpu, fFlags);
-#ifdef VBOX_WITH_REM
-            else if (   !(fFlags & VMNOTIFYFF_FLAGS_DONE_REM)
-                     && enmState == VMCPUSTATE_STARTED_EXEC_REM)
-                REMR3NotifyFF(pUVCpu->pVM);
-#endif
         }
     }
 }
