@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: FsPerf.cpp 83986 2020-04-27 08:13:56Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -6378,9 +6378,30 @@ int main(int argc, char *argv[])
     /*
      * Default values.
      */
-    char szDefaultDir[32];
+    char szDefaultDir[RTPATH_MAX];
     const char *pszDir = szDefaultDir;
-    RTStrPrintf(szDefaultDir, sizeof(szDefaultDir), "fstestdir-%u" RTPATH_SLASH_STR, RTProcSelf());
+
+    /* As default retrieve the system's temporary directory and create a test directory beneath it,
+     * as this binary might get executed from a read-only medium such as ${CDROM}. */
+    rc = RTPathTemp(szDefaultDir, sizeof(szDefaultDir));
+    if (RT_SUCCESS(rc))
+    {
+        char szDirName[32];
+        RTStrPrintf2(szDirName, sizeof(szDirName), "fstestdir-%u" RTPATH_SLASH_STR, RTProcSelf());
+        rc = RTPathAppend(szDefaultDir, sizeof(szDefaultDir), szDirName);
+        if (RT_FAILURE(rc))
+        {
+            RTTestFailed(g_hTest, "Unable to append dir name in temp dir, rc=%Rrc\n", rc);
+            return RTTestSummaryAndDestroy(g_hTest);
+        }
+    }
+    else
+    {
+        RTTestFailed(g_hTest, "Unable to retrieve temp dir, rc=%Rrc\n", rc);
+        return RTTestSummaryAndDestroy(g_hTest);
+    }
+
+    RTTestIPrintf(RTTESTLVL_INFO, "Default directory is: %s\n", szDefaultDir);
 
     bool fCommsSlave = false;
 
@@ -6672,7 +6693,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 82968 $";
+                char szRev[] = "$Revision: 83986 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
