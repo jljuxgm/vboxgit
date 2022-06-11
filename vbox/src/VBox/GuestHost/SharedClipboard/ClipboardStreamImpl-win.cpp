@@ -1,4 +1,4 @@
-/* $Id: ClipboardStreamImpl-win.cpp 81259 2019-10-14 13:18:28Z vboxsync $ */
+/* $Id: ClipboardStreamImpl-win.cpp 82466 2019-12-06 15:48:58Z vboxsync $ */
 /** @file
  * ClipboardStreamImpl-win.cpp - Shared Clipboard IStream object implementation (guest and host side).
  */
@@ -185,9 +185,7 @@ STDMETHODIMP SharedClipboardWinStreamImpl::Read(void *pvBuffer, ULONG nBytesToRe
             rc = ShClTransferObjOpenParmsInit(&openParms);
             if (RT_SUCCESS(rc))
             {
-                openParms.fCreate = SHCL_OBJ_CF_ACT_OPEN_IF_EXISTS
-                                  | SHCL_OBJ_CF_ACT_FAIL_IF_NEW
-                                  | SHCL_OBJ_CF_ACCESS_READ
+                openParms.fCreate = SHCL_OBJ_CF_ACCESS_READ
                                   | SHCL_OBJ_CF_ACCESS_DENYWRITE;
 
                 rc = RTStrCopy(openParms.pszPath, openParms.cbPath, m_strPath.c_str());
