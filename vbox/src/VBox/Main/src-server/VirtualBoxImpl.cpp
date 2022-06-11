@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 79347 2019-06-26 09:15:29Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 80623 2019-09-06 10:05:11Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -251,7 +251,7 @@ struct SharedClipboardData
         , uMaxClipboardAreas(32) /** @todo Make this configurable. */
     {
 #ifdef DEBUG_andy
-        uMaxClipboardAreas = ULONG_MAX;
+        uMaxClipboardAreas = 9999;
 #endif
         int rc2 = RTCritSectInit(&CritSect);
         AssertRC(rc2);

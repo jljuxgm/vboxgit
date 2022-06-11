@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 80473 2019-08-28 11:52:47Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 80623 2019-09-06 10:05:11Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */
@@ -126,42 +126,4 @@ int VBoxClipboardSvcImplWriteData(PVBOXCLIPBOARDCLIENT pClient, PVBOXCLIPBOARDCL
     RT_NOREF(pClient, pCmdCtx, pData);
     return VERR_NOT_IMPLEMENTED;
 }
-
-#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
-int VBoxClipboardSvcImplURIReadDir(PVBOXCLIPBOARDCLIENT pClient, PVBOXCLIPBOARDDIRDATA pDirData)
-{
-    RT_NOREF(pClient, pDirData);
-    return VERR_NOT_IMPLEMENTED;
-}
-
-int VBoxClipboardSvcImplURIWriteDir(PVBOXCLIPBOARDCLIENT pClient, PVBOXCLIPBOARDDIRDATA pDirData)
-{
-    RT_NOREF(pClient, pDirData);
-    return VERR_NOT_IMPLEMENTED;
-}
-
-int VBoxClipboardSvcImplURIReadFileHdr(PVBOXCLIPBOARDCLIENT pClient, PVBOXCLIPBOARDFILEHDR pFileHdr)
-{
-    RT_NOREF(pClient, pFileHdr);
-    return VERR_NOT_IMPLEMENTED;
-}
-
-int VBoxClipboardSvcImplURIWriteFileHdr(PVBOXCLIPBOARDCLIENT pClient, PVBOXCLIPBOARDFILEHDR pFileHdr)
-{
-    RT_NOREF(pClient, pFileHdr);
-    return VERR_NOT_IMPLEMENTED;
-}
-
-int VBoxClipboardSvcImplURIReadFileData(PVBOXCLIPBOARDCLIENT pClient, PVBOXCLIPBOARDFILEDATA pFileData)
-{
-    RT_NOREF(pClient, pFileData);
-    return VERR_NOT_IMPLEMENTED;
-}
-
-int VBoxClipboardSvcImplURIWriteFileData(PVBOXCLIPBOARDCLIENT pClient, PVBOXCLIPBOARDFILEDATA pFileData)
-{
-    RT_NOREF(pClient, pFileData);
-    return VERR_NOT_IMPLEMENTED;
-}
-#endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
 

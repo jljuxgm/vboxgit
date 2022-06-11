@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 80444 2019-08-27 17:47:44Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 80623 2019-09-06 10:05:11Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -701,7 +701,7 @@ static LRESULT vboxClipboardWinProcessMsg(PVBOXCLIPBOARDCONTEXT pCtx, HWND hwnd,
 
            HANDLE hClip = NULL;
 
-           LogFlowFunc(("VBOX_WM_SHCLPB_READ_DATA: uFormat=0x%x\n", uFormat));
+           LogFlowFunc(("VBOX_CLIPBOARD_WM_READ_DATA: uFormat=0x%x\n", uFormat));
 
            int rc = VBoxClipboardWinOpen(hwnd);
            if (RT_SUCCESS(rc))
@@ -843,13 +843,13 @@ static LRESULT vboxClipboardWinProcessMsg(PVBOXCLIPBOARDCONTEXT pCtx, HWND hwnd,
                    }
 
                    if (RT_FAILURE(rc))
-                       LogFunc(("Failed with rc=%Rrc\n", rc));
+                       LogFunc(("VBOX_CLIPBOARD_WM_READ_DATA: Failed with rc=%Rrc\n", rc));
                }
 #endif
 
                if (hClip == NULL)
                {
-                   LogFunc(("VBOX_WM_SHCLPB_READ_DATA: hClip=NULL, lastError=%ld\n", GetLastError()));
+                   LogFunc(("VBOX_CLIPBOARD_WM_READ_DATA: hClip=NULL, lastError=%ld\n", GetLastError()));
 
                    /* Requested clipboard format is not available, send empty data. */
                    VbglR3ClipboardWriteData(pCtx->CmdCtx.uClientID, VBOX_SHARED_CLIPBOARD_FMT_NONE, NULL, 0);
@@ -1221,7 +1221,7 @@ DECLCALLBACK(int) VBoxClipboardWorker(void *pInstance, bool volatile *pfShutdown
 
                 switch (uMsg)
                 {
-                    case VBOX_SHARED_CLIPBOARD_HOST_MSG_FORMATS_WRITE:
+                    case VBOX_SHARED_CLIPBOARD_HOST_MSG_FORMATS_REPORT:
                     {
                         pEvent->enmType = VBGLR3CLIPBOARDEVENTTYPE_REPORT_FORMATS;
                         pEvent->u.ReportFormats.uFormats = uFormats;
