@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 81546 2019-10-25 14:34:14Z vboxsync $
+# $Id: Makefile.kmk 81775 2019-11-11 18:14:36Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -206,6 +206,11 @@ if !defined(VBOX_ONLY_BUILD)
  PROGRAMS += RTFuzzClient
  RTFuzzClient_TEMPLATE = VBoxR3Tool
  RTFuzzClient_SOURCES = RTFuzzClient.cpp
+
+ # RTEfiFatExtract - Extracting single files from a fat EFI binary.
+ PROGRAMS += RTEfiFatExtract
+ RTEfiFatExtract_TEMPLATE = VBoxR3Tool
+ RTEfiFatExtract_SOURCES = RTEfiFatExtract.cpp
 
  if1of ($(KBUILD_TARGET), darwin linux solaris win)
   # RTKrnlModInfo - our lsmod/kextstat clone (for testing the RTKrnlMod code).
