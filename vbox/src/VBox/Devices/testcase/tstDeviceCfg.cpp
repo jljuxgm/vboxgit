@@ -1,4 +1,4 @@
-/* $Id: tstDeviceCfg.cpp 83062 2020-02-12 17:45:51Z vboxsync $ */
+/* $Id: tstDeviceCfg.cpp 83261 2020-03-11 16:10:11Z vboxsync $ */
 /** @file
  * tstDevice - Configuration loader.
  */
@@ -308,6 +308,12 @@ static int tstDevCfgLoadTestcase(RTJSONVAL hJsonTestcase, const char **ppszTestc
                     }
                     else
                         rc = tstDevCfgErrorRc(pErrInfo, rc, "tstDevCfg/JSON: Failed to allocate %zu bytes for the test config structure", cbCfg);
+                }
+                else
+                {
+                    *ppszTestcaseId     = pszTestcaseId;
+                    *pcTestcaseCfgItems = 0;
+                    *ppTestcaseCfg      = NULL;
                 }
             }
             else
