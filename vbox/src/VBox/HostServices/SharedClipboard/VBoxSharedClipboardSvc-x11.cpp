@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 80464 2019-08-28 09:27:33Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 80467 2019-08-28 09:31:18Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -646,7 +646,7 @@ int main()
     dataBlock.cbData  = 42;
     dataBlock.uFormat = VBOX_SHARED_CLIPBOARD_FMT_UNICODETEXT;
 
-    rc = VBoxClipboardSvcImplReadData(&client, &dataBlock, &u32Dummy);
+    rc = VBoxClipboardSvcImplReadData(&client, NULL /* pCmdCtx */, &dataBlock, &u32Dummy);
     if (rc != VINF_HGCM_ASYNC_EXECUTE)
     {
         RTPrintf(TEST_NAME ": vboxClipboardReadData returned %Rrc\n", rc);
