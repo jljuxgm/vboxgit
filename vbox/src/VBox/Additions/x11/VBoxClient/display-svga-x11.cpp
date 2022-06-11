@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 83242 2020-03-10 11:12:02Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 83253 2020-03-11 07:25:59Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -231,10 +231,6 @@ static void queryMonitorPositions()
         free(mpMonitorPositions);
         mpMonitorPositions = NULL;
     }
-
-    // XRRScreenResources *pScreenResources = XRRGetScreenResources(x11Context.pDisplay, DefaultRootWindow(x11Context.pDisplay));
-    // AssertReturnVoid(pScreenResources);
-    // XRRFreeScreenResources(pScreenResources);
 
     int iMonitorCount = 0;
     XRRMonitorInfo *pMonitorInfo = NULL;
