@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 78518 2019-05-14 16:12:59Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 78520 2019-05-14 17:29:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -111,6 +111,8 @@ enum PixmapType
     SATAControllerAddDis,
     SCSIControllerAddEn,
     SCSIControllerAddDis,
+    SASControllerAddEn,
+    SASControllerAddDis,
     USBControllerAddEn,
     USBControllerAddDis,
     NVMeControllerAddEn,
