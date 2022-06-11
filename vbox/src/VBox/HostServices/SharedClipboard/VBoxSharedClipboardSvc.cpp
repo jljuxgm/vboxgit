@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 82483 2019-12-07 01:25:34Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 82486 2019-12-07 02:41:24Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -715,11 +715,6 @@ int shClSvcClientReportFeatures(PSHCLCLIENT pClient, VBOXHGCMCALLHANDLE hCall,
         pClient->State.fGuestFeatures0 = fFeatures0;
         pClient->State.fGuestFeatures1 = fFeatures1;
         Log(("[Client %RU32] features: %#RX64 %#RX64\n", pClient->State.uClientID, fFeatures0, fFeatures1));
-
-        /*
-         * Forward the info to Main.
-         */
-        /** @todo Not needed yet. */
     }
     else
         LogFunc(("pfnCallComplete -> %Rrc\n", rc));
