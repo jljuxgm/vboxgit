@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 78220 2019-04-20 04:08:44Z vboxsync $ */
+/* $Id: tstVMStruct.h 79572 2019-07-07 09:22:30Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -158,6 +158,8 @@
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pVmcsR3);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pShadowVmcsR0);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pShadowVmcsR3);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVirtApicPageR0);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVirtApicPageR3);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVmreadBitmapR0);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVmreadBitmapR3);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.pvVmwriteBitmapR0);
@@ -177,6 +179,7 @@
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.uEntryTick);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.offVirtApicWrite);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.fVirtNmiBlocking);
+    GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.fVirtApicPageDirty);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.Msrs);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.HCPhysVmcs);
     GEN_CHECK_OFF(CPUMCTX, hwvirt.vmx.HCPhysShadowVmcs);

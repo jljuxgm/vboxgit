@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 79345 2019-06-26 09:09:46Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 79572 2019-07-07 09:22:30Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -369,7 +369,8 @@ static const char * const g_apszVmxVDiagDesc[] =
     VMXV_DIAG_DESC(kVmxVDiag_Vmexit_MsrStorePtrReadPhys       , "MsrStorePtrReadPhys"       ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmexit_MsrStorePtrWritePhys      , "MsrStorePtrWritePhys"      ),
     VMXV_DIAG_DESC(kVmxVDiag_Vmexit_MsrStoreRing3             , "MsrStoreRing3"             ),
-    VMXV_DIAG_DESC(kVmxVDiag_Vmexit_MsrStoreRsvd              , "MsrStoreRsvd"              )
+    VMXV_DIAG_DESC(kVmxVDiag_Vmexit_MsrStoreRsvd              , "MsrStoreRsvd"              ),
+    VMXV_DIAG_DESC(kVmxVDiag_Vmexit_VirtApicPagePtrWritePhys  , "VirtApicPagePtrWritePhys"  )
     /* kVmxVDiag_End */
 };
 AssertCompile(RT_ELEMENTS(g_apszVmxVDiagDesc) == kVmxVDiag_End);
@@ -924,6 +925,7 @@ VMM_INT_DECL(void) HMDumpHwvirtVmxState(PVMCPU pVCpu)
     LogRel(("uEntryTick                 = %RX64\n",     pCtx->hwvirt.vmx.uEntryTick));
     LogRel(("offVirtApicWrite           = %#RX16\n",    pCtx->hwvirt.vmx.offVirtApicWrite));
     LogRel(("fVirtNmiBlocking           = %RTbool\n",   pCtx->hwvirt.vmx.fVirtNmiBlocking));
+    LogRel(("fVirtApicPageDirty         = %RTbool\n",   pCtx->hwvirt.vmx.fVirtApicPageDirty));
     LogRel(("VMCS cache:\n"));
 
     const char *pszPrefix = "  ";
