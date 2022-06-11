@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 82898 2020-01-29 00:56:30Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -107,8 +107,13 @@
 
 /* This flag was added in 10.6, it seems.  Should be harmless in earlier
    releases... */
-#if MAC_OS_X_VERSION_MIN_REQUIRED < 1060
+#if __MAC_OS_X_VERSION_MAX_ALLOWED < 1060
 # define kIOMemoryMapperNone UINT32_C(0x800)
+#endif
+
+/* This flag was added in 10.8.2, it seems. */
+#if __MAC_OS_X_VERSION_MAX_ALLOWED < 1082
+# define kIOMemoryHostPhysicallyContiguous UINT32_C(0x00000080)
 #endif
 
 /** @name Macros for preserving EFLAGS.AC (despair / paranoid)
