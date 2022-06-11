@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 84061 2020-04-28 17:31:31Z vboxsync $
+# $Id: vboxtestvms.py 84066 2020-04-28 20:49:11Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84061 $"
+__version__ = "$Revision: 84066 $"
 
 # Standard Python imports.
 import copy;
@@ -1904,7 +1904,7 @@ class TestVmManager(object):
         # Note: The images in the 6.1 folder all have been pre-configured to allow for Guest Additions installation
         #       (come with build essentials, kernel headers).
         # Linux
-        TestVm('tst-ubuntu-18_04_3-64',     kfGrpStdSmoke,        sHd = '6.1/ubuntu-18_04_3-amd64.vdi',
+        TestVm('tst-ubuntu-18_04_3-64',     kfGrpStdSmoke,        sHd = '6.1/ubuntu-18_04_3-amd64-2.vdi',
                sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True,
                asParavirtModesSup = [g_ksParavirtProviderKVM,]),
         TestVm('tst-ol-8_1-64-efi',         kfGrpStdSmoke,        sHd = '6.1/efi/ol-8_1-efi-amd64.vdi',
