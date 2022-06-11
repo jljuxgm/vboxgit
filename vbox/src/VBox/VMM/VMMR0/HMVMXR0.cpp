@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 80391 2019-08-23 04:37:13Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 80392 2019-08-23 05:04:15Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12427,7 +12427,7 @@ VMMR0DECL(VBOXSTRICTRC) VMXR0RunGuestCode(PVMCPUCC pVCpu)
 DECLINLINE(VBOXSTRICTRC) hmR0VmxHandleExit(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient)
 {
 #ifdef DEBUG_ramshankar
-#define VMEXIT_CALL_RET(a_fSave, a_CallExpr) \
+# define VMEXIT_CALL_RET(a_fSave, a_CallExpr) \
        do { \
             if (a_fSave != 0) \
                 hmR0VmxImportGuestState(pVCpu, pVmxTransient->pVmcsInfo, HMVMX_CPUMCTX_EXTRN_ALL); \
