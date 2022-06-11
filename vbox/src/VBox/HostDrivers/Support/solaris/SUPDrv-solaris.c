@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 82592 2019-12-16 17:57:04Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 82600 2019-12-16 20:31:07Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -66,7 +66,7 @@
 
 #include "dtrace/SUPDrv.h"
 
-extern "C" caddr_t hat_kpm_pfn2va(pfn_t); /* Found in vm/hat.h on solaris 11.3, but not on older like 10u7. */
+extern caddr_t hat_kpm_pfn2va(pfn_t); /* Found in vm/hat.h on solaris 11.3, but not on older like 10u7. */
 
 
 /*********************************************************************************************************************************
