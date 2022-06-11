@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerWidget.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIVMLogViewerWidget.cpp 79673 2019-07-10 13:24:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewerWidget class implementation.
  */
@@ -49,6 +49,7 @@
 /* COM includes: */
 #include "CSystemProperties.h"
 
+const ULONG uAllowedLogSize = _256M;
 UIVMLogViewerWidget::UIVMLogViewerWidget(EmbedTo enmEmbedding,
                                          UIActionPool *pActionPool,
                                          bool fShowToolbar /* = true */,
@@ -816,6 +817,12 @@ bool UIVMLogViewerWidget::createLogViewerPages()
                     break;
                 strText.append(QString::fromUtf8((char*)data.data(), data.size()));
                 uOffset += data.size();
+                /* Don't read futher if we have reached the allowed size limit: */
+                if (uOffset >= uAllowedLogSize)
+                {
+                    strText.append("\n=========Log file has been truncate as it is too large.======");
+                    break;
+                }
             }
             /* Anything read at all? */
             if (uOffset > 0)
