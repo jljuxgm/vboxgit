@@ -1,4 +1,4 @@
-# $Id: VirtualBox.tmpl.spec 81386 2019-10-20 08:51:32Z vboxsync $
+# $Id: VirtualBox.tmpl.spec 82441 2019-12-05 23:16:02Z vboxsync $
 ## @file
 # Spec file for creating VirtualBox rpm packages
 #
@@ -141,11 +141,13 @@ for d in /lib/modules/*; do
       --module-source `pwd`/src/vboxhost/vboxnetadp \
       KBUILD_VERBOSE= KERN_VER=$(basename $d) INSTALL_MODULE_PATH=$RPM_BUILD_ROOT -j4 \
       %INSTMOD%
-    ./src/vboxhost/build_in_tmp \
-      --use-module-symvers /tmp/vboxdrv-Module.symvers \
-      --module-source `pwd`/src/vboxhost/vboxpci \
-      KBUILD_VERBOSE= KERN_VER=$(basename $d) INSTALL_MODULE_PATH=$RPM_BUILD_ROOT -j4 \
-      %INSTMOD%
+    if [ -e `pwd`/src/vboxhost/vboxpci ]; then
+      ./src/vboxhost/build_in_tmp \
+        --use-module-symvers /tmp/vboxdrv-Module.symvers \
+        --module-source `pwd`/src/vboxhost/vboxpci \
+        KBUILD_VERBOSE= KERN_VER=$(basename $d) INSTALL_MODULE_PATH=$RPM_BUILD_ROOT -j4 \
+        %INSTMOD%
+    fi
   fi
 done
 rm -r src
