@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestDrvInst.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxGuestDrvInst.cpp 83826 2020-04-19 01:31:42Z vboxsync $ */
 /** @file
  * instdrvmain - Install guest drivers on NT4
  */
@@ -450,7 +450,7 @@ int main(int argc, char **argv)
 
   if (!GetModuleFileName(hExe, &szInstallDir[0], sizeof(szInstallDir)))
     {
-      printf("GetModuleFileName failed! rc = %d\n", GetLastError());
+      printf("GetModuleFileName failed! rc=%lu\n", GetLastError());
       return -1;
     }
 
