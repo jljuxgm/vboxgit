@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 78752 2019-05-25 20:59:23Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 78767 2019-05-26 21:13:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8851,10 +8851,10 @@ DECLCALLBACK(void) Console::i_vmstateChangeCallback(PUVM pUVM, VMSTATE enmState,
                  * is one or more mpUVM callers (added with addVMCaller()) we'll
                  * deadlock).
                  */
-                VMPowerDownTask *task = NULL;
+                VMPowerDownTask *pTask = NULL;
                 try
                 {
-                    task = new VMPowerDownTask(that, pProgress);
+                    pTask = new VMPowerDownTask(that, pProgress);
                 }
                 catch (std::bad_alloc &)
                 {
@@ -8870,17 +8870,18 @@ DECLCALLBACK(void) Console::i_vmstateChangeCallback(PUVM pUVM, VMSTATE enmState,
                  * powerDown() itself is being already executed. Just do
                  * nothing.
                  */
-                if (!task->isOk())
+                if (pTask->isOk())
                 {
-                    rc = task->createThread();
-                    task = NULL;
+                    rc = pTask->createThread();
+                    pTask = NULL;
                     if (FAILED(rc))
                         LogRelFunc(("Problem with creating thread for VMPowerDownTask.\n"));
                 }
                 else
                 {
-                    LogFlowFunc(("Console is already being uninitialized. (%Rhrc)\n", task->rc()));
-                    delete task;
+                    LogFlowFunc(("Console is already being uninitialized. (%Rhrc)\n", pTask->rc()));
+                    delete pTask;
+                    pTask = NULL;
                     rc = E_FAIL;
                 }
             }
