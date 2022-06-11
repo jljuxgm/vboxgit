@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 82321 2019-12-02 12:35:28Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 82410 2019-12-05 12:06:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3217,6 +3217,15 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 {
                     uint32_t u32AudioPCIAddr = (Address.miDevice << 16) | Address.miFn;
                     InsertConfigInteger(pCfg, "AudioPciAddress",    u32AudioPCIAddr);
+                }
+            }
+            if (fOsXGuest)
+            {
+                PCIBusAddress Address;
+                if (pBusMgr->findPCIAddress("nvme", 0, Address))
+                {
+                    uint32_t u32NvmePCIAddr = (Address.miDevice << 16) | Address.miFn;
+                    InsertConfigInteger(pCfg, "NvmePciAddress",    u32NvmePCIAddr);
                 }
             }
             InsertConfigInteger(pCfg,  "IocPciAddress", uIocPCIAddress);

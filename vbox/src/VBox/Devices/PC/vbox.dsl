@@ -1,4 +1,4 @@
-/* $Id: vbox.dsl 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: vbox.dsl 82410 2019-12-05 12:06:44Z vboxsync $ */
 /** @file
  * VirtualBox ACPI
  */
@@ -370,6 +370,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "VBOX  ", "VBOXBIOS", 2)
         PP1B,  32, // Parallel1 base IO address
         PP1I,  32, // Parallel1 IRQ
         PMNX,  32, // limit of 64-bit prefetch window (64KB units)
+        NVMA,  32, // Primary NVMe controller PCI address
         Offset (0x80),
         ININ, 32,
         Offset (0x200),
@@ -1219,6 +1220,30 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "VBOX  ", "VBOXBIOS", 2)
                     }
                  }
              }
+
+            // NVMe controller. Required to convince OS X that
+            // the controller is an internal (built-in) device.
+            Device (SSD0)
+            {
+                Method(_ADR, 0, NotSerialized)
+                {
+                     Return (NVMA)
+                }
+                Method (_STA, 0, NotSerialized)
+                {
+                    if (LEqual (NVMA, Zero)) {
+                        Return (0x00)
+                    }
+                    else {
+                        Return (0x0F)
+                    }
+                }
+                // Port 0
+                Device (PRT0)
+                {
+                    Name (_ADR, 0xffff)
+                }
+            }
 
             // NIC
             Device (GIGE)
