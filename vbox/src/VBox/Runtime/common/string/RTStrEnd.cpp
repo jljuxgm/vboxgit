@@ -1,4 +1,4 @@
-/* $Id: RTStrEnd.cpp 83886 2020-04-21 11:14:20Z vboxsync $ */
+/* $Id: RTStrEnd.cpp 83887 2020-04-21 11:16:04Z vboxsync $ */
 /** @file
  * IPRT - RTStrEnd, C++ version.
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include "internal/iprt.h"
 #include <iprt/string.h>
 
 
@@ -38,7 +39,7 @@ RTDECL(char *) RTStrEnd(const char *pszString, size_t cchMax)
         if (*pszString)
         { }
         else
-            return pszString;
+            return (char *)pszString;
         pszString++;
     }
     return NULL;
