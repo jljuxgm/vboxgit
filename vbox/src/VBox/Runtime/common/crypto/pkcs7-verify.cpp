@@ -1,4 +1,4 @@
-/* $Id: pkcs7-verify.cpp 84330 2020-05-18 13:37:00Z vboxsync $ */
+/* $Id: pkcs7-verify.cpp 84331 2020-05-18 13:38:38Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Verification
  */
@@ -439,9 +439,10 @@ static int rtCrPkcs7VerifySignerInfo(PCRTCRPKCS7SIGNERINFO pSignerInfo, PCRTCRPK
      * and verify them.  If no valid paths are found, this step will fail.
      */
     int rc = VINF_SUCCESS;
-    if (   (   hSignerCertSrc == NIL_RTCRSTORE
-            || hSignerCertSrc != hTrustedCerts ) /** @todo 'hSignerCertSrc != hTrustedCerts' ain't making sense wrt pValidationTime */
-        && !(fFlags & RTCRPKCS7VERIFY_SD_F_TRUST_ALL_CERTS) )
+    if (   /*(   hSignerCertSrc == NIL_RTCRSTORE
+            || hSignerCertSrc != hTrustedCerts )
+        &&*/ /** @todo 'hSignerCertSrc != hTrustedCerts' ain't making sense wrt pValidationTime */
+        !(fFlags & RTCRPKCS7VERIFY_SD_F_TRUST_ALL_CERTS) )
     {
         RTCRX509CERTPATHS hCertPaths;
         rc = RTCrX509CertPathsCreate(&hCertPaths, pSignerCert);
