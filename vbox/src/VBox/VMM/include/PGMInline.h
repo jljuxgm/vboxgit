@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 82092 2019-11-22 00:13:18Z vboxsync $ */
+/* $Id: PGMInline.h 82591 2019-12-16 17:55:40Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -504,7 +504,7 @@ DECLINLINE(int) pgmPhysPageQueryTlbeWithPage(PVMCC pVM, PPGMPAGE pPage, RTGCPHYS
             pTlbe->pv = pVM->pgm.s.CTX_SUFF(pvZeroPg);
 #endif
         AssertPtr(pTlbe->pv);
-#ifndef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
+#if defined(IN_RING3) || (!defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0) && !defined(VBOX_WITH_RAM_IN_KERNEL))
         Assert(!pTlbe->pMap || RT_VALID_PTR(pTlbe->pMap->pv));
 #endif
     }

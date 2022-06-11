@@ -1,4 +1,4 @@
-# $Id: Config.kmk 81153 2019-10-08 13:59:03Z vboxsync $
+# $Id: Config.kmk 82591 2019-12-16 17:55:40Z vboxsync $
 ## @file
 # kBuild Configuration file for the VMM.
 #
@@ -78,6 +78,12 @@ endif
 ifdef VBOX_WITH_NATIVE_NEM
  if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.amd64)
   VMM_COMMON_DEFS += VBOX_WITH_NATIVE_NEM VBOX_WITH_NEM_R0
+ endif
+endif
+ifdef VBOX_WITH_RAM_IN_KERNEL
+ VMM_COMMON_DEFS += VBOX_WITH_RAM_IN_KERNEL
+ if1of ($(KBUILD_TARGET), linux solaris) # Hosts that implements SUPR0HCPhysToVirt.
+  VMM_COMMON_DEFS += VBOX_WITH_LINEAR_HOST_PHYS_MEM
  endif
 endif
 
