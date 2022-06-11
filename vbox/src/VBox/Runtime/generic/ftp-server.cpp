@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 82840 2020-01-23 09:36:40Z vboxsync $ */
+/* $Id: ftp-server.cpp 82842 2020-01-23 10:16:23Z vboxsync $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  * Partly also implements RFC 3659 (Extensions to FTP, for "SIZE", ++).
@@ -2034,15 +2034,30 @@ static int rtFtpServerHandleRETR(PRTFTPSERVERCLIENT pClient, uint8_t cArgs, cons
 
     if (RT_SUCCESS(rc))
     {
-        if (pClient->pDataConn)
+        if (RT_SUCCESS(rc))
         {
-            /* Note: Data connection gets created when the PORT command was sent. */
-            rc = rtFtpServerDataConnStart(pClient->pDataConn, rtFtpServerDataConnFileWriteThread, cArgs, apcszArgs);
-            if (RT_SUCCESS(rc))
-                rc = rtFtpServerSendReplyRc(pClient, RTFTPSERVER_REPLY_FILE_STS_OK_OPENING_DATA_CONN);
+            if (pClient->pDataConn == NULL)
+            {
+                rc = rtFtpServerDataConnCreate(pClient, &pClient->pDataConn);
+                if (RT_SUCCESS(rc))
+                    rc = rtFtpServerDataConnStart(pClient->pDataConn, rtFtpServerDataConnFileWriteThread, cArgs, apcszArgs);
+
+                int rc2 = rtFtpServerSendReplyRc(  pClient, RT_SUCCESS(rc)
+                                                 ? RTFTPSERVER_REPLY_DATACONN_ALREADY_OPEN
+                                                 : RTFTPSERVER_REPLY_CANT_OPEN_DATA_CONN);
+                AssertRC(rc2);
+            }
+            else
+            {
+                 int rc2 = rtFtpServerSendReplyRc(pClient, RTFTPSERVER_REPLY_DATACONN_ALREADY_OPEN);
+                 AssertRC(rc2);
+            }
         }
         else
-            rc = VERR_FTP_DATA_CONN_NOT_FOUND;
+        {
+            int rc2 = rtFtpServerSendReplyRc(pClient, RTFTPSERVER_REPLY_CONN_REQ_FILE_ACTION_NOT_TAKEN);
+            AssertRC(rc2);
+        }
     }
 
     if (RT_FAILURE(rc))

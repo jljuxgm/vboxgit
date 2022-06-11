@@ -1,4 +1,4 @@
-/* $Id: RTFTPServer.cpp 82841 2020-01-23 10:02:26Z vboxsync $ */
+/* $Id: RTFTPServer.cpp 82842 2020-01-23 10:16:23Z vboxsync $ */
 /** @file
  * IPRT - Utility for running a (simple) FTP server.
  */
@@ -211,7 +211,15 @@ static DECLCALLBACK(int) onFileOpen(PRTFTPCALLBACKDATA pData, const char *pcszPa
     PFTPSERVERDATA pThis = (PFTPSERVERDATA)pData->pvUser;
     Assert(pData->cbUser == sizeof(FTPSERVERDATA));
 
-    return RTFileOpen(&pThis->hFile, pcszPath, fMode);
+    char *pszPathAbs = NULL;
+    if (RTStrAPrintf(&pszPathAbs, "%s/%s", pThis->szPathRootAbs, pcszPath) <= 0)
+        return VERR_NO_MEMORY;
+
+    int rc = RTFileOpen(&pThis->hFile, pszPathAbs, fMode);
+
+    RTStrFree(pszPathAbs);
+
+    return rc;
 }
 
 static DECLCALLBACK(int) onFileRead(PRTFTPCALLBACKDATA pData, void *pvHandle, void *pvBuf, size_t cbToRead, size_t *pcbRead)
@@ -526,7 +534,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 82841 $\n");
+                RTPrintf("$Revision: 82842 $\n");
                 return RTEXITCODE_SUCCESS;
 
             default:
