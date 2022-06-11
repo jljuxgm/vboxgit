@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 80083 2019-07-31 16:48:54Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 80215 2019-08-09 17:08:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -62,6 +62,7 @@
 #include "CDHCPServer.h"
 #include "CNATEngine.h"
 #include "CNATNetwork.h"
+#include "CNetworkAdapter.h"
 #include "CRangedIntegerFormValue.h"
 #include "CSerialPort.h"
 #include "CSharedFolder.h"
@@ -1246,6 +1247,13 @@ void UIMessageCenter::cannotChangeAudioAdapterAttribute(const CAudioAdapter &com
 {
     error(pParent, MessageType_Error,
           tr("Failed to change audio adapter attribute."),
+          UIErrorString::formatErrorInfo(comAdapter));
+}
+
+void UIMessageCenter::cannotChangeNetworkAdapterAttribute(const CNetworkAdapter &comAdapter, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to change network adapter attribute."),
           UIErrorString::formatErrorInfo(comAdapter));
 }
 
