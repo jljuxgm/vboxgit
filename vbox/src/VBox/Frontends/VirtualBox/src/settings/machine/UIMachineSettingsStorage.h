@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 81055 2019-09-27 13:10:38Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 81095 2019-10-01 15:38:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -60,7 +60,7 @@ public:
     /** Destructs Storage settings page. */
     ~UIMachineSettingsStorage();
 
-    /** Defines chipset @a type. */
+    /** Defines chipset @a enmType. */
     void setChipsetType(KChipsetType enmType);
 
 protected:
