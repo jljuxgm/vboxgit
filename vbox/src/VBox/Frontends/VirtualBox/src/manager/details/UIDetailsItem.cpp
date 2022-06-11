@@ -1,4 +1,4 @@
-/* $Id: UIDetailsItem.cpp 80795 2019-09-15 16:41:48Z vboxsync $ */
+/* $Id: UIDetailsItem.cpp 80881 2019-09-18 11:13:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsItem class definition.
  */
@@ -283,9 +283,14 @@ UIPrepareStep::UIPrepareStep(QObject *pParent, QObject *pBuildObject, const QUui
     connect(qobject_cast<UIDetailsItem*>(pBuildObject), &UIDetailsItem::sigBuildDone,
             this, &UIPrepareStep::sltStepDone,
             Qt::QueuedConnection);
-    connect(this, &UIPrepareStep::sigStepDone,
-            qobject_cast<UIDetailsItem*>(pParent), &UIDetailsItem::sltBuildStep,
-            Qt::QueuedConnection);
+
+    UIDetailsItem *pDetailsItem = qobject_cast<UIDetailsItem*>(pParent);
+    AssertPtrReturnVoid(pDetailsItem);
+    {
+        connect(this, &UIPrepareStep::sigStepDone,
+                pDetailsItem, &UIDetailsItem::sltBuildStep,
+                Qt::QueuedConnection);
+    }
 }
 
 void UIPrepareStep::sltStepDone()

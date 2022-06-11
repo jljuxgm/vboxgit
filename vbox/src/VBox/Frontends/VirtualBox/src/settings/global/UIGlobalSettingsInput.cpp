@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 80678 2019-09-09 14:29:48Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 80881 2019-09-18 11:13:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -841,8 +841,12 @@ void UIHotKeyTable::prepare()
     horizontalHeader()->setSectionResizeMode(UIHotKeyColumnIndex_Sequence, QHeaderView::Stretch);
 
     /* Connect model: */
-    connect(qobject_cast<UIHotKeyTableModel*>(model()), &UIHotKeyTableModel::sigShortcutsLoaded,
-            this, &UIHotKeyTable::sltHandleShortcutsLoaded);
+    UIHotKeyTableModel *pHotKeyTableModel = qobject_cast<UIHotKeyTableModel*>(model());
+    AssertPtrReturnVoid(pHotKeyTableModel);
+    {
+        connect(pHotKeyTableModel, &UIHotKeyTableModel::sigShortcutsLoaded,
+                this, &UIHotKeyTable::sltHandleShortcutsLoaded);
+    }
 
     /* Check if we do have proper item delegate: */
     QIStyledItemDelegate *pStyledItemDelegate = qobject_cast<QIStyledItemDelegate*>(itemDelegate());

@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 80802 2019-09-15 20:58:27Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 80881 2019-09-18 11:13:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -1240,15 +1240,19 @@ void UIChooserModel::prepareHandlers()
 
 void UIChooserModel::prepareConnections()
 {
-    /* Setup parent connections: */
-    connect(this, &UIChooserModel::sigSelectionChanged,
-            qobject_cast<UIChooser*>(parent()), &UIChooser::sigSelectionChanged);
-    connect(this, &UIChooserModel::sigSelectionInvalidated,
-            qobject_cast<UIChooser*>(parent()), &UIChooser::sigSelectionInvalidated);
-    connect(this, &UIChooserModel::sigToggleStarted,
-            qobject_cast<UIChooser*>(parent()), &UIChooser::sigToggleStarted);
-    connect(this, &UIChooserModel::sigToggleFinished,
-            qobject_cast<UIChooser*>(parent()), &UIChooser::sigToggleFinished);
+    UIChooser* pChooser = qobject_cast<UIChooser*>(parent());
+    AssertPtrReturnVoid(pChooser);
+    {
+        /* Setup parent connections: */
+        connect(this, &UIChooserModel::sigSelectionChanged,
+                pChooser, &UIChooser::sigSelectionChanged);
+        connect(this, &UIChooserModel::sigSelectionInvalidated,
+                pChooser, &UIChooser::sigSelectionInvalidated);
+        connect(this, &UIChooserModel::sigToggleStarted,
+                pChooser, &UIChooser::sigToggleStarted);
+        connect(this, &UIChooserModel::sigToggleFinished,
+                pChooser, &UIChooser::sigToggleFinished);
+    }
 
     /* Setup action connections: */
     connect(actionPool()->action(UIActionIndexST_M_Welcome_S_New), &UIAction::triggered,

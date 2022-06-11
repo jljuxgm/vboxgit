@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.cpp 80802 2019-09-15 20:58:27Z vboxsync $ */
+/* $Id: UIToolsModel.cpp 80881 2019-09-18 11:13:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class implementation.
  */
@@ -494,13 +494,17 @@ void UIToolsModel::prepareHandlers()
 
 void UIToolsModel::prepareConnections()
 {
-    /* Setup parent connections: */
-    connect(this, &UIToolsModel::sigSelectionChanged,
-            qobject_cast<UITools*>(parent()), &UITools::sigSelectionChanged);
-    connect(this, &UIToolsModel::sigExpandingStarted,
-            qobject_cast<UITools*>(parent()), &UITools::sigExpandingStarted);
-    connect(this, &UIToolsModel::sigExpandingFinished,
-            qobject_cast<UITools*>(parent()), &UITools::sigExpandingFinished);
+    UITools* pTools = qobject_cast<UITools*>(parent());
+    AssertPtrReturnVoid(pTools);
+    {
+        /* Setup parent connections: */
+        connect(this, &UIToolsModel::sigSelectionChanged,
+                pTools, &UITools::sigSelectionChanged);
+        connect(this, &UIToolsModel::sigExpandingStarted,
+                pTools, &UITools::sigExpandingStarted);
+        connect(this, &UIToolsModel::sigExpandingFinished,
+                pTools, &UITools::sigExpandingFinished);
+    }
 }
 
 void UIToolsModel::loadLastSelectedItems()

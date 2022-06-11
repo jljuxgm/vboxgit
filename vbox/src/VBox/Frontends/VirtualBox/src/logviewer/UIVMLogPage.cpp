@@ -1,4 +1,4 @@
-/* $Id: UIVMLogPage.cpp 80445 2019-08-27 17:51:09Z vboxsync $ */
+/* $Id: UIVMLogPage.cpp 80881 2019-09-18 11:13:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -79,9 +79,9 @@ void UIVMLogPage::prepareWidgets()
     m_pTextEdit = new UIVMLogViewerTextEdit(this);
     m_pMainLayout->addWidget(m_pTextEdit);
 
-    connect(qobject_cast<UIVMLogViewerTextEdit*>(m_pTextEdit), &UIVMLogViewerTextEdit::sigAddBookmark,
+    connect(m_pTextEdit, &UIVMLogViewerTextEdit::sigAddBookmark,
             this, &UIVMLogPage::sltAddBookmark);
-    connect(qobject_cast<UIVMLogViewerTextEdit*>(m_pTextEdit), &UIVMLogViewerTextEdit::sigDeleteBookmark,
+    connect(m_pTextEdit, &UIVMLogViewerTextEdit::sigDeleteBookmark,
             this, &UIVMLogPage::sltDeleteBookmark);
 }
 

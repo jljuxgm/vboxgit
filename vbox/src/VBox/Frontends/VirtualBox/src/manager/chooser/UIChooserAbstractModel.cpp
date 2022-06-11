@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 80760 2019-09-12 12:21:45Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 80881 2019-09-18 11:13:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -711,8 +711,12 @@ void UIThreadGroupDefinitionSave::configure(QObject *pParent,
 {
     m_oldLists = oldLists;
     m_newLists = newLists;
-    connect(this, &UIThreadGroupDefinitionSave::sigComplete,
-            qobject_cast<UIChooserAbstractModel*>(pParent), &UIChooserAbstractModel::sltGroupDefinitionsSaveComplete);
+    UIChooserAbstractModel* pChooserAbstractModel = qobject_cast<UIChooserAbstractModel*>(pParent);
+    AssertPtrReturnVoid(pChooserAbstractModel);
+    {
+        connect(this, &UIThreadGroupDefinitionSave::sigComplete,
+                pChooserAbstractModel, &UIChooserAbstractModel::sltGroupDefinitionsSaveComplete);
+    }
 }
 
 UIThreadGroupDefinitionSave::UIThreadGroupDefinitionSave()
@@ -837,8 +841,12 @@ void UIThreadGroupOrderSave::configure(QObject *pParent,
                                        const QMap<QString, QStringList> &groups)
 {
     m_groups = groups;
-    connect(this, &UIThreadGroupOrderSave::sigComplete,
-            qobject_cast<UIChooserAbstractModel*>(pParent), &UIChooserAbstractModel::sltGroupOrdersSaveComplete);
+    UIChooserAbstractModel *pChooserAbstractModel = qobject_cast<UIChooserAbstractModel*>(pParent);
+    AssertPtrReturnVoid(pChooserAbstractModel);
+    {
+        connect(this, &UIThreadGroupOrderSave::sigComplete,
+                pChooserAbstractModel, &UIChooserAbstractModel::sltGroupOrdersSaveComplete);
+    }
 }
 
 UIThreadGroupOrderSave::UIThreadGroupOrderSave()
