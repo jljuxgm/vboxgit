@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 80706 2019-09-10 15:47:03Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 80722 2019-09-11 09:21:47Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -283,7 +283,9 @@ static DECLCALLBACK(void) pdmR0DevHlp_PCISetIrq(PPDMDEVINS pDevIns, PPDMPCIDEV p
     LogFlow(("pdmR0DevHlp_PCISetIrq: caller=%p/%d: pPciDev=%p:{%#x} iIrq=%d iLevel=%d\n",
              pDevIns, pDevIns->iInstance, pPciDev, pPciDev->uDevFn, iIrq, iLevel));
     PGVM         pGVM    = pDevIns->Internal.s.pGVM;
-    PPDMPCIBUS   pPciBus = pPciDev->Int.s.pPdmBusR0;
+    size_t const idxBus  = pPciDev->Int.s.idxPdmBus;
+    AssertReturnVoid(idxBus < RT_ELEMENTS(pGVM->pdm.s.aPciBuses));
+    PPDMPCIBUS   pPciBus = &pGVM->pdm.s.aPciBuses[idxBus];
 
     pdmLock(pGVM);
     uint32_t uTagSrc;
