@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 79313 2019-06-24 16:13:24Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 79575 2019-07-07 12:03:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -175,11 +175,6 @@ UIWizardNewCloudVMPageExpert::UIWizardNewCloudVMPageExpert()
             this, &UIWizardNewCloudVMPageExpert::sltHandleAccountButtonClick);
     connect(m_pAccountImageList, &QListWidget::currentRowChanged,
             this, &UIWizardNewCloudVMPageExpert::sltHandleInstanceListChange);
-
-    /* Register fields: */
-    registerField("client", this, "client");
-    registerField("vsd", this, "vsd");
-    registerField("vsdForm", this, "vsdForm");
 }
 
 bool UIWizardNewCloudVMPageExpert::event(QEvent *pEvent)
@@ -245,7 +240,7 @@ bool UIWizardNewCloudVMPageExpert::isComplete() const
     fResult =    client().isNotNull()
               && !imageId().isNull()
               && vsd().isNotNull()
-              && vsdForm().isNotNull();
+              && UIWizardNewCloudVMPage1::vsdForm().isNotNull();
 
     /* Return result: */
     return fResult;
@@ -260,7 +255,7 @@ bool UIWizardNewCloudVMPageExpert::validatePage()
     startProcessing();
 
     /* Check whether we have proper VSD form: */
-    CVirtualSystemDescriptionForm comForm = fieldImp("vsdForm").value<CVirtualSystemDescriptionForm>();
+    CVirtualSystemDescriptionForm comForm = UIWizardNewCloudVMPage1::vsdForm();
     fResult = comForm.isNotNull();
     Assert(fResult);
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.h 79256 2019-06-20 13:40:17Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.h 79575 2019-07-07 12:03:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class declaration.
  */
@@ -34,9 +34,6 @@ class UIWizardNewCloudVMPageExpert : public UIWizardPage,
                                      public UIWizardNewCloudVMPage2
 {
     Q_OBJECT;
-    Q_PROPERTY(CCloudClient client READ client);
-    Q_PROPERTY(CVirtualSystemDescription vsd READ vsd);
-    Q_PROPERTY(CVirtualSystemDescriptionForm vsdForm READ vsdForm);
 
 public:
 
@@ -45,8 +42,8 @@ public:
 
 protected:
 
-    /** Allows to access 'field()' from base part. */
-    virtual QVariant fieldImp(const QString &strFieldName) const /* override */ { return UIWizardPage::field(strFieldName); }
+    /** Allows access wizard from base part. */
+    virtual UIWizard *wizardImp() const /* override */ { return UIWizardPage::wizard(); }
 
     /** Handle any Qt @a pEvent. */
     virtual bool event(QEvent *pEvent) /* override */;

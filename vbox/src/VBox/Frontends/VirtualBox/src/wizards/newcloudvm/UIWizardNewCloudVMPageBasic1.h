@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.h 79256 2019-06-20 13:40:17Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.h 79575 2019-07-07 12:03:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class declaration.
  */
@@ -93,10 +93,19 @@ protected:
     QString profileName() const;
     /** Returns image ID. */
     QString imageId() const;
-    /** Returns Cloud Client. */
+
+    /** Defines Cloud @a comClient object. */
+    void setClient(const CCloudClient &comClient);
+    /** Returns Cloud Client object. */
     CCloudClient client() const;
+
+    /** Defines Virtual System @a comDescription object. */
+    void setVSD(const CVirtualSystemDescription &comDescription);
     /** Returns Virtual System Description object. */
     CVirtualSystemDescription vsd() const;
+
+    /** Defines Virtual System Description @a comForm object. */
+    void setVSDForm(const CVirtualSystemDescriptionForm &comForm);
     /** Returns Virtual System Description Form object. */
     CVirtualSystemDescriptionForm vsdForm() const;
 
@@ -104,17 +113,11 @@ protected:
     bool  m_fPolished;
 
     /** Holds the Cloud Provider Manager reference. */
-    CCloudProviderManager          m_comCloudProviderManager;
+    CCloudProviderManager  m_comCloudProviderManager;
     /** Holds the Cloud Provider object reference. */
-    CCloudProvider                 m_comCloudProvider;
+    CCloudProvider         m_comCloudProvider;
     /** Holds the Cloud Profile object reference. */
-    CCloudProfile                  m_comCloudProfile;
-    /** Holds the Cloud Client object reference. */
-    CCloudClient                   m_comCloudClient;
-    /** Holds the Virtual System Description object reference. */
-    CVirtualSystemDescription      m_comVSD;
-    /** Holds the Virtual System Description Form object reference. */
-    CVirtualSystemDescriptionForm  m_comVSDForm;
+    CCloudProfile          m_comCloudProfile;
 
     /** Holds the destination layout instance. */
     QGridLayout *m_pDestinationLayout;
@@ -143,9 +146,6 @@ protected:
 class UIWizardNewCloudVMPageBasic1 : public UIWizardPage, public UIWizardNewCloudVMPage1
 {
     Q_OBJECT;
-    Q_PROPERTY(CCloudClient client READ client);
-    Q_PROPERTY(CVirtualSystemDescription vsd READ vsd);
-    Q_PROPERTY(CVirtualSystemDescriptionForm vsdForm READ vsdForm);
 
 public:
 
@@ -153,6 +153,9 @@ public:
     UIWizardNewCloudVMPageBasic1();
 
 protected:
+
+    /** Allows access wizard from base part. */
+    virtual UIWizard *wizardImp() const /* override */ { return UIWizardPage::wizard(); }
 
     /** Handle any Qt @a pEvent. */
     virtual bool event(QEvent *pEvent) /* override */;

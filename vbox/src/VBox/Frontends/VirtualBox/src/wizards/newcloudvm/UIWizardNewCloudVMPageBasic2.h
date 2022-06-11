@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.h 79256 2019-06-20 13:40:17Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.h 79575 2019-07-07 12:03:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class declaration.
  */
@@ -39,6 +39,9 @@ protected:
     /** Refreshes form properties table. */
     void refreshFormPropertiesTable();
 
+    /** Returns Virtual System Description Form object. */
+    CVirtualSystemDescriptionForm vsdForm() const;
+
     /** Holds the Form Editor widget instance. */
     UIFormEditorWidgetPointer  m_pFormEditor;
 };
@@ -55,8 +58,8 @@ public:
 
 protected:
 
-    /** Allows to access 'field()' from base part. */
-    virtual QVariant fieldImp(const QString &strFieldName) const /* override */ { return UIWizardPage::field(strFieldName); }
+    /** Allows access wizard from base part. */
+    virtual UIWizard *wizardImp() const /* override */ { return UIWizardPage::wizard(); }
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
