@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 84029 2020-04-28 09:19:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class implementation.
  */
@@ -220,7 +220,10 @@ void UIProgressDialog::sltCancelOperation()
 void UIProgressDialog::prepare()
 {
     /* Setup dialog: */
-    setWindowTitle(QString("%1: %2").arg(m_strTitle, m_comProgress.GetDescription()));
+    if (m_strTitle.isNull())
+        setWindowTitle(m_comProgress.GetDescription());
+    else
+        setWindowTitle(QString("%1: %2").arg(m_strTitle, m_comProgress.GetDescription()));
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 #ifdef VBOX_WS_MAC
     ::darwinSetHidesAllTitleButtons(this);
