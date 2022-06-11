@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 80090 2019-07-31 21:20:57Z vboxsync $ */
+/* $Id: IOM.cpp 80091 2019-07-31 23:34:22Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -133,8 +133,10 @@
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
 static void iomR3FlushCache(PVM pVM);
+#if 0
 static DECLCALLBACK(int) iomR3RelocateIOPortCallback(PAVLROIOPORTNODECORE pNode, void *pvUser);
 static DECLCALLBACK(int) iomR3RelocateMMIOCallback(PAVLROGCPHYSNODECORE pNode, void *pvUser);
+#endif
 static DECLCALLBACK(void) iomR3IOPortInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
 static DECLCALLBACK(void) iomR3MMIOInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
 static FNIOMIOPORTIN        iomR3IOPortDummyIn;
@@ -332,6 +334,7 @@ VMMR3_INT_DECL(void) IOMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
 #endif
 }
 
+#if 0
 
 /**
  * Callback function for relocating a I/O port range.
@@ -362,7 +365,6 @@ static DECLCALLBACK(int) iomR3RelocateIOPortCallback(PAVLROIOPORTNODECORE pNode,
 }
 
 
-#if 0
 /**
  * Callback function for relocating a MMIO range.
  *
@@ -389,8 +391,8 @@ static DECLCALLBACK(int) iomR3RelocateMMIOCallback(PAVLROGCPHYSNODECORE pNode, v
 
     return 0;
 }
-#endif
 
+#endif
 
 /**
  * Terminates the IOM.
