@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSFDetails.cpp 80678 2019-09-09 14:29:48Z vboxsync $ */
+/* $Id: UIMachineSettingsSFDetails.cpp 81611 2019-10-31 18:03:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSFDetails class implementation.
  */
@@ -24,7 +24,7 @@
 #include "UICommon.h"
 
 
-UIMachineSettingsSFDetails::UIMachineSettingsSFDetails(DialogType type,
+UIMachineSettingsSFDetails::UIMachineSettingsSFDetails(SFDialogType type,
                                                        bool fEnableSelector, /* for "permanent" checkbox */
                                                        const QStringList &usedNames,
                                                        QWidget *pParent /* = 0 */)
