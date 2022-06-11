@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 81828 2019-11-13 15:30:50Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 81833 2019-11-13 16:40:51Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -3249,6 +3249,7 @@ static int buslogicR3DeviceSCSIRequestAbort(PPDMDEVINS pDevIns, PBUSLOGIC pBusLo
  * 32-bit format.
  *
  * @returns Mailbox guest physical address.
+ * @param   pDevIns      The device instance.
  * @param   pBusLogic    Pointer to the shared BusLogic instance data.
  * @param   pMbx         Pointer to the mailbox to read into.
  */
