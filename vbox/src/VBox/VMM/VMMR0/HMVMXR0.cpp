@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79765 2019-07-14 15:53:31Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79766 2019-07-14 16:11:22Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -13673,6 +13673,7 @@ static int hmR0VmxCheckExitDueToEventDeliveryNested(PVMCPU pVCpu, PVMXTRANSIENT 
         else
             GCPtrFaultAddress = 0;
 
+        /** @todo NSTVMX: Verify the docs on this one again please. */
         if (VMX_IDT_VECTORING_INFO_IS_XCPT_NMI(uIdtVectorInfo))
             CPUMSetGuestNmiBlocking(pVCpu, true);
 
