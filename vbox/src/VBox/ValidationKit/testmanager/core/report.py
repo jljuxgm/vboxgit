@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: report.py 82634 2019-12-22 18:52:21Z vboxsync $
+# $Id: report.py 82647 2019-12-23 20:50:12Z vboxsync $
 
 """
 Test Manager - Report models.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82634 $"
+__version__ = "$Revision: 82647 $"
 
 
 # Standard Python imports.
@@ -206,11 +206,12 @@ class ReportModelBase(ModelLogicBase): # pylint: disable=too-few-public-methods
         """
         if iPeriod == 0:
             return 'now' if self.tsNow is None else 'then';
+        sTerm = 'ago' if self.tsNow is None else 'earlier';
         if self.cHoursPerPeriod == 24:
-            return '%dd ago' % (iPeriod, );
+            return '%dd %s' % (iPeriod, sTerm, );
         if (iPeriod * self.cHoursPerPeriod) % 24 == 0:
-            return '%dd ago' % (iPeriod * self.cHoursPerPeriod / 24, );
-        return '%dh ago' % (iPeriod * self.cHoursPerPeriod, );
+            return '%dd %s' % (iPeriod * self.cHoursPerPeriod / 24, sTerm, );
+        return '%dh %s' % (iPeriod * self.cHoursPerPeriod, sTerm);
 
     def getStraightPeriodDesc(self, iPeriod):
         """
