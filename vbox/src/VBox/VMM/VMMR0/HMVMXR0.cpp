@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79383 2019-06-27 09:53:17Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79384 2019-06-27 10:06:15Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -16661,9 +16661,6 @@ HMVMX_EXIT_DECL hmR0VmxExitVmwrite(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
     ExitInfo.cbInstr     = pVmxTransient->cbInstr;
     if (!ExitInfo.InstrInfo.VmreadVmwrite.fIsRegOperand)
         HMVMX_DECODE_MEM_OPERAND(pVCpu, ExitInfo.InstrInfo.u, ExitInfo.u64Qual, VMXMEMACCESS_READ, &ExitInfo.GCPtrEffAddr);
-
-    /** @todo NSTVMX: Remove later. */
-    Log4Func(("VMWRITE: %#x\n", pVCpu->cpum.GstCtx.aGRegs[ExitInfo.InstrInfo.VmreadVmwrite.iReg2].u32));
 
     VBOXSTRICTRC rcStrict = IEMExecDecodedVmwrite(pVCpu, &ExitInfo);
     if (RT_LIKELY(rcStrict == VINF_SUCCESS))
