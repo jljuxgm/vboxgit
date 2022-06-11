@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 78769 2019-05-26 22:23:57Z vboxsync $
+# $Id: virtual_test_sheriff.py 78770 2019-05-26 22:36:10Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -35,7 +35,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78769 $"
+__version__ = "$Revision: 78770 $"
 
 
 # Standard python imports
@@ -318,7 +318,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 78769 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 78770 $ \n');
 
 
     def eprint(self, sText):
@@ -606,6 +606,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_API_Digest_Mismatch                       = ( 'API / (XP)COM',     'Digest mismatch' );
     ktReason_API_MoveVM_SharingViolation               = ( 'API / (XP)COM',     'MoveVM sharing violation' );
     ktReason_API_MoveVM_InvalidParameter               = ( 'API / (XP)COM',     'MoveVM invalid parameter' );
+    ktReason_API_Open_Session_Failed                   = ( 'API / (XP)COM',     'Open session failed' );
     ktReason_XPCOM_Exit_Minus_11                       = ( 'API / (XP)COM',     'exit -11' );
     ktReason_XPCOM_VBoxSVC_Hang                        = ( 'API / (XP)COM',     'VBoxSVC hang' );
     ktReason_XPCOM_VBoxSVC_Hang_Plus_Heap_Corruption   = ( 'API / (XP)COM',     'VBoxSVC hang + heap corruption' );
@@ -687,7 +688,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 78769 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 78770 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -1395,6 +1396,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         ( True,  ktReason_API_MoveVM_SharingViolation,              'rc=VBOX_E_IPRT_ERROR text="Could not copy the log file ' ),
         ( True,  ktReason_API_MoveVM_InvalidParameter,
           'rc=VBOX_E_IPRT_ERROR text="Could not copy the setting file ' ),
+        ( True,  ktReason_API_Open_Session_Failed,                  'error: failed to open session for' ),
     ];
 
     def investigateVBoxApiTest(self, oCaseFile):
