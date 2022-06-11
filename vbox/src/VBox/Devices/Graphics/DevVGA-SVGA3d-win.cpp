@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 83620 2020-04-08 12:41:52Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 84136 2020-05-04 12:11:24Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -4651,7 +4651,7 @@ int vmsvga3dSetLightData(PVGASTATECC pThisCC, uint32_t cid, uint32_t index, SVGA
     AssertReturn(pState, VERR_NO_MEMORY);
 
     Log(("vmsvga3dSetLightData %x index=%d\n", cid, index));
-    AssertReturn(index < SVGA3D_MAX_LIGHTS, VERR_INVALID_PARAMETER);
+    ASSERT_GUEST_RETURN(index < SVGA3D_MAX_LIGHTS, VERR_INVALID_PARAMETER);
 
     int rc = vmsvga3dContextFromCid(pState, cid, &pContext);
     AssertRCReturn(rc, rc);
