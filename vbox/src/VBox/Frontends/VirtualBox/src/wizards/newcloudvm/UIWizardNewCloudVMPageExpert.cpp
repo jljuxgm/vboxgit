@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 79244 2019-06-19 14:19:05Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 79247 2019-06-19 15:46:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -166,15 +166,6 @@ UIWizardNewCloudVMPageExpert::UIWizardNewCloudVMPageExpert(bool fImportFromOCIBy
 
     /* Populate sources: */
     populateSources();
-    /* Populate accounts: */
-    populateAccounts();
-    /* Populate account properties: */
-    populateAccountProperties();
-    /* Populate account instances: */
-    populateAccountInstances();
-    /* Populate form properties: */
-    populateFormProperties();
-    refreshFormPropertiesTable();
 
     /* Setup connections: */
     if (gpManager)
@@ -240,6 +231,13 @@ void UIWizardNewCloudVMPageExpert::retranslateUi()
 
 void UIWizardNewCloudVMPageExpert::initializePage()
 {
+    /* If wasn't polished yet: */
+    if (!m_fPolished)
+    {
+        QMetaObject::invokeMethod(this, "sltHandleSourceChange", Qt::QueuedConnection);
+        m_fPolished = true;
+    }
+
     /* Translate page: */
     retranslateUi();
 }

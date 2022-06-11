@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.h 79244 2019-06-19 14:19:05Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.h 79247 2019-06-19 15:46:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class declaration.
  */
@@ -103,6 +103,8 @@ protected:
 
     /** Holds whether default source should be Import from OCI. */
     bool  m_fImportFromOCIByDefault;
+    /** Holds whether starting page was polished. */
+    bool  m_fPolished;
 
     /** Holds the Cloud Provider Manager reference. */
     CCloudProviderManager          m_comCloudProviderManager;

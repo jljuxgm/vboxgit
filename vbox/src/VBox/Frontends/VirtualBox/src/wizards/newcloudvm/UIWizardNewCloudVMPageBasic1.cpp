@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.cpp 79244 2019-06-19 14:19:05Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.cpp 79247 2019-06-19 15:46:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class implementation.
  */
@@ -44,6 +44,7 @@
 
 UIWizardNewCloudVMPage1::UIWizardNewCloudVMPage1(bool fImportFromOCIByDefault)
     : m_fImportFromOCIByDefault(fImportFromOCIByDefault)
+    , m_fPolished(false)
     , m_pSourceLayout(0)
     , m_pSourceLabel(0)
     , m_pSourceComboBox(0)
@@ -666,12 +667,6 @@ UIWizardNewCloudVMPageBasic1::UIWizardNewCloudVMPageBasic1(bool fImportFromOCIBy
 
     /* Populate sources: */
     populateSources();
-    /* Populate accounts: */
-    populateAccounts();
-    /* Populate account properties: */
-    populateAccountProperties();
-    /* Populate account instances: */
-    populateAccountInstances();
 
     /* Setup connections: */
     if (gpManager)
@@ -760,6 +755,13 @@ void UIWizardNewCloudVMPageBasic1::retranslateUi()
 
 void UIWizardNewCloudVMPageBasic1::initializePage()
 {
+    /* If wasn't polished yet: */
+    if (!m_fPolished)
+    {
+        QMetaObject::invokeMethod(this, "sltHandleSourceChange", Qt::QueuedConnection);
+        m_fPolished = true;
+    }
+
     /* Translate page: */
     retranslateUi();
 }
