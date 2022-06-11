@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 79882 2019-07-19 11:33:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
@@ -937,7 +937,7 @@ const char *UIInformationDataStorageStatistics::storCtrlType2Str(const KStorageC
     switch (enmCtrlType)
     {
         case KStorageControllerType_LsiLogic:
-            pszCtrl = "LSILOGIC";
+            pszCtrl = "LSILOGICSCSI";
             break;
         case KStorageControllerType_BusLogic:
             pszCtrl = "BUSLOGIC";
@@ -983,7 +983,6 @@ void UIInformationDataStorageStatistics::sltProcessStatistics()
         strInfo = dbg.GetStats(it.key(), true);
         m_values[it.key()] = parseStatistics(strInfo);
     }
-
     QModelIndex index = m_pModel->index(1,0);
     m_pModel->updateData(index);
 }
