@@ -1,4 +1,4 @@
-/* $Id: tstClipboardGH-X11.cpp 82906 2020-01-29 12:45:51Z vboxsync $ */
+/* $Id: tstClipboardGH-X11.cpp 82922 2020-01-30 11:41:25Z vboxsync $ */
 /** @file
  * Shared Clipboard guest/host X11 code test cases.
  */
@@ -454,24 +454,6 @@ static void tstClipGetCompletedRequest(int *prc, char ** ppc, uint32_t *pcb, CLI
     *pcb = g_tst_cbCompleted;
     *ppReq = g_tst_pCompletedReq;
 }
-#ifdef RT_OS_SOLARIS_10
-char XtStrings [] = "";
-_WidgetClassRec* applicationShellWidgetClass;
-char XtShellStrings [] = "";
-int XmbTextPropertyToTextList(
-    Display*            /* display */,
-    XTextProperty*      /* text_prop */,
-    char***             /* list_return */,
-    int*                /* count_return */
-)
-{
-  return 0;
-}
-#else
-const char XtStrings [] = "";
-_WidgetClassRec* applicationShellWidgetClass;
-const char XtShellStrings [] = "";
-#endif
 
 static void tstStringFromX11(RTTEST hTest, PSHCLX11CTX pCtx,
                              const char *pcszExp, int rcExp)
