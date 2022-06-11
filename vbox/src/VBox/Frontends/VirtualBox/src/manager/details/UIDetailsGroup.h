@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.h 79842 2019-07-17 16:51:51Z vboxsync $ */
+/* $Id: UIDetailsGroup.h 80784 2019-09-13 17:21:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class declaration.
  */
@@ -83,7 +83,7 @@ public:
         virtual int minimumHeightHint() const /* override */;
     /** @} */
 
-protected slots:
+public slots:
 
     /** @name Item stuff.
       * @{ */

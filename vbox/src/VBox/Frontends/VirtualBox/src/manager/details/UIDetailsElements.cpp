@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.cpp 80100 2019-08-01 12:42:18Z vboxsync $ */
+/* $Id: UIDetailsElements.cpp 80784 2019-09-13 17:21:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes implementation.
  */
@@ -62,8 +62,8 @@ UIDetailsElementInterface::UIDetailsElementInterface(UIDetailsSet *pParent, Deta
     , m_pTask(0)
 {
     /* Listen for the global thread-pool: */
-    connect(uiCommon().threadPool(), SIGNAL(sigTaskComplete(UITask*)),
-            this, SLOT(sltUpdateAppearanceFinished(UITask*)));
+    connect(uiCommon().threadPool(), &UIThreadPool::sigTaskComplete,
+            this, &UIDetailsElementInterface::sltUpdateAppearanceFinished);
 
     /* Translate finally: */
     retranslateUi();

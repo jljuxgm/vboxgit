@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGroup.cpp 79842 2019-07-17 16:51:51Z vboxsync $ */
+/* $Id: UIDetailsGroup.cpp 80784 2019-09-13 17:21:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGroup class implementation.
  */
@@ -261,8 +261,8 @@ void UIDetailsGroup::updateGeometry()
 void UIDetailsGroup::prepareConnections()
 {
     /* Prepare group-item connections: */
-    connect(this, SIGNAL(sigMinimumWidthHintChanged(int)),
-            model(), SIGNAL(sigRootItemMinimumWidthHintChanged(int)));
+    connect(this, &UIDetailsGroup::sigMinimumWidthHintChanged,
+            model(), &UIDetailsModel::sigRootItemMinimumWidthHintChanged);
 }
 
 void UIDetailsGroup::paintBackground(QPainter *pPainter, const QStyleOptionGraphicsItem *pOptions) const
