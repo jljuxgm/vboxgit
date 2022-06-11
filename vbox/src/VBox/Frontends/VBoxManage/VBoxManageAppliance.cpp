@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 84038 2020-04-28 10:54:56Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 84047 2020-04-28 13:40:01Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -1894,12 +1894,18 @@ RTEXITCODE handleSignAppliance(HandlerArg *arg)
     Utf8Str strAppliancePath;
     Utf8Str strApplianceFullPath;
 
+    if (strOvfFilename.isEmpty())
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "The OVA package name is empty");
+
     do
     {
+        char *pszAbsFilePath = RTPathAbsDup(strOvfFilename.c_str());
+
+        if (!RTFileExists(pszAbsFilePath))
+            return RTMsgErrorExit(RTEXITCODE_FAILURE, "The OVA package %s wasn't found", pszAbsFilePath);
+
         ComPtr<IAppliance> pAppliance;
         CHECK_ERROR_BREAK(arg->virtualBox, CreateAppliance(pAppliance.asOutParam()));
-
-        char *pszAbsFilePath = RTPathAbsDup(strOvfFilename.c_str());
 
         ComPtr<IProgress> progressRead;
         CHECK_ERROR_BREAK(pAppliance, Read(Bstr(pszAbsFilePath).raw(), progressRead.asOutParam()));
