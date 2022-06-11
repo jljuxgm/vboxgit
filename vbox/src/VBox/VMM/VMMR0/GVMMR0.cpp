@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
+/* $Id: GVMMR0.cpp 80319 2019-08-16 09:19:31Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -947,7 +947,7 @@ GVMMR0DECL(int) GVMMR0CreateVM(PSUPDRVSESSION pSession, uint32_t cCpus, PVMCC *p
                             if (RT_SUCCESS(rc))
                             {
                                 /*
-                                 * Initialize all the VM pointer.
+                                 * Initialize all the VM pointers.
                                  */
                                 PVMR3 pVMR3 = RTR0MemObjAddressR3(pGVM->gvmm.s.VMMapObj);
                                 AssertPtr((void *)pVMR3);
@@ -1269,6 +1269,7 @@ static void gvmmR0InitPerVMData(PGVM pGVM)
         pGVM->aCpus[i].hNativeThread         = NIL_RTNATIVETHREAD;
         pGVM->aCpus[i].hNativeThreadR0       = NIL_RTNATIVETHREAD;
         pGVM->aCpus[i].enmState              = VMCPUSTATE_STOPPED;
+        pGVM->aCpus[i].pVCpuR0ForVtg         = &pGVM->aCpus[i];
 #endif
     }
 }

@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
+/* $Id: MMHyper.cpp 80319 2019-08-16 09:19:31Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -164,7 +164,7 @@ int mmR3HyperInit(PVM pVM)
         AssertRelease(pVM->cbVCpu == sizeof(VMCPU));
         RTGCPTR GCPtr;
         rc = MMR3HyperMapPages(pVM, pVM, pVM->pVMR0ForCall, sizeof(VM) >> PAGE_SHIFT, pVM->paVMPagesR3, "VM", &GCPtr);
-        uint32_t offPages = RT_UOFFSETOF(GVM, aCpus) >> PAGE_SHIFT;
+        uint32_t offPages = RT_UOFFSETOF_DYN(GVM, aCpus) >> PAGE_SHIFT; /* (Using the _DYN variant avoids -Winvalid-offset) */
         for (uint32_t idCpu = 0; idCpu < pVM->cCpus && RT_SUCCESS(rc); idCpu++, offPages += sizeof(GVMCPU) >> PAGE_SHIFT)
         {
             PVMCPU pVCpu = pVM->apCpusR3[idCpu];

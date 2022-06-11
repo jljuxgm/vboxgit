@@ -1,4 +1,4 @@
-/* $Id: NEMAll.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: NEMAll.cpp 80319 2019-08-16 09:19:31Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, R0 and R3 context code.
  */
@@ -144,7 +144,7 @@ VMM_INT_DECL(int) NEMHCQueryCpuTick(PVMCPUCC pVCpu, uint64_t *pcTicks, uint32_t 
 
 
 #ifndef VBOX_WITH_NATIVE_NEM
-VMM_INT_DECL(int) NEMHCResumeCpuTickOnAll(PVM pVM, PVMCPUCC pVCpu, uint64_t uPausedTscValue)
+VMM_INT_DECL(int) NEMHCResumeCpuTickOnAll(PVMCC pVM, PVMCPUCC pVCpu, uint64_t uPausedTscValue)
 {
     RT_NOREF(pVM, pVCpu, uPausedTscValue);
     AssertFailed();
