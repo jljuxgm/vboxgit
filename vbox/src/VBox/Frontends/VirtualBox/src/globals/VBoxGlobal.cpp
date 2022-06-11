@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 79205 2019-06-18 10:04:17Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 79337 2019-06-25 17:49:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2621,6 +2621,7 @@ void VBoxGlobal::createMedium(const UIMedium &guiMedium)
     }
 }
 
+#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
 void VBoxGlobal::deleteMedium(const QUuid &uMediumID)
 {
     if (m_meCleanupProtectionToken.tryLockForRead())
@@ -2631,6 +2632,7 @@ void VBoxGlobal::deleteMedium(const QUuid &uMediumID)
         m_meCleanupProtectionToken.unlock();
     }
 }
+#endif
 
 QUuid VBoxGlobal::openMedium(UIMediumDeviceType enmMediumType, QString strMediumLocation, QWidget *pParent /* = 0 */)
 {

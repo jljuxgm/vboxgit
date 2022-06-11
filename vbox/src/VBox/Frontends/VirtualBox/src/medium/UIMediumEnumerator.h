@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 79205 2019-06-18 10:04:17Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 79337 2019-06-25 17:49:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -76,8 +76,10 @@ public:
 
     /** Creates UIMedium thus caching it internally on the basis of passed @a guiMedium information. */
     void createMedium(const UIMedium &guiMedium);
+#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
     /** Deletes UIMedium with specified @a uMediumID thus removing it from internal cache. */
     void deleteMedium(const QUuid &uMediumID);
+#endif
 
     /** Returns whether consolidated medium-enumeration process is in progress. */
     bool isMediumEnumerationInProgress() const { return m_fMediumEnumerationInProgress; }

@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 79234 2019-06-19 08:39:55Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 79337 2019-06-25 17:49:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -165,6 +165,7 @@ void UIMediumEnumerator::createMedium(const UIMedium &guiMedium)
     emit sigMediumCreated(uMediumID);
 }
 
+#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
 void UIMediumEnumerator::deleteMedium(const QUuid &uMediumID)
 {
     /* Do not delete UIMedium(s) with incorrect ID: */
@@ -179,6 +180,7 @@ void UIMediumEnumerator::deleteMedium(const QUuid &uMediumID)
     /* Notify listener: */
     emit sigMediumDeleted(uMediumID);
 }
+#endif
 
 void UIMediumEnumerator::startMediumEnumeration(const CMediumVector &comMedia /* = CMediumVector() */)
 {

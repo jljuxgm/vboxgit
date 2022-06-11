@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 77291 2019-02-13 09:13:50Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 79337 2019-06-25 17:49:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -111,7 +111,9 @@ void UIWizardNewVMPage3::ensureNewVirtualDiskDeleted()
         return;
 
     /* Remember virtual-disk attributes: */
+#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
     QUuid uMediumID = m_virtualDisk.GetId();
+#endif
     QString strLocation = m_virtualDisk.GetLocation();
     /* Prepare delete storage progress: */
     CProgress progress = m_virtualDisk.DeleteStorage();
@@ -125,8 +127,10 @@ void UIWizardNewVMPage3::ensureNewVirtualDiskDeleted()
     else
         msgCenter().cannotDeleteHardDiskStorage(m_virtualDisk, strLocation, thisImp());
 
+#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
     /* Inform VBoxGlobal about it: */
     vboxGlobal().deleteMedium(uMediumID);
+#endif
 
     /* Detach virtual-disk anyway: */
     m_virtualDisk.detach();

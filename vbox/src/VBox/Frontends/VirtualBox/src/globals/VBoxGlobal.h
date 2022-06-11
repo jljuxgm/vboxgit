@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 79205 2019-06-18 10:04:17Z vboxsync $ */
+/* $Id: VBoxGlobal.h 79337 2019-06-25 17:49:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -493,8 +493,10 @@ public:
         QList<QUuid> mediumIDs() const;
         /** Creates medium on the basis of passed @a guiMedium description. */
         void createMedium(const UIMedium &guiMedium);
+#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
         /** Deletes medium with certain @a uMediumID. */
         void deleteMedium(const QUuid &uMediumID);
+#endif
 
         /** Opens external medium by passed @a strMediumLocation.
           * @param  enmMediumType      Brings the medium type.
