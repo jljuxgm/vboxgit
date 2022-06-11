@@ -1,4 +1,4 @@
-/* $Id: QITreeView.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: QITreeView.h 78568 2019-05-17 14:09:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeView class declaration.
  */
@@ -99,6 +99,8 @@ signals:
     void mouseMoved(QMouseEvent *pEvent);
     /** Notifies listeners about mouse pressed @a pEvent. */
     void mousePressed(QMouseEvent *pEvent);
+    /** Notifies listeners about mouse released @a pEvent. */
+    void mouseReleased(QMouseEvent *pEvent);
     /** Notifies listeners about mouse double-clicked @a pEvent. */
     void mouseDoubleClicked(QMouseEvent *pEvent);
 
@@ -126,14 +128,16 @@ protected:
       * @param  pPainter  Brings the painter to draw branches.
       * @param  rect      Brings the rectangle embedding branches.
       * @param  index     Brings the index of the item for which branches will be painted. */
-    void drawBranches(QPainter *pPainter, const QRect &rect, const QModelIndex &index) const;
+    virtual void drawBranches(QPainter *pPainter, const QRect &rect, const QModelIndex &index) const /* override */;
 
     /** Handles mouse move @a pEvent. */
-    void mouseMoveEvent(QMouseEvent *pEvent);
+    virtual void mouseMoveEvent(QMouseEvent *pEvent) /* override */;
     /** Handles mouse press @a pEvent. */
-    void mousePressEvent(QMouseEvent *pEvent);
+    virtual void mousePressEvent(QMouseEvent *pEvent) /* override */;
+    /** Handles mouse release @a pEvent. */
+    virtual void mouseReleaseEvent(QMouseEvent *pEvent) /* override */;
     /** Handles mouse double-click @a pEvent. */
-    void mouseDoubleClickEvent(QMouseEvent *pEvent);
+    virtual void mouseDoubleClickEvent(QMouseEvent *pEvent) /* override */;
 
 private:
 

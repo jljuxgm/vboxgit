@@ -1,4 +1,4 @@
-/* $Id: QITreeView.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: QITreeView.cpp 78568 2019-05-17 14:09:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeView class implementation.
  */
@@ -432,6 +432,17 @@ void QITreeView::mousePressEvent(QMouseEvent *pEvent)
     /* Call to base-class only if event was not yet accepted: */
     if (!pEvent->isAccepted())
         QTreeView::mousePressEvent(pEvent);
+}
+
+void QITreeView::mouseReleaseEvent(QMouseEvent *pEvent)
+{
+    /* Reject event initially: */
+    pEvent->setAccepted(false);
+    /* Notify listeners about event allowing them to handle it: */
+    emit mouseReleased(pEvent);
+    /* Call to base-class only if event was not yet accepted: */
+    if (!pEvent->isAccepted())
+        QTreeView::mouseReleaseEvent(pEvent);
 }
 
 void QITreeView::mouseDoubleClickEvent(QMouseEvent *pEvent)
