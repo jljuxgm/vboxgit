@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevE1000.cpp 83613 2020-04-07 18:14:46Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4170,7 +4170,7 @@ static void e1kInsertChecksum(PE1KSTATE pThis, uint8_t *pPkt, uint16_t u16PktLen
         return;
     }
 
-    if (cse == 0)
+    if (cse == 0 || cse >= u16PktLen)
         cse = u16PktLen - 1;
     else if (cse < css)
     {
