@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 78917 2019-06-01 17:57:13Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 79191 2019-06-17 16:20:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2507,7 +2507,7 @@ void VBoxGlobal::startMediumEnumeration(const CMediumVector &comMedia /* = CMedi
     if (!m_pMediumEnumerator)
         return;
     /* Make sure enumeration is not already started: */
-    if (isMediumEnumerationInProgress())
+    if (m_pMediumEnumerator->isMediumEnumerationInProgress())
         return;
 
     /* Redirect request to medium-enumerator under proper lock: */
@@ -2547,22 +2547,18 @@ void VBoxGlobal::refreshMedia()
 {
     /* Make sure VBoxGlobal is already valid: */
     AssertReturnVoid(m_fValid);
+    /* Ignore the request during VBoxGlobal cleanup: */
+    if (s_fCleaningUp)
+        return;
+    /* Ignore the request during startup snapshot restoring: */
+    if (shouldRestoreCurrentSnapshot())
+        return;
 
     /* Make sure medium-enumerator is already created: */
     if (!m_pMediumEnumerator)
         return;
-
     /* Make sure enumeration is not already started: */
-    if (isMediumEnumerationInProgress())
-        return;
-
-    /* Ignore the request during VBoxGlobal cleanup: */
-    if (s_fCleaningUp)
-        return;
-
-    /* If asked to restore snapshot, don't do this till *after* we're done
-     * restoring or the code with have a heart attack. */
-    if (shouldRestoreCurrentSnapshot())
+    if (m_pMediumEnumerator->isMediumEnumerationInProgress())
         return;
 
     /* We assume it's safe to call it without locking,
