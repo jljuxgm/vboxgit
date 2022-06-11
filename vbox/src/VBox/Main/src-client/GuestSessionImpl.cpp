@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 83295 2020-03-16 09:12:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2989,7 +2989,10 @@ HRESULT GuestSession::fileCopyFromGuest(const com::Utf8Str &aSource, const com::
     {
         for (size_t i = 0; i < aFlags.size(); i++)
             fFlags |= aFlags[i];
-        /** @todo r=bird: Please reject unknown flags. */
+
+        const uint32_t fValidFlags = FileCopyFlag_None | FileCopyFlag_NoReplace | FileCopyFlag_FollowLinks | FileCopyFlag_Update;
+        if (fFlags & ~fValidFlags)
+            return setError(E_INVALIDARG,tr("Unknown flags: flags value %#x, invalid: %#x"), fFlags, fFlags & ~fValidFlags);
     }
 
     GuestSessionFsSourceSet SourceSet;
@@ -3014,7 +3017,10 @@ HRESULT GuestSession::fileCopyToGuest(const com::Utf8Str &aSource, const com::Ut
     {
         for (size_t i = 0; i < aFlags.size(); i++)
             fFlags |= aFlags[i];
-        /** @todo r=bird: Please reject unknown flags. */
+
+        const uint32_t fValidFlags = FileCopyFlag_None | FileCopyFlag_NoReplace | FileCopyFlag_FollowLinks | FileCopyFlag_Update;
+        if (fFlags & ~fValidFlags)
+            return setError(E_INVALIDARG,tr("Unknown flags: flags value %#x, invalid: %#x"), fFlags, fFlags & ~fValidFlags);
     }
 
     GuestSessionFsSourceSet SourceSet;
@@ -3200,7 +3206,10 @@ HRESULT GuestSession::directoryCopyFromGuest(const com::Utf8Str &aSource, const 
     {
         for (size_t i = 0; i < aFlags.size(); i++)
             fFlags |= aFlags[i];
-        /** @todo r=bird: Please reject unknown flags. */
+
+        const uint32_t fValidFlags = DirectoryCopyFlag_None | DirectoryCopyFlag_CopyIntoExisting;
+        if (fFlags & ~fValidFlags)
+            return setError(E_INVALIDARG,tr("Unknown flags: flags value %#x, invalid: %#x"), fFlags, fFlags & ~fValidFlags);
     }
 
     GuestSessionFsSourceSet SourceSet;
@@ -3226,7 +3235,10 @@ HRESULT GuestSession::directoryCopyToGuest(const com::Utf8Str &aSource, const co
     {
         for (size_t i = 0; i < aFlags.size(); i++)
             fFlags |= aFlags[i];
-        /** @todo r=bird: Please reject unknown flags. */
+
+        const uint32_t fValidFlags = DirectoryCopyFlag_None | DirectoryCopyFlag_CopyIntoExisting;
+        if (fFlags & ~fValidFlags)
+            return setError(E_INVALIDARG,tr("Unknown flags: flags value %#x, invalid: %#x"), fFlags, fFlags & ~fValidFlags);
     }
 
     GuestSessionFsSourceSet SourceSet;
