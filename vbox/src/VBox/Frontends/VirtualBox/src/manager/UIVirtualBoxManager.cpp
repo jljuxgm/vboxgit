@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 83859 2020-04-20 14:36:26Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 83909 2020-04-21 18:09:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -579,8 +579,8 @@ void UIVirtualBoxManager::sltOpenAddMachineDialog()
         /* Open add machine dialog: */
         openAddMachineDialog();
     }
-    /* For real cloud machine: */
-    else if (pItem->itemType() == UIVirtualMachineItem::ItemType_CloudReal)
+    /* For cloud machine: */
+    else
     {
         /* Use the "safe way" to open stack of Mac OS X Sheets: */
         QWidget *pWizardParent = windowManager().realParentWindow(this);
