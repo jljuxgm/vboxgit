@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 81394 2019-10-21 09:16:17Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 81396 2019-10-21 09:29:55Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -337,7 +337,7 @@ HRESULT MachineMoveVM::init()
 
                 Utf8Str strLocation = bstrLocation;
 
-                /*if an image is located in the actual VM folder it will be added to the actual list */
+                /* if an image is located in the actual VM folder it will be added to the actual list */
                 if (strLocation.startsWith(strSettingsFilePath))
                 {
                     LONG64 cbSize = 0;
@@ -373,7 +373,7 @@ HRESULT MachineMoveVM::init()
             SAVESTATETASKMOVE &sst = m_llSaveStateFiles.at(i);
 
             Utf8Str name = sst.strSaveStateFile;
-            /*if a state file is located in the actual VM folder it will be added to the actual list */
+            /* if a state file is located in the actual VM folder it will be added to the actual list */
             if (RTPathStartsWith(name.c_str(), strSettingsFilePath.c_str()))
             {
                 vrc = RTFileQuerySizeByPath(name.c_str(), &cbFile);
