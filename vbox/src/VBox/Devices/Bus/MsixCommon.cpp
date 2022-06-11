@@ -1,4 +1,4 @@
-/* $Id: MsixCommon.cpp 82218 2019-11-26 11:16:13Z vboxsync $ */
+/* $Id: MsixCommon.cpp 82220 2019-11-26 12:58:35Z vboxsync $ */
 /** @file
  * MSI-X support routines
  */
@@ -198,6 +198,7 @@ int MsixR3Init(PCPDMPCIHLP pPciHlp, PPDMPCIDEV pDev, PPDMMSIREG pMsiReg)
          * so the callbacks only see dword reads and writes.  I'm not at all
          * sure about the read-missing behaviour, but it seems like a good
          * idea for now. */
+        /** @todo r=bird: Shouldn't we at least handle writes in ring-0?   */
         int rc = PDMDevHlpPCIIORegionCreateMmio(pDev->Int.s.CTX_SUFF(pDevIns), iBar, cbMsixRegion, PCI_ADDRESS_SPACE_MEM,
                                                 msixR3MMIOWrite, msixR3MMIORead, pDev,
                                                 IOMMMIO_FLAGS_READ_DWORD | IOMMMIO_FLAGS_WRITE_DWORD_READ_MISSING,
