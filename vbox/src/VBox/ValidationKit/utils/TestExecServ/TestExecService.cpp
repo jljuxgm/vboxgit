@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: TestExecService.cpp 83894 2020-04-21 14:50:30Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -3447,6 +3447,12 @@ static void txsUsage(PRTSTREAM pStrm, const char *pszArgv0)
                  "  --foreground\n"
                  "      Don't daemonize, run in the foreground.\n");
     RTStrmPrintf(pStrm,
+                 "  --verbose, -v\n"
+                 "      Increases the verbosity level. Can be specified multiple times.\n");
+    RTStrmPrintf(pStrm,
+                 "  --quiet, -q\n"
+                 "      Mutes any logging output.\n");
+    RTStrmPrintf(pStrm,
                  "  --help, -h, -?\n"
                  "      Display this message and exit.\n"
                  "  --version, -V\n"
@@ -3605,7 +3611,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 82968 $\n");
+                RTPrintf("$Revision: 83894 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
