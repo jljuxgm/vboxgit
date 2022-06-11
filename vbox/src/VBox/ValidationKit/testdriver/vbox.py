@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 79448 2019-07-01 15:50:34Z vboxsync $
+# $Id: vbox.py 79450 2019-07-01 16:24:18Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79448 $"
+__version__ = "$Revision: 79450 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -209,7 +209,7 @@ def formatComOrXpComException(oType, oXcpt):
 
     sHrc = oVBoxMgr.xcptToString(hrc);                      # pylint: disable=not-callable
     if sHrc.find('(') < 0:
-        sHrc = '%s (%#x)' % (sHrc), hrc & 0xffffffff);
+        sHrc = '%s (%#x)' % (sHrc, hrc & 0xffffffff,);
 
     asRet = ['COM-Xcpt: %s' % (sHrc,)];
     if sMsg and sWhere:
