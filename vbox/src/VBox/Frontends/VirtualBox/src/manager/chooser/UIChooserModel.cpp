@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83008 2020-02-06 14:59:10Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83034 2020-02-10 14:28:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -859,8 +859,10 @@ void UIChooserModel::sltUngroupSelectedGroup()
 
 void UIChooserModel::sltCreateNewMachine()
 {
-    /* Check if action is enabled: */
-    if (!actionPool()->action(UIActionIndexST_M_Machine_S_New)->isEnabled())
+    /* Check if at least one of actions is enabled: */
+    if (   !actionPool()->action(UIActionIndexST_M_Welcome_S_New)->isEnabled()
+        && !actionPool()->action(UIActionIndexST_M_Machine_S_New)->isEnabled()
+        && !actionPool()->action(UIActionIndexST_M_Group_S_New)->isEnabled())
         return;
 
     /* Select the parent: */
