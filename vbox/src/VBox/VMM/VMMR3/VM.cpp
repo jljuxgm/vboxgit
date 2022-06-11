@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 81153 2019-10-08 13:59:03Z vboxsync $ */
+/* $Id: VM.cpp 81983 2019-11-19 10:35:26Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1024,8 +1024,6 @@ static int vmR3InitDoCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
         rc = CPUMR3InitCompleted(pVM, enmWhat);
     if (RT_SUCCESS(rc))
         rc = EMR3InitCompleted(pVM, enmWhat);
-    if (RT_SUCCESS(rc))
-        rc = IOMR3InitCompleted(pVM, enmWhat);
     if (enmWhat == VMINITCOMPLETED_RING3)
     {
         if (RT_SUCCESS(rc))
@@ -1033,6 +1031,11 @@ static int vmR3InitDoCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
     }
     if (RT_SUCCESS(rc))
         rc = PDMR3InitCompleted(pVM, enmWhat);
+
+    /* IOM *must* come after PDM, as device (DevPcArch) may register some final
+       handlers in their init completion method. */
+    if (RT_SUCCESS(rc))
+        rc = IOMR3InitCompleted(pVM, enmWhat);
     return rc;
 }
 
