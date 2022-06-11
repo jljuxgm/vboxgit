@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 79410 2019-06-28 11:46:36Z vboxsync $
 ## @file
 # Sub-Makefile for Windows driver tooling lib.
 #
@@ -37,9 +37,7 @@ VBoxDrvCfg_SOURCES        = cfg/VBoxDrvCfg.cpp
 INSTALLS += HostDrivers-scripts
 HostDrivers-scripts_INST = $(INST_DIST)
 HostDrivers-scripts_EXEC_SOURCES = \
-	loadall.sh \
 	loadall.cmd \
-	load.sh \
 	load.cmd
 
 # generate rules
