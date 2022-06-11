@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83941 2020-04-23 10:22:56Z vboxsync $
+# $Id: Makefile.kmk 84007 2020-04-27 13:23:11Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -500,6 +500,7 @@ VMMR0_SOURCES   = \
 	VMMR0/IOMR0IoPort.cpp \
 	VMMR0/IOMR0Mmio.cpp \
 	VMMR0/PDMR0Device.cpp \
+	VMMR0/PDMR0DevHlp.cpp \
 	VMMR0/PDMR0Driver.cpp \
 	VMMR0/PGMR0.cpp \
 	VMMR0/PGMR0Pool.cpp \
