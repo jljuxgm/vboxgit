@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 83674 2020-04-10 17:37:18Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 83854 2020-04-20 13:01:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -112,6 +112,9 @@ private slots:
         /** Handles host-screen available-area change. */
         void sltHandleHostScreenAvailableAreaChange();
 #endif /* VBOX_WS_X11 */
+
+        /** Handles request to update actions. */
+        void sltHandleUpdateActionAppearanceRequest() { updateActionsAppearance(); }
 
         /** Handles signal about medium-enumeration finished. */
         void sltHandleMediumEnumerationFinish();
