@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIMachine.cpp 80652 2019-09-08 18:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -236,8 +236,8 @@ void UIMachine::prepareMachineLogic()
 {
     /* Prepare async visual state type change handler: */
     qRegisterMetaType<UIVisualStateType>();
-    connect(this, SIGNAL(sigRequestAsyncVisualStateChange(UIVisualStateType)),
-            this, SLOT(sltChangeVisualState(UIVisualStateType)),
+    connect(this, &UIMachine::sigRequestAsyncVisualStateChange,
+            this, &UIMachine::sltChangeVisualState,
             Qt::QueuedConnection);
 
     /* Load restricted visual states: */

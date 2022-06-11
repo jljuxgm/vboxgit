@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 80652 2019-09-08 18:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -128,7 +128,7 @@ void UIMachineViewSeamless::prepareConsoleConnections()
     UIMachineView::prepareConsoleConnections();
 
     /* Guest additions state-change updater: */
-    connect(uisession(), SIGNAL(sigAdditionsStateActualChange()), this, SLOT(sltAdditionsStateChanged()));
+    connect(uisession(), &UISession::sigAdditionsStateActualChange, this, &UIMachineViewSeamless::sltAdditionsStateChanged);
 }
 
 void UIMachineViewSeamless::prepareSeamless()
@@ -218,4 +218,3 @@ QSize UIMachineViewSeamless::calculateMaxGuestSize() const
 {
     return workingArea().size();
 }
-

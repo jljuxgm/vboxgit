@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIMachineView.cpp 80652 2019-09-08 18:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -820,20 +820,20 @@ void UIMachineView::prepareFilters()
 void UIMachineView::prepareConnections()
 {
     /* Desktop resolution change (e.g. monitor hotplug): */
-    connect(gpDesktop, SIGNAL(sigHostScreenResized(int)), this,
-            SLOT(sltDesktopResized()));
+    connect(gpDesktop, &UIDesktopWidgetWatchdog::sigHostScreenResized,
+            this, &UIMachineView::sltDesktopResized);
     /* Scale-factor change: */
-    connect(gEDataManager, SIGNAL(sigScaleFactorChange(const QUuid &)),
-            this, SLOT(sltHandleScaleFactorChange(const QUuid &)));
+    connect(gEDataManager, &UIExtraDataManager::sigScaleFactorChange,
+            this, &UIMachineView::sltHandleScaleFactorChange);
     /* Scaling-optimization change: */
-    connect(gEDataManager, SIGNAL(sigScalingOptimizationTypeChange(const QUuid &)),
-            this, SLOT(sltHandleScalingOptimizationChange(const QUuid &)));
+    connect(gEDataManager, &UIExtraDataManager::sigScalingOptimizationTypeChange,
+            this, &UIMachineView::sltHandleScalingOptimizationChange);
 }
 
 void UIMachineView::prepareConsoleConnections()
 {
     /* Machine state-change updater: */
-    connect(uisession(), SIGNAL(sigMachineStateChange()), this, SLOT(sltMachineStateChanged()));
+    connect(uisession(), &UISession::sigMachineStateChange, this, &UIMachineView::sltMachineStateChanged);
 }
 
 void UIMachineView::cleanupFrameBuffer()

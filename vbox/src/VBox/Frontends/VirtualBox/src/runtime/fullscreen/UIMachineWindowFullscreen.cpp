@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 80652 2019-09-08 18:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -273,14 +273,14 @@ void UIMachineWindowFullscreen::prepareMiniToolbar()
     {
         /* Configure mini-toolbar: */
         m_pMiniToolBar->addMenus(actionPool()->menus());
-        connect(m_pMiniToolBar, SIGNAL(sigMinimizeAction()),
-                this, SLOT(sltShowMinimized()), Qt::QueuedConnection);
-        connect(m_pMiniToolBar, SIGNAL(sigExitAction()),
-                actionPool()->action(UIActionIndexRT_M_View_T_Fullscreen), SLOT(trigger()));
-        connect(m_pMiniToolBar, SIGNAL(sigCloseAction()),
-                actionPool()->action(UIActionIndex_M_Application_S_Close), SLOT(trigger()));
-        connect(m_pMiniToolBar, SIGNAL(sigNotifyAboutWindowActivationStolen()),
-                this, SLOT(sltRevokeWindowActivation()), Qt::QueuedConnection);
+        connect(m_pMiniToolBar, &UIMiniToolBar::sigMinimizeAction,
+                this, &UIMachineWindowFullscreen::sltShowMinimized, Qt::QueuedConnection);
+        connect(m_pMiniToolBar, &UIMiniToolBar::sigExitAction,
+                actionPool()->action(UIActionIndexRT_M_View_T_Fullscreen), &UIAction::trigger);
+        connect(m_pMiniToolBar, &UIMiniToolBar::sigCloseAction,
+                actionPool()->action(UIActionIndex_M_Application_S_Close), &UIAction::trigger);
+        connect(m_pMiniToolBar, &UIMiniToolBar::sigNotifyAboutWindowActivationStolen,
+                this, &UIMachineWindowFullscreen::sltRevokeWindowActivation, Qt::QueuedConnection);
     }
 }
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
@@ -608,4 +608,3 @@ void UIMachineWindowFullscreen::showEvent(QShowEvent *pEvent)
     UIMachineWindow::showEvent(pEvent);
 }
 #endif /* VBOX_WS_WIN */
-
