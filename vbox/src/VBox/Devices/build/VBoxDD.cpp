@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDD.cpp 78799 2019-05-28 05:38:34Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -191,6 +191,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
 #endif
 #ifdef VBOX_WITH_NVME_IMPL
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceNVMe);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+#ifdef VBOX_WITH_VIRTIO_SCSI
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceVirtioSCSI);
     if (RT_FAILURE(rc))
         return rc;
 #endif

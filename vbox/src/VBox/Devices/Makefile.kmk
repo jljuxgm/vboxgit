@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78504 2019-05-14 14:06:15Z vboxsync $
+# $Id: Makefile.kmk 78799 2019-05-28 05:38:34Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -518,6 +518,12 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
    VBoxDD_SOURCES       += \
  	Storage/DevNVMe.cpp
   endif
+
+ ifdef VBOX_WITH_VIRTIO_SCSI
+    VBoxDD_DEFS           += VBOX_WITH_VIRTIO_SCSI
+    VBoxDD_SOURCES        += \
+    Storage/DevVirtioSCSI.cpp
+ endif
 
  ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
   VBoxDD_DEFS           += VBOX_WITH_PDM_ASYNC_COMPLETION

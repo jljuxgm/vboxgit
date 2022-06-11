@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: VBoxDD.h 78799 2019-05-28 05:38:34Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -85,6 +85,9 @@ extern const PDMDEVREG g_DeviceLsiLogicSAS;
 #endif
 #ifdef VBOX_WITH_NVME_IMPL
 extern const PDMDEVREG g_DeviceNVMe;
+#endif
+#ifdef VBOX_WITH_VIRTIO_SCSI
+extern const PDMDEVREG g_DeviceVirtioSCSI;
 #endif
 #ifdef VBOX_WITH_EFI
 extern const PDMDEVREG g_DeviceEFI;
