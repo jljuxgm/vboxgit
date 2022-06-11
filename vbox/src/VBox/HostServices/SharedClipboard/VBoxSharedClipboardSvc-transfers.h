@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.h 80863 2019-09-17 14:53:27Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.h 81820 2019-11-13 11:19:52Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header for transfer (list) handling.
  */
@@ -20,14 +20,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-int sharedClipboardSvcTransferHandler(PSHCLCLIENT pClient, VBOXHGCMCALLHANDLE callHandle, uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[], uint64_t tsArrival);
-int sharedClipboardSvcTransferHostHandler(uint32_t u32Function, uint32_t cParms, VBOXHGCMSVCPARM paParms[]);
-
-int sharedClipboardSvcTransferAreaRegister(PSHCLCLIENTSTATE pClientState, PSHCLTRANSFER pTransfer);
-int sharedClipboardSvcTransferAreaUnregister(PSHCLCLIENTSTATE pClientState, PSHCLTRANSFER pTransfer);
-int sharedClipboardSvcTransferAreaAttach(PSHCLCLIENTSTATE pClientState, PSHCLTRANSFER pTransfer, SHCLAREAID uID);
-int sharedClipboardSvcTransferAreaDetach(PSHCLCLIENTSTATE pClientState, PSHCLTRANSFER pTransfer);
 
 #endif /* !VBOX_INCLUDED_SRC_SharedClipboard_VBoxSharedClipboardSvc_transfers_h */
 

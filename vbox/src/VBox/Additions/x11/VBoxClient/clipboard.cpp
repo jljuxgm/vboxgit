@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
+/** $Id: clipboard.cpp 81820 2019-11-13 11:19:52Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -262,7 +262,7 @@ int vboxClipboardMain(void)
                     else
                     {
                         pReq->u32Format = fFormats;
-                        ClipRequestDataFromX11(g_ctx.pBackend, fFormats,
+                        ClipReadDataFromX11(g_ctx.pBackend, fFormats,
                                                pReq);
                     }
                     break;
