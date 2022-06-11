@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81016 2019-09-26 12:20:00Z vboxsync $ $Revision: 81016 $ $Date: 2019-09-26 20:20:00 +0800 (Thu, 26 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 81017 2019-09-26 12:26:45Z vboxsync $ $Revision: 81017 $ $Date: 2019-09-26 20:26:45 +0800 (Thu, 26 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -746,14 +746,16 @@ static int virtioScsiSendEvent(PVIRTIOSCSI pThis, uint16_t uTarget, uint32_t uEv
         case VIRTIOSCSI_T_ASYNC_NOTIFY:
             char szTypeText[128];
             virtioGetControlAsyncMaskText(szTypeText, sizeof(szTypeText), uReason);
-            Log6Func(("(target=%d, LUN=%d): Delivering subscribed async notification %s\n", uTarget, LUN0));
+            Log6Func(("(target=%d, LUN=%d): Delivering subscribed async notification %s\n",
+                         uTarget, LUN0, szTypeText));
             break;
         case VIRTIOSCSI_T_PARAM_CHANGE:
             LogFunc(("(target=%d, LUN=%d): PARAM_CHANGE sense code: 0x%x sense qualifier: 0x%x\n",
                         uTarget, LUN0, uReason & 0xff, (uReason >> 8) & 0xff));
             break;
         default:
-            Log6Func(("(target=%d, LUN=%d): Unknown event type: %d, ignoring\n", uTarget, LUN0));
+            Log6Func(("(target=%d, LUN=%d): Unknown event type: %d, ignoring\n",
+                        uTarget, LUN0, uEventType));
             return VINF_SUCCESS;
     }
 
@@ -1518,7 +1520,7 @@ static DECLCALLBACK(void) virtioScsiNotified(VIRTIOHANDLE hVirtio, void *pClient
     }
     else if (qIdx == EVENTQ_IDX)
     {
-        Log3Func(("Driver queued buffer(s) to %s\n"));
+        Log3Func(("Driver queued buffer(s) to %s\n", QUEUENAME(qIdx)));
         if (ASMAtomicXchgBool(&pThis->fEventsMissed, false))
             virtioScsiReportEventsMissed(pThis, 0);
     }
