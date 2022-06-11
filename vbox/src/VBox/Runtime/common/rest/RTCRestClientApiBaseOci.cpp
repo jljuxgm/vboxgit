@@ -1,4 +1,4 @@
-/* $Id: RTCRestClientApiBaseOci.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTCRestClientApiBaseOci.cpp 79411 2019-06-28 12:02:45Z vboxsync $ */
 /** @file
  * IPRT - C++ REST, RTCRestClientApiBase implementation, OCI specific bits.
  */
@@ -144,6 +144,7 @@ int RTCRestClientApiBase::ociSignRequest(RTHTTP a_hHttp, RTCString const &a_rStr
     if (RT_SUCCESS(rc))
     {
         if (   a_rStrXmitBody.isNotEmpty()
+            || (a_fFlags & kDoCall_RequireBody)
             || a_enmHttpMethod == RTHTTPMETHOD_POST
             || a_enmHttpMethod == RTHTTPMETHOD_PUT)
             rc = ociSignRequestEnsureContentLength(a_hHttp, a_rStrXmitBody.length());
