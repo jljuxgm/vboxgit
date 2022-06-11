@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 83579 2020-04-06 00:17:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 83620 2020-04-08 12:41:52Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -517,7 +517,6 @@ typedef struct
     AVLU32NODECORE          Core;
     union
     {
-        IDirect3DSurface9          *pSurface;
         IDirect3DTexture9          *pTexture;
         IDirect3DCubeTexture9      *pCubeTexture;
         IDirect3DVolumeTexture9    *pVolumeTexture;
