@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 82976 2020-02-04 12:36:10Z vboxsync $ */
+/* $Id: GMMR0.cpp 82977 2020-02-04 12:45:12Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -664,17 +664,6 @@ typedef struct GMMCHECKSHAREDMODULEINFO
     PGVM                    pGVM;
     VMCPUID                 idCpu;
 } GMMCHECKSHAREDMODULEINFO;
-
-/**
- * Argument packet for gmmR0FindDupPageInChunk by GMMR0FindDuplicatePage.
- */
-typedef struct GMMFINDDUPPAGEINFO
-{
-    PGVM                    pGVM;
-    PGMM                    pGMM;
-    uint8_t                *pSourcePage;
-    bool                    fFoundDuplicate;
-} GMMFINDDUPPAGEINFO;
 
 
 /*********************************************************************************************************************************
@@ -5432,13 +5421,6 @@ GMMR0DECL(int) GMMR0FindDuplicatePageReq(PGVM pGVM, PGMMFINDDUPLICATEPAGEREQ pRe
                     /*
                      * Walk the chunks
                      */
-                    GMMFINDDUPPAGEINFO Args;
-                    Args.pGVM            = pGVM;
-                    Args.pGMM            = pGMM;
-                    Args.pSourcePage     = pbSourcePage;
-                    Args.fFoundDuplicate = false;
-
-                    PGMMCHUNK pChunk;
                     pReq->fDuplicate = false;
                     RTListForEach(&pGMM->ChunkList, pChunk, GMMCHUNK, ListNode)
                     {
