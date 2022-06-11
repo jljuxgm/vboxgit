@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 83080 2020-02-15 02:22:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3308,6 +3308,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             Utf8Str strPath;
             strPath.append(strSettingsPath).append("debug/;");
             strPath.append(strSettingsPath).append(";");
+            strPath.append("cache*").append(strSettingsPath).append("dbgcache/;"); /* handy for symlinking to actual cache */
             strPath.append(szHomeDir);
 
             InsertConfigString(pDbgf, "Path", strPath.c_str());
