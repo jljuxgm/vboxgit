@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 81978 2019-11-19 08:07:05Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 81980 2019-11-19 10:08:29Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -6738,7 +6738,8 @@ int vmsvga3dShaderSetConst(PVGASTATE pThis, uint32_t cid, uint32_t reg, SVGA3dSh
             case SVGA3D_CONST_TYPE_FLOAT:
             {
                 float *pValuesF = (float *)pValues;
-                Log(("ConstantF %d: value=%d, %d, %d, %d\n", reg + i, (int)(pValuesF[i*4 + 0] * 100.0f), (int)(pValuesF[i*4 + 1] * 100.0f), (int)(pValuesF[i*4 + 2] * 100.0f), (int)(pValuesF[i*4 + 3] * 100.0f)));
+                Log(("ConstantF %d: value=" FLOAT_FMT_STR ", " FLOAT_FMT_STR ", " FLOAT_FMT_STR ", " FLOAT_FMT_STR "\n",
+                     reg + i, FLOAT_FMT_ARGS(pValuesF[i*4 + 0]), FLOAT_FMT_ARGS(pValuesF[i*4 + 1]), FLOAT_FMT_ARGS(pValuesF[i*4 + 2]), FLOAT_FMT_ARGS(pValuesF[i*4 + 3])));
                 break;
             }
 
