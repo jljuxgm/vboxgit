@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 84039 2020-04-28 11:07:02Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 84114 2020-04-30 16:12:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -723,17 +723,17 @@ void UIFormEditorRow::setBool(bool fBool)
 
     /* Show error message if necessary: */
     if (!comValue.isOk())
-        msgCenter().cannotAssignFormValue(comValue);
+        msgCenter().cannotAssignFormValue(comValue, table()->window());
     else
     {
         /* Show "Acquire export form" progress: */
         msgCenter().showModalProgressDialog(comProgress, UIFormEditorWidget::tr("Assign value ..."),
                                             ":/progress_reading_appliance_90px.png",
-                                            0 /* parent */, 0 /* duration */);
+                                            table()->window(), 0 /* duration */);
 
         /* Show error message if necessary: */
         if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-            msgCenter().cannotAssignFormValue(comProgress);
+            msgCenter().cannotAssignFormValue(comProgress, table()->window());
         else
             updateValueCells();
     }
@@ -759,17 +759,17 @@ void UIFormEditorRow::setText(const TextData &text)
 
     /* Show error message if necessary: */
     if (!comValue.isOk())
-        msgCenter().cannotAssignFormValue(comValue);
+        msgCenter().cannotAssignFormValue(comValue, table()->window());
     else
     {
         /* Show "Acquire export form" progress: */
         msgCenter().showModalProgressDialog(comProgress, UIFormEditorWidget::tr("Assign value ..."),
                                             ":/progress_reading_appliance_90px.png",
-                                            0 /* parent */, 0 /* duration */);
+                                            table()->window(), 0 /* duration */);
 
         /* Show error message if necessary: */
         if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-            msgCenter().cannotAssignFormValue(comProgress);
+            msgCenter().cannotAssignFormValue(comProgress, table()->window());
         else
             updateValueCells();
     }
@@ -789,17 +789,17 @@ void UIFormEditorRow::setString(const QString &strString)
 
     /* Show error message if necessary: */
     if (!comValue.isOk())
-        msgCenter().cannotAssignFormValue(comValue);
+        msgCenter().cannotAssignFormValue(comValue, table()->window());
     else
     {
         /* Show "Acquire export form" progress: */
         msgCenter().showModalProgressDialog(comProgress, UIFormEditorWidget::tr("Assign value ..."),
                                             ":/progress_reading_appliance_90px.png",
-                                            0 /* parent */, 0 /* duration */);
+                                            table()->window(), 0 /* duration */);
 
         /* Show error message if necessary: */
         if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-            msgCenter().cannotAssignFormValue(comProgress);
+            msgCenter().cannotAssignFormValue(comProgress, table()->window());
         else
             updateValueCells();
     }
@@ -823,17 +823,17 @@ void UIFormEditorRow::setChoice(const ChoiceData &choice)
 
     /* Show error message if necessary: */
     if (!comValue.isOk())
-        msgCenter().cannotAssignFormValue(comValue);
+        msgCenter().cannotAssignFormValue(comValue, table()->window());
     else
     {
         /* Show "Acquire export form" progress: */
         msgCenter().showModalProgressDialog(comProgress, UIFormEditorWidget::tr("Assign value ..."),
                                             ":/progress_reading_appliance_90px.png",
-                                            0 /* parent */, 0 /* duration */);
+                                            table()->window(), 0 /* duration */);
 
         /* Show error message if necessary: */
         if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-            msgCenter().cannotAssignFormValue(comProgress);
+            msgCenter().cannotAssignFormValue(comProgress, table()->window());
         else
             updateValueCells();
     }
@@ -853,17 +853,17 @@ void UIFormEditorRow::setRangedInteger(const RangedIntegerData &rangedInteger)
 
     /* Show error message if necessary: */
     if (!comValue.isOk())
-        msgCenter().cannotAssignFormValue(comValue);
+        msgCenter().cannotAssignFormValue(comValue, table()->window());
     else
     {
         /* Show "Acquire export form" progress: */
         msgCenter().showModalProgressDialog(comProgress, UIFormEditorWidget::tr("Assign value ..."),
                                             ":/progress_reading_appliance_90px.png",
-                                            0 /* parent */, 0 /* duration */);
+                                            table()->window(), 0 /* duration */);
 
         /* Show error message if necessary: */
         if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
-            msgCenter().cannotAssignFormValue(comProgress);
+            msgCenter().cannotAssignFormValue(comProgress, table()->window());
         else
             updateValueCells();
     }
