@@ -1,4 +1,4 @@
-/* $Id: UISpecialControls.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UISpecialControls.cpp 83367 2020-03-23 13:14:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISpecialControls implementation.
  */
@@ -97,8 +97,8 @@ UIHelpButton::UIHelpButton(QWidget *pParent /* = 0 */)
 {
 # ifdef VBOX_WS_MAC
     m_pButtonPressed = false;
-    m_pNormalPixmap = new QPixmap(":/help_button_normal_mac_22px.png");
-    m_pPressedPixmap = new QPixmap(":/help_button_pressed_mac_22px.png");
+    m_pNormalPixmap = new QPixmap(":/help_button_normal_mac_24px.png");
+    m_pPressedPixmap = new QPixmap(":/help_button_pressed_mac_24px.png");
     m_size = m_pNormalPixmap->size();
     m_pMask = new QImage(m_pNormalPixmap->mask().toImage());
     m_BRect = QRect(PushButtonLeftOffset,
