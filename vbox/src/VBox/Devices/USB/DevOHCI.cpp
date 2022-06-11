@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 81528 2019-10-25 10:00:16Z vboxsync $ */
+/* $Id: DevOHCI.cpp 81529 2019-10-25 10:14:08Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -5473,7 +5473,7 @@ AssertCompile(RT_ELEMENTS(g_aOpRegs) > 21);
 AssertCompile(RT_ELEMENTS(g_aOpRegs) <= 36);
 
 /**
- * @callback_method_impl{FNIOMMMIOREAD}
+ * @callback_method_impl{FNIOMMMIONEWREAD}
  */
 static DECLCALLBACK(VBOXSTRICTRC) ohciMmioRead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void *pv, unsigned cb)
 {
@@ -5501,7 +5501,7 @@ static DECLCALLBACK(VBOXSTRICTRC) ohciMmioRead(PPDMDEVINS pDevIns, void *pvUser,
 
 
 /**
- * @callback_method_impl{FNIOMMMIOWRITE}
+ * @callback_method_impl{FNIOMMMIONEWWRITE}
  */
 PDMBOTHCBDECL(VBOXSTRICTRC) ohciMmioWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void const *pv, unsigned cb)
 {
