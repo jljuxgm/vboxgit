@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 82823 2020-01-22 11:51:34Z vboxsync $ */
+/* $Id: ftp-server.cpp 82824 2020-01-22 11:56:53Z vboxsync $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  * Partly also implements RFC 3659 (Extensions to FTP, for "SIZE", ++).
@@ -878,8 +878,7 @@ static int rtFtpServerDataConnWrite(PRTFTPSERVERDATACONN pDataConn, const void *
  *
  * @returns VBox status code.
  * @param   pDataConn           Data connection to write to.
- * @param   enmReply            Reply code to send.
- * @param   pcszFormat          Format string of message to send with the reply code.
+ * @param   pcszFormat          Format string to send. No (terminal) termination added.
  */
 static int rtFtpServerDataConnPrintf(PRTFTPSERVERDATACONN pDataConn, const char *pcszFormat, ...)
 {
@@ -1268,7 +1267,7 @@ static const char *rtFtpServerDecimalFormatOwner(RTUID uid, const char *pszOwner
  *
  * @returns pszDst
  * @param   gid             The GID to format.
- * @param   pszOwner        The owner returned by the FS.
+ * @param   pszGroup        The group returned by the FS.
  * @param   pszDst          The output buffer.
  * @param   cbDst           The output buffer size.
  */
@@ -1449,6 +1448,15 @@ static int rtFtpServerDataConnDirCollAddEntry(PRTFTPDIRCOLLECTION pCollection, c
     return VERR_NO_MEMORY;
 }
 
+/**
+ * Writes a directory collection to a specific data connection.
+ *
+ * @returns VBox status code.
+ * @param   pDataConn           Data connection to write directory collection to.
+ * @param   pCollection         Collection to write.
+ * @param   pszTmp              Temporary buffer used for writing.
+ * @param   cbTmp               Size (in bytes) of temporary buffer used for writing.
+ */
 static int rtFtpServerDataConnDirCollWrite(PRTFTPSERVERDATACONN pDataConn, PRTFTPDIRCOLLECTION pCollection,
                                            char *pszTmp, size_t cbTmp)
 {
