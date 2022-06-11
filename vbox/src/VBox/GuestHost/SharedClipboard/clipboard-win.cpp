@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 79267 2019-06-21 10:11:59Z vboxsync $ */
+/* $Id: clipboard-win.cpp 79268 2019-06-21 10:18:58Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -30,7 +30,7 @@
 #define LOG_GROUP LOG_GROUP_SHARED_CLIPBOARD
 #include <VBox/log.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include <VBox/GuestHost/SharedClipboard.h>
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
