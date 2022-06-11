@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
+/* $Id: EM.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -35,7 +35,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_EM
 #define VMCPU_INCL_CPUM_GST_CTX /* for CPUM_IMPORT_GUEST_STATE_RET */
 #include <VBox/vmm/em.h>

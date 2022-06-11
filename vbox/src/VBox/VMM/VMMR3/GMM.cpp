@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
+/* $Id: GMM.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_GMM
 #include <VBox/vmm/gmm.h>
 #include <VBox/vmm/vmm.h>

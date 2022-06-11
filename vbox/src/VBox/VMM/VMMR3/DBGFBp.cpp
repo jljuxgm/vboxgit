@@ -1,4 +1,4 @@
-/* $Id: DBGFBp.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: DBGFBp.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_DBGF
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/selm.h>

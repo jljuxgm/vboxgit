@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 80253 2019-08-13 15:49:33Z vboxsync $ */
+/* $Id: APICAll.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_DEV_APIC
 #include "APICInternal.h"
 #include <VBox/vmm/pdmdev.h>

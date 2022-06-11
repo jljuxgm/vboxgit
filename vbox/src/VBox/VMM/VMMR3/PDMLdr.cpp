@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: PDMLdr.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -21,7 +21,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_PDM_LDR
 #include "PDMInternal.h"
 #include <VBox/vmm/pdm.h>

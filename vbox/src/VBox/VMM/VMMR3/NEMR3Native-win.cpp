@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -25,7 +25,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_NEM
 #define VMCPU_INCL_CPUM_GST_CTX
 #include <iprt/nt/nt-and-windows.h>

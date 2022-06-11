@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 80264 2019-08-14 08:49:08Z vboxsync $ */
+/* $Id: PGMHandler.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_PGM
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/pgm.h>

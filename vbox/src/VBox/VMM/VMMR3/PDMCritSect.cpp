@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_PDM//_CRITSECT
 #include "PDMInternal.h"
 #include <VBox/vmm/pdmcritsect.h>

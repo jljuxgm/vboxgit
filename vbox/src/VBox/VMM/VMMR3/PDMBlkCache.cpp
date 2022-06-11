@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -23,7 +23,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_PDM_BLK_CACHE
 #include "PDMInternal.h"
 #include <iprt/asm.h>

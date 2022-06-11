@@ -1,4 +1,4 @@
-/* $Id: GIMR0Hv.cpp 80274 2019-08-14 14:34:38Z vboxsync $ */
+/* $Id: GIMR0Hv.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM), Hyper-V - Host Context Ring-0.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_GIM
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/tm.h>

@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_HM
 #define VMCPU_INCL_CPUM_GST_CTX
 #include "HMInternal.h"

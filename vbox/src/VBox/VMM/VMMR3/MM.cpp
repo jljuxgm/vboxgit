@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: MM.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -144,7 +144,6 @@ Hypervisor Memory Area (HMA) Layout: Base 00000000a0000000, 0x00800000 bytes
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_MM
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/pgm.h>

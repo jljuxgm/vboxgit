@@ -1,4 +1,4 @@
-/* $Id: MMAllPagePool.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: MMAllPagePool.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  *
@@ -21,7 +21,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_MM_POOL
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/pgm.h>

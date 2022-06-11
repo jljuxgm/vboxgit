@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 80319 2019-08-16 09:19:31Z vboxsync $ */
+/* $Id: MMHyper.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_MM_HYPER
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/mm.h>

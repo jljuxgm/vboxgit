@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 80274 2019-08-14 14:34:38Z vboxsync $ */
+/* $Id: VMMRZ.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_VMM
 #include <VBox/vmm/vmm.h>
 #include "VMMInternal.h"

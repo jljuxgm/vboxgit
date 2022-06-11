@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 80274 2019-08-14 14:34:38Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_PDM_DEVICE
 #define PDMPCIDEV_INCLUDE_PRIVATE  /* Hack to get pdmpcidevint.h included at the right point. */
 #include "PDMInternal.h"
