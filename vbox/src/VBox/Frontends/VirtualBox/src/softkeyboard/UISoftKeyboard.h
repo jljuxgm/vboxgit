@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 78845 2019-05-29 12:32:11Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 78891 2019-05-31 10:20:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -61,6 +61,7 @@ private slots:
     void sltHandleKeyPress();
     void sltHandleKeyRelease();
     void sltHandleModifierStateChange();
+    void sltHandleKeyboardLedsChange();
 
 private:
 
