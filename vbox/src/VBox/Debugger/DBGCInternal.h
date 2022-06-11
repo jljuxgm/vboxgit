@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 76564 2019-01-01 03:57:14Z vboxsync $ */
+/* $Id: DBGCInternal.h 80014 2019-07-26 16:12:06Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -137,8 +137,6 @@ typedef struct DBGC
     /** Log indicator. (If set we're writing the log to the console.) */
     bool                fLog;
 
-    /** Indicates whether we're in guest (true) or hypervisor (false) register context. */
-    bool                fRegCtxGuest;
     /** Indicates whether the register are terse or sparse. */
     bool                fRegTerse;
     /** Whether to display registers when tracing. */

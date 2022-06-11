@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdHlp.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DBGCCmdHlp.cpp 80014 2019-07-26 16:12:06Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -1329,19 +1329,14 @@ static DECLCALLBACK(CPUMMODE) dbgcHlpGetCpuMode(PDBGCCMDHLP pCmdHlp)
 {
     PDBGC    pDbgc   = DBGC_CMDHLP2DBGC(pCmdHlp);
     CPUMMODE enmMode = CPUMMODE_INVALID;
-    if (pDbgc->fRegCtxGuest)
-    {
-        if (pDbgc->pUVM)
-            enmMode = DBGFR3CpuGetMode(pDbgc->pUVM, DBGCCmdHlpGetCurrentCpu(pCmdHlp));
-        if (enmMode == CPUMMODE_INVALID)
+    if (pDbgc->pUVM)
+        enmMode = DBGFR3CpuGetMode(pDbgc->pUVM, DBGCCmdHlpGetCurrentCpu(pCmdHlp));
+    if (enmMode == CPUMMODE_INVALID)
 #if HC_ARCH_BITS == 64
-            enmMode = CPUMMODE_LONG;
+        enmMode = CPUMMODE_LONG;
 #else
-            enmMode = CPUMMODE_PROTECTED;
-#endif
-    }
-    else
         enmMode = CPUMMODE_PROTECTED;
+#endif
     return enmMode;
 }
 
