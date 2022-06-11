@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 78915 2019-06-01 17:37:37Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 78916 2019-06-01 17:43:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8253,7 +8253,7 @@ HRESULT Console::i_powerDown(IProgress *aProgress /*= NULL*/)
         /* Leave the lock since EMT might wait for it and will call us back as addVMCaller() */
         alock.release();
 
-#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST_DISABLED
+#ifdef VBOX_WITH_SHARED_CLIPBOARD
         if (m_hHgcmSvcExtShrdClipboard)
         {
             HGCMHostUnregisterServiceExtension(m_hHgcmSvcExtShrdClipboard);
