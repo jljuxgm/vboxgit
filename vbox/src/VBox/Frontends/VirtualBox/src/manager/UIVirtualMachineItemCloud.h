@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 83000 2020-02-05 19:35:22Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 83012 2020-02-06 19:44:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declarations.
  */
@@ -48,6 +48,8 @@ public:
 
     /** @name State attributes.
       * @{ */
+        /** Defines fake cloud item @a enmState. */
+        void setFakeCloudItemState(FakeCloudItemState enmState) { m_enmFakeCloudItemState = enmState; }
         /** Returns fake cloud item state. */
         FakeCloudItemState fakeCloudItemState() const { return m_enmFakeCloudItemState; }
     /** @} */
