@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 78539 2019-05-16 09:42:39Z vboxsync $ */
+/* $Id: UIMessageCenter.h 78542 2019-05-16 11:00:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -319,6 +319,7 @@ public:
     bool confirmSettingsReloading(QWidget *pParent = 0) const;
     int confirmRemovingOfLastDVDDevice(QWidget *pParent = 0) const;
     bool confirmStorageBusChangeWithOpticalRemoval(QWidget *pParent = 0) const;
+    bool confirmStorageBusChangeWithExcessiveRemoval(QWidget *pParent = 0) const;
     void cannotAttachDevice(const CMachine &machine, UIMediumDeviceType type, const QString &strLocation, const StorageSlot &storageSlot, QWidget *pParent = 0);
     bool warnAboutIncorrectPort(QWidget *pParent = 0) const;
     bool warnAboutIncorrectAddress(QWidget *pParent = 0) const;

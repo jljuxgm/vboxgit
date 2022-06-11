@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 78539 2019-05-16 09:42:39Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 78542 2019-05-16 11:00:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1122,6 +1122,14 @@ bool UIMessageCenter::confirmStorageBusChangeWithOpticalRemoval(QWidget *pParent
                           tr("<p>This controller has optical devices attached.  You have requested storage bus "
                              "change to type which doesn't support optical devices.</p><p>If you proceed optical "
                              "devices will be removed.</p>"));
+}
+
+bool UIMessageCenter::confirmStorageBusChangeWithExcessiveRemoval(QWidget *pParent /* = 0 */) const
+{
+    return questionBinary(pParent, MessageType_Question,
+                          tr("<p>This controller has devices attached.  You have requested storage bus change to "
+                             "type which supports smaller amount of attached devices.</p><p>If you proceed "
+                             "excessive devices will be removed.</p>"));
 }
 
 void UIMessageCenter::cannotAttachDevice(const CMachine &machine, UIMediumDeviceType enmType,

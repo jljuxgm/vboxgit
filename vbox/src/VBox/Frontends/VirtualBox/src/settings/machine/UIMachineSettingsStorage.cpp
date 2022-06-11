@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 78539 2019-05-16 09:42:39Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 78542 2019-05-16 11:00:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -1712,6 +1712,20 @@ bool StorageModel::setData (const QModelIndex &aIndex, const QVariant &aValue, i
                             foreach (const QUuid &uId, opticalIds)
                                 delAttachment(pItemController->id(), uId);
                         }
+                    }
+
+                    /* Lets make sure there is enough of place for all the remaining attachments: */
+                    const uint uMaxPortCount =
+                        (uint)vboxGlobal().virtualBox().GetSystemProperties().GetMaxPortCountForStorageBus(enmNewCtrBusType);
+                    const uint uMaxDevicePerPortCount =
+                        (uint)vboxGlobal().virtualBox().GetSystemProperties().GetMaxDevicesPerPortForStorageBus(enmNewCtrBusType);
+                    const QList<QUuid> ids = pItemController->attachmentIDs();
+                    if (uMaxPortCount * uMaxDevicePerPortCount < (uint)ids.size())
+                    {
+                        if (!msgCenter().confirmStorageBusChangeWithExcessiveRemoval())
+                            return false;
+                        for (int i = uMaxPortCount * uMaxDevicePerPortCount; i < ids.size(); ++i)
+                            delAttachment(pItemController->id(), ids.at(i));
                     }
 
                     pItemController->setCtrBusType(enmNewCtrBusType);
