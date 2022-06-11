@@ -1,4 +1,4 @@
-# $Id: Config.kmk 82764 2020-01-15 01:43:52Z vboxsync $
+# $Id: Config.kmk 82807 2020-01-21 01:47:10Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2050,7 +2050,6 @@ endif
 
 
 # Intel ASL compiler for ACPI
-$(warning KBUILD_HOST:=$(KBUILD_HOST) KBUILD_HOST_VERSION_MAJOR=$(KBUILD_HOST_VERSION_MAJOR) VBOX_IASLCMD=$(VBOX_IASLCMD))
 if "$(KBUILD_HOST)" == "darwin" && "$(KBUILD_HOST_VERSION_MAJOR)" >= 19  # Temp hack! Catalina needs 64-bit binary
 VBOX_IASLCMD   ?= /opt/local/bin/iasl$(HOSTSUFF_EXE)
 else
@@ -7732,7 +7731,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 82764 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 82807 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
