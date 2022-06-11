@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 80486 2019-08-28 20:24:03Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 80487 2019-08-28 20:34:19Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -22,9 +22,6 @@
 #endif
 
 typedef struct _VBOXMP_DEVEXT *PVBOXMP_DEVEXT;
-#ifdef VBOX_WITH_CROGL
-typedef struct VBOXWDDM_SWAPCHAIN *PVBOXWDDM_SWAPCHAIN;
-#endif
 typedef struct VBOXWDDM_CONTEXT *PVBOXWDDM_CONTEXT;
 typedef struct VBOXWDDM_ALLOCATION *PVBOXWDDM_ALLOCATION;
 

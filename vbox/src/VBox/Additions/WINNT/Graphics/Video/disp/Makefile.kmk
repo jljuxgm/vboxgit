@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80372 2019-08-21 14:32:40Z vboxsync $
+# $Id: Makefile.kmk 80487 2019-08-28 20:34:19Z vboxsync $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -38,9 +38,6 @@ VBoxDisp_DEFS          = VBOX_WITH_DDRAW
 VBoxDisp_DEFS         += LOG_TO_BACKDOOR #LOG_ENABLED
 ifdef VBOX_WITH_VIDEOHWACCEL
  VBoxDisp_DEFS        += VBOX_WITH_VIDEOHWACCEL
-endif
-ifdef VBOX_WITH_CROGL
- VBoxDisp_DEFS        += VBOX_WITH_CROGL
 endif
 #VBoxDisp_DEFS         += VBOX_VBVA_ADJUST_RECT
 VBoxDisp_INCS          = ../../../include .. $(VBOX_GRAPHICS_INCS)
@@ -109,7 +106,6 @@ endif
 VBoxDispD3D_INCS     = \
 	../../../include \
 	.. \
-	$(VBOX_PATH_CROGL_INCLUDE) \
 	$(PATH_ROOT)/src/VBox/Additions/WINNT/Graphics/Video/disp/wddm/shared \
 	$(VBOX_GRAPHICS_INCS)
 VBoxDispD3D_SOURCES  = \

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 80486 2019-08-28 20:24:03Z vboxsync $ */
+/* $Id: VBoxMPVdma.h 80487 2019-08-28 20:34:19Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -155,9 +155,6 @@ AssertCompile(sizeof (VBOXVDMADDI_CMD) <= RT_SIZEOFMEMB(VBOXVDMACBUF_DR, aGuestD
 #define VBOXVDMADDI_CMD_FROM_BUF_DR(_pDr) ((PVBOXVDMADDI_CMD)(_pDr)->aGuestData)
 #define VBOXVDMACBUF_DR_FROM_DDI_CMD(_pCmd) ((PVBOXVDMACBUF_DR)(((uint8_t*)(_pCmd)) - RT_UOFFSETOF(VBOXVDMACBUF_DR, aGuestData)))
 
-#endif
-#ifdef VBOX_WITH_CROGL
-NTSTATUS vboxVdmaPostHideSwapchain(PVBOXWDDM_SWAPCHAIN pSwapchain);
 #endif
 
 NTSTATUS vboxVdmaGgDmaBltPerform(PVBOXMP_DEVEXT pDevExt, struct VBOXWDDM_ALLOC_DATA * pSrcAlloc, RECT* pSrcRect,
