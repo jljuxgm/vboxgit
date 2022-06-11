@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 81025 2019-09-26 16:13:25Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 81059 2019-09-27 14:30:20Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -71,9 +71,6 @@
 VBGLR3DECL(int) VbglR3ClipboardConnect(HGCMCLIENTID *pidClient)
 {
     int rc = VbglR3HGCMConnect("VBoxSharedClipboard", pidClient);
-    if (rc == VERR_HGCM_SERVICE_NOT_FOUND)
-        rc = VINF_PERMISSION_DENIED;
-
     LogFlowFuncLeaveRC(rc);
     return rc;
 }
