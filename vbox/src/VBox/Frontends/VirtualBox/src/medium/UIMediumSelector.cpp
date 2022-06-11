@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 78722 2019-05-24 12:09:08Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 79205 2019-06-18 10:04:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -79,7 +79,12 @@ UIMediumSelector::UIMediumSelector(UIMediumDeviceType enmMediumType, const QStri
     , m_strMachineName(machineName)
     , m_strMachineGuestOSTypeId(strMachineGuestOSTypeId)
 {
+    /* Start medium-enumeration (if necessary): */
+#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
     if (vboxGlobal().uiType() == VBoxGlobal::UIType_RuntimeUI)
+#else
+    if (!vboxGlobal().isFullMediumEnumerationRequested())
+#endif
         vboxGlobal().startMediumEnumeration();
     configure();
     finalize();

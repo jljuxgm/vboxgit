@@ -1,4 +1,4 @@
-/* $Id: UIMediaComboBox.cpp 78722 2019-05-24 12:09:08Z vboxsync $ */
+/* $Id: UIMediaComboBox.cpp 79205 2019-06-18 10:04:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediaComboBox class implementation.
  */
@@ -57,7 +57,12 @@ void UIMediaComboBox::refresh()
 
 void UIMediaComboBox::repopulate()
 {
+    /* Start medium-enumeration (if necessary): */
+#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
     if (!vboxGlobal().isMediumEnumerationInProgress())
+#else
+    if (!vboxGlobal().isFullMediumEnumerationRequested())
+#endif
         vboxGlobal().startMediumEnumeration();
     else
         refresh();

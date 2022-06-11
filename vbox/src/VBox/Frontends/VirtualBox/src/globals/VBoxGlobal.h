@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 78723 2019-05-24 12:26:23Z vboxsync $ */
+/* $Id: VBoxGlobal.h 79205 2019-06-18 10:04:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -483,6 +483,10 @@ public:
         void refreshMedia();
         /** Returns whether medium-enumeration is in progress. */
         bool isMediumEnumerationInProgress() const;
+#ifdef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
+        /** Returns whether full medium-enumeration is requested. */
+        bool isFullMediumEnumerationRequested() const;
+#endif
         /** Returns enumerated medium with certain @a uMediumID. */
         UIMedium medium(const QUuid &uMediumID) const;
         /** Returns enumerated medium IDs. */

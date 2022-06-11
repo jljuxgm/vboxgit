@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 79152 2019-06-14 13:22:08Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 79205 2019-06-18 10:04:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -81,6 +81,10 @@ public:
 
     /** Returns whether consolidated medium-enumeration process is in progress. */
     bool isMediumEnumerationInProgress() const { return m_fMediumEnumerationInProgress; }
+#ifdef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
+    /** Returns whether full consolidated medium-enumeration process is requested. */
+    bool isFullMediumEnumerationRequested() const { return m_fMediumEnumerationRequested; }
+#endif
     /** Makes a request to enumerate specified @a comMedia.
       * @note  Previous map will be replaced with the new one, values present in both
       *        maps will be merged from the previous to new one, keep that all in mind.
@@ -206,6 +210,10 @@ private:
 
     /** Holds whether consolidated medium-enumeration process is in progress. */
     bool  m_fMediumEnumerationInProgress;
+#ifdef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
+    /** Holds whether full consolidated medium-enumeration process is requested. */
+    bool  m_fMediumEnumerationRequested;
+#endif
 
     /** Holds a set of current medium-enumeration tasks. */
     QSet<UITask*>  m_tasks;

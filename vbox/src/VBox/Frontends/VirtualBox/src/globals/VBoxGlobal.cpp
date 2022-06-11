@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 79191 2019-06-17 16:20:42Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 79205 2019-06-18 10:04:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2572,6 +2572,15 @@ bool VBoxGlobal::isMediumEnumerationInProgress() const
     return    m_pMediumEnumerator
            && m_pMediumEnumerator->isMediumEnumerationInProgress();
 }
+
+#ifdef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
+bool VBoxGlobal::isFullMediumEnumerationRequested() const
+{
+    /* Redirect request to medium-enumerator: */
+    return    m_pMediumEnumerator
+           && m_pMediumEnumerator->isFullMediumEnumerationRequested();
+}
+#endif
 
 UIMedium VBoxGlobal::medium(const QUuid &uMediumID) const
 {

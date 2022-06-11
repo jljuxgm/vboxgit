@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 79152 2019-06-14 13:22:08Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 79205 2019-06-18 10:04:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -88,6 +88,9 @@ private:
 
 UIMediumEnumerator::UIMediumEnumerator()
     : m_fMediumEnumerationInProgress(false)
+#ifdef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
+    , m_fMediumEnumerationRequested(false)
+#endif
 {
     /* Allow UIMedium to be used in inter-thread signals: */
     qRegisterMetaType<UIMedium>();
@@ -194,6 +197,9 @@ void UIMediumEnumerator::startMediumEnumeration(const CMediumVector &comMedia /*
      * wizard instead and enumerate only comMedia in 'else' case. */
     if (comMedia.isEmpty())
     {
+#ifdef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
+        m_fMediumEnumerationRequested = true;
+#endif
         addMediaToMap(vboxGlobal().virtualBox().GetHardDisks(), media);
         addMediaToMap(vboxGlobal().host().GetDVDDrives(), media);
         addMediaToMap(vboxGlobal().virtualBox().GetDVDImages(), media);
@@ -202,6 +208,9 @@ void UIMediumEnumerator::startMediumEnumeration(const CMediumVector &comMedia /*
     }
     else
     {
+#ifdef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
+        m_fMediumEnumerationRequested = false;
+#endif
         addMediaToMap(vboxGlobal().host().GetDVDDrives(), media);
         addMediaToMap(vboxGlobal().virtualBox().GetDVDImages(), media);
         addMediaToMap(comMedia, media);

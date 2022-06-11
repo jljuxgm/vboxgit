@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 79204 2019-06-18 09:52:35Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 79205 2019-06-18 10:04:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -694,7 +694,11 @@ void UIMediumManagerWidget::prepare()
     retranslateUi();
 
     /* Start medium-enumeration (if necessary): */
+#ifndef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
     if (!vboxGlobal().isMediumEnumerationInProgress())
+#else
+    if (!vboxGlobal().isFullMediumEnumerationRequested())
+#endif
         vboxGlobal().startMediumEnumeration();
     /* Emulate medium-enumeration otherwise: */
     else

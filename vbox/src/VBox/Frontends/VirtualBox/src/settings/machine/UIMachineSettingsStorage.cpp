@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 78722 2019-05-24 12:09:08Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 79205 2019-06-18 10:04:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3707,6 +3707,10 @@ void UIMachineSettingsStorage::prepare()
     /* Create icon-pool: */
     UIIconPoolStorageSettings::create();
 
+#ifdef VBOX_GUI_WITH_NEW_MEDIA_EVENTS
+    /* Start medium-enumeration (only if necessary): */
+    if (!vboxGlobal().isFullMediumEnumerationRequested())
+#endif
     /* Enumerate Media. We need at least the MediaList filled, so this is the
      * lasted point, where we can start. The rest of the media checking is done
      * in a background thread. */
