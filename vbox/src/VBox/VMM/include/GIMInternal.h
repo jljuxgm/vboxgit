@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: GIMInternal.h 79264 2019-06-21 05:43:43Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -94,8 +94,8 @@ typedef struct GIMCPU
 typedef GIMCPU *PGIMCPU;
 
 /**
- * Callback when a debug buffer read has completed and before signaling
- * the next read.
+ * Callback when a debug buffer read has completed and before signalling the next
+ * read.
  *
  * @param   pVM             The cross context VM structure.
  */

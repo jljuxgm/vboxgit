@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 79114 2019-06-13 04:57:30Z vboxsync $ */
+/* $Id: EM.cpp 79264 2019-06-21 05:43:43Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2497,7 +2497,7 @@ bool emR3IsExecutionAllowed(PVM pVM, PVMCPU pVCpu)
  * suspended (state already saved) and deconstruction is next in line.
  *
  * All interaction from other thread are done using forced actions
- * and signaling of the wait object.
+ * and signalling of the wait object.
  *
  * @returns VBox status code, informational status codes may indicate failure.
  * @param   pVM         The cross context VM structure.
