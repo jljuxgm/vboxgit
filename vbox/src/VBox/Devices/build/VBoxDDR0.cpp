@@ -1,4 +1,4 @@
-/* $Id: VBoxDDR0.cpp 81502 2019-10-24 01:40:30Z vboxsync $ */
+/* $Id: VBoxDDR0.cpp 81512 2019-10-24 09:19:42Z vboxsync $ */
 /** @file
  * VBoxDDR0 - Built-in drivers & devices (part 1), ring-0 module.
  */
@@ -49,7 +49,7 @@ static PCPDMDEVREGR0 g_apVBoxDDR0DevRegs[] =
     &g_DeviceI8259,
     &g_DeviceHPET,
     &g_DeviceSmc,
-    /// @todo &g_DeviceFlash,
+    &g_DeviceFlash,
     &g_DeviceMC146818,
     &g_DeviceVga,
     &g_DeviceVMMDev,
