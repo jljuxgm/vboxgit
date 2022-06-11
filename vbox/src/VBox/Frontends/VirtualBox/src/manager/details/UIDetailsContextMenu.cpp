@@ -1,4 +1,4 @@
-/* $Id: UIDetailsContextMenu.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIDetailsContextMenu.cpp 81187 2019-10-09 14:04:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsContextMenu class implementation.
  */
@@ -702,7 +702,7 @@ void UIDetailsContextMenu::populateOptions()
                 QListWidgetItem *pOptionItem = createOptionItem();
                 if (pOptionItem)
                 {
-                    pOptionItem->setData(DataField_Type, enmOptionType);
+                    pOptionItem->setData(DataField_Type, QVariant::fromValue(enmOptionType));
                     pOptionItem->setData(DataField_Name, gpConverter->toInternalString(enmOptionType));
                     pOptionItem->setCheckState(Qt::Unchecked);
                 }
