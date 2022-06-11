@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 80148 2019-08-06 06:36:58Z vboxsync $ $Revision: 80148 $ $Date: 2019-08-06 14:36:58 +0800 (Tue, 06 Aug 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 80149 2019-08-06 06:47:46Z vboxsync $ $Revision: 80149 $ $Date: 2019-08-06 14:47:46 +0800 (Tue, 06 Aug 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -824,7 +824,7 @@ static int virtioScsiR3ConfigAccess(PVIRTIOSCSI pThis, uint32_t uOffset,
  *
  * @param   pDevIns     The device instance.
  * @param   uOffset     Offset within device specific capabilities struct
- * @param   pvBuf       Buffer in which to save read data
+ * @param   pv       Buffer in which to save read data
  * @param   cb          Number of bytes to read
  */
 static DECLCALLBACK(int) virtioScsiR3DevCapRead(PPDMDEVINS pDevIns, uint32_t uOffset, const void *pv, size_t cb)
@@ -846,7 +846,7 @@ static DECLCALLBACK(int) virtioScsiR3DevCapRead(PPDMDEVINS pDevIns, uint32_t uOf
  *
  * @param   pDevIns     The device instance.
  * @param   uOffset     Offset within device specific capabilities struct
- * @param   pvBuf       Buffer in which to save read data
+ * @param   pv       Buffer in which to save read data
  * @param   cb          Number of bytes to write
  */
 static DECLCALLBACK(int) virtioScsiR3DevCapWrite(PPDMDEVINS pDevIns, uint32_t uOffset, const void *pv, size_t cb)
