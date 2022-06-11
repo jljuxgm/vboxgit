@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.cpp 83547 2020-04-04 11:04:04Z vboxsync $ */
+/* $Id: alloc-ef.cpp 83548 2020-04-04 11:08:06Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -703,6 +703,7 @@ RTDECL(void) rtR3MemFree(const char *pszOp, RTMEMTYPE enmType, void *pv, size_t 
          */
         AssertMsg(enmType != RTMEMTYPE_RTMEMFREEZ || cbUser == pBlock->cbUnaligned,
                   ("cbUser=%#zx cbUnaligned=%#zx\n", cbUser, pBlock->cbUnaligned));
+        RT_NOREF(cbUser);
         if (enmType == RTMEMTYPE_RTMEMFREEZ)
             RT_BZERO(pv, pBlock->cbUnaligned);
 # ifdef RTALLOC_EFENCE_FREE_FILL
