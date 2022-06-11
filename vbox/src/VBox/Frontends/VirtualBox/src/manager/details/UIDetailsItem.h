@@ -1,4 +1,4 @@
-/* $Id: UIDetailsItem.h 79842 2019-07-17 16:51:51Z vboxsync $ */
+/* $Id: UIDetailsItem.h 80795 2019-09-15 16:41:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsItem class declaration.
  */
@@ -128,7 +128,7 @@ public:
         virtual QSizeF sizeHint(Qt::SizeHint enmWhich, const QSizeF &constraint = QSizeF()) const /* override */;
     /** @} */
 
-protected slots:
+public slots:
 
     /** @name Item stuff.
       * @{ */
