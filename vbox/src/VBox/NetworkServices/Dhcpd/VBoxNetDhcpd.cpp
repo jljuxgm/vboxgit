@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 79761 2019-07-14 03:18:41Z vboxsync $ */
+/* $Id: VBoxNetDhcpd.cpp 79859 2019-07-18 14:56:28Z vboxsync $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -15,6 +15,17 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+
+/** @page pg_net_dhcp       VBoxNetDHCP
+ *
+ * Write a few words...
+ *
+ */
+
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/cdefs.h>
 
 /*
