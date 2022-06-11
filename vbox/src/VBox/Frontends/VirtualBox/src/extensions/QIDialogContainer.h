@@ -1,4 +1,4 @@
-/* $Id: QIDialogContainer.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: QIDialogContainer.h 84016 2020-04-27 16:25:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIDialogContainer class declaration.
  */
@@ -29,6 +29,7 @@
 
 /* Forward declarations: */
 class QGridLayout;
+class QProgressBar;
 class QWidget;
 class QIDialogButtonBox;
 
@@ -51,6 +52,9 @@ public slots:
     /** Activates window. */
     void sltActivateWindow() { activateWindow(); }
 
+    /** Sets progress-bar to be @a fHidden. */
+    void setProgressBarHidden(bool fHidden);
+
     /** Sets Ok button to be @a fEnabled. */
     void setOkButtonEnabled(bool fEnabled);
 
@@ -63,6 +67,8 @@ private:
     QGridLayout       *m_pLayout;
     /** Holds the widget reference. */
     QWidget           *m_pWidget;
+    /** Holds the progress-bar instance. */
+    QProgressBar      *m_pProgressBar;
     /** Holds the button-box instance. */
     QIDialogButtonBox *m_pButtonBox;
 };
