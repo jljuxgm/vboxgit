@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 81457 2019-10-22 16:47:06Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 82436 2019-12-05 17:48:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -59,7 +59,7 @@ public:
 #endif
 
     /** Returns recommended graphics controller type. */
-    KGraphicsControllerType graphicsControllerTypeRecommended() const { return m_enmGraphicsControllerTypeRecommended; }
+    KGraphicsControllerType graphicsControllerTypeRecommended() const;
     /** Returns current graphics controller type. */
     KGraphicsControllerType graphicsControllerTypeCurrent() const;
 

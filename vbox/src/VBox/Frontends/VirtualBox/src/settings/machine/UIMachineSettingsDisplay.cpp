@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 82008 2019-11-19 20:50:14Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 82436 2019-12-05 17:48:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -349,6 +349,13 @@ bool UIMachineSettingsDisplay::isAcceleration2DVideoSelected() const
 }
 #endif /* VBOX_WITH_VIDEOHWACCEL */
 
+KGraphicsControllerType UIMachineSettingsDisplay::graphicsControllerTypeRecommended() const
+{
+    return   m_pGraphicsControllerEditor->supportedValues().contains(m_enmGraphicsControllerTypeRecommended)
+           ? m_enmGraphicsControllerTypeRecommended
+           : graphicsControllerTypeCurrent();
+}
+
 KGraphicsControllerType UIMachineSettingsDisplay::graphicsControllerTypeCurrent() const
 {
     return m_pGraphicsControllerEditor->value();
@@ -661,7 +668,7 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
         /* Graphics controller type test: */
         if (!m_comGuestOSType.isNull())
         {
-            if (m_pGraphicsControllerEditor->value() != m_enmGraphicsControllerTypeRecommended)
+            if (graphicsControllerTypeCurrent() != graphicsControllerTypeRecommended())
             {
 #ifdef VBOX_WITH_3D_ACCELERATION
                 if (m_pCheckbox3D->isChecked())
