@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 78963 2019-06-04 11:01:43Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 79023 2019-06-06 13:51:42Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1649,7 +1649,7 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
                             memory = vsdData.toUInt32();
                     }
                     vsys.ullMemorySize = memory;
-                    LogRel(("%s: Size of RAM is %sMB\n", __FUNCTION__, vsdData.c_str()));
+                    LogRel(("%s: Size of RAM is %dMB\n", __FUNCTION__, vsys.ullMemorySize));
                 }
 
                 {
@@ -1867,7 +1867,7 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
                         if (FAILED(hrc))
                             throw hrc;
 
-                        pTask->pProgress->SetNextOperation(BstrFmt(tr("Importing virtual disk image '%s'",pszName)).raw(),
+                        pTask->pProgress->SetNextOperation(BstrFmt(tr("Importing virtual disk image '%s'"), pszName).raw(),
                                                            200);
                         ComObjPtr<Medium> nullParent;
                         ComPtr<IProgress> pProgressImport;
