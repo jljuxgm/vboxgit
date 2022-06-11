@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 79189 2019-06-17 16:04:55Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 79190 2019-06-17 16:07:49Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2108,7 +2108,7 @@ int GuestProcessTool::run(      GuestSession              *pGuestSession,
 {
     int rcGuest = VERR_IPE_UNINITIALIZED_STATUS;
 
-    GuestProcessToolErrorInfo errorInfo = { VERR_IPE_UNINITIALIZED_STATUS, UINT32_MAX };
+    GuestProcessToolErrorInfo errorInfo = { VERR_IPE_UNINITIALIZED_STATUS, INT32_MAX };
     int vrc = runErrorInfo(pGuestSession, startupInfo, errorInfo);
     if (RT_SUCCESS(vrc))
     {
@@ -2169,7 +2169,7 @@ int GuestProcessTool::runEx(      GuestSession              *pGuestSession,
 {
     int rcGuest = VERR_IPE_UNINITIALIZED_STATUS;
 
-    GuestProcessToolErrorInfo errorInfo = { VERR_IPE_UNINITIALIZED_STATUS, UINT32_MAX };
+    GuestProcessToolErrorInfo errorInfo = { VERR_IPE_UNINITIALIZED_STATUS, INT32_MAX };
     int vrc = GuestProcessTool::runExErrorInfo(pGuestSession, startupInfo, paStrmOutObjects, cStrmOutObjects, errorInfo);
     if (RT_SUCCESS(vrc))
     {
