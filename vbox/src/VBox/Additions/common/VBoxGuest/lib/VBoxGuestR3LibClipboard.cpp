@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 80862 2019-09-17 14:45:21Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 80867 2019-09-17 15:40:38Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -1375,6 +1375,8 @@ VBGLR3DECL(int) VbglR3ClipboardEventGetNextEx(uint32_t idMsg, uint32_t cParms,
                         break;
                     }
 
+                    case SHCLTRANSFERSTATUS_STOPPED:
+                        RT_FALL_THROUGH();
                     case SHCLTRANSFERSTATUS_CANCELED:
                         RT_FALL_THROUGH();
                     case SHCLTRANSFERSTATUS_KILLED:
