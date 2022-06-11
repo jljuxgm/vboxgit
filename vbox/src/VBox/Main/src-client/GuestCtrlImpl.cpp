@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 83323 2020-03-19 09:40:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -531,7 +531,6 @@ HRESULT Guest::updateGuestAdditions(const com::Utf8Str &aSource, const std::vect
     startupInfo.mName = "Updating Guest Additions";
 
     GuestCredentials guestCreds;
-    RT_ZERO(guestCreds);
 
     HRESULT hrc;
     ComObjPtr<GuestSession> pSession;

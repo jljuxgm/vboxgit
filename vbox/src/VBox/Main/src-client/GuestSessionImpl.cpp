@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 83321 2020-03-19 09:24:58Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 83323 2020-03-19 09:40:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1476,8 +1476,6 @@ int GuestSession::i_fileOpenEx(const com::Utf8Str &aPath, FileAccessMode_T aAcce
                                ComObjPtr<GuestFile> &pFile, int *prcGuest)
 {
     GuestFileOpenInfo openInfo;
-    RT_ZERO(openInfo);
-
     openInfo.mFilename     = aPath;
     openInfo.mCreationMode = aCreationMode;
     openInfo.mAccessMode   = aAccessMode;

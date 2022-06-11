@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 83322 2020-03-19 09:33:49Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 83323 2020-03-19 09:40:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -465,7 +465,6 @@ int GuestSessionTask::fileCopyFromGuest(const Utf8Str &strSource, const Utf8Str 
     LogFlowThisFunc(("strSource=%s, strDest=%s, enmFileCopyFlags=0x%x\n", strSource.c_str(), strDest.c_str(), fFileCopyFlags));
 
     GuestFileOpenInfo srcOpenInfo;
-    RT_ZERO(srcOpenInfo);
     srcOpenInfo.mFilename     = strSource;
     srcOpenInfo.mOpenAction   = FileOpenAction_OpenExisting;
     srcOpenInfo.mAccessMode   = FileAccessMode_ReadOnly;
@@ -867,7 +866,6 @@ int GuestSessionTask::fileCopyToGuest(const Utf8Str &strSource, const Utf8Str &s
         return rc;
 
     GuestFileOpenInfo dstOpenInfo;
-    RT_ZERO(dstOpenInfo);
     dstOpenInfo.mFilename        = strDestFinal;
     if (fFileCopyFlags & FileCopyFlag_NoReplace)
         dstOpenInfo.mOpenAction  = FileOpenAction_CreateNew;
@@ -1983,7 +1981,6 @@ int GuestSessionTaskUpdateAdditions::copyFileToGuest(GuestSession *pSession, RTV
                     strFileSource.c_str(), strFileDest.c_str()));
 
             GuestFileOpenInfo dstOpenInfo;
-            RT_ZERO(dstOpenInfo);
             dstOpenInfo.mFilename    = strFileDest;
             dstOpenInfo.mOpenAction  = FileOpenAction_CreateOrReplace;
             dstOpenInfo.mAccessMode  = FileAccessMode_WriteOnly;
