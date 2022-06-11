@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 78787 2019-05-27 17:08:54Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 78796 2019-05-27 19:30:38Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -771,7 +771,7 @@ static DECLCALLBACK(void) drvscsiNotifySuspend(PPDMIMEDIAEX pInterface)
      *        was mounted and asked the GUI to use it.  Got forced umount question.
      *        Said yes.  Ended up here with a NULL pointer. */
     PPDMIMEDIAEX pDrvMediaEx = pThis->pDrvMediaEx;
-    if (pThis)
+    if (pDrvMediaEx)
         pDrvMediaEx->pfnNotifySuspend(pDrvMediaEx);
 }
 
