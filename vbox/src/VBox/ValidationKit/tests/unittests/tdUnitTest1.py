@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: tdUnitTest1.py 83211 2020-03-05 16:03:50Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83211 $"
 
 
 # Standard Python imports.
@@ -423,6 +423,7 @@ class tdUnitTest1(vbox.TestDriver):
             sVer = re.sub(r'_BETA.*r', '.', sVer);
             sVer = re.sub(r'_ALPHA.*r', '.', sVer);
             sVer = re.sub(r'_RC.*r', '.', sVer);
+            sVer = re.sub('_SPB', '', sVer)
             sVer = sVer.replace('r', '.');
 
             self.aiVBoxVer = [int(sComp) for sComp in sVer.split('.')];
