@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: __init__.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: __init__.py 82993 2020-02-05 12:34:10Z vboxsync $
 
 """
 Just to make python 2.x happy.
@@ -26,5 +26,6 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 82993 $"
 
+from .tdOciExport1 import SubTstOciExportVm1 # pylint: disable=relative-import
