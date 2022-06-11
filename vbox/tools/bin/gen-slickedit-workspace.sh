@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 80628 2019-09-06 10:26:29Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 80629 2019-09-06 10:32:03Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -1154,7 +1154,7 @@ my_generate_project "Main"          "src/VBox/Main"                         --be
 ## @todo seperate webservices and Main. pick the right headers. added generated headers.
 
 # src/VBox/Network
-my_generate_project "Net-DHCP"      "src/VBox/NetworkServices/DHCP"         --begin-incs "include" "src/VBox/NetworkServices/NetLib"        --end-includes "src/VBox/NetworkServices/DHCP"
+my_generate_project "Net-DHCP"      "src/VBox/NetworkServices/Dhcpd"        --begin-incs "include" "src/VBox/NetworkServices/NetLib"        --end-includes "src/VBox/NetworkServices/Dhcpd"
 my_generate_project "Net-NAT"       "src/VBox/NetworkServices/NAT"          --begin-incs "include" "src/VBox/NetworkServices/NAT"           --end-includes "src/VBox/NetworkServices/NAT" "src/VBox/Devices/Network/slirp"
 my_generate_project "Net-NetLib"    "src/VBox/NetworkServices/NetLib"       --begin-incs "include" "src/VBox/NetworkServices/NetLib"        --end-includes "src/VBox/NetworkServices/NetLib"
 
