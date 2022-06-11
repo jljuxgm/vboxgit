@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 78709 2019-05-24 07:55:29Z vboxsync $ */
+/* $Id: IEMAll.cpp 78838 2019-05-29 08:36:50Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -15881,6 +15881,22 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecVmxVmexitExtInt(PVMCPU pVCpu, uint8_t uVector,
 VMM_INT_DECL(VBOXSTRICTRC) IEMExecVmxVmexitNmi(PVMCPU pVCpu)
 {
     VBOXSTRICTRC rcStrict = iemVmxVmexitNmi(pVCpu);
+    if (pVCpu->iem.s.cActiveMappings)
+        iemMemRollback(pVCpu);
+    return iemExecStatusCodeFiddling(pVCpu, rcStrict);
+}
+
+
+/**
+ * Interface for HM and EM to emulate VM-exit due to a triple-fault.
+ *
+ * @returns Strict VBox status code.
+ * @param   pVCpu           The cross context virtual CPU structure of the calling EMT.
+ * @thread  EMT(pVCpu)
+ */
+VMM_INT_DECL(VBOXSTRICTRC) IEMExecVmxVmexitTripleFault(PVMCPU pVCpu)
+{
+    VBOXSTRICTRC rcStrict = iemVmxVmexitTripleFault(pVCpu);
     if (pVCpu->iem.s.cActiveMappings)
         iemMemRollback(pVCpu);
     return iemExecStatusCodeFiddling(pVCpu, rcStrict);
