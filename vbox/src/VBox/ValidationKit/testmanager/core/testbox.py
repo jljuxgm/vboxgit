@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 84091 2020-04-29 19:31:28Z vboxsync $
+# $Id: testbox.py 84097 2020-04-30 10:35:14Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84091 $"
+__version__ = "$Revision: 84097 $"
 
 
 # Standard python imports.
@@ -744,10 +744,10 @@ class TestBoxLogic(ModelLogicBase):
     kcMaxSortColumns                = 17;
     kdSortColumnMap                 = {
         0:                               'TestBoxesWithStrings.sName',
-        kiSortColumn_sName:              "regexp_replace(TestBoxesWithStrings.sName,'[0-9]*','', 'g'), "\
-                                         "regexp_replace(CONCAT(TestBoxesWithStrings.sName,'0'),'[^0-9]*','', 'g')::int",
-        -kiSortColumn_sName:             "regexp_replace(TestBoxesWithStrings.sName,'[0-9]*','', 'g') DESC, "\
-                                         "regexp_replace(CONCAT(TestBoxesWithStrings.sName,'0'),'[^0-9]*','', 'g')::int DESC",
+        kiSortColumn_sName:              "regexp_replace(TestBoxesWithStrings.sName,'[0-9]*', '', 'g'), " \
+                            "RIGHT(CONCAT(regexp_replace(TestBoxesWithStrings.sName,'[^0-9]*','', 'g'),'0'),8)::int",
+        -kiSortColumn_sName:             "regexp_replace(TestBoxesWithStrings.sName,'[0-9]*', '', 'g') DESC, " \
+                            "RIGHT(CONCAT(regexp_replace(TestBoxesWithStrings.sName,'[^0-9]*','', 'g'),'0'),8)::int DESC",
         kiSortColumn_sOs:                'TestBoxesWithStrings.sOs',
         -kiSortColumn_sOs:               'TestBoxesWithStrings.sOs DESC',
         kiSortColumn_sOsVersion:         'TestBoxesWithStrings.sOsVersion',
