@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 82004 2019-11-19 16:55:37Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 82010 2019-11-20 03:20:11Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -106,10 +106,10 @@ const char *virtioCoreGetStateChangeText(VIRTIOVMSTATECHANGED enmState)
 {
     switch (enmState)
     {
-        case kvirtIoVmStateChangedReset:                return "<VM RESET>";
-        case kvirtIoVmStateChangedSuspend:              return "<VM SUSPEND>";
-        case kvirtIoVmStateChangedPowerOff:             return "<VM POWEROFF>";
-        case kvirtIoVmStateChangedResume:               return "<VM RESUME>";
+        case kvirtIoVmStateChangedReset:                return "VM RESET";
+        case kvirtIoVmStateChangedSuspend:              return "VM SUSPEND";
+        case kvirtIoVmStateChangedPowerOff:             return "VM POWER OFF";
+        case kvirtIoVmStateChangedResume:               return "VM RESUME";
         default:                                        return "<BAD ENUM>";
     }
 }
