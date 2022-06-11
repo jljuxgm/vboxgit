@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 82022 2019-11-20 11:53:25Z vboxsync $ */
+/* $Id: UISession.cpp 82028 2019-11-20 15:36:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1827,6 +1827,7 @@ void UISession::updateMousePointerShape()
         }
     }
 
+    /* Mark mouse pointer shape valid: */
     m_fIsValidPointerShapePresent = true;
 
 #elif defined(VBOX_WS_X11) || defined(VBOX_WS_MAC)
@@ -1849,6 +1850,8 @@ void UISession::updateMousePointerShape()
     m_cursorShapePixmap = QPixmap::fromImage(image);
     updateMousePointerPixmapScaling(m_cursorShapePixmap, uXHot, uYHot);
     m_cursor = QCursor(m_cursorShapePixmap, uXHot, uYHot);
+
+    /* Mark mouse pointer shape valid: */
     m_fIsValidPointerShapePresent = true;
 
 #else
