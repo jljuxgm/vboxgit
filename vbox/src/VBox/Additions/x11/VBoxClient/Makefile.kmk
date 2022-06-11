@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83228 2020-03-06 18:39:33Z vboxsync $
+# $Id: Makefile.kmk 83234 2020-03-09 08:10:44Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -32,11 +32,6 @@ VBoxClient_DEFS += VBOX_BUILD_TARGET=\"$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)\"
 ifdef VBOX_WITH_DBUS
  VBoxClient_DEFS += VBOX_WITH_DBUS
 endif
-ifdef VBOX_WITH_DISTRO_XRAND_XINERAMA
- VBoxClient_DEFS += WITH_DISTRO_XRAND_XINERAMA
- VBoxClient_LIBS += Xrandr
-endif
-
 
 VBoxClient_DEFS.linux += _GNU_SOURCE
 VBoxClient_INCS = $(VBOX_GRAPHICS_INCS)
@@ -65,6 +60,11 @@ VBoxClient_LIBS.solaris = \
 	dl
 VBoxClient_LIBS = \
 	X11 Xt Xext Xmu
+ifdef VBOX_WITH_DISTRO_XRAND_XINERAMA
+ VBoxClient_DEFS += WITH_DISTRO_XRAND_XINERAMA
+ VBoxClient_LIBS += Xrandr
+endif
+
 # XXX: -L comes from the template, but not rpath
 VBoxClient_LDFLAGS.netbsd = \
 	-Wl,-rpath /usr/X11R7/lib
