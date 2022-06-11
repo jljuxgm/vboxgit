@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 78581 2019-05-18 15:48:41Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 78582 2019-05-18 16:24:19Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -506,9 +506,10 @@ int ClipStopX11(CLIPBACKEND *pBackend)
     return VINF_SUCCESS;
 }
 
-void ClipAnnounceFormatToX11(CLIPBACKEND *pBackend, VBOXCLIPBOARDFORMATS vboxFormats)
+int ClipAnnounceFormatToX11(CLIPBACKEND *pBackend, VBOXCLIPBOARDFORMATS vboxFormats)
 {
     pBackend->formats = vboxFormats;
+    return VINF_SUCCESS;
 }
 
 extern int ClipRequestDataFromX11(CLIPBACKEND *pBackend, VBOXCLIPBOARDFORMAT vboxFormat,
