@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 82072 2019-11-21 09:44:55Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 82076 2019-11-21 12:00:18Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -361,8 +361,8 @@ typedef struct VMSVGAState
 
 typedef struct VGAState *PVGASTATE;
 
-DECLCALLBACK(int) vmsvgaR3IORegionMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
-                                      RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType);
+DECLCALLBACK(int) vmsvgaR3PciIORegionFifoMapUnmap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
+                                                  RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType);
 DECLCALLBACK(VBOXSTRICTRC) vmsvgaIORead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t *pu32, unsigned cb);
 DECLCALLBACK(VBOXSTRICTRC) vmsvgaIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t u32, unsigned cb);
 

@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 82074 2019-11-21 11:07:10Z vboxsync $ */
+/* $Id: DevVGA.h 82076 2019-11-21 12:00:18Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -553,6 +553,8 @@ typedef struct VGAState
 # ifdef VBOX_WITH_VMSVGA
     /** VMSVGA: I/O port PCI region. */
     IOMIOPORTHANDLE             hIoPortVmSvga;
+    /** VMSVGA: The MMIO2 handle of the FIFO PCI region. */
+    PGMMMIO2HANDLE              hMmio2VmSvgaFifo;
 # endif
     /** The MMIO2 handle of the VRAM. */
     PGMMMIO2HANDLE              hMmio2VRam;
