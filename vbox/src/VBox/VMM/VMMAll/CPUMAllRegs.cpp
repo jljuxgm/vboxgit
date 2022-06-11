@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 78483 2019-05-13 10:52:16Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 78840 2019-05-29 09:04:26Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2809,57 +2809,6 @@ VMM_INT_DECL(bool) CPUMIsGuestNmiBlocking(PVMCPU pVCpu)
     return pCtx->hwvirt.vmx.fVirtNmiBlocking;
 #else
     return VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_BLOCK_NMIS);
-#endif
-}
-
-
-/**
- * Checks whether the VMX nested-guest is in a state to receive physical (APIC)
- * interrupts.
- *
- * @returns VBox status code.
- * @retval  true if it's ready, false otherwise.
- *
- * @param   pVCpu   The cross context virtual CPU structure of the calling EMT.
- * @param   pCtx    The guest-CPU context.
- */
-VMM_INT_DECL(bool) CPUMIsGuestVmxPhysIntrEnabled(PVMCPU pVCpu, PCCPUMCTX pCtx)
-{
-#ifdef IN_RC
-    RT_NOREF2(pVCpu, pCtx);
-    AssertReleaseFailedReturn(false);
-#else
-    RT_NOREF(pVCpu);
-    Assert(CPUMIsGuestInVmxNonRootMode(pCtx));
-
-    return RT_BOOL(pCtx->eflags.u & X86_EFL_IF);
-#endif
-}
-
-
-/**
- * Checks whether the VMX nested-guest is in a state to receive virtual interrupts
- * (those injected with the "virtual-interrupt delivery" feature).
- *
- * @returns VBox status code.
- * @retval  true if it's ready, false otherwise.
- *
- * @param   pVCpu   The cross context virtual CPU structure of the calling EMT.
- * @param   pCtx    The guest-CPU context.
- */
-VMM_INT_DECL(bool) CPUMIsGuestVmxVirtIntrEnabled(PVMCPU pVCpu, PCCPUMCTX pCtx)
-{
-#ifdef IN_RC
-    RT_NOREF2(pVCpu, pCtx);
-    AssertReleaseFailedReturn(false);
-#else
-    RT_NOREF2(pVCpu, pCtx);
-    Assert(CPUMIsGuestInVmxNonRootMode(pCtx));
-
-    if (   (pCtx->eflags.u & X86_EFL_IF)
-        && !CPUMIsGuestVmxProcCtlsSet(pVCpu, pCtx, VMX_PROC_CTLS_INT_WINDOW_EXIT))
-        return true;
-    return false;
 #endif
 }
 
