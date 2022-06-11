@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 78638 2019-05-21 16:15:58Z vboxsync $ */
+/* $Id: IEMAll.cpp 78709 2019-05-24 07:55:29Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -15548,6 +15548,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedMonitor(PVMCPU pVCpu, uint8_t cbInstr)
 VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedMwait(PVMCPU pVCpu, uint8_t cbInstr)
 {
     IEMEXEC_ASSERT_INSTR_LEN_RETURN(cbInstr, 3);
+    IEM_CTX_ASSERT(pVCpu, IEM_CPUMCTX_EXTRN_EXEC_DECODED_NO_MEM_MASK | CPUMCTX_EXTRN_RCX | CPUMCTX_EXTRN_RAX);
 
     iemInitExec(pVCpu, false /*fBypassHandlers*/);
     VBOXSTRICTRC rcStrict = IEM_CIMPL_CALL_0(iemCImpl_mwait);
