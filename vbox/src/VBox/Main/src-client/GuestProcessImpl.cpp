@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 83420 2020-03-25 16:54:35Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 83472 2020-03-27 17:07:29Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2261,6 +2261,9 @@ int GuestProcessTool::runExErrorInfo(      GuestSession              *pGuestSess
             {
                 vrc = VERR_NO_MEMORY;
             }
+
+            if (RT_FAILURE(vrc))
+                break;
         }
     }
 
