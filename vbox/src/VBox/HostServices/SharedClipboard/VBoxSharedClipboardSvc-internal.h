@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 79497 2019-07-03 13:28:33Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 79501 2019-07-03 13:45:52Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -26,6 +26,7 @@
 #include <map>
 
 #include <iprt/list.h>
+#include <iprt/cpp/list.h> /* For RTCList. */
 
 #include <VBox/hgcmsvc.h>
 #include <VBox/log.h>
