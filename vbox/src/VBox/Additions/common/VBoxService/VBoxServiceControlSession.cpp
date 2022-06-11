@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 83438 2020-03-26 14:12:10Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 83441 2020-03-26 14:38:25Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1742,6 +1742,8 @@ static RTEXITCODE vgsvcGstCtrlSessionSpawnWorker(PVBOXSERVICECTRLSESSION pSessio
             void    *pvScratchBuf = RTMemAlloc(cbScratchBuf);
             if (pvScratchBuf)
             {
+                int cFailedMsgPeeks = 0;
+
                 /*
                  * Message processing loop.
                  */
@@ -1763,12 +1765,23 @@ static RTEXITCODE vgsvcGstCtrlSessionSpawnWorker(PVBOXSERVICECTRLSESSION pSessio
                         rc = VGSvcGstCtrlSessionHandler(pSession, uMsg, &CtxHost, &pvScratchBuf, &cbScratchBuf, &fShutdown);
                         if (fShutdown)
                             break;
-                    }
-                    else /** @todo Shouldn't we have a plan for handling connection loss and such?  Now, we'll just spin like crazy. */
-                        VGSvcVerbose(3, "Getting host message failed with %Rrc\n", rc); /* VERR_GEN_IO_FAILURE seems to be normal if ran into timeout. */
 
-                    /* Let others run (guests are often single CPU) ... */
-                    RTThreadYield();
+                        cFailedMsgPeeks = 0;
+
+                        /* Let others run (guests are often single CPU) ... */
+                        RTThreadYield();
+                    }
+                    else
+                    {
+                        VGSvcVerbose(1, "Getting host message failed with %Rrc\n", rc);
+
+                        if (cFailedMsgPeeks++ == 3)
+                            break;
+
+                        RTThreadSleep(3 * RT_MS_1SEC);
+
+                        /** @todo Shouldn't we have a plan for handling connection loss and such? */
+                    }
                 }
 
                 /*
