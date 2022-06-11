@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestApplication.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxGuestApplication.h 80847 2019-09-17 09:38:16Z vboxsync $ */
 /** @file
  * VBoxGuestApplication, Haiku Guest Additions, header.
  */
@@ -64,7 +64,7 @@
 
 #include <VBoxGuestInternal.h>
 
-class VBoxClipboardService;
+class VBoxShClService;
 
 class VBoxGuestApplication : public BApplication
 {

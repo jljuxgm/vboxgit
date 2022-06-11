@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-uri.h 80845 2019-09-17 09:05:21Z vboxsync $ */
+/* $Id: SharedClipboard-uri.h 80847 2019-09-17 09:38:16Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared URI functions between host and guest.
  */
@@ -1045,7 +1045,7 @@ typedef struct _SHCLURICTX
     /** List of transfers. */
     RTLISTANCHOR                List;
     /** Transfer ID allocation bitmap; clear bits are free, set bits are busy. */
-    uint64_t                    bmTransferIds[VBOX_SHARED_CLIPBOARD_MAX_TRANSFERS / sizeof(uint64_t) / 8];
+    uint64_t                    bmTransferIds[VBOX_SHCL_MAX_TRANSFERS / sizeof(uint64_t) / 8];
     /** Number of running (concurrent) transfers. */
     uint16_t                    cRunning;
     /** Maximum Number of running (concurrent) transfers. */
@@ -1134,7 +1134,7 @@ void SharedClipboardFsObjFromIPRT(PSHCLFSOBJINFO pDst, PCRTFSOBJINFO pSrc);
 bool SharedClipboardMIMEHasFileURLs(const char *pcszFormat, size_t cchFormatMax);
 bool SharedClipboardMIMENeedsCache(const char *pcszFormat, size_t cchFormatMax);
 
-const char *VBoxClipboardTransferStatusToStr(uint32_t uStatus);
+const char *VBoxShClTransferStatusToStr(uint32_t uStatus);
 
 #endif /* !VBOX_INCLUDED_GuestHost_SharedClipboard_uri_h */
 

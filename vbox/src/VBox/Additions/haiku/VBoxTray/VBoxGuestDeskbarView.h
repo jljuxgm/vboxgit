@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestDeskbarView.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxGuestDeskbarView.h 80847 2019-09-17 09:38:16Z vboxsync $ */
 /** @file
  * VBoxGuestDeskbarView, Haiku Guest Additions, header.
  */
@@ -91,7 +91,7 @@ class VBoxGuestDeskbarView : public BView
         status_t               _Init(BMessage *archive = NULL);
         BBitmap               *fIcon;
 
-        VBoxClipboardService *fClipboardService;
+        VBoxShClService *fClipboardService;
         VBoxDisplayService *fDisplayService;
 };
 

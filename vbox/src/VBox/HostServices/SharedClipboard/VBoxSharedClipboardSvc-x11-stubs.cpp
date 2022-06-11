@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 80664 2019-09-09 10:00:04Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 80847 2019-09-17 09:38:16Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */
@@ -38,14 +38,14 @@
 
 
 /** Initialise the host side of the shared clipboard - called by the hgcm layer. */
-int VBoxClipboardSvcImplInit(void)
+int VBoxShClSvcImplInit(void)
 {
     LogFlowFunc(("called, returning VINF_SUCCESS\n"));
     return VINF_SUCCESS;
 }
 
 /** Terminate the host side of the shared clipboard - called by the hgcm layer. */
-void VBoxClipboardSvcImplDestroy(void)
+void VBoxShClSvcImplDestroy(void)
 {
     LogFlowFunc(("called, returning\n"));
 }
@@ -57,7 +57,7 @@ void VBoxClipboardSvcImplDestroy(void)
   * @param   pClient            Structure containing context information about the guest system
   * @param   fHeadless          Whether headless.
   */
-int VBoxClipboardSvcImplConnect(PSHCLCLIENT pClient, bool fHeadless)
+int VBoxShClSvcImplConnect(PSHCLCLIENT pClient, bool fHeadless)
 {
     RT_NOREF(pClient, fHeadless);
     LogFlowFunc(("called, returning VINF_SUCCESS\n"));

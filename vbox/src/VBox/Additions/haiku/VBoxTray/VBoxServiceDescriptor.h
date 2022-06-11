@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceDescriptor.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxServiceDescriptor.h 80847 2019-09-17 09:38:16Z vboxsync $ */
 /** @file
  * VBoxGuestServiceDescriptor, Haiku Guest Additions, header.
  */
@@ -52,17 +52,17 @@
 
 #include <Handler.h>
 
-class VBoxClipboardService : public BHandler
+class VBoxShClService : public BHandler
 {
     public:
-        VBoxClipboardService();
-        virtual ~VBoxClipboardService();
+        VBoxShClService();
+        virtual ~VBoxShClService();
 };
 
 /* The shared clipboard service prototypes. */
-int VBoxClipboardInit(const VBOXSERVICEENV *pEnv, void **ppInstance, bool *pfStartThread);
-unsigned __stdcall VBoxClipboardThread(void *pInstance);
-void VBoxClipboardDestroy(const VBOXSERVICEENV *pEnv, void *pInstance);
+int VBoxShClInit(const VBOXSERVICEENV *pEnv, void **ppInstance, bool *pfStartThread);
+unsigned __stdcall VBoxShClThread(void *pInstance);
+void VBoxShClDestroy(const VBOXSERVICEENV *pEnv, void *pInstance);
 
 #endif /* !GA_INCLUDED_SRC_haiku_VBoxTray_VBoxServiceDescriptor_h */
 

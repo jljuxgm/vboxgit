@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 80664 2019-09-09 10:00:04Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 80847 2019-09-17 09:38:16Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -207,14 +207,14 @@ int SharedClipboardSvcImplFormatAnnounce(PSHCLCLIENT pClient,
 
     LogFlowFunc(("uFormats=%02X\n", pFormats->uFormats));
 
-    if (pFormats->uFormats == VBOX_SHARED_CLIPBOARD_FMT_NONE)
+    if (pFormats->uFormats == VBOX_SHCL_FMT_NONE)
     {
         /* This is just an automatism, not a genuine announcement */
         return VINF_SUCCESS;
     }
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
-    if (pFormats->uFormats & VBOX_SHARED_CLIPBOARD_FMT_URI_LIST) /* No URI support yet. */
+    if (pFormats->uFormats & VBOX_SHCL_FMT_URI_LIST) /* No URI support yet. */
         return VINF_SUCCESS;
 #endif
 

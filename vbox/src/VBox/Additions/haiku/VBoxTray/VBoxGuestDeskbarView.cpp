@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestDeskbarView.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxGuestDeskbarView.cpp 80847 2019-09-17 09:38:16Z vboxsync $ */
 /** @file
  * VBoxGuestDeskbarView, Haiku Guest Additions, implementation.
  */
@@ -268,7 +268,7 @@ status_t VBoxGuestDeskbarView::_Init(BMessage *archive)
         rc = VbglR3Init();
         if (RT_SUCCESS(rc))
         {
-            fClipboardService = new VBoxClipboardService();
+            fClipboardService = new VBoxShClService();
             fDisplayService = new VBoxDisplayService();
         }
         else

@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropTarget.cpp 78516 2019-05-14 15:48:10Z vboxsync $ */
+/* $Id: VBoxDnDDropTarget.cpp 80847 2019-09-17 09:38:16Z vboxsync $ */
 /** @file
  * VBoxDnDTarget.cpp - IDropTarget implementation.
  */
@@ -373,7 +373,7 @@ STDMETHODIMP VBoxDnDDropTarget::Drop(IDataObject *pDataObject, DWORD grfKeyState
                         DROPFILES *pDropFiles = (DROPFILES *)pvData;
                         AssertPtr(pDropFiles);
 
-                        /** @todo Replace / merge the following code with VBoxClipboardWinDropFilesToStringList(). */
+                        /** @todo Replace / merge the following code with VBoxShClWinDropFilesToStringList(). */
 
                         /* Do we need to do Unicode stuff? */
                         const bool fUnicode = RT_BOOL(pDropFiles->fWide);
