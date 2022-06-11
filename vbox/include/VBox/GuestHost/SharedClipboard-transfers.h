@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-transfers.h 81331 2019-10-17 20:23:14Z vboxsync $ */
+/* $Id: SharedClipboard-transfers.h 81768 2019-11-11 16:36:41Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared transfer functions between host and guest.
  */
@@ -646,24 +646,6 @@ protected:
     /** Associated clipboard area ID. */
     SHCLAREAID                   m_uID;
 };
-
-/**
- * Enumeration specifying an Shared Clipboard transfer direction.
- */
-typedef enum _SHCLTRANSFERDIR
-{
-    /** Unknown transfer directory. */
-    SHCLTRANSFERDIR_UNKNOWN = 0,
-    /** Read transfer (from source). */
-    SHCLTRANSFERDIR_READ,
-    /** Write transfer (to target). */
-    SHCLTRANSFERDIR_WRITE,
-    /** The usual 32-bit hack. */
-    SHCLTRANSFERDIR_32BIT_HACK = 0x7fffffff
-} SHCLTRANSFERDIR, *PSHCLTRANSFERDIR;
-
-struct _SHCLTRANSFER;
-typedef struct _SHCLTRANSFER SHCLTRANSFER;
 
 /**
  * Structure for handling a single transfer object context.
