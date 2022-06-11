@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 81425 2019-10-21 18:19:39Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 81492 2019-10-23 14:07:03Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1849,10 +1849,10 @@ void SessionMachine::i_takeSnapshotHandler(TakeSnapshotTask &task)
         // Handle NVRAM file snapshotting
         Utf8Str strNVRAM = mBIOSSettings->i_getNonVolatileStorageFile();
         Utf8Str strNVRAMSnap = pSnapshotMachine->i_getSnapshotNVRAMFilename();
-        Utf8Str strNVRAMSnapAbs;
-        i_calculateFullPath(strNVRAMSnap, strNVRAMSnapAbs);
         if (strNVRAM.isNotEmpty() && strNVRAMSnap.isNotEmpty() && RTFileExists(strNVRAM.c_str()))
         {
+            Utf8Str strNVRAMSnapAbs;
+            i_calculateFullPath(strNVRAMSnap, strNVRAMSnapAbs);
             rc = VirtualBox::i_ensureFilePathExists(strNVRAMSnapAbs, true /* fCreate */);
             if (FAILED(rc))
                 throw rc;
