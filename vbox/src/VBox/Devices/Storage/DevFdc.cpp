@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 82177 2019-11-25 13:54:41Z vboxsync $ */
+/* $Id: DevFdc.cpp 82188 2019-11-25 17:26:34Z vboxsync $ */
 /** @file
  * VBox storage devices - Floppy disk controller
  */
@@ -61,7 +61,7 @@
 *********************************************************************************************************************************/
 /** @name FDC saved state versions
  * @{ */
-#define FDC_SAVESTATE_CURRENT   2       /**< Current version. */
+#define FDC_SAVESTATE_CURRENT   3       /**< Current version. */
 #define FDC_SAVESTATE_PRE_DELAY 2       /**< Pre IRQDelay. */
 #define FDC_SAVESTATE_OLD       1       /**< The original saved state. */
 /** @}*/
