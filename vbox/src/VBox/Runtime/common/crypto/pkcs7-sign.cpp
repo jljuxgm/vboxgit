@@ -1,4 +1,4 @@
-/* $Id: pkcs7-sign.cpp 84230 2020-05-10 00:52:05Z vboxsync $ */
+/* $Id: pkcs7-sign.cpp 84232 2020-05-10 00:55:14Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Signing
  */
@@ -179,7 +179,7 @@ RTDECL(int) RTCrPkcs7SimpleSignSignedData(uint32_t fFlags, PCRTCRX509CERTIFICATE
     }
     return rc;
 #else
-    RT_NOREF(fFlags, pSigner, hPrivateKey, pvData, cbData, hAdditionalCerts, pvResult, pErrInfo);
+    RT_NOREF(fFlags, pSigner, hPrivateKey, pvData, cbData, hAdditionalCerts, pvResult, pErrInfo, cbResultBuf);
     *pcbResult = 0;
     return VERR_NOT_IMPLEMENTED;
 #endif
