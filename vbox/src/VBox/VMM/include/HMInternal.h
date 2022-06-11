@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 81790 2019-11-12 05:36:24Z vboxsync $ */
+/* $Id: HMInternal.h 82612 2019-12-18 10:47:57Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -610,7 +610,9 @@ typedef struct HM
         bool                        fVirtVmsaveVmload;
         /** Whether to use virtual GIF feature. */
         bool                        fVGif;
-        uint8_t                     u8Alignment0[2];
+        /** Whether to use LBR virtualization feature. */
+        bool                        fLbrVirt;
+        uint8_t                     u8Alignment0[1];
 
         /** Physical address of the IO bitmap (12kb). */
         RTHCPHYS                    HCPhysIOBitmap;

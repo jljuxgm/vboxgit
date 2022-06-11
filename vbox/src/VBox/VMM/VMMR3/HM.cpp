@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 82011 2019-11-20 03:44:19Z vboxsync $ */
+/* $Id: HM.cpp 82612 2019-12-18 10:47:57Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -355,6 +355,13 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
      * Whether to make use of Virtual GIF (Global Interrupt Flag) feature of the CPU
      * if it's available. */
     rc = CFGMR3QueryBoolDef(pCfgHm, "SvmVGif", &pVM->hm.s.svm.fVGif, true);
+    AssertRCReturn(rc, rc);
+
+    /** @cfgm{/HM/SvmLbrVirt, bool, false}
+     * Whether to make use of the LBR virtualization feature of the CPU if it's
+     * available. This is disabled by default as its only useful while debugging
+     * and enabling it causes a small hit to performance. */
+    rc = CFGMR3QueryBoolDef(pCfgHm, "SvmLbrVirt", &pVM->hm.s.svm.fLbrVirt, false);
     AssertRCReturn(rc, rc);
 
     /** @cfgm{/HM/Exclusive, bool}

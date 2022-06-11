@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 82576 2019-12-13 10:01:00Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 82612 2019-12-18 10:47:57Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -943,7 +943,7 @@ VMMR0DECL(int) SVMR0SetupVM(PVMCC pVM)
     bool const fUsePauseFilter       = fPauseFilter && pVM->hm.s.svm.cPauseFilter;
 
     bool const fLbrVirt              = RT_BOOL(pVM->hm.s.svm.u32Features & X86_CPUID_SVM_FEATURE_EDX_LBR_VIRT);
-    bool const fUseLbrVirt           = fLbrVirt; /** @todo CFGM, IEM implementation etc. */
+    bool const fUseLbrVirt           = fLbrVirt && pVM->hm.s.svm.fLbrVirt; /** @todo IEM implementation etc. */
 
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM
     bool const fVirtVmsaveVmload     = RT_BOOL(pVM->hm.s.svm.u32Features & X86_CPUID_SVM_FEATURE_EDX_VIRT_VMSAVE_VMLOAD);
