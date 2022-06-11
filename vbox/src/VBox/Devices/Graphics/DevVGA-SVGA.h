@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 82076 2019-11-21 12:00:18Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 82079 2019-11-21 12:46:06Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -167,7 +167,8 @@ typedef struct VMSVGAState
 {
     /** The R3 FIFO pointer. */
     R3PTRTYPE(uint32_t *)       pFIFOR3;
-    /** The R0 FIFO pointer. */
+    /** The R0 FIFO pointer.
+     * @note This only points to the _first_ _page_ of the FIFO!  */
     R0PTRTYPE(uint32_t *)       pFIFOR0;
     /** R3 Opaque pointer to svga state. */
     R3PTRTYPE(PVMSVGAR3STATE)   pSvgaR3State;
