@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# "$Id: schedqueue.py 83338 2020-03-19 17:51:47Z vboxsync $"
+# "$Id: schedqueue.py 83339 2020-03-19 18:11:09Z vboxsync $"
 
 """
 Test Manager - Test Case Queue.
@@ -26,12 +26,12 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83338 $"
+__version__ = "$Revision: 83339 $"
 
-# Standard python imports.
-import unittest
+## Standard python imports.
+#import unittest
 
-from testmanager.core.base import ModelDataBase, ModelDataBaseTestCase, ModelLogicBase, TMExceptionBase
+from testmanager.core.base import ModelDataBase, ModelLogicBase, TMExceptionBase #, ModelDataBaseTestCase
 
 
 class SchedQueueEntry(ModelDataBase):
@@ -129,13 +129,17 @@ LIMIT %s OFFSET %s''' % (cMaxRows, iStart,))
 # Unit testing.
 #
 
-# pylint: disable=missing-docstring
-class TestCaseQueueDataTestCase(ModelDataBaseTestCase):
-    def setUp(self):
-        self.aoSamples = [SchedQueueEntry(),]
-
-
-if __name__ == '__main__':
-    unittest.main()
-    # not reached.
-
+## @todo SchedQueueEntry isn't a typical ModelDataBase child (not fetching all
+##       fields; is an extended data class mixing data from multiple tables), so
+##       this won't work yet.
+#
+## pylint: disable=missing-docstring
+#class TestCaseQueueDataTestCase(ModelDataBaseTestCase):
+#    def setUp(self):
+#        self.aoSamples = [SchedQueueEntry(),]
+#
+#
+#if __name__ == '__main__':
+#    unittest.main()
+#    # not reached.
+#
