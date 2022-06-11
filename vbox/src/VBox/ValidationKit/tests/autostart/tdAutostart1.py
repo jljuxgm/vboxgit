@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 84323 2020-05-15 18:22:55Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 84324 2020-05-15 18:25:22Z vboxsync $"
 
 
 # Standard Python imports.
@@ -189,7 +189,7 @@ class tdAutostartOs(object):
                 asFiles = (s for s in asFiles
                            if oRegExp.match(os.path.basename(s))
                            and os.path.exists(sTestBuildDir + '/' + s));
-                asFiles = sorted(asFiles, reverse = True, 
+                asFiles = sorted(asFiles, reverse = True,
                                  key = lambda s, sTstBuildDir = sTestBuildDir: os.path.getmtime(os.path.join(sTstBuildDir, s)));
                 if asFiles:
                     return sTestBuildDir + '/' + asFiles[0];
