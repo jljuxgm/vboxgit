@@ -1,3 +1,4 @@
+/* $Id: DragAndDropSvc.h 80453 2019-08-27 19:16:03Z vboxsync $ */
 /** @file
  * Drag and Drop service - Common header for host service and guest clients.
  */
