@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 80662 2019-09-09 08:43:14Z vboxsync $ */
+/** $Id: clipboard.cpp 80664 2019-09-09 10:00:04Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -180,7 +180,7 @@ void ClipRequestFromX11CompleteCallback(SHCLCONTEXT *pCtx, int rc, CLIPREADCBREQ
  *
  * @returns VBox status code
  */
-int VBoxClipboardSvcImplConnect(void)
+int SharedClipboardSvcImplConnect(void)
 {
     int rc = VINF_SUCCESS;
     LogRelFlowFunc(("\n"));
@@ -293,7 +293,7 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
     int rc = VbglR3InitUser();
     if (RT_FAILURE(rc))
         VBClFatalError(("Failed to connect to the VirtualBox kernel service, rc=%Rrc\n", rc));
-    rc = VBoxClipboardSvcImplConnect();
+    rc = SharedClipboardSvcImplConnect();
     /* Not RT_SUCCESS: VINF_PERMISSION_DENIED is host service not present. */
     if (rc == VINF_SUCCESS)
         rc = vboxClipboardMain();

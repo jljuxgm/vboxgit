@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 80623 2019-09-06 10:05:11Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 80664 2019-09-09 10:00:04Z vboxsync $ */
 /** @file
  * VBoxClipboard; Haiku Guest Additions, implementation.
  */
@@ -20,7 +20,7 @@
  *
  * VirtualBox Guest Additions for Haiku.
  * Copyright (c) 2011 Mike Smith <mike@scgtrp.net>
- *                    François Revol <revol@free.fr>
+ *                    Franï¿½ois Revol <revol@free.fr>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
