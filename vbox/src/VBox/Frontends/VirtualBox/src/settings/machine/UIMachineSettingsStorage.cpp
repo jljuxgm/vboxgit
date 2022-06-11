@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 81189 2019-10-09 15:05:24Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 81192 2019-10-09 16:54:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -4222,6 +4222,7 @@ void UIMachineSettingsStorage::sltHandleMouseMove(QMouseEvent *pEvent)
         if (pItemAttachment)
         {
             /* Initialize dragging: */
+            pEvent->setAccepted(true);
             QDrag *pDrag = new QDrag(this);
             if (pDrag)
             {
