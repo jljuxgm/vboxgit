@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83746 2020-04-17 12:36:20Z vboxsync $
+# $Id: Makefile.kmk 83748 2020-04-17 12:38:06Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -3704,7 +3704,7 @@ $(IPRT_OUT_DIR)/errmsgwindata-sorted.h.ts +| $(IPRT_OUT_DIR)/errmsgwindata-sorte
 #
 # Sorter for the IPRT status codes.
 #
-BLDPROGS.win += bldRTErrMsgSorter
+BLDPROGS += bldRTErrMsgSorter
 bldRTErrMsgSorter_TEMPLATE = VBoxBldProg
 bldRTErrMsgSorter_INCS     = $(IPRT_OUT_DIR)
 bldRTErrMsgSorter_DEPS     = $(IPRT_OUT_DIR)/errmsgdata.h
@@ -3713,7 +3713,7 @@ bldRTErrMsgSorter_SOURCES  = common/err/errmsg-sorter.cpp
 #
 # Sorter for the windows error codes.
 #
-BLDPROGS += bldRTErrMsgWinSorter
+BLDPROGS.win += bldRTErrMsgWinSorter
 bldRTErrMsgWinSorter_TEMPLATE = VBoxBldProg
 bldRTErrMsgWinSorter_INCS     = $(IPRT_OUT_DIR)
 bldRTErrMsgWinSorter_DEPS     = \
