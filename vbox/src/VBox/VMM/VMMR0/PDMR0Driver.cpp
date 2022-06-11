@@ -1,4 +1,4 @@
-/* $Id: PDMR0Driver.cpp 84007 2020-04-27 13:23:11Z vboxsync $ */
+/* $Id: PDMR0Driver.cpp 84071 2020-04-29 07:30:02Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Driver parts.
  */
@@ -29,6 +29,13 @@
 #include <iprt/errcore.h>
 #include <iprt/assert.h>
 
+
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
+RT_C_DECLS_BEGIN
+extern DECLEXPORT(const PDMDRVHLPR0)    g_pdmR0DrvHlp;
+RT_C_DECLS_END
 
 
 /** @name Ring-0 Context Driver Helpers
