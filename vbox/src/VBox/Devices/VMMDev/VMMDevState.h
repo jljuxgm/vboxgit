@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 81569 2019-10-29 11:26:34Z vboxsync $ */
+/* $Id: VMMDevState.h 81570 2019-10-29 12:11:43Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -317,11 +317,11 @@ typedef struct VMMDevState
     struct
     {
         /** The LED. */
-        PDMLED                              Led;
+        PDMLED                          Led;
         /** The LED ports. */
-        PDMILEDPORTS                        ILeds;
+        PDMILEDPORTS                    ILeds;
         /** Partner of ILeds. */
-        R3PTRTYPE(PPDMILEDCONNECTORS)       pLedsConnector;
+        R3PTRTYPE(PPDMILEDCONNECTORS)   pLedsConnector;
     } SharedFolders;
 
     /** FLag whether CPU hotplug events are monitored */
@@ -383,9 +383,9 @@ typedef struct VMMDevState
         uint8_t         abReadBack[VMMDEV_TESTING_READBACK_SIZE];
     } TestingData;
     /** The XML output file name (can be a named pipe, doesn't matter to us). */
-    R3PTRTYPE(char *)       pszTestingXmlOutput;
+    R3PTRTYPE(char *)   pszTestingXmlOutput;
     /** Testing instance for dealing with the output. */
-    RTTEST                  hTestingTest;
+    RTTEST              hTestingTest;
 #endif /* !VBOX_WITHOUT_TESTING_FEATURES */
 
     /** @name Heartbeat
