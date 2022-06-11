@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 81422 2019-10-21 18:04:10Z vboxsync $ */
+/* $Id: Settings.cpp 81427 2019-10-21 18:37:15Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -6543,7 +6543,7 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
                         if (nic.mode != NetworkAttachmentType_NATNetwork)
                             buildNetworkXML(NetworkAttachmentType_NATNetwork, false, *pelmDisabledNode, nic);
 #ifdef VBOX_WITH_CLOUD_NET
-                        // @todo Bump settings version!
+                        /// @todo Bump settings version!
                         if (nic.mode != NetworkAttachmentType_Cloud)
                             buildNetworkXML(NetworkAttachmentType_Cloud, false, *pelmDisabledNode, nic);
 #endif /* VBOX_WITH_CLOUD_NET */

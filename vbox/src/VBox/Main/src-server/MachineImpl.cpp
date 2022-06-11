@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 81425 2019-10-21 18:19:39Z vboxsync $ */
+/* $Id: MachineImpl.cpp 81427 2019-10-21 18:37:15Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -13307,7 +13307,7 @@ HRESULT SessionMachine::endPowerUp(LONG aResult)
 HRESULT SessionMachine::beginPoweringDown(ComPtr<IProgress> &aProgress)
 {
     LogFlowThisFuncEnter();
-    
+
 #ifdef VBOX_WITH_CLOUD_NET
     mPeer->i_disconnectFromCloudNetwork();
 #endif /* VBOX_WITH_CLOUD_NET */
