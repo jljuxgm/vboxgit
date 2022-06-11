@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 80862 2019-09-17 14:45:21Z vboxsync $ */
+/* $Id: clipboard-win.cpp 80918 2019-09-20 10:27:30Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -98,8 +98,6 @@ int SharedClipboardWinClose(void)
 {
     int rc;
 
-    LogFlowFuncEnter();
-
     const BOOL fRc = CloseClipboard();
     if (RT_UNLIKELY(!fRc))
     {
@@ -117,6 +115,7 @@ int SharedClipboardWinClose(void)
     else
         rc = VINF_SUCCESS;
 
+    LogFlowFuncLeaveRC(rc);
     return rc;
 }
 

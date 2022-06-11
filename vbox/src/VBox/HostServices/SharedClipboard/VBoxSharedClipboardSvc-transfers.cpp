@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 80907 2019-09-19 13:12:34Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 80918 2019-09-20 10:27:30Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -2109,7 +2109,7 @@ int sharedClipboardSvcTransferStart(PSHCLCLIENT pClient,
 
     LogFlowFuncEnter();
 
-    SharedClipboardTransferCtxTransfersCleanup(&pClient->TransferCtx);
+    SharedClipboardTransferCtxCleanup(&pClient->TransferCtx);
 
     int rc;
 
