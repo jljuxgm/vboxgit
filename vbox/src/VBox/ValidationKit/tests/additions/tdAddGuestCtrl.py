@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80874 $"
+__version__ = "$Revision: 80880 $"
 
 # Standard Python imports.
 import errno
@@ -2227,12 +2227,16 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                                             tdStepSessionCheckEnv(),
                                             tdStepSessionBulkEnv(['=FOO', 'foo=bar'], vbox.ComError.E_INVALIDARG),
                                             tdStepSessionCheckEnv(),
+                                            tdStepSessionBulkEnv(['=D:=D:/tmp', 'foo=bar'], vbox.ComError.E_INVALIDARG),
+                                            tdStepSessionCheckEnv(),
+                                            tdStepSessionSetEnv('=D:', 'D:/temp', vbox.ComError.E_INVALIDARG),
+                                            tdStepSessionCheckEnv(),
                                             ]));
         elif self.oTstDrv.fpApiVer >= 6.1 and oTestVm.isWindows():
             aoTests.append(tdTestSessionEx([tdStepSessionSetEnv('=D:', 'D:/tmp'),
                                             tdStepSessionCheckEnv(['=D:=D:/tmp',]),
-                                            tdStepSessionBulkEnv(['=FOO', 'foo=bar']),
-                                            tdStepSessionCheckEnv(['=D:=D:/tmp', '=FOO', 'foo=bar']),
+                                            tdStepSessionBulkEnv([['=D:=D:/temp', '=FOO', 'foo=bar']),
+                                            tdStepSessionCheckEnv(['=D:=D:/temp', '=FOO', 'foo=bar']),
                                             tdStepSessionUnsetEnv('=D:'),
                                             tdStepSessionCheckEnv(['=FOO', 'foo=bar']),
                                             ]));
