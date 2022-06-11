@@ -1,4 +1,4 @@
-/* $Id: display-svga-x11.cpp 83206 2020-03-05 12:56:02Z vboxsync $ */
+/* $Id: display-svga-x11.cpp 83207 2020-03-05 13:27:29Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to X.Org
  * guest driver.
@@ -50,16 +50,9 @@
 
 #include <X11/Xlibint.h>
 #include <X11/extensions/Xrandr.h>
+#include <X11/extensions/panoramiXproto.h>
 
 #define OLD_JUNK
-
-#ifndef OLD_JUNK
-#include <X11/extensions/panoramiXproto.h>
-#endif
-
-#ifndef sz_XineramaScreenInfo
-#define sz_XineramaScreenInfo 8
-#endif
 
 /** Maximum number of supported screens.  DRM and X11 both limit this to 32. */
 /** @todo if this ever changes, dynamically allocate resizeable arrays in the

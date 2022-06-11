@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 83207 2020-03-05 13:27:29Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -31,6 +31,7 @@ ifdef VBOX_WITH_DBUS
 endif
 VBoxClient_DEFS.linux += _GNU_SOURCE
 VBoxClient_INCS = $(VBOX_GRAPHICS_INCS)
+VBoxClient_INCS += ../x11include/libxinerama-1.1.4
 VBoxClient_SOURCES = \
 	main.cpp \
 	display-svga.cpp \
