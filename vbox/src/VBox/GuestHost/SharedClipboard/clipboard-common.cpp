@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 79270 2019-06-21 10:28:42Z vboxsync $ */
+/* $Id: clipboard-common.cpp 79272 2019-06-21 11:34:13Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -23,7 +23,7 @@
 #include <iprt/assert.h>
 #include <iprt/path.h>
 
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 #include <VBox/log.h>
 #include <VBox/GuestHost/clipboard-helper.h>
 
