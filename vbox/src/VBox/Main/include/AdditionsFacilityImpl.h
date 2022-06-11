@@ -1,4 +1,4 @@
-/* $Id: AdditionsFacilityImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: AdditionsFacilityImpl.h 79050 2019-06-08 03:05:03Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -64,7 +64,7 @@ public:
     com::Utf8Str i_getName() const;
     AdditionsFacilityStatus_T i_getStatus() const;
     AdditionsFacilityType_T i_getType() const;
-    void i_update(AdditionsFacilityStatus_T a_enmStatus, uint32_t a_fFlags, PCRTTIMESPEC a_pTimeSpecTS);
+    bool i_update(AdditionsFacilityStatus_T a_enmStatus, uint32_t a_fFlags, PCRTTIMESPEC a_pTimeSpecTS);
 
 private:
 

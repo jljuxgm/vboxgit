@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: GuestImpl.h 79050 2019-06-08 03:05:03Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -89,7 +89,7 @@ public:
     void i_setAdditionsInfo(const com::Utf8Str &aInterfaceVersion, VBOXOSTYPE aOsType);
     void i_setAdditionsInfo2(uint32_t a_uFullVersion, const char *a_pszName, uint32_t a_uRevision, uint32_t a_fFeatures);
     bool i_facilityIsActive(VBoxGuestFacilityType enmFacility);
-    void i_facilityUpdate(VBoxGuestFacilityType a_enmFacility, VBoxGuestFacilityStatus a_enmStatus,
+    bool i_facilityUpdate(VBoxGuestFacilityType a_enmFacility, VBoxGuestFacilityStatus a_enmStatus,
                           uint32_t a_fFlags, PCRTTIMESPEC a_pTimeSpecTS);
     ComObjPtr<Console> i_getConsole(void) { return mParent; }
     void i_setAdditionsStatus(VBoxGuestFacilityType a_enmFacility, VBoxGuestFacilityStatus a_enmStatus,
