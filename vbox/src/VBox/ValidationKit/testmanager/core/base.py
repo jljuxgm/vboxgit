@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 83359 2020-03-21 13:02:44Z vboxsync $
+# $Id: base.py 83384 2020-03-24 14:46:06Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83359 $"
+__version__ = "$Revision: 83384 $"
 
 
 # Standard python imports.
@@ -402,6 +402,12 @@ class ModelDataBase(ModelBase): # pylint: disable=too-few-public-methods
         """
         return self._validateAndConvertWorker(getattr(self, 'kasAllowNullAttributes', list()), oDb,
                                               enmValidateFor = enmValidateFor);
+
+    def validateAndConvertEx(self, asAllowNullAttributes, oDb, enmValidateFor = ksValidateFor_Other):
+        """
+        Same as validateAndConvert but with custom allow-null list.
+        """
+        return self._validateAndConvertWorker(asAllowNullAttributes, oDb, enmValidateFor = enmValidateFor);
 
     def convertParamToAttribute(self, sAttr, sParam, oValue, oDisp, fStrict):
         """
