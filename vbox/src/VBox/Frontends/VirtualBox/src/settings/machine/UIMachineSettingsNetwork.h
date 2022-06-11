@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.h 80213 2019-08-09 13:12:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -111,10 +111,6 @@ private:
     /** Repopulates NAT network list. */
     void refreshNATNetworkList();
 
-    /** Populates a list of known internal networks. */
-    static QStringList otherInternalNetworkList();
-    /** Populates a list of known generic drivers. */
-    static QStringList otherGenericDriverList();
     /** Loads generic properties from passed @a adapter. */
     static QString loadGenericProperties(const CNetworkAdapter &adapter);
     /** Saves generic @a strProperties to passed @a adapter. */
