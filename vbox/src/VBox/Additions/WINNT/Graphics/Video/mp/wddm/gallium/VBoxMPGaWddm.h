@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.h 76790 2019-01-12 11:08:29Z vboxsync $ */
+/* $Id: VBoxMPGaWddm.h 81594 2019-10-30 18:47:23Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -56,6 +56,26 @@ NTSTATUS GaUpdate(PVBOXWDDM_EXT_GA pGaDevExt,
                   uint32_t u32Y,
                   uint32_t u32Width,
                   uint32_t u32Height);
+
+NTSTATUS GaDefineCursor(PVBOXWDDM_EXT_GA pGaDevExt,
+                        uint32_t u32HotspotX,
+                        uint32_t u32HotspotY,
+                        uint32_t u32Width,
+                        uint32_t u32Height,
+                        uint32_t u32AndMaskDepth,
+                        uint32_t u32XorMaskDepth,
+                        void const *pvAndMask,
+                        uint32_t cbAndMask,
+                        void const *pvXorMask,
+                        uint32_t cbXorMask);
+
+NTSTATUS GaDefineAlphaCursor(PVBOXWDDM_EXT_GA pGaDevExt,
+                             uint32_t u32HotspotX,
+                             uint32_t u32HotspotY,
+                             uint32_t u32Width,
+                             uint32_t u32Height,
+                             void const *pvImage,
+                             uint32_t cbImage);
 
 NTSTATUS APIENTRY GaDxgkDdiBuildPagingBuffer(const HANDLE hAdapter,
                                              DXGKARG_BUILDPAGINGBUFFER *pBuildPagingBuffer);

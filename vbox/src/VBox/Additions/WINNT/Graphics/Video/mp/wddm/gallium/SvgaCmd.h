@@ -1,4 +1,4 @@
-/* $Id: SvgaCmd.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: SvgaCmd.h 81594 2019-10-30 18:47:23Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - VMSVGA command encoders.
  */
@@ -28,6 +28,11 @@ void SvgaCmdDefineScreen(void *pvCmd, uint32_t u32Id, bool fActivate,
                          bool fPrimary, uint32_t u32VRAMOffset, bool fBlank);
 void SvgaCmdDestroyScreen(void *pvCmd, uint32_t u32Id);
 void SvgaCmdUpdate(void *pvCmd, uint32_t u32X, uint32_t u32Y, uint32_t u32Width, uint32_t u32Height);
+void SvgaCmdDefineCursor(void *pvCmd, uint32_t u32HotspotX, uint32_t u32HotspotY, uint32_t u32Width, uint32_t u32Height,
+                         uint32_t u32AndMaskDepth, uint32_t u32XorMaskDepth,
+                         void const *pvAndMask, uint32_t cbAndMask, void const *pvXorMask, uint32_t cbXorMask);
+void SvgaCmdDefineAlphaCursor(void *pvCmd, uint32_t u32HotspotX, uint32_t u32HotspotY, uint32_t u32Width, uint32_t u32Height,
+                              void const *pvImage, uint32_t cbImage);
 void SvgaCmdFence(void *pvCmd, uint32_t u32Fence);
 void SvgaCmdDefineGMRFB(void *pvCmd, uint32_t u32Offset, uint32_t u32BytesPerLine);
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.cpp 80422 2019-08-26 13:56:24Z vboxsync $ */
+/* $Id: VBoxMPGaWddm.cpp 81594 2019-10-30 18:47:23Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -192,6 +192,37 @@ NTSTATUS GaUpdate(PVBOXWDDM_EXT_GA pGaDevExt,
 {
     VBOXWDDM_EXT_VMSVGA *pSvga = pGaDevExt->hw.pSvga;
     return SvgaUpdate(pSvga, u32X, u32Y, u32Width, u32Height);
+}
+
+NTSTATUS GaDefineCursor(PVBOXWDDM_EXT_GA pGaDevExt,
+                        uint32_t u32HotspotX,
+                        uint32_t u32HotspotY,
+                        uint32_t u32Width,
+                        uint32_t u32Height,
+                        uint32_t u32AndMaskDepth,
+                        uint32_t u32XorMaskDepth,
+                        void const *pvAndMask,
+                        uint32_t cbAndMask,
+                        void const *pvXorMask,
+                        uint32_t cbXorMask)
+{
+    VBOXWDDM_EXT_VMSVGA *pSvga = pGaDevExt->hw.pSvga;
+    return SvgaDefineCursor(pSvga, u32HotspotX, u32HotspotY, u32Width, u32Height,
+                            u32AndMaskDepth, u32XorMaskDepth,
+                            pvAndMask, cbAndMask, pvXorMask, cbXorMask);
+}
+
+NTSTATUS GaDefineAlphaCursor(PVBOXWDDM_EXT_GA pGaDevExt,
+                             uint32_t u32HotspotX,
+                             uint32_t u32HotspotY,
+                             uint32_t u32Width,
+                             uint32_t u32Height,
+                             void const *pvImage,
+                             uint32_t cbImage)
+{
+    VBOXWDDM_EXT_VMSVGA *pSvga = pGaDevExt->hw.pSvga;
+    return SvgaDefineAlphaCursor(pSvga, u32HotspotX, u32HotspotY, u32Width, u32Height,
+                                 pvImage, cbImage);
 }
 
 static NTSTATUS gaSurfaceDefine(PVBOXWDDM_EXT_GA pGaDevExt,
