@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 78619 2019-05-21 08:42:35Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 78809 2019-05-28 10:54:53Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -491,11 +491,9 @@ void vboxSvcClipboardReportMsg(PVBOXCLIPBOARDCLIENTDATA pClientData, uint32_t u3
 
     if ((u32Msg == VBOX_SHARED_CLIPBOARD_HOST_MSG_READ_DATA)
         && !pBackend->writeData.timeout)
-        VBoxClipboardSvcImplWriteData(pClientData, pBackend->writeData.pv,
-                               pBackend->writeData.cb,
-                               pBackend->writeData.format);
-    else
-        return;
+        VBoxClipboardSvcImplWriteData(pClientData, pBackend->writeData.pv, pBackend->writeData.cb, pBackend->writeData.format);
+
+    return;
 }
 
 void vboxSvcClipboardCompleteReadData(PVBOXCLIPBOARDCLIENTDATA pClientData, int rc, uint32_t cbActual)

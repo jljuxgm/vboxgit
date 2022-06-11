@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 78581 2019-05-18 15:48:41Z vboxsync $ */
+/* $Id: clipboard-win.cpp 78809 2019-05-28 10:54:53Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -741,6 +741,57 @@ int VBoxClipboardWinDropFilesToStringList(DROPFILES *pDropFiles, char **ppszbDat
         RTStrFree(pszFiles);
 
     return rc;
+}
+
+/**
+ * Initializes a Windows-specific URI clipboard information struct.
+ *
+ * @returns VBox status code.
+ * @param   pURI                URI clipboard information struct to initialize.
+ * @param   enmType             What type of clipboard provider to use.
+ */
+int VBoxClipboardWinURIInit(PVBOXCLIPBOARDWINURI pURI, SharedClipboardProvider::SourceType enmType)
+{
+    LogFlowFuncEnter();
+
+    pURI->Transfer.pProvider = SharedClipboardProvider::Create(enmType);
+    if (!pURI->Transfer.pProvider)
+        return VERR_NO_MEMORY;
+
+    VBoxClipboardWinURIReset(pURI);
+
+    return VINF_SUCCESS;
+}
+
+/**
+ * Destroys a Windows-specific URI clipboard information struct.
+ *
+ * @param   pURI                URI clipboard information struct to destroy.
+ */
+void VBoxClipboardWinURIDestroy(PVBOXCLIPBOARDWINURI pURI)
+{
+    LogFlowFuncEnter();
+
+    if (pURI->Transfer.pProvider)
+    {
+        delete pURI->Transfer.pProvider;
+        pURI->Transfer.pProvider = NULL;
+    }
+}
+
+/**
+ * Resets a Windows-specific URI clipboard information struct.
+ *
+ * @param   pURI                URI clipboard information struct to reset.
+ */
+void VBoxClipboardWinURIReset(PVBOXCLIPBOARDWINURI pURI)
+{
+    LogFlowFuncEnter();
+
+    pURI->cTransfers = 0;
+
+    if (pURI->Transfer.pProvider)
+        pURI->Transfer.pProvider->Reset();
 }
 #endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
 

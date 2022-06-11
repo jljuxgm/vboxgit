@@ -1,4 +1,4 @@
-/* $Id: ClipboardURIObject.cpp 78390 2019-05-06 13:49:30Z vboxsync $ */
+/* $Id: ClipboardURIObject.cpp 78809 2019-05-28 10:54:53Z vboxsync $ */
 /** @file
  * Shared Clipboard - URI object class. For handling creation/reading/writing to files and directories on host or guest side.
  */
@@ -85,16 +85,22 @@ void SharedClipboardURIObject::closeInternal(void)
     {
         case Type_File:
         {
-            RTFileClose(u.File.hFile);
-            u.File.hFile = NIL_RTFILE;
+            if (RTFileIsValid(u.File.hFile))
+            {
+                RTFileClose(u.File.hFile);
+                u.File.hFile = NIL_RTFILE;
+            }
             RT_ZERO(u.File.objInfo);
             break;
         }
 
         case Type_Directory:
         {
-            RTDirClose(u.Dir.hDir);
-            u.Dir.hDir = NIL_RTDIR;
+            if (RTDirIsValid(u.Dir.hDir))
+            {
+                RTDirClose(u.Dir.hDir);
+                u.Dir.hDir = NIL_RTDIR;
+            }
             RT_ZERO(u.Dir.objInfo);
             break;
         }

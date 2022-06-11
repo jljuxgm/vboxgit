@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 78779 2019-05-27 10:22:15Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 78809 2019-05-28 10:54:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3091,7 +3091,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 SharedClipboard *pSharedClipboard = SharedClipboard::createInstance(this /* pConsole */);
                 if (pSharedClipboard)
                 {
-# ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST
+# ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST_DISABLED
                     HGCMSVCEXTHANDLE hDummy;
                     rc = HGCMHostRegisterServiceExtension(&hDummy, "VBoxSharedClipboard",
                                                           &SharedClipboard::hostServiceCallback,

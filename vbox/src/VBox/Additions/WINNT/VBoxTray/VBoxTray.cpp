@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 78466 2019-05-10 19:35:30Z vboxsync $ */
+/* $Id: VBoxTray.cpp 78809 2019-05-28 10:54:53Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -156,7 +156,9 @@ static uint64_t       g_uHistoryFileSize = 100 * _1M;    /* Max 100MB per file. 
 static VBOXSERVICEINFO g_aServices[] =
 {
     { &g_SvcDescDisplay,        NIL_RTTHREAD, NULL, false, false, false, false, true },
+#ifdef VBOX_WITH_SHARED_CLIPBOARD
     { &g_SvcDescClipboard,      NIL_RTTHREAD, NULL, false, false, false, false, true },
+#endif
     { &g_SvcDescSeamless,       NIL_RTTHREAD, NULL, false, false, false, false, true },
     { &g_SvcDescVRDP,           NIL_RTTHREAD, NULL, false, false, false, false, true },
     { &g_SvcDescIPC,            NIL_RTTHREAD, NULL, false, false, false, false, true },

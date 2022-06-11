@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxTray.h 78809 2019-05-28 10:54:53Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -138,7 +138,9 @@ typedef struct _VBOXSERVICEDESC
 } VBOXSERVICEDESC, *PVBOXSERVICEDESC;
 
 extern VBOXSERVICEDESC g_SvcDescDisplay;
+#ifdef VBOX_WITH_SHARED_CLIPBOARD
 extern VBOXSERVICEDESC g_SvcDescClipboard;
+#endif
 extern VBOXSERVICEDESC g_SvcDescSeamless;
 extern VBOXSERVICEDESC g_SvcDescVRDP;
 extern VBOXSERVICEDESC g_SvcDescIPC;

@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 78725 2019-05-24 13:15:59Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 78809 2019-05-28 10:54:53Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -137,6 +137,9 @@ typedef struct _VBOXCLIPBOARDCLIENTDATA
 uint32_t vboxSvcClipboardGetMode(void);
 void vboxSvcClipboardReportMsg(PVBOXCLIPBOARDCLIENTDATA pClientData, uint32_t u32Msg, uint32_t u32Formats);
 void vboxSvcClipboardCompleteReadData(PVBOXCLIPBOARDCLIENTDATA pClientData, int rc, uint32_t cbActual);
+
+int vboxSvcClipboardClientStateInit(PVBOXCLIPBOARDCLIENTSTATE pState, uint32_t uClientID);
+void vboxSvcClipboardClientStateReset(PVBOXCLIPBOARDCLIENTSTATE pState);
 
 /*
  * Platform-dependent implementations.
