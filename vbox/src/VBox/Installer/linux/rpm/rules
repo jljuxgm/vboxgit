@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 80508 2019-08-30 09:30:01Z vboxsync $
+# $Id: rules 80509 2019-08-30 09:36:50Z vboxsync $
 ## @file
 # VirtualBox rules.
 #
@@ -74,6 +74,7 @@ ifneq ($(MAKECMDGOALS),clean)
  # look for OEL
   rpmrel  := $(shell cat /etc/enterprise-release 2> /dev/null | sed -ne 's/^Enterprise Linux[a-zA-Z ]*\([1-9][0-9]*\).*/el\1/p')
  endif
+ ifeq ($(rpmrel),)
  # look for OL
   rpmrel  := $(shell cat /etc/oracle-release 2> /dev/null | sed -ne 's/^Oracle Linux[a-zA-Z ]*\([1-9][0-9]*\).*/el\1/p')
  endif
