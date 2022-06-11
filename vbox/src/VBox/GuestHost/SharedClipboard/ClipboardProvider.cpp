@@ -1,4 +1,4 @@
-/* $Id: ClipboardProvider.cpp 78725 2019-05-24 13:15:59Z vboxsync $ */
+/* $Id: ClipboardProvider.cpp 78727 2019-05-24 13:22:54Z vboxsync $ */
 /** @file
  * Shared Clipboard - Provider implementation.
  */
@@ -25,7 +25,7 @@
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/dir.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/file.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
