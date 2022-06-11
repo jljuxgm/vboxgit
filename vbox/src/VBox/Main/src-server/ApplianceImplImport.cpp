@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 79985 2019-07-26 00:59:07Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 81119 2019-10-06 12:37:56Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1455,7 +1455,6 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
              * must be combined together into one object by cloud client.
              * The most simple way is to create a TAR archive. */
             hrc = cloudClient->ImportInstance(m->virtualSystemDescriptions.front(),
-                                              VBox,
                                               pProgress);
             if (FAILED(hrc))
             {

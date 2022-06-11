@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 81084 2019-09-30 15:55:04Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 81119 2019-10-06 12:37:56Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -1305,7 +1305,7 @@ static RTEXITCODE exportCloudImage(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT pC
 
     ComPtr<IProgress> progress;
     CHECK_ERROR2_RET(hrc, oCloudClient,
-                     ExportImage(pImage, pVirtualBox, ComSafeArrayAsInParam(parameters), progress.asOutParam()),
+                     ExportImage(pImage, ComSafeArrayAsInParam(parameters), progress.asOutParam()),
                      RTEXITCODE_FAILURE);
     hrc = showProgress(progress);
     CHECK_PROGRESS_ERROR_RET(progress, ("Export the image to the Cloud failed"), RTEXITCODE_FAILURE);
@@ -1375,7 +1375,7 @@ static RTEXITCODE importCloudImage(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT pC
 
     ComPtr<IProgress> progress;
     CHECK_ERROR2_RET(hrc, oCloudClient,
-                     ImportImage(Bstr(strImageId).raw(), pVirtualBox, ComSafeArrayAsInParam(parameters), progress.asOutParam()),
+                     ImportImage(Bstr(strImageId).raw(), ComSafeArrayAsInParam(parameters), progress.asOutParam()),
                      RTEXITCODE_FAILURE);
     hrc = showProgress(progress);
     CHECK_PROGRESS_ERROR_RET(progress, ("Cloud image import failed"), RTEXITCODE_FAILURE);
