@@ -1,4 +1,4 @@
-/* $Id: ftp-server.cpp 82733 2020-01-14 12:20:17Z vboxsync $ */
+/* $Id: ftp-server.cpp 82734 2020-01-14 12:24:30Z vboxsync $ */
 /** @file
  * Generic FTP server (RFC 959) implementation.
  * Partly also implements RFC 3659 (Extensions to FTP, for "SIZE", ++).
@@ -338,6 +338,7 @@ const RTFTPSERVER_CMD_ENTRY g_aCmdMap[] =
  *  Don't forget the terminating ";" at each feature. */
 #define RTFTPSERVER_FEATURES_STRING \
     "SIZE;" /* Supports reporting file sizes. */
+
 
 /*********************************************************************************************************************************
 *   Protocol Functions                                                                                                           *
