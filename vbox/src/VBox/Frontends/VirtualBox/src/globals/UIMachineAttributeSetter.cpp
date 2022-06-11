@@ -1,4 +1,4 @@
-/* $Id: UIMachineAttributeSetter.cpp 79936 2019-07-23 16:56:43Z vboxsync $ */
+/* $Id: UIMachineAttributeSetter.cpp 79940 2019-07-23 18:21:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineAttributeSetter namespace implementation.
  */
@@ -51,6 +51,28 @@ void UIMachineAttributeSetter::setMachineAttribute(const CMachine &comConstMachi
                 {
                     msgCenter().cannotChangeMachineAttribute(comMachine);
                     fErrorHappened = true;
+                }
+                break;
+            }
+            case MachineAttribute_Location:
+            {
+                /* Do not save machine settings: */
+                fSaveSettings = false;
+                /* Prepare machine move progress: */
+                CProgress comProgress = comMachine.MoveTo(guiAttribute.toString(), "basic");
+                if (!comMachine.isOk())
+                {
+                    msgCenter().cannotMoveMachine(comMachine);
+                    fErrorHappened = true;
+                    break;
+                }
+                /* Show machine move progress: */
+                msgCenter().showModalProgressDialog(comProgress, comMachine.GetName(), ":/progress_clone_90px.png");
+                if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
+                {
+                    msgCenter().cannotMoveMachine(comProgress, comMachine.GetName());
+                    fErrorHappened = true;
+                    break;
                 }
                 break;
             }

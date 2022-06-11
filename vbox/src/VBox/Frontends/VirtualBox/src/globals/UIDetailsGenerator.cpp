@@ -1,4 +1,4 @@
-/* $Id: UIDetailsGenerator.cpp 79923 2019-07-22 12:19:49Z vboxsync $ */
+/* $Id: UIDetailsGenerator.cpp 79940 2019-07-23 18:21:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsGenerator implementation.
  */
@@ -80,8 +80,15 @@ UITextTable UIDetailsGenerator::generateMachineInformationGeneral(CMachine &comM
 
     /* Settings file location: */
     if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeGeneral_Location)
+    {
+        /* Configure hovering anchor: */
+        const QString strAnchorType = QString("machine_location");
+        const QString strMachineLocation = comMachine.GetSettingsFilePath();
         table << UITextTableLine(QApplication::translate("UIDetails", "Settings File Location", "details (general)"),
-                                 QDir::toNativeSeparators(QFileInfo(comMachine.GetSettingsFilePath()).absolutePath()));
+                                 QString("<a href=#%1,%2>%3</a>").arg(strAnchorType,
+                                                                      strMachineLocation,
+                                                                      QDir::toNativeSeparators(QFileInfo(strMachineLocation).absolutePath())));
+    }
 
     /* Groups: */
     if (fOptions & UIExtraDataMetaDefs::DetailsElementOptionTypeGeneral_Groups)
