@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 83281 2020-03-13 13:02:08Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 83283 2020-03-13 13:04:46Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -741,7 +741,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_PGMHandlerPhysicalTypeRegister(PPDMDEVINS p
     PDMDEV_ASSERT_DEVINS(pDevIns);
     PVM  pVM = pDevIns->Internal.s.pVMR3;
     LogFlow(("pdmR3DevHlp_PGMHandlerPhysicalTypeRegister: caller='%s'/%d: enmKind=%d pfnHandlerR3=%p pszHandlerR0=%p:{%s} pszPfHandlerR0=%p:{%s} pszHandlerRC=%p:{%s} pszPfHandlerRC=%p:{%s} pszDesc=%p:{%s} phType=%p\n",
-             pDevIns->pReg->szName, pDevIns->iInstance, pfnHandlerR3,
+             pDevIns->pReg->szName, pDevIns->iInstance, enmKind, pfnHandlerR3,
              pszHandlerR0, pszHandlerR0, pszPfHandlerR0, pszPfHandlerR0,
              pszHandlerRC, pszHandlerRC, pszPfHandlerRC, pszPfHandlerRC,
              pszDesc, pszDesc, phType));
