@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 81617 2019-10-31 23:02:36Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 81633 2019-11-03 19:33:12Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -5270,8 +5270,6 @@ int vmsvga3dDrawPrimitives(PVGASTATE pThis, uint32_t cid, uint32_t numVertexDecl
         }
         else
         {
-            Assert(pRange[iPrimitive].indexBias >= 0);  /** @todo */
-
             UINT numVertices;
             if (pVertexDecl[0].rangeHint.last)
             {
