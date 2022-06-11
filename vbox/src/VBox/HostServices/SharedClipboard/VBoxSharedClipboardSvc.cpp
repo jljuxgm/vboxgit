@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 80624 2019-09-06 10:08:37Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 80627 2019-09-06 10:22:38Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1772,6 +1772,7 @@ static DECLCALLBACK(int) svcHostCall(void *,
     return rc;
 }
 
+#ifndef UNIT_TEST
 /**
  * SSM descriptor table for the VBOXCLIPBOARDCLIENTSTATEOLD structure.
  * Legacy, do not use anymore.
@@ -1785,6 +1786,7 @@ static SSMFIELD const g_aClipboardSSMFieldsV0[] =
     SSMFIELD_ENTRY(VBOXCLIPBOARDCLIENTSTATEOLD, u32RequestedFormat),
     SSMFIELD_ENTRY_TERM()
 };
+#endif
 
 static DECLCALLBACK(int) svcSaveState(void *, uint32_t u32ClientID, void *pvClient, PSSMHANDLE pSSM)
 {
