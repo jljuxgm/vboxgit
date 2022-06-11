@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 82270 2019-11-28 18:04:59Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 82349 2019-12-03 17:39:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1232,7 +1232,6 @@ HRESULT SystemProperties::getSupportedPointingHIDTypes(std::vector<PointingHIDTy
 {
     static const PointingHIDType_T aPointingHIDTypes[] =
     {
-        PointingHIDType_None,
         PointingHIDType_PS2Mouse,
 #ifdef DEBUG
         PointingHIDType_USBMouse,
@@ -1252,7 +1251,6 @@ HRESULT SystemProperties::getSupportedKeyboardHIDTypes(std::vector<KeyboardHIDTy
 {
     static const KeyboardHIDType_T aKeyboardHIDTypes[] =
     {
-        KeyboardHIDType_None,
         KeyboardHIDType_PS2Keyboard,
         KeyboardHIDType_USBKeyboard,
 #ifdef DEBUG
