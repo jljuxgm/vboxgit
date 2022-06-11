@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 81820 2019-11-13 11:19:52Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 81824 2019-11-13 13:28:48Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -236,7 +236,7 @@ bool shClSvcTransferMsgIsAllowed(uint32_t uMode, uint32_t uMsg);
 void shClSvcClientTransfersReset(PSHCLCLIENT pClient);
 #endif /* VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS */
 
-/** @name Platform-dependent implementations for the Shared Clipboard host service.
+/** @name Platform-dependent implementations for the Shared Clipboard host service, called *only* by the host service.
  * @{
  */
 /**

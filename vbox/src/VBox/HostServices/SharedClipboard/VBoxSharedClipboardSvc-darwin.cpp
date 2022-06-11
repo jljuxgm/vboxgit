@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 81746 2019-11-08 08:28:06Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 81824 2019-11-13 13:28:48Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -167,9 +167,6 @@ int ShClSvcImplConnect(PSHCLCLIENT pClient, bool fHeadless)
 
     pClient->State.pCtx = &g_ctx;
     pClient->State.pCtx->pClient = pClient;
-
-    /* Initially sync the host clipboard content with the client. */
-    int rc = ShClSvcImplSync(pClient);
 
     ShClSvcUnlock();
     return rc;
