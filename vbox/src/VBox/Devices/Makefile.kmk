@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80943 2019-09-23 09:36:14Z vboxsync $
+# $Id: Makefile.kmk 81016 2019-09-26 12:20:00Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -523,7 +523,7 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
  ifdef VBOX_WITH_VIRTIO_SCSI
   VBoxDD_DEFS           += VBOX_WITH_VIRTIO_SCSI
   VBoxDD_SOURCES        += \
-  	Virtio/Virtio_1_0.cpp \
+  	VirtIO/Virtio_1_0.cpp \
   	Storage/DevVirtioSCSI.cpp
  endif
 
