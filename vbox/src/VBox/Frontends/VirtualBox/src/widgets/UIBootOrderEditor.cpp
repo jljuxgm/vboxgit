@@ -1,4 +1,4 @@
-/* $Id: UIBootListWidget.cpp 79977 2019-07-25 13:26:34Z vboxsync $ */
+/* $Id: UIBootOrderEditor.cpp 79978 2019-07-25 13:40:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -21,7 +21,7 @@
 #include <QScrollBar>
 
 /* GUI includes: */
-#include "UIBootListWidget.h"
+#include "UIBootOrderEditor.h"
 #include "UIConverter.h"
 #include "UIIconPool.h"
 #include "UIToolBar.h"

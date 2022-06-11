@@ -1,4 +1,4 @@
-/* $Id: UIBootListWidget.h 79976 2019-07-25 13:14:34Z vboxsync $ */
+/* $Id: UIBootOrderEditor.h 79978 2019-07-25 13:40:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class declaration.
  */
