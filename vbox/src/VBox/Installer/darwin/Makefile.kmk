@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83077 2020-02-14 16:00:59Z vboxsync $
+# $Id: Makefile.kmk 83086 2020-02-16 14:06:58Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -368,6 +368,7 @@ VBOX_DI_VBAPP_PROGS_HARDENED = \
 	MacOS/VBoxHeadless \
 	MacOS/VBoxNetDHCP \
 	MacOS/VBoxNetNAT \
+	MacOS/VBoxVMMPreload
 
 VBOX_DI_VBAPP_PROGS = \
 	MacOS/VBoxManage \
