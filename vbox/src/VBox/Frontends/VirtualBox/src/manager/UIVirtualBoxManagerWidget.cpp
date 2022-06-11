@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 84079 2020-04-29 12:48:14Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 84080 2020-04-29 12:54:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -760,6 +760,13 @@ void UIVirtualBoxManagerWidget::updateToolbar()
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Settings));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Discard));
                     m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_M_StartOrShow));
+                    break;
+                }
+                case UIToolType_Error:
+                {
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_New));
+                    m_pToolBar->addSeparator();
+                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Refresh));
                     break;
                 }
                 default:
