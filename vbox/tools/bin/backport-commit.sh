@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: backport-commit.sh 83678 2020-04-11 18:30:37Z vboxsync $
+# $Id: backport-commit.sh 83903 2020-04-21 16:25:07Z vboxsync $
 ## @file
 # Script for committing a backport from trunk.
 #
@@ -83,7 +83,7 @@ else
     done
 
     # This is a line ending hack for windows hosts.
-    if    "${MY_SED}" -e 's/1/1/g' --output-text "${MY_TMP_FILE}" "${MY_MSG_FILE}"
+    if    "${MY_SED}" -e 's/1/1/g' --output-text "${MY_TMP_FILE}" "${MY_MSG_FILE}" \
        && "${MY_SED}" -e 's/1/1/g' --output-text "${MY_MSG_FILE}" "${MY_TMP_FILE}"; then
 
     else
