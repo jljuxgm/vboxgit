@@ -1,4 +1,4 @@
-/* $Id: MachineImplMoveVM.cpp 79955 2019-07-24 12:04:54Z vboxsync $ */
+/* $Id: MachineImplMoveVM.cpp 79956 2019-07-24 12:18:40Z vboxsync $ */
 /** @file
  * Implementation of MachineMoveVM
  */
@@ -1009,6 +1009,7 @@ void MachineMoveVM::i_MoveVMThreadTask(MachineMoveVM* task)
         }
         catch(HRESULT aRc)
         {
+            hrc = aRc;
             Log2(("Rollback scenario: restoration the original mediums were failed. Machine can be corrupted.\n"));
         }
         catch (...)
