@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 78598 2019-05-20 13:42:42Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 80896 2019-09-18 17:38:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -33,6 +33,8 @@
 
 /* GUI includes: */
 #include "QITreeView.h"
+#include "UIDefs.h"
+#include "UIMediumDefs.h"
 #include "UISettingsPage.h"
 #include "UIMachineSettingsStorage.gen.h"
 
