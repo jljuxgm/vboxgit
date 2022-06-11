@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 79251 2019-06-19 19:57:53Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -983,7 +983,9 @@ static int
 vboxguest_modcmd(modcmd_t cmd, void *opaque)
 {
     devmajor_t bmajor, cmajor;
+#if !__NetBSD_Prereq__(8,99,46)
     register_t retval;
+#endif
     int error;
 
     LogFlow((DEVICE_NAME ": %s\n", __func__));
@@ -1011,7 +1013,10 @@ vboxguest_modcmd(modcmd_t cmd, void *opaque)
 
             error = do_sys_mknod(curlwp, "/dev/vboxguest",
                                  0666|S_IFCHR, makedev(cmajor, 0),
-                                 &retval, UIO_SYSSPACE);
+#if !__NetBSD_Prereq__(8,99,46)
+                                 &retval,
+#endif
+                                 UIO_SYSSPACE);
             if (error == EEXIST)
                 error = 0;
             break;
