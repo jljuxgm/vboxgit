@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 77850 2019-03-22 14:49:18Z vboxsync $ */
+/* $Id: vbox_drv.h 79025 2019-06-06 14:33:47Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -70,6 +70,12 @@
 # endif
 # if RHEL_MAJOR == 7 && RHEL_MINOR >= 0
 #  define RHEL_70
+# endif
+#endif
+
+#if defined(CONFIG_SUSE_VERSION)
+# if CONFIG_SUSE_VERSION == 15 && CONFIG_SUSE_PATCHLEVEL == 1
+#  define OPENSUSE_151
 # endif
 #endif
 
