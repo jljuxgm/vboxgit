@@ -1,4 +1,4 @@
-/* $Id: tstRTTimeSpec.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: tstRTTimeSpec.cpp 81077 2019-09-30 12:04:22Z vboxsync $ */
 /** @file
  * IPRT - RTTimeSpec and PRTTIME tests.
  */
@@ -532,7 +532,7 @@ int main()
      * Relies heavily on correct behavior of RTTimeNormalize and does limited sanity checking.
      */
     RTTestSub(hTest, "Wraparound 3 year (UTC+local), silent");
-    RTTimeSpecSetNano(&Ts1, 1420070400000000000);
+    RTTimeSpecSetNano(&Ts1, INT64_C(1420070400000000000));
     RTTIME Tcheck;
     memset(&Tcheck, 0, sizeof(Tcheck));
     Tcheck.i32Year = 2015;
