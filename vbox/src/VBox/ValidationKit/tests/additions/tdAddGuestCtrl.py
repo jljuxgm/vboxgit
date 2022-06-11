@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83515 $"
+__version__ = "$Revision: 83516 $"
 
 # Standard Python imports.
 import errno
@@ -1788,7 +1788,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 oFsObjInfo = oCurDir.read();
             except Exception as oXcpt:
                 if vbox.ComError.notEqual(oXcpt, vbox.ComError.VBOX_E_OBJECT_NOT_FOUND):
-                    if oTstDrv.fpApiVer > 5.2:
+                    if self.oTstDrv.fpApiVer > 5.2:
                         reporter.errorXcpt('Error reading directory "%s":' % (sCurDir,));
                     else:
                         # Unlike fileOpen, directoryOpen will not fail if the directory does not exist.
