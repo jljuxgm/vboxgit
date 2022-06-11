@@ -1,4 +1,4 @@
-/* $Id: UartCore.cpp 81893 2019-11-16 03:13:54Z vboxsync $ */
+/* $Id: UartCore.cpp 81894 2019-11-16 12:27:02Z vboxsync $ */
 /** @file
  * UartCore - UART  (16550A up to 16950) emulation.
  *
@@ -1723,7 +1723,7 @@ DECLHIDDEN(int) uartR3SaveExec(PPDMDEVINS pDevIns, PUARTCORE pThis, PSSMHANDLE p
  * @param   pSSM                The SSM handle to load from.
  * @param   uVersion            Saved state version.
  * @param   uPass               The SSM pass the call is done in.
- * @param   puIrq               Where to store the IRQ value for legacy
+ * @param   pbIrq               Where to store the IRQ value for legacy
  *                              saved states - optional.
  * @param   pPortBase           Where to store the I/O port base for legacy
  *                              saved states - optional.
