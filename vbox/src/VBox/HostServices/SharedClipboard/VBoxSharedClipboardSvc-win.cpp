@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 80862 2019-09-17 14:45:21Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 80866 2019-09-17 15:40:00Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -339,9 +339,9 @@ static LRESULT CALLBACK vboxClipboardSvcWinWndProcMain(PSHCLCONTEXT pCtx,
             if (fFormats & VBOX_SHCL_FMT_URI_LIST)
             {
                 PSHCLTRANSFER pTransfer;
-                int rc = sharedClipboardSvcTransferTransferStart(pCtx->pClient,
-                                                                 SHCLTRANSFERDIR_READ, SHCLSOURCE_REMOTE,
-                                                                 &pTransfer);
+                int rc = sharedClipboardSvcTransferStart(pCtx->pClient,
+                                                         SHCLTRANSFERDIR_READ, SHCLSOURCE_REMOTE,
+                                                         &pTransfer);
                 if (RT_SUCCESS(rc))
                 {
                     /* Create the IDataObject implementation the host OS needs and assign
