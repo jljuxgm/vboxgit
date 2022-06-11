@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-uri.h 79349 2019-06-26 09:21:51Z vboxsync $ */
+/* $Id: SharedClipboard-uri.h 79350 2019-06-26 09:27:21Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared URI functions between host and guest.
  */
@@ -40,6 +40,7 @@
 #include <iprt/cpp/list.h>
 #include <iprt/cpp/ministring.h>
 
+#include <VBox/GuestHost/SharedClipboard.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 
 /** Clipboard area ID. A valid area is >= 1.
@@ -553,7 +554,7 @@ typedef struct _SHAREDCLIPBOARDCLIENTURIOBJCTX
 /**
  * Enumeration specifying an URI transfer status.
  */
-typedef enum SHAREDCLIPBOARDURITRANSFERSTATUS
+typedef enum _SHAREDCLIPBOARDURITRANSFERSTATUS
 {
     /** No status set. */
     SHAREDCLIPBOARDURITRANSFERSTATUS_NONE = 0,
@@ -561,7 +562,7 @@ typedef enum SHAREDCLIPBOARDURITRANSFERSTATUS
     SHAREDCLIPBOARDURITRANSFERSTATUS_ANNOUNCED,
     /** The transfer is active and running. */
     SHAREDCLIPBOARDURITRANSFERSTATUS_RUNNING
-};
+} SHAREDCLIPBOARDURITRANSFERSTATUS;
 
 /**
  * Structure for maintaining an URI transfer state.
