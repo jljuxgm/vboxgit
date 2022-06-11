@@ -1,4 +1,4 @@
-/* $Id: IOMAllMmioNew.cpp 81433 2019-10-21 20:21:43Z vboxsync $ */
+/* $Id: IOMAllMmioNew.cpp 81462 2019-10-22 21:10:18Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -354,6 +354,31 @@ DECLINLINE(VBOXSTRICTRC) iomMmioDoWrite(PVMCC pVM, PVMCPU pVCpu, CTX_SUFF(PIOMMM
         rcStrict = VINF_SUCCESS;
     return rcStrict;
 }
+
+
+#ifdef IN_RING3
+/**
+ * Helper for IOMR3ProcessForceFlag() that lives here to utilize iomMmioDoWrite et al.
+ */
+VBOXSTRICTRC iomR3MmioCommitWorker(PVM pVM, PVMCPU pVCpu, PIOMMMIOENTRYR3 pRegEntry, RTGCPHYS offRegion)
+{
+# ifdef VBOX_WITH_STATISTICS
+    STAM_PROFILE_START(UnusedMacroArg, Prf);
+    PIOMMMIOSTATSENTRY const pStats = iomMmioGetStats(pVM, pRegEntry);
+# endif
+    PPDMDEVINS const         pDevIns = pRegEntry->pDevIns;
+    int rc = PDMCritSectEnter(pDevIns->CTX_SUFF(pCritSectRo), VERR_IGNORED);
+    AssertRCReturn(rc, rc);
+
+    VBOXSTRICTRC rcStrict = iomMmioDoWrite(pVM, pVCpu, pRegEntry, pVCpu->iom.s.PendingMmioWrite.GCPhys, offRegion,
+                                           pVCpu->iom.s.PendingMmioWrite.abValue, pVCpu->iom.s.PendingMmioWrite.cbValue
+                                           IOM_MMIO_STATS_COMMA_ARG);
+
+    PDMCritSectLeave(pDevIns->CTX_SUFF(pCritSectRo));
+    STAM_PROFILE_STOP(&pStats->ProfWriteR3, Prf);
+    return rcStrict;
+}
+#endif /* IN_RING3 */
 
 
 /**
