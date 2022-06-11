@@ -1,4 +1,4 @@
-/* $Id: vcc100-kernel32-fakes.cpp 80031 2019-07-28 22:01:31Z vboxsync $ */
+/* $Id: vcc100-kernel32-fakes.cpp 80033 2019-07-28 22:16:32Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -100,9 +100,9 @@ DECL_KERNEL32(HANDLE) Fake_CreateIoCompletionPort(HANDLE hFile, HANDLE hExisting
 
 
 DECL_KERNEL32(BOOL) Fake_GetQueuedCompletionStatus(HANDLE hCompletionPort, PDWORD_PTR pcbTransfered, PULONG_PTR puCompletionKey,
-                                                   LPOVERLAPPED pOverlapped, DWORD cMs)
+                                                   LPOVERLAPPED *ppOverlapped, DWORD cMs)
 {
-    RT_NOREF(hCompletionPort, pcbTransfered, puCompletionKey, pOverlapped, cMs);
+    RT_NOREF(hCompletionPort, pcbTransfered, puCompletionKey, ppOverlapped, cMs);
     SetLastError(ERROR_NOT_SUPPORTED);
     return FALSE;
 }
