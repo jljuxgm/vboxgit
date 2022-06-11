@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.h 83050 2020-02-11 15:41:55Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.h 83055 2020-02-11 20:29:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class declaration.
  */
@@ -115,6 +115,11 @@ protected:
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
+
+private slots:
+
+    /** Handles machine state change. */
+    void sltHandleStateChange();
 
 private:
 
