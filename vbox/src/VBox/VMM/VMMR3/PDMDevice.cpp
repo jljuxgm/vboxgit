@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 81937 2019-11-18 12:11:28Z vboxsync $ */
+/* $Id: PDMDevice.cpp 82457 2019-12-06 13:05:30Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -802,6 +802,9 @@ static DECLCALLBACK(int) pdmR3DevReg_Register(PPDMDEVREGCB pCallbacks, PCPDMDEVR
                           VERR_PDM_INVALID_DEVICE_REGISTRATION);
     AssertLogRelMsgReturn(pReg->cMaxMsixVectors <= VBOX_MSIX_MAX_ENTRIES,
                           ("%#x (szName=%s)\n", pReg->cMaxMsixVectors, pReg->szName),
+                          VERR_PDM_INVALID_DEVICE_REGISTRATION);
+    AssertLogRelMsgReturn(pReg->fFlags & PDM_DEVREG_FLAGS_NEW_STYLE /* the flag is required now */,
+                          ("PDM_DEVREG_FLAGS_NEW_STYLE not set for szName=%s!\n", pReg->szName),
                           VERR_PDM_INVALID_DEVICE_REGISTRATION);
 
     /*
