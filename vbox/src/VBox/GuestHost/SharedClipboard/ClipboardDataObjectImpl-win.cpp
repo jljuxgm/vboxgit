@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 81269 2019-10-14 18:28:34Z vboxsync $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 81438 2019-10-22 08:04:12Z vboxsync $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -277,9 +277,8 @@ int SharedClipboardWinDataObject::readDir(PSHCLTRANSFER pTransfer, const Utf8Str
 
                             if (RTFS_IS_DIRECTORY(pFsObjInfo->Attr.fMode))
                             {
-                                FSOBJENTRY objEntry = { strPath.c_str(), *pFsObjInfo };
-
-                                m_lstEntries.push_back(objEntry); /** @todo Can this throw? */
+                                /* Note: Directories are *not* required to be part of m_lstEntries, as we only
+                                 *       count files to transfer there. */
 
                                 rc = readDir(pTransfer, strPath.c_str());
                             }
@@ -359,9 +358,8 @@ DECLCALLBACK(int) SharedClipboardWinDataObject::readThread(RTTHREAD ThreadSelf, 
 
                 if (RTFS_IS_DIRECTORY(pFsObjInfo->Attr.fMode))
                 {
-                    FSOBJENTRY objEntry = { pRootEntry->pszName, *pFsObjInfo };
-
-                    pThis->m_lstEntries.push_back(objEntry); /** @todo Can this throw? */
+                    /* Note: Directories are *not* required to be part of m_lstEntries, as we only
+                     *       count files to transfer there. */
 
                     rc = pThis->readDir(pTransfer, pRootEntry->pszName);
                 }
@@ -870,16 +868,17 @@ void SharedClipboardWinDataObject::OnTransferComplete(int rc /* = VINF_SUCESS */
         {
             m_enmStatus = Completed;
         }
-        else
-            AssertFailed();
     }
     else
         m_enmStatus = Error;
 
-    if (m_EventTransferComplete != NIL_RTSEMEVENT)
+    if (m_enmStatus != Initialized)
     {
-        int rc2 = RTSemEventSignal(m_EventTransferComplete);
-        AssertRC(rc2);
+        if (m_EventTransferComplete != NIL_RTSEMEVENT)
+        {
+            int rc2 = RTSemEventSignal(m_EventTransferComplete);
+            AssertRC(rc2);
+        }
     }
 
     LogFlowFuncLeaveRC(rc);
