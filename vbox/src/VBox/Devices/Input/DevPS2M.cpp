@@ -1,4 +1,4 @@
-/* $Id: DevPS2M.cpp 83443 2020-03-26 16:49:44Z vboxsync $ */
+/* $Id: DevPS2M.cpp 83444 2020-03-26 17:38:39Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -218,7 +218,7 @@ static void ps2mR3SetDriverState(PPS2MR3 pThisCC, bool fEnabled)
 /* Reset the pointing device. */
 static void ps2mR3Reset(PPS2M pThis, PPS2MR3 pThisCC)
 {
-    LogFlowFunc(());
+    LogFlowFunc(("Reset"));
 
     PS2Q_INSERT(&pThis->cmdQ, ARSP_BAT_OK);
     PS2Q_INSERT(&pThis->cmdQ, 0);
