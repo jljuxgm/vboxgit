@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# "$Id: wuiadminschedqueue.py 83338 2020-03-19 17:51:47Z vboxsync $"
+# "$Id: wuiadminschedqueue.py 83342 2020-03-19 20:45:24Z vboxsync $"
 
 """
 Test Manager WUI - Admin - Scheduling Queue.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83338 $"
+__version__ = "$Revision: 83342 $"
 
 
 # Validation Kit imports
@@ -52,7 +52,5 @@ class WuiAdminSchedQueueList(WuiListContentBase):
     def _formatListEntry(self, iEntry):
         oEntry = self._aoEntries[iEntry] # type: SchedQueueEntry
         sState = 'up-to-date' if oEntry.fUpToDate else 'outdated';
-        if not oEntry.fEnabled:
-            sState += ' disabled';
         return [ oEntry.tsLastScheduled, oEntry.sSchedGroup, oEntry.sTestGroup, oEntry.sTestCase, sState, oEntry.idItem ];
 
