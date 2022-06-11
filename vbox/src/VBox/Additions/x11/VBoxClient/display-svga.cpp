@@ -1,4 +1,4 @@
-/* $Id: display-svga.cpp 81052 2019-09-27 12:44:45Z vboxsync $ */
+/* $Id: display-svga.cpp 82664 2020-01-08 09:30:36Z vboxsync $ */
 /** @file
  * X11 guest client - VMSVGA emulation resize event pass-through to drm guest
  * driver.
@@ -214,28 +214,35 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
             VBClLogFatalError("Failed to get display change request, rc=%Rrc\n", rc);
         if (cDisplaysOut > VMW_MAX_HEADS)
             VBClLogFatalError("Display change request contained, rc=%Rrc\n", rc);
-        for (i = 0, cHeads = 0; i < cDisplaysOut && i < VMW_MAX_HEADS; ++i)
+        if (cDisplaysOut > 0)
         {
-            if (!(aDisplays[i].fDisplayFlags & VMMDEV_DISPLAY_DISABLED))
+            cHeads = 0;
+            for (i = 0; i < cDisplaysOut && i < VMW_MAX_HEADS; ++i)
             {
-                if ((i == 0) || (aDisplays[i].fDisplayFlags & VMMDEV_DISPLAY_ORIGIN))
+                if (!(aDisplays[i].fDisplayFlags & VMMDEV_DISPLAY_DISABLED))
                 {
-                    aRects[cHeads].x = aDisplays[i].xOrigin;
-                    aRects[cHeads].y = aDisplays[i].yOrigin;
-                } else {
-                    aRects[cHeads].x = aRects[cHeads - 1].x + aRects[cHeads - 1].w;
-                    aRects[cHeads].y = aRects[cHeads - 1].y;
+                    if ((i == 0) || (aDisplays[i].fDisplayFlags & VMMDEV_DISPLAY_ORIGIN))
+                    {
+                        aRects[cHeads].x = aDisplays[i].xOrigin;
+                        aRects[cHeads].y = aDisplays[i].yOrigin;
+                    } else {
+                        aRects[cHeads].x = aRects[cHeads - 1].x + aRects[cHeads - 1].w;
+                        aRects[cHeads].y = aRects[cHeads - 1].y;
+                    }
+                    aRects[cHeads].w = aDisplays[i].cx;
+                    aRects[cHeads].h = aDisplays[i].cy;
+                    ++cHeads;
                 }
-                aRects[cHeads].w = aDisplays[i].cx;
-                aRects[cHeads].h = aDisplays[i].cy;
-                ++cHeads;
             }
+            for (i = 0; i < cHeads; ++i)
+                printf("Head %u: %dx%d, (%d, %d)\n", i, (int)aRects[i].w, (int)aRects[i].h,
+                       (int)aRects[i].x, (int)aRects[i].y);
+            drmSendHints(&drmContext, aRects, cHeads);
         }
-        for (i = 0; i < cHeads; ++i)
-            printf("Head %u: %dx%d, (%d, %d)\n", i, (int)aRects[i].w, (int)aRects[i].h,
-                   (int)aRects[i].x, (int)aRects[i].y);
-        drmSendHints(&drmContext, aRects, cHeads);
-        rc = VbglR3WaitEvent(VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST, RT_INDEFINITE_WAIT, &events);
+        do
+        {
+            rc = VbglR3WaitEvent(VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST, RT_INDEFINITE_WAIT, &events);
+        } while (rc == VERR_INTERRUPTED);
         if (RT_FAILURE(rc))
             VBClLogFatalError("Failure waiting for event, rc=%Rrc\n", rc);
     }
