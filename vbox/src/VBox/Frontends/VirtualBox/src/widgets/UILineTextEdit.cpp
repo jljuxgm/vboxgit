@@ -1,4 +1,4 @@
-/* $Id: UILineTextEdit.cpp 80914 2019-09-20 06:16:55Z vboxsync $ */
+/* $Id: UILineTextEdit.cpp 80917 2019-09-20 10:20:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UILineTextEdit class definitions.
  */
@@ -98,7 +98,7 @@ UILineTextEdit::UILineTextEdit(QWidget *pParent /* = NULL */)
   : QIWithRetranslateUI<QPushButton>(pParent)
 {
     connect(this, &UILineTextEdit::clicked,
-        this, &UILineTextEdit::edit);
+            this, &UILineTextEdit::edit);
 
     /* Don't interpret the Enter Key. */
     setAutoDefault(false);
