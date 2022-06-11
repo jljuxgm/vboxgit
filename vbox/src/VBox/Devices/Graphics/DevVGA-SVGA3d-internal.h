@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 82109 2019-11-22 20:24:21Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 82114 2019-11-22 23:05:31Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -1209,7 +1209,7 @@ void vmsvga3dOglRestoreUnpackParams(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pCon
 /** Defining the init time context (EMT).  */
 # define VMSVGA3D_DEF_CTX_F_INIT            RT_BIT_32(2)
 /** @} */
-int  vmsvga3dContextDefineOgl(PVGASTATE pThis, uint32_t cid, uint32_t fFlags);
+int  vmsvga3dContextDefineOgl(PVGASTATECC pThisCC, uint32_t cid, uint32_t fFlags);
 void vmsvga3dSurfaceFormat2OGL(PVMSVGA3DSURFACE pSurface, SVGA3dSurfaceFormat format);
 
 #endif /* VMSVGA3D_OPENGL */
