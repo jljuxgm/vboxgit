@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.cpp 77290 2019-02-12 18:56:16Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.cpp 79389 2019-06-27 12:30:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class implementation.
  */
@@ -207,7 +207,6 @@ void UIGraphicsScrollBarToken::updateExtent()
 UIGraphicsScrollBar::UIGraphicsScrollBar(Qt::Orientation enmOrientation, QGraphicsScene *pScene)
     : m_enmOrientation(enmOrientation)
     , m_iExtent(-1)
-    , m_iStep(1)
     , m_iMinimum(0)
     , m_iMaximum(100)
     , m_iValue(0)
@@ -233,7 +232,6 @@ UIGraphicsScrollBar::UIGraphicsScrollBar(Qt::Orientation enmOrientation, QIGraph
     : QIGraphicsWidget(pParent)
     , m_enmOrientation(enmOrientation)
     , m_iExtent(-1)
-    , m_iStep(1)
     , m_iMinimum(0)
     , m_iMaximum(100)
     , m_iValue(0)
@@ -267,14 +265,9 @@ QSizeF UIGraphicsScrollBar::minimumSizeHint() const
     return QIGraphicsWidget::minimumSizeHint();
 }
 
-void UIGraphicsScrollBar::setStep(int iStep)
-{
-    m_iStep = iStep;
-}
-
 int UIGraphicsScrollBar::step() const
 {
-    return m_iStep;
+    return 2 * QApplication::style()->pixelMetric(QStyle::PM_SmallIconSize);
 }
 
 void UIGraphicsScrollBar::setMinimum(int iMinimum)
@@ -452,12 +445,12 @@ void UIGraphicsScrollBar::timerEvent(QTimerEvent *pEvent)
 
 void UIGraphicsScrollBar::sltButton1Clicked()
 {
-    setValue(value() - m_iStep);
+    setValue(value() - step());
 }
 
 void UIGraphicsScrollBar::sltButton2Clicked()
 {
-    setValue(value() + m_iStep);
+    setValue(value() + step());
 }
 
 void UIGraphicsScrollBar::sltTokenMoved(const QPointF &pos)
