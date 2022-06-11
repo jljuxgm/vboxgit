@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 78595 2019-05-20 11:17:50Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 78606 2019-05-20 18:35:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -35,6 +35,7 @@
 
 /* Forward declarations: */
 class UISoftKeyboardKey;
+class UISoftKeyboardRow;
 class QHBoxLayout;
 class QVBoxLayout;
 class UIToolBar;
@@ -65,13 +66,16 @@ private:
     void saveSettings();
     void loadSettings();
     void parseLayout();
+    void updateLayout();
 
     QHBoxLayout   *m_pMainLayout;
-    QVBoxLayout   *m_pContainerLayout;
+    QWidget       *m_pContainerWidget;
     UIToolBar     *m_pToolBar;
     const bool    m_fShowToolbar;
     QString       m_strMachineName;
-    QVector<UISoftKeyboardKey*> m_keys;
+    QVector<UISoftKeyboardRow*> m_rows;
+    int           m_iTotalRowHeight;
+    int           m_iMaxRowWidth;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_softkeyboard_UISoftKeyboard_h */
