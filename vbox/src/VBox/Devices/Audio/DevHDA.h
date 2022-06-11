@@ -1,4 +1,4 @@
-/* $Id: DevHDA.h 82450 2019-12-06 12:39:15Z vboxsync $ */
+/* $Id: DevHDA.h 82452 2019-12-06 12:46:40Z vboxsync $ */
 /** @file
  * DevHDA.h - VBox Intel HD Audio Controller.
  */
@@ -245,7 +245,7 @@ typedef struct HDASTATER3
         bool                    fEnabled;
         /** Path where to dump the debug output to.
          *  Defaults to VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH. */
-        char                    szOutPath[RTPATH_MAX];
+        R3PTRTYPE(char *)       pszOutPath;
     } Dbg;
 } HDASTATER3;
 /** Pointer to a ring-3 HDA device state.  */
