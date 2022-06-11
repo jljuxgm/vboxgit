@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79784 2019-07-15 10:50:54Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79785 2019-07-15 10:56:15Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -14678,6 +14678,7 @@ static VBOXSTRICTRC hmR0VmxExitXcpt(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
          * continue guest execution. However, page-fault is a complicated case and
          * needs additional processing done in hmR0VmxExitXcptPF().
          */
+        Assert(VMX_EXIT_INT_INFO_IS_VALID(pVmxTransient->uExitIntInfo));
         uint8_t const uVector = VMX_EXIT_INT_INFO_VECTOR(pVmxTransient->uExitIntInfo);
         if (   !pVCpu->hm.s.Event.fPending
             || uVector == X86_XCPT_PF)
