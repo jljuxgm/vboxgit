@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.h 76563 2019-01-01 03:53:56Z vboxsync $ */
+/* $Id: VBoxDispKmt.h 80425 2019-08-26 14:44:01Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -137,7 +137,6 @@ HRESULT vboxDispKmtCreateDevice(PVBOXDISPKMT_ADAPTER pAdapter, PVBOXDISPKMT_DEVI
 HRESULT vboxDispKmtDestroyDevice(PVBOXDISPKMT_DEVICE pDevice);
 HRESULT vboxDispKmtCreateContext(PVBOXDISPKMT_DEVICE pDevice, PVBOXDISPKMT_CONTEXT pContext,
         VBOXWDDM_CONTEXT_TYPE enmType,
-        uint32_t crVersionMajor, uint32_t crVersionMinor,
         HANDLE hEvent, uint64_t u64UmInfo);
 HRESULT vboxDispKmtDestroyContext(PVBOXDISPKMT_CONTEXT pContext);
 
