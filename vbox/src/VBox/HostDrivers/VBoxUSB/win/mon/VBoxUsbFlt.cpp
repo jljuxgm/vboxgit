@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 79392 2019-06-27 12:44:14Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 79399 2019-06-27 17:16:51Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -503,7 +503,7 @@ static NTSTATUS vboxUsbFltDevPopulate(PVBOXUSBFLT_DEVICE pDevice, PDEVICE_OBJECT
             if (!rc)
             {
                 /* This *really* should not happen. */
-                WARN(("Failed to parse Hardware ID", Status));
+                WARN(("Failed to parse Hardware ID"));
                 break;
             }
 
