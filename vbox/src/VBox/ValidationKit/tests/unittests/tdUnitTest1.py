@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 82918 2020-01-29 21:25:46Z vboxsync $
+# $Id: tdUnitTest1.py 82920 2020-01-30 09:58:38Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82918 $"
+__version__ = "$Revision: 82920 $"
 
 
 # Standard Python imports.
@@ -183,7 +183,7 @@ class tdUnitTest1(vbox.TestDriver):
         'tstOVF': '',                                   # hang (only ancient version, now in new place)
         'testcase/tstOVF': '',                          # Creates mess when fails, needs to be run in a separate test.
         'testcase/tstRTLockValidator': '',              # Lock validation is not enabled for critical sections
-        'testcase/tstGuestControlSvc': '',              # failed: line 288: testHost(&svcTable): 
+        'testcase/tstGuestControlSvc': '',              # failed: line 288: testHost(&svcTable):
                                                         # expected VINF_SUCCESS, got VERR_NOT_FOUND
         'testcase/tstRTMemEf': '',                      # failed w/o error message
         'testcase/tstSupSem': '',                       # failed: SRE Timeout Accuracy (ms) : FAILED (1 errors)
@@ -197,9 +197,9 @@ class tdUnitTest1(vbox.TestDriver):
         'tstVMM-HM': '',                                # failed: Only checked AMD-V on linux
         'tstVMMFork': '',                               # failed: xtracker 6171
         'tstTestFactory': '',                           # some strange xpcom18a4 test, does not work
-        'testcase/tstRTSemXRoads': '',                  # sporadically failed: Traffic - 8 threads per direction, 10 sec : 
+        'testcase/tstRTSemXRoads': '',                  # sporadically failed: Traffic - 8 threads per direction, 10 sec :
                                                         # FAILED (8 errors)
-        'tstVBoxAPILinux': '',                          # creates VirtualBox directories for root user because of sudo 
+        'tstVBoxAPILinux': '',                          # creates VirtualBox directories for root user because of sudo
                                                         # (should be in vbox)
         'testcase/tstVMStructDTrace': '',               # This is a D-script generator.
         'tstVMStructRC': '',                            # This is a C-code generator.
