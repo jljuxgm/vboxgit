@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.h 78666 2019-05-22 15:27:27Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.h 78764 2019-05-26 04:43:09Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
@@ -167,7 +167,7 @@ public:
          */
     }
 
-    int RunAsync(const Utf8Str &strDesc, ComObjPtr<Progress> &pProgress);
+    // unused: int RunAsync(const Utf8Str &strDesc, ComObjPtr<Progress> &pProgress);
 
     virtual HRESULT Init(const Utf8Str &strTaskDesc)
     {

@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 78666 2019-05-22 15:27:27Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 78764 2019-05-26 04:43:09Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -112,6 +112,8 @@ int GuestSessionTask::createAndSetProgressObject(ULONG cOperations /* = 1 */)
     return VINF_SUCCESS;
 }
 
+#if 0 /* unsed */
+/** @note The task object is owned by the thread after this returns, regardless of the result.  */
 int GuestSessionTask::RunAsync(const Utf8Str &strDesc, ComObjPtr<Progress> &pProgress)
 {
     LogFlowThisFunc(("strDesc=%s\n", strDesc.c_str()));
@@ -123,6 +125,7 @@ int GuestSessionTask::RunAsync(const Utf8Str &strDesc, ComObjPtr<Progress> &pPro
     LogFlowThisFunc(("Returning hrc=%Rhrc\n", hrc));
     return Global::vboxStatusCodeToCOM(hrc);
 }
+#endif
 
 int GuestSessionTask::getGuestProperty(const ComObjPtr<Guest> &pGuest,
                                        const Utf8Str &strPath, Utf8Str &strValue)
