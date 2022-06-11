@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-uri.h 79702 2019-07-11 19:34:05Z vboxsync $ */
+/* $Id: SharedClipboard-uri.h 79703 2019-07-11 19:36:33Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared URI functions between host and guest.
  */
@@ -381,7 +381,7 @@ typedef struct _VBOXCLIPBOARDROOTS
     uint32_t cRoots;
     /** Size (in bytes) of string list. */
     uint32_t cbRoots;
-    /** String list (separated with \r\n) containing the root items. */
+    /** String list (separated with CRLF) containing the root items. */
     char    *pszRoots;
 } VBOXCLIPBOARDROOTS, *PVBOXCLIPBOARDROOTS;
 
