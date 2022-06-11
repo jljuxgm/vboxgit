@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79834 2019-07-17 11:46:25Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79870 2019-07-19 08:57:34Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5154,8 +5154,6 @@ static int hmR0VmxExportGuestApicTpr(PVMCPU pVCpu, PVMXTRANSIENT pVmxTransient)
                      * are no interrupts pending, set threshold to 0 to not cause any
                      * TPR-below-threshold VM-exits.
                      */
-                    Assert(pVmcsInfo->pbVirtApic);
-                    pVmcsInfo->pbVirtApic[XAPIC_OFF_TPR] = u8Tpr;
                     uint32_t u32TprThreshold = 0;
                     if (fPendingIntr)
                     {
