@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 79901 2019-07-19 18:43:09Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 79902 2019-07-19 18:48:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -440,21 +440,21 @@ void UIDetailsElement::sltHandleAnchorClicked(const QString &strAnchor)
             QPointer<QIDialogContainer> pPopup = new QIDialogContainer(0, Qt::Popup);
             if (pPopup)
             {
-                /* Prepare name editor: */
+                /* Prepare editor: */
                 UINameAndSystemEditor *pEditor = new UINameAndSystemEditor(pPopup, true, false, false);
                 if (pEditor)
                 {
                     pEditor->setName(strData.section(',', 0, 0));
 
-                    /* Add to container: */
+                    /* Add to popup: */
                     pPopup->setWidget(pEditor);
                 }
 
-                /* Adjust dialog geometry: */
+                /* Adjust popup geometry: */
                 pPopup->move(QCursor::pos());
                 pPopup->adjustSize();
 
-                /* Execute the dialog: */
+                /* Execute popup, change machine name if confirmed: */
                 if (pPopup->exec() == QDialog::Accepted)
                     uiCommon().setMachineName(machine(), pEditor->name());
 
