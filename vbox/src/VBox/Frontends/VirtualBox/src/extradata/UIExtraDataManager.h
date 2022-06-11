@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 83452 2020-03-26 19:36:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -754,6 +754,12 @@ public:
         QFont logViewerFont();
         void setLogViewerVisiblePanels(const QStringList &panelNameList);
         QStringList logViewerVisiblePanels();
+    /** @} */
+
+    /** @name Manager UI: VM Resource Monitor
+      * @{ */
+        void setVMResourceMonitorHiddenColumnList(const QStringList &hiddenColumnList);
+        QStringList VMResourceMonitorHiddenColumnList();
     /** @} */
 
 private slots:

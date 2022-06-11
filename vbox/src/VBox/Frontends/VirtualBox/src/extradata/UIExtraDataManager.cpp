@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 83367 2020-03-23 13:14:22Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 83452 2020-03-26 19:36:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4564,6 +4564,16 @@ void UIExtraDataManager::setLogViewerVisiblePanels(const QStringList &panelNameL
 QStringList UIExtraDataManager::logViewerVisiblePanels()
 {
     return extraDataStringList(GUI_GuestControl_LogViewerVisiblePanels);
+}
+
+void UIExtraDataManager::setVMResourceMonitorHiddenColumnList(const QStringList &hiddenColumnList)
+{
+    setExtraDataStringList(GUI_VMResourceManager_HiddenColumns, hiddenColumnList);
+}
+
+QStringList UIExtraDataManager::VMResourceMonitorHiddenColumnList()
+{
+    return extraDataStringList(GUI_VMResourceManager_HiddenColumns);
 }
 
 void UIExtraDataManager::sltExtraDataChange(const QUuid &uMachineID, const QString &strKey, const QString &strValue)

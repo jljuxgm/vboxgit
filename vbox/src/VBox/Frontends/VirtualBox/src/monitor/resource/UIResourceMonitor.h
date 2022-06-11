@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.h 83439 2020-03-26 14:12:18Z vboxsync $ */
+/* $Id: UIResourceMonitor.h 83452 2020-03-26 19:36:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class declaration.
  */
@@ -51,6 +51,7 @@ public:
 
     UIResourceMonitorWidget(EmbedTo enmEmbedding, UIActionPool *pActionPool,
                                bool fShowToolbar = true, QWidget *pParent = 0);
+    ~UIResourceMonitorWidget();
 
     QMenu *menu() const;
 
@@ -84,6 +85,8 @@ private:
         void prepareToolBar();
         void prepareActions();
         void loadSettings();
+        void loadHiddenColumnList();
+        void saveSettings();
     /** @} */
 
     /** @name General variables.
