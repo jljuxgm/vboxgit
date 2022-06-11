@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: wuimain.py 82638 2019-12-22 18:54:24Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 82638 $"
 
 # Standard Python imports.
 
@@ -563,9 +563,9 @@ class WuiMain(WuiDispatcherBase):
                                             WuiDispatcherBase.ksParamPageNo)
         sHrefPtr   += '%d">%s</a>'
 
-        cNumOfPages      = (cItems + cItemsPerPage - 1) / cItemsPerPage;
+        cNumOfPages      = (cItems + cItemsPerPage - 1) // cItemsPerPage;
         cPagesToDisplay  = 10
-        cPagesRangeStart = iPage - cPagesToDisplay / 2 \
+        cPagesRangeStart = iPage - cPagesToDisplay // 2 \
                            if not iPage - cPagesToDisplay / 2 < 0 else 0
         cPagesRangeEnd   = cPagesRangeStart + cPagesToDisplay \
                            if not cPagesRangeStart + cPagesToDisplay > cNumOfPages else cNumOfPages
@@ -914,7 +914,7 @@ class WuiMain(WuiDispatcherBase):
         # Add non-filter parameters as hidden fields so we can use 'GET' and have URLs to bookmark.
         self._dSideMenuFormAttrs['method'] = 'GET';
         sHtml = u'';
-        for sKey, oValue in self._oSrvGlue.getParameters().iteritems():
+        for sKey, oValue in self._oSrvGlue.getParameters().items():
             if len(sKey) > 3:
                 if hasattr(oValue, 'startswith'):
                     sHtml += u'<input type="hidden" name="%s" value="%s"/>\n' \
