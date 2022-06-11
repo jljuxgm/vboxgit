@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 80016 2019-07-26 17:06:38Z vboxsync $ */
+/* $Id: EM.cpp 80017 2019-07-26 17:28:37Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2492,9 +2492,6 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
             {
                 rc = emR3ForcedActions(pVM, pVCpu, rc);
                 VBOXVMM_EM_FF_ALL_RET(pVCpu, rc);
-                if (   rc == VINF_EM_RESCHEDULE_REM
-                    || rc == VINF_EM_RESCHEDULE_HM)
-                    rc = VINF_EM_RESCHEDULE_RAW;
             }
             else if (fFFDone)
                 fFFDone = false;

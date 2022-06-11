@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 80016 2019-07-26 17:06:38Z vboxsync $ */
+/* $Id: EMInternal.h 80017 2019-07-26 17:28:37Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -229,7 +229,7 @@ typedef struct EMCPU
     {
         /** Padding used in the other rings.
          * This must be larger than jmp_buf on any supported platform. */
-        char                achPaddingFatalLongJump[HC_ARCH_BITS == 32 ? 176 : 256];
+        char                achPaddingFatalLongJump[256];
 #ifdef IN_RING3
         /** Long buffer jump for fatal VM errors.
          * It will jump to before the outer EM loop is entered. */
