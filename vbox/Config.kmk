@@ -1,4 +1,4 @@
-# $Id: Config.kmk 83991 2020-04-27 10:08:37Z vboxsync $
+# $Id: Config.kmk 83995 2020-04-27 11:02:28Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5540,13 +5540,13 @@ ifeq ($(KBUILD_TARGET),win)
  if "$(VBOX_VCC_TOOL_STEM)" >= "VCC141"
   TEMPLATE_VBOXR3STATIC_SDKS           = $(subst WINSDK10-UCRT, WINSDK10-UCRT-STATIC,$(TEMPLATE_VBOXR3EXE_SDKS))
  endif
- TEMPLATE_VBOXR3STATIC_CFLAGS          = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBOXR3EXE_CFLAGS)) -MT$(VBOX_VCC_CRT_TYPE)
- TEMPLATE_VBOXR3STATIC_CXXFLAGS        = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBOXR3EXE_CXXFLAGS)) -MT$(VBOX_VCC_CRT_TYPE)
- TEMPLATE_VBOXR3STATIC_PCHFLAGS        = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBOXR3EXE_PCHFLAGS)) -MT$(VBOX_VCC_CRT_TYPE)
+ TEMPLATE_VBOXR3STATIC_CFLAGS          = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBOXR3EXE_CFLAGS)) -MT$(VBOX_VCC_CRT_TYPE) -Gy
+ TEMPLATE_VBOXR3STATIC_CXXFLAGS        = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBOXR3EXE_CXXFLAGS)) -MT$(VBOX_VCC_CRT_TYPE) -Gy
+ TEMPLATE_VBOXR3STATIC_PCHFLAGS        = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBOXR3EXE_PCHFLAGS)) -MT$(VBOX_VCC_CRT_TYPE) -Gy
  if "$(VBOX_VCC_TOOL_STEM)" >= "VCC120" # Do not use SSE so valkit stuff can run on NT4 w/o needing a separate runtime library.
-  TEMPLATE_VBOXR3STATIC_CFLAGS.win.x86   = $(TEMPLATE_VBOXR3EXE_CFLAGS.win.86) /arch:IA32
-  TEMPLATE_VBOXR3STATIC_CXXFLAGS.win.x86 = $(TEMPLATE_VBOXR3EXE_CXXFLAGS.win.86) /arch:IA32
-  TEMPLATE_VBOXR3STATIC_PCHFLAGS.win.x86 = $(TEMPLATE_VBOXR3EXE_PCHFLAGS.win.86) /arch:IA32
+  TEMPLATE_VBOXR3STATIC_CFLAGS.win.x86   = $(TEMPLATE_VBOXR3EXE_CFLAGS.win.86) /arch:IA32 -Gw
+  TEMPLATE_VBOXR3STATIC_CXXFLAGS.win.x86 = $(TEMPLATE_VBOXR3EXE_CXXFLAGS.win.86) /arch:IA32 -Gw
+  TEMPLATE_VBOXR3STATIC_PCHFLAGS.win.x86 = $(TEMPLATE_VBOXR3EXE_PCHFLAGS.win.86) /arch:IA32 -Gw
  endif
  TEMPLATE_VBOXR3STATIC_LDFLAGS         = $(filter-out /DISALLOWLIB:libcmt$(VBOX_VCC_CRT_TYPE).lib /DISALLOWLIB:libcpmt$(VBOX_VCC_CRT_TYPE).lib, $(TEMPLATE_VBOXR3EXE_LDFLAGS)) \
 	/DISALLOWLIB:msvcrt.lib \
@@ -7619,9 +7619,9 @@ TEMPLATE_VBoxGuestR3NoCrtExe_LIBS.win.x86    = \
 	$(PATH_TOOL_$(TEMPLATE_VBoxGuestR3NoCrtExe_TOOL.win.x86)_LIB)/chkstk.obj
 TEMPLATE_VBoxGuestR3NoCrtExe_LDFLAGS.win.x86 = $(filter-out -Include%, $(TEMPLATE_VBoxGuestR3Exe_LDFLAGS.win.x86))
 TEMPLATE_VBoxGuestR3NoCrtExe_LDFLAGS.win     = $(TEMPLATE_VBoxGuestR3Exe_LDFLAGS.win) /entry:CustomMainEntrypoint /subsystem:console
-TEMPLATE_VBoxGuestR3NoCrtExe_CFLAGS          = $(filter-out -EH%,$(TEMPLATE_VBoxGuestR3Exe_CFLAGS)) /GS- -EHs-
-TEMPLATE_VBoxGuestR3NoCrtExe_CXXFLAGS        = $(filter-out -EH%,$(TEMPLATE_VBoxGuestR3Exe_CXXFLAGS)) /GS- -EHs-
-TEMPLATE_VBoxGuestR3NoCrtExe_PCHFLAGS        = $(filter-out -EH%,$(TEMPLATE_VBoxGuestR3Exe_PCHFLAGS)) /GS- -EHs-
+TEMPLATE_VBoxGuestR3NoCrtExe_CFLAGS          = $(filter-out -EH%,$(TEMPLATE_VBoxGuestR3Exe_CFLAGS)) /GS- -EHs- -Gy
+TEMPLATE_VBoxGuestR3NoCrtExe_CXXFLAGS        = $(filter-out -EH%,$(TEMPLATE_VBoxGuestR3Exe_CXXFLAGS)) /GS- -EHs- -Gy
+TEMPLATE_VBoxGuestR3NoCrtExe_PCHFLAGS        = $(filter-out -EH%,$(TEMPLATE_VBoxGuestR3Exe_PCHFLAGS)) /GS- -EHs- -Gy
 TEMPLATE_VBoxGuestR3NoCrtExe_CXXFLAGS.debug  = $(filter-out /RTC% -RTC%, $(TEMPLATE_VBoxGuestR3Exe_CXXFLAGS.debug))
 else
 TEMPLATE_VBoxGuestR3NoCrtExe_CXXFLAGS        = $(TEMPLATE_VBoxGuestR3Exe_CXXFLAGS) -fno-exceptions
@@ -8114,7 +8114,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83991 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 83995 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
