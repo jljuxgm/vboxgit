@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdTreeDepth1.py 79067 2019-06-10 22:56:46Z vboxsync $
+# $Id: tdTreeDepth1.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 VirtualBox Validation Kit - Medium and Snapshot Tree Depth Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79067 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard Python imports.
@@ -80,7 +80,7 @@ class SubTstDrvTreeDepth1(base.SubTestDriverBase):
             oSession = self.oTstDrv.openSession(oVM)
             for i in range(1, 301):
                 sHddPath = os.path.join(self.oTstDrv.sScratchPath, 'Test' + str(i) + '.vdi')
-                if i is 1:
+                if i == 1:
                     oHd = oSession.createBaseHd(sHddPath, cb=1024*1024)
                 else:
                     oHd = oSession.createDiffHd(oHd, sHddPath)

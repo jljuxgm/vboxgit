@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: wuicontentbase.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard python imports.
@@ -53,7 +53,7 @@ class WuiHtmlBase(object): # pylint: disable=too-few-public-methods
 
     def __init__(self):
         """Dummy init to shut up pylint."""
-        pass;
+        pass;                               # pylint: disable=unnecessary-pass
 
     def toHtml(self):
 
@@ -731,7 +731,7 @@ class WuiFormContentBase(WuiSingleContentBase): # pylint: disable=too-few-public
         """
         aoRet = []
         for sListItem in asListItems:
-            fEnabled = True if sListItem in asSelectedItems else False
+            fEnabled = sListItem in asSelectedItems;
             aoRet.append((sListItem, fEnabled, sListItem))
         return aoRet
 

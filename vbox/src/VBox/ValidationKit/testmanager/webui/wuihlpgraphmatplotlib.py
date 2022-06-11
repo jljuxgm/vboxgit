@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpgraphmatplotlib.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: wuihlpgraphmatplotlib.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 Test Manager Web-UI - Graph Helpers - Implemented using matplotlib.
@@ -26,15 +26,15 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 # Standard Python Import and extensions installed on the system.
 import re;
 import sys;
 if sys.version_info[0] >= 3:
-    from io       import StringIO as StringIO;  # pylint: disable=import-error,no-name-in-module
+    from io       import StringIO as StringIO;  # pylint: disable=import-error,no-name-in-module,useless-import-alias
 else:
-    from StringIO import StringIO as StringIO;  # pylint: disable=import-error,no-name-in-module
+    from StringIO import StringIO as StringIO;  # pylint: disable=import-error,no-name-in-module,useless-import-alias
 
 import matplotlib;                              # pylint: disable=import-error
 matplotlib.use('Agg'); # Force backend.

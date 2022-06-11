@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: remoteexecutor.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard Python imports.
@@ -35,9 +35,9 @@ import os;
 import shutil;
 import sys;
 if sys.version_info[0] >= 3:
-    from io import StringIO as StringIO;            # pylint: disable=import-error,no-name-in-module
+    from io import StringIO as StringIO;            # pylint: disable=import-error,no-name-in-module,useless-import-alias
 else:
-    from StringIO import StringIO as StringIO;      # pylint: disable=import-error,no-name-in-module
+    from StringIO import StringIO as StringIO;      # pylint: disable=import-error,no-name-in-module,useless-import-alias
 import subprocess;
 
 # Validation Kit imports.
@@ -137,7 +137,7 @@ class RemoteExecutor(object):
             sOutput, sError = oProcess.communicate(sInput);
             iExitCode  = oProcess.poll();
 
-            if iExitCode is not 0:
+            if iExitCode != 0:
                 fRc = False;
         except:
             reporter.errorXcpt();

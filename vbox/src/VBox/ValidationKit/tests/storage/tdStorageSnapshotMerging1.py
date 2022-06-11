@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageSnapshotMerging1.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: tdStorageSnapshotMerging1.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage snapshotting and merging testcase.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard Python imports.
@@ -47,21 +47,6 @@ from testdriver import base;
 from testdriver import vbox;
 from testdriver import vboxcon;
 from testdriver import vboxwrappers;
-
-
-def _ControllerTypeToName(eControllerType):
-    """ Translate a controller type to a name. """
-    if eControllerType == vboxcon.StorageControllerType_PIIX3 or eControllerType == vboxcon.StorageControllerType_PIIX4:
-        sType = "IDE Controller";
-    elif eControllerType == vboxcon.StorageControllerType_IntelAhci:
-        sType = "SATA Controller";
-    elif eControllerType == vboxcon.StorageControllerType_LsiLogicSas:
-        sType = "SAS Controller";
-    elif eControllerType == vboxcon.StorageControllerType_LsiLogic or eControllerType == vboxcon.StorageControllerType_BusLogic:
-        sType = "SCSI Controller";
-    else:
-        sType = "Storage Controller";
-    return sType;
 
 
 def crc32_of_file(filepath):
@@ -183,7 +168,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
         oMedium = self.getMedium(oVM, sController);
 
         aoMediumChildren = self.oVBoxMgr.getArray(oMedium, 'children')
-        if aoMediumChildren is None or len(aoMediumChildren) < 1:
+        if aoMediumChildren is None or not aoMediumChildren:
             return None;
 
         for oChildMedium in aoMediumChildren:
@@ -309,7 +294,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
         if oVM is None:
             return False;
 
-        sController = _ControllerTypeToName(eStorageController);
+        sController = self.controllerTypeToName(eStorageController);
 
         # Reconfigure the VM
         oSession = self.openSession(oVM);
@@ -386,7 +371,7 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
         reporter.testStart(sVmName);
 
         aoDskFmts = self.oVBoxMgr.getArray(self.oVBox.systemProperties, 'mediumFormats')
-        if aoDskFmts is None or len(aoDskFmts) < 1:
+        if aoDskFmts is None or not aoDskFmts:
             return False;
 
         fRc = True;

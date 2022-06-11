@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: storagecfg.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 # Standard Python imports.
 import os;
@@ -256,13 +256,12 @@ class StorageConfigOsLinux(StorageConfigOs):
         """
         Converts our raid level indicators to something mdadm can understand.
         """
+        if sRaidLvl is None or sRaidLvl == 'raid0':
+            return 'stripe';
         if sRaidLvl == 'raid5':
             return '5';
-        elif sRaidLvl == 'raid1':
+        if sRaidLvl == 'raid1':
             return 'mirror';
-        elif sRaidLvl == 'raid0' or sRaidLvl is None:
-            return 'stripe';
-
         return 'stripe';
 
     def getDisksMatchingRegExp(self, sRegExp):

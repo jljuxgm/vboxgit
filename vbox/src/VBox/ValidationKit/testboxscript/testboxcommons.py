@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcommons.py 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: testboxcommons.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 TestBox Script - Common Functions and Classes.
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76553 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard python imports.
@@ -47,7 +47,7 @@ class TestBoxException(Exception):
     """
     Custom exception class
     """
-    pass
+    pass;                               # pylint: disable=unnecessary-pass
 
 #
 # Logging.
@@ -66,7 +66,7 @@ def log2(sMessage, sCaller = None, sTsPrf = None):
     """
     Debug logging, will later be disabled by default.
     """
-    if True is True:
+    if True is True:                    # pylint: disable=comparison-with-itself
         if sTsPrf is None: sTsPrf = utils.getTimePrefix();
         print('[%s] %s' % (sTsPrf, sMessage,));
         sys.stdout.flush()

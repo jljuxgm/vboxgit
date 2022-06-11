@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79071 $"
+__version__ = "$Revision: 79092 $"
 
 # Standard Python imports.
 import os
@@ -73,7 +73,7 @@ class SubTstDrvAddSharedFolders1(base.SubTestDriverBase):
                         raise base.InvalidOption('The "--add-shared-folders-tests" value "%s" is not valid; valid values are: %s'
                                                  % (s, ' '.join(self.asTestsDef)));
             return iNext;
-        elif asArgs[iArg] == '--add-shared-folders-extra-arg':
+        if asArgs[iArg] == '--add-shared-folders-extra-arg':
             iArg += 1;
             iNext = self.oTstDrv.requireMoreArgs(1, asArgs, iArg);
             self.asExtraArgs.append(asArgs[iArg]);

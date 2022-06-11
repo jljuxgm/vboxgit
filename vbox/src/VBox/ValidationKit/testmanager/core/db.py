@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: db.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard python imports.
@@ -65,7 +65,7 @@ def isDbTimestamp(oValue):
     if utils.isString(oValue):
         ## @todo detect strings as well.
         return False;
-    return getattr(oValue, 'pydatetime', None) != None;
+    return getattr(oValue, 'pydatetime', None) is not None;
 
 def dbTimestampToDatetime(oValue):
     """
@@ -126,7 +126,7 @@ class TMDatabaseIntegrityException(Exception):
     Do NOT use directly, only thru TMDatabaseConnection.integrityException.
     Otherwise, we won't be able to log the issue.
     """
-    pass;
+    pass;                               # pylint: disable=unnecessary-pass
 
 
 class TMDatabaseCursor(object):

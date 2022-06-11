@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCreateVMWithDefaults1.py 79067 2019-06-10 22:56:46Z vboxsync $
+# $Id: tdCreateVMWithDefaults1.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 VirtualBox Validation Kit - Create VM with IMachine::applyDefaults() Test
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79067 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard Python imports.
@@ -168,7 +168,7 @@ class SubTstDrvCreateVMWithDefaults1(base.SubTestDriverBase):
         # Get the guest OS types.
         try:
             aoGuestTypes = self.oTstDrv.oVBoxMgr.getArray(self.oTstDrv.oVBox, 'guestOSTypes')
-            if aoGuestTypes is None or len(aoGuestTypes) < 1:
+            if aoGuestTypes is None or not aoGuestTypes:
                 return reporter.error('No guest OS types');
         except:
             return reporter.errorXcpt();

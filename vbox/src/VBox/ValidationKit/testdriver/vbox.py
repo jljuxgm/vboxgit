@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: vbox.py 79092 2019-06-11 15:26:40Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 # pylint: disable=unnecessary-semicolon
 
@@ -4000,4 +4000,23 @@ class TestDriver(base.TestDriver):                                              
                 reporter.error('waitForGAs: unknown/wrong task %s' % (oTask,));
             fSucceeded = False;
         return fSucceeded;
+
+    @staticmethod
+    def controllerTypeToName(eControllerType):
+        """
+        Translate a controller type to a standard controller name.
+        """
+        if eControllerType in (vboxcon.StorageControllerType_PIIX3, vboxcon.StorageControllerType_PIIX4,):
+            sName = "IDE Controller";
+        elif eControllerType == vboxcon.StorageControllerType_IntelAhci:
+            sName = "SATA Controller";
+        elif eControllerType == vboxcon.StorageControllerType_LsiLogicSas:
+            sName = "SAS Controller";
+        elif eControllerType in (vboxcon.StorageControllerType_LsiLogic, vboxcon.StorageControllerType_BusLogic,):
+            sName = "SCSI Controller";
+        elif eControllerType == vboxcon.StorageControllerType_NVMe:
+            sName = "NVMe Controller";
+        else:
+            sName = "Storage Controller";
+        return sName;
 

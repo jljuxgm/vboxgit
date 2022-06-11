@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxtasks.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: testboxtasks.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 TestBox Script - Async Tasks.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard python imports.
@@ -429,7 +429,7 @@ class TestBoxTestDriverTask(TestBoxBaseTask):
                                             stderr     = subprocess.STDOUT,
                                             cwd        = self._oTestBoxScript.getPathSpill(),
                                             universal_newlines = True,
-                                            close_fds  = (False if utils.getHostOs() == 'win' else True),
+                                            close_fds  = utils.getHostOs() != 'win',
                                             preexec_fn = (None if utils.getHostOs() in ['win', 'os2']
                                                           else os.setsid)); # pylint: disable=no-member
         except Exception as oXcpt:
@@ -841,7 +841,7 @@ class TestBoxExecTask(TestBoxTestDriverTask):
 
             # Figure the destination name (in scripts).
             sDstFile = webutils.getFilename(sArchive);
-            if   len(sDstFile) < 1 \
+            if   not sDstFile \
               or re.search('[^a-zA-Z0-9 !#$%&\'()@^_`{}~.-]', sDstFile) is not None: # FAT charset sans 128-255 + '.'.
                 self._log('Malformed script zip filename: %s' % (sArchive,));
                 return False;

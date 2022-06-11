@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: build.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: build.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 Test Manager - Builds.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard python imports.
@@ -724,7 +724,7 @@ class BuildLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
         aaoRows = self._oDb.fetchAll();
 
         for aoRow in aaoRows:
-            oBuildExRet = BuildDataEx().initFromDbRow(self, aoRow);
+            oBuildExRet = BuildDataEx().initFromDbRow(aoRow);
             if not self.isBuildBlacklisted(oBuildExRet):
                 return oBuildExRet;
 

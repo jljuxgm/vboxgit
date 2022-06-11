@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: testresults.py 79092 2019-06-11 15:26:40Z vboxsync $
 # pylint: disable=too-many-lines
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard python imports.
@@ -670,7 +670,7 @@ class TestResultListingData(ModelDataBase): # pylint: disable=too-many-instance-
 
 class TestResultHangingOffence(TMExceptionBase):
     """Hanging offence committed by test case."""
-    pass;
+    pass;                               # pylint: disable=unnecessary-pass
 
 
 class TestResultFilter(ModelFilterBase):
@@ -2727,7 +2727,7 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=too-few-public-methods
             aaiHints.insert(0, [len(aoStack), int(dAttribs['testdepth'])]);
 
         elif sName == 'PopHint':
-            if len(aaiHints) < 1:
+            if not aaiHints:
                 return 'No hint to pop.'
 
             iDesiredTestDepth = int(dAttribs['testdepth']);

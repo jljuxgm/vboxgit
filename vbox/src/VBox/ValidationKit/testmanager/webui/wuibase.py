@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: wuibase.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard python imports.
@@ -52,7 +52,7 @@ class WuiException(TMExceptionBase):
     """
     For exceptions raised by Web UI code.
     """
-    pass;
+    pass;                               # pylint: disable=unnecessary-pass
 
 
 class WuiDispatcherBase(object):
@@ -409,7 +409,7 @@ class WuiDispatcherBase(object):
                                      '0' if fDefault is None else str(fDefault));
         # HACK: Checkboxes doesn't return a value when unchecked, so we always
         #       provide a default when dealing with boolean parameters.
-        return sValue == 'True' or sValue == 'true' or sValue == '1';
+        return sValue in ('True', 'true', '1',);
 
     def getIntParam(self, sName, iMin = None, iMax = None, iDefault = None):
         """
@@ -546,7 +546,7 @@ class WuiDispatcherBase(object):
 
             oListEntryTestCaseArgs = []
             for idTestCaseArgs in aiAllTestCaseArgs:
-                fArgsChecked   = True if idTestCaseArgs in aiCheckedTestCaseArgs else False
+                fArgsChecked   = idTestCaseArgs in aiCheckedTestCaseArgs;
 
                 # Dry run
                 sPrefix = '%s[%d][%d]' % (sName, idTestCase, idTestCaseArgs,);
@@ -561,11 +561,12 @@ class WuiDispatcherBase(object):
 
             sTestCaseName = self.getStringParam('%s[%d][sName]' % (sName, idTestCase), sDefault='')
 
-            oListEntryTestCase = \
-                (idTestCase,
-                 True if idTestCase in aiSelectedTestCaseIds else False,
-                 sTestCaseName,
-                 oListEntryTestCaseArgs)
+            oListEntryTestCase = (
+                idTestCase,
+                idTestCase in aiSelectedTestCaseIds,
+                sTestCaseName,
+                oListEntryTestCaseArgs
+            );
 
             aoListOfTestCases.append(oListEntryTestCase)
 

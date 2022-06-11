@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: utils.py 79092 2019-06-11 15:26:40Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard Python imports.
@@ -664,7 +664,7 @@ def processOutputChecked(*aPositionalArgs, **dKeywordArgs):
     sOutput, _ = oProcess.communicate();
     iExitCode  = oProcess.poll();
 
-    if iExitCode is not 0:
+    if iExitCode != 0:
         asArgs = dKeywordArgs.get('args');
         if asArgs is None:
             asArgs = aPositionalArgs[0];
@@ -937,7 +937,7 @@ def processCheckPidAndName(uPid, sName):
                 return False;
 
             # ps fails with non-zero exit code if the pid wasn't found.
-            if iExitCode is not 0:
+            if iExitCode != 0:
                 return False;
             if sCurName is None:
                 return False;
@@ -1953,7 +1953,7 @@ def unpackTarFile(sArchive, sDstDir, fnLog, fnError = None, fnFilter = None):
     # 60%+ speedup for python 2.7 and 50%+ speedup for python 3.5, both on windows with PDBs.
     # 20%+ speedup for python 2.7 and 15%+ speedup for python 3.5, both on windows skipping PDBs.
     #
-    if True is True:
+    if True is True: # pylint: disable=comparison-with-itself
         __installShUtilHacks(shutil);
         global g_fTarCopyFileObjOverriddend;
         if g_fTarCopyFileObjOverriddend is False:

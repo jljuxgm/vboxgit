@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: buildsource.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: buildsource.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 Test Manager - Build Sources.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard python imports.
@@ -127,7 +127,7 @@ class BuildSourceData(ModelDataBase):
             (oNewValue, sError) = ModelDataBase._validateAndConvertAttribute(self, sAttr, sParam, oValue,
                                                                              aoNilValues, fAllowNull, oDb);
             if sError is None:
-                if len(self.asTypes) <= 0:
+                if not self.asTypes:
                     oNewValue = None;
                 else:
                     for sType in oNewValue:

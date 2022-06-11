@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 79071 2019-06-11 00:44:53Z vboxsync $
+# $Id: tdGuestOsUnattendedInst1.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79071 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard Python imports.
@@ -70,7 +70,7 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
 
     def __init__(self, oSet, sVmName, sKind, sInstallIso, fFlags = 0):
         vboxtestvms.BaseTestVm.__init__(self, sVmName, oSet = oSet, sKind = sKind,
-                                        fRandomPvPModeCrap = False if (fFlags & self.kfNoWin81Paravirt) else True);
+                                        fRandomPvPModeCrap = (fFlags & self.kfNoWin81Paravirt) == 0);
         self.sInstallIso            = sInstallIso;
         self.fInstVmFlags           = fFlags;
 

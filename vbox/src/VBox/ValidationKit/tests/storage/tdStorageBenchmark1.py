@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: tdStorageBenchmark1.py 79092 2019-06-11 15:26:40Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 79092 $"
 
 
 # Standard Python imports.
@@ -57,22 +57,6 @@ from testdriver import vboxwrappers;
 import remoteexecutor;
 import storagecfg;
 
-
-def _ControllerTypeToName(eControllerType):
-    """ Translate a controller type to a name. """
-    if eControllerType in (vboxcon.StorageControllerType_PIIX3, eControllerType == vboxcon.StorageControllerType_PIIX4,):
-        sType = "IDE Controller";
-    elif eControllerType == vboxcon.StorageControllerType_IntelAhci:
-        sType = "SATA Controller";
-    elif eControllerType == vboxcon.StorageControllerType_LsiLogicSas:
-        sType = "SAS Controller";
-    elif eControllerType in (vboxcon.StorageControllerType_LsiLogic, vboxcon.StorageControllerType_BusLogic,):
-        sType = "SCSI Controller";
-    elif eControllerType == vboxcon.StorageControllerType_NVMe:
-        sType = "NVMe Controller";
-    else:
-        sType = "Storage Controller";
-    return sType;
 
 class FioTest(object):
     """
@@ -1099,13 +1083,14 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                 #
                 fRc = oSession.setupAudio(vboxcon.AudioControllerType_AC97, False);
                 # Attach HD
-                fRc = fRc and oSession.ensureControllerAttached(_ControllerTypeToName(eStorageController));
-                fRc = fRc and oSession.setStorageControllerType(eStorageController, _ControllerTypeToName(eStorageController));
+                fRc = fRc and oSession.ensureControllerAttached(self.controllerTypeToName(eStorageController));
+                fRc = fRc and oSession.setStorageControllerType(eStorageController,
+                                                                self.controllerTypeToName(eStorageController));
 
                 if sHostIoCache == 'hostiocache':
-                    fRc = fRc and oSession.setStorageControllerHostIoCache(_ControllerTypeToName(eStorageController), True);
+                    fRc = fRc and oSession.setStorageControllerHostIoCache(self.controllerTypeToName(eStorageController), True);
                 elif sHostIoCache == 'no-hostiocache':
-                    fRc = fRc and oSession.setStorageControllerHostIoCache(_ControllerTypeToName(eStorageController), False);
+                    fRc = fRc and oSession.setStorageControllerHostIoCache(self.controllerTypeToName(eStorageController), False);
 
                 iDevice = 0;
                 if eStorageController in (vboxcon.StorageControllerType_PIIX3, vboxcon.StorageControllerType_PIIX4,):
@@ -1119,14 +1104,14 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                     lstDisks.insert(0, oHd);
                     try:
                         if oSession.fpApiVer >= 4.0:
-                            oSession.o.machine.attachDevice(_ControllerTypeToName(eStorageController), \
+                            oSession.o.machine.attachDevice(self.controllerTypeToName(eStorageController),
                                                             0, iDevice, vboxcon.DeviceType_HardDisk, oHd);
                         else:
-                            oSession.o.machine.attachDevice(_ControllerTypeToName(eStorageController), \
+                            oSession.o.machine.attachDevice(self.controllerTypeToName(eStorageController),
                                                             0, iDevice, vboxcon.DeviceType_HardDisk, oHd.id);
                     except:
                         reporter.errorXcpt('attachDevice("%s",%s,%s,HardDisk,"%s") failed on "%s"' \
-                                           % (_ControllerTypeToName(eStorageController), 1, 0, oHd.id, oSession.sName) );
+                                           % (self.controllerTypeToName(eStorageController), 1, 0, oHd.id, oSession.sName) );
                         fRc = False;
                     else:
                         reporter.log('attached "%s" to %s' % (sDiskPath, oSession.sName));
@@ -1214,12 +1199,11 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                 oSession = self.openSession(oVM);
                 if oSession is not None:
                     try:
-                        oSession.o.machine.detachDevice(_ControllerTypeToName(eStorageController), 0, iDevice);
+                        oSession.o.machine.detachDevice(self.controllerTypeToName(eStorageController), 0, iDevice);
 
                         # Remove storage controller if it is not an IDE controller.
-                        if     eStorageController is not vboxcon.StorageControllerType_PIIX3 \
-                           and eStorageController is not vboxcon.StorageControllerType_PIIX4:
-                            oSession.o.machine.removeStorageController(_ControllerTypeToName(eStorageController));
+                        if eStorageController not in (vboxcon.StorageControllerType_PIIX3, vboxcon.StorageControllerType_PIIX4,):
+                            oSession.o.machine.removeStorageController(self.controllerTypeToName(eStorageController));
 
                         oSession.saveSettings();
                         oSession.saveSettings();

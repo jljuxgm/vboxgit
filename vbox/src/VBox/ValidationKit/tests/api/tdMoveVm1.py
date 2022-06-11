@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# "$Id: tdMoveVm1.py 79069 2019-06-10 23:11:29Z vboxsync $"
+# "$Id: tdMoveVm1.py 79092 2019-06-11 15:26:40Z vboxsync $"
 
 """
 VirtualBox Validation Kit - VM Move Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79069 $"
+__version__ = "$Revision: 79092 $"
 
 # Standard Python imports.
 import os
@@ -192,7 +192,7 @@ class SubTstDrvMoveVm1(base.SubTestDriverBase):
             aReferences = set()
 
             # Check standard images locations, ISO files locations, floppy images locations, snapshots files locations
-            if sKey == 'StandardImage' or sKey == 'ISOImage' or sKey == 'FloppyImage':
+            if sKey in ('StandardImage', 'ISOImage', 'FloppyImage',):
                 aReferences = dsReferenceFiles[sKey]
                 if aReferences:
                     aoMediumAttachments = oMachine.getMediumAttachmentsOfController(sValue) ##@todo r=bird: API call, try-except!
