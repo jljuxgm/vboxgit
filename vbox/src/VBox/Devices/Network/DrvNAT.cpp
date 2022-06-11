@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 81585 2019-10-30 11:19:27Z vboxsync $ */
+/* $Id: DrvNAT.cpp 81724 2019-11-06 20:59:57Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1814,8 +1814,6 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
                 LogRel(("NAT#%d: Failed to install DNS change notifier. The guest might loose DNS access when switching networks on the host\n",
                          pDrvIns->iInstance));
 #endif
-
-            /* might return VINF_NAT_DNS */
             return rc;
         }
 
