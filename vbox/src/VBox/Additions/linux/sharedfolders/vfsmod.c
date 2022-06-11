@@ -1,4 +1,4 @@
-/* $Id: vfsmod.c 78204 2019-04-18 11:42:57Z vboxsync $ */
+/* $Id: vfsmod.c 78890 2019-05-31 09:43:51Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, module init/term, super block management.
  */
@@ -423,7 +423,7 @@ static int vbsf_init_backing_dev(struct super_block *sb, struct vbsf_super_info 
  */
 static void vbsf_done_backing_dev(struct super_block *sb, struct vbsf_super_info *pSuperInfo)
 {
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 24) && LINUX_VERSION_CODE <= KERNEL_VERSION(3, 19, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 24) && LINUX_VERSION_CODE <= KERNEL_VERSION(4, 12, 0)
     bdi_destroy(&pSuperInfo->bdi);    /* includes bdi_unregister() */
 #endif
 }
