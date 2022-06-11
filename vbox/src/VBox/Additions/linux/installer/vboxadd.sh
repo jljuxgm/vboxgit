@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 80574 2019-09-04 06:09:22Z vboxsync $
+# $Id: vboxadd.sh 80581 2019-09-04 08:53:53Z vboxsync $
 ## @file
-# Linux Additions kernel module init script ($Revision: 80574 $)
+# Linux Additions kernel module init script ($Revision: 80581 $)
 #
 
 #
@@ -527,9 +527,9 @@ stop()
         ldconfig
     fi
     if ! umount -a -t vboxsf 2>/dev/null; then
-    # Make sure we only fail, if there are truly no more vboxsf
-    # mounts in the system.
-    [ -n "$(findmnt -t vboxsf)" ] && fail "Cannot unmount vboxsf folders"
+        # Make sure we only fail, if there are truly no more vboxsf
+        # mounts in the system.
+        [ -n "$(findmnt -t vboxsf)" ] && fail "Cannot unmount vboxsf folders"
     fi
     test -n "${INSTALL_NO_MODULE_BUILDS}" ||
         info "You may need to restart your guest system to finish removing guest drivers."
