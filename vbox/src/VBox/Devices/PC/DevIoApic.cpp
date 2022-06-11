@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 81957 2019-11-18 18:14:58Z vboxsync $ */
+/* $Id: DevIoApic.cpp 81958 2019-11-18 18:15:08Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -1307,7 +1307,7 @@ static DECLCALLBACK(int) ioapicR3Construct(PPDMDEVINS pDevIns, int iInstance, PC
     AssertRCReturn(rc, rc);
 
     /*
-     * Register MMIO callbacks.
+     * Register MMIO region.
      */
     rc = PDMDevHlpMmioCreateAndMap(pDevIns, IOAPIC_MMIO_BASE_PHYSADDR, IOAPIC_MMIO_SIZE, ioapicMmioWrite, ioapicMmioRead,
                                    IOMMMIO_FLAGS_READ_DWORD | IOMMMIO_FLAGS_WRITE_DWORD_ZEROED, "I/O APIC", &pThis->hMmio);
