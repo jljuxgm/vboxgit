@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 82038 2019-11-20 17:02:11Z vboxsync $ */
+/* $Id: APICAll.cpp 82039 2019-11-20 17:22:21Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -3514,12 +3514,15 @@ static DECLCALLBACK(int) apicRZConstruct(PPDMDEVINS pDevIns)
     int rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
     AssertRCReturn(rc, rc);
 
+    rc = PDMDevHlpApicSetUpContext(pDevIns);
+    AssertRCReturn(rc, rc);
+
     rc = PDMDevHlpMmioSetUpContext(pDevIns, pThis->hMmio, apicWriteMmio, apicReadMmio, NULL /*pvUser*/);
     AssertRCReturn(rc, rc);
 
     return VINF_SUCCESS;
 }
-#endif
+#endif /* !IN_RING3 */
 
 /**
  * APIC device registration structure.

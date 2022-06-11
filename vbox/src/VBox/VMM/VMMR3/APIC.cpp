@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 82036 2019-11-20 16:51:01Z vboxsync $ */
+/* $Id: APIC.cpp 82039 2019-11-20 17:22:21Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1442,7 +1442,7 @@ DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE p
     /*
      * Register the APIC with PDM.
      */
-    rc = PDMDevHlpAPICRegister(pDevIns);
+    rc = PDMDevHlpApicRegister(pDevIns);
     AssertLogRelRCReturn(rc, rc);
 
     /*
