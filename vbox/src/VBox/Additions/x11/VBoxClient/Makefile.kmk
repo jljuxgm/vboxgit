@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 83210 2020-03-05 14:35:19Z vboxsync $
+# $Id: Makefile.kmk 83218 2020-03-06 10:10:00Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -38,7 +38,6 @@ VBoxClient_SOURCES = \
 	display-svga-x11.cpp \
 	seamless.cpp \
 	seamless-x11.cpp \
-	display.cpp \
 	hostversion.cpp
 
 VBoxClient_SOURCES.linux = \

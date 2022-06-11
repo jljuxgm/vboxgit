@@ -1,4 +1,4 @@
-/* $Id: VBoxClient.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxClient.h 83218 2020-03-06 10:10:00Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
@@ -71,7 +71,6 @@ DECLINLINE(void) VBClServiceDefaultCleanup(struct VBCLSERVICE **ppInterface)
 
 extern struct VBCLSERVICE **VBClGetClipboardService();
 extern struct VBCLSERVICE **VBClGetSeamlessService();
-extern struct VBCLSERVICE **VBClGetDisplayService();
 extern struct VBCLSERVICE **VBClGetHostVersionService();
 #ifdef VBOX_WITH_DRAG_AND_DROP
 extern struct VBCLSERVICE **VBClGetDragAndDropService();
