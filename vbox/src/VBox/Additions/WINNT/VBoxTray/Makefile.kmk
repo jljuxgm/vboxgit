@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78974 2019-06-04 16:51:48Z vboxsync $
+# $Id: Makefile.kmk 79270 2019-06-21 10:28:42Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -65,7 +65,8 @@ ifdef VBOX_WITH_SHARED_CLIPBOARD
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardStreamImpl-win.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardURIList.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/ClipboardURIObject.cpp \
-	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-common.cpp
+	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-common.cpp \
+	$(PATH_ROOT)/src/VBox/GuestHost/SharedClipboard/clipboard-uri.cpp
  endif
 endif
 ifdef VBOX_WITH_DRAG_AND_DROP
