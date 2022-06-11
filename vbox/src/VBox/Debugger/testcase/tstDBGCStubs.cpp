@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 79164 2019-06-17 04:21:52Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 80050 2019-07-29 20:04:35Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -641,16 +641,6 @@ VMMDECL(RTGCPTR) CPUMGetGuestIDTR(PCVMCPU pVCpu, uint16_t *pcbLimit)
 VMMDECL(CPUMMODE) CPUMGetGuestMode(PVMCPU pVCpu)
 {
     return CPUMMODE_INVALID;
-}
-
-VMMDECL(RTSEL) CPUMGetHyperCS(PVMCPU pVCpu)
-{
-    return 0xfff8;
-}
-
-VMMDECL(uint32_t) CPUMGetHyperEIP(PVMCPU pVCpu)
-{
-    return 0;
 }
 
 VMMDECL(PCPUMCTX) CPUMQueryGuestCtxPtr(PVMCPU pVCpu)
