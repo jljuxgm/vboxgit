@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 80481 2019-08-28 14:58:11Z vboxsync $ */
+/* $Id: process-win.cpp 80485 2019-08-28 18:59:24Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -981,7 +981,7 @@ static bool rtProcWinLogSecAttr(HANDLE hUserObj)
  *
  * @returns Pointer to the SID on success. Free by calling RTMemFree.
  * @param   hToken              The token..
- * @param   prc                 Optional return code. 
+ * @param   prc                 Optional return code.
  */
 static PSID rtProcWinGetTokenUserSid(HANDLE hToken, int *prc)
 {
