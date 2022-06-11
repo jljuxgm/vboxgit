@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 79107 2019-06-12 13:57:04Z vboxsync $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 79267 2019-06-21 10:11:59Z vboxsync $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -390,6 +390,8 @@ STDMETHODIMP VBoxClipboardWinDataObject::GetData(LPFORMATETC pFormatEtc, LPSTGME
         case FormatIndex_FileDescriptorW: /* Unicode */
 #endif
         {
+            break;
+#if 0
             const bool fUnicode = lIndex == FormatIndex_FileDescriptorW;
 
             LogFlowFunc(("FormatIndex_FileDescriptor%s\n", fUnicode ? "W" : "A"));
@@ -413,6 +415,7 @@ STDMETHODIMP VBoxClipboardWinDataObject::GetData(LPFORMATETC pFormatEtc, LPSTGME
                     }
                 }
             }
+#endif
             break;
         }
 
