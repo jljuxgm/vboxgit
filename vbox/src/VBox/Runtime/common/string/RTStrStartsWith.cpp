@@ -1,4 +1,4 @@
-/* $Id: RTStrStartsWith.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: RTStrStartsWith.cpp 80358 2019-08-20 19:44:47Z vboxsync $ */
 /** @file
  * IPRT - String starts with predicate.
  */
@@ -33,7 +33,7 @@
 #include "internal/iprt.h"
 
 
-RTDECL(int) RTStrStartsWith(const char *pszString, const char *pszStart)
+RTDECL(bool) RTStrStartsWith(const char *pszString, const char *pszStart)
 {
     if (pszString)
     {
