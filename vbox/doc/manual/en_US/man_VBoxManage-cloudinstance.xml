@@ -15,7 +15,7 @@
 <refentry id="vboxmanage-cloudinstance" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2019-09-23 16:55:33 +0800 (Mon, 23 Sep 2019) $</pubdate>
+    <pubdate>$Date: 2019-09-24 00:11:16 +0800 (Tue, 24 Sep 2019) $</pubdate>
     <title>VBoxManage cloud instance</title>
   </refentryinfo>
 
@@ -43,9 +43,9 @@
       <arg choice="req" rep="norepeat">--shape=<replaceable>type</replaceable></arg>
       <arg choice="req" rep="norepeat">--subnet=<replaceable>unique id</replaceable></arg>
       <arg choice="req" rep="norepeat">--boot-disk-size=<replaceable>size in GB</replaceable></arg>
-      <arg choice="req" rep="norepeat">--publicip=<replaceable>true/false</replaceable></arg>
-      <arg choice="req" rep="norepeat">--privateip=<replaceable>IP address</replaceable></arg>
-      <arg choice="req" rep="norepeat">--launch-mode=<replaceable>NATIVE/EMULATED/PARAVIRTUALIZED</replaceable></arg>
+      <arg rep="norepeat">--publicip=<replaceable>true/false</replaceable></arg>
+      <arg rep="norepeat">--privateip=<replaceable>IP address</replaceable></arg>
+      <arg rep="norepeat">--launch-mode=<replaceable>NATIVE/EMULATED/PARAVIRTUALIZED</replaceable></arg>
     </cmdsynopsis>
     <cmdsynopsis id="synopsis-vboxmanage-cloudinstance-info" sepchar=" ">
       <command moreinfo="none">VBoxManage cloud</command>
