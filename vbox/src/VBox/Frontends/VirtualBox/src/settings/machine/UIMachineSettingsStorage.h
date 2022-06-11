@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 78500 2019-05-14 11:28:57Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 78502 2019-05-14 11:47:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -152,10 +152,10 @@ public:
 
     DeviceTypeList deviceTypeList() const;
 
-protected:
+private:
 
-    KStorageControllerType first() const;
-    uint size() const;
+    KStorageControllerType firstType() const;
+    uint typeAmount() const;
 
     KStorageBus mBusType;
     KStorageControllerType mCtrType;
