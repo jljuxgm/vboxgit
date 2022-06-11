@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 82979 2020-02-04 15:37:39Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -360,6 +360,7 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--audioout",                 MODIFYVM_AUDIOOUT,                  RTGETOPT_REQ_BOOL_ONOFF },
 #ifdef VBOX_WITH_SHARED_CLIPBOARD
     { "--clipboard-mode",           MODIFYVM_CLIPBOARD_MODE,            RTGETOPT_REQ_STRING },
+    { "--clipboard",                MODIFYVM_CLIPBOARD_MODE,            RTGETOPT_REQ_STRING },     /* deprecated */
 # ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     { "--clipboard-file-transfers", MODIFYVM_CLIPBOARD_FILE_TRANSFERS,  RTGETOPT_REQ_STRING },
 # endif
