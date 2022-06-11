@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 81909 2019-11-17 18:23:56Z vboxsync $ */
+/* $Id: APICAll.cpp 81948 2019-11-18 16:28:43Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -1255,7 +1255,7 @@ static VBOXSTRICTRC apicSetEoi(PVMCPUCC pVCpu, uint32_t uEoi, int rcBusy, bool f
         bool const fLevelTriggered = apicTestVectorInReg(&pXApicPage->tmr, uVector);
         if (fLevelTriggered)
         {
-            int rc = PDMIoApicBroadcastEoi(pVCpu->CTX_SUFF(pVM), uVector);
+            VBOXSTRICTRC rc = PDMIoApicBroadcastEoi(pVCpu->CTX_SUFF(pVM), uVector);
             if (rc == VINF_SUCCESS)
             { /* likely */ }
             else

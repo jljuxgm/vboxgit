@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: PDMAll.cpp 81948 2019-11-18 16:28:43Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -195,7 +195,7 @@ VMM_INT_DECL(int) PDMIoApicSetIrq(PVM pVM, uint8_t u8Irq, uint8_t u8Level, uint3
  * @param   pVM             The cross context VM structure.
  * @param   uVector         The interrupt vector corresponding to the EOI.
  */
-VMM_INT_DECL(int) PDMIoApicBroadcastEoi(PVM pVM, uint8_t uVector)
+VMM_INT_DECL(VBOXSTRICTRC) PDMIoApicBroadcastEoi(PVM pVM, uint8_t uVector)
 {
     /* At present, we support only a maximum of one I/O APIC per-VM. If we ever implement having
        multiple I/O APICs per-VM, we'll have to broadcast this EOI to all of the I/O APICs. */
