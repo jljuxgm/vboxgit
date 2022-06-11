@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 78418 2019-05-06 23:30:09Z vboxsync $
+# $Id: vboxtestvms.py 78674 2019-05-23 00:09:07Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78418 $"
+__version__ = "$Revision: 78674 $"
 
 # Standard Python imports.
 import copy;
@@ -352,6 +352,12 @@ class TestVm(object):
                 self.asParavirtModesSup = (random.choice(self.asParavirtModesSup),);
 
         return True;
+
+    def getNonCanonicalGuestOsType(self):
+        """
+        Gets the non-canonical OS type (self.sGuestOsType is canonical).
+        """
+        return self.aInfo[g_iGuestOsType];
 
     def getMissingResources(self, sTestRsrc):
         """
