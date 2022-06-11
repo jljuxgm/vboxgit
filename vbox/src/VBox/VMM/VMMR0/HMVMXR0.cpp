@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79874 2019-07-19 09:15:09Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79875 2019-07-19 09:18:15Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -16993,6 +16993,7 @@ HMVMX_EXIT_DECL hmR0VmxExitXcptOrNmiNested(PVMCPU pVCpu, PVMXTRANSIENT pVmxTrans
                                                                    pVmxTransient->uExitIntErrorCode);
             if (fIntercept)
             {
+                /* Exit qualification is required for debug and page-fault exceptions. */
                 rc = hmR0VmxReadExitQualVmcs(pVCpu, pVmxTransient);
                 AssertRCReturn(rc, rc);
 
