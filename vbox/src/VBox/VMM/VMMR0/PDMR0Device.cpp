@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 81841 2019-11-14 02:12:01Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 81850 2019-11-14 21:36:00Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -1021,6 +1021,16 @@ static DECLCALLBACK(uint32_t) pdmR0DevHlp_CritSectGetRecursion(PPDMDEVINS pDevIn
 }
 
 
+/** @interface_method_impl{PDMDEVHLPR0,pfnCritSectScheduleExitEvent} */
+static DECLCALLBACK(int) pdmR0DevHlp_CritSectScheduleExitEvent(PPDMDEVINS pDevIns, PPDMCRITSECT pCritSect,
+                                                               SUPSEMEVENT hEventToSignal)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    RT_NOREF(pDevIns);
+    return PDMHCCritSectScheduleExitEvent(pCritSect, hEventToSignal);
+}
+
+
 /** @interface_method_impl{PDMDEVHLPR0,pfnDBGFTraceBuf} */
 static DECLCALLBACK(RTTRACEBUF) pdmR0DevHlp_DBGFTraceBuf(PPDMDEVINS pDevIns)
 {
@@ -1160,6 +1170,7 @@ extern DECLEXPORT(const PDMDEVHLPR0) g_pdmR0DevHlp =
     pdmR0DevHlp_CritSectIsInitialized,
     pdmR0DevHlp_CritSectHasWaiters,
     pdmR0DevHlp_CritSectGetRecursion,
+    pdmR0DevHlp_CritSectScheduleExitEvent,
     pdmR0DevHlp_DBGFTraceBuf,
     pdmR0DevHlp_PCIBusSetUpContext,
     NULL /*pfnReserved1*/,

@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 81811 2019-11-12 16:04:41Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 81850 2019-11-14 21:36:00Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -3045,6 +3045,16 @@ static DECLCALLBACK(uint32_t) pdmR3DevHlp_CritSectGetRecursion(PPDMDEVINS pDevIn
 }
 
 
+/** @interface_method_impl{PDMDEVHLPR3,pfnCritSectScheduleExitEvent} */
+static DECLCALLBACK(int) pdmR3DevHlp_CritSectScheduleExitEvent(PPDMDEVINS pDevIns, PPDMCRITSECT pCritSect,
+                                                               SUPSEMEVENT hEventToSignal)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    RT_NOREF(pDevIns);
+    return PDMHCCritSectScheduleExitEvent(pCritSect, hEventToSignal);
+}
+
+
 /** @interface_method_impl{PDMDEVHLPR3,pfnCritSectDelete} */
 static DECLCALLBACK(int) pdmR3DevHlp_CritSectDelete(PPDMDEVINS pDevIns, PPDMCRITSECT pCritSect)
 {
@@ -4794,6 +4804,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_CritSectIsInitialized,
     pdmR3DevHlp_CritSectHasWaiters,
     pdmR3DevHlp_CritSectGetRecursion,
+    pdmR3DevHlp_CritSectScheduleExitEvent,
     pdmR3DevHlp_CritSectDelete,
     pdmR3DevHlp_ThreadCreate,
     PDMR3ThreadDestroy,
@@ -5289,6 +5300,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_CritSectIsInitialized,
     pdmR3DevHlp_CritSectHasWaiters,
     pdmR3DevHlp_CritSectGetRecursion,
+    pdmR3DevHlp_CritSectScheduleExitEvent,
     pdmR3DevHlp_CritSectDelete,
     pdmR3DevHlp_ThreadCreate,
     PDMR3ThreadDestroy,
