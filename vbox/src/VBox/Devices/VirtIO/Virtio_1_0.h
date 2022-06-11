@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.h 80639 2019-09-06 17:41:59Z vboxsync $ */
+/* $Id: Virtio_1_0.h 80657 2019-09-09 07:14:32Z vboxsync $ */
 /** @file
  * Virtio_1_0.h - Virtio Declarations
  */
@@ -264,9 +264,31 @@ int virtioQueueSync(VIRTIOHANDLE hVirtio, uint16_t qIdx);
 bool virtioQueueIsEmpty (VIRTIOHANDLE hVirtio, uint16_t qIdx);
 
 /**
+ * Return queue enable state
+  *
+ * @param hVirtio   - Handle for VirtIO framework
+ * @param qIdx      - Queue number
+ * @param fEnabled  - Flag indicating whether to enable queue or not
+ */
+bool virtioIsQueueEnabled(VIRTIOHANDLE hVirtio, uint16_t qIdx);
+
+/**
+ * Enable or disable queue
+ *
+ * @param hVirtio   - Handle for VirtIO framework
+ * @param qIdx      - Queue number
+ * @param fEnabled  - Flag indicating whether to enable queue or not
+ */
+void virtioQueueEnable(VIRTIOHANDLE hVirtio, uint16_t qIdx, bool fEnabled);
+
+/**
  * Request orderly teardown of VirtIO on host and guest
+ * @param hVirtio   - Handle for VirtIO framework
+ *
  */
 void virtioResetAll(VIRTIOHANDLE hVirtio);
+
+
 
 /** CLIENT MUST CALL ON RELOCATE CALLBACK! */
 void virtioRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta);
