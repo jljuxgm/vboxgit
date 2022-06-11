@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 84100 2020-04-30 11:39:11Z vboxsync $
+# $Id: base.py 84271 2020-05-12 14:39:15Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84100 $"
+__version__ = "$Revision: 84271 $"
 
 
 # Standard python imports.
@@ -629,7 +629,7 @@ class ModelDataBase(ModelBase): # pylint: disable=too-few-public-methods
         elif len(sValue) >= 19 + 3:
             oRes = re.match(r'^.*[+-](\d\d):(\d\d)$', sValue);
             if oRes is not None:
-                if int(oRes.group(6)) > 12 or int(oRes.group(7)) >= 60:
+                if int(oRes.group(1)) > 12 or int(oRes.group(2)) >= 60:
                     return (sValue, 'Invalid timezone offset.');
                 sStripped = sValue[:-6];
             else:
