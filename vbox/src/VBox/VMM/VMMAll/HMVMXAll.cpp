@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 80170 2019-08-07 04:59:59Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 80260 2019-08-14 04:55:54Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -1296,6 +1296,8 @@ VMM_INT_DECL(uint32_t) HMTrpmEventTypeToVmxEventType(uint8_t uVector, TRPMEVENT 
  */
 VMM_INT_DECL(void) HMNotifyVmxNstGstVmexit(PVMCPU pVCpu)
 {
+    LogFlowFunc(("\n"));
+
     /*
      * Transitions to ring-3 flag a full CPU-state change except if we transition to ring-3
      * in response to a physical CPU interrupt as no changes to the guest-CPU state are
