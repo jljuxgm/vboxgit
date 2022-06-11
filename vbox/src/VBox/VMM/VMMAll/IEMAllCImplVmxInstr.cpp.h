@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 78646 2019-05-22 06:25:18Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 78650 2019-05-22 09:41:16Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -286,8 +286,9 @@ uint16_t const g_aoffVmcsMap[16][VMX_V_VMCS_MAX_INDEX + 1] =
         /*     7 */ RT_UOFFSETOF(VMXVVMCS, u64GuestPdpte2),
         /*     8 */ RT_UOFFSETOF(VMXVVMCS, u64GuestPdpte3),
         /*     9 */ RT_UOFFSETOF(VMXVVMCS, u64GuestBndcfgsMsr),
-        /* 10-17 */ UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX,
-        /* 18-25 */ UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX
+        /*    10 */ RT_UOFFSETOF(VMXVVMCS, u64GuestRtitCtlMsr),
+        /* 11-18 */ UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX
+        /* 19-25 */ UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX, UINT16_MAX
     },
     /* VMX_VMCS_ENC_WIDTH_64BIT | VMX_VMCS_ENC_TYPE_HOST_STATE: */
     {
