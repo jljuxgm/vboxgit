@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 79170 2019-06-17 07:01:51Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 79171 2019-06-17 07:07:42Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2067,7 +2067,7 @@ HRESULT Appliance::i_importCloudImpl(TaskCloud *pTask)
                     pTask->pProgress->WaitForOtherProgressCompletion(pProgress1, 0 /* indefinite wait */);
 
                     LogRel(("%s: Cleanup action - the VM config file and the attached images have been deleted\n",
-                            __FUNCTION__, machineNameOrId.c_str()));
+                            __FUNCTION__));
                 }
             }
             else
