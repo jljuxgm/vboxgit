@@ -1,4 +1,4 @@
-/* $Id: VBoxManageCloud.cpp 80939 2019-09-23 08:53:36Z vboxsync $ */
+/* $Id: VBoxManageCloud.cpp 80948 2019-09-23 11:56:31Z vboxsync $ */
 /** @file
  * VBoxManageCloud - The cloud related commands.
  */
@@ -477,6 +477,7 @@ static RTEXITCODE createCloudInstance(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT
         { "--publicip",       'p', RTGETOPT_REQ_STRING },
         { "--subnet",         't', RTGETOPT_REQ_STRING },
         { "--privateip",      'P', RTGETOPT_REQ_STRING },
+        { "--launch",         'l', RTGETOPT_REQ_STRING },
     };
     RTGETOPTSTATE GetState;
     RTGETOPTUNION ValueUnion;
@@ -494,7 +495,6 @@ static RTEXITCODE createCloudInstance(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT
     ComPtr<IVirtualSystemDescription> pVSD = virtualSystemDescriptions[0];
 
     Utf8Str strDisplayName, strImageId;
-
     int c;
     while ((c = RTGetOpt(&GetState, &ValueUnion)) != 0)
     {
@@ -527,7 +527,6 @@ static RTEXITCODE createCloudInstance(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT
                                      Bstr(ValueUnion.psz).raw(),
                                      Bstr(ValueUnion.psz).raw());
                 break;
-
             case 'b':
                 pVSD->AddDescription(VirtualSystemDescriptionType_CloudBootDiskSize,
                                      Bstr(ValueUnion.psz).raw(),
@@ -548,6 +547,15 @@ static RTEXITCODE createCloudInstance(HandlerArg *a, int iFirst, PCLOUDCOMMONOPT
                                      Bstr(ValueUnion.psz).raw(),
                                      Bstr(ValueUnion.psz).raw());
                 break;
+            case 'l':
+                {
+                    Utf8Str strLaunch(ValueUnion.psz);
+                    if (strLaunch.isNotEmpty() && (strLaunch.equalsIgnoreCase("true") || strLaunch.equalsIgnoreCase("false")))
+                        pVSD->AddDescription(VirtualSystemDescriptionType_CloudLaunchInstance,
+                                             Bstr(ValueUnion.psz).raw(),
+                                             Bstr(ValueUnion.psz).raw());
+                    break;
+                }
             case VINF_GETOPT_NOT_OPTION:
                 return errorUnknownSubcommand(ValueUnion.psz);
             default:
