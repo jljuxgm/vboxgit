@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 79000 2019-06-05 14:35:52Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 79334 2019-06-25 16:16:07Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -46,30 +46,6 @@
 #include <VBox/usblib.h>
 #include <devguid.h>
 
-/*
- * Note: Must match the VID & PID in the USB driver .inf file!!
- */
-/*
-  BusQueryDeviceID USB\Vid_80EE&Pid_CAFE
-  BusQueryInstanceID 2
-  BusQueryHardwareIDs USB\Vid_80EE&Pid_CAFE&Rev_0100
-  BusQueryHardwareIDs USB\Vid_80EE&Pid_CAFE
-  BusQueryCompatibleIDs USB\Class_ff&SubClass_00&Prot_00
-  BusQueryCompatibleIDs USB\Class_ff&SubClass_00
-  BusQueryCompatibleIDs USB\Class_ff
-*/
-
-#define szBusQueryDeviceId                  L"USB\\Vid_80EE&Pid_CAFE"
-#define szBusQueryHardwareIDs               L"USB\\Vid_80EE&Pid_CAFE&Rev_0100\0USB\\Vid_80EE&Pid_CAFE\0\0"
-#define szBusQueryCompatibleIDs             L"USB\\Class_ff&SubClass_00&Prot_00\0USB\\Class_ff&SubClass_00\0USB\\Class_ff\0\0"
-
-#define szDeviceTextDescription             L"VirtualBox USB"
-
-/* Possible USB bus driver names. */
-static LPWSTR lpszStandardControllerName[1] =
-{
-    L"\\Driver\\usbhub",
-};
 
 /*
  * state transitions:
