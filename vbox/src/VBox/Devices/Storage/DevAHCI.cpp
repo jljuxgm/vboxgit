@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 78913 2019-06-01 12:49:01Z vboxsync $ */
+/* $Id: DevAHCI.cpp 79671 2019-07-10 13:01:47Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -2462,7 +2462,7 @@ static DECLCALLBACK(int) ahciR3MMIOMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, u
     /** @todo change this to IOMMMIO_FLAGS_WRITE_ONLY_DWORD once EM/IOM starts
      * handling 2nd DWORD failures on split accesses correctly. */
     int rc = PDMDevHlpMMIORegister(pDevIns, GCPhysAddress, cb, NULL /*pvUser*/,
-                                   IOMMMIO_FLAGS_READ_DWORD | IOMMMIO_FLAGS_WRITE_ONLY_DWORD_QWORD,
+                                   IOMMMIO_FLAGS_READ_DWORD | IOMMMIO_FLAGS_WRITE_DWORD_QWORD_READ_MISSING,
                                    ahciMMIOWrite, ahciMMIORead, "AHCI");
     if (RT_FAILURE(rc))
         return rc;
