@@ -1,4 +1,4 @@
-/* $Id: tstRTErr-1.cpp 84068 2020-04-28 23:34:42Z vboxsync $ */
+/* $Id: tstRTErr-1.cpp 84069 2020-04-28 23:35:00Z vboxsync $ */
 /** @file
  * IPRT Testcase - Error Messages.
  */
@@ -358,7 +358,8 @@ static void tstWinComStatuses(RTTEST hTest)
         RTTestRestoreAssertions(hTest);
     }
 }
-#endif
+#endif /* RT_OS_WINDOWS */
+
 
 int main(int argc, char **argv)
 {
