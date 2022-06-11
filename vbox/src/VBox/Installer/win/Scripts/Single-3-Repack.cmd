@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Single-3-Repack.cmd 80769 2019-09-13 10:04:41Z vboxsync $
+rem $Id: Single-3-Repack.cmd 80799 2019-09-15 19:44:37Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 or x86 drivers.
 rem
@@ -198,6 +198,10 @@ echo .
 
 echo * Applying language patches to MSI...
 for %%i in (3-*.cmd) do (call %%i || goto end_failed)
+echo .
+
+echo * Creating multi arch installer...
+for %%i in (4-*.cmd) do (call %%i || goto end_failed)
 echo .
 
 
