@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# $Id: rules 76758 2019-01-10 16:27:30Z vboxsync $
+# $Id: rules 81142 2019-10-08 11:13:23Z vboxsync $
 ## @file
 # VirtualBox rules.
 #
@@ -50,7 +50,7 @@ export DH_COMPAT=5
 # STAGEDISO are set.
 
 package  := virtualbox
-verpkg   := virtualbox-6.0
+verpkg   := virtualbox-6.1
 current  := $(shell pwd)
 vboxroot := $(shell cd ../../../..; pwd)
 pkgdir   := $(if $(PKGDIR),$(PKGDIR),$(shell cd ../../../../..; pwd))
