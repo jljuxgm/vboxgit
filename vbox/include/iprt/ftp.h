@@ -1,4 +1,4 @@
-/* $Id: ftp.h 82665 2020-01-08 09:32:19Z vboxsync $ */
+/* $Id: ftp.h 82670 2020-01-08 11:35:48Z vboxsync $ */
 /** @file
  * Header file for FTP client / server implementations.
  */
@@ -13,6 +13,15 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ *
+ * The contents of this file may alternatively be used under the terms
+ * of the Common Development and Distribution License Version 1.0
+ * (CDDL) only, as it comes in the "COPYING.CDDL" file of the
+ * VirtualBox OSE distribution, in which case the provisions of the
+ * CDDL are applicable instead of those of the GPL.
+ *
+ * You may elect to license modified versions of this file under the
+ * terms and conditions of either the GPL or the CDDL or both.
  */
 
 #ifndef IPRT_INCLUDED_ftp_h
