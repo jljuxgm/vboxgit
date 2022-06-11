@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.cpp 84059 2020-04-28 16:54:35Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.cpp 84085 2020-04-29 14:50:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class implementation.
  */
@@ -383,7 +383,6 @@ void UIChooserAbstractModel::sltCloudMachineRegistered(const QString &strProvide
             AssertPtrReturnVoid(pFakeNode);
             AssertReturnVoid(pFakeNode->cacheType() == UIVirtualMachineItemType_CloudFake);
             pFakeNode->cache()->toCloud()->setFakeCloudItemState(UIFakeCloudVirtualMachineItemState_Done);
-            pFakeNode->cache()->toCloud()->recache();
         }
     }
     /* New VM registered? */
@@ -482,7 +481,6 @@ void UIChooserAbstractModel::sltHandleCloudListMachinesTaskComplete(UITask *pTas
         UIVirtualMachineItemCloud *pFakeCloudMachineItem = pFakeMachineNode->cache()->toCloud();
         AssertPtrReturnVoid(pFakeCloudMachineItem);
         pFakeCloudMachineItem->setFakeCloudItemState(UIFakeCloudVirtualMachineItemState_Done);
-        pFakeCloudMachineItem->recache();
     }
 }
 
