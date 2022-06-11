@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 80599 2019-09-05 08:23:58Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 80676 2019-09-09 14:10:43Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -1063,7 +1063,7 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                         case VirtualSystemDescriptionType_Miscellaneous:
                         case VirtualSystemDescriptionType_CloudInstanceDisplayName:
                         case VirtualSystemDescriptionType_CloudImageDisplayName:
-                        case VirtualSystemDescriptionType_CloudParavirtualized:
+                        case VirtualSystemDescriptionType_CloudOCILaunchMode:
                         case VirtualSystemDescriptionType_CloudPrivateIP:
                             /** @todo  VirtualSystemDescriptionType_Miscellaneous? */
                             break;
