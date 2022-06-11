@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83511 $"
+__version__ = "$Revision: 83515 $"
 
 # Standard Python imports.
 import errno
@@ -1788,7 +1788,11 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 oFsObjInfo = oCurDir.read();
             except Exception as oXcpt:
                 if vbox.ComError.notEqual(oXcpt, vbox.ComError.VBOX_E_OBJECT_NOT_FOUND):
-                    reporter.errorXcpt('Error reading directory "%s":' % (sCurDir,));
+                    if oTstDrv.fpApiVer > 5.2:
+                        reporter.errorXcpt('Error reading directory "%s":' % (sCurDir,));
+                    else:
+                        # Unlike fileOpen, directoryOpen will not fail if the directory does not exist.
+                        reporter.maybeErrXcpt(fIsError, 'Error reading directory "%s":' % (sCurDir,));
                     fRc = False;
                 else:
                     reporter.log2('\tNo more directory entries for "%s"' % (sCurDir,));
@@ -3743,11 +3747,12 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                              eAction = vboxcon.FileOpenAction_OpenExistingTruncated),                   tdTestResultFailure() ],
             [ tdTestFileOpen(sFile = oTestVm.pathJoin(sTempDir, 'no-such-dir', 'no-such-file')),        tdTestResultFailure() ],
         ];
-        atTests.extend([
-            # Wrong type:
-            [ tdTestFileOpen(sFile = self.getGuestTempDir(oTestVm)),                                tdTestResultFailure() ],
-            [ tdTestFileOpen(sFile = self.getGuestSystemDir(oTestVm)),                              tdTestResultFailure() ],
-        ]);
+        if self.oTstDrv.fpApiVer > 5.2: # Fixed since 6.0.
+            atTests.extend([
+                # Wrong type:
+                [ tdTestFileOpen(sFile = self.getGuestTempDir(oTestVm)),                                tdTestResultFailure() ],
+                [ tdTestFileOpen(sFile = self.getGuestSystemDir(oTestVm)),                              tdTestResultFailure() ],
+            ]);
         atTests.extend([
             # O_EXCL and such:
             [ tdTestFileOpen(sFile = sFileForReading, eAction = vboxcon.FileOpenAction_CreateNew,
