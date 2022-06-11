@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevPIC.cpp 84334 2020-05-18 15:47:26Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -346,7 +346,6 @@ static int pic_update_irq(PPDMDEVINS pDevIns, PDEVPIC pThis, PDEVPICCC pThisCC)
  * Set the an IRQ.
  *
  * @param   pDevIns         Device instance of the PICs.
- * @param   pDevIns
  * @param   iIrq            IRQ number to set.
  * @param   iLevel          IRQ level.
  * @param   uTagSrc         The IRQ tag and source ID (for tracing).

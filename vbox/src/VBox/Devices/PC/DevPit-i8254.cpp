@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 84334 2020-05-18 15:47:26Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -1111,8 +1111,7 @@ static DECLCALLBACK(int) pitR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
 /* -=-=-=-=-=- Timer -=-=-=-=-=- */
 
 /**
- * @callback_method_impl{FNTMTIMERDEV}
- * @param   pvUser          Pointer to the PIT channel state.
+ * @callback_method_impl{FNTMTIMERDEV, User argument points to the PIT channel state.}
  */
 static DECLCALLBACK(void) pitR3Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser)
 {
