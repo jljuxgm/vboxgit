@@ -1,4 +1,4 @@
-# $Id: Makefile 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile 83886 2020-04-21 11:14:20Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -94,6 +94,7 @@ SRCS += \
 	RTStrCopy.c \
 	RTStrCopyEx.c \
 	RTStrCopyP.c \
+	RTStrEnd.c \
 	strformat.c \
 	strformatnum.c \
 	strformatrt.c \

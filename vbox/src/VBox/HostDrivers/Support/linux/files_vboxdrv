@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: files_vboxdrv 83886 2020-04-21 11:14:20Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules.sh.
 #
@@ -132,6 +132,7 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrCopy.cpp=>common/string/RTStrCopy.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrCopyEx.cpp=>common/string/RTStrCopyEx.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrCopyP.cpp=>common/string/RTStrCopyP.c \
+    ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrEnd.cpp=>common/string/RTStrEnd.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrNCmp.cpp=>common/string/RTStrNCmp.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrNLen.cpp=>common/string/RTStrNLen.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/stringalloc.cpp=>common/string/stringalloc.c \

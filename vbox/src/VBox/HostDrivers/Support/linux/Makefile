@@ -1,4 +1,4 @@
-# $Id: Makefile 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile 83886 2020-04-21 11:14:20Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -92,6 +92,7 @@ VBOXMOD_OBJS = \
 	common/string/RTStrCopy.o \
 	common/string/RTStrCopyEx.o \
 	common/string/RTStrCopyP.o \
+	common/string/RTStrEnd.o \
 	common/string/RTStrNCmp.o \
 	common/string/RTStrNLen.o \
 	common/string/stringalloc.o \
