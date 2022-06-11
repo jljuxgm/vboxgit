@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIIconPool.cpp 82438 2019-12-05 19:42:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -302,6 +302,7 @@ UIIconPoolGeneral::UIIconPoolGeneral()
     m_guestOSTypeIconNames.insert("Windows10",       ":/os_win10.png");
     m_guestOSTypeIconNames.insert("Windows10_64",    ":/os_win10_64.png");
     m_guestOSTypeIconNames.insert("Windows2016_64",  ":/os_win2k16_64.png");
+    m_guestOSTypeIconNames.insert("Windows2019_64",  ":/os_win2k19_64.png");
     m_guestOSTypeIconNames.insert("WindowsNT",       ":/os_win_other.png");
     m_guestOSTypeIconNames.insert("WindowsNT_64",    ":/os_win_other_64.png");
     m_guestOSTypeIconNames.insert("OS2Warp3",        ":/os_os2warp3.png");
