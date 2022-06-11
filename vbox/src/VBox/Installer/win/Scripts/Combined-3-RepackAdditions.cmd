@@ -1,5 +1,5 @@
 @echo off
-rem $Id: Combined-3-RepackAdditions.cmd 82968 2020-02-04 10:35:17Z vboxsync $
+rem $Id: Combined-3-RepackAdditions.cmd 83007 2020-02-06 14:54:25Z vboxsync $
 rem rem @file
 rem Windows NT batch script for repacking signed amd64 and x86 drivers.
 rem
@@ -174,6 +174,14 @@ set _MY_REPACK_DIR_AMD64=%_MY_OPT_UNTAR_DIR%\win.amd64\%_MY_OPT_BUILD_TYPE%\repa
 set _MY_REPACK_DIR_X86=%_MY_OPT_UNTAR_DIR%\win.x86\%_MY_OPT_BUILD_TYPE%\repackadd
 if not exist "%_MY_REPACK_DIR_AMD64%"   goto error_amd64_repack_dir_not_found
 if not exist "%_MY_REPACK_DIR_X86%"     goto error_x86_repack_dir_not_found
+
+if not ".%_MY_OPT_SIGNED_AMD64%" == "." goto skip_set_default_amd64_signed
+set _MY_OPT_SIGNED_AMD64="%_MY_OPT_OUTDIR%/VBoxDrivers-@VBOX_VERSION_STRING@r@VBOX_SVN_REV@-amd64.cab.Signed.zip"
+:skip_set_default_amd64_signed
+
+if not ".%_MY_OPT_SIGNED_X86%" == "." goto skip_set_default_x86_signed
+set _MY_OPT_SIGNED_AMD64="%_MY_OPT_OUTDIR%/VBoxDrivers-@VBOX_VERSION_STRING@r@VBOX_SVN_REV@-x86.cab.Signed.zip"
+:skip_set_default_x86_signed
 
 if not exist "%_MY_OPT_SIGNED_AMD64%"   goto error_signed_amd64_not_found
 if not exist "%_MY_OPT_SIGNED_X86%"     goto error_signed_x86_not_found
