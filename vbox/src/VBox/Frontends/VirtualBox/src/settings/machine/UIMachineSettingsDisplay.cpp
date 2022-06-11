@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 83625 2020-04-08 17:40:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -818,11 +818,8 @@ void UIMachineSettingsDisplay::polishPage()
 #else
     m_pCheckbox3D->hide();
 #endif
-#ifdef VBOX_WITH_VIDEOHWACCEL
-    m_pCheckbox2DVideo->setEnabled(isMachineOffline() && VBox2DHelpers::isAcceleration2DVideoAvailable());
-#else
     m_pCheckbox2DVideo->hide();
-#endif
+    m_pPlaceholder2DVideo->hide();
 
     /* Polish 'Remote Display' availability: */
     m_pTabWidget->setTabEnabled(1, oldDisplayData.m_fRemoteDisplayServerSupported);
