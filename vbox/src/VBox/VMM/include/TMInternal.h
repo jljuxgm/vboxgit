@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: TMInternal.h 80117 2019-08-03 13:52:22Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -304,7 +304,11 @@ typedef struct TMCPULOADSTATE
     /** The percent of the period spent on other things. */
     uint8_t                 cPctOther;
     /** Explicit alignment padding */
-    uint8_t                 au8Alignment[5];
+    uint8_t                 au8Alignment[1];
+    /** Index into aHistory of the current entry. */
+    uint16_t volatile       idxHistory;
+    /** Number of valid history entries before idxHistory. */
+    uint16_t volatile       cHistoryEntries;
 
     /** Previous cNsTotal value. */
     uint64_t                cNsPrevTotal;
@@ -312,6 +316,15 @@ typedef struct TMCPULOADSTATE
     uint64_t                cNsPrevExecuting;
     /** Previous cNsHalted value. */
     uint64_t                cNsPrevHalted;
+    /** Data for the last 30 min (given an interval of 1 second). */
+    struct
+    {
+        uint8_t             cPctExecuting;
+        /** The percent of the period spent halted. */
+        uint8_t             cPctHalted;
+        /** The percent of the period spent on other things. */
+        uint8_t             cPctOther;
+    }                       aHistory[30*60];
 } TMCPULOADSTATE;
 AssertCompileSizeAlignment(TMCPULOADSTATE, 8);
 AssertCompileMemberAlignment(TMCPULOADSTATE, cNsPrevTotal, 8);
