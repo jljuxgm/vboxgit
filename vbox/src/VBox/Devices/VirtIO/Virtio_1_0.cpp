@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 81122 2019-10-07 08:54:00Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 81123 2019-10-07 09:17:09Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -1223,7 +1223,7 @@ int   virtioConstruct(PPDMDEVINS             pDevIns,
         if (RT_FAILURE(rc))
         {
             /* See PDMDevHlp.cpp:pdmR3DevHlp_PCIRegisterMsi */
-            Log(("Failed to configure MSI-X (%Rrc). Reverting to INTx\n"));
+            Log(("Failed to configure MSI-X (%Rrc). Reverting to INTx\n", rc));
             pVirtio->fMsiSupport = false;
         }
         else
