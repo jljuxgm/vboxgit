@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 82098 2019-11-22 08:27:57Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 82099 2019-11-22 08:40:35Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -1815,17 +1815,17 @@ typedef struct
 
 typedef struct
 {
-    DWORD 	biSize;
-    LONG  	biWidth;
-    LONG  	biHeight;
-    WORD 	biPlanes;
-    WORD 	biBitCount;
-    DWORD 	biCompression;
-    DWORD 	biSizeImage;
-    LONG  	biXPelsPerMeter;
-    LONG  	biYPelsPerMeter;
-    DWORD 	biClrUsed;
-    DWORD 	biClrImportant;
+    DWORD biSize;
+    LONG  biWidth;
+    LONG  biHeight;
+    WORD  biPlanes;
+    WORD  biBitCount;
+    DWORD biCompression;
+    DWORD biSizeImage;
+    LONG  biXPelsPerMeter;
+    LONG  biYPelsPerMeter;
+    DWORD biClrUsed;
+    DWORD biClrImportant;
 } BITMAPINFOHEADER, *PBITMAPINFOHEADER, *LPBITMAPINFOHEADER;
 #pragma pack()
 #endif
