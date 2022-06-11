@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 81783 2019-11-11 22:10:09Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 81785 2019-11-12 00:17:12Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3860,6 +3860,7 @@ lsilogicR3IsaIOPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint
  *
  * @returns VBox status code.
  * @param   pThis       Pointer to the shared LsiLogic device state.
+ * @param   pThisCC     Pointer to the ring-3 LsiLogic device state.
  */
 static int lsilogicR3PrepareBiosScsiRequest(PLSILOGICSCSI pThis, PLSILOGICSCSICC pThisCC)
 {
