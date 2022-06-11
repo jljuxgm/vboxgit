@@ -1,4 +1,4 @@
-/* $Id: BIOSSettingsImpl.cpp 81425 2019-10-21 18:19:39Z vboxsync $ */
+/* $Id: BIOSSettingsImpl.cpp 81581 2019-10-30 09:45:55Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation - Machine BIOS settings.
  */
@@ -487,6 +487,33 @@ HRESULT BIOSSettings::getNonVolatileStorageFile(com::Utf8Str &aNonVolatileStorag
     return S_OK;
 }
 
+
+HRESULT BIOSSettings::getSMBIOSUuidLittleEndian(BOOL *enabled)
+{
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *enabled = m->bd->fSmbiosUuidLittleEndian;
+
+    return S_OK;
+}
+
+HRESULT BIOSSettings::setSMBIOSUuidLittleEndian(BOOL enable)
+{
+    /* the machine needs to be mutable */
+    AutoMutableStateDependency adep(m->pMachine);
+    if (FAILED(adep.rc())) return adep.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    m->bd.backup();
+    m->bd->fSmbiosUuidLittleEndian = RT_BOOL(enable);
+
+    alock.release();
+    AutoWriteLock mlock(m->pMachine COMMA_LOCKVAL_SRC_POS);  // mParent is const, needs no locking
+    m->pMachine->i_setModified(Machine::IsModified_BIOS);
+
+    return S_OK;
+}
 
 
 // IBIOSSettings methods

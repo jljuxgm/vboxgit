@@ -1,4 +1,4 @@
-/* $Id: BIOSSettingsImpl.h 81425 2019-10-21 18:19:39Z vboxsync $ */
+/* $Id: BIOSSettingsImpl.h 81581 2019-10-30 09:45:55Z vboxsync $ */
 
 /** @file
  *
@@ -84,6 +84,8 @@ private:
     HRESULT getPXEDebugEnabled(BOOL *enabled);
     HRESULT setPXEDebugEnabled(BOOL enable);
     HRESULT getNonVolatileStorageFile(com::Utf8Str &aNonVolatileStorageFile);
+    HRESULT getSMBIOSUuidLittleEndian(BOOL *enabled);
+    HRESULT setSMBIOSUuidLittleEndian(BOOL enable);
 
     struct Data;
     Data *m;

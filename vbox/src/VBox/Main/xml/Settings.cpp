@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 81427 2019-10-21 18:37:15Z vboxsync $ */
+/* $Id: Settings.cpp 81581 2019-10-30 09:45:55Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2538,6 +2538,7 @@ BIOSSettings::BIOSSettings() :
     fLogoFadeIn(true),
     fLogoFadeOut(true),
     fPXEDebugEnabled(false),
+    fSmbiosUuidLittleEndian(true),
     ulLogoDisplayTime(0),
     biosBootMenuMode(BIOSBootMenuMode_MessageAndMenu),
     apicMode(APICMode_APIC),
@@ -2555,6 +2556,7 @@ bool BIOSSettings::areDefaultSettings() const
         && fLogoFadeIn
         && fLogoFadeOut
         && !fPXEDebugEnabled
+        && !fSmbiosUuidLittleEndian
         && ulLogoDisplayTime == 0
         && biosBootMenuMode == BIOSBootMenuMode_MessageAndMenu
         && apicMode == APICMode_APIC
@@ -2571,17 +2573,18 @@ bool BIOSSettings::areDefaultSettings() const
 bool BIOSSettings::operator==(const BIOSSettings &d) const
 {
     return (this == &d)
-        || (   fACPIEnabled        == d.fACPIEnabled
-            && fIOAPICEnabled      == d.fIOAPICEnabled
-            && fLogoFadeIn         == d.fLogoFadeIn
-            && fLogoFadeOut        == d.fLogoFadeOut
-            && fPXEDebugEnabled    == d.fPXEDebugEnabled
-            && ulLogoDisplayTime   == d.ulLogoDisplayTime
-            && biosBootMenuMode    == d.biosBootMenuMode
-            && apicMode            == d.apicMode
-            && llTimeOffset        == d.llTimeOffset
-            && strLogoImagePath    == d.strLogoImagePath
-            && strNVRAMPath        == d.strNVRAMPath);
+        || (   fACPIEnabled            == d.fACPIEnabled
+            && fIOAPICEnabled          == d.fIOAPICEnabled
+            && fLogoFadeIn             == d.fLogoFadeIn
+            && fLogoFadeOut            == d.fLogoFadeOut
+            && fPXEDebugEnabled        == d.fPXEDebugEnabled
+            && fSmbiosUuidLittleEndian == d.fSmbiosUuidLittleEndian
+            && ulLogoDisplayTime       == d.ulLogoDisplayTime
+            && biosBootMenuMode        == d.biosBootMenuMode
+            && apicMode                == d.apicMode
+            && llTimeOffset            == d.llTimeOffset
+            && strLogoImagePath        == d.strLogoImagePath
+            && strNVRAMPath            == d.strNVRAMPath);
 }
 
 RecordingScreenSettings::RecordingScreenSettings(void)
@@ -4820,6 +4823,10 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
                 pelmBIOSChild->getAttributeValue("value", hw.biosSettings.llTimeOffset);
             if ((pelmBIOSChild = pelmHwChild->findChildElement("NVRAM")))
                 pelmBIOSChild->getAttributeValue("path", hw.biosSettings.strNVRAMPath);
+            if ((pelmBIOSChild = pelmHwChild->findChildElement("SmbiosUuidLittleEndian")))
+                pelmBIOSChild->getAttributeValue("enabled", hw.biosSettings.fSmbiosUuidLittleEndian);
+            else
+                hw.biosSettings.fSmbiosUuidLittleEndian = false; /* Default for existing VMs. */
 
             // legacy BIOS/IDEController (pre 1.7)
             if (    (m->sv < SettingsVersion_v1_7)
@@ -6292,6 +6299,8 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
             pelmBIOS->createChild("PXEDebug")->setAttribute("enabled", hw.biosSettings.fPXEDebugEnabled);
         if (!hw.biosSettings.strNVRAMPath.isEmpty())
             pelmBIOS->createChild("NVRAM")->setAttribute("path", hw.biosSettings.strNVRAMPath);
+        if (hw.biosSettings.fSmbiosUuidLittleEndian)
+            pelmBIOS->createChild("SmbiosUuidLittleEndian")->setAttribute("enabled", hw.biosSettings.fSmbiosUuidLittleEndian);
     }
 
     if (m->sv < SettingsVersion_v1_9)
