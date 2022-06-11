@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 80141 2019-08-05 20:06:05Z vboxsync $ */
+/* $Id: TM.cpp 80142 2019-08-05 20:06:30Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -3798,7 +3798,7 @@ static DECLCALLBACK(void) tmR3InfoCpuLoad(PVM pVM, PCDBGFINFOHLP pHlp, const cha
             szTmp[offTmp] = '\0';
             pHlp->pfnPrintf(pHlp, "%2ds: %s\n", cPeriods, szTmp);
         }
-        pHlp->pfnPrintf(pHlp, "  (#=guest, 0=VMM overhead)\n");
+        pHlp->pfnPrintf(pHlp, "  (#=guest, O=VMM overhead)\n");
 
     }
     else
