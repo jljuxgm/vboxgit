@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 81719 2019-11-06 20:22:44Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 81728 2019-11-06 21:06:57Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -3069,7 +3069,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_ThreadCreate(PPDMDEVINS pDevIns, PPPDMTHREA
 /** @interface_method_impl{PDMDEVHLPR3,pfnThreadDestroy} */
 static DECLCALLBACK(int) pdmR3DevHlp_ThreadDestroy(PPDMDEVINS pDevIns, PPDMTHREAD pThread, int *pRcThread)
 {
-    PDMDEV_ASSERT_DEVINS(pDevIns);
+    PDMDEV_ASSERT_DEVINS(pDevIns); RT_NOREF(pDevIns);
     VM_ASSERT_EMT(pDevIns->Internal.s.pVMR3);
     LogFlow(("pdmR3DevHlp_ThreadDestroy: caller='%s'/%d: pThread=%p pRcThread=%p\n", pDevIns->pReg->szName, pDevIns->iInstance, pThread, pRcThread));
 
