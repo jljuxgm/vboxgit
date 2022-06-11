@@ -1,4 +1,4 @@
-/* $Id: RTSystemFirmware-linux.cpp 81065 2019-09-28 00:12:32Z vboxsync $ */
+/* $Id: RTSystemFirmware-linux.cpp 81068 2019-09-28 06:48:03Z vboxsync $ */
 /** @file
  * IPRT - System firmware information, linux.
  */
@@ -107,8 +107,10 @@ RTDECL(int) RTSystemFirmwareQueryValue(RTSYSFWPROP enmProp, PRTSYSFWVALUE pValue
                 pValue->u.fVal = cbRead > 1 && abBuf[cbRead - 1] != 0;
                 RTFileClose(hFile);
             }
-            else if (rc == VERR_PERMISSION_DENIED)
+            else if (rc == VERR_FILE_NOT_FOUND || rc == VERR_PATH_NOT_FOUND)
                 rc = VINF_SUCCESS;
+            else if (rc == VERR_PERMISSION_DENIED)
+                rc = VERR_NOT_SUPPORTED;
             break;
         }
 
