@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.cpp 80669 2019-09-09 11:46:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class implementation.
  */
@@ -346,10 +346,10 @@ void UIGlobalSettingsLanguage::prepare()
             m_pLanguageTree->hideColumn(2);
             m_pLanguageTree->hideColumn(3);
             m_pLanguageTree->setMinimumHeight(150);
-            connect(m_pLanguageTree, SIGNAL(painted(QTreeWidgetItem *, QPainter *)),
-                    this, SLOT(sltHandleItemPainting(QTreeWidgetItem *, QPainter *)));
-            connect(m_pLanguageTree, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)),
-                    this, SLOT(sltHandleCurrentItemChange(QTreeWidgetItem *)));
+            connect(m_pLanguageTree, &QITreeWidget::painted,
+                    this, &UIGlobalSettingsLanguage::sltHandleItemPainting);
+            connect(m_pLanguageTree, &QITreeWidget::currentItemChanged,
+                    this, &UIGlobalSettingsLanguage::sltHandleCurrentItemChange);
         }
 
         /* Rich-text label created in the .ui file. */

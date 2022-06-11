@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.cpp 80669 2019-09-09 11:46:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class implementation.
  */
@@ -208,8 +208,9 @@ void UIGlobalSettingsUpdate::prepare()
     AssertPtrReturnVoid(m_pComboBoxUpdatePeriod);
     {
         /* Configure widgets: */
-        connect(m_pCheckBoxUpdate, SIGNAL(toggled(bool)), this, SLOT(sltHandleUpdateToggle(bool)));
-        connect(m_pComboBoxUpdatePeriod, SIGNAL(activated(int)), this, SLOT(sltHandleUpdatePeriodChange()));
+        connect(m_pCheckBoxUpdate, &QCheckBox::toggled, this, &UIGlobalSettingsUpdate::sltHandleUpdateToggle);
+        connect(m_pComboBoxUpdatePeriod, static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
+                this, &UIGlobalSettingsUpdate::sltHandleUpdatePeriodChange);
     }
 
     /* Apply language settings: */
@@ -259,4 +260,3 @@ bool UIGlobalSettingsUpdate::saveUpdateData()
     /* Return result: */
     return fSuccess;
 }
-

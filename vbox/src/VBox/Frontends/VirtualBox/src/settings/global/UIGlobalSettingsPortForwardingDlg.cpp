@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 80669 2019-09-09 11:46:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsPortForwardingDlg class implementation.
  */
@@ -55,8 +55,8 @@ UIGlobalSettingsPortForwardingDlg::UIGlobalSettingsPortForwardingDlg(QWidget *pP
         m_pButtonBox = new QIDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal);
         {
             /* Configure button-box: */
-            connect(m_pButtonBox->button(QDialogButtonBox::Ok), SIGNAL(clicked()), this, SLOT(accept()));
-            connect(m_pButtonBox->button(QDialogButtonBox::Cancel), SIGNAL(clicked()), this, SLOT(reject()));
+            connect(m_pButtonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &UIGlobalSettingsPortForwardingDlg::accept);
+            connect(m_pButtonBox->button(QDialogButtonBox::Cancel), &QPushButton::clicked, this, &UIGlobalSettingsPortForwardingDlg::reject);
         }
         /* Add widgets into layout: */
         pMainLayout->addWidget(m_pTabWidget);
@@ -108,4 +108,3 @@ void UIGlobalSettingsPortForwardingDlg::retranslateUi()
     m_pTabWidget->setTabText(0, tr("IPv4"));
     m_pTabWidget->setTabText(1, tr("IPv6"));
 }
-
