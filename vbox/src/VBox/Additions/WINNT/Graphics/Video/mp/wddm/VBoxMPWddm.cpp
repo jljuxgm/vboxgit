@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 77343 2019-02-18 09:10:21Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 79746 2019-07-12 22:03:17Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -4449,8 +4449,7 @@ DxgkDdiSetPointerPosition(
         pPointerAttributes->Enable |= VBOX_MOUSE_POINTER_VISIBLE;
         if (!fScreenVisState)
         {
-            fVisStateChanged = !!pGlobalPointerInfo->cVisible;
-            ++pGlobalPointerInfo->cVisible;
+            fVisStateChanged = TRUE;
         }
     }
     else
@@ -4458,8 +4457,7 @@ DxgkDdiSetPointerPosition(
         pPointerAttributes->Enable &= ~VBOX_MOUSE_POINTER_VISIBLE;
         if (fScreenVisState)
         {
-            --pGlobalPointerInfo->cVisible;
-            fVisStateChanged = !!pGlobalPointerInfo->cVisible;
+            fVisStateChanged = TRUE;
         }
     }
 
