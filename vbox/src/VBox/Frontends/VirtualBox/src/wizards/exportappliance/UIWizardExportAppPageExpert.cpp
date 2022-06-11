@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 78993 2019-06-05 13:02:13Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 79006 2019-06-05 16:20:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -627,6 +627,7 @@ void UIWizardExportAppPageExpert::sltVMSelectionChangeHandler()
 {
     /* Refresh required settings: */
     refreshFileSelectorName();
+    populateFormProperties();
 
     /* Check whether there was cloud target selected: */
     const bool fIsFormatCloudOne = field("isFormatCloudOne").toBool();
