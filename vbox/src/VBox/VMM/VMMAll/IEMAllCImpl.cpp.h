@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 80618 2019-09-06 08:36:16Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 81091 2019-10-01 04:35:35Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5776,7 +5776,7 @@ IEM_CIMPL_DEF_4(iemCImpl_load_CrX, uint8_t, iCrReg, uint64_t, uNewCrX, IEMACCESS
                 return iemRaiseGeneralProtectionFault0(pVCpu);
             }
 
-            bool const fPcide    = ((uNewCrX ^ uOldCrX) & X86_CR4_PCIDE) && (uNewCrX & X86_CR4_PCIDE);
+            bool const fPcide    = !(uOldCrX & X86_CR4_PCIDE) && (uNewCrX & X86_CR4_PCIDE);
             bool const fLongMode = CPUMIsGuestInLongModeEx(IEM_GET_CTX(pVCpu));
 
             /* PCIDE check. */
