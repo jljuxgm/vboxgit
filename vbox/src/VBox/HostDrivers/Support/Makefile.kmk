@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82590 2019-12-16 17:48:40Z vboxsync $
+# $Id: Makefile.kmk 82741 2020-01-14 15:41:36Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -140,6 +140,8 @@ endif
 		$(call VBOX_SUP_GEN_CERT_MACRO,Timestamp,TimeRoot%) \
 		$(call VBOX_SUP_GEN_CERT_MACRO,AppleRoot,AppleRoot%) \
 		$(call VBOX_SUP_GEN_CERT_MACRO,Trusted,TrustedCert%,build)
+
+OTHER_CLEAN += $(VBOX_SUP_WIN_CERTS_FILE)
 
 tst: $(VBOX_SUP_WIN_CERTS_FILE)
 
