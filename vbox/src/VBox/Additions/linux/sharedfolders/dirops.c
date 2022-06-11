@@ -1,4 +1,4 @@
-/* $Id: dirops.c 78135 2019-04-16 01:18:25Z vboxsync $ */
+/* $Id: dirops.c 80393 2019-08-23 11:59:18Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
@@ -803,6 +803,9 @@ static int vbsf_create_worker(struct inode *parent, struct dentry *dentry, umode
     PSHFLSTRING             path;
     int                     rc;
 
+    if (pfCreated)
+       *pfCreated = false;
+
     AssertReturn(sf_parent_i, -EINVAL);
     AssertReturn(pSuperInfo, -EINVAL);
 
@@ -861,6 +864,8 @@ static int vbsf_create_worker(struct inode *parent, struct dentry *dentry, umode
                             sf_new_i->handle = pReq->Create.CreateParms.Handle;
                             pReq->Create.CreateParms.Handle = SHFL_HANDLE_NIL;
                         }
+                        if (pfCreated)
+                            *pfCreated = pReq->Create.CreateParms.Result == SHFL_FILE_CREATED;
                         if (fDoLookup)
                             vbsf_d_add_inode(dentry, pNewInode);
                         path = NULL;
