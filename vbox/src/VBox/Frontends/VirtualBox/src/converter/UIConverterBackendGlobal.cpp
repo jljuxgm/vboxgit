@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 78513 2019-05-14 15:31:04Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 78522 2019-05-14 17:37:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -391,6 +391,38 @@ template<> StorageSlot fromString<StorageSlot>(const QString &strStorageSlot)
         case 8:
         {
             KStorageBus bus = KStorageBus_USB;
+            int iMaxPort = vboxGlobal().virtualBox().GetSystemProperties().GetMaxPortCountForStorageBus(bus);
+            LONG iPort = regExp.cap(1).toInt();
+            LONG iDevice = 0;
+            if (iPort < 0 || iPort > iMaxPort)
+            {
+                AssertMsgFailed(("No storage slot for text='%s'", strStorageSlot.toUtf8().constData()));
+                break;
+            }
+            result.bus = bus;
+            result.port = iPort;
+            result.device = iDevice;
+            break;
+        }
+        case 9:
+        {
+            KStorageBus bus = KStorageBus_PCIe;
+            int iMaxPort = vboxGlobal().virtualBox().GetSystemProperties().GetMaxPortCountForStorageBus(bus);
+            LONG iPort = regExp.cap(1).toInt();
+            LONG iDevice = 0;
+            if (iPort < 0 || iPort > iMaxPort)
+            {
+                AssertMsgFailed(("No storage slot for text='%s'", strStorageSlot.toUtf8().constData()));
+                break;
+            }
+            result.bus = bus;
+            result.port = iPort;
+            result.device = iDevice;
+            break;
+        }
+        case 10:
+        {
+            KStorageBus bus = KStorageBus_VirtioSCSI;
             int iMaxPort = vboxGlobal().virtualBox().GetSystemProperties().GetMaxPortCountForStorageBus(bus);
             LONG iPort = regExp.cap(1).toInt();
             LONG iDevice = 0;
