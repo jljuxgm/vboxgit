@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: NetworkServiceRunner.h 79644 2019-07-09 14:01:06Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server.
  */
@@ -21,41 +21,50 @@
 # pragma once
 #endif
 
-#include <iprt/err.h>
-#include <iprt/types.h>
-#include <iprt/string.h>
-#include <iprt/mem.h>
 #include <VBox/com/string.h>
 
-#include <string>
 
+/** @name Internal networking trunk type option values (NetworkServiceRunner::kpszKeyTrunkType)
+ *  @{ */
 #define TRUNKTYPE_WHATEVER "whatever"
 #define TRUNKTYPE_NETFLT   "netflt"
 #define TRUNKTYPE_NETADP   "netadp"
 #define TRUNKTYPE_SRVNAT   "srvnat"
+/** @} */
 
+/**
+ * Network service runner.
+ *
+ * Build arguments, starts and stops network service processes.
+ */
 class NetworkServiceRunner
 {
 public:
     NetworkServiceRunner(const char *aProcName);
     virtual ~NetworkServiceRunner();
 
-    int setOption(const std::string& key, const std::string& val);
-    void clearOptions();
+    /** @name Argument management
+     * @{ */
+    int  addArgument(const char *pszArgument);
+    int  addArgPair(const char *pszOption, const char *pszValue);
+    void resetArguments();
+    /** @} */
 
-    int  start(bool aKillProcOnStop);
+    int  start(bool aKillProcessOnStop);
     int  stop();
     bool isRunning();
     void detachFromServer();
 
-    static const std::string kNsrKeyName;
-    static const std::string kNsrKeyNetwork;
-    static const std::string kNsrKeyTrunkType;
-    static const std::string kNsrTrunkName;
-    static const std::string kNsrMacAddress;
-    static const std::string kNsrIpAddress;
-    static const std::string kNsrIpNetmask;
-    static const std::string kNsrKeyNeedMain;
+    /** @name Common options
+     * @{ */
+    static const char * const kpszKeyNetwork;
+    static const char * const kpszKeyTrunkType;
+    static const char * const kpszTrunkName;
+    static const char * const kpszMacAddress;
+    static const char * const kpszIpAddress;
+    static const char * const kpszIpNetmask;
+    static const char * const kpszKeyNeedMain;
+    /** @} */
 
 private:
     struct Data;

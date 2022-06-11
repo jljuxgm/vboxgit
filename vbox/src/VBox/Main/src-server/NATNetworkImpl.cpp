@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 77436 2019-02-22 17:40:00Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 79644 2019-07-09 14:01:06Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -759,10 +759,10 @@ HRESULT  NATNetwork::start(const com::Utf8Str &aTrunkType)
     if (!m->s.fEnabled) return S_OK;
     AssertReturn(!m->s.strNetworkName.isEmpty(), E_FAIL);
 
-    m->NATRunner.setOption(NetworkServiceRunner::kNsrKeyNetwork, Utf8Str(m->s.strNetworkName).c_str());
-    m->NATRunner.setOption(NetworkServiceRunner::kNsrKeyTrunkType, Utf8Str(aTrunkType).c_str());
-    m->NATRunner.setOption(NetworkServiceRunner::kNsrIpAddress, Utf8Str(m->IPv4Gateway).c_str());
-    m->NATRunner.setOption(NetworkServiceRunner::kNsrIpNetmask, Utf8Str(m->IPv4NetworkMask).c_str());
+    m->NATRunner.addArgPair(NetworkServiceRunner::kpszKeyNetwork, Utf8Str(m->s.strNetworkName).c_str());
+    m->NATRunner.addArgPair(NetworkServiceRunner::kpszKeyTrunkType, Utf8Str(aTrunkType).c_str());
+    m->NATRunner.addArgPair(NetworkServiceRunner::kpszIpAddress, Utf8Str(m->IPv4Gateway).c_str());
+    m->NATRunner.addArgPair(NetworkServiceRunner::kpszIpNetmask, Utf8Str(m->IPv4NetworkMask).c_str());
 
     /* No portforwarding rules from command-line, all will be fetched via API */
 
