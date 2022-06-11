@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 84153 2020-05-05 20:00:32Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 84265 2020-05-11 18:21:29Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2590,8 +2590,8 @@ HRESULT Appliance::i_readManifestFile(TaskOVF *pTask, RTVFSIOSTREAM hVfsIosMf, c
     vrc = RTManifestReadStandardEx(m->hTheirManifest, hVfsIos, szErr, sizeof(szErr));
     RTVfsIoStrmRelease(hVfsIos);
     if (RT_FAILURE(vrc))
-        throw setErrorVrc(vrc, tr("Failed to parse manifest file '%s' for '%s' (%Rrc): %s"),
-                          pszSubFileNm, pTask->locInfo.strPath.c_str(), vrc, szErr);
+        return setErrorVrc(vrc, tr("Failed to parse manifest file '%s' for '%s' (%Rrc): %s"),
+                           pszSubFileNm, pTask->locInfo.strPath.c_str(), vrc, szErr);
 
     /*
      * Check which digest files are used.
