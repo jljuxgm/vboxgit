@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 79602 2019-07-08 17:00:21Z vboxsync $
+# $Id: storagecfg.py 79603 2019-07-08 17:02:31Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79602 $"
+__version__ = "$Revision: 79603 $"
 
 # Standard Python imports.
 import os;
@@ -460,7 +460,8 @@ class StorageCfg(object):
             oStorOs = StorageConfigOsSolaris();
         elif oDiskCfg.getTargetOs() == 'linux':
             oStorOs = StorageConfigOsLinux(); # pylint: disable=redefined-variable-type
-        elif not oDiskCfg.isCfgStaticDir(): # For unknown hosts we only allow a static testing directory we don't care about setting up.
+        elif not oDiskCfg.isCfgStaticDir():
+             # For unknown hosts only allow a static testing directory we don't care about setting up
             fRc = False;
 
         if fRc:
@@ -472,8 +473,8 @@ class StorageCfg(object):
                 for sDisk in oDiskCfg.getDisks():
                     self.lstDisks.append(StorageDisk(sDisk));
             elif oDiskCfg.isCfgStaticDir():
-            	if not os.path.exists(oDiskCfg.getDisks()):
-            		self.oExec.mkDir(oDiskCfg.getDisks(), 0o700);
+                if not os.path.exists(oDiskCfg.getDisks()):
+                    self.oExec.mkDir(oDiskCfg.getDisks(), 0o700);
 
     def __del__(self):
         self.cleanup();
