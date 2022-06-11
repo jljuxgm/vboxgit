@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 83526 2020-04-03 13:24:55Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 83643 2020-04-09 09:43:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -56,6 +56,7 @@
 #include "CBooleanFormValue.h"
 #include "CChoiceFormValue.h"
 #include "CCloudClient.h"
+#include "CCloudMachine.h"
 #include "CCloudProfile.h"
 #include "CCloudProvider.h"
 #include "CCloudProviderManager.h"
@@ -1765,6 +1766,20 @@ void UIMessageCenter::cannotAcquireCloudClientParameter(const CProgress &comProg
 {
     error(pParent, MessageType_Error,
           tr("Failed to acquire cloud client parameter."),
+          UIErrorString::formatErrorInfo(comProgress));
+}
+
+void UIMessageCenter::cannotAcquireCloudMachineParameter(const CCloudMachine &comMachine, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to acquire cloud machine parameter."),
+          UIErrorString::formatErrorInfo(comMachine));
+}
+
+void UIMessageCenter::cannotAcquireCloudMachineParameter(const CProgress &comProgress, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to acquire cloud machine parameter."),
           UIErrorString::formatErrorInfo(comProgress));
 }
 
