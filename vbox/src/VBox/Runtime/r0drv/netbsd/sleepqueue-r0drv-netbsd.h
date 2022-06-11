@@ -1,4 +1,4 @@
-/* $Id: sleepqueue-r0drv-netbsd.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: sleepqueue-r0drv-netbsd.h 83614 2020-04-07 21:31:08Z vboxsync $ */
 /** @file
  * IPRT - NetBSD Ring-0 Driver Helpers for Abstracting Sleep Queues,
  */
@@ -37,7 +37,7 @@
 #include <iprt/time.h>
 
 static syncobj_t vbox_syncobj = {
-        SOBJ_SLEEPQ_FIFO,
+        SOBJ_SLEEPQ_SORTED,
         sleepq_unsleep,
         sleepq_changepri,
         sleepq_lendpri,
@@ -45,7 +45,7 @@ static syncobj_t vbox_syncobj = {
 };
 
 /**
- * Kernel mode Linux wait state structure.
+ * Kernel mode NetBSD wait state structure.
  */
 typedef struct RTR0SEMBSDSLEEP
 {
