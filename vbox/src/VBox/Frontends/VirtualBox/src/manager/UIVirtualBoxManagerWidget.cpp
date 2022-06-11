@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 83024 2020-02-07 17:31:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -703,6 +703,15 @@ void UIVirtualBoxManagerWidget::recacheCurrentItemInformation(bool fDontRaiseErr
     UIVirtualMachineItem *pItem = currentItem();
     const bool fCurrentItemIsOk = pItem && pItem->accessible();
 
+    /* Update machine tools restrictions: */
+    QList<UIToolType> retrictedTypes;
+    if (pItem->itemType() != UIVirtualMachineItem::ItemType_Local)
+    {
+        retrictedTypes << UIToolType_Snapshots << UIToolType_Logs;
+        if (retrictedTypes.contains(m_pPaneTools->toolsType()))
+            m_pPaneTools->setToolsType(UIToolType_Details);
+    }
+    m_pPaneTools->setRestrictedToolTypes(retrictedTypes);
     /* Update machine tools availability: */
     m_pPaneTools->setToolsEnabled(UIToolClass_Machine, fCurrentItemIsOk);
 
