@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 78991 2019-06-05 11:50:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -52,7 +52,7 @@ protected:
     ExportAppliancePointer applianceWidget() const { return m_pApplianceWidget; }
 
     /** Holds the appliance widget reference. */
-    UIApplianceExportEditorWidget *m_pApplianceWidget;
+    ExportAppliancePointer  m_pApplianceWidget;
 };
 
 
