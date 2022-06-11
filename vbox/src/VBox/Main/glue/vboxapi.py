@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: vboxapi.py 79139 2019-06-14 01:00:56Z vboxsync $
 """
 VirtualBox Python API Glue.
 """
@@ -25,7 +25,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 79139 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -1222,6 +1222,12 @@ class VirtualBoxManager(object):
                     oValue = getattr(self.statuses, sKey)
                     if type(oValue) is int:
                         dErrorValToName[oValue] = sKey
+            # Always prefer the COM names (see aliasing in platform specific code):
+            for sKey in ('S_OK', 'E_FAIL', 'E_ABORT', 'E_POINTER', 'E_NOINTERFACE', 'E_INVALIDARG',
+                         'E_OUTOFMEMORY', 'E_NOTIMPL', 'E_UNEXPECTED',):
+                oValue = getattr(self.statuses, sKey, None)
+                if oValue is not None:
+                    dErrorValToName[oValue] = sKey
             self._dErrorValToName = dErrorValToName
 
         # Do the lookup, falling back on formatting the status number.
