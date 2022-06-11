@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 81973 2019-11-19 05:43:11Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 81974 2019-11-19 05:46:39Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -573,7 +573,6 @@ int virtioCoreR3DescChainGet(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint16_t i
     AssertReturn(ppDescChain, VERR_INVALID_PARAMETER);
 
     Assert(idxQueue < RT_ELEMENTS(pVirtio->virtqState));
-    PVIRTQSTATE pVirtq  = &pVirtio->virtqState[idxQueue];
 
     PVIRTIOSGSEG paSegsIn = (PVIRTIOSGSEG)RTMemAlloc(VIRTQ_MAX_SIZE * sizeof(VIRTIOSGSEG));
     AssertReturn(paSegsIn, VERR_NO_MEMORY);
