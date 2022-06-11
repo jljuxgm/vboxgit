@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 79975 2019-07-25 09:39:39Z vboxsync $ */
+/* $Id: IEMAll.cpp 79993 2019-07-26 09:03:41Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -15889,7 +15889,6 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecVmxVmexitApicAccess(PVMCPU pVCpu, PCVMXVEXITIN
 {
     Assert(pExitInfo);
     Assert(pExitEventInfo);
-    Assert(pExitInfo->uReason == VMX_EXIT_APIC_ACCESS);
     VBOXSTRICTRC rcStrict = iemVmxVmexitApicAccessWithInfo(pVCpu, pExitInfo, pExitEventInfo);
     Assert(!pVCpu->iem.s.cActiveMappings);
     return iemExecStatusCodeFiddling(pVCpu, rcStrict);
