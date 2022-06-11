@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GuestFileImpl.h 84054 2020-04-28 16:05:00Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling implementation.
  */
@@ -60,7 +60,6 @@ public:
      * @{ */
     int             i_closeFile(int *pGuestRc);
     EventSource    *i_getEventSource(void) { return mEventSource; }
-    static const char *i_guestVrcToString(int guestRc);
     static Utf8Str  i_guestErrorToString(int guestRc);
     int             i_onFileNotify(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCbData);
     int             i_onGuestDisconnected(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCbData);

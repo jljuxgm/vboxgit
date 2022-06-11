@@ -1,4 +1,4 @@
-/* $Id: bldprog-strtab-template.cpp.h 83778 2020-04-17 22:18:48Z vboxsync $ */
+/* $Id: bldprog-strtab-template.cpp.h 84054 2020-04-28 16:05:00Z vboxsync $ */
 /** @file
  * IPRT - Build Program - String Table Generator.
  */
@@ -413,6 +413,34 @@ static void BldProgStrTab_AddString(PBLDPROGSTRTAB pThis, PBLDPROGSTRING pStr)
     else
         abort();
 #else
+    bldProgStrTab_AddStringToHashTab(pThis, pStr);
+#endif
+}
+
+
+/**
+ * Adds a string to the string table.
+ *
+ * @param   pThis   The strint table compiler instance.
+ * @param   pStr    The string entry.
+ * @param   psz     The string, will be duplicated if compression is enabled.
+ */
+DECLINLINE(void) BldProgStrTab_AddStringDup(PBLDPROGSTRTAB pThis, PBLDPROGSTRING pStr, const char *psz)
+{
+#ifdef BLDPROG_STRTAB_WITH_COMPRESSION
+    pStr->pszString = strdup(psz);
+    if (pStr->pszString)
+    {
+        bldProgStrTab_compressorAnalyzeString(pThis, pStr);
+        if (pThis->cPendingStrings < pThis->cMaxPendingStrings)
+            pThis->papPendingStrings[pThis->cPendingStrings++] = pStr;
+        else
+            abort();
+    }
+    else
+        abort();
+#else
+    pStr->pszString = (char *)psz;
     bldProgStrTab_AddStringToHashTab(pThis, pStr);
 #endif
 }

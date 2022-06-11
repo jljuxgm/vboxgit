@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 82990 2020-02-05 11:43:13Z vboxsync $ */
+/* $Id: VM.cpp 84054 2020-04-28 16:05:00Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -309,7 +309,10 @@ VMMR3DECL(int)   VMR3Create(uint32_t cCpus, PCVMM2USERMETHODS pVmm2UserMethods,
 
                 default:
                     if (VMR3GetErrorCount(pUVM) == 0)
-                        pszError = RTErrGetFull(rc);
+                    {
+                        pszError = (char *)alloca(1024);
+                        RTErrQueryMsgFull(rc, (char *)pszError, 1024, false /*fFailIfUnknown*/);
+                    }
                     else
                         pszError = NULL; /* already set. */
                     break;
