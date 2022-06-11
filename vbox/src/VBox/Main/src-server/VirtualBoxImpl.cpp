@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 78950 2019-06-04 07:26:56Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 79120 2019-06-13 10:08:33Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3425,7 +3425,7 @@ HRESULT VirtualBox::i_onClipboardAreaRegister(const std::vector<com::Utf8Str> &a
     {
         try
         {
-            if (m->SharedClipboard.mapClipboardAreas.size() >= m->SharedClipboard.uMaxClipboardAreas)
+            if (m->SharedClipboard.mapClipboardAreas.size() < m->SharedClipboard.uMaxClipboardAreas)
             {
                 for (unsigned uTries = 0; uTries < 32; uTries++) /* Don't try too hard. */
                 {

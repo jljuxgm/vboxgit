@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 79107 2019-06-12 13:57:04Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 79120 2019-06-13 10:08:33Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -136,14 +136,6 @@ int vboxSvcClipboardCompleteReadData(PVBOXCLIPBOARDCLIENTDATA pClientData, int r
 bool vboxSvcClipboardURIMsgIsAllowed(uint32_t uMode, uint32_t uMsg);
 int  vboxSvcClipboardURIReportMsg(PVBOXCLIPBOARDCLIENTDATA pClientData, uint32_t u32Msg, uint32_t u32Formats);
 bool vboxSvcClipboardURIReturnMsg(PVBOXCLIPBOARDCLIENTDATA pClientData, uint32_t cParms, VBOXHGCMSVCPARM paParms[]);
-bool vboxSvcClipboardURIDataHdrIsValid(PVBOXCLIPBOARDDATAHDR pDataHdr);
-bool vboxSvcClipboardURIDataChunkIsValid(PVBOXCLIPBOARDDATACHUNK pDataChunk);
-void vboxSvcClipboardURIDirDataDestroy(PVBOXCLIPBOARDDIRDATA pDirData);
-bool vboxSvcClipboardURIDirDataIsValid(PVBOXCLIPBOARDDIRDATA pDirData);
-void vboxSvcClipboardURIFileHdrDestroy(PVBOXCLIPBOARDFILEHDR pFileHdr);
-bool vboxSvcClipboardURIFileHdrIsValid(PVBOXCLIPBOARDFILEHDR pFileHdr, PVBOXCLIPBOARDDATAHDR pDataHdr);
-void vboxSvcClipboardURIFileDataDestroy(PVBOXCLIPBOARDFILEDATA pFileData);
-bool vboxSvcClipboardURIFileDataIsValid(PVBOXCLIPBOARDFILEDATA pFileData, PVBOXCLIPBOARDDATAHDR pDataHdr);
 # endif /* VBOX_WITH_SHARED_CLIPBOARD_URI_LIST */
 
 /*

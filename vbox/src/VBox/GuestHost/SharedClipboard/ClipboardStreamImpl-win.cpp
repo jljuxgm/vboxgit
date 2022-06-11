@@ -1,4 +1,4 @@
-/* $Id: ClipboardStreamImpl-win.cpp 79027 2019-06-06 14:47:16Z vboxsync $ */
+/* $Id: ClipboardStreamImpl-win.cpp 79120 2019-06-13 10:08:33Z vboxsync $ */
 /** @file
  * ClipboardStreamImpl-win.cpp - Shared Clipboard IStream object implementation (guest and host side).
  */
@@ -196,6 +196,8 @@ STDMETHODIMP VBoxClipboardWinStreamImpl::Read(void *pvBuffer, ULONG nBytesToRead
         rc = m_pURITransfer->pProvider->ReadFileData(&FileData, &cbRead);
         if (RT_SUCCESS(rc))
         {
+//            pObj->AddProcessed(cbRead);
+
             if (pObj->IsComplete())
                 m_pParent->OnTransferComplete();
         }
