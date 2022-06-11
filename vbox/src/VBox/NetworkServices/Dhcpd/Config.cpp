@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 79820 2019-07-16 19:57:50Z vboxsync $ */
+/* $Id: Config.cpp 79821 2019-07-16 20:03:28Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -1119,6 +1119,13 @@ optmap_t &Config::getOptionsForClient(optmap_t &a_rRetOpts, const OptParameterRe
      * Always supply the subnet:
      */
     a_rRetOpts << new OptSubnetMask(m_IPv4Netmask);
+
+    /** @todo If a_rReqOpts is not present, provide the sum of all options in
+     *        a_rConfigs like ics says it does. */
+    /** @todo Look thru a_rConfigs for forced options, maybe we do it by using
+     *        DHCP option 55, and merging these into a_rReqOpts. */
+    /** @todo Have a way to mute options, i.e. break out of the inner search
+     *        loop below. Maybe using 'Suppress' encoding? */
 
     /*
      * Try provide the requested options:
