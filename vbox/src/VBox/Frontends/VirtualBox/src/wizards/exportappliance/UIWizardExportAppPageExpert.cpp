@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 78077 2019-04-10 11:24:12Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 78988 2019-06-05 11:17:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -526,7 +526,7 @@ bool UIWizardExportAppPageExpert::isComplete() const
         fResult =    (   fOVF
                       && VBoxGlobal::hasAllowedExtension(path().toLower(), OVFFileExts))
                   || (   fCSP
-                      && !m_comCloudProfile.isNull()
+                      && m_comCloudProfile.isNotNull()
                       && !m_cloudClientParameters.isEmpty());
     }
 
@@ -567,7 +567,7 @@ void UIWizardExportAppPageExpert::sltHandleFormatComboChange()
     updateFormatComboToolTip();
 
     /* Refresh required settings: */
-    updatePageAppearance();
+    UIWizardExportAppPage2::updatePageAppearance();
     refreshFileSelectorExtension();
     refreshManifestCheckBoxAccess();
     refreshIncludeISOsCheckBoxAccess();
