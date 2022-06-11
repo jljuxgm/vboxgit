@@ -1,4 +1,4 @@
-/* $Id: file.cpp 78544 2019-05-16 11:42:29Z vboxsync $ */
+/* $Id: file.cpp 78548 2019-05-16 13:53:39Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver file routines.
  */
@@ -437,6 +437,20 @@ static NTSTATUS vbsfWriteInternal(IN PRX_CONTEXT RxContext)
         pVBoxFobx->fTimestampsImplicitlyUpdated |= VBOX_FOBX_F_INFO_LASTWRITE_TIME;
         if (pVBoxFcbx->pFobxLastWriteTime != pVBoxFobx)
             pVBoxFcbx->pFobxLastWriteTime = NULL;
+
+        /* Make sure our cached file size value is up to date: */
+        if (ctx.cbData > 0)
+        {
+            RTFOFF offEndOfWrite = LowIoContext->ParamsFor.ReadWrite.ByteOffset + ctx.cbData;
+            if (pVBoxFobx->Info.cbObject < offEndOfWrite)
+                pVBoxFobx->Info.cbObject = offEndOfWrite;
+
+            if (pVBoxFobx->Info.cbAllocated < offEndOfWrite)
+            {
+                pVBoxFobx->Info.cbAllocated = offEndOfWrite;
+                pVBoxFobx->nsUpToDate       = 0;
+            }
+        }
     }
     else
         ByteCount = 0; /* Nothing written. */

@@ -1,4 +1,4 @@
-/* $Id: path.cpp 78543 2019-05-16 11:35:40Z vboxsync $ */
+/* $Id: path.cpp 78548 2019-05-16 13:53:39Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Path related routines.
  */
@@ -560,6 +560,7 @@ NTSTATUS VBoxMRxCreate(IN OUT PRX_CONTEXT RxContext)
              some reason given enum RX_FILE_TYPE as type. */
     if (capFcb->OpenCount == 0)
     {
+        Log(("VBOXSF: MRxCreate: Initializing the FCB.\n"));
         FCB_INIT_PACKET               InitPacket;
         FILE_NETWORK_OPEN_INFORMATION Data;
         ULONG                         NumberOfLinks = 0; /** @todo ?? */
