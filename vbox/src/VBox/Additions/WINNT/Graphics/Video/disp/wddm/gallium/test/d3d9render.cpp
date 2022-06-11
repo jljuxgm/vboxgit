@@ -1,4 +1,4 @@
-/* $Id: d3d9render.cpp 79838 2019-07-17 15:36:57Z vboxsync $ */
+/* $Id: d3d9render.cpp 81977 2019-11-19 07:39:54Z vboxsync $ */
 /** @file
  * Gallium D3D testcase. Simple D3D9 tests.
  */
@@ -1134,13 +1134,13 @@ HRESULT D3D9RenderShared::DoRender(D3D9DeviceProvider *pDP)
                                       &mhRtShared));
 
         drawTexture(pDevice2, mpTexShared, 50, 50, 200, 200);
+        HTEST(pDevice2->Present(0, 0, 0, 0));
     }
     else
     {
         drawTexture(pDevice, mpRT, 50, 50, 200, 200);
+        HTEST(pDevice->Present(0, 0, 0, 0));
     }
-
-    HTEST(pDevice->Present(0, 0, 0, 0));
 
     return S_OK;
 }
