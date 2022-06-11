@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 78953 2019-06-04 08:10:48Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 78964 2019-06-04 13:06:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -55,6 +55,7 @@ public:
 protected:
 
     virtual void retranslateUi() /* override */;
+    void focusOutEvent(QFocusEvent *pEvent) /* override */;
 
 private slots:
 
