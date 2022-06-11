@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79814 2019-07-16 15:59:06Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79815 2019-07-16 17:31:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class implementation.
  */
@@ -16,6 +16,7 @@
  */
 
 /* Qt includes: */
+#include <QHeaderView>
 #include <QLabel>
 #include <QVBoxLayout>
 
@@ -89,6 +90,13 @@ UIWizardNewCloudVMPageBasic2::UIWizardNewCloudVMPageBasic2(bool fFullWizard)
         m_pFormEditor = new UIFormEditorWidget(this);
         if (m_pFormEditor)
         {
+            /* Make form-editor fit 8 sections in height by default: */
+            const int iDefaultSectionHeight = m_pFormEditor->verticalHeader()
+                                            ? m_pFormEditor->verticalHeader()->defaultSectionSize()
+                                            : 0;
+            if (iDefaultSectionHeight > 0)
+                m_pFormEditor->setMinimumHeight(8 * iDefaultSectionHeight);
+
             /* Add into layout: */
             pMainLayout->addWidget(m_pFormEditor);
         }
