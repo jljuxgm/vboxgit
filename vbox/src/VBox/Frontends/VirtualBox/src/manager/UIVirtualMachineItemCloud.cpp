@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 83065 2020-02-12 19:38:07Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 83069 2020-02-13 18:08:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -60,6 +60,8 @@ void UIVirtualMachineItemCloud::updateState(QWidget *pParent)
     QMap<QString, KMachineState> states;
     states["RUNNING"] = KMachineState_Running;
     states["STOPPED"] = KMachineState_Paused;
+    states["STOPPING"] = KMachineState_Stopping;
+    states["STARTING"] = KMachineState_Starting;
     m_enmMachineState = states.value(strState, KMachineState_PoweredOff);
 
     /* Recache: */
