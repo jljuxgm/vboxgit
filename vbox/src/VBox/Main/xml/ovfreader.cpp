@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: ovfreader.cpp 78602 2019-05-20 16:26:10Z vboxsync $ */
 /** @file
  * OVF reader declarations.
  *
@@ -32,6 +32,15 @@ using namespace ovf;
 // OVF reader implementation
 //
 ////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Default Constructor.
+ * Should be used if you don't have an OVF file, but want to fill the data
+ * m_mapDisks, m_llVirtualSystems manually
+ */
+OVFReader::OVFReader()  
+{
+}
 
 /**
  * Constructor. This parses the given XML file out of the memory. Throws lots of exceptions

@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: ovfreader.h 78602 2019-05-20 16:26:10Z vboxsync $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -663,6 +663,7 @@ struct VirtualSystem
 class OVFReader
 {
 public:
+    OVFReader();
     OVFReader(const void *pvBuf, size_t cbSize, const RTCString &path);
     OVFReader(const RTCString &path);
 
