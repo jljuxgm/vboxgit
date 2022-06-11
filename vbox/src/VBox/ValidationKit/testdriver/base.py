@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 78641 2019-05-21 16:41:08Z vboxsync $
+# $Id: base.py 78973 2019-06-04 16:41:27Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78641 $"
+__version__ = "$Revision: 78973 $"
 
 
 # Standard Python imports.
@@ -742,7 +742,7 @@ class SubTestDriverBase(object):
 
     def __init__(self, sName, oTstDrv):
         self.sName              = sName;
-        self.oTstDrv            = oTstDrv; # type: TestDriverBase
+        self.oTstDrv            = oTstDrv   # type: TestDriverBase
         self.asRsrcs            = [];
 
     def showUsage(self):
@@ -855,7 +855,7 @@ class TestDriverBase(object): # pylint: disable=R0902
         self.secTimeoutFudge = 30;
 
         # List of sub-test drivers (SubTestDriverBase derivatives).
-        self.aoSubTstDrvs    = [];          # type: list(SubTestDriverBase)
+        self.aoSubTstDrvs    = [] # type: list(SubTestDriverBase)
 
         # Use the scratch path for temporary files.
         if self.sHost in ['win', 'os2']:

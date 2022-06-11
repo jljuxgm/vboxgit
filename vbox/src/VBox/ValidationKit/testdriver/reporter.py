@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 77507 2019-02-28 16:44:56Z vboxsync $
+# $Id: reporter.py 78973 2019-06-04 16:41:27Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 77507 $"
+__version__ = "$Revision: 78973 $"
 
 
 # Standard Python imports.
@@ -48,7 +48,7 @@ import traceback
 from common import utils;
 
 ## test reporter instance
-g_oReporter = None;                     # type: ReporterBase
+g_oReporter = None # type: ReporterBase
 g_sReporterName = None;
 
 
@@ -116,7 +116,7 @@ class PythonLoggingStream(object):
 
     def write(self, sText):
         """Writes python log message to our stream."""
-        if g_oReporter != None:
+        if g_oReporter is not None:
             sText = sText.rstrip("\r\n");
             #g_oReporter.log(0, 'python: %s' % (sText), utils.getCallerName(), utils.getTimePrefix());
         return True;
@@ -303,7 +303,7 @@ class ReporterBase(object):
         sFullName        = self._testGetFullName();
 
         # safe pop
-        if len(self.atTests) <= 0:
+        if not self.atTests:
             self.log(0, 'testDone on empty test stack!', sCaller, sTsPrf);
             return ('internal error', 0);
         fTimedOut = self.fTimedOut;
