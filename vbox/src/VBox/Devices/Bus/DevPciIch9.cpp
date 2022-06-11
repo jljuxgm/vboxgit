@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 82073 2019-11-21 10:57:54Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 82218 2019-11-26 11:16:13Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -979,6 +979,7 @@ static int devpciR3CommonRegisterDeviceOnBus(PPDMDEVINS pDevIns, PDEVPCIBUS pBus
     Assert(pBus == PDMINS_2_DATA(pDevIns, PDEVPCIBUS));
     pPciDev->Int.s.pfnConfigRead    = NULL;
     pPciDev->Int.s.pfnConfigWrite   = NULL;
+    pPciDev->Int.s.hMmioMsix        = NIL_IOMMMIOHANDLE;
     if (pBus->fTypePiix3 && pPciDev->cbConfig > 256)
         pPciDev->cbConfig = 256;
 
