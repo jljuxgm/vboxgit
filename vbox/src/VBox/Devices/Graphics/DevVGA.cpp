@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 82117 2019-11-22 23:31:45Z vboxsync $ */
+/* $Id: DevVGA.cpp 82178 2019-11-25 14:02:23Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -689,7 +689,6 @@ static void vga_ioport_write(PPDMDEVINS pDevIns, PVGASTATE pThis, uint32_t addr,
         pThis->msr = val & ~0x10;
         if (pThis->fRealRetrace)
             vga_update_retrace_state(pThis);
-        pThis->st00 = (pThis->st00 & ~0x10) | (0x90 >> ((val >> 2) & 0x3));
         break;
     case 0x3c4:
         pThis->sr_index = val & 7;
@@ -6069,6 +6068,7 @@ static DECLCALLBACK(void)  vgaR3Reset(PPDMDEVINS pDevIns)
     pThis->vbe_regs[VBE_DISPI_INDEX_FB_BASE_HI] = pThis->GCPhysVRAM >> 16;
     pThis->vbe_bank_max   = (pThis->vram_size >> 16) - 1;
 # endif /* CONFIG_BOCHS_VBE */
+    pThis->st00 = 0x70; /* Effectively static. */
 
     /*
      * Reset the LFB mapping.
