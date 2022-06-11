@@ -1,4 +1,4 @@
-/* $Id: msiDarwinDescriptorDecoder.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: msiDarwinDescriptorDecoder.cpp 83820 2020-04-19 01:08:36Z vboxsync $ */
 /** @file
  * msiDarwinDescriptorDecoder
  */
@@ -53,14 +53,14 @@ int wmain(int cArgs, wchar_t **papwszArgs)
                     " ->       Product=%ls\n"
                     " ->     FeatureId=%ls\n"
                     " -> ComponentCode=%ls\n"
-                    " ->  offArguments=%#x (%d)\n"
+                    " ->  offArguments=%#lx (%ld)\n"
                     , iArg, papwszArgs[iArg], wszProductCode, wszFeatureId, wszComponentCode, offArguments, offArguments);
         }
         else
         {
             fprintf(stderr,
                     "#%u: '%ls'\n"
-                    " -> error %u (%#x)\n"
+                    " -> error %lu (%#lx)\n"
                     , iArg, papwszArgs[iArg], dwErr, dwErr);
             rcExit = 1;
         }

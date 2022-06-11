@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxProxyStub.c 83820 2020-04-19 01:08:36Z vboxsync $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -2112,7 +2112,7 @@ static void vbpsRemoveOldTypeLibs(VBPSREGSTATE *pState)
          * Open the TypeLib key, if it exists.
          */
         HKEY hkeyTypeLibs;
-        LRESULT rc;
+        LSTATUS rc;
         rc = RegOpenKeyExW(pState->aAltDeletes[iAlt].hkeyClasses, L"TypeLib", 0 /*fOptions*/, pState->fSamDelete, &hkeyTypeLibs);
         if (rc == ERROR_SUCCESS)
         {
@@ -2123,7 +2123,7 @@ static void vbpsRemoveOldTypeLibs(VBPSREGSTATE *pState)
             while (iTlb-- > 0)
             {
                 HKEY hkeyTypeLibId;
-                LONG rc = RegOpenKeyExW(hkeyTypeLibs, g_apwszTypeLibIds[iTlb], 0 /*fOptions*/, pState->fSamDelete, &hkeyTypeLibId);
+                rc = RegOpenKeyExW(hkeyTypeLibs, g_apwszTypeLibIds[iTlb], 0 /*fOptions*/, pState->fSamDelete, &hkeyTypeLibId);
                 if (rc == ERROR_SUCCESS)
                 {
                     unsigned iVer = RT_ELEMENTS(g_apwszTypelibVersions);

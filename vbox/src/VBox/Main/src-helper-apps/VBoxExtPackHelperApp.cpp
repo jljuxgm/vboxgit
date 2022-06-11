@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 83820 2020-04-19 01:08:36Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1343,7 +1343,6 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, const char **p
                                 RTMsgError("MsgWaitForMultipleObjects returned: %#x (%d), err=%u", dwRc, dwRc, GetLastError());
                                 break;
                             }
-                            MSG Msg;
                             while (PeekMessageW(&Msg, NULL, 0, 0, PM_REMOVE))
                             {
                                 TranslateMessage(&Msg);
