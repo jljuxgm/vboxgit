@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 78623 2019-05-21 09:11:59Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 78648 2019-05-22 09:30:34Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */
@@ -108,7 +108,7 @@ void VBoxClipboardSvcImplFormatAnnounce(PVBOXCLIPBOARDCLIENTDATA pClientData, ui
  * @param pcbActual     Where to write the actual size of the written data
  */
 int VBoxClipboardSvcImplReadData(PVBOXCLIPBOARDCLIENTDATA pClientData, uint32_t u32Format,
-                          void *pv, uint32_t cb, uint32_t *pcbActual)
+                                 void *pv, uint32_t cb, uint32_t *pcbActual)
 {
     RT_NOREF(pClientData, u32Format, pv, cb);
     LogFlowFunc(("called, returning VINF_SUCCESS.\n"));
@@ -126,7 +126,7 @@ int VBoxClipboardSvcImplReadData(PVBOXCLIPBOARDCLIENTDATA pClientData, uint32_t 
  * @param u32Format     The format of the data written
  */
 void VBoxClipboardSvcImplWriteData(PVBOXCLIPBOARDCLIENTDATA pClientData, void *pv, uint32_t cb,
-                            uint32_t u32Format)
+                                   uint32_t u32Format)
 {
     RT_NOREF(pClientData, pv, cb, u32Format);
     LogFlowFunc(("called, returning.\n"));
