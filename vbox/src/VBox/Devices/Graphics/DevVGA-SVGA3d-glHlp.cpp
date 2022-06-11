@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-glHlp.cpp 81761 2019-11-11 14:35:38Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-glHlp.cpp 81770 2019-11-11 16:51:35Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device OpenGL backend
  */
@@ -211,9 +211,9 @@ static const GLchar RGB2YUVShaderSource[] =
     "          // Advance one pixel (+ 1/Width)\n"
     "          texCoordSrc.x += uTexInfo.z;\n"
     "          vec4 texColor1 = texture2D(sSourceTex, texCoordSrc);\n"
-    "          vec3 yuv0 = mul(texColor0.rgb, bgrCoeffs);\n"
+    "          vec3 yuv0 = texColor0.rgb * bgrCoeffs;\n"
     "          yuv0 += yuvShift;\n"
-    "          vec3 yuv1 = mul(texColor1.rgb, bgrCoeffs);\n"
+    "          vec3 yuv1 = texColor1.rgb * bgrCoeffs;\n"
     "          yuv1 += yuvShift;\n"
     "          float y0 = yuv0.r;\n"
     "          float  u = (yuv0.g + yuv1.g) / 2.0f;\n"
