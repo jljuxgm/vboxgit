@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 81352 2019-10-18 12:55:34Z vboxsync $ */
+/* $Id: clipboard-common.cpp 81444 2019-10-22 09:57:20Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -175,6 +175,21 @@ void ShClEventSourceDestroy(PSHCLEVENTSOURCE pSource)
 
     LogFlowFunc(("ID=%RU32\n", pSource->uID));
 
+    ShClEventSourceReset(pSource);
+
+    pSource->uID          = 0;
+    pSource->uEventIDNext = 0;
+}
+
+/**
+ * Resets an event source.
+ *
+ * @param   pSource             Event source to reset.
+ */
+void ShClEventSourceReset(PSHCLEVENTSOURCE pSource)
+{
+    LogFlowFunc(("ID=%RU32\n", pSource->uID));
+
     PSHCLEVENT pEvIt;
     PSHCLEVENT pEvItNext;
     RTListForEachSafe(&pSource->lstEvents, pEvIt, pEvItNext, SHCLEVENT, Node)
@@ -186,9 +201,6 @@ void ShClEventSourceDestroy(PSHCLEVENTSOURCE pSource)
         RTMemFree(pEvIt);
         pEvIt = NULL;
     }
-
-    pSource->uID          = 0;
-    pSource->uEventIDNext = 0;
 }
 
 /**
