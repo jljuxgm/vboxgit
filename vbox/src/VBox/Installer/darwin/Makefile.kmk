@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 79365 2019-06-26 15:57:32Z vboxsync $
+# $Id: Makefile.kmk 80360 2019-08-21 08:41:18Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -387,10 +387,6 @@ endif
 if defined(VBOX_WITH_VRDP) && !defined(VBOX_WITH_EXTPACK_PUEL)
  VBOX_DI_VBAPP_DYLIBS += \
 	MacOS/VBoxVRDP.dylib
-endif
-ifdef VBOX_WITH_CROGL
- VBOX_DI_VBAPP_DYLIBS += \
- 	MacOS/VBoxSharedCrOpenGL.dylib
 endif
 ifdef VBOX_WITH_DEBUGGER_GUI
  VBOX_DI_VBAPP_DYLIBS += \

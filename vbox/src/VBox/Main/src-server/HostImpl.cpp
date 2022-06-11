@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 77875 2019-03-26 08:11:25Z vboxsync $ */
+/* $Id: HostImpl.cpp 80360 2019-08-21 08:41:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -132,10 +132,6 @@ typedef SOLARISDVD *PSOLARISDVD;
 #ifdef RT_OS_DARWIN
 # include "darwin/iokit.h"
 #endif
-
-#ifdef VBOX_WITH_CROGL
-#include <VBox/VBoxOGL.h>
-#endif /* VBOX_WITH_CROGL */
 
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/string.h>

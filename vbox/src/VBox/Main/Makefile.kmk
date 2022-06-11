@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80023 2019-07-28 13:29:43Z vboxsync $
+# $Id: Makefile.kmk 80360 2019-08-21 08:41:18Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -81,12 +81,6 @@ VBOX_MAIN_DEFS += VBOX_WITH_AUDIO_VRDE
 endif
 ifdef VBOX_WITH_COPYTOGUEST
 VBOX_MAIN_DEFS += VBOX_WITH_COPYTOGUEST
-endif
-ifdef VBOX_WITH_CRHGSMI
-VBOX_MAIN_DEFS += VBOX_WITH_CRHGSMI
-endif
-ifdef VBOX_WITH_CROGL
-VBOX_MAIN_DEFS += VBOX_WITH_CROGL
 endif
 ifdef VBOX_WITH_E1000
 VBOX_MAIN_DEFS += VBOX_WITH_E1000
