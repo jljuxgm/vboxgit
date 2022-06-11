@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 78499 2019-05-14 10:33:42Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 78519 2019-05-14 17:03:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -143,7 +143,13 @@ namespace UIExtraDataDefs
         SHARED_LIBRARY_STUFF extern const char *GUI_RecentListFD;
     /** @} */
 
-    /** @name Settings: VISO Creator
+    /** @name Settings: Network
+      * @{ */
+        /** Holds the list of restricted network attachment types. */
+        SHARED_LIBRARY_STUFF extern const char *GUI_RestrictedNetworkAttachmentTypes;
+    /** @} */
+
+    /** @name VISO Creator
       * @{ */
         /** Holds recent folder for VISO creation content. */
         SHARED_LIBRARY_STUFF extern const char *GUI_VISOCreator_RecentFolder;

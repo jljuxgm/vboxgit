@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 78010 2019-04-04 07:27:13Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 78519 2019-05-14 17:03:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -75,6 +75,9 @@ const char *UIExtraDataDefs::GUI_RecentFolderFD = "GUI/RecentFolderFD";
 const char *UIExtraDataDefs::GUI_RecentListHD = "GUI/RecentListHD";
 const char *UIExtraDataDefs::GUI_RecentListCD = "GUI/RecentListCD";
 const char *UIExtraDataDefs::GUI_RecentListFD = "GUI/RecentListFD";
+
+/* Settings: Network: */
+const char *UIExtraDataDefs::GUI_RestrictedNetworkAttachmentTypes = "GUI/RestrictedNetworkAttachmentTypes";
 
 /* VISO Creator: */
 const char *UIExtraDataDefs::GUI_VISOCreator_RecentFolder   = "GUI/VISOCreator/RecentFolder";

@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerTable.cpp 78163 2019-04-17 14:04:37Z vboxsync $ */
+/* $Id: UIFileManagerTable.cpp 78519 2019-05-14 17:03:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerTable class implementation.
  */
@@ -771,7 +771,8 @@ void UIFileManagerTable::prepareObjects()
         if (pHorizontalHeader)
         {
             pHorizontalHeader->setHighlightSections(false);
-            pHorizontalHeader->setSectionResizeMode(QHeaderView::Stretch);
+            pHorizontalHeader->setSectionResizeMode(QHeaderView::ResizeToContents);
+            pHorizontalHeader->setStretchLastSection(true);
         }
 
         m_pView->setModel(m_pProxyModel);

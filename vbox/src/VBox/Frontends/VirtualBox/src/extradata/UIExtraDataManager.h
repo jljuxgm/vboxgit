@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 78010 2019-04-04 07:27:13Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 78519 2019-05-14 17:03:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -287,6 +287,12 @@ public:
         void setRecentListOfOpticalDisks(const QStringList &value);
         /** Defines the list of recently used floppy-disks as @a value. */
         void setRecentListOfFloppyDisks(const QStringList &value);
+    /** @} */
+
+    /** @name Settings: Network
+      * @{ */
+        /** Returns the list of restricted network attachment types. */
+        UIExtraDataMetaDefs::DetailsElementOptionTypeNetwork restrictedNetworkAttachmentTypes();
     /** @} */
 
     /** @name VISO Creator
