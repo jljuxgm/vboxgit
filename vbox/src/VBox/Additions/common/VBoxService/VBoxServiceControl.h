@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 84147 2020-05-05 15:34:38Z vboxsync $ */
+/* $Id: VBoxServiceControl.h 84149 2020-05-05 15:56:35Z vboxsync $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -60,7 +60,7 @@ typedef struct VBOXSERVICECTRLFILE
     /** @todo Use a map later? */
     RTLISTNODE                      Node;
     /** The file name. */
-    char                            szName[RTPATH_MAX];
+    char                           *pszName;
     /** The file handle on the guest. */
     RTFILE                          hFile;
     /** File handle to identify this file. */
