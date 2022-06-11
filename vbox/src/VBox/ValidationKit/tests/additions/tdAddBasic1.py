@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 84190 2020-05-07 18:28:27Z vboxsync $
+# $Id: tdAddBasic1.py 84224 2020-05-09 08:51:43Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84190 $"
+__version__ = "$Revision: 84224 $"
 
 # Standard Python imports.
 import os;
@@ -316,13 +316,19 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
 
             # Check the additionsVersion attribute. It must not be empty.
             reporter.testStart('IGuest::additionsVersion');
-            fRc = self.testIGuest_additionsVersion(oGuest);
+            fRc = self.testIGuest_additionsVersion(oGuest) and fRc;
             reporter.testDone();
 
             # Check Guest Additions facilities
             reporter.testStart('IGuest::getFacilityStatus');
-            fRc = self.testIGuest_getFacilityStatus(oTestVm, oGuest);
+            fRc = self.testIGuest_getFacilityStatus(oTestVm, oGuest) and fRc;
             reporter.testDone();
+
+            # Do a bit of diagnosis on error.
+            if not fRc:
+                if oTestVm.isLinux():
+                    oTxsSession.syncExec('/bin/ps', ('/bin/ps', '-a', '-u', '-x'), fIgnoreErrors = True);
+                    oTxsSession.syncExec('bin/dmesg', ('/bin/dmesg'), fIgnoreErrors = True);
 
         return (fRc, oTxsSession);
 
