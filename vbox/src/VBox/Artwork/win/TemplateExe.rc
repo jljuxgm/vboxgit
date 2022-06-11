@@ -1,4 +1,4 @@
-/* $Id: TemplateExe.rc 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: TemplateExe.rc 83053 2020-02-11 16:39:51Z vboxsync $ */
 /** @file
  * Resource file template for an executable.
  */
@@ -79,6 +79,9 @@
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 #ifdef IN_ICON_FILE
+# ifndef IDI_ICON1
+#define IDI_ICON1 1
+# endif
 IDI_ICON1 ICON IN_ICON_FILE
 #endif
 
