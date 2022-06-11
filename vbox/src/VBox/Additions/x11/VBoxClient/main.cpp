@@ -1,4 +1,4 @@
-/* $Id: main.cpp 83218 2020-03-06 10:10:00Z vboxsync $ */
+/* $Id: main.cpp 83715 2020-04-16 12:47:25Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - X11 Client.
  */
@@ -569,6 +569,14 @@ int main(int argc, char *argv[])
             }
 
             /* Services */
+
+            case VBOXCLIENT_OPT_CHECKHOSTVERSION:
+            {
+                if (g_pService)
+                    return vbclSyntaxOnlyOneService();
+                g_pService = VBClGetHostVersionService();
+                break;
+            }
 
 #ifdef VBOX_WITH_SHARED_CLIPBOARD
             case VBOXCLIENT_OPT_CLIPBOARD:
