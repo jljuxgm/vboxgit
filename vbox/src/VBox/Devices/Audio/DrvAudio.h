@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 82255 2019-11-27 23:20:26Z vboxsync $ */
+/* $Id: DrvAudio.h 82458 2019-12-06 13:14:36Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -100,7 +100,7 @@ typedef struct DRVAUDIOCFG
         bool             fEnabled;
         /** Where to store the debugging files.
          *  Defaults to VBOX_AUDIO_DEBUG_DUMP_PCM_DATA_PATH if not set. */
-        char             szPathOut[RTPATH_MAX + 1];
+        char             szPathOut[RTPATH_MAX];
     } Dbg;
 } DRVAUDIOCFG, *PDRVAUDIOCFG;
 

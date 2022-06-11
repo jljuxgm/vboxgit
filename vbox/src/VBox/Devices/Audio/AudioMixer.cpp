@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 82406 2019-12-05 00:47:02Z vboxsync $ */
+/* $Id: AudioMixer.cpp 82458 2019-12-06 13:14:36Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1444,7 +1444,7 @@ int AudioMixerSinkSetFormat(PAUDMIXSINK pSink, PPDMAUDIOPCMPROPS pPCMProps)
             char szName[64];
             RTStrPrintf(szName, sizeof(szName), "MixerSink-%s", pSink->pszName);
 
-            char szFile[RTPATH_MAX + 1];
+            char szFile[RTPATH_MAX];
             rc2 = DrvAudioHlpFileNameGet(szFile, RT_ELEMENTS(szFile), szTemp, szName,
                                          0 /* Instance */, PDMAUDIOFILETYPE_WAV, PDMAUDIOFILENAME_FLAGS_NONE);
             if (RT_SUCCESS(rc2))
