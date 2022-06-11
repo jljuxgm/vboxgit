@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 78823 2019-05-28 14:36:45Z vboxsync $ */
+/* $Id: UIMessageCenter.h 78848 2019-05-29 13:32:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -406,7 +406,6 @@ public:
     void cannotCreateAppliance(const CVirtualBox &comVBox, QWidget *pParent = 0) const;
     void cannotCreateVirtualSystemDescription(const CAppliance &comAppliance, QWidget *pParent = 0) const;
     void cannotAcquireVirtualSystemDescription(const CAppliance &comAppliance, QWidget *pParent = 0) const;
-    void cannotAcquireCloudInstanceInfo(const CCloudClient &comClient, QWidget *pParent = 0) const;
     void cannotImportAppliance(CAppliance &appliance, QWidget *pParent = 0) const;
     void cannotImportAppliance(const CProgress &progress, const QString &strPath, QWidget *pParent = 0) const;
     bool cannotCheckFiles(const CAppliance &comAppliance, QWidget *pParent = 0) const;

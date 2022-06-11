@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 78823 2019-05-28 14:36:45Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 78848 2019-05-29 13:32:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1914,12 +1914,6 @@ void UIMessageCenter::cannotAcquireVirtualSystemDescription(const CAppliance &co
 {
     error(pParent, MessageType_Critical, tr("<p>Cannot create a virtual system description.</p>"),
           UIErrorString::formatErrorInfo(comAppliance));
-}
-
-void UIMessageCenter::cannotAcquireCloudInstanceInfo(const CCloudClient &comClient, QWidget *pParent /* = 0 */) const
-{
-    error(pParent, MessageType_Critical, tr("<p>Cannot acquire a cloud instance information.</p>"),
-          UIErrorString::formatErrorInfo(comClient));
 }
 
 void UIMessageCenter::cannotImportAppliance(CAppliance &appliance, QWidget *pParent /* = 0*/) const
