@@ -1,4 +1,4 @@
-/* $Id: UnattendedImpl.cpp 79417 2019-06-28 18:32:57Z vboxsync $ */
+/* $Id: UnattendedImpl.cpp 79910 2019-07-21 12:11:37Z vboxsync $ */
 /** @file
  * Unattended class implementation
  */
@@ -1043,7 +1043,8 @@ HRESULT Unattended::prepare()
         if (mStrTimeZone.isEmpty())
         {
             int vrc = RTTimeZoneGetCurrent(szTmp, sizeof(szTmp));
-            if (RT_SUCCESS(vrc))
+            if (   RT_SUCCESS(vrc)
+                && strcmp(szTmp, "localtime") != 0 /* Typcial solaris TZ that isn't very helpful. */)
                 mStrTimeZone = szTmp;
             else
                 mStrTimeZone = "Etc/UTC";
