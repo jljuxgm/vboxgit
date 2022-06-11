@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 79353 2019-06-26 09:44:40Z vboxsync $ */
+/* $Id: CPUM.cpp 79519 2019-07-04 09:05:48Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1831,7 +1831,7 @@ void cpumR3InitVmxGuestFeaturesAndMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PVMXMSRS
     CPUMFEATURES EmuFeat;
     RT_ZERO(EmuFeat);
     EmuFeat.fVmx                      = 1;
-    EmuFeat.fVmxInsOutInfo            = 0;
+    EmuFeat.fVmxInsOutInfo            = 1;
     EmuFeat.fVmxExtIntExit            = 1;
     EmuFeat.fVmxNmiExit               = 1;
     EmuFeat.fVmxVirtNmi               = 0;
