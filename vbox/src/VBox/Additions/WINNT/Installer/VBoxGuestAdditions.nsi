@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 76953 2019-01-23 11:04:23Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 80278 2019-08-14 15:33:16Z vboxsync $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -393,13 +393,6 @@ Function HandleCommandLine
       ${Case} '/with_autologon'
         StrCpy $g_bWithAutoLogon "true"
         ${Break}
-
-!if $%VBOX_WITH_CROGL% == "1"
-      ${Case} '/with_d3d'
-      ${Case} '/with_direct3d'
-        StrCpy $g_bWithD3D "true"
-        ${Break}
-!endif
 
 !if $%VBOX_WITH_WDDM% == "1"
       ${Case} '/with_wddm'
@@ -903,9 +896,6 @@ SectionEnd
   !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
     !insertmacro MUI_DESCRIPTION_TEXT   ${SEC01} $(VBOX_COMPONENT_MAIN_DESC)
     !insertmacro MUI_DESCRIPTION_TEXT   ${SEC02} $(VBOX_COMPONENT_AUTOLOGON_DESC)
-    !if $%VBOX_WITH_CROGL% == "1"
-      !insertmacro MUI_DESCRIPTION_TEXT ${SEC03} $(VBOX_COMPONENT_D3D_DESC)
-    !endif
     !insertmacro MUI_DESCRIPTION_TEXT   ${SEC04} $(VBOX_COMPONENT_STARTMENU_DESC)
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
 !endif ; USE_MUI
@@ -1202,11 +1192,6 @@ Function .onInit
   ;
   ; Section 03
   ;
-!if $%VBOX_WITH_CROGL% == "1"
-  ${If} $g_bWithD3D == "true" ; D3D support
-    !insertmacro SelectSection ${SEC03}
-  ${EndIf}
-!endif
   ${If} $g_bWithWDDM == "true" ; D3D / WDDM support
     !insertmacro SelectSection ${SEC03}
   ${EndIf}

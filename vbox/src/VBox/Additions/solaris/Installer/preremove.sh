@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: preremove.sh 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: preremove.sh 80278 2019-08-14 15:33:16Z vboxsync $
 ## @file
 # VirtualBox preremove script for Solaris Guest Additions.
 #
@@ -63,10 +63,6 @@ fi
 # Try and restore xorg.conf!
 echo "Restoring X.Org..."
 /opt/VirtualBoxAdditions/x11restore.pl
-
-# Revert set-up of our OpenGL library.
-rm -f /lib/opengl/ogl_select/vbox_vendor_select
-/lib/svc/method/ogl-select start
 
 
 echo "Done."
