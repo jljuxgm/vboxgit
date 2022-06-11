@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 79194 2019-06-18 05:37:57Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 79202 2019-06-18 09:13:29Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -3606,7 +3606,7 @@ VMM_INT_DECL(bool) CPUMIsGuestVmxVmreadVmwriteInterceptSet(PCVMCPU pVCpu, uint32
      * is intercepted. This excludes any reserved bits in the valid parts of the field
      * encoding (i.e. bit 12).
      */
-    if (u64FieldEnc & VMX_VMCS_ENC_RSVD_MASK)
+    if (u64FieldEnc & VMX_VMCSFIELD_RSVD_MASK)
         return true;
 
     /*
