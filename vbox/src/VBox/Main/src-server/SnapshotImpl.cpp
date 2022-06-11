@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 78762 2019-05-26 04:37:50Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 78766 2019-05-26 12:18:48Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1595,7 +1595,7 @@ HRESULT SessionMachine::takeSnapshot(const com::Utf8Str &aName,
         i_setMachineState(MachineState_Snapshotting);
 
     aId = snapshotId;
-    pTask->m_pProgress.queryInterfaceTo(aProgress.asOutParam());
+    pProgress.queryInterfaceTo(aProgress.asOutParam());
 
     return rc;
 }
