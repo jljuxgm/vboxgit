@@ -1,4 +1,4 @@
-/* $Id: USBTest.cpp 81023 2019-09-26 14:52:01Z vboxsync $ */
+/* $Id: USBTest.cpp 81024 2019-09-26 14:53:00Z vboxsync $ */
 /** @file
  * VBox host drivers - USB drivers - Filter & driver installation
  */
@@ -175,7 +175,7 @@ int usbMonInsertFilter(USHORT usVendorId, USHORT usProductId, USHORT usRevision,
     USBFilterSetNumExact(&filter, USBFILTERIDX_VENDOR_ID, usVendorId, true);
     USBFilterSetNumExact(&filter, USBFILTERIDX_PRODUCT_ID, usProductId, true);
     USBFilterSetNumExact(&filter, USBFILTERIDX_DEVICE_REV, usRevision, true);
- 
+
     if (!DeviceIoControl(g_hUSBMonitor, SUPUSBFLT_IOCTL_ADD_FILTER, &filter, sizeof(filter), &flt_add, sizeof(flt_add), &cbReturned, NULL))
     {
         AssertMsgFailed(("DeviceIoControl failed with %d\n", GetLastError()));
