@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboardDialog.h 78567 2019-05-17 12:27:12Z vboxsync $ */
+/* $Id: UISoftKeyboardDialog.h 78635 2019-05-21 14:27:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboardDialog class declaration.
  */
@@ -34,6 +34,7 @@
 
 /* Forward declarations: */
 class UIActionPool;
+class UISession;
 class UISoftKeyboardDialog;
 class CGuest;
 
@@ -42,7 +43,7 @@ class UISoftKeyboardDialogFactory : public QIManagerDialogFactory
 {
 public:
 
-    UISoftKeyboardDialogFactory(UIActionPool *pActionPool = 0, const QString &strMachineName = QString());
+    UISoftKeyboardDialogFactory(UISession *pSession = 0,UIActionPool *pActionPool = 0, const QString &strMachineName = QString());
 
 protected:
 
@@ -50,6 +51,7 @@ protected:
       * @param  pCenterWidget  Passes the widget to center wrt. pCenterWidget. */
     virtual void create(QIManagerDialog *&pDialog, QWidget *pCenterWidget) /* override */;
 
+    UISession    *m_pSession;
     UIActionPool *m_pActionPool;
     QString       m_strMachineName;
 };
@@ -65,7 +67,7 @@ public:
     /** Constructs Guest Control dialog.
       * @param  pCenterWidget  Passes the widget reference to center according to.
       * @param  pActionPool    Passes the action-pool reference. */
-    UISoftKeyboardDialog(QWidget *pCenterWidget, UIActionPool *pActionPool, const QString &strMachineName = QString());
+    UISoftKeyboardDialog(QWidget *pCenterWidget, UISession *pSession, UIActionPool *pActionPool, const QString &strMachineName = QString());
 
 protected:
 
@@ -102,8 +104,9 @@ private slots:
 
 private:
 
+    UISession    *m_pSession;
     UIActionPool *m_pActionPool;
-    QString     m_strMachineName;
+    QString      m_strMachineName;
 };
 
 
