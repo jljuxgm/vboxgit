@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 81132 2019-10-07 18:41:06Z vboxsync $ */
+/* $Id: VBoxTray.cpp 81145 2019-10-08 11:35:40Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -1173,6 +1173,8 @@ static LRESULT CALLBACK vboxToolWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
                                 else if (!uMsg)
                                     LogFlowFunc(("Tracking popup menu failed with %ld\n", GetLastError()));
                             }
+
+                            DestroyMenu(hContextMenu);
                         }
                     }
                     break;
