@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 83255 2020-03-11 10:34:49Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 83277 2020-03-13 11:07:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -240,7 +240,7 @@ void UIVirtualMachineItemCloud::retranslateUi()
                     m_strMachineStateName = tr("Loading ...");
                     break;
                 case UIVirtualMachineItemCloud::FakeCloudItemState_Done:
-                    m_strMachineStateName = tr("Up-To-Date");
+                    m_strMachineStateName = tr("Empty");
                     break;
                 default:
                     break;
