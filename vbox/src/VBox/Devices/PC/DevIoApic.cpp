@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 81949 2019-11-18 16:41:06Z vboxsync $ */
+/* $Id: DevIoApic.cpp 81957 2019-11-18 18:14:58Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -1314,13 +1314,13 @@ static DECLCALLBACK(int) ioapicR3Construct(PPDMDEVINS pDevIns, int iInstance, PC
     AssertRCReturn(rc, rc);
 
     /*
-     * Register saved-state callbacks.
+     * Register the saved state.
      */
     rc = PDMDevHlpSSMRegister(pDevIns, IOAPIC_SAVED_STATE_VERSION, sizeof(*pThis), ioapicR3SaveExec, ioapicR3LoadExec);
     AssertRCReturn(rc, rc);
 
     /*
-     * Register debugger info callback.
+     * Register debugger info item.
      */
     rc = PDMDevHlpDBGFInfoRegister(pDevIns, "ioapic", "Display IO APIC state.", ioapicR3DbgInfo);
     AssertRCReturn(rc, rc);
