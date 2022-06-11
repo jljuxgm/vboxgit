@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 78050 2019-04-09 01:30:42Z vboxsync $ */
+/* $Id: dir-posix.cpp 78730 2019-05-24 13:46:38Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -158,7 +158,9 @@ RTDECL(int) RTDirRemove(const char *pszPath)
         if (rmdir(pszNativePath))
         {
             rc = errno;
-            if (rc != ENOTDIR)
+            if (rc == EEXIST) /* Solaris returns this, the rest have ENOTDIR. */
+                rc = VERR_DIR_NOT_EMPTY;
+            else if (rc != ENOTDIR)
                 rc = RTErrConvertFromErrno(rc);
             else
             {
