@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 81566 2019-10-29 10:39:10Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 81571 2019-10-29 12:16:55Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -403,7 +403,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(VGASTATE, CritSect, 8);
     CHECK_MEMBER_ALIGNMENT(VGASTATE, StatRZMemoryRead, 8);
     CHECK_MEMBER_ALIGNMENT(VGASTATE, CritSectIRQ, 8);
-    CHECK_MEMBER_ALIGNMENT(VMMDevState, CritSect, 8);
+    CHECK_MEMBER_ALIGNMENT(VMMDEV, CritSect, 8);
 #ifdef VBOX_WITH_VIRTIO
     CHECK_MEMBER_ALIGNMENT(VPCISTATE, cs, 8);
     CHECK_MEMBER_ALIGNMENT(VPCISTATE, led, 4);
