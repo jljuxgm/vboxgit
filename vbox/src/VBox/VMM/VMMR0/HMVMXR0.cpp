@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79086 2019-06-11 10:48:43Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79090 2019-06-11 14:47:49Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10096,14 +10096,14 @@ static int hmR0VmxMergeVmcsNested(PVMCPU pVCpu)
     /*
      * VM-entry controls:
      * These controls contains state that depends on the nested-guest state (primarily
-     * EFER MSR) and is thus not constant through VMLAUNCH/VMRESUME and the nested-guest
+     * EFER MSR) and is thus not constant between VMLAUNCH/VMRESUME and the nested-guest
      * VM-exit. Although the nested-hypervisor cannot change it, we need to in order to
      * properly continue executing the nested-guest if the EFER MSR changes but does not
      * cause a nested-guest VM-exits.
      *
      * VM-exit controls:
      * These controls specify the host state on return. We cannot use the controls from
-     * the nested-hypervisor state as is as it would contain the guest state rather than
+     * the guest-hypervisor state as is as it would contain the guest state rather than
      * the host state. Since the host state is subject to change (e.g. preemption, trips
      * to ring-3, longjmp and rescheduling to a different host CPU) they are not constant
      * through VMLAUNCH/VMRESUME and the nested-guest VM-exit.
