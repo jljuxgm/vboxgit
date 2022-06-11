@@ -1,4 +1,4 @@
-/* $Id: GIMR0Kvm.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: GIMR0Kvm.cpp 83372 2020-03-23 14:52:24Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM), KVM - Host Context Ring-0.
  */
@@ -55,8 +55,8 @@ VMM_INT_DECL(int) gimR0KvmUpdateSystemTime(PVMCC pVM, PVMCPUCC pVCpu)
     uint64_t uTsc;
     uint64_t uVirtNanoTS;
     RTCCUINTREG fEFlags = ASMIntDisableFlags();
-    uTsc        = TMCpuTickGetNoCheck(pVCpu) | UINT64_C(1);
-    uVirtNanoTS = TMVirtualGetNoCheck(pVM)   | UINT64_C(1);
+    uTsc        = TMCpuTickGetNoCheck(pVCpu);
+    uVirtNanoTS = TMVirtualGetNoCheck(pVM);
     ASMSetFlags(fEFlags);
 
     /*
@@ -67,12 +67,8 @@ VMM_INT_DECL(int) gimR0KvmUpdateSystemTime(PVMCC pVM, PVMCPUCC pVCpu)
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
         PGIMKVMCPU pKvmCpu = &VMCC_GET_CPU(pVM, idCpu)->gim.s.u.KvmCpu;
-        if (   !pKvmCpu->uTsc
-            && !pKvmCpu->uVirtNanoTS)
-        {
-            pKvmCpu->uTsc        = uTsc;
-            pKvmCpu->uVirtNanoTS = uVirtNanoTS;
-        }
+        pKvmCpu->uTsc        = uTsc;
+        pKvmCpu->uVirtNanoTS = uVirtNanoTS;
     }
     RTSpinlockRelease(pKvm->hSpinlockR0);
 
