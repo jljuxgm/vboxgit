@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 80990 2019-09-25 06:20:09Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 80992 2019-09-25 06:25:59Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared Clipboard.
  */
@@ -1255,6 +1255,7 @@ VBGLR3DECL(int) VbglR3ClipboardObjWriteSend(PVBGLR3SHCLCMDCTX pCtx, SHCLOBJHANDL
     LogFlowFuncLeaveRC(rc);
     return rc;
 }
+
 
 /*********************************************************************************************************************************
 *   Transfer interface implementations                                                                                           *
