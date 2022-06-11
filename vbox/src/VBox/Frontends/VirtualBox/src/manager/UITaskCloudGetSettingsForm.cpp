@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudGetSettingsForm.cpp 84020 2020-04-27 17:02:01Z vboxsync $ */
+/* $Id: UITaskCloudGetSettingsForm.cpp 84098 2020-04-30 10:38:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudGetSettingsForm class implementation.
  */
@@ -15,9 +15,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/* Qt includes: */
+#include <QWidget>
+
 /* GUI includes: */
 #include "UICommon.h"
 #include "UICloudNetworkingStuff.h"
+#include "UIMessageCenter.h"
 #include "UITaskCloudGetSettingsForm.h"
 #include "UIThreadPool.h"
 
@@ -60,8 +64,9 @@ void UITaskCloudGetSettingsForm::run()
 *   Class UIReceiverCloudGetSettingsForm implementation.                                                                         *
 *********************************************************************************************************************************/
 
-UIReceiverCloudGetSettingsForm::UIReceiverCloudGetSettingsForm(QObject *pParent)
+UIReceiverCloudGetSettingsForm::UIReceiverCloudGetSettingsForm(QWidget *pParent)
     : QObject(pParent)
+    , m_pParent(pParent)
 {
     /* Connect receiver: */
     connect(uiCommon().threadPoolCloud(), &UIThreadPool::sigTaskComplete,
@@ -78,5 +83,11 @@ void UIReceiverCloudGetSettingsForm::sltHandleTaskComplete(UITask *pTask)
     UITaskCloudGetSettingsForm *pSettingsTask = static_cast<UITaskCloudGetSettingsForm*>(pTask);
 
     /* Redirect to another listeners: */
-    emit sigTaskComplete(pSettingsTask->result());
+    if (pSettingsTask->errorInfo().isNull())
+        emit sigTaskComplete(pSettingsTask->result());
+    else
+    {
+        msgCenter().cannotAcquireCloudMachineParameter(pSettingsTask->errorInfo(), m_pParent);
+        emit sigTaskFailed(pSettingsTask->errorInfo());
+    }
 }

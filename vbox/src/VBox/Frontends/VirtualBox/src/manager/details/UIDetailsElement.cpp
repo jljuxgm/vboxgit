@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 84021 2020-04-27 17:13:26Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 84098 2020-04-30 10:38:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -990,8 +990,12 @@ void UIDetailsElement::sltHandleAnchorClicked(const QString &strAnchor)
                     /* Create get settings form receiver: */
                     UIReceiverCloudGetSettingsForm *pReceiver = new UIReceiverCloudGetSettingsForm(pEditor);
                     if (pReceiver)
+                    {
                         connect(pReceiver, &UIReceiverCloudGetSettingsForm::sigTaskComplete,
                                 pEditor.data(), &UICloudMachineSettingsDialogPage::setForm);
+                        connect(pReceiver, &UIReceiverCloudGetSettingsForm::sigTaskFailed,
+                                pPopup.data(), &QIDialogContainer::close);
+                    }
                     /* Start task: */
                     if (pTask && pReceiver)
                         uiCommon().threadPoolCloud()->enqueueTask(pTask);

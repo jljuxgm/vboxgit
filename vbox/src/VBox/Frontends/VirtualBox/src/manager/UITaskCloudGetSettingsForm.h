@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudGetSettingsForm.h 84020 2020-04-27 17:02:01Z vboxsync $ */
+/* $Id: UITaskCloudGetSettingsForm.h 84098 2020-04-30 10:38:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudGetSettingsForm class declaration.
  */
@@ -82,16 +82,23 @@ signals:
 
     /** Notifies about task is complete with certain comResult. */
     void sigTaskComplete(const CForm &comResult);
+    /** Notifies about task is failed with certain strErrorMessage. */
+    void sigTaskFailed(const QString &strErrorMessage);
 
 public:
 
     /** Constructs receiver passing @a pParent to the base-class. */
-    UIReceiverCloudGetSettingsForm(QObject *pParent);
+    UIReceiverCloudGetSettingsForm(QWidget *pParent);
 
 public slots:
 
     /** Handles thread-pool signal about @a pTask is complete. */
     void sltHandleTaskComplete(UITask *pTask);
+
+private:
+
+    /** Holds the parent widget reference. */
+    QWidget *m_pParent;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_UITaskCloudGetSettingsForm_h */
