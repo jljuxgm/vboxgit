@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.cpp 84102 2020-04-30 13:20:34Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.cpp 84182 2020-05-07 11:14:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class implementation.
  */
@@ -283,17 +283,17 @@ void UIVirtualMachineItemCloud::sltCreateGetCloudInstanceInfoTask()
     /* Make sure item is of real cloud type and is initialized: */
     AssertReturnVoid(itemType() == UIVirtualMachineItemType_CloudReal);
 
-    /* Create and start task to acquire info async way only if there is no task yet: */
+    /* Create and start task to refresh info async way only if there is no task yet: */
     if (!m_pTask)
     {
         m_pTask = new UITaskCloudRefreshMachineInfo(m_comCloudMachine);
         connect(uiCommon().threadPoolCloud(), &UIThreadPool::sigTaskComplete,
-                this, &UIVirtualMachineItemCloud::sltHandleGetCloudInstanceInfoDone);
+                this, &UIVirtualMachineItemCloud::sltHandleRefreshCloudMachineInfoDone);
         uiCommon().threadPoolCloud()->enqueueTask(m_pTask);
     }
 }
 
-void UIVirtualMachineItemCloud::sltHandleGetCloudInstanceInfoDone(UITask *pTask)
+void UIVirtualMachineItemCloud::sltHandleRefreshCloudMachineInfoDone(UITask *pTask)
 {
     /* Skip unrelated tasks: */
     if (!m_pTask || pTask != m_pTask)

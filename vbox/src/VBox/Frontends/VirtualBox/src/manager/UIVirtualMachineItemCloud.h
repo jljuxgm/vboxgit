@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 84102 2020-04-30 13:20:34Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 84182 2020-05-07 11:14:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -116,8 +116,8 @@ private slots:
 
         /** Create cloud VM info acquire task. */
         void sltCreateGetCloudInstanceInfoTask();
-        /** Handles signal about cloud VM info acquire task is done. */
-        void sltHandleGetCloudInstanceInfoDone(UITask *pTask);
+        /** Handles signal about cloud VM info refresh task is done. */
+        void sltHandleRefreshCloudMachineInfoDone(UITask *pTask);
 
 private:
 
