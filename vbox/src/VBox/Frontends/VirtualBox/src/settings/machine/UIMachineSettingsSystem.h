@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 79976 2019-07-25 13:14:34Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.h 79981 2019-07-25 14:59:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -142,11 +142,6 @@ private:
     /** Retranslates Paravirtualization providers combo-box. */
     void retranslateComboParavirtProvider();
 
-    /** Loads boot item list for passed @a comMachine. */
-    UIBootItemDataList loadBootItems(const CMachine &comMachine);
-    /** Saves @a bootItems list to passed @a comMachine. */
-    void saveBootItems(const UIBootItemDataList &bootItems, CMachine &comMachine);
-
     /** Saves existing system data from the cache. */
     bool saveSystemData();
     /** Saves existing 'Motherboard' data from the cache. */
@@ -155,9 +150,6 @@ private:
     bool saveProcessorData();
     /** Saves existing 'Acceleration' data from the cache. */
     bool saveAccelerationData();
-
-    /** Holds the list of all possible boot items. */
-    QList<KDeviceType>  m_possibleBootItems;
 
     /** Holds the minimum guest CPU count. */
     uint  m_uMinGuestCPU;
