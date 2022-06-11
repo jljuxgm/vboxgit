@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 78707 2019-05-24 04:57:21Z vboxsync $ */
+/* $Id: HMAll.cpp 79515 2019-07-04 08:25:06Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -458,8 +458,6 @@ static void hmR0PokeCpu(PVMCPU pVCpu, RTCPUID idHostCpu)
  */
 VMM_INT_DECL(int) HMFlushTlb(PVMCPU pVCpu)
 {
-    LogFlow(("HMFlushTlb\n"));
-
     VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
     STAM_COUNTER_INC(&pVCpu->hm.s.StatFlushTlbManual);
     return VINF_SUCCESS;
