@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 80945 2019-09-23 10:54:25Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 80946 2019-09-23 11:08:54Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -488,7 +488,7 @@ PDMBOTHCBDECL(int) ich9pciIOPortDataRead(PPDMDEVINS pDevIns, void *pvUser, RTIOP
         PCI_UNLOCK(pDevIns);
 
         LogFlowFunc(("Port=%#x cb=%#x (config=%#10x) -> %#x (%Rrc)\n", uPort, cb, *pu32, pThis->uConfigReg, VBOXSTRICTRC_VAL(rcStrict)));
-        return rcStrict;
+        return VBOXSTRICTRC_TODO(rcStrict);
     }
     AssertMsgFailed(("Unaligned read from port %#x cb=%d\n", uPort, cb));
     return VERR_IOM_IOPORT_UNUSED;
@@ -728,7 +728,7 @@ PDMBOTHCBDECL(int) ich9pciMcfgMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHY
     }
 
     PCI_UNLOCK(pDevIns);
-    return rcStrict;
+    return VBOXSTRICTRC_TODO(rcStrict);
 }
 
 #ifdef IN_RING3
