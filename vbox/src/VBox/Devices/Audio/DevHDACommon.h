@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 80691 2019-09-10 09:58:21Z vboxsync $ */
+/* $Id: DevHDACommon.h 80692 2019-09-10 10:17:36Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -600,9 +600,11 @@ PHDASTREAM    hdaR3GetStreamFromSink(PHDASTATE pThis, PHDAMIXERSINK pSink);
  * @{
  */
 #ifdef LOG_ENABLED
-int           hdaProcessInterrupt(PHDASTATE pThis, const char *pszSource);
+int           hdaProcessInterrupt(PPDMDEVINS pDevIns, PHDASTATE pThis, const char *pszSource);
+# define HDA_PROCESS_INTERRUPT(a_pDevIns, a_pThis)  hdaProcessInterrupt((a_pDevIns), (a_pThis), __FUNCTION__)
 #else
-int           hdaProcessInterrupt(PHDASTATE pThis);
+int           hdaProcessInterrupt(PPDMDEVINS pDevIns, PHDASTATE pThis);
+# define HDA_PROCESS_INTERRUPT(a_pDevIns, a_pThis)  hdaProcessInterrupt((a_pDevIns), (a_pThis))
 #endif
 /** @} */
 
