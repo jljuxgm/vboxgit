@@ -1,4 +1,4 @@
-# $Id: backport-common.sh 83611 2020-04-07 17:11:42Z vboxsync $
+# $Id: backport-common.sh 83677 2020-04-11 18:04:35Z vboxsync $
 ## @file
 # Common backport script bits.
 #
@@ -107,9 +107,13 @@ do
             echo ""
             echo "Options:"
             echo "  --trunk-dir <dir>"
-            echo "  --branch <ver>"
+            echo "    The source of the changeset being backported."
             echo "  --branch-dir <dir>"
+            echo "    The backport destination directory. default: script location"
+            echo "  --branch <ver>"
+            echo "    The name of the branch being backported to. default: auto"
             echo "  --extra <svn-arg>"
+            echo "    Additional arguments to specify to SVN."
             echo ""
             exit 2;
             ;;
