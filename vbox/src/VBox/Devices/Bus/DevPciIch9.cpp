@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 81036 2019-09-26 20:56:01Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 81039 2019-09-27 09:29:41Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -176,7 +176,7 @@ DECLHIDDEN(PPDMDEVINS) devpcibridgeCommonSetIrqRootWalk(PPDMDEVINS pDevIns, PPDM
 
         /* Make sure that we cannot end up in a loop here: */
         AssertCompile(sizeof(pPciDevBus->Int.s.idxPdmBus) == 1);
-        AssertMsgReturn(ASMBitTestAndSet(bmSeen, pPciDevBus->Int.s.idxPdmBus, 255),
+        AssertMsgReturn(ASMBitTestAndSet(bmSeen, pPciDevBus->Int.s.idxPdmBus),
                         ("idxPdmBus=%u\n", pPciDevBus->Int.s.idxPdmBus),
                         NULL);
     }
