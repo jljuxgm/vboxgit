@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.h 83923 2020-04-22 12:22:03Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.h 83946 2020-04-23 11:31:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class declaration.
  */
@@ -109,6 +109,11 @@ public:
     UIVirtualMachineItem *cache() const;
     /** Returns virtual machine cache instance. */
     UIVirtualMachineItemType cacheType() const;
+
+    /** Returns node machine id. */
+    QUuid id() const;
+    /** Returns whether node accessible. */
+    bool accessible() const;
 
 protected:
 
