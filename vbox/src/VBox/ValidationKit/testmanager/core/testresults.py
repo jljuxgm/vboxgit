@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: testresults.py 82984 2020-02-04 21:51:03Z vboxsync $
 # pylint: disable=too-many-lines
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 82984 $"
 
 
 # Standard python imports.
@@ -914,7 +914,7 @@ class TestResultFilter(ModelFilterBase):
                     if iValue in dConditions:
                         sQuery += '%s   AND %s\n' % (sExtraIndent, dConditions[iValue],);
             elif oCrit.sType == FilterCriterion.ksType_Ranges:
-                assert len(oCrit.aoPossible) == 0;
+                assert not oCrit.aoPossible;
                 if oCrit.aoSelected:
                     asConditions = [];
                     for tRange in oCrit.aoSelected:
