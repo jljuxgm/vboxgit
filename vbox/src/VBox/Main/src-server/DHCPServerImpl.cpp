@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 79733 2019-07-12 12:51:57Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 79734 2019-07-12 12:54:11Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -131,9 +131,9 @@ struct DHCPServer::Data
 //    typedef std::map<com::Utf8Str, ComObjPtr<DHCPGroupConfig>>::iterator GroupConfigIterator;
 
     /** Individual (host) configuration indexed by MAC address or VM UUID. */
-    std::map<com::Utf8Str, ComObjPtr<DHCPIndividualConfig>> individualConfigs;
+    std::map<com::Utf8Str, ComObjPtr<DHCPIndividualConfig> > individualConfigs;
     /** Iterator for individualConfigs. */
-    typedef std::map<com::Utf8Str, ComObjPtr<DHCPIndividualConfig>>::iterator IndividualConfigIterator;
+    typedef std::map<com::Utf8Str, ComObjPtr<DHCPIndividualConfig> >::iterator IndividualConfigIterator;
 
     /** Part of a lock-avoidance hack to resolve the VM ID + slot into MAC
      *  addresses before writing out the Dhcpd configuration file. */
