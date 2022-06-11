@@ -1,4 +1,4 @@
-/* $Id: OpenGLTest.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: OpenGLTest.cpp 80365 2019-08-21 11:28:40Z vboxsync $ */
 /** @file
  * VBox host opengl support test - generic implementation.
  */
@@ -31,9 +31,9 @@
 
 bool RTCALL VBoxOglIs3DAccelerationSupported(void)
 {
-    if (RTEnvExist("VBOX_CROGL_FORCE_SUPPORTED"))
+    if (RTEnvExist("VBOX_3D_FORCE_SUPPORTED"))
     {
-        LogRel(("VBOX_CROGL_FORCE_SUPPORTED is specified, skipping 3D test, and treating as supported\n"));
+        LogRel(("VBOX_3D_FORCE_SUPPORTED is specified, skipping 3D test, and treating as supported\n"));
         return true;
     }
 
