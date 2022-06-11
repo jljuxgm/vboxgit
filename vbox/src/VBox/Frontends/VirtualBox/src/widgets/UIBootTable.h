@@ -1,4 +1,4 @@
-/* $Id: UIBootTable.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIBootTable.h 79962 2019-07-24 17:50:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootTable class declaration.
  */
@@ -30,6 +30,32 @@
 
 /* COM includes: */
 #include "COMEnums.h"
+
+
+/** Boot item data structure. */
+struct UIBootItemData
+{
+    /** Constructs boot item data. */
+    UIBootItemData()
+        : m_enmType(KDeviceType_Null)
+        , m_fEnabled(false)
+    {}
+
+    /** Returns whether @a another passed data is equal to this one. */
+    bool operator==(const UIBootItemData &another) const
+    {
+        return true
+               && (m_enmType == another.m_enmType)
+               && (m_fEnabled == another.m_fEnabled)
+               ;
+    }
+
+    /** Holds the boot device type. */
+    KDeviceType  m_enmType;
+    /** Holds whether the boot device enabled. */
+    bool         m_fEnabled;
+};
+typedef QList<UIBootItemData> UIBootItemDataList;
 
 
 /** QListWidgetItem extension for our UIBootTable. */
