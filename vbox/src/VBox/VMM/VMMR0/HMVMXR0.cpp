@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 80364 2019-08-21 10:03:57Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 80387 2019-08-22 14:44:42Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9984,7 +9984,7 @@ static int hmR0VmxMergeVmcsNested(PVMCPUCC pVCpu)
      * Pending debug exceptions.
      * Currently just copy whatever the nested-guest provides us.
      */
-    uint64_t const uPendingDbgXcpt = pVmcsNstGst->u64GuestPendingDbgXcpt.u;
+    uint64_t const uPendingDbgXcpts = pVmcsNstGst->u64GuestPendingDbgXcpts.u;
 
     /*
      * I/O Bitmap.
@@ -10119,7 +10119,7 @@ static int hmR0VmxMergeVmcsNested(PVMCPUCC pVCpu)
     }
     if (u32ProcCtls2 & VMX_PROC_CTLS2_VIRT_APIC_ACCESS)
         rc |= VMXWriteVmcs64(VMX_VMCS64_CTRL_APIC_ACCESSADDR_FULL, HCPhysApicAccess);
-    rc |= VMXWriteVmcsNw(VMX_VMCS_GUEST_PENDING_DEBUG_XCPTS, uPendingDbgXcpt);
+    rc |= VMXWriteVmcsNw(VMX_VMCS_GUEST_PENDING_DEBUG_XCPTS, uPendingDbgXcpts);
     AssertRC(rc);
 
     /*

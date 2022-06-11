@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 80364 2019-08-21 10:03:57Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 80387 2019-08-22 14:44:42Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -948,7 +948,7 @@ VMM_INT_DECL(void) HMDumpHwvirtVmxState(PVMCPU pVCpu)
         LogRel(("  %srsp                        = %#RX64\n",   pszPrefix, pVmcs->u64GuestRsp.u));
         LogRel(("  %srip                        = %#RX64\n",   pszPrefix, pVmcs->u64GuestRip.u));
         LogRel(("  %srflags                     = %#RX64\n",   pszPrefix, pVmcs->u64GuestRFlags.u));
-        LogRel(("  %sPending debug xcpts        = %#RX64\n",   pszPrefix, pVmcs->u64GuestPendingDbgXcpt.u));
+        LogRel(("  %sPending debug xcpts        = %#RX64\n",   pszPrefix, pVmcs->u64GuestPendingDbgXcpts.u));
         LogRel(("  %sSysEnter ESP               = %#RX64\n",   pszPrefix, pVmcs->u64GuestSysenterEsp.u));
         LogRel(("  %sSysEnter EIP               = %#RX64\n",   pszPrefix, pVmcs->u64GuestSysenterEip.u));
     }
