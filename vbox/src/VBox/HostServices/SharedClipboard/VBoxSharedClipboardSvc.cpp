@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 79501 2019-07-03 13:45:52Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 79502 2019-07-03 13:53:26Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -672,7 +672,7 @@ static DECLCALLBACK(int) svcUnload(void *)
  */
 static DECLCALLBACK(int) svcDisconnect(void *, uint32_t u32ClientID, void *pvClient)
 {
-    RT_NOREF(u32ClientID);
+    RT_NOREF(u32ClientID, pvClient);
 
     LogFunc(("u32ClientID=%RU32\n", u32ClientID));
 
