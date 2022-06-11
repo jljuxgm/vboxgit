@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 83158 2020-02-26 11:39:17Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 83160 2020-02-26 12:40:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -193,6 +193,18 @@ QString UICloudNetworkingStuff::fetchOsType(const QMap<KVirtualSystemDescription
 
     /* Return OS type value: */
     return osTypes.value(infoMap.value(KVirtualSystemDescriptionType_OS), "Other");
+}
+
+int UICloudNetworkingStuff::fetchMemorySize(const QMap<KVirtualSystemDescriptionType, QString> &infoMap)
+{
+    /* Return memory size value: */
+    return infoMap.value(KVirtualSystemDescriptionType_Memory).toInt();
+}
+
+int UICloudNetworkingStuff::fetchCpuCount(const QMap<KVirtualSystemDescriptionType, QString> &infoMap)
+{
+    /* Return CPU count value: */
+    return infoMap.value(KVirtualSystemDescriptionType_CPU).toInt();
 }
 
 KMachineState UICloudNetworkingStuff::fetchMachineState(const QMap<KVirtualSystemDescriptionType, QString> &infoMap)
