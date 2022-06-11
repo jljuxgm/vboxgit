@@ -1,4 +1,4 @@
-/* $Id: UIBootTable.h 79962 2019-07-24 17:50:31Z vboxsync $ */
+/* $Id: UIBootTable.h 79964 2019-07-24 18:36:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootTable class declaration.
  */
@@ -76,7 +76,6 @@ private:
 
     /** Holds the item type. */
     KDeviceType m_enmType;
-
 };
 
 
@@ -95,6 +94,11 @@ public:
 
     /** Constructs boot-table passing @a pParent to the base-class. */
     UIBootTable(QWidget *pParent = 0);
+
+    /** Defines @a bootItems list. */
+    void setBootItems(const UIBootItemDataList &bootItems);
+    /** Returns boot item list. */
+    UIBootItemDataList bootItems() const;
 
     /** Adjusts table size to fit contents. */
     void adjustSizeToFitContent();

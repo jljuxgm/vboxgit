@@ -1,4 +1,4 @@
-/* $Id: UIBootTable.cpp 76606 2019-01-02 05:40:39Z vboxsync $ */
+/* $Id: UIBootTable.cpp 79964 2019-07-24 18:36:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootTable class implementation.
  */
@@ -62,6 +62,39 @@ UIBootTable::UIBootTable(QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI<QListWidget>(pParent)
 {
     prepare();
+}
+
+void UIBootTable::setBootItems(const UIBootItemDataList &bootItems)
+{
+    /* Clear initially: */
+    clear();
+
+    /* Apply internal variables data to QWidget(s): */
+    foreach (const UIBootItemData &data, bootItems)
+    {
+        UIBootTableItem *pItem = new UIBootTableItem(data.m_enmType);
+        pItem->setCheckState(data.m_fEnabled ? Qt::Checked : Qt::Unchecked);
+        addItem(pItem);
+    }
+}
+
+UIBootItemDataList UIBootTable::bootItems() const
+{
+    /* Prepare boot items: */
+    UIBootItemDataList bootItems;
+
+    /* Enumerate all the items we have: */
+    for (int i = 0; i < count(); ++i)
+    {
+        QListWidgetItem *pItem = item(i);
+        UIBootItemData bootData;
+        bootData.m_enmType = static_cast<UIBootTableItem*>(pItem)->type();
+        bootData.m_fEnabled = pItem->checkState() == Qt::Checked;
+        bootItems << bootData;
+    }
+
+    /* Return boot items: */
+    return bootItems;
 }
 
 void UIBootTable::adjustSizeToFitContent()
