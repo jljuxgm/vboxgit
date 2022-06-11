@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 83693 2020-04-14 16:35:50Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -1402,7 +1402,7 @@ static int vbsvcAutomounterMountIt(PVBSVCAUTOMOUNTERENTRY pEntry)
         return VINF_SUCCESS;
     }
     VGSvcError("vbsvcAutomounterMountIt: Failed to attach '%s' to '%s': %u\n",
-               pEntry->pszName, pEntry->pszActualMountPoint, rc);
+               pEntry->pszName, pEntry->pszActualMountPoint, dwErr);
     return VERR_OPEN_FAILED;
 
 #elif defined(RT_OS_OS2)
