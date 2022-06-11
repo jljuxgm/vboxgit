@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 80571 2019-09-04 00:06:41Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 80575 2019-09-04 06:51:34Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -401,7 +401,7 @@ static void virtioNotifyGuestDriver(PVIRTIOSTATE pVirtio, uint16_t qIdx)
         }
         else
         {
-            /** If guest driver hasn't suppressed interrupts, do so */
+            /** If guest driver hasn't suppressed interrupts, interrupt  */
             if (!(virtioReadUsedFlags(pVirtio, qIdx) & VIRTQ_AVAIL_F_NO_INTERRUPT))
             {
                 virtioRaiseInterrupt(pVirtio, VIRTIO_ISR_VIRTQ_INTERRUPT);
