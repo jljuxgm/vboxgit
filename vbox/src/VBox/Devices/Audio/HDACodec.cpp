@@ -1,4 +1,4 @@
-/* $Id: HDACodec.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: HDACodec.cpp 81182 2019-10-09 12:11:53Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  *
@@ -23,6 +23,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_HDA_CODEC
+#include <VBox/AssertGuest.h>
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdmaudioifs.h>
 #include <iprt/assert.h>
@@ -2367,6 +2368,9 @@ static DECLCALLBACK(int) vrbProcSetStreamId(PHDACODEC pThis, uint32_t cmd, uint6
 
     LogFlowFunc(("[NID0x%02x] Setting to stream ID=%RU8, channel=%RU8\n",
                  CODEC_NID(cmd), uSD, uChannel));
+
+    ASSERT_GUEST_LOGREL_MSG_RETURN(uSD < HDA_MAX_STREAMS,
+                                   ("Setting stream ID #%RU8 is invalid\n", uSD), VERR_INVALID_PARAMETER);
 
     PDMAUDIODIR enmDir;
     uint32_t *pu32Addr = NULL;

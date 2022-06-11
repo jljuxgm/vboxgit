@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.cpp 80692 2019-09-10 10:17:36Z vboxsync $ */
+/* $Id: DevHDACommon.cpp 81182 2019-10-09 12:11:53Z vboxsync $ */
 /** @file
  * DevHDACommon.cpp - Shared HDA device functions.
  */
@@ -21,6 +21,8 @@
 *********************************************************************************************************************************/
 #include <iprt/assert.h>
 #include <iprt/errcore.h>
+
+#include <VBox/AssertGuest.h>
 
 #define LOG_GROUP LOG_GROUP_DEV_HDA
 #include <VBox/log.h>
@@ -258,7 +260,7 @@ PHDASTREAM hdaGetStreamFromSD(PHDASTATE pThis, uint8_t uSD)
 
     if (uSD >= HDA_MAX_STREAMS)
     {
-        AssertMsgFailed(("Invalid / non-handled SD%RU8\n", uSD));
+        ASSERT_GUEST_LOGREL_MSG_FAILED(("Stream #%RU8 is invalid\n", uSD));
         return NULL;
     }
 
