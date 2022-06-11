@@ -1,7 +1,7 @@
 #! /bin/sh
-# $Id: vboxadd.sh 79510 2019-07-03 16:46:58Z vboxsync $
+# $Id: vboxadd.sh 79666 2019-07-10 09:03:28Z vboxsync $
 ## @file
-# Linux Additions kernel module init script ($Revision: 79510 $)
+# Linux Additions kernel module init script ($Revision: 79666 $)
 #
 
 #
@@ -355,8 +355,8 @@ create_udev_rule()
         echo "KERNEL=${udev_fix}\"vboxguest\", NAME=\"vboxguest\", OWNER=\"vboxadd\", MODE=\"0660\"" > /etc/udev/rules.d/60-vboxadd.rules
         echo "KERNEL=${udev_fix}\"vboxuser\", NAME=\"vboxuser\", OWNER=\"vboxadd\", MODE=\"0666\"" >> /etc/udev/rules.d/60-vboxadd.rules
         # Make sure the new rule is noticed.
-        udevadm control --reload 2>&1 || true
-        udevcontrol reload_rules 2>&1 || true
+        udevadm control --reload >/dev/null 2>&1 || true
+        udevcontrol reload_rules >/dev/null 2>&1 || true
     fi
 }
 
@@ -465,8 +465,8 @@ cleanup()
     fi
     rm -f /sbin/mount.vboxsf 2>/dev/null
     rm -f /etc/udev/rules.d/60-vboxadd.rules 2>/dev/null
-    udevadm control --reload 2>&1 || true
-    udevcontrol reload_rules 2>&1 || true
+    udevadm control --reload >/dev/null 2>&1 || true
+    udevcontrol reload_rules >/dev/null 2>&1 || true
 }
 
 start()
