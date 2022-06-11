@@ -1,4 +1,4 @@
-/* $Id: errmsgwin.cpp 83744 2020-04-17 11:30:40Z vboxsync $ */
+/* $Id: errmsgwin.cpp 83745 2020-04-17 12:33:33Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, Windows.
  */
@@ -80,7 +80,7 @@ static volatile uint32_t    g_iUnknownMsgs;
 RTDECL(PCRTWINERRMSG) RTErrWinGet(long rc)
 {
     /*
-     * Perform binary search.
+     * Perform binary search (duplicate code in RTErrGet).
      */
     size_t iStart = 0;
     size_t iEnd   = RT_ELEMENTS(g_aStatusMsgs);
