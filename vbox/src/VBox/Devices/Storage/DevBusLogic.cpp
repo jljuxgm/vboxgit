@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 83115 2020-02-19 15:31:18Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -3827,7 +3827,7 @@ static DECLCALLBACK(void) buslogicR3Info(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp,
 
             /* Incoming mailbox, 32-bit format. */
             GCMailbox = pThis->GCPhysAddrMailboxOutgoingBase + (pThis->cMailbox * sizeof(Mailbox32));
-            pHlp->pfnPrintf(pHlp, " Outgoing mailbox entries (32-bit) at %08X:\n", (uint32_t)GCMailbox);
+            pHlp->pfnPrintf(pHlp, " Incoming mailbox entries (32-bit) at %08X:\n", (uint32_t)GCMailbox);
             for (i = 0; i < pThis->cMailbox; ++i)
             {
                 PDMDevHlpPhysRead(pDevIns, GCMailbox, &Mbx32, sizeof(Mailbox32));
