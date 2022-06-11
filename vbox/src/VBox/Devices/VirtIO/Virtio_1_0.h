@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.h 80499 2019-08-29 14:47:17Z vboxsync $ */
+/* $Id: Virtio_1_0.h 80522 2019-08-31 21:19:08Z vboxsync $ */
 /** @file
  * Virtio_1_0.h - Virtio Declarations
  */
@@ -318,5 +318,6 @@ int  virtioConstruct(PPDMDEVINS             pDevIns,
 void virtioLogMappedIoValue(const char *pszFunc, const char *pszMember, size_t uMemberSize,
                             const void *pv, uint32_t cb, uint32_t uOffset,
                             bool fWrite, bool fHasIndex, uint32_t idx);
+
 
 #endif /* !VBOX_INCLUDED_SRC_VirtIO_Virtio_1_0_h */

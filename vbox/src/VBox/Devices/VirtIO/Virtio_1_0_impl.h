@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0_impl.h 80499 2019-08-29 14:47:17Z vboxsync $ $Revision: 80499 $ $Date: 2019-08-29 22:47:17 +0800 (Thu, 29 Aug 2019) $ $Author: vboxsync $ */
+/* $Id: Virtio_1_0_impl.h 80522 2019-08-31 21:19:08Z vboxsync $ $Revision: 80522 $ $Date: 2019-09-01 05:19:08 +0800 (Sun, 01 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * Virtio_1_0_impl.h - Virtio Declarations
  */
@@ -516,17 +516,17 @@ DECLINLINE(void) virtioLogDeviceStatus( uint8_t status)
     {
         int primed = 0;
         if (status & VIRTIO_STATUS_ACKNOWLEDGE)
-            Log(("ACKNOWLEDGE",   primed++));
+            Log3(("ACKNOWLEDGE",   primed++));
         if (status & VIRTIO_STATUS_DRIVER)
-            Log(("%sDRIVER",      primed++ ? " | " : ""));
+            Log3(("%sDRIVER",      primed++ ? " | " : ""));
         if (status & VIRTIO_STATUS_FEATURES_OK)
-            Log(("%sFEATURES_OK", primed++ ? " | " : ""));
+            Log3(("%sFEATURES_OK", primed++ ? " | " : ""));
         if (status & VIRTIO_STATUS_DRIVER_OK)
-            Log(("%sDRIVER_OK",   primed++ ? " | " : ""));
+            Log3(("%sDRIVER_OK",   primed++ ? " | " : ""));
         if (status & VIRTIO_STATUS_FAILED)
-            Log(("%sFAILED",      primed++ ? " | " : ""));
+            Log3(("%sFAILED",      primed++ ? " | " : ""));
         if (status & VIRTIO_STATUS_DEVICE_NEEDS_RESET)
-            Log(("%sNEEDS_RESET", primed++ ? " | " : ""));
+            Log3(("%sNEEDS_RESET", primed++ ? " | " : ""));
     }
 }
 
