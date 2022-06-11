@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 83624 2020-04-08 16:29:25Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 83809 2020-04-18 23:32:02Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -41,7 +41,7 @@
 #endif
 
 #include <process.h>
-#include <shlobj.h> /* Needed for shell objects. */
+#include <iprt/win/shlobj.h> /* Needed for shell objects. */
 
 #include "VBoxSharedClipboardSvc-internal.h"
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
