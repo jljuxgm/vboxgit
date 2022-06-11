@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
+/* $Id: PDMDevice.cpp 81519 2019-10-24 13:25:31Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -478,6 +478,7 @@ int pdmR3DevInit(PVM pVM)
         if (fR0Enabled)
         {
             PDMDEVICEGENCALLREQ Req;
+            RT_ZERO(Req.Params);
             Req.Hdr.u32Magic = SUPVMMR0REQHDR_MAGIC;
             Req.Hdr.cbReq    = sizeof(Req);
             Req.enmCall      = PDMDEVICEGENCALL_CONSTRUCT;

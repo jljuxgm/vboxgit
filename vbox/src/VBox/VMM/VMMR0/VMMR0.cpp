@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 81333 2019-10-17 23:49:39Z vboxsync $ */
+/* $Id: VMMR0.cpp 81519 2019-10-24 13:25:31Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1979,15 +1979,6 @@ static int vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OPERATION enmOperat
             break;
         }
 
-        case VMMR0_DO_PDM_DEVICE_CALL_REQ_HANDLER:
-        {
-            if (!pReqHdr || u64Arg || idCpu != NIL_VMCPUID)
-                return VERR_INVALID_PARAMETER;
-            rc = PDMR0DeviceCallReqHandler(pGVM, (PPDMDEVICECALLREQHANDLERREQ)pReqHdr);
-            VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
-            break;
-        }
-
         case VMMR0_DO_PDM_DEVICE_CREATE:
         {
             if (!pReqHdr || u64Arg || idCpu != 0)
@@ -1999,9 +1990,9 @@ static int vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OPERATION enmOperat
 
         case VMMR0_DO_PDM_DEVICE_GEN_CALL:
         {
-            if (!pReqHdr || u64Arg || idCpu != 0)
+            if (!pReqHdr || u64Arg)
                 return VERR_INVALID_PARAMETER;
-            rc = PDMR0DeviceGenCallReqHandler(pGVM, (PPDMDEVICEGENCALLREQ)pReqHdr);
+            rc = PDMR0DeviceGenCallReqHandler(pGVM, (PPDMDEVICEGENCALLREQ)pReqHdr, idCpu);
             VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
             break;
         }
