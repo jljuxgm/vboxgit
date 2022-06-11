@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 82998 2020-02-05 19:14:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -22,6 +22,7 @@
 #include "UICommon.h"
 #include "UIMediumEnumerator.h"
 #include "UIMessageCenter.h"
+#include "UITask.h"
 #include "UIThreadPool.h"
 #include "UIVirtualBoxEventHandler.h"
 

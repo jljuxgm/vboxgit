@@ -1,6 +1,6 @@
-/* $Id: UIThreadPool.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 82998 2020-02-05 19:14:36Z vboxsync $ */
 /** @file
- * VBox Qt GUI - UIThreadPool and UITask classes implementation.
+ * VBox Qt GUI - UIThreadPool class implementation.
  */
 
 /*
@@ -21,6 +21,7 @@
 /* GUI includes: */
 #include "COMDefs.h"
 #include "UIDefs.h"
+#include "UITask.h"
 #include "UIThreadPool.h"
 
 /* Other VBox includes: */
@@ -59,10 +60,10 @@ private:
     UIThreadPool *m_pPool;
 
     /** Holds the worker-thread index within the worker-thread pool registry. */
-    int m_iIndex;
+    int  m_iIndex;
 
     /** Holds whether sigFinished signal should be emitted or not. */
-    bool m_fNoFinishedSignal;
+    bool  m_fNoFinishedSignal;
 };
 
 
@@ -292,14 +293,6 @@ void UIThreadPool::sltHandleWorkerFinished(UIThreadWorker *pWorker)
     delete pWorker;
 }
 
-void UITask::start()
-{
-    /* Run task: */
-    run();
-    /* Notify listeners: */
-    emit sigComplete(this);
-}
-
 
 /*********************************************************************************************************************************
 *   Class UIThreadWorker implementation.                                                                                         *
@@ -338,4 +331,3 @@ void UIThreadWorker::run()
 
 
 #include "UIThreadPool.moc"
-

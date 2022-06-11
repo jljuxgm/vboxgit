@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElements.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIDetailsElements.h 82998 2020-02-05 19:14:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement[Name] classes declaration.
  */
@@ -22,8 +22,8 @@
 #endif
 
 /* GUI includes: */
-#include "UIThreadPool.h"
 #include "UIDetailsElement.h"
+#include "UITask.h"
 
 /* Forward declarations: */
 class UIMachinePreview;
