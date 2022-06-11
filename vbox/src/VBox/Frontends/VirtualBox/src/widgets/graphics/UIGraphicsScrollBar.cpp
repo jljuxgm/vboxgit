@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsScrollBar.cpp 79852 2019-07-18 08:16:53Z vboxsync $ */
+/* $Id: UIGraphicsScrollBar.cpp 80694 2019-09-10 11:24:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsScrollBar class implementation.
  */
@@ -122,6 +122,7 @@ private:
 UIGraphicsScrollBarToken::UIGraphicsScrollBarToken(Qt::Orientation enmOrientation, QIGraphicsWidget *pParent /* = 0 */)
     : QIGraphicsWidget(pParent)
     , m_enmOrientation(enmOrientation)
+    , m_iExtent(0)
     , m_fHovered(false)
 {
     prepare();
@@ -933,6 +934,7 @@ void UIGraphicsScrollBar::layoutButtons()
 void UIGraphicsScrollBar::layoutToken()
 {
     m_pToken->setPos(actualTokenPosition());
+    update();
 }
 
 QPoint UIGraphicsScrollBar::actualTokenPosition() const
