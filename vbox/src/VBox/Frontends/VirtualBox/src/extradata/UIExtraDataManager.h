@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 81263 2019-10-14 16:51:31Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 81309 2019-10-17 11:40:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -668,6 +668,8 @@ public:
         void softKeyboardOptions(bool &fOutShowNumPad, bool &fOutHideOSMenuKeys, bool &fOutHideMultimediaKeys);
         void setSoftKeyboardColorTheme(const QStringList &colorStringList);
         QStringList softKeyboardColorTheme();
+        void setSoftKeyboardSelectedColorTheme(const QString &strColorThemeName);
+        QString softKeyboardSelectedColorTheme();
         void setSoftKeyboardSelectedLayout(const QUuid &uLayoutUid);
         QUuid softKeyboardSelectedLayout();
     /** @} */

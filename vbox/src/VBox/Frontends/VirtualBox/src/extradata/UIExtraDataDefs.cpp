@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 81263 2019-10-14 16:51:31Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 81309 2019-10-17 11:40:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -204,6 +204,7 @@ const char *UIExtraDataDefs::GUI_GuestControl_ProcessControlDialogGeometry = "GU
 /* Soft Keyboard: */
 const char *UIExtraDataDefs::GUI_SoftKeyboard_DialogGeometry = "GUI/SoftKeyboardDialogGeometry";
 const char *UIExtraDataDefs::GUI_SoftKeyboard_ColorTheme  = "GUI/SoftKeyboardColorTheme";
+const char *UIExtraDataDefs::GUI_SoftKeyboard_SelectedColorTheme  = "GUI/SoftKeyboardSelectedColorTheme";
 const char *UIExtraDataDefs::GUI_SoftKeyboard_SelectedLayout  = "GUI/SoftKeyboardSelectedLayout";
 const char *UIExtraDataDefs::GUI_SoftKeyboard_Options  = "GUI/SoftKeyboardOptions";
 const char *UIExtraDataDefs::GUI_SoftKeyboard_HideNumPad = "GUI/SoftKeyboardHideNumPad";
