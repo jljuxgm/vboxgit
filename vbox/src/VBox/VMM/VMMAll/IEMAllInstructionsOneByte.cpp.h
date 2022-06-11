@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsOneByte.cpp.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: IEMAllInstructionsOneByte.cpp.h 84247 2020-05-11 11:35:10Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -10289,7 +10289,7 @@ FNIEMOP_DEF(iemOp_loop_Jb)
     {
         case IEMMODE_16BIT:
             IEM_MC_BEGIN(0,0);
-            if (-(int8_t)IEM_GET_INSTR_LEN(pVCpu) != i8Imm)
+            if (-(int8_t)IEM_GET_INSTR_LEN(pVCpu) != i8Imm) /** @todo Harmfull to windows 3.11 for workgroups and such. Make optional. */
             {
                 IEM_MC_SUB_GREG_U16(X86_GREG_xCX, 1);
                 IEM_MC_IF_CX_IS_NZ() {
