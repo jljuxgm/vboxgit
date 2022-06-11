@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 83011 2020-02-06 18:07:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -312,6 +312,8 @@ private:
           * @param items used to calculate verdict about should the action be enabled. */
         bool isActionEnabled(int iActionIndex, const QList<UIVirtualMachineItem*> &items);
 
+        /** Returns whether all passed @a items are local. */
+        static bool isItemsLocal(const QList<UIVirtualMachineItem*> &items);
         /** Returns whether all passed @a items are powered off. */
         static bool isItemsPoweredOff(const QList<UIVirtualMachineItem*> &items);
         /** Returns whether at least one of passed @a items is able to shutdown. */
