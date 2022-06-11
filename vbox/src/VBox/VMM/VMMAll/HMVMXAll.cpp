@@ -1,4 +1,4 @@
-/* $Id: HMVMXAll.cpp 79971 2019-07-25 06:41:20Z vboxsync $ */
+/* $Id: HMVMXAll.cpp 80034 2019-07-29 05:44:38Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - All contexts.
  */
@@ -926,7 +926,6 @@ VMM_INT_DECL(void) HMDumpHwvirtVmxState(PVMCPU pVCpu)
     LogRel(("uEntryTick                 = %RX64\n",     pCtx->hwvirt.vmx.uEntryTick));
     LogRel(("offVirtApicWrite           = %#RX16\n",    pCtx->hwvirt.vmx.offVirtApicWrite));
     LogRel(("fVirtNmiBlocking           = %RTbool\n",   pCtx->hwvirt.vmx.fVirtNmiBlocking));
-    LogRel(("fVirtApicPageDirty         = %RTbool\n",   pCtx->hwvirt.vmx.fVirtApicPageDirty));
     LogRel(("VMCS cache:\n"));
 
     const char *pszPrefix = "  ";
