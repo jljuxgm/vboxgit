@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 81943 2019-11-18 15:10:36Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 82407 2019-12-05 11:01:49Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -504,6 +504,9 @@ static HRESULT listUsbHost(const ComPtr<IVirtualBox> &pVirtualBox)
             CHECK_ERROR_RET(dev, COMGETTER(Address)(bstr.asOutParam()), 1);
             if (!bstr.isEmpty())
                 RTPrintf("Address:            %ls\n", bstr.raw());
+            CHECK_ERROR_RET(dev, COMGETTER(PortPath)(bstr.asOutParam()), 1);
+            if (!bstr.isEmpty())
+                RTPrintf("Port path:          %ls\n", bstr.raw());
 
             /* current state  */
             USBDeviceState_T state;
