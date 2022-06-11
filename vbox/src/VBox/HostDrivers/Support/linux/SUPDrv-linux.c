@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-linux.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: SUPDrv-linux.c 83325 2020-03-19 12:13:48Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -308,7 +308,7 @@ static int __init VBoxDrvLinuxInit(void)
     /*
      * Check for synchronous/asynchronous TSC mode.
      */
-    printk(KERN_DEBUG "vboxdrv: Found %u processor cores\n", (unsigned)RTMpGetOnlineCount());
+    printk(KERN_DEBUG "vboxdrv: Found %u processor cores/threads\n", (unsigned)RTMpGetOnlineCount());
     rc = misc_register(&gMiscDeviceSys);
     if (rc)
     {
