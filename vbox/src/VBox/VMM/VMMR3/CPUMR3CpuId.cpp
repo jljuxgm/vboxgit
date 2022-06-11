@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 80660 2019-09-09 07:47:17Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 81225 2019-10-11 12:44:16Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -6203,6 +6203,8 @@ static DBGFREGSUBFIELD const g_aLeaf7Sub0EdxSubFields[] =
     DBGFREGSUBFIELD_RO("STIBP\0"        "Supports IA32_SPEC_CTRL.STIBP",                27, 1, 0),
     DBGFREGSUBFIELD_RO("FLUSH_CMD\0"    "Supports IA32_FLUSH_CMD",                      28, 1, 0),
     DBGFREGSUBFIELD_RO("ARCHCAP\0"      "Supports IA32_ARCH_CAP",                       29, 1, 0),
+    DBGFREGSUBFIELD_RO("CORECAP\0"      "Supports IA32_CORE_CAP",                       30, 1, 0),
+    DBGFREGSUBFIELD_RO("SSBD\0"         "Supports IA32_SPEC_CTRL.SSBD",                 31, 1, 0),
     DBGFREGSUBFIELD_TERMINATOR()
 };
 
