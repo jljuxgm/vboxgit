@@ -1,4 +1,4 @@
-/* $Id: Timestamp.h 79526 2019-07-04 10:54:56Z vboxsync $ */
+/* $Id: Timestamp.h 79530 2019-07-04 18:25:04Z vboxsync $ */
 /** @file
  * DHCP server - timestamps
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef VBOX_INCLUDED_SRC_Dhcpd_TimeStamp_h
-#define VBOX_INCLUDED_SRC_Dhcpd_TimeStamp_h
+#ifndef VBOX_INCLUDED_SRC_Dhcpd_Timestamp_h
+#define VBOX_INCLUDED_SRC_Dhcpd_Timestamp_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -109,4 +109,4 @@ inline bool operator!=(const Timestamp &l, const Timestamp &r) { return l.compar
 inline bool operator<=(const Timestamp &l, const Timestamp &r) { return l.compare(r) <= 0; }
 inline bool operator>=(const Timestamp &l, const Timestamp &r) { return l.compare(r) >= 0; }
 
-#endif /* !VBOX_INCLUDED_SRC_Dhcpd_TimeStamp_h */
+#endif /* !VBOX_INCLUDED_SRC_Dhcpd_Timestamp_h */
