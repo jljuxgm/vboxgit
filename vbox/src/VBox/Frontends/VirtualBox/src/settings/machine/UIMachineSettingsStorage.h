@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 78531 2019-05-15 13:13:12Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 78538 2019-05-16 09:33:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -259,6 +259,7 @@ public:
    ~ControllerItem();
 
     KStorageBus ctrBusType() const;
+    ControllerBusList ctrBusTypes() const;
     QString oldCtrName() const;
     QString ctrName() const;
     KStorageControllerType ctrType() const;
@@ -267,6 +268,7 @@ public:
     uint maxPortCount();
     bool ctrUseIoCache() const;
 
+    void setCtrBusType(KStorageBus enmCtrBusType);
     void setCtrName (const QString &aCtrName);
     void setCtrType (KStorageControllerType aCtrType);
     void setPortCount (uint aPortCount);
@@ -406,6 +408,7 @@ public:
         R_CtrTypes,
         R_CtrDevices,
         R_CtrBusType,
+        R_CtrBusTypes,
         R_CtrPortCount,
         R_CtrMaxPortCount,
         R_CtrIoCache,
