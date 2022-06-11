@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 84199 2020-05-08 08:23:30Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 84200 2020-05-08 08:29:03Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3588,7 +3588,6 @@ static void iommuAmdInitDevTabHwErrorEvent(uint16_t uDevId, RTGCPHYS GCPhysDte, 
  * Raises a DEV_TAB_HARDWARE_ERROR event.
  *
  * @param   pDevIns             The IOMMU device instance.
- * @param   uDevId              The device ID.
  * @param   enmOp               The IOMMU operation being performed.
  * @param   pEvtDevTabHwErr     The device table hardware error event.
  * @param   enmEvtType          The device table hardware error event type.
