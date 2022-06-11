@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplVmxInstr.cpp.h 78919 2019-06-03 06:52:00Z vboxsync $ */
+/* $Id: IEMAllCImplVmxInstr.cpp.h 78927 2019-06-03 10:40:33Z vboxsync $ */
 /** @file
  * IEM - VT-x instruction implementation.
  */
@@ -2937,7 +2937,10 @@ IEM_STATIC VBOXSTRICTRC iemVmxVmexitInstr(PVMCPU pVCpu, uint32_t uExitReason, ui
     ExitInfo.cbInstr = cbInstr;
 
 #ifdef VBOX_STRICT
-    /* To prevent us from shooting ourselves in the foot. Maybe remove later. */
+    /*
+     * To prevent us from shooting ourselves in the foot.
+     * The follow instructions should convey more than just the instruction length.
+     */
     switch (uExitReason)
     {
         case VMX_EXIT_INVEPT:
