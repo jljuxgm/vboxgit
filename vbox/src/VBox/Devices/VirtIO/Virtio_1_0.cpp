@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 81630 2019-11-02 22:12:49Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 81634 2019-11-04 01:58:52Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -384,36 +384,6 @@ static void virtioNotifyGuestDriver(PVIRTIOSTATE pVirtio, uint16_t qIdx, bool fF
         Log6Func(("...skipping interrupt. Guest flagged VIRTQ_AVAIL_F_NO_INTERRUPT for queue\n"));
     }
 }
-
-/**
- * NOTE: The consumer (PDM device) must call this function to 'forward' a relocation call.
- *
- * Device relocation callback.
- *
- * When this callback is called the device instance data, and if the
- * device have a GC component, is being relocated, or/and the selectors
- * have been changed. The device must use the chance to perform the
- * necessary pointer relocations and data updates.
- *
- * Before the GC code is executed the first time, this function will be
- * called with a 0 delta so GC pointer calculations can be one in one place.
- *
- * @param   pDevIns     Pointer to the device instance.
- * @param   offDelta    The relocation delta relative to the old location.
- *
- * @remark  A relocation CANNOT fail.
- */
-void virtioRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
-{
-    RT_NOREF(offDelta);
-    PVIRTIOSTATE pVirtio = *PDMINS_2_DATA(pDevIns, PVIRTIOSTATE *);
-    LogFunc(("\n"));
-
-    pVirtio->pDevInsR3 = pDevIns;
-    pVirtio->pDevInsRC = PDMDEVINS_2_RCPTR(pDevIns);
-    pVirtio->pDevInsR0 = PDMDEVINS_2_R0PTR(pDevIns);
-}
-
 
 /**
  * Raise interrupt or MSI-X
@@ -1057,8 +1027,6 @@ int   virtioConstruct(PPDMDEVINS             pDevIns,
     RTStrCopy(pVirtio->szInstance, sizeof(pVirtio->szInstance), pcszInstance);
 
     pVirtio->pDevInsR3 = pDevIns;
-    pVirtio->pDevInsR0 = PDMDEVINS_2_R0PTR(pDevIns);
-    pVirtio->pDevInsRC = PDMDEVINS_2_RCPTR(pDevIns);
     pVirtio->uDeviceStatus = 0;
     pVirtio->cbDevSpecificCfg = cbDevSpecificCfg;
     pVirtio->pDevSpecificCfg  = pDevSpecificCfg;
