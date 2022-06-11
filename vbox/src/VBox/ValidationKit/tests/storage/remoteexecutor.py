@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 80225 2019-08-12 17:39:41Z vboxsync $
+# $Id: remoteexecutor.py 80227 2019-08-12 17:44:55Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80225 $"
+__version__ = "$Revision: 80227 $"
 
 
 # Standard Python imports.
@@ -295,7 +295,7 @@ class RemoteExecutor(object):
             fRc = self.oTxsSession.syncIsFile(sPath, cMsTimeout);
         else:
             try:
-                os.path.isFile(sPath);
+                self.isFile(sPath);
             except:
                 fRc = False;
 
