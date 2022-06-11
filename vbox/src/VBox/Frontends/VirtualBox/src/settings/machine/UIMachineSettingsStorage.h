@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 81050 2019-09-27 12:20:46Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 81054 2019-09-27 12:59:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -22,12 +22,6 @@
 #endif
 
 /* Qt includes: */
-#ifdef VBOX_WS_MAC
-/* Somewhere Carbon.h includes AssertMacros.h which defines the macro "check".
- * In QItemDelegate a class method is called "check" also. As we not used the
- * macro undefine it here. */
-# undef check
-#endif /* VBOX_WS_MAC */
 #include <QItemDelegate>
 #include <QPointer>
 
