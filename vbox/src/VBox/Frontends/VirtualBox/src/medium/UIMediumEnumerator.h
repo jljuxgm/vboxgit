@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 79128 2019-06-13 12:46:16Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 79129 2019-06-13 13:17:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -182,10 +182,10 @@ private:
     void recacheFromActualUsage(const CMediumMap &currentCMediums,
                                 const QList<QUuid> &currentCMediumIDs);
 #else /* VBOX_GUI_WITH_NEW_MEDIA_EVENTS */
-    /** Parses incoming @a comMachine, enumerating ONLY KNOWN media it has.
+    /** Parses machine with incoming @a uMachineId, enumerating ONLY KNOWN media it has.
       * @param  result  Brings the list of previously enumerated media
       *                 IDs to be appended with newly enumerated. */
-    void parseMachine(CMachine comMachine, QList<QUuid> &result);
+    void parseMachineId(const QUuid &uMachineId, QList<QUuid> &result);
     /** Parses incoming @a comAttachment, enumerating the media it has attached.
       * @param  result  Brings the list of previously enumerated media
       *                 IDs to be appended with newly enumerated. */
