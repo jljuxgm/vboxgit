@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 78565 2019-05-17 12:06:36Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -3233,7 +3233,7 @@ void SessionMachine::i_deleteSnapshotHandler(DeleteSnapshotTask &task)
                     }
                     else
                     {
-                        for (ComObjPtr<Medium> pTmpMedium = it->mpSource->i_getParent();
+                        for (ComObjPtr<Medium> pTmpMedium = it->mpSource;
                              pTmpMedium && pTmpMedium != it->mpTarget;
                              pTmpMedium = pTmpMedium->i_getParent())
                         {

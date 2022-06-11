@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 78261 2019-04-23 16:49:28Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 78565 2019-05-17 12:06:36Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1977,7 +1977,9 @@ HRESULT VirtualBox::createMedium(const com::Utf8Str &aFormat,
     if (SUCCEEDED(rc))
     {
         medium.queryInterfaceTo(aMedium.asOutParam());
-        i_onMediumRegistered(medium->i_getId(), medium->i_getDeviceType(), TRUE);
+        com::Guid uMediumId = medium->i_getId();
+        if (uMediumId.isValid() && !uMediumId.isZero())
+            i_onMediumRegistered(uMediumId, medium->i_getDeviceType(), TRUE);
     }
 
     return rc;
