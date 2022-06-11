@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 81634 2019-11-04 01:58:52Z vboxsync $ $Revision: 81634 $ $Date: 2019-11-04 09:58:52 +0800 (Mon, 04 Nov 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 81635 2019-11-04 02:00:42Z vboxsync $ $Revision: 81635 $ $Date: 2019-11-04 10:00:42 +0800 (Mon, 04 Nov 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1760,7 +1760,7 @@ static DECLCALLBACK(int) virtioScsiR3LoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSS
 
 
 /*********************************************************************************************************************************
-*   Device Interface - Misplaced.                                                                                                             *
+*   Device Interface - Misplaced.                                                                                                *
 *********************************************************************************************************************************/
 
 /**
