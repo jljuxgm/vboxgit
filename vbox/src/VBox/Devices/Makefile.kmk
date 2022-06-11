@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 81713 2019-11-06 14:54:42Z vboxsync $
+# $Id: Makefile.kmk 81771 2019-11-11 17:24:36Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -305,6 +305,7 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
    VBoxDD_DEFS          += VMSVGA3D_OPENGL
    VBoxDD_SOURCES       += \
    	Graphics/DevVGA-SVGA3d-ogl.cpp \
+   	Graphics/DevVGA-SVGA3d-glHlp.cpp \
    	$(VBoxDD_0_OUTDIR)/VBoxSVGA3DLazyLoad.asm
    VBoxDD_SOURCES.darwin += \
    	$(VBoxDD_0_OUTDIR)/VBoxSVGA3DObjCLazyLoad.asm
