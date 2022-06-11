@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 83033 2020-02-10 13:40:54Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 83181 2020-03-01 14:30:10Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1333,6 +1333,8 @@ static void supR3HardenedGetFullExePath(void)
     if (!cchImageName || cchImageName >= sizeof(g_szSupLibHardenedExePath))
         supR3HardenedFatal("supR3HardenedExecDir: _dyld_get_image_name(0) failed, cchImageName=%d\n", cchImageName);
     suplibHardenedMemCopy(g_szSupLibHardenedExePath, pszImageName, cchImageName + 1);
+    /** @todo abspath the string or this won't work:
+     * cd /Applications/VirtualBox.app/Contents/Resources/VirtualBoxVM.app/Contents/MacOS/ && ./VirtualBoxVM --startvm name */
 
 #elif defined(RT_OS_WINDOWS)
     char *pszDst = g_szSupLibHardenedExePath;
