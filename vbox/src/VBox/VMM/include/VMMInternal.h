@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 80019 2019-07-26 18:34:14Z vboxsync $ */
+/* $Id: VMMInternal.h 80274 2019-08-14 14:34:38Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -74,7 +74,7 @@
 typedef struct VMMR0LOGGER
 {
     /** Pointer to Pointer to the VM. */
-    R0PTRTYPE(PVM)              pVM;
+    R0PTRTYPE(PVMCC)            pVM;
     /** Size of the allocated logger instance (Logger). */
     uint32_t                    cbLogger;
     /** Flag indicating whether we've create the logger Ring-0 instance yet. */

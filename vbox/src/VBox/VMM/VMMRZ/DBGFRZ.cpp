@@ -1,4 +1,4 @@
-/* $Id: DBGFRZ.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DBGFRZ.cpp 80274 2019-08-14 14:34:38Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, RZ part.
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_DBGF
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/selm.h>
@@ -27,7 +28,7 @@
 #endif
 #include <VBox/log.h>
 #include "DBGFInternal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 #include <VBox/err.h>
 #include <iprt/assert.h>
 

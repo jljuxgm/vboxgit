@@ -1,4 +1,4 @@
-/* $Id: GIMR0Hv.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: GIMR0Hv.cpp 80274 2019-08-14 14:34:38Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM), Hyper-V - Host Context Ring-0.
  */
@@ -19,12 +19,13 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_BUGREF_9217_PART_I
 #define LOG_GROUP LOG_GROUP_GIM
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/tm.h>
 #include "GIMInternal.h"
 #include "GIMHvInternal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 
 #include <VBox/err.h>
 
@@ -92,7 +93,7 @@ static void gimR0HvPageFree(PRTR0MEMOBJ pMemObj, PRTR0PTR ppVirt, PRTHCPHYS pHCP
  * @param   u64Offset   The computed TSC offset.
  * @thread  EMT.
  */
-VMM_INT_DECL(int) gimR0HvUpdateParavirtTsc(PVM pVM, uint64_t u64Offset)
+VMM_INT_DECL(int) gimR0HvUpdateParavirtTsc(PVMCC pVM, uint64_t u64Offset)
 {
     Assert(GIMIsEnabled(pVM));
     bool fHvTscEnabled = MSR_GIM_HV_REF_TSC_IS_ENABLED(pVM->gim.s.u.Hv.u64TscPageMsr);
@@ -149,7 +150,7 @@ VMM_INT_DECL(int) gimR0HvUpdateParavirtTsc(PVM pVM, uint64_t u64Offset)
  * @returns VBox status code.
  * @param   pVM     The cross context VM structure.
  */
-VMMR0_INT_DECL(int) gimR0HvInitVM(PVM pVM)
+VMMR0_INT_DECL(int) gimR0HvInitVM(PVMCC pVM)
 {
     AssertPtr(pVM);
     Assert(GIMIsEnabled(pVM));
@@ -168,7 +169,7 @@ VMMR0_INT_DECL(int) gimR0HvInitVM(PVM pVM)
  * @returns VBox status code.
  * @param   pVM     The cross context VM structure.
  */
-VMMR0_INT_DECL(int) gimR0HvTermVM(PVM pVM)
+VMMR0_INT_DECL(int) gimR0HvTermVM(PVMCC pVM)
 {
     AssertPtr(pVM);
     Assert(GIMIsEnabled(pVM));

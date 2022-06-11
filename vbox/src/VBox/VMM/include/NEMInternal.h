@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: NEMInternal.h 80274 2019-08-14 14:34:38Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -360,6 +360,10 @@ typedef struct NEMR0PERVCPU
 # ifdef RT_OS_WINDOWS
     /** Hypercall input/ouput page. */
     NEMR0HYPERCALLDATA          HypercallData;
+#  ifdef VBOX_BUGREF_9217
+    /** Delta to add to convert a ring-0 pointer to a ring-3 one.   */
+    uintptr_t                   offRing3ConversionDelta;
+#  endif
 # else
     uint32_t                    uDummy;
 # endif
@@ -375,8 +379,10 @@ typedef struct NEMR0PERVM
     uint64_t                    idHvPartition;
     /** I/O control context. */
     PSUPR0IOCTLCTX              pIoCtlCtx;
+# ifndef VBOX_BUGREF_9217
     /** Delta to add to convert a ring-0 pointer to a ring-3 one.   */
     uintptr_t                   offRing3ConversionDelta;
+# endif
     /** Info about the VidGetHvPartitionId I/O control interface. */
     NEMWINIOCTL                 IoCtlGetHvPartitionId;
     /** Info about the VidStartVirtualProcessor I/O control interface. */
