@@ -1,4 +1,4 @@
-/* $Id: DevHDACommon.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: DevHDACommon.h 80691 2019-09-10 09:58:21Z vboxsync $ */
 /** @file
  * DevHDACommon.h - Shared HDA device defines / functions.
  */
@@ -40,9 +40,9 @@ typedef struct HDAREGDESC
      *  policy of the register. */
     uint32_t    fFlags;
     /** Read callback. */
-    int       (*pfnRead)(PHDASTATE pThis, uint32_t iReg, uint32_t *pu32Value);
+    int       (*pfnRead)(PPDMDEVINS pDevIns, PHDASTATE pThis, uint32_t iReg, uint32_t *pu32Value);
     /** Write callback. */
-    int       (*pfnWrite)(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value);
+    int       (*pfnWrite)(PPDMDEVINS pDevIns, PHDASTATE pThis, uint32_t iReg, uint32_t u32Value);
     /** Index into the register storage array. */
     uint32_t    mem_idx;
     /** Abbreviated name. */
