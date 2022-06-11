@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83034 2020-02-10 14:28:17Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83060 2020-02-12 14:05:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -43,6 +43,8 @@
 #include "UIMessageCenter.h"
 #include "UIModalWindowManager.h"
 #include "UIVirtualBoxManagerWidget.h"
+#include "UIVirtualMachineItem.h"
+#include "UIWizardNewCloudVM.h"
 #include "UIWizardNewVM.h"
 
 /* COM includes: */
@@ -880,16 +882,32 @@ void UIChooserModel::sltCreateNewMachine()
     actionPool()->action(UIActionIndexST_M_Machine_S_New)->setEnabled(false);
     actionPool()->action(UIActionIndexST_M_Group_S_New)->setEnabled(false);
 
-    /* Use the "safe way" to open stack of Mac OS X Sheets: */
-    QWidget *pWizardParent = windowManager().realParentWindow(chooser()->managerWidget());
-    UISafePointerWizardNewVM pWizard = new UIWizardNewVM(pWizardParent, strGroupName);
-    windowManager().registerNewParent(pWizard, pWizardParent);
-    pWizard->prepare();
+    /* What first item do we have? */
+    if (  !firstSelectedMachineItem()
+        ||firstSelectedMachineItem()->itemType() == UIVirtualMachineItem::ItemType_Local)
+    {
+        /* Use the "safe way" to open stack of Mac OS X Sheets: */
+        QWidget *pWizardParent = windowManager().realParentWindow(chooser()->managerWidget());
+        UISafePointerWizardNewVM pWizard = new UIWizardNewVM(pWizardParent, strGroupName);
+        windowManager().registerNewParent(pWizard, pWizardParent);
+        pWizard->prepare();
 
-    /* Execute wizard: */
-    pWizard->exec();
-    if (pWizard)
+        /* Execute wizard: */
+        pWizard->exec();
         delete pWizard;
+    }
+    else
+    {
+        /* Use the "safe way" to open stack of Mac OS X Sheets: */
+        QWidget *pWizardParent = windowManager().realParentWindow(chooser()->managerWidget());
+        UISafePointerWizardNewCloudVM pWizard = new UIWizardNewCloudVM(pWizardParent);
+        windowManager().registerNewParent(pWizard, pWizardParent);
+        pWizard->prepare();
+
+        /* Execute wizard: */
+        pWizard->exec();
+        delete pWizard;
+    }
 
     /* Unlock the action allowing further calls: */
     actionPool()->action(UIActionIndexST_M_Welcome_S_New)->setEnabled(true);

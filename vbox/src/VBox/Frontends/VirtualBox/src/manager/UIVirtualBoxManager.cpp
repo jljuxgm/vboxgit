@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 83011 2020-02-06 18:07:29Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 83060 2020-02-12 14:05:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -1866,6 +1866,10 @@ bool UIVirtualBoxManager::isActionEnabled(int iActionIndex, const QList<UIVirtua
     switch (iActionIndex)
     {
         case UIActionIndexST_M_Group_S_New:
+        {
+            return !isGroupSavingInProgress() &&
+                   isSingleGroupSelected();
+        }
         case UIActionIndexST_M_Group_S_Add:
         case UIActionIndexST_M_Group_S_Sort:
         {
