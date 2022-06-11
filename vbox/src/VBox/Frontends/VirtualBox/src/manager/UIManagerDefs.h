@@ -1,4 +1,4 @@
-/* $Id: UIManagerDefs.h 83922 2020-04-22 12:13:36Z vboxsync $ */
+/* $Id: UIManagerDefs.h 83926 2020-04-22 14:10:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager definitions.
  */
@@ -25,6 +25,7 @@
 /** Virtual machine item types. */
 enum UIVirtualMachineItemType
 {
+    UIVirtualMachineItemType_Invalid,
     UIVirtualMachineItemType_Local,
     UIVirtualMachineItemType_CloudFake,
     UIVirtualMachineItemType_CloudReal

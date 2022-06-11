@@ -1,4 +1,4 @@
-/* $Id: UIChooserNodeMachine.cpp 83923 2020-04-22 12:22:03Z vboxsync $ */
+/* $Id: UIChooserNodeMachine.cpp 83926 2020-04-22 14:10:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNodeMachine class implementation.
  */
@@ -240,7 +240,7 @@ UIVirtualMachineItem *UIChooserNodeMachine::cache() const
 
 UIVirtualMachineItemType UIChooserNodeMachine::cacheType() const
 {
-    return cache() ? cache()->itemType() : UIVirtualMachineItemType_Local;
+    return cache() ? cache()->itemType() : UIVirtualMachineItemType_Invalid;
 }
 
 void UIChooserNodeMachine::retranslateUi()
