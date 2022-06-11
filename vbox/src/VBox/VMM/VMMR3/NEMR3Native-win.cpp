@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 81376 2019-10-19 13:58:24Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 82353 2019-12-03 19:10:00Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1441,7 +1441,7 @@ int nemR3NativeInitAfterCPUM(PVM pVM)
                                                       RTNtLastErrorValue()));
                 }
                 return VMSetError(pVM, VERR_NEM_VM_CREATE_FAILED, RT_SRC_POS,
-                                  "Call to WHvSetupPartition failed: %Rhrc (Last=%#x/%u)", hrc, rcNtLast, dwErrLast);
+                                  "Call to WHvCreateVirtualProcessor failed: %Rhrc (Last=%#x/%u)", hrc, rcNtLast, dwErrLast);
             }
         }
 # ifdef NEM_WIN_WITH_RING0_RUNLOOP
