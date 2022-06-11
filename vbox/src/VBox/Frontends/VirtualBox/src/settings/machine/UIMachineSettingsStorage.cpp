@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 78721 2019-05-24 12:01:05Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 78722 2019-05-24 12:09:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3710,7 +3710,7 @@ void UIMachineSettingsStorage::prepare()
     /* Enumerate Media. We need at least the MediaList filled, so this is the
      * lasted point, where we can start. The rest of the media checking is done
      * in a background thread. */
-    vboxGlobal().startMediaEnumeration();
+    vboxGlobal().startMediumEnumeration();
 
     /* Layout created in the .ui file. */
     AssertPtrReturnVoid(mLtStorage);

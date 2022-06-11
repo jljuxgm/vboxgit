@@ -1,4 +1,4 @@
-/* $Id: UIMediaComboBox.h 78721 2019-05-24 12:01:05Z vboxsync $ */
+/* $Id: UIMediaComboBox.h 78722 2019-05-24 12:09:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediaComboBox class declaration.
  */
@@ -72,7 +72,7 @@ protected slots:
     /** Habdles medium-deleted signal for medium with @a uMediumId. */
     void sltHandleMediumDeleted(const QUuid &uMediumId);
 
-    /** Handles media-enumeration start. */
+    /** Handles medium-enumeration start. */
     void sltHandleMediumEnumerationStart();
 
     /** Handles combo activation for item with certain @a iIndex. */

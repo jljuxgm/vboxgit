@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 78721 2019-05-24 12:01:05Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 78722 2019-05-24 12:09:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -80,7 +80,7 @@ UIMediumSelector::UIMediumSelector(UIMediumDeviceType enmMediumType, const QStri
     , m_strMachineGuestOSTypeId(strMachineGuestOSTypeId)
 {
     if (vboxGlobal().uiType() == VBoxGlobal::UIType_RuntimeUI)
-        vboxGlobal().startMediaEnumeration();
+        vboxGlobal().startMediumEnumeration();
     configure();
     finalize();
 }
@@ -232,7 +232,7 @@ void UIMediumSelector::prepareMenuAndToolBar()
 
 void UIMediumSelector::prepareConnections()
 {
-    /* Configure media-enumeration connections: */
+    /* Configure medium-enumeration connections: */
     connect(&vboxGlobal(), &VBoxGlobal::sigMediumEnumerationStarted,
             this, &UIMediumSelector::sltHandleMediumEnumerationStart);
     connect(&vboxGlobal(), &VBoxGlobal::sigMediumEnumerated,
@@ -495,7 +495,7 @@ void UIMediumSelector::sltHandleMediumEnumerationFinish()
 void UIMediumSelector::sltHandleRefresh()
 {
     /* Initialize media enumation: */
-    vboxGlobal().startMediaEnumeration();
+    vboxGlobal().startMediumEnumeration();
     /* Update the search: */
     m_pSearchWidget->search(m_pTreeWidget);
 }

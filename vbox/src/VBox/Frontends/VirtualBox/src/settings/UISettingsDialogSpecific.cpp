@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 78721 2019-05-24 12:01:05Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 78722 2019-05-24 12:09:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -669,7 +669,7 @@ void UISettingsDialogMachine::prepare()
     setWindowIcon(QIcon(":/vm_settings_16px.png"));
 #endif
 
-    /* Allow to reset first-run flag just when media-enumeration was finished: */
+    /* Allow to reset first-run flag just when medium-enumeration was finished: */
     connect(&vboxGlobal(), &VBoxGlobal::sigMediumEnumerationFinished,
             this, &UISettingsDialogMachine::sltAllowResetFirstRunFlag);
 

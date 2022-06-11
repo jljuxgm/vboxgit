@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 78721 2019-05-24 12:01:05Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 78722 2019-05-24 12:09:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -114,7 +114,7 @@ private slots:
         void sltHandleHostScreenAvailableAreaChange();
 #endif /* VBOX_WS_X11 */
 
-        /** Handles signal about media-enumeration finished. */
+        /** Handles signal about medium-enumeration finished. */
         void sltHandleMediumEnumerationFinish();
 
         /** Handles call to open a @a list of URLs. */
@@ -342,7 +342,7 @@ private:
 
     /** Holds whether the dialog is polished. */
     bool  m_fPolished                      : 1;
-    /** Holds whether first media-enumeration handled. */
+    /** Holds whether first medium-enumeration handled. */
     bool  m_fFirstMediumEnumerationHandled : 1;
 
     /** Holds the action-pool instance. */
