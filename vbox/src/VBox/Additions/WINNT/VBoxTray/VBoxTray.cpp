@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 83072 2020-02-14 10:48:14Z vboxsync $ */
+/* $Id: VBoxTray.cpp 83823 2020-04-19 01:18:53Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -1163,7 +1163,7 @@ static LRESULT CALLBACK vboxToolWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
                                 if (fBlockWhileTracking)
                                     fTrack |= TPM_RETURNCMD | TPM_NONOTIFY;
 
-                                UINT uMsg = TrackPopupMenu(hContextMenu, fTrack, lpCursor.x, lpCursor.y, 0, hWnd, NULL);
+                                uMsg = TrackPopupMenu(hContextMenu, fTrack, lpCursor.x, lpCursor.y, 0, hWnd, NULL);
                                 if (   uMsg
                                     && fBlockWhileTracking)
                                 {
