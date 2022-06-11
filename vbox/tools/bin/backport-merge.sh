@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: backport-merge.sh 83680 2020-04-11 18:44:19Z vboxsync $
+# $Id: backport-merge.sh 84267 2020-05-12 08:37:44Z vboxsync $
 ## @file
 # Script for merging a backport from trunk.
 #
@@ -70,6 +70,9 @@ do
         echo "***"
         echo "*** Merging r${MY_REV} ..."
         echo "***"
+        if [ -n "${MY_FORCE}" ]; then
+            MY_MERGE_ARGS="$MY_MERGE_ARGS--ignore-ancestry"
+        fi
         if "${MY_SVN}" merge ${MY_MERGE_ARGS} "${MY_TRUNK_DIR}" "${MY_BRANCH_DIR}" -c ${MY_REV}; then
             # Check for conflict.
             MY_CONFLICTS=`"${MY_SVN}" status "${MY_BRANCH_DIR}" | "${MY_SED}" -n -e '/^C/p'`
