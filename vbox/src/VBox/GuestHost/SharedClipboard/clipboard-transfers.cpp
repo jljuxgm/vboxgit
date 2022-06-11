@@ -1,4 +1,4 @@
-/* $Id: clipboard-transfers.cpp 81460 2019-10-22 19:36:15Z vboxsync $ */
+/* $Id: clipboard-transfers.cpp 81699 2019-11-06 10:54:35Z vboxsync $ */
 /** @file
  * Shared Clipboard: Common Shared Clipboard transfer handling code.
  */
@@ -2202,6 +2202,7 @@ uint32_t ShClTransferRootsCount(PSHCLTRANSFER pTransfer)
 {
     AssertPtrReturn(pTransfer, 0);
 
+    LogFlowFunc(("[Transfer %RU16] cRoots=%RU64\n", pTransfer->State.uID, pTransfer->cRoots));
     return (uint32_t)pTransfer->cRoots;
 }
 
@@ -2497,6 +2498,7 @@ SHCLTRANSFERDIR ShClTransferGetDir(PSHCLTRANSFER pTransfer)
 {
     AssertPtrReturn(pTransfer, SHCLTRANSFERDIR_UNKNOWN);
 
+    LogFlowFunc(("[Transfer %RU16] enmDir=%RU32\n", pTransfer->State.uID, pTransfer->State.enmDir));
     return pTransfer->State.enmDir;
 }
 
@@ -2510,6 +2512,7 @@ SHCLSOURCE ShClTransferGetSource(PSHCLTRANSFER pTransfer)
 {
     AssertPtrReturn(pTransfer, SHCLSOURCE_INVALID);
 
+    LogFlowFunc(("[Transfer %RU16] enmSource=%RU32\n", pTransfer->State.uID, pTransfer->State.enmSource));
     return pTransfer->State.enmSource;
 }
 
@@ -2523,6 +2526,7 @@ SHCLTRANSFERSTATUS ShClTransferGetStatus(PSHCLTRANSFER pTransfer)
 {
     AssertPtrReturn(pTransfer, SHCLTRANSFERSTATUS_NONE);
 
+    LogFlowFunc(("[Transfer %RU16] enmStatus=%RU32\n", pTransfer->State.uID, pTransfer->State.enmStatus));
     return pTransfer->State.enmStatus;
 }
 

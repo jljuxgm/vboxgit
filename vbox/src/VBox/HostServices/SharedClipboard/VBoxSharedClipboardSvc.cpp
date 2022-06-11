@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 81559 2019-10-28 10:09:35Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 81699 2019-11-06 10:54:35Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1731,9 +1731,12 @@ static DECLCALLBACK(void) svcCall(void *,
                 rc = shClSvcTransferHandler(pClient, callHandle, u32Function, cParms, paParms, tsArrival);
             }
             else
+            {
+                LogRel2(("Shared Clipboard: File transfers are disabled for this VM\n"));
                 rc = VERR_ACCESS_DENIED;
+            }
 #else
-            rc = VERR_NOT_IMPLEMENTED;
+            rc = VERR_NOT_SUPPORTED;
 #endif
             break;
         }
