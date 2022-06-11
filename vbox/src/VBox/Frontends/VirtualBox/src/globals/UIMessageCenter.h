@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 78395 2019-05-06 17:20:47Z vboxsync $ */
+/* $Id: UIMessageCenter.h 78396 2019-05-06 17:22:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -342,6 +342,9 @@ public:
     void cannotDetachDevice(const CMachine &machine, UIMediumDeviceType type, const QString &strLocation, const StorageSlot &storageSlot, QWidget *pParent = 0) const;
     bool cannotRemountMedium(const CMachine &machine, const UIMedium &medium, bool fMount, bool fRetry, QWidget *pParent = 0) const;
     void cannotOpenMedium(const CVirtualBox &comVBox, const QString &strLocation, QWidget *pParent = 0) const;
+    void cannotOpenKnownMedium(const CVirtualBox &comVBox, const QUuid &uMediumId, QWidget *pParent = 0) const;
+    void cannotAcquireAttachmentMedium(const CMediumAttachment &comAttachment, QWidget *pParent = 0) const;
+    void cannotAcquireMediumAttribute(const CMedium &comMedium, QWidget *pParent = 0) const;
     void cannotCloseMedium(const UIMedium &medium, const COMResult &rc, QWidget *pParent = 0) const;
 
     /* API: Host Network Manager warnings: */
