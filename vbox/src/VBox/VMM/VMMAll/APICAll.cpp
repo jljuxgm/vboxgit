@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
+/* $Id: APICAll.cpp 81909 2019-11-17 18:23:56Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2682,6 +2682,8 @@ VMM_INT_DECL(int) APICBusDeliver(PVMCC pVM, uint8_t uDest, uint8_t uDestMode, ui
  * @param   u8Level     The level (0 for low or 1 for high).
  * @param   rcRZ        The return code if the operation cannot be performed in
  *                      the current context.
+ *
+ * @note    All callers totally ignores the status code!
  */
 VMM_INT_DECL(VBOXSTRICTRC) APICLocalInterrupt(PVMCPUCC pVCpu, uint8_t u8Pin, uint8_t u8Level, int rcRZ)
 {
@@ -2807,9 +2809,9 @@ VMM_INT_DECL(VBOXSTRICTRC) APICLocalInterrupt(PVMCPUCC pVCpu, uint8_t u8Pin, uin
                 case XAPICDELIVERYMODE_STARTUP:
                 default:
                 {
-                    rcStrict = VERR_INTERNAL_ERROR_3;
                     AssertMsgFailed(("APIC%u: LocalInterrupt: Invalid delivery mode %#x (%s) on LINT%d\n", pVCpu->idCpu,
                                      enmDeliveryMode, apicGetDeliveryModeName(enmDeliveryMode), u8Pin));
+                    rcStrict = VERR_INTERNAL_ERROR_3;
                     break;
                 }
             }

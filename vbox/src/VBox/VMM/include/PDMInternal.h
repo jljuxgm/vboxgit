@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 81841 2019-11-14 02:12:01Z vboxsync $ */
+/* $Id: PDMInternal.h 81909 2019-11-17 18:23:56Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1387,7 +1387,7 @@ typedef PDMUSERPERVM *PPDMUSERPERVM;
 extern const PDMDRVHLPR3    g_pdmR3DrvHlp;
 extern const PDMDEVHLPR3    g_pdmR3DevHlpTrusted;
 extern const PDMDEVHLPR3    g_pdmR3DevHlpUnTrusted;
-extern const PDMPICHLPR3    g_pdmR3DevPicHlp;
+extern const PDMPICHLP      g_pdmR3DevPicHlp;
 extern const PDMIOAPICHLPR3 g_pdmR3DevIoApicHlp;
 extern const PDMFWHLPR3     g_pdmR3DevFirmwareHlp;
 extern const PDMPCIHLPR3    g_pdmR3DevPciHlp;
