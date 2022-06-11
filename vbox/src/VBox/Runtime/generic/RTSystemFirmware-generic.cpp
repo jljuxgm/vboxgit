@@ -1,4 +1,4 @@
-/* $Id: RTSystemFirmware-generic.cpp 80855 2019-09-17 12:33:54Z vboxsync $ */
+/* $Id: RTSystemFirmware-generic.cpp 80857 2019-09-17 12:36:45Z vboxsync $ */
 /** @file
  * IPRT - System firmware information, Generic stub.
  */
@@ -36,6 +36,7 @@
 
 RTDECL(int) RTSystemFirmwareQueryType(PRTSYSFWTYPE penmFirmwareType)
 {
+    RT_NOREF(penmFirmwareType);
     return VERR_NOT_SUPPORTED;
 }
 RT_EXPORT_SYMBOL(RTSystemFirmwareQueryType);
