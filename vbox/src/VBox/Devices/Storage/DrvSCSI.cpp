@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 80589 2019-09-04 18:20:28Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 80591 2019-09-04 18:27:46Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -191,7 +191,7 @@ static PDMMEDIAEXIOREQSCSITXDIR drvscsiVScsiXferDir2PdmMediaExDir(VSCSIXFERDIR e
         default:                   return PDMMEDIAEXIOREQSCSITXDIR_INVALID;
     }
 
-    return PDMMEDIAEXIOREQSCSITXDIR_INVALID;
+    /*return PDMMEDIAEXIOREQSCSITXDIR_INVALID;*/
 }
 
 
