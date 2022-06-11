@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 83521 2020-04-03 08:36:26Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 83522 2020-04-03 08:58:00Z vboxsync $ */
 /** @file
  * VBox serial devices: Host serial driver
  */
@@ -583,7 +583,6 @@ static int drvHostSerialIoLoopNormal(PPDMDRVINS pDrvIns, PDRVHOSTSERIAL pThis, P
  * The error I/O loop.
  *
  * @returns VBox status code.
- * @param   pDrvIns             Pointer to the driver instance data.
  * @param   pThis               Host serial driver instance data.
  * @param   pThread             Thread instance data.
  */
