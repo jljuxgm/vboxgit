@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 77912 2019-03-27 12:01:15Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 80216 2019-08-10 02:04:07Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -2517,7 +2517,7 @@ DECLHIDDEN(int) SUPR3HardenedMain(const char *pszProgName, uint32_t fFlags, int 
         && supR3HardenedWinIsReSpawnNeeded(1 /*iWhich*/, argc, argv))
     {
         SUP_DPRINTF(("SUPR3HardenedMain: Respawn #1\n"));
-        supR3HardenedWinInit(SUPSECMAIN_FLAGS_DONT_OPEN_DEV, false /*fAvastKludge*/);
+        supR3HardenedWinInit(SUPSECMAIN_FLAGS_DONT_OPEN_DEV | SUPSECMAIN_FLAGS_FIRST_PROCESS, false /*fAvastKludge*/);
         supR3HardenedVerifyAll(true /* fFatal */, pszProgName, g_szSupLibHardenedExePath, fFlags);
         return supR3HardenedWinReSpawn(1 /*iWhich*/);
     }

@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 77972 2019-04-01 09:40:16Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 80216 2019-08-10 02:04:07Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -54,6 +54,7 @@ typedef enum SUPHARDNTVPKIND
     SUPHARDNTVPKIND_VERIFY_ONLY = 1,
     SUPHARDNTVPKIND_CHILD_PURIFICATION,
     SUPHARDNTVPKIND_SELF_PURIFICATION,
+    SUPHARDNTVPKIND_SELF_PURIFICATION_LIMITED,
     SUPHARDNTVPKIND_32BIT_HACK = 0x7fffffff
 } SUPHARDNTVPKIND;
 /** @name SUPHARDNTVP_F_XXX - Flags for supHardenedWinVerifyProcess
