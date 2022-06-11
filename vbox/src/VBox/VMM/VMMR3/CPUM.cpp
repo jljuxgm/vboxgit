@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 80064 2019-07-31 10:31:36Z vboxsync $ */
+/* $Id: CPUM.cpp 80102 2019-08-01 14:23:00Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2525,11 +2525,13 @@ static DECLCALLBACK(int) cpumR3SaveExec(PVM pVM, PSSMHANDLE pSSM)
      */
     SSMR3PutU32(pSSM, pVM->cCpus);
     SSMR3PutU32(pSSM, sizeof(pVM->aCpus[0].cpum.s.GuestMsrs.msr));
+    CPUMCTX DummyHyperCtx;
+    RT_ZERO(DummyHyperCtx);
     for (VMCPUID iCpu = 0; iCpu < pVM->cCpus; iCpu++)
     {
         PVMCPU pVCpu = &pVM->aCpus[iCpu];
 
-        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Hyper,     sizeof(pVCpu->cpum.s.Hyper),     0, g_aCpumCtxFields, NULL);
+        SSMR3PutStructEx(pSSM, &DummyHyperCtx,           sizeof(DummyHyperCtx),           0, g_aCpumCtxFields, NULL);
 
         PCPUMCTX pGstCtx = &pVCpu->cpum.s.Guest;
         SSMR3PutStructEx(pSSM, pGstCtx,                  sizeof(*pGstCtx),                0, g_aCpumCtxFields, NULL);
