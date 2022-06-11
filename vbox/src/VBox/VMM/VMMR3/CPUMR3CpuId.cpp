@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 79830 2019-07-17 08:41:41Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 80054 2019-07-29 21:05:53Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2440,16 +2440,11 @@ static int cpumR3CpuIdInstallAndExplodeLeaves(PVM pVM, PCPUM pCpum, PCPUMCPUIDLE
                                   VERR_CPUM_IPE_1);
             pVM->aCpus[0].cpum.s.Guest.aoffXState[iComponent] = pSubLeaf->uEbx;
         }
-    memset(&pVM->aCpus[0].cpum.s.Hyper.aoffXState[0], 0xff, sizeof(pVM->aCpus[0].cpum.s.Hyper.aoffXState));
 
     /* Copy the CPU #0  data to the other CPUs. */
     for (VMCPUID iCpu = 1; iCpu < pVM->cCpus; iCpu++)
-    {
         memcpy(&pVM->aCpus[iCpu].cpum.s.Guest.aoffXState[0], &pVM->aCpus[0].cpum.s.Guest.aoffXState[0],
                sizeof(pVM->aCpus[iCpu].cpum.s.Guest.aoffXState));
-        memcpy(&pVM->aCpus[iCpu].cpum.s.Hyper.aoffXState[0], &pVM->aCpus[0].cpum.s.Hyper.aoffXState[0],
-               sizeof(pVM->aCpus[iCpu].cpum.s.Hyper.aoffXState));
-    }
 
     return VINF_SUCCESS;
 }
