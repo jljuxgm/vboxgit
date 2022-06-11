@@ -1,4 +1,4 @@
-/* $Id: tstClipboardTransfers.cpp 82460 2019-12-06 13:59:10Z vboxsync $ */
+/* $Id: tstClipboardTransfers.cpp 82462 2019-12-06 14:22:03Z vboxsync $ */
 /** @file
  * Shared Clipboard transfers test case.
  */
@@ -234,7 +234,7 @@ static void testTransferObjOpenSingle(RTTEST hTest,
     int rc = ShClTransferCreate(&pTransfer);
     RTTESTI_CHECK_RC_OK(rc);
 
-    rc = ShClTransferInit(pTransfer, 0 /* ID */, SHCLTRANSFERDIR_READ, SHCLSOURCE_LOCAL);
+    rc = ShClTransferInit(pTransfer, 0 /* ID */, SHCLTRANSFERDIR_FROM_REMOTE, SHCLSOURCE_LOCAL);
     RTTESTI_CHECK_RC_OK(rc);
 
     char szTestTransferObjOpenDir[RTPATH_MAX];

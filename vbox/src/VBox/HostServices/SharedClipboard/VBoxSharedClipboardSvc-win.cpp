@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 81843 2019-11-14 16:30:44Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 82462 2019-12-06 14:22:03Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -363,7 +363,7 @@ static LRESULT CALLBACK vboxClipboardSvcWinWndProcMain(PSHCLCONTEXT pCtx,
             {
                 PSHCLTRANSFER pTransfer;
                 int rc = shClSvcTransferStart(pCtx->pClient,
-                                              SHCLTRANSFERDIR_READ, SHCLSOURCE_REMOTE,
+                                              SHCLTRANSFERDIR_FROM_REMOTE, SHCLSOURCE_REMOTE,
                                               &pTransfer);
                 if (RT_SUCCESS(rc))
                 {
