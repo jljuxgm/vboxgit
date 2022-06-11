@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 78871 2019-05-30 10:15:36Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 79118 2019-06-13 06:06:17Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -167,8 +167,7 @@ VMM_INT_DECL(void) HMNotifySvmNstGstVmexit(PVMCPU pVCpu, PCPUMCTX pCtx)
      * to the guest VMCB after the #VMEXIT.
      */
     CPUMImportGuestStateOnDemand(pVCpu, CPUMCTX_EXTRN_ALL);
-    AssertMsg(!(pVCpu->cpum.GstCtx.fExtrn & CPUMCTX_EXTRN_ALL),
-              ("fExtrn=%#RX64 fExtrnMbz=%#RX64\n", pVCpu->cpum.GstCtx.fExtrn, CPUMCTX_EXTRN_ALL));
+    CPUM_ASSERT_NOT_EXTRN(pVCpu, CPUMCTX_EXTRN_ALL);
     ASMAtomicUoOrU64(&pVCpu->hm.s.fCtxChanged, HM_CHANGED_ALL_GUEST);
 }
 # endif
