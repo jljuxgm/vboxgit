@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 83471 2020-03-27 15:49:44Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -1461,9 +1461,19 @@ DECLHIDDEN(int) rtR0MemObjNativeMapKernel(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ
              * MMIO / physical memory.
              */
             Assert(pMemLnxToMap->Core.enmType == RTR0MEMOBJTYPE_PHYS && !pMemLnxToMap->Core.u.Phys.fAllocated);
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 25)
+            /*
+             * ioremap() defaults to no caching since the 2.6 kernels.
+             * ioremap_nocache() has been removed finally in 5.6-rc1.
+             */
+            pMemLnx->Core.pv = pMemLnxToMap->Core.u.Phys.uCachePolicy == RTMEM_CACHE_POLICY_MMIO
+                             ? ioremap(pMemLnxToMap->Core.u.Phys.PhysBase + offSub, cbSub)
+                             : ioremap_cache(pMemLnxToMap->Core.u.Phys.PhysBase + offSub, cbSub);
+#else /* KERNEL_VERSION < 2.6.25 */
             pMemLnx->Core.pv = pMemLnxToMap->Core.u.Phys.uCachePolicy == RTMEM_CACHE_POLICY_MMIO
                              ? ioremap_nocache(pMemLnxToMap->Core.u.Phys.PhysBase + offSub, cbSub)
                              : ioremap(pMemLnxToMap->Core.u.Phys.PhysBase + offSub, cbSub);
+#endif /* KERNEL_VERSION < 2.6.25 */
             if (pMemLnx->Core.pv)
             {
                 /** @todo fix protection. */

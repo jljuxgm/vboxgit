@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-linux.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: time-r0drv-linux.c 83471 2020-03-27 15:49:44Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Linux.
  */
@@ -38,12 +38,24 @@
 
 DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
 {
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 16) /* This must match timer-r0drv-linux.c! */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 6, 0)
+    /*
+     * Starting with kernel version 5.6-rc3 only 64-bit time interfaces
+     * are allowed in the kernel.
+     */
+    uint64_t u64;
+    struct timespec64 Ts = { 0, 0 };
+
+    ktime_get_ts64(&Ts);
+    u64 = Ts.tv_sec * RT_NS_1SEC_64 + Ts.tv_nsec;
+    return u64;
+
+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 16) /* This must match timer-r0drv-linux.c! */
     /*
      * Use ktime_get_ts, this is also what clock_gettime(CLOCK_MONOTONIC,) is using.
      */
     uint64_t u64;
-    struct timespec Ts;
+    struct timespec Ts = { 0, 0 };
     ktime_get_ts(&Ts);
     u64 = Ts.tv_sec * RT_NS_1SEC_64 + Ts.tv_nsec;
     return u64;

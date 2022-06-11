@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 83471 2020-03-27 15:49:44Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -842,15 +842,27 @@ DECLHIDDEN(int) vboxPciOsDevMapRegion(PVBOXRAWPCIINS pIns,
         rcLnx = pci_request_region(pPciDev, iRegion, "vboxpci");
         if (!rcLnx)
         {
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 25)
+            /*
+             * ioremap() defaults to no caching since the 2.6 kernels.
+             * ioremap_nocache() has been removed finally in 5.6-rc1.
+             */
+            RTR0PTR R0PtrMapping = ioremap(pci_resource_start(pPciDev, iRegion),
+                                           pci_resource_len(pPciDev, iRegion));
+#else /* KERNEL_VERSION < 2.6.25 */
             /* For now no caching, try to optimize later. */
             RTR0PTR R0PtrMapping = ioremap_nocache(pci_resource_start(pPciDev, iRegion),
                                                    pci_resource_len(pPciDev, iRegion));
-
+#endif /* KERNEL_VERSION < 2.6.25 */
             if (R0PtrMapping != NIL_RTR0PTR)
                 pIns->aRegionR0Mapping[iRegion] = R0PtrMapping;
             else
             {
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 25)
+                vbpci_printk(KERN_DEBUG, pPciDev, "ioremap() failed\n");
+#else
                 vbpci_printk(KERN_DEBUG, pPciDev, "ioremap_nocache() failed\n");
+#endif
                 pci_release_region(pPciDev, iRegion);
                 rc = VERR_MAP_FAILED;
             }
