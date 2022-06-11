@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 81768 2019-11-11 16:36:41Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 81769 2019-11-11 16:40:27Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1235,8 +1235,8 @@ int shClSvcGetDataRead(PSHCLCLIENT pClient, uint32_t cParms, VBOXHGCMSVCPARM paP
 
                 if (dataBlock.uFormat != pClient->State.POD.uFormat)
                 {
-                    LogFlowFunc(("Invalid format (pClient->State.POD.uFormat=%RU32 vs dataBlock.uFormat=%RU32\n",
-                                 pClient->State.POD.uFormat = dataBlock.uFormat));
+                    LogFlowFunc(("Invalid format (pClient->State.POD.uFormat=%RU32 vs dataBlock.uFormat=%RU32)\n",
+                                 pClient->State.POD.uFormat, dataBlock.uFormat));
 
                     rc = VERR_INVALID_PARAMETER;
                 }
