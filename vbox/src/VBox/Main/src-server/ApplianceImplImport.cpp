@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 78747 2019-05-25 16:26:09Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 78748 2019-05-25 16:28:42Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1141,7 +1141,7 @@ HRESULT Appliance::i_readImpl(const LocationInfo &aLocInfo, ComObjPtr<Progress> 
                                       2, // ULONG cOperations,
                                       5, // ULONG ulTotalOperationsWeight,
                                       Utf8StrFmt(tr("Download appliance '%s'"),
-                                                 aLocInfo.strPath.c_str()).raw(), // CBSTR bstrFirstOperationDescription,
+                                                 aLocInfo.strPath.c_str()), // CBSTR bstrFirstOperationDescription,
                                       4); // ULONG ulFirstOperationWeight,
         }
     }
