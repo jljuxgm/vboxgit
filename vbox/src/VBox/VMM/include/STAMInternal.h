@@ -1,4 +1,4 @@
-/* $Id: STAMInternal.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: STAMInternal.h 80651 2019-09-08 14:36:45Z vboxsync $ */
 /** @file
  * STAM Internal Header.
  */
@@ -38,11 +38,6 @@ RT_C_DECLS_BEGIN
  * @internal
  * @{
  */
-
-/** Enables the lookup tree.
- * This is an optimization for speeding up registration as well as query. */
-#define STAM_WITH_LOOKUP_TREE
-
 
 /** Pointer to sample descriptor. */
 typedef struct STAMDESC    *PSTAMDESC;
