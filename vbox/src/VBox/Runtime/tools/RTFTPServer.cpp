@@ -1,4 +1,4 @@
-/* $Id: RTFTPServer.cpp 82772 2020-01-15 16:41:07Z vboxsync $ */
+/* $Id: RTFTPServer.cpp 82813 2020-01-21 17:48:19Z vboxsync $ */
 /** @file
  * IPRT - Utility for running a (simple) FTP server.
  */
@@ -255,8 +255,12 @@ static DECLCALLBACK(int) onFileStat(PRTFTPCALLBACKDATA pData, const char *pcszPa
     PFTPSERVERDATA pThis = (PFTPSERVERDATA)pData->pvUser;
     Assert(pData->cbUser == sizeof(FTPSERVERDATA));
 
+    const char *pcszStat = pcszPath ? pcszPath : pThis->szCWD;
+
+    RTPrintf("Stat for '%s'\n", pcszStat);
+
     RTFILE hFile;
-    int rc = RTFileOpen(&hFile, pcszPath ? pcszPath : pThis->szCWD,
+    int rc = RTFileOpen(&hFile, pcszStat,
                         RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_WRITE);
     if (RT_SUCCESS(rc))
     {
@@ -293,9 +297,7 @@ static DECLCALLBACK(int) onPathGetCurrent(PRTFTPCALLBACKDATA pData, char *pszPWD
 
     RTPrintf("Current directory is: '%s'\n", pThis->szCWD);
 
-    RTStrPrintf(pszPWD, cbPWD, "%s", pThis->szCWD);
-
-    return VINF_SUCCESS;
+    return RTStrCopy(pszPWD, cbPWD, pThis->szCWD);
 }
 
 static DECLCALLBACK(int) onPathUp(PRTFTPCALLBACKDATA pData)
@@ -408,7 +410,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 82772 $\n");
+                RTPrintf("$Revision: 82813 $\n");
                 return RTEXITCODE_SUCCESS;
 
             default:

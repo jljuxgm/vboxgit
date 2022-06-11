@@ -1,4 +1,4 @@
-/* $Id: ftp.h 82772 2020-01-15 16:41:07Z vboxsync $ */
+/* $Id: ftp.h 82813 2020-01-21 17:48:19Z vboxsync $ */
 /** @file
  * Header file for FTP client / server implementations.
  */
@@ -178,6 +178,8 @@ typedef struct RTFTPSERVERCLIENTSTATE
 {
     /** Authenticated user (name). If NULL, no user has been logged in (yet). */
     char                       *pszUser;
+    /** Current working directory. If NULL, '/' must be assumed. */
+    char                       *pszCWD;
     /** Number of failed login attempts. */
     uint8_t                     cFailedLoginAttempts;
     /** Timestamp (in ms) of last command issued by the client. */
