@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 80873 2019-09-17 23:55:26Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 81674 2019-11-05 14:44:22Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -763,6 +763,14 @@ public:
 
     GuestProcessStreamValue(const GuestProcessStreamValue& aThat)
            : mValue(aThat.mValue) { }
+
+    /** Copy assignment operator. */
+    GuestProcessStreamValue &operator=(GuestProcessStreamValue const &a_rThat) RT_NOEXCEPT
+    {
+        mValue = a_rThat.mValue;
+
+        return *this;
+    }
 
     Utf8Str mValue;
 };

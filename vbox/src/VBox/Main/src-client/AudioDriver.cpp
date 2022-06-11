@@ -1,4 +1,4 @@
-/* $Id: AudioDriver.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: AudioDriver.cpp 81674 2019-11-05 14:44:22Z vboxsync $ */
 /** @file
  * VirtualBox audio base class for Main audio drivers.
  */
@@ -37,8 +37,19 @@ AudioDriver::AudioDriver(Console *pConsole)
 {
 }
 
+
 AudioDriver::~AudioDriver(void)
 {
+}
+
+
+AudioDriver &AudioDriver::operator=(AudioDriver const &a_rThat) RT_NOEXCEPT
+{
+    mpConsole  = a_rThat.mpConsole;
+    mCfg       = a_rThat.mCfg;
+    mfAttached = a_rThat.mfAttached;
+
+    return *this;
 }
 
 

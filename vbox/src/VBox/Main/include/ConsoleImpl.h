@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 81429 2019-10-21 18:42:31Z vboxsync $ */
+/* $Id: ConsoleImpl.h 81674 2019-11-05 14:44:22Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -579,13 +579,24 @@ public:
             , m_strAutoMountPoint(aAutoMountPoint)
         { }
 
-        // copy constructor
+        /** Copy constructor. */
         SharedFolderData(const SharedFolderData& aThat)
             : m_strHostPath(aThat.m_strHostPath)
             , m_fWritable(aThat.m_fWritable)
             , m_fAutoMount(aThat.m_fAutoMount)
             , m_strAutoMountPoint(aThat.m_strAutoMountPoint)
         { }
+
+        /** Copy assignment operator. */
+        SharedFolderData &operator=(SharedFolderData const &a_rThat) RT_NOEXCEPT
+        {
+            m_strHostPath       = a_rThat.m_strHostPath;
+            m_fWritable         = a_rThat.m_fWritable;
+            m_fAutoMount        = a_rThat.m_fAutoMount;
+            m_strAutoMountPoint = a_rThat.m_strAutoMountPoint;
+
+            return *this;
+        }
 
         Utf8Str m_strHostPath;
         bool m_fWritable;
