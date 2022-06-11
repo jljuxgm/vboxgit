@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 84215 2020-05-08 14:08:23Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 84238 2020-05-10 09:29:01Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -830,7 +830,7 @@ VBGLR3DECL(PVBGLR3GUESTCTRLSESSIONSTARTUPINFO) VbglR3GuestCtrlSessionStartupInfo
     { \
         pStartupInfoDup->psz##a_Str = (char *)RTStrDup(pStartupInfo->psz##a_Str); \
         AssertPtrBreak(pStartupInfoDup->psz##a_Str); \
-        pStartupInfoDup->cb##a_Str  = strlen(pStartupInfoDup->psz##a_Str) + 1 /* Include terminator */; \
+        pStartupInfoDup->cb##a_Str  = (uint32_t)strlen(pStartupInfoDup->psz##a_Str) + 1 /* Include terminator */; \
     }
             DUP_STR(User);
             DUP_STR(Password);
