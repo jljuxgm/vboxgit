@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 81841 2019-11-14 02:12:01Z vboxsync $ */
+/* $Id: PDMDevice.cpp 81937 2019-11-18 12:11:28Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -470,9 +470,12 @@ int pdmR3DevInit(PVM pVM)
         if (RT_FAILURE(rc))
         {
             LogRel(("PDM: Failed to construct '%s'/%d! %Rra\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
-            paDevs[i].pDev->cInstances--;
+            if (VMR3GetErrorCount(pVM->pUVM) == 0)
+                VMSetError(pVM, rc, RT_SRC_POS, "Failed to construct device '%s' instance #%u",
+                           pDevIns->pReg->szName, pDevIns->iInstance);
             /* Because we're damn lazy, the destructor will be called even if
                the constructor fails.  So, no unlinking. */
+            paDevs[i].pDev->cInstances--;
             return rc == VERR_VERSION_MISMATCH ? VERR_PDM_DEVICE_VERSION_MISMATCH : rc;
         }
 
@@ -493,6 +496,9 @@ int pdmR3DevInit(PVM pVM)
             if (RT_FAILURE(rc))
             {
                 LogRel(("PDM: Failed to construct (ring-0) '%s'/%d! %Rra\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
+                if (VMR3GetErrorCount(pVM->pUVM) == 0)
+                    VMSetError(pVM, rc, RT_SRC_POS, "The ring-0 constructor of device '%s' instance #%u failed",
+                               pDevIns->pReg->szName, pDevIns->iInstance);
                 paDevs[i].pDev->cInstances--;
                 return rc == VERR_VERSION_MISMATCH ? VERR_PDM_DEVICE_VERSION_MISMATCH : rc;
             }
