@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 84311 2020-05-14 17:42:13Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 84349 2020-05-18 19:15:02Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -402,9 +402,10 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                 /* Check presence of cloudprofile and cloudinstanceid in the map.
                  * If there isn't the exception is triggered. It's standard std:map logic.*/
                 ArgsMap a = mapArgsMapsPerVsys[ulCurVsys];
-                a.at("cloudprofile");
-                a.at("cloudinstanceid");
-            } catch (...)
+                (void)a.at("cloudprofile");
+                (void)a.at("cloudinstanceid");
+            }
+            catch (...)
             {
                 return errorSyntax(USAGE_IMPORTAPPLIANCE, "Not enough arguments for import from the Cloud.");
             }
