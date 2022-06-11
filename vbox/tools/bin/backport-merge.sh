@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: backport-merge.sh 83611 2020-04-07 17:11:42Z vboxsync $
+# $Id: backport-merge.sh 83668 2020-04-10 13:09:21Z vboxsync $
 ## @file
 # Script for merging a backport from trunk.
 #
@@ -42,7 +42,7 @@ MY_TODO_REVS=
 test -n "${MY_DEBUG}" && echo "MY_REVISIONS=${MY_REVISIONS}"
 for MY_REV in ${MY_REVISIONS};
 do
-    if test -z "${MY_FAILED}"; then
+    if test -z "${MY_FAILED_REV}"; then
         echo "***"
         echo "*** Merging r${MY_REV} ..."
         echo "***"
