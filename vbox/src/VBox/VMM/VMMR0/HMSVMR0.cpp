@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 79463 2019-07-02 09:56:09Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 79511 2019-07-04 04:43:52Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5120,6 +5120,9 @@ VMMR0DECL(VBOXSTRICTRC) SVMR0RunGuestCode(PVMCPU pVCpu)
             rc = VINF_SUCCESS;
     }
 #endif
+
+    /** @todo NSTSVM: Continue in ring-0 after nested-guest #VMEXIT. See VT-x code for
+     *        reference. */
 
     /* Fixup error codes. */
     if (rc == VERR_EM_INTERPRETER)
