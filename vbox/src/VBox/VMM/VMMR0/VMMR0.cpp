@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 81161 2019-10-08 15:21:59Z vboxsync $ */
+/* $Id: VMMR0.cpp 81167 2019-10-09 08:15:37Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2194,6 +2194,24 @@ static int vmmR0EntryExWorker(PGVM pGVM, VMCPUID idCpu, VMMR0OPERATION enmOperat
             if (pReqHdr || idCpu != 0)
                 return VERR_INVALID_PARAMETER;
             rc = IOMR0IoPortGrowStatisticsTable(pGVM, u64Arg);
+            VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
+            break;
+        }
+
+        case VMMR0_DO_IOM_GROW_MMIO_REGS:
+        {
+            if (pReqHdr || idCpu != 0)
+                return VERR_INVALID_PARAMETER;
+            rc = VERR_NOT_SUPPORTED; //rc = IOMR0MmioGrowRegistrationTables(pGVM, u64Arg);
+            VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
+            break;
+        }
+
+        case VMMR0_DO_IOM_GROW_MMIO_STATS:
+        {
+            if (pReqHdr || idCpu != 0)
+                return VERR_INVALID_PARAMETER;
+            rc = VERR_NOT_SUPPORTED; //rc = IOMR0MmioGrowStatisticsTable(pGVM, u64Arg);
             VMM_CHECK_SMAP_CHECK2(pGVM, RT_NOTHING);
             break;
         }

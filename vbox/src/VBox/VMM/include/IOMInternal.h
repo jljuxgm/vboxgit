@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 81162 2019-10-08 16:45:46Z vboxsync $ */
+/* $Id: IOMInternal.h 81167 2019-10-09 08:15:37Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -841,6 +841,10 @@ PIOMMMIOSTATS       iomR3MMIOStatsCreate(PVM pVM, RTGCPHYS GCPhys, const char *p
 DECLCALLBACK(void)  iomR3IoPortInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
 void                iomR3IoPortRegStats(PVM pVM, PIOMIOPORTENTRYR3 pRegEntry);
 #endif /* IN_RING3 */
+#ifdef IN_RING0
+void                iomR0IoPortCleanupVM(PGVM pGVM);
+void                iomR0IoPortInitPerVMData(PGVM pGVM);
+#endif
 
 #ifndef IN_RING3
 DECLEXPORT(FNPGMRZPHYSPFHANDLER)    iomMmioPfHandler;
