@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 81505 2019-10-24 02:51:11Z vboxsync $ */
+/* $Id: DevEFI.cpp 81509 2019-10-24 08:56:40Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -261,8 +261,6 @@ typedef struct DEVEFIR3
     NVRAMDESC               NVRAM;
     /** Filename of the file containing the NVRAM store. */
     char                    *pszNvramFile;
-    /** Flag whether the NVRAM state was saved using SSM. */
-    bool                    fNvramStateSaved;
 
     /**
      * NVRAM port - LUN\#0.
@@ -1978,12 +1976,11 @@ static DECLCALLBACK(int) efiDestruct(PPDMDEVINS pDevIns)
 
     nvramFlushDeviceVariableList(pThisCC);
 
-    if (   !pThisCC->fNvramStateSaved
-        && pThisCC->pszNvramFile)
+    if (pThisCC->pszNvramFile)
     {
         int rc = flashR3SaveToFile(&pThis->Flash, pDevIns, pThisCC->pszNvramFile);
         if (RT_FAILURE(rc))
-            LogRel(("EFI: Failed to save flash file to '%s' -> %Rrc\n", pThisCC->pszNvramFile, rc));
+            LogRel(("EFI: Failed to save flash file to '%s': %Rrc\n", pThisCC->pszNvramFile, rc));
     }
 
     flashR3Destruct(&pThis->Flash, pDevIns);
