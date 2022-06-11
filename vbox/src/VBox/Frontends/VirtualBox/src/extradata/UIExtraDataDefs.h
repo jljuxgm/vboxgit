@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 83494 2020-03-31 09:41:58Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 83653 2020-04-09 16:38:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -861,6 +861,7 @@ enum WizardType
     WizardType_ExportAppliance,
     WizardType_ImportAppliance,
     WizardType_NewCloudVM,
+    WizardType_AddCloudVM,
     WizardType_FirstRun,
     WizardType_NewVD,
     WizardType_CloneVD

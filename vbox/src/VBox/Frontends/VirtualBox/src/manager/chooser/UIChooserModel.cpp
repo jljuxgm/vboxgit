@@ -1,4 +1,4 @@
-/* $Id: UIChooserModel.cpp 83330 2020-03-19 13:26:31Z vboxsync $ */
+/* $Id: UIChooserModel.cpp 83653 2020-04-09 16:38:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserModel class implementation.
  */
@@ -45,7 +45,7 @@
 #include "UITask.h"
 #include "UIVirtualBoxManagerWidget.h"
 #include "UIVirtualMachineItemCloud.h"
-#include "UIWizardNewCloudVM.h"
+#include "UIWizardAddCloudVM.h"
 #include "UIWizardNewVM.h"
 
 /* COM includes: */
@@ -919,7 +919,7 @@ void UIChooserModel::sltCreateNewMachine()
     {
         /* Use the "safe way" to open stack of Mac OS X Sheets: */
         QWidget *pWizardParent = windowManager().realParentWindow(chooser()->managerWidget());
-        UISafePointerWizardNewCloudVM pWizard = new UIWizardNewCloudVM(pWizardParent);
+        UISafePointerWizardAddCloudVM pWizard = new UIWizardAddCloudVM(pWizardParent);
         windowManager().registerNewParent(pWizard, pWizardParent);
         pWizard->prepare();
 
