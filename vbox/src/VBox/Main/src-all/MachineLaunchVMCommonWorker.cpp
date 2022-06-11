@@ -1,4 +1,4 @@
-/* $Id: MachineLaunchVMCommonWorker.cpp 80613 2019-09-05 22:18:23Z vboxsync $ */
+/* $Id: MachineLaunchVMCommonWorker.cpp 80614 2019-09-05 22:24:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - VM process launcher helper for VBoxSVC & VBoxSDS.
  */
@@ -92,8 +92,8 @@ int MachineLaunchVMCommonWorker(const Utf8Str &aNameOrId,
     char szPath[RTPATH_MAX];
     int vrc = RTPathAppPrivateArch(szPath, sizeof(szPath));
     AssertRCReturn(vrc, vrc);
-    size_t cchBufLeft = RTPathEnsureTrailingSeparator(szPath, sizeof(szPath));
-    AssertReturn(cchBufLeft > 0, VERR_FILENAME_TOO_LONG);
+    size_t cbBufLeft = RTPathEnsureTrailingSeparator(szPath, sizeof(szPath));
+    AssertReturn(cbBufLeft > 0, VERR_FILENAME_TOO_LONG);
     char *pszNamePart = &szPath[cbBufLeft]; NOREF(pszNamePart);
     cbBufLeft = sizeof(szPath) - cbBufLeft;
 
