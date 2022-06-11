@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 80549 2019-09-02 12:05:44Z vboxsync $ */
+/* $Id: TMAll.cpp 80550 2019-09-02 12:24:28Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -122,6 +122,7 @@
 # define TMTIMER_ASSERT_SYNC_CRITSECT_ORDER(pVM, pTimer) do { } while (0)
 #endif
 
+
 #if defined(VBOX_STRICT) && defined(IN_RING0)
 /**
  * Helper for  TMTIMER_GET_CRITSECT
@@ -141,8 +142,8 @@ DECLINLINE(PPDMCRITSECT) tmRZTimerGetCritSect(PTMTIMER pTimer)
     }
     return (PPDMCRITSECT)MMHyperR3ToCC((pTimer)->CTX_SUFF(pVM), pTimer->pCritSect);
 }
+#endif /* VBOX_STRICT && IN_RING0 */
 
-#endif /* VBOX_STRICT*/
 
 /**
  * Notification that execution is about to start.
