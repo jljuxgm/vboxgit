@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 79207 2019-06-18 11:18:17Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -689,8 +689,9 @@ int VBoxDnDWnd::RegisterAsDropTarget(void)
 
         if (FAILED(hr))
         {
-            LogRel(("DnD: Creating drop target failed with hr=%Rhrc\n", hr));
-            rc = VERR_GENERAL_FAILURE; /** @todo Find a better rc. */
+            if (hr != DRAGDROP_E_INVALIDHWND) /* Could be because the DnD host service is not available. */
+                LogRel(("DnD: Creating drop target failed with hr=%Rhrc\n", hr));
+            rc = VERR_NOT_SUPPORTED; /* Report back DnD as not being supported. */
         }
         else
         {
