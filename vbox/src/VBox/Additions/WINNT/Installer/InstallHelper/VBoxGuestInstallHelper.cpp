@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInstallHelper.cpp 82615 2019-12-18 13:39:25Z vboxsync $ */
+/* $Id: VBoxGuestInstallHelper.cpp 82616 2019-12-18 13:45:29Z vboxsync $ */
 /** @file
  * VBoxGuestInstallHelper - Various helper routines for Windows guest installer.
  *                          Works with NSIS 3.x.
@@ -45,6 +45,7 @@
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
 #define VBOXINSTALLHELPER_EXPORT extern "C" void __declspec(dllexport)
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
