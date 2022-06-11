@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 79640 2019-07-09 11:22:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -268,6 +268,19 @@ bool UIKeyboardHandler::finaliseCaptureKeyboard()
          * that the user is trying to click outside of the internal window geometry and release
          * the keyboard before the target window sees the click. (GNOME Shell's hot corner has
          * the same problem. At present we just let that problem be.) */
+
+# if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
+        /* Make sure we really do still have the focus.  Qt as of version 5.13 started
+         * reporting it with delay, so ask the X server directly.  We could remove the
+         * version check some time in the future.  If we do, remove the comment above
+         * about the focus notification dance, as it will no longer be relevant. */
+        xcb_get_input_focus_cookie_t xcbFocusCookie = xcb_get_input_focus(QX11Info::connection());
+        xcb_get_input_focus_reply_t *pFocusReply = xcb_get_input_focus_reply(QX11Info::connection(), xcbFocusCookie, 0);
+        xcb_window_t xcbFocusWindow = pFocusReply->focus;
+        free(pFocusReply);
+        if (xcbFocusWindow != m_windows[m_iKeyboardCaptureViewIndex]->winId())
+            return true;
+# endif
 
         /* Grab the mouse button.
          * We do not check for failure as we do not currently implement a back-up plan. */
