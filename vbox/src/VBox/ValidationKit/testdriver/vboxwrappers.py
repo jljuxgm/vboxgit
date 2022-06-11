@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 79908 2019-07-20 03:56:15Z vboxsync $
+# $Id: vboxwrappers.py 79911 2019-07-21 14:14:57Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79908 $"
+__version__ = "$Revision: 79911 $"
 
 
 # Standard Python imports.
@@ -1437,6 +1437,7 @@ class SessionWrapper(TdTaskBase):
                             break;
                 except:
                     reporter.errorXcpt();
+
         elif eAttachmentType == vboxcon.NetworkAttachmentType_HostOnly:
             try:
                 aoHostNics = self.oVBoxMgr.getArray(self.oVBox.host, 'networkInterfaces');
@@ -1450,12 +1451,25 @@ class SessionWrapper(TdTaskBase):
             except:
                 reporter.errorXcpt();
             if sRetName == '':
-                sRetName = 'HostInterfaceNetwork-vboxnet0';
+                # Create a new host-only interface.
+                try:
+                    (oIHostOnly, oIProgress) = self.oVBox.host.createHostOnlyNetworkInterface();
+                    oProgress = ProgressWrapper(oIProgress, self.oVBoxMgr, self.oTstDrv, 'Create host only interface');
+                    oProgress.wait();
+                    if oProgress.logResult() is False:
+                        return '';
+                    sRetName = oIHostOnly.name;
+                except:
+                    reporter.errorXcpt();
+                    return '';
+
         elif eAttachmentType == vboxcon.NetworkAttachmentType_Internal:
             sRetName = 'VBoxTest';
+
         elif eAttachmentType == vboxcon.NetworkAttachmentType_NAT:
             sRetName = '';
-        else:
+
+        else: ## @todo Support NetworkAttachmentType_NATNetwork
             reporter.error('eAttachmentType=%s is not known' % (eAttachmentType));
         return sRetName;
 
