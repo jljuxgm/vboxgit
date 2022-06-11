@@ -1,4 +1,4 @@
-/* $Id: UIResourceMonitor.cpp 83429 2020-03-25 19:56:54Z vboxsync $ */
+/* $Id: UIResourceMonitor.cpp 83431 2020-03-25 20:16:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIResourceMonitor class implementation.
  */
@@ -610,7 +610,7 @@ void UIResourceMonitorWidget::retranslateUi()
     m_columnCaptions[VMResouceMonitorColumn_CPUGuestLoad] = tr("CPU Guest");
     m_columnCaptions[VMResouceMonitorColumn_CPUVMMLoad] = tr("CPU VMM");
     m_columnCaptions[VMResouceMonitorColumn_RAMUsedAndTotal] = tr("RAM Used/Total");
-    m_columnCaptions[VMResouceMonitorColumn_RAMUsedPercentage] = tr("RAM \%");
+    m_columnCaptions[VMResouceMonitorColumn_RAMUsedPercentage] = tr("RAM %");
     m_columnCaptions[VMResouceMonitorColumn_NetworkUpRate] = tr("Network Up Rate");
     m_columnCaptions[VMResouceMonitorColumn_NetworkDownRate] = tr("Network Down Rate");
     m_columnCaptions[VMResouceMonitorColumn_NetworkUpTotal] = tr("Network Up Total");
