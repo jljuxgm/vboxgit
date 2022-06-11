@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 81293 2019-10-16 06:46:56Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 81294 2019-10-16 06:50:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -144,6 +144,8 @@ struct UsageCode
 const char* predefinedColorThemes[][6] = {{"Solarized-Dark","#073642", "#586e75", "#dc322f", "#6c71c4", "#859900"},
                                           {"Solarized-Light","#b58900", "#586e75", "#dc322f", "#6c71c4", "#859900"},
                                           {0, 0, 0, 0, 0, 0}};
+
+
 /*********************************************************************************************************************************
 *   UISoftKeyboardPhysicalLayout definition.                                                                                     *
 *********************************************************************************************************************************/
