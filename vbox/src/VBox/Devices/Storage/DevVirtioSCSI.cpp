@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 80931 2019-09-22 09:56:37Z vboxsync $ $Revision: 80931 $ $Date: 2019-09-22 17:56:37 +0800 (Sun, 22 Sep 2019) $ $Author: vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 80937 2019-09-22 20:30:17Z vboxsync $ $Revision: 80937 $ $Date: 2019-09-23 04:30:17 +0800 (Mon, 23 Sep 2019) $ $Author: vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -1005,7 +1005,7 @@ static DECLCALLBACK(int) virtioScsiIoReqFinish(PPDMIMEDIAEXPORT pInterface, PDMM
          */
         size_t cbReqSgBuf = RTSgBufCalcTotalLength(&reqSegBuf);
         AssertMsgReturn(cbReqSgBuf <= pReq->pDescChain->cbPhysDst,
-                       ("Guest expected less req data (space needed: %ld, avail: %d)\n",
+                       ("Guest expected less req data (space needed: %d, avail: %d)\n",
                          cbReqSgBuf, pReq->pDescChain->cbPhysDst),
                        VERR_BUFFER_OVERFLOW);
 
@@ -1372,10 +1372,7 @@ static int virtioScsiWorker(PPDMDEVINS pDevIns, PPDMTHREAD pThread)
         {
             LogFunc(("%s queue not attached, worker aborting...\n", QUEUENAME(qIdx)));
             break;
-        } else {
-            LogFunc(("%s queue is still attached!\n", QUEUENAME(qIdx)));
         }
-
         if (!pThis->fQuiescing)
         {
              Log6Func(("fetching next descriptor chain from %s\n", QUEUENAME(qIdx)));
