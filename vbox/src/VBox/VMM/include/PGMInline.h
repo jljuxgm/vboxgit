@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: PGMInline.h 82092 2019-11-22 00:13:18Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -130,7 +130,7 @@ DECLINLINE(int) pgmPhysGetPageEx(PVMCC pVM, RTGCPHYS GCPhys, PPPGMPAGE ppPage)
     if (   !pRam
         || (off = GCPhys - pRam->GCPhys) >= pRam->cb)
         return pgmPhysGetPageExSlow(pVM, GCPhys, ppPage);
-    *ppPage = &pRam->aPages[(GCPhys - pRam->GCPhys) >> PAGE_SHIFT];
+    *ppPage = &pRam->aPages[off >> PAGE_SHIFT];
     STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,RamRangeTlbHits));
     return VINF_SUCCESS;
 }
