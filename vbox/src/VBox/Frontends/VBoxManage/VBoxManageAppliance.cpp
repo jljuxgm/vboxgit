@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 78428 2019-05-07 11:03:49Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 78430 2019-05-07 11:22:00Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -370,7 +370,7 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
             strOvfFilename.append("/");
             strOvfFilename.append(mapArgsMapsPerVsys[ulCurVsys]["cloudinstanceid"]);
         }
-        else 
+        else
             return errorSyntax(USAGE_IMPORTAPPLIANCE, "Not enough arguments for import from the Cloud.");
 
         char *pszAbsFilePath;
