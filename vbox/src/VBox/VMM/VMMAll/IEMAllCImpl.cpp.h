@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 79074 2019-06-11 05:27:55Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 80020 2019-07-26 18:49:57Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5895,14 +5895,7 @@ IEM_CIMPL_DEF_4(iemCImpl_load_CrX, uint8_t, iCrReg, uint64_t, uNewCrX, IEMACCESS
              */
             /* SELM - VME may change things wrt to the TSS shadowing. */
             if ((uNewCrX ^ uOldCrX) & X86_CR4_VME)
-            {
-                Log(("iemCImpl_load_CrX: VME %d -> %d => Setting VMCPU_FF_SELM_SYNC_TSS\n",
-                     RT_BOOL(uOldCrX & X86_CR4_VME), RT_BOOL(uNewCrX & X86_CR4_VME) ));
-#ifdef VBOX_WITH_RAW_MODE
-                if (VM_IS_RAW_MODE_ENABLED(pVCpu->CTX_SUFF(pVM)))
-                    VMCPU_FF_SET(pVCpu, VMCPU_FF_SELM_SYNC_TSS);
-#endif
-            }
+                Log(("iemCImpl_load_CrX: VME %d -> %d\n", RT_BOOL(uOldCrX & X86_CR4_VME), RT_BOOL(uNewCrX & X86_CR4_VME) ));
 
             /* PGM - flushing and mode. */
             if ((uNewCrX ^ uOldCrX) & (X86_CR4_PSE | X86_CR4_PAE | X86_CR4_PGE | X86_CR4_PCIDE /* | X86_CR4_SMEP */))
