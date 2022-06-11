@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82616 2019-12-18 13:45:29Z vboxsync $
+# $Id: Makefile.kmk 82618 2019-12-18 14:33:10Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer Helper DLL testcases.
 #
@@ -24,12 +24,10 @@ ifdef VBOX_WITH_TESTCASES
 # we also have to use a 32-bit testcase here.
 #
 PROGRAMS.x86 += tstWinAdditionsInstallHelper
-tstWinAdditionsInstallHelper_TEMPLATE = VBOXR3TSTEXE
+tstWinAdditionsInstallHelper_TEMPLATE = VBoxGuestR3Exe
 tstWinAdditionsInstallHelper_SOURCES  = tstWinAdditionsInstallHelper.cpp
 tstWinAdditionsInstallHelper_DEFS     = _WIN32_WINNT=0x0400 WIN32_LEAN_AND_MEAN=1 TESTCASE
-tstWinAdditionsInstallHelper_LIBS     = $(LIB_RUNTIME)
 
 endif # VBOX_WITH_TESTCASES
 
 include $(FILE_KBUILD_SUB_FOOTER)
-
