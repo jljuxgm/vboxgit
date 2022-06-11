@@ -1,4 +1,4 @@
-# $Id: Makefile 77403 2019-02-20 18:44:36Z vboxsync $
+# $Id: Makefile 78436 2019-05-07 14:22:51Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Virtual Network Adapter Driver.
 #
@@ -58,7 +58,7 @@ VBOXMOD_DEFS = \
 	RT_WITH_VBOX \
 	VBOX_WITH_HARDENING \
 	VBOX_WITH_64_BITS_GUESTS # <-- must be consistent with Config.kmk!
-VBOXMOD_CFLAGS = -include $(KBUILD_EXTMOD)/include/VBox/SUPDrvMangling.h -fno-pie -Wno-declaration-after-statement
+VBOXMOD_CFLAGS = -include $(VBOXNETADPT_DIR)include/VBox/SUPDrvMangling.h -fno-pie -Wno-declaration-after-statement
 
 include $(obj)/Makefile-footer.gmk
 
