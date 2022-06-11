@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 79681 2019-07-10 21:02:36Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 81022 2019-09-26 14:28:27Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1323,6 +1323,10 @@ static int vmsvga3dSurfaceTrackUsage(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pCo
 
     /* Release the previous query object. */
     D3D_RELEASE(pSurface->pQuery);
+
+    /* Use the context where the texture has been created. */
+    int rc = vmsvga3dContextFromCid(pState, pSurface->idAssociatedContext, &pContext);
+    AssertRCReturn(rc, rc);
 
     HRESULT hr = pContext->pDevice->CreateQuery(D3DQUERYTYPE_EVENT, &pSurface->pQuery);
     AssertMsgReturn(hr == D3D_OK, ("vmsvga3dSurfaceTrackUsage: CreateQuery failed with %x\n", hr), VERR_INTERNAL_ERROR);
