@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 79248 2019-06-19 16:05:53Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 79295 2019-06-24 07:44:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -91,6 +91,7 @@ private:
     void loadSettings();
     void updateStatusBarMessage(const QString &strLayoutName);
     void updateLayoutSelector();
+    void setDialogGeometry(const QRect &geometry);
     CKeyboard& keyboard() const;
 
     UISession     *m_pSession;
