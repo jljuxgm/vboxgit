@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: wuihlpform.py 81776 2019-11-11 19:26:13Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 81776 $"
 
 # Standard python imports.
 import copy;
@@ -158,7 +158,7 @@ class WuiHlpForm(object):
         return self._add(u'          <input name="%s" id="%s" type="text"%s value="%s">%s\n'
                          u'        </div></div>\n'
                          u'      </li>\n'
-                         % ( escapeAttr(sName), escapeAttr(sName), sExtraAttribs, escapeElem(sValue), sPostHtml ));
+                         % ( escapeAttr(sName), escapeAttr(sName), sExtraAttribs, escapeAttr(unicode(sValue)), sPostHtml ));
 
     def addTextRO(self, sName, sValue, sLabel, sSubClass = 'string', sExtraAttribs = '', sPostHtml = ''):
         """Adds a read-only text input."""
@@ -169,7 +169,7 @@ class WuiHlpForm(object):
                          u'%s\n'
                          u'        </div></div>\n'
                          u'      </li>\n'
-                         % ( escapeAttr(sName), escapeAttr(sName), sExtraAttribs, escapeElem(unicode(sValue)), sPostHtml ));
+                         % ( escapeAttr(sName), escapeAttr(sName), sExtraAttribs, escapeAttr(unicode(sValue)), sPostHtml ));
 
     def addWideText(self, sName, sValue, sLabel, sExtraAttribs = '', sPostHtml = ''):
         """Adds a wide text input."""
