@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: EMHM.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -86,7 +86,7 @@ VMMR3_INT_DECL(VBOXSTRICTRC) EMR3HmSingleInstruction(PVM pVM, PVMCPU pVCpu, uint
 {
     Assert(!(fFlags & ~EM_ONE_INS_FLAGS_MASK));
 
-    if (!HMCanExecuteGuest(pVCpu, &pVCpu->cpum.GstCtx))
+    if (!HMCanExecuteGuest(pVM, pVCpu, &pVCpu->cpum.GstCtx))
         return VINF_EM_RESCHEDULE;
 
     uint64_t const uOldRip = pVCpu->cpum.GstCtx.rip;

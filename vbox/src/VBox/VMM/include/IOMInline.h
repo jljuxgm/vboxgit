@@ -1,4 +1,4 @@
-/* $Id: IOMInline.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: IOMInline.h 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * IOM - Inlined functions.
  */
@@ -130,7 +130,7 @@ DECLINLINE(PIOMMMIORANGE) iomMmioGetRangeWithRef(PVM pVM, PVMCPU pVCpu, RTGCPHYS
  * @param   pVM     The cross context VM structure.
  * @param   pRange  The range to release.
  */
-DECLINLINE(void) iomMmioReleaseRange(PVM pVM, PIOMMMIORANGE pRange)
+DECLINLINE(void) iomMmioReleaseRange(PVMCC pVM, PIOMMMIORANGE pRange)
 {
     uint32_t cRefs = ASMAtomicDecU32(&pRange->cRefs);
     if (!cRefs)

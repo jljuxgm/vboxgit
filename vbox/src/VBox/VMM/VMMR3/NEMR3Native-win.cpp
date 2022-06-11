@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -52,7 +52,7 @@
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/dbgftrace.h>
 #include "NEMInternal.h"
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 
 #include <iprt/ldr.h>
 #include <iprt/path.h>
@@ -1231,7 +1231,7 @@ int nemR3NativeInit(PVM pVM, bool fFallback, bool fForced)
                 /*
                  * Check out our ring-0 capabilities.
                  */
-                rc = SUPR3CallVMMR0Ex(pVM->pVMR0, 0 /*idCpu*/, VMMR0_DO_NEM_INIT_VM, 0, NULL);
+                rc = SUPR3CallVMMR0Ex(VMCC_GET_VMR0_FOR_CALL(pVM), 0 /*idCpu*/, VMMR0_DO_NEM_INIT_VM, 0, NULL);
                 if (RT_SUCCESS(rc))
                 {
                     /*

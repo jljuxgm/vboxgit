@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: IOMAll.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -788,7 +788,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IOMIOPortWriteString(PVM pVM, PVMCPU pVCpu, RTIOPORT 
  * @param   pVM                 The cross context VM structure.
  * @param   pRange              The range to free.
  */
-void iomMmioFreeRange(PVM pVM, PIOMMMIORANGE pRange)
+void iomMmioFreeRange(PVMCC pVM, PIOMMMIORANGE pRange)
 {
     MMHyperFree(pVM, pRange);
 }

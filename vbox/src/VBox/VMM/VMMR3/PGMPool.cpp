@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: PGMPool.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -239,7 +239,11 @@ int pgmR3PoolInit(PVM pVM)
      * Initialize it.
      */
     pPool->pVMR3     = pVM;
+#ifdef VBOX_BUGREF_9217
+    pPool->pVMR0     = pVM->pVMR0ForCall;
+#else
     pPool->pVMR0     = pVM->pVMR0;
+#endif
     pPool->cMaxPages = cMaxPages;
     pPool->cCurPages = PGMPOOL_IDX_FIRST;
     pPool->iUserFreeHead = 0;

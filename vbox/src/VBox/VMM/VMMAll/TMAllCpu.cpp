@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -43,7 +43,7 @@
  * @param   pVM             The cross context VM structure.
  * @param   fCheckTimers    Whether to check timers.
  */
-DECLINLINE(uint64_t) tmCpuTickGetRawVirtual(PVM pVM, bool fCheckTimers)
+DECLINLINE(uint64_t) tmCpuTickGetRawVirtual(PVMCC pVM, bool fCheckTimers)
 {
     uint64_t u64;
     if (fCheckTimers)

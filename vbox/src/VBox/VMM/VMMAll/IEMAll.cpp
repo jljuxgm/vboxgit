@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: IEMAll.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -8311,7 +8311,7 @@ IEM_STATIC VBOXSTRICTRC iemMemBounceBufferCommitAndUnmap(PVMCPUCC pVCpu, unsigne
     /*
      * Do the writing.
      */
-    PVM          pVM = pVCpu->CTX_SUFF(pVM);
+    PVMCC pVM = pVCpu->CTX_SUFF(pVM);
     if (!pVCpu->iem.s.aMemBbMappings[iMemMap].fUnassigned)
     {
         uint16_t const  cbFirst  = pVCpu->iem.s.aMemBbMappings[iMemMap].cbFirst;
@@ -8514,7 +8514,7 @@ iemMemBounceBufferMapCrossPage(PVMCPUCC pVCpu, int iMemMap, void **ppvMem, size_
         return rcStrict;
     GCPhysSecond &= ~(RTGCPHYS)PAGE_OFFSET_MASK;
 
-    PVM pVM = pVCpu->CTX_SUFF(pVM);
+    PVMCC pVM = pVCpu->CTX_SUFF(pVM);
 
     /*
      * Read in the current memory content if it's a read, execute or partial
@@ -14292,7 +14292,7 @@ VMMDECL(VBOXSTRICTRC) IEMExecLots(PVMCPUCC pVCpu, uint32_t cMaxInstructions, uin
              * The run loop.  We limit ourselves to 4096 instructions right now.
              */
             uint32_t cMaxInstructionsGccStupidity = cMaxInstructions;
-            PVM pVM = pVCpu->CTX_SUFF(pVM);
+            PVMCC pVM = pVCpu->CTX_SUFF(pVM);
             for (;;)
             {
                 /*

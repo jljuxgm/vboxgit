@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: TMInternal.h 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -788,8 +788,8 @@ int                     tmCpuTickPauseLocked(PVMCC pVM, PVMCPUCC pVCpu);
 int                     tmCpuTickResume(PVMCC pVM, PVMCPUCC pVCpu);
 int                     tmCpuTickResumeLocked(PVMCC pVM, PVMCPUCC pVCpu);
 
-int                     tmVirtualPauseLocked(PVM pVM);
-int                     tmVirtualResumeLocked(PVM pVM);
+int                     tmVirtualPauseLocked(PVMCC pVM);
+int                     tmVirtualResumeLocked(PVMCC pVM);
 DECLCALLBACK(DECLEXPORT(void))      tmVirtualNanoTSBad(PRTTIMENANOTSDATA pData, uint64_t u64NanoTS,
                                                        uint64_t u64DeltaPrev, uint64_t u64PrevNanoTS);
 DECLCALLBACK(DECLEXPORT(uint64_t))  tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData);

@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: EM.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1386,7 +1386,7 @@ EMSTATE emR3Reschedule(PVM pVM, PVMCPU pVCpu)
     {
         if (VM_IS_HM_ENABLED(pVM))
         {
-            if (HMCanExecuteGuest(pVCpu, &pVCpu->cpum.GstCtx))
+            if (HMCanExecuteGuest(pVM, pVCpu, &pVCpu->cpum.GstCtx))
                 return EMSTATE_HM;
         }
         else if (NEMR3CanExecuteGuest(pVM, pVCpu))

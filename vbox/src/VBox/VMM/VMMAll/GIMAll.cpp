@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: GIMAll.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -240,7 +240,7 @@ VMM_INT_DECL(VBOXSTRICTRC) GIMExecHypercallInstr(PVMCPUCC pVCpu, PCPUMCTX pCtx, 
  * @returns true if enabled and usable, false otherwise.
  * @param   pVM         The cross context VM structure.
  */
-VMM_INT_DECL(bool) GIMIsParavirtTscEnabled(PVM pVM)
+VMM_INT_DECL(bool) GIMIsParavirtTscEnabled(PVMCC pVM)
 {
     switch (pVM->gim.s.enmProviderId)
     {

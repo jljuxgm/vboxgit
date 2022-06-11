@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 80090 2019-07-31 21:20:57Z vboxsync $ */
+/* $Id: IOMInternal.h 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -453,7 +453,7 @@ typedef IOMCPU *PIOMCPU;
 
 RT_C_DECLS_BEGIN
 
-void                iomMmioFreeRange(PVM pVM, PIOMMMIORANGE pRange);
+void                iomMmioFreeRange(PVMCC pVM, PIOMMMIORANGE pRange);
 #ifdef IN_RING3
 PIOMMMIOSTATS       iomR3MMIOStatsCreate(PVM pVM, RTGCPHYS GCPhys, const char *pszDesc);
 #endif /* IN_RING3 */

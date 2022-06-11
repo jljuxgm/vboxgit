@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: SELMAll.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -51,10 +51,10 @@
  * @param   pCtxCore    CPU context
  * @param   Addr        Address part.
  */
-VMMDECL(RTGCPTR) SELMToFlat(PVM pVM, DISSELREG SelReg, PCPUMCTXCORE pCtxCore, RTGCPTR Addr)
+VMMDECL(RTGCPTR) SELMToFlat(PVMCC pVM, DISSELREG SelReg, PCPUMCTXCORE pCtxCore, RTGCPTR Addr)
 {
     PCPUMSELREG    pSReg;
-    PVMCPU         pVCpu = VMMGetCpu(pVM);
+    PVMCPUCC       pVCpu = VMMGetCpu(pVM);
 
     int rc = DISFetchRegSegEx(pCtxCore, SelReg, &pSReg); AssertRC(rc);
 

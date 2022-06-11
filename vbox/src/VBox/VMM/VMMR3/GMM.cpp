@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 80191 2019-08-08 00:36:57Z vboxsync $ */
+/* $Id: GMM.cpp 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -23,7 +23,7 @@
 #define LOG_GROUP LOG_GROUP_GMM
 #include <VBox/vmm/gmm.h>
 #include <VBox/vmm/vmm.h>
-#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmcc.h>
 #include <VBox/sup.h>
 #include <VBox/err.h>
 #include <VBox/param.h>
@@ -308,7 +308,7 @@ GMMR3DECL(int)  GMMR3QueryHypervisorMemoryStats(PVM pVM, uint64_t *pcTotalAllocP
     *puTotalBalloonSize  = 0;
 
     /* Must be callable from any thread, so can't use VMMR3CallR0. */
-    int rc = SUPR3CallVMMR0Ex(pVM->pVMR0, NIL_VMCPUID, VMMR0_DO_GMM_QUERY_HYPERVISOR_MEM_STATS, 0, &Req.Hdr);
+    int rc = SUPR3CallVMMR0Ex(VMCC_GET_VMR0_FOR_CALL(pVM), NIL_VMCPUID, VMMR0_DO_GMM_QUERY_HYPERVISOR_MEM_STATS, 0, &Req.Hdr);
     if (rc == VINF_SUCCESS)
     {
         *pcTotalAllocPages   = Req.cAllocPages;
@@ -443,7 +443,7 @@ GMMR3DECL(bool) GMMR3IsDuplicatePage(PVM pVM, uint32_t idPage)
     Req.fDuplicate   = false;
 
     /* Must be callable from any thread, so can't use VMMR3CallR0. */
-    int rc = SUPR3CallVMMR0Ex(pVM->pVMR0, NIL_VMCPUID, VMMR0_DO_GMM_FIND_DUPLICATE_PAGE, 0, &Req.Hdr);
+    int rc = SUPR3CallVMMR0Ex(VMCC_GET_VMR0_FOR_CALL(pVM), NIL_VMCPUID, VMMR0_DO_GMM_FIND_DUPLICATE_PAGE, 0, &Req.Hdr);
     if (rc == VINF_SUCCESS)
         return Req.fDuplicate;
     return false;

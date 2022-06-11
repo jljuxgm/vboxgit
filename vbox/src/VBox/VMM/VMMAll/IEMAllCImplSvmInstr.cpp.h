@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplSvmInstr.cpp.h 80268 2019-08-14 11:25:13Z vboxsync $ */
+/* $Id: IEMAllCImplSvmInstr.cpp.h 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * IEM - AMD-V (Secure Virtual Machine) instruction implementation.
  */
@@ -378,7 +378,7 @@ IEM_STATIC VBOXSTRICTRC iemSvmVmrun(PVMCPUCC pVCpu, uint8_t cbInstr, RTGCPHYS GC
     /*
      * Read the guest VMCB.
      */
-    PVM pVM = pVCpu->CTX_SUFF(pVM);
+    PVMCC pVM = pVCpu->CTX_SUFF(pVM);
     int rc = PGMPhysSimpleReadGCPhys(pVM, pVCpu->cpum.GstCtx.hwvirt.svm.CTX_SUFF(pVmcb), GCPhysVmcb, sizeof(SVMVMCB));
     if (RT_SUCCESS(rc))
     {

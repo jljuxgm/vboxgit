@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 80274 2019-08-14 14:34:38Z vboxsync $ */
+/* $Id: NEMInternal.h 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -427,16 +427,16 @@ int     nemR3NativeNotifyPhysRomRegisterLate(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS 
 void    nemR3NativeNotifySetA20(PVMCPU pVCpu, bool fEnabled);
 #endif
 
-void    nemHCNativeNotifyHandlerPhysicalRegister(PVM pVM, PGMPHYSHANDLERKIND enmKind, RTGCPHYS GCPhys, RTGCPHYS cb);
-void    nemHCNativeNotifyHandlerPhysicalDeregister(PVM pVM, PGMPHYSHANDLERKIND enmKind, RTGCPHYS GCPhys, RTGCPHYS cb,
+void    nemHCNativeNotifyHandlerPhysicalRegister(PVMCC pVM, PGMPHYSHANDLERKIND enmKind, RTGCPHYS GCPhys, RTGCPHYS cb);
+void    nemHCNativeNotifyHandlerPhysicalDeregister(PVMCC pVM, PGMPHYSHANDLERKIND enmKind, RTGCPHYS GCPhys, RTGCPHYS cb,
                                                    int fRestoreAsRAM, bool fRestoreAsRAM2);
-void    nemHCNativeNotifyHandlerPhysicalModify(PVM pVM, PGMPHYSHANDLERKIND enmKind, RTGCPHYS GCPhysOld,
+void    nemHCNativeNotifyHandlerPhysicalModify(PVMCC pVM, PGMPHYSHANDLERKIND enmKind, RTGCPHYS GCPhysOld,
                                                RTGCPHYS GCPhysNew, RTGCPHYS cb, bool fRestoreAsRAM);
-int     nemHCNativeNotifyPhysPageAllocated(PVM pVM, RTGCPHYS GCPhys, RTHCPHYS HCPhys, uint32_t fPageProt,
+int     nemHCNativeNotifyPhysPageAllocated(PVMCC pVM, RTGCPHYS GCPhys, RTHCPHYS HCPhys, uint32_t fPageProt,
                                            PGMPAGETYPE enmType, uint8_t *pu2State);
-void    nemHCNativeNotifyPhysPageProtChanged(PVM pVM, RTGCPHYS GCPhys, RTHCPHYS HCPhys, uint32_t fPageProt,
+void    nemHCNativeNotifyPhysPageProtChanged(PVMCC pVM, RTGCPHYS GCPhys, RTHCPHYS HCPhys, uint32_t fPageProt,
                                              PGMPAGETYPE enmType, uint8_t *pu2State);
-void    nemHCNativeNotifyPhysPageChanged(PVM pVM, RTGCPHYS GCPhys, RTHCPHYS HCPhysPrev, RTHCPHYS HCPhysNew, uint32_t fPageProt,
+void    nemHCNativeNotifyPhysPageChanged(PVMCC pVM, RTGCPHYS GCPhys, RTHCPHYS HCPhysPrev, RTHCPHYS HCPhysNew, uint32_t fPageProt,
                                          PGMPAGETYPE enmType, uint8_t *pu2State);
 
 

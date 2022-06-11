@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 80274 2019-08-14 14:34:38Z vboxsync $ */
+/* $Id: VMMInternal.h 80281 2019-08-15 07:29:37Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -472,7 +472,7 @@ DECLASM(int)    vmmR0WorldSwitch(PVM pVM, unsigned uArg);
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
  */
-typedef DECLCALLBACK(int) FNVMMR0SETJMP(PVM pVM, PVMCPU pVCpu);
+typedef DECLCALLBACK(int) FNVMMR0SETJMP(PVMCC pVM, PVMCPUCC pVCpu);
 /** Pointer to FNVMMR0SETJMP(). */
 typedef FNVMMR0SETJMP *PFNVMMR0SETJMP;
 
