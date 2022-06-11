@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: GIMAll.cpp 81605 2019-10-31 14:29:46Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -424,6 +424,7 @@ VMM_INT_DECL(int) GIMQueryHypercallOpcodeBytes(PVM pVM, void *pvBuf, size_t cbBu
     switch (enmHostCpu)
     {
         case CPUMCPUVENDOR_AMD:
+        case CPUMCPUVENDOR_HYGON:
         {
             if (puDisOpcode)
                 *puDisOpcode = OP_VMMCALL;

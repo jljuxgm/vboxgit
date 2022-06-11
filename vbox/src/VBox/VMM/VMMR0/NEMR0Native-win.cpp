@@ -1,4 +1,4 @@
-/* $Id: NEMR0Native-win.cpp 80346 2019-08-19 19:36:29Z vboxsync $ */
+/* $Id: NEMR0Native-win.cpp 81605 2019-10-31 14:29:46Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-0 Windows backend.
  */
@@ -1528,7 +1528,7 @@ NEM_TMPL_STATIC int nemR0WinImportState(PGVM pGVM, PGVMCPU pGVCpu, PCPUMCTX pCtx
             pInput->Names[iReg++] = HvX64RegisterIa32MiscEnable;
 # endif
 # ifdef LOG_ENABLED
-        if (enmCpuVendor != CPUMCPUVENDOR_AMD)
+        if (enmCpuVendor != CPUMCPUVENDOR_AMD && enmCpuVendor != CPUMCPUVENDOR_HYGON)
             pInput->Names[iReg++] = HvX64RegisterIa32FeatureControl;
 # endif
     }
@@ -2105,7 +2105,7 @@ NEM_TMPL_STATIC int nemR0WinImportState(PGVM pGVM, PGVMCPU pGVCpu, PCPUMCTX pCtx
         }
 # endif
 # ifdef LOG_ENABLED
-        if (enmCpuVendor != CPUMCPUVENDOR_AMD)
+        if (enmCpuVendor != CPUMCPUVENDOR_AMD && enmCPUVendor != CPUMCPUVENDOR_HYGON)
         {
             Assert(pInput->Names[iReg] == HvX64RegisterIa32FeatureControl);
             if (paValues[iReg].Reg64 != pCtx->hwvirt.vmx.Msrs.u64FeatCtrl)

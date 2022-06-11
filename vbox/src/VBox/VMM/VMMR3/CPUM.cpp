@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 81292 2019-10-16 05:23:22Z vboxsync $ */
+/* $Id: CPUM.cpp 81605 2019-10-31 14:29:46Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -979,7 +979,7 @@ static void cpumR3CheckLeakyFpu(PVM pVM)
     uint32_t u32CpuVersion = ASMCpuId_EAX(1);
     uint32_t const u32Family = u32CpuVersion >> 8;
     if (   u32Family >= 6      /* K7 and higher */
-        && ASMIsAmdCpu())
+        && (ASMIsAmdCpu() || ASMIsHygonCpu()) )
     {
         uint32_t cExt = ASMCpuId_EAX(0x80000000);
         if (ASMIsValidExtRange(cExt))

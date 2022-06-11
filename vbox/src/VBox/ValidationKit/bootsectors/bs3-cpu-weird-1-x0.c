@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-weird-1-x0.c 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: bs3-cpu-weird-1-x0.c 81605 2019-10-31 14:29:46Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-weird-2, C test driver code (16-bit).
  */
@@ -323,7 +323,7 @@ static int bs3CpuWeird1_DbgInhibitRingXfer_Worker(uint8_t bTestMode, uint8_t bIn
 
         Bs3TrapSetJmpAndRestore(&Ctx, &TrapCtx);
         Bs3RegSetDr7(0);
-        if (g_enmCpuVendor == BS3CPUVENDOR_AMD)
+        if (g_enmCpuVendor == BS3CPUVENDOR_AMD || g_enmCpuVendor == BS3CPUVENDOR_HYGON)
             bs3CpuWeird1_CompareDbgInhibitRingXfer(&TrapCtx, &Ctx, X86_XCPT_DB, offTestLabel, cbSpAdjust,
                                                    X86_DR6_INIT_VAL | X86_DR6_B0, cbIretFrameInt, uHandlerRspInt);
         else
@@ -340,7 +340,7 @@ static int bs3CpuWeird1_DbgInhibitRingXfer_Worker(uint8_t bTestMode, uint8_t bIn
         *BS3_XPTR_GET(uint32_t, StackXptr) = Ctx.ss;
 
         Bs3TrapSetJmpAndRestore(&Ctx, &TrapCtx);
-        if (g_enmCpuVendor == BS3CPUVENDOR_AMD)
+        if (g_enmCpuVendor == BS3CPUVENDOR_AMD || g_enmCpuVendor ==  BS3CPUVENDOR_HYGON)
             bs3CpuWeird1_CompareDbgInhibitRingXfer(&TrapCtx, &Ctx, X86_XCPT_DB, offTestLabel, cbSpAdjust,
                                                    X86_DR6_INIT_VAL | X86_DR6_B0, cbIretFrameInt, uHandlerRspInt);
         else

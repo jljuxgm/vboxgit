@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-decoding-1.c32 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: bs3-cpu-decoding-1.c32 81605 2019-10-31 14:29:46Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-decoding-1, 32-bit C code.
  */
@@ -881,7 +881,7 @@ void DecodeUdEdgeTest(PCCPUDECODE1UDTST paTests, unsigned cTests)
      */
     bool fIsAmd = false;
     if (g_uBs3CpuDetected & BS3CPU_F_CPUID)
-        fIsAmd = ASMIsAmdCpu();
+        fIsAmd = ASMIsAmdCpu() || ASMIsHygonCpu();
     Bs3TestPrintf("fIsAmd=%d\n", fIsAmd);
 
     /*

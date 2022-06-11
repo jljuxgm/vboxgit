@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 76886 2019-01-18 10:57:02Z vboxsync $ */
+/* $Id: bs3kit.h 81605 2019-10-31 14:29:46Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -1537,6 +1537,7 @@ typedef enum BS3CPUVENDOR
     BS3CPUVENDOR_VIA,
     BS3CPUVENDOR_CYRIX,
     BS3CPUVENDOR_SHANGHAI,
+    BS3CPUVENDOR_HYGON,
     BS3CPUVENDOR_UNKNOWN,
     BS3CPUVENDOR_END
 } BS3CPUVENDOR;

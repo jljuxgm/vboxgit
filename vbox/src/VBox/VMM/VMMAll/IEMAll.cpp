@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 81002 2019-09-25 09:12:34Z vboxsync $ */
+/* $Id: IEMAll.cpp 81605 2019-10-31 14:29:46Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -358,7 +358,7 @@ typedef enum IEMXCPTCLASS
 /**
  * Evaluates to true if we're presenting an AMD CPU to the guest.
  */
-#define IEM_IS_GUEST_CPU_AMD(a_pVCpu)       ( (a_pVCpu)->iem.s.enmCpuVendor == CPUMCPUVENDOR_AMD )
+#define IEM_IS_GUEST_CPU_AMD(a_pVCpu)       ( (a_pVCpu)->iem.s.enmCpuVendor == CPUMCPUVENDOR_AMD || (a_pVCpu)->iem.s.enmCpuVendor == CPUMCPUVENDOR_HYGON )
 
 /**
  * Check if the address is canonical.

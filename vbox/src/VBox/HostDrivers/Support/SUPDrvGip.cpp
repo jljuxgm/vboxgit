@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 81106 2019-10-03 21:23:00Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 81605 2019-10-31 14:29:46Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -1800,7 +1800,7 @@ static SUPGIPMODE supdrvGipInitDetermineTscMode(PSUPDRVDEVEXT pDevExt)
     /* (2) If it's an AMD CPU with power management, we won't trust its TSC. */
     ASMCpuId(0, &uEAX, &uEBX, &uECX, &uEDX);
     if (   ASMIsValidStdRange(uEAX)
-        && ASMIsAmdCpuEx(uEBX, uECX, uEDX))
+        && (ASMIsAmdCpuEx(uEBX, uECX, uEDX) || ASMIsHygonCpuEx(uEBX, uECX, uEDX)) )
     {
         /* Check for APM support. */
         uEAX = ASMCpuId_EAX(0x80000000);
@@ -4020,7 +4020,7 @@ static int supdrvTscMeasureDeltaOne(PSUPDRVDEVEXT pDevExt, uint32_t idxWorker)
             && ASMHasCpuId()
             && ASMIsValidStdRange(ASMCpuId_EAX(0))
             && (ASMCpuId_EDX(1) & X86_CPUID_FEATURE_EDX_HTT)
-            && (   !ASMIsAmdCpu()
+            && (   (!ASMIsAmdCpu() && !ASMIsHygonCpu())
                 || ASMGetCpuFamily(u32Tmp = ASMCpuId_EAX(1)) > 0x15
                 || (   ASMGetCpuFamily(u32Tmp)   == 0x15           /* Piledriver+, not bulldozer (FX-4150 didn't like it). */
                     && ASMGetCpuModelAMD(u32Tmp) >= 0x02) ) )

@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 81605 2019-10-31 14:29:46Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -1403,7 +1403,8 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvHypercallEx(PVMCPUCC pVCpu, PCPUMCTX pCtx, unsig
                 || enmGuestCpuVendor == CPUMCPUVENDOR_VIA
                 || enmGuestCpuVendor == CPUMCPUVENDOR_SHANGHAI))
         || (   uDisOpcode == OP_VMMCALL
-            && enmGuestCpuVendor == CPUMCPUVENDOR_AMD))
+            && (   enmGuestCpuVendor == CPUMCPUVENDOR_AMD
+                || enmGuestCpuVendor == CPUMCPUVENDOR_HYGON)) )
         return gimHvHypercall(pVCpu, pCtx);
 
     RT_NOREF_PV(cbInstr);
