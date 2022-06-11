@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 81033 2019-09-26 19:44:09Z vboxsync $ */
+/* $Id: DevPciInternal.h 81034 2019-09-26 20:04:13Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -197,6 +197,9 @@ typedef DEVPCIROOT *PDEVPCIROOT;
 #define PCI_UNLOCK(pDevIns) \
     PDMINS_2_DATA_CC(pDevIns, PDEVPCIBUSCC)->CTX_SUFF(pPciHlp)->pfnUnlock(pDevIns)
 
+
+DECLHIDDEN(PPDMDEVINS)     devpcibridgeCommonSetIrqRootWalk(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, int iIrq,
+                                                            PDEVPCIBUS *ppBus, uint8_t *puDevFnBridge, int *piIrqPinBridge);
 
 #ifdef IN_RING3
 
