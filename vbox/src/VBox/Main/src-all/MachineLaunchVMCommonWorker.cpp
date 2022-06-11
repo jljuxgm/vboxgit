@@ -1,4 +1,4 @@
-/* $Id: MachineLaunchVMCommonWorker.cpp 80573 2019-09-04 05:54:47Z vboxsync $ */
+/* $Id: MachineLaunchVMCommonWorker.cpp 80611 2019-09-05 21:47:40Z vboxsync $ */
 /** @file
  * VirtualBox Main - VM process launcher helper for VBoxSVC & VBoxSDS.
  */
@@ -192,7 +192,7 @@ int MachineLaunchVMCommonWorker(const Utf8Str &aNameOrId,
         if (strAppOverride.isEmpty())
             strAppPath = Utf8StrFmt(OSX_APP_PATH_FMT, OSX_APP_NAME);
         vrc = RTStrCopy(pszNamePart, cbBufLeft, strAppPath.c_str());
-        AssertReturn(vrc, vrc);
+        AssertRCReturn(vrc, vrc);
 # else
         static const char s_szVirtualBox_exe[] = "VirtualBoxVM" HOSTSUFF_EXE;
         vrc = RTStrCopy(pszNamePart, cbBufLeft, s_szVirtualBox_exe);
