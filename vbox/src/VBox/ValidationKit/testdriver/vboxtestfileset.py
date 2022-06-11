@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestfileset.py 79180 2019-06-17 12:19:45Z vboxsync $
+# $Id: vboxtestfileset.py 79182 2019-06-17 12:48:28Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79180 $"
+__version__ = "$Revision: 79182 $"
 
 
 # Standard Python imports.
@@ -454,5 +454,4 @@ class TestFileSet(object):
                     if oParent is self.oTreeDir:
                         return oDir;
                     oParent = oParent.oParent;
-
 
