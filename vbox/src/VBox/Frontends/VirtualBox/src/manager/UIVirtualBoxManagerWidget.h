@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 84083 2020-04-29 13:40:56Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 84084 2020-04-29 14:15:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -45,6 +45,15 @@ class UIVirtualMachineItem;
 class UIVirtualBoxManagerWidget : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
+
+    /** Possible selection types. */
+    enum SelectionType
+    {
+        SelectionType_Invalid,
+        SelectionType_SingleGroupItem,
+        SelectionType_FirstIsGlobalItem,
+        SelectionType_FirstIsMachineItem
+    };
 
 signals:
 
@@ -225,8 +234,10 @@ private:
     /** Holds the Tools-pane instance. */
     UITools            *m_pPaneTools;
 
-    /** Holds whether last time single group item was selected exclusively. */
-    bool  m_fSingleGroupSelected;
+    /** Holds the last selection type. */
+    SelectionType  m_enmSelectionType;
+    /** Holds whether the last selected item was accessible. */
+    bool           m_fSelectedMachineItemAccessible;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_UIVirtualBoxManagerWidget_h */
