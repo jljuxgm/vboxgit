@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.cpp 81930 2019-11-18 00:49:05Z vboxsync $ */
+/* $Id: DevPcArch.cpp 81931 2019-11-18 03:24:26Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
@@ -262,7 +262,8 @@ static DECLCALLBACK(int)  pcarchConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
     PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
     PDEVPCARCH  pThis = PDMDEVINS_2_DATA(pDevIns, PDEVPCARCH);
     int         rc;
-    Assert(iInstance == 0); RT_NOREF(iInstance);
+    RT_NOREF(iInstance, pCfg);
+    Assert(iInstance == 0);
 
     /*
      * Validate configuration.
