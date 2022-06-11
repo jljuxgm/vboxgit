@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialog.cpp 84010 2020-04-27 14:46:33Z vboxsync $ */
+/* $Id: UICloudMachineSettingsDialog.cpp 84014 2020-04-27 14:57:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialog class implementation.
  */
@@ -107,7 +107,7 @@ void UICloudMachineSettingsDialog::prepare()
         m_pPage = new UICloudMachineSettingsDialogPage(this);
         if (m_pPage)
         {
-            connect(m_pPage, &UICloudMachineSettingsDialogPage::sigValidChanged,
+            connect(m_pPage.data(), &UICloudMachineSettingsDialogPage::sigValidChanged,
                     this, &UICloudMachineSettingsDialog::setOkButtonEnabled);
             /* Add into layout: */
             pLayout->addWidget(m_pPage);
