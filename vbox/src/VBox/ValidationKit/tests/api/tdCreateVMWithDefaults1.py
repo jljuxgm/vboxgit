@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCreateVMWithDefaults1.py 79066 2019-06-10 15:55:47Z vboxsync $
+# $Id: tdCreateVMWithDefaults1.py 79067 2019-06-10 22:56:46Z vboxsync $
 
 """
 VirtualBox Validation Kit - Create VM with IMachine::applyDefaults() Test
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79066 $"
+__version__ = "$Revision: 79067 $"
 
 
 # Standard Python imports.
@@ -52,15 +52,14 @@ class SubTstDrvCreateVMWithDefaults1(base.SubTestDriverBase):
     """
 
     def __init__(self, oTstDrv):
-        base.SubTestDriverBase.__init__(self, 'create-vm-with-defaults', oTstDrv)
-        self.asRsrcs = []
+        base.SubTestDriverBase.__init__(self, oTstDrv, 'create-vm-with-defaults', 'Create VMs with defaults');
 
     def testIt(self):
         """
         Execute the sub-testcase.
         """
         reporter.log('ValidationKit folder is "%s"' % (g_ksValidationKitDir,))
-        reporter.testStart('Create VMs with defaults');
+        reporter.testStart(self.sTestName);
         fRc = self.testCreateVMWithDefaults();
         reporter.testDone();
         return fRc;

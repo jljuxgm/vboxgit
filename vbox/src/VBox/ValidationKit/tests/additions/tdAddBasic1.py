@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 78797 2019-05-28 01:51:18Z vboxsync $
+# $Id: tdAddBasic1.py 79067 2019-06-10 22:56:46Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78797 $"
+__version__ = "$Revision: 79067 $"
 
 # Standard Python imports.
 import os;
@@ -46,7 +46,7 @@ from testdriver import base;
 from testdriver import vbox;
 from testdriver import vboxcon;
 
-# Sub test driver imports.
+# Sub-test driver imports.
 sys.path.append(os.path.dirname(os.path.abspath(__file__))); # For sub-test drivers.
 from tdAddGuestCtrl import SubTstDrvAddGuestCtrl;
 from tdAddSharedFolders1 import SubTstDrvAddSharedFolders1;
