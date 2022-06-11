@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80305 2019-08-15 17:35:00Z vboxsync $
+# $Id: Makefile.kmk 80362 2019-08-21 09:07:03Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1553,14 +1553,8 @@ if defined(VBOX_WITH_VMSVGA3D) && !defined(VBOX_ONLY_EXTPACKS) && "$(intersects 
  VBoxSVGA3DObjC_LDFLAGS.darwin = \
  	-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxSVGA3DObjC.dylib \
  	-framework OpenGL
- if 1
  VBoxSVGA3DObjC_SOURCES.darwin += \
  	Graphics/DevVGA-SVGA3d-cocoa.m
- else
- VBoxSVGA3DObjC_SOURCES.darwin += \
- 	../HostServices/SharedOpenGL/render/renderspu_cocoa_helper.m \
- 	../HostServices/SharedOpenGL/OpenGLTest/OpenGLTestDarwin.cpp
- endif
 
 
 endif # defined(VBOX_WITH_VMSVGA3D) && !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != ""
