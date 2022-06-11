@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 81563 2019-10-29 10:23:58Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 81612 2019-10-31 18:20:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -148,6 +148,11 @@ public:
       * @{ */
         /** Returns event handling type. */
         EventHandlingType eventHandlingType();
+
+        /** Returns a list of restricted dialogs. */
+        UIExtraDataMetaDefs::DialogType restrictedDialogTypes(const QUuid &uID);
+        /** Defines a list of restricted dialogs. */
+        void setRestrictedDialogTypes(UIExtraDataMetaDefs::DialogType enmTypes, const QUuid &uID);
     /** @} */
 
     /** @name Messaging
@@ -749,14 +754,6 @@ public:
         QFont logViewerFont();
         void setLogViewerVisiblePanels(const QStringList &panelNameList);
         QStringList logViewerVisiblePanels();
-    /** @} */
-
-    /** @name Restricted Dialogs
-      * @{ */
-        /** Returns a list of restricted dialogs. */
-        UIExtraDataMetaDefs::RestrictedDialogs restrictedDialogs(const QUuid &uID);
-        /** Defines restricted Runtime UI menu types. */
-        void setRestrictedDialogs(UIExtraDataMetaDefs::RestrictedDialogs types, const QUuid &uID);
     /** @} */
 
 private slots:

@@ -1,4 +1,4 @@
-/* $Id: UIMediumSelector.cpp 81563 2019-10-29 10:23:58Z vboxsync $ */
+/* $Id: UIMediumSelector.cpp 81612 2019-10-31 18:20:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSelector class implementation.
  */
@@ -224,7 +224,7 @@ void UIMediumSelector::prepareMenuAndToolBar()
     m_pMainMenu->addAction(m_pActionRefresh);
 
     m_pToolBar->addAction(m_pActionAdd);
-    if (!(gEDataManager->restrictedDialogs(m_uMachineID) & UIExtraDataMetaDefs::RestrictedDialogs_VISOCreator))
+    if (!(gEDataManager->restrictedDialogTypes(m_uMachineID) & UIExtraDataMetaDefs::DialogType_VISOCreator))
         m_pToolBar->addAction(m_pActionCreate);
     m_pToolBar->addSeparator();
     m_pToolBar->addAction(m_pActionRefresh);

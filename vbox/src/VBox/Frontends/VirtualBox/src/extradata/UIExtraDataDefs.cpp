@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 81563 2019-10-29 10:23:58Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 81612 2019-10-31 18:20:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -21,6 +21,7 @@
 
 /* General: */
 const char *UIExtraDataDefs::GUI_EventHandlingType = "GUI/EventHandlingType";
+const char *UIExtraDataDefs::GUI_RestrictedDialogs = "GUI/RestrictedDialogs";
 
 
 /* Messaging: */
@@ -237,9 +238,6 @@ const char *UIExtraDataDefs::GUI_LogViewerWrapLinesEnabled = "WrapLines";
 const char *UIExtraDataDefs::GUI_LogViewerShowLineNumbersDisabled = "showLineNumbersDisabled";
 const char *UIExtraDataDefs::GUI_LogViewerNoFontStyleName = "noFontStyleName";
 const char *UIExtraDataDefs::GUI_GuestControl_LogViewerVisiblePanels = "GUI/LogViewerVisiblePanels";
-
-/* Restricted dialogs: */
-const char *UIExtraDataDefs::GUI_RestrictedDialogs = "GUI/RestrictedDialogs";
 
 /* Obsolete keys: */
 QMap<QString, QString> UIExtraDataDefs::prepareObsoleteKeysMap()
