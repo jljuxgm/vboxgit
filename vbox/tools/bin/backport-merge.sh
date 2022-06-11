@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: backport-merge.sh 83679 2020-04-11 18:37:52Z vboxsync $
+# $Id: backport-merge.sh 83680 2020-04-11 18:44:19Z vboxsync $
 ## @file
 # Script for merging a backport from trunk.
 #
@@ -42,9 +42,19 @@ if test -n "${MY_FIRST_REV}"; then
         echo "error: Branch already has changes pending..."
         "${MY_SVN}" status -q "${MY_BRANCH_DIR}"
         exit 1;
-    else
-        test -z "${MY_DEBUG}" || echo "debug: Found no pending changes on branch."
     fi
+    test -z "${MY_DEBUG}" || echo "debug: Found no pending changes on branch."
+fi
+
+#
+# Update branch if requested.
+#
+if test -n "${MY_UPDATE_FIRST}"; then
+    if ! "${MY_SVN}" update "${MY_BRANCH_DIR}" --ignore-externals; then
+        echo "error: branch updating failed..."
+        exit 1;
+    fi
+    test -z "${MY_DEBUG}" || echo "debug: Updated the branch."
 fi
 
 #
