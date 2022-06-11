@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 79206 2019-06-18 10:18:26Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 79212 2019-06-18 14:06:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -60,7 +60,6 @@ public:
 protected:
 
     virtual void retranslateUi() /* override */;
-    bool eventFilter(QObject *pWatched, QEvent *pEvent)/* override */;
 
 private slots:
 
@@ -81,6 +80,7 @@ private slots:
     void sltShowHideSidePanel();
     void sltCopyLayout();
     void sltSaveLayout();
+    void sltStatusBarMessage(const QString &strMessage);
 
 private:
 
