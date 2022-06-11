@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 79296 2019-06-24 09:09:21Z vboxsync $ */
+/* $Id: GuestImpl.h 80654 2019-09-08 23:51:15Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -219,7 +219,7 @@ private:
     } mData;
 
     ULONG                           mMemoryBalloonSize;
-    ULONG                           mStatUpdateInterval;
+    ULONG                           mStatUpdateInterval; /**< In seconds. */
     uint64_t                        mNetStatRx;
     uint64_t                        mNetStatTx;
     uint64_t                        mNetStatLastTs;
