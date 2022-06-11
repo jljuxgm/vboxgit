@@ -1,4 +1,4 @@
-/* $Id: RTProcDaemonize-generic.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: RTProcDaemonize-generic.cpp 83289 2020-03-13 16:09:08Z vboxsync $ */
 /** @file
  * IPRT - RTProcDaemonize, generic implementation.
  */
@@ -88,7 +88,7 @@ RTR3DECL(int) RTProcDaemonize(const char * const *papszArgs, const char *pszDaem
             RTFileClose(hStdOutAndErr.u.hFile);
         }
 
-        RTFileClose(hStdOutAndErr.u.hFile);
+        RTFileClose(hStdIn.u.hFile);
     }
     RTMemFree(papszNewArgs);
     return rc;
