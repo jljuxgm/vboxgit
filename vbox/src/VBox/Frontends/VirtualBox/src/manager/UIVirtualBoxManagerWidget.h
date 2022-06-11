@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 83059 2020-02-12 13:27:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -214,6 +214,9 @@ private:
     UISlidingAnimation *m_pSlidingAnimation;
     /** Holds the Tools-pane instance. */
     UITools            *m_pPaneTools;
+
+    /** Holds whether last time single group item was selected exclusively. */
+    bool  m_fSingleGroupSelected;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_UIVirtualBoxManagerWidget_h */

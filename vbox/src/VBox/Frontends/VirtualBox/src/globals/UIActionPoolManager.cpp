@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 83059 2020-02-12 13:27:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -395,6 +395,8 @@ protected:
     /** Handles translation event. */
     virtual void retranslateUi() /* override */
     {
+        /// @todo replace that one with separate "New" before 6.2
+        setIconText(QApplication::translate("UIActionPool", "&New...").remove('.'));
         setName(QApplication::translate("UIActionPool", "&New Machine..."));
         setStatusTip(QApplication::translate("UIActionPool", "Create new virtual machine"));
         setToolTip(simplifyText(text()) + (shortcut().isEmpty() ? QString() : QString(" (%1)").arg(shortcut().toString())));

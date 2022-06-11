@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.cpp 83055 2020-02-11 20:29:39Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.cpp 83059 2020-02-12 13:27:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class implementation.
  */
@@ -49,6 +49,7 @@ UIVirtualBoxManagerWidget::UIVirtualBoxManagerWidget(UIVirtualBoxManager *pParen
     , m_pPaneToolsMachine(0)
     , m_pSlidingAnimation(0)
     , m_pPaneTools(0)
+    , m_fSingleGroupSelected(false)
 {
     prepare();
 }
@@ -247,7 +248,17 @@ void UIVirtualBoxManagerWidget::sltHandleChooserPaneIndexChange()
 
     /* If that was machine or group item selected: */
     if (isMachineItemSelected() || isGroupItemSelected())
+    {
+        /* Recache current item info: */
         recacheCurrentItemInformation();
+
+        /* Update toolbar if we are switching beween single group item and rest of possible items: */
+        if (m_fSingleGroupSelected != isSingleGroupSelected())
+            updateToolbar();
+    }
+
+    /* Remember whether single group item was selected: */
+    m_fSingleGroupSelected = isSingleGroupSelected();
 }
 
 void UIVirtualBoxManagerWidget::sltHandleSlidingAnimationComplete(SlidingDirection enmDirection)
@@ -614,10 +625,19 @@ void UIVirtualBoxManagerWidget::updateToolbar()
             {
                 case UIToolType_Details:
                 {
-                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_New));
-                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Settings));
-                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Discard));
-                    m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_M_StartOrShow));
+                    if (isSingleGroupSelected())
+                    {
+                        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Group_S_New));
+                        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Group_S_Discard));
+                        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Group_M_StartOrShow));
+                    }
+                    else
+                    {
+                        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_New));
+                        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Settings));
+                        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Discard));
+                        m_pToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_M_StartOrShow));
+                    }
                     break;
                 }
                 case UIToolType_Snapshots:
