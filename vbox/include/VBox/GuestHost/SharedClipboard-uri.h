@@ -1,4 +1,4 @@
-/* $Id: SharedClipboard-uri.h 78809 2019-05-28 10:54:53Z vboxsync $ */
+/* $Id: SharedClipboard-uri.h 78811 2019-05-28 11:07:00Z vboxsync $ */
 /** @file
  * Shared Clipboard - Shared URI functions between host and guest.
  */
@@ -176,7 +176,7 @@ protected:
  */
 class SharedClipboardProviderVbglR3 : protected SharedClipboardProvider
 {
-    friend SharedClipboardProvider;
+    friend class SharedClipboardProvider;
 
 public:
 
@@ -204,7 +204,7 @@ protected:
  */
 class SharedClipboardProviderHostService : protected SharedClipboardProvider
 {
-    friend SharedClipboardProvider;
+    friend class SharedClipboardProvider;
 
 public:
 
