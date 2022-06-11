@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 79447 2019-07-01 15:48:27Z vboxsync $
+# $Id: txsclient.py 79474 2019-07-02 16:47:30Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79447 $"
+__version__ = "$Revision: 79474 $"
 
 # Standard Python imports.
 import array;
@@ -120,11 +120,17 @@ def isValidOpcodeEncoding(sOpcode):
 
 def u32ToByteArray(u32):
     """Encodes the u32 value as a little endian byte (B) array."""
-    return array.array('B', \
-                       (  u32              % 256, \
-                         (u32 // 256)      % 256, \
-                         (u32 // 65536)    % 256, \
+    return array.array('B',
+                       (  u32              % 256,
+                         (u32 // 256)      % 256,
+                         (u32 // 65536)    % 256,
                          (u32 // 16777216) % 256) );
+
+def escapeString(sString):
+    """
+    Does $ escaping of the string so TXS doesn't try do variable expansion.
+    """
+    return sString.replace('$', '$$');
 
 
 
