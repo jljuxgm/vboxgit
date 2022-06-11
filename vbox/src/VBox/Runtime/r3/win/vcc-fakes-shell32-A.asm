@@ -1,6 +1,6 @@
-; $Id: vcc100-fakes.mac 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: vcc-fakes-shell32-A.asm 83861 2020-04-20 15:01:48Z vboxsync $
 ;; @file
-; IPRT - Common macros for the Visual C++ 2010+ CRT import fakes.
+; IPRT - Wrappers for shell32 APIs missing in NT 4 and earlier.
 ;
 
 ;
@@ -32,35 +32,18 @@
 %endif
 
 
-;;
-; Fakes an API import table entry.
-;
-; @param 1  The function name
-; @param 2  Number of bytes of parameters for x86.
-%macro MAKE_IMPORT_ENTRY_INTERNAL 2
-
-BEGINDATA
-extern _FakeResolve_ %+ FAKE_MODULE_NAME
-
-extern _Fake_ %+ %1 %+ @ %+ %2
-global __imp__ %+ %1 %+ @ %+ %2         ; The import address table (IAT) entry name.
+%macro MAKE_IMPORT_ENTRY 2
+extern _ %+ %1 %+ @ %+ %2
+global __imp__ %+ %1 %+ @ %+ %2
 __imp__ %+ %1 %+ @ %+ %2:
-global _g_pfn %+ %1                     ; C accessible label.
-_g_pfn %+ %1:
-        dd      FakeLazyInit_ %+ %1
-
-BEGINCODE
-FakeLazyInit_ %+ %1:
-        pusha
-        call    _FakeResolve_ %+ FAKE_MODULE_NAME
-        popa
-global _ %+ %1 %+ @ %+ %2               ; The imported function stub.
-_ %+ %1 %+ @ %+ %2:
-        jmp     [_g_pfn %+ %1]
-
+    dd _ %+ %1 %+ @ %+ %2
 
 %endmacro
 
-%define MAKE_IMPORT_ENTRY(a_uMajorVer, a_uMinorVer, a_Name, a_cbParams) MAKE_IMPORT_ENTRY_INTERNAL a_Name, a_cbParams
-%define COMMENT(a_Text)
+
+BEGINDATA
+GLOBALNAME vcc100_shell32_fakes_asm
+
+; NT 3.1
+MAKE_IMPORT_ENTRY CommandLineToArgvW, 8
 

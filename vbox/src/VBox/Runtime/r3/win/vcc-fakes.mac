@@ -1,6 +1,6 @@
-; $Id: vcc100-ntdll-fakesA.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: vcc-fakes.mac 83861 2020-04-20 15:01:48Z vboxsync $
 ;; @file
-; IPRT - Wrappers for ntdll APIs misisng NT4.
+; IPRT - Common macros for the Visual C++ 2010+ CRT import fakes.
 ;
 
 ;
@@ -24,6 +24,7 @@
 ; terms and conditions of either the GPL or the CDDL or both.
 ;
 
+
 %include "iprt/asmdefs.mac"
 
 %ifndef RT_ARCH_X86
@@ -31,17 +32,35 @@
 %endif
 
 
-%macro MAKE_IMPORT_ENTRY 2
-extern _ %+ %1 %+ @ %+ %2
-global __imp__ %+ %1 %+ @ %+ %2
+;;
+; Fakes an API import table entry.
+;
+; @param 1  The function name
+; @param 2  Number of bytes of parameters for x86.
+%macro MAKE_IMPORT_ENTRY_INTERNAL 2
+
+BEGINDATA
+extern _FakeResolve_ %+ FAKE_MODULE_NAME
+
+extern _Fake_ %+ %1 %+ @ %+ %2
+global __imp__ %+ %1 %+ @ %+ %2         ; The import address table (IAT) entry name.
 __imp__ %+ %1 %+ @ %+ %2:
-    dd _ %+ %1 %+ @ %+ %2
+global _g_pfn %+ %1                     ; C accessible label.
+_g_pfn %+ %1:
+        dd      FakeLazyInit_ %+ %1
+
+BEGINCODE
+FakeLazyInit_ %+ %1:
+        pusha
+        call    _FakeResolve_ %+ FAKE_MODULE_NAME
+        popa
+global _ %+ %1 %+ @ %+ %2               ; The imported function stub.
+_ %+ %1 %+ @ %+ %2:
+        jmp     [_g_pfn %+ %1]
+
 
 %endmacro
 
-
-BEGINDATA
-GLOBALNAME vcc100_ntdll_fakes_asm
-
-MAKE_IMPORT_ENTRY RtlGetLastWin32Error, 0
+%define MAKE_IMPORT_ENTRY(a_uMajorVer, a_uMinorVer, a_Name, a_cbParams) MAKE_IMPORT_ENTRY_INTERNAL a_Name, a_cbParams
+%define COMMENT(a_Text)
 

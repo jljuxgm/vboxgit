@@ -1,6 +1,6 @@
-/* $Id: vcc100-ws2_32-fakes.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vcc-fakes-ntdll.cpp 83861 2020-04-20 15:01:48Z vboxsync $ */
 /** @file
- * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP - WS2_32.DLL.
+ * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP - NTDLL.DLL.
  */
 
 /*
@@ -30,21 +30,13 @@
 *********************************************************************************************************************************/
 #include <iprt/cdefs.h>
 #include <iprt/types.h>
-#include <iprt/asm.h>
-#include <iprt/string.h>
 
 #ifndef RT_ARCH_X86
 # error "This code is X86 only"
 #endif
 
-#define getaddrinfo                             Ignore_getaddrinfo
-#define freeaddrinfo                            Ignore_freeaddrinfo
+#include <iprt/win/windows.h>
 
-#include <iprt/win/winsock2.h>
-#include <iprt/win/ws2tcpip.h>
-
-#undef getaddrinfo
-#undef freeaddrinfo
 
 
 /** Dynamically resolves an kernel32 API.   */
@@ -56,7 +48,7 @@
         pfnApi = s_pfnApi; \
     else \
     { \
-        pfnApi = (decltype(pfnApi))GetProcAddress(GetModuleHandleW(L"wc2_32.dll"), #ApiNm); \
+        pfnApi = (decltype(pfnApi))GetProcAddress(GetModuleHandleW(L"ntdll.dll"), #ApiNm); \
         s_pfnApi = pfnApi; \
         s_fInitialized = true; \
     } do {} while (0) \
@@ -64,39 +56,18 @@
 
 extern "C"
 __declspec(dllexport)
-int WINAPI getaddrinfo(const char *pszNodeName, const char *pszServiceName, const struct addrinfo *pHints,
-                       struct addrinfo **ppResults)
+ULONG WINAPI RtlGetLastWin32Error(VOID)
 {
-    RESOLVE_ME(getaddrinfo);
+    RESOLVE_ME(RtlGetLastWin32Error);
     if (pfnApi)
-        return pfnApi(pszNodeName, pszServiceName, pHints, ppResults);
-
-    /** @todo  fallback */
-    WSASetLastError(WSAEAFNOSUPPORT);
-    return WSAEAFNOSUPPORT;
+        return pfnApi();
+    return GetLastError();
 }
-
-
-
-extern "C"
-__declspec(dllexport)
-void WINAPI freeaddrinfo(struct addrinfo *pResults)
-{
-    RESOLVE_ME(freeaddrinfo);
-    if (pfnApi)
-        pfnApi(pResults);
-    else
-    {
-        Assert(!pResults);
-        /** @todo  fallback */
-    }
-}
-
 
 
 /* Dummy to force dragging in this object in the link, so the linker
    won't accidentally use the symbols from kernel32. */
-extern "C" int vcc100_ws2_32_fakes_cpp(void)
+extern "C" int vcc100_ntdll_fakes_cpp(void)
 {
     return 42;
 }

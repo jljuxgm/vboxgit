@@ -1,4 +1,4 @@
-/* $Id: vcc100-fakes.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: vcc-fakes.h 83861 2020-04-20 15:01:48Z vboxsync $ */
 /** @file
  * IPRT - Common macros for the Visual C++ 2010+ CRT import fakes.
  */

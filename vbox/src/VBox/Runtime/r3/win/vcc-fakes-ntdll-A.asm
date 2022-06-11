@@ -1,6 +1,6 @@
-; $Id: vcc100-kernel32-fakesA.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: vcc-fakes-ntdll-A.asm 83861 2020-04-20 15:01:48Z vboxsync $
 ;; @file
-; IPRT - Wrappers for kernel32 APIs missing in NT4 and earlier.
+; IPRT - Wrappers for ntdll APIs misisng NT4.
 ;
 
 ;
@@ -24,13 +24,24 @@
 ; terms and conditions of either the GPL or the CDDL or both.
 ;
 
+%include "iprt/asmdefs.mac"
 
-%include "vcc100-fakes.mac"
+%ifndef RT_ARCH_X86
+ %error "This is x86 only code.
+%endif
 
-%define FAKE_MODULE_NAME kernel32
+
+%macro MAKE_IMPORT_ENTRY 2
+extern _ %+ %1 %+ @ %+ %2
+global __imp__ %+ %1 %+ @ %+ %2
+__imp__ %+ %1 %+ @ %+ %2:
+    dd _ %+ %1 %+ @ %+ %2
+
+%endmacro
+
 
 BEGINDATA
-GLOBALNAME vcc100_kernel32_fakes_asm
+GLOBALNAME vcc100_ntdll_fakes_asm
 
-%include "vcc100-kernel32-fakes.h"
+MAKE_IMPORT_ENTRY RtlGetLastWin32Error, 0
 

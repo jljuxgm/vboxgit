@@ -1,6 +1,6 @@
-; $Id: vcc100-ws2_32-fakesA.asm 82968 2020-02-04 10:35:17Z vboxsync $
+; $Id: vcc-fakes-kernel32-A.asm 83861 2020-04-20 15:01:48Z vboxsync $
 ;; @file
-; IPRT - Wrappers for ws2_32 APIs misisng NT4.
+; IPRT - Wrappers for kernel32 APIs missing in NT4 and earlier.
 ;
 
 ;
@@ -24,25 +24,19 @@
 ; terms and conditions of either the GPL or the CDDL or both.
 ;
 
-%include "iprt/asmdefs.mac"
 
-%ifndef RT_ARCH_X86
- %error "This is x86 only code.
-%endif
+%include "vcc-fakes.mac"
 
-
-%macro MAKE_IMPORT_ENTRY 2
-extern _ %+ %1 %+ @ %+ %2
-global __imp__ %+ %1 %+ @ %+ %2
-__imp__ %+ %1 %+ @ %+ %2:
-    dd _ %+ %1 %+ @ %+ %2
-
-%endmacro
-
+%define FAKE_MODULE_NAME kernel32
 
 BEGINDATA
-GLOBALNAME vcc100_ws2_32_fakes_asm
+GLOBALNAME vcc100_kernel32_fakes_asm
 
-MAKE_IMPORT_ENTRY getaddrinfo, 16
-MAKE_IMPORT_ENTRY freeaddrinfo, 4
+%ifdef VCC_FAKES_TARGET_VCC100
+ %include "vcc-fakes-kernel32-100.h"
+%elifdef VCC_FAKES_TARGET_VCC141
+ %include "vcc-fakes-kernel32-141.h"
+%else
+ %error "PORT ME!"
+%endif
 
