@@ -1,4 +1,4 @@
-/* $Id: clipboard-win.cpp 82497 2019-12-08 00:26:17Z vboxsync $ */
+/* $Id: clipboard-win.cpp 82504 2019-12-09 01:43:25Z vboxsync $ */
 /** @file
  * Shared Clipboard: Windows-specific functions for clipboard handling.
  */
@@ -843,7 +843,9 @@ int SharedClipboardWinAnnounceFormats(PSHCLWINCTX pWinCtx, SHCLFORMATS fFormats)
 
     int rc = VINF_SUCCESS;
 
-    /** @todo r=andy Only one clipboard format can be set at once, at least on Windows. */
+    /** @todo r=andy Only one clipboard format can be set at once, at least on Windows.
+     *  r=bird: Where did you get that misconception from?  That's utter
+     *          non-sense. */
     /** @todo Implement more flexible clipboard precedence for supported formats. */
 
     if (fFormats & VBOX_SHCL_FMT_UNICODETEXT)
