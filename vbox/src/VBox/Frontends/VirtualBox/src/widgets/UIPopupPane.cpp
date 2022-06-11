@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 80914 2019-09-20 06:16:55Z vboxsync $ */
+/* $Id: UIPopupPane.cpp 80916 2019-09-20 10:06:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPane class implementation.
  */
@@ -328,7 +328,7 @@ bool UIPopupPane::eventFilter(QObject *pObject, QEvent *pEvent)
         && pObject != m_pMessagePane
         && pObject != m_pButtonPane
         && pObject != m_pDetailsPane)
-        QIWithRetranslateUI<QWidget>::eventFilter(pObject, pEvent);
+        return QIWithRetranslateUI<QWidget>::eventFilter(pObject, pEvent);
 
     /* Depending on event-type: */
     switch (pEvent->type())
