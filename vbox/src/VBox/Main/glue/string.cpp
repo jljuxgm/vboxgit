@@ -1,4 +1,4 @@
-/* $Id: string.cpp 80836 2019-09-17 00:26:52Z vboxsync $ */
+/* $Id: string.cpp 80838 2019-09-17 00:48:36Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - UTF-8 and UTF-16 string classes.
  */
@@ -573,6 +573,35 @@ HRESULT Bstr::appendPrintfVNoThrow(const char *pszFormat, va_list va) RT_NOEXCEP
     return Args.hrc;
 }
 
+
+Bstr &Bstr::erase(size_t offStart /*= 0*/, size_t cwcLength /*= RTSTR_MAX*/) RT_NOEXCEPT
+{
+    size_t cwc = length();
+    if (offStart < cwc)
+    {
+        if (cwcLength >= cwc - offStart)
+        {
+            if (!offStart)
+                cleanup();
+            else
+            {
+                /* Trail removal, nothing to move.  */
+                m_bstr[offStart] = '\0';
+                joltNoThrow(offStart); /* not entirely optimal... */
+            }
+        }
+        else if (cwcLength > 0)
+        {
+            /* Pull up the tail to offStart. */
+            size_t cwcAfter = cwc - offStart - cwcLength;
+            memmove(&m_bstr[offStart], &m_bstr[offStart + cwcLength], cwcAfter * sizeof(*m_bstr));
+            cwc -= cwcLength;
+            m_bstr[cwc] = '\0';
+            joltNoThrow(cwc); /* not entirely optimal... */
+        }
+    }
+    return *this;
+}
 
 
 /*********************************************************************************************************************************
