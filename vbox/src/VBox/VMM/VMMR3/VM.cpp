@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 80334 2019-08-17 00:43:24Z vboxsync $ */
+/* $Id: VM.cpp 80649 2019-09-07 12:59:36Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1041,6 +1041,8 @@ static int vmR3InitDoCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
         rc = CPUMR3InitCompleted(pVM, enmWhat);
     if (RT_SUCCESS(rc))
         rc = EMR3InitCompleted(pVM, enmWhat);
+    if (RT_SUCCESS(rc))
+        rc = IOMR3InitCompleted(pVM, enmWhat);
     if (enmWhat == VMINITCOMPLETED_RING3)
     {
 #ifndef VBOX_WITH_REM
