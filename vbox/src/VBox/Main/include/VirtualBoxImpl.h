@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 83169 2020-02-27 09:28:41Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -210,6 +210,7 @@ public:
 #ifdef VBOX_WITH_CLOUD_NET
     HRESULT i_findCloudNetworkByName(const com::Utf8Str &aNetworkName,
                                      ComObjPtr<CloudNetwork> *aNetwork = NULL);
+    HRESULT i_getEventSource(ComPtr<IEventSource>& aSource);
 #endif /* VBOX_WITH_CLOUD_NET */
 
     ComObjPtr<GuestOSType> i_getUnknownOSType();

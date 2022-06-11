@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 83169 2020-02-27 09:28:41Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1506,7 +1506,7 @@ HRESULT VirtualBox::getGenericNetworkDrivers(std::vector<com::Utf8Str> &aGeneric
 HRESULT VirtualBox::i_findCloudNetworkByName(const com::Utf8Str &aNetworkName,
                                              ComObjPtr<CloudNetwork> *aNetwork)
 {
-    HRESULT rc = E_FAIL;
+    HRESULT rc = VBOX_E_OBJECT_NOT_FOUND;
     ComPtr<CloudNetwork> found;
     Bstr bstrNameToFind(aNetworkName);
 
@@ -1517,8 +1517,8 @@ HRESULT VirtualBox::i_findCloudNetworkByName(const com::Utf8Str &aNetworkName,
          ++it)
     {
         Bstr bstrCloudNetworkName;
-        rc = (*it)->COMGETTER(NetworkName)(bstrCloudNetworkName.asOutParam());
-        if (FAILED(rc)) return rc;
+        HRESULT hrc = (*it)->COMGETTER(NetworkName)(bstrCloudNetworkName.asOutParam());
+        if (FAILED(hrc)) return hrc;
 
         if (bstrCloudNetworkName == bstrNameToFind)
         {
@@ -1616,6 +1616,14 @@ HRESULT VirtualBox::getCloudNetworks(std::vector<ComPtr<ICloudNetwork> > &aCloud
     return E_NOTIMPL;
 #endif /* !VBOX_WITH_CLOUD_NET */
 }
+
+#ifdef VBOX_WITH_CLOUD_NET
+HRESULT VirtualBox::i_getEventSource(ComPtr<IEventSource>& aSource)
+{
+    m->pEventSource.queryInterfaceTo(aSource.asOutParam());
+    return S_OK;
+}
+#endif /* VBOX_WITH_CLOUD_NET */
 
 HRESULT VirtualBox::getCloudProviderManager(ComPtr<ICloudProviderManager> &aCloudProviderManager)
 {

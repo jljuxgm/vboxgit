@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: MachineImpl.h 83169 2020-02-27 09:28:41Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -767,6 +767,7 @@ protected:
 #ifdef VBOX_WITH_CLOUD_NET
 HRESULT i_connectToCloudNetwork(ProgressProxy *aProgress);
 HRESULT i_disconnectFromCloudNetwork();
+HRESULT i_setMacAddress(int slot, const Utf8Str& strMac);
 #endif /* VBOX_WITH_CLOUD_NET */
 
     Machine * const         mPeer;
