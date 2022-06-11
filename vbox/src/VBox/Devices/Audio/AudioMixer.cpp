@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 82581 2019-12-13 16:34:43Z vboxsync $ */
+/* $Id: AudioMixer.cpp 82588 2019-12-16 16:37:11Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  *
@@ -1501,16 +1501,14 @@ static int audioMixerSinkSetRecSourceInternal(PAUDMIXSINK pSink, PAUDMIXSTREAM p
 
     if (RT_SUCCESS(rc))
     {
-        if (pStream) /* Can be NULL if un-setting. */
+        if (pStream)
         {
             AssertPtr(pStream->pStream);
             AssertMsg(pStream->pStream->enmDir == PDMAUDIODIR_IN, ("Specified stream is not an input stream\n"));
             AssertPtr(pStream->pConn);
             rc = pStream->pConn->pfnEnable(pStream->pConn, PDMAUDIODIR_IN, true /* Enable */);
             if (RT_SUCCESS(rc))
-            {
                 pSink->In.pStreamRecSource = pStream;
-            }
             else if (pSink->In.pStreamRecSource->pConn) /* Stay with the current recording source (if any) and re-enable it. */
             {
                 const PPDMIAUDIOCONNECTOR pConn = pSink->In.pStreamRecSource->pConn;
@@ -1518,21 +1516,19 @@ static int audioMixerSinkSetRecSourceInternal(PAUDMIXSINK pSink, PAUDMIXSTREAM p
                 rc = pConn->pfnEnable(pConn, PDMAUDIODIR_IN, true /* Enable */);
             }
         }
+        else
+            pSink->In.pStreamRecSource = NULL; /* Unsetting, see audioMixerSinkRemoveStreamInternal. */
     }
 
     LogFunc(("[%s] Recording source is now '%s', rc=%Rrc\n",
              pSink->pszName, pSink->In.pStreamRecSource ? pSink->In.pStreamRecSource->pszName : "<None>", rc));
 
     if (RT_SUCCESS(rc))
-    {
         LogRel(("Audio Mixer: Setting recording source of sink '%s' to '%s'\n",
                 pSink->pszName, pSink->In.pStreamRecSource ? pSink->In.pStreamRecSource->pszName : "<None>"));
-    }
     else if (rc != VERR_AUDIO_STREAM_NOT_READY)
-    {
         LogRel(("Audio Mixer: Setting recording source of sink '%s' to '%s' failed with %Rrc\n",
                 pSink->pszName, pSink->In.pStreamRecSource ? pSink->In.pStreamRecSource->pszName : "<None>", rc));
-    }
 
     return rc;
 }
