@@ -1,4 +1,4 @@
-/* $Id: ioqueue-aiofile-provider.cpp 79950 2019-07-24 11:13:26Z vboxsync $ */
+/* $Id: ioqueue-aiofile-provider.cpp 79951 2019-07-24 11:17:19Z vboxsync $ */
 /** @file
  * IPRT - I/O queue, Async I/O file provider.
  */
@@ -95,7 +95,7 @@ static DECLCALLBACK(int) rtIoQueueAioFileProv_QueueInit(RTIOQUEUEPROV hIoQueuePr
     int rc = VINF_SUCCESS;
 
     pThis->cReqsToCommitMax = cSqEntries;
-    pThis->cReqsFreeMax     = cSqEntries;
+    pThis->cReqsFreeMax     = (uint32_t)cSqEntries;
     pThis->cReqsFree        = 0;
 
     pThis->pahReqsToCommit = (PRTFILEAIOREQ)RTMemAllocZ(cSqEntries * sizeof(PRTFILEAIOREQ));
@@ -104,7 +104,7 @@ static DECLCALLBACK(int) rtIoQueueAioFileProv_QueueInit(RTIOQUEUEPROV hIoQueuePr
         pThis->pahReqsFree = (PRTFILEAIOREQ)RTMemAllocZ(cSqEntries * sizeof(PRTFILEAIOREQ));
         if (RT_LIKELY(pThis->pahReqsFree))
         {
-            rc = RTFileAioCtxCreate(&pThis->hAioCtx, cSqEntries, RTFILEAIOCTX_FLAGS_WAIT_WITHOUT_PENDING_REQUESTS);
+            rc = RTFileAioCtxCreate(&pThis->hAioCtx, (uint32_t)cSqEntries, RTFILEAIOCTX_FLAGS_WAIT_WITHOUT_PENDING_REQUESTS);
             if (RT_SUCCESS(rc))
                 return VINF_SUCCESS;
 
