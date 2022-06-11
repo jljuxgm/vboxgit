@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 80036 2019-07-29 07:44:29Z vboxsync $
+;$Id: HMInternal.mac 80078 2019-07-31 15:09:25Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -14,10 +14,6 @@
 ; VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 ; hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 ;
-
-%if HC_ARCH_BITS == 32
- %define VMX_USE_CACHED_VMCS_ACCESSES
-%endif
 
 ;Maximum number of cached entries.
 %define VMX_VMCS_CACHE_MAX_ENTRY                             128

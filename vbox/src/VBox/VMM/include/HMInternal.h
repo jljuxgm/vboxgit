@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 80052 2019-07-29 20:36:52Z vboxsync $ */
+/* $Id: HMInternal.h 80078 2019-07-31 15:09:25Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -44,10 +44,6 @@
 #if HC_ARCH_BITS == 64 || defined(VBOX_WITH_64_BITS_GUESTS)
 /* Enable 64 bits guest support. */
 # define VBOX_ENABLE_64_BITS_GUESTS
-#endif
-
-#if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS)
-# define VMX_USE_CACHED_VMCS_ACCESSES
 #endif
 
 /** @def HM_PROFILE_EXIT_DISPATCH
