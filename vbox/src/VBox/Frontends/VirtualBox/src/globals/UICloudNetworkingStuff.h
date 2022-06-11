@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 84053 2020-04-28 15:59:22Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 84056 2020-04-28 16:28:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -82,6 +82,28 @@ namespace UICloudNetworkingStuff
                                                         const QString &strProfileName,
                                                         const QUuid &uMachineId,
                                                         QString &strErrorMessage);
+
+    /** Acquires cloud providers, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF QVector<CCloudProvider> listCloudProviders(QWidget *pParent = 0);
+    /** Acquires cloud providers, using @a strErrorMessage to store messages to. */
+    SHARED_LIBRARY_STUFF QVector<CCloudProvider> listCloudProviders(QString &strErrorMessage);
+
+    /** Acquires @a comCloudProvider short name as a @a strResult, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool cloudProviderShortName(const CCloudProvider &comCloudProvider,
+                                                     QString &strResult,
+                                                     QWidget *pParent = 0);
+
+    /** Acquires cloud profiles of certain @a comCloudProvider, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF QVector<CCloudProfile> listCloudProfiles(CCloudProvider comCloudProvider,
+                                                                  QWidget *pParent = 0);
+    /** Acquires cloud profiles of certain @a comCloudProvider, using @a strErrorMessage to store messages to. */
+    SHARED_LIBRARY_STUFF QVector<CCloudProfile> listCloudProfiles(CCloudProvider comCloudProvider,
+                                                                  QString &strErrorMessage);
+
+    /** Acquires @a comCloudProfile name as a @a strResult, using @a pParent to show messages according to. */
+    SHARED_LIBRARY_STUFF bool cloudProfileName(const CCloudProfile &comCloudProfile,
+                                               QString &strResult,
+                                               QWidget *pParent = 0);
 
     /** Acquires cloud machines of certain @a comCloudClient, using @a pParent to show messages according to. */
     SHARED_LIBRARY_STUFF QVector<CCloudMachine> listCloudMachines(CCloudClient comCloudClient,
