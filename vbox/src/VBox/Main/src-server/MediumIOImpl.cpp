@@ -1,4 +1,4 @@
-/* $Id: MediumIOImpl.cpp 76592 2019-01-01 20:13:07Z vboxsync $ */
+/* $Id: MediumIOImpl.cpp 78762 2019-05-26 04:37:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: MediumIO
  */
@@ -835,7 +835,7 @@ HRESULT MediumIO::convertToStream(const com::Utf8Str &aFormat,
     if (SUCCEEDED(rc))
     {
         rc = pTask->createThread();
-
+        pTask = NULL;
         if (SUCCEEDED(rc))
         {
             pDataStream.queryInterfaceTo(aStream.asOutParam());
