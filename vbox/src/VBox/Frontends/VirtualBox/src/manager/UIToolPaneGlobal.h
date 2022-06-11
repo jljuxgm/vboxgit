@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 83304 2020-03-17 12:08:26Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.h 83334 2020-03-19 16:17:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -36,7 +36,7 @@ class UICloudProfileManagerWidget;
 class UIHostNetworkManagerWidget;
 class UIMediumManagerWidget;
 class UIVirtualMachineItem;
-class UIVMResourceMonitorWidget;
+class UIResourceMonitorWidget;
 class UIWelcomePane;
 class CMachine;
 
@@ -90,7 +90,7 @@ private:
     /** Holds the Cloud Profile Manager instance. */
     UICloudProfileManagerWidget *m_pPaneCloud;
     /** The VM Resource Monitor instance. */
-    UIVMResourceMonitorWidget   *m_pPaneResourceMonitor;
+    UIResourceMonitorWidget   *m_pPaneResourceMonitor;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_manager_UIToolPaneGlobal_h */

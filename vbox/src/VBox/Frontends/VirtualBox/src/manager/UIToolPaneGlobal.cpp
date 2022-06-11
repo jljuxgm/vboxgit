@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.cpp 83304 2020-03-17 12:08:26Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.cpp 83334 2020-03-19 16:17:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class implementation.
  */
@@ -28,7 +28,7 @@
 #include "UIHostNetworkManager.h"
 #include "UIMediumManager.h"
 #include "UIToolPaneGlobal.h"
-#include "UIVMResourceMonitor.h"
+#include "UIResourceMonitor.h"
 #include "UIWelcomePane.h"
 
 /* Other VBox includes: */
@@ -170,7 +170,7 @@ void UIToolPaneGlobal::openTool(UIToolType enmType)
             }
             case UIToolType_VMResourceMonitor:
             {
-                m_pPaneResourceMonitor = new UIVMResourceMonitorWidget(EmbedTo_Stack, m_pActionPool, false /* show toolbar */);
+                m_pPaneResourceMonitor = new UIResourceMonitorWidget(EmbedTo_Stack, m_pActionPool, false /* show toolbar */);
                 AssertPtrReturnVoid(m_pPaneResourceMonitor);
                 {
 #ifndef VBOX_WS_MAC
