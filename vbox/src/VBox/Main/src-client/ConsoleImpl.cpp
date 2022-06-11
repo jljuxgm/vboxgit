@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 78901 2019-05-31 16:22:52Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 78915 2019-06-01 17:37:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8252,6 +8252,21 @@ HRESULT Console::i_powerDown(IProgress *aProgress /*= NULL*/)
 
         /* Leave the lock since EMT might wait for it and will call us back as addVMCaller() */
         alock.release();
+
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST_DISABLED
+        if (m_hHgcmSvcExtShrdClipboard)
+        {
+            HGCMHostUnregisterServiceExtension(m_hHgcmSvcExtShrdClipboard);
+            m_hHgcmSvcExtShrdClipboard = NULL;
+        }
+#endif
+#ifdef VBOX_WITH_DRAG_AND_DROP
+        if (m_hHgcmSvcExtDragAndDrop)
+        {
+            HGCMHostUnregisterServiceExtension(m_hHgcmSvcExtDragAndDrop);
+            m_hHgcmSvcExtDragAndDrop = NULL;
+        }
+#endif
 
         m_pVMMDev->hgcmShutdown();
 

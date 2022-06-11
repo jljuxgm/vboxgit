@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 78897 2019-05-31 15:23:14Z vboxsync $ */
+/* $Id: ConsoleImpl.h 78915 2019-06-01 17:37:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -68,6 +68,12 @@ class VMPowerDownTask;
 #include <VBox/vmm/pdmdrv.h>
 #ifdef VBOX_WITH_GUEST_PROPS
 # include <VBox/HostServices/GuestPropertySvc.h>  /* For the property notification callback */
+#endif
+
+#if    defined(VBOX_WITH_GUEST_PROPS) || defined(VBOX_WITH_SHARED_CLIPBOARD) \
+    || defined(VBOX_WITH_SHARED_CLIPBOARD_URI_LIST_DISABLED) || defined(VBOX_WITH_DRAG_AND_DROP)
+# include "HGCM.h" /** @todo It should be possible to register a service
+                    *        extension using a VMMDev callback. */
 #endif
 
 struct VUSBIRHCONFIG;
@@ -1045,6 +1051,13 @@ private:
 
     /** Machine uuid string. */
     Bstr mstrUuid;
+
+#ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST_DISABLED
+    HGCMSVCEXTHANDLE m_hHgcmSvcExtShrdClipboard;
+#endif
+#ifdef VBOX_WITH_DRAG_AND_DROP
+    HGCMSVCEXTHANDLE m_hHgcmSvcExtDragAndDrop;
+#endif
 
     /** Pointer to the progress object of a live cancelable task.
      *
