@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 81605 2019-10-31 14:29:46Z vboxsync $ */
+/* $Id: GIMAll.cpp 82210 2019-11-26 00:27:40Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -57,6 +57,37 @@ VMMDECL(bool) GIMIsEnabled(PVM pVM)
 VMMDECL(GIMPROVIDERID) GIMGetProvider(PVM pVM)
 {
     return pVM->gim.s.enmProviderId;
+}
+
+
+/**
+ * Returns the array of MMIO2 regions that are expected to be registered and
+ * later mapped into the guest-physical address space for the GIM provider
+ * configured for the VM.
+ *
+ * @returns Pointer to an array of GIM MMIO2 regions, may return NULL.
+ * @param   pVM         The cross context VM structure.
+ * @param   pcRegions   Where to store the number of items in the array.
+ *
+ * @remarks The caller does not own and therefore must -NOT- try to free the
+ *          returned pointer.
+ */
+VMMDECL(PGIMMMIO2REGION) GIMGetMmio2Regions(PVMCC pVM, uint32_t *pcRegions)
+{
+    Assert(pVM);
+    Assert(pcRegions);
+
+    *pcRegions = 0;
+    switch (pVM->gim.s.enmProviderId)
+    {
+        case GIMPROVIDERID_HYPERV:
+            return gimHvGetMmio2Regions(pVM, pcRegions);
+
+        default:
+            break;
+    }
+
+    return NULL;
 }
 
 

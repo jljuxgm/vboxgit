@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 82094 2019-11-22 00:58:02Z vboxsync $
+; $Id: VMMR0.def 82210 2019-11-26 00:27:40Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -19,6 +19,7 @@ EXPORTS
     ; data
 
     ; code
+    GIMGetMmio2Regions
     PDMCritSectEnter
     PDMCritSectEnterDebug
     PDMCritSectIsOwner

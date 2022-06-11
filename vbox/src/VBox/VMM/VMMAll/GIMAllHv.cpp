@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 81605 2019-10-31 14:29:46Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 82210 2019-11-26 00:27:40Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -401,6 +401,24 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvHypercall(PVMCPUCC pVCpu, PCPUMCTX pCtx)
 
     return rc;
 #endif
+}
+
+
+/**
+ * Returns a pointer to the MMIO2 regions supported by Hyper-V.
+ *
+ * @returns Pointer to an array of MMIO2 regions.
+ * @param   pVM         The cross context VM structure.
+ * @param   pcRegions   Where to store the number of regions in the array.
+ */
+VMM_INT_DECL(PGIMMMIO2REGION) gimHvGetMmio2Regions(PVM pVM, uint32_t *pcRegions)
+{
+    Assert(GIMIsEnabled(pVM));
+    PGIMHV pHv = &pVM->gim.s.u.Hv;
+
+    AssertCompile(RT_ELEMENTS(pHv->aMmio2Regions) <= 8);
+    *pcRegions = RT_ELEMENTS(pHv->aMmio2Regions);
+    return pHv->aMmio2Regions;
 }
 
 
