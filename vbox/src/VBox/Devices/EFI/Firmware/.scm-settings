@@ -1,4 +1,4 @@
-# $Id: .scm-settings 80957 2019-09-23 18:27:03Z vboxsync $
+# $Id: .scm-settings 80958 2019-09-23 18:50:23Z vboxsync $
 ## @file
 # Source code massager settings for the EFI Firmware.
 #
@@ -123,7 +123,7 @@
 --filter-out-dirs  /StdLib/Efi/StdLib/etc/.
 
 # @todo Temporary until openssl is updated and we can cleanup the eol style mess
---filter-out-dirs  /CryptoPkg/Library/OpensslLib
+--filter-out-dirs  /CryptoPkg/Library/OpensslLib/.
 
 #
 # VBoxPkg
