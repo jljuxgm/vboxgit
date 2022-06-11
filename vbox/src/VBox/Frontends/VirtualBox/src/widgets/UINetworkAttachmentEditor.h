@@ -1,4 +1,4 @@
-/* $Id: UINetworkAttachmentEditor.h 81422 2019-10-21 18:04:10Z vboxsync $ */
+/* $Id: UINetworkAttachmentEditor.h 82563 2019-12-12 08:36:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkAttachmentEditor class declaration.
  */
@@ -132,6 +132,9 @@ private:
     QMap<KNetworkAttachmentType, QStringList>  m_names;
     /** Holds the map of current names. */
     QMap<KNetworkAttachmentType, QString>      m_name;
+
+    /** Holds the requested type. */
+    KNetworkAttachmentType  m_enmType;
 
     /** Holds the type label instance. */
     QLabel     *m_pLabelType;
