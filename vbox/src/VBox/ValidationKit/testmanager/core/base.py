@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 79087 2019-06-11 11:58:28Z vboxsync $
+# $Id: base.py 82641 2019-12-22 22:04:36Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79087 $"
+__version__ = "$Revision: 82641 $"
 
 
 # Standard python imports.
@@ -1282,6 +1282,28 @@ class ModelFilterBase(ModelBase):
         for oCriterion in self.aCriteria:
             self._initFromParamsWorker(oDisp, oCriterion);
         return self;
+
+    def strainParameters(self, dParams, aAdditionalParams = None):
+        """ Filters just the parameters relevant to this filter, returning a copy. """
+
+        # Collect the parameter names.
+        dWanted = dict();
+        for oCrit in self.aCriteria:
+            dWanted[oCrit.sVarNm] = 1;
+            if oCrit.sInvVarNm:
+                dWanted[oCrit.sInvVarNm] = 1;
+
+        # Add additional stuff.
+        if aAdditionalParams:
+            for sParam in aAdditionalParams:
+                dWanted[sParam] = 1;
+
+        # To the straining.
+        dRet = dict();
+        for sKey in dParams:
+            if sKey in dWanted:
+                dRet[sKey] = dParams[sKey];
+        return dRet;
 
 
 class ModelLogicBase(ModelBase): # pylint: disable=too-few-public-methods
