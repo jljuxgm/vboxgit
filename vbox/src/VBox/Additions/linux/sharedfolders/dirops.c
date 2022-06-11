@@ -1,4 +1,4 @@
-/* $Id: dirops.c 80393 2019-08-23 11:59:18Z vboxsync $ */
+/* $Id: dirops.c 80408 2019-08-23 21:39:43Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders VFS, directory inode and file operations.
  */
@@ -804,8 +804,7 @@ static int vbsf_create_worker(struct inode *parent, struct dentry *dentry, umode
     int                     rc;
 
     if (pfCreated)
-       *pfCreated = false;
-
+        *pfCreated = false;
     AssertReturn(sf_parent_i, -EINVAL);
     AssertReturn(pSuperInfo, -EINVAL);
 
