@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 81360 2019-10-18 15:58:52Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 81431 2019-10-21 19:54:52Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -586,7 +586,9 @@ typedef struct VMSVGA3DSURFACE
     HANDLE                  hSharedObject;
     /** Event query inserted after each GPU operation that updates or uses this surface. */
     IDirect3DQuery9        *pQuery;
-    /* The type of actually created D3D resource. */
+    /** The context id where the query has been created. */
+    uint32_t                idQueryContext;
+    /** The type of actually created D3D resource. */
     VMSVGA3DD3DRESTYPE      enmD3DResType;
     union
     {
@@ -1115,7 +1117,7 @@ static SSMFIELD const g_aVMSVGA3DSTATEFields[] =
 D3DFORMAT vmsvga3dSurfaceFormat2D3D(SVGA3dSurfaceFormat format);
 D3DMULTISAMPLE_TYPE vmsvga3dMultipeSampleCount2D3D(uint32_t multisampleCount);
 DECLCALLBACK(int) vmsvga3dSharedSurfaceDestroyTree(PAVLU32NODECORE pNode, void *pvParam);
-int vmsvga3dSurfaceFlush(PVGASTATE pThis, PVMSVGA3DSURFACE pSurface);
+int vmsvga3dSurfaceFlush(PVMSVGA3DSURFACE pSurface);
 #endif /* VMSVGA3D_DIRECT3D */
 
 
