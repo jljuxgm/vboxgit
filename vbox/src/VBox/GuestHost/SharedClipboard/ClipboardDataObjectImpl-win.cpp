@@ -1,4 +1,4 @@
-/* $Id: ClipboardDataObjectImpl-win.cpp 79347 2019-06-26 09:15:29Z vboxsync $ */
+/* $Id: ClipboardDataObjectImpl-win.cpp 79366 2019-06-26 15:59:30Z vboxsync $ */
 /** @file
  * ClipboardDataObjectImpl-win.cpp - Shared Clipboard IDataObject implementation.
  */
@@ -420,6 +420,9 @@ STDMETHODIMP VBoxClipboardWinDataObject::GetData(LPFORMATETC pFormatEtc, LPSTGME
                         }
                     }
                 }
+
+                if (RT_FAILURE(rc))
+                    LogRel(("Shared Clipboard: Data object unable to receive meta data, rc=%Rrc\n", rc));
             }
             break;
         }

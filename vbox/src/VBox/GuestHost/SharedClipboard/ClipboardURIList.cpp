@@ -1,4 +1,4 @@
-/* $Id: ClipboardURIList.cpp 79276 2019-06-21 13:10:30Z vboxsync $ */
+/* $Id: ClipboardURIList.cpp 79366 2019-06-26 15:59:30Z vboxsync $ */
 /** @file
  * Shared Clipboard - URI list class.
  */
@@ -485,9 +485,6 @@ int SharedClipboardURIList::SetFromURIData(const void *pvData, size_t cbData, SH
     AssertPtrReturn(pvData, VERR_INVALID_POINTER);
     AssertReturn(cbData, VERR_INVALID_PARAMETER);
     AssertReturn(!(fFlags & ~SHAREDCLIPBOARDURILIST_FLAGS_VALID_MASK), VERR_INVALID_FLAGS);
-
-    if (!RTStrIsValidEncoding(static_cast<const char *>(pvData)))
-        return VERR_INVALID_PARAMETER;
 
     RTCList<RTCString> lstURI =
         RTCString(static_cast<const char *>(pvData), cbData - 1).split("\r\n");

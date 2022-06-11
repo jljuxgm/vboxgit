@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 79347 2019-06-26 09:15:29Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 79366 2019-06-26 15:59:30Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -676,21 +676,28 @@ static DECLCALLBACK(void) svcCall(void *,
                                         creationCtx.enmSource = pClientData->State.enmSource;
 
                                         RT_ZERO(creationCtx.Interface);
-                                        creationCtx.Interface.pfnReadDataHdr    = VBoxClipboardSvcImplURIReadDataHdr;
-                                        creationCtx.Interface.pfnReadDataChunk  = VBoxClipboardSvcImplURIReadDataChunk;
-                                        creationCtx.Interface.pfnReadDirectory  = VBoxClipboardSvcImplURIReadDir;
-                                        creationCtx.Interface.pfnReadFileHdr    = VBoxClipboardSvcImplURIReadFileHdr;
-                                        creationCtx.Interface.pfnReadFileData   = VBoxClipboardSvcImplURIReadFileData;
-
-                                        creationCtx.Interface.pfnWriteDataHdr    = VBoxClipboardSvcImplURIWriteDataHdr;
-                                        creationCtx.Interface.pfnWriteDataChunk  = VBoxClipboardSvcImplURIWriteDataChunk;
-                                        creationCtx.Interface.pfnWriteDirectory  = VBoxClipboardSvcImplURIWriteDir;
-                                        creationCtx.Interface.pfnWriteFileHdr    = VBoxClipboardSvcImplURIWriteFileHdr;
-                                        creationCtx.Interface.pfnWriteFileData   = VBoxClipboardSvcImplURIWriteFileData;
+                                        creationCtx.Interface.pfnReadDataHdr    = VBoxSvcClipboardProviderImplURIReadDataHdr;
+                                        creationCtx.Interface.pfnReadDataChunk  = VBoxSvcClipboardProviderImplURIReadDataChunk;
+                                        creationCtx.Interface.pfnReadDirectory  = VBoxSvcClipboardProviderImplURIReadDir;
+                                        creationCtx.Interface.pfnReadFileHdr    = VBoxSvcClipboardProviderImplURIReadFileHdr;
+                                        creationCtx.Interface.pfnReadFileData   = VBoxSvcClipboardProviderImplURIReadFileData;
 
                                         creationCtx.pvUser = pClientData;
 
-                                        creationCtx.u.HostService.pArea = pTransfer->pArea;
+                                        /* Register needed callbacks so that we can wait for the meta data to arrive here. */
+                                        SHAREDCLIPBOARDURITRANSFERCALLBACKS Callbacks;
+                                        RT_ZERO(Callbacks);
+
+                                        Callbacks.pvUser                = pClientData;
+
+                                        Callbacks.pfnTransferPrepare    = VBoxSvcClipboardURITransferPrepareCallback;
+                                        Callbacks.pfnDataHeaderComplete = VBoxSvcClipboardURIDataHeaderCompleteCallback;
+                                        Callbacks.pfnDataComplete       = VBoxSvcClipboardURIDataCompleteCallback;
+                                        Callbacks.pfnTransferComplete   = VBoxSvcClipboardURITransferCompleteCallback;
+                                        Callbacks.pfnTransferCanceled   = VBoxSvcClipboardURITransferCanceledCallback;
+                                        Callbacks.pfnTransferError      = VBoxSvcClipboardURITransferErrorCallback;
+
+                                        SharedClipboardURITransferSetCallbacks(pTransfer, &Callbacks);
 
                                         rc = SharedClipboardURITransferProviderCreate(pTransfer, &creationCtx);
                                         if (RT_SUCCESS(rc))
@@ -789,21 +796,13 @@ static DECLCALLBACK(void) svcCall(void *,
 
                                     RT_ZERO(creationCtx.Interface);
 
-                                    creationCtx.Interface.pfnReadDataHdr    = VBoxClipboardSvcImplURIReadDataHdr;
-                                    creationCtx.Interface.pfnReadDataChunk  = VBoxClipboardSvcImplURIReadDataChunk;
-                                    creationCtx.Interface.pfnReadDirectory  = VBoxClipboardSvcImplURIReadDir;
-                                    creationCtx.Interface.pfnReadFileHdr    = VBoxClipboardSvcImplURIReadFileHdr;
-                                    creationCtx.Interface.pfnReadFileData   = VBoxClipboardSvcImplURIReadFileData;
-
-                                    creationCtx.Interface.pfnWriteDataHdr    = VBoxClipboardSvcImplURIWriteDataHdr;
-                                    creationCtx.Interface.pfnWriteDataChunk  = VBoxClipboardSvcImplURIWriteDataChunk;
-                                    creationCtx.Interface.pfnWriteDirectory  = VBoxClipboardSvcImplURIWriteDir;
-                                    creationCtx.Interface.pfnWriteFileHdr    = VBoxClipboardSvcImplURIWriteFileHdr;
-                                    creationCtx.Interface.pfnWriteFileData   = VBoxClipboardSvcImplURIWriteFileData;
+                                    creationCtx.Interface.pfnWriteDataHdr    = VBoxSvcClipboardProviderImplURIWriteDataHdr;
+                                    creationCtx.Interface.pfnWriteDataChunk  = VBoxSvcClipboardProviderImplURIWriteDataChunk;
+                                    creationCtx.Interface.pfnWriteDirectory  = VBoxSvcClipboardProviderImplURIWriteDir;
+                                    creationCtx.Interface.pfnWriteFileHdr    = VBoxSvcClipboardProviderImplURIWriteFileHdr;
+                                    creationCtx.Interface.pfnWriteFileData   = VBoxSvcClipboardProviderImplURIWriteFileData;
 
                                     creationCtx.pvUser = pClientData;
-
-                                    creationCtx.u.HostService.pArea = pTransfer->pArea;
 
                                     rc = SharedClipboardURITransferProviderCreate(pTransfer, &creationCtx);
                                     if (RT_SUCCESS(rc))
