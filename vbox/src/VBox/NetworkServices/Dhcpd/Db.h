@@ -1,4 +1,4 @@
-/* $Id: Db.h 79818 2019-07-16 19:00:06Z vboxsync $ */
+/* $Id: Db.h 79819 2019-07-16 19:57:16Z vboxsync $ */
 /** @file
  * DHCP server - address database
  */
@@ -181,7 +181,7 @@ public:
     /** Check if @a addr belonges to this lease database. */
     bool     addressBelongs(RTNETADDRIPV4 addr) const RT_NOEXCEPT { return m_pool.contains(addr); }
 
-    Binding *allocateBinding(const DhcpClientMessage &req);
+    Binding *allocateBinding(const DhcpClientMessage &req, Config::ConfigVec const &rConfigVec);
     bool     releaseBinding(const DhcpClientMessage &req) RT_NOEXCEPT;
 
     void     cancelOffer(const DhcpClientMessage &req) RT_NOEXCEPT;
