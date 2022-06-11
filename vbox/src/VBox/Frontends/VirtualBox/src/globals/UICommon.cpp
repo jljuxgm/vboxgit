@@ -1,4 +1,4 @@
-/* $Id: UICommon.cpp 80884 2019-09-18 11:23:57Z vboxsync $ */
+/* $Id: UICommon.cpp 80888 2019-09-18 12:51:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class implementation.
  */
@@ -2610,18 +2610,18 @@ void UICommon::refreshMedia()
     m_pMediumEnumerator->refreshMedia();
 }
 
-bool UICommon::isMediumEnumerationInProgress() const
-{
-    /* Redirect request to medium-enumerator: */
-    return    m_pMediumEnumerator
-           && m_pMediumEnumerator->isMediumEnumerationInProgress();
-}
-
 bool UICommon::isFullMediumEnumerationRequested() const
 {
     /* Redirect request to medium-enumerator: */
     return    m_pMediumEnumerator
            && m_pMediumEnumerator->isFullMediumEnumerationRequested();
+}
+
+bool UICommon::isMediumEnumerationInProgress() const
+{
+    /* Redirect request to medium-enumerator: */
+    return    m_pMediumEnumerator
+           && m_pMediumEnumerator->isMediumEnumerationInProgress();
 }
 
 UIMedium UICommon::medium(const QUuid &uMediumID) const
