@@ -1,4 +1,4 @@
-/* $Id: isovfs.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: isovfs.cpp 83739 2020-04-17 08:51:27Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 and UDF Virtual Filesystem (read only).
  */
@@ -833,9 +833,9 @@ static int rtFsIsoCore_InitFrom9660DirRec(PRTFSISOCORE pCore, PCISO9660DIRREC pD
             }
             else
             {
-                size_t cbSkip = (offDirRec + pVol->cbSector) & ~(pVol->cbSector - 1U);
+                uint64_t cbSkip = (offDirRec + pVol->cbSector) & ~(uint64_t)(pVol->cbSector - 1U);
                 offDirRec += cbSkip;
-                pDirRec = (PCISO9660DIRREC)((uintptr_t)pDirRec + cbSkip);
+                pDirRec = (PCISO9660DIRREC)((uintptr_t)pDirRec + (size_t)cbSkip);
             }
         }
     }

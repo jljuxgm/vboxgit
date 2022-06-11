@@ -1,4 +1,4 @@
-/* $Id: ntfsvfs.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: ntfsvfs.cpp 83739 2020-04-17 08:51:27Z vboxsync $ */
 /** @file
  * IPRT - NTFS Virtual Filesystem, currently only for reading allocation bitmap.
  */
@@ -4521,7 +4521,7 @@ static int rtFsNtfsVol_QueryClusterStateSlow(PRTFSNTFSVOL pThis, uint64_t iClust
          * Load a cache line.
          */
         Assert(RT_IS_POWER_OF_TWO(pThis->cbBitmapAlloc));
-        uint64_t offLoad = offInBitmap & ~(pThis->cbBitmapAlloc - 1);
+        uint64_t offLoad = offInBitmap & ~(uint64_t)(pThis->cbBitmapAlloc - 1);
         uint32_t cbLoad  = (uint32_t)RT_MIN(cbWholeBitmap - offLoad, pThis->cbBitmapAlloc);
 
         memset(pThis->pvBitmap, 0xff, pThis->cbBitmapAlloc);
