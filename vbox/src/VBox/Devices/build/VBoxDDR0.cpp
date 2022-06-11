@@ -1,4 +1,4 @@
-/* $Id: VBoxDDR0.cpp 80537 2019-09-01 23:40:13Z vboxsync $ */
+/* $Id: VBoxDDR0.cpp 81502 2019-10-24 01:40:30Z vboxsync $ */
 /** @file
  * VBoxDDR0 - Built-in drivers & devices (part 1), ring-0 module.
  */
@@ -90,6 +90,9 @@ static PCPDMDEVREGR0 g_apVBoxDDR0DevRegs[] =
 #endif
 #ifdef VBOX_WITH_NVME_IMPL
     &g_DeviceNVMe,
+#endif
+#ifdef VBOX_WITH_EFI
+    &g_DeviceEFI,
 #endif
 #ifdef VBOX_WITH_VIRTIO_SCSI
     &g_DeviceVirtioSCSI,
