@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 81346 2019-10-18 10:40:15Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 81352 2019-10-18 12:55:34Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -89,6 +89,10 @@ typedef struct SHCLCLIENTSTATE
     SHCLSESSIONID           uSessionID;
     /** Optional protocol version the client uses. Set to 0 by default. */
     uint32_t                uProtocolVer;
+    /** Guest feature flags, VBOX_SHCL_GF_0_XXX. */
+    uint64_t                fGuestFeatures0;
+    /** Guest feature flags, VBOX_SHCL_GF_1_XXX. */
+    uint64_t                fGuestFeatures1;
     /** Maximum chunk size to use for data transfers. Set to _64K by default. */
     uint32_t                cbChunkSize;
     SHCLSOURCE              enmSource;

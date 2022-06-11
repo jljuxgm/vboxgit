@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-transfers.cpp 81347 2019-10-18 10:42:39Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-transfers.cpp 81352 2019-10-18 12:55:34Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for transfer (list) handling.
  */
@@ -741,6 +741,10 @@ bool shclSvcTransferMsgIsAllowed(uint32_t uMode, uint32_t uMsg)
         case VBOX_SHCL_GUEST_FN_MSG_PEEK_WAIT:
             RT_FALL_THROUGH();
         case VBOX_SHCL_GUEST_FN_MSG_PEEK_NOWAIT:
+            RT_FALL_THROUGH();
+        case VBOX_SHCL_GUEST_FN_REPORT_FEATURES:
+            RT_FALL_THROUGH();
+        case VBOX_SHCL_GUEST_FN_QUERY_FEATURES:
             RT_FALL_THROUGH();
         case VBOX_SHCL_GUEST_FN_MSG_GET:
             RT_FALL_THROUGH();
