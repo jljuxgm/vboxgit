@@ -1,4 +1,4 @@
-/* $Id: DrvAudioRec.cpp 82255 2019-11-27 23:20:26Z vboxsync $ */
+/* $Id: DrvAudioRec.cpp 82580 2019-12-13 14:00:40Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -879,7 +879,7 @@ static DECLCALLBACK(int) drvAudioVideoRecHA_GetConfig(PPDMIHOSTAUDIO pInterface,
     RT_NOREF(pInterface);
     AssertPtrReturn(pBackendCfg, VERR_INVALID_POINTER);
 
-    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "Video recording audio driver");
+    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "VideoRec");
 
     pBackendCfg->cbStreamOut    = sizeof(AVRECSTREAM);
     pBackendCfg->cbStreamIn     = 0;

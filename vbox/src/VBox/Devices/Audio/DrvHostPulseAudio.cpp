@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 82255 2019-11-27 23:20:26Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 82580 2019-12-13 14:00:40Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -1127,7 +1127,7 @@ static int paEnumerate(PDRVHOSTPULSEAUDIO pThis, PPDMAUDIOBACKENDCFG pCfg, uint3
     PDMAUDIOBACKENDCFG Cfg;
     RT_ZERO(Cfg);
 
-    RTStrPrintf2(Cfg.szName, sizeof(Cfg.szName), "PulseAudio driver");
+    RTStrPrintf2(Cfg.szName, sizeof(Cfg.szName), "PulseAudio");
 
     Cfg.cbStreamOut    = sizeof(PULSEAUDIOSTREAM);
     Cfg.cbStreamIn     = sizeof(PULSEAUDIOSTREAM);

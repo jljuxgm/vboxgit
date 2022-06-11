@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 82255 2019-11-27 23:20:26Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 82580 2019-12-13 14:00:40Z vboxsync $ */
 /** @file
  * Debug audio driver.
  *
@@ -70,7 +70,7 @@ static DECLCALLBACK(int) drvHostDebugAudioHA_GetConfig(PPDMIHOSTAUDIO pInterface
     RT_NOREF(pInterface);
     AssertPtrReturn(pBackendCfg, VERR_INVALID_POINTER);
 
-    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "Debug audio driver");
+    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "DebugAudio");
 
     pBackendCfg->cbStreamOut    = sizeof(DEBUGAUDIOSTREAM);
     pBackendCfg->cbStreamIn     = sizeof(DEBUGAUDIOSTREAM);

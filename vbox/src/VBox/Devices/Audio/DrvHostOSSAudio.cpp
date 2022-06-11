@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 82255 2019-11-27 23:20:26Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 82580 2019-12-13 14:00:40Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -556,7 +556,7 @@ static DECLCALLBACK(int) drvHostOssAudioHA_GetConfig(PPDMIHOSTAUDIO pInterface, 
 {
     RT_NOREF(pInterface);
 
-    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "OSS audio driver");
+    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "OSS");
 
     pBackendCfg->cbStreamIn  = sizeof(OSSAUDIOSTREAM);
     pBackendCfg->cbStreamOut = sizeof(OSSAUDIOSTREAM);

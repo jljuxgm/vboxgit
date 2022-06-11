@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 82463 2019-12-06 14:29:16Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 82580 2019-12-13 14:00:40Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -2182,7 +2182,7 @@ static DECLCALLBACK(int) drvHostDSoundHA_GetConfig(PPDMIHOSTAUDIO pInterface, PP
     pBackendCfg->cbStreamOut = sizeof(DSOUNDSTREAM);
     pBackendCfg->cbStreamIn  = sizeof(DSOUNDSTREAM);
 
-    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "DirectSound audio driver");
+    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "DirectSound");
 
     pBackendCfg->cMaxStreamsIn  = UINT32_MAX;
     pBackendCfg->cMaxStreamsOut = UINT32_MAX;

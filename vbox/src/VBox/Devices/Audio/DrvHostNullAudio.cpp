@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 82255 2019-11-27 23:20:26Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 82580 2019-12-13 14:00:40Z vboxsync $ */
 /** @file
  * NULL audio driver.
  *
@@ -88,7 +88,7 @@ static DECLCALLBACK(int) drvHostNullAudioHA_GetConfig(PPDMIHOSTAUDIO pInterface,
     NOREF(pInterface);
     AssertPtrReturn(pBackendCfg, VERR_INVALID_POINTER);
 
-    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "NULL audio driver");
+    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "NULL audio");
 
     pBackendCfg->cbStreamOut    = sizeof(NULLAUDIOSTREAM);
     pBackendCfg->cbStreamIn     = sizeof(NULLAUDIOSTREAM);

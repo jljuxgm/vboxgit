@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 82255 2019-11-27 23:20:26Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 82580 2019-12-13 14:00:40Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -2183,7 +2183,7 @@ static DECLCALLBACK(int) drvHostCoreAudioHA_GetConfig(PPDMIHOSTAUDIO pInterface,
 
     RT_BZERO(pBackendCfg, sizeof(PDMAUDIOBACKENDCFG));
 
-    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "Core Audio driver");
+    RTStrPrintf2(pBackendCfg->szName, sizeof(pBackendCfg->szName), "Core Audio");
 
     pBackendCfg->cbStreamIn  = sizeof(COREAUDIOSTREAM);
     pBackendCfg->cbStreamOut = sizeof(COREAUDIOSTREAM);
