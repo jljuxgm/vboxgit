@@ -1,4 +1,4 @@
-/* $Id: IOMR3IoPort.cpp 81375 2019-10-19 13:57:55Z vboxsync $ */
+/* $Id: IOMR3IoPort.cpp 81383 2019-10-19 23:58:44Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor, I/O port related APIs.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_IOM
+#define LOG_GROUP LOG_GROUP_IOM_IOPORT
 #include <VBox/vmm/iom.h>
 #include <VBox/sup.h>
 #include <VBox/vmm/mm.h>

@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 81333 2019-10-17 23:49:39Z vboxsync $ */
+/* $Id: IOMAll.cpp 81383 2019-10-19 23:58:44Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_IOM
+#define LOG_GROUP LOG_GROUP_IOM_IOPORT
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/param.h>
@@ -37,9 +37,6 @@
 #include <iprt/string.h>
 #include "IOMInline.h"
 
-
-//#undef LOG_GROUP
-//#define LOG_GROUP LOG_GROUP_IOM_IOPORT
 
 /**
  * Reads an I/O port register.

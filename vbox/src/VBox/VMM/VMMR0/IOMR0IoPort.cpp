@@ -1,4 +1,4 @@
-/* $Id: IOMR0IoPort.cpp 81335 2019-10-18 00:09:19Z vboxsync $ */
+/* $Id: IOMR0IoPort.cpp 81383 2019-10-19 23:58:44Z vboxsync $ */
 /** @file
  * IOM - Host Context Ring 0, I/O ports.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_IOM
+#define LOG_GROUP LOG_GROUP_IOM_IOPORT
 #include <VBox/vmm/iom.h>
 #include "IOMInternal.h"
 #include <VBox/vmm/pdmdev.h>

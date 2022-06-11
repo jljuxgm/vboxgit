@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 81333 2019-10-17 23:49:39Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 81383 2019-10-19 23:58:44Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_IOM
+#define LOG_GROUP LOG_GROUP_IOM_MMIO
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/pgm.h>
