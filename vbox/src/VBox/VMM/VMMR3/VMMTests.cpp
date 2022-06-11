@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 80011 2019-07-26 15:06:30Z vboxsync $ */
+/* $Id: VMMTests.cpp 80026 2019-07-28 14:23:49Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -82,14 +82,6 @@ VMMR3DECL(int) VMMDoHmTest(PVM pVM)
         RTPrintf("VMM: Hardware accelerated test not available!\n");
         return VERR_ACCESS_DENIED;
     }
-
-#ifdef VBOX_WITH_RAW_MODE
-    /*
-     * These forced actions are not necessary for the test and trigger breakpoints too.
-     */
-    VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_TRPM_SYNC_IDT);
-    VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_SELM_SYNC_TSS);
-#endif
 
     /* Enable mapping of the hypervisor into the shadow page table. */
     uint32_t cb;
