@@ -1,4 +1,4 @@
-/* $Id: VDIfVfs2.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VDIfVfs2.cpp 83043 2020-02-10 18:11:54Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), I/O interface to IPRT VFS I/O stream glue.
  */
@@ -329,6 +329,7 @@ VBOXDDU_DECL(int) VDIfDestroyFromVfsStream(PVDINTERFACEIO pIoIf)
             pThis->hVfsIos = NIL_RTVFSIOSTREAM;
         }
         pThis->u32Magic = ~VDIFFROMVFS_MAGIC;
+        RTMemFree(pThis);
     }
     return VINF_SUCCESS;
 }
