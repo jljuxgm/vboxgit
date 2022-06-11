@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSmokeTest1.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: tdSmokeTest1.py 84090 2020-04-29 17:32:17Z vboxsync $
 
 """
 VirtualBox Validation Kit - Smoke Test #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 84090 $"
 
 
 # Standard Python imports.
@@ -146,7 +146,8 @@ class tdSmokeTest1(vbox.TestDriver):
 
         # Simple test.
         self.logVmInfo(oVM);
-        oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True);
+        # Try waiting for a bit longer (5 minutes) until the CD is available to avoid running into timeouts.
+        oSession, oTxsSession = self.startVmAndConnectToTxsViaTcp(oTestVm.sVmName, fCdWait = True, cMsCdWait = 5 * 60 * 1000);
         if oSession is not None:
             self.addTask(oTxsSession);
 
