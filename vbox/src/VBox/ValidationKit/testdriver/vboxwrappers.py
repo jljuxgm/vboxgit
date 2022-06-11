@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 80074 2019-07-31 14:18:34Z vboxsync $
+# $Id: vboxwrappers.py 81982 2019-11-19 10:34:47Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80074 $"
+__version__ = "$Revision: 81982 $"
 
 
 # Standard Python imports.
@@ -1634,7 +1634,10 @@ class SessionWrapper(TdTaskBase):
         """
         fRc = True;
         try:
-            self.o.machine.VRAMSize = cMB;
+            if oSession.fpApiVer >= 6.1 and hasattr(self.o.machine, 'graphicsAdapter'):
+                self.o.machine.graphicsAdapter.VRAMSize = cMB;
+            else:
+                self.o.machine.VRAMSize = cMB;
         except:
             reporter.errorXcpt('failed to set the VRAM size of "%s" to %s' % (self.sName, cMB));
             fRc = False;
