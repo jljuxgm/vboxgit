@@ -1,4 +1,4 @@
-/* $Id: extvfs.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
+/* $Id: extvfs.cpp 80633 2019-09-06 16:35:36Z vboxsync $ */
 /** @file
  * IPRT - Ext2/3/4 Virtual Filesystem.
  */
@@ -1192,6 +1192,12 @@ static int rtFsExtInodeLoad(PRTFSEXTVOL pThis, uint32_t iInode, PRTFSEXTINODE *p
                         pInode->ObjInfo.Attr.fMode |= RTFS_UNIX_ISUID;
                 }
             }
+
+            if (RT_SUCCESS(rc))
+            {
+                bool fIns = RTAvlU32Insert(&pThis->InodeRoot, &pInode->Core);
+                Assert(fIns);
+            }
         }
         else
             rc = VERR_NO_MEMORY;
@@ -2291,15 +2297,15 @@ static DECLCALLBACK(int) rtFsExtDir_ReadDir(void *pvThis, PRTDIRENTRYEX pDirEntr
                         memcpy(&pDirEntry->szName[0], &DirEntry.Core.achName[0], cbName);
                         pDirEntry->szName[cbName] = '\0';
                         pDirEntry->cbName         = cbName;
-                        rc = rtFsExtInode_QueryInfo(pInode, &pDirEntry->Info, enmAddAttr);
+                        rc = rtFsExtInode_QueryInfo(pInodeRef, &pDirEntry->Info, enmAddAttr);
                         if (RT_SUCCESS(rc))
                         {
                             pThis->offEntry += RT_LE2H_U16(DirEntry.Core.cbRecord);
                             pThis->idxEntry++;
-                            rtFsExtInodeRelease(pThis->pVol, pInode);
+                            rtFsExtInodeRelease(pThis->pVol, pInodeRef);
                             return VINF_SUCCESS;
                         }
-                        rtFsExtInodeRelease(pThis->pVol, pInode);
+                        rtFsExtInodeRelease(pThis->pVol, pInodeRef);
                     }
                 }
                 else
