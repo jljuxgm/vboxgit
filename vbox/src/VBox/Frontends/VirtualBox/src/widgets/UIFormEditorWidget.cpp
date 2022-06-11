@@ -1,4 +1,4 @@
-/* $Id: UIFormEditorWidget.cpp 80705 2019-09-10 15:25:25Z vboxsync $ */
+/* $Id: UIFormEditorWidget.cpp 81326 2019-10-17 16:22:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFormEditorWidget class implementation.
  */
@@ -1371,6 +1371,8 @@ bool UIFormEditorProxyModel::filterAcceptsRow(int iSourceRow, const QModelIndex 
 
 UIFormEditorView::UIFormEditorView(QWidget * /* pParent = 0 */)
 {
+    /* Configure widget a bit: */
+    setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked | QAbstractItemView::EditKeyPressed);
 }
 
 int UIFormEditorView::childCount() const
