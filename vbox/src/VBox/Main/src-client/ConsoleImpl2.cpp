@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 79551 2019-07-05 09:16:02Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 79928 2019-07-23 11:47:38Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2412,6 +2412,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     ULONG cPorts = 0;
                     hrc = ctrls[i]->COMGETTER(PortCount)(&cPorts);                          H();
                     InsertConfigInteger(pCfg, "NumTargets", cPorts);
+                    InsertConfigInteger(pCfg, "Bootable",   fBootable);
 
                     /* Attach the status driver */
                     AssertRelease(cPorts <= cLedSata);
