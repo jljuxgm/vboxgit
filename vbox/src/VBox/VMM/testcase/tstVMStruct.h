@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 81153 2019-10-08 13:59:03Z vboxsync $ */
+/* $Id: tstVMStruct.h 82031 2019-11-20 16:11:16Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -1407,8 +1407,7 @@
     GEN_CHECK_OFF(APICCPU, pvApicPibR0);
     GEN_CHECK_OFF(APICCPU, pvApicPibR3);
     GEN_CHECK_OFF(APICCPU, ApicPibLevel);
-    GEN_CHECK_OFF(APICCPU, pTimerR0);
-    GEN_CHECK_OFF(APICCPU, pTimerR3);
+    GEN_CHECK_OFF(APICCPU, hTimer);
     GEN_CHECK_OFF(APICCPU, TimerCritSect);
 
     GEN_CHECK_SIZE(VM);
