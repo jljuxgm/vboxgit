@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 80161 2019-08-06 18:10:51Z vboxsync $ */
+/* $Id: PGMPhys.cpp 80163 2019-08-06 20:28:12Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4793,7 +4793,6 @@ VMMDECL(void) PGMR3PhysSetA20(PVMCPU pVCpu, bool fEnable)
 #endif
         NEMR3NotifySetA20(pVCpu, fEnable);
 #ifdef PGM_WITH_A20
-        pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_UPDATE_PAGE_BIT_VIRTUAL;
         VMCPU_FF_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3);
         pgmR3RefreshShadowModeAfterA20Change(pVCpu);
         HMFlushTlb(pVCpu);
