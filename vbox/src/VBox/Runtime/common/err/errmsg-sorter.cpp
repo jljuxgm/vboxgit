@@ -1,4 +1,4 @@
-/* $Id: errmsg-sorter.cpp 84054 2020-04-28 16:05:00Z vboxsync $ */
+/* $Id: errmsg-sorter.cpp 84067 2020-04-28 22:53:31Z vboxsync $ */
 /** @file
  * IPRT - Status code messages, sorter build program.
  */
@@ -37,17 +37,14 @@
 #include <stdlib.h>
 
 
-#define ERRMSG_WITH_STRTAB
-#ifdef ERRMSG_WITH_STRTAB
 /*
  * Include the string table code.
  */
-# define BLDPROG_STRTAB_MAX_STRLEN           512
-# define BLDPROG_STRTAB_WITH_COMPRESSION
-# define BLDPROG_STRTAB_PURE_ASCII
-# define BLDPROG_STRTAB_WITH_CAMEL_WORDS
-# include <iprt/bldprog-strtab-template.cpp.h>
-#endif
+#define BLDPROG_STRTAB_MAX_STRLEN           512
+#define BLDPROG_STRTAB_WITH_COMPRESSION
+#define BLDPROG_STRTAB_PURE_ASCII
+#define BLDPROG_STRTAB_WITH_CAMEL_WORDS
+#include <iprt/bldprog-strtab-template.cpp.h>
 
 
 /*********************************************************************************************************************************
