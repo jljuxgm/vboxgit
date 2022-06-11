@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 76923 $"
+__version__ = "$Revision: 78385 $"
 
 
 # Standard Python imports.
@@ -439,6 +439,8 @@ class VBoxInstallerTestDriver(TestDriverBase):
             reporter.error('Unsupported host "%s".' % (sHost,));
         if fRc is False:
             reporter.testFailure('Installation error.');
+        elif fRc is not True:
+            reporter.log('Seems installation was skipped. Old version lurking behind? Not the fault of this build/test run!');
 
         #
         # Install the extension pack.
@@ -455,7 +457,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
         except:
             reporter.logXcpt('Unable to get disk free space. Ignored. Continuing.');
 
-        reporter.testDone();
+        reporter.testDone(fRc is None);
         return fRc;
 
     def _uninstallVBox(self, fIgnoreError = False):
