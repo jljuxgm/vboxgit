@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79238 2019-06-19 10:44:54Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic2.cpp 79240 2019-06-19 11:02:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic2 class implementation.
  */
@@ -35,7 +35,7 @@
 
 
 /*********************************************************************************************************************************
-*   Class UIWizardNewCloudVMPage2 implementation.                                                                                 *
+*   Class UIWizardNewCloudVMPage2 implementation.                                                                                *
 *********************************************************************************************************************************/
 
 UIWizardNewCloudVMPage2::UIWizardNewCloudVMPage2()
@@ -62,7 +62,7 @@ void UIWizardNewCloudVMPage2::refreshFormPropertiesTable()
 
 
 /*********************************************************************************************************************************
-*   Class UIWizardNewCloudVMPageBasic2 implementation.                                                                            *
+*   Class UIWizardNewCloudVMPageBasic2 implementation.                                                                           *
 *********************************************************************************************************************************/
 
 UIWizardNewCloudVMPageBasic2::UIWizardNewCloudVMPageBasic2(const QString &strFileName)

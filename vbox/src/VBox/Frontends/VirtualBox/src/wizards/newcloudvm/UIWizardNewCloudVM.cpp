@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 79238 2019-06-19 10:44:54Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 79240 2019-06-19 11:02:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -142,7 +142,7 @@ private:
 
 
 /*********************************************************************************************************************************
-*   Class UIWizardNewCloudVM implementation.                                                                                      *
+*   Class UIWizardNewCloudVM implementation.                                                                                     *
 *********************************************************************************************************************************/
 
 UIWizardNewCloudVM::UIWizardNewCloudVM(QWidget *pParent, bool fImportFromOCIByDefault, const QString &strFileName)

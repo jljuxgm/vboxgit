@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageBasic1.cpp 79238 2019-06-19 10:44:54Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageBasic1.cpp 79240 2019-06-19 11:02:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageBasic1 class implementation.
  */
@@ -42,7 +42,7 @@
 
 
 /*********************************************************************************************************************************
-*   Class UIWizardNewCloudVMPage1 implementation.                                                                                 *
+*   Class UIWizardNewCloudVMPage1 implementation.                                                                                *
 *********************************************************************************************************************************/
 
 UIWizardNewCloudVMPage1::UIWizardNewCloudVMPage1(bool fImportFromOCIByDefault)
@@ -543,7 +543,7 @@ CVirtualSystemDescriptionForm UIWizardNewCloudVMPage1::vsdForm() const
 
 
 /*********************************************************************************************************************************
-*   Class UIWizardNewCloudVMPageBasic1 implementation.                                                                            *
+*   Class UIWizardNewCloudVMPageBasic1 implementation.                                                                           *
 *********************************************************************************************************************************/
 
 UIWizardNewCloudVMPageBasic1::UIWizardNewCloudVMPageBasic1(bool fImportFromOCIByDefault)
