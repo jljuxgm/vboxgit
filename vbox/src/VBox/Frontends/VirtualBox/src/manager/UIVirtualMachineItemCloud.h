@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItemCloud.h 84189 2020-05-07 15:13:27Z vboxsync $ */
+/* $Id: UIVirtualMachineItemCloud.h 84196 2020-05-08 04:02:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItemCloud class declaration.
  */
@@ -123,9 +123,6 @@ private slots:
         void sltHandleRefreshCloudMachineInfoDone(UITask *pTask);
 
 private:
-
-    /** Temporary! Converts state from KMachineState to KCloudMachineState. */
-    static KCloudMachineState toCloudMachineState(KMachineState enmState);
 
     /** @name Arguments.
       * @{ */

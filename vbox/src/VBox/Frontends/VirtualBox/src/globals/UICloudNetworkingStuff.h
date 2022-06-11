@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 84099 2020-04-30 10:50:00Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 84196 2020-05-08 04:02:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -134,7 +134,7 @@ namespace UICloudNetworkingStuff
                                                    QWidget *pParent = 0);
     /** Acquires @a comCloudMachine state as a @a enmResult, using @a pParent to show messages according to. */
     SHARED_LIBRARY_STUFF bool cloudMachineState(const CCloudMachine &comCloudMachine,
-                                                KMachineState &enmResult,
+                                                KCloudMachineState &enmResult,
                                                 QWidget *pParent = 0);
 
     /** Refreshes @a comCloudMachine information, using @a pParent to show messages according to.

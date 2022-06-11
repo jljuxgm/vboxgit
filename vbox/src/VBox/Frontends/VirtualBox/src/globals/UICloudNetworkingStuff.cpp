@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 84099 2020-04-30 10:50:00Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 84196 2020-05-08 04:02:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -433,10 +433,10 @@ bool UICloudNetworkingStuff::cloudMachineOSTypeId(const CCloudMachine &comCloudM
 }
 
 bool UICloudNetworkingStuff::cloudMachineState(const CCloudMachine &comCloudMachine,
-                                               KMachineState &enmResult,
+                                               KCloudMachineState &enmResult,
                                                QWidget *pParent /* = 0 */)
 {
-    const KMachineState enmState = comCloudMachine.GetState();
+    const KCloudMachineState enmState = comCloudMachine.GetState();
     if (!comCloudMachine.isOk())
         msgCenter().cannotAcquireCloudMachineParameter(comCloudMachine, pParent);
     else
