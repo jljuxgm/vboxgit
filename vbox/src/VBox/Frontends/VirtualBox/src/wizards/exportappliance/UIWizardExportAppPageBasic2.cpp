@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 79542 2019-07-05 07:41:33Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 79544 2019-07-05 07:52:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic2 class implementation.
  */
@@ -21,12 +21,7 @@
 #include <QDir>
 #include <QGridLayout>
 #include <QHeaderView>
-#include <QJsonArray>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QJsonValue>
 #include <QLabel>
-#include <QLineEdit>
 #include <QStackedWidget>
 #include <QTableWidget>
 #include <QVBoxLayout>
