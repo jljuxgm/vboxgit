@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: DevHDA.cpp 80680 2019-09-09 18:31:57Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -4876,7 +4876,7 @@ static DECLCALLBACK(int) hdaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGM
         LogRel2(("HDA: Debug output will be saved to '%s'\n", pThis->Dbg.szOutPath));
 
     /*
-     * Use an own critical section for the device instead of the default
+     * Use our own critical section for the device instead of the default
      * one provided by PDM. This allows fine-grained locking in combination
      * with TM when timer-specific stuff is being called in e.g. the MMIO handlers.
      */
