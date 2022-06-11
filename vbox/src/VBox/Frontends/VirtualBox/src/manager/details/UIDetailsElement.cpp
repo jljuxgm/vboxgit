@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 84020 2020-04-27 17:02:01Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 84021 2020-04-27 17:13:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -980,9 +980,9 @@ void UIDetailsElement::sltHandleAnchorClicked(const QString &strAnchor)
                 if (pEditor)
                 {
                     /* Configure editor: */
-                    connect(pEditor, &UICloudMachineSettingsDialogPage::sigValidChanged,
+                    connect(pEditor.data(), &UICloudMachineSettingsDialogPage::sigValidChanged,
                             pPopup.data(), &QIDialogContainer::setProgressBarHidden);
-                    connect(pEditor, &UICloudMachineSettingsDialogPage::sigValidChanged,
+                    connect(pEditor.data(), &UICloudMachineSettingsDialogPage::sigValidChanged,
                             pPopup.data(), &QIDialogContainer::setOkButtonEnabled);
                     pEditor->setFilter(strData);
                     /* Create get settings form task: */
