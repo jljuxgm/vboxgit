@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet_1_0.cpp 82826 2020-01-22 13:20:42Z vboxsync $ $Revision: 82826 $ $Date: 2020-01-22 21:20:42 +0800 (Wed, 22 Jan 2020) $ $Author: vboxsync $ */
+/* $Id: DevVirtioNet_1_0.cpp 82827 2020-01-22 13:29:23Z vboxsync $ $Revision: 82827 $ $Date: 2020-01-22 21:29:23 +0800 (Wed, 22 Jan 2020) $ $Author: vboxsync $ */
 
 /** @file
  * VBox storage devices - Virtio NET Driver
@@ -1361,7 +1361,7 @@ static bool virtioNetR3AddressFilter(PVIRTIONET pThis, const void *pvBuf, size_t
         if (!memcmp(&pThis->aMacMulticastFilter[i], pvBuf, sizeof(RTMAC)))
             return true;
 
-    /* @todo Original combined unicast & multicast into one table. Should we distinguish? */
+    /** @todo Original combined unicast & multicast into one table. Should we distinguish? */
 
     for (uint16_t i = 0; i < pThis->cUnicastFilterMacs; i++)
         if (!memcmp(&pThis->aMacUnicastFilter[i], pvBuf, sizeof(RTMAC)))
