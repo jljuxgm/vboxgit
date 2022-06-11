@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 81776 2019-11-11 19:26:13Z vboxsync $
+# $Id: wuihlpform.py 82637 2019-12-22 18:54:07Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 81776 $"
+__version__ = "$Revision: 82637 $"
 
 # Standard python imports.
 import copy;
@@ -74,7 +74,7 @@ class WuiHlpForm(object):
         """Internal worker for appending text to the body."""
         assert not self._fFinalized;
         if not self._fFinalized:
-            self._sBody += unicode(sText, errors='ignore') if isinstance(sText, str) else sText;
+            self._sBody += utils.toUnicode(sText, errors='ignore');
             return True;
         return False;
 
