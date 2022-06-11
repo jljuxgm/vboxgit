@@ -1,4 +1,4 @@
-/* $Id: UIDetailsSet.h 83179 2020-02-28 15:29:09Z vboxsync $ */
+/* $Id: UIDetailsSet.h 83352 2020-03-20 15:42:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsSet class declaration.
  */
@@ -140,8 +140,8 @@ private slots:
 
     /** @name Item stuff.
       * @{ */
-        /** Updates item appearance. */
-        void sltUpdateAppearance();
+        /** Handles enumerated signal for medium with @a uId. */
+        void sltMediumEnumerated(const QUuid &uId);
     /** @} */
 
 private:
