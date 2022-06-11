@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 83617 2020-04-08 09:21:02Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -379,6 +379,12 @@ static PVUSBURB vusbRhNewUrb(PVUSBROOTHUB pRh, uint8_t DstAddress, PVUSBDEV pDev
 {
     RT_NOREF(pszTag);
     PVUSBURBPOOL pUrbPool = &pRh->Hub.Dev.UrbPool;
+
+    if (RT_UNLIKELY(cbData > (32 * _1M)))
+    {
+        LogFunc(("Bad URB size (%u)!\n", cbData));
+        return NULL;
+    }
 
     if (!pDev)
         pDev = vusbRhFindDevByAddress(pRh, DstAddress);
