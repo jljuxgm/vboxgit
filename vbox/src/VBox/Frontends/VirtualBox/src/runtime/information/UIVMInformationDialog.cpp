@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 80381 2019-08-21 19:25:25Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 80773 2019-09-13 11:10:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -99,7 +99,7 @@ UIVMInformationDialog::~UIVMInformationDialog()
 
 bool UIVMInformationDialog::shouldBeMaximized() const
 {
-    return gEDataManager->informationWindowShouldBeMaximized(uiCommon().managedVMUuid());
+    return gEDataManager->sessionInformationDialogShouldBeMaximized();
 }
 
 void UIVMInformationDialog::retranslateUi()
@@ -291,7 +291,7 @@ void UIVMInformationDialog::loadSettings()
     /* Restore window geometry: */
     {
         /* Load geometry: */
-        m_geometry = gEDataManager->informationWindowGeometry(this, m_pMachineWindow, uiCommon().managedVMUuid());
+        m_geometry = gEDataManager->sessionInformationDialogGeometry(this, m_pMachineWindow);
 
         /* Restore geometry: */
         LogRel2(("GUI: UIVMInformationDialog: Restoring geometry to: Origin=%dx%d, Size=%dx%d\n",
@@ -306,9 +306,9 @@ void UIVMInformationDialog::saveSettings()
     {
         /* Save geometry: */
 #ifdef VBOX_WS_MAC
-        gEDataManager->setInformationWindowGeometry(m_geometry, ::darwinIsWindowMaximized(this), uiCommon().managedVMUuid());
+        gEDataManager->setSessionInformationDialogGeometry(m_geometry, ::darwinIsWindowMaximized(this));
 #else /* VBOX_WS_MAC */
-        gEDataManager->setInformationWindowGeometry(m_geometry, isMaximized(), uiCommon().managedVMUuid());
+        gEDataManager->setSessionInformationDialogGeometry(m_geometry, isMaximized());
 #endif /* !VBOX_WS_MAC */
         LogRel2(("GUI: UIVMInformationDialog: Geometry saved as: Origin=%dx%d, Size=%dx%d\n",
                  m_geometry.x(), m_geometry.y(), m_geometry.width(), m_geometry.height()));

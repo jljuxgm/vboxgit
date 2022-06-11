@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 80129 2019-08-05 11:35:21Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 80773 2019-09-13 11:10:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -368,9 +368,7 @@ namespace UIExtraDataDefs
     /** @name Virtual Machine: Information dialog
       * @{ */
         /** Holds information-window geometry. */
-        SHARED_LIBRARY_STUFF extern const char *GUI_InformationWindowGeometry;
-        /** Holds information-window elements. */
-        SHARED_LIBRARY_STUFF extern const char *GUI_InformationWindowElements;
+        SHARED_LIBRARY_STUFF extern const char *GUI_SessionInformationDialogGeometry;
     /** @} */
 
     /** @name Guest Control UI related data
