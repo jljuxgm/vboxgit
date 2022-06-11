@@ -1,4 +1,4 @@
-/* $Id: UIToolsModel.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIToolsModel.h 83023 2020-02-07 17:06:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolsModel class declaration.
  */
@@ -119,6 +119,11 @@ public:
         void setToolsEnabled(UIToolClass enmClass, bool fEnabled);
         /** Returns whether certain class of tools is enabled.*/
         bool areToolsEnabled(UIToolClass enmClass) const;
+
+        /** Defines restructed tool @a types. */
+        void setRestrictedToolTypes(const QList<UIToolType> &types);
+        /** Returns restricted tool types. */
+        QList<UIToolType> restrictedToolTypes() const;
 
         /** Closes parent. */
         void closeParent();
@@ -263,6 +268,9 @@ private:
 
         /** Holds whether tools of particular class are enabled. */
         QMap<UIToolClass, bool>  m_statesToolsEnabled;
+
+        /** Holds a list of restricted tool types. */
+        QList<UIToolType>  m_restrictedToolTypes;
     /** @} */
 
     /** @name Children stuff.
