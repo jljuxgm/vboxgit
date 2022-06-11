@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.h 79256 2019-06-20 13:40:17Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.h 79574 2019-07-07 11:32:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class declaration.
  */
@@ -50,7 +50,7 @@ public:
     /** Prepares all. */
     virtual void prepare() /* override */;
 
-    /** Create cloud VM. */
+    /** Create New Cloud VM. */
     bool createCloudVM();
 
 protected:
