@@ -1,4 +1,4 @@
-/* $Id: UISlidingToolBar.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UISlidingToolBar.h 80619 2019-09-06 09:04:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingToolBar class declaration.
  */
@@ -70,6 +70,11 @@ public:
       * @param  enmPosition    Brings the tool-bar position. */
     UISlidingToolBar(QWidget *pParentWidget, QWidget *pIndentWidget, QWidget *pChildWidget, Position enmPosition);
 
+public slots:
+
+    /** Performs window activation. */
+    void sltActivateWindow() { activateWindow(); }
+
 protected:
 
 #ifdef VBOX_WS_MAC
@@ -82,9 +87,6 @@ protected:
     virtual void closeEvent(QCloseEvent *pEvent) /* override */;
 
 private slots:
-
-    /** Performs window activation. */
-    void sltActivateWindow() { activateWindow(); }
 
     /** Marks window as expanded. */
     void sltMarkAsExpanded() { m_fExpanded = true; }
