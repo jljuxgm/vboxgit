@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 79279 2019-06-21 14:24:11Z vboxsync $
+# $Id: utils.py 79908 2019-07-20 03:56:15Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79279 $"
+__version__ = "$Revision: 79908 $"
 
 
 # Standard Python imports.
@@ -1351,7 +1351,6 @@ def _winFloatTime():
             return float(uCurValue.value) / g_fpWinPerfCounterFreq;
     return time.time();
 
-
 def timestampNano():
     """
     Gets a nanosecond timestamp.
@@ -1375,6 +1374,13 @@ def timestampSecond():
     if g_fWinUseWinPerfCounter is True:
         return long(_winFloatTime());
     return long(time.time());
+
+def secondsSinceUnixEpoch():
+    """
+    Returns unix time, floating point second count since 1970-01-01T00:00:00Z
+    """
+    ## ASSUMES This returns unix epoch time on all systems we care about...
+    return time.time();
 
 def getTimePrefix():
     """

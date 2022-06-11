@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsUnattendedInst1.py 79475 2019-07-02 16:49:03Z vboxsync $
+# $Id: tdGuestOsUnattendedInst1.py 79908 2019-07-20 03:56:15Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS unattended installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79475 $"
+__version__ = "$Revision: 79908 $"
 
 
 # Standard Python imports.
@@ -60,7 +60,8 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
 
     ## @name VM option flags (OR together).
     ## @{
-    kfUbuntuAvx2Crash       = 0x0001; ## < Disables AVX2 as ubuntu 16.04 think it means AVX512 is available and compiz crashes.
+    kfUbuntuAvx2Crash       = 0x0001; ##< Disables AVX2 as ubuntu 16.04 think it means AVX512 is available and compiz crashes.
+    kfNoGAs                 = 0x0002; ##< No guest additions installation possible.
     kfIdeIrqDelay           = 0x1000;
     kfUbuntuNewAmdBug       = 0x2000;
     kfNoWin81Paravirt       = 0x4000;
@@ -112,11 +113,14 @@ class UnattendedVm(vboxtestvms.BaseTestVm):
         # Install GAs?
         #
         if self.fOptInstallAdditions:
-            try:    oIUnattended.installGuestAdditions = True;
-            except: return reporter.errorXcpt();
-            try:    oIUnattended.additionsIsoPath      = oTestDrv.getGuestAdditionsIso();
-            except: return reporter.errorXcpt();
-            oTestDrv.processPendingEvents();
+            if (self.fInstVmFlags & self.kfNoGAs) == 0:
+                try:    oIUnattended.installGuestAdditions = True;
+                except: return reporter.errorXcpt();
+                try:    oIUnattended.additionsIsoPath      = oTestDrv.getGuestAdditionsIso();
+                except: return reporter.errorXcpt();
+                oTestDrv.processPendingEvents();
+            else:
+                reporter.log("Warning! Ignoring request to install Guest Additions as kfNoGAs is set!");
 
         return True;
 
@@ -404,10 +408,15 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             UnattendedVm(oSet, 'tst-ubuntu-17.04-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-17.04-desktop-amd64.iso'), # ~4.6GiB
             ## @todo ubuntu 17.10, 18.04 & 18.10 do not work.  They misses all the the build tools (make, gcc, perl, ++)
             ##       and has signed kmods:
-            ## @todo Mark these as no-install-additions for the time being?
-            #UnattendedVm(oSet, 'tst-ubuntu-17.10-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-17.10-desktop-amd64.iso'), # >4.0Gib
-            #UnattendedVm(oSet, 'tst-ubuntu-18.04-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-18.04-desktop-amd64.iso'), # >5.7GiB
-            #UnattendedVm(oSet, 'tst-ubuntu-18.10-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-18.10-desktop-amd64.iso'),
+            UnattendedVm(oSet, 'tst-ubuntu-17.10-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-17.10-desktop-amd64.iso', # >4.0Gib
+                         UnattendedVm.kfNoGAs),
+            UnattendedVm(oSet, 'tst-ubuntu-18.04-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-18.04-desktop-amd64.iso', # >5.7GiB
+                         UnattendedVm.kfNoGAs),
+            # 18.10 hangs reading install DVD during "starting partitioner..."
+            #UnattendedVm(oSet, 'tst-ubuntu-18.10-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-18.10-desktop-amd64.iso',
+            #             UnattendedVm.kfNoGAs),
+            UnattendedVm(oSet, 'tst-ubuntu-19.04-64', 'Ubuntu_64', '6.0/uaisos/ubuntu-19.04-desktop-amd64.iso', # >5.6GiB
+                         UnattendedVm.kfNoGAs),
         ]);
         self.oTestVmSet = oSet;
 
