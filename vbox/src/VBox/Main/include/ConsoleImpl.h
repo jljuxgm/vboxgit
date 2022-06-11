@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 78509 2019-05-14 15:16:21Z vboxsync $ */
+/* $Id: ConsoleImpl.h 78683 2019-05-23 10:07:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -765,7 +765,7 @@ private:
     static DECLCALLBACK(int) i_changeSerialPortAttachment(Console *pThis, PUVM pUVM,
                                                           ISerialPort *pSerialPort);
 
-    void i_changeClipboardMode(ClipboardMode_T aClipboardMode);
+    int i_changeClipboardMode(ClipboardMode_T aClipboardMode);
     int i_changeDnDMode(DnDMode_T aDnDMode);
 
 #ifdef VBOX_WITH_USB

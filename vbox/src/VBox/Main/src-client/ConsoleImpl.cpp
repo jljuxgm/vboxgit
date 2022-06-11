@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 78509 2019-05-14 15:16:21Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 78683 2019-05-23 10:07:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -9139,12 +9139,13 @@ DECLCALLBACK(void) Console::i_vmstateChangeCallback(PUVM pUVM, VMSTATE enmState,
 /**
  * Changes the clipboard mode.
  *
- * @param aClipboardMode  new clipboard mode.
+ * @returns VBox status code.
+ * @param   aClipboardMode  new clipboard mode.
  */
-void Console::i_changeClipboardMode(ClipboardMode_T aClipboardMode)
+int Console::i_changeClipboardMode(ClipboardMode_T aClipboardMode)
 {
     VMMDev *pVMMDev = m_pVMMDev;
-    Assert(pVMMDev);
+    AssertPtr(pVMMDev);
 
     VBOXHGCMSVCPARM parm;
     parm.type = VBOX_HGCM_SVC_PARM_32BIT;
@@ -9170,7 +9171,11 @@ void Console::i_changeClipboardMode(ClipboardMode_T aClipboardMode)
             break;
     }
 
-    pVMMDev->hgcmHostCall("VBoxSharedClipboard", VBOX_SHARED_CLIPBOARD_HOST_FN_SET_MODE, 1, &parm);
+    int rc =  pVMMDev->hgcmHostCall("VBoxSharedClipboard", VBOX_SHARED_CLIPBOARD_HOST_FN_SET_MODE, 1, &parm);
+    if (RT_FAILURE(rc))
+        LogRel(("Error changing shared clipboard mode: %Rrc\n", rc));
+
+    return rc;
 }
 
 /**
