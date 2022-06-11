@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 83353 2020-03-20 16:01:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -160,8 +160,10 @@ private:
     /** Holds a set of current medium-enumeration tasks. */
     QSet<UITask*>  m_tasks;
 
-    /** Holds a map of current cached (enumerated) media. */
+    /** Holds a map of currently cached (enumerated) media. */
     UIMediumMap  m_media;
+    /** Holds a set of currently registered media IDs. */
+    QSet<QUuid>  m_registeredMediaIds;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_medium_UIMediumEnumerator_h */
