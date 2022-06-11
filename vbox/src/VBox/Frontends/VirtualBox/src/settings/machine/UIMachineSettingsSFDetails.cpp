@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSFDetails.cpp 79365 2019-06-26 15:57:32Z vboxsync $ */
+/* $Id: UIMachineSettingsSFDetails.cpp 80678 2019-09-09 14:29:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSFDetails class implementation.
  */
@@ -42,11 +42,12 @@ UIMachineSettingsSFDetails::UIMachineSettingsSFDetails(DialogType type,
     mCbPermanent->setHidden(!fEnableSelector);
 
     /* Setup connections: */
-    connect(mPsPath, SIGNAL(currentIndexChanged(int)), this, SLOT(sltSelectPath()));
-    connect(mPsPath, SIGNAL(pathChanged(const QString &)), this, SLOT(sltSelectPath()));
-    connect(mLeName, SIGNAL(textChanged(const QString &)), this, SLOT(sltValidate()));
+    connect(mPsPath, static_cast<void(UIFilePathSelector::*)(int)>(&UIFilePathSelector::currentIndexChanged),
+            this, &UIMachineSettingsSFDetails::sltSelectPath);
+    connect(mPsPath, &UIFilePathSelector::pathChanged, this, &UIMachineSettingsSFDetails::sltSelectPath);
+    connect(mLeName, &QLineEdit::textChanged, this, &UIMachineSettingsSFDetails::sltValidate);
     if (fEnableSelector)
-        connect(mCbPermanent, SIGNAL(toggled(bool)), this, SLOT(sltValidate()));
+        connect(mCbPermanent, &QCheckBox::toggled, this, &UIMachineSettingsSFDetails::sltValidate);
 
      /* Applying language settings: */
     retranslateUi();
@@ -183,4 +184,3 @@ void UIMachineSettingsSFDetails::sltSelectPath()
     /* Validate the field values: */
     sltValidate();
 }
-

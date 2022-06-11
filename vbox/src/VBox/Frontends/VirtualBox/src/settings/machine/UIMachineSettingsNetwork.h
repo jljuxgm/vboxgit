@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 80213 2019-08-09 13:12:48Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.h 80678 2019-09-09 14:29:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -57,6 +57,11 @@ public:
     /** Returns the NAT network list. */
     const QStringList &natNetworkList() const { return m_natNetworkList; }
 
+ public slots:
+
+    /** Handles particular tab update. */
+    void sltHandleTabUpdate();
+
 protected:
 
     /** Returns whether the page content was changed. */
@@ -86,9 +91,6 @@ protected:
     virtual void polishPage() /* override */;
 
 private slots:
-
-    /** Handles particular tab update. */
-    void sltHandleTabUpdate();
 
     /** Handles whether the advanced button is @a fExpanded. */
     void sltHandleAdvancedButtonStateChange(bool fExpanded);
