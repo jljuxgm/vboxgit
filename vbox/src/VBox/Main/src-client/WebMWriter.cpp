@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.cpp 76760 2019-01-10 18:07:47Z vboxsync $ */
+/* $Id: WebMWriter.cpp 82422 2019-12-05 15:59:34Z vboxsync $ */
 /** @file
  * WebMWriter.cpp - WebM container handling.
  */
@@ -24,17 +24,10 @@
 #define LOG_GROUP LOG_GROUP_MAIN_DISPLAY
 #include "LoggingNew.h"
 
-#include <iprt/cdefs.h>
-#include <iprt/critsect.h>
-#include <iprt/errcore.h>
-#include <iprt/file.h>
 #include <iprt/buildconfig.h>
-
-#include <VBox/log.h>
 #include <VBox/version.h>
 
 #include "WebMWriter.h"
-#include "EBML_MKV.h"
 
 
 WebMWriter::WebMWriter(void)

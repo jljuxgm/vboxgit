@@ -1,4 +1,4 @@
-/* $Id: RecordingUtils.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: RecordingUtils.h 82422 2019-12-05 15:59:34Z vboxsync $ */
 /** @file
  * Recording utility header.
  */
@@ -20,14 +20,6 @@
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
-
-#include <iprt/asm.h>
-#include <iprt/assert.h>
-#include <iprt/critsect.h>
-#include <iprt/path.h>
-#include <iprt/semaphore.h>
-#include <iprt/thread.h>
-#include <iprt/time.h>
 
 
 /**

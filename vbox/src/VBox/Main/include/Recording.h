@@ -1,4 +1,4 @@
-/* $Id: Recording.h 76893 2019-01-18 13:51:30Z vboxsync $ */
+/* $Id: Recording.h 82422 2019-12-05 15:59:34Z vboxsync $ */
 /** @file
  * Recording code header.
  */
@@ -21,14 +21,11 @@
 # pragma once
 #endif
 
-#include <VBox/com/array.h>
-#include <VBox/com/string.h>
-#include <VBox/com/VirtualBox.h>
-#include <VBox/settings.h>
-
 using namespace com;
 
-#include "RecordingInternals.h"
+#include <VBox/err.h>
+#include <VBox/settings.h>
+
 #include "RecordingStream.h"
 
 class Console;

@@ -1,4 +1,4 @@
-/* $Id: WebMWriter.h 76760 2019-01-10 18:07:47Z vboxsync $ */
+/* $Id: WebMWriter.h 82422 2019-12-05 15:59:34Z vboxsync $ */
 /** @file
  * WebMWriter.h - WebM container handling.
  */
@@ -22,6 +22,7 @@
 #endif
 
 #include "EBMLWriter.h"
+#include "EBML_MKV.h"
 
 #include <queue>
 #include <map>
