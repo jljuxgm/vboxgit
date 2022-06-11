@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 80630 2019-09-06 11:03:24Z vboxsync $ */
+/* $Id: HMAll.cpp 81242 2019-10-14 08:46:35Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -271,9 +271,10 @@ static const char * const g_apszSvmExitReasons[MAX_EXITREASON_STAT] =
     EXIT_REASON(SVM_EXIT_MWAIT        ,  139, "MWAIT instruction."),
     EXIT_REASON(SVM_EXIT_MWAIT_ARMED  ,  140, "MWAIT instruction when armed."),
     EXIT_REASON(SVM_EXIT_XSETBV       ,  141, "XSETBV instruction."),
+    EXIT_REASON(SVM_EXIT_RDPRU        ,  142, "RDPRU instruction."),
 };
 /** Array index of the last valid AMD-V exit reason. */
-#define MAX_EXITREASON_AMDV              141
+#define MAX_EXITREASON_AMDV              142
 
 /** Special exit reasons not covered in the array above. */
 #define SVM_EXIT_REASON_NPF                  EXIT_REASON(SVM_EXIT_NPF                , 1024, "Nested Page Fault.")
