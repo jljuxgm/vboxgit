@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 83025 2020-02-07 18:00:45Z vboxsync $ */
+/* $Id: HM.cpp 83026 2020-02-07 18:25:17Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -148,6 +148,7 @@ static int                hmR3InitFinalizeR0Amd(PVM pVM);
 static int                hmR3TermCPU(PVM pVM);
 
 
+#ifdef VBOX_WITH_STATISTICS
 /**
  * Returns the name of the hardware exception.
  *
@@ -184,6 +185,7 @@ static const char *hmR3GetXcptName(uint8_t uVector)
     }
     return "Reserved";
 }
+#endif /* VBOX_WITH_STATISTICS */
 
 
 /**
