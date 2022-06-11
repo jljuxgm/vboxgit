@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 77564 2019-03-05 10:30:33Z vboxsync $
+# $Id: Makefile.kmk 81545 2019-10-25 13:48:17Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -30,7 +30,7 @@ include $(KBUILD_PATH)/subheader.kmk
 
 if !defined(VBOX_ONLY_EXTPACKS) && !defined(VBOX_ONLY_DOCS)
  # RTIsoMaker - ISO image maker - build version.
- BLDPROGS += bldRTIsoMaker
+ PROGRAMS += bldRTIsoMaker
  bldRTIsoMaker_TEMPLATE = VBoxAdvBldProg
  bldRTIsoMaker_SOURCES = \
  	RTIsoMaker.cpp \
