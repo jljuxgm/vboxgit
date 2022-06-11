@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 80411 2019-08-25 07:35:35Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 80412 2019-08-25 07:53:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -859,7 +859,7 @@ void UIInformationRuntime::retranslateUi()
     iMaximum = qMax(iMaximum, m_strDiskIOInfoLabelWritten.length());
     m_strDiskIOInfoLabelRead = QApplication::translate("UIVMInformationDialog", "Read Rate");
     iMaximum = qMax(iMaximum, m_strDiskIOInfoLabelRead.length());
-    m_strDiskIOInfoLabelWrittenTotal = QApplication::translate("UIVMInformationDialog", "Total Writen");
+    m_strDiskIOInfoLabelWrittenTotal = QApplication::translate("UIVMInformationDialog", "Total Written");
     iMaximum = qMax(iMaximum, m_strDiskIOInfoLabelWrittenTotal.length());
     m_strDiskIOInfoLabelReadTotal = QApplication::translate("UIVMInformationDialog", "Total Read");
     iMaximum = qMax(iMaximum, m_strDiskIOInfoLabelReadTotal.length());
