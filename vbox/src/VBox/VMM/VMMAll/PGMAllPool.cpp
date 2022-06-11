@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 82895 2020-01-28 19:52:56Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 82896 2020-01-28 21:43:45Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4994,8 +4994,14 @@ const char *pszTmp = "pgmPoolMakeMoreFreePages/no-growth";
 #else
         int rc = VMMRZCallRing3NoCpu(pVM, VMMCALLRING3_PGM_POOL_GROW, 0);
 #endif
-        if (RT_FAILURE(rc))
-            return rc;
+        if (rc == VINF_SUCCESS)
+        { /* likely */ }
+        else
+        {
+            if (RT_FAILURE(rc))
+                return rc;
+        }
+
         STAM_PROFILE_ADV_RESUME(&pPool->StatAlloc, a);
         if (pPool->iFreeHead != NIL_PGMPOOL_IDX)
             return VINF_SUCCESS;
