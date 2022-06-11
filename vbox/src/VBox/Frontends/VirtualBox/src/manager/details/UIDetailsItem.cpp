@@ -1,4 +1,4 @@
-/* $Id: UIDetailsItem.cpp 80786 2019-09-13 18:41:07Z vboxsync $ */
+/* $Id: UIDetailsItem.cpp 80794 2019-09-15 16:38:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsItem class definition.
  */
@@ -279,14 +279,13 @@ UIPrepareStep::UIPrepareStep(QObject *pParent, QObject *pBuildObject, const QUui
     , m_uStepId(uStepId)
     , m_iStepNumber(iStepNumber)
 {
-    /* Prepare connections (old style, polymorph): */
+    /* Prepare connections (2nd should always be old style, polymorph, cause parent can be set or group): */
     connect(qobject_cast<UIDetailsItem*>(pBuildObject), &UIDetailsItem::sigBuildDone,
             this, &UIPrepareStep::sltStepDone,
             Qt::QueuedConnection);
-    if (qobject_cast<UIDetailsGroup*>(pParent))
-        connect(this, &UIPrepareStep::sigStepDone,
-                qobject_cast<UIDetailsGroup*>(pParent), &UIDetailsGroup::sltBuildStep,
-                Qt::QueuedConnection);
+    connect(this, SIGNAL(sigStepDone(QUuid, int)),
+            pParent, SLOT(sltBuildStep(QUuid, int)),
+            Qt::QueuedConnection);
 }
 
 void UIPrepareStep::sltStepDone()
