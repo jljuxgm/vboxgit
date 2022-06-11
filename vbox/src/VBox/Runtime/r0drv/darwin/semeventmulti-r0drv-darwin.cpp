@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-darwin.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-darwin.cpp 83098 2020-02-17 16:58:55Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -29,6 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define RTSEMEVENTMULTI_WITHOUT_REMAPPING
+#define RTMEM_NO_WRAP_TO_EF_APIS /* rtR0MemObjNativeProtect depends on this code, so no electrical fences here or we'll \#DF. */
 #include "the-darwin-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/semaphore.h>
