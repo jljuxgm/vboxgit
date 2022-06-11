@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 78487 2019-05-13 23:25:38Z vboxsync $ */
+/* $Id: vbsf.h 78584 2019-05-18 21:07:57Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
@@ -56,6 +56,13 @@ RT_C_DECLS_BEGIN
  */
 extern PRDBSS_DEVICE_OBJECT VBoxMRxDeviceObject;
 extern uint32_t             g_uSfLastFunction;
+/** Pointer to the CcCoherencyFlushAndPurgeCache API (since win 7). */
+typedef VOID (NTAPI *PFNCCCOHERENCYFLUSHANDPURGECACHE)(PSECTION_OBJECT_POINTERS, PLARGE_INTEGER, ULONG, PIO_STATUS_BLOCK,ULONG);
+extern PFNCCCOHERENCYFLUSHANDPURGECACHE g_pfnCcCoherencyFlushAndPurgeCache;
+#ifndef CC_FLUSH_AND_PURGE_NO_PURGE
+# define CC_FLUSH_AND_PURGE_NO_PURGE 1
+#endif
+
 
 /**
  * Maximum drive letters (A - Z).

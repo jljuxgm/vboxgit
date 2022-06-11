@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 78575 2019-05-18 02:23:00Z vboxsync $ */
+/* $Id: vbsf.cpp 78584 2019-05-18 21:07:57Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver initialization and generic routines
  */
@@ -51,6 +51,9 @@ static struct _MINIRDR_DISPATCH VBoxMRxDispatch;
  * The VBoxSF device object.
  */
 PRDBSS_DEVICE_OBJECT VBoxMRxDeviceObject;
+
+/** Pointer to CcCoherencyFlushAndPurgeCache if present in ntoskrnl. */
+PFNCCCOHERENCYFLUSHANDPURGECACHE g_pfnCcCoherencyFlushAndPurgeCache;
 
 /** The shared folder service client structure. */
 VBGLSFCLIENT g_SfClient;
@@ -657,6 +660,11 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT  DriverObject,
         RTR0Term();
         return STATUS_UNSUCCESSFUL;
     }
+
+    /* Resolve newer kernel APIs we might want to use: */
+    UNICODE_STRING RoutineName;
+    RtlInitUnicodeString(&RoutineName, L"CcCoherencyFlushAndPurgeCache");
+    g_pfnCcCoherencyFlushAndPurgeCache = (PFNCCCOHERENCYFLUSHANDPURGECACHE)MmGetSystemRoutineAddress(&RoutineName);
 
     /* Init the driver object. */
     DriverObject->DriverUnload = VBoxMRxUnload;

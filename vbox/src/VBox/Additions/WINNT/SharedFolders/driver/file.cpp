@@ -1,4 +1,4 @@
-/* $Id: file.cpp 78577 2019-05-18 10:53:11Z vboxsync $ */
+/* $Id: file.cpp 78584 2019-05-18 21:07:57Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver file routines.
  */
@@ -113,6 +113,23 @@ static NTSTATUS vbsfNtReadWorker(PRX_CONTEXT RxContext)
             while (iPage-- > 0)
                 pReq->PgLst.aPages[iPage] = (RTGCPHYS)paPfns[iPage] << PAGE_SHIFT;
             pReq->PgLst.offFirstPage = offPage;
+
+            /*
+             * Flush dirty cache content before we try read it from the host.  RDBSS calls
+             * CcFlushCache before it calls us, I think, but CcCoherencyFlushAndPurgeCache
+             * does the right thing whereas CcFlushCache clearly does (FsPerf mmap+read
+             * coherency test fails consistently on W10, XP, ++).
+             */
+            if (   g_pfnCcCoherencyFlushAndPurgeCache
+                && !(RxContext->CurrentIrp && (RxContext->CurrentIrp->Flags & IRP_PAGING_IO))
+                && RxContext->NonPagedFcb != NULL
+                && RxContext->NonPagedFcb->SectionObjectPointers.DataSectionObject != NULL)
+            {
+                LARGE_INTEGER offFlush;
+                offFlush.QuadPart = offFile;
+                g_pfnCcCoherencyFlushAndPurgeCache(&RxContext->NonPagedFcb->SectionObjectPointers, &offFlush, cbChunk,
+                                                   &RxContext->CurrentIrp->IoStatus, CC_FLUSH_AND_PURGE_NO_PURGE);
+            }
 
             /*
              * Issue the request and unlock the pages.
@@ -293,7 +310,6 @@ static NTSTATUS vbsfNtWriteWorker(PRX_CONTEXT RxContext)
 
     AssertReturn(pBufferMdl,  STATUS_INTERNAL_ERROR);
 
-
     /*
      * We should never get a zero byte request (RDBSS checks), but in case we
      * do, it should succeed.
@@ -355,6 +371,23 @@ static NTSTATUS vbsfNtWriteWorker(PRX_CONTEXT RxContext)
             while (iPage-- > 0)
                 pReq->PgLst.aPages[iPage] = (RTGCPHYS)paPfns[iPage] << PAGE_SHIFT;
             pReq->PgLst.offFirstPage = offPage;
+
+            /*
+             * Flush and purge the cache range we're touching upon now, provided we can and
+             * really needs to.  The CcCoherencyFlushAndPurgeCache API seems to work better
+             * than the CcFlushCache + CcPurgeCacheSection that RDBSS does before calling us.
+             */
+            if (   g_pfnCcCoherencyFlushAndPurgeCache
+                && !(RxContext->CurrentIrp && (RxContext->CurrentIrp->Flags & IRP_PAGING_IO))
+                && RxContext->NonPagedFcb != NULL
+                && RxContext->NonPagedFcb->SectionObjectPointers.DataSectionObject != NULL)
+            {
+                /** @todo locking.   */
+                LARGE_INTEGER offFlush;
+                offFlush.QuadPart = offFile;
+                g_pfnCcCoherencyFlushAndPurgeCache(&RxContext->NonPagedFcb->SectionObjectPointers, &offFlush, cbChunk,
+                                                   &RxContext->CurrentIrp->IoStatus, 0 /*fFlags*/);
+            }
 
             /*
              * Issue the request and unlock the pages.
