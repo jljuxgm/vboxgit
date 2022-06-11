@@ -1,4 +1,4 @@
-/* $Id: DevIommuAmd.cpp 84170 2020-05-06 16:50:36Z vboxsync $ */
+/* $Id: DevIommuAmd.cpp 84171 2020-05-06 17:00:11Z vboxsync $ */
 /** @file
  * IOMMU - Input/Output Memory Management Unit - AMD implementation.
  */
@@ -3771,8 +3771,6 @@ static void iommuAmdRaiseIoPageFaultEvent(PPDMDEVINS pDevIns, uint16_t uDevId, u
             break;
         }
     }
-
-
 }
 
 
@@ -3878,6 +3876,7 @@ static int iommuAmdReadDte(PPDMDEVINS pDevIns, uint16_t uDevId, IOMMUOP enmOp, P
  * @param   cbAccess    The size of the access.
  * @param   fAccess     The access permissions (IOMMU_IO_PERM_XXX). This is the
  *                      permissions for the access being made.
+ * @param   pDte        The device table entry.
  * @param   enmOp       The IOMMU operation being performed.
  * @param   pGCPhysSpa  Where to store the system physical address.
  * @param   pfIoPerm    Where to store the I/O access permissions. This is the
