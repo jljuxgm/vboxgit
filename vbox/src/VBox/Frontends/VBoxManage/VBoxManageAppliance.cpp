@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 78430 2019-05-07 11:22:00Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 78735 2019-05-24 19:46:11Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -151,7 +151,7 @@ static const RTGETOPTDEF g_aImportApplianceOptions[] =
     { "--cloudinstanceid",      'l', RTGETOPT_REQ_STRING }
 };
 
-enum
+enum actionType
 {
     NOT_SET, LOCAL, CLOUD
 } actionType;
@@ -988,6 +988,8 @@ RTEXITCODE handleImportAppliance(HandlerArg *arg)
                         case VirtualSystemDescriptionType_CloudLaunchInstance:
                         case VirtualSystemDescriptionType_CloudInstanceId:
                         case VirtualSystemDescriptionType_CloudImageId:
+                        case VirtualSystemDescriptionType_CloudInstanceState:
+                        case VirtualSystemDescriptionType_CloudImageState:
                         case VirtualSystemDescriptionType_Miscellaneous:
                             /** @todo  VirtualSystemDescriptionType_Miscellaneous? */
                             break;
