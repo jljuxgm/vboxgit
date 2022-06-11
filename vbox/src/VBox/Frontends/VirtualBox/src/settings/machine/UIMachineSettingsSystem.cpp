@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 79964 2019-07-24 18:36:34Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 79972 2019-07-25 08:06:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -864,7 +864,7 @@ void UIMachineSettingsSystem::prepareTabMotherboard()
                 /* Add all available devices types, so we could initially calculate the right size: */
                 for (int i = 0; i < m_possibleBootItems.size(); ++i)
                 {
-                    QListWidgetItem *pItem = new UIBootTableItem(m_possibleBootItems[i]);
+                    QListWidgetItem *pItem = new UIBootListWidgetItem(m_possibleBootItems[i]);
                     mTwBootOrder->addItem(pItem);
                 }
             }
