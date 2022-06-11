@@ -1,4 +1,4 @@
-/* $Id: DHCPConfigImpl.cpp 79732 2019-07-12 12:40:09Z vboxsync $ */
+/* $Id: DHCPConfigImpl.cpp 79735 2019-07-12 13:02:10Z vboxsync $ */
 /** @file
  * VirtualBox Main - IDHCPConfig, IDHCPConfigGlobal, IDHCPConfigGroup, IDHCPConfigIndividual implementation.
  */
@@ -23,7 +23,7 @@
 #include "DHCPConfigImpl.h"
 #include "LoggingNew.h"
 
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/net.h>
 #include <iprt/cpp/utils.h>
 #include <iprt/cpp/xml.h>

@@ -1,4 +1,4 @@
-/* $Id: DHCPConfigImpl.h 79732 2019-07-12 12:40:09Z vboxsync $ */
+/* $Id: DHCPConfigImpl.h 79735 2019-07-12 13:02:10Z vboxsync $ */
 /** @file
  * VirtualBox Main - IDHCPConfig, IDHCPConfigGlobal, IDHCPConfigGroup, IDHCPConfigIndividual header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef MAIN_INCLUDED_DHCPServerConfig_h
-#define MAIN_INCLUDED_DHCPServerConfig_h
+#ifndef MAIN_INCLUDED_DHCPConfigImpl_h
+#define MAIN_INCLUDED_DHCPConfigImpl_h
 #ifndef RT_WITHOUT_PRAGMA_ONCE
 # pragma once
 #endif
@@ -314,5 +314,5 @@ protected:
     /** @} */
 };
 
-#endif /* !MAIN_INCLUDED_DHCPServerImpl_h */
+#endif /* !MAIN_INCLUDED_DHCPConfigImpl_h */
 
