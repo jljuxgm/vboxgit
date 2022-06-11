@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 78746 2019-05-25 15:48:37Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 79974 2019-07-25 09:01:39Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -80,7 +80,8 @@
  *        This applies to enum values too.
  *
  *   <li> Typedefs are all uppercase and contain no underscores to distinguish
- *        them from defines.
+ *        them from defines.  Alternatively, all uppercase, separate words with
+ *        underscores and ending with '_T'.  The latter is not allowed in IPRT.
  *
  *   <li> Pointer typedefs start with 'P'. If pointer to const then 'PC'.
  *
