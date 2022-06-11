@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 78632 2019-05-21 13:56:11Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 79611 2019-07-08 23:33:59Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -296,6 +296,31 @@ static void errorGetOptWorker(int rcGetOpt, union RTGETOPTUNION const *pValueUni
         RTMsgError("%s: %Rrs", pValueUnion->pDef->pszLong, rcGetOpt);
     else
         RTMsgError("%Rrs", rcGetOpt);
+}
+
+
+/**
+ * For use to deal with RTGetOptFetchValue failures.
+ *
+ * @retval  RTEXITCODE_SYNTAX
+ * @param   iValueNo            The value number being fetched, counting the
+ *                              RTGetOpt value as zero and the first
+ *                              RTGetOptFetchValue call as one.
+ * @param   pszOption           The option being parsed.
+ * @param   rcGetOptFetchValue  The status returned by RTGetOptFetchValue.
+ * @param   pValueUnion         The value union returned by the fetch.
+ */
+RTEXITCODE errorFetchValue(int iValueNo, const char *pszOption, int rcGetOptFetchValue, union RTGETOPTUNION const *pValueUnion)
+{
+    Assert(g_enmCurCommand != HELP_CMD_VBOXMANAGE_INVALID);
+    showLogo(g_pStdErr);
+    if (rcGetOptFetchValue == VERR_GETOPT_REQUIRED_ARGUMENT_MISSING)
+        RTMsgError("Missing the %u%s value for option %s",
+                   iValueNo, iValueNo == 1 ? "st" : iValueNo == 2 ? "nd" : iValueNo == 3 ? "rd" : "th",  pszOption);
+    else
+        errorGetOptWorker(rcGetOptFetchValue, pValueUnion);
+    return RTEXITCODE_SYNTAX;
+
 }
 
 
@@ -1199,28 +1224,6 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "\n", SEP);
     }
 #endif
-
-    if (enmCommand == USAGE_DHCPSERVER || enmCommand == USAGE_S_ALL)
-    {
-        RTStrmPrintf(pStrm,
-                           "%s dhcpserver %s      add|modify --netname <network_name> |\n"
-#if defined(VBOX_WITH_NETFLT)
-                     "                                       --ifname <hostonly_if_name>\n"
-#endif
-                     "                            [--ip <ip_address>\n"
-                     "                            --netmask <network_mask>\n"
-                     "                            --lowerip <lower_ip>\n"
-                     "                            --upperip <upper_ip>]\n"
-                     "                            [--enable | --disable]\n"
-                     "                            [--options [--vm <name> --nic <1-N>]\n"
-                     "                             --id <number> [--value <string> | --remove]]\n"
-                     "                             (multiple options allowed after --options)\n\n"
-                           "%s dhcpserver %s      remove --netname <network_name> |\n"
-#if defined(VBOX_WITH_NETFLT)
-                     "                                   --ifname <hostonly_if_name>\n"
-#endif
-                     "\n", SEP, SEP);
-    }
 
     if (enmCommand == USAGE_USBDEVSOURCE || enmCommand == USAGE_S_ALL)
     {

@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 78126 2019-04-15 16:46:46Z vboxsync $ */
+/* $Id: VBoxManage.cpp 79611 2019-07-08 23:33:59Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -149,7 +149,7 @@ static const VBMGCMD g_aCommands[] =
 #ifdef VBOX_WITH_NETFLT
     { "hostonlyif",         USAGE_HOSTONLYIFS,      VBMG_CMD_TODO, handleHostonlyIf,           0 },
 #endif
-    { "dhcpserver",         USAGE_DHCPSERVER,       VBMG_CMD_TODO, handleDHCPServer,           0 },
+    { "dhcpserver",         USAGE_S_NEWCMD,   HELP_CMD_DHCPSERVER, handleDHCPServer,           0 },
 #ifdef VBOX_WITH_NAT_SERVICE
     { "natnetwork",         USAGE_NATNETWORK,       VBMG_CMD_TODO, handleNATNetwork,           0 },
 #endif
