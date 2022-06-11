@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxtasks.py 80237 2019-08-12 21:16:08Z vboxsync $
+# $Id: testboxtasks.py 80238 2019-08-12 22:54:43Z vboxsync $
 
 """
 TestBox Script - Async Tasks.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 80237 $"
+__version__ = "$Revision: 80238 $"
 
 
 # Standard python imports.
@@ -912,11 +912,14 @@ class TestBoxExecTask(TestBoxTestDriverTask):
                 (fRc, sResult) = self._monitorChild(self._cSecTimeout);
                 testboxcommons.log2('_threadProc: _monitorChild -> %s' % (fRc,));
 
-                # If the run failed, do explicit cleanup.
+                # If the run failed, do explicit cleanup unless its a BAD_TESTBOX, since BAD_TESTBOX is
+                # intended for pre-cleanup problems caused by previous test failures.  Do a cleanup on
+                # a BAD_TESTBOX could easily trigger an uninstallation error and change status to FAILED.
                 if fRc is not True:
-                    testboxcommons.log2('_threadProc: explicit cleanups...');
-                    self._terminateChild();
-                    self._cleanupAfter();
+                    if sResult != constants.result.BAD_TESTBOX:
+                        testboxcommons.log2('_threadProc: explicit cleanups...');
+                        self._terminateChild();
+                        self._cleanupAfter();
                     fNeedCleanUp = False;
             assert self._oChild is None;
 
