@@ -1,4 +1,4 @@
-/* $Id: DHCPD.h 79514 2019-07-04 08:01:58Z vboxsync $ */
+/* $Id: DHCPD.h 79524 2019-07-04 10:14:02Z vboxsync $ */
 /** @file
  * DHCP server - protocol logic
  */
@@ -21,8 +21,8 @@
 # pragma once
 #endif
 
+#include "DhcpdInternal.h"
 #include <iprt/cpp/ministring.h>
-#include "Defs.h"
 #include "Config.h"
 #include "DhcpMessage.h"
 #include "Db.h"

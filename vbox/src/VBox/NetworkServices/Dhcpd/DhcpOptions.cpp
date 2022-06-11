@@ -1,4 +1,4 @@
-/* $Id: DhcpOptions.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DhcpOptions.cpp 79524 2019-07-04 10:14:02Z vboxsync $ */
 /** @file
  * DHCP server - DHCP options
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include "DhcpdInternal.h"
 #include "DhcpOptions.h"
 #include "DhcpMessage.h"
 

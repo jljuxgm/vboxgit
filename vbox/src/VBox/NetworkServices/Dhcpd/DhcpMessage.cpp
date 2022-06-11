@@ -1,4 +1,4 @@
-/* $Id: DhcpMessage.cpp 79514 2019-07-04 08:01:58Z vboxsync $ */
+/* $Id: DhcpMessage.cpp 79524 2019-07-04 10:14:02Z vboxsync $ */
 /** @file
  * DHCP Message and its de/serialization.
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include "DhcpdInternal.h"
 #include "DhcpMessage.h"
 #include "DhcpOptions.h"
 

@@ -1,4 +1,4 @@
-/* $Id: DhcpMessage.h 79514 2019-07-04 08:01:58Z vboxsync $ */
+/* $Id: DhcpMessage.h 79524 2019-07-04 10:14:02Z vboxsync $ */
 /** @file
  * DHCP Message and its de/serialization.
  */
@@ -21,7 +21,7 @@
 # pragma once
 #endif
 
-#include "Defs.h"
+#include "DhcpdInternal.h"
 #include <iprt/net.h>
 #include <iprt/cpp/ministring.h>
 #include "ClientId.h"

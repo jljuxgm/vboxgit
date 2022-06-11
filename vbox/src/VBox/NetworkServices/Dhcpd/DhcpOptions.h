@@ -1,4 +1,4 @@
-/* $Id: DhcpOptions.h 79514 2019-07-04 08:01:58Z vboxsync $ */
+/* $Id: DhcpOptions.h 79524 2019-07-04 10:14:02Z vboxsync $ */
 /** @file
  * DHCP server - DHCP options
  */
@@ -21,7 +21,7 @@
 # pragma once
 #endif
 
-#include "Defs.h"
+#include "DhcpdInternal.h"
 
 #include <iprt/asm.h>
 #include <iprt/err.h>

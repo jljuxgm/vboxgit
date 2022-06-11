@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 79514 2019-07-04 08:01:58Z vboxsync $ */
+/* $Id: Config.cpp 79524 2019-07-04 10:14:02Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include "DhcpdInternal.h"
 #include "Config.h"
 
 #include <iprt/ctype.h>

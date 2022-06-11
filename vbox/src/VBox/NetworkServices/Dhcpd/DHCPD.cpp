@@ -1,4 +1,4 @@
-/* $Id: DHCPD.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+/* $Id: DHCPD.cpp 79524 2019-07-04 10:14:02Z vboxsync $ */
 /** @file
  * DHCP server - protocol logic
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include "DhcpdInternal.h"
 #include "DHCPD.h"
 #include "DhcpOptions.h"
 

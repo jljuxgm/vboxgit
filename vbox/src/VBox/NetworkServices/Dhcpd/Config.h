@@ -1,4 +1,4 @@
-/* $Id: Config.h 79514 2019-07-04 08:01:58Z vboxsync $ */
+/* $Id: Config.h 79524 2019-07-04 10:14:02Z vboxsync $ */
 /** @file
  * DHCP server - server configuration
  */
@@ -21,6 +21,7 @@
 # pragma once
 #endif
 
+#include "DhcpdInternal.h"
 #include <iprt/types.h>
 #include <iprt/net.h>
 #include <iprt/cpp/xml.h>
@@ -29,7 +30,6 @@
 #include <VBox/intnet.h>
 
 
-#include "Defs.h"
 #include "DhcpOptions.h"
 #include "ClientId.h"
 
