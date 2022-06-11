@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 80740 2019-09-12 04:42:16Z vboxsync $ */
+/* $Id: HMInternal.h 80911 2019-09-20 05:20:00Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -274,6 +274,8 @@ typedef struct HMPHYSCPU
     bool                fConfigured;
     /** Set if the VBOX_HWVIRTEX_IGNORE_SVM_IN_USE hack is active. */
     bool                fIgnoreAMDVInUseError;
+    /** Whether CR4.VMXE was already enabled prior to us enabling it. */
+    bool                fVmxeAlreadyEnabled;
     /** In use by our code. (for power suspend) */
     bool volatile       fInUse;
 #ifdef VBOX_WITH_NESTED_HWVIRT_SVM

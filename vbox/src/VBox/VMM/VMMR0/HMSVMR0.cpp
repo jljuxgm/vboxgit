@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 80587 2019-09-04 17:44:20Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 80911 2019-09-20 05:20:00Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -587,11 +587,13 @@ VMMR0DECL(int) SVMR0EnableCpu(PHMPHYSCPU pHostCpu, PVMCC pVM, void *pvCpuPage, R
  * Deactivates AMD-V on the current CPU.
  *
  * @returns VBox status code.
+ * @param   pHostCpu        The HM physical-CPU structure.
  * @param   pvCpuPage       Pointer to the global CPU page.
  * @param   HCPhysCpuPage   Physical address of the global CPU page.
  */
-VMMR0DECL(int) SVMR0DisableCpu(void *pvCpuPage, RTHCPHYS HCPhysCpuPage)
+VMMR0DECL(int) SVMR0DisableCpu(PHMPHYSCPU pHostCpu, void *pvCpuPage, RTHCPHYS HCPhysCpuPage)
 {
+    RT_NOREF1(pHostCpu);
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
     AssertReturn(   HCPhysCpuPage
                  && HCPhysCpuPage != NIL_RTHCPHYS, VERR_INVALID_PARAMETER);
