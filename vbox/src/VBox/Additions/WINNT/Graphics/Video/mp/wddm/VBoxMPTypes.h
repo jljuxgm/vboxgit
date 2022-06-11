@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 80488 2019-08-28 21:00:02Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 80876 2019-09-18 06:09:19Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -51,16 +51,6 @@ typedef struct VBOXWDDM_ALLOCATION *PVBOXWDDM_ALLOCATION;
 
 #define VBOXWDDM_C_POINTER_MAX_WIDTH  64
 #define VBOXWDDM_C_POINTER_MAX_HEIGHT 64
-
-#ifdef VBOX_WITH_VDMA
-#define VBOXWDDM_C_VDMA_BUFFER_SIZE   (64*_1K)
-#endif
-
-#ifndef VBOXWDDM_RENDER_FROM_SHADOW
-# ifndef VBOX_WITH_VDMA
-#  error "VBOX_WITH_VDMA must be defined!!!"
-# endif
-#endif
 
 #define VBOXWDDM_POINTER_ATTRIBUTES_SIZE VBOXWDDM_ROUNDBOUND( \
          VBOXWDDM_ROUNDBOUND( sizeof (VIDEO_POINTER_ATTRIBUTES), 4 ) + \
