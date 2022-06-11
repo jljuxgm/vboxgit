@@ -1,4 +1,4 @@
-  /* $Id: DrvNamedPipe.cpp 76553 2019-01-01 01:45:53Z vboxsync $ */
+  /* $Id: DrvNamedPipe.cpp 80403 2019-08-23 16:03:40Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
@@ -1037,9 +1037,12 @@ static DECLCALLBACK(int) drvNamedPipeConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCf
     {
         /* Connect to the local socket. */
         if (connect(s, (struct sockaddr *)&addr, sizeof(addr)) == -1)
+        {
+            close(s);
             return PDMDrvHlpVMSetError(pDrvIns, RTErrConvertFromErrno(errno), RT_SRC_POS,
                                        N_("NamedPipe#%d failed to connect to local socket %s"),
                                        pDrvIns->iInstance, pThis->pszLocation);
+        }
 
         rc = RTSocketFromNative(&pThis->hSock, s);
         if (RT_FAILURE(rc))
