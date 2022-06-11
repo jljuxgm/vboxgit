@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 84042 2020-04-28 11:32:07Z vboxsync $ */
+/* $Id: VUSBUrb.cpp 84359 2020-05-19 08:10:45Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -632,7 +632,7 @@ static PVUSBCTRLEXTRA vusbMsgAllocExtraData(PVUSBURB pUrb)
 #ifdef LOG_ENABLED
         RTStrAPrintf(&pExtra->Urb.pszDesc, "URB %p msg->%p", &pExtra->Urb, pUrb);
 #endif
-        pExtra->Urb.pVUsb = (PVUSBURBVUSB)&pExtra->vUsbExtra;
+        pExtra->Urb.pVUsb = (PVUSBURBVUSB)&pExtra->VUsbExtra;
         //pExtra->Urb.pVUsb->pCtrlUrb = NULL;
         //pExtra->Urb.pVUsb->pNext = NULL;
         //pExtra->Urb.pVUsb->ppPrev = NULL;
@@ -720,7 +720,7 @@ static bool vusbMsgSetup(PVUSBPIPE pPipe, const void *pvBuf, uint32_t cbBuf)
             pNew->pMsg = (PVUSBSETUP)pNew->Urb.abData;
             pExtra = pNew;
             pPipe->pCtrl = pExtra;
-            pExtra->Urb.pVUsb = (PVUSBURBVUSB)&pExtra->vUsbExtra;
+            pExtra->Urb.pVUsb = (PVUSBURBVUSB)&pExtra->VUsbExtra;
             pExtra->Urb.pVUsb->pUrb = &pExtra->Urb;
             pExtra->Urb.pVUsb->pvFreeCtx = &pExtra->Urb;
         }

@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 84042 2020-04-28 11:32:07Z vboxsync $ */
+/* $Id: VUSBInternal.h 84359 2020-05-19 08:10:45Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -147,7 +147,7 @@ typedef struct vusb_ctrl_extra
      * accommodate any larger request (unlikely). */
     uint32_t            cbMax;
     /** VUSB internal data for the extra URB. */
-    VUSBURBVUSBINT      vUsbExtra;
+    VUSBURBVUSBINT      VUsbExtra;
     /** The message URB. */
     VUSBURB             Urb;
 } VUSBCTRLEXTRA, *PVUSBCTRLEXTRA;
