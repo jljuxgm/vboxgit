@@ -1,4 +1,4 @@
-/* $Id: UIPerformanceMonitor.h 80330 2019-08-16 13:14:50Z vboxsync $ */
+/* $Id: UIPerformanceMonitor.h 80341 2019-08-19 11:11:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPerformanceMonitor class declaration.
  */
@@ -138,7 +138,7 @@ private:
         QString m_strNetMetricName;
     /** @} */
 
-    /** @name These metric names are used for map keys to identify metrics.
+    /** @name Cached translated string.
       * @{ */
         /** CPU info label strings. */
         QString m_strCPUInfoLabelTitle;

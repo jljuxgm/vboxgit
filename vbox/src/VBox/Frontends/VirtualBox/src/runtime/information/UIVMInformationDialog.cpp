@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 80162 2019-08-06 18:50:03Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 80341 2019-08-19 11:11:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -270,7 +270,7 @@ void UIVMInformationDialog::prepareTabWidget()
         }
 
         /* Set Runtime Information tab as default: */
-        m_pTabWidget->setCurrentIndex(1);
+        m_pTabWidget->setCurrentIndex(0);
 
         /* Assign tab-widget page change handler: */
         connect(m_pTabWidget, &QITabWidget::currentChanged, this, &UIVMInformationDialog::sltHandlePageChanged);
