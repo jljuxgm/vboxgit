@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 82186 2019-11-25 17:02:40Z vboxsync $ */
+/* $Id: UIActionPool.cpp 82193 2019-11-25 18:16:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -1405,6 +1405,12 @@ protected:
     virtual QKeySequence defaultShortcut(UIActionPoolType) const /* override */
     {
         return QKeySequence("Ctrl+Shift+R");
+    }
+
+    /** Returns standard shortcut. */
+    virtual QKeySequence standardShortcut(UIActionPoolType) const /* override */
+    {
+        return QKeySequence(QKeySequence::Refresh);
     }
 
     /** Handles translation event. */
