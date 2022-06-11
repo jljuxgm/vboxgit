@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic2.h 76581 2019-01-01 06:24:57Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic2.h 82548 2019-12-11 13:54:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic2 class declaration.
  */
@@ -38,7 +38,7 @@ protected:
     UIWizardCloneVMPage2(bool fAdditionalInfo);
 
     /* Stuff for 'linkedClone' field: */
-    bool isLinkedClone() const;
+    bool linkedClone() const;
 
     /* Variables: */
     bool m_fAdditionalInfo;
@@ -53,7 +53,7 @@ protected:
 class UIWizardCloneVMPageBasic2 : public UIWizardPage, public UIWizardCloneVMPage2
 {
     Q_OBJECT;
-    Q_PROPERTY(bool linkedClone READ isLinkedClone);
+    Q_PROPERTY(bool linkedClone READ linkedClone);
 
 public:
 
