@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 83757 2020-04-17 14:52:40Z vboxsync $
+# $Id: tdAddBasic1.py 83764 2020-04-17 15:23:51Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83757 $"
+__version__ = "$Revision: 83764 $"
 
 # Standard Python imports.
 import os;
@@ -169,23 +169,27 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
                 fRc, oTxsSession = self.testInstallAdditions(oSession, oTxsSession, oTestVm);
             reporter.testDone(fSkip);
 
-            fSkip = 'guestprops' not in self.asTests;
-            reporter.testStart('Guest Properties');
-            if not fSkip:
-                fRc = self.testGuestProperties(oSession, oTxsSession, oTestVm) and fRc;
-            reporter.testDone(fSkip);
+            if  not fSkip \
+            and not fRc:
+                reporter.log('Skipping following tests as Guest Additions were not installed successfully');
+            else:
+                fSkip = 'guestprops' not in self.asTests;
+                reporter.testStart('Guest Properties');
+                if not fSkip:
+                    fRc = self.testGuestProperties(oSession, oTxsSession, oTestVm) and fRc;
+                reporter.testDone(fSkip);
 
-            fSkip = 'guestcontrol' not in self.asTests;
-            reporter.testStart('Guest Control');
-            if not fSkip:
-                fRc, oTxsSession = self.aoSubTstDrvs[0].testIt(oTestVm, oSession, oTxsSession);
-            reporter.testDone(fSkip);
+                fSkip = 'guestcontrol' not in self.asTests;
+                reporter.testStart('Guest Control');
+                if not fSkip:
+                    fRc, oTxsSession = self.aoSubTstDrvs[0].testIt(oTestVm, oSession, oTxsSession);
+                reporter.testDone(fSkip);
 
-            fSkip = 'sharedfolders' not in self.asTests and self.fpApiVer >= 6.0;
-            reporter.testStart('Shared Folders');
-            if not fSkip:
-                fRc, oTxsSession = self.aoSubTstDrvs[1].testIt(oTestVm, oSession, oTxsSession);
-            reporter.testDone(fSkip or fRc is None);
+                fSkip = 'sharedfolders' not in self.asTests and self.fpApiVer >= 6.0;
+                reporter.testStart('Shared Folders');
+                if not fSkip:
+                    fRc, oTxsSession = self.aoSubTstDrvs[1].testIt(oTestVm, oSession, oTxsSession);
+                reporter.testDone(fSkip or fRc is None);
 
             ## @todo Save and restore test.
 
