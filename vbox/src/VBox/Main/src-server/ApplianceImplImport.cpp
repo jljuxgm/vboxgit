@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 79023 2019-06-06 13:51:42Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 79093 2019-06-11 17:09:16Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -3593,6 +3593,12 @@ void Appliance::i_importOneDiskImage(const ovf::DiskImage &di,
                 /* Now wait for the background import operation to complete; this throws
                  * HRESULTs on error. */
                 stack.pProgress->WaitForOtherProgressCompletion(pProgressImport, 0 /* indefinite wait */);
+
+                /* The creating/importing has placed the medium in the global
+                 * media registry since the VM isn't created yet. Remove it
+                 * again to let it added to the right registry when the VM
+                 * has been created below. */
+                pTargetMedium->i_removeRegistry(mVirtualBox->i_getGlobalRegistryId());
             }
         }
         catch (...)
