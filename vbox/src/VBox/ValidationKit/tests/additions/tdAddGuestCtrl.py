@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79324 $"
+__version__ = "$Revision: 79327 $"
 
 # Standard Python imports.
 import errno
@@ -3500,8 +3500,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
             tdTestRemoveTree(asTestDirs[0], afFlags = [vboxcon.DirectoryRemoveRecFlag_ContentAndDir,], fRcExpect = True),
             tdTestRemoveTree(asTestDirs[0], afFlags = [vboxcon.DirectoryRemoveRecFlag_ContentOnly,],
                              fNotExist = True, fRcExpect = True),
-            # Exception is when not specifying any flags the the guest does not call RTDirRemoveRecursive but does its own thing.
-            tdTestRemoveTree(asTestDirs[0], afFlags = [], fRcExpect = False),
+            tdTestRemoveTree(asTestDirs[0], afFlags = [vboxcon.DirectoryRemoveRecFlag_None,], fNotExist = True, fRcExpect = True),
         ];
 
         #
