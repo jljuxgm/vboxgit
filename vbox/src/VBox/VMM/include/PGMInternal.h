@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 80175 2019-08-07 09:41:57Z vboxsync $ */
+/* $Id: PGMInternal.h 80176 2019-08-07 09:42:31Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3282,8 +3282,8 @@ typedef struct PGM
 
 
     /** PGM critical section.
-     * This protects the physical & virtual access handlers, ram ranges,
-     * and the page flag updating (some of it anyway).
+     * This protects the physical, ram ranges, and the page flag updating (some of
+     * it anyway).
      */
     PDMCRITSECT                     CritSectX;
 
