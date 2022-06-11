@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 82309 2019-12-01 01:25:09Z vboxsync $ */
+/* $Id: DevHDA.cpp 82318 2019-12-02 12:16:24Z vboxsync $ */
 /** @file
  * DevHDA.cpp - VBox Intel HD Audio Controller.
  *
@@ -3340,7 +3340,7 @@ DECLINLINE(int) hdaWriteReg(PPDMDEVINS pDevIns, PHDASTATE pThis, int idxRegDsc, 
 
 
 /**
- * @callback_method_impl{FNIOMMMIOWNEWRITE,
+ * @callback_method_impl{FNIOMMMIOWNEWWRITE,
  *      Looks up and calls the appropriate handler.}
  */
 static DECLCALLBACK(VBOXSTRICTRC) hdaMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS off, void const *pv, unsigned cb)
