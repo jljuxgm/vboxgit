@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 79497 2019-07-03 13:28:33Z vboxsync $
+# $Id: Makefile.kmk 80283 2019-08-15 08:47:23Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -146,7 +146,7 @@ ifdef VBOX_WITH_GUEST_PROPS
  	VBoxGuestR3LibHostVersion.cpp
 endif
 ifdef VBOX_WITH_SHARED_CLIPBOARD
- VBoxGuestR3Lib_DEFS      += VBOX_WITH_SHARED_CLIPBOARD_GUEST
+ VBoxGuestR3Lib_DEFS      += VBOX_WITH_SHARED_CLIPBOARD_GUEST LOG_ENABLED
  VBoxGuestR3Lib_SOURCES   += \
 	VBoxGuestR3LibClipboard.cpp
  ifdef VBOX_WITH_SHARED_CLIPBOARD_URI_LIST

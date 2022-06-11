@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 79631 2019-07-09 08:23:52Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 80283 2019-08-15 08:47:23Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -221,8 +221,8 @@ int vboxSvcClipboardURIListEntryRead(PSHAREDCLIPBOARDPROVIDERCTX pCtx, SHAREDCLI
 int vboxSvcClipboardURIListEntryWrite(PSHAREDCLIPBOARDPROVIDERCTX pCtx, SHAREDCLIPBOARDLISTHANDLE hList,
                                       PVBOXCLIPBOARDLISTENTRY pListEntry);
 
-int vboxSvcClipboardURIObjOpen(PSHAREDCLIPBOARDPROVIDERCTX pCtx, const char *pszPath,
-                               PVBOXCLIPBOARDCREATEPARMS pCreateParms, PSHAREDCLIPBOARDOBJHANDLE phObj);
+int vboxSvcClipboardURIObjOpen(PSHAREDCLIPBOARDPROVIDERCTX pCtx, PVBOXCLIPBOARDOBJOPENCREATEPARMS pCreateParms,
+                               PSHAREDCLIPBOARDOBJHANDLE phObj);
 int vboxSvcClipboardURIObjClose(PSHAREDCLIPBOARDPROVIDERCTX pCtx, SHAREDCLIPBOARDOBJHANDLE hObj);
 int vboxSvcClipboardURIObjRead(PSHAREDCLIPBOARDPROVIDERCTX pCtx, SHAREDCLIPBOARDOBJHANDLE hObj,
                                void *pvData, uint32_t cbData, uint32_t fFlags, uint32_t *pcbRead);
