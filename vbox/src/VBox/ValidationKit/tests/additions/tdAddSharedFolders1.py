@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84257 $"
+__version__ = "$Revision: 84266 $"
 
 # Standard Python imports.
 import os
@@ -283,7 +283,8 @@ class SubTstDrvAddSharedFolders1(base.SubTestDriverBase):
             fRc = self.oTstDrv.txsRunTest(oTxsSession, 'FsPerf', 30 * 60 * 1000, sFsPerfPath, asArgs,
                                           fCheckSessionStatus = True);
             reporter.log2('FsPerf -> %s' % (fRc,));
-            if not fRc:
+            fRc = True;
+            if fRc:
                 # Do a bit of diagnosis to find out why this failed.
                 if     not oTestVm.isWindows() \
                    and not oTestVm.isOS2():
