@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 83006 2020-02-06 13:51:30Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -264,6 +264,15 @@ bs3-cpu-weird-1_SOURCES = \
 	bs3-cpu-weird-1.c \
 	bs3-cpu-weird-1-x0.c \
 	bs3-cpu-weird-1-asm.asm
+
+# 64-bit CPU state #1.
+MISCBINS += bs3-cpu-state64-1
+bs3-cpu-state64-1_TEMPLATE = VBoxBS3KitImg
+bs3-cpu-state64-1_INCS  = .
+bs3-cpu-state64-1_SOURCES = \
+	bs3kit/bs3-first-init-all-lm64.asm \
+	bs3-cpu-state64-1.c64 \
+	bs3-cpu-state64-1-asm.asm
 
 # FPU state corruption checker.
 MISCBINS += bs3-fpustate-1
