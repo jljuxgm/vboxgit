@@ -1,4 +1,4 @@
-/* $Id: FlashCore.cpp 81480 2019-10-23 09:35:11Z vboxsync $ */
+/* $Id: FlashCore.cpp 81483 2019-10-23 10:25:50Z vboxsync $ */
 /** @file
  * DevFlash - A simple Flash device
  *
@@ -371,7 +371,7 @@ DECLHIDDEN(int) flashR3SsmLoadExec(PFLASHCORE pThis, PSSMHANDLE pSSM)
         if (u16Val != pThis->u16FlashId)
             return VERR_SSM_LOAD_CONFIG_MISMATCH;
         SSMR3GetU32(pSSM, &u32Val);
-        if (u16Val != pThis->cbFlashSize)
+        if (u32Val != pThis->cbFlashSize)
             return VERR_SSM_LOAD_CONFIG_MISMATCH;
 
         /* Suck in the flash contents. */
