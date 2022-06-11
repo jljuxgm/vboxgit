@@ -1,4 +1,4 @@
-/* $Id: DevVirtioSCSI.cpp 83913 2020-04-22 04:52:12Z vboxsync $ */
+/* $Id: DevVirtioSCSI.cpp 84003 2020-04-27 11:58:02Z vboxsync $ */
 /** @file
  * VBox storage devices - Virtio SCSI Driver
  *
@@ -935,7 +935,7 @@ static DECLCALLBACK(int) virtioScsiR3IoReqFinish(PPDMIMEDIAEXPORT pInterface, PD
               respHdr.uResponse, virtioGetReqRespText(respHdr.uResponse)));
 
     if (RT_FAILURE(rcReq))
-        Log2Func(("rcReq:  %s\n", RTErrGetDefine(rcReq)));
+        Log2Func(("rcReq:  %Rrc\n", rcReq));
 
     if (LogIs3Enabled())
     {
