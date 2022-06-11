@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 83263 2020-03-11 16:34:33Z vboxsync $ */
+/* $Id: PDMInternal.h 83265 2020-03-11 16:37:42Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -717,9 +717,9 @@ typedef struct PDMIOAPIC
 } PDMIOAPIC;
 
 /** Maximum number of PCI busses for a VM. */
-#define PDM_PCI_BUSSES_MAX  8
+#define PDM_PCI_BUSSES_MAX 8
 /** Maximum number of IOMMUs (at most one per PCI bus). */
-#define PDM_IOMMUS_MAX      PDM_PCI_BUSSES_MAX
+#define PDM_IOMMUS_MAX     PDM_PCI_BUSSES_MAX
 
 
 #ifdef IN_RING3
