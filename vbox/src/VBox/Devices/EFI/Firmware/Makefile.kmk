@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80953 2019-09-23 15:48:44Z vboxsync $
+# $Id: Makefile.kmk 81029 2019-09-26 17:26:02Z vboxsync $
 ## @file
 # Toplevel sub-makefile for the EFI firmwares.
 #
@@ -173,8 +173,6 @@ VBOX_EFI_DEPENDENCIES = \
 	$(VBOX_PATH_EFI_FIRMWARE)/../DevEFI.h \
        $(VBOX_PATH_EFI_FIRMWARE)/VBoxPkg/Library/VBoxDebugAgentLib/VBoxDebugAgentLib.c \
        $(VBOX_PATH_EFI_FIRMWARE)/VBoxPkg/Library/VBoxDebugAgentLib/VBoxDebugAgentLib.inf \
-       $(VBOX_PATH_EFI_FIRMWARE)/VBoxPkg/Library/VBoxPeCoffExtraActionLib/VBoxPeCoffExtraActionLib.c \
-       $(VBOX_PATH_EFI_FIRMWARE)/VBoxPkg/Library/VBoxPeCoffExtraActionLib/VBoxPeCoffExtraActionLib.inf \
        $(VBOX_PATH_EFI_FIRMWARE)/VBoxPkg/VBoxPkg.dec \
        \
        $(VBOX_PATH_EFI_FIRMWARE)/OvmfPkg/OvmfPkg.dec \
