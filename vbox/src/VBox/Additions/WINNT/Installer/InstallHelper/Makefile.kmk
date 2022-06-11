@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 82437 2019-12-05 18:41:03Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer Helper DLL.
 #
@@ -24,6 +24,7 @@ include $(KBUILD_PATH)/subheader.kmk
 ## @todo kBuild: This needs the WINPSDK fix to work for cross building.
 DLLS.x86 += VBoxGuestInstallHelper
 VBoxGuestInstallHelper_TEMPLATE = VBoxGuestR3Dll
+VBoxGuestInstallHelper_INST     = $(INST_DIST)
 ifdef VBOX_SIGN_ADDITIONS # (See the parent makefile.)
  VBoxGuestInstallHelper_INSTTYPE = none
  VBoxGuestInstallHelper_DEBUG_INSTTYPE = both
