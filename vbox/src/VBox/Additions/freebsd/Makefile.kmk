@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78340 2019-04-28 15:23:27Z vboxsync $
+# $Id: Makefile.kmk 78408 2019-05-06 21:31:01Z vboxsync $
 ## @file
 # Sub-Makefile for the FreeBSD guest additions base directory.
 #
@@ -67,11 +67,6 @@ VBOX_FBSD_ADD_STRIP_BIN = \
 	vboxvideo_drv_15.so \
 	vboxvideo_drv_16.so \
 	vboxvideo_drv_17.so \
-	VBoxOGLcrutil.so \
-	VBoxOGLerrorspu.so \
-	VBoxOGLfeedbackspu.so \
-	VBoxOGLpackspu.so \
-	VBoxOGLpassthroughspu.so \
 	VBoxOGL.so
 
 VBOX_FBSD_ADD_MODULES = \

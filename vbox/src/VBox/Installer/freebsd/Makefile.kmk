@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 76553 2019-01-01 01:45:53Z vboxsync $
+# $Id: Makefile.kmk 78408 2019-05-06 21:31:01Z vboxsync $
 ## @file
 # Makefile for the FreeBSD installer.
 #
@@ -104,9 +104,6 @@ VBOX_FBSD_STRIP_BIN = \
 		components/VBoxSVCM.so \
 		components/VBoxC.so,) \
 	$(if $(VBOX_WITH_CROGL),\
-		VBoxOGLhostcrutil.so \
-		VBoxOGLhosterrorspu.so \
-		VBoxOGLrenderspu.so \
 		VBoxTestOGL \
 		VBoxSharedCrOpenGL.so,) \
 	$(if $(VBOX_WITH_PYTHON),VBoxPython.so,) \

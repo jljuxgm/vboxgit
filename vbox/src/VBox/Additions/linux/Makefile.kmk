@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78340 2019-04-28 15:23:27Z vboxsync $
+# $Id: Makefile.kmk 78408 2019-05-06 21:31:01Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -124,11 +124,6 @@ VBOX_LNX_ADD_STRIP_SBIN += \
 
 ifdef VBOX_WITH_CROGL
 VBOX_LNX_ADD_STRIP_LIB += \
-	VBoxOGLcrutil.so \
-	VBoxOGLerrorspu.so \
-	VBoxOGLfeedbackspu.so \
-	VBoxOGLpackspu.so \
-	VBoxOGLpassthroughspu.so \
 	VBoxOGL.so \
 	VBoxEGL.so
 endif

@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 77557 2019-03-04 15:58:23Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 78408 2019-05-06 21:31:01Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -50,17 +50,13 @@
 
 #ifdef VBOX_WITH_CROGL
 
-extern "C"
-{
-  extern void * crSPULoad(void *, int, char *, char *, void *);
-  extern void crSPUUnloadChain(void *);
-}
-
+#include <cr_spu.h>
 
 static int vboxCheck3DAccelerationSupported()
 {
     LogRel(("Testing 3D Support:\n"));
-    void *spu = crSPULoad(NULL, 0, (char*)"render", NULL, NULL);
+    PCSPUREG aSpuRegs[] = { &g_RenderSpuReg, &g_ErrorSpuReg, NULL};
+    SPU *spu = crSPUInitFromReg(NULL, 0, "render", NULL, &aSpuRegs[0]);
     if (spu)
     {
         crSPUUnloadChain(spu);
@@ -302,7 +298,7 @@ int main(int argc, char **argv)
                     break;
 
                 case 'V':
-                    RTPrintf("$Revision: 77557 $\n");
+                    RTPrintf("$Revision: 78408 $\n");
                     return 0;
 
                 case VERR_GETOPT_UNKNOWN_OPTION:

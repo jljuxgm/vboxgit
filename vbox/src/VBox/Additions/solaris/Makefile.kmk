@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 78340 2019-04-28 15:23:27Z vboxsync $
+# $Id: Makefile.kmk 78408 2019-05-06 21:31:01Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -169,12 +169,7 @@ SOLARIS_ADD_STRIP_BINS = \
 	$(if $(VBOX_OSE),,vboxfs_s10)
 
 SOLARIS_ADD_SYSLIBS = \
-	VBoxOGL.so \
-	VBoxOGLcrutil.so \
-	VBoxOGLfeedbackspu.so \
-	VBoxOGLpassthroughspu.so \
-	VBoxOGLerrorspu.so \
-	VBoxOGLpackspu.so
+	VBoxOGL.so
 
 SOLARIS_ADD_DRIVERS = \
 	vboxguest \
