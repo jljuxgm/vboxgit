@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 78739 2019-05-24 23:58:32Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 79257 2019-06-20 15:08:22Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1497,10 +1497,14 @@ static RTEXITCODE gctlHandleRunCommon(PGCTLCMDCTX pCtx, int argc, char **argv, b
                 CHECK_ERROR_BREAK(pProcess, WaitForArray(ComSafeArrayAsInParam(aWaitFlags),
                                                          RT_MIN(500 /*ms*/, RT_MAX(cMsTimeLeft, 1 /*ms*/)),
                                                          &waitResult));
+                if (pCtx->cVerbose)
+                    RTPrintf("waitResult: %d\n", waitResult);
                 switch (waitResult)
                 {
-                    case ProcessWaitResult_Start:
+                    case ProcessWaitResult_Start: /** @todo you always wait for 'start', */
                         fCompletedStartCmd = fCompleted = !fRunCmd; /* Only wait for startup if the 'start' command. */
+                        if (!fCompleted && aWaitFlags[0] == ProcessWaitForFlag_Start)
+                            aWaitFlags[0] = ProcessWaitForFlag_Terminate;
                         break;
                     case ProcessWaitResult_StdOut:
                         fReadStdOut = true;
