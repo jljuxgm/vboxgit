@@ -1,4 +1,4 @@
-/* $Id: FsPerf.cpp 79371 2019-06-27 02:51:22Z vboxsync $ */
+/* $Id: FsPerf.cpp 79913 2019-07-21 17:38:35Z vboxsync $ */
 /** @file
  * FsPerf - File System (Shared Folders) Performance Benchmark.
  */
@@ -3314,7 +3314,7 @@ void fsPerfRm(void)
 #if defined(RT_OS_WINDOWS)
     RTTESTI_CHECK_RC(RTFileDelete(InDir(RT_STR_TUPLE("known-file" RTPATH_SLASH_STR ))), VERR_INVALID_NAME);
 #else
-    RTTESTI_CHECK_RC(RTFileDelete(InDir(RT_STR_TUPLE("known-file" RTPATH_SLASH_STR))), VERR_NOT_A_FILE); //??
+    RTTESTI_CHECK_RC(RTFileDelete(InDir(RT_STR_TUPLE("known-file" RTPATH_SLASH_STR))), VERR_PATH_NOT_FOUND);
 #endif
 
     /* Directories: */
@@ -6658,7 +6658,7 @@ int main(int argc, char *argv[])
 
             case 'V':
             {
-                char szRev[] = "$Revision: 79371 $";
+                char szRev[] = "$Revision: 79913 $";
                 szRev[RT_ELEMENTS(szRev) - 2] = '\0';
                 RTPrintf(RTStrStrip(strchr(szRev, ':') + 1));
                 return RTEXITCODE_SUCCESS;
