@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVM.cpp 79256 2019-06-20 13:40:17Z vboxsync $ */
+/* $Id: UIWizardNewCloudVM.cpp 79259 2019-06-20 15:27:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVM class implementation.
  */
@@ -68,7 +68,7 @@ bool UIWizardNewCloudVM::createCloudVM()
 {
     /* Acquire prepared client and description: */
     CCloudClient comCloudClient = field("client").value<CCloudClient>();
-    CVirtualSystemDescription comDescription = field("description").value<CVirtualSystemDescription>();
+    CVirtualSystemDescription comDescription = field("vsd").value<CVirtualSystemDescription>();
     AssertReturn(comCloudClient.isNotNull() && comDescription.isNotNull(), false);
 
     /* Initiate cloud VM creation porocedure: */
