@@ -1,4 +1,4 @@
-/* $Id: string.cpp 80838 2019-09-17 00:48:36Z vboxsync $ */
+/* $Id: string.cpp 80850 2019-09-17 10:14:53Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - UTF-8 and UTF-16 string classes.
  */
@@ -601,6 +601,36 @@ Bstr &Bstr::erase(size_t offStart /*= 0*/, size_t cwcLength /*= RTSTR_MAX*/) RT_
         }
     }
     return *this;
+}
+
+
+void Bstr::cleanup()
+{
+    if (m_bstr)
+    {
+        ::SysFreeString(m_bstr);
+        m_bstr = NULL;
+    }
+}
+
+
+void Bstr::copyFrom(const OLECHAR *a_bstrSrc)
+{
+    if (a_bstrSrc && *a_bstrSrc)
+    {
+        m_bstr = ::SysAllocString(a_bstrSrc);
+        if (!m_bstr)
+            throw std::bad_alloc();
+    }
+    else
+        m_bstr = NULL;
+}
+
+
+void Bstr::cleanupAndCopyFrom(const OLECHAR *a_bstrSrc)
+{
+    cleanup();
+    copyFrom(a_bstrSrc);
 }
 
 
