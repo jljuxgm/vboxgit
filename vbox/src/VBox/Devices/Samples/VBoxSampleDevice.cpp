@@ -1,4 +1,4 @@
-/* $Id: VBoxSampleDevice.cpp 81591 2019-10-30 14:14:10Z vboxsync $ */
+/* $Id: VBoxSampleDevice.cpp 81895 2019-11-16 15:08:31Z vboxsync $ */
 /** @file
  * VBox Sample Device.
  */
@@ -55,7 +55,6 @@ static DECLCALLBACK(int) devSampleDestruct(PPDMDEVINS pDevIns)
 
 static DECLCALLBACK(int) devSampleConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
-
     /*
      * Check that the device instance and device helper structures are compatible.
      */
@@ -91,7 +90,7 @@ static const PDMDEVREG g_DeviceSample =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "sample",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_NEW_STYLE,
     /* .fClass = */                 PDM_DEVREG_CLASS_MISC,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
