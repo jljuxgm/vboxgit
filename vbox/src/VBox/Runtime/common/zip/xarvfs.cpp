@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: xarvfs.cpp 84192 2020-05-07 20:56:01Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -2089,7 +2089,7 @@ RTDECL(int) RTZipXarFsStreamFromIoStream(RTVFSIOSTREAM hVfsIosIn, uint32_t fFlag
                      */
                     PRTZIPXARFSSTREAM pThis;
                     RTVFSFSSTREAM     hVfsFss;
-                    rc = RTVfsNewFsStream(&rtZipXarFssOps, sizeof(*pThis), NIL_RTVFS, NIL_RTVFSLOCK, true /*fReadOnly*/,
+                    rc = RTVfsNewFsStream(&rtZipXarFssOps, sizeof(*pThis), NIL_RTVFS, NIL_RTVFSLOCK, RTFILE_O_READ,
                                           &hVfsFss, (void **)&pThis);
                     if (RT_SUCCESS(rc))
                     {

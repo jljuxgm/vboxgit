@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: pkzipvfs.cpp 84192 2020-05-07 20:56:01Z vboxsync $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -1263,7 +1263,7 @@ RTDECL(int) RTZipPkzipFsStreamFromIoStream(RTVFSIOSTREAM hVfsIosIn, uint32_t fFl
      */
     PRTZIPPKZIPFSSTREAM pThis;
     RTVFSFSSTREAM     hVfsFss;
-    int rc = RTVfsNewFsStream(&rtZipPkzipFssOps, sizeof(*pThis), NIL_RTVFS, NIL_RTVFSLOCK, true /*fReadOnly*/,
+    int rc = RTVfsNewFsStream(&rtZipPkzipFssOps, sizeof(*pThis), NIL_RTVFS, NIL_RTVFSLOCK, RTFILE_O_READ,
                               &hVfsFss, (void **)&pThis);
     if (RT_SUCCESS(rc))
     {
