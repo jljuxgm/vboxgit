@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 78527 2019-05-15 04:59:02Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 78612 2019-05-21 04:35:03Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9959,7 +9959,8 @@ static void hmR0VmxMergeMsrBitmapNested(PCVMCPU pVCpu, PVMXVMCSINFO pVmcsInfoNst
  * Merges the guest VMCS in to the nested-guest VMCS controls in preparation of
  * hardware-assisted VMX execution of the nested-guest.
  *
- * For a guest, we don't modify these controls once we set up the VMCS.
+ * For a guest, we don't modify these controls once we set up the VMCS and hence
+ * this function is never called.
  *
  * For nested-guests since the guest hypervisor provides these controls on every
  * nested-guest VM-entry and could potentially change them everytime we need to
