@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDhcpd.cpp 79568 2019-07-06 23:42:51Z vboxsync $ */
+/* $Id: VBoxNetDhcpd.cpp 79622 2019-07-09 01:21:16Z vboxsync $ */
 /** @file
  * VBoxNetDhcpd - DHCP server for host-only and NAT networks.
  */
@@ -379,8 +379,7 @@ void VBoxNetDhcpd::ifPump()
             ifProcessInput();
         else
         {
-            LogRel(("ifWait failed: %Rrc\n", rc));
-            RTMsgError("ifWait failed: %Rrc", rc);
+            DHCP_LOG_MSG_ERROR(("ifWait failed: %Rrc\n", rc));
             return;
         }
     }
@@ -662,13 +661,13 @@ int VBoxNetDhcpd::main(int argc, char **argv)
                 ifPump();
             }
             else
-                RTMsgError("Terminating - vboxLwipCoreInitialize failed: %Rrc", rc);
+                DHCP_LOG_MSG_ERROR(("Terminating - vboxLwipCoreInitialize failed: %Rrc\n", rc));
         }
         else
-            RTMsgError("Terminating - ifInit failed: %Rrc", rc);
+            DHCP_LOG_MSG_ERROR(("Terminating - ifInit failed: %Rrc\n", rc));
     }
     else
-        RTMsgError("Terminating - Dhcpd::init failed: %Rrc", rc);
+        DHCP_LOG_MSG_ERROR(("Terminating - Dhcpd::init failed: %Rrc\n", rc));
     return rc;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: DhcpdInternal.h 79568 2019-07-06 23:42:51Z vboxsync $ */
+/* $Id: DhcpdInternal.h 79622 2019-07-09 01:21:16Z vboxsync $ */
 /** @file
  * DHCP server - Internal header.
  */
@@ -76,5 +76,8 @@ DECLINLINE(bool) operator<(const RTMAC &l, const RTMAC &r)
 #define DHCP_LOG2_RET(a_rcRet, a_MsgArgs)   do { LogRel2(a_MsgArgs);    return (a_rcRet); } while (0)
 #define DHCP_LOG3_RET(a_rcRet, a_MsgArgs)   do { LogRel3(a_MsgArgs);    return (a_rcRet); } while (0)
 /** @} */
+
+/** LogRel + RTMsgError helper. */
+#define DHCP_LOG_MSG_ERROR(a_MsgArgs)       do { LogRel(a_MsgArgs);     RTMsgError a_MsgArgs; } while (0)
 
 #endif /* !VBOX_INCLUDED_SRC_Dhcpd_DhcpdInternal_h */
