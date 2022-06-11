@@ -1,4 +1,4 @@
-/* $Id: precomp_gcc.h 76602 2019-01-02 04:03:13Z vboxsync $*/
+/* $Id: precomp_gcc.h 81273 2019-10-14 19:33:48Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Precompiled header for Visual C++.
  */
@@ -162,6 +162,7 @@
 
 /* These two are freuqently used internal headers. */
 #include "UILibraryDefs.h"
+#include "QIWithRestorableGeometry.h"
 #include "QIWithRetranslateUI.h"
 
 #if defined(Log) || defined(LogIsEnabled)
