@@ -1,4 +1,4 @@
-/* $Id: file.cpp 78365 2019-05-02 21:49:04Z vboxsync $ */
+/* $Id: file.cpp 78544 2019-05-16 11:42:29Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver file routines.
  */
@@ -277,6 +277,8 @@ static NTSTATUS vbsfReadInternal(IN PRX_CONTEXT RxContext)
         if (pVBoxFcbx->pFobxLastAccessTime != pVBoxFobx)
             pVBoxFcbx->pFobxLastAccessTime = NULL;
         Status = STATUS_SUCCESS;
+        if (ctx.cbData == 0 && LowIoContext->ParamsFor.ReadWrite.ByteCount > 0)
+            Status = STATUS_END_OF_FILE;
 
         /*
          * See if we've reached the EOF early or read beyond what we thought were the EOF.
