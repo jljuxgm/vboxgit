@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 79757 2019-07-13 16:18:24Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 79758 2019-07-13 16:21:56Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -13780,9 +13780,11 @@ static VBOXSTRICTRC hmR0VmxCheckExitDueToEventDelivery(PVMCPU pVCpu, PVMXTRANSIE
     /*
      * Validate we have read the required fields from the VMCS.
      */
-    uint32_t const fVmcsFieldRead = ASMAtomicUoReadU32(&pVmxTransient->fVmcsFieldsRead);
-    RT_UNTRUSTED_NONVOLATILE_COPY_FENCE();
-    Assert((fVmcsFieldRead & HMVMX_READ_XCPT_INFO) == HMVMX_READ_XCPT_INFO);
+    {
+        uint32_t const fVmcsFieldRead = ASMAtomicUoReadU32(&pVmxTransient->fVmcsFieldsRead);
+        RT_UNTRUSTED_NONVOLATILE_COPY_FENCE();
+        Assert((fVmcsFieldRead & HMVMX_READ_XCPT_INFO) == HMVMX_READ_XCPT_INFO);
+    }
 #endif
 
     uint32_t const uExitIntInfo   = pVmxTransient->uExitIntInfo;
