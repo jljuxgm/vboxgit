@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 80216 2019-08-10 02:04:07Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -458,13 +458,15 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-/** @def SUP_HARDENED_SUID
- * Whether we're employing set-user-ID-on-execute in the hardening.
- */
+/* This mess is temporary after eliminating a define duplicated in SUPLibInternal.h. */
 #if !defined(RT_OS_OS2) && !defined(RT_OS_WINDOWS) && !defined(RT_OS_L4)
-# define SUP_HARDENED_SUID
+# ifndef SUP_HARDENED_SUID
+#  error "SUP_HARDENED_SUID is NOT defined?!?"
+# endif
 #else
-# undef  SUP_HARDENED_SUID
+# ifdef SUP_HARDENED_SUID
+#  error "SUP_HARDENED_SUID is defined?!?"
+# endif
 #endif
 
 /** @def SUP_HARDENED_SYM

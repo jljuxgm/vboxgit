@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -325,7 +325,7 @@ const PDMPCIHLPR3 g_pdmR3DevPciHlp =
 
 
 /** @name Ring-3 HPET Helpers
- * {@
+ * @{
  */
 
 /** @interface_method_impl{PDMHPETHLPR3,pfnSetLegacyMode} */
@@ -448,7 +448,7 @@ const PDMHPETHLPR3 g_pdmR3DevHpetHlp =
 
 
 /** @name Ring-3 Raw PCI Device Helpers
- * {@
+ * @{
  */
 
 /** @interface_method_impl{PDMPCIRAWHLPR3,pfnGetRCHelpers} */

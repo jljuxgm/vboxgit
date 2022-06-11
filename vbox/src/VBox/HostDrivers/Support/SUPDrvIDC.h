@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIDC.h 76568 2019-01-01 04:34:11Z vboxsync $ */
+/* $Id: SUPDrvIDC.h 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Inter-Driver Communication (IDC) definitions.
  */
@@ -39,7 +39,10 @@
  *
  * @remarks We can take a slightly more relaxed attitude wrt to size encoding
  *          here since only windows will use standard I/O control function code.
+ *
+ * @{
  */
+
 #ifdef RT_OS_WINDOWS
 # define SUP_IDC_CODE(Function)                 CTL_CODE(FILE_DEVICE_UNKNOWN, (Function) + 2542, METHOD_BUFFERED, FILE_WRITE_ACCESS)
 #else
@@ -47,9 +50,6 @@
 #endif
 
 
-/*******************************************************************************
-*   Structures and Typedefs                                                    *
-*******************************************************************************/
 #ifdef RT_ARCH_AMD64
 # pragma pack(8)                        /* paranoia. */
 #else

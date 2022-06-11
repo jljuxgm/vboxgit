@@ -1,4 +1,4 @@
-/* $Id: VMMTracing.h 76585 2019-01-01 06:31:29Z vboxsync $ */
+/* $Id: VMMTracing.h 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * VBoxVMM - Trace point macros for the VMM.
  */
@@ -118,11 +118,9 @@
 # else
 
 # endif
-#endif /* IN_RING0*/
+#endif /* IN_RING0 */
 /** @} */
 
-
-/** @} */
 
 #endif /* !VMM_INCLUDED_SRC_include_VMMTracing_h */
 

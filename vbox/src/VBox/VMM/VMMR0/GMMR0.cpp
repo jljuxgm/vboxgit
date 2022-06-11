@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 80346 2019-08-19 19:36:29Z vboxsync $ */
+/* $Id: GMMR0.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2459,7 +2459,7 @@ static bool gmmR0ShouldAllocatePagesInOtherChunksBecauseOfLimits(PGVM pGVM)
      * Check how close we're to the max memory limit and how many fragments
      * there are?...
      */
-    /** @todo.  */
+    /** @todo  */
 
     return false;
 }

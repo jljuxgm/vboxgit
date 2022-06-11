@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 81031 2019-09-26 19:26:33Z vboxsync $ */
+/* $Id: DevACPI.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1890,7 +1890,7 @@ PDMBOTHCBDECL(int) acpiR3SmiWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Por
 }
 
 /**
- * @{FNIOMIOPORTOUT, ACPI_RESET_BLK}
+ * @callback_method_impl{FNIOMIOPORTOUT, ACPI_RESET_BLK}
  */
 PDMBOTHCBDECL(int) acpiR3ResetWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t u32, unsigned cb)
 {

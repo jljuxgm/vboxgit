@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 79795 2019-07-15 14:29:00Z vboxsync $ */
+/* $Id: HostDnsService.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -36,7 +36,7 @@
 
 
 static void dumpHostDnsInformation(const HostDnsInformation&);
-static void dumpHostDnsStrVector(const std::string&, const std::vector<std::string>&);
+static void dumpHostDnsStrVector(const std::string &prefix, const std::vector<std::string> &v);
 
 
 bool HostDnsInformation::equals(const HostDnsInformation &info, uint32_t fLaxComparison) const
@@ -408,7 +408,7 @@ bool HostDnsMonitorProxy::updateInfo(const HostDnsInformation &info)
     return true;
 }
 
-static void dumpHostDnsInformation(const HostDnsInformation& info)
+static void dumpHostDnsInformation(const HostDnsInformation &info)
 {
     dumpHostDnsStrVector("server", info.servers);
 
@@ -421,7 +421,7 @@ static void dumpHostDnsInformation(const HostDnsInformation& info)
 }
 
 
-static void dumpHostDnsStrVector(const std::string& prefix, const std::vector<std::string>& v)
+static void dumpHostDnsStrVector(const std::string &prefix, const std::vector<std::string> &v)
 {
     int i = 1;
     for (std::vector<std::string>::const_iterator it = v.begin();

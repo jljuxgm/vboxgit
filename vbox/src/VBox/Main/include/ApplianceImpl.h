@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 78923 2019-06-03 09:09:54Z vboxsync $ */
+/* $Id: ApplianceImpl.h 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -26,7 +26,7 @@
 #include "ApplianceWrap.h"
 #include "MediumFormatImpl.h"
 
-/* Todo: This file needs massive cleanup. Split IAppliance in a public and
+/** @todo This file needs massive cleanup. Split IAppliance in a public and
  * private classes. */
 #include <iprt/tar.h>
 #include "ovfreader.h"
@@ -176,7 +176,7 @@ private:
     /** @}  */
 
     /** @name Import stuff
-     * @}
+     * @{
      */
     HRESULT i_importImpl(const LocationInfo &aLocInfo, ComObjPtr<Progress> &aProgress);
 

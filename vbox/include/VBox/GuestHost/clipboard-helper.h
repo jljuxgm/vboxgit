@@ -1,4 +1,4 @@
-/* $Id: clipboard-helper.h 81223 2019-10-11 12:06:49Z vboxsync $ */
+/* $Id: clipboard-helper.h 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * Shared Clipboard - Some helper function for converting between the various EOLs.
  */
@@ -81,7 +81,7 @@ int ShClUtf16LinToWin(PRTUTF16 pwszSrc, size_t cwcSrc, PRTUTF16 pwszDst, size_t 
  *
  * @param   pwszSrc  The source UTF-16 string
  * @param   cwcSrc   The length of the source string in RTUTF16 units.
- * @retval  pcwcDst  The length of the destination string in RTUTF16 units.
+ * @param   pcwcDst  The length of the destination string in RTUTF16 units.
  */
 int ShClUtf16GetLinSize(PRTUTF16 pwszSrc, size_t cwcSrc, size_t *pcwcDst);
 

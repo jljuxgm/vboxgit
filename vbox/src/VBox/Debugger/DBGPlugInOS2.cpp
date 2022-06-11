@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInOS2.cpp 76784 2019-01-11 17:31:11Z vboxsync $ */
+/* $Id: DBGPlugInOS2.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * DBGPlugInOS2 - Debugger and Guest OS Digger Plugin For OS/2.
  */
@@ -32,11 +32,6 @@
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
 *********************************************************************************************************************************/
-
-/** @name Internal OS/2 structures */
-
-/** @} */
-
 
 typedef enum DBGDIGGEROS2VER
 {

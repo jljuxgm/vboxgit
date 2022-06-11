@@ -1,4 +1,4 @@
-/* $Id: VBoxDragAndDropSvc.cpp 76964 2019-01-24 08:41:38Z vboxsync $ */
+/* $Id: VBoxDragAndDropSvc.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/** @page pg_svc_guest_control   Drag and drop HGCM Service
+/** @page pg_svc_dnd    Drag and drop HGCM Service
  *
  * TODO
  */

@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 79183 2019-06-17 12:51:35Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -241,7 +241,7 @@ BOOL CALLBACK VBoxEnumFunc(HWND hwnd, LPARAM lParam)
 
     rectVisible = rectWindow;
 
-    /* Filter out Windows XP shadow windows
+    /* Filter out Windows XP shadow windows */
     /** @todo still shows inside the guest */
     if ( szWindowText[0] == 0 &&
             (dwStyle == (WS_POPUP | WS_VISIBLE | WS_CLIPSIBLINGS)

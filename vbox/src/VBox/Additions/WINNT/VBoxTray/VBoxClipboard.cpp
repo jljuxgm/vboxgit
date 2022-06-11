@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 81223 2019-10-11 12:06:49Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -1156,7 +1156,7 @@ DECLCALLBACK(int) VBoxShClStop(void *pInstance)
     PostMessage(pCtx->Win.hWnd, WM_QUIT, 0, 0);
 
     /* Disconnect from the host service.
-    /* This will also send a VBOX_SHCL_HOST_MSG_QUIT from the host so that we can break out from our message worker. */
+     * This will also send a VBOX_SHCL_HOST_MSG_QUIT from the host so that we can break out from our message worker. */
     VbglR3ClipboardDisconnect(pCtx->CmdCtx.uClientID);
     pCtx->CmdCtx.uClientID = 0;
 

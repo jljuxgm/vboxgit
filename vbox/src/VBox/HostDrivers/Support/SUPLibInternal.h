@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 76568 2019-01-01 04:34:11Z vboxsync $ */
+/* $Id: SUPLibInternal.h 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -67,7 +67,7 @@
 /** @def SUP_HARDENED_SUID
  * Whether we're employing set-user-ID-on-execute in the hardening.
  */
-#if !defined(RT_OS_OS2) && !defined(RT_OS_WINDOWS) && !defined(RT_OS_L4)
+#if (!defined(RT_OS_OS2) && !defined(RT_OS_WINDOWS) && !defined(RT_OS_L4)) || defined(DOXYGEN_RUNNING)
 # define SUP_HARDENED_SUID
 #else
 # undef  SUP_HARDENED_SUID

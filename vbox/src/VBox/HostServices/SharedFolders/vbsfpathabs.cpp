@@ -1,4 +1,4 @@
-/* $Id: vbsfpathabs.cpp 78114 2019-04-12 00:47:33Z vboxsync $ */
+/* $Id: vbsfpathabs.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * Shared Folders Service - guest/host path convertion and verification.
  */
@@ -97,7 +97,7 @@ int vbsfPathAbs(const char *pszRoot, const char *pszPath, char *pszAbsPath, size
 {
 #if defined(RT_OS_WINDOWS)
     /** @todo This code is not needed in 6.0 and later as IPRT translates paths
-     *        to \\.\ format if they're too long.  */
+     *        to //./ (inverted slashes for doxygen) format if they're too long.  */
     const char *pszPathStart = pszRoot? pszRoot: pszPath;
 
     /* Windows extended-length paths. */

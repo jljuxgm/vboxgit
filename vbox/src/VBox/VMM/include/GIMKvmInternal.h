@@ -1,4 +1,4 @@
-/* $Id: GIMKvmInternal.h 80281 2019-08-15 07:29:37Z vboxsync $ */
+/* $Id: GIMKvmInternal.h 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * GIM - KVM, Internal header file.
  */
@@ -78,6 +78,7 @@
 
 AssertCompile(MSR_GIM_KVM_RANGE0_FIRST <= MSR_GIM_KVM_RANGE0_LAST);
 AssertCompile(MSR_GIM_KVM_RANGE1_FIRST <= MSR_GIM_KVM_RANGE1_LAST);
+/** @} */
 
 /** KVM page size.  */
 #define GIM_KVM_PAGE_SIZE                          0x1000

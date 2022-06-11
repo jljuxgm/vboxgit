@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELF.h 76564 2019-01-01 03:57:14Z vboxsync $ */
+/* $Id: DBGPlugInCommonELF.h 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Common code for dealing with ELF images, Header.
  */
@@ -35,7 +35,7 @@
 #define DBG_DIGGER_ELF_FUNNY_SHDRS          RT_BIT_32(1)
 /** Valid bit mask. */
 #define DBG_DIGGER_ELF_MASK                 UINT32_C(0x00000003)
-/* @} */
+/** @} */
 
 int DBGDiggerCommonParseElf32Mod(PUVM pUVM, const char *pszModName, const char *pszFilename, uint32_t fFlags,
                                  Elf32_Ehdr const *pEhdr, Elf32_Shdr const *paShdrs,

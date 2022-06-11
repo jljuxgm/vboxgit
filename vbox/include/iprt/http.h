@@ -1,4 +1,4 @@
-/* $Id: http.h 78659 2019-05-22 12:25:07Z vboxsync $ */
+/* $Id: http.h 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -276,7 +276,7 @@ RTR3DECL(int) RTHttpUseSystemProxySettings(RTHTTP hHttp);
  * @param   hHttp           The HTTP client handle.
  * @param   pszUrl          The proxy URL (libproxy style):
  *
- *                          [{type}"://"][{userid}[@{password}]:]{server}[":"{port}]
+ *                          [{type}"://"][{userid}[\@{password}]:]{server}[":"{port}]
  *
  *                          Valid proxy types are: http (default), https, socks4, socks4a,
  *                          socks5, socks5h and direct.  Support for the socks and https
@@ -567,7 +567,8 @@ typedef FNRTHTTPDOWNLOADCALLBACK *PFNRTHTTPDOWNLOADCALLBACK;
  */
 RTR3DECL(int) RTHttpSetDownloadCallback(RTHTTP hHttp, uint32_t fFlags, PFNRTHTTPDOWNLOADCALLBACK pfnCallback, void *pvUser);
 
-/** @name RTHTTPDOWNLOAD_F_XXX */
+/** @name RTHTTPDOWNLOAD_F_XXX
+ * @{ */
 /** The lower 10 bits gives the HTTP status required by the callback.
  * For all other status codes, any body data will be returned via the
  * RTHttpPerform ppvBody/pcbBody return parameters. */

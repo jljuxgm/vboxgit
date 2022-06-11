@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 81161 2019-10-08 15:21:59Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -2687,12 +2687,6 @@ static NTSTATUS     VBoxDrvNtErr2NtStatus(int rc)
 }
 
 
-/**
- * Alternative version of SUPR0Printf for Windows.
- *
- * @returns 0.
- * @param   pszFormat   The format string.
- */
 SUPR0DECL(int) SUPR0Printf(const char *pszFormat, ...)
 {
     va_list va;

@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 78467 2019-05-11 01:04:24Z vboxsync $ */
+/* $Id: vbsf.h 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * VBox Shared Folders header.
  */
@@ -24,9 +24,9 @@
 #include "shfl.h"
 #include <VBox/shflsvc.h>
 
-int vbsfCreate (SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLSTRING *pPath, uint32_t cbPath, SHFLCREATEPARMS *pParms);
+int vbsfCreate(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLSTRING *pPath, uint32_t cbPath, SHFLCREATEPARMS *pParms);
 
-int vbsfClose (SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLHANDLE Handle);
+int vbsfClose(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLHANDLE Handle);
 
 int vbsfRead(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLHANDLE Handle, uint64_t offset, uint32_t *pcbBuffer, uint8_t *pBuffer);
 int vbsfReadPages(SHFLCLIENTDATA *pClient, SHFLROOT idRoot, SHFLHANDLE hFile, uint64_t offFile,

@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 81246 2019-10-14 10:00:06Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -36,8 +36,9 @@
 // globals
 ////////////////////////////////////////////////////////////////////////////////
 
-/** @name Keyboard device capabilities bitfield
- * @{ */
+/**
+ * Keyboard device capabilities bitfield.
+ */
 enum
 {
     /** The keyboard device does not wish to receive keystrokes. */

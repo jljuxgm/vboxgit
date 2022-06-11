@@ -1,4 +1,4 @@
-/* $Id: GuestFsObjInfoImpl.h 76562 2019-01-01 03:22:50Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.h 81369 2019-10-18 21:13:03Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file system object information implementation.
  */
@@ -39,7 +39,8 @@ public:
     void    FinalRelease(void);
     /** @}  */
 
-    /** @name Internal access helpers. */
+    /** @name Internal access helpers.
+     * @{ */
     const GuestFsObjData &i_getData() const { return mData; }
     /** @}  */
 
