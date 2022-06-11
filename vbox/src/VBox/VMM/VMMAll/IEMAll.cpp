@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 78838 2019-05-29 08:36:50Z vboxsync $ */
+/* $Id: IEMAll.cpp 78877 2019-05-30 11:55:15Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -15928,13 +15928,12 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecVmxVmexitStartupIpi(PVMCPU pVCpu, uint8_t uVec
  * @returns Strict VBox status code.
  * @param   pVCpu           The cross context virtual CPU structure of the calling EMT.
  * @param   uExitReason     The VM-exit reason.
+ * @param   uExitQual       The VM-exit qualification.
  * @thread  EMT(pVCpu)
- *
- * @remarks It is the responsibility of the caller to ensure VM-exit qualification
- *          is updated prior to calling this function!
  */
-VMM_INT_DECL(VBOXSTRICTRC) IEMExecVmxVmexit(PVMCPU pVCpu, uint32_t uExitReason)
+VMM_INT_DECL(VBOXSTRICTRC) IEMExecVmxVmexit(PVMCPU pVCpu, uint32_t uExitReason, uint64_t uExitQual)
 {
+    iemVmxVmcsSetExitQual(pVCpu, uExitQual);
     VBOXSTRICTRC rcStrict = iemVmxVmexit(pVCpu, uExitReason);
     if (pVCpu->iem.s.cActiveMappings)
         iemMemRollback(pVCpu);

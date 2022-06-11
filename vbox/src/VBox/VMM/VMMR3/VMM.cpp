@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 78237 2019-04-22 04:35:20Z vboxsync $ */
+/* $Id: VMM.cpp 78877 2019-05-30 11:55:15Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1646,7 +1646,7 @@ static DECLCALLBACK(int) vmmR3SendInitIpi(PVM pVM, VMCPUID idCpu)
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
     PCCPUMCTX pCtx = CPUMQueryGuestCtxPtr(pVCpu);
     if (CPUMIsGuestInVmxNonRootMode(pCtx))
-        return VBOXSTRICTRC_TODO(IEMExecVmxVmexit(pVCpu, VMX_EXIT_INIT_SIGNAL));
+        return VBOXSTRICTRC_TODO(IEMExecVmxVmexit(pVCpu, VMX_EXIT_INIT_SIGNAL, 0 /* uExitQual */));
 #endif
 
     /** @todo Figure out how to handle a SVM nested-guest intercepts here for INIT
