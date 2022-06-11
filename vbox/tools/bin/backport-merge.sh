@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: backport-merge.sh 83668 2020-04-10 13:09:21Z vboxsync $
+# $Id: backport-merge.sh 83678 2020-04-11 18:30:37Z vboxsync $
 ## @file
 # Script for merging a backport from trunk.
 #
@@ -50,7 +50,11 @@ do
             # Check for conflict.
             MY_CONFLICTS=`"${MY_SVN}" status "${MY_BRANCH_DIR}" | "${MY_SED}" -n -e '/^C/p'`
             if test -z "${MY_CONFLICTS}"; then
-                MY_DONE_REVS="${MY_DONE_REVS} ${MY_REV}"
+                if test -z "${MY_DONE_REVS}"; then
+                    MY_DONE_REVS=${MY_REV}
+                else
+                    MY_DONE_REVS="${MY_DONE_REVS} ${MY_REV}"
+                fi
             else
                 echo '!!!'" Have conflicts after merging ${MY_REV}."
                 MY_FAILED_REV=${MY_REV}
@@ -60,7 +64,11 @@ do
             MY_FAILED_REV=${MY_REV}
         fi
     else
-        MY_TODO_REVS="${MY_TODO_REVS} ${MY_REV}"
+        if test -z "${MY_TODO_REVS}"; then
+            MY_TODO_REVS=${MY_REV}
+        else
+            MY_TODO_REVS="${MY_TODO_REVS} ${MY_REV}"
+        fi
     fi
 done
 

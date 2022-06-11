@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: backport-commit.sh 83667 2020-04-10 13:02:38Z vboxsync $
+# $Id: backport-commit.sh 83678 2020-04-11 18:30:37Z vboxsync $
 ## @file
 # Script for committing a backport from trunk.
 #
@@ -117,7 +117,7 @@ for MY_IGNORE in 1 2 3; do
                 "${MY_SVN}" up "${MY_BRANCH_DIR}"
                 exit 0
             fi
-            echo "error: commit failed" >2
+            echo "error: commit failed" 1>&2
             exit 1
             ;;
         n|N|[nN][oO])
