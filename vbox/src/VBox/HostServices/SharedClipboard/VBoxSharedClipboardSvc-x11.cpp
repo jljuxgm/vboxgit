@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11.cpp 81174 2019-10-09 09:06:38Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-x11.cpp 81175 2019-10-09 09:11:18Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Linux host.
  */
@@ -29,7 +29,7 @@
 
 #include <VBox/GuestHost/SharedClipboard.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
-#include <VBox/err.h>
+#include <iprt/errcore.h>
 
 #include "VBoxSharedClipboardSvc-internal.h"
 
