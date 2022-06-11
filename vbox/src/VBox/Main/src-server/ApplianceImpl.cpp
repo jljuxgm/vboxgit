@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 84031 2020-04-28 09:55:27Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 84141 2020-05-04 21:15:30Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -506,9 +506,28 @@ HRESULT Appliance::getPath(com::Utf8Str &aPath)
  */
 HRESULT Appliance::getManifest(com::Utf8Str &aManifest, com::Utf8Str &aManifestName)
 {
-    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    /* Write lock the appliance here as we don't want concurrent hMemFileTheirManifest
+       accesses (lazyness/paranoia). */
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    aManifest = m->strManifest;
+    Assert(aManifest.isEmpty());
+    if (m->hMemFileTheirManifest != NIL_RTVFSFILE)
+    {
+        uint64_t cchManifest = 0;
+        int rc = RTVfsFileQuerySize(m->hMemFileTheirManifest, &cchManifest);
+        AssertRCReturn(rc, setErrorVrc(rc));
+
+        rc = aManifest.reserveNoThrow(cchManifest + 1);
+        AssertRCReturn(rc, setErrorVrc(rc));
+
+        char *pszManifest = aManifest.mutableRaw();
+        rc = RTVfsFileReadAt(m->hMemFileTheirManifest, 0, pszManifest, cchManifest, NULL);
+        pszManifest[cchManifest] = '\0';
+        AssertRCReturn(rc, setErrorVrc(rc));
+        RTStrPurgeEncoding(pszManifest);
+        aManifest.jolt();
+    }
+
     aManifestName = m->strManifestName;
     return S_OK;
 }
