@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 82232 2019-11-27 00:52:28Z vboxsync $ */
+/* $Id: DevSB16.cpp 82233 2019-11-27 00:53:21Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2571,7 +2571,7 @@ const PDMDEVREG g_DeviceSB16 =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "sb16",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_NEW_STYLE,
     /* .fClass = */                 PDM_DEVREG_CLASS_AUDIO,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
