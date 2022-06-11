@@ -1,4 +1,4 @@
-/* $Id: Virtio_1_0.cpp 81689 2019-11-06 00:52:45Z vboxsync $ */
+/* $Id: Virtio_1_0.cpp 81690 2019-11-06 00:55:29Z vboxsync $ */
 /** @file
  * Virtio_1_0 - Virtio Common (PCI, feature & config mgt, queue mgt & proxy, notification mgt)
  */
@@ -326,8 +326,8 @@ void virtioCoreHexDump(uint8_t *pv, uint32_t cb, uint32_t uBase, const char *psz
  * @param   idx         The index if fHasIndex
  */
 void virtioCoreLogMappedIoValue(const char *pszFunc, const char *pszMember, uint32_t uMemberSize,
-                            const void *pv, uint32_t cb, uint32_t uOffset, int fWrite,
-                            int fHasIndex, uint32_t idx)
+                                const void *pv, uint32_t cb, uint32_t uOffset, int fWrite,
+                                int fHasIndex, uint32_t idx)
 {
     if (!LogIs6Enabled())
         return;
