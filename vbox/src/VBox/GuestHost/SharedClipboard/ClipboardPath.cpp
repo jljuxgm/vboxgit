@@ -1,4 +1,4 @@
-/* $Id: ClipboardPath.cpp 78390 2019-05-06 13:49:30Z vboxsync $ */
+/* $Id: ClipboardPath.cpp 78501 2019-05-14 11:36:25Z vboxsync $ */
 /** @file
  * Shared Clipboard - Path handling.
  */
@@ -63,10 +63,18 @@ int SharedClipboardPathSanitizeFilename(char *pszPath, size_t cbPath)
     return rc;
 }
 
+/**
+ * Sanitizes a given path regarding invalid / unhandled characters.
+ * Currently not implemented.
+ *
+ * @returns VBox status code.
+ * @param   pszPath             Path to sanitize. UTF-8.
+ * @param   cbPath              Size (in bytes) of the path to sanitize.
+ */
 int SharedClipboardPathSanitize(char *pszPath, size_t cbPath)
 {
     /** @todo */
-    RT_NOREF2(pszPath, cbPath);
+    RT_NOREF(pszPath, cbPath);
     return VINF_SUCCESS;
 }
 
