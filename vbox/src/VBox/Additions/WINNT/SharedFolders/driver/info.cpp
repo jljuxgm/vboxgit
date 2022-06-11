@@ -1,4 +1,4 @@
-/* $Id: info.cpp 78563 2019-05-17 11:46:23Z vboxsync $ */
+/* $Id: info.cpp 78564 2019-05-17 11:53:06Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders FSD - Information Querying & Setting Routines.
  */
@@ -1444,7 +1444,7 @@ NTSTATUS VBoxMRxQueryFileInfo(IN PRX_CONTEXT RxContext)
          *
          * For directories we don't necessarily go to the host but use info from when we
          * opened the them, why we do this is a little unclear as all the clues that r9630
-         * give is "fixes".
+         * give is "fixes". Update(bird): Disabled this and lets see if anything breaks.
          *
          * The TTL here works around two issues in particular:
          *
@@ -1480,7 +1480,7 @@ NTSTATUS VBoxMRxQueryFileInfo(IN PRX_CONTEXT RxContext)
         case FileCompressionInformation:
         {
             /* Query the information if necessary. */
-            if (   !(pVBoxFobx->Info.Attr.fMode & RTFS_DOS_DIRECTORY) /** @todo figure out why we don't return up-to-date info for directories! */
+            if (   1 /*!(pVBoxFobx->Info.Attr.fMode & RTFS_DOS_DIRECTORY) - bird: disabled - let's see if anything breaks. */
                 && (   !pVBoxFobx->nsUpToDate
                     || RTTimeSystemNanoTS() - pVBoxFobx->nsUpToDate > RT_NS_100US /** @todo implement proper TTL */ ) )
             {
