@@ -1,4 +1,4 @@
-/* $Id: gvm.h 80281 2019-08-15 07:29:37Z vboxsync $ */
+/* $Id: gvm.h 80309 2019-08-15 19:53:56Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -30,6 +30,9 @@
 # pragma once
 #endif
 
+#ifndef USING_VMM_COMMON_DEFS
+# error "Compile job does not include VMM_COMMON_DEFS from src/VBox/Config.kmk - make sure you really need to include this file!"
+#endif
 #include <VBox/types.h>
 #ifdef VBOX_BUGREF_9217
 # include <VBox/vmm/vm.h>

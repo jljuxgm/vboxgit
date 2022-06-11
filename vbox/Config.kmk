@@ -1,4 +1,4 @@
-# $Id: Config.kmk 80256 2019-08-13 20:19:05Z vboxsync $
+# $Id: Config.kmk 80309 2019-08-15 19:53:56Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -429,6 +429,10 @@ endif
 # Enable native NEM on windows.
 if1of ($(KBUILD_TARGET), win)
  VBOX_WITH_NATIVE_NEM = 1
+endif
+# Enables new VM/GVM allocation style (see VBox/types.h too).
+if1of ($(KBUILD_TARGET), win)
+# VBOX_BUGREF_9217 := 1
 endif
 ## @}
 
@@ -1681,6 +1685,9 @@ ifdef VBOX_WITH_REM
 endif
 ifdef VBOX_WITH_RAW_MODE
  DEFS += VBOX_WITH_RAW_MODE
+endif
+ifdef VBOX_BUGREF_9217 ## @todo remove later.
+ DEFS += VBOX_BUGREF_9217
 endif
 
 # Don't flood CDEFS, old MASMs doesn't like too many defines.
@@ -7726,7 +7733,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 80256 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 80309 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
