@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 81765 2019-11-11 16:00:31Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 82073 2019-11-21 10:57:54Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -2737,7 +2737,9 @@ static VBOXSTRICTRC devpciR3UpdateMappings(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDe
                 if (uNew != INVALID_PCI_ADDRESS)
                 {
                     /* The callout is optional with new style devices: */
-                    if (pRegion->pfnMap)
+                    if (!pRegion->pfnMap)
+                        rc = VINF_SUCCESS;
+                    else
                     {
                         rc = pRegion->pfnMap(pPciDev->Int.s.pDevInsR3, pPciDev, iRegion,
                                              uNew, cbRegion, (PCIADDRESSSPACE)(pRegion->type));
@@ -2745,7 +2747,7 @@ static VBOXSTRICTRC devpciR3UpdateMappings(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDe
                     }
 
                     /* We do the mapping for new-style devices: */
-                    if (pRegion->hHandle != UINT64_MAX)
+                    if (pRegion->hHandle != UINT64_MAX && rc != VINF_PCI_MAPPING_DONE)
                     {
                         switch (pRegion->fFlags & PDMPCIDEV_IORGN_F_HANDLE_MASK)
                         {
