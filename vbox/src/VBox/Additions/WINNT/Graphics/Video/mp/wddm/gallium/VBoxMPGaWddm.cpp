@@ -1,4 +1,4 @@
-/* $Id: VBoxMPGaWddm.cpp 81594 2019-10-30 18:47:23Z vboxsync $ */
+/* $Id: VBoxMPGaWddm.cpp 81686 2019-11-05 20:06:17Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Mesa3D - Gallium driver interface for WDDM kernel mode driver.
  */
@@ -1466,8 +1466,6 @@ VOID GaDxgkDdiDpcRoutine(const PVOID MiniportDeviceContext)
         /* Device is not initialized yet. */
         return;
     }
-
-    pDevExt->u.primary.DxgkInterface.DxgkCbNotifyDpc(pDevExt->u.primary.DxgkInterface.DeviceHandle);
 
     /* Scan fence objects and mark all with u32FenceId < u32LastCompletedFenceId as SIGNALED */
     const uint32_t u32LastCompletedFenceId = ASMAtomicReadU32(&pGaDevExt->u32LastCompletedFenceId);

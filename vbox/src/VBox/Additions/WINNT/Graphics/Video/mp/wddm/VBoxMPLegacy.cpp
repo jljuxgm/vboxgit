@@ -1,4 +1,4 @@
-/* $Id: VBoxMPLegacy.cpp 81650 2019-11-04 12:50:46Z vboxsync $ */
+/* $Id: VBoxMPLegacy.cpp 81686 2019-11-05 20:06:17Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver. The legacy VBoxVGA adapter support with 2D software unaccelerated
  * framebuffer operations.
@@ -1714,9 +1714,6 @@ VOID DxgkDdiDpcRoutineLegacy(
             0, /* IN ULONG MessageNumber */
             &bRet);
     AssertNtStatusSuccess(Status); NOREF(Status);
-
-//    if (context.data.bNotifyDpc)
-    pDevExt->u.primary.DxgkInterface.DxgkCbNotifyDpc(pDevExt->u.primary.DxgkInterface.DeviceHandle);
 
     if (!vboxVtListIsEmpty(&context.data.CtlList))
     {
