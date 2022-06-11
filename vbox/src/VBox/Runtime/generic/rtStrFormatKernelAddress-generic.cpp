@@ -1,4 +1,4 @@
-/* $Id: rtStrFormatKernelAddress-generic.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: rtStrFormatKernelAddress-generic.cpp 83983 2020-04-26 23:37:02Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter, ring-0 addresses.
  */
@@ -67,7 +67,7 @@ DECLHIDDEN(size_t) rtStrFormatKernelAddress(char *pszBuf, size_t cbBuf, RTR0INTP
     return cbBuf - 1;
 
 #else  /* DEBUG */
-    Assert(cbBuf >= 64);
+    Assert(cbBuf >= 64); RT_NOREF(cbBuf);
     return RTStrFormatNumber(pszBuf, uPtr, 16, cchWidth, cchPrecision, fFlags);
 #endif /* DEBUG */
 }
