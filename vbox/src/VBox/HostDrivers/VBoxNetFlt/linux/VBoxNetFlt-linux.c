@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 79643 2019-07-09 13:48:27Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 80735 2019-09-11 14:35:34Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -2123,7 +2123,9 @@ static int vboxNetFltLinuxEnumeratorCallback(struct notifier_block *self, unsign
 #endif
     if (in_dev != NULL)
     {
-        for_ifa(in_dev) {
+        struct in_ifaddr *ifa;
+
+        for (ifa = in_dev->ifa_list; ifa; ifa = ifa->ifa_next) {
             if (VBOX_IPV4_IS_LOOPBACK(ifa->ifa_address))
                 return NOTIFY_OK;
 
@@ -2137,7 +2139,7 @@ static int vboxNetFltLinuxEnumeratorCallback(struct notifier_block *self, unsign
 
             pThis->pSwitchPort->pfnNotifyHostAddress(pThis->pSwitchPort,
                 /* :fAdded */ true, kIntNetAddrType_IPv4, &ifa->ifa_address);
-        } endfor_ifa(in_dev);
+        }
     }
 
     /*
