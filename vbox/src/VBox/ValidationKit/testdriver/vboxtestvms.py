@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 79400 2019-06-28 00:32:57Z vboxsync $
+# $Id: vboxtestvms.py 81435 2019-10-22 07:24:10Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79400 $"
+__version__ = "$Revision: 81435 $"
 
 # Standard Python imports.
 import copy;
@@ -1117,8 +1117,8 @@ class TestVm(object):
 
         returns True if it should be skipped, False if not.
         """
-        if self.fNstHwVirt and not oTestDrv.isHostCpuAmd():
-            reporter.log('Ignoring VM %s (Nested hardware-virtualization only supported on AMD CPUs).' % (self.sVmName,));
+        if self.fNstHwVirt and not oTestDrv.hasHostNestedHwVirt():
+            reporter.log('Ignoring VM %s (Nested hardware-virtualization not support on this host).' % (self.sVmName,));
             return True;
         return False;
 
