@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 80589 2019-09-04 18:20:28Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 81844 2019-11-14 18:16:36Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -329,7 +329,7 @@ static DECLCALLBACK(int) drvHostDvdIoReqSendScsiCmd(PPDMIMEDIAEX pInterface, PDM
                         rc = ATAPIPassthroughTrackListCreateEmpty(&pThis->pTrackList);
 
                     if (RT_SUCCESS(rc))
-                        rc = ATAPIPassthroughTrackListUpdate(pThis->pTrackList, pbCdb, pvBuf);
+                        rc = ATAPIPassthroughTrackListUpdate(pThis->pTrackList, pbCdb, pvBuf, cbXfer);
 
                     if (RT_FAILURE(rc))
                         LogRelMax(10, ("HostDVD#%u: Error (%Rrc) while updating the tracklist during %s, burning the disc might fail\n",
