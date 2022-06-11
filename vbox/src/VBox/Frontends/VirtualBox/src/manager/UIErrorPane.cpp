@@ -1,4 +1,4 @@
-/* $Id: UIErrorPane.cpp 84077 2020-04-29 12:20:20Z vboxsync $ */
+/* $Id: UIErrorPane.cpp 84078 2020-04-29 12:24:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIErrorPane class implementation.
  */
@@ -66,14 +66,7 @@ void UIErrorPane::prepare()
     if (pMainLayout)
     {
         /* Configure layout: */
-#ifdef VBOX_WS_MAC
-        pMainLayout->setContentsMargins(4, 5, 5, 5);
-#else
-        const int iL = qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin) / 3;
-        const int iT = qApp->style()->pixelMetric(QStyle::PM_LayoutTopMargin) / 3;
-        const int iR = qApp->style()->pixelMetric(QStyle::PM_LayoutRightMargin) / 3;
-        pMainLayout->setContentsMargins(iL, iT, iR, 0);
-#endif
+        pMainLayout->setContentsMargins(0, 0, 0, 0);
 
         /* Create details browser: */
         m_pBrowserDetails = new QTextBrowser;
