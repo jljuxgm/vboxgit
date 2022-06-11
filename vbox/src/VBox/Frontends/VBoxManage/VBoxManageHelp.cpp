@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 80707 2019-09-10 16:32:44Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 80709 2019-09-10 16:36:06Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -790,15 +790,15 @@ void printUsage(USAGECATEGORY enmCommand, uint64_t fSubcommandScope, PRTSTREAM p
                      "                            [--cloud <number of virtual system>]\n"
                      "                                    [--vmname <name>]\n"
                      "                                    [--cloudprofile <cloud profile name>]\n"
-                     "                                    [--cloudshape <shape>]\n"
-                     "                                    [--clouddomain <domain>]\n"
-                     "                                    [--clouddisksize <disk size in GB>]\n"
                      "                                    [--cloudbucket <bucket name>]\n"
-                     "                                    [--cloudocivcn <OCI vcn id>]\n"
-                     "                                    [--cloudocisubnet <OCI subnet id>]\n"
                      "                                    [--cloudkeepobject <true/false>]\n"
                      "                                    [--cloudlaunchmode EMULATED|PARAVIRTUALIZED]\n"
                      "                                    [--cloudlaunchinstance <true/false>]\n"
+                     "                                    [--clouddomain <domain>]\n"
+                     "                                    [--cloudshape <shape>]\n"
+                     "                                    [--clouddisksize <disk size in GB>]\n"
+                     "                                    [--cloudocivcn <OCI vcn id>]\n"
+                     "                                    [--cloudocisubnet <OCI subnet id>]\n"
                      "                                    [--cloudpublicip <true/false>]\n"
                      "                                    [--cloudprivateip <ip>]\n"
                      "\n", SEP);
