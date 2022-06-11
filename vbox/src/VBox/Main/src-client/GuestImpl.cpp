@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 79053 2019-06-08 23:19:19Z vboxsync $ */
+/* $Id: GuestImpl.cpp 79055 2019-06-08 23:26:05Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -1142,8 +1142,22 @@ void Guest::i_setSupportedFeatures(uint32_t aCaps)
     RTTIMESPEC TimeSpecTS;
     RTTimeNow(&TimeSpecTS);
 
-    i_facilityUpdate(VBoxGuestFacilityType_Seamless,
-                     aCaps & VMMDEV_GUEST_SUPPORTS_SEAMLESS ? VBoxGuestFacilityStatus_Active : VBoxGuestFacilityStatus_Inactive,
-                     0 /*fFlags*/, &TimeSpecTS);
+    bool fFireEvent = i_facilityUpdate(VBoxGuestFacilityType_Seamless,
+                                       aCaps & VMMDEV_GUEST_SUPPORTS_SEAMLESS
+                                       ? VBoxGuestFacilityStatus_Active : VBoxGuestFacilityStatus_Inactive,
+                                       0 /*fFlags*/, &TimeSpecTS);
     /** @todo Add VMMDEV_GUEST_SUPPORTS_GUEST_HOST_WINDOW_MAPPING */
+
+    /*
+     * Fire event if the state actually changed.
+     */
+    if (fFireEvent)
+    {
+        AdditionsRunLevelType_T const enmRunLevel = mData.mAdditionsRunLevel;
+        alock.release();
+        fireGuestAdditionsStatusChangedEvent(mEventSource, AdditionsFacilityType_Seamless,
+                                             aCaps & VMMDEV_GUEST_SUPPORTS_SEAMLESS
+                                             ? AdditionsFacilityStatus_Active : AdditionsFacilityStatus_Inactive, enmRunLevel,
+                                             RTTimeSpecGetMilli(&TimeSpecTS));
+    }
 }
