@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 82258 2019-11-27 23:47:53Z vboxsync $ */
+/* $Id: DevVGA.cpp 82282 2019-11-29 12:40:59Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5587,7 +5587,7 @@ int vgaR3RegisterVRAMHandler(PPDMDEVINS pDevIns, PVGASTATE pThis, uint64_t cbFra
     Assert(pThis->GCPhysVRAM);
     int rc = PGMHandlerPhysicalRegister(PDMDevHlpGetVM(pDevIns),
                                         pThis->GCPhysVRAM, pThis->GCPhysVRAM + (cbFrameBuffer - 1),
-                                        pThis->hLfbAccessHandlerType, pThis, pDevIns->pvInstanceDataR0,
+                                        pThis->hLfbAccessHandlerType, pDevIns, pDevIns->pvInstanceDataR0,
                                         pDevIns->pvInstanceDataRC, "VGA LFB");
 
     AssertRC(rc);
