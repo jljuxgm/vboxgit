@@ -1,4 +1,4 @@
-# $Id: Makefile 83886 2020-04-21 11:14:20Z vboxsync $
+# $Id: Makefile 83917 2020-04-22 09:32:50Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -34,7 +34,7 @@ VBOXGUEST_DIR = $(VBOX_MODULE_SRC_DIR)
 VBOXMOD_NAME = vboxguest
 VBOXMOD_OBJS = \
 	VBoxGuest-linux.o \
-	VBoxGuest.o
+	VBoxGuest-common.o
 ifndef VBOX_WITHOUT_COMBINED_SOURCES
 VBOXMOD_OBJS += \
 	common/string/strformatrt.o \
