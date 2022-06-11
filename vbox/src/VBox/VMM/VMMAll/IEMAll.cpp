@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 79031 2019-06-07 05:58:55Z vboxsync $ */
+/* $Id: IEMAll.cpp 79343 2019-06-26 09:05:12Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -15782,6 +15782,47 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecSvmVmexit(PVMCPU pVCpu, uint64_t uExitCode, ui
 #endif /* VBOX_WITH_NESTED_HWVIRT_SVM */
 
 #ifdef VBOX_WITH_NESTED_HWVIRT_VMX
+
+/**
+ * Interface for HM and EM to read a VMCS field from the nested-guest VMCS.
+ *
+ * It is ASSUMED the caller knows what they're doing. No VMREAD instruction checks
+ * are performed. Bounds checks are strict builds only.
+ *
+ * @param   pVmcs           Pointer to the virtual VMCS.
+ * @param   u64VmcsField    The VMCS field.
+ * @param   pu64Dst         Where to store the VMCS value.
+ *
+ * @remarks May be called with interrupts disabled.
+ * @todo    This should probably be moved to CPUM someday.
+ */
+VMM_INT_DECL(void) IEMReadVmxVmcsField(PCVMXVVMCS pVmcs, uint64_t u64VmcsField, uint64_t *pu64Dst)
+{
+    AssertPtr(pVmcs);
+    AssertPtr(pu64Dst);
+    iemVmxVmreadNoCheck(pVmcs, pu64Dst, u64VmcsField);
+}
+
+
+/**
+ * Interface for HM and EM to write a VMCS field in the nested-guest VMCS.
+ *
+ * It is ASSUMED the caller knows what they're doing. No VMWRITE instruction checks
+ * are performed. Bounds checks are strict builds only.
+ *
+ * @param   pVmcs           Pointer to the virtual VMCS.
+ * @param   u64VmcsField    The VMCS field.
+ * @param   u64Val          The value to write.
+ *
+ * @remarks May be called with interrupts disabled.
+ * @todo    This should probably be moved to CPUM someday.
+ */
+VMM_INT_DECL(void) IEMWriteVmxVmcsField(PVMXVVMCS pVmcs, uint64_t u64VmcsField, uint64_t u64Val)
+{
+    AssertPtr(pVmcs);
+    iemVmxVmwriteNoCheck(pVmcs, u64Val, u64VmcsField);
+}
+
 
 /**
  * Interface for HM and EM to virtualize x2APIC MSR accesses.
