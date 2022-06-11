@@ -1,4 +1,4 @@
-/* $Id: DHCPConfigImpl.cpp 79800 2019-07-16 00:06:00Z vboxsync $ */
+/* $Id: DHCPConfigImpl.cpp 79822 2019-07-16 20:12:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - IDHCPConfig, IDHCPConfigGlobal, IDHCPConfigGroup, IDHCPConfigIndividual implementation.
  */
@@ -1238,7 +1238,7 @@ HRESULT DHCPIndividualConfig::i_resolveMACAddress(uint32_t uVersion)
         if (SUCCEEDED(hrc))
         {
             AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-            if ((int32_t)(m_uMACAddressResolvedVersion - uVersion) >= 0)
+            if ((int32_t)(uVersion - m_uMACAddressResolvedVersion) >= 0)
             {
                 m_uMACAddressResolvedVersion = uVersion;
                 m_MACAddress                 = MACAddress;

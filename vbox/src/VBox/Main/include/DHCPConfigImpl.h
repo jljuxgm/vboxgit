@@ -1,4 +1,4 @@
-/* $Id: DHCPConfigImpl.h 79800 2019-07-16 00:06:00Z vboxsync $ */
+/* $Id: DHCPConfigImpl.h 79822 2019-07-16 20:12:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - IDHCPConfig, IDHCPConfigGlobal, IDHCPConfigGroup, IDHCPConfigIndividual header.
  */
@@ -386,7 +386,7 @@ public:
     DHCPIndividualConfig()
         : DHCPConfig(DHCPConfigScope_MAC, this)
         , m_uSlot(~(ULONG)0)
-        , m_uMACAddressResolvedVersion(false)
+        , m_uMACAddressResolvedVersion(0)
     {
         RT_ZERO(m_MACAddress);
     }
