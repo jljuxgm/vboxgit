@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: DrvAudio.cpp 82987 2020-02-05 11:08:35Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -51,7 +51,6 @@ static int drvAudioStreamCreateInternalBackend(PDRVAUDIO pThis, PPDMAUDIOSTREAM 
 static int drvAudioStreamDestroyInternalBackend(PDRVAUDIO pThis, PPDMAUDIOSTREAM pStream);
 static void drvAudioStreamFree(PPDMAUDIOSTREAM pStream);
 static int drvAudioStreamUninitInternal(PDRVAUDIO pThis, PPDMAUDIOSTREAM pStream);
-static int drvAudioStreamInitInternal(PDRVAUDIO pThis, PPDMAUDIOSTREAM pStream, PPDMAUDIOSTREAMCFG pCfgHost, PPDMAUDIOSTREAMCFG pCfgGuest);
 static int drvAudioStreamIterateInternal(PDRVAUDIO pThis, PPDMAUDIOSTREAM pStream);
 static int drvAudioStreamReInitInternal(PDRVAUDIO pThis, PPDMAUDIOSTREAM pStream);
 static void drvAudioStreamDropInternal(PDRVAUDIO pThis, PPDMAUDIOSTREAM pStream);
@@ -549,7 +548,7 @@ static int drvAudioStreamInitInternal(PDRVAUDIO pThis,
     /* Set the host's default audio data layout. */
     pCfgHost->enmLayout = PDMAUDIOSTREAMLAYOUT_NON_INTERLEAVED;
 
-#ifdef DEBUG
+#ifdef LOG_ENABLED
     LogFunc(("[%s] Requested host format:\n", pStream->szName));
     DrvAudioHlpStreamCfgPrint(pCfgHost);
 #endif
@@ -569,7 +568,7 @@ static int drvAudioStreamInitInternal(PDRVAUDIO pThis,
     if (RT_FAILURE(rc))
         return rc;
 
-#ifdef DEBUG
+#ifdef LOG_ENABLED
     LogFunc(("[%s] Acquired host format:\n",  pStream->szName));
     DrvAudioHlpStreamCfgPrint(&CfgHostAcq);
 #endif
@@ -2531,6 +2530,7 @@ static DECLCALLBACK(int) drvAudioStreamCreate(PPDMIAUDIOCONNECTOR pInterface,
 
     if (RT_FAILURE(rc))
     {
+        Log(("drvAudioStreamCreate: failed - %Rrc\n", rc));
         if (pStream)
         {
             int rc2 = drvAudioStreamUninitInternal(pThis, pStream);
