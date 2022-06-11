@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 82394 2019-12-04 18:39:36Z vboxsync $ */
+/* $Id: VMMDev.cpp 82454 2019-12-06 13:03:15Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -4849,7 +4849,7 @@ extern "C" const PDMDEVREG g_DeviceVMMDev =
     /* .u32Version = */             PDM_DEVREG_VERSION,
     /* .uReserved0 = */             0,
     /* .szName = */                 "VMMDev",
-    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ,
+    /* .fFlags = */                 PDM_DEVREG_FLAGS_DEFAULT_BITS | PDM_DEVREG_FLAGS_RZ | PDM_DEVREG_FLAGS_NEW_STYLE,
     /* .fClass = */                 PDM_DEVREG_CLASS_VMM_DEV,
     /* .cMaxInstances = */          1,
     /* .uSharedVersion = */         42,
