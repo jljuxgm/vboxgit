@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 78747 2019-05-25 16:26:09Z vboxsync $ */
+/* $Id: ApplianceImpl.h 78923 2019-06-03 09:09:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -124,6 +124,8 @@ private:
 
     enum SetUpProgressMode { ImportFile, ImportS3, WriteFile, WriteS3, ExportCloud, ImportCloud };
 
+    enum ApplianceState { ApplianceIdle, ApplianceImporting, ApplianceExporting };
+    void i_setApplianceState(const ApplianceState &state);
     /** @name General stuff
      * @{
      */
