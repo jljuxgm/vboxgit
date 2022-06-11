@@ -1,4 +1,4 @@
-/* $Id: UICloudMachine.cpp 83182 2020-03-02 09:55:12Z vboxsync $ */
+/* $Id: UICloudMachine.cpp 83190 2020-03-03 12:25:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachine class implementation.
  */
@@ -83,6 +83,17 @@ void UICloudMachineData::refresh()
     m_strDomain = fetchDomain(instanceInfoMap);
     m_strBootingFirmware = fetchBootingFirmware(instanceInfoMap);
     m_strImageId = fetchImageId(instanceInfoMap);
+
+    /* Acquire image info sync way, be aware, this is blocking stuff, it takes some time: */
+    const QMap<QString, QString> imageInfoMap = getImageInfo(m_comCloudClient, m_strImageId);
+    //printf("Image info:\n");
+    //foreach (const QString &strKey, imageInfoMap.keys())
+    //    printf("key = %s, value = %s\n", strKey.toUtf8().constData(), imageInfoMap.value(strKey).toUtf8().constData());
+    //printf("\n");
+
+    /* Sorry, but these are hardcoded in Main: */
+    m_strImageName = imageInfoMap.value("display name");
+    m_strImageSize = imageInfoMap.value("size");
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.h 83182 2020-03-02 09:55:12Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.h 83190 2020-03-03 12:25:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace declaration.
  */
@@ -56,6 +56,15 @@ namespace UICloudNetworkingStuff
                                                  const CCloudClient &comCloudClient,
                                                  const QString &strId,
                                                  QWidget *pParent = 0);
+
+    /** Acquires image info as a map.
+      * @param  comCloudClient  Brings cloud client object.
+      * @param  strId           Brings cloud image id.
+      * @param  pWidget         Brings parent widget to show messages according to,
+      *                         if no parent set, progress will be executed in blocking way. */
+    SHARED_LIBRARY_STUFF QMap<QString, QString> getImageInfo(const CCloudClient &comCloudClient,
+                                                             const QString &strId,
+                                                             QWidget *pParent = 0);
 
     /** Fetches cloud instance OS type from the passed @a info. */
     SHARED_LIBRARY_STUFF QString fetchOsType(const QMap<KVirtualSystemDescriptionType, QString> &infoMap);

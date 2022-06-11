@@ -1,4 +1,4 @@
-/* $Id: UICloudNetworkingStuff.cpp 83182 2020-03-02 09:55:12Z vboxsync $ */
+/* $Id: UICloudNetworkingStuff.cpp 83190 2020-03-03 12:25:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudNetworkingStuff namespace implementation.
  */
@@ -181,6 +181,59 @@ QString UICloudNetworkingStuff::getInstanceInfo(KVirtualSystemDescriptionType en
                                                 QWidget *pParent /* = 0 */)
 {
     return getInstanceInfo(comCloudClient, strId, pParent).value(enmType, QString());
+}
+
+QMap<QString, QString> UICloudNetworkingStuff::getImageInfo(const CCloudClient &comCloudClient,
+                                                            const QString &strId,
+                                                            QWidget *pParent /* = 0 */)
+{
+    /* Prepare result: */
+    QMap<QString, QString> resultMap;
+
+    /* Execute GetImageInfo async method: */
+    CStringArray comStringArray;
+    CProgress comProgress = comCloudClient.GetImageInfo(strId, comStringArray);
+    if (!comCloudClient.isOk())
+    {
+        if (pParent)
+            msgCenter().cannotAcquireCloudClientParameter(comCloudClient, pParent);
+        else
+        {
+            /// @todo fetch error info
+        }
+    }
+    else
+    {
+        /* Show "Acquire image info" progress: */
+        if (pParent)
+            msgCenter().showModalProgressDialog(comProgress,
+                                                UICommon::tr("Acquire cloud image info ..."),
+                                                ":/progress_reading_appliance_90px.png", pParent, 0);
+        else
+            comProgress.WaitForCompletion(-1);
+        if (!comProgress.isOk() || comProgress.GetResultCode() != 0)
+        {
+            if (pParent)
+                msgCenter().cannotAcquireCloudClientParameter(comProgress, pParent);
+            else
+            {
+                /// @todo fetch error info
+            }
+        }
+        else
+        {
+            /* Append resulting list values we have, split them by pairs: */
+            foreach (const QString &strPair, comStringArray.GetValues())
+            {
+                const QList<QString> pair = strPair.split(" = ");
+                AssertReturn(pair.size() == 2, resultMap);
+                resultMap[pair.at(0)] = pair.at(1);
+            }
+        }
+    }
+
+    /* Return result: */
+    return resultMap;
 }
 
 QString UICloudNetworkingStuff::fetchOsType(const QMap<KVirtualSystemDescriptionType, QString> &infoMap)
