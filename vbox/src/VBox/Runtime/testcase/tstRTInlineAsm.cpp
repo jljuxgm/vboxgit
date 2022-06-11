@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 81071 2019-09-30 10:17:28Z vboxsync $ */
+/* $Id: tstRTInlineAsm.cpp 81762 2019-11-11 15:23:46Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -219,7 +219,7 @@ void tstASMCpuId(void)
         } while (ASMGetApicId() != idApic);
 
         CHECKVAL(uEDX2, idExtApic, "%x");
-        if (idApic != (uint8_t)idExtApic)
+        if (idApic != (uint8_t)idExtApic && uECX2 != 0)
             RTTestIFailed("ASMGetApicIdExt0B() -> %#x vs ASMGetApicId() -> %#x", idExtApic, idApic);
     }
     if (ASMCpuId_EAX(UINT32_C(0x80000000)) >= UINT32_C(0x8000001E))

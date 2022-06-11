@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 81613 2019-10-31 18:50:08Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 81762 2019-11-11 15:23:46Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -199,10 +199,21 @@ static uint32_t supdrvGipGetApicIdSlow(void)
     uint32_t uOther = ASMCpuId_EAX(0);
     if (uOther >= UINT32_C(0xb) && ASMIsValidStdRange(uOther))
     {
-        uOther = ASMGetApicIdExt0B();
-        if ((uOther & 0xff) == idApic)
-            return uOther;
-        AssertMsgFailed(("ASMGetApicIdExt0B=>%#x idApic=%#x\n", uOther, idApic));
+        uint32_t uEax = 0;
+        uint32_t uEbx = 0;
+        uint32_t uEcx = 0;
+        uint32_t uEdx = 0;
+#if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
+        ASMCpuId_Idx_ECX(0xb, 0, &uEax, &uEbx, &uEcx, &uEdx);
+#else
+        ASMCpuIdExSlow(0xb, 0, 0, 0, &uEax, &uEbx, &uEcx, &uEdx);
+#endif
+        if ((uEcx >> 8) != 0) /* level type != invalid */
+        {
+            if ((uEdx & 0xff) == idApic)
+                return uEdx;
+            AssertMsgFailed(("ASMGetApicIdExt0B=>%#x idApic=%#x\n", uEdx, idApic));
+        }
     }
 
     /* The AMD leaf: */
@@ -400,7 +411,7 @@ static DECLCALLBACK(void) supdrvGipDetectGetGipCpuCallback(RTCPUID idCpu, void *
 #else
         ASMCpuIdExSlow(0xb, 0, 0, 0, &uEax, &uEbx, &uEcx, &uEdx);
 #endif
-        if (uEax || uEbx || uEcx || uEdx)
+        if ((uEcx >> 8) != 0) /* level type != invalid */
         {
             if (RT_LIKELY(   uEdx < RT_ELEMENTS(pGip->aiCpuFromApicId)
                           && !ASMBitTest(pState->bmApicId, uEdx)))
