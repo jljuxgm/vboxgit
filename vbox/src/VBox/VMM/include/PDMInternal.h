@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 83987 2020-04-27 08:40:42Z vboxsync $ */
+/* $Id: PDMInternal.h 84170 2020-05-06 16:50:36Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -630,10 +630,10 @@ typedef struct PDMIOMMU
     PPDMDEVINSR3                pDevInsR3;
     /** @copydoc PDMIOMMUREGR3::pfnMemRead */
     DECLR3CALLBACKMEMBER(int,   pfnMemRead,(PPDMDEVINS pDevIns, uint16_t uDevId, uint64_t uDva, size_t cbRead,
-                                            PRTGCPHYS pGCPhysOut));
+                                            PRTGCPHYS pGCPhysSpa));
     /** @copydoc PDMIOMMUREGR3::pfnMemWrite */
     DECLR3CALLBACKMEMBER(int,   pfnMemWrite,(PPDMDEVINS pDevIns, uint16_t uDevId, uint64_t uDva, size_t cbWrite,
-                                             PRTGCPHYS pGCPhysOut));
+                                             PRTGCPHYS pGCPhysSpa));
 } PDMIOMMU;
 
 
@@ -650,10 +650,10 @@ typedef struct PDMIOMMUR0
     PPDMDEVINSR0                pDevInsR0;
     /** @copydoc PDMIOMMUREGR0::pfnMemRead */
     DECLR0CALLBACKMEMBER(int,   pfnMemRead,(PPDMDEVINS pDevIns, uint16_t uDevId, uint64_t uDva, size_t cbRead,
-                                            PRTGCPHYS pGCPhysOut));
+                                            PRTGCPHYS pGCPhysSpa));
     /** @copydoc PDMIOMMUREGR3::pfnMemWrite */
     DECLR0CALLBACKMEMBER(int,   pfnMemWrite,(PPDMDEVINS pDevIns, uint16_t uDevId, uint64_t uDva, size_t cbWrite,
-                                             PRTGCPHYS pGCPhysOut));
+                                             PRTGCPHYS pGCPhysSpa));
 } PDMIOMMUR0;
 /** Pointer to a ring-0 IOMMU data. */
 typedef PDMIOMMUR0 *PPDMIOMMUR0;
