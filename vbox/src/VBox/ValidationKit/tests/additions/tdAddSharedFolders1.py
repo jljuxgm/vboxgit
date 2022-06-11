@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 84093 $"
+__version__ = "$Revision: 84240 $"
 
 # Standard Python imports.
 import os
@@ -277,6 +277,11 @@ class SubTstDrvAddSharedFolders1(base.SubTestDriverBase):
             # Add the extra arguments from the command line and kick it off:
             asArgs.extend(self.asExtraArgs);
 
+            # Hack alert: Make sure that the share is accessible.
+            ## @todo Better check user group(s) "vboxsf" and stuff.
+            if not oTestVm.isWindows():
+                oTxsSession.syncChMod(sMountPoint1, 0o777);
+
             # Run FsPerf:
             reporter.log2('Starting guest FsPerf (%s)...' % (asArgs,));
             sFsPerfPath = self._locateGstFsPerf(oTxsSession);
@@ -308,6 +313,7 @@ class SubTstDrvAddSharedFolders1(base.SubTestDriverBase):
         """
         for sFsPerfPath in self.asGstFsPerfPaths:
             if oTxsSession.syncIsFile(sFsPerfPath):
+                reporter.log('Using FsPerf at "%s"' % (sFsPerfPath,));
                 return sFsPerfPath;
         reporter.log('Unable to find guest FsPerf in any of these places: %s' % ('\n    '.join(self.asGstFsPerfPaths),));
         return self.asGstFsPerfPaths[0];
