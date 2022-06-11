@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 78632 2019-05-21 13:56:11Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 79804 2019-07-16 09:55:32Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -4751,6 +4751,7 @@ VMMR3_INT_DECL(void) CPUMR3SetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFea
             /* Valid for both Intel and AMD. */
             pVM->cpum.s.aGuestCpuIdPatmExt[1].uEdx = pLeaf->uEdx |= X86_CPUID_EXT_FEATURE_EDX_LONG_MODE;
             pVM->cpum.s.GuestFeatures.fLongMode = 1;
+            pVM->cpum.s.GuestFeatures.cVmxMaxPhysAddrWidth = pVM->cpum.s.GuestFeatures.cMaxPhysAddrWidth;
             LogRel(("CPUM: SetGuestCpuIdFeature: Enabled LONG MODE\n"));
             break;
 
@@ -5070,6 +5071,7 @@ VMMR3_INT_DECL(void) CPUMR3ClearGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmF
             if (pLeaf)
                 pVM->cpum.s.aGuestCpuIdPatmExt[1].uEdx = pLeaf->uEdx &= ~X86_CPUID_EXT_FEATURE_EDX_LONG_MODE;
             pVM->cpum.s.GuestFeatures.fLongMode = 0;
+            pVM->cpum.s.GuestFeatures.cVmxMaxPhysAddrWidth = 32;
             break;
 
         case CPUMCPUIDFEATURE_LAHF:
