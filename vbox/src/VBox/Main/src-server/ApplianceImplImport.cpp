@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 78859 2019-05-29 20:02:02Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 78879 2019-05-30 13:33:24Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1124,7 +1124,7 @@ HRESULT Appliance::i_readImpl(const LocationInfo &aLocInfo, ComObjPtr<Progress> 
         {
             /* 1 operation only */
             hrc = aProgress->init(mVirtualBox, static_cast<IAppliance*>(this),
-                                  Utf8Str(tr("Getting cloud instance information...")), TRUE /* aCancelable */);
+                                  Utf8Str(tr("Getting cloud instance information")), TRUE /* aCancelable */);
 
             /* Create an empty ovf::OVFReader for manual filling it.
              * It's not a normal usage case, but we try to re-use some OVF stuff to friend
