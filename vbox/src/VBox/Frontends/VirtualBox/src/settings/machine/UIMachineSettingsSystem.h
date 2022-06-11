@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 79981 2019-07-25 14:59:57Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.h 79998 2019-07-26 11:18:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -99,11 +99,6 @@ protected:
     virtual void polishPage() /* override */;
 
 private slots:
-
-    /** Handles memory size slider change. */
-    void sltHandleMemorySizeSliderChange();
-    /** Handles memory size editor change. */
-    void sltHandleMemorySizeEditorChange();
 
     /** Handles CPU count slider change. */
     void sltHandleCPUCountSliderChange();
