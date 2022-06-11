@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.cpp 81929 2019-11-18 00:44:16Z vboxsync $ */
+/* $Id: DevPcArch.cpp 81930 2019-11-18 00:49:05Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
@@ -267,8 +267,7 @@ static DECLCALLBACK(int)  pcarchConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
     /*
      * Validate configuration.
      */
-    if (!CFGMR3AreValuesValid(pCfg, "\0"))
-        return VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES;
+    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "", "");
 
     /*
      * Init the data.
