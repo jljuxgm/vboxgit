@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -27,9 +27,6 @@
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/nem.h>
 #include <VBox/vmm/stam.h>
-#ifdef VBOX_WITH_REM
-# include <VBox/vmm/rem.h>
-#endif
 #include <VBox/vmm/dbgf.h>
 #include "PGMInternal.h"
 #include <VBox/vmm/vmcc.h>

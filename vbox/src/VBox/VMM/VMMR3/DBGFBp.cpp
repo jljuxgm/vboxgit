@@ -1,4 +1,4 @@
-/* $Id: DBGFBp.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: DBGFBp.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -22,11 +22,7 @@
 #define LOG_GROUP LOG_GROUP_DBGF
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/selm.h>
-#ifdef VBOX_WITH_REM
-# include <VBox/vmm/rem.h>
-#else
-# include <VBox/vmm/iem.h>
-#endif
+#include <VBox/vmm/iem.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/hm.h>

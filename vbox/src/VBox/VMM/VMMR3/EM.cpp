@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 80815 2019-09-16 09:22:23Z vboxsync $ */
+/* $Id: EM.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -46,9 +46,6 @@
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/pgm.h>
-#ifdef VBOX_WITH_REM
-# include <VBox/vmm/rem.h>
-#endif
 #include <VBox/vmm/apic.h>
 #include <VBox/vmm/tm.h>
 #include <VBox/vmm/mm.h>

@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 81031 2019-09-26 19:26:33Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -27,9 +27,6 @@
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/iom.h>
-#ifdef VBOX_WITH_REM
-# include <VBox/vmm/rem.h>
-#endif
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/ssm.h>
 #include <VBox/vmm/vmapi.h>

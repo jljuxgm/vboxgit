@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 81002 2019-09-25 09:12:34Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -26,9 +26,6 @@
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/nem.h>
-#ifdef VBOX_WITH_REM
-# include <VBox/vmm/rem.h>
-#endif
 #include "PGMInternal.h"
 #include <VBox/vmm/vmcc.h>
 #include "PGMInline.h"

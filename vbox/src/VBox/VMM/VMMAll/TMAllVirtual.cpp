@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 81071 2019-09-30 10:17:28Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -23,9 +23,6 @@
 #include <VBox/vmm/tm.h>
 #include <VBox/vmm/dbgftrace.h>
 #ifdef IN_RING3
-# ifdef VBOX_WITH_REM
-#  include <VBox/vmm/rem.h>
-# endif
 # include <iprt/thread.h>
 #endif
 #include "TMInternal.h"

@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 80550 2019-09-02 12:24:28Z vboxsync $ */
+/* $Id: TMAll.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -27,9 +27,6 @@
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/dbgftrace.h>
 #ifdef IN_RING3
-# ifdef VBOX_WITH_REM
-#  include <VBox/vmm/rem.h>
-# endif
 #endif
 #include <VBox/vmm/pdmdev.h> /* (for TMTIMER_GET_CRITSECT implementation) */
 #include "TMInternal.h"

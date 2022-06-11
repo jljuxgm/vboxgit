@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 80704 2019-09-10 15:19:39Z vboxsync $ */
+/* $Id: APICAll.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -23,10 +23,12 @@
 #include "APICInternal.h"
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdmapi.h>
-#include <VBox/vmm/rem.h>
 #include <VBox/vmm/vmcc.h>
 #include <VBox/vmm/vmm.h>
 #include <VBox/vmm/vmcpuset.h>
+#ifdef IN_RING0
+# include <VBox/vmm/gvmm.h>
+#endif
 
 
 /*********************************************************************************************************************************

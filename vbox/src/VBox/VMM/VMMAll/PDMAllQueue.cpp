@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -23,9 +23,6 @@
 #include "PDMInternal.h"
 #include <VBox/vmm/pdm.h>
 #ifndef IN_RC
-# ifdef VBOX_WITH_REM
-#  include <VBox/vmm/rem.h>
-# endif
 # include <VBox/vmm/mm.h>
 #endif
 #include <VBox/vmm/vmcc.h>

@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 81002 2019-09-25 09:12:34Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -35,9 +35,6 @@
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/apic.h>
-#ifdef VBOX_WITH_REM
-# include <VBox/vmm/rem.h>
-#endif
 #include "HMInternal.h"
 #include <VBox/vmm/vmcc.h>
 #include <VBox/vmm/hmvmxinline.h>

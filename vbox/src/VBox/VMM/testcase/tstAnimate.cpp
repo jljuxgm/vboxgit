@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 80585 2019-09-04 14:05:50Z vboxsync $ */
+/* $Id: tstAnimate.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -25,9 +25,6 @@
 #include <VBox/vmm/cfgm.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/pgm.h>
-#ifdef VBOX_WITH_REM
-# include <VBox/vmm/rem.h>
-#endif
 #include <VBox/vmm/ssm.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/err.h>

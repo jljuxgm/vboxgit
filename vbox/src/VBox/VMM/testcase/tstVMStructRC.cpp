@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 80938 2019-09-23 08:19:38Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -67,7 +67,6 @@ AssertCompileSize(RTHCPHYS, 8);
 #include "SELMInternal.h"
 #include "TMInternal.h"
 #include "IOMInternal.h"
-#include "REMInternal.h"
 #include "HMInternal.h"
 #include "APICInternal.h"
 #include "PATMInternal.h"
@@ -78,7 +77,6 @@ AssertCompileSize(RTHCPHYS, 8);
 #include "CSAMInternal.h"
 #include "EMInternal.h"
 #include "IEMInternal.h"
-#include "REMInternal.h"
 #include "NEMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/hm_vmx.h>

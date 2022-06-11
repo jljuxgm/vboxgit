@@ -1,4 +1,4 @@
-/* $Id: PDMNetShaper.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: PDMNetShaper.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth group settings.
  */
@@ -23,9 +23,6 @@
 #include "PDMInternal.h"
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/mm.h>
-#ifdef VBOX_WITH_REM
-# include <VBox/vmm/rem.h>
-#endif
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/uvm.h>
 #include <VBox/err.h>

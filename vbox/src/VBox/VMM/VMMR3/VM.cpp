@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 80649 2019-09-07 12:59:36Z vboxsync $ */
+/* $Id: VM.cpp 81150 2019-10-08 12:53:47Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -57,9 +57,6 @@
 #include <VBox/vmm/pdmcritsect.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/iem.h>
-#ifdef VBOX_WITH_REM
-# include <VBox/vmm/rem.h>
-#endif
 #include <VBox/vmm/nem.h>
 #include <VBox/vmm/apic.h>
 #include <VBox/vmm/tm.h>
