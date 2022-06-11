@@ -1,4 +1,4 @@
-/* $Id: info.cpp 78382 2019-05-05 05:23:17Z vboxsync $ */
+/* $Id: info.cpp 78383 2019-05-05 05:35:42Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders FSD - Information Querying & Setting Routines.
  */
@@ -1719,6 +1719,7 @@ static NTSTATUS vbsfNtSetEndOfFile(IN OUT struct _RX_CONTEXT * RxContext, IN uin
  *              - Queries FileAllInformation.
  *              - Tries to open the new filename (result: 0x00000000 but not
  *                opened by our code - weird).
+ *              - Queries FileNormalizedNameInformation (result: 0xc000000d).
  *              - Does IOCTL_REDIR_QUERY_PATH_EX on \vboxsvr\IPC$.
  *              - Tries to open \vboxsvr\IPC$ (result: 0xc0000016)
  *              - Opens the parent directory.
@@ -1726,7 +1727,6 @@ static NTSTATUS vbsfNtSetEndOfFile(IN OUT struct _RX_CONTEXT * RxContext, IN uin
  *              - Closes parent directory handle.
  *              - Finally does FileRenameInformation.
  *              - Closes the handle to the renamed file.
- *
  */
 static NTSTATUS vbsfNtRename(IN PRX_CONTEXT RxContext,
                              IN PFILE_RENAME_INFORMATION pRenameInfo,
