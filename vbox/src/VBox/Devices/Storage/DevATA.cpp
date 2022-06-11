@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 81854 2019-11-14 22:57:43Z vboxsync $ */
+/* $Id: DevATA.cpp 81855 2019-11-14 22:58:30Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -6339,7 +6339,7 @@ ataIOPortWriteEmptyBus(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint3
 static DECLCALLBACK(VBOXSTRICTRC)
 ataIOPortReadEmptyBus(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_t *pu32, unsigned cb)
 {
-    RT_NOREF(offPort, pvUser);
+    RT_NOREF(pDevIns, offPort, pvUser);
 
 #ifdef VBOX_STRICT
     PCIATAState   *pThis = PDMDEVINS_2_DATA(pDevIns, PCIATAState *);
