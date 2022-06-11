@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-linux.c 83471 2020-03-27 15:49:44Z vboxsync $ */
+/* $Id: time-r0drv-linux.c 83484 2020-03-30 14:37:26Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Linux.
  */
@@ -194,9 +194,9 @@ RTDECL(PRTTIMESPEC) RTTimeNow(PRTTIMESPEC pTime)
     IPRT_LINUX_RESTORE_EFL_AC();
 # ifdef _LINUX_TIME64_H
     return RTTimeSpecSetTimespec64(pTime, &Ts);
-#else
+# else
     return RTTimeSpecSetTimespec(pTime, &Ts);
-#endif
+# endif
 #else   /* < 2.6.16 */
     struct timeval Tv;
     do_gettimeofday(&Tv);
