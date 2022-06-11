@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 79728 2019-07-12 11:57:10Z vboxsync $ */
+/* $Id: CPUM.cpp 79879 2019-07-19 09:57:34Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1819,8 +1819,9 @@ static bool cpumR3AreVmxCpuFeaturesCompatible(PVM pVM, PCCPUMFEATURES pBase, PCC
 
         if ((fBase | fGst) != fBase)
         {
-            LogRel(("CPUM: Host VMX features are incompatible with those from the saved state. fBase=%#RX64 fGst=%#RX64\n",
-                    fBase, fGst));
+            uint64_t const fDiff = fBase ^ fGst;
+            LogRel(("CPUM: VMX features now exposed to the guest are incompatible with those from the saved state. fBase=%#RX64 fGst=%#RX64 fDiff=%#RX64\n",
+                    fBase, fGst, fDiff));
             return false;
         }
         return true;
