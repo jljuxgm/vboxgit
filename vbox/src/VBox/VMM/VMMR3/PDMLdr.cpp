@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 80531 2019-09-01 23:03:34Z vboxsync $ */
+/* $Id: PDMLdr.cpp 80533 2019-09-01 23:24:59Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -742,6 +742,7 @@ static int pdmR3LoadR0U(PUVM pUVM, const char *pszFilename, const char *pszName,
  *
  * @returns VBox status code.
  * @param   pUVM            Pointer to the user mode VM structure.
+ * @param   pszModule       Module name (no path).
  */
 VMMR3_INT_DECL(int) PDMR3LdrLoadR0(PUVM pUVM, const char *pszModule)
 {
