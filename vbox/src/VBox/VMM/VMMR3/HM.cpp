@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: HM.cpp 80388 2019-08-23 03:26:31Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1436,7 +1436,7 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
 {
     int rc;
 
-    Log(("pVM->hm.s.vmx.fSupported = %d\n", pVM->hm.s.vmx.fSupported));
+    LogFunc(("pVM->hm.s.vmx.fSupported = %d\n", pVM->hm.s.vmx.fSupported));
     AssertLogRelReturn(pVM->hm.s.vmx.Msrs.u64FeatCtrl != 0, VERR_HM_IPE_4);
 
     LogRel(("HM: Using VT-x implementation 3.0\n"));
@@ -1698,7 +1698,7 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
  */
 static int hmR3InitFinalizeR0Amd(PVM pVM)
 {
-    Log(("pVM->hm.s.svm.fSupported = %d\n", pVM->hm.s.svm.fSupported));
+    LogFunc(("pVM->hm.s.svm.fSupported = %d\n", pVM->hm.s.svm.fSupported));
 
     LogRel(("HM: Using AMD-V implementation 2.0\n"));
 
