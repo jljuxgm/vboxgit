@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 81765 2019-11-11 16:00:31Z vboxsync $ */
+/* $Id: DevPS2.cpp 82170 2019-11-25 12:22:23Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -51,7 +51,7 @@
 #include <iprt/uuid.h>
 
 #include "VBoxDD.h"
-#include "PS2Dev.h"
+#include "DevPS2.h"
 
 /* Do not remove this (unless eliminating the corresponding ifdefs), it will
  * cause instant triple faults when booting Windows VMs. */

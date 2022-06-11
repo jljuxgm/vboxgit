@@ -1,4 +1,4 @@
-/* $Id: PS2K.cpp 81216 2019-10-10 13:44:39Z vboxsync $ */
+/* $Id: DevPS2K.cpp 82170 2019-11-25 12:22:23Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
@@ -45,7 +45,7 @@
 #include <iprt/uuid.h>
 #include "VBoxDD.h"
 #define IN_PS2K
-#include "PS2Dev.h"
+#include "DevPS2.h"
 
 
 /*********************************************************************************************************************************

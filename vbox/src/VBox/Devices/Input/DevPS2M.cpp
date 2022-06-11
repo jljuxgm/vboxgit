@@ -1,4 +1,4 @@
-/* $Id: PS2M.cpp 80040 2019-07-29 10:49:00Z vboxsync $ */
+/* $Id: DevPS2M.cpp 82170 2019-11-25 12:22:23Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -151,7 +151,7 @@
 #include <iprt/uuid.h>
 #include "VBoxDD.h"
 #define IN_PS2M
-#include "PS2Dev.h"
+#include "DevPS2.h"
 
 
 /*********************************************************************************************************************************
