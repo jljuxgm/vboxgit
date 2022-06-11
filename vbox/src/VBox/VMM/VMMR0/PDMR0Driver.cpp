@@ -1,4 +1,4 @@
-/* $Id: PDMR0Driver.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: PDMR0Driver.cpp 80346 2019-08-19 19:36:29Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Driver parts.
  */
@@ -36,15 +36,14 @@
  *
  * @returns See PFNPDMDRVREQHANDLERR0.
  * @param   pGVM    The global (ring-0) VM structure. (For validation.)
- * @param   pVM     The cross context VM structure. (For validation.)
  * @param   pReq    Pointer to the request buffer.
  */
-VMMR0_INT_DECL(int) PDMR0DriverCallReqHandler(PGVM pGVM, PVMCC pVM, PPDMDRIVERCALLREQHANDLERREQ pReq)
+VMMR0_INT_DECL(int) PDMR0DriverCallReqHandler(PGVM pGVM, PPDMDRIVERCALLREQHANDLERREQ pReq)
 {
     /*
      * Validate input and make the call.
      */
-    int rc = GVMMR0ValidateGVMandVM(pGVM, pVM);
+    int rc = GVMMR0ValidateGVM(pGVM);
     if (RT_SUCCESS(rc))
     {
         AssertPtrReturn(pReq, VERR_INVALID_POINTER);
@@ -52,7 +51,7 @@ VMMR0_INT_DECL(int) PDMR0DriverCallReqHandler(PGVM pGVM, PVMCC pVM, PPDMDRIVERCA
 
         PPDMDRVINS pDrvIns = pReq->pDrvInsR0;
         AssertPtrReturn(pDrvIns, VERR_INVALID_POINTER);
-        AssertReturn(pDrvIns->Internal.s.pVMR0 == pVM, VERR_INVALID_PARAMETER);
+        AssertReturn(pDrvIns->Internal.s.pVMR0 == pGVM, VERR_INVALID_PARAMETER);
 
         PFNPDMDRVREQHANDLERR0 pfnReqHandlerR0 = pDrvIns->Internal.s.pfnReqHandlerR0;
         AssertPtrReturn(pfnReqHandlerR0, VERR_INVALID_POINTER);

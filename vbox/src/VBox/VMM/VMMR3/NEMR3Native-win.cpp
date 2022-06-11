@@ -1,4 +1,4 @@
-/* $Id: NEMR3Native-win.cpp 80333 2019-08-16 20:28:38Z vboxsync $ */
+/* $Id: NEMR3Native-win.cpp 80346 2019-08-19 19:36:29Z vboxsync $ */
 /** @file
  * NEM - Native execution manager, native ring-3 Windows backend.
  *
@@ -1723,7 +1723,7 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
         }
     }
 #endif
-    return nemHCWinRunGC(pVM, pVCpu, NULL /*pGVM*/, NULL /*pGVCpu*/);
+    return nemHCWinRunGC(pVM, pVCpu);
 }
 
 
