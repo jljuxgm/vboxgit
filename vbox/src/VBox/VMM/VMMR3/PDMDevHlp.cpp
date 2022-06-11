@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 82329 2019-12-02 18:16:13Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 82339 2019-12-03 10:51:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -524,7 +524,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pdmR3DevHlp_TimerLockClock(PPDMDEVINS pDevIns,
 }
 
 
-/** @interface_method_impl{PDMDEVHLPR3,pfnTimerLock} */
+/** @interface_method_impl{PDMDEVHLPR3,pfnTimerLockClock2} */
 static DECLCALLBACK(VBOXSTRICTRC) pdmR3DevHlp_TimerLockClock2(PPDMDEVINS pDevIns, TMTIMERHANDLE hTimer,
                                                               PPDMCRITSECT pCritSect, int rcBusy)
 {
