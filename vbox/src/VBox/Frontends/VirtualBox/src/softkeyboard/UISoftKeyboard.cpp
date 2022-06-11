@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 81865 2019-11-15 09:54:50Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 81868 2019-11-15 12:32:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -1984,7 +1984,7 @@ void UISoftKeyboardLayout::drawTextInRect(const UISoftKeyboardKey &key, QPainter
      QString strShiftAltGrCaption;
      QString strAltGrCaption;
 
-     /* Static captions which are define in the physical layout files have precedence over
+     /* Static captions which are defined in the physical layout files have precedence over
         the one define in the keyboard layouts. In effect they stay the same for all the
         keyboard layouts sharing the same physical layout: */
 
