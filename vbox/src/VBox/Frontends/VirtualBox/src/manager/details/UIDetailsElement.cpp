@@ -1,4 +1,4 @@
-/* $Id: UIDetailsElement.cpp 79897 2019-07-19 17:42:59Z vboxsync $ */
+/* $Id: UIDetailsElement.cpp 79898 2019-07-19 17:50:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsElement class implementation.
  */
@@ -35,6 +35,14 @@
 #include "UIIconPool.h"
 #include "UIVirtualBoxManager.h"
 #include "UICommon.h"
+
+
+/** Known anchor roles. */
+enum AnchorRole
+{
+    AnchorRole_Invalid,
+    AnchorRole_Storage,
+};
 
 
 UIDetailsElement::UIDetailsElement(UIDetailsSet *pParent, DetailsElementType enmType, bool fOpened)
@@ -409,12 +417,6 @@ void UIDetailsElement::sltElementToggleFinish(bool fToggled)
 
 void UIDetailsElement::sltHandleAnchorClicked(const QString &strAnchor)
 {
-    /* Enumerate known anchor roles: */
-    enum AnchorRole
-    {
-        AnchorRole_Invalid,
-        AnchorRole_Storage,
-    };
     /* Compose a map of known anchor roles: */
     QMap<QString, AnchorRole> roles;
     roles["#mount"] = AnchorRole_Storage;
