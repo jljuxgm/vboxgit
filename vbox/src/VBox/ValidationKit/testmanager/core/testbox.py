@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 83384 2020-03-24 14:46:06Z vboxsync $
+# $Id: testbox.py 84091 2020-04-29 19:31:28Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 83384 $"
+__version__ = "$Revision: 84091 $"
 
 
 # Standard python imports.
@@ -685,16 +685,25 @@ class TestBoxDataEx(TestBoxData):
         # Note! We'll be returning an error dictionary instead of an string here.
         dErrors = {};
 
+        # HACK ALERT! idTestBox might not have been validated and converted yet, but we need detect
+        #             adding so we can ignore idTestBox being NIL when validating group memberships.
+        ## @todo make base.py pass us the ksValidateFor_Xxxx value.
+        fIsAdding = True if self.idTestBox in [ None, -1, '-1', 'None', '' ] else False;
+
         for iInGrp, oInSchedGroup in enumerate(self.aoInSchedGroups):
             oInSchedGroup = copy.copy(oInSchedGroup);
             oInSchedGroup.idTestBox = self.idTestBox;
-            dCurErrors = oInSchedGroup.validateAndConvert(oDb, ModelDataBase.ksValidateFor_Other);
+            if fIsAdding:
+                dCurErrors = oInSchedGroup.validateAndConvertEx(['idTestBox',] + oInSchedGroup.kasAllowNullAttributes,
+                                                                oDb, ModelDataBase.ksValidateFor_Add);
+            else:
+                dCurErrors = oInSchedGroup.validateAndConvert(oDb, ModelDataBase.ksValidateFor_Other);
             if not dCurErrors:
                 pass; ## @todo figure out the ID?
             else:
                 asErrors = [];
                 for sKey in dCurErrors:
-                    asErrors.append('%s: %s' % (sKey[len('TestBoxInSchedGroup_'):], dCurErrors[sKey]));
+                    asErrors.append('%s: %s' % (sKey[len('TestBoxInSchedGroup_'):], dCurErrors[sKey] + ('{%s}' % self.idTestBox)));
                 dErrors[iInGrp] = '<br>\n'.join(asErrors)
             aoNewValues.append(oInSchedGroup);
 
