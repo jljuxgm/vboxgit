@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.cpp 81863 2019-11-15 08:34:43Z vboxsync $ */
+/* $Id: UISoftKeyboard.cpp 81864 2019-11-15 08:39:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class implementation.
  */
@@ -151,6 +151,7 @@ QPointF linearInterpolation(qreal t, const QPointF &p0, const QPointF &p1)
         return p1;
     return QPointF((1 - t) * p0 + t * p1);
 }
+
 
 /*********************************************************************************************************************************
 *   UISoftKeyboardColorButton definition.                                                                                        *
