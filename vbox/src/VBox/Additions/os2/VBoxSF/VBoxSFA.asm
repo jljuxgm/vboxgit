@@ -1,4 +1,4 @@
-; $Id: VBoxSFA.asm 77640 2019-03-10 21:13:03Z vboxsync $
+; $Id: VBoxSFA.asm 79095 2019-06-12 04:15:09Z vboxsync $
 ;; @file
 ; VBoxSF - OS/2 Shared Folders, all assembly code (16 -> 32 thunking mostly).
 ;
@@ -597,7 +597,7 @@ FS32_ATTRIBUTE:
 ; bit 6 - don't get the subsystem ring-0 spinlock.
 global FS_MPSAFEFLAGS2
 FS_MPSAFEFLAGS2:
-        dd  1 | (1<<6)
+        dd  0 ;1 | (1<<6) - not getting the ring-0 spinlock causes trouble, so dropping both for now.
         dd  0
 
 ;;
