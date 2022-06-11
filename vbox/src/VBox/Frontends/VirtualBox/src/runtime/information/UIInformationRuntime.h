@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 80381 2019-08-21 19:25:25Z vboxsync $ */
+/* $Id: UIInformationRuntime.h 80384 2019-08-22 12:39:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -45,6 +45,7 @@ class QGridLayout;
 class QLabel;
 class UIChart;
 class UISession;
+class UIRuntimeInfoWidget;
 
 class UISubMetric
 {
@@ -113,9 +114,7 @@ private:
     UITextTable runTimeAttributes();
 
     bool m_fGuestAdditionsAvailable;
-    /** Holds the machine instance. */
     CMachine m_machine;
-    /** Holds the console instance. */
     CConsole m_console;
     CGuest m_comGuest;
 
@@ -123,6 +122,7 @@ private:
     CMachineDebugger      m_machineDebugger;
     /** Holds the instance of layout we create. */
     QGridLayout *m_pMainLayout;
+    UIRuntimeInfoWidget *m_pRuntimeInfoWidget;
     QTimer *m_pTimer;
 
     QVector<QString> m_nameList;
@@ -140,7 +140,7 @@ private:
         QString m_strNetMetricName;
     /** @} */
 
-    /** @name Cached translated string.
+    /** @name Cached translated strings.
       * @{ */
         /** CPU info label strings. */
         QString m_strCPUInfoLabelTitle;
