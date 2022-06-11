@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 83413 2020-03-25 16:06:43Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 83556 2020-04-04 13:53:35Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -634,6 +634,44 @@ struct GuestFileOpenInfo
         , mSharingMode((FileSharingMode_T)0)
         , mCreationMode(0)
         , mfOpenEx(0) { }
+
+    /**
+     * Validates a file open info.
+     *
+     * @returns \c true if valid, \c false if not.
+     */
+    bool IsValid(void) const
+    {
+        if (mfOpenEx) /** @todo Open flags not implemented yet. */
+            return false;
+
+        switch (mOpenAction)
+        {
+            case FileOpenAction_OpenExisting:
+                break;
+            case FileOpenAction_OpenOrCreate:
+                break;
+            case FileOpenAction_CreateNew:
+                break;
+            case FileOpenAction_CreateOrReplace:
+                break;
+            case FileOpenAction_OpenExistingTruncated:
+            {
+                if (   mAccessMode == FileAccessMode_ReadOnly
+                    || mAccessMode == FileAccessMode_AppendOnly
+                    || mAccessMode == FileAccessMode_AppendRead)
+                    return false;
+                break;
+            }
+            case FileOpenAction_AppendOrCreate: /* Deprecated, do not use. */
+                break;
+            default:
+                AssertFailedReturn(false);
+                break;
+        }
+
+        return true; /** @todo Do we need more checks here? */
+    }
 
     /** The filename. */
     Utf8Str                 mFilename;
