@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-uri.cpp 80361 2019-08-21 08:49:40Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-uri.cpp 80374 2019-08-21 15:04:54Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal code for URI (list) handling.
  */
@@ -1325,7 +1325,7 @@ int vboxSvcClipboardURIHandler(PVBOXCLIPBOARDCLIENT pClient,
             {
                 SharedClipboardURICtxTransfersCleanup(&pClientData->URI);
 
-                SHAREDCLIPBOARDURITRANSFERDIR enmDir = SHAREDCLIPBOARDURITRANSFERDIR_READ;
+                const SHAREDCLIPBOARDURITRANSFERDIR enmDir = SHAREDCLIPBOARDURITRANSFERDIR_READ;
 
                 PSHAREDCLIPBOARDURITRANSFER pTransfer;
                 rc = SharedClipboardURITransferCreate(enmDir,
@@ -1340,7 +1340,6 @@ int vboxSvcClipboardURIHandler(PVBOXCLIPBOARDCLIENT pClient,
 
                         creationCtx.enmSource = pClientData->State.enmSource;
 
-                        RT_ZERO(creationCtx.Interface);
                         creationCtx.Interface.pfnTransferOpen  = vboxSvcClipboardURITransferOpen;
                         creationCtx.Interface.pfnTransferClose = vboxSvcClipboardURITransferClose;
                         creationCtx.Interface.pfnListOpen      = vboxSvcClipboardURIListOpen;
