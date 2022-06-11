@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: Makefile.kmk 83216 2020-03-06 00:45:56Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -220,10 +220,6 @@ $(foreach bits, 32 16, $(foreach binary, $(filter-out $(VBOX_DISAS_TESTS_BINARIE
 # Add the .tst to the clean up.
 VBOX_DISAS_TEST_CLEAN += $(addprefix $(VBOX_DISAS_TEST_OUT_DIR)/, $(VBOX_DISAS_TESTS))
 OTHER_CLEAN += $(VBOX_DISAS_TEST_CLEAN)
-
-# We don't want any of the tests rules to run in parallel because the
-# output will be difficult to follow. Abusing VBOX_DISAS_TEST_CLEAN here...
-.NOTPARALLEL: $$(VBOX_DISAS_TEST_CLEAN)
 
 
 #
