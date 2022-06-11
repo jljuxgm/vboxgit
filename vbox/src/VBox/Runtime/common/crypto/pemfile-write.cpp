@@ -1,4 +1,4 @@
-/* $Id: pemfile-write.cpp 84163 2020-05-06 15:31:33Z vboxsync $ */
+/* $Id: pemfile-write.cpp 84168 2020-05-06 15:38:07Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PEM file writer.
  */
@@ -33,7 +33,7 @@
 
 #include <iprt/asn1.h>
 #include <iprt/base64.h>
-#include <iprt/err.h>
+#include <iprt/errcore.h>
 #include <iprt/string.h>
 #include <iprt/vfs.h>
 
