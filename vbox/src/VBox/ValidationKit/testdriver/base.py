@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: base.py 83294 2020-03-16 08:13:27Z vboxsync $
 # pylint: disable=too-many-lines
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83294 $"
 
 
 # Standard Python imports.
@@ -1587,11 +1587,19 @@ class TestDriverBase(object): # pylint: disable=too-many-instance-attributes
                 if i > 0:
                     time.sleep(1);
 
+                dPidsToRemove = []; # Temporary dict to append PIDs to remove later.
+
                 for iPid in dPids:
                     if not processExists(iPid):
                         reporter.log('%s (%s) terminated' % (dPids[iPid][0], iPid,));
                         self.pidFileRemove(iPid, fQuiet = True);
-                        del dPids[iPid];
+                        dPidsToRemove.append(iPid);
+                        continue;
+
+                # Remove PIDs from original dictionary, as removing keys from a
+                # dictionary while iterating on it won't work and will result in a RuntimeError.
+                for iPidToRemove in dPidsToRemove:
+                    del dPids[iPidToRemove];
 
                 if not dPids:
                     reporter.log('All done.');
@@ -1810,4 +1818,3 @@ class TestDriverBaseTestCase(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main();
     # not reached.
-
