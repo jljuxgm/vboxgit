@@ -1,4 +1,4 @@
-/* $Id: shaderapi.c 81981 2019-11-19 10:10:16Z vboxsync $ */
+/* $Id: shaderapi.c 82718 2020-01-10 16:25:50Z vboxsync $ */
 /** @file
  * shaderlib -- interface to WINE's Direct3D shader functions
  */
@@ -313,7 +313,7 @@ SHADERDECL(int) ShaderContextDestroy(void *pShaderContext)
     return VINF_SUCCESS;
 }
 
-SHADERDECL(int) ShaderCreateVertexShader(void *pShaderContext, const uint32_t *pShaderData, void **pShaderObj)
+SHADERDECL(int) ShaderCreateVertexShader(void *pShaderContext, const uint32_t *pShaderData, uint32_t cbShaderData, void **pShaderObj)
 {
     IWineD3DDeviceImpl *This;
     IWineD3DVertexShaderImpl *object;
@@ -328,6 +328,8 @@ SHADERDECL(int) ShaderCreateVertexShader(void *pShaderContext, const uint32_t *p
         Log(("Failed to allocate shader memory.\n"));
         return VERR_NO_MEMORY;
     }
+
+    object->baseShader.functionLength = cbShaderData;
 
     hr = vertexshader_init(object, This, (DWORD const *)pShaderData, NULL, NULL, NULL);
     if (FAILED(hr))
@@ -355,7 +357,7 @@ SHADERDECL(int) ShaderCreateVertexShader(void *pShaderContext, const uint32_t *p
     return VINF_SUCCESS;
 }
 
-SHADERDECL(int) ShaderCreatePixelShader(void *pShaderContext, const uint32_t *pShaderData, void **pShaderObj)
+SHADERDECL(int) ShaderCreatePixelShader(void *pShaderContext, const uint32_t *pShaderData, uint32_t cbShaderData, void **pShaderObj)
 {
     IWineD3DDeviceImpl *This;
     IWineD3DPixelShaderImpl *object;
@@ -370,6 +372,8 @@ SHADERDECL(int) ShaderCreatePixelShader(void *pShaderContext, const uint32_t *pS
         Log(("Failed to allocate shader memory.\n"));
         return VERR_NO_MEMORY;
     }
+
+    object->baseShader.functionLength = cbShaderData;
 
     hr = pixelshader_init(object, This, (DWORD const *)pShaderData, NULL, NULL, NULL);
     if (FAILED(hr))

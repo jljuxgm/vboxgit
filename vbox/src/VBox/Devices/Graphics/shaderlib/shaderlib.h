@@ -1,4 +1,4 @@
-/* $Id: shaderlib.h 76565 2019-01-01 04:23:20Z vboxsync $ */
+/* $Id: shaderlib.h 82718 2020-01-10 16:25:50Z vboxsync $ */
 /** @file
  * shaderlib -- interface to WINE's Direct3D shader functions
  */
@@ -71,8 +71,8 @@ SHADERDECL(int) ShaderDestroyLib(void);
 SHADERDECL(int) ShaderContextCreate(void **ppShaderContext);
 SHADERDECL(int) ShaderContextDestroy(void *pShaderContext);
 
-SHADERDECL(int) ShaderCreateVertexShader(void *pShaderContext, const uint32_t *pShaderData, void **pShaderObj);
-SHADERDECL(int) ShaderCreatePixelShader(void *pShaderContext, const uint32_t *pShaderData, void **pShaderObj);
+SHADERDECL(int) ShaderCreateVertexShader(void *pShaderContext, const uint32_t *pShaderData, uint32_t cbShaderData, void **pShaderObj);
+SHADERDECL(int) ShaderCreatePixelShader(void *pShaderContext, const uint32_t *pShaderData, uint32_t cbShaderData, void **pShaderObj);
 
 SHADERDECL(int) ShaderDestroyVertexShader(void *pShaderContext, void *pShaderObj);
 SHADERDECL(int) ShaderDestroyPixelShader(void *pShaderContext, void *pShaderObj);
