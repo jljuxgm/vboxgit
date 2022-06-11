@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdCreateVMWithDefaults1.py 78671 2019-05-22 17:06:36Z vboxsync $
+# $Id: tdCreateVMWithDefaults1.py 79066 2019-06-10 15:55:47Z vboxsync $
 
 """
 VirtualBox Validation Kit - Create VM with IMachine::applyDefaults() Test
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 78671 $"
+__version__ = "$Revision: 79066 $"
 
 
 # Standard Python imports.
@@ -45,13 +45,14 @@ from testdriver import base
 from testdriver import reporter;
 from testdriver import vboxcon;
 
+
 class SubTstDrvCreateVMWithDefaults1(base.SubTestDriverBase):
     """
     Sub-test driver for VM Move Test #1.
     """
 
     def __init__(self, oTstDrv):
-        base.SubTestDriverBase.__init__(self, 'move-vm', oTstDrv)
+        base.SubTestDriverBase.__init__(self, 'create-vm-with-defaults', oTstDrv)
         self.asRsrcs = []
 
     def testIt(self):
@@ -59,7 +60,11 @@ class SubTstDrvCreateVMWithDefaults1(base.SubTestDriverBase):
         Execute the sub-testcase.
         """
         reporter.log('ValidationKit folder is "%s"' % (g_ksValidationKitDir,))
-        return self.testCreateVMWithDefaults()
+        reporter.testStart('Create VMs with defaults');
+        fRc = self.testCreateVMWithDefaults();
+        reporter.testDone();
+        return fRc;
+
 
     def createVMWithDefaults(self, sGuestType):
         sName = 'testvm_%s' % (sGuestType)
@@ -170,7 +175,6 @@ class SubTstDrvCreateVMWithDefaults1(base.SubTestDriverBase):
             return reporter.errorXcpt();
 
         # Create VMs with defaults for each of the guest types.
-        reporter.testStart('Create VMs with defaults');
         fRc = True
         for oGuestType in aoGuestTypes:
             try:
@@ -179,13 +183,12 @@ class SubTstDrvCreateVMWithDefaults1(base.SubTestDriverBase):
                 fRc = reporter.errorXcpt();
             else:
                 reporter.testStart(sGuestType);
-                fRc = self.createVMWithDefaults(sGuestType) & fRc;
+                fRc = self.createVMWithDefaults(sGuestType) and fRc;
                 reporter.testDone();
-        reporter.testDone();
-
         return fRc
 
 if __name__ == '__main__':
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
     from tdApi1 import tdApi1; # pylint: disable=relative-import
     sys.exit(tdApi1([SubTstDrvCreateVMWithDefaults1]).main(sys.argv))
+
