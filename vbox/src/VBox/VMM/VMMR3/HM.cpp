@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: HM.cpp 83014 2020-02-07 09:24:01Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -886,7 +886,7 @@ static int hmR3InitFinalizeR3(PVM pVM)
         {
             rc = STAMR3RegisterF(pVM, &pHmCpu->paStatInjectedIrqs[j], STAMTYPE_COUNTER, STAMVISIBILITY_USED,
                                  STAMUNIT_OCCURENCES, "Injected events.",
-                                 j < 0x20 ? "/HM/CPU%u/EventInject/InjectTrap/%02X" : "/HM/CPU%u/EventInject/InjectIRQ/%02X",
+                                 j <= X86_XCPT_LAST ? "/HM/CPU%u/EventInject/InjectTrap/%02X" : "/HM/CPU%u/EventInject/InjectIRQ/%02X",
                                  idCpu, j);
             AssertRC(rc);
         }
