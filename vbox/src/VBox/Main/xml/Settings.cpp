@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: Settings.cpp 83170 2020-02-27 10:10:47Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1695,9 +1695,9 @@ NATNetwork::NATNetwork() :
  * Constructor. Needs to set sane defaults which stand the test of time.
  */
 CloudNetwork::CloudNetwork() :
-    fEnabled(true),
     strProviderShortName("OCI"),
-    strProfileName("Default")
+    strProfileName("Default"),
+    fEnabled(true)
 {
 }
 #endif /* VBOX_WITH_CLOUD_NET */

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 83080 2020-02-15 02:22:16Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 83170 2020-02-27 10:10:47Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5827,7 +5827,7 @@ int Console::i_configNetwork(const char *pszDevice,
                 {
                     InsertConfigString(pLunL0, "Driver", "IntNet");
                     InsertConfigNode(pLunL0, "Config", &pCfg);
-                    InsertConfigString(pCfg, "Network", BstrFmt("cloud-%ls", bstr));
+                    InsertConfigString(pCfg, "Network", BstrFmt("cloud-%ls", bstr.raw()));
                     InsertConfigInteger(pCfg, "TrunkType", kIntNetTrunkType_WhateverNone);
                     InsertConfigString(pCfg, "IfPolicyPromisc", pszPromiscuousGuestPolicy);
                     networkName = bstr;
