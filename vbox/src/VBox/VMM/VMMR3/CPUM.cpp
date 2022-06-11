@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 82706 2020-01-10 05:28:31Z vboxsync $ */
+/* $Id: CPUM.cpp 82948 2020-02-01 02:17:56Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -4559,8 +4559,10 @@ VMMR3DECL(int) CPUMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
                 for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
                 {
                     PVMCPU pVCpu = pVM->apCpusR3[idCpu];
+                    char aszTimerName[128];
+                    RTStrPrintf(&aszTimerName[0], sizeof(aszTimerName), "Nested Guest VMX-preempt. timer %u", idCpu);
                     int rc = TMR3TimerCreateInternal(pVM, TMCLOCK_VIRTUAL_SYNC, cpumR3VmxPreemptTimerCallback, pVCpu,
-                                                     "Nested Guest VMX-preempt. timer", &pVCpu->cpum.s.pNestedVmxPreemptTimerR3);
+                                                     aszTimerName, &pVCpu->cpum.s.pNestedVmxPreemptTimerR3);
                     AssertLogRelRCReturn(rc, rc);
                     pVCpu->cpum.s.pNestedVmxPreemptTimerR0 = TMTimerR0Ptr(pVCpu->cpum.s.pNestedVmxPreemptTimerR3);
                 }
