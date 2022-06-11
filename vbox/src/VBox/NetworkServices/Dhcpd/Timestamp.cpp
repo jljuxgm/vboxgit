@@ -1,4 +1,4 @@
-/* $Id: Timestamp.cpp 79526 2019-07-04 10:54:56Z vboxsync $ */
+/* $Id: Timestamp.cpp 79563 2019-07-06 01:22:56Z vboxsync $ */
 /** @file
  * DHCP server - timestamps
  */
@@ -23,7 +23,7 @@
 #include "Timestamp.h"
 
 
-size_t Timestamp::strFormatHelper(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput) const
+size_t Timestamp::strFormatHelper(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput) const RT_NOEXCEPT
 {
     RTTIMESPEC TimeSpec;
     RTTIME     Time;

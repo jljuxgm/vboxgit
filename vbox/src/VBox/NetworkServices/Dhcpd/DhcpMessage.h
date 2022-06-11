@@ -1,4 +1,4 @@
-/* $Id: DhcpMessage.h 79524 2019-07-04 10:14:02Z vboxsync $ */
+/* $Id: DhcpMessage.h 79563 2019-07-06 01:22:56Z vboxsync $ */
 /** @file
  * DHCP Message and its de/serialization.
  */
@@ -68,7 +68,7 @@ public:
     void setSiaddr(RTNETADDRIPV4 addr) { m_siaddr = addr; }
     void setGiaddr(RTNETADDRIPV4 addr) { m_giaddr = addr; }
 
-    uint8_t messageType() const
+    uint8_t messageType() const RT_NOEXCEPT
     {
         Assert(m_optMessageType.present());
         return m_optMessageType.value();

@@ -1,4 +1,4 @@
-/* $Id: DhcpMessage.cpp 79524 2019-07-04 10:14:02Z vboxsync $ */
+/* $Id: DhcpMessage.cpp 79563 2019-07-06 01:22:56Z vboxsync $ */
 /** @file
  * DHCP Message and its de/serialization.
  */
@@ -288,8 +288,7 @@ void DhcpClientMessage::dump() const
     }
 
     bool fHeader = true;
-    for (rawopts_t::const_iterator it = m_rawopts.begin();
-         it != m_rawopts.end(); ++it)
+    for (rawopts_t::const_iterator it = m_rawopts.begin(); it != m_rawopts.end(); ++it)
     {
         const uint8_t optcode = (*it).first;
         switch (optcode) {
