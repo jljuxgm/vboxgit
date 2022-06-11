@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageSnapshotMerging1.py 79092 2019-06-11 15:26:40Z vboxsync $
+# $Id: tdStorageSnapshotMerging1.py 79323 2019-06-25 12:33:03Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage snapshotting and merging testcase.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 79092 $"
+__version__ = "$Revision: 79323 $"
 
 
 # Standard Python imports.
@@ -239,13 +239,16 @@ class tdStorageSnapshot(vbox.TestDriver):                                      #
         if self.fpApiVer >= 4.0:
             try:
                 if self.fpApiVer >= 4.3:
-                    oProgress = oVM.deleteConfig([]);
+                    oProgressCom = oVM.deleteConfig([]);
                 else:
-                    oProgress = oVM.delete(None);
+                    oProgressCom = oVM.delete(None);
             except:
                 reporter.logXcpt();
             else:
+                oProgress = vboxwrappers.ProgressWrapper(oProgressCom, self.oVBoxMgr, self.oVBox.oTstDrv,
+                                                 'Delete VM %s' % (oVM.name));
                 oProgress.wait(cMsTimeout = 15*60*1000); # 15 min
+                oProgress.logResult();
         else:
             try:    oVM.deleteSettings();
             except: reporter.logXcpt();
