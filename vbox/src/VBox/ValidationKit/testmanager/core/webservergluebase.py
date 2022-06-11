@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webservergluebase.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: webservergluebase.py 83381 2020-03-24 14:42:41Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83381 $"
 
 
 # Standard python imports.
@@ -71,6 +71,12 @@ class WebServerGlueBase(object):
         self._oDbgFile         = sys.stderr;
         if config.g_ksSrcGlueDebugLogDst is not None and config.g_kfSrvGlueDebug is True:
             self._oDbgFile = open(config.g_ksSrcGlueDebugLogDst, 'a');
+            if config.g_kfSrvGlueCgiDumpArgs:
+                self._oDbgFile.write('Arguments: %s\nEnvironment:\n' % (sys.argv,));
+            if config.g_kfSrvGlueCgiDumpEnv:
+                for sVar in sorted(os.environ):
+                    self._oDbgFile.write('  %s=\'%s\' \\\n' % (sVar, os.environ[sVar],));
+
         self._afnDebugInfo     = [];
 
         # HTTP header.

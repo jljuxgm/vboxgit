@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 82968 2020-02-04 10:35:17Z vboxsync $
+# $Id: config.py 83381 2020-03-24 14:42:41Z vboxsync $
 
 """
 Test Manager Configuration.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 82968 $"
+__version__ = "$Revision: 83381 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.1.0';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 82968 $')[11:-2];
+g_ksRevision            = ('$Revision: 83381 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
@@ -66,7 +66,7 @@ g_kfLoginNameCaseInsensitive = True;
 ## The TestManager directory.
 g_ksTestManagerDir      = os.path.dirname(os.path.abspath(__file__));
 ## The Validation Kit directory.
-g_ksValidationKitDir        = os.path.dirname(g_ksTestManagerDir);
+g_ksValidationKitDir    = os.path.dirname(g_ksTestManagerDir);
 ## The TestManager htdoc directory.
 g_ksTmHtDocDir          = os.path.join(g_ksTestManagerDir, 'htdocs');
 ## The TestManager download directory (under htdoc somewhere), for validationkit zips.
@@ -158,6 +158,10 @@ g_kfSrvGlueCgiTb        = False;
 g_kfSrvGlueDebug        = False;
 ## Timestamp and pid prefix the glue debug output.
 g_kfSrvGlueDebugTS      = True;
+## Whether to dumping CGI environment variables.
+g_kfSrvGlueCgiDumpEnv   = False;
+## Whether to dumping CGI script arguments.
+g_kfSrvGlueCgiDumpArgs  = False;
 ## Enables task scheduler debug output to g_ksSrcGlueDebugLogDst.
 g_kfSrvGlueDebugScheduler = False;
 
