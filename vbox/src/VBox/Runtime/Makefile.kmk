@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 80710 2019-09-10 17:13:58Z vboxsync $
+# $Id: Makefile.kmk 80715 2019-09-11 01:34:30Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1298,6 +1298,7 @@ RuntimeR3_SOURCES.netbsd = \
 	generic/RTFileCopyPartEx-generic.cpp \
 	generic/RTFileMove-generic.cpp \
 	generic/RTLogWriteDebugger-generic.cpp \
+	generic/RTPathGetCurrentOnDrive-generic.cpp \
 	generic/RTSemEventMultiWait-2-ex-generic.cpp \
 	generic/RTSemEventMultiWaitNoResume-2-ex-generic.cpp \
 	generic/RTSystemQueryDmiString-generic.cpp \
