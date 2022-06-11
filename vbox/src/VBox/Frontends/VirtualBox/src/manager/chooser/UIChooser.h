@@ -1,4 +1,4 @@
-/* $Id: UIChooser.h 84103 2020-04-30 13:23:42Z vboxsync $ */
+/* $Id: UIChooser.h 84105 2020-04-30 14:07:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooser class declaration.
  */
@@ -155,6 +155,8 @@ private:
 
         /** Deinit model. */
         void deinitModel();
+        /** Cleanups connections. */
+        void cleanupConnections();
         /** Cleanups all. */
         void cleanup();
     /** @} */
