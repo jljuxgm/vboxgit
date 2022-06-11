@@ -1,4 +1,4 @@
-# $Id: Config.kmk 82441 2019-12-05 23:16:02Z vboxsync $
+# $Id: Config.kmk 82467 2019-12-06 16:14:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -6409,11 +6409,13 @@ ifdef VBOX_WITH_EXTPACK
   TEMPLATE_VBoxR3ExtPackPuel_EXTENDS = VBoxR3ExtPack
   TEMPLATE_VBoxR3ExtPackPuel_INST = $(INST_EXTPACK_PUEL)$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)/
   TEMPLATE_VBoxR3ExtPackPuel_DEFS = $(TEMPLATE_VBoxR3ExtPack_DEFS) VBOX_IN_PUEL_EXTPACK
+  TEMPLATE_VBoxR3ExtPackPuel_LD_DEBUG = split
 
   TEMPLATE_VBoxR3ExtPackApiPuel = For the ring-3 context modules in the PUEL extension pack.
   TEMPLATE_VBoxR3ExtPackApiPuel_EXTENDS = VBoxR3ExtPackApi
   TEMPLATE_VBoxR3ExtPackApiPuel_INST = $(INST_EXTPACK_PUEL)$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)/
   TEMPLATE_VBoxR3ExtPackApiPuel_DEFS = $(TEMPLATE_VBoxR3ExtPackApi_DEFS) VBOX_IN_PUEL_EXTPACK
+  TEMPLATE_VBoxR3ExtPackApiPuel_LD_DEBUG = split
 
   TEMPLATE_VBoxR3ExtPackPuelWithOpenSsl = For the ring-3 context modules in the PUEL extension pack using ExtPack OpenSSL.
   TEMPLATE_VBoxR3ExtPackPuelWithOpenSsl_EXTENDS = VBoxR3ExtPackPuel
@@ -7714,7 +7716,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 82441 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 82467 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
