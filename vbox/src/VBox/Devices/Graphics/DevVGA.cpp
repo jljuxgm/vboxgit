@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 82094 2019-11-22 00:58:02Z vboxsync $ */
+/* $Id: DevVGA.cpp 82097 2019-11-22 08:24:11Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3324,9 +3324,6 @@ vgaR3IOPortHgmsiRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT offPort, uint32_
                 *pu32 = HGSMIGuestRead(pThis->pHGSMI);
                 break;
             default:
-# ifdef DEBUG_sunlover
-                AssertMsgFailed(("vgaR3IOPortHgmsiRead: Port=%#x cb=%d\n", Port, cb));
-# endif
                 rc = VERR_IOM_IOPORT_UNUSED;
                 break;
         }
