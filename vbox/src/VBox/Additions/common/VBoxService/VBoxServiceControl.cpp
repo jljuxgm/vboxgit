@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 83405 2020-03-25 12:45:01Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 83974 2020-04-24 16:05:50Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -563,9 +563,9 @@ VBOXSERVICE g_Control =
     "Host-driven Guest Control",
     /* pszUsage. */
 #ifdef DEBUG
-    "              [--control-dump-stderr] [--control-dump-stdout]\n"
+    "           [--control-dump-stderr] [--control-dump-stdout]\n"
 #endif
-    "              [--control-interval <ms>]"
+    "           [--control-interval <ms>]"
     ,
     /* pszOptions. */
 #ifdef DEBUG

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 83958 2020-04-23 20:24:40Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 83974 2020-04-24 16:05:50Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -1672,7 +1672,7 @@ VBOXSERVICE g_VMInfo =
     /* pszDescription. */
     "Virtual Machine Information",
     /* pszUsage. */
-    "              [--vminfo-interval <ms>] [--vminfo-user-idle-threshold <ms>]"
+    "           [--vminfo-interval <ms>] [--vminfo-user-idle-threshold <ms>]"
     ,
     /* pszOptions. */
     "    --vminfo-interval       Specifies the interval at which to retrieve the\n"
